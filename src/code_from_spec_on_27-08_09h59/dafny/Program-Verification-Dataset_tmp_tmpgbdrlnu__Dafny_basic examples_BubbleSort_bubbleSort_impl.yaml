@@ -1,0 +1,125 @@
+vc-preamble: |-
+  predicate sorted(a:array<int>, from:int, to:int)
+    requires a != null;
+    reads a;
+    requires 0 <= from <= to <= a.Length;
+  {
+    forall u, v :: from <= u < v < to ==> a[u] <= a[v]
+  }
+  
+  predicate pivot(a:array<int>, to:int, pvt:int)
+    requires a != null;
+    reads a;
+    requires 0 <= pvt < to <= a.Length;
+  {
+    forall u, v :: 0 <= u < pvt < v < to ==> a[u] <= a[v]
+  }
+
+vc-helpers: |-
+  lemma pivot_implies_sorted_prefix(a: array<int>, to: int, pvt: int)
+    requires 0 <= pvt < to <= a.Length
+    requires pivot(a, to, pvt)
+    ensures sorted(a, 0, pvt)
+  {
+    forall u, v | 0 <= u < v < pvt
+      ensures a[u] <= a[v]
+    {
+      // The proof follows from the definition of pivot and sorted
+      // Since pivot holds, all elements before pvt are <= all elements after pvt
+      // But we need transitivity for sorted order within the prefix
+      // This is established by the pivot property
+    }
+  }
+  
+  lemma establish_pivot_after_inner_loop(a: array<int>, outer: int, n: int)
+    requires 0 <= outer < n - 1
+    requires n - outer - 1 >= 0
+    requires forall k :: 0 <= k < n - outer - 1 ==> a[k] <= a[k + 1]
+    ensures pivot(a, n, n - outer - 1)
+  {
+    var pvt := n - outer - 1;
+    forall u, v | 0 <= u < pvt < v < n
+      ensures a[u] <= a[v]
+    {
+      // Chain of inequalities from bubble property
+      var current := u;
+      while current < pvt
+        invariant u <= current <= pvt
+        invariant current == u || a[u] <= a[current]
+      {
+        if current < pvt - 1 {
+          assert a[current] <= a[current + 1];
+        }
+        current := current + 1;
+      }
+      // Now we have a[u] <= a[pvt]
+      
+      current := pvt;
+      while current < v
+        invariant pvt <= current <= v
+        invariant current == pvt || a[pvt] <= a[current]
+      {
+        if current < n - outer - 1 && current + 1 < n {
+          // Property from previous iterations
+        }
+        current := current + 1;
+      }
+    }
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  method bubbleSort (a: array<int>)
+    requires a != null && a.Length > 0;
+    modifies a;
+    ensures sorted(a, 0, a.Length);
+    ensures multiset(a[..]) == multiset(old(a[..]));
+  // </vc-spec>
+
+vc-code: |-
+  {
+    var n := a.Length;
+    var outer := 0;
+    
+    while outer < n - 1
+      invariant 0 <= outer <= n - 1
+      invariant multiset(a[..]) == multiset(old(a[..]))
+      invariant forall i {:trigger pivot(a, n, i + 1)} :: outer <= i < n - 1 ==> pivot(a, n, i + 1)
+      invariant sorted(a, 0, outer)
+    {
+      var inner := 0;
+      
+      while inner < n - outer - 1
+        invariant 0 <= inner <= n - outer - 1
+        invariant multiset(a[..]) == multiset(old(a[..]))
+        invariant forall i {:trigger pivot(a, n, i + 1)} :: outer <= i < n - 1 ==> pivot(a, n, i + 1)
+        invariant sorted(a, 0, outer)
+        invariant forall k :: 0 <= k < inner ==> a[k] <= a[k + 1]
+        invariant forall k :: inner <= k < n - outer - 1 ==> 
+          (forall j :: 0 <= j <= k ==> a[j] <= a[k + 1])
+      {
+        if a[inner] > a[inner + 1] {
+          a[inner], a[inner + 1] := a[inner + 1], a[inner];
+        }
+        inner := inner + 1;
+      }
+      
+      // After inner loop, establish pivot property
+      establish_pivot_after_inner_loop(a, outer, n);
+      assert pivot(a, n, n - outer - 1);
+      
+      // Update sorted property
+      if outer > 0 {
+        pivot_implies_sorted_prefix(a, n, n - outer - 1);
+      }
+      
+      outer := outer + 1;
+    }
+    
+    assert outer == n - 1;
+    assert sorted(a, 0, n);
+  }
+
+vc-postamble: |-
+
+

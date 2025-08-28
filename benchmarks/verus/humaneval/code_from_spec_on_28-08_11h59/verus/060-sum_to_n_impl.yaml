@@ -1,0 +1,123 @@
+vc-description: |-
+  /--
+  function_signature: "def sum_to_n(n: Nat) -> Nat"
+  docstring: |
+      sum_to_n is a function that sums numbers from 1 to n.
+  test_cases:
+    - input: 30
+      expected_output: 465
+    - input: 100
+      expected_output: 4950
+  -/
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn spec_sum_to_n(n: nat) -> (ret:nat)
+      decreases n,
+  {
+      if (n == 0) {
+          0
+      } else {
+          n + spec_sum_to_n((n - 1) as nat)
+      }
+  }
+  // pure-end
+
+vc-helpers: |-
+  proof fn lemma_sum_formula(n: nat)
+      ensures spec_sum_to_n(n) == n * (n + 1) / 2,
+      decreases n,
+  {
+      if n == 0 {
+          assert(spec_sum_to_n(0) == 0);
+          assert(0 * (0 + 1) / 2 == 0);
+      } else {
+          lemma_sum_formula((n - 1) as nat);
+          assert(spec_sum_to_n(n) == n + spec_sum_to_n((n - 1) as nat));
+          assert(spec_sum_to_n((n - 1) as nat) == (n - 1) * n / 2);
+          
+          // Show that n + (n - 1) * n / 2 == n * (n + 1) / 2
+          assert(n + (n - 1) * n / 2 == n * (n + 1) / 2) by {
+              // Work with the equality 2 * left == 2 * right
+              assert(2 * (n + (n - 1) * n / 2) == 2 * n + 2 * ((n - 1) * n / 2));
+              assert(2 * ((n - 1) * n / 2) == (n - 1) * n);
+              assert(2 * (n + (n - 1) * n / 2) == 2 * n + (n - 1) * n);
+              assert(2 * n + (n - 1) * n == n * (2 + (n - 1)));
+              assert(2 + (n - 1) == n + 1);
+              assert(n * (2 + (n - 1)) == n * (n + 1));
+              assert(2 * (n * (n + 1) / 2) == n * (n + 1));
+          };
+      }
+  }
+  
+  proof fn lemma_sum_bound(n: nat)
+      ensures n <= 65535 ==> spec_sum_to_n(n) <= u32::MAX,
+  {
+      lemma_sum_formula(n);
+      if n <= 65535 {
+          assert(spec_sum_to_n(n) == n * (n + 1) / 2);
+          assert(n + 1 <= 65536);
+          assert(n * (n + 1) <= 65535 * 65536) by {
+              // Use arithmetic to prove the inequality
+              assert(n <= 65535);
+              assert(n + 1 <= 65536);
+              // For products: if a <= c and b <= d, then a * b <= c * d (when all are non-negative)
+          };
+          // Compute 65535 * 65536 step by step
+          assert(65535 * 65536 == 4294836480) by {
+              // Break down the computation
+              assert(65535 * 65536 == 65535 * (65535 + 1));
+              assert(65535 * (65535 + 1) == 65535 * 65535 + 65535);
+              assert(65535 * 65535 == 4294836225);
+              assert(4294836225 + 65535 == 4294836480);
+          };
+          assert(n * (n + 1) / 2 <= 65535 * 65536 / 2);
+          assert(65535 * 65536 / 2 == 2147418240);
+          assert(2147418240 <= u32::MAX);
+      }
+  }
+
+vc-spec: |-
+  fn sum_to_n(n: u32) -> (sum: Option<u32>)
+      // post-conditions-start
+      ensures
+          sum.is_some() ==> sum.unwrap() == spec_sum_to_n(n as nat),
+      // post-conditions-end
+
+vc-code: |-
+  {
+      if n > 65535 {
+          return None;
+      }
+      
+      let mut sum: u32 = 0;
+      let mut i: u32 = 0;
+      
+      proof {
+          lemma_sum_bound(n as nat);
+      }
+      
+      while i < n
+          invariant
+              i <= n,
+              sum == spec_sum_to_n(i as nat),
+          decreases n - i,
+      {
+          i = i + 1;
+          if sum > u32::MAX - i {
+              return None;
+          }
+          sum = sum + i;
+      }
+      
+      Some(sum)
+  }
+
+vc-postamble: |-
+  
+  }
+  fn main() {}
+

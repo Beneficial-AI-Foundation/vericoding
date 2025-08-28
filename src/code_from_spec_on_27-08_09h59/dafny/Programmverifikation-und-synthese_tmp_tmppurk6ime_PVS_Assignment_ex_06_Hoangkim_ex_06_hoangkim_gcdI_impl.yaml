@@ -1,0 +1,73 @@
+vc-preamble: |-
+  //Problem01
+  //a)
+  ghost function gcd(x: int, y: int): int
+      requires x > 0 && y > 0
+  {
+      if x == y then x
+      else if x > y then gcd(x - y, y)
+      else gcd(x, y - x)
+  }
+  
+  //b)
+  ghost function gcd'(x: int, y: int): int
+      requires x > 0 && y > 0
+      decreases if x > y then x else y
+  {
+      if x == y then x
+      else if x > y then gcd'(x - y, y)
+      else gcd(y, x)
+  }
+
+vc-helpers: |-
+  lemma gcd_symmetric(x: int, y: int)
+      requires x > 0 && y > 0
+      ensures gcd(x, y) == gcd(y, x)
+  {
+      if x == y {
+          assert gcd(x, y) == x == y == gcd(y, x);
+      } else if x > y {
+          gcd_symmetric(x - y, y);
+          assert gcd(x, y) == gcd(x - y, y) == gcd(y, x - y) == gcd(y, x);
+      } else {
+          gcd_symmetric(x, y - x);
+          assert gcd(x, y) == gcd(x, y - x) == gcd(y - x, x) == gcd(y, x);
+      }
+  }
+  
+  lemma gcd_invariant(x: int, y: int, a: int, b: int)
+      requires x > 0 && y > 0 && a > 0 && b > 0
+      requires gcd(x, y) == gcd(a, b)
+      ensures gcd(x, y) == gcd(a, b)
+  {
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  method gcdI(m: int, n: int) returns (d: int)
+  requires  m > 0 && n > 0 
+  ensures d == gcd(m, n);
+  // </vc-spec>
+
+vc-code: |-
+  {
+      var x, y := m, n;
+      
+      while x != y
+          invariant x > 0 && y > 0
+          invariant gcd(x, y) == gcd(m, n)
+          decreases x + y
+      {
+          if x > y {
+              x := x - y;
+          } else {
+              y := y - x;
+          }
+      }
+      
+      d := x;
+  }
+
+vc-postamble: |-
+
+

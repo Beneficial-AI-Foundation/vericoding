@@ -1,0 +1,54 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+  // No changes needed in helpers for this fix
+
+vc-spec: |-
+  // <vc-spec>
+  fn replace_blanks_with_char(s: Seq<char>, ch: char) -> (v: Seq<char>)
+      ensures 
+          v.len() == s.len(),
+          forall|i: int| 0 <= i < s.len() ==> {
+              (s[i] == ' ' ==> v[i] == ch) &&
+              (s[i] != ' ' ==> v[i] == s[i])
+          }
+  // </vc-spec>
+
+vc-code: |-
+  fn replace_blanks_with_char(s: Seq<char>, ch: char) -> (v: Seq<char>)
+      ensures 
+          v.len() == s.len(),
+          forall|i: int| 0 <= i < s.len() ==> {
+              (s[i] == ' ' ==> v[i] == ch) &&
+              (s[i] != ' ' ==> v[i] == s[i])
+          }
+  {
+      let mut result: Vec<char> = Vec::new();
+      let mut i: usize = 0;
+      while i < s.len()
+          invariant
+              i <= s.len(),
+              result.len() == i,
+              forall|j: int| 0 <= j < i ==> {
+                  (s[j] == ' ' ==> result@[j] == ch) &&
+                  (s[j] != ' ' ==> result@[j] == s[j])
+              }
+      {
+          if s[i] == ' ' {
+              result.push(ch);
+          } else {
+              result.push(s[i]);
+          }
+          i = i + 1;
+      }
+      result.into_seq()
+  }
+
+vc-postamble: |-
+  fn main() {}
+  
+  }
+

@@ -1,0 +1,110 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+spec fn contains_value(s: Seq<i32>, val: i32) -> bool {
+    exists|i: int| 0 <= i < s.len() && s[i] == val
+}
+
+spec fn no_duplicates(s: Seq<i32>) -> bool {
+    forall|i: int, j: int| 0 <= i < j < s.len() ==> s[i] != s[j]
+}
+
+spec fn is_subsequence_of(sub: Seq<i32>, orig: Seq<i32>) -> bool {
+    forall|i: int| 0 <= i < sub.len() ==> contains_value(orig, sub[i])
+}
+
+spec fn is_sorted_ascending(s: Seq<i32>) -> bool {
+    forall|i: int, j: int| 0 <= i < j < s.len() ==> s[i] <= s[j]
+}
+
+spec fn is_strictly_sorted(s: Seq<i32>) -> bool {
+    forall|i: int, j: int| 0 <= i < j < s.len() ==> s[i] < s[j]
+}
+// </vc-helpers>
+
+// <vc-spec>
+#[verifier::loop_isolation(false)]
+fn unique(a: &[i32]) -> (result: Vec<i32>)
+    requires
+        forall|i: int, j: int|
+            #![trigger a[i], a[j]]
+            0 <= i && i < j && j < a.len() ==> a[i] <= a[j],
+    ensures
+        forall|i: int, j: int|
+            #![trigger result[i], result[j]]
+            0 <= i && i < j && j < result.len() ==> result[i] < result[j],
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut result: Vec<i32> = Vec::new();
+    let mut i = 0;
+    
+    while i < a.len()
+        invariant
+            0 <= i <= a.len(),
+            forall|k: int, l: int|
+                #![trigger result@[k], result@[l]]
+                0 <= k < l < result.len() ==> result@[k] < result@[l],
+            no_duplicates(result@),
+            is_subsequence_of(result@, a@),
+            forall|j: int| 0 <= j < i && contains_value(result@, a@[j]) ==> 
+                exists|k: int| 0 <= k < result.len() && result@[k] == a@[j],
+            forall|k: int| 0 <= k < result.len() ==> 
+                exists|j: int| 0 <= j < i && result@[k] == a@[j],
+        decreases a.len() - i
+    {
+        let current = a[i];
+        let mut found = false;
+        let mut j = 0;
+        
+        while j < result.len()
+            invariant
+                0 <= j <= result.len(),
+                found == exists|k: int| 0 <= k < j && result@[k] == current,
+                forall|k: int, l: int|
+                    #![trigger result@[k], result@[l]]
+                    0 <= k < l < result.len() ==> result@[k] < result@[l],
+            decreases result.len() - j
+        {
+            if result[j] == current {
+                found = true;
+                break;
+            }
+            j += 1;
+        }
+        
+        if !found {
+            result.push(current);
+            proof {
+                let old_len = result.len() - 1;
+                assert(result@[old_len] == current);
+                assert forall|k: int| 0 <= k < old_len implies result@[k] < current by {
+                    if 0 <= k < old_len {
+                        let idx_k: int = choose|j: int| 0 <= j < i && result@[k] == a@[j];
+                        assert(0 <= idx_k < i);
+                        assert(result@[k] == a@[idx_k]);
+                        assert(a@[idx_k] <= a@[i as int]);
+                        assert(result@[k] <= current);
+                        if result@[k] == current {
+                            assert(contains_value(result@, current));
+                            assert(found);
+                            assert(false);
+                        }
+                        assert(result@[k] < current);
+                    }
+                };
+            }
+        }
+        
+        i += 1;
+    }
+    
+    result
+}
+// </vc-code>
+
+fn main() {}
+}

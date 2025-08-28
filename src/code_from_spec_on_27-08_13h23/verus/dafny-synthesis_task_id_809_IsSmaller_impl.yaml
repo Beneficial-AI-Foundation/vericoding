@@ -1,0 +1,45 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+  // No updates needed for helpers in this case
+
+vc-spec: |-
+  // <vc-spec>
+  fn is_smaller(a: Seq<int>, b: Seq<int>) -> (result: bool)
+      requires 
+          a.len() == b.len(),
+      ensures 
+          result <==> forall|i: int| 0 <= i < a.len() ==> a[i] > b[i],
+          !result <==> exists|i: int| 0 <= i < a.len() && a[i] <= b[i],
+  // </vc-spec>
+
+vc-code: |-
+  fn is_smaller(a: Seq<int>, b: Seq<int>) -> (result: bool)
+      requires 
+          a.len() == b.len(),
+      ensures 
+          result <==> forall|i: int| 0 <= i < a.len() ==> a[i] > b[i],
+          !result <==> exists|i: int| 0 <= i < a.len() && a[i] <= b[i],
+  {
+      let mut i: usize = 0;
+      while i < a.len()
+          invariant
+              0 <= i <= a.len(),
+              forall|j: int| 0 <= j < i ==> a[j] > b[j],
+      {
+          if a[i] <= b[i] {
+              return false;
+          }
+          i = i + 1;
+      }
+      true
+  }
+
+vc-postamble: |-
+  fn main() {}
+  
+  }
+

@@ -1,0 +1,135 @@
+vc-description: |-
+
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn spec_bracketing_helper(brackets: Seq<char>) -> (ret:(int, bool)) {
+      brackets.fold_left(
+          (0, true),
+          |p: (int, bool), c|
+              {
+                  let (x, b) = p;
+                  match (c) {
+                      '(' => (x + 1, b),
+                      ')' => (x - 1, b && x - 1 >= 0),
+                      _ => (x, b),
+                  }
+              },
+      )
+  }
+  // pure-end
+  // pure-end
+  
+  spec fn spec_bracketing(brackets: Seq<char>) -> (ret:bool) {
+      let p = spec_bracketing_helper(brackets);
+      p.1 && p.0 == 0
+  }
+  // pure-end
+
+vc-helpers: |-
+  proof fn fold_left_invariant_helper(brackets: Seq<char>, i: int)
+      requires 0 <= i <= brackets.len()
+      ensures 
+          ({
+              let partial = brackets.subrange(0, i);
+              let (count, valid) = spec_bracketing_helper(partial);
+              valid ==> count >= 0
+          })
+      decreases brackets.len() - i
+  {
+      if i == 0 {
+          // Base case: empty sequence
+          assert(brackets.subrange(0, 0) =~= Seq::empty());
+      } else {
+          // Inductive step
+          let prev_partial = brackets.subrange(0, i - 1);
+          let curr_partial = brackets.subrange(0, i);
+          let c = brackets[i - 1];
+          
+          fold_left_invariant_helper(brackets, i - 1);
+          
+          let (prev_count, prev_valid) = spec_bracketing_helper(prev_partial);
+          let (curr_count, curr_valid) = spec_bracketing_helper(curr_partial);
+          
+          // The fold_left relationship
+          assert(curr_partial =~= prev_partial.push(c));
+      }
+  }
+  
+  proof fn bracketing_helper_maintains_invariant(brackets: Seq<char>)
+      ensures 
+          ({
+              let (final_count, final_valid) = spec_bracketing_helper(brackets);
+              final_valid ==> final_count >= 0
+          })
+  {
+      fold_left_invariant_helper(brackets, brackets.len() as int);
+  }
+
+vc-spec: |-
+  fn correct_bracketing(brackets: &str) -> (ret: bool)
+      // pre-conditions-start
+      requires
+          brackets@.len() <= i32::MAX,
+          -brackets@.len() >= i32::MIN,
+      // pre-conditions-end
+      // post-conditions-start
+      ensures
+          ret <==> spec_bracketing(brackets@),
+      // post-conditions-end
+
+vc-code: |-
+  {
+      let mut count: i32 = 0;
+      let mut valid: bool = true;
+      let mut i: usize = 0;
+      
+      while i < brackets@.len()
+          invariant
+              0 <= i <= brackets@.len(),
+              brackets@.len() <= i32::MAX,
+              -brackets@.len() >= i32::MIN,
+              ({
+                  let partial = brackets@.subrange(0, i as int);
+                  let (spec_count, spec_valid) = spec_bracketing_helper(partial);
+                  count == spec_count && valid == spec_valid
+              }),
+              valid ==> count >= 0
+      {
+          let c = brackets.as_bytes()[i] as char;
+          
+          match c {
+              '(' => {
+                  count = count + 1;
+              }
+              ')' => {
+                  count = count - 1;
+                  if count < 0 {
+                      valid = false;
+                  }
+              }
+              _ => {
+                  // No change needed for other characters
+              }
+          }
+          
+          i = i + 1;
+      }
+      
+      proof {
+          let full_seq = brackets@;
+          let (final_count, final_valid) = spec_bracketing_helper(full_seq);
+          assert(full_seq =~= full_seq.subrange(0, full_seq.len() as int));
+      }
+      
+      valid && count == 0
+  }
+
+vc-postamble: |-
+  
+  } // verus!
+  fn main() {}
+

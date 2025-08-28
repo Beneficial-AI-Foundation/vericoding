@@ -1,0 +1,70 @@
+use vstd::prelude::*;
+
+
+verus! {
+
+// <vc-helpers>
+// Helper lemmas for sequence operations
+proof fn lemma_subrange_filter_push(arr: Seq<u32>, i: int, x: u32)
+    requires 0 <= i < arr.len()
+    ensures arr.subrange(0, i + 1).filter(|y: u32| y % 2 == 0) == 
+            if x % 2 == 0 { 
+                arr.subrange(0, i).filter(|y: u32| y % 2 == 0).push(x) 
+            } else { 
+                arr.subrange(0, i).filter(|y: u32| y % 2 == 0) 
+            }
+{
+    let sub_i = arr.subrange(0, i);
+    let sub_i_plus_1 = arr.subrange(0, i + 1);
+    assert(sub_i_plus_1 == sub_i.push(x));
+    
+    if x % 2 == 0 {
+        assert(sub_i_plus_1.filter(|y: u32| y % 2 == 0) == sub_i.filter(|y: u32| y % 2 == 0).push(x));
+    } else {
+        assert(sub_i_plus_1.filter(|y: u32| y % 2 == 0) == sub_i.filter(|y: u32| y % 2 == 0));
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn find_even_numbers(arr: &Vec<u32>) -> (even_numbers: Vec<u32>)
+    // post-conditions-start
+    ensures
+        even_numbers@ == arr@.filter(|x: u32| x % 2 == 0),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut even_numbers = Vec::new();
+    let mut i = 0;
+    
+    while i < arr.len()
+        invariant
+            0 <= i <= arr.len(),
+            even_numbers@ == arr@.subrange(0, i as int).filter(|x: u32| x % 2 == 0),
+        decreases arr.len() - i,
+    {
+        if arr[i] % 2 == 0 {
+            even_numbers.push(arr[i]);
+        }
+        
+        proof {
+            lemma_subrange_filter_push(arr@, i as int, arr[i]);
+        }
+        
+        i += 1;
+    }
+    
+    proof {
+        assert(i == arr.len());
+        assert(arr@.subrange(0, i as int) == arr@);
+    }
+    
+    even_numbers
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

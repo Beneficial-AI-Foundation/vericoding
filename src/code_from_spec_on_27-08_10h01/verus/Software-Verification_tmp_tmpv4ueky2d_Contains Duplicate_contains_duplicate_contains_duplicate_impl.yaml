@@ -1,0 +1,100 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn distinct(nums: Seq<int>) -> bool {
+      forall|i: int, j: int| 0 <= i < j < nums.len() ==> nums[i] != nums[j]
+  }
+
+vc-helpers: |-
+  spec fn all_distinct_up_to(nums: Seq<int>, k: int) -> bool {
+      forall|i: int, j: int| 0 <= i < j < k ==> nums[i] != nums[j]
+  }
+  
+  proof fn lemma_distinct_extension(nums: Seq<int>, k: int)
+      requires 
+          0 <= k < nums.len(),
+          all_distinct_up_to(nums, k),
+          forall|i: int| 0 <= i < k ==> nums[i] != nums[k]
+      ensures
+          all_distinct_up_to(nums, k + 1)
+  {
+  }
+  
+  proof fn lemma_all_distinct_implies_distinct(nums: Seq<int>)
+      requires all_distinct_up_to(nums, nums.len() as int)
+      ensures distinct(nums)
+  {
+  }
+  
+  proof fn lemma_not_all_distinct_implies_not_distinct(nums: Seq<int>, k: int)
+      requires 
+          0 <= k < nums.len(),
+          !all_distinct_up_to(nums, k + 1)
+      ensures
+          !distinct(nums)
+  {
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn contains_duplicate(nums: Seq<int>) -> (result: bool)
+      requires
+          1 <= nums.len() <= 100000,
+          forall|i: int| 0 <= i < nums.len() ==> #[trigger] nums[i] >= -1000000000 && nums[i] <= 1000000000,
+      ensures
+          result <==> distinct(nums),
+  // </vc-spec>
+
+vc-code: |-
+  {
+      let mut i = 0;
+      
+      while i < nums.len()
+          invariant
+              0 <= i <= nums.len(),
+              all_distinct_up_to(nums, i as int)
+      {
+          let mut j = 0;
+          let found_duplicate = loop
+              invariant
+                  0 <= j <= i,
+                  forall|k: int| 0 <= k < j ==> nums[k] != nums[i as int]
+          {
+              if j == i {
+                  break false;
+              }
+              if nums[j as int] == nums[i as int] {
+                  proof {
+                      lemma_not_all_distinct_implies_not_distinct(nums, i as int);
+                  }
+                  break true;
+              }
+              j += 1;
+          };
+          
+          if found_duplicate {
+              return false;
+          }
+          
+          proof {
+              lemma_distinct_extension(nums, i as int);
+          }
+          
+          i += 1;
+      }
+      
+      proof {
+          lemma_all_distinct_implies_distinct(nums);
+      }
+      
+      return true;
+  }
+
+vc-postamble: |-
+  
+  fn main() {}
+  
+  }
+

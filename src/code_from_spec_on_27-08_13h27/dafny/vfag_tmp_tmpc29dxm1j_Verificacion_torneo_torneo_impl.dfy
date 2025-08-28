@@ -1,0 +1,95 @@
+// <vc-helpers>
+lemma OrderThreeValues(a: real, b: real, c: real)
+  ensures exists p, q, r | p in {0, 1, 2} && q in {0, 1, 2} && r in {0, 1, 2} && p != q && q != r && p != r :: 
+    (if p == 0 then a else if p == 1 then b else c) >= 
+    (if q == 0 then a else if q == 1 then b else c) >= 
+    (if r == 0 then a else if r == 1 then b else c)
+{
+  if a >= b >= c {
+    assert 0 in {0, 1, 2} && 1 in {0, 1, 2} && 2 in {0, 1, 2};
+    assert 0 != 1 && 1 != 2 && 0 != 2;
+    assert a >= b >= c;
+  } else if a >= c >= b {
+    assert 0 in {0, 1, 2} && 2 in {0, 1, 2} && 1 in {0, 1, 2};
+    assert 0 != 2 && 2 != 1 && 0 != 1;
+    assert a >= c >= b;
+  } else if b >= a >= c {
+    assert 1 in {0, 1, 2} && 0 in {0, 1, 2} && 2 in {0, 1, 2};
+    assert 1 != 0 && 0 != 2 && 1 != 2;
+    assert b >= a >= c;
+  } else if b >= c >= a {
+    assert 1 in {0, 1, 2} && 2 in {0, 1, 2} && 0 in {0, 1, 2};
+    assert 1 != 2 && 2 != 0 && 1 != 0;
+    assert b >= c >= a;
+  } else if c >= a >= b {
+    assert 2 in {0, 1, 2} && 0 in {0, 1, 2} && 1 in {0, 1, 2};
+    assert 2 != 0 && 0 != 1 && 2 != 1;
+    assert c >= a >= b;
+  } else {
+    assert c >= b >= a;
+    assert 2 in {0, 1, 2} && 1 in {0, 1, 2} && 0 in {0, 1, 2};
+    assert 2 != 1 && 1 != 0 && 2 != 0;
+    assert c >= b >= a;
+  }
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method torneo(Valores : array?<real>, i : int, j : int, k : int) returns (pos_padre : int, pos_madre : int)
+    requires Valores != null && Valores.Length >= 20 && Valores.Length < 50 && i >= 0 && j >= 0 && k >= 0 
+    requires i < Valores.Length && j < Valores.Length && k < Valores.Length && i != j && j != k && k != i 
+    ensures exists p, q, r | p in {i, j, k} && q in {i, j, k} && r in {i, j, k} && p != q && q != r && p != r :: Valores[p] >= Valores[q] >= Valores[r] && pos_padre == p && pos_madre == q // Q
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+method Torneo(Valores: array?<real>, i: int, j: int, k: int) returns (pos_padre: int, pos_madre: int)
+  requires Valores != null && Valores.Length >= 20 && Valores.Length < 50 && i >= 0 && j >= 0 && k >= 0 
+  requires i < Valores.Length && j < Valores.Length && k < Valores.Length && i != j && j != k && k != i 
+  ensures exists p, q, r | p in {i, j, k} && q in {i, j, k} && r in {i, j, k} && p != q && q != r && p != r :: 
+          Valores[p] >= Valores[q] >= Valores[r] && pos_padre == p && pos_madre == q
+{
+  var val_i := Valores[i];
+  var val_j := Valores[j];
+  var val_k := Valores[k];
+
+  if val_i >= val_j >= val_k {
+    pos_padre := i;
+    pos_madre := j;
+    assert i in {i, j, k} && j in {i, j, k} && k in {i, j, k};
+    assert i != j && j != k && i != k;
+    assert Valores[i] >= Valores[j] >= Valores[k];
+  } else if val_i >= val_k >= val_j {
+    pos_padre := i;
+    pos_madre := k;
+    assert i in {i, j, k} && k in {i, j, k} && j in {i, j, k};
+    assert i != k && k != j && i != j;
+    assert Valores[i] >= Valores[k] >= Valores[j];
+  } else if val_j >= val_i >= val_k {
+    pos_padre := j;
+    pos_madre := i;
+    assert j in {i, j, k} && i in {i, j, k} && k in {i, j, k};
+    assert j != i && i != k && j != k;
+    assert Valores[j] >= Valores[i] >= Valores[k];
+  } else if val_j >= val_k >= val_i {
+    pos_padre := j;
+    pos_madre := k;
+    assert j in {i, j, k} && k in {i, j, k} && i in {i, j, k};
+    assert j != k && k != i && j != i;
+    assert Valores[j] >= Valores[k] >= Valores[i];
+  } else if val_k >= val_i >= val_j {
+    pos_padre := k;
+    pos_madre := i;
+    assert k in {i, j, k} && i in {i, j, k} && j in {i, j, k};
+    assert k != i && i != j && k != j;
+    assert Valores[k] >= Valores[i] >= Valores[j];
+  } else {
+    pos_padre := k;
+    pos_madre := j;
+    assert k in {i, j, k} && j in {i, j, k} && i in {i, j, k};
+    assert k != j && j != i && k != i;
+    assert Valores[k] >= Valores[j] >= Valores[i];
+  }
+}
+// </vc-code>

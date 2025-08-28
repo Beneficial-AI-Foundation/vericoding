@@ -1,0 +1,52 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+proof fn lemma_sorted_witness(a: &[i32], k: usize) -> (result: (usize, usize))
+    requires
+        k < a.len() - 1,
+        a[k as int] > a[(k + 1) as int],
+    ensures
+        result.0 < result.1 < a.len(),
+        a[result.0 as int] > a[result.1 as int],
+{
+    (k, (k + 1) as usize)
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn is_sorted(a: &[i32]) -> (sorted: bool)
+    requires
+        a.len() > 0,
+    ensures
+        sorted <==> forall|i: int, j: int| 0 <= i < j < a.len() ==> a[i] <= a[j],
+        !sorted ==> exists|i: int, j: int| 0 <= i < j < a.len() && a[i] > a[j],
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut i = 0;
+    while i < a.len() - 1
+        invariant
+            i <= a.len() - 1,
+            forall|k: int, l: int| 0 <= k < l < i + 1 ==> a[k] <= a[l],
+    {
+        if a[i] > a[i + 1] {
+            proof {
+                let witness = lemma_sorted_witness(a, i);
+            }
+            return false;
+        }
+        i += 1;
+    }
+    true
+}
+// </vc-code>
+
+fn main() {
+}
+
+}

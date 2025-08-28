@@ -1,0 +1,64 @@
+vc-description: |-
+
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus!{
+
+vc-helpers: |-
+  // No updates needed for helpers in this case
+
+vc-spec: |-
+  fn myfun(a: &mut Vec<i32>, sum: &mut Vec<i32>, N: i32) 
+  	// pre-conditions-start
+  	requires 
+  		old(a).len() == N,
+  		old(sum).len() == 1,
+  		N > 0,
+  		N < 1000,
+  	// pre-conditions-end
+  	// post-conditions-start
+  	ensures
+  		sum[0] <= 3 * N,
+  	// post-conditions-end
+
+vc-code: |-
+  {
+      let mut i: i32 = 0;
+      sum.set(0, 0);
+      while i < N
+          invariant
+              0 <= i <= N,
+              sum.len() == 1,
+              sum[0] <= 3 * i,
+          decreases N - i
+      {
+          if i < a.len() as i32 {
+              let current = a[i as usize];
+              let increment = if current > 0 { 1 } else if current < 0 { -1 } else { 0 };
+              let new_sum = sum[0] + increment;
+              proof {
+                  assert(new_sum <= sum[0] + 1);
+                  assert(sum[0] <= 3 * i);
+                  assert(new_sum <= 3 * i + 1);
+                  assert(i < N);
+                  assert(new_sum <= 3 * N);
+              }
+              sum.set(0, new_sum);
+              let new_value = current + 1;
+              proof {
+                  assert(new_value >= current);
+              }
+              a.set(i as usize, new_value);
+          }
+          i = i + 1;
+      }
+  }
+
+vc-postamble: |-
+  
+  }
+  
+  fn main() {}
+

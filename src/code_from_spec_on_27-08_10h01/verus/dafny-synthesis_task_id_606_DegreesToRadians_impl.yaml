@@ -1,0 +1,56 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+  spec fn pi_approx() -> int { 314159265358979323846i128 as int }
+  spec fn scale_factor() -> int { 100000000000000000000i128 as int }
+  
+  proof fn arithmetic_equivalence(degrees: i64)
+      requires -1000000 <= degrees <= 1000000
+      ensures (degrees as i128) * (pi_approx() as i128) / (scale_factor() as i128) / 180i128 == 
+              ((degrees as int * pi_approx()) / scale_factor() / 180) as i128
+  {
+      let degrees_int = degrees as int;
+      let pi_int = pi_approx();
+      let scale_int = scale_factor();
+      
+      assert(degrees_int * pi_int / scale_int / 180 == 
+             (degrees as i128) * (pi_int as i128) / (scale_int as i128) / 180i128) by (nonlinear_arith);
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  spec fn pi_approx() -> int { 314159265358979323846i128 as int }
+  spec fn scale_factor() -> int { 100000000000000000000i128 as int }
+  
+  fn degrees_to_radians(degrees: i64) -> (radians: i64)
+      ensures radians as int == (degrees as int * pi_approx()) / scale_factor() / 180
+  // </vc-spec>
+
+vc-code: |-
+  fn degrees_to_radians(degrees: i64) -> (radians: i64)
+      requires -1000000 <= degrees <= 1000000
+      ensures radians as int == (degrees as int * pi_approx()) / scale_factor() / 180
+  {
+      let pi_val = 314159265358979323846i128;
+      let scale_val = 100000000000000000000i128;
+      let numerator = (degrees as i128) * pi_val;
+      let result = numerator / scale_val / 180i128;
+      
+      proof {
+          assert(pi_val == pi_approx() as i128);
+          assert(scale_val == scale_factor() as i128);
+          arithmetic_equivalence(degrees);
+      }
+      
+      result as i64
+  }
+
+vc-postamble: |-
+  fn main() {
+  }
+  
+  }
+

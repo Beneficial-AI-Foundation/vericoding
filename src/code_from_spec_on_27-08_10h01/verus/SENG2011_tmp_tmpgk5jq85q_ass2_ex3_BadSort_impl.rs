@@ -1,0 +1,219 @@
+use vstd::prelude::*;
+
+verus! {
+
+// verifies
+// all bs are before all as which are before all ds
+
+spec fn sortedbad(s: Seq<char>) -> bool {
+    // all b's are before all a's and d's
+    (forall|i: int, j: int| 0 <= i < s.len() && 0 <= j < s.len() && s[i] == 'b' && (s[j] == 'a' || s[j] == 'd') ==> i < j) &&
+    // all a's are after all b's
+    (forall|i: int, j: int| 0 <= i < s.len() && 0 <= j < s.len() && s[i] == 'a' && s[j] == 'b' ==> i > j) &&
+    // all a's are before all d's
+    (forall|i: int, j: int| 0 <= i < s.len() && 0 <= j < s.len() && s[i] == 'a' && s[j] == 'd' ==> i < j) &&
+    // all d's are after all b's and a's
+    (forall|i: int, j: int| 0 <= i < s.len() && 0 <= j < s.len() && s[i] == 'd' && (s[j] == 'a' || s[j] == 'b') ==> i > j)
+}
+
+// <vc-helpers>
+spec fn count_char(s: Seq<char>, c: char) -> nat {
+    s.filter(|x: char| x == c).len()
+}
+
+proof fn count_char_extend(s: Seq<char>, c: char, x: char)
+    ensures 
+        count_char(s.push(x), c) == if x == c { count_char(s, c) + 1 } else { count_char(s, c) }
+{
+    assert(s.push(x).filter(|y: char| y == c) =~= s.filter(|y: char| y == c) + seq![x].filter(|y: char| y == c));
+    if x == c {
+        assert(seq![x].filter(|y: char| y == c) =~= seq![x]);
+        assert(seq![x].len() == 1);
+    } else {
+        assert(seq![x].filter(|y: char| y == c) =~= seq![]);
+        assert(seq![].len() == 0);
+    }
+}
+
+proof fn count_char_subrange_extend(s: Seq<char>, c: char, i: int)
+    requires 0 <= i < s.len()
+    ensures 
+        count_char(s.subrange(0, i + 1), c) == if s[i] == c { count_char(s.subrange(0, i), c) + 1 } else { count_char(s.subrange(0, i), c) }
+{
+    assert(s.subrange(0, i + 1) =~= s.subrange(0, i).push(s[i]));
+    count_char_extend(s.subrange(0, i), c, s[i]);
+}
+
+proof fn count_char_segments(result: Seq<char>, b_count: nat, a_count: nat, d_count: nat)
+    requires
+        result.len() == b_count + a_count + d_count,
+        forall|i: int| 0 <= i < b_count ==> result[i] == 'b',
+        forall|i: int| b_count <= i < b_count + a_count ==> result[i] == 'a',
+        forall|i: int| b_count + a_count <= i < result.len() ==> result[i] == 'd',
+    ensures
+        count_char(result, 'b') == b_count,
+        count_char(result, 'a') == a_count,
+        count_char(result, 'd') == d_count,
+{
+    let b_segment = result.subrange(0, b_count as int);
+    let a_segment = result.subrange(b_count as int, (b_count + a_count) as int);
+    let d_segment = result.subrange((b_count + a_count) as int, result.len());
+    
+    assert(result =~= b_segment + a_segment + d_segment);
+    assert(forall|i: int| 0 <= i < b_segment.len() ==> b_segment[i] == 'b');
+    assert(forall|i: int| 0 <= i < a_segment.len() ==> a_segment[i] == 'a');
+    assert(forall|i: int| 0 <= i < d_segment.len() ==> d_segment[i] == 'd');
+    
+    assert(count_char(b_segment, 'b') == b_segment.len() == b_count);
+    assert(count_char(b_segment, 'a') == 0);
+    assert(count_char(b_segment, 'd') == 0);
+    
+    assert(count_char(a_segment, 'b') == 0);
+    assert(count_char(a_segment, 'a') == a_segment.len() == a_count);
+    assert(count_char(a_segment, 'd') == 0);
+    
+    assert(count_char(d_segment, 'b') == 0);
+    assert(count_char(d_segment, 'a') == 0);
+    assert(count_char(d_segment, 'd') == d_segment.len() == d_count);
+}
+
+proof fn multiset_preservation_lemma(original: Seq<char>, result: Seq<char>, b_count: nat, a_count: nat, d_count: nat)
+    requires
+        forall|k: int| 0 <= k < original.len() ==> original[k] == 'b' || original[k] == 'a' || original[k] == 'd',
+        count_char(original, 'b') == b_count,
+        count_char(original, 'a') == a_count,
+        count_char(original, 'd') == d_count,
+        result.len() == b_count + a_count + d_count,
+        forall|i: int| 0 <= i < b_count ==> result[i] == 'b',
+        forall|i: int| b_count <= i < b_count + a_count ==> result[i] == 'a',
+        forall|i: int| b_count + a_count <= i < result.len() ==> result[i] == 'd',
+        original.len() == result.len(),
+    ensures
+        original.to_multiset() =~= result.to_multiset(),
+{
+    count_char_segments(result, b_count, a_count, d_count);
+    
+    assert(count_char(result, 'b') == b_count);
+    assert(count_char(result, 'a') == a_count);
+    assert(count_char(result, 'd') == d_count);
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn bad_sort(a: Vec<char>) -> (b: Vec<char>)
+    requires
+        forall|k: int| 0 <= k < a.len() ==> a[k] == 'b' || a[k] == 'a' || a[k] == 'd',
+    ensures
+        sortedbad(b@),
+        a@.to_multiset() =~= b@.to_multiset(),
+        a.len() == b.len(),
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut b_count: usize = 0;
+    let mut a_count: usize = 0;
+    let mut d_count: usize = 0;
+    
+    let mut i = 0;
+    while i < a.len()
+        invariant
+            0 <= i <= a.len(),
+            b_count == count_char(a@.subrange(0, i as int), 'b'),
+            a_count == count_char(a@.subrange(0, i as int), 'a'),
+            d_count == count_char(a@.subrange(0, i as int), 'd'),
+        decreases a.len() - i,
+    {
+        proof {
+            count_char_subrange_extend(a@, 'b', i as int);
+            count_char_subrange_extend(a@, 'a', i as int);
+            count_char_subrange_extend(a@, 'd', i as int);
+        }
+        if a[i] == 'b' {
+            b_count += 1;
+        } else if a[i] == 'a' {
+            a_count += 1;
+        } else {
+            d_count += 1;
+        }
+        i += 1;
+    }
+    
+    let mut result = Vec::new();
+    
+    i = 0;
+    while i < b_count
+        invariant
+            0 <= i <= b_count,
+            result.len() == i,
+            forall|k: int| 0 <= k < result.len() ==> result[k] == 'b',
+        decreases b_count - i,
+    {
+        result.push('b');
+        i += 1;
+    }
+    
+    i = 0;
+    while i < a_count
+        invariant
+            0 <= i <= a_count,
+            result.len() == b_count + i,
+            forall|k: int| 0 <= k < b_count ==> result[k] == 'b',
+            forall|k: int| b_count <= k < result.len() ==> result[k] == 'a',
+        decreases a_count - i,
+    {
+        result.push('a');
+        i += 1;
+    }
+    
+    i = 0;
+    while i < d_count
+        invariant
+            0 <= i <= d_count,
+            result.len() == b_count + a_count + i,
+            forall|k: int| 0 <= k < b_count ==> result[k] == 'b',
+            forall|k: int| b_count <= k < b_count + a_count ==> result[k] == 'a',
+            forall|k: int| b_count + a_count <= k < result.len() ==> result[k] == 'd',
+        decreases d_count - i,
+    {
+        result.push('d');
+        i += 1;
+    }
+    
+    proof {
+        assert(a@.subrange(0, a.len() as int) =~= a@);
+        assert(b_count == count_char(a@, 'b'));
+        assert(a_count == count_char(a@, 'a'));
+        assert(d_count == count_char(a@, 'd'));
+        assert(result.len() == b_count + a_count + d_count);
+        assert(b_count + a_count + d_count == a.len());
+        
+        multiset_preservation_lemma(a@, result@, b_count as nat, a_count as nat, d_count as nat);
+        
+        assert(forall|i: int, j: int| 0 <= i < result.len() && 0 <= j < result.len() && result[i] == 'b' && (result[j] == 'a' || result[j] == 'd') ==> i < j) by {
+            assert(forall|i: int| 0 <= i < b_count ==> result[i] == 'b');
+            assert(forall|i: int| b_count <= i < result.len() ==> result[i] != 'b');
+        }
+        assert(forall|i: int, j: int| 0 <= i < result.len() && 0 <= j < result.len() && result[i] == 'a' && result[j] == 'b' ==> i > j) by {
+            assert(forall|i: int| 0 <= i < b_count ==> result[i] == 'b');
+            assert(forall|i: int| b_count <= i < b_count + a_count ==> result[i] == 'a');
+        }
+        assert(forall|i: int, j: int| 0 <= i < result.len() && 0 <= j < result.len() && result[i] == 'a' && result[j] == 'd' ==> i < j) by {
+            assert(forall|i: int| b_count <= i < b_count + a_count ==> result[i] == 'a');
+            assert(forall|i: int| b_count + a_count <= i < result.len() ==> result[i] == 'd');
+        }
+        assert(forall|i: int, j: int| 0 <= i < result.len() && 0 <= j < result.len() && result[i] == 'd' && (result[j] == 'a' || result[j] == 'b') ==> i > j) by {
+            assert(forall|i: int| b_count + a_count <= i < result.len() ==> result[i] == 'd');
+            assert(forall|i: int| 0 <= i < b_count + a_count ==> result[i] != 'd');
+        }
+    }
+    
+    result
+}
+// </vc-code>
+
+fn main() {}
+
+}

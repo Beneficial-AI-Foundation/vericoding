@@ -1,0 +1,93 @@
+vc-preamble: |-
+
+
+vc-helpers: |-
+  function is_vowel(c: char): bool
+  {
+      c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u'
+  }
+  
+  lemma all_non_vowels_included(text: string, s: string)
+      requires s == concat_non_vowels(text, 0)
+      ensures forall j :: 0 <= j < |text| && !is_vowel(text[j]) ==> text[j] in s
+  {
+      concat_non_vowels_includes_all(text, 0);
+  }
+  
+  function concat_non_vowels(text: string, start: int): string
+      requires 0 <= start <= |text|
+      decreases |text| - start
+  {
+      if start == |text| then ""
+      else if is_vowel(text[start]) then concat_non_vowels(text, start + 1)
+      else [text[start]] + concat_non_vowels(text, start + 1)
+  }
+  
+  lemma concat_non_vowels_no_vowels(text: string, start: int)
+      requires 0 <= start <= |text|
+      ensures forall i :: 0 <= i < |concat_non_vowels(text, start)| ==> !is_vowel(concat_non_vowels(text, start)[i])
+      decreases |text| - start
+  {
+      if start < |text| {
+          if !is_vowel(text[start]) {
+              concat_non_vowels_no_vowels(text, start + 1);
+          } else {
+              concat_non_vowels_no_vowels(text, start + 1);
+          }
+      }
+  }
+  
+  lemma concat_non_vowels_membership(text: string, start: int)
+      requires 0 <= start <= |text|
+      ensures forall i :: 0 <= i < |concat_non_vowels(text, start)| ==> concat_non_vowels(text, start)[i] in text[start..]
+      decreases |text| - start
+  {
+      if start < |text| {
+          if !is_vowel(text[start]) {
+              concat_non_vowels_membership(text, start + 1);
+          } else {
+              concat_non_vowels_membership(text, start + 1);
+          }
+      }
+  }
+  
+  lemma concat_non_vowels_includes_all(text: string, start: int)
+      requires 0 <= start <= |text|
+      ensures forall j :: start <= j < |text| && !is_vowel(text[j]) ==> text[j] in concat_non_vowels(text, start)
+      decreases |text| - start
+  {
+      if start < |text| {
+          if !is_vowel(text[start]) {
+              concat_non_vowels_includes_all(text, start + 1);
+          } else {
+              concat_non_vowels_includes_all(text, start + 1);
+          }
+      }
+  }
+
+vc-description: |-
+  function_signature: def remove_vowels(string: str) -> string
+  remove_vowels is a function that takes string and returns string without vowels.
+
+vc-spec: |-
+  method remove_vowels(text : string) returns (s : string)
+      // post-conditions-start
+      ensures forall i : int :: i >= 0 && i < |s| ==> s[i] != 'a' && s[i] != 'e' && s[i] != 'i' && s[i] != 'o' && s[i] != 'u'
+      ensures forall i : int :: i >= 0 && i < |s| ==> s[i] in text
+      ensures forall j : int :: j >= 0 && j < |text| && text[j] != 'a' && text[j] != 'e' && text[j] != 'i' && text[j] != 'o' && text[j] != 'u' ==> text[j] in s
+      // post-conditions-end
+
+vc-code: |-
+  {
+      s := concat_non_vowels(text, 0);
+      
+      concat_non_vowels_no_vowels(text, 0);
+      concat_non_vowels_membership(text, 0);
+      concat_non_vowels_includes_all(text, 0);
+      
+      assert text[0..] == text;
+  }
+
+vc-postamble: |-
+
+

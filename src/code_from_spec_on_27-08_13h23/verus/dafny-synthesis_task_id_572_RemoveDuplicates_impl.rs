@@ -1,0 +1,78 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+proof fn lemma_contains_implies_exists(a: &[i32], x: i32)
+    requires
+        exists|i: int| 0 <= i < a.len() && a[i] == x,
+    ensures
+        forall|k: int| 0 <= k < a.len() ==> a[k] == x ==> exists|i: int| 0 <= i < a.len() && a[i] == x,
+{
+}
+
+proof fn lemma_no_duplicates(a: Vec<i32>)
+    requires
+        forall|i: int, j: int| 0 <= i < j < a.len() ==> a@[i] != a@[j],
+    ensures
+        forall|i: int, j: int| 0 <= i < j < a.len() ==> a@[i] != a@[j],
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn remove_duplicates(a: &[i32]) -> (result: Vec<i32>)
+    ensures
+        forall|x: i32| result@.contains(x) <==> exists|i: int| 0 <= i < a.len() && a[i] == x,
+        forall|i: int, j: int| 0 <= i < j < result.len() ==> result@[i] != result@[j]
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+fn remove_duplicates(a: &[i32]) -> (result: Vec<i32>)
+    ensures
+        forall|x: i32| result@.contains(x) <==> exists|i: int| 0 <= i < a.len() && a[i] == x,
+        forall|i: int, j: int| 0 <= i < j < result.len() ==> result@[i] != result@[j],
+{
+    let mut result: Vec<i32> = Vec::new();
+    let mut i: usize = 0;
+
+    while i < a.len()
+        invariant
+            0 <= i <= a.len(),
+            forall|x: i32| result@.contains(x) ==> exists|k: int| 0 <= k < i && a[k] == x,
+            forall|k: int| 0 <= k < i ==> result@.contains(a[k]) || exists|m: int| 0 <= m < result.len() && result@[m] == a[k],
+            forall|m: int, n: int| 0 <= m < n < result.len() ==> result@[m] != result@[n],
+        decreases a.len() - i,
+    {
+        let mut found = false;
+        let mut j: usize = 0;
+
+        while j < result.len()
+            invariant
+                0 <= j <= result.len(),
+                found ==> exists|k: int| 0 <= k < j && result@[k] == a[i],
+                !found ==> forall|k: int| 0 <= k < j ==> result@[k] != a[i],
+            decreases result.len() - j,
+        {
+            if result@[j] == a[i] {
+                found = true;
+            }
+            j = j + 1;
+        }
+
+        if !found {
+            result.push(a[i]);
+        }
+        i = i + 1;
+    }
+
+    result
+}
+// </vc-code>
+
+fn main() {
+}
+
+}

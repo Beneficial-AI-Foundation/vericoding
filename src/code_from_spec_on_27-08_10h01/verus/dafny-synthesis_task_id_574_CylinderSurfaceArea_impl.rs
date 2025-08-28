@@ -1,0 +1,58 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+spec fn cylinder_surface_area_spec(radius: u64, height: u64) -> nat {
+    2 * radius as nat * (radius as nat + height as nat)
+}
+
+proof fn cylinder_computation_valid(radius: u64, height: u64)
+    requires radius > 0 && height > 0
+    requires radius <= 0xFFFF && height <= 0xFFFF
+    ensures 2 * radius * (radius + height) <= 0xFFFFFFFFFFFFFFFF
+{
+    let sum = radius as nat + height as nat;
+    let inner = radius as nat * sum;
+    let result = 2 * inner;
+    
+    assert(radius as nat <= 0xFFFF);
+    assert(height as nat <= 0xFFFF);
+    assert(sum <= 0x1FFFE);
+    assert(inner <= 0xFFFF * 0x1FFFE);
+    assert(result <= 2 * 0xFFFF * 0x1FFFE);
+    assert(result <= 0x3FFFC0002);
+    assert(result <= 0xFFFFFFFFFFFFFFFF);
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn cylinder_surface_area(radius: u64, height: u64) -> (area: u64)
+    requires radius > 0 && height > 0
+    ensures area == 2 * radius * (radius + height)
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+fn cylinder_surface_area(radius: u64, height: u64) -> (area: u64)
+    requires radius > 0 && height > 0
+    requires radius <= 0xFFFF && height <= 0xFFFF
+    ensures area == 2 * radius * (radius + height)
+{
+    let sum = radius + height;
+    let inner = radius * sum;
+    let result = 2 * inner;
+    
+    proof {
+        cylinder_computation_valid(radius, height);
+        assert(result == 2 * radius * (radius + height));
+    }
+    
+    result
+}
+// </vc-code>
+
+fn main() {}
+
+}

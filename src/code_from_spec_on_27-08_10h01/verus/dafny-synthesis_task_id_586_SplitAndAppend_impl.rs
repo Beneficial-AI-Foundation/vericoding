@@ -1,0 +1,79 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+spec fn rotate_index(i: int, n: int, len: int) -> int {
+    ((i + n) % len)
+}
+
+proof fn lemma_rotate_index_bounds(i: int, n: int, len: int)
+    requires 
+        0 <= i < len,
+        0 <= n < len,
+        len > 0,
+    ensures 
+        0 <= rotate_index(i, n, len) < len,
+{
+    assert(0 <= (i + n) % len < len) by {
+        assert(i + n >= 0);
+        assert(len > 0);
+    }
+}
+
+proof fn lemma_modulo_calculation(i: usize, n: int, len: usize)
+    requires 
+        0 <= i < len,
+        0 <= n < len as int,
+        len > 0,
+    ensures 
+        0 <= (i as int + n) % (len as int) < len as int,
+        ((i as int + n) % (len as int)) as usize < len,
+{
+    assert(i as int + n >= 0);
+    assert(len as int > 0);
+    assert(0 <= (i as int + n) % (len as int) < len as int);
+    assert(((i as int + n) % (len as int)) as usize < len);
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn split_and_append(l: Seq<int>, n: int) -> (r: Seq<int>)
+    requires 
+        n >= 0 && n < l.len(),
+    ensures 
+        r.len() == l.len(),
+        forall|i: int| 0 <= i < l.len() ==> r[i] == l[((i + n) as nat % l.len()) as int],
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut result: Vec<int> = Vec::new();
+    let mut i: usize = 0;
+    
+    while i < l.len()
+        invariant
+            0 <= i <= l.len(),
+            result.len() == i,
+            forall|j: int| 0 <= j < i ==> result@[j] == l[((j + n) as nat % l.len()) as int],
+    {
+        proof {
+            lemma_modulo_calculation(i, n, l.len());
+        }
+        
+        let rotated_index = ((i as int + n) % (l.len() as int)) as usize;
+        
+        result.push(l@[rotated_index]);
+        i = i + 1;
+    }
+    
+    result@
+}
+// </vc-code>
+
+fn main() {
+}
+
+}

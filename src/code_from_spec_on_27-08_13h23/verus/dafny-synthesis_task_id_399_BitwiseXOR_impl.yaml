@@ -1,0 +1,49 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+  // No updates needed for helpers as the error is in the code section
+
+vc-spec: |-
+  // <vc-spec>
+  fn bitwise_xor(a: Seq<u32>, b: Seq<u32>) -> (result: Seq<u32>)
+      requires
+          a.len() == b.len(),
+      ensures
+          result.len() == a.len(),
+          forall|i: int| 0 <= i < result.len() ==> result[i] == a[i] ^ b[i],
+  // </vc-spec>
+
+vc-code: |-
+  fn bitwise_xor(a: Seq<u32>, b: Seq<u32>) -> (result: Seq<u32>)
+      requires
+          a.len() == b.len(),
+      ensures
+          result.len() == a.len(),
+          forall|i: int| 0 <= i < result.len() ==> result[i] == a[i] ^ b[i],
+  {
+      let mut res: Vec<u32> = Vec::new();
+      let len = a.len();
+      let mut i: usize = 0;
+  
+      while i < len
+          invariant
+              0 <= i <= len,
+              res.len() == i,
+              forall|j: int| 0 <= j < i ==> res@[j] == a[j] ^ b[j],
+      {
+          res.push(a[i as int] ^ b[i as int]);
+          i = i + 1;
+      }
+  
+      res.into_seq()
+  }
+
+vc-postamble: |-
+  
+  fn main() {}
+  
+  }
+

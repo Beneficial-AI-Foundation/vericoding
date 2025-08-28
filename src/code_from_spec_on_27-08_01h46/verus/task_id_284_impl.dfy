@@ -1,0 +1,32 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+fn all_elements_equals(arr: &Vec<i32>, element: i32) -> (result: bool)
+    // post-conditions-start
+    ensures
+        result == (forall|i: int| 0 <= i < arr.len() ==> (arr[i] == element)),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    for i in 0..arr.len()
+        invariant
+            forall|j: int| 0 <= j < i ==> arr[j] == element,
+    {
+        if arr[i] != element {
+            return false;
+        }
+    }
+    true
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

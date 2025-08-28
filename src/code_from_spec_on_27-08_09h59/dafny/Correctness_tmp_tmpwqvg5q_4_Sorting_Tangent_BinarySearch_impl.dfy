@@ -1,0 +1,73 @@
+/**
+  Ather, Mohammad Faiz (s4648481/3)
+  CSSE3100
+  Assignemnt 3
+  The University of Queensland
+ */
+
+// Question 1
+
+// Author: Leino, Title: Program Proofs
+
+// <vc-helpers>
+lemma SortedProperty(a: array<int>, lo: int, hi: int)
+  requires 0 <= lo <= hi <= a.Length
+  requires forall i, j :: 0 <= i < j < a.Length ==> a[i] < a[j]
+  ensures forall i, j :: lo <= i < j < hi ==> a[i] < a[j]
+{
+}
+
+lemma BinarySearchInvariant(a: array<int>, circle: int, lo: int, hi: int)
+  requires 0 <= lo <= hi <= a.Length
+  requires forall i, j :: 0 <= i < j < a.Length ==> a[i] < a[j]
+  requires forall i :: 0 <= i < lo ==> a[i] < circle
+  requires forall i :: hi <= i < a.Length ==> circle <= a[i]
+  ensures forall i :: 0 <= i < lo ==> a[i] < circle
+  ensures forall i :: hi <= i < a.Length ==> circle <= a[i]
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method BinarySearch(a: array<int>, circle: int)
+  returns (n: int)
+  requires forall i ::
+           1 <= i < a.Length
+           ==> a[i-1] < a[i]
+  requires forall i, j ::
+           0 <= i < j < a.Length ==>
+           a[i] < a[j]
+  ensures 0 <= n <= a.Length
+  ensures forall i ::
+          0 <= i < n ==>
+          a[i] < circle
+  ensures forall i ::
+          n <= i < a.Length ==>
+          circle <= a[i]
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+  var lo := 0;
+  var hi := a.Length;
+  
+  while lo < hi
+    invariant 0 <= lo <= hi <= a.Length
+    invariant forall i :: 0 <= i < lo ==> a[i] < circle
+    invariant forall i :: hi <= i < a.Length ==> circle <= a[i]
+    decreases hi - lo
+  {
+    var mid := (lo + hi) / 2;
+    
+    if a[mid] < circle {
+      lo := mid + 1;
+    } else {
+      hi := mid;
+    }
+  }
+  
+  n := lo;
+}
+// </vc-code>

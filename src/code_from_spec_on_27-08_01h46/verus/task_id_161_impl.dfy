@@ -1,0 +1,132 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+fn contains(str: &Vec<i32>, key: i32) -> (result: bool)
+    ensures
+        result <==> (exists|i: int| 0 <= i < str.len() && (str[i] == key)),
+{
+    let mut i = 0;
+    while i < str.len()
+        invariant
+            0 <= i <= str.len(),
+            forall|m: int| 0 <= m < i ==> (str[m] != key),
+        decreases str.len() - i,
+    {
+        if (str[i] == key) {
+            return true;
+        }
+        i += 1;
+    }
+    false
+}
+
+proof fn lemma_vec_push<T>(vec: Seq<T>, i: T, l: usize)
+    requires
+        l == vec.len(),
+    ensures
+        forall|k: int| 0 <= k < vec.len() ==> #[trigger] vec[k] == vec.push(i)[k],
+        vec.push(i).index(l as int) == i,
+{
+}
+
+proof fn lemma_contains_push<T: PartialEq>(s: Seq<T>, x: T, y: T)
+    ensures
+        s.push(x).contains(y) <==> (s.contains(y) || x == y),
+{
+    if s.push(x).contains(y) {
+        if y == x {
+            assert(x == y);
+        } else {
+            assert(s.contains(y));
+        }
+    } else {
+        assert(!s.push(x).contains(y));
+        if s.contains(y) {
+            assert(s.push(x).contains(y));
+            assert(false);
+        }
+        if x == y {
+            assert(s.push(x).contains(y));
+            assert(false);
+        }
+        assert(!s.contains(y) && x != y);
+    }
+}
+
+proof fn lemma_contains_equiv(v: &Vec<i32>, key: i32)
+    ensures
+        v@.contains(key) <==> (exists|i: int| 0 <= i < v.len() && v[i] == key),
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn remove_elements(arr1: &Vec<i32>, arr2: &Vec<i32>) -> (result: Vec<i32>)
+    // post-conditions-start
+    ensures
+        forall|i: int|
+            0 <= i < result.len() ==> (arr1@.contains(#[trigger] result[i]) && !arr2@.contains(
+                #[trigger] result[i],
+            )),
+        forall|i: int|
+            0 <= i < arr1.len() ==> (arr2@.contains(#[trigger] arr1[i]) || result@.contains(
+                #[trigger] arr1[i],
+            )),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut result = Vec::new();
+    let mut i = 0;
+    
+    while i < arr1.len()
+        invariant
+            0 <= i <= arr1.len(),
+            forall|j: int|
+                0 <= j < result.len() ==> (arr1@.contains(#[trigger] result[j]) && !arr2@.contains(
+                    #[trigger] result[j],
+                )),
+            forall|j: int|
+                0 <= j < i ==> (arr2@.contains(#[trigger] arr1[j]) || result@.contains(
+                    #[trigger] arr1[j],
+                )),
+        decreases arr1.len() - i,
+    {
+        let element = arr1[i];
+        
+        proof {
+            lemma_contains_equiv(arr2, element);
+        }
+        
+        if !contains(arr2, element) {
+            proof {
+                lemma_contains_equiv(arr1, element);
+                assert(arr1@.contains(element));
+                assert(!arr2@.contains(element));
+                lemma_contains_push(result@, element, element);
+            }
+            result.push(element);
+            proof {
+                assert(result@.contains(element));
+                assert(forall|j: int| 0 <= j < result.len() - 1 ==> result@[j] == result@.subrange(0, result.len() as int - 1)[j]);
+            }
+        } else {
+            proof {
+                assert(arr2@.contains(element));
+                assert(arr2@.contains(arr1[i as int]));
+            }
+        }
+        
+        i += 1;
+    }
+    
+    result
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

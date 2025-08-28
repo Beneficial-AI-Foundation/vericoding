@@ -1,0 +1,161 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  fn isPrefix(pre: Seq<char>, str: Seq<char>) -> (res: bool)
+      ensures
+          !res <==> isNotPrefixPred(pre, str),
+          res <==> isPrefixPred(pre, str),
+  {
+      assume(false);
+      true
+  }
+  
+  
+  
+  spec fn isPrefixPred(pre: Seq<char>, str: Seq<char>) -> bool {
+      (pre.len() <= str.len()) && 
+      pre == str.subrange(0, pre.len() as int)
+  }
+  
+  spec fn isNotPrefixPred(pre: Seq<char>, str: Seq<char>) -> bool {
+      (pre.len() > str.len()) || 
+      pre != str.subrange(0, pre.len() as int)
+  }
+  
+  spec fn isSubstringPred(sub: Seq<char>, str: Seq<char>) -> bool {
+      exists|i: int| 0 <= i <= str.len() && isPrefixPred(sub, str.subrange(i, str.len() as int))
+  }
+  
+  spec fn isNotSubstringPred(sub: Seq<char>, str: Seq<char>) -> bool {
+      forall|i: int| 0 <= i <= str.len() ==> isNotPrefixPred(sub, str.subrange(i, str.len() as int))
+  }
+  
+  fn isSubstring(sub: Seq<char>, str: Seq<char>) -> (res: bool)
+      ensures
+          res <==> isSubstringPred(sub, str),
+          res ==> isSubstringPred(sub, str),
+          // ensures  !res ==> !isSubstringPred(sub, str)
+          isSubstringPred(sub, str) ==> res,
+          isSubstringPred(sub, str) ==> res,
+          !res <==> isNotSubstringPred(sub, str), // This postcondition follows from the above lemma.
+  {
+      assume(false);
+      true
+  }
+  
+  
+  
+  spec fn haveCommonKSubstringPred(k: nat, str1: Seq<char>, str2: Seq<char>) -> bool {
+      exists|i1: int, j1: int| 0 <= i1 <= str1.len() - k && j1 == i1 + k && isSubstringPred(str1.subrange(i1, j1), str2)
+  }
+  
+  spec fn haveNotCommonKSubstringPred(k: nat, str1: Seq<char>, str2: Seq<char>) -> bool {
+      forall|i1: int, j1: int| 0 <= i1 <= str1.len() - k && j1 == i1 + k ==> isNotSubstringPred(str1.subrange(i1, j1), str2)
+  }
+
+vc-helpers: |-
+  proof fn lemma_prefix_not_equal_implies_not_substring(sub: Seq<char>, str: Seq<char>)
+      requires
+          isNotPrefixPred(sub, str),
+      ensures
+          isNotSubstringPred(sub, str),
+  {
+      assert(forall|i: int| 0 <= i <= str.len() ==> isNotPrefixPred(sub, str.subrange(i, str.len() as int))) by {
+          if sub.len() > str.len() {
+              assert(forall|i: int| 0 <= i <= str.len() ==> sub.len() > str.subrange(i, str.len() as int).len());
+          } else {
+              assert(sub != str.subrange(0, sub.len() as int));
+              assert(forall|i: int| 0 <= i <= str.len() ==> sub != str.subrange(i, str.len() as int).subrange(0, sub.len() as int));
+          }
+      }
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn haveCommonKSubstring(k: nat, str1: Seq<char>, str2: Seq<char>) -> (found: bool)
+      ensures
+          found <==> haveCommonKSubstringPred(k, str1, str2),
+          !found <==> haveNotCommonKSubstringPred(k, str1, str2), // This postcondition follows from the above lemma.
+  // </vc-spec>
+
+vc-code: |-
+  fn isPrefix(pre: Seq<char>, str: Seq<char>) -> (res: bool)
+      ensures
+          !res <==> isNotPrefixPred(pre, str),
+          res <==> isPrefixPred(pre, str),
+  {
+      if pre.len() > str.len() {
+          return false;
+      }
+      let mut i: usize = 0;
+      while i < pre.len()
+          invariant
+              i <= pre.len(),
+              pre.len() <= str.len(),
+              forall|j: int| 0 <= j < i ==> pre@[j] == str@[j],
+      {
+          if pre@[i] != str@[i] {
+              return false;
+          }
+          i = i + 1;
+      }
+      true
+  }
+  
+  fn isSubstring(sub: Seq<char>, str: Seq<char>) -> (res: bool)
+      ensures
+          res <==> isSubstringPred(sub, str),
+          !res <==> isNotSubstringPred(sub, str),
+  {
+      if sub.len() > str.len() {
+          lemma_prefix_not_equal_implies_not_substring(sub, str);
+          return false;
+      }
+      let mut i: usize = 0;
+      while i <= str.len() - sub.len()
+          invariant
+              i <= str.len() - sub.len() + 1,
+              forall|j: int| 0 <= j < i ==> !isPrefixPred(sub, str.subrange(j, str.len() as int)),
+      {
+          let prefix_result = isPrefix(sub, str.subrange(i as int, str.len() as int));
+          if prefix_result {
+              return true;
+          }
+          i = i + 1;
+      }
+      lemma_prefix_not_equal_implies_not_substring(sub, str.subrange((str.len() - sub.len()) as int, str.len() as int));
+      false
+  }
+  
+  fn haveCommonKSubstring(k: nat, str1: Seq<char>, str2: Seq<char>) -> (found: bool)
+      ensures
+          found <==> haveCommonKSubstringPred(k, str1, str2),
+          !found <==> haveNotCommonKSubstringPred(k, str1, str2),
+  {
+      if k > str1.len() {
+          return false;
+      }
+      let mut i: usize = 0;
+      while i <= str1.len() - k
+          invariant
+              i <= str1.len() - k + 1,
+              forall|j: int| 0 <= j < i ==> !isSubstringPred(str1.subrange(j, j + k as int), str2),
+      {
+          let sub = str1.subrange(i as int, (i + k) as int);
+          let result = isSubstring(sub, str2);
+          if result {
+              return true;
+          }
+          i = i + 1;
+      }
+      false
+  }
+
+vc-postamble: |-
+  
+  fn main() {}
+  
+  }
+

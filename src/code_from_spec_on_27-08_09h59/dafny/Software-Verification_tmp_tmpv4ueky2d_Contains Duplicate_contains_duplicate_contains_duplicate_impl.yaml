@@ -1,0 +1,82 @@
+vc-preamble: |-
+  predicate distinct(nums: seq<int>) {
+      forall i, j :: 0 <= i < j < |nums| ==> nums[i] != nums[j]
+  }
+
+vc-helpers: |-
+  lemma distinct_prefix_lemma(nums: seq<int>, k: int)
+      requires 0 <= k < |nums|
+      requires distinct(nums[..k])
+      requires forall j :: 0 <= j < k ==> nums[j] != nums[k]
+      ensures distinct(nums[..k+1])
+  {
+      forall i, j | 0 <= i < j < k+1
+          ensures nums[..k+1][i] != nums[..k+1][j]
+      {
+          if j < k {
+              assert nums[..k+1][i] == nums[i] && nums[..k+1][j] == nums[j];
+              assert nums[i] != nums[j];
+          } else {
+              assert j == k;
+              assert nums[..k+1][i] == nums[i] && nums[..k+1][j] == nums[k];
+              assert nums[i] != nums[k];
+          }
+      }
+  }
+  
+  lemma not_distinct_propagation(nums: seq<int>, k: int)
+      requires 0 <= k < |nums|
+      requires exists j :: 0 <= j < k && nums[j] == nums[k]
+      ensures !distinct(nums)
+  {
+      var j :| 0 <= j < k && nums[j] == nums[k];
+      assert 0 <= j < k < |nums| && nums[j] == nums[k];
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  method contains_duplicate(nums: seq<int>) returns (result: bool)
+      requires 1 <= |nums| <= 100000
+      requires forall i :: 0 <= i < |nums| ==> -1000000000 <= nums[i] <= 1000000000
+      ensures result <==> distinct(nums)
+  // </vc-spec>
+
+vc-code: |-
+  {
+      var i := 0;
+      
+      while i < |nums|
+          invariant 0 <= i <= |nums|
+          invariant distinct(nums[..i])
+      {
+          var j := 0;
+          var found := false;
+          
+          while j < i && !found
+              invariant 0 <= j <= i
+              invariant !found ==> forall k :: 0 <= k < j ==> nums[k] != nums[i]
+              invariant found ==> exists k :: 0 <= k < j && nums[k] == nums[i]
+          {
+              if nums[j] == nums[i] {
+                  found := true;
+                  not_distinct_propagation(nums, i);
+                  return false;
+              }
+              j := j + 1;
+          }
+          
+          if !found {
+              assert forall k :: 0 <= k < i ==> nums[k] != nums[i];
+              distinct_prefix_lemma(nums, i);
+          }
+          
+          i := i + 1;
+      }
+      
+      assert nums[..|nums|] == nums;
+      return true;
+  }
+
+vc-postamble: |-
+
+

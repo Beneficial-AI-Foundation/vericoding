@@ -1,0 +1,86 @@
+vc-preamble: |-
+  method random(a: int, b: int) returns (r: int)
+  //  requires a <= b
+    ensures a <= b ==> a <= r <= b
+  
+  function set_of_seq<T>(s: seq<T>): set<T>
+  {
+    set x: T | x in s :: x
+  }
+
+vc-helpers: |-
+  lemma set_of_seq_membership<T>(s: seq<T>, x: T)
+    ensures x in set_of_seq(s) <==> x in s
+  {
+  }
+  
+  lemma array_slice_membership<T>(arr: array<T>, x: T)
+    ensures x in set_of_seq(arr[..]) <==> x in arr[..]
+  {
+  }
+  
+  lemma subset_implies_exists_element<T>(smaller: set<T>, larger: set<T>)
+    requires smaller < larger
+    ensures exists x :: x in larger && x !in smaller
+  {
+  }
+  
+  lemma subset_implies_element_not_in_avoid<T>(avoidSet: seq<T>, workList: seq<T>, x: T)
+    requires set_of_seq(avoidSet) < set_of_seq(workList)
+    requires x in workList
+    requires x !in avoidSet
+    ensures x !in avoidSet
+  {
+  }
+  
+  lemma element_in_array_slice<T>(arr: array<T>, i: int)
+    requires 0 <= i < arr.Length
+    ensures arr[i] in arr[..]
+  {
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  method getRandomDataEntry<T(==)>(m_workList: array<T>, avoidSet: seq<T>) returns (e: T)
+    requires m_workList.Length > 0
+    ensures set_of_seq(avoidSet) < set_of_seq(m_workList[..]) ==> e !in avoidSet
+    ensures avoidSet < m_workList[..] ==> e in m_workList[..]
+  // </vc-spec>
+
+vc-code: |-
+  {
+    var found := false;
+    var index := 0;
+    var result: T;
+    var foundIndex := 0;
+    
+    while index < m_workList.Length && !found
+      invariant 0 <= index <= m_workList.Length
+      invariant !found ==> forall i :: 0 <= i < index ==> m_workList[i] in avoidSet
+      invariant found ==> 0 <= foundIndex < index && foundIndex < m_workList.Length && m_workList[foundIndex] !in avoidSet
+    {
+      if m_workList[index] !in avoidSet {
+        foundIndex := index;
+        found := true;
+      }
+      index := index + 1;
+    }
+    
+    if found {
+      result := m_workList[foundIndex];
+      if set_of_seq(avoidSet) < set_of_seq(m_workList[..]) {
+        subset_implies_element_not_in_avoid(avoidSet, m_workList[..], result);
+      }
+      element_in_array_slice(m_workList, foundIndex);
+      return result;
+    } else {
+      var randomIndex := random(0, m_workList.Length - 1);
+      element_in_array_slice(m_workList, randomIndex);
+      result := m_workList[randomIndex];
+      return result;
+    }
+  }
+
+vc-postamble: |-
+
+

@@ -1,0 +1,114 @@
+vc-preamble: |-
+  function is_sorted(a: seq<int>) : bool {
+    forall i, j :: 0 <= i < j < |a| ==> a[i] <= a[j]
+  }
+
+vc-helpers: |-
+  lemma rotation_preserves_elements(a: seq<int>, i: int)
+    requires 0 <= i < |a|
+    ensures multiset(a[i..] + a[..i]) == multiset(a)
+  {
+    assert a[i..] + a[..i] == a[i..] + a[0..i];
+    assert a == a[0..i] + a[i..];
+    assert multiset(a[0..i] + a[i..]) == multiset(a[i..] + a[0..i]);
+  }
+  
+  lemma is_sorted_transitive(a: seq<int>)
+    requires is_sorted(a)
+    ensures forall i, j, k {:trigger a[i], a[j], a[k]} :: 0 <= i <= j <= k < |a| ==> a[i] <= a[k]
+  {
+    forall i, j, k | 0 <= i <= j <= k < |a|
+      ensures a[i] <= a[k]
+    {
+      if i == k {
+        assert a[i] <= a[k];
+      } else if i < j && j < k {
+        assert a[i] <= a[j] <= a[k];
+      } else if i == j {
+        assert a[i] <= a[k];
+      } else if j == k {
+        assert a[i] <= a[k];
+      }
+    }
+  }
+  
+  lemma is_sorted_equiv(a: seq<int>)
+    ensures is_sorted(a) <==> (forall i :: 0 <= i < |a| - 1 ==> a[i] <= a[i + 1])
+  {
+    if is_sorted(a) {
+      forall i | 0 <= i < |a| - 1
+        ensures a[i] <= a[i + 1]
+      {
+        assert 0 <= i < i + 1 < |a|;
+        assert a[i] <= a[i + 1];
+      }
+    }
+    
+    if forall i :: 0 <= i < |a| - 1 ==> a[i] <= a[i + 1] {
+      forall i, j | 0 <= i < j < |a|
+        ensures a[i] <= a[j]
+      {
+        var k := i;
+        while k < j
+          invariant i <= k <= j
+          invariant a[i] <= a[k]
+        {
+          k := k + 1;
+        }
+      }
+    }
+  }
+
+vc-description: |-
+  function_signature: def move_one_ball(arr: List[int]) -> bool
+  We have an array 'arr' of N integers arr[1], arr[2], ..., arr[N].The numbers in the array will be randomly ordered. Your task is to determine if it is possible to get an array sorted in non-decreasing order by performing the following operation on the given array: You are allowed to perform right shift operation any number of times.
+
+vc-spec: |-
+  method move_one_ball(a: seq<int>) returns (can: bool)
+    // pre-conditions-start
+    requires |a| > 0
+    requires forall i, j :: 0 <= i < |a| && 0 <= j < |a| && i != j ==> a[i] != a[j]
+    // pre-conditions-end
+    // post-conditions-start
+    ensures can <==> exists i :: 0 <= i < |a| && is_sorted(a[i..] + a[..i])
+    // post-conditions-end
+
+vc-code: |-
+  {
+    can := false;
+    
+    var i := 0;
+    while i < |a|
+      invariant 0 <= i <= |a|
+      invariant can <==> exists j :: 0 <= j < i && is_sorted(a[j..] + a[..j])
+    {
+      rotation_preserves_elements(a, i);
+      var rotated := a[i..] + a[..i];
+      var is_rot_sorted := true;
+      
+      var k := 0;
+      while k < |rotated| - 1 && is_rot_sorted
+        invariant 0 <= k <= |rotated| - 1
+        invariant is_rot_sorted <==> (forall p :: 0 <= p < k ==> rotated[p] <= rotated[p + 1])
+        invariant is_rot_sorted ==> (forall p, q :: 0 <= p < q < k + 1 ==> rotated[p] <= rotated[q])
+      {
+        if rotated[k] > rotated[k + 1] {
+          is_rot_sorted := false;
+        }
+        k := k + 1;
+      }
+      
+      if is_rot_sorted {
+        is_sorted_equiv(rotated);
+        assert is_sorted(rotated);
+        can := true;
+        return;
+      }
+      
+      i := i + 1;
+    }
+  }
+
+vc-postamble: |-
+
+

@@ -1,0 +1,70 @@
+use vstd::prelude::*;
+
+
+verus! {
+
+// <vc-helpers>
+spec fn has_min_second_value(arr: &Vec<Vec<i32>>, i: int) -> bool {
+    0 <= i < arr.len() && forall|j: int| 0 <= j < arr.len() ==> arr[i][1] <= arr[j][1]
+}
+
+proof fn min_exists(arr: &Vec<Vec<i32>>)
+    requires
+        arr.len() > 0,
+        forall|i: int| 0 <= i < arr.len() ==> arr[i].len() >= 2,
+    ensures
+        exists|i: int| has_min_second_value(arr, i)
+{
+    assert(has_min_second_value(arr, 0));
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn min_second_value_first(arr: &Vec<Vec<i32>>) -> (first_of_min_second: i32)
+    // pre-conditions-start
+    requires
+        arr.len() > 0,
+        forall|i: int| 0 <= i < arr.len() ==> #[trigger] arr[i].len() >= 2,
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        exists|i: int|
+            0 <= i < arr.len() && first_of_min_second == #[trigger] arr[i][0] && (forall|j: int|
+                0 <= j < arr.len() ==> (arr[i][1] <= #[trigger] arr[j][1])),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    proof {
+        min_exists(arr);
+    }
+    
+    let mut min_idx: usize = 0;
+    let mut i: usize = 0;
+    
+    while i < arr.len()
+        invariant
+            0 <= min_idx < arr.len(),
+            i <= arr.len(),
+            forall|k: int| 0 <= k < i ==> arr[min_idx as int][1] <= arr[k][1],
+            arr.len() > 0,
+            forall|j: int| 0 <= j < arr.len() ==> arr[j].len() >= 2,
+    {
+        if arr[i][1] < arr[min_idx][1] {
+            min_idx = i;
+        }
+        i += 1usize;
+    }
+    
+    proof {
+        assert(forall|j: int| 0 <= j < arr.len() ==> arr[min_idx as int][1] <= arr[j][1]);
+    }
+    
+    arr[min_idx][0]
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

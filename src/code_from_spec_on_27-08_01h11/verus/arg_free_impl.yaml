@@ -1,0 +1,28 @@
+vc-description: |-
+
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus!{
+
+vc-helpers: |-
+  spec fn is_odd(n: int) -> bool {
+      n % 2 == 1
+  }
+
+vc-spec: |-
+  fn choose_odd()
+
+vc-code: |-
+  {
+      // impl-start
+      ()
+      // impl-end
+  }
+
+vc-postamble: |-
+  
+  }
+  fn main() {}
+

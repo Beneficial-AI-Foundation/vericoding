@@ -1,0 +1,65 @@
+vc-preamble: |-
+  predicate InsertionSorted(Array: array<int>, left: int, right: int)  
+    requires 0 <= left <= right <= Array.Length       
+    reads Array       
+  {           
+    forall i,j :: left <= i < j < right ==> Array[i] <= Array[j]
+  }
+
+vc-helpers: |-
+  method swap(Array: array<int>, i: int, j: int)
+    requires 0 <= i < Array.Length && 0 <= j < Array.Length
+    modifies Array
+    ensures Array[i] == old(Array[j]) && Array[j] == old(Array[i])
+    ensures forall k :: 0 <= k < Array.Length && k != i && k != j ==> Array[k] == old(Array[k])
+  {
+    var temp := Array[i];
+    Array[i] := Array[j];
+    Array[j] := temp;
+  }
+  
+  lemma InsertionSortedPreserved(Array: array<int>, left: int, right: int, i: int, j: int)
+    requires 0 <= left <= right <= Array.Length
+    requires 0 <= i < Array.Length && 0 <= j < Array.Length
+    requires InsertionSorted(Array, left, right)
+    requires (left <= i < right && left <= j < right) || (i < left || i >= right) || (j < left || j >= right)
+    ensures InsertionSorted(Array, left, right)
+  {
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  method sorting(Array: array<int>)
+    requires Array.Length > 1 
+    ensures InsertionSorted(Array, 0, Array.Length) 
+    modifies Array
+  // </vc-spec>
+
+vc-code: |-
+  method Sort(Array: array<int>)
+    requires Array.Length > 1 
+    ensures InsertionSorted(Array, 0, Array.Length) 
+    modifies Array
+  {
+    var i := 1;
+    while i < Array.Length
+      invariant 0 <= i <= Array.Length
+      invariant InsertionSorted(Array, 0, i)
+    {
+      var j := i;
+      while j > 0 && Array[j - 1] > Array[j]
+        invariant 0 <= j <= i
+        invariant InsertionSorted(Array, 0, j)
+        invariant InsertionSorted(Array, j, i + 1)
+        invariant forall k, l :: 0 <= k < j && j < l <= i ==> Array[k] <= Array[l]
+      {
+        swap(Array, j - 1, j);
+        j := j - 1;
+      }
+      i := i + 1;
+    }
+  }
+
+vc-postamble: |-
+
+

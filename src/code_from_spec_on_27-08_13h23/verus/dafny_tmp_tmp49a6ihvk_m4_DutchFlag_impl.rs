@@ -1,0 +1,91 @@
+use vstd::prelude::*;
+
+verus! {
+
+#[derive(PartialEq, Eq, Clone, Copy)]
+enum Color {
+    Red,
+    White,
+    Blue,
+}
+
+spec fn below(c: Color, d: Color) -> bool {
+    c == Color::Red || c == d || d == Color::Blue
+}
+
+// <vc-helpers>
+spec fn is_sorted_below(a: &Vec<Color>, start: int, end: int) -> bool {
+    forall|i: int, j: int| start <= i < j < end ==> below(a@[i], a@[j])
+}
+
+proof fn lemma_swap_preserves_multiset<T>(v: &Vec<T>, i: int, j: int, old_v: Seq<T>)
+    requires
+        0 <= i < v.len(),
+        0 <= j < v.len(),
+        old_v == v@.update(i, v@[j]).update(j, v@[i]),
+    ensures
+        v@.to_multiset() == old_v.to_multiset(),
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn dutch_flag(a: &mut Vec<Color>)
+    ensures 
+        forall|i: int, j: int| 0 <= i < j < a.len() ==> below(a[i], a[j]),
+        a@.to_multiset() == old(a)@.to_multiset(),
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+fn dutch_flag(a: &mut Vec<Color>)
+    ensures
+        forall|i: int, j: int| 0 <= i < j < a.len() ==> below(a@[i], a@[j]),
+        a@.to_multiset() == old(a)@.to_multiset(),
+{
+    let mut i: usize = 0;
+    let mut j: usize = 0;
+    let mut k: usize = a.len();
+    let ghost old_a = a@;
+
+    while j < k
+        invariant
+            0 <= i <= j <= k <= a.len(),
+            forall|m: int, n: int| 0 <= m < i && i <= n < a.len() ==> below(a@[m], a@[n]),
+            forall|m: int| 0 <= m < i ==> a@[m] == Color::Red,
+            forall|m: int| i <= m < j ==> a@[m] == Color::White,
+            forall|m: int| k <= m < a.len() ==> a@[m] == Color::Blue,
+            a@.to_multiset() == old_a.to_multiset(),
+    {
+        match a[j] {
+            Color::Red => {
+                if i != j {
+                    a.swap(i, j);
+                    proof {
+                        lemma_swap_preserves_multiset(a, i as int, j as int, old_a);
+                    }
+                }
+                i = i + 1;
+                j = j + 1;
+            },
+            Color::White => {
+                j = j + 1;
+            },
+            Color::Blue => {
+                k = k - 1;
+                if j != k {
+                    a.swap(j, k);
+                    proof {
+                        lemma_swap_preserves_multiset(a, j as int, k as int, old_a);
+                    }
+                }
+            },
+        }
+    }
+}
+// </vc-code>
+
+fn main() {}
+
+}

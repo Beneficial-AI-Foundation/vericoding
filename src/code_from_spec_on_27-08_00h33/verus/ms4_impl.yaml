@@ -1,0 +1,177 @@
+vc-description: |-
+
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus!{
+
+vc-helpers: |-
+  spec fn sum_bounded_by_3(a: Seq<i32>, start: int, end: int) -> int
+      decreases end - start
+  {
+      if start >= end {
+          0
+      } else {
+          let val = if a[start] > 3 { 3 } else { a[start] };
+          val + sum_bounded_by_3(a, start + 1, end)
+      }
+  }
+  
+  proof fn sum_bounded_by_3_bound(a: Seq<i32>, start: int, end: int)
+      requires 
+          start <= end,
+          0 <= start <= a.len(),
+          0 <= end <= a.len()
+      ensures sum_bounded_by_3(a, start, end) <= 3 * (end - start)
+      decreases end - start
+  {
+      if start >= end {
+          assert(sum_bounded_by_3(a, start, end) == 0);
+          assert(3 * (end - start) >= 0);
+      } else {
+          sum_bounded_by_3_bound(a, start + 1, end);
+          let val = if a[start] > 3 { 3 } else { a[start] };
+          assert(val <= 3);
+          assert(sum_bounded_by_3(a, start, end) == val + sum_bounded_by_3(a, start + 1, end));
+          assert(sum_bounded_by_3(a, start + 1, end) <= 3 * (end - start - 1));
+          assert(sum_bounded_by_3(a, start, end) <= 3 + 3 * (end - start - 1));
+          assert(sum_bounded_by_3(a, start, end) <= 3 * (end - start));
+      }
+  }
+  
+  proof fn sum_bounded_by_3_step(a: Seq<i32>, start: int, end: int, val: i32)
+      requires 
+          start < end,
+          0 <= start < a.len(),
+          0 <= end <= a.len(),
+          val == if a[start] > 3 { 3 } else { a[start] }
+      ensures 
+          sum_bounded_by_3(a, start, end) == val + sum_bounded_by_3(a, start + 1, end)
+  {
+  }
+  
+  proof fn sum_bounded_by_3_extend(a: Seq<i32>, start: int, mid: int, val: i32)
+      requires 
+          start <= mid,
+          0 <= start <= a.len(),
+          0 <= mid < a.len(),
+          val == if a[mid] > 3 { 3 } else { a[mid] }
+      ensures 
+          sum_bounded_by_3(a, start, mid + 1) == sum_bounded_by_3(a, start, mid) + val
+      decreases mid - start
+  {
+      if start >= mid {
+          assert(sum_bounded_by_3(a, start, mid) == 0);
+          assert(sum_bounded_by_3(a, start, mid + 1) == val);
+      } else {
+          let first_val = if a[start] > 3 { 3 } else { a[start] };
+          sum_bounded_by_3_extend(a, start + 1, mid, val);
+          assert(sum_bounded_by_3(a, start + 1, mid + 1) == sum_bounded_by_3(a, start + 1, mid) + val);
+          assert(sum_bounded_by_3(a, start, mid) == first_val + sum_bounded_by_3(a, start + 1, mid));
+          assert(sum_bounded_by_3(a, start, mid + 1) == first_val + sum_bounded_by_3(a, start + 1, mid + 1));
+          assert(sum_bounded_by_3(a, start, mid + 1) == first_val + sum_bounded_by_3(a, start + 1, mid) + val);
+          assert(sum_bounded_by_3(a, start, mid + 1) == sum_bounded_by_3(a, start, mid) + val);
+      }
+  }
+  
+  proof fn sum_bounded_by_3_non_negative(a: Seq<i32>, start: int, end: int)
+      requires 
+          start <= end,
+          0 <= start <= a.len(),
+          0 <= end <= a.len(),
+          forall|k: int| start <= k < end ==> a[k] >= 0
+      ensures sum_bounded_by_3(a, start, end) >= 0
+      decreases end - start
+  {
+      if start >= end {
+          assert(sum_bounded_by_3(a, start, end) == 0);
+      } else {
+          let val = if a[start] > 3 { 3 } else { a[start] };
+          assert(a[start] >= 0);
+          assert(val >= 0);
+          sum_bounded_by_3_non_negative(a, start + 1, end);
+          assert(sum_bounded_by_3(a, start + 1, end) >= 0);
+          assert(sum_bounded_by_3(a, start, end) == val + sum_bounded_by_3(a, start + 1, end));
+          assert(sum_bounded_by_3(a, start, end) >= 0);
+      }
+  }
+
+vc-spec: |-
+  fn myfun(a: &mut Vec<i32>, sum: &mut Vec<i32>, N: i32) 
+  	// pre-conditions-start
+  	requires 
+  		old(a).len() == N,
+  		old(sum).len() == 1,
+  		N > 0,
+  		N < 1000,
+  	// pre-conditions-end
+  	// post-conditions-start
+  	ensures
+  		sum[0] <= 3 * N,
+  	// post-conditions-end
+
+vc-code: |-
+  {
+      let mut total: i32 = 0;
+      let mut i: usize = 0;
+      let ghost old_a = a@;
+      
+      while i < a.len()
+          invariant
+              i <= a.len(),
+              a.len() == N,
+              sum.len() == 1,
+              N > 0,
+              N < 1000,
+              a@ == old_a,
+              total == sum_bounded_by_3(old_a, 0, i as int),
+              total <= 3 * (i as i32),
+              total >= 0,
+          decreases a.len() - i
+      {
+          proof {
+              sum_bounded_by_3_bound(old_a, 0, i as int);
+          }
+          
+          let val = if a[i] > 3 {
+              3
+          } else {
+              a[i]
+          };
+          
+          proof {
+              assert(0 <= i < old_a.len());
+              sum_bounded_by_3_extend(old_a, 0, i as int, val);
+              assert(val <= 3);
+              if a[i] >= 0 {
+                  assert(val >= 0);
+                  assert(total + val >= 0);
+              } else {
+                  assert(val == a[i]);
+                  assert(total + val >= total + a[i]);
+              }
+              assert(total + val <= 3 * (i as i32) + 3);
+              assert(total + val <= 3 * ((i + 1) as i32));
+              assert(total + val <= 3000);
+          }
+          
+          total = total + val;
+          i += 1;
+      }
+      
+      proof {
+          assert(i == a.len());
+          assert(total == sum_bounded_by_3(old_a, 0, N as int));
+          sum_bounded_by_3_bound(old_a, 0, N as int);
+          assert(total <= 3 * N);
+      }
+      
+      sum.set(0, total);
+  }
+
+vc-postamble: |-
+  
+  }
+  fn main() {}
+

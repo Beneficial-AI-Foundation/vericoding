@@ -1,0 +1,27 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+  // No additional helpers needed for this simple specification
+
+vc-spec: |-
+  // <vc-spec>
+  fn count_arrays(arrays: &Vec<Vec<i32>>) -> (count: usize)
+      ensures 
+          count >= 0,
+          count == arrays.len(),
+  // </vc-spec>
+
+vc-code: |-
+  {
+      arrays.len()
+  }
+
+vc-postamble: |-
+  fn main() {
+  }
+  
+  }
+

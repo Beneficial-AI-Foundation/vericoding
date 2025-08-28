@@ -1,0 +1,113 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  // Predicate to check if an element exists in an array
+  spec fn in_array(a: &[i32], x: i32) -> bool {
+      exists|i: int| 0 <= i < a.len() && a[i as int] == x
+  }
+
+vc-helpers: |-
+  // Helper lemma to prove that contains implies in_array
+  proof fn lemma_contains_implies_in_array(v: &Vec<i32>, arr: &[i32], x: i32)
+      requires
+          forall|y: i32| v@.contains(y) ==> in_array(arr, y),
+          v@.contains(x)
+      ensures
+          in_array(arr, x)
+  {
+  }
+  
+  // Helper lemma for distinctness preservation
+  proof fn lemma_distinctness_preserved(v: &Vec<i32>, x: i32)
+      requires
+          forall|i: int, j: int| 0 <= i < j < v.len() ==> v[i] != v[j],
+          !v@.contains(x)
+      ensures
+          forall|i: int, j: int| 0 <= i < j < v@.push(x).len() ==> v@.push(x)[i] != v@.push(x)[j]
+  {
+      let new_seq = v@.push(x);
+      assert forall|i: int, j: int| 0 <= i < j < new_seq.len() implies new_seq[i] != new_seq[j] by {
+          if j == new_seq.len() - 1 {
+              assert(new_seq[j] == x);
+              assert(i < v.len());
+              assert(new_seq[i] == v[i]);
+              assert(!v@.contains(x));
+          } else {
+              assert(i < v.len() && j < v.len());
+              assert(new_seq[i] == v[i] && new_seq[j] == v[j]);
+          }
+      }
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn intersection(a: &[i32], b: &[i32]) -> (result: Vec<i32>)
+      ensures
+          // All elements in the output are in both a and b
+          forall|x: i32| result@.contains(x) ==> (in_array(a, x) && in_array(b, x)),
+          // The elements in the output are all different
+          forall|i: int, j: int| 0 <= i < j < result.len() ==> result[i] != result[j]
+  // </vc-spec>
+
+vc-code: |-
+  {
+      let mut result = Vec::new();
+      
+      let mut i = 0;
+      while i < a.len()
+          invariant
+              0 <= i <= a.len(),
+              forall|x: i32| result@.contains(x) ==> (in_array(a, x) && in_array(b, x)),
+              forall|k: int, l: int| 0 <= k < l < result.len() ==> result[k] != result[l]
+      {
+          let current = a[i];
+          
+          // Check if current is in b and not already in result
+          let mut found_in_b = false;
+          let mut j = 0;
+          while j < b.len()
+              invariant
+                  0 <= j <= b.len(),
+                  found_in_b == exists|k: int| 0 <= k < j && b[k] == current
+          {
+              if b[j] == current {
+                  found_in_b = true;
+              }
+              j += 1;
+          }
+          
+          if found_in_b {
+              let mut current_already_in_result = false;
+              let mut k = 0;
+              while k < result.len()
+                  invariant
+                      0 <= k <= result.len(),
+                      current_already_in_result == exists|idx: int| 0 <= idx < k && result[idx] == current
+              {
+                  if result[k] == current {
+                      current_already_in_result = true;
+                  }
+                  k += 1;
+              }
+              
+              if !current_already_in_result {
+                  proof {
+                      lemma_distinctness_preserved(&result, current);
+                  }
+                  result.push(current);
+              }
+          }
+          
+          i += 1;
+      }
+      
+      result
+  }
+
+vc-postamble: |-
+  fn main() {}
+  
+  }
+

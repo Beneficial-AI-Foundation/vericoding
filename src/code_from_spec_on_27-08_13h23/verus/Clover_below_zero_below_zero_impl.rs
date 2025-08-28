@@ -1,0 +1,58 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+// No additional helpers needed for this implementation
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn below_zero(operations: Vec<i32>) -> (result: (Vec<i32>, bool))
+    ensures
+        result.0.len() == operations.len() + 1,
+        result.0[0] == 0,
+        forall|i: int| 0 <= i < (result.0.len() - 1) as int ==> result.0[i + 1] == result.0[i] + operations[i],
+        result.1 == true ==> exists|i: int| 1 <= i <= operations.len() as int && result.0[i] < 0,
+        result.1 == false ==> forall|i: int| 0 <= i < result.0.len() as int ==> result.0[i] >= 0,
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+fn below_zero(operations: Vec<i32>) -> (result: (Vec<i32>, bool))
+    ensures
+        result.0.len() == operations.len() + 1,
+        result.0[0] == 0,
+        forall|i: int| 0 <= i < (result.0.len() - 1) as int ==> result.0[i + 1] == result.0[i] + operations[i],
+        result.1 == true ==> exists|i: int| 1 <= i <= operations.len() as int && result.0[i] < 0,
+        result.1 == false ==> forall|i: int| 0 <= i < result.0.len() as int ==> result.0[i] >= 0,
+{
+    let mut balances: Vec<i32> = Vec::new();
+    balances.push(0);
+    let mut current_balance: i32 = 0;
+    let mut went_below_zero: bool = false;
+    let mut i: usize = 0;
+
+    while i < operations.len()
+        invariant
+            balances.len() == i + 1,
+            balances[0] == 0,
+            forall|j: int| 0 <= j < i as int ==> balances[(j + 1) as int] == balances[j] + operations[j],
+            current_balance == balances[i as int],
+            went_below_zero ==> exists|j: int| 1 <= j <= i as int && balances[j] < 0,
+    {
+        current_balance = current_balance + operations[i];
+        balances.push(current_balance);
+        if current_balance < 0 {
+            went_below_zero = true;
+        }
+        i = i + 1;
+    }
+
+    (balances, went_below_zero)
+}
+// </vc-code>
+
+fn main() {}
+
+}

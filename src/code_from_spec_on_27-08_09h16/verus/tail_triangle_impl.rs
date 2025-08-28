@@ -1,0 +1,111 @@
+use vstd::prelude::*;
+
+
+verus!{
+
+spec fn triangle(n: nat) -> (result: nat)
+    decreases n
+{
+    if n == 0 {
+        0
+    } else {
+        n + triangle((n - 1) as nat)
+    }
+}
+// pure-end
+
+// <vc-helpers>
+proof fn triangle_is_monotonic(i: nat, j: nat)
+    requires
+        i <= j,
+    ensures
+        triangle(i) <= triangle(j),
+    decreases j
+{
+    if i < j {
+        triangle_is_monotonic(i, (j - 1) as nat);
+    }
+}
+
+proof fn triangle_additive(i: nat, j: nat)
+    requires
+        i <= j,
+    ensures
+        triangle(j) == triangle(i) + (triangle(j) - triangle(i)),
+    decreases j - i
+{
+    if i < j {
+        triangle_additive(i + 1, j);
+    }
+}
+
+proof fn triangle_sum_property(i: nat, j: nat)
+    requires
+        i <= j,
+    ensures
+        triangle(j) == triangle(i) + triangle(j) - triangle(i),
+{
+    triangle_additive(i, j);
+}
+
+proof fn triangle_step_property(k: nat)
+    ensures
+        triangle(k + 1) == triangle(k) + (k + 1),
+{
+}
+
+proof fn triangle_bounds(n: nat)
+    ensures
+        triangle(n) >= n,
+{
+}
+
+proof fn triangle_next_bound(k: u32)
+    requires
+        k < u32::MAX,
+        triangle((k + 1) as nat) < 0x1_0000_0000,
+    ensures
+        (k + 1) as nat < 0x1_0000_0000,
+        triangle(k as nat) + (k + 1) < 0x1_0000_0000,
+{
+    triangle_step_property(k as nat);
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn tail_triangle(n: u32, idx: u32, sum: &mut u32)
+    // pre-conditions-start
+    requires
+        idx <= n,
+        *old(sum) == triangle(idx as nat),
+        triangle(n as nat) < 0x1_0000_0000,
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        *sum == triangle(n as nat),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut current_idx = idx;
+    while current_idx < n
+        invariant
+            current_idx <= n,
+            *sum == triangle(current_idx as nat),
+            triangle(n as nat) < 0x1_0000_0000,
+        decreases n - current_idx
+    {
+        proof {
+            triangle_step_property(current_idx as nat);
+            triangle_next_bound(current_idx);
+        }
+        *sum = *sum + (current_idx + 1);
+        current_idx = current_idx + 1;
+    }
+}
+// </vc-code>
+
+}
+
+fn main() {}

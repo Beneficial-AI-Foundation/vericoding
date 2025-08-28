@@ -1,0 +1,136 @@
+// <vc-helpers>
+function SeqGen(n: nat, f: int -> int): seq<int>
+  requires forall i :: 0 <= i < n ==> f.requires(i)
+{
+  if n == 0 then [] else SeqGen(n-1, f) + [f(n-1)]
+}
+
+lemma SeqProperty(n: nat, f: int -> int)
+  requires forall i :: 0 <= i < n ==> f.requires(i)
+  ensures |SeqGen(n, f)| == n
+  ensures forall i :: 0 <= i < n ==> SeqGen(n, f)[i] == f(i)
+{
+  if n == 0 {
+    assert SeqGen(n, f) == [];
+  } else {
+    SeqProperty(n-1, f);
+    assert SeqGen(n, f) == SeqGen(n-1, f) + [f(n-1)];
+    assert |SeqGen(n, f)| == |SeqGen(n-1, f)| + 1 == (n-1) + 1 == n;
+    
+    forall i | 0 <= i < n
+      ensures SeqGen(n, f)[i] == f(i)
+    {
+      if i < n-1 {
+        assert SeqGen(n, f)[i] == SeqGen(n-1, f)[i] == f(i);
+      } else {
+        assert i == n-1;
+        assert SeqGen(n, f)[i] == SeqGen(n, f)[n-1] == f(n-1) == f(i);
+      }
+    }
+  }
+}
+
+function FizzBuzzFunc(i: int): int
+  requires i >= 0
+{
+  if i % 11 == 0 || i % 13 == 0 then count7_r(i) else 0
+}
+
+lemma FizzBuzzFuncRequires(n: nat)
+  ensures forall i :: 0 <= i < n ==> FizzBuzzFunc.requires(i)
+{
+}
+
+lemma SeqGenEqualsSeq(n: nat)
+  ensures SeqGen(n, FizzBuzzFunc) == seq(n, i requires 0 <= i < n && i >= 0 => FizzBuzzFunc(i))
+{
+  if n == 0 {
+  } else {
+    SeqGenEqualsSeq(n-1);
+  }
+}
+
+lemma SumDistributivity(s1: seq<int>, s2: seq<int>)
+  ensures sum(s1 + s2) == sum(s1) + sum(s2)
+{
+  if |s1| == 0 {
+    assert s1 + s2 == s2;
+  } else {
+    SumDistributivity(s1[1..], s2);
+    assert s1 + s2 == [s1[0]] + (s1[1..] + s2);
+    assert sum(s1 + s2) == s1[0] + sum(s1[1..] + s2);
+    assert sum(s1 + s2) == s1[0] + sum(s1[1..]) + sum(s2);
+    assert sum(s1 + s2) == sum(s1) + sum(s2);
+  }
+}
+// </vc-helpers>
+
+// <vc-spec>
+method fizz_buzz(n: nat) returns (result: nat)
+  // post-conditions-start
+  ensures result == sum(
+    seq(n, i requires 0 <= i < n => (if i % 11 == 0 || i % 13 == 0 then count7_r(i) else 0))
+  )
+  // post-conditions-end
+// </vc-spec>
+// <vc-code>
+{
+  result := 0;
+  var i := 0;
+  
+  FizzBuzzFuncRequires(n);
+  
+  while i < n
+    invariant 0 <= i <= n
+    invariant result == sum(SeqGen(i, FizzBuzzFunc))
+    invariant forall j :: 0 <= j < n ==> FizzBuzzFunc.requires(j)
+  {
+    if i % 11 == 0 || i % 13 == 0 {
+      var count := count7(i);
+      result := result + count;
+    }
+    
+    assert result == sum(SeqGen(i, FizzBuzzFunc)) + FizzBuzzFunc(i);
+    
+    i := i + 1;
+    
+    SeqProperty(i, FizzBuzzFunc);
+    SumDistributivity(SeqGen(i-1, FizzBuzzFunc), [FizzBuzzFunc(i-1)]);
+    
+    assert SeqGen(i, FizzBuzzFunc) == SeqGen(i-1, FizzBuzzFunc) + [FizzBuzzFunc(i-1)];
+    assert sum(SeqGen(i, FizzBuzzFunc)) == sum(SeqGen(i-1, FizzBuzzFunc)) + sum([FizzBuzzFunc(i-1)]);
+    assert sum([FizzBuzzFunc(i-1)]) == FizzBuzzFunc(i-1);
+    
+    assert result == sum(SeqGen(i, FizzBuzzFunc));
+  }
+  
+  SeqGenEqualsSeq(n);
+  assert SeqGen(n, FizzBuzzFunc) == seq(n, i requires 0 <= i < n && i >= 0 => FizzBuzzFunc(i));
+  
+  forall i {:trigger FizzBuzzFunc(i)} | 0 <= i < n
+    ensures (i requires 0 <= i < n && i >= 0 => FizzBuzzFunc(i)) == (i requires 0 <= i < n => (if i % 11 == 0 || i % 13 == 0 then count7_r(i) else 0))
+  {
+    assert FizzBuzzFunc(i) == (if i % 11 == 0 || i % 13 == 0 then count7_r(i) else 0);
+  }
+  
+  assert seq(n, i requires 0 <= i < n && i >= 0 => FizzBuzzFunc(i)) == seq(n, i requires 0 <= i < n => (if i % 11 == 0 || i % 13 == 0 then count7_r(i) else 0));
+  assert result == sum(seq(n, i requires 0 <= i < n => (if i % 11 == 0 || i % 13 == 0 then count7_r(i) else 0)));
+}
+// </vc-code>
+
+method count7(x: nat) returns (count: nat) 
+  // post-conditions-start
+  ensures count == count7_r(x)
+  // post-conditions-end
+{
+  assume{:axiom} false;
+}
+function count7_r(x: nat): nat {
+  var lst := if x % 10 == 7 then 1 else 0;
+  if x < 10 then lst else lst + count7_r(x / 10)
+}
+// pure-end
+function sum(s: seq<int>) : int {
+  if |s| == 0 then 0 else s[0] + sum(s[1..])
+}
+// pure-end

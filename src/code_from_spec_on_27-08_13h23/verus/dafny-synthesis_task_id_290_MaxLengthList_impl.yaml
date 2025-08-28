@@ -1,0 +1,51 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+  fn get_max_length_index(lists: &Vec<Vec<int>>) -> (idx: usize)
+      requires lists.len() > 0
+      ensures 0 <= idx < lists.len(),
+              forall|i: int| 0 <= i < lists.len() ==> lists@[i].len() <= lists@[idx].len()
+  {
+      let mut max_idx = 0;
+      let mut i = 1;
+  
+      while i < lists.len()
+          invariant 0 <= max_idx < lists.len(),
+                    0 <= i <= lists.len(),
+                    forall|j: int| 0 <= j < i ==> lists@[j].len() <= lists@[max_idx].len()
+      {
+          if lists@[i].len() > lists@[max_idx].len() {
+              max_idx = i;
+          }
+          i = i + 1;
+      }
+      max_idx
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn max_length_list(lists: &Vec<Vec<int>>) -> (max_list: Vec<int>)
+      requires lists.len() > 0
+      ensures forall|i: int| 0 <= i < lists.len() ==> lists[i].len() <= max_list.len(),
+              exists|i: int| 0 <= i < lists.len() && max_list@ == lists[i]@
+  // </vc-spec>
+
+vc-code: |-
+  fn max_length_list(lists: &Vec<Vec<int>>) -> (max_list: Vec<int>)
+      requires lists.len() > 0
+      ensures forall|i: int| 0 <= i < lists.len() ==> lists@[i].len() <= max_list.len(),
+              exists|i: int| 0 <= i < lists.len() && max_list@ == lists@[i]@
+  {
+      let max_idx = get_max_length_index(lists);
+      lists@[max_idx].clone()
+  }
+
+vc-postamble: |-
+  
+  fn main() {}
+  
+  }
+

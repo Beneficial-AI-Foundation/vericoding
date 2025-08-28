@@ -1,0 +1,28 @@
+vc-preamble: |-
+
+
+vc-helpers: |-
+  // No additional helper code or proofs needed for this implementation
+
+vc-spec: |-
+  // <vc-spec>
+  method CalculateLoss(costPrice: int, sellingPrice: int) returns (loss: int)
+      requires costPrice >= 0 && sellingPrice >= 0
+      ensures (costPrice > sellingPrice ==> loss == costPrice - sellingPrice) && (costPrice <= sellingPrice ==> loss == 0)
+  // </vc-spec>
+
+vc-code: |-
+  method CalculateLossImpl(costPrice: int, sellingPrice: int) returns (loss: int)
+      requires costPrice >= 0 && sellingPrice >= 0
+      ensures (costPrice > sellingPrice ==> loss == costPrice - sellingPrice) && (costPrice <= sellingPrice ==> loss == 0)
+  {
+      if costPrice > sellingPrice {
+          loss := costPrice - sellingPrice;
+      } else {
+          loss := 0;
+      }
+  }
+
+vc-postamble: |-
+
+

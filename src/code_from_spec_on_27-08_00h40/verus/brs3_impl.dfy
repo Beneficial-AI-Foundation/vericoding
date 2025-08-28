@@ -1,0 +1,48 @@
+use vstd::prelude::*;
+
+verus!{
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+fn myfun(a: &mut Vec<i32>, sum: &mut Vec<i32>, N: i32) 
+	// pre-conditions-start
+	requires 
+		old(a).len() == N,
+		old(sum).len() == 1,
+		N > 0,
+		N < 1000,
+	// pre-conditions-end
+	// post-conditions-start
+	ensures
+		sum[0] <= 3 * N,
+	// post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    // impl-start
+    let mut total = 0;
+    let mut i = 0;
+    while i < N
+        invariant
+            0 <= i <= N,
+            total <= 3 * i,
+    {
+        if a@[i as int] > 0 {
+            total += a@[i as int];
+        }
+        if total > 3 * N {
+            total = 3 * N;
+        }
+        i += 1;
+    }
+    sum.set(0, total);
+    // impl-end
+}
+// </vc-code>
+
+}
+
+fn main() {}

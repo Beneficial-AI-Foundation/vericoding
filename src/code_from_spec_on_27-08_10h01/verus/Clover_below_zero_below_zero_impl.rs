@@ -1,0 +1,57 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+spec fn add_can_overflow(a: i32, b: i32) -> bool {
+    a > 0 && b > 0 && a > i32::MAX - b ||
+    a < 0 && b < 0 && a < i32::MIN - b
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn below_zero(operations: Vec<i32>) -> (result: (Vec<i32>, bool))
+    ensures
+        result.0.len() == operations.len() + 1,
+        result.0[0] == 0,
+        forall|i: int| 0 <= i < (result.0.len() - 1) as int ==> result.0[i + 1] == result.0[i] + operations[i],
+        result.1 == true ==> exists|i: int| 1 <= i <= operations.len() as int && result.0[i] < 0,
+        result.1 == false ==> forall|i: int| 0 <= i < result.0.len() as int ==> result.0[i] >= 0,
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut balance = vec![0i32];
+    let mut current_balance = 0i32;
+    let mut went_below_zero = false;
+    
+    for i in 0..operations.len()
+        invariant
+            balance.len() == i + 1,
+            balance[0] == 0,
+            forall|j: int| 0 <= j < i as int ==> balance[j + 1] == balance[j] + operations[j],
+            current_balance == balance[i as int],
+            went_below_zero == exists|j: int| 1 <= j <= i as int && balance[j] < 0,
+            forall|k: int| 0 <= k <= i as int ==> !add_can_overflow(balance[k], operations[k])
+    {
+        current_balance = current_balance + operations[i];
+        balance.push(current_balance);
+        if current_balance < 0 {
+            went_below_zero = true;
+        }
+        proof {
+            assert(balance.len() == i + 2);
+            assert(balance[(i + 1) as int] == current_balance);
+            assert(forall|j: int| 0 <= j < (i + 1) as int ==> balance[j + 1] == balance[j] + operations[j]);
+        }
+    }
+    
+    (balance, went_below_zero)
+}
+// </vc-code>
+
+fn main() {}
+
+}

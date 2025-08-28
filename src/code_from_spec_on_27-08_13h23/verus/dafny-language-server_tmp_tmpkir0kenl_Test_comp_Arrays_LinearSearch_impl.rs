@@ -1,0 +1,69 @@
+use vstd::prelude::*;
+
+verus! {
+
+// RUN: %verus "%s" > "%t"
+// RUN: %diff "%s.expect" "%t"
+
+fn print_array<A>(a: Option<&[A]>) {
+    assume(false);
+}
+
+type Lowercase = char; // In Verus, we'd use refinement types or Ghost wrappers for constraints
+
+fn diag_matrix<A: Copy>(rows: usize, cols: usize, zero: A, one: A) -> (a: Vec<Vec<A>>)
+    requires rows >= 0 && cols >= 0
+{
+    assume(false);
+    Vec::new()
+}
+
+fn print_matrix<A>(m: &Vec<Vec<A>>) {
+    assume(false);
+}
+
+// <vc-helpers>
+proof fn lemma_seq_index_within_bounds<T>(s: Seq<T>, idx: int)
+    requires
+        0 <= idx < s.len(),
+    ensures
+        s[idx].is_some(),
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn linear_search(a: &[int], key: int) -> (n: usize)
+    ensures 
+        0 <= n <= a.len(),
+        n == a.len() || a[n as int] == key,
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+fn linear_search(a: &[int], key: int) -> (n: usize)
+    ensures
+        0 <= n <= a.len(),
+        n == a.len() || a[n as int] == key,
+{
+    let mut i: usize = 0;
+    while i < a.len()
+        invariant
+            0 <= i <= a.len(),
+            forall |j: usize| 0 <= j < i ==> a[j] != key,
+    {
+        if a[i] == key {
+            return i;
+        }
+        i = i + 1;
+    }
+    a.len()
+}
+// </vc-code>
+
+fn main() {
+    // Main function content would go here
+}
+
+}

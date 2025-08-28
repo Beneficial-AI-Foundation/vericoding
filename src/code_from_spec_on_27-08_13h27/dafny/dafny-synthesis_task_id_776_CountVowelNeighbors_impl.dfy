@@ -1,0 +1,47 @@
+predicate IsVowel(c: char)
+{
+    c in {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'}
+}
+
+// <vc-helpers>
+function CountVowelNeighborsHelper(s: string, i: int): int
+  requires 1 <= i < |s|
+  decreases |s| - i
+{
+  if i == |s| - 1 then 0
+  else if IsVowel(s[i-1]) && IsVowel(s[i+1]) then 1 + CountVowelNeighborsHelper(s, i + 1)
+  else CountVowelNeighborsHelper(s, i + 1)
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method CountVowelNeighbors(s: string) returns (count: int)
+    ensures count >= 0
+    ensures count == | set i: int | 1 <= i < |s|-1 && IsVowel(s[i-1]) && IsVowel(s[i+1]) |
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+method CountVowelNeighborsImpl(s: string) returns (count: int)
+  ensures count >= 0
+  ensures count == | set i: int | 1 <= i < |s|-1 && IsVowel(s[i-1]) && IsVowel(s[i+1]) | {i}
+{
+  if |s| < 3 {
+    return 0;
+  }
+  count := 0;
+  var i := 1;
+  while i < |s| - 1
+    invariant 1 <= i <= |s| - 1
+    invariant count == | set j: int | 1 <= j < i && IsVowel(s[j-1]) && IsVowel(s[j+1]) | {j}
+  {
+    var old_count := count;
+    if IsVowel(s[i-1]) && IsVowel(s[i+1]) {
+      count := count + 1;
+    }
+    i := i + 1;
+    assert count == old_count + (if IsVowel(s[i-2]) && IsVowel(s[i]) then 1 else 0);
+  }
+}
+// </vc-code>

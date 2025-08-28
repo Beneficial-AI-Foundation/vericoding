@@ -1,0 +1,82 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+// Helper lemma to establish the relationship between finding a divisor and the exists condition
+proof fn divisor_exists_lemma(n: u32, k: u32)
+    requires
+        n >= 2,
+        2 <= k < n,
+        (n as int % k as int) == 0,
+    ensures
+        exists|j: int| 2 <= j < n && #[trigger] (n as int % j) == 0,
+{
+    assert((n as int % k as int) == 0);
+    assert(2 <= k as int && (k as int) < (n as int));
+}
+
+// Helper lemma for the case when no divisor is found
+proof fn no_divisor_lemma(n: u32)
+    requires
+        n >= 2,
+        forall|k: u32| 2 <= k < n ==> #[trigger] (n as int % k as int) != 0,
+    ensures
+        !exists|j: int| 2 <= j < n && #[trigger] (n as int % j) == 0,
+{
+    if exists|j: int| 2 <= j < n && #[trigger] (n as int % j) == 0 {
+        let witness_j = choose|j: int| 2 <= j < n && #[trigger] (n as int % j) == 0;
+        assert(2 <= witness_j < n);
+        assert((n as int % witness_j) == 0);
+        assert(witness_j >= 2 && witness_j <= u32::MAX);
+        let k_u32 = witness_j as u32;
+        assert(2 <= k_u32 < n);
+        assert((n as int % k_u32 as int) != 0);
+        assert(false);
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+#[verifier::loop_isolation(false)]
+fn is_non_prime(n: u32) -> (result: bool)
+    // pre-conditions-start
+    requires
+        n >= 2,
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        result == exists|k: int| 2 <= k < n && #[trigger] (n as int % k) == 0,
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut k = 2u32;
+    while k < n
+        invariant
+            2 <= k <= n,
+            forall|j: u32| 2 <= j < k ==> #[trigger] (n as int % j as int) != 0,
+        decreases n - k
+    {
+        if n % k == 0 {
+            proof {
+                divisor_exists_lemma(n, k);
+            }
+            return true;
+        }
+        k = k + 1;
+    }
+    
+    proof {
+        assert(k == n);
+        assert(forall|j: u32| 2 <= j < n ==> #[trigger] (n as int % j as int) != 0);
+        no_divisor_lemma(n);
+    }
+    
+    false
+}
+// </vc-code>
+
+fn main() {}
+}

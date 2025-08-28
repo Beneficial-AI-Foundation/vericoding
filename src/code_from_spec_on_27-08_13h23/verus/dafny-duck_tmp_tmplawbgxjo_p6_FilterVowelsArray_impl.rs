@@ -1,0 +1,75 @@
+use vstd::prelude::*;
+
+verus! {
+
+// Given an array of characters, it filters all the vowels. ['d','e','l','i','g','h','t']-> ['e','i']
+spec fn vowels() -> Set<char> {
+    set!['a', 'e', 'i', 'o', 'u']
+}
+
+spec fn filter_vowels(xs: Seq<char>) -> Seq<char>
+    decreases xs.len()
+{
+    if xs.len() == 0 {
+        seq![]
+    } else if vowels().contains(xs[xs.len() - 1]) {
+        filter_vowels(xs.subrange(0, xs.len() - 1)).add(seq![xs[xs.len() - 1]])
+    } else {
+        filter_vowels(xs.subrange(0, xs.len() - 1))
+    }
+}
+
+// <vc-helpers>
+proof fn lemma_filter_vowels_empty()
+    ensures filter_vowels(seq![]) == seq![]
+{
+}
+
+proof fn lemma_filter_vowels_non_empty(xs: Seq<char>)
+    requires xs.len() > 0
+    ensures filter_vowels(xs) == if vowels().contains(xs[xs.len() - 1]) {
+        filter_vowels(xs.subrange(0, xs.len() - 1)).add(seq![xs[xs.len() - 1]])
+    } else {
+        filter_vowels(xs.subrange(0, xs.len() - 1))
+    }
+    decreases xs.len()
+{
+    if xs.len() == 1 {
+    } else {
+        lemma_filter_vowels_non_empty(xs.subrange(0, xs.len() - 1));
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn filter_vowels_array(xs: &[char]) -> (ys: Vec<char>)
+    ensures filter_vowels(xs@) == ys@
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+fn filter_vowels_array(xs: &[char]) -> (ys: Vec<char>)
+    ensures filter_vowels(xs@) == ys@
+{
+    let mut result = Vec::new();
+    let mut i: usize = 0;
+
+    while i < xs.len()
+        invariant
+            i <= xs.len(),
+            result@ == filter_vowels(xs@.subrange(0, i as int))
+    {
+        if vowels().contains(xs[i]) {
+            result.push(xs[i]);
+        }
+        i = i + 1;
+    }
+
+    result
+}
+// </vc-code>
+
+fn main() {}
+
+}

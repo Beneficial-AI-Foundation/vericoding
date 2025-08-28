@@ -1,0 +1,103 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  type T = int; // example
+  
+   // Partitions a nonempty array 'a', by reordering the elements in the array,
+  // so that elements smaller than a chosen pivot are placed to the left of the
+  // pivot, and values greater or equal than the pivot are placed to the right of 
+  // the pivot. Returns the pivot position.
+
+vc-helpers: |-
+  proof fn lemma_swap_preserves_multiset<T>(v: Vec<T>, i: usize, j: usize)
+      requires 
+          i < v.len(),
+          j < v.len(),
+      ensures
+          {
+              let mut new_v = v.clone();
+              new_v.swap(i, j);
+              new_v@.to_multiset() == v@.to_multiset()
+          }
+  {
+      let mut new_v = v.clone();
+      new_v.swap(i, j);
+      assert(new_v@.to_multiset() == v@.to_multiset()) by {
+          reveal(vstd::multiset::Multiset::count);
+          reveal(vstd::multiset::Multiset::add);
+          reveal(vstd::multiset::Multiset::empty);
+          assert forall|x| new_v@.count(x) == v@.count(x) by {
+              if i == j {
+                  assert(new_v@[i as int] == v@[i as int]);
+              } else {
+                  if x == new_v@[i as int] {
+                      assert(new_v@.count(x) == v@.count(x));
+                  } else if x == new_v@[j as int] {
+                      assert(new_v@.count(x) == v@.count(x));
+                  } else {
+                      assert(new_v@.count(x) == v@.count(x));
+                  }
+              }
+          };
+      }
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn partition(a: &mut Vec<T>) -> (pivotPos: usize)
+      requires 
+          old(a).len() > 0,
+      ensures 
+          pivotPos < a.len(),
+          forall|i: int| 0 <= i < pivotPos ==> a[i] < a[pivotPos as int],
+          forall|i: int| pivotPos < i < a.len() ==> a[i] >= a[pivotPos as int],
+          a@.to_multiset() == old(a)@.to_multiset(),
+  // </vc-spec>
+
+vc-code: |-
+  {
+      let mut i: usize = 0;
+      let mut j: usize = a.len() - 1;
+      let pivot = a[j];
+      let mut k: usize = 0;
+  
+      while k < j
+          invariant
+              k <= j,
+              j < a.len(),
+              i <= k,
+              forall|x: int| 0 <= x < i ==> a[x] < pivot,
+              forall|x: int| j < x < a.len() ==> a[x] >= pivot,
+              a@.to_multiset() == old(a)@.to_multiset(),
+          decreases
+              j - k,
+      {
+          if a[k] < pivot {
+              if i != k {
+                  a.swap(i, k);
+                  proof {
+                      lemma_swap_preserves_multiset(*a, i, k);
+                  }
+              }
+              i = i + 1;
+          }
+          k = k + 1;
+      }
+  
+      if i != j {
+          a.swap(i, j);
+          proof {
+              lemma_swap_preserves_multiset(*a, i, j);
+          }
+      }
+  
+      i
+  }
+
+vc-postamble: |-
+  fn main() {}
+  
+  }
+

@@ -1,0 +1,98 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn sorted(s: Seq<int>) -> bool {
+    forall|u: int, w: int| 0 <= u < w < s.len() ==> s[u] <= s[w]
+}
+
+fn binary_search(v: &[int], elem: int) -> (p: i32)
+    requires sorted(v@)
+    ensures 
+        -1 <= p < v@.len() &&
+        (forall|u: int| 0 <= u <= p ==> v@[u] <= elem) &&
+        (forall|w: int| p < w < v@.len() ==> v@[w] > elem)
+{
+    assume(false);
+    -1
+}
+
+// <vc-helpers>
+spec fn binary_search_correct(v: Seq<int>, elem: int, p: int) -> bool {
+    -1 <= p < v.len() &&
+    (forall|u: int| 0 <= u <= p ==> v[u] <= elem) &&
+    (forall|w: int| p < w < v.len() ==> v[w] > elem)
+}
+
+proof fn binary_search_implies_contains(v: Seq<int>, elem: int, p: int)
+    requires 
+        sorted(v),
+        binary_search_correct(v, elem, p)
+    ensures 
+        v.contains(elem) <==> (0 <= p < v.len() && v[p] == elem)
+{
+    if v.contains(elem) {
+        let i = choose|i: int| 0 <= i < v.len() && v[i] == elem;
+        if p >= 0 && p < v.len() {
+            assert(v[p] <= elem);
+            assert(v[i] == elem);
+            if i < p {
+                assert(v[i] <= v[p]);
+                assert(elem <= v[p]);
+                assert(v[p] == elem);
+            } else if i > p {
+                assert(v[p + 1] > elem);
+                assert(v[i] > elem);
+                assert(false);
+            } else {
+                assert(v[p] == elem);
+            }
+        }
+    }
+    
+    if 0 <= p < v.len() && v[p] == elem {
+        assert(v.contains(elem));
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn search(v: &[int], elem: int) -> (b: bool)
+    requires sorted(v@)
+    ensures b == v@.contains(elem)
+    //Implement by calling binary search function
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    let p = binary_search(v, elem);
+    
+    proof {
+        binary_search_implies_contains(v@, elem, p as int);
+    }
+    
+    if p >= 0 && (p as usize) < v.len() {
+        let result = v[p as usize] == elem;
+        proof {
+            assert(0 <= p < v@.len() && v@[p as int] == elem ==> v@.contains(elem));
+            assert(!v@.contains(elem) ==> !(0 <= p < v@.len() && v@[p as int] == elem));
+        }
+        result
+    } else {
+        proof {
+            assert(p < 0 || p >= v@.len());
+            assert(!(0 <= p < v@.len() && v@[p as int] == elem));
+            assert(!v@.contains(elem));
+        }
+        false
+    }
+}
+// </vc-code>
+
+fn main() {
+    //Recursive binary search
+}
+
+}

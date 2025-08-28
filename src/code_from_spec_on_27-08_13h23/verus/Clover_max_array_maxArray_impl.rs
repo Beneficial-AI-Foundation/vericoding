@@ -1,0 +1,48 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+// No updates needed for helpers in this case
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn maxArray(a: &[int]) -> (m: int)
+    requires a.len() >= 1,
+    ensures 
+        forall|k: int| 0 <= k < a.len() ==> m >= a@[k] &&
+        exists|k: int| 0 <= k < a.len() && m == a@[k],
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+fn maxArray(a: &[int]) -> (m: int)
+    requires a.len() >= 1,
+    ensures 
+        forall|k: int| 0 <= k < a.len() ==> m >= a@[k],
+        exists|k: int| 0 <= k < a.len() && m == a@[k],
+{
+    let mut max_val = a[0];
+    let mut i = 1;
+
+    while i < a.len()
+        invariant
+            0 <= i <= a.len(),
+            forall|k: int| 0 <= k < i ==> max_val >= a@[k],
+            exists|k: int| 0 <= k < i && max_val == a@[k],
+    {
+        if a[i] > max_val {
+            max_val = a[i];
+        }
+        i = i + 1;
+    }
+
+    max_val
+}
+// </vc-code>
+
+fn main() {
+}
+
+}

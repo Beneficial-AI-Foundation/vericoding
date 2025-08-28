@@ -1,0 +1,68 @@
+function tri(n: nat): nat
+  decreases if n % 2 == 0 then 0 else n
+{
+  if n == 1 then 3
+  else if n % 2 == 0 then 1 + n / 2
+  else tri(n - 1) + tri(n - 2) + tri(n + 1)
+}
+
+// <vc-helpers>
+lemma TriBaseCases()
+  ensures tri(0) == 1
+  ensures tri(1) == 3
+  ensures tri(2) == 2
+{
+}
+
+lemma TriNonNegative(n: nat)
+  ensures tri(n) >= 0
+{
+}
+
+lemma TriComputationCorrect(n: nat)
+  ensures n == 1 ==> tri(n) == 3
+  ensures n != 1 && n % 2 == 0 ==> tri(n) == 1 + n / 2
+  ensures n != 1 && n % 2 == 1 ==> tri(n) == tri(n-1) + tri(n-2) + tri(n+1)
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+method Tribonacci(n: nat) returns (result: seq<nat>)
+  // post-conditions-start
+  ensures |result| == n + 1
+  ensures forall i :: 0 <= i <= n ==> result[i] == tri(i)
+  // post-conditions-end
+// </vc-spec>
+// <vc-code>
+{
+  result := [];
+  var i := 0;
+  
+  while i <= n
+    invariant 0 <= i <= n + 1
+    invariant |result| == i
+    invariant forall j :: 0 <= j < i ==> result[j] == tri(j)
+  {
+    var tri_val := ComputeTri(i);
+    result := result + [tri_val];
+    i := i + 1;
+  }
+}
+
+method ComputeTri(n: nat) returns (val: nat)
+  ensures val == tri(n)
+  decreases if n % 2 == 0 then 0 else n
+{
+  if n == 1 {
+    val := 3;
+  } else if n % 2 == 0 {
+    val := 1 + n / 2;
+  } else {
+    var val1 := ComputeTri(n - 1);
+    var val2 := ComputeTri(n - 2);
+    var val3 := ComputeTri(n + 1);
+    val := val1 + val2 + val3;
+  }
+}
+// </vc-code>

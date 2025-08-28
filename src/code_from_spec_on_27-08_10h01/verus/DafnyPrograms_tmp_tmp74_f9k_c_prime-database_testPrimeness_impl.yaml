@@ -1,0 +1,193 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  // predicate for primeness
+  spec fn prime(n: nat) -> bool {
+      n > 1 && (forall|nr: nat| 1 < nr < n ==> #[trigger] (n % nr) != 0)
+  }
+  
+  #[derive(PartialEq, Eq)]
+  enum Answer {
+      Yes,
+      No,
+      Unknown,
+  }
+  
+  // the class containing a prime database, if a number is prime it returns Yes, if it is not No and if the number
+  // is not in the database it returns Unknown
+  struct PrimeMap {
+      database: Ghost<Map<nat, bool>>,
+  }
+  
+  impl PrimeMap {
+      // the valid invariant of the class
+      spec fn valid(&self) -> bool {
+          forall|i: nat| self.database@.dom().contains(i) ==> (self.database@[i] == prime(i))
+      }
+  
+      // the constructor
+      fn new() -> (result: PrimeMap)
+          ensures 
+              result.database@ === Map::empty(),
+              result.valid(),
+      {
+          PrimeMap {
+              database: Ghost(Map::empty())
+          }
+      }
+  
+      // lookup n in the database and reply with Yes or No if it's in the database and it is or it is not prime,
+      // or with Unknown when it's not in the databse
+      fn is_prime(&self, n: nat) -> (answer: Answer)
+          requires self.valid(),
+          ensures 
+              self.database@.dom().contains(n) && prime(n) <==> answer == Answer::Yes,
+              self.database@.dom().contains(n) && !prime(n) <==> answer == Answer::No,
+              !self.database@.dom().contains(n) <==> answer == Answer::Unknown,
+      {
+          assume(false);
+          Answer::Unknown
+      }
+  
+      // method to test whether a number is prime, returns bool
+  
+  }
+
+vc-helpers: |-
+  spec fn all_less_than_sqrt_checked(n: nat, k: nat) -> bool {
+      forall|i: nat| 2 <= i < k ==> n % i != 0
+  }
+  
+  proof fn sqrt_sufficient_for_prime(n: nat, k: nat)
+      requires 
+          n >= 2,
+          k * k >= n,
+          all_less_than_sqrt_checked(n, k),
+      ensures prime(n)
+  {
+      assert forall|d: nat| 1 < d < n implies n % d != 0 by {
+          let d = choose|d: nat| 1 < d < n;
+          if d < k {
+              assert(n % d != 0);
+          } else {
+              assert(d >= k);
+              if n % d == 0 {
+                  let quotient = n / d;
+                  assert(quotient * d == n);
+                  assert(quotient >= 1);
+                  if quotient == 1 {
+                      assert(d == n);
+                      assert(false);
+                  }
+                  assert(quotient > 1);
+                  assert(quotient < d) by {
+                      assert(d >= k);
+                      assert(k * k >= n);
+                      assert(quotient * d == n);
+                      assert(quotient * k <= quotient * d);
+                      assert(quotient * k <= n);
+                      assert(quotient * k <= k * k);
+                      if quotient >= k {
+                          assert(quotient * k >= k * k);
+                          assert(false);
+                      }
+                      assert(quotient < k);
+                      assert(quotient < d);
+                  };
+                  assert(quotient >= 2) by {
+                      if quotient == 1 {
+                          assert(false);
+                      }
+                      assert(quotient != 1);
+                      assert(quotient >= 2);
+                  };
+                  assert(2 <= quotient < k);
+                  assert(n % quotient != 0);
+                  assert(quotient * d == n);
+                  assert(n % quotient == 0);
+                  assert(false);
+              }
+          }
+      };
+  }
+  
+  proof fn composite_has_small_factor(n: nat)
+      requires n >= 2, !prime(n)
+      ensures exists|d: nat| 2 <= d && d * d <= n && n % d == 0
+  {
+      assert(exists|d: nat| 1 < d < n && n % d == 0);
+      let witness_d = choose|d: nat| 1 < d < n && n % d == 0;
+      let quotient = n / witness_d;
+      
+      assert(quotient * witness_d == n);
+      assert(quotient >= 1);
+      
+      if quotient == 1 {
+          assert(witness_d == n);
+          assert(false);
+      }
+      
+      assert(quotient > 1);
+      assert(quotient < n) by {
+          if quotient >= n {
+              assert(quotient * witness_d >= n * witness_d);
+              assert(n >= n * witness_d);
+              assert(witness_d <= 1);
+              assert(false);
+          }
+      };
+      
+      let smaller = if witness_d <= quotient { witness_d } else { quotient };
+      
+      assert(smaller * smaller <= witness_d * quotient);
+      assert(witness_d * quotient == n);
+      assert(smaller * smaller <= n);
+      assert(smaller >= 2);
+      assert(n % smaller == 0);
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn test_primeness(n: nat) -> (result: bool) 
+        requires n >= 0,
+        ensures result <==> prime(n),
+  // </vc-spec>
+
+vc-code: |-
+  {
+      if n == 0 || n == 1 {
+          return false;
+      }
+      
+      let mut i: nat = 2;
+      while i * i <= n 
+          invariant 
+              i >= 2,
+              all_less_than_sqrt_checked(n, i),
+      {
+          if n % i == 0 {
+              proof {
+                  assert(!prime(n)) by {
+                      assert(1 < i < n);
+                      assert(n % i == 0);
+                  }
+              }
+              return false;
+          }
+          i = i + 1;
+      }
+      
+      proof {
+          sqrt_sufficient_for_prime(n, i);
+      }
+      
+      true
+  }
+
+vc-postamble: |-
+  fn main() {}
+  
+  }
+

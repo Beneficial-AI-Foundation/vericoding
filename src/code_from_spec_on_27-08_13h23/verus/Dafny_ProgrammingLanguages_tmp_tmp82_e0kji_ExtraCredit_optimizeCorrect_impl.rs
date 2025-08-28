@@ -1,0 +1,157 @@
+use vstd::prelude::*;
+
+verus! {
+
+#[derive(PartialEq, Eq)]
+enum Exp {
+    Const(int),
+    Var(String),
+    Plus(Box<Exp>, Box<Exp>),
+    Mult(Box<Exp>, Box<Exp>),
+}
+
+spec fn eval(e: Exp, store: Map<String, int>) -> int
+    decreases e
+{
+    match e {
+        Exp::Const(n) => n,
+        Exp::Var(s) => if store.dom().contains(s) { store[s] } else { -1 },
+        Exp::Plus(e1, e2) => eval(*e1, store) + eval(*e2, store),
+        Exp::Mult(e1, e2) => eval(*e1, store) * eval(*e2, store),
+    }
+}
+
+//fill this function in to make optimizeFeatures work
+spec fn optimize(e: Exp) -> Exp
+    decreases e
+{
+    match e {
+        Exp::Mult(e1, e2) => {
+            match (*e1, *e2) {
+                (Exp::Const(n1), _) if n1 == 0 => Exp::Const(0),
+                (_, Exp::Const(n2)) if n2 == 0 => Exp::Const(0),
+                (Exp::Const(n1), e2_inner) if n1 == 1 => e2_inner,
+                (e1_inner, Exp::Const(n2)) if n2 == 1 => e1_inner,
+                (Exp::Const(n1), Exp::Const(n2)) => Exp::Const(n1 * n2),
+                _ => e,
+            }
+        },
+        Exp::Plus(e1, e2) => {
+            match (*e1, *e2) {
+                (Exp::Const(n1), e2_inner) if n1 == 0 => e2_inner,
+                (e1_inner, Exp::Const(n2)) if n2 == 0 => e1_inner,
+                (Exp::Const(n1), Exp::Const(n2)) => Exp::Const(n1 + n2),
+                _ => e,
+            }
+        },
+        _ => e,
+    }
+} 
+
+//as you write optimize this will become unproved
+//you must write proof code so that Verus can prove this
+
+// <vc-helpers>
+proof fn lemma_optimize_correct(e: Exp, s: Map<String, int>)
+    ensures eval(e, s) == eval(optimize(e), s)
+    decreases e
+{
+    match e {
+        Exp::Const(n) => {
+        },
+        Exp::Var(v) => {
+        },
+        Exp::Plus(e1, e2) => {
+            lemma_optimize_correct(*e1, s);
+            lemma_optimize_correct(*e2, s);
+            match (*e1, *e2) {
+                (Exp::Const(n1), e2_inner) if n1 == 0 => {
+                    assert(eval(*e1, s) == 0);
+                    assert(eval(e, s) == eval(*e2, s));
+                    assert(optimize(e) == e2_inner);
+                    assert(eval(optimize(e), s) == eval(*e2, s));
+                },
+                (e1_inner, Exp::Const(n2)) if n2 == 0 => {
+                    assert(eval(*e2, s) == 0);
+                    assert(eval(e, s) == eval(*e1, s));
+                    assert(optimize(e) == e1_inner);
+                    assert(eval(optimize(e), s) == eval(*e1, s));
+                },
+                (Exp::Const(n1), Exp::Const(n2)) => {
+                    assert(eval(*e1, s) == n1);
+                    assert(eval(*e2, s) == n2);
+                    assert(eval(e, s) == n1 + n2);
+                    assert(optimize(e) == Exp::Const(n1 + n2));
+                    assert(eval(optimize(e), s) == n1 + n2);
+                },
+                _ => {
+                    assert(eval(e, s) == eval(*e1, s) + eval(*e2, s));
+                    assert(optimize(e) == Exp::Plus(Box::new(optimize(*e1)), Box::new(optimize(*e2))));
+                    assert(eval(optimize(e), s) == eval(optimize(*e1), s) + eval(optimize(*e2), s));
+                },
+            }
+        },
+        Exp::Mult(e1, e2) => {
+            lemma_optimize_correct(*e1, s);
+            lemma_optimize_correct(*e2, s);
+            match (*e1, *e2) {
+                (Exp::Const(n1), _) if n1 == 0 => {
+                    assert(eval(*e1, s) == 0);
+                    assert(eval(e, s) == 0);
+                    assert(optimize(e) == Exp::Const(0));
+                    assert(eval(optimize(e), s) == 0);
+                },
+                (_, Exp::Const(n2)) if n2 == 0 => {
+                    assert(eval(*e2, s) == 0);
+                    assert(eval(e, s) == 0);
+                    assert(optimize(e) == Exp::Const(0));
+                    assert(eval(optimize(e), s) == 0);
+                },
+                (Exp::Const(n1), e2_inner) if n1 == 1 => {
+                    assert(eval(*e1, s) == 1);
+                    assert(eval(e, s) == eval(*e2, s));
+                    assert(optimize(e) == e2_inner);
+                    assert(eval(optimize(e), s) == eval(*e2, s));
+                },
+                (e1_inner, Exp::Const(n2)) if n2 == 1 => {
+                    assert(eval(*e2, s) == 1);
+                    assert(eval(e, s) == eval(*e1, s));
+                    assert(optimize(e) == e1_inner);
+                    assert(eval(optimize(e), s) == eval(*e1, s));
+                },
+                (Exp::Const(n1), Exp::Const(n2)) => {
+                    assert(eval(*e1, s) == n1);
+                    assert(eval(*e2, s) == n2);
+                    assert(eval(e, s) == n1 * n2);
+                    assert(optimize(e) == Exp::Const(n1 * n2));
+                    assert(eval(optimize(e), s) == n1 * n2);
+                },
+                _ => {
+                    assert(eval(e, s) == eval(*e1, s) * eval(*e2, s));
+                    assert(optimize(e) == Exp::Mult(Box::new(optimize(*e1)), Box::new(optimize(*e2))));
+                    assert(eval(optimize(e), s) == eval(optimize(*e1), s) * eval(optimize(*e2), s));
+                },
+            }
+        },
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn optimize_correct(e: Exp, s: Map<String, int>)
+    ensures eval(e, s) == eval(optimize(e), s)
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+fn optimize_correct(e: Exp, s: Map<String, int>)
+    ensures eval(e, s) == eval(optimize(e), s)
+{
+    lemma_optimize_correct(e, s);
+}
+// </vc-code>
+
+fn main() {}
+
+}

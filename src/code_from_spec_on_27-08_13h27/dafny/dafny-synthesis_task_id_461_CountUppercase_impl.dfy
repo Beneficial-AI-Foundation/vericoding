@@ -1,0 +1,59 @@
+predicate IsUpperCase(c: char)
+{
+    65 <= c as int <= 90
+}
+
+// <vc-helpers>
+// Helper lemma to ensure the count of uppercase characters is computed correctly
+lemma UppercaseCountLemma(s: string, i: int, count: int)
+  requires 0 <= i <= |s|
+  requires count >= 0
+  requires count == |set j: int | 0 <= j < i && IsUpperCase(s[j])|
+  ensures count <= i
+{
+  if i == 0 {
+    assert count == 0;
+  } else {
+    var prevCount := |set j: int | 0 <= j < i-1 && IsUpperCase(s[j])|;
+    if IsUpperCase(s[i-1]) {
+      assert count == prevCount + 1;
+      assert prevCount <= i-1;
+      assert count <= i;
+    } else {
+      assert count == prevCount;
+      assert prevCount <= i-1;
+      assert count <= i;
+    }
+  }
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method CountUppercase(s: string) returns (count: int)
+    ensures count >= 0
+    ensures count == | set i: int | 0 <= i < |s| && IsUpperCase(s[i])|
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+method CountUppercaseImpl(s: string) returns (count: int)
+  ensures count >= 0
+  ensures count == |set i: int | 0 <= i < |s| && IsUpperCase(s[i])|
+{
+  count := 0;
+  var i := 0;
+  while i < |s|
+    invariant 0 <= i <= |s|
+    invariant count >= 0
+    invariant count == |set j: int | 0 <= j < i && IsUpperCase(s[j])|
+  {
+    if IsUpperCase(s[i]) {
+      count := count + 1;
+    }
+    i := i + 1;
+  }
+  assert i == |s|;
+  assert count == |set j: int | 0 <= j < i && IsUpperCase(s[j])|;
+}
+// </vc-code>

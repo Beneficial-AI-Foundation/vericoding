@@ -1,0 +1,71 @@
+vc-preamble: |-
+
+
+vc-helpers: |-
+  lemma SubseqProperties(s: seq<int>, i: int, j: int)
+      requires 0 <= i <= j <= |s|
+      ensures |s[i..j]| == j - i
+  {
+  }
+  
+  lemma SubseqEquality(s1: seq<int>, s2: seq<int>, i: int)
+      requires 0 <= i <= |s2| - |s1|
+      requires s1 == s2[i..i + |s1|]
+      ensures |s1| <= |s2|
+  {
+  }
+  
+  lemma LoopInvariantMaintained(sub: seq<int>, main: seq<int>, i: int)
+      requires 0 <= i < |main| - |sub| + 1
+      requires |sub| <= |main|
+      requires forall k {:trigger main[k..k + |sub|]} :: 0 <= k < i ==> sub != main[k..k + |sub|]
+      requires sub != main[i..i + |sub|]
+      ensures forall k {:trigger main[k..k + |sub|]} :: 0 <= k < i + 1 ==> sub != main[k..k + |sub|]
+  {
+  }
+  
+  lemma ExistsWitness(sub: seq<int>, main: seq<int>, i: int)
+      requires 0 <= i <= |main| - |sub|
+      requires sub == main[i..i + |sub|]
+      ensures exists j :: 0 <= j <= |main| - |sub| && sub == main[j..j + |sub|]
+  {
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  method IsSublist(sub: seq<int>, main: seq<int>) returns (result: bool)
+      ensures true <== (exists i :: 0 <= i <= |main| - |sub| && sub == main[i..i + |sub|])
+  // </vc-spec>
+
+vc-code: |-
+  {
+      if |sub| > |main| {
+          result := false;
+          return;
+      }
+      
+      if |sub| == 0 {
+          result := true;
+          return;
+      }
+      
+      var i := 0;
+      while i <= |main| - |sub|
+          invariant 0 <= i <= |main| - |sub| + 1
+          invariant forall k {:trigger main[k..k + |sub|]} :: 0 <= k < i ==> sub != main[k..k + |sub|]
+      {
+          if sub == main[i..i + |sub|] {
+              ExistsWitness(sub, main, i);
+              result := true;
+              return;
+          }
+          LoopInvariantMaintained(sub, main, i);
+          i := i + 1;
+      }
+      
+      result := false;
+  }
+
+vc-postamble: |-
+
+

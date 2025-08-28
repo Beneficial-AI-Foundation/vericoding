@@ -1,0 +1,84 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn expr_inner_longest(strings: &Vec<Vec<u8>>, result: Option<&Vec<u8>>) -> (result: bool) {
+    match result {
+        None => strings.len() == 0,
+        Some(s) => {
+            (forall|i: int| #![auto] 0 <= i < strings.len() ==> s.len() >= strings[i].len())
+                && (exists|i: int|
+                #![auto]
+                (0 <= i < strings.len() && s == strings[i] && (forall|j: int|
+                    #![auto]
+                    0 <= j < i ==> strings[j].len() < s.len())))
+        },
+    }
+}
+// pure-end
+
+// <vc-helpers>
+proof fn lemma_longest_exists(strings: &Vec<Vec<u8>>) -> (result: usize)
+    requires strings.len() > 0,
+    ensures 0 <= result < strings.len(),
+    ensures forall|i: int| #![auto] 0 <= i < strings.len() ==> strings[result].len() >= strings[i].len(),
+    ensures forall|j: int| #![auto] 0 <= j < result ==> strings[j].len() < strings[result].len(),
+{
+    let mut max_idx: usize = 0;
+    let mut i: usize = 1;
+    
+    while i < strings.len()
+        invariant 0 <= max_idx < strings.len(),
+        invariant 1 <= i <= strings.len(),
+        invariant forall|k: int| #![auto] 0 <= k < i ==> strings[max_idx].len() >= strings[k].len(),
+        invariant forall|k: int| #![auto] 0 <= k < max_idx ==> strings[k].len() < strings[max_idx].len(),
+    {
+        if strings[i].len() > strings[max_idx].len() {
+            max_idx = i;
+        }
+        i = i + 1;
+    }
+    
+    max_idx
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn longest(strings: &Vec<Vec<u8>>) -> (result: Option<&Vec<u8>>)
+    // post-conditions-start
+    ensures
+        expr_inner_longest(strings, result),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    if strings.len() == 0 {
+        None
+    } else {
+        proof {
+            let max_idx = lemma_longest_exists(strings);
+        }
+        
+        let mut max_idx: usize = 0;
+        let mut i: usize = 1;
+        
+        while i < strings.len()
+            invariant 0 <= max_idx < strings.len(),
+            invariant 1 <= i <= strings.len(),
+            invariant forall|k: int| #![auto] 0 <= k < i ==> strings[max_idx].len() >= strings[k].len(),
+            invariant forall|k: int| #![auto] 0 <= k < max_idx ==> strings[k].len() < strings[max_idx].len(),
+        {
+            if strings[i].len() > strings[max_idx].len() {
+                max_idx = i;
+            }
+            i = i + 1;
+        }
+        
+        Some(&strings[max_idx])
+    }
+}
+// </vc-code>
+
+}
+fn main() {}

@@ -1,0 +1,62 @@
+vc-preamble: |-
+  predicate quickSorted(Seq: seq<int>)
+  {
+    forall idx_1, idx_2 :: 0 <= idx_1 < idx_2 < |Seq| ==> Seq[idx_1] <= Seq[idx_2]
+  }
+
+vc-helpers: |-
+  lemma multiset_append_single<T>(s: seq<T>, x: T)
+    ensures multiset(s + [x]) == multiset(s) + multiset([x])
+  {
+  }
+  
+  lemma multiset_slice_extend<T>(s: seq<T>, i: int)
+    requires 0 <= i < |s|
+    ensures multiset(s[..i+1]) == multiset(s[..i]) + multiset([s[i]])
+  {
+    assert s[..i+1] == s[..i] + [s[i]];
+    multiset_append_single(s[..i], s[i]);
+  }
+  
+  lemma full_slice_identity<T>(s: seq<T>)
+    ensures s[..|s|] == s
+  {
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  method threshold(thres:int,Seq:seq<int>) returns (Seq_1:seq<int>,Seq_2:seq<int>)
+    ensures (forall x | x in Seq_1 :: x <= thres) && (forall x | x in Seq_2 :: x >= thres)
+    ensures |Seq_1| + |Seq_2| == |Seq| 
+    ensures multiset(Seq_1) + multiset(Seq_2) == multiset(Seq)
+  // </vc-spec>
+
+vc-code: |-
+  {
+    Seq_1 := [];
+    Seq_2 := [];
+    
+    var i := 0;
+    while i < |Seq|
+      invariant 0 <= i <= |Seq|
+      invariant forall x | x in Seq_1 :: x <= thres
+      invariant forall x | x in Seq_2 :: x >= thres
+      invariant |Seq_1| + |Seq_2| == i
+      invariant multiset(Seq_1) + multiset(Seq_2) == multiset(Seq[..i])
+    {
+      if Seq[i] <= thres {
+        Seq_1 := Seq_1 + [Seq[i]];
+        multiset_append_single(Seq_1[..|Seq_1|-1], Seq[i]);
+      } else {
+        Seq_2 := Seq_2 + [Seq[i]];
+        multiset_append_single(Seq_2[..|Seq_2|-1], Seq[i]);
+      }
+      multiset_slice_extend(Seq, i);
+      i := i + 1;
+    }
+    full_slice_identity(Seq);
+  }
+
+vc-postamble: |-
+
+

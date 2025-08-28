@@ -1,0 +1,39 @@
+// <vc-helpers>
+// No additional helpers needed for this implementation
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method RemoveElement(nums: array<int>, val: int) returns (newLength: int)
+    modifies nums
+    ensures 0 <= newLength <= nums.Length
+    ensures forall x :: x in nums[..newLength] ==> x != val
+    ensures multiset(nums[..newLength]) == multiset(old(nums[..]))[val := 0]
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+  var i := 0;
+  var j := 0;
+  ghost var oldNums := nums[..];
+  
+  while j < nums.Length
+    decreases nums.Length - j
+    invariant 0 <= i <= j <= nums.Length
+    invariant forall k :: 0 <= k < i ==> nums[k] != val
+    invariant multiset(nums[..i]) + multiset(nums[i..j]) + multiset(nums[j..]) == multiset(oldNums[..])
+    invariant multiset(nums[..i]) == multiset(oldNums[..i])[val := 0]
+  {
+    if nums[j] != val {
+      if i != j {
+        nums[i] := nums[j];
+      }
+      i := i + 1;
+    }
+    j := j + 1;
+  }
+  
+  newLength := i;
+}
+// </vc-code>

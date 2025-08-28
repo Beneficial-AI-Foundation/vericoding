@@ -1,0 +1,76 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn count(hi: nat, s: Seq<i32>) -> int
+      decreases hi
+  {
+      if hi == 0 {
+          0
+      } else if s[hi - 1] % 2 == 0 {
+          1 + count((hi - 1) as nat, s)
+      } else {
+          count((hi - 1) as nat, s)
+      }
+  }
+  
+  
+  
+  
+  fn compute_count(count_index: usize, a: &Vec<i32>, b: &mut Vec<i32>) -> (p: usize)
+      requires 
+          count_index == 0 || (a.len() == old(b).len() && 1 <= count_index <= a.len()),
+      ensures 
+          p == count(count_index as nat, a@),
+  {
+    assume(false);
+    0
+  }
+
+vc-helpers: |-
+  spec fn count_valid_index(hi: nat, s: Seq<i32>) -> bool {
+      hi <= s.len()
+  }
+  
+  proof fn count_index_bounds(hi: nat, s: Seq<i32>)
+      requires count_valid_index(hi, s)
+      ensures hi > 0 ==> hi - 1 < s.len()
+  {
+  }
+  
+  proof fn count_bounds_lemma(hi: nat, s: Seq<i32>)
+      requires hi <= s.len()
+      ensures count_valid_index(hi, s)
+  {
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn pre_compute(a: &Vec<i32>, b: &mut Vec<i32>) -> (p: usize)
+      requires 
+          a.len() == old(b).len(),
+      ensures 
+          (b.len() == 0 || (a.len() == b.len() && 1 <= b.len() <= a.len())) &&
+          p == count(b.len() as nat, a@),
+  // </vc-spec>
+
+vc-code: |-
+  {
+      if b.len() == 0 {
+          0
+      } else {
+          proof {
+              count_bounds_lemma(b.len() as nat, a@);
+              count_index_bounds(b.len() as nat, a@);
+          }
+          compute_count(b.len(), a, b)
+      }
+  }
+
+vc-postamble: |-
+  
+  fn main() {}
+  
+  }
+

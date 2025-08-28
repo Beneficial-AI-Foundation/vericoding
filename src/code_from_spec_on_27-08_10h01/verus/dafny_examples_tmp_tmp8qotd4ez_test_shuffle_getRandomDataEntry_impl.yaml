@@ -1,0 +1,91 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  fn random(a: int, b: int) -> (r: int)
+      ensures a <= b ==> a <= r <= b
+  {
+      assume(false);
+      a
+  }
+  
+  spec fn set_of_seq<T>(s: Seq<T>) -> Set<T> {
+      s.to_set()
+  }
+
+vc-helpers: |-
+  spec fn not_in_avoid_set<T>(work_list: Seq<T>, avoid_set: Seq<T>) -> bool {
+      exists |i: int| 0 <= i < work_list.len() && !avoid_set.contains(work_list[i])
+  }
+  
+  proof fn exists_valid_entry<T: PartialEq>(work_list: Seq<T>, avoid_set: Seq<T>)
+      requires 
+          work_list.len() > 0,
+          set_of_seq(avoid_set).subset_of(set_of_seq(work_list)),
+          set_of_seq(avoid_set) != set_of_seq(work_list)
+      ensures not_in_avoid_set(work_list, avoid_set)
+  {
+      assert(exists |x: T| work_list.contains(x) && !avoid_set.contains(x));
+      let witness_x = choose |x: T| work_list.contains(x) && !avoid_set.contains(x);
+      let witness_i = choose |i: int| 0 <= i < work_list.len() && work_list[i] == witness_x;
+      assert(!avoid_set.contains(work_list[witness_i]));
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn get_random_data_entry<T: PartialEq + Clone>(m_work_list: &Vec<T>, avoid_set: &Vec<T>) -> (e: T)
+      requires m_work_list.len() > 0
+      ensures 
+          set_of_seq(avoid_set@).subset_of(set_of_seq(m_work_list@)) && 
+          set_of_seq(avoid_set@) != set_of_seq(m_work_list@) ==> !avoid_set@.contains(e),
+          (forall |x: T| avoid_set@.contains(x) ==> m_work_list@.contains(x)) && 
+          avoid_set@ != m_work_list@ ==> m_work_list@.contains(e)
+  // </vc-spec>
+
+vc-code: |-
+  {
+      let avoid_conditions = (forall |x: T| avoid_set@.contains(x) ==> m_work_list@.contains(x)) && 
+                            set_of_seq(avoid_set@) != set_of_seq(m_work_list@);
+      
+      if avoid_conditions {
+          proof {
+              exists_valid_entry(m_work_list@, avoid_set@);
+          }
+          
+          let mut attempts = 0;
+          loop 
+              invariant 
+                  m_work_list.len() > 0,
+                  attempts >= 0,
+                  (forall |x: T| avoid_set@.contains(x) ==> m_work_list@.contains(x)) && 
+                  set_of_seq(avoid_set@) != set_of_seq(m_work_list@) ==> not_in_avoid_set(m_work_list@, avoid_set@)
+              decreases 100 - attempts
+          {
+              if attempts >= 100 {
+                  break;
+              }
+              
+              let ghost m_len: int = m_work_list.len() as int;
+              let idx_int = random(0int, m_len - 1int);
+              let idx = idx_int as usize;
+              let candidate = &m_work_list[idx];
+              
+              if !avoid_set@.contains(*candidate) {
+                  return candidate.clone();
+              }
+              
+              attempts += 1;
+          }
+      }
+      
+      m_work_list[0].clone()
+  }
+
+vc-postamble: |-
+  
+  fn main() {
+  }
+  
+  }
+

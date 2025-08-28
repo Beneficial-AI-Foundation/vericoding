@@ -1,0 +1,139 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn count_identical(s1: Seq<i32>, s2: Seq<i32>, s3: Seq<i32>) -> (result: int)
+    decreases s1.len(), s2.len(), s3.len(),
+{
+    if s1.len() == 0 || s2.len() == 0 || s3.len() == 0 {
+        0
+    } else {
+        count_identical(s1.drop_last(), s2.drop_last(), s3.drop_last()) + if (s1.last() == s2.last()
+            && s2.last() == s3.last()) {
+            1 as int
+        } else {
+            0 as int
+        }
+    }
+}
+// pure-end
+
+// <vc-helpers>
+spec fn count_identical_up_to(s1: Seq<i32>, s2: Seq<i32>, s3: Seq<i32>, i: int) -> int
+    decreases i
+{
+    if i <= 0 {
+        0
+    } else {
+        count_identical_up_to(s1, s2, s3, i - 1) + 
+        if s1[i - 1] == s2[i - 1] && s2[i - 1] == s3[i - 1] {
+            1int
+        } else {
+            0int
+        }
+    }
+}
+
+proof fn lemma_count_identical_equivalent(s1: Seq<i32>, s2: Seq<i32>, s3: Seq<i32>)
+    requires s1.len() == s2.len() && s2.len() == s3.len()
+    ensures count_identical(s1, s2, s3) == count_identical_up_to(s1, s2, s3, s1.len() as int)
+    decreases s1.len()
+{
+    if s1.len() == 0 {
+        assert(count_identical(s1, s2, s3) == 0);
+        assert(count_identical_up_to(s1, s2, s3, 0) == 0);
+    } else {
+        let s1_drop = s1.drop_last();
+        let s2_drop = s2.drop_last();
+        let s3_drop = s3.drop_last();
+        lemma_count_identical_equivalent(s1_drop, s2_drop, s3_drop);
+        assert(count_identical(s1_drop, s2_drop, s3_drop) == count_identical_up_to(s1_drop, s2_drop, s3_drop, s1_drop.len() as int));
+        assert(s1_drop.len() == s1.len() - 1);
+        assert(count_identical_up_to(s1, s2, s3, s1.len() as int) == 
+               count_identical_up_to(s1, s2, s3, (s1.len() - 1) as int) + 
+               if s1[s1.len() - 1] == s2[s2.len() - 1] && s2[s2.len() - 1] == s3[s3.len() - 1] { 1int } else { 0int });
+        assert(count_identical_up_to(s1_drop, s2_drop, s3_drop, s1_drop.len() as int) == 
+               count_identical_up_to(s1, s2, s3, (s1.len() - 1) as int));
+        assert(s1.last() == s1[s1.len() - 1]);
+        assert(s2.last() == s2[s2.len() - 1]);
+        assert(s3.last() == s3[s3.len() - 1]);
+    }
+}
+
+proof fn lemma_count_identical_up_to_step(s1: Seq<i32>, s2: Seq<i32>, s3: Seq<i32>, i: int, count_so_far: int)
+    requires 
+        s1.len() == s2.len() && s2.len() == s3.len(),
+        0 <= i <= s1.len(),
+        count_so_far == count_identical_up_to(s1, s2, s3, i)
+    ensures
+        if i < s1.len() {
+            count_identical_up_to(s1, s2, s3, i + 1) == count_so_far + 
+            if s1[i] == s2[i] && s2[i] == s3[i] { 1int } else { 0int }
+        } else {
+            true
+        }
+{
+}
+
+proof fn lemma_count_bound(s1: Seq<i32>, s2: Seq<i32>, s3: Seq<i32>, i: int)
+    requires 
+        s1.len() == s2.len() && s2.len() == s3.len(),
+        0 <= i <= s1.len()
+    ensures 0 <= count_identical_up_to(s1, s2, s3, i) <= i
+    decreases i
+{
+    if i <= 0 {
+    } else {
+        lemma_count_bound(s1, s2, s3, i - 1);
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn count_identical_position(arr1: &Vec<i32>, arr2: &Vec<i32>, arr3: &Vec<i32>) -> (count: usize)
+    // pre-conditions-start
+    requires
+        arr1.len() == arr2.len() && arr2.len() == arr3.len(),
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        0 <= count <= arr1.len(),
+        count_identical(arr1@, arr2@, arr3@) == count,
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut count: usize = 0;
+    let mut i: usize = 0;
+    
+    while i < arr1.len()
+        invariant
+            0 <= i <= arr1.len(),
+            arr1.len() == arr2.len() && arr2.len() == arr3.len(),
+            count == count_identical_up_to(arr1@, arr2@, arr3@, i as int),
+            count <= i,
+        decreases arr1.len() - i
+    {
+        proof {
+            lemma_count_identical_up_to_step(arr1@, arr2@, arr3@, i as int, count as int);
+        }
+        
+        if arr1[i] == arr2[i] && arr2[i] == arr3[i] {
+            count = count + 1;
+        }
+        i = i + 1;
+    }
+    
+    proof {
+        lemma_count_identical_equivalent(arr1@, arr2@, arr3@);
+        lemma_count_bound(arr1@, arr2@, arr3@, arr1.len() as int);
+    }
+    
+    count
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

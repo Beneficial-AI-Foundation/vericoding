@@ -1,0 +1,117 @@
+predicate sorted(s : seq<int>) {
+    forall u, w :: 0 <= u < w < |s| ==> s[u] <= s[w]
+}
+
+method binarySearch(v:array<int>, elem:int) returns (p:int)
+ requires sorted(v[0..v.Length])
+ ensures -1<=p<v.Length
+ ensures (forall u::0<=u<=p ==> v[u]<=elem) && (forall w::p<w<v.Length ==> v[w]>elem)
+{
+  assume{:axiom} false;
+}
+
+
+
+
+
+
+//Recursive binary search
+
+// <vc-helpers>
+function midPoint(low: int, high: int): int
+  requires low <= high
+  ensures low <= midPoint(low, high) <= high
+{
+  low + (high - low) / 2
+}
+
+lemma SortedSubsequence(v: array<int>, low: int, high: int)
+  requires 0 <= low <= high <= v.Length
+  requires sorted(v[0..v.Length])
+  ensures sorted(v[low..high])
+{
+  if low == high {
+    assert v[low..high] == [];
+  } else {
+    forall u, w | low <= u < w < high
+    ensures v[u] <= v[w]
+    {
+      assert 0 <= u < w < v.Length;
+    }
+  }
+}
+
+lemma SortedPreservation(v: array<int>, low: int, mid: int, high: int, elem: int)
+  requires 0 <= low <= mid <= high <= v.Length
+  requires sorted(v[0..v.Length])
+  ensures forall u :: low <= u < mid ==> v[u] <= v[mid]
+  ensures forall w :: mid < w < high ==> v[mid] <= v[w]
+{
+  forall u | low <= u < mid
+  ensures v[u] <= v[mid]
+  {
+    assert 0 <= u < mid < v.Length;
+  }
+  forall w | mid < w < high
+  ensures v[mid] <= v[w]
+  {
+    assert 0 <= mid < w < v.Length;
+  }
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method otherbSearch(v:array<int>, elem:int) returns (b:bool,p:int)
+ requires sorted(v[0..v.Length])
+ ensures 0<=p<=v.Length
+ ensures b == (elem in v[0..v.Length])
+ ensures b ==> p<v.Length && v[p]==elem
+ ensures !b ==> (forall u::0<=u<p ==> v[u]<elem) && 
+               (forall w::p<=w<v.Length ==> v[w]>elem)
+ //Implement and verify
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+method BinarySearchRecursive(v: array<int>, elem: int) returns (b: bool, p: int)
+  requires sorted(v[0..v.Length])
+  ensures 0 <= p <= v.Length
+  ensures b == (elem in v[0..v.Length])
+  ensures b ==> p < v.Length && v[p] == elem
+  ensures !b ==> (forall u :: 0 <= u < p ==> v[u] < elem) && (forall w :: p <= w < v.Length ==> v[w] > elem)
+{
+  var low := 0;
+  var high := v.Length;
+  var found := false;
+  var pos := 0;
+
+  while low < high
+    decreases high - low
+    invariant 0 <= low <= high <= v.Length
+    invariant forall u :: 0 <= u < low ==> v[u] < elem
+    invariant forall w :: high <= w < v.Length ==> v[w] > elem
+    invariant found ==> 0 <= pos < v.Length && v[pos] == elem
+    invariant !found ==> pos == low
+  {
+    var mid := midPoint(low, high);
+    SortedPreservation(v, low, mid, high, elem);
+    if v[mid] == elem {
+      found := true;
+      pos := mid;
+      break;
+    } else if v[mid] < elem {
+      low := mid + 1;
+      pos := low;
+    } else {
+      high := mid;
+    }
+  }
+
+  if found {
+    return true, pos;
+  } else {
+    return false, pos;
+  }
+}
+// </vc-code>

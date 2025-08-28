@@ -1,0 +1,55 @@
+use vstd::prelude::*;
+
+verus!{
+
+// <vc-helpers>
+spec fn can_convert_to_i32(x: int) -> bool {
+    x >= i32::MIN && x <= i32::MAX
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn myfun(a: &mut Vec<i32>, b: &mut Vec<i32>, sum: &mut Vec<i32>, N: i32)
+	// pre-conditions-start
+	requires
+		N > 0,
+		old(a).len() == N,
+		old(b).len() == N,
+		old(sum).len() == 1,
+		N < 1000,
+	// pre-conditions-end
+	// post-conditions-start
+	ensures
+		forall |k:int| 0 <= k < N ==> a[k] == 2 * N + 1,
+	// post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut i = 0;
+    while i < N
+        invariant
+            0 <= i <= N,
+            a.len() == N,
+            b.len() == N,
+            sum.len() == 1,
+            forall |k:int| 0 <= k < i ==> a[k as int] == 2 * N as int + 1,
+        decreases N - i,
+    {
+        proof {
+            assert(N < 1000);
+            assert(2 * N < 2000);
+            assert(2 * N + 1 < 2001);
+            assert(2 * N + 1 <= 2000);
+            assert(2000 <= i32::MAX);
+            assert(2 * N + 1 <= i32::MAX);
+        }
+        a[i as usize] = (2 * N + 1) as i32;
+        i += 1;
+    }
+}
+// </vc-code>
+
+}
+
+fn main() {}

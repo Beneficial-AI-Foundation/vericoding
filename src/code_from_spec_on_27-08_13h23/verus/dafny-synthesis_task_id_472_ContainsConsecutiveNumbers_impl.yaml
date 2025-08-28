@@ -1,0 +1,42 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+  // No updates needed for helpers in this case
+
+vc-spec: |-
+  // <vc-spec>
+  fn contains_consecutive_numbers(a: &[i32]) -> (result: bool)
+      requires a.len() > 0
+      ensures result <==> exists|i: int| #![trigger a.spec_index(i)] 
+          0 <= i < (a.len() as int) - 1 && a[i] + 1 == a[i + 1]
+  // </vc-spec>
+
+vc-code: |-
+  fn contains_consecutive_numbers(a: &[i32]) -> (result: bool)
+      requires a.len() > 0
+      ensures result <==> exists|i: int| #![trigger a.spec_index(i)]
+          0 <= i < (a.len() as int) - 1 && a[i] + 1 == a[i + 1]
+  {
+      let len = a.len() as int;
+      let mut i: int = 0;
+      while i < len - 1
+          invariant
+              0 <= i <= len - 1,
+              forall|j: int| 0 <= j < i ==> !(a[j] + 1 == a[j + 1])
+      {
+          if a[i] + 1 == a[i + 1] {
+              return true;
+          }
+          i = i + 1;
+      }
+      false
+  }
+
+vc-postamble: |-
+  fn main() {}
+  
+  }
+

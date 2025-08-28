@@ -1,0 +1,25 @@
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method Filter(a:seq<char>, b:set<char>) returns(c:set<char>) 
+ensures forall x :: x in a && x in b <==> x in c
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+  c := {};
+  var i := 0;
+  while i < |a|
+    invariant 0 <= i <= |a|
+    invariant forall x :: x in c <==> (exists j :: 0 <= j < i && a[j] == x && x in b)
+  {
+    if a[i] in b {
+      c := c + {a[i]};
+    }
+    i := i + 1;
+  }
+}
+// </vc-code>

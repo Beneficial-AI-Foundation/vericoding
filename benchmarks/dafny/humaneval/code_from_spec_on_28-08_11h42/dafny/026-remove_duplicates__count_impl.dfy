@@ -1,0 +1,134 @@
+function count_rec(a: seq<int>, x: int): int {
+  if |a| == 0 then 0
+  else count_rec(a[1..], x) + (if a[0] == x then 1 else 0)
+}
+method remove_duplicates(a: seq<int>) returns (result: seq<int>)
+  // pre-conditions-start
+  requires forall i :: 0 <= i < |a| ==> count_rec(a, a[i]) >= 1
+  // pre-conditions-end
+  // post-conditions-start
+  ensures forall i :: 0 <= i < |result| ==> count_rec(a, result[i]) == 1
+  ensures forall i :: 0 <= i < |a| ==> (a[i] in result <==> count_rec(a, a[i]) == 1)
+  // post-conditions-end
+{
+  assume{:axiom} false;
+}
+
+// <vc-helpers>
+lemma count_rec_properties(a: seq<int>, x: int)
+  ensures count_rec(a, x) == |set i | 0 <= i < |a| && a[i] == x|
+{
+  if |a| == 0 {
+    assert a == [];
+    assert (set i | 0 <= i < |a| && a[i] == x) == {};
+  } else {
+    var tail := a[1..];
+    count_rec_properties(tail, x);
+    
+    var tail_set := set i | 0 <= i < |tail| && tail[i] == x;
+    var full_set := set i | 0 <= i < |a| && a[i] == x;
+    
+    if a[0] == x {
+      var mapped_tail_set := set i | 1 <= i < |a| && a[i] == x;
+      
+      forall i | i in tail_set ensures (i + 1) in mapped_tail_set {
+        assert 0 <= i < |tail|;
+        assert tail[i] == x;
+        assert tail[i] == a[i + 1];
+        assert a[i + 1] == x;
+        assert 1 <= i + 1 < |a|;
+      }
+      
+      forall j | j in mapped_tail_set ensures (j - 1) in tail_set {
+        assert 1 <= j < |a|;
+        assert a[j] == x;
+        assert tail[j - 1] == a[j];
+        assert tail[j - 1] == x;
+        assert 0 <= j - 1 < |tail|;
+      }
+      
+      assert tail_set == set i | 0 <= i < |tail| && tail[i] == x;
+      assert mapped_tail_set == set i | 1 <= i < |a| && a[i] == x;
+      assert forall i :: i in tail_set <==> (i + 1) in mapped_tail_set;
+      assert |tail_set| == |mapped_tail_set|;
+      assert full_set == mapped_tail_set + {0};
+      assert 0 !in mapped_tail_set;
+      assert |full_set| == |mapped_tail_set| + 1;
+    } else {
+      var mapped_tail_set := set i | 1 <= i < |a| && a[i] == x;
+      
+      forall i | i in tail_set ensures (i + 1) in mapped_tail_set {
+        assert 0 <= i < |tail|;
+        assert tail[i] == x;
+        assert tail[i] == a[i + 1];
+        assert a[i + 1] == x;
+        assert 1 <= i + 1 < |a|;
+      }
+      
+      forall j | j in mapped_tail_set ensures (j - 1) in tail_set {
+        assert 1 <= j < |a|;
+        assert a[j] == x;
+        assert tail[j - 1] == a[j];
+        assert tail[j - 1] == x;
+        assert 0 <= j - 1 < |tail|;
+      }
+      
+      assert tail_set == set i | 0 <= i < |tail| && tail[i] == x;
+      assert mapped_tail_set == set i | 1 <= i < |a| && a[i] == x;
+      assert forall i :: i in tail_set <==> (i + 1) in mapped_tail_set;
+      assert |tail_set| == |mapped_tail_set|;
+      assert full_set == mapped_tail_set;
+    }
+  }
+}
+
+lemma count_increment(a: seq<int>, x: int, i: int)
+  requires 0 <= i < |a|
+  requires a[i] == x
+  ensures |set j | 0 <= j < i+1 && a[j] == x| == |set j | 0 <= j < i && a[j] == x| + 1
+{
+  var old_set := set j | 0 <= j < i && a[j] == x;
+  var new_set := set j | 0 <= j < i+1 && a[j] == x;
+  assert new_set == old_set + {i};
+  assert i !in old_set;
+}
+
+lemma count_no_increment(a: seq<int>, x: int, i: int)
+  requires 0 <= i < |a|
+  requires a[i] != x
+  ensures |set j | 0 <= j < i+1 && a[j] == x| == |set j | 0 <= j < i && a[j] == x|
+{
+  var old_set := set j | 0 <= j < i && a[j] == x;
+  var new_set := set j | 0 <= j < i+1 && a[j] == x;
+  assert new_set == old_set;
+}
+// </vc-helpers>
+
+// <vc-spec>
+method count(a: seq<int>, x: int) returns (cnt: int)
+  // post-conditions-start
+  ensures cnt == |set i | 0 <= i < |a| && a[i] == x|
+  ensures cnt == count_rec(a, x)
+  // post-conditions-end
+// </vc-spec>
+// <vc-code>
+{
+  cnt := 0;
+  var i := 0;
+  
+  while i < |a|
+    invariant 0 <= i <= |a|
+    invariant cnt == |set j | 0 <= j < i && a[j] == x|
+  {
+    if a[i] == x {
+      count_increment(a, x, i);
+      cnt := cnt + 1;
+    } else {
+      count_no_increment(a, x, i);
+    }
+    i := i + 1;
+  }
+  
+  count_rec_properties(a, x);
+}
+// </vc-code>

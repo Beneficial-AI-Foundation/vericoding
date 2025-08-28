@@ -1,0 +1,146 @@
+// Author: Snorri Agnarsson, snorri@hi.is
+
+// Search1000 is a Dafny version of a function shown
+// by Jon Bentley in his old Programming Pearls
+// column in CACM.  Surprisingly Dafny needs no help
+// to verify the function.
+
+// Is2Pow(n) is true iff n==2^k for some k>=0.
+predicate Is2Pow( n: int )
+    decreases n;
+{
+    if n < 1 then
+        false
+    else if n == 1 then
+        true
+    else
+        n%2 == 0 && Is2Pow(n/2)
+}
+
+// This method is a binary search that only works for array
+// segments of size n == 2^k-1 for some k>=0.
+
+// This method is a binary search that only works for array
+// segments of size n == 2^k-1 for some k>=0.
+
+// <vc-helpers>
+lemma Is2PowProperties(n: int)
+    requires Is2Pow(n)
+    requires n > 1
+    ensures n % 2 == 0
+    ensures Is2Pow(n/2)
+{
+}
+
+lemma Is2PowMinus1Properties(n: int)
+    requires Is2Pow(n+1)
+    requires n > 0
+    ensures Is2Pow((n-1)/2 + 1)
+{
+    assert n+1 > 1;
+    Is2PowProperties(n+1);
+    assert (n+1) % 2 == 0;
+    assert Is2Pow((n+1)/2);
+    assert n % 2 == 1;
+    assert (n-1) % 2 == 0;
+    assert (n-1)/2 + 1 == (n+1)/2;
+}
+
+lemma BinarySearchPreservation(a: array<int>, i: int, n: int, x: int, mid: int)
+    requires 0 <= i <= i+n <= a.Length
+    requires forall p,q | i <= p < q < i+n :: a[p] <= a[q]
+    requires Is2Pow(n+1)
+    requires n > 0
+    requires mid == i + (n-1)/2
+    ensures 0 <= i <= mid < i+n <= a.Length
+    ensures 0 <= mid+1 <= a.Length
+    ensures mid+1 + ((i+n-1)-(mid+1)) == i+n-1
+    ensures 0 <= (i+n-1)-(mid+1) + 1
+    ensures forall p,q | i <= p < q <= mid :: a[p] <= a[q]
+    ensures forall p,q | mid+1 <= p < q < i+n :: a[p] <= a[q]
+{
+    assert n >= 1;
+    assert (n-1)/2 >= 0;
+    assert mid == i + (n-1)/2;
+    assert mid >= i;
+    assert mid < i + n;
+    assert mid+1 <= i+n;
+    assert mid+1 + ((i+n-1)-(mid+1)) == i+n-1;
+}
+
+lemma ArithmeticHelper(n: int)
+    requires Is2Pow(n+1)
+    requires n > 0
+    ensures n % 2 == 1
+    ensures (n-1) % 2 == 0
+    ensures (n-1) == 2 * ((n-1)/2)
+    ensures (n-1) - (n-1)/2 == (n-1)/2
+{
+    Is2PowMinus1Properties(n);
+    assert n+1 > 1;
+    Is2PowProperties(n+1);
+    assert (n+1) % 2 == 0;
+    assert n % 2 == 1;
+    assert (n-1) % 2 == 0;
+    
+    // Since (n-1) is even, we have (n-1) = 2k where k = (n-1)/2
+    var k := (n-1)/2;
+    assert (n-1) == 2 * k;
+    assert (n-1) - k == k;
+}
+
+lemma RightHalfArithmetic(n: int, i: int)
+    requires Is2Pow(n+1)
+    requires n > 0
+    ensures (i+n-1)-(i+(n-1)/2+1) == (n-1)/2
+{
+    ArithmeticHelper(n);
+    calc {
+        (i+n-1)-(i+(n-1)/2+1);
+        i+n-1-i-(n-1)/2-1;
+        n-1-(n-1)/2-1;
+        (n-1) - (n-1)/2 - 1;
+        (n-1)/2 - 1;
+    }
+    assert (n-1)/2 - 1 + 1 == (n-1)/2;
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method Search2PowRecursive( a: array<int>, i: int, n: int, x: int ) returns ( k: int )
+    decreases n;
+    requires 0 <= i <= i+n <= a.Length;
+    requires forall p,q | i <= p < q < i+n :: a[p] <= a[q];
+    requires Is2Pow(n+1);
+    ensures i <= k <= i+n;
+    ensures forall r | i <= r < k :: a[r] < x;
+    ensures forall r | k <= r < i+n :: a[r] >= x;
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    if n == 0 {
+        return i;
+    }
+    
+    var mid := i + (n-1)/2;
+    BinarySearchPreservation(a, i, n, x, mid);
+    
+    if a[mid] < x {
+        Is2PowMinus1Properties(n);
+        RightHalfArithmetic(n, i);
+        var result := Search2PowRecursive(a, mid+1, (i+n-1)-(mid+1), x);
+        return result;
+    } else {
+        Is2PowMinus1Properties(n);
+        var result := Search2PowRecursive(a, i, (n-1)/2, x);
+        assert forall r | i <= r < result :: a[r] < x;
+        assert forall r | result <= r <= mid :: a[r] >= x;
+        assert forall r | mid+1 <= r < i+n :: a[r] >= a[mid];
+        assert forall r | mid+1 <= r < i+n :: a[r] >= x;
+        return result;
+    }
+}
+// </vc-code>

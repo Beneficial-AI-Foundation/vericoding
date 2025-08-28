@@ -1,0 +1,49 @@
+// <vc-helpers>
+lemma ThreeElementsOrdering(a: real, b: real, c: real)
+    ensures (a >= b >= c) || (a >= c >= b) || (b >= a >= c) || (b >= c >= a) || (c >= a >= b) || (c >= b >= a)
+{
+}
+
+lemma ExistsOrderingForThreeIndices(vals: array<real>, i: int, j: int, k: int)
+    requires 0 <= i < vals.Length && 0 <= j < vals.Length && 0 <= k < vals.Length
+    requires i != j && j != k && k != i
+    ensures exists p, q, r | p in {i, j, k} && q in {i, j, k} && r in {i, j, k} && p != q && q != r && p != r :: vals[p] >= vals[q] >= vals[r]
+{
+    ThreeElementsOrdering(vals[i], vals[j], vals[k]);
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method torneo(Valores : array?<real>, i : int, j : int, k : int) returns (pos_padre : int, pos_madre : int)
+    requires Valores != null && Valores.Length >= 20 && Valores.Length < 50 && i >= 0 && j >= 0 && k >= 0 
+    requires i < Valores.Length && j < Valores.Length && k < Valores.Length && i != j && j != k && k != i 
+    ensures exists p, q, r | p in {i, j, k} && q in {i, j, k} && r in {i, j, k} && p != q && q != r && p != r :: Valores[p] >= Valores[q] >= Valores[r] && pos_padre == p && pos_madre == q // Q
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    ExistsOrderingForThreeIndices(Valores, i, j, k);
+    
+    if Valores[i] >= Valores[j] && Valores[j] >= Valores[k] {
+        pos_padre := i;
+        pos_madre := j;
+    } else if Valores[i] >= Valores[k] && Valores[k] >= Valores[j] {
+        pos_padre := i;
+        pos_madre := k;
+    } else if Valores[j] >= Valores[i] && Valores[i] >= Valores[k] {
+        pos_padre := j;
+        pos_madre := i;
+    } else if Valores[j] >= Valores[k] && Valores[k] >= Valores[i] {
+        pos_padre := j;
+        pos_madre := k;
+    } else if Valores[k] >= Valores[i] && Valores[i] >= Valores[j] {
+        pos_padre := k;
+        pos_madre := i;
+    } else {
+        pos_padre := k;
+        pos_madre := j;
+    }
+}
+// </vc-code>

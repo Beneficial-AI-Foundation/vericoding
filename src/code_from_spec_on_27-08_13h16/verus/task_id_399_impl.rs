@@ -1,0 +1,53 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+// No updates needed for helpers
+// </vc-helpers>
+
+// <vc-spec>
+fn bit_wise_xor(arr1: &Vec<i32>, arr2: &Vec<i32>) -> (result: Vec<i32>)
+    // pre-conditions-start
+    requires
+        arr1.len() == arr2.len(),
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        result.len() == arr1.len(),
+        forall|i: int|
+            0 <= i < result.len() ==> result[i] == #[trigger] arr1[i] ^ #[trigger] arr2[i],
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut result: Vec<i32> = Vec::with_capacity(arr1.len());
+    let len = arr1.len();
+    
+    let mut i: usize = 0;
+    while i < len
+        invariant
+            len == arr1.len(),
+            len == arr2.len(),
+            result.len() == i,
+            forall|k: int| 0 <= k < i ==> result@[k] == arr1[k as usize] ^ arr2[k as usize],
+        decreases len - i
+    {
+        result.push(arr1[i] ^ arr2[i]);
+        i = i + 1;
+    }
+    
+    proof {
+        assert(result.len() == arr1.len());
+        let result_view = result.view();
+        assert(forall|i: int| 0 <= i < result.len() ==> result_view[i] == arr1[i as usize] ^ arr2[i as usize]);
+    }
+    
+    result
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

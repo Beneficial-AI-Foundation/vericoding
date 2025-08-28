@@ -1,0 +1,65 @@
+use vstd::prelude::*;
+
+verus! {
+
+//Problem 01
+
+//problem02
+//a)
+
+// <vc-helpers>
+proof fn div_helper(n: int, d: int, q: int) -> (r: int)
+    requires n >= d && n >= 0 && d > 0 && q >= 0,
+    ensures r == n - d * q && 0 <= r,
+    decreases n - d * q
+{
+    if n < d {
+        n
+    } else {
+        div_helper(n - d, d, q + 1)
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+proof fn int_div(n: int, d: int) -> (result: (int, int))
+    requires n >= d && n >= 0 && d > 0,
+    ensures ({
+        let (q, r) = result;
+        (d * q) + r == n && 0 <= q <= n / 2 && 0 <= r < d
+    })
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+proof fn int_div(n: int, d: int) -> (result: (int, int))
+    requires n >= d && n >= 0 && d > 0,
+    ensures {
+        let (q, r) = result;
+        (d * q) + r == n && 0 <= q && 0 <= r < d
+    }
+{
+    let mut q = 0;
+    let mut r = n;
+    while r >= d
+        invariant r >= 0 && d > 0 && (d * q) + r == n,
+        decreases r
+    {
+        r = r - d;
+        q = q + 1;
+    }
+    proof {
+        assert((d * q) + r == n);
+        assert(0 <= r);
+        assert(r < d);
+        assert(0 <= q);
+    }
+    (q, r)
+}
+// </vc-code>
+
+fn main() {
+}
+
+}

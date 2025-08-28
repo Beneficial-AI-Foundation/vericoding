@@ -1,0 +1,135 @@
+use vstd::prelude::*;
+use vstd::multiset::*;
+
+verus! {
+
+// Höfundur spurningar:  Snorri Agnarsson, snorri@hi.is
+// Permalink spurningar: https://rise4fun.com/Dafny/G4sc3
+
+// Höfundur lausnar:     Alexander Guðmundsson
+// Permalink lausnar:    https://rise4fun.com/Dafny/nujsu
+
+// Insertion sort með hjálp helmingunarleitar.
+
+
+proof fn search(s: Seq<i32>, x: i32) -> (k: usize)
+    // Ekki má breyta forskilyrðum eða eftirskilyrðum fallsins
+    requires 
+        forall|p: int, q: int| 0 <= p < q < s.len() ==> s[p] <= s[q],
+    ensures 
+        0 <= k <= s.len()
+        && forall|i: int| 0 <= i < k ==> s[i] <= x
+        && forall|i: int| k <= i < s.len() ==> s[i] >= x
+        && forall|z: i32| s.subrange(0, k as int).contains(z) ==> z <= x
+        && forall|z: i32| s.subrange(k as int, s.len() as int).contains(z) ==> z >= x
+        && s == s.subrange(0, k as int) + s.subrange(k as int, s.len() as int),
+{
+  assume(false);
+  0
+}
+
+// <vc-helpers>
+proof fn lemma_insert_at_preserves_order(s: Seq<i32>, x: i32, k: usize)
+    requires
+        forall|p: int, q: int| 0 <= p < q < s.len() ==> s[p] <= s[q],
+        0 <= k <= s.len(),
+        forall|i: int| 0 <= i < k ==> s[i] <= x,
+        forall|i: int| k <= i < s.len() ==> s[i] >= x,
+    ensures
+        {
+            let new_s = s.subrange(0, k as int) + seq![x] + s.subrange(k as int, s.len() as int);
+            forall|p: int, q: int| 0 <= p < q < new_s.len() ==> new_s[p] <= new_s[q]
+        }
+{
+    let new_s = s.subrange(0, k as int) + seq![x] + s.subrange(k as int, s.len() as int);
+    assert forall|p: int, q: int| 0 <= p < q < new_s.len() implies new_s[p] <= new_s[q] by {
+        if p < k && q < k {
+            assert(new_s[p] == s[p]);
+            assert(new_s[q] == s[q]);
+            assert(s[p] <= s[q]);
+        } else if p < k && q == k {
+            assert(new_s[p] == s[p]);
+            assert(new_s[q] == x);
+            assert(s[p] <= x);
+        } else if p < k && q > k {
+            assert(new_s[p] == s[p]);
+            assert(new_s[q] == s[q - 1]);
+            assert(s[p] <= x);
+            assert(x <= s[q - 1]);
+            assert(s[p] <= s[q - 1]);
+        } else if p == k && q > k {
+            assert(new_s[p] == x);
+            assert(new_s[q] == s[q - 1]);
+            assert(x <= s[q - 1]);
+        } else if p > k && q > k {
+            assert(new_s[p] == s[p - 1]);
+            assert(new_s[q] == s[q - 1]);
+            assert(s[p - 1] <= s[q - 1]);
+        }
+    }
+}
+
+proof fn lemma_multiset_insert(s: Seq<i32>, x: i32, k: usize)
+    requires
+        0 <= k <= s.len(),
+    ensures
+        {
+            let new_s = s.subrange(0, k as int) + seq![x] + s.subrange(k as int, s.len() as int);
+            new_s.to_multiset() == s.to_multiset().insert(x)
+        }
+{
+    let new_s = s.subrange(0, k as int) + seq![x] + s.subrange(k as int, s.len() as int);
+    assert(s == s.subrange(0, k as int) + s.subrange(k as int, s.len() as int));
+    assert(s.to_multiset() == s.subrange(0, k as int).to_multiset() + s.subrange(k as int, s.len() as int).to_multiset());
+    assert(new_s.to_multiset() == s.subrange(0, k as int).to_multiset() + seq![x].to_multiset() + s.subrange(k as int, s.len() as int).to_multiset());
+    assert(seq![x].to_multiset() == Multiset::singleton(x));
+    assert(new_s.to_multiset() == s.to_multiset() + Multiset::singleton(x));
+    assert(new_s.to_multiset() == s.to_multiset().insert(x));
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+proof fn sort(m: Multiset<i32>) -> (r: Seq<i32>)
+    ensures 
+        r.to_multiset() == m
+        && forall|p: int, q: int| 0 <= p < q < r.len() ==> r[p] <= r[q],
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    if m.len() == 0 {
+        return seq![];
+    }
+    
+    let mut result: Seq<i32> = seq![];
+    let mut remaining = m;
+    
+    while remaining.len() > 0
+        invariant
+            result.to_multiset() + remaining == m,
+            forall|p: int, q: int| 0 <= p < q < result.len() ==> result[p] <= result[q],
+        decreases remaining.len()
+    {
+        let x = remaining.choose();
+        remaining = remaining.remove(x);
+        
+        let k = search(result, x);
+        let new_result = result.subrange(0, k as int) + seq![x] + result.subrange(k as int, result.len() as int);
+        
+        proof {
+            lemma_insert_at_preserves_order(result, x, k);
+            lemma_multiset_insert(result, x, k);
+        }
+        
+        result = new_result;
+    }
+    
+    result
+}
+// </vc-code>
+
+fn main() {}
+
+}

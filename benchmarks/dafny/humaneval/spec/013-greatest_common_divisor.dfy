@@ -1,0 +1,26 @@
+// recursive version should be more promising
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: def greatest_common_divisor(a: int, b: int) -> int
+Return a greatest common divisor of two integers a and b
+*/
+// </vc-description>
+
+// <vc-spec>
+method greatest_common_divisor(a: int, b: int) returns (gcd: int)
+    // pre-conditions-start
+    requires a != 0 || b != 0
+    // pre-conditions-end
+    // post-conditions-start
+    ensures gcd != 0
+    // post-conditions-end
+// </vc-spec>
+// <vc-code>
+{
+  assume false;
+}
+// </vc-code>

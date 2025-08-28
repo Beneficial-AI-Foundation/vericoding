@@ -1,0 +1,91 @@
+function sum(s: seq<int>, n: nat): int
+    requires n <= |s|
+{
+    if |s| == 0 || n == 0 then
+        0
+    else
+        s[0] + sum(s[1..], n-1)
+}
+
+// <vc-helpers>
+lemma sum_monotonic(s: seq<int>, n1: nat, n2: nat)
+    requires n1 <= n2 <= |s|
+    requires forall i :: 0 <= i < |s| ==> s[i] >= 0
+    ensures sum(s, n1) <= sum(s, n2)
+{
+    if n1 == n2 {
+        return;
+    }
+    if n1 == 0 {
+        assert sum(s, 0) == 0;
+        if n2 == 0 {
+            return;
+        }
+        sum_monotonic(s[1..], 0, n2-1);
+        return;
+    }
+    sum_monotonic(s[1..], n1-1, n2-1);
+}
+
+lemma sum_prefix_property(s: seq<int>, n: nat)
+    requires n <= |s|
+    ensures sum(s, n) == sum(s[..n], n)
+{
+    if n == 0 || |s| == 0 {
+        return;
+    }
+    assert s[1..][..n-1] == s[1..n];
+    sum_prefix_property(s[1..], n-1);
+}
+
+lemma sum_step(s: seq<int>, i: nat)
+    requires i < |s|
+    ensures sum(s, i+1) == sum(s, i) + s[i]
+{
+    if i == 0 {
+        assert sum(s, 0) == 0;
+        assert sum(s, 1) == s[0];
+        return;
+    }
+    assert sum(s, i+1) == s[0] + sum(s[1..], i);
+    assert sum(s, i) == s[0] + sum(s[1..], i-1);
+    sum_step(s[1..], i-1);
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method below_zero(ops: seq<int>) returns (result: bool)
+    ensures result <==> exists n: nat :: n <= |ops| && sum(ops, n) < 0
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    result := false;
+    var current_sum := 0;
+    
+    if sum(ops, 0) < 0 {
+        result := true;
+        return;
+    }
+    
+    for i := 0 to |ops|
+        invariant 0 <= i <= |ops|
+        invariant current_sum == sum(ops, i)
+        invariant result <==> exists n: nat :: n <= i && sum(ops, n) < 0
+    {
+        if current_sum < 0 {
+            result := true;
+        }
+        
+        if i < |ops| {
+            current_sum := current_sum + ops[i];
+            sum_step(ops, i);
+            if current_sum < 0 {
+                result := true;
+            }
+        }
+    }
+}
+// </vc-code>

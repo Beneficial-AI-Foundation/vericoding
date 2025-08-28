@@ -1,0 +1,161 @@
+vc-description: |-
+
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn sorted_between(a: Seq<u32>, from: int, to: int) -> (result:bool) {
+      forall |i: int, j:int|  from <= i < j < to ==> a[i] <= a[j]
+  }
+  // pure-end
+  // pure-end
+  
+  spec fn is_reorder_of<T>(r: Seq<int>, p: Seq<T>, s: Seq<T>) -> (result:bool) {
+      &&& r.len() == s.len()
+      &&& forall|i: int| 0 <= i < r.len() ==> 0 <= #[trigger] r[i] < r.len()
+      &&& forall|i: int, j: int| 0 <= i < j < r.len() ==> r[i] != r[j]
+      &&& p =~= r.map_values(|i: int| s[i])
+  }
+  // pure-end
+
+vc-helpers: |-
+  proof fn lemma_sorted_single_or_empty(s: Seq<u32>, from: int, to: int)
+      requires from >= to - 1
+      ensures sorted_between(s, from, to)
+  {
+  }
+  
+  proof fn lemma_reorder_reflexive<T>(s: Seq<T>)
+      ensures exists|r: Seq<int>| is_reorder_of(r, s, s)
+  {
+      let r = Seq::new(s.len(), |i: int| i);
+      assert(is_reorder_of(r, s, s));
+  }
+  
+  proof fn lemma_swap_preserves_reorder(r: Seq<int>, p: Seq<u32>, s: Seq<u32>, i: int, j: int, new_p: Seq<u32>)
+      requires 
+          is_reorder_of(r, p, s),
+          0 <= i < r.len(),
+          0 <= j < r.len(),
+          new_p.len() == p.len(),
+          new_p[i] == p[j],
+          new_p[j] == p[i],
+          forall|k: int| 0 <= k < p.len() && k != i && k != j ==> new_p[k] == p[k]
+      ensures exists|new_r: Seq<int>| is_reorder_of(new_r, new_p, s)
+  {
+      let new_r = r.update(i, r[j]).update(j, r[i]);
+      assert(is_reorder_of(new_r, new_p, s));
+  }
+  
+  proof fn lemma_sorted_extends(nums: Seq<u32>, i: int, min_idx: int)
+      requires
+          0 <= i < nums.len(),
+          i <= min_idx < nums.len(),
+          sorted_between(nums, 0, i),
+          forall|k: int| i <= k < nums.len() ==> nums[min_idx] <= nums[k]
+      ensures sorted_between(nums.update(i, nums[min_idx]).update(min_idx, nums[i]), 0, i + 1)
+  {
+      let swapped = nums.update(i, nums[min_idx]).update(min_idx, nums[i]);
+      
+      assert(forall|x: int, y: int| 0 <= x < y <= i ==> swapped[x] <= swapped[y]) by {
+          assert(forall|x: int, y: int| 0 <= x < y < i ==> nums[x] <= nums[y]);
+          assert(forall|x: int| 0 <= x < i ==> swapped[x] == nums[x]);
+      }
+      
+      assert(forall|x: int| 0 <= x < i ==> swapped[x] <= swapped[i]) by {
+          assert(swapped[i] == nums[min_idx]);
+          assert(forall|k: int| i <= k < nums.len() ==> nums[min_idx] <= nums[k]);
+          assert(forall|x: int| 0 <= x < i ==> nums[x] <= nums[min_idx]);
+      }
+  }
+
+vc-spec: |-
+  fn test1(nums: &mut Vec<u32>)
+      // post-conditions-start
+      ensures
+          sorted_between(nums@, 0, nums@.len() as int),
+          exists|r: Seq<int>| is_reorder_of(r, nums@, old(nums)@),
+      // post-conditions-end
+
+vc-code: |-
+  {
+      let len = nums.len();
+      
+      proof {
+          lemma_reorder_reflexive(nums@);
+      }
+      
+      if len <= 1 {
+          proof {
+              lemma_sorted_single_or_empty(nums@, 0, len as int);
+          }
+          return;
+      }
+      
+      let mut i = 0;
+      while i < len - 1
+          invariant
+              0 <= i <= len - 1,
+              sorted_between(nums@, 0, i as int),
+              exists|r: Seq<int>| is_reorder_of(r, nums@, old(nums)@),
+              nums@.len() == old(nums)@.len()
+          decreases len - 1 - i
+      {
+          let mut min_idx = i;
+          let mut j = i + 1;
+          
+          while j < len
+              invariant
+                  i < j <= len,
+                  i <= min_idx < len,
+                  forall|k: int| (i as int) <= k < (j as int) ==> nums@[min_idx as int] <= nums@[k],
+                  exists|r: Seq<int>| is_reorder_of(r, nums@, old(nums)@),
+                  nums@.len() == old(nums)@.len(),
+                  0 <= min_idx < nums@.len()
+              decreases len - j
+          {
+              if nums[j] < nums[min_idx] {
+                  min_idx = j;
+              }
+              j += 1;
+          }
+          
+          if min_idx != i {
+              proof {
+                  let old_nums = nums@;
+                  let witness_r: Seq<int> = choose|r: Seq<int>| is_reorder_of(r, old_nums, old(nums)@);
+                  lemma_swap_preserves_reorder(
+                      witness_r, old_nums, old(nums)@, i as int, min_idx as int, 
+                      old_nums.update(i as int, old_nums[min_idx as int])
+                              .update(min_idx as int, old_nums[i as int])
+                  );
+                  lemma_sorted_extends(old_nums, i as int, min_idx as int);
+              }
+              
+              let temp = nums[i];
+              let min_val = nums[min_idx];
+              nums.set(i, min_val);
+              nums.set(min_idx, temp);
+          }
+          
+          i += 1;
+      }
+      
+      proof {
+          assert(i == len - 1);
+          assert(sorted_between(nums@, 0, i as int));
+          assert(sorted_between(nums@, 0, (len - 1) as int));
+          lemma_sorted_single_or_empty(nums@, (len - 1) as int, len as int);
+          assert(sorted_between(nums@, (len - 1) as int, len as int));
+          assert(forall|x: int, y: int| 0 <= x < y < len ==> nums@[x] <= nums@[y]);
+      }
+  }
+
+vc-postamble: |-
+  
+  }
+  
+  fn main() {}
+

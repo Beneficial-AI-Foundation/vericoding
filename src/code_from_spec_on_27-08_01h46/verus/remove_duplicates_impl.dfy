@@ -1,0 +1,130 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn in_array(a: Seq<i32>, x: i32) -> (ret: bool) {
+    exists|i: int| 0 <= i < a.len() && a[i] == x
+}
+
+// <vc-helpers>
+fn in_array_exec(a: &Vec<i32>, x: i32) -> (result: bool)
+    ensures
+        result == in_array(a@, x),
+{
+    let mut i = 0;
+    while i < a.len()
+        invariant
+            0 <= i <= a.len(),
+            forall|k: int| 0 <= k < i ==> a[k] != x,
+        decreases a.len() - i
+    {
+        if a[i] == x {
+            return true;
+        }
+        i = i + 1;
+    }
+    false
+}
+
+proof fn lemma_in_array_append(s1: Seq<i32>, s2: Seq<i32>, x: i32)
+    ensures
+        in_array(s1 + s2, x) <==> (in_array(s1, x) || in_array(s2, x))
+{
+    if in_array(s1 + s2, x) {
+        let combined = s1 + s2;
+        assert(exists|i: int| 0 <= i < combined.len() && combined[i] == x);
+        let witness_i = choose|i: int| 0 <= i < combined.len() && combined[i] == x;
+        if witness_i < s1.len() {
+            assert(combined[witness_i] == s1[witness_i]);
+            assert(in_array(s1, x));
+        } else {
+            assert(combined[witness_i] == s2[witness_i - s1.len()]);
+            assert(in_array(s2, x));
+        }
+    }
+    
+    if in_array(s1, x) {
+        let witness_i = choose|i: int| 0 <= i < s1.len() && s1[i] == x;
+        assert((s1 + s2)[witness_i] == s1[witness_i] == x);
+        assert(in_array(s1 + s2, x));
+    }
+    
+    if in_array(s2, x) {
+        let witness_j = choose|j: int| 0 <= j < s2.len() && s2[j] == x;
+        let combined_index = s1.len() + witness_j;
+        assert((s1 + s2)[combined_index] == s2[witness_j] == x);
+        assert(in_array(s1 + s2, x));
+    }
+}
+
+proof fn lemma_in_array_push(s: Seq<i32>, x: i32, y: i32)
+    ensures
+        in_array(s.push(x), y) <==> (in_array(s, y) || x == y)
+{
+    let s_pushed = s.push(x);
+    
+    if in_array(s_pushed, y) {
+        let witness_i = choose|i: int| 0 <= i < s_pushed.len() && s_pushed[i] == y;
+        if witness_i < s.len() {
+            assert(s_pushed[witness_i] == s[witness_i] == y);
+            assert(in_array(s, y));
+        } else {
+            assert(witness_i == s.len());
+            assert(s_pushed[witness_i] == x == y);
+        }
+    }
+    
+    if in_array(s, y) {
+        let witness_i = choose|i: int| 0 <= i < s.len() && s[i] == y;
+        assert(s_pushed[witness_i] == s[witness_i] == y);
+        assert(in_array(s_pushed, y));
+    }
+    
+    if x == y {
+        assert(s_pushed[s.len() as int] == x == y);
+        assert(in_array(s_pushed, y));
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+#[verifier::loop_isolation(false)]
+fn remove_duplicates(a: &[i32]) -> (result: Vec<i32>)
+    // pre-conditions-start
+    requires
+        a.len() >= 1,
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        forall|i: int| #![auto] 0 <= i < result.len() ==> in_array(a@, result[i]),
+        forall|i: int, j: int| 0 <= i < j < result.len() ==> result[i] != result[j],
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut result = Vec::new();
+    let mut i = 0;
+    
+    while i < a.len()
+        invariant
+            0 <= i <= a.len(),
+            forall|k: int| #![auto] 0 <= k < result.len() ==> in_array(a@, result[k]),
+            forall|k1: int, k2: int| 0 <= k1 < k2 < result.len() ==> result[k1] != result[k2],
+        decreases a.len() - i
+    {
+        if !in_array_exec(&result, a[i]) {
+            result.push(a[i]);
+            proof {
+                lemma_in_array_push(result@.drop_last(), a[i as int], a[i as int]);
+            }
+        }
+        i = i + 1;
+    }
+    
+    result
+}
+// </vc-code>
+
+fn main() {}
+}

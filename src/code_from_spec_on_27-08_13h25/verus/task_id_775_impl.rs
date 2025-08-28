@@ -1,0 +1,39 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+// No additional helpers needed for this fix
+// </vc-helpers>
+
+// <vc-spec>
+fn is_odd_at_odd_index(arr: &Vec<usize>) -> (result: bool)
+    // post-conditions-start
+    ensures
+        result == forall|i: int| 0 <= i < arr.len() ==> ((i % 2) == (arr[i] % 2)),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+fn is_odd_at_odd_index(arr: &Vec<usize>) -> (result: bool)
+    ensures
+        result == forall|i: int| 0 <= i < arr.len() ==> ((i % 2) == (arr@[i] % 2)),
+{
+    let mut i: usize = 0;
+    while i < arr.len()
+        invariant
+            i <= arr.len(),
+            forall|j: int| 0 <= j < i as int ==> ((j % 2) == (arr@[(j as usize)] % 2)),
+    {
+        if (i % 2) != (arr@[(i as usize)] % 2) {
+            return false;
+        }
+        i = i + 1;
+    }
+    true
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

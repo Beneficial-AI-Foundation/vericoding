@@ -1,0 +1,50 @@
+use vstd::prelude::*;
+
+
+verus! {
+
+// <vc-helpers>
+// No updates needed for helpers as the issue is related to the function signature.
+// </vc-helpers>
+
+// <vc-spec>
+fn all_characters_same(char_arr: &Vec<char>) -> (result: bool)
+    // post-conditions-start
+    ensures
+        result == (forall|i: int|
+            1 <= i < char_arr@.len() ==> char_arr[0] == #[trigger] char_arr[i]),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+fn all_characters_same(char_arr: &Vec<char>) -> (result: bool)
+    ensures
+        result == (forall|i: int|
+            1 <= i < char_arr@.len() ==> char_arr@[0] == char_arr@[i]),
+{
+    if char_arr.len() == 0 {
+        return true;
+    }
+    
+    let first_char = char_arr@[0];
+    let mut i: usize = 1;
+    
+    while i < char_arr.len()
+        invariant
+            1 <= i <= char_arr.len(),
+            forall|k: int| 0 <= k < i ==> char_arr@[0] == char_arr@[k],
+        decreases char_arr.len() - i,
+    {
+        if char_arr@[i] != first_char {
+            return false;
+        }
+        i = i + 1;
+    }
+    
+    true
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

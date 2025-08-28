@@ -1,0 +1,49 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+fn bit_wise_xor(arr1: &Vec<i32>, arr2: &Vec<i32>) -> (result: Vec<i32>)
+    // pre-conditions-start
+    requires
+        arr1.len() == arr2.len(),
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        result.len() == arr1.len(),
+        forall|i: int|
+            0 <= i < result.len() ==> result[i] == #[trigger] arr1[i] ^ #[trigger] arr2[i],
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    // impl-start
+    let mut result: Vec<i32> = Vec::new();
+    let len = arr1.len();
+    let mut i: usize = 0;
+    
+    while i < len
+        invariant
+            len == arr1.len(),
+            len == arr2.len(),
+            i <= len,
+            result.len() == i,
+            forall|k: int| 0 <= k < i ==> result[k] == #[trigger] arr1[k] ^ #[trigger] arr2[k],
+        decreases len - i
+    {
+        result.push(arr1[i] ^ arr2[i]);
+        i = i + 1;
+    }
+    
+    result
+    // impl-end
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

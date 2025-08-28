@@ -1,0 +1,57 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+proof fn compute_rotated_index(l: Seq<int>, n: int, index: int) -> (rotated_idx: int)
+    requires 
+        n >= 0,
+        0 <= index < l.len(),
+    ensures
+        0 <= rotated_idx < l.len(),
+        rotated_idx == ((index - n + l.len() as int) % l.len() as int) as int,
+{
+    let len = l.len() as int;
+    let shifted = index - n + len;
+    let rotated_idx = shifted % len;
+    assert(rotated_idx >= 0) by {
+        assert(shifted >= index - n);
+        assert(index - n >= -n);
+        assert(-n <= 0);
+        assert(shifted >= 0);
+    };
+    assert(rotated_idx < len) by {
+        assert(shifted % len < len);
+    };
+    rotated_idx
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+proof fn element_at_index_after_rotation(l: Seq<int>, n: int, index: int) -> (element: int)
+    requires 
+        n >= 0,
+        0 <= index < l.len(),
+    ensures 
+        element == l[((index - n + l.len() as int) % l.len() as int) as int],
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+proof fn element_at_index_after_rotation(l: Seq<int>, n: int, index: int) -> (element: int)
+    requires 
+        n >= 0,
+        0 <= index < l.len(),
+    ensures 
+        element == l[((index - n + l.len() as int) % l.len() as int) as int],
+{
+    let rotated_idx = compute_rotated_index(l, n, index);
+    l[rotated_idx]
+}
+// </vc-code>
+
+fn main() {
+}
+
+}

@@ -1,0 +1,127 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn sorted(a: Seq<i32>, from: int, to: int) -> bool
+      recommends 0 <= from <= to <= a.len()
+  {
+      forall|u: int, v: int| from <= u < v < to ==> a[u] <= a[v]
+  }
+  
+  spec fn pivot(a: Seq<i32>, to: int, pvt: int) -> bool
+      recommends 0 <= pvt < to <= a.len()
+  {
+      forall|u: int, v: int| 0 <= u < pvt < v < to ==> a[u] <= a[v]
+  }
+
+vc-helpers: |-
+  proof fn lemma_sorted_extension(a: Seq<i32>, from: int, to: int)
+      requires
+          0 <= from < to <= a.len(),
+          sorted(a, from + 1, to),
+          forall|i: int| from + 1 <= i < to ==> a[from] <= a[i],
+      ensures
+          sorted(a, from, to),
+  {
+  }
+  
+  proof fn lemma_pivot_to_sorted(a: Seq<i32>, to: int, pvt: int)
+      requires
+          0 <= pvt < to <= a.len(),
+          pivot(a, to, pvt),
+          sorted(a, 0, pvt + 1),
+          sorted(a, pvt + 1, to),
+      ensures
+          sorted(a, 0, to),
+  {
+  }
+  
+  proof fn lemma_swap_preserves_multiset(a: Seq<i32>, b: Seq<i32>, i: int, j: int)
+      requires
+          0 <= i < a.len(),
+          0 <= j < a.len(),
+          i != j,
+          b.len() == a.len(),
+          b[i] == a[j],
+          b[j] == a[i],
+          forall|k: int| 0 <= k < a.len() && k != i && k != j ==> b[k] == a[k],
+      ensures
+          a.to_multiset() == b.to_multiset(),
+  {
+  }
+  
+  proof fn lemma_inner_loop_establishes_min(a: Seq<i32>, i: int, len: int)
+      requires
+          0 <= i < len,
+          forall|k: int| i < k < len ==> a[i] <= a[k],
+      ensures
+          forall|j: int| i <= j < len ==> a[i] <= a[j],
+  {
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn bubbleSort(a: &mut Vec<i32>)
+      requires 
+          old(a).len() > 0,
+      ensures 
+          sorted(a@, 0, a.len() as int),
+          a@.to_multiset() == old(a)@.to_multiset(),
+  // </vc-spec>
+
+vc-code: |-
+  {
+      let len = a.len();
+      let mut i: usize = 0;
+      
+      while i < len
+          invariant
+              0 <= i <= len,
+              sorted(a@, 0, i as int),
+              i > 0 ==> forall|j: int| i as int <= j < len as int ==> a@[i as int - 1] <= a@[j],
+              a@.to_multiset() == old(a)@.to_multiset(),
+      {
+          if i < len - 1 {
+              let mut j: usize = len - 1;
+              
+              while j > i
+                  invariant
+                      i < j <= len - 1,
+                      sorted(a@, 0, i as int),
+                      i > 0 ==> forall|k: int| i as int <= k < len as int ==> a@[i as int - 1] <= a@[k],
+                      forall|k: int| j as int < k < len as int ==> a@[j as int] <= a@[k],
+                      a@.to_multiset() == old(a)@.to_multiset(),
+              {
+                  if a[j - 1] > a[j] {
+                      proof {
+                          let old_seq = a@;
+                          let new_seq = old_seq.update(j as int - 1, old_seq[j as int]).update(j as int, old_seq[j as int - 1]);
+                          lemma_swap_preserves_multiset(old_seq, new_seq, j as int - 1, j as int);
+                      }
+                      let temp = a[j - 1];
+                      a.set(j - 1, a[j]);
+                      a.set(j, temp);
+                  }
+                  j -= 1;
+              }
+              
+              proof {
+                  lemma_inner_loop_establishes_min(a@, i as int, len as int);
+                  if i > 0 {
+                      lemma_sorted_extension(a@, i as int - 1, len as int);
+                  }
+              }
+          }
+          
+          i += 1;
+      }
+  }
+
+vc-postamble: |-
+  
+  fn main() {
+  }
+  
+  }
+

@@ -1,0 +1,92 @@
+vc-preamble: |-
+  // Bubble Sort
+  
+  // Predicates for Bubble Sort
+  predicate sorted(a: array2<int>, l: int, u: int)
+      reads a
+      requires a.Length1 == 2
+  {
+      forall i, j :: 0 <= l <= i <= j <= u < a.Length0 ==> a[i, 1] <= a[j, 1]
+  }
+  
+  predicate partitioned(a: array2<int>, i: int)
+      reads a
+      requires a.Length1 == 2
+  {
+      forall k, k' :: 0 <= k <= i < k' < a.Length0 ==> a[k, 1] <= a[k', 1]
+  }
+
+vc-helpers: |-
+  // Helper lemma to prove properties about swapping elements
+  lemma SwapPreservesOtherElements(a: array2<int>, i: int, j: int, k: int)
+    requires a.Length1 == 2
+    requires 0 <= i < a.Length0 && 0 <= j < a.Length0 && 0 <= k < a.Length0
+    ensures k != i && k != j ==> a[k, 0] == old(a[k, 0]) && a[k, 1] == old(a[k, 1])
+  {
+  }
+  
+  // Helper lemma to maintain sortedness after swaps
+  lemma SwapMaintainsSortedness(a: array2<int>, i: int, l: int, u: int)
+    requires a.Length1 == 2
+    requires 0 <= l <= i < u < a.Length0
+    requires sorted(a, l, u)
+    requires i + 1 <= u
+    requires a[i, 1] > a[i + 1, 1]
+    ensures sorted(a, l, u) after {
+      var temp0 := a[i, 0];
+      var temp1 := a[i, 1];
+      a[i, 0] := a[i + 1, 0];
+      a[i, 1] := a[i + 1, 1];
+      a[i + 1, 0] := temp0;
+      a[i + 1, 1] := temp1;
+    }
+  {
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  method bubble_sort(a: array2<int>)
+      modifies a
+      requires a.Length1 == 2
+      ensures sorted(a, 0, a.Length0 - 1)
+  // </vc-spec>
+
+vc-code: |-
+  method bubble_sort(a: array2<int>)
+    modifies a
+    requires a.Length1 == 2
+    ensures sorted(a, 0, a.Length0 - 1)
+  {
+    var n := a.Length0;
+    var i := n - 1;
+    
+    while i > 0
+      invariant 0 <= i < n
+      invariant sorted(a, i, n - 1)
+      invariant partitioned(a, i)
+    {
+      var j := 0;
+      while j < i
+        invariant 0 <= j <= i < n
+        invariant sorted(a, i, n - 1)
+        invariant partitioned(a, i)
+        invariant forall k :: 0 <= k < j ==> a[k, 1] <= a[k + 1, 1]
+      {
+        if a[j, 1] > a[j + 1, 1]
+        {
+          var temp0 := a[j, 0];
+          var temp1 := a[j, 1];
+          a[j, 0] := a[j + 1, 0];
+          a[j, 1] := a[j + 1, 1];
+          a[j + 1, 0] := temp0;
+          a[j + 1, 1] := temp1;
+        }
+        j := j + 1;
+      }
+      i := i - 1;
+    }
+  }
+
+vc-postamble: |-
+
+

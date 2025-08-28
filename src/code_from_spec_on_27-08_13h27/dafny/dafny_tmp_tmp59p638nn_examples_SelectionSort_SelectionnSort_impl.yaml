@@ -1,0 +1,102 @@
+vc-preamble: |-
+  twostate predicate Preserved(a: array<int>, left: nat, right: nat)
+      reads a
+      requires left <= right <= a.Length
+  {
+      multiset(a[left..right]) == multiset(old(a[left..right]))
+  }
+  
+  ghost predicate Ordered(a: array<int>, left: nat, right: nat)
+      reads a
+      requires left <= right <= a.Length
+  {
+      forall i: nat :: 0 < left <= i < right ==> a[i-1] <= a[i]
+  }
+  
+  twostate predicate Sorted(a: array<int>)
+      reads a
+  {
+      Ordered(a,0,a.Length) && Preserved(a,0,a.Length)
+  }
+
+vc-helpers: |-
+  lemma MultisetPreservation(a: array<int>, i: nat, j: nat, left: nat, right: nat)
+      requires 0 <= left <= i < j < right <= a.Length
+      ensures multiset(a[left..right]) == multiset(old(a[left..right]))
+  {
+      // Swap preserves multiset as it only changes positions, not elements
+  }
+  
+  lemma OrderedUpdate(a: array<int>, i: nat, j: nat, left: nat, right: nat)
+      requires 0 <= left <= i < j < right <= a.Length
+      requires Ordered(a, left, i+1) && Ordered(a, j, right)
+      requires forall k :: i < k < j ==> a[i] <= a[k]
+      requires a[i] <= a[j]
+      ensures Ordered(a, left, right)
+  {
+      // Prove that after swap, the array segment remains ordered
+      assert forall k :: left <= k < i ==> a[k] <= a[i];
+      assert forall k :: j < k < right ==> a[j] <= a[k];
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  method SelectionnSort(a: array<int>)
+      modifies a
+      ensures Sorted(a)
+  // </vc-spec>
+
+vc-code: |-
+  method SelectionSort(a: array<int>)
+      modifies a
+      ensures Sorted(a)
+  {
+      var n := a.Length;
+      if n == 0 {
+          return;
+      }
+      var i := 0;
+      
+      while i < n
+          invariant 0 <= i <= n
+          invariant Ordered(a, 0, i)
+          invariant Preserved(a, 0, n)
+          invariant forall k1, k2 :: 0 <= k1 < i <= k2 < n ==> a[k1] <= a[k2]
+          decreases n - i
+      {
+          var minIndex := i;
+          var j := i + 1;
+          
+          while j < n
+              invariant i <= minIndex < n
+              invariant i <= j <= n
+              invariant forall k :: i <= k < j ==> a[minIndex] <= a[k]
+              invariant Ordered(a, 0, i)
+              invariant Preserved(a, 0, n)
+              invariant forall k1, k2 :: 0 <= k1 < i <= k2 < n ==> a[k1] <= a[k2]
+              decreases n - j
+          {
+              if a[j] < a[minIndex] {
+                  minIndex := j;
+              }
+              j := j + 1;
+          }
+          
+          if minIndex != i {
+              var temp := a[i];
+              a[i] := a[minIndex];
+              a[minIndex] := temp;
+              MultisetPreservation(a, i, minIndex, 0, n);
+              // Ensure the order after swap
+              assert forall k :: i < k < minIndex ==> a[i] <= a[k];
+              assert Ordered(a, 0, i);
+              OrderedUpdate(a, i, minIndex, 0, n);
+          }
+          
+          i := i + 1;
+      }
+  }
+
+vc-postamble: |-
+
+

@@ -1,0 +1,42 @@
+function Power(n: nat): nat {
+    if n == 0 then 1 else 2 * Power(n - 1)
+}
+
+// <vc-helpers>
+lemma PowerPositive(n: nat)
+    ensures Power(n) > 0
+{
+    if n == 0 {
+        assert Power(0) == 1;
+    } else {
+        PowerPositive(n - 1);
+        assert Power(n) == 2 * Power(n - 1);
+        assert Power(n - 1) > 0;
+        assert Power(n) > 0;
+    }
+}
+
+lemma PowerRecursive(n: nat)
+    requires n > 0
+    ensures Power(n) == 2 * Power(n - 1)
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method ComputePower(n: nat) returns (p: nat)
+    ensures p == Power(n)
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    if n == 0 {
+        p := 1;
+    } else {
+        var prev := ComputePower(n - 1);
+        p := 2 * prev;
+    }
+}
+// </vc-code>

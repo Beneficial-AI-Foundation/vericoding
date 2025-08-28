@@ -1,0 +1,83 @@
+predicate IsLowerCase(c : char)
+{
+    97 <= c as int <= 122
+}
+
+predicate IsUpperCase(c : char)
+{
+    65 <= c as int <= 90
+}
+
+predicate IsLowerUpperPair(c : char, C : char)
+{
+    (c as int) == (C as int) + 32
+}
+
+predicate IsUpperLowerPair(C : char, c : char)
+{
+    (C as int) == (c as int) - 32
+}
+
+function ShiftMinus32(c : char) :  char
+{
+    ((c as int - 32) % 128) as char
+}
+
+function Shift32(c : char) :  char
+{
+    ((c as int + 32) % 128) as char
+}
+
+// <vc-helpers>
+lemma Shift32Correctness(c: char)
+  requires IsLowerCase(c)
+  ensures IsLowerUpperPair(c, ShiftMinus32(c))
+{
+  assert (c as int) >= 97 && (c as int) <= 122;
+  assert ShiftMinus32(c) as int == (c as int - 32) % 128;
+  assert (c as int - 32) >= 65 && (c as int - 32) <= 90;
+  assert (c as int) == (ShiftMinus32(c) as int) + 32;
+}
+
+lemma ShiftMinus32Correctness(c: char)
+  requires IsUpperCase(c)
+  ensures IsUpperLowerPair(c, Shift32(c))
+{
+  assert (c as int) >= 65 && (c as int) <= 90;
+  assert Shift32(c) as int == (c as int + 32) % 128;
+  assert (c as int + 32) >= 97 && (c as int + 32) <= 122;
+  assert (c as int) == (Shift32(c) as int) - 32;
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method ToggleCase(s: string) returns (v: string)
+    ensures |v| == |s|
+    ensures forall i :: 0 <= i < |s| ==>  if IsLowerCase(s[i]) then IsLowerUpperPair(s[i], v[i]) else if IsUpperCase(s[i]) then IsUpperLowerPair(s[i], v[i]) else v[i] == s[i]
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+method ToggleCaseImpl(s: string) returns (v: string)
+  ensures |v| == |s|
+  ensures forall i :: 0 <= i < |s| ==> if IsLowerCase(s[i]) then IsLowerUpperPair(s[i], v[i]) else if IsUpperCase(s[i]) then IsUpperLowerPair(s[i], v[i]) else v[i] == s[i]
+{
+  var result := new char[|s|];
+  for i := 0 to |s|
+    invariant 0 <= i <= |s|
+    invariant forall k :: 0 <= k < i ==> if IsLowerCase(s[k]) then IsLowerUpperPair(s[k], result[k]) else if IsUpperCase(s[k]) then IsUpperLowerPair(s[k], result[k]) else result[k] == s[k]
+  {
+    if IsLowerCase(s[i]) {
+      result[i] := ShiftMinus32(s[i]);
+      Shift32Correctness(s[i]);
+    } else if IsUpperCase(s[i]) {
+      result[i] := Shift32(s[i]);
+      ShiftMinus32Correctness(s[i]);
+    } else {
+      result[i] := s[i];
+    }
+  }
+  v := result[..];
+}
+// </vc-code>

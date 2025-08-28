@@ -1,0 +1,125 @@
+use vstd::arithmetic::mul::*;
+use vstd::prelude::*;
+
+verus! {
+
+spec fn spec_prime(p: int) -> (ret:bool) {
+    p > 1 && forall|k: int| 1 < k < p ==> #[trigger] (p % k) != 0
+}
+// pure-end
+
+// <vc-helpers>
+fn prime(p: u32) -> (ret: bool)
+    // post-conditions-start
+    ensures
+        ret <==> spec_prime(p as int),
+    // post-conditions-end
+{
+    // impl-start
+    if p <= 1 {
+        return false;
+    }
+    for k in 2..p
+        // invariants-start
+        invariant
+            forall|j: int| 1 < j < k ==> #[trigger] (p as int % j) != 0,
+            k <= p,
+        // invariants-end
+    {
+        if p % k == 0 {
+            return false;
+        }
+    }
+    true
+    // impl-end
+}
+
+fn checked_mul_thrice(x: u32, y: u32, z: u32) -> (ret: Option<u32>)
+    // post-conditions-start
+    ensures
+        ret.is_some() ==> ret.unwrap() == x * y * z,
+        ret.is_none() ==> x * y * z > u32::MAX,
+    // post-conditions-end
+{
+    // impl-start
+    if (x == 0 || y == 0 || z == 0) {
+        return Some(0);
+    }
+    assert(x > 0 && y > 0 && z > 0); // assert-line
+    let prod2 = x.checked_mul(y);
+    if prod2.is_some() {
+        let prod3 = prod2.unwrap().checked_mul(z);
+        if prod3.is_some() {
+            let ans = prod3.unwrap();
+            assert(ans == x * y * z); // assert-line
+            Some(ans)
+        } else {
+            assert(x * y * z > u32::MAX); // assert-line
+            None
+        }
+    } else {
+        // assert-start
+        broadcast use group_mul_properties;
+
+        assert(x * y * z >= y * z);
+        // assert-end
+        None
+    }
+    // impl-end
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn is_multiply_prime(x: u32) -> (ans: bool)
+    // pre-conditions-start
+    requires
+        x > 1,
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        ans <==> exists|a: int, b: int, c: int|
+            spec_prime(a) && spec_prime(b) && spec_prime(c) && x == a * b * c,
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    // impl-start
+    for a in 2..x
+        invariant
+            forall|a_prime: int, b_prime: int, c_prime: int|
+                2 <= a_prime < a && spec_prime(a_prime) && spec_prime(b_prime) && spec_prime(c_prime)
+                ==> x != a_prime * b_prime * c_prime,
+    {
+        if prime(a) && x % a == 0 {
+            let remaining = x / a;
+            for b in 2..remaining
+                invariant
+                    remaining == x / a,
+                    x % a == 0,
+                    spec_prime(a as int),
+                    forall|b_prime: int, c_prime: int|
+                        2 <= b_prime < b && spec_prime(b_prime) && spec_prime(c_prime)
+                        ==> remaining != b_prime * c_prime,
+            {
+                if prime(b) && remaining % b == 0 {
+                    let c = remaining / b;
+                    if prime(c) {
+                        let product = checked_mul_thrice(a, b, c);
+                        if product.is_some() && product.unwrap() == x {
+                            assert(spec_prime(a as int) && spec_prime(b as int) && spec_prime(c as int));
+                            assert(x == (a as int) * (b as int) * (c as int));
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    false
+    // impl-end
+}
+// </vc-code>
+
+}
+fn main() {}

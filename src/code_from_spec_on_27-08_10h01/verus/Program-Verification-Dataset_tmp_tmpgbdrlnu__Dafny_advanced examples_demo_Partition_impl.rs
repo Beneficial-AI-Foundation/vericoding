@@ -1,0 +1,103 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+spec fn count_negatives(a: Seq<i32>) -> nat {
+    a.filter(|x| *x < 0).len()
+}
+
+spec fn count_zeros(a: Seq<i32>) -> nat {
+    a.filter(|x| *x == 0).len()
+}
+
+spec fn count_positives(a: Seq<i32>) -> nat {
+    a.filter(|x| *x > 0).len()
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn partition(a: &mut Vec<i32>) -> (usize, usize)
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+fn partition(a: &mut Vec<i32>) -> (usize, usize)
+    requires a.len() < usize::MAX
+    ensures 0 <= result.0 <= result.1 <= a.len()
+    ensures forall|i: int| 0 <= i < result.0 ==> a@[i] < 0
+    ensures forall|i: int| result.0 <= i < result.1 ==> a@[i] == 0
+    ensures forall|i: int| result.1 <= i < a.len() ==> a@[i] > 0
+    ensures old(a)@.to_multiset() =~= a@.to_multiset()
+{
+    let mut lo: usize = 0;
+    let mut hi: usize = 0;
+    
+    while hi < a.len()
+        invariant 0 <= lo <= hi <= a.len()
+        invariant forall|i: int| 0 <= i < lo ==> a@[i] < 0
+        invariant forall|i: int| lo <= i < hi ==> a@[i] == 0
+        invariant old(a)@.to_multiset() =~= a@.to_multiset()
+    {
+        if a[hi] < 0 {
+            let temp = a[hi];
+            a.set(hi, a[lo]);
+            a.set(lo, temp);
+            lo = lo + 1;
+        } else if a[hi] == 0 {
+        } else {
+            let mut pos = a.len() - 1;
+            while pos > hi && a[pos] > 0
+                invariant hi <= pos < a.len()
+                invariant forall|i: int| pos < i < a.len() ==> a@[i] > 0
+                invariant 0 <= lo <= hi <= a.len()
+                invariant forall|i: int| 0 <= i < lo ==> a@[i] < 0
+                invariant forall|i: int| lo <= i < hi ==> a@[i] == 0
+                invariant old(a)@.to_multiset() =~= a@.to_multiset()
+                decreases pos
+            {
+                pos = pos - 1;
+            }
+            
+            if pos > hi {
+                let temp = a[hi];
+                a.set(hi, a[pos]);
+                a.set(pos, temp);
+                continue;
+            } else {
+                break;
+            }
+        }
+        hi = hi + 1;
+    }
+    
+    let mut final_hi = hi;
+    while final_hi < a.len() && a[final_hi] <= 0
+        invariant hi <= final_hi <= a.len()
+        invariant forall|i: int| 0 <= i < lo ==> a@[i] < 0
+        invariant forall|i: int| lo <= i < hi ==> a@[i] == 0
+        invariant old(a)@.to_multiset() =~= a@.to_multiset()
+    {
+        if a[final_hi] < 0 {
+            let temp = a[final_hi];
+            a.set(final_hi, a[lo]);
+            a.set(lo, temp);
+            lo = lo + 1;
+        } else if a[final_hi] == 0 {
+            let temp = a[final_hi];
+            a.set(final_hi, a[hi]);
+            a.set(hi, temp);
+            hi = hi + 1;
+        }
+        final_hi = final_hi + 1;
+    }
+    
+    (lo, final_hi)
+}
+// </vc-code>
+
+fn main() {
+}
+
+}

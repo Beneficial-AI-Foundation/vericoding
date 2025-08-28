@@ -1,0 +1,31 @@
+// <vc-helpers>
+// No additional helpers or proofs needed for this implementation
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method mroot1(n:int) returns (r:int) //Cost O(root n)
+requires n>=0
+ensures r>=0 && r*r <= n <(r+1)*(r+1)
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+method mroot1Impl(n: int) returns (r: int)
+  requires n >= 0
+  ensures r >= 0 && r * r <= n < (r + 1) * (r + 1)
+{
+  r := 0;
+  while r * r <= n
+    invariant r >= 0
+    invariant r * r <= n
+    decreases n - r * r
+  {
+    var next_r := r + 1;
+    if next_r * next_r > n {
+      break;
+    }
+    r := next_r;
+  }
+}
+// </vc-code>

@@ -1,0 +1,48 @@
+// <vc-helpers>
+predicate IsDistinct(s: seq<int>)
+{
+    forall i, j :: 0 <= i < j < |s| ==> s[i] != s[j]
+}
+
+lemma DistinctPreservation(s: seq<int>, x: int)
+    requires IsDistinct(s)
+    requires x !in s
+    ensures IsDistinct(s + [x])
+{
+}
+
+lemma SetMembership(s: seq<int>, x: int)
+    ensures x in s <==> exists i :: 0 <= i < |s| && s[i] == x
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method Difference(a: seq<int>, b: seq<int>) returns (diff: seq<int>)
+    ensures forall x :: x in diff <==> (x in a && x !in b)
+    ensures forall i, j :: 0 <= i < j < |diff| ==> diff[i] != diff[j]
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    diff := [];
+    var i := 0;
+    while i < |a|
+        invariant 0 <= i <= |a|
+        invariant forall x :: x in diff <==> (x in a[..i] && x !in b)
+        invariant IsDistinct(diff)
+        invariant forall x :: x in diff ==> x in a && x !in b
+    {
+        if a[i] in b {
+            i := i + 1;
+        } else if a[i] in diff {
+            i := i + 1;
+        } else {
+            diff := diff + [a[i]];
+            i := i + 1;
+        }
+    }
+}
+// </vc-code>

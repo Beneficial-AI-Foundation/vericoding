@@ -1,0 +1,78 @@
+// <vc-helpers>
+lemma sum_empty()
+  ensures sum([], []) == 0
+{
+}
+
+lemma sum_step(s: seq<int>, p: seq<bool>)
+  requires |s| == |p| && |s| > 0
+  ensures sum(s, p) == (if p[0] then s[0] else 0) + sum(s[1..], p[1..])
+{
+}
+
+lemma sum_append(s1: seq<int>, s2: seq<int>, p1: seq<bool>, p2: seq<bool>)
+  requires |s1| == |p1| && |s2| == |p2|
+  ensures sum(s1 + s2, p1 + p2) == sum(s1, p1) + sum(s2, p2)
+{
+  if |s1| == 0 {
+    assert s1 + s2 == s2;
+    assert p1 + p2 == p2;
+  } else {
+    assert (s1 + s2)[1..] == s1[1..] + s2;
+    assert (p1 + p2)[1..] == p1[1..] + p2;
+    sum_append(s1[1..], s2, p1[1..], p2);
+  }
+}
+
+lemma sum_extend(s: seq<int>, p: seq<bool>, x: int, b: bool)
+  requires |s| == |p|
+  ensures sum(s + [x], p + [b]) == sum(s, p) + (if b then x else 0)
+{
+  sum_append(s, [x], p, [b]);
+  assert sum([x], [b]) == (if b then x else 0);
+}
+// </vc-helpers>
+
+// <vc-spec>
+method solution(numbers: seq<int>) returns (s: int)
+  // post-conditions-start
+  ensures s == sum(numbers, seq(|numbers|, i requires 0 <= i < |numbers| => i % 2 == 0 && numbers[i] % 2 == 1))
+  // post-conditions-end
+// </vc-spec>
+// <vc-code>
+{
+  s := 0;
+  var i := 0;
+  
+  while i < |numbers|
+    invariant 0 <= i <= |numbers|
+    invariant s == sum(numbers[..i], seq(i, j requires 0 <= j < i => j % 2 == 0 && numbers[j] % 2 == 1))
+  {
+    var old_s := s;
+    var old_i := i;
+    
+    if i % 2 == 0 && numbers[i] % 2 == 1 {
+      s := s + numbers[i];
+    }
+    i := i + 1;
+    
+    sum_extend(numbers[..old_i], seq(old_i, j requires 0 <= j < old_i => j % 2 == 0 && numbers[j] % 2 == 1), 
+               numbers[old_i], old_i % 2 == 0 && numbers[old_i] % 2 == 1);
+    assert numbers[..i] == numbers[..old_i] + [numbers[old_i]];
+    assert seq(i, j requires 0 <= j < i => j % 2 == 0 && numbers[j] % 2 == 1) == 
+           seq(old_i, j requires 0 <= j < old_i => j % 2 == 0 && numbers[j] % 2 == 1) + 
+           [old_i % 2 == 0 && numbers[old_i] % 2 == 1];
+  }
+  
+  assert numbers[..|numbers|] == numbers;
+  assert seq(|numbers|, j requires 0 <= j < |numbers| => j % 2 == 0 && numbers[j] % 2 == 1) == 
+         seq(|numbers|, j requires 0 <= j < |numbers| => j % 2 == 0 && numbers[j] % 2 == 1);
+}
+// </vc-code>
+
+function sum(s: seq<int>, p: seq<bool>) : int
+  requires |s| == |p|
+{
+  if |s| == 0 then 0 else (if p[0] then s[0] else 0) + sum(s[1..], p[1..])
+}
+// pure-end

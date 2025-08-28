@@ -1,0 +1,102 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  // Author of question: Snorri Agnarsson
+  // Permalink of question: https://rise4fun.com/Dafny/0HRr
+  
+  // Author of solution:    Alexander Guðmundsson
+  // Permalink of solution: https://rise4fun.com/Dafny/8pxWd
+  
+  // Use the command
+  //   verus LinearSearch-skeleton.rs
+  // to compile the file.
+  
+  // When you have solved the problem put
+  // the solution on the Verus web page,
+  // generate a permalink and put it in
+  // this file.
+
+vc-helpers: |-
+  // Helper lemmas for search_recursive verification
+  proof fn lemma_search_result_bounds(a: Seq<int>, i: usize, j: usize, x: int, result: isize)
+      requires
+          i <= j,
+          j <= a.len(),
+          result != -1,
+          i as int <= result && result < j as isize,
+      ensures
+          0 <= result && result < a.len() as isize,
+  {
+  }
+  
+  proof fn lemma_forall_extends(a: Seq<int>, i: usize, j: usize, x: int, result: isize)
+      requires
+          i < j,
+          j <= a.len(),
+          result != -1,
+          result < (j - 1) as isize,
+          forall|r: int| result < r && r < (j - 1) as int ==> a[r] != x,
+          a[(j - 1) as int] != x,
+      ensures
+          forall|r: int| result < r && r < j as int ==> a[r] != x,
+  {
+  }
+  
+  proof fn lemma_forall_not_found_extends(a: Seq<int>, i: usize, j: usize, x: int)
+      requires
+          i < j,
+          j <= a.len(),
+          forall|r: int| i as int <= r && r < (j - 1) as int ==> a[r] != x,
+          a[(j - 1) as int] != x,
+      ensures
+          forall|r: int| i as int <= r && r < j as int ==> a[r] != x,
+  {
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn search_recursive(a: Seq<int>, i: usize, j: usize, x: int) -> (result: isize)
+      requires 
+          i <= j,
+          j <= a.len(),
+      ensures
+          (i <= result && result < j as isize) || result == -1,
+          result != -1 ==> a[result as int] == x,
+          result != -1 ==> forall|r: int| result < r && r < j as int ==> a[r] != x,
+          result == -1 ==> forall|r: int| i as int <= r && r < j as int ==> a[r] != x,
+      decreases j - i,
+  // </vc-spec>
+
+vc-code: |-
+  {
+      if i == j {
+          -1
+      } else {
+          let result = search_recursive(a, i, j - 1, x);
+          if a[(j - 1) as int] == x {
+              proof {
+                  assert(i as int <= (j - 1) as int && (j - 1) as int < j as int);
+                  assert(forall|r: int| (j - 1) as isize < r && r < j as int ==> a[r] != x);
+              }
+              (j - 1) as isize
+          } else {
+              proof {
+                  if result != -1 {
+                      lemma_forall_extends(a, i, j, x, result);
+                  } else {
+                      lemma_forall_not_found_extends(a, i, j, x);
+                  }
+              }
+              result
+          }
+      }
+  }
+
+vc-postamble: |-
+  
+  fn main() {}
+  
+  }
+

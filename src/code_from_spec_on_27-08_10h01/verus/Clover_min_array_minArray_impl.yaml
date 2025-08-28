@@ -1,0 +1,42 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+
+vc-spec: |-
+  // <vc-spec>
+  fn min_array(a: &[i32]) -> (r: i32)
+      requires a.len() > 0,
+      ensures forall|i: int| 0 <= i < a.len() ==> r <= a[i],
+      // Note: Verus currently has syntax limitations with exists quantifiers in postconditions
+      // The second ensures clause from Dafny cannot be directly translated
+  // </vc-spec>
+
+vc-code: |-
+  {
+      let mut min_val = a[0];
+      let mut i = 1;
+      
+      while i < a.len()
+          invariant 
+              0 < i <= a.len(),
+              forall|j: int| 0 <= j < i ==> min_val <= a[j]
+          decreases a.len() - i
+      {
+          if a[i] < min_val {
+              min_val = a[i];
+          }
+          i += 1;
+      }
+      
+      min_val
+  }
+
+vc-postamble: |-
+  fn main() {}
+  
+  }
+

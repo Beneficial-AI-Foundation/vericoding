@@ -1,0 +1,51 @@
+vc-description: |-
+
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+  // No updates needed for helpers in this case
+
+vc-spec: |-
+  #[verifier::loop_isolation(false)]
+  fn unique(a: &[i32]) -> (result: Vec<i32>)
+      requires
+          forall|i: int, j: int|
+              #![trigger a[i], a[j]]
+              0 <= i && i < j && j < a.len() ==> a[i] <= a[j],
+      ensures
+          forall|i: int, j: int|
+              #![trigger result[i], result[j]]
+              0 <= i && i < j && j < result.len() ==> result[i] < result[j],
+
+vc-code: |-
+  {
+      let mut result: Vec<i32> = Vec::new();
+      let mut i: usize = 0;
+  
+      while i < a.len()
+          invariant
+              i <= a.len(),
+              forall |k: int, l: int| 0 <= k && k < l && l < result.len() ==> result[k] < result[l],
+              result.len() <= i,
+              forall |k: int| #![trigger result[k]] 0 <= k && k < result.len() ==> exists |m: int| 0 <= m && m < i && a[m] == result[k],
+          decreases
+              a.len() - i,
+      {
+          if i == 0 || (result.len() > 0 && a[i] > result[result.len() - 1]) {
+              result.push(a[i]);
+          }
+          i = i + 1;
+      }
+  
+      result
+  }
+
+vc-postamble: |-
+  
+  fn main() {}
+  }
+

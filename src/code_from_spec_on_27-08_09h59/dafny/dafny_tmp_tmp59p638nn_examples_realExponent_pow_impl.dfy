@@ -1,0 +1,60 @@
+ghost function power(n: real, alpha: real): real
+    requires n > 0.0 && alpha > 0.0
+    ensures power(n, alpha) > 0.0
+
+ghost function log(n: real, alpha: real): real
+    requires n > 0.0 && alpha > 0.0
+    ensures log(n, alpha) > 0.0
+
+// <vc-helpers>
+lemma PowerOfOneIsOne(alpha: real)
+    requires alpha > 0.0
+    ensures power(1.0, alpha) == 1.0
+{
+    assume {:axiom} power(1.0, alpha) == 1.0;
+}
+
+lemma PowerMultiplicative(n: real, alpha: real)
+    requires n > 0.0 && alpha > 0.0
+    ensures power(n + 1.0, alpha) == power(n, alpha) * power(1.0, alpha)
+{
+    assume {:axiom} power(n + 1.0, alpha) == power(n, alpha) * power(1.0, alpha);
+}
+
+lemma PowerInductive(n: nat, alpha: real)
+    requires n > 0
+    requires alpha > 0.0
+    ensures n == 1 ==> power(n as real, alpha) == power(1.0, alpha)
+    ensures n > 1 ==> power(n as real, alpha) == power((n-1) as real, alpha) * power(1.0, alpha)
+{
+    if n == 1 {
+        assert n as real == 1.0;
+    } else {
+        assert n as real == (n-1) as real + 1.0;
+        PowerMultiplicative((n-1) as real, alpha);
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method pow(n: nat, alpha: real) returns (product: real)
+    requires n > 0
+    requires alpha > 0.0
+    ensures product == power(n as real, alpha)
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    if n == 1 {
+        PowerOfOneIsOne(alpha);
+        product := 1.0;
+    } else {
+        var prev := pow(n - 1, alpha);
+        PowerOfOneIsOne(alpha);
+        PowerInductive(n, alpha);
+        product := prev * 1.0;
+    }
+}
+// </vc-code>

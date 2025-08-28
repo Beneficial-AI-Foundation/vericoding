@@ -1,0 +1,61 @@
+vc-description: |-
+
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+  // No updates needed for helpers in this case
+
+vc-spec: |-
+  fn replace_last_element(first: &Vec<i32>, second: &Vec<i32>) -> (replaced_list: Vec<i32>)
+      // pre-conditions-start
+      requires
+          first.len() > 0,
+      // pre-conditions-end
+      // post-conditions-start
+      ensures
+          replaced_list@ == first@.subrange(0, first.len() - 1).add(second@),
+      // post-conditions-end
+
+vc-code: |-
+  {
+      let mut result: Vec<i32> = Vec::new();
+      let last_index = first.len() - 1;
+      
+      // Copy all elements except the last one from first
+      let mut i: usize = 0;
+      while i < last_index
+          invariant
+              i <= last_index,
+              result@ == first@.subrange(0, i as u64),
+          decreases last_index - i
+      {
+          result.push(first[i]);
+          i = i + 1;
+      }
+      
+      // Append all elements from second
+      let mut j: usize = 0;
+      while j < second.len()
+          invariant
+              i == last_index,
+              j <= second.len(),
+              result@ == first@.subrange(0, last_index as u64).add(second@.subrange(0, j as u64)),
+          decreases second.len() - j
+      {
+          result.push(second[j]);
+          j = j + 1;
+      }
+      
+      result
+  }
+
+vc-postamble: |-
+  
+  } // verus!
+  
+  fn main() {}
+

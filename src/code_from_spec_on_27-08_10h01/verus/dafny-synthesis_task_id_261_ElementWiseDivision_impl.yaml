@@ -1,0 +1,57 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+  spec fn seq_element_wise_div(a: Seq<int>, b: Seq<int>) -> Seq<int>
+      recommends a.len() == b.len()
+  {
+      Seq::new(a.len(), |i: int| a@[i] / b@[i])
+  }
+  
+  proof fn lemma_seq_element_wise_div_properties(a: Seq<int>, b: Seq<int>)
+      requires
+          a.len() == b.len(),
+          forall|i: int| 0 <= i < b.len() ==> b@[i] != 0,
+      ensures
+          seq_element_wise_div(a, b).len() == a.len(),
+          forall|i: int| 0 <= i < a.len() ==> seq_element_wise_div(a, b)@[i] == a@[i] / b@[i],
+  {
+      let result = seq_element_wise_div(a, b);
+      assert(result.len() == a.len());
+      assert forall|i: int| 0 <= i < a.len() implies result@[i] == a@[i] / b@[i] by {
+          assert(result@[i] == a@[i] / b@[i]);
+      }
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn element_wise_division(a: Seq<int>, b: Seq<int>) -> (result: Seq<int>)
+      requires
+          a.len() == b.len(),
+          forall|i: int| 0 <= i < b.len() ==> b[i] != 0,
+      ensures
+          result.len() == a.len(),
+          forall|i: int| 0 <= i < result.len() ==> result[i] == a[i] / b[i],
+  // </vc-spec>
+
+vc-code: |-
+  {
+      let result = Seq::new(a.len(), |i: int| a@[i] / b@[i]);
+      proof {
+          assert(result.len() == a.len());
+          assert forall|i: int| 0 <= i < a.len() implies result@[i] == a@[i] / b@[i] by {
+              assert(result@[i] == a@[i] / b@[i]);
+          }
+      }
+      result
+  }
+
+vc-postamble: |-
+  
+  fn main() {
+  }
+  
+  }
+

@@ -1,0 +1,83 @@
+vc-preamble: |-
+  /* 
+  * Formal verification of an O(log n) algorithm to calculate the natural power of a real number (x^n), 
+  * illustrating the usage of lemmas and automatic induction in Dafny.
+  * J.  Pascoal Faria, FEUP, Jan/2022.
+  */
+  
+  // Recursive definition of x^n in functional style, with time and space complexity O(n).
+  function power(x: real, n: nat) : real {
+      if n == 0 then 1.0 else x * power(x, n-1)
+  }
+  
+  // Computation of x^n in time and space O(log n).
+
+vc-helpers: |-
+  // Helper lemma to prove properties of power for even exponents
+  lemma PowerEven(x: real, n: nat)
+    ensures power(x, 2 * n) == power(x * x, n)
+  {
+    if n == 0 {
+      assert power(x, 0) == 1.0;
+      assert power(x * x, 0) == 1.0;
+    } else {
+      calc {
+        power(x, 2 * n);
+        == x * power(x, 2 * n - 1);
+        == x * x * power(x, 2 * n - 2);
+        == (x * x) * power(x, 2 * (n - 1));
+        == { PowerEven(x, n - 1); }
+        (x * x) * power(x * x, n - 1);
+        == power(x * x, n);
+      }
+    }
+  }
+  
+  // Helper lemma to prove properties of power for odd exponents
+  lemma PowerOdd(x: real, n: nat)
+    requires n > 0
+    ensures power(x, 2 * n + 1) == power(x * x, n) * x
+  {
+    calc {
+      power(x, 2 * n + 1);
+      == x * power(x, 2 * n);
+      == { PowerEven(x, n); }
+      x * power(x * x, n);
+      == power(x * x, n) * x;
+    }
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  method powerDC(x: real, n: nat) returns (p : real)
+    ensures p == power(x, n)
+  // </vc-spec>
+
+vc-code: |-
+  method powerDC(x: real, n: nat) returns (p: real)
+    ensures p == power(x, n)
+  {
+    if n == 0 {
+      p := 1.0;
+    } else if n == 1 {
+      p := x;
+    } else {
+      var half := n / 2;
+      var remainder := n % 2;
+      var halfPower := powerDC(x, half);
+      if remainder == 0 {
+        PowerEven(x, half);
+        p := halfPower * halfPower;
+      } else {
+        PowerOdd(x, half);
+        p := halfPower * halfPower * x;
+      }
+    }
+  }
+
+vc-postamble: |-
+  
+  
+  
+  // A few test cases (checked statically by Dafny).
+

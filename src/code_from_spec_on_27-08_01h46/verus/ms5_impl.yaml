@@ -1,0 +1,72 @@
+vc-description: |-
+
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus!{
+
+vc-helpers: |-
+  spec fn sum_bounded_by_4(a: &Vec<i32>, len: int) -> bool {
+      forall|j: int| 0 <= j < len ==> a@[j] <= 4
+  }
+
+vc-spec: |-
+  fn myfun(a: &mut Vec<i32>, sum: &mut Vec<i32>, N: i32) 
+  	// pre-conditions-start
+  	requires 
+  		old(a).len() == N,
+  		old(sum).len() == 1,
+  		N > 0,
+  		N < 1000,
+  	// pre-conditions-end
+  	// post-conditions-start
+  	ensures
+  		sum[0] <= 4 * N,
+  	// post-conditions-end
+
+vc-code: |-
+  {
+      // impl-start
+      let mut total: i32 = 0;
+      let mut i = 0;
+      while i < N
+          invariant
+              0 <= i <= N,
+              total <= 4 * i,
+              N < 1000,
+              a.len() == N,
+              total <= 4000,
+          decreases N - i
+      {
+          if i < a.len() as i32 {
+              if a[i as usize] <= 4 {
+                  proof {
+                      assert(total + a[i as usize] <= total + 4);
+                      assert(4 * i + 4 == 4 * (i + 1));
+                  }
+                  total = total + a[i as usize];
+              } else {
+                  proof {
+                      assert(total + 4 <= 4 * i + 4);
+                      assert(4 * i + 4 == 4 * (i + 1));
+                  }
+                  total = total + 4;
+              }
+          } else {
+              proof {
+                  assert(4 * i + 4 == 4 * (i + 1));
+              }
+          }
+          i = i + 1;
+      }
+      sum.set(0, total);
+      // impl-end
+  }
+
+vc-postamble: |-
+  
+  }
+  
+  fn main() {}
+

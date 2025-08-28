@@ -1,0 +1,21 @@
+// <vc-helpers>
+// No additional helpers or proofs needed for this implementation
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method CalDiv() returns (x:int, y:int)
+  ensures x==191/7
+  ensures y==191%7
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+method CalDivImpl() returns (x: int, y: int)
+  ensures x == 191 / 7
+  ensures y == 191 % 7
+{
+  x := 27;  // 191 / 7 = 27
+  y := 2;   // 191 % 7 = 2
+}
+// </vc-code>

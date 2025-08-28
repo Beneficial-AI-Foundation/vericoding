@@ -1,0 +1,60 @@
+use vstd::prelude::*;
+
+verus!{
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+fn myfun(a: &mut Vec<i32>, b: &mut Vec<i32>, sum: &mut Vec<i32>, N: i32)
+	// pre-conditions-start
+	requires
+		N > 0,
+		old(a).len() == N,
+		old(b).len() == N,
+		old(sum).len() == 1,
+		N < 1000,
+	// pre-conditions-end
+	// post-conditions-start
+	ensures
+		sum[0] <= 2 * N,
+	// post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    // impl-start
+    let mut total: i32 = 0;
+    let mut i: usize = 0;
+    
+    while i < a.len()
+        invariant
+            i <= a.len(),
+            a.len() == N,
+            b.len() == N,
+            sum.len() == 1,
+            N > 0,
+            N < 1000,
+            total <= 2 * (i as i32),
+        decreases a.len() - i
+    {
+        let val_a = a[i];
+        let val_b = b[i];
+        
+        if val_a > val_b {
+            total += 1;
+        } else if val_b > val_a {
+            total += 1;
+        }
+        
+        i += 1;
+    }
+    
+    sum[0] = total;
+    // impl-end
+}
+// </vc-code>
+
+}
+
+fn main() {}

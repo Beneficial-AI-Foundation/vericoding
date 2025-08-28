@@ -1,0 +1,41 @@
+use vstd::prelude::*;
+
+verus!{
+
+// <vc-helpers>
+// No changes needed in helpers for this fix
+// </vc-helpers>
+
+// <vc-spec>
+fn myfun2(x: &mut Vec<i32>) 
+    // pre-conditions-start
+    requires 
+        forall |k:int| 0 <= k < old(x).len() ==> old(x)[k] <= 0x7FFF_FFFB,
+    // pre-conditions-end
+    // post-conditions-start
+    ensures 
+        x@.len() == old(x)@.len(),
+        forall |k:int| 0 <= k < x.len() ==> #[trigger] x@[k] == old(x)@[k] + 4,
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut i: usize = 0;
+    while i < x.len()
+        invariant
+            x@.len() == old(x)@.len(),
+            forall |k: int| 0 <= k < i as int ==> #[trigger] x@[k] == old(x)@[k] + 4,
+            forall |k: int| i as int <= k < x@.len() as int ==> #[trigger] x@[k] == old(x)@[k],
+        decreases x.len() - i
+    {
+        let new_val = x[i] + 4;
+        x.set(i, new_val);
+        i = i + 1;
+    }
+}
+// </vc-code>
+
+}
+
+fn main() {}

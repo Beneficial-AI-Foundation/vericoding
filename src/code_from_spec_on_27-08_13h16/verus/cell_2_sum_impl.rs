@@ -1,0 +1,49 @@
+use vstd::prelude::*;
+
+verus!{
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+fn myfun(a: &mut Vec<u32>, N: u32) -> (sum: u32)
+    // pre-conditions-start
+    requires 
+        old(a).len() == N,
+        N <= 0x7FFF_FFFF,
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        sum <= 2*N,
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut sum: u32 = 0;
+    let mut i: u32 = 0;
+    
+    while i < N
+        invariant
+            i <= N,
+            sum <= 2 * i,
+        decreases
+            N - i,
+    {
+        let val = a[i as usize];
+        if val > 2 {
+            sum = sum + 2;
+        } else {
+            sum = sum + val;
+        }
+        a.set(i as usize, val + 1);
+        i = i + 1;
+    }
+    
+    sum
+}
+// </vc-code>
+
+}
+
+fn main() {}

@@ -1,0 +1,80 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn C(n: nat) -> nat
+      decreases n
+  {
+      if n == 0 { 
+          1nat 
+      } else { 
+          ((4 * (n as int) - 2) * (C((n - 1) as nat) as int) / ((n as int) + 1)) as nat
+      }
+  }
+
+vc-helpers: |-
+  proof fn lemma_C_positive(n: nat)
+      ensures C(n) > 0
+      decreases n
+  {
+      if n == 0 {
+          assert(C(0) == 1);
+      } else {
+          lemma_C_positive((n - 1) as nat);
+          assert(C(n) == ((4 * (n as int) - 2) * (C((n - 1) as nat) as int) / ((n as int) + 1)) as nat);
+          assert((4 * (n as int) - 2) > 0);
+          assert(((n as int) + 1) > 0);
+          assert(C((n - 1) as nat) > 0);
+          assert(C(n) > 0);
+      }
+  }
+  
+  proof fn lemma_C_fits_u64(n: nat)
+      requires n <= 20
+      ensures C(n) <= 0xFFFF_FFFF_FFFF_FFFF
+      decreases n
+  {
+      if n == 0 {
+          assert(C(0) == 1);
+      } else {
+          lemma_C_fits_u64((n - 1) as nat);
+          assert(C(n) == ((4 * (n as int) - 2) * (C((n - 1) as nat) as int) / ((n as int) + 1)) as nat);
+          assert((4 * (n as int) - 2) <= 78);
+          assert(((n as int) + 1) >= 2);
+          assert(C(n) <= C((n - 1) as nat) * 78 / 2);
+          assert(C(n) <= C((n - 1) as nat) * 39);
+      }
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn calcC(n: u64) -> (res: u64)
+      ensures res == C(n as nat),
+  // </vc-spec>
+
+vc-code: |-
+  fn calcC(n: u64) -> (res: u64)
+      requires n <= 20
+      ensures res == C(n as nat)
+  {
+      if n == 0 {
+          1
+      } else {
+          let prev = calcC((n - 1) as u64);
+          proof {
+              lemma_C_positive((n - 1) as nat);
+              lemma_C_fits_u64((n - 1) as nat);
+          }
+          let num = (4 * (n as u64) - 2) * prev;
+          let den = (n as u64) + 1;
+          let result = num / den;
+          result
+      }
+  }
+
+vc-postamble: |-
+  fn main() {}
+  
+  }
+

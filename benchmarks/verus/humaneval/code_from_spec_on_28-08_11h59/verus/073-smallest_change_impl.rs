@@ -1,0 +1,122 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn zip_halves<T>(v: Seq<T>) -> (ret: Seq<(T, T)>) {
+    v.take((v.len() / 2) as int).zip_with(v.skip(((v.len() + 1) / 2) as int).reverse())
+}
+// pure-end
+// pure-end
+
+spec fn diff(s: Seq<(i32, i32)>) -> (ret: int) {
+    s.fold_left(
+        0,
+        |acc: int, x: (i32, i32)|
+            if (x.0 != x.1) {
+                acc + 1
+            } else {
+                acc
+            },
+    )
+}
+// pure-end
+
+// <vc-helpers>
+proof fn lemma_zip_halves_len<T>(v: Seq<T>)
+    ensures zip_halves(v).len() == v.len() / 2
+{
+}
+
+proof fn lemma_zip_halves_index<T>(v: Seq<T>, i: int)
+    requires 0 <= i < zip_halves(v).len()
+    ensures ({
+        let first_half = v.take((v.len() / 2) as int);
+        let second_half = v.skip(((v.len() + 1) / 2) as int).reverse();
+        zip_halves(v)[i] == (first_half[i], second_half[i])
+    })
+{
+}
+
+proof fn lemma_fold_left_add_one(s: Seq<(i32, i32)>, acc: int, x: (i32, i32))
+    ensures diff(s.push(x)) == diff(s) + (if x.0 != x.1 { 1int } else { 0int })
+{
+    reveal(Seq::fold_left);
+}
+
+proof fn lemma_zip_halves_correspondence<T>(v: Seq<T>, i: int)
+    requires 0 <= i < v.len() / 2
+    ensures ({
+        let left_idx = i;
+        let right_idx = v.len() - 1 - i;
+        0 <= left_idx < v.len() && 0 <= right_idx < v.len() &&
+        zip_halves(v)[i] == (v[left_idx], v[right_idx])
+    })
+{
+    lemma_zip_halves_index(v, i);
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn smallest_change(v: Vec<i32>) -> (change: usize)
+    // pre-conditions-start
+    requires
+        v@.len() < usize::MAX,
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        change == diff(zip_halves(v@)),
+    // post-conditions-end
+// </vc-spec>
+// <vc-code>
+{
+    let len = v.len();
+    let half1_len = len / 2;
+    let half2_start = (len + 1) / 2;
+    
+    let mut change = 0;
+    let mut i = 0;
+    
+    while i < half1_len
+        invariant
+            0 <= i <= half1_len,
+            half1_len == len / 2,
+            half2_start == (len + 1) / 2,
+            change == diff(zip_halves(v@).take(i as int)),
+        decreases half1_len - i,
+    {
+        let left_idx = i;
+        let right_idx = len - 1 - i;
+        
+        proof {
+            lemma_zip_halves_correspondence(v@, i as int);
+            assert(0 <= left_idx < len);
+            assert(0 <= right_idx < len);
+        }
+        
+        if v[left_idx] != v[right_idx] {
+            change += 1;
+        }
+        
+        proof {
+            let old_seq = zip_halves(v@).take(i as int);
+            let new_pair = zip_halves(v@)[i as int];
+            let new_seq = zip_halves(v@).take((i + 1) as int);
+            assert(new_seq == old_seq.push(new_pair));
+            lemma_fold_left_add_one(old_seq, 0, new_pair);
+        }
+        
+        i += 1;
+    }
+    
+    proof {
+        lemma_zip_halves_len(v@);
+        assert(zip_halves(v@).len() == half1_len);
+        assert(diff(zip_halves(v@).take(half1_len as int)) == diff(zip_halves(v@)));
+    }
+    
+    change
+}
+// </vc-code>
+
+}
+fn main() {}

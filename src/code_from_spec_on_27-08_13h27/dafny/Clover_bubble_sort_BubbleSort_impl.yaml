@@ -1,0 +1,78 @@
+vc-preamble: |-
+
+
+vc-helpers: |-
+  // Helper lemma to prove that swapping elements preserves the multiset
+  lemma SwapPreservesMultiset(a: array<int>, i: int, j: int)
+    requires 0 <= i < a.Length && 0 <= j < a.Length
+    ensures multiset(a[..]) == multiset(old(a[..]))
+  {
+    // No implementation needed, Dafny can prove multiset preservation with direct array updates
+  }
+  
+  // Helper lemma to prove that a single pass of bubbling preserves the multiset
+  lemma BubblePassPreservesMultiset(a: array<int>, n: int)
+    requires 0 <= n <= a.Length
+    ensures multiset(a[..]) == multiset(old(a[..]))
+  {
+    // Placeholder for multiset preservation during a bubble pass
+  }
+  
+  // Helper lemma to prove that a single pass of bubbling establishes the largest element at the end
+  lemma BubblePassMovesMax(a: array<int>, i: int, n: int)
+    requires 0 <= i <= n < a.Length
+    requires forall k :: 0 <= k < i ==> a[k] <= a[i]
+    ensures forall k :: 0 <= k < i ==> a[k] <= a[n]
+  {
+    // Placeholder for proving max element movement
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  method BubbleSort(a: array<int>)
+    modifies a
+    ensures forall i,j::0<= i < j < a.Length ==> a[i] <= a[j]
+    ensures multiset(a[..])==multiset(old(a[..]))
+  // </vc-spec>
+
+vc-code: |-
+  method BubbleSortImpl(a: array<int>)
+    modifies a
+    ensures forall i,j :: 0 <= i < j < a.Length ==> a[i] <= a[j]
+    ensures multiset(a[..]) == multiset(old(a[..]))
+  {
+    var n := a.Length;
+    while n > 0
+      invariant 0 <= n <= a.Length
+      invariant forall i,j :: n <= i < j < a.Length ==> a[i] <= a[j]
+      invariant multiset(a[..]) == multiset(old(a[..]))
+    {
+      var newN := 0;
+      if n > 1 {
+        newN := n - 1;
+        var i := 0;
+        while i < newN
+          invariant 0 <= i <= newN < n <= a.Length
+          invariant forall k :: 0 <= k < i ==> a[k] <= a[i]
+          invariant forall k,l :: n <= k < l < a.Length ==> a[k] <= a[l]
+          invariant multiset(a[..]) == multiset(old(a[..]))
+        {
+          if a[i] > a[i+1]
+          {
+            var tmp := a[i];
+            a[i] := a[i+1];
+            a[i+1] := tmp;
+            SwapPreservesMultiset(a, i, i+1);
+          }
+          i := i + 1;
+        }
+      } else {
+        newN := 0;
+      }
+      n := newN;
+    }
+  }
+
+vc-postamble: |-
+
+

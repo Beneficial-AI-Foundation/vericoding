@@ -1,0 +1,58 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+fn check_sorted(arr: &Vec<i32>, start: usize, end: usize) -> (result: bool)
+    requires
+        0 <= start <= end <= arr.len(),
+    ensures
+        result == (forall|i: int, j: int| start <= i < j < end ==> (arr@[i as usize] <= arr@[j as usize])),
+{
+    if start >= end {
+        return true;
+    }
+    if start + 1 >= end {
+        return true;
+    }
+    let mut i = start;
+    let mut is_sorted = true;
+    while i < end - 1
+        invariant
+            start <= i <= end - 1,
+            i < arr.len(),
+            is_sorted == (forall|x: int, y: int| start <= x < y <= i ==> (arr@[x as usize] <= arr@[y as usize])),
+        decreases
+            end - i,
+    {
+        if i + 1 < arr.len() && arr@[(i as usize)] > arr@[(i + 1) as usize] {
+            is_sorted = false;
+            break;
+        }
+        i = i + 1;
+    }
+    is_sorted
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn is_sorted(arr: &Vec<i32>) -> (is_sorted: bool)
+    // pre-conditions-start
+    requires
+        arr.len() > 0,
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        is_sorted == (forall|i: int, j: int| 0 <= i < j < arr.len() ==> (arr[i] <= arr[j])),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    check_sorted(arr, 0, arr.len())
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

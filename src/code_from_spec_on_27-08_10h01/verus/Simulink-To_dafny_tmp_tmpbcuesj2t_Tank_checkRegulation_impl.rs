@@ -1,0 +1,77 @@
+use vstd::prelude::*;
+
+verus! {
+
+#[derive(PartialEq, Eq)]
+enum Valve {
+    ON,
+    OFF,
+}
+
+struct Pipe {
+    v1: Valve, // outlet valve 
+    v2: Valve, // inlet Valve
+    v3: Valve, // outlet valve
+    in_flowv1: int, // flow in valve v1
+    in_flowv2: int, // flow in valve v2
+    in_flowv3: int, // flow in valve v3
+}
+
+impl Pipe {
+    spec fn new() -> Self {
+        Pipe {
+            v1: Valve::OFF,
+            v2: Valve::ON,
+            v3: Valve::OFF,
+            in_flowv1: 0,
+            in_flowv2: 0,
+            in_flowv3: 0,
+        }
+    }
+}
+
+struct Tank {
+    pipe: Pipe,
+    height: int,
+}
+
+impl Tank {
+    spec fn new() -> Self {
+        Tank {
+            pipe: Pipe::new(),
+            height: 0,
+        }
+    }
+}
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn checkRegulation(tank: &mut Tank)
+    ensures 
+        (tank.height > 10 && tank.pipe.v1 == Valve::OFF && tank.pipe.v3 == Valve::ON && tank.pipe.v2 == old(tank).pipe.v2) 
+        || (tank.height < 8 && tank.pipe.v1 == Valve::OFF && tank.pipe.v2 == Valve::ON && tank.pipe.v3 == old(tank).pipe.v3)
+        || ((tank.pipe.in_flowv3 > 5 || tank.pipe.in_flowv1 > 5) && tank.pipe.v2 == Valve::OFF && tank.pipe.v3 == old(tank).pipe.v3 && tank.pipe.v1 == old(tank).pipe.v1)
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    if tank.height > 10 {
+        tank.pipe.v1 = Valve::OFF;
+        tank.pipe.v3 = Valve::ON;
+    } else if tank.height < 8 {
+        tank.pipe.v1 = Valve::OFF;
+        tank.pipe.v2 = Valve::ON;
+    } else if tank.pipe.in_flowv3 > 5 || tank.pipe.in_flowv1 > 5 {
+        tank.pipe.v2 = Valve::OFF;
+    }
+}
+// </vc-code>
+
+fn main() {
+}
+
+}

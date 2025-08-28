@@ -1,0 +1,64 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn is_min_heap(a: &Vec<i32>) -> (result: bool)
+    requires a.len() > 0
+    ensures 
+        result ==> forall|i: int| 0 <= i < (a.len() as int) / 2 ==> {
+            let left_idx = 2 * i + 1;
+            let right_idx = 2 * i + 2;
+            (left_idx < a.len()) ==> (#[trigger] a[i as int] <= a[left_idx]) &&
+            (right_idx < a.len()) ==> (a[i as int] <= a[right_idx])
+        },
+        !result ==> exists|i: int| 0 <= i < (a.len() as int) / 2 && {
+            let left_idx = 2 * i + 1;
+            let right_idx = 2 * i + 2;
+            (#[trigger] a[i as int] > a[left_idx] && left_idx < a.len()) ||
+            (a[i as int] > a[right_idx] && right_idx < a.len())
+        }
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    let len = a.len();
+    let mut i = 0;
+    
+    while i < len / 2
+        invariant 
+            0 <= i <= len / 2,
+            forall|j: int| 0 <= j < i ==> {
+                let left_idx = 2 * j + 1;
+                let right_idx = 2 * j + 2;
+                (left_idx < len) ==> (#[trigger] a[j] <= a[left_idx]) &&
+                (right_idx < len) ==> (a[j] <= a[right_idx])
+            }
+        decreases len / 2 - i
+    {
+        let left_idx = 2 * i + 1;
+        let right_idx = 2 * i + 2;
+        
+        if left_idx < len && a[i as int] > a[left_idx as int] {
+            return false;
+        }
+        
+        if right_idx < len && a[i as int] > a[right_idx as int] {
+            return false;
+        }
+        
+        i += 1;
+    }
+    
+    true
+}
+// </vc-code>
+
+fn main() {}
+
+}

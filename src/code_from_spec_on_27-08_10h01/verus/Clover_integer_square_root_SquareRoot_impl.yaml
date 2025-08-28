@@ -1,0 +1,90 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+  spec fn sqrt_lower_bound(n: u32, r: u32) -> bool {
+      r * r <= n
+  }
+  
+  spec fn sqrt_upper_bound(n: u32, r: u32) -> bool {
+      n < (r + 1) * (r + 1)
+  }
+  
+  proof fn sqrt_invariant_maintained(n: u32, r: u32)
+      requires 
+          r * r <= n,
+          n < (r + 1) * (r + 1)
+      ensures
+          r * r <= n < (r + 1) * (r + 1)
+  {
+  }
+  
+  proof fn arithmetic_bounds_u32_u64(r: u32, n: u32)
+      requires r <= 0xFFFF
+      ensures (r as u64) * (r as u64) <= 0xFFFFFFFF
+  {
+      assert((r as u64) <= 0xFFFF);
+      assert((r as u64) * (r as u64) <= 0xFFFF * 0xFFFF);
+      assert(0xFFFF * 0xFFFF <= 0xFFFFFFFF);
+  }
+  
+  proof fn cast_arithmetic_lemma(r: u32, n: u32)
+      requires 
+          r < 0xFFFF,
+          (r as u64 + 1) * (r as u64 + 1) <= n as u64
+      ensures 
+          (r + 1) * (r + 1) <= n
+  {
+      assert(r + 1 <= 0xFFFF);
+      assert((r + 1) as u64 == r as u64 + 1);
+      assert((r + 1) * (r + 1) == ((r + 1) as u64) as u32);
+      assert(((r + 1) as u64) * ((r + 1) as u64) == (r as u64 + 1) * (r as u64 + 1));
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn square_root(n: u32) -> (r: u32)
+    ensures r * r <= n < (r + 1) * (r + 1)
+  // </vc-spec>
+
+vc-code: |-
+  {
+      let mut r: u32 = 0;
+      
+      while r < 0xFFFF && (r + 1 < 0x10000) && (r as u64 + 1) * (r as u64 + 1) <= n as u64
+          invariant 
+              r * r <= n,
+              r <= 0xFFFF
+          decreases 0xFFFF - r
+      {
+          proof {
+              cast_arithmetic_lemma(r, n);
+          }
+          r = r + 1;
+      }
+      
+      proof {
+          if r == 0xFFFF {
+              assert(r * r <= n);
+              arithmetic_bounds_u32_u64(r + 1, n);
+              assert((r + 1) * (r + 1) > n);
+          } else {
+              assert(!((r as u64 + 1) * (r as u64 + 1) <= n as u64));
+              assert((r as u64 + 1) * (r as u64 + 1) > n as u64);
+              assert(r + 1 <= 0xFFFF);
+              assert((r + 1) as u64 == r as u64 + 1);
+              assert((r + 1) * (r + 1) > n);
+          }
+          assert(n < (r + 1) * (r + 1));
+      }
+      
+      r
+  }
+
+vc-postamble: |-
+  fn main() {}
+  
+  }
+

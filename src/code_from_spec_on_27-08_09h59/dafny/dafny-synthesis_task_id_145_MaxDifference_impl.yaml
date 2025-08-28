@@ -1,0 +1,58 @@
+vc-preamble: |-
+
+
+vc-helpers: |-
+  lemma MaxMinDifferenceProperty(a: array<int>, maxVal: int, minVal: int)
+      requires a.Length > 0
+      requires forall k :: 0 <= k < a.Length ==> a[k] <= maxVal
+      requires forall k :: 0 <= k < a.Length ==> a[k] >= minVal
+      requires exists k :: 0 <= k < a.Length && a[k] == maxVal
+      requires exists k :: 0 <= k < a.Length && a[k] == minVal
+      ensures forall i, j :: 0 <= i < a.Length && 0 <= j < a.Length ==> a[i] - a[j] <= maxVal - minVal
+  {
+      forall i, j | 0 <= i < a.Length && 0 <= j < a.Length
+          ensures a[i] - a[j] <= maxVal - minVal
+      {
+          assert a[i] <= maxVal;
+          assert a[j] >= minVal;
+          assert a[i] - a[j] <= maxVal - minVal;
+      }
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  method MaxDifference(a: array<int>) returns (diff: int)
+      requires a.Length > 1
+      ensures forall i, j :: 0 <= i < a.Length && 0 <= j < a.Length ==> a[i] - a[j] <= diff
+  // </vc-spec>
+
+vc-code: |-
+  {
+      var maxVal := a[0];
+      var minVal := a[0];
+      var i := 1;
+      
+      while i < a.Length
+          invariant 1 <= i <= a.Length
+          invariant forall k :: 0 <= k < i ==> a[k] <= maxVal
+          invariant forall k :: 0 <= k < i ==> a[k] >= minVal
+          invariant exists k :: 0 <= k < i && a[k] == maxVal
+          invariant exists k :: 0 <= k < i && a[k] == minVal
+      {
+          if a[i] > maxVal {
+              maxVal := a[i];
+          }
+          if a[i] < minVal {
+              minVal := a[i];
+          }
+          i := i + 1;
+      }
+      
+      diff := maxVal - minVal;
+      
+      MaxMinDifferenceProperty(a, maxVal, minVal);
+  }
+
+vc-postamble: |-
+
+

@@ -1,0 +1,54 @@
+vc-description: |-
+
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+
+vc-spec: |-
+  fn incr_list(l: Vec<i32>) -> (result: Vec<i32>)
+      // pre-conditions-start
+      requires
+          forall|i: int| 0 <= i < l.len() ==> l[i] + 1 <= i32::MAX,
+      // pre-conditions-end
+  
+      // post-conditions-start
+      ensures
+          result.len() == l.len(),
+          forall|i: int| 0 <= i < l.len() ==> #[trigger] result[i] == l[i] + 1,
+      // post-conditions-end
+
+vc-code: |-
+  {
+      let mut result = Vec::new();
+      let mut i = 0;
+      
+      while i < l.len()
+          invariant
+              i <= l.len(),
+              result.len() == i,
+              forall|j: int| 0 <= j < i ==> #[trigger] result@[j] == l@[j] + 1,
+          decreases l.len() - i,
+      {
+          let val = l[i as usize] + 1;
+          result.push(val);
+          i += 1;
+          proof {
+              assert(result.len() == i);
+              assert(forall|j: int| 0 <= j < i - 1 ==> result@[j] == l@[j] + 1);
+              assert(result@[i - 1] == l@[i - 1] + 1);
+          }
+      }
+      
+      result
+  }
+
+vc-postamble: |-
+  
+  }
+  fn main() {}
+

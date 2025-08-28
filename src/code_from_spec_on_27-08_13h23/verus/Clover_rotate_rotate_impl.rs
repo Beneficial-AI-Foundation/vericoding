@@ -1,0 +1,61 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+use vstd::seq::*;
+use vstd::vec::*;
+
+proof fn lemma_seq_slice_rotate(a: Seq<i32>, offset: int, len: int)
+    requires
+        len > 0,
+        offset >= 0,
+    ensures
+        forall|i: int| 0 <= i < len ==> a[i] == a[(i + offset) % len],
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn rotate(a: &[i32], offset: usize) -> (result: Vec<i32>)
+    requires 
+        offset >= 0,
+    ensures 
+        result.len() == a.len(),
+        forall|i: int| 0 <= i < a.len() ==> result[i] == a[(i + offset as int) % a.len() as int],
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+fn rotate(a: &[i32], offset: usize) -> (result: Vec<i32>)
+    requires
+        offset >= 0,
+    ensures
+        result.len() == a.len(),
+        forall|i: int| 0 <= i < a.len() ==> result[i] == a[(i + offset as int) % a.len() as int],
+{
+    let mut result = Vec::new();
+    let len = a.len();
+    
+    if len == 0 {
+        return result;
+    }
+    
+    for i in 0..len
+        invariant
+            len == a.len(),
+            result.len() == i,
+            forall|j: int| 0 <= j < i ==> result[j] == a[(j + offset as int) % len as int],
+    {
+        let index = (i + offset) % len;
+        result.push(a[index]);
+    }
+    
+    result
+}
+// </vc-code>
+
+fn main() {}
+
+}

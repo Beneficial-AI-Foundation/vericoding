@@ -1,0 +1,109 @@
+use vstd::prelude::*;
+
+verus! {
+
+//Problem01
+//a)
+
+//b)
+//Problem04
+
+fn find_min(a: &[i32], lo: usize) -> (minIdx: usize)
+    requires
+        a.len() > 0,
+        lo < a.len(),
+    ensures
+        lo <= minIdx < a.len(),
+        forall|x: usize| lo <= x < a.len() ==> a[minIdx as int] <= a[x as int],
+{
+    assume(false);
+    lo // dummy return
+}
+
+//Problem02
+spec fn sorted(a: Seq<i32>) -> bool {
+    forall|i: int| 0 < i < a.len() ==> #[trigger] a[i-1] <= a[i]
+}
+
+// <vc-helpers>
+spec fn count_occurrences<T>(s: Seq<T>, v: T) -> nat
+    decreases s.len()
+{
+    if s.len() == 0 {
+        0
+    } else if s[0] == v {
+        1 + count_occurrences(s.subrange(1, s.len() as int), v)
+    } else {
+        count_occurrences(s.subrange(1, s.len() as int), v)
+    }
+}
+
+spec fn multiset_equal<T>(s1: Seq<T>, s2: Seq<T>) -> bool {
+    s1.len() == s2.len() && forall|v: T| count_occurrences(s1, v) == count_occurrences(s2, v)
+}
+
+proof fn lemma_swap_preserves_multiset<T>(s: Seq<T>, i: int, j: int)
+    requires 0 <= i < s.len(), 0 <= j < s.len()
+    ensures multiset_equal(s, s.update(i, s[j]).update(j, s[i]))
+{
+    let s_swapped = s.update(i, s[j]).update(j, s[i]);
+    assert forall|v: T| count_occurrences(s, v) == count_occurrences(s_swapped, v) by {
+        if v == s[i] && v == s[j] {
+            // same element, count unchanged
+        } else if v == s[i] && v != s[j] {
+            // element at i moves to j
+            assert(count_occurrences(s_swapped, v) == count_occurrences(s, v));
+        } else if v != s[i] && v == s[j] {
+            // element at j moves to i
+            assert(count_occurrences(s_swapped, v) == count_occurrences(s, v));
+        } else {
+            // other elements unchanged
+            assert(count_occurrences(s_swapped, v) == count_occurrences(s, v));
+        }
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn selection_sort(a: &mut [i32])
+    //ensures multiset(a) == multiset(old(a))
+    //ensures sorted(a@)
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    let n = a.len();
+    let mut i = 0;
+    
+    while i < n
+        invariant
+            i <= n,
+            forall|x: usize, y: usize| 0 <= x < i && i <= y < n ==> a[x as int] <= a[y as int],
+            forall|x: usize| 0 <= x < i && x + 1 < i ==> #[trigger] a[x as int] <= a[(x + 1) as int],
+            multiset_equal(a@, old(a)@),
+        decreases n - i
+    {
+        if i < n - 1 {
+            let min_idx = find_min(a, i);
+            
+            if min_idx != i {
+                proof {
+                    lemma_swap_preserves_multiset(a@, i as int, min_idx as int);
+                }
+                let temp = a[i];
+                a[i] = a[min_idx];
+                a[min_idx] = temp;
+            }
+        }
+        i += 1;
+    }
+}
+// </vc-code>
+
+//Problem03
+
+fn main() {}
+
+}

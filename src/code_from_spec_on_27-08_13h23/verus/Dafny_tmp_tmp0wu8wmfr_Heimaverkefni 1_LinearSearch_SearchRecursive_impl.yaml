@@ -1,0 +1,75 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  // Author of question: Snorri Agnarsson
+  // Permalink of question: https://rise4fun.com/Dafny/0HRr
+  
+  // Author of solution:    Alexander Guðmundsson
+  // Permalink of solution: https://rise4fun.com/Dafny/8pxWd
+  
+  // Use the command
+  //   verus LinearSearch-skeleton.rs
+  // to compile the file.
+  
+  // When you have solved the problem put
+  // the solution on the Verus web page,
+  // generate a permalink and put it in
+  // this file.
+
+vc-helpers: |-
+  // Helper function to check if a value exists in a sequence range
+  proof fn lemma_seq_no_x_in_range(a: Seq<int>, i: int, j: int, x: int)
+      requires
+          0 <= i,
+          i <= j,
+          j <= a.len(),
+          forall|r: int| i <= r && r < j ==> a[r] != x,
+      ensures
+          forall|r: int| i <= r && r < j ==> a[r] != x,
+  {
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn search_recursive(a: Seq<int>, i: usize, j: usize, x: int) -> (result: isize)
+      requires 
+          i <= j,
+          j <= a.len(),
+      ensures
+          (i <= result && result < j as isize) || result == -1,
+          result != -1 ==> a[result as int] == x,
+          result != -1 ==> forall|r: int| result < r && r < j as int ==> a[r] != x,
+          result == -1 ==> forall|r: int| i as int <= r && r < j as int ==> a[r] != x,
+      decreases j - i,
+  // </vc-spec>
+
+vc-code: |-
+  fn search_recursive(a: Seq<int>, i: usize, j: usize, x: int) -> (result: isize)
+      requires 
+          i <= j,
+          j <= a.len(),
+      ensures
+          (i <= result && result < j as isize) || result == -1,
+          result != -1 ==> a[result as int] == x,
+          result != -1 ==> forall|r: int| result < r && r < j as int ==> a[r] != x,
+          result == -1 ==> forall|r: int| i as int <= r && r < j as int ==> a[r] != x,
+      decreases j - i,
+  {
+      if i == j {
+          -1
+      } else if a[i] == x {
+          i as isize
+      } else {
+          let next_result = search_recursive(a, i + 1, j, x);
+          next_result
+      }
+  }
+
+vc-postamble: |-
+  
+  fn main() {}
+  
+  }
+

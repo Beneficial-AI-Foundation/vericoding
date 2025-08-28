@@ -1,0 +1,106 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  // Rearranges the elements in an array 'a' of natural numbers,
+  // so that all odd numbers appear before all even numbers.
+  
+  spec fn odd(n: nat) -> bool { n % 2 == 1 }
+  spec fn even(n: nat) -> bool { n % 2 == 0 }
+
+vc-helpers: |-
+  spec fn all_odd_before_even(s: Seq<nat>) -> bool {
+      forall|i: int, j: int| 0 <= i < j < s.len() ==> !(even(s[i]) && odd(s[j]))
+  }
+  
+  spec fn is_partitioned(s: Seq<nat>) -> bool {
+      all_odd_before_even(s)
+  }
+  
+  proof fn lemma_swap_preserves_multiset<T>(v: Vec<T>, i: usize, j: usize)
+      requires 
+          i < v.len(),
+          j < v.len(),
+      ensures
+          v@.update(i as int, v@[j as int]).update(j as int, v@[i as int]).to_multiset() == v@.to_multiset()
+  {
+  }
+  
+  proof fn lemma_swap_partition_property(s: Seq<nat>, i: int, j: int, left: int, right: int)
+      requires
+          0 <= left <= i < right <= j < s.len(),
+          forall|k: int| left <= k < i ==> odd(s[k]),
+          forall|k: int| j < k < right ==> even(s[k]),
+          even(s[i]),
+          odd(s[j]),
+      ensures
+          ({
+              let s_new = s.update(i, s[j]).update(j, s[i]);
+              &&& (forall|k: int| left <= k < i ==> odd(s_new[k]))
+              &&& (forall|k: int| j < k < right ==> even(s_new[k]))
+              &&& odd(s_new[i])
+              &&& even(s_new[j])
+          })
+  {
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn partitionOddEven(a: &mut Vec<nat>)
+      ensures 
+          a@.to_multiset() == old(a)@.to_multiset(),
+          !(exists|i: int, j: int| 0 <= i < j < a@.len() && even(a@[i]) && odd(a@[j])),
+  // </vc-spec>
+
+vc-code: |-
+  {
+      let mut left: usize = 0;
+      let mut right: usize = a.len();
+      
+      while left < right
+          invariant
+              0 <= left <= right <= a.len(),
+              a@.to_multiset() == old(a)@.to_multiset(),
+              forall|i: int| 0 <= i < left ==> odd(a@[i]),
+              forall|i: int| right <= i < a@.len() ==> even(a@[i]),
+          decreases right - left
+      {
+          if odd(a@[left]) {
+              left = left + 1;
+          } else {
+              right = right - 1;
+              let ghost temp = a@[left];
+              a.set(left, a@[right]);
+              a.set(right, temp);
+              
+              proof {
+                  lemma_swap_preserves_multiset(*a, left, right);
+              }
+          }
+      }
+      
+      proof {
+          assert(left == right);
+          assert(forall|i: int| 0 <= i < left ==> odd(a@[i]));
+          assert(forall|i: int| right <= i < a@.len() ==> even(a@[i]));
+          assert(forall|i: int| 0 <= i < right ==> odd(a@[i]));
+          assert(forall|i: int| left <= i < a@.len() ==> even(a@[i]));
+          
+          assert(forall|i: int, j: int| 0 <= i < j < a@.len() ==> {
+              if i < left && j >= left {
+                  odd(a@[i]) && even(a@[j])
+              } else {
+                  true
+              }
+          });
+          
+          assert(!(exists|i: int, j: int| 0 <= i < j < a@.len() && even(a@[i]) && odd(a@[j])));
+      }
+  }
+
+vc-postamble: |-
+  fn main() {}
+  
+  }
+

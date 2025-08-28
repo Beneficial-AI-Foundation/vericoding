@@ -1,0 +1,238 @@
+vc-preamble: |-
+  /* https://leetcode.com/problems/longest-substring-without-repeating-characters/
+  Given a string s, find the length of the longest substring without repeating characters.
+  
+  Example 1:
+  Input: s = "abcabcbb"
+  Output: 3
+  Explanation: The answer is "abc", with the length of 3.
+  */
+  
+  
+  // a left-inclusive right-exclusive interval:
+  type interval = iv: (int, int) | iv.0 <= iv.1 witness (0, 0)
+  
+  ghost function length(iv: interval): int {
+    iv.1 - iv.0
+  }
+  
+  ghost predicate valid_interval(s: string, iv: interval) {
+    && (0 <= iv.0 <= iv.1 <= |s|)                             // interval is in valid range
+    && (forall i, j | iv.0 <= i < j < iv.1 :: s[i] != s[j])   // no repeating characters in interval
+  }
+  
+  // Below shows an efficient solution using standard "sliding window" technique. 
+  // For verification simplicity, we pretend as if:
+  // - `set` were Python set (or even better, a fixed-size array -- if the "alphabet" is small)
+  //
+  // `best_iv` is for verification purpose, not returned by the real program, thus `ghost`.
+  
+  /* Discussions
+  1. The "sliding window" technique is the most "fancy" part of the solution,
+    ensuring an O(n) time despite the O(n^2) search space.
+    The reason why it works lies in the last two invariants: (A) and (B).
+  
+    Invariant (A) is simply a "partial" guarantee for the longest valid substring in `s[..hi]`,
+    so once the loop finishes, as `hi == |s|`, this "partial" guarantee becomes "full".
+  
+    Invariant (B) is crucial: it encodes why we can monotonically increase `lo` as we increase `hi`.
+    What's the "intuition" behind that? Let me share an "informal proof" below:
+  
+      Let `sub(i)` be the longest valid substring whose last character is `s[i]`.
+      Apparently, the final answer will be "the longest among the longests", i.e.
+      `max(|sub(0)|, |sub(1)|, ..., |sub(|s|-1)|)`.
+  
+      Now, notice that the "starting position" of `sub(i)` is monotonically increasing regarding `i`!
+      Otherwise, imagine `sub(i+1)` started at `j` while `sub(i)` started at `j+1` (or even worse),
+      then `sub(i)` could be made longer (by starting at `j` instead).
+      This is an obvious contradiction.
+  
+      Therefore, when we search for the starting position of `sub(i)` (the `lo`) for each `i` (the `hi`),
+      there's no need to "look back".
+  
+  2. The solution above can be made more efficient, using "jumping window" instead of "sliding window".
+    Namely, we use a dict (instead of set) to look up the "position of repetition",
+    and move `lo` right after that position at once.
+  
+    You can even "early terminate" (based on `lo`) when all remaining intervals are doomed "no longer",
+    resulting in even fewer number of loop iterations.
+    (Time complexity will still be O(n), though.)
+  
+    The corresponding verification code is shown below:
+  */
+  
+  
+  // For verification simplicity, we pretend as if:
+  // - `map` were Python dict (or even better, a fixed-size array -- if the "alphabet" is small)
+  
+  // Bonus Question:
+  //   "Why can we safely use (C) instead of (D) as the loop condition? Won't `hi` go out-of-bound?"
+  // Can you figure it out?
+
+vc-helpers: |-
+  lemma EmptyIntervalIsValid(s: string)
+    ensures valid_interval(s, (0, 0))
+  {
+  }
+  
+  lemma ValidIntervalProperties(s: string, iv: interval)
+    requires valid_interval(s, iv)
+    ensures iv.0 >= 0 && iv.1 <= |s| && iv.0 <= iv.1
+  {
+  }
+  
+  lemma SlidingWindowInvariantMaintained(s: string, lo: int, hi: int, char_set: set<char>, best_iv: interval)
+    requires 0 <= lo <= hi <= |s|
+    requires valid_interval(s, best_iv)
+    requires char_set == set i | lo <= i < hi :: s[i]
+    requires forall i, j | lo <= i < j < hi :: s[i] != s[j]
+    requires forall iv | valid_interval(s, iv) && iv.1 <= hi :: length(iv) <= length(best_iv)
+    ensures forall i, j | lo <= i < j < hi :: s[i] != s[j]
+  {
+  }
+  
+  lemma ExtendValidInterval(s: string, lo: int, hi: int)
+    requires 0 <= lo <= hi < |s|
+    requires forall i, j | lo <= i < j < hi :: s[i] != s[j]
+    requires s[hi] !in (set i | lo <= i < hi :: s[i])
+    ensures forall i, j | lo <= i < j < hi + 1 :: s[i] != s[j]
+  {
+  }
+  
+  lemma FindNewLoPreservesProperty(s: string, old_lo: int, new_lo: int, hi: int)
+    requires 0 <= old_lo <= new_lo <= hi < |s|
+    requires forall i | old_lo <= i < hi :: s[i] != s[hi]
+    requires forall i, j | new_lo <= i < j < hi :: s[i] != s[j]
+    ensures forall i, j | new_lo <= i < j < hi + 1 :: s[i] != s[j]
+  {
+  }
+  
+  lemma UpdateBestIntervalValid(s: string, lo: int, hi: int)
+    requires 0 <= lo <= hi <= |s|
+    requires forall i, j | lo <= i < j < hi :: s[i] != s[j]
+    ensures valid_interval(s, (lo, hi))
+  {
+  }
+  
+  lemma OptimalityPreserved(s: string, hi: int, best_length: int)
+    requires hi <= |s|
+    requires forall iv | valid_interval(s, iv) && iv.1 <= hi :: length(iv) <= best_length
+    ensures forall iv | valid_interval(s, iv) && iv.1 <= hi + 1 :: 
+      (iv.1 <= hi ==> length(iv) <= best_length)
+  {
+  }
+  
+  lemma CharSetUpdateCorrect(s: string, lo: int, hi: int, char_set: set<char>, c: char)
+    requires 0 <= lo <= hi < |s|
+    requires char_set == set i | lo <= i < hi :: s[i]
+    requires s[hi] == c
+    ensures char_set + {c} == set i | lo <= i < hi + 1 :: s[i]
+  {
+  }
+  
+  lemma RemovalMaintainsNoRepeats(s: string, lo: int, hi: int)
+    requires 0 <= lo < hi <= |s|
+    requires forall i, j | lo <= i < j < hi :: s[i] != s[j]
+    ensures forall i, j | lo + 1 <= i < j < hi :: s[i] != s[j]
+  {
+  }
+  
+  lemma OptimalityAfterUpdate(s: string, lo: int, hi: int, best_length: int)
+    requires 0 <= lo <= hi <= |s|
+    requires forall i, j | lo <= i < j < hi :: s[i] != s[j]
+    requires forall iv | valid_interval(s, iv) && iv.1 < hi :: length(iv) <= best_length
+    requires hi - lo > best_length
+    ensures forall iv | valid_interval(s, iv) && iv.1 <= hi :: length(iv) <= hi - lo
+  {
+    forall iv | valid_interval(s, iv) && iv.1 <= hi
+      ensures length(iv) <= hi - lo
+    {
+      if iv.1 < hi {
+        assert length(iv) <= best_length < hi - lo;
+      } else {
+        assert iv.1 == hi;
+        assert iv.0 >= 0 && iv.1 <= |s|;
+        assert forall i, j | iv.0 <= i < j < iv.1 :: s[i] != s[j];
+        if iv.0 < lo {
+          var k := lo;
+          while k < hi
+            invariant lo <= k <= hi
+            invariant forall i, j | iv.0 <= i < j < iv.1 && i < k :: s[i] != s[j]
+          {
+            assert forall i, j | lo <= i < j < hi :: s[i] != s[j];
+            assert iv.0 < k < iv.1;
+            assert exists i | iv.0 <= i < k :: s[i] == s[k];
+            assert false;
+          }
+          assert false;
+        }
+        assert iv.0 >= lo;
+        assert length(iv) == iv.1 - iv.0 <= hi - lo;
+      }
+    }
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  method lengthOfLongestSubstring(s: string) returns (n: int, ghost best_iv: interval)
+    ensures valid_interval(s, best_iv) && length(best_iv) == n    /** `best_iv` is valid */
+    ensures forall iv | valid_interval(s, iv) :: length(iv) <= n  /** `best_iv` is longest */
+  // </vc-spec>
+
+vc-code: |-
+  {
+    if |s| == 0 {
+      return 0, (0, 0);
+    }
+    
+    var lo := 0;
+    var hi := 0;
+    var char_set := {};
+    var best_length := 0;
+    ghost var best_interval := (0, 0);
+    
+    while hi < |s|
+      invariant 0 <= lo <= hi <= |s|
+      invariant 0 <= best_interval.0 <= best_interval.1 <= |s|
+      invariant valid_interval(s, best_interval)
+      invariant length(best_interval) == best_length
+      invariant char_set == set i | lo <= i < hi :: s[i]
+      invariant forall i, j | lo <= i < j < hi :: s[i] != s[j]
+      invariant forall iv | valid_interval(s, iv) && iv.1 <= hi :: length(iv) <= best_length
+    {
+      if s[hi] in char_set {
+        while lo < hi && s[lo] != s[hi]
+          invariant lo <= hi
+          invariant s[hi] in (set i | lo <= i < hi :: s[i])
+          invariant forall i, j | lo <= i < j < hi :: s[i] != s[j]
+          invariant char_set == set i | lo <= i < hi :: s[i]
+        {
+          char_set := char_set - {s[lo]};
+          lo := lo + 1;
+          RemovalMaintainsNoRepeats(s, lo - 1, hi);
+        }
+        if lo < hi {
+          char_set := char_set - {s[lo]};
+          lo := lo + 1;
+        }
+      }
+      
+      char_set := char_set + {s[hi]};
+      hi := hi + 1;
+      
+      CharSetUpdateCorrect(s, lo, hi - 1, char_set - {s[hi - 1]}, s[hi - 1]);
+      
+      if hi - lo > best_length {
+        OptimalityAfterUpdate(s, lo, hi, best_length);
+        best_length := hi - lo;
+        best_interval := (lo, hi);
+        UpdateBestIntervalValid(s, lo, hi);
+      }
+    }
+    
+    return best_length, best_interval;
+  }
+
+vc-postamble: |-
+
+

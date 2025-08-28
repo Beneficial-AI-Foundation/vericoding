@@ -1,0 +1,86 @@
+// <vc-helpers>
+lemma MinSecondExists(s: array<seq<int>>)
+    requires s.Length > 0
+    requires forall i :: 0 <= i < s.Length ==> |s[i]| >= 2
+    ensures exists i :: 0 <= i < s.Length && 
+        (forall j :: 0 <= j < s.Length ==> s[i][1] <= s[j][1])
+{
+    assert 0 < s.Length;
+    assert |s[0]| >= 2;
+    var minVal := s[0][1];
+    var minIdx := 0;
+    
+    assert forall j :: 0 <= j < 1 ==> s[0][1] <= s[j][1];
+    
+    assert exists i :: 0 <= i < s.Length && 
+        (forall j :: 0 <= j < s.Length ==> s[i][1] <= s[j][1]);
+}
+
+lemma MinSecondPreserved(s: array<seq<int>>, minIdx: int, k: int)
+    requires s.Length > 0
+    requires forall i :: 0 <= i < s.Length ==> |s[i]| >= 2
+    requires 0 <= minIdx < s.Length
+    requires 0 <= k <= s.Length
+    requires forall j :: 0 <= j < k ==> s[minIdx][1] <= s[j][1]
+    ensures k < s.Length && s[k][1] < s[minIdx][1] ==> 
+        forall j :: 0 <= j < k ==> s[k][1] <= s[j][1]
+{
+    if k < s.Length && s[k][1] < s[minIdx][1] {
+        forall j | 0 <= j < k
+            ensures s[k][1] <= s[j][1]
+        {
+            assert s[minIdx][1] <= s[j][1];
+            assert s[k][1] < s[minIdx][1];
+        }
+    }
+}
+
+lemma PostConditionHelper(s: array<seq<int>>, minIdx: int)
+    requires s.Length > 0
+    requires forall i :: 0 <= i < s.Length ==> |s[i]| >= 2
+    requires 0 <= minIdx < s.Length
+    requires forall j :: 0 <= j < s.Length ==> s[minIdx][1] <= s[j][1]
+    ensures exists i :: 0 <= i < s.Length && s[minIdx][0] == s[i][0] && 
+        (forall j :: 0 <= j < s.Length ==> s[i][1] <= s[j][1])
+{
+    assert s[minIdx][0] == s[minIdx][0];
+    assert forall j :: 0 <= j < s.Length ==> s[minIdx][1] <= s[j][1];
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method MinSecondValueFirst(s: array<seq<int>>) returns (firstOfMinSecond: int)
+    requires s.Length > 0
+    requires forall i :: 0 <= i < s.Length ==> |s[i]| >= 2
+    ensures exists i :: 0 <= i < s.Length && firstOfMinSecond == s[i][0] && 
+        (forall j :: 0 <= j < s.Length ==> s[i][1] <= s[j][1])
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    MinSecondExists(s);
+    
+    var minIdx := 0;
+    var i := 1;
+    
+    while i < s.Length
+        invariant 0 <= minIdx < s.Length
+        invariant 1 <= i <= s.Length
+        invariant forall j :: 0 <= j < i ==> s[minIdx][1] <= s[j][1]
+        invariant exists k :: 0 <= k < i && minIdx == k
+    {
+        if s[i][1] < s[minIdx][1] {
+            MinSecondPreserved(s, minIdx, i);
+            minIdx := i;
+        }
+        i := i + 1;
+    }
+    
+    assert i == s.Length;
+    assert forall j :: 0 <= j < s.Length ==> s[minIdx][1] <= s[j][1];
+    PostConditionHelper(s, minIdx);
+    firstOfMinSecond := s[minIdx][0];
+}
+// </vc-code>

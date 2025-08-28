@@ -1,0 +1,109 @@
+vc-preamble: |-
+  predicate SplitPoint(a: array<int>, n: int)
+      reads a
+      requires 0 <= n <= n
+  
+  {
+      forall i,j :: 0 <= i < n <= j < a.Length ==> a[i] <= a[j]
+  }
+  
+  twostate predicate SwapFrame(a: array<int>, lo: int, hi: int)
+      requires 0 <= lo <= hi <= a.Length
+      reads a
+  {
+      (forall i :: 0 <= i < lo || hi <= i < a.Length ==> a[i] == old(a[i])) && multiset(a[..]) == old(multiset(a[..]))
+  }
+
+vc-helpers: |-
+  lemma SplitPointExtend(a: array<int>, n: int)
+      requires 0 <= n < a.Length
+      requires SplitPoint(a, n)
+      requires forall k :: n < k < a.Length ==> a[n] <= a[k]
+      ensures SplitPoint(a, n + 1)
+  {
+      forall i, j | 0 <= i < n + 1 <= j < a.Length
+          ensures a[i] <= a[j]
+      {
+          if i < n {
+              assert a[i] <= a[j];
+          } else {
+              assert i == n;
+              assert a[n] <= a[j];
+          }
+      }
+  }
+  
+  lemma FindMinPreservesMultiset(a: array<int>, start: int, end: int, minIndex: int)
+      requires 0 <= start <= minIndex < end <= a.Length
+      requires forall k :: start <= k < end ==> a[minIndex] <= a[k]
+      ensures multiset(a[..]) == multiset(a[..])
+  {
+  }
+  
+  lemma SwapPreservesProperties(a: array<int>, i: int, j: int, splitPoint: int)
+      requires 0 <= i < splitPoint <= j < a.Length
+      requires SplitPoint(a, splitPoint)
+      requires forall k :: splitPoint <= k < a.Length ==> a[j] <= a[k]
+      ensures forall x, y :: 0 <= x < splitPoint <= y < a.Length && (x != i || y != j) && (x != j || y != i) ==> a[x] <= a[y]
+      ensures a[j] <= a[i]
+  {
+  }
+  
+  lemma SplitPointImpliesSorted(a: array<int>)
+      requires SplitPoint(a, a.Length)
+      ensures forall i,j :: 0 <= i < j < a.Length ==> a[i] <= a[j]
+  {
+      forall i, j | 0 <= i < j < a.Length
+          ensures a[i] <= a[j]
+      {
+          assert 0 <= i < a.Length <= j < a.Length ==> a[i] <= a[j];
+      }
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  method SelectionSort(a: array<int>)
+      modifies a
+      ensures forall i,j :: 0 <= i < j < a.Length ==> a[i] <= a[j]
+      ensures multiset(a[..]) == old(multiset(a[..]))
+  // </vc-spec>
+
+vc-code: |-
+  {
+      var n := 0;
+      while n < a.Length
+          invariant 0 <= n <= a.Length
+          invariant SplitPoint(a, n)
+          invariant multiset(a[..]) == old(multiset(a[..]))
+      {
+          var minIndex := n;
+          var k := n + 1;
+          
+          while k < a.Length
+              invariant n <= minIndex < k <= a.Length
+              invariant forall j :: n <= j < k ==> a[minIndex] <= a[j]
+              invariant multiset(a[..]) == old(multiset(a[..]))
+              invariant SplitPoint(a, n)
+          {
+              if a[k] < a[minIndex] {
+                  minIndex := k;
+              }
+              k := k + 1;
+          }
+          
+          if minIndex != n {
+              SwapPreservesProperties(a, n, minIndex, n);
+              a[n], a[minIndex] := a[minIndex], a[n];
+          }
+          
+          assert forall k :: n < k < a.Length ==> a[n] <= a[k];
+          SplitPointExtend(a, n);
+          n := n + 1;
+      }
+      
+      SplitPointImpliesSorted(a);
+  }
+
+vc-postamble: |-
+
+

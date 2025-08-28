@@ -1,0 +1,46 @@
+use vstd::prelude::*;
+
+verus!{
+
+// <vc-helpers>
+// No changes needed in helpers for this fix
+// </vc-helpers>
+
+// <vc-spec>
+fn myfun4(x: &Vec<u64>, y: &mut Vec<u64>)
+    // pre-conditions-start
+    requires 
+        old(y).len() == 0,
+    // pre-conditions-end
+    // post-conditions-start
+    ensures 
+        forall |k:int| 0 <= k < y.len() ==> y[k] % 3 == 0 && x@.contains(y@[k]),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+fn myfun4(x: &Vec<u64>, y: &mut Vec<u64>)
+    requires 
+        old(y).len() == 0,
+    ensures 
+        forall |k: int| 0 <= k < y.len() ==> y[k] % 3 == 0 && x@.contains(y@[k]),
+{
+    let mut i: usize = 0;
+    while i < x.len()
+        invariant
+            i <= x.len(),
+            forall |k: int| 0 <= k < y.len() ==> y[k] % 3 == 0 && x@.contains(y@[k]),
+        decreases
+            x.len() - i,
+    {
+        if x[i] % 3 == 0 {
+            y.push(x[i]);
+        }
+        i = i + 1;
+    }
+}
+// </vc-code>
+
+}
+
+fn main() {}

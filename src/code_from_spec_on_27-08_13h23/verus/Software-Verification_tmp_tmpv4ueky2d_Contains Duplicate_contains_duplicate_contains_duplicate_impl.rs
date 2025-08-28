@@ -1,0 +1,60 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn distinct(nums: Seq<int>) -> bool {
+    forall|i: int, j: int| 0 <= i < j < nums.len() ==> nums[i] != nums[j]
+}
+
+// <vc-helpers>
+spec fn distinct(nums: Seq<int>) -> bool {
+    forall|i: int, j: int| 0 <= i < j < nums.len() ==> nums[i] != nums[j]
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn contains_duplicate(nums: Seq<int>) -> (result: bool)
+    requires
+        1 <= nums.len() <= 100000,
+        forall|i: int| 0 <= i < nums.len() ==> #[trigger] nums[i] >= -1000000000 && nums[i] <= 1000000000,
+    ensures
+        result <==> distinct(nums),
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+fn contains_duplicate(nums: Seq<int>) -> (result: bool)
+    requires
+        1 <= nums.len() <= 100000,
+        forall|i: int| 0 <= i < nums.len() ==> #[trigger] nums[i] >= -1000000000 && nums[i] <= 1000000000,
+    ensures
+        result <==> !distinct(nums),
+{
+    let mut i: int = 0;
+    while i < nums.len()
+        invariant
+            0 <= i <= nums.len(),
+            forall|k: int, l: int| 0 <= k < l < i ==> nums[k] != nums[l],
+    {
+        let mut j: int = 0;
+        while j < i
+            invariant
+                0 <= j <= i,
+                i < nums.len(),
+                forall|k: int| 0 <= k < j ==> nums[k] != nums[i],
+        {
+            if nums[j] == nums[i] {
+                return true;
+            }
+            j = j + 1;
+        }
+        i = i + 1;
+    }
+    false
+}
+// </vc-code>
+
+fn main() {}
+
+}

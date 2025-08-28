@@ -1,0 +1,68 @@
+use vstd::math::abs;
+use vstd::prelude::*;
+use vstd::slice::*;
+
+verus! {
+
+// <vc-helpers>
+proof fn lemma_abs_diff_symmetry(a: i64, b: i64)
+    ensures
+        abs(a - b) == abs(b - a)
+{
+    if a >= b {
+        assert(abs(a - b) == a - b);
+        assert(abs(b - a) == a - b);
+    } else {
+        assert(abs(a - b) == b - a);
+        assert(abs(b - a) == b - a);
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn has_close_elements(numbers: &[i64], threshold: i64) -> (result: bool)
+    // post-conditions-start
+    ensures
+        result == exists|i: int, j: int|
+            0 <= i < j < numbers@.len() && abs(numbers[i] - numbers[j]) < threshold,
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+fn has_close_elements(numbers: &[i64], threshold: i64) -> (result: bool)
+    ensures
+        result == exists|i: int, j: int|
+            0 <= i < j < numbers@.len() && abs(numbers[i] - numbers[j]) < threshold
+{
+    let len = numbers.len();
+    if len < 2 {
+        return false;
+    }
+
+    let mut i: usize = 0;
+    while i < len
+        invariant
+            0 <= i <= len,
+            forall|k: int, l: int| 0 <= k < l < i ==> abs(numbers[k] - numbers[l]) >= threshold
+    {
+        let mut j: usize = i + 1;
+        while j < len
+            invariant
+                0 <= i < j <= len,
+                forall|k: int| i < k < j ==> abs(numbers[i] - numbers[k]) >= threshold,
+                forall|k: int, l: int| 0 <= k < l < i ==> abs(numbers[k] - numbers[l]) >= threshold
+        {
+            let diff = abs(numbers[i] - numbers[j]);
+            if diff < threshold {
+                return true;
+            }
+            j = j + 1;
+        }
+        i = i + 1;
+    }
+    false
+}
+// </vc-code>
+
+}
+fn main() {}

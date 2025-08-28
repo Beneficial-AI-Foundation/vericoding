@@ -1,0 +1,111 @@
+vc-description: |-
+
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+  spec fn has_two_sum_at(nums: &[i32], target: i32, i: int, j: int) -> bool {
+      0 <= i < nums.len() && 0 <= j < nums.len() && i != j && nums[i] + nums[j] == target
+  }
+  
+  spec fn has_two_sum_before(nums: &[i32], target: i32, bound: int) -> bool {
+      exists|i: int, j: int| 0 <= i < bound && i < j < nums.len() && nums[i] + nums[j] == target
+  }
+  
+  proof fn lemma_two_sum_exists_implies_before(nums: &[i32], target: i32, bound: int)
+      requires
+          bound <= nums.len(),
+          exists|i: int, j: int| 0 <= i < j < nums.len() && nums[i] + nums[j] == target,
+      ensures
+          bound == 0 || has_two_sum_before(nums, target, bound) || 
+          exists|j: int| {
+              #[trigger] nums[bound - 1];
+              #[trigger] nums[j];
+              bound <= j < nums.len() && nums[bound - 1] + nums[j] == target
+          },
+  {
+      if bound > 0 {
+          let witness_i = choose|i: int| exists|j: int| 0 <= i < j < nums.len() && nums[i] + nums[j] == target;
+          let witness_j = choose|j: int| 0 <= witness_i < j < nums.len() && nums[witness_i] + nums[j] == target;
+          
+          if witness_i < bound - 1 {
+              assert(has_two_sum_before(nums, target, bound));
+          } else if witness_i == bound - 1 {
+              assert(nums[bound - 1] + nums[witness_j] == target);
+          } else {
+              assert(has_two_sum_before(nums, target, bound));
+          }
+      }
+  }
+
+vc-spec: |-
+  #[verifier::loop_isolation(false)]
+  fn two_sum(nums: &[i32], target: i32) -> (result: (usize, usize))
+      // pre-conditions-start
+      requires
+          nums.len() >= 2,
+          exists|i: int, j: int| 0 <= i < j < nums.len() && nums[i] + nums[j] == target,
+          forall|i: int, j: int|
+              0 <= i < nums.len() && 0 <= j < nums.len()
+                  ==> nums[i] + nums[j] <= i32::MAX
+                      && nums[i] + nums[j] >= i32::MIN,
+      // pre-conditions-end
+      // post-conditions-start
+      ensures
+          ({ let (i, j) = result; 0 <= i < nums.len() }),
+          ({ let (i, j) = result; 0 <= j < nums.len() }),
+          ({ let (i, j) = result; i != j }),
+          ({ let (i, j) = result; nums[i as int] + nums[j as int] == target })
+      // post-conditions-end
+
+vc-code: |-
+  {
+      let mut i = 0;
+      
+      while i < nums.len() - 1
+          invariant
+              0 <= i <= nums.len() - 1,
+              nums.len() >= 2,
+              exists|x: int, y: int| 0 <= x < y < nums.len() && nums[x] + nums[y] == target,
+              forall|x: int, y: int| 0 <= x < nums.len() && 0 <= y < nums.len() ==> 
+                  nums[x] + nums[y] <= i32::MAX && nums[x] + nums[y] >= i32::MIN,
+              forall|x: int, y: int| 0 <= x < i && x < y < nums.len() ==> nums[x] + nums[y] != target,
+          decreases nums.len() - 1 - i
+      {
+          let mut j = i + 1;
+          
+          while j < nums.len()
+              invariant
+                  0 <= i < nums.len() - 1,
+                  i + 1 <= j <= nums.len(),
+                  exists|x: int, y: int| 0 <= x < y < nums.len() && nums[x] + nums[y] == target,
+                  forall|x: int, y: int| 0 <= x < nums.len() && 0 <= y < nums.len() ==> 
+                      nums[x] + nums[y] <= i32::MAX && nums[x] + nums[y] >= i32::MIN,
+                  forall|x: int, y: int| 0 <= x < i && x < y < nums.len() ==> nums[x] + nums[y] != target,
+                  forall|y: int| i < y < j ==> nums[i as int] + nums[y] != target,
+              decreases nums.len() - j
+          {
+              if nums[i] + nums[j] == target {
+                  return (i, j);
+              }
+              j += 1;
+          }
+          
+          i += 1;
+          
+          proof {
+              lemma_two_sum_exists_implies_before(nums, target, i as int);
+          }
+      }
+      
+      unreached()
+  }
+
+vc-postamble: |-
+  
+  fn main() {}
+  }
+

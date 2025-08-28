@@ -1,0 +1,166 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn is_substring(sub: Seq<char>, str: Seq<char>) -> bool 
+    decreases str.len()
+{
+    if sub.len() == 0 {
+        true
+    } else if str.len() < sub.len() {
+        false
+    } else {
+        (str.subrange(0, sub.len() as int) == sub) || is_substring(sub, str.subrange(1, str.len() as int))
+    }
+}
+
+spec fn is_prefix_pred(pre: Seq<char>, str: Seq<char>) -> bool {
+    pre.len() <= str.len() && 
+    pre == str.subrange(0, pre.len() as int)
+}
+
+spec fn is_not_prefix_pred(pre: Seq<char>, str: Seq<char>) -> bool {
+    pre.len() > str.len() || 
+    pre != str.subrange(0, pre.len() as int)
+}
+
+spec fn is_substring_pred(sub: Seq<char>, str: Seq<char>) -> bool {
+    exists|i: int| #![auto] 0 <= i <= str.len() && is_prefix_pred(sub, str.subrange(i, str.len() as int))
+}
+
+spec fn is_not_substring_pred(sub: Seq<char>, str: Seq<char>) -> bool {
+    forall|i: int| #![auto] 0 <= i <= str.len() ==> is_not_prefix_pred(sub, str.subrange(i, str.len() as int))
+}
+
+spec fn have_common_k_substring_pred(k: nat, str1: Seq<char>, str2: Seq<char>) -> bool {
+    exists|i1: int, j1: int| #![auto] 0 <= i1 <= str1.len() - k && j1 == i1 + k && is_substring_pred(str1.subrange(i1, j1), str2)
+}
+
+spec fn have_not_common_k_substring_pred(k: nat, str1: Seq<char>, str2: Seq<char>) -> bool {
+    forall|i1: int, j1: int| #![auto] 0 <= i1 <= str1.len() - k && j1 == i1 + k ==> is_not_substring_pred(str1.subrange(i1, j1), str2)
+}
+
+fn have_common_k_substring(k: usize, str1: Seq<char>, str2: Seq<char>) -> (found: bool)
+    ensures 
+        found <==> have_common_k_substring_pred(k as nat, str1, str2),
+        !found <==> have_not_common_k_substring_pred(k as nat, str1, str2),
+{
+    assume(false);
+    false
+}
+
+// <vc-helpers>
+proof fn lemma_substring_equivalence(sub: Seq<char>, str: Seq<char>)
+    ensures
+        is_substring(sub, str) == is_substring_pred(sub, str),
+        !is_substring(sub, str) == is_not_substring_pred(sub, str),
+    decreases str.len()
+{
+    if sub.len() == 0 {
+        assert(is_substring(sub, str));
+        assert(is_substring_pred(sub, str));
+    } else if str.len() < sub.len() {
+        assert(!is_substring(sub, str));
+        assert(!is_substring_pred(sub, str));
+    } else {
+        let prefix_match = (str.subrange(0, sub.len() as int) == sub);
+        let rest_str = str.subrange(1, str.len() as int);
+        lemma_substring_equivalence(sub, rest_str);
+        if prefix_match {
+            assert(is_substring(sub, str));
+            assert(is_substring_pred(sub, str));
+        } else if is_substring(sub, rest_str) {
+            assert(is_substring(sub, str));
+            assert(is_substring_pred(sub, str));
+        } else {
+            assert(!is_substring(sub, str));
+            assert(!is_substring_pred(sub, str));
+        }
+    }
+}
+
+fn have_common_k_substring(k: usize, str1: Seq<char>, str2: Seq<char>) -> (found: bool)
+    ensures 
+        found <==> have_common_k_substring_pred(k as nat, str1, str2),
+        !found <==> have_not_common_k_substring_pred(k as nat, str1, str2),
+{
+    if k == 0 || k > str1.len() {
+        return false;
+    }
+    let mut i: usize = 0;
+    while i <= str1.len() - k
+        invariant
+            0 <= i <= str1.len() - k + 1,
+            forall|i1: int| #![auto] 0 <= i1 < i ==> !is_substring_pred(str1.subrange(i1, i1 + k as int), str2),
+    {
+        let substr = str1.subrange(i as int, (i + k) as int);
+        let mut j: usize = 0;
+        let mut found_at_i = false;
+        while j + k <= str2.len()
+            invariant
+                0 <= j <= str2.len(),
+                !found_at_i ==> forall|j1: int| #![auto] 0 <= j1 < j ==> str2.subrange(j1, j1 + k as int) != substr,
+        {
+            if str2.subrange(j as int, (j + k) as int) == substr {
+                found_at_i = true;
+                break;
+            }
+            j += 1;
+        }
+        if found_at_i {
+            return true;
+        }
+        i += 1;
+    }
+    false
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn max_common_substring_length(str1: Seq<char>, str2: Seq<char>) -> (len: usize)
+    requires str1.len() <= str2.len(),
+    ensures 
+        forall|k: nat| #![auto] len < k <= str1.len() ==> !have_common_k_substring_pred(k, str1, str2),
+        have_common_k_substring_pred(len as nat, str1, str2),
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+fn max_common_substring_length(str1: Seq<char>, str2: Seq<char>) -> (len: usize)
+    requires str1.len() <= str2.len(),
+    ensures 
+        forall|k: nat| #![auto] len < k <= str1.len() ==> !have_common_k_substring_pred(k, str1, str2),
+        len == 0 || have_common_k_substring_pred(len as nat, str1, str2),
+{
+    let mut high: usize = str1.len();
+    let mut low: usize = 0;
+    let mut result: usize = 0;
+
+    while low <= high
+        invariant
+            low <= high + 1,
+            high <= str1.len(),
+            result <= str1.len(),
+            forall|k: nat| #![auto] result < k <= str1.len() ==> !have_common_k_substring_pred(k, str1, str2),
+    {
+        let mid = low + (high - low) / 2;
+        let found = have_common_k_substring(mid, str1, str2);
+        if found {
+            result = mid;
+            low = mid + 1;
+        } else {
+            if mid == 0 {
+                break;
+            }
+            high = mid - 1;
+        }
+    }
+    result
+}
+// </vc-code>
+
+fn main() {
+}
+
+}

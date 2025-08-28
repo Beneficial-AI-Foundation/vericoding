@@ -1,0 +1,68 @@
+predicate InArray(a: array<int>, x: int)
+    reads a
+{
+    exists i :: 0 <= i < a.Length && a[i] == x
+}
+
+// <vc-helpers>
+// Helper function to check if an element exists in a sequence
+predicate InSeq(s: seq<int>, x: int)
+{
+    exists i :: 0 <= i < |s| && s[i] == x
+}
+
+// Lemma to ensure uniqueness while building the result
+lemma UniqueSeqAppend(s: seq<int>, x: int)
+    requires !InSeq(s, x)
+    ensures forall i :: 0 <= i < |s| ==> s[i] != x
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method DissimilarElements(a: array<int>, b: array<int>) returns (result: seq<int>)
+    // All elements in the output are either in a or b, but not in both or neither
+    ensures forall x :: x in result ==> (InArray(a, x) != InArray(b, x))
+    // The elements in the output are all different
+    ensures forall i, j :: 0 <= i < j < |result| ==> result[i] != result[j]
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+method DissimilarElementsImpl(a: array<int>, b: array<int>) returns (result: seq<int>)
+    ensures forall x :: x in result ==> (InArray(a, x) != InArray(b, x))
+    ensures forall i, j :: 0 <= i < j < |result| ==> result[i] != result[j]
+{
+    result := [];
+    var seen := set x | x in result;
+    
+    // Process elements from array a
+    for i := 0 to a.Length
+        invariant forall x :: x in result ==> (InArray(a, x) != InArray(b, x))
+        invariant forall i, j :: 0 <= i < j < |result| ==> result[i] != result[j]
+        invariant seen == set x | x in result
+    {
+        if !InArray(b, a[i]) && a[i] !in seen
+        {
+            result := result + [a[i]];
+            seen := seen + {a[i]};
+            UniqueSeqAppend(result[..|result|-1], a[i]);
+        }
+    }
+    
+    // Process elements from array b
+    for i := 0 to b.Length
+        invariant forall x :: x in result ==> (InArray(a, x) != InArray(b, x))
+        invariant forall i, j :: 0 <= i < j < |result| ==> result[i] != result[j]
+        invariant seen == set x | x in result
+    {
+        if !InArray(a, b[i]) && b[i] !in seen
+        {
+            result := result + [b[i]];
+            seen := seen + {b[i]};
+            UniqueSeqAppend(result[..|result|-1], b[i]);
+        }
+    }
+}
+// </vc-code>

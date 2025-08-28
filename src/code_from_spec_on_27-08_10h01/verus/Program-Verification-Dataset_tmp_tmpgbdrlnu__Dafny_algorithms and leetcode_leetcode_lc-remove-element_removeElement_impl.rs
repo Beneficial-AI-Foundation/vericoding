@@ -1,0 +1,43 @@
+use vstd::prelude::*;
+
+verus! {
+
+//https://leetcode.com/problems/remove-element/
+
+// <vc-helpers>
+// Helper functions and proofs for removeElement verification
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn removeElement(nums: &mut Vec<i32>, val: i32) -> (i: usize)
+    ensures forall|k: int| 0 < k < i && k < nums.len() ==> nums[k] != val,
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut write_index: usize = 0;
+    let mut read_index: usize = 0;
+    
+    while read_index < nums.len()
+        invariant 
+            write_index <= read_index,
+            read_index <= nums.len(),
+            write_index <= nums.len(),
+            forall|k: int| 0 <= k < write_index ==> nums[k as int] != val
+    {
+        if nums[read_index] != val {
+            nums.set(write_index, nums[read_index]);
+            write_index += 1;
+        }
+        read_index += 1;
+    }
+    
+    write_index
+}
+// </vc-code>
+
+fn main() {}
+
+}

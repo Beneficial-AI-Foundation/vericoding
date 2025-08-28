@@ -1,0 +1,22 @@
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: def pairs_sum_to_zero(numbers: List[int]) -> Bool
+pairs_sum_to_zero takes a list of integers as an input. it returns True if there are two distinct elements in the list that sum to zero, and False otherwise.
+*/
+// </vc-description>
+
+// <vc-spec>
+method pairs_sum_to_zero(l : seq<int>) returns (result : bool)
+   // post-conditions-start
+    ensures result ==> exists i : int, j : int :: 0 <= i < |l| && 0 <= j < |l| && i != j && l[i] + l[j] == 0
+    ensures !result ==> forall i : int, j : int :: 0 <= i < |l| && 0 <= j < |l| && i != j ==> l[i] + l[j] != 0
+    // post-conditions-end
+// </vc-spec>
+// <vc-code>
+{
+  assume false;
+}
+// </vc-code>

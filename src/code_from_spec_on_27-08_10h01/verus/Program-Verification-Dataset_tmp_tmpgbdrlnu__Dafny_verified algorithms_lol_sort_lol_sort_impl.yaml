@@ -1,0 +1,163 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  // By `lol sort` here, I refer to a seemingly-broken sorting algorithm,
+  // which actually somehow manages to work perfectly:
+  //
+  // for i in 0..n
+  //   for j in 0..n
+  //     if i < j
+  //       swap a[i], a[j]
+  //
+  // It is perhaps the simpliest sorting algorithm to "memorize",
+  // even "symmetrically beautiful" as if `i` and `j` just played highly
+  // similar roles. And technically it's still O(n^2) time lol...
+  //
+  // Proving its correctness is tricky (interesting) though.
+  
+  // Successfully verified with [Dafny 3.3.0.31104] in about 5 seconds.
+  
+  
+  
+  // We define "valid permutation" using multiset:
+  
+  spec fn valid_permut(a: Seq<int>, b: Seq<int>) -> bool
+      recommends a.len() == b.len()
+  {
+      a.to_multiset() == b.to_multiset()
+  }
+  
+  // This is a swap-based sorting algorithm, so permutedness is trivial:
+  // note that: if i == j, the spec just says a[..] remains the same.
+  fn swap(a: &mut Vec<int>, i: usize, j: usize)
+      requires 
+          i < old(a).len(),
+          j < old(a).len(),
+      ensures
+          a.len() == old(a).len(),
+          a@ == old(a)@.update(i as int, old(a)[j as int]).update(j as int, old(a)[i as int]),
+          valid_permut(a@, old(a)@),
+  {
+      assume(false);
+  }
+  
+  // We then define "sorted" (by increasing order):
+  spec fn sorted(a: Seq<int>) -> bool
+  {
+      forall|i: int, j: int| 0 <= i <= j < a.len() ==> a[i] <= a[j]
+  }
+  
+  
+  // Now, the lol sort algorithm:
+  // (Some invariants were tricky to find, but Verus was smart enough otherwise)
+
+vc-helpers: |-
+  lemma lemma_swap_preserves_sorted_prefix(a: Seq<int>, i: usize, j: usize, k: int)
+      requires
+          i < a.len(),
+          j < a.len(),
+          0 <= k < a.len(),
+          k < i,
+          sorted(a.subrange(0, k + 1)),
+          forall|l: int| 0 <= l < k ==> a[l] <= a[i as int],
+          forall|l: int| 0 <= l < k ==> a[l] <= a[j as int],
+      ensures
+          sorted(a.update(i as int, a[j as int]).update(j as int, a[i as int]).subrange(0, k + 1)),
+  {
+      let swapped = a.update(i as int, a[j as int]).update(j as int, a[i as int]);
+      assert forall|x: int, y: int| 0 <= x <= y <= k implies swapped[x] <= swapped[y] by {
+          if x < k && y < k {
+              assert(a[x] <= a[y]);
+          }
+      }
+  }
+  
+  lemma lemma_sorted_extension(a: Seq<int>, i: int)
+      requires
+          0 <= i < a.len(),
+          sorted(a.subrange(0, i)),
+          forall|k: int| 0 <= k < i ==> a[k] <= a[i],
+      ensures
+          sorted(a.subrange(0, i + 1)),
+  {
+      assert forall|x: int, y: int| 0 <= x <= y <= i implies a[x] <= a[y] by {
+          if y < i {
+              assert(a[x] <= a[y]);
+          } else if y == i {
+              if x < i {
+                  assert(a[x] <= a[i]);
+              }
+          }
+      }
+  }
+  
+  lemma lemma_multiset_transitivity(a: Seq<int>, b: Seq<int>, c: Seq<int>)
+      requires
+          valid_permut(a, b),
+          valid_permut(b, c),
+      ensures
+          valid_permut(a, c),
+  {
+      assert(a.to_multiset() == b.to_multiset());
+      assert(b.to_multiset() == c.to_multiset());
+      assert(a.to_multiset() == c.to_multiset());
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn lol_sort(a: &mut Vec<int>)
+      ensures 
+          valid_permut(a@, old(a)@),
+          sorted(a@),
+  // </vc-spec>
+
+vc-code: |-
+  {
+      let n = a.len();
+      let ghost orig_a = a@;
+      
+      for i in 0..n
+          invariant
+              a.len() == n,
+              valid_permut(a@, orig_a),
+              sorted(a@.subrange(0, i as int)),
+              forall|k: int, l: int| 0 <= k < i && i <= l < n ==> a@[k] <= a@[l],
+      {
+          for j in 0..n
+              invariant
+                  a.len() == n,
+                  valid_permut(a@, orig_a),
+                  sorted(a@.subrange(0, i as int)),
+                  forall|k: int, l: int| 0 <= k < i && i <= l < n ==> a@[k] <= a@[l],
+                  forall|k: int| 0 <= k < i ==> a@[k] <= a@[i as int],
+          {
+              if i < j {
+                  let ghost old_a = a@;
+                  if a[i] > a[j] {
+                      swap(a, i, j);
+                      proof {
+                          lemma_multiset_transitivity(a@, old_a, orig_a);
+                      }
+                  } else {
+                      assert(valid_permut(a@, orig_a));
+                  }
+              }
+          }
+          
+          if i < n {
+              proof {
+                  lemma_sorted_extension(a@, i as int);
+              }
+          }
+      }
+  }
+
+vc-postamble: |-
+  
+  fn main() {
+  }
+  
+  }
+

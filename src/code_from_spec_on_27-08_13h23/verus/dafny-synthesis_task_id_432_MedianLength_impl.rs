@@ -1,0 +1,29 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+// No updates needed for helpers as the issue was a syntax error in the code section
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn median_length(a: int, b: int) -> (median: int)
+    requires a > 0 && b > 0
+    ensures median == (a + b) / 2
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+fn median_length(a: int, b: int) -> (median: int)
+    requires a > 0, b > 0
+    ensures median == (a + b) / 2
+{
+    let median = (a + b) / 2;
+    median
+}
+// </vc-code>
+
+fn main() {}
+
+}

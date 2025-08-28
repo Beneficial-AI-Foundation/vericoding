@@ -1,0 +1,114 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn count_frequency_rcr(seq: Seq<i32>, key: i32) -> (result: int)
+    decreases seq.len(),
+{
+    if seq.len() == 0 {
+        0
+    } else {
+        count_frequency_rcr(seq.drop_last(), key) + if (seq.last() == key) {
+            1 as int
+        } else {
+            0 as int
+        }
+    }
+}
+// pure-end
+
+// <vc-helpers>
+fn count_frequency(arr: &Vec<i32>, key: i32) -> (frequency: usize)
+    ensures
+        count_frequency_rcr(arr@, key) == frequency,
+{
+    let mut index = 0;
+    let mut counter = 0;
+    while index < arr.len()
+        invariant
+            0 <= index <= arr.len(),
+            0 <= counter <= index,
+            count_frequency_rcr(arr@.subrange(0, index as int), key) == counter,
+        decreases arr.len() - index,
+    {
+        if arr[index] == key {
+            counter += 1;
+        }
+        index += 1;
+        assert(arr@.subrange(0, index - 1 as int) == arr@.subrange(0, index as int).drop_last());
+    }
+    assert(arr@ == arr@.subrange(0, index as int));
+    counter
+}
+
+proof fn lemma_filter_count_frequency(arr: Seq<i32>, key: i32)
+    ensures
+        arr.filter(|x: i32| x == key).len() == count_frequency_rcr(arr, key),
+    decreases arr.len(),
+{
+    if arr.len() == 0 {
+        assert(arr.filter(|x: i32| x == key).len() == 0);
+    } else {
+        lemma_filter_count_frequency(arr.drop_last(), key);
+        assert(arr.filter(|x: i32| x == key).len() == arr.drop_last().filter(|x: i32| x == key).len() + if arr.last() == key { 1 as int } else { 0 as int });
+    }
+}
+
+proof fn lemma_subrange_filter(arr: Seq<i32>, from: int, to: int, key: i32)
+    requires
+        0 <= from <= to <= arr.len(),
+    ensures
+        arr.subrange(from, to).filter(|x: i32| x == key).len() == count_frequency_rcr(arr.subrange(from, to), key),
+    decreases to - from,
+{
+    if from == to {
+        assert(arr.subrange(from, to).filter(|x: i32| x == key).len() == 0);
+    } else {
+        lemma_subrange_filter(arr, from, to - 1, key);
+        assert(arr.subrange(from, to).filter(|x: i32| x == key).len() == arr.subrange(from, to - 1).filter(|x: i32| x == key).len() + if arr.index(to - 1) == key { 1 as int } else { 0 as int });
+        assert(count_frequency_rcr(arr.subrange(from, to), key) == count_frequency_rcr(arr.subrange(from, to - 1), key) + if arr.index(to - 1) == key { 1 as int } else { 0 as int });
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn remove_duplicates(arr: &Vec<i32>) -> (unique_arr: Vec<i32>)
+    // post-conditions-start
+    ensures
+        unique_arr@ == arr@.filter(|x: i32| count_frequency_rcr(arr@, x) == 1),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut result = Vec::new();
+    let mut index = 0;
+    
+    while index < arr.len()
+        invariant
+            0 <= index <= arr.len(),
+            result@ == arr@.subrange(0, index as int).filter(|x: i32| count_frequency_rcr(arr@, x) == 1),
+        decreases arr.len() - index,
+    {
+        let current = arr[index];
+        let freq = count_frequency(arr, current);
+        if freq == 1 {
+            result.push(current);
+            proof {
+                assert(arr@.subrange(0, index as int + 1).filter(|x: i32| count_frequency_rcr(arr@, x) == 1) == arr@.subrange(0, index as int).filter(|x: i32| count_frequency_rcr(arr@, x) == 1).push(current));
+            }
+        } else {
+            proof {
+                assert(arr@.subrange(0, index as int + 1).filter(|x: i32| count_frequency_rcr(arr@, x) == 1) == arr@.subrange(0, index as int).filter(|x: i32| count_frequency_rcr(arr@, x) == 1));
+            }
+        }
+        index += 1;
+    }
+    assert(arr@.subrange(0, index as int) == arr@);
+    result
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

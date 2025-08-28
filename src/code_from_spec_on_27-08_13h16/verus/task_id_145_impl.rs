@@ -1,0 +1,67 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+// No updates needed for helper code, spec functions, or proofs
+// </vc-helpers>
+
+// <vc-spec>
+fn max_difference(arr: &Vec<i32>) -> (diff: i32)
+    // pre-conditions-start
+    requires
+        arr.len() > 0,
+        forall|i: int| 0 <= i < arr.len() ==> i32::MIN / 2 < #[trigger] arr[i] < i32::MAX / 2,
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        forall|i: int, j: int| 0 <= i < arr.len() && 0 <= j < arr.len() ==> arr[i] - arr[j] <= diff,
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut max_diff: i32 = 0;
+    let mut min_val: i32 = arr[0];
+    let mut max_val: i32 = arr[0];
+    
+    let mut i: usize = 1;
+    while i < arr.len()
+        invariant
+            0 < i <= arr.len(),
+            min_val <= max_val,
+            forall|k: int| 0 <= k < i as int ==> min_val <= #[trigger] arr[k],
+            forall|k: int| 0 <= k < i as int ==> max_val >= #[trigger] arr[k],
+        decreases arr.len() - i
+    {
+        if arr[i] > max_val {
+            max_val = arr[i];
+        }
+        if arr[i] < min_val {
+            min_val = arr[i];
+        }
+        i = i + 1;
+    }
+    
+    // Final update to max_diff with overflow protection
+    max_diff = if max_val > min_val {
+        max_val - min_val
+    } else {
+        0
+    };
+    
+    proof {
+        // Prove that max_diff is at least the difference between any two elements
+        assert(forall|i: int, j: int| 0 <= i < arr.len() as int && 0 <= j < arr.len() as int ==> {
+            let diff = arr[i] - arr[j];
+            diff <= max_val - min_val && (max_val > min_val ==> diff <= max_diff)
+        });
+    }
+    
+    max_diff
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

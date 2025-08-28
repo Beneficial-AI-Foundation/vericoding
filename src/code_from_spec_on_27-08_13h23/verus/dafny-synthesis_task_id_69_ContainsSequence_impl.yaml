@@ -1,0 +1,63 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+  proof fn seq_equal_implies_eq<T>(s1: Seq<T>, s2: Seq<T>)
+      requires s1.len() == s2.len(),
+      ensures s1 == s2,
+      decreases s1.len()
+  {
+      if s1.len() == 0 {
+          return;
+      }
+      assert(s1[0] == s2[0]);
+      seq_equal_implies_eq(s1.drop_first(), s2.drop_first());
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn contains_sequence(list: Seq<Seq<int>>, sub: Seq<int>) -> (result: bool)
+      ensures result <==> exists|i: int| 0 <= i < list.len() && sub == list[i]
+  // </vc-spec>
+
+vc-code: |-
+  fn contains_sequence(list: Seq<Seq<int>>, sub: Seq<int>) -> (result: bool)
+      ensures result <==> exists|i: int| 0 <= i < list.len() && sub == list[i]
+  {
+      let mut i: int = 0;
+      while i < list.len()
+          invariant 0 <= i <= list.len(),
+          invariant forall|j: int| 0 <= j < i ==> list[j] != sub
+      {
+          if list[i].len() == sub.len() {
+              let mut equal = true;
+              let mut k: int = 0;
+              while k < sub.len()
+                  invariant 0 <= k <= sub.len(),
+                  invariant equal ==> forall|m: int| 0 <= m < k ==> list[i][m] == sub[m]
+              {
+                  if list[i][k] != sub[k] {
+                      equal = false;
+                  }
+                  k = k + 1;
+              }
+              if equal {
+                  proof {
+                      seq_equal_implies_eq(list[i], sub);
+                  }
+                  return true;
+              }
+          }
+          i = i + 1;
+      }
+      false
+  }
+
+vc-postamble: |-
+  fn main() {
+  }
+  
+  }
+

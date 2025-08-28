@@ -1,0 +1,91 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+proof fn lemma_abs_diff(a: i32, b: i32)
+    ensures
+        (if a < b { b - a } else { a - b }) >= 0,
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn canyon_search(a: &[i32], b: &[i32]) -> (d: u32)
+  requires 
+      a.len() != 0 && b.len() != 0,
+      forall|i: int, j: int| 0 <= i < j < a.len() ==> a[i] <= a[j],
+      forall|i: int, j: int| 0 <= i < j < b.len() ==> b[i] <= b[j],
+  ensures
+      exists|i: int, j: int| 0 <= i < a.len() && 0 <= j < b.len() && 
+          d as int == (if a[i] < b[j] { 
+              b[j] - a[i]
+          } else { 
+              a[i] - b[j]
+          }),
+      forall|i: int, j: int| 0 <= i < a.len() && 0 <= j < b.len() ==> 
+          d as int <= (if a[i] < b[j] { 
+              b[j] - a[i]
+          } else { 
+              a[i] - b[j]
+          }),
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+fn canyon_search(a: &[i32], b: &[i32]) -> (d: u32)
+    requires
+        a.len() != 0 && b.len() != 0,
+        forall|i: int, j: int| 0 <= i < j < a.len() ==> a[i] <= a[j],
+        forall|i: int, j: int| 0 <= i < j < b.len() ==> b[i] <= b[j],
+    ensures
+        exists|i: int, j: int| 0 <= i < a.len() && 0 <= j < b.len() && 
+            d as int == (if a[i] < b[j] { 
+                b[j] - a[i]
+            } else { 
+                a[i] - b[j]
+            }),
+        forall|i: int, j: int| 0 <= i < a.len() && 0 <= j < b.len() ==> 
+            d as int <= (if a[i] < b[j] { 
+                b[j] - a[i]
+            } else { 
+                a[i] - b[j]
+            }),
+{
+    let mut min_diff: u32 = (if a[0] < b[0] { b[0] - a[0] } else { a[0] - b[0] }) as u32;
+    let mut i: usize = 0;
+    let mut j: usize = 0;
+
+    while i < a.len() && j < b.len()
+        invariant
+            0 <= i <= a.len(),
+            0 <= j <= b.len(),
+            exists|ii: int, jj: int| 0 <= ii < a.len() && 0 <= jj < b.len() && 
+                min_diff as int == (if a[ii] < b[jj] { b[jj] - a[ii] } else { a[ii] - b[jj] }),
+            forall|ii: int, jj: int| 0 <= ii < i && 0 <= jj < b.len() ==> 
+                min_diff as int <= (if a[ii] < b[jj] { b[jj] - a[ii] } else { a[ii] - b[jj] }),
+            forall|ii: int, jj: int| 0 <= ii < a.len() && 0 <= jj < j ==> 
+                min_diff as int <= (if a[ii] < b[jj] { b[jj] - a[ii] } else { a[ii] - b[jj] }),
+    {
+        let curr_diff = if a[i] < b[j] { b[j] - a[i] } else { a[i] - b[j] };
+        if curr_diff < min_diff as i32 {
+            min_diff = curr_diff as u32;
+        }
+
+        if i + 1 < a.len() && (j + 1 >= b.len() || a[i + 1] - b[j] <= b[j + 1] - a[i + 1]) {
+            i = i + 1;
+        } else if j + 1 < b.len() {
+            j = j + 1;
+        } else {
+            break;
+        }
+    }
+
+    min_diff
+}
+// </vc-code>
+
+fn main() {}
+
+}

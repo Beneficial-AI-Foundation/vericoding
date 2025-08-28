@@ -1,0 +1,125 @@
+vc-preamble: |-
+  // RUN: %verus "%s"
+  
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn sum(a: Seq<int>, s: int, t: int) -> int
+      recommends 0 <= s <= t <= a.len()
+      decreases t - s when 0 <= s <= t <= a.len()
+  {
+      if s == t { 0 } else { sum(a, s, t-1) + a[t-1] }
+  }
+
+vc-helpers: |-
+  spec fn sum_max(a: Seq<int>, s: int, t: int, max_so_far: int) -> int
+      recommends 0 <= s <= t <= a.len()
+      decreases t - s when 0 <= s <= t <= a.len()
+  {
+      if s == t { max_so_far } else {
+          let current = sum(a, s, t);
+          let new_max = if current > max_so_far { current } else { max_so_far };
+          sum_max(a, s, t-1, new_max)
+      }
+  }
+  
+  proof fn sum_max_correct(a: Seq<int>, s: int, t: int, max_so_far: int)
+      requires 0 <= s <= t <= a.len()
+      ensures sum_max(a, s, t, max_so_far) >= max_so_far
+      decreases t - s
+  {
+      if s != t {
+          let current = sum(a, s, t);
+          let new_max = if current > max_so_far { current } else { max_so_far };
+          sum_max_correct(a, s, t-1, new_max);
+      }
+  }
+  
+  proof fn sum_max_bounds(a: Seq<int>, s: int, t: int, max_so_far: int, p: int, q: int)
+      requires 0 <= s <= t <= a.len(), 0 <= p <= q <= a.len()
+      ensures sum_max(a, s, t, max_so_far) >= sum(a, p, q) || exists |i: int, j: int| s <= i <= j <= t && sum(a, i, j) >= sum(a, p, q)
+      decreases t - s
+  {
+      if s != t {
+          let current = sum(a, s, t);
+          let new_max = if current > max_so_far { current } else { max_so_far };
+          if current >= sum(a, p, q) {
+              assert(exists |i: int, j: int| s <= i <= j <= t && sum(a, i, j) >= sum(a, p, q));
+          } else {
+              sum_max_bounds(a, s, t-1, new_max, p, q);
+          }
+      }
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn max_seg_sum(a: &Vec<int>) -> (result: (usize, usize))
+      ensures ({
+          let (k, m) = result;
+          &&& k <= m <= a.len()
+          &&& forall |p: int, q: int| 0 <= p <= q <= a.len() ==> 
+              sum(a@, p, q) <= sum(a@, k as int, m as int)
+      })
+  // </vc-spec>
+
+vc-code: |-
+  fn max_seg_sum(a: &Vec<int>) -> (result: (usize, usize))
+      ensures ({
+          let (k, m) = result;
+          &&& k <= m <= a.len()
+          &&& forall |p: int, q: int| 0 <= p <= q <= a.len() as int ==> 
+              sum(a@, p, q) <= sum(a@, k as int, m as int)
+      })
+  {
+      if a.len() == 0 {
+          return (0, 0);
+      }
+  
+      let mut max_sum = a@[0];
+      let mut current_sum = a@[0];
+      let mut start = 0;
+      let mut end = 1;
+      let mut temp_start = 0;
+      let mut i = 1;
+  
+      while i < a.len()
+          invariant
+              0 <= i <= a.len(),
+              0 <= start <= end <= a.len(),
+              0 <= temp_start <= i,
+              current_sum == sum(a@, temp_start as int, i as int),
+              max_sum >= a@[0],
+              forall |p: int, q: int| 0 <= p <= q <= i as int ==> sum(a@, p, q) <= max_sum,
+              max_sum == sum(a@, start as int, end as int)
+      {
+          current_sum = current_sum + a@[i];
+  
+          if current_sum > max_sum {
+              max_sum = current_sum;
+              start = temp_start;
+              end = i + 1;
+          }
+  
+          if current_sum < 0 {
+              current_sum = 0;
+              temp_start = i + 1;
+          }
+  
+          i = i + 1;
+      }
+  
+      proof {
+          let final_max = sum(a@, start as int, end as int);
+          assert(forall |p: int, q: int| 0 <= p <= q <= a.len() as int ==> sum(a@, p, q) <= final_max);
+      }
+  
+      (start, end)
+  }
+
+vc-postamble: |-
+  
+  fn main() {}
+  
+  }
+

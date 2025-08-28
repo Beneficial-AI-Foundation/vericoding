@@ -1,0 +1,116 @@
+vc-description: |-
+
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  
+  verus! {
+  
+  spec fn is_digit(c: char) -> (result: bool) {
+      (c as u8) >= 48 && (c as u8) <= 57
+  }
+  // pure-end
+  // pure-end
+  
+  spec fn count_digits_recursively(seq: Seq<char>) -> (result: int)
+      decreases seq.len(),
+  {
+      if seq.len() == 0 {
+          0
+      } else {
+          count_digits_recursively(seq.drop_last()) + if is_digit(seq.last()) {
+              1 as int
+          } else {
+              0 as int
+          }
+      }
+  }
+  // pure-end
+
+vc-helpers: |-
+  spec fn count_digits_recursively_monotonic(seq: Seq<char>) -> bool
+  {
+      count_digits_recursively(seq) >= 0
+  }
+  
+  proof fn count_digits_recursively_monotonic_proof(seq: Seq<char>)
+      ensures count_digits_recursively(seq) >= 0
+      decreases seq.len()
+  {
+      if seq.len() == 0 {
+          // base case: empty sequence has 0 digits
+      } else {
+          count_digits_recursively_monotonic_proof(seq.drop_last());
+      }
+  }
+  
+  proof fn count_digits_recursively_bound(seq: Seq<char>)
+      ensures count_digits_recursively(seq) <= seq.len()
+      decreases seq.len()
+  {
+      if seq.len() == 0 {
+          // base case: empty sequence has 0 digits
+      } else {
+          count_digits_recursively_bound(seq.drop_last());
+          // Since we add at most 1 for each character, the count is bounded by length
+      }
+  }
+  
+  fn is_digit_exec(c: char) -> (result: bool)
+      ensures result == is_digit(c)
+  {
+      let byte_val = c as u8;
+      byte_val >= 48 && byte_val <= 57
+  }
+
+vc-spec: |-
+  fn count_digits(text: &Vec<char>) -> (count: usize)
+      // pre-conditions-start
+      ensures
+          0 <= count <= text.len(),
+          count_digits_recursively(text@) == count,
+      // pre-conditions-end
+
+vc-code: |-
+  {
+      proof {
+          count_digits_recursively_monotonic_proof(text@);
+          count_digits_recursively_bound(text@);
+      }
+      
+      let mut count: usize = 0;
+      let mut i: usize = 0;
+      
+      while i < text.len()
+          invariant
+              0 <= i <= text.len(),
+              0 <= count <= i,
+              count == count_digits_recursively(text@.subrange(0, i as int)),
+          decreases text.len() - i
+      {
+          proof {
+              assert(text@.subrange(0, (i + 1) as int) == text@.subrange(0, i as int).push(text@[i as int]));
+              assert(text@.subrange(0, i as int).push(text@[i as int]).drop_last() == text@.subrange(0, i as int));
+              assert(text@.subrange(0, i as int).push(text@[i as int]).last() == text@[i as int]);
+          }
+          
+          if is_digit_exec(text[i]) {
+              count += 1;
+          }
+          i += 1;
+      }
+      
+      proof {
+          assert(text@.subrange(0, text.len() as int) == text@);
+      }
+      
+      count
+  }
+
+vc-postamble: |-
+  
+  } // verus!
+  
+  fn main() {}
+

@@ -1,0 +1,99 @@
+use vstd::prelude::*;
+
+verus!{
+
+// <vc-helpers>
+spec fn satisfies_filter_condition(x: &Vec<u64>, y: &Vec<u64>, end_idx: int) -> bool {
+    y@ == x@.subrange(0, end_idx).filter(|k: u64| k % 3 == 0)
+}
+
+proof fn filter_push_lemma(s: Seq<u64>, elem: u64)
+    requires elem % 3 == 0
+    ensures s.filter(|k: u64| k % 3 == 0).push(elem) == s.push(elem).filter(|k: u64| k % 3 == 0)
+{
+    let filtered_s = s.filter(|k: u64| k % 3 == 0);
+    let s_push_elem = s.push(elem);
+    let filtered_s_push_elem = s_push_elem.filter(|k: u64| k % 3 == 0);
+    
+    assert(filtered_s_push_elem == filtered_s.push(elem)) by {
+        assert forall |i: int| 0 <= i < filtered_s_push_elem.len() implies 
+            filtered_s_push_elem[i] == filtered_s.push(elem)[i] by {
+            if i < filtered_s.len() {
+                assert(filtered_s_push_elem[i] == filtered_s[i]);
+                assert(filtered_s.push(elem)[i] == filtered_s[i]);
+            } else {
+                assert(i == filtered_s.len());
+                assert(filtered_s_push_elem[i] == elem);
+                assert(filtered_s.push(elem)[i] == elem);
+            }
+        };
+        assert(filtered_s_push_elem.len() == filtered_s.push(elem).len());
+    };
+}
+
+proof fn filter_push_non_matching_lemma(s: Seq<u64>, elem: u64)
+    requires elem % 3 != 0
+    ensures s.filter(|k: u64| k % 3 == 0) == s.push(elem).filter(|k: u64| k % 3 == 0)
+{
+    let filtered_s = s.filter(|k: u64| k % 3 == 0);
+    let s_push_elem = s.push(elem);
+    let filtered_s_push_elem = s_push_elem.filter(|k: u64| k % 3 == 0);
+    
+    assert(filtered_s == filtered_s_push_elem) by {
+        assert forall |i: int| 0 <= i < filtered_s.len() implies 
+            filtered_s[i] == filtered_s_push_elem[i] by {
+            assert(filtered_s[i] == filtered_s_push_elem[i]);
+        };
+        assert(filtered_s.len() == filtered_s_push_elem.len()) by {
+            assert(elem % 3 != 0);
+        };
+    };
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn myfun4(x: &Vec<u64>, y: &mut Vec<u64>)
+    // pre-conditions-start
+    requires 
+        old(y).len() == 0,
+    // pre-conditions-end
+    // post-conditions-start
+    ensures 
+        y@ == x@.filter(|k:u64| k%3 == 0),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    for i in 0..x.len()
+        invariant
+            y@ == x@.subrange(0, i as int).filter(|k:u64| k%3 == 0),
+    {
+        if x[i] % 3 == 0 {
+            y.push(x[i]);
+            proof {
+                let old_seq = x@.subrange(0, i as int);
+                let new_seq = x@.subrange(0, (i + 1) as int);
+                assert(new_seq == old_seq.push(x@[i as int]));
+                assert(x@[i as int] % 3 == 0);
+                filter_push_lemma(old_seq, x@[i as int]);
+            }
+        } else {
+            proof {
+                let old_seq = x@.subrange(0, i as int);
+                let new_seq = x@.subrange(0, (i + 1) as int);
+                assert(new_seq == old_seq.push(x@[i as int]));
+                assert(x@[i as int] % 3 != 0);
+                filter_push_non_matching_lemma(old_seq, x@[i as int]);
+            }
+        }
+    }
+    proof {
+        assert(x@.subrange(0, x.len() as int) == x@);
+    }
+}
+// </vc-code>
+
+}
+
+fn main() {}

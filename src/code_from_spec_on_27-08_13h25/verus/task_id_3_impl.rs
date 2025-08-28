@@ -1,0 +1,64 @@
+use vstd::prelude::*;
+
+
+verus! {
+
+spec fn is_divisible(n: int, divisor: int) -> bool {
+    (n % divisor) == 0
+}
+// pure-end
+
+// <vc-helpers>
+proof fn lemma_divisible_implies_exists(n: int, divisor: int)
+    requires
+        2 <= divisor < n,
+        is_divisible(n, divisor),
+    ensures
+        exists|k: int| 2 <= k < n && is_divisible(n, k),
+{
+    assert(exists|k: int| 2 <= k < n && is_divisible(n, k)) by {
+        assert(2 <= divisor < n && is_divisible(n, divisor));
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn is_non_prime(n: u64) -> (result: bool)
+    // pre-conditions-start
+    requires
+        n >= 2,
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        result == (exists|k: int| 2 <= k < n && is_divisible(n as int, k)),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+fn is_non_prime(n: u64) -> (result: bool)
+    requires
+        n >= 2,
+    ensures
+        result == (exists|k: int| 2 <= k < n && is_divisible(n as int, k)),
+{
+    let mut i: u64 = 2;
+    while i < n
+        invariant
+            2 <= i <= n,
+            forall|k: int| 2 <= k < i ==> !is_divisible(n as int, k),
+    {
+        if (n % i) == 0 {
+            proof {
+                lemma_divisible_implies_exists(n as int, i as int);
+            }
+            return true;
+        }
+        i = i + 1;
+    }
+    return false;
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

@@ -1,0 +1,159 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn seq_max(a: Seq<i32>) -> (ret: i32)
+    decreases a.len(),
+{
+    if a.len() == 0 {
+        i32::MIN
+    } else if a.last() > seq_max(a.drop_last()) {
+        a.last()
+    } else {
+        seq_max(a.drop_last())
+    }
+}
+// pure-end
+
+// <vc-helpers>
+spec fn seq_max_monotonic(a: Seq<i32>, b: Seq<i32>) -> bool
+{
+    a.len() <= b.len() && a == b.take(a.len() as int) ==> seq_max(a) <= seq_max(b)
+}
+
+proof fn seq_max_monotonic_lemma(a: Seq<i32>, b: Seq<i32>)
+    requires a.len() <= b.len(), a == b.take(a.len() as int)
+    ensures seq_max(a) <= seq_max(b)
+    decreases b.len()
+{
+    if a.len() == 0 {
+        // seq_max(a) == i32::MIN, which is <= any seq_max(b)
+    } else if a.len() == b.len() {
+        // a == b, so seq_max(a) == seq_max(b)
+        assert(a == b);
+    } else {
+        // a.len() < b.len()
+        let b_drop = b.drop_last();
+        assert(a.len() <= b_drop.len());
+        assert(a == b_drop.take(a.len() as int));
+        seq_max_monotonic_lemma(a, b_drop);
+        assert(seq_max(a) <= seq_max(b_drop));
+        if b.last() > seq_max(b_drop) {
+            assert(seq_max(b) == b.last());
+            assert(seq_max(a) <= seq_max(b_drop) < b.last());
+        } else {
+            assert(seq_max(b) == seq_max(b_drop));
+        }
+    }
+}
+
+proof fn seq_max_extend_lemma(a: Seq<i32>, x: i32)
+    ensures seq_max(a.push(x)) == if a.len() == 0 { x } else { if x > seq_max(a) { x } else { seq_max(a) } }
+{
+    let extended = a.push(x);
+    if a.len() == 0 {
+        assert(extended.len() == 1);
+        assert(extended.last() == x);
+        assert(extended.drop_last() =~= seq![]);
+        assert(seq_max(extended.drop_last()) == i32::MIN);
+    } else {
+        assert(extended.last() == x);
+        assert(extended.drop_last() =~= a);
+        assert(seq_max(extended.drop_last()) == seq_max(a));
+    }
+}
+
+proof fn seq_max_correct_lemma(numbers: Seq<i32>, i: int, current_max: i32)
+    requires 0 <= i < numbers.len()
+    requires current_max == if i == 0 { numbers[i] } else { 
+        let prev_max = seq_max(numbers.take(i as int));
+        if numbers[i] > prev_max { numbers[i] } else { prev_max }
+    }
+    ensures current_max == seq_max(numbers.take(i + 1))
+{
+    let current_seq = numbers.take(i + 1);
+    if i == 0 {
+        assert(current_seq.len() == 1);
+        assert(current_seq[0] == numbers[0]);
+        assert(seq_max(current_seq) == numbers[0]);
+    } else {
+        let prev_seq = numbers.take(i as int);
+        assert(current_seq =~= prev_seq.push(numbers[i as int]));
+        seq_max_extend_lemma(prev_seq, numbers[i as int]);
+        let prev_max = seq_max(prev_seq);
+        
+        if numbers[i as int] > prev_max {
+            assert(seq_max(current_seq) == numbers[i as int]);
+            assert(current_max == numbers[i as int]);
+        } else {
+            assert(seq_max(current_seq) == prev_max);
+            assert(current_max == prev_max);
+        }
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn rolling_max(numbers: Vec<i32>) -> (result: Vec<i32>)
+    // post-conditions-start
+    ensures
+        result.len() == numbers.len(),
+        forall|i: int| 0 <= i < numbers.len() ==> result[i] == seq_max(numbers@.take(i + 1)),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut result: Vec<i32> = Vec::new();
+    let mut i = 0;
+    
+    while i < numbers.len()
+        invariant
+            0 <= i <= numbers.len(),
+            result.len() == i,
+            forall|j: int| 0 <= j < i ==> result[j] == seq_max(numbers@.take(j + 1)),
+        decreases numbers.len() - i
+    {
+        let current_max = if i == 0 {
+            numbers[i]
+        } else {
+            let prev_max = result[i - 1];
+            if numbers[i] > prev_max {
+                numbers[i]
+            } else {
+                prev_max
+            }
+        };
+        
+        proof {
+            assert(result.len() == i);
+            if i > 0 {
+                assert(result[i - 1] == seq_max(numbers@.take((i - 1) + 1)));
+                assert(result[i - 1] == seq_max(numbers@.take(i as int)));
+            }
+            seq_max_correct_lemma(numbers@, i as int, current_max);
+            assert(current_max == seq_max(numbers@.take(i + 1)));
+        }
+        
+        result.push(current_max);
+        
+        proof {
+            assert(result.len() == i + 1);
+            assert(result[i as int] == current_max);
+            assert(current_max == seq_max(numbers@.take(i + 1)));
+            
+            assert(forall|j: int| 0 <= j < i ==> result[j] == seq_max(numbers@.take(j + 1)));
+            assert(result[i as int] == seq_max(numbers@.take(i + 1)));
+            
+            assert(forall|j: int| 0 <= j < i + 1 ==> result[j] == seq_max(numbers@.take(j + 1)));
+        }
+        
+        i = i + 1;
+    }
+    
+    result
+}
+// </vc-code>
+
+}
+fn main() {}

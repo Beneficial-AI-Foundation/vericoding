@@ -1,0 +1,57 @@
+predicate InArray(a: array<int>, x: int)
+    reads a
+{
+    exists i :: 0 <= i < a.Length && a[i] == x
+}
+
+// <vc-helpers>
+lemma InArrayExists(a: array<int>, x: int, i: int)
+    requires 0 <= i < a.Length
+    requires a[i] == x
+    ensures InArray(a, x)
+{
+}
+
+lemma NotInArrayForall(a: array<int>, x: int)
+    requires forall i :: 0 <= i < a.Length ==> a[i] != x
+    ensures !InArray(a, x)
+{
+}
+
+lemma InArrayImpliesExists(a: array<int>, x: int)
+    requires InArray(a, x)
+    ensures exists i :: 0 <= i < a.Length && a[i] == x
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method RemoveElements(a: array<int>, b: array<int>) returns (result: seq<int>)
+    // All elements in the output are in a and not in b
+    ensures forall x :: x in result ==> InArray(a, x) && !InArray(b, x)
+    // The elements in the output are all different
+    ensures forall i, j :: 0 <= i < j < |result| ==> result[i] != result[j]
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    result := [];
+    var i := 0;
+    
+    while i < a.Length
+        invariant 0 <= i <= a.Length
+        invariant forall x :: x in result ==> InArray(a, x) && !InArray(b, x)
+        invariant forall k, l :: 0 <= k < l < |result| ==> result[k] != result[l]
+    {
+        var currentElement := a[i];
+        
+        if !InArray(b, currentElement) && currentElement !in result {
+            result := result + [currentElement];
+        }
+        
+        i := i + 1;
+    }
+}
+// </vc-code>

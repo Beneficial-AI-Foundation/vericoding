@@ -1,0 +1,136 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn sorted(s: Seq<i32>) -> bool {
+      forall|u: int, w: int| 0 <= u < w < s.len() ==> s[u] <= s[w]
+  }
+  
+  fn binary_search(v: &Vec<i32>, elem: i32) -> (p: i32)
+      requires sorted(v@)
+      ensures -1 <= p < v.len()
+      ensures forall|u: int| 0 <= u <= p ==> v[u] <= elem
+      ensures forall|w: int| p < w < v.len() ==> v[w] > elem
+  {
+      assume(false);
+      -1
+  }
+  
+  
+  
+  
+  
+  
+  // Recursive binary search
+
+vc-helpers: |-
+  spec fn binary_search_rec(v: Seq<i32>, elem: i32, lo: int, hi: int) -> (bool, int)
+      decreases hi - lo
+  {
+      if lo >= hi {
+          (false, lo)
+      } else {
+          let mid = lo + (hi - lo) / 2;
+          if v[mid] == elem {
+              (true, mid)
+          } else if v[mid] < elem {
+              binary_search_rec(v, elem, mid + 1, hi)
+          } else {
+              binary_search_rec(v, elem, lo, mid)
+          }
+      }
+  }
+  
+  proof fn binary_search_rec_properties(v: Seq<i32>, elem: i32, lo: int, hi: int)
+      requires sorted(v)
+      requires 0 <= lo <= hi <= v.len()
+      ensures 
+          let res = binary_search_rec(v, elem, lo, hi);
+          lo <= res.1 <= hi &&
+          (res.0 ==> res.1 < v.len() && v[res.1] == elem) &&
+          (!res.0 ==> forall|u: int| lo <= u < res.1 ==> v[u] < elem) &&
+          (!res.0 ==> forall|w: int| res.1 <= w < hi ==> v[w] > elem)
+      decreases hi - lo
+  {
+      if lo >= hi {
+      } else {
+          let mid = lo + (hi - lo) / 2;
+          if v[mid] == elem {
+          } else if v[mid] < elem {
+              binary_search_rec_properties(v, elem, mid + 1, hi);
+          } else {
+              binary_search_rec_properties(v, elem, lo, mid);
+          }
+      }
+  }
+  
+  fn binary_search_impl(v: &Vec<i32>, elem: i32, lo: usize, hi: usize) -> (res: (bool, usize))
+      requires sorted(v@)
+      requires lo <= hi <= v.len()
+      ensures 
+          lo <= res.1 <= hi &&
+          (res.0 ==> res.1 < v.len() && v[res.1 as int] == elem) &&
+          (!res.0 ==> forall|u: int| lo <= u < res.1 ==> v[u] < elem) &&
+          (!res.0 ==> forall|w: int| res.1 <= w < hi ==> v[w] > elem)
+      decreases hi - lo
+  {
+      if lo >= hi {
+          (false, lo)
+      } else {
+          let mid = lo + (hi - lo) / 2;
+          if v[mid] == elem {
+              (true, mid)
+          } else if v[mid] < elem {
+              binary_search_impl(v, elem, mid + 1, hi)
+          } else {
+              binary_search_impl(v, elem, lo, mid)
+          }
+      }
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn other_b_search(v: &Vec<i32>, elem: i32) -> (res: (bool, usize))
+      requires sorted(v@)
+      ensures 0 <= res.1 <= v.len()
+      ensures res.0 == v@.contains(elem)
+      ensures res.0 ==> res.1 < v.len() && v[res.1 as int] == elem
+      ensures !res.0 ==> forall|u: int| 0 <= u < res.1 ==> v[u] < elem
+      ensures !res.0 ==> forall|w: int| res.1 <= w < v.len() ==> v[w] > elem
+  // Implement and verify
+  // </vc-spec>
+
+vc-code: |-
+  {
+      let result = binary_search_impl(v, elem, 0, v.len());
+      
+      proof {
+          if result.0 {
+              assert(v@.contains(elem));
+          } else {
+              assert(!v@.contains(elem)) by {
+                  if v@.contains(elem) {
+                      let idx = choose|i: int| 0 <= i < v.len() && v[i] == elem;
+                      if idx < result.1 {
+                          assert(v[idx] < elem);
+                          assert(false);
+                      } else {
+                          assert(v[idx] > elem);
+                          assert(false);
+                      }
+                  }
+              }
+          }
+      }
+      
+      result
+  }
+
+vc-postamble: |-
+  
+  fn main() {
+  }
+  
+  }
+

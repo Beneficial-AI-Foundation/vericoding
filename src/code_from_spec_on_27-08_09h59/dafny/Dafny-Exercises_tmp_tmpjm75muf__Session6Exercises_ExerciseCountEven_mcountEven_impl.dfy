@@ -1,0 +1,79 @@
+predicate positive(s:seq<int>)
+{
+  forall u::0<=u<|s| ==> s[u]>=0
+  }
+
+predicate isEven(i:int)
+requires i>=0
+{
+  i%2==0
+}
+
+function CountEven(s:seq<int>):int
+decreases s
+requires positive(s)
+{
+  if s==[] then 0
+  else (if (s[|s|-1]%2==0) then 1 else 0)+CountEven(s[..|s|-1])
+
+}
+
+// <vc-helpers>
+lemma CountEvenSliceProperty(s: seq<int>, i: int)
+  requires positive(s)
+  requires 0 <= i < |s|
+  ensures CountEven(s[..i+1]) == CountEven(s[..i]) + (if s[i] % 2 == 0 then 1 else 0)
+{
+  if i == 0 {
+    assert s[..1] == [s[0]];
+    assert CountEven(s[..1]) == (if s[0] % 2 == 0 then 1 else 0) + CountEven([]);
+    assert CountEven([]) == 0;
+    assert CountEven(s[..0]) == 0;
+  } else {
+    assert s[..i+1] == s[..i] + [s[i]];
+    var prefix := s[..i+1];
+    assert prefix[|prefix|-1] == s[i];
+    assert CountEven(prefix) == (if prefix[|prefix|-1] % 2 == 0 then 1 else 0) + CountEven(prefix[..|prefix|-1]);
+    assert prefix[..|prefix|-1] == s[..i];
+  }
+}
+
+lemma CountEvenInvariant(s: seq<int>, i: int, count: int)
+  requires positive(s)
+  requires 0 <= i <= |s|
+  requires count == CountEven(s[..i])
+  ensures count == CountEven(s[..i])
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method mcountEven(v:array<int>) 
+returns (n:int)
+requires positive(v[..])
+ensures  n==CountEven(v[..])
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+  n := 0;
+  var i := 0;
+  
+  while i < v.Length
+    invariant 0 <= i <= v.Length
+    invariant n == CountEven(v[..i])
+    invariant positive(v[..])
+  {
+    if v[i] % 2 == 0 {
+      n := n + 1;
+    }
+    
+    CountEvenSliceProperty(v[..], i);
+    i := i + 1;
+  }
+  
+  assert v[..i] == v[..];
+}
+// </vc-code>

@@ -1,0 +1,103 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn split_point(a: &Vec<int>, n: int) -> bool {
+      0 <= n <= a.len() &&
+      forall|i: int, j: int| 0 <= i < n <= j < a.len() ==> a[i] <= a[j]
+  }
+  
+  spec fn swap_frame(a_old: &Vec<int>, a_new: &Vec<int>, lo: int, hi: int) -> bool {
+      0 <= lo <= hi <= a_old.len() &&
+      a_old.len() == a_new.len() &&
+      (forall|i: int| (0 <= i < lo || hi <= i < a_old.len()) ==> a_new[i] == a_old[i]) &&
+      a_new@.to_multiset() == a_old@.to_multiset()
+  }
+
+vc-helpers: |-
+  spec fn sorted(a: &Vec<int>) -> bool {
+      forall|i: int, j: int| 0 <= i < j < a.len() ==> a[i] <= a[j]
+  }
+  
+  spec fn sorted_range(a: &Vec<int>, start: int, end: int) -> bool {
+      forall|i: int, j: int| start <= i < j < end ==> a[i] <= a[j]
+  }
+  
+  fn find_min_index(a: &Vec<int>, start: usize) -> (min_idx: usize)
+      requires
+          start < a.len(),
+      ensures
+          start <= min_idx < a.len(),
+          forall|i: int| start <= i < a.len() ==> a[min_idx as int] <= a[i],
+  {
+      let mut min_idx = start;
+      let mut i = start + 1;
+      
+      while i < a.len()
+          invariant
+              start <= min_idx < a.len(),
+              start < i <= a.len(),
+              forall|j: int| start <= j < i ==> a[min_idx as int] <= a[j],
+      {
+          if a[i] < a[min_idx] {
+              min_idx = i;
+          }
+          i = i + 1;
+      }
+      
+      min_idx
+  }
+  
+  fn swap(a: &mut Vec<int>, i: usize, j: usize)
+      requires
+          i < a.len(),
+          j < a.len(),
+      ensures
+          a.len() == old(a).len(),
+          a[i as int] == old(a)[j as int],
+          a[j as int] == old(a)[i as int],
+          forall|k: int| 0 <= k < a.len() && k != i && k != j ==> a[k] == old(a)[k],
+          a@.to_multiset() == old(a)@.to_multiset(),
+  {
+      let temp = a[i];
+      a.set(i, a[j]);
+      a.set(j, temp);
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn selection_sort(a: &mut Vec<int>)
+      ensures
+          forall|i: int, j: int| 0 <= i < j < a.len() ==> a[i] <= a[j],
+          a@.to_multiset() == old(a)@.to_multiset(),
+  // </vc-spec>
+
+vc-code: |-
+  {
+      let mut i = 0;
+      
+      while i < a.len()
+          invariant
+              i <= a.len(),
+              sorted_range(a, 0, i as int),
+              forall|j: int, k: int| 0 <= j < i && i <= k < a.len() ==> a[j] <= a[k],
+              a@.to_multiset() == old(a)@.to_multiset(),
+          decreases a.len() - i,
+      {
+          if i + 1 < a.len() {
+              let min_idx = find_min_index(a, i);
+              if min_idx != i {
+                  swap(a, i, min_idx);
+              }
+          }
+          i = i + 1;
+      }
+  }
+
+vc-postamble: |-
+  
+  fn main() {}
+  
+  }
+

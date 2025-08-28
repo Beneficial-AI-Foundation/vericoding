@@ -1,0 +1,134 @@
+use vstd::prelude::*;
+
+verus! {
+
+// see pdf 'ex6 & 7 documentation' for excercise question
+
+
+#[derive(PartialEq, Eq, Debug, Clone, Copy)]
+enum Bases {
+    A,
+    C,
+    G,
+    T,
+}
+
+//swaps two sequence indexes
+fn exchanger(s: Seq<Bases>, x: nat, y: nat) -> (t: Seq<Bases>)
+    requires 
+        0 < s.len() && x < s.len() && y < s.len()
+    ensures 
+        t.len() == s.len(),
+        forall|b: int| 0 <= b < s.len() && b != x && b != y ==> t[b] == s[b],
+        t[x as int] == s[y as int] && s[x as int] == t[y as int],
+        s.to_multiset() == t.to_multiset()
+{
+    assume(false);
+    s
+}
+
+//idea from Rustan Leino video "Basics of specification and verification: Lecture 3, the Dutch National Flag algorithm"
+//modified for 4 elements
+spec fn below(first: Bases, second: Bases) -> bool {
+    first == second ||
+    first == Bases::A || 
+    (first == Bases::C && (second == Bases::G || second == Bases::T)) || 
+    (first == Bases::G && second == Bases::T) ||
+    second == Bases::T
+}
+
+//checks if a sequence is in base order
+spec fn bordered(s: Seq<Bases>) -> bool {
+    forall|j: int, k: int| 0 <= j < k < s.len() ==> below(s[j], s[k])
+}
+
+// <vc-helpers>
+spec fn base_to_int(b: Bases) -> int {
+    match b {
+        Bases::A => 0,
+        Bases::C => 1,
+        Bases::G => 2,
+        Bases::T => 3,
+    }
+}
+
+proof fn below_equiv_le(first: Bases, second: Bases)
+    ensures below(first, second) <==> base_to_int(first) <= base_to_int(second)
+{
+}
+
+proof fn bordered_equiv_sorted(s: Seq<Bases>)
+    ensures bordered(s) <==> (forall|j: int, k: int| 0 <= j < k < s.len() ==> base_to_int(s[j]) <= base_to_int(s[k]))
+{
+    assert forall|j: int, k: int| 0 <= j < k < s.len() implies below(s[j], s[k]) <==> base_to_int(s[j]) <= base_to_int(s[k]) by {
+        below_equiv_le(s[j], s[k]);
+    }
+}
+
+proof fn exchanger_preserves_bordered_partial(s: Seq<Bases>, x: nat, y: nat, t: Seq<Bases>)
+    requires
+        0 < s.len() && x < s.len() && y < s.len(),
+        t.len() == s.len(),
+        forall|b: int| 0 <= b < s.len() && b != x && b != y ==> t[b] == s[b],
+        t[x as int] == s[y as int] && s[x as int] == t[y as int],
+        base_to_int(s[x as int]) > base_to_int(s[y as int])
+    ensures
+        forall|i: int, j: int| 0 <= i < j < s.len() && 
+            base_to_int(s[i]) <= base_to_int(s[j]) ==>
+            base_to_int(t[i]) <= base_to_int(t[j])
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn sorter(bases: Seq<Bases>) -> (sobases: Seq<Bases>)
+    requires 
+        0 < bases.len()
+    ensures 
+        sobases.len() == bases.len(),
+        bordered(sobases),
+        bases.to_multiset() == sobases.to_multiset()
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut result = bases;
+    let mut i = 0usize;
+    
+    while i < result.len()
+        invariant
+            0 <= i <= result.len(),
+            result.len() == bases.len(),
+            bases.to_multiset() == result.to_multiset(),
+            forall|a: int, b: int| 0 <= a < b < i ==> base_to_int(result[a]) <= base_to_int(result[b])
+    {
+        let mut j = i + 1;
+        while j < result.len()
+            invariant
+                i < j <= result.len(),
+                result.len() == bases.len(),
+                bases.to_multiset() == result.to_multiset(),
+                forall|a: int, b: int| 0 <= a < b < i ==> base_to_int(result[a]) <= base_to_int(result[b]),
+                forall|k: int| (i + 1) <= k < j ==> base_to_int(result[i as int]) <= base_to_int(result[k])
+        {
+            if base_to_int(result[i as int]) > base_to_int(result[j as int]) {
+                result = exchanger(result, i as usize, j as usize);
+            }
+            j += 1;
+        }
+        i += 1;
+    }
+    
+    proof {
+        bordered_equiv_sorted(result);
+    }
+    
+    result
+}
+// </vc-code>
+
+fn main() {}
+
+}

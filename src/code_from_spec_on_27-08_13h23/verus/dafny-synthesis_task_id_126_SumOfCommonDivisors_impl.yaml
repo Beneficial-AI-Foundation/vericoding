@@ -1,0 +1,90 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+  fn gcd(a: u32, b: u32) -> (res: u32)
+      requires
+          a > 0 && b > 0,
+      ensures
+          res > 0,
+          a % res == 0,
+          b % res == 0,
+          forall|d: u32| #![trigger a % d, b % d]
+              d > 0 && a % d == 0 && b % d == 0 ==> d <= res,
+          forall|d: u32| #![trigger a % d, b % d]
+              d > res && a % d == 0 && b % d == 0 ==> false,
+  {
+      let mut x = a;
+      let mut y = b;
+      while y != 0
+          invariant
+              x > 0,
+              y >= 0,
+              exists|d: u32| #![trigger a % d, b % d]
+                  d > 0 && a % d == 0 && b % d == 0 && x % d == 0 && y % d == 0,
+      {
+          let t = y;
+          y = x % y;
+          x = t;
+      }
+      x
+  }
+  
+  fn sum_divisors_up_to(n: u32, up_to: u32) -> (sum: u32)
+      requires
+          n > 0,
+          up_to <= n,
+      ensures
+          sum >= 0,
+          forall|d: u32| #![trigger n % d]
+              1 <= d <= up_to && n % d == 0 ==> sum >= d,
+  {
+      let mut sum = 0;
+      let mut i = 1;
+      while i <= up_to
+          invariant
+              1 <= i <= up_to + 1,
+              sum >= 0,
+              forall|d: u32| #![trigger n % d]
+                  1 <= d < i && n % d == 0 ==> sum >= d,
+      {
+          if n % i == 0 {
+              sum = sum + i;
+          }
+          i = i + 1;
+      }
+      sum
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn sum_of_common_divisors(a: u32, b: u32) -> (sum: u32)
+      requires 
+          a > 0 && b > 0,
+      ensures 
+          sum >= 0,
+          forall|d: u32| #![trigger a % d, b % d] 
+              1 <= d <= a && 1 <= d <= b && a % d == 0 && b % d == 0 ==> sum >= d,
+  // </vc-spec>
+
+vc-code: |-
+  fn sum_of_common_divisors(a: u32, b: u32) -> (sum: u32)
+      requires
+          a > 0 && b > 0,
+      ensures
+          sum >= 0,
+          forall|d: u32| #![trigger a % d, b % d]
+              1 <= d <= a && 1 <= d <= b && a % d == 0 && b % d == 0 ==> sum >= d,
+  {
+      let g = gcd(a, b);
+      let sum = sum_divisors_up_to(g, g);
+      sum
+  }
+
+vc-postamble: |-
+  fn main() {}
+  
+  }
+

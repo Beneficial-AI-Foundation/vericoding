@@ -1,0 +1,72 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn gcd(m: nat, n: nat) -> nat
+  recommends m > 0 && n > 0
+  decreases m + n
+  {
+      if m == n { 
+          n 
+      } else if m > n { 
+          gcd(sub(m, n), n)
+      } else {
+          gcd(m, sub(n, m))
+      }
+  }
+  
+  spec fn exp(x: real, n: nat) -> real
+  decreases n
+  {
+      if n == 0 {
+          1.0
+      } else if x == 0.0 {
+          0.0
+      } else if n == 0 && x == 0.0 {
+          1.0
+      } else {
+          x * exp(x, sub(n, 1))
+      }
+  }
+
+vc-helpers: |-
+  proof fn lemma_mul_basics(m: u64, n: u64)
+      ensures
+          m * n == n * m,
+          m * 0 == 0,
+          m * 1 == m,
+  {
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn Product(m: u64, n: u64) -> (res: u64)
+  ensures res == m * n
+  // </vc-spec>
+
+vc-code: |-
+  fn Product(m: u64, n: u64) -> (res: u64)
+      ensures res == m * n
+  {
+      let mut result = 0;
+      let mut counter = n;
+  
+      while counter > 0
+          invariant
+              result == m * (n - counter),
+              counter <= n
+          decreases counter
+      {
+          result = result + m;
+          counter = counter - 1;
+      }
+  
+      result
+  }
+
+vc-postamble: |-
+  fn main() {}
+  
+  }
+

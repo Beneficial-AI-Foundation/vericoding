@@ -1,0 +1,93 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn sum_r(s: Seq<int>) -> int
+    decreases s.len()
+{
+    if s.len() == 0 {
+        0
+    } else {
+        sum_r(s.subrange(0, s.len() - 1)) + s[s.len() - 1]
+    }
+}
+
+spec fn sum_l(s: Seq<int>) -> int
+    decreases s.len()
+{
+    if s.len() == 0 {
+        0
+    } else {
+        s[0] + sum_l(s.subrange(1, s.len() as int))
+    }
+}
+
+spec fn sum_v(v: Seq<int>, c: int, f: int) -> int {
+    if 0 <= c <= f <= v.len() {
+        sum_r(v.subrange(c, f))
+    } else {
+        0
+    }
+}
+
+// <vc-helpers>
+proof fn sum_l_eq_sum_r(s: Seq<int>)
+    decreases s.len()
+    ensures sum_l(s) == sum_r(s)
+{
+    if s.len() == 0 {
+        assert(sum_l(s) == 0);
+        assert(sum_r(s) == 0);
+    } else {
+        sum_l_eq_sum_r(s.subrange(1, s.len() as int));
+        assert(sum_l(s) == s[0] + sum_l(s.subrange(1, s.len() as int)));
+        assert(sum_r(s) == sum_r(s.subrange(0, s.len() - 1)) + s[s.len() - 1]);
+        assert(sum_l(s.subrange(1, s.len() as int)) == sum_r(s.subrange(1, s.len() as int)));
+        assert(s.subrange(0, s.len() - 1) == s.subrange(0, s.len() as int - 1));
+        assert(sum_r(s.subrange(0, s.len() - 1)) == sum_r(s.subrange(1, s.len() as int)) + s[0]);
+    }
+}
+
+proof fn sum_v_eq_sum_r(v: Seq<int>, c: int, f: int)
+    requires 0 <= c <= f <= v.len()
+    ensures sum_v(v, c, f) == sum_r(v.subrange(c, f))
+{
+    assert(sum_v(v, c, f) == sum_r(v.subrange(c, f)));
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn sum_elems(v: &[i32]) -> (sum: i32)
+//ensures sum as int == sum_l(v@.map(|i, x| x as int))
+ensures sum as int == sum_r(v@.map(|i, x| x as int))
+//ensures sum as int == sum_v(v@.map(|i, x| x as int), 0, v@.len())
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+fn sum_elems(v: &[i32]) -> (sum: i32)
+    ensures sum as int == sum_l(v@.map(|i, x| x as int)),
+            sum as int == sum_r(v@.map(|i, x| x as int)),
+            sum as int == sum_v(v@.map(|i, x| x as int), 0, v@.len())
+{
+    let mut sum: i32 = 0;
+    let mut i: usize = 0;
+    while i < v.len()
+        invariant i <= v.len(),
+                  sum as int == sum_r(v@.map(|i, x| x as int).subrange(0, i as int))
+    {
+        sum = sum + v[i];
+        i = i + 1;
+    }
+    proof {
+        sum_l_eq_sum_r(v@.map(|i, x| x as int));
+        sum_v_eq_sum_r(v@.map(|i, x| x as int), 0, v@.len());
+    }
+    sum
+}
+// </vc-code>
+
+fn main() {}
+
+}

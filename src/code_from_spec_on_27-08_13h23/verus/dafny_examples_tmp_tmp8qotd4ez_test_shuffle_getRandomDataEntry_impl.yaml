@@ -1,0 +1,87 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  fn random(a: int, b: int) -> (r: int)
+      ensures a <= b ==> a <= r <= b
+  {
+      assume(false);
+      a
+  }
+  
+  spec fn set_of_seq<T>(s: Seq<T>) -> Set<T> {
+      s.to_set()
+  }
+
+vc-helpers: |-
+  proof fn lemma_seq_contains<T>(s: Seq<T>, e: T)
+      ensures s.contains(e) ==> set_of_seq(s).contains(e)
+  {
+  }
+  
+  proof fn lemma_seq_subset<T>(s1: Seq<T>, s2: Seq<T>)
+      ensures set_of_seq(s1).subset_of(set_of_seq(s2)) ==> (forall |x: T| s1.contains(x) ==> s2.contains(x))
+  {
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn get_random_data_entry<T: PartialEq + Clone>(m_work_list: &Vec<T>, avoid_set: &Vec<T>) -> (e: T)
+      requires m_work_list.len() > 0
+      ensures 
+          set_of_seq(avoid_set@).subset_of(set_of_seq(m_work_list@)) && 
+          set_of_seq(avoid_set@) != set_of_seq(m_work_list@) ==> !avoid_set@.contains(e),
+          (forall |x: T| avoid_set@.contains(x) ==> m_work_list@.contains(x)) && 
+          avoid_set@ != m_work_list@ ==> m_work_list@.contains(e)
+  // </vc-spec>
+
+vc-code: |-
+  fn get_random_data_entry<T: PartialEq + Clone>(m_work_list: &Vec<T>, avoid_set: &Vec<T>) -> (e: T)
+      requires m_work_list.len() > 0
+      ensures 
+          set_of_seq(avoid_set@).subset_of(set_of_seq(m_work_list@)) && 
+          set_of_seq(avoid_set@) != set_of_seq(m_work_list@) ==> !avoid_set@.contains(e),
+          (forall |x: T| avoid_set@.contains(x) ==> m_work_list@.contains(x)) && 
+          avoid_set@ != m_work_list@ ==> m_work_list@.contains(e)
+  {
+      let mut i: usize = 0;
+      let mut found = false;
+      let mut result = m_work_list[0].clone();
+  
+      while i < m_work_list.len()
+          invariant
+              0 <= i <= m_work_list.len(),
+              !found ==> result == m_work_list[0].clone(),
+              found ==> m_work_list@.contains(result),
+              found && set_of_seq(avoid_set@).subset_of(set_of_seq(m_work_list@)) ==> !avoid_set@.contains(result)
+      {
+          if !avoid_set@.contains(m_work_list@[i]) {
+              result = m_work_list[i].clone();
+              found = true;
+              break;
+          }
+          i = i + 1;
+      }
+  
+      if !found {
+          result = m_work_list[0].clone();
+      }
+  
+      proof {
+          if avoid_set@ != m_work_list@ && set_of_seq(avoid_set@).subset_of(set_of_seq(m_work_list@)) {
+              lemma_seq_subset(avoid_set@, m_work_list@);
+              assert(exists |x: T| m_work_list@.contains(x) && !avoid_set@.contains(x));
+          }
+      }
+  
+      result
+  }
+
+vc-postamble: |-
+  
+  fn main() {
+  }
+  
+  }
+

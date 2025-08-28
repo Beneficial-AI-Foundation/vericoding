@@ -1,0 +1,182 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  use vstd::multiset::Multiset;
+  
+  verus! {
+  
+  // This method is a slight generalization of the
+  // code provided in the problem statement since it
+  // is generic in the type of the array elements.
+  
+  spec fn multisets<T>(s: Seq<T>) -> Multiset<T>
+      decreases s.len(),
+  {
+      if s.len() == 0 { 
+          Multiset::empty() 
+      } else { 
+          Multiset::singleton(s[0]).add(multisets(s.subrange(1, s.len() as int)))
+      }
+  }
+  
+  fn swap<T>(a: &mut Vec<T>, i: usize, j: usize)
+      requires 
+          i < j < old(a).len(),
+      ensures 
+          a[i as int] == old(a)[j as int],
+          a[j as int] == old(a)[i as int],
+          forall|m: int| 0 <= m < a.len() && m != i && m != j ==> a[m] == old(a)[m],
+          multisets(a@) == multisets(old(a)@),
+  {
+      assume(false);
+  }
+  
+  // This method is a direct translation of the pseudo
+  // code given in the problem statement.
+  // The first postcondition expresses that the resulting
+  // array is sorted, that is, all occurrences of "false"
+  // come before all occurrences of "true".
+  // The second postcondition expresses that the post-state
+  // array is a permutation of the pre-state array. To express
+  // this, we use Verus's built-in multisets. The built-in
+  // function "multisets" takes a sequence and yields the
+  // multiset of the sequence elements.
+  // Note that Verus guesses a suitable ranking function
+  // for the termination proof of the while loop.
+  // We use the loop guard from the given pseudo-code.  However,
+  // the program also verifies with the stronger guard "i < j"
+  // (without changing any of the other specifications or
+  // annotations).
+
+vc-helpers: |-
+  proof fn lemma_multiset_swap<T>(s: Seq<T>, i: int, j: int)
+      requires 
+          0 <= i < s.len(),
+          0 <= j < s.len(),
+          i != j,
+      ensures
+          multisets(s) == multisets(s.update(i, s[j]).update(j, s[i])),
+  {
+      let s1 = s.update(i, s[j]);
+      let s2 = s1.update(j, s[i]);
+      
+      assert(s.len() == s2.len());
+      assert(s[i] == s2[j]);
+      assert(s[j] == s2[i]);
+      assert(forall|k: int| 0 <= k < s.len() && k != i && k != j ==> s[k] == s2[k]);
+      
+      lemma_multiset_swap_helper(s, s2, i, j);
+  }
+  
+  proof fn lemma_multiset_swap_helper<T>(s1: Seq<T>, s2: Seq<T>, i: int, j: int)
+      requires
+          0 <= i < s1.len(),
+          0 <= j < s1.len(),
+          i != j,
+          s1.len() == s2.len(),
+          s1[i] == s2[j],
+          s1[j] == s2[i],
+          forall|k: int| 0 <= k < s1.len() && k != i && k != j ==> s1[k] == s2[k],
+      ensures
+          multisets(s1) == multisets(s2),
+      decreases s1.len(),
+  {
+      if s1.len() == 0 {
+          return;
+      }
+      
+      if s1.len() == 1 {
+          assert(multisets(s1) == multisets(s2));
+          return;
+      }
+      
+      let ms1 = multisets(s1);
+      let ms2 = multisets(s2);
+      
+      if i == 0 && j == 1 {
+          assert(ms1 == Multiset::singleton(s1[0]).add(multisets(s1.subrange(1, s1.len() as int))));
+          assert(ms2 == Multiset::singleton(s2[0]).add(multisets(s2.subrange(1, s2.len() as int))));
+          assert(s1[0] == s2[1] && s1[1] == s2[0]);
+          assert(multisets(s1.subrange(1, s1.len() as int)) == multisets(s2.subrange(1, s2.len() as int)));
+      } else if i == 0 && j > 1 {
+          let sub1 = s1.subrange(1, s1.len() as int);
+          let sub2 = s2.subrange(1, s2.len() as int);
+          lemma_multiset_swap_helper(sub1, sub2, i, j - 1);
+      } else if i == 1 && j == 0 {
+          lemma_multiset_swap_helper(s1, s2, 0, 1);
+      } else {
+          let sub1 = s1.subrange(1, s1.len() as int);
+          let sub2 = s2.subrange(1, s2.len() as int);
+          if i > 0 && j > 0 {
+              lemma_multiset_swap_helper(sub1, sub2, i - 1, j - 1);
+          } else if i > 0 {
+              lemma_multiset_swap_helper(sub1, sub2, i - 1, j);
+          } else {
+              lemma_multiset_swap_helper(sub1, sub2, i, j - 1);
+          }
+      }
+  }
+  
+  proof fn lemma_multiset_unchanged<T>(s1: Seq<T>, s2: Seq<T>)
+      requires 
+          s1.len() == s2.len(),
+          (forall|k: int| 0 <= k < s1.len() ==> s1[k] == s2[k]),
+      ensures multisets(s1) == multisets(s2),
+  {
+      assert(s1 =~= s2);
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn two_way_sort(a: &mut Vec<bool>)
+      ensures 
+          forall|m: int, n: int| 0 <= m < n < a.len() ==> (!a[m] || a[n]),
+          multisets(a@) == multisets(old(a)@),
+  // </vc-spec>
+
+vc-code: |-
+  {
+      if a.len() == 0 {
+          return;
+      }
+      
+      let mut i: usize = 0;
+      let mut j: usize = a.len() - 1;
+      
+      while i < j
+          invariant
+              i <= a.len(),
+              j < a.len(),
+              i <= j + 1,
+              multisets(a@) == multisets(old(a)@),
+              forall|m: int| 0 <= m < i ==> !a[m],
+              forall|m: int| (j as int) < m < a.len() ==> a[m],
+          decreases j - i,
+      {
+          if !a[i] {
+              i = i + 1;
+          } else if a[j] {
+              if j > 0 {
+                  j = j - 1;
+              } else {
+                  break;
+              }
+          } else {
+              proof {
+                  lemma_multiset_swap(a@, i as int, j as int);
+              }
+              swap(a, i, j);
+              i = i + 1;
+              if j > 0 {
+                  j = j - 1;
+              } else {
+                  break;
+              }
+          }
+      }
+  }
+
+vc-postamble: |-
+  fn main() {}
+  
+  }
+

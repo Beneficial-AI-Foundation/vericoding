@@ -1,0 +1,89 @@
+use vstd::prelude::*;
+
+verus!{
+
+// <vc-helpers>
+spec fn sum_bounded_by_2(seq: Seq<u32>, len: nat) -> bool {
+    forall |j: int| 0 <= j < len ==> seq[j] <= 2
+}
+
+proof fn sum_bound_lemma(seq: Seq<u32>, len: nat, sum: int)
+    requires
+        len <= 0x7FFF_FFFF,
+        sum_bounded_by_2(seq, len),
+        sum == spec_sum(seq, len as int),
+    ensures
+        sum <= 2 * len,
+{
+    if len == 0 {
+        assert(sum == 0);
+    } else {
+        let prev_len = (len - 1) as nat;
+        assert(sum == spec_sum(seq, prev_len as int) + seq[prev_len as int]);
+        assert(seq[prev_len as int] <= 2);
+        sum_bound_lemma(seq, prev_len, spec_sum(seq, prev_len as int));
+    }
+}
+
+spec fn spec_sum(seq: Seq<u32>, len: int) -> int
+    decreases len
+{
+    if len <= 0 {
+        0
+    } else {
+        spec_sum(seq, len - 1) + seq[len - 1] as int
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn myfun(a: &mut Vec<u32>, N: u32) -> (sum: u32)
+    // pre-conditions-start
+    requires 
+        old(a).len() == N,
+        N <= 0x7FFF_FFFF,
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        sum <= 2*N,
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut sum: u32 = 0;
+    let mut i: usize = 0;
+    
+    while i < a.len()
+        invariant
+            i <= a.len(),
+            sum <= 2 * (i as u32),
+            sum < 0x7FFF_FFFF,
+            forall |j: int| 0 <= j < i ==> a@[j] <= 2,
+        decreases a.len() - i
+    {
+        if a[i] > 2 {
+            a.set(i, 2);
+        }
+        assert(a@[i as int] <= 2);
+        assert(sum + a@[i as int] <= sum + 2);
+        assert(sum + 2 <= 2 * (i as u32) + 2);
+        assert(2 * (i as u32) + 2 == 2 * ((i + 1) as u32));
+        sum = sum + a[i];
+        i = i + 1;
+    }
+    
+    proof {
+        assert(i == a.len());
+        assert(sum <= 2 * (i as u32));
+        assert(i as u32 == N);
+        assert(sum <= 2 * N);
+    }
+    
+    sum
+}
+// </vc-code>
+
+}
+
+fn main() {}

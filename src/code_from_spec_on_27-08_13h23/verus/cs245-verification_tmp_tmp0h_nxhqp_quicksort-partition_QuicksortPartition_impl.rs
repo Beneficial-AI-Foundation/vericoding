@@ -1,0 +1,94 @@
+use vstd::prelude::*;
+
+verus! {
+
+// Quicksort Partition -- Stephanie McIntyre
+// Based on examples in class 
+// Parts have been modified cause you know, arrays are different...
+
+/* The annotations and implied proofs are left for you.
+   I might do them later on next week. */
+
+// <vc-helpers>
+proof fn lemma_multiset_commutative<T>(s1: Seq<T>, s2: Seq<T>)
+    ensures
+        s1.to_multiset() + s2.to_multiset() == s2.to_multiset() + s1.to_multiset(),
+{
+}
+
+proof fn lemma_multiset_assoc<T>(s1: Seq<T>, s2: Seq<T>, s3: Seq<T>)
+    ensures
+        (s1.to_multiset() + s2.to_multiset()) + s3.to_multiset() == s1.to_multiset() + (s2.to_multiset() + s3.to_multiset()),
+{
+}
+
+proof fn lemma_vec_update_multiset<T>(v: Vec<T>, i: usize, val: T)
+    requires
+        i < v.len(),
+    ensures
+        {
+            let new_vec = v.update(i, val);
+            new_vec@.to_multiset() == v@.to_multiset() - v@.subrange(i as int, i as int + 1).to_multiset() + new_vec@.subrange(i as int, i as int + 1).to_multiset()
+        }
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn quicksort_partition(x: &mut Vec<i32>, n: usize, p: i32) -> (result: (usize, usize))
+/*Pre-Condition*/   requires old(x).len() >= 1, n == old(x).len();
+/*Post-Condition*/  ensures result.1 >= n;
+                    ensures forall|i: int| 0 <= i < (result.0 as int) && (result.0 as int) < (n as int) ==> x[i] <= p;
+                    ensures result.0 == n || (forall|i: int| (result.0 as int) <= i && i < (n as int) ==> x[i] > p);
+                    ensures x@.to_multiset() == old(x)@.to_multiset()           //This says the new X is a permutation of our old version of X.
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut i: usize = 0;
+    let mut j: usize = n;
+    
+    while i < j
+        invariant
+            0 <= i <= j <= n,
+            x@.to_multiset() == old(x)@.to_multiset(),
+            forall|k: int| 0 <= k < i as int ==> x[k] <= p,
+            j == n || (forall|k: int| j as int <= k < n as int ==> x[k] > p),
+    {
+        while i < j && x@[i] <= p
+            invariant
+                0 <= i <= j <= n,
+                x@.to_multiset() == old(x)@.to_multiset(),
+                forall|k: int| 0 <= k < i as int ==> x[k] <= p,
+                j == n || (forall|k: int| j as int <= k < n as int ==> x[k] > p),
+        {
+            i = i + 1;
+        }
+        
+        while i < j && x@[j - 1] > p
+            invariant
+                0 <= i <= j <= n,
+                x@.to_multiset() == old(x)@.to_multiset(),
+                forall|k: int| 0 <= k < i as int ==> x[k] <= p,
+                j == n || (forall|k: int| j as int <= k < n as int ==> x[k] > p),
+        {
+            j = j - 1;
+        }
+        
+        if i < j {
+            let temp = x@[i];
+            x.set(i, x@[j - 1]);
+            x.set(j - 1, temp);
+        }
+    }
+    
+    (i, j)
+}
+// </vc-code>
+
+fn main() {
+}
+
+}

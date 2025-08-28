@@ -1,0 +1,122 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn sorted(q: Seq<int>) -> bool {
+    forall|i: int, j: int| 0 <= i <= j < q.len() ==> q[i] <= q[j]
+}
+
+spec fn has_addends(q: Seq<int>, x: int) -> bool {
+    exists|i: int, j: int| 0 <= i < j < q.len() && q[i] + q[j] == x
+}
+
+spec fn is_valid_index<T>(q: Seq<T>, i: nat) -> bool {
+    0 <= i < q.len()
+}
+
+spec fn are_ordered_indices<T>(q: Seq<T>, i: nat, j: nat) -> bool {
+    0 <= i < j < q.len()
+}
+
+spec fn are_addends_indices(q: Seq<int>, x: int, i: nat, j: nat) -> bool
+    recommends is_valid_index(q, i) && is_valid_index(q, j)
+{
+    q[i as int] + q[j as int] == x
+}
+
+spec fn has_addends_in_indices_range(q: Seq<int>, x: int, i: nat, j: nat) -> bool
+    recommends are_ordered_indices(q, i, j)
+{
+    has_addends(q.subrange(i as int, (j + 1) as int), x)
+}
+
+spec fn loop_inv(q: Seq<int>, x: int, i: nat, j: nat, sum: int) -> bool {
+    are_ordered_indices(q, i, j) &&
+    has_addends_in_indices_range(q, x, i, j) &&
+    are_addends_indices(q, sum, i, j)
+}
+
+// <vc-helpers>
+proof fn lemma_subrange_has_addends_implies_original_has_addends(q: Seq<int>, x: int, start: int, end: int)
+    requires 0 <= start < end <= q.len()
+    requires has_addends(q.subrange(start, end), x)
+    ensures exists|i: int, j: int| start <= i < j < end && q[i] + q[j] == x
+{
+    let sub = q.subrange(start, end);
+    assert(exists|si: int, sj: int| 0 <= si < sj < sub.len() && sub[si] + sub[sj] == x);
+    let si = choose|si: int| exists|sj: int| 0 <= si < sj < sub.len() && sub[si] + sub[sj] == x;
+    let sj = choose|sj: int| 0 <= si < sj < sub.len() && sub[si] + sub[sj] == x;
+    assert(q[start + si] == sub[si]);
+    assert(q[start + sj] == sub[sj]);
+    assert(start <= start + si < start + sj < end);
+}
+
+proof fn lemma_sorted_two_pointer_correctness(q: Seq<int>, x: int, left: nat, right: nat)
+    requires sorted(q)
+    requires 0 <= left < right < q.len()
+    requires q[left as int] + q[right as int] < x
+    ensures forall|j: int| left < j <= right ==> q[left as int] + q[j] < x
+{
+    assert forall|j: int| left < j <= right implies q[left as int] + q[j] < x by {
+        assert(left as int <= j);
+    }
+}
+
+proof fn lemma_sorted_two_pointer_correctness_right(q: Seq<int>, x: int, left: nat, right: nat)
+    requires sorted(q)
+    requires 0 <= left < right < q.len()
+    requires q[left as int] + q[right as int] > x
+    ensures forall|i: int| left <= i < right ==> q[i] + q[right as int] > x
+{
+    assert forall|i: int| left <= i < right implies q[i] + q[right as int] > x by {
+        assert(i <= right as int);
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn find_addends(q: Seq<int>, x: int) -> (result: (usize, usize))
+    requires sorted(q) && has_addends(q, x)
+    ensures ({
+        let (i, j) = result;
+        i < j < q.len() && q[i as int] + q[j as int] == x
+    })
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut left: usize = 0;
+    let mut right: usize = (q.len() - 1) as usize;
+    
+    loop 
+        invariant 0 <= left < right < q.len()
+        invariant has_addends(q, x)
+        invariant forall|i: int, j: int| 0 <= i < left && left < j < q.len() ==> q[i] + q[j] < x
+        invariant forall|i: int, j: int| 0 <= i < q.len() && right < j < q.len() ==> q[i] + q[j] > x
+        invariant exists|i: int, j: int| left <= i < j <= right && q[i] + q[j] == x
+    {
+        let sum = q[left as int] + q[right as int];
+        
+        if sum == x {
+            return (left, right);
+        } else if sum < x {
+            proof {
+                lemma_sorted_two_pointer_correctness(q, x, left, right);
+            }
+            left = left + 1;
+        } else {
+            proof {
+                lemma_sorted_two_pointer_correctness_right(q, x, left, right);
+            }
+            right = right - 1;
+        }
+    }
+}
+// </vc-code>
+
+fn main() {
+}
+
+}

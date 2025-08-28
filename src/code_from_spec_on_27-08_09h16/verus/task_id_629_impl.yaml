@@ -1,0 +1,77 @@
+vc-description: |-
+
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  
+  verus! {
+
+vc-helpers: |-
+  spec fn filter_push_lemma<T>(s: Seq<T>, elem: T, predicate: spec_fn(T) -> bool)
+      ensures
+          s.push(elem).filter(predicate) == if predicate(elem) {
+              s.filter(predicate).push(elem)
+          } else {
+              s.filter(predicate)
+          }
+  {
+      s.push(elem).filter(predicate)
+  }
+  
+  proof fn prove_filter_push<T>(s: Seq<T>, elem: T, predicate: spec_fn(T) -> bool)
+      ensures
+          s.push(elem).filter(predicate) == if predicate(elem) {
+              s.filter(predicate).push(elem)
+          } else {
+              s.filter(predicate)
+          }
+  {
+      // This lemma is proven by the axioms of filter and push
+  }
+
+vc-spec: |-
+  fn find_even_numbers(arr: &Vec<u32>) -> (even_numbers: Vec<u32>)
+      // post-conditions-start
+      ensures
+          even_numbers@ == arr@.filter(|x: u32| x % 2 == 0),
+      // post-conditions-end
+
+vc-code: |-
+  {
+      let mut even_numbers = Vec::new();
+      
+      for i in 0..arr.len()
+          invariant
+              even_numbers@ == arr@.subrange(0, i as int).filter(|x: u32| x % 2 == 0),
+      {
+          if arr[i] % 2 == 0 {
+              even_numbers.push(arr[i]);
+          }
+          proof {
+              assert(arr@.subrange(0, (i + 1) as int) == arr@.subrange(0, i as int).push(arr@[i as int]));
+              prove_filter_push(arr@.subrange(0, i as int), arr@[i as int], |x: u32| x % 2 == 0);
+              if arr@[i as int] % 2 == 0 {
+                  assert(arr@.subrange(0, (i + 1) as int).filter(|x: u32| x % 2 == 0) == 
+                         arr@.subrange(0, i as int).filter(|x: u32| x % 2 == 0).push(arr@[i as int]));
+              } else {
+                  assert(arr@.subrange(0, (i + 1) as int).filter(|x: u32| x % 2 == 0) == 
+                         arr@.subrange(0, i as int).filter(|x: u32| x % 2 == 0));
+              }
+          }
+      }
+      
+      proof {
+          assert(arr.len() as int == arr@.len());
+          assert(arr@.subrange(0, arr.len() as int) == arr@);
+      }
+      
+      even_numbers
+  }
+
+vc-postamble: |-
+  
+  } // verus!
+  
+  fn main() {}
+

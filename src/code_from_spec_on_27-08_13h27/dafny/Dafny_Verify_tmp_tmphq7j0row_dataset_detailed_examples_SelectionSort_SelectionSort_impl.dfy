@@ -1,0 +1,76 @@
+// Works by dividing the input list into two parts: sorted and unsorted. At the beginning, 
+// the sorted part is empty and the unsorted part contains all the elements.
+
+// <vc-helpers>
+// Helper predicate to check if a subarray is sorted
+predicate IsSorted(a: array<int>, start: int, end: int)
+  requires 0 <= start <= end <= a.Length
+  reads a
+{
+  forall i, j :: start <= i < j < end ==> a[i] <= a[j]
+}
+
+// Helper lemma to assist with multiset properties
+lemma MultisetSwap(a: array<int>, i: int, j: int)
+  requires 0 <= i < a.Length && 0 <= j < a.Length
+  ensures multiset(a[..]) == multiset(a[..][i := a[j]][j := a[i]])
+{
+  var s := a[..];
+  var s1 := s[i := a[j]];
+  var s2 := s1[j := a[i]];
+  assert multiset(s) == multiset(s2);
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method SelectionSort(a: array<int>)
+  modifies a
+  // Ensures the final array is sorted in ascending order
+  ensures forall i,j :: 0 <= i < j < a.Length ==> a[i] <= a[j]
+  // Ensures that the final array has the same elements as the initial array
+  ensures multiset(a[..]) == old(multiset(a[..]))
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+method SelectionSortImpl(a: array<int>)
+  modifies a
+  ensures forall i,j :: 0 <= i < j < a.Length ==> a[i] <= a[j]
+  ensures multiset(a[..]) == old(multiset(a[..]))
+{
+  if a.Length <= 1 {
+    return;
+  }
+
+  var i := 0;
+  while i < a.Length - 1
+    invariant 0 <= i < a.Length
+    invariant IsSorted(a, 0, i)
+    invariant forall k, l :: 0 <= k < i <= l < a.Length ==> a[k] <= a[l]
+    invariant multiset(a[..]) == old(multiset(a[..]))
+  {
+    var minIndex := i;
+    var j := i + 1;
+    while j < a.Length
+      invariant i <= minIndex < a.Length
+      invariant i < j <= a.Length
+      invariant forall k :: i <= k < j ==> a[minIndex] <= a[k]
+      invariant multiset(a[..]) == old(multiset(a[..]))
+    {
+      if a[j] < a[minIndex] {
+        minIndex := j;
+      }
+      j := j + 1;
+    }
+    
+    if minIndex != i {
+      var temp := a[i];
+      a[i] := a[minIndex];
+      a[minIndex] := temp;
+      MultisetSwap(a, i, minIndex);
+    }
+    i := i + 1;
+  }
+}
+// </vc-code>

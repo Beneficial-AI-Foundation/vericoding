@@ -1,0 +1,79 @@
+// <vc-helpers>
+function CommonDivisors(a: int, b: int): set<int>
+    requires a > 0 && b > 0
+{
+    set d | 1 <= d <= a && 1 <= d <= b && a % d == 0 && b % d == 0
+}
+
+function SumSet(s: set<int>): int
+{
+    if s == {} then 0
+    else 
+        var x := FindElement(s);
+        x + SumSet(s - {x})
+}
+
+function FindElement(s: set<int>): int
+    requires s != {}
+    ensures FindElement(s) in s
+{
+    var x :| x in s; x
+}
+
+lemma SumSetNonnegative(s: set<int>)
+    requires forall x :: x in s ==> x >= 0
+    ensures SumSet(s) >= 0
+    decreases s
+{
+    if s == {} {
+    } else {
+        var x := FindElement(s);
+        SumSetNonnegative(s - {x});
+    }
+}
+
+lemma SumSetContainsElement(s: set<int>, x: int)
+    requires x in s
+    requires forall y :: y in s ==> y >= 0
+    ensures SumSet(s) >= x
+    decreases s
+{
+    if s == {x} {
+        assert SumSet(s) == x;
+    } else {
+        var y := FindElement(s);
+        if y == x {
+            SumSetNonnegative(s - {x});
+            assert SumSet(s) == x + SumSet(s - {x});
+        } else {
+            SumSetContainsElement(s - {y}, x);
+            assert SumSet(s) == y + SumSet(s - {y});
+        }
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method SumOfCommonDivisors(a: int, b: int) returns (sum: int)
+    requires a > 0 && b > 0
+    ensures sum >= 0
+    ensures forall d :: 1 <= d <= a && 1 <= d <= b && a % d == 0 && b % d == 0 ==> sum >= d
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    var divisors := CommonDivisors(a, b);
+    sum := SumSet(divisors);
+    
+    SumSetNonnegative(divisors);
+    
+    forall d | 1 <= d <= a && 1 <= d <= b && a % d == 0 && b % d == 0
+        ensures sum >= d
+    {
+        assert d in divisors;
+        SumSetContainsElement(divisors, d);
+    }
+}
+// </vc-code>

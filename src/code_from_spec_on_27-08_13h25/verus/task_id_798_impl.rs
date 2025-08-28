@@ -1,0 +1,79 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn sum_to(arr: Seq<i64>) -> (result: int)
+    decreases arr.len(),
+{
+    if arr.len() == 0 {
+        0
+    } else {
+        sum_to(arr.drop_last()) + arr.last()
+    }
+}
+// pure-end
+
+// <vc-helpers>
+proof fn sum_to_equivalence(arr: Seq<i64>)
+    ensures
+        sum_to(arr) == if arr.len() == 0 { 0 } else { sum_to(arr.drop_last()) + arr.last() }
+    decreases arr.len()
+{
+    if arr.len() > 0 {
+        sum_to_equivalence(arr.drop_last());
+    }
+}
+
+proof fn sum_to_take(arr: Seq<i64>, n: int)
+    requires
+        0 <= n <= arr.len()
+    ensures
+        sum_to(arr.take(n)) == if n == 0 { 0 } else { sum_to(arr.take(n - 1)) + arr.index(n - 1) }
+    decreases n
+{
+    if n > 0 {
+        sum_to_take(arr, n - 1);
+        assert(sum_to(arr.take(n)) == sum_to(arr.take(n - 1)) + arr.index(n - 1));
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn sum(arr: &Vec<i64>) -> (sum: i128)
+    // post-conditions-start
+    ensures
+        sum_to(arr@) == sum,
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut sum: i128 = 0;
+    let mut i: usize = 0;
+
+    while i < arr.len()
+        invariant
+            i <= arr.len(),
+            sum == sum_to(arr@.take(i as int)),
+        decreases arr.len() - i
+    {
+        proof {
+            sum_to_take(arr@, (i + 1) as int);
+        }
+        let next_sum = sum + arr[i] as i128;
+        proof {
+            assert(sum_to(arr@.take((i + 1) as int)) == sum_to(arr@.take(i as int)) + arr[i]);
+            assert(next_sum == sum + arr[i] as i128);
+            assert(next_sum == sum_to(arr@.take((i + 1) as int)));
+        }
+        sum = next_sum;
+        i = i + 1;
+    }
+
+    sum
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

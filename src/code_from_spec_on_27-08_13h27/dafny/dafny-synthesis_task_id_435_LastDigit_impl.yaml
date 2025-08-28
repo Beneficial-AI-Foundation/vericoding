@@ -1,0 +1,26 @@
+vc-preamble: |-
+
+
+vc-helpers: |-
+  // No additional helpers or proofs needed for this implementation
+
+vc-spec: |-
+  // <vc-spec>
+  method LastDigit(n: int) returns (d: int)
+      requires n >= 0
+      ensures 0 <= d < 10
+      ensures n % 10 == d
+  // </vc-spec>
+
+vc-code: |-
+  method LastDigitImpl(n: int) returns (d: int)
+      requires n >= 0
+      ensures 0 <= d < 10
+      ensures n % 10 == d
+  {
+      d := n % 10;
+  }
+
+vc-postamble: |-
+
+

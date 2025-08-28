@@ -1,0 +1,118 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn sorted(q: Seq<int>) -> bool {
+      forall|i: int, j: int| 0 <= i <= j < q.len() ==> q[i] <= q[j]
+  }
+  
+  
+  // all the values in the range satisfy `comparer` (comparer(q[i], key) == true)
+  spec fn range_satisfies_comparer(q: Seq<int>, key: int, lower_bound: nat, upper_bound: nat, comparer: spec_fn(int, int) -> bool) -> bool
+      recommends 0 <= lower_bound <= upper_bound <= q.len()
+  {
+      forall|i: int| lower_bound <= i < upper_bound ==> comparer(q[i], key)
+  }
+  
+  // all the values in the range satisfy `!comparer` (comparer(q[i], key) == false)
+  spec fn range_satisfies_comparer_negation(q: Seq<int>, key: int, lower_bound: nat, upper_bound: nat, comparer: spec_fn(int, int) -> bool) -> bool
+      recommends 0 <= lower_bound <= upper_bound <= q.len()
+  {
+      range_satisfies_comparer(q, key, lower_bound, upper_bound, |n1, n2| !comparer(n1, n2))
+  }
+
+vc-helpers: |-
+  proof fn lemma_range_satisfies_comparer_monotonic(q: Seq<int>, key: int, lower1: nat, upper1: nat, lower2: nat, upper2: nat, comparer: spec_fn(int, int) -> bool)
+      requires
+          0 <= lower1 <= upper1 <= q.len(),
+          0 <= lower2 <= upper2 <= q.len(),
+          lower2 <= lower1,
+          upper1 <= upper2,
+          range_satisfies_comparer(q, key, lower2, upper2, comparer),
+      ensures
+          range_satisfies_comparer(q, key, lower1, upper1, comparer),
+  {
+  }
+  
+  proof fn lemma_range_satisfies_comparer_negation_monotonic(q: Seq<int>, key: int, lower1: nat, upper1: nat, lower2: nat, upper2: nat, comparer: spec_fn(int, int) -> bool)
+      requires
+          0 <= lower1 <= upper1 <= q.len(),
+          0 <= lower2 <= upper2 <= q.len(),
+          lower2 <= lower1,
+          upper1 <= upper2,
+          range_satisfies_comparer_negation(q, key, lower2, upper2, comparer),
+      ensures
+          range_satisfies_comparer_negation(q, key, lower1, upper1, comparer),
+  {
+  }
+  
+  proof fn lemma_binary_search_invariant(q: Seq<int>, key: int, left: nat, right: nat, comparer: spec_fn(int, int) -> bool)
+      requires
+          sorted(q),
+          0 <= left <= right <= q.len(),
+          range_satisfies_comparer_negation(q, key, 0nat, left, comparer),
+          range_satisfies_comparer(q, key, right, q.len() as nat, comparer),
+          left < right,
+          (forall|n1: int, n2: int| #[trigger] comparer(n1, n2) ==> comparer(n1, n2) == (n1 > n2)) ||
+          (forall|n1: int, n2: int| #[trigger] comparer(n1, n2) ==> comparer(n1, n2) == (n1 >= n2)),
+      ensures
+          exists|split: nat| left <= split <= right &&
+              range_satisfies_comparer_negation(q, key, 0nat, split, comparer) &&
+              range_satisfies_comparer(q, key, split, q.len() as nat, comparer),
+  {
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn binary_search(q: Seq<int>, key: int, lower_bound: usize, upper_bound: usize, comparer: spec_fn(int, int) -> bool) -> (index: usize)
+      requires
+          sorted(q),
+          0 <= lower_bound <= upper_bound <= q.len(),
+          range_satisfies_comparer_negation(q, key, lower_bound as nat, upper_bound as nat, comparer),
+          range_satisfies_comparer(q, key, upper_bound as nat, q.len() as nat, comparer),
+          // comparer is '>' or '>='
+          (forall|n1: int, n2: int| #[trigger] comparer(n1, n2) ==> comparer(n1, n2) == (n1 > n2)) ||
+          (forall|n1: int, n2: int| #[trigger] comparer(n1, n2) ==> comparer(n1, n2) == (n1 >= n2)),
+  
+      ensures
+          lower_bound <= index <= upper_bound,
+          range_satisfies_comparer_negation(q, key, 0nat, index as nat, comparer),
+          range_satisfies_comparer(q, key, index as nat, q.len() as nat, comparer),
+  // </vc-spec>
+
+vc-code: |-
+  {
+      let mut left = lower_bound;
+      let mut right = upper_bound;
+      
+      while left < right
+          invariant
+              sorted(q),
+              0 <= lower_bound <= left <= right <= upper_bound <= q.len(),
+              range_satisfies_comparer_negation(q, key, 0nat, left as nat, comparer),
+              range_satisfies_comparer(q, key, right as nat, q.len() as nat, comparer),
+              (forall|n1: int, n2: int| #[trigger] comparer(n1, n2) ==> comparer(n1, n2) == (n1 > n2)) ||
+              (forall|n1: int, n2: int| #[trigger] comparer(n1, n2) ==> comparer(n1, n2) == (n1 >= n2)),
+          decreases right - left,
+      {
+          let mid = left + (right - left) / 2;
+          let ghost mid_int = mid as int;
+          
+          if comparer(q[mid_int as int], key) {
+              right = mid;
+          } else {
+              left = mid + 1;
+          }
+      }
+      
+      left
+  }
+
+vc-postamble: |-
+  
+  fn main() {
+  }
+  
+  }
+

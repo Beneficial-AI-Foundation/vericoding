@@ -1,0 +1,161 @@
+use vstd::prelude::*;
+
+verus! {
+
+//Method barrier below receives an array and an integer p
+//and returns a boolean b which is true if and only if 
+//all the positions to the left of p and including also position p contain elements 
+//that are strictly smaller than all the elements contained in the positions to the right of p 
+
+//Examples:
+// If v=[7,2,5,8] and p=0 or p=1 then the method must return false, 
+// but for p=2 the method should return true
+//1.Specify the method
+//2.Implement an O(v.size()) method
+//3.Verify the method
+
+// <vc-helpers>
+spec fn max_left(v: &[i32], p: usize) -> i32
+    requires v.len() > 0, p < v.len()
+{
+    if p == 0 {
+        v[0]
+    } else {
+        if v[p as int] > max_left(v, (p - 1) as usize) {
+            v[p as int]
+        } else {
+            max_left(v, (p - 1) as usize)
+        }
+    }
+}
+
+spec fn min_right(v: &[i32], p: usize) -> i32
+    requires v.len() > 0, p < v.len()
+    decreases v.len() - p
+{
+    if p + 1 == v.len() {
+        v[v.len() - 1]
+    } else {
+        if v[(p + 1) as int] < min_right(v, (p + 1) as usize) {
+            v[(p + 1) as int]
+        } else {
+            min_right(v, (p + 1) as usize)
+        }
+    }
+}
+
+proof fn max_left_correct(v: &[i32], p: usize, k: usize)
+    requires v.len() > 0, p < v.len(), k <= p
+    ensures v[k as int] <= max_left(v, p)
+    decreases p
+{
+    if p == 0 {
+    } else if k == p {
+    } else {
+        max_left_correct(v, (p - 1) as usize, k);
+    }
+}
+
+proof fn min_right_correct(v: &[i32], p: usize, l: usize)
+    requires v.len() > 0, p < v.len(), p < l, l < v.len()
+    ensures min_right(v, p) <= v[l as int]
+    decreases v.len() - p
+{
+    if p + 1 == v.len() {
+    } else if l == p + 1 {
+    } else {
+        min_right_correct(v, (p + 1) as usize, l);
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn barrier(v: &[i32], p: usize) -> (b: bool)
+//Give the precondition
+//Give the postcondition
+//{Implement and verify}
+    requires 
+        v.len() > 0,
+        p < v.len(),
+    ensures 
+        b == forall|k: usize, l: usize| 
+            k <= p && p < l && l < v.len() ==> v[k as int] < v[l as int]
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut max_so_far = v[0];
+    let mut i = 1;
+    
+    while i <= p
+        invariant 
+            1 <= i <= p + 1,
+            max_so_far == max_left(v, (i - 1) as usize),
+    {
+        if v[i] > max_so_far {
+            max_so_far = v[i];
+        }
+        i = i + 1;
+    }
+    
+    if p + 1 == v.len() {
+        return true;
+    }
+    
+    let mut min_so_far = v[p + 1];
+    let mut j = p + 2;
+    
+    while j < v.len()
+        invariant 
+            p + 2 <= j <= v.len(),
+            min_so_far == min_right(v, (j - 1) as usize),
+    {
+        if v[j] < min_so_far {
+            min_so_far = v[j];
+        }
+        j = j + 1;
+    }
+    
+    proof {
+        assert(max_so_far == max_left(v, p));
+        assert(min_so_far == min_right(v, (v.len() - 1) as usize));
+        
+        if max_so_far < min_so_far {
+            assert forall|k: usize, l: usize| k <= p && p < l && l < v.len() implies v[k as int] < v[l as int] by {
+                max_left_correct(v, p, k);
+                min_right_correct(v, (v.len() - 1) as usize, l);
+            }
+        } else {
+            if max_so_far == v[p as int] {
+                let witness_l = p + 1;
+                assert(p < witness_l && witness_l < v.len());
+                assert(!(v[p as int] < min_so_far));
+            } else {
+                let witness_k = {
+                    let mut idx: usize = 0;
+                    while idx <= p
+                        invariant 0 <= idx <= p + 1
+                    {
+                        if v[idx as int] == max_so_far {
+                            break idx;
+                        }
+                        idx = idx + 1;
+                    }
+                    idx
+                };
+                let witness_l = p + 1;
+                assert(witness_k <= p && p < witness_l && witness_l < v.len());
+                assert(!(v[witness_k as int] < min_so_far));
+            }
+        }
+    }
+    
+    max_so_far < min_so_far
+}
+// </vc-code>
+
+fn main() {}
+
+}

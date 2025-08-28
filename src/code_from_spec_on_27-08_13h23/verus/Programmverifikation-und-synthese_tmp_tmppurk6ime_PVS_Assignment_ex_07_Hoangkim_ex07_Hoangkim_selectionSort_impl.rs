@@ -1,0 +1,106 @@
+use vstd::prelude::*;
+
+verus! {
+
+//Problem01
+//a)
+
+//b)
+//Problem04
+
+fn find_min(a: &[i32], lo: usize) -> (minIdx: usize)
+    requires
+        a.len() > 0,
+        lo < a.len(),
+    ensures
+        lo <= minIdx < a.len(),
+        forall|x: usize| lo <= x < a.len() ==> a[minIdx as int] <= a[x as int],
+{
+    assume(false);
+    lo // dummy return
+}
+
+//Problem02
+spec fn sorted(a: Seq<i32>) -> bool {
+    forall|i: int| 0 < i < a.len() ==> #[trigger] a[i-1] <= a[i]
+}
+
+// <vc-helpers>
+spec fn multiset<T>(s: Seq<T>) -> Set<T> {
+    set_comprehension(|x: T| s.contains(x))
+}
+
+proof fn multiset_unchanged<T>(a: Seq<T>, b: Seq<T>)
+    requires
+        a.len() == b.len(),
+        forall|i: int| 0 <= i < a.len() ==> a[i] == b[i] || exists|j: int| 0 <= j < b.len() && j != i && a[i] == b[j],
+    ensures
+        multiset(a) == multiset(b),
+{
+}
+
+spec fn min_index(a: Seq<i32>, lo: int) -> int
+    decreases a.len() - lo
+{
+    if lo >= a.len() {
+        lo
+    } else {
+        let candidate = min_index(a, lo + 1);
+        if a[lo] <= a[candidate] {
+            lo
+        } else {
+            candidate
+        }
+    }
+}
+
+proof fn min_index_correct(a: Seq<i32>, lo: int)
+    requires
+        0 <= lo < a.len(),
+    ensures
+        lo <= min_index(a, lo) < a.len(),
+        forall|x: int| lo <= x < a.len() ==> a[min_index(a, lo)] <= a[x],
+    decreases a.len() - lo,
+{
+    if lo < a.len() - 1 {
+        min_index_correct(a, lo + 1);
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn selection_sort(a: &mut [i32])
+    //ensures multiset(a) == multiset(old(a))
+    //ensures sorted(a@)
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+fn selection_sort(a: &mut [i32])
+    ensures
+        multiset(a@) == multiset(old(a)@),
+        sorted(a@),
+{
+    let n = a.len();
+    let mut i: usize = 0;
+
+    while i < n
+        invariant
+            0 <= i <= n,
+            sorted(a@.subrange(0, i as int)),
+            forall|x: int, y: int| 0 <= x < i && i <= y < n ==> a@[x] <= a@[y],
+            multiset(a@) == multiset(old(a)@),
+    {
+        let min_idx = find_min(&a[i..], 0) + i;
+        a.swap(i, min_idx);
+        i = i + 1;
+    }
+}
+// </vc-code>
+
+//Problem03
+
+fn main() {}
+
+}

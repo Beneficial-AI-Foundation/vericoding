@@ -1,0 +1,35 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn is_even(n: int) -> bool {
+    n % 2 == 0
+}
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn is_product_even(a: &[int]) -> (result: bool)
+    ensures result <==> exists|i: int| 0 <= i < a.len() && is_even(a@[i])
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    for i in 0..a.len()
+        invariant forall|j: int| 0 <= j < i ==> !is_even(a@[j as int])
+    {
+        if is_even(a@[i as int]) {
+            return true;
+        }
+    }
+    false
+}
+// </vc-code>
+
+fn main() {
+}
+
+}

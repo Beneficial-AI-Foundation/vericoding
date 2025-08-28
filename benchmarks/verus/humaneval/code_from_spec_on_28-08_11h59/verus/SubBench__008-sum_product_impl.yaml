@@ -1,0 +1,168 @@
+vc-description: |-
+  /--
+  docstring: Implement sum product.
+  -/
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn sum(numbers: Seq<u32>) -> (result:int) {
+      numbers.fold_left(0, |acc: int, x| acc + x)
+  }
+  // pure-end
+  // pure-end
+  
+  spec fn product(numbers: Seq<u32>) -> (result:int) {
+      numbers.fold_left(1, |acc: int, x| acc * x)
+  }
+  // pure-end
+
+vc-helpers: |-
+  proof fn sum_bound(numbers: Seq<u32>)
+      ensures
+          sum(numbers) <= numbers.len() * u32::MAX,
+      decreases numbers.len(),
+  {
+      if numbers.len() == 0 {
+      } else {
+          sum_bound(numbers.drop_last());
+      }
+  }
+  
+  proof fn sum_additive(numbers: Seq<u32>, i: int)
+      requires 0 <= i < numbers.len()
+      ensures sum(numbers.subrange(0, i + 1)) == sum(numbers.subrange(0, i)) + numbers[i]
+  {
+      let prefix = numbers.subrange(0, i);
+      let extended = numbers.subrange(0, i + 1);
+      assert(extended == prefix.push(numbers[i]));
+  }
+  
+  proof fn product_overflow_check(numbers: Seq<u32>, current: u32)
+      ensures
+          current as int * product(numbers) <= u32::MAX ==> product(numbers.push(current)) <= u32::MAX,
+  {
+      if numbers.len() == 0 {
+          assert(product(numbers) == 1);
+      }
+  }
+  
+  proof fn sum_safe_add(numbers: Seq<u32>, i: int, current_sum: u64)
+      requires
+          0 <= i < numbers.len(),
+          current_sum == sum(numbers.subrange(0, i)) as u64,
+          current_sum <= u64::MAX - u32::MAX
+      ensures
+          current_sum + numbers[i] as u64 <= u64::MAX
+  {
+      assert(numbers[i] <= u32::MAX);
+      assert(current_sum + numbers[i] as u64 <= current_sum + u32::MAX as u64);
+      assert(current_sum + u32::MAX as u64 <= u64::MAX);
+  }
+  
+  proof fn product_multiplicative(numbers: Seq<u32>, i: int)
+      requires 0 <= i < numbers.len()
+      ensures product(numbers.subrange(0, i + 1)) == product(numbers.subrange(0, i)) * numbers[i]
+  {
+      let prefix = numbers.subrange(0, i);
+      let extended = numbers.subrange(0, i + 1);
+      assert(extended == prefix.push(numbers[i]));
+  }
+  
+  proof fn sum_cast_equivalence(numbers: Seq<u32>)
+      requires sum(numbers) <= u64::MAX
+      ensures sum(numbers) as u64 == sum(numbers) as u64
+  {
+  }
+  
+  proof fn product_properties_maintained(prefix: Seq<u32>, current: u32, prod_val: u64)
+      requires
+          product(prefix) <= u32::MAX,
+          prod_val == product(prefix) as u64,
+          prod_val * current as u64 <= u32::MAX as u64,
+          current > 0
+      ensures
+          product(prefix.push(current)) == product(prefix) * current,
+          product(prefix.push(current)) <= u32::MAX
+  {
+  }
+
+vc-spec: |-
+  fn sum_product(numbers: Vec<u32>) -> (result: (u64, Option<u32>))
+      // pre-conditions-start
+      requires
+          numbers.len() < u32::MAX,
+      // pre-conditions-end
+      // post-conditions-start
+      ensures
+          result.0 == sum(numbers@),
+          result.1 matches Some(v) ==> v == product(numbers@),
+      // post-conditions-end
+
+vc-code: |-
+  {
+      let mut sum_val: u64 = 0;
+      let mut prod_val: u64 = 1;
+      let mut prod_overflow = false;
+      
+      for i in 0..numbers.len()
+          invariant
+              sum_val == sum(numbers@.subrange(0, i as int)),
+              !prod_overflow ==> (prod_val == product(numbers@.subrange(0, i as int)) && product(numbers@.subrange(0, i as int)) <= u32::MAX),
+              prod_overflow ==> product(numbers@.subrange(0, i as int)) > u32::MAX,
+              sum_val <= u64::MAX - u32::MAX,
+      {
+          let num = numbers[i];
+          
+          proof {
+              sum_additive(numbers@, i as int);
+              sum_safe_add(numbers@, i as int, sum_val);
+          }
+          
+          sum_val += num as u64;
+          
+          if !prod_overflow {
+              if num == 0 {
+                  prod_val = 0;
+                  prod_overflow = true;
+              } else if prod_val > u32::MAX as u64 / num as u64 {
+                  prod_overflow = true;
+              } else if prod_val == u32::MAX as u64 / num as u64 && u32::MAX % num != 0 {
+                  prod_overflow = true;
+              } else {
+                  proof {
+                      assert(prod_val <= u32::MAX as u64 / num as u64);
+                      assert(num > 0);
+                      assert(prod_val * num as u64 <= u32::MAX as u64);
+                      product_multiplicative(numbers@, i as int);
+                      product_properties_maintained(numbers@.subrange(0, i as int), num, prod_val);
+                  }
+                  prod_val *= num as u64;
+              }
+          } else {
+              proof {
+                  product_multiplicative(numbers@, i as int);
+              }
+          }
+      }
+      
+      proof {
+          assert(numbers@.subrange(0, numbers.len() as int) =~= numbers@);
+      }
+      
+      let final_product = if prod_overflow || prod_val > u32::MAX as u64 {
+          None
+      } else {
+          Some(prod_val as u32)
+      };
+      
+      (sum_val, final_product)
+  }
+
+vc-postamble: |-
+  
+  }
+  fn main() {}
+

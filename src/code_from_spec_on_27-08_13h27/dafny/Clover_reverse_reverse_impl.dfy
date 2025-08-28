@@ -1,0 +1,33 @@
+// <vc-helpers>
+// No additional helpers or proofs needed for this implementation
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method reverse(a: array<int>)
+  modifies a
+  ensures forall i :: 0 <= i < a.Length ==> a[i] == old(a[a.Length - 1 - i])
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+method Reverse(a: array<int>)
+  modifies a
+  ensures forall i :: 0 <= i < a.Length ==> a[i] == old(a[a.Length - 1 - i])
+{
+  var i: int := 0;
+  var j: int := a.Length - 1;
+  while i < j
+    invariant 0 <= i <= j + 1
+    invariant i + j == a.Length - 1
+    invariant forall k :: 0 <= k < i ==> a[k] == old(a[a.Length - 1 - k])
+    invariant forall k :: j < k < a.Length ==> a[k] == old(a[a.Length - 1 - k])
+  {
+    var temp: int := a[i];
+    a[i] := a[j];
+    a[j] := temp;
+    i := i + 1;
+    j := j - 1;
+  }
+}
+// </vc-code>

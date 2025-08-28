@@ -1,0 +1,53 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+// No updates needed for helpers section
+// </vc-helpers>
+
+// <vc-spec>
+fn max_difference(arr: &Vec<i32>) -> (diff: i32)
+    // pre-conditions-start
+    requires
+        arr.len() > 0,
+        forall|i: int| 0 <= i < arr.len() ==> i32::MIN / 2 < #[trigger] arr[i] < i32::MAX / 2,
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        forall|i: int, j: int| 0 <= i < arr.len() && 0 <= j < arr.len() ==> arr[i] - arr[j] <= diff,
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut max_diff: i32 = 0;
+    let mut min_val: i32 = arr[0];
+    let mut max_val: i32 = arr[0];
+
+    let mut i: usize = 1;
+    while i < arr.len()
+        invariant
+            0 <= i <= arr.len(),
+            min_val <= max_val,
+            forall|k: int| 0 <= k < i as int ==> min_val <= arr@[k as usize],
+            forall|k: int| 0 <= k < i as int ==> max_val >= arr@[k as usize],
+            max_diff == max_val - min_val,
+    {
+        if arr@[i] > max_val {
+            max_val = arr@[i];
+        }
+        if arr@[i] < min_val {
+            min_val = arr@[i];
+        }
+        max_diff = max_val - min_val;
+        i = i + 1;
+    }
+
+    max_diff
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

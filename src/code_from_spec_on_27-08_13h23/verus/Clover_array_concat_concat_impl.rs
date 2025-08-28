@@ -1,0 +1,58 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+// No additional helpers needed for this fix
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn concat(a: &[i32], b: &[i32]) -> (c: Vec<i32>)
+    ensures 
+        c.len() == b.len() + a.len(),
+        forall|k: int| 0 <= k < a.len() ==> c[k] == a[k],
+        forall|k: int| 0 <= k < b.len() ==> c[k + a.len()] == b[k],
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+fn concat(a: &[i32], b: &[i32]) -> (c: Vec<i32>)
+    ensures 
+        c.len() == a.len() + b.len(),
+        forall|k: int| 0 <= k < a.len() ==> c[k] == a[k as usize],
+        forall|k: int| 0 <= k < b.len() ==> c[k + a.len() as int] == b[k as usize],
+{
+    let mut result: Vec<i32> = Vec::new();
+    let mut i: usize = 0;
+
+    while i < a.len()
+        invariant
+            i <= a.len(),
+            result.len() == i,
+            forall|k: int| 0 <= k < i ==> result[k] == a[k as usize],
+    {
+        result.push(a[i]);
+        i = i + 1;
+    }
+
+    i = 0;
+    while i < b.len()
+        invariant
+            i <= b.len(),
+            result.len() == a.len() + i,
+            forall|k: int| 0 <= k < a.len() ==> result[k] == a[k as usize],
+            forall|k: int| 0 <= k < i ==> result[k + a.len() as int] == b[k as usize],
+    {
+        result.push(b[i]);
+        i = i + 1;
+    }
+
+    result
+}
+// </vc-code>
+
+fn main() {
+}
+
+}

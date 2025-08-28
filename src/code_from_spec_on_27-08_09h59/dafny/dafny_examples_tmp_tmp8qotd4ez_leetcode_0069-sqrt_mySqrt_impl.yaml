@@ -1,0 +1,183 @@
+vc-preamble: |-
+  // Author: Shaobo He
+  
+  predicate sqrt(x: int, r: int) {
+      r*r <= x && (r+1)*(r+1) > x
+  }
+
+vc-helpers: |-
+  lemma sqrtUnique(x: int, r1: int, r2: int)
+    requires sqrt(x, r1) && sqrt(x, r2)
+    ensures r1 == r2
+  {
+    if r1 < r2 {
+      assert (r1 + 1) <= r2;
+      assert (r1 + 1) * (r1 + 1) <= r2 * r2;
+      assert (r1 + 1) * (r1 + 1) > x;
+      assert r2 * r2 <= x;
+      assert false;
+    } else if r2 < r1 {
+      assert (r2 + 1) <= r1;
+      assert (r2 + 1) * (r2 + 1) <= r1 * r1;
+      assert (r2 + 1) * (r2 + 1) > x;
+      assert r1 * r1 <= x;
+      assert false;
+    }
+  }
+  
+  lemma sqrtBounds(x: int) 
+    requires x >= 0
+    ensures exists r :: 0 <= r <= x && sqrt(x, r)
+  {
+    var r := 0;
+    while r * r <= x && (r + 1) * (r + 1) <= x
+      invariant r >= 0
+      decreases x - r * r
+    {
+      r := r + 1;
+    }
+    assert sqrt(x, r);
+  }
+  
+  lemma sqrtExistsInRange(x: int, low: int, high: int)
+    requires x >= 0
+    requires 0 <= low <= high + 1
+    requires low > 0 ==> (low - 1) * (low - 1) < x
+    requires high < x ==> (high + 1) * (high + 1) > x
+    ensures exists r :: low <= r <= high && sqrt(x, r)
+  {
+    sqrtBounds(x);
+    var realSqrt :| sqrt(x, realSqrt);
+    
+    if realSqrt < low {
+      assert (realSqrt + 1) * (realSqrt + 1) > x;
+      if low > 0 {
+        assert (low - 1) * (low - 1) < x;
+        assert realSqrt + 1 <= low;
+        if realSqrt + 1 < low {
+          calc {
+            (realSqrt + 1) * (realSqrt + 1);
+          <=  { assert realSqrt + 1 < low; }
+            (low - 1) * (low - 1);
+          <  { assert (low - 1) * (low - 1) < x; }
+            x;
+          }
+          assert (realSqrt + 1) * (realSqrt + 1) < x;
+          assert false;
+        } else {
+          assert realSqrt + 1 == low;
+          assert realSqrt == low - 1;
+          assert realSqrt >= low;
+          assert false;
+        }
+      } else {
+        assert low == 0;
+        assert realSqrt < 0;
+        sqrtBounds(x);
+        assert realSqrt >= 0;
+        assert false;
+      }
+    }
+    
+    if realSqrt > high {
+      assert realSqrt * realSqrt <= x;
+      if high < x {
+        assert (high + 1) * (high + 1) > x;
+        assert realSqrt >= high + 1;
+        assert realSqrt * realSqrt >= (high + 1) * (high + 1);
+        assert false;
+      } else {
+        assert high >= x;
+        assert realSqrt > x;
+        assert realSqrt * realSqrt > x * x;
+        if x >= 1 {
+          assert realSqrt * realSqrt > x;
+          assert false;
+        }
+      }
+    }
+    
+    assert low <= realSqrt <= high;
+  }
+  
+  lemma postLoopSqrt(x: int, low: int, high: int)
+    requires x >= 0
+    requires low > high
+    requires 0 <= low <= high + 1
+    requires low > 0 ==> (low - 1) * (low - 1) < x
+    requires high < x ==> (high + 1) * (high + 1) > x
+    ensures sqrt(x, low - 1)
+  {
+    assert low == high + 1;
+    var r := low - 1;
+    assert r == high;
+    
+    assert low > 0;
+    assert (low - 1) * (low - 1) < x;
+    assert r * r < x;
+    
+    assert high < x;
+    assert (high + 1) * (high + 1) > x;
+    assert (r + 1) * (r + 1) > x;
+    
+    assert sqrt(x, r);
+  }
+  
+  lemma postLoopSqrtZero(x: int, low: int, high: int)
+    requires x == 0
+    requires low > high
+    requires 0 <= low <= high + 1
+    ensures sqrt(x, 0)
+  {
+    assert 0 * 0 <= 0;
+    assert (0 + 1) * (0 + 1) > 0;
+    assert sqrt(0, 0);
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  method mySqrt(x: int) returns (res: int)
+  requires 0 <= x;
+  ensures sqrt(x, res);
+  // </vc-spec>
+
+vc-code: |-
+  {
+    if x == 0 {
+      assert sqrt(0, 0);
+      return 0;
+    }
+    
+    var low := 0;
+    var high := x;
+    
+    while low <= high
+      invariant 0 <= low <= high + 1 <= x + 1
+      invariant low > 0 ==> (low - 1) * (low - 1) < x
+      invariant high < x ==> (high + 1) * (high + 1) > x
+      decreases high - low
+    {
+      var mid := (low + high) / 2;
+      var midSquared := mid * mid;
+      var midPlusOneSquared := (mid + 1) * (mid + 1);
+      
+      if midSquared <= x && midPlusOneSquared > x {
+        assert sqrt(x, mid);
+        return mid;
+      } else if midSquared > x {
+        high := mid - 1;
+      } else {
+        low := mid + 1;
+      }
+    }
+    
+    assert low > high;
+    postLoopSqrt(x, low, high);
+    var r := low - 1;
+    assert sqrt(x, r);
+    return r;
+  }
+
+vc-postamble: |-
+
+

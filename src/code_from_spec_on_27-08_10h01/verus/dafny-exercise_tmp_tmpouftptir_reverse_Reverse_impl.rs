@@ -1,0 +1,42 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn reverse(a: &Vec<char>) -> (b: Vec<char>)
+    requires 
+        a.len() > 0,
+    ensures 
+        b.len() == a.len(),
+        forall|i: int| 0 <= i < a.len() ==> b[i] == a[a.len() - i - 1],
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut result = Vec::new();
+    let mut i = a.len();
+    
+    while i > 0
+        invariant
+            i <= a.len(),
+            result.len() == a.len() - i,
+            forall|j: int| 0 <= j < result.len() ==> result[j] == a[a.len() - j - 1],
+        decreases i,
+    {
+        i = i - 1;
+        result.push(a[i]);
+    }
+    
+    result
+}
+// </vc-code>
+
+fn main() {
+}
+
+}

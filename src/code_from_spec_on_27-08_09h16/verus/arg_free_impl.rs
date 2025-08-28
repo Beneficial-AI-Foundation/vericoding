@@ -1,0 +1,33 @@
+use vstd::prelude::*;
+
+verus!{
+
+// <vc-helpers>
+spec fn is_odd(n: int) -> bool {
+    n % 2 == 1
+}
+
+spec fn is_even(n: int) -> bool {
+    n % 2 == 0
+}
+
+proof fn even_odd_lemma(n: int)
+    ensures is_odd(n) || is_even(n)
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn choose_odd()
+// </vc-spec>
+
+// <vc-code>
+-> (result: i32)
+    ensures is_odd(result as int)
+{
+    1
+}
+// </vc-code>
+
+}
+fn main() {}

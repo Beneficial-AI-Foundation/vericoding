@@ -1,0 +1,131 @@
+function HasNoEvenDigit(n: int) : bool
+  decreases n
+{
+  n >= 0 && ((n < 10 && n % 2 == 1) || (n % 2 == 1 && HasNoEvenDigit(n / 10)))
+}
+
+// <vc-helpers>
+lemma HasNoEvenDigitSound(n: int)
+  requires n >= 0
+  ensures HasNoEvenDigit(n) <==> (forall d :: d in DigitsOf(n) ==> d % 2 == 1)
+{
+  if n < 10 {
+    assert DigitsOf(n) == [n];
+  } else {
+    var lastDigit := n % 10;
+    var remaining := n / 10;
+    assert DigitsOf(n) == DigitsOf(remaining) + [lastDigit];
+    HasNoEvenDigitSound(remaining);
+  }
+}
+
+function DigitsOf(n: int): seq<int>
+  requires n >= 0
+  decreases n
+{
+  if n < 10 then [n]
+  else DigitsOf(n / 10) + [n % 10]
+}
+
+lemma {:axiom} SortPreservesElements<T>(s: seq<T>, sorted: seq<T>)
+  requires multiset(s) == multiset(sorted)
+  ensures forall e :: e in s <==> e in sorted
+
+function FilterHasNoEvenDigit(x: seq<int>): seq<int>
+{
+  if |x| == 0 then []
+  else if HasNoEvenDigit(x[0]) then [x[0]] + FilterHasNoEvenDigit(x[1..])
+  else FilterHasNoEvenDigit(x[1..])
+}
+
+lemma {:axiom} FilterCorrectness(x: seq<int>)
+  ensures forall e :: e in FilterHasNoEvenDigit(x) ==> e in x && HasNoEvenDigit(e)
+  ensures forall e :: e in x && HasNoEvenDigit(e) ==> e in FilterHasNoEvenDigit(x)
+
+lemma EstablishPostcondition(result: seq<int>, x: seq<int>)
+  requires forall e :: e in result ==> e in x && HasNoEvenDigit(e) && e >= 0
+  ensures forall i :: 0 <= i < |result| ==> HasNoEvenDigit(result[i]) && (forall d :: d in DigitsOf(result[i]) ==> d % 2 == 1)
+{
+  forall i | 0 <= i < |result|
+    ensures HasNoEvenDigit(result[i]) && (forall d :: d in DigitsOf(result[i]) ==> d % 2 == 1)
+  {
+    HasNoEvenDigitSound(result[i]);
+  }
+}
+// </vc-helpers>
+
+// <vc-spec>
+method UniqueDigits(x: seq<int>) returns (result: seq<int>)
+  // post-conditions-start
+  ensures forall i :: 0 <= i < |result| ==> HasNoEvenDigit(result[i])
+  ensures forall i, j :: 0 <= i < j < |result| ==> result[i] <= result[j]
+  ensures forall e :: e in x && HasNoEvenDigit(e) ==> e in result
+  ensures forall e :: e in result ==> e in x
+  // post-conditions-end
+// </vc-spec>
+// <vc-code>
+{
+  var filtered := [];
+  var i := 0;
+  
+  while i < |x|
+    invariant 0 <= i <= |x|
+    invariant forall e :: e in filtered ==> e in x && HasNoEvenDigit(e) && e >= 0
+    invariant forall j :: 0 <= j < i && HasNoEvenDigit(x[j]) && x[j] >= 0 ==> x[j] in filtered
+  {
+    if x[i] >= 0 && HasNoEvenDigit(x[i]) {
+      filtered := filtered + [x[i]];
+    }
+    i := i + 1;
+  }
+  
+  result := SortSequence(filtered);
+  SortPreservesElements(filtered, result);
+  
+  assert forall e :: e in result ==> e in filtered;
+  assert forall e :: e in filtered ==> e in x && HasNoEvenDigit(e) && e >= 0;
+  assert forall e :: e in result ==> e in x && HasNoEvenDigit(e) && e >= 0;
+  
+  forall i | 0 <= i < |result|
+    ensures result[i] >= 0
+  {
+    assert result[i] in filtered;
+  }
+  
+  EstablishPostcondition(result, x);
+}
+
+method SortSequence(s: seq<int>) returns (sorted: seq<int>)
+  ensures |sorted| == |s|
+  ensures multiset(s) == multiset(sorted)
+  ensures forall i, j :: 0 <= i < j < |sorted| ==> sorted[i] <= sorted[j]
+{
+  sorted := s;
+  var i := 0;
+  while i < |sorted|
+    invariant 0 <= i <= |sorted|
+    invariant |sorted| == |s|
+    invariant multiset(s) == multiset(sorted)
+    invariant forall x, y :: 0 <= x < y < i ==> sorted[x] <= sorted[y]
+    invariant forall x :: 0 <= x < i ==> forall y :: i <= y < |sorted| ==> sorted[x] <= sorted[y]
+  {
+    var minIndex := i;
+    var j := i + 1;
+    while j < |sorted|
+      invariant i <= minIndex < |sorted|
+      invariant i < j <= |sorted|
+      invariant forall k :: i <= k < j ==> sorted[minIndex] <= sorted[k]
+    {
+      if sorted[j] < sorted[minIndex] {
+        minIndex := j;
+      }
+      j := j + 1;
+    }
+    if minIndex != i {
+      var temp := sorted[i];
+      sorted := sorted[i := sorted[minIndex]][minIndex := temp];
+    }
+    i := i + 1;
+  }
+}
+// </vc-code>

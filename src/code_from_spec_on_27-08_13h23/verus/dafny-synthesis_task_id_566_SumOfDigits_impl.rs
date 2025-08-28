@@ -1,0 +1,130 @@
+use vstd::prelude::*;
+
+verus! {
+
+// spec fn int_values(n: int) -> Seq<int>
+//     recommends n >= 0
+// {
+//     if n == 0 { seq![0] }
+//     else { seq![n] + int_values(n/10) }
+// }
+
+spec fn power10(n: nat) -> nat
+    decreases n
+{
+    if n == 0 { 1 } else { 10 * power10((n - 1) as nat) }
+}
+
+// spec fn number_to_seq(number: int) -> Seq<int>
+//     recommends number >= 0
+// {
+//     if number == 0 { Seq::empty() }
+//     else { seq![number % 10] + number_to_seq(number/10) }
+// }
+
+// spec fn sum_seq(digits: Seq<int>) -> int
+// {
+//     if digits.len() == 0 { 0 }
+//     else { digits[0] + sum_seq(digits.subrange(1, digits.len() as int)) }
+// }
+
+spec fn sum_digits(n: nat) -> nat {
+    let ndigits = number_of_digits(n);
+    let p = power10((ndigits - 1) as nat);
+    sum_digits_recursive(n, p)
+}
+
+spec fn sum_digits_recursive(n: nat, p: nat) -> nat
+    decreases p
+{
+    if n == 0 || p == 0 { 0 }
+    else {
+        let left_most_digit = n/p;
+        let rest = n%p;
+        left_most_digit + sum_digits_recursive(rest, (p/10) as nat)
+    }
+}
+
+spec fn number_of_digits(n: nat) -> nat
+    decreases n
+{
+    if 0 <= n <= 9 { 1 } else { 1 + number_of_digits((n/10) as nat) }
+}
+
+// <vc-helpers>
+proof fn lemma_power10_positive(n: nat)
+    ensures power10(n) > 0
+    decreases n
+{
+    if n == 0 {
+        assert(power10(0) == 1);
+    } else {
+        lemma_power10_positive((n - 1) as nat);
+        assert(power10(n) == 10 * power10((n - 1) as nat));
+    }
+}
+
+proof fn lemma_number_of_digits_positive(n: nat)
+    ensures number_of_digits(n) > 0
+    decreases n
+{
+    if 0 <= n <= 9 {
+        assert(number_of_digits(n) == 1);
+    } else {
+        lemma_number_of_digits_positive((n / 10) as nat);
+        assert(number_of_digits(n) == 1 + number_of_digits((n / 10) as nat));
+    }
+}
+
+proof fn lemma_sum_digits_recursive_bound(n: nat, p: nat)
+    ensures sum_digits_recursive(n, p) <= 9 * number_of_digits(n)
+    decreases p
+{
+    if n == 0 || p == 0 {
+        assert(sum_digits_recursive(n, p) == 0);
+    } else {
+        let left_most_digit = n / p;
+        let rest = n % p;
+        assert(left_most_digit <= 9);
+        lemma_sum_digits_recursive_bound(rest, (p / 10) as nat);
+        assert(sum_digits_recursive(n, p) == left_most_digit + sum_digits_recursive(rest, (p / 10) as nat));
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn sum_of_digits(number: u64) -> (sum: u64)
+    requires number >= 0,
+    ensures 
+        sum >= 0,
+        sum == sum_digits(number as nat),
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+fn sum_of_digits(number: u64) -> (sum: u64)
+    requires number >= 0
+    ensures 
+        sum >= 0,
+        sum == sum_digits(number as nat)
+{
+    let mut n = number;
+    let mut result = 0;
+    while n > 0
+        invariant
+            n >= 0,
+            result >= 0,
+            result + sum_digits(n as nat) == sum_digits(number as nat)
+    {
+        let digit = n % 10;
+        result = result + digit;
+        n = n / 10;
+    }
+    result
+}
+// </vc-code>
+
+fn main() {}
+
+}

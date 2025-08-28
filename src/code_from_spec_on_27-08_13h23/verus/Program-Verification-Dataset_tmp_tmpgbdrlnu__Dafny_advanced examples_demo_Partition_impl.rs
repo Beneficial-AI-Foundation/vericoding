@@ -1,0 +1,67 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+fn swap(a: &mut Vec<i32>, i: usize, j: usize)
+    requires
+        i < a.len(),
+        j < a.len(),
+    ensures
+        a.len() == old(a).len(),
+        a@[i] == old(a)@[j],
+        a@[j] == old(a)@[i],
+        forall|k: int| 0 <= k < a.len() && k != i && k != j ==> a@[k] == old(a)@[k],
+{
+    let temp = a@[i];
+    a.set(i, a@[j]);
+    a.set(j, temp);
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn partition(a: &mut Vec<i32>) -> (usize, usize)
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+fn partition(a: &mut Vec<i32>) -> (result: (usize, usize))
+    ensures
+        0 <= result.0 && result.0 <= result.1 && result.1 <= a.len(),
+        forall|x: int| 0 <= x < result.0 ==> a@[x] < 0,
+        forall|x: int| result.0 <= x < result.1 ==> a@[x] == 0,
+        forall|x: int| result.1 <= x < a.len() ==> a@[x] > 0,
+{
+    let mut lo: usize = 0;
+    let mut mid: usize = 0;
+    let mut hi: usize = a.len();
+    
+    while mid < hi
+        invariant
+            0 <= lo <= mid <= hi <= a.len(),
+            forall|x: int| 0 <= x < lo ==> a@[x] < 0,
+            forall|x: int| lo <= x < mid ==> a@[x] == 0,
+            forall|x: int| hi <= x < a.len() ==> a@[x] > 0,
+        decreases hi - mid
+    {
+        if a@[mid] < 0 {
+            swap(a, lo, mid);
+            lo = lo + 1;
+            mid = mid + 1;
+        } else if a@[mid] == 0 {
+            mid = mid + 1;
+        } else {
+            hi = hi - 1;
+            swap(a, mid, hi);
+        }
+    }
+    
+    (lo, mid)
+}
+// </vc-code>
+
+fn main() {
+}
+
+}

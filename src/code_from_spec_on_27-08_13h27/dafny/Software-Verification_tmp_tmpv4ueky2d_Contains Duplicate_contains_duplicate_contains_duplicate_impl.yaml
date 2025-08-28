@@ -1,0 +1,53 @@
+vc-preamble: |-
+  predicate distinct(nums: seq<int>) {
+      forall i, j :: 0 <= i < j < |nums| ==> nums[i] != nums[j]
+  }
+
+vc-helpers: |-
+  lemma DistinctImpliesNoDuplicate(nums: seq<int>)
+    ensures distinct(nums) <==> (forall i, j :: 0 <= i < j < |nums| ==> nums[i] != nums[j])
+  {
+    // This is already the definition of distinct, so no further proof needed.
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  method contains_duplicate(nums: seq<int>) returns (result: bool)
+      requires 1 <= |nums| <= 100000
+      requires forall i :: 0 <= i < |nums| ==> -1000000000 <= nums[i] <= 1000000000
+      ensures result <==> distinct(nums)
+  // </vc-spec>
+
+vc-code: |-
+  method ContainsDuplicate(nums: seq<int>) returns (result: bool)
+    requires 1 <= |nums| <= 100000
+    requires forall i :: 0 <= i < |nums| ==> -1000000000 <= nums[i] <= 1000000000
+    ensures result <==> !distinct(nums)
+  {
+    result := false;
+    for i := 0 to |nums|
+      invariant 0 <= i <= |nums|
+      invariant result ==> (exists j, k :: 0 <= j < k < i && nums[j] == nums[k])
+      invariant !result ==> (forall j, k :: 0 <= j < k < i ==> nums[j] != nums[k])
+    {
+      for j := 0 to i
+        invariant 0 <= j <= i
+        invariant result ==> (exists p, q :: 0 <= p < q <= i && nums[p] == nums[q])
+        invariant !result ==> (forall p, q :: 0 <= p < q <= i && p < j ==> nums[p] != nums[q])
+      {
+        if j < i && nums[j] == nums[i]
+        {
+          result := true;
+          break;
+        }
+      }
+      if result
+      {
+        break;
+      }
+    }
+  }
+
+vc-postamble: |-
+
+

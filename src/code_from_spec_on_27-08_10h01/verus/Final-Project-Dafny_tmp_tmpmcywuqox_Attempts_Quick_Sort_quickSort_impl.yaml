@@ -1,0 +1,73 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn quick_sorted(seq: Seq<int>) -> bool {
+      forall|idx_1: int, idx_2: int| 0 <= idx_1 < idx_2 < seq.len() ==> seq[idx_1] <= seq[idx_2]
+  }
+  
+  #[verifier::exec_allows_no_decreases_clause]
+  fn threshold(thres: int, seq: Seq<int>) -> (res: (Seq<int>, Seq<int>))
+      ensures
+          (forall|x: int| res.0.contains(x) ==> x <= thres) && (forall|x: int| res.1.contains(x) ==> x >= thres) &&
+          res.0.len() + res.1.len() == seq.len() &&
+          res.0.to_multiset().add(res.1.to_multiset()) == seq.to_multiset()
+  {
+      assume(false);
+      loop {}
+  }
+
+vc-helpers: |-
+  spec fn partition_valid(seq: Seq<int>, pivot: int, left: Seq<int>, right: Seq<int>) -> bool {
+      (forall|x: int| left.contains(x) ==> x < pivot) &&
+      (forall|x: int| right.contains(x) ==> x > pivot) &&
+      left.to_multiset().add(right.to_multiset()).add(seq![pivot].to_multiset()) == seq.to_multiset()
+  }
+  
+  proof fn sorted_concat_lemma(left: Seq<int>, pivot: int, right: Seq<int>)
+      requires quick_sorted(left) && quick_sorted(right) &&
+               (forall|x: int| left.contains(x) ==> x <= pivot) &&
+               (forall|x: int| right.contains(x) ==> x >= pivot)
+      ensures quick_sorted(left.add(seq![pivot]).add(right))
+  {}
+  
+  proof fn multiset_concat_lemma(left: Seq<int>, pivot: int, right: Seq<int>, sorted_left: Seq<int>, sorted_right: Seq<int>)
+      requires left.to_multiset() == sorted_left.to_multiset() &&
+               right.to_multiset() == sorted_right.to_multiset()
+      ensures left.to_multiset().add(seq![pivot].to_multiset()).add(right.to_multiset()) == 
+              sorted_left.to_multiset().add(seq![pivot].to_multiset()).add(sorted_right.to_multiset())
+  {}
+
+vc-spec: |-
+  // <vc-spec>
+  fn quick_sort(seq: Seq<int>) -> (res: Seq<int>)
+      ensures seq.to_multiset() == res.to_multiset()
+      decreases seq.len()
+  // </vc-spec>
+
+vc-code: |-
+  {
+      if seq.len() <= 1nat {
+          seq
+      } else {
+          let pivot = seq@[0];
+          let rest = seq.subrange(1int, seq.len());
+          let (left, right) = threshold(pivot, rest);
+          
+          let sorted_left = quick_sort(left);
+          let sorted_right = quick_sort(right);
+          
+          proof {
+              multiset_concat_lemma(left, pivot, right, sorted_left, sorted_right);
+          }
+          
+          sorted_left.add(seq![pivot]).add(sorted_right)
+      }
+  }
+
+vc-postamble: |-
+  fn main() {}
+  
+  }
+

@@ -1,0 +1,62 @@
+use vstd::prelude::*;
+
+verus!{
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+fn binary_search(v: &Vec<u64>, k: u64) -> (result:usize)
+    // pre-conditions-start
+    requires
+        forall|i:int, j:int| 0 <= i <= j < v.len() ==> v[i] <= v[j],
+        exists|i:int| 0 <= i < v.len() && k == v[i],
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        result < v.len(),
+        k == v[result as int],
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut low: usize = 0;
+    let mut high: usize = v.len();
+    
+    while low < high
+        invariant
+            low <= high,
+            high <= v.len(),
+            forall|i:int, j:int| 0 <= i <= j < v.len() ==> v[i] <= v[j],
+            exists|i:int| 0 <= i < v.len() && k == v[i],
+            forall|i:int| 0 <= i < low ==> v[i] < k,
+            forall|i:int| high <= i < v.len() ==> v[i] > k,
+        decreases high - low
+    {
+        let mid = low + (high - low) / 2;
+        
+        if v[mid] < k {
+            low = mid + 1;
+        } else if v[mid] > k {
+            high = mid;
+        } else {
+            return mid;
+        }
+    }
+    
+    proof {
+        assert(exists|i:int| 0 <= i < v.len() && k == v[i]);
+        assert(forall|i:int| 0 <= i < low ==> v[i] < k);
+        assert(forall|i:int| high <= i < v.len() ==> v[i] > k);
+        assert(low == high);
+        assert(false);
+    }
+    
+    0
+}
+// </vc-code>
+
+}
+
+fn main() {}

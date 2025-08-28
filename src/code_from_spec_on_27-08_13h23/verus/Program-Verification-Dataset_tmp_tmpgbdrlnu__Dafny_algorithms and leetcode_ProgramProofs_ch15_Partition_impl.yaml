@@ -1,0 +1,101 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn split_point(a: Seq<int>, n: int) -> bool {
+      0 <= n <= a.len() &&
+      forall|i: int, j: int| 0 <= i < n <= j < a.len() ==> a[i] <= a[j]
+  }
+  
+  
+  
+  spec fn swap_frame(a_old: Seq<int>, a_new: Seq<int>, lo: int, hi: int) -> bool {
+      0 <= lo <= hi <= a_old.len() &&
+      a_old.len() == a_new.len() &&
+      (forall|i: int| (0 <= i < lo || hi <= i < a_old.len()) ==> a_new[i] == a_old[i]) &&
+      a_new.to_multiset() == a_old.to_multiset()
+  }
+
+vc-helpers: |-
+  spec fn is_sorted(a: Seq<int>, start: int, end: int) -> bool {
+      forall|i: int, j: int| start <= i < j < end ==> a[i] <= a[j]
+  }
+  
+  proof fn lemma_swap_preserves_multiset(a: Seq<int>, i: int, j: int) -> (res: Seq<int>)
+      requires
+          0 <= i < a.len(),
+          0 <= j < a.len(),
+      ensures
+          res.len() == a.len(),
+          res.to_multiset() == a.to_multiset(),
+          forall|k: int| 0 <= k < a.len() && k != i && k != j ==> res[k] == a[k],
+          res[i] == a[j],
+          res[j] == a[i],
+  {
+      let mut res = a;
+      res = res.update(i, a[j]);
+      res = res.update(j, a[i]);
+      res
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn partition(a: &mut Vec<int>, lo: usize, hi: usize) -> (p: usize)
+      requires
+          0 <= lo < hi <= old(a).len(),
+          split_point(old(a)@, lo as int),
+          split_point(old(a)@, hi as int),
+      ensures
+          lo <= p < hi,
+          forall|i: int| lo <= i < p ==> a[i] < a[p as int],
+          forall|i: int| p <= i < hi ==> a[p as int] <= a[i],
+          split_point(a@, lo as int),
+          split_point(a@, hi as int),
+          swap_frame(old(a)@, a@, lo as int, hi as int),
+  // </vc-spec>
+
+vc-code: |-
+  fn partition(a: &mut Vec<int>, lo: usize, hi: usize) -> (p: usize)
+      requires
+          0 <= lo < hi <= old(a).len(),
+          split_point(old(a)@, lo as int),
+          split_point(old(a)@, hi as int),
+      ensures
+          lo <= p < hi,
+          forall|i: int| lo <= i < p ==> a[i] < a[p as int],
+          forall|i: int| p <= i < hi ==> a[p as int] <= a[i],
+          split_point(a@, lo as int),
+          split_point(a@, hi as int),
+          swap_frame(old(a)@, a@, lo as int, hi as int),
+  {
+      let pivot = a[hi - 1];
+      let mut i = lo;
+      let mut j = lo;
+  
+      while j < hi - 1
+          invariant
+              lo <= i <= j < hi,
+              forall|k: int| lo <= k < i ==> a[k] < pivot,
+              forall|k: int| i <= k < j ==> a[k] >= pivot,
+              split_point(a@, lo as int),
+              split_point(a@, hi as int),
+              swap_frame(old(a)@, a@, lo as int, hi as int),
+      {
+          if a[j] < pivot {
+              a.swap(i, j);
+              i = i + 1;
+          }
+          j = j + 1;
+      }
+  
+      a.swap(i, hi - 1);
+      i
+  }
+
+vc-postamble: |-
+  
+  fn main() {}
+  
+  }
+

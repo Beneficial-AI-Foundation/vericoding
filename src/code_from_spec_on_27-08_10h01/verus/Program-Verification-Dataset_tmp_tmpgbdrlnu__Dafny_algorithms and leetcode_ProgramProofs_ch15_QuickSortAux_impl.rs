@@ -1,0 +1,110 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn split_point(a: Seq<int>, n: int) -> bool {
+    forall|i: int, j: int| 0 <= i < n <= j < a.len() ==> a[i] <= a[j]
+}
+
+spec fn swap_frame(a_old: Seq<int>, a_new: Seq<int>, lo: int, hi: int) -> bool
+    recommends 0 <= lo <= hi <= a_old.len() && a_old.len() == a_new.len()
+{
+    (forall|i: int| (0 <= i < lo || hi <= i < a_new.len()) ==> a_new[i] == a_old[i]) 
+    && a_new.to_multiset() =~= a_old.to_multiset()
+}
+
+fn partition(a: &mut Vec<int>, lo: usize, hi: usize) -> (p: usize)
+    requires 
+        0 <= lo < hi <= old(a).len(),
+        split_point(old(a)@, lo as int) && split_point(old(a)@, hi as int),
+    ensures
+        lo <= p < hi,
+        forall|i: int| lo <= i < p ==> a@[i] < a@[p as int],
+        forall|i: int| p <= i < hi ==> a@[p as int] <= a@[i],
+        split_point(a@, lo as int) && split_point(a@, hi as int),
+        swap_frame(old(a)@, a@, lo as int, hi as int),
+{
+    assume(false);
+    lo // dummy return
+}
+
+// <vc-helpers>
+proof fn lemma_split_point_transitive(a: Seq<int>, lo: int, p: int, hi: int)
+    requires 
+        0 <= lo <= p <= hi <= a.len(),
+        split_point(a, lo),
+        split_point(a, hi),
+        forall|i: int| lo <= i < p ==> a[i] < a[p],
+        forall|i: int| p <= i < hi ==> a[p] <= a[i]
+    ensures
+        forall|i: int, j: int| lo <= i < j < hi ==> a[i] <= a[j]
+{
+}
+
+proof fn lemma_split_point_preserved(a_old: Seq<int>, a_new: Seq<int>, lo: int, hi: int, n: int)
+    requires
+        0 <= lo <= hi <= a_old.len(),
+        a_old.len() == a_new.len(),
+        swap_frame(a_old, a_new, lo, hi),
+        split_point(a_old, n),
+        (n <= lo || n >= hi)
+    ensures
+        split_point(a_new, n)
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn quick_sort_aux(a: &mut Vec<int>, lo: usize, hi: usize)
+    requires 
+        0 <= lo <= hi <= old(a).len(),
+        split_point(old(a)@, lo as int) && split_point(old(a)@, hi as int),
+    ensures
+        forall|i: int, j: int| lo <= i < j < hi ==> a@[i] <= a@[j],
+        swap_frame(old(a)@, a@, lo as int, hi as int),
+        split_point(a@, lo as int) && split_point(a@, hi as int),
+    decreases hi - lo
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    if lo + 1 >= hi {
+        return;
+    }
+    
+    let ghost a_before = a@;
+    let p = partition(a, lo, hi);
+    let ghost a_after_partition = a@;
+    
+    proof {
+        lemma_split_point_preserved(a_before, a_after_partition, lo as int, hi as int, lo as int);
+        lemma_split_point_preserved(a_before, a_after_partition, lo as int, hi as int, hi as int);
+    }
+    
+    let ghost a_before_left = a@;
+    quick_sort_aux(a, lo, p);
+    let ghost a_after_left = a@;
+    
+    proof {
+        lemma_split_point_preserved(a_before_left, a_after_left, lo as int, p as int, p as int);
+        lemma_split_point_preserved(a_before_left, a_after_left, lo as int, p as int, hi as int);
+    }
+    
+    let ghost a_before_right = a@;
+    quick_sort_aux(a, p, hi);
+    let ghost a_after_right = a@;
+    
+    proof {
+        lemma_split_point_preserved(a_before_right, a_after_right, p as int, hi as int, lo as int);
+        lemma_split_point_preserved(a_before_right, a_after_right, p as int, hi as int, p as int);
+        lemma_split_point_transitive(a@, lo as int, p as int, hi as int);
+    }
+}
+// </vc-code>
+
+fn main() {
+}
+
+}

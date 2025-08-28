@@ -1,0 +1,72 @@
+vc-preamble: |-
+
+
+vc-helpers: |-
+  lemma SubstringCountFormula(n: int)
+      requires n >= 0
+      ensures (n * (n + 1)) / 2 == if n == 0 then 0 else n + (n - 1) * n / 2
+  {
+      if n == 0 {
+          assert (n * (n + 1)) / 2 == 0;
+      } else {
+          calc {
+              (n * (n + 1)) / 2;
+              ==
+              (n * n + n) / 2;
+          }
+          assert n * n + n == n * (n + 1);
+          assert (n * n + n) / 2 == (n * (n + 1)) / 2;
+      }
+  }
+  
+  lemma SubstringCountInductive(n: int)
+      requires n >= 0
+      ensures (n * (n + 1)) / 2 == if n == 0 then 0 else (n - 1) * n / 2 + n
+  {
+      if n == 0 {
+          calc {
+              (n * (n + 1)) / 2;
+              == 0;
+          }
+      } else {
+          calc {
+              (n * (n + 1)) / 2;
+              ==
+              (n * n + n) / 2;
+              ==
+              ((n - 1) * n + n + n) / 2;
+              ==
+              ((n - 1) * n + 2 * n) / 2;
+          }
+          assert ((n - 1) * n + 2 * n) / 2 == (n - 1) * n / 2 + (2 * n) / 2;
+          assert (2 * n) / 2 == n;
+          assert (n - 1) * n / 2 + (2 * n) / 2 == (n - 1) * n / 2 + n;
+      }
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  method CountNonEmptySubstrings(s: string) returns (count: int)
+      ensures count >= 0
+      ensures count == (|s| * (|s| + 1)) / 2 // Formula for the number of non-empty substrings of a string
+  // </vc-spec>
+
+vc-code: |-
+  {
+      count := 0;
+      var i := 0;
+      
+      while i < |s|
+          invariant 0 <= i <= |s|
+          invariant count == (i * (i + 1)) / 2
+      {
+          count := count + i + 1;
+          i := i + 1;
+          
+          SubstringCountInductive(i);
+      }
+  }
+
+vc-postamble: |-
+
+

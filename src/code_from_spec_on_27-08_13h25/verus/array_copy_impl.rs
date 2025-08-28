@@ -1,0 +1,45 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+// No updates needed for helpers in this case
+// </vc-helpers>
+
+// <vc-spec>
+#[verifier::loop_isolation(false)]
+fn array_copy(a: Vec<i32>) -> (result: Vec<i32>)
+    // post-conditions-start
+    ensures
+        result.len() == a.len(),
+        forall|i: int| 0 <= i && i < a.len() ==> result[i] == a[i],
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+#[verifier::loop_isolation(false)]
+fn array_copy(a: Vec<i32>) -> (result: Vec<i32>)
+    ensures
+        result.len() == a.len(),
+        forall|i: int| 0 <= i && i < a.len() ==> result[i] == a[i],
+{
+    let mut result: Vec<i32> = Vec::new();
+    let mut i: usize = 0;
+    
+    while i < a.len()
+        invariant
+            i <= a.len(),
+            result.len() == i,
+            forall|j: int| 0 <= j && j < i ==> result[j] == a[j],
+        decreases a.len() - i
+    {
+        result.push(a[i]);
+        i = i + 1;
+    }
+    
+    result
+}
+// </vc-code>
+
+fn main() {}
+}

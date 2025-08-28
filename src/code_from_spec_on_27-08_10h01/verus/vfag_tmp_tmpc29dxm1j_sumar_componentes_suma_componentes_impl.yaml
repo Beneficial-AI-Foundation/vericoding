@@ -1,0 +1,119 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn suma_aux(V: &[i32], n: int) -> int
+      decreases V.len() - n
+      when 0 <= n <= V.len()
+  {
+      if n == V.len() {
+          0
+      } else {
+          V[n as int] + suma_aux(V, n + 1)
+      }
+  }
+
+vc-helpers: |-
+  proof fn suma_aux_lemma(V: &[i32], i: int, sum: i32)
+      requires 
+          0 <= i <= V.len(),
+          sum == suma_aux(V, 0) - suma_aux(V, i)
+      ensures suma_aux(V, 0) == sum + suma_aux(V, i)
+  {
+  }
+  
+  proof fn suma_aux_step(V: &[i32], i: int)
+      requires 0 <= i < V.len()
+      ensures suma_aux(V, i) == V[i] + suma_aux(V, i + 1)
+  {
+  }
+  
+  proof fn suma_aux_invariant_step(V: &[i32], i: int, sum: i32)
+      requires 
+          0 <= i < V.len(),
+          sum == suma_aux(V, 0) - suma_aux(V, i as int),
+          sum + V[i] <= i32::MAX,
+          sum + V[i] >= i32::MIN
+      ensures sum + V[i] == suma_aux(V, 0) - suma_aux(V, i + 1)
+  {
+      suma_aux_step(V, i);
+      assert(suma_aux(V, i) == V[i] + suma_aux(V, i + 1));
+      assert(sum == suma_aux(V, 0) - suma_aux(V, i));
+      assert(sum == suma_aux(V, 0) - (V[i] + suma_aux(V, i + 1)));
+      assert(sum + V[i] == suma_aux(V, 0) - suma_aux(V, i + 1));
+  }
+  
+  proof fn suma_aux_base_case(V: &[i32])
+      requires V.len() == 0
+      ensures suma_aux(V, 0) == 0
+  {
+  }
+  
+  proof fn suma_aux_final(V: &[i32], sum: i32)
+      requires 
+          sum == suma_aux(V, 0) - suma_aux(V, V.len() as int)
+      ensures sum == suma_aux(V, 0)
+  {
+      assert(suma_aux(V, V.len() as int) == 0);
+  }
+  
+  proof fn suma_aux_bounds(V: &[i32], start: int, end: int)
+      requires 
+          0 <= start <= end <= V.len(),
+          forall|k: int| start <= k < end ==> V[k] <= i32::MAX,
+          forall|k: int| start <= k < end ==> V[k] >= i32::MIN
+      ensures 
+          suma_aux(V, start) - suma_aux(V, end) <= i32::MAX,
+          suma_aux(V, start) - suma_aux(V, end) >= i32::MIN
+      decreases end - start
+  {
+      if start == end {
+          assert(suma_aux(V, start) - suma_aux(V, end) == 0);
+      } else {
+          suma_aux_step(V, start);
+          suma_aux_bounds(V, start + 1, end);
+      }
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn suma_componentes(V: &[i32]) -> (suma: i32)
+      ensures suma == suma_aux(V, 0)
+  // </vc-spec>
+
+vc-code: |-
+  {
+      let mut sum = 0i32;
+      let mut i = 0usize;
+      
+      while i < V.len()
+          invariant 
+              0 <= i <= V.len(),
+              sum == suma_aux(V, 0) - suma_aux(V, i as int),
+              sum <= i32::MAX,
+              sum >= i32::MIN,
+              i < V.len() ==> sum + V[i] <= i32::MAX,
+              i < V.len() ==> sum + V[i] >= i32::MIN
+          decreases V.len() - i
+      {
+          proof {
+              suma_aux_invariant_step(V, i as int, sum);
+          }
+          sum = sum + V[i];
+          i = i + 1;
+      }
+      
+      proof {
+          suma_aux_final(V, sum);
+      }
+      
+      sum
+  }
+
+vc-postamble: |-
+  
+  fn main() {}
+  
+  }
+

@@ -1,0 +1,108 @@
+function prod(s: seq<int>) : int {
+  if |s| == 0 then 1 else prod(s[..|s| - 1]) * s[|s| - 1]
+}
+
+// <vc-helpers>
+function seqNatToSeqInt(s: seq<nat>) : seq<int> {
+  if |s| == 0 then [] else seqNatToSeqInt(s[..|s|-1]) + [s[|s|-1] as int]
+}
+
+lemma seqNatToSeqIntLength(s: seq<nat>)
+  ensures |seqNatToSeqInt(s)| == |s|
+{
+  if |s| == 0 {
+  } else {
+    seqNatToSeqIntLength(s[..|s|-1]);
+  }
+}
+
+lemma seqNatToSeqIntIndex(s: seq<nat>, i: int)
+  requires 0 <= i < |s|
+  ensures |seqNatToSeqInt(s)| == |s|
+  ensures 0 <= i < |seqNatToSeqInt(s)|
+  ensures seqNatToSeqInt(s)[i] == s[i] as int
+{
+  seqNatToSeqIntLength(s);
+  if i == |s| - 1 {
+    seqNatToSeqIntLength(s[..|s|-1]);
+  } else {
+    seqNatToSeqIntIndex(s[..|s|-1], i);
+  }
+}
+
+lemma prodNatSeq(s: seq<nat>) 
+  ensures prod(seqNatToSeqInt(s)) == prodNat(s)
+{
+  if |s| == 0 {
+  } else {
+    prodNatSeq(s[..|s|-1]);
+    seqNatToSeqIntSlice(s);
+  }
+}
+
+function prodNat(s: seq<nat>) : nat {
+  if |s| == 0 then 1 else prodNat(s[..|s| - 1]) * s[|s| - 1]
+}
+
+lemma seqNatToSeqIntSlice(s: seq<nat>)
+  requires |s| > 0
+  ensures seqNatToSeqInt(s[..|s|-1]) == seqNatToSeqInt(s)[..|seqNatToSeqInt(s)|-1]
+{
+  seqNatToSeqIntLength(s);
+  seqNatToSeqIntLength(s[..|s|-1]);
+}
+
+lemma prodNatAppend(s: seq<nat>, x: nat)
+  ensures prodNat(s + [x]) == prodNat(s) * x
+{
+  if |s| == 0 {
+  } else {
+    prodNatAppend(s[..|s|-1], x);
+  }
+}
+
+lemma factorBound(n: nat, f: nat) 
+  requires n > 0
+  requires f >= 2
+  requires n % f == 0
+  ensures f <= n
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+method factorize(n: nat) returns (factors: seq<nat>)
+  // pre-conditions-start
+  requires n > 0
+  // pre-conditions-end
+  // post-conditions-start
+  ensures prod(factors) == n
+  // post-conditions-end
+// </vc-spec>
+// <vc-code>
+{
+  factors := [];
+  var remaining := n;
+  var factor := 2;
+  
+  while remaining > 1
+    invariant remaining >= 1
+    invariant prodNat(factors) * remaining == n
+    invariant factor >= 2
+    invariant remaining == 1 || factor <= remaining
+    decreases remaining, factor
+  {
+    if remaining % factor == 0 {
+      factorBound(remaining, factor);
+      factors := factors + [factor];
+      prodNatAppend(factors[..|factors|-1], factor);
+      remaining := remaining / factor;
+      factor := 2;
+    } else {
+      factor := factor + 1;
+    }
+  }
+  
+  prodNatSeq(factors);
+}
+// </vc-code>

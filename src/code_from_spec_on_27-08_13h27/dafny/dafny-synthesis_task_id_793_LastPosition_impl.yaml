@@ -1,0 +1,45 @@
+vc-preamble: |-
+
+
+vc-helpers: |-
+  // Helper lemma to prove properties about sorted arrays if needed
+  lemma SortedArrayProperty(arr: array<int>, i: int, j: int)
+    requires 0 <= i <= j < arr.Length
+    requires forall k, l :: 0 <= k < l < arr.Length ==> arr[k] <= arr[l]
+    ensures arr[i] <= arr[j]
+  {
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  method LastPosition(arr: array<int>, elem: int) returns (pos: int)
+      requires arr.Length > 0
+      requires forall i, j :: 0 <= i < j < arr.Length ==> arr[i] <= arr[j]
+      ensures pos == -1 || (0 <= pos < arr.Length && arr[pos] == elem && (pos <= arr.Length - 1 || arr[pos + 1] > elem))
+      ensures forall i :: 0 <= i < arr.Length ==> arr[i] == old(arr[i])
+  // </vc-spec>
+
+vc-code: |-
+  method LastPositionImpl(arr: array<int>, elem: int) returns (pos: int)
+    requires arr.Length > 0
+    requires forall i, j :: 0 <= i < j < arr.Length ==> arr[i] <= arr[j]
+    ensures pos == -1 || (0 <= pos < arr.Length && arr[pos] == elem && (pos == arr.Length - 1 || arr[pos + 1] > elem))
+    ensures forall i :: 0 <= i < arr.Length ==> arr[i] == old(arr[i])
+  {
+    pos := -1;
+    var i := 0;
+    while i < arr.Length
+      invariant 0 <= i <= arr.Length
+      invariant pos == -1 || (0 <= pos < i && arr[pos] == elem)
+      invariant forall k :: 0 <= k < i && arr[k] == elem ==> pos >= k
+    {
+      if arr[i] == elem {
+        pos := i;
+      }
+      i := i + 1;
+    }
+  }
+
+vc-postamble: |-
+
+

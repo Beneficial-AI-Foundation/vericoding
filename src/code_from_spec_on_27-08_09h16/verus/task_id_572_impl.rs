@@ -1,0 +1,190 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn count_frequency_rcr(seq: Seq<i32>, key: i32) -> (result: int)
+    decreases seq.len(),
+{
+    if seq.len() == 0 {
+        0
+    } else {
+        count_frequency_rcr(seq.drop_last(), key) + if (seq.last() == key) {
+            1 as int
+        } else {
+            0 as int
+        }
+    }
+}
+// pure-end
+
+// <vc-helpers>
+fn count_frequency(arr: &Vec<i32>, key: i32) -> (frequency: usize)
+    // post-conditions-start
+    ensures
+        count_frequency_rcr(arr@, key) == frequency,
+    // post-conditions-end
+{
+    // impl-start
+    let mut index = 0;
+    let mut counter = 0;
+    while index < arr.len()
+        // invariants-start
+        invariant
+            0 <= index <= arr.len(),
+            0 <= counter <= index,
+            count_frequency_rcr(arr@.subrange(0, index as int), key) == counter,
+        // invariants-end
+        decreases arr.len() - index,
+    {
+        if (arr[index] == key) {
+            counter += 1;
+        }
+        index += 1;
+        // assert-start
+        assert(arr@.subrange(0, index - 1 as int) == arr@.subrange(0, index as int).drop_last());
+        // assert-end
+    }
+    // assert-start
+    assert(arr@ == arr@.subrange(0, index as int));
+    // assert-end
+    counter
+    // impl-end
+}
+
+proof fn lemma_filter_preserves_order(s: Seq<i32>, pred: spec_fn(i32) -> bool, i: int, j: int)
+    requires 
+        0 <= i < j < s.len(),
+        pred(s[i]),
+        pred(s[j]),
+    ensures
+        exists |fi: int, fj: int| 0 <= fi < fj < s.filter(pred).len() &&
+        s.filter(pred)[fi] == s[i] &&
+        s.filter(pred)[fj] == s[j]
+{
+    let filtered = s.filter(pred);
+    let mut fi = 0;
+    let mut found_i = false;
+    let mut fj = 0;
+    
+    assert(filtered.len() >= 2);
+    
+    let ghost mut count_before_i: int = 0;
+    let mut k: int = 0;
+    while k < i
+        invariant 
+            0 <= k <= i,
+            count_before_i == s.subrange(0, k).filter(pred).len()
+    {
+        if pred(s[k]) {
+            count_before_i = count_before_i + 1;
+        }
+        k = k + 1;
+    }
+    
+    let ghost mut count_between: int = 0;
+    k = i + 1;
+    while k < j
+        invariant 
+            i + 1 <= k <= j,
+            count_between == s.subrange(i + 1, k).filter(pred).len()
+    {
+        if pred(s[k]) {
+            count_between = count_between + 1;
+        }
+        k = k + 1;
+    }
+    
+    let fi_val = count_before_i;
+    let fj_val = count_before_i + 1 + count_between;
+    
+    assert(0 <= fi_val < fj_val < filtered.len());
+    assert(filtered[fi_val] == s[i]);
+    assert(filtered[fj_val] == s[j]);
+}
+
+proof fn lemma_count_frequency_subrange(s: Seq<i32>, key: i32, start: int, end: int)
+    requires 
+        0 <= start <= end <= s.len(),
+    ensures
+        count_frequency_rcr(s.subrange(start, end), key) >= 0,
+{
+    let sub = s.subrange(start, end);
+    assert(count_frequency_rcr(sub, key) >= 0) by {
+        lemma_count_frequency_nonneg(sub, key);
+    }
+}
+
+proof fn lemma_count_frequency_nonneg(s: Seq<i32>, key: i32)
+    ensures count_frequency_rcr(s, key) >= 0
+    decreases s.len()
+{
+    if s.len() == 0 {
+    } else {
+        lemma_count_frequency_nonneg(s.drop_last(), key);
+    }
+}
+
+proof fn lemma_subrange_filter_property(arr: Seq<i32>, i: int, x: i32)
+    requires 0 <= i <= arr.len()
+    ensures 
+        arr.subrange(0, i).filter(|y: i32| count_frequency_rcr(arr, y) == 1) == 
+        arr.subrange(0, i - 1).filter(|y: i32| count_frequency_rcr(arr, y) == 1) + 
+        if count_frequency_rcr(arr, arr[i - 1]) == 1 { seq![arr[i - 1]] } else { seq![] }
+    decreases i
+{
+    if i == 0 {
+        assert(arr.subrange(0, 0) =~= seq![]);
+    } else {
+        let sub_prev = arr.subrange(0, i - 1);
+        let sub_curr = arr.subrange(0, i);
+        assert(sub_curr == sub_prev + seq![arr[i - 1]]);
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn remove_duplicates(arr: &Vec<i32>) -> (unique_arr: Vec<i32>)
+    // post-conditions-start
+    ensures
+        unique_arr@ == arr@.filter(|x: i32| count_frequency_rcr(arr@, x) == 1),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    // impl-start
+    let mut result: Vec<i32> = Vec::new();
+    let mut i = 0;
+    
+    while i < arr.len()
+        invariant
+            0 <= i <= arr.len(),
+            result@ == arr@.subrange(0, i as int).filter(|x: i32| count_frequency_rcr(arr@, x) == 1),
+        decreases arr.len() - i,
+    {
+        let current = arr[i];
+        let freq = count_frequency(arr, current);
+        
+        if freq == 1 {
+            result.push(current);
+        }
+        
+        i += 1;
+        
+        proof {
+            lemma_subrange_filter_property(arr@, i as int, current);
+        }
+    }
+    
+    proof {
+        assert(arr@.subrange(0, i as int) == arr@);
+    }
+    
+    result
+    // impl-end
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

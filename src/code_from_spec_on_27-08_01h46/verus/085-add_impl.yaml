@@ -1,0 +1,123 @@
+vc-description: |-
+
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn odd_or_zero(x: u32) -> (ret:u32) {
+      if x % 2 == 0 {
+          x
+      } else {
+          0
+      }
+  }
+  // pure-end
+  // pure-end
+  
+  spec fn add_odd_evens(lst: Seq<u32>) -> (ret:int)
+      decreases lst.len(),
+  {
+      if (lst.len() < 2) {
+          0
+      } else {
+          odd_or_zero(lst[1]) + add_odd_evens(lst.skip(2))
+      }
+  }
+  // pure-end
+
+vc-helpers: |-
+  proof fn lemma_add_odd_evens_empty(lst: Seq<u32>)
+      requires lst.len() < 2,
+      ensures add_odd_evens(lst) == 0,
+  {
+  }
+  
+  proof fn lemma_add_odd_evens_step(lst: Seq<u32>)
+      requires lst.len() >= 2,
+      ensures add_odd_evens(lst) == odd_or_zero(lst[1]) + add_odd_evens(lst.skip(2)),
+  {
+  }
+  
+  proof fn lemma_odd_or_zero_bounds(x: u32)
+      ensures odd_or_zero(x) <= x,
+      ensures odd_or_zero(x) <= u32::MAX,
+  {
+  }
+  
+  proof fn lemma_add_odd_evens_bounded(lst: Seq<u32>)
+      requires lst.len() < u32::MAX,
+      ensures add_odd_evens(lst) >= 0,
+      ensures add_odd_evens(lst) <= (lst.len() as int) * (u32::MAX as int),
+      decreases lst.len(),
+  {
+      if lst.len() < 2 {
+          lemma_add_odd_evens_empty(lst);
+      } else {
+          lemma_odd_or_zero_bounds(lst[1]);
+          lemma_add_odd_evens_bounded(lst.skip(2));
+          lemma_add_odd_evens_step(lst);
+      }
+  }
+  
+  proof fn lemma_take_properties(lst: Seq<u32>, i: int)
+      requires 1 <= i < lst.len(),
+      ensures lst.take(i + 1).len() == i + 1,
+      ensures forall|j: int| 0 <= j <= i ==> lst.take(i + 1)[j] == lst[j],
+  {
+  }
+
+vc-spec: |-
+  fn add(lst: Vec<u32>) -> (sum: u64)
+      // pre-conditions-start
+      requires
+          0 < lst.len() < u32::MAX,
+      // pre-conditions-end
+      // post-conditions-start
+      ensures
+          sum == add_odd_evens(lst@),
+      // post-conditions-end
+
+vc-code: |-
+  {
+      let mut sum: u64 = 0;
+      let mut i: usize = 1;
+      
+      proof {
+          lemma_add_odd_evens_bounded(lst@);
+      }
+      
+      while i < lst.len()
+          invariant
+              i >= 1,
+              i <= lst.len(),
+              sum == add_odd_evens(lst@.take(i as int + 1)),
+          decreases lst.len() - i,
+      {
+          let val = odd_or_zero(lst[i]);
+          sum = sum + val as u64;
+          
+          proof {
+              lemma_take_properties(lst@, i as int);
+              if i + 2 < lst.len() {
+                  assert(lst@.take(i as int + 3).len() >= 2);
+                  assert(lst@.take(i as int + 3)[1] == lst[1]);
+              }
+          }
+          
+          i = i + 2;
+      }
+      
+      proof {
+          assert(lst@.take(lst.len() as int) == lst@);
+      }
+      
+      sum
+  }
+
+vc-postamble: |-
+  
+  } // verus!
+  fn main() {}
+

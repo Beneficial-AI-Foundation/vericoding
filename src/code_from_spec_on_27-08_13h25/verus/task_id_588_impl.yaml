@@ -1,0 +1,141 @@
+vc-description: |-
+
+
+vc-preamble: |-
+  #![verifier::loop_isolation(false)]
+  use vstd::math::*;
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn max_rcur(seq: Seq<i32>) -> (result: int)
+      decreases seq.len(),
+  {
+      if seq.len() <= 1 {
+          seq.first() as int
+      } else {
+          max(seq.last() as int, max_rcur(seq.drop_last()))
+      }
+  }
+  // pure-end
+  // pure-end
+  
+  spec fn min_rcur(seq: Seq<i32>) -> (result: int)
+      decreases seq.len(),
+  {
+      if seq.len() <= 1 {
+          seq.first() as int
+      } else {
+          min(seq.last() as int, min_rcur(seq.drop_last()))
+      }
+  }
+  // pure-end
+
+vc-helpers: |-
+  spec fn max_rcur_helper(seq: Seq<i32>, n: nat) -> int
+      decreases seq.len() - n
+  {
+      if n >= seq.len() {
+          i32::MIN as int
+      } else if n == seq.len() - 1 {
+          seq.last() as int
+      } else {
+          max(seq.index(n as int) as int, max_rcur_helper(seq, n + 1))
+      }
+  }
+  
+  spec fn min_rcur_helper(seq: Seq<i32>, n: nat) -> int
+      decreases seq.len() - n
+  {
+      if n >= seq.len() {
+          i32::MAX as int
+      } else if n == seq.len() - 1 {
+          seq.last() as int
+      } else {
+          min(seq.index(n as int) as int, min_rcur_helper(seq, n + 1))
+      }
+  }
+  
+  proof fn max_rcur_equiv(seq: Seq<i32>)
+      decreases seq.len()
+      ensures max_rcur(seq) == max_rcur_helper(seq, 0)
+  {
+      if seq.len() <= 1 {
+          assert(max_rcur(seq) == seq.first() as int);
+          assert(max_rcur_helper(seq, 0) == seq.first() as int);
+      } else {
+          max_rcur_equiv(seq.drop_last());
+          assert(max_rcur(seq) == max(seq.last() as int, max_rcur(seq.drop_last())));
+          assert(max_rcur_helper(seq, 0) == max(seq.index(0 as int) as int, max_rcur_helper(seq, 1)));
+      }
+  }
+  
+  proof fn min_rcur_equiv(seq: Seq<i32>)
+      decreases seq.len()
+      ensures min_rcur(seq) == min_rcur_helper(seq, 0)
+  {
+      if seq.len() <= 1 {
+          assert(min_rcur(seq) == seq.first() as int);
+          assert(min_rcur_helper(seq, 0) == seq.first() as int);
+      } else {
+          min_rcur_equiv(seq.drop_last());
+          assert(min_rcur(seq) == min(seq.last() as int, min_rcur(seq.drop_last())));
+          assert(min_rcur_helper(seq, 0) == min(seq.index(0 as int) as int, min_rcur_helper(seq, 1)));
+      }
+  }
+
+vc-spec: |-
+  fn difference_max_min(arr: &Vec<i32>) -> (diff: i32)
+      // pre-conditions-start
+      requires
+          arr.len() > 0,
+          forall|i: int| 0 <= i < arr.len() ==> i32::MIN / 2 < #[trigger] arr[i] < i32::MAX / 2,
+      // pre-conditions-end
+      // post-conditions-start
+      ensures
+          diff == max_rcur(arr@) - min_rcur(arr@),
+      // post-conditions-end
+
+vc-code: |-
+  fn difference_max_min(arr: &Vec<i32>) -> (diff: i32)
+      requires
+          arr.len() > 0,
+          forall|i: int| 0 <= i < arr.len() ==> i32::MIN / 2 < #[trigger] arr[i] < i32::MAX / 2,
+      ensures
+          diff == max_rcur(arr@) - min_rcur(arr@)
+  {
+      let mut max_val: i32 = arr[0];
+      let mut min_val: i32 = arr[0];
+      let mut i: usize = 1;
+  
+      while i < arr.len()
+          invariant
+              0 <= i <= arr.len(),
+              forall|j: int| 0 <= j < i ==> min_val <= #[trigger] arr[j],
+              forall|j: int| 0 <= j < i ==> max_val >= #[trigger] arr[j],
+              exists|j: int| 0 <= j < i ==> min_val == #[trigger] arr[j],
+              exists|j: int| 0 <= j < i ==> max_val == #[trigger] arr[j]
+      {
+          if arr[i] > max_val {
+              max_val = arr[i];
+          }
+          if arr[i] < min_val {
+              min_val = arr[i];
+          }
+          i = i + 1;
+      }
+  
+      proof {
+          max_rcur_equiv(arr@);
+          min_rcur_equiv(arr@);
+      }
+  
+      max_val - min_val
+  }
+
+vc-postamble: |-
+  
+  } // verus!
+  
+  fn main() {}
+

@@ -1,0 +1,26 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+// No additional helpers needed for this simple specification
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn double_quadruple(x: i32) -> (ret: (i32, i32))
+  ensures ret.0 == 2 * x && ret.1 == 4 * x
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+fn double_quadruple(x: i32) -> (ret: (i32, i32))
+    ensures ret.0 == 2 * x && ret.1 == 4 * x
+{
+    (2 * x, 4 * x)
+}
+// </vc-code>
+
+fn main() {}
+
+}

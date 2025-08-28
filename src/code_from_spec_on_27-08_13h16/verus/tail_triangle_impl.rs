@@ -1,0 +1,73 @@
+use vstd::prelude::*;
+
+
+verus!{
+
+spec fn triangle(n: nat) -> (result: nat)
+    decreases n
+{
+    if n == 0 {
+        0
+    } else {
+        n + triangle((n - 1) as nat)
+    }
+}
+// pure-end
+
+// <vc-helpers>
+proof fn triangle_sum_property(k: nat, m: nat)
+    requires
+        k <= m,
+    ensures
+        triangle(m) == triangle(k) + (m - k) + triangle((m - k - 1) as nat),
+    decreases m - k
+{
+    if k == m {
+        assert(triangle(m) == triangle(k));
+    } else {
+        triangle_sum_property(k, (m - 1) as nat);
+        assert(triangle(m) == m + triangle((m - 1) as nat));
+        assert(triangle((m - 1) as nat) == triangle(k) + (m - 1 - k) + triangle((m - 1 - k - 1) as nat));
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn tail_triangle(n: u32, idx: u32, sum: &mut u32)
+    // pre-conditions-start
+    requires
+        idx <= n,
+        *old(sum) == triangle(idx as nat),
+        triangle(n as nat) < 0x1_0000_0000,
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        *sum == triangle(n as nat),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    if idx < n {
+        let diff = (n - idx) as u32;
+        proof {
+            triangle_sum_property(idx as nat, n as nat);
+        }
+        let mut triangle_diff_minus_1: u32 = 0;
+        proof {
+            let ghost_val = triangle((diff as nat - 1) as nat);
+            assert(ghost_val < 0x1_0000_0000) by {
+                assert(triangle(n as nat) < 0x1_0000_0000);
+                assert((diff as nat - 1) < n as nat);
+            }
+            triangle_diff_minus_1 = ghost_val as u32;
+        }
+        *sum = *sum + diff + triangle_diff_minus_1;
+        assert(*sum == triangle(n as nat));
+    }
+}
+// </vc-code>
+
+}
+
+fn main() {}

@@ -1,0 +1,41 @@
+use vstd::prelude::*;
+
+
+verus! {
+
+// <vc-helpers>
+// No updates needed for helpers in this case
+// </vc-helpers>
+
+// <vc-spec>
+fn find_even_numbers(arr: &Vec<u32>) -> (even_numbers: Vec<u32>)
+    // post-conditions-start
+    ensures
+        even_numbers@ == arr@.filter(|x: u32| x % 2 == 0),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut even_numbers: Vec<u32> = Vec::new();
+    let mut i: usize = 0;
+
+    while i < arr.len()
+        invariant
+            i <= arr.len(),
+            even_numbers@ == arr@.take(i as int).filter(|x: u32| x % 2 == 0),
+        decreases arr.len() - i
+    {
+        if arr[i] % 2 == 0 {
+            even_numbers.push(arr[i]);
+        }
+        i = i + 1;
+    }
+
+    even_numbers
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

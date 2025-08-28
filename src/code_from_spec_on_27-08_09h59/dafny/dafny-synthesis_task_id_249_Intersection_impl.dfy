@@ -1,0 +1,73 @@
+predicate InArray(a: array<int>, x: int)
+    reads a
+{
+    exists i :: 0 <= i < a.Length && a[i] == x
+}
+
+// <vc-helpers>
+lemma InArrayExists(a: array<int>, x: int, i: int)
+    requires 0 <= i < a.Length
+    requires a[i] == x
+    ensures InArray(a, x)
+{
+}
+
+predicate SeqNoDuplicates(s: seq<int>)
+{
+    forall i, j :: 0 <= i < j < |s| ==> s[i] != s[j]
+}
+
+lemma SeqNoDuplicatesAppend(s: seq<int>, x: int)
+    requires SeqNoDuplicates(s)
+    requires x !in s
+    ensures SeqNoDuplicates(s + [x])
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method Intersection(a: array<int>, b: array<int>) returns (result: seq<int>)
+    // All elements in the output are in both a and b
+    ensures forall x :: x in result ==> (InArray(a, x) && InArray(b, x))
+    // The elements in the output are all different
+    ensures forall i, j :: 0 <= i < j < |result| ==> result[i] != result[j]
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    result := [];
+    var i := 0;
+    
+    while i < a.Length
+        invariant 0 <= i <= a.Length
+        invariant forall x :: x in result ==> (InArray(a, x) && InArray(b, x))
+        invariant SeqNoDuplicates(result)
+    {
+        var current := a[i];
+        var j := 0;
+        var foundInB := false;
+        
+        while j < b.Length && !foundInB
+            invariant 0 <= j <= b.Length
+            invariant foundInB ==> InArray(b, current)
+            invariant !foundInB ==> forall k :: 0 <= k < j ==> b[k] != current
+        {
+            if b[j] == current {
+                foundInB := true;
+                InArrayExists(b, current, j);
+            }
+            j := j + 1;
+        }
+        
+        if foundInB && current !in result {
+            InArrayExists(a, current, i);
+            SeqNoDuplicatesAppend(result, current);
+            result := result + [current];
+        }
+        
+        i := i + 1;
+    }
+}
+// </vc-code>

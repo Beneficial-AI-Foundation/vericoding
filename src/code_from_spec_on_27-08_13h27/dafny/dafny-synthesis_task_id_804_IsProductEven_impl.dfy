@@ -1,0 +1,42 @@
+predicate IsEven(n: int)
+{
+    n % 2 == 0
+}
+
+// <vc-helpers>
+// Helper lemma to assist in proving properties about arrays and even numbers
+lemma EvenExists(a: array<int>, i: int)
+    requires 0 <= i < a.Length
+    requires IsEven(a[i])
+    ensures exists j :: 0 <= j < a.Length && IsEven(a[j])
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method IsProductEven(a: array<int>) returns (result: bool)
+    ensures result <==> exists i :: 0 <= i < a.Length && IsEven(a[i])
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+method IsProductEvenImpl(a: array<int>) returns (result: bool)
+    ensures result <==> exists i :: 0 <= i < a.Length && IsEven(a[i])
+{
+    result := false;
+    var i := 0;
+    while i < a.Length
+        invariant 0 <= i <= a.Length
+        invariant result <==> exists j :: 0 <= j < i && IsEven(a[j])
+    {
+        if IsEven(a[i])
+        {
+            result := true;
+            EvenExists(a, i);
+            return;
+        }
+        i := i + 1;
+    }
+}
+// </vc-code>

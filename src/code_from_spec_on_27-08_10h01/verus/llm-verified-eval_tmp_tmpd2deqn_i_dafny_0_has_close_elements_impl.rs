@@ -1,0 +1,136 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn abs(x: int) -> int {
+    if x < 0 { -x } else { x }
+}
+
+// <vc-helpers>
+proof fn abs_def(x: int)
+    ensures abs(x) == if x < 0 { -x } else { x }
+{
+}
+
+proof fn abs_nonneg(x: int)
+    ensures abs(x) >= 0
+{
+}
+
+proof fn abs_triangle_reverse(x: int, y: int)
+    ensures abs(x - y) == abs(y - x)
+{
+}
+
+spec fn has_close_elements_spec(numbers: Seq<int>, threshold: int) -> bool {
+    exists|i: int, j: int|
+        0 <= i < numbers.len() &&
+        0 <= j < numbers.len() &&
+        i != j &&
+        abs(numbers[i] - numbers[j]) < threshold
+}
+
+proof fn close_elements_implies_len_gt_one(numbers: Seq<int>, threshold: int)
+    requires has_close_elements_spec(numbers, threshold)
+    ensures numbers.len() > 1
+{
+    let i = choose|i: int| exists|j: int|
+        0 <= i < numbers.len() &&
+        0 <= j < numbers.len() &&
+        i != j &&
+        abs(numbers[i] - numbers[j]) < threshold;
+    let j = choose|j: int|
+        0 <= i < numbers.len() &&
+        0 <= j < numbers.len() &&
+        i != j &&
+        abs(numbers[i] - numbers[j]) < threshold;
+    assert(i != j);
+    assert(0 <= i < numbers.len());
+    assert(0 <= j < numbers.len());
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn has_close_elements(numbers: Seq<int>, threshold: int) -> (result: bool)
+    ensures
+        result <==> exists|i: int, j: int|
+            0 <= i < numbers.len() &&
+            0 <= j < numbers.len() &&
+            i != j &&
+            abs(numbers[i] - numbers[j]) < threshold,
+        result ==> numbers.len() > 1,
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    if numbers.len() <= 1 {
+        return false;
+    }
+    
+    let mut i: usize = 0;
+    while i < numbers.len()
+        invariant
+            0 <= i <= numbers.len(),
+            forall|ii: int, jj: int|
+                0 <= ii < i &&
+                0 <= jj < numbers.len() &&
+                ii != jj ==>
+                abs(numbers[ii] - numbers[jj]) >= threshold
+    {
+        let mut j: usize = 0;
+        while j < numbers.len()
+            invariant
+                0 <= i < numbers.len(),
+                0 <= j <= numbers.len(),
+                forall|ii: int, jj: int|
+                    0 <= ii < i &&
+                    0 <= jj < numbers.len() &&
+                    ii != jj ==>
+                    abs(numbers[ii] - numbers[jj]) >= threshold,
+                forall|jj: int|
+                    0 <= jj < j &&
+                    i as int != jj ==>
+                    abs(numbers[i as int] - numbers[jj]) >= threshold
+        {
+            if i != j && abs(numbers[i as int] - numbers[j as int]) < threshold {
+                proof {
+                    assert(exists|ii: int, jj: int|
+                        0 <= ii < numbers.len() &&
+                        0 <= jj < numbers.len() &&
+                        ii != jj &&
+                        abs(numbers[ii] - numbers[jj]) < threshold) by {
+                        assert(0 <= i as int && i as int < numbers.len());
+                        assert(0 <= j as int && j as int < numbers.len());
+                        assert(i as int != j as int);
+                        assert(abs(numbers[i as int] - numbers[j as int]) < threshold);
+                    };
+                }
+                return true;
+            }
+            j = j + 1;
+        }
+        i = i + 1;
+    }
+    
+    proof {
+        assert(forall|ii: int, jj: int|
+            0 <= ii < numbers.len() &&
+            0 <= jj < numbers.len() &&
+            ii != jj ==>
+            abs(numbers[ii] - numbers[jj]) >= threshold);
+        assert(!exists|ii: int, jj: int|
+            0 <= ii < numbers.len() &&
+            0 <= jj < numbers.len() &&
+            ii != jj &&
+            abs(numbers[ii] - numbers[jj]) < threshold);
+    }
+    
+    false
+}
+// </vc-code>
+
+fn main() {}
+
+}

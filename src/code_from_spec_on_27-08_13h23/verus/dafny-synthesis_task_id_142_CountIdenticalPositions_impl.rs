@@ -1,0 +1,52 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+fn count_identical_positions_helper(a: Seq<int>, b: Seq<int>, c: Seq<int>, i: int) -> (count: usize)
+    requires
+        a.len() == b.len(),
+        b.len() == c.len(),
+        0 <= i <= a.len(),
+    ensures
+        count >= 0,
+        count == Set::<int>::new(|j: int| i <= j < a.len() && a[j] == b[j] && b[j] == c[j]).len(),
+    decreases a.len() - i
+{
+    if i == a.len() {
+        0
+    } else {
+        let curr_count = if a[i] == b[i] && b[i] == c[i] { 1 } else { 0 };
+        curr_count + count_identical_positions_helper(a, b, c, i + 1)
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn count_identical_positions(a: Seq<int>, b: Seq<int>, c: Seq<int>) -> (count: usize)
+    requires
+        a.len() == b.len() && b.len() == c.len(),
+    ensures
+        count >= 0,
+        count == Set::<int>::new(|i: int| 0 <= i < a.len() && a[i] == b[i] && b[i] == c[i]).len(),
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+fn count_identical_positions(a: Seq<int>, b: Seq<int>, c: Seq<int>) -> (count: usize)
+    requires
+        a.len() == b.len(),
+        b.len() == c.len(),
+    ensures
+        count >= 0,
+        count == Set::<int>::new(|i: int| 0 <= i < a.len() && a[i] == b[i] && b[i] == c[i]).len(),
+{
+    count_identical_positions_helper(a, b, c, 0)
+}
+// </vc-code>
+
+fn main() {
+}
+
+}

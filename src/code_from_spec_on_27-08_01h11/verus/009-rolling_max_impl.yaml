@@ -1,0 +1,157 @@
+vc-description: |-
+
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn seq_max(a: Seq<i32>) -> (ret: i32)
+      decreases a.len(),
+  {
+      if a.len() == 0 {
+          i32::MIN
+      } else if a.last() > seq_max(a.drop_last()) {
+          a.last()
+      } else {
+          seq_max(a.drop_last())
+      }
+  }
+  // pure-end
+
+vc-helpers: |-
+  proof fn seq_max_monotonic(a: Seq<i32>, b: Seq<i32>)
+      requires a.len() <= b.len(),
+               forall|i: int| 0 <= i < a.len() ==> a[i] == b[i],
+      ensures seq_max(a) <= seq_max(b),
+      decreases b.len(),
+  {
+      if a.len() == 0 {
+          return;
+      }
+      if b.len() == 0 {
+          return;
+      }
+      if a.len() == b.len() {
+          return;
+      }
+      
+      let a_max = seq_max(a);
+      let b_max = seq_max(b);
+      let b_dropped = b.drop_last();
+      
+      seq_max_monotonic(a, b_dropped);
+      
+      if b.last() > seq_max(b_dropped) {
+          // b_max == b.last()
+          // We know a_max <= seq_max(b_dropped) from recursive call
+          // So a_max <= seq_max(b_dropped) < b.last() == b_max
+      } else {
+          // b_max == seq_max(b_dropped)
+          // We know a_max <= seq_max(b_dropped) from recursive call
+          // So a_max <= seq_max(b_dropped) == b_max
+      }
+  }
+  
+  proof fn seq_max_last_element(a: Seq<i32>)
+      requires a.len() > 0,
+      ensures forall|i: int| 0 <= i < a.len() ==> a[i] <= seq_max(a),
+      decreases a.len(),
+  {
+      if a.len() == 1 {
+          return;
+      }
+      let a_max = seq_max(a);
+      let a_dropped = a.drop_last();
+      
+      seq_max_last_element(a_dropped);
+      
+      if a.last() > seq_max(a_dropped) {
+          // a_max == a.last()
+          // All elements in a_dropped are <= seq_max(a_dropped) < a.last() == a_max
+      } else {
+          // a_max == seq_max(a_dropped)
+          // All elements in a_dropped are <= seq_max(a_dropped) == a_max
+          // And a.last() <= seq_max(a_dropped) == a_max
+      }
+  }
+  
+  proof fn seq_max_single_element(x: i32)
+      ensures seq_max(seq![x]) == x,
+  {
+  }
+  
+  proof fn seq_max_append_property(prefix: Seq<i32>, x: i32)
+      requires prefix.len() > 0,
+      ensures seq_max(prefix.push(x)) == if x > seq_max(prefix) { x } else { seq_max(prefix) },
+  {
+      let full_seq = prefix.push(x);
+      assert(full_seq.last() == x);
+      assert(full_seq.drop_last() == prefix);
+  }
+
+vc-spec: |-
+  fn rolling_max(numbers: Vec<i32>) -> (result: Vec<i32>)
+      // post-conditions-start
+      ensures
+          result.len() == numbers.len(),
+          forall|i: int| 0 <= i < numbers.len() ==> result[i] == seq_max(numbers@.take(i + 1)),
+      // post-conditions-end
+
+vc-code: |-
+  {
+      let mut result = Vec::new();
+      
+      for i in 0..numbers.len()
+          invariant
+              result.len() == i,
+              forall|j: int| 0 <= j < i ==> result[j] == seq_max(numbers@.take(j + 1)),
+      {
+          let num = numbers[i];
+          
+          let max_val = if i == 0 {
+              num
+          } else {
+              let prev_max = result[i - 1];
+              if num > prev_max { num } else { prev_max }
+          };
+          
+          result.push(max_val);
+          
+          proof {
+              let prefix = numbers@.take(i + 1);
+              
+              if i == 0 {
+                  assert(prefix == seq![numbers@[0int]]);
+                  seq_max_single_element(numbers@[0int]);
+                  assert(seq_max(prefix) == numbers@[0int]);
+                  assert(max_val == numbers@[0int]);
+              } else {
+                  let prev_prefix = numbers@.take(i);
+                  assert(prefix == prev_prefix.push(numbers@[i]));
+                  
+                  let prev_max = result[(i - 1) as usize];
+                  assert(prev_max == seq_max(prev_prefix));
+                  
+                  seq_max_append_property(prev_prefix, numbers@[i]);
+                  
+                  if numbers@[i] > prev_max {
+                      assert(seq_max(prefix) == numbers@[i]);
+                      assert(max_val == numbers@[i]);
+                  } else {
+                      assert(seq_max(prefix) == seq_max(prev_prefix));
+                      assert(seq_max(prefix) == prev_max);
+                      assert(max_val == prev_max);
+                  }
+              }
+          }
+      }
+      
+      result
+  }
+
+vc-postamble: |-
+  
+  }
+  fn main() {}
+

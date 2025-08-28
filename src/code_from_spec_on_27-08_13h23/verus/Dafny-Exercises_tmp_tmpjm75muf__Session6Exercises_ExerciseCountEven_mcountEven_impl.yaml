@@ -1,0 +1,97 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn positive(s: Seq<int>) -> bool {
+      forall|u: int| 0 <= u < s.len() ==> s[u] >= 0
+  }
+  
+  spec fn is_even(i: int) -> bool
+      recommends i >= 0
+  {
+      i % 2 == 0
+  }
+  
+  spec fn count_even(s: Seq<int>) -> int
+      recommends positive(s)
+      decreases s.len()
+  {
+      if s.len() == 0 {
+          0 as int
+      } else {
+          (if s[s.len() - 1] % 2 == 0 { 1 as int } else { 0 as int }) + count_even(s.subrange(0, s.len() - 1))
+      }
+  }
+
+vc-helpers: |-
+  proof fn lemma_count_even_split(s: Seq<int>, k: int)
+      requires
+          0 <= k <= s.len(),
+          positive(s),
+      ensures
+          count_even(s) == count_even(s.subrange(0, k)) + count_even(s.subrange(k, s.len())),
+      decreases s.len()
+  {
+      if s.len() == 0 {
+          assert(k == 0);
+          return;
+      }
+      if k == s.len() {
+          assert(s.subrange(k, s.len()) == Seq::empty());
+          assert(count_even(s.subrange(k, s.len())) == 0);
+          assert(s.subrange(0, k) == s);
+          return;
+      }
+      if k == 0 {
+          assert(s.subrange(0, k) == Seq::empty());
+          assert(count_even(s.subrange(0, k)) == 0);
+          assert(s.subrange(k, s.len()) == s);
+          return;
+      }
+      let s_last = s.subrange(0, s.len() - 1);
+      assert(s.subrange(k, s.len()) == s.subrange(k, s.len() - 1).push(s[s.len() - 1]));
+      lemma_count_even_split(s_last, k);
+      assert(count_even(s) == count_even(s_last) + (if s[s.len() - 1] % 2 == 0 { 1 } else { 0 }));
+      assert(count_even(s.subrange(k, s.len())) == count_even(s.subrange(k, s.len() - 1)) + (if s[s.len() - 1] % 2 == 0 { 1 } else { 0 }));
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn mcount_even(v: &Vec<i32>) -> (n: i32)
+      requires positive(v@.map(|i: int, x: i32| x as int))
+      ensures n as int == count_even(v@.map(|i: int, x: i32| x as int))
+  // </vc-spec>
+
+vc-code: |-
+  fn mcount_even(v: &Vec<i32>) -> (n: i32)
+      requires positive(v@.map(|i: int, x: i32| x as int))
+      ensures n as int == count_even(v@.map(|i: int, x: i32| x as int))
+  {
+      let mut count = 0;
+      let mut i = 0;
+      while i < v.len()
+          invariant
+              0 <= i <= v.len(),
+              count as int == count_even(v@.subrange(0, i as int).map(|i: int, x: i32| x as int)),
+      {
+          if v@[i] % 2 == 0 {
+              count = count + 1;
+          }
+          i = i + 1;
+      }
+      proof {
+          lemma_count_even_split(v@.map(|i: int, x: i32| x as int), v.len() as int);
+          assert(v@.subrange(v.len() as int, v.len() as int).map(|i: int, x: i32| x as int) == Seq::empty());
+          assert(count_even(v@.subrange(v.len() as int, v.len() as int).map(|i: int, x: i32| x as int)) == 0);
+      }
+      count
+  }
+
+vc-postamble: |-
+  
+  fn main() {
+  }
+  
+  }
+

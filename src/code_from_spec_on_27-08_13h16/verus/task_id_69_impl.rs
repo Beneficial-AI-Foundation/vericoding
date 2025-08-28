@@ -1,0 +1,81 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+fn is_sub_list_at_index(main: &Vec<i32>, sub: &Vec<i32>, idx: usize) -> (result: bool)
+    requires
+        sub.len() <= main.len(),
+        0 <= idx <= (main.len() - sub.len()),
+    ensures
+        result == (main@.subrange(idx as int, (idx + sub@.len()) as int) =~= sub@),
+{
+    let mut i = 0;
+    while i < sub.len()
+        invariant
+            0 <= idx <= (main.len() - sub.len()),
+            0 <= i <= sub.len(),
+            0 <= idx + i <= main.len(),
+            forall|k: int| 0 <= k < i ==> main[idx + k] == sub[k],
+        decreases sub.len() - i,
+    {
+        if (main[idx + i] != sub[i]) {
+            return false;
+        }
+        i += 1;
+    }
+    true
+}
+
+spec fn spec_is_sub_list_at_index(main: Seq<i32>, sub: Seq<i32>, idx: int) -> bool
+    recommends
+        sub.len() <= main.len(),
+        0 <= idx <= (main.len() - sub.len()),
+{
+    main.subrange(idx, idx + sub.len()) == sub
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn is_sub_list(main: &Vec<i32>, sub: &Vec<i32>) -> (result: bool)
+    // pre-conditions-start
+    requires
+        sub.len() <= main.len(),
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        result == (exists|k: int, l: int|
+            0 <= k <= (main.len() - sub.len()) && l == k + sub.len() && (#[trigger] (main@.subrange(
+                k,
+                l,
+            ))) =~= sub@),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut idx = 0;
+    while idx <= (main.len() - sub.len())
+        invariant
+            sub.len() <= main.len(),
+            0 <= idx <= (main.len() - sub.len()) + 1,
+            forall|k: int| 0 <= k < idx ==> !spec_is_sub_list_at_index(main@, sub@, k),
+        decreases (main.len() - sub.len()) - idx,
+    {
+        if is_sub_list_at_index(main, sub, idx) {
+            return true;
+        }
+        idx += 1;
+    }
+    proof {
+        assert(forall|k: int, l: int| 
+            0 <= k <= (main.len() - sub.len()) && l == k + sub.len() ==> 
+            main@.subrange(k, l) != sub@);
+    }
+    false
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

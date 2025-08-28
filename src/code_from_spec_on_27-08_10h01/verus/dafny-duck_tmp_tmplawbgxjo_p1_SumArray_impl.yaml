@@ -1,0 +1,103 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  // Given an array of integers, it returns the sum. [1,3,3,2]->9
+  
+  spec fn sum(xs: Seq<i32>) -> int
+      decreases xs.len()
+  {
+      if xs.len() == 0 {
+          0int
+      } else {
+          sum(xs.subrange(0, xs.len() - 1)) + xs[xs.len() - 1] as int
+      }
+  }
+
+vc-helpers: |-
+  proof fn sum_empty()
+      ensures sum(Seq::<i32>::empty()) == 0
+  {
+  }
+  
+  proof fn sum_single(x: i32)
+      ensures sum(seq![x]) == x as int
+  {
+      let seq_x = seq![x];
+      assert(seq_x.len() == 1);
+      assert(seq_x.subrange(0, 0) =~= Seq::<i32>::empty());
+      assert(seq_x[0] == x);
+      assert(sum(seq_x.subrange(0, 0)) == 0);
+  }
+  
+  proof fn sum_append(xs: Seq<i32>, x: i32)
+      requires xs.len() > 0
+      ensures sum(xs.push(x)) == sum(xs) + x as int
+  {
+      let appended = xs.push(x);
+      assert(appended.len() == xs.len() + 1);
+      assert(appended[appended.len() - 1] == x);
+      assert(appended.subrange(0, appended.len() - 1) =~= xs);
+  }
+  
+  proof fn sum_subrange_property(xs: Seq<i32>, i: nat)
+      requires i < xs.len()
+      ensures sum(xs.subrange(0, (i + 1) as int)) == sum(xs.subrange(0, i as int)) + xs[i as int] as int
+      decreases i
+  {
+      if i == 0 {
+          assert(xs.subrange(0, 1) =~= seq![xs[0]]);
+          assert(xs.subrange(0, 0) =~= Seq::<i32>::empty());
+          sum_single(xs[0]);
+          assert(sum(xs.subrange(0, 1)) == xs[0] as int);
+          assert(sum(xs.subrange(0, 0)) == 0);
+      } else {
+          sum_subrange_property(xs, (i - 1) as nat);
+          let sub_i_plus_1 = xs.subrange(0, (i + 1) as int);
+          let sub_i = xs.subrange(0, i as int);
+          assert(sub_i_plus_1.len() == (i + 1) as int);
+          assert(sub_i_plus_1[sub_i_plus_1.len() - 1] == xs[i as int]);
+          assert(sub_i_plus_1.subrange(0, sub_i_plus_1.len() - 1) =~= sub_i);
+      }
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn sum_array(xs: &[i32]) -> (s: i32)
+      ensures s as int == sum(xs@)
+  // </vc-spec>
+
+vc-code: |-
+  {
+      let mut result: i32 = 0;
+      let mut i: usize = 0;
+      
+      while i < xs.len()
+          invariant 
+              0 <= i <= xs.len(),
+              result as int == sum(xs@.subrange(0, i as int))
+          decreases xs.len() - i
+      {
+          proof {
+              sum_subrange_property(xs@, i as nat);
+          }
+          
+          result = result + xs[i];
+          i = i + 1;
+      }
+      
+      proof {
+          assert(xs@.subrange(0, xs@.len() as int) =~= xs@);
+      }
+      
+      result
+  }
+
+vc-postamble: |-
+  
+  fn main() {
+  }
+  
+  }
+

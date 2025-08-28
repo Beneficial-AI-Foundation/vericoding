@@ -1,0 +1,328 @@
+vc-preamble: |-
+  // Noa Leron 207131871
+  // Tsuri Farhana 315016907
+  
+  
+  // definitions borrowed from Rustan Leino's Program Proofs Chapter 7
+  // (https://program-proofs.com/code.html example code in Dafny; source file 7-Unary.dfy)
+  datatype Unary = Zero | Suc(pred: Unary)
+  
+  ghost function UnaryToNat(x: Unary): nat {
+    match x
+    case Zero => 0
+    case Suc(x') => 1 + UnaryToNat(x')
+  }
+  
+  ghost function NatToUnary(n: nat): Unary {
+    if n == 0 then Zero else Suc(NatToUnary(n-1))
+  }
+  
+  predicate Less(x: Unary, y: Unary) {
+    y != Zero && (x.Suc? ==> Less(x.pred, y.pred))
+  }
+  
+  predicate LessAlt(x: Unary, y: Unary) {
+    y != Zero && (x == Zero || Less(x.pred, y.pred))
+  }
+  
+  function Add(x: Unary, y: Unary): Unary {
+    match y
+    case Zero => x
+    case Suc(y') => Suc(Add(x, y'))
+  }
+  
+  function Sub(x: Unary, y: Unary): Unary
+    requires !Less(x, y)
+  {
+    match y
+    case Zero => x
+    case Suc(y') => Sub(x.pred, y')
+  }
+  
+  function Mul(x: Unary, y: Unary): Unary {
+    match x
+    case Zero => Zero
+    case Suc(x') => Add(Mul(x', y), y)
+  }
+  
+  /*
+  Goal: implement correcly and clearly, using iterative code (no recursion), documenting the proof obligations
+      as we've learned, with assertions and a lemma for each proof goal
+  
+  - DO NOT modify the specification or any of the definitions given in this file
+  - Not all definitions above are relevant, some are simply included as examples
+  - Feel free to use existing non-ghost functions/predicates in your code, and existing lemmas (for the proof) in your annotations
+  - New functions/predicates may be added ONLY as ghost
+  - If it helps you in any way, a recursive implementation + proof can be found in the book and the downloadable source file
+    [https://program-proofs.com/code.html example code in Dafny, source file 7-Unary.dfy]
+  */
+  
+  method IterativeDivMod'(x: Unary, y: Unary) returns (d: Unary, m: Unary)
+    requires y != Zero
+    ensures Add(Mul(d, y), m) == x && Less(m, y)
+  {
+    assume{:axiom} false;
+  }
+
+vc-helpers: |-
+  lemma AddAssociative(x: Unary, y: Unary, z: Unary)
+    ensures Add(Add(x, y), z) == Add(x, Add(y, z))
+  {
+    match z
+    case Zero =>
+    case Suc(z') =>
+      AddAssociative(x, y, z');
+  }
+  
+  lemma AddCommutative(x: Unary, y: Unary)
+    ensures Add(x, y) == Add(y, x)
+  {
+    match y
+    case Zero =>
+      AddZeroRight(x);
+    case Suc(y') =>
+      AddCommutative(x, y');
+      AddSucc(y', x);
+  }
+  
+  lemma AddZeroRight(x: Unary)
+    ensures Add(x, Zero) == x
+  {
+  }
+  
+  lemma AddSucc(x: Unary, y: Unary)
+    ensures Add(x, Suc(y)) == Suc(Add(x, y))
+  {
+    match y
+    case Zero =>
+    case Suc(y') =>
+      AddSucc(x, y');
+  }
+  
+  lemma SubProperty(x: Unary, y: Unary)
+    requires !Less(x, y)
+    ensures Add(Sub(x, y), y) == x
+  {
+    match y
+    case Zero =>
+    case Suc(y') =>
+      SubProperty(x.pred, y');
+  }
+  
+  lemma MulDistributive(x: Unary, y: Unary, z: Unary)
+    ensures Mul(Add(x, y), z) == Add(Mul(x, z), Mul(y, z))
+  {
+    match Add(x, y)
+    case Zero =>
+      assert x == Zero && y == Zero;
+    case Suc(xy') =>
+      if x == Zero {
+        calc {
+          Mul(Add(x, y), z);
+        ==
+          Mul(Add(Zero, y), z);
+        == 
+          Mul(y, z);
+        == { assert Mul(Zero, z) == Zero; }
+          Add(Zero, Mul(y, z));
+        ==
+          Add(Mul(Zero, z), Mul(y, z));
+        ==
+          Add(Mul(x, z), Mul(y, z));
+        }
+      } else {
+        assert x.Suc?;
+        assert Add(x, y) == Add(Suc(x.pred), y) == Suc(Add(x.pred, y));
+        MulDistributive(x.pred, y, z);
+        calc {
+          Mul(Add(x, y), z);
+        ==
+          Mul(Suc(Add(x.pred, y)), z);
+        ==
+          Add(Mul(Add(x.pred, y), z), z);
+        == { MulDistributive(x.pred, y, z); }
+          Add(Add(Mul(x.pred, z), Mul(y, z)), z);
+        == { AddAssociative(Mul(x.pred, z), Mul(y, z), z); }
+          Add(Mul(x.pred, z), Add(Mul(y, z), z));
+        == { AddCommutative(Mul(y, z), z); }
+          Add(Mul(x.pred, z), Add(z, Mul(y, z)));
+        == { AddAssociative(Mul(x.pred, z), z, Mul(y, z)); }
+          Add(Add(Mul(x.pred, z), z), Mul(y, z));
+        ==
+          Add(Mul(Suc(x.pred), z), Mul(y, z));
+        ==
+          Add(Mul(x, z), Mul(y, z));
+        }
+      }
+  }
+  
+  lemma LessNotReflexive(x: Unary)
+    ensures !Less(x, x)
+  {
+    match x
+    case Zero =>
+    case Suc(x') =>
+      LessNotReflexive(x');
+  }
+  
+  lemma LessTransitive(x: Unary, y: Unary, z: Unary)
+    requires Less(x, y) && Less(y, z)
+    ensures Less(x, z)
+  {
+    match z
+    case Zero =>
+    case Suc(z') =>
+      match y
+      case Zero =>
+      case Suc(y') =>
+        match x
+        case Zero =>
+        case Suc(x') =>
+          LessTransitive(x', y', z');
+  }
+  
+  ghost predicate DivModInvariant(x: Unary, y: Unary, d: Unary, r: Unary)
+  {
+    Add(Mul(d, y), r) == x
+  }
+  
+  lemma LessMonotonic(x: Unary, y: Unary)
+    requires !Less(x, y) && y != Zero
+    ensures Less(Sub(x, y), x)
+  {
+    match y
+    case Zero =>
+    case Suc(y') =>
+      if y' == Zero {
+        assert y == Suc(Zero);
+        assert Sub(x, y) == x.pred;
+        assert x.Suc?;
+        LessSucc(x.pred, x);
+      } else {
+        assert !Less(x.pred, y');
+        LessMonotonic(x.pred, y');
+        assert Less(Sub(x.pred, y'), x.pred);
+        assert Sub(x, y) == Sub(x.pred, y');
+        LessTransitive(Sub(x, y), x.pred, x);
+      }
+  }
+  
+  lemma LessSucc(x: Unary, y: Unary)
+    requires y == Suc(x)
+    ensures Less(x, y)
+  {
+    match x
+    case Zero =>
+    case Suc(x') =>
+      LessSucc(x', x);
+  }
+  
+  lemma MulZeroLeft(y: Unary)
+    ensures Mul(Zero, y) == Zero
+  {
+  }
+  
+  lemma SubLessOriginal(x: Unary, y: Unary)
+    requires !Less(x, y) && y != Zero
+    ensures Less(Sub(x, y), x)
+  {
+    LessMonotonic(x, y);
+  }
+  
+  lemma LessImpliesNotLessReverse(x: Unary, y: Unary)
+    requires Less(x, y)
+    ensures !Less(y, x)
+  {
+    match y
+    case Zero =>
+      assert false;
+    case Suc(y') =>
+      match x
+      case Zero =>
+      case Suc(x') =>
+        LessImpliesNotLessReverse(x', y');
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  method IterativeDivMod(x: Unary, y: Unary) returns (d: Unary, m: Unary)
+    requires y != Zero
+    ensures Add(Mul(d, y), m) == x && Less(m, y)
+  // </vc-spec>
+
+vc-code: |-
+  {
+    d := Zero;
+    m := x;
+    
+    calc {
+      Add(Mul(d, y), m);
+    ==
+      Add(Mul(Zero, y), x);
+    ==  { MulZeroLeft(y); }
+      Add(Zero, x);
+    ==
+      x;
+    }
+    assert DivModInvariant(x, y, d, m);
+    
+    if !Less(x, y) {
+      assert !Less(m, x);
+    }
+    
+    while !Less(m, y)
+      invariant DivModInvariant(x, y, d, m)
+      invariant !Less(x, y) ==> !Less(m, x)
+      decreases m
+    {
+      assert !Less(m, y);
+      assert DivModInvariant(x, y, d, m);
+      
+      var old_m := m;
+      var old_d := d;
+      
+      SubLessOriginal(old_m, y);
+      assert Less(Sub(old_m, y), old_m);
+      
+      m := Sub(m, y);
+      d := Suc(d);
+      
+      SubProperty(old_m, y);
+      assert Add(Sub(old_m, y), y) == old_m;
+      assert Add(m, y) == old_m;
+      
+      calc {
+        Add(Mul(d, y), m);
+      ==
+        Add(Mul(Suc(old_d), y), m);
+      ==
+        Add(Add(Mul(old_d, y), y), m);
+      ==  { AddAssociative(Mul(old_d, y), y, m); }
+        Add(Mul(old_d, y), Add(y, m));
+      ==  { AddCommutative(y, m); }
+        Add(Mul(old_d, y), Add(m, y));
+      ==
+        Add(Mul(old_d, y), old_m);
+      ==
+        x;
+      }
+      
+      assert DivModInvariant(x, y, d, m);
+      
+      if !Less(x, y) {
+        if Less(m, old_m) {
+          if !Less(old_m, x) {
+            LessTransitive(m, old_m, x);
+            assert !Less(m, x);
+          }
+        }
+      }
+    }
+    
+    assert Less(m, y);
+    assert DivModInvariant(x, y, d, m);
+  }
+
+vc-postamble: |-
+
+

@@ -1,0 +1,57 @@
+// <vc-helpers>
+lemma DecimalPositionUnique(s: string, i: int, j: int)
+    requires 0 <= i < |s| && s[i] == '.'
+    requires 0 <= j < |s| && s[j] == '.'
+    requires |s| - i - 1 == 2
+    requires |s| - j - 1 == 2
+    ensures i == j
+{
+    if i != j {
+        assert |s| - i - 1 == 2;
+        assert |s| - j - 1 == 2;
+        assert |s| - i - 1 == |s| - j - 1;
+        assert i == j;
+    }
+}
+
+lemma NoDecimalTwoPrecisionHelper(s: string)
+    requires forall k :: 0 <= k < |s| ==> (s[k] != '.' || |s| - k - 1 != 2)
+    ensures !(exists i :: 0 <= i < |s| && s[i] == '.' && |s| - i - 1 == 2)
+{
+}
+
+lemma ExistsDecimalTwoPrecisionHelper(s: string, pos: int)
+    requires 0 <= pos < |s|
+    requires s[pos] == '.'
+    requires |s| - pos - 1 == 2
+    ensures exists i :: 0 <= i < |s| && s[i] == '.' && |s| - i - 1 == 2
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method IsDecimalWithTwoPrecision(s: string) returns (result: bool)
+    ensures result ==> (exists i :: 0 <= i < |s| && s[i] == '.' && |s| - i - 1 == 2)
+    ensures !result ==> !(exists i :: 0 <= i < |s| && s[i] == '.' && |s| - i - 1 == 2)
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    var i := 0;
+    while i < |s|
+        invariant 0 <= i <= |s|
+        invariant forall k :: 0 <= k < i ==> (s[k] != '.' || |s| - k - 1 != 2)
+    {
+        if s[i] == '.' && |s| - i - 1 == 2 {
+            ExistsDecimalTwoPrecisionHelper(s, i);
+            return true;
+        }
+        i := i + 1;
+    }
+    
+    NoDecimalTwoPrecisionHelper(s);
+    return false;
+}
+// </vc-code>

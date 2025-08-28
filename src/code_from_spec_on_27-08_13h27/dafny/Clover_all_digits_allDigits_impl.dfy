@@ -1,0 +1,29 @@
+// <vc-helpers>
+// No additional helpers needed for this fix
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method allDigits(s: string) returns (result: bool)
+  ensures  result <==> (forall i :: 0 <= i < |s| ==> s[i] in "0123456789")
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+method AllDigits(s: string) returns (result: bool)
+  ensures result <==> (forall i :: 0 <= i < |s| ==> s[i] in "0123456789")
+{
+  result := true;
+  var i := 0;
+  while i < |s|
+    invariant 0 <= i <= |s|
+    invariant result <==> (forall k :: 0 <= k < i ==> s[k] in "0123456789")
+  {
+    if s[i] !in "0123456789" {
+      result := false;
+      return;
+    }
+    i := i + 1;
+  }
+}
+// </vc-code>

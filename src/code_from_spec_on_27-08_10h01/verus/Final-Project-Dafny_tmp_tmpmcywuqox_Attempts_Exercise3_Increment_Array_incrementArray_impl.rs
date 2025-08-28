@@ -1,0 +1,38 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn increment_array(a: &mut Vec<i32>)
+  requires old(a).len() > 0,
+  ensures 
+      a.len() == old(a).len(),
+      forall|i: int| 0 <= i < a.len() ==> a[i] == old(a)[i] + 1,
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut i = 0;
+    while i < a.len()
+        invariant 
+            i <= a.len(),
+            a.len() == old(a).len(),
+            forall|j: int| 0 <= j < i ==> a[j] == old(a)[j] + 1,
+            forall|j: int| i <= j < a.len() ==> a[j] == old(a)[j],
+        decreases a.len() - i,
+    {
+        let old_val = a[i];
+        a.set(i, old_val + 1);
+        i += 1;
+    }
+}
+// </vc-code>
+
+fn main() {}
+
+}

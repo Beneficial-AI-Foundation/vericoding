@@ -1,0 +1,29 @@
+// <vc-helpers>
+// No additional helpers needed for this implementation
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method ContainsSequence(list: seq<seq<int>>, sub: seq<int>) returns (result: bool)
+    ensures result <==> (exists i :: 0 <= i < |list| && sub == list[i])
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+method ContainsSequenceImpl(list: seq<seq<int>>, sub: seq<int>) returns (result: bool)
+    ensures result <==> (exists i :: 0 <= i < |list| && sub == list[i])
+{
+    result := false;
+    var i := 0;
+    while i < |list|
+        invariant 0 <= i <= |list|
+        invariant result <==> (exists k :: 0 <= k < i && sub == list[k])
+    {
+        if sub == list[i] {
+            result := true;
+            return;
+        }
+        i := i + 1;
+    }
+}
+// </vc-code>

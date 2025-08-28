@@ -1,0 +1,93 @@
+use vstd::prelude::*;
+
+
+verus! {
+
+spec fn sum_negative_to(seq: Seq<i64>) -> (res: int)
+    decreases seq.len(),
+{
+    if seq.len() == 0 {
+        0
+    } else {
+        sum_negative_to(seq.drop_last()) + if (seq.last() < 0) {
+            seq.last() as int
+        } else {
+            0 as int
+        }
+    }
+}
+// pure-end
+
+// <vc-helpers>
+proof fn sum_negative_to_append_lemma(seq: Seq<i64>, elem: i64)
+    ensures sum_negative_to(seq.push(elem)) == sum_negative_to(seq) + if elem < 0 { elem as int } else { 0 }
+    decreases seq.len(),
+{
+    if seq.len() == 0 {
+        assert(seq.push(elem).drop_last() =~= seq);
+        assert(seq.push(elem).last() == elem);
+    } else {
+        sum_negative_to_append_lemma(seq.drop_last(), elem);
+        assert(seq.push(elem).drop_last() =~= seq);
+        assert(seq.push(elem).last() == elem);
+    }
+}
+
+proof fn sum_negative_to_prefix_lemma(seq: Seq<i64>, i: nat)
+    requires i <= seq.len()
+    ensures sum_negative_to(seq.subrange(0, i as int)) == sum_negative_to(seq.take(i as int))
+    decreases i,
+{
+    if i == 0 {
+    } else {
+        sum_negative_to_prefix_lemma(seq, (i - 1) as nat);
+        assert(seq.subrange(0, i as int) =~= seq.subrange(0, (i - 1) as int).push(seq[i - 1]));
+        assert(seq.take(i as int) =~= seq.take((i - 1) as int).push(seq[i - 1]));
+        sum_negative_to_append_lemma(seq.subrange(0, (i - 1) as int), seq[i - 1]);
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn sum_negatives(arr: &Vec<i64>) -> (sum_neg: i128)
+    // post-conditions-start
+    ensures
+        sum_negative_to(arr@) == sum_neg,
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut sum: i128 = 0;
+    let mut i: usize = 0;
+    
+    while i < arr.len()
+        invariant 
+            i <= arr.len(),
+            sum == sum_negative_to(arr@.take(i as int)),
+        decreases arr.len() - i,
+    {
+        proof {
+            sum_negative_to_append_lemma(arr@.take(i as int), arr@[i as int]);
+            assert(arr@.take((i + 1) as int) =~= arr@.take(i as int).push(arr@[i as int]));
+        }
+        
+        if arr[i] < 0 {
+            sum = sum + arr[i] as i128;
+        }
+        
+        i = i + 1;
+    }
+    
+    proof {
+        assert(i == arr.len());
+        assert(arr@.take(arr.len() as int) =~= arr@);
+    }
+    
+    sum
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

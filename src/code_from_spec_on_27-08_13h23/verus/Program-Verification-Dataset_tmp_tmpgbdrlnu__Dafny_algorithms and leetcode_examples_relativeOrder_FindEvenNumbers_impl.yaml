@@ -1,0 +1,84 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn is_even(n: int) -> bool {
+      n % 2 == 0
+  }
+
+vc-helpers: |-
+  proof fn lemma_contains_implies_index_exists(v: Seq<int>, x: int)
+      requires
+          v.contains(x),
+      ensures
+          exists|i: int| 0 <= i < v.len() && v[i] == x,
+  {
+      let idx = choose|i: int| 0 <= i < v.len() && v[i] == x;
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn find_even_numbers(arr: &[int]) -> (even_numbers: Vec<int>)
+      ensures
+          // All even numbers from arr are in the result
+          forall|i: int| 0 <= i < arr.len() && is_even(arr[i]) ==> 
+              #[trigger] even_numbers@.contains(arr[i]),
+          // All numbers in result come from arr  
+          forall|x: int| #[trigger] even_numbers@.contains(x) ==> 
+              exists|i: int| 0 <= i < arr.len() && arr[i] == x,
+          // Order preservation property
+          forall|k: int, l: int| 0 <= k < l < even_numbers.len() ==>
+              exists|n: int, m: int| 0 <= n < m < arr.len() && 
+                  #[trigger] even_numbers[k] == arr[n] && 
+                  #[trigger] even_numbers[l] == arr[m]
+  // </vc-spec>
+
+vc-code: |-
+  fn find_even_numbers(arr: &[int]) -> (even_numbers: Vec<int>)
+      ensures
+          // All even numbers from arr are in the result
+          forall|i: int| 0 <= i < arr.len() && is_even(arr[i]) ==> 
+              #[trigger] even_numbers@.contains(arr[i]),
+          // All numbers in result come from arr  
+          forall|x: int| #[trigger] even_numbers@.contains(x) ==> 
+              exists|i: int| 0 <= i < arr.len() && arr[i] == x,
+          // Order preservation property
+          forall|k: int, l: int| 0 <= k < l < even_numbers.len() ==>
+              exists|n: int, m: int| 0 <= n < m < arr.len() && 
+                  #[trigger] even_numbers[k] == arr[n] && 
+                  #[trigger] even_numbers[l] == arr[m],
+  {
+      let mut result: Vec<int> = Vec::new();
+      let mut i: usize = 0;
+  
+      while i < arr.len()
+          invariant
+              0 <= i <= arr.len(),
+              // All even numbers up to i are in result
+              forall|j: int| 0 <= j < i as int && is_even(arr[j]) ==> 
+                  #[trigger] result@.contains(arr[j]),
+              // All numbers in result come from arr[0..i]
+              forall|x: int| #[trigger] result@.contains(x) ==> 
+                  exists|k: int| 0 <= k < i as int && arr[k] == x,
+              // Order preservation for result
+              forall|k: int, l: int| 0 <= k < l < result.len() as int ==>
+                  exists|n: int, m: int| 0 <= n < m < i as int && 
+                      #[trigger] result[k] == arr[n] && 
+                      #[trigger] result[l] == arr[m],
+      {
+          if is_even(arr[i] as int) {
+              result.push(arr[i]);
+          }
+          i = i + 1;
+      }
+  
+      result
+  }
+
+vc-postamble: |-
+  fn main() {
+  }
+  
+  }
+

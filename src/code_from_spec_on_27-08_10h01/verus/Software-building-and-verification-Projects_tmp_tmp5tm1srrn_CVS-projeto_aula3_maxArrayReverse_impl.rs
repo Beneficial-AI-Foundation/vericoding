@@ -1,0 +1,78 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn fib(n: nat) -> nat
+    decreases n
+{
+    if n == 0 { 1 }
+    else if n == 1 { 1 }
+    else { fib((n - 1) as nat) + fib((n - 2) as nat) }
+}
+
+
+// 2.
+pub enum List<T> {
+    Nil,
+    Cons(T, Box<List<T>>),
+}
+
+spec fn add(l: List<int>) -> int
+    decreases l
+{
+    match l {
+        List::Nil => 0,
+        List::Cons(x, xs) => x + add(*xs),
+    }
+}
+
+
+// 3.
+
+// 5.
+
+// 6
+spec fn sum(n: nat) -> nat
+    decreases n
+{
+    if n == 0 { 0 } else { n + sum((n - 1) as nat) }
+}
+
+// <vc-helpers>
+// Helper functions if needed
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn maxArrayReverse(arr: &[i32]) -> (max: i32)
+    requires arr.len() > 0
+    ensures forall|i: int| 0 <= i < arr.len() ==> arr[i] <= max
+    ensures exists|x: int| 0 <= x < arr.len() && arr[x] == max
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut max = arr[0];
+    let mut i = 1;
+    
+    while i < arr.len()
+        invariant 
+            1 <= i <= arr.len(),
+            forall|j: int| 0 <= j < i ==> arr[j] <= max,
+            exists|k: int| 0 <= k < i && arr[k] == max
+    {
+        if arr[i] > max {
+            max = arr[i];
+        }
+        i += 1;
+    }
+    
+    max
+}
+// </vc-code>
+
+fn main() {
+}
+
+}

@@ -1,0 +1,20 @@
+// <vc-helpers>
+// No additional helpers or proofs needed for this simple calculation
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method ParabolaDirectrix(a: real, h: real, k: real) returns (directrix: real)
+    requires a != 0.0
+    ensures directrix == k - 1.0 / (4.0 * a)
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+method ComputeParabolaDirectrix(a: real, h: real, k: real) returns (directrix: real)
+    requires a != 0.0
+    ensures directrix == k - 1.0 / (4.0 * a)
+{
+    directrix := k - 1.0 / (4.0 * a);
+}
+// </vc-code>

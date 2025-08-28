@@ -1,0 +1,66 @@
+use vstd::prelude::*;
+
+verus! {
+
+// Algorithm 1: From left to right return the first
+// Algorithm 2: From right to left return the last
+
+// <vc-helpers>
+spec fn is_maximum_at(v: &[i32], i: int) -> bool {
+    0 <= i < v.len() && forall|k: int| 0 <= k < v.len() ==> v[i] >= v[k]
+}
+
+spec fn is_rightmost_maximum(v: &[i32], i: int) -> bool {
+    is_maximum_at(v, i) && forall|l: int| i < l < v.len() ==> v[i] > v[l]
+}
+
+spec fn is_maximum_in_range(v: &[i32], i: int, start: int, end: int) -> bool {
+    start <= i < end && forall|k: int| start <= k < end ==> v[i] >= v[k]
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn mlast_maximum(v: &[i32]) -> (i: usize)
+    requires v.len() > 0
+    ensures 
+        i < v.len(),
+        forall|k: int| 0 <= k < v.len() ==> v[i as int] >= v[k],
+        forall|l: int| i < l < v.len() ==> v[i as int] > v[l],
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut max_idx = v.len() - 1;
+    let mut idx = v.len() - 1;
+    
+    loop
+        invariant
+            idx < v.len(),
+            max_idx < v.len(),
+            idx <= max_idx,
+            forall|k: int| idx <= k < v.len() ==> v[max_idx as int] >= v[k],
+            forall|k: int| max_idx < k < v.len() ==> v[max_idx as int] > v[k],
+        decreases idx
+    {
+        if v[idx] > v[max_idx] {
+            max_idx = idx;
+        }
+        
+        if idx == 0 {
+            break;
+        }
+        idx = idx - 1;
+    }
+    
+    max_idx
+}
+// </vc-code>
+
+fn main() {}
+
+}
+
+// Algorithm : from left to right
+// Algorithm : from right to left

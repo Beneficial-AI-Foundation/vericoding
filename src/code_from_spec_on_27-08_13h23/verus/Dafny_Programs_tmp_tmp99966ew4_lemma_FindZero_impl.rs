@@ -1,0 +1,53 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+proof fn lemma_seq_index<T>(s: Seq<T>, i: int)
+    requires
+        0 <= i < s.len(),
+    ensures
+        s[i] == s.index(i as usize),
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn find_zero(a: &[i32]) -> (index: i32)
+    requires
+        forall|i: int| 0 <= i < a.len() ==> #[trigger] a[i] >= 0,
+        forall|i: int| 0 < i < a.len() ==> #[trigger] a[i-1] - 1 <= a[i],
+    ensures
+        (index < 0 ==> forall|i: int| 0 <= i < a.len() ==> #[trigger] a[i] != 0),
+        (0 <= index ==> index < a.len() && a[index as int] == 0),
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+fn find_zero(a: &[i32]) -> (index: i32)
+    requires
+        forall|i: int| 0 <= i < a.len() ==> #[trigger] a[i] >= 0,
+        forall|i: int| 0 < i < a.len() ==> #[trigger] a[i-1] - 1 <= a[i],
+    ensures
+        (index < 0 ==> forall|i: int| 0 <= i < a.len() ==> #[trigger] a[i] != 0),
+        (0 <= index ==> index < a.len() && a[index as usize] == 0),
+{
+    let mut i: usize = 0;
+    while i < a.len()
+        invariant
+            0 <= i <= a.len(),
+            forall|j: int| 0 <= j < i ==> #[trigger] a[j] != 0,
+    {
+        if a[i] == 0 {
+            return i as i32;
+        }
+        i = i + 1;
+    }
+    -1
+}
+// </vc-code>
+
+fn main() {}
+
+}

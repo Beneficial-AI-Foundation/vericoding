@@ -1,0 +1,43 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn remove_element(s: &Vec<i32>, k: usize) -> (v: Vec<i32>)
+    requires 
+        k < s.len(),
+    ensures
+        v.len() == s.len() - 1,
+        forall|i: int| 0 <= i < k ==> v[i] == s[i],
+        forall|i: int| k <= i < v.len() ==> v[i] == s[(i + 1) as int],
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut result = Vec::new();
+    
+    let mut i = 0;
+    while i < s.len()
+        invariant
+            i <= s.len(),
+            result.len() == if i <= k { i } else { i - 1 },
+            forall|j: int| 0 <= j < result.len() && j < k ==> result[j] == s[j],
+            forall|j: int| k <= j < result.len() ==> result[j] == s[(j + 1) as int],
+    {
+        if i != k {
+            result.push(s[i]);
+        }
+        i += 1;
+    }
+    
+    result
+}
+// </vc-code>
+
+fn main() {}
+}

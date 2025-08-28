@@ -1,0 +1,110 @@
+use vstd::prelude::*;
+
+verus! {
+
+/*                                      Cumulative Sums over Arrays                                        */
+
+/*
+    Daniel Cavalheiro   57869
+    Pedro Nunes         57854
+*/
+
+
+
+//(a)
+
+spec fn sum(a: &[int], i: int, j: int) -> int
+    recommends 0 <= i <= j <= a.len()
+    decreases j - i when 0 <= i <= j <= a.len()
+{
+    if i == j { 0 }
+    else { a[i] + sum(a, i + 1, j) }
+}
+
+
+
+//(b)
+
+//(c)
+
+spec fn is_prefix_sum_for(a: &[int], c: &[int]) -> bool
+{
+    &&& a.len() + 1 == c.len()
+    &&& c[0] == 0
+    &&& forall|i: int| 0 <= i < a.len() ==> c[i + 1] == c[i] + a[i]
+}
+
+// <vc-helpers>
+proof fn sum_empty(a: &[int], i: int)
+    requires 0 <= i <= a.len()
+    ensures sum(a, i, i) == 0
+{
+}
+
+proof fn sum_single(a: &[int], i: int)
+    requires 0 <= i < a.len()
+    ensures sum(a, i, i + 1) == a[i]
+{
+}
+
+proof fn sum_split(a: &[int], i: int, j: int, k: int)
+    requires 0 <= i <= j <= k <= a.len()
+    ensures sum(a, i, k) == sum(a, i, j) + sum(a, j, k)
+    decreases k - i
+{
+    if i == j {
+        assert(sum(a, i, j) == 0);
+        assert(sum(a, i, k) == sum(a, j, k));
+    } else if j == k {
+        assert(sum(a, j, k) == 0);
+        assert(sum(a, i, k) == sum(a, i, j));
+    } else {
+        sum_split(a, i + 1, j, k);
+    }
+}
+
+proof fn sum_bounds_check(a: &[int], i: int, j: int)
+    requires 0 <= i <= j <= a.len()
+    ensures sum(a, i, j) <= (j - i) * 2147483647
+    decreases j - i
+{
+    if i < j {
+        sum_bounds_check(a, i + 1, j);
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn query(a: &[int], i: usize, j: usize) -> (res: i64)
+    requires 0 <= i <= j <= a.len()
+    ensures res == sum(a, i as int, j as int)
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut result: i64 = 0;
+    let mut idx = i;
+    
+    while idx < j
+        invariant 
+            i <= idx <= j,
+            result == sum(a, i as int, idx as int)
+    {
+        proof {
+            sum_split(a, i as int, idx as int, (idx + 1) as int);
+            sum_single(a, idx as int);
+        }
+        result = result + a[idx];
+        idx = idx + 1;
+    }
+    
+    result
+}
+// </vc-code>
+
+fn main() {
+}
+
+}

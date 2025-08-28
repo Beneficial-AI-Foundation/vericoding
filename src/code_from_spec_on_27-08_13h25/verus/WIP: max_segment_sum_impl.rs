@@ -1,0 +1,161 @@
+#![crate_name = "max_segment_sum"]
+
+use vstd::prelude::*;
+
+verus! {
+
+spec fn sum(a: Seq<i32>, s: int, t: int) -> int
+    decreases t - s,
+{
+    if s < 0 || s >= t || t > a.len() {
+        0
+    } else {
+        a[t - 1] + sum(a, s, t - 1)
+    }
+}
+
+// <vc-helpers>
+#[verifier::external_body]
+fn add(a: i64, b: i32) -> (result: i64)
+    ensures
+        result == a + b,
+{
+    a + b as i64
+}
+
+spec fn sum_seq(a: Seq<i32>, s: int, t: int) -> int
+    decreases t - s,
+{
+    if s < 0 || s >= t || t > a.len() {
+        0
+    } else {
+        a[t - 1] + sum_seq(a, s, t - 1)
+    }
+}
+
+proof fn sum_seq_non_negative(a: Seq<i32>, s: int, t: int)
+    requires
+        0 <= s <= t <= a.len(),
+        forall|i: int| s <= i < t ==> a[i] >= 0,
+    ensures
+        sum_seq(a, s, t) >= 0,
+    decreases t - s,
+{
+    if s < t {
+        assert(a[t - 1] >= 0);
+        sum_seq_non_negative(a, s, t - 1);
+    }
+}
+
+proof fn sum_seq_split(a: Seq<i32>, s: int, m: int, t: int)
+    requires
+        0 <= s <= m <= t <= a.len(),
+    ensures
+        sum_seq(a, s, t) == sum_seq(a, s, m) + sum_seq(a, m, t),
+    decreases t - s,
+{
+    if s < t {
+        if m == t {
+            assert(sum_seq(a, s, t) == sum_seq(a, s, m));
+        } else if m == s {
+            assert(sum_seq(a, s, t) == sum_seq(a, m, t));
+        } else {
+            sum_seq_split(a, s, m, t - 1);
+            assert(sum_seq(a, s, t) == a[t - 1] + sum_seq(a, s, t - 1));
+            assert(sum_seq(a, s, t - 1) == sum_seq(a, s, m) + sum_seq(a, m, t - 1));
+            assert(sum_seq(a, m, t) == a[t - 1] + sum_seq(a, m, t - 1));
+        }
+    }
+}
+
+proof fn sum_seq_leq(a: Seq<i32>, s1: int, t1: int, s2: int, t2: int)
+    requires
+        0 <= s1 <= t1 <= a.len(),
+        0 <= s2 <= t2 <= a.len(),
+        s2 <= s1,
+        t1 <= t2,
+        forall|i: int| s2 <= i < t2 ==> a[i] >= 0,
+    ensures
+        sum_seq(a, s1, t1) <= sum_seq(a, s2, t2),
+    decreases t2 - s2,
+{
+    if s1 < t1 {
+        sum_seq_split(a, s2, s1, t1);
+        sum_seq_split(a, s2, t1, t2);
+        sum_seq_non_negative(a, s2, s1);
+        sum_seq_non_negative(a, t1, t2);
+    } else {
+        sum_seq_non_negative(a, s2, t2);
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+#[verifier::loop_isolation(false)]
+fn max_segment_sum(a: &Vec<i32>, s: usize, t: usize) -> (p: (usize, usize)) by (nonlinear_arith)
+    ensures
+        ({ let (i, j) = p; 0 <= i <= j <= a.len() }),
+        ({ let (i, j) = p; forall|k: int, l: int| 0 <= k <= l <= a.len() ==> sum(a@, k, l) <= sum(a@, i as int, j as int) })
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut max_sum: i64 = i64::MIN;
+    let mut max_i: usize = 0;
+    let mut max_j: usize = 0;
+    let mut i: usize = 0;
+
+    while i < a.len()
+        invariant
+            0 <= i <= a.len(),
+            0 <= max_i <= max_j <= a.len(),
+            forall|k1: int, l1: int| 0 <= k1 <= l1 <= i as int ==> sum_seq(a@, k1, l1) <= sum_seq(a@, max_i as int, max_j as int),
+        decreases a.len() - i,
+    {
+        let mut current_sum: i64 = 0;
+        let mut j: usize = i;
+        while j < a.len()
+            invariant
+                i <= j <= a.len(),
+                0 <= max_i <= max_j <= a.len(),
+                current_sum == sum_seq(a@, i as int, j as int),
+                forall|k1: int, l1: int| 0 <= k1 <= l1 <= i as int ==> sum_seq(a@, k1, l1) <= sum_seq(a@, max_i as int, max_j as int),
+                forall|k2: int| i as int <= k2 <= j as int ==> sum_seq(a@, i as int, k2) <= current_sum,
+            decreases a.len() - j,
+        {
+            current_sum = add(current_sum, a[j]);
+            if current_sum > max_sum {
+                max_sum = current_sum;
+                max_i = i;
+                max_j = j + 1;
+            }
+            j = j + 1;
+        }
+        proof {
+            assert(forall|k1: int, l1: int| 0 <= k1 <= l1 <= (i + 1) as int ==> sum_seq(a@, k1, l1) <= sum_seq(a@, max_i as int, max_j as int)) by {
+                let next_i = (i + 1) as int;
+                assert(forall|k2: int, l2: int| 0 <= k2 <= l2 <= next_i ==> sum_seq(a@, k2, l2) <= sum_seq(a@, max_i as int, max_j as int)) by {
+                    if k2 <= i as int && l2 <= next_i {
+                        if l2 <= i as int {
+                            assert(sum_seq(a@, k2, l2) <= sum_seq(a@, max_i as int, max_j as int));
+                        } else {
+                            assert(sum_seq(a@, k2, l2) == sum_seq(a@, k2, i as int) + sum_seq(a@, i as int, l2));
+                            assert(sum_seq(a@, k2, i as int) <= sum_seq(a@, max_i as int, max_j as int));
+                        }
+                    }
+                };
+            };
+        }
+        i = i + 1;
+    }
+
+    proof {
+        assert(forall|k1: int, l1: int| 0 <= k1 <= l1 <= a.len() as int ==> sum_seq(a@, k1, l1) <= sum_seq(a@, max_i as int, max_j as int));
+    }
+
+    (max_i, max_j)
+}
+// </vc-code>
+
+fn main() {}
+}

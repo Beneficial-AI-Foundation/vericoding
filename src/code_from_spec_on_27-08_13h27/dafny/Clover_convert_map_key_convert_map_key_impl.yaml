@@ -1,0 +1,38 @@
+vc-preamble: |-
+
+
+vc-helpers: |-
+  // No additional helper code or proofs needed for this implementation
+
+vc-spec: |-
+  // <vc-spec>
+  method convert_map_key(inputs: map<nat, bool>, f: nat->nat) returns(r:map<nat, bool>)
+    requires forall n1: nat, n2: nat :: n1 != n2 ==> f(n1) != f(n2)
+    ensures forall k :: k in inputs <==> f(k) in r
+    ensures forall k :: k in inputs ==> r[f(k)] == inputs[k]
+  // </vc-spec>
+
+vc-code: |-
+  method ConvertMapKey(inputs: map<nat, bool>, f: nat->nat) returns(r: map<nat, bool>)
+    requires forall n1: nat, n2: nat :: n1 != n2 ==> f(n1) != f(n2)
+    ensures forall k :: k in inputs <==> f(k) in r
+    ensures forall k :: k in inputs ==> r[f(k)] == inputs[k]
+  {
+    var new_map: map<nat, bool> := map[];
+    var keys := inputs.Keys;
+    while keys != {}
+      invariant forall old_k :: old_k in inputs && old_k !in keys ==> f(old_k) in new_map && new_map[f(old_k)] == inputs[old_k]
+      invariant forall k :: k in keys ==> k in inputs
+      invariant forall k :: k in new_map ==> exists orig_k :: orig_k in inputs && f(orig_k) == k && new_map[k] == inputs[orig_k]
+      decreases keys
+    {
+      var k :| k in keys;
+      new_map := new_map[f(k) := inputs[k]];
+      keys := keys - {k};
+    }
+    r := new_map;
+  }
+
+vc-postamble: |-
+
+

@@ -1,0 +1,84 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+proof fn lemma_min_even_index(nodes: &Vec<u32>, min_even: u32, min_index: u32)
+    requires
+        0 <= min_index < nodes@.len(),
+        nodes@[min_index as int] == min_even,
+        min_even % 2 == 0,
+        forall|i: int| 0 <= i < nodes@.len() && nodes@[i] % 2 == 0 ==> min_even <= nodes@[i],
+        forall|i: int| 0 <= i < min_index ==> nodes@[i] % 2 != 0 || nodes@[i] > min_even,
+    ensures
+        forall|i: int| 0 <= i < min_index ==> nodes@[i] % 2 != 0 || nodes@[i] > min_even,
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn pluck_smallest_even(nodes: &Vec<u32>) -> (result: Vec<u32>)
+    // pre-conditions-start
+    requires
+        nodes@.len() <= u32::MAX,
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        result@.len() == 0 || result@.len() == 2,
+        result@.len() == 0 ==> forall|i: int| 0 <= i < nodes@.len() ==> nodes@[i] % 2 != 0,
+        result@.len() == 2 ==> {
+            let node = result@[0];
+            let index = result@[1];
+            &&& 0 <= index < nodes@.len()
+            &&& nodes@[index as int] == node
+            &&& node % 2 == 0
+            &&& forall|i: int|
+                0 <= i < nodes@.len() && nodes@[i] % 2 == 0 ==> node <= nodes@[i] && forall|i: int|
+                    0 <= i < result@[1] ==> nodes@[i] % 2 != 0 || nodes@[i] > node
+        },
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut min_even: u32 = u32::MAX;
+    let mut min_index: u32 = 0;
+    let mut found_even: bool = false;
+    let mut i: u32 = 0;
+
+    while i < nodes.len() as u32
+        invariant
+            0 <= i <= nodes.len() as u32,
+            !found_even ==> forall|k: int| 0 <= k < i ==> nodes@[k] % 2 != 0,
+            found_even ==> {
+                &&& min_even % 2 == 0
+                &&& 0 <= min_index < i
+                &&& nodes@[min_index as int] == min_even
+                &&& forall|k: int| 0 <= k < i && nodes@[k] % 2 == 0 ==> min_even <= nodes@[k]
+                &&& forall|k: int| 0 <= k < min_index ==> nodes@[k] % 2 != 0 || nodes@[k] > min_even
+            },
+        decreases (nodes.len() as u32) - i,
+    {
+        if nodes[i as usize] % 2 == 0 {
+            if !found_even || nodes[i as usize] < min_even {
+                min_even = nodes[i as usize];
+                min_index = i;
+                found_even = true;
+            }
+        }
+        i = i + 1;
+    }
+
+    if found_even {
+        proof {
+            lemma_min_even_index(nodes, min_even, min_index);
+        }
+        vec![min_even, min_index]
+    } else {
+        vec![]
+    }
+}
+// </vc-code>
+
+}
+fn main() {}

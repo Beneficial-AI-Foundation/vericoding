@@ -1,0 +1,50 @@
+use vstd::prelude::*;
+
+
+verus! {
+
+// <vc-helpers>
+spec fn valid_square_range(nums: &Vec<i32>) -> bool {
+    forall|k: int| 0 <= k < nums.len() ==> nums[k] * nums[k] <= i32::MAX
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn square_nums(nums: &Vec<i32>) -> (squared: Vec<i32>)
+    // pre-conditions-start
+    requires
+        forall|k: int|
+            0 <= k < nums.len() ==> (0 <= #[trigger] nums[k] * #[trigger] nums[k] < i32::MAX),
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        nums.len() == squared.len(),
+        forall|k: int| 0 <= k < nums.len() ==> (#[trigger] squared[k] == nums[k] * nums[k]),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut result: Vec<i32> = Vec::new();
+    let mut i: usize = 0;
+    
+    while i < nums.len()
+        invariant
+            i <= nums.len(),
+            result.len() == i,
+            forall|k: int| 0 <= k < i ==> #[trigger] result@[k] == nums@[k] * nums@[k],
+            forall|k: int| 0 <= k < nums.len() ==> 0 <= nums@[k] * nums@[k] < i32::MAX,
+        decreases nums.len() - i
+    {
+        let squared_val = nums@[i as int] * nums@[i as int];
+        result.push(squared_val);
+        i += 1;
+    }
+    
+    result
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

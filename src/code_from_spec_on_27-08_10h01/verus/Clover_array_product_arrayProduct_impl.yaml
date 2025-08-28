@@ -1,0 +1,40 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+
+vc-spec: |-
+  // <vc-spec>
+  fn array_product(a: &[i32], b: &[i32]) -> (c: Vec<i32>)
+      requires 
+          a.len() == b.len(),
+      ensures 
+          c.len() == a.len(),
+          forall|i: int| 0 <= i < a.len() ==> a[i] * b[i] == c[i],
+  // </vc-spec>
+
+vc-code: |-
+  {
+      let mut c = Vec::new();
+      let mut i: usize = 0;
+      while i < a.len()
+          invariant
+              0 <= i <= a.len(),
+              c.len() == i,
+              forall|j: int| 0 <= j < i ==> a@[j] * b@[j] == c@[j],
+          decreases a.len() - i,
+      {
+          c.push(a@[i as int] * b@[i as int]);
+          i += 1;
+      }
+      c
+  }
+
+vc-postamble: |-
+  fn main() {}
+  
+  }
+

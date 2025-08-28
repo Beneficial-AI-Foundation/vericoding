@@ -1,0 +1,61 @@
+// definition of Fibonacci numbers
+function Fibonacci(n: nat): nat {
+  match n {
+    case 0 => 0
+    case 1 => 1
+    case _ => Fibonacci(n - 1) + Fibonacci(n - 2)
+  }
+}
+
+// iterative calculation of Fibonacci numbers
+
+// <vc-helpers>
+lemma FibonacciIterativeInvariant(i: nat, a: nat, b: nat, n: nat)
+  requires i <= n
+  requires a == Fibonacci(i)
+  requires b == Fibonacci(i + 1)
+  ensures a == Fibonacci(i) && b == Fibonacci(i + 1)
+{
+}
+
+lemma FibonacciStep(i: nat)
+  requires i >= 1
+  ensures Fibonacci(i + 1) == Fibonacci(i - 1) + Fibonacci(i)
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method FibonacciIterative(n: nat) returns (f: nat)
+  ensures f == Fibonacci(n)
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+  if n == 0 {
+    return 0;
+  }
+  if n == 1 {
+    return 1;
+  }
+  
+  var a := 0;
+  var b := 1;
+  var i := 1;
+  
+  while i < n
+    invariant 1 <= i <= n
+    invariant a == Fibonacci(i - 1)
+    invariant b == Fibonacci(i)
+  {
+    var temp := a + b;
+    a := b;
+    b := temp;
+    i := i + 1;
+  }
+  
+  return b;
+}
+// </vc-code>

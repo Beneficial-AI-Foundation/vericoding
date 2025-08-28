@@ -1,0 +1,88 @@
+vc-preamble: |-
+  function dist(a: real, b: real) : (d : real)
+      ensures d >= 0.0
+      ensures (d == 0.0) <==> a == b
+  {
+      if a < b then b - a else a - b
+  }
+  function des(s: seq<real>, a: int, b: int) : bool {
+      // distinct elements
+      0 <= a < |s| && 0 <= b < |s| && a != b
+  }
+
+vc-helpers: |-
+  lemma DistanceSymmetric(a: real, b: real)
+      ensures dist(a, b) == dist(b, a)
+  {
+  }
+  
+  lemma DistanceProperties(a: real, b: real, c: real, d: real)
+      requires a <= b
+      requires c <= d
+      requires dist(a, b) <= dist(c, d)
+      ensures dist(a, b) <= dist(d, c)
+  {
+      DistanceSymmetric(c, d);
+  }
+
+vc-description: |-
+  function_signature: def find_closest_elements(numbers: List[float]) -> Tuple[float, float]
+  From a supplied list of numbers (of length at least two) select and return two that are the closest to each other and return them in order (smaller number, larger number).
+
+vc-spec: |-
+  method find_closest_elements(s: seq<real>) returns (l : real, h : real)
+      // pre-conditions-start
+      requires |s| >= 2
+      // pre-conditions-end
+      // post-conditions-start
+      ensures exists a, b : int :: des(s, a, b) && l == s[a] && h == s[b]
+      ensures forall a, b : int :: des(s, a, b) ==> dist(l, h) <= dist(s[a], s[b])
+      ensures l <= h
+      // post-conditions-end
+
+vc-code: |-
+  {
+      var min_dist := dist(s[0], s[1]);
+      var best_i := 0;
+      var best_j := 1;
+      
+      var i := 0;
+      while i < |s|
+          invariant 0 <= i <= |s|
+          invariant 0 <= best_i < |s| && 0 <= best_j < |s| && best_i != best_j
+          invariant min_dist == dist(s[best_i], s[best_j])
+          invariant forall a, b : int :: des(s, a, b) && a < i ==> min_dist <= dist(s[a], s[b])
+      {
+          var j := 0;
+          while j < |s|
+              invariant 0 <= j <= |s|
+              invariant 0 <= best_i < |s| && 0 <= best_j < |s| && best_i != best_j
+              invariant min_dist == dist(s[best_i], s[best_j])
+              invariant forall a, b : int :: des(s, a, b) && a < i ==> min_dist <= dist(s[a], s[b])
+              invariant forall b : int :: des(s, i, b) && b < j ==> min_dist <= dist(s[i], s[b])
+          {
+              if i != j {
+                  var current_dist := dist(s[i], s[j]);
+                  if current_dist < min_dist {
+                      min_dist := current_dist;
+                      best_i := i;
+                      best_j := j;
+                  }
+              }
+              j := j + 1;
+          }
+          i := i + 1;
+      }
+      
+      if s[best_i] <= s[best_j] {
+          l := s[best_i];
+          h := s[best_j];
+      } else {
+          l := s[best_j];
+          h := s[best_i];
+      }
+  }
+
+vc-postamble: |-
+
+

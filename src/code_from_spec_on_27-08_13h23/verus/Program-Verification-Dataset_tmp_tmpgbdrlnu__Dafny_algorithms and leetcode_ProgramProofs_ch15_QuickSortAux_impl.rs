@@ -1,0 +1,106 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn split_point(a: Seq<int>, n: int) -> bool {
+    forall|i: int, j: int| 0 <= i < n <= j < a.len() ==> a[i] <= a[j]
+}
+
+spec fn swap_frame(a_old: Seq<int>, a_new: Seq<int>, lo: int, hi: int) -> bool
+    recommends 0 <= lo <= hi <= a_old.len() && a_old.len() == a_new.len()
+{
+    (forall|i: int| (0 <= i < lo || hi <= i < a_new.len()) ==> a_new[i] == a_old[i]) 
+    && a_new.to_multiset() =~= a_old.to_multiset()
+}
+
+fn partition(a: &mut Vec<int>, lo: usize, hi: usize) -> (p: usize)
+    requires 
+        0 <= lo < hi <= old(a).len(),
+        split_point(old(a)@, lo as int) && split_point(old(a)@, hi as int),
+    ensures
+        lo <= p < hi,
+        forall|i: int| lo <= i < p ==> a@[i] < a@[p as int],
+        forall|i: int| p <= i < hi ==> a@[p as int] <= a@[i],
+        split_point(a@, lo as int) && split_point(a@, hi as int),
+        swap_frame(old(a)@, a@, lo as int, hi as int),
+{
+    assume(false);
+    lo // dummy return
+}
+
+// <vc-helpers>
+proof fn lemma_swap_preserves_split_point(a: Seq<int>, a_new: Seq<int>, i: int, j: int, lo: int, hi: int)
+    requires
+        0 <= i < j < a.len(),
+        0 <= lo <= hi <= a.len(),
+        a_new.len() == a.len(),
+        forall|k: int| k != i && k != j ==> a_new[k] == a[k],
+        a_new[i] == a[j],
+        a_new[j] == a[i],
+        split_point(a, lo),
+        split_point(a, hi),
+    ensures
+        split_point(a_new, lo),
+        split_point(a_new, hi),
+{
+    assert(forall|x: int, y: int| 0 <= x < lo <= y < a.len() ==> a[x] <= a[y]);
+    assert(forall|x: int, y: int| 0 <= x < hi <= y < a.len() ==> a[x] <= a[y]);
+    assert(forall|x: int, y: int| 0 <= x < lo <= y < a_new.len() ==> a_new[x] <= a_new[y]);
+    assert(forall|x: int, y: int| 0 <= x < hi <= y < a_new.len() ==> a_new[x] <= a_new[y]);
+}
+
+proof fn lemma_swap_frame(a: Seq<int>, a_new: Seq<int>, i: int, j: int, lo: int, hi: int)
+    requires
+        0 <= i < j < a.len(),
+        0 <= lo <= hi <= a.len(),
+        a_new.len() == a.len(),
+        forall|k: int| k != i && k != j ==> a_new[k] == a[k],
+        a_new[i] == a[j],
+        a_new[j] == a[i],
+    ensures
+        swap_frame(a, a_new, lo, hi),
+{
+    assert(forall|x: int| (0 <= x < lo || hi <= x < a_new.len()) ==> a_new[x] == a[x]);
+    assert(a_new.to_multiset() =~= a.to_multiset());
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn quick_sort_aux(a: &mut Vec<int>, lo: usize, hi: usize)
+    requires 
+        0 <= lo <= hi <= old(a).len(),
+        split_point(old(a)@, lo as int) && split_point(old(a)@, hi as int),
+    ensures
+        forall|i: int, j: int| lo <= i < j < hi ==> a@[i] <= a@[j],
+        swap_frame(old(a)@, a@, lo as int, hi as int),
+        split_point(a@, lo as int) && split_point(a@, hi as int),
+    decreases hi - lo
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+fn quick_sort_aux(a: &mut Vec<int>, lo: usize, hi: usize)
+    requires 
+        0 <= lo <= hi <= old(a).len(),
+        split_point(old(a)@, lo as int),
+        split_point(old(a)@, hi as int),
+    ensures
+        forall|i: int, j: int| lo <= i < j < hi ==> a@[i] <= a@[j],
+        swap_frame(old(a)@, a@, lo as int, hi as int),
+        split_point(a@, lo as int),
+        split_point(a@, hi as int),
+    decreases hi - lo
+{
+    if lo + 1 < hi {
+        let p = partition(a, lo, hi);
+        quick_sort_aux(a, lo, p);
+        quick_sort_aux(a, p, hi);
+    }
+}
+// </vc-code>
+
+fn main() {
+}
+
+}

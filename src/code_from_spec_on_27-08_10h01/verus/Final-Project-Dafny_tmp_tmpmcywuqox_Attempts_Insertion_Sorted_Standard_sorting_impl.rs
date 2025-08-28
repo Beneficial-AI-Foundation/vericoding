@@ -1,0 +1,112 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn insertion_sorted(array: Seq<int>, left: int, right: int) -> bool
+    recommends 0 <= left <= right <= array.len()
+{
+    forall|i: int, j: int| left <= i < j < right ==> array[i] <= array[j]
+}
+
+// <vc-helpers>
+spec fn multiset_of_seq(s: Seq<int>) -> vstd::multiset::Multiset<int> {
+    s.to_multiset()
+}
+
+proof fn insertion_sort_preserves_sortedness(array: &Vec<int>, i: usize, j: usize)
+    requires 
+        i < array.len(),
+        j <= i,
+        insertion_sorted(array@, 0, j as int),
+        forall|k: int| j <= k < i ==> array@[j as int] <= array@[k as int],
+        array@[j as int] <= array@[i as int]
+    ensures 
+        insertion_sorted(array@, 0, (j + 1) as int)
+{
+    assert(forall|x: int, y: int| 0 <= x < y < (j + 1) as int ==> array@[x] <= array@[y]) by {
+        if j == 0 {
+            assert(insertion_sorted(array@, 0, (j + 1) as int));
+        } else {
+            let forall_prop = |x: int, y: int| {
+                if 0 <= x < y < (j + 1) as int {
+                    if y < j {
+                        assert(array@[x] <= array@[y]);
+                    } else if x < j && y == j {
+                        assert(array@[j as int] <= array@[i as int]);
+                        if x < j {
+                            assert(array@[x] <= array@[j as int]);
+                        }
+                    }
+                }
+            };
+        }
+    };
+}
+
+proof fn shift_preserves_multiset(array: &Vec<int>, old_array: &Vec<int>, pos: usize, value: int)
+    requires 
+        array.len() == old_array.len(),
+        pos < array.len(),
+        array@[pos as int] == value,
+        forall|k: int| 0 <= k < pos ==> array@[k] == old_array@[k],
+        forall|k: int| pos < k < array.len() ==> array@[k] == old_array@[k - 1]
+    ensures 
+        multiset_of_seq(array@) == multiset_of_seq(old_array@).remove(old_array@[pos as int]).insert(value)
+{
+    assert(array@ =~= old_array@.subrange(0, pos as int) + seq![value] + old_array@.subrange(pos as int + 1, old_array@.len() as int));
+    assert(multiset_of_seq(array@) == multiset_of_seq(old_array@).remove(old_array@[pos as int]).insert(value));
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn sorting(array: &mut Vec<int>)
+    requires old(array).len() > 1
+    ensures insertion_sorted(array@, 0, array@.len() as int)
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut i = 1;
+    while i < array.len()
+        invariant 
+            1 <= i <= array.len(),
+            insertion_sorted(array@, 0, i as int),
+            multiset_of_seq(array@) == multiset_of_seq(old(array)@)
+        decreases array.len() - i
+    {
+        let key = array[i];
+        let mut j = i;
+        let old_array = Ghost(array@);
+        
+        while j > 0 && array[j - 1] > key
+            invariant 
+                0 <= j <= i,
+                i < array.len(),
+                insertion_sorted(array@, 0, j as int),
+                insertion_sorted(array@, (j + 1) as int, (i + 1) as int),
+                forall|k: int| j < k <= i ==> array@[k as int] == key,
+                forall|k: int| (i + 1) as int <= k < array.len() ==> array@[k] == old_array@[k],
+                multiset_of_seq(array@) == multiset_of_seq(old_array@),
+                j < i ==> array@[j as int] == old_array@[j as int]
+            decreases j
+        {
+            array.set(j, array[j - 1]);
+            j -= 1;
+        }
+        
+        array.set(j, key);
+        
+        proof {
+            insertion_sort_preserves_sortedness(array, i, j);
+        }
+        
+        i += 1;
+    }
+}
+// </vc-code>
+
+fn main() {}
+
+}

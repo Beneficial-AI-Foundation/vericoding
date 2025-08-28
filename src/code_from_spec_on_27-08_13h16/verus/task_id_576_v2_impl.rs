@@ -1,0 +1,65 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn is_subrange_at(main: Seq<i32>, sub: Seq<i32>, i: int) -> (result: bool) {
+    sub =~= main.subrange(i, i+sub.len())
+}
+// pure-end
+
+// <vc-helpers>
+fn sub_array_at_index(main: &Vec<i32>, sub: &Vec<i32>, idx: usize) -> (result: bool)
+    requires
+        0 <= idx <= (main.len() - sub.len()),
+    ensures
+        result == (main@.subrange(idx as int, (idx + sub@.len()) as int) =~= sub@),
+{
+    let mut i = 0;
+    while i < sub.len()
+        invariant
+            0 <= idx <= (main.len() - sub.len()),
+            0 <= i <= sub.len(),
+            forall|k: usize| 0 <= k < i ==> main@[idx + k] == sub@[k],
+    {
+        if (main@[idx + i] != sub@[i]) {
+            return false;
+        }
+        i += 1;
+    }
+    true
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn is_sub_array(main: &Vec<i32>, sub: &Vec<i32>) -> (result: bool)
+    // post-conditions-start
+    ensures
+        result == (exists|k: int|
+            0 <= k <= (main.len() - sub.len()) && is_subrange_at(main@, sub@, k)),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    if sub.len() > main.len() {
+        return false;
+    }
+    let mut i = 0;
+    while i <= main.len() - sub.len()
+        invariant
+            0 <= i <= main.len() - sub.len() + 1,
+            forall|k: int| 0 <= k < i ==> !(main@.subrange(k, k + sub@.len()) =~= sub@),
+    {
+        let result = sub_array_at_index(main, sub, i);
+        if result {
+            return true;
+        }
+        i += 1;
+    }
+    false
+}
+// </vc-code>
+
+} // verus!
+
+fn main() { }

@@ -1,0 +1,38 @@
+// <vc-helpers>
+lemma LengthComparison(lists: seq<seq<int>>, i: int, j: int)
+  requires 0 <= i < |lists|
+  requires 0 <= j < |lists|
+  ensures |lists[i]| <= |lists[j]| || |lists[j]| <= |lists[i]|
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method MaxLengthList(lists: seq<seq<int>>) returns (maxList: seq<int>)
+    requires |lists| > 0
+    ensures forall l :: l in lists ==> |l| <= |maxList|
+    ensures maxList in lists
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+method MaxLengthListImpl(lists: seq<seq<int>>) returns (maxList: seq<int>)
+    requires |lists| > 0
+    ensures forall l :: l in lists ==> |l| <= |maxList|
+    ensures maxList in lists
+{
+    maxList := lists[0];
+    var i := 1;
+    while i < |lists|
+        invariant 0 <= i <= |lists|
+        invariant forall k :: 0 <= k < i ==> |lists[k]| <= |maxList|
+        invariant maxList in lists
+    {
+        if |lists[i]| > |maxList| {
+            maxList := lists[i];
+        }
+        i := i + 1;
+    }
+}
+// </vc-code>

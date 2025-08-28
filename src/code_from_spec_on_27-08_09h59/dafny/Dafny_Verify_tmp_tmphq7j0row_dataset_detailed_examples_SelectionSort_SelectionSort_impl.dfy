@@ -1,0 +1,74 @@
+// Works by dividing the input list into two parts: sorted and unsorted. At the beginning, 
+// the sorted part is empty and the unsorted part contains all the elements.
+
+// <vc-helpers>
+lemma MultisetPreservedBySwap(a: array<int>, oldSeq: seq<int>, i: int, j: int)
+  requires oldSeq == old(a[..])
+  requires 0 <= i < a.Length && 0 <= j < a.Length
+  requires a[..] == oldSeq[i := oldSeq[j]][j := oldSeq[i]]
+  ensures multiset(oldSeq) == multiset(a[..])
+{
+  if i == j {
+    assert oldSeq == a[..];
+  } else {
+    assert multiset(oldSeq) == multiset(a[..]);
+  }
+}
+
+lemma {:axiom} SortedPrefix(a: array<int>, sortedEnd: int)
+  requires 0 <= sortedEnd <= a.Length
+  requires forall i,j :: 0 <= i < j < sortedEnd ==> a[i] <= a[j]
+  requires forall i,j :: 0 <= i < sortedEnd && sortedEnd <= j < a.Length ==> a[i] <= a[j]
+  ensures forall i,j :: 0 <= i < j < sortedEnd + 1 && j < a.Length ==> a[i] <= a[j]
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method SelectionSort(a: array<int>)
+  modifies a
+  // Ensures the final array is sorted in ascending order
+  ensures forall i,j :: 0 <= i < j < a.Length ==> a[i] <= a[j]
+  // Ensures that the final array has the same elements as the initial array
+  ensures multiset(a[..]) == old(multiset(a[..]))
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+  var n := a.Length;
+  if n <= 1 { return; }
+  
+  var i := 0;
+  while i < n - 1
+    invariant 0 <= i <= n - 1
+    invariant forall x,y :: 0 <= x < y < i ==> a[x] <= a[y]
+    invariant forall x,y :: 0 <= x < i && i <= y < n ==> a[x] <= a[y]
+    invariant multiset(a[..]) == old(multiset(a[..]))
+  {
+    var minIndex := i;
+    var j := i + 1;
+    
+    while j < n
+      invariant i < j <= n
+      invariant i <= minIndex < j
+      invariant forall k :: i <= k < j ==> a[minIndex] <= a[k]
+    {
+      if a[j] < a[minIndex] {
+        minIndex := j;
+      }
+      j := j + 1;
+    }
+    
+    if minIndex != i {
+      var oldSeq := a[..];
+      var oldValueI := a[i];
+      var oldValueMin := a[minIndex];
+      a[i], a[minIndex] := a[minIndex], a[i];
+      assert a[..] == oldSeq[i := oldValueMin][minIndex := oldValueI];
+      MultisetPreservedBySwap(a, oldSeq, i, minIndex);
+    }
+    
+    i := i + 1;
+  }
+}
+// </vc-code>

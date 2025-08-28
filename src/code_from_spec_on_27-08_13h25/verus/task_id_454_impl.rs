@@ -1,0 +1,37 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+// No updates needed for helpers in this case
+// </vc-helpers>
+
+// <vc-spec>
+fn contains_z(text: &Vec<char>) -> (result: bool)
+    // post-conditions-start
+    ensures
+        result == (exists|i: int| 0 <= i < text.len() && (text[i] == 'Z' || text[i] == 'z')),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut i: usize = 0;
+    while i < text.len()
+        invariant
+            0 <= i <= text.len(),
+            forall|j: int| 0 <= j < i ==> (text@[j] != 'Z' && text@[j] != 'z'),
+        decreases text.len() - i
+    {
+        if text[i] == 'Z' || text[i] == 'z' {
+            return true;
+        }
+        i = i + 1;
+    }
+    false
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

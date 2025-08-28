@@ -1,0 +1,105 @@
+predicate sorted_seg(a:array<int>, i:int, j:int) //j excluded
+requires 0 <= i <= j <= a.Length
+reads a
+{
+    forall l, k :: i <= l <= k < j ==> a[l] <= a[k]
+}
+
+// <vc-helpers>
+lemma sorted_seg_extension(a: array<int>, i: int, j: int, k: int)
+requires 0 <= i <= j <= k <= a.Length
+requires sorted_seg(a, i, j)
+requires sorted_seg(a, j, k)
+requires j > i && k > j ==> a[j-1] <= a[j]
+ensures sorted_seg(a, i, k)
+{
+}
+
+lemma sorted_seg_after_swap(a: array<int>, i: int, j: int, k: int, l: int)
+requires 0 <= i <= k < l < j <= a.Length
+requires sorted_seg(a, i, j)
+requires a[k] > a[l]
+ensures sorted_seg(a, i, j) ==> sorted_seg(a, i, j)
+{
+}
+
+lemma multiset_swap_preserves(a: array<int>, i: int, j: int)
+requires 0 <= i < j < a.Length
+ensures multiset(a[..]) == old(multiset(a[..])) ==> multiset(a[..]) == old(multiset(a[..]))
+{
+}
+
+lemma bubble_invariant_preserved(a: array<int>, i: int, j: int, f: int)
+requires 0 <= i < j <= f <= a.Length
+requires forall k :: i <= k < j ==> a[k] <= a[j-1]
+ensures forall k :: i <= k < j ==> a[k] <= a[j-1]
+{
+}
+
+lemma sorted_seg_preserved_after_swap(a: array<int>, c: int, i: int, j: int)
+requires 0 <= c <= i <= j < a.Length
+requires sorted_seg(a, c, i)
+ensures sorted_seg(a, c, i)
+{
+}
+
+lemma bubble_step_preserves_sorted(a: array<int>, c: int, i: int, j: int)
+requires 0 <= c <= i < j < a.Length
+requires sorted_seg(a, c, i)
+requires a[j-1] > a[j]
+ensures sorted_seg(a, c, i)
+{
+}
+
+lemma max_element_bubbles_up(a: array<int>, i: int, j: int)
+requires 0 <= i < j < a.Length
+requires forall k :: i <= k < j ==> a[k] <= a[j]
+requires a[j-1] <= a[j]
+ensures forall k :: i <= k <= j ==> a[k] <= a[j]
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method bubbleSorta(a:array<int>, c:int, f:int)//f excluded
+modifies a 
+requires 0 <= c <= f <= a.Length //when c==f empty sequence
+ensures sorted_seg(a,c,f) 
+ensures multiset(a[c..f]) == old(multiset(a[c..f]))
+ensures a[..c]==old(a[..c]) && a[f..]==old(a[f..])
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    if c >= f { return; }
+    
+    var i := c;
+    while i < f
+    invariant c <= i <= f
+    invariant sorted_seg(a, c, i)
+    invariant multiset(a[c..f]) == old(multiset(a[c..f]))
+    invariant a[..c] == old(a[..c]) && a[f..] == old(a[f..])
+    invariant forall p, q :: c <= p <= q < i ==> a[p] <= a[q]
+    invariant forall p :: c <= p < i && i < f ==> forall q :: i <= q < f ==> a[p] <= a[q]
+    {
+        var j := f - 1;
+        while j > i
+        invariant i <= j < f
+        invariant multiset(a[c..f]) == old(multiset(a[c..f]))
+        invariant a[..c] == old(a[..c]) && a[f..] == old(a[f..])
+        invariant sorted_seg(a, c, i)
+        invariant forall k :: i <= k <= j ==> a[k] <= a[j]
+        invariant forall k :: j < k < f ==> a[j] <= a[k]
+        invariant forall p :: c <= p < i ==> forall q :: i <= q < f ==> a[p] <= a[q]
+        {
+            if a[j-1] > a[j] {
+                a[j-1], a[j] := a[j], a[j-1];
+            }
+            j := j - 1;
+        }
+        i := i + 1;
+    }
+}
+// </vc-code>

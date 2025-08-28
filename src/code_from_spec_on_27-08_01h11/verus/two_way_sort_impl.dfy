@@ -1,0 +1,87 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+#[verifier::external_body]
+fn swap(a: &mut Vec<bool>, i: usize, j: usize)
+    // pre-conditions-start
+    requires
+        0 <= i < j < old(a).len(),
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        a[i as int] == old(a)[j as int],
+        a[j as int] == old(a)[i as int],
+        forall|k: int| 0 <= k < a.len() && k != i && k != j ==> a[k] == old(a)[k],
+        a.len() == old(a).len(),
+        a@.to_multiset() =~~= old(a)@.to_multiset(),
+    // post-conditions-end
+{
+    // impl-start
+    let tmp = a[i];
+    a.set(i, a[j]);
+    a.set(j, tmp);
+    // impl-end
+}
+
+spec fn is_sorted_two_way(a: Seq<bool>) -> bool {
+    forall|i: int, j: int| 0 <= i < j < a.len() ==> !a[i] || a[j]
+}
+
+spec fn partition_point(a: Seq<bool>, left: int, right: int) -> bool {
+    (forall|k: int| 0 <= k <= left ==> !a[k]) &&
+    (forall|k: int| right <= k < a.len() ==> a[k])
+}
+// </vc-helpers>
+
+// <vc-spec>
+#[verifier::loop_isolation(false)]
+fn two_way_sort(a: &mut Vec<bool>)
+    // pre-conditions-start
+    requires
+        old(a).len() <= 100_000,
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        a.len() == old(a).len(),
+        a@.to_multiset() == old(a)@.to_multiset(),
+        forall|i: int, j: int| 0 <= i < j < a.len() ==> !a[i] || a[j],
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    if a.len() == 0 {
+        return;
+    }
+    
+    let mut left: usize = 0;
+    let mut right: usize = (a.len() - 1) as usize;
+    
+    while left < right
+        invariant
+            a.len() == old(a).len(),
+            a@.to_multiset() == old(a)@.to_multiset(),
+            left <= a.len(),
+            right < a.len(),
+            left <= right + 1,
+            forall|k: int| 0 <= k < left ==> !a[k],
+            forall|k: int| (right as int) < k < a.len() ==> a[k],
+        decreases (right + 1) - left
+    {
+        if !a[left] {
+            left += 1;
+        } else if a[right] {
+            right -= 1;
+        } else {
+            swap(a, left, right);
+            left += 1;
+            right -= 1;
+        }
+    }
+}
+// </vc-code>
+
+fn main() {}
+}

@@ -1,0 +1,105 @@
+datatype Tree = Empty | Node(left: Tree, value: int, right: Tree)
+
+predicate BinarySearchTree(tree: Tree)
+  decreases tree
+{
+  match tree
+  case Empty => true
+  case Node(_,_,_) =>
+    (tree.left == Empty || tree.left.value < tree.value)
+    && (tree.right == Empty || tree.right.value > tree.value)
+    && BinarySearchTree(tree.left) && BinarySearchTree(tree.right)
+    && minValue(tree.right, tree.value) && maxValue(tree.left, tree.value)
+}
+
+predicate maxValue(tree: Tree, max: int)
+  decreases tree
+{
+  match tree
+  case Empty => true
+  case Node(left,v,right) => (max > v) && maxValue(left, max) && maxValue(right, max)
+}
+
+predicate minValue(tree: Tree, min: int)
+  decreases tree
+{
+  match tree
+  case Empty => true
+  case Node(left,v,right) => (min < v) && minValue(left, min) && minValue(right, min)
+}
+
+method insertRecursion(tree: Tree, value: int) returns (res: Tree)
+  requires BinarySearchTree(tree)
+  decreases tree;
+  ensures res != Empty ==> BinarySearchTree(res)
+  ensures forall x :: minValue(tree, x) && x < value ==> minValue(res, x)
+  ensures forall x :: maxValue(tree, x) && x > value ==> maxValue(res, x)
+{
+  assume{:axiom} false;
+}
+
+// <vc-helpers>
+function insertRecursionFunc(tree: Tree, value: int): Tree
+  requires BinarySearchTree(tree)
+  decreases tree
+{
+  match tree
+  case Empty => Node(Empty, value, Empty)
+  case Node(left, v, right) =>
+    if value < v then Node(insertRecursionFunc(left, value), v, right)
+    else if value > v then Node(left, v, insertRecursionFunc(right, value))
+    else tree
+}
+
+lemma InsertPreservesMinValue(tree: Tree, value: int, x: int, result: Tree)
+  requires BinarySearchTree(tree)
+  requires minValue(tree, x) && x < value
+  requires result == insertRecursionFunc(tree, value)
+  ensures minValue(result, x)
+  decreases tree
+{
+}
+
+lemma InsertPreservesMaxValue(tree: Tree, value: int, x: int, result: Tree)
+  requires BinarySearchTree(tree)
+  requires maxValue(tree, x) && x > value
+  requires result == insertRecursionFunc(tree, value)
+  ensures maxValue(result, x)
+  decreases tree
+{
+}
+
+lemma InsertResultNotEmpty(tree: Tree, value: int, result: Tree)
+  requires BinarySearchTree(tree)
+  requires result == insertRecursionFunc(tree, value)
+  ensures result != Empty
+  decreases tree
+{
+}
+
+lemma InsertPreservesBST(tree: Tree, value: int, result: Tree)
+  requires BinarySearchTree(tree)
+  requires result == insertRecursionFunc(tree, value)
+  ensures BinarySearchTree(result)
+  decreases tree
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method insert(tree: Tree, value : int) returns (res: Tree)
+  requires BinarySearchTree(tree)
+  decreases tree;
+  ensures BinarySearchTree(res)
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+  var result := insertRecursionFunc(tree, value);
+  InsertResultNotEmpty(tree, value, result);
+  InsertPreservesBST(tree, value, result);
+  return result;
+}
+// </vc-code>

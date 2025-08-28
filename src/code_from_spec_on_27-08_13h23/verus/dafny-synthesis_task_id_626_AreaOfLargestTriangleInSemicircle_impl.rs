@@ -1,0 +1,30 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+// No updates needed for helpers as the issue was a syntax error in the code section
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn area_of_largest_triangle_in_semicircle(radius: i32) -> (area: i32)
+    requires radius > 0
+    ensures area == radius * radius
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+fn area_of_largest_triangle_in_semicircle(radius: i32) -> (area: i32)
+    requires radius > 0
+    ensures area == radius * radius
+{
+    let area = radius * radius;
+    area
+}
+// </vc-code>
+
+fn main() {
+}
+
+}

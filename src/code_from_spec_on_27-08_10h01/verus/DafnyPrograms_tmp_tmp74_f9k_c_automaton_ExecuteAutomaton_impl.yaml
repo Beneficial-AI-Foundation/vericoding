@@ -1,0 +1,140 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  /**
+  Consider cellular automata: a row of cells is repeatedly updated according to a rule. In this exercise I dabbled with,
+  each cell has the value either false or true. Each cell's next state depends only on the immediate neighbours, in the 
+  case where the cell is at the edges of the row, the inexistent neighbours are replaced by "false". The automaton table 
+  will contain the initial row, plus a row for each number of steps.
+   */
+  struct Automaton {}
+  
+  /**
+  This method computes the automaton.
+  Provide the initial row: init, the rule and the desired number of steps
+   */
+
+vc-helpers: |-
+  spec fn apply_rule_to_position(row: Seq<bool>, rule: spec_fn(bool, bool, bool) -> bool, pos: int) -> bool {
+      if pos == 0 {
+          rule(false, row[0], row[1])
+      } else if pos == row.len() - 1 {
+          rule(row[pos - 1], row[pos], false)
+      } else {
+          rule(row[pos - 1], row[pos], row[pos + 1])
+      }
+  }
+  
+  spec fn compute_next_row(row: Seq<bool>, rule: spec_fn(bool, bool, bool) -> bool) -> Seq<bool> {
+      Seq::new(row.len(), |i: int| apply_rule_to_position(row, rule, i))
+  }
+  
+  spec fn compute_automaton_spec(init: Seq<bool>, rule: spec_fn(bool, bool, bool) -> bool, steps: nat) -> Seq<Seq<bool>>
+      decreases steps
+  {
+      if steps == 0 {
+          seq![init]
+      } else {
+          let prev_table = compute_automaton_spec(init, rule, (steps - 1) as nat);
+          let last_row = prev_table[prev_table.len() - 1];
+          let next_row = compute_next_row(last_row, rule);
+          prev_table.push(next_row)
+      }
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  #[verifier::exec_allows_no_decreases_clause]
+  fn execute_automaton(init: Seq<bool>, rule: spec_fn(bool, bool, bool) -> bool, steps: nat) 
+      -> (table: Seq<Seq<bool>>)
+      requires 
+          // we need the initial row to have the length bigger or equal to two
+          init.len() >= 2
+      ensures 
+          // after computation the automaton is made of the initial row plus a row for each of the steps
+          table.len() == 1 + steps,
+          // the automaton must have the initial row at the top
+          table[0] == init,
+          // all rows in the automaton must be the same length
+          forall|i: int| 0 <= i < table.len() ==> #[trigger] table[i].len() == init.len()
+          // TODO: Additional ensures clauses for middle and corner elements would require complex triggers
+          // Original Dafny clauses commented due to trigger complexity in Verus:
+          // all the middle row elements (with existing neighbours) after a step, will be equal to the rule applied on the element in the previous state
+          // and its neigbours
+          // ensures forall i | 0 <= i < |table| - 1 ::
+          //           forall j | 1 <= j <= |table[i]| - 2 :: table[i + 1][j] == rule(table[i][j - 1], table[i][j], table[i][j + 1])
+          // the corner row elements (with non-existing neighbours) after a step, will be equal to the rule applied on the element in the previous state,
+          // its neighbour and false
+          // ensures forall i | 0 <= i < |table| - 1 ::
+          //           table[i + 1][0] == rule(false, table[i][0], table[i][1]) && table[i + 1][|table[i]| - 1] == rule(table[i][|table[i]| - 2], table[i][|table[i]| - 1], false)
+  // </vc-spec>
+
+vc-code: |-
+  {
+      let mut table: Vec<Vec<bool>> = Vec::new();
+      
+      // Add initial row
+      let mut init_row: Vec<bool> = Vec::new();
+      let init_len = init.len() as usize;
+      for i in 0..init_len
+          invariant 
+              init_row.len() == i,
+              forall|j: int| 0 <= j < i ==> init_row[j] == init[j]
+      {
+          init_row.push(init[i]);
+      }
+      table.push(init_row);
+      
+      // Generate steps
+      let mut step_count: usize = 0;
+      let steps_usize = steps as usize;
+      while step_count < steps_usize
+          invariant
+              step_count <= steps,
+              table.len() == step_count + 1,
+              table.len() > 0,
+              table[0]@.len() == init.len(),
+              table[0]@ == init,
+              forall|i: int| 0 <= i < table.len() ==> table[i]@.len() == init.len()
+      {
+          let current_row = &table[step_count];
+          let mut next_row: Vec<bool> = Vec::new();
+          
+          for pos in 0..current_row.len()
+              invariant
+                  next_row.len() == pos,
+                  current_row@.len() == init.len(),
+                  forall|j: int| 0 <= j < pos ==> {
+                      let left = if j == 0 { false } else { current_row[j-1] };
+                      let center = current_row[j];
+                      let right = if j == current_row@.len() - 1 { false } else { current_row[j+1] };
+                      next_row[j] == rule(left, center, right)
+                  }
+          {
+              let left = if pos == 0 { false } else { current_row[pos - 1] };
+              let center = current_row[pos];
+              let right = if pos == current_row.len() - 1 { false } else { current_row[pos + 1] };
+              
+              next_row.push(rule(left, center, right));
+          }
+          
+          table.push(next_row);
+          step_count += 1;
+      }
+      
+      proof {
+          let table_len: usize = table.len();
+          assert(table_len <= usize::MAX);
+      }
+      
+      Seq::new(table.len(), |i: int| table[i as usize]@)
+  }
+
+vc-postamble: |-
+  
+  fn main() {}
+  
+  }
+

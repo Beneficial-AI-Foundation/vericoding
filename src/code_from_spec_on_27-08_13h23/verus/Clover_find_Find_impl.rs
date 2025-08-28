@@ -1,0 +1,49 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+proof fn lemma_seq_index<T>(s: Seq<T>, i: int)
+    requires
+        0 <= i < s.len(),
+    ensures
+        s[i] == s.index(i as nat),
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn find(a: &[i32], key: i32) -> (index: i32)
+    ensures
+        -1 <= index < a.len() as i32,
+        index != -1 ==> a[index as int] == key && (forall|i: int| 0 <= i < index ==> a[i] != key),
+        index == -1 ==> (forall|i: int| 0 <= i < a.len() ==> a[i] != key),
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+fn find(a: &[i32], key: i32) -> (index: i32)
+    ensures
+        -1 <= index < a.len() as i32,
+        index != -1 ==> a[index as int] == key && (forall|i: int| 0 <= i < index ==> a[i] != key),
+        index == -1 ==> (forall|i: int| 0 <= i < a.len() ==> a[i] != key),
+{
+    let mut i: i32 = 0;
+    while i < a.len() as i32
+        invariant
+            0 <= i <= a.len() as i32,
+            forall|j: int| 0 <= j < i ==> a[j] != key,
+    {
+        if a[i as usize] == key {
+            return i;
+        }
+        i = i + 1;
+    }
+    -1
+}
+// </vc-code>
+
+fn main() {}
+
+}

@@ -1,0 +1,51 @@
+use vstd::prelude::*;
+
+
+verus! {
+
+// <vc-helpers>
+// No updates needed for helpers
+// </vc-helpers>
+
+// <vc-spec>
+fn split_array(list: &Vec<i32>, l: usize) -> (new_list: (Vec<i32>, Vec<i32>))
+    // pre-conditions-start
+    requires
+        list@.len() > 0,
+        0 < l < list@.len(),
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        new_list.0@ == list@.subrange(0, l as int),
+        new_list.1@ == list@.subrange(l as int, list.len() as int),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut first_half: Vec<i32> = Vec::new();
+    let mut second_half: Vec<i32> = Vec::new();
+    
+    let mut i: usize = 0;
+    while i < list.len()
+        invariant
+            0 <= i <= list@.len(),
+            first_half@ == list@.subrange(0, if i < l { i as int } else { l as int }),
+            second_half@ == if i <= l { Seq::empty() } else { list@.subrange(l as int, i as int) },
+        decreases list.len() - i
+    {
+        if i < l {
+            first_half.push(list[i]);
+        } else {
+            second_half.push(list[i]);
+        }
+        i = i + 1;
+    }
+    
+    (first_half, second_half)
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

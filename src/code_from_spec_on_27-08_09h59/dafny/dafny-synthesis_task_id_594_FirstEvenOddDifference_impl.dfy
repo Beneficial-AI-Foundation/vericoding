@@ -1,0 +1,101 @@
+predicate IsEven(n: int)
+{
+    n % 2 == 0
+}
+
+predicate IsOdd(n: int)
+{
+    n % 2 != 0
+}
+
+// <vc-helpers>
+lemma EvenOddProperties(n: int)
+    ensures IsEven(n) <==> !IsOdd(n)
+    ensures IsOdd(n) <==> !IsEven(n)
+{
+}
+
+lemma FindFirstEvenIndex(a: array<int>) returns (idx: int)
+    requires exists i :: 0 <= i < a.Length && IsEven(a[i])
+    ensures 0 <= idx < a.Length
+    ensures IsEven(a[idx])
+    ensures forall k :: 0 <= k < idx ==> IsOdd(a[k])
+{
+    var i := 0;
+    while i < a.Length
+        invariant 0 <= i <= a.Length
+        invariant forall k :: 0 <= k < i ==> IsOdd(a[k])
+    {
+        if IsEven(a[i]) {
+            idx := i;
+            return;
+        }
+        i := i + 1;
+    }
+    assert false;
+}
+
+lemma FindFirstOddIndex(a: array<int>) returns (idx: int)
+    requires exists i :: 0 <= i < a.Length && IsOdd(a[i])
+    ensures 0 <= idx < a.Length
+    ensures IsOdd(a[idx])
+    ensures forall k :: 0 <= k < idx ==> IsEven(a[k])
+{
+    var i := 0;
+    while i < a.Length
+        invariant 0 <= i <= a.Length
+        invariant forall k :: 0 <= k < i ==> IsEven(a[k])
+    {
+        if IsOdd(a[i]) {
+            idx := i;
+            return;
+        }
+        i := i + 1;
+    }
+    assert false;
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method FirstEvenOddDifference(a: array<int>) returns (diff: int)
+    requires a.Length >= 2
+    requires exists i :: 0 <= i < a.Length && IsEven(a[i])
+    requires exists i :: 0 <= i < a.Length && IsOdd(a[i])
+    ensures exists i, j :: 0 <= i < a.Length && 0 <= j < a.Length && IsEven(a[i]) && IsOdd(a[j]) && diff == a[i] - a[j] && 
+        (forall k :: 0 <= k < i ==> IsOdd(a[k])) && (forall k :: 0 <= k < j ==> IsEven(a[k]))
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    var firstEvenIdx := 0;
+    var firstOddIdx := 0;
+    
+    var i := 0;
+    while i < a.Length
+        invariant 0 <= i <= a.Length
+        invariant forall k :: 0 <= k < i ==> IsOdd(a[k])
+    {
+        if IsEven(a[i]) {
+            firstEvenIdx := i;
+            break;
+        }
+        i := i + 1;
+    }
+    
+    var j := 0;
+    while j < a.Length
+        invariant 0 <= j <= a.Length
+        invariant forall k :: 0 <= k < j ==> IsEven(a[k])
+    {
+        if IsOdd(a[j]) {
+            firstOddIdx := j;
+            break;
+        }
+        j := j + 1;
+    }
+    
+    diff := a[firstEvenIdx] - a[firstOddIdx];
+}
+// </vc-code>

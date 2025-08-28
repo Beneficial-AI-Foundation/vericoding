@@ -1,0 +1,76 @@
+use vstd::prelude::*;
+
+verus! {
+
+// verifies
+// check that string between indexes low and high-1 are sorted
+spec fn sorted(a: Seq<char>, low: int, high: int) -> bool
+    recommends 0 <= low <= high <= a.len()
+{ 
+    forall|j: int, k: int| low <= j < k < high ==> a[j] <= a[k]
+}
+
+// <vc-helpers>
+// Helper function to swap elements in a sequence for proof purposes
+proof fn swap_preserves_multiset(a: Seq<char>, i: int, j: int) -> Seq<char>
+    requires
+        0 <= i < a.len(),
+        0 <= j < a.len(),
+    ensures
+        |result: Seq<char>| {
+            result.len() == a.len() &&
+            result.to_multiset() == a.to_multiset() &&
+            result[i] == a[j] &&
+            result[j] == a[i] &&
+            forall|k: int| 0 <= k < a.len() && k != i && k != j ==> result[k] == a[k]
+        }
+{
+    let mut result = a;
+    result = result.update(i, a[j]);
+    result = result.update(j, a[i]);
+    result
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn string3_sort(a: Seq<char>) -> (b: Seq<char>)
+    requires 
+        a.len() == 3,
+    ensures 
+        sorted(b, 0, b.len() as int),
+        a.len() == b.len(),
+        seq![b[0], b[1], b[2]].to_multiset() == seq![a[0], a[1], a[2]].to_multiset(),
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+exec fn string3_sort(a: Seq<char>) -> (b: Seq<char>)
+    requires
+        a.len() == 3,
+    ensures
+        sorted(b, 0, b.len() as int),
+        a.len() == b.len(),
+        seq![b[0], b[1], b[2]].to_multiset() == seq![a[0], a[1], a[2]].to_multiset(),
+{
+    let mut result = a;
+    if result[0] > result[1] {
+        result = result.update(0, result[1]).update(1, result[0]);
+    }
+    if result[1] > result[2] {
+        result = result.update(1, result[2]).update(2, result[1]);
+    }
+    if result[0] > result[1] {
+        result = result.update(0, result[1]).update(1, result[0]);
+    }
+    proof {
+        assert(forall|j: int, k: int| 0 <= j < k < 3 ==> result[j] <= result[k]);
+    }
+    result
+}
+// </vc-code>
+
+fn main() {
+}
+
+}

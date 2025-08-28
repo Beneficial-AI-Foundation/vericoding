@@ -1,0 +1,18 @@
+// <vc-helpers>
+// No additional helpers or proofs needed for this simple specification
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method M(x: int) returns (seven: int)
+  ensures seven==7
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+method M(x: int) returns (seven: int)
+  ensures seven == 7
+{
+  seven := 7;
+}
+// </vc-code>

@@ -1,0 +1,59 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+fn split_and_append(list: &Vec<i32>, n: usize) -> (new_list: Vec<i32>)
+    // pre-conditions-start
+    requires
+        list@.len() > 0,
+        0 < n < list@.len(),
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        new_list@ == list@.subrange(n as int, list@.len() as int).add(list@.subrange(0, n as int)),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut new_list = Vec::new();
+    
+    // Append elements from index n to end
+    let mut i = n;
+    while i < list.len()
+        invariant
+            i <= list.len(),
+            new_list@.len() == i - n,
+            forall|j: int| 0 <= j < new_list@.len() ==> new_list@[j] == list@[n + j],
+        decreases list.len() - i,
+    {
+        new_list.push(list[i]);
+        i += 1;
+    }
+    
+    // Append elements from index 0 to n-1
+    let mut j = 0;
+    while j < n
+        invariant
+            j <= n,
+            new_list@.len() == (list.len() - n) + j,
+            forall|k: int| 0 <= k < (list.len() - n) ==> new_list@[k] == list@[n + k],
+            forall|k: int| (list.len() - n) <= k < new_list@.len() ==> new_list@[k] == list@[j + k - (list.len() - n)],
+            forall|k: int| (list.len() - n) <= k < new_list@.len() ==> 0 <= j + k - (list.len() - n) < list@.len(),
+        decreases n - j,
+    {
+        new_list.push(list[j]);
+        j += 1;
+    }
+    
+    new_list
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

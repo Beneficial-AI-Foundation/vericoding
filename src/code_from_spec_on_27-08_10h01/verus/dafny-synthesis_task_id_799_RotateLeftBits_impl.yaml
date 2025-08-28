@@ -1,0 +1,30 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+
+vc-spec: |-
+  // <vc-spec>
+  fn rotate_left_bits(n: u32, d: int) -> (result: u32)
+      requires 0 <= d < 32
+      ensures result == ((n << d) | (n >> (32 - d)))
+  // </vc-spec>
+
+vc-code: |-
+  {
+      let d_u32 = d as u32;
+      let shift_left = n << d_u32;
+      let shift_right = n >> (32u32 - d_u32);
+      shift_left | shift_right
+  }
+
+vc-postamble: |-
+  
+  fn main() {
+  }
+  
+  }
+

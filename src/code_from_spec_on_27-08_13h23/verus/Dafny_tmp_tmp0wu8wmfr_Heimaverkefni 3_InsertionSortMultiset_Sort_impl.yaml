@@ -1,0 +1,110 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  use vstd::multiset::*;
+  
+  verus! {
+  
+  // Höfundur spurningar:  Snorri Agnarsson, snorri@hi.is
+  // Permalink spurningar: https://rise4fun.com/Dafny/G4sc3
+  
+  // Höfundur lausnar:     Alexander Guðmundsson
+  // Permalink lausnar:    https://rise4fun.com/Dafny/nujsu
+  
+  // Insertion sort með hjálp helmingunarleitar.
+  
+  
+  proof fn search(s: Seq<i32>, x: i32) -> (k: usize)
+      // Ekki má breyta forskilyrðum eða eftirskilyrðum fallsins
+      requires 
+          forall|p: int, q: int| 0 <= p < q < s.len() ==> s[p] <= s[q],
+      ensures 
+          0 <= k <= s.len()
+          && forall|i: int| 0 <= i < k ==> s[i] <= x
+          && forall|i: int| k <= i < s.len() ==> s[i] >= x
+          && forall|z: i32| s.subrange(0, k as int).contains(z) ==> z <= x
+          && forall|z: i32| s.subrange(k as int, s.len() as int).contains(z) ==> z >= x
+          && s == s.subrange(0, k as int) + s.subrange(k as int, s.len() as int),
+  {
+    assume(false);
+    0
+  }
+
+vc-helpers: |-
+  proof fn search(s: Seq<i32>, x: i32) -> (k: usize)
+      requires 
+          forall|p: int, q: int| 0 <= p < q < s.len() ==> s[p] <= s[q],
+      ensures 
+          0 <= k <= s.len()
+          && forall|i: int| 0 <= i < k ==> s[i] <= x
+          && forall|i: int| k <= i < s.len() ==> s[i] >= x
+          && forall|z: i32| s.subrange(0, k as int).contains(z) ==> z <= x
+          && forall|z: i32| s.subrange(k as int, s.len() as int).contains(z) ==> z >= x
+          && s == s.subrange(0, k as int) + s.subrange(k as int, s.len() as int),
+  {
+      let mut low: usize = 0;
+      let mut high: usize = s.len();
+      
+      while low < high
+          invariant
+              0 <= low <= high <= s.len(),
+              forall|i: int| 0 <= i < low ==> s[i] <= x,
+              forall|i: int| high <= i < s.len() ==> s[i] >= x,
+      {
+          let mid: usize = low + (high - low) / 2;
+          if s[mid] <= x {
+              low = mid + 1;
+          } else {
+              high = mid;
+          }
+      }
+      low
+  }
+  
+  proof fn insert(m: Multiset<i32>, x: i32, s: Seq<i32>) -> (r: Seq<i32>)
+      requires
+          s.to_multiset() == m,
+          forall|p: int, q: int| 0 <= p < q < s.len() ==> s[p] <= s[q],
+      ensures
+          r.to_multiset() == m.insert(x),
+          forall|p: int, q: int| 0 <= p < q < r.len() ==> r[p] <= r[q],
+  {
+      let k = search(s, x);
+      let mut result = Seq::new(s.len() + 1, |i: int| if i < k { s[i] } else if i == k { x } else { s[i - 1] });
+      result
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  proof fn sort(m: Multiset<i32>) -> (r: Seq<i32>)
+      ensures 
+          r.to_multiset() == m
+          && forall|p: int, q: int| 0 <= p < q < r.len() ==> r[p] <= r[q],
+  // </vc-spec>
+
+vc-code: |-
+  proof fn sort(m: Multiset<i32>) -> (r: Seq<i32>)
+      ensures 
+          r.to_multiset() == m
+          && forall|p: int, q: int| 0 <= p < q < r.len() ==> r[p] <= r[q],
+  {
+      let mut result = Seq::empty();
+      let mut remaining = m;
+      while remaining.len() > 0
+          invariant
+              result.to_multiset() + remaining == m,
+              forall|p: int, q: int| 0 <= p < q < result.len() ==> result[p] <= result[q],
+          decreases remaining.len(),
+      {
+          let x = remaining.choose();
+          remaining = remaining.remove(x);
+          result = insert(result.to_multiset(), x, result);
+      }
+      result
+  }
+
+vc-postamble: |-
+  
+  fn main() {}
+  
+  }
+

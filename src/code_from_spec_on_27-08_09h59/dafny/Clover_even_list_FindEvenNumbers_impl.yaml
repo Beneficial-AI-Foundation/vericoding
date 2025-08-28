@@ -1,0 +1,145 @@
+vc-preamble: |-
+
+
+vc-helpers: |-
+  lemma PreserveOrderHelper(arr: array<int>, evenNumbers: array<int>, evenIndices: seq<nat>)
+    requires forall i :: 0 <= i < |evenIndices| ==> evenIndices[i] < arr.Length
+    requires forall i :: 0 <= i < |evenIndices| ==> arr[evenIndices[i]] % 2 == 0
+    requires forall i, j :: 0 <= i < j < |evenIndices| ==> evenIndices[i] < evenIndices[j]
+    requires evenNumbers.Length == |evenIndices|
+    requires forall i :: 0 <= i < |evenIndices| ==> evenNumbers[i] == arr[evenIndices[i]]
+    ensures forall k, l :: 0 <= k < l < evenNumbers.Length ==>
+              exists n, m :: 0 <= n < m < arr.Length && evenNumbers[k] == arr[n] && evenNumbers[l] == arr[m]
+  {
+    forall k, l | 0 <= k < l < evenNumbers.Length
+      ensures exists n, m :: 0 <= n < m < arr.Length && evenNumbers[k] == arr[n] && evenNumbers[l] == arr[m]
+    {
+      assert evenNumbers[k] == arr[evenIndices[k]];
+      assert evenNumbers[l] == arr[evenIndices[l]];
+      assert evenIndices[k] < evenIndices[l];
+    }
+  }
+  
+  lemma ExtendInvariant(arr: array<int>, evenIndices: seq<nat>, i: nat)
+    requires 0 <= i < arr.Length
+    requires forall j :: 0 <= j < |evenIndices| ==> evenIndices[j] < arr.Length
+    requires forall j :: 0 <= j < |evenIndices| ==> arr[evenIndices[j]] % 2 == 0
+    requires forall j, k :: 0 <= j < k < |evenIndices| ==> evenIndices[j] < evenIndices[k]
+    requires forall x :: x in arr[..i] && x % 2 == 0 ==> exists j :: 0 <= j < |evenIndices| && arr[evenIndices[j]] == x
+    requires forall j :: 0 <= j < |evenIndices| ==> evenIndices[j] < i
+    requires arr[i] % 2 == 0
+    ensures forall x :: x in arr[..i+1] && x % 2 == 0 ==> exists j :: 0 <= j < |(evenIndices + [i])| && arr[(evenIndices + [i])[j]] == x
+  {
+    var newIndices := evenIndices + [i];
+    forall x | x in arr[..i+1] && x % 2 == 0
+      ensures exists j :: 0 <= j < |newIndices| && arr[newIndices[j]] == x
+    {
+      if x in arr[..i] {
+        assert exists j :: 0 <= j < |evenIndices| && arr[evenIndices[j]] == x;
+        var j :| 0 <= j < |evenIndices| && arr[evenIndices[j]] == x;
+        assert newIndices[j] == evenIndices[j];
+        assert arr[newIndices[j]] == x;
+      } else {
+        assert x == arr[i];
+        assert arr[newIndices[|newIndices|-1]] == arr[i] == x;
+      }
+    }
+  }
+  
+  lemma AllEvensIncluded(arr: array<int>, evenIndices: seq<nat>)
+    requires forall j :: 0 <= j < |evenIndices| ==> evenIndices[j] < arr.Length
+    requires forall j :: 0 <= j < |evenIndices| ==> arr[evenIndices[j]] % 2 == 0
+    requires forall j, k :: 0 <= j < k < |evenIndices| ==> evenIndices[j] < evenIndices[k]
+    requires forall x :: x in arr[..] && x % 2 == 0 ==> exists j :: 0 <= j < |evenIndices| && arr[evenIndices[j]] == x
+    ensures forall x :: x in arr[..] && x % 2 == 0 ==> x in multiset(seq(|evenIndices|, i requires 0 <= i < |evenIndices| reads arr => arr[evenIndices[i]]))
+  {
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  method FindEvenNumbers (arr: array<int>) returns (evenNumbers: array<int>)
+    ensures forall x {:trigger (x%2) }:: x in arr[..] &&  (x%2==0)==> x in evenNumbers[..]
+    ensures forall x :: x !in arr[..] ==> x !in evenNumbers[..]
+    ensures forall k :: 0 <= k < evenNumbers.Length ==> evenNumbers[k] % 2 == 0
+    ensures forall k, l :: 0 <= k < l < evenNumbers.Length ==>
+                             exists n, m :: 0 <= n < m < arr.Length && evenNumbers[k] == arr[n] && evenNumbers[l] == arr[m]
+  // </vc-spec>
+
+vc-code: |-
+  {
+    var evenIndices: seq<nat> := [];
+    var i := 0;
+    
+    while i < arr.Length
+      invariant 0 <= i <= arr.Length
+      invariant forall j :: 0 <= j < |evenIndices| ==> evenIndices[j] < arr.Length
+      invariant forall j :: 0 <= j < |evenIndices| ==> arr[evenIndices[j]] % 2 == 0
+      invariant forall j, k :: 0 <= j < k < |evenIndices| ==> evenIndices[j] < evenIndices[k]
+      invariant forall x :: x in arr[..i] && x % 2 == 0 ==> exists j :: 0 <= j < |evenIndices| && arr[evenIndices[j]] == x
+      invariant forall j :: 0 <= j < |evenIndices| ==> evenIndices[j] < i
+    {
+      if arr[i] % 2 == 0 {
+        ExtendInvariant(arr, evenIndices, i);
+        evenIndices := evenIndices + [i];
+      }
+      i := i + 1;
+    }
+    
+    if |evenIndices| == 0 {
+      evenNumbers := new int[0];
+      assert forall x :: x in arr[..] && x % 2 == 0 ==> x in evenNumbers[..] by {
+        forall x | x in arr[..] && x % 2 == 0 ensures false {
+          assert exists j :: 0 <= j < |evenIndices| && arr[evenIndices[j]] == x;
+          assert |evenIndices| == 0;
+          assert false;
+        }
+      }
+      assert forall k, l :: 0 <= k < l < evenNumbers.Length ==>
+        exists n, m :: 0 <= n < m < arr.Length && evenNumbers[k] == arr[n] && evenNumbers[l] == arr[m] by {
+        assert evenNumbers.Length == 0;
+      }
+      return;
+    }
+    
+    evenNumbers := new int[|evenIndices|];
+    i := 0;
+    
+    while i < |evenIndices|
+      invariant 0 <= i <= |evenIndices|
+      invariant forall j :: 0 <= j < i ==> evenNumbers[j] == arr[evenIndices[j]]
+    {
+      evenNumbers[i] := arr[evenIndices[i]];
+      i := i + 1;
+    }
+    
+    assert forall j :: 0 <= j < |evenIndices| ==> evenNumbers[j] == arr[evenIndices[j]];
+    
+    PreserveOrderHelper(arr, evenNumbers, evenIndices);
+    
+    assert forall x :: x in arr[..] && x % 2 == 0 ==> exists j :: 0 <= j < |evenIndices| && arr[evenIndices[j]] == x;
+    
+    forall x | x in arr[..] && x % 2 == 0
+      ensures x in evenNumbers[..]
+    {
+      assert exists j :: 0 <= j < |evenIndices| && arr[evenIndices[j]] == x;
+      var j :| 0 <= j < |evenIndices| && arr[evenIndices[j]] == x;
+      assert evenNumbers[j] == arr[evenIndices[j]] == x;
+      assert x in evenNumbers[..];
+    }
+    
+    forall x | x !in arr[..]
+      ensures x !in evenNumbers[..]
+    {
+      forall j | 0 <= j < evenNumbers.Length
+        ensures evenNumbers[j] != x
+      {
+        assert evenNumbers[j] == arr[evenIndices[j]];
+        assert arr[evenIndices[j]] in arr[..];
+        assert arr[evenIndices[j]] != x;
+      }
+    }
+  }
+
+vc-postamble: |-
+
+

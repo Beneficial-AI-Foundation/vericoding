@@ -1,0 +1,83 @@
+use vstd::prelude::*;
+
+verus! {
+
+// Predicate to check if an element exists in an array
+spec fn in_array(a: &[i32], x: i32) -> bool {
+    exists|i: int| 0 <= i < a.len() && a@.index(i) == x
+}
+
+// <vc-helpers>
+// Helper function to check if a sequence contains a value up to a certain index
+spec fn seq_contains_up_to(seq: Seq<i32>, x: i32, end: int) -> bool {
+    exists|i: int| 0 <= i < end && seq.index(i) == x
+}
+
+// Helper lemma to ensure uniqueness in the result
+proof fn lemma_unique_append(vec: Seq<i32>, x: i32)
+    requires !vec.contains(x),
+    ensures
+        forall|i: int, j: int| 0 <= i < j < vec.len() + 1 ==> 
+            (i < vec.len() && j < vec.len() ==> vec.index(i) != vec.index(j)) && 
+            (i < vec.len() ==> vec.index(i) != x),
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn remove_elements(a: &[i32], b: &[i32]) -> (result: Vec<i32>)
+    // All elements in the output are in a and not in b
+    ensures forall|x: i32| result@.contains(x) ==> in_array(a, x) && !in_array(b, x)
+    // The elements in the output are all different
+    ensures forall|i: int, j: int| 0 <= i < j < result.len() ==> result@.index(i) != result@.index(j)
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+fn remove_elements(a: &[i32], b: &[i32]) -> (result: Vec<i32>)
+    ensures
+        forall|x: i32| result@.contains(x) ==> in_array(a, x) && !in_array(b, x),
+        forall|i: int, j: int| 0 <= i < j < result.len() ==> result@.index(i) != result@.index(j),
+{
+    let mut result: Vec<i32> = Vec::new();
+    let mut i: usize = 0;
+
+    while i < a.len()
+        invariant
+            forall|x: i32| result@.contains(x) ==> in_array(a, x) && !in_array(b, x),
+            forall|k: int, l: int| 0 <= k < l < result.len() ==> result@.index(k) != result@.index(l),
+            i <= a.len(),
+    {
+        let x = a[i];
+        let mut found_in_b = false;
+        let mut j: usize = 0;
+
+        while j < b.len()
+            invariant
+                j <= b.len(),
+                found_in_b ==> in_array(b, x),
+                !found_in_b ==> !seq_contains_up_to(b@, x, j as int),
+        {
+            if b[j] == x {
+                found_in_b = true;
+            }
+            j = j + 1;
+        }
+
+        if !found_in_b && !result.contains(&x) {
+            result.push(x);
+            proof {
+                lemma_unique_append(result@.drop_last(), x);
+            }
+        }
+        i = i + 1;
+    }
+    result
+}
+// </vc-code>
+
+fn main() {
+}
+
+}

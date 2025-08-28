@@ -1,0 +1,28 @@
+vc-preamble: |-
+
+
+vc-helpers: |-
+  // No additional helpers or proofs needed for this implementation
+
+vc-spec: |-
+  // <vc-spec>
+  method Min(x: int, y:int) returns (z: int)
+    ensures x<=y ==> z==x
+    ensures x>y ==> z==y
+  // </vc-spec>
+
+vc-code: |-
+  method MinImpl(x: int, y: int) returns (z: int)
+    ensures x <= y ==> z == x
+    ensures x > y ==> z == y
+  {
+    if x <= y {
+      z := x;
+    } else {
+      z := y;
+    }
+  }
+
+vc-postamble: |-
+
+

@@ -1,0 +1,89 @@
+vc-preamble: |-
+  // program verifies
+  
+  predicate sortedbad(s: string)
+  {
+    // no b's after non-b's
+    forall i, j :: 0 <= i <= j < |s| && s[i] == 'b' && s[j] != 'b' ==> i < j &&
+    // only non-d's before d's
+    forall i, j :: 0 <= i <= j < |s| && s[i] != 'd' && s[j] == 'd' ==> i < j
+  }
+
+vc-helpers: |-
+  // Helper predicate to check if a character is valid
+  predicate IsValidChar(c: char)
+  {
+    c in {'b', 'a', 'd'}
+  }
+  
+  // Helper lemma to ensure partitioning maintains multiset
+  lemma PartitionMultisetPreservation(s: string, pivot1: char, pivot2: char, left: string, mid: string, right: string)
+    requires forall i :: 0 <= i < |s| ==> IsValidChar(s[i])
+    requires left + mid + right == s
+    requires forall i :: 0 <= i < |left| ==> left[i] == pivot1
+    requires forall i :: 0 <= i < |mid| ==> mid[i] == pivot2
+    requires forall i :: 0 <= i < |right| ==> right[i] != pivot1 && right[i] != pivot2
+    ensures multiset(s[..]) == multiset(left[..]) + multiset(mid[..]) + multiset(right[..])
+  {
+  }
+  
+  // Helper lemma to prove sortedbad property after partitioning
+  lemma SortedBadAfterPartition(left: string, mid: string, right: string)
+    requires forall i :: 0 <= i < |left| ==> left[i] == 'b'
+    requires forall i :: 0 <= i < |mid| ==> mid[i] == 'a'
+    requires forall i :: 0 <= i < |right| ==> right[i] == 'd'
+    ensures sortedbad(left + mid + right)
+  {
+    var result := left + mid + right;
+    assert forall i, j :: 0 <= i <= j < |result| && result[i] == 'b' && result[j] != 'b' ==> i < j;
+    assert forall i, j :: 0 <= i <= j < |result| && result[i] != 'd' && result[j] == 'd' ==> i < j;
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  method BadSort(a: string) returns (b: string)
+  requires forall i :: 0<=i<|a| ==> a[i] in {'b', 'a', 'd'}
+  ensures sortedbad(b)
+  ensures multiset(b[..]) == multiset(a[..])
+  // </vc-spec>
+
+vc-code: |-
+  method BadSortImpl(a: string) returns (b: string)
+    requires forall i :: 0 <= i < |a| ==> a[i] in {'b', 'a', 'd'}
+    ensures sortedbad(b)
+    ensures multiset(b[..]) == multiset(a[..])
+  {
+    var bs := "";
+    var as_str := "";
+    var ds := "";
+    
+    var i := 0;
+    while i < |a|
+      invariant 0 <= i <= |a|
+      invariant forall j :: 0 <= j < |bs| ==> bs[j] == 'b'
+      invariant forall j :: 0 <= j < |as_str| ==> as_str[j] == 'a'
+      invariant forall j :: 0 <= j < |ds| ==> ds[j] == 'd'
+      invariant multiset(bs[..]) + multiset(as_str[..]) + multiset(ds[..]) == multiset(a[..i])
+    {
+      if a[i] == 'b' {
+        bs := bs + [a[i]];
+      } else if a[i] == 'a' {
+        as_str := as_str + [a[i]];
+      } else {
+        ds := ds + [a[i]];
+      }
+      i := i + 1;
+    }
+    
+    b := bs + as_str + ds;
+    assert sortedbad(b) by { SortedBadAfterPartition(bs, as_str, ds); }
+    assert multiset(bs[..]) + multiset(as_str[..]) + multiset(ds[..]) == multiset(a[..i]);
+    assert i == |a|;
+    assert multiset(bs[..]) + multiset(as_str[..]) + multiset(ds[..]) == multiset(a[..]);
+    assert multiset(b[..]) == multiset(bs[..]) + multiset(as_str[..]) + multiset(ds[..]);
+    assert multiset(b[..]) == multiset(a[..]);
+  }
+
+vc-postamble: |-
+
+

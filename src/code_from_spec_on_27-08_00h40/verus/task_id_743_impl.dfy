@@ -1,0 +1,98 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn rotation_split(len: usize, n: usize) -> (result: int) {
+    len - (n % len)
+}
+// pure-end
+
+// <vc-helpers>
+proof fn lemma_rotation_split_bounds(len: usize, n: usize)
+    requires len > 0
+    ensures 
+        0 <= rotation_split(len, n) <= len,
+        rotation_split(len, n) == len - (n % len)
+{
+    assert(n % len < len);
+    assert(rotation_split(len, n) == len - (n % len));
+    assert(rotation_split(len, n) >= 0);
+    assert(rotation_split(len, n) <= len);
+}
+
+proof fn lemma_subrange_properties(list: &Vec<u32>, split_point: int)
+    requires 
+        list.len() > 0,
+        0 <= split_point <= list.len()
+    ensures
+        list@.subrange(split_point, list@.len() as int).len() + list@.subrange(0, split_point).len() == list@.len(),
+        list@.subrange(0, split_point).add(list@.subrange(split_point, list@.len() as int)) == list@
+{
+    assert(list@.subrange(0, split_point).add(list@.subrange(split_point, list@.len() as int)) =~= list@);
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn rotate_right(list: &Vec<u32>, n: usize) -> (new_list: Vec<u32>)
+    // pre-conditions-start
+    requires
+        list.len() > 0,
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        new_list.len() == list.len(),
+        new_list@ == list@.subrange(rotation_split(list.len(), n) as int, list@.len() as int).add(
+            list@.subrange(0, rotation_split(list.len(), n) as int),
+        ),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let split_point = rotation_split(list.len(), n);
+    
+    proof {
+        lemma_rotation_split_bounds(list.len(), n);
+    }
+    
+    let mut new_list = Vec::new();
+    
+    let mut i = split_point;
+    while i < list.len()
+        invariant
+            split_point <= list.len(),
+            split_point <= i <= list.len(),
+            new_list.len() == i - split_point,
+            forall|j: int| 0 <= j < new_list.len() ==> new_list@[j] == list@[split_point + j]
+    {
+        new_list.push(list[i]);
+        i += 1;
+    }
+    
+    i = 0;
+    while i < split_point
+        invariant
+            split_point <= list.len(),
+            0 <= i <= split_point,
+            new_list.len() == (list.len() - split_point) + i,
+            forall|j: int| 0 <= j < list.len() - split_point ==> new_list@[j] == list@[split_point + j],
+            forall|j: int| 0 <= j < i ==> new_list@[list.len() - split_point + j] == list@[j]
+    {
+        new_list.push(list[i]);
+        i += 1;
+    }
+    
+    proof {
+        assert(new_list.len() == list.len());
+        assert(new_list@ == list@.subrange(split_point as int, list@.len() as int).add(
+            list@.subrange(0, split_point as int)
+        ));
+    }
+    
+    new_list
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

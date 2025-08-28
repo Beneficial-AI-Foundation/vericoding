@@ -1,0 +1,92 @@
+function sum(s: seq<int>, n: nat): int
+    requires n <= |s|
+{
+    if |s| == 0 || n == 0 then
+        0
+    else
+        s[0] + sum(s[1..], n-1)
+}
+
+// <vc-helpers>
+lemma SumPrefix(s: seq<int>, n: nat)
+    requires n <= |s|
+    ensures forall k: nat :: k <= n ==> sum(s, k) == if k == 0 then 0 else sum(s[..k], k)
+{
+    if n == 0 {
+        return;
+    }
+    var i := 1;
+    while i <= n
+        invariant i <= n + 1
+        invariant forall k: nat :: k < i ==> sum(s, k) == if k == 0 then 0 else sum(s[..k], k)
+    {
+        assert sum(s, i) == if i == 0 then 0 else s[0] + sum(s[1..], i-1);
+        assert sum(s[..i], i) == if i == 0 then 0 else s[0] + sum(s[1..i], i-1);
+        if i > 1 {
+            assert s[1..i] == s[1..][..i-1];
+            assert sum(s[1..][..i-1], i-1) == sum(s[1..i], i-1);
+        } else {
+            assert sum(s[1..][..0], 0) == 0;
+            assert sum(s[1..1], 0) == 0;
+        }
+        assert sum(s, i) == sum(s[..i], i);
+        i := i + 1;
+    }
+}
+
+lemma SumUpdate(s: seq<int>, n: nat)
+    requires n < |s|
+    ensures sum(s, n+1) == sum(s, n) + s[n]
+{
+    if n == 0 {
+        assert sum(s, 1) == s[0];
+        assert sum(s, 0) == 0;
+        assert sum(s, 1) == sum(s, 0) + s[0];
+    } else {
+        assert sum(s, n+1) == s[0] + sum(s[1..], n);
+        assert sum(s, n) == s[0] + sum(s[1..], n-1);
+        assert n > 0 ==> sum(s[1..], n) == sum(s[1..], n-1) + s[1..][n-1];
+        assert n > 0 ==> s[1..][n-1] == s[n];
+        assert sum(s, n+1) == sum(s, n) + s[n];
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method below_zero(ops: seq<int>) returns (result: bool)
+    ensures result <==> exists n: nat :: n <= |ops| && sum(ops, n) < 0
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+method BelowZero(ops: seq<int>) returns (result: bool)
+    ensures result <==> exists n: nat :: n <= |ops| && sum(ops, n) < 0
+{
+    result := false;
+    var current_sum := 0;
+    var n := 0;
+    while n < |ops|
+        invariant 0 <= n <= |ops|
+        invariant current_sum == sum(ops, n)
+        invariant result ==> exists k: nat :: k <= n && sum(ops, k) < 0
+        invariant !result ==> forall k: nat :: k <= n ==> sum(ops, k) >= 0
+    {
+        current_sum := current_sum + ops[n];
+        n := n + 1;
+        if n <= |ops| {
+            SumUpdate(ops, n-1);
+            assert sum(ops, n) == current_sum;
+        }
+        if current_sum < 0 {
+            result := true;
+            assert exists k: nat :: k == n && k <= |ops| && sum(ops, k) < 0;
+            return;
+        }
+    }
+    if !result {
+        assert forall k: nat :: k <= |ops| ==> sum(ops, k) >= 0;
+        assert !(exists k: nat :: k <= |ops| && sum(ops, k) < 0);
+    }
+}
+// </vc-code>

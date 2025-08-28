@@ -1,0 +1,128 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn zip_halves<T>(v: Seq<T>) -> (ret: Seq<(T, T)>) {
+    v.take((v.len() / 2) as int).zip_with(v.skip(((v.len() + 1) / 2) as int).reverse())
+}
+// pure-end
+// pure-end
+
+spec fn diff(s: Seq<(i32, i32)>) -> (ret: int) {
+    s.fold_left(
+        0,
+        |acc: int, x: (i32, i32)|
+            if (x.0 != x.1) {
+                acc + 1
+            } else {
+                acc
+            },
+    )
+}
+// pure-end
+
+// <vc-helpers>
+proof fn zip_halves_len<T>(v: Seq<T>)
+    ensures zip_halves(v).len() == (v.len() / 2) as int
+{
+}
+
+proof fn zip_halves_index<T>(v: Seq<T>, i: int)
+    requires 0 <= i < zip_halves(v).len()
+    ensures 
+        zip_halves(v)[i].0 == v[i],
+        zip_halves(v)[i].1 == v[v.len() as int - 1 - i]
+{
+}
+
+proof fn diff_empty()
+    ensures diff(Seq::<(i32, i32)>::empty()) == 0int
+{
+}
+
+proof fn diff_push(s: Seq<(i32, i32)>, x: (i32, i32))
+    ensures diff(s.push(x)) == diff(s) + if x.0 != x.1 { 1int } else { 0int }
+{
+    let result = s.push(x);
+    assert(result == s + seq![x]);
+    
+    let f = |acc: int, pair: (i32, i32)| if pair.0 != pair.1 { acc + 1 } else { acc };
+    
+    assert(diff(result) == result.fold_left(0, f));
+    assert(diff(s) == s.fold_left(0, f));
+    
+    if x.0 != x.1 {
+        assert(f(diff(s), x) == diff(s) + 1);
+    } else {
+        assert(f(diff(s), x) == diff(s));
+    }
+}
+
+proof fn diff_base_case(x: (i32, i32))
+    ensures diff(seq![x]) == if x.0 != x.1 { 1int } else { 0int }
+{
+    diff_empty();
+    diff_push(Seq::<(i32, i32)>::empty(), x);
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn smallest_change(v: Vec<i32>) -> (change: usize)
+    // pre-conditions-start
+    requires
+        v@.len() < usize::MAX,
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        change == diff(zip_halves(v@)),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let len = v.len();
+    let first_half_len = len / 2;
+    
+    let mut change: usize = 0;
+    let mut i: usize = 0;
+    
+    while i < first_half_len
+        invariant 
+            i <= first_half_len,
+            first_half_len == len / 2,
+            len == v@.len(),
+            change == diff(zip_halves(v@).take(i as int)) as usize,
+            change <= i,
+        decreases first_half_len - i
+    {
+        let first_idx = i;
+        let second_idx = len - 1 - i;
+        
+        proof {
+            zip_halves_len(v@);
+            zip_halves_index(v@, i as int);
+            let zipped = zip_halves(v@);
+            let current_pair = (v@[first_idx as int], v@[second_idx as int]);
+            assert(zipped[i as int] == current_pair);
+            diff_push(zipped.take(i as int), current_pair);
+            assert(zipped.take((i + 1) as int) == zipped.take(i as int).push(current_pair));
+        }
+        
+        if v[first_idx] != v[second_idx] {
+            change = change + 1;
+        }
+        
+        i = i + 1;
+    }
+    
+    proof {
+        zip_halves_len(v@);
+        assert(zip_halves(v@).take(first_half_len as int) == zip_halves(v@));
+    }
+    
+    change
+}
+// </vc-code>
+
+}
+fn main() {}

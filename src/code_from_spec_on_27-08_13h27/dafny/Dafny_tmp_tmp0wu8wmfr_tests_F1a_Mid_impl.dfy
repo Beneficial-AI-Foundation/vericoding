@@ -1,0 +1,26 @@
+// <vc-helpers>
+// No additional helper code or proofs needed for this implementation
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method Mid( p: int, q: int) returns ( m: int )
+    // | ... | ??? | ... |
+    //        p m   q
+    requires p <= q;
+    ensures p<= m <= q;
+    ensures m-p <= q-m;
+    ensures 0 <= (q-m)-(m-p) <= 1;
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+method MidImpl(p: int, q: int) returns (m: int)
+  requires p <= q
+  ensures p <= m <= q
+  ensures m - p <= q - m
+  ensures 0 <= (q - m) - (m - p) <= 1
+{
+  m := (p + q) / 2;
+}
+// </vc-code>

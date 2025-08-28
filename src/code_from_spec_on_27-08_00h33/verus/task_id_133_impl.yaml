@@ -1,0 +1,103 @@
+vc-description: |-
+
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  
+  verus! {
+  
+  spec fn sum_negative_to(seq: Seq<i64>) -> (res: int)
+      decreases seq.len(),
+  {
+      if seq.len() == 0 {
+          0
+      } else {
+          sum_negative_to(seq.drop_last()) + if (seq.last() < 0) {
+              seq.last() as int
+          } else {
+              0 as int
+          }
+      }
+  }
+  // pure-end
+
+vc-helpers: |-
+  proof fn sum_negative_to_append(seq: Seq<i64>, elem: i64)
+      ensures sum_negative_to(seq.push(elem)) == sum_negative_to(seq) + if elem < 0 { elem as int } else { 0 as int }
+      decreases seq.len()
+  {
+      if seq.len() == 0 {
+          assert(seq.push(elem).drop_last() =~= seq);
+          assert(seq.push(elem).last() == elem);
+      } else {
+          let seq_push = seq.push(elem);
+          assert(seq_push.last() == elem);
+          assert(seq_push.drop_last() =~= seq);
+          sum_negative_to_append(seq.drop_last(), elem);
+      }
+  }
+  
+  proof fn sum_negative_to_prefix(seq: Seq<i64>, i: nat)
+      requires i <= seq.len()
+      ensures sum_negative_to(seq.subrange(0, i as int)) == 
+          if i == 0 { 0 } else { 
+              sum_negative_to(seq.subrange(0, i as int - 1)) + 
+              if seq[i as int - 1] < 0 { seq[i as int - 1] as int } else { 0 as int }
+          }
+      decreases i
+  {
+      if i == 0 {
+          assert(seq.subrange(0, 0) =~= Seq::<i64>::empty());
+      } else {
+          let prefix = seq.subrange(0, i as int);
+          let prev_prefix = seq.subrange(0, i as int - 1);
+          assert(prefix =~= prev_prefix.push(seq[i as int - 1]));
+          sum_negative_to_append(prev_prefix, seq[i as int - 1]);
+      }
+  }
+
+vc-spec: |-
+  fn sum_negatives(arr: &Vec<i64>) -> (sum_neg: i128)
+      // post-conditions-start
+      ensures
+          sum_negative_to(arr@) == sum_neg,
+      // post-conditions-end
+
+vc-code: |-
+  {
+      let mut sum_neg: i128 = 0;
+      let mut i: usize = 0;
+      
+      while i < arr.len()
+          invariant
+              0 <= i <= arr.len(),
+              sum_neg == sum_negative_to(arr@.subrange(0, i as int)),
+          decreases arr.len() - i,
+      {
+          if arr[i] < 0 {
+              sum_neg = sum_neg + (arr[i] as i128);
+          }
+          i = i + 1;
+          
+          proof {
+              sum_negative_to_prefix(arr@, i as nat);
+              assert(sum_negative_to(arr@.subrange(0, i as int - 1)) + 
+                     if arr[i as int - 1] < 0 { arr[i as int - 1] as int } else { 0 as int } ==
+                     sum_negative_to(arr@.subrange(0, i as int)));
+          }
+      }
+      
+      proof {
+          assert(arr@.subrange(0, arr.len() as int) =~= arr@);
+      }
+      
+      sum_neg
+  }
+
+vc-postamble: |-
+  
+  } // verus!
+  
+  fn main() {}
+

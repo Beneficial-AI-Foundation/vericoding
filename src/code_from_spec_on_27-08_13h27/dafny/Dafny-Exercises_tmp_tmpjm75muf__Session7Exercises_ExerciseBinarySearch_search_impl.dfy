@@ -1,0 +1,60 @@
+predicate sorted(s : seq<int>) {
+    forall u, w :: 0 <= u < w < |s| ==> s[u] <= s[w]
+}
+
+method binarySearch(v:array<int>, elem:int) returns (p:int)
+ requires sorted(v[0..v.Length])
+ ensures -1<=p<v.Length
+ ensures (forall u::0<=u<=p ==> v[u]<=elem) && (forall w::p<w<v.Length ==> v[w]>elem)
+{
+  assume{:axiom} false;
+}
+
+// <vc-helpers>
+lemma BinarySearchCorrect(v: array<int>, elem: int, p: int)
+  requires sorted(v[0..v.Length])
+  requires -1 <= p < v.Length
+  requires (forall u :: 0 <= u <= p ==> v[u] <= elem) && (forall w :: p < w < v.Length ==> v[w] > elem)
+  ensures elem in v[0..v.Length] ==> exists i :: 0 <= i < v.Length && v[i] == elem && i <= p
+  ensures elem !in v[0..v.Length] ==> forall i :: 0 <= i < v.Length ==> v[i] != elem
+{
+  if p >= 0 && v[p] == elem {
+    assert elem in v[0..v.Length];
+    assert exists i :: 0 <= i < v.Length && v[i] == elem && i <= p;
+  } else if p >= 0 {
+    assert v[p] <= elem;
+    if elem in v[0..v.Length] {
+      assert exists i :: 0 <= i < v.Length && v[i] == elem && i <= p;
+    } else {
+      assert forall i :: 0 <= i < v.Length ==> v[i] != elem;
+    }
+  } else {
+    assert p == -1;
+    assert forall w :: 0 <= w < v.Length ==> v[w] > elem;
+    assert elem !in v[0..v.Length];
+    assert forall i :: 0 <= i < v.Length ==> v[i] != elem;
+  }
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method search(v:array<int>,elem:int) returns (b:bool)
+ requires sorted(v[0..v.Length])
+ensures b==(elem in v[0..v.Length])
+ //Implement by calling binary search function
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+  var pos := binarySearch(v, elem);
+  if pos >= 0 && v[pos] == elem {
+    return true;
+  } else {
+    return false;
+  }
+}
+// </vc-code>
+
+//Recursive binary search

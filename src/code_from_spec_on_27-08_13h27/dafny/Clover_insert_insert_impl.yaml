@@ -1,0 +1,57 @@
+vc-preamble: |-
+
+
+vc-helpers: |-
+  // No additional helpers needed for this implementation
+
+vc-spec: |-
+  // <vc-spec>
+  method insert(line:array<char>, l:int, nl:array<char>, p:int, at:int)
+    requires 0 <= l+p <= line.Length
+    requires 0 <= p <= nl.Length
+    requires 0 <= at <= l
+    modifies line
+    ensures forall i :: (0<=i<p) ==> line[at+i] == nl[i]
+    ensures forall i :: (0<=i<at) ==> line[i] == old(line[i])
+    ensures forall i :: (at+p<=i<l+p) ==> line[i] == old(line[i-p])
+  // </vc-spec>
+
+vc-code: |-
+  method Insert(line: array<char>, l: int, nl: array<char>, p: int, at: int)
+    requires 0 <= l + p <= line.Length
+    requires 0 <= p <= nl.Length
+    requires 0 <= at <= l
+    modifies line
+    ensures forall i :: (0 <= i < p) ==> line[at + i] == nl[i]
+    ensures forall i :: (0 <= i < at) ==> line[i] == old(line[i])
+    ensures forall i :: (at + p <= i < l + p) ==> line[i] == old(line[i - p])
+  {
+    var i := 0;
+    
+    // Shift existing characters to make space for new characters
+    while i < l - at
+      invariant 0 <= i <= l - at
+      invariant forall k :: 0 <= k < at ==> line[k] == old(line[k])
+      invariant forall k :: at + p + i <= k < l + p ==> line[k] == old(line[k - p])
+      invariant forall k :: at + i <= k < at + p + i && k - p < line.Length ==> line[k] == old(line[k - p])
+    {
+      line[at + p + i] := line[at + i];
+      i := i + 1;
+    }
+    
+    // Insert new characters
+    i := 0;
+    while i < p
+      invariant 0 <= i <= p
+      invariant forall k :: 0 <= k < at ==> line[k] == old(line[k])
+      invariant forall k :: at + p <= k < l + p ==> line[k] == old(line[k - p])
+      invariant forall k :: 0 <= k < i ==> line[at + k] == nl[k]
+    {
+      line[at + i] := nl[i];
+      i := i + 1;
+    }
+  }
+
+vc-postamble: |-
+
+

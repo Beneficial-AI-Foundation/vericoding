@@ -1,0 +1,196 @@
+vc-description: |-
+  /--
+  function_signature: "def below_zero(operations: List[int]) -> bool"
+  docstring: |
+      You're given a list of deposit and withdrawal operations on a bank account that starts with
+      zero balance. Your task is to detect if at any point the balance of account fallls below zero, and
+      at that point function should return True. Otherwise it should return False.
+  test_cases:
+    - input:
+        - 1
+        - 2
+        - 3
+      expected_output: false
+    - input:
+        - 1
+        - 2
+        - -4
+        - 5
+      expected_output: true
+  -/
+
+vc-preamble: |-
+  
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn sum(s: Seq<int>) -> (result:int)
+      decreases s.len(),
+  {
+      if s.len() == 0 {
+          0
+      } else {
+          s[0] + sum(s.skip(1))
+      }
+  }
+  // pure-end
+  // pure-end
+  
+  spec fn sum_other_way(s: Seq<int>) -> (result:int)
+      decreases s.len(),
+  {
+      if s.len() == 0 {
+          0
+      } else {
+          s[s.len() - 1] + sum_other_way(s.take(s.len() - 1))
+      }
+  }
+  // pure-end
+
+vc-helpers: |-
+  proof fn lemma_sum_equals_sum_other_way(s: Seq<int>)
+      ensures
+          sum(s) == sum_other_way(s),
+      decreases s.len(),
+  {
+      if s.len() == 1 {
+          assert(sum(s.skip(1)) == 0);
+          assert(sum_other_way(s.take(s.len() - 1)) == 0);
+      } else if s.len() > 1 {
+          let ss = s.skip(1);
+          lemma_sum_equals_sum_other_way(ss);
+          assert(sum_other_way(ss) == ss[ss.len() - 1] + sum_other_way(ss.take(ss.len() - 1)));
+          lemma_sum_equals_sum_other_way(ss.take(ss.len() - 1));
+          assert(ss.take(ss.len() - 1) == s.take(s.len() - 1).skip(1));
+          lemma_sum_equals_sum_other_way(s.take(s.len() - 1));
+      }
+  }
+  
+  proof fn lemma_sum_take_monotonic(s: Seq<int>, i: int, j: int)
+      requires
+          0 <= i <= j <= s.len(),
+          forall|k: int| 0 <= k < s.len() ==> s[k] >= 0,
+      ensures
+          sum(s.take(i)) <= sum(s.take(j))
+      decreases j - i,
+  {
+      if i < j {
+          lemma_sum_take_monotonic(s, i, j - 1);
+          assert(s.take(j) == s.take(j - 1).push(s[j - 1]));
+          assert(sum(s.take(j)) == sum(s.take(j - 1)) + s[j - 1]);
+          assert(s[j - 1] >= 0);
+          assert(sum(s.take(i)) <= sum(s.take(j - 1)));
+          assert(sum(s.take(j - 1)) <= sum(s.take(j)));
+      }
+  }
+  
+  proof fn lemma_sum_take_add_one(s: Seq<int>, i: int)
+      requires
+          0 <= i < s.len(),
+      ensures
+          sum(s.take(i + 1)) == sum(s.take(i)) + s[i]
+  {
+      assert(s.take(i + 1) == s.take(i).push(s[i]));
+      if i == 0 {
+          assert(s.take(0).len() == 0);
+          assert(sum(s.take(0)) == 0);
+          assert(s.take(1) == seq![s[0]]);
+          assert(sum(s.take(1)) == s[0]);
+      } else {
+          lemma_sum_take_add_one_helper(s.take(i), s[i]);
+      }
+  }
+  
+  proof fn lemma_sum_take_add_one_helper(s: Seq<int>, x: int)
+      ensures
+          sum(s.push(x)) == sum(s) + x,
+      decreases s.len(),
+  {
+      if s.len() == 0 {
+          assert(sum(s.push(x)) == sum(seq![x]) == x);
+          assert(sum(s) == 0);
+      } else {
+          assert(s.push(x) == seq![s[0]].add(s.skip(1).push(x)));
+          assert(sum(s.push(x)) == s[0] + sum(s.skip(1).push(x)));
+          lemma_sum_take_add_one_helper(s.skip(1), x);
+          assert(sum(s.skip(1).push(x)) == sum(s.skip(1)) + x);
+          assert(sum(s) == s[0] + sum(s.skip(1)));
+      }
+  }
+
+vc-spec: |-
+  fn below_zero(operations: Vec<i32>) -> (result: bool)
+      // pre-conditions-start
+      requires
+          forall|i: int|
+              0 <= i <= operations@.len() ==> sum(operations@.take(i).map(|_idx, j: i32| j as int))
+                  <= i32::MAX,
+      // pre-conditions-end
+      // post-conditions-start
+      ensures
+          result <==> exists|i: int|
+              0 <= i <= operations@.len() && sum(operations@.take(i).map(|_idx, j: i32| j as int))
+                  < 0,
+      // post-conditions-end
+
+vc-code: |-
+  {
+      let mut balance = 0i32;
+      let mut i = 0;
+      
+      while i < operations.len()
+          invariant
+              0 <= i <= operations.len(),
+              balance == sum(operations@.take(i as int).map(|_idx, j: i32| j as int)),
+              forall|k: int| 0 <= k <= i ==> sum(operations@.take(k).map(|_idx, j: i32| j as int)) >= i32::MIN,
+              forall|k: int| 0 <= k <= i ==> sum(operations@.take(k).map(|_idx, j: i32| j as int)) <= i32::MAX,
+          decreases operations.len() - i,
+      {
+          if balance < 0 {
+              proof {
+                  assert(sum(operations@.take(i as int).map(|_idx, j: i32| j as int)) < 0);
+                  assert(exists|k: int| 0 <= k <= operations@.len() && sum(operations@.take(k).map(|_idx, j: i32| j as int)) < 0);
+              }
+              return true;
+          }
+          
+          proof {
+              let next_sum = sum(operations@.take((i + 1) as int).map(|_idx, j: i32| j as int));
+              let current_sum = sum(operations@.take(i as int).map(|_idx, j: i32| j as int));
+              let ops_map = operations@.map(|_idx, j: i32| j as int);
+              
+              assert(operations@.take((i + 1) as int).map(|_idx, j: i32| j as int) == 
+                     operations@.take(i as int).map(|_idx, j: i32| j as int).push(operations@[i as int] as int));
+              
+              lemma_sum_take_add_one_helper(operations@.take(i as int).map(|_idx, j: i32| j as int), operations@[i as int] as int);
+              
+              assert(next_sum == current_sum + operations@[i as int] as int);
+              assert(current_sum == balance as int);
+              assert(next_sum == balance as int + operations@[i as int] as int);
+              assert(next_sum >= i32::MIN);
+              assert(next_sum <= i32::MAX);
+          }
+          
+          balance = balance + operations[i];
+          i = i + 1;
+      }
+      
+      proof {
+          if balance < 0 {
+              assert(sum(operations@.take(i as int).map(|_idx, j: i32| j as int)) < 0);
+              assert(exists|k: int| 0 <= k <= operations@.len() && sum(operations@.take(k).map(|_idx, j: i32| j as int)) < 0);
+          } else {
+              assert(forall|k: int| 0 <= k <= operations@.len() ==> sum(operations@.take(k).map(|_idx, j: i32| j as int)) >= 0);
+              assert(!exists|k: int| 0 <= k <= operations@.len() && sum(operations@.take(k).map(|_idx, j: i32| j as int)) < 0);
+          }
+      }
+      
+      balance < 0
+  }
+
+vc-postamble: |-
+  
+  }
+  fn main() {}
+

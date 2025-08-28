@@ -1,0 +1,66 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn R(n: nat) -> nat
+    decreases n
+{
+    if n == 0 { 
+        0nat 
+    } else if R((n-1) as nat) > n { 
+        (R((n-1) as nat) - n) as nat
+    } else { 
+        (R((n-1) as nat) + n) as nat
+    }
+}
+
+// <vc-helpers>
+proof fn lemma_R_decreases(n: nat)
+    decreases n
+    ensures R(n) >= 0
+{
+    if n == 0 {
+        assert(R(0) == 0);
+    } else {
+        lemma_R_decreases((n - 1) as nat);
+        if R((n - 1) as nat) > n {
+            assert(R(n) == (R((n - 1) as nat) - n) as nat);
+            assert(R((n - 1) as nat) >= n);
+            assert(R(n) >= 0);
+        } else {
+            assert(R(n) == (R((n - 1) as nat) + n) as nat);
+            assert(R((n - 1) as nat) >= 0);
+            assert(R(n) >= 0);
+        }
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn calcR(n: u64) -> (r: u64)
+    ensures r == R(n as nat)
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+fn calcR(n: u64) -> (r: u64)
+    ensures r == R(n as nat)
+    decreases n
+{
+    if n == 0 {
+        0
+    } else {
+        let prev = calcR((n - 1) as u64);
+        if prev > n {
+            (prev - n) as u64
+        } else {
+            (prev + n) as u64
+        }
+    }
+}
+// </vc-code>
+
+fn main() {}
+
+}

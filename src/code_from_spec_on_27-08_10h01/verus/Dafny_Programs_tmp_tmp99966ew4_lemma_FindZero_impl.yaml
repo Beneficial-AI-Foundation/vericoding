@@ -1,0 +1,65 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+  spec fn can_reach_zero_from(a: &[i32], start: int) -> bool {
+      start < a.len() && a[start as int] <= start
+  }
+  
+  proof fn lemma_no_zero_after_gap(a: &[i32], i: int)
+      requires
+          0 <= i < a.len(),
+          forall|j: int| 0 <= j < a.len() ==> #[trigger] a[j] >= 0,
+          forall|j: int| 0 < j < a.len() ==> a[j-1] - 1 <= a[j],
+          a[i] > i,
+      ensures
+          forall|k: int| i <= k < a.len() ==> #[trigger] a[k] != 0,
+      decreases a.len() - i
+  {
+      if i < a.len() - 1 {
+          assert(a[i+1] >= a[i] - 1 > i - 1 >= 0);
+          lemma_no_zero_after_gap(a, i + 1);
+      }
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn find_zero(a: &[i32]) -> (index: i32)
+      requires
+          forall|i: int| 0 <= i < a.len() ==> #[trigger] a[i] >= 0,
+          forall|i: int| 0 < i < a.len() ==> #[trigger] a[i-1] - 1 <= a[i],
+      ensures
+          (index < 0 ==> forall|i: int| 0 <= i < a.len() ==> #[trigger] a[i] != 0),
+          (0 <= index ==> index < a.len() && a[index as int] == 0),
+  // </vc-spec>
+
+vc-code: |-
+  {
+      let mut i = 0;
+      while i < a.len()
+          invariant
+              0 <= i <= a.len(),
+              forall|j: int| 0 <= j < i ==> #[trigger] a[j] != 0,
+          decreases a.len() - i
+      {
+          if a[i] == 0 {
+              return i as i32;
+          }
+          if a[i] > i as i32 {
+              proof {
+                  lemma_no_zero_after_gap(a, i as int);
+              }
+              return -1;
+          }
+          i += 1;
+      }
+      -1
+  }
+
+vc-postamble: |-
+  fn main() {}
+  
+  }
+

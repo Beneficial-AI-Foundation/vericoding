@@ -1,0 +1,84 @@
+twostate predicate Preserved(a: array<int>, left: nat, right: nat)
+    reads a
+    requires left <= right <= a.Length
+{
+    multiset(a[left..right]) == multiset(old(a[left..right]))
+}
+
+ghost predicate Ordered(a: array<int>, left: nat, right: nat)
+    reads a
+    requires left <= right <= a.Length
+{
+    forall i: nat :: 0 < left <= i < right ==> a[i-1] <= a[i]
+}
+
+twostate predicate Sorted(a: array<int>)
+    reads a
+{
+    Ordered(a,0,a.Length) && Preserved(a,0,a.Length)
+}
+
+// <vc-helpers>
+lemma MinPreservesMultiset(a: array<int>, i: nat, j: nat, minIndex: nat)
+    requires 0 <= i <= j <= a.Length
+    requires i <= minIndex < j
+    ensures multiset(a[i..j]) == multiset(old(a[i..j]))
+{
+}
+
+lemma SwapPreservesMultiset(a: array<int>, i: nat, j: nat, k: nat)
+    requires 0 <= i <= k < j <= a.Length
+    ensures multiset(a[i..j]) == multiset(old(a[i..j]))
+{
+}
+
+lemma SortedPrefix(a: array<int>, i: nat)
+    requires 0 <= i <= a.Length
+    requires forall k: nat :: 0 <= k < i ==> (forall m: nat :: k < m < i ==> a[k] <= a[m])
+    ensures Ordered(a, 0, i)
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method SelectionSort(a: array<int>)
+    modifies a
+    ensures Sorted(a)
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+method SelectionSortImpl(a: array<int>)
+    modifies a
+    ensures Sorted(a)
+{
+    var i: nat := 0;
+    while i < a.Length
+        invariant 0 <= i <= a.Length
+        invariant Ordered(a, 0, i)
+        invariant Preserved(a, 0, a.Length)
+    {
+        var minIndex: nat := i;
+        var j: nat := i + 1;
+        while j < a.Length
+            invariant i <= minIndex < a.Length
+            invariant i < j <= a.Length
+            invariant forall k: nat :: i <= k < j ==> a[minIndex] <= a[k]
+            invariant Preserved(a, 0, a.Length)
+        {
+            if a[j] < a[minIndex] {
+                minIndex := j;
+            }
+            j := j + 1;
+        }
+        if minIndex != i {
+            var temp := a[i];
+            a[i] := a[minIndex];
+            a[minIndex] := temp;
+            SwapPreservesMultiset(a, 0, a.Length, i);
+        }
+        i := i + 1;
+    }
+}
+// </vc-code>

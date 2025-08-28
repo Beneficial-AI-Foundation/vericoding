@@ -1,0 +1,66 @@
+// <vc-helpers>
+method swap(Array: array<int>, i: int, j: int)
+  requires 0 <= i < Array.Length
+  requires 0 <= j < Array.Length
+  modifies Array
+  ensures multiset(old(Array[..])) == multiset(Array[..])
+  ensures Array[i] == old(Array[j])
+  ensures Array[j] == old(Array[i])
+  ensures forall k :: 0 <= k < Array.Length && k != i && k != j ==> Array[k] == old(Array[k])
+{
+  var temp := Array[i];
+  Array[i] := Array[j];
+  Array[j] := temp;
+}
+
+method findMin(Array: array<int>, start: int) returns (minIdx: int)
+  requires 0 <= start < Array.Length
+  ensures start <= minIdx < Array.Length
+  ensures forall k :: start <= k < Array.Length ==> Array[minIdx] <= Array[k]
+{
+  minIdx := start;
+  var i := start + 1;
+  while i < Array.Length
+    invariant start <= minIdx < Array.Length
+    invariant start <= i <= Array.Length
+    invariant forall k :: start <= k < i ==> Array[minIdx] <= Array[k]
+  {
+    if Array[i] < Array[minIdx] {
+      minIdx := i;
+    }
+    i := i + 1;
+  }
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method selectionSorted(Array: array<int>) 
+  modifies Array
+  ensures multiset(old(Array[..])) == multiset(Array[..])
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+method SelectionSort(Array: array<int>)
+  modifies Array
+  ensures multiset(old(Array[..])) == multiset(Array[..])
+  ensures forall i, j :: 0 <= i < j < Array.Length ==> Array[i] <= Array[j]
+{
+  if Array.Length <= 1 {
+    return;
+  }
+
+  var i := 0;
+  while i < Array.Length - 1
+    invariant 0 <= i < Array.Length
+    invariant multiset(old(Array[..])) == multiset(Array[..])
+    invariant forall x, y :: 0 <= x < y < i ==> Array[x] <= Array[y]
+    invariant forall x, y :: 0 <= x < i <= y < Array.Length ==> Array[x] <= Array[y]
+  {
+    var minIdx := findMin(Array, i);
+    swap(Array, i, minIdx);
+    i := i + 1;
+  }
+}
+// </vc-code>

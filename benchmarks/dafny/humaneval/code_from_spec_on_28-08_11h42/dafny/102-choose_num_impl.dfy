@@ -1,0 +1,33 @@
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+method choose_num(x : int, y : int) returns (num : int)
+  // pre-conditions-start
+  requires 0 <= x && 0 <= y
+  // pre-conditions-end
+  // post-conditions-start
+  ensures num == -1 || (num >= x && num <= y)
+  ensures num == -1 || num % 2 == 0
+  ensures num == -1 || (forall i : int :: x <= i <= y && i % 2 == 0 ==> num >= i)
+  ensures num == -1 <==> x >= y
+  // post-conditions-end
+// </vc-spec>
+// <vc-code>
+{
+  if x >= y {
+    num := -1;
+  } else {
+    var largest_even := y;
+    if y % 2 == 1 {
+      largest_even := y - 1;
+    }
+    
+    if largest_even >= x {
+      num := largest_even;
+    } else {
+      num := -1;
+    }
+  }
+}
+// </vc-code>

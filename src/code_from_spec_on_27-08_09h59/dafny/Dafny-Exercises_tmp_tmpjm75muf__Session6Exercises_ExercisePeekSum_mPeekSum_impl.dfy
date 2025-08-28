@@ -1,0 +1,90 @@
+predicate isPeek(v:array<int>,i:int)
+ reads v
+ requires 0<=i<v.Length
+ {forall k::0<=k<i ==> v[i]>=v[k]}
+
+ function peekSum(v:array<int>,i:int):int
+ decreases i 
+ reads v
+ requires 0<=i<=v.Length
+ {
+  if (i==0) then 0
+  else if isPeek(v,i-1) then v[i-1]+peekSum(v,i-1)
+  else peekSum(v,i-1)
+ }
+
+// <vc-helpers>
+lemma peekSumMonotonic(v: array<int>, i: int, j: int)
+    requires 0 <= i <= j <= v.Length
+    ensures peekSum(v, i) <= peekSum(v, j)
+{
+    if i == j {
+        return;
+    }
+    peekSumMonotonic(v, i, j-1);
+    if isPeek(v, j-1) {
+        assert peekSum(v, j) == v[j-1] + peekSum(v, j-1);
+        assert peekSum(v, j-1) <= peekSum(v, j);
+        assert peekSum(v, i) <= peekSum(v, j-1) <= peekSum(v, j);
+    } else {
+        assert peekSum(v, j) == peekSum(v, j-1);
+    }
+}
+
+lemma peekSumIncremental(v: array<int>, i: int)
+    requires 0 <= i < v.Length
+    ensures peekSum(v, i+1) == (if isPeek(v, i) then v[i] + peekSum(v, i) else peekSum(v, i))
+{
+}
+
+function maxInRange(v: array<int>, start: int, end: int): int
+    reads v
+    requires 0 <= start < end <= v.Length
+    decreases end - start
+{
+    if start == end - 1 then v[start]
+    else if v[start] >= maxInRange(v, start+1, end) then v[start]
+    else maxInRange(v, start+1, end)
+}
+
+lemma isPeekCharacterization(v: array<int>, i: int, maxSoFar: int)
+    requires 0 <= i < v.Length
+    requires forall k :: 0 <= k <= i ==> v[k] <= maxSoFar
+    requires v[i] == maxSoFar
+    ensures isPeek(v, i)
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method mPeekSum(v:array<int>) returns (sum:int)
+ requires  v.Length>0
+ ensures sum==peekSum(v,v.Length)
+ //Implement and verify an O(v.Length) algorithm to solve this problem
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    sum := 0;
+    var maxSoFar := v[0];
+    var i := 0;
+    
+    while i < v.Length
+        invariant 0 <= i <= v.Length
+        invariant sum == peekSum(v, i)
+        invariant i > 0 ==> (forall k :: 0 <= k < i ==> v[k] <= maxSoFar)
+        invariant i > 0 ==> (exists k :: 0 <= k < i && v[k] == maxSoFar)
+        invariant i == 0 ==> maxSoFar == v[0]
+    {
+        if v[i] >= maxSoFar {
+            isPeekCharacterization(v, i, if i == 0 then v[0] else maxSoFar);
+            sum := sum + v[i];
+            maxSoFar := v[i];
+        }
+        
+        i := i + 1;
+    }
+}
+// </vc-code>

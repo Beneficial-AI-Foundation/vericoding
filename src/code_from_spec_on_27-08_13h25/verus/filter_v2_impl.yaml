@@ -1,0 +1,92 @@
+vc-description: |-
+
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus!{
+
+vc-helpers: |-
+  proof fn lemma_seq_take_ascend<T>(v: Seq<T>, i: int)
+      requires
+          0 < i <= v.len(),
+      ensures
+          v.take(i as int).drop_last() == v.take(i-1),
+  {
+      assert(v.take(i as int).drop_last() =~= v.take(i-1));
+  }
+  
+  proof fn lemma_seq_take_all<T>(v: Seq<T>)
+      ensures
+          v == v.take(v.len() as int),
+  {
+      assert(v =~= v.take(v.len() as int));
+  }
+  
+  proof fn lemma_seq_filter_empty<T>(s: Seq<T>, f: spec_fn(T) -> bool)
+      ensures
+          s.filter(f).len() == 0 ==> forall|i: int| 0 <= i < s.len() ==> !f(s[i]),
+  {
+      if s.len() > 0 && s.filter(f).len() == 0 {
+          assert(forall|i: int| 0 <= i < s.len() ==> !f(s[i]));
+      }
+  }
+  
+  proof fn lemma_seq_filter_append<T>(s1: Seq<T>, s2: Seq<T>, f: spec_fn(T) -> bool)
+      ensures
+          (s1 + s2).filter(f) == s1.filter(f) + s2.filter(f),
+  {
+      let combined = (s1 + s2).filter(f);
+      let left = s1.filter(f);
+      let right = s2.filter(f);
+      let appended = left + right;
+      assert(combined.len() == appended.len());
+      assert(forall|i: int| 0 <= i < combined.len() ==> combined[i] == appended[i]);
+  }
+
+vc-spec: |-
+  fn myfun4(x: &Vec<u64>, y: &mut Vec<u64>)
+      // pre-conditions-start
+      requires 
+          old(y).len() == 0,
+      // pre-conditions-end
+      // post-conditions-start
+      ensures 
+          y@ == x@.filter(|k:u64| k%3 == 0),
+      // post-conditions-end
+
+vc-code: |-
+  {
+      let mut i: usize = 0;
+      while i < x.len()
+          invariant
+              i <= x.len(),
+              y@ == x@.take(i as int).filter(|k: u64| k % 3 == 0),
+      {
+          if (x@[i as int] % 3) as int == 0 {
+              y.push(x@[i as int]);
+          }
+          proof {
+              lemma_seq_take_ascend(x@, (i + 1) as int);
+              if i + 1 < x.len() {
+                  lemma_seq_take_ascend(x@, (i + 2) as int);
+              }
+              lemma_seq_filter_append(x@.take(i as int), x@.subrange(i as int, (i + 1) as int), |k: u64| k % 3 == 0);
+              if (x@[i as int] % 3) as int != 0 {
+                  assert(x@.subrange(i as int, (i + 1) as int).filter(|k: u64| k % 3 == 0).len() == 0);
+                  lemma_seq_filter_empty(x@.subrange(i as int, (i + 1) as int), |k: u64| k % 3 == 0);
+              }
+          }
+          i = i + 1;
+      }
+      proof {
+          lemma_seq_take_all(x@);
+      }
+  }
+
+vc-postamble: |-
+  
+  }
+  
+  fn main() {}
+

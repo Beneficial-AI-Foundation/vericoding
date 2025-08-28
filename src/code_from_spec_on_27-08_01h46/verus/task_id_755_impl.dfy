@@ -1,0 +1,157 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn min_spec(seq: Seq<i32>) -> (result: int)
+    recommends
+        0 < seq.len(),
+    decreases seq.len(),
+{
+    if seq.len() == 1 {
+        seq[0] as int
+    } else if seq.len() == 0 {
+        0
+    } else {
+        let later_min = min_spec(seq.drop_first());
+        if seq[0] <= later_min {
+            seq[0] as int
+        } else {
+            later_min as int
+        }
+    }
+}
+// pure-end
+
+// <vc-helpers>
+spec fn min_at_index(seq: Seq<i32>, idx: int) -> bool {
+    0 <= idx < seq.len() && seq[idx] == min_spec(seq)
+}
+
+spec fn is_second_smallest_at(seq: Seq<i32>, min_idx: int, second_idx: int) -> bool {
+    0 <= second_idx < seq.len() && 
+    second_idx != min_idx &&
+    forall|k: int| 0 <= k < seq.len() && k != min_idx ==> seq[k] >= seq[second_idx]
+}
+
+proof fn min_spec_properties(seq: Seq<i32>)
+    requires 0 < seq.len()
+    ensures forall|i: int| 0 <= i < seq.len() ==> seq[i] >= min_spec(seq)
+    decreases seq.len()
+{
+    if seq.len() == 1 {
+    } else {
+        min_spec_properties(seq.drop_first());
+        assert(seq[0] >= min_spec(seq));
+        assert(forall|i: int| 1 <= i < seq.len() ==> seq[i] == seq.drop_first()[i - 1]);
+        assert(forall|i: int| 1 <= i < seq.len() ==> seq[i] >= min_spec(seq.drop_first()));
+        if seq[0] <= min_spec(seq.drop_first()) {
+            assert(min_spec(seq) == seq[0]);
+            assert(forall|i: int| 1 <= i < seq.len() ==> seq[i] >= seq[0]);
+        } else {
+            assert(min_spec(seq) == min_spec(seq.drop_first()));
+        }
+    }
+}
+
+proof fn min_exists(seq: Seq<i32>)
+    requires 0 < seq.len()
+    ensures exists|i: int| 0 <= i < seq.len() && seq[i] == min_spec(seq)
+    decreases seq.len()
+{
+    if seq.len() == 1 {
+        assert(seq[0] == min_spec(seq));
+    } else {
+        min_exists(seq.drop_first());
+        if seq[0] <= min_spec(seq.drop_first()) {
+            assert(seq[0] == min_spec(seq));
+        } else {
+            assert(exists|i: int| 1 <= i < seq.len() && seq[i] == min_spec(seq));
+        }
+    }
+}
+
+proof fn min_is_minimum(seq: Seq<i32>, min_idx: usize)
+    requires 
+        0 < seq.len(),
+        0 <= min_idx < seq.len(),
+        forall|k: int| 0 <= k < seq.len() ==> seq[k] >= seq[min_idx as int]
+    ensures seq[min_idx as int] == min_spec(seq)
+    decreases seq.len()
+{
+    min_spec_properties(seq);
+    min_exists(seq);
+    assert(seq[min_idx as int] >= min_spec(seq));
+    let witness = choose|i: int| 0 <= i < seq.len() && seq[i] == min_spec(seq);
+    assert(seq[witness] >= seq[min_idx as int]);
+    assert(seq[min_idx as int] == min_spec(seq));
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn second_smallest(numbers: &Vec<i32>) -> (indices: (usize, usize))
+    // pre-conditions-start
+    requires
+        numbers.len() >= 2,
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        forall|k: int|
+            0 <= k < numbers.len() && k != indices.0 && numbers[indices.0 as int] == min_spec(
+                numbers@,
+            ) ==> (#[trigger] numbers[k] >= numbers[indices.1 as int]),
+        exists|k: int|
+            0 <= k < numbers.len() && k != indices.0 && (#[trigger] numbers[k]
+                == numbers[indices.1 as int]),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut min_idx: usize = 0;
+    let mut i = 1;
+    
+    while i < numbers.len()
+        invariant
+            1 <= i <= numbers.len(),
+            0 <= min_idx < numbers.len(),
+            forall|k: int| 0 <= k < i ==> numbers[k] >= numbers[min_idx as int],
+        decreases numbers.len() - i,
+    {
+        if numbers[i] < numbers[min_idx] {
+            min_idx = i;
+        }
+        i += 1;
+    }
+    
+    proof {
+        min_spec_properties(numbers@);
+        min_exists(numbers@);
+        min_is_minimum(numbers@, min_idx);
+    }
+    
+    let mut second_idx: usize = if min_idx == 0 { 1 } else { 0 };
+    i = 0;
+    
+    while i < numbers.len()
+        invariant
+            0 <= i <= numbers.len(),
+            0 <= min_idx < numbers.len(),
+            0 <= second_idx < numbers.len(),
+            second_idx != min_idx,
+            numbers[min_idx as int] == min_spec(numbers@),
+            forall|k: int| 0 <= k < i && k != min_idx ==> numbers[k] >= numbers[second_idx as int],
+        decreases numbers.len() - i,
+    {
+        if i != min_idx && numbers[i] < numbers[second_idx] {
+            second_idx = i;
+        }
+        i += 1;
+    }
+    
+    (min_idx, second_idx)
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

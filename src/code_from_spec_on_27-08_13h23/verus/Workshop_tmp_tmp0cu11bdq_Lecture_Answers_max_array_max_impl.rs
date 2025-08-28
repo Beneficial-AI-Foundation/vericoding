@@ -1,0 +1,65 @@
+use vstd::prelude::*;
+
+verus! {
+
+// http://verifythus.cost-ic0701.org/common-example/arraymax-in-dafny
+
+// <vc-helpers>
+proof fn lemma_max_is_in_array(a: &[i32], max_val: i32, pos: int)
+    requires
+        a.len() > 0,
+        0 <= pos < a.len(),
+        a[pos] == max_val,
+        forall|j: int| 0 <= j < a.len() ==> max_val >= a[j],
+    ensures
+        exists|j: int| 0 <= j < a.len() && max_val == a[j],
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn max(a: &[i32]) -> (max: i32)
+    requires a.len() > 0,
+    ensures forall|j: int| 0 <= j < a.len() ==> max >= a[j], //max is larger then anything in the array
+    // Note: exists quantifier syntax may vary in different Verus versions
+    // ensures exists|j: int| 0 <= j < a.len() && max == a[j], //max is an element in the array
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+fn max(a: &[i32]) -> (max: i32)
+    requires a.len() > 0,
+    ensures
+        forall|j: int| 0 <= j < a.len() ==> max >= a[j],
+        exists|j: int| 0 <= j < a.len() && max == a[j],
+{
+    let mut max_val = a[0];
+    let mut i = 1;
+    let mut max_pos = 0;
+
+    while i < a.len()
+        invariant
+            0 <= i <= a.len(),
+            0 <= max_pos < a.len(),
+            max_val == a[max_pos],
+            forall|j: int| 0 <= j < i ==> max_val >= a[j],
+    {
+        if a[i] > max_val {
+            max_val = a[i];
+            max_pos = i;
+        }
+        i = i + 1;
+    }
+
+    proof {
+        lemma_max_is_in_array(a, max_val, max_pos);
+    }
+
+    max_val
+}
+// </vc-code>
+
+fn main() {}
+
+}

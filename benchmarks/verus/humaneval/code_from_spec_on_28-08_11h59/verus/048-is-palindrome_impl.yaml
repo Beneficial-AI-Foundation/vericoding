@@ -1,0 +1,63 @@
+vc-description: |-
+  /--
+  function_signature: "def is_palindrome(string: str) -> Bool"
+  docstring: |
+      Checks if given string is a palindrome
+  test_cases:
+    - input: ""
+      expected_output: True
+    - input: "aba"
+      expected_output: True
+    - input: "aaaaa"
+      expected_output: "True"
+    - input: "zbcd"
+      expected_output: "False"
+  -/
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+  spec fn is_valid_palindrome(text: &str) -> bool {
+      forall|i: int|
+          0 <= i < text@.len() ==> #[trigger] text@[i] == text@[text@.len() - 1 - i]
+  }
+
+vc-spec: |-
+  fn is_palindrome(text: &str) -> (result: bool)
+      // post-conditions-start
+      ensures
+          result == forall|i: int|
+              0 <= i < text@.len() ==> #[trigger] text@[i] == text@[text@.len() - 1 - i],
+      // post-conditions-end
+
+vc-code: |-
+  {
+      let len = text@.len();
+      
+      if len == 0 {
+          return true;
+      }
+      
+      let mut i = 0nat;
+      while i < len / 2
+          invariant
+              0 <= i <= len / 2,
+              forall|j: int| 0 <= j < i ==> text@[j] == text@[len - 1 - j],
+      {
+          if text.as_bytes()[i as usize] != text.as_bytes()[(len - 1 - i) as usize] {
+              return false;
+          }
+          i += 1;
+      }
+      
+      true
+  }
+
+vc-postamble: |-
+  
+  }
+  fn main() {}
+

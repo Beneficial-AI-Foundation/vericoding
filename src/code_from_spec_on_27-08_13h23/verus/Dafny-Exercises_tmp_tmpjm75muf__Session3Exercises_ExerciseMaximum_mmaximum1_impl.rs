@@ -1,0 +1,57 @@
+use vstd::prelude::*;
+
+verus! {
+
+//Algorithm 1: From left to right return the first
+
+// <vc-helpers>
+// No updates needed for helpers as the error is in the code section
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn mmaximum1(v: &[i32]) -> (i: usize)
+    requires v.len() > 0,
+    ensures 
+        0 <= i < v.len(),
+        forall|k: int| 0 <= k < v.len() ==> v[i as int] >= v[k],
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+fn mmaximum1(v: &[i32]) -> (i: usize)
+    requires v.len() > 0,
+    ensures 
+        0 <= i < v.len(),
+        forall|k: int| 0 <= k < v.len() ==> v[i as int] >= v[k],
+{
+    let mut max_idx: usize = 0;
+    let mut i: usize = 1;
+
+    while i < v.len()
+        invariant
+            0 <= max_idx < v.len(),
+            0 <= i <= v.len(),
+            forall|k: int| 0 <= k < i ==> v[max_idx as int] >= v[k],
+    {
+        if v[i] > v[max_idx] {
+            max_idx = i;
+        }
+        i = i + 1;
+    }
+    max_idx
+}
+// </vc-code>
+
+//Algorithm 2: From right to left return the last
+
+
+
+
+//Algorithm : from left to right
+//Algorithm : from right to left
+
+fn main() {
+}
+
+}

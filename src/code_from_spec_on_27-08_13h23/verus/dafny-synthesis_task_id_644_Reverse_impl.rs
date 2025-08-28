@@ -1,0 +1,41 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+// No additional helpers needed for this implementation
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn reverse(a: &mut Vec<i32>)
+    ensures forall|k: int| 0 <= k < old(a).len() ==> a[k] == old(a)[old(a).len() as int - 1 - k]
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+fn reverse(a: &mut Vec<i32>)
+    ensures forall|k: int| 0 <= k < old(a).len() ==> a[k] == old(a)[old(a).len() as int - 1 - k]
+{
+    let mut i: usize = 0;
+    let len = a.len();
+    while i < len / 2
+        invariant
+            0 <= i <= len / 2,
+            a.len() == len,
+            forall|k: int| 0 <= k < i ==> a[k] == old(a)[len as int - 1 - k],
+            forall|k: int| len as int - i <= k < len as int ==> a[k] == old(a)[k],
+            forall|k: int| i <= k < len as int - i ==> a[k] == old(a)[k]
+    {
+        let temp = a[i];
+        a.set(i, a[len - 1 - i]);
+        a.set(len - 1 - i, temp);
+        i = i + 1;
+    }
+}
+// </vc-code>
+
+fn main() {
+}
+
+}

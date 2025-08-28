@@ -1,0 +1,106 @@
+method encode_cyclic(s: seq<int>) returns (res: seq<int>) 
+    // post-conditions-start
+    ensures |s| == |res|
+    ensures forall i :: 0 <= i < |s| - |s| % 3 ==> (i % 3 == 0 ==> res[i] == s[i + 1])
+    ensures forall i :: 0 <= i < |s| - |s| % 3 ==> (i % 3 == 1 ==> res[i] == s[i + 1])
+    ensures forall i :: 0 <= i < |s| - |s| % 3 ==> (i % 3 == 2 ==> res[i] == s[i - 2])
+    ensures forall i :: |s| - |s| % 3 <= i < |s| ==> (res[i] == s[i])
+    // post-conditions-end
+{
+  assume{:axiom} false;
+}
+
+// <vc-helpers>
+lemma modulo_properties(i: int, n: int)
+    requires n > 0
+    requires i >= 0
+    ensures i % n >= 0
+    ensures i % n < n
+{
+}
+
+lemma cyclic_bounds_helper(s: seq<int>, i: int)
+    requires 0 <= i < |s| - |s| % 3
+    requires i % 3 == 0
+    ensures i + 2 < |s| - |s| % 3
+    ensures 0 <= i + 2 < |s|
+{
+    var complete_groups := |s| - |s| % 3;
+    assert i < complete_groups;
+    assert i % 3 == 0;
+    assert complete_groups % 3 == 0;
+    assert i + 2 < complete_groups;
+}
+
+lemma cyclic_bounds_helper2(s: seq<int>, i: int)
+    requires 0 <= i < |s| - |s| % 3
+    requires i % 3 == 1
+    ensures i - 1 >= 0
+    ensures 0 <= i - 1 < |s|
+{
+    assert i >= 1;
+}
+// </vc-helpers>
+
+// <vc-spec>
+method decode_cyclic(s: seq<int>) returns (res: seq<int>)
+    // post-conditions-start
+    ensures |s| == |res|
+    ensures forall i :: |s| - |s| % 3 <= i < |s| ==> (res[i] == s[i])
+    ensures forall i :: 0 <= i < |s| - |s| % 3 ==> (i % 3 == 0 ==> res[i] == s[i + 2])
+    ensures forall i :: 0 <= i < |s| - |s| % 3 ==> (i % 3 == 1 ==> res[i] == s[i - 1])
+    // post-conditions-end
+// </vc-spec>
+// <vc-code>
+{
+    var n := |s|;
+    
+    if n == 0 {
+        res := [];
+        return;
+    }
+    
+    var arr := new int[n];
+    var complete_groups := n - n % 3;
+    
+    var i := 0;
+    while i < complete_groups
+        invariant 0 <= i <= complete_groups
+        invariant i <= n
+        invariant arr.Length == n
+        invariant forall j :: 0 <= j < i ==> (
+            (j % 3 == 0 ==> arr[j] == s[j + 2]) &&
+            (j % 3 == 1 ==> arr[j] == s[j - 1]) &&
+            (j % 3 == 2 ==> arr[j] == s[j - 1])
+        )
+    {
+        if i % 3 == 0 {
+            cyclic_bounds_helper(s, i);
+            arr[i] := s[i + 2];
+        } else if i % 3 == 1 {
+            cyclic_bounds_helper2(s, i);
+            arr[i] := s[i - 1];
+        } else {
+            assert i % 3 == 2;
+            arr[i] := s[i - 1];
+        }
+        i := i + 1;
+    }
+    
+    while i < n
+        invariant complete_groups <= i <= n
+        invariant arr.Length == n
+        invariant forall j :: 0 <= j < complete_groups ==> (
+            (j % 3 == 0 ==> arr[j] == s[j + 2]) &&
+            (j % 3 == 1 ==> arr[j] == s[j - 1]) &&
+            (j % 3 == 2 ==> arr[j] == s[j - 1])
+        )
+        invariant forall j :: complete_groups <= j < i ==> arr[j] == s[j]
+    {
+        arr[i] := s[i];
+        i := i + 1;
+    }
+    
+    res := arr[..];
+}
+// </vc-code>

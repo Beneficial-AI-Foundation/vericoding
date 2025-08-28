@@ -1,0 +1,67 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn is_upper_case(c: char) -> bool {
+      65 <= c as int <= 90
+  }
+
+vc-helpers: |-
+  #[verifier::external]
+  spec fn spec_str_len(s: &str) -> nat;
+  
+  #[verifier::external_body]
+  fn str_len(s: &str) -> (len: usize)
+      ensures len as nat == spec_str_len(s),
+              len as int == s@.len()
+  {
+      s.len()
+  }
+  
+  #[verifier::external_body]
+  fn str_get_char(s: &str, i: usize) -> (c: char)
+      requires i < spec_str_len(s)
+      ensures c == s@[i as int]
+  {
+      s.chars().nth(i).unwrap()
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn count_uppercase(s: &str) -> (count: usize)
+      ensures 
+          count >= 0,
+          count as int == s@.filter(|c: char| is_upper_case(c)).len(),
+  // </vc-spec>
+
+vc-code: |-
+  {
+      let mut count = 0;
+      let mut i = 0;
+      let len = str_len(s);
+      while i < len
+          invariant
+              0 <= i <= len,
+              len as int == s@.len(),
+              count as int == s@.subrange(0, i as int).filter(|c: char| 65 <= c as int <= 90).len(),
+      {
+          let c = str_get_char(s, i);
+          if 65 <= c as int && c as int <= 90 {
+              count += 1;
+          }
+          i += 1;
+      }
+      
+      proof {
+          assert(s@.subrange(0, s@.len() as int) == s@);
+      }
+      
+      count
+  }
+
+vc-postamble: |-
+  fn main() {}
+  
+  }
+

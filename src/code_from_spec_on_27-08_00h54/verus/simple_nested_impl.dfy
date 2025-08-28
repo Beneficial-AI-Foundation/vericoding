@@ -1,0 +1,73 @@
+use vstd::prelude::*;
+
+verus!{
+
+// <vc-helpers>
+spec fn seq_sum(s: Seq<i32>, start: int, end: int) -> int
+    decreases end - start
+{
+    if start >= end {
+        0
+    } else {
+        s[start] + seq_sum(s, start + 1, end)
+    }
+}
+
+proof fn seq_sum_bounds(s: Seq<i32>, start: int, end: int)
+    requires 
+        0 <= start <= end <= s.len(),
+        forall |k: int| start <= k < end ==> k <= #[trigger] s[k] <= k + 1,
+    ensures
+        (end - start) <= seq_sum(s, start, end) <= 2 * (end - start),
+    decreases end - start
+{
+    if start >= end {
+    } else {
+        seq_sum_bounds(s, start + 1, end);
+        assert(start < s.len());
+        assert(start <= s[start] <= start + 1);
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn simple_nested(a: &mut Vec<i32>, b: &Vec<i32>, N: i32) -> (sum: i32)
+    // pre-conditions-start
+    requires 
+        forall |k:int| k <= #[trigger] b[k] <= k + 1,
+        old(a).len() == N,
+        b.len() == N,
+        N <= 0x3FFF_FFFF,
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        N <= sum <= 2*N,
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut sum = 0;
+    let mut i = 0;
+    while i < N
+        invariant
+            0 <= i <= N,
+            i <= sum <= 2 * i,
+            forall |k: int| 0 <= k < b@.len() ==> k <= #[trigger] b@[k] <= k + 1,
+            b@.len() == N,
+            sum <= 0x7FFF_FFFE,
+        decreases N - i
+    {
+        assert(0 <= i < N);
+        assert(i < b@.len());
+        assert(i <= b@[i as int] <= i + 1);
+        sum = sum + b[i as usize];
+        i += 1;
+    }
+    sum
+}
+// </vc-code>
+
+}
+
+fn main() {}

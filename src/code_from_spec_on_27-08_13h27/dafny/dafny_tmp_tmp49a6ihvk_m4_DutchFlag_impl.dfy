@@ -1,0 +1,97 @@
+datatype Color = Red | White | Blue
+
+predicate Below(c: Color, d: Color)
+{
+    c == Red || c == d || d == Blue
+}
+
+// <vc-helpers>
+function CountColor(a: array<Color>, c: Color, lo: int, hi: int): int
+  requires 0 <= lo <= hi <= a.Length
+  reads a
+  decreases hi - lo
+{
+  if lo == hi then 0 else if a[lo] == c then 1 + CountColor(a, c, lo + 1, hi) else CountColor(a, c, lo + 1, hi)
+}
+
+lemma ColorPartitionLemma(a: array<Color>, lo: int, mid: int, hi: int, c: Color)
+  requires 0 <= lo <= mid <= hi <= a.Length
+  requires forall i :: lo <= i < mid ==> a[i] == c
+  requires forall i :: mid <= i < hi ==> a[i] != c
+  ensures CountColor(a, c, lo, hi) == mid - lo
+  decreases hi - lo
+{
+  if lo == hi {
+    assert mid == lo;
+    assert CountColor(a, c, lo, hi) == 0;
+    assert mid - lo == 0;
+  } else if lo < mid {
+    assert a[lo] == c;
+    ColorPartitionLemma(a, lo + 1, mid, hi, c);
+    assert CountColor(a, c, lo, hi) == 1 + CountColor(a, c, lo + 1, hi);
+    assert CountColor(a, c, lo + 1, hi) == mid - (lo + 1);
+    assert CountColor(a, c, lo, hi) == mid - lo;
+  } else {
+    assert lo == mid;
+    assert forall i :: lo <= i < hi ==> a[i] != c;
+    if lo < hi {
+      assert a[lo] != c;
+      ColorPartitionLemma(a, lo + 1, mid, hi, c);
+      assert CountColor(a, c, lo, hi) == CountColor(a, c, lo + 1, hi);
+      assert CountColor(a, c, lo, hi) == 0;
+    } else {
+      assert CountColor(a, c, lo, hi) == 0;
+    }
+    assert mid - lo == 0;
+  }
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method DutchFlag(a: array<Color>)
+    modifies a
+    ensures forall i, j :: 0 <= i < j < a.Length ==> Below(a[i], a[j])
+    ensures multiset(a[..]) == multiset(old(a[..]))
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+method DutchFlagImpl(a: array<Color>)
+  modifies a
+  ensures forall i, j :: 0 <= i < j < a.Length ==> Below(a[i], a[j])
+  ensures multiset(a[..]) == multiset(old(a[..]))
+{
+  if a.Length == 0 { return; }
+  
+  var i := 0;
+  var j := 0;
+  var k := a.Length - 1;
+  
+  while j <= k
+    invariant 0 <= i <= j <= k + 1 <= a.Length
+    invariant forall m :: 0 <= m < i ==> a[m] == Red
+    invariant forall m :: i <= m < j ==> a[m] == White
+    invariant forall m :: k < m < a.Length ==> a[m] == Blue
+    invariant multiset(a[..]) == multiset(old(a[..]))
+    decreases k - j
+  {
+    match a[j]
+    {
+      case Red =>
+        if i != j {
+          a[i], a[j] := a[j], a[i];
+        }
+        i := i + 1;
+        j := j + 1;
+      case White =>
+        j := j + 1;
+      case Blue =>
+        if j != k {
+          a[j], a[k] := a[k], a[j];
+        }
+        k := k - 1;
+    }
+  }
+}
+// </vc-code>

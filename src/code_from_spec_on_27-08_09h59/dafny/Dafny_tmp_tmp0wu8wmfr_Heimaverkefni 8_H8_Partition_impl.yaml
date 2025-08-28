@@ -1,0 +1,115 @@
+vc-preamble: |-
+  // Höfundur spurningar:  Snorri Agnarsson, snorri@hi.is
+  // Permalink spurningar: https://rise4fun.com/Dafny/GW7a
+  
+  // Höfundur lausnar:     Alexander Guðmundsson
+  // Permalink lausnar:    https://www.rise4fun.com/Dafny/JPGct
+  
+  // Klárið að forrita föllin tvö.
+
+vc-helpers: |-
+  lemma MultisetPartitionLemma(s: seq<int>, pivot: int, pre: multiset<int>, post: multiset<int>)
+    requires pivot in multiset(s)
+    requires multiset(s) == pre + multiset{pivot} + post
+    requires forall z | z in pre :: z <= pivot
+    requires forall z | z in post :: z >= pivot
+    ensures |multiset(s)| > 0
+  {
+  }
+  
+  lemma MultisetFromSeqNonEmpty(s: seq<int>)
+    requires |s| > 0
+    ensures |multiset(s)| > 0
+  {
+  }
+  
+  lemma SeqToMultisetEquality(s: seq<int>)
+    ensures multiset(s) == multiset{}
+    requires |s| == 0
+  {
+  }
+  
+  lemma SeqSliceMultisetProperty(s: seq<int>, i: int)
+    requires 0 <= i <= |s|
+    ensures multiset(s) == multiset(s[..i]) + multiset(s[i..])
+  {
+    if i == 0 {
+      assert s[..0] == [];
+      assert s[0..] == s;
+    } else if i == |s| {
+      assert s[..|s|] == s;
+      assert s[|s|..] == [];
+    } else {
+      assert s == s[..i] + s[i..];
+    }
+  }
+  
+  lemma SliceMultisetHelper(s: seq<int>, i: int)
+    requires 0 <= i < |s|
+    ensures multiset(s[..i+1]) == multiset(s[..i]) + multiset{s[i]}
+  {
+    assert s[..i+1] == s[..i] + [s[i]];
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  method Partition( m: multiset<int> )
+          returns( pre: multiset<int>, p: int, post: multiset<int> )
+      requires |m| > 0;
+      ensures p in m;
+      ensures m == pre+multiset{p}+post;
+       ensures forall z | z in pre :: z <= p;
+       ensures forall z | z in post :: z >= p;
+  // </vc-spec>
+
+vc-code: |-
+  {
+    var s := [];
+    var temp := m;
+    
+    while |temp| > 0
+      decreases |temp|
+      invariant multiset(s) + temp == m
+    {
+      var x :| x in temp;
+      s := s + [x];
+      temp := temp - multiset{x};
+    }
+    
+    assert temp == multiset{};
+    assert multiset(s) + multiset{} == m;
+    assert multiset(s) == m;
+    
+    p := s[0];
+    pre := multiset{};
+    post := multiset{};
+    
+    var i := 1;
+    while i < |s|
+      invariant 1 <= i <= |s|
+      invariant p == s[0]
+      invariant p in m
+      invariant multiset(s) == multiset(s[..i]) + multiset(s[i..])
+      invariant pre + multiset{p} + post == multiset(s[..i])
+      invariant forall z | z in pre :: z <= p
+      invariant forall z | z in post :: z >= p
+    {
+      if s[i] <= p {
+        pre := pre + multiset{s[i]};
+      } else {
+        post := post + multiset{s[i]};
+      }
+      i := i + 1;
+      SeqSliceMultisetProperty(s, i);
+    }
+    
+    SeqSliceMultisetProperty(s, i);
+    assert i == |s|;
+    assert multiset(s[i..]) == multiset{};
+    assert pre + multiset{p} + post == multiset(s);
+    assert pre + multiset{p} + post == m;
+  }
+
+vc-postamble: |-
+
+

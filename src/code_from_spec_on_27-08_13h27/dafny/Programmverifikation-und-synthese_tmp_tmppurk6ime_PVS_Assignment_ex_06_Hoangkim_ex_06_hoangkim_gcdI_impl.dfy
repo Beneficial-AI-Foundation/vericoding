@@ -1,0 +1,74 @@
+//Problem01
+//a)
+ghost function gcd(x: int, y: int): int
+    requires x > 0 && y > 0
+{
+    if x == y then x
+    else if x > y then gcd(x - y, y)
+    else gcd(x, y - x)
+}
+
+//b)
+ghost function gcd'(x: int, y: int): int
+    requires x > 0 && y > 0
+    decreases if x > y then x else y
+{
+    if x == y then x
+    else if x > y then gcd'(x - y, y)
+    else gcd(y, x)
+}
+
+// <vc-helpers>
+lemma gcdSymmetry(x: int, y: int)
+  requires x > 0 && y > 0
+  ensures gcd(x, y) == gcd(y, x)
+  decreases if x > y then x else y
+{
+  if x == y {
+  } else if x > y {
+    calc {
+      gcd(x, y);
+      gcd(x - y, y);
+      { gcdSymmetry(x - y, y); }
+      gcd(y, x - y);
+    }
+  } else {
+    calc {
+      gcd(x, y);
+      gcd(y - x, x);
+      { gcdSymmetry(y - x, x); }
+      gcd(x, y - x);
+    }
+  }
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method gcdI(m: int, n: int) returns (d: int)
+requires  m > 0 && n > 0 
+ensures d == gcd(m, n);
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+method GcdI(m: int, n: int) returns (d: int)
+  requires m > 0 && n > 0
+  ensures d == gcd(m, n)
+{
+  var a := m;
+  var b := n;
+  while a != b
+    decreases if a > b then a else b
+    invariant a > 0 && b > 0
+    invariant gcd(a, b) == gcd(m, n)
+  {
+    if a > b {
+      a := a - b;
+    } else {
+      b := b - a;
+    }
+  }
+  d := a;
+}
+// </vc-code>

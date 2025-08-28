@@ -1,0 +1,38 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+
+vc-spec: |-
+  // <vc-spec>
+  fn extract_rear_chars(l: &Vec<Vec<char>>) -> (r: Vec<char>)
+      requires forall|i: int| 0 <= i < l.len() ==> l[i].len() > 0
+      ensures 
+          r.len() == l.len()
+          && forall|i: int| 0 <= i < l.len() ==> r[i] == l[i][l[i].len() - 1]
+  {
+  // </vc-spec>
+
+vc-code: |-
+  let mut result = Vec::new();
+  for i in 0..l.len()
+      invariant
+          result.len() == i,
+          forall|j: int| 0 <= j < i ==> result@[j] == l@[j]@[l@[j].len() - 1]
+  {
+      let last_char = l@[i]@[l@[i].len() - 1];
+      result.push(last_char);
+  }
+  result
+  }
+
+vc-postamble: |-
+  
+  fn main() {
+  }
+  
+  }
+

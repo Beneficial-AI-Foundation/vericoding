@@ -1,0 +1,146 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  //Exercicio 1.a)
+  spec fn sum(a: Seq<int>, i: int, j: int) -> int
+      recommends 0 <= i <= j <= a.len()
+      decreases j when 0 <= i <= j <= a.len()
+  {
+      if i == j {
+          0
+      } else {
+          a[j - 1] + sum(a, i, j - 1)
+      }
+  }
+  
+  //Exercicio 1.b)
+  
+  //Exercicio 1.c)
+  
+  
+  spec fn is_prefix_sum_for(a: Seq<int>, c: Seq<int>) -> bool {
+      a.len() + 1 == c.len()
+      && c[0] == 0
+      && forall|j: int| 1 <= j <= a.len() ==> c[j] == sum(a, 0, j)
+  }
+  
+  ///Exercicio 2.
+  #[derive(PartialEq, Eq)]
+  enum List<T> {
+      Nil,
+      Cons { head: T, tail: Box<List<T>> }
+  }
+  
+  fn from_array<T: Copy>(a: &[T]) -> (l: List<T>)
+      requires a.len() > 0
+      ensures forall|j: int| 0 <= j < a.len() ==> mem(a@[j], l)
+  {
+      assume(false);
+      List::Nil
+  }
+  
+  spec fn mem<T>(x: T, l: List<T>) -> bool
+      decreases l
+  {
+      match l {
+          List::Nil => false,
+          List::Cons { head: y, tail: r } => if x == y { true } else { mem(x, *r) }
+      }
+  }
+
+vc-helpers: |-
+  spec fn prefix_sum(a: Seq<int>) -> Seq<int>
+      decreases a.len()
+  {
+      if a.len() == 0 {
+          seq![0]
+      } else {
+          let prev = prefix_sum(a.drop_last());
+          prev.push(prev.last() + a.last())
+      }
+  }
+  
+  proof fn prefix_sum_correct(a: Seq<int>)
+      ensures is_prefix_sum_for(a, prefix_sum(a))
+      decreases a.len()
+  {
+      if a.len() == 0 {
+          assert(prefix_sum(a) == seq![0]);
+          assert(is_prefix_sum_for(a, prefix_sum(a)));
+      } else {
+          let prev = prefix_sum(a.drop_last());
+          prefix_sum_correct(a.drop_last());
+          assert(is_prefix_sum_for(a.drop_last(), prev));
+          let curr = prefix_sum(a);
+          assert(curr == prev.push(prev.last() + a.last()));
+          assert(curr.len() == a.len() + 1);
+          assert(curr[0] == 0);
+          assert(forall|j: int| 1 <= j <= a.len() ==> {
+              if j == a.len() {
+                  curr[j] == prev.last() + a.last() && prev.last() == sum(a.drop_last(), 0, j - 1)
+                  && curr[j] == sum(a.drop_last(), 0, j - 1) + a.last()
+                  && curr[j] == sum(a, 0, j)
+              } else {
+                  curr[j] == prev[j] && prev[j] == sum(a.drop_last(), 0, j)
+                  && sum(a.drop_last(), 0, j) == sum(a, 0, j)
+              }
+          });
+      }
+  }
+  
+  proof fn sum_prefix_sum_relation(a: Seq<int>, i: int, j: int)
+      requires 0 <= i <= j <= a.len()
+      ensures {
+          let ps = prefix_sum(a);
+          sum(a, i, j) == ps[j] - ps[i]
+      }
+      decreases j - i
+  {
+      if i == j {
+          assert(sum(a, i, j) == 0);
+          assert(prefix_sum(a)[j] - prefix_sum(a)[i] == 0);
+      } else {
+          sum_prefix_sum_relation(a, i, j - 1);
+          let ps = prefix_sum(a);
+          assert(sum(a, i, j) == a[j - 1] + sum(a, i, j - 1));
+          assert(sum(a, i, j - 1) == ps[j - 1] - ps[i]);
+          assert(sum(a, i, j) == a[j - 1] + ps[j - 1] - ps[i]);
+          prefix_sum_correct(a);
+          assert(ps[j] == ps[j - 1] + a[j - 1]);
+          assert(ps[j] - ps[i] == ps[j - 1] + a[j - 1] - ps[i]);
+          assert(sum(a, i, j) == ps[j] - ps[i]);
+      }
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  exec fn query(a: &[i32], i: usize, j: usize) -> (s: i32)
+      requires 0 <= i <= j <= a.len()
+      ensures s == sum(a@.map(|k, x| x as int), i as int, j as int)
+  // </vc-spec>
+
+vc-code: |-
+  exec fn query(a: &[i32], i: usize, j: usize) -> (s: i32)
+      requires 0 <= i <= j <= a.len()
+      ensures s == sum(a@.map(|k, x| x as int), i as int, j as int)
+  {
+      let mut s = 0;
+      let mut k = i;
+      while k < j
+          invariant 0 <= i <= k <= j <= a.len(),
+                    s == sum(a@.map(|k, x| x as int), i as int, k as int)
+          decreases j - k
+      {
+          s = s + a[k];
+          k = k + 1;
+      }
+      s
+  }
+
+vc-postamble: |-
+  fn main() {}
+  
+  }
+

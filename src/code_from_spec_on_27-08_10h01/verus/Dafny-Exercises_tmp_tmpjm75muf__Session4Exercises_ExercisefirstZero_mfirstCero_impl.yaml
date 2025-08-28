@@ -1,0 +1,48 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+
+vc-spec: |-
+  // <vc-spec>
+  fn mfirst_cero(v: &[i32]) -> (i: usize)
+      ensures
+          i <= v.len(),
+          forall|j: int| 0 <= j < i as int ==> v@[j] != 0,
+          i != v.len() ==> v@[i as int] == 0,
+  {
+      assume(false);
+      0
+  }
+  // </vc-spec>
+
+vc-code: |-
+  fn mfirst_cero(v: &[i32]) -> (i: usize)
+      ensures
+          i <= v.len(),
+          forall|j: int| 0 <= j < i as int ==> v@[j] != 0,
+          i != v.len() ==> v@[i as int] == 0,
+  {
+      let mut idx = 0;
+      while idx < v.len()
+          invariant
+              idx <= v.len(),
+              forall|j: int| 0 <= j < idx as int ==> v@[j] != 0,
+      {
+          if v[idx] == 0 {
+              return idx;
+          }
+          idx += 1;
+      }
+      idx
+  }
+
+vc-postamble: |-
+  fn main() {
+  }
+  
+  }
+

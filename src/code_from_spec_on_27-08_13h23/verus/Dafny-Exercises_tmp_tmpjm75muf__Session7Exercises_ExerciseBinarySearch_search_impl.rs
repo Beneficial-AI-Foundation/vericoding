@@ -1,0 +1,86 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn sorted(s: Seq<int>) -> bool {
+    forall|u: int, w: int| 0 <= u < w < s.len() ==> s[u] <= s[w]
+}
+
+fn binary_search(v: &[int], elem: int) -> (p: i32)
+    requires sorted(v@)
+    ensures 
+        -1 <= p < v@.len() &&
+        (forall|u: int| 0 <= u <= p ==> v@[u] <= elem) &&
+        (forall|w: int| p < w < v@.len() ==> v@[w] > elem)
+{
+    assume(false);
+    -1
+}
+
+// <vc-helpers>
+spec fn binary_search_invariant(v: Seq<int>, elem: int, low: int, high: int) -> bool {
+    sorted(v) &&
+    0 <= low <= high + 1 <= v.len() &&
+    (forall|u: int| 0 <= u < low ==> v[u] <= elem) &&
+    (forall|w: int| high < w < v.len() ==> v[w] > elem)
+}
+
+proof fn prove_binary_search_correct(v: Seq<int>, elem: int, low: int, high: int, mid: int)
+    requires
+        sorted(v),
+        0 <= low <= high + 1 <= v.len(),
+        mid == (low + high) / 2,
+        low <= mid <= high,
+        (forall|u: int| 0 <= u < low ==> v[u] <= elem),
+        (forall|w: int| high < w < v.len() ==> v[w] > elem),
+        v[mid] > elem,
+    ensures
+        (forall|u: int| 0 <= u < low ==> v[u] <= elem),
+        (forall|w: int| mid < w < v.len() ==> v[w] > elem),
+{
+}
+
+proof fn prove_binary_search_correct_less(v: Seq<int>, elem: int, low: int, high: int, mid: int)
+    requires
+        sorted(v),
+        0 <= low <= high + 1 <= v.len(),
+        mid == (low + high) / 2,
+        low <= mid <= high,
+        (forall|u: int| 0 <= u < low ==> v[u] <= elem),
+        (forall|w: int| high < w < v.len() ==> v[w] > elem),
+        v[mid] <= elem,
+    ensures
+        (forall|u: int| 0 <= u <= mid ==> v[u] <= elem),
+        (forall|w: int| high < w < v.len() ==> v[w] > elem),
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn search(v: &[int], elem: int) -> (b: bool)
+    requires sorted(v@)
+    ensures b == v@.contains(elem)
+    //Implement by calling binary search function
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+fn search(v: &[int], elem: int) -> (b: bool)
+    requires sorted(v@)
+    ensures b == v@.contains(elem)
+{
+    let p = binary_search(v, elem);
+    if p >= 0 && p < v.len() as i32 {
+        v[p as usize] == elem
+    } else {
+        false
+    }
+}
+// </vc-code>
+
+fn main() {
+    //Recursive binary search
+}
+
+}

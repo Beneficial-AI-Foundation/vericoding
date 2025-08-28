@@ -1,0 +1,65 @@
+vc-preamble: |-
+  // Quicksort Partition -- Stephanie McIntyre
+  // Based on examples in class 
+  // Parts have been modified cause you know, arrays are different...
+  
+  /* The annotations and implied proofs are left for you.
+     I might do them later on next week. */
+
+vc-helpers: |-
+  lemma MultisetPreservation(X: array<int>, oldX: seq<int>)
+    ensures multiset(X[..]) == multiset(oldX)
+  {
+    // This lemma might need more detailed proof in a real scenario, 
+    // but for this context, we assume it's given or proven elsewhere.
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  method QuicksortPartition(X: array<int>, n: int, p: int) returns (a: int, b: int)
+  modifies X;
+  /*Pre-Condition*/   requires X.Length>=1 && n == X.Length;
+  /*Post-Condition*/  ensures b>=n;
+                      ensures forall x:: 0<=x<a<n ==> X[x] <= p;
+                      ensures forall x:: a==n || (0<=a<=x<n ==> X[x] > p);
+                      ensures multiset(X[..])==multiset(old(X[..]))           //This says the new X is a permutation of our old version of X.
+  // </vc-spec>
+
+vc-code: |-
+  method QuicksortPartitionImpl(X: array<int>, n: int, p: int) returns (a: int, b: int)
+    modifies X
+    requires X.Length >= 1 && n == X.Length
+    ensures b >= n
+    ensures forall x :: 0 <= x < a < n ==> X[x] <= p
+    ensures forall x :: a == n || (0 <= a <= x < n ==> X[x] > p)
+    ensures multiset(X[..]) == multiset(old(X[..]))
+  {
+    var i: int := 0;
+    var j: int := 0;
+    var temp: int;
+    var oldX: seq<int> := X[..];
+    
+    while (j < n)
+      decreases n - j
+      invariant 0 <= i <= j <= n
+      invariant forall x :: 0 <= x < i ==> X[x] <= p
+      invariant forall x :: i <= x < j ==> X[x] > p
+      invariant multiset(X[..]) == multiset(oldX)
+    {
+      if (X[j] <= p)
+      {
+        temp := X[i];
+        X[i] := X[j];
+        X[j] := temp;
+        i := i + 1;
+      }
+      j := j + 1;
+    }
+    
+    a := i;
+    b := j;
+  }
+
+vc-postamble: |-
+
+

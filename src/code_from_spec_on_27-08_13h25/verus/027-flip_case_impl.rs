@@ -1,0 +1,95 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn is_upper_case(c: char) -> (result:bool) {
+    c >= 'A' && c <= 'Z'
+}
+// pure-end
+// pure-end
+
+spec fn is_lower_case(c: char) -> (result:bool) {
+    c >= 'a' && c <= 'z'
+}
+// pure-end
+// pure-end
+
+spec fn shift_plus_32_spec(c: char) -> (result:char) {
+    ((c as u8) + 32) as char
+}
+// pure-end
+// pure-end
+
+spec fn shift_minus_32_spec(c: char) -> (result:char) {
+    ((c as u8) - 32) as char
+}
+// pure-end
+// pure-end
+
+spec fn flip_case_spec(c: char) -> (result:char) {
+    if is_lower_case(c) {
+        shift_minus_32_spec(c)
+    } else if is_upper_case(c) {
+        shift_plus_32_spec(c)
+    } else {
+        c
+    }
+}
+// pure-end
+
+// <vc-helpers>
+proof fn prove_flip_case_length(str: &[char], flipped: Vec<char>)
+    requires
+        str@.len() == flipped@.len(),
+    ensures
+        str@.len() == flipped@.len(),
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn flip_case(str: &[char]) -> (flipped_case: Vec<char>)
+    // post-conditions-start
+    ensures
+        str@.len() == flipped_case@.len(),
+        forall|i: int| 0 <= i < str.len() ==> flipped_case[i] == flip_case_spec(#[trigger] str[i]),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+fn flip_case(str: &[char]) -> (flipped_case: Vec<char>)
+    ensures
+        str@.len() == flipped_case@.len(),
+        forall|i: int| 0 <= i < str.len() ==> flipped_case@[i] == flip_case_spec(#[trigger] str@[i]),
+{
+    let mut result: Vec<char> = Vec::new();
+    let mut i: usize = 0;
+
+    while i < str.len()
+        invariant
+            i <= str.len(),
+            result@.len() == i,
+            forall|j: int| 0 <= j < i ==> result@[j] == flip_case_spec(#[trigger] str@[j]),
+    {
+        let c = str[i];
+        let flipped_c = if is_lower_case(c) {
+            shift_minus_32_spec(c)
+        } else if is_upper_case(c) {
+            shift_plus_32_spec(c)
+        } else {
+            c
+        };
+        result.push(flipped_c);
+        i = i + 1;
+    }
+
+    proof {
+        prove_flip_case_length(str, result);
+    }
+
+    result
+}
+// </vc-code>
+
+} // verus!
+fn main() {}

@@ -1,0 +1,57 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  use vstd::multiset::*;
+  
+  verus! {
+  
+  proof fn to_multiset(s: &str) -> (mset: Multiset<char>)
+      ensures mset == s@.to_multiset()
+  {
+      assume(false);
+      s@.to_multiset()
+  }
+  
+  proof fn mset_equal(s: Multiset<char>, t: Multiset<char>) -> (equal: bool)
+      ensures s == t <==> equal
+  {
+      assume(false);
+      true
+  }
+
+vc-helpers: |-
+  proof fn to_multiset(s: &str) -> (mset: Multiset<char>)
+      ensures mset == s@.to_multiset()
+  {
+      s@.to_multiset()
+  }
+  
+  proof fn mset_equal(s: Multiset<char>, t: Multiset<char>) -> (equal: bool)
+      ensures s == t <==> equal
+  {
+      if s == t {
+          true
+      } else {
+          false
+      }
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn is_anagram(s: &str, t: &str) -> (equal: bool)
+      ensures (s@.to_multiset() == t@.to_multiset()) == equal
+  // </vc-spec>
+
+vc-code: |-
+  fn is_anagram(s: &str, t: &str) -> (equal: bool)
+      ensures (s@.to_multiset() == t@.to_multiset()) == equal
+  {
+      let s_mset = to_multiset(s);
+      let t_mset = to_multiset(t);
+      mset_equal(s_mset, t_mset)
+  }
+
+vc-postamble: |-
+  fn main() {}
+  
+  }
+

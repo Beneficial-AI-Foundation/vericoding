@@ -1,0 +1,52 @@
+vc-preamble: |-
+  /**
+   * Find negative numbers from an array of numbers
+   **/
+  
+  predicate IsNegative(n: int)
+  {
+      n < 0
+  }
+
+vc-helpers: |-
+  // Helper lemma to ensure properties of sequences during construction
+  lemma SeqInclusionLemma(s: seq<int>, elem: int)
+    ensures elem in s ==> exists i :: 0 <= i < |s| && s[i] == elem
+  {
+    if elem in s {
+      var i :| 0 <= i < |s| && s[i] == elem;
+    }
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  method FindNegativeNumbers(arr: array<int>) returns (negativeList: seq<int>)
+      // All numbers in the output are negative and exist in the input 
+      ensures forall i :: 0 <= i < |negativeList| ==> IsNegative(negativeList[i]) && negativeList[i] in arr[..]
+      // All negative numbers in the input are in the output
+      ensures forall i :: 0 <= i < arr.Length && IsNegative(arr[i]) ==> arr[i] in negativeList
+  // </vc-spec>
+
+vc-code: |-
+  method FindNegativeNumbersImpl(arr: array<int>) returns (negativeList: seq<int>)
+    ensures forall i :: 0 <= i < |negativeList| ==> IsNegative(negativeList[i]) && negativeList[i] in arr[..]
+    ensures forall i :: 0 <= i < arr.Length && IsNegative(arr[i]) ==> arr[i] in negativeList
+  {
+    var result: seq<int> := [];
+    var i := 0;
+    while i < arr.Length
+      invariant 0 <= i <= arr.Length
+      invariant forall k :: 0 <= k < |result| ==> IsNegative(result[k]) && result[k] in arr[..]
+      invariant forall k :: 0 <= k < i && IsNegative(arr[k]) ==> arr[k] in result
+    {
+      if arr[i] < 0 {
+        result := result + [arr[i]];
+      }
+      i := i + 1;
+    }
+    negativeList := result;
+  }
+
+vc-postamble: |-
+
+

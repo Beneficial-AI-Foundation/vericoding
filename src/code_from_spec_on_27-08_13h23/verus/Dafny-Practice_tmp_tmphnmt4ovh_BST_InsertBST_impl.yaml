@@ -1,0 +1,134 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  pub enum Tree {
+      Empty,
+      Node(int, Box<Tree>, Box<Tree>),
+  }
+  
+  spec fn numbers_in_tree(t: Tree) -> Set<int> {
+      numbers_in_sequence(inorder(t))
+  }
+  
+  spec fn numbers_in_sequence(q: Seq<int>) -> Set<int> {
+      Set::new(|x: int| q.contains(x))
+  }
+  
+  spec fn bst(t: Tree) -> bool {
+      ascending(inorder(t))
+  }
+  
+  spec fn inorder(t: Tree) -> Seq<int>
+      decreases t
+  {
+      match t {
+          Tree::Empty => seq![],
+          Tree::Node(n, left, right) => inorder(*left) + seq![n] + inorder(*right)
+      }
+  }
+  
+  spec fn ascending(q: Seq<int>) -> bool {
+      forall|i: int, j: int| 0 <= i < j < q.len() ==> q[i] < q[j]
+  }
+  
+  spec fn no_duplicates(q: Seq<int>) -> bool {
+      forall|i: int, j: int| 0 <= i < j < q.len() ==> q[i] != q[j]
+  }
+
+vc-helpers: |-
+  proof fn seq_append_ascending(q1: Seq<int>, q2: Seq<int>)
+      requires
+          ascending(q1),
+          ascending(q2),
+          q1.len() > 0 && q2.len() > 0 ==> forall|i: int| 0 <= i < q1.len() ==> q1[i] < q2[0],
+      ensures
+          ascending(q1 + q2)
+  {
+      if q1.len() == 0 {
+          assert(ascending(q2));
+      } else if q2.len() == 0 {
+          assert(ascending(q1));
+      } else {
+          assert(ascending(q1));
+          assert(ascending(q2));
+          assert(forall|i: int, j: int| 0 <= i < q1.len() && 0 <= j < q2.len() ==> q1[i] < q2[j]);
+      }
+  }
+  
+  proof fn inorder_ascending_preserved(left: Tree, right: Tree, n: int)
+      requires
+          bst(left),
+          bst(right),
+          forall|x: int| numbers_in_tree(left).contains(x) ==> x < n,
+          forall|x: int| numbers_in_tree(right).contains(x) ==> n < x,
+      ensures
+          ascending(inorder(left) + seq![n] + inorder(right))
+  {
+      seq_append_ascending(inorder(left), seq![n] + inorder(right));
+      seq_append_ascending(seq![n], inorder(right));
+  }
+  
+  proof fn numbers_in_sequence_append(q1: Seq<int>, q2: Seq<int>)
+      ensures
+          numbers_in_sequence(q1 + q2) =~= numbers_in_sequence(q1).union(numbers_in_sequence(q2))
+  {
+  }
+  
+  proof fn numbers_in_tree_insert(t: Tree, x: int, new_t: Tree)
+      requires
+          numbers_in_tree(new_t) =~= numbers_in_tree(t).insert(x)
+      ensures
+          numbers_in_tree(new_t).contains(x)
+  {
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn insert_bst(t0: Tree, x: int) -> (t: Tree)
+      requires 
+          bst(t0) && !numbers_in_tree(t0).contains(x)
+      ensures 
+          bst(t) && numbers_in_tree(t) =~= numbers_in_tree(t0).insert(x)
+  // </vc-spec>
+
+vc-code: |-
+  fn insert_bst(t0: Tree, x: int) -> (t: Tree)
+      requires 
+          bst(t0),
+          !numbers_in_tree(t0).contains(x)
+      ensures 
+          bst(t),
+          numbers_in_tree(t) =~= numbers_in_tree(t0).insert(x)
+      decreases t0
+  {
+      match t0 {
+          Tree::Empty => {
+              Tree::Node(x, Box::new(Tree::Empty), Box::new(Tree::Empty))
+          }
+          Tree::Node(n, left, right) => {
+              if x < n {
+                  let new_left = insert_bst(*left, x);
+                  proof {
+                      inorder_ascending_preserved(new_left, *right, n);
+                      numbers_in_sequence_append(inorder(new_left), seq![n] + inorder(*right));
+                  }
+                  Tree::Node(n, Box::new(new_left), right)
+              } else {
+                  let new_right = insert_bst(*right, x);
+                  proof {
+                      inorder_ascending_preserved(*left, new_right, n);
+                      numbers_in_sequence_append(inorder(*left), seq![n] + inorder(new_right));
+                  }
+                  Tree::Node(n, left, Box::new(new_right))
+              }
+          }
+      }
+  }
+
+vc-postamble: |-
+  fn main() {}
+  
+  }
+

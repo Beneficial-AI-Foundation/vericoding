@@ -1,0 +1,65 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn insertion_sorted(array: Seq<int>, left: int, right: int) -> bool
+    recommends 0 <= left <= right <= array.len()
+{
+    forall|i: int, j: int| left <= i < j < right ==> array[i] <= array[j]
+}
+
+// <vc-helpers>
+spec fn is_minimum(array: Seq<int>, i: int, left: int, right: int) -> bool
+    recommends 0 <= left <= i < right <= array.len()
+{
+    forall|k: int| left <= k < right ==> array[i] <= array[k]
+}
+
+proof fn lemma_swap_preserves_sorted(array: Seq<int>, i: int, j: int, left: int, right: int)
+    requires
+        0 <= left <= i < right <= array.len(),
+        0 <= left <= j < right <= array.len(),
+        insertion_sorted(array, left, right),
+    ensures
+        insertion_sorted(array.swap(i, j), left, right)
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn sorting(array: &mut Vec<int>)
+    requires old(array).len() > 1
+    ensures insertion_sorted(array@, 0, array@.len() as int)
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+fn sorting(array: &mut Vec<int>)
+    requires old(array).len() > 1
+    ensures insertion_sorted(array@, 0, array@.len() as int)
+{
+    let mut i: usize = 1;
+    while i < array.len()
+        invariant
+            0 < i <= array.len(),
+            insertion_sorted(array@, 0, i as int)
+    {
+        let mut j: usize = i;
+        while j > 0 && array[j - 1] > array[j]
+            invariant
+                0 < j <= i <= array.len(),
+                insertion_sorted(array@, 0, j as int),
+                insertion_sorted(array@, j as int, i as int + 1)
+        {
+            array.swap(j - 1, j);
+            j = j - 1;
+        }
+        i = i + 1;
+    }
+}
+// </vc-code>
+
+fn main() {}
+
+}

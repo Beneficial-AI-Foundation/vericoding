@@ -1,0 +1,72 @@
+// Insertion sort.
+//
+// Author: Snorri Agnarsson, snorri@hi.is
+
+
+predicate IsSorted( s: seq<int> )
+{
+    forall p,q | 0<=p<q<|s| :: s[p]<=s[q]
+}
+
+// <vc-helpers>
+lemma InsertPreservesMultiset(s: seq<int>, x: int, i: int)
+    requires 0 <= i <= |s|
+    ensures multiset(s[..i] + [x] + s[i..]) == multiset(s) + multiset([x])
+{
+}
+
+lemma InsertMaintainsSorted(s: seq<int>, x: int, i: int)
+    requires 0 <= i <= |s|
+    requires IsSorted(s)
+    requires i == 0 || s[i-1] <= x
+    requires i == |s| || x <= s[i]
+    requires forall k :: 0 <= k < i ==> s[k] <= x
+    requires forall k :: i <= k < |s| ==> x <= s[k]
+    ensures IsSorted(s[..i] + [x] + s[i..])
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method InsertionSort( s: seq<int> ) returns ( r: seq<int> )
+    ensures multiset(r) == multiset(s);
+    ensures IsSorted(r);
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+method InsertionSortImpl(s: seq<int>) returns (r: seq<int>)
+    ensures multiset(r) == multiset(s)
+    ensures IsSorted(r)
+{
+    var result := s;
+    if |result| <= 1 {
+        return result;
+    }
+
+    var i := 1;
+    while i < |result|
+        invariant 0 <= i <= |result|
+        invariant IsSorted(result[..i])
+        invariant multiset(result) == multiset(s)
+    {
+        var key := result[i];
+        var j := i - 1;
+        while j >= 0 && result[j] > key
+            invariant -1 <= j < i
+            invariant multiset(result) == multiset(s)
+            invariant forall k :: 0 <= k < j ==> result[k] <= result[k+1]
+            invariant forall k :: j < k <= i ==> key < result[k]
+            invariant IsSorted(result[..j+1])
+            invariant j + 1 <= i ==> IsSorted(result[j+1..i+1])
+        {
+            result := result[..j] + [result[j+1]] + [result[j]] + result[j+2..];
+            j := j - 1;
+        }
+        result := result[..j+1] + [key] + result[j+2..];
+        i := i + 1;
+    }
+    return result;
+}
+// </vc-code>

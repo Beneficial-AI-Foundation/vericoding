@@ -1,0 +1,144 @@
+use vstd::prelude::*;
+
+verus! {
+
+// Helper predicate
+spec fn is_sorted(nums: Seq<int>) -> bool {
+    forall|i: int, j: int| 0 <= i < j < nums.len() ==> nums[i] <= nums[j]
+}
+
+spec fn is_sorted_and_distinct(nums: Seq<int>) -> bool {
+    forall|i: int, j: int| 0 <= i < j < nums.len() ==> nums[i] < nums[j]
+}
+
+// <vc-helpers>
+proof fn lemma_sorted_distinct_is_sorted(nums: Seq<int>)
+    requires is_sorted_and_distinct(nums)
+    ensures is_sorted(nums)
+{
+}
+
+proof fn lemma_subseq_sorted_distinct(nums: Seq<int>, start: int, end: int)
+    requires 
+        is_sorted_and_distinct(nums),
+        0 <= start <= end <= nums.len()
+    ensures 
+        is_sorted_and_distinct(nums.subrange(start, end))
+{
+}
+
+proof fn lemma_push_maintains_sorted_distinct(s: Seq<int>, x: int)
+    requires 
+        is_sorted_and_distinct(s),
+        s.len() == 0 || s.last() < x
+    ensures 
+        is_sorted_and_distinct(s.push(x))
+{
+}
+
+spec fn remove_duplicates_spec(nums: Seq<int>, i: int) -> Seq<int>
+    decreases nums.len() - i
+{
+    if i >= nums.len() {
+        seq![]
+    } else {
+        let rest = remove_duplicates_spec(nums, i + 1);
+        if rest.len() == 0 || nums[i] < rest[0] {
+            seq![nums[i]].add(rest)
+        } else {
+            rest
+        }
+    }
+}
+
+proof fn lemma_remove_duplicates_spec_properties(nums: Seq<int>, i: int)
+    requires 
+        is_sorted(nums),
+        0 <= i <= nums.len()
+    ensures
+        is_sorted_and_distinct(remove_duplicates_spec(nums, i)),
+        forall|x: int| nums.subrange(i, nums.len()).contains(x) <==> remove_duplicates_spec(nums, i).contains(x)
+    decreases nums.len() - i
+{
+    if i >= nums.len() {
+    } else {
+        lemma_remove_duplicates_spec_properties(nums, i + 1);
+        let rest = remove_duplicates_spec(nums, i + 1);
+        if rest.len() == 0 || nums[i] < rest[0] {
+            lemma_push_maintains_sorted_distinct(seq![], nums[i]);
+        }
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn remove_duplicates_from_sorted_array(nums: Seq<int>) -> (result: Seq<int>)
+    requires 
+        is_sorted(nums),
+        1 <= nums.len() <= 30000,
+        forall|i: int| #![trigger nums[i]] 0 <= i < nums.len() ==> -100 <= nums[i] <= 100,
+    ensures 
+        is_sorted_and_distinct(result),
+        forall|i: int| #![trigger nums.contains(i)] nums.contains(i) <==> result.contains(i),
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    if nums.len() == 0 {
+        return seq![];
+    }
+    
+    let mut result: Vec<int> = Vec::new();
+    let mut i = 0;
+    
+    while i < nums.len()
+        invariant
+            0 <= i <= nums.len(),
+            is_sorted_and_distinct(result@),
+            forall|x: int| nums.subrange(0, i).contains(x) <==> result@.contains(x),
+            result.len() <= i,
+            forall|j: int| 0 <= j < result.len() ==> -100 <= result@[j] <= 100,
+    {
+        if result.len() == 0 || nums[i] != result@.last() {
+            result.push(nums[i]);
+            
+            proof {
+                if result@.len() == 1 {
+                    assert(is_sorted_and_distinct(result@));
+                } else {
+                    let old_result = result@.drop_last();
+                    assert(nums[i] != old_result.last());
+                    assert(is_sorted(nums));
+                    
+                    let mut k = 0;
+                    while k < i
+                        invariant
+                            0 <= k <= i,
+                            forall|m: int| 0 <= m < k ==> (old_result.contains(nums[m]) ==> nums[m] <= old_result.last()),
+                    {
+                        k += 1;
+                    }
+                    
+                    if old_result.len() > 0 {
+                        assert(old_result.last() < nums[i]);
+                    }
+                    lemma_push_maintains_sorted_distinct(old_result, nums[i]);
+                }
+            }
+        }
+        i += 1;
+    }
+    
+    proof {
+        assert(nums.subrange(0, nums.len()) =~= nums);
+    }
+    
+    result@
+}
+// </vc-code>
+
+fn main() {}
+
+}

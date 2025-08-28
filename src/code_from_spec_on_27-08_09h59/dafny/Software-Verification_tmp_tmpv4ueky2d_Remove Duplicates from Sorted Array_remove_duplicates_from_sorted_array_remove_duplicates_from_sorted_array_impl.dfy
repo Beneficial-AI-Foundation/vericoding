@@ -1,0 +1,111 @@
+// Helper predicate
+predicate is_sorted(nums: seq<int>)
+{
+    forall i, j :: 0 <= i < j < |nums| ==> nums[i] <= nums[j]
+}
+
+predicate is_sorted_and_distinct(nums: seq<int>)
+{
+    forall i, j :: 0 <= i < j < |nums| ==> nums[i] < nums[j]
+}
+
+// <vc-helpers>
+lemma distinct_preserves_sorted(nums: seq<int>, result: seq<int>)
+    requires is_sorted(nums)
+    requires forall i :: i in nums <==> i in result
+    requires is_sorted_and_distinct(result)
+    ensures is_sorted(result)
+{
+    // follows from is_sorted_and_distinct definition
+}
+
+lemma multiset_membership_equivalence(nums: seq<int>, result: seq<int>)
+    requires forall i :: i in nums <==> i in result
+    requires is_sorted_and_distinct(result)
+    ensures forall x :: multiset(nums)[x] >= multiset(result)[x]
+{
+    forall x
+        ensures multiset(nums)[x] >= multiset(result)[x]
+    {
+        var count_nums := multiset(nums)[x];
+        var count_result := multiset(result)[x];
+        
+        if x !in result {
+            assert count_result == 0;
+            assert multiset(nums)[x] >= 0 >= count_result;
+        } else {
+            assert count_result >= 1;
+            assert count_result <= 1 by {
+                if count_result > 1 {
+                    var indices := set i | 0 <= i < |result| && result[i] == x;
+                    assert |indices| >= 2;
+                    assert exists i1, i2 :: i1 in indices && i2 in indices && i1 != i2;
+                    var witness_i1 :| witness_i1 in indices;
+                    var witness_i2 :| witness_i2 in indices && witness_i2 != witness_i1;
+                    assert 0 <= witness_i1 < |result| && 0 <= witness_i2 < |result|;
+                    assert result[witness_i1] == x == result[witness_i2];
+                    assert witness_i1 < witness_i2 || witness_i2 < witness_i1;
+                    if witness_i1 < witness_i2 {
+                        assert result[witness_i1] < result[witness_i2];
+                        assert false;
+                    } else {
+                        assert result[witness_i2] < result[witness_i1];
+                        assert false;
+                    }
+                }
+            };
+            assert count_result == 1;
+            
+            assert x in nums;
+            assert count_nums >= 1;
+            assert multiset(nums)[x] >= count_result;
+        }
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method remove_duplicates_from_sorted_array(nums: seq<int>) returns (result: seq<int>) 
+    requires is_sorted(nums)
+    requires 1 <= |nums| <= 30000
+    requires forall i :: 0 <= i < |nums| ==> -100 <= nums[i] <= 100
+    ensures is_sorted_and_distinct(result)
+    ensures forall i :: i in nums <==> i in result
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    if |nums| == 1 {
+        var single_result := [nums[0]];
+        multiset_membership_equivalence(nums, single_result);
+        return single_result;
+    }
+    
+    var unique_result := [nums[0]];
+    var i := 1;
+    
+    while i < |nums|
+        invariant 1 <= i <= |nums|
+        invariant |unique_result| >= 1
+        invariant is_sorted_and_distinct(unique_result)
+        invariant forall x :: x in unique_result ==> x in nums
+        invariant forall x :: x in nums[..i] <==> x in unique_result
+        invariant unique_result[|unique_result|-1] == nums[i-1] || (exists j :: 0 <= j < i-1 && unique_result[|unique_result|-1] == nums[j])
+    {
+        if nums[i] != nums[i-1] {
+            unique_result := unique_result + [nums[i]];
+        }
+        i := i + 1;
+    }
+    
+    assert forall x :: x in nums <==> x in unique_result by {
+        assert nums[..i] == nums;
+    }
+    
+    multiset_membership_equivalence(nums, unique_result);
+    
+    return unique_result;
+}
+// </vc-code>

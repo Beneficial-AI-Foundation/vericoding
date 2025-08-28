@@ -1,0 +1,86 @@
+type stringNat = s: string |
+  |s| > 0 && (|s| > 1 ==> s[0] != '0') &&
+  forall i | 0 <= i < |s| :: s[i] in "0123456789"
+  witness "1"
+function natToString(n: nat): stringNat {
+  match n
+    case 0 => "0" case 1 => "1" case 2 => "2" case 3 => "3" case 4 => "4"
+    case 5 => "5" case 6 => "6" case 7 => "7" case 8 => "8" case 9 => "9"
+    case _ => natToString(n / 10) + natToString(n % 10)
+}
+method circular_shift(a: nat, shift: nat) returns (shifted: string)
+  // post-conditions-start
+  ensures |shifted| == |natToString(a)|
+  ensures var s := natToString(a); shift > |s| ==> forall i :: 0 <= i < |s| ==> shifted[i] == s[|s| - 1 - i]
+  ensures var s := natToString(a); shift <= |s| ==> shifted == s[|s| - shift..] + s[..|s| - shift]
+  // post-conditions-end
+{
+  assume{:axiom} false;
+}
+
+// <vc-helpers>
+lemma reverse_preserves_digits(str: string)
+  requires forall i | 0 <= i < |str| :: str[i] in "0123456789"
+  ensures var rev := reverse_string(str); forall i | 0 <= i < |rev| :: rev[i] in "0123456789"
+{
+  var rev := reverse_string(str);
+  reverse_string_correct(str);
+  forall i | 0 <= i < |rev|
+    ensures rev[i] in "0123456789"
+  {
+    assert rev[i] == str[|str| - 1 - i];
+    assert str[|str| - 1 - i] in "0123456789";
+  }
+}
+
+function reverse_string(str: string): string
+{
+  if |str| == 0 then ""
+  else reverse_string(str[1..]) + [str[0]]
+}
+
+lemma reverse_string_correct(str: string)
+  ensures var rev := reverse_string(str); |rev| == |str|
+  ensures var rev := reverse_string(str); forall k :: 0 <= k < |str| ==> rev[k] == str[|str| - 1 - k]
+{
+  if |str| == 0 {
+    assert reverse_string(str) == "";
+  } else {
+    var tail_rev := reverse_string(str[1..]);
+    reverse_string_correct(str[1..]);
+    assert |tail_rev| == |str[1..]|;
+    assert |tail_rev| == |str| - 1;
+    var rev := tail_rev + [str[0]];
+    assert |rev| == |tail_rev| + 1 == |str|;
+    
+    forall k | 0 <= k < |str|
+      ensures rev[k] == str[|str| - 1 - k]
+    {
+      if k < |str| - 1 {
+        assert rev[k] == tail_rev[k];
+        assert tail_rev[k] == str[1..][|str[1..]| - 1 - k];
+        assert str[1..][|str[1..]| - 1 - k] == str[1 + (|str| - 2 - k)];
+        assert str[1 + (|str| - 2 - k)] == str[|str| - 1 - k];
+      } else {
+        assert k == |str| - 1;
+        assert rev[k] == str[0];
+        assert str[|str| - 1 - k] == str[0];
+      }
+    }
+  }
+}
+// </vc-helpers>
+
+// <vc-spec>
+method reverse(str: string) returns (rev: string)
+    // post-conditions-start
+    ensures |rev| == |str|
+    ensures forall k :: 0 <= k < |str| ==> rev[k] == str[|str| - 1 - k]
+    // post-conditions-end
+// </vc-spec>
+// <vc-code>
+{
+  rev := reverse_string(str);
+  reverse_string_correct(str);
+}
+// </vc-code>

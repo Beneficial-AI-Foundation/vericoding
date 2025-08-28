@@ -1,0 +1,222 @@
+use vstd::arithmetic::mul::*;
+use vstd::prelude::*;
+
+verus! {
+
+spec fn factorial(n: nat) -> (ret:nat)
+    decreases n,
+{
+    if n <= 1 {
+        1
+    } else {
+        n * factorial((n - 1) as nat)
+    }
+}
+// pure-end
+// pure-end
+
+spec fn brazilian_factorial(n: nat) -> (ret:nat)
+    decreases n,
+{
+    if n <= 1 {
+        factorial(1)
+    } else {
+        factorial(n) * brazilian_factorial((n - 1) as nat)
+    }
+}
+// pure-end
+
+// <vc-helpers>
+proof fn lemma_factorial_positive(n: nat)
+    ensures
+        factorial(n) >= 1,
+    decreases n,
+{
+    if (n == 0) {
+    } else {
+        lemma_factorial_positive((n - 1) as nat);
+        assert(factorial(n) >= 1) by {
+            broadcast use lemma_mul_strictly_positive;
+        };
+    }
+}
+
+proof fn lemma_brazilian_factorial_positive(n: nat)
+    ensures
+        brazilian_factorial(n) >= 1,
+    decreases n,
+{
+    if (n == 0) {
+    } else {
+        lemma_factorial_positive((n) as nat);
+        lemma_brazilian_factorial_positive((n - 1) as nat);
+        assert(brazilian_factorial(n) >= 1) by {
+            lemma_mul_strictly_positive(
+                factorial(n) as int,
+                brazilian_factorial((n - 1) as nat) as int,
+            )
+        };
+    }
+}
+
+proof fn lemma_brazilian_fib_monotonic(i: nat, j: nat)
+    requires
+        0 <= i <= j,
+    ensures
+        brazilian_factorial(i) <= brazilian_factorial(j),
+    decreases j - i,
+{
+    if (i == j) {
+    } else if (j == i + 1) {
+        assert(factorial(j) >= 1) by { lemma_factorial_positive(j) };
+        assert(brazilian_factorial(j) >= brazilian_factorial(i)) by {
+            broadcast use lemma_mul_increases;
+        };
+    } else {
+        lemma_brazilian_fib_monotonic(i, (j - 1) as nat);
+        lemma_brazilian_fib_monotonic((j - 1) as nat, j);
+    }
+}
+
+proof fn lemma_brazilian_factorial_large(n: nat)
+    requires n >= 5
+    ensures brazilian_factorial(n) > u64::MAX
+{
+    lemma_factorial_positive(n);
+    lemma_brazilian_factorial_positive((n - 1) as nat);
+    assert(factorial(n) >= 120) by {
+        assert(factorial(5) == 120);
+        if n > 5 {
+            lemma_factorial_positive(n);
+        }
+    };
+    assert(brazilian_factorial((n - 1) as nat) >= 1) by {
+        lemma_brazilian_factorial_positive((n - 1) as nat);
+    };
+}
+
+proof fn lemma_factorial_overflow(n: nat)
+    requires n >= 21
+    ensures factorial(n) > u64::MAX
+{
+    assert(factorial(21) > u64::MAX);
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn brazilian_factorial_impl(n: u64) -> (ret: Option<u64>)
+    // post-conditions-start
+    ensures
+        match ret {
+            None => brazilian_factorial(n as nat) > u64::MAX,
+            Some(bf) => bf == brazilian_factorial(n as nat),
+        },
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    if n <= 1 {
+        return Some(1);
+    }
+    
+    // Quick check for obviously large values
+    if n >= 21 {
+        proof {
+            lemma_factorial_overflow(n as nat);
+            lemma_brazilian_factorial_positive(n as nat);
+        }
+        return None;
+    }
+    
+    let mut fact = 1u64;
+    let mut i = 1u64;
+    
+    while i <= n
+        invariant
+            1 <= i <= n + 1,
+            i <= u64::MAX,
+            fact == factorial((i - 1) as nat),
+            fact <= u64::MAX,
+        decreases n + 1 - i,
+    {
+        if let Some(new_fact) = fact.checked_mul(i) {
+            fact = new_fact;
+        } else {
+            proof {
+                assert(factorial(i as nat) > u64::MAX);
+                lemma_brazilian_factorial_positive(n as nat);
+                assert(brazilian_factorial(n as nat) >= factorial(n as nat));
+            }
+            return None;
+        }
+        if i < u64::MAX {
+            i += 1;
+        } else {
+            break;
+        }
+    }
+    
+    let n_factorial = fact;
+    
+    if n == 1 {
+        return Some(n_factorial);
+    }
+    
+    let mut result = n_factorial;
+    let mut j = n - 1;
+    
+    while j > 0
+        invariant
+            0 <= j < n,
+            result <= u64::MAX,
+            j < n ==> result == factorial(n as nat) * brazilian_factorial((j + 1) as nat),
+        decreases j,
+    {
+        let mut curr_fact = 1u64;
+        let mut k = 1u64;
+        
+        while k <= j + 1
+            invariant
+                1 <= k <= j + 2,
+                k <= u64::MAX,
+                curr_fact == factorial((k - 1) as nat),
+                curr_fact <= u64::MAX,
+            decreases j + 2 - k,
+        {
+            if let Some(new_curr_fact) = curr_fact.checked_mul(k) {
+                curr_fact = new_curr_fact;
+            } else {
+                proof {
+                    lemma_brazilian_factorial_positive(n as nat);
+                    assert(factorial((j + 1) as nat) > u64::MAX);
+                    assert(brazilian_factorial(n as nat) >= factorial(n as nat) * factorial((j + 1) as nat));
+                }
+                return None;
+            }
+            if k < u64::MAX && k < j + 1 {
+                k += 1;
+            } else {
+                k += 1;
+                break;
+            }
+        }
+        
+        if let Some(new_result) = result.checked_mul(curr_fact) {
+            result = new_result;
+        } else {
+            proof {
+                lemma_brazilian_factorial_positive(n as nat);
+            }
+            return None;
+        }
+        
+        j -= 1;
+    }
+    
+    Some(result)
+}
+// </vc-code>
+
+} // verus!
+fn main() {}

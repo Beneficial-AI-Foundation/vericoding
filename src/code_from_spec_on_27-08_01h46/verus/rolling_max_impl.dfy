@@ -1,0 +1,112 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn seq_max(a: Seq<i32>) -> (ret: i32)
+    decreases a.len(),
+{
+    if a.len() == 0 {
+        i32::MIN
+    } else if a.last() > seq_max(a.drop_last()) {
+        a.last()
+    } else {
+        seq_max(a.drop_last())
+    }
+}
+
+// <vc-helpers>
+proof fn seq_max_monotonic(a: Seq<i32>, b: Seq<i32>)
+    requires a.len() > 0, b == a.drop_last()
+    ensures seq_max(a) >= seq_max(b)
+{
+    if a.len() == 1 {
+        assert(b.len() == 0);
+        assert(seq_max(b) == i32::MIN);
+    } else {
+        seq_max_monotonic(b, b.drop_last());
+    }
+}
+
+proof fn seq_max_is_element(a: Seq<i32>)
+    requires a.len() > 0
+    ensures exists|i: int| 0 <= i < a.len() && a[i] == seq_max(a)
+    decreases a.len()
+{
+    if a.len() == 1 {
+        assert(a[0] == seq_max(a));
+    } else {
+        if a.last() > seq_max(a.drop_last()) {
+            assert(a[a.len() - 1] == seq_max(a));
+        } else {
+            seq_max_is_element(a.drop_last());
+            let witness_i = choose|i: int| 0 <= i < a.drop_last().len() && a.drop_last()[i] == seq_max(a.drop_last());
+            assert(a[witness_i] == seq_max(a));
+        }
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn rolling_max(numbers: Vec<i32>) -> (result: Vec<i32>)
+    // post-conditions-start
+    ensures
+        result.len() == numbers.len(),
+        forall|i: int| 0 <= i < numbers.len() ==> result[i] == seq_max(numbers@.take(i + 1)),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut result = Vec::new();
+    let mut i = 0;
+    
+    while i < numbers.len()
+        invariant
+            0 <= i <= numbers.len(),
+            result.len() == i,
+            forall|j: int| 0 <= j < i ==> result[j] == seq_max(numbers@.take(j + 1)),
+    {
+        let current_max = if i == 0 {
+            numbers[i]
+        } else {
+            if numbers[i] > result[i - 1] {
+                numbers[i]
+            } else {
+                result[i - 1]
+            }
+        };
+        
+        result.push(current_max);
+        
+        proof {
+            let current_seq = numbers@.take(i as int + 1);
+            if i == 0 {
+                assert(current_seq =~= seq![numbers[0]]);
+                assert(seq_max(current_seq) == numbers[0]);
+            } else {
+                let prev_seq = numbers@.take(i as int);
+                assert(current_seq == prev_seq.push(numbers[i as int]));
+                assert(current_seq.drop_last() =~= prev_seq);
+                assert(current_seq.last() == numbers[i as int]);
+                
+                if numbers[i] > result[i - 1] {
+                    assert(numbers[i as int] > seq_max(prev_seq));
+                    assert(seq_max(current_seq) == numbers[i as int]);
+                } else {
+                    assert(numbers[i as int] <= result[i - 1]);
+                    assert(result[(i - 1) as int] == seq_max(prev_seq));
+                    assert(seq_max(current_seq) == seq_max(prev_seq));
+                    assert(seq_max(current_seq) == result[i - 1]);
+                }
+            }
+        }
+        
+        i += 1;
+    }
+    
+    result
+}
+// </vc-code>
+
+fn main() {}
+}

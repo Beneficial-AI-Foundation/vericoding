@@ -1,0 +1,111 @@
+// Höfundur spurningar:  Snorri Agnarsson, snorri@hi.is
+// Permalink spurningar: https://rise4fun.com/Dafny/dtcnY
+
+// Höfundur lausnar:     Alexander Guðmundsson
+// Permalink lausnar:    https://rise4fun.com/Dafny/ybUCz
+
+///////////////////////////////////////////////////////////////
+// Hér byrjar óbreytanlegi hluti skrárinnar.
+// Fyrir aftan þann hluta er sá hluti sem þið eigið að breyta.
+///////////////////////////////////////////////////////////////
+
+// Hjálparfall sem finnur minnsta gildi í poka
+
+method MinOfMultiset( m: multiset<int> ) returns( min: int )
+    ensures min in m;
+    ensures forall z | z in m :: min <= z;
+{
+  assume{:axiom} false;
+}
+
+// Ekki má breyta þessu falli.
+
+
+///////////////////////////////////////////////////////////////
+// Hér lýkur óbreytanlega hluta skrárinnar.
+// Hér fyrir aftan er sá hluti sem þið eigið að breyta til að
+// útfæra afbrigði af selection sort.
+///////////////////////////////////////////////////////////////
+
+// Selection sort sem raðar poka í runu.
+// Klárið að forrita þetta fall.
+
+// <vc-helpers>
+lemma MultisetRemoveProperty(m: multiset<int>, x: int)
+    requires x in m
+    ensures multiset{x} + (m - multiset{x}) == m
+{
+}
+
+lemma SeqMultisetProperty<T>(s: seq<T>, x: T)
+    ensures multiset(s + [x]) == multiset(s) + multiset{x}
+{
+}
+
+lemma SortedExtension(s: seq<int>, x: int)
+    requires forall p,q | 0 <= p < q < |s| :: s[p] <= s[q]
+    requires forall i | 0 <= i < |s| :: x <= s[i]
+    ensures forall p,q | 0 <= p < q < |s + [x]| :: (s + [x])[p] <= (s + [x])[q]
+{
+    var extended := s + [x];
+    forall p, q | 0 <= p < q < |extended|
+        ensures extended[p] <= extended[q]
+    {
+        if q < |s| {
+            assert extended[p] == s[p] && extended[q] == s[q];
+            assert s[p] <= s[q];
+        } else if p < |s| && q == |s| {
+            assert extended[p] == s[p] && extended[q] == x;
+            assert x <= s[p];
+        } else {
+            assert p == |s| && q == |s|;
+            assert false;
+        }
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method Sort( m: multiset<int> ) returns ( s: seq<int> )
+    // Setjið viðeigandi ensures klausur hér
+    ensures multiset(s) == m;
+    ensures forall p,q | 0 <= p < q < |s| :: s[p] <= s[q];
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    s := [];
+    var remaining := m;
+    
+    while remaining != multiset{}
+        invariant multiset(s) + remaining == m
+        invariant forall p,q | 0 <= p < q < |s| :: s[p] <= s[q]
+        invariant forall i | 0 <= i < |s| :: forall x | x in remaining :: s[i] <= x
+        decreases |remaining|
+    {
+        var min := MinOfMultiset(remaining);
+        
+        assert forall i | 0 <= i < |s| :: min <= s[i] by {
+            if |s| > 0 {
+                forall i | 0 <= i < |s|
+                    ensures min <= s[i]
+                {
+                    assert forall x | x in remaining :: s[i] <= x;
+                    assert min in remaining;
+                    assert forall z | z in remaining :: min <= z;
+                }
+            }
+        }
+        
+        var old_s := s;
+        s := s + [min];
+        remaining := remaining - multiset{min};
+        
+        MultisetRemoveProperty(remaining + multiset{min}, min);
+        SeqMultisetProperty(old_s, min);
+        SortedExtension(old_s, min);
+    }
+}
+// </vc-code>

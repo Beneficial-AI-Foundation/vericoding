@@ -1,0 +1,111 @@
+use vstd::prelude::*;
+
+verus! {
+
+// Works by dividing the input list into two parts: sorted and unsorted. At the beginning, 
+// the sorted part is empty and the unsorted part contains all the elements.
+
+// <vc-helpers>
+spec fn is_sorted(s: Seq<i32>) -> bool {
+    forall|i: int, j: int| 0 <= i < j < s.len() ==> s[i] <= s[j]
+}
+
+spec fn min_element_index_helper(s: Seq<i32>, start: int, current: int, min_idx: int) -> int
+    recommends 0 <= start <= min_idx < s.len(), start <= current <= s.len()
+    decreases s.len() - current
+{
+    if current >= s.len() {
+        min_idx
+    } else {
+        let new_min = if s[current] < s[min_idx] { current } else { min_idx };
+        min_element_index_helper(s, start, current + 1, new_min)
+    }
+}
+
+spec fn min_element_index(s: Seq<i32>, start: int) -> int
+    recommends 0 <= start < s.len()
+{
+    min_element_index_helper(s, start, start, start)
+}
+
+proof fn min_element_index_correct(s: Seq<i32>, start: int)
+    requires 0 <= start < s.len()
+    ensures 
+        start <= min_element_index(s, start) < s.len(),
+        forall|k: int| start <= k < s.len() ==> s[min_element_index(s, start)] <= s[k]
+{
+}
+
+proof fn swap_preserves_multiset<T>(v: Vec<T>, i: usize, j: usize)
+    requires i < v.len(), j < v.len()
+    ensures
+        ({
+            let mut result = v;
+            let temp = result[i as int];
+            result.set(i, result[j as int]);
+            result.set(j, temp);
+            result
+        })@.to_multiset() == v@.to_multiset()
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn selection_sort(a: &mut Vec<i32>)
+    ensures
+        // Ensures the final array is sorted in ascending order
+        forall|i: int, j: int| 0 <= i < j < a.len() ==> a[i] <= a[j],
+        // Ensures that the final array has the same elements as the initial array
+        a@.to_multiset() == old(a)@.to_multiset(),
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut i = 0;
+    while i < a.len()
+        invariant
+            0 <= i <= a.len(),
+            // First i elements are sorted
+            forall|x: int, y: int| 0 <= x < y < i ==> a[x] <= a[y],
+            // First i elements are <= remaining elements
+            forall|x: int, y: int| 0 <= x < i && i <= y < a.len() ==> a[x] <= a[y],
+            // Multiset is preserved
+            a@.to_multiset() == old(a)@.to_multiset(),
+    {
+        // Find minimum element in unsorted part
+        let mut min_idx = i;
+        let mut j = i + 1;
+        while j < a.len()
+            invariant
+                i <= min_idx < a.len(),
+                i < j <= a.len(),
+                forall|k: int| i <= k < j ==> a[min_idx as int] <= a[k],
+                a@.to_multiset() == old(a)@.to_multiset(),
+        {
+            if a[j] < a[min_idx] {
+                min_idx = j;
+            }
+            j = j + 1;
+        }
+        
+        // Swap minimum with current position
+        if min_idx != i {
+            let temp = a[i];
+            proof {
+                swap_preserves_multiset(a.clone(), i, min_idx);
+            }
+            a[i] = a[min_idx];
+            a[min_idx] = temp;
+        }
+        
+        i = i + 1;
+    }
+}
+// </vc-code>
+
+fn main() {
+}
+
+}

@@ -1,0 +1,113 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn ordered(a: Seq<int>, left: int, right: int) -> bool {
+      &&& 0 <= left <= right <= a.len()
+      &&& forall |i: int| #![trigger a[i]] left < i < right ==> a[i-1] <= a[i]
+  }
+
+vc-helpers: |-
+  spec fn min_index_in_range(a: Seq<int>, left: int, right: int) -> int
+      recommends 0 <= left < right <= a.len()
+  {
+      if left + 1 == right {
+          left
+      } else if a[left] <= a[min_index_in_range(a, left + 1, right)] {
+          left
+      } else {
+          min_index_in_range(a, left + 1, right)
+      }
+  }
+  
+  proof fn min_index_in_range_properties(a: Seq<int>, left: int, right: int)
+      requires 0 <= left < right <= a.len()
+      ensures
+          left <= min_index_in_range(a, left, right) < right,
+          forall |i: int| #![trigger a[i]] left <= i < right ==> a[min_index_in_range(a, left, right)] <= a[i]
+      decreases right - left
+  {
+      if left + 1 == right {
+      } else {
+          min_index_in_range_properties(a, left + 1, right);
+      }
+  }
+  
+  fn find_min_index(a: &Vec<int>, left: usize, right: usize) -> (result: usize)
+      requires 0 <= left < right <= a.len()
+      ensures 
+          left <= result < right,
+          result == min_index_in_range(a@, left as int, right as int),
+          forall |i: int| #![trigger a@[i]] left <= i < right ==> a@[result as int] <= a@[i]
+  {
+      proof { min_index_in_range_properties(a@, left as int, right as int); }
+      
+      let mut min_idx = left;
+      let mut i = left + 1;
+      
+      while i < right
+          invariant
+              left <= min_idx < right,
+              left < i <= right,
+              forall |j: int| #![trigger a@[j]] left <= j < i ==> a@[min_idx as int] <= a@[j],
+              min_idx == min_index_in_range(a@, left as int, i as int)
+          decreases right - i
+      {
+          if a[i] < a[min_idx] {
+              min_idx = i;
+          }
+          i += 1;
+      }
+      
+      min_idx
+  }
+  
+  fn swap_with_spec(a: &mut Vec<int>, i: usize, j: usize)
+      requires i < a.len() && j < a.len()
+      ensures 
+          a.len() == old(a).len(),
+          a@[i as int] == old(a)@[j as int],
+          a@[j as int] == old(a)@[i as int],
+          forall |k: int| #![trigger a@[k]] 0 <= k < a.len() && k != i && k != j ==> a@[k] == old(a)@[k],
+          a@.to_multiset() =~= old(a)@.to_multiset()
+  {
+      let temp = a[i];
+      a.set(i, a[j]);
+      a.set(j, temp);
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn selection_sort(a: &mut Vec<int>)
+      ensures 
+          ordered(a@, 0, a.len() as int),
+          a.len() == old(a).len(),
+          a@.to_multiset() =~= old(a)@.to_multiset(),
+  // </vc-spec>
+
+vc-code: |-
+  {
+      let mut i = 0;
+      
+      while i < a.len()
+          invariant
+              0 <= i <= a.len(),
+              ordered(a@, 0, i as int),
+              forall |j: int, k: int| #![trigger a@[j], a@[k]] 0 <= j < i && i <= k < a.len() ==> a@[j] <= a@[k],
+              a.len() == old(a).len(),
+              a@.to_multiset() =~= old(a)@.to_multiset()
+      {
+          if i + 1 < a.len() {
+              let min_idx = find_min_index(a, i, a.len());
+              swap_with_spec(a, i, min_idx);
+          }
+          i += 1;
+      }
+  }
+
+vc-postamble: |-
+  fn main() {}
+  
+  }
+

@@ -1,0 +1,52 @@
+vc-description: |-
+
+
+vc-preamble: |-
+  use vstd::math::abs;
+  use vstd::prelude::*;
+  use vstd::slice::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+
+vc-spec: |-
+  fn has_close_elements(numbers: &[i64], threshold: i64) -> (result: bool)
+      // post-conditions-start
+      ensures
+          result == exists|i: int, j: int|
+              0 <= i < j < numbers@.len() && abs(numbers[i] - numbers[j]) < threshold,
+      // post-conditions-end
+
+vc-code: |-
+  {
+      let mut i = 0;
+      while i < numbers.len()
+          invariant
+              0 <= i <= numbers@.len(),
+              forall|x: int, y: int| 0 <= x < y < i ==> abs(numbers@[x] - numbers@[y]) >= threshold,
+      {
+          let mut j = i + 1;
+          while j < numbers.len()
+              invariant
+                  0 <= i < numbers@.len(),
+                  i + 1 <= j <= numbers@.len(),
+                  forall|x: int, y: int| 0 <= x < y < i ==> abs(numbers@[x] - numbers@[y]) >= threshold,
+                  forall|y: int| i < y < j ==> abs(numbers@[y] - numbers@[i]) >= threshold,
+          {
+              if abs(numbers[i] - numbers[j]) < threshold {
+                  return true;
+              }
+              j += 1;
+          }
+          i += 1;
+      }
+      false
+  }
+
+vc-postamble: |-
+  
+  }
+  fn main() {}
+

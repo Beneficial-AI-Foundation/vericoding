@@ -1,0 +1,22 @@
+// <vc-helpers>
+// No additional helpers or proofs needed for this implementation
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method SquarePyramidSurfaceArea(baseEdge: int, height: int) returns (area: int)
+    requires baseEdge > 0
+    requires height > 0
+    ensures area == baseEdge * baseEdge + 2 * baseEdge * height
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+method SquarePyramidSurfaceAreaImpl(baseEdge: int, height: int) returns (area: int)
+    requires baseEdge > 0
+    requires height > 0
+    ensures area == baseEdge * baseEdge + 2 * baseEdge * height
+{
+    area := baseEdge * baseEdge + 2 * baseEdge * height;
+}
+// </vc-code>

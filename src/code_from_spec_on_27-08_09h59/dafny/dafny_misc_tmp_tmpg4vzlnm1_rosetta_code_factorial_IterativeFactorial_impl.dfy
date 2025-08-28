@@ -1,0 +1,36 @@
+// recursive definition of factorial
+function Factorial(n: nat): nat {
+  if n == 0 then 1 else n * Factorial(n - 1)
+}
+
+// iterative implementation of factorial
+
+// <vc-helpers>
+// No helper lemmas needed for simple iterative factorial
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method IterativeFactorial(n: nat) returns (result: nat)
+  ensures result == Factorial(n)
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+  result := 1;
+  var i := 0;
+  
+  while i < n
+    invariant 0 <= i <= n
+    invariant result == Factorial(i)
+  {
+    i := i + 1;
+    result := result * i;
+  }
+  
+  assert i == n;
+  assert result == Factorial(i);
+  assert result == Factorial(n);
+}
+// </vc-code>

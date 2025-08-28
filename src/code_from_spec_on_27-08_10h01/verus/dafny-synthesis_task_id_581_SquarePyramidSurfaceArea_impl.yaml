@@ -1,0 +1,48 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+  spec fn square_pyramid_surface_area_spec(base_edge: i32, height: i32) -> int {
+      base_edge as int * base_edge as int + 2 * base_edge as int * height as int
+  }
+  
+  proof fn arithmetic_bounds_lemma(base_edge: i32, height: i32)
+      requires 
+          base_edge > 0,
+          height > 0,
+          base_edge <= 46340,
+          height as int <= i32::MAX / (2 * base_edge as int),
+      ensures
+          base_edge as int * base_edge as int <= i32::MAX as int,
+          2 * base_edge as int * height as int <= i32::MAX as int,
+          base_edge as int * base_edge as int + 2 * base_edge as int * height as int <= i32::MAX as int,
+  {
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn square_pyramid_surface_area(base_edge: i32, height: i32) -> (area: i32)
+      requires 
+          base_edge > 0,
+          height > 0,
+      ensures 
+          area == base_edge * base_edge + 2 * base_edge * height,
+  // </vc-spec>
+
+vc-code: |-
+  {
+      arithmetic_bounds_lemma(base_edge, height);
+      
+      let base_area = base_edge * base_edge;
+      let lateral_area = 2 * base_edge * height;
+      base_area + lateral_area
+  }
+
+vc-postamble: |-
+  fn main() {
+  }
+  
+  }
+

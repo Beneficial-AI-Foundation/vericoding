@@ -1,0 +1,61 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn fact(n: nat) -> nat 
+    decreases n
+{
+    if n == 0 { 1 } else { n * fact((n - 1) as nat) }
+}
+
+// <vc-helpers>
+proof fn fact_positive(n: nat)
+    ensures fact(n) > 0
+    decreases n
+{
+    if n == 0 {
+    } else {
+        fact_positive((n - 1) as nat);
+    }
+}
+
+proof fn fact_monotonic(n: nat)
+    requires n > 0
+    ensures fact(n) >= fact((n - 1) as nat)
+    decreases n
+{
+    fact_positive((n - 1) as nat);
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn factorial(n: u32) -> (res: u32)
+    requires n <= 12  // to prevent overflow
+    ensures res == fact(n as nat)
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut result: u32 = 1;
+    let mut i: u32 = 1;
+    
+    while i <= n
+        invariant 1 <= i <= n + 1
+        invariant result == fact((i - 1) as nat)
+    {
+        proof {
+            fact_positive((i - 1) as nat);
+        }
+        result = result * i;
+        i = i + 1;
+    }
+    
+    result
+}
+// </vc-code>
+
+fn main() {}
+
+}

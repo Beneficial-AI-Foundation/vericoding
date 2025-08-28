@@ -1,0 +1,96 @@
+vc-preamble: |-
+  function SumR(s:seq<int>):int
+  decreases s
+  {
+      if (s==[]) then 0
+      else SumR(s[..|s|-1])+s[|s|-1]
+  }
+  
+  function SumL(s:seq<int>):int
+  decreases s
+  {
+      if (s==[]) then 0
+      else s[0]+SumL(s[1..])
+  }
+  
+  
+  function SumV(v:array<int>,c:int,f:int):int
+    requires 0<=c<=f<=v.Length
+    reads v
+    {SumR(v[c..f])}
+
+vc-helpers: |-
+  lemma SumL_Equals_SumR(s: seq<int>)
+    ensures SumL(s) == SumR(s)
+    decreases s
+  {
+    if s == [] {
+      assert SumL([]) == 0 == SumR([]);
+    } else {
+      SumL_Equals_SumR(s[1..]);
+      assert SumL(s) == s[0] + SumL(s[1..]);
+      assert SumR(s) == SumR(s[..|s|-1]) + s[|s|-1];
+      assert s[..|s|-1] == s[0..|s|-1];
+      assert SumL(s[1..]) == SumR(s[1..]);
+      assert SumR(s[..|s|-1]) == SumL(s[0..|s|-1]);
+      assert SumL(s) == s[0] + SumL(s[1..]) == s[0] + SumR(s[1..]);
+      assert SumR(s[..|s|-1]) == SumL(s[0..|s|-1]) == s[0] + SumR(s[1..]);
+      assert SumR(s) == s[0] + SumR(s[1..]) + s[|s|-1];
+      assert SumL(s) == SumR(s);
+    }
+  }
+  
+  lemma SumL_Append(s: seq<int>, x: int)
+    ensures SumL(s + [x]) == SumL(s) + x
+  {
+    if s == [] {
+      assert s + [x] == [x];
+      assert SumL([x]) == x;
+      assert SumL([]) == 0;
+      assert SumL([x]) == SumL([]) + x;
+    } else {
+      assert (s + [x])[1..] == s[1..] + [x];
+      SumL_Append(s[1..], x);
+      assert SumL((s + [x])[1..]) == SumL(s[1..]) + x;
+      assert SumL(s + [x]) == s[0] + SumL((s + [x])[1..]);
+      assert SumL(s + [x]) == s[0] + SumL(s[1..]) + x;
+      assert SumL(s) == s[0] + SumL(s[1..]);
+      assert SumL(s + [x]) == SumL(s) + x;
+    }
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  method sumElemsB(v:array<int>) returns (sum:int)
+  //ensures sum==SumL(v[0..v.Length])
+  ensures sum==SumR(v[0..v.Length])
+  // </vc-spec>
+
+vc-code: |-
+  method SumElemsB(v: array<int>) returns (sum: int)
+    ensures sum == SumL(v[0..v.Length])
+    ensures sum == SumR(v[0..v.Length])
+  {
+    sum := 0;
+    var i := 0;
+    while i < v.Length
+      invariant 0 <= i <= v.Length
+      invariant sum == SumL(v[0..i])
+    {
+      sum := sum + v[i];
+      i := i + 1;
+      if i > 0 {
+        SumL_Append(v[0..i-1], v[i-1]);
+        assert v[0..i] == v[0..i-1] + [v[i-1]];
+        assert SumL(v[0..i]) == SumL(v[0..i-1]) + v[i-1];
+        assert sum == SumL(v[0..i]);
+      }
+    }
+    SumL_Equals_SumR(v[0..v.Length]);
+    assert sum == SumL(v[0..v.Length]);
+    assert sum == SumR(v[0..v.Length]);
+  }
+
+vc-postamble: |-
+
+

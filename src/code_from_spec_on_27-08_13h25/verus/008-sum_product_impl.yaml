@@ -1,0 +1,105 @@
+vc-description: |-
+
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn sum(numbers: Seq<u32>) -> (result:int) {
+      numbers.fold_left(0, |acc: int, x| acc + x)
+  }
+  // pure-end
+  // pure-end
+  
+  spec fn product(numbers: Seq<u32>) -> (result:int) {
+      numbers.fold_left(1, |acc: int, x| acc * x)
+  }
+  // pure-end
+
+vc-helpers: |-
+  proof fn sum_bound(numbers: Seq<u32>)
+      ensures
+          sum(numbers) <= numbers.len() * u32::MAX as int,
+      decreases numbers.len(),
+  {
+      if numbers.len() == 0 {
+      } else {
+          sum_bound(numbers.drop_last());
+          assert(sum(numbers) == sum(numbers.drop_last()) + numbers.last() as int);
+          assert(sum(numbers.drop_last()) <= (numbers.len() - 1) * u32::MAX as int);
+      }
+  }
+  
+  proof fn product_bound(numbers: Seq<u32>)
+      ensures
+          numbers.len() <= 12 ==> product(numbers) <= u32::MAX as int,
+      decreases numbers.len(),
+  {
+      if numbers.len() == 0 {
+      } else if numbers.len() <= 12 {
+          product_bound(numbers.drop_last());
+          assert(product(numbers) == product(numbers.drop_last()) * numbers.last() as int);
+          assert(numbers.last() <= u32::MAX as int);
+          assert(product(numbers.drop_last()) <= u32::MAX as int);
+      }
+  }
+
+vc-spec: |-
+  fn sum_product(numbers: Vec<u32>) -> (result: (u64, Option<u32>))
+      // pre-conditions-start
+      requires
+          numbers.len() < u32::MAX,
+      // pre-conditions-end
+      // post-conditions-start
+      ensures
+          result.0 == sum(numbers@),
+          result.1 matches Some(v) ==> v == product(numbers@),
+      // post-conditions-end
+
+vc-code: |-
+  {
+      let mut sum_result: u64 = 0;
+      let mut product_result: u32 = 1;
+      let mut i: usize = 0;
+      let mut overflow: bool = false;
+  
+      while i < numbers.len()
+          invariant
+              i <= numbers.len(),
+              sum_result as int == sum(numbers@.subrange(0, i as int)),
+              !overflow ==> product_result as int == product(numbers@.subrange(0, i as int)),
+              overflow ==> product(numbers@.subrange(0, i as int)) > u32::MAX as int,
+          decreases numbers.len() - i,
+      {
+          let next_sum = sum_result + numbers@.index(i as int) as u64;
+          assert(next_sum as int == sum_result as int + numbers@.index(i as int) as int);
+          sum_result = next_sum;
+          if !overflow {
+              let new_product = product_result as u64 * numbers@.index(i as int) as u64;
+              if new_product > u32::MAX as u64 {
+                  overflow = true;
+              } else {
+                  product_result = new_product as u32;
+                  assert(product_result as int == (product_result as u64 * numbers@.index(i as int) as u64) as int);
+              }
+          }
+          i = i + 1;
+      }
+  
+      proof {
+          assert(numbers@.subrange(0, numbers.len() as int) == numbers@);
+      }
+  
+      if overflow {
+          (sum_result, None)
+      } else {
+          (sum_result, Some(product_result))
+      }
+  }
+
+vc-postamble: |-
+  
+  }
+  fn main() {}
+

@@ -1,0 +1,95 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+  spec fn sum_bounded(a: &[i32], n: usize, max: i32) -> int
+      decreases n
+  {
+      if n == 0 {
+          0
+      } else {
+          a[n-1] + sum_bounded(a, (n-1) as usize, max)
+      }
+  }
+  
+  proof fn sum_bounded_property(a: &[i32], n: usize, max: i32)
+      requires 
+          n > 0,
+          n <= a.len(),
+          forall|i: int| 0 <= i && i < n ==> a[i] <= max,
+      ensures sum_bounded(a, n, max) <= max * (n as int)
+      decreases n
+  {
+      if n == 1 {
+          assert(sum_bounded(a, 1, max) == a[0]);
+          assert(a[0] <= max);
+      } else {
+          sum_bounded_property(a, (n-1) as usize, max);
+          assert(sum_bounded(a, (n-1) as usize, max) <= max * ((n-1) as int));
+          assert(a[n-1] <= max);
+          assert(sum_bounded(a, n, max) == a[n-1] + sum_bounded(a, (n-1) as usize, max));
+          assert(sum_bounded(a, n, max) <= max + max * ((n-1) as int));
+          assert(max * ((n-1) as int) + max == max * (n as int)) by {
+              assert(max * ((n-1) as int) + max * 1 == max * ((n-1) as int + 1));
+              assert((n-1) as int + 1 == n as int);
+          };
+      }
+  }
+  
+  proof fn arithmetic_lemma(max: i32, n: usize)
+      requires n > 0
+      ensures max + max * ((n-1) as int) == max * (n as int)
+  {
+      assert(max + max * ((n-1) as int) == max * 1 + max * ((n-1) as int));
+      assert(max * 1 + max * ((n-1) as int) == max * (1 + (n-1) as int));
+      assert(1 + (n-1) as int == n as int);
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn add_small_numbers(a: &[i32], n: usize, max: i32) -> (r: i32)
+      requires 
+          n > 0,
+          n <= a.len(),
+          forall|i: int| 0 <= i && i < n ==> a[i] <= max,
+      ensures
+          r <= max * (n as i32),
+  // </vc-spec>
+
+vc-code: |-
+  {
+      let mut sum: i32 = 0;
+      let mut i: usize = 0;
+      
+      while i < n
+          invariant
+              i <= n,
+              n <= a.len(),
+              forall|j: int| 0 <= j && j < n ==> a[j] <= max,
+              sum <= max * (i as i32),
+              sum <= i32::MAX - max,
+          decreases n - i
+      {
+          proof {
+              assert(a[i] <= max);
+              assert(sum <= max * (i as i32));
+              assert((i+1) as i32 == (i as i32) + 1);
+              assert(max * ((i+1) as i32) == max * (i as i32) + max);
+              assert(sum + a[i] <= max * (i as i32) + max);
+              assert(sum + a[i] <= max * ((i+1) as i32));
+          }
+          sum = sum + a[i];
+          i = i + 1;
+      }
+      
+      sum
+  }
+
+vc-postamble: |-
+  fn main() {
+  }
+  
+  }
+

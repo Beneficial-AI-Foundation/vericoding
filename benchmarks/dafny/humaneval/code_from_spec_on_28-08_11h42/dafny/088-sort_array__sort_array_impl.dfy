@@ -1,0 +1,119 @@
+// <vc-helpers>
+lemma multiset_reverse<T>(s: seq<T>)
+  ensures multiset(s) == multiset(reverse_seq(s))
+{
+  if |s| == 0 {
+  } else {
+    multiset_reverse(s[1..]);
+  }
+}
+
+function reverse_seq<T>(s: seq<T>): seq<T>
+{
+  if |s| == 0 then []
+  else reverse_seq(s[1..]) + [s[0]]
+}
+
+lemma reverse_seq_length<T>(s: seq<T>)
+  ensures |reverse_seq(s)| == |s|
+{
+  if |s| == 0 {
+  } else {
+    reverse_seq_length(s[1..]);
+  }
+}
+
+lemma reverse_seq_correctness<T>(s: seq<T>)
+  ensures |reverse_seq(s)| == |s|
+  ensures forall k :: 0 <= k < |s| ==> reverse_seq(s)[k] == s[|s| - 1 - k]
+{
+  reverse_seq_length(s);
+  if |s| == 0 {
+  } else if |s| == 1 {
+  } else {
+    reverse_seq_correctness(s[1..]);
+    assert reverse_seq(s) == reverse_seq(s[1..]) + [s[0]];
+    assert |reverse_seq(s[1..])| == |s[1..]|;
+    assert |reverse_seq(s)| == |s[1..]| + 1 == |s|;
+    
+    forall k | 0 <= k < |s|
+      ensures reverse_seq(s)[k] == s[|s| - 1 - k]
+    {
+      if k < |s| - 1 {
+        assert reverse_seq(s)[k] == reverse_seq(s[1..])[k];
+        assert reverse_seq(s[1..])[k] == s[1..][|s[1..]| - 1 - k];
+        assert s[1..][|s[1..]| - 1 - k] == s[1 + |s[1..]| - 1 - k];
+        assert 1 + |s[1..]| - 1 - k == |s| - 1 - k;
+      } else {
+        assert k == |s| - 1;
+        assert reverse_seq(s)[k] == (reverse_seq(s[1..]) + [s[0]])[|s| - 1];
+        assert reverse_seq(s)[k] == s[0];
+        assert s[|s| - 1 - k] == s[|s| - 1 - (|s| - 1)] == s[0];
+      }
+    }
+  }
+}
+
+lemma reverse_descending_order(s: seq<int>)
+  requires forall i, j :: 0 <= i < j < |s| ==> s[i] <= s[j]
+  ensures forall i, j :: 0 <= i < j < |reverse_seq(s)| ==> reverse_seq(s)[i] >= reverse_seq(s)[j]
+{
+  reverse_seq_correctness(s);
+  reverse_seq_length(s);
+}
+
+lemma multiset_sorted_preservation(s: seq<int>, sorted: seq<int>)
+  requires multiset(s) == multiset(sorted)
+  ensures multiset(s) == multiset(reverse_seq(sorted))
+{
+  multiset_reverse(sorted);
+}
+// </vc-helpers>
+
+// <vc-spec>
+method sort_array(s: seq<int>) returns (sorted: seq<int>)
+  // post-conditions-start
+  ensures |sorted| == |s|
+  ensures |s| > 0 && (s[0] + s[|s| - 1]) % 2 == 0 ==>
+    forall i, j :: 0 <= i < j < |sorted| ==> sorted[i] >= sorted[j]
+  ensures |s| > 0 && (s[0] + s[|s| - 1]) % 2 != 0 ==>
+    forall i, j :: 0 <= i < j < |sorted| ==> sorted[i] <= sorted[j]
+  // post-conditions-end
+// </vc-spec>
+// <vc-code>
+{
+  if |s| == 0 {
+    return [];
+  }
+  
+  var ascending_sorted := SortSeq(s);
+  
+  if (s[0] + s[|s| - 1]) % 2 != 0 {
+    sorted := ascending_sorted;
+  } else {
+    multiset_reverse(ascending_sorted);
+    reverse_descending_order(ascending_sorted);
+    multiset_sorted_preservation(s, ascending_sorted);
+    reverse_seq_length(ascending_sorted);
+    sorted := reverse_seq(ascending_sorted);
+  }
+}
+// </vc-code>
+
+method reverse(s: seq<int>) returns (rev: seq<int>)
+  // post-conditions-start
+  ensures |rev| == |s|
+  ensures forall k :: 0 <= k < |s| ==> rev[k] == s[|s| - 1 - k]
+  // post-conditions-end
+{
+  assume{:axiom} false;
+}
+method SortSeq(s: seq<int>) returns (sorted: seq<int>)
+  // post-conditions-start
+  ensures forall i, j :: 0 <= i < j < |sorted| ==> sorted[i] <= sorted[j]
+  ensures |sorted| == |s|
+  ensures multiset(s) == multiset(sorted)
+  // post-conditions-end
+{
+  assume{:axiom} false;
+}

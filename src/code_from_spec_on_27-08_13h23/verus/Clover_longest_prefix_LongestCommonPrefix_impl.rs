@@ -1,0 +1,47 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+// No updates needed for helpers in this case
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn longest_common_prefix(str1: Seq<char>, str2: Seq<char>) -> (prefix: Seq<char>)
+    ensures 
+        prefix.len() <= str1.len() && prefix == str1.subrange(0, prefix.len() as int) &&
+        prefix.len() <= str2.len() && prefix == str2.subrange(0, prefix.len() as int),
+        prefix.len() == str1.len() || prefix.len() == str2.len() || 
+        (str1[prefix.len() as int] != str2[prefix.len() as int])
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+fn longest_common_prefix(str1: Seq<char>, str2: Seq<char>) -> (prefix: Seq<char>)
+    ensures 
+        prefix.len() <= str1.len() && prefix == str1.subrange(0, prefix.len() as int),
+        prefix.len() <= str2.len() && prefix == str2.subrange(0, prefix.len() as int),
+        prefix.len() == str1.len() || prefix.len() == str2.len() || 
+        (prefix.len() < str1.len() && prefix.len() < str2.len() && str1[prefix.len() as int] != str2[prefix.len() as int])
+{
+    let mut i: usize = 0;
+    while i < str1.len() && i < str2.len()
+        invariant
+            i <= str1.len(),
+            i <= str2.len(),
+            str1.subrange(0, i as int) == str2.subrange(0, i as int)
+    {
+        if str1[i as int] != str2[i as int] {
+            break;
+        }
+        i = i + 1;
+    }
+    str1.subrange(0, i as int)
+}
+// </vc-code>
+
+fn main() {
+}
+
+}

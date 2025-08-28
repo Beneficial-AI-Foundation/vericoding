@@ -1,0 +1,44 @@
+// <vc-helpers>
+lemma CharInString(s: string, c: char, i: int)
+    requires 0 <= i < |s|
+    requires s[i] == c
+    ensures c in s
+{
+}
+
+lemma StringConcatProperties(s1: string, s2: string, c: char)
+    ensures c in (s1 + s2) <==> (c in s1 || c in s2)
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method RemoveChars(s1: string, s2: string) returns (v: string)
+    ensures |v| <= |s1|
+    ensures forall i :: 0 <= i < |v| ==> (v[i] in s1) && !(v[i] in s2)
+    ensures forall i :: 0 <= i < |s1| ==> (s1[i] in s2) || (s1[i] in v)
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    v := "";
+    var i := 0;
+    while i < |s1|
+        invariant 0 <= i <= |s1|
+        invariant |v| <= i
+        invariant forall j :: 0 <= j < |v| ==> (v[j] in s1) && !(v[j] in s2)
+        invariant forall j :: 0 <= j < i ==> (s1[j] in s2) || (s1[j] in v)
+    {
+        if s1[i] in s2 {
+            i := i + 1;
+        } else {
+            v := v + [s1[i]];
+            CharInString(s1, s1[i], i);
+            StringConcatProperties(v[..|v|-1], [s1[i]], s1[i]);
+            i := i + 1;
+        }
+    }
+}
+// </vc-code>

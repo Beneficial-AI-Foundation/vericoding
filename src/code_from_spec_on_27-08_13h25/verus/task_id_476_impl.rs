@@ -1,0 +1,126 @@
+#![verifier::loop_isolation(false)]
+use vstd::math::*;
+use vstd::prelude::*;
+
+verus! {
+
+spec fn max_rcur(seq: Seq<i32>) -> (result:int)
+    decreases seq.len(),
+{
+    if seq.len() <= 1 {
+        seq.first() as int
+    } else {
+        max(seq.last() as int, max_rcur(seq.drop_last()))
+    }
+}
+// pure-end
+// pure-end
+
+spec fn min_rcur(seq: Seq<i32>) -> (result:int)
+    decreases seq.len(),
+{
+    if seq.len() <= 1 {
+        seq.first() as int
+    } else {
+        min(seq.last() as int, min_rcur(seq.drop_last()))
+    }
+}
+// pure-end
+
+// <vc-helpers>
+proof fn max_rcur_correct(seq: Seq<i32>)
+    requires seq.len() > 0,
+    ensures max_rcur(seq) == seq.fold_left(seq.first() as int, |acc: int, x: i32| max(acc, x as int)),
+    decreases seq.len(),
+{
+    if seq.len() == 1 {
+        assert(seq.fold_left(seq.first() as int, |acc: int, x: i32| max(acc, x as int)) == seq.first() as int);
+    } else {
+        max_rcur_correct(seq.drop_last());
+        let last_val = seq.last() as int;
+        let sub_max = max_rcur(seq.drop_last());
+        let prefix_max = seq.drop_last().fold_left(seq.drop_last().first() as int, |acc: int, x: i32| max(acc, x as int));
+        assert(sub_max == prefix_max);
+        let full_max = seq.fold_left(seq.first() as int, |acc: int, x: i32| max(acc, x as int));
+        assert(full_max == max(prefix_max, last_val)) by {
+            reveal_with_fuel(Seq::<i32>::fold_left, seq.len());
+        };
+        assert(max_rcur(seq) == max(sub_max, last_val));
+        assert(max_rcur(seq) == full_max);
+    }
+}
+
+proof fn min_rcur_correct(seq: Seq<i32>)
+    requires seq.len() > 0,
+    ensures min_rcur(seq) == seq.fold_left(seq.first() as int, |acc: int, x: i32| min(acc, x as int)),
+    decreases seq.len(),
+{
+    if seq.len() == 1 {
+        assert(seq.fold_left(seq.first() as int, |acc: int, x: i32| min(acc, x as int)) == seq.first() as int);
+    } else {
+        min_rcur_correct(seq.drop_last());
+        let last_val = seq.last() as int;
+        let sub_min = min_rcur(seq.drop_last());
+        let prefix_min = seq.drop_last().fold_left(seq.drop_last().first() as int, |acc: int, x: i32| min(acc, x as int));
+        assert(sub_min == prefix_min);
+        let full_min = seq.fold_left(seq.first() as int, |acc: int, x: i32| min(acc, x as int));
+        assert(full_min == min(prefix_min, last_val)) by {
+            reveal_with_fuel(Seq::<i32>::fold_left, seq.len());
+        };
+        assert(min_rcur(seq) == min(sub_min, last_val));
+        assert(min_rcur(seq) == full_min);
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn sum_min_max(arr: &Vec<i32>) -> (sum: i32)
+    // pre-conditions-start
+    requires
+        arr.len() > 0,
+        forall|i: int| 0 <= i < arr.len() ==> i32::MIN / 2 < #[trigger] arr[i] < i32::MAX / 2,
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        sum == max_rcur(arr@) + min_rcur(arr@),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut max_val = arr[0];
+    let mut min_val = arr[0];
+    let mut i = 1;
+
+    while i < arr.len()
+        invariant
+            0 <= i <= arr.len(),
+            forall|k: int| 0 <= k < i ==> min_val <= arr[k],
+            forall|k: int| 0 <= k < i ==> max_val >= arr[k],
+        decreases arr.len() - i
+    {
+        if arr[i] > max_val {
+            max_val = arr[i];
+        }
+        if arr[i] < min_val {
+            min_val = arr[i];
+        }
+        i = i + 1;
+    }
+
+    proof {
+        max_rcur_correct(arr@);
+        min_rcur_correct(arr@);
+        assert(max_val as int == max_rcur(arr@));
+        assert(min_val as int == min_rcur(arr@));
+    }
+
+    // Compute sum directly with i32 to avoid using int in exec code
+    let sum: i32 = min_val + max_val;
+    sum
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

@@ -1,0 +1,67 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+spec fn mod_add(a: int, b: int, m: int) -> int
+    recommends m > 0
+{
+    ((a + b) % m + m) % m
+}
+
+proof fn lemma_mod_add_bounds(a: int, b: int, m: int)
+    requires m > 0
+    ensures 0 <= mod_add(a, b, m) < m
+{
+}
+
+proof fn lemma_rotate_index_bounds(i: int, n: int, len: int)
+    requires 0 <= i < len, len > 0, n >= 0
+    ensures 0 <= (i - n + len) % len < len
+{
+    let idx = (i - n + len) % len;
+    assert(idx >= 0 && idx < len) by {
+        let shifted = i - n + len;
+        if shifted >= 0 {
+            assert(shifted % len >= 0 && shifted % len < len);
+        } else {
+            let k = (-shifted) / len + 1;
+            assert(k > 0);
+            assert(shifted + k * len >= 0);
+            assert((shifted + k * len) % len == shifted % len);
+        }
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn rotate_right(l: Seq<int>, n: int) -> (r: Seq<int>)
+    requires n >= 0,
+    ensures 
+        r.len() == l.len(),
+        forall|i: int| 0 <= i < l.len() ==> r.index(i) == l.index((i - n + l.len() as int) % l.len() as int),
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    if l.len() == 0nat {
+        return l;
+    }
+    
+    let ghost len = l.len() as int;
+    let ghost effective_n = n % len;
+    
+    Seq::new(l.len(), |i: int| {
+        proof {
+            lemma_rotate_index_bounds(i, effective_n, len);
+        }
+        l.index((i - effective_n + len) % len)
+    })
+}
+// </vc-code>
+
+fn main() {}
+
+}

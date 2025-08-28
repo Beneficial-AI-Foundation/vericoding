@@ -1,0 +1,80 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+// Helper function to check if a number is even
+spec fn is_even(n: i32) -> bool {
+    n % 2 == 0
+}
+
+// Helper spec to check if a sequence contains only even numbers
+spec fn contains_only_evens(vec: Seq<i32>) -> bool {
+    forall|k: int| 0 <= k < vec.len() ==> is_even(vec[k])
+}
+
+// Helper spec to check if elements in result maintain order from input
+spec fn maintains_order(input: Seq<i32>, result: Seq<i32>) -> bool {
+    forall|k: int, l: int| 0 <= k < l < result.len() ==> 
+        exists|n: int, m: int| 0 <= n < m < input.len() && 
+        #[trigger] result[k] == #[trigger] input[n] && 
+        #[trigger] result[l] == #[trigger] input[m]
+}
+
+// Helper spec to check if result contains exactly the even numbers from input
+spec fn contains_exactly_evens(input: Seq<i32>, result: Seq<i32>) -> bool {
+    (forall|x: i32| input.contains(x) && is_even(x) ==> result.contains(x)) &&
+    (forall|x: i32| !input.contains(x) ==> !result.contains(x))
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn find_even_numbers(arr: &[i32]) -> (even_numbers: Vec<i32>)
+    ensures 
+        (forall|x: i32| arr@.contains(x) && x % 2 == 0 ==> even_numbers@.contains(x)) &&
+        (forall|x: i32| !arr@.contains(x) ==> !even_numbers@.contains(x)) &&
+        (forall|k: int| 0 <= k < even_numbers@.len() ==> even_numbers@[k] % 2 == 0) &&
+        (forall|k: int, l: int| 0 <= k < l < even_numbers@.len() ==> 
+            exists|n: int, m: int| 0 <= n < m < arr@.len() && 
+            #[trigger] even_numbers@[k] == #[trigger] arr@[n] && 
+            #[trigger] even_numbers@[l] == #[trigger] arr@[m])
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+fn find_even_numbers(arr: &[i32]) -> (even_numbers: Vec<i32>)
+    ensures 
+        (forall|x: i32| arr@.contains(x) && x % 2 == 0 ==> even_numbers@.contains(x)) &&
+        (forall|x: i32| !arr@.contains(x) ==> !even_numbers@.contains(x)) &&
+        (forall|k: int| 0 <= k < even_numbers@.len() ==> even_numbers@[k] % 2 == 0) &&
+        (forall|k: int, l: int| 0 <= k < l < even_numbers@.len() ==> 
+            exists|n: int, m: int| 0 <= n < m < arr@.len() && 
+            #[trigger] even_numbers@[k] == #[trigger] arr@[n] && 
+            #[trigger] even_numbers@[l] == #[trigger] arr@[m])
+{
+    let mut result: Vec<i32> = Vec::new();
+    let mut i: usize = 0;
+    
+    while i < arr.len()
+        invariant
+            0 <= i <= arr@.len(),
+            result@.len() <= i,
+            contains_only_evens(result@),
+            contains_exactly_evens(arr@.subrange(0, i as int), result@),
+            maintains_order(arr@, result@)
+    {
+        if arr[i] % 2 == 0 {
+            result.push(arr[i]);
+        }
+        i = i + 1;
+    }
+    
+    result
+}
+// </vc-code>
+
+fn main() {
+}
+
+}

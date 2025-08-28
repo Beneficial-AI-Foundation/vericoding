@@ -1,0 +1,61 @@
+vc-preamble: |-
+  //Algorithm 1: From left to right return the first
+  
+  //Algorithm 2: From right to left return the last
+
+vc-helpers: |-
+  // Helper lemma to ensure properties of maximum element
+  lemma MaxProperties(v: array<int>, i: int)
+    requires v.Length > 0
+    requires 0 <= i < v.Length
+    requires forall k :: 0 <= k < v.Length ==> v[i] >= v[k]
+    requires forall l :: i < l < v.Length ==> v[i] > v[l]
+    ensures 0 <= i < v.Length
+    ensures forall k :: 0 <= k < v.Length ==> v[i] >= v[k]
+    ensures forall l :: i < l < v.Length ==> v[i] > v[l]
+  {
+    // Properties are already given in requires, nothing to prove
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  method mlastMaximum(v:array<int>) returns (i:int)
+  requires v.Length>0
+  ensures 0<=i<v.Length 
+  ensures forall k:: 0<=k<v.Length ==> v[i]>=v[k]
+  ensures forall l:: i<l<v.Length ==> v[i]>v[l]
+  // </vc-spec>
+
+vc-code: |-
+  method LastMaximum(v: array<int>) returns (i: int)
+    requires v.Length > 0
+    ensures 0 <= i < v.Length
+    ensures forall k :: 0 <= k < v.Length ==> v[i] >= v[k]
+    ensures forall l :: i < l < v.Length ==> v[i] > v[l]
+  {
+    i := v.Length - 1;
+    var currentMax := v[v.Length - 1];
+    var j := v.Length - 2;
+    
+    while j >= 0
+      invariant -1 <= j < v.Length
+      invariant 0 <= i < v.Length
+      invariant currentMax == v[i]
+      invariant forall k :: j < k < v.Length ==> v[i] >= v[k]
+      invariant forall k :: i < k < v.Length ==> v[i] > v[k]
+    {
+      if v[j] > currentMax {
+        i := j;
+        currentMax := v[j];
+      }
+      j := j - 1;
+    }
+    
+    // Assert the postconditions for verification
+    assert forall k :: 0 <= k < v.Length ==> v[i] >= v[k];
+  }
+
+vc-postamble: |-
+  //Algorithm : from left to right
+  //Algorithm : from right to left
+

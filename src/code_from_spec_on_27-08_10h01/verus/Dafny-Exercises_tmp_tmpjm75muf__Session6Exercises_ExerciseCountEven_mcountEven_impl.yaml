@@ -1,0 +1,104 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn positive(s: Seq<int>) -> bool {
+      forall|u: int| 0 <= u < s.len() ==> s[u] >= 0
+  }
+  
+  spec fn is_even(i: int) -> bool
+      recommends i >= 0
+  {
+      i % 2 == 0
+  }
+  
+  spec fn count_even(s: Seq<int>) -> int
+      recommends positive(s)
+      decreases s.len()
+  {
+      if s.len() == 0 {
+          0 as int
+      } else {
+          (if s[s.len() - 1] % 2 == 0 { 1 as int } else { 0 as int }) + count_even(s.subrange(0, s.len() - 1))
+      }
+  }
+
+vc-helpers: |-
+  proof fn count_even_lemma(s: Seq<int>, i: int)
+      requires positive(s), 0 <= i <= s.len()
+      ensures count_even(s.subrange(0, i)) == count_even_iterative(s, i)
+      decreases i
+  {
+      if i == 0 {
+          assert(s.subrange(0, 0) =~= Seq::<int>::empty());
+          assert(count_even(s.subrange(0, 0)) == 0);
+      } else {
+          count_even_lemma(s, i - 1);
+          assert(s.subrange(0, i) =~= s.subrange(0, i - 1).push(s[i - 1]));
+          assert(count_even(s.subrange(0, i)) == count_even(s.subrange(0, i - 1)) + (if s[i - 1] % 2 == 0 { 1 as int } else { 0 as int }));
+      }
+  }
+  
+  spec fn count_even_iterative(s: Seq<int>, i: int) -> int
+      recommends 0 <= i && i <= s.len()
+      decreases i
+  {
+      if i == 0 {
+          0
+      } else {
+          count_even_iterative(s, i - 1) + (if s[i - 1] % 2 == 0 { 1 as int } else { 0 as int })
+      }
+  }
+  
+  proof fn count_even_iterative_step(s: Seq<int>, i: int)
+      requires positive(s), 0 < i <= s.len()
+      ensures count_even_iterative(s, i) == count_even_iterative(s, i - 1) + (if s[i - 1] % 2 == 0 { 1 as int } else { 0 as int })
+  {
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn mcount_even(v: &Vec<i32>) -> (n: i32)
+      requires positive(v@.map(|i: int, x: i32| x as int))
+      ensures n as int == count_even(v@.map(|i: int, x: i32| x as int))
+  // </vc-spec>
+
+vc-code: |-
+  {
+      let mut count = 0i32;
+      let mut i = 0;
+      let ghost mapped_seq = v@.map(|i: int, x: i32| x as int);
+      
+      while i < v.len()
+          invariant 
+              0 <= i <= v.len(),
+              count as int == count_even_iterative(mapped_seq, i as int),
+              positive(mapped_seq),
+              count <= i
+          decreases v.len() - i
+      {
+          proof {
+              count_even_iterative_step(mapped_seq, (i + 1) as int);
+          }
+          
+          if v[i] % 2 == 0 {
+              count = count + 1;
+          }
+          i = i + 1;
+      }
+      
+      proof {
+          count_even_lemma(mapped_seq, v.len() as int);
+      }
+      
+      count
+  }
+
+vc-postamble: |-
+  
+  fn main() {
+  }
+  
+  }
+

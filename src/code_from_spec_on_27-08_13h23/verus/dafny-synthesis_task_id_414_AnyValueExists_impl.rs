@@ -1,0 +1,47 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+proof fn lemma_seq_contains_implies_exists(seq1: Seq<int>, seq2: Seq<int>, idx: int)
+    requires
+        0 <= idx < seq1.len(),
+        seq2.contains(seq1[idx]),
+    ensures
+        exists|i: int| 0 <= i < seq1.len() && seq2.contains(seq1[i])
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn any_value_exists(seq1: Seq<int>, seq2: Seq<int>) -> (result: bool)
+    ensures result <==> (exists|i: int| 0 <= i < seq1.len() && seq2.contains(seq1[i]))
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+fn any_value_exists(seq1: Seq<int>, seq2: Seq<int>) -> (result: bool)
+    ensures result <==> (exists|i: int| 0 <= i < seq1.len() && seq2.contains(seq1[i]))
+{
+    let mut i: usize = 0;
+    while i < seq1.len()
+        invariant
+            0 <= i <= seq1.len(),
+            forall|j: int| 0 <= j < i ==> !seq2.contains(seq1[j])
+    {
+        if seq2.contains(seq1[i as int]) {
+            proof {
+                lemma_seq_contains_implies_exists(seq1, seq2, i as int);
+            }
+            return true;
+        }
+        i = i + 1;
+    }
+    false
+}
+// </vc-code>
+
+fn main() {}
+
+}

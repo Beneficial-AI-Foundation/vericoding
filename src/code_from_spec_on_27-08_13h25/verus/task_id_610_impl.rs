@@ -1,0 +1,48 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+// No changes needed in helpers for this fix
+// </vc-helpers>
+
+// <vc-spec>
+fn remove_kth_element(list: &Vec<i32>, k: usize) -> (new_list: Vec<i32>)
+    // pre-conditions-start
+    requires
+        list.len() > 0,
+        0 < k < list@.len(),
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        new_list@ == list@.subrange(0, k - 1 as int).add(
+            list@.subrange(k as int, list.len() as int),
+        ),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut new_list: Vec<i32> = Vec::new();
+    let mut i: usize = 0;
+    
+    while i < list.len()
+        invariant
+            i <= list.len(),
+            new_list@.len() == if i <= k { i } else { (i - 1) as usize },
+            forall |j: int| 0 <= j < new_list@.len() ==> new_list@[j] == list@[if j < k as int { j } else { j + 1 }],
+        decreases list.len() - i
+    {
+        if i != k {
+            new_list.push(list[i]);
+        }
+        i = i + 1;
+    }
+    
+    new_list
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

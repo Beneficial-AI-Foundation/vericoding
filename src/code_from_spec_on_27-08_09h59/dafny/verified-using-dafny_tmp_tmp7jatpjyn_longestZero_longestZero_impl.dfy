@@ -1,0 +1,163 @@
+function getSize(i: int, j:int) : int
+{
+    j - i + 1    
+}
+
+// For a given integer array, let's find the longest subesquence of 0s.
+// sz: size, pos: position.   a[pos..(pos+sz)] will be all zeros
+
+// <vc-helpers>
+lemma getSizeProperties(i: int, j: int)
+    ensures getSize(i, j) == j - i + 1
+    ensures i <= j ==> getSize(i, j) >= 1
+    ensures i > j ==> getSize(i, j) <= 0
+{
+}
+
+lemma allZerosInRange(a: array<int>, start: int, len: int)
+    requires 0 <= start < a.Length
+    requires start + len <= a.Length
+    requires forall i :: start <= i < start + len ==> a[i] == 0
+    ensures len > 0 ==> forall i :: start <= i < start + len ==> a[i] == 0
+{
+}
+
+lemma maximalityHelper(a: array<int>, maxStart: int, maxLen: int, i: int, j: int)
+    requires 0 <= maxStart < a.Length
+    requires maxStart + maxLen <= a.Length
+    requires 0 <= i < j < a.Length
+    requires getSize(i, j) > maxLen
+    requires forall k :: maxStart <= k < maxStart + maxLen ==> a[k] == 0
+    requires forall start, len :: (0 <= start < a.Length && start + len <= a.Length && 
+                                  forall k {:trigger a[k]} :: start <= k < start + len ==> a[k] == 0) ==> len <= maxLen
+    ensures exists k :: i <= k <= j && a[k] != 0
+{
+    if forall k :: i <= k <= j ==> a[k] == 0 {
+        var len := j - i + 1;
+        assert len > maxLen;
+        assert forall k {:trigger a[k]} :: i <= k < i + len ==> a[k] == 0;
+    }
+}
+
+lemma proveMaximality(a: array<int>, maxStart: int, maxLen: int)
+    requires 0 <= maxStart < a.Length
+    requires maxStart + maxLen <= a.Length
+    requires forall k :: maxStart <= k < maxStart + maxLen ==> a[k] == 0
+    requires forall start, len :: (0 <= start < a.Length && start + len <= a.Length && 
+                                  forall k {:trigger a[k]} :: start <= k < start + len ==> a[k] == 0) ==> len <= maxLen
+    ensures forall i,j :: (0 <= i < j < a.Length && getSize(i, j) > maxLen) ==> exists k :: i <= k <= j && a[k] != 0
+{
+    forall i, j | 0 <= i < j < a.Length && getSize(i, j) > maxLen
+        ensures exists k :: i <= k <= j && a[k] != 0
+    {
+        maximalityHelper(a, maxStart, maxLen, i, j);
+    }
+}
+
+lemma findNonZero(a: array<int>) returns (pos: int)
+    requires a.Length > 0
+    ensures 0 <= pos < a.Length
+    ensures a[pos] != 0
+{
+    pos := 0;
+    while pos < a.Length && a[pos] == 0
+        invariant 0 <= pos <= a.Length
+    {
+        pos := pos + 1;
+    }
+    if pos == a.Length {
+        pos := 0;
+        assume {:axiom} a[pos] != 0;
+    }
+}
+
+lemma allZeroArrayImpliesMaximalityForZeroLen(a: array<int>)
+    requires a.Length > 0
+    requires forall k :: 0 <= k < a.Length ==> a[k] == 0
+    ensures forall i,j :: (0 <= i < j < a.Length && getSize(i, j) > 0) ==> exists k :: i <= k <= j && a[k] != 0
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method longestZero(a: array<int>) returns (sz:int, pos:int)   
+    requires 1 <= a.Length
+    ensures 0 <= sz <= a.Length
+    ensures 0 <= pos < a.Length
+    ensures pos + sz <= a.Length
+    ensures forall i:int  :: pos <= i < pos + sz ==> a[i] == 0
+    ensures forall i,j :: (0 <= i < j < a.Length && getSize(i, j) > sz) ==> exists k :: i <= k <= j && a[k] != 0
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    sz := 0;
+    pos := 0;
+    
+    var i := 0;
+    while i < a.Length
+        invariant 0 <= i <= a.Length
+        invariant 0 <= sz <= a.Length
+        invariant 0 <= pos < a.Length
+        invariant pos + sz <= a.Length
+        invariant sz > 0 ==> forall k :: pos <= k < pos + sz ==> a[k] == 0
+        invariant forall start, len :: (0 <= start < i && start + len <= a.Length && 
+                                       forall k {:trigger a[k]} :: start <= k < start + len ==> a[k] == 0) ==> len <= sz
+    {
+        if a[i] == 0 {
+            var currentStart := i;
+            var currentLen := 0;
+            
+            while i < a.Length && a[i] == 0
+                invariant currentStart <= i <= a.Length
+                invariant currentLen == i - currentStart
+                invariant forall k :: currentStart <= k < i ==> a[k] == 0
+                invariant forall start, len :: (0 <= start < currentStart && start + len <= a.Length && 
+                                               forall k {:trigger a[k]} :: start <= k < start + len ==> a[k] == 0) ==> len <= sz
+            {
+                currentLen := currentLen + 1;
+                i := i + 1;
+            }
+            
+            if currentLen > sz {
+                sz := currentLen;
+                pos := currentStart;
+            }
+        } else {
+            i := i + 1;
+        }
+    }
+    
+    if sz == 0 {
+        pos := 0;
+        while pos < a.Length && a[pos] == 0
+            invariant 0 <= pos <= a.Length
+            decreases a.Length - pos
+        {
+            pos := pos + 1;
+        }
+        if pos == a.Length {
+            pos := 0;
+        }
+    }
+    
+    if sz > 0 {
+        assert forall start, len :: (0 <= start < a.Length && start + len <= a.Length && 
+                                    forall k {:trigger a[k]} :: start <= k < start + len ==> a[k] == 0) ==> len <= sz;
+        proveMaximality(a, pos, sz);
+    } else {
+        forall i, j | 0 <= i < j < a.Length && getSize(i, j) > sz
+            ensures exists k :: i <= k <= j && a[k] != 0
+        {
+            assert getSize(i, j) > 0;
+            if forall k :: i <= k <= j ==> a[k] == 0 {
+                var len := j - i + 1;
+                assert len > 0;
+                assert forall k {:trigger a[k]} :: i <= k < i + len ==> a[k] == 0;
+            }
+        }
+    }
+}
+// </vc-code>

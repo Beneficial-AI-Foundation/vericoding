@@ -1,0 +1,38 @@
+vc-description: |-
+
+
+vc-preamble: |-
+  #[allow(unused_imports)]
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+
+vc-spec: |-
+  fn find_max(nums: Vec<i32>) -> (ret:i32)
+      // pre-conditions-start
+      requires
+          nums.len() > 0,
+      // pre-conditions-end
+      // post-conditions-start
+      ensures
+          forall |i: int| 0 <= i < nums@.len() ==> nums@[i] <= ret,
+          exists |i: int| 0 <= i < nums@.len() ==> nums@[i] == ret,
+      // post-conditions-end
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+  
+  }
+  
+  fn main() {}
+

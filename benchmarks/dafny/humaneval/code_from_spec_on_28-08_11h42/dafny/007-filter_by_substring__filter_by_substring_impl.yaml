@@ -1,0 +1,54 @@
+vc-preamble: |-
+  method checkSubstring(s: string, sub: string) returns (result: bool)
+  {
+    assume{:axiom} false;
+  }
+
+vc-helpers: |-
+  lemma FilterPreservesElements(strings: seq<string>, substring: string, res: seq<string>)
+      requires forall i :: 0 <= i < |res| ==> res[i] in strings
+      ensures forall s :: s in res ==> s in strings
+  {
+  }
+  
+  lemma FilterReducesSize(original: seq<string>, filtered: seq<string>)
+      requires forall s :: s in filtered ==> s in original
+      ensures |filtered| <= |original|
+  {
+  }
+  
+  lemma AppendPreservesSize(res: seq<string>, s: string, strings: seq<string>)
+      requires |res| <= |strings|
+      ensures |res + [s]| <= |strings| + 1
+  {
+  }
+
+vc-description: |-
+  function_signature: method filter_by_substring(strings: seq<string>, substring: string) returns (res : seq<string>)
+  Filter elements. Ensures: the size is bounded; the condition holds for all values.
+
+vc-spec: |-
+  method filter_by_substring(strings: seq<string>, substring: string) returns (res : seq<string>)
+      // post-conditions-start
+      ensures |res| <= |strings|
+      ensures (forall s :: s in res ==> s in strings)
+      // post-conditions-end
+
+vc-code: |-
+  {
+      res := [];
+      for i := 0 to |strings|
+          invariant 0 <= i <= |strings|
+          invariant |res| <= |strings|
+          invariant forall s :: s in res ==> s in strings
+      {
+          var contains := checkSubstring(strings[i], substring);
+          if contains {
+              res := res + [strings[i]];
+          }
+      }
+  }
+
+vc-postamble: |-
+
+

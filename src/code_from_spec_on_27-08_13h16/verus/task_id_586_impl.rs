@@ -1,0 +1,59 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+// No updates needed for helpers in this case
+// </vc-helpers>
+
+// <vc-spec>
+fn split_and_append(list: &Vec<i32>, n: usize) -> (new_list: Vec<i32>)
+    // pre-conditions-start
+    requires
+        list@.len() > 0,
+        0 < n < list@.len(),
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        new_list@ == list@.subrange(n as int, list@.len() as int).add(list@.subrange(0, n as int)),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut new_list: Vec<i32> = Vec::new();
+    let len = list.len();
+    
+    // Append the second part (from n to end)
+    let mut i = n;
+    while i < len
+        invariant
+            0 <= n <= len,
+            n <= i <= len,
+            new_list@ == list@.subrange(n as int, i as int),
+        decreases len - i
+    {
+        new_list.push(list[i]);
+        i = i + 1;
+    }
+    
+    // Append the first part (from 0 to n)
+    i = 0;
+    while i < n
+        invariant
+            0 <= i <= n,
+            n <= len,
+            new_list@ == list@.subrange(n as int, len as int).add(list@.subrange(0, i as int)),
+        decreases n - i
+    {
+        new_list.push(list[i]);
+        i = i + 1;
+    }
+    
+    new_list
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

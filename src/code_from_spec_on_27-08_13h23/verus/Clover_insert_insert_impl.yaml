@@ -1,0 +1,80 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+  // Helper lemma to prove properties about sequences and updates
+  proof fn lemma_seq_update<T>(s: Seq<T>, start: int, values: Seq<T>)
+      requires
+          0 <= start <= s.len(),
+          0 <= values.len(),
+          start + values.len() <= s.len(),
+      ensures
+          forall|i: int| 0 <= i < start ==> s[i] == s[i],
+          forall|i: int| start <= i < start + values.len() ==> s[i] == values[i - start],
+          forall|i: int| start + values.len() <= i < s.len() ==> s[i] == s[i],
+  {
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn insert(line: &mut Vec<char>, l: int, nl: &Vec<char>, p: int, at: int)
+      requires 
+          0 <= l + p <= old(line).len(),
+          0 <= p <= nl.len(),
+          0 <= at <= l,
+      ensures 
+          forall|i: int| (0 <= i < p) ==> line[at + i] == nl[i],
+          forall|i: int| (0 <= i < at) ==> line[i] == old(line)[i],
+          forall|i: int| (at + p <= i < l + p) ==> line[i] == old(line)[i - p],
+  // </vc-spec>
+
+vc-code: |-
+  fn insert(line: &mut Vec<char>, l: int, nl: &Vec<char>, p: int, at: int)
+      requires 
+          0 <= l + p <= old(line).len(),
+          0 <= p <= nl.len(),
+          0 <= at <= l,
+      ensures 
+          forall|i: int| 0 <= i < p ==> line[at + i] == nl[i],
+          forall|i: int| 0 <= i < at ==> line[i] == old(line)[i],
+          forall|i: int| at + p <= i < l + p ==> line[i] == old(line)[i - p],
+  {
+      let mut i: int = l - 1;
+      while i >= at
+          invariant
+              at <= i + 1 <= l,
+              line.len() == old(line).len(),
+              forall|j: int| 0 <= j < at ==> line[j] == old(line)[j],
+              forall|j: int| i + 1 <= j < l ==> line[j + p] == old(line)[j],
+      {
+          let idx = i as usize;
+          let new_idx = (i + p) as usize;
+          line[new_idx] = line[idx];
+          i = i - 1;
+      }
+  
+      let mut j: int = 0;
+      while j < p
+          invariant
+              0 <= j <= p,
+              line.len() == old(line).len(),
+              forall|i: int| 0 <= i < at ==> line[i] == old(line)[i],
+              forall|i: int| at <= i < at + j ==> line[i] == nl[i - at],
+              forall|i: int| at + p <= i < l + p ==> line[i] == old(line)[i - p],
+      {
+          let idx = (at + j) as usize;
+          let nl_idx = j as usize;
+          line[idx] = nl[nl_idx];
+          j = j + 1;
+      }
+  }
+
+vc-postamble: |-
+  
+  fn main() {
+  }
+  
+  }
+

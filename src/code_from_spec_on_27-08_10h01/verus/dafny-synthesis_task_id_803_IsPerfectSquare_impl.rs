@@ -1,0 +1,73 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+spec fn is_square(n: int, root: int) -> bool {
+    root >= 0 && root * root == n
+}
+
+spec fn no_root_exists(n: int) -> bool {
+    forall|a: int| 0 <= a && a * a <= n ==> a * a != n
+}
+
+proof fn sqrt_bounds(n: int, i: int)
+    requires n >= 0, i >= 0, i * i > n
+    ensures forall|j: int| j > i ==> j * j > n
+{
+    assert forall|j: int| j > i ==> j * j >= (i + 1) * (i + 1) by {
+        assert forall|j: int| j > i ==> j >= i + 1 by {};
+        assert forall|j: int| j >= i + 1 ==> j * j >= (i + 1) * (i + 1) by {};
+    };
+    assert((i + 1) * (i + 1) == i * i + 2 * i + 1);
+    assert(i * i + 2 * i + 1 > i * i);
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn is_perfect_square(n: int) -> (result: bool)
+    requires 
+        n >= 0,
+    ensures 
+        result == true ==> (exists|i: int| 0 <= i <= n && #[trigger] (i * i) == n),
+        result == false ==> (forall|a: int| 0 < a*a < n ==> #[trigger] (a*a) != n),
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    if n == 0 {
+        return true;
+    }
+    
+    let mut i: int = 1;
+    while i * i <= n
+        invariant 
+            i >= 1,
+            n >= 0,
+            forall|j: int| 0 <= j < i ==> j * j != n,
+        decreases n - i * i + 1
+    {
+        if i * i == n {
+            return true;
+        }
+        i = i + 1;
+    }
+    
+    proof {
+        sqrt_bounds(n, i - 1);
+        assert(forall|a: int| 0 < a * a < n ==> a * a != n) by {
+            assert(forall|j: int| 0 <= j < i ==> j * j != n);
+            assert((i - 1) * (i - 1) < n);
+            assert(i * i > n);
+        };
+    }
+    
+    false
+}
+// </vc-code>
+
+fn main() {}
+
+}

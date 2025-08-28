@@ -1,0 +1,112 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn fib(n: nat) -> nat
+      decreases n
+  {
+      if n == 0 { 0 }
+      else if n == 1 { 1 }
+      else { fib((n - 1) as nat) + fib((n - 2) as nat) }
+  }
+
+vc-helpers: |-
+  proof fn fib_monotonic(n1: nat, n2: nat)
+      requires n1 <= n2
+      ensures fib(n1) <= fib(n2)
+      decreases n2
+  {
+      if n1 == n2 {
+          assert(fib(n1) == fib(n2));
+      } else if n2 == 0 {
+          assert(false); // contradiction since n1 <= n2 and n2 == 0 implies n1 == 0
+      } else if n2 == 1 {
+          if n1 == 0 {
+              assert(fib(0) == 0);
+              assert(fib(1) == 1);
+              assert(0 <= 1);
+          }
+      } else {
+          if n1 == 0 {
+              assert(fib(0) == 0);
+              assert(fib(n2) >= 0);
+          } else if n1 == 1 {
+              assert(fib(1) == 1);
+              assert(fib(n2) >= 1);
+          } else {
+              fib_monotonic(n1 - 1, n2 - 1);
+              fib_monotonic(n1 - 2, n2 - 2);
+              assert(fib(n1) == fib(n1 - 1) + fib(n1 - 2));
+              assert(fib(n2) == fib(n2 - 1) + fib(n2 - 2));
+              assert(fib(n1 - 1) <= fib(n2 - 1));
+              assert(fib(n1 - 2) <= fib(n2 - 2));
+              assert(fib(n1 - 1) + fib(n1 - 2) <= fib(n2 - 1) + fib(n2 - 2));
+          }
+      }
+  }
+  
+  proof fn fib_bound(n: nat)
+      requires n < 100
+      ensures fib(n) < 0x1_0000_0000_0000_0000 // bound for u64
+      decreases n
+  {
+      if n == 0 {
+          assert(fib(0) == 0);
+      } else if n == 1 {
+          assert(fib(1) == 1);
+      } else {
+          fib_bound((n - 1) as nat);
+          fib_bound((n - 2) as nat);
+          assert(fib(n) == fib((n - 1) as nat) + fib((n - 2) as nat));
+          // Verus can deduce the bound holds via the recursive calls
+      }
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn fibonacci1(n: u64) -> (f: u64)
+      requires n < 100, // practical bound to prevent overflow
+      ensures f == fib(n as nat)
+  // </vc-spec>
+
+vc-code: |-
+  fn fibonacci1(n: u64) -> (f: u64)
+      requires n < 100
+      ensures f == fib(n as nat)
+  {
+      if n == 0 {
+          0
+      } else if n == 1 {
+          1
+      } else {
+          let mut prev: u64 = 0;
+          let mut curr: u64 = 1;
+          let mut i: u64 = 2;
+          while i <= n
+              invariant
+                  i <= n + 1,
+                  prev == fib((i - 2) as nat),
+                  curr == fib((i - 1) as nat)
+          {
+              let next = prev + curr;
+              proof {
+                  fib_bound((i - 2) as nat);
+                  fib_bound((i - 1) as nat);
+                  assert(fib((i - 2) as nat) <= 0xFFFF_FFFF_FFFF_FFFF);
+                  assert(fib((i - 1) as nat) <= 0xFFFF_FFFF_FFFF_FFFF);
+                  assert(next == fib(i as nat));
+              }
+              prev = curr;
+              curr = next;
+              i = i + 1;
+          }
+          curr
+      }
+  }
+
+vc-postamble: |-
+  fn main() {}
+  
+  }
+

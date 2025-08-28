@@ -1,0 +1,38 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+// </vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn get_first_elements(lst: Seq<Seq<int>>) -> (result: Seq<int>)
+    requires forall|i: int| 0 <= i < lst.len() ==> lst[i].len() > 0,
+    ensures result.len() == lst.len(),
+    ensures forall|i: int| 0 <= i < result.len() ==> result[i] == lst[i][0],
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut result: Vec<int> = Vec::new();
+    let mut i = 0;
+    while i < lst.len()
+        invariant
+            0 <= i <= lst.len(),
+            result.len() == i,
+            forall|j: int| 0 <= j < i ==> result@[j] == lst[j][0],
+    {
+        result.push(lst[i][0]);
+        i += 1;
+    }
+    result@
+}
+// </vc-code>
+
+fn main() {
+}
+
+}

@@ -1,0 +1,52 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn all_equal(s: Seq<i32>) -> bool {
+      forall|i: int, j: int| 0 <= i < s.len() && 0 <= j < s.len() ==> s[i] == s[j]
+  }
+  //forall|i: int, j: int| 0 <= i <= j < s.len() ==> s[i] == s[j]
+  //forall|i: int| 0 < i < s.len() ==> s[i-1] == s[i]
+  //forall|i: int| 0 <= i < s.len() - 1 ==> s[i] == s[i+1]
+  
+  
+  //Ordered indexes
+  
+  //All equal to first
+
+vc-helpers: |-
+  // No updates needed for helpers as the issue is a compilation error in the code section
+
+vc-spec: |-
+  // <vc-spec>
+  fn mall_equal1(v: &[i32]) -> (b: bool)
+      ensures b == all_equal(v@)
+  // </vc-spec>
+
+vc-code: |-
+  fn mall_equal1(v: &[i32]) -> (b: bool)
+      ensures b == all_equal(v@)
+  {
+      if v.len() == 0 {
+          return true;
+      }
+      let first = v[0];
+      for i in 1..v.len()
+          invariant
+              forall|k: int| 0 <= k < i ==> v@[k] == first
+      {
+          if v[i] != first {
+              return false;
+          }
+      }
+      true
+  }
+
+vc-postamble: |-
+  
+  fn main() {
+  }
+  
+  }
+

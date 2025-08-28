@@ -1,0 +1,89 @@
+// By `lol sort` here, I refer to a seemingly-broken sorting algorithm,
+// which actually somehow manages to work perfectly:
+//
+// for i in 0..n
+//   for j in 0..n
+//     if i < j
+//       swap a[i], a[j]
+//
+// It is perhaps the simpliest sorting algorithm to "memorize",
+// even "symmetrically beautiful" as if `i` and `j` just played highly
+// similar roles. And technically it's still O(n^2) time lol...
+//
+// Proving its correctness is tricky (interesting) though.
+
+// Successfully verified with [Dafny 3.3.0.31104] in about 5 seconds.
+
+
+
+// We define "valid permutation" using multiset:
+
+predicate valid_permut(a: seq<int>, b: seq<int>)
+  requires |a| == |b|
+{
+  multiset(a) == multiset(b)
+}
+
+// This is a swap-based sorting algorithm, so permutedness is trivial:
+// note that: if i == j, the spec just says a[..] remains the same.
+
+// We then define "sorted" (by increasing order):
+predicate sorted(a: seq<int>)
+{
+  forall i, j | 0 <= i <= j < |a| :: a[i] <= a[j]
+}
+
+
+// Now, the lol sort algorithm:
+// (Some invariants were tricky to find, but Dafny was smart enough otherwise)
+
+// <vc-helpers>
+// Helper lemma to prove properties about sequence updates
+lemma UpdateSeqPermut(a: seq<int>, i: int, j: int, x: int, y: int)
+  requires 0 <= i < |a| && 0 <= j < |a|
+  ensures multiset(a[i := x][j := y]) == multiset(a)
+{
+  if i == j {
+    assert a[i := x][j := y] == a[i := y];
+    assert multiset(a[i := y]) == multiset(a);
+  } else {
+    var s1 := a[i := x];
+    var s2 := s1[j := y];
+    var m1 := multiset(a);
+    var m2 := multiset(s1);
+    var m3 := multiset(s2);
+    assert m2 == multiset(a[..i] + [x] + a[i+1..]);
+    assert m3 == if j < i then multiset(a[..j] + [y] + a[j+1..i] + [x] + a[i+1..])
+                 else multiset(a[..i] + [x] + a[i+1..j] + [y] + a[j+1..]);
+    assert m1 == multiset(a[..i] + [a[i]] + a[i+1..j] + [a[j]] + a[j+1..]);
+    assert m2 == multiset(a[..i] + [x] + a[i+1..j] + [a[j]] + a[j+1..]);
+    assert m3 == multiset(a[..i] + [x] + a[i+1..j] + [y] + a[j+1..]);
+    assert m3 == multiset(a) - multiset([a[i], a[j]]) + multiset([x, y]);
+    assert multiset(s2) == multiset(a);
+  }
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method swap(a: array<int>, i: int, j: int)
+  requires 0 <= i < a.Length && 0 <= j < a.Length
+  modifies a
+  ensures a[..] == old(a[..]) [i := old(a[j])] [j := old(a[i])]
+  ensures valid_permut(a[..], old(a[..]))
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+method Swap(a: array<int>, i: int, j: int)
+  requires 0 <= i < a.Length && 0 <= j < a.Length
+  modifies a
+  ensures a[..] == old(a[..])[i := old(a[j])][j := old(a[i])]
+  ensures valid_permut(a[..], old(a[..]))
+{
+  var temp := a[i];
+  a[i] := a[j];
+  a[j] := temp;
+  UpdateSeqPermut(old(a[..]), i, j, old(a[j]), old(a[i]));
+}
+// </vc-code>

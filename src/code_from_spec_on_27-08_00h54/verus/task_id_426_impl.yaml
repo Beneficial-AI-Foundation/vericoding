@@ -1,0 +1,60 @@
+vc-description: |-
+
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+  spec fn is_odd(x: u32) -> bool {
+      x % 2 != 0
+  }
+  
+  proof fn lemma_filter_extend(s: Seq<u32>, x: u32, i: int)
+      requires 0 <= i < s.len()
+      ensures s.subrange(0, i + 1).filter(|x: u32| x % 2 != 0) == 
+              s.subrange(0, i).filter(|x: u32| x % 2 != 0) + if is_odd(s[i]) { seq![s[i]] } else { seq![] }
+  {
+      assert(s.subrange(0, i + 1) == s.subrange(0, i).push(s[i]));
+  }
+
+vc-spec: |-
+  fn filter_odd_numbers(arr: &Vec<u32>) -> (odd_list: Vec<u32>)
+      // post-conditions-start
+      ensures
+          odd_list@ == arr@.filter(|x: u32| x % 2 != 0),
+      // post-conditions-end
+
+vc-code: |-
+  {
+      let mut odd_list = Vec::new();
+      for i in 0..arr.len()
+          invariant
+              odd_list@ == arr@.subrange(0, i as int).filter(|x: u32| x % 2 != 0),
+      {
+          if arr[i] % 2 != 0 {
+              proof {
+                  lemma_filter_extend(arr@, arr@[i as int], i as int);
+                  assert(is_odd(arr@[i as int]));
+              }
+              odd_list.push(arr[i]);
+          } else {
+              proof {
+                  lemma_filter_extend(arr@, arr@[i as int], i as int);
+                  assert(!is_odd(arr@[i as int]));
+              }
+          }
+      }
+      proof {
+          assert(arr@.subrange(0, arr.len() as int) == arr@);
+      }
+      odd_list
+  }
+
+vc-postamble: |-
+  
+  } // verus!
+  
+  fn main() {}
+

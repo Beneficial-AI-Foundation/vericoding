@@ -1,0 +1,58 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+// Helper spec function to define the expected left part
+spec fn left_part(arr: Seq<i32>, l: int) -> Seq<i32> {
+    arr.subrange(0, l)
+}
+
+// Helper spec function to define the expected right part  
+spec fn right_part(arr: Seq<i32>, l: int) -> Seq<i32> {
+    arr.subrange(l, arr.len() as int)
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn split_array(arr: &[i32], l: usize) -> (Vec<i32>, Vec<i32>)
+    requires 0 <= l <= arr.len()
+{
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+fn split_array(arr: &[i32], l: usize) -> (Vec<i32>, Vec<i32>)
+    requires 0 <= l <= arr.len()
+    ensures 
+        result.0@ == left_part(arr@, l as int),
+        result.1@ == right_part(arr@, l as int)
+{
+    let mut left = Vec::new();
+    let mut right = Vec::new();
+    
+    for i in 0..l
+        invariant 
+            left.len() == i,
+            forall|j: int| 0 <= j < i ==> left@[j] == arr@[j]
+    {
+        left.push(arr[i]);
+    }
+    
+    for i in l..arr.len()
+        invariant 
+            right.len() == i - l,
+            forall|j: int| 0 <= j < i - l ==> right@[j] == arr@[l + j]
+    {
+        right.push(arr[i]);
+    }
+    
+    (left, right)
+}
+// </vc-code>
+
+fn main() {
+}
+
+}

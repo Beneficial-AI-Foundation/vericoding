@@ -1,0 +1,163 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn sum(v: Seq<int>, i: int, j: int) -> int
+    recommends 0 <= i <= j <= v.len()
+    decreases j when 0 <= i <= j <= v.len()
+{
+    if i == j {
+        0 as int
+    } else {
+        sum(v, i, (j-1) as int) + v[(j-1) as int]
+    }
+}
+
+spec fn sum_max_to_right(v: Seq<int>, i: int, s: int) -> bool
+    recommends 0 <= i < v.len()
+{
+    forall|l: int, ss: int| 0 <= l <= i && ss == i + 1 ==> sum(v, l, ss) <= s
+}
+
+spec fn sum2(v: Seq<int>, i: int, j: int) -> int
+    recommends 0 <= i <= j <= v.len()
+    decreases j - i when 0 <= i <= j <= v.len()
+{
+    if i == j {
+        0 as int
+    } else {
+        v[i as int] + sum2(v, (i+1) as int, j)
+    }
+}
+
+spec fn sum_max_to_right2(v: Seq<int>, j: int, i: int, s: int) -> bool
+    recommends 0 <= j <= i < v.len()
+{
+    forall|l: int, ss: int| j <= l <= i && ss == i + 1 ==> sum2(v, l, ss) <= s
+}
+
+// <vc-helpers>
+proof fn lemma_sum_equivalence(v: Seq<int>, i: int, j: int)
+    requires 0 <= i <= j <= v.len()
+    ensures sum(v, i, j) == sum2(v, i, j)
+    decreases j - i
+{
+    if i == j {
+    } else {
+        lemma_sum_equivalence(v, i + 1, j);
+    }
+}
+
+proof fn lemma_sum_additive(v: Seq<int>, i: int, j: int, k: int)
+    requires 0 <= i <= j <= k <= v.len()
+    ensures sum2(v, i, k) == sum2(v, i, j) + sum2(v, j, k)
+    decreases j - i
+{
+    if i == j {
+    } else {
+        lemma_sum_additive(v, i + 1, j, k);
+    }
+}
+
+proof fn lemma_sum_single(v: Seq<int>, i: int)
+    requires 0 <= i < v.len()
+    ensures sum2(v, i, i + 1) == v[i]
+{
+}
+
+proof fn lemma_sum_max_extend(v: Seq<int>, i: int, max_sum: int, max_start: int)
+    requires 0 <= i < v.len()
+    requires max_start <= i
+    requires max_sum == sum2(v, max_start, i + 1)
+    requires sum_max_to_right2(v, 0, i, max_sum)
+    ensures sum_max_to_right(v, i, max_sum)
+{
+    lemma_sum_equivalence(v, max_start, i + 1);
+    assert forall|l: int, ss: int| 0 <= l <= i && ss == i + 1 implies sum(v, l, ss) <= max_sum by {
+        if 0 <= l <= i && ss == i + 1 {
+            lemma_sum_equivalence(v, l, ss);
+            assert sum2(v, l, ss) <= max_sum;
+        }
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn seg_max_sum(v: &[i32], i: usize) -> (i32, usize)
+    requires v.len() > 0 && i < v.len()
+    ensures |result: (i32, usize)|
+        result.1 <= i && 
+        result.0 == sum(v@.map_values(|x: i32| x as int), result.1 as int, (i+1) as int) &&
+        sum_max_to_right(v@.map_values(|x: i32| x as int), i as int, result.0 as int)
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+fn seg_max_sum(v: &[i32], i: usize) -> (i32, usize)
+    requires v.len() > 0 && i < v.len()
+    ensures |result: (i32, usize)|
+        result.1 <= i && 
+        result.0 == sum(v@.map_values(|x: i32| x as int), result.1 as int, (i+1) as int) &&
+        sum_max_to_right(v@.map_values(|x: i32| x as int), i as int, result.0 as int)
+{
+    let mapped = v@.map_values(|x: i32| x as int);
+    let mut max_sum = v[i] as int;
+    let mut max_start = i;
+    let mut current_sum = v[i] as int;
+    let mut k = i;
+
+    proof {
+        lemma_sum_single(mapped, i as int);
+        assert(sum2(mapped, i as int, (i + 1) as int) == mapped[i as int]);
+    }
+
+    while k > 0
+        invariant 
+            0 <= k <= i < v.len(),
+            max_start <= i,
+            k <= max_start <= i,
+            current_sum == sum2(mapped, k as int, (i + 1) as int),
+            max_sum == sum2(mapped, max_start as int, (i + 1) as int),
+            sum_max_to_right2(mapped, k as int, i as int, max_sum)
+        decreases k
+    {
+        k -= 1;
+        current_sum += v[k] as int;
+        
+        proof {
+            lemma_sum_additive(mapped, k as int, (k + 1) as int, (i + 1) as int);
+            lemma_sum_single(mapped, k as int);
+        }
+
+        if current_sum > max_sum {
+            max_sum = current_sum;
+            max_start = k;
+        }
+
+        proof {
+            assert forall|l: int, ss: int| k <= l <= i && ss == i + 1 implies sum2(mapped, l, ss) <= max_sum by {
+                if k <= l <= i && ss == i + 1 {
+                    if l == k {
+                        assert sum2(mapped, l, ss) == current_sum;
+                    } else {
+                        assert k + 1 <= l <= i;
+                        assert sum2(mapped, l, ss) <= max_sum;
+                    }
+                }
+            }
+        }
+    }
+
+    proof {
+        lemma_sum_max_extend(mapped, i as int, max_sum, max_start as int);
+    }
+
+    (max_sum as i32, max_start)
+}
+// </vc-code>
+
+fn main() {
+}
+
+}

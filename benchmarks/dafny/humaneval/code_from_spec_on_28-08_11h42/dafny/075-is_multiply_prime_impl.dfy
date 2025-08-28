@@ -1,0 +1,154 @@
+function Prime(p: nat) : bool
+{
+    p > 1 &&
+    forall k :: 1 < k < p ==> p % k != 0
+}
+
+// <vc-helpers>
+lemma PrimeFactorExists(n: nat)
+    requires n > 1
+    ensures exists p: nat :: Prime(p) && p <= n && n % p == 0
+{
+    if Prime(n) {
+        assert Prime(n) && n <= n && n % n == 0;
+    } else {
+        var k := 2;
+        while k <= n && n % k != 0
+            invariant 2 <= k <= n + 1
+            invariant forall j :: 2 <= j < k ==> n % j != 0
+            decreases n - k
+        {
+            k := k + 1;
+        }
+        assert k <= n && n % k == 0;
+        SmallestPrimeFactorHelperPrime(n, 2);
+    }
+}
+
+function SmallestPrimeFactor(n: nat): nat
+    requires n > 1
+    ensures Prime(SmallestPrimeFactor(n))
+    ensures n % SmallestPrimeFactor(n) == 0
+    ensures SmallestPrimeFactor(n) >= 2
+{
+    SmallestPrimeFactorHelper(n, 2)
+}
+
+function SmallestPrimeFactorHelper(n: nat, k: nat): nat
+    requires n > 1
+    requires k >= 2
+    requires forall j :: 2 <= j < k ==> n % j != 0
+    ensures Prime(SmallestPrimeFactorHelper(n, k))
+    ensures n % SmallestPrimeFactorHelper(n, k) == 0
+    ensures SmallestPrimeFactorHelper(n, k) >= 2
+    decreases n - k
+{
+    if k * k > n then
+        n
+    else if n % k == 0 then
+        k
+    else
+        SmallestPrimeFactorHelper(n, k + 1)
+}
+
+lemma SmallestPrimeFactorHelperPrime(n: nat, k: nat)
+    requires n > 1
+    requires k >= 2
+    requires forall j :: 2 <= j < k ==> n % j != 0
+    ensures Prime(SmallestPrimeFactorHelper(n, k))
+{
+    var result := SmallestPrimeFactorHelper(n, k);
+    if k * k > n {
+        assert result == n;
+        assert forall j :: 2 <= j < k ==> n % j != 0;
+        assert forall j :: k <= j < n ==> j * j <= (n-1) * (n-1) < n * n;
+        assert forall j :: 1 < j < n ==> (j < k || j >= k);
+        assert forall j :: 1 < j < n ==> n % j != 0;
+    } else if n % k == 0 {
+        assert result == k;
+        if !Prime(k) {
+            assert exists j :: 1 < j < k && k % j == 0;
+            var j :| 1 < j < k && k % j == 0;
+            assert j >= 2;
+            assert n % j == 0;
+            assert false;
+        }
+    } else {
+        SmallestPrimeFactorHelperPrime(n, k + 1);
+    }
+}
+
+function SeqProduct(s: seq<nat>): nat
+{
+    if |s| == 0 then 1
+    else s[0] * SeqProduct(s[1..])
+}
+
+lemma SeqProductAppend(s: seq<nat>, x: nat)
+    ensures SeqProduct(s + [x]) == SeqProduct(s) * x
+{
+    if |s| == 0 {
+        assert s + [x] == [x];
+        assert SeqProduct([x]) == x;
+        assert SeqProduct(s) == 1;
+    } else {
+        assert (s + [x])[0] == s[0];
+        assert (s + [x])[1..] == s[1..] + [x];
+        SeqProductAppend(s[1..], x);
+    }
+}
+
+lemma SeqProduct3(s: seq<nat>)
+    requires |s| == 3
+    ensures SeqProduct(s) == s[0] * s[1] * s[2]
+{
+    assert s == [s[0]] + s[1..];
+    SeqProductAppend([s[0]], s[1]);
+    assert SeqProduct(s) == s[0] * SeqProduct(s[1..]);
+    assert s[1..] == [s[1]] + s[2..];
+    SeqProductAppend([s[1]], s[2]);
+    assert SeqProduct(s[1..]) == s[1] * SeqProduct(s[2..]);
+    assert s[2..] == [s[2]];
+    assert SeqProduct([s[2]]) == s[2];
+}
+// </vc-helpers>
+
+// <vc-spec>
+method is_multiply_prime(x: nat) returns (ans : bool)
+    // pre-conditions-start
+    requires x > 1
+    // pre-conditions-end
+    // post-conditions-start
+    ensures ans <==> exists a: nat, b: nat, c: nat :: Prime(a) && Prime(b) && Prime(c) && x == a * b * c
+    // post-conditions-end
+// </vc-spec>
+// <vc-code>
+{
+    var factors: seq<nat> := [];
+    var remaining := x;
+    
+    while |factors| < 3 && remaining > 1
+        invariant remaining >= 1
+        invariant forall i :: 0 <= i < |factors| ==> Prime(factors[i])
+        invariant |factors| <= 3
+        invariant SeqProduct(factors) * remaining == x
+        decreases remaining
+    {
+        var prime_factor := SmallestPrimeFactor(remaining);
+        factors := factors + [prime_factor];
+        SeqProductAppend(factors[..|factors|-1], prime_factor);
+        remaining := remaining / prime_factor;
+    }
+    
+    if |factors| == 3 && remaining == 1 {
+        ans := true;
+        assert Prime(factors[0]) && Prime(factors[1]) && Prime(factors[2]);
+        SeqProduct3(factors);
+        assert SeqProduct(factors) == factors[0] * factors[1] * factors[2];
+        assert x == SeqProduct(factors) * remaining;
+        assert x == factors[0] * factors[1] * factors[2];
+    } else {
+        ans := false;
+    }
+}
+// </vc-code>

@@ -1,0 +1,157 @@
+predicate merged(a1: seq<int>, a2: seq<int>, b: array<int>, start: int, end: int)
+  reads b
+  requires end - start  == |a2| + |a1|
+  requires 0 <= start <= end <= b.Length
+{
+  multiset(a1) + multiset(a2) == multiset(b[start..end])
+}
+
+predicate sorted_slice(a: array<int>, start: int, end: int)
+  requires 0 <= start <= end <= a.Length
+  reads a
+{
+  forall i, j :: start <= i <= j < end ==> a[i] <= a[j]
+}
+
+predicate sorted_seq(a: seq<int>)
+{
+  forall i, j :: 0 <= i <= j < |a| ==> a[i] <= a[j]
+}
+
+predicate sorted(a: array<int>)
+  reads a
+{
+  forall i, j :: 0 <= i < j < a.Length ==> a[i] <= a[j]
+}
+
+// <vc-helpers>
+lemma MultisetUnionPreservesSorted(a1: seq<int>, a2: seq<int>, b: array<int>, start: int, mid: int, end: int)
+  requires sorted_seq(a1)
+  requires sorted_seq(a2)
+  requires 0 <= start <= mid <= end <= b.Length
+  requires mid - start == |a1|
+  requires end - mid == |a2|
+  requires multiset(a1) == multiset(b[start..mid])
+  requires multiset(a2) == multiset(b[mid..end])
+  ensures multiset(a1) + multiset(a2) == multiset(b[start..end])
+{
+  assert multiset(b[start..end]) == multiset(b[start..mid]) + multiset(b[mid..end]);
+}
+
+lemma SortedSliceExtension(a: array<int>, start: int, k: int, end: int, val: int)
+  requires 0 <= start <= k < end <= a.Length
+  requires sorted_slice(a, start, k)
+  requires k > start ==> a[k-1] <= val
+  ensures sorted_slice(a, start, k+1)
+{
+  forall i, j | start <= i <= j < k+1
+    ensures a[i] <= a[j]
+  {
+    if j < k {
+      assert a[i] <= a[j];
+    } else {
+      assert j == k;
+      if i < k {
+        assert a[i] <= a[k-1] <= a[k];
+      }
+    }
+  }
+}
+
+lemma MultisetSlice(a: seq<int>, i: int)
+  requires 0 <= i <= |a|
+  ensures multiset(a[0..i]) <= multiset(a)
+{
+}
+
+lemma MultisetFull(a: seq<int>, i: int)
+  requires 0 <= i <= |a|
+  requires i == |a|
+  ensures multiset(a[0..i]) == multiset(a)
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method mergeSimple(a1: seq<int>, a2: seq<int>, start: int, end: int, b: array<int>)
+  modifies b
+  requires sorted_seq(a1)
+  requires sorted_seq(a2)
+  requires 0 <= start <= end <= b.Length
+  requires |a1| +  |a2| == end - start + 1
+  ensures sorted_slice(b, start, end)
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+method MergeSimpleImpl(a1: seq<int>, a2: seq<int>, start: int, end: int, b: array<int>)
+  modifies b
+  requires sorted_seq(a1)
+  requires sorted_seq(a2)
+  requires 0 <= start <= end <= b.Length
+  requires |a1| + |a2| == end - start
+  ensures sorted_slice(b, start, end)
+  ensures multiset(b[start..end]) == multiset(a1) + multiset(a2)
+{
+  var i := 0;
+  var j := 0;
+  var k := start;
+
+  while k < end
+    decreases end - k
+    invariant 0 <= i <= |a1|
+    invariant 0 <= j <= |a2|
+    invariant k == start + i + j
+    invariant start <= k <= end
+    invariant sorted_slice(b, start, k)
+    invariant forall m :: 0 <= m < i ==> b[start + m] == a1[m]
+    invariant forall m :: 0 <= m < j ==> b[start + i + m] == a2[m]
+    invariant forall m, n :: 0 <= m < i && 0 <= n < j ==> b[start + m] <= b[start + i + n]
+    invariant multiset(b[start..k]) == multiset(a1[0..i]) + multiset(a2[0..j])
+  {
+    if i < |a1| && (j >= |a2| || a1[i] <= a2[j])
+    {
+      b[k] := a1[i];
+      if k > start {
+        if i > 0 {
+          assert b[k-1] == a1[i-1];
+          assert a1[i-1] <= a1[i];
+          assert b[k-1] <= b[k];
+        } else if j > 0 {
+          assert b[k-1] == a2[j-1];
+          assert a1[i] >= a2[j-1];
+          assert b[k-1] <= b[k];
+        }
+      }
+      SortedSliceExtension(b, start, k, end, b[k]);
+      i := i + 1;
+    }
+    else
+    {
+      b[k] := a2[j];
+      if k > start {
+        if j > 0 {
+          assert b[k-1] == a2[j-1];
+          assert a2[j-1] <= a2[j];
+          assert b[k-1] <= b[k];
+        } else if i > 0 {
+          assert b[k-1] == a1[i-1];
+          assert a1[i-1] <= a2[j];
+          assert b[k-1] <= b[k];
+        }
+      }
+      SortedSliceExtension(b, start, k, end, b[k]);
+      j := j + 1;
+    }
+    k := k + 1;
+  }
+  assert k == end;
+  assert i == |a1| && j == |a2|;
+  MultisetFull(a1, i);
+  MultisetFull(a2, j);
+  assert multiset(a1[0..i]) == multiset(a1);
+  assert multiset(a2[0..j]) == multiset(a2);
+  assert multiset(b[start..end]) == multiset(a1) + multiset(a2);
+}
+// </vc-code>

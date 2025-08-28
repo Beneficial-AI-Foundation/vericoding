@@ -1,0 +1,81 @@
+use vstd::prelude::*;
+
+verus! {
+
+fn partition(a: &mut Vec<int>, lo: usize, hi: usize) -> (p: usize)
+    requires 0 <= lo < hi <= old(a).len(),
+    ensures lo <= p < hi,
+{
+    assume(false);
+    0
+}
+
+spec fn split_point(a: &Vec<int>, n: usize) -> bool
+    recommends 0 <= n <= a.len(),
+{
+    forall|i: int, j: int| 0 <= i < n && n <= j < a.len() ==> a[i] <= a[j]
+}
+
+spec fn swap_frame(a: &Vec<int>, old_a: &Vec<int>, lo: usize, hi: usize) -> bool
+    recommends 0 <= lo <= hi <= a.len(),
+{
+    (forall|i: int| (0 <= i < lo || hi <= i < a.len()) ==> a[i] == old_a[i]) &&
+    a@.to_multiset() =~= old_a@.to_multiset()
+}
+
+fn quick_sort_aux(a: &mut Vec<int>, lo: usize, hi: usize)
+    requires 
+        0 <= lo <= hi <= old(a).len(),
+        split_point(old(a), lo),
+        split_point(old(a), hi),
+    ensures 
+        forall|i: int, j: int| lo <= i < j < hi ==> a[i] <= a[j],
+        swap_frame(a, old(a), lo, hi),
+        split_point(a, lo),
+        split_point(a, hi),
+    decreases hi - lo,
+{
+    assume(false);
+}
+
+// <vc-helpers>
+proof fn lemma_split_point_empty(a: &Vec<int>, n: usize)
+    requires 0 <= n <= a.len()
+    ensures n == 0 || n == a.len() ==> split_point(a, n)
+{
+}
+
+proof fn lemma_split_point_all(a: &Vec<int>)
+    ensures split_point(a, 0) && split_point(a, a.len())
+{
+    lemma_split_point_empty(a, 0);
+    lemma_split_point_empty(a, a.len());
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn quick_sort(a: &mut Vec<int>)
+    ensures 
+        forall|i: int, j: int| 0 <= i < j < a.len() ==> a[i] <= a[j],
+        a@.to_multiset() =~= old(a)@.to_multiset(),
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+{
+    if a.len() <= 1 {
+        return;
+    }
+    
+    proof {
+        lemma_split_point_all(a);
+    }
+    
+    quick_sort_aux(a, 0, a.len());
+}
+// </vc-code>
+
+fn main() {}
+
+}

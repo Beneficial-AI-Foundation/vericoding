@@ -1,0 +1,50 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+  // </vc-helpers>
+
+vc-spec: |-
+  // <vc-spec>
+  fn double_array_elements(s: &mut Vec<i32>)
+      ensures forall|i: int| 0 <= i < old(s).len() ==> s[i] == 2 * old(s)[i]
+  // </vc-spec>
+
+vc-code: |-
+  {
+      let mut i: usize = 0;
+      let ghost old_s = s@;
+      while i < s.len()
+          invariant 
+              0 <= i <= s.len(),
+              s.len() == old_s.len(),
+              forall|j: int| 0 <= j < i ==> s@[j] == 2 * old_s[j],
+              forall|j: int| i <= j < s.len() ==> s@[j] == old_s[j]
+          decreases s.len() - i
+      {
+          let old_val = s[i];
+          proof {
+              assert(old_val == old_s[i as int]);
+          }
+          s.set(i, 2 * old_val);
+          proof {
+              assert(s@[i as int] == 2 * old_s[i as int]);
+              assert(forall|j: int| 0 <= j < i ==> s@[j] == 2 * old_s[j]);
+              assert(forall|j: int| (i + 1) <= j < s.len() ==> s@[j] == old_s[j]);
+          }
+          i += 1;
+          proof {
+              assert(forall|j: int| 0 <= j < i ==> s@[j] == 2 * old_s[j]);
+          }
+      }
+  }
+
+vc-postamble: |-
+  
+  fn main() {
+  }
+  
+  }
+

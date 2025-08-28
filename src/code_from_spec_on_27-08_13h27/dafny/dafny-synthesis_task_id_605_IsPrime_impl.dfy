@@ -1,0 +1,42 @@
+// <vc-helpers>
+// Helper lemma to assist in proving properties of divisibility if needed
+lemma DivisibilityProperty(n: int, k: int)
+  requires 2 <= k < n
+  ensures n % k == 0 ==> exists m :: m * k == n
+{
+  if n % k == 0 {
+    var m := n / k;
+    assert m * k == n;
+  }
+}
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method IsPrime(n: int) returns (result: bool)
+    requires n >= 2
+    ensures result <==> (forall k :: 2 <= k < n ==> n % k != 0)
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+method IsPrimeImpl(n: int) returns (result: bool)
+    requires n >= 2
+    ensures result <==> (forall k :: 2 <= k < n ==> n % k != 0)
+{
+    result := true;
+    var k := 2;
+    while k < n
+        invariant 2 <= k <= n
+        invariant result <==> (forall i :: 2 <= i < k ==> n % i != 0)
+    {
+        if n % k == 0
+        {
+            DivisibilityProperty(n, k);
+            result := false;
+            return;
+        }
+        k := k + 1;
+    }
+}
+// </vc-code>

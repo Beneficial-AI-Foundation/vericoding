@@ -1,0 +1,94 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+spec fn all_elements_equal(a: &[i32]) -> bool {
+    forall|i: int, j: int| 0 <= i < a.len() && 0 <= j < a.len() ==> a[i] == a[j]
+}
+
+spec fn exists_different_elements(a: &[i32]) -> bool {
+    exists|i: int, j: int| 0 <= i < a.len() && 0 <= j < a.len() && a[i] != a[j]
+}
+
+proof fn lemma_empty_array_all_equal(a: &[i32])
+    requires a.len() == 0
+    ensures all_elements_equal(a)
+{
+}
+
+proof fn lemma_single_element_all_equal(a: &[i32])
+    requires a.len() == 1
+    ensures all_elements_equal(a)
+{
+}
+
+proof fn lemma_all_equal_contradiction(a: &[i32])
+    requires a.len() > 1
+    requires all_elements_equal(a)
+    ensures !exists_different_elements(a)
+{
+}
+
+proof fn lemma_found_different_implies_exists(a: &[i32], i: usize, j: usize)
+    requires i < a.len()
+    requires j < a.len()
+    requires a[i] != a[j]
+    ensures exists_different_elements(a)
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+#[verifier::loop_isolation(false)]
+fn has_only_one_distinct_element(a: &[i32]) -> (result: bool)
+    // pre-conditions-start
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        result ==> forall|i: int, j: int| 0 <= i < a.len() && 0 <= j < a.len() ==> a[i] == a[j],
+        !result ==> exists|i: int, j: int| 0 <= i < a.len() && 0 <= j < a.len() && a[i] != a[j],
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    if a.len() <= 1 {
+        proof {
+            if a.len() == 0 {
+                lemma_empty_array_all_equal(a);
+            } else {
+                lemma_single_element_all_equal(a);
+            }
+        }
+        return true;
+    }
+
+    let first_element = a[0];
+    let mut i = 1;
+    
+    while i < a.len()
+        invariant
+            1 <= i <= a.len(),
+            forall|k: int| 0 <= k < i ==> a[k] == first_element,
+    {
+        if a[i] != first_element {
+            proof {
+                lemma_found_different_implies_exists(a, 0, i);
+            }
+            return false;
+        }
+        i += 1;
+    }
+    
+    proof {
+        assert(forall|k: int| 0 <= k < a.len() ==> a[k] == first_element);
+        assert(forall|i: int, j: int| 0 <= i < a.len() && 0 <= j < a.len() ==> a[i] == a[j]);
+    }
+    
+    true
+}
+// </vc-code>
+
+fn main() {}
+}

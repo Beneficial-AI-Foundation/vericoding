@@ -1,0 +1,49 @@
+use vstd::prelude::*;
+
+verus! {
+
+/**
+  Inverts an array of ints.
+ */
+
+// <vc-helpers>
+// No updates needed for helpers in this case
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn invert_array(a: &mut Vec<i32>)
+    ensures
+        a.len() == old(a).len(),
+        forall|i: int| 0 <= i < a.len() ==> a[i] == old(a)[a.len() - 1 - i],
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+fn invert_array(a: &mut Vec<i32>)
+    ensures
+        a.len() == old(a).len(),
+        forall|i: int| 0 <= i < a.len() ==> a[i] == old(a)[a.len() - 1 - i],
+{
+    let n = a.len();
+    let mut i: usize = 0;
+    
+    while i < n / 2
+        invariant
+            n == a.len(),
+            forall|k: int| 0 <= k < i as int ==> a[k] == old(a)[n - 1 - k],
+            forall|k: int| n - i as int <= k < n as int ==> a[k] == old(a)[k],
+            forall|k: int| i as int <= k < n - i as int ==> a[k] == old(a)[k],
+    {
+        let temp = a[i];
+        a.set(i, a[n - 1 - i]);
+        a.set(n - 1 - i, temp);
+        i = i + 1;
+    }
+}
+// </vc-code>
+
+fn main() {
+}
+
+}

@@ -1,0 +1,45 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+  // No additional helpers needed for this implementation
+
+vc-spec: |-
+  // <vc-spec>
+  fn is_palindrome(x: Seq<char>) -> (result: bool)
+    ensures result <==> (forall|i: int| 0 <= i < x.len() ==> #[trigger] x[i] == x[x.len() - i - 1])
+  // </vc-spec>
+
+vc-code: |-
+  fn is_palindrome(x: Seq<char>) -> (result: bool)
+      ensures result <==> (forall|i: int| 0 <= i < x.len() ==> #[trigger] x[i] == x[x.len() - i - 1])
+  {
+      let len = x.len();
+      if len == 0 {
+          return true;
+      }
+      
+      let mut i: int = 0;
+      let half = len / 2;
+      
+      while i < half
+          invariant
+              0 <= i <= half,
+              forall|j: int| 0 <= j < i ==> #[trigger] x[j] == x[len - j - 1]
+      {
+          if x[i] != x[len - i - 1] {
+              return false;
+          }
+          i = i + 1;
+      }
+      
+      true
+  }
+
+vc-postamble: |-
+  fn main() {}
+  
+  }
+

@@ -1,0 +1,31 @@
+// <vc-helpers>
+// No additional helper code or proofs needed for this fix.
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+method Match(s: string, p: string) returns (b: bool)
+  requires |s| == |p|
+  ensures b <==> forall n :: 0 <= n < |s| ==> s[n] == p[n] || p[n] == '?'
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+method MatchImpl(s: string, p: string) returns (b: bool)
+  requires |s| == |p|
+  ensures b <==> forall n :: 0 <= n < |s| ==> s[n] == p[n] || p[n] == '?'
+{
+  var i := 0;
+  b := true;
+  while i < |s|
+    invariant 0 <= i <= |s|
+    invariant b <==> forall k :: 0 <= k < i ==> s[k] == p[k] || p[k] == '?'
+  {
+    if s[i] != p[i] && p[i] != '?' {
+      b := false;
+      return;
+    }
+    i := i + 1;
+  }
+}
+// </vc-code>

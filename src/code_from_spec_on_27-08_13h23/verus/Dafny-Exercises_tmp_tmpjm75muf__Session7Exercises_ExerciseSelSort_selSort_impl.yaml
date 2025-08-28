@@ -1,0 +1,149 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn sorted_seg(a: Seq<int>, i: int, j: int) -> bool
+  {
+      &&& 0 <= i <= j <= a.len()
+      &&& forall|l: int, k: int| i <= l <= k < j ==> a[l] <= a[k]
+  }
+
+vc-helpers: |-
+  spec fn is_min(a: Seq<int>, start: int, end: int, min_idx: int) -> bool {
+      &&& start <= min_idx < end
+      &&& forall|k: int| start <= k < end ==> a[min_idx] <= a[k]
+  }
+  
+  proof fn lemma_min_idx_unique(a: Seq<int>, start: int, end: int, min_idx1: int, min_idx2: int)
+      requires
+          start <= end <= a.len(),
+          is_min(a, start, end, min_idx1),
+          is_min(a, start, end, min_idx2),
+      ensures
+          min_idx1 == min_idx2,
+  {
+      assert forall|k: int| start <= k < end implies a[min_idx1] <= a[k] by {
+          assert(is_min(a, start, end, min_idx1));
+      }
+      assert(a[min_idx1] <= a[min_idx2]);
+      assert(a[min_idx2] <= a[min_idx1]);
+      assert(a[min_idx1] == a[min_idx2]);
+      assert forall|k: int| start <= k < end implies a[min_idx2] <= a[k] by {
+          assert(is_min(a, start, end, min_idx2));
+      }
+  }
+  
+  proof fn lemma_sorted_after_swap(a: Seq<int>, i: int, j: int, min_idx: int)
+      requires
+          0 <= i <= j <= a.len(),
+          i <= min_idx < j,
+          is_min(a, i, j, min_idx),
+          sorted_seg(a, i, min_idx),
+      ensures
+          sorted_seg(a.update(min_idx as int, a[i]).update(i, a[min_idx]), i, min_idx + 1),
+  {
+      let new_a = a.update(min_idx as int, a[i]).update(i, a[min_idx]);
+      assert forall|l: int, k: int| i <= l <= k < min_idx + 1 implies new_a[l] <= new_a[k] by {
+          if l == i {
+              assert(new_a[i] == a[min_idx]);
+              assert forall|x: int| i <= x < j implies a[min_idx] <= a[x] by {
+                  assert(is_min(a, i, j, min_idx));
+              }
+              if k == min_idx {
+                  assert(new_a[min_idx] == a[i]);
+                  assert(a[min_idx] <= a[i]);
+              } else {
+                  assert(i < k < min_idx);
+                  assert(new_a[k] == a[k]);
+                  assert(a[i] <= a[k]);
+                  assert(a[min_idx] <= a[k]);
+              }
+          } else {
+              assert(new_a[l] == a[l]);
+              if k == min_idx {
+                  assert(new_a[min_idx] == a[i]);
+                  assert(l < min_idx);
+                  assert(a[l] <= a[min_idx]);
+                  assert(is_min(a, i, j, min_idx));
+                  assert(a[min_idx] <= a[i]);
+              } else {
+                  assert(new_a[k] == a[k]);
+                  assert(i <= l <= k < min_idx);
+                  assert(a[l] <= a[k]);
+              }
+          }
+      }
+  }
+
+vc-spec: |-
+  // <vc-spec>
+  fn sel_sort(a: &mut Vec<int>, c: usize, f: usize)
+      requires 
+          c <= f <= old(a).len(),
+      ensures 
+          sorted_seg(a@, c as int, f as int),
+          a.len() == old(a).len(),
+          a@.subrange(c as int, f as int).to_multiset() == old(a)@.subrange(c as int, f as int).to_multiset(),
+          a@.subrange(0, c as int) == old(a)@.subrange(0, c as int),
+          a@.subrange(f as int, a.len() as int) == old(a)@.subrange(f as int, old(a).len() as int),
+  // </vc-spec>
+
+vc-code: |-
+  fn sel_sort(a: &mut Vec<int>, c: usize, f: usize)
+      requires
+          c <= f <= old(a).len(),
+      ensures
+          sorted_seg(a@, c as int, f as int),
+          a.len() == old(a).len(),
+          a@.subrange(c as int, f as int).to_multiset() == old(a)@.subrange(c as int, f as int).to_multiset(),
+          a@.subrange(0, c as int) == old(a)@.subrange(0, c as int),
+          a@.subrange(f as int, a.len() as int) == old(a)@.subrange(f as int, old(a).len() as int),
+  {
+      let mut i: usize = c;
+      while i < f
+          invariant
+              c <= i <= f,
+              a.len() == old(a).len(),
+              sorted_seg(a@, c as int, i as int),
+              a@.subrange(c as int, f as int).to_multiset() == old(a)@.subrange(c as int, f as int).to_multiset(),
+              a@.subrange(0, c as int) == old(a)@.subrange(0, c as int),
+              a@.subrange(f as int, a.len() as int) == old(a)@.subrange(f as int, old(a).len() as int),
+          decreases f - i
+      {
+          let mut min_idx: usize = i;
+          let mut j: usize = i + 1;
+          while j < f
+              invariant
+                  c <= i < f,
+                  i < j <= f,
+                  i <= min_idx < j,
+                  a.len() == old(a).len(),
+                  is_min(a@, i as int, j as int, min_idx as int),
+                  sorted_seg(a@, c as int, i as int),
+                  a@.subrange(c as int, f as int).to_multiset() == old(a)@.subrange(c as int, f as int).to_multiset(),
+                  a@.subrange(0, c as int) == old(a)@.subrange(0, c as int),
+                  a@.subrange(f as int, a.len() as int) == old(a)@.subrange(f as int, old(a).len() as int),
+              decreases f - j
+          {
+              if a[j] < a[min_idx] {
+                  min_idx = j;
+              }
+              j = j + 1;
+          }
+          if min_idx != i {
+              let ghost old_a = a@;
+              a.swap(i, min_idx);
+              proof {
+                  lemma_sorted_after_swap(old_a, i as int, f as int, min_idx as int);
+              }
+          }
+          i = i + 1;
+      }
+  }
+
+vc-postamble: |-
+  fn main() {}
+  
+  }
+

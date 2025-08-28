@@ -1,0 +1,66 @@
+// <vc-helpers>
+lemma SortedFromIndex(arr: seq<int>, start: int)
+  requires 0 <= start < |arr|
+  ensures (forall i :: start < i < |arr| ==> arr[i] >= arr[i - 1]) <==> 
+          (forall i :: start + 1 <= i < |arr| ==> arr[i] >= arr[i - 1])
+{
+}
+
+lemma SortedPrefix(arr: seq<int>, pos: int)
+  requires 1 <= pos < |arr|
+  requires forall i :: 1 <= i <= pos ==> arr[i] >= arr[i - 1]
+  ensures forall i :: 1 <= i < pos ==> arr[i] >= arr[i - 1]
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+method can_arrange(arr: seq<int>) returns (pos: int)
+  // pre-conditions-start
+  requires |arr| > 0
+  requires forall i, j :: 0 <= i < j < |arr| ==> arr[i] != arr[j]
+  // pre-conditions-end
+  // post-conditions-start
+  ensures pos == -1 ==> forall i :: 1 <= i < |arr| ==> arr[i] >= arr[i - 1]
+  ensures pos >= 0 ==> 1 <= pos < |arr| && arr[pos] < arr[pos - 1]
+  ensures pos >= 0 ==> forall i :: pos < i < |arr| ==> arr[i] >= arr[i - 1]
+  // post-conditions-end
+// </vc-spec>
+// <vc-code>
+{
+  pos := -1;
+  
+  if |arr| == 1 {
+    return;
+  }
+  
+  var i := 1;
+  while i < |arr|
+    invariant 1 <= i <= |arr|
+    invariant forall j :: 1 <= j < i ==> arr[j] >= arr[j - 1]
+    invariant pos == -1
+  {
+    if arr[i] < arr[i - 1] {
+      pos := i;
+      break;
+    }
+    i := i + 1;
+  }
+  
+  if pos == -1 {
+    return;
+  }
+  
+  i := pos + 1;
+  while i < |arr|
+    invariant pos + 1 <= i <= |arr|
+    invariant 1 <= pos < |arr| && arr[pos] < arr[pos - 1]
+    invariant forall j :: pos < j < i ==> arr[j] >= arr[j - 1]
+  {
+    if arr[i] < arr[i - 1] {
+      pos := i;
+    }
+    i := i + 1;
+  }
+}
+// </vc-code>

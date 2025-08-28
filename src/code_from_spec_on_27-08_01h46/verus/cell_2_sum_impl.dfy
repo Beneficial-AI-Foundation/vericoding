@@ -1,0 +1,60 @@
+use vstd::prelude::*;
+
+verus!{
+
+// <vc-helpers>
+spec fn sum_bound_helper(a: Seq<u32>, i: usize) -> bool {
+    i <= a.len() ==> (forall|j: int| 0 <= j < i ==> (if a[j] <= 2 { a[j] } else { 2u32 }) <= 2)
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn myfun(a: &mut Vec<u32>, N: u32) -> (sum: u32)
+    // pre-conditions-start
+    requires 
+        old(a).len() == N,
+        N <= 0x7FFF_FFFF,
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        sum <= 2*N,
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    // impl-start
+    let mut sum: u32 = 0;
+    let mut i: usize = 0;
+    
+    while i < a.len()
+        invariant
+            i <= a.len(),
+            sum <= 2 * (i as u32),
+            sum as int <= 2 * i,
+            sum as int + 2 * (a.len() - i) <= 2 * a.len(),
+        decreases a.len() - i
+    {
+        if a[i] <= 2 {
+            assert(a@[i as int] <= 2);
+            assert(sum as int + a@[i as int] as int <= 2 * i + 2);
+            assert(sum as int + a@[i as int] as int <= 2 * (i + 1));
+            assert(sum as int + a@[i as int] as int + 2 * (a.len() - i - 1) <= 2 * a.len());
+            sum = sum + a[i];
+        } else {
+            assert(sum as int + 2 <= 2 * i + 2);
+            assert(sum as int + 2 <= 2 * (i + 1));
+            assert(sum as int + 2 + 2 * (a.len() - i - 1) <= 2 * a.len());
+            sum = sum + 2;
+        }
+        i = i + 1;
+    }
+    
+    sum
+    // impl-end
+}
+// </vc-code>
+
+}
+
+fn main() {}

@@ -1,0 +1,61 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+spec fn can_square(x: i32) -> bool {
+    i32::MIN <= x * x <= i32::MAX
+}
+
+spec fn can_cube(x: i32) -> bool {
+    i32::MIN <= x * x * x <= i32::MAX
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn cube_element(nums: &Vec<i32>) -> (cubed: Vec<i32>)
+    // pre-conditions-start
+    requires
+        forall|k: int|
+            0 <= k < nums.len() ==> (i32::MIN <= #[trigger] nums[k] * #[trigger] nums[k]
+                <= i32::MAX),
+        forall|k: int|
+            0 <= k < nums.len() ==> (i32::MIN <= #[trigger] nums[k] * #[trigger] nums[k]
+                * #[trigger] nums[k] <= i32::MAX),
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        forall|i: int|
+            0 <= i < nums.len() ==> cubed[i] == #[trigger] nums[i] * #[trigger] nums[i]
+                * #[trigger] nums[i],
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut cubed = Vec::new();
+    let mut i: usize = 0;
+    while i < nums.len()
+        invariant
+            i <= nums.len(),
+            cubed.len() == i,
+            forall|j: int| 0 <= j < i ==> cubed[j] == nums[j] * nums[j] * nums[j],
+        decreases nums.len() - i,
+    {
+        let val = nums[i];
+        proof {
+            assert(can_square(val));
+            assert(can_cube(val));
+        }
+        let squared = val.checked_mul(val).unwrap();
+        let cube = squared.checked_mul(val).unwrap();
+        cubed.push(cube);
+        i += 1;
+    }
+    cubed
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

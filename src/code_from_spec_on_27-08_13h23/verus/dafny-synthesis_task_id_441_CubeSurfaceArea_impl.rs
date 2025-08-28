@@ -1,0 +1,30 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+// No updates needed for helpers since the issue is a syntax error in the code section
+// </vc-helpers>
+
+// <vc-spec>
+// <vc-spec>
+fn cube_surface_area(size: i32) -> (area: i32)
+    requires size > 0
+    ensures area == 6 * size * size
+// </vc-spec>
+// </vc-spec>
+
+// <vc-code>
+fn cube_surface_area(size: i32) -> (area: i32)
+    requires size > 0
+    ensures area == 6 * size * size
+{
+    let area = 6 * size * size;
+    area
+}
+// </vc-code>
+
+fn main() {
+}
+
+}
