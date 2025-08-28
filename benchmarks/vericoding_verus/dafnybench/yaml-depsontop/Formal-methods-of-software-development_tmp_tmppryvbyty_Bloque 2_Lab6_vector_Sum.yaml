@@ -1,0 +1,98 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  /*predicate palindrome<T(==)> (s:seq<T>)
+  {
+      forall i:: 0<=i<|s| ==> s[i] == s[|s|-i-1]
+  }
+  */
+  // SUM OF A SEQUENCE OF INTEGERS
+  spec fn sum(v: Seq<int>) -> int 
+      decreases v.len()
+  {
+      if v.len() == 0 { 
+          0 
+      } else if v.len() == 1 { 
+          v[0] 
+      } else { 
+          v[0] + sum(v.subrange(1, v.len() as int))
+      }
+  }
+  
+  // Structural Induction on Sequences
+  
+  // MAXIMUM OF A SEQUENCE
+  
+  // TODO: Hacer
+  // Derivar formalmente un calculo incremental de j*j*j
+  
+  
+  // REVERSE OF A SEQUENCE
+  spec fn reverse<T>(s: Seq<T>) -> Seq<T> 
+      decreases s.len()
+  {
+      if s.len() == 0 { 
+          seq![] 
+      } else { 
+          reverse(s.subrange(1, s.len() as int)).push(s[0])
+      }
+  }
+  
+  spec fn seq2set<T>(s: Seq<T>) -> Set<T> 
+      decreases s.len()
+  {
+      if s.len() == 0 { 
+          set!{} 
+      } else { 
+          set!{s[0]}.union(seq2set(s.subrange(1, s.len() as int)))
+      }
+  }
+  
+  
+  // REVERSE IS ITS OWN INVERSE
+  
+  // SCALAR PRODUCT OF TWO VECTORS OF INTEGER
+  spec fn scalar_product(v1: Seq<int>, v2: Seq<int>) -> int
+      decreases v1.len()
+  {
+      if v1.len() == 0 || v2.len() == 0 { 
+          0 
+      } else { 
+          v1[0] * v2[0] + scalar_product(v1.subrange(1, v1.len() as int), v2.subrange(1, v2.len() as int))
+      }
+  }
+  
+  // MULTISETS
+  
+  fn multiplicity_examples<T>()
+  {
+    assume(false);
+  }
+  
+  // REVERSE HAS THE SAME MULTISET 
+
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  // <vc-spec>
+  fn vector_Sum(v: Seq<int>) -> (x: i32)
+      ensures x == sum(v)
+  // </vc-spec>
+
+vc-code: |-
+  // <vc-code>
+  {
+    assume(false);
+    0
+  }
+  // </vc-code>
+
+vc-postamble: |-
+  fn main() {
+  }
+  
+  }

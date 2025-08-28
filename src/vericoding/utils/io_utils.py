@@ -109,7 +109,7 @@ def parse_command_line_arguments():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=f"""
 Supported languages: {", ".join(available_languages.keys())}
-Supported LLM providers: claude, openai, deepseek
+Supported LLM providers: claude, openai, deepseek, grok
 
 Examples:
   python spec_to_code.py dafny ./specs
@@ -118,6 +118,10 @@ Examples:
   python spec_to_code.py dafny ./specs --workers 8 --iterations 3 --llm-provider openai
   python spec_to_code.py verus ./specs --workers 2 --debug --llm-provider deepseek --llm-model deepseek-chat
   python spec_to_code.py dafny ./specs --llm-provider claude --llm-model claude-3-5-sonnet-20241022
+  python spec_to_code.py dafny ./specs --llm-provider grok --llm-model grok-3
+  python spec_to_code.py dafny ./specs --output-folder /path/to/results
+  python spec_to_code.py dafny ./specs --mode vibe
+  python spec_to_code.py dafny ./specs --mode specvibe --debug
         """,
     )
 
@@ -181,7 +185,7 @@ Examples:
     parser.add_argument(
         "--llm-provider",
         type=str,
-        choices=["claude", "openai", "deepseek"],
+        choices=["claude", "openai", "deepseek", "grok"],
         default="claude",
         help="LLM provider to use (default: claude)",
     )
@@ -190,6 +194,20 @@ Examples:
         "--llm-model",
         type=str,
         help="Specific model to use (defaults to provider's default model)",
+    )
+
+    parser.add_argument(
+        "--output-folder",
+        type=Path,
+        help="Parent directory where the implementations folder will be created (defaults to auto-detected src/ directory or current working directory)",
+    )
+
+    parser.add_argument(
+        "--mode",
+        type=str,
+        choices=["spec", "vibe", "specvibe"],
+        default="spec",
+        help="Mode for code generation: 'spec' includes only specification, 'vibe' includes only description, 'specvibe' includes both (default: spec)",
     )
 
     return parser.parse_args()

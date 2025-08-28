@@ -1,0 +1,116 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  /*
+  Verus include 2 limbaje:
+      * un limbaj pentru specificare 
+          MSFOL (ce am discutat până acum)
+          adnotări care să ajute în procesul de verificare
+      * un limbaj pentru scris programe
+  */
+  
+  // Exemplu de program
+  
+  /*
+      triple Hoare (| P |) S (| Q |) 
+  */
+  
+  // varianta assume-assert
+  
+  // varianta requires-ensures
+  
+  /*
+  regula pentru while
+  */
+  
+  // varianta cu assert
+  /*
+  */
+  
+  // varianta cu invariant
+  
+  //specificarea sumei de patrate
+  spec fn SqrSumRec(n: int) -> int
+      recommends n >= 0
+      decreases n
+  {
+      if n == 0 { 0 } else { n*n + SqrSumRec(n-1) }
+  }
+  /*
+  */
+  
+  // verificarea programului pentru suma de patrate
+  
+  // SqrSumRec(n) = 0^2 + 1^2 + 2^2 + ... + n^2 == n(n+1)(2n+1)/6
+  proof fn L1(n: int)
+      requires n >= 0
+      ensures SqrSumRec(n) == n*(n+1)*(2*n + 1)/6
+      decreases n
+  {
+      if n == 0 {
+          // Base case
+      } else {
+          L1(n-1);
+          // Additional proof steps would be needed here
+      }
+  }
+  
+  /*
+  spec fn SqrSumBy6(n: int) -> int
+  {
+      n * (n + 1) * (2 * n + 1) 
+  }
+  
+  proof fn L(n: int) // it takes a while
+      requires n >= 0
+      ensures  SqrSumBy6(n) == 6 * SqrSumRec(n)
+      decreases n
+  {
+      if n == 0 {
+          // Base case
+      } else {
+          assert(n > 0);
+          L(n-1);
+          assert(SqrSumBy6(n-1) == n*(n-1)*(2*n - 1));
+          assert(SqrSumBy6(n-1) == 6*SqrSumRec(n-1));
+          assert(6*SqrSumRec(n-1) == n*(n-1)*(2*n - 1));
+          // Additional calc steps would be needed here for full verification
+      }
+  }
+  */
+
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  // <vc-spec>
+  spec fn HoareTripleReqEns(i: int, k: int) -> int
+      // (| k == i*i |) k := k + 2 * i +1; (| k = (i+1)*(i+1) |)
+      recommends k == i*i
+  {
+      k + 2 * i + 1
+  }
+  
+  proof fn HoareTripleReqEns_correctness(i: int, k: int)
+      requires k == i*i
+      ensures HoareTripleReqEns(i, k) == (i+1)*(i+1)
+  {
+      // Proof by algebraic expansion: k + 2*i + 1 = i*i + 2*i + 1 = (i+1)*(i+1)
+      assert(k + 2 * i + 1 == i*i + 2*i + 1);
+      assert(i*i + 2*i + 1 == (i+1)*(i+1));
+  }
+  // </vc-spec>
+
+vc-code: |-
+  // <vc-code>
+  // Implementation would go here if this were an exec function
+  // </vc-code>
+
+vc-postamble: |-
+  
+  fn main() {}
+  
+  }

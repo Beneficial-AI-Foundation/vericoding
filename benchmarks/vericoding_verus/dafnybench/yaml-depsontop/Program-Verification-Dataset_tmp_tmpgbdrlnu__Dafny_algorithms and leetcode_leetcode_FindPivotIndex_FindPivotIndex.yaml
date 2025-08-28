@@ -1,0 +1,107 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  /*
+  https://leetcode.com/problems/find-pivot-index/description/
+  Given an array of integers nums, calculate the pivot index of this array.
+  
+  The pivot index is the index where the sum of all the numbers strictly to the left of the index is equal to the sum of all the numbers strictly to the right.
+  
+  If the index is on the left edge of the array, then the left sum is 0 because there are no elements to the left. This also applies to the right edge of the array.
+  
+  Return the leftmost pivot index. If no such index exists, return -1.
+  
+  
+  
+  Example 1:
+  
+  Input: nums = [1,7,3,6,5,6]
+  Output: 3
+  Explanation:
+  The pivot index is 3.
+  Left sum = nums[0] + nums[1] + nums[2] = 1 + 7 + 3 = 11
+  Right sum = nums[4] + nums[5] = 5 + 6 = 11
+  Example 2:
+  
+  Input: nums = [1,2,3]
+  Output: -1
+  Explanation:
+  There is no index that satisfies the conditions in the problem statement.
+  Example 3:
+  
+  Input: nums = [2,1,-1]
+  Output: 0
+  Explanation:
+  The pivot index is 0.
+  Left sum = 0 (no elements to the left of index 0)
+  Right sum = nums[1] + nums[2] = 1 + -1 = 0
+  
+  ```TypeScript
+  function pivotIndex(nums: number[]): number {
+      const n = nums.length;
+      let leftsums = [0], rightsums = [0];
+      for(let i=1; i < n+1; i++) {
+          leftsums.push(nums[i-1]+leftsums[i-1]);
+          rightsums.push(nums[n-i]+rightsums[i-1]);
+      }
+      for(let i=0; i <= n; i++) {
+          if(leftsums[i] == rightsums[n-(i+1)]) return i;
+      }
+      return -1;
+  };
+  ```
+  */
+  
+  spec fn sum(nums: Seq<int>) -> int
+      decreases nums.len()
+  {
+      if nums.len() == 0 { 
+          0 
+      } else { 
+          sum(nums.subrange(0, nums.len() as int - 1)) + nums[nums.len() - 1]
+      }
+  }
+  
+  
+  spec fn sum_up(nums: Seq<int>) -> int
+      decreases nums.len()
+  {
+      if nums.len() == 0 { 
+          0 
+      } else { 
+          nums[0] + sum_up(nums.subrange(1, nums.len() as int))
+      }
+  }
+  
+  // By Divyanshu Ranjan
+  
+  // By Divyanshu Ranjan
+
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  // <vc-spec>
+  fn find_pivot_index(nums: &Vec<i32>) -> (index: i32)
+      requires nums.len() > 0
+      ensures index == -1 ==> forall |k: nat| #[trigger] sum(nums@.map_values(|v: i32| v as int).subrange(0, k as int)) != #[trigger] sum(nums@.map_values(|v: i32| v as int).subrange((k + 1) as int, nums@.len() as int))
+      ensures 0 <= index < nums.len() ==> sum(nums@.map_values(|v: i32| v as int).subrange(0, index as int)) == sum(nums@.map_values(|v: i32| v as int).subrange((index + 1) as int, nums@.len() as int))
+  // </vc-spec>
+
+vc-code: |-
+  // <vc-code>
+  {
+      assume(false);
+      -1
+  }
+  // </vc-code>
+
+vc-postamble: |-
+  
+  fn main() {
+  }
+  
+  }

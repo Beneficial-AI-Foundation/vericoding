@@ -136,6 +136,43 @@ class DeepSeekProvider(LLMProvider):
         return "DEEPSEEK_API_KEY"
 
 
+class GrokProvider(LLMProvider):
+    """Grok (xAI) LLM provider."""
+
+    def __init__(self, api_key: str, model: str = "grok-3", **kwargs):
+        super().__init__(api_key, model, **kwargs)
+        try:
+            import openai  # Grok uses OpenAI-compatible API
+
+            self.client = openai.OpenAI(
+                api_key=api_key, base_url="https://api.x.ai/v1"
+            )
+        except ImportError:
+            raise ImportError(
+                "OpenAI package not installed. Install with: pip install openai"
+            )
+
+    def call_api(self, prompt: str) -> str:
+        try:
+            response = self.client.chat.completions.create(
+                model=self.model,
+                messages=[{"role": "user", "content": prompt}],
+                max_tokens=self.max_tokens,
+                timeout=self.timeout,
+            )
+
+            if response.choices and len(response.choices) > 0:
+                return response.choices[0].message.content
+            else:
+                raise ValueError("Unexpected response format from Grok API")
+
+        except Exception as e:
+            raise ValueError(f"Error calling Grok API: {str(e)}")
+
+    def get_required_env_var(self) -> str:
+        return "XAI_API_KEY"
+
+
 def create_llm_provider(provider_name: str, model: str = None) -> LLMProvider:
     """Factory function to create LLM providers."""
     import sys
@@ -155,6 +192,11 @@ def create_llm_provider(provider_name: str, model: str = None) -> LLMProvider:
             "class": DeepSeekProvider,
             "default_model": "deepseek-chat",
             "env_var": "DEEPSEEK_API_KEY",
+        },
+        "grok": {
+            "class": GrokProvider,
+            "default_model": "grok-3",
+            "env_var": "XAI_API_KEY",
         },
     }
 

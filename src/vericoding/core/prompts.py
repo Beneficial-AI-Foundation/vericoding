@@ -60,7 +60,7 @@ class PromptLoader:
 
     def validate_prompts(self) -> PromptValidationResult:
         """Validate that required prompts are available."""
-        required = ["generate_code", "fix_verification"]
+        required = ["generate_code", "fix_verification", "generate_code_vibe", "fix_verification_vibe"]
         missing = [p for p in required if p not in self.prompts]
         return PromptValidationResult(
             valid=len(missing) == 0,

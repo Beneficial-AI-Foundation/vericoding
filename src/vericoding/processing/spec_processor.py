@@ -18,6 +18,25 @@ from vericoding.utils import wandb_utils
 logger = logging.getLogger(__name__)
 
 
+def get_mode_flags(mode: str) -> tuple[bool, bool]:
+    """Convert mode string to (spec, vibe) boolean flags.
+    
+    Args:
+        mode: One of 'spec', 'vibe', or 'specvibe'
+        
+    Returns:
+        Tuple of (spec_flag, vibe_flag)
+    """
+    if mode == "spec":
+        return True, False
+    elif mode == "vibe":
+        return False, True
+    elif mode == "specvibe":
+        return True, True
+    else:
+        raise ValueError(f"Invalid mode: {mode}. Must be one of 'spec', 'vibe', 'specvibe'")
+
+
 @dataclass
 class IterationData:
     """Data for a single iteration."""
@@ -54,29 +73,47 @@ def process_spec(
         output_path, code_output_path, _ = prepare_output_paths(config, Path(file_path))
 
         yaml = load_yaml(Path(file_path))
-        code = yaml_to_code(yaml)  # Current generated code
+        spec_flag, vibe_flag = get_mode_flags(config.mode)
+        code = yaml_to_code(yaml, spec=spec_flag, vibe=vibe_flag) 
         
         verification = None
 
         for iteration in range(1, config.max_iterations + 1):
             logger.info(f" Vericoding iteration {iteration}:") 
             if iteration == 1:
-                prompt = prompt_loader.format_prompt("generate_code", code=code)
+                # Choose prompt based on mode
+                if spec_flag and not vibe_flag:  # spec mode
+                    prompt = prompt_loader.format_prompt("generate_code", code=code)
+                elif vibe_flag:  # vibe or specvibe mode
+                    prompt = prompt_loader.format_prompt("generate_code_vibe", code=code)
+                else:
+                    raise ValueError(f"Invalid mode combination: spec={spec_flag}, vibe={vibe_flag}")
             else:
                 error_details = verification.error or "Unknown error"
-                prompt = prompt_loader.format_prompt(
-                    "fix_verification",
-                    code=code,
-                    errorDetails=error_details,
-                    iteration=iteration,
-                )
+                # Choose fix prompt based on mode
+                if spec_flag and not vibe_flag:  # spec mode
+                    prompt = prompt_loader.format_prompt(
+                        "fix_verification",
+                        code=code,
+                        errorDetails=error_details,
+                        iteration=iteration,
+                    )
+                elif vibe_flag:  # vibe or specvibe mode
+                    prompt = prompt_loader.format_prompt(
+                        "fix_verification_vibe",
+                        code=code,
+                        errorDetails=error_details,
+                        iteration=iteration,
+                    )
+                else:
+                    raise ValueError(f"Invalid mode combination: spec={spec_flag}, vibe={vibe_flag}")
             try:
                 llm_response = call_llm(llm_provider, config, prompt, wandb=wandb_utils.enabled())              
-                vc_helpers, vc_code = extract_sections(llm_response)
+                vc_helpers, vc_spec, vc_code = extract_sections(llm_response)
                 
                 if vc_helpers or vc_code:
-                    update_sections(yaml, vc_helpers, vc_code)
-                    code = yaml_to_code(yaml)
+                    update_sections(yaml, vc_helpers, vc_code, vc_spec)
+                    code = yaml_to_code(yaml, spec=spec_flag, vibe=vibe_flag)
                     logger.info(f"    Done generating code at iteration {iteration}")
                     
                     save_iteration_code(config, None, iteration, code, "current", str(code_output_path), Path(file_path))

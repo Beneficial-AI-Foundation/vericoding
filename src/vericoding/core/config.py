@@ -66,6 +66,7 @@ class ProcessingConfig:
     api_rate_limit_delay: int
     llm_provider: str
     llm_model: str | None
+    mode: str
     max_directory_traversal_depth: int = 50
 
     # Static configuration loaded once
@@ -169,40 +170,46 @@ def setup_configuration(args) -> ProcessingConfig:
         print(f"Error: Directory '{files_dir}' does not exist or is not accessible.")
         sys.exit(1)
 
-    # Create timestamped output directory outside the input directory
+    # Create timestamped output directory
     timestamp = datetime.now().strftime("%d-%m_%Hh%M")
 
-    # Extract the relevant part of the input path for the output hierarchy
-    input_path = Path(files_dir).resolve()
+    # Determine the base directory for output
+    if args.output_folder:
+        # Use the provided output folder as the base
+        base_dir = Path(args.output_folder).resolve()
+        base_dir.mkdir(parents=True, exist_ok=True)
+    else:
+        # Extract the relevant part of the input path for the output hierarchy
+        input_path = Path(files_dir).resolve()
 
-    # Find the src directory or use current working directory as base
-    current_path = input_path
-    src_base = None
-    depth = 0
-    while (
-        current_path.parent != current_path
-        and depth < args.max_directory_traversal_depth
-    ):
-        if current_path.name == "src":
-            src_base = current_path
-            break
-        current_path = current_path.parent
-        depth += 1
+        # Find the src directory or use current working directory as base
+        current_path = input_path
+        base_dir = None
+        depth = 0
+        while (
+            current_path.parent != current_path
+            and depth < args.max_directory_traversal_depth
+        ):
+            if current_path.name == "src":
+                base_dir = current_path
+                break
+            current_path = current_path.parent
+            depth += 1
 
-    if src_base is None:
-        # If no 'src' directory found, use the directory containing the input as base
-        if input_path.parent.name == "src":
-            src_base = input_path.parent
-        else:
-            # Fallback: find a reasonable base directory
-            working_dir = Path.cwd()
-            src_base = (
-                working_dir / "src" if (working_dir / "src").exists() else working_dir
-            )
+        if base_dir is None:
+            # If no 'src' directory found, use the directory containing the input as base
+            if input_path.parent.name == "src":
+                base_dir = input_path.parent
+            else:
+                # Fallback: find a reasonable base directory
+                working_dir = Path.cwd()
+                base_dir = (
+                    working_dir / "src" if (working_dir / "src").exists() else working_dir
+                )
 
     
     # Create output directory structure
-    output_dir = str(src_base / f"code_from_spec_on_{timestamp}" / args.language)
+    output_dir = str(base_dir / f"code_from_spec_on_{timestamp}" / args.language)
     summary_file = str(Path(output_dir) / "summary.txt")
 
     Path(output_dir).mkdir(parents=True, exist_ok=True)
@@ -217,11 +224,11 @@ def setup_configuration(args) -> ProcessingConfig:
         output_dir=output_dir,
         summary_file=summary_file,
         debug_mode=args.debug,
-
         max_workers=args.workers,
         api_rate_limit_delay=args.api_rate_limit_delay,
         llm_provider=args.llm_provider,
         llm_model=args.llm_model,
+        mode=args.mode,
         max_directory_traversal_depth=args.max_directory_traversal_depth,
     )
 
@@ -234,6 +241,7 @@ def setup_configuration(args) -> ProcessingConfig:
     print(f"- Tool path: {get_tool_path(config)}")
     print(f"- LLM Provider: {config.llm_provider}")
     print(f"- LLM Model: {config.llm_model or 'default'}")
+    print(f"- Mode: {config.mode}")
     print(f"- Debug mode: {'Enabled' if config.debug_mode else 'Disabled'}")
     print(f"- API rate limit delay: {config.api_rate_limit_delay}s")
     print("\nProceeding with configuration...")
