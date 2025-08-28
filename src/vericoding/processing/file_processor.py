@@ -185,7 +185,7 @@ def process_spec_file(
                         iteration,
                         hashlib.md5(original_code.encode()).hexdigest()[:8],
                         hashlib.md5(current_code.encode()).hexdigest()[:8],
-                        verification.error[:500] if verification.error else "Unknown error",
+                        verification.error if verification.error else "Unknown error",  # Full error message
                         "",  # Proof state would come from lean tools
                         time.time()
                     )
@@ -305,7 +305,7 @@ def process_spec_file(
                         config.max_iterations,
                         hashlib.md5(original_code.encode()).hexdigest()[:8],
                         hashlib.md5(current_code.encode() if 'current_code' in locals() else generated_code.encode()).hexdigest()[:8],
-                        error_msg[:500] if error_msg else "Unknown error",
+                        error_msg if error_msg else "Unknown error",  # Full error message
                         "",
                         time.time()
                     )
