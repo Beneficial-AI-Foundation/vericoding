@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that replaces every occurrence of a specified character within a string with a new character. The output should be a new string that maintains the same length as the input string, with all instances of the designated character replaced by the given substitute, and all other characters preserved unchanged.
   

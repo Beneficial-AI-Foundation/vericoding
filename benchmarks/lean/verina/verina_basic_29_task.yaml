@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that removes an element from a given array of integers at a specified index. The resulting array should contain all the original elements except for the one at the given index. Elements before the removed element remain unchanged, and elements after it are shifted one position to the left.
   

@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that determines whether a given natural number is prime. A number (with n ≥ 2) is considered prime if it is divisible only by 1 and itself. The method should return true when the input number is prime and false otherwise.
   

@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that rearranges an array of integers by moving all zero values to the end of the array. The method should ensure that the relative order of the non-zero elements remains the same, the overall size of the array is unchanged, and the number of zeroes in the array stays constant.
   

@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that computes the product of the first even and the first odd number encountered in a list of integers. The method should search the list for the earliest even number and the earliest odd number, then return the product of these two numbers.
   

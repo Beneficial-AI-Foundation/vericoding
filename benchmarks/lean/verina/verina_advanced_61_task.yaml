@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 function that takes a list of integers and returns a new list. For each index i in the input list, the output at i is equal to the product of all numbers in the list except the number at index i. The solution must run in O(n) time without using the division operation.
   

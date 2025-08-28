@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires implementing the merge sort algorithm in Lean 4 to sort a list of integers in ascending order. Merge sort is a divide-and-conquer algorithm that recursively splits the input list into two halves, sorts them separately, and then merges the sorted halves to produce the final sorted result.
   

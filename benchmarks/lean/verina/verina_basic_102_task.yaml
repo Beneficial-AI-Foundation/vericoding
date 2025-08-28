@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task involves identifying the first occurrence of a pair of indices in an array of integers such that the sum of the corresponding elements equals the given target value. The focus is on determining the earliest valid pair (i, j), with 0 ≤ i < j < nums.size, where the sum of the two numbers equals the target, without considering any language-specific or implementation details.
   

@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task involves performing integer division with remainder on natural numbers. Given two natural numbers, x (the dividend) and y (the divisor), the objective is to determine the quotient and remainder. When y is non-zero, the quotient and remainder should satisfy the condition that the dividend equals the divisor multiplied by the quotient plus the remainder, with the remainder being nonnegative and strictly less than y. In the case where y is zero, the result should indicate that no division is performed by returning x as the quotient and 0 as the remainder.
   

@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires implementing a Run-Length Encoding (RLE) algorithm in Lean 4. The method should take a string as input and return a compressed string where consecutive duplicate characters are replaced by the character followed by its count. The output must strictly alternate between characters and digits, reconstruct to the original input when decoded, and return a non-empty string if and only if the input is non-empty.
   

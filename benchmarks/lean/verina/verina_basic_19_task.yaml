@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that checks whether an array of integers is sorted in non-decreasing order. The method should return true if every element is less than or equal to the element that follows it, and false otherwise.
   

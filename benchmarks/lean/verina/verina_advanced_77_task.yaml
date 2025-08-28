@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 function that calculates how much water can be trapped between elevations after it rains. The input is a list of non-negative integers representing an elevation map. Each index traps water depending on the min of max heights to its left and right.
   

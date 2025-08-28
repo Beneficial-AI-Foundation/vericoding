@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 function that finds the length of the longest strictly increasing subsequence in a list of integers. A subsequence is any sequence that can be derived from the list by deleting zero or more elements without changing the order of the remaining elements. The function must return the length of the longest possible such sequence.
   

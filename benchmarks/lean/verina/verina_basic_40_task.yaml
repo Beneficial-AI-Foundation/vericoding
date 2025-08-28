@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that finds the second-smallest number in an array of integers. The method should determine and return the number that is larger than the smallest element in the array. It is crucial that the input array remains unchanged after the computation.
   

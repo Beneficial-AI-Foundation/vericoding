@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that inserts a subarray of characters into another array of characters at a specified index. The method takes the original array (oline) and, given the effective length l to consider, inserts another array of characters (nl) of effective length p starting at the index atPos. The resulting array is of length l + p and is constructed as follows:
   • All characters before the insertion position (atPos) remain unchanged.

@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that finds the first missing natural number in an increasingly sorted list. The method should return the smallest natural number that is not in the list, ensuring that all natural numbers that are smaller is inside the list.
   

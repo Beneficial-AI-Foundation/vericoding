@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that determines if a given integer is strictly greater than every element in a provided array. The method should return true only if the integer is larger than each element in the array; otherwise, it should return false.
   

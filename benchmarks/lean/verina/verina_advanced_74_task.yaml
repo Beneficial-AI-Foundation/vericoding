@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 function called `solution` that takes a list of natural numbers `nums`. The function should calculate and return the sum of values obtained for each subarray, where the value for a subarray is the square of the count of distinct elements within that subarray.
   

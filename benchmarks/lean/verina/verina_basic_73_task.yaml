@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   Determine whether two strings match based on a specific pattern: for each position in the strings, either the characters are the same, or the character in p is a wildcard represented by a question mark '?' that may match any character.
   

@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that locates the first occurrence of a specified integer within a sorted array of integers. The method returns the index corresponding to the first time the target value appears in the array; if the target is absent, it returns -1. It is also essential that the original array remains unchanged.
   

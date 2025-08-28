@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   The problem is to update a destination array by replacing a specific segment with values taken from a source array. Given two arrays, starting positions, and a length, the task is to construct a new array where the segment in the destination from the specified starting index for the given length is replaced by the corresponding segment from the source, while all other elements remain unchanged.
   
