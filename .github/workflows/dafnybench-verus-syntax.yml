@@ -1,0 +1,35 @@
+name: Test DafnyBench Verus syntax
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  dafnybench-verus-syntax:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Install uv
+      uses: astral-sh/setup-uv@v4
+    
+    - name: Set up Python
+      run: uv python install
+    
+    - name: Install dependencies
+      run: uv sync
+    
+    - name: Install Rust toolchain
+      uses: dtolnay/rust-toolchain@1.88.0
+    - name: Install Verus
+      run: |
+        wget https://github.com/verus-lang/verus/releases/download/release%2F0.2025.08.01.33c6cec/verus-0.2025.08.01.33c6cec-x86-linux.zip
+        unzip verus-0.2025.08.01.33c6cec-x86-linux.zip
+        mkdir -p ~/.local/bin
+        mv verus-x86-linux ~/.local/bin/
+        echo "$HOME/.local/bin/verus-x86-linux" >> $GITHUB_PATH
+    
+    - name: Run Verus validation tests
+      run: uv run src/tests/test_verus_validation.py benchmarks/verus/dafnybench/
