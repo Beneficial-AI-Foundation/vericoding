@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Script to replace files in numpy_triple/ with corresponding files from numpy_replace_new/
+Script to replace files in numpy_all/ with corresponding files from numpy_replace_new/
 if they match the contents in numpy_replace_old/.
 """
 
@@ -11,7 +11,7 @@ from pathlib import Path
 
 def main():
     # Define the directory paths
-    triple_dir = Path("benchmarks/lean/numpy_triple")
+    triple_dir = Path("benchmarks/lean/numpy_all")
     old_dir = Path("benchmarks/.stash/numpy_replace_old")
     new_dir = Path("benchmarks/.stash/numpy_replace_new")
     
@@ -28,7 +28,7 @@ def main():
         print(f"Error: {new_dir} does not exist")
         return
     
-    # Get all files in numpy_triple
+    # Get all files in numpy_all
     triple_files = list(triple_dir.glob("*.lean"))
     
     print(f"Found {len(triple_files)} files in {triple_dir}")

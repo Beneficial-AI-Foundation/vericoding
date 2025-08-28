@@ -7,7 +7,7 @@ For each key "XXX.lean" in parsing_results.json, this script:
 2. If there are more than 2 total sorry, prints a warning
 3. Otherwise, checks if there is exactly 1 sorry in "impl" and 1 sorry in "proof"
 4. If the check fails, prints a warning
-5. Copies files with warnings from numpy_triple/ to numpy_fix/
+5. Copies files with warnings from numpy_all/ to numpy_fix/
 """
 
 import json
@@ -110,8 +110,8 @@ def analyze_sorry_usage(json_file_path, copy_warning_files=False):
 
 
 def copy_warning_files_to_fix_folder(warning_files):
-    """Copy files with warnings from numpy_triple/ to numpy_fix/ folder."""
-    source_dir = "benchmarks/lean/numpy_triple"
+    """Copy files with warnings from numpy_all/ to numpy_fix/ folder."""
+    source_dir = "benchmarks/lean/numpy_all"
     dest_dir = "benchmarks/lean/numpy_fix"
     
     # Create destination directory if it doesn't exist

@@ -251,7 +251,7 @@ def write_yaml_file(result, output_path):
 def main():
     """Main function to check all .lean files in the current directory."""
     benchmarks_dir = Path(__file__).parent.parent.parent / "benchmarks"
-    numpy_dir = benchmarks_dir / "lean" / "numpy_triple"
+    numpy_dir = benchmarks_dir / "lean" / "numpy_all"
     numpy_yaml_dir = benchmarks_dir / "lean" / "numpy_yaml"
     numpy_bad_dir = benchmarks_dir / "lean" / "numpy_bad"
     output_file = benchmarks_dir / "lean" / "wrong_format.txt"   

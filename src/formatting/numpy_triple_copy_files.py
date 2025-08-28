@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-Script to copy Lean files from NumpyHoareTriple subdirectories to numpy_triple directory.
+Script to copy Lean files from NumpyHoareTriple subdirectories to numpy_all directory.
 
 For each file YYY.lean in a nested subfolder path XXX/ZZZ/... of NumpyHoareTriple/, 
-copy the file to numpy_triple/ and rename it XXX_ZZZ_..._YYY.lean.
+copy the file to numpy_all/ and rename it XXX_ZZZ_..._YYY.lean.
 Only copies files from subfolders, not from the top-level directory.
 Ignores files in the 'testing' and 'typing' folders.
 """
@@ -114,7 +114,7 @@ def copy_and_rename_files(source_dir: str, target_dir: str, dry_run: bool = Fals
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Copy Lean files from NumpyHoareTriple subdirectories to numpy_triple directory"
+        description="Copy Lean files from NumpyHoareTriple subdirectories to numpy_all directory"
     )
     parser.add_argument(
         "--source", 
@@ -123,8 +123,8 @@ def main():
     )
     parser.add_argument(
         "--target", 
-        default="benchmarks/lean/numpy_triple",
-        help="Target directory (default: benchmarks/lean/numpy_triple)"
+        default="benchmarks/lean/numpy_all",
+        help="Target directory (default: benchmarks/lean/numpy_all)"
     )
     parser.add_argument(
         "--dry-run", 
