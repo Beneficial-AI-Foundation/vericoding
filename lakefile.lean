@@ -39,6 +39,11 @@ lean_lib NumpyHoareTriple where
   globs := #[.andSubmodules `NumpyHoareTriple]
   srcDir := "lean"
 
+@[default_target]
+lean_lib Clever where
+  -- Only compile self-contained Clever problems; exclude legacy CommonDefs and src/* specs
+  globs := #[.andSubmodules `Benchmarks.Clever.Problems]
+  srcDir := "lean"
 lean_lib BenchmarksGenerated where
   globs := #[.andSubmodules `BenchmarksGenerated]
   srcDir := "lean"
