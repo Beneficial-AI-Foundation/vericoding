@@ -3,54 +3,7 @@
 import argparse
 import json
 from pathlib import Path
-
-
-def yaml_safe_load(file_path: Path) -> dict:
-    """
-    Parse YAML file with format: keys 'XXX: |-' followed by multiline strings.
-    Reads line by line and processes each key-value pair.
-    """
-    spec = {}
-    current_key = None
-    current_value_lines = []
-    
-    with open(file_path, 'r') as f:
-        for line in f:
-            line = line.rstrip()  # Remove trailing whitespaces
-            
-            # Check if this line is a key (matches "XXX: |-" pattern)
-            if ': |-' in line:
-                # Save previous key-value pair if exists
-                if current_key is not None:
-                    # Join lines and remove trailing whitespaces
-                    value = '\n'.join(current_value_lines).rstrip()
-                    spec[current_key] = value
-                
-                # Extract new key
-                current_key = line.split(':')[0].strip()
-                current_value_lines = []
-            elif current_key is not None:
-                # This is a value line for current key
-                # Remove 2 spaces from the beginning if present
-                if line.startswith('  '):
-                    current_value_lines.append(line[2:])
-                elif line.strip():
-                    print(f"Warning: Nonempty line does not start with 2 spaces - {line}")
-                    current_value_lines.append(line.strip())
-                else:
-                    current_value_lines.append(line.strip())
-            else:
-                print(f"Warning: Line occurred before any key - {line}")
-
-
-    
-    # Don't forget the last key-value pair
-    if current_key is not None:
-        value = '\n'.join(current_value_lines).rstrip('\n')
-        spec[current_key] = value
-    
-    return spec
-
+from ruamel.yaml import YAML
 
 def spec_to_string(spec: dict, template: list[str]) -> str:
     """Convert YAML spec dict to string by concatenating sections."""
@@ -86,7 +39,8 @@ def get_template(suffix: str) -> list[str]:
 def convert_yaml_to_file(yaml_path: Path, output_path: Path) -> None:
     """Convert YAML spec to target file format by concatenating sections."""
     
-    spec = yaml_safe_load(yaml_path)
+    yaml = YAML(typ='safe')
+    spec = yaml.load(yaml_path)
     
     template = get_template(output_path.suffix[1:])
     
@@ -101,7 +55,8 @@ def convert_yaml_to_file(yaml_path: Path, output_path: Path) -> None:
 def convert_yaml_to_json(yaml_path: Path, output_path: Path) -> None:
     """Convert YAML spec to a JSON file."""
 
-    spec = yaml_safe_load(yaml_path)
+    yaml = YAML(typ='safe')
+    spec = yaml.load(yaml_path)
 
     with open(output_path, 'w') as f:
         json.dump(spec, f, ensure_ascii=False, indent=2)
@@ -126,9 +81,10 @@ def convert_yaml_to_jsonl(yaml_path: Path) -> None:
     output_path = yaml_path.parent / f"{yaml_path.name}.jsonl"
     
     with open(output_path, 'w') as f:
+        yaml = YAML(typ='safe')
         for yaml_file in yaml_files:
             # Load the YAML spec
-            spec = yaml_safe_load(yaml_file)
+            spec = yaml.load(yaml_file)
             
             # Add the id field (filename without .yaml suffix)
             spec['id'] = yaml_file.stem
