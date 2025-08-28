@@ -1,4 +1,5 @@
 import Mathlib
+import Benchmarks.Clever.CommonDefs
 import Mathlib.Data.List.Basic
 import Mathlib.Data.String.Basic
 import Mathlib.Data.Rat.Defs

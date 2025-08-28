@@ -14,10 +14,10 @@ let spec (result : List (Nat × Nat)) :=
     row < lst.length ∧
     col < lst[row]!.length ∧
     (lst[row]!)[col]! = x) ∧
-  (∀ (i < lst.length) (j < lst[i]!.length),
+  (∀ (i : Nat) (hi : i < lst.length) (j : Nat) (hj : j < lst[i]!.length),
     (lst[i]!)[j]! = x → (i, j) ∈ result) ∧
   (result.map (fun (r, c) => r)).Sorted Nat.le ∧
-  (∀ i < result.length,
+  (∀ i, i < result.length →
     let (row, col) := result[i]!
     ((result.filter (fun (r, c) => r = row)).map (fun (r, c) => c)).Sorted (fun a b => a ≥ b))
 ∃ result,

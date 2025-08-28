@@ -10,7 +10,7 @@ package Vericoding where
     ⟨`pp.unicode.fun, true⟩,
     ⟨`autoImplicit, true⟩,
     ⟨`relaxedAutoImplicit, false⟩,
-    ⟨`linter.missingDocs, true⟩
+    ⟨`linter.missingDocs, false⟩
   ]
   releaseRepo := "https://github.com/Beneficial-AI-Foundation/vericoding"
   buildArchive := "Vericoding-{OS}-{ARCH}.tar.gz"
@@ -36,6 +36,11 @@ lean_lib Benchmarks where
 @[default_target]
 lean_lib NumpyHoareTriple where
   globs := #[.andSubmodules `NumpyHoareTriple]
+  srcDir := "lean"
+
+@[default_target]
+lean_lib Clever where
+  globs := #[.andSubmodules `Benchmarks.Clever]
   srcDir := "lean"
 
 lean_lib BenchmarksGenerated where

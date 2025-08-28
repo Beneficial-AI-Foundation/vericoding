@@ -1,4 +1,5 @@
 import Mathlib
+import Benchmarks.Clever.CommonDefs
 import Mathlib.Data.List.Basic
 import Mathlib.Data.String.Basic
 import Mathlib.Data.Rat.Defs
@@ -19,7 +20,7 @@ match result with
   (∀ num ∈ nums,
     let sum := digit_sum num;
     sum > head_sum ∨
-   (sum = head_sum ∧ nums.indexOf num ≥ nums.indexOf head))
+   (sum = head_sum ∧ listIndexOf nums num ≥ listIndexOf nums head))
   ∧ impl (nums.erase head) = tail
 -- program termination
 ∃ result, impl nums = result ∧
