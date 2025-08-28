@@ -1,4 +1,5 @@
 import Mathlib
+import Benchmarks.Clever.CommonDefs
 import Mathlib.Data.List.Basic
 import Mathlib.Data.String.Basic
 import Mathlib.Data.Rat.Defs
@@ -15,7 +16,7 @@ let spec (result: List String) :=
   (forall s: String, (s ∈ result → s ∈ digits)) ∧
   (arr.length ≥ result.length) ∧
   (forall x: Nat, ((x: Int) ∈ arr ∧ 1 ≤ x ∧ x ≤ 9) → (digits[x-1]! ∈ result)) ∧
-  (List.Sorted Int.le (List.map (fun (s: String) => (List.indexOf s digits) + 1) result).reverse)
+  (List.Sorted Int.le (List.map (fun (s: String) => (listIndexOf digits s) + 1) result).reverse)
 -- program termination
 ∃ result, implementation arr = result ∧
 spec result

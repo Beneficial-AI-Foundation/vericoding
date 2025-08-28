@@ -1,4 +1,5 @@
 import Mathlib
+import Benchmarks.Clever.CommonDefs
 import Mathlib.Data.List.Basic
 import Mathlib.Data.String.Basic
 import Mathlib.Data.Rat.Defs
@@ -11,7 +12,7 @@ def problem_spec
 (n: Nat) :=
 -- spec
 let spec (result: Nat) :=
-fibonacci_non_computable_3 n result
+fibonacci_non_computable n result
 -- program termination
 ∃ result, implementation n = result ∧
 spec result

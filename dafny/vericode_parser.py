@@ -18,12 +18,11 @@ def find_dafny_files(directory):
         return []
 
 def extract_dafny_code(output):
-    """Extract Dafny code from LLM response."""
+    """Extract Dafny code from LLM response without auto-fixing."""
     # First try to extract from code blocks
     code_block_match = re.search(r'```dafny\n(.*?)```', output, re.DOTALL | re.IGNORECASE)
     if code_block_match:
         code = code_block_match.group(1).strip()
-        code = fix_incomplete_code(code)
         return code
     
     # If no code block, try to find Dafny code patterns
@@ -77,85 +76,13 @@ def extract_dafny_code(output):
     
     if dafny_lines:
         code = '\n'.join(dafny_lines).strip()
-        code = fix_incomplete_code(code)
         return code
     
     # Fallback: return the original output but cleaned
     code = output.strip()
-    code = fix_incomplete_code(code)
     return code
 
-def fix_incomplete_code(code):
-    """Fix common incomplete code patterns."""
-    lines = code.split('\n')
-    fixed_lines = []
-    in_block = None  # Track current block type (ATOM, SPEC, or IMPL)
-    
-    for i, line in enumerate(lines):
-        # Track block type
-        if line.strip().startswith('//ATOM'):
-            in_block = 'ATOM'
-        elif line.strip().startswith('//SPEC'):
-            in_block = 'SPEC'
-        elif line.strip().startswith('//IMPL'):
-            in_block = 'IMPL'
-        
-        # Fix incomplete string literals
-        if ':= "' in line and '";' not in line:
-            if line.strip().endswith(':= "') or line.strip().endswith(':= ""'):
-                line = re.sub(r':= ""?$', ':= "";', line)
-            elif line.strip().endswith('"'):
-                line = line + ';'
-        
-        # Fix incomplete variable declarations
-        if 'var ' in line and ' := ' in line and not line.endswith(';'):
-            if line.strip().endswith(':= ""'):
-                line = line + ';'
-            elif line.strip().endswith(':= "') or line.strip().endswith(':='):
-                line = re.sub(r':= ""?$', ':= "";', line)
-        
-        # Fix incomplete method bodies
-        if line.strip().startswith('method ') and '{' not in line:
-            # Look ahead to see if there's a method body
-            has_body = False
-            for j in range(i + 1, len(lines)):
-                if lines[j].strip().startswith('{'):
-                    has_body = True
-                    break
-                if lines[j].strip().startswith('method ') or lines[j].strip().startswith('function '):
-                    break
-            if not has_body and in_block != 'SPEC':  # Don't add body for SPEC blocks
-                line = line + '\n{\n}'
-        
-        # Fix incomplete function bodies
-        if line.strip().startswith('function ') and '{' not in line:
-            # Look ahead to see if there's a function body
-            has_body = False
-            for j in range(i + 1, len(lines)):
-                if lines[j].strip().startswith('{'):
-                    has_body = True
-                    break
-                if lines[j].strip().startswith('method ') or lines[j].strip().startswith('function ') or lines[j].strip().startswith('lemma '):
-                    break
-            if not has_body and in_block != 'SPEC':  # Don't add body for SPEC blocks
-                line = line + '\n{\n}'
-        
-        # Fix incomplete lemma bodies
-        if line.strip().startswith('lemma ') and '{' not in line:
-            # Look ahead to see if there's a lemma body
-            has_body = False
-            for j in range(i + 1, len(lines)):
-                if lines[j].strip().startswith('{'):
-                    has_body = True
-                    break
-                if lines[j].strip().startswith('method ') or lines[j].strip().startswith('function ') or lines[j].strip().startswith('lemma '):
-                    break
-            if not has_body and in_block != 'SPEC':  # Don't add body for SPEC blocks
-                line = line + '\n{\n}'
-        
-        fixed_lines.append(line)
-    
-    return '\n'.join(fixed_lines)
+## Note: auto-fixing of incomplete Dafny code has been removed.
 
 def extract_impl_blocks(code):
     """Extract IMPL blocks using a robust regex pattern that includes all lines after //IMPL, including the signature line, up to the next block marker."""
