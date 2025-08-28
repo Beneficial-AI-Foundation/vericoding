@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def mean_absolute_deviation(numbers: List[float]) -> float"
   docstring: |
       For a given list of input numbers, calculate Mean Absolute Deviation
@@ -28,13 +28,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  if numbers.length = 0 then 1.0
-  else
-    let mean := numbers.sum / numbers.length;
-    let abs_diffs := numbers.map (fun x => |x - mean|);
-    abs_diffs.sum / abs_diffs.length
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -59,30 +55,9 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  -- sometimes we have to create a temporary variable to use in the proof
-  unfold problem_spec
-  let result := implementation numbers
-  use result
-  simp [result]
-  simp [implementation]
-  by_cases (numbers.length = 0)
-  rename_i h
-  simp [h]
-  rename_i h
-  simp at h
-  have h1: 0 < numbers.length := by
-    by_contra
-    rename_i h2
-    simp at h2
-    contradiction
-  simp [h1]
-  simp [h]
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   #test implementation [1.0, 2.0, 3.0, 4.0] = 1.0
-  
-  
 

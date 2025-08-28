@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def rolling_max(numbers: List[int]) -> Tuple[int, int]"
   docstring: |
     From a given list of integers, generate a list of rolling maximum element found until given moment
@@ -21,16 +21,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  let rec rolling_max (numbers: List Int) (results: List Int) (acc: Int) : List Int :=
-    match numbers with
-    | [] => results
-    | n :: ns =>
-      let new_acc := max acc n
-      let new_results := results ++ [new_acc]
-      rolling_max ns new_results new_acc
-  rolling_max numbers [] 0
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -54,28 +47,9 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  unfold problem_spec
-  let result := implementation numbers
-  use result
-  simp [result]
-  simp [implementation]
-  apply And.intro
-  induction numbers
-  simp
-  simp [implementation.rolling_max]
-  rename_i head tail ih
-  unfold implementation.rolling_max
-  simp
-  -- At this point we will have to
-  -- strengthen the induction hypothesis
-  -- to prove the correctness of the implementation
-  sorry
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   #test implementation [1, 2, 3, 2, 3, 4, 2] = [1, 2, 3, 3, 3, 4, 4]
-  
-  
 

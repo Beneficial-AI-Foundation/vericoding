@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task involves determining whether every character in a provided string is a digit. The objective is to check if all characters fall within the standard digit range, returning true if they do and false otherwise.
   
@@ -32,15 +32,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec loop (it : String.Iterator) : Bool :=
-      if it.atEnd then
-        true
-      else
-        if !isDigit it.curr then
-          false
-        else
-          loop it.next
-    loop s.iter
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def circular_shift(x: Int, shift: Int) -> String"
   docstring: |
       Circular shift the digits of the integer x, shift the digits right by shift
@@ -24,9 +24,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -55,17 +55,10 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  unfold problem_spec
-  let result := implementation x shift
-  use result
-  simp [result]
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation (12 : Int) (1 : Int) = "21"
   -- #test implementation (12 : Int) (2 : Int) = "12"
-  
-  
 

@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that calculates the surface area of a cube based on the length of one of its edges. The method should compute the surface area using the standard formula for a cube.
   
@@ -26,7 +26,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    6 * size * size
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
@@ -39,8 +39,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-    unfold cubeSurfaceArea cubeSurfaceArea_postcond
-    simp
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-

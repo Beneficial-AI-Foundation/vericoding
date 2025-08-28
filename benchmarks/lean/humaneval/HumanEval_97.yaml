@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def multiply(a : Int, b : Int) -> Int"
   docstring: |
       Complete the function that takes two integers and returns
@@ -29,9 +29,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -57,8 +57,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
@@ -66,6 +65,4 @@ vc-postamble: |-
   -- #test implementation 19 28 = 72
   -- #test implementation 2020 1851 = 0
   -- #test implementation 14 -15 = 20
-  
-  
 

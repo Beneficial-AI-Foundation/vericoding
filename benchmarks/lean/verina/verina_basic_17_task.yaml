@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that converts all uppercase characters in a given string to their lowercase equivalents while keeping the other characters unchanged. The output string must have the same length as the input string.
   
@@ -34,9 +34,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let cs := s.toList
-    let cs' := cs.map (fun c => if isUpperCase c then shift32 c else c)
-    String.mk cs'
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
@@ -54,17 +52,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-    unfold toLowercase toLowercase_postcond
-    simp_all
-    constructor
-    · unfold String.length
-      simp
-    · intro i hi
-      have hi' : i < s.data.length := by
-        unfold String.length at hi
-        simp at hi
-        exact hi
-      constructor <;> simp_all
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-

@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that determines if a given integer is strictly greater than every element in a provided array. The method should return true only if the integer is larger than each element in the array; otherwise, it should return false.
   
@@ -31,7 +31,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    a.all fun x => n > x
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
@@ -44,8 +44,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-    unfold isGreater isGreater_postcond
-    simp [Array.all_eq]
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-

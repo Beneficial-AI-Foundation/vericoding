@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task focuses on determining if a given integer is even. The problem requires checking whether the integer can be represented as twice another integer, meaning it is divisible by 2 without any remainder.
   
@@ -32,7 +32,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    if x % 2 = 0 then true else false
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
@@ -45,9 +45,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-    unfold ComputeIsEven ComputeIsEven_postcond
-    simp
-    rfl
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-

@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   You are given an array of integers and a threshold value k. The problem is to create a new array where every element greater than k is replaced with -1 while every other element remains unchanged.
   
@@ -40,7 +40,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    replace_loop arr k 0 arr
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def add(x: Int, y: Int) -> Int"
   docstring: Add two numbers x and y
   test_cases:
@@ -21,9 +21,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -45,17 +45,10 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  unfold problem_spec
-  let result := implementation x y
-  use result
-  simp [result]
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation 2 3 = 5
   -- #test implementation 5 7 = 12
-  
-  
 

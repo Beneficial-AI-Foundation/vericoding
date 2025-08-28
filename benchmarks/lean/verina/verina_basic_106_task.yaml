@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   The task is to compute the element-wise sum of two integer arrays. The result should be a new array where each element is the sum of the corresponding elements from the two input arrays. The problem assumes that both arrays have the same length.
   
@@ -32,17 +32,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    if a.size ≠ b.size then
-      panic! "Array lengths mismatch"
-    else
-      let n := a.size;
-      let c := Array.mkArray n 0;
-      let rec loop (i : Nat) (c : Array Int) : Array Int :=
-        if i < n then
-          let c' := c.set! i (a[i]! + b[i]!);
-          loop (i + 1) c'
-        else c;
-      loop 0 c
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

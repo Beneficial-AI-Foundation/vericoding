@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that finds the last occurrence of a specified element in a sorted array of integers. The method should return the index corresponding to the last occurrence of the element if it is present; if the element is absent, it should return -1. Additionally, the array must remain unchanged after the method is executed.
   
@@ -31,13 +31,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec loop (i : Nat) (pos : Int) : Int :=
-      if i < arr.size then
-        let a := arr[i]!
-        if a = elem then loop (i + 1) i
-        else loop (i + 1) pos
-      else pos
-    loop 0 (-1)
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

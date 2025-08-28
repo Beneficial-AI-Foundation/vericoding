@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that identifies the first repeated character in a given string. The method should return a tuple containing a Boolean value and a character. The Boolean value indicates whether any character in the string is repeated. If it is true, the accompanying character is the first character that appears more than once. If it is false, it indicates that there are no repeated characters in the string.
   
@@ -32,18 +32,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let cs := s.toList
-    let rec loop (i : Nat) (seen : Std.HashSet Char) : Option Char :=
-      if i < cs.length then
-        let c := cs[i]!
-        if seen.contains c then
-          some c
-        else
-          loop (i + 1) (seen.insert c)
-      else
-        -- When no repeated char is found, return (false, arbitrary char)
-        none
-    loop 0 Std.HashSet.empty
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that implementing the "Two Sum" problem. Given a list of integers
   and a target integer, the function should return the indices of the two numbers that add up to
@@ -29,28 +29,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec outer (lst : List Int) (i : Nat)
-              : Option (Nat × Nat) :=
-          match lst with
-          | [] =>
-              none
-          | x :: xs =>
-              let rec inner (lst' : List Int) (j : Nat)
-                      : Option Nat :=
-                  match lst' with
-                  | [] =>
-                      none
-                  | y :: ys =>
-                      if x + y = target then
-                          some j
-                      else
-                          inner ys (j + 1)
-              match inner xs (i + 1) with
-              | some j =>
-                  some (i, j)
-              | none =>
-                  outer xs (i + 1)
-          outer nums 0
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

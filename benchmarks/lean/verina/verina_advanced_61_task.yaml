@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 function that takes a list of integers and returns a new list. For each index i in the input list, the output at i is equal to the product of all numbers in the list except the number at index i. The solution must run in O(n) time without using the division operation.
   
@@ -35,14 +35,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let n := nums.length
-    if n = 0 then []
-    else
-      let pref := computepref nums  -- length = n + 1, where prefix[i] = product of nums[0 ... i-1]
-      let suffix := computeSuffix nums  -- length = n + 1, where suffix[i] = product of nums[i ... n-1]
-      -- For each index i (0 ≤ i < n): result[i] = prefix[i] * suffix[i+1]
-      -- Use array-style indexing as get! is deprecated
-      List.range n |>.map (fun i => pref[i]! * suffix[i+1]!)
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

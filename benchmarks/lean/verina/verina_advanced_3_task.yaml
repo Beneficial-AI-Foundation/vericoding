@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that finds the length of the logest common subsequence of two input arrays.
   
@@ -30,23 +30,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let m := a.size
-    let n := b.size
-  
-    let dp := Id.run do
-      let mut dp := Array.mkArray (m + 1) (Array.mkArray (n + 1) 0)
-      for i in List.range (m + 1) do
-        for j in List.range (n + 1) do
-          if i = 0 ∨ j = 0 then
-            ()
-          else if a[i - 1]! = b[j - 1]! then
-            let newVal := ((dp[i - 1]!)[j - 1]!) + 1
-            dp := dp.set! i (dp[i]!.set! j newVal)
-          else
-            let newVal := intMax ((dp[i - 1]!)[j]!) ((dp[i]!)[j - 1]!)
-            dp := dp.set! i (dp[i]!.set! j newVal)
-      return dp
-    (dp[m]!)[n]!
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

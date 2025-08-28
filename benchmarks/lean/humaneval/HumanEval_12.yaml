@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def longest(strings: List[str]) -> Optional[str]"
   docstring: |
       Out of list of strings, return the longest one. Return the first one in case of multiple
@@ -25,12 +25,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  if strings = [] then none
-  else
-    let longest := (strings.map (λ s => s.length)).maximum.get!
-    (strings.find? (λ s => s.length = longest)).get!
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -56,18 +53,11 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  unfold problem_spec
-  let result := implementation strings
-  use result
-  simp [result]
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   #test implementation ["a", "b", "c"] = some "a"
   #test implementation ["a", "bb", "ccc"] = some "ccc"
   #test implementation [] = none
-  
-  
 

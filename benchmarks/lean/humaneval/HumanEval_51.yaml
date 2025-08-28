@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def remove_vowels(string: str) -> string"
   docstring: |
       remove_vowels is a function that takes string and returns string without vowels.
@@ -28,9 +28,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -56,18 +56,11 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  unfold problem_spec
-  let result := implementation s
-  use result
-  simp [result]
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation "" = ""
   -- #test implementation "cat" = "catac"
   -- #test implementation "cata" = "catac"
-  
-  
 

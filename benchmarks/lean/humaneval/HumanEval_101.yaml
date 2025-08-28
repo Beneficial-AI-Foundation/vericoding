@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def words_string(s: string) -> List[string]"
   docstring: |
       You will be given a string of words separated by commas or spaces. Your task is
@@ -23,9 +23,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  List.map (fun s => (s.toList.filter (fun c => c != ',')).asString) ((s.splitOn).filter (fun s => s != "" ∧ s != ","))
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -50,8 +50,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
@@ -61,6 +60,4 @@ vc-postamble: |-
   -- #test implementation "One,, two, three, four, five, six," = ["One", "two", "three", "four", "five", "six"]
   -- #test implementation "" = []
   -- #test implementation "ahmed     , gamal" = ["ahmed", "gamal"]
-  
-  
 

@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def factorize(n: int) -> List[int]"
   docstring: |
       Return list of prime factors of given integer in the order from smallest to largest.
@@ -26,16 +26,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  Id.run do
-  let mut result := []
-  for num in List.range' 2 n.sqrt do
-    let mut n' := n
-    while n' % num = 0 do
-      n' := n' / num
-      result := result ++ [num]
-  result
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -59,21 +52,11 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  unfold problem_spec
-  let result := implementation n
-  use result
-  simp [result]
-  simp [implementation, Id.run]
-  unfold List.foldl
-  intro h_2_lt_n
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   #test implementation 8 = [2, 2, 2]
   #test implementation 25 = [5, 5]
   #test implementation 70 = [2, 5, 7]
-  
-  
 

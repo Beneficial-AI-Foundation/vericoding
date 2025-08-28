@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that determines whether a given string contains the character 'z' or 'Z'. The method should return true if the string includes either the lowercase or uppercase letter 'z', and false otherwise.
   
@@ -30,7 +30,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    s.toList.any fun c => c = 'z' || c = 'Z'
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
@@ -44,8 +44,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-    unfold containsZ containsZ_postcond
-    simp_all
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-

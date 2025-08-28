@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def fix_spaces(text: str) -> str"
   docstring: |
       Given a string text, replace all spaces in it with underscores,
@@ -28,9 +28,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -62,7 +62,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
@@ -70,6 +70,4 @@ vc-postamble: |-
   -- #test implementation "Example 1" = "Example_1"
   -- #test implementation " Example 2" = "_Example_2"
   -- #test implementation " Example   3" = "_Example-3"
-  
-  
 

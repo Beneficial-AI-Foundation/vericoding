@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that replaces every occurrence of a specified character within a string with a new character. The output should be a new string that maintains the same length as the input string, with all instances of the designated character replaced by the given substitute, and all other characters preserved unchanged.
   
@@ -33,9 +33,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let cs := s.toList
-    let cs' := cs.map (fun c => if c = oldChar then newChar else c)
-    String.mk cs'
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
@@ -53,14 +51,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-    -- Unfold the definitions of replaceChars and replaceChars_postcond
-    unfold replaceChars replaceChars_postcond
-    -- Split the goal into two parts
-    constructor
-    · -- First part: length is preserved
-      simp [String.length]
-    · -- Second part: character replacement specification
-      simp_all
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-

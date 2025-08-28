@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def prime_length(s: str) -> bool"
   docstring: |
       Write a function that takes a string and returns True if the string
@@ -27,9 +27,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  Nat.Prime s.length
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -53,29 +53,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  unfold problem_spec
-  let result := implementation s
-  use result
-  simp [result]
-  simp [implementation]
-  apply Iff.intro
-  intro h_is_prime
-  simp [Nat.prime_def] at h_is_prime
-  intro x h_2_le_x h_x_lt_s_len
-  have h_p' := h_is_prime.2 x
-  by_contra h_s_len_mod_x
-  have h_x_dvd_s_len: x ∣ s.length := by
-    apply Nat.dvd_of_mod_eq_zero
-    exact h_s_len_mod_x
-  simp [h_x_dvd_s_len] at h_p'
-  have h_x_eq_s_len_false: ¬ (x = s.length) := by
-    linarith
-  simp [h_x_eq_s_len_false] at h_p'
-  have h_x_ne_1: ¬ (x = 1) := by
-    linarith
-  simp [h_x_ne_1] at h_p'
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
@@ -83,6 +61,4 @@ vc-postamble: |-
   -- #test implementation "abcdcba" = True
   -- #test implementation "kittens" = True
   -- #test implementation "orange" = False
-  
-  
 

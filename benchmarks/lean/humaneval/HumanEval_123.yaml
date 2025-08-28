@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def get_odd_collatz (n: int) -> List[int]"
   docstring: |
       Given a positive integer n, return a sorted list that has the odd numbers in collatz sequence.
@@ -30,9 +30,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -55,11 +55,9 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation 5 = [1, 5]
-  
-  
 

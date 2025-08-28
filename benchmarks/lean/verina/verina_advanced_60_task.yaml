@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   
   This task requires writing a Lean 4 method that takes a list of natural numbers and partitions it into two separate lists: one containing all the even numbers and the other containing all the odd numbers. The order of elements in each sublist should match their appearance in the original list. Assume there are no duplicates in the input.
@@ -30,14 +30,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec helper (nums : List Nat) : (List Nat × List Nat) :=
-      match nums with
-      | [] => ([], [])
-      | x :: xs =>
-        let (evens, odds) := helper xs
-        if x % 2 == 0 then (x :: evens, odds)
-        else (evens, x :: odds)
-    helper nums
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

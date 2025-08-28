@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def separate_paren_groups(paren_string: str) -> List[str]"
   docstring: |
       Input to this function is a string containing multiple groups of nested parentheses. Your goal is to
@@ -26,26 +26,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  -- remove space or any other characters that are not '(' or ')'
-  let filtered := paren_string.toList.filter (fun c => c == '(' ∨  c == ')');
-  -- auxiliary recursive function:
-  let rec aux (cs : List Char) (cur : List Char) (balance : Int) (acc : List String) : List String :=
-    match cs with
-    | []      => acc.reverse  -- when finished, return accumulated groups in original order
-    | c::rest =>
-      let new_cur    := cur ++ [c]
-      let new_balance:= if c = '(' then
-                        balance + 1
-                        else
-                        balance - 1
-      if new_balance = 0 then
-        let group := new_cur.asString
-        aux rest [] 0 (group :: acc)
-      else
-        aux rest new_cur new_balance acc;
-  aux filtered [] 0 []
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -70,16 +53,9 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  unfold problem_spec
-  let result := implementation paren_string
-  use result
-  simp [result]
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   #test implementation "( ) (( )) (( )( ))" = ["()", "(())", "(()())"]
-  
-  
 

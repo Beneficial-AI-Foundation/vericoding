@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   Given a sequence of n integers, your task is to find the largest sum obtainable by choosing a contiguous subarray of the sequence. At least one number must be selected.
   
@@ -32,17 +32,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    match sequence with
-    | []      => 0  -- If no elements are provided (should not happen according to the problem)
-    | x :: xs =>
-        let (_, maxSoFar) :=
-          xs.foldl (fun (acc : Int × Int) (x : Int) =>
-            let (cur, maxSoFar) := acc
-            let newCur := if cur + x >= x then cur + x else x
-            let newMax := if maxSoFar >= newCur then maxSoFar else newCur
-            (newCur, newMax)
-          ) (x, x)
-        maxSoFar
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

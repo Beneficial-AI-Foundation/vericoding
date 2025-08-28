@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that moves all zeroes in a given integer list to the end, while preserving the relative order of the non-zero elements.
   
@@ -29,9 +29,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let nonzeros := xs.filter (fun x => x ≠ 0)
-    let zeros := xs.filter (fun x => x = 0)
-    nonzeros ++ zeros
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

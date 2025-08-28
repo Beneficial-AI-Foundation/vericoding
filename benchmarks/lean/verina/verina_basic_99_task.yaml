@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires computing three times the given integer. The goal is to determine the product of the input integer and 3.
   
@@ -30,13 +30,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    if x < 18 then
-      let a := 2 * x
-      let b := 4 * x
-      (a + b) / 2
-    else
-      let y := 2 * x
-      x + y
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
@@ -49,20 +43,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-    unfold Triple_postcond Triple
-    simp
-    split_ifs with h₁
-    . rw [←Int.add_mul]
-      simp
-      have h : (6: ℤ) = 3 * 2 := by simp
-      rw [h, Int.mul_comm, Int.mul_ediv_assoc, Int.mul_ediv_assoc]
-      simp
-      rw [Int.mul_comm]
-      rfl
-      simp
-    . rw (occs := [1]) [←Int.one_mul x]
-      rw [←Int.add_mul]
-      simp +arith
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-

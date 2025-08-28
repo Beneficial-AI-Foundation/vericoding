@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that finds the majority element in a list of natural numbers. The majority element is defined as the element that appears more than ⌊n / 2⌋ times in the list, where n is the total number of elements.
   
@@ -28,33 +28,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec countOccurrences (target : Nat) (lst : List Nat) : Nat :=
-      match lst with
-      | [] => 0
-      | y :: ys =>
-        if y = target then 1 + countOccurrences target ys
-        else countOccurrences target ys
-  
-    let rec findCandidate (lst : List Nat) (candidate : Option Nat) (count : Nat) : Nat :=
-      match lst with
-      | [] =>
-        match candidate with
-        | some c => c
-        | none => 0 -- unreachable since we assume majority element exists
-      | x :: xs =>
-        match candidate with
-        | some c =>
-          if x = c then
-            findCandidate xs (some c) (count + 1)
-          else if count = 0 then
-            findCandidate xs (some x) 1
-          else
-            findCandidate xs (some c) (count - 1)
-        | none =>
-          findCandidate xs (some x) 1
-  
-    let cand := findCandidate xs none 0
-    cand
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

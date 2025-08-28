@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task involves identifying the first occurrence of a pair of indices in an array of integers such that the sum of the corresponding elements equals the given target value. The focus is on determining the earliest valid pair (i, j), with 0 ≤ i < j < nums.size, where the sum of the two numbers equals the target, without considering any language-specific or implementation details.
   
@@ -32,25 +32,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let n := nums.size
-    let rec outer (i : Nat) : Option (Nat × Nat) :=
-      if i < n - 1 then
-        let rec inner (j : Nat) : Option (Nat × Nat) :=
-          if j < n then
-            if nums[i]! + nums[j]! = target then
-              some (i, j)
-            else
-              inner (j + 1)
-          else
-            none
-        match inner (i + 1) with
-        | some pair => some pair
-        | none      => outer (i + 1)
-      else
-        none
-    match outer 0 with
-    | some pair => pair
-    | none      => panic "twoSum: no solution found"
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

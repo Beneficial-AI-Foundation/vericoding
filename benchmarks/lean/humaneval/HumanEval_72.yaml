@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def will_it_fly(q: List[int], w: int) -> bool"
   docstring: |
       Write a function that returns True if the object q will fly, and False otherwise.
@@ -28,9 +28,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  (List.Palindrome q) ∧ (List.sum q ≤ w)
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -54,20 +54,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  unfold problem_spec
-  let result := implementation q w
-  use result
-  simp [result]
-  simp [implementation]
-  apply And.intro
-  intro h_is_palindrome h_q_sum
-  assumption
-  apply And.intro
-  intro h_palindrome
-  simp [h_palindrome]
-  intro h_q_sum h_palindrome
-  assumption
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
@@ -77,6 +64,4 @@ vc-postamble: |-
   -- #test implementation [3, 2, 3] 1 = False
   -- #test implementation [1, 2, 3] 6 = False
   -- #test implementation [5] 5 = True
-  
-  
 

@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task involves computing the average of two integers. The objective is to determine a value that closely approximates the true arithmetic mean when using integer division, ensuring that the result reflects the necessary rounding behavior.
   
@@ -29,7 +29,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    (a + b) / 2
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

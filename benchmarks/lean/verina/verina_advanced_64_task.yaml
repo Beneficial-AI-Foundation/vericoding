@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that removes all occurrences of a given element from a list of natural numbers. The method should return a new list that contains all the elements of the original list except those equal to the target number. The order of the remaining elements must be preserved.
   
@@ -27,13 +27,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec helper (lst : List Nat) (target : Nat) : List Nat :=
-      match lst with
-      | [] => []
-      | x :: xs =>
-        let rest := helper xs target
-        if x = target then rest else x :: rest
-    helper lst target
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

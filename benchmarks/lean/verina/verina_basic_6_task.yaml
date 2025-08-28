@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that finds the minimum among three given integers. The method should return the smallest value, ensuring that the result is less than or equal to each of the input numbers and that it is one of the provided integers.
   
@@ -30,9 +30,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    if a <= b && a <= c then a
-    else if b <= a && b <= c then b
-    else c
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
@@ -46,51 +44,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-    unfold minOfThree minOfThree_postcond
-  
-    split
-  
-    -- Case 1: a is the minimum
-    · by_cases h1: a <= b && a <= c
-      · constructor
-        · simp_all
-        · simp
-      · contradiction
-  
-    split
-  
-    -- Case 2: b is the minimum
-    · by_cases h2: b <= a && b <= c
-      · constructor
-        · simp_all
-        · simp
-      · contradiction
-  
-    -- Case 3: c is the minimum
-    · by_cases h3: c < a && c < b
-      · constructor
-        · simp_all
-          constructor
-          · exact le_of_lt h3.1
-          · exact le_of_lt h3.2
-        · simp
-      · constructor
-        · simp_all
-          by_cases h': a <= b
-          · simp_all
-            have h'': a <= c := by
-              exact le_trans h' h3
-            rw [← not_lt] at h''
-            contradiction
-          · simp_all
-            have _: b <= a := by exact le_of_lt h'
-            simp_all
-            have h'': c < b := by assumption
-            have h''': c < a := by exact lt_trans h'' h'
-            apply h3 at h'''
-            rw [← not_lt] at h'''
-            contradiction
-        · simp
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-

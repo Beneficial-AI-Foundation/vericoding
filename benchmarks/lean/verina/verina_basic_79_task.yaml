@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   Given a nonempty array of integers and a valid index x (with 1 ≤ x < array size), the task is to identify two key pieces of information. First, determine the maximum value among the first x elements of the array. Second, select an index p within the range [x, array size) that satisfies the following conditions: if there exists an element in the segment starting from index x that is strictly greater than the previously determined maximum, then p should be the index of the first such occurrence; otherwise, p should be set to the last index of the array. The focus of the problem is solely on correctly identifying the maximum and choosing the appropriate index based on these order conditions.
   
@@ -41,10 +41,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let best := a[0]!
-    let m := findBest a x 1 best;
-    let p := findP a x m x;
-    (m, p)
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

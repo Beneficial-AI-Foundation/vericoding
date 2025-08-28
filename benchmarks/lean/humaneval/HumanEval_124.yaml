@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def valid_date(date: str) -> Bool"
   docstring: |
       You have to write a function which validates a given date string and
@@ -34,9 +34,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -67,7 +67,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
@@ -76,6 +76,4 @@ vc-postamble: |-
   -- #test implementation "04-0-2040" = false
   -- #test implementation "06-04-2020" = true
   -- #test implementation "06/04/2020" = false
-  
-  
 

@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def can_arrange(arr: List[int]) -> int"
   docstring: |
       Create a function which returns the largest index of an element which
@@ -25,9 +25,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -53,12 +53,10 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation [1, 2, 4, 3, 5] = 3
   -- #test implementation [1, 2, 3] = -1
-  
-  
 

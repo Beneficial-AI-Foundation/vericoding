@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   The problem asks you to construct a new list by adding an extra number to the end of an existing list of numbers. The focus is on understanding what the final list should look like when a given number is included as the last element.
   
@@ -34,9 +34,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let c_initial := copy a 0 (Array.empty)
-    let c_full := c_initial.push b
-    c_full
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

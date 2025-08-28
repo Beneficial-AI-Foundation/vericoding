@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def digits(n: int) -> int"
   docstring: |
       Given a positive integer n, return the product of the odd digits.
@@ -25,9 +25,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -60,13 +60,11 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation 1 = 1
   -- #test implementation 4 = 0
   -- #test implementation 235 = 15
-  
-  
 

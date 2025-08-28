@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def f(n: int) -> List[int]"
   docstring: |
       Implement the function f that takes n as a parameter,
@@ -24,9 +24,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -49,8 +49,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
@@ -58,6 +57,4 @@ vc-postamble: |-
   -- #test implementation 7 = [1, 2, 6, 24, 15, 720, 28]
   -- #test implementation 1 = [1]
   -- #test implementation 3 = [1, 2, 6]
-  
-  
 

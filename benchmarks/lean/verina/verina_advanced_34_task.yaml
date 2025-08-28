@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that finds the length of the longest strictly increasing subsequence from a given list of integers.
   
@@ -27,27 +27,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    Id.run do
-      if nums.isEmpty then return 0
-      let mut sub : Array Int := Array.empty
-      sub := sub.push nums.head!
-      for num in nums.tail do
-        if num > sub[sub.size - 1]! then
-          sub := sub.push num
-        else
-         -- << binary search >>
-          let mut left : Nat := 0
-          let mut right : Nat := sub.size - 1
-          while left < right do
-            let mid := (left + right) / 2
-            if sub[mid]! == num then
-              right := mid
-            else if sub[mid]! < num then
-              left := mid + 1
-            else
-              right := mid
-          sub := sub.set! left num
-      return Int.ofNat sub.size
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

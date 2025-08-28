@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that returns true if the input n is divisible by 8 or has 8 as one of it's digits.
   
@@ -26,14 +26,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec hasDigitEight (m : Nat) : Bool :=
-      if m <= 0 then false
-      else if m % 10 == 8 then true
-      else hasDigitEight (m / 10)
-      termination_by m
-  
-    let absN := Int.natAbs n
-    n % 8 == 0 || hasDigitEight absN
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

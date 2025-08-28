@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 function that finds the one missing number in a list of distinct natural numbers from 0 to n. The list contains exactly n numbers and all numbers are in the range [0, n], but one number in that range is missing.
   
@@ -26,10 +26,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let n := nums.length
-    let expectedSum := (n * (n + 1)) / 2
-    let actualSum := nums.foldl (· + ·) 0
-    expectedSum - actualSum
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

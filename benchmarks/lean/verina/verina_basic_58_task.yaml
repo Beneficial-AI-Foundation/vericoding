@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task involves transforming an array of integers by doubling each element.
   
@@ -34,7 +34,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    double_array_elements_aux s s 0
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def count_nums(arr: List[int]) -> int"
   docstring: |
       Write a function count_nums which takes an array of integers and returns
@@ -27,16 +27,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  let signed_digits(x: Int): List Int :=
-      let x': Nat := Int.natAbs x;
-      let xs: List Nat := Nat.digits 10 x';
-      if x >= 0 then
-        xs
-      else
-        (-Int.ofNat (xs[0]!)) :: xs.tail;
-    ((List.map (fun (x: Int) => (signed_digits x).sum) arr).filter (fun (x: Int) => x > 0)).length
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -66,8 +59,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
@@ -79,6 +71,4 @@ vc-postamble: |-
   -- #test implementation [12, 23, 34, -45, -56, 0] = 5
   -- #test implementation [-0, 1^0] = 1
   -- #test implementation [1] = 1
-  
-  
 

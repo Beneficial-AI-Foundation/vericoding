@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def choose_num(x: int, y: int) -> int"
   docstring: |
       This function takes two positive numbers x and y and returns the
@@ -24,9 +24,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -49,8 +49,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
@@ -62,6 +61,4 @@ vc-postamble: |-
   -- #test implementation 27 10 = (-1)
   -- #test implementation 7 7 = -1
   -- #test implementation 546 546 = 546
-  
-  
 

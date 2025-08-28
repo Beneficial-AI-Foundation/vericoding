@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task involves determining the triple of a given integer. The goal is to create a function that, for any integer provided as input, returns a value equal to three times that integer, including handling the case when the input is zero.
   
@@ -32,9 +32,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    if x = 0 then 0 else
-      let y := 2 * x
-      x + y
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
@@ -47,14 +45,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-    unfold Triple_postcond Triple
-    split_ifs with h₁
-    . rw [h₁]
-      simp
-    . simp
-      rw (occs := [1]) [←Int.one_mul x]
-      rw [←Int.add_mul]
-      simp +arith
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
