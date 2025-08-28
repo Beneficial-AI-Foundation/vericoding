@@ -49,13 +49,15 @@ class ExperimentResult:
 class LeanExperimentTracker:
     """Track Lean verification experiments with WANDB."""
     
-    def __init__(self, project_name: str = "vericoding-lean"):
+    def __init__(self, project_name: str | None = None):
         """Initialize the experiment tracker.
         
         Args:
-            project_name: WANDB project name
+            project_name: WANDB project name. If None, uses
+                `WANDB_PROJECT` env var or falls back to "vericoding".
         """
-        self.project_name = project_name
+        # Prefer explicit arg, then env, then repo default
+        self.project_name = project_name or os.getenv("WANDB_PROJECT", "vericoding")
         self.results: List[ExperimentResult] = []
         self.wandb_enabled = os.getenv("WANDB_API_KEY") is not None
         self.run = None

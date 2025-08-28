@@ -23,8 +23,12 @@ from verus_validation import (
     VerusNotFoundError
 )
 
-def test_yaml_without_helpers(yaml_file: Path, temp_path: Path, verus_cmd: str) -> tuple[bool, str]:
-    """Test a YAML file with empty vc-helpers section."""
+def test_yaml_without_helpers(yaml_file: Path, temp_path: Path, verus_cmd: str) -> tuple[bool, str, bool]:
+    """Test a YAML file with empty vc-helpers section.
+    
+    Returns:
+        tuple[bool, str, bool]: (success, message, was_skipped)
+    """
     try:
         # Read original YAML
         with open(yaml_file, 'r') as f:
@@ -32,7 +36,7 @@ def test_yaml_without_helpers(yaml_file: Path, temp_path: Path, verus_cmd: str) 
         
         # Skip if there are no helpers to remove
         if 'vc-helpers: |-' not in original_content:
-            return True, "No helpers to remove - skipped"
+            return True, "No helpers to remove", True
         
         # Create modified version without helpers
         modified_content = create_yaml_without_helpers(original_content)
@@ -45,14 +49,14 @@ def test_yaml_without_helpers(yaml_file: Path, temp_path: Path, verus_cmd: str) 
         # Convert to Rust
         success, temp_rust_file = convert_yaml_to_rust(temp_yaml, temp_path)
         if not success:
-            return False, "Conversion failed"
+            return False, "Conversion failed", False
         
         # Verify with Verus
         success, output = verify_rust_with_verus(temp_rust_file, verus_cmd)
-        return success, output
+        return success, output, False
         
     except Exception as e:
-        return False, f"Error: {e}"
+        return False, f"Error: {e}", False
 
 def main():
     """Main test function."""
@@ -124,19 +128,18 @@ def main():
             
             # Step 2: Test version without vc-helpers
             print(f"   Testing without vc-helpers...")
-            success_no_helpers, output_no_helpers = test_yaml_without_helpers(yaml_file, temp_path, verus_cmd)
+            success_no_helpers, output_no_helpers, was_skipped = test_yaml_without_helpers(yaml_file, temp_path, verus_cmd)
             
-            if success_no_helpers:
-                if "skipped" in output_no_helpers:
-                    print(f"   ⏩ No-helpers test skipped (no helpers to remove)")
-                    no_helpers_results.append((yaml_file.name, True, "Skipped - no helpers"))
-                else:
-                    print(f"   ✅ No-helpers Verus syntax check passed")
-                    no_helpers_results.append((yaml_file.name, True, "Success"))
+            if was_skipped:
+                print(f"   ⏩ No-helpers test skipped (no helpers to remove)")
+                no_helpers_results.append((yaml_file.name, True, "Skipped - no helpers", True))
+            elif success_no_helpers:
+                print(f"   ✅ No-helpers Verus syntax check passed")
+                no_helpers_results.append((yaml_file.name, True, "Success", False))
             else:
                 print(f"   ❌ No-helpers Verus syntax check failed")
                 print(f"   Output: {output_no_helpers}")
-                no_helpers_results.append((yaml_file.name, False, f"No-helpers failed: {output_no_helpers}"))
+                no_helpers_results.append((yaml_file.name, False, f"No-helpers failed: {output_no_helpers}", False))
     
     # Print summary
     print(f"\n📊 Test Results Summary:")
@@ -162,8 +165,8 @@ def main():
     no_helpers_failed = 0
     no_helpers_skipped = 0
     
-    for filename, success, message in no_helpers_results:
-        if "skipped" in message.lower():
+    for filename, success, message, was_skipped in no_helpers_results:
+        if was_skipped:
             status = "⏩ SKIP"
             no_helpers_skipped += 1
         elif success:
@@ -174,8 +177,27 @@ def main():
             no_helpers_failed += 1
             
         print(f"{status}: {filename}")
-        if not success and "skipped" not in message.lower():
+        if not success and not was_skipped:
             print(f"      {message[:100]}{'...' if len(message) > 100 else ''}")
+    
+    # Print failing tests summary before final results
+    failing_tests = []
+    
+    # Collect original test failures
+    for filename, success, message in results:
+        if not success:
+            failing_tests.append(f"❌ {filename} (Original): {message}")
+    
+    # Collect no-helpers test failures
+    for filename, success, message, was_skipped in no_helpers_results:
+        if not success and not was_skipped:
+            failing_tests.append(f"❌ {filename} (No-helpers): {message}")
+    
+    if failing_tests:
+        print(f"\n💥 Failing Tests:")
+        print("=" * 70)
+        for failure in failing_tests:
+            print(failure)
     
     print(f"\n🏁 Final Results:")
     print(f"   Original tests  - Passed: {original_passed}, Failed: {original_failed}")
