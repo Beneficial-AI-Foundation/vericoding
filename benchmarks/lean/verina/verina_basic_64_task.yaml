@@ -43,27 +43,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let result := Array.mkArray (l + p) ' '
-  
-    let result := Array.foldl
-      (fun acc i =>
-        if i < atPos then acc.set! i (oline[i]!) else acc)
-      result
-      (Array.range l)
-  
-    let result := Array.foldl
-      (fun acc i =>
-        acc.set! (atPos + i) (nl[i]!))
-      result
-      (Array.range p)
-  
-    let result := Array.foldl
-      (fun acc i =>
-        if i >= atPos then acc.set! (i + p) (oline[i]!) else acc)
-      result
-      (Array.range l)
-  
-    result
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

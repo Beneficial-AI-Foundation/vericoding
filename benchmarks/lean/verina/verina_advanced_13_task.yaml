@@ -40,39 +40,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let sortedChords := chords.map (fun chord =>
-      let a := chord[0]!
-      let b := chord[1]!
-      if a > b then [b, a] else [a, b]
-    )
-  
-    let rec checkIntersection (stack : List (List Nat)) (remaining : List (List Nat)) : Bool :=
-      match remaining with
-      | [] => false
-      | chord :: rest =>
-        let a := chord[0]!
-        let b := chord[1]!
-        let newStack := stack.dropWhile (fun c => (c)[1]! < a)
-        match newStack with
-        | [] => checkIntersection (chord :: newStack) rest
-        | top :: _ =>
-          if top[1]! > a && top[1]! < b then
-            true
-          else
-            checkIntersection (chord :: newStack) rest
-  
-    let rec insert (x : List Nat) (xs : List (List Nat)) : List (List Nat) :=
-      match xs with
-      | [] => [x]
-      | y :: ys => if x[0]! < y[0]! then x :: xs else y :: insert x ys
-  
-    let rec sort (xs : List (List Nat)) : List (List Nat) :=
-      match xs with
-      | [] => []
-      | x :: xs => insert x (sort xs)
-  
-    let sortedChords := sort sortedChords
-    checkIntersection [] sortedChords
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

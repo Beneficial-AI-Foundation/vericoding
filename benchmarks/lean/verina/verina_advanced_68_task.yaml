@@ -27,46 +27,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    -- Convert string to character list
-    let chars : String → List Char := fun s => s.data
-  
-    -- Check character equality
-    let charEq : Char → Char → Bool := fun c1 c2 => c1 == c2
-  
-    -- Convert number to string
-    let numToString : Nat → String := fun n =>
-      let rec digits : Nat → List Char := fun n =>
-        if n < 10 then
-          [Char.ofNat (n + 48)]  -- ASCII '0' is 48
-        else
-          digits (n / 10) ++ [Char.ofNat (n % 10 + 48)]
-      String.mk (digits n)
-  
-    -- Main encoding logic (fixed version)
-    let rec encode : List Char → Option Char → Nat → String :=
-      fun input currentChar count =>
-        match input with
-        | [] =>
-          -- Process remaining characters
-          match currentChar with
-          | none => ""
-          | some c => String.mk [c] ++ numToString count
-        | c::rest =>
-          match currentChar with
-          | none => encode rest c 1
-          | some c' =>
-            if charEq c c' then
-              encode rest c' (count + 1)
-            else
-              let currentPart := String.mk [c'] ++ numToString count
-              currentPart ++ encode rest c 1
-  
-    -- Handle empty input
-    if input.isEmpty then
-      ""
-    else
-      let firstChar := (chars input).head?
-      encode (chars input).tail firstChar 1
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

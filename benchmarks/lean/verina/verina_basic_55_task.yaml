@@ -28,7 +28,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    if a = b then true else false
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
@@ -41,8 +41,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-    unfold Compare_postcond Compare
-    simp
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-

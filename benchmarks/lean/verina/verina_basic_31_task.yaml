@@ -34,9 +34,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let cs := s.toList
-    let cs' := cs.map (fun c => if isLowerCase c then shiftMinus32 c else c)
-    String.mk cs'
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
@@ -54,17 +52,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-    unfold toUppercase toUppercase_postcond
-    simp_all
-    constructor
-    · unfold String.length
-      simp
-    · intro i hi
-      have hi' : i < s.data.length := by
-        unfold String.length at hi
-        simp at hi
-        exact hi
-      constructor <;> simp_all
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-

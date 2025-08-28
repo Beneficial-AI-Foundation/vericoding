@@ -34,9 +34,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let c_initial := copy a 0 (Array.empty)
-    let c_full := c_initial.push b
-    c_full
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

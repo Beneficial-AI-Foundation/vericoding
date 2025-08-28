@@ -33,21 +33,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let len := numbers.length
-    let rec outer (idx : Nat) : Bool :=
-      if idx < len then
-        let rec inner (idx2 : Nat) : Bool :=
-          if idx2 < idx then
-            let a := numbers.getD idx2 0.0
-            let b := numbers.getD idx 0.0
-            let d := absDiff a b
-            if d < threshold then true else inner (idx2 + 1)
-          else
-            false
-        if inner 0 then true else outer (idx + 1)
-      else
-        false
-    outer 0
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

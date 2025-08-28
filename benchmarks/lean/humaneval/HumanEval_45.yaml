@@ -22,9 +22,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  0.5 * a * h
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -46,17 +46,10 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  unfold problem_spec
-  let result := implementation a h
-  use result
-  simp [result]
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation 5 3 = 7.5
   -- #test implementation 8 2 = 8.0
-  
-  
 

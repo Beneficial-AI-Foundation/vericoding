@@ -33,35 +33,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let totalGas := gas.foldl (· + ·) 0
-    let totalCost := cost.foldl (· + ·) 0
-  
-    if totalGas < totalCost then
-      -1
-    else
-      let rec loop (g c : List Int) (idx : Nat) (tank : Int) (start : Nat) : Int :=
-        match g, c with
-        | [], [] => start
-        | gi :: gs, ci :: cs =>
-          let tank' := tank + gi - ci
-          if tank' < 0 then
-            loop gs cs (idx + 1) 0 (idx + 1)
-          else
-            loop gs cs (idx + 1) tank' start
-        | _, _ => -1  -- lengths don’t match
-  
-      let zipped := List.zip gas cost
-      let rec walk (pairs : List (Int × Int)) (i : Nat) (tank : Int) (start : Nat) : Int :=
-        match pairs with
-        | [] => start
-        | (g, c) :: rest =>
-          let newTank := tank + g - c
-          if newTank < 0 then
-            walk rest (i + 1) 0 (i + 1)
-          else
-            walk rest (i + 1) newTank start
-  
-      walk zipped 0 0 0
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

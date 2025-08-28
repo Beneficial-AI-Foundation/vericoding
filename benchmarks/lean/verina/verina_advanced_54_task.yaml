@@ -26,10 +26,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let n := nums.length
-    let expectedSum := (n * (n + 1)) / 2
-    let actualSum := nums.foldl (· + ·) 0
-    expectedSum - actualSum
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

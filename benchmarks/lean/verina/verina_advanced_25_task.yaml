@@ -30,18 +30,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    if nums.isEmpty then 0
-    else
-      let n := nums.length
-      Id.run do
-        let mut dp : Array Nat := Array.mkArray n 1
-  
-        for i in [1:n] do
-          for j in [0:i] do
-            if nums[j]! < nums[i]! && dp[j]! + 1 > dp[i]! then
-              dp := dp.set! i (dp[j]! + 1)
-  
-        maxInArray dp
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

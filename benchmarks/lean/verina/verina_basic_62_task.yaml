@@ -32,12 +32,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec search (index : Nat) : Int :=
-      if index < a.size then
-        if a[index]! = key then Int.ofNat index
-        else search (index + 1)
-      else -1
-    search 0
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

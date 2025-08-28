@@ -29,9 +29,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -71,13 +71,10 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation ([1, 2, 3, 4], [1, 2, 3, 4]) = "YES"
   -- #test implementation ([1, 2, 3, 4], [1, 5, 3, 4]) = "NO"
-  
-  
 

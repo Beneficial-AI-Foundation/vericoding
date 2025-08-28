@@ -30,14 +30,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec helper (nums : List Nat) : (List Nat × List Nat) :=
-      match nums with
-      | [] => ([], [])
-      | x :: xs =>
-        let (evens, odds) := helper xs
-        if x % 2 == 0 then (x :: evens, odds)
-        else (evens, x :: odds)
-    helper nums
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

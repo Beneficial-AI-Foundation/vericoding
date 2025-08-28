@@ -26,7 +26,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    6 * size * size
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
@@ -39,8 +39,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-    unfold cubeSurfaceArea cubeSurfaceArea_postcond
-    simp
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-

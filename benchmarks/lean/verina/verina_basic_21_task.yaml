@@ -31,22 +31,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let subLen := sub.length
-    let mainLen := main.length
-    if subLen > mainLen then
-      false
-    else
-      let rec check (i : Nat) : Bool :=
-        if i + subLen > mainLen then
-          false
-        else if sub = (main.drop i).take subLen then
-          true
-        else if i + 1 ≤ mainLen then
-          check (i + 1)
-        else
-          false
-      termination_by mainLen - i
-      check 0
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

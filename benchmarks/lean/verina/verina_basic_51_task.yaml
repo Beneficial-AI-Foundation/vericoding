@@ -40,7 +40,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    binarySearchLoop a key 0 a.size
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

@@ -40,9 +40,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let len := a.size
-    let c := Array.mkArray len 0
-    loop a b len 0 c
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

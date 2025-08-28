@@ -30,12 +30,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    match n with
-    | 0 => 0
-    | n + 1 =>
-      let prev := sumOfFourthPowerOfOddNumbers n h_precond
-      let nextOdd := 2 * n + 1
-      prev + nextOdd^4
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

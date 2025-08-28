@@ -30,7 +30,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    a * b < 0
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
@@ -44,23 +44,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-    unfold hasOppositeSign hasOppositeSign_postcond
-    constructor
-  
-    · intro h
-      cases h with
-      | inl h1 =>
-        simp
-        have ⟨ha, hb⟩ := h1
-        exact Int.mul_neg_of_neg_of_pos ha hb
-      | inr h2 =>
-        simp
-        have ⟨ha, hb⟩ := h2
-        rw [Int.mul_comm]
-        exact Int.mul_neg_of_neg_of_pos hb ha
-  
-    · rw [Bool.decide_iff, mul_neg_iff]
-      simp_all
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-

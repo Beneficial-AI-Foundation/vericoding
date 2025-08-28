@@ -29,9 +29,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let nonzeros := xs.filter (fun x => x ≠ 0)
-    let zeros := xs.filter (fun x => x = 0)
-    nonzeros ++ zeros
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

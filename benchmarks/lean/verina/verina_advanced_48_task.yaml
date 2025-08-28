@@ -34,30 +34,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    -- Implementation using insertion sort instead of merge sort
-    -- for simplicity and to avoid termination issues
-  
-    -- Helper to insert an element into a sorted list
-    let rec insert (x : Int) (sorted : List Int) : List Int :=
-      match sorted with
-      | [] => [x]
-      | y :: ys =>
-          if x ≤ y then
-            x :: sorted
-          else
-            y :: insert x ys
-    termination_by sorted.length
-  
-    -- Main insertion sort function
-    let rec sort (l : List Int) : List Int :=
-      match l with
-      | [] => []
-      | x :: xs =>
-          let sortedRest := sort xs
-          insert x sortedRest
-    termination_by l.length
-  
-    sort list
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

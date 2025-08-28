@@ -32,21 +32,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let powerSet := fun (l : List Int) =>
-      let n := l.length
-      let masks := List.range (2^n)
-      masks.map fun mask =>
-        (List.range n).foldr (fun i acc =>
-          if (mask.shiftRight i).land 1 == 1 then l[i]! :: acc else acc
-        ) []
-  
-    let subsets := powerSet nums
-    let nonEmpty := subsets.filter (· ≠ [])
-    let products := List.map (fun subset =>
-      List.foldl (fun acc x =>
-        acc * x) (1 : Int) subset)
-      nonEmpty
-    (List.max? products).getD (-1000000)
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

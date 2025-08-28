@@ -35,28 +35,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    -- edge case k=0, requires 0 operations
-    if k == 0 then 0 else
-    -- recursive helper function
-    let rec loop (remaining : List Nat) (collected : List Nat) (collected_count : Nat) (ops : Nat) : Nat :=
-      match remaining with
-      | [] => ops -- base case
-      | head :: tail =>
-        let ops' := ops + 1
-        -- check if the element is relevant (1 <= head <= k) and not already collected
-        -- use a list `collected` to keep track of unique numbers found so far
-        if head > 0 && head <= k && !(List.elem head collected) then
-            let collected' := head :: collected -- add new unique element to our tracking list
-            let collected_count' := collected_count + 1
-            if collected_count' == k then
-              ops' -- found all k distinct required numbers
-            else
-              loop tail collected' collected_count' ops' -- continue searching, count increased
-        else
-          -- element is irrelevant (> k), zero/negative, or a duplicate (already in `collected`)
-          loop tail collected collected_count ops' -- continue searching, count not increased
-    -- start the loop, initially empty collection, 0 count, 0 operations
-    loop nums.reverse [] 0 0
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

@@ -27,11 +27,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec helper (digits : List Nat) : Nat :=
-      match digits with
-      | [] => 0
-      | first :: rest => first * Nat.pow 2 rest.length + helper rest
-    helper digits
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

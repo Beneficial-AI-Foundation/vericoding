@@ -27,7 +27,7 @@ def spec_to_string(spec: dict, template: list[str]) -> str:
 def get_template(suffix: str) -> list[str]:
     """Get template for the output file."""
     if suffix == 'lean':
-        return ['vc-preamble', '\n', 'vc-description', '\n', 'vc-helpers', '\n', 
+        return ['vc-description', '\n', 'vc-preamble', '\n', 'vc-helpers', '\n', 
                     'vc-signature', 'vc-implementation', '\n', 
                     'vc-condition', 'vc-proof', '\n', 'vc-postamble']
     elif suffix == 'dfy' or suffix == 'rs':
@@ -131,18 +131,76 @@ def convert_yaml_to_dir(yaml_path: Path, suffix: str) -> None:
     print(f"Converted {len(yaml_files)} YAML files to {output_dir}")
 
 
+def clear_implementation(yaml_path: Path) -> None:
+    """Read a YAML file, replace vc-implementation, vc-proof, and vc-code fields with empty strings, and write back."""
+    
+    yaml = YAML()
+    yaml.preserve_quotes = True  # Preserve original formatting
+    
+    # Load the YAML file
+    with open(yaml_path, 'r') as f:
+        spec = yaml.load(f)
+    
+    # Replace the specified fields with empty strings
+    fields_to_clear = ['vc-implementation', 'vc-proof']
+    for field in fields_to_clear:
+        if field in spec:
+            spec[field] = "-- <"+field+">\n  sorry\n-- </"+field+">\n\n"
+    
+    # Manually write the YAML file with multiline strings
+    with open(yaml_path, 'w') as f:
+        for key, value in spec.items():
+            # Write the key with multiline indicator
+            f.write(f"{key}: |-\n")
+            
+            # Write the value in multiline format
+            if isinstance(value, str):
+                stripped_value = value.rstrip()
+                if stripped_value:
+                    # Split into lines and add two spaces to each line
+                    lines = stripped_value.split('\n')
+                    for line in lines:
+                        f.write('  ' + line + '\n')
+                    f.write('\n')
+                else:
+                    f.write('\n')
+    
+    print(f"Cleared implementation fields in {yaml_path}")
+
+
 def main():
     parser = argparse.ArgumentParser(description='Convert YAML spec to target file format')
     parser.add_argument('yaml_file', type=Path, help='Input YAML file or directory')
-    parser.add_argument('--suffix', required=True, choices=['dfy', 'lean', 'rs', 'json', 'jsonl'], 
+    parser.add_argument('--suffix', choices=['dfy', 'lean', 'rs', 'json', 'jsonl'], 
                        help='Output file suffix')
     parser.add_argument('--dir', action='store_true', 
                        help='Convert all YAML files in directory to a new directory (not available for jsonl)')
+    parser.add_argument('--clear-impl', action='store_true',
+                       help='Clear vc-implementation, vc-proof, and vc-code fields with empty strings')
     
     args = parser.parse_args()
     
     if not args.yaml_file.exists():
         raise FileNotFoundError(f"{args.yaml_file} does not exist")
+    
+    # Handle clear implementation fields option
+    if args.clear_impl:
+        if args.yaml_file.is_file():
+            clear_implementation(args.yaml_file)
+        elif args.yaml_file.is_dir():
+            # Process all YAML files in directory
+            yaml_files = list(args.yaml_file.glob("*.yaml"))
+            if not yaml_files:
+                print(f"No .yaml files found in {args.yaml_file}")
+                return
+            for yaml_file in yaml_files:
+                clear_implementation(yaml_file)
+            print(f"Cleared implementation fields in {len(yaml_files)} YAML files")
+        return
+    
+    # Original conversion logic
+    if not args.suffix:
+        parser.error("--suffix is required when not using --clear-impl")
     
     if args.dir:
         if args.suffix == 'jsonl':

@@ -31,9 +31,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let more := x + y
-    let less := x - y
-    (more, less)
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
@@ -46,8 +44,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-    unfold MultipleReturns_postcond MultipleReturns
-    simp
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-

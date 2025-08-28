@@ -32,14 +32,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec loop (i : Nat) : Int :=
-      if i < arr.size then
-        let a := arr[i]!
-        if a = target then i
-        else if a > target then -1
-        else loop (i + 1)
-      else -1
-    loop 0
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

@@ -20,9 +20,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  string.map (λ c => if c.isUpper then c.toLower else c.toUpper)
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -52,16 +52,9 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  unfold problem_spec
-  let result := implementation string
-  use result
-  simp [result]
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   #test implementation "Hello" = "hELLO"
-  
-  
 

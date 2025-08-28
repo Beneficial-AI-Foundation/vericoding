@@ -35,53 +35,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let len1 := nums1.length
-  
-    let buildNextGreaterMap : List (Int × Int) :=
-      let rec mapLoop (index : Nat) (stack : List Nat) (map : List (Int × Int)) : List (Int × Int) :=
-        if h : index >= nums2.length then
-          stack.foldl (fun acc pos => (nums2[pos]!, -1) :: acc) map
-        else
-          let currentValue := nums2[index]!
-  
-          let rec processStack (s : List Nat) (m : List (Int × Int)) : List Nat × List (Int × Int) :=
-            match s with
-            | [] => ([], m)
-            | topIndex :: rest =>
-                let topValue := nums2[topIndex]!
-                if currentValue > topValue then
-                  let newMap := (topValue, currentValue) :: m
-                  processStack rest newMap
-                else
-                  (s, m)
-  
-          let (newStack, newMap) := processStack stack map
-  
-          mapLoop (index + 1) (index :: newStack) newMap
-        termination_by nums2.length - index
-  
-      mapLoop 0 [] []
-  
-    let buildResult : List Int :=
-      let rec resultLoop (i : Nat) (result : List Int) : List Int :=
-        if i >= len1 then
-          result.reverse
-        else
-          let val := nums1[i]!
-          let rec findInMap (m : List (Int × Int)) : Int :=
-            match m with
-            | [] => -1
-            | (num, nextGreater) :: rest =>
-                if num == val then nextGreater
-                else findInMap rest
-  
-          let nextGreater := findInMap buildNextGreaterMap
-          resultLoop (i + 1) (nextGreater :: result)
-        termination_by len1 - i
-  
-      resultLoop 0 []
-  
-    buildResult
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

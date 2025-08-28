@@ -37,9 +37,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let inner := arr[index1]!
-    let inner' := updateInner inner index2 val
-    arr.set! index1 inner'
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

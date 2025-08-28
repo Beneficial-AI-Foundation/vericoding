@@ -37,7 +37,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    if x.length = 0 then true else isPalindromeHelper x 0 (x.length - 1)
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

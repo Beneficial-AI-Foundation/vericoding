@@ -27,13 +27,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec helper (lst : List Nat) (target : Nat) : List Nat :=
-      match lst with
-      | [] => []
-      | x :: xs =>
-        let rest := helper xs target
-        if x = target then rest else x :: rest
-    helper lst target
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

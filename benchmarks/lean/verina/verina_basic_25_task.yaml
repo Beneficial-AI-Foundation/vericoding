@@ -30,11 +30,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    if n ≤ 0 then (0, 0.0)
-    else
-      let sum := (List.range (n + 1)).sum
-      let average : Float := sum.toFloat / (n.toFloat)
-      (sum, average)
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

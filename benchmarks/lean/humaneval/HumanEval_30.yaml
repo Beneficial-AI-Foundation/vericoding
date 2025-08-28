@@ -22,9 +22,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  numbers.filter (λ x => x > 0)
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -48,17 +48,10 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  unfold problem_spec
-  let result := implementation numbers
-  use result
-  simp [result]
-  repeat sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   #test implementation [(-1), 2, (-4), 5, 6] = [2, 5, 6]
   #test implementation [5, 3, (-5), 2, (-3), 3, 9, 0, 123, 1, (-10)] = [5, 3, 2, 3, 9, 123, 1]
-  
-  
 

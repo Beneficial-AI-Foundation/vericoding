@@ -26,22 +26,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let sortedList := l
-    let rec search (lst : List Nat) (n : Nat) : Nat :=
-      match lst with
-      | [] => n
-      | x :: xs =>
-        let isEqual := x = n
-        let isGreater := x > n
-        let nextCand := n + 1
-        if isEqual then
-          search xs nextCand
-        else if isGreater then
-          n
-        else
-          search xs n
-    let result := search sortedList 0
-    result
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

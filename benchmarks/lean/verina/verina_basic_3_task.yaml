@@ -29,7 +29,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    n % 11 == 0
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
@@ -42,15 +42,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-    unfold isDivisibleBy11 isDivisibleBy11_postcond
-    constructor
-    · simp_all
-      exact fun a => a
-    · apply Not.imp_symm
-      rw [not_forall_not]
-      intro h
-      rw [beq_iff_eq]
-      exact Int.emod_eq_zero_of_dvd h
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-

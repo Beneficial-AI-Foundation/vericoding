@@ -31,27 +31,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let freqMap : HashMap Int Nat :=
-      nums.foldl (init := {}) fun acc n =>
-        let oldVal := match acc.toList.find? (fun (key, _) => key == n) with
-                      | some (_, c) => c
-                      | none        => 0
-        acc.insert n (oldVal + 1)
-    let sorted := freqMap.toList.foldl
-      (fun acc pair =>
-        let (x, cx) := pair
-        let rec insertSorted (xs : List (Int × Nat)) : List (Int × Nat) :=
-          match xs with
-          | [] => [pair]
-          | (y, cy) :: ys =>
-            if cx > cy then
-              pair :: (y, cy) :: ys
-            else
-              (y, cy) :: insertSorted ys
-        insertSorted acc
-      ) []
-  
-    sorted.take k |>.map (fun (n, _) => n)
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

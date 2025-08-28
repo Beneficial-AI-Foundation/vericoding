@@ -34,7 +34,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    arr.foldl (fun acc x => if isEven x then acc.push x else acc) #[]
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

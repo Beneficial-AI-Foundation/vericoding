@@ -30,16 +30,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    if a.size = 0 then
-      true
-    else
-      let firstElement := a[0]!
-      let rec loop (i : Nat) : Bool :=
-        if h : i < a.size then
-          if a[i]! = firstElement then loop (i + 1) else false
-        else
-          true
-      loop 1
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

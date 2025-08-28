@@ -28,8 +28,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let y := x * 2
-    y + x
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
@@ -42,11 +41,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-    unfold Triple_postcond Triple
-    simp
-    rw (occs := [2]) [←Int.mul_one x]
-    rw [←Int.mul_add]
-    simp +arith
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-

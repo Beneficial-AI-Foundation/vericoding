@@ -31,7 +31,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    arr[k - 1]!
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
@@ -44,15 +44,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-    unfold kthElement kthElement_postcond
-    unfold kthElement_precond at h_precond
-    have ⟨hp1, hp2⟩ := h_precond
-    simp_all
-    have h': k - 1 < arr.size := by
-      exact Nat.sub_one_lt_of_le hp1 hp2
-    exists k - 1
-    exists h'
-    exact Eq.symm (getElem!_pos arr (k - 1) ((Iff.of_eq (Eq.refl (k - 1 < arr.size))).mpr h'))
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-

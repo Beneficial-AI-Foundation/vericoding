@@ -41,10 +41,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let init : Nat :=
-      if a[0]! < b[0]! then (b[0]! - a[0]!).natAbs
-      else (a[0]! - b[0]!).natAbs
-    canyonSearchAux a b 0 0 init
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

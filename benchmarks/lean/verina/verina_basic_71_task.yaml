@@ -32,16 +32,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let minLength := Nat.min str1.length str2.length
-    let rec aux (idx : Nat) (acc : List Char) : List Char :=
-      if idx < minLength then
-        match str1[idx]?, str2[idx]? with
-        | some c1, some c2 =>
-            if c1 ≠ c2 then acc
-            else aux (idx + 1) (acc ++ [c1])
-        | _, _ => acc
-      else acc
-    aux 0 []
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

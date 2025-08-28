@@ -32,25 +32,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let n := nums.size
-    let rec outer (i : Nat) : Option (Nat × Nat) :=
-      if i < n - 1 then
-        let rec inner (j : Nat) : Option (Nat × Nat) :=
-          if j < n then
-            if nums[i]! + nums[j]! = target then
-              some (i, j)
-            else
-              inner (j + 1)
-          else
-            none
-        match inner (i + 1) with
-        | some pair => some pair
-        | none      => outer (i + 1)
-      else
-        none
-    match outer 0 with
-    | some pair => pair
-    | none      => panic "twoSum: no solution found"
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

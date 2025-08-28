@@ -30,13 +30,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let bound := n
-    let rec check (i : Nat) (fuel : Nat) : Bool :=
-      if fuel = 0 then true
-      else if i * i > n then true
-      else if n % i = 0 then false
-      else check (i + 1) (fuel - 1)
-    check 2 bound
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

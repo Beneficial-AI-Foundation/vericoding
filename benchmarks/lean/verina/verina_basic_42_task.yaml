@@ -31,7 +31,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    List.length (List.filter isDigit s.toList)
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
@@ -45,8 +45,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-    unfold countDigits countDigits_postcond
-    simp
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-

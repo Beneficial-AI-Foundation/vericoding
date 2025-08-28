@@ -31,31 +31,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec countFactors (n : Nat) (primes : List Nat) : List (Nat × Nat) :=
-      match primes with
-      | [] => []
-      | p :: ps =>
-        let (count, n') :=
-          countFactor n p 0
-        (p, count) :: countFactors n' ps
-  
-    countFactors n primes
-    where
-  
-    countFactor : Nat → Nat → Nat → Nat × Nat
-    | 0, _, count =>
-      (count, 0)
-    | n, p, count =>
-      if h : n > 0 ∧ p > 1 then
-        have : n / p < n :=
-          Nat.div_lt_self h.1 h.2
-        if n % p == 0 then
-          countFactor (n / p) p (count + 1)
-        else
-          (count, n)
-      else
-        (count, n)
-    termination_by n _ _ => n
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

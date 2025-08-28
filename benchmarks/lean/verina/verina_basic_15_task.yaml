@@ -32,12 +32,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    if a.size ≤ 1 then
-      false
-    else
-      let withIndices := a.mapIdx (fun i x => (i, x))
-      withIndices.any (fun (i, x) =>
-        i < a.size - 1 && x + 1 == a[i+1]!)
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
@@ -50,37 +45,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-    unfold containsConsecutiveNumbers containsConsecutiveNumbers_postcond
-    constructor
-    · simp_all
-      intro i hi hconsec
-      have hi' : 1 + i < a.size := by
-          rw [Nat.add_comm]
-          exact Nat.add_lt_of_lt_sub hi
-      have hi'' : i < a.size := by
-        have : i < 1 + i := by
-          simp [Nat.lt_add_of_pos_left]
-        exact Nat.lt_trans this hi'
-      constructor
-      · exact Nat.lt_of_add_right_lt hi'
-      · apply Array.any_iff_exists.mpr
-        simp
-        exists i
-        simp [hi, hi'']
-        have : a[i]! = a[i] := by
-          exact getElem!_pos a i hi''
-        rw [←this]
-        exact hconsec
-    · simp
-      intro ha h
-      have h' := Array.any_iff_exists.mp h
-      simp at h'
-      rcases h' with ⟨i, hi, ⟨hi', hconsec⟩⟩
-      have : a[i]! = a[i] := by
-        exact getElem!_pos a i hi
-      exists i
-      rw [this]
-      simp_all
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-

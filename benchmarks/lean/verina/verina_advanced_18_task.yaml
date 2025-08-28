@@ -39,8 +39,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let k := countDigits n
-    sumPowers n k = n
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

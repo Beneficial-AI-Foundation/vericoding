@@ -30,7 +30,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    s.toList.any fun c => c = 'z' || c = 'Z'
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
@@ -44,8 +44,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-    unfold containsZ containsZ_postcond
-    simp_all
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-

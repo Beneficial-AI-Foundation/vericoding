@@ -30,14 +30,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec boundedLoop : Nat → Nat → Nat
-      | 0, r => r
-      | bound+1, r =>
-          if (r + 1) * (r + 1) ≤ N then
-            boundedLoop bound (r + 1)
-          else
-            r
-    boundedLoop (N+1) 0
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

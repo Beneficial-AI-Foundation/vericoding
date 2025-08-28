@@ -30,18 +30,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let n := a.size
-    let dp := Id.run do
-      let mut dp := Array.mkArray n 1
-      for i in [1:n] do
-        for j in [0:i] do
-          if a[j]! < a[i]! then
-            let newVal := intMax (dp[i]!) (dp[j]! + 1)
-            dp := dp.set! i newVal
-      return dp
-    match dp with
-    | #[] => 0
-    | _   => dp.foldl intMax 0
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

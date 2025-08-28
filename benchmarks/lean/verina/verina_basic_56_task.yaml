@@ -44,10 +44,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    if len = 0 then dest
-    else
-      let r := dest
-      updateSegment r src sStart dStart len
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

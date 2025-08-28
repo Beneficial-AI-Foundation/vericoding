@@ -37,13 +37,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let s := buildS operations
-    let rec check_negative (lst : List Int) : Bool :=
-      match lst with
-      | []      => false
-      | x :: xs => if x < 0 then true else check_negative xs
-    let result := check_negative (s.toList)
-    (s, result)
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

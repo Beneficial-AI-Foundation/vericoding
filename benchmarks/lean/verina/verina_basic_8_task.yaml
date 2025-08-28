@@ -27,7 +27,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    if a <= b then a else b
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
@@ -41,17 +41,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-    unfold myMin myMin_postcond
-    constructor
-    · split
-      case left.isTrue h =>
-        simp
-        exact h
-      case left.isFalse h =>
-        simp
-        rw [Int.not_le] at h
-        exact Int.le_of_lt h
-    · split <;> simp
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-

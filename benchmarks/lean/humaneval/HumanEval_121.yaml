@@ -25,9 +25,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -55,13 +55,11 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation ([5, 8, 7, 1]: List Int) = 12
   -- #test implementation ([3, 3, 3, 3, 3]: List Int) = 9
   -- #test implementation ([30, 13, 24, 321]: List Int) = 0
-  
-  
 

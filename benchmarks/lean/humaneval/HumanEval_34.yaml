@@ -20,9 +20,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  l.eraseDup.mergeSort
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -45,22 +45,9 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  unfold problem_spec
-  let result := implementation l
-  use result
-  simp [result]
-  simp [implementation]
-  apply And.intro
-  intro x
-  apply Iff.intro
-  intro h
-  apply And.intro
-  repeat sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   #test implementation [5, 3, 5, 2, 3, 3, 9, 0, 123] = [0, 2, 3, 5, 9, 123]
-  
-  
 

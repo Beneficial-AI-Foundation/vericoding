@@ -44,8 +44,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let result := sortList l
-    result
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

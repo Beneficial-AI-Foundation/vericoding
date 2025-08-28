@@ -32,12 +32,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec loop (n : Nat) : Nat :=
-      if n < a.size then
-        if P (a[n]!) then n else loop (n + 1)
-      else
-        0
-    loop 0
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

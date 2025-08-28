@@ -40,7 +40,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    replace_loop arr k 0 arr
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

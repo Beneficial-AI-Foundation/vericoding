@@ -24,15 +24,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  let every_third_idx := (List.range l.length).filter (λ i => i % 3 = 0);
-  let every_third_val := every_third_idx.map (λ i => l.get! i);
-  let every_third_val_sorted := List.mergeSort every_third_val;
-  let result := l.mapIdx (λ i v =>
-    if i % 3 = 0 then every_third_val_sorted.get! (i / 3)
-    else v);
-  result
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -59,17 +53,10 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  unfold problem_spec
-  let result := implementation l
-  use result
-  simp [result]
-  repeat sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   #test implementation [1, 2, 3] = [1, 2, 3]
   #test implementation [5, 6, 3, 4, 8, 9, 2] = [2, 6, 3, 4, 8, 9, 5]
-  
-  
 

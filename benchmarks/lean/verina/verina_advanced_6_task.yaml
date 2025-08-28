@@ -36,9 +36,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let chars := normalize_str s
-    let vowelSet := ['a', 'e', 'i', 'o', 'u']
-    vowelSet.all (fun v => chars.contains v)
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

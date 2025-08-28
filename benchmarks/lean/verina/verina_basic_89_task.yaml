@@ -28,7 +28,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    s.foldl (fun acc x => if acc.contains x then acc else acc ++ [x]) []
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

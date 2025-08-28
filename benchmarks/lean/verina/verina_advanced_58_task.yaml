@@ -38,13 +38,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec loop (i : Nat) (seq : List Nat) (c2 c3 c5 : Nat) : List Nat :=
-      match i with
-      | 0 => seq
-      | Nat.succ i' =>
-        let (next, c2', c3', c5') := nextUgly seq c2 c3 c5
-        loop i' (seq ++ [next]) c2' c3' c5'
-    (loop (n - 1) [1] 0 0 0)[(n - 1)]!
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

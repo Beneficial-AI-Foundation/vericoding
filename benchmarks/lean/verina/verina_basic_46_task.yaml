@@ -31,13 +31,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec loop (i : Nat) (pos : Int) : Int :=
-      if i < arr.size then
-        let a := arr[i]!
-        if a = elem then loop (i + 1) i
-        else loop (i + 1) pos
-      else pos
-    loop 0 (-1)
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

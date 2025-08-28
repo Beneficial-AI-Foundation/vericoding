@@ -29,14 +29,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  if n > m then
-    none
-  else
-    let xs := List.Ico n (m+1);
-    let avg := xs.sum / xs.length;
-    some ("0b" ++ (Nat.toDigits 2 avg).asString)
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -65,8 +60,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
@@ -81,6 +75,4 @@ vc-postamble: |-
   -- #test implementation 7 5 = none
   -- #test implementation 5 1 = none
   -- #test implementation 5 5 = some "0b101"
-  
-  
 

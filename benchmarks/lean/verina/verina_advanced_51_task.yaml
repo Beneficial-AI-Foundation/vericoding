@@ -37,8 +37,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let merged := mergeSortedAux a b
-    merged
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

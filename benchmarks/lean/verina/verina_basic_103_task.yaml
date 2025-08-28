@@ -31,9 +31,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let a1 := a.set! 4 ((a[4]!) + 3)
-    let a2 := a1.set! 7 516
-    a2
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

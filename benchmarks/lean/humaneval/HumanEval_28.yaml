@@ -22,9 +22,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  String.join strings
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -52,19 +52,10 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  unfold problem_spec
-  let result := implementation strings
-  use result
-  simp [result]
-  apply And.intro
-  simp [implementation]
-  repeat sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   #test implementation [] = ""
   #test implementation ["a", "b", "c"] = "abc"
-  
-  
 

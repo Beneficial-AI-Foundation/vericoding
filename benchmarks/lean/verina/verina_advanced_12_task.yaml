@@ -24,11 +24,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec helper (seen : List Int) (rem : List Int) : Int :=
-      match rem with
-      | [] => -1
-      | h :: t => if seen.contains h then h else helper (h :: seen) t
-    helper [] lst
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

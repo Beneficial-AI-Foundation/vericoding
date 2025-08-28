@@ -26,14 +26,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec hasDigitEight (m : Nat) : Bool :=
-      if m <= 0 then false
-      else if m % 10 == 8 then true
-      else hasDigitEight (m / 10)
-      termination_by m
-  
-    let absN := Int.natAbs n
-    n % 8 == 0 || hasDigitEight absN
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

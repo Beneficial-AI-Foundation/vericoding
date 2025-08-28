@@ -27,7 +27,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    a * b
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
@@ -40,8 +40,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-    unfold multiply multiply_postcond
-    simp
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-

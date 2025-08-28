@@ -56,9 +56,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let (minIdx, secondIdx) :=
-      if s[1]! < s[0]! then (1, 0) else (0, 1)
-    secondSmallestAux s 2 minIdx secondIdx
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

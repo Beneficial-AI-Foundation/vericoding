@@ -27,9 +27,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  "db" ++ (Nat.toDigits 2 decimal).asString ++ "db"
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -54,8 +54,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
@@ -63,6 +62,4 @@ vc-postamble: |-
   -- #test implementation 32 = "db100000db"
   -- #test implementation 103 = "db1100111db"
   -- #test implementation 15 = "db1111db"
-  
-  
 

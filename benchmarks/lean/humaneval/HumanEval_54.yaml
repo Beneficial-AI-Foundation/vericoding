@@ -21,9 +21,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -45,12 +45,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  unfold problem_spec
-  let result := implementation s0 s1
-  use result
-  simp [result]
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
@@ -60,6 +55,4 @@ vc-postamble: |-
   -- #test implementation 'eabcd' 'dddddddabc' = false
   -- #test implementation 'abcd' 'dddddddabce' = false
   -- #test implementation 'eabcdzzzz' 'dddzzzzzzzddddabc' = false
-  
-  
 

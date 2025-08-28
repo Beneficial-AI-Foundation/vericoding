@@ -57,8 +57,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let norm := normalizeString s
-    norm = reverseList norm
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

@@ -29,7 +29,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    n % 10
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
@@ -43,12 +43,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-    unfold lastDigit lastDigit_postcond
-    constructor
-    · constructor
-      · simp
-      · exact Nat.mod_lt n (by decide)
-    · simp
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-

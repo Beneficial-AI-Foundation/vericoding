@@ -22,43 +22,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  let word_to_number_map : String → Int := fun word =>
-    match word with
-    | "zero" => 0
-    | "one" => 1
-    | "two" => 2
-    | "three" => 3
-    | "four" => 4
-    | "five" => 5
-    | "six" => 6
-    | "seven" => 7
-    | "eight" => 8
-    | "nine" => 9
-    | _ => -1;
-  let number_to_word_map : Int → String := fun number =>
-    match number with
-    | 0 => "zero"
-    | 1 => "one"
-    | 2 => "two"
-    | 3 => "three"
-    | 4 => "four"
-    | 5 => "five"
-    | 6 => "six"
-    | 7 => "seven"
-    | 8 => "eight"
-    | 9 => "nine"
-    | _ => "invalid";
-  let numbers_split := numbers.splitOn " ";
-  let numbers_mapped_to_numbers := numbers_split.map word_to_number_map;
-  let sorted_numbers := numbers_mapped_to_numbers.mergeSort;
-  let sorted_numbers_mapped_to_words := sorted_numbers.map number_to_word_map;
-  let join: List String → String := fun words =>
-    let head := words.get! 0;
-    let tail := words.drop 1;
-    tail.foldl (fun acc word => acc ++ " " ++ word) head;
-  join sorted_numbers_mapped_to_words
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -110,16 +76,9 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  unfold problem_spec
-  let result := implementation numbers
-  use result
-  simp [result]
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   #test implementation "three one five" = "one three five"
-  
-  
 

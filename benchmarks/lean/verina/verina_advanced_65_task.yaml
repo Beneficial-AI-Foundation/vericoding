@@ -26,11 +26,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec reverseAux (chars : List Char) (acc : List Char) : List Char :=
-      match chars with
-      | [] => acc
-      | h::t => reverseAux t (h::acc)
-    String.mk (reverseAux (s.toList) [])
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

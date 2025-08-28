@@ -48,10 +48,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let xs := toCharList s1
-    let ys := toCharList s2
-    let resultList := lcsAux xs ys
-    fromCharList resultList
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

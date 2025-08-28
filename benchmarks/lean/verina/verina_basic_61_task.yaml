@@ -32,15 +32,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec loop (it : String.Iterator) : Bool :=
-      if it.atEnd then
-        true
-      else
-        if !isDigit it.curr then
-          false
-        else
-          loop it.next
-    loop s.iter
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

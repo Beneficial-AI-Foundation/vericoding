@@ -25,20 +25,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let n := intervals.length
-    if n ≤ 1 then 0
-    else
-      (List.range n).foldl (fun acc i =>
-        let remaining := List.eraseIdx intervals i
-        let sorted := List.mergeSort remaining (fun (a b : Nat × Nat) => a.1 ≤ b.1)
-        let merged := sorted.foldl (fun acc curr =>
-          match acc with
-          | [] => [curr]
-          | (s, e) :: rest => if curr.1 ≤ e then (s, max e curr.2) :: rest else curr :: acc
-        ) []
-        let coverage := merged.reverse.foldl (fun acc (s, e) => acc + (e - s)) 0
-        max acc coverage
-      ) 0
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

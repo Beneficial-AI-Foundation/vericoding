@@ -26,12 +26,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec loop (k : Nat) (sum : Nat) : Nat :=
-      if k = 0 then
-        sum
-      else
-        loop (k - 1) (sum + (2 * k - 1) * (2 * k - 1))
-    loop n 0
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

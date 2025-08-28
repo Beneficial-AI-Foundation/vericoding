@@ -42,19 +42,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rows := a.size
-    let cols := if rows > 0 then (a[0]!).size else 0
-  
-    let rec aux (m n : Int) (fuel : Nat) : (Int × Int) :=
-      if fuel = 0 then (-1, -1)
-      else if m ≥ Int.ofNat rows || n < 0 then (-1, -1)
-      else if get2d a m n = key then (m, n)
-      else if get2d a m n < key then
-        aux (m + 1) n (fuel - 1)
-      else
-        aux m (n - 1) (fuel - 1)
-  
-    aux 0 (Int.ofNat (cols - 1)) (rows + cols)
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

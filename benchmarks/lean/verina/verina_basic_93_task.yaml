@@ -31,10 +31,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let temp := X.xor Y
-    let newY := temp.xor Y
-    let newX := temp.xor newY
-    (newX, newY)
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

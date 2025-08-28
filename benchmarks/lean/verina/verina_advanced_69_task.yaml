@@ -27,29 +27,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    match xs with
-    | [] =>
-        0
-    | _ :: _ =>
-        let rec helper : List Int → Nat → Nat :=
-          fun ys idx =>
-            match ys with
-            | [] =>
-                idx
-            | y :: ys' =>
-                let isCurrent := y
-                let currentIndex := idx
-                let targetValue := target
-                let condition := targetValue ≤ isCurrent
-                if condition then
-                  currentIndex
-                else
-                  let incrementedIndex := currentIndex + 1
-                  let rest := ys'
-                  helper rest incrementedIndex
-        let startingIndex := 0
-        let result := helper xs startingIndex
-        result
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

@@ -34,20 +34,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec findUnique (remaining : List Int) : Int :=
-      match remaining with
-      | [] =>
-        0
-      | x :: xs =>
-        let filtered : List Int :=
-          filterlist x nums
-        let count : Nat :=
-          filtered.length
-        if count = 1 then
-          x
-        else
-          findUnique xs
-    findUnique nums
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

@@ -40,9 +40,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let subs := subsequences xs
-    let increasing := subs.filter isStrictlyIncreasing
-    increasing.foldl (fun acc s => max acc s.length) 0
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

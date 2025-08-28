@@ -29,14 +29,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    if n <= 0 then false
-    else
-      let rec aux (m : Int) (fuel : Nat) : Bool :=
-        if fuel = 0 then false
-        else if m = 1 then true
-        else if m % 2 ≠ 0 then false
-        else aux (m / 2) (fuel - 1)
-      aux n n.natAbs
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

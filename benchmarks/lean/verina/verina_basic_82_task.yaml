@@ -36,11 +36,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    if a.size > 0 then
-      let c := copyFrom a 1 (Array.mkEmpty (a.size - 1))
-      c
-    else
-      panic "Precondition violation: array is empty"
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

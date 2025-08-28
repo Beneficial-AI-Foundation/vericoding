@@ -28,7 +28,7 @@ vc-preamble: |-
     -- No other pair sums to the target (ensuring uniqueness of solution)
     ((List.range nums.size).flatMap (fun i =>
       (List.range i).filter (fun j => nums[i]! + nums[j]! = target))).length = 1
-  
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
@@ -38,21 +38,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec findIndices (i : Nat) (j : Nat) (fuel : Nat) : Array Nat :=
-      match fuel with
-      | 0 => #[] -- Fuel exhausted, return empty array
-      | fuel+1 =>
-        if i >= nums.size then
-          #[] -- No solution found
-        else if j >= nums.size then
-          findIndices (i + 1) (i + 2) fuel -- Move to next i and reset j
-        else
-          if nums[i]! + nums[j]! == target then
-            #[i, j] -- Found solution
-          else
-            findIndices i (j + 1) fuel -- Try next j
-  
-    findIndices 0 1 (nums.size * nums.size)
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

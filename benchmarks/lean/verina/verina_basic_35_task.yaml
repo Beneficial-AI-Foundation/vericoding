@@ -33,9 +33,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let nonZeros := arr.toList.filter (· ≠ 0)
-    let zeros := arr.toList.filter (· = 0)
-    Array.mk (nonZeros ++ zeros)
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

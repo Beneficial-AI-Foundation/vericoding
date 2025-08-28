@@ -27,17 +27,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec merge (xs : List Int) (ys : List Int) : List Int :=
-      match xs, ys with
-      | [], _ => ys
-      | _, [] => xs
-      | x :: xt, y :: yt =>
-        if x <= y then
-          x :: merge xt (y :: yt)
-        else
-          y :: merge (x :: xt) yt
-  
-    merge arr1 arr2
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

@@ -36,18 +36,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec findFirstEvenOdd (i : Nat) (firstEven firstOdd : Option Nat) : Int :=
-      if i < a.size then
-        let x := a[i]!
-        let firstEven := if firstEven.isNone && isEven x then some i else firstEven
-        let firstOdd := if firstOdd.isNone && isOdd x then some i else firstOdd
-        match firstEven, firstOdd with
-        | some e, some o => a[e]! - a[o]!
-        | _, _ => findFirstEvenOdd (i + 1) firstEven firstOdd
-      else
-        -- This case is impossible due to h2, but we need a value
-        0
-    findFirstEvenOdd 0 none none
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

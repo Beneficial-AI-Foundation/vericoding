@@ -30,9 +30,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let a := 2 * x
-    let b := 2 * a
-    (a, b)
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

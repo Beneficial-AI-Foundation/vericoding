@@ -32,15 +32,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec loop (i : Nat) (acc : Array Int) : Array Int :=
-      if i < arr.size then
-        if isEven (arr.getD i 0) then
-          loop (i + 1) (acc.push (arr.getD i 0))
-        else
-          loop (i + 1) acc
-      else
-        acc
-    loop 0 (Array.mkEmpty 0)
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

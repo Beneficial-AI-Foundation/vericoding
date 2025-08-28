@@ -26,38 +26,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec insert (x : Int) (sorted : List Int) : List Int :=
-    match sorted with
-    | [] =>
-      [x]
-    | head :: tail =>
-      if x <= head then
-        x :: head :: tail
-      else
-        head :: insert x tail
-  
-  let rec insertionSort (xs : List Int) : List Int :=
-    match xs with
-    | [] =>
-      []
-    | h :: t =>
-      let sortedTail := insertionSort t
-      insert h sortedTail
-  
-  let removeDups : List Int → List Int
-  | xs =>
-    let rec aux (remaining : List Int) (seen : List Int) (acc : List Int) : List Int :=
-      match remaining with
-      | [] =>
-        acc.reverse
-      | h :: t =>
-        if h ∈ seen then
-          aux t seen acc
-        else
-          aux t (h :: seen) (h :: acc)
-    aux xs [] []
-  
-  insertionSort (removeDups arr)
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

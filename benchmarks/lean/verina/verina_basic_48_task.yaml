@@ -111,16 +111,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    if n = 0 then true
-    else
-      let rec check (x : Nat) (fuel : Nat) : Bool :=
-        match fuel with
-        | 0 => false
-        | fuel + 1 =>
-          if x * x > n then false
-          else if x * x = n then true
-          else check (x + 1) fuel
-      check 1 n
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
@@ -133,51 +124,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-    unfold isPerfectSquare_postcond isPerfectSquare
-    simp
-    cases n with
-    | zero => simp
-    | succ n' =>
-      -- We'll prove both directions of the biconditional
-      apply Iff.intro
-  
-       -- Forward direction: isPerfectSquare (n' + 1) = true → ∃ i, i * i = n' + 1
-      · intro h
-        simp at h
-        -- We know check 1 (n' + 1) evaluates to true
-        have ⟨i, ⟨hi_le, hi_eq⟩⟩ := check_correct (n' + 1) 1 (n' + 1) h
-        exists i
-  
-      -- Backward direction: (∃ i, i * i = n' + 1) → isPerfectSquare (n' + 1) = true
-      · intro h
-        simp
-        -- We have some i where i * i = n' + 1
-        have ⟨i, hi⟩ := h
-        -- We need to show check 1 (n' + 1) = true
-        -- First, show i ≥ 1 (which is needed for check to find i)
-        have i_pos : i > 0 := by
-          apply Nat.pos_of_ne_zero
-          intro h_zero
-          rw [h_zero, zero_mul] at hi
-          exact Nat.succ_ne_zero n' hi.symm
-  
-        have i_ge_1 : i ≥ 1 := Nat.succ_le_of_lt i_pos
-  
-        -- Show that i < 1 + (n' + 1) so check has enough fuel to reach i
-        have i_lt_bound : i < 1 + (n' + 1) := by
-          -- Since i*i = n' + 1, we know i ≤ n' + 1
-          have i_le_n_plus_1 : i ≤ n' + 1 := by
-            apply Nat.le_of_mul_le_mul_left
-            · rw [hi]
-              simp
-              exact i_ge_1
-            · exact i_pos
-  
-          apply Nat.lt_succ_of_le at i_le_n_plus_1
-          simp_all +arith
-  
-        -- Apply the completeness lemma
-        exact check_complete (n' + 1) 1 (n' + 1) i i_ge_1 hi i_lt_bound
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-

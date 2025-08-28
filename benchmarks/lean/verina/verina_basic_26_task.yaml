@@ -30,7 +30,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    n % 2 == 0
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
@@ -43,8 +43,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-    unfold isEven isEven_postcond
-    simp
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-

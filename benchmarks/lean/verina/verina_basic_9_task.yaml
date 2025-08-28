@@ -31,7 +31,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    a.any fun x => b.any fun y => x = y
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
@@ -44,33 +44,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-    unfold hasCommonElement hasCommonElement_postcond
-    constructor
-    · intro h
-      rcases h with ⟨i, j, hi, hj, heq⟩
-      simp [Array.any_eq]
-      exists i
-      exists hi
-      exists j
-      exists hj
-      have heqa : a[i]! = a[i] := by
-        exact getElem!_pos a i hi
-      have heqb : b[j]! = b[j] := by
-        exact getElem!_pos b j hj
-      rw [heqa, heqb] at heq
-      exact heq
-    · intro h
-      simp [Array.any_eq] at h
-      rcases h with ⟨i, hi, j, hj, heq⟩
-      exists i
-      exists j
-      simp [hi, hj]
-      have heqa : a[i]! = a[i] := by
-        exact getElem!_pos a i hi
-      have heqb : b[j]! = b[j] := by
-        exact getElem!_pos b j hj
-      rw [heqa, heqb]
-      exact heq
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-

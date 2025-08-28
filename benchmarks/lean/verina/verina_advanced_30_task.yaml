@@ -28,16 +28,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec aux (lst : List Int) (prev : Option Int) (currLen : Nat) (maxLen : Nat) : Nat :=
-      match lst with
-      | [] => max currLen maxLen
-      | x :: xs =>
-        match prev with
-        | none => aux xs (some x) 1 (max 1 maxLen)
-        | some p =>
-          if x > p then aux xs (some x) (currLen + 1) (max (currLen + 1) maxLen)
-          else aux xs (some x) 1 (max currLen maxLen)
-    aux nums none 0 0
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

@@ -28,9 +28,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    if a >= b && a >= c then a
-    else if b >= a && b >= c then b
-    else c
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

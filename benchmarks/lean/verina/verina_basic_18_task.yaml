@@ -29,10 +29,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec loop (n : Nat) (acc : Nat) : Nat :=
-      if n = 0 then acc
-      else loop (n / 10) (acc + n % 10)
-    loop n 0
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

@@ -29,14 +29,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec findMissing (v : Nat) (l : List Nat) : Nat :=
-      match l with
-      | [] => v
-      | x :: xs =>
-        if x > v then v
-        else if x = v then findMissing (v + 1) xs
-        else findMissing v xs
-    findMissing 0 s
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

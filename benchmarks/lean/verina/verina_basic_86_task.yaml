@@ -39,10 +39,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let len := a.size
-    let default_val : Int := if len > 0 then a[0]! else 0
-    let b0 := Array.mkArray len default_val
-    rotateAux a offset 0 len b0
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

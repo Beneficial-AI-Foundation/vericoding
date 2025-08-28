@@ -32,7 +32,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    if x % 2 = 0 then true else false
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
@@ -45,9 +45,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-    unfold ComputeIsEven ComputeIsEven_postcond
-    simp
-    rfl
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-

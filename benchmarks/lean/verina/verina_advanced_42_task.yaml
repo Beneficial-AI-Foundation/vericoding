@@ -40,9 +40,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    match prices with
-    | [] => 0
-    | p :: ps => maxProfitAux ps p 0
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

@@ -43,11 +43,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let indices := List.range a.size
-    indices.foldl (fun arr i =>
-      let minIdx := findMinIndexInRange arr i a.size
-      swap arr i minIdx
-    ) a
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

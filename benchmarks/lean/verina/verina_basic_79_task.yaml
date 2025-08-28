@@ -41,10 +41,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let best := a[0]!
-    let m := findBest a x 1 best;
-    let p := findP a x m x;
-    (m, p)
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

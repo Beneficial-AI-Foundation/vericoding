@@ -27,27 +27,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let lengthList := nums.length
-    let numOne : Int := 1
-    let largestNum : Int := Int.ofNat lengthList
-  
-    let firstIndex := nums.idxOf numOne
-    let lastIndex := nums.idxOf largestNum
-  
-    let startPosition := 0
-    let endPosition := lengthList - 1
-  
-    let shouldMoveOne := firstIndex != startPosition
-    let shouldMoveLast := lastIndex != endPosition
-  
-    let distanceOne := if shouldMoveOne then firstIndex else 0
-    let distanceLast := if shouldMoveLast then endPosition - lastIndex else 0
-  
-    let totalMoves := distanceOne + distanceLast
-    let needAdjustment := firstIndex > lastIndex
-    let adjustedMoves := if needAdjustment then totalMoves - 1 else totalMoves
-  
-    adjustedMoves
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

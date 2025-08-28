@@ -27,9 +27,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    match s.toList with
-    | []      => true
-    | c :: cs => cs.all (fun x => x = c)
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

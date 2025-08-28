@@ -49,7 +49,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    if a.size = 0 then a else bubbleOuter (a.size - 1) a
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

@@ -26,7 +26,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    s.toList.min?
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
@@ -42,16 +42,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-    unfold findSmallest_postcond findSmallest
-    cases res : s.toList.min? with
-    | none =>
-      simp only [res]
-      rw [List.min?_eq_none_iff] at res
-      exact res
-    | some r =>
-      simp only [res]
-      rw [List.min?_eq_some_iff'] at res
-      exact res
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-

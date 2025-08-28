@@ -30,9 +30,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -58,7 +58,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
@@ -68,6 +68,4 @@ vc-postamble: |-
   -- #test implementation "abab" "baa" = True
   -- #test implementation "efef" "eeff" = False
   -- #test implementation "himenss" "simen" = True
-  
-  
 
