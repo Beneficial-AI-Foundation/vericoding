@@ -1,0 +1,50 @@
+vc-description: |-
+  /-  Add one Laguerre series to another.
+      Returns the sum of two Laguerre series c1 + c2. The arguments
+      are sequences of coefficients ordered from lowest order term to highest. -/
+
+  /-  Specification: lagadd performs component-wise addition of two Laguerre series coefficients.
+      The result length is the maximum of the input lengths, with shorter arrays padded with zeros. -/
+
+vc-preamble: |-
+  import Std.Do.Triple
+  import Std.Tactic.Do
+  open Std.Do
+  
+  /-  Helper function to evaluate a Laguerre polynomial at a given point -/
+  
+  axiom evaluateLaguerrePolynomial {k : Nat} : Vector Float k → Float → Float
+
+vc-helpers: |-
+  <vc-helpers>
+  </vc-helpers>
+
+vc-signature: |-
+  def lagadd {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) : 
+      Id (Vector Float (max n m)) :=
+
+vc-implementation: |-
+  <vc-implementation>
+    sorry
+  </vc-implementation>
+
+vc-condition: |-
+  theorem lagadd_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) :
+      ⦃⌜True⌝⦄
+      lagadd c1 c2
+      ⦃⇓result => ⌜
+        -- Component-wise addition with zero padding
+        (∀ i : Fin (max n m), 
+          let val1 := if h : i.val < n then c1.get ⟨i.val, h⟩ else 0
+          let val2 := if h : i.val < m then c2.get ⟨i.val, h⟩ else 0
+          result.get i = val1 + val2) ∧
+        -- Basic sanity: non-empty inputs produce non-empty output  
+        (n > 0 ∨ m > 0 → max n m > 0)
+      ⌝⦄ := by
+
+vc-proof: |-
+  <vc-proof>
+    sorry
+  </vc-proof>
+
+vc-postamble: |-

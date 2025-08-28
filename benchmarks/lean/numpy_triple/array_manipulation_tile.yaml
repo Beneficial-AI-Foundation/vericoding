@@ -1,0 +1,46 @@
+vc-description: |-
+  /-  Constructs a vector by repeating the input vector `reps` times.
+      For 1D case: tile([a, b, c], 3) = [a, b, c, a, b, c, a, b, c] -/
+
+  /-  Specification: tile repeats the input vector `reps` times, where each element
+      at position i in the result corresponds to element at position (i % n) in the input -/
+
+vc-preamble: |-
+  import Std.Do.Triple
+  import Std.Tactic.Do
+  open Std.Do
+
+vc-helpers: |-
+  <vc-helpers>
+  </vc-helpers>
+
+vc-signature: |-
+  def tile {α : Type} {n : Nat} (A : Vector α n) (reps : Nat) : Id (Vector α (n * reps)) :=
+
+vc-implementation: |-
+  <vc-implementation>
+    sorry
+  </vc-implementation>
+
+vc-condition: |-
+  theorem tile_spec {α : Type} {n : Nat} (A : Vector α n) (reps : Nat) (h_reps : reps > 0) :
+      ⦃⌜reps > 0⌝⦄
+      tile A reps
+      ⦃⇓result => ⌜∀ i : Fin (n * reps), result.get i = A.get ⟨i.val % n, by
+        -- We need to prove i.val % n < n
+        cases n with
+        | zero =>
+          -- If n = 0, then n * reps = 0, so there are no valid Fin (n * reps)
+          simp at i
+          exact absurd i.isLt (Nat.not_lt_zero _)
+        | succ n' =>
+          -- If n = succ n', then n > 0
+          exact Nat.mod_lt i.val (Nat.zero_lt_succ n')
+      ⟩⌝⦄ := by
+
+vc-proof: |-
+  <vc-proof>
+    sorry
+  </vc-proof>
+
+vc-postamble: |-

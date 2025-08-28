@@ -1,0 +1,58 @@
+vc-description: |-
+  /-  Helper function to count the number of 1-bits in a natural number -/
+  
+  /-  Computes the number of 1-bits in the absolute value of each element in a vector -/
+
+  /-  Specification: bitwise_count returns the count of 1-bits in the binary representation
+      of the absolute value of each element. The result satisfies several properties:
+      1. Each output element is the popcount of the corresponding input's absolute value
+      2. The popcount is bounded by the number of bits in the representation
+      3. Zero inputs produce zero outputs
+      4. Powers of 2 have exactly one bit set
+      5. Powers of 2 minus 1 have consecutive 1-bits (e.g., 2^k - 1 has k bits set)
+      6. The popcount is always non-negative and bounded by bit width
+      7. For negative inputs, uses the absolute value
+      8. The popcount operation is invariant under sign changes -/
+
+vc-preamble: |-
+  import Std.Do.Triple
+  import Std.Tactic.Do
+  open Std.Do
+
+vc-helpers: |-
+  <vc-helpers>
+  </vc-helpers>
+
+vc-signature: |-
+  def popcount (n : Nat) : Nat :=
+  
+  def bitwise_count {n : Nat} (x : Vector Int n) : Id (Vector Nat n) :=
+
+vc-implementation: |-
+  <vc-implementation>
+    if n = 0 then 0 else (n % 2) + popcount (n / 2)
+  
+  
+    sorry
+  </vc-implementation>
+
+vc-condition: |-
+  theorem bitwise_count_spec {n : Nat} (x : Vector Int n) :
+      ⦃⌜True⌝⦄
+      bitwise_count x
+      ⦃⇓result => ⌜(∀ i : Fin n, result.get i = popcount (Int.natAbs (x.get i))) ∧
+                   (∀ i : Fin n, result.get i ≤ (Int.natAbs (x.get i)).log2 + 1) ∧
+                   (∀ i : Fin n, x.get i = 0 → result.get i = 0) ∧
+                   (∀ i : Fin n, ∀ k : Nat, k > 0 → x.get i = 2^k → result.get i = 1) ∧
+                   (∀ i : Fin n, ∀ k : Nat, k > 0 → x.get i = 2^k - 1 → result.get i = k) ∧
+                   (∀ i : Fin n, result.get i ≥ 0) ∧
+                   (∀ i : Fin n, x.get i < 0 → result.get i = popcount (Int.natAbs (x.get i))) ∧
+                   (∀ i : Fin n, ∀ m : Int, x.get i = m → result.get i = popcount (Int.natAbs m)) ∧
+                   (∀ i : Fin n, ∀ j : Fin n, x.get i = -(x.get j) → result.get i = result.get j)⌝⦄ := by
+
+vc-proof: |-
+  <vc-proof>
+    sorry
+  </vc-proof>
+
+vc-postamble: |-
