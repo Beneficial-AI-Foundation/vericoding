@@ -5,8 +5,11 @@ __pycache__/
 dist/
 *.egg-info/
 
-# Environment variables
+# Environment variables (security)
 .env
+.env.*
+*.env
+.envrc
 
 # UV
 uv.lock
@@ -59,4 +62,8 @@ lean_output_*/
 .DS_Store
 
 /**/LeanStateSearch/
+
+# Project-specific unsafe helpers
+sync_ai_env.py
+scripts/sync_ai_env.py
 
