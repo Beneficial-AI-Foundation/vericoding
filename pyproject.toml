@@ -20,11 +20,13 @@ dependencies = [
     "pandas>=2.3.1",
     "dataclasses-json>=0.6.7", # JSON serialization for dataclasses
     "tqdm>=4.67.1",
+    "mcp>=1.13.1",
+    "openai>=1.40.0",
 ]
 
 [project.optional-dependencies]
-openai = ["openai>=1.0.0"]
-all = ["openai>=1.0.0"]
+openai = ["openai>=1.40.0"]
+all = ["openai>=1.40.0"]
 test = [
     "pytest>=7.0.0",
     "pytest-cov>=4.0.0",

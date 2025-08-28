@@ -41,8 +41,22 @@ class PromptLoader:
         if Path(self.prompts_file).exists():
             with Path(self.prompts_file).open() as f:
                 self.prompts = yaml.safe_load(f)
-        else:
-            raise FileNotFoundError(f"Prompts file not found: {self.prompts_file}")
+            return
+
+        # Lean prompts sometimes live under the repository's `lean/` folder.
+        # Fall back to that location to make the Lean harness work out-of-the-box.
+        if self.language == "lean":
+            repo_root = Path(__file__).parent.parent.parent.parent
+            alt_path = repo_root / "lean" / self.prompts_file
+            if alt_path.exists():
+                with alt_path.open() as f:
+                    self.prompts = yaml.safe_load(f)
+                return
+
+        # If still not found, raise a clear error
+        raise FileNotFoundError(
+            f"Prompts file not found for language '{self.language}': {self.prompts_file}"
+        )
 
     def format_prompt(self, prompt_name: str, **kwargs: Any) -> str:
         """Format a prompt with the given parameters."""

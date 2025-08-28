@@ -205,12 +205,36 @@ def process_spec_file(
             # Only attempt fix if not on last iteration
             if iteration < config.max_iterations:
                 logger.info("    Attempting to fix errors...")
-                fix_prompt = prompt_loader.format_prompt(
-                    "fix_verification",
-                    code=current_code,
-                    errorDetails=error_details,
-                    iteration=iteration,
-                )
+                # If Lean, try to enrich prompt using MCP tools (best-effort)
+                mcp_context_text = ""
+                if config.language == "lean":
+                    try:
+                        from ..lean.mcp_client import collect_context
+                        workdir = Path.cwd()
+                        mcp_ctx = collect_context(workdir, output_path, current_code)
+                        mcp_context_text = mcp_ctx.render()
+                        if mcp_context_text:
+                            logger.info("    ↪ Added Lean MCP context to fix prompt")
+                    except Exception as _:
+                        # Stay silent; fallback to plain prompt
+                        mcp_context_text = ""
+
+                # Prefer prompt with MCP context; fall back if template lacks the placeholder
+                try:
+                    fix_prompt = prompt_loader.format_prompt(
+                        "fix_verification",
+                        code=current_code,
+                        errorDetails=error_details,
+                        iteration=iteration,
+                        mcpContext=mcp_context_text,
+                    )
+                except Exception:
+                    fix_prompt = prompt_loader.format_prompt(
+                        "fix_verification",
+                        code=current_code,
+                        errorDetails=error_details,
+                        iteration=iteration,
+                    )
 
                 # Track fix prompt for W&B logging
                 all_fix_prompts.append(fix_prompt)
