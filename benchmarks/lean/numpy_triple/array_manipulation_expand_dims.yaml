@@ -1,0 +1,46 @@
+vc-description: |-
+  /-  Expand the shape of a vector by inserting a new axis at the specified position.
+      axis=0 creates a row vector (1×n), axis=1 creates a column vector (n×1). -/
+
+  /-  Specification: expand_dims preserves all elements and adds a new dimension at the specified axis.
+      The function creates a view with increased dimensions while maintaining element order and values. -/
+
+vc-preamble: |-
+  import Std.Do.Triple
+  import Std.Tactic.Do
+  open Std.Do
+  
+  /-  Represents the result of expanding dimensions of a vector.
+      For axis=0, we get a 1×n matrix (row vector).
+      For axis=1, we get an n×1 matrix (column vector). -/
+  
+  inductive ExpandedVector (T : Type) (n : Nat) where
+    | rowVector : Vector T n → ExpandedVector T n      -- axis=0: shape (1, n)
+    | columnVector : Vector T n → ExpandedVector T n   -- axis=1: shape (n, 1)
+
+vc-helpers: |-
+  <vc-helpers>
+  </vc-helpers>
+
+vc-signature: |-
+  def expand_dims {n : Nat} (a : Vector T n) (axis : Nat) : Id (ExpandedVector T n) :=
+
+vc-implementation: |-
+  <vc-implementation>
+    sorry
+  </vc-implementation>
+
+vc-condition: |-
+  theorem expand_dims_spec {n : Nat} (a : Vector T n) (axis : Nat) (h_axis : axis ≤ 1) :
+      ⦃⌜axis ≤ 1⌝⦄
+      expand_dims a axis
+      ⦃⇓result => ⌜match result with
+                  | ExpandedVector.rowVector v => axis = 0 ∧ v = a
+                  | ExpandedVector.columnVector v => axis = 1 ∧ v = a⌝⦄ := by
+
+vc-proof: |-
+  <vc-proof>
+    sorry
+  </vc-proof>
+
+vc-postamble: |-

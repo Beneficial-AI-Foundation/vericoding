@@ -12,7 +12,7 @@
 Contains the Lean files from the Clever benchmark which were originally derived from the HumanEval benchmark. HumanEval problems 22, 137, 162 are missing from Clever for reasons mentioned in the Clever paper.
 
 ## NumPy
-* `benchmarks/lean/numpy`
+* `benchmarks/lean/numpy_triple`
 * (BAIF internal) Derived from NumPy documentation.
 
 ## Verina

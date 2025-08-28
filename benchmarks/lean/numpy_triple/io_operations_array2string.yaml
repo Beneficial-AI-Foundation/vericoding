@@ -1,0 +1,54 @@
+vc-description: |-
+  /- 
+  {
+    "name": "numpy.array2string",
+    "category": "String formatting",
+    "description": "Return a string representation of an array",
+    "url": "https://numpy.org/doc/stable/reference/generated/numpy.array2string.html",
+    "doc": "Return a string representation of an array",
+  }
+  -/
+
+  /-  numpy.array2string: Return a string representation of an array
+  
+      Converts an array to its string representation with customizable separator.
+      This function provides a way to format arrays for display purposes.
+  
+      The separator parameter controls how elements are separated in the output.
+  -/
+
+  /-  Specification: array2string returns a string representation of the array
+  
+      Precondition: True (no special preconditions)
+      Postcondition: result is non-empty string that starts with '[' and ends with ']'
+  -/
+
+vc-preamble: |-
+  import Std.Do.Triple
+  import Std.Tactic.Do
+  open Std.Do
+
+vc-helpers: |-
+  <vc-helpers>
+  </vc-helpers>
+
+vc-signature: |-
+  def array2string {n : Nat} (arr : Vector Float n) (separator : String := " ") : Id String :=
+
+vc-implementation: |-
+  <vc-implementation>
+    sorry
+  </vc-implementation>
+
+vc-condition: |-
+  theorem array2string_spec {n : Nat} (arr : Vector Float n) (separator : String) :
+      ⦃⌜True⌝⦄
+      array2string arr separator
+      ⦃⇓result => ⌜result ≠ "" ∧ result.startsWith "[" ∧ result.endsWith "]"⌝⦄ := by
+
+vc-proof: |-
+  <vc-proof>
+    sorry
+  </vc-proof>
+
+vc-postamble: |-

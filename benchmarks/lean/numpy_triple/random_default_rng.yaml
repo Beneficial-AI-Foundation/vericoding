@@ -1,0 +1,64 @@
+vc-description: |-
+  /-  numpy.random.default_rng: Construct a new Generator with the default BitGenerator (PCG64).
+  
+      Creates a new Generator instance using PCG64 as the underlying BitGenerator.
+      This is the recommended way to create random number generators in NumPy.
+      
+      If seed is None, the generator will be initialized with fresh entropy from the OS.
+      If seed is provided, the generator will be deterministically initialized with that seed.
+  -/
+
+  /-  Specification: default_rng returns a properly initialized Generator object.
+  
+      Precondition: True (no restrictions on the seed parameter)
+      Postcondition: The returned Generator is properly initialized with the given seed
+      and uses PCG64 as the underlying BitGenerator.
+  -/
+
+vc-preamble: |-
+  import Std.Do.Triple
+  import Std.Tactic.Do
+  open Std.Do
+  
+  /-  BitGenerator represents the underlying random number generator engine -/
+  
+  structure BitGenerator where
+    /-- Internal state of the generator -/
+    state : Nat
+    /-- Seed used to initialize the generator -/
+    seed : Option Nat
+  
+  /-  Generator provides high-level random number generation methods -/
+  
+  structure Generator where
+    /-- The underlying BitGenerator (PCG64 by default) -/
+    bitGenerator : BitGenerator
+    /-- Whether the generator has been properly initialized -/
+    initialized : Bool
+
+vc-helpers: |-
+  <vc-helpers>
+  </vc-helpers>
+
+vc-signature: |-
+  def default_rng (seed : Option Nat := none) : Id Generator :=
+
+vc-implementation: |-
+  <vc-implementation>
+    sorry
+  </vc-implementation>
+
+vc-condition: |-
+  theorem default_rng_spec (seed : Option Nat := none) :
+      ⦃⌜True⌝⦄
+      default_rng seed
+      ⦃⇓result => ⌜result.initialized = true ∧ 
+                   result.bitGenerator.seed = seed ∧
+                   (seed.isSome → result.bitGenerator.state ≠ 0)⌝⦄ := by
+
+vc-proof: |-
+  <vc-proof>
+    sorry
+  </vc-proof>
+
+vc-postamble: |-
