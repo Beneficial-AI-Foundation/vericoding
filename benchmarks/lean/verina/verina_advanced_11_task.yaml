@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that finds the **majority element** in a list of integers. A majority element is defined as an element that appears **strictly more than half** the number of times in the list.
   
@@ -31,11 +31,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let n := lst.length
-    let majority := lst.find? (fun x => countOccurrences x lst > n / 2)
-    match majority with
-    | some x => x
-    | none => -1
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

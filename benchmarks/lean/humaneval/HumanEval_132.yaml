@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def is_nested(string: str) -> Bool"
   docstring: |
       Create a function that takes a string as input which contains only parentheses.
@@ -32,9 +32,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -60,7 +60,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
@@ -70,6 +70,4 @@ vc-postamble: |-
   -- #test implementation "()" = false
   -- #test implementation "(()())" = true
   -- #test implementation "(())((" = true
-  
-  
 

@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 function that converts a binary number represented as a list of digits (0 or 1) into its corresponding decimal value. The list is ordered in big-endian format, meaning the most significant digit comes first.
   The function should interpret the list as a binary number and return its decimal representation as a natural number.
@@ -27,11 +27,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec helper (digits : List Nat) : Nat :=
-      match digits with
-      | [] => 0
-      | first :: rest => first * Nat.pow 2 rest.length + helper rest
-    helper digits
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

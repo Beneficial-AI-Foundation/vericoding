@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 function that finds the maximum subarray sum from a given list of integers.
   A subarray is a contiguous sequence of elements within the list.
@@ -29,16 +29,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec helper (lst : List Int) (curMax : Int) (globalMax : Int) : Int :=
-      match lst with
-      | [] => globalMax
-      | x :: rest =>
-        let newCurMax := max x (curMax + x)
-        let newGlobal := max globalMax newCurMax
-        helper rest newCurMax newGlobal
-    match xs with
-    | [] => 0
-    | x :: rest => helper rest x x
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

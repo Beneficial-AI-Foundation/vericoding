@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def all_prefixes(string: str) -> List[str]"
   docstring: |
       Return list of all prefixes from shortest to longest of the input string
@@ -23,14 +23,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  let rec aux (chars: List Char) (result: List String) (i: Nat) :=
-  if i < chars.length then
-    aux chars (result ++ [(chars.take (i + 1)).asString]) (i + 1)
-  else
-    result;
-  aux string.toList [] 0
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -53,16 +48,9 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  unfold problem_spec
-  let result := implementation string
-  use result
-  simp [result]
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   #test implementation "abc" = ["a", "ab", "abc"]
-  
-  
 

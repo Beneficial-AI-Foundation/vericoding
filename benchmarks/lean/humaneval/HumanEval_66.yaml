@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def digitSum(string: str) -> Nat"
   docstring: |
       Write a function that takes a string as input and returns the sum of the upper characters only'
@@ -25,9 +25,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -53,12 +53,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  unfold problem_spec
-  let result := implementation s
-  use result
-  simp [result]
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
@@ -68,6 +63,4 @@ vc-postamble: |-
   -- #test implementation "helloE" = 69
   -- #test implementation "woArBld" = 131
   -- #test implementation "aAaaaXa" = 153
-  
-  
 

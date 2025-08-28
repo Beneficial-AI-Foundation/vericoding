@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method of which given a number n and divisor d, it counts all the number that is smaller than
   n whose sum of digits is divisible by d.
@@ -35,13 +35,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec go (i acc : Nat) : Nat :=
-      match i with
-      | 0 => acc
-      | i'+1 =>
-        let acc' := if isSumDivisibleBy i' d then acc + 1 else acc
-        go i' acc'
-    go n 0
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

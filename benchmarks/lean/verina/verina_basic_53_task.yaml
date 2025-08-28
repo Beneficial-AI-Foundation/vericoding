@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This problem asks for a method to determine the sum of the first N natural numbers. The task focuses on computing the total when given an input N, ensuring that the value is 0 when N is 0 and correctly calculated for positive values of N.
   
@@ -28,10 +28,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec loop (n : Nat) : Nat :=
-      if n = 0 then 0
-      else n + loop (n - 1)
-    loop N
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
@@ -44,20 +41,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-    unfold CalSum_postcond CalSum
-    induction N with
-    | zero =>
-      unfold CalSum.loop
-      simp
-    | succ n ih =>
-      unfold CalSum_precond at ih
-      simp at ih
-      unfold CalSum.loop
-      simp
-      rw [Nat.mul_add]
-      rw [ih]
-      rw [← Nat.add_mul]
-      rw [Nat.add_comm, Nat.mul_comm]
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-

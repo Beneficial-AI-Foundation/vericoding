@@ -1,0 +1,60 @@
+vc-description: |-
+  /- 
+  {
+    "name": "numpy.linalg.cond",
+    "category": "Norms and numbers",
+    "description": "Compute the condition number of a matrix",
+    "url": "https://numpy.org/doc/stable/reference/generated/numpy.linalg.cond.html",
+    "doc": "Compute the condition number of a matrix.\n\nThe condition number measures how sensitive the solution x is to errors in b for Ax=b.\n\nParameters:\n- x: The matrix\n- p: Order of the norm\n\nReturns:\n- c: The condition number",
+  }
+  -/
+
+  /-  
+  Compute the condition number of a square matrix using the 2-norm.
+  
+  The condition number of a matrix A is defined as ||A|| * ||A^(-1)||,
+  where ||.|| is the matrix norm. For the 2-norm, this equals the ratio
+  of the largest singular value to the smallest singular value.
+  
+  The condition number measures how sensitive the solution x is to errors 
+  in b for the linear system Ax = b. A condition number of 1 indicates
+  a perfectly conditioned matrix, while large condition numbers indicate
+  ill-conditioned matrices.
+  -/
+
+  /-  
+  Specification: The condition number is always non-negative and is at least 1 
+  for any invertible matrix. This captures the fundamental mathematical 
+  properties of condition numbers in linear algebra.
+  -/
+
+vc-preamble: |-
+  import Std.Do.Triple
+  import Std.Tactic.Do
+  open Std.Do
+
+vc-helpers: |-
+  <vc-helpers>
+  </vc-helpers>
+
+vc-signature: |-
+  def conditionNumber {n : Nat} (x : Vector (Vector Float n) n) : Id Float :=
+
+vc-implementation: |-
+  <vc-implementation>
+    sorry
+  </vc-implementation>
+
+vc-condition: |-
+  theorem conditionNumber_spec {n : Nat} (x : Vector (Vector Float n) n) 
+      (h_nonempty : n > 0) :
+      ⦃⌜n > 0⌝⦄
+      conditionNumber x
+      ⦃⇓result => ⌜result ≥ 0 ∧ result ≥ 1⌝⦄ := by
+
+vc-proof: |-
+  <vc-proof>
+    sorry
+  </vc-proof>
+
+vc-postamble: |-

@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that locates the first occurrence of a specified integer within a sorted array of integers. The method returns the index corresponding to the first time the target value appears in the array; if the target is absent, it returns -1. It is also essential that the original array remains unchanged.
   
@@ -32,14 +32,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec loop (i : Nat) : Int :=
-      if i < arr.size then
-        let a := arr[i]!
-        if a = target then i
-        else if a > target then -1
-        else loop (i + 1)
-      else -1
-    loop 0
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

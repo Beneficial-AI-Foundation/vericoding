@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def double_the_difference(numbers: List[float]) -> Int"
   docstring: |
       Given a list of numbers, return the sum of squares of the numbers
@@ -27,9 +27,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -57,7 +57,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
@@ -65,6 +65,4 @@ vc-postamble: |-
   -- #test implementation ([-1, -2, 0]: List Int) = (0: Int)
   -- #test implementation ([9, -2]: List Int) = 81
   -- #test implementation ([0]: List Int) = 0
-  
-  
 

@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task involves determining the first index in an array where a given condition holds true. The goal is to identify the position of the first element that meets a specified criterion, ensuring that no preceding element does.
   
@@ -32,12 +32,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec loop (n : Nat) : Nat :=
-      if n < a.size then
-        if P (a[n]!) then n else loop (n + 1)
-      else
-        0
-    loop 0
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

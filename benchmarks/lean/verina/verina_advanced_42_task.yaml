@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 function that takes a list of stock prices and returns the maximum profit achievable by buying on one day and selling on a later day.
   
@@ -40,9 +40,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    match prices with
-    | [] => 0
-    | p :: ps => maxProfitAux ps p 0
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

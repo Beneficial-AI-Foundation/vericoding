@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def any_int(a: float, b: float, c: float) -> bool"
   docstring: |
       Create a function that takes 3 numbers.
@@ -28,9 +28,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -53,8 +53,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
@@ -62,6 +61,4 @@ vc-postamble: |-
   -- #test implementation 3 2 2 = false
   -- #test implementation 3 (-2) 1 = true
   -- #test implementation 3.6 (-2.2) 2 = false
-  
-  
 

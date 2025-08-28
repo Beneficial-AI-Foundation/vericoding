@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def parse_music(music_string: str) -> List[int]"
   docstring: |
       Input to this function is a string representing musical notes in a special ASCII format.
@@ -27,13 +27,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  (string.splitOn " ").map (fun
-    | "o" => 4
-    | "o|" => 2
-    | ".|" => 1
-    | _ => 0)
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -61,20 +57,9 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  unfold problem_spec
-  let result := implementation string
-  use result
-  simp [result]
-  simp [implementation]
-  intro i
-  by_cases h_i_lt_len: (i < (string.splitOn " ").length)
-  simp [h_i_lt_len]
-  simp [h_i_lt_len]
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   #test implementation "o o| .| o| o| .| .| .| .| o o" = [4, 2, 1, 2, 2, 1, 1, 1, 1, 4, 4]
-  
-  
 

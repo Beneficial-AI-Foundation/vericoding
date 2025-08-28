@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that merges all overlapping intervals from a given list of intervals.
   
@@ -31,31 +31,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    -- Insertion sort based on the start of intervals
-    let rec insert (x : Prod Int Int) (sorted : List (Prod Int Int)) : List (Prod Int Int) :=
-      match sorted with
-      | [] => [x]
-      | y :: ys => if x.fst ≤ y.fst then x :: sorted else y :: insert x ys
-  
-    let rec sort (xs : List (Prod Int Int)) : List (Prod Int Int) :=
-      match xs with
-      | [] => []
-      | x :: xs' => insert x (sort xs')
-  
-    let sorted := sort intervals
-  
-    -- Merge sorted intervals
-    let rec merge (xs : List (Prod Int Int)) (acc : List (Prod Int Int)) : List (Prod Int Int) :=
-      match xs, acc with
-      | [], _ => acc.reverse
-      | (s, e) :: rest, [] => merge rest [(s, e)]
-      | (s, e) :: rest, (ps, pe) :: accTail =>
-        if s ≤ pe then
-          merge rest ((ps, max pe e) :: accTail)
-        else
-          merge rest ((s, e) :: (ps, pe) :: accTail)
-  
-    merge sorted []
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def is_multiply_prime(a: int) -> bool"
   docstring: |
       Write a function that returns true if the given number is the multiplication of 3 prime numbers
@@ -21,9 +21,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -45,8 +45,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
@@ -60,6 +59,4 @@ vc-postamble: |-
   -- #test implementation (9 * 9 * 9) = False
   -- #test implementation (11 * 9 * 9) = False
   -- #test implementation (11*13*7) = True
-  
-  
 

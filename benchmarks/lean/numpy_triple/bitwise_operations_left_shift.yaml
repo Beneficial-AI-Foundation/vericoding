@@ -1,0 +1,58 @@
+vc-description: |-
+  /- 
+  {
+    "name": "numpy.left_shift",
+    "category": "Bit shifting",
+    "description": "Shift the bits of an integer to the left",
+    "url": "https://numpy.org/doc/stable/reference/generated/numpy.left_shift.html",
+    "doc": "Shift the bits of an integer to the left.\n\nBits are shifted to the left by appending x2 0s at the right of x1. Since the internal representation of numbers is in binary format, this operation is equivalent to multiplying x1 by 2**x2.\n\nParameters\n----------\nx1 : array_like of integer type\n    Input values.\nx2 : array_like of integer type\n    Number of zeros to append to x1. Has to be non-negative.\n    If x1.shape != x2.shape, they must be broadcastable to a common shape.\nout : ndarray, None, or tuple of ndarray and None, optional\n    A location into which the result is stored.\nwhere : array_like, optional\n    This condition is broadcast over the input.\n\nReturns\n-------\nout : ndarray of integer type\n    Return x1 with bits shifted x2 times to the left.\n    This is a scalar if both x1 and x2 are scalars.\n\nSee Also\n--------\nright_shift : Shift the bits of an integer to the right.\nbinary_repr : Return the binary representation of the input number as a string.\n\nExamples\n--------\n>>> np.left_shift(5, 2)\n20\n>>> np.left_shift(5, [1,2,3])\narray([10, 20, 40])\n\nNote that the dtype of the second argument may change the dtype of the result and can lead to unexpected results in some cases:\n\n>>> a = np.left_shift(np.uint8(255), 1) # Expect 254\n>>> print(a, type(a)) # Unexpected result due to upcasting\n510 <class 'numpy.int64'>\n>>> b = np.left_shift(np.uint8(255), np.uint8(1))\n>>> print(b, type(b))\n254 <class 'numpy.uint8'>",
+  }
+  -/
+
+  /-  Shift the bits of integers to the left element-wise.
+      This operation is equivalent to multiplying each element by 2^shift_amount. -/
+
+  /-  Specification: left_shift performs bitwise left shift operation on each element.
+      The result is equivalent to multiplying x1[i] by 2^x2[i] for non-negative shifts.
+      
+      Mathematical properties:
+      1. Core behavior: Each element result[i] = x1[i] * 2^x2[i] for non-negative shifts
+      2. Identity property: Shifting by 0 returns the original value
+      3. Zero preservation: Shifting zero always yields zero
+      4. Monotonicity: For positive values, left shifting increases magnitude
+      5. Composition property: left_shift(x, a) then left_shift(result, b) = left_shift(x, a+b) -/
+
+vc-preamble: |-
+  import Std.Do.Triple
+  import Std.Tactic.Do
+  open Std.Do
+
+vc-helpers: |-
+  <vc-helpers>
+  </vc-helpers>
+
+vc-signature: |-
+  def left_shift {n : Nat} (x1 x2 : Vector Int n) : Id (Vector Int n) :=
+
+vc-implementation: |-
+  <vc-implementation>
+    sorry
+  </vc-implementation>
+
+vc-condition: |-
+  theorem left_shift_spec {n : Nat} (x1 x2 : Vector Int n) 
+      (h_nonneg : ∀ i : Fin n, x2.get i ≥ 0) :
+      ⦃⌜∀ i : Fin n, x2.get i ≥ 0⌝⦄
+      left_shift x1 x2
+      ⦃⇓result => ⌜(∀ i : Fin n, result.get i = x1.get i * (2 ^ (x2.get i).toNat)) ∧
+                   (∀ i : Fin n, x2.get i = 0 → result.get i = x1.get i) ∧
+                   (∀ i : Fin n, x1.get i = 0 → result.get i = 0) ∧
+                   (∀ i : Fin n, x1.get i > 0 ∧ x2.get i > 0 → result.get i > x1.get i) ∧
+                   (∀ i : Fin n, x1.get i < 0 ∧ x2.get i > 0 → result.get i < x1.get i)⌝⦄ := by
+
+vc-proof: |-
+  <vc-proof>
+    sorry
+  </vc-proof>
+
+vc-postamble: |-

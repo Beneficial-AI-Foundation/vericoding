@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This problem focuses on reversing an array of integers. The goal is to take an input array and produce a new array with the elements arranged in the reverse order.
   
@@ -40,7 +40,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    reverse_core a 0
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

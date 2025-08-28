@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that computes the product of the first even and the first odd number encountered in a list of integers. The method should search the list for the earliest even number and the earliest odd number, then return the product of these two numbers.
   
@@ -43,9 +43,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    match firstEvenOddIndices lst with
-    | some (ei, oi) => lst[ei]! * lst[oi]!
-    | none => 0
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
@@ -60,18 +58,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-    unfold findProduct findProduct_postcond
-    split
-    case h_1 _ ei oi _ =>
-      split
-      case h_1 _ ei' oi' heq =>
-        have : ei = ei' ∧ oi = oi' := by
-          rw [Option.some_inj] at heq
-          cases heq with
-          | refl => exact ⟨rfl, rfl⟩
-        simp [this]
-      case h_2 _ heq => contradiction
-    case h_2 => simp
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-

@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def find_max(words: List String) -> String"
   docstring: |
       Write a function that accepts a list of strings.
@@ -27,9 +27,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -61,13 +61,11 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation ["name", "of", "string"]= "string"
   -- #test implementation ["name", "enam", "game"] = "enam"
   -- #test implementation ["aaaaaaa", "bb" ,"cc"] = "aaaaaaa"
-  
-  
 

@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def Strongest_Extension(class_name: String, extensions: List[String]) -> String"
   docstring: |
       You will be given the name of a class (a string) and a list of extensions.
@@ -32,9 +32,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -73,11 +73,9 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation 'my_class', ['AA', 'Be', 'CC'] = 'my_class.AA'
-  
-  
 

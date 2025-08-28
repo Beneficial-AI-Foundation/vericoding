@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that solves the Two Sum problem. Given a list of integers and a target integer, the method must return a pair of indices such that the sum of the numbers at those indices equals the target. You may assume that each input has exactly one solution and that you may not use the same element twice. The answer should be returned with first index is smaller than the second.
   
@@ -42,7 +42,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    twoSumAux nums target 0
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

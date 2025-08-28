@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires implementing the "Longest Increasing Subsequence" problem in Lean 4.
   Given a list of integers, the function should compute the length of the longest strictly increasing
@@ -30,28 +30,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let max2 (a : Nat) (b : Nat) : Nat :=
-      if a > b then a else b
-  
-    let rec listLength (l : List Int) : Nat :=
-      match l with
-      | []      => 0
-      | _ :: xs => 1 + listLength xs
-  
-    let rec helper (lst : List Int) (prev : Option Int) : Nat :=
-      match lst with
-      | [] => 0
-      | h :: t =>
-          let canTake : Bool :=
-            if prev = none then true
-            else if prev.get! < h then true else false
-          let withTake : Nat :=
-            if canTake then 1 + helper t (some h) else 0
-          let withoutTake : Nat := helper t prev
-          max2 withTake withoutTake
-  
-    let result := helper nums none
-    result
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

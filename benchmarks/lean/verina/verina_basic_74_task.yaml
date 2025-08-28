@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task involves identifying the maximum value in a non-empty array of integers. The objective is to determine which element in the array is greater than or equal to every other element, ensuring that the selected value is one of the elements in the array.
   
@@ -36,7 +36,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    maxArray_aux a 1 a[0]!
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

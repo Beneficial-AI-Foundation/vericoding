@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that finds the indices of two numbers in an array that add up to a target value. Given an array of integers and a target integer, the function should return the indices of the two numbers such that they add up to the target.
   
@@ -20,6 +20,14 @@ vc-preamble: |-
   def twoSum_precond (nums : Array Int) (target : Int) : Prop :=
     -- The array must have at least 2 elements
     nums.size ≥ 2 ∧
+    
+    -- There exists exactly one pair of indices whose values sum to the target
+    (List.range nums.size).any (fun i =>
+      (List.range i).any (fun j => nums[i]! + nums[j]! = target)) ∧
+  
+    -- No other pair sums to the target (ensuring uniqueness of solution)
+    ((List.range nums.size).flatMap (fun i =>
+      (List.range i).filter (fun j => nums[i]! + nums[j]! = target))).length = 1
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -30,33 +38,10 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec findIndices (i : Nat) (j : Nat) (fuel : Nat) : Array Nat :=
-      match fuel with
-      | 0 => #[] -- Fuel exhausted, return empty array
-      | fuel+1 =>
-        if i >= nums.size then
-          #[] -- No solution found
-        else if j >= nums.size then
-          findIndices (i + 1) (i + 2) fuel -- Move to next i and reset j
-        else
-          if nums[i]! + nums[j]! == target then
-            #[i, j] -- Found solution
-          else
-            findIndices i (j + 1) fuel -- Try next j
-  
-    findIndices 0 1 (nums.size * nums.size)
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
-    -- There exists exactly one pair of indices whose values sum to the target
-    (List.range nums.size).any (fun i =>
-      (List.range i).any (fun j => nums[i]! + nums[j]! = target)) ∧
-  
-    -- No other pair sums to the target (ensuring uniqueness of solution)
-    ((List.range nums.size).flatMap (fun i =>
-      (List.range i).filter (fun j => nums[i]! + nums[j]! = target))).length = 1
-  
-  @[reducible]
   def twoSum_postcond (nums : Array Int) (target : Int) (result: Array Nat) (h_precond : twoSum_precond (nums) (target)) : Prop :=
     -- Result contains exactly 2 indices
     result.size = 2 ∧

@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that, given a binary string `s` and an integer `k`, finds the shortest contiguous substring that contains exactly `k` characters `'1'`.
   
@@ -41,19 +41,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let chars := s.data
-    let candidates := allSubstrings chars |>.filter (fun sub => countOnes sub = k)
-  
-    let compare (a b : List Char) : Bool :=
-      a.length < b.length ∨ (a.length = b.length ∧ isLexSmaller a b)
-  
-    let best := candidates.foldl (fun acc cur =>
-      match acc with
-      | none => some cur
-      | some best => if compare cur best then some cur else some best) none
-    match best with
-    | some b => listToString b
-    | none => ""
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

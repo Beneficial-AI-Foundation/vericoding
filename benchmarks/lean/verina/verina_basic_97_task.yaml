@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task involves updating an array of integers such that the element at a specified index is set to 60 while all other elements remain unchanged.
   
@@ -31,7 +31,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    a.set! j 60
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
@@ -44,28 +44,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-    unfold TestArrayElements_postcond TestArrayElements
-    unfold TestArrayElements_precond at h_precond
-    apply And.intro
-    . rw [Array.getElem!_eq_getD, Array.getD]
-      simp
-      exact h_precond
-    . intro k
-      intro hk hxk
-      simp [Array.getElem!_eq_getD, Array.getD]
-      split
-      . rw [Array.getElem_setIfInBounds]
-        split
-        . rename_i h h₁
-          rw [eq_comm] at h₁
-          contradiction
-        . rfl
-      . rw [Array.getElem_setIfInBounds]
-        split
-        . rename_i h h₁
-          rw [eq_comm] at h₁
-          contradiction
-        . rfl
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-

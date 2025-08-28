@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def prime_fib(n: int)"
   docstring: |
       prime_fib returns n-th prime Fibonacci number.
@@ -29,20 +29,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  let rec fib_prime (n: Nat) (i: Nat) : Nat :=
-    if Nat.Prime (Nat.fib i) then
-      if n = 1 ∨ n = 0
-      then Nat.fib i
-      else fib_prime (n - 1) (i + 1)
-    else fib_prime n (i + 1)
-  termination_by n
-  decreasing_by
-    -- Really hard to prove termination here
     sorry
-    sorry
-  fib_prime n 0
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -67,12 +56,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  unfold problem_spec
-  let result := implementation n
-  use result
-  simp [result]
-  repeat sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
@@ -84,3 +68,4 @@ vc-postamble: |-
   #eval! implementation 3 = 5
   #eval! implementation 4 = 13
   #eval! implementation 5 = 89
+

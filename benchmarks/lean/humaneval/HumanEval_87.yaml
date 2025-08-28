@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def get_coords_sorted(lst : list(list(int)), x : int) -> list((int, int))"
   docstring: |
       You are given a 2 dimensional data, as a nested lists,
@@ -31,9 +31,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -67,14 +67,11 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation "Hi" = "Hi"
   -- #test implementation "hello" = "ehllo"
   -- #test implementation "Hello World!!!" = "Hello !!!Wdlor"
-  
-  
 

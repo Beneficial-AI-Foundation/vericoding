@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that determines the minimum of two integers. The method should return the smaller of the two numbers. When both numbers are equal, either one may be returned.
   
@@ -27,7 +27,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    if a <= b then a else b
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
@@ -41,17 +41,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-    unfold myMin myMin_postcond
-    constructor
-    · split
-      case left.isTrue h =>
-        simp
-        exact h
-      case left.isFalse h =>
-        simp
-        rw [Int.not_le] at h
-        exact Int.le_of_lt h
-    · split <;> simp
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-

@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def histogram(s : str) -> Dict[str, int]"
   docstring: |
       Given a string representing a space separated lowercase letters, return a dictionary
@@ -31,9 +31,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -63,8 +63,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
@@ -73,6 +72,4 @@ vc-postamble: |-
   -- #test implementation 'a b c a b' = {'a': 2, 'b': 2}
   -- #test implementation 'b b b b a' = {'b': 4}
   -- #test implementation '' = {}
-  
-  
 

@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task involves taking an array as input and producing a new array that has the same size and identical elements in the same order as the input.
   
@@ -30,14 +30,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec loop (i : Nat) (acc : Array Int) : Array Int :=
-      if i < s.size then
-        match s[i]? with
-        | some val => loop (i + 1) (acc.push val)
-        | none => acc  -- This case shouldn't happen when i < s.size
-      else
-        acc
-    loop 0 Array.empty
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

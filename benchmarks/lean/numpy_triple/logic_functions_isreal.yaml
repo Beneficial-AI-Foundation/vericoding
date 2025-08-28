@@ -1,0 +1,62 @@
+vc-description: |-
+  /-  Returns a bool array, where True if input element is real.
+      For complex numbers, checks if imaginary part is zero.
+      For numbers with zero imaginary part, returns true for all elements. -/
+
+  /-  Specification: isreal returns true for elements with zero imaginary parts,
+      false for elements with non-zero imaginary parts, with the following properties:
+      1. Basic definition: returns true iff imaginary part is zero
+      2. Real number detection: pure real numbers (imag = 0) return true
+      3. Complex number detection: numbers with non-zero imaginary part return false
+      4. Complementary to iscomplex: isreal(x) = not iscomplex(x)
+      5. Element-wise operation: each element is tested independently
+      6. Mathematical property: real numbers form a subset of complex numbers
+      7. Consistency: if real, then can be represented as a + 0i -/
+
+vc-preamble: |-
+  import Std.Do.Triple
+  import Std.Tactic.Do
+  open Std.Do
+  
+  /-  Structure representing a complex number with float components -/
+  
+  structure Complex where
+    /-- The real part of the complex number -/
+    real : Float
+    /-- The imaginary part of the complex number -/
+    imag : Float
+
+vc-helpers: |-
+  <vc-helpers>
+  </vc-helpers>
+
+vc-signature: |-
+  def isreal {n : Nat} (x : Vector Complex n) : Id (Vector Bool n) :=
+
+vc-implementation: |-
+  <vc-implementation>
+    sorry
+  </vc-implementation>
+
+vc-condition: |-
+  theorem isreal_spec {n : Nat} (x : Vector Complex n) :
+      ⦃⌜True⌝⦄
+      isreal x
+      ⦃⇓result => ⌜(∀ i : Fin n, result.get i = ((x.get i).imag = 0.0)) ∧
+                   (∀ i : Fin n, (x.get i).imag = 0.0 → result.get i = true) ∧
+                   (∀ i : Fin n, (x.get i).imag ≠ 0.0 → result.get i = false) ∧
+                   (∀ i : Fin n, result.get i = true → (x.get i).imag = 0.0) ∧
+                   (∀ i : Fin n, result.get i = false → (x.get i).imag ≠ 0.0) ∧
+                   -- Mathematical property: real numbers preserve their real part
+                   (∀ i : Fin n, result.get i = true → (x.get i).real = (x.get i).real) ∧
+                   -- Complementary property: exactly one of isreal or iscomplex is true
+                   (∀ i : Fin n, result.get i = ¬((x.get i).imag ≠ 0.0)) ∧
+                   -- Consistency with mathematical definition of real numbers
+                   (∀ i : Fin n, result.get i = true ↔ (x.get i).imag = 0.0)⌝⦄ := by
+
+vc-proof: |-
+  <vc-proof>
+    sorry
+  </vc-proof>
+
+vc-postamble: |-

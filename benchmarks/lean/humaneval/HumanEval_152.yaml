@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def compare(scores: List float, guesses: List float) -> List [float]"
   docstring: |
       I think we all remember that feeling when the result of some long-awaited
@@ -30,9 +30,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -57,12 +57,10 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation [1,2,3,4,5,1] [1,2,3,4,2,-2] = [0,0,0,0,3,3]
   -- #test implementation [0,5,0,0,0,4] [4,1,1,0,0,-2] = [4,4,1,0,0,6]
-  
-  
 

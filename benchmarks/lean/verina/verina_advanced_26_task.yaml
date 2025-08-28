@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that generates all possible letter combinations from a string of digits based on the traditional telephone keypad letter mappings.
   
@@ -48,17 +48,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let chars := digits.toList
-    go chars
-    where
-      go : List Char → List String
-      | [] => []
-      | (d :: ds) =>
-        let restCombinations := go ds
-        let currentLetters := digitToLetters d
-        match restCombinations with
-        | [] => currentLetters.map (λ c => String.singleton c)
-        | _ => currentLetters.flatMap (λ c => restCombinations.map (λ s => String.singleton c ++ s))
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

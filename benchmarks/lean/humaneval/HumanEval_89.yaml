@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def encrypt(str : str) -> str"
   docstring: |
       Create a function encrypt that takes a string as an argument and
@@ -29,9 +29,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -58,8 +58,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
@@ -67,6 +66,4 @@ vc-postamble: |-
   -- #test implementation "asdfghjkl" = "ewhjklnop"
   -- #test implementation "gf" = "kj"
   -- #test implementation "et" = "ix"
-  
-  
 

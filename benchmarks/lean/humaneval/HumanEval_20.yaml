@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def find_closest_elements(numbers: List[float]) -> Tuple[float, float]"
   docstring: |
       From a supplied list of numbers (of length at least two) select and return two that are the closest to each
@@ -23,22 +23,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  let n := numbers.length;
-  let sorted_numbers := numbers.mergeSort;
-  let min_diff := sorted_numbers.get! 1 - sorted_numbers.get! 0;
-  let min_pair := (sorted_numbers.get! 0, sorted_numbers.get! 1);
-  let rec loop (i: Nat) (min_diff: Rat) (min_pair: (Rat × Rat)): (Rat × Rat) :=
-    if i < n - 1 then
-      let diff := sorted_numbers.get! (i + 1) - sorted_numbers.get! i;
-      if diff < min_diff then
-        loop (i + 1) diff (sorted_numbers.get! i, sorted_numbers.get! (i + 1))
-      else
-        loop (i + 1) min_diff min_pair
-    else
-      min_pair;
-  loop 1 min_diff min_pair
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -66,17 +53,10 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  unfold problem_spec
-  let result := implementation numbers
-  use result
-  simp [result]
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   #test implementation [1.0, 2.0, 3.0, 4.0, 5.0, 2.2] = (2.0, 2.2)
   #test implementation [1.0, 2.0, 3.0, 4.0, 5.0, 2.0] = (2.0, 2.0)
-  
-  
 

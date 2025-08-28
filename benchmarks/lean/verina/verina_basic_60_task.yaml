@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a function that processes an array of integers and produces a new array containing only the even numbers from the input. The order of these even numbers should remain the same as in the original array, ensuring that every even number from the input appears in the output and that every element in the output is even.
   
@@ -32,15 +32,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec loop (i : Nat) (acc : Array Int) : Array Int :=
-      if i < arr.size then
-        if isEven (arr.getD i 0) then
-          loop (i + 1) (acc.push (arr.getD i 0))
-        else
-          loop (i + 1) acc
-      else
-        acc
-    loop 0 (Array.mkEmpty 0)
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

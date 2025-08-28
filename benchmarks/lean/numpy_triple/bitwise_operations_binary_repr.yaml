@@ -1,0 +1,97 @@
+vc-description: |-
+  /-  Helper function to convert a natural number to its binary string representation -/
+  
+  /-  Helper function to check if a string represents a valid binary number -/
+  
+  /-  Helper function to check if a string represents a valid signed binary number -/
+  
+  /-  Return the binary representation of the input number as a string.
+      For negative numbers, if width is not given, a minus sign is added to the front.
+      If width is given, the two's complement of the number is returned. -/
+
+  /-  Specification: binary_repr correctly converts integers to binary strings with proper
+      handling of negative numbers (signed representation without width, two's complement with width) -/
+
+vc-preamble: |-
+  import Std.Do.Triple
+  import Std.Tactic.Do
+  open Std.Do
+
+vc-helpers: |-
+  <vc-helpers>
+  </vc-helpers>
+
+vc-signature: |-
+  def natToBinaryString (n : Nat) : String :=
+  
+  def isValidBinary (s : String) : Bool :=
+  
+  def isValidSignedBinary (s : String) : Bool :=
+  
+  def binary_repr (num : Int) (width : Option Nat := none) : Id String :=
+
+vc-implementation: |-
+  <vc-implementation>
+    if n = 0 then "0"
+    else
+      let rec loop (m : Nat) (acc : String) : String :=
+        if m = 0 then acc
+        else loop (m / 2) (if m % 2 = 0 then "0" ++ acc else "1" ++ acc)
+      loop n ""
+  
+  
+    s.length > 0 && s.all (fun c => c = '0' || c = '1')
+  
+  
+    if s.startsWith "-" then
+      isValidBinary (s.drop 1)
+    else
+      isValidBinary s
+  
+  
+    sorry
+  </vc-implementation>
+
+vc-condition: |-
+  theorem binary_repr_spec (num : Int) (width : Option Nat := none) :
+      ⦃⌜width.map (· ≥ 1) |>.getD true⌝⦄
+      binary_repr num width
+      ⦃⇓result => ⌜
+        -- Result is a valid binary string (possibly with sign)
+        (width.isNone → isValidSignedBinary result) ∧
+        (width.isSome → isValidBinary result) ∧
+        
+        -- Length constraints
+        (width.isSome → result.length = width.get!) ∧
+        
+        -- Positive numbers: standard binary representation
+        (num ≥ 0 ∧ width.isNone → 
+          result = natToBinaryString num.natAbs) ∧
+        
+        -- Positive numbers with width: padded with zeros
+        (num ≥ 0 ∧ width.isSome → 
+          ∃ (binary : String), binary = natToBinaryString num.natAbs ∧
+          result = String.mk (List.replicate (width.get! - binary.length) '0') ++ binary) ∧
+        
+        -- Negative numbers without width: signed representation
+        (num < 0 ∧ width.isNone → 
+          result = "-" ++ natToBinaryString num.natAbs) ∧
+        
+        -- Negative numbers with width: two's complement
+        (num < 0 ∧ width.isSome → 
+          let w := width.get!
+          let twoComp := (2^w : Int) + num
+          -- Two's complement is in valid range
+          (0 ≤ twoComp ∧ twoComp < 2^w) ∧
+          -- Result represents the two's complement
+          result = natToBinaryString twoComp.natAbs ∧
+          -- Padded with 1s if needed
+          result.length = w)
+      ⌝⦄ := by
+
+vc-proof: |-
+  <vc-proof>
+    sorry
+  </vc-proof>
+
+vc-postamble: |-

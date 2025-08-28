@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 function that finds the length of the longest sequence of consecutive integers present in a given list. The numbers do not need to appear in order. The elements are unique.
   
@@ -30,23 +30,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    Id.run do
-      let mut set := HashSet.empty
-      for x in nums do
-        set := set.insert x
-  
-      let mut maxLen := 0
-  
-      for x in nums do
-        if !set.contains (x - 1) then
-          let mut curr := x
-          let mut length := 1
-          while set.contains (curr + 1) do
-            curr := curr + 1
-            length := length + 1
-          maxLen := Nat.max maxLen length
-  
-      return maxLen
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

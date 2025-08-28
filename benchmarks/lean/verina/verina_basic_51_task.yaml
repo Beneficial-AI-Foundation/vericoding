@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires creating a function that determines the correct insertion index for a given integer in a sorted array. The goal is to identify an index where every number before it is less than the specified value, and every number from that index onward is greater than or equal to the value. If the given integer is larger than all elements in the array, the function should return the array’s size.
   
@@ -40,7 +40,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    binarySearchLoop a key 0 a.size
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

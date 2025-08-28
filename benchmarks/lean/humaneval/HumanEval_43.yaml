@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def pairs_sum_to_zero(numbers: List[int]) -> Bool"
   docstring: |
       pairs_sum_to_zero takes a list of integers as an input.
@@ -28,9 +28,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -56,12 +56,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  unfold problem_spec
-  let result := implementation numbers
-  use result
-  simp [result]
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
@@ -70,6 +65,4 @@ vc-postamble: |-
   -- #test implementation [1, 2, 3, 7] = false
   -- #test implementation [2, 4, -5, 3, 5, 7] = true
   -- #test implementation [1] = false
-  
-  
 

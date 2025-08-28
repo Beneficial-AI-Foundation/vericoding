@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that counts the number of digit characters within a given string. A digit is any character between '0' and '9'. The method should determine how many such digit characters appear in the input.
   
@@ -31,7 +31,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    List.length (List.filter isDigit s.toList)
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
@@ -45,8 +45,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-    unfold countDigits countDigits_postcond
-    simp
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-

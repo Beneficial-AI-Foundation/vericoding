@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that determines if a given string is a palindrome, ignoring all
   non-alphanumeric characters and case differences. For example, the string "A man, a plan, a canal: Panama" should return
@@ -28,23 +28,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let cleaned : List Char :=
-      s.data.filter (fun c => c.isAlpha || c.isDigit)
-        |>.map Char.toLower
-  
-    let n := cleaned.length
-    let startIndex := 0
-    let endIndex := if n = 0 then 0 else n - 1
-  
-    let rec check (l r : Nat) : Bool :=
-      if l >= r then
-        true
-      else if cleaned[l]? = cleaned[r]? then
-        check (l + 1) (r - 1)
-      else
-        false
-  
-    check startIndex endIndex
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

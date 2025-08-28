@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that determines whether a natural number is a power of four. The method should return a boolean value that indicates whether the given natural number is a power of four. An integer n is a power of four, if there exists an natural number x such that n = 4^x.
   
@@ -26,20 +26,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec helper (n : Nat) : Bool :=
-      match n with
-      | 0 =>
-        false
-      | Nat.succ m =>
-        match m with
-        | 0 =>
-          true
-        | Nat.succ l =>
-          if (l+2)%4=0 then
-            helper ((l+2)/4)
-          else
-            false
-    helper n
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

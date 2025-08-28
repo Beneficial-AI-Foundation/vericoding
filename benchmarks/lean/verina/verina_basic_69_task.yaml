@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This problem involves determining the index of the first occurrence of a specified element within an array of integers. The objective is to identify the correct position where the target element appears for the first time, ensuring that all elements prior to that index are different from the target.
   
@@ -36,7 +36,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    linearSearchAux a e 0
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

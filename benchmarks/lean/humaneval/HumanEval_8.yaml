@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def sum_product(numbers: List[int]) -> Tuple[int, int]"
   docstring: |
       For a given list of integers, return a tuple consisting of a sum and a product of all the integers in a list.
@@ -23,9 +23,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  (numbers.sum, numbers.prod)
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -51,18 +51,10 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  unfold problem_spec
-  let result := implementation numbers
-  use result
-  simp [result]
-  simp [implementation]
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   #test implementation [] = (0, 1)
   #test implementation [1, 2, 3, 4] = (10, 24)
-  
-  
 

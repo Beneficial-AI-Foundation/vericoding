@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def max_fill_count(grid : list[list[int]], capacity : int) -> int"
   docstring: |
       You are given a rectangular grid of wells. Each row represents a single well,
@@ -35,9 +35,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -66,14 +66,11 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation [[0,0,1,0], [0,1,0,0], [1,1,1,1]] 1 = 6
   -- #test implementation [[0,0,1,1], [0,0,0,0], [1,1,1,1], [0,1,1,1]] 2 = 5
   -- #test implementation [[0,0,0], [0,0,0]] 5 = 0
-  
-  
 

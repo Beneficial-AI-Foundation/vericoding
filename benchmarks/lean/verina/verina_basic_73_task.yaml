@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   Determine whether two strings match based on a specific pattern: for each position in the strings, either the characters are the same, or the character in p is a wildcard represented by a question mark '?' that may match any character.
   
@@ -31,14 +31,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let sList := s.toList
-    let pList := p.toList
-    let rec loop (i : Nat) : Bool :=
-      if i < sList.length then
-        if (sList[i]! ≠ pList[i]!) ∧ (pList[i]! ≠ '?') then false
-        else loop (i + 1)
-      else true
-    loop 0
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

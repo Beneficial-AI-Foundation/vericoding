@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires swapping two 8-bit unsigned integers. Given two unsigned integer inputs, the goal is to produce an output pair where the first element is the original second input and the second element is the original first input. The problem focuses solely on exchanging the values without specifying any particular method to achieve the swap.
   
@@ -31,10 +31,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let temp := X.xor Y
-    let newY := temp.xor Y
-    let newX := temp.xor newY
-    (newX, newY)
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

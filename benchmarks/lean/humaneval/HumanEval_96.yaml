@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def count_up_to(n : int) -> list[int]"
   docstring: |
       Implement a function that takes an non-negative integer and returns an array of the first n
@@ -31,9 +31,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -58,8 +58,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
@@ -69,6 +68,4 @@ vc-postamble: |-
   -- #test implementation 20 = [2,3,5,7,11,13,17,19]
   -- #test implementation 1 = []
   -- #test implementation 18 = [2,3,5,7,11,13,17]
-  
-  
 

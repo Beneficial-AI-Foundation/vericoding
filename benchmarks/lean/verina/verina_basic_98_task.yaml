@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task involves computing three times a given integer. Given an integer, the goal is to produce a value that is exactly three times its value.
   
@@ -29,7 +29,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    x * 3
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
@@ -42,8 +42,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-    unfold Triple_postcond Triple
-    simp +arith
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-

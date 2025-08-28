@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def derivative(xs: List Int) -> List Int"
   docstring: |
       xs represent coefficients of a polynomial.
@@ -24,9 +24,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -48,17 +48,10 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  unfold problem_spec
-  let result := implementation xs
-  use result
-  simp [result]
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation [3, 1, 2, 4, 5] : List Int = [1, 4, 12, 20]
   -- #test implementation [1, 2, 3] : List Int = [2, 6]
-  
-  
 

@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def fruit_distribution(string: str, Nat n) -> Nat"
   docstring: |
       In this task, you will be given a string that represents a number of apples and oranges
@@ -30,9 +30,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -55,12 +55,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  unfold problem_spec
-  let result := implementation s n
-  use result
-  simp [result]
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
@@ -68,6 +63,4 @@ vc-postamble: |-
   -- #test implementation "0 apples and 1 oranges" 3 = 2
   -- #test implementation "2 apples and 3 oranges" 100 = 95
   -- #test implementation "100 apples and 1 oranges" 120 = 19
-  
-  
 

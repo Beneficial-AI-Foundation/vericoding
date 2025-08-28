@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task involves concatenating two arrays of integers by appending the second array to the end of the first array. The goal is to produce a new array that sequentially contains all elements from the first array followed by all elements from the second array.
   
@@ -32,14 +32,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let n := a.size + b.size
-    let rec loop (i : Nat) (c : Array Int) : Array Int :=
-      if i < n then
-        let value := if i < a.size then a[i]! else b[i - a.size]!
-        loop (i + 1) (c.set! i value)
-      else
-        c
-    loop 0 (Array.mkArray n 0)
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

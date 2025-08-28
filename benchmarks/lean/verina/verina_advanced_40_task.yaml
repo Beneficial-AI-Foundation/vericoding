@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 function that returns the maximum element from a non-empty list of natural numbers.
   
@@ -26,14 +26,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec helper (lst : List Nat) : Nat :=
-      match lst with
-      | [] => 0  -- technically shouldn't happen if input is always non-empty
-      | [x] => x
-      | x :: xs =>
-        let maxTail := helper xs
-        if x > maxTail then x else maxTail
-    helper lst
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
