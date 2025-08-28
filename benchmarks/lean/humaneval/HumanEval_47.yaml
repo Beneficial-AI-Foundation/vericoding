@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def median(numbers: List[float]) -> float"
   docstring: |
       Return median of elements in the list l
@@ -22,9 +22,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -60,17 +60,10 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  unfold problem_spec
-  let result := implementation numbers
-  use result
-  simp [result]
-  repeat sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation [3, 1, 2, 4, 5] = 3
   -- #test implementation [-10, 4, 6, 1000, 10, 20] = 15.0
-  
-  
 

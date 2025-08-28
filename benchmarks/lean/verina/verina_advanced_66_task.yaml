@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   Given an input string "words_str", this task requires writing a Lean 4 function that reverses the order of its words. A word is defined as a contiguous sequence of non-space characters. The function must remove any extra spaces so that the output string contains words separated by a single space and has no leading or trailing spaces. The characters within each word must stay the same as the original input.
   
@@ -24,26 +24,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rawWords : List String := words_str.splitOn " "
-    let rec filterNonEmpty (words : List String) : List String :=
-      match words with
-      | [] => []
-      | h :: t =>
-        if h = "" then
-          filterNonEmpty t
-        else
-          h :: filterNonEmpty t
-    let filteredWords : List String := filterNonEmpty rawWords
-    let revWords : List String := filteredWords.reverse
-    let rec joinWithSpace (words : List String) : String :=
-      match words with
-      | [] => ""
-      | [w] => w
-      | h :: t =>
-        -- Append the current word with a space and continue joining the rest.
-        h ++ " " ++ joinWithSpace t
-    let result : String := joinWithSpace revWords
-    result
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

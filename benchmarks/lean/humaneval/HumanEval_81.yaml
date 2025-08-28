@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def numerical_letter_grade(grades: list[float]) -> list[str]"
   docstring: |
       It is the last week of the semester and the teacher has to give the grades
@@ -42,9 +42,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -92,12 +92,9 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation [4.0, 3, 1.7, 2, 3.5] = ['A+', 'B', 'C-', 'C', 'A-']
-  
-  
 

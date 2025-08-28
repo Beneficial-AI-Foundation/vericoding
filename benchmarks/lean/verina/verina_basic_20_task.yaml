@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that calculates the product of all distinct integers in an array. The method should consider each unique integer only once when computing the product and return the resulting value. If the array is empty, the method should return 1.
   
@@ -31,16 +31,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec loop (i : Nat) (seen : Std.HashSet Int) (product : Int) : Int :=
-      if i < arr.size then
-        let x := arr[i]!
-        if seen.contains x then
-          loop (i + 1) seen product
-        else
-          loop (i + 1) (seen.insert x) (product * x)
-      else
-        product
-    loop 0 Std.HashSet.empty 1
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

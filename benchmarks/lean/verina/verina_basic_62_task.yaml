@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   The problem involves finding the first occurrence of a specified key in an array of integers. Your task is to identify the index at which the key appears for the first time in the array and return that index. If the key is not found, return -1.
   
@@ -32,12 +32,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec search (index : Nat) : Int :=
-      if index < a.size then
-        if a[index]! = key then Int.ofNat index
-        else search (index + 1)
-      else -1
-    search 0
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

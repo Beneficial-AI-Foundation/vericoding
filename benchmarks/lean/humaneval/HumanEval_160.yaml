@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def do_algebra(operator: List String, operand: List Nat) -> Int"
   docstring: |
       Given two lists operator, and operand. The first list has basic algebra operations, and
@@ -34,9 +34,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -60,11 +60,9 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation ['+', '*', '-'] [2,3,4,5] = 9
-  
-  
 

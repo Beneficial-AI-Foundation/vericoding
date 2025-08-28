@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def make_a_pile(n: int) -> List[int]"
   docstring: |
       Given a positive integer n, you have to make a pile of n levels of stones.
@@ -26,9 +26,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -51,8 +51,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
@@ -61,6 +60,4 @@ vc-postamble: |-
   -- #test implementation 5 = [5, 7, 9, 11, 13]
   -- #test implementation 6 = [6, 8, 10, 12, 14, 16]
   -- #test implementation 8 = [8, 10, 12, 14, 16, 18, 20, 22]
-  
-  
 

@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def is_equal_to_sum_even(n: int) -> Bool"
   docstring: |
       Evaluate whether the given number n can be written as the sum of exactly 4 positive even numbers
@@ -24,9 +24,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -53,13 +53,11 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation 4 = false
   -- #test implementation 6 = false
   -- #test implementation 8 = true
-  
-  
 

@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that given an natural number n, returns the smallest prime factor that is less than 10. If none exist, return 0
   
@@ -26,12 +26,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    if n == 0 then 0
-    else if n % 2 == 0 then 2
-    else if n % 3 == 0 then 3
-    else if n % 5 == 0 then 5
-    else if n % 7 == 0 then 7
-    else 0
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

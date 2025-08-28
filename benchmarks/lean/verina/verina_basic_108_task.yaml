@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   The problem is about processing a sequence of integer operations to determine cumulative results and identify potential negative outcomes. Given a list of integers, the task is to generate an array where the first element is 0 and each subsequent element is the cumulative sum of the operations performed sequentially. Additionally, the solution should check whether any of these cumulative values (after the initial 0) is negative, and return a corresponding boolean flag.
   
@@ -37,13 +37,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let s := buildS operations
-    let rec check_negative (lst : List Int) : Bool :=
-      match lst with
-      | []      => false
-      | x :: xs => if x < 0 then true else check_negative xs
-    let result := check_negative (s.toList)
-    (s, result)
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

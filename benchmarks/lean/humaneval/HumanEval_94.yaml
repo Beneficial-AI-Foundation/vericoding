@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def sum_largest_prime(lst : list[int]) -> int"
   docstring: |
       You are given a list of integers.
@@ -32,9 +32,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -59,8 +59,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
@@ -70,6 +69,4 @@ vc-postamble: |-
   -- #test implementation [0,724,32,71,99,32,6,0,5,91,83,0,5,6] = 11
   -- #test implementation [0,81,12,3,1,21] = 3
   -- #test implementation [0,8,1,2,1,7] = 7
-  
-  
 

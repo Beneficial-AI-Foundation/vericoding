@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task involves updating an element within a 2-dimensional array. The goal is to modify only a specific inner array by changing one of its elements to a new value while keeping every other element and all other inner arrays unchanged.
   
@@ -37,9 +37,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let inner := arr[index1]!
-    let inner' := updateInner inner index2 val
-    arr.set! index1 inner'
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task involves creating a function that swaps two integer values. Given two integers, the function should return a pair where the first element is the second input value and the second element is the first input value.
   
@@ -31,12 +31,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let x := X
-    let y := Y
-    let tmp := x
-    let x := y
-    let y := tmp
-    (x, y)
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
@@ -50,9 +45,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-    unfold Swap_postcond Swap
-    simp_all
-    exact fun a a_1 => a (id (Eq.symm a_1))
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-

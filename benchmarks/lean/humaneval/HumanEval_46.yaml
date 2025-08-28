@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def fib4(n: int)"
   docstring: |
       The Fib4 number sequence is a sequence similar to the Fibbonacci sequnece that's defined as follows:
@@ -30,9 +30,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -54,18 +54,11 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  unfold problem_spec
-  let result := implementation n
-  use result
-  simp [result]
-  repeat sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation 5 = 4
   -- #test implementation 6 = 8
   -- #test implementation 7 = 14
-  
-  
 

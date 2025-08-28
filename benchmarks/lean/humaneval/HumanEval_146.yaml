@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def specialFilter(nums: List[int]) -> int"
   docstring: |
       Write a function that takes an array of numbers as input and returns
@@ -24,9 +24,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -53,12 +53,10 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation [15, -73, 14, -15] = 1
   -- #test implementation [33, -2, -3, 45, 21, 109] = 2
-  
-  
 

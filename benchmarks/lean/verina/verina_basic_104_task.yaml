@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This problem involves combining two maps by creating a new map that includes every key from both inputs. When a key is found in both maps, the value from the second map is used in the result.
   
@@ -35,10 +35,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let foldFn := fun (acc : Map Int Int) (entry : Int × Int) =>
-      insert acc entry.1 entry.2
-    let updated := m2.entries.foldl foldFn m1
-    ⟨updated.entries.mergeSort (fun a b => a.1 ≤ b.1)⟩
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

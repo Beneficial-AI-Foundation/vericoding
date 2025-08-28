@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 function that calculates the minimum number of right shifts required to sort a given list of distinct positive integers.
   
@@ -31,47 +31,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let n := nums.length
-    -- base cases: empty or single element list is already sorted
-    if n <= 1 then 0 else
-  
-    -- local helper function to check if a list is sorted in ascending order
-    let rec isSortedAux (l : List Int) : Bool :=
-      match l with
-      | [] => true       -- empty list is sorted
-      | [_] => true      -- single element list is sorted
-      | x :: y :: xs => if x <= y then isSortedAux (y :: xs) else false -- check pairwise
-  
-    -- check if the input list is already sorted
-    if isSortedAux nums then 0 else
-  
-    -- local helper function to perform a single right shift
-    -- assume the list `l` is non-empty based on the initial n > 1 check
-    let rightShiftOnce (l : List Int) : List Int :=
-       match l.reverse with
-       | [] => [] -- should not happen for n > 1
-       | last :: revInit => last :: revInit.reverse -- `last` is the original last element
-  
-    -- recursive function to check subsequent shifts
-    -- `shifts_count` is the number of shifts already performed to get `current_list`
-    -- we are checking if `current_list` is sorted
-    let rec checkShifts (shifts_count : Nat) (current_list : List Int) : Int :=
-      -- base case: stop recursion if we've checked n-1 shifts (count goes from 1 to n)
-      -- the original list (0 shifts) has already been checked
-      if shifts_count >= n then -1
-      else
-        -- check if the current state is sorted
-        if isSortedAux current_list then
-          (shifts_count : Int) -- found it after 'shifts_count' shifts
-        else
-          -- recursion: increment shift count, apply next shift
-          checkShifts (shifts_count + 1) (rightShiftOnce current_list)
-    -- specify the decreasing measure for the termination checker: n - shifts_count
-    termination_by n - shifts_count
-  
-    -- start the checking process by performing the first shift and checking subsequent states
-    -- the initial list (0 shifts) hass already been checked and is not sorted
-    checkShifts 1 (rightShiftOnce nums) -- start checking from the state after 1 shift
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

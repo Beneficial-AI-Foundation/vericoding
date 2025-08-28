@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def count_distinct_characters(string: str) -> int"
   docstring: |
       Given a string, find out how many distinct characters (regardless of case) does it consist of
@@ -22,10 +22,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  let char_set := string.toLower.toList.toFinset
-  char_set.card
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -49,34 +48,10 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  unfold problem_spec
-  let result := implementation string
-  use result
-  simp [result]
-  simp [implementation]
-  rcases string with ⟨data⟩
-  induction data
-  simp
-  have h1: "".toLower = "" := by
-    unfold String.toLower
-    unfold Char.toLower
-    unfold String.map
-    unfold String.mapAux
-    simp
-    intros
-    contradiction
-  simp [h1]
-  rename_i head tail ih
-  unfold String.toLower
-  rw [String.map_eq]
-  simp
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   #test implementation "xyzXYZ" = 3
   #test implementation "Jerry" = 4
-  
-  
 

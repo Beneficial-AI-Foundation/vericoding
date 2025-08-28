@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task involves computing the integer square root of a given natural number. The goal is to determine the largest natural number r that satisfies r * r ≤ N and N < (r + 1) * (r + 1).
   
@@ -30,14 +30,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec boundedLoop : Nat → Nat → Nat
-      | 0, r => r
-      | bound+1, r =>
-          if (r + 1) * (r + 1) ≤ N then
-            boundedLoop bound (r + 1)
-          else
-            r
-    boundedLoop (N+1) 0
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

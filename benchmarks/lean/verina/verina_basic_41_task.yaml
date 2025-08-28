@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that determines whether an array of integers contains only one distinct element. The method should return true if the array is empty or if every element in the array is the same, and false if there are at least two different elements.
   
@@ -30,16 +30,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    if a.size = 0 then
-      true
-    else
-      let firstElement := a[0]!
-      let rec loop (i : Nat) : Bool :=
-        if h : i < a.size then
-          if a[i]! = firstElement then loop (i + 1) else false
-        else
-          true
-      loop 1
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

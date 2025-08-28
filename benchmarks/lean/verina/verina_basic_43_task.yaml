@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that computes the sum of the fourth power of the first n odd natural numbers. In other words, given a non-negative integer n, the method should calculate the sum: 1⁴ + 3⁴ + 5⁴ + ... for the first n odd numbers.
   
@@ -30,12 +30,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    match n with
-    | 0 => 0
-    | n + 1 =>
-      let prev := sumOfFourthPowerOfOddNumbers n h_precond
-      let nextOdd := 2 * n + 1
-      prev + nextOdd^4
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

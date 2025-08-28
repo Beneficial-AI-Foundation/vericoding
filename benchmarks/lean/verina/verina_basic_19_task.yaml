@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that checks whether an array of integers is sorted in non-decreasing order. The method should return true if every element is less than or equal to the element that follows it, and false otherwise.
   
@@ -30,14 +30,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    if a.size ≤ 1 then
-      true
-    else
-      a.mapIdx (fun i x =>
-        if h : i + 1 < a.size then
-          decide (x ≤ a[i + 1])
-        else
-          true) |>.all id
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
@@ -50,19 +43,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-    unfold isSorted isSorted_postcond
-    simp_all
-    cases a with | mk a =>
-      simp
-      cases a with
-      | nil => simp
-      | cons x xs =>
-        simp
-        cases xs with
-        | nil => simp
-        | cons x' xs =>
-          simp
-          constructor <;> simp_all
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-

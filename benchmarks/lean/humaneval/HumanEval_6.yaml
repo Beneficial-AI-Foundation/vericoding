@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def parse_nested_parens(paren_string: str) -> List[int]"
   docstring: |
       Input to this function is a string represented multiple groups for nested parentheses separated by spaces.
@@ -22,9 +22,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  (paren_string.split (fun x => x = ' ')).map (fun x => count_max_paren_depth x)
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -51,16 +51,9 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  unfold problem_spec
-  let result := implementation paren_string
-  use result
-  simp [result]
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   #test implementation "(()()) ((())) () ((())()())" = [2, 3, 1, 3]
-  
-  
 

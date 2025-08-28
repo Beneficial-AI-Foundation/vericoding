@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def bf(planet1: str, planet2: str) -> List[str]"
   docstring: |
       There are eight planets in our solar system: the closest to the Sun
@@ -32,9 +32,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -69,13 +69,11 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation "Jupiter" "Neptune" = ["Saturn", "Uranus"]
   -- #test implementation "Earth" "Mercury" = ["Venus"]
   -- #test implementation "Mercury" "Uranus" = ["Venus", "Earth", "Mars", "Jupiter", "Saturn"]
-  
-  
 

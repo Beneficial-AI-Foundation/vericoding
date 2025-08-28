@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def max_fill_count(grid : list[list[int]], capacity : int) -> int"
   docstring: |
       Please write a function that sorts an array of non-negative integers according to
@@ -24,9 +24,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -52,13 +52,10 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation [1, 5, 2, 3, 4] = [1, 2, 3, 4, 5]
   -- #test implementation [1, 0, 2, 3, 4] = [0, 1, 2, 3, 4]
-  
-  
 

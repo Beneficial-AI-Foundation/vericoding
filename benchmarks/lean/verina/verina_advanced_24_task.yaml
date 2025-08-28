@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that determines the length of the longest strictly increasing subsequence in a given array of integers.
   
@@ -31,15 +31,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec lisHelper (dp : List Int) (x : Int) : List Int :=
-      let rec replace (l : List Int) (acc : List Int) : List Int :=
-        match l with
-        | [] => (acc.reverse ++ [x])
-        | y :: ys => if x ≤ y then acc.reverse ++ (x :: ys) else replace ys (y :: acc)
-      replace dp []
-  
-    let finalDP := nums.foldl lisHelper []
-    finalDP.length
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

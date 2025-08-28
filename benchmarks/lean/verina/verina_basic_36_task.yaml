@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that takes a given string and returns a new string where every occurrence of a space, comma, or dot is replaced with a colon. The transformation must preserve the original string’s length and leave all other characters unmodified.
   
@@ -36,9 +36,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let cs := s.toList
-    let cs' := cs.map (fun c => if isSpaceCommaDot c then ':' else c)
-    String.mk cs'
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
@@ -56,17 +54,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-    unfold replaceWithColon replaceWithColon_postcond
-    simp
-    constructor
-    · unfold String.length
-      simp
-    · intro i hi
-      have hi' : i < s.data.length := by
-        unfold String.length at hi
-        simp at hi
-        exact hi
-      constructor <;> simp_all
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-

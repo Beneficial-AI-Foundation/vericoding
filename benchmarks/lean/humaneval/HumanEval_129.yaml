@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def split_words(txt)"
   docstring: |
       Given a string of words, return a list of words split on whitespace, if no whitespaces exists in the text you
@@ -26,9 +26,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -65,13 +65,11 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation "Hello world!" = (some ["Hello", "world!"], none)
   -- #test implementation "Hello,world!" = (some ["Hello", "world!"], none)
   -- #test implementation "abcdef" = (none, some 3)
-  
-  
 

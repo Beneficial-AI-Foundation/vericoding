@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that determines whether a list of integers follows a peak-valley pattern.
   
@@ -36,18 +36,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec aux (l : List Int) (increasing : Bool) (startedDecreasing : Bool) : Bool :=
-      match l with
-      | x :: y :: rest =>
-        if x < y then
-          if startedDecreasing then false
-          else aux (y :: rest) true startedDecreasing
-        else if x > y then
-          if increasing then aux (y :: rest) increasing true
-          else false
-        else false
-      | _ => increasing && startedDecreasing
-    aux lst false false
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

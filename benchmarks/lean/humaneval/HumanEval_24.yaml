@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def largest_divisor(n: int) -> int"
   docstring: |
       For a given number n, find the largest number that divides n evenly, smaller than n
@@ -20,15 +20,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  let possible_divisors := (List.range (n / 2 + 1)).drop 1
-  let reversed_possible_divisors := List.reverse possible_divisors;
-  Id.run do
-    for i in reversed_possible_divisors do
-      if n % i = 0 then
-        return i
-    return 1
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -49,16 +43,9 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  unfold problem_spec
-  let result := implementation n
-  use result
-  simp [result]
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   #test implementation 15 = 5
-  
-  
 

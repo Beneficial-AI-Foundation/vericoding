@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def is_prime(n)"
   docstring: |
       Return true if a given number is prime, and false otherwise.
@@ -32,9 +32,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  Nat.Prime n
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -56,13 +56,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  unfold problem_spec
-  let result := implementation n
-  use result
-  simp [result]
-  simp [implementation]
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
@@ -73,6 +67,4 @@ vc-postamble: |-
   #test implementation 61 = true
   #test implementation 4 = false
   #test implementation 1 = false
-  
-  
 

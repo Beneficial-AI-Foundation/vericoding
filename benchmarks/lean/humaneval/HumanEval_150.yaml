@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def x_or_y(int n, int x, int y) -> int"
   docstring: |
       A simple program which should return the value of x if n is
@@ -23,9 +23,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -47,12 +47,10 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation 7 34 12 = 34
   -- #test implementation 15 8 5 = 5
-  
-  
 

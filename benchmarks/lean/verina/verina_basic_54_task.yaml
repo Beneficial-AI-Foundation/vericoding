@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task is about determining the minimum absolute difference between any pair of integers, where one integer is taken from the first sorted array and the other integer is taken from the second sorted array. The focus is on accurately finding the smallest absolute difference between any two elements from the arrays, independent of the specific techniques or programming language used.
   
@@ -41,10 +41,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let init : Nat :=
-      if a[0]! < b[0]! then (b[0]! - a[0]!).natAbs
-      else (a[0]! - b[0]!).natAbs
-    canyonSearchAux a b 0 0 init
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

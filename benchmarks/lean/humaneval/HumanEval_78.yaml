@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def hex_key(num: string) -> int"
   docstring: |
       You have been tasked to write a function that receives
@@ -37,11 +37,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  let IsPrimeHexDigit (c: Char): Int :=
-      if c = '2' ∨ c = '3' ∨ c = '5' ∨ c = '7' ∨ c = 'B' ∨ c = 'D' then 1 else 0;
-    num.foldl (λ acc a => acc + (IsPrimeHexDigit a)) 0
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -77,8 +75,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
@@ -89,6 +86,4 @@ vc-postamble: |-
   -- #test implementation "123456789ABCDEF0" = 6
   -- #test implementation "112233445566778899AABBCCDDEEFF00" = 12
   -- #test implementation "" = 0
-  
-  
 

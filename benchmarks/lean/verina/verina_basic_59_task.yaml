@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   Given an integer x, determine a pair (a, b) where the first element is twice the value of x and the second element is four times the value of x.
   
@@ -30,9 +30,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let a := 2 * x
-    let b := 2 * a
-    (a, b)
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that verifies if every odd index in an array of integers holds an odd number. In other words, for each index in the array that is odd, the number located at that index must also be odd. The method should return true if this condition is satisfied for every odd index; otherwise, it should return false.
   
@@ -32,11 +32,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    -- First create pairs of (index, value) for all elements in the array
-    let indexedArray := a.mapIdx fun i x => (i, x)
-  
-    -- Check if all elements at odd indices are odd numbers
-    indexedArray.all fun (i, x) => !(isOdd i) || isOdd x
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
@@ -49,32 +45,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-    unfold isOddAtIndexOdd isOddAtIndexOdd_postcond
-    simp_all
-    constructor
-    · intro h
-      intro i hi h_odd
-      -- Since the function returns true, all elements in satisfy the predicate
-      have h_all_odd : (a.mapIdx (fun j x => (j, x))).all (fun (i, x) => !(isOdd i) || isOdd x) = true := by
-        simp_all
-      -- Apply the property of Array.all
-      rw [Array.all_iff_forall] at h_all_odd
-      simp_all
-      have h_sat_i : !(isOdd i) || isOdd a[i] := by
-        simp
-        apply h_all_odd i hi
-      simp [h_odd] at h_sat_i
-      exact h_sat_i
-    · intro h
-      apply Array.all_iff_forall.mpr
-      intro i hi
-      simp
-      intro hi'
-      have h_sat : isOdd i → isOdd a[i] := by
-        apply h i hi'
-      rw [Decidable.imp_iff_not_or] at h_sat
-      simp at h_sat
-      exact h_sat
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-

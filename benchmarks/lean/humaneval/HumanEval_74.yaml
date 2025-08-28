@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def total_match(lst1: List[str], lst2: List[str]) -> List[str]"
   docstring: |
     Write a function that accepts two lists of strings and returns the list that has
@@ -30,9 +30,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -61,8 +61,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
@@ -75,6 +74,4 @@ vc-postamble: |-
   -- #test implementation ["hi", "admin"] ["hI", "hi", "hii"] = ["hi", "admin"]
   -- #test implementation [] ["this"] = []
   -- #test implementation ["this"] [] == []
-  
-  
 

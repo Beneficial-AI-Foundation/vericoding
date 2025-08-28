@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires swapping two integer values. Given two integers as input, the objective is to produce an output where their order is reversed: the first element of the output corresponds to the second input and the second element corresponds to the first input.
   
@@ -31,7 +31,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    (Y, X)
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
@@ -45,9 +45,7 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-    unfold SwapSimultaneous_postcond SwapSimultaneous
-    simp_all
-    exact fun a a_1 => a (id (Eq.symm a_1))
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-

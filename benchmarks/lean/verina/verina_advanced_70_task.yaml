@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description---
   This task requires writing a Lean 4 method that's goal is to determine the minimum number of adjacent swaps needed to make the array semi-ordered. You may repeatedly swap 2 adjacent elements in the array. A permutation is called semi-ordered if the first number equals 1 and the last number equals n.
   
@@ -27,27 +27,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let lengthList := nums.length
-    let numOne : Int := 1
-    let largestNum : Int := Int.ofNat lengthList
-  
-    let firstIndex := nums.idxOf numOne
-    let lastIndex := nums.idxOf largestNum
-  
-    let startPosition := 0
-    let endPosition := lengthList - 1
-  
-    let shouldMoveOne := firstIndex != startPosition
-    let shouldMoveLast := lastIndex != endPosition
-  
-    let distanceOne := if shouldMoveOne then firstIndex else 0
-    let distanceLast := if shouldMoveLast then endPosition - lastIndex else 0
-  
-    let totalMoves := distanceOne + distanceLast
-    let needAdjustment := firstIndex > lastIndex
-    let adjustedMoves := if needAdjustment then totalMoves - 1 else totalMoves
-  
-    adjustedMoves
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

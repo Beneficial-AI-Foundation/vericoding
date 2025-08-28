@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task involves computing the element-wise product of two integer arrays. For each position in the arrays, the corresponding numbers are multiplied together. If an element is missing in one of the arrays at a given index, the missing value is treated as 0. When both arrays provide values for every index, the resulting array will contain the product of the two numbers at each corresponding index.
   
@@ -40,9 +40,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let len := a.size
-    let c := Array.mkArray len 0
-    loop a b len 0 c
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that performs run-length encoding on a given string. The method should scan the string from left to right and group consecutive identical characters into pairs. Each pair consists of the character itself and the number of times it appears consecutively. For example, "aaabbc" becomes [(’a’, 3), (’b’, 2), (’c’, 1)].
   
@@ -29,23 +29,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let chars := s.data
-  
-    let rec encodeAux (acc : List (Char × Nat)) (rest : List Char) : List (Char × Nat) :=
-      match rest with
-      | [] => acc.reverse
-      | h :: t =>
-        match acc with
-        | (ch, count) :: accTail =>
-          if ch = h then
-            encodeAux ((ch, count + 1) :: accTail) t
-          else
-            encodeAux ((h, 1) :: (ch, count) :: accTail) t
-        | [] =>
-          encodeAux ([(h, 1)]) t
-  
-    let encoded := encodeAux [] chars
-    encoded
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

@@ -3,54 +3,7 @@
 import argparse
 import json
 from pathlib import Path
-
-
-def yaml_safe_load(file_path: Path) -> dict:
-    """
-    Parse YAML file with format: keys 'XXX: |-' followed by multiline strings.
-    Reads line by line and processes each key-value pair.
-    """
-    spec = {}
-    current_key = None
-    current_value_lines = []
-    
-    with open(file_path, 'r') as f:
-        for line in f:
-            line = line.rstrip()  # Remove trailing whitespaces
-            
-            # Check if this line is a key (matches "XXX: |-" pattern)
-            if ': |-' in line:
-                # Save previous key-value pair if exists
-                if current_key is not None:
-                    # Join lines and remove trailing whitespaces
-                    value = '\n'.join(current_value_lines).rstrip()
-                    spec[current_key] = value
-                
-                # Extract new key
-                current_key = line.split(':')[0].strip()
-                current_value_lines = []
-            elif current_key is not None:
-                # This is a value line for current key
-                # Remove 2 spaces from the beginning if present
-                if line.startswith('  '):
-                    current_value_lines.append(line[2:])
-                elif line.strip():
-                    print(f"Warning: Nonempty line does not start with 2 spaces - {line}")
-                    current_value_lines.append(line.strip())
-                else:
-                    current_value_lines.append(line.strip())
-            else:
-                print(f"Warning: Line occurred before any key - {line}")
-
-
-    
-    # Don't forget the last key-value pair
-    if current_key is not None:
-        value = '\n'.join(current_value_lines).rstrip('\n')
-        spec[current_key] = value
-    
-    return spec
-
+from ruamel.yaml import YAML
 
 def spec_to_string(spec: dict, template: list[str]) -> str:
     """Convert YAML spec dict to string by concatenating sections."""
@@ -74,7 +27,7 @@ def spec_to_string(spec: dict, template: list[str]) -> str:
 def get_template(suffix: str) -> list[str]:
     """Get template for the output file."""
     if suffix == 'lean':
-        return ['vc-preamble', '\n', 'vc-description', '\n', 'vc-helpers', '\n', 
+        return ['vc-description', '\n', 'vc-preamble', '\n', 'vc-helpers', '\n', 
                     'vc-signature', 'vc-implementation', '\n', 
                     'vc-condition', 'vc-proof', '\n', 'vc-postamble']
     elif suffix == 'dfy' or suffix == 'rs':
@@ -86,7 +39,8 @@ def get_template(suffix: str) -> list[str]:
 def convert_yaml_to_file(yaml_path: Path, output_path: Path) -> None:
     """Convert YAML spec to target file format by concatenating sections."""
     
-    spec = yaml_safe_load(yaml_path)
+    yaml = YAML(typ='safe')
+    spec = yaml.load(yaml_path)
     
     template = get_template(output_path.suffix[1:])
     
@@ -101,7 +55,8 @@ def convert_yaml_to_file(yaml_path: Path, output_path: Path) -> None:
 def convert_yaml_to_json(yaml_path: Path, output_path: Path) -> None:
     """Convert YAML spec to a JSON file."""
 
-    spec = yaml_safe_load(yaml_path)
+    yaml = YAML(typ='safe')
+    spec = yaml.load(yaml_path)
 
     with open(output_path, 'w') as f:
         json.dump(spec, f, ensure_ascii=False, indent=2)
@@ -126,9 +81,10 @@ def convert_yaml_to_jsonl(yaml_path: Path) -> None:
     output_path = yaml_path.parent / f"{yaml_path.name}.jsonl"
     
     with open(output_path, 'w') as f:
+        yaml = YAML(typ='safe')
         for yaml_file in yaml_files:
             # Load the YAML spec
-            spec = yaml_safe_load(yaml_file)
+            spec = yaml.load(yaml_file)
             
             # Add the id field (filename without .yaml suffix)
             spec['id'] = yaml_file.stem
@@ -175,18 +131,76 @@ def convert_yaml_to_dir(yaml_path: Path, suffix: str) -> None:
     print(f"Converted {len(yaml_files)} YAML files to {output_dir}")
 
 
+def clear_implementation(yaml_path: Path) -> None:
+    """Read a YAML file, replace vc-implementation, vc-proof, and vc-code fields with empty strings, and write back."""
+    
+    yaml = YAML()
+    yaml.preserve_quotes = True  # Preserve original formatting
+    
+    # Load the YAML file
+    with open(yaml_path, 'r') as f:
+        spec = yaml.load(f)
+    
+    # Replace the specified fields with empty strings
+    fields_to_clear = ['vc-implementation', 'vc-proof']
+    for field in fields_to_clear:
+        if field in spec:
+            spec[field] = "-- <"+field+">\n  sorry\n-- </"+field+">\n\n"
+    
+    # Manually write the YAML file with multiline strings
+    with open(yaml_path, 'w') as f:
+        for key, value in spec.items():
+            # Write the key with multiline indicator
+            f.write(f"{key}: |-\n")
+            
+            # Write the value in multiline format
+            if isinstance(value, str):
+                stripped_value = value.rstrip()
+                if stripped_value:
+                    # Split into lines and add two spaces to each line
+                    lines = stripped_value.split('\n')
+                    for line in lines:
+                        f.write('  ' + line + '\n')
+                    f.write('\n')
+                else:
+                    f.write('\n')
+    
+    print(f"Cleared implementation fields in {yaml_path}")
+
+
 def main():
     parser = argparse.ArgumentParser(description='Convert YAML spec to target file format')
     parser.add_argument('yaml_file', type=Path, help='Input YAML file or directory')
-    parser.add_argument('--suffix', required=True, choices=['dfy', 'lean', 'rs', 'json', 'jsonl'], 
+    parser.add_argument('--suffix', choices=['dfy', 'lean', 'rs', 'json', 'jsonl'], 
                        help='Output file suffix')
     parser.add_argument('--dir', action='store_true', 
                        help='Convert all YAML files in directory to a new directory (not available for jsonl)')
+    parser.add_argument('--clear-impl', action='store_true',
+                       help='Clear vc-implementation, vc-proof, and vc-code fields with empty strings')
     
     args = parser.parse_args()
     
     if not args.yaml_file.exists():
         raise FileNotFoundError(f"{args.yaml_file} does not exist")
+    
+    # Handle clear implementation fields option
+    if args.clear_impl:
+        if args.yaml_file.is_file():
+            clear_implementation(args.yaml_file)
+        elif args.yaml_file.is_dir():
+            # Process all YAML files in directory
+            yaml_files = list(args.yaml_file.glob("*.yaml"))
+            if not yaml_files:
+                print(f"No .yaml files found in {args.yaml_file}")
+                return
+            for yaml_file in yaml_files:
+                clear_implementation(yaml_file)
+            print(f"Cleared implementation fields in {len(yaml_files)} YAML files")
+        return
+    
+    # Original conversion logic
+    if not args.suffix:
+        parser.error("--suffix is required when not using --clear-impl")
     
     if args.dir:
         if args.suffix == 'jsonl':

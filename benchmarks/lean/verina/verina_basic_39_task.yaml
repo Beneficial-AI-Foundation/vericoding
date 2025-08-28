@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that rotates a list of integers to the right by a specified number of positions. The method should produce a new list where each element is shifted to the right while preserving the original list's length.
   
@@ -31,14 +31,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let len := l.length
-    if len = 0 then l
-    else
-      (List.range len).map (fun i : Nat =>
-        let idx_int : Int := ((Int.ofNat i - Int.ofNat n + Int.ofNat len) % Int.ofNat len)
-        let idx_nat : Nat := Int.toNat idx_int
-        l.getD idx_nat (l.headD 0)
-      )
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

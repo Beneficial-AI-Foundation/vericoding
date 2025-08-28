@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def filter_by_prefix(strings: List[str], prefix: str) -> List[str]"
   docstring: |
       Filter an input list of strings only for ones that start with a given prefix.
@@ -26,9 +26,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  strings.filter (λ s => s.startsWith pref)
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -54,17 +54,10 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  unfold problem_spec
-  let result := implementation strings pref
-  use result
-  simp [result]
-  repeat sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   #test implementation [] "a" = []
   #test implementation ["abc", "bcd", "cde", "array"] "a" = ["abc", "array"]
-  
-  
 

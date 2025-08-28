@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   function_signature: "def rescale_to_unit(numbers: List[float]) -> List[float]"
   docstring: |
       Given list of numbers (of at least two elements), apply a linear transform to that list,
@@ -21,9 +21,9 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-  sorry
+    sorry
   -- </vc-implementation>
-  
+
 vc-condition: |-
   def problem_spec
   -- function signature
@@ -53,16 +53,9 @@ vc-condition: |-
 
 vc-proof: |-
   -- <vc-proof>
-  by
-  unfold problem_spec
-  let result := implementation numbers
-  use result
-  simp [result]
-  sorry
+    sorry
   -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation [1.0, 2.0, 3.0, 4.0, 5.0] = [0.0, 0.25, 0.5, 0.75, 1.0]
-  
-  
 

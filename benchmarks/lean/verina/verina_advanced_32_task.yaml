@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This test implements a function in Lean 4 that finds the length of the longest increasing subsequence in a list of integers. A subsequence is a sequence that can be derived from another sequence by deleting some or no elements without changing the order of the remaining elements. An increasing subsequence is one in which the elements are in strictly increasing order.
   
@@ -26,32 +26,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let rec buildTables : List Int → List Int → List Nat → Nat → Nat
-      | [], _, lengths, _ =>
-          let rec findMaxLength : List Nat → Nat
-            | [] => 0
-            | x :: xs =>
-                let maxRest := findMaxLength xs
-                if x > maxRest then x else maxRest
-          findMaxLength lengths
-      | currNum :: restNums, prevNums, lengths, idx =>
-          let rec findLengthEndingAtCurr : List Int → List Nat → Nat → Nat
-            | [], _, best => best
-            | prevVal :: restVals, prevLen :: restLens, best =>
-                if prevVal < currNum then
-                  findLengthEndingAtCurr restVals restLens (max best prevLen)
-                else
-                  findLengthEndingAtCurr restVals restLens best
-            | _, _, best => best
-  
-          let bestPrevLen := findLengthEndingAtCurr prevNums lengths 0
-          let currLength := bestPrevLen + 1
-          buildTables restNums (prevNums ++ [currNum]) (lengths ++ [currLength]) (idx + 1)
-  
-    match numbers with
-    | [] => 0
-    | [x] => 1
-    | first :: rest => buildTables rest [first] [1] 1
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

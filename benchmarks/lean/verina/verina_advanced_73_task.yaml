@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task requires writing a Lean 4 method that finds the first missing natural number in an increasingly sorted list. The method should return the smallest natural number that is not in the list, ensuring that all natural numbers that are smaller is inside the list.
   
@@ -26,22 +26,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    let sortedList := l
-    let rec search (lst : List Nat) (n : Nat) : Nat :=
-      match lst with
-      | [] => n
-      | x :: xs =>
-        let isEqual := x = n
-        let isGreater := x > n
-        let nextCand := n + 1
-        if isEqual then
-          search xs nextCand
-        else if isGreater then
-          n
-        else
-          search xs n
-    let result := search sortedList 0
-    result
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-

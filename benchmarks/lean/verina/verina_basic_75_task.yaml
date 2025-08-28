@@ -1,5 +1,5 @@
 vc-description: |-
-  /--
+  /- 
   -----Description-----
   This task involves finding the minimum element in a non-empty array of integers. The goal is to identify and return the smallest number present in the array.
   
@@ -36,7 +36,7 @@ vc-signature: |-
 
 vc-implementation: |-
   -- <vc-implementation>
-    loop a 1 (a[0]!)
+    sorry
   -- </vc-implementation>
 
 vc-condition: |-
