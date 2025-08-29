@@ -3,11 +3,12 @@ vc-preamble: |-
 
   verus! {
 
-vc-helpers: |-
-  // <vc-helpers>
   spec fn abs_diff(a: int, b: int) -> int {
       if a - b < 0 { b - a } else { a - b }
   }
+
+vc-helpers: |-
+  // <vc-helpers>
   // </vc-helpers>
 
 vc-spec: |-
