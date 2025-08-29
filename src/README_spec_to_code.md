@@ -44,9 +44,7 @@ python spec_to_code.py verus ./benchmarks/verus_specs
 The script handles language differences through:
 
 1. **Configuration-driven behavior**: Most differences are handled through the configuration file
-2. **Extraction-only behavior**: The pipeline no longer performs any language-specific
-   auto-fixing of incomplete code; it extracts code verbatim from model outputs.
-3. **Special file filtering**: Lean files are only processed if they contain 'sorry'
+2. **Special file filtering**: Lean files are only processed if they contain 'sorry'
 
 ### 4. Environment Variables
 
