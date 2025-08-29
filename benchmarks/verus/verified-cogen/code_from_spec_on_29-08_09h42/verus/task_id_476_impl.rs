@@ -1,0 +1,211 @@
+#![verifier::loop_isolation(false)]
+use vstd::math::*;
+use vstd::prelude::*;
+
+verus! {
+
+spec fn max_rcur(seq: Seq<i32>) -> (result:int)
+    decreases seq.len(),
+{
+    if seq.len() <= 1 {
+        seq.first() as int
+    } else {
+        max(seq.last() as int, max_rcur(seq.drop_last()))
+    }
+}
+// pure-end
+// pure-end
+
+spec fn min_rcur(seq: Seq<i32>) -> (result:int)
+    decreases seq.len(),
+{
+    if seq.len() <= 1 {
+        seq.first() as int
+    } else {
+        min(seq.last() as int, min_rcur(seq.drop_last()))
+    }
+}
+// pure-end
+
+// <vc-helpers>
+proof fn max_rcur_bounds(seq: Seq<i32>)
+    requires seq.len() > 0
+    ensures exists|i: int| 0 <= i < seq.len() && max_rcur(seq) == seq[i]
+    decreases seq.len()
+{
+    if seq.len() == 1 {
+        /* code modified by LLM (iteration 4): explicit proof for base case */
+        assert(seq[0] == seq.first());
+    } else {
+        max_rcur_bounds(seq.drop_last());
+        let last_idx = seq.len() - 1;
+        if seq.last() as int >= max_rcur(seq.drop_last()) {
+            assert(max_rcur(seq) == seq[last_idx]);
+        } else {
+            let witness_i = choose|i: int| 0 <= i < seq.drop_last().len() && max_rcur(seq.drop_last()) == seq.drop_last()[i];
+            assert(max_rcur(seq) == seq[witness_i]);
+        }
+    }
+}
+
+proof fn min_rcur_bounds(seq: Seq<i32>)
+    requires seq.len() > 0
+    ensures exists|i: int| 0 <= i < seq.len() && min_rcur(seq) == seq[i]
+    decreases seq.len()
+{
+    if seq.len() == 1 {
+        /* code modified by LLM (iteration 4): explicit proof for base case */
+        assert(seq[0] == seq.first());
+    } else {
+        min_rcur_bounds(seq.drop_last());
+        let last_idx = seq.len() - 1;
+        if seq.last() as int <= min_rcur(seq.drop_last()) {
+            assert(min_rcur(seq) == seq[last_idx]);
+        } else {
+            let witness_i = choose|i: int| 0 <= i < seq.drop_last().len() && min_rcur(seq.drop_last()) == seq.drop_last()[i];
+            assert(min_rcur(seq) == seq[witness_i]);
+        }
+    }
+}
+
+proof fn max_rcur_range(seq: Seq<i32>)
+    requires 
+        seq.len() > 0,
+        forall|i: int| 0 <= i < seq.len() ==> i32::MIN / 2 < #[trigger] seq[i] < i32::MAX / 2
+    ensures i32::MIN / 2 < max_rcur(seq) < i32::MAX / 2
+    decreases seq.len()
+{
+    max_rcur_bounds(seq);
+}
+
+proof fn min_rcur_range(seq: Seq<i32>)
+    requires 
+        seq.len() > 0,
+        forall|i: int| 0 <= i < seq.len() ==> i32::MIN / 2 < #[trigger] seq[i] < i32::MAX / 2
+    ensures i32::MIN / 2 < min_rcur(seq) < i32::MAX / 2
+    decreases seq.len()
+{
+    min_rcur_bounds(seq);
+}
+
+proof fn max_rcur_update_lemma(seq: Seq<i32>, k: int, new_val: i32)
+    requires
+        seq.len() > 0,
+        0 <= k < seq.len(),
+        new_val >= seq[k]
+    ensures
+        max_rcur(seq.update(k, new_val)) >= max_rcur(seq)
+{
+}
+
+proof fn min_rcur_update_lemma(seq: Seq<i32>, k: int, new_val: i32)
+    requires
+        seq.len() > 0,
+        0 <= k < seq.len(),
+        new_val <= seq[k]
+    ensures
+        min_rcur(seq.update(k, new_val)) <= min_rcur(seq)
+{
+}
+
+proof fn max_rcur_prefix_lemma(seq: Seq<i32>, i: int, j: int)
+    requires
+        seq.len() > 0,
+        0 < i <= j <= seq.len(),
+        forall|k: int| i <= k < j ==> #[trigger] seq[k] <= seq[i-1]
+    ensures
+        max_rcur(seq.take(j)) == max_rcur(seq.take(i))
+    decreases j - i
+{
+    if i == j {
+    } else {
+        max_rcur_prefix_lemma(seq, i, j-1);
+    }
+}
+
+proof fn min_rcur_prefix_lemma(seq: Seq<i32>, i: int, j: int)
+    requires
+        seq.len() > 0,
+        0 < i <= j <= seq.len(),
+        forall|k: int| i <= k < j ==> #[trigger] seq[k] >= seq[i-1]
+    ensures
+        min_rcur(seq.take(j)) == min_rcur(seq.take(i))
+    decreases j - i
+{
+    if i == j {
+    } else {
+        min_rcur_prefix_lemma(seq, i, j-1);
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn sum_min_max(arr: &Vec<i32>) -> (sum: i32)
+    // pre-conditions-start
+    requires
+        arr.len() > 0,
+        forall|i: int| 0 <= i < arr.len() ==> i32::MIN / 2 < #[trigger] arr[i] < i32::MAX / 2,
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        sum == max_rcur(arr@) + min_rcur(arr@),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    proof {
+        max_rcur_range(arr@);
+        min_rcur_range(arr@);
+    }
+    
+    let mut max_val = arr[0];
+    let mut min_val = arr[0];
+    let mut i = 1;
+    
+    /* code modified by LLM (iteration 5): Fixed loop invariants with explicit proof steps */
+    while i < arr.len()
+        invariant
+            1 <= i <= arr.len(),
+            max_val == max_rcur(arr@.take(i as int)),
+            min_val == min_rcur(arr@.take(i as int)),
+        decreases arr.len() - i
+    {
+        proof {
+            let old_max = max_val;
+            let old_min = min_val;
+            let current = arr@.take((i+1) as int);
+            let previous = arr@.take(i as int);
+            assert(current == previous.push(arr[i as int]));
+        }
+        
+        if arr[i] > max_val {
+            max_val = arr[i];
+        }
+        if arr[i] < min_val {
+            min_val = arr[i];
+        }
+        
+        proof {
+            let next_seq = arr@.take((i+1) as int);
+            assert(next_seq.len() == (i+1) as int);
+            assert(next_seq.last() == arr[i as int]);
+            assert(next_seq.drop_last() =~= arr@.take(i as int));
+            assert(max_val == max(arr[i as int] as int, max_rcur(arr@.take(i as int))));
+            assert(min_val == min(arr[i as int] as int, min_rcur(arr@.take(i as int))));
+        }
+        
+        i += 1;
+    }
+    
+    proof {
+        assert(arr@.take(arr.len() as int) =~= arr@);
+    }
+    
+    max_val + min_val
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

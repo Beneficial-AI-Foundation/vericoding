@@ -1,0 +1,77 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+fn lemma_subrange_reverse(s: Seq<i32>, start: int, mid: int, end: int)
+    requires 0 <= start <= mid <= end <= s.len()
+    ensures s.subrange(start, mid).subrange(0, mid - start).reverse() == s.subrange(start, mid).reverse()
+{
+}
+
+fn lemma_reverse_build(s: Seq<i32>, built: Seq<i32>, i: int)
+    requires 0 <= i <= s.len()
+    requires built.len() == s.len() - i
+    requires built == s.subrange(i, s.len()).reverse()
+    ensures built == s.subrange(0, s.len()).subrange(i, s.len()).reverse()
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn reverse_to_k(list: &Vec<i32>, n: usize) -> (reversed_list: Vec<i32>)
+    // pre-conditions-start
+    requires
+        list@.len() > 0,
+        0 < n < list@.len(),
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        reversed_list@ == list@.subrange(0, n as int).reverse().add(
+            list@.subrange(n as int, list.len() as int),
+        ),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut result = Vec::new();
+    
+    // First, add the reversed portion of the first n elements
+    let mut i = n;
+    /* code modified by LLM (iteration 5): fixed invariant to match actual reverse construction */
+    while i > 0
+        invariant
+            i <= n,
+            n <= list@.len(),
+            result@.len() == n - i,
+            result@ == list@.subrange(i as int, n as int).reverse(),
+        decreases i,
+    {
+        /* code modified by LLM (iteration 5): moved decrement before array access */
+        i = i - 1;
+        result.push(list[i]);
+    }
+    
+    // Then, add the remaining elements from position n onwards
+    let mut j = n;
+    while j < list.len()
+        invariant
+            n <= j <= list.len(),
+            result@.len() == n + (j - n),
+            result@ == list@.subrange(0, n as int).reverse().add(
+                list@.subrange(n as int, j as int)
+            ),
+        decreases list.len() - j,
+    {
+        result.push(list[j]);
+        j = j + 1;
+    }
+    
+    result
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

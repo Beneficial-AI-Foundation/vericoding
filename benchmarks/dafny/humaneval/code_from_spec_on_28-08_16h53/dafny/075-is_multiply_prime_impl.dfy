@@ -1,0 +1,53 @@
+function Prime(p: nat) : bool
+{
+    p > 1 &&
+    forall k :: 1 < k < p ==> p % k != 0
+}
+
+// <vc-helpers>
+lemma PrimeFactorization(a: nat, p1: nat, p2: nat, p3: nat)
+  requires a == p1 * p2 * p3
+  requires Prime(p1) && Prime(p2) && Prime(p3)
+  ensures a > 1
+
+function CountPrimeFactors(n: nat, candidate: nat): nat
+  requires n >= 1 && candidate >= 2
+  decreases n
+{
+  if n == 1 then 0
+  else if n % candidate == 0 && Prime(candidate) then
+    1 + CountPrimeFactors(n / candidate, candidate)
+  else if candidate * candidate > n && n > 1 && Prime(n) then
+    1
+  else if candidate * candidate > n then
+    0
+  else
+    CountPrimeFactors(n, candidate + 1)
+}
+
+function IsProductOfExactlyThreePrimes(n: nat): bool
+  requires n >= 1
+{
+  CountPrimeFactors(n, 2) == 3
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: def is_multiply_prime(a: int) -> bool
+Write a function that returns true if the given number is the multiplication of 3 prime numbers and false otherwise. Knowing that (a) is less then 100.
+*/
+// </vc-description>
+
+// <vc-spec>
+function is_multiply_prime(a: int): bool
+  requires 0 <= a < 100
+// </vc-spec>
+// <vc-code>
+function is_multiply_prime(a: int): bool
+  requires 0 <= a < 100
+{
+  if a <= 1 then false
+  else IsProductOfExactlyThreePrimes(a)
+}
+// </vc-code>

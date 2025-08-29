@@ -1,0 +1,107 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn count_boolean(seq: Seq<bool>) -> (result: int)
+    decreases seq.len(),
+{
+    if seq.len() == 0 {
+        0
+    } else {
+        count_boolean(seq.drop_last()) + if (seq.last()) {
+            1 as int
+        } else {
+            0 as int
+        }
+    }
+}
+// pure-end
+
+// <vc-helpers>
+proof fn count_boolean_empty(seq: Seq<bool>)
+    requires seq.len() == 0
+    ensures count_boolean(seq) == 0
+{
+}
+
+proof fn count_boolean_bounds(seq: Seq<bool>)
+    ensures 0 <= count_boolean(seq) <= seq.len()
+    decreases seq.len()
+{
+    if seq.len() == 0 {
+        count_boolean_empty(seq);
+    } else {
+        count_boolean_bounds(seq.drop_last());
+        /* code modified by LLM (iteration 2): added int suffix to literal */
+        assert(count_boolean(seq) == count_boolean(seq.drop_last()) + if seq.last() { 1int } else { 0int });
+    }
+}
+
+proof fn count_boolean_prefix(seq: Seq<bool>, i: int)
+    requires 0 <= i < seq.len()
+    ensures count_boolean(seq.take(i as int + 1)) == count_boolean(seq.take(i as int)) + if seq[i] { 1int } else { 0int }
+    decreases seq.len() - i
+{
+    let prefix_i = seq.take(i as int);
+    let prefix_i_plus_1 = seq.take(i as int + 1);
+    
+    assert(prefix_i_plus_1 == prefix_i.push(seq[i]));
+    assert(prefix_i_plus_1.drop_last() == prefix_i);
+    assert(prefix_i_plus_1.last() == seq[i]);
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+
+*/
+// </vc-description>
+
+// <vc-spec>
+fn count_true(arr: &Vec<bool>) -> (count: u64)
+    // pre-conditions-start
+    ensures
+        0 <= count <= arr.len(),
+        count_boolean(arr@) == count,
+    // pre-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut count: u64 = 0;
+    let mut i: usize = 0;
+    
+    proof {
+        count_boolean_bounds(arr@);
+    }
+    
+    /* code modified by LLM (iteration 3): added decreases clause to satisfy verification requirement */
+    while i < arr.len()
+        invariant
+            0 <= i <= arr.len(),
+            0 <= count <= i,
+            count_boolean(arr@.take(i as int)) == count,
+        decreases arr.len() - i
+    {
+        if arr[i] {
+            count = count + 1;
+        }
+        
+        proof {
+            count_boolean_prefix(arr@, i as int);
+        }
+        
+        i = i + 1;
+    }
+    
+    proof {
+        assert(arr@.take(i as int) == arr@);
+    }
+    
+    count
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

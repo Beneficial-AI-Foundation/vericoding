@@ -1,0 +1,177 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+fn contains(arr: &Vec<i32>, key: i32) -> (result: bool)
+    // post-conditions-start
+    ensures
+        result == (exists|i: int| 0 <= i < arr.len() && (arr[i] == key)),
+    // post-conditions-end
+{
+    // impl-start
+    let mut index = 0;
+    while index < arr.len()
+        // invariants-start
+        invariant
+            forall|m: int| 0 <= m < index ==> (arr[m] != key),
+        decreases arr.len() - index,
+        // invariants-end
+    {
+        if (arr[index] == key) {
+            return true;
+        }
+        index += 1;
+    }
+    false
+    // impl-end
+}
+
+proof fn lemma_vec_push<T>(vec: Seq<T>, i: T, l: usize)
+    // pre-conditions-start
+    requires
+        l == vec.len(),
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        forall|k: int| 0 <= k < vec.len() ==> #[trigger] vec[k] == vec.push(i)[k],
+        vec.push(i).index(l as int) == i,
+    // post-conditions-end
+{
+    // impl-start
+    // impl-end
+}
+
+fn contains_result(result: &Vec<i32>, key: i32) -> (b: bool)
+    ensures
+        b == result@.contains(key)
+{
+    let mut i = 0;
+    while i < result.len()
+        invariant
+            0 <= i <= result.len(),
+            forall|j: int| 0 <= j < i ==> result[j] != key,
+        decreases result.len() - i,
+    {
+        if result[i] == key {
+            return true;
+        }
+        i += 1;
+    }
+    false
+}
+
+proof fn lemma_push_preserves_contains<T: PartialEq>(s: Seq<T>, x: T, y: T)
+    ensures
+        s.contains(x) ==> s.push(y).contains(x),
+{
+}
+
+proof fn lemma_push_contains_new<T: PartialEq>(s: Seq<T>, x: T)
+    ensures
+        s.push(x).contains(x),
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn find_dissimilar(arr1: &Vec<i32>, arr2: &Vec<i32>) -> (result: Vec<i32>)
+    // post-conditions-start
+    ensures
+        forall|i: int|
+            0 <= i < arr1.len() ==> (!arr2@.contains(#[trigger] arr1[i]) ==> result@.contains(
+                arr1[i],
+            )),
+        forall|i: int|
+            0 <= i < arr2.len() ==> (!arr1@.contains(#[trigger] arr2[i]) ==> result@.contains(
+                arr2[i],
+            )),
+        forall|i: int, j: int|
+            0 <= i < j < result.len() ==> #[trigger] result[i] != #[trigger] result[j],
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    // impl-start
+    let mut result = Vec::new();
+    
+    let mut i = 0;
+    while i < arr1.len()
+        invariant
+            0 <= i <= arr1.len(),
+            forall|k: int| 0 <= k < i ==> (!arr2@.contains(arr1[k]) ==> result@.contains(arr1[k])),
+            forall|k: int, j: int| 0 <= k < j < result.len() ==> result[k] != result[j],
+        decreases arr1.len() - i,
+    {
+        if !contains(arr2, arr1[i]) {
+            if !contains_result(&result, arr1[i]) {
+                /* code modified by LLM (iteration 5): fixed assertions by using push properties */
+                proof {
+                    let old_result = result@;
+                    let new_val = arr1[i as int];
+                    lemma_push_contains_new(old_result, new_val);
+                    lemma_push_preserves_contains(old_result, new_val, new_val);
+                    assert(old_result.push(new_val).contains(new_val));
+                    assert(forall|k: int| 0 <= k < i ==> (!arr2@.contains(arr1[k]) ==> {
+                        if result@.contains(arr1[k]) {
+                            lemma_push_preserves_contains(old_result, arr1[k], new_val);
+                            old_result.push(new_val).contains(arr1[k])
+                        } else {
+                            old_result.push(new_val).contains(arr1[k])
+                        }
+                    }));
+                }
+                result.push(arr1[i]);
+            }
+        }
+        i += 1;
+    }
+    
+    let mut j = 0;
+    while j < arr2.len()
+        invariant
+            0 <= j <= arr2.len(),
+            forall|k: int| 0 <= k < arr1.len() ==> (!arr2@.contains(arr1[k]) ==> result@.contains(arr1[k])),
+            forall|k: int| 0 <= k < j ==> (!arr1@.contains(arr2[k]) ==> result@.contains(arr2[k])),
+            forall|k: int, l: int| 0 <= k < l < result.len() ==> result[k] != result[l],
+        decreases arr2.len() - j,
+    {
+        if !contains(arr1, arr2[j]) {
+            if !contains_result(&result, arr2[j]) {
+                /* code modified by LLM (iteration 5): fixed assertions by using push properties */
+                proof {
+                    let old_result = result@;
+                    let new_val = arr2[j as int];
+                    lemma_push_contains_new(old_result, new_val);
+                    assert(forall|k: int| 0 <= k < arr1.len() ==> (!arr2@.contains(arr1[k]) ==> {
+                        if result@.contains(arr1[k]) {
+                            lemma_push_preserves_contains(old_result, arr1[k], new_val);
+                            old_result.push(new_val).contains(arr1[k])
+                        } else {
+                            old_result.push(new_val).contains(arr1[k])
+                        }
+                    }));
+                    assert(forall|k: int| 0 <= k < j ==> (!arr1@.contains(arr2[k]) ==> {
+                        if result@.contains(arr2[k]) {
+                            lemma_push_preserves_contains(old_result, arr2[k], new_val);
+                            old_result.push(new_val).contains(arr2[k])
+                        } else {
+                            old_result.push(new_val).contains(arr2[k])
+                        }
+                    }));
+                }
+                result.push(arr2[j]);
+            }
+        }
+        j += 1;
+    }
+    
+    result
+    // impl-end
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

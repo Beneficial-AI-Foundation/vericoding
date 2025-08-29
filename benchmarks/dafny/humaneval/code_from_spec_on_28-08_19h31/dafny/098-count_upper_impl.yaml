@@ -1,0 +1,57 @@
+vc-preamble: |-
+
+
+vc-helpers: |-
+  function count_upper_vowels(s: string, index: int) : int
+    requires 0 <= index <= |s|
+    decreases |s| - index
+  {
+    if index == |s| then 0
+    else if index % 2 == 0 && is_upper_vowel(s[index]) then 1 + count_upper_vowels(s, index + 1)
+    else count_upper_vowels(s, index + 1)
+  }
+  
+  lemma CountUpperVowelsCorrect(s: string, index: int)
+    requires 0 <= index <= |s|
+    ensures count_upper_vowels(s, index) == |set i | index <= i < |s| && i % 2 == 0 && is_upper_vowel(s[i])|
+    decreases |s| - index
+  {
+    if index == |s| {
+      assert count_upper_vowels(s, index) == 0;
+      assert |set i | index <= i < |s| && i % 2 == 0 && is_upper_vowel(s[i])| == 0;
+    } else {
+      CountUpperVowelsCorrect(s, index + 1);
+      if index % 2 == 0 && is_upper_vowel(s[index]) {
+        assert count_upper_vowels(s, index) == 1 + count_upper_vowels(s, index + 1);
+        assert |set i | index <= i < |s| && i % 2 == 0 && is_upper_vowel(s[i])| == 1 + |set i | index + 1 <= i < |s| && i % 2 == 0 && is_upper_vowel(s[i])|;
+      } else {
+        assert count_upper_vowels(s, index) == count_upper_vowels(s, index + 1);
+        assert |set i | index <= i < |s| && i % 2 == 0 && is_upper_vowel(s[i])| == |set i | index + 1 <= i < |s| && i % 2 == 0 && is_upper_vowel(s[i])|;
+      }
+    }
+  }
+
+vc-description: |-
+  function_signature: def count_upper(s : String) -> Int
+  Given a string s, count the number of uppercase vowels in even indices.
+
+vc-spec: |-
+  method count_upper(s: string) returns (cnt: int)
+    // post-conditions-start
+    ensures cnt == |set i | 0 <= i < |s| && i % 2 == 0 && is_upper_vowel(s[i])|
+    // post-conditions-end
+
+vc-code: |-
+  method CountUpper(s: string) returns (cnt: int)
+    ensures cnt == |set i | 0 <= i < |s| && i % 2 == 0 && is_upper_vowel(s[i])|
+  {
+    cnt := count_upper_vowels(s, 0);
+    CountUpperVowelsCorrect(s, 0);
+  }
+
+vc-postamble: |-
+  function is_upper_vowel(c: char) : bool {
+    c == 'A' || c == 'E' || c == 'U' || c == 'I' || c == 'O'
+  }
+  // pure-end
+

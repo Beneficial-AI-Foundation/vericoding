@@ -1,0 +1,54 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+  spec fn is_sorted_two_way(s: Seq<bool>) -> bool {
+      forall|i: int, j: int| 0 <= i < j < s.len() ==> (!s[i] || s[j])
+  }
+  
+  spec fn multiset_equivalent(s1: Seq<bool>, s2: Seq<bool>) -> bool {
+      s1.len() == s2.len() && 
+      forall|v: bool| s1.count(v) == s2.count(v)
+  }
+
+vc-description: |-
+  function_signature: "fn two_way_sort(a: &mut Vec<bool>)"
+  docstring: Sort elements according to specified criteria.
+
+vc-spec: |-
+  fn two_way_sort(a: &mut Vec<bool>)
+      requires a.len() < usize::MAX
+      ensures a@.len() == old(a)@.len()
+      ensures is_sorted_two_way(a@)
+      ensures multiset_equivalent(a@, old(a)@)
+
+vc-code: |-
+  {
+      let mut i = 0;
+      let mut j = a.len();
+      
+      while i < j
+          invariant 0 <= i <= j <= a.len()
+          invariant forall|k: int| 0 <= k < i ==> !a@[k]
+          invariant forall|k: int| j <= k < a.len() ==> a@[k]
+          invariant multiset_equivalent(a@, old(a)@)
+      {
+          /* code modified by LLM (iteration 5): fixed bounds check and swap logic */
+          if !a[i] {
+              i += 1;
+          } else {
+              j -= 1;
+              let temp = a[i];
+              a.set(i, a[j]);
+              a.set(j, temp);
+          }
+      }
+  }
+
+vc-postamble: |-
+  
+  fn main() {}
+  }
+

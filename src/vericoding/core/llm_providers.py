@@ -173,30 +173,103 @@ class GrokProvider(LLMProvider):
         return "XAI_API_KEY"
 
 
+class OpenRouterProvider(LLMProvider):
+    """OpenRouter LLM provider."""
+
+    def __init__(self, api_key: str, model: str = "openai/gpt-4o", **kwargs):
+        super().__init__(api_key, model, **kwargs)
+        try:
+            import openai  # OpenRouter uses OpenAI-compatible API
+
+            self.client = openai.OpenAI(
+                api_key=api_key, base_url="https://openrouter.ai/api/v1"
+            )
+        except ImportError:
+            raise ImportError(
+                "OpenAI package not installed. Install with: pip install openai"
+            )
+
+    def call_api(self, prompt: str) -> str:
+        try:
+            response = self.client.chat.completions.create(
+                model=self.model,
+                messages=[{"role": "user", "content": prompt}],
+                max_tokens=self.max_tokens,
+                timeout=self.timeout,
+            )
+
+            if response.choices and len(response.choices) > 0:
+                return response.choices[0].message.content
+            else:
+                raise ValueError("Unexpected response format from OpenRouter API")
+
+        except Exception as e:
+            raise ValueError(f"Error calling OpenRouter API: {str(e)}")
+
+    def get_required_env_var(self) -> str:
+        return "OPENROUTER_API_KEY"
+
+
 def create_llm_provider(provider_name: str, model: str = None) -> LLMProvider:
     """Factory function to create LLM providers."""
     import sys
     
     provider_configs = {
         "claude": {
-            "class": AnthropicProvider,
-            "default_model": "claude-sonnet-4-20250514",
-            "env_var": "ANTHROPIC_API_KEY",
+            "class": OpenRouterProvider,
+            "default_model": "anthropic/claude-opus-4.1",  # Latest Claude Opus 4.1 (Aug 2025)
+            "env_var": "OPENROUTER_API_KEY",
         },
-        "openai": {
+        "gpt": {
+            "class": OpenRouterProvider,
+            "default_model": "openai/gpt-5",  # Latest GPT-5 (Aug 2025)
+            "env_var": "OPENROUTER_API_KEY",
+        },
+        "o1": {
+            "class": OpenRouterProvider,
+            "default_model": "openai/o1-preview",  # O1 reasoning model
+            "env_var": "OPENROUTER_API_KEY",
+        },
+        "gemini": {
+            "class": OpenRouterProvider,
+            "default_model": "google/gemini-2.5-pro",  # Latest Gemini 2.5 Pro (June 2025)
+            "env_var": "OPENROUTER_API_KEY",
+        },
+        "grok": {
+            "class": OpenRouterProvider,
+            "default_model": "x-ai/grok-4",  # Latest Grok 4 (July 2025)
+            "env_var": "OPENROUTER_API_KEY",
+        },
+        "deepseek": {
+            "class": OpenRouterProvider,
+            "default_model": "deepseek/deepseek-v3.1",  # Latest DeepSeek V3.1 (Aug 2025)
+            "env_var": "OPENROUTER_API_KEY",
+        },
+        "glm": {
+            "class": OpenRouterProvider,
+            "default_model": "zhipuai/glm-4.5-turbo",  # GLM-4.5 Turbo (2025)
+            "env_var": "OPENROUTER_API_KEY",
+        },
+        "mistral": {
+            "class": OpenRouterProvider,
+            "default_model": "mistralai/mistral-large-2",  # Latest Mistral Large 2 (2025)
+            "env_var": "OPENROUTER_API_KEY",
+        },
+        "openrouter": {
+            "class": OpenRouterProvider,
+            "default_model": "anthropic/claude-opus-4.1",  # Default to latest Claude Opus 4.1
+            "env_var": "OPENROUTER_API_KEY",
+        },
+        # Keep legacy direct providers for backwards compatibility
+        "openai-direct": {
             "class": OpenAIProvider,
             "default_model": "gpt-4o",
             "env_var": "OPENAI_API_KEY",
         },
-        "deepseek": {
-            "class": DeepSeekProvider,
-            "default_model": "deepseek-chat",
-            "env_var": "DEEPSEEK_API_KEY",
-        },
-        "grok": {
-            "class": GrokProvider,
-            "default_model": "grok-3",
-            "env_var": "XAI_API_KEY",
+        "claude-direct": {
+            "class": AnthropicProvider,
+            "default_model": "claude-sonnet-4-20250514",
+            "env_var": "ANTHROPIC_API_KEY",
         },
     }
 

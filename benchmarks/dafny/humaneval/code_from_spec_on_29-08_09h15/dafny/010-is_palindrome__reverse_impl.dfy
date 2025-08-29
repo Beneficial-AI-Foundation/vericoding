@@ -1,0 +1,127 @@
+function is_palindrome(s : string) : bool {
+    forall k :: 0 <= k < |s| ==> s[k] == s[|s| - 1 - k]
+}
+function starts_with(result : string, s : string) : bool {
+    |result| >= |s| && forall k :: 0 <= k < |s| ==> result[k] == s[k]
+}
+method make_palindrome(s: string) returns (result: string)
+    // post-conditions-start
+    ensures |result| <= 2 * |s|
+    ensures is_palindrome(result)
+    ensures starts_with(result, s)
+    // post-conditions-end
+{
+  assume{:axiom} false;
+}
+
+// <vc-helpers>
+function reverse_func(str: string) : string 
+    ensures |reverse_func(str)| == |str|
+    ensures forall k :: 0 <= k < |str| ==> reverse_func(str)[k] == str[|str| - 1 - k]
+{
+    if |str| == 0 then ""
+    else reverse_func(str[1..]) + [str[0]]
+}
+
+lemma reverse_palindrome_property(s: string)
+    ensures is_palindrome(s + reverse_func(s))
+{
+    var rev := reverse_func(s);
+    var result := s + rev;
+    
+    forall k | 0 <= k < |result|
+        ensures result[k] == result[|result| - 1 - k]
+    {
+        if k < |s| {
+            assert result[k] == s[k];
+            var mirror_idx := |result| - 1 - k;
+            assert mirror_idx >= |s|;
+            var rev_idx := mirror_idx - |s|;
+            assert rev_idx == |s| - 1 - k;
+            assert result[mirror_idx] == rev[rev_idx];
+            assert rev[rev_idx] == s[|s| - 1 - rev_idx];
+            assert s[|s| - 1 - rev_idx] == s[k];
+        } else {
+            var idx := k - |s|;
+            assert result[k] == rev[idx];
+            assert rev[idx] == s[|s| - 1 - idx];
+            var mirror_idx := |result| - 1 - k;
+            assert mirror_idx < |s|;
+            assert result[mirror_idx] == s[mirror_idx];
+            assert s[mirror_idx] == s[|s| - 1 - idx];
+        }
+    }
+}
+
+lemma concatenation_starts_with(s: string, suffix: string)
+    ensures starts_with(s + suffix, s)
+{
+    var result := s + suffix;
+    assert |result| >= |s|;
+    forall k | 0 <= k < |s|
+        ensures result[k] == s[k]
+    {
+        assert result[k] == s[k];
+    }
+}
+
+lemma reverse_append_lemma(rev: string, c: char, i: int, str: string)
+    requires 0 <= i < |str|
+    requires |rev| == |str| - 1 - i
+    requires forall k :: 0 <= k < |rev| ==> rev[k] == str[i + 1 + k]
+    ensures |rev + [c]| == |str| - i
+    ensures forall k :: 0 <= k < |rev + [c]| ==> (rev + [c])[k] == str[i + k]
+{
+    var new_rev := rev + [c];
+    assert |new_rev| == |rev| + 1 == |str| - 1 - i + 1 == |str| - i;
+    
+    forall k | 0 <= k < |new_rev|
+        ensures new_rev[k] == str[i + k]
+    {
+        if k < |rev| {
+            assert new_rev[k] == rev[k];
+            assert rev[k] == str[i + 1 + k];
+            assert str[i + 1 + k] == str[i + k + 1];
+        } else {
+            assert k == |rev|;
+            assert new_rev[k] == c;
+            assert str[i + k] == str[i + |rev|];
+            assert i + |rev| == i + |str| - 1 - i == |str| - 1;
+        }
+    }
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: method reverse(str: string) returns (rev: string)
+Reverse order. Ensures: returns the correct size/count; the condition holds for all values.
+*/
+// </vc-description>
+
+// <vc-spec>
+method reverse(str: string) returns (rev: string)
+    // post-conditions-start
+    ensures |rev| == |str|
+    ensures forall k :: 0 <= k < |str| ==> rev[k] == str[|str| - 1 - k]
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    rev := "";
+    var i := |str| - 1;
+    
+    while i >= 0
+        invariant -1 <= i < |str|
+        invariant |rev| == |str| - 1 - i
+        invariant forall k :: 0 <= k < |rev| ==> rev[k] == str[i + 1 + k]
+        decreases i + 1
+    {
+        reverse_append_lemma(rev, str[i], i, str);
+        rev := rev + [str[i]];
+        i := i - 1;
+    }
+}
+// </vc-code>
+

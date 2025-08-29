@@ -1,0 +1,58 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn is_divisible(n: int, divisor: int) -> (ret:bool) {
+      (n % divisor) == 0
+  }
+  // pure-end
+  // pure-end
+  
+  spec fn is_prime(n: int) -> (ret:bool) {
+      if n < 2 {
+          false
+      } else {
+          (forall|k: int| 2 <= k < n ==> !is_divisible(n as int, k))
+      }
+  }
+  // pure-end
+
+vc-helpers: |-
+
+
+vc-description: |-
+  function_signature: "def prime_length(s: str) -> bool"
+  docstring: |
+  Write a function that takes a string and returns True if the string
+  length is a prime number or False otherwise
+  test_cases:
+  - input: "Hello"
+  output: True
+  - input: "abcdcba"
+  output: True
+  - input: "kittens"
+  output: True
+  - input: "orange"
+  output: False
+
+vc-spec: |-
+  fn prime_length(str: &[char]) -> (result: bool)
+      // post-conditions-start
+      ensures
+          result == is_prime(str.len() as int),
+      // post-conditions-end
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      false
+      // impl-end
+  }
+
+vc-postamble: |-
+  
+  } // verus!
+  fn main() {}
+

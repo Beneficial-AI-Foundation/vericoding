@@ -1,0 +1,75 @@
+use vstd::prelude::*;
+
+verus!{
+
+// <vc-helpers>
+proof fn lemma_binary_search_bounds(v: &Vec<u64>, k: u64, low: usize, high: usize)
+    requires
+        forall|i:int, j:int| 0 <= i <= j < v.len() ==> v[i] <= v[j],
+        low < high,
+        high <= v.len(),
+        v[low as int] <= k,
+        k <= v[(high - 1) as int],
+    ensures
+        exists|i:int| low <= i < high && k == v[i] ==> exists|j:int| 0 <= j < v.len() && k == v[j],
+{
+}
+
+proof fn lemma_sorted_property(v: &Vec<u64>, i: usize, j: usize)
+    requires
+        forall|x:int, y:int| 0 <= x <= y < v.len() ==> v[x] <= v[y],
+        i < v.len(),
+        j < v.len(),
+        i <= j,
+    ensures
+        v[i as int] <= v[j as int],
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn binary_search(v: &Vec<u64>, k: u64) -> (result:usize)
+    // pre-conditions-start
+    requires
+        forall|i:int, j:int| 0 <= i <= j < v.len() ==> v[i] <= v[j],
+        exists|i:int| 0 <= i < v.len() && k == v[i],
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        result < v.len(),
+        k == v[result as int],
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut low: usize = 0;
+    let mut high: usize = v.len();
+    
+    while low < high
+        invariant
+            low <= high,
+            high <= v.len(),
+            forall|i:int, j:int| 0 <= i <= j < v.len() ==> v[i] <= v[j],
+            exists|i:int| 0 <= i < v.len() && k == v[i],
+            exists|i:int| low <= i < high && k == v[i],
+        decreases high - low,
+    {
+        let mid = low + (high - low) / 2;
+        
+        if v[mid] == k {
+            return mid;
+        } else if v[mid] < k {
+            low = mid + 1;
+        } else {
+            high = mid;
+        }
+    }
+    
+    unreached()
+}
+// </vc-code>
+
+}
+
+fn main() {}

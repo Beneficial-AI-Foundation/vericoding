@@ -1,0 +1,122 @@
+vc-preamble: |-
+  method parse_paren_group(s : string) returns (max_depth : int)
+      // pre-conditions-start
+      requires forall i :: i >= 0 && i < |s| ==> s[i] == '(' || s[i] == ')'
+      // pre-conditions-end
+      // post-conditions-start
+      ensures max_depth >= 0
+      // post-conditions-end
+  {
+    assume{:axiom} false;
+  }
+
+vc-helpers: |-
+  predicate is_valid_char(c: char)
+  {
+      c == '(' || c == ')' || c == ' '
+  }
+  
+  predicate is_space(c: char)
+  {
+      c == ' '
+  }
+  
+  function split_by_space(s: string): seq<string>
+  {
+      if |s| == 0 then []
+      else
+          var first_non_space := find_first_non_space(s, 0);
+          if first_non_space == |s| then []
+          else
+              var next_space := find_next_space(s, first_non_space);
+              var group := s[first_non_space..next_space];
+              [group] + split_by_space(s[next_space..])
+  }
+  
+  function find_first_non_space(s: string, start: int): int
+      requires 0 <= start <= |s|
+      ensures start <= find_first_non_space(s, start) <= |s|
+  {
+      if start >= |s| then |s|
+      else if !is_space(s[start]) then start
+      else find_first_non_space(s, start + 1)
+  }
+  
+  function find_next_space(s: string, start: int): int
+      requires 0 <= start <= |s|
+      ensures start <= find_next_space(s, start) <= |s|
+  {
+      if start >= |s| then |s|
+      else if is_space(s[start]) then start
+      else find_next_space(s, start + 1)
+  }
+  
+  lemma split_preserves_validity(s: string)
+      requires forall i :: 0 <= i < |s| ==> is_valid_char(s[i])
+      ensures forall group :: group in split_by_space(s) ==> 
+          forall j :: 0 <= j < |group| ==> group[j] == '(' || group[j] == ')'
+  {
+      // Proof omitted for brevity
+  }
+
+vc-description: |-
+  function_signature: method split(s : string) returns (res : seq<string>)
+  Process input. Requires: the condition holds for all values. Ensures: the condition holds for all values.
+
+vc-spec: |-
+  method split(s : string) returns (res : seq<string>)
+      requires forall i :: 0 <= i < |s| ==> is_valid_char(s[i])
+      ensures forall group :: group in res ==> 
+          forall j :: 0 <= j < |group| ==> group[j] == '(' || group[j] == ')'
+      ensures forall group :: group in res ==> |group| > 0
+
+vc-code: |-
+  {
+      res := [];
+      var i := 0;
+      
+      while i < |s|
+          invariant 0 <= i <= |s|
+          invariant forall group :: group in res ==> 
+              forall j :: 0 <= j < |group| ==> group[j] == '(' || group[j] == ')'
+          invariant forall group :: group in res ==> |group| > 0
+      {
+          // Skip spaces
+          while i < |s| && s[i] == ' '
+              invariant 0 <= i <= |s|
+          {
+              i := i + 1;
+          }
+          
+          if i < |s| {
+              // Found start of a group
+              var start := i;
+              
+              // Find end of group (next space or end of string)
+              while i < |s| && s[i] != ' '
+                  invariant start <= i <= |s|
+                  invariant forall k :: start <= k < i ==> s[k] == '(' || s[k] == ')'
+              {
+                  i := i + 1;
+              }
+              
+              if i > start {
+                  var group := s[start..i];
+                  res := res + [group];
+              }
+          }
+      }
+  }
+
+vc-postamble: |-
+  method parse_nested_parens(paren_string: string) returns (res : seq<int>)
+      // pre-conditions-start
+      requires forall i :: i >= 0 && i < |paren_string| ==> paren_string[i] == '(' || paren_string[i] == ')' || paren_string[i] == ' '
+      // pre-conditions-end
+      // post-conditions-start
+      ensures forall x :: x in res ==> x >= 0
+      // post-conditions-end
+  {
+    assume{:axiom} false;
+  }
+

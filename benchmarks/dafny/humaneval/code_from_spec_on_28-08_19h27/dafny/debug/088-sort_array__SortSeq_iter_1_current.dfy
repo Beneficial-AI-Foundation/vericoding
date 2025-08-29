@@ -1,0 +1,76 @@
+method sort_array(s: seq<int>) returns (sorted: seq<int>)
+  // post-conditions-start
+  ensures |sorted| == |s|
+  ensures |s| > 0 && (s[0] + s[|s| - 1]) % 2 == 0 ==>
+    forall i, j :: 0 <= i < j < |sorted| ==> sorted[i] >= sorted[j]
+  ensures |s| > 0 && (s[0] + s[|s| - 1]) % 2 != 0 ==>
+    forall i, j :: 0 <= i < j < |sorted| ==> sorted[i] <= sorted[j]
+  // post-conditions-end
+{
+  assume{:axiom} false;
+}
+method reverse(s: seq<int>) returns (rev: seq<int>)
+  // post-conditions-start
+  ensures |rev| == |s|
+  ensures forall k :: 0 <= k < |s| ==> rev[k] == s[|s| - 1 - k]
+  // post-conditions-end
+{
+  assume{:axiom} false;
+}
+
+// <vc-helpers>
+predicate IsPermutation(s1: seq<int>, s2: seq<int>)
+{
+  |s1| == |s2| && multiset(s1) == multiset(s2)
+}
+
+predicate IsSorted(s: seq<int>)
+{
+  forall i, j :: 0 <= i <= j < |s| ==> s[i] <= s[j]
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: method SortSeq(s: seq<int>) returns (sorted: seq<int>)
+Sort elements. Ensures: the result is sorted according to the ordering relation; returns the correct size/count; returns a sorted permutation of the input.
+*/
+// </vc-description>
+
+// <vc-spec>
+method SortSeq(s: seq<int>) returns (sorted: seq<int>)
+  ensures |sorted| == |s|
+  ensures IsSorted(sorted)
+  ensures IsPermutation(s, sorted)
+// </vc-spec>
+// <vc-code>
+{
+  sorted := s;
+  var i := 0;
+  while i < |sorted|
+    invariant 0 <= i <= |sorted|
+    invariant |sorted| == |s|
+    invariant IsPermutation(s, sorted)
+    invariant forall p, q :: 0 <= p <= q < i ==> sorted[p] <= sorted[q]
+    invariant forall p, q :: 0 <= p < i <= q < |sorted| ==> sorted[p] <= sorted[q]
+  {
+    var minIndex := i;
+    var j := i + 1;
+    while j < |sorted|
+      invariant i <= minIndex < |sorted|
+      invariant i <= j <= |sorted|
+      invariant forall k :: i <= k < j ==> sorted[minIndex] <= sorted[k]
+    {
+      if sorted[j] < sorted[minIndex] {
+        minIndex := j;
+      }
+      j := j + 1;
+    }
+    if minIndex != i {
+      var temp := sorted[i];
+      sorted := sorted[i := sorted[minIndex]][minIndex := temp];
+    }
+    i := i + 1;
+  }
+}
+// </vc-code>

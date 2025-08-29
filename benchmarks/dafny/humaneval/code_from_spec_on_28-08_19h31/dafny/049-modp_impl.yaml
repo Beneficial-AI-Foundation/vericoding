@@ -1,0 +1,72 @@
+vc-preamble: |-
+  function modp_rec(n: int, p: int): int
+    requires p > 0
+    requires n >= 0
+  {
+      if n == 0 then 1 % p else (modp_rec(n - 1, p) * 2) % p
+  }
+
+vc-helpers: |-
+  lemma modp_rec_properties(n: int, p: int)
+    requires p > 0
+    requires n >= 0
+    ensures modp_rec(n, p) == (power(2, n) % p)
+  {
+    if n == 0 {
+      assert modp_rec(0, p) == 1 % p;
+      assert power(2, 0) == 1;
+    } else {
+      modp_rec_properties(n - 1, p);
+      assert modp_rec(n, p) == (modp_rec(n - 1, p) * 2) % p;
+      assert modp_rec(n - 1, p) == (power(2, n - 1) % p);
+      assert modp_rec(n, p) == ((power(2, n - 1) % p) * 2) % p;
+      assert power(2, n) == power(2, n - 1) * 2;
+      calc {
+        ((power(2, n - 1) % p) * 2) % p;
+        == { assert (power(2, n - 1) * 2) == power(2, n); }
+        (power(2, n) % p);
+      }
+    }
+  }
+  
+  function power(base: int, exp: int): int
+    requires exp >= 0
+  {
+    if exp == 0 then 1 else base * power(base, exp - 1)
+  }
+
+vc-description: |-
+  function_signature: def modp(n: Nat, p: Nat) -> Nat
+  Return 2^n modulo p (be aware of numerics).
+
+vc-spec: |-
+  method modp(n: int, p: int) returns (r: int)
+    // pre-conditions-start
+    requires p > 0
+    requires n >= 0
+    // pre-conditions-end
+    // post-conditions-start
+    ensures r == modp_rec(n, p)
+    // post-conditions-end
+
+vc-code: |-
+  method modp(n: int, p: int) returns (r: int)
+    requires p > 0
+    requires n >= 0
+    ensures r == modp_rec(n, p)
+  {
+    var res := 1;
+    var i := 0;
+    while i < n
+      invariant 0 <= i <= n
+      invariant res == modp_rec(i, p)
+    {
+      res := (res * 2) % p;
+      i := i + 1;
+    }
+    r := res;
+  }
+
+vc-postamble: |-
+
+

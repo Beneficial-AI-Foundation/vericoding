@@ -1,0 +1,84 @@
+method is_sorted(a: seq<int>) returns (f: bool)
+  // post-conditions-start
+  ensures f == forall i, j :: 0 <= i <= j < |a| ==> a[i] <= a[j] && forall i :: 0 <= i < |a| ==> count_set(a, a[i]) <= 2
+  // post-conditions-end
+{
+  assume{:axiom} false;
+}
+
+// <vc-helpers>
+function count_set_unique(a: seq<int>, x: int): int {
+  |set i | 0 <= i < |a| && a[i] == x|
+}
+
+lemma count_set_non_negative(a: seq<int>, x: int)
+  ensures count_set_unique(a, x) >= 0
+{
+  assert |set i | 0 <= i < |a| && a[i] == x| >= 0;
+}
+
+lemma count_set_range(a: seq<int>, x: int, start: int, end: int)
+  requires 0 <= start <= end <= |a|
+  ensures |set j | start <= j < end && a[j] == x| <= count_set_unique(a, x)
+{
+  var s1 := set j | start <= j < end && a[j] == x;
+  var s2 := set j | 0 <= j < |a| && a[j] == x;
+  assert s1 <= s2;
+}
+// </vc-helpers>
+
+// <vc-spec>
+method count_sorted(a: seq<int>, x: int, pos: int) returns (count: int)
+  // pre-conditions-start
+  requires forall i, j :: 0 <= i <= j < |a| ==> a[i] <= a[j]
+  requires 0 <= pos < |a|
+  requires a[pos] == x
+  requires pos == 0 || a[pos - 1] < x
+  // pre-conditions-end
+  // post-conditions-start
+  ensures count == count_set(a, x)
+  // post-conditions-end
+// </vc-spec>
+// <vc-code>
+{
+  var i := pos;
+  var cnt := 1;
+  
+  while i < |a| - 1
+    invariant pos <= i < |a|
+    invariant cnt == |set j | pos <= j <= i && a[j] == x|
+    invariant i < |a| - 1 ==> i + 1 < |a|
+    invariant forall j :: pos <= j <= i ==> a[j] == x
+    invariant i < |a| ==> (i == pos || a[i-1] <= a[i])
+    invariant i < |a| - 1 && a[i+1] > x ==> cnt == |set j | pos <= j <= i && a[j] == x| == |set j | 0 <= j < |a| && a[j] == x|
+    decreases |a| - i
+  {
+    i := i + 1;
+    if a[i] == x {
+      cnt := cnt + 1;
+    } else {
+      assert a[i] > x;
+      break;
+    }
+  }
+  
+  if i == |a| - 1 && a[i] == x {
+    cnt := cnt;
+  }
+  
+  if i < |a| - 1 {
+    assert a[i+1] > x;
+    assert cnt == |set j | pos <= j <= i && a[j] == x| == |set j | 0 <= j < |a| && a[j] == x|;
+  } else if i == |a| - 1 {
+    assert cnt == |set j | pos <= j <= i && a[j] == x| == |set j | 0 <= j < |a| && a[j] == x|;
+  }
+  
+  assert cnt == |set j | 0 <= j < |a| && a[j] == x|;
+  return cnt;
+}
+// </vc-code>
+
+function count_set(a: seq<int>, x: int): int {
+  |set i | 0 <= i < |a| && a[i] == x|
+}
+// pure-end

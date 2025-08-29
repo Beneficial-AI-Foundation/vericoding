@@ -1,0 +1,81 @@
+vc-description: |-
+
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus!{
+
+vc-helpers: |-
+  proof fn lemma_filter_preserves_uniqueness(v: &Vec<i32>, predicate: spec_fn(i32) -> bool)
+      requires
+          forall |k1:int,k2:int| 0 <= k1 < k2 < v.len() ==> v[k1] != v[k2],
+      ensures
+          forall |k1:int,k2:int| 0 <= k1 < k2 < v@.filter(predicate).len() ==> v@.filter(predicate)[k1] != v@.filter(predicate)[k2],
+  {
+      assert forall |k1:int,k2:int| 0 <= k1 < k2 < v@.filter(predicate).len() implies v@.filter(predicate)[k1] != v@.filter(predicate)[k2] by {
+          let filtered = v@.filter(predicate);
+          assert(filtered[k1] != filtered[k2]);
+      };
+  }
+  
+  proof fn lemma_filtered_elements_in_original(v: &Vec<i32>, predicate: spec_fn(i32) -> bool, k: int)
+      requires
+          0 <= k < v@.filter(predicate).len(),
+      ensures
+          v@.contains(v@.filter(predicate)[k]),
+  {
+      let filtered = v@.filter(predicate);
+      assert(v@.contains(filtered[k]));
+  }
+  
+  proof fn lemma_original_satisfying_in_filtered(v: &Vec<i32>, predicate: spec_fn(i32) -> bool, k: int)
+      requires
+          0 <= k < v.len(),
+          predicate(v[k]),
+      ensures
+          v@.filter(predicate).contains(v[k]),
+  {
+      assert(v@.filter(predicate).contains(v[k]));
+  }
+
+vc-spec: |-
+  fn remove_all_greater(v: Vec<i32>, e: i32) -> (result: Vec<i32>)
+      // pre-conditions-start
+      requires 
+          forall |k1:int,k2:int| 0 <= k1 < k2 < v.len() ==> v[k1] != v[k2],
+      // pre-conditions-end
+      // post-conditions-start
+      ensures
+          forall |k:int| 0 <= k < result.len() ==> result[k] <= e && v@.contains(result[k]),
+          forall |k:int| 0 <= k < v.len() && v[k] <= e ==> result@.contains(v[k]),
+      // post-conditions-end
+
+vc-code: |-
+  {
+      /* code modified by LLM (iteration 5): removed unnecessary proof block syntax */
+      let mut result: Vec<i32> = Vec::new();
+      let mut i = 0;
+      
+      while i < v.len()
+          invariant
+              0 <= i <= v.len(),
+              forall |k:int| 0 <= k < result.len() ==> result[k] <= e && v@.contains(result[k]),
+              forall |k:int| 0 <= k < i && v[k] <= e ==> result@.contains(v[k]),
+          decreases v.len() - i
+      {
+          if v[i] <= e {
+              result.push(v[i]);
+          }
+          i += 1;
+      }
+      
+      result
+  }
+
+vc-postamble: |-
+  
+  }
+  
+  fn main() {}
+

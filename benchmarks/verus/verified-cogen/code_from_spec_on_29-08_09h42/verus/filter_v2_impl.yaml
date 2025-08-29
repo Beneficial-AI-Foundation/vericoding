@@ -1,0 +1,93 @@
+vc-description: |-
+
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus!{
+
+vc-helpers: |-
+  proof fn lemma_seq_take_ascend<T>(v: Seq<T>, i: int)
+      requires
+          0 < i <= v.len(),
+      ensures
+          v.take(i as int).drop_last() == v.take(i-1),
+  {
+      assert(v.take(i as int).drop_last() =~= v.take(i-1));
+  }
+  
+  proof fn lemma_seq_take_all<T>(v: Seq<T>)
+      ensures
+          v == v.take(v.len() as int),
+  {
+      assert(v =~= v.take(v.len() as int));
+  }
+  
+  proof fn lemma_filter_prefix<T>(s: Seq<T>, pred: spec_fn(T) -> bool, i: int)
+      requires
+          0 <= i <= s.len(),
+      ensures
+          s.take(i).filter(pred) == s.filter(pred).take(s.take(i).filter(pred).len() as int),
+  {
+      proof {
+          if i == 0 {
+              /* code modified by LLM (iteration 5): added explicit type annotation for Seq::empty() */
+              assert(s.take(0).filter(pred) == Seq::<T>::empty());
+              assert(s.filter(pred).take(0) == Seq::<T>::empty());
+          } else if i == s.len() {
+              assert(s.take(s.len() as int) == s);
+              assert(s.filter(pred).take(s.filter(pred).len() as int) == s.filter(pred));
+          } else {
+              let prefix = s.take(i);
+              assert(prefix.filter(pred).len() <= s.filter(pred).len());
+              assert(s.filter(pred).take(prefix.filter(pred).len() as int) == prefix.filter(pred)) by {
+                  assert(prefix.filter(pred) == s.filter(pred).take(prefix.filter(pred).len() as int));
+              };
+          }
+      }
+  }
+
+vc-spec: |-
+  fn myfun4(x: &Vec<u64>, y: &mut Vec<u64>)
+      // pre-conditions-start
+      requires 
+          old(y).len() == 0,
+      // pre-conditions-end
+      // post-conditions-start
+      ensures 
+          y@ == x@.filter(|k:u64| k%3 == 0),
+      // post-conditions-end
+
+vc-code: |-
+  {
+      let mut i = 0;
+      /* code modified by LLM (iteration 4): fixed loop invariant and added proof to maintain invariant */
+      while i < x.len()
+          invariant
+              i <= x.len(),
+              y@ == x@.take(i as int).filter(|k: u64| k % 3 == 0),
+          decreases x.len() - i,
+      {
+          if x[i] % 3 == 0 {
+              y.push(x[i]);
+          }
+          /* code modified by LLM (iteration 4): added proof block to maintain invariant after increment */
+          proof {
+              let old_i = i;
+              assert(x@.take((i + 1) as int) == x@.take(old_i as int).push(x@[old_i as int]));
+          }
+          i += 1;
+      }
+      /* code modified by LLM (iteration 4): added proof to establish postcondition with proper type casting */
+      proof {
+          lemma_seq_take_all(x@);
+          assert(x@.take(x.len() as int) == x@);
+      }
+  }
+
+vc-postamble: |-
+  
+  }
+  
+  fn main() {}
+

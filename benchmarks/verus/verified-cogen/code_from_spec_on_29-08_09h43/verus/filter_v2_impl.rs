@@ -1,0 +1,163 @@
+use vstd::prelude::*;
+
+verus!{
+
+// <vc-helpers>
+proof fn lemma_seq_take_ascend<T>(v: Seq<T>, i: int)
+    // pre-conditions-start
+    requires
+        0 < i <= v.len(),
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        v.take(i as int).drop_last() == v.take(i-1),
+    // post-conditions-end
+{
+    // impl-start
+    assert(v.take(i as int).drop_last() =~= v.take(i-1));
+    // impl-end
+}
+// pure-end
+
+// pure-end
+
+proof fn lemma_seq_take_all<T>(v: Seq<T>)
+    // post-conditions-start
+    ensures
+        v == v.take(v.len() as int),
+    // post-conditions-end
+{
+    // impl-start
+    assert(v =~= v.take(v.len() as int));
+    // impl-end
+}
+// pure-end
+
+proof fn lemma_filter_property(x: Seq<u64>, y: Seq<u64>, idx: int, elem: u64)
+    requires
+        0 <= idx < x.len(),
+        elem == x[idx],
+        y == x.take(idx).filter(|k: u64| k % 3 == 0),
+    ensures
+        if elem % 3 == 0 {
+            x.take(idx + 1).filter(|k: u64| k % 3 == 0) == y.push(elem)
+        } else {
+            x.take(idx + 1).filter(|k: u64| k % 3 == 0) == y
+        }
+{
+    /* code modified by LLM (iteration 5): use explicit lemma calls for filter property */
+    lemma_seq_filter_append(x.take(idx), elem, |k: u64| k % 3 == 0);
+    assert(x.take(idx + 1) == x.take(idx).push(elem));
+}
+
+proof fn lemma_seq_filter_append<T>(s: Seq<T>, elem: T, pred: spec_fn(T) -> bool)
+    ensures
+        if pred(elem) {
+            s.push(elem).filter(pred) == s.filter(pred).push(elem)
+        } else {
+            s.push(elem).filter(pred) == s.filter(pred)
+        }
+{
+    /* code modified by LLM (iteration 5): prove filter append property by induction */
+    let filtered_s = s.filter(pred);
+    let s_with_elem = s.push(elem);
+    
+    if s.len() == 0 {
+        if pred(elem) {
+            assert(s_with_elem == seq![elem]);
+            assert(s_with_elem.filter(pred) == seq![elem]);
+            assert(filtered_s.push(elem) == seq![elem]);
+        } else {
+            assert(s_with_elem == seq![elem]);
+            assert(s_with_elem.filter(pred) == seq![]);
+            assert(filtered_s == seq![]);
+        }
+    } else {
+        let first = s[0];
+        let rest = s.subrange(1, s.len() as int);
+        
+        lemma_seq_filter_append(rest, elem, pred);
+        
+        assert(s == seq![first].add(rest));
+        assert(s_with_elem == seq![first].add(rest.push(elem)));
+        
+        if pred(first) {
+            assert(s.filter(pred) == seq![first].add(rest.filter(pred)));
+            if pred(elem) {
+                assert(s_with_elem.filter(pred) == seq![first].add(rest.push(elem).filter(pred)));
+                assert(rest.push(elem).filter(pred) == rest.filter(pred).push(elem));
+                assert(s_with_elem.filter(pred) == seq![first].add(rest.filter(pred).push(elem)));
+                assert(s_with_elem.filter(pred) == seq![first].add(rest.filter(pred)).push(elem));
+                assert(s_with_elem.filter(pred) == filtered_s.push(elem));
+            } else {
+                assert(s_with_elem.filter(pred) == seq![first].add(rest.push(elem).filter(pred)));
+                assert(rest.push(elem).filter(pred) == rest.filter(pred));
+                assert(s_with_elem.filter(pred) == seq![first].add(rest.filter(pred)));
+                assert(s_with_elem.filter(pred) == filtered_s);
+            }
+        } else {
+            assert(s.filter(pred) == rest.filter(pred));
+            if pred(elem) {
+                assert(s_with_elem.filter(pred) == rest.push(elem).filter(pred));
+                assert(rest.push(elem).filter(pred) == rest.filter(pred).push(elem));
+                assert(s_with_elem.filter(pred) == filtered_s.push(elem));
+            } else {
+                assert(s_with_elem.filter(pred) == rest.push(elem).filter(pred));
+                assert(rest.push(elem).filter(pred) == rest.filter(pred));
+                assert(s_with_elem.filter(pred) == filtered_s);
+            }
+        }
+    }
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+
+*/
+// </vc-description>
+
+// <vc-spec>
+fn myfun4(x: &Vec<u64>, y: &mut Vec<u64>)
+    // pre-conditions-start
+    requires 
+        old(y).len() == 0,
+    // pre-conditions-end
+    // post-conditions-start
+    ensures 
+        y@ == x@.filter(|k:u64| k%3 == 0),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut i: usize = 0;
+    /* code modified by LLM (iteration 5): fix lemma call to use current y@ instead of old(y)@ */
+    while i < x.len()
+        invariant
+            i <= x.len(),
+            y@ == x@.take(i as int).filter(|k: u64| k % 3 == 0),
+        decreases x.len() - i
+    {
+        let ghost old_y = y@;
+        if x[i] % 3 == 0 {
+            y.push(x[i]);
+        }
+        proof {
+            lemma_filter_property(x@, old_y, i as int, x@[i as int]);
+        }
+        i += 1;
+    }
+    proof {
+        lemma_seq_take_all(x@);
+        assert(x@ == x@.take(x@.len() as int));
+        assert(y@ == x@.take(i as int).filter(|k: u64| k % 3 == 0));
+        assert(i == x.len());
+        assert(x@.take(i as int) == x@);
+    }
+}
+// </vc-code>
+
+}
+
+fn main() {}

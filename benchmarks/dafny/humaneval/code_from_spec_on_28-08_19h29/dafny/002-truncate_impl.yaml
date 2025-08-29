@@ -1,0 +1,49 @@
+vc-preamble: |-
+
+
+vc-helpers: |-
+  function Floor(number: real): int
+  {
+    var i: int := number.Floor;
+    if number >= 0.0 then i else if number - i as real == 0.0 then i else i - 1
+  }
+  
+  lemma FloorProperties(number: real)
+    ensures Floor(number) as real <= number
+    ensures number < Floor(number) as real + 1.0
+    ensures number >= 0.0 ==> Floor(number) >= 0
+  {
+    var i: int := number.Floor;
+    if number >= 0.0 {
+      assert i as real <= number;
+      assert number < i as real + 1.0;
+    } else {
+      if number - i as real == 0.0 {
+        assert i as real == number;
+      } else {
+        assert (i - 1) as real <= number;
+        assert number < i as real;
+      }
+    }
+  }
+
+vc-description: |-
+  function_signature: def truncate_number(number: float) -> float
+  Given a positive floating point number, it can be decomposed into and integer part (largest integer smaller than given number) and decimals (leftover part always smaller than 1).
+
+vc-spec: |-
+  method TruncateNumber(number: real) returns (result: real)
+    requires number >= 0.0
+    ensures result == Floor(number) as real
+    ensures result <= number
+    ensures number < result + 1.0
+
+vc-code: |-
+  {
+    var intPart := Floor(number);
+    result := intPart as real;
+  }
+
+vc-postamble: |-
+
+

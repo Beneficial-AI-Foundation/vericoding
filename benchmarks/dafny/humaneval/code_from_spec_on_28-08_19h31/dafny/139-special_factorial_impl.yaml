@@ -1,0 +1,92 @@
+vc-preamble: |-
+  function factorial(n: nat): nat
+    decreases n
+  {
+    if n == 0 then 1 else n * factorial(n - 1)
+  }
+  function special_factorial_rec(n: nat): nat
+    decreases n
+  {
+    if n == 0 then 1 else factorial(n) * special_factorial_rec(n - 1)
+  }
+
+vc-helpers: |-
+  lemma SpecialFactorialCorrectness(n: nat)
+    requires n > 0
+    ensures special_factorial_rec(n) == if n > 1 then factorial(n) * special_factorial_rec(n - 1) else factorial(n)
+    decreases n
+  {
+    if n == 1 {
+      assert special_factorial_rec(1) == factorial(1);
+    } else {
+      calc {
+        special_factorial_rec(n);
+        == factorial(n) * special_factorial_rec(n - 1);
+      }
+      SpecialFactorialCorrectness(n - 1);
+    }
+  }
+  
+  lemma SpecialFactorialInvariant(n: nat, i: nat, result: nat)
+    requires 0 <= i <= n
+    ensures result * special_factorial_rec(i) == special_factorial_rec(n)
+  {
+    if i == n {
+      assert special_factorial_rec(n) == special_factorial_rec(n);
+      assert result == 1;
+    } else if i == 0 {
+      assert special_factorial_rec(0) == 1;
+      assert result * 1 == result;
+      assert result == special_factorial_rec(n);
+    } else {
+      assert result * special_factorial_rec(i) == special_factorial_rec(n);
+    }
+  }
+
+vc-description: |-
+  function_signature: def special_factorial(n: int) -> int
+  The Brazilian factorial is defined as: brazilian_factorial(n) = n! * (n-1)! * (n-2)! * ... * 1! where n > 0. Please write a function that computes the Brazilian factorial.
+
+vc-spec: |-
+  method special_factorial(n: nat) returns (result: nat)
+    // pre-conditions-start
+    requires n > 0
+    // pre-conditions-end
+    // post-conditions-start
+    ensures result == special_factorial_rec(n)
+    // post-conditions-end
+
+vc-code: |-
+  method special_factorial(n: nat) returns (result: nat)
+    // pre-conditions-start
+    requires n > 0
+    // pre-conditions-end
+    // post-conditions-start
+    ensures result == special_factorial_rec(n)
+    // post-conditions-end
+  {
+    result := 1;
+    var i := n;
+    while i > 0
+      decreases i
+      invariant 0 <= i <= n
+      invariant result * special_factorial_rec(i) == special_factorial_rec(n)
+    {
+      var fact := 1;
+      var j := 1;
+      while j <= i
+        decreases i - j + 1
+        invariant 1 <= j <= i + 1
+        invariant fact == factorial(j - 1)
+      {
+        fact := fact * j;
+        j := j + 1;
+      }
+      result := result * fact;
+      i := i - 1;
+    }
+  }
+
+vc-postamble: |-
+
+

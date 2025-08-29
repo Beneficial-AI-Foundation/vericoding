@@ -1,0 +1,61 @@
+// <vc-helpers>
+function count_vowels_in_prefix(s: string, i: nat): nat
+  requires i <= |s|
+  decreases |s| - i
+{
+  if i == |s| then 0
+  else
+    var current_count := if is_vowel(s[i]) then 1 else 0;
+    var y_count := if s[i] == 'y' || s[i] == 'Y' then 
+      (if i == |s| - 1 then 1 else 0) else 0;
+    current_count + y_count + count_vowels_in_prefix(s, i + 1)
+}
+
+lemma count_vowels_correctness(s: string, i: nat)
+  requires i <= |s|
+  ensures count_vowels_in_prefix(s, i) >= 0
+{
+  if i == |s| {
+  } else {
+    count_vowels_correctness(s, i + 1);
+  }
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: def remove_vowels(string: str) -> Nat
+Write a function vowels_count which takes a string representing a word as input and returns the number of vowels in the string. Vowels in this case are 'a', 'e', 'i', 'o', 'u'. Here, 'y' is also a vowel, but only when it is at the end of the given word.
+*/
+// </vc-description>
+
+// <vc-spec>
+method vowels_count(s: string) returns (count: nat)
+  ensures count >= 0
+  ensures count == count_vowels_in_prefix(s, 0)
+// </vc-spec>
+// <vc-code>
+{
+  count := 0;
+  var i := 0;
+  
+  while i < |s|
+    invariant 0 <= i <= |s|
+    invariant count == count_vowels_in_prefix(s, 0) - count_vowels_in_prefix(s, i)
+  {
+    if is_vowel(s[i]) {
+      count := count + 1;
+    } else if (s[i] == 'y' || s[i] == 'Y') && i == |s| - 1 {
+      count := count + 1;
+    }
+    i := i + 1;
+  }
+}
+// </vc-code>
+
+function is_vowel(c: char): bool
+  ensures is_vowel(c) <==> c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U'
+{
+    c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U'
+}
+// pure-end

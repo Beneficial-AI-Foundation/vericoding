@@ -1,0 +1,120 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn odd_or_zero(x: u32) -> (ret:u32) {
+      if x % 2 == 0 {
+          x
+      } else {
+          0
+      }
+  }
+  // pure-end
+  // pure-end
+  
+  spec fn add_odd_evens(lst: Seq<u32>) -> (ret:int)
+      decreases lst.len(),
+  {
+      if (lst.len() < 2) {
+          0
+      } else {
+          odd_or_zero(lst[1]) + add_odd_evens(lst.skip(2))
+      }
+  }
+  // pure-end
+
+vc-helpers: |-
+  lemma lemma_add_odd_evens_take_step(lst: Seq<u32>, i: int)
+      requires i >= 1 && i % 2 == 1 && i + 2 <= lst.len()
+      ensures add_odd_evens(lst.take(i + 2)) == add_odd_evens(lst.take(i)) + odd_or_zero(lst[i])
+  {
+      let prefix_i = lst.take(i);
+      let prefix_i_plus_2 = lst.take(i + 2);
+      
+      if i == 1 {
+          assert(prefix_i.len() == 1);
+          assert(add_odd_evens(prefix_i) == 0);
+          assert(prefix_i_plus_2.len() == 3);
+          assert(add_odd_evens(prefix_i_plus_2) == odd_or_zero(prefix_i_plus_2[1]) + add_odd_evens(prefix_i_plus_2.skip(2)));
+          assert(prefix_i_plus_2[1] == lst[1]);
+      } else {
+          assert(prefix_i.len() >= 2);
+          assert(prefix_i_plus_2.len() >= 2);
+          assert(add_odd_evens(prefix_i) == odd_or_zero(prefix_i[1]) + add_odd_evens(prefix_i.skip(2)));
+          assert(add_odd_evens(prefix_i_plus_2) == odd_or_zero(prefix_i_plus_2[1]) + add_odd_evens(prefix_i_plus_2.skip(2)));
+          assert(prefix_i[1] == prefix_i_plus_2[1]);
+          
+          lemma_add_odd_evens_take_step(lst.skip(2), i - 2);
+          assert(add_odd_evens(prefix_i.skip(2).take(i - 2)) == add_odd_evens(prefix_i.skip(2).take(i - 2 + 2)) - odd_or_zero(lst[i]));
+      }
+  }
+  
+  lemma lemma_add_odd_evens_bounds(lst: Seq<u32>)
+      ensures add_odd_evens(lst) >= 0
+      ensures add_odd_evens(lst) <= lst.len() * u32::MAX
+      decreases lst.len()
+  {
+      if lst.len() >= 2 {
+          lemma_add_odd_evens_bounds(lst.skip(2));
+      }
+  }
+
+vc-description: |-
+  function_signature: "def solve(n: list[int]) -> int"
+  docstring: |
+  Given a non-empty list of integers lst, add the even elements that are at odd indices.
+  test_cases:
+  - input: [4, 2, 6, 7]
+  output: 2
+
+vc-spec: |-
+  fn solve(lst: Vec<u32>) -> (ret: u32)
+      requires lst.len() > 0
+      ensures ret == add_odd_evens(lst@)
+
+vc-code: |-
+  {
+      /* code modified by LLM (iteration 5): Fixed lemma function calls with corrected syntax */
+      proof {
+          lemma_add_odd_evens_bounds(lst@);
+      }
+      
+      let mut result: u32 = 0;
+      let mut i: usize = 1;
+      
+      while i < lst.len()
+          invariant 
+              i >= 1,
+              i % 2 == 1,
+              result == add_odd_evens(lst@.take(i as int)),
+              add_odd_evens(lst@) <= lst.len() * u32::MAX,
+              result <= lst.len() * u32::MAX
+          decreases lst.len() - i
+      {
+          if lst[i] % 2 == 0 {
+              /* code modified by LLM (iteration 5): Added overflow check before addition */
+              assert(result <= lst.len() * u32::MAX);
+              assert(lst[i] <= u32::MAX);
+              assert(result + lst[i] <= lst.len() * u32::MAX + u32::MAX);
+              result = result + lst[i];
+          }
+          
+          /* code modified by LLM (iteration 5): Added proof step to maintain invariant */
+          proof {
+              if i + 2 <= lst.len() {
+                  lemma_add_odd_evens_take_step(lst@, i as int);
+              }
+          }
+          
+          i = i + 2;
+      }
+      
+      result
+  }
+
+vc-postamble: |-
+  
+  } // verus!
+  fn main() {}
+

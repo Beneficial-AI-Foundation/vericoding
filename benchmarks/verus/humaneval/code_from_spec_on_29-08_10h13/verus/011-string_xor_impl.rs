@@ -1,0 +1,107 @@
+use vstd::prelude::*;
+use vstd::slice::*;
+
+verus! {
+
+spec fn is_binary_digit(c: char) -> (ret: bool) {
+    c == '0' || c == '1'
+}
+// pure-end
+// pure-end
+
+spec fn xor_char(a: char, b: char) -> (result: char)
+    recommends
+        is_binary_digit(a),
+        is_binary_digit(b),
+{
+    if a == b {
+        '0'
+    } else {
+        '1'
+    }
+}
+// pure-end
+
+// <vc-helpers>
+proof fn lemma_xor_properties(a: char, b: char)
+    requires
+        is_binary_digit(a),
+        is_binary_digit(b),
+    ensures
+        is_binary_digit(xor_char(a, b)),
+{
+}
+
+proof fn lemma_all_binary_digits_preserved(s1: &Vec<char>, s2: &Vec<char>, result: &Vec<char>)
+    requires
+        s1.len() == s2.len(),
+        forall |i: int| 0 <= i < s1.len() ==> is_binary_digit(s1@[i]),
+        forall |i: int| 0 <= i < s2.len() ==> is_binary_digit(s2@[i]),
+        result.len() == s1.len(),
+        forall |i: int| 0 <= i < result.len() ==> result@[i] == xor_char(s1@[i], s2@[i]),
+    ensures
+        forall |i: int| 0 <= i < result.len() ==> is_binary_digit(result@[i]),
+{
+    assert forall |i: int| 0 <= i < result.len() implies is_binary_digit(result@[i]) by {
+        lemma_xor_properties(s1@[i], s2@[i]);
+    }
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: "def string_xor(a: str, b: str) -> str"
+docstring: |
+Input are two strings a and b consisting only of 1s and 0s.
+Perform binary XOR on these inputs and return result also as a string.
+test_cases:
+- input:
+- "010"
+- "110"
+expected_output: "100"
+*/
+// </vc-description>
+
+// <vc-spec>
+fn string_xor(a: Vec<char>, b: Vec<char>) -> (result: Vec<char>)
+    requires
+        a.len() == b.len(),
+        forall |i: int| 0 <= i < a.len() ==> is_binary_digit(a@[i]),
+        forall |i: int| 0 <= i < b.len() ==> is_binary_digit(b@[i]),
+    ensures
+        result.len() == a.len(),
+        forall |i: int| 0 <= i < result.len() ==> result@[i] == xor_char(a@[i], b@[i]),
+        forall |i: int| 0 <= i < result.len() ==> is_binary_digit(result@[i]),
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut result = Vec::new();
+    let mut i = 0;
+    
+    while i < a.len()
+        invariant
+            i <= a.len(),
+            result.len() == i,
+            forall |j: int| 0 <= j < i ==> result@[j] == xor_char(a@[j], b@[j]),
+            forall |j: int| 0 <= j < result.len() ==> is_binary_digit(result@[j]),
+    {
+        /* code modified by LLM (iteration 5): moved xor_char call to executable context and added proof block for verification */
+        let xor_result = xor_char(a@[i as int], b@[i as int]);
+        proof {
+            lemma_xor_properties(a@[i as int], b@[i as int]);
+        }
+        result.push(xor_result);
+        i = i + 1;
+    }
+    
+    proof {
+        lemma_all_binary_digits_preserved(&a, &b, &result);
+    }
+    
+    result
+}
+// </vc-code>
+
+}
+fn main() {}

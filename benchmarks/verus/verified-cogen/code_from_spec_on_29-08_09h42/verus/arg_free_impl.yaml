@@ -1,0 +1,25 @@
+vc-description: |-
+
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus!{
+
+vc-helpers: |-
+
+
+vc-spec: |-
+  fn choose_odd()
+
+vc-code: |-
+  /* code modified by LLM (iteration 3): removed duplicate function signature */
+  {
+      ()
+  }
+
+vc-postamble: |-
+  
+  }
+  fn main() {}
+

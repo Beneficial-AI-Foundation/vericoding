@@ -1,14 +1,14 @@
-vc-description: |-
-  /--
-  function_signature: "fn replace(a: &mut Vec<i32>, x: i32, y: i32)"
-  docstring: Implement replace functionality.
-  -/
 vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
 
 vc-helpers: |-
+
+
+vc-description: |-
+  function_signature: "fn replace(a: &mut Vec<i32>, x: i32, y: i32)"
+  docstring: Implement replace functionality.
 
 vc-spec: |-
   #[verifier::loop_isolation(false)]

@@ -1,0 +1,60 @@
+function sumc(s: seq<int>, p: seq<bool>) : int
+    requires |s| == |p|
+    {
+        if |s| == 0 then 0 else (if p[0] then s[0] else 0) + sumc(s[1..], p[1..])
+    }
+function add_conditon(lst: seq<int>) : (p : seq<bool>)
+    ensures |lst| == |p|
+    {
+        seq(|lst|, i requires 0 <= i < |lst| => lst[i] >= 0 && lst[i] % 2 == 1)
+    }
+function square_seq(lst: seq<int>) : (sq : seq<int>)
+        ensures |sq| == |lst|
+        ensures forall i :: 0 <= i < |lst| ==> sq[i] == lst[i] * lst[i]
+    {
+        seq(|lst|, i requires 0 <= i < |lst| => lst[i] * lst[i])
+    }
+
+// <vc-helpers>
+lemma sumc_empty(s: seq<int>, p: seq<bool>)
+    requires |s| == |p| == 0
+    ensures sumc(s, p) == 0
+{
+}
+
+lemma sumc_single(s: seq<int>, p: seq<bool>)
+    requires |s| == |p| == 1
+    ensures sumc(s, p) == (if p[0] then s[0] else 0)
+{
+}
+
+lemma sumc_decompose(s: seq<int>, p: seq<bool>)
+    requires |s| == |p|
+    requires |s| > 0
+    ensures sumc(s, p) == (if p[0] then s[0] else 0) + sumc(s[1..], p[1..])
+{
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: def double_the_difference(numbers: List[float]) -> Int
+Given a list of numbers, return the sum of squares of the numbers in the list that are odd. Ignore numbers that are negative or not integers.
+*/
+// </vc-description>
+
+// <vc-spec>
+method double_the_difference(lst: seq<int>) returns (r : int)
+    // post-conditions-start
+    ensures r == sumc(square_seq(lst), add_conditon(lst))
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    var squared := square_seq(lst);
+    var condition := add_conditon(lst);
+    r := sumc(squared, condition);
+}
+// </vc-code>
+

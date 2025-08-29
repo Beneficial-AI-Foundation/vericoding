@@ -1,7 +1,3 @@
-vc-description: |-
-  /--
-  docstring: Implement sum product.
-  -/
 vc-preamble: |-
   use vstd::prelude::*;
 
@@ -19,21 +15,10 @@ vc-preamble: |-
   // pure-end
 
 vc-helpers: |-
-  // pure-end
 
-  proof fn sum_bound(numbers: Seq<u32>)
-      ensures
-          sum(numbers) <= numbers.len() * u32::MAX,
-      decreases numbers.len(),
-  {
-      // impl-start
-      if numbers.len() == 0 {
-      } else {
-          sum_bound(numbers.drop_last());
-      }
-      // impl-end
-  }
-  // pure-end
+
+vc-description: |-
+  docstring: Implement sum product.
 
 vc-spec: |-
   fn sum_product(numbers: Vec<u32>) -> (result: (u64, Option<u32>))

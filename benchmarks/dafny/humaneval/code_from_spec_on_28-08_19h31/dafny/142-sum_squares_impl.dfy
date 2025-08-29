@@ -1,0 +1,58 @@
+function sum(s: seq<int>) : int
+{
+    if |s| == 0 then 0 else s[0] + sum(s[1..])
+}
+function square_seq(lst: seq<int>) : (sq : seq<int>)
+    ensures |sq| == |lst|
+{
+    seq(|lst|, i requires 0 <= i < |lst| => if i % 3 == 0 then lst[i] * lst[i] else (if i % 4 == 0 then lst[i] * lst[i] * lst[i] else lst[i]))
+}
+
+// <vc-helpers>
+lemma SumSquaresLemma(lst: seq<int>, i: int)
+  requires 0 <= i <= |lst|
+  ensures sum(square_seq(lst[..i])) == sum(seq(i, j requires 0 <= j < i => if j % 3 == 0 then lst[j] * lst[j] else (if j % 4 == 0 then lst[j] * lst[j] * lst[j] else lst[j])))
+{
+  if i == 0 {
+    assert lst[..0] == [];
+    assert square_seq([]) == [];
+    assert sum([]) == 0;
+  } else {
+    SumSquaresLemma(lst, i-1);
+    var sq := square_seq(lst[..i]);
+    assert lst[..i] == lst[..i-1] + [lst[i-1]];
+    assert sq == square_seq(lst[..i-1]) + [if (i-1) % 3 == 0 then lst[i-1] * lst[i-1] else (if (i-1) % 4 == 0 then lst[i-1] * lst[i-1] * lst[i-1] else lst[i-1])];
+    assert sum(sq) == sum(square_seq(lst[..i-1])) + (if (i-1) % 3 == 0 then lst[i-1] * lst[i-1] else (if (i-1) % 4 == 0 then lst[i-1] * lst[i-1] * lst[i-1] else lst[i-1]));
+  }
+}
+// </vc-helpers>
+
+// <vc-spec>
+method sum_squares(lst: seq<int>) returns (r : int)
+    // post-conditions-start
+    ensures r == sum(square_seq(lst))
+    // post-conditions-end
+// </vc-spec>
+// <vc-code>
+method sum_squares(lst: seq<int>) returns (r: int)
+  ensures r == sum(square_seq(lst))
+{
+  var i := 0;
+  var res := 0;
+  while i < |lst|
+    invariant 0 <= i <= |lst|
+    invariant res == sum(square_seq(lst[..i]))
+  {
+    var val := lst[i];
+    if i % 3 == 0 {
+      res := res + val * val;
+    } else if i % 4 == 0 {
+      res := res + val * val * val;
+    } else {
+      res := res + val;
+    }
+    i := i + 1;
+  }
+  r := res;
+}
+// </vc-code>

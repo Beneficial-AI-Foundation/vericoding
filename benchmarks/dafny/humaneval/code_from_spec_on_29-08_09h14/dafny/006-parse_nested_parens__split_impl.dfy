@@ -1,0 +1,72 @@
+method parse_paren_group(s : string) returns (max_depth : int)
+    // pre-conditions-start
+    requires forall i :: i >= 0 && i < |s| ==> s[i] == '(' || s[i] == ')'
+    // pre-conditions-end
+    // post-conditions-start
+    ensures max_depth >= 0
+    // post-conditions-end
+{
+  assume{:axiom} false;
+}
+
+// <vc-helpers>
+lemma SplitPreservesParenProperty(s: string, groups: seq<string>)
+    requires forall i :: i >= 0 && i < |s| ==> s[i] == '(' || s[i] == ')' || s[i] == ' '
+    ensures forall group :: group in groups ==> forall i :: i >= 0 && i < |group| ==> group[i] == '(' || group[i] == ')'
+{
+}
+
+lemma EmptyStringNotInResult(groups: seq<string>)
+    ensures forall group :: group in groups ==> |group| > 0
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+method split(s : string) returns (res : seq<string>)
+    // pre-conditions-start
+    requires forall i :: i >= 0 && i < |s| ==> s[i] == '(' || s[i] == ')' || s[i] == ' '
+    // pre-conditions-end
+    // post-conditions-start
+    ensures forall s1 :: s1 in res ==> (forall i :: i >= 0 && i < |s1| ==> s1[i] == '(' || s1[i] == ')') && |s1| > 0
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    res := [];
+    var current_group := "";
+    var i := 0;
+    
+    while i < |s|
+        invariant 0 <= i <= |s|
+        invariant forall group :: group in res ==> (forall j :: 0 <= j < |group| ==> group[j] == '(' || group[j] == ')') && |group| > 0
+        invariant forall j :: 0 <= j < |current_group| ==> current_group[j] == '(' || current_group[j] == ')'
+    {
+        if s[i] == ' ' {
+            if |current_group| > 0 {
+                res := res + [current_group];
+                current_group := "";
+            }
+        } else {
+            current_group := current_group + [s[i]];
+        }
+        i := i + 1;
+    }
+    
+    if |current_group| > 0 {
+        res := res + [current_group];
+    }
+}
+// </vc-code>
+
+method parse_nested_parens(paren_string: string) returns (res : seq<int>)
+    // pre-conditions-start
+    requires forall i :: i >= 0 && i < |paren_string| ==> paren_string[i] == '(' || paren_string[i] == ')' || paren_string[i] == ' '
+    // pre-conditions-end
+    // post-conditions-start
+    ensures forall x :: x in res ==> x >= 0
+    // post-conditions-end
+{
+  assume{:axiom} false;
+}

@@ -1,0 +1,151 @@
+vc-preamble: |-
+  class Extension {
+      var name: string
+      var strength: int
+      constructor(n: string)
+          ensures name == n
+          ensures strength == CalculateStrength(n)
+      {
+          name := n;
+          strength := CalculateStrength(n);
+      }
+      static function CalculateStrength(s: string): int
+      {
+          CountUpperCase(s) - CountLowerCase(s)
+      }
+      static function CountUpperCase(s: string): int
+      {
+          if |s| == 0 then 0
+          else (if 'A' <= s[0] <= 'Z' then 1 else 0) + CountUpperCase(s[1..])
+      }
+      static function CountLowerCase(s: string): int
+      {
+          if |s| == 0 then 0
+          else (if 'a' <= s[0] <= 'z' then 1 else 0) + CountLowerCase(s[1..])
+      }
+  }
+
+vc-helpers: |-
+  lemma SequenceContainsFirstElement<T>(s: seq<T>)
+      requires |s| > 0
+      ensures s[0] in s
+  {
+  }
+  
+  lemma MaxElementExists(extensions: seq<string>, maxStrength: int)
+      requires |extensions| > 0
+      requires maxStrength == FindMaxStrength(extensions, 0, Extension.CalculateStrength(extensions[0]))
+      ensures exists i :: 0 <= i < |extensions| && Extension.CalculateStrength(extensions[i]) == maxStrength
+  {
+      FindMaxStrengthCorrectness(extensions, 0, Extension.CalculateStrength(extensions[0]));
+  }
+  
+  function FindMaxStrength(extensions: seq<string>, index: int, currentMax: int): int
+      requires 0 <= index <= |extensions|
+      requires index == 0 ==> |extensions| > 0 && currentMax == Extension.CalculateStrength(extensions[0])
+      requires index > 0 ==> currentMax >= Extension.CalculateStrength(extensions[index-1])
+      decreases |extensions| - index
+  {
+      if index == |extensions| then currentMax
+      else 
+          var strength := Extension.CalculateStrength(extensions[index]);
+          FindMaxStrength(extensions, index + 1, if strength > currentMax then strength else currentMax)
+  }
+  
+  lemma FindMaxStrengthCorrectness(extensions: seq<string>, index: int, currentMax: int)
+      requires 0 <= index <= |extensions|
+      requires index == 0 ==> |extensions| > 0 && currentMax == Extension.CalculateStrength(extensions[0])
+      requires index > 0 ==> currentMax >= Extension.CalculateStrength(extensions[index-1])
+      ensures var maxStrength := FindMaxStrength(extensions, index, currentMax);
+              forall i :: index <= i < |extensions| ==> maxStrength >= Extension.CalculateStrength(extensions[i])
+      ensures var maxStrength := FindMaxStrength(extensions, index, currentMax);
+              (exists i :: index <= i < |extensions| && maxStrength == Extension.CalculateStrength(extensions[i])) || maxStrength == currentMax
+      ensures index == 0 ==> var maxStrength := FindMaxStrength(extensions, index, currentMax);
+                            forall i :: 0 <= i < |extensions| ==> maxStrength >= Extension.CalculateStrength(extensions[i])
+      decreases |extensions| - index
+  {
+      if index == |extensions| {
+      } else {
+          var strength := Extension.CalculateStrength(extensions[index]);
+          var newMax := if strength > currentMax then strength else currentMax;
+          FindMaxStrengthCorrectness(extensions, index + 1, newMax);
+      }
+  }
+  
+  function FindFirstStrongestIndex(extensions: seq<string>, targetStrength: int, index: int): int
+      requires |extensions| > 0
+      requires 0 <= index < |extensions|
+      requires exists i :: index <= i < |extensions| && Extension.CalculateStrength(extensions[i]) == targetStrength
+      decreases |extensions| - index
+  {
+      if Extension.CalculateStrength(extensions[index]) == targetStrength then index
+      else FindFirstStrongestIndex(extensions, targetStrength, index + 1)
+  }
+  
+  lemma FindFirstStrongestIndexCorrectness(extensions: seq<string>, targetStrength: int, index: int)
+      requires |extensions| > 0
+      requires 0 <= index < |extensions|
+      requires exists i :: index <= i < |extensions| && Extension.CalculateStrength(extensions[i]) == targetStrength
+      ensures var result := FindFirstStrongestIndex(extensions, targetStrength, index);
+              0 <= result < |extensions|
+      ensures var result := FindFirstStrongestIndex(extensions, targetStrength, index);
+              Extension.CalculateStrength(extensions[result]) == targetStrength
+      ensures var result := FindFirstStrongestIndex(extensions, targetStrength, index);
+              forall i :: index <= i < result ==> Extension.CalculateStrength(extensions[i]) != targetStrength
+      decreases |extensions| - index
+  {
+      if Extension.CalculateStrength(extensions[index]) == targetStrength {
+      } else {
+          FindFirstStrongestIndexCorrectness(extensions, targetStrength, index + 1);
+      }
+  }
+  
+  lemma ExtensionInSequence(extensions: seq<string>, index: int)
+      requires 0 <= index < |extensions|
+      ensures extensions[index] in extensions
+  {
+  }
+
+vc-description: |-
+  function_signature: def Strongest_Extension(class_name: String, extensions: List[String]) -> String
+  You will be given the name of a class (a string) and a list of extensions. The extensions are to be used to load additional classes to the class. The strength of the extension is as follows: Let CAP be the number of the uppercase letters in the extension's name, and let SM be the number of lowercase letters in the extension's name, the strength is given by the fraction CAP - SM. You should find the strongest extension and return a string in this format: ClassName.StrongestExtensionName. If there are two or more extensions with the same strength, you should choose the one that comes first in the list. For example, if you are given "Slices" as the class and a list of the extensions: ['SErviNGSliCes', 'Cheese', 'StuFfed'] then you should return 'Slices.SErviNGSliCes' since 'SErviNGSliCes' is the strongest extension (its strength is -1).
+
+vc-spec: |-
+  method Strongest_Extension(className: string, extensions: seq<string>) returns (result: string)
+      // pre-conditions-start
+      requires |extensions| > 0
+      // pre-conditions-end
+      // post-conditions-start
+      ensures |result| > |className|
+      ensures result[..|className|] == className
+      ensures result[|className|] == '.'
+      ensures var extName := result[|className| + 1..];
+                 extName in extensions
+      ensures var extName := result[|className| + 1..];
+                 forall i :: 0 <= i < |extensions| ==> Extension.CalculateStrength(extName) >= Extension.CalculateStrength(extensions[i])
+      // post-conditions-end
+
+vc-code: |-
+  {
+      var maxStrength := FindMaxStrength(extensions, 0, Extension.CalculateStrength(extensions[0]));
+      
+      FindMaxStrengthCorrectness(extensions, 0, Extension.CalculateStrength(extensions[0]));
+      MaxElementExists(extensions, maxStrength);
+      
+      assert forall i :: 0 <= i < |extensions| ==> maxStrength >= Extension.CalculateStrength(extensions[i]);
+      
+      var strongestIndex := FindFirstStrongestIndex(extensions, maxStrength, 0);
+      FindFirstStrongestIndexCorrectness(extensions, maxStrength, 0);
+      
+      var strongestExt := extensions[strongestIndex];
+      ExtensionInSequence(extensions, strongestIndex);
+      
+      result := className + "." + strongestExt;
+      
+      assert Extension.CalculateStrength(strongestExt) == maxStrength;
+      assert forall i :: 0 <= i < |extensions| ==> Extension.CalculateStrength(strongestExt) >= Extension.CalculateStrength(extensions[i]);
+  }
+
+vc-postamble: |-
+
+

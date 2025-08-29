@@ -1,0 +1,119 @@
+vc-description: |-
+
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn sum_to(arr: Seq<i64>) -> (result: int)
+      decreases arr.len(),
+  {
+      if arr.len() == 0 {
+          0
+      } else {
+          sum_to(arr.drop_last()) + arr.last()
+      }
+  }
+  // pure-end
+
+vc-helpers: |-
+  proof fn sum_to_append_lemma(s: Seq<i64>, elem: i64)
+      ensures sum_to(s.push(elem)) == sum_to(s) + elem
+      decreases s.len()
+  {
+      if s.len() == 0 {
+          assert(s.push(elem).drop_last() =~= s);
+          assert(s.push(elem).last() == elem);
+      } else {
+          /* code modified by LLM (iteration 5): fixed sequence equality assertion */
+          let s_pushed = s.push(elem);
+          let s_dropped = s_pushed.drop_last();
+          assert(s_dropped.len() == s.len());
+          assert(forall|i: int| 0 <= i < s.len() ==> s_dropped[i] == s[i]);
+          assert(s_dropped =~= s);
+          sum_to_append_lemma(s.drop_last(), elem);
+      }
+  }
+  
+  proof fn sum_to_subrange_lemma(arr: Seq<i64>, start: int, end: int, current: int)
+      requires 
+          start <= current < end,
+          /* code modified by LLM (iteration 5): fixed bounds to ensure current+2 is valid */
+          0 <= start < end <= arr.len(),
+          current + 2 <= end + 1,
+          current + 1 < arr.len(),
+      ensures
+          sum_to(arr.subrange(start, current + 1)) + arr[current + 1] == sum_to(arr.subrange(start, current + 2))
+  {
+      let sub1 = arr.subrange(start, current + 1);
+      let sub2 = arr.subrange(start, current + 2);
+      
+      /* code modified by LLM (iteration 5): proved sequence equality step by step */
+      assert(sub1.len() == current + 1 - start);
+      assert(sub2.len() == current + 2 - start);
+      assert(sub2.len() == sub1.len() + 1);
+      assert(forall|i: int| 0 <= i < sub1.len() ==> sub1[i] == sub2[i]);
+      assert(sub2.last() == arr[current + 1]);
+      assert(sub2 =~= sub1.push(arr[current + 1]));
+      sum_to_append_lemma(sub1, arr[current + 1]);
+  }
+
+vc-spec: |-
+  fn sum_range_list(arr: &Vec<i64>, start: usize, end: usize) -> (sum: i128)
+      // pre-conditions-start
+      requires
+          0 <= start <= end,
+          start <= end < arr.len(),
+      // pre-conditions-end
+      // post-conditions-start
+      ensures
+          sum_to(arr@.subrange(start as int, end + 1 as int)) == sum,
+      // post-conditions-end
+
+vc-code: |-
+  {
+      let mut sum: i128 = 0;
+      let mut i = start;
+      
+      /* code modified by LLM (iteration 5): fixed loop bounds and invariants */
+      while i <= end
+          invariant
+              start <= i <= end + 1,
+              i <= arr.len(),
+              sum == sum_to(arr@.subrange(start as int, i as int)),
+              end < arr.len(),
+          decreases end + 1 - i,
+      {
+          /* code modified by LLM (iteration 5): fixed array indexing by using ghost variable */
+          let ghost idx = i as int;
+          assert(sum <= i128::MAX - (arr@[idx] as i128));
+          sum = sum + arr[i] as i128;
+          
+          proof {
+              if i == start {
+                  assert(arr@.subrange(start as int, (i + 1) as int).len() == 1);
+                  assert(arr@.subrange(start as int, (i + 1) as int)[0] == arr@[i as int]);
+                  assert(sum_to(arr@.subrange(start as int, (i + 1) as int)) == arr@[i as int]);
+              } else {
+                  /* code modified by LLM (iteration 5): fixed preconditions for lemma call */
+                  assert(start <= i - 1 < end + 1);
+                  assert(0 <= start < end + 1 <= arr.len());
+                  assert((i - 1) + 2 <= end + 1);
+                  assert((i - 1) + 1 < arr.len());
+                  sum_to_subrange_lemma(arr@, start as int, end as int, (i - 1) as int);
+              }
+          }
+          
+          i += 1;
+      }
+      
+      sum
+  }
+
+vc-postamble: |-
+  
+  } // verus!
+  
+  fn main() {}
+

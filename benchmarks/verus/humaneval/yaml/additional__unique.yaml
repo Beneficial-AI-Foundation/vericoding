@@ -1,14 +1,14 @@
-vc-description: |-
-  /--
-  function_signature: "fn unique(a: &[i32]) -> (result: Vec<i32>)"
-  docstring: Implement unique functionality.
-  -/
 vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
 
 vc-helpers: |-
+
+
+vc-description: |-
+  function_signature: "fn unique(a: &[i32]) -> (result: Vec<i32>)"
+  docstring: Implement unique functionality.
 
 vc-spec: |-
   #[verifier::loop_isolation(false)]

@@ -1,0 +1,103 @@
+function comparison(a : string, b : string, i : int): bool
+    requires 0 <= i <= |a| && 0 <= i <= |b|
+    decreases |a| - i
+    decreases |b| - i
+    ensures (a == b) ==> comparison(a, b, i)
+{
+    if (i < |a| && i < |b|) then
+        if a[i] < b[i] then
+            true
+        else if a[i] > b[i] then
+            false
+        else
+            comparison(a, b, i + 1)
+    else
+        if |a| <= |b| then
+            true
+        else
+            false
+}
+method sort_strings(list: seq<string>) returns (sorted: seq<string>)
+    ensures |sorted| == |list|
+    ensures multiset(sorted) == multiset(list)
+{
+  assume{:axiom} false;
+}
+method sort_lengths(list: seq<string>) returns (sorted: seq<string>)
+    requires forall i : int :: 0 <= i < |list| ==> |list[i]| % 2 == 0
+    ensures forall i : int :: 0 <= i < |sorted| ==> |sorted[i]| % 2 == 0
+    ensures |sorted| == |list|
+    ensures multiset(sorted) == multiset(list)
+    ensures forall x : int, y : int :: 0 <= x < y < |sorted| ==> |sorted[x]| <= |sorted[y]|
+{
+  assume{:axiom} false;
+}
+
+// <vc-helpers>
+function stringComparison(a: string, b: string, i: int): bool
+    requires 0 <= i <= |a| && 0 <= i <= |b|
+    decreases |a| - i, |b| - i
+    ensures (a == b) ==> stringComparison(a, b, i)
+    ensures stringComparison(a, b, i) ==> (i < |a| && i < |b| ==> a[i] <= b[i])
+{
+    if (i < |a| && i < |b|) then
+        if a[i] < b[i] then
+            true
+        else if a[i] > b[i] then
+            false
+        else
+            stringComparison(a, b, i + 1)
+    else
+        if |a| <= |b| then
+            true
+        else
+            false
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: method sorted_list_sum(list: seq<string>) returns (sorted: seq<string>)
+Sort elements. Requires: requires size of listsize of  > 0. Ensures: the size is bounded; the result is sorted according to the ordering relation; the result is sorted according to the ordering relation; returns a sorted permutation of the input.
+*/
+// </vc-description>
+
+// <vc-spec>
+method sorted_list_sum(list: seq<string>) returns (sorted: seq<string>)
+    requires |list| > 0
+    ensures |sorted| == |list|
+    ensures multiset(sorted) == multiset(list)
+    ensures forall i, j :: 0 <= i < j < |sorted| ==> stringComparison(sorted[i], sorted[j], 0)
+// </vc-spec>
+// <vc-code>
+{
+    sorted := list;
+    var n := |list|;
+    var i := 0;
+    while i < n
+        invariant 0 <= i <= n
+        invariant |sorted| == |list|
+        invariant multiset(sorted) == multiset(list)
+        invariant forall x, y :: 0 <= x < y < i ==> stringComparison(sorted[x], sorted[y], 0)
+    {
+        var minIndex := i;
+        var j := i + 1;
+        while j < n
+            invariant i <= j <= n
+            invariant i <= minIndex < n
+            invariant forall k :: i <= k < j ==> stringComparison(sorted[minIndex], sorted[k], 0) || sorted[minIndex] == sorted[k]
+        {
+            if !stringComparison(sorted[minIndex], sorted[j], 0) {
+                minIndex := j;
+            }
+            j := j + 1;
+        }
+        if minIndex != i {
+            var temp := sorted[i];
+            sorted := sorted[i := sorted[minIndex]][minIndex := temp];
+        }
+        assert forall x :: 0 <= x < i ==> stringComparison(sorted[x], sorted[i], 0) || sorted[x] == sorted[i];
+        i := i + 1;
+    }
+}
+// </vc-code>

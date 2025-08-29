@@ -1,0 +1,41 @@
+function IsPrime(n: int) : bool
+{
+  n > 1 && forall k :: 2 <= k < n ==> n % k != 0
+}
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: def count_up_to(n : int) -> list[int]
+Implement a function that takes an non-negative integer and returns an array of the first n integers that are prime numbers and less than n.
+*/
+// </vc-description>
+
+// <vc-spec>
+method count_up_to(n: int) returns (result: seq<int>)
+  requires n >= 0
+  ensures forall i :: 0 <= i < |result| ==> IsPrime(result[i])
+  ensures forall i :: 0 <= i < |result| ==> result[i] < n
+  ensures forall p :: 2 <= p < n && IsPrime(p) ==> p in result
+  ensures forall i, j :: 0 <= i < j < |result| ==> result[i] < result[j]
+// </vc-spec>
+// <vc-code>
+{
+  result := [];
+  var i := 2;
+  while i < n
+    invariant 2 <= i <= n
+    invariant forall j :: 0 <= j < |result| ==> IsPrime(result[j])
+    invariant forall j :: 0 <= j < |result| ==> result[j] < i
+    invariant forall p :: 2 <= p < i && IsPrime(p) ==> p in result
+    invariant forall j, k :: 0 <= j < k < |result| ==> result[j] < result[k]
+  {
+    if IsPrime(i) {
+      result := result + [i];
+    }
+    i := i + 1;
+  }
+}
+// </vc-code>

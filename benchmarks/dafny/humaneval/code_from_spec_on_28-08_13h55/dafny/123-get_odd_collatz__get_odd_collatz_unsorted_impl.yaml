@@ -1,0 +1,128 @@
+vc-preamble: |-
+  function iterate_to_odd(n: nat): nat
+    requires n % 2 == 0
+    requires n > 0
+    ensures iterate_to_odd(n) % 2 == 1
+  {
+    if (n / 2) % 2 == 1 then n / 2 else iterate_to_odd(n / 2)
+  }
+  function next_odd_collatz(n: nat): nat
+    requires n > 0
+  {
+    if n % 2 == 0 then iterate_to_odd(n) else iterate_to_odd(3 * n + 1)
+  }
+  method next_odd_collatz_iter(n: nat) returns (next: nat)
+    // pre-conditions-start
+    requires n > 0
+    // pre-conditions-end
+    // post-conditions-start
+    ensures next % 2 == 1
+    ensures next == next_odd_collatz(n)
+    // post-conditions-end
+  {
+    assume{:axiom} false;
+  }
+
+vc-helpers: |-
+  lemma next_odd_collatz_is_odd(n: nat)
+    requires n > 0
+    ensures next_odd_collatz(n) % 2 == 1
+  {
+    if n % 2 == 0 {
+      assert iterate_to_odd(n) % 2 == 1;
+    } else {
+      assert (3 * n + 1) % 2 == 0;
+      assert 3 * n + 1 > 0;
+      assert iterate_to_odd(3 * n + 1) % 2 == 1;
+    }
+  }
+  
+  lemma next_odd_collatz_bounds(n: nat)
+    requires n > 1
+    ensures next_odd_collatz(n) >= 1
+    ensures next_odd_collatz(n) % 2 == 1
+  {
+    next_odd_collatz_is_odd(n);
+  }
+  
+  function collatz_sequence_to_odd(start: nat, fuel: nat): seq<nat>
+    requires start > 1
+    decreases fuel
+  {
+    if fuel == 0 then []
+    else if start == 1 then [1]
+    else 
+      var next := next_odd_collatz(start);
+      if next == 1 then [start, 1]
+      else [start] + collatz_sequence_to_odd(next, fuel - 1)
+  }
+  
+  lemma collatz_sequence_all_odd(start: nat, fuel: nat)
+    requires start > 1 && start % 2 == 1
+    ensures forall i :: 0 <= i < |collatz_sequence_to_odd(start, fuel)| ==> collatz_sequence_to_odd(start, fuel)[i] % 2 == 1
+    decreases fuel
+  {
+    if fuel == 0 || start == 1 {
+    } else {
+      next_odd_collatz_is_odd(start);
+      var next := next_odd_collatz(start);
+      if next == 1 {
+      } else {
+        next_odd_collatz_bounds(start);
+        collatz_sequence_all_odd(next, fuel - 1);
+      }
+    }
+  }
+
+vc-description: |-
+  function_signature: method get_odd_collatz_unsorted(n: nat) returns (odd_collatz: seq<nat>)
+  Sort elements. Requires: requires n > 1. Ensures: the condition holds for all values; the condition holds for all values.
+
+vc-spec: |-
+  method get_odd_collatz_unsorted(n: nat) returns (odd_collatz: seq<nat>)
+    requires n > 1
+    ensures forall i :: 0 <= i < |odd_collatz| ==> odd_collatz[i] % 2 == 1
+    ensures forall i :: 0 <= i < |odd_collatz| ==> odd_collatz[i] > 0
+
+vc-code: |-
+  method get_odd_collatz_unsorted(n: nat) returns (odd_collatz: seq<nat>)
+    requires n > 1
+    ensures forall i :: 0 <= i < |odd_collatz| ==> odd_collatz[i] % 2 == 1
+    ensures forall i :: 0 <= i < |odd_collatz| ==> odd_collatz[i] > 0
+  {
+    var current := n;
+    odd_collatz := [];
+    var fuel := 1000;
+    
+    if current % 2 == 0 {
+      current := iterate_to_odd(current);
+    }
+    
+    while current != 1 && fuel > 0
+      invariant current > 0
+      invariant current % 2 == 1
+      invariant forall i :: 0 <= i < |odd_collatz| ==> odd_collatz[i] % 2 == 1
+      invariant forall i :: 0 <= i < |odd_collatz| ==> odd_collatz[i] > 0
+      decreases fuel
+    {
+      odd_collatz := odd_collatz + [current];
+      current := next_odd_collatz(current);
+      next_odd_collatz_is_odd(current);
+      fuel := fuel - 1;
+    }
+    
+    if current == 1 {
+      odd_collatz := odd_collatz + [1];
+    }
+  }
+
+vc-postamble: |-
+  method get_odd_collatz(n: nat) returns (sorted: seq<int>)
+    decreases *
+    requires n > 1
+    ensures forall i, j :: 0 <= i < j < |sorted| ==> sorted[i] <= sorted[j]
+    ensures forall i :: 0 <= i < |sorted| ==> sorted[i] % 2 == 1
+  {
+    assume{:axiom} false;
+  }
+

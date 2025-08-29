@@ -1,0 +1,102 @@
+vc-preamble: |-
+  function popcount(n: nat): nat {
+    if n == 0 then 0
+    else popcount(n / 2) + n % 2
+  }
+
+vc-helpers: |-
+  function popcount_seq(s: seq<nat>): seq<nat>
+  {
+    seq(|s|, i requires 0 <= i < |s| => popcount(s[i]))
+  }
+  
+  lemma PopcountPermutation(s: seq<nat>, sorted: seq<nat>)
+    requires multiset(s) == multiset(sorted)
+    ensures multiset(popcount_seq(s)) == multiset(popcount_seq(sorted))
+  {
+    var m := |s|;
+    if m == 0 {
+      assert popcount_seq(s) == [];
+      assert popcount_seq(sorted) == [];
+    } else {
+      assert multiset(popcount_seq(s)) == multiset(popcount_seq(sorted));
+    }
+  }
+  
+  predicate SortedByPopcount(s: seq<nat>)
+  {
+    forall i, j :: 0 <= i < j < |s| ==> popcount(s[i]) <= popcount(s[j])
+  }
+  
+  lemma InsertMaintainsSortedByPopcount(s: seq<nat>, x: nat, sorted: seq<nat>)
+    requires SortedByPopcount(s)
+    requires sorted == s + [x]
+    requires forall i :: 0 <= i < |s| ==> popcount(s[i]) <= popcount(x)
+    ensures SortedByPopcount(sorted)
+  {
+    forall i, j | 0 <= i < j < |sorted| 
+    ensures popcount(sorted[i]) <= popcount(sorted[j])
+    {
+      if j == |sorted| - 1 {
+        if i < |s| {
+          assert popcount(sorted[i]) <= popcount(x);
+        }
+      } else {
+        assert popcount(sorted[i]) <= popcount(sorted[j]);
+      }
+    }
+  }
+
+vc-description: |-
+  function_signature: def max_fill_count(grid : list[list[int]], capacity : int) -> int
+  Please write a function that sorts an array of non-negative integers according to number of ones in their binary representation in ascending order. For similar number of ones, sort based on decimal value.
+
+vc-spec: |-
+  method sort_array(s: seq<nat>) returns (sorted: seq<nat>)
+    // post-conditions-start
+    ensures forall i, j :: 0 <= i < j < |sorted| ==> popcount(sorted[i]) <= popcount(sorted[j])
+    ensures |sorted| == |s|
+    ensures multiset(s) == multiset(sorted)
+    // post-conditions-end
+
+vc-code: |-
+  method SortArray(s: seq<nat>) returns (sorted: seq<nat>)
+    ensures forall i, j :: 0 <= i < j < |sorted| ==> popcount(sorted[i]) <= popcount(sorted[j])
+    ensures |sorted| == |s|
+    ensures multiset(s) == multiset(sorted)
+  {
+    var result: seq<nat> := [];
+    var remaining := s;
+    
+    while |remaining| > 0
+      decreases |remaining|
+      invariant multiset(result) + multiset(remaining) == multiset(s)
+      invariant SortedByPopcount(result)
+      invariant |result| + |remaining| == |s|
+    {
+      var min_idx := 0;
+      var i := 1;
+      while i < |remaining|
+        decreases |remaining| - i
+        invariant 0 <= min_idx < |remaining|
+        invariant 0 <= i <= |remaining|
+        invariant forall k :: 0 <= k < i ==> popcount(remaining[min_idx]) <= popcount(remaining[k])
+      {
+        if popcount(remaining[i]) < popcount(remaining[min_idx]) {
+          min_idx := i;
+        }
+        i := i + 1;
+      }
+      var min_val := remaining[min_idx];
+      result := result + [min_val];
+      remaining := remaining[..min_idx] + remaining[min_idx+1..];
+      if |result| > 1 {
+        InsertMaintainsSortedByPopcount(result[..|result|-1], min_val, result);
+      }
+    }
+    sorted := result;
+  }
+
+vc-postamble: |-
+
+

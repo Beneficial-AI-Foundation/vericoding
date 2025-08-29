@@ -1,0 +1,88 @@
+function ParenthesesDepth(s: string, i: int, j: int): int
+    decreases j - i 
+    requires 0 <= i <= j <= |s|
+{
+    if i == j then
+        0
+    else if s[i] == '(' then
+        ParenthesesDepth(s, i+1, j) + 1
+    else if s[i] == ')' then
+        ParenthesesDepth(s, i+1, j) - 1
+    else
+        ParenthesesDepth(s, i+1, j)
+}
+function InnerDepthsPositive(s: string) : bool
+{
+    forall i :: 0 < i < |s| ==> ParenthesesDepth(s, 0, i) > 0
+}
+function InnerDepthsNonnegative(s: string) : bool
+{
+    forall i :: 0 < i < |s| ==> ParenthesesDepth(s, 0, i) >= 0
+}
+
+// <vc-helpers>
+function IsBalancedPrefix(s: string, start: int, end: int): bool
+    requires 0 <= start <= end <= |s|
+{
+    ParenthesesDepth(s, start, end) == 0
+}
+
+function FindNextBalancedGroup(s: string, start: int): (int, bool)
+    requires 0 <= start <= |s|
+    ensures var (end, found) := FindNextBalancedGroup(s, start); 0 <= start <= end <= |s| && (found ==> IsBalancedPrefix(s, start, end))
+    decreases |s| - start
+{
+    if start == |s| then (start, false)
+    else if s[start] != '(' then FindNextBalancedGroup(s, start + 1)
+    else
+        var depth := 1;
+        var i := start + 1;
+        while i < |s| && depth > 0
+            decreases |s| - i
+            invariant start < i <= |s|
+            invariant depth == ParenthesesDepth(s, start, i)
+        {
+            if s[i] == '(' then depth := depth + 1;
+            else if s[i] == ')' then depth := depth - 1;
+            i := i + 1;
+        }
+        if depth == 0 then (i, true)
+        else (|s|, false)
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: def separate_paren_groups(paren_string: str) -> List[str]
+Input to this function is a string containing multiple groups of nested parentheses. Your goal is to separate those group into separate strings and return the list of those. Separate groups are balanced (each open brace is properly closed) and not nested within each other Ignore any spaces in the input string.
+*/
+// </vc-description>
+
+// <vc-spec>
+method SeparateParenGroups(parenString: string) returns (groups: seq<string>)
+    requires InnerDepthsNonnegative(parenString)
+    ensures forall g :: g in groups ==> InnerDepthsNonnegative(g)
+    ensures forall g :: g in groups ==> ParenthesesDepth(g, 0, |g|) == 0
+    ensures |groups| >= 0
+// </vc-spec>
+// <vc-code>
+{
+    groups := [];
+    var i := 0;
+    while i < |parenString|
+        invariant 0 <= i <= |parenString|
+        invariant forall g :: g in groups ==> InnerDepthsNonnegative(g)
+        invariant forall g :: g in groups ==> ParenthesesDepth(g, 0, |g|) == 0
+        decreases |parenString| - i
+    {
+        var (end, found) := FindNextBalancedGroup(parenString, i);
+        if found {
+            var group := parenString[i..end];
+            groups := groups + [group];
+            i := end;
+        } else {
+            i := |parenString|;
+        }
+    }
+}
+// </vc-code>

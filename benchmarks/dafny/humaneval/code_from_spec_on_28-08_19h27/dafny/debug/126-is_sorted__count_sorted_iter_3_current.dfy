@@ -1,0 +1,79 @@
+method is_sorted(a: seq<int>) returns (f: bool)
+  // post-conditions-start
+  ensures f == forall i, j :: 0 <= i <= j < |a| ==> a[i] <= a[j] && forall i :: 0 <= i < |a| ==> count_set(a, a[i]) <= 2
+  // post-conditions-end
+{
+  assume{:axiom} false;
+}
+
+// <vc-helpers>
+lemma count_set_property(a: seq<int>, x: int, i: int)
+  requires 0 <= i <= |a|
+  ensures |set j | 0 <= j < i && a[j] == x| <= i
+  ensures |set j | 0 <= j < i && a[j] == x| <= |set j | 0 <= j < |a| && a[j] == x|
+{
+  var s1 := set j | 0 <= j < i && a[j] == x;
+  var s2 := set j | 0 <= j < |a| && a[j] == x;
+  assert s1 <= s2;
+  assert forall j :: j in s1 ==> 0 <= j < i;
+  assert |s1| <= i;
+}
+
+lemma count_increment_lemma(a: seq<int>, x: int, i: int)
+  requires 0 <= i < |a|
+  ensures |set j | 0 <= j < i + 1 && a[j] == x| == |set j | 0 <= j < i && a[j] == x| + (if a[i] == x then 1 else 0)
+{
+  var s_before := set j | 0 <= j < i && a[j] == x;
+  var s_after := set j | 0 <= j < i + 1 && a[j] == x;
+  
+  if a[i] == x {
+    assert s_after == s_before + {i};
+    assert i !in s_before;
+    assert |s_after| == |s_before| + 1;
+  } else {
+    assert s_after == s_before;
+    assert |s_after| == |s_before|;
+  }
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: method count_sorted(a: seq<int>, x: int, pos: int) returns (count: int)
+Count occurrences. Requires: the condition holds for all values; the size is bounded; returns the correct value; returns the correct size/count. Ensures: returns the correct value.
+*/
+// </vc-description>
+
+// <vc-spec>
+method count_sorted(a: seq<int>, x: int, pos: int) returns (count: int)
+  requires 0 <= pos <= |a|
+  requires forall i, j :: 0 <= i <= j < |a| ==> a[i] <= a[j]
+  requires forall i :: 0 <= i < |a| ==> count_set(a, a[i]) <= 2
+  ensures count == count_set(a, x)
+  ensures 0 <= count <= 2
+// </vc-spec>
+// <vc-code>
+{
+  count := 0;
+  var i := 0;
+  while i < |a|
+    invariant 0 <= i <= |a|
+    invariant count == |set j | 0 <= j < i && a[j] == x|
+    invariant count <= 2
+  {
+    if a[i] == x {
+      count := count + 1;
+      count_increment_lemma(a, x, i);
+    }
+    i := i + 1;
+  }
+  
+  assert count == |set j | 0 <= j < |a| && a[j] == x|;
+  assert count == count_set(a, x);
+}
+// </vc-code>
+
+function count_set(a: seq<int>, x: int): int {
+  |set i | 0 <= i < |a| && a[i] == x|
+}
+// pure-end

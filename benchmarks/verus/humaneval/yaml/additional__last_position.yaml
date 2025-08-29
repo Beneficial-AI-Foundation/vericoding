@@ -1,14 +1,14 @@
-vc-description: |-
-  /--
-  function_signature: "fn last_position(a: &[i32], elem: i32) -> (result: usize)"
-  docstring: Implement last position functionality.
-  -/
 vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
 
 vc-helpers: |-
+
+
+vc-description: |-
+  function_signature: "fn last_position(a: &[i32], elem: i32) -> (result: usize)"
+  docstring: Implement last position functionality.
 
 vc-spec: |-
   #[verifier::loop_isolation(false)]

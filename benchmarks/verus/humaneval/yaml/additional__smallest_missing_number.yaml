@@ -1,14 +1,14 @@
-vc-description: |-
-  /--
-  function_signature: "fn smallest_missing_number(s: &[i32]) -> (v: i32)"
-  docstring: Implement smallest missing number functionality.
-  -/
 vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
 
 vc-helpers: |-
+
+
+vc-description: |-
+  function_signature: "fn smallest_missing_number(s: &[i32]) -> (v: i32)"
+  docstring: Implement smallest missing number functionality.
 
 vc-spec: |-
   #[verifier::loop_isolation(false)]

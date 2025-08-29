@@ -1,0 +1,73 @@
+vc-preamble: |-
+  function IsSubstring(s: string, sub: string) : bool
+  {
+    |s| >= |sub| && exists i {:trigger s[i..i+|sub|]} :: 0 <= i <= |s| - |sub| && s[i..i+|sub|] == sub
+  }
+  function RotateString(s: string, n: nat): string
+    requires 0 <= n <= |s|
+  {
+    s[n..] + s[..n]
+  }
+
+vc-helpers: |-
+  lemma RotateStringLength(s: string, n: nat)
+    requires 0 <= n <= |s|
+    ensures |RotateString(s, n)| == |s|
+  {
+    calc {
+      |RotateString(s, n)|;
+      |s[n..] + s[..n]|;
+      |s[n..]| + |s[..n]|;
+      (|s| - n) + n;
+      |s|;
+    }
+  }
+  
+  lemma RotateStringSubstringRelation(word: string, pattern: string, i: nat)
+    requires 0 <= i <= |pattern|
+    ensures IsSubstring(word, RotateString(pattern, i)) == exists k {:trigger word[k..k+|pattern|]} :: 0 <= k <= |word| - |pattern| && word[k..k+|pattern|] == RotateString(pattern, i)
+  {
+  }
+
+vc-description: |-
+  function_signature: def cycpattern_check(String a, String b) -> Bool
+  You are given 2 words. You need to return True if the second word or any of its rotations is a substring in the first word, else False
+
+vc-spec: |-
+  method CycpatternCheck(word: string, pattern: string) returns (result: bool)
+    // post-conditions-start
+    ensures result ==> exists i :: 0 <= i <= |pattern| && IsSubstring(word, RotateString(pattern, i))
+    ensures !result ==> forall i :: 0 <= i <= |pattern| ==> !IsSubstring(word, RotateString(pattern, i))
+    // post-conditions-end
+
+vc-code: |-
+  method CycpatternCheckImpl(word: string, pattern: string) returns (result: bool)
+    ensures result ==> exists i :: 0 <= i <= |pattern| && IsSubstring(word, RotateString(pattern, i))
+    ensures !result ==> forall i :: 0 <= i <= |pattern| ==> !IsSubstring(word, RotateString(pattern, i))
+  {
+    result := false;
+    var n := |pattern|;
+    var i := 0;
+    while i < n
+      invariant 0 <= i <= n
+      invariant result ==> exists k :: 0 <= k < i && IsSubstring(word, RotateString(pattern, k))
+      invariant !result ==> forall k :: 0 <= k < i ==> !IsSubstring(word, RotateString(pattern, k))
+    {
+      var rotated := RotateString(pattern, i);
+      assert |rotated| == |pattern| by { RotateStringLength(pattern, i); }
+      if exists j {:trigger word[j..j+|pattern|]} :: 0 <= j <= |word| - |pattern| && word[j..j+|pattern|] == rotated {
+        result := true;
+        assert exists k :: 0 <= k < i + 1 && IsSubstring(word, RotateString(pattern, k));
+        return;
+      }
+      i := i + 1;
+    }
+    result := false;
+    assert !result ==> forall k :: 0 <= k < n ==> !IsSubstring(word, RotateString(pattern, k));
+    assert !result ==> forall k :: 0 <= k <= |pattern| ==> !IsSubstring(word, RotateString(pattern, k));
+    return;
+  }
+
+vc-postamble: |-
+
+

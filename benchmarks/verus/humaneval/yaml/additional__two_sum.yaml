@@ -1,14 +1,14 @@
-vc-description: |-
-  /--
-  function_signature: "fn two_sum(nums: &[i32], target: i32) -> (result: (usize, usize))"
-  docstring: Perform addition or summation operations.
-  -/
 vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
 
 vc-helpers: |-
+
+
+vc-description: |-
+  function_signature: "fn two_sum(nums: &[i32], target: i32) -> (result: (usize, usize))"
+  docstring: Perform addition or summation operations.
 
 vc-spec: |-
   #[verifier::loop_isolation(false)]

@@ -1,14 +1,14 @@
-vc-description: |-
-  /--
-  function_signature: "fn is_non_prime(n: u32) -> (result: bool)"
-  docstring: Implement is non prime functionality.
-  -/
 vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
 
 vc-helpers: |-
+
+
+vc-description: |-
+  function_signature: "fn is_non_prime(n: u32) -> (result: bool)"
+  docstring: Implement is non prime functionality.
 
 vc-spec: |-
   #[verifier::loop_isolation(false)]

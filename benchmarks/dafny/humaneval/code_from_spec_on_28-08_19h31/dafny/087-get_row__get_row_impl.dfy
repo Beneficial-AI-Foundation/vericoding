@@ -1,0 +1,77 @@
+type SortSeqState = seq<(int, int)>
+function less(a: (int, int), b: (int, int)): bool {
+  var (x, y) := a; var (u, v) := b;
+  x < u || (x == u && y > v)
+}
+function less_eq(a: (int, int), b: (int, int)): bool {
+  var (x, y) := a; var (u, v) := b;
+  (x == u && y == v) || less(a, b)
+}
+
+// <vc-helpers>
+function is_sorted(s: SortSeqState): bool {
+  forall i, j :: 0 <= i < j < |s| ==> less_eq(s[i], s[j])
+}
+
+lemma SortedImpliesLessEq(s: SortSeqState)
+  ensures is_sorted(s) ==> forall i, j :: 0 <= i < j < |s| ==> less_eq(s[i], s[j])
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+method get_row(lst: seq<seq<int>>, x: int) returns (pos: SortSeqState)
+  // post-conditions-start
+  ensures forall i :: 0 <= i < |pos| ==> (
+    var (a, b) := pos[i];
+    0 <= a < |lst| && 0 <= b < |lst[a]| && lst[a][b] == x
+  )
+  ensures forall i, j :: 0 <= i < |lst| && 0 <= j < |lst[i]| && lst[i][j] == x ==> (i, j) in pos
+  ensures forall i, j :: 0 <= i < j < |pos| ==> less_eq(pos[i], pos[j])
+  // post-conditions-end
+// </vc-spec>
+// <vc-code>
+method get_row_impl(lst: seq<seq<int>>, x: int) returns (pos: SortSeqState)
+  ensures forall i :: 0 <= i < |pos| ==> (
+    var (a, b) := pos[i];
+    0 <= a < |lst| && 0 <= b < |lst[a]| && lst[a][b] == x
+  )
+  ensures forall i, j :: 0 <= i < |lst| && 0 <= j < |lst[i]| && lst[i][j] == x ==> (i, j) in pos
+  ensures forall i, j :: 0 <= i < j < |pos| ==> less_eq(pos[i], pos[j])
+{
+  var result: SortSeqState := [];
+  for i := 0 to |lst|
+    invariant forall k :: 0 <= k < |result| ==> (
+      var (a, b) := result[k];
+      0 <= a < |lst| && 0 <= b < |lst[a]| && lst[a][b] == x
+    )
+    invariant forall k, m :: 0 <= k < i && 0 <= m < |lst[k]| && lst[k][m] == x ==> (k, m) in result
+    invariant forall k, m :: 0 <= k < m < |result| ==> less_eq(result[k], result[m])
+  {
+    for j := 0 to |lst[i]|
+      invariant forall k :: 0 <= k < |result| ==> (
+        var (a, b) := result[k];
+        0 <= a < |lst| && 0 <= b < |lst[a]| && lst[a][b] == x
+      )
+      invariant forall k, m :: 0 <= k < i && 0 <= m < |lst[k]| && lst[k][m] == x ==> (k, m) in result
+      invariant forall m :: 0 <= m < j && i < |lst| && lst[i][m] == x ==> (i, m) in result
+      invariant forall k, m :: 0 <= k < m < |result| ==> less_eq(result[k], result[m])
+    {
+      if i < |lst| && j < |lst[i]| && lst[i][j] == x {
+        result := result + [(i, j)];
+      }
+    }
+  }
+  pos := result;
+}
+// </vc-code>
+
+method SortSeq(s: SortSeqState) returns (sorted: SortSeqState)
+  // post-conditions-start
+  ensures forall i, j :: 0 <= i < j < |sorted| ==> less_eq(sorted[i], sorted[j])
+  ensures |sorted| == |s|
+  ensures multiset(s) == multiset(sorted)
+  // post-conditions-end
+{
+  assume{:axiom} false;
+}

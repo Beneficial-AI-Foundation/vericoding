@@ -1,0 +1,166 @@
+vc-description: |-
+
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+  fn contains(arr: &Vec<i32>, key: i32) -> (result: bool)
+      // post-conditions-start
+      ensures
+          result == (exists|i: int| 0 <= i < arr.len() && (arr[i] == key)),
+      // post-conditions-end
+  {
+      // impl-start
+      let mut index = 0;
+      while index < arr.len()
+          // invariants-start
+          invariant
+              forall|m: int| 0 <= m < index ==> (arr[m] != key),
+          // invariants-end
+          /* code modified by LLM (iteration 4): added decreases clause */
+          decreases arr.len() - index
+      {
+          if (arr[index] == key) {
+              return true;
+          }
+          index += 1;
+      }
+      false
+      // impl-end
+  }
+  
+  proof fn lemma_vec_push<T>(vec: Seq<T>, i: T, l: usize)
+      // pre-conditions-start
+      requires
+          l == vec.len(),
+      // pre-conditions-end
+      // post-conditions-start
+      ensures
+          forall|k: int| 0 <= k < vec.len() ==> #[trigger] vec[k] == vec.push(i)[k],
+          vec.push(i).index(l as int) == i,
+      // post-conditions-end
+  {
+      // impl-start
+      // impl-end
+  }
+  
+  proof fn lemma_contains_equiv(arr: &Vec<i32>, key: i32)
+      ensures
+          (exists|i: int| 0 <= i < arr.len() && arr[i] == key) == arr@.contains(key)
+  {
+      assert((exists|i: int| 0 <= i < arr.len() && arr[i] == key) == (exists|i: int| 0 <= i < arr@.len() && arr@[i] == key));
+      assert(arr.len() == arr@.len());
+      assert(forall|i: int| 0 <= i < arr.len() ==> arr[i] == arr@[i]);
+  }
+  
+  spec fn unique_seq(s: Seq<i32>) -> bool {
+      forall|i: int, j: int| 0 <= i < j < s.len() ==> s[i] != s[j]
+  }
+  
+  proof fn lemma_push_preserves_unique(s: Seq<i32>, x: i32)
+      requires
+          unique_seq(s),
+          !s.contains(x)
+      ensures
+          unique_seq(s.push(x))
+  {
+      let new_s = s.push(x);
+      assert(new_s.len() == s.len() + 1);
+      assert(new_s[s.len() as int] == x);
+      
+      assert(forall|i: int, j: int| 
+          0 <= i < j < s.len() ==> {
+              new_s[i] == s[i] && new_s[j] == s[j] && s[i] != s[j]
+          });
+      
+      assert(forall|i: int| 
+          0 <= i < s.len() ==> {
+              new_s[i] == s[i] && s[i] != x && new_s[s.len() as int] == x
+          });
+  }
+
+vc-spec: |-
+  fn difference(arr1: &Vec<i32>, arr2: &Vec<i32>) -> (result: Vec<i32>)
+      // post-conditions-start
+      ensures
+          forall|i: int|
+              0 <= i < arr1.len() ==> (!arr2@.contains(#[trigger] arr1[i]) ==> result@.contains(
+                  arr1[i],
+              )),
+          forall|i: int|
+              0 <= i < arr2.len() ==> (!arr1@.contains(#[trigger] arr2[i]) ==> result@.contains(
+                  arr2[i],
+              )),
+          forall|i: int, j: int|
+              0 <= i < j < result.len() ==> #[trigger] result[i] != #[trigger] result[j],
+      // post-conditions-end
+
+vc-code: |-
+  {
+      // impl-start
+      let mut result = Vec::new();
+      
+      // Add elements from arr1 that are not in arr2
+      let mut i = 0;
+      while i < arr1.len()
+          invariant
+              i <= arr1.len(),
+              forall|k: int| 0 <= k < i ==> 
+                  (!arr2@.contains(arr1[k]) ==> result@.contains(arr1[k])),
+              unique_seq(result@)
+          decreases arr1.len() - i
+      {
+          /* code modified by LLM (iteration 5): added proof assertion for invariant */
+          if !contains(arr2, arr1[i]) && !contains(&result, arr1[i]) {
+              proof {
+                  lemma_contains_equiv(&result, arr1[i as int]);
+                  lemma_push_preserves_unique(result@, arr1[i as int]);
+              }
+              result.push(arr1[i]);
+              proof {
+                  assert(!arr2@.contains(arr1[i as int]));
+                  assert(result@.contains(arr1[i as int]));
+              }
+          }
+          i += 1;
+      }
+      
+      // Add elements from arr2 that are not in arr1
+      let mut j = 0;
+      while j < arr2.len()
+          invariant
+              j <= arr2.len(),
+              forall|k: int| 0 <= k < arr1.len() ==> 
+                  (!arr2@.contains(arr1[k]) ==> result@.contains(arr1[k])),
+              forall|k: int| 0 <= k < j ==> 
+                  (!arr1@.contains(arr2[k]) ==> result@.contains(arr2[k])),
+              unique_seq(result@)
+          decreases arr2.len() - j
+      {
+          /* code modified by LLM (iteration 5): added proof assertions for invariants */
+          if !contains(arr1, arr2[j]) && !contains(&result, arr2[j]) {
+              proof {
+                  lemma_contains_equiv(&result, arr2[j as int]);
+                  lemma_push_preserves_unique(result@, arr2[j as int]);
+              }
+              result.push(arr2[j]);
+              proof {
+                  assert(!arr1@.contains(arr2[j as int]));
+                  assert(result@.contains(arr2[j as int]));
+              }
+          }
+          j += 1;
+      }
+      
+      result
+      // impl-end
+  }
+
+vc-postamble: |-
+  
+  } // verus!
+  fn main() {}
+

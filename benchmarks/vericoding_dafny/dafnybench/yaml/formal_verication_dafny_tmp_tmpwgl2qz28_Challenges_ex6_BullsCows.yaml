@@ -1,8 +1,0 @@
-vc-preamble: "// see pdf 'ex6 & 7 documentation' for excercise question\n\nfunction bullspec(s:seq<nat>, u:seq<nat>): nat\nrequires 0 <= |u| == |s| && nomultiples(u)\n{reccbull(s, u, 0)}\n\nfunction cowspec(s:seq<nat>, u:seq<nat>): nat\nrequires 0 <= |u| == |s| && nomultiples(u)\n{recccow(s, u, 0)}\n\nfunction reccbull(s: seq<nat>, u:seq<nat>, i:int): nat\nrequires 0 <= i <= |s| == |u|\ndecreases |s| - i\n{\n    if i ==|s| then 0\n    else if s[i] == u[i] then reccbull(s, u, i + 1) + 1\n    else reccbull(s, u, i + 1)\n}\n\nfunction recccow(s: seq<nat>, u:seq<nat>, i:int): nat\nrequires 0 <= i <= |s| == |u|\ndecreases |s| - i\n{\n    if i == |s| then 0\n    else if s[i] != u[i] && u[i] in s then recccow(s, u, i + 1) + 1\n    else recccow(s, u, i + 1)\n}\n\npredicate nomultiples(u:seq<nat>) \n{forall j, k :: 0<=j<k<|u| ==> u[j] != u[k]}"
-vc-helpers: ''
-vc-spec: "method BullsCows (s:seq<nat>, u:seq<nat>) returns (b:nat, c:nat) \nrequires 0 < |u| == |s| <= 10\nrequires nomultiples(u) && nomultiples(s);\nensures b >= 0 && c >= 0\nensures b == bullspec(s, u)\nensures c == cowspec(s, u)"
-vc-code: |-
-  {
-    assume false;
-  }
-vc-postamble: ''

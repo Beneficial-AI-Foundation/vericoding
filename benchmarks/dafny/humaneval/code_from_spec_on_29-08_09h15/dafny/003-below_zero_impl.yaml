@@ -1,0 +1,79 @@
+vc-preamble: |-
+  function psum(s: seq<int>): int
+  {
+      if |s| == 0 then 0
+      else psum(s[..(|s|)-1]) + s[ |s| - 1 ]
+  }
+
+vc-helpers: |-
+  lemma psum_slice_property(s: seq<int>, i: int, j: int)
+      requires 0 <= i <= j <= |s|
+      ensures psum(s[..j]) == psum(s[..i]) + psum(s[i..j])
+  {
+      if i == j {
+          assert s[i..j] == [];
+          assert psum(s[i..j]) == 0;
+      } else if i == 0 {
+          assert s[..i] == [];
+          assert psum(s[..i]) == 0;
+          assert s[i..j] == s[..j];
+      } else {
+          psum_slice_property(s, i, j-1);
+          assert psum(s[..j-1]) == psum(s[..i]) + psum(s[i..j-1]);
+          assert s[..j] == s[..j-1] + [s[j-1]];
+          assert psum(s[..j]) == psum(s[..j-1]) + s[j-1];
+          assert s[i..j] == s[i..j-1] + [s[j-1]];
+          assert psum(s[i..j]) == psum(s[i..j-1]) + s[j-1];
+      }
+  }
+  
+  lemma psum_monotonic_step(s: seq<int>, i: int)
+      requires 0 <= i < |s|
+      ensures psum(s[..i+1]) == psum(s[..i]) + s[i]
+  {
+      if i == 0 {
+          assert s[..1] == [s[0]];
+          assert psum(s[..1]) == s[0];
+          assert s[..0] == [];
+          assert psum(s[..0]) == 0;
+      } else {
+          assert s[..i+1] == s[..i] + [s[i]];
+      }
+  }
+
+vc-description: |-
+  function_signature: def below_zero(operations: List[int]) -> bool
+  You're given a list of deposit and withdrawal operations on a bank account that starts with zero balance. Your task is to detect if at any point the balance of account fallls below zero, and at that point function should return True. Otherwise it should return False.
+
+vc-spec: |-
+  method below_zero(ops: seq<int>) returns (res : bool)
+      // post-conditions-start
+      ensures res ==> forall i : int :: 0 <= i <= |ops| ==> psum(ops[..i]) >= 0
+      ensures !res ==> exists i : int :: 0 <= i <= |ops| && psum(ops[..i]) < 0
+      // post-conditions-end
+
+vc-code: |-
+  {
+      var balance := 0;
+      var i := 0;
+      
+      while i < |ops|
+          invariant 0 <= i <= |ops|
+          invariant balance == psum(ops[..i])
+          invariant forall j :: 0 <= j <= i ==> psum(ops[..j]) >= 0
+      {
+          balance := balance + ops[i];
+          psum_monotonic_step(ops, i);
+          i := i + 1;
+          
+          if balance < 0 {
+              return false;
+          }
+      }
+      
+      return true;
+  }
+
+vc-postamble: |-
+
+

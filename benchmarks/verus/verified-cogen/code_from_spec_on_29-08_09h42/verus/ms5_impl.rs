@@ -1,0 +1,61 @@
+use vstd::prelude::*;
+
+verus!{
+
+// <vc-helpers>
+spec fn spec_min(x: i32, y: i32) -> i32 {
+    if x <= y { x } else { y }
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn myfun(a: &mut Vec<i32>, sum: &mut Vec<i32>, N: i32) 
+	// pre-conditions-start
+	requires 
+		old(a).len() == N,
+		old(sum).len() == 1,
+		N > 0,
+		N < 1000,
+	// pre-conditions-end
+	// post-conditions-start
+	ensures
+		sum[0] <= 4 * N,
+	// post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    // impl-start
+    let mut total: i32 = 0;
+    let mut i = 0;
+    /* code modified by LLM (iteration 5): fixed arithmetic overflow by ensuring N bounds and proper casting */
+    while i < N
+        invariant 
+            0 <= i <= N,
+            total <= 4 * i,
+            N > 0,
+            N < 1000,
+        decreases N - i
+    {
+        if i < a.len() as i32 {
+            let val = spec_min(a[i as usize], 4);
+            /* code modified by LLM (iteration 5): use safe arithmetic with bounds check */
+            if total <= 4 * N - val {
+                total = total + val;
+            }
+        } else {
+            /* code modified by LLM (iteration 5): ensure 4*N-4 is valid since N > 0 and N < 1000 */
+            if N > 1 && total <= 4 * (N - 1) {
+                total = total + 4;
+            }
+        }
+        i = i + 1;
+    }
+    sum.set(0, total);
+    // impl-end
+}
+// </vc-code>
+
+}
+
+fn main() {}

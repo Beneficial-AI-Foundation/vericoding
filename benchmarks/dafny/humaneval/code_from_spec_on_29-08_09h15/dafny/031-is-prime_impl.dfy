@@ -1,0 +1,167 @@
+
+
+// <vc-helpers>
+lemma DivisionProperties(a: int, b: int)
+  requires b > 0
+  ensures a % b == 0 <==> exists q :: a == q * b
+{
+  if a % b == 0 {
+    var q := a / b;
+    assert a == q * b;
+  }
+  if exists q :: a == q * b {
+    var q :| a == q * b;
+    calc {
+      a;
+      == q * b;
+      == (q * b) / b * b + (q * b) % b;
+      == q * b + 0;
+      == q * b;
+    }
+    assert a == q * b;
+    assert a % b == 0;
+  }
+}
+
+lemma PrimeWitnessExists(k: int, i: int)
+  requires k >= 2 && 2 <= i < k && k % i == 0
+  ensures exists j :: 2 <= j < k && k % j == 0
+{
+  assert k % i == 0;
+}
+
+lemma SquareRootProperty(k: int, i: int)
+  requires k >= 2 && i * i > k && 2 <= i < k
+  requires k % i == 0
+  ensures exists j :: 2 <= j < k && j * j <= k && k % j == 0
+{
+  var j := k / i;
+  
+  assert k % i == 0;
+  assert k == j * i;
+  
+  assert j >= 2 by {
+    if j <= 1 {
+      if j == 1 {
+        assert k == i;
+        assert i * i > k;
+        assert i * i > i;
+        assert false;
+      }
+      if j == 0 {
+        assert k == 0;
+        assert false;
+      }
+      if j < 0 {
+        assert k < 0;
+        assert false;
+      }
+    }
+  }
+  
+  assert j < k by {
+    if j >= k {
+      assert k == j * i >= k * i;
+      assert 1 >= i;
+      assert i == 1;
+      assert false;
+    }
+  }
+  
+  assert j * j <= k by {
+    if j * j > k {
+      assert j * j > j * i;
+      assert j > i;
+      assert j * j > k;
+      assert j * i == k;
+      assert j > i;
+      assert j * j > j * i;
+      assert j * (j - i) > 0;
+      assert j > 0 && j - i > 0;
+      assert j > i;
+      calc {
+        k;
+        == j * i;
+        <  j * j;
+        <  (j * j) * (j * j) / k;
+      }
+      assert j * i < j * j;
+      assert i < j;
+      assert j > i;
+      assert j * i == k < i * i;
+      assert j < i;
+      assert false;
+    }
+  }
+  
+  assert k % j == 0 by {
+    assert k == j * i;
+    assert k == i * j;
+  }
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: def is_prime(n)
+Return true if a given number is prime, and false otherwise.
+*/
+// </vc-description>
+
+// <vc-spec>
+method is_prime(k: int) returns (result: bool)
+  // pre-conditions-start
+  requires k >= 2
+  // pre-conditions-end
+  // post-conditions-start
+  ensures result ==> forall i :: 2 <= i < k ==> k % i != 0
+  ensures !result ==> exists j :: 2 <= j < k && k % j == 0
+  // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+  if k == 2 {
+    return true;
+  }
+  
+  var i := 2;
+  while i * i <= k
+    invariant 2 <= i <= k
+    invariant forall j :: 2 <= j < i ==> k % j != 0
+  {
+    if k % i == 0 {
+      PrimeWitnessExists(k, i);
+      return false;
+    }
+    i := i + 1;
+  }
+  
+  assert i * i > k;
+  assert forall j :: 2 <= j < i ==> k % j != 0;
+  
+  assert forall j :: i <= j < k ==> k % j != 0 by {
+    forall remaining | i <= remaining < k 
+      ensures k % remaining != 0
+    {
+      if k % remaining == 0 {
+        SquareRootProperty(k, remaining);
+        assert exists w :: 2 <= w < k && w * w <= k && k % w == 0;
+        var w :| 2 <= w < k && w * w <= k && k % w == 0;
+        assert w < i by {
+          if w >= i {
+            assert w * w >= i * i > k;
+            assert w * w > k;
+            assert false;
+          }
+        }
+        assert k % w == 0;
+        assert false;
+      }
+    }
+  }
+  
+  return true;
+}
+// </vc-code>
+

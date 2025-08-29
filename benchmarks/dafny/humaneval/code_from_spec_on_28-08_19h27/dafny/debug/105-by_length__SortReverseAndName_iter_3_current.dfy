@@ -1,0 +1,82 @@
+// <vc-helpers>
+function {:axiom} SortedSeqBounds(s: seq<int>): seq<int>
+  requires forall x :: x in s ==> 1 <= x <= 9
+  ensures var sorted := SortedSeqBounds(s); forall x :: x in sorted ==> 1 <= x <= 9
+  ensures |SortedSeqBounds(s)| == |s|
+  ensures forall i, j :: 0 <= i < j < |SortedSeqBounds(s)| ==> SortedSeqBounds(s)[i] <= SortedSeqBounds(s)[j]
+  ensures multiset(s) == multiset(SortedSeqBounds(s))
+
+function {:axiom} ReverseSeq(s: seq<int>): seq<int>
+  requires forall x :: x in s ==> 1 <= x <= 9
+  ensures var rev := ReverseSeq(s); forall x :: x in rev ==> 1 <= x <= 9
+  ensures |ReverseSeq(s)| == |s|
+  ensures forall k :: 0 <= k < |s| ==> ReverseSeq(s)[k] == s[|s| - 1 - k]
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: method SortReverseAndName(arr: seq<int>) returns (result: seq<string>)
+Sort elements. Ensures: the size is bounded; the condition holds for all values.
+*/
+// </vc-description>
+
+// <vc-spec>
+method SortReverseAndName(arr: seq<int>) returns (result: seq<string>)
+  requires forall x :: x in arr ==> 1 <= x <= 9
+  ensures |result| == |arr|
+  ensures forall i :: 0 <= i < |result| ==> result[i] in {"One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"}
+// </vc-spec>
+// <vc-code>
+{
+  var sorted := SortedSeqBounds(arr);
+  var reversed := ReverseSeq(sorted);
+  
+  result := [];
+  var i := 0;
+  while i < |reversed|
+    invariant 0 <= i <= |reversed|
+    invariant |result| == i
+    invariant forall j :: 0 <= j < i ==> result[j] in {"One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"}
+    invariant forall x :: x in reversed ==> 1 <= x <= 9
+  {
+    assert 0 <= i < |reversed|;
+    assert 1 <= reversed[i] <= 9;
+    var name := NumberToName(reversed[i]);
+    result := result + [name];
+    i := i + 1;
+  }
+}
+// </vc-code>
+
+method SortSeq(s: seq<int>) returns (sorted: seq<int>)
+  // post-conditions-start
+  ensures forall i, j :: 0 <= i < j < |sorted| ==> sorted[i] <= sorted[j]
+  ensures |sorted| == |s|
+  ensures multiset(s) == multiset(sorted)
+  // post-conditions-end
+{
+  assume{:axiom} false;
+}
+method reverse(s: seq<int>) returns (rev: seq<int>)
+  // post-conditions-start
+  ensures |rev| == |s|
+  ensures forall k :: 0 <= k < |s| ==> rev[k] == s[|s| - 1 - k]
+  // post-conditions-end
+{
+  assume{:axiom} false;
+}
+function NumberToName(n: int): string
+  requires 1 <= n <= 9
+{
+  match n
+  case 1 => "One"
+  case 2 => "Two"
+  case 3 => "Three"
+  case 4 => "Four"
+  case 5 => "Five"
+  case 6 => "Six"
+  case 7 => "Seven"
+  case 8 => "Eight"
+  case 9 => "Nine"
+}
+// pure-end

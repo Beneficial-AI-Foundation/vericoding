@@ -1,8 +1,0 @@
-vc-preamble: "function verifyNeg(a: array<int>, idx: int) : nat\nreads a\nrequires 0 <= idx <= a.Length\n{\n    if idx == 0 then 0 \n    else verifyNeg(a, idx - 1) + (if a[idx - 1] < 0 then 1 else 0)\n}"
-vc-helpers: ''
-vc-spec: "method CountNeg(a: array<int>) returns (cnt: nat) \nensures cnt == verifyNeg(a, a.Length)"
-vc-code: |-
-  {
-    assume false;
-  }
-vc-postamble: ''

@@ -1,14 +1,14 @@
-vc-description: |-
-  /--
-  function_signature: "fn binary_search(arr: &[i32], target: i32) -> (result: Option<usize>)"
-  docstring: Perform binary search on a sorted array to find the position where an element should be inserted.
-  -/
 vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
 
 vc-helpers: |-
+
+
+vc-description: |-
+  function_signature: "fn binary_search(arr: &[i32], target: i32) -> (result: Option<usize>)"
+  docstring: Perform binary search on a sorted array to find the position where an element should be inserted.
 
 vc-spec: |-
   #[verifier::loop_isolation(false)]

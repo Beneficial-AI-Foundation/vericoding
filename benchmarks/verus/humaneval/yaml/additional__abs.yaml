@@ -1,14 +1,14 @@
-vc-description: |-
-  /--
-  function_signature: "fn abs(x: i32) -> (result: i32)"
-  docstring: Implement abs functionality.
-  -/
 vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
 
 vc-helpers: |-
+
+
+vc-description: |-
+  function_signature: "fn abs(x: i32) -> (result: i32)"
+  docstring: Implement abs functionality.
 
 vc-spec: |-
   fn abs(x: i32) -> (result: i32)

@@ -1,0 +1,54 @@
+function first_digit(n: int): int
+  requires n >= 0
+  ensures 0 <= first_digit(n) < 10
+{
+  if n < 10 then n else first_digit(n / 10)
+}
+function last_digit(n: int): int
+  requires n >= 0
+  ensures 0 <= last_digit(n) < 10
+  ensures last_digit(n) == n % 10
+{
+  n % 10
+}
+
+// <vc-helpers>
+predicate isOddDigit(d: int)
+{
+  d == 1 || d == 3 || d == 5 || d == 7 || d == 9
+}
+
+predicate hasOddFirstAndLast(n: int)
+{
+  n > 10 && isOddDigit(first_digit(n)) && isOddDigit(last_digit(n))
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: method specialFilter(s: seq<int>) returns (r: seq<int>)
+Write a function that takes an array of numbers as input and returns the number of elements in the array that are greater than 10 and both first and last digits of a number are odd (1, 3, 5, 7, 9).
+*/
+// </vc-description>
+
+// <vc-spec>
+method specialFilter(s: seq<int>) returns (r: seq<int>)
+  ensures forall i :: 0 <= i < |r| ==> hasOddFirstAndLast(r[i])
+  ensures |r| <= |s|
+  ensures forall x :: x in r ==> x in s
+// </vc-spec>
+// <vc-code>
+{
+  var result: seq<int> := [];
+  for i := 0 to |s|
+    invariant |result| <= i
+    invariant forall k :: 0 <= k < |result| ==> hasOddFirstAndLast(result[k])
+    invariant forall x :: x in result ==> x in s[..i]
+  {
+    if i < |s| && s[i] >= 0 && s[i] > 10 && isOddDigit(first_digit(s[i])) && isOddDigit(last_digit(s[i])) {
+      result := result + [s[i]];
+    }
+  }
+  return result;
+}
+// </vc-code>

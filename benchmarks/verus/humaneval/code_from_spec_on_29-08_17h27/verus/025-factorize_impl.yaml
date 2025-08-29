@@ -1,0 +1,73 @@
+vc-preamble: |-
+  use vstd::arithmetic::div_mod::*;
+  use vstd::arithmetic::mul::*;
+  use vstd::assert_by_contradiction;
+  use vstd::calc;
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn is_prime(n: nat) -> (result:bool) {
+      forall|i: nat| 1 < i < n ==> #[trigger] (n % i) != 0
+  }
+  // pure-end
+  // pure-end
+  
+  
+  spec fn is_prime_factorization(n: nat, factorization: Seq<nat>) -> (result:bool) {
+  
+      &&& forall|i: int|
+          0 <= i < factorization.len() ==> #[trigger] is_prime(
+              factorization[i] as nat,
+          )
+  
+      &&& factorization.fold_right(|x: nat, acc: nat| (acc * x as nat), 1nat)
+          == n
+  
+      &&& forall|i: nat, j: nat|
+          (1 < i <= j < factorization.len()) ==> (#[trigger] factorization[i as int]
+              <= #[trigger] factorization[j as int])
+  }
+  // pure-end
+
+vc-helpers: |-
+
+
+vc-description: |-
+  function_signature: "def factorize(n: int) -> List[int]"
+  docstring: |
+  Return list of prime factors of given integer in the order from smallest to largest.
+  Each of the factors should be listed number of times corresponding to how many times it appeares in factorization.
+  Input number should be equal to the product of all factors
+  test_cases:
+  - input: 8
+  expected_output: [2, 2, 2]
+  - input: 25
+  expected_output: [5, 5]
+  - input: 70
+  expected_output: [2, 5, 7]
+
+vc-spec: |-
+  fn factorize(n: u8) -> (factorization: Vec<u8>)
+      // pre-conditions-start
+      requires
+          1 <= n <= u8::MAX,
+      // pre-conditions-end
+      // post-conditions-start
+      ensures
+          is_prime_factorization(n as nat, factorization@.map(|_idx, j: u8| j as nat)),
+      // post-conditions-end
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      vec![]
+      // impl-end
+  }
+
+vc-postamble: |-
+  
+  } // verus!
+  fn main() { }
+

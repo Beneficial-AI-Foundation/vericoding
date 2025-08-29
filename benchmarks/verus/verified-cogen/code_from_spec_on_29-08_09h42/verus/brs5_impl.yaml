@@ -1,0 +1,93 @@
+vc-description: |-
+
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus!{
+
+vc-helpers: |-
+  spec fn sum_upper_bound(a: Seq<i32>, len: int) -> int {
+      if len <= 0 {
+          0
+      } else if len > a.len() {
+          5 * len
+      } else {
+          5 * len
+      }
+  }
+  
+  proof fn sum_bound_lemma(total: i32, addition: i32, bound: int)
+      requires
+          total <= bound,
+          0 <= addition <= 5,
+          bound + 5 <= i32::MAX,
+      ensures
+          total + addition <= bound + 5,
+  {
+  }
+
+vc-spec: |-
+  fn myfun(a: &mut Vec<i32>, sum: &mut Vec<i32>, N: i32) 
+  	// pre-conditions-start
+  	requires 
+  		old(a).len() == N,
+  		old(sum).len() == 1,
+  		N > 0,
+  		N < 1000,
+  	// pre-conditions-end
+  	// post-conditions-start
+  	ensures
+  		sum[0] <= 5 * N,
+  	// post-conditions-end
+
+vc-code: |-
+  {
+      /* code modified by LLM (iteration 5): fixed type conversion for bound parameter */
+      let mut total: i32 = 0;
+      let mut i = 0;
+      
+      while i < N
+          invariant
+              0 <= i <= N,
+              total <= 5 * i,
+              N < 1000,
+              5 * N < i32::MAX,
+          decreases N - i,
+      {
+          #[verifier::truncate]
+          let a_len_i32 = a.len() as i32;
+          
+          if i < a_len_i32 {
+              let val = a[i as usize];
+              if val <= 5 {
+                  /* code modified by LLM (iteration 5): fixed type conversion */
+                  proof {
+                      sum_bound_lemma(total, val, (5 * i) as int);
+                  }
+                  total = total + val;
+              } else {
+                  /* code modified by LLM (iteration 5): fixed type conversion */
+                  proof {
+                      sum_bound_lemma(total, 5, (5 * i) as int);
+                  }
+                  total = total + 5;
+              }
+          } else {
+              /* code modified by LLM (iteration 5): fixed type conversion */
+              proof {
+                  sum_bound_lemma(total, 5, (5 * i) as int);
+              }
+              total = total + 5;
+          }
+          i = i + 1;
+      }
+      sum.set(0, total);
+  }
+
+vc-postamble: |-
+  
+  }
+  
+  fn main() {}
+

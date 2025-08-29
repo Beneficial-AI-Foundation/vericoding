@@ -1,0 +1,74 @@
+use vstd::prelude::*;
+
+
+verus! {
+
+// <vc-helpers>
+proof fn lemma_bounds_helper(arr1: &Vec<i32>, arr2: &Vec<i32>, i: usize)
+    requires
+        arr1.len() == arr2.len(),
+        i < arr1.len(),
+    ensures
+        0 <= i < arr1.len(),
+        0 <= i < arr2.len(),
+{}
+
+proof fn lemma_sequence_bounds(arr1: &Vec<i32>, arr2: &Vec<i32>, i: usize)
+    requires
+        arr1.len() == arr2.len(),
+        i < arr1.len(),
+    ensures
+        0 <= i < arr1@.len(),
+        0 <= i < arr2@.len(),
+{
+    assert(arr1@.len() == arr1.len());
+    assert(arr2@.len() == arr2.len());
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+
+*/
+// </vc-description>
+
+// <vc-spec>
+fn is_smaller(arr1: &Vec<i32>, arr2: &Vec<i32>) -> (result: bool)
+    // pre-conditions-start
+    requires
+        arr1.len() == arr2.len(),
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        result == (forall|i: int| 0 <= i < arr1.len() ==> arr1[i] > arr2[i]),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    // impl-start
+    let mut i = 0;
+    /* code modified by LLM (iteration 5): fixed sequence bounds checking and ensured proper length assertions */
+    while i < arr1.len()
+        invariant
+            0 <= i <= arr1.len(),
+            arr1.len() == arr2.len(),
+            forall|j: int| 0 <= j < i ==> arr1@[j] > arr2@[j],
+        decreases arr1.len() - i,
+    {
+        proof {
+            lemma_sequence_bounds(arr1, arr2, i);
+        }
+        if arr1[i] <= arr2[i] {
+            return false;
+        }
+        i += 1;
+    }
+    true
+    // impl-end
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

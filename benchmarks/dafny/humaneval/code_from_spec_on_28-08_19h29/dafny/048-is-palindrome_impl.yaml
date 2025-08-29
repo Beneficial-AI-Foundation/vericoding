@@ -1,0 +1,71 @@
+vc-preamble: |-
+
+
+vc-helpers: |-
+  function Reverse(s: string): string
+  {
+    if |s| == 0 then "" else Reverse(s[1..]) + s[0..1]
+  }
+  
+  lemma ReverseCorrect(s: string)
+    ensures Reverse(Reverse(s)) == s
+  {
+    if |s| == 0 {
+    } else {
+      calc {
+        Reverse(Reverse(s));
+        Reverse(Reverse(s[1..]) + s[0..1]);
+        Reverse(s[0..1]) + Reverse(Reverse(s[1..]));
+        { ReverseCorrect(s[1..]); }
+        s[0..1] + s[1..];
+        s;
+      }
+    }
+  }
+  
+  lemma ReverseAppend(s: string, t: string)
+    ensures Reverse(s + t) == Reverse(t) + Reverse(s)
+  {
+    if |s| == 0 {
+      calc {
+        Reverse(s + t);
+        Reverse(t);
+        Reverse(t) + "";
+        Reverse(t) + Reverse(s);
+      }
+    } else {
+      calc {
+        Reverse(s + t);
+        Reverse(s[1..] + t) + s[0..1];
+        { ReverseAppend(s[1..], t); }
+        Reverse(t) + Reverse(s[1..]) + s[0..1];
+        Reverse(t) + Reverse(s);
+      }
+    }
+  }
+
+vc-description: |-
+  function_signature: def is_palindrome(string: str) -> Bool
+  Checks if given string is a palindrome
+
+vc-spec: |-
+  method is_palindrome(s: string) returns (result: bool)
+    ensures result == (s == Reverse(s))
+
+vc-code: |-
+  {
+    var rev := "";
+    var i := |s| - 1;
+    while i >= 0
+      invariant -1 <= i < |s|
+      invariant rev == Reverse(s[i+1..])
+    {
+      rev := rev + s[i..i+1];
+      i := i - 1;
+    }
+    result := s == rev;
+  }
+
+vc-postamble: |-
+
+

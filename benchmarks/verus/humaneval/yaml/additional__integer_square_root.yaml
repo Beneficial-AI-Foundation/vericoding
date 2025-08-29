@@ -1,29 +1,14 @@
-vc-description: |-
-  /--
-  function_signature: "fn integer_square_root(n: i32) -> (result: i32)"
-  docstring: Implement integer square root functionality.
-  -/
 vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
 
 vc-helpers: |-
-  #[verifier::external_body]
-  fn add_one(n: i32) -> (result: i32)
-      ensures
-          result == n + 1,
-  {
-      n + 1
-  }
 
-  #[verifier::external_body]
-  fn square(n: i32) -> (result: i32)
-      ensures
-          n * n == result,
-  {
-      n * n
-  }
+
+vc-description: |-
+  function_signature: "fn integer_square_root(n: i32) -> (result: i32)"
+  docstring: Implement integer square root functionality.
 
 vc-spec: |-
   fn integer_square_root(n: i32) -> (result: i32)

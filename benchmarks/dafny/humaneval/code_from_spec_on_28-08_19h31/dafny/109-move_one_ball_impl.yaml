@@ -1,0 +1,143 @@
+vc-preamble: |-
+  function is_sorted(a: seq<int>) : bool {
+    forall i, j :: 0 <= i < j < |a| ==> a[i] <= a[j]
+  }
+
+vc-helpers: |-
+  lemma SortedConcat(a: seq<int>, i: int)
+    requires 0 <= i <= |a|
+    ensures is_sorted(a[i..] + a[..i]) <==> (is_sorted(a[i..]) && is_sorted(a[..i]) && 
+      (|a[i..]| == 0 || |a[..i]| == 0 || a[i..][0] <= a[..i][0]))
+  {
+    var suffix := a[i..];
+    var prefix := a[..i];
+    var rotated := suffix + prefix;
+    if i == 0 || i == |a| {
+      assert rotated == a;
+    } else {
+      if is_sorted(suffix) && is_sorted(prefix) && 
+         (|suffix| == 0 || |prefix| == 0 || suffix[0] <= prefix[0]) {
+        forall x, y | 0 <= x < y < |rotated| ensures rotated[x] <= rotated[y] {
+          if x < |suffix| && y < |suffix| {
+            assert rotated[x] == suffix[x];
+            assert rotated[y] == suffix[y];
+            assert rotated[x] <= rotated[y];
+          } else if x < |suffix| && y >= |suffix| {
+            assert rotated[x] == suffix[x];
+            assert rotated[y] == prefix[y - |suffix|];
+            assert rotated[x] <= suffix[0] <= prefix[0] <= rotated[y];
+            assert rotated[x] <= rotated[y];
+          } else {
+            assert rotated[x] == prefix[x - |suffix|];
+            assert rotated[y] == prefix[y - |suffix|];
+            assert rotated[x] <= rotated[y];
+          }
+        }
+      } else if is_sorted(rotated) {
+        assert is_sorted(suffix);
+        assert is_sorted(prefix);
+        if |suffix| > 0 && |prefix| > 0 {
+          var lastSuffix := |suffix| - 1;
+          var firstPrefix := |suffix|;
+          assert rotated[lastSuffix] <= rotated[firstPrefix];
+          assert rotated[lastSuffix] == suffix[lastSuffix];
+          assert rotated[firstPrefix] == prefix[0];
+          assert suffix[0] <= suffix[lastSuffix] <= prefix[0];
+          assert suffix[0] <= prefix[0];
+        }
+      }
+    }
+  }
+  
+  lemma UniqueImpliesRotationSort(a: seq<int>, i: int)
+    requires 0 <= i <= |a|
+    requires forall x, y :: 0 <= x < |a| && 0 <= y < |a| && x != y ==> a[x] != a[y]
+    ensures is_sorted(a[i..] + a[..i]) ==> is_sorted(a)
+  {
+    var suffix := a[i..];
+    var prefix := a[..i];
+    if is_sorted(suffix + prefix) {
+      if i == 0 || i == |a| {
+        assert suffix + prefix == a;
+      } else {
+        assert is_sorted(suffix);
+        assert is_sorted(prefix);
+        if |suffix| > 0 && |prefix| > 0 {
+          assert suffix[0] <= prefix[0];
+          forall j, k | 0 <= j < k < |a| ensures a[j] <= a[k] {
+            if i <= j < |a| && i <= k < |a| {
+              assert a[j] <= a[k];
+            } else if j < i && k < i {
+              assert a[j] <= a[k];
+            } else if j < i <= k {
+              assert a[j] in prefix;
+              assert a[k] in suffix;
+              assert a[j] <= prefix[0];
+              assert suffix[0] <= a[k];
+              assert suffix[0] <= prefix[0];
+              assert a[j] <= suffix[0];
+              assert a[j] <= prefix[0] <= a[k];
+              assert a[j] <= a[k];
+            }
+          }
+        }
+      }
+    }
+  }
+
+vc-description: |-
+  function_signature: def move_one_ball(arr: List[int]) -> bool
+  We have an array 'arr' of N integers arr[1], arr[2], ..., arr[N].The numbers in the array will be randomly ordered. Your task is to determine if it is possible to get an array sorted in non-decreasing order by performing the following operation on the given array: You are allowed to perform right shift operation any number of times.
+
+vc-spec: |-
+  method move_one_ball(a: seq<int>) returns (can: bool)
+    // pre-conditions-start
+    requires |a| > 0
+    requires forall i, j :: 0 <= i < |a| && 0 <= j < |a| && i != j ==> a[i] != a[j]
+    // pre-conditions-end
+    // post-conditions-start
+    ensures can <==> exists i :: 0 <= i < |a| && is_sorted(a[i..] + a[..i])
+    // post-conditions-end
+
+vc-code: |-
+  method MoveOneBall(a: seq<int>) returns (can: bool)
+    requires |a| > 0
+    requires forall i, j :: 0 <= i < |a| && 0 <= j < |a| && i != j ==> a[i] != a[j]
+    ensures can <==> exists i :: 0 <= i < |a| && is_sorted(a[i..] + a[..i])
+  {
+    var i := 0;
+    var found := false;
+    while i < |a|
+      decreases |a| - i
+    {
+      SortedConcat(a, i);
+      var suffix := a[i..];
+      var prefix := a[..i];
+      if is_sorted(suffix) && is_sorted(prefix) && (|suffix| == 0 || |prefix| == 0 || suffix[0] <= prefix[0]) {
+        found := true;
+        UniqueImpliesRotationSort(a, i);
+        break;
+      }
+      i := i + 1;
+    }
+    can := found;
+    if found {
+      assert exists i :: 0 <= i < |a| && is_sorted(a[i..] + a[..i]);
+    } else {
+      var j := 0;
+      while j < |a|
+        decreases |a| - j
+      {
+        SortedConcat(a, j);
+        var suffix := a[j..];
+        var prefix := a[..j];
+        assert !(is_sorted(suffix) && is_sorted(prefix) && (|suffix| == 0 || |prefix| == 0 || suffix[0] <= prefix[0]));
+        j := j + 1;
+      }
+      assert !exists i :: 0 <= i < |a| && is_sorted(a[i..] + a[..i]);
+    }
+  }
+
+vc-postamble: |-
+
+

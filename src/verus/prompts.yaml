@@ -134,16 +134,17 @@ generate_code_vibe: |
   ```
   
   ```vc-spec
-  [Formal Verus function specification with signature, requires, ensures clauses based on the description]
+  [ONLY the function signature with requires/ensures clauses - NO implementation body]
   ```
   
   ```vc-code
-  [Implementation of the function that satisfies the specification]
+  [ONLY the function body implementation between braces {{ }} - NO signature]
   ```
   
   REQUIREMENTS:
-  - The SPEC section must contain a complete formal specification derived from the DESCRIPTION
-  - The CODE section must contain a verified implementation that satisfies the SPEC
+  - The SPEC section must contain ONLY the function signature with contracts (requires/ensures), NO body
+  - The CODE section must contain ONLY the function body implementation inside braces {{ }}
+  - Do NOT duplicate the function signature in both sections
   - The HELPERS section may contain auxiliary code, spec functions, and proofs needed for verification
   - Output ONLY valid Verus code - NO conversational text, explanations, or comments outside the code
   - Use proper Verus syntax: `requires`, `ensures`, `invariant`, `decreases` (without parentheses)
@@ -191,15 +192,18 @@ fix_verification_vibe: |
   ```
   
   ```vc-spec
-  [Fixed or improved formal specification if needed]
+  [ONLY function signature with requires/ensures clauses - NO body, fix if needed]
   ```
   
   ```vc-code
-  [Fixed implementation that passes verification]
+  [ONLY function body implementation between braces {{ }} - NO signature, fix if needed]
   ```
   
   REQUIREMENTS:
   - Fix the verification errors while staying true to the DESCRIPTION
+  - The SPEC section must contain ONLY the function signature with contracts, NO body
+  - The CODE section must contain ONLY the function body implementation inside braces {{ }}
+  - Do NOT duplicate the function signature in both sections
   - The SPEC may be updated if it doesn't correctly capture the DESCRIPTION
   - The CODE section must be fixed to pass verification and satisfy the SPEC
   - The HELPERS section may be updated to support verification

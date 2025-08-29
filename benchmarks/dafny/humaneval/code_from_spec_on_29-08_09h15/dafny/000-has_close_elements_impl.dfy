@@ -1,0 +1,61 @@
+function abs(val : real): real
+{
+  if (val < 0.0) then
+    -val
+  else
+    val
+}
+
+// <vc-helpers>
+lemma AbsProperties(x: real, y: real)
+  ensures abs(x - y) == abs(y - x)
+{
+}
+
+lemma AbsNonNegative(x: real)
+  ensures abs(x) >= 0.0
+{
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: def has_close_elements(numbers: List[float], threshold: float) -> bool
+*/
+// </vc-description>
+
+// <vc-spec>
+method has_close_elements(numbers: seq<real>, threshold: real) returns (flag : bool)
+  // pre-conditions-start
+  requires threshold > 0.0
+  // pre-conditions-end
+  // post-conditions-start
+  ensures flag == (exists i: int, j: int :: i >= 0 && j >= 0 && i < |numbers| && j < |numbers| && i != j && abs(numbers[i] - numbers[j]) < threshold)
+  // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+  flag := false;
+  
+  var i := 0;
+  while i < |numbers|
+    invariant 0 <= i <= |numbers|
+    invariant !flag ==> forall ii: int, jj: int :: 0 <= ii < i && 0 <= jj < |numbers| && ii != jj ==> abs(numbers[ii] - numbers[jj]) >= threshold
+  {
+    var j := 0;
+    while j < |numbers|
+      invariant 0 <= j <= |numbers|
+      invariant !flag ==> forall jj: int :: 0 <= jj < j && i != jj ==> abs(numbers[i] - numbers[jj]) >= threshold
+    {
+      if i != j && abs(numbers[i] - numbers[j]) < threshold {
+        flag := true;
+        return;
+      }
+      j := j + 1;
+    }
+    i := i + 1;
+  }
+}
+// </vc-code>
+

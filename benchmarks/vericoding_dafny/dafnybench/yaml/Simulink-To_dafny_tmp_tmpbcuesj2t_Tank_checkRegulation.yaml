@@ -1,8 +1,0 @@
-vc-preamble: "datatype Valve = ON | OFF\n\nclass Pipe{\n   var v1: Valve; //outlet valve \n   var v2: Valve; //inlet Valve\n   var v3: Valve; //outlet valve\n   var in_flowv1: int; //flow in valve v1\n   var in_flowv2: int; //flow in vave v2\n   var in_flowv3: int; //flow in valve v3\n\n   constructor()\n   {\n       this.v1:= OFF;\n       this.v2:= ON;\n   }\n\n}\nclass Tank\n{\n   var pipe: Pipe;\n   var height: int;\n    constructor()\n    {\n        pipe := new Pipe();\n    }\n}"
-vc-helpers: ''
-vc-spec: "method checkRegulation(tank: Tank)\n //requires tank.pipe.v1==OFF && tank.pipe.v2==ON && (tank.pipe.v3==OFF || tank.pipe.v2==ON) \nensures (tank.height>10 && tank.pipe.v1==OFF && tank.pipe.v3==ON && tank.pipe.v2==old(tank.pipe.v2)) \n|| (tank.height <8 && tank.pipe.v1== OFF && tank.pipe.v2== ON && tank.pipe.v3==old(tank.pipe.v3))\n|| ((tank.pipe.in_flowv3 >5 || tank.pipe.in_flowv1 >5 ) && tank.pipe.v2==OFF && tank.pipe.v3==old(tank.pipe.v3) && tank.pipe.v1==old(tank.pipe.v1))\nmodifies tank.pipe;"
-vc-code: |-
-  {
-    assume false;
-  }
-vc-postamble: ''

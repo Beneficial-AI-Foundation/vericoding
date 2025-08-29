@@ -1,0 +1,69 @@
+function IsPrime(n: int) : bool
+{
+  n > 1 && forall k :: 2 <= k < n ==> n % k != 0
+}
+
+// <vc-helpers>
+lemma PrimesAreDistinct(a: int, b: int)
+  requires IsPrime(a) && IsPrime(b) && a != b
+  ensures a != b
+{
+}
+
+lemma SmallNumbersNotPrime(n: int)
+  requires n < 2
+  ensures !IsPrime(n)
+{
+}
+
+lemma PrimeGeq2(p: int)
+  requires IsPrime(p)
+  ensures p >= 2
+{
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: def count_up_to(n : int) -> list[int]
+Implement a function that takes an non-negative integer and returns an array of the first n integers that are prime numbers and less than n.
+*/
+// </vc-description>
+
+// <vc-spec>
+method CountUpTo(n: int) returns (primes: seq<int>)
+  // pre-conditions-start
+  requires n >= 0
+  // pre-conditions-end
+  // post-conditions-start
+  ensures forall i :: 0 <= i < |primes| ==> IsPrime(primes[i])
+  ensures forall i :: 0 <= i < |primes| ==> primes[i] < n
+  ensures forall p :: 2 <= p < n && IsPrime(p) <==> p in primes
+  // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+  if n < 2 {
+    primes := [];
+    return;
+  }
+  
+  primes := [];
+  var candidate := 2;
+  
+  while candidate < n
+    invariant 2 <= candidate <= n
+    invariant forall i :: 0 <= i < |primes| ==> IsPrime(primes[i])
+    invariant forall i :: 0 <= i < |primes| ==> primes[i] < candidate
+    invariant forall p :: 2 <= p < candidate && IsPrime(p) ==> p in primes
+    invariant forall p :: p in primes ==> 2 <= p < candidate && IsPrime(p)
+  {
+    if IsPrime(candidate) {
+      primes := primes + [candidate];
+    }
+    candidate := candidate + 1;
+  }
+}
+// </vc-code>
+

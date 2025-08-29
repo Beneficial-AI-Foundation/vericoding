@@ -1,14 +1,14 @@
-vc-description: |-
-  /--
-  function_signature: "fn index_wise_addition(a: &Vec<Vec<i32>>, b: &Vec<Vec<i32>>) -> (c: Vec<Vec<i32>>)"
-  docstring: Add corresponding elements from two arrays element-wise.
-  -/
 vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
 
 vc-helpers: |-
+
+
+vc-description: |-
+  function_signature: "fn index_wise_addition(a: &Vec<Vec<i32>>, b: &Vec<Vec<i32>>) -> (c: Vec<Vec<i32>>)"
+  docstring: Add corresponding elements from two arrays element-wise.
 
 vc-spec: |-
   #[verifier::loop_isolation(false)]

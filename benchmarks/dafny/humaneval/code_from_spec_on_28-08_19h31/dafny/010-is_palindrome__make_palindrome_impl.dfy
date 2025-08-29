@@ -1,0 +1,77 @@
+function is_palindrome(s : string) : bool {
+    forall k :: 0 <= k < |s| ==> s[k] == s[|s| - 1 - k]
+}
+function starts_with(result : string, s : string) : bool {
+    |result| >= |s| && forall k :: 0 <= k < |s| ==> result[k] == s[k]
+}
+
+// <vc-helpers>
+function get_reverse(s: string): string
+{
+    var rev := "";
+    var i := |s| - 1;
+    while i >= 0
+        decreases i
+    {
+        rev := rev + [s[i]];
+        i := i - 1;
+    }
+    rev
+}
+
+lemma ReverseCorrectness(s: string)
+    ensures |get_reverse(s)| == |s|
+    ensures forall k :: 0 <= k < |s| ==> get_reverse(s)[k] == s[|s| - 1 - k]
+{
+    var rev := "";
+    var i := |s| - 1;
+    var step := 0;
+    while i >= 0
+        decreases i
+        invariant 0 <= step <= |s|
+        invariant |rev| == step
+        invariant forall k :: 0 <= k < step ==> rev[k] == s[|s| - 1 - k]
+    {
+        rev := rev + [s[i]];
+        i := i - 1;
+        step := step + 1;
+    }
+    assert rev == get_reverse(s);
+}
+// </vc-helpers>
+
+// <vc-spec>
+method make_palindrome(s: string) returns (result: string)
+    // post-conditions-start
+    ensures |result| <= 2 * |s|
+    ensures is_palindrome(result)
+    ensures starts_with(result, s)
+    // post-conditions-end
+// </vc-spec>
+// <vc-code>
+method make_palindrome(s: string) returns (result: string)
+    ensures |result| <= 2 * |s|
+    ensures is_palindrome(result)
+    ensures starts_with(result, s)
+{
+    var reversed := get_reverse(s);
+    result := s + reversed;
+    ReverseCorrectness(s);
+    assert |reversed| == |s|;
+    assert |result| == 2 * |s|;
+    assert forall k :: 0 <= k < |s| ==> result[k] == s[k];
+    assert forall k :: 0 <= k < |s| ==> result[|s| + k] == reversed[k];
+    assert forall k :: 0 <= k < |s| ==> reversed[k] == s[|s| - 1 - k];
+    assert forall k :: 0 <= k < |s| ==> result[|result| - 1 - k] == reversed[|s| - 1 - k];
+    assert forall k :: 0 <= k < |s| ==> result[|result| - 1 - k] == s[k];
+}
+// </vc-code>
+
+method reverse(str: string) returns (rev: string)
+    // post-conditions-start
+    ensures |rev| == |str|
+    ensures forall k :: 0 <= k < |str| ==> rev[k] == str[|str| - 1 - k]
+    // post-conditions-end
+{
+  assume{:axiom} false;
+}

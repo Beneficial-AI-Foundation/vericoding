@@ -1,0 +1,32 @@
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: def max_element(l: list)
+Return maximum element in the list.
+*/
+// </vc-description>
+
+// <vc-spec>
+method max_element(l: seq<int>) returns (result: int)
+  requires |l| > 0
+  ensures result in l
+  ensures forall x :: x in l ==> x <= result
+// </vc-spec>
+// <vc-code>
+{
+  result := l[0];
+  var i := 1;
+  while i < |l|
+    invariant 1 <= i <= |l|
+    invariant result in l
+    invariant forall j :: 0 <= j < i ==> l[j] <= result
+  {
+    if l[i] > result {
+      result := l[i];
+    }
+    i := i + 1;
+  }
+}
+// </vc-code>

@@ -1,0 +1,74 @@
+vc-preamble: |-
+  function sum_chars_rec(list: seq<string>): nat
+  {
+    if |list| == 0 then 0
+    else |list[0]| + sum_chars_rec(list[1..])
+  }
+  method TotalMatch(list1: seq<string>, list2: seq<string>) returns (result: seq<string>)
+    // post-conditions-start
+    ensures |result| == |list1| || |result| == |list2|
+    ensures result == list1 || result == list2
+    ensures sum_chars_rec(result) <= sum_chars_rec(list1)
+    ensures sum_chars_rec(result) <= sum_chars_rec(list2)
+    ensures sum_chars_rec(list1) == sum_chars_rec(list2) ==> result == list1
+    // post-conditions-end
+  {
+    assume{:axiom} false;
+  }
+
+vc-helpers: |-
+  // Helper lemma to prove properties about sum_chars_rec if needed
+  lemma SumCharsRecNonNegative(list: seq<string>)
+    ensures sum_chars_rec(list) >= 0
+  {
+    if |list| == 0 {
+      assert sum_chars_rec(list) == 0;
+    } else {
+      SumCharsRecNonNegative(list[1..]);
+      assert sum_chars_rec(list) == |list[0]| + sum_chars_rec(list[1..]);
+      assert |list[0]| >= 0;
+      assert sum_chars_rec(list) >= 0;
+    }
+  }
+  
+  // Lemma to help with loop invariant by breaking down prefix sum
+  lemma SumCharsRecPrefix(list: seq<string>, i: nat)
+    requires 0 <= i <= |list|
+    ensures sum_chars_rec(list[..i]) == (if i == 0 then 0 else |list[i-1]| + sum_chars_rec(list[..i-1]))
+  {
+    if i == 0 {
+      assert list[..0] == [];
+      assert sum_chars_rec([]) == 0;
+    } else {
+      assert list[..i] == list[..i-1] + [list[i-1]];
+      calc {
+        sum_chars_rec(list[..i]);
+        == |list[i-1]| + sum_chars_rec(list[..i-1]);
+      }
+    }
+  }
+
+vc-description: |-
+  function_signature: method SumChars(list: seq<string>) returns (sum: nat)
+  Calculate sum. Ensures: returns the sum of character lengths in all strings.
+
+vc-spec: |-
+  method SumChars(list: seq<string>) returns (sum: nat)
+    ensures sum == sum_chars_rec(list)
+
+vc-code: |-
+  {
+    sum := 0;
+    var i := 0;
+    while i < |list|
+      invariant 0 <= i <= |list|
+      invariant sum == sum_chars_rec(list[..i])
+    {
+      sum := sum + |list[i]|;
+      i := i + 1;
+    }
+  }
+
+vc-postamble: |-
+
+

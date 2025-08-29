@@ -1,0 +1,36 @@
+use vstd::prelude::*;
+
+verus! {
+
+/*
+function_signature: "def incr_list(numbers: List[Int]) -> List[Int]"
+docstring: |
+incr_list takes a list of integers as input and returns a new list
+where each element is incremented by 1.
+test_cases:
+- input: []
+expected_output: []
+- input: [1, 3, -2, 1]
+expected_output: [2, 4, -1, 2]
+*/
+
+fn incr_list(l: Vec<i32>) -> (result: Vec<i32>)
+    // pre-conditions-start
+    requires
+        forall|i: int| 0 <= i < l.len() ==> l[i] + 1 <= i32::MAX,
+    // pre-conditions-end
+
+    // post-conditions-start
+    ensures
+        result.len() == l.len(),
+        forall|i: int| 0 <= i < l.len() ==> #[trigger] result[i] == l[i] + 1,
+    // post-conditions-end
+{
+    // impl-start
+    assume(false);
+    vec![]
+    // impl-end
+}
+
+}
+fn main() {}

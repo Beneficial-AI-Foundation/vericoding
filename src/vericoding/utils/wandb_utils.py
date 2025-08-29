@@ -56,22 +56,24 @@ def init_wandb_run(config, no_wandb: bool = False) -> Optional["wandb.Run"]:
     try:
         # Initialize wandb run
         run_name = f"vericoding_{config.language}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+        wandb_mode = os.getenv("WANDB_MODE", "online")
         wandb_config = {
             "language": config.language,
             "max_iterations": config.max_iterations,
             "llm_provider": config.llm_provider,
             "llm_model": config.llm_model,
-
             "max_workers": config.max_workers,
             "files_dir": config.files_dir,
+            "mode": config.mode,
+            "wandb_mode": wandb_mode,
         }
         
         wandb_run = wandb.init(
             project=os.getenv("WANDB_PROJECT", "vericoding"),
             entity=os.getenv("WANDB_ENTITY"),
             name=run_name,
-            tags=[config.language, config.llm_provider],
-            mode=os.getenv("WANDB_MODE", "online")
+            tags=[config.language, config.llm_provider, config.mode],
+            mode=wandb_mode
         )
         # Update config with allow_val_change to avoid errors when keys already exist
         wandb.config.update(wandb_config, allow_val_change=True)
@@ -334,6 +336,7 @@ def finalize_wandb_run(wandb_run, config, results, processing_time, delete_after
         wandb.run.summary["llm_model"] = config.llm_model or "default"
         wandb.run.summary["max_iterations_config"] = config.max_iterations
         wandb.run.summary["max_workers"] = config.max_workers
+        wandb.run.summary["mode"] = config.mode
         
         # Create enhanced failure analysis table
         _create_failure_analysis_table(failed)

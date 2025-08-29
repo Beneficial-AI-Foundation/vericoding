@@ -1,8 +1,0 @@
-vc-preamble: "// Sorting: \n//        Pre/Post Condition Issues - An investigation \n//                                      -- Stephanie McIntyre\n// Based on examples in class \n\n// First Attempt at specifying requirements for sorting array A in incrementing order\n// We want our Hoare triple of (|Pre-Condition|) Code (|Post-Condition|) to hold iff A is properly sorted."
-vc-helpers: ''
-vc-spec: "method sort(A: array<int>, n: int)\nmodifies A; requires n==A.Length;\n/* Pre-Condition */   requires n>=0;            \n/* Post-Condition */  ensures forall i,j:: 0<=i<=j<n ==> A[i]<=A[j];  //This states that A is sorted.\n\n//Can we write code that does not sort A that still satisfies the requirements? \n//Consider the following program:"
-vc-code: |-
-  {
-    assume false;
-  }
-vc-postamble: ''

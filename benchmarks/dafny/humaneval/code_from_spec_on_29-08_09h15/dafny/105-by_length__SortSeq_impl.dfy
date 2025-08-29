@@ -1,0 +1,134 @@
+method SortReverseAndName(arr: seq<int>) returns (result: seq<string>)
+  // post-conditions-start
+  ensures |result| <= |arr|
+  ensures forall i :: 0 <= i < |result| ==>
+    result[i] in ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
+  // post-conditions-end
+{
+  assume{:axiom} false;
+}
+
+// <vc-helpers>
+lemma SortedPreservesSize(s: seq<int>)
+  ensures |s| == |s|
+{
+}
+
+lemma InsertionSortCorrectness(s: seq<int>, i: int)
+  requires 0 <= i <= |s|
+  ensures exists sorted: seq<int> :: 
+    |sorted| == |s| && 
+    multiset(s) == multiset(sorted) &&
+    forall x, y :: 0 <= x < y < |sorted| ==> sorted[x] <= sorted[y]
+{
+}
+
+lemma MultisetUpdatePreservation(s: seq<int>, i: int, v: int)
+  requires 0 <= i < |s|
+  ensures multiset(s[i := v]) == multiset(s) - multiset{s[i]} + multiset{v}
+{
+}
+
+lemma SortedPortionPreservation(s: seq<int>, i: int, j: int, key: int)
+  requires 0 <= i < |s|
+  requires 0 <= j < i
+  requires forall x, y :: 0 <= x < y < i ==> s[x] <= s[y]
+  requires s[i] == key
+  requires forall x :: j < x < i ==> s[x] >= key
+  ensures forall x, y :: 0 <= x < y < i && (x != j || y != j+1) ==> s[x] <= s[y]
+{
+}
+
+lemma MultisetShift(s: seq<int>, j: int)
+  requires 0 <= j < |s| - 1
+  ensures multiset(s[j + 1 := s[j]]) == multiset(s) - multiset{s[j+1]} + multiset{s[j]}
+{
+}
+
+lemma MultisetShiftPreservation(s: seq<int>, j: int, key: int, original: seq<int>)
+  requires 0 <= j < |s| - 1
+  requires multiset(s) == multiset(original)
+  ensures multiset(s[j + 1 := s[j]][j + 1 := key]) == multiset(original) - multiset{s[j+1]} + multiset{key}
+{
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: method SortSeq(s: seq<int>) returns (sorted: seq<int>)
+Sort elements. Ensures: the result is sorted according to the ordering relation; returns the correct size/count; returns a sorted permutation of the input.
+*/
+// </vc-description>
+
+// <vc-spec>
+method SortSeq(s: seq<int>) returns (sorted: seq<int>)
+  // post-conditions-start
+  ensures forall i, j :: 0 <= i < j < |sorted| ==> sorted[i] <= sorted[j]
+  ensures |sorted| == |s|
+  ensures multiset(s) == multiset(sorted)
+  // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+  if |s| == 0 {
+    sorted := [];
+    return;
+  }
+  
+  sorted := s;
+  var i := 1;
+  
+  while i < |sorted|
+    invariant 1 <= i <= |sorted|
+    invariant |sorted| == |s|
+    invariant multiset(sorted) == multiset(s)
+    invariant forall x, y :: 0 <= x < y < i ==> sorted[x] <= sorted[y]
+  {
+    var key := sorted[i];
+    var j := i - 1;
+    var temp := sorted;
+    
+    while j >= 0 && sorted[j] > key
+      invariant -1 <= j < i
+      invariant |sorted| == |s|
+      invariant key == temp[i]
+      invariant forall x :: j < x < i ==> sorted[x] > key
+      invariant forall x :: 0 <= x <= j ==> sorted[x] == temp[x]
+      invariant forall x, y :: 0 <= x < y <= j ==> sorted[x] <= sorted[y]
+      invariant forall x :: i <= x < |sorted| ==> sorted[x] == temp[x]
+      invariant multiset(sorted) == multiset(temp[i := key]) + multiset{temp[i]} - multiset{key}
+    {
+      sorted := sorted[j + 1 := sorted[j]];
+      j := j - 1;
+    }
+    
+    sorted := sorted[j + 1 := key];
+    i := i + 1;
+  }
+}
+// </vc-code>
+
+method reverse(s: seq<int>) returns (rev: seq<int>)
+  // post-conditions-start
+  ensures |rev| == |s|
+  ensures forall k :: 0 <= k < |s| ==> rev[k] == s[|s| - 1 - k]
+  // post-conditions-end
+{
+  assume{:axiom} false;
+}
+function NumberToName(n: int): string
+  requires 1 <= n <= 9
+{
+  match n
+  case 1 => "One"
+  case 2 => "Two"
+  case 3 => "Three"
+  case 4 => "Four"
+  case 5 => "Five"
+  case 6 => "Six"
+  case 7 => "Seven"
+  case 8 => "Eight"
+  case 9 => "Nine"
+}
+// pure-end

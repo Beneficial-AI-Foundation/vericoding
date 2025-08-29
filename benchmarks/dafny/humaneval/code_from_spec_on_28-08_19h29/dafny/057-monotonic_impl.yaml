@@ -1,0 +1,52 @@
+vc-preamble: |-
+
+
+vc-helpers: |-
+  predicate MonotonicallyIncreasing(numbers: seq<int>)
+  {
+    forall i :: 0 <= i < |numbers| - 1 ==> numbers[i] <= numbers[i+1]
+  }
+  
+  predicate MonotonicallyDecreasing(numbers: seq<int>)
+  {
+    forall i :: 0 <= i < |numbers| - 1 ==> numbers[i] >= numbers[i+1]
+  }
+
+vc-description: |-
+  function_signature: def monotonic(numbers: List[int]) -> Bool
+  Return True if list elements are monotonically increasing or decreasing.
+
+vc-spec: |-
+  method Monotonic(numbers: seq<int>) returns (result: bool)
+    ensures result == (MonotonicallyIncreasing(numbers) || MonotonicallyDecreasing(numbers))
+
+vc-code: |-
+  {
+    if |numbers| <= 1 {
+      return true;
+    }
+    
+    var isIncreasing := true;
+    var isDecreasing := true;
+    
+    for i := 0 to |numbers| - 1
+      invariant 0 <= i <= |numbers| - 1
+      invariant isIncreasing ==> forall j :: 0 <= j < i ==> numbers[j] <= numbers[j+1]
+      invariant isDecreasing ==> forall j :: 0 <= j < i ==> numbers[j] >= numbers[j+1]
+    {
+      if i < |numbers| - 1 {
+        if numbers[i] > numbers[i+1] {
+          isIncreasing := false;
+        }
+        if numbers[i] < numbers[i+1] {
+          isDecreasing := false;
+        }
+      }
+    }
+    
+    return isIncreasing || isDecreasing;
+  }
+
+vc-postamble: |-
+
+

@@ -1,0 +1,84 @@
+vc-description: |-
+
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus!{
+
+vc-helpers: |-
+  proof fn lemma_cast_len(a: &Vec<i32>, N: i32)
+      requires a.len() == N, N >= 0, N < 1000
+      ensures a.len() as i32 == N
+  {
+  }
+  
+  proof fn lemma_addition_bounds(total: i32, add: i32, i: i32)
+      requires total <= 2 * i, i < 1000, add <= 2
+      ensures total + add <= 2 * (i + 1)
+  {
+  }
+
+vc-spec: |-
+  fn myfun(a: &mut Vec<i32>, sum: &mut Vec<i32>, N: i32) 
+  	// pre-conditions-start
+  	requires 
+  		old(a).len() == N,
+  		old(sum).len() == 1,
+  		N > 0,
+  		N < 1000,
+  	// pre-conditions-end
+  	// post-conditions-start
+  	ensures
+  		sum[0] <= 2 * N,
+  	// post-conditions-end
+
+vc-code: |-
+  {
+      // impl-start
+      let mut total: i32 = 0;
+      let mut i = 0;
+      /* code modified by LLM (iteration 5): fixed lemma syntax and added proof block */
+      while i < N
+          invariant
+              0 <= i <= N,
+              total <= 2 * i,
+              N < 1000,
+          decreases N - i
+      {
+          proof {
+              lemma_cast_len(a, N);
+          }
+          #[verifier::truncate]
+          if i < a.len() as i32 {
+              if a[i as usize] <= 2 {
+                  /* code modified by LLM (iteration 5): added overflow check with proof */
+                  proof {
+                      lemma_addition_bounds(total, a[i as usize], i);
+                  }
+                  total = total + a[i as usize];
+              } else {
+                  /* code modified by LLM (iteration 5): added overflow check with proof */
+                  proof {
+                      lemma_addition_bounds(total, 2, i);
+                  }
+                  total = total + 2;
+              }
+          } else {
+              /* code modified by LLM (iteration 5): added overflow check with proof */
+              proof {
+                  lemma_addition_bounds(total, 2, i);
+              }
+              total = total + 2;
+          }
+          i = i + 1;
+      }
+      sum.set(0, total);
+      // impl-end
+  }
+
+vc-postamble: |-
+  
+  }
+  fn main() {}
+

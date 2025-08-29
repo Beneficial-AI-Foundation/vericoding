@@ -1,0 +1,225 @@
+function ParenthesesDepth(s: string, i: int, j: int): int
+    decreases j - i 
+    requires 0 <= i <= j <= |s|
+{
+    if i == j then
+        0
+    else if s[i] == '(' then
+        ParenthesesDepth(s, i+1, j) + 1
+    else if s[i] == ')' then
+        ParenthesesDepth(s, i+1, j) - 1
+    else
+        ParenthesesDepth(s, i+1, j)
+}
+function InnerDepthsPositive(s: string) : bool
+{
+    forall i :: 0 < i < |s| ==> ParenthesesDepth(s, 0, i) > 0
+}
+function InnerDepthsNonnegative(s: string) : bool
+{
+    forall i :: 0 < i < |s| ==> ParenthesesDepth(s, 0, i) >= 0
+}
+
+// <vc-helpers>
+lemma ParenthesesDepthSlice(s: string, i: int, j: int, k: int)
+    requires 0 <= i <= k <= j <= |s|
+    ensures ParenthesesDepth(s, i, j) == ParenthesesDepth(s, i, k) + ParenthesesDepth(s, k, j)
+    decreases k - i
+{
+    if i == k {
+    } else if s[i] == '(' {
+        ParenthesesDepthSlice(s, i+1, j, k);
+    } else if s[i] == ')' {
+        ParenthesesDepthSlice(s, i+1, j, k);
+    } else {
+        ParenthesesDepthSlice(s, i+1, j, k);
+    }
+}
+
+lemma ParenthesesDepthSlicing(s: string, start: int, end: int, i: int)
+    requires 0 <= start <= start + i <= end <= |s|
+    ensures ParenthesesDepth(s, start, start + i) == ParenthesesDepth(s[start..end], 0, i)
+    decreases i
+{
+    if i == 0 {
+    } else if s[start] == '(' {
+        ParenthesesDepthSlicing(s, start + 1, end, i - 1);
+    } else if s[start] == ')' {
+        ParenthesesDepthSlicing(s, start + 1, end, i - 1);
+    } else {
+        ParenthesesDepthSlicing(s, start + 1, end, i - 1);
+    }
+}
+
+lemma InnerDepthsNonnegativeSlice(s: string, start: int, end: int)
+    requires 0 <= start < end <= |s|
+    requires InnerDepthsNonnegative(s)
+    requires forall i :: start < i < end ==> ParenthesesDepth(s, 0, i) > 0
+    ensures InnerDepthsPositive(s[start..end])
+{
+    forall i | 0 < i < end - start
+        ensures ParenthesesDepth(s[start..end], 0, i) > 0
+    {
+        ParenthesesDepthSlice(s, 0, start + i, start);
+        assert ParenthesesDepth(s, 0, start + i) == ParenthesesDepth(s, 0, start) + ParenthesesDepth(s, start, start + i);
+        ParenthesesDepthSlicing(s, start, end, i);
+        assert ParenthesesDepth(s, start, start + i) == ParenthesesDepth(s[start..end], 0, i);
+    }
+}
+
+lemma ParenthesesDepthZeroAtEnd(s: string, end: int)
+    requires 0 <= end <= |s|
+    requires ParenthesesDepth(s, 0, end) == 0
+    ensures ParenthesesDepth(s[0..end], 0, |s[0..end]|) == 0
+{
+    assert s[0..end] == s[0..end];
+    assert |s[0..end]| == end;
+    ParenthesesDepthSlicing(s, 0, end, end);
+}
+
+lemma ParenthesesDepthInvariant(s: string, i: int, ch: char)
+    requires 0 <= i < |s|
+    requires s[i] == ch
+    ensures ch == '(' ==> ParenthesesDepth(s, 0, i+1) == ParenthesesDepth(s, 0, i) + 1
+    ensures ch == ')' ==> ParenthesesDepth(s, 0, i+1) == ParenthesesDepth(s, 0, i) - 1
+    ensures ch != '(' && ch != ')' ==> ParenthesesDepth(s, 0, i+1) == ParenthesesDepth(s, 0, i)
+{
+    ParenthesesDepthSlice(s, 0, i+1, i);
+}
+
+lemma ParenthesesDepthStability(s: string, i: int)
+    requires 0 <= i < |s|
+    ensures s[i] != '(' && s[i] != ')' ==> ParenthesesDepth(s, 0, i+1) == ParenthesesDepth(s, 0, i)
+{
+    ParenthesesDepthSlice(s, 0, i+1, i);
+}
+
+lemma DepthPreservationStart(s: string, start: int, i: int)
+    requires 0 <= start < i <= |s|
+    requires s[i-1] != '(' && s[i-1] != ')'
+    ensures ParenthesesDepth(s, start, i) == ParenthesesDepth(s, start, i-1)
+{
+    ParenthesesDepthSlice(s, start, i, i-1);
+}
+
+lemma InvariantPreservationSpace(s: string, i: int, start: int, depth: int)
+    requires 0 <= start <= i < |s|
+    requires s[i] == ' '
+    requires depth == ParenthesesDepth(s, start, i)
+    ensures depth == ParenthesesDepth(s, start, i+1)
+{
+    ParenthesesDepthSlice(s, start, i+1, i);
+}
+
+lemma InvariantPreservationOther(s: string, i: int, start: int, depth: int)
+    requires 0 <= start <= i < |s|
+    requires s[i] != '(' && s[i] != ')' && s[i] != ' '
+    requires depth == ParenthesesDepth(s, start, i)
+    ensures depth == ParenthesesDepth(s, start, i+1)
+{
+    ParenthesesDepthSlice(s, start, i+1, i);
+}
+
+lemma GroupIsBalanced(s: string, start: int, end: int)
+    requires 0 <= start < end <= |s|
+    requires ParenthesesDepth(s, 0, start) == 0
+    requires ParenthesesDepth(s, 0, end) == 0
+    requires s[start] == '('
+    ensures ParenthesesDepth(s[start..end], 0, end - start) == 0
+{
+    ParenthesesDepthSlicing(s, start, end, end - start);
+    ParenthesesDepthSlice(s, 0, end, start);
+}
+
+lemma InnerPositiveFromGlobal(s: string, start: int, i: int)
+    requires 0 <= start < i <= |s|
+    requires ParenthesesDepth(s, 0, start) == 0
+    requires s[start] == '('
+    requires ParenthesesDepth(s, 0, i) > 0
+    ensures ParenthesesDepth(s, start, i) > 0
+{
+    ParenthesesDepthSlice(s, 0, i, start);
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: def separate_paren_groups(paren_string: str) -> List[str]
+Input to this function is a string containing multiple groups of nested parentheses. Your goal is to separate those group into separate strings and return the list of those. Separate groups are balanced (each open brace is properly closed) and not nested within each other Ignore any spaces in the input string.
+*/
+// </vc-description>
+
+// <vc-spec>
+method separate_paren_groups(paren_string: string) returns (res : seq<string>)
+    // pre-conditions-start
+    requires ParenthesesDepth(paren_string, 0, |paren_string|) == 0
+    requires InnerDepthsNonnegative(paren_string)
+    // pre-conditions-end
+    // post-conditions-start
+    ensures forall k :: 0 <= k < |res| ==> ParenthesesDepth(res[k], 0, |res[k]|) == 0
+    ensures forall k :: 0 <= k < |res| ==> InnerDepthsPositive(res[k])
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    res := [];
+    var i := 0;
+    
+    while i < |paren_string|
+        invariant 0 <= i <= |paren_string|
+        invariant forall k :: 0 <= k < |res| ==> ParenthesesDepth(res[k], 0, |res[k]|) == 0
+        invariant forall k :: 0 <= k < |res| ==> InnerDepthsPositive(res[k])
+        invariant ParenthesesDepth(paren_string, 0, i) == 0
+    {
+        if paren_string[i] == ' ' {
+            ParenthesesDepthStability(paren_string, i);
+            i := i + 1;
+        } else if paren_string[i] == '(' {
+            var start := i;
+            var depth := 0;
+            
+            while i < |paren_string|
+                invariant start <= i <= |paren_string|
+                invariant start < |paren_string|
+                invariant paren_string[start] == '('
+                invariant ParenthesesDepth(paren_string, 0, start) == 0
+                invariant ParenthesesDepth(paren_string, 0, i) >= 0
+                invariant depth == ParenthesesDepth(paren_string, start, i)
+                invariant depth >= 0
+            {
+                if paren_string[i] == '(' {
+                    ParenthesesDepthSlice(paren_string, start, i+1, i);
+                    ParenthesesDepthSlice(paren_string, 0, i+1, i);
+                    depth := depth + 1;
+                    i := i + 1;
+                } else if paren_string[i] == ')' {
+                    ParenthesesDepthSlice(paren_string, start, i+1, i);
+                    ParenthesesDepthSlice(paren_string, 0, i+1, i);
+                    depth := depth - 1;
+                    i := i + 1;
+                    if depth == 0 {
+                        var group := paren_string[start..i];
+                        ParenthesesDepthSlice(paren_string, 0, i, start);
+                        assert ParenthesesDepth(paren_string, 0, i) == 0;
+                        GroupIsBalanced(paren_string, start, i);
+                        if start + 1 < i {
+                            InnerDepthsNonnegativeSlice(paren_string, start, i);
+                        }
+                        res := res + [group];
+                        break;
+                    }
+                } else {
+                    InvariantPreservationOther(paren_string, i, start, depth);
+                    ParenthesesDepthStability(paren_string, i);
+                    i := i + 1;
+                }
+            }
+        } else {
+            ParenthesesDepthStability(paren_string, i);
+            i := i + 1;
+        }
+    }
+}
+// </vc-code>
+

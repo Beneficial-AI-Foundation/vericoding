@@ -1,0 +1,57 @@
+vc-preamble: |-
+
+
+vc-helpers: |-
+  // Helper predicate to check if a number is even and positive
+  predicate IsEvenPositive(n: int)
+  {
+    n > 0 && n % 2 == 0
+  }
+
+vc-description: |-
+  function_signature: method is_equal_to_sum_even(n: int) returns (b : bool)
+  Evaluate whether the given number n can be written as the sum of exactly 4 positive even numbers.
+
+vc-spec: |-
+  method is_equal_to_sum_even(n: int) returns (b: bool)
+    requires n > 0
+    ensures b == exists a, b, c, d :: IsEvenPositive(a) && IsEvenPositive(b) && IsEvenPositive(c) && IsEvenPositive(d) && a + b + c + d == n
+
+vc-code: |-
+  {
+    if n < 8 {
+      return false;
+    }
+    
+    var found := false;
+    var a := 2;
+    while a <= n - 6 && !found
+      invariant 2 <= a <= n - 4 || found
+      invariant !found ==> forall x, y, z, w :: IsEvenPositive(x) && IsEvenPositive(y) && IsEvenPositive(z) && IsEvenPositive(w) && x + y + z + w == n && x < a ==> false
+    {
+      var b := 2;
+      while b <= n - a - 4 && !found
+        invariant 2 <= b <= n - a - 2 || found
+        invariant !found ==> forall x, y, z, w :: IsEvenPositive(x) && IsEvenPositive(y) && IsEvenPositive(z) && IsEvenPositive(w) && x + y + z + w == n && x <= a && y < b ==> false
+      {
+        var c := 2;
+        while c <= n - a - b - 2 && !found
+          invariant 2 <= c <= n - a - b || found
+          invariant !found ==> forall x, y, z, w :: IsEvenPositive(x) && IsEvenPositive(y) && IsEvenPositive(z) && IsEvenPositive(w) && x + y + z + w == n && x <= a && y <= b && z < c ==> false
+        {
+          var d := n - a - b - c;
+          if IsEvenPositive(d) {
+            found := true;
+          }
+          c := c + 2;
+        }
+        b := b + 2;
+      }
+      a := a + 2;
+    }
+    return found;
+  }
+
+vc-postamble: |-
+
+

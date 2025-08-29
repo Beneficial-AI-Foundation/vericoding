@@ -1,0 +1,90 @@
+vc-preamble: |-
+
+
+vc-helpers: |-
+  lemma MaxDepthNonNegative(s: string, current_depth: int, max_depth: int)
+      requires forall i :: i >= 0 && i < |s| ==> s[i] == '(' || s[i] == ')'
+      requires current_depth >= 0
+      requires max_depth >= 0
+      requires max_depth >= current_depth
+      ensures ParseParenGroupHelper(s, 0, current_depth, max_depth) >= 0
+  
+  function ParseParenGroupHelper(s: string, index: int, current_depth: int, max_depth: int): int
+      requires forall i :: i >= 0 && i < |s| ==> s[i] == '(' || s[i] == ')'
+      requires 0 <= index <= |s|
+      requires current_depth >= 0
+      requires max_depth >= 0
+      requires max_depth >= current_depth
+      decreases |s| - index
+  {
+      if index == |s| then max_depth
+      else if s[index] == '(' then
+          var new_depth := current_depth + 1;
+          var new_max := if new_depth > max_depth then new_depth else max_depth;
+          ParseParenGroupHelper(s, index + 1, new_depth, new_max)
+      else // s[index] == ')'
+          var new_depth := if current_depth > 0 then current_depth - 1 else 0;
+          ParseParenGroupHelper(s, index + 1, new_depth, max_depth)
+  }
+
+vc-description: |-
+  function_signature: method parse_paren_group(s : string) returns (max_depth : int)
+  Parse input. Requires: the condition holds for all values. Ensures: the result is at least the specified value.
+
+vc-spec: |-
+  method parse_paren_group(s : string) returns (max_depth : int)
+      // pre-conditions-start
+      requires forall i :: i >= 0 && i < |s| ==> s[i] == '(' || s[i] == ')'
+      // pre-conditions-end
+      // post-conditions-start
+      ensures max_depth >= 0
+      // post-conditions-end
+
+vc-code: |-
+  {
+      max_depth := 0;
+      var current_depth := 0;
+      var i := 0;
+      
+      while i < |s|
+          invariant 0 <= i <= |s|
+          invariant current_depth >= 0
+          invariant max_depth >= 0
+          invariant max_depth >= current_depth
+      {
+          if s[i] == '(' {
+              current_depth := current_depth + 1;
+              if current_depth > max_depth {
+                  max_depth := current_depth;
+              }
+          } else { // s[i] == ')'
+              if current_depth > 0 {
+                  current_depth := current_depth - 1;
+              }
+          }
+          i := i + 1;
+      }
+  }
+
+vc-postamble: |-
+  method split(s : string) returns (res : seq<string>)
+      // pre-conditions-start
+      requires forall i :: i >= 0 && i < |s| ==> s[i] == '(' || s[i] == ')' || s[i] == ' '
+      // pre-conditions-end
+      // post-conditions-start
+      ensures forall s1 :: s1 in res ==> (forall i :: i >= 0 && i < |s1| ==> s1[i] == '(' || s1[i] == ')') && |s1| > 0
+      // post-conditions-end
+  {
+    assume{:axiom} false;
+  }
+  method parse_nested_parens(paren_string: string) returns (res : seq<int>)
+      // pre-conditions-start
+      requires forall i :: i >= 0 && i < |paren_string| ==> paren_string[i] == '(' || paren_string[i] == ')' || paren_string[i] == ' '
+      // pre-conditions-end
+      // post-conditions-start
+      ensures forall x :: x in res ==> x >= 0
+      // post-conditions-end
+  {
+    assume{:axiom} false;
+  }
+

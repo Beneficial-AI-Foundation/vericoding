@@ -1,0 +1,82 @@
+vc-preamble: |-
+
+
+vc-helpers: |-
+  function countOccurrences(s: string, substr: string, start: int): int
+    requires 0 <= start <= |s|
+    decreases |s| - start
+  {
+    if start > |s| - |substr| then 0
+    else if start + |substr| <= |s| && s[start..start+|substr|] == substr then 1 + countOccurrences(s, substr, start + 1)
+    else countOccurrences(s, substr, start + 1)
+  }
+  
+  lemma CountOccurrencesCorrect(s: string, substr: string, start: int)
+    requires 0 <= start <= |s|
+    ensures countOccurrences(s, substr, start) == |set i {:trigger s[i..i+|substr|]} | start <= i <= |s| - |substr| && s[i..i+|substr|] == substr|
+    decreases |s| - start
+  {
+    if start > |s| - |substr| {
+      assert |set i {:trigger s[i..i+|substr|]} | start <= i <= |s| - |substr| && s[i..i+|substr|] == substr| == 0;
+    } else {
+      if start + |substr| <= |s| && s[start..start+|substr|] == substr {
+        assert 0 <= start + 1 <= |s|;
+        CountOccurrencesCorrect(s, substr, start + 1);
+        var currentSet := set i {:trigger s[i..i+|substr|]} | start <= i <= |s| - |substr| && s[i..i+|substr|] == substr;
+        var nextSet := set i {:trigger s[i..i+|substr|]} | start + 1 <= i <= |s| - |substr| && s[i..i+|substr|] == substr;
+        assert start in currentSet;
+        assert currentSet == {start} + nextSet;
+        assert |currentSet| == 1 + |nextSet|;
+      } else {
+        assert 0 <= start + 1 <= |s|;
+        CountOccurrencesCorrect(s, substr, start + 1);
+        var currentSet := set i {:trigger s[i..i+|substr|]} | start <= i <= |s| - |substr| && s[i..i+|substr|] == substr;
+        var nextSet := set i {:trigger s[i..i+|substr|]} | start + 1 <= i <= |s| - |substr| && s[i..i+|substr|] == substr;
+        assert start !in currentSet;
+        assert currentSet == nextSet;
+        assert |currentSet| == |nextSet|;
+      }
+    }
+  }
+
+vc-description: |-
+  function_signature: def how_many_times(string: str, substring: str) -> int
+  Find how many times a given substring can be found in the original string. Count overlaping cases.
+
+vc-spec: |-
+  method how_many_times(s: string, substr: string) returns (times: int)
+      // post-condition-start
+      ensures times == |set i {:trigger} | 0 <= i <= |s| - |substr| && s[i..i+|substr|] == substr|
+      // post-condition-end
+
+vc-code: |-
+  method HowManyTimes(s: string, substr: string) returns (times: int)
+    ensures times == |set i {:trigger s[i..i+|substr|]} | 0 <= i <= |s| - |substr| && s[i..i+|substr|] == substr|
+  {
+    if |substr| > |s| {
+      times := 0;
+      assert |set i {:trigger s[i..i+|substr|]} | 0 <= i <= |s| - |substr| && s[i..i+|substr|] == substr| == 0;
+      return times;
+    }
+    
+    var count := 0;
+    var i := 0;
+    while i <= |s| - |substr|
+      invariant 0 <= i <= |s| - |substr| + 1
+      invariant count == |set k {:trigger s[k..k+|substr|]} | 0 <= k < i && k <= |s| - |substr| && s[k..k+|substr|] == substr|
+    {
+      if i + |substr| <= |s| && s[i..i+|substr|] == substr {
+        count := count + 1;
+        assert i in (set k {:trigger s[k..k+|substr|]} | 0 <= k <= |s| - |substr| && s[k..k+|substr|] == substr);
+      }
+      i := i + 1;
+    }
+    times := count;
+    assert i == |s| - |substr| + 1;
+    assert count == |set k {:trigger s[k..k+|substr|]} | 0 <= k < i && k <= |s| - |substr| && s[k..k+|substr|] == substr|;
+    return times;
+  }
+
+vc-postamble: |-
+
+

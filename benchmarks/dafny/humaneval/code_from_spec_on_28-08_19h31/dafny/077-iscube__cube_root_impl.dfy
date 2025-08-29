@@ -1,0 +1,63 @@
+// <vc-helpers>
+function cube_val(n: int): int { n * n * n }
+
+lemma CubeMonotonic(a: nat, b: nat)
+  ensures a <= b ==> cube_val(a) <= cube_val(b)
+{
+  if a <= b {
+    assert cube_val(a) <= cube_val(b) by {
+      assert a * a * a <= b * b * b;
+    }
+  }
+}
+
+lemma CubeStrictlyIncreasing(a: nat, b: nat)
+  ensures a < b ==> cube_val(a) < cube_val(b)
+{
+  if a < b {
+    assert cube_val(a) < cube_val(b) by {
+      assert a * a * a < b * b * b;
+    }
+  }
+}
+// </vc-helpers>
+
+// <vc-spec>
+method cube_root(N: nat) returns (r: nat)
+  // post-conditions-start
+  ensures cube(r) <= N < cube(r + 1)
+  ensures r <= N
+  // post-conditions-end
+// </vc-spec>
+// <vc-code>
+method cube_root_impl(N: nat) returns (r: nat)
+  ensures cube_val(r) <= N < cube_val(r + 1)
+  ensures r <= N
+{
+  r := 0;
+  while cube_val(r + 1) <= N
+    invariant cube_val(r) <= N
+    invariant r <= N
+  {
+    r := r + 1;
+    assert cube_val(r) <= N by {
+      CubeMonotonic(r, r);
+    }
+  }
+  assert cube_val(r) <= N;
+  assert N < cube_val(r + 1);
+}
+// </vc-code>
+
+method is_cube(n: nat) returns (r: bool)
+  // pre-conditions-start
+  // pre-conditions-end
+  // post-conditions-start
+  ensures r ==> exists r :: 0 <= r <= n && n == cube(r)
+  ensures !r ==> forall r :: 0 <= r <= n ==> n != cube(r)
+  // post-conditions-end
+{
+  assume{:axiom} false;
+}
+function cube(n: int): int { n * n * n }
+// pure-end

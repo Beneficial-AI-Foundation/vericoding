@@ -1,21 +1,14 @@
-vc-description: |-
-  /--
-  function_signature: "fn cubes(len: usize) -> (result: Vec<i32>) by (nonlinear_arith)"
-  docstring: Implement cubes functionality.
-  -/
 vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
 
 vc-helpers: |-
-  #[verifier::external_body]
-  fn add(a: i32, b: i32) -> (result: i32)
-      ensures
-          result == a + b,
-  {
-      a + b
-  }
+
+
+vc-description: |-
+  function_signature: "fn cubes(len: usize) -> (result: Vec<i32>) by (nonlinear_arith)"
+  docstring: Implement cubes functionality.
 
 vc-spec: |-
   #[verifier::loop_isolation(false)]

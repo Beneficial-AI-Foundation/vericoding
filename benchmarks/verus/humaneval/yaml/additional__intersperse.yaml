@@ -1,14 +1,14 @@
-vc-description: |-
-  /--
-  function_signature: "fn intersperse(numbers: &[i32], delim: i32) -> (res: Vec<i32>)"
-  docstring: Implement intersperse functionality.
-  -/
 vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
 
 vc-helpers: |-
+
+
+vc-description: |-
+  function_signature: "fn intersperse(numbers: &[i32], delim: i32) -> (res: Vec<i32>)"
+  docstring: Implement intersperse functionality.
 
 vc-spec: |-
   fn intersperse(numbers: &[i32], delim: i32) -> (res: Vec<i32>)

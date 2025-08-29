@@ -31,7 +31,9 @@ def main():
     # Set up configuration, wandb run, prompts, LLM provider, and verification tool
     config = setup_configuration(args)
     wandb_run = init_wandb_run(config, args.no_wandb)
-    prompt_loader = init_prompt_loader(config.language, config.language_config.prompts_file)
+    # Use mode-based prompt file selection unless a non-default prompts_file is specified
+    prompts_file = None if config.language_config.prompts_file == "prompts.yaml" else config.language_config.prompts_file
+    prompt_loader = init_prompt_loader(config.language, config.mode, prompts_file)
     llm_provider = create_llm_provider(config.llm_provider, config.llm_model)
     print_startup_info(config)
     check_tool_availability(config)

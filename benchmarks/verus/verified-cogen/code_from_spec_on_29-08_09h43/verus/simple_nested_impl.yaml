@@ -1,0 +1,112 @@
+vc-description: |-
+
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus!{
+
+vc-helpers: |-
+  proof fn lemma_sum_bounds(b: &Vec<i32>, N: i32)
+      requires 
+          forall |k:int| k <= #[trigger] b[k] <= k + 1,
+          b.len() == N,
+          N >= 0,
+      ensures
+          N <= sum_from(b, 0, N) <= 2*N,
+  {
+      lemma_sum_bounds_recursive(b, N, 0);
+  }
+  
+  proof fn lemma_sum_bounds_recursive(b: &Vec<i32>, N: i32, start: i32)
+      requires 
+          forall |k:int| k <= #[trigger] b[k] <= k + 1,
+          b.len() == N,
+          N >= 0,
+          0 <= start <= N,
+      ensures
+          (N - start) <= sum_from(b, start, N) <= 2*(N - start),
+      decreases N - start
+  {
+      if start >= N {
+          assert(sum_from(b, start, N) == 0);
+      } else {
+          assert(start as int <= b[start as int] <= start as int + 1);
+          lemma_sum_bounds_recursive(b, N, (start + 1) as i32);
+          assert(sum_from(b, start, N) == b[start as int] + sum_from(b, (start + 1) as i32, N));
+      }
+  }
+  
+  spec fn sum_from(b: &Vec<i32>, start: i32, end: i32) -> int
+      recommends 0 <= start <= end <= b.len()
+  {
+      if start >= end {
+          0
+      } else {
+          b[start as int] as int + sum_from(b, (start + 1) as i32, end)
+      }
+  }
+
+vc-spec: |-
+  fn simple_nested(a: &mut Vec<i32>, b: &Vec<i32>, N: i32) -> (sum: i32)
+      // pre-conditions-start
+      requires 
+          forall |k:int| k <= #[trigger] b[k] <= k + 1,
+          old(a).len() == N,
+          b.len() == N,
+          N <= 0x3FFF_FFFF,
+      // pre-conditions-end
+      // post-conditions-start
+      ensures
+          N <= sum <= 2*N,
+      // post-conditions-end
+
+vc-code: |-
+  {
+      if N <= 0 {
+          return 0;
+      }
+      
+      let mut sum: i32 = 0;
+      let mut i: usize = 0;
+      
+      proof {
+          lemma_sum_bounds(b, N);
+      }
+      
+      while i < N as usize
+          invariant 
+              0 <= i <= N,
+              i as int <= sum as int <= 2 * (i as int),
+              forall |k:int| k <= #[trigger] b[k] <= k + 1,
+              b.len() == N,
+              sum as int == sum_from(b, 0, i as i32),
+      {
+          proof {
+              /* code modified by LLM (iteration 5): fixed type casting for int arithmetic */
+              assert(i as int <= b[i as int] <= i as int + 1);
+              assert(sum_from(b, 0, (i+1) as i32) == sum_from(b, 0, i as i32) + b[i as int] as int);
+              assert(sum_from(b, 0, i as i32) + (i as int) <= sum_from(b, 0, (i+1) as i32));
+              assert(sum_from(b, 0, (i+1) as i32) <= sum_from(b, 0, i as i32) + (i as int + 1));
+              assert((i+1) as int <= (sum as int + b[i as int] as int) <= 2 * ((i+1) as int));
+          }
+          
+          /* code modified by LLM (iteration 5): use i as int for array indexing */
+          sum = sum + b[i as int];
+          i = i + 1;
+      }
+      
+      proof {
+          assert(sum as int == sum_from(b, 0, N));
+          assert(N as int <= sum as int <= 2 * N as int);
+      }
+      
+      sum
+  }
+
+vc-postamble: |-
+  
+  }
+  
+  fn main() {}
+

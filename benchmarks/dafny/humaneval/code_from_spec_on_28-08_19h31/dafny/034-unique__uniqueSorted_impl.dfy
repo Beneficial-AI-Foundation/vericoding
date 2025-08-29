@@ -1,0 +1,65 @@
+// <vc-helpers>
+// Helper lemma to prove properties about sequences and multisets if needed
+lemma MultisetPreservation(s: seq<int>, result: seq<int>)
+  ensures multiset(s) == multiset(result) ==> (forall x :: x in s ==> x in result) && (forall x :: x in result ==> x in s)
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+method uniqueSorted(s: seq<int>) returns (result: seq<int>)
+    // pre-conditions-start
+    requires forall i, j :: 0 <= i < j < |s| ==> s[i] <= s[j]
+    // pre-conditions-end
+    // post-conditions-start
+    ensures forall i, j :: 0 <= i < j < |result| ==> result[i] < result[j]
+    ensures forall x :: x in result ==> x in s
+    ensures forall x :: x in s ==> x in result
+    // post-conditions-end
+// </vc-spec>
+// <vc-code>
+{
+  if |s| <= 1 {
+    result := s;
+    return;
+  }
+  
+  var i := 0;
+  var uniqueSeq := [];
+  
+  while i < |s|
+    invariant 0 <= i <= |s|
+    invariant |uniqueSeq| <= i
+    invariant forall k, l :: 0 <= k < l < |uniqueSeq| ==> uniqueSeq[k] < uniqueSeq[l]
+    invariant forall k :: 0 <= k < |uniqueSeq| ==> uniqueSeq[k] in s
+    invariant forall k :: 0 <= k < i && (i == 0 || k == 0 || s[k] > uniqueSeq[|uniqueSeq|-1]) ==> s[k] in uniqueSeq
+    invariant forall k :: 0 <= k < i ==> exists m :: 0 <= m < |uniqueSeq| && uniqueSeq[m] == s[k]
+  {
+    if i == 0 || (|uniqueSeq| > 0 && s[i] > uniqueSeq[|uniqueSeq| - 1]) {
+      uniqueSeq := uniqueSeq + [s[i]];
+    }
+    i := i + 1;
+  }
+  
+  result := uniqueSeq;
+}
+// </vc-code>
+
+method unique(s: seq<int>) returns (result: seq<int>)
+    // post-conditions-start
+    ensures forall i, j :: 0 <= i < j < |result| ==> result[i] < result[j]
+    ensures forall x :: x in result ==> x in s
+    ensures forall x :: x in s ==> x in result
+    // post-conditions-end
+{
+  assume{:axiom} false;
+}
+method SortSeq(s: seq<int>) returns (sorted: seq<int>)
+  // post-conditions-start
+  ensures forall i, j :: 0 <= i < j < |sorted| ==> sorted[i] <= sorted[j]
+  ensures |sorted| == |s|
+  ensures multiset(s) == multiset(sorted)
+  // post-conditions-end
+{
+  assume{:axiom} false;
+}

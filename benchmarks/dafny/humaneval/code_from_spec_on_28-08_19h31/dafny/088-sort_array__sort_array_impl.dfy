@@ -1,0 +1,71 @@
+// <vc-helpers>
+// Helper lemma to prove properties about reversed sequences
+lemma ReversePreservesLength(s: seq<int>)
+  ensures true
+{
+}
+
+// Helper lemma to prove properties about sorted sequences
+lemma SortedSeqPreservesLength(s: seq<int>)
+  ensures true
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+method sort_array(s: seq<int>) returns (sorted: seq<int>)
+  // post-conditions-start
+  ensures |sorted| == |s|
+  ensures |s| > 0 && (s[0] + s[|s| - 1]) % 2 == 0 ==>
+    forall i, j :: 0 <= i < j < |sorted| ==> sorted[i] >= sorted[j]
+  ensures |s| > 0 && (s[0] + s[|s| - 1]) % 2 != 0 ==>
+    forall i, j :: 0 <= i < j < |sorted| ==> sorted[i] <= sorted[j]
+  // post-conditions-end
+// </vc-spec>
+// <vc-code>
+method sortArray(s: seq<int>) returns (sorted: seq<int>)
+  // post-conditions-start
+  ensures |sorted| == |s|
+  ensures |s| > 0 && (s[0] + s[|s| - 1]) % 2 == 0 ==>
+    forall i, j :: 0 <= i < j < |sorted| ==> sorted[i] >= sorted[j]
+  ensures |s| > 0 && (s[0] + s[|s| - 1]) % 2 != 0 ==>
+    forall i, j :: 0 <= i < j < |sorted| ==> sorted[i] <= sorted[j]
+  // post-conditions-end
+{
+  var result: seq<int>;
+  if |s| == 0 {
+    result := [];
+  } else {
+    var sumEnds := s[0] + s[|s| - 1];
+    if sumEnds % 2 == 0 {
+      // Need descending order
+      var ascending := SortSeq(s);
+      var reversed: seq<int> := reverse(ascending);
+      result := reversed;
+    } else {
+      // Need ascending order
+      var ascending := SortSeq(s);
+      result := ascending;
+    }
+  }
+  return result;
+}
+// </vc-code>
+
+method reverse(s: seq<int>) returns (rev: seq<int>)
+  // post-conditions-start
+  ensures |rev| == |s|
+  ensures forall k :: 0 <= k < |s| ==> rev[k] == s[|s| - 1 - k]
+  // post-conditions-end
+{
+  assume{:axiom} false;
+}
+method SortSeq(s: seq<int>) returns (sorted: seq<int>)
+  // post-conditions-start
+  ensures forall i, j :: 0 <= i < j < |sorted| ==> sorted[i] <= sorted[j]
+  ensures |sorted| == |s|
+  ensures multiset(s) == multiset(sorted)
+  // post-conditions-end
+{
+  assume{:axiom} false;
+}

@@ -1,0 +1,65 @@
+vc-preamble: |-
+  method strange_sort_list_helper(s: seq<int>) returns (sorted: seq<int>, strange: seq<int>)
+      // post-conditions-start
+      ensures multiset(s) == multiset(sorted)
+      ensures |s| == |sorted| == |strange|
+      ensures forall i :: 0 <= i < |s| && i % 2 == 0 ==> strange[i] == sorted[i / 2]
+      ensures forall i :: 0 <= i < |s| && i % 2 == 1 ==> strange[i] == sorted[|s| - (i - 1) / 2 - 1]
+      // post-conditions-end
+  {
+    assume{:axiom} false;
+  }
+  method strange_sort_list(s: seq<int>) returns (strange: seq<int>)
+      // post-conditions-start
+      ensures |s| == |strange|
+      // post-conditions-end
+  {
+    assume{:axiom} false;
+  }
+
+vc-helpers: |-
+  predicate IsSorted(s: seq<int>)
+  {
+      forall i, j :: 0 <= i < j < |s| ==> s[i] <= s[j]
+  }
+
+vc-description: |-
+  function_signature: method SortSeq(s: seq<int>) returns (sorted: seq<int>)
+  Sort elements. Ensures: the result is sorted according to the ordering relation; returns the correct size/count; returns a sorted permutation of the input.
+
+vc-spec: |-
+  method SortSeq(s: seq<int>) returns (sorted: seq<int>)
+      ensures IsSorted(sorted)
+      ensures |sorted| == |s|
+      ensures multiset(sorted) == multiset(s)
+
+vc-code: |-
+  {
+      sorted := s;
+      var i := 0;
+      while i < |sorted|
+          invariant 0 <= i <= |sorted|
+          invariant multiset(sorted) == multiset(s)
+          invariant |sorted| == |s|
+          invariant forall x, y :: 0 <= x < y < i ==> sorted[x] <= sorted[y]
+      {
+          var j := i;
+          while j > 0 && sorted[j-1] > sorted[j]
+              invariant 0 <= j <= i
+              invariant multiset(sorted) == multiset(s)
+              invariant |sorted| == |s|
+              invariant forall x, y :: 0 <= x < y < j ==> sorted[x] <= sorted[y]
+              invariant forall x, y :: j < x < y <= i ==> sorted[x] <= sorted[y]
+              invariant forall x :: j < x <= i ==> sorted[j] <= sorted[x]
+              invariant j == i || sorted[j] <= sorted[j+1]
+          {
+              sorted := sorted[j-1 := sorted[j]][j := sorted[j-1]];
+              j := j - 1;
+          }
+          i := i + 1;
+      }
+  }
+
+vc-postamble: |-
+
+

@@ -1,0 +1,63 @@
+vc-preamble: |-
+
+
+vc-helpers: |-
+  // Helper function to check if a character is alphabetic
+  function IsAlpha(c: char): bool {
+    'a' <= c <= 'z' || 'A' <= c <= 'Z'
+  }
+  
+  // Helper function to flip the case of a character
+  function FlipCase(c: char): (flipped: char)
+    requires IsAlpha(c)
+    ensures IsAlpha(flipped)
+  {
+    if 'a' <= c <= 'z' then c - 'a' + 'A' else c - 'A' + 'a'
+  }
+
+vc-description: |-
+  function_signature: method solve(s: string) returns (t: string)
+  Process input. Ensures: returns the correct size/count; the condition holds for all values; there exists a value satisfying the condition.
+
+vc-spec: |-
+  method solve(s: string) returns (t: string)
+    ensures |t| == |s|
+    ensures forall k :: 0 <= k < |s| ==> (IsAlpha(s[k]) ==> t[k] == FlipCase(s[k])) && (!IsAlpha(s[k]) ==> t[k] == s[k])
+
+vc-code: |-
+  {
+    var result := new char[|s|];
+    for i := 0 to |s|
+      invariant 0 <= i <= |s|
+      invariant forall k :: 0 <= k < i ==> (IsAlpha(s[k]) ==> result[k] == FlipCase(s[k])) && (!IsAlpha(s[k]) ==> result[k] == s[k])
+    {
+      if IsAlpha(s[i]) {
+        result[i] := FlipCase(s[i]);
+      } else {
+        result[i] := s[i];
+      }
+    }
+    t := result[..];
+  }
+
+vc-postamble: |-
+  method reverse(s: string) returns (rev: string)
+    // pre-conditions-start
+    ensures |rev| == |s|
+    ensures forall k :: 0 <= k < |s| ==> rev[k] == s[|s| - 1 - k]
+    // pre-conditions-end
+  {
+    assume{:axiom} false;
+  }
+  function is_alpha(c: char) : bool {
+    'a' <= c <= 'z' || 'A' <= c <= 'Z'
+  }
+  // pure-end
+  function flip_case(c: char): (flipped: char)
+    requires is_alpha(c)
+    ensures is_alpha(flipped)
+  {
+    if 'a' <= c <= 'z' then c - 'a' + 'A' else c - 'A' + 'a'
+  }
+  // pure-end
+

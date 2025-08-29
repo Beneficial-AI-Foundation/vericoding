@@ -1,0 +1,59 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+
+// </vc-helpers>
+
+// <vc-description>
+/*
+
+*/
+// </vc-description>
+
+// <vc-spec>
+fn max_difference(arr: &Vec<i32>) -> (diff: i32)
+    // pre-conditions-start
+    requires
+        arr.len() > 0,
+        forall|i: int| 0 <= i < arr.len() ==> i32::MIN / 2 < #[trigger] arr[i] < i32::MAX / 2,
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        forall|i: int, j: int| 0 <= i < arr.len() && 0 <= j < arr.len() ==> arr[i] - arr[j] <= diff,
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut min_val = arr[0];
+    let mut max_val = arr[0];
+    
+    let mut i = 1;
+    /* code modified by LLM (iteration 2): added decreases clause for loop termination */
+    while i < arr.len()
+        invariant
+            1 <= i <= arr.len(),
+            forall|k: int| 0 <= k < i ==> min_val <= arr[k],
+            forall|k: int| 0 <= k < i ==> arr[k] <= max_val,
+            exists|k: int| 0 <= k < i && arr[k] == min_val,
+            exists|k: int| 0 <= k < i && arr[k] == max_val,
+        decreases arr.len() - i
+    {
+        if arr[i] < min_val {
+            min_val = arr[i];
+        }
+        if arr[i] > max_val {
+            max_val = arr[i];
+        }
+        i += 1;
+    }
+    
+    max_val - min_val
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

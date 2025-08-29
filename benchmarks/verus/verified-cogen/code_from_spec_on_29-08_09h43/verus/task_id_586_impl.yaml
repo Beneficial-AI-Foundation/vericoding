@@ -1,0 +1,79 @@
+vc-description: |-
+
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+  lemma lemma_subrange_bounds(s: Seq<i32>, start: int, end: int)
+      requires 0 <= start <= end <= s.len()
+      ensures s.subrange(start, end).len() == end - start
+  {
+  }
+  
+  lemma lemma_subrange_add_len(s1: Seq<i32>, s2: Seq<i32>)
+      ensures s1.add(s2).len() == s1.len() + s2.len()
+  {
+  }
+
+vc-spec: |-
+  fn split_and_append(list: &Vec<i32>, n: usize) -> (new_list: Vec<i32>)
+      // pre-conditions-start
+      requires
+          list@.len() > 0,
+          0 < n < list@.len(),
+      // pre-conditions-end
+      // post-conditions-start
+      ensures
+          new_list@ == list@.subrange(n as int, list@.len() as int).add(list@.subrange(0, n as int)),
+      // post-conditions-end
+
+vc-code: |-
+  fn split_and_append(list: &Vec<i32>, n: usize) -> (new_list: Vec<i32>)
+      requires
+          list@.len() > 0,
+          0 < n < list@.len(),
+      ensures
+          new_list@ == list@.subrange(n as int, list@.len() as int).add(list@.subrange(0, n as int)),
+  {
+      let mut new_list = Vec::new();
+      
+      /* code modified by LLM (iteration 5): append elements from index n to end */
+      let mut i = n;
+      while i < list.len()
+          invariant
+              i <= list.len(),
+              new_list@.len() == i - n,
+              new_list@ == list@.subrange(n as int, i as int),
+          decreases list.len() - i
+      {
+          new_list.push(list[i]);
+          i += 1;
+      }
+      
+      /* code modified by LLM (iteration 5): append elements from start to index n-1 */
+      let mut j = 0;
+      while j < n
+          invariant
+              j <= n,
+              n < list.len(),
+              new_list@.len() == (list.len() - n) + j,
+              new_list@ == list@.subrange(n as int, list@.len() as int).add(list@.subrange(0, j as int)),
+          decreases n - j
+      {
+          assert(j < list.len());
+          new_list.push(list[j]);
+          j += 1;
+      }
+      
+      new_list
+  }
+
+vc-postamble: |-
+  
+  } // verus!
+  
+  fn main() {}
+

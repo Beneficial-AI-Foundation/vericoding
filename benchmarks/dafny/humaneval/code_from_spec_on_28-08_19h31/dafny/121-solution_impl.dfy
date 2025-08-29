@@ -1,0 +1,63 @@
+// <vc-helpers>
+function sumOddsAtEvenIndices(numbers: seq<int>, index: int) : int
+  requires 0 <= index <= |numbers|
+  decreases |numbers| - index
+{
+  if index >= |numbers| then 0
+  else if index % 2 == 0 && numbers[index] % 2 == 1 then numbers[index] + sumOddsAtEvenIndices(numbers, index + 1)
+  else sumOddsAtEvenIndices(numbers, index + 1)
+}
+
+lemma SumEquivalence(numbers: seq<int>)
+  ensures sum(numbers, seq(|numbers|, i requires 0 <= i < |numbers| => i % 2 == 0 && numbers[i] % 2 == 1)) == sumOddsAtEvenIndices(numbers, 0)
+{
+  if |numbers| == 0 {
+    assert sum(numbers, seq(0, i requires 0 <= i < 0 => false)) == 0;
+    assert sumOddsAtEvenIndices(numbers, 0) == 0;
+  } else {
+    var p := seq(|numbers|, i requires 0 <= i < |numbers| => i % 2 == 0 && numbers[i] % 2 == 1);
+    assert p[0] == (0 % 2 == 0 && numbers[0] % 2 == 1);
+    if p[0] {
+      assert sum(numbers, p) == numbers[0] + sum(numbers[1..], p[1..]);
+      assert sumOddsAtEvenIndices(numbers, 0) == numbers[0] + sumOddsAtEvenIndices(numbers, 1);
+    } else {
+      assert sum(numbers, p) == sum(numbers[1..], p[1..]);
+      assert sumOddsAtEvenIndices(numbers, 0) == sumOddsAtEvenIndices(numbers, 1);
+    }
+    SumEquivalence(numbers[1..]);
+  }
+}
+// </vc-helpers>
+
+// <vc-spec>
+method solution(numbers: seq<int>) returns (s: int)
+  // post-conditions-start
+  ensures s == sum(numbers, seq(|numbers|, i requires 0 <= i < |numbers| => i % 2 == 0 && numbers[i] % 2 == 1))
+  // post-conditions-end
+// </vc-spec>
+// <vc-code>
+method ComputeSumOddsAtEvenIndices(numbers: seq<int>) returns (s: int)
+  ensures s == sum(numbers, seq(|numbers|, i requires 0 <= i < |numbers| => i % 2 == 0 && numbers[i] % 2 == 1))
+{
+  var result := 0;
+  var i := 0;
+  while i < |numbers|
+    invariant 0 <= i <= |numbers|
+    invariant result == sumOddsAtEvenIndices(numbers, 0) - sumOddsAtEvenIndices(numbers, i)
+  {
+    if i % 2 == 0 && numbers[i] % 2 == 1 {
+      result := result + numbers[i];
+    }
+    i := i + 1;
+  }
+  s := result;
+  SumEquivalence(numbers);
+}
+// </vc-code>
+
+function sum(s: seq<int>, p: seq<bool>) : int
+  requires |s| == |p|
+{
+  if |s| == 0 then 0 else (if p[0] then s[0] else 0) + sum(s[1..], p[1..])
+}
+// pure-end

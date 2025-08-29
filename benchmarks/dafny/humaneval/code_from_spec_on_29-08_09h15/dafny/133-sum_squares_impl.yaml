@@ -1,0 +1,104 @@
+vc-preamble: |-
+  function sum(s: seq<int>) : int
+      {
+          if |s| == 0 then 0 else s[0] + sum(s[1..])
+      }
+  function ceil(f: real) : (c : int)
+      {
+          (f + 1.0).Floor
+      }
+  function square_seq(lst: seq<real>) : (sq : seq<int>)
+          ensures |sq| == |lst|
+      {
+          seq(|lst|, i requires 0 <= i < |lst| => ceil(lst[i]) * ceil(lst[i]))
+      }
+
+vc-helpers: |-
+  lemma sum_append(s1: seq<int>, s2: seq<int>)
+      ensures sum(s1 + s2) == sum(s1) + sum(s2)
+  {
+      if |s1| == 0 {
+          assert s1 + s2 == s2;
+      } else {
+          calc {
+              sum(s1 + s2);
+              == (s1 + s2)[0] + sum((s1 + s2)[1..]);
+              == s1[0] + sum((s1 + s2)[1..]);
+              == { assert (s1 + s2)[1..] == s1[1..] + s2; }
+              s1[0] + sum(s1[1..] + s2);
+              == { sum_append(s1[1..], s2); }
+              s1[0] + sum(s1[1..]) + sum(s2);
+              == sum(s1) + sum(s2);
+          }
+      }
+  }
+  
+  lemma square_seq_single(x: real)
+      ensures square_seq([x]) == [ceil(x) * ceil(x)]
+  {
+  }
+  
+  lemma square_seq_append_lemma(lst1: seq<real>, lst2: seq<real>)
+      ensures square_seq(lst1 + lst2) == square_seq(lst1) + square_seq(lst2)
+  {
+      var combined := lst1 + lst2;
+      var sq_combined := square_seq(combined);
+      var sq1 := square_seq(lst1);
+      var sq2 := square_seq(lst2);
+      
+      assert |sq_combined| == |combined| == |lst1| + |lst2|;
+      assert |sq1 + sq2| == |sq1| + |sq2| == |lst1| + |lst2|;
+      
+      forall i | 0 <= i < |sq1 + sq2|
+          ensures (sq1 + sq2)[i] == sq_combined[i]
+      {
+          if i < |lst1| {
+              assert (sq1 + sq2)[i] == sq1[i] == ceil(lst1[i]) * ceil(lst1[i]);
+              assert sq_combined[i] == ceil(combined[i]) * ceil(combined[i]);
+              assert combined[i] == lst1[i];
+          } else {
+              var j := i - |lst1|;
+              assert (sq1 + sq2)[i] == sq2[j] == ceil(lst2[j]) * ceil(lst2[j]);
+              assert sq_combined[i] == ceil(combined[i]) * ceil(combined[i]);
+              assert combined[i] == lst2[j];
+          }
+      }
+  }
+
+vc-description: |-
+  function_signature: def sum_squares(lst: List[float]) -> int
+  You are given a list of numbers. You need to return the sum of squared numbers in the given list, round each element in the list to the upper int(Ceiling) first.
+
+vc-spec: |-
+  method sum_squares(lst: seq<real>) returns (r : int)
+      // post-conditions-start
+      ensures r == sum(square_seq(lst))
+      // post-conditions-end
+
+vc-code: |-
+  {
+      if |lst| == 0 {
+          r := 0;
+          assert square_seq(lst) == [];
+          assert sum(square_seq(lst)) == 0;
+      } else {
+          var head := lst[0];
+          var tail := lst[1..];
+          var ceil_head := ceil(head);
+          var square_head := ceil_head * ceil_head;
+          
+          var tail_result := sum_squares(tail);
+          
+          r := square_head + tail_result;
+          
+          assert square_seq(lst) == [square_head] + square_seq(tail);
+          sum_append([square_head], square_seq(tail));
+          assert sum(square_seq(lst)) == sum([square_head]) + sum(square_seq(tail));
+          assert sum([square_head]) == square_head;
+          assert sum(square_seq(tail)) == tail_result;
+      }
+  }
+
+vc-postamble: |-
+
+

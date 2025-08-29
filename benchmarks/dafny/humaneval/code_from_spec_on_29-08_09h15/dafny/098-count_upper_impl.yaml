@@ -1,0 +1,59 @@
+vc-preamble: |-
+
+
+vc-helpers: |-
+  lemma CountUpperCorrect(s: string, i: int, cnt: int, indices: set<int>)
+    requires 0 <= i <= |s|
+    requires cnt == |indices|
+    requires indices == set j | 0 <= j < i && j % 2 == 0 && is_upper_vowel(s[j])
+    ensures cnt == |set j | 0 <= j < i && j % 2 == 0 && is_upper_vowel(s[j])|
+  {
+  }
+  
+  lemma SetExtension(s: string, i: int)
+    requires 0 <= i < |s|
+    ensures (set j | 0 <= j < i+1 && j % 2 == 0 && is_upper_vowel(s[j])) == 
+            (set j | 0 <= j < i && j % 2 == 0 && is_upper_vowel(s[j])) + 
+            (if i % 2 == 0 && is_upper_vowel(s[i]) then {i} else {})
+  {
+  }
+
+vc-description: |-
+  function_signature: def count_upper(s : String) -> Int
+  Given a string s, count the number of uppercase vowels in even indices.
+
+vc-spec: |-
+  method count_upper(s: string) returns (cnt: int)
+    // post-conditions-start
+    ensures cnt == |set i | 0 <= i < |s| && i % 2 == 0 && is_upper_vowel(s[i])|
+    // post-conditions-end
+
+vc-code: |-
+  {
+    cnt := 0;
+    var i := 0;
+    var indices: set<int> := {};
+    
+    while i < |s|
+      invariant 0 <= i <= |s|
+      invariant cnt == |indices|
+      invariant indices == set j | 0 <= j < i && j % 2 == 0 && is_upper_vowel(s[j])
+    {
+      if i % 2 == 0 && is_upper_vowel(s[i]) {
+        cnt := cnt + 1;
+        indices := indices + {i};
+      }
+      
+      SetExtension(s, i);
+      i := i + 1;
+    }
+    
+    CountUpperCorrect(s, i, cnt, indices);
+  }
+
+vc-postamble: |-
+  function is_upper_vowel(c: char) : bool {
+    c == 'A' || c == 'E' || c == 'U' || c == 'I' || c == 'O'
+  }
+  // pure-end
+

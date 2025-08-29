@@ -1,0 +1,24 @@
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: def derivative(xs: List Int) -> List Int
+xs represent coefficients of a polynomial. xs[0] + xs[1] * x + xs[2] * x^2 + .... Return derivative of this polynomial in the same form.
+*/
+// </vc-description>
+
+// <vc-spec>
+method derivative(xs: seq<int>) returns (result: seq<int>)
+  ensures |result| == (if |xs| <= 1 then 0 else |xs| - 1)
+  ensures forall i :: 0 <= i < |result| ==> result[i] == xs[i + 1] * (i + 1)
+// </vc-spec>
+// <vc-code>
+{
+  if |xs| <= 1 {
+    result := [];
+  } else {
+    result := seq(|xs| - 1, i requires 0 <= i < |xs| - 1 => xs[i + 1] * (i + 1));
+  }
+}
+// </vc-code>

@@ -1,0 +1,33 @@
+vc-preamble: |-
+
+
+vc-helpers: |-
+  // No additional helpers needed for this verification
+
+vc-description: |-
+  function_signature: def sum_to_n(n: Nat) -> Nat
+  sum_to_n is a function that sums numbers from 1 to n.
+
+vc-spec: |-
+  method sum_to_n(n: int) returns (r : int)
+    // post-conditions-start
+    ensures r == n * (n + 1) / 2
+    // post-conditions-end
+
+vc-code: |-
+  {
+    var sum := 0;
+    var i := 0;
+    while i < n
+      invariant 0 <= i <= n
+      invariant sum == i * (i + 1) / 2
+    {
+      i := i + 1;
+      sum := sum + i;
+    }
+    return sum;
+  }
+
+vc-postamble: |-
+
+

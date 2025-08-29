@@ -1,0 +1,43 @@
+vc-preamble: |-
+  method min(a : int, b : int) returns (m : int)
+    ensures m == a || m == b
+    ensures m <= a && m <= b
+  {
+    assume{:axiom} false;
+  }
+  method max(a : int, b : int) returns (m : int)
+    ensures m == a || m == b
+    ensures m >= a && m >= b
+  {
+    assume{:axiom} false;
+  }
+
+vc-helpers: |-
+  // No additional helpers needed for this specification and implementation
+
+vc-description: |-
+  function_signature: method generate_integers(a : int, b : int) returns (result: seq<int>)
+  Generate elements. Ensures: the condition holds for all values; the condition holds for all values.
+
+vc-spec: |-
+  method generate_integers(a: int, b: int) returns (result: seq<int>)
+    requires a <= b
+    ensures |result| == b - a + 1
+    ensures forall i :: 0 <= i < |result| ==> result[i] == a + i
+
+vc-code: |-
+  {
+    result := [];
+    var i := a;
+    while i <= b
+      invariant |result| == i - a
+      invariant forall k :: 0 <= k < |result| ==> result[k] == a + k
+    {
+      result := result + [i];
+      i := i + 1;
+    }
+  }
+
+vc-postamble: |-
+
+

@@ -1,0 +1,78 @@
+vc-description: |-
+
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  
+  verus! {
+
+vc-helpers: |-
+  #[verifier::proof]
+  fn filter_push_property<T>(s: Seq<T>, elem: T, pred: spec_fn(T) -> bool)
+      ensures
+          s.push(elem).filter(pred) == if pred(elem) { s.filter(pred).push(elem) } else { s.filter(pred) }
+  {
+  }
+
+vc-spec: |-
+  fn find_even_numbers(arr: &Vec<u32>) -> (even_numbers: Vec<u32>)
+      // post-conditions-start
+      ensures
+          even_numbers@ == arr@.filter(|x: u32| x % 2 == 0),
+      // post-conditions-end
+
+vc-code: |-
+  {
+      let mut even_numbers = Vec::new();
+      let mut i = 0;
+      
+      while i < arr.len()
+          invariant
+              i <= arr.len(),
+              even_numbers@ == arr@.subrange(0, i as int).filter(|x: u32| x % 2 == 0),
+          decreases arr.len() - i,
+      {
+          if arr[i] % 2 == 0 {
+              even_numbers.push(arr[i]);
+              
+              /* code modified by LLM (iteration 5): proof to establish invariant after push using filter property */
+              proof {
+                  let old_i = i as int;
+                  let new_subrange = arr@.subrange(0, old_i + 1);
+                  let old_subrange = arr@.subrange(0, old_i);
+                  assert(new_subrange == old_subrange.push(arr@[old_i]));
+                  assert(arr@[old_i] % 2 == 0);
+                  filter_push_property(old_subrange, arr@[old_i], |x: u32| x % 2 == 0);
+                  assert(new_subrange.filter(|x: u32| x % 2 == 0) == old_subrange.filter(|x: u32| x % 2 == 0).push(arr@[old_i]));
+              }
+          } else {
+              /* code modified by LLM (iteration 5): proof to establish invariant when element is odd using filter property */
+              proof {
+                  let old_i = i as int;
+                  let new_subrange = arr@.subrange(0, old_i + 1);
+                  let old_subrange = arr@.subrange(0, old_i);
+                  assert(new_subrange == old_subrange.push(arr@[old_i]));
+                  assert(arr@[old_i] % 2 != 0);
+                  filter_push_property(old_subrange, arr@[old_i], |x: u32| x % 2 == 0);
+                  assert(new_subrange.filter(|x: u32| x % 2 == 0) == old_subrange.filter(|x: u32| x % 2 == 0));
+              }
+          }
+          i += 1;
+      }
+      
+      /* code modified by LLM (iteration 5): proof to establish postcondition */
+      proof {
+          assert(i == arr.len());
+          assert(arr@.subrange(0, i as int) == arr@);
+      }
+      
+      even_numbers
+  }
+
+vc-postamble: |-
+  
+  } // verus!
+  
+  fn main() {}
+

@@ -1,0 +1,77 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+spec fn is_divisible(n: int, k: int) -> bool {
+    k != 0 && n % k == 0
+}
+
+proof fn divisibility_helper(n: u32, k: u32)
+    requires
+        2 <= k < n,
+        (n as int) % (k as int) == 0,
+    ensures
+        exists|j: int| 2 <= j < n && #[trigger] (n as int % j) == 0,
+{
+    assert((n as int) % (k as int) == 0);
+}
+
+proof fn no_divisor_helper(n: u32)
+    requires
+        n >= 2,
+        forall|k: u32| 2 <= k < n ==> #[trigger] ((n as int) % (k as int)) != 0,
+    ensures
+        !exists|k: int| 2 <= k < n && #[trigger] (n as int % k) == 0,
+{
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: "fn is_non_prime(n: u32) -> (result: bool)"
+docstring: Implement is non prime functionality.
+*/
+// </vc-description>
+
+// <vc-spec>
+#[verifier::loop_isolation(false)]
+fn is_non_prime(n: u32) -> (result: bool)
+    // pre-conditions-start
+    requires
+        n >= 2,
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        result == exists|k: int| 2 <= k < n && #[trigger] (n as int % k) == 0,
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut i: u32 = 2;
+    /* code modified by LLM (iteration 3): added trigger annotation to loop invariant quantifier */
+    while i < n
+        invariant
+            2 <= i <= n,
+            forall|k: u32| 2 <= k < i ==> #[trigger] ((n as int) % (k as int)) != 0,
+        decreases n - i
+    {
+        if n % i == 0 {
+            proof {
+                divisibility_helper(n, i);
+            }
+            return true;
+        }
+        i = i + 1;
+    }
+    
+    proof {
+        no_divisor_helper(n);
+    }
+    false
+}
+// </vc-code>
+
+fn main() {}
+}

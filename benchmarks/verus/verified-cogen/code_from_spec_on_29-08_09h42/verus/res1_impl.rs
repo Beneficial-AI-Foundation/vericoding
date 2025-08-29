@@ -1,0 +1,65 @@
+use vstd::prelude::*;
+
+
+verus!{
+
+// <vc-helpers>
+
+// </vc-helpers>
+
+// <vc-spec>
+fn myfun(a: &mut Vec<i32>, b: &mut Vec<i32>, sum: &mut Vec<i32>, N: i32)
+	// pre-conditions-start
+	requires
+		N > 0,
+		old(a).len() == N,
+		old(b).len() == N,
+		old(sum).len() == 1,
+        N < 1000,
+	// pre-conditions-end
+	// post-conditions-start
+	ensures
+		sum[0] <= 2 * N,
+	// post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    // impl-start
+    let mut total: i32 = 0;
+    let mut i: i32 = 0;
+    
+    /* code modified by LLM (iteration 5): fixed arithmetic overflow by adding proper bounds checking */
+    while i < N
+        invariant
+            0 <= i <= N,
+            total <= 2 * i,
+            a.len() == N,
+            b.len() == N,
+            sum.len() == 1,
+            i < 1000,
+            total < 2000,
+        decreases N - i
+    {
+        if a[i as usize] <= 1 && b[i as usize] <= 1 {
+            if total <= i32::MAX - 2 && a[i as usize] >= 0 && b[i as usize] >= 0 {
+                total = total + a[i as usize] + b[i as usize];
+            } else {
+                total = total + 2;
+            }
+        } else {
+            if total <= i32::MAX - 2 {
+                total = total + 2;
+            }
+        }
+        i = i + 1;
+    }
+    
+    sum.set(0, total);
+    // impl-end
+}
+// </vc-code>
+
+}
+
+fn main() {}

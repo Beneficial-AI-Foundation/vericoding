@@ -1,0 +1,32 @@
+// <vc-helpers>
+// No additional helpers needed for this specification and implementation
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: def get_positive(l: list)
+Return only positive numbers in the list.
+*/
+// </vc-description>
+
+// <vc-spec>
+method get_positive(l: seq<int>) returns (result: seq<int>)
+  ensures forall i :: 0 <= i < |result| ==> result[i] > 0
+  ensures forall x :: x in result ==> x in l
+  ensures forall x :: x in l && x > 0 ==> x in result
+// </vc-spec>
+// <vc-code>
+{
+  result := [];
+  for i := 0 to |l|
+    invariant 0 <= i <= |l|
+    invariant forall k :: 0 <= k < |result| ==> result[k] > 0
+    invariant forall x :: x in result ==> x in l[..i]
+    invariant forall x :: x in l[..i] && x > 0 ==> x in result
+  {
+    if l[i] > 0 {
+      result := result + [l[i]];
+    }
+  }
+}
+// </vc-code>

@@ -1,0 +1,65 @@
+vc-preamble: |-
+  datatype Option<T> = None | Some(T)
+  function getVal(mx : Option<string>) : string
+      requires mx != None
+  {
+      match mx {
+          case Some(n) => n
+      }
+  }
+
+vc-helpers: |-
+  lemma MaxLengthExists(strings: seq<string>, maxLen: int)
+      requires |strings| > 0
+      requires maxLen == max(seq(|strings|, i requires 0 <= i < |strings| => |strings[i]|))
+      ensures exists i :: 0 <= i < |strings| && |strings[i]| == maxLen
+  
+  function max(s: seq<int>) : int
+      requires |s| > 0
+  {
+      if |s| == 1 then s[0]
+      else if s[0] >= max(s[1..]) then s[0]
+      else max(s[1..])
+  }
+  
+  lemma MaxProperty(s: seq<int>, i: int)
+      requires |s| > 0
+      requires 0 <= i < |s|
+      ensures s[i] <= max(s)
+
+vc-description: |-
+  function_signature: def longest(strings: List[str]) -> Optional[str]
+  Out of list of strings, return the longest one. Return the first one in case of multiple strings of the same length. Return None in case the input list is empty.
+
+vc-spec: |-
+  function longest(strings: seq<string>) : Option<string>
+      ensures |strings| == 0 ==> longest(strings) == None
+      ensures |strings| > 0 ==> longest(strings) != None
+      ensures |strings| > 0 ==> |getVal(longest(strings))| == max(seq(|strings|, i requires 0 <= i < |strings| => |strings[i]|))
+      ensures |strings| > 0 ==> getVal(longest(strings)) in strings
+      ensures |strings| > 0 ==> forall i :: 0 <= i < |strings| && |strings[i]| == |getVal(longest(strings))| ==> exists j :: 0 <= j <= i && strings[j] == getVal(longest(strings))
+
+vc-code: |-
+  {
+      if |strings| == 0 then
+          None
+      else
+          var maxLen := max(seq(|strings|, i requires 0 <= i < |strings| => |strings[i]|));
+          var i := 0;
+          while i < |strings|
+              invariant 0 <= i <= |strings|
+              invariant forall j :: 0 <= j < i ==> |strings[j]| < maxLen
+          {
+              if |strings[i]| == maxLen {
+                  MaxLengthExists(strings, maxLen);
+                  return Some(strings[i]);
+              }
+              i := i + 1;
+          }
+          MaxLengthExists(strings, maxLen);
+          Some(strings[0])
+  }
+
+vc-postamble: |-
+
+

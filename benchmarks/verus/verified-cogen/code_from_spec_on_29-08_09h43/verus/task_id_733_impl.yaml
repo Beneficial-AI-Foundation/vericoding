@@ -1,0 +1,99 @@
+vc-description: |-
+
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+  fn lemma_binary_search_maintains_invariants(arr: &Vec<i32>, target: i32, left: usize, right: usize, mid: usize)
+      requires
+          forall|i: int, j: int| 0 <= i < j < arr.len() ==> arr[i] <= arr[j],
+          0 <= left <= right <= arr.len(),
+          left <= mid < right,
+          mid == left + (right - left) / 2,
+          forall|k: int| 0 <= k < left ==> arr[k] != target,
+          forall|k: int| right <= k < arr.len() ==> arr[k] != target,
+      ensures
+          if arr[mid] < target {
+              forall|k: int| 0 <= k <= mid ==> arr[k] != target
+          } else if arr[mid] > target {
+              forall|k: int| mid <= k < arr.len() ==> arr[k] != target
+          }
+  {
+      if arr[mid] < target {
+          assert forall|k: int| 0 <= k <= mid implies arr[k] != target by {
+              if 0 <= k <= mid && arr[k] == target {
+                  assert arr[k] <= arr[mid] < target;
+                  assert false;
+              }
+          }
+      } else if arr[mid] > target {
+          assert forall|k: int| mid <= k < arr.len() implies arr[k] != target by {
+              if mid <= k < arr.len() && arr[k] == target {
+                  assert target < arr[mid] <= arr[k];
+                  assert false;
+              }
+          }
+      }
+  }
+
+vc-spec: |-
+  fn find_first_occurrence(arr: &Vec<i32>, target: i32) -> (index: Option<usize>)
+      // pre-conditions-start
+      requires
+          forall|i: int, j: int| 0 <= i < j < arr.len() ==> arr[i] <= arr[j],
+      // pre-conditions-end
+      // post-conditions-start
+      ensures
+          if let Some(idx) = index {
+              &&& 0 <= idx < arr.len()
+              &&& forall|k: int| 0 <= k < idx ==> arr[k] != target
+              &&& arr[idx as int] == target
+          } else {
+              forall|k: int| 0 <= k < arr.len() ==> arr[k] != target
+          },
+      // post-conditions-end
+
+vc-code: |-
+  {
+      let mut left = 0;
+      let mut right = arr.len();
+      
+      /* code modified by LLM (iteration 5): fixed lemma call to use fn instead of lemma */
+      while left < right
+          invariant
+              0 <= left <= right <= arr.len(),
+              forall|k: int| 0 <= k < left ==> arr[k] != target,
+              forall|k: int| right <= k < arr.len() ==> arr[k] != target,
+          decreases right - left,
+      {
+          let mid = left + (right - left) / 2;
+          
+          proof {
+              lemma_binary_search_maintains_invariants(arr, target, left, right, mid);
+          }
+          
+          if arr[mid] == target {
+              right = mid;
+          } else if arr[mid] < target {
+              left = mid + 1;
+          } else {
+              right = mid;
+          }
+      }
+      
+      if left < arr.len() && arr[left] == target {
+          Some(left)
+      } else {
+          None
+      }
+  }
+
+vc-postamble: |-
+  
+  } // verus!
+  
+  fn main() {}
+

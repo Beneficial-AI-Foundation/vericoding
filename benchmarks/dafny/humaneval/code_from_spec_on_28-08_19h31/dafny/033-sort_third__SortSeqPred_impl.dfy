@@ -1,0 +1,84 @@
+method sort_third(a: seq<int>) returns (sorted_even: seq<int>)
+  // pre-conditions-start
+  requires |a| > 0
+  // pre-conditions-end
+  // post-conditions-start
+  ensures |sorted_even| == |a|
+  ensures forall i, j :: 0 <= i < j < |sorted_even| && i % 3 == 0 && j % 3 == 0 ==>
+      sorted_even[i] <= sorted_even[j]
+  ensures forall i :: 0 <= i < |a| && i % 3 != 0 ==> sorted_even[i] == a[i]
+  ensures multiset(a) == multiset(sorted_even)
+  // post-conditions-end
+{
+  assume{:axiom} false;
+}
+
+// <vc-helpers>
+function GetPredForThirds(n: int): seq<bool>
+  requires n >= 0
+  ensures |GetPredForThirds(n)| == n
+  ensures forall i :: 0 <= i < n ==> GetPredForThirds(n)[i] == (i % 3 == 0)
+{
+  if n == 0 then []
+  else GetPredForThirds(n-1) + [((n-1) % 3 == 0)]
+}
+// </vc-helpers>
+
+// <vc-spec>
+method SortSeqPred(s: seq<int>, p: seq<bool>) returns (sorted: seq<int>)
+  // pre-conditions-start
+  requires |s| == |p|
+  // pre-conditions-end
+  // post-conditions-start
+  ensures |sorted| == |s|
+  ensures forall i, j :: 0 <= i < j < |sorted| && p[i] && p[j] ==> sorted[i] <= sorted[j]
+  ensures multiset(s) == multiset(sorted)
+  ensures forall i :: 0 <= i < |s| && !p[i] ==> sorted[i] == s[i]
+  // post-conditions-end
+// </vc-spec>
+// <vc-code>
+{
+  var pred := GetPredForThirds(|s|);
+  var result := s;
+  var thirds := seq(|s|, i => if i < |s| && pred[i] then s[i] else 0);
+  var sorted_thirds := thirds;
+  var i := 0;
+  while i < |s|
+    invariant 0 <= i <= |s|
+    invariant |result| == |s|
+    invariant forall k :: 0 <= k < i && pred[k] ==> result[k] in multiset(s)
+    invariant forall k :: 0 <= k < |s| && !pred[k] ==> result[k] == s[k]
+  {
+    if pred[i] {
+      sorted_thirds := sorted_thirds[i := s[i]];
+    }
+    i := i + 1;
+  }
+  var sorted_values := sorted_thirds;
+  i := 0;
+  while i < |s|
+    invariant 0 <= i <= |s|
+    invariant forall k, l :: 0 <= k < l < |s| && k < i && l < i && pred[k] && pred[l] ==> sorted_values[k] <= sorted_values[l]
+    invariant forall k :: 0 <= k < i ==> (!pred[k] ==> sorted_values[k] == 0)
+  {
+    if pred[i] {
+      var j := i + 3;
+      while j < |s|
+        invariant i <= j <= |s|
+        invariant forall k, l :: 0 <= k < l < |s| && k < i && l < i && pred[k] && pred[l] ==> sorted_values[k] <= sorted_values[l]
+        invariant forall k :: i <= k < j && pred[k] ==> sorted_values[i] <= sorted_values[k]
+        invariant forall k :: 0 <= k < |s| ==> (!pred[k] ==> sorted_values[k] == 0)
+      {
+        if pred[j] && sorted_values[i] > sorted_values[j] {
+          var temp := sorted_values[i];
+          sorted_values := sorted_values[i := sorted_values[j]][j := temp];
+        }
+        j := j + 3;
+      }
+    }
+    i := i + 1;
+  }
+  result := seq(|s|, i => if i < |s| && pred[i] then sorted_values[i] else s[i]);
+  return result;
+}
+// </vc-code>

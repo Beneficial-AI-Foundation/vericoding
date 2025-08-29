@@ -1,0 +1,31 @@
+use vstd::math::abs;
+use vstd::prelude::*;
+use vstd::slice::*;
+
+verus! {
+
+/*
+function_signature: "def has_close_elements(numbers: List[float], threshold: float) -> bool"
+docstring: Check if in given list of numbers, are any two numbers closer to each other than given threshold.
+test_cases:
+- input: [[1.0, 2.0, 3.0], 0.5]
+expected_output: False
+- input: [[1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3]
+expected_output: True
+*/
+
+fn has_close_elements(numbers: &[i64], threshold: i64) -> (result: bool)
+    // post-conditions-start
+    ensures
+        result == exists|i: int, j: int|
+            0 <= i < j < numbers@.len() && abs(numbers[i] - numbers[j]) < threshold,
+    // post-conditions-end
+{
+    // impl-start
+    assume(false);
+    false
+    // impl-end
+}
+
+}
+fn main() {}

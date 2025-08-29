@@ -1,0 +1,116 @@
+function is_palindrome(n: nat) : bool {
+  var s := natToString(n);
+  forall i | 0 <= i < |s| :: s[i] == s[|s|-1-i]
+}
+
+// <vc-helpers>
+function count_even_palindromes(n: nat): nat
+  decreases n
+{
+  if n == 0 then (if is_palindrome(0) then 1 else 0)
+  else if n % 2 == 0 && is_palindrome(n) then count_even_palindromes(n - 1) + 1
+  else count_even_palindromes(n - 1)
+}
+
+function count_odd_palindromes(n: nat): nat
+  decreases n
+{
+  if n == 0 then 0
+  else if n % 2 == 1 && is_palindrome(n) then count_odd_palindromes(n - 1) + 1
+  else count_odd_palindromes(n - 1)
+}
+
+lemma EvenOddPalindromeCorrectness(n: nat)
+  ensures count_even_palindromes(n) == |set i | 0 <= i <= n && i % 2 == 0 && is_palindrome(i)|
+  ensures count_odd_palindromes(n) == |set i | 0 <= i <= n && i % 2 == 1 && is_palindrome(i)|
+  decreases n
+{
+  if n == 0 {
+    assert count_even_palindromes(0) == (if is_palindrome(0) then 1 else 0);
+    assert |set i | 0 <= i <= 0 && i % 2 == 0 && is_palindrome(i)| == (if is_palindrome(0) then 1 else 0);
+    assert count_odd_palindromes(0) == 0;
+    assert |set i | 0 <= i <= 0 && i % 2 == 1 && is_palindrome(i)| == 0;
+  } else {
+    EvenOddPalindromeCorrectness(n - 1);
+    if n % 2 == 0 {
+      if is_palindrome(n) {
+        var S1 := set i | 0 <= i <= n - 1 && i % 2 == 0 && is_palindrome(i);
+        var S2 := set i | 0 <= i <= n && i % 2 == 0 && is_palindrome(i);
+        assert S2 == S1 + {n};
+        assert |S2| == |S1| + 1;
+        assert count_even_palindromes(n) == count_even_palindromes(n - 1) + 1;
+      } else {
+        var S1 := set i | 0 <= i <= n - 1 && i % 2 == 0 && is_palindrome(i);
+        var S2 := set i | 0 <= i <= n && i % 2 == 0 && is_palindrome(i);
+        assert S2 == S1;
+        assert |S2| == |S1|;
+        assert count_even_palindromes(n) == count_even_palindromes(n - 1);
+      }
+      var S3 := set i | 0 <= i <= n - 1 && i % 2 == 1 && is_palindrome(i);
+      var S4 := set i | 0 <= i <= n && i % 2 == 1 && is_palindrome(i);
+      assert S4 == S3;
+      assert |S4| == |S3|;
+      assert count_odd_palindromes(n) == count_odd_palindromes(n - 1);
+    } else {
+      if is_palindrome(n) {
+        var S1 := set i | 0 <= i <= n - 1 && i % 2 == 1 && is_palindrome(i);
+        var S2 := set i | 0 <= i <= n && i % 2 == 1 && is_palindrome(i);
+        assert S2 == S1 + {n};
+        assert |S2| == |S1| + 1;
+        assert count_odd_palindromes(n) == count_odd_palindromes(n - 1) + 1;
+      } else {
+        var S1 := set i | 0 <= i <= n - 1 && i % 2 == 1 && is_palindrome(i);
+        var S2 := set i | 0 <= i <= n && i % 2 == 1 && is_palindrome(i);
+        assert S2 == S1;
+        assert |S2| == |S1|;
+        assert count_odd_palindromes(n) == count_odd_palindromes(n - 1);
+      }
+      var S3 := set i | 0 <= i <= n - 1 && i % 2 == 0 && is_palindrome(i);
+      var S4 := set i | 0 <= i <= n && i % 2 == 0 && is_palindrome(i);
+      assert S4 == S3;
+      assert |S4| == |S3|;
+      assert count_even_palindromes(n) == count_even_palindromes(n - 1);
+    }
+  }
+}
+// </vc-helpers>
+
+// <vc-spec>
+method even_odd_palindrome(n: nat) returns (even: nat, odd: nat)
+  // post-conditions-start
+  ensures even == |set i | 0 <= i <= n && i % 2 == 0 && is_palindrome(i)|
+  ensures odd == |set i | 0 <= i <= n && i % 2 == 1 && is_palindrome(i)|
+// </vc-spec>
+// <vc-code>
+method even_odd_palindrome(n: nat) returns (even: nat, odd: nat)
+  ensures even == |set i | 0 <= i <= n && i % 2 == 0 && is_palindrome(i)|
+  ensures odd == |set i | 0 <= i <= n && i % 2 == 1 && is_palindrome(i)|
+{
+  EvenOddPalindromeCorrectness(n);
+  even := count_even_palindromes(n);
+  odd := count_odd_palindromes(n);
+}
+// </vc-code>
+
+type stringNat = s: string |
+|s| > 0 && (|s| > 1 ==> s[0] != '0') &&
+forall i | 0 <= i < |s| :: s[i] in "0123456789"
+witness "1"
+function natToString(n: nat): stringNat {
+match n
+case 0 => "0" case 1 => "1" case 2 => "2" case 3 => "3" case 4 => "4"
+case 5 => "5" case 6 => "6" case 7 => "7" case 8 => "8" case 9 => "9"
+case _ => natToString(n / 10) + natToString(n % 10)
+}
+// pure-end
+function stringToNat(s: stringNat): nat
+decreases |s|
+{
+if |s| == 1 then
+    match s[0]
+    case '0' => 0 case '1' => 1 case '2' => 2 case '3' => 3 case '4' => 4
+    case '5' => 5 case '6' => 6 case '7' => 7 case '8' => 8 case '9' => 9
+else
+    stringToNat(s[..|s|-1])*10 + stringToNat(s[|s|-1..|s|])
+}
+// pure-end

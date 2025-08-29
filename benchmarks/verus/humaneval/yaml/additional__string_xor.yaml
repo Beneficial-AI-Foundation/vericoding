@@ -1,14 +1,14 @@
-vc-description: |-
-  /--
-  function_signature: "fn string_xor(a: &[char], b: &[char]) -> (result: Vec<char>)"
-  docstring: Implement string xor functionality.
-  -/
 vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
 
 vc-helpers: |-
+
+
+vc-description: |-
+  function_signature: "fn string_xor(a: &[char], b: &[char]) -> (result: Vec<char>)"
+  docstring: Implement string xor functionality.
 
 vc-spec: |-
   #[verifier::loop_isolation(false)]

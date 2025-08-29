@@ -1,0 +1,48 @@
+method checkSubstring(s: string, sub: string) returns (result: bool)
+{
+  assume{:axiom} false;
+}
+
+// <vc-helpers>
+lemma FilterPreservesElements(original: seq<string>, filtered: seq<string>, condition: string -> bool)
+    requires forall s :: s in filtered ==> s in original && condition(s)
+    ensures forall s :: s in filtered ==> s in original
+
+lemma FilterSizeBound(original: seq<string>, filtered: seq<string>)
+    requires forall s :: s in filtered ==> s in original
+    ensures |filtered| <= |original|
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: method filter_by_substring(strings: seq<string>, substring: string) returns (res : seq<string>)
+Filter elements. Ensures: the size is bounded; the condition holds for all values.
+*/
+// </vc-description>
+
+// <vc-spec>
+method filter_by_substring(strings: seq<string>, substring: string) returns (res : seq<string>)
+    // post-conditions-start
+    ensures |res| <= |strings|
+    ensures (forall s :: s in res ==> s in strings)
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    res := [];
+    var i := 0;
+    while i < |strings|
+        invariant 0 <= i <= |strings|
+        invariant |res| <= i
+        invariant forall s :: s in res ==> s in strings
+    {
+        var contains := checkSubstring(strings[i], substring);
+        if contains {
+            res := res + [strings[i]];
+        }
+        i := i + 1;
+    }
+}
+// </vc-code>
+

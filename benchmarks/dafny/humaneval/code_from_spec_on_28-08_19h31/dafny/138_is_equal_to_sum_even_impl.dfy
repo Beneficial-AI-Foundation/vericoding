@@ -1,0 +1,30 @@
+// <vc-helpers>
+lemma SumOfEvensImpliesEven(n: int)
+  ensures (n % 2 == 0) ==> (n >= 8 ==> exists k1, k2, k3, k4 :: k1 % 2 == 0 && k2 % 2 == 0 && k3 % 2 == 0 && k4 % 2 == 0 && k1 + k2 + k3 + k4 == n)
+{
+  if n % 2 == 0 && n >= 8 {
+    var k1 := 2;
+    var k2 := 2;
+    var k3 := 2;
+    var k4 := n - 6;
+    assert k1 % 2 == 0 && k2 % 2 == 0 && k3 % 2 == 0 && k4 % 2 == 0;
+    assert k1 + k2 + k3 + k4 == n;
+  }
+}
+// </vc-helpers>
+
+// <vc-spec>
+method is_equal_to_sum_even(n: int) returns (b : bool)
+  // post-conditions-start
+  ensures b <==> n % 2 == 0 && n >= 8 // 2 + 2 + 2 + (n - 6)
+  // post-conditions-end
+// </vc-spec>
+// <vc-code>
+{
+  if n % 2 == 0 && n >= 8 {
+    return true;
+  } else {
+    return false;
+  }
+}
+// </vc-code>

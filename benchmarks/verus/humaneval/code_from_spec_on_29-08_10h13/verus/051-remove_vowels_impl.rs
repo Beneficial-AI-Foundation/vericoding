@@ -1,0 +1,103 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn is_vowel_spec(c: char) -> (result:bool) {
+    c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'A' || c == 'E' || c == 'I'
+        || c == 'O' || c == 'U'
+}
+// pure-end
+
+// <vc-helpers>
+fn is_vowel(c: char) -> (result: bool)
+    ensures result == is_vowel_spec(c)
+{
+    c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'A' || c == 'E' || c == 'I'
+        || c == 'O' || c == 'U'
+}
+
+spec fn filter_vowels_spec(s: Seq<char>) -> Seq<char>
+    decreases s.len()
+{
+    if s.len() == 0 {
+        seq![]
+    } else {
+        let rest = filter_vowels_spec(s.subrange(1, s.len() as int));
+        if is_vowel_spec(s[0]) {
+            rest
+        } else {
+            seq![s[0]] + rest
+        }
+    }
+}
+
+proof fn filter_vowels_lemma(s: Seq<char>)
+    ensures forall|i: int| 0 <= i < filter_vowels_spec(s).len() ==> !is_vowel_spec(filter_vowels_spec(s)[i])
+    decreases s.len()
+{
+    if s.len() == 0 {
+    } else {
+        filter_vowels_lemma(s.subrange(1, s.len() as int));
+        let rest = filter_vowels_spec(s.subrange(1, s.len() as int));
+        if is_vowel_spec(s[0]) {
+        } else {
+            assert(filter_vowels_spec(s) == seq![s[0]] + rest);
+        }
+    }
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: "def remove_vowels(string: str) -> string"
+docstring: |
+remove_vowels is a function that takes string and returns string without vowels.
+test_cases:
+- input: ""
+expected_output: ""
+- input: "abcdef\nghijklm"
+expected_output: "bcdf\nghjklm"
+- input: "abcdef"
+expected_output: "bcdf"
+- input: "aaaaa"
+expected_output: ""
+- input: "aaBAA"
+expected_output: "B"
+*/
+// </vc-description>
+
+// <vc-spec>
+fn remove_vowels(string: Vec<char>) -> (result: Vec<char>)
+    ensures result@ == filter_vowels_spec(string@),
+    ensures forall|i: int| 0 <= i < result.len() ==> !is_vowel_spec(result@[i])
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut result = Vec::new();
+    let mut i = 0;
+    
+    while i < string.len()
+        invariant 
+            0 <= i <= string.len(),
+            result@ == filter_vowels_spec(string@.subrange(0, i as int)),
+            forall|j: int| 0 <= j < result.len() ==> !is_vowel_spec(result@[j])
+    {
+        let c = string[i];
+        if !is_vowel(c) {
+            result.push(c);
+        }
+        i = i + 1;
+    }
+    
+    proof {
+        assert(string@.subrange(0, i as int) == string@);
+        filter_vowels_lemma(string@);
+    }
+    
+    result
+}
+// </vc-code>
+
+} // verus!
+fn main() {}

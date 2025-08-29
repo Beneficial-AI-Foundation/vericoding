@@ -1,0 +1,35 @@
+vc-preamble: |-
+
+
+vc-helpers: |-
+
+
+vc-description: |-
+  function_signature: def common(l1: List[Int], l2: List[Int]) -> List[Int]
+  Return sorted unique common elements for two lists.
+
+vc-spec: |-
+  method common(l1 : seq<int>, l2 : seq<int>) returns (c : set<int>)
+     // post-conditions-start
+      ensures forall i :: i in c ==> i in l1 && i in l2
+      ensures forall i :: i in l1 && i in l2 ==> i in c
+      // post-conditions-end
+
+vc-code: |-
+  {
+    c := {};
+    
+    for i := 0 to |l1|
+      invariant c <= set x | x in l1[..i] && x in l2
+      invariant forall x :: x in c ==> x in l1[..i] && x in l2
+      invariant forall x :: x in l1[..i] && x in l2 ==> x in c
+    {
+      if l1[i] in l2 {
+        c := c + {l1[i]};
+      }
+    }
+  }
+
+vc-postamble: |-
+
+

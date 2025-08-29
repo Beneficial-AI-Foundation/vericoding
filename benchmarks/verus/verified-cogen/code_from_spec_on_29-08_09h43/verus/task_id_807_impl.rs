@@ -1,0 +1,103 @@
+use vstd::prelude::*;
+
+
+verus! {
+
+spec fn check_find_first_odd(arr: &Vec<u32>, index: Option<usize>) -> (result: bool)
+{
+    if let Some(idx) = index {
+        &&& arr@.take(idx as int) == arr@.take(idx as int).filter(|x: u32| x % 2 == 0)
+        &&& arr[idx as int] % 2 != 0
+    } else {
+        forall|k: int| 0 <= k < arr.len() ==> (arr[k] % 2 == 0)
+    }
+}
+// pure-end
+
+// <vc-helpers>
+proof fn lemma_take_filter_even(arr: &Vec<u32>, i: usize)
+    requires 
+        i < arr.len(),
+        forall|k: int| 0 <= k < i ==> arr[k] % 2 == 0
+    ensures
+        arr@.take(i as int) == arr@.take(i as int).filter(|x: u32| x % 2 == 0)
+{
+    let take_seq = arr@.take(i as int);
+    let filtered_seq = take_seq.filter(|x: u32| x % 2 == 0);
+    
+    /* code modified by LLM (iteration 5): fixed assert syntax with by clause */
+    assert forall|k: int| 0 <= k < i implies take_seq[k] % 2 == 0 by {
+        assert(take_seq[k] == arr@[k]);
+        assert(arr@[k] % 2 == 0);
+    };
+    
+    assert(take_seq.len() == i);
+    assert(filtered_seq.len() == i) by {
+        assert forall|k: int| 0 <= k < i implies take_seq[k] % 2 == 0;
+    };
+    
+    assert forall|k: int| 0 <= k < take_seq.len() implies take_seq[k] == filtered_seq[k] by {
+        assert(take_seq[k] % 2 == 0);
+        assert(filtered_seq[k] == take_seq[k]);
+    };
+    
+    assert(take_seq =~= filtered_seq);
+}
+
+proof fn lemma_all_even_up_to(arr: &Vec<u32>, i: usize, j: usize)
+    requires 
+        i <= j,
+        j <= arr.len(),
+        forall|k: int| 0 <= k < i ==> arr[k] % 2 == 0,
+        arr[i as int] % 2 == 0
+    ensures
+        forall|k: int| 0 <= k < (i + 1) as int ==> arr[k] % 2 == 0
+{
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+
+*/
+// </vc-description>
+
+// <vc-spec>
+fn find_first_odd(arr: &Vec<u32>) -> (index: Option<usize>)
+    // post-conditions-start
+    ensures check_find_first_odd(arr, index),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut i: usize = 0;
+    
+    /* code modified by LLM (iteration 3): added decreases clause for termination */
+    while i < arr.len()
+        invariant 
+            0 <= i <= arr.len(),
+            forall|k: int| 0 <= k < i ==> arr[k] % 2 == 0
+        decreases arr.len() - i
+    {
+        if arr[i] % 2 != 0 {
+            proof {
+                lemma_take_filter_even(arr, i);
+            }
+            return Some(i);
+        }
+        
+        proof {
+            lemma_all_even_up_to(arr, i, arr.len());
+        }
+        
+        i += 1;
+    }
+    
+    None
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

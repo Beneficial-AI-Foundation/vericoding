@@ -1,0 +1,53 @@
+use vstd::prelude::*;
+
+verus! {
+
+/*
+function_signature: "def pluck(numbers: List[Int]) -> List[Int]"
+docstring: |
+Given an array representing a branch of a tree that has non-negative integer nodes
+your task is to pluck one of the nodes and return it.
+The plucked node should be the node with the smallest even value.
+If multiple nodes with the same smallest even value are found return the node that has smallest index.
+The plucked node should be returned in a list, [ smallest_value, its index ],
+If there are no even values or the given array is empty, return [].
+test_cases:
+- input: [4, 2, 3]
+expected_output: [2, 1]
+- input: [1, 2, 3]
+expected_output: [2, 1]
+- input: []
+expected_output: []
+- input: [5, 0, 3, 0, 4, 2]
+expected_output: [0, 1]
+*/
+
+fn pluck_smallest_even(nodes: &Vec<u32>) -> (result: Vec<u32>)
+    // pre-conditions-start
+    requires
+        nodes@.len() <= u32::MAX,
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        result@.len() == 0 || result@.len() == 2,
+        result@.len() == 0 ==> forall|i: int| 0 <= i < nodes@.len() ==> nodes@[i] % 2 != 0,
+        result@.len() == 2 ==> {
+            let node = result@[0];
+            let index = result@[1];
+            &&& 0 <= index < nodes@.len()
+            &&& nodes@[index as int] == node
+            &&& node % 2 == 0
+            &&& forall|i: int|
+                0 <= i < nodes@.len() && nodes@[i] % 2 == 0 ==> node <= nodes@[i] && forall|i: int|
+                    0 <= i < result@[1] ==> nodes@[i] % 2 != 0 || nodes@[i] > node
+        },
+    // post-conditions-end
+{
+    // impl-start
+    assume(false);
+    vec![]
+    // impl-end
+}
+
+}
+fn main() {}

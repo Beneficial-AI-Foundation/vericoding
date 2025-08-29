@@ -1,8 +1,0 @@
-vc-preamble: "predicate InsertionSorted(Array: array<int>, left: int, right: int)  \n  requires 0 <= left <= right <= Array.Length       \n  reads Array       \n{           \n  forall i,j :: left <= i < j < right ==> Array[i] <= Array[j]\n}"
-vc-helpers: ''
-vc-spec: "method sorting(Array: array<int>)\n  requires Array.Length > 1 \n  ensures InsertionSorted(Array, 0, Array.Length) \n  modifies Array"
-vc-code: |-
-  {
-    assume false;
-  }
-vc-postamble: ''

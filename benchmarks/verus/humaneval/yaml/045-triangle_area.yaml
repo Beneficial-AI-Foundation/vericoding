@@ -1,21 +1,20 @@
-vc-description: |-
-  /--
-  function_signature: "def triangle_area(a: float, h: float) -> float"
-  docstring: |
-      Given length of a side and high return area for a triangle.
-  test_cases:
-    - input: (5, 3)
-      expected_output: 7.5
-    - input: (8, 2)
-      expected_output: 8.0
-  -/
-
 vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
 
 vc-helpers: |-
+
+
+vc-description: |-
+  function_signature: "def triangle_area(a: float, h: float) -> float"
+  docstring: |
+  Given length of a side and high return area for a triangle.
+  test_cases:
+  - input: (5, 3)
+  expected_output: 7.5
+  - input: (8, 2)
+  expected_output: 8.0
 
 vc-spec: |-
   fn triangle_area(a: u64, h: u64) -> (area: u64)

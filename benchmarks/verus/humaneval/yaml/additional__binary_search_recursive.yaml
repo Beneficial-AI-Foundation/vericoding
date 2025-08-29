@@ -1,14 +1,14 @@
-vc-description: |-
-  /--
-  function_signature: "fn binary_search_recursive(v: &[i32], elem: i32, c: isize, f: isize) -> (p: isize)"
-  docstring: Perform binary search on a sorted array to find the position where an element should be inserted.
-  -/
 vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
 
 vc-helpers: |-
+
+
+vc-description: |-
+  function_signature: "fn binary_search_recursive(v: &[i32], elem: i32, c: isize, f: isize) -> (p: isize)"
+  docstring: Perform binary search on a sorted array to find the position where an element should be inserted.
 
 vc-spec: |-
   fn binary_search_recursive(v: &[i32], elem: i32, c: isize, f: isize) -> (p: isize)

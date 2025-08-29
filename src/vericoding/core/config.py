@@ -179,33 +179,9 @@ def setup_configuration(args) -> ProcessingConfig:
         base_dir = Path(args.output_folder).resolve()
         base_dir.mkdir(parents=True, exist_ok=True)
     else:
-        # Extract the relevant part of the input path for the output hierarchy
+        # Create output directory as sibling to the input specs folder
         input_path = Path(files_dir).resolve()
-
-        # Find the src directory or use current working directory as base
-        current_path = input_path
-        base_dir = None
-        depth = 0
-        while (
-            current_path.parent != current_path
-            and depth < args.max_directory_traversal_depth
-        ):
-            if current_path.name == "src":
-                base_dir = current_path
-                break
-            current_path = current_path.parent
-            depth += 1
-
-        if base_dir is None:
-            # If no 'src' directory found, use the directory containing the input as base
-            if input_path.parent.name == "src":
-                base_dir = input_path.parent
-            else:
-                # Fallback: find a reasonable base directory
-                working_dir = Path.cwd()
-                base_dir = (
-                    working_dir / "src" if (working_dir / "src").exists() else working_dir
-                )
+        base_dir = input_path.parent
 
     
     # Create output directory structure

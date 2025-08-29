@@ -1,8 +1,0 @@
-vc-preamble: ''
-vc-helpers: ''
-vc-spec: "method AbsIt(s: array<int>) \nmodifies s\nensures forall i :: 0 <= i < s.Length ==> if old(s[i]) < 0 then s[i] == -old(s[i]) else s[i] == old(s[i])\nensures s.Length == old(s).Length"
-vc-code: |-
-  {
-    assume false;
-  }
-vc-postamble: ''

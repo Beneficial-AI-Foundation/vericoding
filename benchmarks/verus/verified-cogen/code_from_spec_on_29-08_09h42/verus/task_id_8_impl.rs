@@ -1,0 +1,54 @@
+use vstd::prelude::*;
+
+
+verus! {
+
+// <vc-helpers>
+
+// </vc-helpers>
+
+// <vc-spec>
+fn square_nums(nums: &Vec<i32>) -> (squared: Vec<i32>)
+    // pre-conditions-start
+    requires
+        forall|k: int|
+            0 <= k < nums.len() ==> (0 <= #[trigger] nums[k] * #[trigger] nums[k] < i32::MAX),
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        nums.len() == squared.len(),
+        forall|k: int| 0 <= k < nums.len() ==> (#[trigger] squared[k] == nums[k] * nums[k]),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut squared = Vec::new();
+    let mut i: usize = 0;
+    /* code modified by LLM (iteration 5): added overflow check and fixed proof block indexing */
+    while i < nums.len()
+        invariant
+            i <= nums.len(),
+            squared.len() == i,
+            forall|k: int| 0 <= k < i ==> squared[k] == nums[k] * nums[k],
+        decreases nums.len() - i,
+    {
+        proof {
+            assert(0 <= nums[i as int] * nums[i as int] < i32::MAX);
+        }
+        let square = nums[i] * nums[i];
+        squared.push(square);
+        
+        proof {
+            assert(squared[i as int] == nums[i as int] * nums[i as int]);
+        }
+        
+        i += 1;
+    }
+    squared
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

@@ -1,0 +1,73 @@
+vc-preamble: |-
+  method solve(s: string) returns (t: string)
+    // post-conditions-start 
+    ensures |s| == |t|
+    ensures (forall i :: 0 <= i < |s| ==> !is_alpha(s[i])) ==> (forall i :: 0 <= i < |s| ==> s[i] == t[|t| - 1 - i])
+    ensures (exists i :: 0 <= i < |s| && is_alpha(s[i])) ==> 
+      (forall i :: 0 <= i < |t| ==> if is_alpha(s[i]) then t[i] == flip_case(s[i]) else t[i] == s[i])
+    // post-conditions-end
+  {
+    assume{:axiom} false;
+  }
+
+vc-helpers: |-
+  // Helper lemma to assist in proving properties about string reversal
+  lemma ReversePreservesLength(s: string)
+    ensures |s| == |ReverseString(s)|
+  {
+    // Trivial as ReverseString constructs a string of same length
+  }
+  
+  // Helper function to reverse a string
+  function ReverseString(s: string): string
+    ensures |s| == |ReverseString(s)|
+  {
+    var rev := "";
+    var i := 0;
+    while i < |s|
+      invariant 0 <= i <= |s|
+      invariant |rev| == i
+    {
+      rev := rev + [s[|s| - 1 - i]];
+      i := i + 1;
+    }
+    rev
+  }
+
+vc-description: |-
+  function_signature: method reverse(s: string) returns (rev: string)
+  Reverse order. Ensures: returns the correct size/count; the condition holds for all values.
+
+vc-spec: |-
+  method reverse(s: string) returns (rev: string)
+    ensures |s| == |rev|
+    ensures forall i :: 0 <= i < |s| ==> rev[i] == s[|s| - 1 - i]
+
+vc-code: |-
+  {
+    var result := "";
+    var i := |s| - 1;
+    while i >= 0
+      invariant -1 <= i < |s|
+      invariant |result| == |s| - 1 - i
+      invariant forall k :: 0 <= k < |result| ==> result[k] == s[|s| - 1 - k]
+    {
+      result := result + [s[i]];
+      i := i - 1;
+    }
+    rev := result;
+  }
+
+vc-postamble: |-
+  function is_alpha(c: char) : bool {
+    'a' <= c <= 'z' || 'A' <= c <= 'Z'
+  }
+  // pure-end
+  function flip_case(c: char): (flipped: char)
+    requires is_alpha(c)
+    ensures is_alpha(flipped)
+  {
+    if 'a' <= c <= 'z' then c - 'a' + 'A' else c - 'A' + 'a'
+  }
+  // pure-end
+

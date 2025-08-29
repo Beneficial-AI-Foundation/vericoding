@@ -1,0 +1,90 @@
+vc-preamble: |-
+  function dist(a: real, b: real) : (d : real)
+      ensures d >= 0.0
+      ensures (d == 0.0) <==> a == b
+  {
+      if a < b then b - a else a - b
+  }
+  function des(s: seq<real>, a: int, b: int) : bool {
+      // distinct elements
+      0 <= a < |s| && 0 <= b < |s| && a != b
+  }
+
+vc-helpers: |-
+  function min_dist(s: seq<real>, i: int, j: int): real
+      requires 0 <= i < |s|
+      requires 0 <= j < |s|
+      requires i != j
+      ensures min_dist(s, i, j) >= 0.0
+  {
+      dist(s[i], s[j])
+  }
+  
+  lemma dist_symmetry(a: real, b: real)
+      ensures dist(a, b) == dist(b, a)
+  {
+      if a < b {
+          assert dist(a, b) == b - a;
+          assert dist(b, a) == b - a;
+      } else {
+          assert dist(a, b) == a - b;
+          assert dist(b, a) == a - b;
+      }
+  }
+
+vc-description: |-
+  function_signature: def find_closest_elements(numbers: List[float]) -> Tuple[float, float]
+  From a supplied list of numbers (of length at least two) select and return two that are the closest to each other and return them in order (smaller number, larger number).
+
+vc-spec: |-
+  method find_closest_elements(s: seq<real>) returns (l : real, h : real)
+      // pre-conditions-start
+      requires |s| >= 2
+      // pre-conditions-end
+      // post-conditions-start
+      ensures exists a, b : int :: des(s, a, b) && l == s[a] && h == s[b]
+      ensures forall a, b : int :: des(s, a, b) ==> dist(l, h) <= dist(s[a], s[b])
+      ensures l <= h
+      // post-conditions-end
+
+vc-code: |-
+  {
+      var min_d := dist(s[0], s[1]);
+      var min_i, min_j := 0, 1;
+      var i := 0;
+      while i < |s|
+          invariant 0 <= i <= |s|
+          invariant 0 <= min_i < |s| && 0 <= min_j < |s| && min_i != min_j
+          invariant min_d == dist(s[min_i], s[min_j])
+          invariant forall a, b: int :: 0 <= a < i && 0 <= b < |s| && a != b ==> min_d <= dist(s[a], s[b])
+      {
+          var j := i + 1;
+          while j < |s|
+              invariant 0 <= i < |s| && i < j <= |s|
+              invariant 0 <= min_i < |s| && 0 <= min_j < |s| && min_i != min_j
+              invariant min_d == dist(s[min_i], s[min_j])
+              invariant forall a, b: int :: 0 <= a < i && 0 <= b < |s| && a != b ==> min_d <= dist(s[a], s[b])
+              invariant forall b: int :: i < b < j ==> min_d <= dist(s[i], s[b])
+          {
+              var current_d := dist(s[i], s[j]);
+              if current_d < min_d {
+                  min_d := current_d;
+                  min_i := i;
+                  min_j := j;
+              }
+              j := j + 1;
+          }
+          i := i + 1;
+      }
+      if s[min_i] <= s[min_j] {
+          l := s[min_i];
+          h := s[min_j];
+      } else {
+          l := s[min_j];
+          h := s[min_i];
+      }
+  }
+
+vc-postamble: |-
+
+

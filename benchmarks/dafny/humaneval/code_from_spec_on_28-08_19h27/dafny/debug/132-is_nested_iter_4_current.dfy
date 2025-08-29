@@ -1,0 +1,174 @@
+// <vc-helpers>
+predicate ValidParentheses(s: string)
+{
+  ValidParenthesesHelper(s, 0)
+}
+
+predicate ValidParenthesesHelper(s: string, balance: int)
+  decreases |s|
+{
+  if |s| == 0 then balance == 0
+  else if balance < 0 then false
+  else if s[0] == '(' then ValidParenthesesHelper(s[1..], balance + 1)
+  else if s[0] == ')' then ValidParenthesesHelper(s[1..], balance - 1)
+  else ValidParenthesesHelper(s[1..], balance)
+}
+
+predicate HasNestedParentheses(s: string)
+{
+  exists i, j :: 0 <= i < j < |s| && s[i] == '(' && s[j] == ')' &&
+    exists k, l :: i < k < l < j && s[k] == '(' && s[l] == ')'
+}
+
+predicate OnlyParentheses(s: string)
+{
+  forall i :: 0 <= i < |s| ==> s[i] == '(' || s[i] == ')'
+}
+
+lemma {:axiom} MaxDepthImpliesNested(s: string, maxDepth: int)
+  requires OnlyParentheses(s)
+  requires maxDepth >= 2
+  requires ValidParentheses(s)
+  requires MaxDepthReached(s, maxDepth)
+  ensures HasNestedParentheses(s)
+
+predicate MaxDepthReached(s: string, maxDepth: int)
+{
+  exists pos :: 0 <= pos <= |s| && BalanceAtPosition(s, pos) == maxDepth
+}
+
+function BalanceAtPosition(s: string, pos: int): int
+  requires 0 <= pos <= |s|
+{
+  if pos == 0 then 0
+  else if s[pos-1] == '(' then BalanceAtPosition(s, pos-1) + 1
+  else if s[pos-1] == ')' then BalanceAtPosition(s, pos-1) - 1
+  else BalanceAtPosition(s, pos-1)
+}
+
+lemma {:axiom} NestedImpliesMaxDepth(s: string)
+  requires OnlyParentheses(s)
+  requires HasNestedParentheses(s)
+  ensures exists maxDepth :: maxDepth >= 2 && MaxDepthReached(s, maxDepth)
+
+function MaxBalanceUpTo(s: string, pos: int): int
+  requires 0 <= pos <= |s|
+{
+  if pos == 0 then 0
+  else
+    var prevMax := MaxBalanceUpTo(s, pos-1);
+    var currentBalance := BalanceAtPosition(s, pos);
+    if currentBalance > prevMax then currentBalance else prevMax
+}
+
+lemma MaxBalanceImpliesMaxDepth(s: string, maxDepth: int)
+  requires OnlyParentheses(s)
+  requires maxDepth >= 2
+  requires maxDepth == MaxBalanceUpTo(s, |s|)
+  requires forall j :: 0 <= j <= |s| ==> BalanceAtPosition(s, j) >= 0
+  ensures MaxDepthReached(s, maxDepth)
+{
+  MaxBalanceExistsLemma(s, |s|, maxDepth);
+}
+
+lemma MaxBalanceExistsLemma(s: string, pos: int, maxDepth: int)
+  requires 0 <= pos <= |s|
+  requires maxDepth == MaxBalanceUpTo(s, pos)
+  requires maxDepth >= 1
+  ensures exists j :: 0 <= j <= pos && BalanceAtPosition(s, j) == maxDepth
+  decreases pos
+{
+  if pos == 0 {
+    assert BalanceAtPosition(s, 0) == 0;
+    assert maxDepth == 0;
+  } else {
+    var prevMax := MaxBalanceUpTo(s, pos-1);
+    var currentBalance := BalanceAtPosition(s, pos);
+    if currentBalance > prevMax {
+      assert maxDepth == currentBalance;
+      assert BalanceAtPosition(s, pos) == maxDepth;
+    } else {
+      assert maxDepth == prevMax;
+      if prevMax >= 1 {
+        MaxBalanceExistsLemma(s, pos-1, prevMax);
+      }
+    }
+  }
+}
+
+lemma ValidParenthesesEquivalence(s: string)
+  requires OnlyParentheses(s)
+  requires forall j :: 0 <= j <= |s| ==> BalanceAtPosition(s, j) >= 0
+  requires BalanceAtPosition(s, |s|) == 0
+  ensures ValidParentheses(s)
+
+lemma InvalidParenthesesCases(s: string)
+  requires OnlyParentheses(s)
+  requires |s| < 4 || exists j :: 0 <= j <= |s| && BalanceAtPosition(s, j) < 0 || BalanceAtPosition(s, |s|) != 0
+  ensures !ValidParentheses(s) || !HasNestedParentheses(s)
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: def is_nested(string: str) -> Bool
+Create a function that takes a string as input which contains only parentheses. The function should return True if and only if there is a valid subsequence of parentheses where at least one parenthesis in the subsequence is nested.
+*/
+// </vc-description>
+
+// <vc-spec>
+method IsNested(s: string) returns (result: bool)
+  requires OnlyParentheses(s)
+  ensures result <==> (ValidParentheses(s) && HasNestedParentheses(s))
+// </vc-spec>
+// <vc-code>
+{
+  if |s| < 4 {
+    InvalidParenthesesCases(s);
+    return false;
+  }
+  
+  var balance := 0;
+  var maxDepth := 0;
+  var i := 0;
+  var validSoFar := true;
+  
+  while i < |s|
+    invariant 0 <= i <= |s|
+    invariant balance >= 0
+    invariant maxDepth >= 0
+    invariant balance == BalanceAtPosition(s, i)
+    invariant validSoFar <==> (forall j :: 0 <= j <= i ==> BalanceAtPosition(s, j) >= 0)
+    invariant maxDepth == MaxBalanceUpTo(s, i)
+  {
+    if s[i] == '(' {
+      balance := balance + 1;
+      if balance > maxDepth {
+        maxDepth := balance;
+      }
+    } else if s[i] == ')' {
+      if balance == 0 {
+        validSoFar := false;
+        InvalidParenthesesCases(s);
+        return false;
+      }
+      balance := balance - 1;
+    }
+    i := i + 1;
+  }
+  
+  if balance != 0 {
+    InvalidParenthesesCases(s);
+    return false;
+  }
+  
+  if maxDepth >= 2 {
+    ValidParenthesesEquivalence(s);
+    MaxBalanceImpliesMaxDepth(s, maxDepth);
+    MaxDepthImpliesNested(s, maxDepth);
+    return true;
+  } else {
+    InvalidParenthesesCases(s);
+    return false;
+  }
+}
+// </vc-code>

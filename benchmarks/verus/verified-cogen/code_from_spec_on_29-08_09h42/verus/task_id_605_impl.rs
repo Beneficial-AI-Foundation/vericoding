@@ -1,0 +1,73 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn is_divisible(n: int, divisor: int) -> (result: bool) {
+    (n % divisor) == 0
+}
+// pure-end
+
+// <vc-helpers>
+proof fn lemma_divisible_by_self(n: int)
+    requires n > 0
+    ensures is_divisible(n, n)
+{
+}
+
+proof fn lemma_not_divisible_greater(n: int, k: int)
+    requires n > 0 && k > n
+    ensures !is_divisible(n, k)
+{
+    proof {
+        assert(n % k == n);
+        assert(n != 0);
+        assert(!is_divisible(n, k));
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn prime_num(n: u64) -> (result: bool)
+    // pre-conditions-start
+    requires
+        n >= 2,
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        result == (forall|k: int| 2 <= k < n ==> !is_divisible(n as int, k)),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut i: u64 = 2;
+    /* code modified by LLM (iteration 5): strengthened postcondition proof by ensuring we check all divisors */
+    while i < n
+        invariant
+            2 <= i <= n,
+            forall|k: int| 2 <= k < i ==> !is_divisible(n as int, k),
+        decreases n - i
+    {
+        if (n % i) == 0 {
+            /* code modified by LLM (iteration 5): added proof block to establish postcondition on early return */
+            proof {
+                assert(is_divisible(n as int, i as int));
+                assert(2 <= i as int < n);
+                assert(!(forall|k: int| 2 <= k < n ==> !is_divisible(n as int, k)));
+            }
+            return false;
+        }
+        i = i + 1;
+    }
+    /* code modified by LLM (iteration 5): added proof block to establish postcondition for true case */
+    proof {
+        assert(i == n);
+        assert(forall|k: int| 2 <= k < n ==> !is_divisible(n as int, k));
+    }
+    true
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

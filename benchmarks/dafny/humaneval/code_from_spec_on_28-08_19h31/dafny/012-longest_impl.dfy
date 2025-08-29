@@ -1,0 +1,50 @@
+datatype Option<T> = None | Some(T)
+function getVal(mx : Option<string>) : string
+    requires mx != None
+{
+    match mx {
+        case Some(n) => n
+    }
+}
+
+// <vc-helpers>
+lemma LongestExists(strings: seq<string>, res: string)
+  requires res in strings
+  requires forall s :: s in strings ==> |res| >= |s|
+  ensures exists r :: r in strings && forall s :: s in strings ==> |r| >= |s|
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+method longest(strings: seq<string>) returns (result : Option<string>)
+  // post-conditions-start
+  ensures result == None <==> |strings| == 0
+  ensures result != None ==> forall s :: s in strings ==> |getVal(result)| >= |s|
+  ensures result != None ==> getVal(result) in strings 
+  // post-conditions-end
+// </vc-spec>
+// <vc-code>
+{
+  if |strings| == 0 {
+    return None;
+  }
+  
+  var longestStr := strings[0];
+  var i := 1;
+  
+  while i < |strings|
+    invariant 0 <= i <= |strings|
+    invariant longestStr in strings
+    invariant forall k :: 0 <= k < i ==> |longestStr| >= |strings[k]|
+  {
+    if |strings[i]| > |longestStr| {
+      longestStr := strings[i];
+    }
+    i := i + 1;
+  }
+  
+  LongestExists(strings, longestStr);
+  return Some(longestStr);
+}
+// </vc-code>

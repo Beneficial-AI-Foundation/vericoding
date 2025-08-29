@@ -1,0 +1,93 @@
+vc-preamble: |-
+  function IsPrime(n: int) : bool
+  {
+    n > 1 && forall k :: 2 <= k < n ==> n % k != 0
+  }
+
+vc-helpers: |-
+  function IsPrimeHelper(n: int, k: int) : bool
+    decreases n - k
+  {
+    if k >= n then true
+    else if k > 1 && n % k == 0 then false
+    else IsPrimeHelper(n, k + 1)
+  }
+  
+  lemma IsPrimeEquivalence(n: int)
+    requires n > 1
+    ensures IsPrime(n) <==> IsPrimeHelper(n, 2)
+  {
+    if n > 1 {
+      if IsPrime(n) {
+        assert forall k :: 2 <= k < n ==> n % k != 0;
+        var k := 2;
+        while k < n
+          invariant 2 <= k <= n
+          invariant forall i :: 2 <= i < k ==> n % i != 0
+          decreases n - k
+        {
+          assert n % k != 0;
+          k := k + 1;
+        }
+      } else {
+        var k := 2;
+        while k < n && n % k != 0
+          invariant 2 <= k <= n
+          invariant forall i :: 2 <= i < k ==> n % i != 0
+          decreases n - k
+        {
+          k := k + 1;
+        }
+        if k < n {
+          assert n % k == 0;
+          assert !IsPrimeHelper(n, 2);
+        }
+      }
+    }
+  }
+
+vc-description: |-
+  function_signature: def count_up_to(n : int) -> list[int]
+  Implement a function that takes an non-negative integer and returns an array of the first n integers that are prime numbers and less than n.
+
+vc-spec: |-
+  method CountUpTo(n: int) returns (primes: seq<int>)
+    // pre-conditions-start
+    requires n >= 0
+    // pre-conditions-end
+    // post-conditions-start
+    ensures forall i :: 0 <= i < |primes| ==> IsPrime(primes[i])
+    ensures forall i :: 0 <= i < |primes| ==> primes[i] < n
+    ensures forall p :: 2 <= p < n && IsPrime(p) <==> p in primes
+    // post-conditions-end
+
+vc-code: |-
+  method CountUpToImpl(n: int) returns (primes: seq<int>)
+    requires n >= 0
+    ensures forall i :: 0 <= i < |primes| ==> IsPrime(primes[i])
+    ensures forall i :: 0 <= i < |primes| ==> primes[i] < n
+    ensures forall p :: 2 <= p < n && IsPrime(p) <==> p in primes
+  {
+    var result: seq<int> := [];
+    var i := 2;
+    while i < n
+      invariant 2 <= i <= n
+      invariant forall p :: 0 <= p < |result| ==> IsPrime(result[p])
+      invariant forall p :: 0 <= p < |result| ==> result[p] < i
+      invariant forall p :: 2 <= p < i && IsPrime(p) ==> p in result
+      decreases n - i
+    {
+      if i > 1 {
+        IsPrimeEquivalence(i);
+        if IsPrimeHelper(i, 2) {
+          result := result + [i];
+        }
+      }
+      i := i + 1;
+    }
+    primes := result;
+  }
+
+vc-postamble: |-
+
+

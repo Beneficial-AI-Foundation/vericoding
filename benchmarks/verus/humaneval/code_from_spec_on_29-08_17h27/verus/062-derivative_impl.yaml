@@ -1,0 +1,41 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+
+vc-description: |-
+  function_signature: "def derivative(xs: List Int) -> List Int"
+  docstring: |
+  xs represent coefficients of a polynomial.
+  xs[0] + xs[1] * x + xs[2] * x^2 + ....
+  Return derivative of this polynomial in the same form.
+  test_cases:
+  - input: [3, 1, 2, 4, 5]
+  expected_output: [1, 4, 12, 20]
+  - input: [1, 2, 3]
+  expected_output: [2, 6]
+
+vc-spec: |-
+  fn derivative(xs: &Vec<usize>) -> (ret: Option<Vec<usize>>)
+      // post-conditions-start
+      ensures
+          ret.is_some() ==> xs@.len() == 0 || xs@.map(|i: int, x| i * x).skip(1)
+              =~= ret.unwrap()@.map_values(|x| x as int),
+      // post-conditions-end
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      None
+      // impl-end
+  }
+
+vc-postamble: |-
+  
+  }
+  fn main() {}
+

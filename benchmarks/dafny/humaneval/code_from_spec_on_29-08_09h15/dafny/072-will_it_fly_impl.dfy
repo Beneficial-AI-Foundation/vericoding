@@ -1,0 +1,193 @@
+
+
+// <vc-helpers>
+lemma palindrome_equivalence(s: seq<int>)
+    ensures is_palindrome_pred(s) <==> (s == reverse(s))
+{
+    if |s| <= 1 {
+        assert s == reverse(s);
+    } else {
+        if is_palindrome_pred(s) {
+            assert s[0] == s[|s| - 1];
+            assert is_palindrome_pred(s[1..|s|-1]);
+            palindrome_equivalence(s[1..|s|-1]);
+            assert s[1..|s|-1] == reverse(s[1..|s|-1]);
+            reverse_property(s);
+            assert s == reverse(s);
+        }
+        if s == reverse(s) {
+            assert s[0] == s[|s| - 1];
+            forall k | 0 <= k < |s|
+                ensures s[k] == s[|s| - 1 - k]
+            {
+                reverse_index_property(s, k);
+                assert reverse(s)[k] == s[|s| - 1 - k];
+                assert s[k] == reverse(s)[k];
+            }
+        }
+    }
+}
+
+lemma reverse_property(s: seq<int>)
+    requires |s| >= 2
+    requires s[0] == s[|s| - 1]
+    requires s[1..|s|-1] == reverse(s[1..|s|-1])
+    ensures s == reverse(s)
+{
+    assert |s[1..]| == |s| - 1;
+    assert reverse(s) == reverse(s[1..]) + [s[0]];
+    
+    if |s| == 2 {
+        assert |s[1..]| == 1;
+        assert reverse(s[1..]) == s[1..];
+        assert reverse(s) == s[1..] + [s[0]];
+        assert s == [s[0]] + s[1..];
+        assert s[0] == s[1];
+    } else {
+        assert |s[1..]| >= 2;
+        assert reverse(s[1..]) == reverse(s[2..]) + [s[1]];
+        assert reverse(s) == reverse(s[2..]) + [s[1]] + [s[0]];
+        assert s == [s[0]] + s[1..|s|-1] + [s[|s|-1]];
+        assert s[1] == s[|s|-2];
+    }
+}
+
+lemma reverse_index_property(s: seq<int>, k: int)
+    requires 0 <= k < |s|
+    ensures |reverse(s)| == |s|
+    ensures reverse(s)[k] == s[|s| - 1 - k]
+{
+    if |s| == 0 {
+    } else if |s| == 1 {
+        assert reverse(s) == s;
+        assert reverse(s)[k] == s[k] == s[|s| - 1 - k];
+    } else {
+        assert reverse(s) == reverse(s[1..]) + [s[0]];
+        assert |reverse(s)| == |reverse(s[1..])| + 1;
+        reverse_length_property(s[1..]);
+        assert |reverse(s[1..])| == |s[1..]|;
+        assert |reverse(s)| == |s|;
+        
+        if k < |s| - 1 {
+            assert 0 <= k < |s[1..]|;
+            assert reverse(s)[k] == reverse(s[1..])[k];
+            reverse_index_property(s[1..], k);
+            assert reverse(s[1..])[k] == s[1..][|s[1..]| - 1 - k];
+            assert s[1..][|s[1..]| - 1 - k] == s[|s| - 1 - k];
+        } else {
+            assert k == |s| - 1;
+            assert reverse(s)[k] == s[0];
+            assert s[|s| - 1 - k] == s[0];
+        }
+    }
+}
+
+lemma reverse_length_property(s: seq<int>)
+    ensures |reverse(s)| == |s|
+{
+    if |s| == 0 {
+    } else {
+        reverse_length_property(s[1..]);
+        assert |reverse(s[1..])| == |s[1..]|;
+        assert |reverse(s)| == |reverse(s[1..])| + 1 == |s[1..]| + 1 == |s|;
+    }
+}
+
+function reverse(s: seq<int>) : seq<int> {
+    if |s| == 0 then []
+    else reverse(s[1..]) + [s[0]]
+}
+
+function is_palindrome_iterative(s: seq<int>) : bool
+    requires |s| > 0
+{
+    forall i :: 0 <= i < |s| / 2 ==> s[i] == s[|s| - 1 - i]
+}
+
+lemma palindrome_iterative_equivalence(s: seq<int>)
+    requires |s| > 0
+    ensures is_palindrome_iterative(s) <==> is_palindrome_pred(s)
+{
+    if is_palindrome_iterative(s) {
+        forall k | 0 <= k < |s|
+            ensures s[k] == s[|s| - 1 - k]
+        {
+            if k < |s| / 2 {
+                assert s[k] == s[|s| - 1 - k];
+            } else if k >= |s| - |s| / 2 {
+                var j := |s| - 1 - k;
+                assert 0 <= j < |s| / 2;
+                assert s[j] == s[|s| - 1 - j];
+                assert s[k] == s[|s| - 1 - k];
+            } else if |s| % 2 == 1 && k == |s| / 2 {
+                assert k == |s| - 1 - k;
+            }
+        }
+    }
+    if is_palindrome_pred(s) {
+        forall i | 0 <= i < |s| / 2
+            ensures s[i] == s[|s| - 1 - i]
+        {
+            assert s[i] == s[|s| - 1 - i];
+        }
+    }
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: def will_it_fly(q: List[int], w: int) -> bool
+Write a function that returns True if the object q will fly, and False otherwise. The object q will fly if it's balanced (it is a palindromic list) and the sum of its elements is less than or equal the maximum possible weight w.
+*/
+// </vc-description>
+
+// <vc-spec>
+method will_it_fly(s: seq<int>, w: int) returns (result: bool)
+    // pre-conditions-start
+    requires |s| > 0
+    // pre-conditions-end
+    // post-conditions-start
+    ensures result <==> is_palindrome_pred(s) && sum(s) <= w
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    var is_palindrome := true;
+    var i := 0;
+    
+    while i < |s| / 2
+        invariant 0 <= i <= |s| / 2
+        invariant is_palindrome <==> (forall j :: 0 <= j < i ==> s[j] == s[|s| - 1 - j])
+    {
+        if s[i] != s[|s| - 1 - i] {
+            is_palindrome := false;
+            break;
+        }
+        i := i + 1;
+    }
+    
+    if is_palindrome {
+        assert forall j :: 0 <= j < |s| / 2 ==> s[j] == s[|s| - 1 - j];
+        assert is_palindrome_iterative(s);
+        palindrome_iterative_equivalence(s);
+        assert is_palindrome_pred(s);
+    } else {
+        assert !is_palindrome_iterative(s);
+        palindrome_iterative_equivalence(s);
+        assert !is_palindrome_pred(s);
+    }
+    
+    var total := sum(s);
+    result := is_palindrome && total <= w;
+}
+// </vc-code>
+
+function is_palindrome_pred(s : seq<int>) : bool {
+    forall k :: 0 <= k < |s| ==> s[k] == s[|s| - 1 - k]
+}
+// pure-end
+function sum(s: seq<int>) : int {
+    if |s| == 0 then 0 else s[0] + sum(s[1..])
+}
+// pure-end

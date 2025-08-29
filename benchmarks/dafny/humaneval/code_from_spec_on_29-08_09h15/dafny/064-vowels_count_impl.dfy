@@ -1,0 +1,75 @@
+
+
+// <vc-helpers>
+lemma set_extension_lemma(s: string, i: int)
+  requires 0 <= i < |s|
+  ensures (set j | 0 <= j < i + 1 && is_vowel(s[j])) == 
+          (set j | 0 <= j < i && is_vowel(s[j])) + (if is_vowel(s[i]) then {i} else {})
+{
+  var left := set j | 0 <= j < i + 1 && is_vowel(s[j]);
+  var right := (set j | 0 <= j < i && is_vowel(s[j])) + (if is_vowel(s[i]) then {i} else {});
+  
+  assert forall x :: x in left <==> x in right;
+}
+
+lemma set_cardinality_lemma(s: string, i: int)
+  requires 0 <= i < |s|
+  ensures |(set j | 0 <= j < i + 1 && is_vowel(s[j]))| == 
+          |(set j | 0 <= j < i && is_vowel(s[j]))| + (if is_vowel(s[i]) then 1 else 0)
+{
+  set_extension_lemma(s, i);
+  var base_set := set j | 0 <= j < i && is_vowel(s[j]);
+  
+  if is_vowel(s[i]) {
+    assert i !in base_set;
+    assert |base_set + {i}| == |base_set| + 1;
+  } else {
+    assert |base_set + {}| == |base_set|;
+  }
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: def remove_vowels(string: str) -> Nat
+Write a function vowels_count which takes a string representing a word as input and returns the number of vowels in the string. Vowels in this case are 'a', 'e', 'i', 'o', 'u'. Here, 'y' is also a vowel, but only when it is at the end of the given word.
+*/
+// </vc-description>
+
+// <vc-spec>
+method vowel_count(s: string) returns (count: int)
+  // post-conditions-start
+  ensures count >= 0
+  ensures count == |(set i | 0 <= i < |s| && is_vowel(s[i]))| + if |s| > 0 && s[|s| - 1] == 'y' then 1 else 0
+  // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+  count := 0;
+  var i := 0;
+  
+  while i < |s|
+    invariant 0 <= i <= |s|
+    invariant count >= 0
+    invariant count == |(set j | 0 <= j < i && is_vowel(s[j]))|
+  {
+    if is_vowel(s[i]) {
+      count := count + 1;
+    }
+    set_cardinality_lemma(s, i);
+    i := i + 1;
+  }
+  
+  if |s| > 0 && s[|s| - 1] == 'y' {
+    count := count + 1;
+  }
+}
+// </vc-code>
+
+function is_vowel(c: char): bool
+  ensures is_vowel(c) <==> c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U'
+{
+    c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U'
+}
+// pure-end

@@ -1,0 +1,48 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+
+// </vc-helpers>
+
+// <vc-spec>
+fn find_first_occurrence(arr: &Vec<i32>, target: i32) -> (index: Option<usize>)
+    // pre-conditions-start
+    requires
+        forall|i: int, j: int| 0 <= i < j < arr.len() ==> arr[i] <= arr[j],
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        if let Some(idx) = index {
+            &&& 0 <= idx < arr.len()
+            &&& forall|k: int| 0 <= k < idx ==> arr[k] != target
+            &&& arr[idx as int] == target
+        } else {
+            forall|k: int| 0 <= k < arr.len() ==> arr[k] != target
+        },
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut i = 0;
+    /* code modified by LLM (iteration 2): added decreases clause for loop termination */
+    while i < arr.len()
+        invariant
+            0 <= i <= arr.len(),
+            forall|k: int| 0 <= k < i ==> arr[k] != target,
+        decreases arr.len() - i,
+    {
+        if arr[i] == target {
+            return Some(i);
+        }
+        i += 1;
+    }
+    None
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

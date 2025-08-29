@@ -1,0 +1,38 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: "def triangle_area(a: float, h: float) -> float"
+docstring: |
+Given length of a side and high return area for a triangle.
+test_cases:
+- input: (5, 3)
+expected_output: 7.5
+- input: (8, 2)
+expected_output: 8.0
+*/
+// </vc-description>
+
+// <vc-spec>
+fn triangle_area(a: f64, h: f64) -> (result: f64)
+    requires a >= 0.0,
+    requires h >= 0.0,
+    ensures result >= 0.0,
+    ensures result == (a * h) / 2.0,
+// </vc-spec>
+
+// <vc-code>
+{
+    /* code modified by LLM (iteration 5): fixed syntax by adding proper body structure */
+    (a * h) / 2.0
+}
+// </vc-code>
+
+}
+fn main() {}

@@ -1,0 +1,64 @@
+function Prime(p: nat) : bool
+{
+    p > 1 &&
+    forall k :: 1 < k < p ==> p % k != 0
+}
+
+// <vc-helpers>
+lemma MultiplyPrimeHelper(x: nat, a: nat, b: nat, c: nat)
+  requires Prime(a) && Prime(b) && Prime(c) && x == a * b * c
+  ensures exists a': nat, b': nat, c': nat :: Prime(a') && Prime(b') && Prime(c') && x == a' * b' * c'
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+method is_multiply_prime(x: nat) returns (ans : bool)
+    // pre-conditions-start
+    requires x > 1
+    // pre-conditions-end
+    // post-conditions-start
+    ensures ans <==> exists a: nat, b: nat, c: nat :: Prime(a) && Prime(b) && Prime(c) && x == a * b * c
+    // post-conditions-end
+// </vc-spec>
+// <vc-code>
+method IsMultiplyPrime(x: nat) returns (ans: bool)
+  requires x > 1
+  ensures ans <==> exists a: nat, b: nat, c: nat :: Prime(a) && Prime(b) && Prime(c) && x == a * b * c
+{
+  ans := false;
+  var a: nat := 2;
+  while a <= x / 2
+    invariant 2 <= a <= x / 2 + 1
+    invariant !ans ==> forall i: nat, j: nat, k: nat :: 2 <= i < a && 2 <= j <= x / i && 2 <= k <= x / (i * j) ==> !Prime(i) || !Prime(j) || !Prime(k) || x != i * j * k
+  {
+    if !Prime(a) {
+      a := a + 1;
+      continue;
+    }
+    var b: nat := 2;
+    while b <= x / a
+      invariant 2 <= b <= x / a + 1
+      invariant !ans ==> forall j: nat, k: nat :: 2 <= j < b && 2 <= k <= x / (a * j) ==> !Prime(j) || !Prime(k) || x != a * j * k
+    {
+      if !Prime(b) {
+        b := b + 1;
+        continue;
+      }
+      var c: nat := 2;
+      while c <= x / (a * b)
+        invariant 2 <= c <= x / (a * b) + 1
+        invariant !ans ==> forall k: nat :: 2 <= k < c ==> !Prime(k) || x != a * b * k
+      {
+        if Prime(c) && x == a * b * c {
+          ans := true;
+          return;
+        }
+        c := c + 1;
+      }
+      b := b + 1;
+    }
+    a := a + 1;
+  }
+}
+// </vc-code>

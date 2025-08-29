@@ -1,0 +1,55 @@
+vc-description: |-
+
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus!{
+
+vc-helpers: |-
+
+
+vc-spec: |-
+  fn myfun(a: &mut Vec<i32>, N: u32)
+  		// pre-conditions-start
+  		requires
+  			N > 0,
+  			old(a).len() == N,
+  		// pre-conditions-end
+  		// post-conditions-start
+  		ensures
+  			forall |k:int| 0 <= k < N ==> a[k] % 2 == N % 2,
+  		// post-conditions-end
+
+vc-code: |-
+  {
+      // impl-start
+      let mut i = 0;
+      /* code modified by LLM (iteration 5): added decreases clause to satisfy loop termination requirement */
+      while i < N
+          invariant
+              0 <= i <= N,
+              a.len() == N,
+              forall |k:int| 0 <= k < i ==> a[k] % 2 == N % 2,
+          decreases N - i
+      {
+          /* code modified by LLM (iteration 4): store current value before modification to avoid borrowing conflicts */
+          if a[i as usize] % 2 != (N as i32) % 2 {
+              let current_value = a[i as usize];
+              if N % 2 == 0 {
+                  a.set(i as usize, current_value + 1);
+              } else {
+                  a.set(i as usize, current_value - 1);
+              }
+          }
+          i += 1;
+      }
+      // impl-end
+  }
+
+vc-postamble: |-
+  
+  }
+  
+  fn main() {}
+

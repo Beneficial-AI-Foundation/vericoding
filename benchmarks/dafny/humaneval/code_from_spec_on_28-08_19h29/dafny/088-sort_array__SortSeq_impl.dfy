@@ -1,0 +1,83 @@
+method sort_array(s: seq<int>) returns (sorted: seq<int>)
+  // post-conditions-start
+  ensures |sorted| == |s|
+  ensures |s| > 0 && (s[0] + s[|s| - 1]) % 2 == 0 ==>
+    forall i, j :: 0 <= i < j < |sorted| ==> sorted[i] >= sorted[j]
+  ensures |s| > 0 && (s[0] + s[|s| - 1]) % 2 != 0 ==>
+    forall i, j :: 0 <= i < j < |sorted| ==> sorted[i] <= sorted[j]
+  // post-conditions-end
+{
+  assume{:axiom} false;
+}
+method reverse(s: seq<int>) returns (rev: seq<int>)
+  // post-conditions-start
+  ensures |rev| == |s|
+  ensures forall k :: 0 <= k < |s| ==> rev[k] == s[|s| - 1 - k]
+  // post-conditions-end
+{
+  assume{:axiom} false;
+}
+
+// <vc-helpers>
+// Helper lemma to prove permutation properties
+lemma PermutationProperties(s1: seq<int>, s2: seq<int>)
+  requires |s1| == |s2|
+  requires multiset(s1) == multiset(s2)
+  ensures forall x :: x in s1 ==> x in s2
+  ensures forall x :: x in s2 ==> x in s1
+{
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: method SortSeq(s: seq<int>) returns (sorted: seq<int>)
+Sort elements. Ensures: the result is sorted according to the ordering relation; returns the correct size/count; returns a sorted permutation of the input.
+*/
+// </vc-description>
+
+// <vc-spec>
+method SortSeq(s: seq<int>) returns (sorted: seq<int>)
+  ensures |sorted| == |s|
+  ensures multiset(sorted) == multiset(s)
+  ensures forall i, j :: 0 <= i < j < |sorted| ==> sorted[i] <= sorted[j]
+// </vc-spec>
+// <vc-code>
+{
+  var sortedSeq: seq<int> := [];
+  var remaining := s;
+  
+  while |remaining| > 0
+    decreases |remaining|
+    invariant |sortedSeq| + |remaining| == |s|
+    invariant multiset(sortedSeq) + multiset(remaining) == multiset(s)
+    invariant forall i, j :: 0 <= i < j < |sortedSeq| ==> sortedSeq[i] <= sortedSeq[j]
+  {
+    var minIndex := 0;
+    var i := 1;
+    while i < |remaining|
+      invariant 0 <= minIndex < |remaining|
+      invariant forall k :: 0 <= k < i ==> remaining[minIndex] <= remaining[k]
+      decreases |remaining| - i
+    {
+      if remaining[i] < remaining[minIndex] {
+        minIndex := i;
+      }
+      i := i + 1;
+    }
+    sortedSeq := sortedSeq + [remaining[minIndex]];
+    var newRemaining: seq<int>;
+    if minIndex == 0 {
+      newRemaining := remaining[1..];
+    } else if minIndex == |remaining| - 1 {
+      newRemaining := remaining[..minIndex];
+    } else {
+      newRemaining := remaining[..minIndex] + remaining[minIndex+1..];
+    }
+    remaining := newRemaining;
+  }
+  
+  PermutationProperties(sortedSeq, s);
+  return sortedSeq;
+}
+// </vc-code>

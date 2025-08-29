@@ -1,15 +1,3 @@
-vc-description: |-
-  /--
-  function_signature: "def sum_to_n(n: Nat) -> Nat"
-  docstring: |
-      sum_to_n is a function that sums numbers from 1 to n.
-  test_cases:
-    - input: 30
-      expected_output: 465
-    - input: 100
-      expected_output: 4950
-  -/
-
 vc-preamble: |-
   use vstd::prelude::*;
 
@@ -27,6 +15,17 @@ vc-preamble: |-
   // pure-end
 
 vc-helpers: |-
+
+
+vc-description: |-
+  function_signature: "def sum_to_n(n: Nat) -> Nat"
+  docstring: |
+  sum_to_n is a function that sums numbers from 1 to n.
+  test_cases:
+  - input: 30
+  expected_output: 465
+  - input: 100
+  expected_output: 4950
 
 vc-spec: |-
   fn sum_to_n(n: u32) -> (sum: Option<u32>)

@@ -1,0 +1,42 @@
+vc-preamble: |-
+
+
+vc-helpers: |-
+
+
+vc-description: |-
+  function_signature: def pairs_sum_to_zero(numbers: List[int]) -> Bool
+  pairs_sum_to_zero takes a list of integers as an input. it returns True if there are two distinct elements in the list that sum to zero, and False otherwise.
+
+vc-spec: |-
+  method PairsSumToZero(numbers: seq<int>) returns (result: bool)
+    ensures result <==> exists i, j :: 0 <= i < |numbers| && 0 <= j < |numbers| && i != j && numbers[i] + numbers[j] == 0
+
+vc-code: |-
+  {
+    result := false;
+    var i := 0;
+    while i < |numbers| && !result
+      invariant 0 <= i <= |numbers|
+      invariant !result ==> forall x, y :: 0 <= x < i && 0 <= y < |numbers| && x != y ==> numbers[x] + numbers[y] != 0
+      invariant result ==> exists x, y :: 0 <= x < |numbers| && 0 <= y < |numbers| && x != y && numbers[x] + numbers[y] == 0
+    {
+      var j := 0;
+      while j < |numbers| && !result
+        invariant 0 <= j <= |numbers|
+        invariant !result ==> forall y :: 0 <= y < j && i != y ==> numbers[i] + numbers[y] != 0
+        invariant !result ==> forall x, y :: 0 <= x < i && 0 <= y < |numbers| && x != y ==> numbers[x] + numbers[y] != 0
+        invariant result ==> exists x, y :: 0 <= x < |numbers| && 0 <= y < |numbers| && x != y && numbers[x] + numbers[y] == 0
+      {
+        if i != j && numbers[i] + numbers[j] == 0 {
+          result := true;
+        }
+        j := j + 1;
+      }
+      i := i + 1;
+    }
+  }
+
+vc-postamble: |-
+
+

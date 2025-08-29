@@ -1,8 +1,3 @@
-vc-description: |-
-  /--
-  function_signature: "fn has_close_elements(numbers: &[i32], threshold: i32) -> (flag: bool)"
-  docstring: Implement has close elements functionality.
-  -/
 vc-preamble: |-
   use vstd::prelude::*;
 
@@ -13,15 +8,11 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  fn abs(i: i32) -> (res: i32)
-      requires
-          i != i32::MIN,
-      ensures
-          i < 0 ==> res == -i,
-          i >= 0 ==> res == i
-  {
-      if i < 0 { -i } else { i }
-  }
+
+
+vc-description: |-
+  function_signature: "fn has_close_elements(numbers: &[i32], threshold: i32) -> (flag: bool)"
+  docstring: Implement has close elements functionality.
 
 vc-spec: |-
   #[verifier::loop_isolation(false)]

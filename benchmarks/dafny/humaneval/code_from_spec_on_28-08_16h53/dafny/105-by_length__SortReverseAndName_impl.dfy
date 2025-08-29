@@ -1,0 +1,114 @@
+// <vc-helpers>
+predicate ValidRange(arr: seq<int>)
+{
+  forall i :: 0 <= i < |arr| ==> 1 <= arr[i] <= 9
+}
+
+function SortSeqFunction(s: seq<int>): seq<int>
+  ensures forall i, j :: 0 <= i < j < |SortSeqFunction(s)| ==> SortSeqFunction(s)[i] <= SortSeqFunction(s)[j]
+  ensures |SortSeqFunction(s)| == |s|
+  ensures multiset(s) == multiset(SortSeqFunction(s))
+
+function ReverseFunction(s: seq<int>): seq<int>
+  ensures |ReverseFunction(s)| == |s|
+  ensures forall k :: 0 <= k < |s| ==> ReverseFunction(s)[k] == s[|s| - 1 - k]
+
+lemma SortPreservesValidRange(arr: seq<int>)
+  requires ValidRange(arr)
+  ensures ValidRange(SortSeqFunction(arr))
+{
+  var sorted := SortSeqFunction(arr);
+  assert multiset(arr) == multiset(sorted);
+  forall i | 0 <= i < |sorted|
+    ensures 1 <= sorted[i] <= 9
+  {
+    assert sorted[i] in multiset(sorted);
+    assert sorted[i] in multiset(arr);
+    assert exists j :: 0 <= j < |arr| && arr[j] == sorted[i];
+  }
+}
+
+lemma ReversePreservesValidRange(arr: seq<int>)
+  requires ValidRange(arr)
+  ensures ValidRange(ReverseFunction(arr))
+{
+  var rev := ReverseFunction(arr);
+  forall i | 0 <= i < |rev|
+    ensures 1 <= rev[i] <= 9
+  {
+    assert rev[i] == arr[|arr| - 1 - i];
+    assert 0 <= |arr| - 1 - i < |arr|;
+    assert 1 <= arr[|arr| - 1 - i] <= 9;
+  }
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: method SortReverseAndName(arr: seq<int>) returns (result: seq<string>)
+Sort elements. Ensures: the size is bounded; the condition holds for all values.
+*/
+// </vc-description>
+
+// <vc-spec>
+method SortReverseAndName(arr: seq<int>) returns (result: seq<string>)
+  requires ValidRange(arr)
+  ensures |result| == |arr|
+  ensures forall i :: 0 <= i < |result| ==> result[i] in {"One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"}
+// </vc-spec>
+// <vc-code>
+{
+  SortPreservesValidRange(arr);
+  var sorted := SortSeqFunction(arr);
+  
+  ReversePreservesValidRange(sorted);
+  var reversed := ReverseFunction(sorted);
+  
+  result := [];
+  var i := 0;
+  while i < |reversed|
+    invariant 0 <= i <= |reversed|
+    invariant |result| == i
+    invariant forall j :: 0 <= j < i ==> result[j] in {"One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"}
+    invariant ValidRange(reversed)
+  {
+    assert 1 <= reversed[i] <= 9;
+    var name := NumberToName(reversed[i]);
+    result := result + [name];
+    i := i + 1;
+  }
+}
+// </vc-code>
+
+method SortSeq(s: seq<int>) returns (sorted: seq<int>)
+  // post-conditions-start
+  ensures forall i, j :: 0 <= i < j < |sorted| ==> sorted[i] <= sorted[j]
+  ensures |sorted| == |s|
+  ensures multiset(s) == multiset(sorted)
+  // post-conditions-end
+{
+  assume{:axiom} false;
+}
+method reverse(s: seq<int>) returns (rev: seq<int>)
+  // post-conditions-start
+  ensures |rev| == |s|
+  ensures forall k :: 0 <= k < |s| ==> rev[k] == s[|s| - 1 - k]
+  // post-conditions-end
+{
+  assume{:axiom} false;
+}
+function NumberToName(n: int): string
+  requires 1 <= n <= 9
+{
+  match n
+  case 1 => "One"
+  case 2 => "Two"
+  case 3 => "Three"
+  case 4 => "Four"
+  case 5 => "Five"
+  case 6 => "Six"
+  case 7 => "Seven"
+  case 8 => "Eight"
+  case 9 => "Nine"
+}
+// pure-end

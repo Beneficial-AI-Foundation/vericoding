@@ -1,0 +1,70 @@
+vc-preamble: |-
+
+
+vc-helpers: |-
+  predicate StartsWithOne(num: nat, n: nat)
+      requires n > 0
+  {
+      Pow(10, n-1) <= num < 2 * Pow(10, n-1)
+  }
+  
+  predicate EndsWithOne(num: nat)
+  {
+      num % 10 == 1
+  }
+  
+  predicate IsNDigit(num: nat, n: nat)
+      requires n > 0
+  {
+      Pow(10, n-1) <= num < Pow(10, n)
+  }
+  
+  function CountStartsWithOne(n: nat): nat
+      requires n > 0
+  {
+      Pow(10, n-1)
+  }
+  
+  function CountEndsWithOne(n: nat): nat
+      requires n > 0
+  {
+      if n == 1 then 1 else 9 * Pow(10, n-2)
+  }
+  
+  function CountStartsAndEndsWithOne(n: nat): nat
+      requires n > 0
+  {
+      if n == 1 then 1 else Pow(10, n-2)
+  }
+
+vc-description: |-
+  function_signature: def starts_one_ends(n: int) -> int
+  Given a positive integer n, return the count of the numbers of n-digit positive integers that start or end with 1. Note: For reviewer, I believe this is the most straightforward spec, and I am relying on Set cardianlity not being computable in general. The point of this problem is really to privide a formula. Note: But I guess a program that goes through each number and adds 1 will be the same as a program that computes in O(1) under this view.
+
+vc-spec: |-
+  method starts_one_ends(n: int) returns (result: int)
+      requires n > 0
+      ensures result >= 0
+      ensures result == CountStartsWithOne(n) + CountEndsWithOne(n) - CountStartsAndEndsWithOne(n)
+
+vc-code: |-
+  {
+      if n == 1 {
+          result := 1;
+      } else {
+          var starts := Pow(10, n-1);
+          var ends := 9 * Pow(10, n-2);
+          var both := Pow(10, n-2);
+          result := starts + ends - both;
+      }
+  }
+
+vc-postamble: |-
+  function Pow(base: nat, exponent: nat): nat
+      ensures exponent == 0 ==> Pow(base, exponent) == 1
+      ensures exponent > 0 ==> Pow(base, exponent) == base * Pow(base, exponent-1)
+  {
+      if exponent == 0 then 1 else base * Pow(base, exponent-1)
+  }
+  // pure-end
+

@@ -1,0 +1,52 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn spec_fibfib(n: nat) -> (ret: nat)
+    decreases n,
+{
+    if (n == 0) {
+        0
+    } else if (n == 1) {
+        0
+    } else if (n == 2) {
+        1
+    } else {
+        spec_fibfib((n - 1) as nat) + spec_fibfib((n - 2) as nat) + spec_fibfib((n - 3) as nat)
+    }
+}
+// pure-end
+
+/*
+function_signature: "def fibfib(n: int)"
+docstring: |
+The FibFib number sequence is a sequence similar to the Fibbonacci sequnece that's defined as follows:
+fibfib(0) == 0
+fibfib(1) == 0
+fibfib(2) == 1
+fibfib(n) == fibfib(n-1) + fibfib(n-2) + fibfib(n-3).
+Please write a function to efficiently compute the n-th element of the fibfib number sequence.
+Note(Meghana): While the specification asks for an efficient computation of fibfib, we cannot enforce this constraint currently.
+test_cases:
+- input: 1
+output: 0
+- input: 5
+output: 4
+- input: 8
+output: 24
+*/
+
+fn fibfib(x: u32) -> (ret: Option<u32>)
+    // post-conditions-start
+    ensures
+        ret.is_some() ==> spec_fibfib(x as nat) == ret.unwrap(),
+    // post-conditions-end
+{
+    // impl-start
+    assume(false);
+    None
+    // impl-end
+}
+
+}
+fn main() {}

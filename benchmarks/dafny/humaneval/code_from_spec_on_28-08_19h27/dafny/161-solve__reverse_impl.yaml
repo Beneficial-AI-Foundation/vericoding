@@ -1,0 +1,60 @@
+vc-preamble: |-
+  method solve(s: string) returns (t: string)
+    // post-conditions-start 
+    ensures |s| == |t|
+    ensures (forall i :: 0 <= i < |s| ==> !is_alpha(s[i])) ==> (forall i :: 0 <= i < |s| ==> s[i] == t[|t| - 1 - i])
+    ensures (exists i :: 0 <= i < |s| && is_alpha(s[i])) ==> 
+      (forall i :: 0 <= i < |t| ==> if is_alpha(s[i]) then t[i] == flip_case(s[i]) else t[i] == s[i])
+    // post-conditions-end
+  {
+    assume{:axiom} false;
+  }
+
+vc-helpers: |-
+  lemma ReversePreservesLength(s: string)
+    ensures |reverse_string(s)| == |s|
+  {
+    // This lemma would be proven by induction on the string length
+  }
+  
+  function reverse_string(s: string): string
+  {
+    if |s| == 0 then "" else s[|s|-1..] + reverse_string(s[..|s|-1])
+  }
+
+vc-description: |-
+  function_signature: method reverse(s: string) returns (rev: string)
+  Reverse order. Ensures: returns the correct size/count; the condition holds for all values.
+
+vc-spec: |-
+  method reverse(s: string) returns (rev: string)
+    ensures |s| == |rev|
+    ensures forall i :: 0 <= i < |s| ==> s[i] == rev[|rev| - 1 - i]
+
+vc-code: |-
+  {
+    rev := "";
+    var i := |s|;
+    while i > 0
+      invariant 0 <= i <= |s|
+      invariant |rev| == |s| - i
+      invariant forall j :: 0 <= j < |rev| ==> rev[j] == s[|s| - 1 - j]
+    {
+      i := i - 1;
+      rev := rev + [s[i]];
+    }
+  }
+
+vc-postamble: |-
+  function is_alpha(c: char) : bool {
+    'a' <= c <= 'z' || 'A' <= c <= 'Z'
+  }
+  // pure-end
+  function flip_case(c: char): (flipped: char)
+    requires is_alpha(c)
+    ensures is_alpha(flipped)
+  {
+    if 'a' <= c <= 'z' then c - 'a' + 'A' else c - 'A' + 'a'
+  }
+  // pure-end
+

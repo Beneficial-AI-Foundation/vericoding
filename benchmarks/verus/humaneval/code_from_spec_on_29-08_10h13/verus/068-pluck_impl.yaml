@@ -1,0 +1,116 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+  spec fn is_even(x: int) -> bool {
+      x % 2 == 0
+  }
+  
+  spec fn has_even_value(numbers: Seq<int>) -> bool {
+      exists|i: int| 0 <= i < numbers.len() && is_even(numbers[i])
+  }
+  
+  spec fn smallest_even_value(numbers: Seq<int>) -> int
+      requires has_even_value(numbers)
+  {
+      let even_values = numbers.filter(|x: int| is_even(x));
+      even_values.fold_left(even_values[0], |acc: int, x: int| if x < acc { x } else { acc })
+  }
+  
+  spec fn first_index_of_value(numbers: Seq<int>, value: int) -> int
+      requires exists|i: int| 0 <= i < numbers.len() && numbers[i] == value
+  {
+      choose|i: int| 0 <= i < numbers.len() && numbers[i] == value && 
+          forall|j: int| 0 <= j < i ==> numbers[j] != value
+  }
+
+vc-description: |-
+  function_signature: "def pluck(numbers: List[Int]) -> List[Int]"
+  docstring: |
+  Given an array representing a branch of a tree that has non-negative integer nodes
+  your task is to pluck one of the nodes and return it.
+  The plucked node should be the node with the smallest even value.
+  If multiple nodes with the same smallest even value are found return the node that has smallest index.
+  The plucked node should be returned in a list, [ smallest_value, its index ],
+  If there are no even values or the given array is empty, return [].
+  test_cases:
+  - input: [4, 2, 3]
+  expected_output: [2, 1]
+  - input: [1, 2, 3]
+  expected_output: [2, 1]
+  - input: []
+  expected_output: []
+  - input: [5, 0, 3, 0, 4, 2]
+  expected_output: [0, 1]
+
+vc-spec: |-
+  fn pluck(numbers: Vec<int>) -> (result: Vec<int>)
+      requires forall|i: int| 0 <= i < numbers.len() ==> numbers@[i] >= 0
+      ensures if !has_even_value(numbers@) {
+          result@ == Seq::<int>::empty()
+      } else {
+          result@.len() == 2 && 
+          is_even(result@[0]) &&
+          result@[0] == smallest_even_value(numbers@) &&
+          result@[1] == first_index_of_value(numbers@, result@[0]) &&
+          0 <= result@[1] < numbers.len() &&
+          numbers@[result@[1] as int] == result@[0]
+      }
+
+vc-code: |-
+  {
+      let mut smallest_even: Option<int> = None;
+      let mut best_index: usize = 0;
+      
+      let mut i = 0;
+      while i < numbers.len()
+          invariant 
+              0 <= i <= numbers.len(),
+              smallest_even.is_some() ==> is_even(smallest_even.unwrap()),
+              smallest_even.is_some() ==> best_index < numbers.len(),
+              smallest_even.is_some() ==> numbers@[best_index as int] == smallest_even.unwrap(),
+              smallest_even.is_some() ==> forall|j: int| 0 <= j < i && is_even(numbers@[j]) ==> 
+                  numbers@[j] >= smallest_even.unwrap(),
+              smallest_even.is_some() ==> forall|j: int| 0 <= j < best_index && is_even(numbers@[j]) ==> 
+                  numbers@[j] > smallest_even.unwrap(),
+              smallest_even.is_none() ==> forall|j: int| 0 <= j < i ==> !is_even(numbers@[j])
+      {
+          if is_even(numbers[i]) {
+              match smallest_even {
+                  None => {
+                      smallest_even = Some(numbers[i]);
+                      best_index = i;
+                  },
+                  Some(current_min) => {
+                      if numbers[i] < current_min {
+                          smallest_even = Some(numbers[i]);
+                          best_index = i;
+                      }
+                  }
+              }
+          }
+          i += 1;
+      }
+      
+      match smallest_even {
+          None => vec![],
+          Some(value) => {
+              proof {
+                  assert(has_even_value(numbers@));
+                  assert(value == smallest_even_value(numbers@));
+                  assert(best_index as int == first_index_of_value(numbers@, value));
+              }
+              /* code modified by LLM (iteration 5): used direct cast to int instead of non-existent function */
+              let index_as_int = best_index as int;
+              vec![value, index_as_int]
+          }
+      }
+  }
+
+vc-postamble: |-
+  
+  }
+  fn main() {}
+

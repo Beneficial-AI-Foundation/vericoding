@@ -1,0 +1,42 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn in_array(a: Seq<i32>, x: i32) -> (ret: bool) {
+      exists|i: int| 0 <= i < a.len() && a[i] == x
+  }
+
+vc-helpers: |-
+
+
+vc-description: |-
+  function_signature: "fn remove_duplicates(a: &[i32]) -> (result: Vec<i32>)"
+  docstring: Remove duplicate elements from an array while preserving order.
+
+vc-spec: |-
+  #[verifier::loop_isolation(false)]
+  fn remove_duplicates(a: &[i32]) -> (result: Vec<i32>)
+      // pre-conditions-start
+      requires
+          a.len() >= 1,
+      // pre-conditions-end
+      // post-conditions-start
+      ensures
+          forall|i: int| #![auto] 0 <= i < result.len() ==> in_array(a@, result[i]),
+          forall|i: int, j: int| 0 <= i < j < result.len() ==> result[i] != result[j],
+      // post-conditions-end
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      vec![]
+      // impl-end
+  }
+
+vc-postamble: |-
+  
+  fn main() {}
+  }
+

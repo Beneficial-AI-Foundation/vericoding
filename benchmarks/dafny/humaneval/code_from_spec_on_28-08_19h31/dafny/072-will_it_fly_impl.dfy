@@ -1,0 +1,92 @@
+// <vc-helpers>
+function is_palindrome_pred_helper(s: seq<int>): bool {
+    forall k :: 0 <= k < |s| ==> s[k] == s[|s| - 1 - k]
+}
+
+function sum_helper(s: seq<int>): int {
+    if |s| == 0 then 0 else s[0] + sum_helper(s[1..])
+}
+
+lemma SumNonNegative(s: seq<int>)
+    ensures sum_helper(s) >= 0
+{
+    if |s| == 0 {
+    } else {
+        SumNonNegative(s[1..]);
+    }
+}
+
+lemma SumEquivalence(s: seq<int>)
+    ensures sum_helper(s) == sum(s)
+{
+    if |s| == 0 {
+    } else {
+        SumEquivalence(s[1..]);
+    }
+}
+
+lemma PalindromeEquivalence(s: seq<int>)
+    ensures is_palindrome_pred_helper(s) == is_palindrome_pred(s)
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+method will_it_fly(s: seq<int>, w: int) returns (result: bool)
+    // pre-conditions-start
+    requires |s| > 0
+    // pre-conditions-end
+    // post-conditions-start
+    ensures result <==> is_palindrome_pred(s) && sum(s) <= w
+    // post-conditions-end
+// </vc-spec>
+// <vc-code>
+method will_it_fly_impl(s: seq<int>, w: int) returns (result: bool)
+    requires |s| > 0
+    ensures result <==> is_palindrome_pred(s) && sum(s) <= w
+{
+    result := true;
+    var i := 0;
+    while i < |s| / 2
+        invariant 0 <= i <= |s| / 2
+        invariant result ==> forall k :: 0 <= k < i ==> s[k] == s[|s| - 1 - k]
+    {
+        if s[i] != s[|s| - 1 - i] {
+            result := false;
+            break;
+        }
+        i := i + 1;
+    }
+    if result {
+        if |s| % 2 == 1 {
+            var mid := |s| / 2;
+            // Middle element check is unnecessary since it's compared to itself, always true
+        }
+        if result {
+            var total := 0;
+            i := 0;
+            while i < |s|
+                invariant 0 <= i <= |s|
+                invariant total == sum_helper(s[..i])
+            {
+                total := total + s[i];
+                i := i + 1;
+            }
+            SumEquivalence(s);
+            result := total <= w;
+        }
+    } else {
+        SumEquivalence(s);
+    }
+    PalindromeEquivalence(s);
+}
+// </vc-code>
+
+function is_palindrome_pred(s : seq<int>) : bool {
+    forall k :: 0 <= k < |s| ==> s[k] == s[|s| - 1 - k]
+}
+// pure-end
+function sum(s: seq<int>) : int {
+    if |s| == 0 then 0 else s[0] + sum(s[1..])
+}
+// pure-end

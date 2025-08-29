@@ -1,0 +1,123 @@
+vc-description: |-
+
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  
+  verus!{
+  
+  spec fn triangle(n: nat) -> (result: nat)
+      decreases n
+  {
+      if n == 0 {
+          0
+      } else {
+          n + triangle((n - 1) as nat)
+      }
+  }
+  // pure-end
+
+vc-helpers: |-
+  proof fn triangle_is_monotonic(i: nat, j: nat)
+      requires
+          i <= j,
+      ensures
+          triangle(i) <= triangle(j),
+      decreases j
+  {
+      if i < j {
+          triangle_is_monotonic(i, (j - 1) as nat);
+      }
+  }
+  
+  proof fn triangle_additive(i: nat, j: nat)
+      requires
+          i <= j,
+      ensures
+          triangle(j) == triangle(i) + (triangle(j) - triangle(i)),
+      decreases j
+  {
+      if i < j {
+          triangle_additive(i, (j - 1) as nat);
+      }
+  }
+  
+  /* code modified by LLM (iteration 5): simplified triangle_step proof to avoid complex arithmetic assertions */
+  proof fn triangle_step(i: nat, j: nat)
+      requires
+          i <= j,
+      ensures
+          triangle(j) == triangle(i) + (j * (j + 1) / 2 - i * (i + 1) / 2),
+      decreases j - i
+  {
+      if i == j {
+          assert(triangle(j) == triangle(i));
+          assert(j * (j + 1) / 2 == i * (i + 1) / 2);
+      } else {
+          triangle_step(i, ((j - 1) as int) as nat);
+      }
+  }
+  
+  proof fn triangle_increment(i: nat)
+      ensures
+          triangle(i + 1) == triangle(i) + (i + 1),
+  {
+  }
+  
+  /* code modified by LLM (iteration 5): added helper to establish triangle formula */
+  proof fn triangle_formula(n: nat)
+      ensures
+          triangle(n) == n * (n + 1) / 2,
+      decreases n
+  {
+      if n == 0 {
+          assert(triangle(0) == 0);
+          assert(0 * (0 + 1) / 2 == 0);
+      } else {
+          triangle_formula((n - 1) as nat);
+          assert(triangle(n) == n + triangle((n - 1) as nat));
+          assert(triangle((n - 1) as nat) == (n - 1) * n / 2);
+          assert(triangle(n) == n + (n - 1) * n / 2);
+          assert(triangle(n) == n * (n + 1) / 2);
+      }
+  }
+
+vc-spec: |-
+  fn tail_triangle(n: u32, idx: u32, sum: &mut u32)
+      // pre-conditions-start
+      requires
+          idx <= n,
+          *old(sum) == triangle(idx as nat),
+          triangle(n as nat) < 0x1_0000_0000,
+      // pre-conditions-end
+      // post-conditions-start
+      ensures
+          *sum == triangle(n as nat),
+      // post-conditions-end
+
+vc-code: |-
+  {
+      let mut current_idx = idx;
+      /* code modified by LLM (iteration 5): fixed loop body order to maintain invariant and prevent overflow */
+      while current_idx < n
+          invariant
+              current_idx <= n,
+              *sum == triangle(current_idx as nat),
+              triangle(n as nat) < 0x1_0000_0000,
+          decreases n - current_idx,
+      {
+          current_idx = current_idx + 1;
+          *sum = *sum + current_idx;
+          proof {
+              triangle_increment((current_idx - 1) as nat);
+          }
+      }
+  }
+
+vc-postamble: |-
+  
+  }
+  
+  fn main() {}
+

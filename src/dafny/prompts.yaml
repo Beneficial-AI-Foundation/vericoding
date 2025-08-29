@@ -120,16 +120,17 @@ generate_code_vibe: |
   ```
   
   ```vc-spec
-  [Formal Dafny method specification with signature, requires, ensures clauses based on the description]
+  [ONLY the method signature with requires/ensures clauses - NO implementation body]
   ```
   
   ```vc-code
-  [Implementation of the method that satisfies the specification]
+  [ONLY the method body implementation between braces {{ }} - NO signature]
   ```
   
   REQUIREMENTS:
-  - The SPEC section must contain a complete formal specification derived from the DESCRIPTION
-  - The CODE section must contain a verified implementation that satisfies the SPEC
+  - The SPEC section must contain ONLY the method signature with contracts (requires/ensures), NO body
+  - The CODE section must contain ONLY the method body implementation inside braces {{ }}
+  - Do NOT duplicate the method signature in both sections
   - The HELPERS section may contain auxiliary code and proofs needed for verification
   - Output ONLY valid Dafny code - NO conversational text, explanations, or comments outside the code
   - Use the exact format: ```vc-helpers, ```vc-spec, and ```vc-code
@@ -172,15 +173,18 @@ fix_verification_vibe: |
   ```
   
   ```vc-spec
-  [Fixed or improved formal specification if needed]
+  [ONLY method signature with requires/ensures clauses - NO body, fix if needed]
   ```
   
   ```vc-code
-  [Fixed implementation that passes verification]
+  [ONLY method body implementation between braces {{ }} - NO signature, fix if needed]
   ```
   
   REQUIREMENTS:
   - Fix the verification errors while staying true to the DESCRIPTION
+  - The SPEC section must contain ONLY the method signature with contracts, NO body
+  - The CODE section must contain ONLY the method body implementation inside braces {{ }}
+  - Do NOT duplicate the method signature in both sections
   - The SPEC may be updated if it doesn't correctly capture the DESCRIPTION
   - The CODE section must be fixed to pass verification and satisfy the SPEC
   - The HELPERS section may be updated to support verification

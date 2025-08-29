@@ -1,0 +1,72 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+fn contains(arr: &Vec<i32>, key: i32) -> (result: bool)
+    ensures
+        result == (exists|i: int| 0 <= i < arr.len() && (arr[i] == key)),
+{
+    let mut i = 0;
+    while i < arr.len()
+        invariant
+            0 <= i <= arr.len(),
+            forall|m: int| 0 <= m < i ==> (arr[m] != key),
+    {
+        if (arr[i] == key) {
+            return true;
+        }
+        i += 1;
+    }
+    false
+}
+
+proof fn lemma_contains_equiv(arr: &Vec<i32>, key: i32)
+    ensures
+        contains(arr, key) == arr@.contains(key)
+{
+    if contains(arr, key) {
+        assert(exists|i: int| 0 <= i < arr.len() && arr[i] == key);
+        assert(arr@.contains(key));
+    }
+    if arr@.contains(key) {
+        assert(exists|i: int| 0 <= i < arr@.len() && arr@[i] == key);
+        assert(exists|i: int| 0 <= i < arr.len() && arr[i] == key);
+        assert(contains(arr, key));
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn any_value_exists(arr1: &Vec<i32>, arr2: &Vec<i32>) -> (result: bool)
+    // post-conditions-start
+    ensures
+        result == exists|k: int| 0 <= k < arr1.len() && arr2@.contains(#[trigger] arr1[k]),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut i = 0;
+    while i < arr1.len()
+        invariant
+            0 <= i <= arr1.len(),
+            forall|k: int| 0 <= k < i ==> !arr2@.contains(#[trigger] arr1[k])
+    {
+        /* code modified by LLM (iteration 5): moved proof block and int cast inside proof to avoid using int in exec code */
+        proof {
+            let ghost_i: int = i as int;
+            lemma_contains_equiv(arr2, arr1[ghost_i]);
+        }
+        if contains(arr2, arr1[i]) {
+            return true;
+        }
+        i += 1;
+    }
+    false
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

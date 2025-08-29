@@ -1,0 +1,69 @@
+vc-preamble: |-
+  method parse_paren_group(s : string) returns (max_depth : int)
+      // pre-conditions-start
+      requires forall i :: i >= 0 && i < |s| ==> s[i] == '(' || s[i] == ')'
+      // pre-conditions-end
+      // post-conditions-start
+      ensures max_depth >= 0
+      // post-conditions-end
+  {
+    assume{:axiom} false;
+  }
+  method split(s : string) returns (res : seq<string>)
+      // pre-conditions-start
+      requires forall i :: i >= 0 && i < |s| ==> s[i] == '(' || s[i] == ')' || s[i] == ' '
+      // pre-conditions-end
+      // post-conditions-start
+      ensures forall s1 :: s1 in res ==> (forall i :: i >= 0 && i < |s1| ==> s1[i] == '(' || s1[i] == ')') && |s1| > 0
+      // post-conditions-end
+  {
+    assume{:axiom} false;
+  }
+
+vc-helpers: |-
+  // Helper function to check if a string contains only parentheses
+  predicate IsValidParenString(s: string)
+  {
+    forall i :: 0 <= i < |s| ==> s[i] == '(' || s[i] == ')'
+  }
+  
+  // Helper lemma for proving properties about split strings
+  lemma SplitValidatesInput(s: string, res: seq<string>)
+    requires forall i :: 0 <= i < |s| ==> s[i] == '(' || s[i] == ')' || s[i] == ' '
+    requires forall s1 :: s1 in res ==> (forall i :: 0 <= i < |s1| ==> s1[i] == '(' || s1[i] == ')') && |s1| > 0
+    ensures forall s1 :: s1 in res ==> IsValidParenString(s1)
+  {
+  }
+
+vc-description: |-
+  function_signature: method parse_nested_parens(paren_string: string) returns (res : seq<int>)
+  Parse input. Requires: the condition holds for all values. Ensures: the condition holds for all values.
+
+vc-spec: |-
+  method parse_nested_parens(paren_string: string) returns (res: seq<int>)
+    requires forall i :: 0 <= i < |paren_string| ==> paren_string[i] == '(' || paren_string[i] == ')' || paren_string[i] == ' '
+    ensures |res| > 0 ==> forall i :: 0 <= i < |res| ==> res[i] >= 0
+
+vc-code: |-
+  {
+    var groups := split(paren_string);
+    var depths: seq<int> := [];
+    for i := 0 to |groups|
+      invariant 0 <= i <= |groups|
+      invariant |depths| == i
+      invariant forall j :: 0 <= j < i ==> depths[j] >= 0
+    {
+      if |groups[i]| > 0 {
+        var depth := parse_paren_group(groups[i]);
+        depths := depths + [depth];
+      }
+    }
+    if |depths| == 0 {
+      return [0];
+    }
+    return depths;
+  }
+
+vc-postamble: |-
+
+

@@ -1,0 +1,68 @@
+vc-preamble: |-
+  function Prime(p: nat) : bool
+  {
+      p > 1 &&
+      forall k :: 1 < k < p ==> p % k != 0
+  }
+
+vc-helpers: |-
+  lemma PrimeFactorization(n: nat, p1: nat, p2: nat, p3: nat)
+    requires n == p1 * p2 * p3
+    requires Prime(p1) && Prime(p2) && Prime(p3)
+    ensures n > 1
+  {
+    assert p1 > 1 && p2 > 1 && p3 > 1;
+  }
+  
+  function method CheckPrimesUpTo(n: nat, p1: nat, p2: nat) : bool
+  {
+    if p1 > n / 4 then false
+    else if Prime(p1) then
+      CheckPrimesUpTo2(n, p1, p2)
+    else
+      CheckPrimesUpTo(n, p1 + 1, p2)
+  }
+  
+  function method CheckPrimesUpTo2(n: nat, p1: nat, p2: nat) : bool
+  {
+    if p2 > n / p1 / 2 then false
+    else if Prime(p2) && n % (p1 * p2) == 0 then
+      var p3 := n / (p1 * p2);
+      p3 > 1 && Prime(p3)
+    else
+      CheckPrimesUpTo2(n, p1, p2 + 1)
+  }
+  
+  function method CheckAllPrimes(n: nat) : bool
+  {
+    CheckPrimesUpTo(n, 2, 2)
+  }
+
+vc-description: |-
+  function_signature: def is_multiply_prime(a: int) -> bool
+  Write a function that returns true if the given number is the multiplication of 3 prime numbers and false otherwise. Knowing that (a) is less then 100.
+
+vc-spec: |-
+  ghost predicate is_multiply_prime_spec(a: int)
+    requires a < 100
+  {
+    if a <= 1 then false
+    else 
+      exists p1, p2, p3 :: 
+        p1 > 1 && p2 > 1 && p3 > 1 &&
+        Prime(p1) && Prime(p2) && Prime(p3) &&
+        a == p1 * p2 * p3
+  }
+
+vc-code: |-
+  function method is_multiply_prime(a: int) : bool
+    requires a < 100
+    ensures is_multiply_prime(a) == is_multiply_prime_spec(a)
+  {
+    if a <= 1 then false
+    else CheckAllPrimes(a)
+  }
+
+vc-postamble: |-
+
+

@@ -1,0 +1,64 @@
+type stringNat = s: string |
+  |s| > 0 && (|s| > 1 ==> s[0] != '0') &&
+  forall i | 0 <= i < |s| :: s[i] in "0123456789"
+  witness "1"
+function natToString(n: nat): stringNat {
+  match n
+    case 0 => "0" case 1 => "1" case 2 => "2" case 3 => "3" case 4 => "4"
+    case 5 => "5" case 6 => "6" case 7 => "7" case 8 => "8" case 9 => "9"
+    case _ => natToString(n / 10) + natToString(n % 10)
+}
+
+// <vc-helpers>
+lemma natToStringLength(n: nat)
+  ensures |natToString(n)| >= 1
+{
+  // The proof follows from the definition of natToString
+}
+
+lemma natToStringDigits(n: nat)
+  ensures forall i | 0 <= i < |natToString(n)| :: natToString(n)[i] in "0123456789"
+{
+  // The proof follows from the definition of natToString and stringNat type
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: method circular_shift(a: nat, shift: nat) returns (shifted: string)
+Process input. Ensures: returns the correct size/count; the condition holds for all values; returns the correct size/count.
+*/
+// </vc-description>
+
+// <vc-spec>
+method circular_shift(a: nat, shift: nat) returns (shifted: string)
+  ensures |shifted| == |natToString(a)|
+  ensures forall i | 0 <= i < |shifted| :: shifted[i] in "0123456789"
+  ensures |natToString(a)| > 0 ==> |shifted| > 0
+// </vc-spec>
+// <vc-code>
+{
+  var str := natToString(a);
+  if |str| <= 1 || shift == 0 {
+    shifted := str;
+  } else {
+    var effectiveShift := shift % |str|;
+    if effectiveShift == 0 {
+      shifted := str;
+    } else {
+      var leftPart := str[0..|str| - effectiveShift];
+      var rightPart := str[|str| - effectiveShift..];
+      shifted := rightPart + leftPart;
+    }
+  }
+}
+// </vc-code>
+
+method reverse(str: string) returns (rev: string)
+    // post-conditions-start
+    ensures |rev| == |str|
+    ensures forall k :: 0 <= k < |str| ==> rev[k] == str[|str| - 1 - k]
+    // post-conditions-end
+{
+  assume{:axiom} false;
+}

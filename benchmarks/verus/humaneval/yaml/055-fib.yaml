@@ -1,17 +1,3 @@
-vc-description: |-
-  /--
-  function_signature: "def fib(n: int) -> int"
-  docstring: |
-      Return n-th Fibonacci number.
-  test_cases:
-    - input: 10
-      expected_output: 55
-    - input: 1
-      expected_output: 1
-    - input: 8
-      expected_output: 21
-  -/
-
 vc-preamble: |-
   use vstd::prelude::*;
 
@@ -41,31 +27,19 @@ vc-preamble: |-
   // pure-end
 
 vc-helpers: |-
-  // pure-end
 
-  proof fn lemma_fib_monotonic(i: nat, j: nat)
-      // pre-conditions-start
-      requires
-          i <= j,
-      // pre-conditions-end
-      // post-conditions-start
-      ensures
-          spec_fib(i) <= spec_fib(j),
-      decreases j - i,
-      // post-conditions-end
-  {
-      // impl-start
-      if (i < 2 && j < 2) || i == j {
-      } else if i == j - 1 {
-          reveal_with_fuel(spec_fib, 2);
-          lemma_fib_monotonic(i, (j - 1) as nat);
-      } else {
-          lemma_fib_monotonic(i, (j - 1) as nat);
-          lemma_fib_monotonic(i, (j - 2) as nat);
-      }
-      // impl-end
-  }
-  // pure-end
+
+vc-description: |-
+  function_signature: "def fib(n: int) -> int"
+  docstring: |
+  Return n-th Fibonacci number.
+  test_cases:
+  - input: 10
+  expected_output: 55
+  - input: 1
+  expected_output: 1
+  - input: 8
+  expected_output: 21
 
 vc-spec: |-
   fn fib(n: u32) -> (ret: Option<u32>)

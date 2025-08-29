@@ -1,0 +1,46 @@
+// <vc-helpers>
+// No additional helpers needed for this implementation.
+// </vc-helpers>
+
+// <vc-spec>
+method triples_sum_to_zero(l : seq<int>) returns (result : bool)
+    // post-conditions-start
+    ensures result ==> exists i : int, j : int, k : int :: 0 <= i < |l| && 0 <= j < |l| && 0 <= k < |l| && i != j && j != k && i != k && l[i] + l[j] + l[k] == 0
+    ensures !result ==> forall i : int, j : int, k : int :: 0 <= i < |l| && 0 <= j < |l| && 0 <= k < |l| && i != j && j != k && i != k ==> l[i] + l[j] + l[k] != 0
+    // post-conditions-end
+// </vc-spec>
+// <vc-code>
+method TriplesSumToZero(l : seq<int>) returns (result : bool)
+{
+    result := false;
+    if |l| < 3 {
+        return;
+    }
+
+    var i := 0;
+    while i < |l| - 2
+        invariant 0 <= i <= |l| - 2
+        invariant !result ==> forall a: int, b: int, c: int :: 0 <= a < i && 0 <= b < |l| && 0 <= c < |l| && a != b && b != c && a != c ==> l[a] + l[b] + l[c] != 0
+    {
+        var j := i + 1;
+        while j < |l| - 1
+            invariant i + 1 <= j <= |l| - 1
+            invariant !result ==> forall a: int, b: int, c: int :: 0 <= a <= i && 0 <= b < j && 0 <= c < |l| && a != b && b != c && a != c ==> l[a] + l[b] + l[c] != 0
+        {
+            var k := j + 1;
+            while k < |l|
+                invariant j + 1 <= k <= |l|
+                invariant !result ==> forall a: int, b: int, c: int :: 0 <= a <= i && 0 <= b <= j && 0 <= c < k && a != b && b != c && a != c ==> l[a] + l[b] + l[c] != 0
+            {
+                if l[i] + l[j] + l[k] == 0 {
+                    result := true;
+                    return;
+                }
+                k := k + 1;
+            }
+            j := j + 1;
+        }
+        i := i + 1;
+    }
+}
+// </vc-code>

@@ -1,0 +1,105 @@
+use vstd::prelude::*;
+
+
+verus! {
+
+spec fn is_divisible(n: int, divisor: int) -> bool {
+    (n % divisor) == 0
+}
+// pure-end
+
+// <vc-helpers>
+proof fn divisibility_check_correct(n: u64, k: u64)
+    requires
+        n >= 2,
+        2 <= k < n,
+    ensures
+        (n % k == 0) == is_divisible(n as int, k as int)
+{
+}
+
+proof fn witness_exists(n: u64, k: u64)
+    requires
+        n >= 2,
+        2 <= k < n,
+        n % k == 0,
+    ensures
+        exists|j: int| 2 <= j < n && is_divisible(n as int, j)
+{
+    /* code modified by LLM (iteration 5): fix syntax error by using separate comparison assertions */
+    assert(2 <= k as int);
+    assert((k as int) < (n as int));
+    assert(is_divisible(n as int, k as int));
+}
+
+proof fn no_witness_means_prime(n: u64)
+    requires
+        n >= 2,
+        #[trigger] forall|k: u64| 2 <= k < n ==> n % k != 0,
+    ensures
+        !exists|j: int| 2 <= j < n && is_divisible(n as int, j)
+{
+    if exists|j: int| 2 <= j < n && is_divisible(n as int, j) {
+        let witness_j = choose|j: int| 2 <= j < n && is_divisible(n as int, j);
+        assert(2 <= witness_j < n);
+        assert(is_divisible(n as int, witness_j));
+        assert(witness_j >= 0);
+        assert(witness_j < u64::MAX);
+        let k = witness_j as u64;
+        assert(2 <= k < n);
+        assert(n % k == 0);
+        assert(false);
+    }
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+
+*/
+// </vc-description>
+
+// <vc-spec>
+fn is_non_prime(n: u64) -> (result: bool)
+    // pre-conditions-start
+    requires
+        n >= 2,
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        result == (exists|k: int| 2 <= k < n && is_divisible(n as int, k)),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut k = 2u64;
+    /* code modified by LLM (iteration 5): added trigger annotation to fix quantifier inference error */
+    while k < n
+        invariant
+            n >= 2,
+            2 <= k <= n,
+            #[trigger] forall|j: u64| 2 <= j < k ==> n % j != 0,
+        decreases n - k
+    {
+        if n % k == 0 {
+            proof {
+                witness_exists(n, k);
+            }
+            return true;
+        }
+        k = k + 1;
+    }
+    
+    proof {
+        assert(#[trigger] forall|j: u64| 2 <= j < n ==> n % j != 0);
+        no_witness_means_prime(n);
+    }
+    
+    false
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

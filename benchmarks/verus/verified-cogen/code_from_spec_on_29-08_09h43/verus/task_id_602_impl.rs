@@ -1,0 +1,148 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn count_frequency_rcr(seq: Seq<char>, key: char) -> (result: int)
+    decreases seq.len(),
+{
+    if seq.len() == 0 {
+        0
+    } else {
+        count_frequency_rcr(seq.drop_last(), key) + if (seq.last() == key) {
+            1 as int
+        } else {
+            0 as int
+        }
+    }
+}
+// pure-end
+spec fn check_first_repeated_char(str1: &Vec<char>, repeated_char: Option<(usize, char)>) -> (res: bool) {
+    if let Some((idx, rp_char)) = repeated_char {
+        &&& str1@.take(idx as int) =~= str1@.take(idx as int).filter(
+            |x: char| count_frequency_rcr(str1@, x) <= 1,
+        )
+        &&& count_frequency_rcr(str1@, rp_char) > 1
+    } else {
+        forall|k: int|
+            0 <= k < str1.len() ==> count_frequency_rcr(str1@, #[trigger] str1[k]) <= 1
+    }
+}
+// pure-end
+
+// <vc-helpers>
+fn count_frequency(arr: &Vec<char>, key: char) -> (frequency: usize)
+    // post-conditions-start
+    ensures
+        count_frequency_rcr(arr@, key) == frequency,
+    // post-conditions-end
+{
+    // impl-start
+    let mut index = 0;
+    let mut counter = 0;
+    /* code modified by LLM (iteration 4): added decreases clause for loop termination */
+    while index < arr.len()
+        // invariants-start
+        invariant
+            0 <= index <= arr.len(),
+            0 <= counter <= index,
+            count_frequency_rcr(arr@.subrange(0, index as int), key) == counter,
+        // invariants-end
+        decreases arr.len() - index
+    {
+        if (arr[index] == key) {
+            counter += 1;
+        }
+        index += 1;
+        // assert-start
+        assert(arr@.subrange(0, index - 1 as int) == arr@.subrange(0, index as int).drop_last());
+        // assert-end
+    }
+    // assert-start
+    assert(arr@ == arr@.subrange(0, index as int));
+    // assert-end
+    counter
+    // impl-end
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+
+*/
+// </vc-description>
+
+// <vc-spec>
+fn first_repeated_char(str1: &Vec<char>) -> (repeated_char: Option<(usize, char)>)
+    // post-conditions-start
+    ensures
+        check_first_repeated_char(str1, repeated_char),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut i = 0;
+    /* code modified by LLM (iteration 5): fixed filter invariant proof with correct sequence extension reasoning */
+    while i < str1.len()
+        invariant
+            0 <= i <= str1.len(),
+            forall|k: int| 0 <= k < i ==> count_frequency_rcr(str1@, #[trigger] str1[k]) <= 1,
+            str1@.take(i as int) =~= str1@.take(i as int).filter(
+                |x: char| count_frequency_rcr(str1@, x) <= 1,
+            ),
+        decreases str1.len() - i
+    {
+        let freq = count_frequency(str1, str1[i]);
+        if freq > 1 {
+            return Some((i, str1[i]));
+        }
+        i += 1;
+        /* code modified by LLM (iteration 5): corrected proof logic for filter sequence equality */
+        proof {
+            let prev_seq = str1@.take((i-1) as int);
+            let curr_seq = str1@.take(i as int);
+            let ch = str1[i-1];
+            
+            assert(curr_seq == prev_seq.push(ch));
+            assert(count_frequency_rcr(str1@, ch) <= 1);
+            
+            assert forall|x: char| #[trigger] curr_seq.filter(|y: char| count_frequency_rcr(str1@, y) <= 1).contains(x) implies (
+                prev_seq.filter(|y: char| count_frequency_rcr(str1@, y) <= 1).push(ch).contains(x)
+            ) by {
+                if curr_seq.contains(x) && count_frequency_rcr(str1@, x) <= 1 {
+                    if x == ch {
+                        assert(prev_seq.filter(|y: char| count_frequency_rcr(str1@, y) <= 1).push(ch).contains(x));
+                    } else {
+                        assert(prev_seq.contains(x));
+                        assert(prev_seq.filter(|y: char| count_frequency_rcr(str1@, y) <= 1).contains(x));
+                        assert(prev_seq.filter(|y: char| count_frequency_rcr(str1@, y) <= 1).push(ch).contains(x));
+                    }
+                }
+            };
+            
+            assert forall|x: char| #[trigger] prev_seq.filter(|y: char| count_frequency_rcr(str1@, y) <= 1).push(ch).contains(x) implies (
+                curr_seq.filter(|y: char| count_frequency_rcr(str1@, y) <= 1).contains(x)
+            ) by {
+                if prev_seq.filter(|y: char| count_frequency_rcr(str1@, y) <= 1).contains(x) {
+                    assert(prev_seq.contains(x));
+                    assert(count_frequency_rcr(str1@, x) <= 1);
+                    assert(curr_seq.contains(x));
+                    assert(curr_seq.filter(|y: char| count_frequency_rcr(str1@, y) <= 1).contains(x));
+                } else if x == ch {
+                    assert(count_frequency_rcr(str1@, x) <= 1);
+                    assert(curr_seq.contains(x));
+                    assert(curr_seq.filter(|y: char| count_frequency_rcr(str1@, y) <= 1).contains(x));
+                }
+            };
+            
+            assert(curr_seq.filter(|x: char| count_frequency_rcr(str1@, x) <= 1) =~= 
+                   prev_seq.filter(|x: char| count_frequency_rcr(str1@, x) <= 1).push(ch));
+        }
+    }
+    None
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

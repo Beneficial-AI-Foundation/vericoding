@@ -1,0 +1,96 @@
+
+
+// <vc-helpers>
+lemma HelperPreservesInvariant(l: seq<int>, result: seq<int>, i: int, newResult: seq<int>)
+    requires 0 <= i < |l|
+    requires newResult == result + [l[i]]
+    requires l[i] > 0
+    requires forall j :: 0 <= j < i ==> (l[j] > 0 ==> exists k :: 0 <= k < |result| && result[k] == l[j])
+    requires forall j :: 0 <= j < |result| ==> exists k :: 0 <= k < |l| && l[k] == result[j]
+    ensures forall j :: 0 <= j <= i ==> (l[j] > 0 ==> exists k :: 0 <= k < |newResult| && newResult[k] == l[j])
+    ensures forall j :: 0 <= j < |newResult| ==> exists k :: 0 <= k < |l| && l[k] == newResult[j]
+{
+    assert newResult == result + [l[i]];
+    assert |newResult| == |result| + 1;
+    assert newResult[|result|] == l[i];
+    
+    forall j | 0 <= j <= i && l[j] > 0
+        ensures exists k :: 0 <= k < |newResult| && newResult[k] == l[j]
+    {
+        if j == i {
+            assert newResult[|result|] == l[j];
+        } else {
+            assert j < i;
+            assert exists k :: 0 <= k < |result| && result[k] == l[j];
+            var k :| 0 <= k < |result| && result[k] == l[j];
+            assert newResult[k] == result[k] == l[j];
+        }
+    }
+    
+    forall j | 0 <= j < |newResult|
+        ensures exists k :: 0 <= k < |l| && l[k] == newResult[j]
+    {
+        if j < |result| {
+            assert newResult[j] == result[j];
+            assert exists k :: 0 <= k < |l| && l[k] == result[j];
+        } else {
+            assert j == |result|;
+            assert newResult[j] == l[i];
+            assert i < |l|;
+        }
+    }
+}
+
+lemma PostconditionFromInvariants(l: seq<int>, result: seq<int>)
+    requires forall j :: 0 <= j < |result| ==> result[j] > 0
+    requires |result| <= |l|
+    requires forall j :: 0 <= j < |l| ==> (l[j] > 0 ==> exists k :: 0 <= k < |result| && result[k] == l[j])
+    requires forall j :: 0 <= j < |result| ==> exists k :: 0 <= k < |l| && l[k] == result[j]
+    ensures forall i : int :: i >= 0 && i < |result| ==> result[i] > 0
+    ensures |result| <= |l|
+    ensures forall i1 :: i1 >= 0 && i1 < |l| ==> (l[i1] > 0 ==> exists i2 :: i2 >= 0 && i2 < |result| && result[i2] == l[i1])
+    ensures |result| == 0 || (forall i1 : int :: i1 >= 0 && i1 < |result| ==> (exists i2 :: i2 >= 0 && i2 < |l| && l[i2] == result[i1]))
+{
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: def get_positive(l: list)
+Return only positive numbers in the list.
+*/
+// </vc-description>
+
+// <vc-spec>
+method get_positive(l : seq<int>) returns (result : seq<int>)
+    // post-conditions-start
+    ensures forall i : int :: i >= 0 && i < |result| ==> result[i] > 0
+    ensures |result| <= |l|
+    ensures forall i1 :: i1 >= 0 && i1 < |l| ==> (l[i1] > 0 ==> exists i2 :: i2 >= 0 && i2 < |result| && result[i2] == l[i1])
+    ensures |result| == 0 || (forall i1 : int :: i1 >= 0 && i1 < |result| ==> (exists i2 :: i2 >= 0 && i2 < |l| && l[i2] == result[i1]))
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+  result := [];
+  var i := 0;
+  while i < |l|
+    invariant 0 <= i <= |l|
+    invariant forall j :: 0 <= j < |result| ==> result[j] > 0
+    invariant |result| <= i
+    invariant forall j :: 0 <= j < i ==> (l[j] > 0 ==> exists k :: 0 <= k < |result| && result[k] == l[j])
+    invariant forall j :: 0 <= j < |result| ==> exists k :: 0 <= k < |l| && l[k] == result[j]
+  {
+    if l[i] > 0 {
+      var oldResult := result;
+      result := result + [l[i]];
+      HelperPreservesInvariant(l, oldResult, i, result);
+    }
+    i := i + 1;
+  }
+  
+  PostconditionFromInvariants(l, result);
+}
+// </vc-code>
+

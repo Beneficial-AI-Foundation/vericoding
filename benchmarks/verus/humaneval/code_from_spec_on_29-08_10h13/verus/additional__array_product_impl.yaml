@@ -1,0 +1,48 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+  spec fn product_seq(a: Seq<i32>, b: Seq<i32>) -> Seq<i64>
+      recommends a.len() == b.len()
+  {
+      Seq::new(a.len(), |i: int| a[i] as i64 * b[i] as i64)
+  }
+
+vc-description: |-
+  function_signature: "fn array_product(a: Vec<i32>, b: Vec<i32>) -> (result: Vec<i64>) by (nonlinear_arith)"
+  docstring: Implement array product functionality.
+
+vc-spec: |-
+  fn array_product(a: Vec<i32>, b: Vec<i32>) -> (result: Vec<i64>) by (nonlinear_arith)
+      requires a.len() == b.len()
+      ensures result.len() == a.len()
+      ensures result@ == product_seq(a@, b@)
+
+vc-code: |-
+  {
+      let mut result = Vec::new();
+      
+      for i in 0..a.len()
+          invariant 
+              result.len() == i,
+              forall |j: int| 0 <= j < i ==> result@[j] == a@[j] as i64 * b@[j] as i64
+      {
+          let product = a[i] as i64 * b[i] as i64;
+          result.push(product);
+      }
+      
+      /* code modified by LLM (iteration 5): added proof block to establish sequence equivalence */
+      proof {
+          assert(result@ =~= product_seq(a@, b@));
+      }
+      
+      result
+  }
+
+vc-postamble: |-
+  
+  fn main() {}
+  }
+

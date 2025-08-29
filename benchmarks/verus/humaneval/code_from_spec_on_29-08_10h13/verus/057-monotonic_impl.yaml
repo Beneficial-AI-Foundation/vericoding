@@ -1,0 +1,87 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+  proof fn lemma_monotonic_empty_and_single(l: Vec<i32>)
+      requires l@.len() <= 1
+      ensures (forall|i: int, j: int| 0 <= i < j < l@.len() ==> l@.index(i) <= l@.index(j)) || 
+              (forall|i: int, j: int| 0 <= i < j < l@.len() ==> l@.index(i) >= l@.index(j))
+  {
+  }
+  
+  proof fn lemma_monotonic_two_elements(l: Vec<i32>)
+      requires l@.len() == 2
+      ensures (forall|i: int, j: int| 0 <= i < j < l@.len() ==> l@.index(i) <= l@.index(j)) || 
+              (forall|i: int, j: int| 0 <= i < j < l@.len() ==> l@.index(i) >= l@.index(j))
+  {
+  }
+
+vc-description: |-
+  function_signature: "def monotonic(numbers: List[int]) -> Bool"
+  docstring: |
+  Return True if list elements are monotonically increasing or decreasing.
+  test_cases:
+  - input: [1, 2, 4, 20]
+  expected_output: True
+  - input: [1, 20, 4, 10]
+  expected_output: False
+  - input: [4, 1, 0, -10]
+  expected_output: True
+
+vc-spec: |-
+  fn monotonic(l: Vec<i32>) -> (ret: bool)
+      // post-conditions-start
+      ensures
+          ret <==> (forall|i: int, j: int| 0 <= i < j < l@.len() ==> l@.index(i) <= l@.index(j)) || (
+          forall|i: int, j: int| 0 <= i < j < l@.len() ==> l@.index(i) >= l@.index(j)),
+      // post-conditions-end
+
+vc-code: |-
+  {
+      if l.len() <= 1 {
+          proof {
+              lemma_monotonic_empty_and_single(l);
+          }
+          return true;
+      }
+      
+      if l.len() == 2 {
+          proof {
+              lemma_monotonic_two_elements(l);
+          }
+          return true;
+      }
+      
+      let mut is_increasing = true;
+      let mut is_decreasing = true;
+      
+      for i in 1..l.len()
+          invariant
+              is_increasing ==> forall|k: int, m: int| 0 <= k < m < i ==> l@.index(k) <= l@.index(m),
+              is_decreasing ==> forall|k: int, m: int| 0 <= k < m < i ==> l@.index(k) >= l@.index(m),
+              /* code modified by LLM (iteration 5): fixed proof block syntax */
+              !is_increasing ==> exists|k: int| 0 <= k < (i as int) - 1 && l@.index(k) > l@.index(k + 1),
+              /* code modified by LLM (iteration 5): fixed proof block syntax */
+              !is_decreasing ==> exists|k: int| 0 <= k < (i as int) - 1 && l@.index(k) < l@.index(k + 1),
+      {
+          if l[i - 1] > l[i] {
+              is_increasing = false;
+          }
+          if l[i - 1] < l[i] {
+              is_decreasing = false;
+          }
+          if !is_increasing && !is_decreasing {
+              return false;
+          }
+      }
+      
+      is_increasing || is_decreasing
+  }
+
+vc-postamble: |-
+  
+  }
+  fn main() {}
+

@@ -1,8 +1,0 @@
-vc-preamble: ''
-vc-helpers: ''
-vc-spec: "method MinSecondValueFirst(s: array<seq<int>>) returns (firstOfMinSecond: int)\n    requires s.Length > 0\n    requires forall i :: 0 <= i < s.Length ==> |s[i]| >= 2\n    ensures exists i :: 0 <= i < s.Length && firstOfMinSecond == s[i][0] && \n        (forall j :: 0 <= j < s.Length ==> s[i][1] <= s[j][1])"
-vc-code: |-
-  {
-    assume false;
-  }
-vc-postamble: ''

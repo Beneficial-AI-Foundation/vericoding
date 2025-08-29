@@ -1,0 +1,59 @@
+vc-preamble: |-
+  datatype Option<T> = None | Some(T)
+  function getVal(mx : Option<string>) : string
+      requires mx != None
+  {
+      match mx {
+          case Some(n) => n
+      }
+  }
+
+vc-helpers: |-
+  // Helper function to compute the length of a string
+  function length(s: string): nat {
+      |s|
+  }
+  
+  // Helper predicate to check if a string is the longest in the list
+  predicate isLongest(s: string, strings: seq<string>) {
+      forall other :: other in strings ==> length(s) >= length(other)
+  }
+
+vc-description: |-
+  function_signature: def longest(strings: List[str]) -> Optional[str]
+  Out of list of strings, return the longest one. Return the first one in case of multiple strings of the same length. Return None in case the input list is empty.
+
+vc-spec: |-
+  method longest(strings: seq<string>) returns (result: Option<string>)
+      ensures strings == [] ==> result == None
+      ensures strings != [] ==> result != None && result.Some? && result.Some in strings && isLongest(result.Some, strings)
+
+vc-code: |-
+  {
+      if strings == [] {
+          return None;
+      }
+      
+      var maxLen := length(strings[0]);
+      var maxStr := strings[0];
+      var i := 1;
+      
+      while i < |strings|
+          invariant 0 <= i <= |strings|
+          invariant 0 < |strings|
+          invariant maxStr in strings[..i]
+          invariant forall j :: 0 <= j < i ==> length(maxStr) >= length(strings[j])
+      {
+          if length(strings[i]) > maxLen {
+              maxLen := length(strings[i]);
+              maxStr := strings[i];
+          }
+          i := i + 1;
+      }
+      
+      return Some(maxStr);
+  }
+
+vc-postamble: |-
+
+

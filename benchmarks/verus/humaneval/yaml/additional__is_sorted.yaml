@@ -1,14 +1,14 @@
-vc-description: |-
-  /--
-  function_signature: "fn is_sorted(lst: &[i32]) -> (result: bool)"
-  docstring: Sort elements according to specified criteria.
-  -/
 vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
 
 vc-helpers: |-
+
+
+vc-description: |-
+  function_signature: "fn is_sorted(lst: &[i32]) -> (result: bool)"
+  docstring: Sort elements according to specified criteria.
 
 vc-spec: |-
   #[verifier::loop_isolation(false)]

@@ -1,0 +1,154 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn spec_prime_helper(num: int, limit: int) -> (ret:bool) {
+      forall|j: int| 2 <= j < limit ==> (#[trigger] (num % j)) != 0
+  }
+  // pure-end
+  // pure-end
+  
+  spec fn spec_prime(num: int) -> (ret:bool) {
+      spec_prime_helper(num, num)
+  }
+  // pure-end
+
+vc-helpers: |-
+  proof fn prime_divisor_exists(n: u32)
+      requires n >= 2
+      ensures exists|d: u32| 2 <= d <= n && spec_prime(d as int) && (n as int) % (d as int) == 0
+  {
+      if spec_prime(n as int) {
+          assert(spec_prime(n as int) && (n as int) % (n as int) == 0);
+      } else {
+          assert(!spec_prime_helper(n as int, n as int));
+          assert(exists|j: int| 2 <= j < n && (n as int) % j == 0);
+          let witness_j = choose|j: int| 2 <= j < n && (n as int) % j == 0;
+          prime_divisor_exists_rec(n, witness_j as u32);
+      }
+  }
+  
+  /* code modified by LLM (iteration 4): added decreases clause for recursive function */
+  proof fn prime_divisor_exists_rec(n: u32, d: u32)
+      requires 
+          n >= 2,
+          2 <= d < n,
+          (n as int) % (d as int) == 0
+      ensures exists|p: u32| 2 <= p <= n && spec_prime(p as int) && (n as int) % (p as int) == 0
+      decreases d
+  {
+      if spec_prime(d as int) {
+          assert(spec_prime(d as int) && (n as int) % (d as int) == 0);
+      } else {
+          assert(!spec_prime_helper(d as int, d as int));
+          assert(exists|j: int| 2 <= j < d && (d as int) % j == 0);
+          let witness_j = choose|j: int| 2 <= j < d && (d as int) % j == 0;
+          assert((n as int) % (witness_j) == 0) by {
+              assert((n as int) % (d as int) == 0);
+              assert((d as int) % witness_j == 0);
+          };
+          prime_divisor_exists_rec(n, witness_j as u32);
+      }
+  }
+  
+  proof fn two_is_prime()
+      ensures spec_prime(2int)
+  {
+      assert(forall|j: int| 2 <= j < 2 ==> (2int % j) != 0);
+  }
+
+vc-description: |-
+  function_signature: "def largest_prime_factor(n: Nat) -> Nat"
+  docstring: |
+  Return the largest prime factor of n. Assume n > 1 and is not a prime.
+  test_cases:
+  - input: 13195
+  expected_output: 29
+  - input: 2048
+  expected_output: 2
+
+vc-spec: |-
+  fn largest_prime_factor(n: u32) -> (largest: u32)
+      // pre-conditions-start
+      requires
+          n >= 2,
+      // pre-conditions-end
+      // post-conditions-start
+      ensures
+          1 <= largest <= n,
+          spec_prime(largest as int),
+      // post-conditions-end
+
+vc-code: |-
+  {
+      proof { prime_divisor_exists(n); }
+      
+      let mut largest = 2u32;
+      let mut remaining = n;
+      
+      proof { two_is_prime(); }
+      
+      /* code modified by LLM (iteration 4): added decreases clause for while loop */
+      while remaining > 1
+          invariant
+              2 <= remaining <= n,
+              1 <= largest <= n,
+              spec_prime(largest as int),
+              (n as int) % (largest as int) == 0,
+          decreases remaining
+      {
+          let mut factor = 2u32;
+          /* code modified by LLM (iteration 5): added decreases clause for inner while loop */
+          while factor * factor <= remaining && remaining % factor != 0
+              invariant
+                  2 <= factor,
+                  factor * factor <= remaining + 1,
+                  forall|j: u32| 2 <= j < factor ==> remaining % j != 0,
+              decreases remaining - factor * factor
+          {
+              factor = factor + 1;
+          }
+          
+          if remaining % factor == 0 {
+              largest = factor;
+              remaining = remaining / factor;
+              
+              proof {
+                  if factor == remaining / factor {
+                      assert(spec_prime_helper(factor as int, factor as int)) by {
+                          assert(forall|j: u32| 2 <= j < factor ==> remaining % j != 0);
+                          assert(factor * factor <= remaining);
+                          if factor > 2 {
+                              assert(forall|j: int| 2 <= j < (factor as int) ==> (factor as int) % j != 0);
+                          } else {
+                              two_is_prime();
+                          }
+                      };
+                  } else {
+                      prime_divisor_exists(remaining);
+                  }
+              }
+          } else {
+              proof {
+                  assert(factor * factor > remaining);
+                  assert(forall|j: u32| 2 <= j < factor ==> remaining % j != 0);
+                  if remaining > 2 {
+                      assert(spec_prime_helper(remaining as int, remaining as int));
+                  } else {
+                      two_is_prime();
+                  }
+              }
+              largest = remaining;
+              break;
+          }
+      }
+      
+      largest
+  }
+
+vc-postamble: |-
+  
+  }
+  fn main() {}
+

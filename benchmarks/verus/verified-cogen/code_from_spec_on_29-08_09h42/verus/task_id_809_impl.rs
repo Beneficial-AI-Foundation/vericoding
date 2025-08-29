@@ -1,0 +1,43 @@
+use vstd::prelude::*;
+
+
+verus! {
+
+// <vc-helpers>
+
+// </vc-helpers>
+
+// <vc-spec>
+fn is_smaller(arr1: &Vec<i32>, arr2: &Vec<i32>) -> (result: bool)
+    // pre-conditions-start
+    requires
+        arr1.len() == arr2.len(),
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        result == (forall|i: int| 0 <= i < arr1.len() ==> arr1[i] > arr2[i]),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut i = 0;
+    /* code modified by LLM (iteration 3): added bounds check to fix precondition errors */
+    while i < arr1.len()
+        invariant
+            0 <= i <= arr1.len(),
+            forall|j: int| 0 <= j < i && j < arr2.len() ==> arr1[j] > arr2[j],
+        decreases arr1.len() - i,
+    {
+        if i < arr2.len() && arr1[i] <= arr2[i] {
+            return false;
+        }
+        i += 1;
+    }
+    true
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

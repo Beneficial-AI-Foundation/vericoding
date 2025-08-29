@@ -1,0 +1,79 @@
+vc-preamble: |-
+
+
+vc-helpers: |-
+  function GetSortedIndex(len: int, i: int): int
+      requires 0 <= i < len
+  {
+      if i % 2 == 0 then i / 2 else len - (i - 1) / 2 - 1
+  }
+  
+  lemma StrangeMappingCorrect(s: seq<int>, sorted: seq<int>, strange: seq<int>)
+      requires |s| == |sorted| == |strange|
+      requires multiset(s) == multiset(sorted)
+      requires forall i :: 0 <= i < |s| && i % 2 == 0 ==> strange[i] == sorted[i / 2]
+      requires forall i :: 0 <= i < |s| && i % 2 == 1 ==> strange[i] == sorted[|s| - (i - 1) / 2 - 1]
+      ensures true
+  {
+  }
+
+vc-description: |-
+  function_signature: method strange_sort_list_helper(s: seq<int>) returns (sorted: seq<int>, strange: seq<int>)
+  Sort elements. Ensures: returns a sorted permutation of the input; returns the correct size/count; the result is sorted according to the ordering relation; the result is sorted according to the ordering relation.
+
+vc-spec: |-
+  method strange_sort_list_helper(s: seq<int>) returns (sorted: seq<int>, strange: seq<int>)
+      // post-conditions-start
+      ensures multiset(s) == multiset(sorted)
+      ensures |s| == |sorted| == |strange|
+      ensures forall i :: 0 <= i < |s| && i % 2 == 0 ==> strange[i] == sorted[i / 2]
+      ensures forall i :: 0 <= i < |s| && i % 2 == 1 ==> strange[i] == sorted[|s| - (i - 1) / 2 - 1]
+      // post-conditions-end
+
+vc-code: |-
+  method strange_sort_list_helper(s: seq<int>) returns (sorted: seq<int>, strange: seq<int>)
+      ensures multiset(s) == multiset(sorted)
+      ensures |s| == |sorted| == |strange|
+      ensures forall i :: 0 <= i < |s| && i % 2 == 0 ==> strange[i] == sorted[i / 2]
+      ensures forall i :: 0 <= i < |s| && i % 2 == 1 ==> strange[i] == sorted[|s| - (i - 1) / 2 - 1]
+  {
+      sorted := SortSeq(s);
+      var strangeSeq: seq<int> := [];
+      var len := |s|;
+      var i := 0;
+      
+      while i < len
+          invariant 0 <= i <= len
+          invariant |strangeSeq| == i
+          invariant forall k :: 0 <= k < i && k % 2 == 0 ==> strangeSeq[k] == sorted[k / 2]
+          invariant forall k :: 0 <= k < i && k % 2 == 1 ==> strangeSeq[k] == sorted[len - (k - 1) / 2 - 1]
+      {
+          var idx := GetSortedIndex(len, i);
+          strangeSeq := strangeSeq + [sorted[idx]];
+          i := i + 1;
+      }
+      
+      strange := strangeSeq;
+      assert forall k :: 0 <= k < len && k % 2 == 0 ==> strange[k] == sorted[k / 2];
+      assert forall k :: 0 <= k < len && k % 2 == 1 ==> strange[k] == sorted[len - (k - 1) / 2 - 1];
+      return sorted, strange;
+  }
+
+vc-postamble: |-
+  method strange_sort_list(s: seq<int>) returns (strange: seq<int>)
+      // post-conditions-start
+      ensures |s| == |strange|
+      // post-conditions-end
+  {
+    assume{:axiom} false;
+  }
+  method SortSeq(s: seq<int>) returns (sorted: seq<int>)
+    // post-conditions-start
+    ensures forall i, j :: 0 <= i < j < |sorted| ==> sorted[i] <= sorted[j]
+    ensures |sorted| == |s|
+    ensures multiset(s) == multiset(sorted)
+    // post-conditions-end
+  {
+    assume{:axiom} false;
+  }
+

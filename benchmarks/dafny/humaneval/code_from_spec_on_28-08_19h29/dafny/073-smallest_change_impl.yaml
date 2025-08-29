@@ -1,0 +1,80 @@
+vc-preamble: |-
+
+
+vc-helpers: |-
+  ghost predicate IsPalindrome(arr: seq<int>, i: int, j: int)
+    requires 0 <= i <= j < |arr|
+  {
+    forall k :: i <= k <= j ==> arr[k] == arr[i + j - k]
+  }
+  
+  lemma PalindromeConstruction(arr: seq<int>, modified: seq<int>, count: int)
+    requires |arr| > 0
+    requires |modified| == |arr|
+    requires count >= 0
+    requires forall i :: 0 <= i < |arr| / 2 ==> modified[i] == modified[|arr| - 1 - i]
+    requires if |arr| % 2 == 1 then modified[|arr| / 2] == modified[|arr| / 2] else true
+    requires count == |set i: int | 0 <= i < |arr| / 2 && modified[i] != arr[i]| * 2 + 
+                      (if |arr| % 2 == 1 && modified[|arr| / 2] != arr[|arr| / 2] then 1 else 0)
+    ensures IsPalindrome(modified, 0, |arr| - 1)
+  {
+  }
+
+vc-description: |-
+  function_signature: def smallest_change(arr: List[int]) -> int
+  Given an array arr of integers, find the minimum number of elements that need to be changed to make the array palindromic. A palindromic array is an array that is read the same backwards and forwards. In one change, you can change one element to any other element.
+
+vc-spec: |-
+  method smallest_change(arr: seq<int>) returns (changes: int)
+    requires |arr| > 0
+    ensures changes >= 0
+    ensures exists modified: seq<int> :: |modified| == |arr| && 
+              IsPalindrome(modified, 0, |arr| - 1) && 
+              changes == |set i: int | 0 <= i < |arr| && modified[i] != arr[i]|
+
+vc-code: |-
+  {
+    var n := |arr|;
+    var count := 0;
+    var i := 0;
+    while i < n / 2
+      invariant 0 <= i <= n / 2
+      invariant count == |set k: int | 0 <= k < i && arr[k] != arr[n - 1 - k]|
+    {
+      if arr[i] != arr[n - 1 - i] {
+        count := count + 1;
+      }
+      i := i + 1;
+    }
+    var modified: seq<int> := arr;
+    i := 0;
+    while i < n / 2
+      invariant 0 <= i <= n / 2
+      invariant |modified| == n
+      invariant forall k :: 0 <= k < i ==> modified[k] == modified[n - 1 - k]
+      invariant forall k :: 0 <= k < i ==> (modified[k] != arr[k] ==> arr[k] != arr[n - 1 - k])
+      invariant forall k :: i <= k < n ==> modified[k] == arr[k]
+    {
+      if arr[i] != arr[n - 1 - i] {
+        modified := modified[i := arr[n - 1 - i]];
+        modified := modified[n - 1 - i := arr[n - 1 - i]];
+      }
+      i := i + 1;
+    }
+    var finalCount := count * 2;
+    if n % 2 == 1 {
+      var mid := n / 2;
+      if modified[mid] != arr[mid] {
+        modified := modified[mid := arr[mid]];
+      }
+    }
+    assert forall k :: 0 <= k < n / 2 ==> modified[k] == modified[n - 1 - k];
+    assert finalCount == |set i: int | 0 <= i < n / 2 && arr[i] != arr[n - 1 - i]| * 2;
+    assert finalCount == |set i: int | 0 <= i < n && modified[i] != arr[i]|;
+    PalindromeConstruction(arr, modified, finalCount);
+    return finalCount;
+  }
+
+vc-postamble: |-
+
+

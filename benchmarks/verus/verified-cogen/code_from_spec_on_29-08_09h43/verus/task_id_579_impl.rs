@@ -1,0 +1,120 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+spec fn contains_spec(arr: &Vec<i32>, key: i32) -> bool {
+    exists|i: int| 0 <= i < arr.len() && (arr[i] == key)
+}
+
+exec fn contains(arr: &Vec<i32>, key: i32) -> (result: bool)
+    ensures
+        result == contains_spec(arr, key),
+{
+    let mut index = 0;
+    while index < arr.len()
+        invariant
+            forall|m: int| 0 <= m < index ==> (arr[m] != key),
+    {
+        if (arr[index] == key) {
+            return true;
+        }
+        index += 1;
+    }
+    false
+}
+
+proof fn lemma_vec_push<T>(vec: Seq<T>, i: T, l: usize)
+    requires
+        l == vec.len(),
+    ensures
+        forall|k: int| 0 <= k < vec.len() ==> #[trigger] vec[k] == vec.push(i)[k],
+        vec.push(i).index(l as int) == i,
+{
+}
+
+proof fn lemma_contains_push(result: &Vec<i32>, val: i32)
+    requires
+        !contains_spec(result, val),
+    ensures
+        forall|i: int, j: int| 0 <= i < j < result.len() ==> #[trigger] result[i] != #[trigger] result[j],
+        forall|i: int, j: int| 0 <= i < j < result@.push(val).len() ==> #[trigger] result@.push(val)[i] != #[trigger] result@.push(val)[j],
+{
+}
+
+proof fn lemma_contains_preserved(result: &Vec<i32>, val: i32, x: i32)
+    ensures
+        result@.contains(x) ==> result@.push(val).contains(x),
+{
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+
+*/
+// </vc-description>
+
+// <vc-spec>
+fn find_dissimilar(arr1: &Vec<i32>, arr2: &Vec<i32>) -> (result: Vec<i32>)
+    // post-conditions-start
+    ensures
+        forall|i: int|
+            0 <= i < arr1.len() ==> (!arr2@.contains(#[trigger] arr1[i]) ==> result@.contains(
+                arr1[i],
+            )),
+        forall|i: int|
+            0 <= i < arr2.len() ==> (!arr1@.contains(#[trigger] arr2[i]) ==> result@.contains(
+                arr2[i],
+            )),
+        forall|i: int, j: int|
+            0 <= i < j < result.len() ==> #[trigger] result[i] != #[trigger] result[j],
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut result = Vec::new();
+    
+    // Add elements from arr1 that are not in arr2
+    let mut i = 0;
+    while i < arr1.len()
+        invariant
+            forall|k: int| 0 <= k < i ==> (!arr2@.contains(#[trigger] arr1[k]) ==> result@.contains(arr1[k])),
+            forall|k: int, j: int| 0 <= k < j < result.len() ==> #[trigger] result[k] != #[trigger] result[j],
+    {
+        /* code modified by LLM (iteration 5): use exec function instead of spec function */
+        if !contains(arr2, arr1[i]) && !contains(&result, arr1[i]) {
+            proof {
+                lemma_contains_push(&result, arr1[i as int]);
+            }
+            result.push(arr1[i]);
+        }
+        i += 1;
+    }
+    
+    // Add elements from arr2 that are not in arr1
+    let mut j = 0;
+    while j < arr2.len()
+        invariant
+            forall|k: int| 0 <= k < arr1.len() ==> (!arr2@.contains(#[trigger] arr1[k]) ==> result@.contains(arr1[k])),
+            forall|k: int| 0 <= k < j ==> (!arr1@.contains(#[trigger] arr2[k]) ==> result@.contains(arr2[k])),
+            forall|k: int, l: int| 0 <= k < l < result.len() ==> #[trigger] result[k] != #[trigger] result[l],
+    {
+        /* code modified by LLM (iteration 5): use exec function instead of spec function */
+        if !contains(arr1, arr2[j]) && !contains(&result, arr2[j]) {
+            proof {
+                lemma_contains_push(&result, arr2[j as int]);
+            }
+            result.push(arr2[j]);
+        }
+        j += 1;
+    }
+    
+    result
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

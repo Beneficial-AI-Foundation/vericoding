@@ -1,13 +1,3 @@
-vc-description: |-
-  /--
-  function_signature: "def solve(n: list[int]) -> int"
-  docstring: |
-      Given a non-empty list of integers lst, add the even elements that are at odd indices.
-  test_cases:
-    - input: [4, 2, 6, 7]
-      output: 2
-  -/
-
 vc-preamble: |-
   use vstd::prelude::*;
 
@@ -35,6 +25,15 @@ vc-preamble: |-
   // pure-end
 
 vc-helpers: |-
+
+
+vc-description: |-
+  function_signature: "def solve(n: list[int]) -> int"
+  docstring: |
+  Given a non-empty list of integers lst, add the even elements that are at odd indices.
+  test_cases:
+  - input: [4, 2, 6, 7]
+  output: 2
 
 vc-spec: |-
   fn add(lst: Vec<u32>) -> (sum: u64)

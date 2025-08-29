@@ -1,0 +1,19 @@
+// <vc-helpers>
+// No additional helper code or proofs needed for this implementation
+// </vc-helpers>
+
+// <vc-spec>
+method truncate(x : real) returns (i : real)
+    // pre-conditions-start
+    requires x >= 0.0
+    // pre-conditions-end
+    // post-conditions-start
+    ensures (0.0 <= x - i < 1.0)
+    // post-conditions-end
+// </vc-spec>
+// <vc-code>
+{
+  var intPart := x.Floor;
+  i := intPart as real;
+}
+// </vc-code>

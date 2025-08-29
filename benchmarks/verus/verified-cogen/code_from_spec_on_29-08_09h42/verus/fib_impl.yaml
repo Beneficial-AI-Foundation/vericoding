@@ -1,0 +1,121 @@
+vc-description: |-
+
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn fibo(n: int) -> (result:nat)
+      decreases n
+  {
+      if n <= 0 { 0 } else if n == 1 { 1 }
+      else { fibo(n - 2) + fibo(n - 1) }
+  }
+  // pure-end
+  // pure-end
+  
+  spec fn fibo_fits_i32(n: int) -> (result:bool) {
+      fibo(n) < 0x8000_0000
+  }
+  // pure-end
+
+vc-helpers: |-
+  proof fn fibo_is_monotonic(i: int, j: int)
+      requires
+          i <= j,
+      ensures
+          fibo(i) <= fibo(j),
+      decreases j - i
+  {
+      if i <= 0 {
+      }
+      else if  i < j {
+          fibo_is_monotonic(i, j-1);
+          assert(fibo(j) == fibo(j-1)+fibo(j-2));
+      }
+  }
+  
+  proof fn fibo_fits_monotonic(n: int)
+      requires
+          n >= 2,
+          fibo_fits_i32(n as int),
+      ensures
+          forall |i: int| 0 <= i <= n ==> fibo(i) < 0x8000_0000,
+  {
+      assert forall |i: int| 0 <= i <= n implies fibo(i) <= fibo(n) by {
+          if 0 <= i <= n {
+              fibo_is_monotonic(i, n);
+          }
+      };
+  }
+  
+  proof fn fibo_bounds_helper(i: int, n: int)
+      requires
+          2 <= i <= n,
+          fibo_fits_i32(n),
+          forall |j: int| 0 <= j < i ==> fibo(j) < 0x8000_0000,
+      ensures
+          fibo(i) < 0x8000_0000,
+  {
+      fibo_is_monotonic(i, n);
+      assert(fibo(i) <= fibo(n) < 0x8000_0000);
+  }
+
+vc-spec: |-
+  fn fibonacci(n: usize) -> (ret: Vec<i32>)
+      // pre-conditions-start
+      requires
+          fibo_fits_i32(n as int),
+          n >= 2,
+      // pre-conditions-end
+      // post-conditions-start
+      ensures
+          forall |i: int| 2 <= i < n ==> #[trigger] ret@[i] ==  fibo(i), 
+          ret@.len() == n,
+      // post-conditions-end
+
+vc-code: |-
+  {
+      let mut result = Vec::with_capacity(n);
+      result.push(0);
+      result.push(1);
+      
+      let mut i = 2;
+      /* code modified by LLM (iteration 3): added overflow safety assertion and bound proof */
+      while i < n
+          invariant
+              result@.len() == i,
+              i >= 2,
+              i <= n,
+              forall |j: int| 0 <= j < i ==> result@[j] == fibo(j),
+              fibo_fits_i32(n as int),
+          decreases n - i
+      {
+          proof {
+              fibo_bounds_helper(i as int, n as int);
+              assert(fibo(i as int) == fibo((i-2) as int) + fibo((i-1) as int));
+              assert(result@[(i-2) as int] == fibo((i-2) as int));
+              assert(result@[(i-1) as int] == fibo((i-1) as int));
+              assert(result@[(i-2) as int] + result@[(i-1) as int] == fibo(i as int));
+              assert(i >= 2);
+              assert(fibo(i as int) < 0x8000_0000);
+          }
+          let fib_val = result[(i-2) as usize] + result[(i-1) as usize];
+          result.push(fib_val);
+          /* code modified by LLM (iteration 3): added assertion to maintain invariant */
+          proof {
+              assert(result@[i as int] == fibo(i as int));
+          }
+          i += 1;
+      }
+      
+      result
+  }
+
+vc-postamble: |-
+  
+  }
+  
+  fn main() {}
+

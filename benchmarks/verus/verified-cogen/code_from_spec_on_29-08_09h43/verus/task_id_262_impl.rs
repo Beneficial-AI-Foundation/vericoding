@@ -1,0 +1,68 @@
+use vstd::prelude::*;
+
+
+verus! {
+
+// <vc-helpers>
+
+// </vc-helpers>
+
+// <vc-description>
+/*
+
+*/
+// </vc-description>
+
+// <vc-spec>
+fn split_array(list: &Vec<i32>, l: usize) -> (new_list: (Vec<i32>, Vec<i32>))
+    // pre-conditions-start
+    requires
+        list@.len() > 0,
+        0 < l < list@.len(),
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        new_list.0@ == list@.subrange(0, l as int),
+        new_list.1@ == list@.subrange(l as int, list.len() as int),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut first_part: Vec<i32> = Vec::new();
+    let mut second_part: Vec<i32> = Vec::new();
+    
+    let mut i: usize = 0;
+    /* code modified by LLM (iteration 3): added bounds check in invariant and fixed indexing */
+    while i < l
+        invariant
+            i <= l,
+            l < list@.len(),
+            first_part@.len() == i,
+            forall|j: int| 0 <= j < i ==> j < list@.len() && first_part@[j] == list@[j],
+        decreases l - i,
+    {
+        first_part.push(list[i]);
+        i += 1;
+    }
+    
+    let mut j: usize = l;
+    /* code modified by LLM (iteration 3): fixed invariant bounds and indexing */
+    while j < list.len()
+        invariant
+            l <= j <= list.len(),
+            second_part@.len() == j - l,
+            forall|k: int| 0 <= k < (j - l) as int ==> (l as int + k) < list@.len() && second_part@[k] == list@[l as int + k],
+        decreases list.len() - j,
+    {
+        second_part.push(list[j]);
+        j += 1;
+    }
+    
+    (first_part, second_part)
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

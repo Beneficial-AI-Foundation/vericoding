@@ -1,0 +1,89 @@
+type BiggestMap = map<int, int>
+
+// <vc-helpers>
+function countOccurrences(a: seq<int>, x: int): int
+{
+  |set j | 0 <= j < |a| && a[j] == x|
+}
+
+lemma CountOccurrencesLemma(a: seq<int>, x: int)
+  ensures countOccurrences(a, x) >= 0
+{
+  var s := set j | 0 <= j < |a| && a[j] == x;
+  assert |s| >= 0;
+}
+// </vc-helpers>
+
+// <vc-spec>
+method count(a: seq<int>) returns (biggest: BiggestMap)
+  // post-conditions-start
+  ensures forall i :: 0 <= i < |a| && a[i] in biggest ==>
+    biggest[a[i]] == |set j | 0 <= j < |a| && a[j] == a[i]|
+  ensures forall i, j :: 0 <= i < |a| && 0 <= j < |a| && a[i] in biggest ==>
+    biggest[a[i]] >= |set k | 0 <= k < |a| && a[k] == a[j]|
+  ensures forall i, j :: 0 <= i < |a| && 0 <= j < |a| && a[i] in biggest && a[j] in biggest ==>
+    biggest[a[i]] == biggest[a[j]]
+  // post-conditions-end
+// </vc-spec>
+// <vc-code>
+{
+  var freq: map<int, int> := map[];
+  var i := 0;
+  
+  while i < |a|
+    invariant 0 <= i <= |a|
+    invariant forall k :: k in freq ==> freq[k] == countOccurrences(a[..i], k)
+    invariant forall k :: k !in freq ==> countOccurrences(a[..i], k) == 0
+  {
+    if a[i] in freq {
+      freq := freq[a[i] := freq[a[i]] + 1];
+    } else {
+      freq := freq[a[i] := 1];
+    }
+    i := i + 1;
+  }
+  
+  var maxCount := 0;
+  var keys := freq.Keys;
+  var keySeq: seq<int> := [];
+  var keySet := keys;
+  var tempKeys := keys;
+  while tempKeys != {}
+    decreases tempKeys
+  {
+    var key :| key in tempKeys;
+    keySeq := keySeq + [key];
+    tempKeys := tempKeys - {key};
+  }
+  
+  var j := 0;
+  while j < |keySeq|
+    invariant 0 <= j <= |keySeq|
+    invariant maxCount >= 0
+    invariant forall k :: 0 <= k < j && k < |keySeq| ==> keySeq[k] in freq && freq[keySeq[k]] <= maxCount
+  {
+    var key := keySeq[j];
+    if freq[key] > maxCount {
+      maxCount := freq[key];
+    }
+    j := j + 1;
+  }
+  
+  var result: map<int, int> := map[];
+  var k := 0;
+  while k < |keySeq|
+    invariant 0 <= k <= |keySeq|
+    invariant forall m :: m in result ==> result[m] == maxCount
+    invariant forall m :: 0 <= m < k && m < |keySeq| && keySeq[m] in freq && freq[keySeq[m]] == maxCount ==> keySeq[m] in result
+    invariant forall m :: m in result ==> m in freq && freq[m] == maxCount
+  {
+    var key := keySeq[k];
+    if key in freq && freq[key] == maxCount {
+      result := result[key := maxCount];
+    }
+    k := k + 1;
+  }
+  
+  return result;
+}
+// </vc-code>

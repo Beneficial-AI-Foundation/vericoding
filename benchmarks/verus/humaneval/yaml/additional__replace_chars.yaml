@@ -1,14 +1,14 @@
-vc-description: |-
-  /--
-  function_signature: "fn replace_chars(s: &[char], old: char, new: char) -> (result: Vec<char>)"
-  docstring: Implement replace chars functionality.
-  -/
 vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
 
 vc-helpers: |-
+
+
+vc-description: |-
+  function_signature: "fn replace_chars(s: &[char], old: char, new: char) -> (result: Vec<char>)"
+  docstring: Implement replace chars functionality.
 
 vc-spec: |-
   fn replace_chars(s: &[char], old: char, new: char) -> (result: Vec<char>)

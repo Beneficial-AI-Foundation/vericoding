@@ -1,14 +1,14 @@
-vc-description: |-
-  /--
-  function_signature: "fn max_array(nums: &[i32]) -> (idx: usize)"
-  docstring: Find the maximum value or element.
-  -/
 vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
 
 vc-helpers: |-
+
+
+vc-description: |-
+  function_signature: "fn max_array(nums: &[i32]) -> (idx: usize)"
+  docstring: Find the maximum value or element.
 
 vc-spec: |-
   fn max_array(nums: &[i32]) -> (idx: usize)

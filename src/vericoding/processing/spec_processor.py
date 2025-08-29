@@ -74,53 +74,38 @@ def process_spec(
 
         yaml = load_yaml(Path(file_path))
         spec_flag, vibe_flag = get_mode_flags(config.mode)
-        code = yaml_to_code(yaml, spec=spec_flag, vibe=vibe_flag) 
+        original_spec = yaml.get("vc-spec", "")
+        code = yaml_to_code(yaml, spec=spec_flag, vibe=vibe_flag)
         
         verification = None
 
         for iteration in range(1, config.max_iterations + 1):
             logger.info(f" Vericoding iteration {iteration}:") 
             if iteration == 1:
-                # Choose prompt based on mode
-                if spec_flag and not vibe_flag:  # spec mode
-                    prompt = prompt_loader.format_prompt("generate_code", code=code)
-                elif vibe_flag:  # vibe or specvibe mode
-                    prompt = prompt_loader.format_prompt("generate_code_vibe", code=code)
-                else:
-                    raise ValueError(f"Invalid mode combination: spec={spec_flag}, vibe={vibe_flag}")
+                # All modes use the same prompt name (different prompt files loaded based on mode)
+                prompt = prompt_loader.format_prompt("generate_code", code=code)
             else:
                 error_details = verification.error or "Unknown error"
-                # Choose fix prompt based on mode
-                if spec_flag and not vibe_flag:  # spec mode
-                    prompt = prompt_loader.format_prompt(
-                        "fix_verification",
-                        code=code,
-                        errorDetails=error_details,
-                        iteration=iteration,
-                    )
-                elif vibe_flag:  # vibe or specvibe mode
-                    prompt = prompt_loader.format_prompt(
-                        "fix_verification_vibe",
-                        code=code,
-                        errorDetails=error_details,
-                        iteration=iteration,
-                    )
-                else:
-                    raise ValueError(f"Invalid mode combination: spec={spec_flag}, vibe={vibe_flag}")
+                # All modes use the same prompt name (different prompt files loaded based on mode)
+                prompt = prompt_loader.format_prompt(
+                    "fix_verification",
+                    code=code,
+                    errorDetails=error_details,
+                    iteration=iteration,
+                )
             try:
                 llm_response = call_llm(llm_provider, config, prompt, wandb=wandb_utils.enabled())              
                 vc_helpers, vc_spec, vc_code = extract_sections(llm_response)
                 
-                if vc_helpers or vc_code:
-                    update_sections(yaml, vc_helpers, vc_code, vc_spec)
-                    code = yaml_to_code(yaml, spec=spec_flag, vibe=vibe_flag)
-                    logger.info(f"    Done generating code at iteration {iteration}")
+                if spec_flag:
+                    vc_spec = original_spec
+               
+                update_sections(yaml, vc_helpers, vc_code, vc_spec)
+                code = yaml_to_code(yaml, spec=True, vibe=vibe_flag)
+                logger.info(f"    Done generating code at iteration {iteration}")
                     
-                    save_iteration_code(config, None, iteration, code, "current", str(code_output_path), Path(file_path))
-                    verification = verify_file(config, str(code_output_path))
-                else:
-                    logger.warning("    No valid code sections found in LLM response")
-                    verification = None
+                save_iteration_code(config, None, iteration, code, "current", str(code_output_path), Path(file_path))
+                verification = verify_file(config, str(code_output_path))
                     
             except Exception as e:
                 logger.info(f"    ✗ Failed to generate code: {str(e)}")

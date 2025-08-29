@@ -1,0 +1,95 @@
+// <vc-helpers>
+function swapCase(c: char): char
+  requires 'a' <= c <= 'z' || 'A' <= c <= 'Z'
+  ensures 'a' <= c <= 'z' ==> 'A' <= swapCase(c) <= 'Z'
+  ensures 'A' <= c <= 'Z' ==> 'a' <= swapCase(c) <= 'z'
+  ensures isVowel(swapCase(c)) == isVowel(c)
+{
+  if 'a' <= c <= 'z' then
+    'A' + (c - 'a')
+  else
+    'a' + (c - 'A')
+}
+
+function rotTwo(c: char): char
+  requires isVowel(c)
+  ensures 'a' <= c <= 'z' ==> 'a' <= rotTwo(c) <= 'z'
+  ensures 'A' <= c <= 'Z' ==> 'A' <= rotTwo(c) <= 'Z'
+{
+  if c == 'u' then 'a'
+  else if c == 'U' then 'A'
+  else if c == 'o' then 'u'
+  else if c == 'O' then 'U'
+  else (c as int + 2) as char
+}
+
+function isVowel(c: char): bool {
+  (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u')
+  || (c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U')
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: def encode(s : str) -> str
+Write a function that takes a message, and encodes in such a way that it swaps case of all letters, replaces all vowels in the message with the letter that appears 2 places ahead of that vowel in the english alphabet. Assume only letters.
+*/
+// </vc-description>
+
+// <vc-spec>
+method encode(s: string) returns (result: string)
+  requires forall i :: 0 <= i < |s| ==> ('a' <= s[i] <= 'z' || 'A' <= s[i] <= 'Z')
+  ensures |result| == |s|
+  ensures forall i :: 0 <= i < |s| ==> 
+    (isVowel(s[i]) ==> result[i] == rotTwo(swapCase(s[i])))
+    && (!isVowel(s[i]) ==> result[i] == swapCase(s[i]))
+// </vc-spec>
+// <vc-code>
+{
+  var res := new char[|s|];
+  for i := 0 to |s|
+    invariant 0 <= i <= |s|
+    invariant forall j :: 0 <= j < i ==> 
+      (isVowel(s[j]) ==> res[j] == rotTwo(swapCase(s[j])))
+      && (!isVowel(s[j]) ==> res[j] == swapCase(s[j]))
+  {
+    var swapped := swapCase(s[i]);
+    if isVowel(s[i]) {
+      res[i] := rotTwo(swapped);
+    } else {
+      res[i] := swapped;
+    }
+  }
+  result := res[..];
+}
+// </vc-code>
+
+function swap_case(c: char): char
+  // pre-conditions-start
+  requires 'a' <= c <= 'z' || 'A' <= c <= 'Z'
+  // pre-conditions-end
+  // post-conditions-start
+  ensures 'a' <= c <= 'z' ==> 'A' <= swap_case(c) <= 'Z'
+  ensures 'A' <= c <= 'Z' ==> 'a' <= swap_case(c) <= 'z'
+  ensures is_vowel(swap_case(c)) == is_vowel(c)
+  // post-conditions-end
+{
+  // impl-start
+  if 'a' <= c <= 'z' then
+    'A' + (c - 'a')
+  else
+    'a' + (c - 'A')
+  // impl-end
+}
+// pure-end
+function rot2(c: char): char
+  requires is_vowel(c)
+{
+    (c as int + 2) as char
+}
+// pure-end
+function is_vowel(c: char) : bool {
+    (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u')
+    || (c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U')
+}
+// pure-end

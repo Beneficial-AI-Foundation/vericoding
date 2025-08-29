@@ -1,0 +1,130 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+fn contains(str: &Vec<i32>, key: i32) -> (result: bool)
+    // post-conditions-start
+    ensures
+        result <==> (exists|i: int| 0 <= i < str.len() && (str[i] == key)),
+    // post-conditions-end
+{
+    // impl-start
+    let mut i = 0;
+    while i < str.len()
+        // invariants-start
+        invariant
+            forall|m: int| 0 <= m < i ==> (str[m] != key),
+        decreases str.len() - i,
+        // invariants-end
+    {
+        if (str[i] == key) {
+            return true;
+        }
+        i += 1;
+    }
+    false
+    // impl-end
+}
+
+proof fn lemma_vec_push<T>(vec: Seq<T>, i: T, l: usize)
+    // pre-conditions-start
+    requires
+        l == vec.len(),
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        forall|k: int| 0 <= k < vec.len() ==> #[trigger] vec[k] == vec.push(i)[k],
+        vec.push(i).index(l as int) == i,
+    // post-conditions-end
+{
+    // impl-start
+    // impl-end
+}
+
+proof fn lemma_contains_equiv<T: PartialEq>(vec: &Vec<T>, key: T)
+    ensures
+        (exists|i: int| 0 <= i < vec.len() && vec[i] == key) <==> vec@.contains(key)
+{
+}
+
+proof fn lemma_contains_after_push<T: PartialEq>(old_vec: Seq<T>, new_elem: T, elem: T)
+    ensures
+        old_vec.push(new_elem).contains(elem) <==> (old_vec.contains(elem) || elem == new_elem)
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn remove_elements(arr1: &Vec<i32>, arr2: &Vec<i32>) -> (result: Vec<i32>)
+    // post-conditions-start
+    ensures
+        forall|i: int|
+            0 <= i < result.len() ==> (arr1@.contains(#[trigger] result[i]) && !arr2@.contains(
+                #[trigger] result[i],
+            )),
+        forall|i: int|
+            0 <= i < arr1.len() ==> (arr2@.contains(#[trigger] arr1[i]) || result@.contains(
+                #[trigger] arr1[i],
+            )),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    // impl-start
+    let mut result = Vec::new();
+    let mut i = 0;
+    
+    /* code modified by LLM (iteration 5): fixed variable scope by moving k declaration outside the assert */
+    while i < arr1.len()
+        invariant
+            0 <= i <= arr1.len(),
+            forall|j: int| 0 <= j < result.len() ==> (arr1@.contains(#[trigger] result[j]) && !arr2@.contains(#[trigger] result[j])),
+            forall|j: int| 0 <= j < i ==> (arr2@.contains(#[trigger] arr1[j]) || result@.contains(#[trigger] arr1[j])),
+        decreases arr1.len() - i,
+    {
+        let elem = arr1[i];
+        if !contains(arr2, elem) {
+            proof {
+                lemma_contains_equiv(arr2, elem);
+            }
+            result.push(elem);
+            proof {
+                lemma_vec_push(result@.drop_last(), elem, (result.len() - 1) as usize);
+                lemma_contains_equiv(arr1, elem);
+                lemma_contains_after_push(result@.drop_last(), elem, elem);
+                assert(arr1@.contains(elem));
+                assert(!arr2@.contains(elem));
+                assert(result@.contains(elem));
+                
+                let old_result = result@.drop_last();
+                assert(forall|k: int| 0 <= k < i ==> (arr2@.contains(arr1[k]) || result@.contains(arr1[k]))) by {
+                    forall|k: int| 0 <= k < i implies (arr2@.contains(arr1[k]) || result@.contains(arr1[k])) {
+                        if arr2@.contains(arr1[k]) {
+                        } else {
+                            if old_result.contains(arr1[k]) {
+                                lemma_contains_after_push(old_result, elem, arr1[k]);
+                                assert(result@.contains(arr1[k]));
+                            }
+                        }
+                    }
+                };
+            }
+        } else {
+            proof {
+                lemma_contains_equiv(arr2, elem);
+                assert(arr2@.contains(elem));
+            }
+        }
+        i += 1;
+    }
+    
+    result
+    // impl-end
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

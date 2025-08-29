@@ -1,0 +1,148 @@
+function affine(x: real, shift: real, scale: real) : real
+    requires scale > 0.0
+{
+    (x + shift) / scale
+}
+function affine_seq(s: seq<real>, r: seq<real>, shift: real, scale: real) : bool
+  requires scale > 0.0
+  requires |r| == |s|
+{
+  forall i :: 0 <= i < |s| ==> r[i] == affine(s[i], shift, scale)
+}
+
+// <vc-helpers>
+lemma MinMaxExists(s: seq<real>)
+  requires |s| >= 2
+  requires exists i, j : int :: 0 <= i < j < |s| && s[i] != s[j]
+  ensures exists i : int :: 0 <= i < |s| && forall k : int :: 0 <= k < |s| ==> s[i] <= s[k]
+  ensures exists i : int :: 0 <= i < |s| && forall k : int :: 0 <= k < |s| ==> s[i] >= s[k]
+{
+  var n := |s|;
+  var min_idx := 0;
+  var max_idx := 0;
+  var i := 1;
+  while i < n
+    invariant 0 <= i <= n
+    invariant 0 <= min_idx < n && 0 <= max_idx < n
+    invariant forall k : int :: 0 <= k < i ==> s[min_idx] <= s[k]
+    invariant forall k : int :: 0 <= k < i ==> s[max_idx] >= s[k]
+  {
+    if s[i] < s[min_idx] {
+      min_idx := i;
+    }
+    if s[i] > s[max_idx] {
+      max_idx := i;
+    }
+    i := i + 1;
+  }
+  assert i == n;
+  assert forall k : int :: 0 <= k < n ==> s[min_idx] <= s[k];
+  assert forall k : int :: 0 <= k < n ==> s[max_idx] >= s[k];
+  assert min_idx != max_idx by {
+    if min_idx == max_idx {
+      assert forall k : int :: 0 <= k < n ==> s[min_idx] == s[k];
+      assert !exists i, j : int :: 0 <= i < j < n && s[i] != s[j];
+      assert false;
+    }
+  }
+}
+// </vc-helpers>
+
+// <vc-spec>
+method rescale_to_unit(s: seq<real>) returns (r : seq<real>)
+  // pre-conditions-start
+  requires |s| >= 2
+  requires exists i, j : int :: (0 <= i < j < |s|) && s[i] != s[j]
+  // pre-conditions-end
+  // post-conditions-start
+  ensures |r| == |s|
+  ensures forall i : int :: 0 <= i < |s| ==> 0.0 <= r[i] <= 1.0
+  ensures exists i : int :: 0 <= i < |s| && r[i] == 0.0
+  ensures exists i : int :: 0 <= i < |s| && r[i] == 1.0
+  ensures exists shift, scale :: scale > 0.0 && affine_seq(s, r, shift, scale)
+  // post-conditions-end
+// </vc-spec>
+// <vc-code>
+{
+  var min_val := s[0];
+  var max_val := s[0];
+  var min_idx := 0;
+  var max_idx := 0;
+  
+  var i := 1;
+  while i < |s|
+    invariant 0 <= i <= |s|
+    invariant 0 <= min_idx < |s| && 0 <= max_idx < |s|
+    invariant forall k : int :: 0 <= k < i ==> min_val <= s[k]
+    invariant forall k : int :: 0 <= k < i ==> max_val >= s[k]
+    invariant min_val == s[min_idx] && max_val == s[max_idx]
+  {
+    if s[i] < min_val {
+      min_val := s[i];
+      min_idx := i;
+    }
+    if s[i] > max_val {
+      max_val := s[i];
+      max_idx := i;
+    }
+    i := i + 1;
+  }
+  
+  assert min_val < max_val by {
+    if min_val == max_val {
+      assert forall k : int :: 0 <= k < |s| ==> s[k] == min_val;
+      assert !exists i, j : int :: 0 <= i < j < |s| && s[i] != s[j];
+      assert false;
+    }
+  }
+  
+  var scale := max_val - min_val;
+  var shift := -min_val;
+  r := seq(|s|, i requires 0 <= i < |s| => (s[i] + shift) / scale);
+  
+  assert forall i : int :: 0 <= i < |s| ==> 0.0 <= r[i] <= 1.0 by {
+    forall i : int | 0 <= i < |s| 
+      ensures 0.0 <= r[i] <= 1.0
+    {
+      assert r[i] == (s[i] - min_val) / (max_val - min_val);
+      assert min_val <= s[i] by {
+        assert forall k : int :: 0 <= k < |s| ==> min_val <= s[k];
+      }
+      assert s[i] <= max_val by {
+        assert forall k : int :: 0 <= k < |s| ==> s[k] <= max_val;
+      }
+      assert 0.0 <= s[i] - min_val;
+      assert s[i] - min_val <= max_val - min_val;
+      assert max_val - min_val > 0.0;
+      calc {
+        0.0;
+        <= { assert 0.0 <= s[i] - min_val; }
+        (s[i] - min_val) / (max_val - min_val);
+        <= { assert s[i] - min_val <= max_val - min_val; }
+        (max_val - min_val) / (max_val - min_val);
+        == { assert (max_val - min_val) / (max_val - min_val) == 1.0; }
+        1.0;
+      }
+    }
+  }
+  
+  assert r[min_idx] == 0.0 by {
+    assert r[min_idx] == (s[min_idx] - min_val) / (max_val - min_val);
+    assert s[min_idx] == min_val;
+    assert r[min_idx] == 0.0 / (max_val - min_val);
+    assert r[min_idx] == 0.0;
+  }
+  
+  assert r[max_idx] == 1.0 by {
+    assert r[max_idx] == (s[max_idx] - min_val) / (max_val - min_val);
+    assert s[max_idx] == max_val;
+    assert r[max_idx] == (max_val - min_val) / (max_val - min_val);
+    assert r[max_idx] == 1.0;
+  }
+  
+  assert affine_seq(s, r, shift, scale) by {
+    assert scale > 0.0;
+    assert forall i : int :: 0 <= i < |s| ==> r[i] == affine(s[i], shift, scale);
+  }
+}
+// </vc-code>

@@ -1,17 +1,3 @@
-vc-description: |-
-  /--
-  function_signature: "def specialFilter(nums: List[int]) -> int"
-  docstring: |
-      Write a function that takes an array of numbers as input and returns
-      the number of elements in the array that are greater than 10 and both
-      first and last digits of a number are odd (1, 3, 5, 7, 9).
-  test_cases:
-    - input: [15, -73, 14, -15]
-      expected_output: 1
-    - input: [33, -2, -3, 45, 21, 109]
-      expected_output: 2
-  -/
-
 vc-preamble: |-
   use vstd::prelude::*;
 
@@ -60,43 +46,19 @@ vc-preamble: |-
   // pure-end
 
 vc-helpers: |-
-  fn extract_first_digit(n: u32) -> (res: u32)
-      // post-conditions-start
-      ensures
-          res == extract_first_digit_spec(n as int),
-      // post-conditions-end
-  {
-      // impl-start
-      if n < 10 {
-          n
-      } else {
-          extract_first_digit(n / 10)
-      }
-      // impl-end
-  }
 
-  fn extract_last_digit(n: u32) -> (res: u32)
-      // post-conditions-start
-      ensures
-          res == extract_last_digit_spec(n as int),
-      // post-conditions-end
-  {
-      // impl-start
-      n % 10
-      // impl-end
-  }
 
-  fn is_valid_element(n: i32) -> (res: bool)
-      // post-conditions-start
-      ensures
-          res == is_valid_element_spec(n as int),
-      // post-conditions-end
-  {
-      // impl-start
-      ((n > 10) && (extract_first_digit(n as u32) % 2 != 0) && (extract_last_digit(n as u32) % 2
-          != 0))
-      // impl-end
-  }
+vc-description: |-
+  function_signature: "def specialFilter(nums: List[int]) -> int"
+  docstring: |
+  Write a function that takes an array of numbers as input and returns
+  the number of elements in the array that are greater than 10 and both
+  first and last digits of a number are odd (1, 3, 5, 7, 9).
+  test_cases:
+  - input: [15, -73, 14, -15]
+  expected_output: 1
+  - input: [33, -2, -3, 45, 21, 109]
+  expected_output: 2
 
 vc-spec: |-
   fn special_filter(numbers: &Vec<i32>) -> (count: usize)

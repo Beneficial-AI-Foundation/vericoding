@@ -1,0 +1,61 @@
+datatype Option<T> = None | Some(T)
+function getVal(mx : Option<int>) : int
+    requires exists i : int :: mx == Some(i)
+{
+    match mx {
+        case Some(n) => n
+    }
+}
+
+// <vc-helpers>
+// Helper function to compute maximum of two integers
+function max(a: int, b: int): int {
+    if a > b then a else b
+}
+
+// Helper function to compute rolling maximum up to a given index in a sequence
+function RollingMaxSeq(s: seq<int>, i: int): int
+    requires 0 <= i < |s|
+    decreases i
+{
+    if i == 0 then s[0]
+    else max(s[i], RollingMaxSeq(s, i-1))
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: def rolling_max(numbers: List[int]) -> Tuple[int, int]
+From a given list of integers, generate a list of rolling maximum element found until given moment in the sequence.
+*/
+// </vc-description>
+
+// <vc-spec>
+method RollingMax(numbers: seq<int>) returns (current_max: int, overall_max: int)
+    requires |numbers| > 0
+    ensures current_max == RollingMaxSeq(numbers, |numbers| - 1)
+    ensures overall_max == RollingMaxSeq(numbers, |numbers| - 1)
+// </vc-spec>
+// <vc-code>
+{
+    var i := 0;
+    current_max := numbers[0];
+    overall_max := numbers[0];
+
+    while i < |numbers|
+        invariant 0 <= i <= |numbers|
+        invariant current_max == (if i == 0 then numbers[0] else RollingMaxSeq(numbers, i-1))
+        invariant overall_max == (if i == 0 then numbers[0] else RollingMaxSeq(numbers, i-1))
+    {
+        if i < |numbers| {
+            if numbers[i] > current_max {
+                current_max := numbers[i];
+            }
+            if numbers[i] > overall_max {
+                overall_max := numbers[i];
+            }
+        }
+        i := i + 1;
+    }
+}
+// </vc-code>

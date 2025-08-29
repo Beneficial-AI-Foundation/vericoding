@@ -1,0 +1,63 @@
+vc-preamble: |-
+  function IsPrime(n: int) : bool
+  {
+    n > 1 && forall k :: 2 <= k < n ==> n % k != 0
+  }
+
+vc-helpers: |-
+  function IsPrime(n: int) : bool
+  {
+    n > 1 && forall k :: 2 <= k < n ==> n % k != 0
+  }
+
+vc-description: |-
+  function_signature: def count_up_to(n : int) -> list[int]
+  Implement a function that takes an non-negative integer and returns an array of the first n integers that are prime numbers and less than n.
+
+vc-spec: |-
+  method CountUpTo(n: int) returns (primes: array<int>)
+    requires n >= 0
+    ensures primes.Length <= n
+    ensures forall i :: 0 <= i < primes.Length ==> IsPrime(primes[i]) && primes[i] < n
+    ensures forall i, j :: 0 <= i < j < primes.Length ==> primes[i] < primes[j]
+    ensures forall p :: 2 <= p < n && IsPrime(p) ==> exists i :: 0 <= i < primes.Length && primes[i] == p
+
+vc-code: |-
+  {
+    var result := new int[n];
+    var count := 0;
+    var num := 2;
+  
+    while num < n
+      invariant 0 <= count <= n
+      invariant num >= 2
+      invariant count <= result.Length
+      invariant forall i :: 0 <= i < count ==> IsPrime(result[i]) && result[i] < n
+      invariant forall i, j :: 0 <= i < j < count ==> result[i] < result[j]
+      invariant forall p :: 2 <= p < num && IsPrime(p) ==> exists i :: 0 <= i < count && result[i] == p
+    {
+      if IsPrime(num) {
+        if count < n {
+          result[count] := num;
+          count := count + 1;
+        }
+      }
+      num := num + 1;
+    }
+  
+    primes := new int[count];
+    var i := 0;
+    while i < count
+      invariant 0 <= i <= count
+      invariant forall j :: 0 <= j < i ==> primes[j] == result[j]
+      invariant forall j :: 0 <= j < i ==> IsPrime(primes[j]) && primes[j] < n
+      invariant forall j, k :: 0 <= j < k < i ==> primes[j] < primes[k]
+    {
+      primes[i] := result[i];
+      i := i + 1;
+    }
+  }
+
+vc-postamble: |-
+
+

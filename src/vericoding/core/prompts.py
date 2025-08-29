@@ -20,19 +20,20 @@ class PromptValidationResult:
 class PromptLoader:
     """Handles loading and formatting of prompts for different languages."""
 
-    def __init__(self, language: str, prompts_file: str = "prompts.yaml") -> None:
+    def __init__(self, language: str, mode: str = "spec", prompts_file: str = None) -> None:
         self.language = language
-        self.prompts_file = prompts_file
+        self.mode = mode
+        self.prompts_file = prompts_file or f"prompts_{mode}.yaml"
         self.prompts: dict[str, str] = {}
         self._load_prompts()
 
     def _load_prompts(self) -> None:
         """Load prompts from YAML file."""
-        # Get the script directory
-        script_dir = Path(__file__).parent.parent.parent
+        # Get the project root directory (go up from src/vericoding/core to project root)
+        project_root = Path(__file__).parent.parent.parent.parent
 
-        # First try in the language-specific directory relative to script
-        lang_prompts_path = script_dir / self.language / self.prompts_file
+        # First try in the language-specific directory relative to project root
+        lang_prompts_path = project_root / self.language / self.prompts_file
         if lang_prompts_path.exists():
             with lang_prompts_path.open() as f:
                 self.prompts = yaml.safe_load(f)
@@ -60,8 +61,9 @@ class PromptLoader:
 
     def validate_prompts(self) -> PromptValidationResult:
         """Validate that required prompts are available."""
-        required = ["generate_code", "fix_verification", "generate_code_vibe", "fix_verification_vibe"]
-        missing = [p for p in required if p not in self.prompts]
+        
+        required_prompts = ["generate_code", "fix_verification"]
+        missing = [p for p in required_prompts if p not in self.prompts]
         return PromptValidationResult(
             valid=len(missing) == 0,
             missing=missing,
@@ -69,10 +71,10 @@ class PromptLoader:
         )
 
 
-def init_prompt_loader(language: str, prompts_file: str) -> PromptLoader:
+def init_prompt_loader(language: str, mode: str = "spec", prompts_file: str = None) -> PromptLoader:
     """Initialize and validate a prompt loader for the given language."""
     try:
-        prompt_loader = PromptLoader(language, prompts_file=prompts_file)
+        prompt_loader = PromptLoader(language, mode=mode, prompts_file=prompts_file)
         
         # Validate prompts on startup
         validation = prompt_loader.validate_prompts()
@@ -85,11 +87,12 @@ def init_prompt_loader(language: str, prompts_file: str) -> PromptLoader:
         
     except FileNotFoundError as e:
         print(f"Error: {e}")
-        print(f"Please ensure the {prompts_file} file exists in the {language} directory.")
+        expected_file = prompts_file or f"prompts_{mode}.yaml"
+        print(f"Please ensure the {expected_file} file exists in the {language} directory.")
         print("Expected locations:")
-        script_dir = Path(__file__).parent.parent.parent
-        print(f"  - {script_dir / language / prompts_file}")
-        print(f"  - {prompts_file} (current directory)")
+        project_root = Path(__file__).parent.parent.parent.parent
+        print(f"  - {project_root / language / expected_file}")
+        print(f"  - {expected_file} (current directory)")
         sys.exit(1)
 
 

@@ -1,8 +1,0 @@
-vc-preamble: "ghost function f(n: nat): nat {\n    if n == 0 then 1 \n    else if n%2 == 0 then 1 + 2*f(n/2)\n    else 2*f(n/2)\n}"
-vc-helpers: ''
-vc-spec: "method mod(n:nat) returns (a:nat) \nensures a == f(n)"
-vc-code: |-
-  {
-    assume false;
-  }
-vc-postamble: ''

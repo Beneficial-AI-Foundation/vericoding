@@ -1,14 +1,14 @@
-vc-description: |-
-  /--
-  function_signature: "fn has_only_one_distinct_element(a: &[i32]) -> (result: bool)"
-  docstring: Implement has only one distinct element functionality.
-  -/
 vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
 
 vc-helpers: |-
+
+
+vc-description: |-
+  function_signature: "fn has_only_one_distinct_element(a: &[i32]) -> (result: bool)"
+  docstring: Implement has only one distinct element functionality.
 
 vc-spec: |-
   #[verifier::loop_isolation(false)]

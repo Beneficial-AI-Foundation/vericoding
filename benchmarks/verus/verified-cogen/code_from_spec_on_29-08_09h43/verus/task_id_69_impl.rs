@@ -1,0 +1,93 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+fn is_sub_list_at_index(main: &Vec<i32>, sub: &Vec<i32>, idx: usize) -> (result: bool)
+    // pre-conditions-start
+    requires
+        sub.len() <= main.len(),
+        0 <= idx <= (main.len() - sub.len()),
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        result == (main@.subrange(idx as int, (idx + sub@.len())) =~= sub@),
+    // post-conditions-end
+{
+    // impl-start
+    let mut i = 0;
+    /* code modified by LLM (iteration 5): fixed loop invariants to avoid trigger issues */
+    while i < sub.len()
+        // invariants-start
+        invariant
+            0 <= idx <= (main.len() - sub.len()),
+            0 <= i <= sub.len(),
+            0 <= idx + i <= main.len(),
+            forall|k: int| 0 <= k < i ==> main[idx + k] == sub[k],
+        decreases sub.len() - i,
+        // invariants-end
+    {
+        if (main[idx + i] != sub[i]) {
+            // assert-start
+            assert(main@.subrange(idx as int, (idx + sub@.len())) != sub@);
+            // assert-end
+            return false;
+        }
+        i += 1;
+    }
+    // assert-start
+    assert(main@.subrange(idx as int, (idx + sub@.len())) == sub@);
+    // assert-end
+    true
+    // impl-end
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+
+*/
+// </vc-description>
+
+// <vc-spec>
+fn is_sub_list(main: &Vec<i32>, sub: &Vec<i32>) -> (result: bool)
+    // pre-conditions-start
+    requires
+        sub.len() <= main.len(),
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        result == (exists|k: int, l: int|
+            0 <= k <= (main.len() - sub.len()) && l == k + sub.len() && (#[trigger] (main@.subrange(
+                k,
+                l,
+            ))) =~= sub@),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    // impl-start
+    let mut idx = 0;
+    /* code modified by LLM (iteration 5): fixed invariant with explicit trigger annotation */
+    while idx <= main.len() - sub.len()
+        invariant
+            0 <= idx <= main.len() - sub.len() + 1,
+            forall|k: int| 0 <= k < idx ==> #[trigger] main@.subrange(k as int, (k + sub@.len()) as int) != sub@,
+        decreases main.len() - sub.len() + 1 - idx,
+    {
+        if is_sub_list_at_index(main, sub, idx) {
+            assert(main@.subrange(idx as int, idx as int + sub@.len()) =~= sub@);
+            return true;
+        }
+        idx += 1;
+    }
+    assert(forall|k: int| 0 <= k <= main.len() - sub.len() ==> main@.subrange(k, k + sub@.len()) != sub@);
+    false
+    // impl-end
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

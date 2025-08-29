@@ -1,0 +1,72 @@
+vc-description: |-
+
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+  proof fn lemma_subrange_extends_filter(arr: Seq<u32>, i: int)
+      requires 0 <= i < arr.len()
+      ensures 
+          arr.subrange(0, i + 1).filter(|x: u32| x % 2 != 0) == 
+          if arr[i] % 2 != 0 {
+              arr.subrange(0, i).filter(|x: u32| x % 2 != 0).push(arr[i])
+          } else {
+              arr.subrange(0, i).filter(|x: u32| x % 2 != 0)
+          }
+  {
+      /* code modified by LLM (iteration 5): use axiom_seq_filter_append to prove filter distribution */
+      let prefix = arr.subrange(0, i);
+      let elem = arr[i];
+      let extended = arr.subrange(0, i + 1);
+      
+      assert(extended == prefix.push(elem));
+      
+      vstd::seq::axiom_seq_filter_append(prefix, seq![elem], |x: u32| x % 2 != 0);
+      
+      if elem % 2 != 0 {
+          assert(seq![elem].filter(|x: u32| x % 2 != 0) == seq![elem]);
+      } else {
+          assert(seq![elem].filter(|x: u32| x % 2 != 0) == seq![]);
+      }
+  }
+
+vc-spec: |-
+  fn find_odd_numbers(arr: &Vec<u32>) -> (odd_numbers: Vec<u32>)
+      // post-conditions-start
+      ensures
+          odd_numbers@ == arr@.filter(|x: u32| x % 2 != 0),
+      // post-conditions-end
+
+vc-code: |-
+  {
+      let mut odd_numbers = Vec::new();
+      
+      for i in 0..arr.len()
+          invariant
+              odd_numbers@ == arr@.subrange(0, i as int).filter(|x: u32| x % 2 != 0)
+      {
+          /* code modified by LLM (iteration 5): added proof block with lemma call */
+          proof {
+              lemma_subrange_extends_filter(arr@, i as int);
+          }
+          
+          if arr[i] % 2 != 0 {
+              odd_numbers.push(arr[i]);
+          }
+      }
+      
+      /* code modified by LLM (iteration 5): added assertion before return */
+      assert(arr@.subrange(0, arr@.len() as int) == arr@);
+      
+      odd_numbers
+  }
+
+vc-postamble: |-
+  
+  } // verus!
+  
+  fn main() { }
+

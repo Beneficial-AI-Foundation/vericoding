@@ -1,0 +1,67 @@
+method SortReverseAndName(arr: seq<int>) returns (result: seq<string>)
+  // post-conditions-start
+  ensures |result| <= |arr|
+  ensures forall i :: 0 <= i < |result| ==>
+    result[i] in ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
+  // post-conditions-end
+{
+  assume{:axiom} false;
+}
+method SortSeq(s: seq<int>) returns (sorted: seq<int>)
+  // post-conditions-start
+  ensures forall i, j :: 0 <= i < j < |sorted| ==> sorted[i] <= sorted[j]
+  ensures |sorted| == |s|
+  ensures multiset(s) == multiset(sorted)
+  // post-conditions-end
+{
+  assume{:axiom} false;
+}
+
+// <vc-helpers>
+// No additional helpers needed for this task
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: method reverse(s: seq<int>) returns (rev: seq<int>)
+Reverse order. Ensures: returns the correct size/count; the condition holds for all values.
+*/
+// </vc-description>
+
+// <vc-spec>
+method reverse(s: seq<int>) returns (rev: seq<int>)
+  ensures |rev| == |s|
+  ensures forall i :: 0 <= i < |s| ==> rev[i] == s[|s| - 1 - i]
+// </vc-spec>
+// <vc-code>
+{
+  var result: seq<int> := [];
+  var i := |s| - 1;
+  while i >= 0
+    invariant 0 <= i + 1 <= |s|
+    invariant |result| == |s| - 1 - i
+    invariant forall k :: 0 <= k < |result| ==> result[k] == s[|s| - 1 - k]
+    decreases i
+  {
+    result := result + [s[i]];
+    i := i - 1;
+  }
+  rev := result;
+}
+// </vc-code>
+
+function NumberToName(n: int): string
+  requires 1 <= n <= 9
+{
+  match n
+  case 1 => "One"
+  case 2 => "Two"
+  case 3 => "Three"
+  case 4 => "Four"
+  case 5 => "Five"
+  case 6 => "Six"
+  case 7 => "Seven"
+  case 8 => "Eight"
+  case 9 => "Nine"
+}
+// pure-end

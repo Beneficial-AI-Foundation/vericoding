@@ -1,0 +1,38 @@
+vc-preamble: |-
+
+
+vc-helpers: |-
+  // Helper function to check if a character is alphabetical
+  function IsAlpha(c: char): bool {
+      ('a' <= c <= 'z') || ('A' <= c <= 'Z')
+  }
+  
+  // Helper function to check if a character is a space
+  function IsSpace(c: char): bool {
+      c == ' '
+  }
+
+vc-description: |-
+  function_signature: def check_if_last_char_is_a_letter(txt: str) -> Bool
+  Create a function that returns True if the last character of a given string is an alphabetical character and is not a part of a word, and False otherwise. Note: "word" is a group of characters separated by space.
+
+vc-spec: |-
+  method check_if_last_char_is_a_letter(txt: string) returns (result: bool)
+      requires |txt| > 0
+      ensures result == (IsAlpha(txt[|txt|-1]) && (|txt| == 1 || IsSpace(txt[|txt|-2])))
+
+vc-code: |-
+  {
+      if |txt| == 1 {
+          result := IsAlpha(txt[0]);
+      } else {
+          result := IsAlpha(txt[|txt|-1]) && IsSpace(txt[|txt|-2]);
+      }
+  }
+
+vc-postamble: |-
+  function is_alpha(c: char) : bool {
+      'a' <= c <= 'z' || 'A' <= c <= 'Z'
+  }
+  // pure-end
+

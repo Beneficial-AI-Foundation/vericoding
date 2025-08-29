@@ -1,0 +1,93 @@
+// <vc-helpers>
+lemma NoEvenInRange(x: int, y: int, bound: int)
+  requires x <= y
+  requires bound < x
+  requires forall j :: bound < j <= y && j % 2 == 0 ==> false
+  ensures forall j :: x <= j <= y ==> j % 2 == 1
+{
+  forall j | x <= j <= y
+    ensures j % 2 == 1
+  {
+    if j % 2 == 0 {
+      assert bound < j <= y;
+      assert false;
+    }
+  }
+}
+
+lemma MaxEvenProperty(x: int, y: int, result: int, bound: int)
+  requires x <= y
+  requires x <= result <= y
+  requires result % 2 == 0
+  requires bound < x
+  requires forall j :: bound < j <= y && j % 2 == 0 ==> j <= result
+  ensures forall i :: x <= i <= y && i % 2 == 0 ==> i <= result
+{
+  forall i | x <= i <= y && i % 2 == 0
+    ensures i <= result
+  {
+    assert bound < i <= y;
+    assert i <= result;
+  }
+}
+
+lemma MaxEvenPropertyAtBoundary(x: int, y: int, result: int)
+  requires x <= y
+  requires x <= result <= y
+  requires result % 2 == 0
+  requires forall j :: result < j <= y && j % 2 == 0 ==> false
+  ensures forall i :: x <= i <= y && i % 2 == 0 ==> i <= result
+{
+  forall i | x <= i <= y && i % 2 == 0
+    ensures i <= result
+  {
+    if i > result {
+      assert result < i <= y;
+      assert i % 2 == 0;
+      assert false;
+    }
+  }
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: def choose_num(x: int, y: int) -> int
+This function takes two positive numbers x and y and returns the biggest even integer number that is in the range [x, y] inclusive. If there's no such number, then the function should return -1.
+*/
+// </vc-description>
+
+// <vc-spec>
+method choose_num(x: int, y: int) returns (result: int)
+  requires x > 0 && y > 0
+  ensures result == -1 ==> (forall i :: x <= i <= y ==> i % 2 == 1)
+  ensures result != -1 ==> (x <= result <= y && result % 2 == 0 && 
+                           forall i :: x <= i <= y && i % 2 == 0 ==> i <= result)
+// </vc-spec>
+// <vc-code>
+{
+  if x > y {
+    return -1;
+  }
+  
+  var i := y;
+  while i >= x
+    invariant i < x ==> (forall j :: i < j <= y && j % 2 == 0 ==> false)
+    invariant i >= x ==> (forall j :: i < j <= y && j % 2 == 0 ==> j <= y)
+    invariant forall j :: i + 1 <= j <= y && j % 2 == 0 ==> false
+  {
+    if i % 2 == 0 {
+      if i > x {
+        MaxEvenProperty(x, y, i, i - 1);
+      } else {
+        MaxEvenPropertyAtBoundary(x, y, i);
+      }
+      return i;
+    }
+    i := i - 1;
+  }
+  
+  NoEvenInRange(x, y, i);
+  return -1;
+}
+// </vc-code>

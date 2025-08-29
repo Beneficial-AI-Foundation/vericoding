@@ -1,0 +1,79 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+  spec fn contains_unique_elements(s: Seq<i32>) -> bool {
+      forall |i: int, j: int| 0 <= i < s.len() && 0 <= j < s.len() && i != j ==> s[i] != s[j]
+  }
+  
+  spec fn is_subsequence_of(result: Seq<i32>, original: Seq<i32>) -> bool {
+      forall |i: int| 0 <= i < result.len() ==> 
+          exists |j: int| 0 <= j < original.len() && #[trigger] result[i] == #[trigger] original[j]
+  }
+  
+  spec fn contains_all_unique_from(result: Seq<i32>, original: Seq<i32>) -> bool {
+      forall |i: int| 0 <= i < original.len() ==> 
+          (exists |j: int| 0 <= j < result.len() && #[trigger] result[j] == #[trigger] original[i]) ||
+          (exists |k: int| 0 <= k < i && #[trigger] original[k] == #[trigger] original[i])
+  }
+
+vc-description: |-
+  function_signature: "fn unique(a: &[i32]) -> (result: Vec<i32>)"
+  docstring: Implement unique functionality.
+
+vc-spec: |-
+  fn unique(a: &[i32]) -> (result: Vec<i32>)
+      ensures
+          contains_unique_elements(result@),
+          is_subsequence_of(result@, a@),
+          contains_all_unique_from(result@, a@)
+
+vc-code: |-
+  {
+      let mut result = Vec::new();
+      let mut i = 0;
+      
+      while i < a.len()
+          invariant
+              i <= a.len(),
+              contains_unique_elements(result@),
+              is_subsequence_of(result@, a@),
+              /* code modified by LLM (iteration 5): added trigger annotations to fix quantifier inference */
+              forall |k: int| 0 <= k < i ==> 
+                  (exists |j: int| 0 <= j < result@.len() && #[trigger] result@[j] == #[trigger] a@[k]) ||
+                  (exists |m: int| 0 <= m < k && #[trigger] a@[m] == #[trigger] a@[k])
+          decreases a.len() - i
+      {
+          let mut found = false;
+          let mut j = 0;
+          
+          while j < result.len()
+              invariant
+                  j <= result.len(),
+                  found == exists |k: int| 0 <= k < j && #[trigger] result@[k] == a@[i as int]
+              decreases result.len() - j
+          {
+              if result[j] == a[i] {
+                  found = true;
+                  break;
+              }
+              j += 1;
+          }
+          
+          if !found {
+              result.push(a[i]);
+          }
+          
+          i += 1;
+      }
+      
+      result
+  }
+
+vc-postamble: |-
+  
+  fn main() {}
+  }
+

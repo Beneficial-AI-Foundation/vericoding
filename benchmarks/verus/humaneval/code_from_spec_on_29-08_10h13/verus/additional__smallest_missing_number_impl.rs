@@ -1,0 +1,162 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+proof fn lemma_sorted_property(s: &[i32], i: int, j: int)
+    requires
+        forall|x: int, y: int| 0 <= x < y < s@.len() ==> s@[x] <= s@[y],
+        0 <= i <= j < s@.len(),
+    ensures
+        s@[i] <= s@[j]
+{
+    if i == j {
+        return;
+    }
+    assert(i < j);
+    assert(s@[i] <= s@[j]);
+}
+
+proof fn lemma_all_less_than_exist(s: &[i32], v: i32, k: int)
+    requires
+        forall|i: int, j: int| 0 <= i < j < s@.len() ==> s@[i] <= s@[j],
+        forall|i: int| 0 <= i < s@.len() ==> s@[i] >= 0,
+        0 <= k < v,
+        v as int == s@.len() || (v as int < s@.len() && s@[v as int] > v),
+        forall|i: int| 0 <= i < s@.len() ==> s@[i] != v,
+    ensures
+        exists|j: int| 0 <= j < s@.len() && s@[j] == k
+{
+    /* code modified by LLM (iteration 5): fixed sequence length access syntax */
+    if v as int == s@.len() {
+        assert(k < s@.len());
+        assert(s@[k] >= 0);
+        if s@[k] != k {
+            let mut idx = 0;
+            while idx < s.len()
+                invariant 
+                    0 <= idx <= s@.len(),
+                    forall|x: int| 0 <= x < idx ==> s@[x] != k,
+            {
+                if s@[idx] == k {
+                    return;
+                }
+                idx += 1;
+            }
+            assert(false);
+        } else {
+            assert(s@[k] == k);
+        }
+    } else {
+        assert(v as int < s@.len());
+        assert(s@[v as int] > v);
+        if k < v as int {
+            if s@[k] == k {
+                return;
+            } else {
+                let mut found = false;
+                let mut idx = 0;
+                while idx < s.len()
+                    invariant
+                        0 <= idx <= s@.len(),
+                        !found ==> forall|x: int| 0 <= x < idx ==> s@[x] != k,
+                        found ==> exists|j: int| 0 <= j < s@.len() && s@[j] == k,
+                {
+                    if s@[idx] == k {
+                        found = true;
+                        return;
+                    }
+                    idx += 1;
+                }
+                assert(false);
+            }
+        } else {
+            assert(k == v as int);
+            assert(s@[v as int] > v);
+            assert(s@[k] != k);
+            let mut found = false;
+            let mut idx = 0;
+            while idx < s.len()
+                invariant
+                    0 <= idx <= s@.len(),
+                    !found ==> forall|x: int| 0 <= x < idx ==> s@[x] != k,
+                    found ==> exists|j: int| 0 <= j < s@.len() && s@[j] == k,
+            {
+                if s@[idx] == k {
+                    found = true;
+                    return;
+                }
+                idx += 1;
+            }
+            assert(false);
+        }
+    }
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: "fn smallest_missing_number(s: &[i32]) -> (v: i32)"
+docstring: Implement smallest missing number functionality.
+*/
+// </vc-description>
+
+// <vc-spec>
+#[verifier::loop_isolation(false)]
+fn smallest_missing_number(s: &[i32]) -> (v: i32)
+    // pre-conditions-start
+    requires
+        forall|i: int, j: int| 0 <= i < j < s.len() ==> s[i] <= s[j],
+        forall|i: int| 0 <= i < s.len() ==> s[i] >= 0,
+        s.len() <= 100_000,
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        0 <= v,
+        forall|i: int| 0 <= i < s.len() ==> s[i] != v,
+        forall|k: int| 0 <= k < v && s[k] != v ==> exists|j: int| 0 <= j < s.len() && s[j] == k,
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut i = 0;
+    while i < s.len()
+        invariant
+            0 <= i <= s.len(),
+            forall|j: int| 0 <= j < i ==> s@[j] == j,
+            forall|x: int, y: int| 0 <= x < y < s.len() ==> s@[x] <= s@[y],
+            forall|x: int| 0 <= x < s.len() ==> s@[x] >= 0,
+    {
+        if s@[i] != i {
+            proof {
+                /* code modified by LLM (iteration 5): fixed proof logic for missing number case */
+                assert(s@[i] >= 0);
+                if s@[i] < i {
+                    lemma_sorted_property(s, s@[i] as int, i);
+                    assert(s@[s@[i] as int] <= s@[i]);
+                    assert(s@[s@[i] as int] == s@[i]);
+                    assert(false);
+                }
+                assert(s@[i] > i);
+            }
+            return i as i32;
+        }
+        i += 1;
+    }
+    
+    proof {
+        /* code modified by LLM (iteration 5): established postconditions for case when all elements match their indices */
+        assert(i == s.len());
+        assert(forall|j: int| 0 <= j < s.len() ==> s@[j] == j);
+        assert(forall|j: int| 0 <= j < s.len() ==> s@[j] != s.len());
+        
+        assert(forall|k: int| 0 <= k < s.len() ==> exists|j: int| 0 <= j < s.len() && s@[j] == k);
+    }
+    
+    s.len() as i32
+}
+// </vc-code>
+
+fn main() {}
+}

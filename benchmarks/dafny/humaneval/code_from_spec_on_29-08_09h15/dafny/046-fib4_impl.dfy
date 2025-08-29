@@ -1,0 +1,73 @@
+function fib4_rec(n: nat): nat
+  decreases n
+{
+  if n == 0 || n == 1 || n == 2 then 0
+  else if n == 3 then 1
+  else fib4_rec(n - 1) + fib4_rec(n - 2) + fib4_rec(n - 3) + fib4_rec(n - 4)
+}
+
+// <vc-helpers>
+lemma fib4_rec_initial_values()
+  ensures fib4_rec(0) == 0
+  ensures fib4_rec(1) == 0
+  ensures fib4_rec(2) == 0
+  ensures fib4_rec(3) == 1
+{
+}
+
+lemma fib4_rec_recurrence(n: nat)
+  requires n >= 4
+  ensures fib4_rec(n) == fib4_rec(n - 1) + fib4_rec(n - 2) + fib4_rec(n - 3) + fib4_rec(n - 4)
+{
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: def fib4(n: int)
+The Fib4 number sequence is a sequence similar to the Fibbonacci sequnece that's defined as follows: fib4(0) -> 0 fib4(1) -> 0 fib4(2) -> 2 fib4(3) -> 0 fib4(n) -> fib4(n-1) + fib4(n-2) + fib4(n-3) + fib4(n-4). Please write a function to efficiently compute the n-th element of the fib4 number sequence.  Do not use recursion.
+*/
+// </vc-description>
+
+// <vc-spec>
+method fib4(n: nat) returns (result: nat)
+  // post-conditions-start
+  ensures result == fib4_rec(n)
+  // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+  if n <= 3 {
+    if n == 3 {
+      result := 1;
+    } else {
+      result := 0;
+    }
+  } else {
+    var a := 0;  // fib4(0)
+    var b := 0;  // fib4(1)
+    var c := 0;  // fib4(2)
+    var d := 1;  // fib4(3)
+    
+    var i := 4;
+    while i <= n
+      invariant 4 <= i <= n + 1
+      invariant a == fib4_rec(i - 4)
+      invariant b == fib4_rec(i - 3)
+      invariant c == fib4_rec(i - 2)
+      invariant d == fib4_rec(i - 1)
+    {
+      var next := a + b + c + d;
+      a := b;
+      b := c;
+      c := d;
+      d := next;
+      i := i + 1;
+    }
+    
+    result := d;
+  }
+}
+// </vc-code>
+

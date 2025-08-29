@@ -1,0 +1,23 @@
+// <vc-helpers>
+// No additional helpers needed for this simple recursive function
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: def sum_to_n(n: Nat) -> Nat
+sum_to_n is a function that sums numbers from 1 to n.
+*/
+// </vc-description>
+
+// <vc-spec>
+function sum_to_n(n: nat): nat
+  ensures sum_to_n(n) == if n == 0 then 0 else n + sum_to_n(n - 1)
+// </vc-spec>
+// <vc-code>
+{
+  if n == 0 then
+    0
+  else
+    n + sum_to_n(n - 1)
+}
+// </vc-code>

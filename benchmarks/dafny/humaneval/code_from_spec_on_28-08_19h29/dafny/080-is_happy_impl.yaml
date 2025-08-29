@@ -1,0 +1,44 @@
+vc-preamble: |-
+  function ThreeDistinct(s: string, i: int): bool
+      requires 0 < i < |s| - 1
+  {
+      (s[i - 1] != s[i]) && (s[i] != s[i + 1]) && (s[i - 1] != s[i + 1])
+  }
+  function Happy(s: string) : bool
+  {
+      |s| >= 3 &&
+      forall i :: 0 < i < |s| - 1 ==> ThreeDistinct(s, i)
+  }
+
+vc-helpers: |-
+  // No additional helpers needed beyond the provided ThreeDistinct and Happy functions
+
+vc-description: |-
+  function_signature: def is_happy(s: str) -> bool
+  You are given a string s. Your task is to check if the string is happy or not. A string is happy if its length is at least 3 and every 3 consecutive letters are distinct
+
+vc-spec: |-
+  method IsHappy(s: string) returns (result: bool)
+      ensures result == Happy(s)
+
+vc-code: |-
+  {
+      if |s| < 3 {
+          result := false;
+          return;
+      }
+      
+      result := true;
+      for i := 1 to |s| - 1
+          invariant result ==> forall k :: 1 <= k < i ==> ThreeDistinct(s, k)
+      {
+          if !ThreeDistinct(s, i) {
+              result := false;
+              return;
+          }
+      }
+  }
+
+vc-postamble: |-
+
+

@@ -1,0 +1,110 @@
+use vstd::prelude::*;
+
+
+verus! {
+
+spec fn sum_negative_to(seq: Seq<i64>) -> (res: int)
+    decreases seq.len(),
+{
+    if seq.len() == 0 {
+        0
+    } else {
+        sum_negative_to(seq.drop_last()) + if (seq.last() < 0) {
+            seq.last() as int
+        } else {
+            0 as int
+        }
+    }
+}
+// pure-end
+
+// <vc-helpers>
+proof fn sum_negative_to_extend(seq: Seq<i64>, x: i64)
+    ensures sum_negative_to(seq.push(x)) == sum_negative_to(seq) + if x < 0 { x as int } else { 0 as int }
+    decreases seq.len()
+{
+    if seq.len() == 0 {
+        assert(seq.push(x).drop_last() =~= seq);
+        assert(seq.push(x).last() == x);
+    } else {
+        let seq_extended = seq.push(x);
+        assert(seq_extended.drop_last() =~= seq);
+        assert(seq_extended.last() == x);
+    }
+}
+
+proof fn sum_negative_bounded(seq: Seq<i64>)
+    requires seq.len() <= usize::MAX as int
+    ensures sum_negative_to(seq) >= i128::MIN && sum_negative_to(seq) <= i128::MAX
+    decreases seq.len()
+{
+    if seq.len() == 0 {
+        assert(sum_negative_to(seq) == 0);
+    } else {
+        sum_negative_bounded(seq.drop_last());
+        let last_val = seq.last();
+        if last_val < 0 {
+            assert(last_val >= i64::MIN);
+            assert(last_val as int >= i128::MIN);
+            assert(last_val as int <= i128::MAX);
+        }
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn sum_negatives(arr: &Vec<i64>) -> (sum_neg: i128)
+    // post-conditions-start
+    ensures
+        sum_negative_to(arr@) == sum_neg,
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut sum_neg: i128 = 0;
+    let mut i: usize = 0;
+    
+    proof {
+        sum_negative_bounded(arr@);
+    }
+    
+    while i < arr.len()
+        invariant
+            i <= arr.len(),
+            sum_neg == sum_negative_to(arr@.subrange(0, i as int)),
+            sum_neg >= i128::MIN && sum_neg <= i128::MAX,
+        decreases arr.len() - i,
+    {
+        /* code modified by LLM (iteration 5): fixed indexing with proper int conversion */
+        proof {
+            sum_negative_to_extend(arr@.subrange(0, i as int), arr@[i as int]);
+            assert(arr@.subrange(0, (i + 1) as int) =~= arr@.subrange(0, i as int).push(arr@[i as int]));
+            
+            if arr@[i as int] < 0 {
+                assert(arr@[i as int] >= i64::MIN);
+                assert(arr@[i as int] as i128 >= i128::MIN);
+                assert(arr@[i as int] as i128 <= i128::MAX);
+                assert(sum_neg + (arr@[i as int] as i128) >= i128::MIN);
+                assert(sum_neg + (arr@[i as int] as i128) <= i128::MAX);
+            }
+        }
+        
+        if arr@[i as int] < 0 {
+            sum_neg = sum_neg + (arr@[i as int] as i128);
+        }
+        
+        i = i + 1;
+    }
+    
+    proof {
+        assert(arr@.subrange(0, arr.len() as int) =~= arr@);
+    }
+    
+    sum_neg
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

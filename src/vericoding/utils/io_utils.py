@@ -109,16 +109,26 @@ def parse_command_line_arguments():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=f"""
 Supported languages: {", ".join(available_languages.keys())}
-Supported LLM providers: claude, openai, deepseek, grok
+Supported LLM providers: claude, gpt, o1, gemini, grok, deepseek, glm, mistral, openrouter
 
 Examples:
-  python spec_to_code.py dafny ./specs
+  python spec_to_code.py dafny ./specs  # Uses Claude Opus 4.1 (Aug 2025, best for reasoning)
   python spec_to_code.py lean ./NumpySpec/DafnySpecs --iterations 3
   python spec_to_code.py verus ./benchmarks/verus_specs --debug --iterations 5
-  python spec_to_code.py dafny ./specs --workers 8 --iterations 3 --llm-provider openai
-  python spec_to_code.py verus ./specs --workers 2 --debug --llm-provider deepseek --llm-model deepseek-chat
-  python spec_to_code.py dafny ./specs --llm-provider claude --llm-model claude-3-5-sonnet-20241022
-  python spec_to_code.py dafny ./specs --llm-provider grok --llm-model grok-3
+  
+  # Easy provider switching (all use OpenRouter with one API key):
+  python spec_to_code.py dafny ./specs --llm-provider claude    # Claude Opus 4.1 (Aug 2025)
+  python spec_to_code.py dafny ./specs --llm-provider gpt       # GPT-5 (Aug 2025)
+  python spec_to_code.py dafny ./specs --llm-provider o1        # O1 reasoning model
+  python spec_to_code.py dafny ./specs --llm-provider gemini    # Gemini 2.5 Pro (June 2025)
+  python spec_to_code.py dafny ./specs --llm-provider grok      # Grok 4 (July 2025)
+  python spec_to_code.py dafny ./specs --llm-provider deepseek  # DeepSeek V3.1 (Aug 2025)
+  python spec_to_code.py dafny ./specs --llm-provider glm       # GLM-4.5 Turbo (2025)
+  python spec_to_code.py dafny ./specs --llm-provider mistral   # Mistral Large 2 (2025)
+  
+  # Custom models (override defaults):
+  python spec_to_code.py dafny ./specs --llm-provider claude --llm-model anthropic/claude-3.5-haiku
+  python spec_to_code.py dafny ./specs --llm-provider gpt --llm-model openai/o1-preview
   python spec_to_code.py dafny ./specs --output-folder /path/to/results
   python spec_to_code.py dafny ./specs --mode vibe
   python spec_to_code.py dafny ./specs --mode specvibe --debug
@@ -185,9 +195,9 @@ Examples:
     parser.add_argument(
         "--llm-provider",
         type=str,
-        choices=["claude", "openai", "deepseek", "grok"],
+        choices=["claude", "gpt", "o1", "gemini", "grok", "deepseek", "glm", "mistral", "openrouter"],
         default="claude",
-        help="LLM provider to use (default: claude)",
+        help="LLM provider to use. All use OpenRouter with optimized models (default: claude)",
     )
 
     parser.add_argument(

@@ -1,0 +1,110 @@
+vc-preamble: |-
+  function IsLowerCase(s: string) : bool
+  {
+    forall i :: 0 <= i < |s| ==> 'a' <= s[i] <= 'z'
+  }
+  function IsUpperCase(s: string) : bool
+  {
+    forall i :: 0 <= i < |s| ==> 'A' <= s[i] <= 'Z'
+  }
+  type DictCase = map<string, string>
+
+vc-helpers: |-
+  lemma AllKeysLowerCaseOrAllKeysUpperCase(dict: DictCase)
+    requires dict != map[]
+    requires forall k :: k in dict ==> IsLowerCase(k) || IsUpperCase(k)
+    ensures (forall k :: k in dict ==> IsLowerCase(k)) || (forall k :: k in dict ==> IsUpperCase(k)) || ((exists k :: k in dict && !IsLowerCase(k)) && (exists k :: k in dict && !IsUpperCase(k)))
+  {
+    if exists k :: k in dict && !IsLowerCase(k) {
+      if exists k :: k in dict && !IsUpperCase(k) {
+        assert (exists k :: k in dict && !IsLowerCase(k)) && (exists k :: k in dict && !IsUpperCase(k));
+      } else {
+        assert forall k :: k in dict ==> IsUpperCase(k);
+      }
+    } else {
+      assert forall k :: k in dict ==> IsLowerCase(k);
+    }
+  }
+  
+  lemma SetToSeqContainsAllElements<T>(s: set<T>)
+    ensures forall x :: x in s ==> x in SetToSeq(s)
+    ensures forall x :: x in SetToSeq(s) ==> x in s
+    decreases s
+  {
+    if s == {} {
+    } else {
+      var x :| x in s;
+      SetToSeqContainsAllElements(s - {x});
+    }
+  }
+  
+  function SetToSeq<T>(s: set<T>): seq<T>
+    ensures forall x :: x in SetToSeq(s) ==> x in s
+    ensures forall x :: x in s ==> x in SetToSeq(s)
+    ensures multiset(SetToSeq(s)) == multiset(s)
+    decreases s
+  {
+    if s == {} then [] else 
+      var x :| x in s;
+      [x] + SetToSeq(s - {x})
+  }
+
+vc-description: |-
+  function_signature: def check_dict_case(s : dict[str, str]) -> bool
+  Given a dictionary, return True if all keys are strings in lower case or all keys are strings in upper case, else return False. The function should return False is the given dictionary is empty. Note(George): Modified the problem to use strings only for both keys and values.
+
+vc-spec: |-
+  method CheckDictCase(dict: DictCase) returns (result: bool)
+    // post-conditions-start
+    ensures dict == map[] ==> !result
+    ensures result ==> (forall k :: k in dict ==> IsLowerCase(k)) || (forall k :: k in dict ==> IsUpperCase(k))
+    ensures !result ==> dict == map[] || ((exists k :: k in dict && !IsLowerCase(k)) && (exists k :: k in dict && !IsUpperCase(k)))
+    // post-conditions-end
+
+vc-code: |-
+  {
+    if dict == map[] {
+      result := false;
+      return;
+    }
+    
+    var allLower := true;
+    var allUpper := true;
+    
+    var keys := dict.Keys;
+    var processedKeys := {};
+    
+    var keySeq := SetToSeq(keys);
+    SetToSeqContainsAllElements(keys);
+    var i := 0;
+    
+    while i < |keySeq|
+      invariant 0 <= i <= |keySeq|
+      invariant processedKeys == set j | 0 <= j < i :: keySeq[j]
+      invariant processedKeys <= keys
+      invariant allLower ==> forall k :: k in processedKeys ==> IsLowerCase(k)
+      invariant allUpper ==> forall k :: k in processedKeys ==> IsUpperCase(k)
+      invariant !allLower ==> exists k :: k in processedKeys && !IsLowerCase(k)
+      invariant !allUpper ==> exists k :: k in processedKeys && !IsUpperCase(k)
+      invariant forall x :: x in keySeq ==> x in keys
+      invariant multiset(keySeq) == multiset(keys)
+    {
+      var k := keySeq[i];
+      processedKeys := processedKeys + {k};
+      if !IsLowerCase(k) {
+        allLower := false;
+      }
+      if !IsUpperCase(k) {
+        allUpper := false;
+      }
+      i := i + 1;
+    }
+    
+    assert processedKeys == keys;
+    
+    result := allLower || allUpper;
+  }
+
+vc-postamble: |-
+
+

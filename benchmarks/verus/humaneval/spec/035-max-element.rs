@@ -1,0 +1,34 @@
+use vstd::prelude::*;
+
+verus! {
+
+/*
+function_signature: "def max_element(l: list)"
+docstring: |
+Return maximum element in the list.
+test_cases:
+- input: [1, 2, 3]
+output: 3
+- input: [5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10]
+output: 123
+*/
+
+fn max_element(a: &Vec<i32>) -> (max: i32)
+    // pre-conditions-start
+    requires
+        a.len() > 0,
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        forall|i: int| 0 <= i < a.len() ==> a[i] <= max,
+        exists|i: int| 0 <= i < a.len() && a[i] == max,
+    // post-conditions-end
+{
+    // impl-start
+    assume(false);
+    0
+    // impl-end
+}
+
+}
+fn main() {}

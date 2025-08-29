@@ -1,0 +1,91 @@
+type BiggestMap = map<int, int>
+
+// <vc-helpers>
+ghost function CountOccurrences(s: string, c: char): int
+{
+  if |s| == 0 then 0
+  else if s[0] == c then 1 + CountOccurrences(s[1..], c)
+  else CountOccurrences(s[1..], c)
+}
+
+ghost function MaxCount(s: string, chars: set<char>): int
+  requires chars != {}
+{
+  var c :| c in chars;
+  var count := CountOccurrences(s, c);
+  if chars == {c} then count
+  else var restMax := MaxCount(s, chars - {c});
+       if count > restMax then count else restMax
+}
+
+ghost predicate IsMaxCountMap(s: string, m: map<char, int>, maxCount: int, chars: set<char>)
+{
+  forall c :: c in chars ==> (c in m <==> CountOccurrences(s, c) == maxCount) && (c in m ==> m[c] == maxCount)
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: def histogram(s : str) -> Dict[str, int]
+Given a string representing a space separated lowercase letters, return a dictionary of the letter with the most repetition and containing the corresponding count. If several letters have the same occurrence, return all of them.
+*/
+// </vc-description>
+
+// <vc-spec>
+method Histogram(s: string) returns (result: map<char, int>)
+  requires forall i :: 0 <= i < |s| ==> 'a' <= s[i] <= 'z' || s[i] == ' '
+  ensures exists maxCount :: maxCount >= 0 && IsMaxCountMap(s, result, maxCount, set c | 'a' <= c <= 'z')
+// </vc-spec>
+// <vc-code>
+{
+  var counts: map<char, int> := map[];
+  var i := 0;
+  while i < |s|
+    invariant 0 <= i <= |s|
+    invariant forall c :: c in counts ==> counts[c] == CountOccurrences(s[0..i], c)
+    invariant forall c :: c !in counts ==> CountOccurrences(s[0..i], c) == 0
+    invariant forall c :: 'a' <= c <= 'z' ==> (c in counts ==> counts[c] > 0)
+  {
+    if s[i] != ' ' {
+      var c := s[i];
+      if c in counts {
+        counts := counts[c := counts[c] + 1];
+      } else {
+        counts := counts[c := 1];
+      }
+    }
+    i := i + 1;
+  }
+
+  var maxCount := 0;
+  var c: int := 'a' as int;
+  var z: int := 'z' as int;
+  while c <= z
+    invariant 'a' as int <= c <= z + 1
+    invariant maxCount >= 0
+    invariant forall ch :: 'a' <= ch < c as char ==> maxCount >= CountOccurrences(s, ch)
+  {
+    var ch := c as char;
+    if ch in counts && counts[ch] > maxCount {
+      maxCount := counts[ch];
+    }
+    c := c + 1;
+  }
+
+  var resultMap: map<char, int> := map[];
+  c := 'a' as int;
+  while c <= z
+    invariant 'a' as int <= c <= z + 1
+    invariant forall ch :: ch in resultMap ==> resultMap[ch] == maxCount && CountOccurrences(s, ch) == maxCount
+    invariant forall ch :: 'a' <= ch < c as char ==> (ch in counts && counts[ch] == maxCount ==> ch in resultMap)
+  {
+    var ch := c as char;
+    if ch in counts && counts[ch] == maxCount {
+      resultMap := resultMap[ch := maxCount];
+    }
+    c := c + 1;
+  }
+  
+  result := resultMap;
+}
+// </vc-code>

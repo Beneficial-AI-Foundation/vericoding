@@ -1,0 +1,92 @@
+vc-preamble: |-
+
+
+vc-helpers: |-
+  lemma preserve_order_helper(s: string, chars: string, res: string, original_indices: seq<int>)
+    requires |res| == |original_indices|
+    requires forall i :: 0 <= i < |original_indices| ==> 0 <= original_indices[i] < |s|
+    requires forall i :: 0 <= i < |res| ==> res[i] == s[original_indices[i]]
+    requires forall i, j :: 0 <= i < j < |original_indices| ==> original_indices[i] < original_indices[j]
+    ensures forall i :: 0 <= i < |res| ==> res[i] in s
+  {
+  }
+  
+  lemma multiset_difference_cardinality(s_multiset: multiset<char>, chars_multiset: multiset<char>, res_multiset: multiset<char>)
+    requires forall c :: c in res_multiset ==> c !in chars_multiset
+    requires forall c :: c in res_multiset ==> c in s_multiset
+    requires forall c :: c in s_multiset && c !in chars_multiset ==> res_multiset[c] == s_multiset[c]
+    ensures res_multiset == s_multiset - chars_multiset
+  {
+  }
+  
+  lemma all_non_chars_included_helper(s: string, chars: string, res: string)
+    requires forall i :: 0 <= i < |res| ==> res[i] !in chars
+    requires forall i :: 0 <= i < |res| ==> res[i] in s
+    requires forall i :: 0 <= i < |s| && s[i] !in chars ==> s[i] in res
+    ensures multiset(res) == multiset(s) - multiset(chars)
+  {
+    var s_multiset := multiset(s);
+    var chars_multiset := multiset(chars);
+    var res_multiset := multiset(res);
+    
+    assert forall c :: c in res_multiset ==> c !in chars_multiset;
+    assert forall c :: c in res_multiset ==> c in s_multiset;
+    
+    forall c | c in s_multiset && c !in chars_multiset
+      ensures res_multiset[c] == s_multiset[c]
+    {
+      assert c !in chars;
+      assert forall i :: 0 <= i < |s| && s[i] == c ==> s[i] in res;
+    }
+    
+    multiset_difference_cardinality(s_multiset, chars_multiset, res_multiset);
+  }
+
+vc-description: |-
+  function_signature: method reverse_delete(s: string, chars: string) returns (res: string, is_palindrome: bool)
+  Reverse order. Ensures: the condition holds for all values; the condition holds for all values; the condition holds for all values; the result is a palindrome.
+
+vc-spec: |-
+  method reverse_delete(s: string, chars: string) returns (res: string, is_palindrome: bool)
+    // post-conditions-start
+    ensures forall i :: 0 <= i < |res| ==> res[i] !in chars
+    ensures forall i :: 0 <= i < |res| ==> res[i] in s
+    ensures forall i :: 0 <= i < |s| && s[i] !in chars ==> s[i] in res
+    ensures is_palindrome <==> is_palindrome_pred(res)
+    // post-conditions-end
+
+vc-code: |-
+  {
+    res := "";
+    var i := 0;
+    
+    while i < |s|
+      invariant 0 <= i <= |s|
+      invariant forall j :: 0 <= j < |res| ==> res[j] !in chars
+      invariant forall j :: 0 <= j < |res| ==> res[j] in s
+      invariant forall j :: 0 <= j < i && s[j] !in chars ==> s[j] in res
+      invariant |res| <= i
+    {
+      if s[i] !in chars {
+        res := res + [s[i]];
+      }
+      i := i + 1;
+    }
+    
+    all_non_chars_included_helper(s, chars, res);
+    is_palindrome := check_palindrome(res);
+  }
+
+vc-postamble: |-
+  method check_palindrome(s: string) returns (result: bool)
+    // post-conditions-start
+    ensures result <==> is_palindrome_pred(s)
+    // post-conditions-end
+  {
+    assume{:axiom} false;
+  }
+  function is_palindrome_pred(s : string) : bool {
+    forall k :: 0 <= k < |s| ==> s[k] == s[|s| - 1 - k]
+  }
+  // pure-end
+

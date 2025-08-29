@@ -1,0 +1,51 @@
+vc-preamble: |-
+
+
+vc-helpers: |-
+  function CountUniqueChars(s: string): nat
+  {
+    |set c | c in s|
+  }
+  
+  function LexicographicallySmaller(s1: string, s2: string): bool
+  {
+    s1 < s2
+  }
+
+vc-description: |-
+  function_signature: def find_max(words: List String) -> String
+  Write a function that accepts a list of strings. The list contains different words. Return the word with maximum number of unique characters. If multiple strings have maximum number of unique characters, return the one which comes first in lexicographical order.
+
+vc-spec: |-
+  method FindMax(words: seq<string>) returns (result: string)
+    requires |words| > 0
+    ensures result in words
+    ensures forall w :: w in words ==> CountUniqueChars(result) >= CountUniqueChars(w)
+    ensures forall w :: w in words && CountUniqueChars(w) == CountUniqueChars(result) ==> LexicographicallySmaller(result, w) || result == w
+
+vc-code: |-
+  {
+    result := words[0];
+    var maxUnique := CountUniqueChars(words[0]);
+    
+    var i := 1;
+    while i < |words|
+      invariant 0 <= i <= |words|
+      invariant result in words[..i]
+      invariant forall w :: w in words[..i] ==> CountUniqueChars(result) >= CountUniqueChars(w)
+      invariant forall w :: w in words[..i] && CountUniqueChars(w) == CountUniqueChars(result) ==> LexicographicallySmaller(result, w) || result == w
+    {
+      var currentUnique := CountUniqueChars(words[i]);
+      if currentUnique > maxUnique {
+        result := words[i];
+        maxUnique := currentUnique;
+      } else if currentUnique == maxUnique && LexicographicallySmaller(words[i], result) {
+        result := words[i];
+      }
+      i := i + 1;
+    }
+  }
+
+vc-postamble: |-
+
+

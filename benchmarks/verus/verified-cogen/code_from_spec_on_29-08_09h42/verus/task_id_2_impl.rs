@@ -1,0 +1,93 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+fn contains(arr: &Vec<i32>, key: i32) -> (result: bool)
+    ensures
+        result == (exists|i: int| 0 <= i < arr.len() && (arr[i] == key)),
+{
+    let mut i = 0;
+    while i < arr.len()
+        invariant
+            forall|m: int| 0 <= m < i ==> (arr[m] != key),
+        /* code modified by LLM (iteration 2): added decreases clause for termination */
+        decreases arr.len() - i,
+    {
+        if (arr[i] == key) {
+            return true;
+        }
+        i += 1;
+    }
+    false
+}
+
+fn vec_contains(vec: &Vec<i32>, key: i32) -> (result: bool)
+    ensures
+        result == (exists|i: int| 0 <= i < vec.len() && (vec[i] == key)),
+{
+    contains(vec, key)
+}
+
+proof fn lemma_contains_equivalence(vec: &Vec<i32>, key: i32)
+    ensures
+        (exists|i: int| 0 <= i < vec.len() && (vec[i] == key)) == vec@.contains(key),
+{
+    if exists|i: int| 0 <= i < vec.len() && (vec[i] == key) {
+        let i = choose|i: int| 0 <= i < vec.len() && (vec[i] == key);
+        assert(vec@[i] == key);
+        assert(vec@.contains(key));
+    }
+    if vec@.contains(key) {
+        let i = choose|i: int| 0 <= i < vec@.len() && vec@[i] == key;
+        assert(vec[i] == key);
+        assert(exists|j: int| 0 <= j < vec.len() && (vec[j] == key));
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn shared_elements(list1: &Vec<i32>, list2: &Vec<i32>) -> (shared: Vec<i32>)
+    // post-conditions-start
+    ensures
+        forall|i: int|
+            0 <= i < shared.len() ==> (list1@.contains(#[trigger] shared[i]) && list2@.contains(
+                #[trigger] shared[i],
+            )),
+        forall|i: int, j: int| 0 <= i < j < shared.len() ==> shared[i] != shared[j],
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut shared = Vec::new();
+    let mut i = 0;
+    
+    /* code modified by LLM (iteration 3): added triggers for quantifier to fix verification error */
+    while i < list1.len()
+        invariant
+            forall|k: int| 0 <= k < shared.len() ==> (list1@.contains(shared[k]) && list2@.contains(shared[k])),
+            forall|k1: int, k2: int| 0 <= k1 < k2 < shared.len() ==> shared[k1] != shared[k2],
+            forall|k: int| 0 <= k < shared.len() ==> (exists|m: int| 0 <= m < i && list1[m] == #[trigger] shared[k]),
+        decreases list1.len() - i,
+    {
+        let elem = list1[i];
+        proof {
+            lemma_contains_equivalence(list2, elem);
+        }
+        if vec_contains(list2, elem) && !vec_contains(&shared, elem) {
+            proof {
+                lemma_contains_equivalence(&shared, elem);
+            }
+            shared.push(elem);
+        }
+        i += 1;
+    }
+    
+    shared
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

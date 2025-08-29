@@ -1,0 +1,159 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn min_spec(seq: Seq<i32>) -> (result: int)
+    recommends
+        0 < seq.len(),
+    decreases seq.len(),
+{
+    if seq.len() == 1 {
+        seq[0] as int
+    } else if seq.len() == 0 {
+        0
+    } else {
+        let later_min = min_spec(seq.drop_first());
+        if seq[0] <= later_min {
+            seq[0] as int
+        } else {
+            later_min as int
+        }
+    }
+}
+// pure-end
+
+// <vc-helpers>
+proof fn lemma_min_spec_is_minimum(seq: Seq<i32>, i: int)
+    requires
+        0 < seq.len(),
+        0 <= i < seq.len(),
+    ensures
+        seq[i] >= min_spec(seq),
+    decreases seq.len(),
+{
+    if seq.len() == 1 {
+        assert(i == 0);
+    } else {
+        let later_min = min_spec(seq.drop_first());
+        if seq[0] <= later_min {
+            if i == 0 {
+                assert(seq[i] == seq[0]);
+            } else {
+                lemma_min_spec_is_minimum(seq.drop_first(), i - 1);
+                assert(seq[i] == seq.drop_first()[i - 1]);
+                assert(seq.drop_first()[i - 1] >= later_min);
+                assert(seq[0] <= later_min);
+                assert(seq[i] >= seq[0]);
+            }
+        } else {
+            if i == 0 {
+                assert(seq[0] > later_min);
+                assert(seq[0] >= later_min);
+            } else {
+                lemma_min_spec_is_minimum(seq.drop_first(), i - 1);
+                assert(seq[i] == seq.drop_first()[i - 1]);
+                assert(seq.drop_first()[i - 1] >= later_min);
+            }
+        }
+    }
+}
+
+proof fn lemma_min_spec_exists(seq: Seq<i32>)
+    requires
+        0 < seq.len(),
+    ensures
+        exists|k: int| 0 <= k < seq.len() && seq[k] == min_spec(seq),
+    decreases seq.len(),
+{
+    if seq.len() == 1 {
+        assert(seq[0] == min_spec(seq));
+    } else {
+        let later_min = min_spec(seq.drop_first());
+        lemma_min_spec_exists(seq.drop_first());
+        if seq[0] <= later_min {
+            assert(seq[0] == min_spec(seq));
+        } else {
+            let witness = choose|k: int| 0 <= k < seq.drop_first().len() && seq.drop_first()[k] == later_min;
+            assert(seq[witness + 1] == later_min);
+            assert(seq[witness + 1] == min_spec(seq));
+        }
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn second_smallest(numbers: &Vec<i32>) -> (indices: (usize, usize))
+    // pre-conditions-start
+    requires
+        numbers.len() >= 2,
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        forall|k: int|
+            0 <= k < numbers.len() && k != indices.0 && numbers[indices.0 as int] == min_spec(
+                numbers@,
+            ) ==> (#[trigger] numbers[k] >= numbers[indices.1 as int]),
+        exists|k: int|
+            0 <= k < numbers.len() && k != indices.0 && (#[trigger] numbers[k]
+                == numbers[indices.1 as int]),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut min_idx = 0;
+    let mut second_min_idx = 1;
+    
+    /* code modified by LLM (iteration 5): ensure initial conditions are met when len >= 2 */
+    if numbers.len() == 2 {
+        if numbers[1] < numbers[0] {
+            min_idx = 1;
+            second_min_idx = 0;
+        }
+    } else {
+        /* code modified by LLM (iteration 5): set up proper initial state for loop */
+        if numbers[1] < numbers[0] {
+            min_idx = 1;
+            second_min_idx = 0;
+        }
+        
+        for i in 2..numbers.len()
+            invariant
+                0 <= min_idx < numbers.len(),
+                0 <= second_min_idx < numbers.len(),
+                min_idx != second_min_idx,
+                forall|k: int| 0 <= k < i ==> numbers[k] >= numbers[min_idx as int],
+                forall|k: int| 0 <= k < i && k != min_idx ==> numbers[k] >= numbers[second_min_idx as int],
+                i >= 2,
+                exists|k: int| 0 <= k < i && k != min_idx && numbers[k] == numbers[second_min_idx as int],
+        {
+            /* code modified by LLM (iteration 5): preserve invariant that second_min_idx is distinct from min_idx */
+            if numbers[i] < numbers[min_idx] {
+                second_min_idx = min_idx;
+                min_idx = i;
+            } else if numbers[i] < numbers[second_min_idx] {
+                second_min_idx = i;
+            }
+        }
+    }
+    
+    /* code modified by LLM (iteration 5): establish postconditions using helper lemmas */
+    proof {
+        assert(forall|k: int| 0 <= k < numbers.len() ==> numbers[k] >= numbers[min_idx as int]);
+        lemma_min_spec_is_minimum(numbers@, min_idx as int);
+        lemma_min_spec_exists(numbers@);
+        
+        assert(exists|k: int| 0 <= k < numbers@.len() && numbers@[k] == min_spec(numbers@));
+        
+        assert(numbers@[min_idx as int] >= min_spec(numbers@));
+        assert(forall|k: int| 0 <= k < numbers@.len() ==> numbers@[k] >= min_spec(numbers@));
+        assert(numbers@[min_idx as int] == min_spec(numbers@));
+    }
+    
+    (min_idx, second_min_idx)
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}

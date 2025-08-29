@@ -1,0 +1,61 @@
+// <vc-helpers>
+lemma CyclicEncodingLemma(s: seq<int>, res: seq<int>, i: int)
+    requires |s| == |res|
+    requires 0 <= i < |s| - |s| % 3
+    requires i % 3 == 0 ==> res[i] == s[i + 1]
+    requires i % 3 == 1 ==> res[i] == s[i + 1]
+    requires i % 3 == 2 ==> res[i] == s[i - 2]
+    ensures true
+{
+}
+
+lemma CyclicDecodingLemma(s: seq<int>, res: seq<int>, i: int)
+    requires |s| == |res|
+    requires 0 <= i < |s| - |s| % 3
+    requires i % 3 == 0 ==> res[i] == s[i + 2]
+    requires i % 3 == 1 ==> res[i] == s[i - 1]
+    ensures true
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+method encode_cyclic(s: seq<int>) returns (res: seq<int>) 
+    // post-conditions-start
+    ensures |s| == |res|
+    ensures forall i :: 0 <= i < |s| - |s| % 3 ==> (i % 3 == 0 ==> res[i] == s[i + 1])
+    ensures forall i :: 0 <= i < |s| - |s| % 3 ==> (i % 3 == 1 ==> res[i] == s[i + 1])
+    ensures forall i :: 0 <= i < |s| - |s| % 3 ==> (i % 3 == 2 ==> res[i] == s[i - 2])
+    ensures forall i :: |s| - |s| % 3 <= i < |s| ==> (res[i] == s[i])
+    // post-conditions-end
+// </vc-spec>
+// <vc-code>
+method EncodeCyclic(s: seq<int>) returns (res: seq<int>)
+    ensures |s| == |res|
+    ensures forall i :: 0 <= i < |s| - |s| % 3 ==> (i % 3 == 0 ==> res[i] == s[i + 1])
+    ensures forall i :: 0 <= i < |s| - |s| % 3 ==> (i % 3 == 1 ==> res[i] == s[i + 1])
+    ensures forall i :: 0 <= i < |s| - |s| % 3 ==> (i % 3 == 2 ==> res[i] == s[i - 2])
+    ensures forall i :: |s| - |s| % 3 <= i < |s| ==> (res[i] == s[i])
+{
+    var n := |s|;
+    var remainder := n % 3;
+    var limit := n - remainder;
+    res := seq(n, i requires 0 <= i < n => 
+        if i >= limit then s[i]
+        else if i % 3 == 0 && i + 1 < n then s[i + 1]
+        else if i % 3 == 1 && i + 1 < n then s[i + 1]
+        else if i % 3 == 2 && i >= 2 then s[i - 2]
+        else s[i]);
+}
+// </vc-code>
+
+method decode_cyclic(s: seq<int>) returns (res: seq<int>)
+    // post-conditions-start
+    ensures |s| == |res|
+    ensures forall i :: |s| - |s| % 3 <= i < |s| ==> (res[i] == s[i])
+    ensures forall i :: 0 <= i < |s| - |s| % 3 ==> (i % 3 == 0 ==> res[i] == s[i + 2])
+    ensures forall i :: 0 <= i < |s| - |s| % 3 ==> (i % 3 == 1 ==> res[i] == s[i - 1])
+    // post-conditions-end
+{
+  assume{:axiom} false;
+}

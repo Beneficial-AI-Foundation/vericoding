@@ -1,0 +1,79 @@
+datatype Option<T> = None | Some(T)
+function getVal(mx : Option<string>) : string
+    requires mx != None
+{
+    match mx {
+        case Some(n) => n
+    }
+}
+
+// <vc-helpers>
+function seqMax(s: seq<string>, i: int): int
+    requires 0 <= i < |s|
+    ensures 0 <= seqMax(s, i) < |s|
+    ensures forall j :: 0 <= j <= i ==> |s[seqMax(s, i)]| >= |s[j]|
+    ensures seqMax(s, i) <= i
+{
+    if i == 0 then 0
+    else 
+        var prev := seqMax(s, i-1);
+        if |s[i]| > |s[prev]| then i else prev
+}
+
+lemma seqMaxCorrect(s: seq<string>, i: int)
+    requires 0 <= i < |s|
+    ensures var maxIdx := seqMax(s, i);
+            0 <= maxIdx < |s| &&
+            maxIdx <= i &&
+            forall j :: 0 <= j <= i ==> |s[maxIdx]| >= |s[j]|
+{
+}
+
+lemma seqMaxIsFirst(s: seq<string>, i: int)
+    requires 0 <= i < |s|
+    ensures var maxIdx := seqMax(s, i);
+            forall j :: 0 <= j < maxIdx ==> |s[j]| < |s[maxIdx]|
+{
+    if i == 0 {
+    } else {
+        var prev := seqMax(s, i-1);
+        seqMaxIsFirst(s, i-1);
+        if |s[i]| > |s[prev]| {
+        } else {
+        }
+    }
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: def longest(strings: List[str]) -> Optional[str]
+Out of list of strings, return the longest one. Return the first one in case of multiple strings of the same length. Return None in case the input list is empty.
+*/
+// </vc-description>
+
+// <vc-spec>
+function longest(strings: seq<string>) : Option<string>
+    ensures |strings| == 0 ==> longest(strings) == None
+    ensures |strings| > 0 ==> longest(strings) != None
+    ensures |strings| > 0 ==> getVal(longest(strings)) in strings
+    ensures |strings| > 0 ==> forall s :: s in strings ==> |getVal(longest(strings))| >= |s|
+    ensures |strings| > 0 ==> exists i :: 0 <= i < |strings| && strings[i] == getVal(longest(strings)) && 
+                                      forall j :: 0 <= j < i ==> |strings[j]| < |getVal(longest(strings))|
+// </vc-spec>
+// <vc-code>
+function longest(strings: seq<string>) : Option<string>
+    ensures |strings| == 0 ==> longest(strings) == None
+    ensures |strings| > 0 ==> longest(strings) != None
+    ensures |strings| > 0 ==> getVal(longest(strings)) in strings
+    ensures |strings| > 0 ==> forall s :: s in strings ==> |getVal(longest(strings))| >= |s|
+    ensures |strings| > 0 ==> exists i :: 0 <= i < |strings| && strings[i] == getVal(longest(strings)) && 
+                                      forall j :: 0 <= j < i ==> |strings[j]| < |getVal(longest(strings))|
+{
+    if |strings| == 0 then None
+    else 
+        var maxIdx := seqMax(strings, |strings|-1);
+        seqMaxIsFirst(strings, |strings|-1);
+        Some(strings[maxIdx])
+}
+// </vc-code>

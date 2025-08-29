@@ -1,14 +1,14 @@
-vc-description: |-
-  /--
-  function_signature: "fn reverse(a: &[i32]) -> (result: Vec<i32>)"
-  docstring: Implement reverse functionality.
-  -/
 vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
 
 vc-helpers: |-
+
+
+vc-description: |-
+  function_signature: "fn reverse(a: &[i32]) -> (result: Vec<i32>)"
+  docstring: Implement reverse functionality.
 
 vc-spec: |-
   fn reverse(a: &[i32]) -> (result: Vec<i32>)

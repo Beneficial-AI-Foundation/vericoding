@@ -1,0 +1,90 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn abs_spec(i: int) -> int {
+    if i < 0 { -i } else { i }
+}
+
+// <vc-helpers>
+spec fn has_close_elements_spec(numbers: Seq<i32>, threshold: i32) -> bool {
+    exists|i: int, j: int| 
+        0 <= i < numbers.len() && 
+        0 <= j < numbers.len() && 
+        i != j && 
+        abs_spec(numbers[i] - numbers[j]) < threshold
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: "fn has_close_elements(numbers: &[i32], threshold: i32) -> (flag: bool)"
+docstring: Implement has close elements functionality.
+*/
+// </vc-description>
+
+// <vc-spec>
+fn has_close_elements(numbers: &[i32], threshold: i32) -> (flag: bool)
+    ensures flag == has_close_elements_spec(numbers@, threshold)
+// </vc-spec>
+
+// <vc-code>
+{
+    let len = numbers.len();
+    
+    for i in 0..len
+        invariant forall|x: int, y: int| 
+            0 <= x < i as int && 0 <= y < len as int && x != y ==> 
+            abs_spec(numbers@[x] - numbers@[y]) >= threshold
+    {
+        for j in 0..len
+            invariant forall|x: int, y: int| 
+                0 <= x < i as int && 0 <= y < len as int && x != y ==> 
+                abs_spec(numbers@[x] - numbers@[y]) >= threshold,
+            forall|y: int| 
+                0 <= y < j as int && y != i as int ==> 
+                abs_spec(numbers@[i as int] - numbers@[y]) >= threshold
+        {
+            if i != j {
+                /* code modified by LLM (iteration 5): fixed sequence length access syntax */
+                let diff = if numbers[i] >= numbers[j] {
+                    numbers[i] - numbers[j]
+                } else {
+                    numbers[j] - numbers[i]
+                };
+                
+                proof {
+                    assert(0 <= i < len);
+                    assert(0 <= j < len);
+                    assert(i as int < numbers@.len());
+                    assert(j as int < numbers@.len());
+                    assert(diff == abs_spec(numbers@[i as int] - numbers@[j as int]));
+                }
+                
+                if diff < threshold {
+                    proof {
+                        assert(0 <= i as int < numbers@.len());
+                        assert(0 <= j as int < numbers@.len());
+                        assert(i as int != j as int);
+                        assert(abs_spec(numbers@[i as int] - numbers@[j as int]) < threshold);
+                        assert(has_close_elements_spec(numbers@, threshold));
+                    }
+                    return true;
+                }
+            }
+        }
+    }
+    
+    proof {
+        assert(forall|x: int, y: int| 
+            0 <= x < len as int && 0 <= y < len as int && x != y ==> 
+            abs_spec(numbers@[x] - numbers@[y]) >= threshold);
+        assert(!has_close_elements_spec(numbers@, threshold));
+    }
+    
+    false
+}
+// </vc-code>
+
+fn main() {}
+}

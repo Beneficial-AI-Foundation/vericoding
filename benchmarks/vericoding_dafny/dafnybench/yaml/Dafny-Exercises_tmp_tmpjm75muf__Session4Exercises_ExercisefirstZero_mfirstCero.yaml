@@ -1,8 +1,0 @@
-vc-preamble: ''
-vc-helpers: ''
-vc-spec: "method mfirstCero(v:array<int>) returns (i:int)\nensures 0 <=i<=v.Length\nensures forall j:: 0<=j<i ==> v[j]!=0 \nensures i!=v.Length ==> v[i]==0"
-vc-code: |-
-  {
-    assume false;
-  }
-vc-postamble: ''

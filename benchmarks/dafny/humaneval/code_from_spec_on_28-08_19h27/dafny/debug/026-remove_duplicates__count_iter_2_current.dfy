@@ -1,0 +1,75 @@
+function count_rec(a: seq<int>, x: int): int {
+  if |a| == 0 then 0
+  else count_rec(a[1..], x) + (if a[0] == x then 1 else 0)
+}
+method remove_duplicates(a: seq<int>) returns (result: seq<int>)
+  // pre-conditions-start
+  requires forall i :: 0 <= i < |a| ==> count_rec(a, a[i]) >= 1
+  // pre-conditions-end
+  // post-conditions-start
+  ensures forall i :: 0 <= i < |result| ==> count_rec(a, result[i]) == 1
+  ensures forall i :: 0 <= i < |a| ==> (a[i] in result <==> count_rec(a, a[i]) == 1)
+  // post-conditions-end
+{
+  assume{:axiom} false;
+}
+
+// <vc-helpers>
+lemma count_rec_properties(a: seq<int>, x: int)
+  ensures count_rec(a, x) >= 0
+  ensures count_rec(a, x) == 0 <==> x !in a
+{
+  if |a| == 0 {
+  } else {
+    count_rec_properties(a[1..], x);
+  }
+}
+
+lemma count_rec_append(a: seq<int>, b: seq<int>, x: int)
+  ensures count_rec(a + b, x) == count_rec(a, x) + count_rec(b, x)
+{
+  if |a| == 0 {
+    assert a + b == b;
+  } else {
+    assert (a + b)[1..] == a[1..] + b;
+    count_rec_append(a[1..], b, x);
+  }
+}
+
+lemma count_rec_slice_extend(a: seq<int>, i: int, x: int)
+  requires 0 <= i < |a|
+  ensures count_rec(a[..i+1], x) == count_rec(a[..i], x) + (if a[i] == x then 1 else 0)
+{
+  assert a[..i+1] == a[..i] + [a[i]];
+  count_rec_append(a[..i], [a[i]], x);
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: method count(a: seq<int>, x: int) returns (cnt: int)
+Count occurrences. Ensures: returns the correct count; returns the correct count.
+*/
+// </vc-description>
+
+// <vc-spec>
+method count(a: seq<int>, x: int) returns (cnt: int)
+  ensures cnt == count_rec(a, x)
+  ensures cnt >= 0
+// </vc-spec>
+// <vc-code>
+{
+  cnt := 0;
+  var i := 0;
+  while i < |a|
+    invariant 0 <= i <= |a|
+    invariant cnt == count_rec(a[..i], x)
+  {
+    count_rec_slice_extend(a, i, x);
+    if a[i] == x {
+      cnt := cnt + 1;
+    }
+    i := i + 1;
+  }
+}
+// </vc-code>

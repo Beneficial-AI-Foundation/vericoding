@@ -1,9 +1,0 @@
-vc-preamble: "//predicate for primeness\nghost predicate prime(n: nat)\n\n{ n > 1 && (forall nr | 1 < nr < n :: n % nr != 0) }\n\ndatatype Answer = Yes | No | Unknown\n\n//the class containing a prime database, if a number is prime it returns Yes, if it is not No and if the number\n//is not in the database it returns Unknown\nclass {:autocontracts} PrimeMap{\n\n  var database: map<nat, bool>; \n\n//the valid invariant of the class\n  ghost predicate Valid()\n    reads this\n  {\n    forall i | i in database.Keys :: (database[i] == true <==> prime(i)) \n  }\n\n//the constructor\n  constructor()\n    ensures database == map[]\n  {\n    database := map[];\n  }\n\n\n  // lookup n in the database and reply with Yes or No if it's in the database and it is or it is not prime,\n  // or with Unknown when it's not in the databse\nmethod IsPrime?(n: nat) returns (answer: Answer) \n      ensures database.Keys == old(database.Keys)\n      ensures (n in database) && prime(n) <==> answer == Yes \n    \
-  \  ensures (n in database) && !prime(n) <==> answer == No \n      ensures !(n in database) <==> answer == Unknown\n{\n  assume{:axiom} false;\n}\n\n  // method to test whether a number is prime, returns bool"
-vc-helpers: ''
-vc-spec: "method testPrimeness(n: nat) returns (result: bool) \n      requires n >= 0\n      ensures result <==> prime(n)"
-vc-code: |-
-  {
-    assume false;
-  }
-vc-postamble: '}'

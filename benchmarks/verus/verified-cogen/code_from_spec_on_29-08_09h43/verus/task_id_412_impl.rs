@@ -1,0 +1,67 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+lemma lemma_filter_subrange_push_even(s: Seq<u32>, x: u32)
+    requires x % 2 == 0
+    ensures s.push(x).filter(|y: u32| y % 2 == 0) == s.filter(|y: u32| y % 2 == 0).push(x)
+{
+}
+
+lemma lemma_filter_subrange_push_odd(s: Seq<u32>, x: u32)
+    requires x % 2 != 0
+    ensures s.push(x).filter(|y: u32| y % 2 == 0) == s.filter(|y: u32| y % 2 == 0)
+{
+}
+// </vc-helpers>
+
+// <vc-description>
+/*
+
+*/
+// </vc-description>
+
+// <vc-spec>
+fn remove_odds(arr: &Vec<u32>) -> (even_list: Vec<u32>)
+    // post-conditions-start
+    ensures
+        even_list@ == arr@.filter(|x: u32| x % 2 == 0),
+    // post-conditions-end
+// </vc-spec>
+
+// <vc-code>
+{
+    let mut result = Vec::new();
+    for i in 0..arr.len()
+        invariant
+            result@ == arr@.subrange(0, i as int).filter(|x: u32| x % 2 == 0),
+    {
+        /* code modified by LLM (iteration 5): added proper lemma calls and fixed proof structure */
+        if arr[i] % 2 == 0 {
+            proof {
+                assert(arr@.subrange(0, (i + 1) as int) == arr@.subrange(0, i as int).push(arr@[i as int]));
+                lemma_filter_subrange_push_even(arr@.subrange(0, i as int), arr@[i as int]);
+                assert(arr@.subrange(0, (i + 1) as int).filter(|x: u32| x % 2 == 0) == 
+                       arr@.subrange(0, i as int).filter(|x: u32| x % 2 == 0).push(arr@[i as int]));
+            }
+            result.push(arr[i]);
+        } else {
+            proof {
+                assert(arr@.subrange(0, (i + 1) as int) == arr@.subrange(0, i as int).push(arr@[i as int]));
+                lemma_filter_subrange_push_odd(arr@.subrange(0, i as int), arr@[i as int]);
+                assert(arr@.subrange(0, (i + 1) as int).filter(|x: u32| x % 2 == 0) == 
+                       arr@.subrange(0, i as int).filter(|x: u32| x % 2 == 0));
+            }
+        }
+    }
+    proof {
+        assert(arr@.subrange(0, arr.len() as int) == arr@);
+    }
+    result
+}
+// </vc-code>
+
+} // verus!
+
+fn main() {}
