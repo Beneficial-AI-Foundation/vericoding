@@ -1,0 +1,72 @@
+{
+  "id": "verina_basic_61",
+  "description": "-----Description-----  \nThis task involves determining whether every character in a provided string is a digit. The objective is to check if all characters fall within the standard digit range, returning true if they do and false otherwise.\n\n-----Input-----  \nThe input consists of:  \n\u2022 s: A string whose characters will be analyzed to determine if they are all digits.\n\n-----Output-----  \nThe output is a boolean value:  \n\u2022 true if every character in the string is a digit;  \n\u2022 false if at least one character is not a digit (note that the empty string returns true).\n\n-----Note-----  \nIt is assumed that the input is a well-formed string. The function uses an iterator to examine every character.",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\ndef isDigit (c : Char) : Bool :=\n  (c \u2265 '0') && (c \u2264 '9')\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible, simp]\ndef allDigits_precond (s : String) : Prop :=\n  -- !benchmark @start precond\n  True\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef allDigits (s : String) (h_precond : allDigits_precond (s)) : Bool :=\n  -- !benchmark @start code\n  let rec loop (it : String.Iterator) : Bool :=\n    if it.atEnd then\n      true\n    else\n      if !isDigit it.curr then\n        false\n      else\n        loop it.next\n  loop s.iter\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef allDigits_postcond (s : String) (result: Bool) (h_precond : allDigits_precond (s)) :=\n  -- !benchmark @start postcond\n  (result = true \u2194 \u2200 c \u2208 s.toList, isDigit c)\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem allDigits_spec_satisfied (s: String) (h_precond : allDigits_precond (s)) :\n    allDigits_postcond (s) (allDigits (s) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "allDigits",
+    "parameters": {
+      "param_name": [
+        "s"
+      ],
+      "param_type": [
+        "String"
+      ]
+    },
+    "return_type": "Bool"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "clover",
+      "link": "https://github.com/ChuyueSun/Clover",
+      "task_id": "Clover_all_digits",
+      "student_id": null
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"s\": \"123456\"}",
+      "{\"s\": \"123a56\"}",
+      "{\"s\": \"\"}",
+      "{\"s\": \"007\"}",
+      "{\"s\": \"98 76\"}"
+    ],
+    "expected": [
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ]
+    ],
+    "unexpected": [
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": []
+  },
+  "difficulty": "basic"
+}

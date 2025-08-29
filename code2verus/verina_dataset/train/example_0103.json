@@ -1,0 +1,76 @@
+{
+  "id": "verina_advanced_13",
+  "description": "-----Description-----\nThis task requires writing a Lean 4 method that determines whether there are any intersections between chords on a circle. The method should return true if at least one pair of chords intersects, and false otherwise.\n\nA chord is defined as a line segment connecting two distinct points on a circle. Two chords intersect if they cross each other inside the circle. The points are numbered from 1 to 2N in a clockwise direction, where N is the number of chords.\n\nConstraints\n\n\n- 2\\leq N \\leq 2\\times 10^5\n- 1\\leq A_i,B_i \\leq 2N\n- A_1,\\dots,A_N,B_1,\\dots,B_N are all distinct\n- All input values are integers\n\n-----Input-----\nThe input consists of two parameters:\nN: A natural number representing the number of chords (2 \u2264 N \u2264 2\u00d710^5).\nchords: A list of N pairs of natural numbers, where each pair represents the endpoints of a chord. All endpoint values are distinct and range from 1 to 2N.\n\n-----Output-----\nThe output is a boolean value:\n- Returns true if there exists at least one pair of intersecting chords.\n- Returns false if no chords intersect.\n\n",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible]\ndef hasChordIntersection_precond (N : Nat) (chords : List (List Nat)) : Prop :=\n  -- !benchmark @start precond\n  N \u2265 2 \u2227\n  chords.all (fun chord => chord.length = 2 \u2227 chord[0]! \u2265 1 \u2227 chord[0]! \u2264 2 * N \u2227 chord[1]! \u2265 1 \u2227 chord[1]! \u2264 2 * N) \u2227\n  List.Nodup (chords.flatMap id)\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef hasChordIntersection (N : Nat) (chords : List (List Nat)) (h_precond : hasChordIntersection_precond (N) (chords)) : Bool :=\n  -- !benchmark @start code\n  let sortedChords := chords.map (fun chord =>\n    let a := chord[0]!\n    let b := chord[1]!\n    if a > b then [b, a] else [a, b]\n  )\n\n  let rec checkIntersection (stack : List (List Nat)) (remaining : List (List Nat)) : Bool :=\n    match remaining with\n    | [] => false\n    | chord :: rest =>\n      let a := chord[0]!\n      let b := chord[1]!\n      let newStack := stack.dropWhile (fun c => (c)[1]! < a)\n      match newStack with\n      | [] => checkIntersection (chord :: newStack) rest\n      | top :: _ =>\n        if top[1]! > a && top[1]! < b then\n          true\n        else\n          checkIntersection (chord :: newStack) rest\n\n  let rec insert (x : List Nat) (xs : List (List Nat)) : List (List Nat) :=\n    match xs with\n    | [] => [x]\n    | y :: ys => if x[0]! < y[0]! then x :: xs else y :: insert x ys\n\n  let rec sort (xs : List (List Nat)) : List (List Nat) :=\n    match xs with\n    | [] => []\n    | x :: xs => insert x (sort xs)\n\n  let sortedChords := sort sortedChords\n  checkIntersection [] sortedChords\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible]\ndef hasChordIntersection_postcond (N : Nat) (chords : List (List Nat)) (result: Bool) (h_precond : hasChordIntersection_precond (N) (chords)) : Prop :=\n  -- !benchmark @start postcond\n  let sortedChords := chords.map (fun chord =>\n    let a := chord[0]!\n    let b := chord[1]!\n    if a > b then [b, a] else [a, b]\n  )\n\n  let rec hasIntersection (chord1 : List Nat) (chord2 : List Nat) : Bool :=\n    let a1 := chord1[0]!\n    let b1 := chord1[1]!\n    let a2 := chord2[0]!\n    let b2 := chord2[1]!\n    (a1 < a2 && a2 < b1 && b1 < b2) || (a2 < a1 && a1 < b2 && b2 < b1)\n\n  let rec checkAllPairs (chords : List (List Nat)) : Bool :=\n    match chords with\n    | [] => false\n    | x :: xs =>\n      if xs.any (fun y => hasIntersection x y) then true\n      else checkAllPairs xs\n\n  ((List.Pairwise (fun x y => !hasIntersection x y) sortedChords) \u2192 \u00ac result) \u2227\n  ((sortedChords.any (fun x => chords.any (fun y => hasIntersection x y))) \u2192 result)\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem hasChordIntersection_spec_satisfied (N: Nat) (chords: List (List Nat)) (h_precond : hasChordIntersection_precond (N) (chords)) :\n    hasChordIntersection_postcond (N) (chords) (hasChordIntersection (N) (chords) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "hasChordIntersection",
+    "parameters": {
+      "param_name": [
+        "N",
+        "chords"
+      ],
+      "param_type": [
+        "Nat",
+        "List (List Nat)"
+      ]
+    },
+    "return_type": "Bool"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "lab_assignment",
+      "link": "https://huggingface.co/spaces/livecodebench/code_generation_samples",
+      "task_id": "lab_hasChordIntersection_325324847",
+      "student_id": [
+        11
+      ]
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"N\": 3, \"chords\": \"[[1, 3], [4, 2], [5, 6]]\"}",
+      "{\"N\": 3, \"chords\": \"[[6, 1], [4, 3], [2, 5]]\"}",
+      "{\"N\": 4, \"chords\": \"[[2, 4], [3, 7], [8, 6], [5, 1]]\"}",
+      "{\"N\": 2, \"chords\": \"[[1, 2], [3, 4]]\"}"
+    ],
+    "expected": [
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ]
+    ],
+    "unexpected": [
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": [
+      "{'N': 3, 'chords': '[[1, 1]]'}",
+      "{'N': 3, 'chords': '[[7, 1]]'}",
+      "{'N': 3, 'chords': '[[0, 1]]'}",
+      "{'N': 3, 'chords': '[[1, 0]]'}",
+      "{'N': 3, 'chords': '[[1, 7]]'}",
+      "{'N': 0, 'chords': '[]'}"
+    ]
+  },
+  "difficulty": "advanced"
+}

@@ -1,0 +1,90 @@
+{
+  "id": "verina_basic_10",
+  "description": "-----Description----- \nThis task requires writing a Lean 4 method that determines if a given integer is strictly greater than every element in a provided array. The method should return true only if the integer is larger than each element in the array; otherwise, it should return false.\n\n-----Input-----\nThe input consists of:\nn: An integer.\na: An array of integers.\n\n-----Output-----\nThe output is a Boolean value:\nReturns true if the integer is greater than all elements in the array.\nReturns false if there is at least one element in the array that is greater than or equal to the integer.\n\n-----Note-----\nThe array is assumed to be non-null.",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n\n@[reducible, simp]\ndef isGreater_precond (n : Int) (a : Array Int) : Prop :=\n  -- !benchmark @start precond\n  a.size > 0\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef isGreater (n : Int) (a : Array Int) (h_precond : isGreater_precond (n) (a)) : Bool :=\n  -- !benchmark @start code\n  a.all fun x => n > x\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef isGreater_postcond (n : Int) (a : Array Int) (result: Bool) (h_precond : isGreater_precond (n) (a)) :=\n  -- !benchmark @start postcond\n  (\u2200 i, (hi : i < a.size) \u2192 n > a[i]) \u2194 result\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem isGreater_spec_satisfied (n: Int) (a: Array Int) (h_precond : isGreater_precond (n) (a)) :\n    isGreater_postcond (n) (a) (isGreater (n) (a) h_precond) h_precond := by\n  -- !benchmark @start proof\n  unfold isGreater isGreater_postcond\n  simp [Array.all_eq]\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "isGreater",
+    "parameters": {
+      "param_name": [
+        "n",
+        "a"
+      ],
+      "param_type": [
+        "Int",
+        "Array Int"
+      ]
+    },
+    "return_type": "Bool"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "dafny-synthesis",
+      "link": "https://github.com/Mondego/dafny-synthesis",
+      "task_id": "task_id_433",
+      "student_id": null
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"n\": 6, \"a\": \"#[1, 2, 3, 4, 5]\"}",
+      "{\"n\": 3, \"a\": \"#[1, 2, 3, 4, 5]\"}",
+      "{\"n\": 5, \"a\": \"#[5, 5, 5]\"}",
+      "{\"n\": -1, \"a\": \"#[-10, -5, -3]\"}",
+      "{\"n\": -3, \"a\": \"#[-1, -2, -3]\"}",
+      "{\"n\": 0, \"a\": \"#[0, -1, -2]\"}",
+      "{\"n\": 10, \"a\": \"#[1, 2, 9, 3]\"}"
+    ],
+    "expected": [
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ]
+    ],
+    "unexpected": [
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": [
+      "{'n': 0, 'a': '#[]'}"
+    ]
+  },
+  "difficulty": "basic"
+}

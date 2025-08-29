@@ -1,0 +1,126 @@
+{
+  "id": "verina_advanced_63",
+  "description": "-----Description-----\nThis task requires writing a Lean 4 method that counts the unique elements from a sorted array.\n\n-----Input-----\nThe input is a single list of integers:\nnums: An array of integers sorted in non-decreasing order.\n\n-----Output-----\nThe output is a single integer:\nReturns the number of unique elements (k).",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible]\ndef removeDuplicates_precond (nums : List Int) : Prop :=\n  -- !benchmark @start precond\n  -- nums are sorted in non-decreasing order\n  List.Pairwise (\u00b7 \u2264 \u00b7) nums\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef removeDuplicates (nums : List Int) (h_precond : removeDuplicates_precond (nums)) : Nat :=\n  -- !benchmark @start code\n  match nums with\n  | [] =>\n    0\n  | h :: t =>\n    let init := h\n    let initCount := 1\n    let rec countUniques (prev : Int) (xs : List Int) (k : Nat) : Nat :=\n      match xs with\n      | [] =>\n        k\n      | head :: tail =>\n        let isDuplicate := head = prev\n        if isDuplicate then\n          countUniques prev tail k\n        else\n          let newK := k + 1\n          countUniques head tail newK\n    countUniques init t initCount\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible]\ndef removeDuplicates_postcond (nums : List Int) (result: Nat) (h_precond : removeDuplicates_precond (nums)) : Prop :=\n  -- !benchmark @start postcond\n  result - nums.eraseDups.length = 0 \u2227\n  nums.eraseDups.length \u2264 result\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem removeDuplicates_spec_satisfied (nums: List Int) (h_precond : removeDuplicates_precond (nums)) :\n    removeDuplicates_postcond (nums) (removeDuplicates (nums) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "removeDuplicates",
+    "parameters": {
+      "param_name": [
+        "nums"
+      ],
+      "param_type": [
+        "List Int"
+      ]
+    },
+    "return_type": "Nat"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "lab_assignment",
+      "link": "https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/",
+      "task_id": "lab_removeDuplicates_325739229",
+      "student_id": [
+        30
+      ]
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"nums\": \"[1, 1, 2]\"}",
+      "{\"nums\": \"[0, 0, 1, 1, 1, 2, 2, 3, 3, 4]\"}",
+      "{\"nums\": \"[-1, -1, 0, 1, 2, 2, 3]\"}",
+      "{\"nums\": \"[1, 2, 3, 4, 5]\"}",
+      "{\"nums\": \"[1, 1, 1, 1]\"}",
+      "{\"nums\": \"[]\"}",
+      "{\"nums\": \"[1]\"}",
+      "{\"nums\": \"[-100, -100, -100]\"}",
+      "{\"nums\": \"[-100, -99, -99, -50, 0, 0, 100, 100]\"}",
+      "{\"nums\": \"[-1, 0, 0, 0, 1, 2, 2, 3, 4, 4, 5]\"}",
+      "{\"nums\": \"[100, 100, 100, 101, 102, 102, 103, 104, 105, 105]\"}"
+    ],
+    "expected": [
+      [
+        "2"
+      ],
+      [
+        "5"
+      ],
+      [
+        "5"
+      ],
+      [
+        "5"
+      ],
+      [
+        "1"
+      ],
+      [
+        "0"
+      ],
+      [
+        "1"
+      ],
+      [
+        "1"
+      ],
+      [
+        "5"
+      ],
+      [
+        "7"
+      ],
+      [
+        "6"
+      ]
+    ],
+    "unexpected": [
+      [
+        "1",
+        "3"
+      ],
+      [
+        "4",
+        "10"
+      ],
+      [
+        "3"
+      ],
+      [
+        "4"
+      ],
+      [
+        "2",
+        "4"
+      ],
+      [
+        "1"
+      ],
+      [
+        "0",
+        "2"
+      ],
+      [
+        "2",
+        "3"
+      ],
+      [
+        "6",
+        "7"
+      ],
+      [
+        "6",
+        "10"
+      ],
+      [
+        "5",
+        "7"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": [
+      "{'nums': '[3, 2, 1]'}"
+    ]
+  },
+  "difficulty": "advanced"
+}

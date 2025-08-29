@@ -1,0 +1,95 @@
+{
+  "id": "verina_basic_46",
+  "description": "-----Description----- \nThis task requires writing a Lean 4 method that finds the last occurrence of a specified element in a sorted array of integers. The method should return the index corresponding to the last occurrence of the element if it is present; if the element is absent, it should return -1. Additionally, the array must remain unchanged after the method is executed.\n\n-----Input-----\nThe input consists of:\narr: A sorted array of integers in non-decreasing order.\nelem: An integer whose last occurrence position is to be determined.\n\n-----Output-----\nThe output is an integer:\nReturns the index of the last occurrence of the specified integer in the array if it exists.\nReturns -1 if the integer is not found in the array.\n\n-----Note-----\nThe input array is assumed to be sorted in non-decreasing order and remains unchanged by the method.",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n\n@[reducible, simp]\ndef lastPosition_precond (arr : Array Int) (elem : Int) : Prop :=\n  -- !benchmark @start precond\n  List.Pairwise (\u00b7 \u2264 \u00b7) arr.toList\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef lastPosition (arr : Array Int) (elem : Int) (h_precond : lastPosition_precond (arr) (elem)) : Int :=\n  -- !benchmark @start code\n  let rec loop (i : Nat) (pos : Int) : Int :=\n    if i < arr.size then\n      let a := arr[i]!\n      if a = elem then loop (i + 1) i\n      else loop (i + 1) pos\n    else pos\n  loop 0 (-1)\n  -- !benchmark @end code\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef lastPosition_postcond (arr : Array Int) (elem : Int) (result: Int) (h_precond : lastPosition_precond (arr) (elem)) :=\n  -- !benchmark @start postcond\n  (result \u2265 0 \u2192\n    arr[result.toNat]! = elem \u2227 (arr.toList.drop (result.toNat + 1)).all (\u00b7 \u2260 elem)) \u2227\n  (result = -1 \u2192 arr.toList.all (\u00b7 \u2260 elem))\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem lastPosition_spec_satisfied (arr: Array Int) (elem: Int) (h_precond : lastPosition_precond (arr) (elem)) :\n    lastPosition_postcond (arr) (elem) (lastPosition (arr) (elem) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "lastPosition",
+    "parameters": {
+      "param_name": [
+        "arr",
+        "elem"
+      ],
+      "param_type": [
+        "Array Int",
+        "Int"
+      ]
+    },
+    "return_type": "Int"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "dafny-synthesis",
+      "link": "https://github.com/Mondego/dafny-synthesis",
+      "task_id": "task_id_793",
+      "student_id": null
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"arr\": \"#[1, 2, 2, 3, 4, 5]\", \"elem\": 2}",
+      "{\"arr\": \"#[1, 2, 2, 3, 4, 5]\", \"elem\": 6}",
+      "{\"arr\": \"#[1, 2, 2, 3, 4, 5]\", \"elem\": 5}",
+      "{\"arr\": \"#[1]\", \"elem\": 1}",
+      "{\"arr\": \"#[1, 1, 1, 1]\", \"elem\": 1}",
+      "{\"arr\": \"#[2, 2, 3, 3, 3]\", \"elem\": 3}"
+    ],
+    "expected": [
+      [
+        "2"
+      ],
+      [
+        "-1"
+      ],
+      [
+        "5"
+      ],
+      [
+        "0"
+      ],
+      [
+        "3"
+      ],
+      [
+        "4"
+      ]
+    ],
+    "unexpected": [
+      [
+        "0",
+        "1",
+        "3"
+      ],
+      [
+        "0",
+        "1",
+        "2"
+      ],
+      [
+        "3",
+        "4",
+        "0"
+      ],
+      [
+        "1",
+        "-1",
+        "2"
+      ],
+      [
+        "0",
+        "1",
+        "2"
+      ],
+      [
+        "2",
+        "3",
+        "5"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": [
+      "{'arr': '#[3, 2, 1]', 'elem': 2}"
+    ]
+  },
+  "difficulty": "basic"
+}

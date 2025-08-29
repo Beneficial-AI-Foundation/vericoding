@@ -1,0 +1,86 @@
+{
+  "id": "verina_basic_69",
+  "description": "-----Description-----  \nThis problem involves determining the index of the first occurrence of a specified element within an array of integers. The objective is to identify the correct position where the target element appears for the first time, ensuring that all elements prior to that index are different from the target.\n\n-----Input-----  \nThe input consists of:  \n\u2022 a: An array of integers.  \n\u2022 e: An integer representing the element to search for.\n\n-----Output-----  \nThe output is a natural number (Nat) representing the index of the first occurrence of e in the array.  \n\u2022 If the element e exists in the array, the index n will satisfy the conditions specified above.\n\n-----Note-----  \nIt is assumed that the input satisfies the precondition where at least one index i in a exists such that a[i]! = e.  \nThe implementation uses a helper function to iterate through the array recursively.",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible, simp]\ndef LinearSearch_precond (a : Array Int) (e : Int) : Prop :=\n  -- !benchmark @start precond\n  \u2203 i, i < a.size \u2227 a[i]! = e\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\ndef linearSearchAux (a : Array Int) (e : Int) (n : Nat) : Nat :=\n  if n < a.size then\n    if a[n]! = e then n else linearSearchAux a e (n + 1)\n  else\n    0\n-- !benchmark @end code_aux\n\n\ndef LinearSearch (a : Array Int) (e : Int) (h_precond : LinearSearch_precond (a) (e)) : Nat :=\n  -- !benchmark @start code\n  linearSearchAux a e 0\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef LinearSearch_postcond (a : Array Int) (e : Int) (result: Nat) (h_precond : LinearSearch_precond (a) (e)) :=\n  -- !benchmark @start postcond\n  (result < a.size) \u2227 (a[result]! = e) \u2227 (\u2200 k : Nat, k < result \u2192 a[k]! \u2260 e)\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem LinearSearch_spec_satisfied (a: Array Int) (e: Int) (h_precond : LinearSearch_precond (a) (e)) :\n    LinearSearch_postcond (a) (e) (LinearSearch (a) (e) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "LinearSearch",
+    "parameters": {
+      "param_name": [
+        "a",
+        "e"
+      ],
+      "param_type": [
+        "Array Int",
+        "Int"
+      ]
+    },
+    "return_type": "Nat"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "clover",
+      "link": "https://github.com/ChuyueSun/Clover",
+      "task_id": "Clover_linear_search2",
+      "student_id": null
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"a\": \"#[1, 2, 3, 4, 5]\", \"e\": 3}",
+      "{\"a\": \"#[10, 20, 30, 40, 50]\", \"e\": 10}",
+      "{\"a\": \"#[5, 4, 3, 2, 1]\", \"e\": 1}",
+      "{\"a\": \"#[-1, 0, 1, 2]\", \"e\": -1}",
+      "{\"a\": \"#[7, 8, 7, 9, 7]\", \"e\": 7}"
+    ],
+    "expected": [
+      [
+        "2"
+      ],
+      [
+        "0"
+      ],
+      [
+        "4"
+      ],
+      [
+        "0"
+      ],
+      [
+        "0"
+      ]
+    ],
+    "unexpected": [
+      [
+        "0",
+        "1",
+        "3"
+      ],
+      [
+        "1",
+        "2",
+        "3"
+      ],
+      [
+        "0",
+        "1",
+        "2"
+      ],
+      [
+        "1",
+        "2",
+        "3"
+      ],
+      [
+        "2",
+        "3",
+        "4"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": [
+      "{'a': '#[1, 2, 3, 4, 5]', 'e': 6}"
+    ]
+  },
+  "difficulty": "basic"
+}

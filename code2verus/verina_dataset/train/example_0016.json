@@ -1,0 +1,80 @@
+{
+  "id": "verina_advanced_38",
+  "description": "-----Description-----\nThis task requires implementing a Lean 4 method that, given a list of intervals, returns the maximum amount that can be spanned after we removed one of the intervals\nYou may assume you'll receive at least one interval\n\n-----Input-----\nThe input consists of a list of ordered pairs of intervals.\n-----Output-----\nThe output is an integer:\nReturn the largest span that is possible after removing one of the intervals.\n\n",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible, simp]\ndef maxCoverageAfterRemovingOne_precond (intervals : List (Prod Nat Nat)) : Prop :=\n  -- !benchmark @start precond\n  intervals.length > 0\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef maxCoverageAfterRemovingOne (intervals : List (Prod Nat Nat)) (h_precond : maxCoverageAfterRemovingOne_precond (intervals)) : Nat :=\n  -- !benchmark @start code\n  let n := intervals.length\n  if n \u2264 1 then 0\n  else\n    (List.range n).foldl (fun acc i =>\n      let remaining := List.eraseIdx intervals i\n      let sorted := List.mergeSort remaining (fun (a b : Nat \u00d7 Nat) => a.1 \u2264 b.1)\n      let merged := sorted.foldl (fun acc curr =>\n        match acc with\n        | [] => [curr]\n        | (s, e) :: rest => if curr.1 \u2264 e then (s, max e curr.2) :: rest else curr :: acc\n      ) []\n      let coverage := merged.reverse.foldl (fun acc (s, e) => acc + (e - s)) 0\n      max acc coverage\n    ) 0\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef maxCoverageAfterRemovingOne_postcond (intervals : List (Prod Nat Nat)) (result: Nat) (h_precond : maxCoverageAfterRemovingOne_precond (intervals)) : Prop :=\n  -- !benchmark @start postcond\n  \u2203 i < intervals.length,\n    let remaining := List.eraseIdx intervals i\n    let sorted := List.mergeSort remaining (fun (a b : Nat \u00d7 Nat) => a.1 \u2264 b.1)\n    let merged := sorted.foldl (fun acc curr =>\n      match acc with\n      | [] => [curr]\n      | (s, e) :: rest => if curr.1 \u2264 e then (s, max e curr.2) :: rest else curr :: acc\n    ) []\n    let cov := merged.reverse.foldl (fun acc (s, e) => acc + (e - s)) 0\n    result = cov \u2227\n    \u2200 j < intervals.length,\n      let rem_j := List.eraseIdx intervals j\n      let sort_j := List.mergeSort rem_j (fun (a b : Nat \u00d7 Nat) => a.1 \u2264 b.1)\n      let merged_j := sort_j.foldl (fun acc curr =>\n        match acc with\n        | [] => [curr]\n        | (s, e) :: rest => if curr.1 \u2264 e then (s, max e curr.2) :: rest else curr :: acc\n      ) []\n      let cov_j := merged_j.reverse.foldl (fun acc (s, e) => acc + (e - s)) 0\n      cov \u2265 cov_j\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem maxCoverageAfterRemovingOne_spec_satisfied (intervals: List (Prod Nat Nat)) (h_precond : maxCoverageAfterRemovingOne_precond (intervals)) :\n    maxCoverageAfterRemovingOne_postcond (intervals) (maxCoverageAfterRemovingOne (intervals) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n\n\n",
+  "signature": {
+    "name": "maxCoverageAfterRemovingOne",
+    "parameters": {
+      "param_name": [
+        "intervals"
+      ],
+      "param_type": [
+        "List (Prod Nat Nat)"
+      ]
+    },
+    "return_type": "Nat"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "lab_assignment",
+      "link": "[{\"text_file_id\"=>804563720}]",
+      "task_id": "lab_maxCoverageAfterRemovingOne_325587004",
+      "student_id": [
+        31
+      ]
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"intervals\": \"[(1, 3), (2, 5), (6, 8)]\"}",
+      "{\"intervals\": \"[(1, 4), (2, 6), (8, 10), (9, 12)]\"}",
+      "{\"intervals\": \"[(1, 2), (2, 3), (3, 4)]\"}",
+      "{\"intervals\": \"[(1, 10), (2, 3), (4, 5)]\"}",
+      "{\"intervals\": \"[(5, 6), (1, 2), (3, 4)]\"}"
+    ],
+    "expected": [
+      [
+        "5"
+      ],
+      [
+        "8"
+      ],
+      [
+        "2"
+      ],
+      [
+        "9"
+      ],
+      [
+        "2"
+      ]
+    ],
+    "unexpected": [
+      [
+        "4",
+        "6"
+      ],
+      [
+        "7",
+        "6"
+      ],
+      [
+        "3"
+      ],
+      [
+        "7",
+        "10"
+      ],
+      [
+        "5",
+        "3"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": [
+      "{'intervals': '[]'}"
+    ]
+  },
+  "difficulty": "advanced"
+}

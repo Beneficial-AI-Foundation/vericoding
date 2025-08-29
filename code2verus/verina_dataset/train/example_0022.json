@@ -1,0 +1,81 @@
+{
+  "id": "verina_advanced_2",
+  "description": "-----Description----- \nThis task requires writing a Lean 4 method that finds the length of the logest common subsequence of two input arrays.\n\n-----Input-----\nThe input consists of two arrays:\na: The first array.\nb: The second array.\n\n\n-----Output-----\nThe output is an integer:\nReturns the length of array a and b's longest common subsequence.",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible, simp]\ndef LongestCommonSubsequence_precond (a : Array Int) (b : Array Int) : Prop :=\n  -- !benchmark @start precond\n  True\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\ndef intMax (x y : Int) : Int :=\n  if x < y then y else x\n-- !benchmark @end code_aux\n\n\ndef LongestCommonSubsequence (a : Array Int) (b : Array Int) (h_precond : LongestCommonSubsequence_precond (a) (b)) : Int :=\n  -- !benchmark @start code\n  let m := a.size\n  let n := b.size\n\n  let dp := Id.run do\n    let mut dp := Array.mkArray (m + 1) (Array.mkArray (n + 1) 0)\n    for i in List.range (m + 1) do\n      for j in List.range (n + 1) do\n        if i = 0 \u2228 j = 0 then\n          ()\n        else if a[i - 1]! = b[j - 1]! then\n          let newVal := ((dp[i - 1]!)[j - 1]!) + 1\n          dp := dp.set! i (dp[i]!.set! j newVal)\n        else\n          let newVal := intMax ((dp[i - 1]!)[j]!) ((dp[i]!)[j - 1]!)\n          dp := dp.set! i (dp[i]!.set! j newVal)\n    return dp\n  (dp[m]!)[n]!\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef LongestCommonSubsequence_postcond (a : Array Int) (b : Array Int) (result: Int) (h_precond : LongestCommonSubsequence_precond (a) (b)) : Prop :=\n  -- !benchmark @start postcond\n  let allSubseq (arr : Array Int) := (arr.foldl fun acc x => acc ++ acc.map (fun sub => x :: sub)) [[]] |>.map List.reverse\n  let subseqA := allSubseq a\n  let subseqB := allSubseq b\n  let commonSubseqLens := subseqA.filter (fun l => subseqB.contains l) |>.map (\u00b7.length)\n  commonSubseqLens.contains result \u2227 commonSubseqLens.all (\u00b7 \u2264 result)\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem LongestCommonSubsequence_spec_satisfied (a: Array Int) (b: Array Int) (h_precond : LongestCommonSubsequence_precond (a) (b)) :\n    LongestCommonSubsequence_postcond (a) (b) (LongestCommonSubsequence (a) (b) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n\n\n",
+  "signature": {
+    "name": "LongestCommonSubsequence",
+    "parameters": {
+      "param_name": [
+        "a",
+        "b"
+      ],
+      "param_type": [
+        "Array Int",
+        "Array Int"
+      ]
+    },
+    "return_type": "Int"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "lab_assignment",
+      "link": "",
+      "task_id": "lab_LongestCommonSubsequence_324999618",
+      "student_id": [
+        2
+      ]
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"a\": \"#[1, 2, 3]\", \"b\": \"#[1, 2, 3]\"}",
+      "{\"a\": \"#[1, 3, 5, 7]\", \"b\": \"#[1, 2, 3, 4, 5, 6, 7]\"}",
+      "{\"a\": \"#[1, 2, 3]\", \"b\": \"#[4, 5, 6]\"}",
+      "{\"a\": \"#[]\", \"b\": \"#[1, 2, 3]\"}",
+      "{\"a\": \"#[1, 2, 3, 4]\", \"b\": \"#[2, 4, 6, 8]\"}"
+    ],
+    "expected": [
+      [
+        "3"
+      ],
+      [
+        "4"
+      ],
+      [
+        "0"
+      ],
+      [
+        "0"
+      ],
+      [
+        "2"
+      ]
+    ],
+    "unexpected": [
+      [
+        "2",
+        "4"
+      ],
+      [
+        "2",
+        "5"
+      ],
+      [
+        "1",
+        "2"
+      ],
+      [
+        "1"
+      ],
+      [
+        "1",
+        "3",
+        "4"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": []
+  },
+  "difficulty": "advanced"
+}

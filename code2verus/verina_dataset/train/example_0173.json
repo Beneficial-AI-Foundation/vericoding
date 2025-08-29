@@ -1,0 +1,78 @@
+{
+  "id": "verina_advanced_78",
+  "description": "-----Description----- \nThis task requires writing a Lean 4 method that solves the Two Sum problem. Given a list of integers and a target integer, the method must return a pair of indices such that the sum of the numbers at those indices equals the target. You may assume that each input has exactly one solution and that you may not use the same element twice. The answer should be returned with first index is smaller than the second.\n\n-----Input-----\nThe input consists of:\n- nums: A list of integers.\n- target: An integer representing the target sum.\n\n-----Output-----\nThe output is a pair (tuple) of integers representing the indices of the two numbers in the input list that add up to the target.\n\n",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible]\ndef twoSum_precond (nums : List Int) (target : Int) : Prop :=\n  -- !benchmark @start precond\n  let pairwiseSum := List.range nums.length |>.flatMap (fun i =>\n    nums.drop (i + 1) |>.map (fun y => nums[i]! + y))\n  nums.length > 1 \u2227 pairwiseSum.count target = 1\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\ndef findComplement (nums : List Int) (target : Int) (i : Nat) (x : Int) : Option Nat :=\n  let rec aux (nums : List Int) (j : Nat) : Option Nat :=\n    match nums with\n    | []      => none\n    | y :: ys => if x + y = target then some (i + j + 1) else aux ys (j + 1)\n  aux nums 0\n\ndef twoSumAux (nums : List Int) (target : Int) (i : Nat) : Prod Nat Nat :=\n  match nums with\n  | []      => panic! \"No solution exists\"\n  | x :: xs =>\n    match findComplement xs target i x with\n    | some j => (i, j)\n    | none   => twoSumAux xs target (i + 1)\n-- !benchmark @end code_aux\n\n\ndef twoSum (nums : List Int) (target : Int) (h_precond : twoSum_precond (nums) (target)) : Prod Nat Nat :=\n  -- !benchmark @start code\n  twoSumAux nums target 0\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible]\ndef twoSum_postcond (nums : List Int) (target : Int) (result: Prod Nat Nat) (h_precond : twoSum_precond (nums) (target)) : Prop :=\n  -- !benchmark @start postcond\n  let i := result.fst;\n  let j := result.snd;\n  (i < j) \u2227\n  (i < nums.length) \u2227 (j < nums.length) \u2227\n  (nums[i]!) + (nums[j]!) = target\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem twoSum_spec_satisfied (nums: List Int) (target: Int) (h_precond : twoSum_precond (nums) (target)) :\n    twoSum_postcond (nums) (target) (twoSum (nums) (target) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n\n\n",
+  "signature": {
+    "name": "twoSum",
+    "parameters": {
+      "param_name": [
+        "nums",
+        "target"
+      ],
+      "param_type": [
+        "List Int",
+        "Int"
+      ]
+    },
+    "return_type": "Prod Nat Nat"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "lab_assignment",
+      "link": "https://leetcode.com/problems/two-sum/description/",
+      "task_id": "lab_twoSum_324854887",
+      "student_id": [
+        18
+      ]
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"nums\": \"[2, 7, 11, 15]\", \"target\": 9}",
+      "{\"nums\": \"[3, 2, 4]\", \"target\": 6}",
+      "{\"nums\": \"[3, 3]\", \"target\": 6}",
+      "{\"nums\": \"[1, 2, 3, 4]\", \"target\": 7}",
+      "{\"nums\": \"[0, 4, 3, 0]\", \"target\": 0}"
+    ],
+    "expected": [
+      [
+        "(0, 1)"
+      ],
+      [
+        "(1, 2)"
+      ],
+      [
+        "(0, 1)"
+      ],
+      [
+        "(2, 3)"
+      ],
+      [
+        "(0, 3)"
+      ]
+    ],
+    "unexpected": [
+      [
+        "(2, 3)"
+      ],
+      [
+        "(0, 2)"
+      ],
+      [
+        "(1, 0)"
+      ],
+      [
+        "(0, 1)"
+      ],
+      [
+        "(1, 2)"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": [
+      "{'nums': '[1, 2]', 'target': 0}"
+    ]
+  },
+  "difficulty": "advanced"
+}

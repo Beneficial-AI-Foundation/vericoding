@@ -1,0 +1,8 @@
+{
+  "dataset_name": "sunblaze-ucb/verina",
+  "description": "Verina dataset containing Lean 4 code and specifications",
+  "splits": [
+    "train"
+  ],
+  "features": "{'id': Value('string'), 'description': Value('string'), 'lean_code': Value('string'), 'signature': {'name': Value('string'), 'parameters': {'param_name': List(Value('string')), 'param_type': List(Value('string'))}, 'return_type': Value('string')}, 'metadata': {'upstream': {'name': Value('string'), 'link': Value('string'), 'task_id': Value('string'), 'student_id': List(Value('int64'))}}, 'tests': {'input': List(Value('string')), 'expected': List(List(Value('string'))), 'unexpected': List(List(Value('string')))}, 'reject_inputs': {'input': List(Value('string'))}, 'difficulty': Value('string')}"
+}

@@ -1,0 +1,53 @@
+{
+  "id": "verina_basic_55",
+  "description": "-----Description-----\nThis task involves determining whether two integer values are equal. The goal is simply to compare the two provided numbers and indicate with a Boolean result whether they are the same.\n\n-----Input-----\nThe input consists of two elements:\n\u2022 a: An element of type Int.\n\u2022 b: An element of type Int.\n\n-----Output-----\nThe output is a Boolean:\n\u2022 Returns true if a equals b.\n\u2022 Returns false if a does not equal b.\n",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible, simp]\ndef Compare_precond (a : Int) (b : Int) : Prop :=\n  -- !benchmark @start precond\n  True\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef Compare (a : Int) (b : Int) (h_precond : Compare_precond (a) (b)) : Bool :=\n  -- !benchmark @start code\n  if a = b then true else false\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef Compare_postcond (a : Int) (b : Int) (result: Bool) (h_precond : Compare_precond (a) (b)) :=\n  -- !benchmark @start postcond\n  (a = b \u2192 result = true) \u2227 (a \u2260 b \u2192 result = false)\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem Compare_spec_satisfied (a: Int) (b: Int) (h_precond : Compare_precond (a) (b)) :\n    Compare_postcond (a) (b) (Compare (a) (b) h_precond) h_precond := by\n  -- !benchmark @start proof\n  unfold Compare_postcond Compare\n  simp\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "Compare",
+    "parameters": {
+      "param_name": [
+        "a",
+        "b"
+      ],
+      "param_type": [
+        "Int",
+        "Int"
+      ]
+    },
+    "return_type": "Bool"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "clover",
+      "link": "https://github.com/ChuyueSun/Clover",
+      "task_id": "Clover_compare",
+      "student_id": null
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"a\": 1, \"b\": 1}",
+      "{\"a\": 1, \"b\": 2}"
+    ],
+    "expected": [
+      [
+        "True"
+      ],
+      [
+        "False"
+      ]
+    ],
+    "unexpected": [
+      [
+        "False"
+      ],
+      [
+        "True"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": []
+  },
+  "difficulty": "basic"
+}

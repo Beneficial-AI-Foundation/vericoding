@@ -1,0 +1,80 @@
+{
+  "id": "verina_advanced_70",
+  "description": "-----Description---\nThis task requires writing a Lean 4 method that's goal is to determine the minimum number of adjacent swaps needed to make the array semi-ordered. You may repeatedly swap 2 adjacent elements in the array. A permutation is called semi-ordered if the first number equals 1 and the last number equals n. \n\n-----Input-----\n\nThe input consists of:\n- nums: A list of integeris.\n\n----Output-----\n\nThe output is an integer.\n\n",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible]\ndef semiOrderedPermutation_precond (nums : List Int) : Prop :=\n  -- !benchmark @start precond\n  True\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef semiOrderedPermutation (nums : List Int) (h_precond : semiOrderedPermutation_precond (nums)) : Int :=\n  -- !benchmark @start code\n  let lengthList := nums.length\n  let numOne : Int := 1\n  let largestNum : Int := Int.ofNat lengthList\n\n  let firstIndex := nums.idxOf numOne\n  let lastIndex := nums.idxOf largestNum\n\n  let startPosition := 0\n  let endPosition := lengthList - 1\n\n  let shouldMoveOne := firstIndex != startPosition\n  let shouldMoveLast := lastIndex != endPosition\n\n  let distanceOne := if shouldMoveOne then firstIndex else 0\n  let distanceLast := if shouldMoveLast then endPosition - lastIndex else 0\n\n  let totalMoves := distanceOne + distanceLast\n  let needAdjustment := firstIndex > lastIndex\n  let adjustedMoves := if needAdjustment then totalMoves - 1 else totalMoves\n\n  adjustedMoves\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible]\ndef semiOrderedPermutation_postcond (nums : List Int) (result: Int) (h_precond : semiOrderedPermutation_precond (nums)) : Prop :=\n  -- !benchmark @start postcond\n  let n := nums.length\n  let pos1 := nums.idxOf 1\n  let posn := nums.idxOf (Int.ofNat n)\n  if pos1 > posn then\n    pos1 + n = result + 2 + posn\n  else\n    pos1 + n = result + 1 + posn\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem semiOrderedPermutation_spec_satisfied (nums: List Int) (h_precond : semiOrderedPermutation_precond (nums)) :\n    semiOrderedPermutation_postcond (nums) (semiOrderedPermutation (nums) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "semiOrderedPermutation",
+    "parameters": {
+      "param_name": [
+        "nums"
+      ],
+      "param_type": [
+        "List Int"
+      ]
+    },
+    "return_type": "Int"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "lab_assignment",
+      "link": "Found on livecodebench, but similar problem on leetcode: https://leetcode.com/problems/minimum-adjacent-swaps-to-make-a-valid-array/description/",
+      "task_id": "lab_semiOrderedPermutation_324857110",
+      "student_id": [
+        35
+      ]
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"nums\": \"[2, 1, 4, 3]\"}",
+      "{\"nums\": \"[2, 4, 1, 3]\"}",
+      "{\"nums\": \"[1, 3, 4, 2, 5]\"}",
+      "{\"nums\": \"[3, 1, 2]\"}",
+      "{\"nums\": \"[2, 3, 1, 5, 4]\"}"
+    ],
+    "expected": [
+      [
+        "2"
+      ],
+      [
+        "3"
+      ],
+      [
+        "0"
+      ],
+      [
+        "2"
+      ],
+      [
+        "3"
+      ]
+    ],
+    "unexpected": [
+      [
+        "0",
+        "1",
+        "3"
+      ],
+      [
+        "2",
+        "4"
+      ],
+      [
+        "1",
+        "2"
+      ],
+      [
+        "0",
+        "1"
+      ],
+      [
+        "4",
+        "5"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": []
+  },
+  "difficulty": "advanced"
+}

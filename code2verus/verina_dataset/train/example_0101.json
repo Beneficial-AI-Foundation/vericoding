@@ -1,0 +1,81 @@
+{
+  "id": "verina_advanced_9",
+  "description": "-----Description----- \nThis task requires writing a Lean 4 method of which given a number n and divisor d, it counts all the number that is smaller than\nn whose sum of digits is divisible by d. \n-----Input-----\nThe input consists of three Nat:\nn: Nat\nd:Nat where d > 0\n\n-----Output-----\nThe output is an Natural number:\nEnsure this match the count that satisfy the property.\n\n",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\ndef sumOfDigits (x : Nat) : Nat :=\n  let rec go (n acc : Nat) : Nat :=\n    if n = 0 then acc\n    else go (n / 10) (acc + (n % 10))\n  go x 0\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible]\ndef countSumDivisibleBy_precond (n : Nat) (d : Nat) : Prop :=\n  -- !benchmark @start precond\n  d > 0\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\ndef isSumDivisibleBy (x : Nat) (d:Nat) : Bool :=\n  (sumOfDigits x) % d = 0\n-- !benchmark @end code_aux\n\n\ndef countSumDivisibleBy (n : Nat) (d : Nat) (h_precond : countSumDivisibleBy_precond (n) (d)) : Nat :=\n  -- !benchmark @start code\n  let rec go (i acc : Nat) : Nat :=\n    match i with\n    | 0 => acc\n    | i'+1 =>\n      let acc' := if isSumDivisibleBy i' d then acc + 1 else acc\n      go i' acc'\n  go n 0\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible]\ndef countSumDivisibleBy_postcond (n : Nat) (d : Nat) (result: Nat) (h_precond : countSumDivisibleBy_precond (n) (d)) : Prop :=\n  -- !benchmark @start postcond\n  (List.length (List.filter (fun x => x < n \u2227 (sumOfDigits x) % d = 0) (List.range n))) - result = 0 \u2227\n  result \u2264 (List.length (List.filter (fun x => x < n \u2227 (sumOfDigits x) % d = 0) (List.range n)))\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem countSumDivisibleBy_spec_satisfied (n: Nat) (d: Nat) (h_precond : countSumDivisibleBy_precond (n) (d)) :\n    countSumDivisibleBy_postcond (n) (d) (countSumDivisibleBy (n) (d) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "countSumDivisibleBy",
+    "parameters": {
+      "param_name": [
+        "n",
+        "d"
+      ],
+      "param_type": [
+        "Nat",
+        "Nat"
+      ]
+    },
+    "return_type": "Nat"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "lab_assignment",
+      "link": "this is a leetcode style problem but not a specifc one. similar to this: https://leetcode.com/problems/count-the-digits-that-divide-a-number/description/",
+      "task_id": "lab_countSumDivisibleBy_325011347",
+      "student_id": [
+        7
+      ]
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"n\": 0, \"d\": 2}",
+      "{\"n\": 1, \"d\": 2}",
+      "{\"n\": 10, \"d\": 3}",
+      "{\"n\": 12, \"d\": 2}",
+      "{\"n\": 20, \"d\": 5}"
+    ],
+    "expected": [
+      [
+        "0"
+      ],
+      [
+        "1"
+      ],
+      [
+        "4"
+      ],
+      [
+        "6"
+      ],
+      [
+        "4"
+      ]
+    ],
+    "unexpected": [
+      [
+        "1"
+      ],
+      [
+        "0"
+      ],
+      [
+        "3",
+        "5"
+      ],
+      [
+        "3",
+        "5"
+      ],
+      [
+        "0",
+        "10"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": [
+      "{'n': 1, 'd': 0}"
+    ]
+  },
+  "difficulty": "advanced"
+}

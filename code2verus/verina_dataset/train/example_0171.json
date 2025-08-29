@@ -1,0 +1,95 @@
+{
+  "id": "verina_basic_28",
+  "description": "-----Description----- \nThis task requires writing a Lean 4 method that determines whether a given natural number is prime. A number (with n \u2265 2) is considered prime if it is divisible only by 1 and itself. The method should return true when the input number is prime and false otherwise.\n\n-----Input-----\nThe input consists of:\nn: A natural number (Nat) such that n \u2265 2.\n\n-----Output-----\nThe output is a Boolean value:\nReturns true if the input number is prime (i.e., there is no integer k with 1 < k < n that divides n).\nReturns false if the input number is not prime (i.e., there exists an integer k with 1 < k < n that divides n).\n\n-----Note-----\nThe input is expected to satisfy the condition n \u2265 2.",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n\n@[reducible, simp]\ndef isPrime_precond (n : Nat) : Prop :=\n  -- !benchmark @start precond\n  n \u2265 2\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef isPrime (n : Nat) (h_precond : isPrime_precond (n)) : Bool :=\n  -- !benchmark @start code\n  let bound := n\n  let rec check (i : Nat) (fuel : Nat) : Bool :=\n    if fuel = 0 then true\n    else if i * i > n then true\n    else if n % i = 0 then false\n    else check (i + 1) (fuel - 1)\n  check 2 bound\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef isPrime_postcond (n : Nat) (result: Bool) (h_precond : isPrime_precond (n)) :=\n  -- !benchmark @start postcond\n  (result \u2192 (List.range' 2 (n - 2)).all (fun k => n % k \u2260 0)) \u2227\n  (\u00ac result \u2192 (List.range' 2 (n - 2)).any (fun k => n % k = 0))\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem isPrime_spec_satisfied (n: Nat) (h_precond : isPrime_precond (n)) :\n    isPrime_postcond (n) (isPrime (n) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "isPrime",
+    "parameters": {
+      "param_name": [
+        "n"
+      ],
+      "param_type": [
+        "Nat"
+      ]
+    },
+    "return_type": "Bool"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "dafny-synthesis",
+      "link": "https://github.com/Mondego/dafny-synthesis",
+      "task_id": "task_id_605",
+      "student_id": null
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"n\": 2}",
+      "{\"n\": 3}",
+      "{\"n\": 4}",
+      "{\"n\": 5}",
+      "{\"n\": 9}",
+      "{\"n\": 11}",
+      "{\"n\": 12}",
+      "{\"n\": 13}"
+    ],
+    "expected": [
+      [
+        "True"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ]
+    ],
+    "unexpected": [
+      [
+        "False"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": [
+      "{'n': 0}"
+    ]
+  },
+  "difficulty": "basic"
+}

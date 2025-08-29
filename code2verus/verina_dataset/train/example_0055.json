@@ -1,0 +1,107 @@
+{
+  "id": "verina_basic_48",
+  "description": "-----Description-----  \nThis task requires writing a Lean 4 method that determines whether a given non-negative natural number is a perfect square. In other words, the method should return true if there exists a natural number whose square is equal to the input number, and false if no such number exists.\n\n-----Input-----  \nThe input consists of a single natural number:  \nn: A non-negative natural number (Nat).\n\n-----Output-----  \nThe output is a Boolean value:  \nReturns true if there exists an integer such that its square equals the input n.  \nReturns false if no integer squared equals the input n.",
+  "lean_code": "-- !benchmark @start import type=solution\nimport Mathlib\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n\n@[reducible, simp]\ndef isPerfectSquare_precond (n : Nat) : Prop :=\n  -- !benchmark @start precond\n  True\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef isPerfectSquare (n : Nat) : Bool :=\n  -- !benchmark @start code\n  if n = 0 then true\n  else\n    let rec check (x : Nat) (fuel : Nat) : Bool :=\n      match fuel with\n      | 0 => false\n      | fuel + 1 =>\n        if x * x > n then false\n        else if x * x = n then true\n        else check (x + 1) fuel\n    check 1 n\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef isPerfectSquare_postcond (n : Nat) (result : Bool) : Prop :=\n  -- !benchmark @start postcond\n  result \u2194 \u2203 i : Nat, i * i = n\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\ntheorem check_correct (n : Nat) (x fuel : Nat) :\n   isPerfectSquare.check n x fuel = true \u2192 \u2203 i, x \u2264 i \u2227 i * i = n := by\n  induction fuel generalizing x with\n  | zero =>\n    -- In the base case, check always returns false, so this is a contradiction\n    unfold isPerfectSquare.check\n    simp\n\n  | succ fuel ih =>\n    -- Unfold the definition of check for the successor case\n    unfold isPerfectSquare.check\n    simp_all\n\n    -- Split into cases based on comparison of x*x with n\n    if hgt : x * x > n then\n      -- If x*x > n, check returns false, contradiction\n      simp_all\n    else if heq : x * x = n then\n      -- If x*x = n, we found our witness\n      simp_all\n      exists x\n    else\n      -- Otherwise, we need to apply the induction hypothesis\n      simp_all\n      have h_rec := ih (x + 1)\n      -- Complete the proof by transitivity of \u2264\n      intro h\n      have \u27e8i, hi, heqi\u27e9 := h_rec h\n      exists i\n      constructor\n      \u00b7 -- Show x \u2264 i by transitivity: x \u2264 x+1 \u2264 i\n        exact Nat.le_trans (Nat.le_succ x) hi\n      \u00b7 -- Pass through the equality i * i = n\n        exact heqi\n\ntheorem check_complete (n : Nat) (x fuel : Nat) (i : Nat)\n    (hx : x \u2264 i) (hi : i * i = n) (hfuel : i < x + fuel) :\n  isPerfectSquare.check n x fuel = true := by\n\n  induction fuel generalizing x with\n  | zero =>\n    -- In the zero fuel case, we have a contradiction:\n    -- i < x + 0 implies i < x, which contradicts x \u2264 i\n    unfold isPerfectSquare.check\n    simp_all\n    exact absurd hfuel (Nat.not_lt_of_le hx)\n\n  | succ fuel ih =>\n    -- For the successor case, unfold the definition\n    unfold isPerfectSquare.check\n    simp\n\n    -- Check the first condition: x * x > n\n    if hgt : x * x > n then\n      -- This contradicts x \u2264 i and i * i = n\n      have x_le_i_squared : x * x \u2264 i * i := Nat.mul_le_mul hx hx\n      rw [hi] at x_le_i_squared\n      exact absurd hgt (Nat.not_lt_of_ge x_le_i_squared)\n    else if heq : x * x = n then\n      -- Found a perfect square directly\n      simp_all\n    else\n      -- Need to continue searching\n\n      -- Check if x = i\n      if hxi : x = i then\n        -- If x = i, then x * x = i * i = n, contradicting heq\n        rw [hxi] at heq\n        exact absurd hi heq\n      else\n        simp_all\n        -- x < i case: continue searching with x + 1\n        have x_lt_i : x < i := Nat.lt_of_le_of_ne hx hxi\n        have x_succ_le_i : x + 1 \u2264 i := Nat.succ_le_of_lt x_lt_i\n\n        -- Show i < (x + 1) + fuel\n        have i_lt_next_fuel : i < (x + 1) + fuel := by\n          rw [Nat.add_assoc, Nat.add_comm _ fuel]\n          exact hfuel\n\n        -- Apply induction hypothesis\n        exact ih (x + 1) x_succ_le_i i_lt_next_fuel\n\n-- !benchmark @end proof_aux\n\ntheorem isPerfectSquare_spec_satisfied (n : Nat) :\n    isPerfectSquare_postcond n (isPerfectSquare n) := by\n  -- !benchmark @start proof\n  unfold isPerfectSquare_postcond isPerfectSquare\n  simp\n  cases n with\n  | zero => simp\n  | succ n' =>\n    -- We'll prove both directions of the biconditional\n    apply Iff.intro\n\n     -- Forward direction: isPerfectSquare (n' + 1) = true \u2192 \u2203 i, i * i = n' + 1\n    \u00b7 intro h\n      simp at h\n      -- We know check 1 (n' + 1) evaluates to true\n      have \u27e8i, \u27e8hi_le, hi_eq\u27e9\u27e9 := check_correct (n' + 1) 1 (n' + 1) h\n      exists i\n\n    -- Backward direction: (\u2203 i, i * i = n' + 1) \u2192 isPerfectSquare (n' + 1) = true\n    \u00b7 intro h\n      simp\n      -- We have some i where i * i = n' + 1\n      have \u27e8i, hi\u27e9 := h\n      -- We need to show check 1 (n' + 1) = true\n      -- First, show i \u2265 1 (which is needed for check to find i)\n      have i_pos : i > 0 := by\n        apply Nat.pos_of_ne_zero\n        intro h_zero\n        rw [h_zero, zero_mul] at hi\n        exact Nat.succ_ne_zero n' hi.symm\n\n      have i_ge_1 : i \u2265 1 := Nat.succ_le_of_lt i_pos\n\n      -- Show that i < 1 + (n' + 1) so check has enough fuel to reach i\n      have i_lt_bound : i < 1 + (n' + 1) := by\n        -- Since i*i = n' + 1, we know i \u2264 n' + 1\n        have i_le_n_plus_1 : i \u2264 n' + 1 := by\n          apply Nat.le_of_mul_le_mul_left\n          \u00b7 rw [hi]\n            simp\n            exact i_ge_1\n          \u00b7 exact i_pos\n\n        apply Nat.lt_succ_of_le at i_le_n_plus_1\n        simp_all +arith\n\n      -- Apply the completeness lemma\n      exact check_complete (n' + 1) 1 (n' + 1) i i_ge_1 hi i_lt_bound\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "isPerfectSquare",
+    "parameters": {
+      "param_name": [
+        "n"
+      ],
+      "param_type": [
+        "Nat"
+      ]
+    },
+    "return_type": "Bool"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "dafny-synthesis",
+      "link": "https://github.com/Mondego/dafny-synthesis",
+      "task_id": "task_id_803",
+      "student_id": null
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"n\": 0}",
+      "{\"n\": 1}",
+      "{\"n\": 4}",
+      "{\"n\": 9}",
+      "{\"n\": 2}",
+      "{\"n\": 3}",
+      "{\"n\": 10}",
+      "{\"n\": 16}",
+      "{\"n\": 25}",
+      "{\"n\": 26}"
+    ],
+    "expected": [
+      [
+        "True"
+      ],
+      [
+        "True"
+      ],
+      [
+        "True"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "False"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ]
+    ],
+    "unexpected": [
+      [
+        "False"
+      ],
+      [
+        "False"
+      ],
+      [
+        "False"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "True"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": []
+  },
+  "difficulty": "basic"
+}

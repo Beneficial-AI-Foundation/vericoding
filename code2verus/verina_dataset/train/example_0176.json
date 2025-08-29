@@ -1,0 +1,78 @@
+{
+  "id": "verina_basic_31",
+  "description": "-----Description----- \nThis task requires writing a Lean 4 method that converts a given string to uppercase. The method should replace every lowercase letter in the input string with its corresponding uppercase character while leaving all other characters unchanged. The output string must have the same length as the input string.\n\n-----Input-----\nThe input consists of:\ns: A string.\n\n-----Output-----\nThe output is a string:\nReturns a new string in which every lowercase letter from the input string is converted to uppercase, and all other characters are exactly the same as in the input string, ensuring the output string has the same length as the input.\n\n-----Note-----\nThere are no preconditions since the method assumes that the input string is always valid (i.e., non-null).",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\ndef isLowerCase (c : Char) : Bool :=\n  'a' \u2264 c \u2227 c \u2264 'z'\n\ndef shiftMinus32 (c : Char) : Char :=\n  Char.ofNat ((c.toNat - 32) % 128)\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n\n@[reducible, simp]\ndef toUppercase_precond (s : String) : Prop :=\n  -- !benchmark @start precond\n  True\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef toUppercase (s : String) (h_precond : toUppercase_precond (s)) : String :=\n  -- !benchmark @start code\n  let cs := s.toList\n  let cs' := cs.map (fun c => if isLowerCase c then shiftMinus32 c else c)\n  String.mk cs'\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef toUppercase_postcond (s : String) (result: String) (h_precond : toUppercase_precond (s)) :=\n  -- !benchmark @start postcond\n  let cs := s.toList\n  let cs' := result.toList\n  (result.length = s.length) \u2227\n  (\u2200 i, i < s.length \u2192\n    (isLowerCase cs[i]! \u2192 cs'[i]! = shiftMinus32 cs[i]!) \u2227\n    (\u00acisLowerCase cs[i]! \u2192 cs'[i]! = cs[i]!))\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem toUppercase_spec_satisfied (s: String) (h_precond : toUppercase_precond (s)) :\n    toUppercase_postcond (s) (toUppercase (s) h_precond) h_precond := by\n  -- !benchmark @start proof\n  unfold toUppercase toUppercase_postcond\n  simp_all\n  constructor\n  \u00b7 unfold String.length\n    simp\n  \u00b7 intro i hi\n    have hi' : i < s.data.length := by\n      unfold String.length at hi\n      simp at hi\n      exact hi\n    constructor <;> simp_all\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "toUppercase",
+    "parameters": {
+      "param_name": [
+        "s"
+      ],
+      "param_type": [
+        "String"
+      ]
+    },
+    "return_type": "String"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "dafny-synthesis",
+      "link": "https://github.com/Mondego/dafny-synthesis",
+      "task_id": "task_id_624",
+      "student_id": null
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"s\": \"Hello, World!\"}",
+      "{\"s\": \"abc\"}",
+      "{\"s\": \"ABC\"}",
+      "{\"s\": \"123!?@\"}",
+      "{\"s\": \"\"}"
+    ],
+    "expected": [
+      [
+        "HELLO, WORLD!"
+      ],
+      [
+        "ABC"
+      ],
+      [
+        "ABC"
+      ],
+      [
+        "123!?@"
+      ],
+      [
+        ""
+      ]
+    ],
+    "unexpected": [
+      [
+        "hello, world!",
+        "HeLLo, WORld!"
+      ],
+      [
+        "AbC",
+        "abc"
+      ],
+      [
+        "abc",
+        "aBC",
+        "Abc"
+      ],
+      [
+        "123!@?",
+        "321!?@"
+      ],
+      [
+        " ",
+        "a"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": []
+  },
+  "difficulty": "basic"
+}

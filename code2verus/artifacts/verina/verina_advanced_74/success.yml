@@ -1,0 +1,28 @@
+num_iterations: 7
+success: false
+verification_error: "note: while loop: not all errors may have been reported; rerun\
+  \ with a higher value for --multiple-errors to find other potential errors in this\
+  \ function\n  --> /tmp/tmp5s3oswnb.rs:40:5\n   |\n40 |     while k <= end {\n  \
+  \ |     ^^^^^^^^^^^^^^\n\nerror: precondition not satisfied\n  --> /tmp/tmp5s3oswnb.rs:41:19\n\
+  \   |\n41 |         let val = nums[k];\n   |                   ^^^^^^^\n   |\n \
+  \ ::: /home/lacra/verus/vstd/std_specs/vec.rs:48:9\n   |\n48 |         i < vec.view().len(),\n\
+  \   |         -------------------- failed precondition\n\nerror: possible arithmetic\
+  \ underflow/overflow\n  --> /tmp/tmp5s3oswnb.rs:56:9\n   |\n56 |         k += 1;\n\
+  \   |         ^^^^^^\n\nnote: while loop: not all errors may have been reported;\
+  \ rerun with a higher value for --multiple-errors to find other potential errors\
+  \ in this function\n  --> /tmp/tmp5s3oswnb.rs:74:9\n   |\n74 |         while d <\
+  \ n - i {\n   |         ^^^^^^^^^^^^^^^\n\nerror: possible arithmetic underflow/overflow\n\
+  \  --> /tmp/tmp5s3oswnb.rs:74:19\n   |\n74 |         while d < n - i {\n   |   \
+  \                ^^^^^\n\nerror: possible arithmetic underflow/overflow\n  --> /tmp/tmp5s3oswnb.rs:75:21\n\
+  \   |\n75 |             let j = i + d;\n   |                     ^^^^^\n\nerror:\
+  \ precondition not satisfied\n  --> /tmp/tmp5s3oswnb.rs:77:29\n   |\n34 |      \
+  \   start <= end,\n   |         ------------ failed precondition\n...\n77 |    \
+  \             let count = count_distinct_elements(&nums, i, j);\n   |          \
+  \                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nnote: recommendation\
+  \ not met: value may be out of range of the target type (use `#[verifier::truncate]`\
+  \ on the cast to silence this warning)\n  --> /tmp/tmp5s3oswnb.rs:79:31\n   |\n\
+  79 |                 let squared = (count * count) as u32;\n   |               \
+  \                ^^^^^^^^^^^^^^^\n\nerror: aborting due to 5 previous errors\n\n"
+verification_output: 'verification results:: 7 verified, 2 errors
+
+  '

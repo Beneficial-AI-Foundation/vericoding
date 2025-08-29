@@ -1,0 +1,86 @@
+{
+  "id": "verina_basic_70",
+  "description": "-----Description-----  \nThis task involves determining the first index in an array where a given condition holds true. The goal is to identify the position of the first element that meets a specified criterion, ensuring that no preceding element does.\n\n-----Input-----  \nThe input consists of:  \n\u2022 a: An array of elements (for testing purposes, you can assume it is an array of integers).  \n\u2022 P: A predicate function on the elements (represented as a string for test cases, e.g., \"fun x => x > 5\"). It is assumed that at least one element in the array satisfies P.\n\n-----Output-----  \nThe output is a natural number (Nat) which represents the index of the first element in the array that satisfies the predicate P.  \n\u2022 The index returned is less than the size of the array.  \n\u2022 The element at the returned index satisfies P.  \n\u2022 All elements before the returned index do not satisfy P.\n\n-----Note-----  \nIt is assumed that the array contains at least one element that satisfies P. In cases where this precondition does not hold, the behavior of the function is not guaranteed by the specification.",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible, simp]\ndef LinearSearch3_precond (a : Array Int) (P : Int -> Bool) : Prop :=\n  -- !benchmark @start precond\n  \u2203 i, i < a.size \u2227 P (a[i]!)\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef LinearSearch3 (a : Array Int) (P : Int -> Bool) (h_precond : LinearSearch3_precond (a) (P)) : Nat :=\n  -- !benchmark @start code\n  let rec loop (n : Nat) : Nat :=\n    if n < a.size then\n      if P (a[n]!) then n else loop (n + 1)\n    else\n      0\n  loop 0\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef LinearSearch3_postcond (a : Array Int) (P : Int -> Bool) (result: Nat) (h_precond : LinearSearch3_precond (a) (P)) :=\n  -- !benchmark @start postcond\n  result < a.size \u2227 P (a[result]!) \u2227 (\u2200 k, k < result \u2192 \u00ac P (a[k]!))\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem LinearSearch3_spec_satisfied (a: Array Int) (P: Int -> Bool) (h_precond : LinearSearch3_precond (a) (P)) :\n    LinearSearch3_postcond (a) (P) (LinearSearch3 (a) (P) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "LinearSearch3",
+    "parameters": {
+      "param_name": [
+        "a",
+        "P"
+      ],
+      "param_type": [
+        "Array Int",
+        "Int -> Bool"
+      ]
+    },
+    "return_type": "Nat"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "clover",
+      "link": "https://github.com/ChuyueSun/Clover",
+      "task_id": "Clover_linear_search3",
+      "student_id": null
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"a\": \"#[4, 7, 2, 9]\", \"P\": \"fun x => x > 5\"}",
+      "{\"a\": \"#[10, 8, 6, 4, 2]\", \"P\": \"fun x => x < 5\"}",
+      "{\"a\": \"#[5, 3, 1, 2]\", \"P\": \"fun x => x == 1\"}",
+      "{\"a\": \"#[0, 1, 2, 3]\", \"P\": \"fun x => x == 0\"}",
+      "{\"a\": \"#[9, 9, 9, 9]\", \"P\": \"fun x => x == 9\"}"
+    ],
+    "expected": [
+      [
+        "1"
+      ],
+      [
+        "3"
+      ],
+      [
+        "2"
+      ],
+      [
+        "0"
+      ],
+      [
+        "0"
+      ]
+    ],
+    "unexpected": [
+      [
+        "0",
+        "2",
+        "3"
+      ],
+      [
+        "0",
+        "1",
+        "4"
+      ],
+      [
+        "0",
+        "1",
+        "3"
+      ],
+      [
+        "1",
+        "2",
+        "3"
+      ],
+      [
+        "1",
+        "2",
+        "3"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": [
+      "{'a': '#[1, 2, 3, 4, 5]', 'P': 'fun x => x > 10'}"
+    ]
+  },
+  "difficulty": "basic"
+}

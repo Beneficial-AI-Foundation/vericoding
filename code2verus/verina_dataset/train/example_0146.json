@@ -1,0 +1,80 @@
+{
+  "id": "verina_advanced_16",
+  "description": "-----Description-----\nImplement the insertion sort algorithm in Lean 4. The function takes a single list of integers\nas input and returns a new list that contains the same integers in ascending order.\n\nImplementation must follow a standard insertion sort approach, placing each element into its correct position.\nThe resulting list must be sorted in ascending order.\nThe returned list must be a permutation of the input list (i.e., contain exactly the same elements).\n\n-----Input-----\nA single list of integers, denoted as xs.\n\n-----Output-----\nA list of integers, sorted in ascending order.\n\nExample:\nInput:  [3, 1, 4, 2]\nOutput: [1, 2, 3, 4]\n\n",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible]\ndef insertionSort_precond (xs : List Int) : Prop :=\n  -- !benchmark @start precond\n  True\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef insertionSort (xs : List Int) (h_precond : insertionSort_precond (xs)) : List Int :=\n  -- !benchmark @start code\n    let rec insert (x : Int) (ys : List Int) : List Int :=\n      match ys with\n      | []      => [x]\n      | y :: ys' =>\n        if x <= y then\n          x :: y :: ys'\n        else\n          y :: insert x ys'\n\n    let rec sort (arr : List Int) : List Int :=\n      match arr with\n      | []      => []\n      | x :: xs => insert x (sort xs)\n\n    sort xs\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible]\ndef insertionSort_postcond (xs : List Int) (result: List Int) (h_precond : insertionSort_precond (xs)) : Prop :=\n  -- !benchmark @start postcond\n  List.Pairwise (\u00b7 \u2264 \u00b7) result \u2227 List.isPerm xs result\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem insertionSort_spec_satisfied (xs: List Int) (h_precond : insertionSort_precond (xs)) :\n    insertionSort_postcond (xs) (insertionSort (xs) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n\n\n",
+  "signature": {
+    "name": "insertionSort",
+    "parameters": {
+      "param_name": [
+        "xs"
+      ],
+      "param_type": [
+        "List Int"
+      ]
+    },
+    "return_type": "List Int"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "lab_assignment",
+      "link": "https://leetcode.com/problems/insertion-sort-list/description/",
+      "task_id": "lab_insertionSort_324868790",
+      "student_id": [
+        13
+      ]
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"xs\": \"[]\"}",
+      "{\"xs\": \"[42]\"}",
+      "{\"xs\": \"[3, 1, 4, 2]\"}",
+      "{\"xs\": \"[5, -1, 0, 10, -1]\"}",
+      "{\"xs\": \"[2, 2, 2, 2, 2]\"}"
+    ],
+    "expected": [
+      [
+        "[]"
+      ],
+      [
+        "[42]"
+      ],
+      [
+        "[1, 2, 3, 4]"
+      ],
+      [
+        "[-1, -1, 0, 5, 10]"
+      ],
+      [
+        "[2, 2, 2, 2, 2]"
+      ]
+    ],
+    "unexpected": [
+      [
+        "[0]",
+        "[1, 2, 3]"
+      ],
+      [
+        "[24]",
+        "[]",
+        "[42, 42]"
+      ],
+      [
+        "[1, 3, 2, 4]",
+        "[4, 3, 2, 1]"
+      ],
+      [
+        "[-1, -1, 0, 10, 5]",
+        "[10, 5, 0, -1, -1]"
+      ],
+      [
+        "[2, 2, 2, 2]",
+        "[]"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": []
+  },
+  "difficulty": "advanced"
+}

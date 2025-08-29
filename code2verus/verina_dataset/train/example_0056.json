@@ -1,0 +1,93 @@
+{
+  "id": "verina_advanced_73",
+  "description": "-----Description----- \nThis task requires writing a Lean 4 method that finds the first missing natural number in an increasingly sorted list. The method should return the smallest natural number that is not in the list, ensuring that all natural numbers that are smaller is inside the list.\n\n-----Input-----\nThe input consists of a list of natural numbers sorted in increasing order:\nl: The sorted list\n\n-----Output-----\nThe output is a natural number:\nReturns the smallest natural number that is not in the list, which means all natural numbers that are smaller than the returned value should be inside the input list.\n\n",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible]\ndef smallestMissing_precond (l : List Nat) : Prop :=\n  -- !benchmark @start precond\n  List.Pairwise (\u00b7 < \u00b7) l\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef smallestMissing (l : List Nat) (h_precond : smallestMissing_precond (l)) : Nat :=\n  -- !benchmark @start code\n  let sortedList := l\n  let rec search (lst : List Nat) (n : Nat) : Nat :=\n    match lst with\n    | [] => n\n    | x :: xs =>\n      let isEqual := x = n\n      let isGreater := x > n\n      let nextCand := n + 1\n      if isEqual then\n        search xs nextCand\n      else if isGreater then\n        n\n      else\n        search xs n\n  let result := search sortedList 0\n  result\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible]\ndef smallestMissing_postcond (l : List Nat) (result: Nat) (h_precond : smallestMissing_precond (l)) : Prop :=\n  -- !benchmark @start postcond\n  result \u2209 l \u2227 \u2200 candidate : Nat, candidate < result \u2192 candidate \u2208 l\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem smallestMissing_spec_satisfied (l: List Nat) (h_precond : smallestMissing_precond (l)) :\n    smallestMissing_postcond (l) (smallestMissing (l) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n\n\n",
+  "signature": {
+    "name": "smallestMissing",
+    "parameters": {
+      "param_name": [
+        "l"
+      ],
+      "param_type": [
+        "List Nat"
+      ]
+    },
+    "return_type": "Nat"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "lab_assignment",
+      "link": "NA, idea from ed stem comment",
+      "task_id": "lab_smallestMissing_325415996",
+      "student_id": [
+        51
+      ]
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"l\": \"[0, 1, 2, 4, 5]\"}",
+      "{\"l\": \"[]\"}",
+      "{\"l\": \"[1, 2, 3, 4]\"}",
+      "{\"l\": \"[0, 1, 2, 3, 4]\"}",
+      "{\"l\": \"[2, 3, 4, 5, 6]\"}"
+    ],
+    "expected": [
+      [
+        "3"
+      ],
+      [
+        "0"
+      ],
+      [
+        "0"
+      ],
+      [
+        "5"
+      ],
+      [
+        "0"
+      ]
+    ],
+    "unexpected": [
+      [
+        "1",
+        "2",
+        "0"
+      ],
+      [
+        "1",
+        "2",
+        "3"
+      ],
+      [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": [
+      "{'l': '[1, 1]'}",
+      "{'l': '[1, 0]'}"
+    ]
+  },
+  "difficulty": "advanced"
+}

@@ -1,0 +1,89 @@
+{
+  "id": "verina_basic_77",
+  "description": "-----Description-----  \nThis task involves updating an element within a 2-dimensional array. The goal is to modify only a specific inner array by changing one of its elements to a new value while keeping every other element and all other inner arrays unchanged.\n\n-----Input-----  \nThe input consists of:  \n\u2022 arr: An array of arrays of natural numbers.  \n\u2022 index1: A natural number representing the index in the outer array identifying which inner array to modify (0-indexed).  \n\u2022 index2: A natural number representing the index within the selected inner array that should be updated (0-indexed).  \n\u2022 val: A natural number which is the new value to set at the specified inner index.\n\n-----Output-----  \nThe output is an array of arrays of natural numbers that:  \n\u2022 Has the same overall structure as the input.  \n\u2022 Contains all original inner arrays unchanged except for the inner array at position index1.  \n\u2022 In the modified inner array, only the element at index2 is replaced with val, while all other elements remain the same.\n\n-----Note-----  \nIt is assumed that index1 is a valid index for the outer array and that index2 is a valid index within the corresponding inner array.",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible, simp]\ndef modify_array_element_precond (arr : Array (Array Nat)) (index1 : Nat) (index2 : Nat) (val : Nat) : Prop :=\n  -- !benchmark @start precond\n  index1 < arr.size \u2227\n  index2 < (arr[index1]!).size\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\ndef updateInner (a : Array Nat) (idx val : Nat) : Array Nat :=\n  a.set! idx val\n-- !benchmark @end code_aux\n\n\ndef modify_array_element (arr : Array (Array Nat)) (index1 : Nat) (index2 : Nat) (val : Nat) (h_precond : modify_array_element_precond (arr) (index1) (index2) (val)) : Array (Array Nat) :=\n  -- !benchmark @start code\n  let inner := arr[index1]!\n  let inner' := updateInner inner index2 val\n  arr.set! index1 inner'\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef modify_array_element_postcond (arr : Array (Array Nat)) (index1 : Nat) (index2 : Nat) (val : Nat) (result: Array (Array Nat)) (h_precond : modify_array_element_precond (arr) (index1) (index2) (val)) :=\n  -- !benchmark @start postcond\n  (\u2200 i, i < arr.size \u2192 i \u2260 index1 \u2192 result[i]! = arr[i]!) \u2227\n  (\u2200 j, j < (arr[index1]!).size \u2192 j \u2260 index2 \u2192 (result[index1]!)[j]! = (arr[index1]!)[j]!) \u2227\n  ((result[index1]!)[index2]! = val)\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem modify_array_element_spec_satisfied (arr: Array (Array Nat)) (index1: Nat) (index2: Nat) (val: Nat) (h_precond : modify_array_element_precond (arr) (index1) (index2) (val)) :\n    modify_array_element_postcond (arr) (index1) (index2) (val) (modify_array_element (arr) (index1) (index2) (val) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "modify_array_element",
+    "parameters": {
+      "param_name": [
+        "arr",
+        "index1",
+        "index2",
+        "val"
+      ],
+      "param_type": [
+        "Array (Array Nat)",
+        "Nat",
+        "Nat",
+        "Nat"
+      ]
+    },
+    "return_type": "Array (Array Nat)"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "clover",
+      "link": "https://github.com/ChuyueSun/Clover",
+      "task_id": "Clover_modify_2d_array",
+      "student_id": null
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"arr\": \"#[#[1, 2, 3], #[4, 5, 6]]\", \"index1\": 0, \"index2\": 1, \"val\": 99}",
+      "{\"arr\": \"#[#[7, 8], #[9, 10]]\", \"index1\": 1, \"index2\": 0, \"val\": 0}",
+      "{\"arr\": \"#[#[0, 0, 0]]\", \"index1\": 0, \"index2\": 2, \"val\": 5}",
+      "{\"arr\": \"#[#[3, 4, 5], #[6, 7, 8], #[9, 10, 11]]\", \"index1\": 2, \"index2\": 1, \"val\": 100}",
+      "{\"arr\": \"#[#[1]]\", \"index1\": 0, \"index2\": 0, \"val\": 42}"
+    ],
+    "expected": [
+      [
+        "#[#[1, 99, 3], #[4, 5, 6]]"
+      ],
+      [
+        "#[#[7, 8], #[0, 10]]"
+      ],
+      [
+        "#[#[0, 0, 5]]"
+      ],
+      [
+        "#[#[3, 4, 5], #[6, 7, 8], #[9, 100, 11]]"
+      ],
+      [
+        "#[#[42]]"
+      ]
+    ],
+    "unexpected": [
+      [
+        "#[#[1, 2, 3], #[4, 99, 6]]",
+        "#[#[1, 99, 3], #[4, 5, 7]]",
+        "#[#[99, 1, 3], #[4, 5, 6]]"
+      ],
+      [
+        "#[#[7, 0], #[9, 10]]",
+        "#[#[7, 8], #[9, 0]]",
+        "#[#[0, 8], #[9, 10]]"
+      ],
+      [
+        "#[#[0, 5, 0]]",
+        "#[#[5, 0, 0]]"
+      ],
+      [
+        "#[#[3, 4, 5], #[6, 7, 8], #[9, 10, 11]]",
+        "#[#[3, 4, 5], #[6, 7, 8], #[9, 7, 11]]",
+        "#[#[3, 4, 5], #[6, 7, 8], #[100, 10, 11]]"
+      ],
+      [
+        "#[#[1]]",
+        "#[#[0]]",
+        "#[#[99]]"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": [
+      "{'arr': '#[#[1, 2, 3], #[4, 5, 6]]', 'index1': 1, 'index2': 3, 'val': 99}"
+    ]
+  },
+  "difficulty": "basic"
+}

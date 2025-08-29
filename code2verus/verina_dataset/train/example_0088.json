@@ -1,0 +1,79 @@
+{
+  "id": "verina_advanced_17",
+  "description": "-----Description----- \nThis task requires implementing the insertion sort algorithm to sort a list of integers in ascending order. The function should take a list of integers as input and return a new list containing the same elements sorted in non-decreasing order.\n\n-----Input----- \nThe input is:\n\nl: A list of integers to be sorted.\n\n-----Output----- \nThe output is:\n\nA list of integers that is sorted in non-decreasing order and is a permutation of the input list.\n\n",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible]\ndef insertionSort_precond (l : List Int) : Prop :=\n  -- !benchmark @start precond\n  True\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n-- Helper function to insert an integer into a sorted list\ndef insertElement (x : Int) (l : List Int) : List Int :=\n  match l with\n  | [] => [x]\n  | y :: ys =>\n      if x <= y then\n        x :: y :: ys\n      else\n        y :: insertElement x ys\n\n-- Helper function to sort a list using insertion sort\ndef sortList (l : List Int) : List Int :=\n  match l with\n  | [] => []\n  | x :: xs =>\n      insertElement x (sortList xs)\n-- !benchmark @end code_aux\n\n\ndef insertionSort (l : List Int) (h_precond : insertionSort_precond (l)) : List Int :=\n  -- !benchmark @start code\n  let result := sortList l\n  result\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n-- !benchmark @end postcond_aux\n\n\n@[reducible]\ndef insertionSort_postcond (l : List Int) (result: List Int) (h_precond : insertionSort_precond (l)) : Prop :=\n  -- !benchmark @start postcond\n  List.Pairwise (\u00b7 \u2264 \u00b7) result \u2227 List.isPerm l result\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem insertionSort_spec_satisfied (l: List Int) (h_precond : insertionSort_precond (l)) :\n    insertionSort_postcond (l) (insertionSort (l) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n\n\n",
+  "signature": {
+    "name": "insertionSort",
+    "parameters": {
+      "param_name": [
+        "l"
+      ],
+      "param_type": [
+        "List Int"
+      ]
+    },
+    "return_type": "List Int"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "lab_assignment",
+      "link": "https://leetcode.com/problems/insertion-sort-list/",
+      "task_id": "lab_insertionSort_325670071",
+      "student_id": [
+        14
+      ]
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"l\": \"[]\"}",
+      "{\"l\": \"[5]\"}",
+      "{\"l\": \"[1, 2, 3]\"}",
+      "{\"l\": \"[3, 2, 1]\"}",
+      "{\"l\": \"[4, 2, 2, 3]\"}"
+    ],
+    "expected": [
+      [
+        "[]"
+      ],
+      [
+        "[5]"
+      ],
+      [
+        "[1, 2, 3]"
+      ],
+      [
+        "[1, 2, 3]"
+      ],
+      [
+        "[2, 2, 3, 4]"
+      ]
+    ],
+    "unexpected": [
+      [
+        "[0]",
+        "[1]"
+      ],
+      [
+        "[]",
+        "[5, 5]"
+      ],
+      [
+        "[3, 2, 1]",
+        "[2, 1, 3]"
+      ],
+      [
+        "[3, 2, 1]",
+        "[2, 1, 3]"
+      ],
+      [
+        "[4, 3, 2, 2]",
+        "[2, 3, 2, 4]"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": []
+  },
+  "difficulty": "advanced"
+}

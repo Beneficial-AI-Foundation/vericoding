@@ -1,0 +1,86 @@
+{
+  "id": "verina_advanced_29",
+  "description": "-----Description----- \nYou are given a natural number array nums and a natural number k.\nThe frequency of an element x is the number of times it occurs in an array.\nAn array is called good if the frequency of each element in this array is less than or equal to k.\nReturn the length of the longest good subarray of nums.\nA subarray is a contiguous non-empty sequence of elements within an array.\n\n-----Input-----\nThe input consists of an array of natural numbers nums and a natural number k:\nnums: an array of natural numbers.\nk: a natural number\n\n-----Output-----\nThe output is a natural number:\nReturn the length of the longest good subarray of nums.\n\n",
+  "lean_code": "-- !benchmark @start import type=solution\nimport Std.Data.HashMap\nopen Std\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible]\ndef longestGoodSubarray_precond (nums : List Nat) (k : Nat) : Prop :=\n  -- !benchmark @start precond\n  True\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef longestGoodSubarray (nums : List Nat) (k : Nat) (h_precond : longestGoodSubarray_precond (nums) (k)) : Nat :=\n  -- !benchmark @start code\n  Id.run do\n    let arr := nums.toArray\n    let mut left := 0\n    let mut maxLen := 0\n    let mut freq : HashMap Nat Nat := {}\n\n    for right in [0:arr.size] do\n      let num := arr[right]!\n      let count := freq.getD num 0\n      freq := freq.insert num (count + 1)\n\n      -- If any frequency > k, shrink the window from the left\n      while freq.toList.any (fun (_, v) => v > k) do\n        let lnum := arr[left]!\n        let lcount := freq.getD lnum 0\n        if lcount = 1 then\n          freq := freq.erase lnum\n        else\n          freq := freq.insert lnum (lcount - 1)\n        left := left + 1\n\n      maxLen := max maxLen (right - left + 1)\n\n    return maxLen\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible]\ndef longestGoodSubarray_postcond (nums : List Nat) (k : Nat) (result: Nat) (h_precond : longestGoodSubarray_precond (nums) (k)) : Prop :=\n  -- !benchmark @start postcond\n  let subArrays :=\n    List.range (nums.length + 1) |>.flatMap (fun start =>\n      List.range (nums.length - start + 1) |>.map (fun len =>\n        nums.drop start |>.take len))\n  let subArrayFreqs := subArrays.map (fun arr => arr.map (fun x => arr.count x))\n  let validSubArrays := subArrayFreqs.filter (fun arr => arr.all (fun x => x \u2264 k))\n\n  (nums = [] \u2227 result = 0) \u2228\n  (nums \u2260 [] \u2227\n    validSubArrays.any (fun arr => arr.length = result) \u2227\n    validSubArrays.all (fun arr => arr.length \u2264 result))\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem longestGoodSubarray_spec_satisfied (nums: List Nat) (k: Nat) (h_precond : longestGoodSubarray_precond (nums) (k)) :\n    longestGoodSubarray_postcond (nums) (k) (longestGoodSubarray (nums) (k) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n\n\n",
+  "signature": {
+    "name": "longestGoodSubarray",
+    "parameters": {
+      "param_name": [
+        "nums",
+        "k"
+      ],
+      "param_type": [
+        "List Nat",
+        "Nat"
+      ]
+    },
+    "return_type": "Nat"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "lab_assignment",
+      "link": "https://leetcode.com/problems/length-of-longest-subarray-with-at-most-k-frequency/description/",
+      "task_id": "lab_longestGoodSubarray_325744111",
+      "student_id": [
+        23
+      ]
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"nums\": \"[1, 2, 3, 1, 2, 3, 1, 2]\", \"k\": 2}",
+      "{\"nums\": \"[1, 2, 1, 2, 1, 2, 1, 2]\", \"k\": 1}",
+      "{\"nums\": \"[5, 5, 5, 5, 5, 5, 5]\", \"k\": 4}",
+      "{\"nums\": \"[1]\", \"k\": 1}",
+      "{\"nums\": \"[2, 2, 1, 1, 3]\", \"k\": 2}"
+    ],
+    "expected": [
+      [
+        "6"
+      ],
+      [
+        "2"
+      ],
+      [
+        "4"
+      ],
+      [
+        "1"
+      ],
+      [
+        "5"
+      ]
+    ],
+    "unexpected": [
+      [
+        "5",
+        "7",
+        "8"
+      ],
+      [
+        "1",
+        "3",
+        "4"
+      ],
+      [
+        "3",
+        "5",
+        "7"
+      ],
+      [
+        "0",
+        "2"
+      ],
+      [
+        "2",
+        "3",
+        "4",
+        "6"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": []
+  },
+  "difficulty": "advanced"
+}

@@ -1,0 +1,84 @@
+{
+  "id": "verina_advanced_41",
+  "description": "-----Description-----\nThis task requires writing a Lean 4 method that finds the maximum among three given integers. The method should return the largest value, ensuring that the result is greater than or equal to each of the input numbers and that it is one of the provided integers.\n\n-----Input-----\nThe input consists of three integers:\na: The first integer.\nb: The second integer.\nc: The third integer.\n\n-----Output-----\nThe output is an integer:\nReturns the maximum of the three input numbers, assuring that the returned value is greater than or equal to a, b, and c, and that it matches one of these values.\n\n",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible]\ndef maxOfThree_precond (a : Int) (b : Int) (c : Int) : Prop :=\n  -- !benchmark @start precond\n  True\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef maxOfThree (a : Int) (b : Int) (c : Int) (h_precond : maxOfThree_precond (a) (b) (c)) : Int :=\n  -- !benchmark @start code\n  if a >= b && a >= c then a\n  else if b >= a && b >= c then b\n  else c\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible]\ndef maxOfThree_postcond (a : Int) (b : Int) (c : Int) (result: Int) (h_precond : maxOfThree_precond (a) (b) (c)) : Prop :=\n  -- !benchmark @start postcond\n  (result >= a \u2227 result >= b \u2227 result >= c) \u2227 (result = a \u2228 result = b \u2228 result = c)\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem maxOfThree_spec_satisfied (a: Int) (b: Int) (c: Int) (h_precond : maxOfThree_precond (a) (b) (c)) :\n    maxOfThree_postcond (a) (b) (c) (maxOfThree (a) (b) (c) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n\n\n",
+  "signature": {
+    "name": "maxOfThree",
+    "parameters": {
+      "param_name": [
+        "a",
+        "b",
+        "c"
+      ],
+      "param_type": [
+        "Int",
+        "Int",
+        "Int"
+      ]
+    },
+    "return_type": "Int"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "lab_assignment",
+      "link": "https://leetcode.com/problems/maximum-product-of-three-numbers/",
+      "task_id": "lab_maxOfThree_325766147",
+      "student_id": [
+        33
+      ]
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"a\": 3, \"b\": 2, \"c\": 1}",
+      "{\"a\": 5, \"b\": 5, \"c\": 5}",
+      "{\"a\": 10, \"b\": 20, \"c\": 15}",
+      "{\"a\": -1, \"b\": -2, \"c\": -3}",
+      "{\"a\": 0, \"b\": -10, \"c\": -5}"
+    ],
+    "expected": [
+      [
+        "3"
+      ],
+      [
+        "5"
+      ],
+      [
+        "20"
+      ],
+      [
+        "-1"
+      ],
+      [
+        "0"
+      ]
+    ],
+    "unexpected": [
+      [
+        "2",
+        "1",
+        "-1"
+      ],
+      [
+        "6",
+        "4"
+      ],
+      [
+        "10",
+        "15"
+      ],
+      [
+        "-2",
+        "-3"
+      ],
+      [
+        "-5",
+        "-10"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": []
+  },
+  "difficulty": "advanced"
+}

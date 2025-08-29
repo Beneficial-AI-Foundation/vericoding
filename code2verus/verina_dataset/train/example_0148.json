@@ -1,0 +1,84 @@
+{
+  "id": "verina_basic_72",
+  "description": "-----Description-----  \nThe problem asks you to construct a new list by adding an extra number to the end of an existing list of numbers. The focus is on understanding what the final list should look like when a given number is included as the last element.\n\n-----Input-----  \nThe input consists of:  \n\u2022 a: An array of integers.  \n\u2022 b: An integer to be appended to the array.\n\n-----Output-----  \nThe output is an array of integers which represents the original array with the element b added at the end. That is, the output array\u2019s list representation equals a.toList concatenated with [b].\n\n-----Note-----  \nThere are no special preconditions; the method is expected to work correctly for any array of integers and any integer b.",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible, simp]\ndef append_precond (a : Array Int) (b : Int) : Prop :=\n  -- !benchmark @start precond\n  True\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\ndef copy (a : Array Int) (i : Nat) (acc : Array Int) : Array Int :=\n  if i < a.size then\n    copy a (i + 1) (acc.push (a[i]!))\n  else\n    acc\n-- !benchmark @end code_aux\n\n\ndef append (a : Array Int) (b : Int) (h_precond : append_precond (a) (b)) : Array Int :=\n  -- !benchmark @start code\n  let c_initial := copy a 0 (Array.empty)\n  let c_full := c_initial.push b\n  c_full\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef append_postcond (a : Array Int) (b : Int) (result: Array Int) (h_precond : append_precond (a) (b)) :=\n  -- !benchmark @start postcond\n  (List.range' 0 a.size |>.all (fun i => result[i]! = a[i]!)) \u2227\n  result[a.size]! = b \u2227\n  result.size = a.size + 1\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem append_spec_satisfied (a: Array Int) (b: Int) (h_precond : append_precond (a) (b)) :\n    append_postcond (a) (b) (append (a) (b) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "append",
+    "parameters": {
+      "param_name": [
+        "a",
+        "b"
+      ],
+      "param_type": [
+        "Array Int",
+        "Int"
+      ]
+    },
+    "return_type": "Array Int"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "clover",
+      "link": "https://github.com/ChuyueSun/Clover",
+      "task_id": "Clover_array_append",
+      "student_id": null
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"a\": \"#[1, 2, 3]\", \"b\": 4}",
+      "{\"a\": \"#[]\", \"b\": 0}",
+      "{\"a\": \"#[5, 6]\", \"b\": -1}",
+      "{\"a\": \"#[0, 0, 0]\", \"b\": 1}",
+      "{\"a\": \"#[-2, -3]\", \"b\": -4}"
+    ],
+    "expected": [
+      [
+        "#[1, 2, 3, 4]"
+      ],
+      [
+        "#[0]"
+      ],
+      [
+        "#[5, 6, -1]"
+      ],
+      [
+        "#[0, 0, 0, 1]"
+      ],
+      [
+        "#[-2, -3, -4]"
+      ]
+    ],
+    "unexpected": [
+      [
+        "#[1, 2, 3, 0]",
+        "#[1, 2, 4, 3]",
+        "#[4, 1, 2, 3]"
+      ],
+      [
+        "#[1]",
+        "#[]",
+        "#[0, 0]"
+      ],
+      [
+        "#[5, -1, 6]",
+        "#[5, 6, 0]",
+        "#[6, 5, -1]"
+      ],
+      [
+        "#[1, 0, 0, 0]",
+        "#[0, 1, 0, 0]",
+        "#[0, 0, 1, 0]"
+      ],
+      [
+        "#[-2, -4, -3]",
+        "#[-2, -3, 0]",
+        "#[-3, -2, -4]"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": []
+  },
+  "difficulty": "basic"
+}

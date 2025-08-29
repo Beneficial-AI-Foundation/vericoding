@@ -1,0 +1,93 @@
+{
+  "id": "verina_basic_15",
+  "description": "-----Description----- \nThis task requires writing a Lean 4 method that determines whether an array of integers contains at least one pair of consecutive numbers. The method should return true if there is any index where an element, when increased by one, equals the next element in the array. If no such consecutive pair exists, the method should return false.\n\n-----Input-----\nThe input consists of:\na: An array of integers (the array may be empty or non-empty).\n\n-----Output-----\nThe output is a Boolean value:\nReturns true if there is at least one index where an element plus one equals the following element.\nReturns false if the array does not contain any consecutive numbers.\n\n-----Note-----\nThere are no additional preconditions; the method will function correctly regardless of the array's size.",
+  "lean_code": "-- !benchmark @start import type=solution\nimport Mathlib\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n\n@[reducible, simp]\ndef containsConsecutiveNumbers_precond (a : Array Int) : Prop :=\n  -- !benchmark @start precond\n  True\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef containsConsecutiveNumbers (a : Array Int) (h_precond : containsConsecutiveNumbers_precond (a)) : Bool :=\n  -- !benchmark @start code\n  if a.size \u2264 1 then\n    false\n  else\n    let withIndices := a.mapIdx (fun i x => (i, x))\n    withIndices.any (fun (i, x) =>\n      i < a.size - 1 && x + 1 == a[i+1]!)\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef containsConsecutiveNumbers_postcond (a : Array Int) (result: Bool) (h_precond : containsConsecutiveNumbers_precond (a)) :=\n  -- !benchmark @start postcond\n  (\u2203 i, i < a.size - 1 \u2227 a[i]! + 1 = a[i + 1]!) \u2194 result\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem containsConsecutiveNumbers_spec_satisfied (a: Array Int) (h_precond : containsConsecutiveNumbers_precond (a)) :\n    containsConsecutiveNumbers_postcond (a) (containsConsecutiveNumbers (a) h_precond) h_precond := by\n  -- !benchmark @start proof\n  unfold containsConsecutiveNumbers containsConsecutiveNumbers_postcond\n  constructor\n  \u00b7 simp_all\n    intro i hi hconsec\n    have hi' : 1 + i < a.size := by\n        rw [Nat.add_comm]\n        exact Nat.add_lt_of_lt_sub hi\n    have hi'' : i < a.size := by\n      have : i < 1 + i := by\n        simp [Nat.lt_add_of_pos_left]\n      exact Nat.lt_trans this hi'\n    constructor\n    \u00b7 exact Nat.lt_of_add_right_lt hi'\n    \u00b7 apply Array.any_iff_exists.mpr\n      simp\n      exists i\n      simp [hi, hi'']\n      have : a[i]! = a[i] := by\n        exact getElem!_pos a i hi''\n      rw [\u2190this]\n      exact hconsec\n  \u00b7 simp\n    intro ha h\n    have h' := Array.any_iff_exists.mp h\n    simp at h'\n    rcases h' with \u27e8i, hi, \u27e8hi', hconsec\u27e9\u27e9\n    have : a[i]! = a[i] := by\n      exact getElem!_pos a i hi\n    exists i\n    rw [this]\n    simp_all\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "containsConsecutiveNumbers",
+    "parameters": {
+      "param_name": [
+        "a"
+      ],
+      "param_type": [
+        "Array Int"
+      ]
+    },
+    "return_type": "Bool"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "dafny-synthesis",
+      "link": "https://github.com/Mondego/dafny-synthesis",
+      "task_id": "task_id_472",
+      "student_id": null
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"a\": \"#[1, 2, 3, 5]\"}",
+      "{\"a\": \"#[1, 3, 5, 7]\"}",
+      "{\"a\": \"#[]\"}",
+      "{\"a\": \"#[10]\"}",
+      "{\"a\": \"#[5, 6]\"}",
+      "{\"a\": \"#[5, 7, 8, 10]\"}",
+      "{\"a\": \"#[9, 9, 10]\"}",
+      "{\"a\": \"#[3, 3, 3]\"}"
+    ],
+    "expected": [
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "False"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "True"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ]
+    ],
+    "unexpected": [
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "True"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "False"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": []
+  },
+  "difficulty": "basic"
+}

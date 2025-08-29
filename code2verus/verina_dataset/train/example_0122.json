@@ -1,0 +1,84 @@
+{
+  "id": "verina_basic_75",
+  "description": "-----Description-----  \nThis task involves finding the minimum element in a non-empty array of integers. The goal is to identify and return the smallest number present in the array.\n\n-----Input-----  \nThe input consists of:  \n\u2022 a: An array of integers (the array is assumed to be non-empty).\n\n-----Output-----  \nThe output is an integer that:  \n\u2022 Is the smallest element from the input array.  \n\u2022 Satisfies the property that it is less than or equal to every element in the array and is exactly equal to at least one element of the array.\n\n-----Note-----  \nIt is assumed that the input array contains at least one element. The implementation uses a helper function (loop) to recursively compare elements and determine the minimum value.",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible, simp]\ndef minArray_precond (a : Array Int) : Prop :=\n  -- !benchmark @start precond\n  a.size > 0\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\ndef loop (a : Array Int) (i : Nat) (currentMin : Int) : Int :=\n  if i < a.size then\n    let newMin := if currentMin > a[i]! then a[i]! else currentMin\n    loop a (i + 1) newMin\n  else\n    currentMin\n-- !benchmark @end code_aux\n\n\ndef minArray (a : Array Int) (h_precond : minArray_precond (a)) : Int :=\n  -- !benchmark @start code\n  loop a 1 (a[0]!)\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef minArray_postcond (a : Array Int) (result: Int) (h_precond : minArray_precond (a)) :=\n  -- !benchmark @start postcond\n  (\u2200 i : Nat, i < a.size \u2192 result <= a[i]!) \u2227 (\u2203 i : Nat, i < a.size \u2227 result = a[i]!)\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem minArray_spec_satisfied (a: Array Int) (h_precond : minArray_precond (a)) :\n    minArray_postcond (a) (minArray (a) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "minArray",
+    "parameters": {
+      "param_name": [
+        "a"
+      ],
+      "param_type": [
+        "Array Int"
+      ]
+    },
+    "return_type": "Int"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "clover",
+      "link": "https://github.com/ChuyueSun/Clover",
+      "task_id": "Clover_min_array",
+      "student_id": null
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"a\": \"#[5, 3, 8, 2, 7]\"}",
+      "{\"a\": \"#[10, 10, 10]\"}",
+      "{\"a\": \"#[-1, -5, 3, 0]\"}",
+      "{\"a\": \"#[42]\"}",
+      "{\"a\": \"#[3, -2, 0, -2, 5]\"}"
+    ],
+    "expected": [
+      [
+        "2"
+      ],
+      [
+        "10"
+      ],
+      [
+        "-5"
+      ],
+      [
+        "42"
+      ],
+      [
+        "-2"
+      ]
+    ],
+    "unexpected": [
+      [
+        "3",
+        "5",
+        "7"
+      ],
+      [
+        "0",
+        "5",
+        "11"
+      ],
+      [
+        "-1",
+        "0",
+        "3"
+      ],
+      [
+        "0",
+        "-42",
+        "100"
+      ],
+      [
+        "0",
+        "3",
+        "5"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": [
+      "{'a': '#[]'}"
+    ]
+  },
+  "difficulty": "basic"
+}

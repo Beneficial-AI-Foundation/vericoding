@@ -1,0 +1,81 @@
+{
+  "id": "verina_advanced_74",
+  "description": "-----Description-----\nThis task requires writing a Lean 4 function called `solution` that takes a list of natural numbers `nums`. The function should calculate and return the sum of values obtained for each subarray, where the value for a subarray is the square of the count of distinct elements within that subarray.\n\n-----Input-----\nThe input is a list of natural numbers:\n`nums`: A list where each element is a natural number.\nConstraints:\n- The length of the list `nums` (n) is between 1 and 100 (inclusive).\n- Each element in `nums` is between 1 and 100 (inclusive).\n\n-----Output-----\nThe output is a natural number:\nReturns the total sum of squared distinct counts for all subarrays.\n\n",
+  "lean_code": "-- !benchmark @start import type=solution\nimport Std.Data.HashSet\nopen Std\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible]\ndef solution_precond (nums : List Nat) : Prop :=\n  -- !benchmark @start precond\n  1 \u2264 nums.length \u2227 nums.length \u2264 100 \u2227 nums.all (fun x => 1 \u2264 x \u2227 x \u2264 100)\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef solution (nums : List Nat) : Nat :=\n  -- !benchmark @start code\n  let n := nums.length\n  let subarray := fun (i j : Nat) => (nums.drop i).take (j - i + 1)\n  let distinctCount := fun (l : List Nat) =>\n    let hashSet := l.foldl (fun (s : HashSet Nat) a => s.insert a) HashSet.empty\n    hashSet.size\n  List.range n |>.foldl (fun acc i =>\n    acc +\n      (List.range (n - i) |>.foldl (fun acc' d =>\n        let subarr := subarray i (i + d)\n        let cnt := distinctCount subarr\n        acc' + cnt * cnt\n      ) 0)\n  ) 0\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible]\ndef solution_postcond (nums : List Nat) (result: Nat) : Prop :=\n  -- !benchmark @start postcond\n  let n := nums.length;\n\n  let getSubarray_local := fun (i j : Nat) =>\n    (nums.drop i).take (j - i + 1);\n\n  let distinctCount_local := fun (l : List Nat) =>\n    let foldFn := fun (seen : List Nat) (x : Nat) =>\n      if seen.elem x then seen else x :: seen;\n    let distinctElems := l.foldl foldFn [];\n    distinctElems.length;\n\n  let square_local := fun (n : Nat) => n * n;\n\n  (1 <= n \u2227 n <= 100 \u2227 nums.all (fun x => 1 <= x \u2227 x <= 100)) ->\n  (\n    result >= 0\n    \u2227\n    let expectedSum : Nat :=\n      List.range n |>.foldl (fun (outerSum : Nat) (i : Nat) =>\n        let innerSum : Nat :=\n          List.range (n - i) |>.foldl (fun (currentInnerSum : Nat) (d : Nat) =>\n            let j := i + d;\n            let subarr := getSubarray_local i j;\n            let count := distinctCount_local subarr;\n            currentInnerSum + square_local count\n          ) 0\n        outerSum + innerSum\n      ) 0;\n\n    result = expectedSum\n  )\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem solution_spec_satisfied (nums: List Nat) :\n    solution_postcond (nums) (solution (nums)) := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n\n\n",
+  "signature": {
+    "name": "solution",
+    "parameters": {
+      "param_name": [
+        "nums"
+      ],
+      "param_type": [
+        "List Nat"
+      ]
+    },
+    "return_type": "Nat"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "lab_assignment",
+      "link": "https://leetcode.com/problems/subarrays-distinct-element-sum-of-squares-i/",
+      "task_id": "lab_solution_324856546",
+      "student_id": [
+        52
+      ]
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"nums\": \"[1]\"}",
+      "{\"nums\": \"[1, 1, 1]\"}",
+      "{\"nums\": \"[1, 2, 1]\"}",
+      "{\"nums\": \"[1, 2, 3, 4]\"}",
+      "{\"nums\": \"[1, 2, 2, 3, 1]\"}"
+    ],
+    "expected": [
+      [
+        "1"
+      ],
+      [
+        "6"
+      ],
+      [
+        "15"
+      ],
+      [
+        "50"
+      ],
+      [
+        "62"
+      ]
+    ],
+    "unexpected": [
+      [
+        "2"
+      ],
+      [
+        "1",
+        "2",
+        "3"
+      ],
+      [
+        "12"
+      ],
+      [],
+      [
+        "1",
+        "2",
+        "2",
+        "3",
+        "1"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": [
+      "{'nums': '[]'}",
+      "{'nums': '[101]'}"
+    ]
+  },
+  "difficulty": "advanced"
+}

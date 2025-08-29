@@ -1,0 +1,9 @@
+num_iterations: 9
+success: false
+verification_error: "error: Could not automatically infer triggers for this quantifer.\
+  \  Use #[trigger] annotations to manually mark trigger terms instead.\n  --> /tmp/tmpn_zwtss9.rs:38:27\n\
+  \   |\n38 |       (result.len() <= 1 || (forall|i: int| 0 <= i < result.len() -\
+  \ 1 ==> \n   |  ___________________________^\n39 | |         result.index(i).0 !=\
+  \ result.index(add(i, 1)).0)) &&\n   | |_______________________________________________________^\n\
+  \nerror: aborting due to 1 previous error\n\n"
+verification_output: ''

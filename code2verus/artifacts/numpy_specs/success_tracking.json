@@ -1,0 +1,344 @@
+{
+  "np_abs.dfy": {
+    "success": true,
+    "num_iterations": 6,
+    "verification_output": "verification results:: 2 verified, 0 errors\n",
+    "verification_error": ""
+  },
+  "np_argmax.dfy": {
+    "success": true,
+    "num_iterations": 6,
+    "verification_output": "verification results:: 2 verified, 0 errors\n",
+    "verification_error": ""
+  },
+  "np_add.dfy": {
+    "success": true,
+    "num_iterations": 16,
+    "verification_output": "verification results:: 0 verified, 0 errors\n",
+    "verification_error": "note: automatically chose triggers for this expression:\n  --> /tmp/tmpznz7h8uz.rs:11:9\n   |\n11 |         forall|i: int| 0 <= i < a.len() ==> res[i] == a[i] + b[i],\n   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nnote:   trigger 1 of 1:\n  --> /tmp/tmpznz7h8uz.rs:11:45\n   |\n11 |         forall|i: int| 0 <= i < a.len() ==> res[i] == a[i] + b[i],\n   |                                             ^^^^^^\n\nnote: Verus printed one or more automatically chosen quantifier triggers\n      because it had low confidence in the chosen triggers.\n      To suppress these messages, do one of the following:\n        (1) manually annotate a single desired trigger using #[trigger]\n            (example: forall|i: int, j: int| f(i) && #[trigger] g(i) && #[trigger] h(j)),\n        (2) manually annotate multiple desired triggers using #![trigger ...]\n            (example: forall|i: int| #![trigger f(i)] #![trigger g(i)] f(i) && g(i)),\n        (3) accept the automatically chosen trigger using #![auto]\n            (example: forall|i: int, j: int| #![auto] f(i) && g(i) && h(j))\n        (4) use the --triggers-silent command-line option to suppress all printing of triggers.\n      (Note: triggers are used by the underlying SMT theorem prover to instantiate quantifiers;\n      the theorem prover instantiates a quantifier whenever some expression matches the\n      pattern specified by one of the quantifier's triggers.)\n  --> /tmp/tmpznz7h8uz.rs:11:9\n   |\n11 |         forall|i: int| 0 <= i < a.len() ==> res[i] == a[i] + b[i],\n   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n"
+  },
+  "np_bitwise_and.dfy": {
+    "success": true,
+    "num_iterations": 6,
+    "verification_output": "verification results:: 2 verified, 0 errors\n",
+    "verification_error": ""
+  },
+  "np_bitwise_or.dfy": {
+    "success": true,
+    "num_iterations": 3,
+    "verification_output": "verification results:: 2 verified, 0 errors\n",
+    "verification_error": ""
+  },
+  "np_arange.dfy": {
+    "success": true,
+    "num_iterations": 18,
+    "verification_output": "verification results:: 2 verified, 0 errors\n",
+    "verification_error": ""
+  },
+  "np_bitwise_xor.dfy": {
+    "success": true,
+    "num_iterations": 7,
+    "verification_output": "verification results:: 2 verified, 0 errors\n",
+    "verification_error": ""
+  },
+  "np_broadcast.dfy": {
+    "success": true,
+    "num_iterations": 9,
+    "verification_output": "verification results:: 1 verified, 0 errors\n",
+    "verification_error": ""
+  },
+  "np_clip.dfy": {
+    "success": true,
+    "num_iterations": 6,
+    "verification_output": "verification results:: 3 verified, 0 errors\n",
+    "verification_error": ""
+  },
+  "np_convolve.dfy": {
+    "success": true,
+    "num_iterations": 4,
+    "verification_output": "verification results:: 1 verified, 0 errors\n",
+    "verification_error": ""
+  },
+  "np_copy.dfy": {
+    "success": true,
+    "num_iterations": 2,
+    "verification_output": "verification results:: 2 verified, 0 errors\n",
+    "verification_error": ""
+  },
+  "np_countnonzero.dfy": {
+    "success": true,
+    "num_iterations": 3,
+    "verification_output": "verification results:: 2 verified, 0 errors\n",
+    "verification_error": ""
+  },
+  "np_center.dfy": {
+    "success": true,
+    "num_iterations": 12,
+    "verification_output": "verification results:: 2 verified, 0 errors\n",
+    "verification_error": "note: automatically chose triggers for this expression:\n --> /tmp/tmp67v878qq.rs:7:9\n  |\n7 |         forall|i: int| 0 <= i < input.len() ==> input[i]@.len() >= 1,\n  |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nnote:   trigger 1 of 1:\n --> /tmp/tmp67v878qq.rs:7:49\n  |\n7 |         forall|i: int| 0 <= i < input.len() ==> input[i]@.len() >= 1,\n  |                                                 ^^^^^^^^\n\nnote: automatically chose triggers for this expression:\n  --> /tmp/tmp67v878qq.rs:10:9\n   |\n10 | /         forall|i: int| 0 <= i < input.len() ==> {\n11 | |             if input[i]@.len() > width {\n12 | |                 res[i]@.len() == input[i]@.len()\n13 | |             } else {\n...  |\n16 | |         },\n   | |_________^\n\nnote:   trigger 1 of 2:\n  --> /tmp/tmp67v878qq.rs:11:16\n   |\n11 |             if input[i]@.len() > width {\n   |                ^^^^^^^^\n\nnote:   trigger 2 of 2:\n  --> /tmp/tmp67v878qq.rs:12:17\n   |\n12 |                 res[i]@.len() == input[i]@.len()\n   |                 ^^^^^^\n\nnote: automatically chose triggers for this expression:\n  --> /tmp/tmp67v878qq.rs:17:9\n   |\n17 | /         forall|i: int| 0 <= i < input.len() ==> {\n18 | |             if input[i]@.len() < width {\n19 | |                 let padding_needed = (width as nat) - input[i]@.len();\n20 | |                 let left_padding = (padding_needed + 1) / 2;\n...  |\n27 | |         },\n   | |_________^\n\nnote:   trigger 1 of 1:\n  --> /tmp/tmp67v878qq.rs:18:16\n   |\n18 |             if input[i]@.len() < width {\n   |                ^^^^^^^^\n\nnote: Verus printed one or more automatically chosen quantifier triggers\n      because it had low confidence in the chosen triggers.\n      To suppress these messages, do one of the following:\n        (1) manually annotate a single desired trigger using #[trigger]\n            (example: forall|i: int, j: int| f(i) && #[trigger] g(i) && #[trigger] h(j)),\n        (2) manually annotate multiple desired triggers using #![trigger ...]\n            (example: forall|i: int| #![trigger f(i)] #![trigger g(i)] f(i) && g(i)),\n        (3) accept the automatically chosen trigger using #![auto]\n            (example: forall|i: int, j: int| #![auto] f(i) && g(i) && h(j))\n        (4) use the --triggers-silent command-line option to suppress all printing of triggers.\n      (Note: triggers are used by the underlying SMT theorem prover to instantiate quantifiers;\n      the theorem prover instantiates a quantifier whenever some expression matches the\n      pattern specified by one of the quantifier's triggers.)\n --> /tmp/tmp67v878qq.rs:7:9\n  |\n7 |         forall|i: int| 0 <= i < input.len() ==> input[i]@.len() >= 1,\n  |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n"
+  },
+  "np_column_stack.dfy": {
+    "success": true,
+    "num_iterations": 10,
+    "verification_output": "verification results:: 2 verified, 0 errors\n",
+    "verification_error": ""
+  },
+  "np_cum_sum.dfy": {
+    "success": true,
+    "num_iterations": 2,
+    "verification_output": "verification results:: 1 verified, 0 errors\n",
+    "verification_error": ""
+  },
+  "np_cum_prod.dfy": {
+    "success": true,
+    "num_iterations": 2,
+    "verification_output": "verification results:: 2 verified, 0 errors\n",
+    "verification_error": ""
+  },
+  "np_flatten.dfy": {
+    "success": true,
+    "num_iterations": 6,
+    "verification_output": "verification results:: 1 verified, 0 errors\n",
+    "verification_error": ""
+  },
+  "np_diagonal.dfy": {
+    "success": true,
+    "num_iterations": 13,
+    "verification_output": "verification results:: 1 verified, 0 errors\n",
+    "verification_error": ""
+  },
+  "np_floor_divide.dfy": {
+    "success": true,
+    "num_iterations": 8,
+    "verification_output": "verification results:: 0 verified, 0 errors\n",
+    "verification_error": ""
+  },
+  "np_greater.dfy": {
+    "success": true,
+    "num_iterations": 9,
+    "verification_output": "verification results:: 0 verified, 0 errors\n",
+    "verification_error": "note: automatically chose triggers for this expression:\n  --> /tmp/tmp4kzcekqk.rs:11:9\n   |\n11 |         forall|i: int| 0 <= i < a.len() ==> res@[i] == (a@[i] > b@[i]),\n   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nnote:   trigger 1 of 1:\n  --> /tmp/tmp4kzcekqk.rs:11:45\n   |\n11 |         forall|i: int| 0 <= i < a.len() ==> res@[i] == (a@[i] > b@[i]),\n   |                                             ^^^^^^^\n\nnote: Verus printed one or more automatically chosen quantifier triggers\n      because it had low confidence in the chosen triggers.\n      To suppress these messages, do one of the following:\n        (1) manually annotate a single desired trigger using #[trigger]\n            (example: forall|i: int, j: int| f(i) && #[trigger] g(i) && #[trigger] h(j)),\n        (2) manually annotate multiple desired triggers using #![trigger ...]\n            (example: forall|i: int| #![trigger f(i)] #![trigger g(i)] f(i) && g(i)),\n        (3) accept the automatically chosen trigger using #![auto]\n            (example: forall|i: int, j: int| #![auto] f(i) && g(i) && h(j))\n        (4) use the --triggers-silent command-line option to suppress all printing of triggers.\n      (Note: triggers are used by the underlying SMT theorem prover to instantiate quantifiers;\n      the theorem prover instantiates a quantifier whenever some expression matches the\n      pattern specified by one of the quantifier's triggers.)\n  --> /tmp/tmp4kzcekqk.rs:11:9\n   |\n11 |         forall|i: int| 0 <= i < a.len() ==> res@[i] == (a@[i] > b@[i]),\n   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n"
+  },
+  "np_greater_equal.dfy": {
+    "success": true,
+    "num_iterations": 5,
+    "verification_output": "verification results:: 2 verified, 0 errors\n",
+    "verification_error": "note: automatically chose triggers for this expression:\n --> /tmp/tmpoi97434q.rs:9:9\n  |\n9 |         forall|i: int| 0 <= i < a.len() ==> res[i] == (a[i] >= b[i])\n  |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nnote:   trigger 1 of 1:\n --> /tmp/tmpoi97434q.rs:9:45\n  |\n9 |         forall|i: int| 0 <= i < a.len() ==> res[i] == (a[i] >= b[i])\n  |                                             ^^^^^^\n\nnote: automatically chose triggers for this expression:\n  --> /tmp/tmpoi97434q.rs:18:13\n   |\n18 |             forall|i: int| 0 <= i < idx ==> res[i] == (a[i] >= b[i]),\n   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nnote:   trigger 1 of 1:\n  --> /tmp/tmpoi97434q.rs:18:45\n   |\n18 |             forall|i: int| 0 <= i < idx ==> res[i] == (a[i] >= b[i]),\n   |                                             ^^^^^^\n\nnote: Verus printed one or more automatically chosen quantifier triggers\n      because it had low confidence in the chosen triggers.\n      To suppress these messages, do one of the following:\n        (1) manually annotate a single desired trigger using #[trigger]\n            (example: forall|i: int, j: int| f(i) && #[trigger] g(i) && #[trigger] h(j)),\n        (2) manually annotate multiple desired triggers using #![trigger ...]\n            (example: forall|i: int| #![trigger f(i)] #![trigger g(i)] f(i) && g(i)),\n        (3) accept the automatically chosen trigger using #![auto]\n            (example: forall|i: int, j: int| #![auto] f(i) && g(i) && h(j))\n        (4) use the --triggers-silent command-line option to suppress all printing of triggers.\n      (Note: triggers are used by the underlying SMT theorem prover to instantiate quantifiers;\n      the theorem prover instantiates a quantifier whenever some expression matches the\n      pattern specified by one of the quantifier's triggers.)\n  --> /tmp/tmpoi97434q.rs:18:13\n   |\n18 |             forall|i: int| 0 <= i < idx ==> res[i] == (a[i] >= b[i]),\n   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n"
+  },
+  "np_gcd.dfy": {
+    "success": true,
+    "num_iterations": 7,
+    "verification_output": "verification results:: 1 verified, 0 errors\n",
+    "verification_error": "note: automatically chose triggers for this expression:\n  --> /tmp/tmp3u3dglvs.rs:18:9\n   |\n18 |         forall|i: int| 0 <= i < a.len() ==> gcd_int(a[i] as int, b[i] as int) == res[i] as int,\n   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nnote:   trigger 1 of 1:\n  --> /tmp/tmp3u3dglvs.rs:18:82\n   |\n18 |         forall|i: int| 0 <= i < a.len() ==> gcd_int(a[i] as int, b[i] as int) == res[i] as int,\n   |                                                                                  ^^^^^^\n\nnote: Verus printed one or more automatically chosen quantifier triggers\n      because it had low confidence in the chosen triggers.\n      To suppress these messages, do one of the following:\n        (1) manually annotate a single desired trigger using #[trigger]\n            (example: forall|i: int, j: int| f(i) && #[trigger] g(i) && #[trigger] h(j)),\n        (2) manually annotate multiple desired triggers using #![trigger ...]\n            (example: forall|i: int| #![trigger f(i)] #![trigger g(i)] f(i) && g(i)),\n        (3) accept the automatically chosen trigger using #![auto]\n            (example: forall|i: int, j: int| #![auto] f(i) && g(i) && h(j))\n        (4) use the --triggers-silent command-line option to suppress all printing of triggers.\n      (Note: triggers are used by the underlying SMT theorem prover to instantiate quantifiers;\n      the theorem prover instantiates a quantifier whenever some expression matches the\n      pattern specified by one of the quantifier's triggers.)\n  --> /tmp/tmp3u3dglvs.rs:18:9\n   |\n18 |         forall|i: int| 0 <= i < a.len() ==> gcd_int(a[i] as int, b[i] as int) == res[i] as int,\n   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n"
+  },
+  "np_intersect.dfy": {
+    "success": true,
+    "num_iterations": 8,
+    "verification_output": "verification results:: 1 verified, 0 errors\n",
+    "verification_error": ""
+  },
+  "np_histogram.dfy": {
+    "success": true,
+    "num_iterations": 10,
+    "verification_output": "verification results:: 4 verified, 0 errors\n",
+    "verification_error": ""
+  },
+  "np_invert.dfy": {
+    "success": true,
+    "num_iterations": 4,
+    "verification_output": "verification results:: 2 verified, 0 errors\n",
+    "verification_error": ""
+  },
+  "np_isclose.dfy": {
+    "success": true,
+    "num_iterations": 16,
+    "verification_output": "verification results:: 2 verified, 0 errors\n",
+    "verification_error": ""
+  },
+  "np_lcm.dfy": {
+    "success": true,
+    "num_iterations": 4,
+    "verification_output": "verification results:: 1 verified, 0 errors\n",
+    "verification_error": "note: automatically chose triggers for this expression:\n  --> /tmp/tmpxjxu87e2.rs:18:9\n   |\n18 |         forall|i: int| 0 <= i < a.len() ==> lcm_int(a[i] as int, b[i] as int) == res[i] as int,\n   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nnote:   trigger 1 of 1:\n  --> /tmp/tmpxjxu87e2.rs:18:82\n   |\n18 |         forall|i: int| 0 <= i < a.len() ==> lcm_int(a[i] as int, b[i] as int) == res[i] as int,\n   |                                                                                  ^^^^^^\n\nnote: Verus printed one or more automatically chosen quantifier triggers\n      because it had low confidence in the chosen triggers.\n      To suppress these messages, do one of the following:\n        (1) manually annotate a single desired trigger using #[trigger]\n            (example: forall|i: int, j: int| f(i) && #[trigger] g(i) && #[trigger] h(j)),\n        (2) manually annotate multiple desired triggers using #![trigger ...]\n            (example: forall|i: int| #![trigger f(i)] #![trigger g(i)] f(i) && g(i)),\n        (3) accept the automatically chosen trigger using #![auto]\n            (example: forall|i: int, j: int| #![auto] f(i) && g(i) && h(j))\n        (4) use the --triggers-silent command-line option to suppress all printing of triggers.\n      (Note: triggers are used by the underlying SMT theorem prover to instantiate quantifiers;\n      the theorem prover instantiates a quantifier whenever some expression matches the\n      pattern specified by one of the quantifier's triggers.)\n  --> /tmp/tmpxjxu87e2.rs:18:9\n   |\n18 |         forall|i: int| 0 <= i < a.len() ==> lcm_int(a[i] as int, b[i] as int) == res[i] as int,\n   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n"
+  },
+  "np_left_shift.dfy": {
+    "success": true,
+    "num_iterations": 3,
+    "verification_output": "verification results:: 0 verified, 0 errors\n",
+    "verification_error": "note: automatically chose triggers for this expression:\n  --> /tmp/tmpdpl_o_1r.rs:13:9\n   |\n13 |         forall|i: int| 0 <= i < a.len() ==> res[i] == ((a[i] as u16) << (b[i] as u16)) as i32,\n   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nnote:   trigger 1 of 1:\n  --> /tmp/tmpdpl_o_1r.rs:13:45\n   |\n13 |         forall|i: int| 0 <= i < a.len() ==> res[i] == ((a[i] as u16) << (b[i] as u16)) as i32,\n   |                                             ^^^^^^\n\nnote: Verus printed one or more automatically chosen quantifier triggers\n      because it had low confidence in the chosen triggers.\n      To suppress these messages, do one of the following:\n        (1) manually annotate a single desired trigger using #[trigger]\n            (example: forall|i: int, j: int| f(i) && #[trigger] g(i) && #[trigger] h(j)),\n        (2) manually annotate multiple desired triggers using #![trigger ...]\n            (example: forall|i: int| #![trigger f(i)] #![trigger g(i)] f(i) && g(i)),\n        (3) accept the automatically chosen trigger using #![auto]\n            (example: forall|i: int, j: int| #![auto] f(i) && g(i) && h(j))\n        (4) use the --triggers-silent command-line option to suppress all printing of triggers.\n      (Note: triggers are used by the underlying SMT theorem prover to instantiate quantifiers;\n      the theorem prover instantiates a quantifier whenever some expression matches the\n      pattern specified by one of the quantifier's triggers.)\n  --> /tmp/tmpdpl_o_1r.rs:13:9\n   |\n13 |         forall|i: int| 0 <= i < a.len() ==> res[i] == ((a[i] as u16) << (b[i] as u16)) as i32,\n   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n"
+  },
+  "np_less.dfy": {
+    "success": true,
+    "num_iterations": 8,
+    "verification_output": "verification results:: 2 verified, 0 errors\n",
+    "verification_error": ""
+  },
+  "np_less_equal.dfy": {
+    "success": true,
+    "num_iterations": 6,
+    "verification_output": "verification results:: 2 verified, 0 errors\n",
+    "verification_error": "note: automatically chose triggers for this expression:\n --> /tmp/tmpdambz8am.rs:9:9\n  |\n9 |         forall|i: int| 0 <= i < a.len() ==> res@[i] == (a@[i] <= b@[i])\n  |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nnote:   trigger 1 of 1:\n --> /tmp/tmpdambz8am.rs:9:45\n  |\n9 |         forall|i: int| 0 <= i < a.len() ==> res@[i] == (a@[i] <= b@[i])\n  |                                             ^^^^^^^\n\nnote: automatically chose triggers for this expression:\n  --> /tmp/tmpdambz8am.rs:18:13\n   |\n18 |             forall|i: int| 0 <= i < idx ==> res@[i] == (a@[i] <= b@[i]),\n   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nnote:   trigger 1 of 1:\n  --> /tmp/tmpdambz8am.rs:18:45\n   |\n18 |             forall|i: int| 0 <= i < idx ==> res@[i] == (a@[i] <= b@[i]),\n   |                                             ^^^^^^^\n\nnote: Verus printed one or more automatically chosen quantifier triggers\n      because it had low confidence in the chosen triggers.\n      To suppress these messages, do one of the following:\n        (1) manually annotate a single desired trigger using #[trigger]\n            (example: forall|i: int, j: int| f(i) && #[trigger] g(i) && #[trigger] h(j)),\n        (2) manually annotate multiple desired triggers using #![trigger ...]\n            (example: forall|i: int| #![trigger f(i)] #![trigger g(i)] f(i) && g(i)),\n        (3) accept the automatically chosen trigger using #![auto]\n            (example: forall|i: int, j: int| #![auto] f(i) && g(i) && h(j))\n        (4) use the --triggers-silent command-line option to suppress all printing of triggers.\n      (Note: triggers are used by the underlying SMT theorem prover to instantiate quantifiers;\n      the theorem prover instantiates a quantifier whenever some expression matches the\n      pattern specified by one of the quantifier's triggers.)\n  --> /tmp/tmpdambz8am.rs:18:13\n   |\n18 |             forall|i: int| 0 <= i < idx ==> res@[i] == (a@[i] <= b@[i]),\n   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n"
+  },
+  "np_max.dfy": {
+    "success": true,
+    "num_iterations": 4,
+    "verification_output": "verification results:: 2 verified, 0 errors\n",
+    "verification_error": ""
+  },
+  "np_min.dfy": {
+    "success": true,
+    "num_iterations": 4,
+    "verification_output": "verification results:: 1 verified, 0 errors\n",
+    "verification_error": ""
+  },
+  "np_equal.dfy": {
+    "success": true,
+    "num_iterations": 5,
+    "verification_output": "verification results:: 2 verified, 0 errors\n",
+    "verification_error": ""
+  },
+  "np_mod.dfy": {
+    "success": true,
+    "num_iterations": 6,
+    "verification_output": "verification results:: 2 verified, 0 errors\n",
+    "verification_error": "note: automatically chose triggers for this expression:\n  --> /tmp/tmpfhwjued4.rs:11:9\n   |\n11 |         forall|i: int| 0 <= i < a.len() ==> res[i] == a[i] % b[i],\n   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nnote:   trigger 1 of 1:\n  --> /tmp/tmpfhwjued4.rs:11:45\n   |\n11 |         forall|i: int| 0 <= i < a.len() ==> res[i] == a[i] % b[i],\n   |                                             ^^^^^^\n\nnote: Verus printed one or more automatically chosen quantifier triggers\n      because it had low confidence in the chosen triggers.\n      To suppress these messages, do one of the following:\n        (1) manually annotate a single desired trigger using #[trigger]\n            (example: forall|i: int, j: int| f(i) && #[trigger] g(i) && #[trigger] h(j)),\n        (2) manually annotate multiple desired triggers using #![trigger ...]\n            (example: forall|i: int| #![trigger f(i)] #![trigger g(i)] f(i) && g(i)),\n        (3) accept the automatically chosen trigger using #![auto]\n            (example: forall|i: int, j: int| #![auto] f(i) && g(i) && h(j))\n        (4) use the --triggers-silent command-line option to suppress all printing of triggers.\n      (Note: triggers are used by the underlying SMT theorem prover to instantiate quantifiers;\n      the theorem prover instantiates a quantifier whenever some expression matches the\n      pattern specified by one of the quantifier's triggers.)\n  --> /tmp/tmpfhwjued4.rs:11:9\n   |\n11 |         forall|i: int| 0 <= i < a.len() ==> res[i] == a[i] % b[i],\n   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n"
+  },
+  "np_isalpha.dfy": {
+    "success": true,
+    "num_iterations": 8,
+    "verification_output": "verification results:: 5 verified, 0 errors\n",
+    "verification_error": ""
+  },
+  "np_multiply.dfy": {
+    "success": true,
+    "num_iterations": 8,
+    "verification_output": "verification results:: 3 verified, 0 errors\n",
+    "verification_error": "note: automatically chose triggers for this expression:\n  --> /tmp/tmp0tavgzhm.rs:12:9\n   |\n12 |         forall|i: int| 0 <= i < a.len() ==> res@[i] == a@[i] * b@[i]\n   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nnote:   trigger 1 of 1:\n  --> /tmp/tmp0tavgzhm.rs:12:45\n   |\n12 |         forall|i: int| 0 <= i < a.len() ==> res@[i] == a@[i] * b@[i]\n   |                                             ^^^^^^^\n\nnote: automatically chose triggers for this expression:\n  --> /tmp/tmp0tavgzhm.rs:21:13\n   |\n21 |             forall|j: int| 0 <= j < i ==> res@[j] == a@[j] * b@[j],\n   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nnote:   trigger 1 of 1:\n  --> /tmp/tmp0tavgzhm.rs:21:43\n   |\n21 |             forall|j: int| 0 <= j < i ==> res@[j] == a@[j] * b@[j],\n   |                                           ^^^^^^^\n\nnote: Verus printed one or more automatically chosen quantifier triggers\n      because it had low confidence in the chosen triggers.\n      To suppress these messages, do one of the following:\n        (1) manually annotate a single desired trigger using #[trigger]\n            (example: forall|i: int, j: int| f(i) && #[trigger] g(i) && #[trigger] h(j)),\n        (2) manually annotate multiple desired triggers using #![trigger ...]\n            (example: forall|i: int| #![trigger f(i)] #![trigger g(i)] f(i) && g(i)),\n        (3) accept the automatically chosen trigger using #![auto]\n            (example: forall|i: int, j: int| #![auto] f(i) && g(i) && h(j))\n        (4) use the --triggers-silent command-line option to suppress all printing of triggers.\n      (Note: triggers are used by the underlying SMT theorem prover to instantiate quantifiers;\n      the theorem prover instantiates a quantifier whenever some expression matches the\n      pattern specified by one of the quantifier's triggers.)\n  --> /tmp/tmp0tavgzhm.rs:21:13\n   |\n21 |             forall|j: int| 0 <= j < i ==> res@[j] == a@[j] * b@[j],\n   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n"
+  },
+  "np_not_equal.dfy": {
+    "success": true,
+    "num_iterations": 6,
+    "verification_output": "verification results:: 2 verified, 0 errors\n",
+    "verification_error": ""
+  },
+  "np_piecewise.dfy": {
+    "success": false,
+    "num_iterations": 7,
+    "verification_output": "verification results:: 0 verified, 1 errors\n",
+    "verification_error": "note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function\n --> /tmp/tmpat62w861.rs:5:1\n  |\n5 | fn piecewise(x: Vec<i32>, condlist: Vec<spec_fn(i32) -> bool>, funclist: Vec<spec_fn(i32) -> i32>) -> (ret: Vec<i32>)\n  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nerror: postcondition not satisfied\n  --> /tmp/tmpat62w861.rs:9:9\n   |\n9  |         ret.len() == x.len(),\n   |         ^^^^^^^^^^^^^^^^^^^^ failed this postcondition\n...\n15 |     Vec::new()\n   |     ---------- at the end of the function body\n\nerror: postcondition not satisfied\n  --> /tmp/tmpat62w861.rs:10:9\n   |\n10 | /         forall|i: int, j: int| \n11 | |             0 <= i < x.len() && 0 <= j < condlist.len() ==> \n12 | |             (condlist[j](x[i]) ==> ret[i] == funclist[j](x[i])),\n   | |_______________________________________________________________^ failed this postcondition\n...\n15 |       Vec::new()\n   |       ---------- at the end of the function body\n\nnote: recommendation not met\n  --> /tmp/tmpat62w861.rs:12:36\n   |\n12 |             (condlist[j](x[i]) ==> ret[i] == funclist[j](x[i])),\n   |                                    ^^^^^^\n   |\n  ::: /home/lacra/verus/vstd/std_specs/vec.rs:23:18\n   |\n23 |             0 <= i < self.view().len(),\n   |                  - recommendation not met\n\nnote: automatically chose triggers for this expression:\n  --> /tmp/tmpat62w861.rs:10:9\n   |\n10 | /         forall|i: int, j: int| \n11 | |             0 <= i < x.len() && 0 <= j < condlist.len() ==> \n12 | |             (condlist[j](x[i]) ==> ret[i] == funclist[j](x[i])),\n   | |_______________________________________________________________^\n\nnote:   trigger 1 of 2:\n  --> /tmp/tmpat62w861.rs:12:14\n   |\n12 |             (condlist[j](x[i]) ==> ret[i] == funclist[j](x[i])),\n   |              ^^^^^^^^^^^           ^^^^^^\n\nnote:   trigger 2 of 2:\n  --> /tmp/tmpat62w861.rs:12:36\n   |\n12 |             (condlist[j](x[i]) ==> ret[i] == funclist[j](x[i])),\n   |                                    ^^^^^^    ^^^^^^^^^^^\n\nnote: Verus printed one or more automatically chosen quantifier triggers\n      because it had low confidence in the chosen triggers.\n      To suppress these messages, do one of the following:\n        (1) manually annotate a single desired trigger using #[trigger]\n            (example: forall|i: int, j: int| f(i) && #[trigger] g(i) && #[trigger] h(j)),\n        (2) manually annotate multiple desired triggers using #![trigger ...]\n            (example: forall|i: int| #![trigger f(i)] #![trigger g(i)] f(i) && g(i)),\n        (3) accept the automatically chosen trigger using #![auto]\n            (example: forall|i: int, j: int| #![auto] f(i) && g(i) && h(j))\n        (4) use the --triggers-silent command-line option to suppress all printing of triggers.\n      (Note: triggers are used by the underlying SMT theorem prover to instantiate quantifiers;\n      the theorem prover instantiates a quantifier whenever some expression matches the\n      pattern specified by one of the quantifier's triggers.)\n  --> /tmp/tmpat62w861.rs:10:9\n   |\n10 | /         forall|i: int, j: int| \n11 | |             0 <= i < x.len() && 0 <= j < condlist.len() ==> \n12 | |             (condlist[j](x[i]) ==> ret[i] == funclist[j](x[i])),\n   | |_______________________________________________________________^\n\nerror: aborting due to 2 previous errors\n\n"
+  },
+  "np_polyder.dfy": {
+    "success": true,
+    "num_iterations": 6,
+    "verification_output": "verification results:: 2 verified, 0 errors\n",
+    "verification_error": ""
+  },
+  "np_poly.dfy": {
+    "success": true,
+    "num_iterations": 10,
+    "verification_output": "verification results:: 2 verified, 0 errors\n",
+    "verification_error": "note: automatically chose triggers for this expression:\n  --> /tmp/tmp1oyixr98.rs:33:9\n   |\n33 |         forall|i: int| 0 <= i < roots.len() ==> coeff[i] == poly(roots@)[i]\n   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nnote:   trigger 1 of 1:\n  --> /tmp/tmp1oyixr98.rs:33:49\n   |\n33 |         forall|i: int| 0 <= i < roots.len() ==> coeff[i] == poly(roots@)[i]\n   |                                                 ^^^^^^^^\n\nnote: Verus printed one or more automatically chosen quantifier triggers\n      because it had low confidence in the chosen triggers.\n      To suppress these messages, do one of the following:\n        (1) manually annotate a single desired trigger using #[trigger]\n            (example: forall|i: int, j: int| f(i) && #[trigger] g(i) && #[trigger] h(j)),\n        (2) manually annotate multiple desired triggers using #![trigger ...]\n            (example: forall|i: int| #![trigger f(i)] #![trigger g(i)] f(i) && g(i)),\n        (3) accept the automatically chosen trigger using #![auto]\n            (example: forall|i: int, j: int| #![auto] f(i) && g(i) && h(j))\n        (4) use the --triggers-silent command-line option to suppress all printing of triggers.\n      (Note: triggers are used by the underlying SMT theorem prover to instantiate quantifiers;\n      the theorem prover instantiates a quantifier whenever some expression matches the\n      pattern specified by one of the quantifier's triggers.)\n  --> /tmp/tmp1oyixr98.rs:33:9\n   |\n33 |         forall|i: int| 0 <= i < roots.len() ==> coeff[i] == poly(roots@)[i]\n   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n"
+  },
+  "np_power.dfy": {
+    "success": true,
+    "num_iterations": 6,
+    "verification_output": "verification results:: 3 verified, 0 errors\n",
+    "verification_error": ""
+  },
+  "np_prod.dfy": {
+    "success": true,
+    "num_iterations": 7,
+    "verification_output": "verification results:: 1 verified, 0 errors\n",
+    "verification_error": ""
+  },
+  "np_ravel.dfy": {
+    "success": true,
+    "num_iterations": 6,
+    "verification_output": "verification results:: 1 verified, 0 errors\n",
+    "verification_error": ""
+  },
+  "np_right_shift.dfy": {
+    "success": true,
+    "num_iterations": 6,
+    "verification_output": "verification results:: 2 verified, 0 errors\n",
+    "verification_error": ""
+  },
+  "np_reshape.dfy": {
+    "success": false,
+    "num_iterations": 10,
+    "verification_output": "",
+    "verification_error": "error: Could not automatically infer triggers for this quantifer.  Use #[trigger] annotations to manually mark trigger terms instead.\n  --> /tmp/tmpn0iyecdy.rs:32:9\n   |\n32 | /         forall|i: int| 0 <= i < arr.len() as int ==> {\n33 | |             let length1 = if shape[1] > 0 { shape[1] as int } else { arr.len() as int / shape[0] as int };\n34 | |             let row = i / length1;\n35 | |             let col = i % length1;\n36 | |             row < ret.len() as int && col < ret[row].len() as int && ret[row][col] == arr[i]\n37 | |         },\n   | |_________^\n\nerror: aborting due to 1 previous error\n\n"
+  },
+  "np_select.dfy": {
+    "success": true,
+    "num_iterations": 9,
+    "verification_output": "verification results:: 1 verified, 0 errors\n",
+    "verification_error": "note: automatically chose triggers for this expression:\n  --> /tmp/tmpkql1wist.rs:10:9\n   |\n10 | /         forall|i: int| 0 <= i < condlist.len() ==> {\n11 | |             &&& condlist[i].len() == condlist[0].len() \n12 | |             &&& choicelist[i].len() == condlist[0].len()\n13 | |         },\n   | |_________^\n\nnote:   trigger 1 of 1:\n  --> /tmp/tmpkql1wist.rs:12:17\n   |\n12 |             &&& choicelist[i].len() == condlist[0].len()\n   |                 ^^^^^^^^^^^^^\n\nnote: Verus printed one or more automatically chosen quantifier triggers\n      because it had low confidence in the chosen triggers.\n      To suppress these messages, do one of the following:\n        (1) manually annotate a single desired trigger using #[trigger]\n            (example: forall|i: int, j: int| f(i) && #[trigger] g(i) && #[trigger] h(j)),\n        (2) manually annotate multiple desired triggers using #![trigger ...]\n            (example: forall|i: int| #![trigger f(i)] #![trigger g(i)] f(i) && g(i)),\n        (3) accept the automatically chosen trigger using #![auto]\n            (example: forall|i: int, j: int| #![auto] f(i) && g(i) && h(j))\n        (4) use the --triggers-silent command-line option to suppress all printing of triggers.\n      (Note: triggers are used by the underlying SMT theorem prover to instantiate quantifiers;\n      the theorem prover instantiates a quantifier whenever some expression matches the\n      pattern specified by one of the quantifier's triggers.)\n  --> /tmp/tmpkql1wist.rs:10:9\n   |\n10 | /         forall|i: int| 0 <= i < condlist.len() ==> {\n11 | |             &&& condlist[i].len() == condlist[0].len() \n12 | |             &&& choicelist[i].len() == condlist[0].len()\n13 | |         },\n   | |_________^\n\n"
+  },
+  "np_shape.dfy": {
+    "success": false,
+    "num_iterations": 2,
+    "verification_output": "",
+    "verification_error": "error[E0601]: `main` function not found in crate `tmpqghakpup`\n  --> /tmp/tmpqghakpup.rs:57:2\n   |\n57 | }\n   |  ^ consider adding a `main` function to `/tmp/tmpqghakpup.rs`\n\nerror: aborting due to 1 previous error\n\nFor more information about this error, try `rustc --explain E0601`.\n"
+  },
+  "np_sign.dfy": {
+    "success": true,
+    "num_iterations": 2,
+    "verification_output": "verification results:: 2 verified, 0 errors\n",
+    "verification_error": ""
+  },
+  "np_remainder.dfy": {
+    "success": true,
+    "num_iterations": 15,
+    "verification_output": "verification results:: 2 verified, 0 errors\n",
+    "verification_error": "note: automatically chose triggers for this expression:\n  --> /tmp/tmpc5kad948.rs:15:9\n   |\n15 |         forall|i: int| 0 <= i < ret.len() ==> ret[i] == a[i] % b[i],\n   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nnote:   trigger 1 of 1:\n  --> /tmp/tmpc5kad948.rs:15:47\n   |\n15 |         forall|i: int| 0 <= i < ret.len() ==> ret[i] == a[i] % b[i],\n   |                                               ^^^^^^\n\nnote: automatically chose triggers for this expression:\n  --> /tmp/tmpc5kad948.rs:28:13\n   |\n28 |             forall|j: int| 0 <= j < idx ==> ret[j] == a[j] % b[j],\n   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nnote:   trigger 1 of 1:\n  --> /tmp/tmpc5kad948.rs:28:45\n   |\n28 |             forall|j: int| 0 <= j < idx ==> ret[j] == a[j] % b[j],\n   |                                             ^^^^^^\n\nnote: Verus printed one or more automatically chosen quantifier triggers\n      because it had low confidence in the chosen triggers.\n      To suppress these messages, do one of the following:\n        (1) manually annotate a single desired trigger using #[trigger]\n            (example: forall|i: int, j: int| f(i) && #[trigger] g(i) && #[trigger] h(j)),\n        (2) manually annotate multiple desired triggers using #![trigger ...]\n            (example: forall|i: int| #![trigger f(i)] #![trigger g(i)] f(i) && g(i)),\n        (3) accept the automatically chosen trigger using #![auto]\n            (example: forall|i: int, j: int| #![auto] f(i) && g(i) && h(j))\n        (4) use the --triggers-silent command-line option to suppress all printing of triggers.\n      (Note: triggers are used by the underlying SMT theorem prover to instantiate quantifiers;\n      the theorem prover instantiates a quantifier whenever some expression matches the\n      pattern specified by one of the quantifier's triggers.)\n  --> /tmp/tmpc5kad948.rs:28:13\n   |\n28 |             forall|j: int| 0 <= j < idx ==> ret[j] == a[j] % b[j],\n   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n"
+  },
+  "np_square.dfy": {
+    "success": true,
+    "num_iterations": 2,
+    "verification_output": "verification results:: 1 verified, 0 errors\n",
+    "verification_error": "note: automatically chose triggers for this expression:\n --> /tmp/tmpzhkjkyo7.rs:8:9\n  |\n8 |         forall|i: int| 0 <= i < arr.len() ==> ret[i] == arr[i] * arr[i],\n  |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nnote:   trigger 1 of 1:\n --> /tmp/tmpzhkjkyo7.rs:8:47\n  |\n8 |         forall|i: int| 0 <= i < arr.len() ==> ret[i] == arr[i] * arr[i],\n  |                                               ^^^^^^\n\nnote: Verus printed one or more automatically chosen quantifier triggers\n      because it had low confidence in the chosen triggers.\n      To suppress these messages, do one of the following:\n        (1) manually annotate a single desired trigger using #[trigger]\n            (example: forall|i: int, j: int| f(i) && #[trigger] g(i) && #[trigger] h(j)),\n        (2) manually annotate multiple desired triggers using #![trigger ...]\n            (example: forall|i: int| #![trigger f(i)] #![trigger g(i)] f(i) && g(i)),\n        (3) accept the automatically chosen trigger using #![auto]\n            (example: forall|i: int, j: int| #![auto] f(i) && g(i) && h(j))\n        (4) use the --triggers-silent command-line option to suppress all printing of triggers.\n      (Note: triggers are used by the underlying SMT theorem prover to instantiate quantifiers;\n      the theorem prover instantiates a quantifier whenever some expression matches the\n      pattern specified by one of the quantifier's triggers.)\n --> /tmp/tmpzhkjkyo7.rs:8:9\n  |\n8 |         forall|i: int| 0 <= i < arr.len() ==> ret[i] == arr[i] * arr[i],\n  |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n"
+  },
+  "np_transpose.dfy": {
+    "success": false,
+    "num_iterations": 6,
+    "verification_output": "",
+    "verification_error": "error[E0601]: `main` function not found in crate `tmpfe9qk2z1`\n  --> /tmp/tmpfe9qk2z1.rs:20:2\n   |\n20 | }\n   |  ^ consider adding a `main` function to `/tmp/tmpfe9qk2z1.rs`\n\nerror: aborting due to 1 previous error\n\nFor more information about this error, try `rustc --explain E0601`.\n"
+  },
+  "np_substract.dfy": {
+    "success": true,
+    "num_iterations": 7,
+    "verification_output": "verification results:: 2 verified, 0 errors\n",
+    "verification_error": "note: automatically chose triggers for this expression:\n  --> /tmp/tmpzw8sphig.rs:13:9\n   |\n13 |         forall|i: int| 0 <= i < a.len() ==> res[i] == a[i] - b[i],\n   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nnote:   trigger 1 of 1:\n  --> /tmp/tmpzw8sphig.rs:13:45\n   |\n13 |         forall|i: int| 0 <= i < a.len() ==> res[i] == a[i] - b[i],\n   |                                             ^^^^^^\n\nnote: automatically chose triggers for this expression:\n  --> /tmp/tmpzw8sphig.rs:22:13\n   |\n22 |             forall|j: int| 0 <= j < i ==> result[j] == a[j] - b[j],\n   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nnote:   trigger 1 of 1:\n  --> /tmp/tmpzw8sphig.rs:22:43\n   |\n22 |             forall|j: int| 0 <= j < i ==> result[j] == a[j] - b[j],\n   |                                           ^^^^^^^^^\n\nnote: Verus printed one or more automatically chosen quantifier triggers\n      because it had low confidence in the chosen triggers.\n      To suppress these messages, do one of the following:\n        (1) manually annotate a single desired trigger using #[trigger]\n            (example: forall|i: int, j: int| f(i) && #[trigger] g(i) && #[trigger] h(j)),\n        (2) manually annotate multiple desired triggers using #![trigger ...]\n            (example: forall|i: int| #![trigger f(i)] #![trigger g(i)] f(i) && g(i)),\n        (3) accept the automatically chosen trigger using #![auto]\n            (example: forall|i: int, j: int| #![auto] f(i) && g(i) && h(j))\n        (4) use the --triggers-silent command-line option to suppress all printing of triggers.\n      (Note: triggers are used by the underlying SMT theorem prover to instantiate quantifiers;\n      the theorem prover instantiates a quantifier whenever some expression matches the\n      pattern specified by one of the quantifier's triggers.)\n  --> /tmp/tmpzw8sphig.rs:22:13\n   |\n22 |             forall|j: int| 0 <= j < i ==> result[j] == a[j] - b[j],\n   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n"
+  },
+  "np_sum.dfy": {
+    "success": true,
+    "num_iterations": 8,
+    "verification_output": "verification results:: 2 verified, 0 errors\n",
+    "verification_error": ""
+  },
+  "np_uniqueall.dfy": {
+    "success": false,
+    "num_iterations": 4,
+    "verification_output": "verification results:: 0 verified, 1 errors\n",
+    "verification_error": "error: postcondition not satisfied\n  --> /tmp/tmpuwf2usqs.rs:8:9\n   |\n8  |         forall|i: int| 0 <= i < arr.len() ==> exists|j: int| 0 <= j < ret.len() && #[trigger] ret[j] == #[trigger] arr[i],\n   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition\n...\n12 |     Vec::new()\n   |     ---------- at the end of the function body\n\nerror: aborting due to 1 previous error\n\n"
+  },
+  "np_where.dfy": {
+    "success": false,
+    "num_iterations": 8,
+    "verification_output": "",
+    "verification_error": "error[E0601]: `main` function not found in crate `tmp40leoo5n`\n  --> /tmp/tmp40leoo5n.rs:21:2\n   |\n21 | }\n   |  ^ consider adding a `main` function to `/tmp/tmp40leoo5n.rs`\n\nerror: aborting due to 1 previous error\n\nFor more information about this error, try `rustc --explain E0601`.\n"
+  },
+  "np_zeros.dfy": {
+    "success": true,
+    "num_iterations": 4,
+    "verification_output": "verification results:: 4 verified, 0 errors\n",
+    "verification_error": ""
+  },
+  "np_tril.dfy": {
+    "success": true,
+    "num_iterations": 14,
+    "verification_output": "verification results:: 4 verified, 0 errors\n",
+    "verification_error": ""
+  }
+}

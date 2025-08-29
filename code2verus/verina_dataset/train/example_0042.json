@@ -1,0 +1,109 @@
+{
+  "id": "verina_advanced_32",
+  "description": "-----Description----- \nThis test implements a function in Lean 4 that finds the length of the longest increasing subsequence in a list of integers. A subsequence is a sequence that can be derived from another sequence by deleting some or no elements without changing the order of the remaining elements. An increasing subsequence is one in which the elements are in strictly increasing order.\n\n-----Input-----\nnumbers: A list of integers.\n\n-----Output-----\nA natural number representing the length of the longest increasing subsequence in the input list. If the list is empty, the function returns 0.\n\n",
+  "lean_code": "-- !benchmark @start import type=solution\nimport Mathlib\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible, simp]\ndef longestIncreasingSubsequence_precond (numbers : List Int) : Prop :=\n  -- !benchmark @start precond\n  True\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef longestIncreasingSubsequence (numbers : List Int) (h_precond : longestIncreasingSubsequence_precond (numbers)) : Nat :=\n  -- !benchmark @start code\n  let rec buildTables : List Int \u2192 List Int \u2192 List Nat \u2192 Nat \u2192 Nat\n    | [], _, lengths, _ =>\n        let rec findMaxLength : List Nat \u2192 Nat\n          | [] => 0\n          | x :: xs =>\n              let maxRest := findMaxLength xs\n              if x > maxRest then x else maxRest\n        findMaxLength lengths\n    | currNum :: restNums, prevNums, lengths, idx =>\n        let rec findLengthEndingAtCurr : List Int \u2192 List Nat \u2192 Nat \u2192 Nat\n          | [], _, best => best\n          | prevVal :: restVals, prevLen :: restLens, best =>\n              if prevVal < currNum then\n                findLengthEndingAtCurr restVals restLens (max best prevLen)\n              else\n                findLengthEndingAtCurr restVals restLens best\n          | _, _, best => best\n\n        let bestPrevLen := findLengthEndingAtCurr prevNums lengths 0\n        let currLength := bestPrevLen + 1\n        buildTables restNums (prevNums ++ [currNum]) (lengths ++ [currLength]) (idx + 1)\n\n  match numbers with\n  | [] => 0\n  | [x] => 1\n  | first :: rest => buildTables rest [first] [1] 1\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef longestIncreasingSubsequence_postcond (numbers : List Int) (result: Nat) (h_precond : longestIncreasingSubsequence_precond (numbers)) : Prop :=\n  -- !benchmark @start postcond\n  let allSubseq := (numbers.foldl fun acc x => acc ++ acc.map (fun sub => x :: sub)) [[]] |>.map List.reverse\n  let increasingSubseqLens := allSubseq.filter (fun l => List.Pairwise (\u00b7 < \u00b7) l) |>.map (\u00b7.length)\n  increasingSubseqLens.contains result \u2227 increasingSubseqLens.all (\u00b7 \u2264 result)\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem longestIncreasingSubsequence_spec_satisfied (numbers: List Int) (h_precond : longestIncreasingSubsequence_precond (numbers)) :\n    longestIncreasingSubsequence_postcond (numbers) (longestIncreasingSubsequence (numbers) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n\n\n",
+  "signature": {
+    "name": "longestIncreasingSubsequence",
+    "parameters": {
+      "param_name": [
+        "numbers"
+      ],
+      "param_type": [
+        "List Int"
+      ]
+    },
+    "return_type": "Nat"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "lab_assignment",
+      "link": "",
+      "task_id": "lab_longestIncreasingSubsequence_324969521",
+      "student_id": [
+        26
+      ]
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"numbers\": \"[10, 22, 9, 33, 21, 50, 41, 60]\"}",
+      "{\"numbers\": \"[3, 10, 2, 1, 20]\"}",
+      "{\"numbers\": \"[50, 3, 10, 7, 40, 80]\"}",
+      "{\"numbers\": \"[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]\"}",
+      "{\"numbers\": \"[1, 2, 3, 4, 5]\"}",
+      "{\"numbers\": \"[]\"}",
+      "{\"numbers\": \"[5]\"}",
+      "{\"numbers\": \"[5, 5, 5, 5]\"}"
+    ],
+    "expected": [
+      [
+        "5"
+      ],
+      [
+        "3"
+      ],
+      [
+        "4"
+      ],
+      [
+        "1"
+      ],
+      [
+        "5"
+      ],
+      [
+        "0"
+      ],
+      [
+        "1"
+      ],
+      [
+        "1"
+      ]
+    ],
+    "unexpected": [
+      [
+        "4",
+        "6",
+        "8"
+      ],
+      [
+        "2",
+        "4",
+        "5"
+      ],
+      [
+        "3",
+        "5",
+        "6"
+      ],
+      [
+        "0",
+        "2",
+        "10"
+      ],
+      [
+        "1",
+        "4",
+        "6"
+      ],
+      [
+        "1",
+        "2",
+        "3"
+      ],
+      [
+        "0",
+        "2"
+      ],
+      [
+        "0",
+        "4"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": []
+  },
+  "difficulty": "advanced"
+}

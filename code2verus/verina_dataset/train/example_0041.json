@@ -1,0 +1,72 @@
+{
+  "id": "verina_basic_66",
+  "description": "-----Description-----  \nThis task focuses on determining if a given integer is even. The problem requires checking whether the integer can be represented as twice another integer, meaning it is divisible by 2 without any remainder.\n\n-----Input-----  \nThe input consists of a single integer:  \n\u2022 x: An integer to be evaluated.\n\n-----Output-----  \nThe output is a boolean value:  \n\u2022 true if x is even (x mod 2 equals 0).  \n\u2022 false if x is odd.\n\n-----Note-----  \nNo additional preconditions are required. The method should work correctly for any integer value.",
+  "lean_code": "-- !benchmark @start import type=solution\nimport Mathlib\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible, simp]\ndef ComputeIsEven_precond (x : Int) : Prop :=\n  -- !benchmark @start precond\n  True\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef ComputeIsEven (x : Int) (h_precond : ComputeIsEven_precond (x)) : Bool :=\n  -- !benchmark @start code\n  if x % 2 = 0 then true else false\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef ComputeIsEven_postcond (x : Int) (result: Bool) (h_precond : ComputeIsEven_precond (x)) :=\n  -- !benchmark @start postcond\n  result = true \u2194 \u2203 k : Int, x = 2 * k\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem ComputeIsEven_spec_satisfied (x: Int) (h_precond : ComputeIsEven_precond (x)) :\n    ComputeIsEven_postcond (x) (ComputeIsEven (x) h_precond) h_precond := by\n  -- !benchmark @start proof\n  unfold ComputeIsEven ComputeIsEven_postcond\n  simp\n  rfl\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "ComputeIsEven",
+    "parameters": {
+      "param_name": [
+        "x"
+      ],
+      "param_type": [
+        "Int"
+      ]
+    },
+    "return_type": "Bool"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "clover",
+      "link": "https://github.com/ChuyueSun/Clover",
+      "task_id": "Clover_is_even",
+      "student_id": null
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"x\": 4}",
+      "{\"x\": 7}",
+      "{\"x\": 0}",
+      "{\"x\": -2}",
+      "{\"x\": -3}"
+    ],
+    "expected": [
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ]
+    ],
+    "unexpected": [
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": []
+  },
+  "difficulty": "basic"
+}

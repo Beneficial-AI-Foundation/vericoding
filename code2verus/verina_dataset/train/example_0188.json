@@ -1,0 +1,74 @@
+{
+  "id": "verina_basic_80",
+  "description": "-----Description-----  \nThis task involves determining whether a specified key appears exactly once in an array. The goal is to verify the uniqueness of the key's occurrence without prescribing any specific approach or implementation method.\n\n-----Input-----  \nThe input consists of:  \n\u2022 a: An array of integers.  \n\u2022 key: An integer representing the element whose occurrence is to be checked.\n\n-----Output-----  \nThe output is a Boolean value that:  \n\u2022 Is true if the key appears exactly once in the array.  \n\u2022 Is false otherwise.\n\n-----Note-----  \nThe function should correctly handle arrays with no occurrences of the key, multiple occurrences, and exactly one occurrence.",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible, simp]\ndef only_once_precond (a : Array Int) (key : Int) : Prop :=\n  -- !benchmark @start precond\n  True\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\ndef only_once_loop {T : Type} [DecidableEq T] (a : Array T) (key : T) (i keyCount : Nat) : Bool :=\n  if i < a.size then\n    match a[i]? with\n    | some val =>\n        let newCount := if val = key then keyCount + 1 else keyCount\n        only_once_loop a key (i + 1) newCount\n    | none => keyCount == 1\n  else\n    keyCount == 1\n-- !benchmark @end code_aux\n\n\ndef only_once (a : Array Int) (key : Int) (h_precond : only_once_precond (a) (key)) : Bool :=\n  -- !benchmark @start code\n  only_once_loop a key 0 0\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\ndef count_occurrences {T : Type} [DecidableEq T] (a : Array T) (key : T) : Nat :=\n  a.foldl (fun cnt x => if x = key then cnt + 1 else cnt) 0\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef only_once_postcond (a : Array Int) (key : Int) (result: Bool) (h_precond : only_once_precond (a) (key)) :=\n  -- !benchmark @start postcond\n  ((count_occurrences a key = 1) \u2192 result) \u2227\n  ((count_occurrences a key \u2260 1) \u2192 \u00ac result)\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem only_once_spec_satisfied (a: Array Int) (key: Int) (h_precond : only_once_precond (a) (key)) :\n    only_once_postcond (a) (key) (only_once (a) (key) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "only_once",
+    "parameters": {
+      "param_name": [
+        "a",
+        "key"
+      ],
+      "param_type": [
+        "Array Int",
+        "Int"
+      ]
+    },
+    "return_type": "Bool"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "clover",
+      "link": "https://github.com/ChuyueSun/Clover",
+      "task_id": "Clover_only_once",
+      "student_id": null
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"a\": \"#[1, 2, 3, 4]\", \"key\": 2}",
+      "{\"a\": \"#[1, 2, 2, 3, 4]\", \"key\": 2}",
+      "{\"a\": \"#[1, 1, 1, 1]\", \"key\": 1}",
+      "{\"a\": \"#[10]\", \"key\": 10}",
+      "{\"a\": \"#[]\", \"key\": 5}"
+    ],
+    "expected": [
+      [
+        "true"
+      ],
+      [
+        "false"
+      ],
+      [
+        "false"
+      ],
+      [
+        "true"
+      ],
+      [
+        "false"
+      ]
+    ],
+    "unexpected": [
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": []
+  },
+  "difficulty": "basic"
+}

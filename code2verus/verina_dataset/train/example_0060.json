@@ -1,0 +1,116 @@
+{
+  "id": "verina_basic_1",
+  "description": "-----Description----- \nThis task requires writing a Lean 4 method that determines whether two given integers have opposite signs. In other words, the method should return true if one integer is positive and the other is negative. Note that zero is considered neither positive nor negative; therefore, if either integer is zero, the method should return false.\n\n-----Input-----\nThe input consists of two integers:\na: An integer.\nb: An integer.\n\n-----Output-----\nThe output is a Boolean value:\nReturns true if one of the integers is positive and the other is negative (i.e., they have opposite signs).\nReturns false if both integers are either non-negative or non-positive, or if one (or both) is zero.",
+  "lean_code": "-- !benchmark @start import type=solution\nimport Mathlib\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n\n@[reducible, simp]\ndef hasOppositeSign_precond (a : Int) (b : Int) : Prop :=\n  -- !benchmark @start precond\n  True\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef hasOppositeSign (a : Int) (b : Int) (h_precond : hasOppositeSign_precond (a) (b)) : Bool :=\n  -- !benchmark @start code\n  a * b < 0\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef hasOppositeSign_postcond (a : Int) (b : Int) (result: Bool) (h_precond : hasOppositeSign_precond (a) (b)) :=\n  -- !benchmark @start postcond\n  (((a < 0 \u2227 b > 0) \u2228 (a > 0 \u2227 b < 0)) \u2192 result) \u2227\n  (\u00ac((a < 0 \u2227 b > 0) \u2228 (a > 0 \u2227 b < 0)) \u2192 \u00acresult)\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem hasOppositeSign_spec_satisfied (a: Int) (b: Int) (h_precond : hasOppositeSign_precond (a) (b)) :\n    hasOppositeSign_postcond (a) (b) (hasOppositeSign (a) (b) h_precond) h_precond := by\n  -- !benchmark @start proof\n  unfold hasOppositeSign hasOppositeSign_postcond\n  constructor\n\n  \u00b7 intro h\n    cases h with\n    | inl h1 =>\n      simp\n      have \u27e8ha, hb\u27e9 := h1\n      exact Int.mul_neg_of_neg_of_pos ha hb\n    | inr h2 =>\n      simp\n      have \u27e8ha, hb\u27e9 := h2\n      rw [Int.mul_comm]\n      exact Int.mul_neg_of_neg_of_pos hb ha\n\n  \u00b7 rw [Bool.decide_iff, mul_neg_iff]\n    simp_all\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "hasOppositeSign",
+    "parameters": {
+      "param_name": [
+        "a",
+        "b"
+      ],
+      "param_type": [
+        "Int",
+        "Int"
+      ]
+    },
+    "return_type": "Bool"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "dafny-synthesis",
+      "link": "https://github.com/Mondego/dafny-synthesis",
+      "task_id": "task_id_58",
+      "student_id": null
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"a\": -5, \"b\": 10}",
+      "{\"a\": 5, \"b\": -10}",
+      "{\"a\": 5, \"b\": 10}",
+      "{\"a\": -5, \"b\": -10}",
+      "{\"a\": 0, \"b\": 10}",
+      "{\"a\": 10, \"b\": 0}",
+      "{\"a\": 0, \"b\": -10}",
+      "{\"a\": -10, \"b\": 0}",
+      "{\"a\": 0, \"b\": 0}",
+      "{\"a\": -1, \"b\": 1}",
+      "{\"a\": 1, \"b\": -1}"
+    ],
+    "expected": [
+      [
+        "True"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "False"
+      ],
+      [
+        "False"
+      ],
+      [
+        "False"
+      ],
+      [
+        "False"
+      ],
+      [
+        "False"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "True"
+      ]
+    ],
+    "unexpected": [
+      [
+        "False"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "True"
+      ],
+      [
+        "True"
+      ],
+      [
+        "True"
+      ],
+      [
+        "True"
+      ],
+      [
+        "True"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "False"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": []
+  },
+  "difficulty": "basic"
+}
