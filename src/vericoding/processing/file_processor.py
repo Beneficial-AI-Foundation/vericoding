@@ -185,7 +185,7 @@ def process_spec_file(
                         iteration,
                         hashlib.md5(original_code.encode()).hexdigest()[:8],
                         hashlib.md5(current_code.encode()).hexdigest()[:8],
-                        verification.error[:500] if verification.error else "Unknown error",
+                        verification.error if verification.error else "Unknown error",  # Full error message
                         "",  # Proof state would come from lean tools
                         time.time()
                     )
@@ -195,6 +195,28 @@ def process_spec_file(
                 success = True
                 break
             else:
+                # Save full error log to debug directory
+                if config.debug_mode and verification.error:
+                    error_log_path = (
+                        Path(config.output_dir) / "debug" / relative_path.parent
+                        if str(relative_path.parent) != "."
+                        else Path(config.output_dir) / "debug"
+                    ) / f"{base_file_name}_iter{iteration}_error.log"
+                    
+                    error_log_path.parent.mkdir(parents=True, exist_ok=True)
+                    with error_log_path.open("w") as f:
+                        f.write(f"=== Verification Error - Iteration {iteration} ===\n")
+                        f.write(f"File: {file_path}\n")
+                        f.write(f"Time: {time.strftime('%Y-%m-%d %H:%M:%S')}\n")
+                        f.write(f"\nFull Error Output:\n")
+                        f.write("-" * 80 + "\n")
+                        f.write(verification.error)
+                        f.write("\n" + "-" * 80 + "\n")
+                        if verification.output:
+                            f.write("\nAdditional Output:\n")
+                            f.write(verification.output)
+                    logger.info(f"    💾 Saved full error log to: debug/{relative_path.parent}/{base_file_name}_iter{iteration}_error.log")
+                
                 logger.info(
                     f"    ✗ Verification failed: {verification.error[:200] if verification.error else 'Unknown error'}..."
                 )
@@ -283,7 +305,7 @@ def process_spec_file(
                         config.max_iterations,
                         hashlib.md5(original_code.encode()).hexdigest()[:8],
                         hashlib.md5(current_code.encode() if 'current_code' in locals() else generated_code.encode()).hexdigest()[:8],
-                        error_msg[:500] if error_msg else "Unknown error",
+                        error_msg if error_msg else "Unknown error",  # Full error message
                         "",
                         time.time()
                     )

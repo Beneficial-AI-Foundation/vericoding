@@ -47,6 +47,10 @@ lean_lib DafnyBenchSpecs where
   globs := #[.andSubmodules `DafnyBenchSpecs]
   srcDir := "lean"
 
+lean_lib Generated where
+  globs := #[.andSubmodules `Generated]
+  srcDir := "lean"
+
 @[default_target]
 lean_exe vericoding where
   root := `Main
