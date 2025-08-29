@@ -4,7 +4,7 @@ vc-preamble: |-
   verus! {
 
   // Using generic type parameter with uninterpreted body
-  uninterp spec fn f<T>(a: T) -> bool
+  uninterp spec fn f<T>(a: T) -> bool;
 
 vc-helpers: |-
   // <vc-helpers>
