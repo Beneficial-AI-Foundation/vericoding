@@ -16,19 +16,6 @@ vc-preamble: |-
       }
   }
   
-  spec fn exp(x: f64, n: nat) -> f64
-  decreases n
-  {
-      if n == 0 {
-          1.0
-      } else if x == 0.0 {
-          0.0
-      } else if n == 0 && x == 0.0 {
-          1.0
-      } else {
-          x * exp(x, sub(n, 1))
-      }
-  }
 
 vc-helpers: |-
   // <vc-helpers>
