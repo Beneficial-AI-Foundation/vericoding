@@ -110,7 +110,7 @@ pip install -e .
 Create a `.env` file in the project root:
 
 ```bash
-AHTROPIC_API_KEY=your_antropic_api_key_here
+ANTHROPIC_API_KEY=your_anthropic_api_key_here
 # Add other API keys as needed
 ```
 
