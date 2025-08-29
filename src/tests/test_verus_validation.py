@@ -17,7 +17,7 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
 from verus_validation import (
     find_verus_executable, 
-    verify_rust_with_verus, 
+    check_syntax_with_verus,
     create_yaml_without_helpers,
     convert_yaml_to_rust,
     VerusNotFoundError
@@ -52,7 +52,7 @@ def test_yaml_without_helpers(yaml_file: Path, temp_path: Path, verus_cmd: str) 
             return False, "Conversion failed", False
         
         # Verify with Verus
-        success, output = verify_rust_with_verus(temp_rust_file, verus_cmd)
+        success, output = check_syntax_with_verus(temp_rust_file, verus_cmd)
         return success, output, False
         
     except Exception as e:
@@ -115,7 +115,7 @@ def main():
                 continue
             
             print(f"   Running Verus syntax check on original...")
-            success, output = verify_rust_with_verus(temp_rust_file, verus_cmd)
+            success, output = check_syntax_with_verus(temp_rust_file, verus_cmd)
             
             if success:
                 print(f"   ✅ Original Verus syntax check passed")

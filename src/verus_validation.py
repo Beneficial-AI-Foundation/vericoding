@@ -51,7 +51,7 @@ def find_verus_executable() -> str:
     )
 
 
-def verify_rust_with_verus(rust_path: Path, verus_cmd: str) -> Tuple[bool, str]:
+def check_syntax_with_verus(rust_path: Path, verus_cmd: str) -> Tuple[bool, str]:
     """
     Run verus --no-verify on the Rust file and return success status and output.
     
@@ -163,7 +163,7 @@ def validate_yaml_with_verus(yaml_content: str, verus_cmd: str, temp_dir: Path) 
         if not success:
             return False, False, "YAML to Rust conversion failed"
         
-        original_valid, original_msg = verify_rust_with_verus(rust_file, verus_cmd)
+        original_valid, original_msg = check_syntax_with_verus(rust_file, verus_cmd)
         
         if not original_valid:
             return False, False, f"Original failed: {original_msg}"
@@ -183,7 +183,7 @@ def validate_yaml_with_verus(yaml_content: str, verus_cmd: str, temp_dir: Path) 
         if not success_no_helpers:
             return True, False, "No-helpers YAML to Rust conversion failed"
         
-        no_helpers_valid, no_helpers_msg = verify_rust_with_verus(rust_file_no_helpers, verus_cmd)
+        no_helpers_valid, no_helpers_msg = check_syntax_with_verus(rust_file_no_helpers, verus_cmd)
         
         return original_valid, no_helpers_valid, no_helpers_msg if not no_helpers_valid else "Success"
         
