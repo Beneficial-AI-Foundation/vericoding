@@ -44,11 +44,7 @@ python spec_to_code.py verus ./benchmarks/verus_specs
 The script handles language differences through:
 
 1. **Configuration-driven behavior**: Most differences are handled through the configuration file
-2. **Language-specific functions**: 
-   - `fix_incomplete_dafny_code()` - Handles Dafny string and variable completions
-   - `fix_incomplete_lean_code()` - Handles Lean sorry statements
-   - `fix_incomplete_verus_code()` - Handles Verus function bodies and spec functions
-3. **Special file filtering**: Lean files are only processed if they contain 'sorry'
+2. **Special file filtering**: Lean files are only processed if they contain 'sorry'
 
 ### 4. Environment Variables
 
@@ -106,6 +102,5 @@ To migrate from the old scripts to the unified script:
 To add support for a new language:
 
 1. Add a new section to `config/language_config.toml`
-2. Implement a `fix_incomplete_<language>_code()` function if needed
-3. Add any special file filtering logic in `find_spec_files()`
-4. Create appropriate prompts file
+2. Add any special file filtering logic in `find_spec_files()`
+3. Create appropriate prompts file
