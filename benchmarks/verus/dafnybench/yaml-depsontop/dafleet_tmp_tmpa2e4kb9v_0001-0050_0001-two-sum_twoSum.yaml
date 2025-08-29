@@ -39,11 +39,12 @@ vc-preamble: |-
     (b) What do elements in the set/map satisfy (like in formula B)
   */
 
-vc-helpers: |-
-  // <vc-helpers>
   spec fn seq_i32_to_int(s: Seq<i32>) -> Seq<int> {
       s.map(|i, v| v as int)
   }
+
+vc-helpers: |-
+  // <vc-helpers>
   // </vc-helpers>
 
 vc-spec: |-
