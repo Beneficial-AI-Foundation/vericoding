@@ -6,8 +6,7 @@
 
 1. **Lean 4 Development Environment**: Ready for formal verification experiments
 2. **MCP Integration**: Full lean-lsp-mcp tooling configured for interactive development
-3. **Real-time Feedback**: Diagnostic tools, proof state inspection, and search capabilities
-4. **LeanExplore**: Access to mathematical theorem databases and dependency exploration
+3. **Real-time Feedback**: Diagnostic tools, proof state inspection, and search capabilities. You'll need search since your training date cutoff is very out of date for Lean 4.
 
 ## Lean-LSP-MCP Integration
 
@@ -18,17 +17,6 @@ The project is configured with Model Context Protocol (MCP) tools for enhanced L
 1. **lean-lsp-mcp**: Provides Lean language server protocol integration
    - Command: `uvx lean-lsp-mcp`
    - Offers real-time feedback on Lean code through various diagnostic tools
-
-2. **leanexplore**: Search and exploration tool for Lean mathematics
-   - Command: `uvx --from lean-explore leanexplore mcp serve --backend local`
-   - Enables searching through Lean statement groups and dependencies
-
-3. **LeanTool**: Additional Lean tooling
-   - Located in `.mcp-tools/LeanTool`
-   - Run via Poetry
-
-4. **browsermcp**: Browser automation support
-   - Command: `npx @browsermcp/mcp@latest`
 
 ### Lean LSP-MCP Tool Usage
 
@@ -66,7 +54,7 @@ no goals
 Get the expected type (term goal) at a specific location.
 
 #### 4. `lean_hover_info`
-Get hover information (documentation) for symbols at a specific location.
+Get hover information (documentation) for symbols at a specific location. Easy way to get types.
 
 #### 5. `lean_completions`
 Code auto-completion for available identifiers or imports.
@@ -83,21 +71,15 @@ Get file contents where a symbol is declared.
 - `lean_state_search`: Search theorems based on proof state (limit: 3req/30s)
 - `lean_hammer_premise`: Search premises using Lean Hammer (limit: 3req/30s)
 
-### LeanExplore MCP Tools
-
-- `mcp__leanexplore__search`: Search Lean statement groups by query
-- `mcp__leanexplore__get_by_id`: Retrieve statement groups by ID
-- `mcp__leanexplore__get_dependencies`: Get direct dependencies for statement groups
-
 ## General Programming Philosophy
 
-Programming is about onomastics (naming), composition (functoriality), and caching. Think conformally at every scale and across scales.
+Programming is about onomastics (naming), composition (functoriality), and caching. Think conformally (at every scale and across scales).
 
 Build a pit of success: internal systems that grow as a whole outwards, never allowing the fallible external world to leak in except at boundaries. Meet the external world at well-defined interfaces.
 
 When solving problems, write tooling/linters/auto-fixers to widen the pit of success. Use rigid compiler error messages and linter warnings to guide future users (**including** AI) toward correct solutions.
 
-Favor statically typed functional programming but use mutability where it makes sense or is easier to port.
+Lean's mut notation is really useful, don't be afraid to use it.
 
 ## Project Structure
 
@@ -108,38 +90,13 @@ Favor statically typed functional programming but use mutability where it makes 
 ## Development Commands
 
 For Lean development, the key command is:
-- `lake build` - Build Lean project (use frequently for constant feedback)
+- `lake build` (use frequently for constant feedback). It can take filenames as arguments to build them separately.
 
 The lean-lsp-mcp tools are already configured in `.mcp.json` and available through the MCP interface.
 
 ## Experiment Tracking
 
-Uses Weights & Biases (wandb) for tracking verification experiments, failure analysis, and LLM usage metrics. Set `WANDB_API_KEY` to enable. See `vericoding/analysis/` for failure collection and LLM judge capabilities.
-
-
-## Building and Testing
-
-```bash
-# Build Lean project
-lake build
-
-# Build with verbose output for debugging
-lake build --verbose
-
-# Clean build artifacts if needed
-lake clean
-```
-
-## Lean 4 Project Focus
-
-This project is set up for Lean 4 verification experiments. The MCP tools provide:
-
-1. **Real-time feedback** through lean-lsp-mcp diagnostic tools
-2. **Proof state exploration** for understanding verification goals
-3. **Search capabilities** for finding relevant theorems and lemmas
-4. **Code completion** and documentation lookup
-
-Create Lean files as needed for your verification experiments and use the MCP tools for interactive development.
+Uses Weights & Biases (wandb) for tracking verification experiments, failure analysis, and LLM usage metrics
 
 ## Lean 4 Development Guidelines
 
@@ -152,7 +109,7 @@ Create Lean files as needed for your verification experiments and use the MCP to
 ### Import and Module Structure
 
 - Imports MUST come before any syntax elements, including module and doc comments
-  - [ ] set extensible error messages to suggest a fix for AI. Then remove this admonishment.
+  - [ ] TODO set extensible error messages to suggest a fix for AI. Then remove this admonishment.
 - Set `linter.missingDocs = true` and `relaxedAutoImplicit = false` in `lakefile.lean`.
 
 ### Common Errors and Solutions
@@ -160,17 +117,15 @@ Create Lean files as needed for your verification experiments and use the MCP to
 - **"unexpected token 'namespace'"**: Module/doc comment placed incorrectly (should be after imports)
 - **"unexpected token"**: Often caused by misplaced docstrings - use multiline comments instead
   - [ ] use extensible error messages to suggest a fix for AI. Then remove this admonishment.
-- [ ] make a pre-push hook that runs lake build
 
 ## Python Development Guidelines
 
-- Always use `uv` for Python package management (not pip). Use `uv add` over `uv pip install`, `uv sync`, and `uv run` over `python`. If a tool requires further build integration, use hatch to do it in the `pyproject.toml`.
+- Always use `uv` for Python package management (not pip). Use `uv add` over `uv pip install`, `uv sync`, and `uv run` over `python`.
 
 ## Additional Guidelines
 
 - Use `rg` and `fd` instead of grep/find
 - Make atomic commits and use branches liberally
-
 
 ## Development Strategies
 
