@@ -165,8 +165,8 @@ vc-helpers: |-
 vc-spec: |-
   // <vc-spec>
   fn expand_from_center(s: Seq<char>, i0: usize, j0: usize) -> (result: (usize, usize))
-      requires 0 <= i0 <= j0 <= s.len()
-      requires palindromic(s, i0 as int, j0 as int)
+      requires 0 <= i0 <= j0 <= s.len(),
+               palindromic(s, i0 as int, j0 as int),
       ensures 
           {
               let (lo, hi) = result;
