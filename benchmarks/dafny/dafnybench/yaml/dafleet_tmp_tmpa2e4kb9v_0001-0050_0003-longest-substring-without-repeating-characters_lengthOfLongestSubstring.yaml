@@ -26,26 +26,7 @@ vc-preamble: |-
   // - `set` were Python set (or even better, a fixed-size array -- if the "alphabet" is small)
   //
   // `best_iv` is for verification purpose, not returned by the real program, thus `ghost`.
-
-vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
-
-vc-spec: |-
-  // <vc-spec>
-  method lengthOfLongestSubstring(s: string) returns (n: int, ghost best_iv: interval)
-    ensures valid_interval(s, best_iv) && length(best_iv) == n    /** `best_iv` is valid */
-    ensures forall iv | valid_interval(s, iv) :: length(iv) <= n  /** `best_iv` is longest */
-  // </vc-spec>
-
-vc-code: |-
-  // <vc-code>
-  {
-    assume false;
-  }
-  // </vc-code>
-
-vc-postamble: |-
+  
   /* Discussions
   1. The "sliding window" technique is the most "fancy" part of the solution,
     ensuring an O(n) time despite the O(n^2) search space.
@@ -88,3 +69,22 @@ vc-postamble: |-
   //   "Why can we safely use (C) instead of (D) as the loop condition? Won't `hi` go out-of-bound?"
   // Can you figure it out?
 
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  // <vc-spec>
+  method lengthOfLongestSubstring(s: string) returns (n: int, ghost best_iv: interval)
+    ensures valid_interval(s, best_iv) && length(best_iv) == n    /** `best_iv` is valid */
+    ensures forall iv | valid_interval(s, iv) :: length(iv) <= n  /** `best_iv` is longest */
+  // </vc-spec>
+
+vc-code: |-
+  // <vc-code>
+  {
+    assume false;
+  }
+  // </vc-code>
+
+vc-postamble: |-

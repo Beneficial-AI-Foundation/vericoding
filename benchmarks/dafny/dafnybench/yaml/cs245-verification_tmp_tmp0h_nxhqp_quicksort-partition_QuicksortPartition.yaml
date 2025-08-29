@@ -2,6 +2,9 @@ vc-preamble: |-
   // Quicksort Partition -- Stephanie McIntyre
   // Based on examples in class 
   // Parts have been modified cause you know, arrays are different...
+  
+  /* The annotations and implied proofs are left for you.
+     I might do them later on next week. */
 
 vc-helpers: |-
   // <vc-helpers>
@@ -26,6 +29,3 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  /* The annotations and implied proofs are left for you.
-     I might do them later on next week. */
-

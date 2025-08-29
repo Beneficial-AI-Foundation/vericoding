@@ -1,24 +1,4 @@
 vc-preamble: |-
-  
-
-vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
-
-vc-spec: |-
-  // <vc-spec>
-  method Product(m: nat, n:nat) returns (res:nat)
-  ensures res == m*n;
-  // </vc-spec>
-
-vc-code: |-
-  // <vc-code>
-  {
-    assume false;
-  }
-  // </vc-code>
-
-vc-postamble: |-
   function gcd(m: nat, n: nat) : nat
   requires m>0 && n>0;
   decreases m+n
@@ -63,3 +43,21 @@ vc-postamble: |-
   //     return z;
   // }
 
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  // <vc-spec>
+  method Product(m: nat, n:nat) returns (res:nat)
+  ensures res == m*n;
+  // </vc-spec>
+
+vc-code: |-
+  // <vc-code>
+  {
+    assume false;
+  }
+  // </vc-code>
+
+vc-postamble: |-

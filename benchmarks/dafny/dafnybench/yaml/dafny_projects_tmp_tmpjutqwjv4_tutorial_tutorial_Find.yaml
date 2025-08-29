@@ -7,26 +7,7 @@ vc-preamble: |-
     else if n == 1 then 1
     else fib(n - 1) + fib(n - 2)
   }
-
-vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
-
-vc-spec: |-
-  // <vc-spec>
-  method Find(a: array<int>, key: int) returns (index: int)
-    ensures 0 <= index ==> index < a.Length && a[index] == key
-    ensures index < 0 ==> (forall k :: 0 <= k < a.Length ==> a[k] != key)
-  // </vc-spec>
-
-vc-code: |-
-  // <vc-code>
-  {
-    assume false;
-  }
-  // </vc-code>
-
-vc-postamble: |-
+  
   predicate sorted(a: array<int>)
     reads a
   {
@@ -82,3 +63,22 @@ vc-postamble: |-
     path(p, graph) // and it is a valid path
   }
 
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  // <vc-spec>
+  method Find(a: array<int>, key: int) returns (index: int)
+    ensures 0 <= index ==> index < a.Length && a[index] == key
+    ensures index < 0 ==> (forall k :: 0 <= k < a.Length ==> a[k] != key)
+  // </vc-spec>
+
+vc-code: |-
+  // <vc-code>
+  {
+    assume false;
+  }
+  // </vc-code>
+
+vc-postamble: |-

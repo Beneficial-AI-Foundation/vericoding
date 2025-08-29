@@ -1,5 +1,7 @@
 vc-preamble: |-
-  
+  predicate distinct(nums: seq<int>) {
+      forall i, j :: 0 <= i < j < |nums| ==> nums[i] != nums[j]
+  }
 
 vc-helpers: |-
   // <vc-helpers>
@@ -21,7 +23,3 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  predicate distinct(nums: seq<int>) {
-      forall i, j :: 0 <= i < j < |nums| ==> nums[i] != nums[j]
-  }
-

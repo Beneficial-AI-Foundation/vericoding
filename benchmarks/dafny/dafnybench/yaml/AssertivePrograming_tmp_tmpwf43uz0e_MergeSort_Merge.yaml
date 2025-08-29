@@ -29,28 +29,7 @@ vc-preamble: |-
   
   DO NOT modify the specification or any other part of the method's signature
   */
-
-vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
-
-vc-spec: |-
-  // <vc-spec>
-  method Merge(b: array<int>, c: array<int>, d: array<int>)
-      requires b != c && b != d && b.Length == c.Length + d.Length
-      requires Sorted(c[..]) && Sorted(d[..])
-      ensures Sorted(b[..]) && multiset(b[..]) == multiset(c[..])+multiset(d[..])
-      modifies b
-  // </vc-spec>
-
-vc-code: |-
-  // <vc-code>
-  {
-    assume false;
-  }
-  // </vc-code>
-
-vc-postamble: |-
+  
   //This is a method that replace the loop body
   method MergeLoop(b: array<int>, c: array<int>, d: array<int>,i0: nat , j0: nat)  returns (i: nat, j: nat)
           requires b != c && b != d && b.Length == c.Length + d.Length
@@ -116,7 +95,25 @@ vc-postamble: |-
   
   
   //This lemma helps dafny see that after adding the next value from c to b the prefixes are still the same subsets.
-  
-  
-  
- 
+
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  // <vc-spec>
+  method Merge(b: array<int>, c: array<int>, d: array<int>)
+      requires b != c && b != d && b.Length == c.Length + d.Length
+      requires Sorted(c[..]) && Sorted(d[..])
+      ensures Sorted(b[..]) && multiset(b[..]) == multiset(c[..])+multiset(d[..])
+      modifies b
+  // </vc-spec>
+
+vc-code: |-
+  // <vc-code>
+  {
+    assume false;
+  }
+  // </vc-code>
+
+vc-postamble: |-

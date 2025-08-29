@@ -1,5 +1,10 @@
 vc-preamble: |-
-  
+  ghost function SetProduct(s : set<int>) : int
+  {
+      if s == {} then 1
+      else var x :| x in s; 
+           x * SetProduct(s - {x})
+  }
 
 vc-helpers: |-
   // <vc-helpers>
@@ -19,11 +24,3 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  ghost function SetProduct(s : set<int>) : int
-  {
-      if s == {} then 1
-      else var x :| x in s; 
-           x * SetProduct(s - {x})
-  }
-  
-  

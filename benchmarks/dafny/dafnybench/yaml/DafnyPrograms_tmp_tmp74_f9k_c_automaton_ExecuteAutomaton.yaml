@@ -11,6 +11,8 @@ vc-preamble: |-
   This method computes the automaton.
   Provide the initial row: init, the rule and the desired number of steps
    */
+  
+  }
 
 vc-helpers: |-
   // <vc-helpers>
@@ -46,4 +48,3 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  }

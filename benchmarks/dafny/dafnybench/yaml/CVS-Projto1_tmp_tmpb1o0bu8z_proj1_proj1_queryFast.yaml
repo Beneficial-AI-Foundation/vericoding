@@ -14,26 +14,7 @@ vc-preamble: |-
   //Exercicio 1.b)
   
   //Exercicio 1.c)
-
-vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
-
-vc-spec: |-
-  // <vc-spec>
-  method queryFast (a:array<int>, c:array<int>, i:int, j:int) returns (r:int)
-  requires is_prefix_sum_for(a,c) && 0 <= i <= j <= a.Length < c.Length
-  ensures r == sum(a, i,j)
-  // </vc-spec>
-
-vc-code: |-
-  // <vc-code>
-  {
-    assume false;
-  }
-  // </vc-code>
-
-vc-postamble: |-
+  
   predicate is_prefix_sum_for (a:array<int>, c:array<int>)
   reads c, a
   {
@@ -60,3 +41,22 @@ vc-postamble: |-
       case Cons(y,r)=> if (x==y) then true else mem(x,r)
   }
 
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  // <vc-spec>
+  method queryFast (a:array<int>, c:array<int>, i:int, j:int) returns (r:int)
+  requires is_prefix_sum_for(a,c) && 0 <= i <= j <= a.Length < c.Length
+  ensures r == sum(a, i,j)
+  // </vc-spec>
+
+vc-code: |-
+  // <vc-code>
+  {
+    assume false;
+  }
+  // </vc-code>
+
+vc-postamble: |-

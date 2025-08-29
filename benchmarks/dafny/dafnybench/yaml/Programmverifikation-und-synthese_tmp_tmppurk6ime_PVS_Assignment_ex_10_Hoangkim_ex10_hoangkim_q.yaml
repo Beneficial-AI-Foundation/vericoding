@@ -24,29 +24,7 @@ vc-preamble: |-
   //Problem02
   //As you can see below, Dafny claims that after executing the following method
   //strange() we will have that 1=2;
-
-vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
-
-vc-spec: |-
-  // <vc-spec>
-  method q(x:nat, y:nat) returns (z:nat)
-  requires y - x > 2
-  ensures x < z*z < y
   
-  method strange()
-  ensures 1==2
-  // </vc-spec>
-
-vc-code: |-
-  // <vc-code>
-  {
-    assume false;
-  }
-  // </vc-code>
-
-vc-postamble: |-
   /*(a). Do you have an explanation for this behaviour?
       Answer: 
       the method strange() doesn't have any input or output. This method initializes
@@ -101,3 +79,25 @@ vc-postamble: |-
   
   */
 
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  // <vc-spec>
+  method q(x:nat, y:nat) returns (z:nat)
+  requires y - x > 2
+  ensures x < z*z < y
+  
+  method strange()
+  ensures 1==2
+  // </vc-spec>
+
+vc-code: |-
+  // <vc-code>
+  {
+    assume false;
+  }
+  // </vc-code>
+
+vc-postamble: |-

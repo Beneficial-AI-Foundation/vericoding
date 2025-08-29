@@ -27,6 +27,16 @@ vc-preamble: |-
   
   // This is a swap-based sorting algorithm, so permutedness is trivial:
   // note that: if i == j, the spec just says a[..] remains the same.
+  
+  // We then define "sorted" (by increasing order):
+  predicate sorted(a: seq<int>)
+  {
+    forall i, j | 0 <= i <= j < |a| :: a[i] <= a[j]
+  }
+  
+  
+  // Now, the lol sort algorithm:
+  // (Some invariants were tricky to find, but Dafny was smart enough otherwise)
 
 vc-helpers: |-
   // <vc-helpers>
@@ -49,13 +59,3 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  // We then define "sorted" (by increasing order):
-  predicate sorted(a: seq<int>)
-  {
-    forall i, j | 0 <= i <= j < |a| :: a[i] <= a[j]
-  }
-  
-  
-  // Now, the lol sort algorithm:
-  // (Some invariants were tricky to find, but Dafny was smart enough otherwise)
-

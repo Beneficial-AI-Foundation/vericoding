@@ -34,27 +34,7 @@ vc-preamble: |-
   
   // The main algorithm.
   // We traverse all centers from left to right, and "expand" each of them, to find the longest palindrome.
-
-vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
-
-vc-spec: |-
-  // <vc-spec>
-  method longestPalindrome(s: string) returns (ans: string, lo: int, hi: int)
-    ensures 0 <= lo <= hi <= |s| && ans == s[lo..hi]  // `ans` is indeed a substring in `s`
-    ensures palindromic(s, lo, hi)  // `ans` is palindromic
-    ensures forall i, j | 0 <= i <= j <= |s| && palindromic(s, i, j) :: j - i <= hi - lo  // `ans` is longest
-  // </vc-spec>
-
-vc-code: |-
-  // <vc-code>
-  {
-    assume false;
-  }
-  // </vc-code>
-
-vc-postamble: |-
+  
   /* Discussions
   1. Dafny is super bad at slicing (esp. nested slicing).
     Do circumvent it whenever possible. It can save you a lot of assertions & lemmas!
@@ -172,3 +152,23 @@ vc-postamble: |-
   // Implies that whenever `c + r` is odd, the corresponding palindrome can be "lengthened for free"
   // because its both ends are the bogus char.
 
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  // <vc-spec>
+  method longestPalindrome(s: string) returns (ans: string, lo: int, hi: int)
+    ensures 0 <= lo <= hi <= |s| && ans == s[lo..hi]  // `ans` is indeed a substring in `s`
+    ensures palindromic(s, lo, hi)  // `ans` is palindromic
+    ensures forall i, j | 0 <= i <= j <= |s| && palindromic(s, i, j) :: j - i <= hi - lo  // `ans` is longest
+  // </vc-spec>
+
+vc-code: |-
+  // <vc-code>
+  {
+    assume false;
+  }
+  // </vc-code>
+
+vc-postamble: |-

@@ -1,5 +1,10 @@
 vc-preamble: |-
-  
+  // Function
+  function find_max(x: int, y: int): int
+  {
+      if x > y then x
+      else y
+  }
 
 vc-helpers: |-
   // <vc-helpers>
@@ -22,10 +27,3 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  // Function
-  function find_max(x: int, y: int): int
-  {
-      if x > y then x
-      else y
-  }
-

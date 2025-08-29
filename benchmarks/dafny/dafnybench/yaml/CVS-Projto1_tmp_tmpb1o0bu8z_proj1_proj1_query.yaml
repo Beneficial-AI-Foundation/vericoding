@@ -12,26 +12,7 @@ vc-preamble: |-
   }
   
   //Exercicio 1.b)
-
-vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
-
-vc-spec: |-
-  // <vc-spec>
-  method query (a:array<int>, i:int, j:int) returns (s:int)
-  requires 0 <= i <= j <= a.Length
-  ensures s == sum(a, i, j)
-  // </vc-spec>
-
-vc-code: |-
-  // <vc-code>
-  {
-    assume false;
-  }
-  // </vc-code>
-
-vc-postamble: |-
+  
   //Exercicio 1.c)
   
   
@@ -61,3 +42,22 @@ vc-postamble: |-
       case Cons(y,r)=> if (x==y) then true else mem(x,r)
   }
 
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  // <vc-spec>
+  method query (a:array<int>, i:int, j:int) returns (s:int)
+  requires 0 <= i <= j <= a.Length
+  ensures s == sum(a, i, j)
+  // </vc-spec>
+
+vc-code: |-
+  // <vc-code>
+  {
+    assume false;
+  }
+  // </vc-code>
+
+vc-postamble: |-

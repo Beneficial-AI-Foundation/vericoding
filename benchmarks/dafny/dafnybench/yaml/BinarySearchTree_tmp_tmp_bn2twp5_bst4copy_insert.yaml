@@ -28,6 +28,16 @@ vc-preamble: |-
     case Empty => true
     case Node(left,v,right) => (min < v) && minValue(left, min) && minValue(right, min)
   }
+  
+  method insertRecursion(tree: Tree, value: int) returns (res: Tree)
+    requires BinarySearchTree(tree)
+    decreases tree;
+    ensures res != Empty ==> BinarySearchTree(res)
+    ensures forall x :: minValue(tree, x) && x < value ==> minValue(res, x)
+    ensures forall x :: maxValue(tree, x) && x > value ==> maxValue(res, x)
+  {
+    assume{:axiom} false;
+  }
 
 vc-helpers: |-
   // <vc-helpers>
@@ -49,13 +59,3 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  method insertRecursion(tree: Tree, value: int) returns (res: Tree)
-    requires BinarySearchTree(tree)
-    decreases tree;
-    ensures res != Empty ==> BinarySearchTree(res)
-    ensures forall x :: minValue(tree, x) && x < value ==> minValue(res, x)
-    ensures forall x :: maxValue(tree, x) && x > value ==> maxValue(res, x)
-  {
-    assume{:axiom} false;
-  }
-

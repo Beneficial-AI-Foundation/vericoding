@@ -32,7 +32,7 @@ vc-preamble: |-
       set x | 0 <= x < index < |nums| :: nums[x]
   }
   
- 
+  
   // lemma numElemsOfSet(a: seq<int>)
   //   requires sorted(a)
   // {
@@ -75,32 +75,7 @@ vc-preamble: |-
   {
     (forall i,j :: 0<= i< j < |a| ==> ( a[i] < a[j] ))
   }
-
-vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
-
-vc-spec: |-
-  // <vc-spec>
-  method GetInsertIndex(a: array<int>, limit: int, x:int) returns (idx:int)
-    // get index so that array stays sorted
-    requires x !in a[..]
-    requires 0 <= limit <= a.Length
-    requires SortedSeq(a[..limit])
-    ensures 0<= idx <= limit
-    ensures SortedSeq(a[..limit])
-    ensures idx > 0 ==> a[idx-1]< x
-    ensures idx < limit ==> x < a[idx]
-  // </vc-spec>
-
-vc-code: |-
-  // <vc-code>
-  {
-    assume false;
-  }
-  // </vc-code>
-
-vc-postamble: |-
+  
   predicate sorted(a: seq<int>)
   {
     forall i,j :: 0 <= i < j < |a| ==> a[i] < a[j]
@@ -159,3 +134,28 @@ vc-postamble: |-
     assume{:axiom} false;
   }
 
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  // <vc-spec>
+  method GetInsertIndex(a: array<int>, limit: int, x:int) returns (idx:int)
+    // get index so that array stays sorted
+    requires x !in a[..]
+    requires 0 <= limit <= a.Length
+    requires SortedSeq(a[..limit])
+    ensures 0<= idx <= limit
+    ensures SortedSeq(a[..limit])
+    ensures idx > 0 ==> a[idx-1]< x
+    ensures idx < limit ==> x < a[idx]
+  // </vc-spec>
+
+vc-code: |-
+  // <vc-code>
+  {
+    assume false;
+  }
+  // </vc-code>
+
+vc-postamble: |-
