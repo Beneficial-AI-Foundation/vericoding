@@ -39,7 +39,8 @@ def get_template(suffix: str) -> list[str]:
 def convert_yaml_to_file(yaml_path: Path, output_path: Path) -> None:
     """Convert YAML spec to target file format by concatenating sections."""
     
-    yaml = YAML(typ='safe')
+    yaml = YAML()
+    yaml.preserve_quotes = True  # Preserve original formatting
     spec = yaml.load(yaml_path)
     
     template = get_template(output_path.suffix[1:])
@@ -55,7 +56,8 @@ def convert_yaml_to_file(yaml_path: Path, output_path: Path) -> None:
 def convert_yaml_to_json(yaml_path: Path, output_path: Path) -> None:
     """Convert YAML spec to a JSON file."""
 
-    yaml = YAML(typ='safe')
+    yaml = YAML()
+    yaml.preserve_quotes = True  # Preserve original formatting
     spec = yaml.load(yaml_path)
 
     with open(output_path, 'w') as f:
@@ -81,7 +83,8 @@ def convert_yaml_to_jsonl(yaml_path: Path) -> None:
     output_path = yaml_path.parent / f"{yaml_path.name}.jsonl"
     
     with open(output_path, 'w') as f:
-        yaml = YAML(typ='safe')
+        yaml = YAML()
+        yaml.preserve_quotes = True  # Preserve original formatting
         for yaml_file in yaml_files:
             # Load the YAML spec
             spec = yaml.load(yaml_file)
@@ -131,6 +134,56 @@ def convert_yaml_to_dir(yaml_path: Path, suffix: str) -> None:
     print(f"Converted {len(yaml_files)} YAML files to {output_dir}")
 
 
+def spec_to_yaml(spec: dict, yaml_path: Path, required_keys: list[str] = None) -> None:
+    """Write a spec dictionary to a YAML file with proper multiline string formatting.
+    
+    Args:
+        spec: Dictionary containing the spec data
+        yaml_path: Path to the output YAML file
+        required_keys: List of keys that must be present in spec, in the order they should appear in the YAML file.
+                      If None, writes all keys in arbitrary order without validation.
+    """
+    
+    # Validate required keys if provided
+    if required_keys is not None:
+        # Check for missing required keys
+        missing_keys = [key for key in required_keys if key not in spec]
+        if missing_keys:
+            raise ValueError(f"Missing required keys in spec: {missing_keys}")
+        
+        # Check for extra keys not in required list
+        extra_keys = [key for key in spec.keys() if key not in required_keys]
+        if extra_keys:
+            raise ValueError(f"Spec contains keys not in required list: {extra_keys}")
+        
+        # Use required_keys for ordering
+        keys_to_write = required_keys
+    else:
+        # Use all keys in arbitrary order
+        keys_to_write = list(spec.keys())
+    
+    # Manually write the YAML file with multiline strings
+    with open(yaml_path, 'w') as f:
+        for key in keys_to_write:
+            value = spec[key]
+            # Write the key with multiline indicator
+            f.write(f"{key}: |-\n")
+            
+            # Write the value in multiline format
+            if isinstance(value, str):
+                stripped_value = value.rstrip()
+                if stripped_value:
+                    # Split into lines and add two spaces to each line
+                    lines = stripped_value.split('\n')
+                    for line in lines:
+                        f.write('  ' + line + '\n')
+                    f.write('\n')
+                else:
+                    f.write('\n')
+            else:
+                raise ValueError(f"Unsupported value type: {type(value)}")
+
+
 def clear_implementation(yaml_path: Path) -> None:
     """Read a YAML file, replace vc-implementation, vc-proof, and vc-code fields with empty strings, and write back."""
     
@@ -147,23 +200,11 @@ def clear_implementation(yaml_path: Path) -> None:
         if field in spec:
             spec[field] = "-- <"+field+">\n  sorry\n-- </"+field+">\n\n"
     
-    # Manually write the YAML file with multiline strings
-    with open(yaml_path, 'w') as f:
-        for key, value in spec.items():
-            # Write the key with multiline indicator
-            f.write(f"{key}: |-\n")
-            
-            # Write the value in multiline format
-            if isinstance(value, str):
-                stripped_value = value.rstrip()
-                if stripped_value:
-                    # Split into lines and add two spaces to each line
-                    lines = stripped_value.split('\n')
-                    for line in lines:
-                        f.write('  ' + line + '\n')
-                    f.write('\n')
-                else:
-                    f.write('\n')
+    # Write the modified spec back to YAML
+    # Get required keys in the order they appeared in the original file 
+    # Thankfully ruamel.yaml preserves the order of keys when loading
+    required_keys = [key for key in spec.keys()]
+    spec_to_yaml(spec, yaml_path, required_keys=required_keys)
     
     print(f"Cleared implementation fields in {yaml_path}")
 

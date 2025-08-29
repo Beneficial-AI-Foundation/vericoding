@@ -4,6 +4,23 @@ import json
 import re
 from typing import List, Tuple, Dict, Any
 
+section_starters = ["/--", "/-!", "/-", "--", "def", "theorem", 
+                    "inductive", "structure", "abbrev", "instance", 
+                    "class", "opaque", "axiom", "noncomputable"]
+
+def startswith(line: str, liststr: List[str]) -> bool:
+    """
+    Check if a line starts with any of the strings in the given list.
+    
+    Args:
+        line: The line to check
+        liststr: List of strings to check against
+        
+    Returns:
+        True if the line starts with any string in liststr, False otherwise
+    """
+    return any(line.startswith(prefix) for prefix in liststr)
+
 def parse_lean_file(file_path: str) -> Tuple[str, List[Dict[str, str]]]:
     """
     Parse a Lean file according to the specified rules.
@@ -29,10 +46,10 @@ def parse_lean_file(file_path: str) -> Tuple[str, List[Dict[str, str]]]:
         
         # Preamble state
         if state == "preamble":
-            if line.startswith("import") or line.startswith("open") or line.startswith("set_option"):
+            if startswith(line, ["import", "open", "set_option"]):
                 imports += lines[i]
                 i += 1
-            elif line.startswith("/-!"):
+            elif startswith(line, ["/-!"]):
                 # Parse description section
                 if description_found:
                     return f"Multiple description sections found in {file_path}", {}
@@ -55,7 +72,7 @@ def parse_lean_file(file_path: str) -> Tuple[str, List[Dict[str, str]]]:
                     "string": description_text
                 })
                 
-            elif line.startswith("/--") or line.startswith("--"):
+            elif startswith(line, section_starters):
                 # Exit preamble state
                 if imports.strip():  # Only add if there are imports
                     results.append({
@@ -71,7 +88,7 @@ def parse_lean_file(file_path: str) -> Tuple[str, List[Dict[str, str]]]:
         
         # Main parsing state
         elif state == "main":
-            if line.startswith("/--"):
+            if startswith(line, ["/--"]):
                 # Parse comment section
                 comment_lines = []
                 
@@ -90,7 +107,7 @@ def parse_lean_file(file_path: str) -> Tuple[str, List[Dict[str, str]]]:
                     "string": comment_text
                 })
                 
-            elif line.startswith("--"):
+            elif startswith(line, ["--"]):
                 # Parse comment section
                 comment_lines = []
                 
@@ -100,15 +117,11 @@ def parse_lean_file(file_path: str) -> Tuple[str, List[Dict[str, str]]]:
                     i += 1
                 
                 comment_text = "".join(comment_lines)
-                results.append({
+                results.append({    
                     "type": "comment",
                     "string": comment_text
                 })
-                
-            elif line.startswith("inductive") or line.startswith("structure") or \
-                    line.startswith("abbrev") or line.startswith("instance") or \
-                    line.startswith("class") or line.startswith("opaque") or \
-                    line.startswith("axiom") or line.startswith("noncomputable"):
+            elif startswith(line, ["inductive", "structure", "abbrev", "instance", "class", "opaque", "axiom", "noncomputable"]):
                 # Parse construction
                 constr_lines = []
                 while i < len(lines):
@@ -125,7 +138,7 @@ def parse_lean_file(file_path: str) -> Tuple[str, List[Dict[str, str]]]:
                         "string": constr_text
                     })
                 
-            elif line.startswith("def"):
+            elif startswith(line, ["def"]):
                 # Parse definition signature
                 sig_lines = []
                 
@@ -148,10 +161,7 @@ def parse_lean_file(file_path: str) -> Tuple[str, List[Dict[str, str]]]:
                 impl_lines = []
                 while i < len(lines):
                     current_line = lines[i].strip()
-                    if (current_line.startswith("/--") or 
-                        current_line.startswith("--") or 
-                        current_line.startswith("def") or 
-                        current_line.startswith("theorem")):
+                    if startswith(current_line, section_starters):
                         break
                     impl_lines.append(lines[i])
                     i += 1
@@ -163,7 +173,7 @@ def parse_lean_file(file_path: str) -> Tuple[str, List[Dict[str, str]]]:
                         "string": impl_text
                     })
                 
-            elif line.startswith("theorem"):
+            elif startswith(line, ["theorem"]):
                 # Parse theorem condition
                 cond_lines = []
                 
@@ -186,10 +196,7 @@ def parse_lean_file(file_path: str) -> Tuple[str, List[Dict[str, str]]]:
                 proof_lines = []
                 while i < len(lines):
                     current_line = lines[i].strip()
-                    if (current_line.startswith("/--") or 
-                        current_line.startswith("--") or 
-                        current_line.startswith("def") or 
-                        current_line.startswith("theorem")):
+                    if startswith(current_line, section_starters):
                         break
                     proof_lines.append(lines[i])
                     i += 1
@@ -202,7 +209,10 @@ def parse_lean_file(file_path: str) -> Tuple[str, List[Dict[str, str]]]:
                     })
                 
             elif line == "":
-                # Skip empty lines
+                results.append({
+                    "type": "empty",
+                    "string": ""
+                })                
                 i += 1
             else:
                 return f"Unexpected line in main state: '{line}' in {file_path}", {}
@@ -231,7 +241,8 @@ def parse_all_files(directory_path: str) -> Dict[str, Any]:
 
 if __name__ == "__main__":
     # Parse all files in the numpy_bad directory
-    numpy_bad_dir = "benchmarks/lean/numpy_bad"
+    # numpy_bad_dir = "benchmarks/lean/numpy_bad"   
+    numpy_bad_dir = "benchmarks/lean/numpy_all"
     parsing_results_file = "benchmarks/lean/parsing_results.json"
     
     if not os.path.exists(numpy_bad_dir):

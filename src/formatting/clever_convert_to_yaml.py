@@ -4,9 +4,10 @@ import re
 import yaml
 import glob
 from pathlib import Path
+from convert_from_yaml import spec_to_yaml
 
 def convert_lean_to_yaml(lean_file_path):
-    """Convert a Lean file to YAML format according to the specified rules."""
+    """Convert a Lean file to a spec object according to the specified rules."""
     
     with open(lean_file_path, 'r', encoding='utf-8') as f:
         content = f.read()
@@ -87,35 +88,22 @@ def convert_lean_to_yaml(lean_file_path):
         if last_end_line >= 0:
             postamble_lines = lines[last_end_line + 1:]
     
-    # Build YAML content as a string with proper block scalar format
-    yaml_lines = []
+    # Build spec object
+    spec = {}
     
     # Add preamble if it exists and is not empty
-    if preamble_lines:
-        preamble_text = '\n'.join(preamble_lines).strip()
-        if preamble_text:
-            yaml_lines.append('preamble: |-')
-            for line in preamble_text.split('\n'):
-                yaml_lines.append(f'  {line}')
-            yaml_lines.append('')
+    if preamble_lines:  
+        spec['preamble'] = '\n'.join(preamble_lines).rstrip()
     
     # Add all sections
     for section_name, section_content in sections.items():
-        yaml_lines.append(f'{section_name}: |-')
-        for line in section_content.strip().split('\n'):
-            yaml_lines.append(f'  {line}')
-        yaml_lines.append('')
+        spec[section_name] = section_content.rstrip()
     
     # Add postamble if it exists and is not empty
     if postamble_lines:
-        postamble_text = '\n'.join(postamble_lines).strip()
-        if postamble_text:
-            yaml_lines.append('postamble: |-')
-            for line in postamble_text.split('\n'):
-                yaml_lines.append(f'  {line}')
-            yaml_lines.append('')
+        spec['postamble'] = '\n'.join(postamble_lines).rstrip()
     
-    return '\n'.join(yaml_lines)
+    return spec
 
 def main():
     """Convert all Lean files in the humaneval directory to YAML."""
@@ -134,16 +122,25 @@ def main():
         try:
             print(f"Converting {lean_file}...")
             
-            # Convert to YAML
-            yaml_content = convert_lean_to_yaml(lean_file)
+            # Convert to spec object
+            spec = convert_lean_to_yaml(lean_file)
             
             # Generate output filename
             base_name = Path(lean_file).stem
             yaml_file = output_dir / f"{base_name}.yaml"
             
-            # Write YAML file
-            with open(yaml_file, 'w', encoding='utf-8') as f:
-                f.write(yaml_content)
+            # Write YAML file using spec_to_yaml
+            required_keys = [     
+                'vc-description',
+                'vc-preamble', 
+                'vc-helpers',
+                'vc-signature',
+                'vc-implementation',
+                'vc-condition',
+                'vc-proof',
+                'vc-postamble'
+            ]
+            spec_to_yaml(spec, yaml_file, required_keys=required_keys)
             
             print(f"  -> {yaml_file}")
             successful_conversions += 1

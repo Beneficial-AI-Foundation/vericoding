@@ -16,6 +16,7 @@ import re
 import sys
 import json
 from pathlib import Path
+from convert_from_yaml import spec_to_yaml
 
 def check_file_format(file_path):
     """Check if a .lean file follows the expected format."""
@@ -176,77 +177,73 @@ def remove_empty_lines(text):
     """Remove empty lines from the text."""
     return "\n".join([line for line in text.split('\n') if line.strip() != ''])
 
-def write_yaml_file(result, output_path):
-    """Write the JSON result to a YAML file in the specified format."""
-    with open(output_path, 'w', encoding='utf-8') as f:
-        f.write("vc-description: |-\n")
-        print_text = ""
-        # if description starts with `/-!` then replace it with `/- `
-        description = result["description"]
-        if description.startswith("/-!"):
-            description = description.replace("/-!", "/- ")
-        if description.strip():
-            for line in description.split('\n'):
-                if not line.strip().startswith('\"code\"'):
-                    print_text += "  " + line + "\n"
-            if line.strip(): print_text += "\n"
-        # if def_text starts with `/--` then replace it with `/- `
-        def_text = result["def_text"]
-        if def_text.startswith("/--"):
-            def_text = def_text.replace("/--", "/- ")
-        if def_text.strip():
-            for line in def_text.split('\n'):
-                print_text += "  " + line + "\n"
-            if line.strip(): print_text += "\n"
-        # if theorem_text starts with `/--` then replace it with `/- `
-        theorem_text = result["theorem_text"]
-        if theorem_text.startswith("/--"):
-            theorem_text = theorem_text.replace("/--", "/- ")
-        if theorem_text.strip():
-            for line in theorem_text.split('\n'):
-                print_text += "  " + line + "\n"
-        if print_text.strip():
-            f.write(print_text.rstrip()+"\n\n")
-        else:
-            f.write("\n")
+def build_spec_from_result(result):
+    """Build a spec dictionary from the parsed result, carefully combining description, def_text and theorem_text into vc-helpers."""
+    
+    # Build vc-description by combining description, def_text, and theorem_text
+    description_parts = []
+    
+    # Process description section
+    description = result["description"]
+    if description.startswith("/-!"):
+        description = description.replace("/-!", "/- ")
+    if description.strip():
+        for line in description.split('\n'):
+            if not line.strip().startswith('\"code\"'):
+                description_parts.append(line)
+        if description_parts:
+            description_parts.append("")
+    
+    # Process def_text section
+    def_text = result["def_text"]
+    if def_text.startswith("/--"):
+        def_text = def_text.replace("/--", "/- ")
+    if def_text.strip():
+        for line in def_text.split('\n'):
+            description_parts.append(line)
+        if description_parts:
+            description_parts.append("")
+    
+    # Process theorem_text section
+    theorem_text = result["theorem_text"]
+    if theorem_text.startswith("/--"):
+        theorem_text = theorem_text.replace("/--", "/- ")
+    if theorem_text.strip():
+        for line in theorem_text.split('\n'):
+            description_parts.append(line)
+    
+    # Build the spec dictionary
+    spec = {
+        "vc-description": "\n".join(description_parts).rstrip(),
+        "vc-preamble": result["imports"].rstrip(),
+        "vc-helpers": "  <vc-helpers>\n  </vc-helpers>",
+        "vc-signature": result["def_sig"].rstrip(),
+        "vc-implementation": "  <vc-implementation>\n" + result["def_impl"].rstrip() + "\n  </vc-implementation>",
+        "vc-condition": result["theorem_cond"].rstrip(),
+        "vc-proof": "  <vc-proof>\n" + result["theorem_proof"].rstrip() + "\n  </vc-proof>",
+        "vc-postamble": ""
+    }
+    
+    return spec
 
-        f.write("vc-preamble: |-\n")
-        if result["imports"].strip():
-            for line in result["imports"].split('\n'):
-                f.write("  " + line + "\n")
-        f.write("\n")
-        
-        f.write("vc-helpers: |-\n  <vc-helpers>\n  </vc-helpers>\n\n")
-        
-        f.write("vc-signature: |-\n")
-        if result["def_sig"].strip():
-            for line in result["def_sig"].split('\n'):
-                f.write("  " + line + "\n")
-            if line.strip(): f.write("\n")
-        else:
-            f.write("\n")
-        
-        f.write("vc-implementation: |-\n  <vc-implementation>\n")
-        if result["def_impl"].strip():
-            for line in result["def_impl"].split('\n'):
-                f.write("  " + line + "\n")
-        f.write("  </vc-implementation>\n\n")
-        
-        f.write("vc-condition: |-\n")
-        if result["theorem_cond"].strip():
-            for line in result["theorem_cond"].split('\n'):
-                f.write("  " + line + "\n")
-            if line.strip(): f.write("\n")
-        else:
-            f.write("\n")
-        
-        f.write("vc-proof: |-\n  <vc-proof>\n")
-        if result["theorem_proof"].strip():
-            for line in result["theorem_proof"].split('\n'):
-                f.write("  " + line + "\n")
-        f.write("  </vc-proof>\n\n")
-        
-        f.write("vc-postamble: |-\n")
+
+def write_yaml_file(result, output_path):
+    """Write the JSON result to a YAML file in the specified format using spec_to_yaml."""
+    # First part: build the spec object by combining description, def_text and theorem_text
+    spec = build_spec_from_result(result)
+    
+    # Second part: write the spec object to YAML file using spec_to_yaml
+    required_keys = [
+        'vc-description',
+        'vc-preamble', 
+        'vc-helpers',
+        'vc-signature',
+        'vc-implementation',
+        'vc-condition',
+        'vc-proof',
+        'vc-postamble'
+    ]
+    spec_to_yaml(spec, output_path, required_keys=required_keys)
 
 def main():
     """Main function to check all .lean files in the current directory."""
