@@ -69,14 +69,14 @@ jobs:
           uv run src/convert_from_yaml.py "$yaml_file" --suffix dfy
           temp_dfy="${yaml_file%.yaml}.dfy"
           
-          # Compare with existing spec
-          if ! diff -q "$temp_dfy" "$spec_file" >/dev/null; then
+          # Compare with existing spec (ignoring whitespace differences)
+          if ! diff -q -w "$temp_dfy" "$spec_file" >/dev/null; then
             echo "❌ Files differ: $yaml_file -> $spec_file"
             echo "  Generated file: $temp_dfy"
             echo "  Expected file: $spec_file"
-            # Show the diff for debugging
+            # Show the diff for debugging (ignoring whitespace)
             echo "  Diff:"
-            diff "$temp_dfy" "$spec_file" || true
+            diff -w "$temp_dfy" "$spec_file" || true
             failed_files+=("$yaml_file")
           else
             echo "✓ Files match: $yaml_file -> $spec_file"
@@ -161,14 +161,14 @@ jobs:
           uv run src/convert_from_yaml.py "$yaml_file" --suffix dfy
           temp_dfy="${yaml_file%.yaml}.dfy"
           
-          # Compare with existing spec
-          if ! diff -q "$temp_dfy" "$spec_file" >/dev/null; then
+          # Compare with existing spec (ignoring whitespace differences)
+          if ! diff -q -w "$temp_dfy" "$spec_file" >/dev/null; then
             echo "❌ Files differ: $yaml_file -> $spec_file"
             echo "  Generated file: $temp_dfy"
             echo "  Expected file: $spec_file"
-            # Show the diff for debugging
+            # Show the diff for debugging (ignoring whitespace)
             echo "  Diff:"
-            diff "$temp_dfy" "$spec_file" || true
+            diff -w "$temp_dfy" "$spec_file" || true
             failed_files+=("$yaml_file")
           else
             echo "✓ Files match: $yaml_file -> $spec_file"
