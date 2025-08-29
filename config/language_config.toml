@@ -49,8 +49,8 @@ default_tool_path = "lean"
 prompts_file = "prompts-lean.yaml"
 
 # Verification command patterns
-verify_command = ["{tool_path}", "{file_path}"]
-compile_check_command = ["{tool_path}", "--deps", "{file_path}"]
+verify_command = ["lake", "build", "{file_path}"]
+compile_check_command = ["lake", "build", "{file_path}"]
 
 # Code extraction patterns
 code_block_patterns = [

@@ -100,15 +100,22 @@ def verify_file(config: ProcessingConfig, file_path: str) -> VerificationResult:
                 part.format(tool_path=tool_path, file_path=file_path)
                 for part in config.language_config.compile_check_command
             ]
-            result = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
+            try:
+                result = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
 
-            if result.returncode != 0:
-                # Compilation failed
-                full_output = result.stdout + result.stderr
+                if result.returncode != 0:
+                    # Compilation failed
+                    full_output = result.stdout + result.stderr
+                    return VerificationResult(
+                        success=False,
+                        output=full_output,
+                        error=f"Compilation failed: {full_output}",
+                    )
+            except subprocess.TimeoutExpired as e:
+                timeout_msg = f"⏱️  TIMEOUT: Compilation check timed out after 60 seconds"
+                print(f"    {timeout_msg}")
                 return VerificationResult(
-                    success=False,
-                    output=full_output,
-                    error=f"Compilation failed: {full_output}",
+                    success=False, output=str(e), error=timeout_msg
                 )
 
         # Try verification
@@ -135,9 +142,11 @@ def verify_file(config: ProcessingConfig, file_path: str) -> VerificationResult:
                 error=f"Verification failed: {full_output}",
             )
 
-    except subprocess.TimeoutExpired:
+    except subprocess.TimeoutExpired as e:
+        timeout_msg = f"⏱️  TIMEOUT: Verification timed out after {timeout_value} seconds"
+        print(f"    {timeout_msg}")
         return VerificationResult(
-            success=False, output="", error="Verification timeout"
+            success=False, output=str(e), error=timeout_msg
         )
     except Exception as e:
         return VerificationResult(success=False, output="", error=str(e))

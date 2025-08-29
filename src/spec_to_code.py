@@ -226,9 +226,17 @@ def setup_configuration(args) -> ProcessingConfig:
         meaningful_part = Path(input_path.name)
 
     # Create output directory structure
-    output_dir = str(
-        src_base / f"code_from_spec_on_{timestamp}" / args.language / meaningful_part
-    )
+    # For Lean, put files under lean/ directory so lake can find them
+    if args.language == "lean":
+        # Use project root lean/ directory for Lean files
+        project_root = src_base.parent if src_base.name == "src" else src_base
+        output_dir = str(
+            project_root / "lean" / "Generated" / f"Run_{timestamp}" / meaningful_part
+        )
+    else:
+        output_dir = str(
+            src_base / f"code_from_spec_on_{timestamp}" / args.language / meaningful_part
+        )
     summary_file = str(Path(output_dir) / "summary.txt")
 
     Path(output_dir).mkdir(parents=True, exist_ok=True)
@@ -551,8 +559,8 @@ def log_experiment_results_to_wandb(
                 if file_path.suffix in ['.dfy', '.rs', '.lean'] and not any(keyword in file_path.name for keyword in ['iter_', 'debug']):
                     # Final implementation files go to code artifact
                     code_artifact.add_file(str(file_path), name=str(relative_path))
-                elif config.debug_mode and ('debug' in str(relative_path) or 'iter_' in file_path.name):
-                    # Debug/intermediate files go to debug artifact
+                elif config.debug_mode and ('debug' in str(relative_path) or 'iter_' in file_path.name or 'error.log' in file_path.name):
+                    # Debug/intermediate files and error logs go to debug artifact
                     if debug_artifact:
                         debug_artifact.add_file(str(file_path), name=str(relative_path))
                 elif file_path.suffix in ['.txt', '.csv']:
