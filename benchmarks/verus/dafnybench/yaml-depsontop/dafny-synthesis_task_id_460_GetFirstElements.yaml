@@ -20,7 +20,7 @@ vc-code: |-
   // <vc-code>
   {
       assume(false);
-      Seq::empty()
+      seq![]
   }
   // </vc-code>
 

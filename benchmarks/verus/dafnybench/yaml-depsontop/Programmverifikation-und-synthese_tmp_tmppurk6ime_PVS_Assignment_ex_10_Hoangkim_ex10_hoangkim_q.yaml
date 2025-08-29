@@ -97,6 +97,7 @@ vc-code: |-
   // <vc-code>
   {
       assume(false);
+      x + 1  // Return a dummy value
   }
   // </vc-code>
 

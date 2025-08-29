@@ -51,7 +51,7 @@ vc-code: |-
   // <vc-code>
   {
     assume(false);
-    (0 as int, 0 as int)
+    (0, 0)
   }
   // </vc-code>
 

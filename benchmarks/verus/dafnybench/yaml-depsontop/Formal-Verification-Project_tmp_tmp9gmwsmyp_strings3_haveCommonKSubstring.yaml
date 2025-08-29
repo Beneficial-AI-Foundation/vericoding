@@ -65,7 +65,7 @@ vc-spec: |-
   fn have_common_k_substring(k: nat, str1: Seq<char>, str2: Seq<char>) -> (found: bool)
       ensures
           found <==> have_common_k_substring_pred(k, str1, str2),
-          //!found <==> have_not_common_k_substring_pred(k, str1, str2), // This postcondition follows from the above lemma.
+          // !found <==> have_not_common_k_substring_pred(k, str1, str2), // This postcondition follows from the above lemma.
   // </vc-spec>
 
 vc-code: |-
