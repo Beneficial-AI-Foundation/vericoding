@@ -1,0 +1,223 @@
+name: Dafny YAML-Spec Consistency
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  check-yaml-spec-consistency:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Install uv
+      uses: astral-sh/setup-uv@v6
+
+    - name: Set up Python
+      run: uv python install 3.12
+
+    - name: Install dependencies
+      run: uv sync
+
+    - name: Check yaml/ against specs/ consistency
+      run: |
+        set -e
+        
+        # Get total count first
+        yaml_dir="benchmarks/dafny/dafnybench/yaml"
+        specs_dir="benchmarks/dafny/dafnybench/specs"
+        
+        if [ ! -d "$yaml_dir" ]; then
+          echo "YAML directory not found: $yaml_dir"
+          exit 1
+        fi
+        
+        if [ ! -d "$specs_dir" ]; then
+          echo "Specs directory not found: $specs_dir"
+          exit 1
+        fi
+        
+        total_files=$(find "$yaml_dir" -name "*.yaml" -type f | wc -l)
+        echo "Found $total_files YAML files in $yaml_dir"
+        
+        # Track failures
+        failed_files=()
+        missing_specs=()
+        
+        # Process each YAML file
+        yaml_count=0
+        while IFS= read -r -d '' yaml_file; do
+          yaml_count=$((yaml_count + 1))
+          echo "Processing [$yaml_count/$total_files]: $yaml_file"
+          
+          # Get relative path and construct expected spec file path
+          relative_path="${yaml_file#$yaml_dir/}"
+          spec_file="$specs_dir/${relative_path%.yaml}.dfy"
+          
+          # Check if corresponding spec exists
+          if [ ! -f "$spec_file" ]; then
+            echo "❌ Missing spec file: $spec_file"
+            missing_specs+=("$spec_file")
+            continue
+          fi
+          
+          # Convert YAML to .dfy in temp location
+          temp_dfy=$(mktemp --suffix=.dfy)
+          uv run src/convert_from_yaml.py "$yaml_file" --output "$temp_dfy"
+          
+          # Compare with existing spec
+          if ! diff -q "$temp_dfy" "$spec_file" >/dev/null; then
+            echo "❌ Files differ: $yaml_file -> $spec_file"
+            echo "  Generated file: $temp_dfy"
+            echo "  Expected file: $spec_file"
+            # Show the diff for debugging
+            echo "  Diff:"
+            diff "$temp_dfy" "$spec_file" || true
+            failed_files+=("$yaml_file")
+          else
+            echo "✓ Files match: $yaml_file -> $spec_file"
+          fi
+          
+          # Clean up temp file
+          rm -f "$temp_dfy"
+          
+        done < <(find "$yaml_dir" -name "*.yaml" -type f -print0)
+        
+        # Report results for yaml/ vs specs/
+        echo ""
+        echo "========== YAML/SPECS CONSISTENCY SUMMARY =========="
+        echo "Total YAML files processed: $yaml_count"
+        echo "Missing spec files: ${#missing_specs[@]}"
+        echo "Mismatched files: ${#failed_files[@]}"
+        echo "Matching files: $((yaml_count - ${#missing_specs[@]} - ${#failed_files[@]}))"
+        
+        if [ ${#missing_specs[@]} -gt 0 ]; then
+          echo ""
+          echo "Missing spec files:"
+          for file in "${missing_specs[@]}"; do
+            echo "  - $file"
+          done
+        fi
+        
+        if [ ${#failed_files[@]} -gt 0 ]; then
+          echo ""
+          echo "YAML files that don't match their specs:"
+          for file in "${failed_files[@]}"; do
+            echo "  - $file"
+          done
+        fi
+        
+        # Store results for final summary
+        yaml_missing=${#missing_specs[@]}
+        yaml_failed=${#failed_files[@]}
+
+    - name: Check yaml-depsontop/ against specs-depsontop/ consistency
+      run: |
+        set -e
+        
+        # Get total count first
+        yaml_dir="benchmarks/dafny/dafnybench/yaml-depsontop"
+        specs_dir="benchmarks/dafny/dafnybench/specs-depsontop"
+        
+        if [ ! -d "$yaml_dir" ]; then
+          echo "YAML directory not found: $yaml_dir"
+          exit 1
+        fi
+        
+        if [ ! -d "$specs_dir" ]; then
+          echo "Specs directory not found: $specs_dir"
+          exit 1
+        fi
+        
+        total_files=$(find "$yaml_dir" -name "*.yaml" -type f | wc -l)
+        echo "Found $total_files YAML files in $yaml_dir"
+        
+        # Track failures
+        failed_files=()
+        missing_specs=()
+        
+        # Process each YAML file
+        yaml_count=0
+        while IFS= read -r -d '' yaml_file; do
+          yaml_count=$((yaml_count + 1))
+          echo "Processing [$yaml_count/$total_files]: $yaml_file"
+          
+          # Get relative path and construct expected spec file path
+          relative_path="${yaml_file#$yaml_dir/}"
+          spec_file="$specs_dir/${relative_path%.yaml}.dfy"
+          
+          # Check if corresponding spec exists
+          if [ ! -f "$spec_file" ]; then
+            echo "❌ Missing spec file: $spec_file"
+            missing_specs+=("$spec_file")
+            continue
+          fi
+          
+          # Convert YAML to .dfy in temp location
+          temp_dfy=$(mktemp --suffix=.dfy)
+          uv run src/convert_from_yaml.py "$yaml_file" --output "$temp_dfy"
+          
+          # Compare with existing spec
+          if ! diff -q "$temp_dfy" "$spec_file" >/dev/null; then
+            echo "❌ Files differ: $yaml_file -> $spec_file"
+            echo "  Generated file: $temp_dfy"
+            echo "  Expected file: $spec_file"
+            # Show the diff for debugging
+            echo "  Diff:"
+            diff "$temp_dfy" "$spec_file" || true
+            failed_files+=("$yaml_file")
+          else
+            echo "✓ Files match: $yaml_file -> $spec_file"
+          fi
+          
+          # Clean up temp file
+          rm -f "$temp_dfy"
+          
+        done < <(find "$yaml_dir" -name "*.yaml" -type f -print0)
+        
+        # Report results for yaml-depsontop/ vs specs-depsontop/
+        echo ""
+        echo "========== YAML-DEPSONTOP/SPECS-DEPSONTOP CONSISTENCY SUMMARY =========="
+        echo "Total YAML files processed: $yaml_count"
+        echo "Missing spec files: ${#missing_specs[@]}"
+        echo "Mismatched files: ${#failed_files[@]}"
+        echo "Matching files: $((yaml_count - ${#missing_specs[@]} - ${#failed_files[@]}))"
+        
+        if [ ${#missing_specs[@]} -gt 0 ]; then
+          echo ""
+          echo "Missing spec files:"
+          for file in "${missing_specs[@]}"; do
+            echo "  - $file"
+          done
+        fi
+        
+        if [ ${#failed_files[@]} -gt 0 ]; then
+          echo ""
+          echo "YAML files that don't match their specs:"
+          for file in "${failed_files[@]}"; do
+            echo "  - $file"
+          done
+        fi
+        
+        # Store results for final summary
+        depsontop_missing=${#missing_specs[@]}
+        depsontop_failed=${#failed_files[@]}
+        
+        # Final overall summary and exit code
+        echo ""
+        echo "========== OVERALL CONSISTENCY SUMMARY =========="
+        total_issues=$((yaml_missing + yaml_failed + depsontop_missing + depsontop_failed))
+        echo "yaml/ vs specs/: $yaml_missing missing, $yaml_failed mismatched"
+        echo "yaml-depsontop/ vs specs-depsontop/: $depsontop_missing missing, $depsontop_failed mismatched"
+        echo "Total issues: $total_issues"
+        
+        if [ $total_issues -gt 0 ]; then
+          echo "❌ Consistency check failed with $total_issues issues"
+          exit 1
+        else
+          echo "✅ All YAML files are consistent with their corresponding spec files"
+        fi
