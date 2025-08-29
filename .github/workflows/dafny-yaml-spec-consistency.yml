@@ -65,9 +65,9 @@ jobs:
             continue
           fi
           
-          # Convert YAML to .dfy in temp location
-          temp_dfy=$(mktemp --suffix=.dfy)
-          uv run src/convert_from_yaml.py "$yaml_file" --output "$temp_dfy"
+          # Convert YAML to .dfy (creates file with same name but .dfy extension)
+          uv run src/convert_from_yaml.py "$yaml_file" --suffix dfy
+          temp_dfy="${yaml_file%.yaml}.dfy"
           
           # Compare with existing spec
           if ! diff -q "$temp_dfy" "$spec_file" >/dev/null; then
@@ -82,7 +82,7 @@ jobs:
             echo "✓ Files match: $yaml_file -> $spec_file"
           fi
           
-          # Clean up temp file
+          # Clean up generated file
           rm -f "$temp_dfy"
           
         done < <(find "$yaml_dir" -name "*.yaml" -type f -print0)
@@ -157,9 +157,9 @@ jobs:
             continue
           fi
           
-          # Convert YAML to .dfy in temp location
-          temp_dfy=$(mktemp --suffix=.dfy)
-          uv run src/convert_from_yaml.py "$yaml_file" --output "$temp_dfy"
+          # Convert YAML to .dfy (creates file with same name but .dfy extension)
+          uv run src/convert_from_yaml.py "$yaml_file" --suffix dfy
+          temp_dfy="${yaml_file%.yaml}.dfy"
           
           # Compare with existing spec
           if ! diff -q "$temp_dfy" "$spec_file" >/dev/null; then
@@ -174,7 +174,7 @@ jobs:
             echo "✓ Files match: $yaml_file -> $spec_file"
           fi
           
-          # Clean up temp file
+          # Clean up generated file
           rm -f "$temp_dfy"
           
         done < <(find "$yaml_dir" -name "*.yaml" -type f -print0)
