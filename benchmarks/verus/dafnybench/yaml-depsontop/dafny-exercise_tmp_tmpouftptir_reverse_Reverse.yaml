@@ -21,6 +21,7 @@ vc-code: |-
   // <vc-code>
   {
       assume(false);
+      Vec::new()
   }
   // </vc-code>
 
