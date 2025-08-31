@@ -42,6 +42,7 @@ vc-implementation: |-
   -- </vc-implementation>
 
 vc-condition: |-
+  @[reducible]
   def twoSum_postcond (nums : Array Int) (target : Int) (result: Array Nat) (h_precond : twoSum_precond (nums) (target)) : Prop :=
     -- Result contains exactly 2 indices
     result.size = 2 ∧
