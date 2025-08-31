@@ -8,10 +8,10 @@ vc-description: |-
     "doc": "Returns the length of each element.\n\nFor byte strings, this is the number of bytes. For Unicode strings, this is the number of Unicode code points.\n\nParameters\n----------\na : array_like, with \`StringDType\`, \`bytes_\` or \`str_\` dtype\n\nReturns\n-------\nout : ndarray\n    Output array of ints",
   }
   -/
-
+  
   /-  Returns the length of each string element in the vector.
       For Unicode strings, this counts the number of Unicode code points. -/
-
+  
   /-  Specification: str_len returns the length (number of Unicode code points) of each string element.
       
       Preconditions: None (str_len is defined for all strings)
@@ -30,16 +30,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def str_len {n : Nat} (a : Vector String n) : Id (Vector Nat n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem str_len_spec {n : Nat} (a : Vector String n) :
@@ -64,8 +64,9 @@ vc-condition: |-
           result.get i = s1.length + s2.length)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

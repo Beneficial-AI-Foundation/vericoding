@@ -8,9 +8,9 @@ vc-description: |-
     "doc": "IEEE 754 floating point representation of Not a Number (NaN).\n\nNaN and NAN are aliases for nan. Please use nan instead of NAN.\n\nSee Also:\nnan",
   }
   -/
-
+  
   /-  IEEE 754 floating point representation of Not a Number (NaN) -/
-
+  
   /-  Specification: nan represents Not a Number with the following IEEE 754 properties:
       1. Float.isNaN returns true for NaN (primary property)
       2. Any arithmetic operation with NaN results in NaN
@@ -24,16 +24,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def nan : Id Float :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem nan_spec :
@@ -62,8 +62,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

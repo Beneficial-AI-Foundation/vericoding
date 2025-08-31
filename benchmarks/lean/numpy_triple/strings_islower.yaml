@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "Returns true for each element if all cased characters in the string are lowercase and there is at least one cased character, false otherwise.\n\nParameters\n----------\na : array_like, with \`StringDType\`, \`bytes_\` or \`str_\` dtype\n\nReturns\n-------\nout : ndarray\n    Output array of bools",
   }
   -/
-
+  
   /-  numpy.strings.islower: Returns true for each element if all cased characters in the string are lowercase and there is at least one cased character, false otherwise.
   
       Tests whether all cased characters in each string are lowercase.
@@ -26,7 +26,7 @@ vc-description: |-
       - "abc123" → true (has lowercase, no uppercase)
       - "   " → false (no cased characters)
   -/
-
+  
   /-  Specification: numpy.strings.islower returns a vector where each element indicates
       whether the corresponding string element has all cased characters in lowercase
       and contains at least one cased character.
@@ -55,16 +55,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def islower {n : Nat} (a : Vector String n) : Id (Vector Bool n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem islower_spec {n : Nat} (a : Vector String n) :
@@ -75,8 +75,9 @@ vc-condition: |-
          (∀ c ∈ (a.get i).toList, c.isAlpha → c.isLower))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

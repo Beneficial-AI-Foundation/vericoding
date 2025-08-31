@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "For each element in `a`, return a copy of the string with occurrences of substring `old` replaced by `new`.\n\nParameters\n----------\na : array_like, with `StringDType`, `bytes_` or `str_` dtype\nold : array_like, with `StringDType`, `bytes_` or `str_` dtype\nnew : array_like, with `StringDType`, `bytes_` or `str_` dtype\ncount : array_like, with any integer dtype, optional\n    Maximum number of occurrences to replace. -1 (the default) means replace all occurrences.\n\nReturns\n-------\nout : ndarray\n    Output array of `StringDType`, `bytes_` or `str_` dtype,\n    depending on input types",
   }
   -/
-
+  
   /-  numpy.strings.replace: For each element in a, return a copy of the string with 
       occurrences of substring old replaced by new.
   
@@ -17,7 +17,7 @@ vc-description: |-
       the first 'count' occurrences are replaced. If count is -1 or negative,
       all occurrences are replaced.
   -/
-
+  
   /-  Specification for numpy.strings.replace: Returns a vector where each element is the
       result of replacing occurrences of old substring with new substring.
   
@@ -35,16 +35,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def replace {n : Nat} (a : Vector String n) (old : Vector String n) (new : Vector String n) (count : Vector Int n) : Id (Vector String n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem replace_spec {n : Nat} (a : Vector String n) (old : Vector String n) (new : Vector String n) (count : Vector Int n) :
@@ -88,8 +88,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

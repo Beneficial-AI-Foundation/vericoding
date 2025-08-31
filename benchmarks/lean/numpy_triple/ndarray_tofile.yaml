@@ -7,7 +7,7 @@ vc-description: |-
       This operation converts the array elements to their binary or text representation
       and writes them sequentially to the specified file.
   -/
-
+  
   /-  Specification: numpy.ndarray.tofile writes array data to a file in a format
       that preserves all original data and can be recovered by fromfile.
       
@@ -28,16 +28,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_tofile {n : Nat} (arr : Vector Float n) (filename : String) : Id Unit :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_tofile_spec {n : Nat} (arr : Vector Float n) (filename : String) :
@@ -46,8 +46,9 @@ vc-condition: |-
       ⦃⇓result => ⌜result = ()⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

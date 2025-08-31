@@ -13,7 +13,7 @@ vc-description: |-
       - copysign(x, 0) returns |x| (positive sign)
       - copysign(0, y) returns 0 with the sign of y
   -/
-
+  
   /-  Specification: numpy.copysign returns a vector where each element has
       the magnitude of the corresponding element in x1 but the sign of the
       corresponding element in x2.
@@ -36,16 +36,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def copysign {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem copysign_spec {n : Nat} (x1 x2 : Vector Float n) :
@@ -61,8 +61,9 @@ vc-condition: |-
         ((x2.get i ≥ 0 → result.get i ≥ 0) ∧ (x2.get i < 0 → result.get i < 0))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -8,13 +8,13 @@ vc-description: |-
     "doc": "Add one polynomial to another.\n\n    Returns the sum of two polynomials `c1` + `c2`.  The arguments are\n    sequences of coefficients from lowest order term to highest, i.e.,\n    [1,2,3] represents the polynomial ``1 + 2*x + 3*x**2``.\n\n    Parameters\n    ----------\n    c1, c2 : array_like\n        1-D arrays of polynomial coefficients ordered from low to high.\n\n    Returns\n    -------\n    out : ndarray\n        The coefficient array representing their sum.\n\n    See Also\n    --------\n    polysub, polymulx, polymul, polydiv, polypow\n\n    Examples\n    --------\n    >>> from numpy.polynomial import polynomial as P\n    >>> c1 = (1, 2, 3)\n    >>> c2 = (3, 2, 1)\n    >>> sum = P.polyadd(c1,c2); sum\n    array([4.,  4.,  4.])\n    >>> P.polyval(2, sum)  # 4 + 4(2) + 4(2**2)\n    28.0",
   }
   -/
-
+  
   /-  Add one polynomial to another.
       
       Given two polynomials represented as coefficient vectors (from lowest to highest degree),
       returns their sum. The result has length equal to the maximum of the input lengths,
       with shorter polynomials implicitly padded with zeros. -/
-
+  
   /-  Specification: polyadd computes c1 + c2 element-wise, padding with zeros.
       The result has length max(n, m), and for each coefficient position i:
       - If i < min(n, m): result[i] = c1[i] + c2[i]
@@ -35,16 +35,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def polyadd {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) : Id (Vector Float (max n m)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem polyadd_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) :
@@ -62,8 +62,9 @@ vc-condition: |-
               0⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

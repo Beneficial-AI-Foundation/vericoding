@@ -14,7 +14,7 @@ vc-description: |-
       The result is a 3D tensor where result[i,j,k] contains the polynomial
       value at the point (x[i], y[j], z[k]).
   -/
-
+  
   /-  Specification: hermegrid3d evaluates a 3D HermiteE polynomial series 
       on the Cartesian product of x, y, and z coordinates.
   
@@ -35,8 +35,8 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def hermegrid3d {nx ny nz : Nat} {deg_x deg_y deg_z : Nat} 
@@ -45,9 +45,9 @@ vc-signature: |-
       Id (Vector (Vector (Vector Float nz) ny) nx) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem hermegrid3d_spec {nx ny nz : Nat} {deg_x deg_y deg_z : Nat} 
@@ -111,8 +111,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

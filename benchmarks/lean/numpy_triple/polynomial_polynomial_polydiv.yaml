@@ -8,7 +8,7 @@ vc-description: |-
       The function performs polynomial long division, returning both
       the quotient and remainder such that c1 = c2 * quotient + remainder.
   -/
-
+  
   /-  Specification: polydiv performs polynomial division with remainder.
       
       Precondition: The leading coefficient of c2 (highest degree term) is non-zero
@@ -24,17 +24,17 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def polydiv {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float (m + 1)) : 
       Id (Vector Float n × Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem polydiv_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float (m + 1)) :
@@ -55,8 +55,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

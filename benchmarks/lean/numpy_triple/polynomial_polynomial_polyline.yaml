@@ -11,7 +11,7 @@ vc-description: |-
       We use Vector Float 2 to represent the general case, with the understanding
       that when scl = 0, the second coefficient is meaningless.
   -/
-
+  
   /-  Specification: polyline creates correct linear polynomial representation.
       
       The function returns coefficients for the linear polynomial off + scl*x:
@@ -34,16 +34,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def polyline (off scl : Float) : Id (Vector Float 2) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem polyline_spec (off scl : Float) :
@@ -72,8 +72,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

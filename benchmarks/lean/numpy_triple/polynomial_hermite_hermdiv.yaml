@@ -13,7 +13,7 @@ vc-description: |-
       Returns:
       - (quo, rem): Pair of arrays representing quotient and remainder
   -/
-
+  
   /-  Specification: hermdiv divides Hermite series c1 by c2, producing quotient and remainder
       such that c1 = c2 * quo + rem in the Hermite polynomial basis, where the degree of rem
       is less than the degree of c2. The divisor must have at least one non-zero coefficient. -/
@@ -24,17 +24,17 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def hermdiv {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) (h : m > 0) : 
       Id (Vector Float n × Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem hermdiv_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) (h : m > 0)
@@ -48,8 +48,9 @@ vc-condition: |-
                                 (k < m ∨ m > n))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

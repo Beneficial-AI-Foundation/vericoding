@@ -7,7 +7,7 @@ vc-description: |-
       This specification focuses on the most common use case where endpoint=true,
       returning num samples that are evenly distributed from start to stop inclusive.
   -/
-
+  
   /-  Specification: numpy.linspace returns a vector of evenly spaced values.
       
       When num > 0 and endpoint=true (default behavior):
@@ -36,16 +36,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def linspace {num : Nat} (start stop : Float) (h : num > 0) : Id (Vector Float num) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem linspace_spec {num : Nat} (start stop : Float) (h : num > 0) :
@@ -94,8 +94,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

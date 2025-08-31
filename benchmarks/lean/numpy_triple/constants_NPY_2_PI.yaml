@@ -7,9 +7,9 @@ vc-description: |-
     "doc": "2/π = 0.636619772367581343075535053490057448",
   }
   -/
-
+  
   /-  The mathematical constant 2/π, approximately 0.6366... -/
-
+  
   /-  Specification: NPY_2_PI represents the ratio 2/π and satisfies key mathematical properties -/
 
 vc-preamble: |-
@@ -18,16 +18,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def NPY_2_PI : Id Float :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem NPY_2_PI_spec :
@@ -50,8 +50,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

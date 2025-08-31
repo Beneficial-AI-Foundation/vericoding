@@ -8,9 +8,9 @@ vc-description: |-
     "doc": "Computes the vector dot product of two arrays. Supports broadcasting and treats input arrays as vectors regardless of their shape.",
   }
   -/
-
+  
   /-  Compute the vector dot product of two vectors -/
-
+  
   /-  Specification: vecdot computes the mathematical dot product as the sum of element-wise products.
       This captures the mathematical definition: a · b = Σ(i=0 to n-1) a_i * b_i.
       
@@ -27,16 +27,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def vecdot {n : Nat} (x1 x2 : Vector Float n) : Id Float :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem vecdot_spec {n : Nat} (x1 x2 : Vector Float n) :
@@ -46,8 +46,9 @@ vc-condition: |-
                    result = List.sum (List.zipWith (· * ·) x2.toList x1.toList)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

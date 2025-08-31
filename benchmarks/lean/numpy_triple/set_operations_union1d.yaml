@@ -8,7 +8,7 @@ vc-description: |-
       is always a 1D array containing the union of all elements from both arrays,
       with duplicates removed and elements sorted in ascending order.
   -/
-
+  
   /-  Specification: numpy.union1d returns the sorted union of two arrays.
   
       Precondition: True (no special preconditions needed)
@@ -26,16 +26,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def union1d {n m : Nat} (ar1 : Vector Float n) (ar2 : Vector Float m) : Id (Vector Float (n + m)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem union1d_spec {n m : Nat} (ar1 : Vector Float n) (ar2 : Vector Float m) :
@@ -56,8 +56,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

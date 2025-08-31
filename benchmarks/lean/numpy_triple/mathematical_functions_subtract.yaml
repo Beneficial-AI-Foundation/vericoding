@@ -7,7 +7,7 @@ vc-description: |-
     "doc": "Subtract arguments, element-wise.",
   }
   -/
-
+  
   /-  numpy.subtract: Subtract arguments, element-wise.
   
       Subtracts two vectors element-wise. If the vectors have the same shape,
@@ -17,7 +17,7 @@ vc-description: |-
       This is equivalent to x1 - x2 in terms of array broadcasting.
       The operation is the inverse of addition: (x1 - x2) + x2 = x1.
   -/
-
+  
   /-  Specification: numpy.subtract returns a vector where each element is the difference
       of the corresponding elements from x1 and x2.
   
@@ -37,16 +37,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def subtract {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem subtract_spec {n : Nat} (x1 x2 : Vector Float n) :
@@ -61,8 +61,9 @@ vc-condition: |-
                     result.get i = -(x2.get i - x1.get i)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

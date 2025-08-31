@@ -8,10 +8,10 @@ vc-description: |-
     "doc": "Raise a Hermite series to a power.\n\n    Returns the Hermite series \`c\` raised to the power \`pow\`. The\n    argument \`c\` is a sequence of coefficients ordered from low to high.\n    i.e., [1,2,3] is the series  \`\`P_0 + 2*P_1 + 3*P_2.\`\`\n\n    Parameters\n    ----------\n    c : array_like\n        1-D array of Hermite series coefficients ordered from low to\n        high.\n    pow : integer\n        Power to which the series will be raised\n    maxpower : integer, optional\n        Maximum power allowed. This is mainly to limit growth of the series\n        to unmanageable size. Default is 16\n\n    Returns\n    -------\n    coef : ndarray\n        Hermite series of power.\n\n    See Also\n    --------\n    hermeadd, hermesub, hermemulx, hermemul, hermediv\n\n    Examples\n    --------\n    >>> from numpy.polynomial.hermite_e import hermepow\n    >>> hermepow([1, 2, 3], 2)\n    array([23.,  28.,  46.,  12.,   9.])",
   }
   -/
-
+  
   /-  Raise a Hermite series to a power. Computes the Hermite polynomial coefficients
       for the series c raised to the given power, using repeated multiplication. -/
-
+  
   /-  Specification: hermepow raises a Hermite polynomial series to a power.
       Given coefficients c = [c₀, c₁, ..., cₙ₋₁] representing the Hermite series
       P₀(x)⋅c₀ + P₁(x)⋅c₁ + ... + Pₙ₋₁(x)⋅cₙ₋₁, this function computes the 
@@ -35,16 +35,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def hermepow {n : Nat} (c : Vector Float n) (pow : Nat) (maxpower : Nat) : Id (Vector Float (1 + (n - 1) * pow)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem hermepow_spec {n : Nat} (c : Vector Float n) (pow : Nat) (maxpower : Nat)
@@ -64,8 +64,9 @@ vc-condition: |-
                      True)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

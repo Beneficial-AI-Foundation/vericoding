@@ -7,10 +7,10 @@ vc-description: |-
     "doc": "Element-wise minimum of array elements.\n\nCompare two arrays and returns a new array containing the element-wise minima. If one of the elements being compared is a NaN, then the non-nan element is returned.",
   }
   -/
-
+  
   /-  Element-wise minimum of two vectors, with special NaN handling.
       If one element is NaN, returns the non-NaN element. -/
-
+  
   /-  Specification: fmin returns element-wise minimum with NaN handling.
       For each position i:
       - If both elements are non-NaN, returns the minimum
@@ -26,16 +26,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def fmin {n : Nat} (x y : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem fmin_spec {n : Nat} (x y : Vector Float n) :
@@ -58,8 +58,9 @@ vc-condition: |-
           (result.get i = x.get i ∨ result.get i = y.get i))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

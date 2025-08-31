@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "For each element in \`a\`, return a copy with the leading characters removed.\n\nParameters\n----------\na : array_like, with \`StringDType\`, \`bytes_\` or \`str_\` dtype\nchars : array_like with \`StringDType\`, \`bytes_\` or \`str_\` dtype, optional\n    The characters to be removed. If None, whitespace characters are removed.\n\nReturns\n-------\nout : ndarray\n    Output array of \`StringDType\`, \`bytes_\` or \`str_\` dtype,\n    depending on input types",
   }
   -/
-
+  
   /-  numpy.strings.lstrip: For each element in a vector, return a copy with the leading characters removed.
   
       Removes leading characters from each string element in the input vector. The behavior
@@ -31,7 +31,7 @@ vc-description: |-
       4. Character set removal: only characters in chars are removed from the beginning
       5. Preserves vector length: result.size = a.size
   -/
-
+  
   /-  Specification: numpy.strings.lstrip returns a vector where each string element
       has its leading characters removed according to the chars parameter.
   
@@ -55,16 +55,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def lstrip {n : Nat} (a : Vector String n) (chars : Option String) : Id (Vector String n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem lstrip_spec {n : Nat} (a : Vector String n) (chars : Option String) :
@@ -100,8 +100,9 @@ vc-condition: |-
           ∀ c : Char, result.get? ⟨0⟩ = some c → c ∉ chars.get!.toList)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

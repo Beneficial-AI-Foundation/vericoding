@@ -14,7 +14,7 @@ vc-description: |-
       result length is the maximum of the input lengths. Shorter vectors are
       implicitly padded with zeros.
   -/
-
+  
   /-  Specification: hermadd performs component-wise addition of Hermite series coefficients.
   
       Precondition: True (no special preconditions for basic addition)
@@ -33,17 +33,17 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def hermadd {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) : 
       Id (Vector Float (max n m)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem hermadd_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) :
@@ -63,8 +63,9 @@ vc-condition: |-
                           0⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

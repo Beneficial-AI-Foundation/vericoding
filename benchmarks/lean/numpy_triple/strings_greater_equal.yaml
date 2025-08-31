@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "Return the truth value of (x1 >= x2) element-wise.\n\nFor string arrays, performs element-wise string comparison.\n\nParameters\n----------\nx1, x2 : array_like\n    Input arrays with string dtype.\n    If \`\`x1.shape != x2.shape\`\`, they must be broadcastable to a common\n    shape (which becomes the shape of the output).\nout : ndarray, None, or tuple of ndarray and None, optional\n    A location into which the result is stored.\nwhere : array_like, optional\n    This condition is broadcast over the input.\nkwargs\n    For other keyword-only arguments, see the ufunc docs.\n\nReturns\n-------\nout : ndarray or scalar\n    Output array, element-wise comparison of x1 and x2.\n    Typically of type bool, unless \`\`dtype=object\`\` is passed.",
   }
   -/
-
+  
   /-  numpy.strings.greater_equal: Return the truth value of (x1 >= x2) element-wise for string arrays.
   
       Performs element-wise string comparison between two vectors of strings.
@@ -23,7 +23,7 @@ vc-description: |-
       - greater_equal ["zebra", "apple"] ["apple", "banana"] = [true, false]
       - greater_equal ["a", "bb"] ["aa", "b"] = [false, true]
   -/
-
+  
   /-  Specification: numpy.strings.greater_equal returns element-wise greater-than-or-equal comparison.
   
       This specification captures the mathematical properties of lexicographic string comparison:
@@ -45,16 +45,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def greater_equal {n : Nat} (x1 x2 : Vector String n) : Id (Vector Bool n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem greater_equal_spec {n : Nat} (x1 x2 : Vector String n) :
@@ -73,8 +73,9 @@ vc-condition: |-
                    (∀ i : Fin n, x1.get i ≠ "" → x2.get i = "" → result.get i = true)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -1,4 +1,14 @@
 vc-description: |-
+  /- 
+  {
+    "name": "numpy.put",
+    "category": "Basic indexing",
+    "description": "Replaces specified elements of an array with given values",
+    "url": "https://numpy.org/doc/stable/reference/generated/numpy.put.html",
+    "doc": "Replaces specified elements of an array with given values.\n\nThe indexing works on the flattened target array.\n\nParameters\n----------\na : ndarray\n    Target array.\nind : array_like\n    Target indices, interpreted as integers.\nv : array_like\n    Values to place in \`a\` at target indices.\nmode : {'raise', 'wrap', 'clip'}, optional\n    Specifies how out-of-bounds indices will behave.\n\nReturns\n-------\nNone",
+  }
+  -/
+  
   /-  
   numpy.put: Replaces specified elements of an array with given values.
   
@@ -7,7 +17,7 @@ vc-description: |-
   
   For simplicity, we ignore the `mode` parameter and assume all indices are valid.
   -/
-
+  
   /-  
   Specification: numpy.put modifies specific elements of the input array.
   
@@ -28,17 +38,17 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def put {n m : Nat} (a : Vector Float n) (ind : Vector Nat m) (v : Vector Float m) 
       (h_valid : ∀ i : Fin m, ind.get i < n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem put_spec {n m : Nat} (a : Vector Float n) (ind : Vector Nat m) (v : Vector Float m) 
@@ -61,8 +71,9 @@ vc-condition: |-
        (∀ k : Fin n, ∃ i : Fin m, ind.get i = k ∧ result.get k = v.get i)) := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

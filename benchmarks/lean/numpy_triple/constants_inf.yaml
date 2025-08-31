@@ -8,9 +8,9 @@ vc-description: |-
     "doc": "IEEE 754 floating point representation of (positive) infinity.\n\nUse inf because Inf, Infinity, PINF and infty are aliases for inf. For more details, see inf.\n\nSee Also:\ninf",
   }
   -/
-
+  
   /-  IEEE 754 floating point representation of (positive) infinity -/
-
+  
   /-  Specification: inf represents positive infinity with the following properties:
       1. inf is greater than any finite float value
       2. inf + any finite value = inf
@@ -24,16 +24,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def inf : Id Float :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem inf_spec :
@@ -59,8 +59,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

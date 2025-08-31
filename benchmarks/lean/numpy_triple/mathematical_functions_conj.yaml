@@ -1,12 +1,15 @@
 vc-description: |-
-  /-  Addition of complex numbers -/
-  
-  /-  Multiplication of complex numbers -/
-  
-  /-  Magnitude squared of a complex number -/
+  /- 
+  {
+    "name": "numpy.conj",
+    "description": "Return the complex conjugate, element-wise",
+    "url": "https://numpy.org/doc/stable/reference/generated/numpy.conj.html",
+    "doc": "Return the complex conjugate, element-wise.\n\nSignature: numpy.conj(x, /, out=None, *, where=True, casting='same_kind', order='K', dtype=None, subok=True)\n\nParameters:\n  x: array_like - Input value\n  out: ndarray, None, or tuple of ndarray and None, optional - A location into which the result is stored\n\nReturns:\n  y: ndarray - Complex conjugate of x, with same dtype as x",
+  }
+  -/
   
   /-  Return the complex conjugate of a vector of complex numbers, element-wise -/
-
+  
   /-  Specification: conj computes the complex conjugate of each element with the following properties:
       1. Basic definition: conj(a + bi) = a - bi for complex numbers
       2. Real preservation: For purely real numbers, conj(x) = x
@@ -20,40 +23,34 @@ vc-preamble: |-
   import Std.Tactic.Do
   open Std.Do
   
-  /-  Structure representing a complex number with float components -/
-  
+  /-- Structure representing a complex number with float components -/
   structure Complex where
     /-- The real part of the complex number -/
     real : Float
     /-- The imaginary part of the complex number -/
     imag : Float
+  
+  /-- Addition of complex numbers -/
+  def Complex.add (z w : Complex) : Complex :=
+    Complex.mk (z.real + w.real) (z.imag + w.imag)
+  /-- Multiplication of complex numbers -/
+  def Complex.mul (z w : Complex) : Complex :=
+    Complex.mk (z.real * w.real - z.imag * w.imag) (z.real * w.imag + z.imag * w.real)
+  /-- Magnitude squared of a complex number -/
+  def Complex.normSq (z : Complex) : Float :=
+    z.real * z.real + z.imag * z.imag
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
-  def Complex.add (z w : Complex) : Complex := 
-  
-  def Complex.mul (z w : Complex) : Complex := 
-  
-  def Complex.normSq (z : Complex) : Float := 
-  
   def conj {n : Nat} (x : Vector Complex n) : Id (Vector Complex n) :=
 
 vc-implementation: |-
-  <vc-implementation>
-    Complex.mk (z.real + w.real) (z.imag + w.imag)
-  
-  
-    Complex.mk (z.real * w.real - z.imag * w.imag) (z.real * w.imag + z.imag * w.real)
-  
-  
-    z.real * z.real + z.imag * z.imag
-  
-  
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem conj_spec {n : Nat} (x : Vector Complex n) :
@@ -79,8 +76,9 @@ vc-condition: |-
                       conjProd = Complex.mul conjX conjY)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

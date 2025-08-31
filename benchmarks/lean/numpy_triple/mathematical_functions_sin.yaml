@@ -7,7 +7,7 @@ vc-description: |-
     "doc": "Trigonometric sine, element-wise.\n\nSignature: numpy.sin(x, /, out=None, *, where=True, casting='same_kind', order='K', dtype=None, subok=True)\n\nParameters:\n  x: array_like - Angle, in radians (2π rad equals 360 degrees)\n  out: ndarray, optional - A location into which the result is stored\n  where: array_like, optional - This condition is broadcast over the input\n\nReturns:\n  y: array_like - The sine of each element of x\n\nExamples:\n  >>> np.sin(np.pi/2.)\n  1.0\n  >>> np.sin(np.array((0., 30., 45., 60., 90.)) * np.pi / 180.)\n  array([0., 0.5, 0.70710678, 0.8660254, 1.])",
   }
   -/
-
+  
   /-  numpy.sin: Trigonometric sine, element-wise.
   
       Computes the sine of each element in the input vector, where each element 
@@ -19,7 +19,7 @@ vc-description: |-
   
       Returns a vector of the same shape as the input, containing the sine of each element.
   -/
-
+  
   /-  Specification: numpy.sin returns a vector where each element is the sine
       of the corresponding element in x (interpreted as radians).
   
@@ -42,16 +42,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def sin {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem sin_spec {n : Nat} (x : Vector Float n) :
@@ -63,8 +63,9 @@ vc-condition: |-
                                 (x.get i = 0 → result.get i = 0)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

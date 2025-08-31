@@ -11,7 +11,7 @@ vc-description: |-
       This function enables the creation of vectorized operations from arbitrary functions,
       which is a core capability of NumPy's universal function system.
   -/
-
+  
   /-  Specification: numpy.frompyfunc creates a vectorized version of a function
       that applies the original function element-wise.
   
@@ -30,16 +30,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_frompyfunc {α β : Type} {n : Nat} (func : α → β) (input : Vector α n) : Id (Vector β n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_frompyfunc_spec {α β : Type} {n : Nat} (func : α → β) (input : Vector α n) :
@@ -48,8 +48,9 @@ vc-condition: |-
       ⦃⇓result => ⌜∀ i : Fin n, result.get i = func (input.get i)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

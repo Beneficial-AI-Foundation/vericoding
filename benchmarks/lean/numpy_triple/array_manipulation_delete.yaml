@@ -8,7 +8,7 @@ vc-description: |-
       This specification handles the 1D case where we delete a single element
       at a specified index from a vector.
   -/
-
+  
   /-  Specification: numpy.delete removes the element at the specified index and returns
       a new vector containing all other elements in their original order.
       
@@ -41,17 +41,17 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def delete {n : Nat} (arr : Vector Float (n + 1)) (index : Fin (n + 1)) : 
       Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem delete_spec {n : Nat} (arr : Vector Float (n + 1)) (index : Fin (n + 1)) :
@@ -66,8 +66,9 @@ vc-condition: |-
                      ∃ j : Fin n, result.get j = arr.get i)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

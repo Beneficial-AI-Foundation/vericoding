@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "Returns an array with the number of non-overlapping occurrences of substring \`sub\` in the range [\`start\`, \`end\`].\n\nParameters\n----------\na : array_like, with \`StringDType\`, \`bytes_\` or \`str_\` dtype\nsub : array_like, with \`StringDType\`, \`bytes_\` or \`str_\` dtype\n    The substring to search for.\nstart, end : array_like, with any integer dtype, optional\n    The range to look in, interpreted as slice notation.\n\nReturns\n-------\nout : ndarray\n    Output array of ints",
   }
   -/
-
+  
   /-  numpy.strings.count: Returns an array with the number of non-overlapping occurrences 
       of substring sub in the range [start, end] for each element.
   
@@ -16,7 +16,7 @@ vc-description: |-
       without overlapping matches within the specified range. The search is performed
       within the range [start, end) where start and end are character indices.
   -/
-
+  
   /-  Specification: numpy.strings.count returns the number of non-overlapping occurrences 
       of substring within the specified range for each element.
       
@@ -38,16 +38,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def count {n : Nat} (a : Vector String n) (sub : Vector String n) (start : Vector Int n) (endPos : Vector Int n) : Id (Vector Int n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem count_spec {n : Nat} (a : Vector String n) (sub : Vector String n) (start : Vector Int n) (endPos : Vector Int n)
@@ -95,8 +95,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

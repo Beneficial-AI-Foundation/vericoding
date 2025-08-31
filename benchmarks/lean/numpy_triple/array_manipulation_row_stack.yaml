@@ -10,10 +10,10 @@ vc-description: |-
     "signature": "numpy.row_stack(tup, *, dtype=None, casting='same_kind')"
   }
   -/
-
+  
   /-  Stack a list of 1-D vectors as rows into a 2-D matrix (Vector of Vectors).
       Each input vector becomes a row in the output matrix. -/
-
+  
   /-  Specification: row_stack returns a matrix where each row corresponds to an input vector.
       The i-th row of the result is exactly the i-th input vector (identity transformation). -/
 
@@ -23,16 +23,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def row_stack {n m : Nat} (arrays : Vector (Vector Float n) m) : Id (Vector (Vector Float n) m) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem row_stack_spec {n m : Nat} (arrays : Vector (Vector Float n) m) :
@@ -41,8 +41,9 @@ vc-condition: |-
       ⦃⇓result => ⌜∀ i : Fin m, ∀ j : Fin n, (result.get i).get j = (arrays.get i).get j⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

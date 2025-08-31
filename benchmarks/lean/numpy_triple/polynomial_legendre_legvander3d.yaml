@@ -4,7 +4,7 @@ vc-description: |-
       The pseudo-Vandermonde matrix is defined by 
       V[..., (m+1)(n+1)i + (n+1)j + k] = L_i(x)*L_j(y)*L_k(z),
       where 0 <= i <= l, 0 <= j <= m, and 0 <= k <= n for degrees [l, m, n]. -/
-
+  
   /-  Specification: legvander3d constructs a 3D pseudo-Vandermonde matrix where each row 
       corresponds to a point (x_i, y_i, z_i) and each column corresponds to a product of 
       Legendre polynomials L_i(x) * L_j(y) * L_k(z).
@@ -19,17 +19,17 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def legvander3d {n : Nat} (x y z : Vector Float n) (deg_x deg_y deg_z : Nat) : 
       Id (Vector (Vector Float ((deg_x + 1) * (deg_y + 1) * (deg_z + 1))) n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem legvander3d_spec {n : Nat} (x y z : Vector Float n) (deg_x deg_y deg_z : Nat) :
@@ -50,8 +50,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

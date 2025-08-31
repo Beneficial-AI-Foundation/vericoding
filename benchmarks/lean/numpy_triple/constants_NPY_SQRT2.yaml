@@ -7,9 +7,9 @@ vc-description: |-
     "doc": "√2 = 1.414213562373095048801688724209698079",
   }
   -/
-
+  
   /-  The square root of 2 as a mathematical constant -/
-
+  
   /-  Specification: NPY_SQRT2 represents the square root of 2 with appropriate mathematical properties -/
 
 vc-preamble: |-
@@ -18,16 +18,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def NPY_SQRT2 : Id Float :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem NPY_SQRT2_spec :
@@ -43,8 +43,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

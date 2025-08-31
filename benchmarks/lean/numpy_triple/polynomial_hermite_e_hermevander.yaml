@@ -32,7 +32,7 @@ vc-description: |-
           corresponding HermiteE polynomial.  The dtype will be the same as
           the converted `x`.
   -/
-
+  
   /-  Specification: hermevander returns a pseudo-Vandermonde matrix where each row
       corresponds to a point in x, and each column corresponds to a HermiteE polynomial
       of degree 0 through deg evaluated at that point.
@@ -58,16 +58,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def hermevander {n : Nat} (x : Vector Float n) (deg : Nat) : Id (Vector (Vector Float (deg + 1)) n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem hermevander_spec {n : Nat} (x : Vector Float n) (deg : Nat) :
@@ -88,8 +88,9 @@ vc-condition: |-
             (Float.ofNat (j.val - 1)) * (result.get i).get ⟨j.val - 2, h2⟩)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

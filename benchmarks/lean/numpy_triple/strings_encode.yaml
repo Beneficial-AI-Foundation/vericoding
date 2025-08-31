@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "Calls \`\`str.encode\`\` element-wise.\n\nParameters\n----------\na : array_like, with \`str_\` or \`StringDType\` dtype\n    Input string array\nencoding : str, optional\n    The name of an encoding. Default is 'utf-8'\nerrors : str, optional\n    Specifies how to handle encoding errors.\n    Default is 'strict'\n\nReturns\n-------\nout : ndarray\n    Output array of \`bytes_\` dtype",
   }
   -/
-
+  
   /-  numpy.strings.encode: Encode strings using the codec
   
       Calls str.encode element-wise on a vector of strings.
@@ -18,7 +18,7 @@ vc-description: |-
       of encoded byte arrays. The encoding process depends on the encoding
       parameter, with UTF-8 being the default.
   -/
-
+  
   /-  Specification: numpy.strings.encode returns a vector where each element is the encoded byte array
       from the corresponding string in the input vector.
   
@@ -35,16 +35,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def encode {n : Nat} (a : Vector String n) (encoding : String := "utf-8") (errors : String := "strict") : Id (Vector ByteArray n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem encode_spec {n : Nat} (a : Vector String n) (encoding : String := "utf-8") (errors : String := "strict") :
@@ -65,8 +65,9 @@ vc-condition: |-
                     (encoding = "utf-8" → (result.get i).size ≥ (a.get i).length)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

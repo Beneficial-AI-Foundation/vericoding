@@ -15,7 +15,7 @@ vc-description: |-
       - For any n: f = [0, 1, ..., n//2] / (d*n)
       - The result length is always n//2 + 1 (for both even and odd n)
   -/
-
+  
   /-  Specification: numpy.fft.rfftfreq generates frequency sample points for rfft.
   
       The function returns a vector of frequencies from 0 to the Nyquist frequency.
@@ -34,16 +34,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_rfftfreq (n : Nat) (d : Float) (h : n > 0) : Id (Vector Float (n / 2 + 1)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_rfftfreq_spec (n : Nat) (d : Float) (h : n > 0) (hd : d > 0) :
@@ -61,8 +61,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

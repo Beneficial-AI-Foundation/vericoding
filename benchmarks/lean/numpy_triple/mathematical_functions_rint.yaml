@@ -10,7 +10,7 @@ vc-description: |-
   
       Returns an array of the same shape as x, containing the rounded values.
   -/
-
+  
   /-  Specification: numpy.rint returns a vector where each element is
       rounded to the nearest integer using IEEE 754 rounding rules.
   
@@ -29,16 +29,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_rint {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_rint_spec {n : Nat} (x : Vector Float n) :
@@ -57,8 +57,9 @@ vc-condition: |-
           (k % 2 = 1 → result.get i = Float.ofInt (k + 1)))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

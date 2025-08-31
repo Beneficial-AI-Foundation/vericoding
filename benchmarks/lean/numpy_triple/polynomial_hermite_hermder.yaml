@@ -3,7 +3,7 @@ vc-description: |-
       Returns the Hermite series coefficients differentiated `m` times.
       At each iteration the result is multiplied by `scl` (scaling factor).
       The coefficients are from low to high degree. -/
-
+  
   /-  Specification: hermder differentiates Hermite series coefficients according to
       the Hermite polynomial derivative rule: d/dx H_n(x) = 2n * H_{n-1}(x).
       The result has degree reduced by m (or becomes zero if m >= n).
@@ -15,17 +15,17 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def hermder {n : Nat} (c : Vector Float n) (m : Nat := 1) (scl : Float := 1.0) : 
       Id (Vector Float (n - min m n)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem hermder_spec {n : Nat} (c : Vector Float n) (m : Nat) (scl : Float) :
@@ -57,8 +57,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -8,14 +8,14 @@ vc-description: |-
     "doc": "Find the indices of array elements that are non-zero, grouped by element.\n\nParameters\n----------\na : array_like\n    Input data.\n\nReturns\n-------\nindex_array : (N, a.ndim) ndarray\n    Indices of elements that are non-zero. Indices are grouped by element.\n    This array will have shape ``(N, a.ndim)`` where ``N`` is the number of\n    non-zero items.\n\nSee Also\n--------\nwhere, nonzero\n\nNotes\n-----\n``np.argwhere(a)`` is almost the same as ``np.transpose(np.nonzero(a))``,\nbut produces a result of the correct shape for a 0D array.\n\nThe output of ``argwhere`` is not suitable for indexing arrays.\nFor this purpose use ``nonzero(a)`` instead.",
   }
   -/
-
+  
   /-  numpy.argwhere: Find the indices of array elements that are non-zero, grouped by element.
   
       For a 1D vector, returns a list of indices where elements are non-zero.
       Each index corresponds to a position in the original vector where the element is non-zero.
       The returned indices are in the same order as they appear in the original vector.
   -/
-
+  
   /-  Specification: numpy.argwhere returns all indices of non-zero elements.
   
       Precondition: True (no special requirements)
@@ -32,16 +32,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_argwhere {n : Nat} (a : Vector Float n) : Id (List (Fin n)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_argwhere_spec {n : Nat} (a : Vector Float n) :
@@ -56,8 +56,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

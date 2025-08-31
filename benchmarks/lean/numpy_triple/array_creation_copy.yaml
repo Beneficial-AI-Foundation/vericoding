@@ -9,11 +9,11 @@ vc-description: |-
     "signature": "numpy.copy(a, order='K', subok=False)"
   }
   -/
-
+  
   /-  Return an array copy of the given object. 
       The copy has the same shape and values as the original array, 
       but occupies different memory locations. -/
-
+  
   /-  Specification: copy returns a vector with identical values but independent memory.
       The resulting vector has the same size and all elements equal to the original,
       ensuring that the copy is element-wise equivalent to the original. -/
@@ -24,16 +24,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def copy {n : Nat} (a : Vector α n) : Id (Vector α n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem copy_spec {n : Nat} (a : Vector α n) :
@@ -42,8 +42,9 @@ vc-condition: |-
       ⦃⇓result => ⌜∀ i : Fin n, result[i] = a[i]⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

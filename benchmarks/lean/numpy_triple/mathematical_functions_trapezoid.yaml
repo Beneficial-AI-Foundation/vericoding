@@ -7,9 +7,9 @@ vc-description: |-
     "doc": "Integrate along the given axis using the composite trapezoidal rule.\n\nSignature: numpy.trapezoid(y, x=None, dx=1.0, axis=-1)\n\nParameters:\n  y: array_like - Input array to integrate\n  x: array_like, optional - The sample points corresponding to the y values\n  dx: scalar, optional - The spacing between sample points when x is None\n  axis: int, optional - The axis along which to integrate\n\nReturns:\n  trapezoid: float or ndarray - Definite integral of y approximated by trapezoidal rule",
   }
   -/
-
+  
   /-  Integrate using the composite trapezoidal rule with uniform spacing -/
-
+  
   /-  Specification: trapezoid computes the definite integral using the composite trapezoidal rule
       For uniform spacing dx, the integral is approximated as:
       ∫ f(x) dx ≈ dx * (y[0]/2 + y[1] + y[2] + ... + y[n-1] + y[n]/2) -/
@@ -20,16 +20,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def trapezoid {n : Nat} (y : Vector Float (n + 1)) (dx : Float) : Id Float :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem trapezoid_spec {n : Nat} (y : Vector Float (n + 1)) (dx : Float) 
@@ -49,8 +49,9 @@ vc-condition: |-
                    (∀ i : Fin (n + 1), y.get i ≥ 0 → result ≥ 0)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -8,7 +8,7 @@ vc-description: |-
       The function performs element-wise positive operation, which
       for real numbers simply returns the same value.
   -/
-
+  
   /-  Specification: numpy.positive returns a vector where each element is
       the positive of the corresponding element in x (which is the same value).
   
@@ -29,16 +29,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def positive {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem positive_spec {n : Nat} (x : Vector Float n) :
@@ -48,8 +48,9 @@ vc-condition: |-
                    (∀ i : Fin n, Float.abs (result.get i) = Float.abs (x.get i))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -1,12 +1,4 @@
 vc-description: |-
-  /-  Define type sizes in bits -/
-  
-  /-  Check if a type is an unsigned integer -/
-  
-  /-  Check if a type is a floating point type -/
-  
-  /-  Check if a type is a complex type -/
-  
   /-  numpy.promote_types: Returns the data type with the smallest size and smallest scalar kind
       to which both type1 and type2 may be safely cast.
       
@@ -17,7 +9,7 @@ vc-description: |-
       - promote_types('i8', 'f4') = 'f8' (float64)
       - promote_types('i4', 'S8') = 'S11' (string, but we focus on numeric types)
   -/
-
+  
   /-  Specification: promote_types returns the smallest safe common type for two dtypes.
       
       Key properties based on NumPy's type promotion rules:
@@ -42,8 +34,7 @@ vc-preamble: |-
   import Std.Tactic.Do
   open Std.Do
   
-  /-  Define enumeration for NumPy data types -/
-  
+  /-- Define enumeration for NumPy data types -/
   inductive NumpyDType
     /-- 8-bit unsigned integer -/  | UInt8
     /-- 16-bit unsigned integer -/ | UInt16
@@ -59,12 +50,8 @@ vc-preamble: |-
     /-- 64-bit complex number -/   | Complex64
     /-- 128-bit complex number -/  | Complex128
     deriving Repr, DecidableEq
-
-vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
-
-vc-signature: |-
+  
+  /-- Define type sizes in bits -/
   def dtype_size : NumpyDType → Nat
     | .UInt8 => 8
     | .UInt16 => 16
@@ -79,7 +66,6 @@ vc-signature: |-
     | .Float64 => 64
     | .Complex64 => 64
     | .Complex128 => 128
-  
   /-- Define type promotion rules hierarchy -/
   def promotion_hierarchy : NumpyDType → Nat
     | .UInt8 => 0
@@ -95,42 +81,38 @@ vc-signature: |-
     | .Float64 => 10
     | .Complex64 => 11
     | .Complex128 => 12
-  
   /-- Check if a type is a signed integer -/
   def is_signed_integer (dt : NumpyDType) : Bool :=
-  
-  def is_unsigned_integer (dt : NumpyDType) : Bool :=
-  
-  def is_float (dt : NumpyDType) : Bool :=
-  
-  def is_complex (dt : NumpyDType) : Bool :=
-  
-  def promote_types (type1 type2 : NumpyDType) : Id NumpyDType :=
-
-vc-implementation: |-
-  <vc-implementation>
     match dt with
     | .Int8 | .Int16 | .Int32 | .Int64 => true
     | _ => false
-  
-  
+  /-- Check if a type is an unsigned integer -/
+  def is_unsigned_integer (dt : NumpyDType) : Bool :=
     match dt with
     | .UInt8 | .UInt16 | .UInt32 | .UInt64 => true
     | _ => false
-  
-  
+  /-- Check if a type is a floating point type -/
+  def is_float (dt : NumpyDType) : Bool :=
     match dt with
     | .Float16 | .Float32 | .Float64 => true
     | _ => false
-  
-  
+  /-- Check if a type is a complex type -/
+  def is_complex (dt : NumpyDType) : Bool :=
     match dt with
     | .Complex64 | .Complex128 => true
     | _ => false
-  
-  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def promote_types (type1 type2 : NumpyDType) : Id NumpyDType :=
+
+vc-implementation: |-
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem promote_types_spec (type1 type2 : NumpyDType) :
@@ -189,8 +171,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -8,13 +8,13 @@ vc-description: |-
     "doc": "Solve a linear matrix equation, or system of linear scalar equations.\n\nComputes the 'exact' solution, x, of the well-determined, full rank linear matrix equation ax = b.\n\nParameters:\n- a: Coefficient matrix, shape (M, M)\n- b: Ordinate values, shape (M,) or (M, K)\n\nReturns:\n- x: Solution to the system ax = b. Shape matches b.",
   }
   -/
-
+  
   /-  
   Solve a linear matrix equation ax = b, where a is an n×n matrix and b is a vector.
   Returns the solution vector x such that ax = b.
   For non-empty matrices (n > 0), the solution exists and is unique when a is invertible.
   -/
-
+  
   /-  
   Specification: solve returns a vector x such that ax = b when a is invertible.
   This specification captures the mathematical properties of linear system solving:
@@ -36,16 +36,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def solve {n : Nat} (a : Vector (Vector Float n) n) (b : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem solve_spec {n : Nat} (a : Vector (Vector Float n) n) (b : Vector Float n) 
@@ -91,8 +91,9 @@ vc-condition: |-
                     (a_inv.get i).get j * b.get j)))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

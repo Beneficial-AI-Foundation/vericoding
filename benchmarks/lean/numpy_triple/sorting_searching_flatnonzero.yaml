@@ -8,7 +8,7 @@ vc-description: |-
       For example, if array is [1, 0, 3, 0, 5], the function returns [0, 2, 4]
       indicating that elements at positions 0, 2, and 4 are non-zero.
   -/
-
+  
   /-  Specification: flatnonzero returns indices of all non-zero elements.
   
       Precondition: True (no restrictions on input array)
@@ -25,16 +25,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def flatnonzero {n : Nat} (a : Vector Float n) : Id (List (Fin n)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem flatnonzero_spec {n : Nat} (a : Vector Float n) :
@@ -53,8 +53,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -1,8 +1,4 @@
 vc-description: |-
-  /-  Get the fundamental kind of a NumPy dtype -/
-  
-  /-  Check if a NumPy dtype belongs to a specific kind category -/
-  
   /-  numpy.isdtype: Determine if a provided dtype is of a specified data type kind.
   
       This function checks whether a given NumPy dtype belongs to a specified
@@ -13,7 +9,7 @@ vc-description: |-
       The function performs type introspection and classification of NumPy dtypes
       according to their fundamental characteristics.
   -/
-
+  
   /-  Specification: numpy.isdtype correctly identifies dtype kinds.
   
       Precondition: True (works for any valid dtype and kind)
@@ -34,8 +30,7 @@ vc-preamble: |-
   import Std.Tactic.Do
   open Std.Do
   
-  /-  NumPy data type representation -/
-  
+  /-- NumPy data type representation -/
   inductive NumpyDType where
     /-- Boolean data type -/
     | Bool : NumpyDType
@@ -67,8 +62,7 @@ vc-preamble: |-
     | Complex128 : NumpyDType
     deriving DecidableEq, Repr
   
-  /-  NumPy data type kind categories -/
-  
+  /-- NumPy data type kind categories -/
   inductive DTypeKind where
     /-- Boolean kind -/
     | Bool : DTypeKind
@@ -85,28 +79,17 @@ vc-preamble: |-
     /-- Any numeric kind -/
     | Numeric : DTypeKind
     deriving DecidableEq, Repr
-
-vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
-
-vc-signature: |-
+  
+  /-- Get the fundamental kind of a NumPy dtype -/
   def getDTypeKind (dtype : NumpyDType) : DTypeKind :=
-  
-  def isOfKind (dtype : NumpyDType) (kind : DTypeKind) : Bool :=
-  
-  def numpy_isdtype (dtype : NumpyDType) (kind : DTypeKind) : Id Bool :=
-
-vc-implementation: |-
-  <vc-implementation>
     match dtype with
     | .Bool => .Bool
     | .Int8 | .Int16 | .Int32 | .Int64 => .SignedInteger
     | .UInt8 | .UInt16 | .UInt32 | .UInt64 => .UnsignedInteger
     | .Float16 | .Float32 | .Float64 => .RealFloating
     | .Complex64 | .Complex128 => .ComplexFloating
-  
-  
+  /-- Check if a NumPy dtype belongs to a specific kind category -/
+  def isOfKind (dtype : NumpyDType) (kind : DTypeKind) : Bool :=
     match kind with
     | .Bool => getDTypeKind dtype = .Bool
     | .SignedInteger => getDTypeKind dtype = .SignedInteger
@@ -115,10 +98,18 @@ vc-implementation: |-
     | .RealFloating => getDTypeKind dtype = .RealFloating
     | .ComplexFloating => getDTypeKind dtype = .ComplexFloating
     | .Numeric => getDTypeKind dtype ∈ [.Bool, .SignedInteger, .UnsignedInteger, .RealFloating, .ComplexFloating]
-  
-  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def numpy_isdtype (dtype : NumpyDType) (kind : DTypeKind) : Id Bool :=
+
+vc-implementation: |-
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_isdtype_spec (dtype : NumpyDType) (kind : DTypeKind) :
@@ -127,8 +118,9 @@ vc-condition: |-
       ⦃⇓result => ⌜result = isOfKind dtype kind⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

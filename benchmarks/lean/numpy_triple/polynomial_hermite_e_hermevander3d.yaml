@@ -29,7 +29,7 @@ vc-description: |-
       vander3d : Vector (Vector Float order) n
           The pseudo-Vandermonde matrix where order = (deg[0]+1)*(deg[1]+1)*(deg[2]+1).
   -/
-
+  
   /-  Specification: hermevander3d returns a 3D pseudo-Vandermonde matrix where each row
       corresponds to a point (x[i], y[i], z[i]), and each column corresponds to a product
       of HermiteE polynomials He_i(x)*He_j(y)*He_k(z) for various degrees.
@@ -62,17 +62,17 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def hermevander3d {n : Nat} (x y z : Vector Float n) (deg : Vector Nat 3) : 
       Id (Vector (Vector Float ((deg.get ⟨0, by simp⟩ + 1) * (deg.get ⟨1, by simp⟩ + 1) * (deg.get ⟨2, by simp⟩ + 1))) n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem hermevander3d_spec {n : Nat} (x y z : Vector Float n) (deg : Vector Nat 3) :
@@ -139,8 +139,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

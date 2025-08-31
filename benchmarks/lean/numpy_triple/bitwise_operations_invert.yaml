@@ -8,10 +8,10 @@ vc-description: |-
     "doc": "Compute bit-wise inversion, or bit-wise NOT, element-wise.\n\nComputes the bit-wise NOT of the underlying binary representation of the integers in the input arrays. This ufunc implements the C/Python operator ~.\n\nFor signed integer inputs, the two's complement is returned. In a two's-complement system negative numbers are represented by the two's complement of the absolute value. This is the most common method of representing signed integers on computers. A N-bit two's-complement system can represent every integer in the range -2^(N-1) to +2^(N-1)-1.\n\nParameters\n----------\nx : array_like\n    Only integer and boolean types are handled.\nout : ndarray, None, or tuple of ndarray and None, optional\n    A location into which the result is stored.\nwhere : array_like, optional\n    This condition is broadcast over the input.\n\nReturns\n-------\nout : ndarray or scalar\n    Result.\n\nNotes\n-----\nbitwise_not is an alias for invert:\n\n>>> np.bitwise_not is np.invert\nTrue\n\nExamples\n--------\n>>> np.invert(np.array([13], dtype=np.uint8))\narray([242], dtype=uint8)\n>>> np.invert(np.array([13], dtype=np.uint16))\narray([65522], dtype=uint16)\n>>> np.invert(np.array([13], dtype=np.int8))\narray([-14], dtype=int8)\n>>> np.invert(np.array([True, False]))\narray([False, True])",
   }
   -/
-
+  
   /-  Compute bit-wise inversion (NOT) of each element in a vector of integers.
       For signed integers, this returns the two's complement. -/
-
+  
   /-  Specification: invert computes the bitwise NOT operation element-wise.
       
       Mathematical properties:
@@ -32,16 +32,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def invert {n : Nat} (x : Vector Int n) : Id (Vector Int n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem invert_spec {n : Nat} (x : Vector Int n) :
@@ -54,8 +54,9 @@ vc-condition: |-
                    (∀ i : Fin n, x.get i ≠ -1 → (x.get i > 0 ↔ result.get i < 0))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -7,9 +7,9 @@ vc-description: |-
     "doc": "Returns the element-wise remainder of division.\n\nThis is the NumPy implementation of the C library function fmod, the remainder has the same sign as the dividend x1.",
   }
   -/
-
+  
   /-  Returns the element-wise remainder of division where the remainder has the same sign as the dividend -/
-
+  
   /-  Specification: fmod returns element-wise remainder with same sign as dividend,
       handling division by zero by returning NaN -/
 
@@ -19,16 +19,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def fmod {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem fmod_spec {n : Nat} (x1 x2 : Vector Float n) :
@@ -51,8 +51,9 @@ vc-condition: |-
             Float.abs (result.get i) < Float.abs (x2.get i))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

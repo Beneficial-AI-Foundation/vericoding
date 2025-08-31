@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "Compute the bit-wise XOR of two arrays element-wise.\n\nComputes the bit-wise XOR of the underlying binary representation of the integers in the input arrays. This ufunc implements the C/Python operator ^.\n\nParameters\n----------\nx1, x2 : array_like\n    Only integer and boolean types are handled.\n    If x1.shape != x2.shape, they must be broadcastable to a common shape.\nout : ndarray, None, or tuple of ndarray and None, optional\n    A location into which the result is stored.\nwhere : array_like, optional\n    This condition is broadcast over the input.\n\nReturns\n-------\nout : ndarray or scalar\n    Result.\n\nExamples\n--------\n>>> np.bitwise_xor(13, 17)\n28\n>>> np.bitwise_xor(31, 5)\n26\n>>> np.bitwise_xor([31,3], 5)\narray([26, 6])\n>>> np.bitwise_xor([31,3], [5,6])\narray([26, 5])\n>>> np.array([True, True]) ^ np.array([False, True])\narray([True, False])",
   }
   -/
-
+  
   /-  numpy.bitwise_xor: Compute the bit-wise XOR of two arrays element-wise.
   
       Computes the bit-wise XOR (exclusive OR) of the underlying binary representation 
@@ -28,7 +28,7 @@ vc-description: |-
       For negative integers, NumPy uses two's complement representation,
       which requires a more complex formalization in Lean.
   -/
-
+  
   /-  Specification: bitwise_xor returns a vector where each element is the 
       bitwise XOR of the corresponding elements from x1 and x2.
   
@@ -54,16 +54,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def bitwise_xor {n : Nat} (x1 x2 : Vector Int n) : Id (Vector Int n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem bitwise_xor_spec {n : Nat} (x1 x2 : Vector Int n) 
@@ -77,8 +77,9 @@ vc-condition: |-
                   (∀ i : Fin n, x1.get i = x2.get i → result.get i = 0)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

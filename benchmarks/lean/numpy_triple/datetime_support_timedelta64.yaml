@@ -1,6 +1,16 @@
 vc-description: |-
+  /- 
+  {
+    "name": "numpy.timedelta64",
+    "category": "Datetime types",
+    "description": "A timedelta stored as a 64-bit integer",
+    "url": "https://numpy.org/doc/stable/reference/arrays.datetime.html#numpy.timedelta64",
+    "doc": "A timedelta stored as a 64-bit integer.\n\nSee :ref:\`arrays.datetime\` for more information.\n\n:Character code: \`\`'m'\`\`",
+  }
+  -/
+  
   /-  Create a timedelta64 object from a numeric value and time unit -/
-
+  
   /-  Specification: timedelta64 creates a time duration object with given value and unit -/
 
 vc-preamble: |-
@@ -8,8 +18,7 @@ vc-preamble: |-
   import Std.Tactic.Do
   open Std.Do
   
-  /-  Time unit codes for timedelta64 -/
-  
+  /-- Time unit codes for timedelta64 -/
   inductive TimeUnit where
     /-- Year unit ('Y') -/
     | year       
@@ -36,10 +45,9 @@ vc-preamble: |-
     /-- Femtosecond unit ('fs') -/
     | femtosecond 
     /-- Attosecond unit ('as') -/
-    | attosecond 
+    | attosecond
   
-  /-  Represents a time duration value -/
-  
+  /-- Represents a time duration value -/
   structure TimeDelta64 where
     /-- The numeric value of the time duration -/
     value : Int64
@@ -47,16 +55,16 @@ vc-preamble: |-
     unit : TimeUnit
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def timedelta64 (value : Int64) (unit : TimeUnit) : Id TimeDelta64 :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem timedelta64_spec (value : Int64) (unit : TimeUnit) :
@@ -67,8 +75,9 @@ vc-condition: |-
                   result.value ≤ 9223372036854775807⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

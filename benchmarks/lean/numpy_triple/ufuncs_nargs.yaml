@@ -1,4 +1,12 @@
 vc-description: |-
+  /- 
+  {
+    "name": "nargs",
+    "description": "The number of arguments the ufunc accepts",
+    "details": "Equal to nin + nout"
+  }
+  -/
+  
   /-  numpy.ufunc.nargs: Returns the total number of arguments the ufunc accepts.
       
       This attribute represents the sum of input and output arguments for a ufunc.
@@ -6,7 +14,7 @@ vc-description: |-
       
       This is a read-only attribute that provides metadata about the ufunc's signature.
   -/
-
+  
   /-  Specification: numpy.ufunc.nargs returns nin + nout
       
       Precondition: True (no special preconditions for reading metadata)
@@ -18,8 +26,7 @@ vc-preamble: |-
   import Std.Tactic.Do
   open Std.Do
   
-  /-  Structure representing a NumPy universal function (ufunc) with its metadata -/
-  
+  /-- Structure representing a NumPy universal function (ufunc) with its metadata -/
   structure Ufunc where
     /-- Number of input arguments the ufunc accepts -/
     nin : Nat
@@ -28,16 +35,16 @@ vc-preamble: |-
     deriving Repr, DecidableEq
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_nargs (ufunc : Ufunc) : Id Nat :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_nargs_spec (ufunc : Ufunc) :
@@ -46,8 +53,9 @@ vc-condition: |-
       ⦃⇓result => ⌜result = ufunc.nin + ufunc.nout⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

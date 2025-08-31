@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "Return the numeric string left-filled with zeros.\n\nParameters\n----------\na : array_like, with \`StringDType\`, \`bytes_\` or \`str_\` dtype\nwidth : array_like, with any integer dtype\n    Width of string to left-fill elements in \`a\`\n\nReturns\n-------\nout : ndarray\n    Output array of \`StringDType\`, \`bytes_\` or \`str_\` dtype,\n    depending on input type",
   }
   -/
-
+  
   /-  numpy.strings.zfill: Return the numeric string left-filled with zeros.
   
       Zero-fills each string in the input array by padding it with leading zeros
@@ -33,7 +33,7 @@ vc-description: |-
       4. Sign preservation: leading '+' or '-' characters are preserved
       5. Minimality: no over-padding beyond required width
   -/
-
+  
   /-  Specification: numpy.strings.zfill returns a vector where each string element
       is zero-filled to the specified width.
   
@@ -60,16 +60,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def zfill {n : Nat} (a : Vector String n) (width : Nat) : Id (Vector String n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem zfill_spec {n : Nat} (a : Vector String n) (width : Nat) :
@@ -119,8 +119,9 @@ vc-condition: |-
            ∀ j : Nat, j < (width - original.length) → result.get? ⟨j⟩ = some '0')⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

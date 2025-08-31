@@ -1,6 +1,13 @@
 vc-description: |-
+  /-  
+  -- numpy.isinf: Test element-wise for positive or negative infinity
+  -- Returns a boolean array of the same shape as x, True where x == +/-inf, otherwise False.
+  -- URL: https://numpy.org/doc/stable/reference/generated/numpy.isinf.html
+  -- Category: Array contents testing
+  -/
+  
   /-  Test element-wise for positive or negative infinity in a vector -/
-
+  
   /-  Specification: isinf returns true for positive or negative infinity, false otherwise.
       
       This function tests each element according to IEEE 754 floating-point standard:
@@ -21,16 +28,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def isinf {n : Nat} (x : Vector Float n) : Id (Vector Bool n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem isinf_spec {n : Nat} (x : Vector Float n) :
@@ -45,8 +52,9 @@ vc-condition: |-
         (result.get i = true → ¬(x.get i).isNaN)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

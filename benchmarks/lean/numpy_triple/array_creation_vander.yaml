@@ -9,12 +9,12 @@ vc-description: |-
     "signature": "numpy.vander(x, N=None, increasing=False)"
   }
   -/
-
+  
   /-  Generate a Vandermonde matrix with decreasing powers (default behavior).
       The Vandermonde matrix is a matrix with terms of a geometric progression in each row.
       For a 1D input vector x of length n and specified number of columns m,
       the output is an n×m matrix where entry (i,j) = x[i]^(m-1-j) -/
-
+  
   /-  Specification: vander generates a Vandermonde matrix where each row contains
       powers of the corresponding element from the input vector.
       In the default decreasing mode, column j contains x^(m-1-j) for each element x.
@@ -26,16 +26,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def vander {n m : Nat} (x : Vector Float n) : Id (Vector (Vector Float m) n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem vander_spec {n m : Nat} (x : Vector Float n) (h_m_pos : m > 0) :
@@ -45,8 +45,9 @@ vc-condition: |-
                     (result.get i).get j = (x.get i) ^ ((m - 1 - j.val).toFloat)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

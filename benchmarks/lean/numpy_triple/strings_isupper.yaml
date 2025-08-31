@@ -8,9 +8,9 @@ vc-description: |-
     "doc": "Return true for each element if all cased characters in the string are uppercase and there is at least one character, false otherwise.\n\nParameters\n----------\na : array_like, with \`StringDType\`, \`bytes_\` or \`str_\` dtype\n\nReturns\n-------\nout : ndarray\n    Output array of bools",
   }
   -/
-
+  
   /-  Checks if all cased characters in each string are uppercase and there is at least one character -/
-
+  
   /-  Specification: isupper returns true for each element if all cased characters 
       in the string are uppercase and there is at least one character, false otherwise.
       Mathematical properties:
@@ -25,16 +25,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def isupper {n : Nat} (a : Vector String n) : Id (Vector Bool n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem isupper_spec {n : Nat} (a : Vector String n) :
@@ -48,8 +48,9 @@ vc-condition: |-
                                     (∀ c ∈ chars, c.isAlpha → c.isUpper))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -7,7 +7,7 @@ vc-description: |-
     "doc": "Element-wise arc tangent of x1/x2 choosing the quadrant correctly.\n\nThe quadrant (i.e., branch) is chosen so that arctan2(x1, x2) is the signed angle in radians between the ray ending at the origin and passing through the point (1, 0), and the ray ending at the origin and passing through the point (x2, x1).",
   }
   -/
-
+  
   /-  numpy.arctan2: Element-wise arc tangent of x1/x2 choosing the quadrant correctly.
   
       Computes the arc tangent of x1/x2 for each pair of corresponding elements,
@@ -27,7 +27,7 @@ vc-description: |-
       - arctan2(y, +∞) = -0 for finite y < 0
       - arctan2(y, -∞) = -π for finite y < 0
   -/
-
+  
   /-  Specification: numpy.arctan2 returns a vector where each element is the
       arc tangent of x1[i]/x2[i], computed using both signs to determine the quadrant.
       
@@ -59,16 +59,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_arctan2 {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_arctan2_spec {n : Nat} (x1 x2 : Vector Float n) :
@@ -100,8 +100,9 @@ vc-condition: |-
              Float.abs (x2.get i - r * Float.cos (result.get i)) < 1e-7))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

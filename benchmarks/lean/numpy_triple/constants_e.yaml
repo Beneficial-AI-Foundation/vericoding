@@ -8,9 +8,9 @@ vc-description: |-
     "doc": "e = 2.71828182845904523536028747135266249775724709369995...\n\nEuler's number is the base of the natural logarithm. It is the unique number whose natural logarithm is equal to one.",
   }
   -/
-
+  
   /-  Euler's constant (e), the base of natural logarithms -/
-
+  
   /-  Specification: e is Euler's constant with mathematical properties:
       1. It is approximately 2.718281828459045
       2. It is the unique positive real number such that ln(e) = 1
@@ -24,16 +24,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def e : Id Float :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem e_spec :
@@ -63,8 +63,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

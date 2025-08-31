@@ -1,4 +1,13 @@
 vc-description: |-
+  /- 
+  {
+    "name": "numpy.random.default_rng",
+    "description": "Construct a new Generator with the default BitGenerator (PCG64)",
+    "url": "https://numpy.org/doc/stable/reference/random/generator.html",
+    "doc": "default_rng(seed=None)\n\nConstruct a new Generator with the default BitGenerator (PCG64).\n\nParameters:\n- seed : None, int, array_like[ints], SeedSequence, BitGenerator, Generator\n    A seed to initialize the BitGenerator. If None, fresh, unpredictable entropy will be pulled from the OS.\n\nReturns:\n- Generator\n    The initialized generator object",
+  }
+  -/
+  
   /-  numpy.random.default_rng: Construct a new Generator with the default BitGenerator (PCG64).
   
       Creates a new Generator instance using PCG64 as the underlying BitGenerator.
@@ -7,7 +16,7 @@ vc-description: |-
       If seed is None, the generator will be initialized with fresh entropy from the OS.
       If seed is provided, the generator will be deterministically initialized with that seed.
   -/
-
+  
   /-  Specification: default_rng returns a properly initialized Generator object.
   
       Precondition: True (no restrictions on the seed parameter)
@@ -20,16 +29,14 @@ vc-preamble: |-
   import Std.Tactic.Do
   open Std.Do
   
-  /-  BitGenerator represents the underlying random number generator engine -/
-  
+  /-- BitGenerator represents the underlying random number generator engine -/
   structure BitGenerator where
     /-- Internal state of the generator -/
     state : Nat
     /-- Seed used to initialize the generator -/
     seed : Option Nat
   
-  /-  Generator provides high-level random number generation methods -/
-  
+  /-- Generator provides high-level random number generation methods -/
   structure Generator where
     /-- The underlying BitGenerator (PCG64 by default) -/
     bitGenerator : BitGenerator
@@ -37,16 +44,16 @@ vc-preamble: |-
     initialized : Bool
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def default_rng (seed : Option Nat := none) : Id Generator :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem default_rng_spec (seed : Option Nat := none) :
@@ -57,8 +64,9 @@ vc-condition: |-
                    (seed.isSome → result.bitGenerator.state ≠ 0)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

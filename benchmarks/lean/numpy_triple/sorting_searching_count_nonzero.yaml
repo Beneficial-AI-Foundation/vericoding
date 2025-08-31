@@ -8,7 +8,7 @@ vc-description: |-
       truthful if it is nonzero, whereas any string is considered
       truthful if it is not the empty string. Thus, this function
       counts how many elements in the vector are non-zero. -/
-
+  
   /-  Specification: count_nonzero returns the number of non-zero elements in the vector.
       
       The function counts exactly those elements that are not equal to zero.
@@ -22,16 +22,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def count_nonzero {n : Nat} (a : Vector Int n) : Id Nat :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem count_nonzero_spec {n : Nat} (a : Vector Int n) :
@@ -45,8 +45,9 @@ vc-condition: |-
                   (∃ i : Fin n, a.get i = 0) → count < n⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

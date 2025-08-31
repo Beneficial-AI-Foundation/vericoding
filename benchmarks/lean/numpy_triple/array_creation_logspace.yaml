@@ -7,7 +7,7 @@ vc-description: |-
       
       The samples are evenly spaced in log space, meaning the exponents form an arithmetic sequence.
   -/
-
+  
   /-  Specification: logspace generates numbers evenly spaced on a logarithmic scale.
       
       The function produces a vector where:
@@ -24,16 +24,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def logspace {num : Nat} (start stop : Float) (endpoint : Bool) (base : Float) : Id (Vector Float num) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem logspace_spec {num : Nat} (start stop : Float) (endpoint : Bool) (base : Float) 
@@ -55,8 +55,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

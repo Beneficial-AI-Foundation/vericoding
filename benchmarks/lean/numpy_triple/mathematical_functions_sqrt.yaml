@@ -9,7 +9,7 @@ vc-description: |-
       The function returns an array of the same shape as the input, containing
       the non-negative square-root of each element.
   -/
-
+  
   /-  Specification: sqrt returns a vector where each element is the
       non-negative square root of the corresponding element in x.
   
@@ -31,16 +31,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def sqrt {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem sqrt_spec {n : Nat} (x : Vector Float n) :
@@ -54,8 +54,9 @@ vc-condition: |-
         (x.get i = 1 → result.get i = 1)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

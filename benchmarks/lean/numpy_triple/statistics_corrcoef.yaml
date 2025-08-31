@@ -18,7 +18,7 @@ vc-description: |-
       
       Requires non-empty vectors and non-zero variance in both variables.
   -/
-
+  
   /-  Specification: corrcoef computes the Pearson correlation coefficient between two vectors.
   
       The correlation coefficient satisfies several mathematical properties:
@@ -37,16 +37,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def corrcoef {n : Nat} (x y : Vector Float (n + 1)) : Id Float :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem corrcoef_spec {n : Nat} (x y : Vector Float (n + 1)) 
@@ -67,8 +67,9 @@ vc-condition: |-
                      result = cov_xy / Float.sqrt (var_x * var_y))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -14,7 +14,7 @@ vc-description: |-
       supports multiple insertions and various index specifications, but for formal
       verification we start with the simplest case.
   -/
-
+  
   /-  Specification: numpy.insert creates a new vector with the value inserted at the specified index.
   
       Precondition: The index is valid (enforced by type system via Fin (n + 1))
@@ -42,16 +42,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_insert {n : Nat} (arr : Vector α n) (idx : Fin (n + 1)) (value : α) : Id (Vector α (n + 1)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_insert_spec {n : Nat} (arr : Vector α n) (idx : Fin (n + 1)) (value : α) :
@@ -71,8 +71,9 @@ vc-condition: |-
                      (idx < i ∧ i.val = j.val + 1 ∧ result.get i = arr.get j))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

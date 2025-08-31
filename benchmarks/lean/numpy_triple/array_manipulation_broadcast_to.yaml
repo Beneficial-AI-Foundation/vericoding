@@ -10,10 +10,10 @@ vc-description: |-
     "signature": "numpy.broadcast_to(array, shape, subok=False)"
   }
   -/
-
+  
   /-  Broadcast a 1D vector to a 2D matrix by repeating it along rows.
       This implements the most common broadcasting pattern: (n,) -> (m, n) -/
-
+  
   /-  Specification: broadcast_to creates a 2D matrix where each row is a copy of the input vector.
       
       Mathematical properties:
@@ -49,16 +49,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def broadcast_to {n m : Nat} (v : Vector Float n) : Id (Vector (Vector Float n) m) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem broadcast_to_spec {n m : Nat} (v : Vector Float n) :
@@ -78,8 +78,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

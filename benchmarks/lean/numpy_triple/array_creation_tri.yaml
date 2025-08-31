@@ -9,14 +9,14 @@ vc-description: |-
     "signature": "numpy.tri(N, M=None, k=0, dtype=<class 'float'>, *, like=None)"
   }
   -/
-
+  
   /-  An array with ones at and below the given diagonal and zeros elsewhere.
       
       Creates a matrix of shape (N, M) where T[i,j] = 1 if j ≤ i + k, and 0 otherwise.
       The parameter k controls the diagonal: k = 0 is the main diagonal,
       k < 0 is below it, and k > 0 is above it.
   -/
-
+  
   /-  Specification: tri creates a lower triangular matrix with specified diagonal offset.
       
       The resulting matrix has ones at and below the k-th diagonal, zeros elsewhere.
@@ -33,16 +33,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def tri (N M : Nat) (k : Int) : Id (Vector (Vector Float M) N) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem tri_spec (N M : Nat) (k : Int) :
@@ -52,8 +52,9 @@ vc-condition: |-
                     (result.get i).get j = if (j.val : Int) ≤ (i.val : Int) + k then 1.0 else 0.0⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

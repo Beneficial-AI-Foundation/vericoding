@@ -8,7 +8,7 @@ vc-description: |-
       This specification handles the case where m ≤ n. When m > n, the derivative
       would be the zero polynomial.
   -/
-
+  
   /-  Specification: polyder computes the m-th derivative of a polynomial with scaling.
       
       Mathematical properties: 
@@ -31,17 +31,17 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def polyder {n : Nat} (c : Vector Float n) (m : Nat := 1) (scl : Float := 1) 
       (h : m ≤ n) : Id (Vector Float (n - m)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem polyder_spec {n : Nat} (c : Vector Float n) (m : Nat) (scl : Float) 
@@ -67,8 +67,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

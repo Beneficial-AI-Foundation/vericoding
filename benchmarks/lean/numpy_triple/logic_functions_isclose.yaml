@@ -2,7 +2,7 @@ vc-description: |-
   /-  Returns a boolean array where two arrays are element-wise equal within a tolerance.
       For finite values, isclose uses the equation: absolute(a - b) <= (atol + rtol * absolute(b))
       where `b` is treated as the reference value. -/
-
+  
   /-  Specification: isclose returns a boolean array indicating element-wise closeness within tolerance -/
 
 vc-preamble: |-
@@ -11,16 +11,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def isclose {n : Nat} (a b : Vector Float n) (rtol : Float) (atol : Float) (equal_nan : Bool) : Id (Vector Bool n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem isclose_spec {n : Nat} (a b : Vector Float n) (rtol : Float) (atol : Float) (equal_nan : Bool) 
@@ -46,8 +46,9 @@ vc-condition: |-
            ((a.get i).isNaN ∧ (b.get i).isNaN ∧ equal_nan = false))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -10,7 +10,7 @@ vc-description: |-
     "signature": "numpy.ravel(a, order='C')"
   }
   -/
-
+  
   /-  numpy.ravel: Return a contiguous flattened array.
   
       For 1D arrays, ravel returns the input array unchanged since it's already
@@ -20,7 +20,7 @@ vc-description: |-
       into a 1D array following the specified order ('C' for row-major, 'F' for
       column-major, etc.).
   -/
-
+  
   /-  Specification: numpy.ravel returns the input vector unchanged for 1D arrays.
   
       Precondition: True (no special preconditions for 1D ravel)
@@ -34,16 +34,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def ravel {n : Nat} (a : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem ravel_spec {n : Nat} (a : Vector Float n) :
@@ -52,8 +52,9 @@ vc-condition: |-
       ⦃⇓result => ⌜result = a⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -9,7 +9,7 @@ vc-description: |-
       
       Returns an array of the same shape as x, containing the weight function values.
   -/
-
+  
   /-  Specification: hermeweight returns a vector where each element is the HermiteE weight function
       applied to the corresponding element in x.
   
@@ -31,16 +31,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def hermeweight {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem hermeweight_spec {n : Nat} (x : Vector Float n) :
@@ -51,8 +51,9 @@ vc-condition: |-
                     (∀ j : Fin n, result.get i = result.get j ↔ Float.abs (x.get i) = Float.abs (x.get j))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -7,10 +7,10 @@ vc-description: |-
     "doc": "Return the cumulative product of array elements over a given axis treating Not a Numbers (NaNs) as one.",
   }
   -/
-
+  
   /-  Return the cumulative product of array elements treating NaNs as 1.
       The cumulative product does not change when NaNs are encountered and leading NaNs are replaced by ones. -/
-
+  
   /-  Specification: nancumprod returns the cumulative product while treating NaN values as 1.
       This means:
       1. The resulting array has the same size as the input
@@ -25,16 +25,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def nancumprod {n : Nat} (arr : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem nancumprod_spec {n : Nat} (arr : Vector Float n) :
@@ -52,8 +52,9 @@ vc-condition: |-
           if Float.isNaN val then acc else acc * val) 1.0⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

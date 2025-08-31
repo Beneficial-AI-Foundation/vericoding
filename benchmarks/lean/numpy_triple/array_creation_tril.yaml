@@ -9,7 +9,7 @@ vc-description: |-
     "signature": "numpy.tril(m, k=0)"
   }
   -/
-
+  
   /-  numpy.tril: Lower triangle of a matrix.
   
       Returns a copy of the input matrix with elements above the k-th diagonal zeroed.
@@ -22,7 +22,7 @@ vc-description: |-
       - It is kept if i >= j - k
       - It is zeroed if i < j - k
   -/
-
+  
   /-  Specification: tril returns a lower triangular matrix by zeroing elements above the k-th diagonal.
       
       Mathematical Properties:
@@ -51,17 +51,17 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def tril {rows cols : Nat} (m : Vector (Vector Float cols) rows) (k : Int := 0) : 
       Id (Vector (Vector Float cols) rows) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem tril_spec {rows cols : Nat} (m : Vector (Vector Float cols) rows) (k : Int := 0) :
@@ -88,8 +88,9 @@ vc-condition: |-
                       (twice_applied.get i).get j = (result.get i).get j)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

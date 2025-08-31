@@ -9,7 +9,7 @@ vc-description: |-
   
       This function returns the position of the largest element in the array.
   -/
-
+  
   /-  Specification: numpy.argmax returns the index of the maximum element.
   
       Precondition: True (non-empty constraint is in the type)
@@ -23,16 +23,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def argmax {n : Nat} (a : Vector Float (n + 1)) : Id (Fin (n + 1)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem argmax_spec {n : Nat} (a : Vector Float (n + 1)) :
@@ -42,8 +42,9 @@ vc-condition: |-
               (∀ j : Fin (n + 1), a.get j = a.get i → i ≤ j)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

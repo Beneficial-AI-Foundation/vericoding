@@ -7,7 +7,7 @@ vc-description: |-
     "doc": "Round to nearest integer towards zero.\n\nRounds an array of floats element-wise to nearest integer towards zero.",
   }
   -/
-
+  
   /-  numpy.fix: Round to nearest integer towards zero, element-wise.
       
       The fix (truncation) of each element x is the integer part of x,
@@ -19,7 +19,7 @@ vc-description: |-
       
       Returns an array of the same shape as x, containing the fix of each element.
   -/
-
+  
   /-  Specification: numpy.fix returns a vector where each element is the
       fix (truncation towards zero) of the corresponding element in x.
       
@@ -42,16 +42,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_fix {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_fix_spec {n : Nat} (x : Vector Float n) :
@@ -69,8 +69,9 @@ vc-condition: |-
         (∀ j : Fin n, x.get i ≤ x.get j → result.get i ≤ result.get j)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

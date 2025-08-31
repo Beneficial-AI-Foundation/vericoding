@@ -7,9 +7,9 @@ vc-description: |-
     "doc": "ln(2) = 0.693147180559945309417232121458176568",
   }
   -/
-
+  
   /-  Natural logarithm of 2 -/
-
+  
   /-  Specification: nPY_LOGE2 returns the natural logarithm of 2 with correct mathematical properties -/
 
 vc-preamble: |-
@@ -18,16 +18,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def nPY_LOGE2 : Id Float :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem nPY_LOGE2_spec :
@@ -51,8 +51,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

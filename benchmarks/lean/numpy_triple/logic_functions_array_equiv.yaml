@@ -7,7 +7,7 @@ vc-description: |-
       For 1D arrays of the same size, this means element-wise comparison.
       The function returns True if all corresponding elements are equal.
   -/
-
+  
   /-  Specification: array_equiv returns true iff all corresponding elements are equal.
   
       Precondition: True (works for any two vectors of the same size)
@@ -27,16 +27,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def array_equiv {n : Nat} (a1 a2 : Vector Float n) : Id Bool :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem array_equiv_spec {n : Nat} (a1 a2 : Vector Float n) :
@@ -45,8 +45,9 @@ vc-condition: |-
       ⦃⇓result => ⌜result = (∀ i : Fin n, a1.get i = a2.get i)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

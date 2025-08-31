@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "Evaluate a 2-D Laguerre series on the Cartesian product of x and y.\n\n    This function returns the values:\n\n    .. math:: p(a,b) = \\\\sum_{i,j} c_{i,j} * L_i(a) * L_j(b)\n\n    where the points \`\`(a, b)\`\` consist of all pairs formed by taking\n    \`a\` from \`x\` and \`b\` from \`y\`. The resulting points form a grid with\n    \`x\` in the first dimension and \`y\` in the second.\n\n    The parameters \`x\` and \`y\` are converted to arrays only if they are\n    tuples or a lists, otherwise they are treated as a scalars. In either\n    case, either \`x\` and \`y\` or their elements must support multiplication\n    and addition both with themselves and with the elements of \`c\`.\n\n    If \`c\` has fewer than two dimensions, ones are implicitly appended to\n    its shape to make it 2-D. The shape of the result will be c.shape[2:] +\n    x.shape + y.shape.\n\n    Parameters\n    ----------\n    x, y : array_like, compatible objects\n        The two dimensional series is evaluated at the points in the\n        Cartesian product of \`x\` and \`y\`.  If \`x\` or \`y\` is a list or\n        tuple, it is first converted to an ndarray, otherwise it is left\n        unchanged and, if it isn't an ndarray, it is treated as a scalar.\n    c : array_like\n        Array of coefficients ordered so that the coefficient of the term of\n        multi-degree i,j is contained in \`\`c[i,j]\`\`. If \`c\` has dimension\n        greater than two the remaining indices enumerate multiple sets of\n        coefficients.\n\n    Returns\n    -------\n    values : ndarray, compatible object\n        The values of the two dimensional Chebyshev series at points in the\n        Cartesian product of \`x\` and \`y\`.\n\n    See Also\n    --------\n    lagval, lagval2d, lagval3d, laggrid3d\n\n    Examples\n    --------\n    >>> from numpy.polynomial.laguerre import laggrid2d\n    >>> c = [[1, 2], [3, 4]]\n    >>> laggrid2d([0, 1], [0, 1], c)\n    array([[10.,  4.],\n           [ 3.,  1.]])",
   }
   -/
-
+  
   /-  numpy.polynomial.laguerre.laggrid2d: Evaluate a 2-D Laguerre series on the Cartesian product of x and y.
   
       This function computes the values p(a,b) = ∑_{i,j} c_{i,j} * L_i(a) * L_j(b)
@@ -18,7 +18,7 @@ vc-description: |-
       The coefficients c represent a 2D matrix where c[i,j] is the coefficient for
       the term of multi-degree i,j in the Laguerre series expansion.
   -/
-
+  
   /-  Specification: laggrid2d evaluates a 2D Laguerre series on the Cartesian product of x and y.
   
       The function computes p(a,b) = ∑_{i,j} c_{i,j} * L_i(a) * L_j(b) for each point (a,b)
@@ -41,8 +41,8 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def laggrid2d {nx ny : Nat} {rows cols : Nat} 
@@ -50,9 +50,9 @@ vc-signature: |-
       Id (Vector (Vector Float ny) nx) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem laggrid2d_spec {nx ny : Nat} {rows cols : Nat} 
@@ -70,8 +70,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

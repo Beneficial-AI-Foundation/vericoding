@@ -9,7 +9,7 @@ vc-description: |-
       For simplicity, we focus on the main diagonal case (k=0) and return a 1D flattened
       representation of the square matrix.
   -/
-
+  
   /-  Specification: diagflat creates a square matrix with input values on the main diagonal.
   
       Precondition: True (no special preconditions)
@@ -25,16 +25,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def diagflat {n : Nat} (v : Vector Float n) : Id (Vector Float (n * n)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem diagflat_spec {n : Nat} (v : Vector Float n) :
@@ -48,8 +48,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

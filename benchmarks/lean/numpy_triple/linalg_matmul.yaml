@@ -8,11 +8,11 @@ vc-description: |-
     "doc": "Matrix product of two arrays. The behavior depends on the arguments:\n- If both arguments are 2-D they are multiplied like conventional matrices\n- If either argument is N-D, N > 2, it is treated as a stack of matrices\n- If the first argument is 1-D, it is promoted to a matrix by prepending a 1 to its dimensions\n- If the second argument is 1-D, it is promoted to a matrix by appending a 1 to its dimensions\n\nThis is the same as the @ operator.",
   }
   -/
-
+  
   /-  Matrix multiplication for 2D matrices. 
       Computes the matrix product of two 2D arrays following standard matrix multiplication rules.
       The result matrix C has dimensions (m x p) where A is (m x n) and B is (n x p). -/
-
+  
   /-  Specification: Matrix multiplication produces a result where each element is the dot product 
       of the corresponding row from the first matrix and column from the second matrix.
       
@@ -29,17 +29,17 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def matmul {m n p : Nat} (A : Vector (Vector Float n) m) (B : Vector (Vector Float p) n) : 
       Id (Vector (Vector Float p) m) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem matmul_spec {m n p : Nat} (A : Vector (Vector Float n) m) (B : Vector (Vector Float p) n) :
@@ -51,8 +51,9 @@ vc-condition: |-
                   (List.map (fun row => row.get j) B.toList))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

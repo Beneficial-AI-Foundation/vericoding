@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "For each element in \`a\`, return a copy of the string where all characters occurring in the optional argument \`deletechars\` are removed, and the remaining characters have been mapped through the given translation table.\n\nParameters\n----------\na : array_like, with \`bytes_\` dtype\ntable : array_like with \`bytes_\` dtype and shape (1, 256)\n    String of 256 bytes. Characters to map to (length 256)\ndeletechars : array_like, with \`bytes_\` dtype, optional\n    Characters to delete. If not given, no deletion occurs.\n\nReturns\n-------\nout : ndarray\n    Output array of \`bytes_\` dtype",
   }
   -/
-
+  
   /-  numpy.strings.translate: For each element in a, return a copy of the string where 
       all characters occurring in deletechars are removed, and the remaining characters 
       have been mapped through the given translation table.
@@ -17,7 +17,7 @@ vc-description: |-
       removing characters specified in deletechars, then translating each remaining
       character using a 256-byte translation table.
   -/
-
+  
   /-  Specification for numpy.strings.translate: Returns a vector where each element is 
       the result of character deletion followed by character translation.
   
@@ -36,17 +36,17 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def translate {n m : Nat} (a : Vector String n) (table : Vector UInt8 256) 
       (deletechars : Vector UInt8 m) : Id (Vector String n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem translate_spec {n m : Nat} (a : Vector String n) (table : Vector UInt8 256) 
@@ -92,8 +92,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

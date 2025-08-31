@@ -7,9 +7,9 @@ vc-description: |-
     "doc": "Calculate the absolute value element-wise.\n\nSignature: numpy.absolute(x, /, out=None, *, where=True, casting='same_kind', order='K', dtype=None, subok=True)\n\nParameters:\n  x: array_like - Input array\n  out: ndarray, None, or tuple of ndarray and None, optional - A location into which the result is stored\n\nReturns:\n  absolute: ndarray - An ndarray containing the absolute value of each element in x",
   }
   -/
-
+  
   /-  Calculate the absolute value element-wise for a vector of integers -/
-
+  
   /-  Specification: absolute computes the absolute value of each element with the following mathematical properties:
       1. Basic definition: |x| = x if x ≥ 0, otherwise -x
       2. Non-negativity: |x| ≥ 0 for all x
@@ -23,16 +23,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def absolute {n : Nat} (x : Vector Int n) : Id (Vector Int n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem absolute_spec {n : Nat} (x : Vector Int n) :
@@ -46,8 +46,9 @@ vc-condition: |-
                       result.get i * (if y ≥ 0 then y else -y))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

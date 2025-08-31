@@ -7,9 +7,9 @@ vc-description: |-
     "doc": "√(1/2) = 0.707106781186547524400844362104849039",
   }
   -/
-
+  
   /-  NPY_SQRT1_2: Square root of 1/2 as a Float constant -/
-
+  
   /-  Specification: NPY_SQRT1_2 equals the square root of 1/2 with mathematical properties -/
 
 vc-preamble: |-
@@ -18,16 +18,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def NPY_SQRT1_2 : Id Float :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem NPY_SQRT1_2_spec :
@@ -40,8 +40,9 @@ vc-condition: |-
                    Float.abs (result - 0.707106781186547524400844362104849039) < 1e-15⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -8,11 +8,11 @@ vc-description: |-
     "doc": "Compute the eigenvalues of a complex Hermitian or real symmetric matrix.\n\nMain difference from eigh: Does not compute eigenvectors.\n\nParameters:\n- a: Hermitian or symmetric matrix\n- UPLO: Use upper or lower triangular part\n\nReturns:\n- w: The eigenvalues in ascending order",
   }
   -/
-
+  
   /-  Compute the eigenvalues of a real symmetric matrix.
       Returns eigenvalues in ascending order without computing eigenvectors.
       This is the eigenvalues-only version of the symmetric eigenvalue problem. -/
-
+  
   /-  Specification: eigvalsh computes eigenvalues of a real symmetric matrix.
       
       The eigenvalues are real (since the matrix is symmetric) and returned in ascending order.
@@ -31,16 +31,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def eigvalsh {n : Nat} (a : Vector (Vector Float n) n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem eigvalsh_spec {n : Nat} (a : Vector (Vector Float n) n) 
@@ -64,8 +64,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

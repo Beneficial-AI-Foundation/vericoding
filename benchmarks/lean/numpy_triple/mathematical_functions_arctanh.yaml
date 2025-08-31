@@ -10,7 +10,7 @@ vc-description: |-
       Returns an array of the same shape as x, containing the inverse hyperbolic tangent 
       of each element.
   -/
-
+  
   /-  Specification: numpy.arctanh returns a vector where each element is the inverse
       hyperbolic tangent of the corresponding element in x.
       
@@ -32,16 +32,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_arctanh {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_arctanh_spec {n : Nat} (x : Vector Float n) 
@@ -59,8 +59,9 @@ vc-condition: |-
                    (¬(result.get i).isNaN ∧ ¬(result.get i).isInf)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

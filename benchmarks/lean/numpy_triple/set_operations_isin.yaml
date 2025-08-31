@@ -9,7 +9,7 @@ vc-description: |-
       For 1-D arrays, this is roughly equivalent to:
       `np.array([item in test_elements for item in element])`
   -/
-
+  
   /-  Specification: numpy.isin returns a boolean vector where each element indicates
       whether the corresponding element in the input vector is found in test_elements.
   
@@ -23,16 +23,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_isin {n m : Nat} (element : Vector Float n) (test_elements : Vector Float m) : Id (Vector Bool n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_isin_spec {n m : Nat} (element : Vector Float n) (test_elements : Vector Float m) :
@@ -41,8 +41,9 @@ vc-condition: |-
       ⦃⇓result => ⌜∀ i : Fin n, result.get i = true ↔ ∃ j : Fin m, element.get i = test_elements.get j⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -7,7 +7,7 @@ vc-description: |-
     "doc": "numpy.fft.fftshift(x, axes=None)\n\nShift the zero-frequency component to the center of the spectrum.\n\nParameters:\n- x: Input array\n- axes: Optional int or shape tuple specifying axes over which to shift (default is None, which shifts all axes)\n\nReturns:\n- y: ndarray, the shifted array\n\nKey Details:\n- Swaps half-spaces for specified axes\n- y[0] is the Nyquist component only if len(x) is even\n\nExamples:\nimport numpy as np\nfreqs = np.fft.fftfreq(10, 0.1)\n# freqs: [ 0.,  1.,  2., ..., -3., -2., -1.]\nnp.fft.fftshift(freqs)\n# Result: [-5., -4., -3., -2., -1.,  0.,  1.,  2.,  3.,  4.]\n\n# Shift along specific axis\nfreqs = np.fft.fftfreq(9, d=1./9).reshape(3, 3)\nnp.fft.fftshift(freqs, axes=(1,))\n\nSee also: numpy.fft.ifftshift (inverse of fftshift)",
   }
   -/
-
+  
   /-  Shift the zero-frequency component to the center of the spectrum.
       
       This function rearranges the FFT output such that the zero-frequency 
@@ -15,7 +15,7 @@ vc-description: |-
       For even-length arrays, it performs a circular shift by n/2.
       For odd-length arrays, it performs a circular shift by (n-1)/2.
   -/
-
+  
   /-  Specification: fftshift performs a circular shift that moves the zero-frequency 
       component to the center of the array.
       
@@ -37,16 +37,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def fftshift {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem fftshift_spec {n : Nat} (x : Vector Float n) :
@@ -57,8 +57,9 @@ vc-condition: |-
                     (∀ val : Float, (∃ j : Fin n, x.get j = val) ↔ (∃ k : Fin n, result.get k = val))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

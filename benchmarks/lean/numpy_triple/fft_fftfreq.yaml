@@ -10,7 +10,7 @@ vc-description: |-
       The frequencies are arranged in standard DFT order: positive frequencies
       first, then negative frequencies.
   -/
-
+  
   /-  Specification: fftfreq returns sample frequencies according to the DFT convention.
       
       The frequencies are arranged so that:
@@ -36,16 +36,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def fftfreq {n : Nat} (d : Float := 1.0) (h : n > 0) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem fftfreq_spec {n : Nat} (d : Float) (h_n : n > 0) (h_d : d ≠ 0) :
@@ -59,8 +59,9 @@ vc-condition: |-
                     (result.get ⟨0, by omega⟩ = 0)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

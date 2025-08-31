@@ -11,7 +11,7 @@ vc-description: |-
   
       This is essentially irfftn with axes=(-2, -1) as defaults.
   -/
-
+  
   /-  Specification: numpy.fft.irfft2 returns the inverse 2D real FFT.
   
       Precondition: True (input is a well-formed 2D array)
@@ -30,16 +30,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_irfft2 {rows cols : Nat} (a : Vector (Vector Float cols) rows) : Id (Vector (Vector Float cols) rows) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_irfft2_spec {rows cols : Nat} (a : Vector (Vector Float cols) rows) :
@@ -58,8 +58,9 @@ vc-condition: |-
           ∃ (k : Fin rows) (l : Fin cols), (result.get k).get l ≠ 0)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

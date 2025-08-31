@@ -10,7 +10,7 @@ vc-description: |-
     "source_location": "numpy/_core/fromnumeric.py"
   }
   -/
-
+  
   /-  Gives a new shape to an array without changing its data.
       
       This implementation focuses on the most common case: reshaping a 1D array
@@ -21,7 +21,7 @@ vc-description: |-
       the sizes are explicitly equal. More complex reshaping operations (like
       multidimensional arrays or -1 inference) would require additional machinery.
   -/
-
+  
   /-  Specification: reshape preserves all elements in their linear order.
       
       The reshape operation creates a new vector with a different size parameter
@@ -44,16 +44,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def reshape {n m : Nat} (a : Vector Float n) (h_size : n = m) : Id (Vector Float m) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem reshape_spec {n m : Nat} (a : Vector Float n) (h_size : n = m) :
@@ -62,8 +62,9 @@ vc-condition: |-
       ⦃⇓result => ⌜∀ i : Fin m, result.get i = a.get (i.cast h_size.symm)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

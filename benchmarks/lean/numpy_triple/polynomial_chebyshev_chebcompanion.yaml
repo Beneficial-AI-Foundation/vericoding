@@ -13,7 +13,7 @@ vc-description: |-
       Returns:
       - mat : Scaled companion matrix of dimensions (deg, deg) where deg = len(c) - 1
   -/
-
+  
   /-  Specification: chebcompanion returns a scaled companion matrix with specific structure.
   
       Precondition: The input vector has at least 2 elements (enforced by type)
@@ -30,16 +30,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def chebcompanion {n : Nat} (c : Vector Float (n + 2)) : Id (Vector (Vector Float (n + 1)) (n + 1)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem chebcompanion_spec {n : Nat} (c : Vector Float (n + 2)) :
@@ -64,8 +64,9 @@ vc-condition: |-
                      else -adjustment))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

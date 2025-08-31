@@ -8,9 +8,9 @@ vc-description: |-
     "doc": "Compute the determinant of an array.\n\nParameters:\n- a: Input array, must be square\n\nReturns:\n- det: Determinant of a\n\nThe determinant is computed via LU decomposition using LAPACK routine _getrf.",
   }
   -/
-
+  
   /-  Compute the determinant of a square matrix -/
-
+  
   /-  Specification: det computes the determinant of a square matrix.
       The determinant satisfies fundamental mathematical properties including:
       - Explicit formulas for small matrices
@@ -23,16 +23,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def det {n : Nat} (a : Vector (Vector Float n) n) : Id Float :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem det_spec {n : Nat} (a : Vector (Vector Float n) n) :
@@ -63,8 +63,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

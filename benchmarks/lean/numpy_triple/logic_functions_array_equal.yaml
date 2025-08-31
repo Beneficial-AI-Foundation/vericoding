@@ -12,7 +12,7 @@ vc-description: |-
       For Vector types, the shape constraint is automatically satisfied by the type system,
       so we only need to check element-wise equality.
   -/
-
+  
   /-  Specification: numpy.array_equal returns True if and only if all corresponding 
       elements in the two vectors are equal.
   
@@ -40,16 +40,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def arrayEqual {T : Type} [BEq T] {n : Nat} (a1 a2 : Vector T n) : Id Bool :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem arrayEqual_spec {T : Type} [BEq T] {n : Nat} (a1 a2 : Vector T n) :
@@ -60,8 +60,9 @@ vc-condition: |-
                     (∃ i : Fin n, ¬(a1.get i == a2.get i) → result = false)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

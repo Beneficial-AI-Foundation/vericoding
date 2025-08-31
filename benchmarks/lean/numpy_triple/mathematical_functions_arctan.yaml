@@ -7,9 +7,9 @@ vc-description: |-
     "doc": "Trigonometric inverse tangent, element-wise.\n\nThe inverse of tan, so that if y = tan(x) then x = arctan(y).",
   }
   -/
-
+  
   /-  Computes the element-wise inverse tangent of a vector -/
-
+  
   /-  Specification: arctan computes the inverse tangent of each element,
       with comprehensive mathematical properties including range bounds,
       monotonicity, and behavior at special values. -/
@@ -20,16 +20,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def arctan {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem arctan_spec {n : Nat} (x : Vector Float n) :
@@ -58,8 +58,9 @@ vc-condition: |-
                     ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -3,7 +3,7 @@ vc-description: |-
       Returns the pseudo-Vandermonde matrix of degrees `deg` and sample points `(x, y)`.
       The pseudo-Vandermonde matrix is defined by V[..., (deg[1] + 1)*i + j] = L_i(x) * L_j(y),
       where 0 <= i <= deg[0] and 0 <= j <= deg[1]. -/
-
+  
   /-  Specification: legvander2d constructs a 2D pseudo-Vandermonde matrix where each row 
       corresponds to a point (x_i, y_i) and each column corresponds to a product of 
       Legendre polynomials L_i(x) * L_j(y).
@@ -18,16 +18,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def legvander2d {n : Nat} (x y : Vector Float n) (deg_x deg_y : Nat) : Id (Vector (Vector Float ((deg_x + 1) * (deg_y + 1))) n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem legvander2d_spec {n : Nat} (x y : Vector Float n) (deg_x deg_y : Nat) :
@@ -47,8 +47,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

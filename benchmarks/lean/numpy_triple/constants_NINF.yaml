@@ -8,9 +8,9 @@ vc-description: |-
     "doc": "IEEE 754 floating point representation of negative infinity.\n\nDEPRECATED: Removed from main namespace in NumPy 2.0. Use -np.inf instead.",
   }
   -/
-
+  
   /-  IEEE 754 floating point representation of negative infinity (deprecated in NumPy 2.0) -/
-
+  
   /-  Specification: NINF represents negative infinity with the following properties:
       1. NINF is less than any finite float value
       2. NINF + any finite value = NINF
@@ -25,16 +25,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def NINF : Id Float :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem NINF_spec :
@@ -64,8 +64,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

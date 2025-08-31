@@ -10,11 +10,11 @@ vc-description: |-
     "signature": "numpy.fliplr(m)"
   }
   -/
-
+  
   /-  Reverses the order of columns in a 2D matrix (left/right flip).
       For a matrix with shape (rows × cols), this operation reverses the order 
       of elements along each row, effectively flipping the matrix horizontally. -/
-
+  
   /-  Specification: fliplr reverses the column order in each row of the matrix.
       The element at position (i, j) in the input matrix appears at position 
       (i, cols-1-j) in the output matrix. This captures the mathematical property
@@ -37,16 +37,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def fliplr {rows cols : Nat} (m : Vector (Vector Float cols) rows) : Id (Vector (Vector Float cols) rows) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem fliplr_spec {rows : Nat} {cols : Nat} (m : Vector (Vector Float (cols + 1)) rows) :
@@ -66,8 +66,9 @@ vc-condition: |-
                      (result.get i).get mid = (m.get i).get mid)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

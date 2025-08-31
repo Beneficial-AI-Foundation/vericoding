@@ -8,13 +8,13 @@ vc-description: |-
     "doc": "Multiply a Chebyshev series by x.\n\n    Multiply the polynomial \`c\` by x, where x is the independent\n    variable.\n\n\n    Parameters\n    ----------\n    c : array_like\n        1-D array of Chebyshev series coefficients ordered from low to\n        high.\n\n    Returns\n    -------\n    out : ndarray\n        Array representing the result of the multiplication.\n\n    See Also\n    --------\n    chebadd, chebsub, chebmul, chebdiv, chebpow\n\n    Examples\n    --------\n    >>> from numpy.polynomial import chebyshev as C\n    >>> C.chebmulx([1,2,3])\n    array([1. , 2.5, 1. , 1.5])",
   }
   -/
-
+  
   /-  Multiply a Chebyshev series by x.
       This function multiplies a Chebyshev polynomial represented by its coefficients by x.
       The operation is based on the recurrence relation:
       - xT₀(x) = T₁(x)
       - xTₙ(x) = (Tₙ₊₁(x) + Tₙ₋₁(x))/2 for n ≥ 1 -/
-
+  
   /-  Specification: chebmulx correctly multiplies a Chebyshev polynomial by x.
       
       Given coefficients c = [c₀, c₁, ..., cₙ₋₁] representing the polynomial
@@ -34,16 +34,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def chebmulx {n : Nat} (c : Vector Float n) : Id (Vector Float (n + 1)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem chebmulx_spec {n : Nat} (c : Vector Float n) :
@@ -72,8 +72,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

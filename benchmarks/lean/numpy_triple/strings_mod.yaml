@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "Return (a % i), that is pre-Python 2.6 string formatting (interpolation), element-wise for a pair of array_likes of string objects.\n\nFor example, if \`a = '%.2f hours'\` and \`i = 2.5\`, the result is '2.50 hours'.\n\nParameters\n----------\na : array_like, with \`StringDType\`, \`bytes_\` or \`str_\` dtype\ni : array_like\n    A single Python object, or a sequence of objects, used for filling in the format string.\n\nReturns\n-------\nout : ndarray\n    Output array of \`StringDType\`, \`bytes_\` or \`str_\` dtype,\n    depending on input types",
   }
   -/
-
+  
   /-  numpy.strings.mod: Return (a % i), that is pre-Python 2.6 string formatting 
       (interpolation), element-wise for a pair of array_likes of string objects.
   
@@ -32,7 +32,7 @@ vc-description: |-
       4. Type preservation: maintains string type characteristics
       5. Handles various format specifiers: %s, %i, %f, %d, etc.
   -/
-
+  
   /-  Specification: numpy.strings.mod returns a vector where each element is the 
       result of formatting the corresponding format string with its value.
   
@@ -63,16 +63,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def mod {n : Nat} (a values : Vector String n) : Id (Vector String n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem mod_spec {n : Nat} (a values : Vector String n) :
@@ -99,8 +99,9 @@ vc-condition: |-
           (formatted.length ≥ format_str.length - 2 ∨ formatted.length = 0))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

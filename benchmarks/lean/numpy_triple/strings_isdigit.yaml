@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "Returns true for each element if all characters in the string are digits, and there is at least one character, false otherwise.\n\nParameters\n----------\na : array_like, with \`StringDType\`, \`bytes_\` or \`str_\` dtype\n\nReturns\n-------\nout : ndarray\n    Output array of bools",
   }
   -/
-
+  
   /-  numpy.strings.isdigit: Returns true for each element if all characters in the string are digits, and there is at least one character, false otherwise.
   
       Tests whether all characters in each string are digits.
@@ -23,7 +23,7 @@ vc-description: |-
       This follows the Python str.isdigit() behavior which returns False for empty strings
       and True only if all characters are numeric digits.
   -/
-
+  
   /-  Specification: numpy.strings.isdigit returns a vector where each element indicates
       whether the corresponding string element contains only digits and is non-empty.
   
@@ -45,16 +45,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def isdigit {n : Nat} (a : Vector String n) : Id (Vector Bool n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem isdigit_spec {n : Nat} (a : Vector String n) :
@@ -63,8 +63,9 @@ vc-condition: |-
       ⦃⇓result => ⌜∀ i : Fin n, result.get i = (a.get i ≠ "" ∧ (a.get i).all Char.isDigit)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

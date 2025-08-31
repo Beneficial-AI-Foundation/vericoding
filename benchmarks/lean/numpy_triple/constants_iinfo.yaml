@@ -1,7 +1,17 @@
 vc-description: |-
+  /- 
+  {
+    "name": "numpy.iinfo",
+    "category": "Machine limits",
+    "description": "Machine limits for integer types",
+    "url": "https://numpy.org/doc/stable/reference/generated/numpy.iinfo.html",
+    "doc": "Machine limits for integer types.\n\nParameters:\nint_type : integer type, dtype, or instance\n    The kind of integer data type to get information about.\n\nAttributes:\n- bits : int - The number of bits occupied by the type\n- dtype : dtype - The dtype for which iinfo returns information\n- min : int - Minimum value of given dtype\n- max : int - Maximum value of given dtype",
+  }
+  -/
+  
   /-  Machine limits for integer types - returns information about the given integer type including 
       the number of bits, minimum value, and maximum value -/
-
+  
   /-  Specification: iinfo returns correct machine limits for integer types.
       The returned IntegerInfo structure contains:
       - bits: the number of bits used by the type
@@ -13,15 +23,13 @@ vc-preamble: |-
   import Std.Tactic.Do
   open Std.Do
   
-  /-  Structure representing integer type information -/
-  
+  /-- Structure representing integer type information -/
   structure IntegerInfo where
     bits : Nat
     min : Int
     max : Int
   
-  /-  Enumeration of supported integer types -/
-  
+  /-- Enumeration of supported integer types -/
   inductive IntegerType
     | Int8
     | Int16
@@ -33,16 +41,16 @@ vc-preamble: |-
     | UInt64
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def iinfo (intType : IntegerType) : Id IntegerInfo :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem iinfo_spec (intType : IntegerType) :
@@ -67,8 +75,9 @@ vc-condition: |-
             info.bits = 64 ∧ info.min = 0 ∧ info.max = 18446744073709551615⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

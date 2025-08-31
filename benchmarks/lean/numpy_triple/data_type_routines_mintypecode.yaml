@@ -1,21 +1,25 @@
 vc-description: |-
-  /-  NumPy type character to precedence mapping based on the default typeset 'GDFgdf'
-      Lower values indicate higher precedence (smaller/more restrictive types) -/
+  /- 
+  {
+    "name": "numpy.mintypecode",
+    "category": "Miscellaneous Type Utilities",
+    "description": "Return the character for the minimum-size type to which given types can be safely cast",
+    "url": "https://numpy.org/doc/stable/reference/generated/numpy.mintypecode.html",
+    "doc": "Return the character for the minimum-size type to which given types can be safely cast.\n\nParameters\n----------\ntypechars : list of str or array_like\n    If a list of strings, each string should represent a dtype. If array_like, the character representation of the array dtype is used.\ntypeset : str or list of str, optional\n    The set of characters that the returned character is chosen from. The default set is 'GDFgdf'.\ndefault : str, optional\n    The default character if none in typeset matches.\n\nReturns\n-------\ntypechar : str\n    The character representing the minimum-size type found.\n\nExamples\n--------\n>>> np.mintypecode(['d', 'f', 'S'])\n'd'\n>>> x = np.array([1.1, 2-3.j])\n>>> np.mintypecode(x)\n'D'\n>>> np.mintypecode('abceh', default='G')\n'G'",
+  }
+  -/
   
   /-  Return the character for the minimum-size type to which given types can be safely cast -/
-
+  
   /-  Specification: mintypecode returns the minimum-size type character that can handle all input types -/
 
 vc-preamble: |-
   import Std.Do.Triple
   import Std.Tactic.Do
   open Std.Do
-
-vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
-
-vc-signature: |-
+  
+  /-- NumPy type character to precedence mapping based on the default typeset 'GDFgdf'
+      Lower values indicate higher precedence (smaller/more restrictive types) -/
   def typechar_precedence : Char → Nat
     | 'g' => 0  -- longdouble (most restrictive in numerical sense)
     | 'd' => 1  -- double
@@ -24,19 +28,21 @@ vc-signature: |-
     | 'D' => 4  -- cdouble (complex double)
     | 'G' => 5  -- clongdouble (complex long double)
     | _   => 6  -- other types (lowest precedence)
-  
   /-- Check if a type character is in the given typeset -/
   def char_in_typeset {n : Nat} (c : Char) (typeset : Vector Char n) : Bool :=
-  
+    typeset.toList.contains c
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
   def mintypecode {n m : Nat} (typechars : Vector Char n) (typeset : Vector Char m) (default : Char) : Id Char :=
 
 vc-implementation: |-
-  <vc-implementation>
-    typeset.toList.contains c
-  
-  
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem mintypecode_spec {n m : Nat} (typechars : Vector Char n) (typeset : Vector Char m) (default : Char) 
@@ -72,8 +78,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

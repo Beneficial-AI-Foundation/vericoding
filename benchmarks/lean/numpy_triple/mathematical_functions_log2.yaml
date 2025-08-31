@@ -8,7 +8,7 @@ vc-description: |-
       Returns an array of the same shape as x, containing the base-2 logarithm
       of each element in x.
   -/
-
+  
   /-  Specification: log2 returns a vector where each element is the base-2
       logarithm of the corresponding element in x.
   
@@ -31,16 +31,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def log2 {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem log2_spec {n : Nat} (x : Vector Float n) :
@@ -49,8 +49,9 @@ vc-condition: |-
       ⦃⇓result => ⌜∀ i : Fin n, result.get i = Float.log2 (x.get i)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -13,7 +13,7 @@ vc-description: |-
       The algorithm uses Hermite polynomial operations (multiplication by x and addition)
       to build up the result iteratively from the highest degree coefficient down.
   -/
-
+  
   /-  Specification: poly2herm converts polynomial coefficients to Hermite series coefficients
       
       The specification ensures:
@@ -34,16 +34,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def poly2herm {n : Nat} (pol : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem poly2herm_spec {n : Nat} (pol : Vector Float n) :
@@ -63,8 +63,9 @@ vc-condition: |-
                     result.get ⟨2, sorry⟩ = 0.5 ∧ result.get ⟨3, sorry⟩ = 0.375)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

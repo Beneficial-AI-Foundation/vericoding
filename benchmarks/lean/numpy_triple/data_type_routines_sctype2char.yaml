@@ -1,4 +1,14 @@
 vc-description: |-
+  /- 
+  {
+    "name": "numpy.sctype2char",
+    "category": "Miscellaneous Type Utilities",
+    "description": "Return the string representation of a scalar dtype",
+    "url": "https://numpy.org/doc/stable/reference/generated/numpy.sctype2char.html",
+    "doc": "Return the string representation of a scalar dtype.\n\nParameters\n----------\nsctype : scalar dtype or object\n    If a scalar dtype, the corresponding string character is returned. If an object, sctype2char tries to infer its scalar type and then return the corresponding string character.\n\nReturns\n-------\ntypechar : str\n    The string character corresponding to the scalar type.\n\nRaises\n------\nValueError\n    If sctype is an object for which the type cannot be inferred.\n\nExamples\n--------\n>>> for sctype in [np.int32, np.double, np.complex_, np.bytes_, np.ndarray]:\n...     print(np.sctype2char(sctype))\n...\nl\nd\nD\nS\nO\n\n>>> x = np.array([1., 2-1.j])\n>>> np.sctype2char(x)\n'D'\n>>> np.sctype2char(list)\n'O'",
+  }
+  -/
+  
   /-  numpy.sctype2char: Return the string representation of a scalar dtype
       
       Converts a scalar data type to its corresponding single-character string representation.
@@ -11,7 +21,7 @@ vc-description: |-
       - bytes → 'S'
       - object → 'O'
   -/
-
+  
   /-  Specification: sctype2char returns the correct character representation
       for each scalar type.
       
@@ -24,8 +34,7 @@ vc-preamble: |-
   import Std.Tactic.Do
   open Std.Do
   
-  /-  Scalar data type enumeration for numpy types -/
-  
+  /-- Scalar data type enumeration for numpy types -/
   inductive ScalarType
     | /-- 32-bit signed integer -/ int32
     | /-- 64-bit signed integer -/ int64
@@ -37,16 +46,16 @@ vc-preamble: |-
     | /-- Generic object -/ object
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def sctype2char (sctype : ScalarType) : Id String :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem sctype2char_spec (sctype : ScalarType) :
@@ -64,8 +73,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

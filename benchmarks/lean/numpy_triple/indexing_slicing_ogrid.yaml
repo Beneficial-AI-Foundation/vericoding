@@ -11,7 +11,7 @@ vc-description: |-
       For the 1D case, it returns a single vector with evenly spaced values
       from start to stop (exclusive) with the given step size.
   -/
-
+  
   /-  Specification: ogrid returns a vector of evenly spaced values.
       
       Precondition: step ≠ 0 and n = ⌊(stop - start) / step⌋
@@ -27,16 +27,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def ogrid (start stop step : Float) (n : Nat) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem ogrid_spec (start stop step : Float) (n : Nat) 
@@ -49,8 +49,9 @@ vc-condition: |-
                     else stop < result.get i ∧ result.get i ≤ start)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

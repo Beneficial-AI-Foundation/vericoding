@@ -7,7 +7,7 @@ vc-description: |-
     "doc": "Returns the greatest common divisor of |x1| and |x2|.",
   }
   -/
-
+  
   /-  numpy.gcd: Returns the greatest common divisor of |x1| and |x2|, element-wise.
       
       The GCD is computed on the absolute values of the inputs. For two integers a and b,
@@ -20,7 +20,7 @@ vc-description: |-
       
       Returns an array of the same shape as the broadcasted x1 and x2.
   -/
-
+  
   /-  Specification: numpy.gcd returns a vector where each element is the
       greatest common divisor of the absolute values of the corresponding elements in x1 and x2.
       
@@ -44,16 +44,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_gcd {n : Nat} (x1 x2 : Vector Int n) : Id (Vector Int n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_gcd_spec {n : Nat} (x1 x2 : Vector Int n) :
@@ -70,8 +70,9 @@ vc-condition: |-
                    (∀ i : Fin n, Int.gcd (x2.get i) (x1.get i) = Int.gcd (x1.get i) (x2.get i))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

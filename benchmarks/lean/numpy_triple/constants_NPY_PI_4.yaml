@@ -7,7 +7,7 @@ vc-description: |-
     "doc": "π/4 = 0.785398163397448309615660845819875721",
   }
   -/
-
+  
   /-  NPY_PI_4: Mathematical constant representing π/4.
       
       This constant provides the value of pi divided by 4, which is commonly used in
@@ -15,7 +15,7 @@ vc-description: |-
       
       Value: π/4 ≈ 0.785398163397448309615660845819875721
   -/
-
+  
   /-  Specification: NPY_PI_4 returns the mathematical constant π/4.
       
       Precondition: True (no preconditions for accessing a constant)
@@ -35,16 +35,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def NPY_PI_4 : Id Float :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem NPY_PI_4_spec :
@@ -55,8 +55,9 @@ vc-condition: |-
                     result * 4 > 3.141 ∧ result * 4 < 3.142⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -12,7 +12,7 @@ vc-description: |-
       - x^(a+b) = x^a * x^b for any x, a, b
       - (x^a)^b = x^(a*b) for any x, a, b
   -/
-
+  
   /-  Specification: numpy.power returns a vector where each element is the base
       from x1 raised to the power from x2.
   
@@ -34,16 +34,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_power {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_power_spec {n : Nat} (x1 x2 : Vector Float n) 
@@ -58,8 +58,9 @@ vc-condition: |-
                                  (x1.get i > 1 ∧ x2.get i > 0 → result.get i > x1.get i)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

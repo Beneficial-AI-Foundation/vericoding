@@ -8,10 +8,10 @@ vc-description: |-
     "doc": "Load data from a text file.\n\n    Parameters\n    ----------\n    fname : file, str, pathlib.Path, list of str, generator\n        File, filename, list, or generator to read.  If the filename\n        extension is \`\`.gz\`\` or \`\`.bz2\`\`, the file is first decompressed. Note\n        that generators must return bytes or strings. The strings\n        in a list or produced by a generator are treated as lines.\n    dtype : data-type, optional\n        Data-type of the resulting array; default: float.  If this i...",
   }
   -/
-
+  
   /-  Load data from a text file into a 2D array.
       For simplicity, this specification focuses on loading a rectangular matrix of floats. -/
-
+  
   /-  Specification: loadtxt reads numeric data from a text file into a well-formed 2D array.
       The function preserves the structure of the input data and handles parsing correctly. -/
 
@@ -21,17 +21,17 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def loadtxt {rows cols : Nat} (filename : String) (delimiter : String := " ") 
       (skiprows : Nat := 0) : Id (Vector (Vector Float cols) rows) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem loadtxt_spec {rows cols : Nat} (filename : String) (delimiter : String := " ") 
@@ -48,8 +48,9 @@ vc-condition: |-
           val |>.isFinite → (val ≥ -1e308 ∧ val ≤ 1e308))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -13,7 +13,7 @@ vc-description: |-
       - Identity element: empty array product is 1
       - Contains zero: if any element is zero, the product is zero
   -/
-
+  
   /-  Specification: prod computes the product of all elements in a vector.
       
       The product operation has several important mathematical properties:
@@ -32,16 +32,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def prod {n : Nat} (a : Vector Float n) : Id Float :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem prod_spec {n : Nat} (a : Vector Float n) :
@@ -52,8 +52,9 @@ vc-condition: |-
                    (∃ i : Fin n, a.get i = 0) → result = 0⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

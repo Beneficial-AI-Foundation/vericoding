@@ -13,7 +13,7 @@ vc-description: |-
       
       The generator produces uniformly distributed values in [0, 2^32 - 1]
   -/
-
+  
   /-  Specification: MT19937 initializes the generator state with proper seeding
       
       The MT19937 generator maintains a state vector of 624 32-bit integers.
@@ -34,16 +34,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def mt19937 (seed : UInt32) : Id (Vector UInt32 624) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem mt19937_spec (seed : UInt32) :
@@ -73,8 +73,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

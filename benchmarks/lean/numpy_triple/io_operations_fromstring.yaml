@@ -8,11 +8,11 @@ vc-description: |-
     "doc": "A new 1-D array initialized from text data in a string. Deprecated since version 1.14: Passing sep='', the default, is deprecated since it will trigger the deprecated binary mode of this function. This mode interprets string as binary bytes, rather than ASCII text with decimal numbers.",
   }
   -/
-
+  
   /-  Create a 1-D array from text data in a string.
       Parses a string containing numeric data separated by a specified separator
       and returns a vector of the parsed values. -/
-
+  
   /-  Specification: fromstring creates a vector by parsing numeric values from a string.
       The function parses the input string using the given separator and converts
       the resulting substrings to floating-point numbers. -/
@@ -23,16 +23,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def fromstring {n : Nat} (input : String) (sep : String) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem fromstring_spec {n : Nat} (input : String) (sep : String) 
@@ -44,8 +44,9 @@ vc-condition: |-
          (input.splitOn sep)[i.val]!.trim ≠ ""⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

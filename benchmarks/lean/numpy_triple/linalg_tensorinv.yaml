@@ -8,12 +8,12 @@ vc-description: |-
     "doc": "Compute the 'inverse' of an N-dimensional array.\n\nThe result is an inverse for a relative to the tensordot operation tensordot(a, b, ind), i.e., up to floating-point accuracy, tensordot(tensorinv(a), a, ind) is the identity tensor.",
   }
   -/
-
+  
   /-  Compute the 'inverse' of an N-dimensional array.
       For simplicity, we implement the case where the tensor is represented as a 2D matrix
       (viewed as a flattened N-dimensional array) and we compute its matrix inverse.
       The result should be the inverse for the tensordot operation. -/
-
+  
   /-  Specification: tensorinv computes the tensor inverse such that when composed
       with the original tensor via tensordot operation, it yields the identity tensor.
       The key properties are:
@@ -28,17 +28,17 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def tensorinv {n : Nat} (a : Vector (Vector Float n) n) (ind : Nat) 
       (h_square : n > 0) (h_ind : ind > 0) : Id (Vector (Vector Float n) n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem tensorinv_spec {n : Nat} (a : Vector (Vector Float n) n) (ind : Nat) 
@@ -59,8 +59,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

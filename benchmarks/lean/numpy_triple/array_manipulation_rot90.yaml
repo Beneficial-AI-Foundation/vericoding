@@ -8,7 +8,7 @@ vc-description: |-
       
       This specification focuses on square 2D arrays for simplicity.
   -/
-
+  
   /-  Specification: rot90 rotates a square 2D matrix by 90 degrees counterclockwise k times.
       
       The specification handles k modulo 4 since four 90-degree rotations return
@@ -41,17 +41,17 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def rot90 {n : Nat} (m : Vector (Vector Float n) n) (k : Int := 1) : 
       Id (Vector (Vector Float n) n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem rot90_spec {n : Nat} (m : Vector (Vector Float n) n) (k : Int) 
@@ -85,8 +85,9 @@ vc-condition: |-
                       (result.get ⟨center, sorry⟩).get ⟨center, sorry⟩ = (m.get ⟨center, sorry⟩).get ⟨center, sorry⟩)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

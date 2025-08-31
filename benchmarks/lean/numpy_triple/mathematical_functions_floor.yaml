@@ -7,7 +7,7 @@ vc-description: |-
     "doc": "Return the floor of the input, element-wise.\n\nThe floor of the scalar x is the largest integer i, such that i <= x.",
   }
   -/
-
+  
   /-  numpy.floor: Return the floor of the input, element-wise.
       
       The floor of each element x is the largest integer i, such that i <= x.
@@ -16,7 +16,7 @@ vc-description: |-
       
       Returns an array of the same shape as x, containing the floor of each element.
   -/
-
+  
   /-  Specification: numpy.floor returns a vector where each element is the
       floor (largest integer less than or equal to) the corresponding element in x.
       
@@ -38,16 +38,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_floor {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_floor_spec {n : Nat} (x : Vector Float n) :
@@ -64,8 +64,9 @@ vc-condition: |-
         (∃ k : Int, x.get i = Float.ofInt k → result.get i = x.get i)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

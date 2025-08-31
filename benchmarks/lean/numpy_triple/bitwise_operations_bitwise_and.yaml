@@ -17,7 +17,7 @@ vc-description: |-
       For negative integers, NumPy uses two's complement representation,
       which requires a more complex formalization in Lean.
   -/
-
+  
   /-  Specification: bitwise_and returns a vector where each element is the 
       bitwise AND of the corresponding elements from x1 and x2.
   
@@ -42,16 +42,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def bitwise_and {n : Nat} (x1 x2 : Vector Int n) : Id (Vector Int n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem bitwise_and_spec {n : Nat} (x1 x2 : Vector Int n) 
@@ -66,8 +66,9 @@ vc-condition: |-
                   (∀ i : Fin n, x1.get i = x2.get i → result.get i = x1.get i)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

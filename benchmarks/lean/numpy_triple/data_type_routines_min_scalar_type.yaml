@@ -1,6 +1,4 @@
 vc-description: |-
-  /-  Define type sizes in bits -/
-  
   /-  numpy.min_scalar_type: For scalar a, returns the data type with the smallest size 
       and smallest scalar kind which can hold its value.
   
@@ -12,7 +10,7 @@ vc-description: |-
       For integer values, it finds the smallest integer type that can hold the value.
       For floating point values, it finds the smallest float type that can represent it.
   -/
-
+  
   /-  Specification: min_scalar_type returns the minimal data type that can hold the given value.
   
       Precondition: True (works for any scalar value)
@@ -27,20 +25,15 @@ vc-preamble: |-
   import Std.Tactic.Do
   open Std.Do
   
-  /-  Enumeration for NumPy data types -/
-  
+  /-- Enumeration for NumPy data types -/
   inductive NumpyDType
     | UInt8 | UInt16 | UInt32 | UInt64
     | Int8 | Int16 | Int32 | Int64
     | Float16 | Float32 | Float64
     | Complex64 | Complex128
     deriving Repr, DecidableEq
-
-vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
-
-vc-signature: |-
+  
+  /-- Define type sizes in bits -/
   def dtype_size : NumpyDType → Nat
     | .UInt8 => 8
     | .UInt16 => 16
@@ -55,21 +48,14 @@ vc-signature: |-
     | .Float64 => 64
     | .Complex64 => 64
     | .Complex128 => 128
-  
   /-- Define type hierarchy (order of preference) -/
   def dtype_kind_order : NumpyDType → Nat
     | .UInt8 | .UInt16 | .UInt32 | .UInt64 => 0  -- unsigned integers first
     | .Int8 | .Int16 | .Int32 | .Int64 => 1      -- signed integers second
     | .Float16 | .Float32 | .Float64 => 2       -- floats third
     | .Complex64 | .Complex128 => 3             -- complex last
-  
   /-- Check if a type can represent a given float value -/
   def can_represent_value (dt : NumpyDType) (value : Float) : Prop :=
-  
-  def min_scalar_type (value : Float) : Id NumpyDType :=
-
-vc-implementation: |-
-  <vc-implementation>
     match dt with
     | .UInt8 => 0 ≤ value ∧ value ≤ 255 ∧ value = value.floor
     | .UInt16 => 0 ≤ value ∧ value ≤ 65535 ∧ value = value.floor
@@ -80,10 +66,18 @@ vc-implementation: |-
     | .Int32 => -2147483648 ≤ value ∧ value ≤ 2147483647 ∧ value = value.floor
     | .Int64 => -9223372036854775808 ≤ value ∧ value ≤ 9223372036854775807 ∧ value = value.floor
     | .Float16 | .Float32 | .Float64 | .Complex64 | .Complex128 => True
-  
-  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def min_scalar_type (value : Float) : Id NumpyDType :=
+
+vc-implementation: |-
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem min_scalar_type_spec (value : Float) :
@@ -102,8 +96,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

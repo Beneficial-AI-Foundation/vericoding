@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "numpy.min is an alias for numpy.amin. See numpy.amin for full documentation.",
   }
   -/
-
+  
   /-  numpy.min: Return the minimum of an array or minimum along an axis.
   
       This function is an alias for numpy.amin that returns the minimum value 
@@ -21,7 +21,7 @@ vc-description: |-
       Being an alias, it has identical behavior to amin but provides a more
       intuitive name for the operation.
   -/
-
+  
   /-  Specification: min returns the minimum element in the vector.
   
       Precondition: True (non-empty constraint is enforced by type Vector Float (n + 1))
@@ -40,16 +40,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def min {n : Nat} (a : Vector Float (n + 1)) : Id Float :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem min_spec {n : Nat} (a : Vector Float (n + 1)) :
@@ -59,8 +59,9 @@ vc-condition: |-
                   (∀ i : Fin (n + 1), result ≤ a.get i)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

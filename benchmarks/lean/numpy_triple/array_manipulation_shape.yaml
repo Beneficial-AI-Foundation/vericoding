@@ -10,7 +10,7 @@ vc-description: |-
     "signature": "numpy.shape(a)"
   }
   -/
-
+  
   /-  numpy.shape: Return the shape of an array.
   
       For a one-dimensional vector, returns its length as a natural number.
@@ -21,7 +21,7 @@ vc-description: |-
       For our Vector type, which is inherently one-dimensional, the shape is
       simply the length parameter n.
   -/
-
+  
   /-  Specification: numpy.shape returns the length of the vector.
   
       For a Vector of length n, the shape function returns n.
@@ -38,16 +38,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def shape {α : Type} {n : Nat} (a : Vector α n) : Id Nat :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem shape_spec {α : Type} {n : Nat} (a : Vector α n) :
@@ -56,8 +56,9 @@ vc-condition: |-
       ⦃⇓result => ⌜result = n⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

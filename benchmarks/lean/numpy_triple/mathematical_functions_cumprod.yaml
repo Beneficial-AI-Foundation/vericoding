@@ -7,7 +7,7 @@ vc-description: |-
     "doc": "Return the cumulative product of elements along a given axis.",
   }
   -/
-
+  
   /-  numpy.cumprod: Return the cumulative product of elements along a given axis.
   
       For a vector [a₁, a₂, a₃, ..., aₙ], returns [a₁, a₁*a₂, a₁*a₂*a₃, ..., a₁*a₂*...*aₙ].
@@ -19,7 +19,7 @@ vc-description: |-
       
       For empty vectors, returns an empty vector.
   -/
-
+  
   /-  Specification: cumprod returns the cumulative product of elements.
   
       Precondition: True (works for any vector, including empty)
@@ -41,16 +41,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def cumprod {n : Nat} (a : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem cumprod_spec {n : Nat} (a : Vector Float n) :
@@ -64,8 +64,9 @@ vc-condition: |-
                    (∀ i j : Fin n, i.val + 1 = j.val → result.get j = result.get i * a.get j)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

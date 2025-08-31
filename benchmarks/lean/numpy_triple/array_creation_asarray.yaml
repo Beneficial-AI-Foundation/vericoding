@@ -9,7 +9,7 @@ vc-description: |-
       This is a fundamental array creation function that ensures the output is
       always a proper array format regardless of the input type.
   -/
-
+  
   /-  Specification: numpy.asarray returns a vector containing the same elements
       as the input list, in the same order.
   
@@ -26,16 +26,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def asarray {n : Nat} (a : List Float) (h : a.length = n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem asarray_spec {n : Nat} (a : List Float) (h : a.length = n) :
@@ -44,8 +44,9 @@ vc-condition: |-
       ⦃⇓result => ⌜∀ i : Fin n, result.get i = a[i.val]'(by rw [h]; exact i.isLt)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

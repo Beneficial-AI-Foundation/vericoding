@@ -8,10 +8,10 @@ vc-description: |-
     "doc": "numpy.correlate(a, v, mode='valid')\n\nCross-correlation of two 1-dimensional sequences.\n\nThis function computes the correlation as generally defined in signal processing texts:\n\nc_k = sum_n a_{n+k} * conj(v_n)\n\nwith a and v sequences being zero-padded where necessary and conj being the complex conjugate.\n\nParameters\n----------\na, v : array_like\n    Input sequences.\nmode : {'valid', 'same', 'full'}, optional\n    Refer to the convolve docstring. Note that the default is 'valid', unlike convolve, which uses 'full'.\n\nReturns\n-------\nout : ndarray\n    Discrete cross-correlation of a and v.\n\nNotes\n-----\nThe definition of correlation above is not unique and sometimes correlation may be defined differently. Another common definition is:\n\nc'_k = sum_n a_n * conj(v_{n+k})\n\nwhich is related to c_k by c'_k = conj(c_{-k}).",
   }
   -/
-
+  
   /-  Cross-correlation of two 1-dimensional sequences in 'valid' mode.
       Computes c_k = sum_i a_{k+i} * v_i for positions where both sequences fully overlap. -/
-
+  
   /-  Specification: correlate computes cross-correlation with valid mode overlap.
       Each output element is the sum of products of overlapping elements from the input sequences.
       
@@ -27,16 +27,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def correlate {m n : Nat} (a : Vector Float m) (v : Vector Float n) (h : n ≤ m) (h_pos : 0 < n) : Id (Vector Float (m + 1 - n)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem correlate_spec {m n : Nat} (a : Vector Float m) (v : Vector Float n) (h : n ≤ m) (h_pos : 0 < n) :
@@ -57,8 +57,9 @@ vc-condition: |-
                      ∀ k : Fin (m + 1 - n), 0 ≤ result.get k)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

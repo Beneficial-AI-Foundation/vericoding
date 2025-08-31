@@ -8,14 +8,14 @@ vc-description: |-
     "doc": "numpy.nanstd(a, axis=None, dtype=None, out=None, ddof=0, keepdims=<no value>, *, where=<no value>)\n\nCompute the standard deviation along the specified axis, while ignoring NaNs.\n\nReturns the standard deviation, a measure of the spread of a distribution, of the non-NaN array elements. The standard deviation is computed for the flattened array by default, otherwise over the specified axis.\n\nFor all-NaN slices, NaN is returned and a RuntimeWarning is raised.\n\nParameters\n----------\na : array_like\n    Calculate the standard deviation of the non-NaN values.\naxis : {int, tuple of int, None}, optional\n    Axis or axes along which the standard deviation is computed. The default is to compute the standard deviation of the flattened array.\ndtype : dtype, optional\n    Type to use in computing the standard deviation. For arrays of integer type the default is float64, for arrays of float types it is the same as the array type.\nout : ndarray, optional\n    Alternative output array in which to place the result. It must have the same shape as the expected output.\nddof : int, optional\n    Means Delta Degrees of Freedom. The divisor used in calculations is N - ddof, where N represents the number of non-NaN elements. By default ddof is zero.\nkeepdims : bool, optional\n    If this is set to True, the axes which are reduced are left in the result as dimensions with size one.\nwhere : array_like of bool, optional\n    Elements to include in the standard deviation.\n\nReturns\n-------\nstandard_deviation : ndarray, see dtype parameter above.\n    If out is None, return a new array containing the standard deviation, otherwise return a reference to the output array. If ddof is >= the number of non-NaN elements in a slice or the slice contains only NaNs, then the result for that slice is NaN.",
   }
   -/
-
+  
   /-  Compute the standard deviation along the specified axis, ignoring NaNs.
       Returns the standard deviation, a measure of the spread of a distribution,
       of the non-NaN array elements. The standard deviation is the square root
       of the variance computed from non-NaN values.
       
       For all-NaN slices, NaN is returned. -/
-
+  
   /-  Specification: nanstd computes the standard deviation while ignoring NaN values.
       Mathematical properties:
       1. If vector contains valid (non-NaN) values and ddof < valid_count, 
@@ -38,16 +38,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def nanstd {n : Nat} (a : Vector Float n) (ddof : Nat := 0) : Id Float :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem nanstd_spec {n : Nat} (a : Vector Float n) (ddof : Nat) :
@@ -71,8 +71,9 @@ vc-condition: |-
                      result.isNaN⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "Return a string which is the concatenation of the strings in the sequence \`seq\`.\n\nParameters\n----------\nsep : array_like, with \`StringDType\`, \`bytes_\` or \`str_\` dtype\nseq : array_like, with \`StringDType\`, \`bytes_\` or \`str_\` dtype\n\nReturns\n-------\nout : ndarray\n    Output array of \`StringDType\`, \`bytes_\` or \`str_\` dtype,\n    depending on input types",
   }
   -/
-
+  
   /-  numpy.strings.join: Return a string which is the concatenation of the strings in the sequence seq.
   
       For each pair of separator and sequence, join the elements of the sequence using the separator.
@@ -30,7 +30,7 @@ vc-description: |-
       4. Empty sequence handling: join(sep, '') = '' (empty result)
       5. Single character sequences: join(sep, 'a') = 'a' (no separator needed)
   -/
-
+  
   /-  Specification: numpy.strings.join returns a vector where each element is the result
       of joining the characters of the corresponding sequence element with the separator.
   
@@ -70,16 +70,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def join {n : Nat} (sep seq : Vector String n) : Id (Vector String n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem join_spec {n : Nat} (sep seq : Vector String n) :
@@ -102,8 +102,9 @@ vc-condition: |-
         (s.length > 0 → (result.get i).length > 0)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

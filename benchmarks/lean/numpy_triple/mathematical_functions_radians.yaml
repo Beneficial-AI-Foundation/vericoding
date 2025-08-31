@@ -10,7 +10,7 @@ vc-description: |-
       Returns:
       - y: Array of the same shape as x, containing the corresponding radian values
   -/
-
+  
   /-  Specification: numpy.radians converts each element from degrees to radians.
   
       Precondition: True (no special preconditions for degree to radian conversion)
@@ -31,16 +31,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_radians {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_radians_spec {n : Nat} (x : Vector Float n) :
@@ -54,8 +54,9 @@ vc-condition: |-
                   ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

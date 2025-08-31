@@ -9,12 +9,12 @@ vc-description: |-
     "signature": "numpy.meshgrid(*xi, copy=True, sparse=False, indexing='xy')"
   }
   -/
-
+  
   /-  Return coordinate matrices from two coordinate vectors using 'xy' (Cartesian) indexing.
       For inputs of length m and n, returns two matrices of shape (n, m) where:
       - The first matrix has x values repeated along rows
       - The second matrix has y values repeated along columns -/
-
+  
   /-  Specification: meshgrid creates coordinate matrices where x values are repeated 
       along rows and y values are repeated along columns in 'xy' indexing mode -/
 
@@ -24,17 +24,17 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def meshgrid {m n : Nat} (x : Vector Float m) (y : Vector Float n) : 
       Id (Vector (Vector Float m) n × Vector (Vector Float m) n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem meshgrid_spec {m n : Nat} (x : Vector Float m) (y : Vector Float n) :
@@ -48,8 +48,9 @@ vc-condition: |-
          (∀ i : Fin n, ∀ j : Fin m, (yv.get i).get j = y.get i)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

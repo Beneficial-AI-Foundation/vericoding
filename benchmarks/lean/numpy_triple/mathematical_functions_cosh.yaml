@@ -7,7 +7,7 @@ vc-description: |-
     "doc": "Hyperbolic cosine, element-wise.\n\nEquivalent to 1/2 * (np.exp(x) + np.exp(-x)) and np.cos(1j*x).",
   }
   -/
-
+  
   /-  numpy.cosh: Hyperbolic cosine, element-wise.
   
       The hyperbolic cosine function is defined as:
@@ -18,7 +18,7 @@ vc-description: |-
       
       Returns an array of the same shape as x, containing the hyperbolic cosine of each element.
   -/
-
+  
   /-  Specification: numpy.cosh returns a vector where each element is the hyperbolic cosine
       of the corresponding element in x.
       
@@ -37,16 +37,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_cosh {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_cosh_spec {n : Nat} (x : Vector Float n) :
@@ -68,8 +68,9 @@ vc-condition: |-
           (x.get i = 0 → result.get i = 1)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

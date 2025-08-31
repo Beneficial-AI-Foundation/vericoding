@@ -7,7 +7,7 @@ vc-description: |-
     "doc": "Element-wise maximum of array elements.\n\nCompare two arrays and returns a new array containing the element-wise maxima.",
   }
   -/
-
+  
   /-  numpy.maximum: Element-wise maximum of array elements.
   
       Compares two arrays element-wise and returns a new array containing
@@ -18,7 +18,7 @@ vc-description: |-
       and supports broadcasting. For 1D arrays, it computes the maximum of
       corresponding elements.
   -/
-
+  
   /-  Specification: numpy.maximum returns a vector where each element is the maximum
       of the corresponding elements from x1 and x2.
   
@@ -39,16 +39,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def maximum {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem maximum_spec {n : Nat} (x1 x2 : Vector Float n) :
@@ -59,8 +59,9 @@ vc-condition: |-
                    (result.get i = x1.get i ∨ result.get i = x2.get i)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

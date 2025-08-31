@@ -7,7 +7,7 @@ vc-description: |-
     "doc": "Return the reciprocal of the argument, element-wise.\n\nCalculates 1/x.",
   }
   -/
-
+  
   /-  numpy.reciprocal: Return the reciprocal of the argument, element-wise.
   
       Calculates 1/x for each element in the input array.
@@ -18,7 +18,7 @@ vc-description: |-
       
       Returns an array of the same shape as x, containing the reciprocals.
   -/
-
+  
   /-  Specification: numpy.reciprocal returns a vector where each element is the
       reciprocal (1/x) of the corresponding element in x.
   
@@ -46,16 +46,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_reciprocal {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_reciprocal_spec {n : Nat} (x : Vector Float n) 
@@ -68,8 +68,9 @@ vc-condition: |-
                    (x.get i < 0 → result.get i < 0)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

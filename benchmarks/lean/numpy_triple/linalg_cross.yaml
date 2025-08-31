@@ -10,7 +10,7 @@ vc-description: |-
       
       This follows the right-hand rule convention.
   -/
-
+  
   /-  Specification: numpy.linalg.cross returns the cross product of two 3D vectors.
   
       Precondition: True (both vectors must be 3-dimensional, enforced by type)
@@ -30,16 +30,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_linalg_cross (x1 x2 : Vector Float 3) : Id (Vector Float 3) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_linalg_cross_spec (x1 x2 : Vector Float 3) :
@@ -50,8 +50,9 @@ vc-condition: |-
                   result.get 2 = x1.get 0 * x2.get 1 - x1.get 1 * x2.get 0⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

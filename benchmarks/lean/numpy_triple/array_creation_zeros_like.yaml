@@ -9,11 +9,11 @@ vc-description: |-
     "signature": "numpy.zeros_like(a, dtype=None, order='K', subok=True, shape=None, *, device=None)"
   }
   -/
-
+  
   /-  Return a vector of zeros with the same length as the input vector.
       This is the 1D version of numpy.zeros_like which creates a new vector
       filled with zeros, having the same size as the input vector. -/
-
+  
   /-  Specification: zeros_like returns a vector where every element is 0,
       with the same length as the input vector.
       
@@ -30,16 +30,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def zeros_like {n : Nat} {T : Type} [Zero T] (a : Vector T n) : Id (Vector T n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem zeros_like_spec {n : Nat} {T : Type} [Zero T] [Add T] (a : Vector T n) :
@@ -51,8 +51,9 @@ vc-condition: |-
                      (v.get i + result.get i = v.get i))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -7,9 +7,9 @@ vc-description: |-
     "doc": "Returns element-wise True where signbit is set (less than zero).",
   }
   -/
-
+  
   /-  Returns element-wise True where signbit is set (less than zero) -/
-
+  
   /-  Specification: signbit returns True for negative numbers and False for non-negative numbers -/
 
 vc-preamble: |-
@@ -18,16 +18,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def signbit {n : Nat} (x : Vector Float n) : Id (Vector Bool n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem signbit_spec {n : Nat} (x : Vector Float n) :
@@ -36,8 +36,9 @@ vc-condition: |-
       ⦃⇓result => ⌜∀ i : Fin n, result.get i = (x.get i < 0)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

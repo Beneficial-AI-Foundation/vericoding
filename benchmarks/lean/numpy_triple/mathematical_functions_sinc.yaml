@@ -7,7 +7,7 @@ vc-description: |-
     "doc": "Return the normalized sinc function.\n\nThe sinc function is sin(π*x)/(π*x) for x != 0, and 1 for x = 0.",
   }
   -/
-
+  
   /-  numpy.sinc: Return the normalized sinc function, element-wise.
   
       The sinc function is defined as:
@@ -21,7 +21,7 @@ vc-description: |-
       Returns a vector of the same shape as the input, containing the sinc value
       of each element.
   -/
-
+  
   /-  Specification: numpy.sinc returns a vector where each element is the
       normalized sinc function of the corresponding element in x.
   
@@ -44,16 +44,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def sinc {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem sinc_spec {n : Nat} (x : Vector Float n) :
@@ -70,8 +70,9 @@ vc-condition: |-
                       (result.get i = result.get i)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

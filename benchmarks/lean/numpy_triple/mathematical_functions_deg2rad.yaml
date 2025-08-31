@@ -7,11 +7,11 @@ vc-description: |-
     "doc": "Convert angles from degrees to radians.\n\nEquivalent to numpy.radians.",
   }
   -/
-
+  
   /-  Convert angles from degrees to radians by multiplying by π/180.
       This function performs the standard mathematical conversion from degrees to radians
       where π radians = 180 degrees. -/
-
+  
   /-  Specification: deg2rad converts each degree value to radians using the formula radians = degrees * π/180 -/
 
 vc-preamble: |-
@@ -20,16 +20,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def deg2rad {n : Nat} (degrees : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem deg2rad_spec {n : Nat} (degrees : Vector Float n) :
@@ -50,8 +50,9 @@ vc-condition: |-
                      radians.get i + 2.0 * 3.14159265358979323846)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

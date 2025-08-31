@@ -14,7 +14,7 @@ vc-description: |-
       The result is a matrix where result[i,j] contains the polynomial
       value at the point (x[i], y[j]).
   -/
-
+  
   /-  Specification: hermegrid2d evaluates a 2D HermiteE polynomial series 
       on the Cartesian product of x and y coordinates.
   
@@ -28,8 +28,8 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def hermegrid2d {nx ny : Nat} {deg_x deg_y : Nat} 
@@ -38,9 +38,9 @@ vc-signature: |-
       Id (Vector (Vector Float ny) nx) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem hermegrid2d_spec {nx ny : Nat} {deg_x deg_y : Nat} 
@@ -72,8 +72,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -10,7 +10,7 @@ vc-description: |-
       For simplicity, we return a vector of size min(m,n) which is valid for offset=0.
       The actual diagonal length depends on the offset value and matrix dimensions.
   -/
-
+  
   /-  Specification: numpy.linalg.diagonal returns the diagonal elements of a matrix.
   
       Precondition: The matrix must be non-empty (both dimensions > 0)
@@ -26,16 +26,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_diagonal {m n : Nat} (x : Vector (Vector Float n) m) (offset : Int) : Id (Vector Float (min m n)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_diagonal_spec {m n : Nat} (x : Vector (Vector Float n) m) (offset : Int) 
@@ -54,8 +54,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

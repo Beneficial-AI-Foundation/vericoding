@@ -9,7 +9,7 @@ vc-description: |-
       
       This function is an alias for numpy.divide but ensures floating point output.
   -/
-
+  
   /-  Specification: true_divide returns a vector where each element is the quotient
       of the corresponding elements from x1 and x2.
   
@@ -31,16 +31,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def true_divide {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem true_divide_spec {n : Nat} (x1 x2 : Vector Float n) :
@@ -51,8 +51,9 @@ vc-condition: |-
                     (x2.get i * result.get i = x1.get i)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

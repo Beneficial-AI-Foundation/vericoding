@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "Compute the condition number of a matrix.\n\nThe condition number measures how sensitive the solution x is to errors in b for Ax=b.\n\nParameters:\n- x: The matrix\n- p: Order of the norm\n\nReturns:\n- c: The condition number",
   }
   -/
-
+  
   /-  
   Compute the condition number of a square matrix using the 2-norm.
   
@@ -21,7 +21,7 @@ vc-description: |-
   a perfectly conditioned matrix, while large condition numbers indicate
   ill-conditioned matrices.
   -/
-
+  
   /-  
   Specification: The condition number is always non-negative and is at least 1 
   for any invertible matrix. This captures the fundamental mathematical 
@@ -34,16 +34,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def conditionNumber {n : Nat} (x : Vector (Vector Float n) n) : Id Float :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem conditionNumber_spec {n : Nat} (x : Vector (Vector Float n) n) 
@@ -53,8 +53,9 @@ vc-condition: |-
       ⦃⇓result => ⌜result ≥ 0 ∧ result ≥ 1⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

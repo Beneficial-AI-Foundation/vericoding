@@ -8,7 +8,7 @@ vc-description: |-
       The core operation takes a seed and generates a vector of random
       numbers in the range [0, 1).
   -/
-
+  
   /-  Specification: Philox generates pseudo-random numbers with deterministic behavior.
       
       The Philox algorithm has several key mathematical properties:
@@ -27,16 +27,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def philox {n : Nat} (seed : Nat) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem philox_spec {n : Nat} (seed : Nat) :
@@ -46,8 +46,9 @@ vc-condition: |-
                     (∀ seed₁ seed₂ : Nat, seed₁ = seed₂ → (philox seed₁ : Id (Vector Float n)) = (philox seed₂ : Id (Vector Float n)))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

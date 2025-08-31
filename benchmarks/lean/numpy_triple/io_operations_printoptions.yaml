@@ -8,7 +8,7 @@ vc-description: |-
       The context manager returns the current print options that are active
       within the context.
   -/
-
+  
   /-  Specification: numpy.printoptions creates a context with temporary print options.
   
       Precondition: Valid print options are provided
@@ -22,8 +22,7 @@ vc-preamble: |-
   import Std.Tactic.Do
   open Std.Do
   
-  /-  Print options structure to represent configuration -/
-  
+  /-- Print options structure to represent configuration -/
   structure PrintOptions where
     /-- Number of digits of precision for floating point output -/
     precision : Nat
@@ -40,8 +39,7 @@ vc-preamble: |-
     /-- String representation of floating point infinity -/
     infstr : String
   
-  /-  Context manager result representing the temporary state change -/
-  
+  /-- Context manager result representing the temporary state change -/
   structure PrintOptionsContext where
     /-- The original print options before the context change -/
     old_options : PrintOptions
@@ -49,16 +47,16 @@ vc-preamble: |-
     new_options : PrintOptions
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_printoptions (new_opts : PrintOptions) : Id PrintOptionsContext :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_printoptions_spec (new_opts : PrintOptions) :
@@ -68,8 +66,9 @@ vc-condition: |-
                      context.old_options ≠ context.new_options⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

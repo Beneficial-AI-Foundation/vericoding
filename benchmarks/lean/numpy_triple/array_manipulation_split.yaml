@@ -10,9 +10,9 @@ vc-description: |-
     "signature": "numpy.split(ary, indices_or_sections, axis=0)"
   }
   -/
-
+  
   /-  Split a vector into k equal parts. Requires that the vector length is divisible by k -/
-
+  
   /-  Specification: split divides a vector into k equal-sized sub-vectors 
       where each sub-vector contains consecutive elements from the original.
       
@@ -29,17 +29,17 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def split {n k : Nat} (arr : Vector Float n) (h_div : k ∣ n) (h_pos : k > 0) : 
       Id (Vector (Vector Float (n / k)) k) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem split_spec {n k : Nat} (arr : Vector Float n) (h_div : k ∣ n) (h_pos : k > 0) :
@@ -53,8 +53,9 @@ vc-condition: |-
                     arr.get idx = (result.get i).get j)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

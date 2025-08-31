@@ -1,6 +1,15 @@
 vc-description: |-
+  /- 
+  {
+    "name": "signature",
+    "description": "Core signature for generalized ufuncs",
+    "details": "Defines core dimensionality of inputs and outputs",
+    "example": "matmul.signature: '(n,k),(k,m)->(n,m)'"
+  }
+  -/
+  
   /-  Parse a ufunc signature string into a structured representation -/
-
+  
   /-  Specification: parseSignature correctly parses ufunc signature strings -/
 
 vc-preamble: |-
@@ -8,8 +17,7 @@ vc-preamble: |-
   import Std.Tactic.Do
   open Std.Do
   
-  /-  A signature represents the core dimensionality pattern for a generalized ufunc -/
-  
+  /-- A signature represents the core dimensionality pattern for a generalized ufunc -/
   structure UfuncSignature where
     /-- Input dimension patterns as list of dimension lists -/
     inputs : List (List String)
@@ -20,16 +28,16 @@ vc-preamble: |-
   deriving Repr
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def parseSignature {n : Nat} (sig : Vector String n) : Id UfuncSignature :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem parseSignature_spec {n : Nat} (sig : Vector String n) 
@@ -54,8 +62,9 @@ vc-condition: |-
         (result.inputs.length + result.outputs.length > 0)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

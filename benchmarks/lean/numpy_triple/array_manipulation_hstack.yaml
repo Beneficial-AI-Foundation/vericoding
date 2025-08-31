@@ -10,7 +10,7 @@ vc-description: |-
       Note: For higher dimensional arrays, hstack would concatenate along the
       second axis, but this specification focuses on the 1D case.
   -/
-
+  
   /-  Specification: numpy.hstack concatenates 1D arrays horizontally.
   
       For 1D arrays, horizontal stacking means concatenating them end-to-end,
@@ -31,17 +31,17 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def hstack {n m : Nat} (a : Vector Float n) (b : Vector Float m) :
       Id (Vector Float (n + m)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem hstack_spec {n m : Nat} (a : Vector Float n) (b : Vector Float m) :
@@ -51,8 +51,9 @@ vc-condition: |-
                   (∀ j : Fin m, result.get (j.natAdd n) = b.get j)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -6,7 +6,7 @@ vc-description: |-
       
       The resulting polynomial is expressed as: p(x) = c₀ + c₁ * H₁(x) + ... + cₙ * Hₙ(x)
       where Hᵢ(x) are Hermite polynomials. -/
-
+  
   /-  Specification: hermfromroots generates Hermite coefficients such that:
       1. The result has length n+1 where n is the number of roots
       2. The polynomial has exactly the given roots (when evaluated using Hermite polynomials)
@@ -19,16 +19,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def hermfromroots {n : Nat} (roots : Vector Float n) : Id (Vector Float (n + 1)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem hermfromroots_spec {n : Nat} (roots : Vector Float n) :
@@ -50,8 +50,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

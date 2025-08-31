@@ -9,7 +9,7 @@ vc-description: |-
       The actual type of fill_value will be cast to match the array's type,
       similar to numpy's behavior where 0.1 becomes 0 for integer arrays.
   -/
-
+  
   /-  Specification: numpy.full_like returns a vector with the same shape as `a`
       where every element equals `fill_value`.
   
@@ -23,16 +23,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_full_like {n : Nat} (a : Vector Float n) (fill_value : Float) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_full_like_spec {n : Nat} (a : Vector Float n) (fill_value : Float) :
@@ -41,8 +41,9 @@ vc-condition: |-
       ⦃⇓result => ⌜∀ i : Fin n, result.get i = fill_value⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

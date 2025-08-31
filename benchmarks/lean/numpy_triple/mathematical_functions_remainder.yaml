@@ -14,7 +14,7 @@ vc-description: |-
       - This is a universal function (ufunc) implemented in C
       - Uses optimized C loops for different data types
   -/
-
+  
   /-  Specification: numpy.remainder returns a vector where each element is the remainder
       of the corresponding elements from x1 and x2.
   
@@ -37,16 +37,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def remainder {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem remainder_spec {n : Nat} (x1 x2 : Vector Float n) :
@@ -65,8 +65,9 @@ vc-condition: |-
         Float.abs r < Float.abs b⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

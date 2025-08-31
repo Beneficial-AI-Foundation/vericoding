@@ -8,7 +8,7 @@ vc-description: |-
       it returns the leftmost suitable insertion position. The returned indices are
       in the range [0, n] where n is the length of the sorted array.
   -/
-
+  
   /-  Specification: numpy.searchsorted returns indices for sorted insertion.
   
       Precondition: The input array `a` must be sorted in ascending order
@@ -25,16 +25,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_searchsorted {n m : Nat} (a : Vector Float n) (v : Vector Float m) : Id (Vector (Fin (n + 1)) m) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_searchsorted_spec {n m : Nat} (a : Vector Float n) (v : Vector Float m) 
@@ -52,8 +52,9 @@ vc-condition: |-
               ∃ i : Fin n, i.val < pos.val ∧ a.get i ≥ v.get k)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

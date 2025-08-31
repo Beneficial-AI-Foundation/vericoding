@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "Multidimensional index iterator.\n\nReturn an iterator yielding pairs of array coordinates and values.\n\nParameters\n----------\narr : ndarray\n    Input array.",
   }
   -/
-
+  
   /-  numpy.ndenumerate: Multidimensional index iterator that yields pairs of array coordinates and values.
       
       For a 1D array, this creates a vector of tuples where each tuple contains
@@ -17,7 +17,7 @@ vc-description: |-
       The function essentially enumerates through the array, providing both
       the position (index) and the value at that position.
   -/
-
+  
   /-  Specification: ndenumerate returns a vector of index-value pairs.
       
       For each position i in the input array, the result contains a tuple
@@ -33,16 +33,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def ndenumerate {n : Nat} (arr : Vector Float n) : Id (Vector (Fin n × Float) n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem ndenumerate_spec {n : Nat} (arr : Vector Float n) :
@@ -51,8 +51,9 @@ vc-condition: |-
       ⦃⇓result => ⌜∀ i : Fin n, result.get i = (i, arr.get i)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

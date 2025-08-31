@@ -8,11 +8,11 @@ vc-description: |-
     "doc": "Hermite series whose graph is a straight line.\n\n    Parameters\n    ----------\n    off, scl : scalars\n        The specified line is given by ``off + scl*x``.\n\n    Returns\n    -------\n    y : ndarray\n        This module's representation of the Hermite series for\n        ``off + scl*x``.\n\n    See Also\n    --------\n    numpy.polynomial.polynomial.polyline\n    numpy.polynomial.chebyshev.chebline\n    numpy.polynomial.legendre.legline\n    numpy.polynomial.laguerre.lagline\n    numpy.polynomial.hermite.hermline\n\n    Examples\n    --------\n    >>> from numpy.polynomial.hermite_e import hermeline\n    >>> from numpy.polynomial.hermite_e import hermeline, hermeval\n    >>> hermeval(0,hermeline(3, 2))\n    3.0\n    >>> hermeval(1,hermeline(3, 2))\n    5.0",
   }
   -/
-
+  
   /-  Hermite series whose graph is a straight line.
       Returns the Hermite series coefficients representing the linear function off + scl*x.
       For non-zero scale, returns [off, scl]. For zero scale, returns [off]. -/
-
+  
   /-  Specification: hermeline returns the correct Hermite series coefficients for a linear function.
       The returned coefficients represent the polynomial off + scl*x in Hermite series form.
       
@@ -32,16 +32,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def hermeline (off scl : Float) : Id (Vector Float 2) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem hermeline_spec (off scl : Float) :
@@ -66,8 +66,9 @@ vc-condition: |-
                       coeffs.get ⟨0, by simp⟩ + coeffs.get ⟨1, by simp⟩ * x = off + scl * x)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

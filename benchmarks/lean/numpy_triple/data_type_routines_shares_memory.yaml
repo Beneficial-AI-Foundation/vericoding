@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "Determine if two arrays share memory.\n\nWarning: This function can be exponentially slow for some inputs, see Notes.\n\nParameters\n----------\na, b : ndarray\n    Input arrays.\nmax_work : int, optional\n    Effort to spend on solving the overlap problem.\n\nReturns\n-------\nout : bool\n    True if a and b share memory.\n\nRaises\n------\nnumpy.exceptions.TooHardError\n    Exceeded max_work.\n\nNotes\n-----\ncan_share_memory bounds the problem complexity.\n\nExamples\n--------\n>>> x = np.array([1, 2, 3, 4])\n>>> np.shares_memory(x, x)\nTrue\n>>> np.shares_memory(x, x.copy())\nFalse",
   }
   -/
-
+  
   /-  numpy.shares_memory: Determine if two arrays share memory.
   
       This function determines if two arrays share memory by checking
@@ -20,7 +20,7 @@ vc-description: |-
       The function can be exponentially slow for some inputs due to the
       complexity of the overlap detection algorithm.
   -/
-
+  
   /-  Specification: shares_memory returns a boolean indicating whether two arrays actually share memory.
   
       Precondition: True (no special preconditions needed)
@@ -36,16 +36,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def shares_memory {n m : Nat} (a : Vector Float n) (b : Vector Float m) : Id Bool :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem shares_memory_spec {n m : Nat} (a : Vector Float n) (b : Vector Float m) :
@@ -66,8 +66,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -12,7 +12,7 @@ vc-description: |-
       The function essentially computes the inverse of rfft by taking
       the conjugate of the input and then computing the inverse real FFT.
   -/
-
+  
   /-  Specification: numpy.fft.hfft computes the FFT of a signal with Hermitian symmetry.
   
       Precondition: The input vector represents a Hermitian symmetric signal
@@ -30,8 +30,7 @@ vc-preamble: |-
   import Std.Tactic.Do
   open Std.Do
   
-  /-  Structure representing a complex number with float components -/
-  
+  /-- Structure representing a complex number with float components -/
   structure Complex where
     /-- The real part of the complex number -/
     real : Float
@@ -39,16 +38,16 @@ vc-preamble: |-
     imag : Float
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def hfft {m : Nat} (a : Vector Complex (m + 1)) : Id (Vector Float (2 * m)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem hfft_spec {m : Nat} (a : Vector Complex (m + 1)) (h : m > 0) :
@@ -60,8 +59,9 @@ vc-condition: |-
                      (a.get i).real * (a.get i).real + (a.get i).imag * (a.get i).imag ≥ 0)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

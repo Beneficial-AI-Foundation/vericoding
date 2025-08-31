@@ -16,7 +16,7 @@ vc-description: |-
       Returns:
       - x_out: Array of points of the same shape as x, after linear transformation
   -/
-
+  
   /-  Specification: mapdomain applies linear transformation to map points from old domain to new domain.
   
       The function computes a linear transformation that maps the interval [old[0], old[1]] 
@@ -38,16 +38,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def mapdomain {n : Nat} (x : Vector Float n) (old new : Vector Float 2) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem mapdomain_spec {n : Nat} (x : Vector Float n) (old new : Vector Float 2)
@@ -60,8 +60,9 @@ vc-condition: |-
         result.get i = offset + scale * x.get i⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

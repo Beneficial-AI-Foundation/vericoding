@@ -7,11 +7,11 @@ vc-description: |-
     "doc": "Inverse hyperbolic cosine, element-wise.",
   }
   -/
-
+  
   /-  Inverse hyperbolic cosine, element-wise. 
       Returns the inverse hyperbolic cosine of each element in the input vector.
       The inverse hyperbolic cosine is defined as: arccosh(x) = log(x + sqrt(x² - 1)) for x ≥ 1 -/
-
+  
   /-  Specification: arccosh computes the inverse hyperbolic cosine element-wise.
       
       Mathematical properties:
@@ -31,16 +31,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def arccosh {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem arccosh_spec {n : Nat} (x : Vector Float n) 
@@ -56,8 +56,9 @@ vc-condition: |-
                      result.get i = Float.log (x.get i + Float.sqrt (x.get i * x.get i - 1)))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

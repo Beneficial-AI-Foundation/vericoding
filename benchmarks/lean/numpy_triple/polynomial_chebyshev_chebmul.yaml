@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "Multiply one Chebyshev series by another.\n\n    Returns the product of two Chebyshev series `c1` * `c2`.  The arguments\n    are sequences of coefficients, from lowest order \"term\" to highest,\n    e.g., [1,2,3] represents the series ``T_0 + 2*T_1 + 3*T_2``.\n\n    Parameters\n    ----------\n    c1, c2 : array_like\n        1-D arrays of Chebyshev series coefficients ordered from low to\n        high.\n\n    Returns\n    -------\n    out : ndarray\n        Of Chebyshev series coefficients representing their product.\n\n    See Also\n    --------\n    chebadd, chebsub, chebmulx, chebdiv, chebpow\n\n    Notes\n    -----\n    In general, the (polynomial) product of two C-series results in terms\n    that are not in the Chebyshev polynomial basis set.  Thus, to express\n    the product as a C-series, it is typically necessary to \"reproject\"\n    the product onto said basis set, which typically produces\n    \"unintuitive live\" (but correct) results; see Examples section below.\n\n    Examples\n    --------\n    >>> from numpy.polynomial import chebyshev as C\n    >>> c1 = (1,2,3)\n    >>> c2 = (3,2,1)\n    >>> C.chebmul(c1,c2) # multiplication requires \"reprojection\"\n    array([  6.5,  12. ,  12. ,   4. ,   1.5])",
   }
   -/
-
+  
   /-  Multiply one Chebyshev series by another.
       
       Returns the product of two Chebyshev series c1 * c2. The arguments
@@ -16,7 +16,7 @@ vc-description: |-
       e.g., [1,2,3] represents the series T_0 + 2*T_1 + 3*T_2.
       
       The result length is m + n - 1 where m and n are the lengths of c1 and c2. -/
-
+  
   /-  Specification: chebmul computes the product of two Chebyshev series.
       
       The multiplication of Chebyshev polynomials follows the recurrence relation:
@@ -35,17 +35,17 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def chebmul {m n : Nat} (c1 : Vector Float m) (c2 : Vector Float n) 
       (hm : m > 0) (hn : n > 0) : Id (Vector Float (m + n - 1)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem chebmul_spec {m n : Nat} (c1 : Vector Float m) (c2 : Vector Float n) 
@@ -81,8 +81,9 @@ vc-condition: |-
                     result.get ⟨4, sorry⟩ = 1.5)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

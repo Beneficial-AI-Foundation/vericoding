@@ -7,10 +7,10 @@ vc-description: |-
     "doc": "Element-wise maximum of array elements.\n\nCompare two arrays and returns a new array containing the element-wise maxima. If one of the elements being compared is a NaN, then the non-nan element is returned.",
   }
   -/
-
+  
   /-  Element-wise maximum of two vectors, with special NaN handling.
       If one element is NaN, returns the non-NaN element. -/
-
+  
   /-  Specification: fmax returns element-wise maximum with NaN handling.
       For each position i:
       - If both elements are non-NaN, returns the maximum
@@ -28,16 +28,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def fmax {n : Nat} (x y : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem fmax_spec {n : Nat} (x y : Vector Float n) :
@@ -62,8 +62,9 @@ vc-condition: |-
         ((result.get i).isNaN ↔ ((x.get i).isNaN ∧ (y.get i).isNaN))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

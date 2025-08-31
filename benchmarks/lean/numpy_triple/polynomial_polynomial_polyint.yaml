@@ -9,7 +9,7 @@ vc-description: |-
       The input coefficients are ordered from low to high degree.
       For example, [1, 2, 3] represents 1 + 2*x + 3*x².
   -/
-
+  
   /-  Specification: polyint integrates polynomial coefficients m times.
       
       The integration process:
@@ -32,8 +32,8 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def polyint {n : Nat} (c : Vector Float n) (m : Nat := 1) 
@@ -42,9 +42,9 @@ vc-signature: |-
       Id (Vector Float (n + m)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem polyint_spec {n : Nat} (c : Vector Float n) (m : Nat) 
@@ -84,8 +84,9 @@ vc-condition: |-
       ⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

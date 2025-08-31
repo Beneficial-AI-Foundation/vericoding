@@ -8,13 +8,13 @@ vc-description: |-
     "doc": "Chebyshev points of the second kind.\n\n    The Chebyshev points of the second kind are the points ``cos(x)``,\n    where ``x = [pi*k/(npts - 1) for k in range(npts)]`` sorted in ascending\n    order.\n\n    Parameters\n    ----------\n    npts : int\n        Number of sample points desired.\n\n    Returns\n    -------\n    pts : ndarray\n        The Chebyshev points of the second kind.",
   }
   -/
-
+  
   /-  Chebyshev points of the second kind.
       
       Generates n Chebyshev points of the second kind, which are the values
       cos(π*k/(n-1)) for k from 0 to n-1, sorted in ascending order.
       These points are the extrema and endpoints of the Chebyshev polynomial T_{n-1}. -/
-
+  
   /-  Specification: chebpts2 generates Chebyshev points of the second kind
       
       The function returns n points where:
@@ -29,16 +29,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def chebpts2 (n : Nat) (h : n ≥ 2) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem chebpts2_spec (n : Nat) (h : n ≥ 2) :
@@ -60,8 +60,9 @@ vc-condition: |-
                 (n = 3 → pts.get ⟨1, sorry⟩ = 0)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

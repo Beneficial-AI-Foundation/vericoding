@@ -7,7 +7,7 @@ vc-description: |-
     "doc": "Inverse hyperbolic sine element-wise.",
   }
   -/
-
+  
   /-  numpy.arcsinh: Inverse hyperbolic sine element-wise.
       
       Computes the inverse hyperbolic sine of each element in the input vector.
@@ -16,7 +16,7 @@ vc-description: |-
       This function is defined for all real numbers and is the inverse of the
       hyperbolic sine function (sinh).
   -/
-
+  
   /-  Specification: numpy.arcsinh returns a vector where each element is the
       inverse hyperbolic sine of the corresponding element in x.
       
@@ -35,16 +35,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_arcsinh {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_arcsinh_spec {n : Nat} (x : Vector Float n) :
@@ -63,8 +63,9 @@ vc-condition: |-
           (x.get i < 0 → result.get i < 0)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

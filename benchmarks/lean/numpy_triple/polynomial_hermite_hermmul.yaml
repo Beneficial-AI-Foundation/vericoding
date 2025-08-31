@@ -13,7 +13,7 @@ vc-description: |-
       For non-empty inputs of length m and n, the result has length m + n - 1.
       For empty inputs, returns a single zero coefficient.
   -/
-
+  
   /-  Specification: hermmul returns the coefficients of the product of two
       Hermite series.
   
@@ -36,17 +36,17 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def hermmul (m n : Nat) (c1 : Vector Float m) (c2 : Vector Float n) : 
       Id (Vector Float (if m = 0 ∨ n = 0 then 1 else m + n - 1)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem hermmul_spec (m n : Nat) (c1 : Vector Float m) (c2 : Vector Float n) :
@@ -68,8 +68,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

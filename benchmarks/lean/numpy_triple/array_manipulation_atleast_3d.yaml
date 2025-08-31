@@ -10,14 +10,14 @@ vc-description: |-
     "signature": "numpy.atleast_3d(*arrays)"
   }
   -/
-
+  
   /-  numpy.atleast_3d: View a 1D vector as a 3D array with shape (1, n, 1).
       
       This is a specialization of numpy.atleast_3d for 1D input.
       The function reshapes a 1D array of shape (n,) into a 3D array 
       of shape (1, n, 1) while preserving all elements.
   -/
-
+  
   /-  Specification: atleast_3d transforms a 1D vector into a 3D array where:
       - The output has shape (1, n, 1)
       - Each element arr[i] is accessible at position [0][i][0] in the result
@@ -37,16 +37,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def atleast_3d {n : Nat} (arr : Vector Float n) : Id (Vector (Vector (Vector Float 1) n) 1) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem atleast_3d_spec {n : Nat} (arr : Vector Float n) :
@@ -62,8 +62,9 @@ vc-condition: |-
                     (∀ (j : Fin 1) (k : Fin n), ((result.get j).get k).size = 1)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

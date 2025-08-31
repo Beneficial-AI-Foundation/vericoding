@@ -20,7 +20,7 @@ vc-description: |-
       - Parameters: x1, x2 (array_like) - Input arrays
       - Returns: ndarray - The element-wise logaddexp of the inputs
   -/
-
+  
   /-  Specification: numpy.logaddexp returns a vector where each element is the
       logarithm of the sum of exponentiations of the corresponding elements.
   
@@ -47,16 +47,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def logaddexp {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem logaddexp_spec {n : Nat} (x1 x2 : Vector Float n) :
@@ -67,8 +67,9 @@ vc-condition: |-
                      (x1.get i = x2.get i → result.get i = x1.get i + Float.log 2)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

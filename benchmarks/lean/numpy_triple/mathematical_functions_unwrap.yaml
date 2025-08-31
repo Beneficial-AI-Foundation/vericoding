@@ -2,7 +2,7 @@ vc-description: |-
   /-  Unwrap by changing deltas between values to 2*pi complement.
       Unwraps radian phase by changing absolute jumps greater than discont to their 2*pi complement.
       For consecutive elements with difference > discont, adds/subtracts multiples of period to create continuity. -/
-
+  
   /-  Specification: unwrap ensures continuity by correcting large phase jumps -/
 
 vc-preamble: |-
@@ -11,16 +11,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def unwrap {n : Nat} (p : Vector Float n) (discont : Float := 3.141592653589793) (period : Float := 2 * 3.141592653589793) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem unwrap_spec {n : Nat} (p : Vector Float n) (discont : Float := 3.141592653589793) (period : Float := 2 * 3.141592653589793) 
@@ -39,8 +39,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

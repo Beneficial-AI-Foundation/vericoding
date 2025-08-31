@@ -7,9 +7,9 @@ vc-description: |-
     "doc": "Compute the absolute values element-wise.\n\nThis function returns the absolute values (positive magnitude) of the data in x. Complex values are not handled, use absolute to find the absolute values of complex data.",
   }
   -/
-
+  
   /-  Compute the absolute values element-wise for floating-point numbers -/
-
+  
   /-  Specification: fabs computes the absolute value of each element -/
 
 vc-preamble: |-
@@ -18,16 +18,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def fabs {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem fabs_spec {n : Nat} (x : Vector Float n) :
@@ -44,8 +44,9 @@ vc-condition: |-
                     result.get i = Float.abs (-(x.get i))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

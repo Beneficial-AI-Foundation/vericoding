@@ -9,7 +9,7 @@ vc-description: |-
       The returned array has the same dimensions as the prototype but does not
       copy the values - the contents are undefined and may contain any values.
   -/
-
+  
   /-  Specification: numpy.empty_like returns a vector with the same size as the prototype
       but with uninitialized values.
   
@@ -34,16 +34,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_empty_like {n : Nat} (prototype : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_empty_like_spec {n : Nat} (prototype : Vector Float n) :
@@ -55,8 +55,9 @@ vc-condition: |-
                    (∀ i : Fin prototype.size, ∃ j : Fin result.size, i.val = j.val)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

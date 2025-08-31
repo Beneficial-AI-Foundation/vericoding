@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "Take elements from an array along an axis.\n\nWhen axis is not None, this function does the same thing as \"fancy\" indexing (indexing arrays using arrays); however, it can be easier to use if you need elements along a given axis.\n\nParameters\n----------\na : array_like (Ni..., M, Nk...)\n    The source array.\nindices : array_like (Nj...)\n    The indices of the values to extract.\n    Also allow scalars for indices.\naxis : int, optional\n    The axis over which to select values. By default, the flattened\n    input array is used.\nout : ndarray, optional (Ni..., Nj..., Nk...)\n    If provided, the result will be placed in this array.\nmode : {'raise', 'wrap', 'clip'}, optional\n    Specifies how out-of-bounds indices will behave.\n\nReturns\n-------\nout : ndarray (Ni..., Nj..., Nk...)\n    The returned array has the same type as \`a\`.\n\nExamples\n--------\n>>> import numpy as np\n>>> a = [4, 3, 5, 7, 6, 8]\n>>> indices = [0, 1, 4]\n>>> np.take(a, indices)\narray([4, 3, 6])",
   }
   -/
-
+  
   /-  Take elements from a source array at specified indices.
       Given a source array 'arr' and a vector of indices 'indices',
       returns a new array containing the elements from 'arr' at the positions
@@ -16,7 +16,7 @@ vc-description: |-
       
       This is a simplified 1D version of numpy.take with 'raise' mode,
       where all indices must be valid (in range [0, n-1]). -/
-
+  
   /-  Specification: take extracts elements from a source array at specified indices.
       
       Mathematical properties:
@@ -39,16 +39,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def take {n m : Nat} (arr : Vector Float n) (indices : Vector (Fin n) m) : Id (Vector Float m) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem take_spec {n m : Nat} (arr : Vector Float n) (indices : Vector (Fin n) m) :
@@ -57,8 +57,9 @@ vc-condition: |-
       ⦃⇓result => ⌜∀ i : Fin m, result.get i = arr.get (indices.get i)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

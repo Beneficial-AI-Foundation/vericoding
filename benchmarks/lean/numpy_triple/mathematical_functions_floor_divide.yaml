@@ -7,7 +7,7 @@ vc-description: |-
     "doc": "Return the largest integer smaller or equal to the division of the inputs.\n\nIt is equivalent to the Python // operator and pairs with the Python % (remainder), function so that a = a % b + b * (a // b) up to roundoff.",
   }
   -/
-
+  
   /-  numpy.floor_divide: Return the largest integer smaller or equal to the division of the inputs.
   
       Performs element-wise floor division of two vectors. For each pair of elements,
@@ -16,7 +16,7 @@ vc-description: |-
       This is equivalent to the Python // operator and pairs with the modulo operation
       such that a = a % b + b * (a // b) up to roundoff.
   -/
-
+  
   /-  Specification: numpy.floor_divide returns a vector where each element is the floor
       of the division of the corresponding elements from x1 and x2.
       
@@ -36,16 +36,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_floor_divide {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_floor_divide_spec {n : Nat} (x1 x2 : Vector Float n) :
@@ -57,8 +57,9 @@ vc-condition: |-
           x1.get i / x2.get i < result.get i + 1⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

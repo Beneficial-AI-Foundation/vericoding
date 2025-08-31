@@ -10,7 +10,7 @@ vc-description: |-
     "signature": "numpy.flipud(m)"
   }
   -/
-
+  
   /-  numpy.flipud: Reverse the order of elements along axis 0 (up/down).
   
       For a 1D array, this reverses the entire array.
@@ -19,7 +19,7 @@ vc-description: |-
   
       Returns a view of the input array with elements reversed along axis 0.
   -/
-
+  
   /-  Specification: flipud reverses the order of elements in the vector.
   
       Precondition: True (no special preconditions)
@@ -35,16 +35,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def flipud {n : Nat} (m : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem flipud_spec {n : Nat} (m : Vector Float n) :
@@ -55,8 +55,9 @@ vc-condition: |-
                      omega⟩⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

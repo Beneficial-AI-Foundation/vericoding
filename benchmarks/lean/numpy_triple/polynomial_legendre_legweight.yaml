@@ -8,10 +8,10 @@ vc-description: |-
     "doc": "Weight function of the Legendre polynomials.\n\n    The weight function is :math:`1` and the interval of integration is\n    :math:`[-1, 1]`. The Legendre polynomials are orthogonal, but not\n    normalized, with respect to this weight function.\n\n    Parameters\n    ----------\n    x : array_like\n       Values at which the weight function will be computed.\n\n    Returns\n    -------\n    w : ndarray\n       The weight function at `x`.",
   }
   -/
-
+  
   /-  Weight function of the Legendre polynomials. 
       The weight function is constant 1 for all input values. -/
-
+  
   /-  Specification: legweight returns a vector of all ones with the same length as input.
       This captures the mathematical property that the Legendre weight function is constant 1. -/
 
@@ -21,16 +21,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def legweight {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem legweight_spec {n : Nat} (x : Vector Float n) :
@@ -39,8 +39,9 @@ vc-condition: |-
       ⦃⇓result => ⌜∀ i : Fin n, result.get i = 1.0⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

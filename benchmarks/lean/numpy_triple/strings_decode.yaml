@@ -1,4 +1,14 @@
 vc-description: |-
+  /- 
+  {
+    "name": "numpy.strings.decode",
+    "category": "String encoding",
+    "description": "Decode byte strings using the codec",
+    "url": "https://numpy.org/doc/stable/reference/generated/numpy.strings.decode.html",
+    "doc": "Calls \`\`bytes.decode\`\` element-wise.\n\nParameters\n----------\na : array_like, with \`bytes_\` dtype\n    Input byte array\nencoding : str, optional\n    The name of an encoding. Default is 'utf-8'\nerrors : str, optional\n    Specifies how to handle encoding errors.\n    Default is 'strict'\n\nReturns\n-------\nout : ndarray\n    Output array of \`str_\` dtype",
+  }
+  -/
+  
   /-  numpy.strings.decode: Decode byte strings using the codec
   
       Calls bytes.decode element-wise on a vector of byte strings.
@@ -8,7 +18,7 @@ vc-description: |-
       of decoded strings. The decoding process depends on the encoding
       parameter, with UTF-8 being the default.
   -/
-
+  
   /-  Specification: numpy.strings.decode returns a vector where each element is the decoded string
       from the corresponding byte array in the input vector.
   
@@ -30,16 +40,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def decode {n : Nat} (a : Vector ByteArray n) (encoding : String := "utf-8") (errors : String := "strict") : Id (Vector String n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem decode_spec {n : Nat} (a : Vector ByteArray n) (encoding : String := "utf-8") (errors : String := "strict") :
@@ -74,8 +84,9 @@ vc-condition: |-
                       (∀ j : Fin n, (a.get j).size = 0))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

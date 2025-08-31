@@ -7,9 +7,9 @@ vc-description: |-
     "doc": "1/π = 0.318309886183790671537767526745028724",
   }
   -/
-
+  
   /-  The mathematical constant 1/π (one divided by pi), approximately 0.31831... -/
-
+  
   /-  Specification: NPY_1_PI represents the reciprocal of pi (1/π),
       and satisfies key mathematical properties -/
 
@@ -19,16 +19,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def NPY_1_PI : Id Float :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem NPY_1_PI_spec :
@@ -54,8 +54,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

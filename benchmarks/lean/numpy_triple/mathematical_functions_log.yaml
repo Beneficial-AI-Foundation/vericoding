@@ -10,7 +10,7 @@ vc-description: |-
       Note: The domain of the natural logarithm is the positive real numbers.
       Mathematically, log(x) is undefined for x ≤ 0.
   -/
-
+  
   /-  Specification: log returns a vector where each element is the natural
       logarithm of the corresponding element in x.
       
@@ -31,16 +31,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def log {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem log_spec {n : Nat} (x : Vector Float n) :
@@ -49,8 +49,9 @@ vc-condition: |-
       ⦃⇓result => ⌜∀ i : Fin n, result.get i = Float.log (x.get i)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

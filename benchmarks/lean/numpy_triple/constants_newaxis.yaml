@@ -1,8 +1,18 @@
 vc-description: |-
+  /- 
+  {
+    "name": "numpy.newaxis",
+    "category": "Indexing helpers",
+    "description": "A convenient alias for None, useful for indexing arrays",
+    "url": "https://numpy.org/doc/stable/reference/constants.html#numpy.newaxis",
+    "doc": "newaxis is an alias for None and is used to expand the dimensions of an array.\n\nExamples:\n>>> a = np.array([1, 2, 3])\n>>> a.shape\n(3,)\n>>> a[:, np.newaxis].shape\n(3, 1)\n>>> a[np.newaxis, :].shape\n(1, 3)",
+  }
+  -/
+  
   /-  Expands a vector to a column matrix (n × 1) using newaxis.
       This models the behavior of a[:, np.newaxis] which converts
       a 1D array of shape (n,) to a 2D array of shape (n, 1). -/
-
+  
   /-  Specification: expandToColumn creates a column matrix where each element
       is a singleton vector containing the corresponding element from the input vector.
       
@@ -16,25 +26,24 @@ vc-preamble: |-
   import Std.Tactic.Do
   open Std.Do
   
-  /-  Represents the newaxis constant used for dimension expansion.
+  /-- Represents the newaxis constant used for dimension expansion.
       In NumPy, newaxis is used in indexing to add new dimensions to arrays.
       For our Vector-based implementation, we model this as a function that
       converts a 1D vector into a 2D vector (matrix) with either shape (n, 1) or (1, n). -/
-  
   inductive NewAxis where
     | newaxis
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def expandToColumn {T : Type} {n : Nat} (v : Vector T n) (axis : NewAxis) : Id (Vector (Vector T 1) n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem expandToColumn_spec {T : Type} {n : Nat} (v : Vector T n) (axis : NewAxis) :
@@ -45,8 +54,9 @@ vc-condition: |-
                      (result.get i).get ⟨0, by simp⟩ = v.get i⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

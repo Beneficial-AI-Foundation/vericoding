@@ -7,9 +7,9 @@ vc-description: |-
     "doc": "Returns an element-wise indication of the sign of a number.\n\nThe sign function returns -1 if x < 0, 0 if x==0, 1 if x > 0. nan is returned for nan inputs.",
   }
   -/
-
+  
   /-  Returns an element-wise indication of the sign of a number -/
-
+  
   /-  Specification: sign returns -1 for negative numbers, 0 for zero, 1 for positive numbers -/
 
 vc-preamble: |-
@@ -18,16 +18,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def sign {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem sign_spec {n : Nat} (x : Vector Float n) :
@@ -39,8 +39,9 @@ vc-condition: |-
         (x.get i > 0 → result.get i = 1)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

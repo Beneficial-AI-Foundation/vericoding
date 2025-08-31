@@ -10,7 +10,7 @@ vc-description: |-
     "signature": "numpy.dstack(tup)"
   }
   -/
-
+  
   /-  numpy.dstack: Stack arrays in sequence depth wise (along third axis).
   
       For a sequence of 1D arrays (vectors), this function stacks them along a new third axis,
@@ -21,7 +21,7 @@ vc-description: |-
       
       The result is always at least 3-dimensional.
   -/
-
+  
   /-  Specification: numpy.dstack stacks 1D arrays along the third axis.
       
       For k+1 input vectors each of length n:
@@ -38,17 +38,17 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_dstack {k n : Nat} (arrays : Vector (Vector Float n) (k + 1)) : 
       Id (Vector (Vector (Vector Float (k + 1)) n) 1) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_dstack_spec {k n : Nat} (arrays : Vector (Vector Float n) (k + 1)) :
@@ -67,8 +67,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

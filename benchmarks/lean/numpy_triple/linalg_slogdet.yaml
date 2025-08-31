@@ -9,7 +9,7 @@ vc-description: |-
       
       The determinant can be recovered as: det = sign * exp(logabsdet)
   -/
-
+  
   /-  Specification: slogdet computes the sign and natural logarithm of the determinant
       
       The function returns a tuple (sign, logabsdet) where:
@@ -26,16 +26,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def slogdet {n : Nat} (a : Vector (Vector Float n) n) : Id (Float × Float) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem slogdet_spec {n : Nat} (a : Vector (Vector Float n) n) :
@@ -72,8 +72,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

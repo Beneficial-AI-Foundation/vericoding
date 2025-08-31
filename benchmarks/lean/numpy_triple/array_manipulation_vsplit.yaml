@@ -10,10 +10,10 @@ vc-description: |-
     "signature": "numpy.vsplit(ary, indices_or_sections)"
   }
   -/
-
+  
   /-  Split a 2D vector into multiple sub-vectors vertically (row-wise).
       This is a simplified version that handles splitting into equal parts. -/
-
+  
   /-  Specification: vsplit divides a matrix into k equal parts row-wise, 
       where each part contains consecutive rows from the original matrix -/
 
@@ -23,17 +23,17 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def vsplit {rows cols k : Nat} (mat : Vector (Vector Float cols) rows) 
       (h_div : k > 0 ∧ rows % k = 0) : Id (Vector (Vector (Vector Float cols) (rows / k)) k) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem vsplit_spec {rows cols k : Nat} (mat : Vector (Vector Float cols) rows) 
@@ -55,8 +55,9 @@ vc-condition: |-
                      orig_row.val = split_idx.val * (rows / k) + row_idx.val)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

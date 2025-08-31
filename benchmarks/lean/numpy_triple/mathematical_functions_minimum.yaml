@@ -15,7 +15,7 @@ vc-description: |-
       Returns:
       - Vector Float n - The element-wise minimum of x1 and x2
   -/
-
+  
   /-  Specification: numpy.minimum returns a vector where each element is the minimum
       of the corresponding elements from x1 and x2.
   
@@ -36,16 +36,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def minimum {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem minimum_spec {n : Nat} (x1 x2 : Vector Float n) :
@@ -60,8 +60,9 @@ vc-condition: |-
                    (result.get i = x1.get i ∨ result.get i = x2.get i)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

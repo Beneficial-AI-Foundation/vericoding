@@ -9,7 +9,7 @@ vc-description: |-
       which returns a convolution of length (M + N - 1) where M and N are
       the lengths of the input arrays.
   -/
-
+  
   /-  Specification: numpy.convolve returns the discrete convolution of two vectors.
   
       Precondition: Both input vectors must be non-empty (enforced by types)
@@ -30,16 +30,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_convolve {m n : Nat} (a : Vector Float m) (v : Vector Float n) : Id (Vector Float (m + n - 1)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_convolve_spec {m n : Nat} (a : Vector Float m) (v : Vector Float n) 
@@ -62,8 +62,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -10,11 +10,11 @@ vc-description: |-
     "signature": "numpy.swapaxes(a, axis1, axis2)"
   }
   -/
-
+  
   /-  Interchange two axes of a 2D array (matrix).
       For 2D arrays, swapaxes with axis1=0 and axis2=1 is equivalent to transpose.
       This specification focuses on 2D arrays where axis1=0 and axis2=1. -/
-
+  
   /-  Specification: swapaxes with axes 0 and 1 transposes a 2D array.
       The element at position (i,j) in the original becomes (j,i) in the result.
       
@@ -31,8 +31,8 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def swapaxes {rows cols : Nat} (mat : Vector (Vector Float cols) rows) 
@@ -40,9 +40,9 @@ vc-signature: |-
       Id (Vector (Vector Float rows) cols) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem swapaxes_spec {rows cols : Nat} (mat : Vector (Vector Float cols) rows) 
@@ -53,8 +53,9 @@ vc-condition: |-
                     (mat.get i).get j = (result.get j).get i⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

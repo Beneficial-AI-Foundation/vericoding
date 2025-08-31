@@ -8,9 +8,9 @@ vc-description: |-
     "doc": "For each element, return True if there are only decimal characters in the element.\n\nDecimal characters include digit characters, and all characters that can be used to form decimal-radix numbers.\n\nParameters\n----------\na : array_like, with \`str_\` or \`StringDType\` dtype\n\nReturns\n-------\nout : ndarray\n    Output array of bools",
   }
   -/
-
+  
   /-  For each element, return True if there are only decimal characters in the element -/
-
+  
   /-  
   Specification: isdecimal returns True for each element if all characters in the string 
   are decimal characters (including digit characters and all characters that can be used 
@@ -36,16 +36,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def isdecimal {n : Nat} (a : Vector String n) : Id (Vector Bool n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem isdecimal_spec {n : Nat} (a : Vector String n) :
@@ -59,8 +59,9 @@ vc-condition: |-
           (a.get i = "" → result.get i = false)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -7,7 +7,7 @@ vc-description: |-
     "doc": "Return the distance between x and the nearest adjacent number.\n\nSignature: numpy.spacing(x, /, out=None, *, where=True, casting='same_kind', order='K', dtype=None, subok=True)\n\nParameters:\n  x: array_like - Input values to find spacing of\n  out: ndarray, None, or tuple of ndarray and None, optional - A location into which the result is stored\n\nReturns:\n  spacing: ndarray - An ndarray containing the distance between x and the nearest adjacent number",
   }
   -/
-
+  
   /-  numpy.spacing: Return the distance between x and the nearest adjacent number.
       
       For each element x in the input array, returns the distance to the nearest
@@ -21,7 +21,7 @@ vc-description: |-
       This function is crucial for understanding floating-point precision limits
       and is used in numerical analysis for error bounds and convergence testing.
   -/
-
+  
   /-  Specification: numpy.spacing returns the distance between each element 
       and its nearest adjacent floating-point number.
       
@@ -44,16 +44,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def spacing {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem spacing_spec {n : Nat} (x : Vector Float n) :
@@ -67,8 +67,9 @@ vc-condition: |-
                       (∀ j : Fin n, (x.get i).abs = (x.get j).abs → result.get i = result.get j)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

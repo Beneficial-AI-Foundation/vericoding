@@ -9,7 +9,7 @@ vc-description: |-
       an array where the i-th element is the count of how many times the
       value i appears in the input array.
   -/
-
+  
   /-  Specification: numpy.bincount returns count of occurrences of each value.
   
       Precondition: All values in x are non-negative and ≤ max_val
@@ -22,17 +22,17 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_bincount {n : Nat} (x : Vector Nat n) (max_val : Nat) 
       (h_bounds : ∀ i : Fin n, x.get i ≤ max_val) : Id (Vector Nat (max_val + 1)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_bincount_spec {n : Nat} (x : Vector Nat n) (max_val : Nat) 
@@ -43,8 +43,9 @@ vc-condition: |-
                      result.get val = (x.toList.filter (· = val.val)).length⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

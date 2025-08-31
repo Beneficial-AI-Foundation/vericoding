@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "Return an array with the elements of \`a\` converted to lowercase.\n\nFor byte strings, this method is locale-dependent.\n\nParameters\n----------\na : array_like, with \`StringDType\`, \`bytes_\` or \`str_\` dtype\n    Input array\n\nReturns\n-------\nout : ndarray\n    Output array of \`StringDType\`, \`bytes_\` or \`str_\` dtype,\n    depending on input type\n\nExamples\n--------\n>>> np.strings.lower(['HELLO', 'WORLD'])\narray(['hello', 'world'], dtype='<U5')",
   }
   -/
-
+  
   /-  numpy.strings.lower: Return an array with the elements converted to lowercase.
   
       Converts each string element in the input vector to lowercase. This transformation
@@ -29,7 +29,7 @@ vc-description: |-
       4. Idempotent: lower(lower(x)) = lower(x)
       5. Preserves vector length: result.size = a.size
   -/
-
+  
   /-  Specification: numpy.strings.lower returns a vector where each string element
       is converted to lowercase.
   
@@ -51,16 +51,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def lower {n : Nat} (a : Vector String n) : Id (Vector String n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem lower_spec {n : Nat} (a : Vector String n) :
@@ -94,8 +94,9 @@ vc-condition: |-
             (origChar.isUpper → result.get? ⟨j⟩ = some origChar.toLower))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

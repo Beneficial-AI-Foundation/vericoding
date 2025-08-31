@@ -9,7 +9,7 @@ vc-description: |-
       The result vector is perpendicular to both input vectors according to the
       right-hand rule.
   -/
-
+  
   /-  Specification: numpy.cross returns the cross product of two 3D vectors.
   
       Precondition: True (vectors must be 3D, enforced by type)
@@ -27,16 +27,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def cross (a b : Vector Float 3) : Id (Vector Float 3) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem cross_spec (a b : Vector Float 3) :
@@ -53,8 +53,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -11,7 +11,7 @@ vc-description: |-
       Note: In the full NumPy implementation, this returns a tuple of arrays
       (one for each dimension), but for 1D arrays we simplify to a single list.
   -/
-
+  
   /-  Specification: numpy.nonzero returns indices of all non-zero elements.
   
       Precondition: True (no constraints on input)
@@ -28,16 +28,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def nonzero {n : Nat} (a : Vector Float n) : Id (List (Fin n)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem nonzero_spec {n : Nat} (a : Vector Float n) :
@@ -50,8 +50,9 @@ vc-condition: |-
                      (indices.Nodup)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

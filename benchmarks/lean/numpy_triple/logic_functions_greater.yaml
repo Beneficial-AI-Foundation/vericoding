@@ -10,7 +10,7 @@ vc-description: |-
       - Comparisons with NaN always return false
       - Returns boolean array of same shape as inputs
   -/
-
+  
   /-  Specification: numpy.greater returns a boolean vector where each element
       is true if and only if the corresponding element in x1 is greater than
       the corresponding element in x2.
@@ -30,16 +30,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_greater {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Bool n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_greater_spec {n : Nat} (x1 x2 : Vector Float n) :
@@ -54,8 +54,9 @@ vc-condition: |-
                                (result.get i = true ∨ result.get i = false)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -8,7 +8,7 @@ vc-description: |-
       The function maps type specifications to their corresponding DType objects with proper
       attributes like size, alignment, and signedness.
   -/
-
+  
   /-  Specification: numpy.dtype creates a valid data type object with consistent attributes.
   
       Precondition: The type_spec is a valid NumPy type specification
@@ -20,8 +20,7 @@ vc-preamble: |-
   import Std.Tactic.Do
   open Std.Do
   
-  /-  Represents a NumPy data type object with its essential attributes -/
-  
+  /-- Represents a NumPy data type object with its essential attributes -/
   structure DType where
     /-- The fundamental numeric type category -/
     kind : String
@@ -35,16 +34,16 @@ vc-preamble: |-
     signed : Bool
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_dtype (type_spec : String) : Id DType :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_dtype_spec (type_spec : String) 
@@ -71,8 +70,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

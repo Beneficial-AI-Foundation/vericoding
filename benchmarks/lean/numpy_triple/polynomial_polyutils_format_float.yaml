@@ -3,7 +3,7 @@ vc-description: |-
       This function takes a floating-point value and converts it to a human-readable 
       string format, handling special cases like NaN and infinity, and choosing 
       between scientific and positional notation based on the magnitude of the number. -/
-
+  
   /-  Specification: format_float produces a valid string representation of a float.
       The function handles special cases (NaN, infinity) and chooses appropriate 
       notation based on the magnitude of the input. The output string should be 
@@ -16,16 +16,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def format_float (x : Float) (parens : Bool := false) : Id String :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem format_float_spec (x : Float) (parens : Bool := false) :
@@ -56,8 +56,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

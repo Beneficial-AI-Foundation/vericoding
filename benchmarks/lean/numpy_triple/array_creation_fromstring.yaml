@@ -9,9 +9,9 @@ vc-description: |-
     "signature": "numpy.fromstring(string, dtype=float, count=-1, *, sep, like=None)"
   }
   -/
-
+  
   /-  A new 1-D array initialized from text data in a string -/
-
+  
   /-  Specification: fromstring parses a string into a vector of floats using a separator -/
 
 vc-preamble: |-
@@ -20,16 +20,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def fromstring {n : Nat} (input : String) (sep : String) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem fromstring_spec {n : Nat} (input : String) (sep : String)
@@ -76,8 +76,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

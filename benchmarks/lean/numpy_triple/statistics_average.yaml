@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "numpy.average(a, axis=None, weights=None, returned=False, *, keepdims=<no value>)\n\nCompute the weighted average along the specified axis.\n\nParameters\n----------\na : array_like\n    Array containing data to be averaged. If a is not an array, a conversion is attempted.\naxis : None or int or tuple of ints, optional\n    Axis or axes along which to average a. The default, axis=None, will average over all of the elements of the input array.\nweights : array_like, optional\n    An array of weights associated with the values in a. Each value in a contributes to the average according to its associated weight.\nreturned : bool, optional\n    Default is False. If True, the tuple (average, sum_of_weights) is returned, otherwise only the average is returned.\nkeepdims : bool, optional\n    If this is set to True, the axes which are reduced are left in the result as dimensions with size one.\n\nReturns\n-------\nretval, [sum_of_weights] : array_type or double\n    Return the average along the specified axis. When returned is True, return a tuple with the average as the first element and the sum of the weights as the second element.\n\nRaises\n------\nZeroDivisionError\n    When all weights along axis are zero.\nTypeError\n    When the length of 1D weights is not the same as the shape of a along axis.",
   }
   -/
-
+  
   /-  numpy.average: Compute the weighted average along the specified axis.
   
       Computes the weighted average of the elements in the input vector.
@@ -22,7 +22,7 @@ vc-description: |-
       When weights are not provided, this reduces to:
       sum(a) / len(a)
   -/
-
+  
   /-  Specification: numpy.average computes the weighted average when weights are provided,
       and arithmetic mean when weights are None.
   
@@ -36,16 +36,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def average {n : Nat} (a : Vector Float (n + 1)) (weights : Option (Vector Float (n + 1))) : Id Float :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem average_spec {n : Nat} (a : Vector Float (n + 1)) (weights : Option (Vector Float (n + 1))) :
@@ -57,8 +57,9 @@ vc-condition: |-
           ∃ sum_aw sum_w : Float, result = sum_aw / sum_w ∧ sum_w ≠ 0)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

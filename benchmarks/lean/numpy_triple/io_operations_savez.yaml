@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "Save several arrays into a single file in uncompressed \`\`.npz\`\` format.\n\n    Provide arrays as keyword arguments to store them under the\n    corresponding name in the output file: \`\`savez(fn, x=x, y=y)\`\`.\n\n    If arrays are specified as positional arguments, i.e., \`\`savez(fn,\n    x, y)\`\`, their names will be \`arr_0\`, \`arr_1\`, etc.\n\n    Parameters\n    ----------\n    file : file, str, or pathlib.Path\n        Either the filename (string) or an open file (file-like object)\n        where the data wil...",
   }
   -/
-
+  
   /-  numpy.savez: Save several arrays into a single file in uncompressed .npz format.
   
       Saves multiple Vector arrays to a single .npz archive file. This operation
@@ -29,7 +29,7 @@ vc-description: |-
       - Invalid file paths or write permissions can cause failures
       - The archive format ensures data integrity through checksums
   -/
-
+  
   /-  Specification: numpy.savez creates a .npz archive containing multiple arrays.
   
       This specification captures the essential properties of the savez operation:
@@ -60,17 +60,17 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def savez {n m : Nat} (file : String) (arr1 : Vector Float n) (arr2 : Vector Float m) 
       (allow_pickle : Bool := true) : Id Unit :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem savez_spec {n m : Nat} (file : String) (arr1 : Vector Float n) (arr2 : Vector Float m) 
@@ -87,8 +87,9 @@ vc-condition: |-
                     (∃ (file_size : Nat), file_size > 0)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

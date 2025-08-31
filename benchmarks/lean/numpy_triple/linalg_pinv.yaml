@@ -12,7 +12,7 @@ vc-description: |-
       The pseudo-inverse has the property that A * A+ * A = A and
       A+ * A * A+ = A+ (Moore-Penrose conditions).
   -/
-
+  
   /-  Specification: pinv computes the Moore-Penrose pseudo-inverse of a matrix.
   
       The pseudo-inverse satisfies the fundamental Moore-Penrose conditions:
@@ -35,16 +35,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def pinv {m n : Nat} (a : Vector (Vector Float n) m) : Id (Vector (Vector Float m) n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem pinv_spec {m n : Nat} (a : Vector (Vector Float n) m) :
@@ -61,8 +61,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

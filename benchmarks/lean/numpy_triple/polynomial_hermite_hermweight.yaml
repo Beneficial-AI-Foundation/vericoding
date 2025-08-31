@@ -8,10 +8,10 @@ vc-description: |-
     "doc": "Weight function of the Hermite polynomials.\n\n    The weight function is :math:\`\\\\exp(-x^2)\` and the interval of\n    integration is :math:\`[-\\\\inf, \\\\inf]\`. the Hermite polynomials are\n    orthogonal, but not normalized, with respect to this weight function.\n\n    Parameters\n    ----------\n    x : array_like\n       Values at which the weight function will be computed.\n\n    Returns\n    -------\n    w : ndarray\n       The weight function at \`x\`.\n\n    Examples\n    --------\n    >>> import numpy as np\n    >>> from numpy.polynomial.hermite import hermweight\n    >>> x = np.arange(-2, 2)\n    >>> hermweight(x)\n    array([0.01831564, 0.36787944, 1.        , 0.36787944])",
   }
   -/
-
+  
   /-  Weight function of the Hermite polynomials.
       Computes exp(-x²) for each element in the input vector. -/
-
+  
   /-  Specification: hermweight computes the Hermite weight function exp(-x²) for each element.
       
       The specification includes:
@@ -27,16 +27,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def hermweight {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem hermweight_spec {n : Nat} (x : Vector Float n) :
@@ -49,8 +49,9 @@ vc-condition: |-
                               w.get i > w.get j)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -9,14 +9,14 @@ vc-description: |-
     "signature": "numpy.loadtxt(fname, dtype=<class 'float'>, comments='#', delimiter=None, converters=None, skiprows=0, usecols=None, unpack=False, ndmin=0, encoding=None, max_rows=None, *, quotechar=None, like=None)"
   }
   -/
-
+  
   /-  Load data from a text file containing numeric values.
       This simplified version assumes:
       - The file contains floating-point numbers (one per line or whitespace-separated)
       - Comments starting with '#' are ignored
       - The skiprows parameter allows skipping initial lines
       Returns a vector of parsed float values. -/
-
+  
   /-  Specification: loadtxt reads numeric data from a text file and returns a vector of floats.
       The preconditions ensure:
       - The file path is valid (non-empty string)
@@ -39,16 +39,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def loadtxt {n : Nat} (fname : String) (skiprows : Nat := 0) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem loadtxt_spec {n : Nat} (fname : String) (skiprows : Nat) 
@@ -61,8 +61,9 @@ vc-condition: |-
                     True)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

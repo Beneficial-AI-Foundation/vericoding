@@ -8,10 +8,10 @@ vc-description: |-
     "doc": "Return the sum along diagonals of the array.\n\nIf a is 2-D, returns the sum along the diagonal. If a has more dimensions, then axes along which the trace is taken can be specified.",
   }
   -/
-
+  
   /-  Returns the sum along the main diagonal of a square matrix.
       The trace is the sum of diagonal elements at positions (i, i) for i = 0 to n-1. -/
-
+  
   /-  Specification: trace computes the sum of the main diagonal elements of a square matrix.
       The trace is mathematically defined as the sum of elements x[i][i] for i from 0 to n-1.
       This is a fundamental operation in linear algebra with important mathematical properties:
@@ -25,16 +25,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def trace {n : Nat} (x : Vector (Vector Float n) n) : Id Float :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem trace_spec {n : Nat} (x : Vector (Vector Float n) n) :
@@ -48,8 +48,9 @@ vc-condition: |-
       (∀ i : Fin n, (x.get i).get i ≠ 0 → result ≠ 0)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

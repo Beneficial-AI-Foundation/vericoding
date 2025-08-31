@@ -7,7 +7,7 @@ vc-description: |-
     "doc": "Return the ceiling of the input, element-wise.\n\nThe ceiling of the scalar x is the smallest integer i, such that i >= x.",
   }
   -/
-
+  
   /-  numpy.ceil: Return the ceiling of the input, element-wise.
       
       The ceiling of each element x is the smallest integer i, such that i >= x.
@@ -16,7 +16,7 @@ vc-description: |-
       
       Returns an array of the same shape as x, containing the ceiling of each element.
   -/
-
+  
   /-  Specification: numpy.ceil returns a vector where each element is the
       ceiling (smallest integer greater than or equal to) the corresponding element in x.
       
@@ -36,16 +36,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_ceil {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_ceil_spec {n : Nat} (x : Vector Float n) :
@@ -60,8 +60,9 @@ vc-condition: |-
         result.get i = -((-x.get i).floor)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -12,7 +12,7 @@ vc-description: |-
       where U has orthonormal columns, Vh has orthonormal rows,
       and S contains non-negative singular values in descending order.
   -/
-
+  
   /-  Specification: numpy.linalg.svd returns matrices U, S, Vh such that:
       
       1. Matrix reconstruction: A = U @ diag(S) @ Vh
@@ -32,17 +32,17 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_svd {m n : Nat} (a : Vector (Vector Float n) m) : 
       Id (Vector (Vector Float (min m n)) m × Vector Float (min m n) × Vector (Vector Float n) (min m n)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_svd_spec {m n : Nat} (a : Vector (Vector Float n) m) :
@@ -75,8 +75,9 @@ vc-condition: |-
                    ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

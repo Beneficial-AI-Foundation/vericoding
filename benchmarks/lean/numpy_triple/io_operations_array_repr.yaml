@@ -8,11 +8,11 @@ vc-description: |-
     "doc": "Return the string representation of an array.\n\n    Parameters\n    ----------\n    arr : ndarray\n        Input array.\n    max_line_width : int, optional\n        Inserts newlines if text is longer than \`max_line_width\`.\n        Defaults to \`\`numpy.get_printoptions()['linewidth']\`\`.\n    precision : int, optional\n        Floating point precision.\n        Defaults to \`\`numpy.get_printoptions()['precision']\`\`.\n    suppress_small : bool, optional\n        Represent numbers \"very close\" to zero as zero; d...",
   }
   -/
-
+  
   /-  Return the string representation of a vector, formatted as "array([v1, v2, ..., vn])".
       This provides a structured string representation that includes the "array()" wrapper
       and properly formatted element values. -/
-
+  
   /-  Specification: array_repr returns a well-formatted string representation of the vector.
       
       The specification captures:
@@ -33,17 +33,17 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def array_repr {n : Nat} (arr : Vector Float n) (max_line_width : Nat := 75) 
       (precision : Nat := 8) (suppress_small : Bool := false) : Id String :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem array_repr_spec {n : Nat} (arr : Vector Float n) (max_line_width : Nat := 75) 
@@ -69,8 +69,9 @@ vc-condition: |-
                    (result.contains '[' ∧ result.contains ']')⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

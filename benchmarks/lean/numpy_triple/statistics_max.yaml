@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "numpy.max is an alias for numpy.amax. See numpy.amax for full documentation.",
   }
   -/
-
+  
   /-  Returns the maximum value of all elements in a non-empty vector.
       This is an alias for numpy.amax that returns the maximum value among all elements in the array.
       
@@ -17,7 +17,7 @@ vc-description: |-
       - No element in the vector is greater than the returned value
       - For constant vectors, returns the constant value
       - Handles non-empty vectors only (n + 1 elements) -/
-
+  
   /-  Specification: max returns the maximum value in the vector.
       This specification delegates to amax_spec since max is an alias for amax.
       
@@ -34,16 +34,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def max {n : Nat} (a : Vector Float (n + 1)) : Id Float :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem max_spec {n : Nat} (a : Vector Float (n + 1)) :
@@ -65,8 +65,9 @@ vc-condition: |-
                    (∃ witness : Fin (n + 1), result = a.get witness)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

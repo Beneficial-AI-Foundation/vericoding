@@ -6,7 +6,7 @@ vc-description: |-
       
       In NumPy, this would accept different dtypes, but in Lean we work with the built-in Float type.
   -/
-
+  
   /-  Specification: numpy.finfo returns floating point type information with correct properties.
       
       Precondition: True (no special preconditions)
@@ -18,8 +18,7 @@ vc-preamble: |-
   import Std.Tactic.Do
   open Std.Do
   
-  /-  Structure representing floating point type information returned by numpy.finfo -/
-  
+  /-- Structure representing floating point type information returned by numpy.finfo -/
   structure FloatInfo where
     /-- The number of bits occupied by the type -/
     bits : Nat
@@ -39,16 +38,16 @@ vc-preamble: |-
     smallest_subnormal : Float
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_finfo : Id FloatInfo :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_finfo_spec :
@@ -82,8 +81,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

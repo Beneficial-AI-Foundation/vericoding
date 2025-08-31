@@ -10,7 +10,7 @@ vc-description: |-
       - If x is infinity, returns (infinity, 0)
       - If x is NaN, returns (NaN, 0)
   -/
-
+  
   /-  Specification: frexp decomposes each element into mantissa and exponent such that
       x = mantissa * 2^exponent, where the mantissa is normalized to be in [0.5, 1) for
       positive values or (-1, -0.5] for negative values.
@@ -32,16 +32,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def frexp {n : Nat} (x : Vector Float n) : Id (Vector Float n × Vector Int n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem frexp_spec {n : Nat} (x : Vector Float n) :
@@ -67,8 +67,9 @@ vc-condition: |-
                        mantissa.get i = x.get i ∧ exponent.get i = 0)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

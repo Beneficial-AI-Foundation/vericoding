@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "Return the indices of the maximum values in the specified axis ignoring\nNaNs. For all-NaN slices \`\`ValueError\`\` is raised. Warning: the results\ncannot be trusted if a slice contains only NaNs and -Infs.\n\nParameters\n----------\na : array_like\n    Input data.\naxis : int, optional\n    Axis along which to operate. By default flattened input is used.\nout : array, optional\n    If provided, the result will be inserted into this array. It should\n    be of the appropriate shape and dtype.\n\n    .. versionadded:: 1.22.0\nkeepdims : bool, optional\n    If this is set to True, the axes which are reduced are left\n    in the result as dimensions with size one. With this option,\n    the result will broadcast correctly against the array.\n\n    .. versionadded:: 1.22.0\n\nReturns\n-------\nindex_array : ndarray\n    An array of indices or a single index value.",
   }
   -/
-
+  
   /-  numpy.nanargmax: Returns the index of the maximum value in a vector, ignoring NaN values.
   
       Returns the index of the maximum value among all non-NaN elements in the array.
@@ -19,7 +19,7 @@ vc-description: |-
   
       This function returns the position of the largest non-NaN element in the array.
   -/
-
+  
   /-  Specification: numpy.nanargmax returns the index of the maximum non-NaN element.
   
       Precondition: At least one element is not NaN
@@ -33,16 +33,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def nanargmax {n : Nat} (a : Vector Float (n + 1)) (h_not_all_nan : ∃ i : Fin (n + 1), ¬(a.get i).isNaN) : Id (Fin (n + 1)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem nanargmax_spec {n : Nat} (a : Vector Float (n + 1)) (h_not_all_nan : ∃ i : Fin (n + 1), ¬(a.get i).isNaN) :
@@ -53,8 +53,9 @@ vc-condition: |-
                (∀ j : Fin (n + 1), ¬(a.get j).isNaN → a.get j = a.get idx → idx ≤ j)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

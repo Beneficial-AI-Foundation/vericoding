@@ -18,7 +18,7 @@ vc-description: |-
     ]
   }
   -/
-
+  
   /-  
   Universal function outer method: Apply a binary operator to all pairs (a, b) 
   with a in A and b in B.
@@ -33,7 +33,7 @@ vc-description: |-
   
   The result has shape (m, n) where m is the length of A and n is the length of B.
   -/
-
+  
   /-  
   Specification: outer applies a binary operator to all pairs of elements
   from two input vectors, producing a matrix result.
@@ -59,17 +59,17 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def outer {m n : Nat} (op : Float → Float → Float) (a : Vector Float m) (b : Vector Float n) : 
       Id (Vector (Vector Float n) m) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem outer_spec {m n : Nat} (op : Float → Float → Float) (a : Vector Float m) (b : Vector Float n) :
@@ -87,8 +87,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

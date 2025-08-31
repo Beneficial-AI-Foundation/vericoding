@@ -8,14 +8,14 @@ vc-description: |-
     "doc": "Compute the dot product of two or more arrays in a single function call, while automatically selecting the fastest evaluation order.\n\nmulti_dot chains numpy.dot and uses optimal parenthesization of the matrices. Depending on the shapes of the matrices, this can speed up the multiplication a lot.\n\nIf the first argument is 1-D it is treated as a row vector. If the last argument is 1-D it is treated as a column vector. The other arguments must be 2-D.\n\nThink of multi_dot as: def multi_dot(arrays): return functools.reduce(np.dot, arrays)",
   }
   -/
-
+  
   /-  Multi-dot product: compute the dot product of multiple matrices in a single function call
       with optimal parenthesization. This function performs a chain of matrix multiplications
       A₁ × A₂ × ... × Aₙ where the parenthesization is chosen to minimize computational cost.
       
       For three matrices A, B, C, this computes A × B × C with the optimal evaluation order.
       The result is independent of parenthesization due to associativity of matrix multiplication. -/
-
+  
   /-  Specification: Multi-dot performs a chain of matrix multiplications with optimal parenthesization.
       
       Mathematical properties:
@@ -37,8 +37,8 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def multi_dot {n₁ n₂ n₃ n₄ : Nat} 
@@ -48,9 +48,9 @@ vc-signature: |-
       Id (Vector (Vector Float n₄) n₁) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem multi_dot_spec {n₁ n₂ n₃ n₄ : Nat} 
@@ -73,8 +73,9 @@ vc-condition: |-
                           B.toList))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

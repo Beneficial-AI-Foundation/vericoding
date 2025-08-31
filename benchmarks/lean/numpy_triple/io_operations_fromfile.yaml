@@ -1,6 +1,23 @@
 vc-description: |-
-  /-  Get the size in bytes for each data type -/
-
+  /- 
+  {
+    "name": "numpy.fromfile",
+    "category": "Binary file I/O",
+    "description": "Construct an array from data in a text or binary file",
+    "url": "https://numpy.org/doc/stable/reference/generated/numpy.fromfile.html",
+    "doc": "Construct an array from data in a text or binary file. A highly efficient way of reading binary data with a known data-type, as well as parsing simply formatted text files. Data written using the tofile method can be read using this function.",
+  }
+  -/
+  
+  /-  Construct a vector from data in a text or binary file
+      Parameters:
+      - file: File handle for the input file
+      - dtype: Data type of the returned array
+      - count: Number of items to read (-1 means entire file)
+      - sep: Separator between items (empty string means binary file)
+      - offset: Byte offset from file's current position (binary files only)
+  -/
+  
   /-  Specification: fromfile reads data from a file and constructs a vector
       Properties:
       1. For binary files (sep = ""), reads exactly count items if count > 0
@@ -16,8 +33,7 @@ vc-preamble: |-
   import Std.Tactic.Do
   open Std.Do
   
-  /-  File handle abstraction for I/O operations -/
-  
+  /-- File handle abstraction for I/O operations -/
   structure FileHandle where
     /-- Path to the file -/
     path : String
@@ -27,8 +43,7 @@ vc-preamble: |-
     position : Nat
     deriving Repr
   
-  /-  Represents different data types that can be read from files -/
-  
+  /-- Represents different data types that can be read from files -/
   inductive DType where
     /-- 32-bit floating point -/
     | Float32 : DType
@@ -41,19 +56,14 @@ vc-preamble: |-
     /-- 8-bit unsigned integer -/
     | UInt8 : DType
     deriving Repr, DecidableEq
-
-vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
-
-vc-signature: |-
+  
+  /-- Get the size in bytes for each data type -/
   def DType.size_bytes : DType → Nat
     | DType.Float32 => 4
     | DType.Float64 => 8
     | DType.Int32 => 4
     | DType.Int64 => 8
     | DType.UInt8 => 1
-  
   /-- Convert DType to Lean type -/
   def DType.to_type : DType → Type
     | DType.Float32 => Float
@@ -61,22 +71,19 @@ vc-signature: |-
     | DType.Int32 => Int
     | DType.Int64 => Int
     | DType.UInt8 => Nat  -- Using Nat instead of UInt8 for now
-  
-  /-- Construct a vector from data in a text or binary file
-      Parameters:
-      - file: File handle for the input file
-      - dtype: Data type of the returned array
-      - count: Number of items to read (-1 means entire file)
-      - sep: Separator between items (empty string means binary file)
-      - offset: Byte offset from file's current position (binary files only)
-  -/
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
   def fromfile {n : Nat} (file : FileHandle) (dtype : DType) (count : Int) 
       (sep : String) (offset : Nat) : Id (Vector (dtype.to_type) n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem fromfile_spec {n : Nat} (file : FileHandle) (dtype : DType) (count : Int) 
@@ -113,8 +120,9 @@ vc-condition: |-
                      True)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

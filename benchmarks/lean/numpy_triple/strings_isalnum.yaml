@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "Returns true for each element if all characters in the string are alphanumeric and there is at least one character, false otherwise.\n\nParameters\n----------\na : array_like, with \`StringDType\`, \`bytes_\` or \`str_\` dtype\n\nReturns\n-------\nout : ndarray\n    Output array of bools",
   }
   -/
-
+  
   /-  numpy.strings.isalnum: Returns true for each element if all characters in the string are alphanumeric and there is at least one character, false otherwise.
   
       For each string in the input vector, this function checks if:
@@ -21,7 +21,7 @@ vc-description: |-
       This follows the Python str.isalnum() behavior which returns False for empty strings
       and True only if all characters are alphanumeric.
   -/
-
+  
   /-  Specification: numpy.strings.isalnum returns element-wise alphanumeric check.
   
       Precondition: True (no special preconditions)
@@ -42,16 +42,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def isalnum {n : Nat} (a : Vector String n) : Id (Vector Bool n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem isalnum_spec {n : Nat} (a : Vector String n) :
@@ -60,8 +60,9 @@ vc-condition: |-
       ⦃⇓result => ⌜∀ i : Fin n, result.get i = (a.get i ≠ "" ∧ (a.get i).all Char.isAlphanum)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

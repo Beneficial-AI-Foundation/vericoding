@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "Returns true for each element if there are only whitespace characters in the string and there is at least one character, false otherwise.\n\nParameters\n----------\na : array_like, with \`StringDType\`, \`bytes_\` or \`str_\` dtype\n\nReturns\n-------\nout : ndarray\n    Output array of bools",
   }
   -/
-
+  
   /-  numpy.strings.isspace: Returns true for each element if there are only whitespace characters in the string and there is at least one character, false otherwise.
   
       Tests whether all characters in each string are whitespace characters.
@@ -30,7 +30,7 @@ vc-description: |-
       - "a" (letter) → false
       - " a " (space + letter + space) → false
   -/
-
+  
   /-  Specification: numpy.strings.isspace returns a vector where each element indicates
       whether the corresponding string element contains only whitespace characters
       and has at least one character.
@@ -53,16 +53,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def isspace {n : Nat} (a : Vector String n) : Id (Vector Bool n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem isspace_spec {n : Nat} (a : Vector String n) :
@@ -75,8 +75,9 @@ vc-condition: |-
                    (result.get i = true ∨ result.get i = false)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

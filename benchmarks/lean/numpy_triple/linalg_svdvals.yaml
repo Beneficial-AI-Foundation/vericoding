@@ -8,7 +8,7 @@ vc-description: |-
       This is equivalent to calling numpy.linalg.svd(x, compute_uv=False).
       For an m×n matrix, this returns min(m,n) singular values.
   -/
-
+  
   /-  Specification: svdvals returns the singular values of the input matrix.
   
       The singular values are:
@@ -27,16 +27,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def svdvals {m n : Nat} (x : Vector (Vector Float n) m) : Id (Vector Float (min m n)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem svdvals_spec {m n : Nat} (x : Vector (Vector Float n) m) :
@@ -66,8 +66,9 @@ vc-condition: |-
                    ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

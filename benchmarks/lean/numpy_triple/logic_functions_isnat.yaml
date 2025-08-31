@@ -7,7 +7,7 @@ vc-description: |-
       Returns true for NaT values and false for all valid datetime values.
       The function is the datetime analog of isnan for floating point values.
   -/
-
+  
   /-  Specification: isnat returns true for NaT values and false otherwise.
       The function correctly identifies NaT values in datetime64 arrays.
       
@@ -25,8 +25,7 @@ vc-preamble: |-
   import Std.Tactic.Do
   open Std.Do
   
-  /-  A datetime64 type placeholder representing either a valid datetime or NaT (Not a Time) -/
-  
+  /-- A datetime64 type placeholder representing either a valid datetime or NaT (Not a Time) -/
   inductive DateTime64 where
     /-- Valid datetime represented as float (seconds since epoch) -/
     | valid : Float → DateTime64
@@ -34,16 +33,16 @@ vc-preamble: |-
     | nat : DateTime64
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def isnat {n : Nat} (x : Vector DateTime64 n) : Id (Vector Bool n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem isnat_spec {n : Nat} (x : Vector DateTime64 n) :
@@ -56,8 +55,9 @@ vc-condition: |-
                    (∀ i : Fin n, result.get i = false ↔ ∃ t : Float, x.get i = DateTime64.valid t)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

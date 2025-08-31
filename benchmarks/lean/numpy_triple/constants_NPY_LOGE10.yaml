@@ -7,9 +7,9 @@ vc-description: |-
     "doc": "ln(10) = 2.302585092994045684017991454684364208",
   }
   -/
-
+  
   /-  Natural logarithm of 10 (ln(10)) -/
-
+  
   /-  Specification: npy_loge10 is the natural logarithm of 10 with mathematical properties:
       1. It is approximately 2.302585092994045684017991454684364208
       2. It satisfies the property that e^(npy_loge10) = 10
@@ -22,16 +22,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def npy_loge10 : Id Float :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem npy_loge10_spec :
@@ -57,8 +57,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

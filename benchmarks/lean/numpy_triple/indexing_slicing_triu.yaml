@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "Upper triangle of an array.\n\nReturn a copy of an array with the elements below the \`k\`-th diagonal zeroed. For arrays with \`\`ndim\`\` exceeding 2, \`triu\` will apply to the final two axes.\n\nParameters\n----------\nm : array_like, shape (..., M, N)\n    Input array.\nk : int, optional\n    Diagonal below which to zero elements. \`k = 0\` (the default) is the main diagonal, \`k < 0\` is below it and \`k > 0\` is above.\n\nReturns\n-------\ntriu : ndarray, shape (..., M, N)\n    Upper triangle of \`m\`, of same shape and data-type as \`m\`.",
   }
   -/
-
+  
   /-  Upper triangle of a matrix. Returns a copy of the matrix with elements below the k-th diagonal zeroed.
       
       Given a matrix m and an integer k, this function returns a new matrix where:
@@ -19,7 +19,7 @@ vc-description: |-
       - k = 0: main diagonal (default)
       - k > 0: diagonal above the main diagonal
       - k < 0: diagonal below the main diagonal -/
-
+  
   /-  Specification: triu returns the upper triangle of a matrix with elements below the k-th diagonal set to zero.
       
       Mathematical properties:
@@ -41,16 +41,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def triu {rows cols : Nat} (m : Vector (Vector Float cols) rows) (k : Int) : Id (Vector (Vector Float cols) rows) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem triu_spec {rows cols : Nat} (m : Vector (Vector Float cols) rows) (k : Int) :
@@ -63,8 +63,9 @@ vc-condition: |-
           (result.get i).get j = (0 : Float))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

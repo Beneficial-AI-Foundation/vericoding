@@ -10,10 +10,10 @@ vc-description: |-
     "signature": "numpy.roll(a, shift, axis=None)"
   }
   -/
-
+  
   /-  Roll array elements along a given axis by cyclically shifting elements.
       Elements that roll beyond the last position are re-introduced at the first. -/
-
+  
   /-  Specification: roll cyclically shifts array elements by the given amount.
       For positive shift, elements move to the right and wrap around.
       For negative shift, elements move to the left and wrap around.
@@ -28,16 +28,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def roll {n : Nat} {α : Type} (a : Vector α n) (shift : Int) : Id (Vector α n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem roll_spec {n : Nat} {α : Type} (a : Vector α n) (shift : Int) :
@@ -50,8 +50,9 @@ vc-condition: |-
                      result.get i = a.get ⟨normalizedIdx.toNat, by sorry⟩)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

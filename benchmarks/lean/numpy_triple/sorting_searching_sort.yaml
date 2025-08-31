@@ -12,7 +12,7 @@ vc-description: |-
       Returns:
       - sorted_array : ndarray - Array of the same type and shape as a, with elements sorted
   -/
-
+  
   /-  Specification: numpy.sort returns a sorted permutation of the input array.
   
       The specification captures three key properties:
@@ -30,16 +30,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def sort {n : Nat} (a : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem sort_spec {n : Nat} (a : Vector Float n) :
@@ -49,8 +49,9 @@ vc-condition: |-
                   (∀ x : Float, (result.toList.count x) = (a.toList.count x))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

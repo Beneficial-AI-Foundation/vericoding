@@ -8,7 +8,7 @@ vc-description: |-
       Note: This function is deprecated in favor of moveaxis, but we provide
       the specification for completeness.
   -/
-
+  
   /-  Specification: numpy.rollaxis returns the input vector unchanged for 1D arrays.
       
       Precondition: True (no special preconditions for 1D rollaxis)
@@ -24,16 +24,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_rollaxis {n : Nat} (a : Vector Float n) (axis : Int) (start : Int := 0) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_rollaxis_spec {n : Nat} (a : Vector Float n) (axis : Int) (start : Int := 0) :
@@ -42,8 +42,9 @@ vc-condition: |-
       ⦃⇓result => ⌜result = a⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

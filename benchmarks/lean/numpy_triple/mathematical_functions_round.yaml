@@ -7,7 +7,7 @@ vc-description: |-
     "doc": "Evenly round to the given number of decimals.\n\nSignature: numpy.round(a, decimals=0, out=None)\n\nParameters:\n  a: array_like - Input data\n  decimals: int, optional - Number of decimal places to round to (default: 0)\n  out: ndarray, optional - Alternative output array\n\nReturns:\n  rounded_array: ndarray - An array of the same type as a, containing the rounded values",
   }
   -/
-
+  
   /-  numpy.round: Evenly round to the given number of decimals.
       
       Rounds each element of the input array to the given number of decimal places.
@@ -19,7 +19,7 @@ vc-description: |-
       
       Returns an array of the same shape as input, containing the rounded values.
   -/
-
+  
   /-  Specification: numpy.round rounds each element to the specified number of decimal places.
       
       Precondition: True (rounding is defined for all real numbers and decimal places)
@@ -39,16 +39,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_round {n : Nat} (a : Vector Float n) (decimals : Int) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_round_spec {n : Nat} (a : Vector Float n) (decimals : Int) :
@@ -68,8 +68,9 @@ vc-condition: |-
         (result.get i = result.get i)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

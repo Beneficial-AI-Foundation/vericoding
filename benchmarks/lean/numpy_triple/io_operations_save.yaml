@@ -13,7 +13,7 @@ vc-description: |-
       
       This is a file output operation that creates or overwrites the target file.
   -/
-
+  
   /-  Specification: numpy.save persists vector data to disk in a recoverable format.
       
       This specification captures the essential properties of the save operation:
@@ -40,16 +40,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def save {n : Nat} (file : String) (arr : Vector Float n) (allow_pickle : Bool := false) : Id Unit :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem save_spec {n : Nat} (file : String) (arr : Vector Float n) (allow_pickle : Bool := false)
@@ -73,8 +73,9 @@ vc-condition: |-
                         result = second_save))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

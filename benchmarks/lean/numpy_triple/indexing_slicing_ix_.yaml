@@ -8,13 +8,13 @@ vc-description: |-
     "doc": "Construct an open mesh from multiple sequences.\n\nThis function takes N 1-D sequences and returns N outputs with N dimensions each, such that the shape is 1 in all but one dimension and the dimension with the non-unit shape value cycles through all N dimensions.\n\nParameters\n----------\nargs : 1-D sequences\n    Each sequence should be of integer or boolean type.\n    Boolean sequences will be interpreted as boolean masks.\n\nReturns\n-------\nout : tuple of ndarrays\n    N arrays with N dimensions each, with N the number of input\n    sequences. Together these arrays form an open mesh.",
   }
   -/
-
+  
   /-  Construct an open mesh from two 1-D sequences. 
       This simplified version handles the case of two input sequences,
       returning two 2D arrays that form an open mesh for indexing operations.
       The first array has shape (m, 1) containing values from the first sequence,
       and the second array has shape (1, n) containing values from the second sequence. -/
-
+  
   /-  Specification: ix_ creates an open mesh from two sequences
       This comprehensive specification captures:
       1. The function takes two 1-D sequences of integers
@@ -35,16 +35,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def ix_ {m n : Nat} (seq1 : Vector Int m) (seq2 : Vector Int n) : Id (Vector (Vector Int 1) m × Vector (Vector Int n) 1) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem ix_spec {m n : Nat} (seq1 : Vector Int m) (seq2 : Vector Int n) :
@@ -62,8 +62,9 @@ vc-condition: |-
                        (result.2.get ⟨0, Nat.zero_lt_one⟩).get j = seq2.get j)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -10,13 +10,13 @@ vc-description: |-
     "signature": "numpy.block(arrays)"
   }
   -/
-
+  
   /-  
   Assemble a 2D matrix from a 2x2 block structure.
   This is a simplified version focusing on the common case of assembling 
   a matrix from four blocks arranged in a 2x2 pattern.
   -/
-
+  
   /-  
   Specification: block assembles a matrix from four submatrices in a 2x2 pattern.
   The result has dimensions (r1 + r2) × (c1 + c2) where:
@@ -33,8 +33,8 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def block {r1 c1 r2 c2 : Nat} 
@@ -45,9 +45,9 @@ vc-signature: |-
       Id (Vector (Vector Float (c1 + c2)) (r1 + r2)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem block_spec {r1 c1 r2 c2 : Nat}
@@ -73,8 +73,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

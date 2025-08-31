@@ -9,10 +9,10 @@ vc-description: |-
     "signature": "numpy.geomspace(start, stop, num=50, endpoint=True, dtype=None, axis=0)"
   }
   -/
-
+  
   /-  Return numbers spaced evenly on a log scale (a geometric progression).
       Each output sample is a constant multiple of the previous one. -/
-
+  
   /-  Specification: geomspace returns a geometric progression from start to stop.
       - The first element is always start
       - If endpoint is true and n > 1, the last element is stop
@@ -25,16 +25,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def geomspace {n : Nat} (start stop : Float) (endpoint : Bool := true) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem geomspace_spec {n : Nat} (start stop : Float) (endpoint : Bool)
@@ -58,8 +58,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

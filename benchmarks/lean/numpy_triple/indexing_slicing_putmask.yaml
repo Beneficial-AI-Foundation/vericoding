@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "Changes elements of an array based on conditional and input values.\n\nSets \`\`a.flat[n] = values[n]\`\` for each n where \`\`mask.flat[n]==True\`\`.\n\nIf \`values\` is not the same size as \`a\` and \`mask\` then it will repeat. This gives behavior different from \`\`a[mask] = values\`\`.\n\nParameters\n----------\na : array_like\n    Target array.\nmask : array_like\n    Boolean mask array. It has to be the same shape as \`a\`.\nvalues : array_like\n    Values to put into \`a\` where \`mask\` is True. If \`values\` is smaller than \`a\` it will be repeated.",
   }
   -/
-
+  
   /-  Changes elements of an array based on conditional and input values.
       
       This function modifies the target array in-place, setting elements to values
@@ -21,7 +21,7 @@ vc-description: |-
       - values: Values to put into a where mask is True
       - m: Size of values array (must be positive for repetition)
   -/
-
+  
   /-  Specification: putmask changes elements of an array based on conditional and input values.
       
       This comprehensive specification captures:
@@ -39,17 +39,17 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def putmask {n m : Nat} (a : Vector Float n) (mask : Vector Bool n) (values : Vector Float m) 
       (h : m > 0) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem putmask_spec {n m : Nat} (a : Vector Float n) (mask : Vector Bool n) (values : Vector Float m) 
@@ -61,8 +61,9 @@ vc-condition: |-
                   (∀ i : Fin n, mask.get i = true → ∃ j : Fin m, result.get i = values.get j)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

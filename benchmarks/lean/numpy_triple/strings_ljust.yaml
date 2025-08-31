@@ -13,7 +13,7 @@ vc-description: |-
       Returns:
       - Array where each string is left-justified to the specified width
   -/
-
+  
   /-  Specification: ljust returns a vector where each string is left-justified
       to the specified width using the given fill character.
   
@@ -31,16 +31,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def ljust {n : Nat} (a : Vector String n) (width : Nat) (fillchar : String) : Id (Vector String n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem ljust_spec {n : Nat} (a : Vector String n) (width : Nat) (fillchar : String)
@@ -70,8 +70,9 @@ vc-condition: |-
           (orig.length = 0 → res.length = width)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

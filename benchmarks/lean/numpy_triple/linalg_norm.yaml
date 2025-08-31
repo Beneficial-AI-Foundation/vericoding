@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "Matrix or vector norm.\n\nParameters:\n- x: Input array\n- ord: Order of the norm (see Notes)\n- axis: Axis along which to compute norms\n- keepdims: Keep dimensions for broadcasting\n\nCommon ord values:\n- None: 2-norm (default)\n- 'fro': Frobenius norm\n- 'nuc': Nuclear norm\n- inf: max(abs(x))\n- -inf: min(abs(x))\n- 1: max column sum (matrix) or sum(abs(x)) (vector)\n- 2: largest singular value (matrix) or 2-norm (vector)",
   }
   -/
-
+  
   /-  numpy.linalg.norm: Compute the 2-norm (Euclidean norm) of a vector.
       
       This is the default vector norm when ord=None. For a vector x,
@@ -17,7 +17,7 @@ vc-description: |-
       This implementation focuses on the most common use case: computing
       the Euclidean norm of a 1D vector.
   -/
-
+  
   /-  Specification: norm computes the Euclidean norm (2-norm) of a vector.
       
       The 2-norm is defined as the square root of the sum of squares of all elements.
@@ -43,16 +43,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def norm {n : Nat} (x : Vector Float n) : Id Float :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem norm_spec {n : Nat} (x : Vector Float n) :
@@ -64,8 +64,9 @@ vc-condition: |-
                    (n = 0 → result = 0)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

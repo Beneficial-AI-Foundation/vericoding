@@ -8,9 +8,9 @@ vc-description: |-
     "doc": "Multiply a Hermite series by x.\n\n    Multiply the Hermite series \`c\` by x, where x is the independent\n    variable.\n\n\n    Parameters\n    ----------\n    c : array_like\n        1-D array of Hermite series coefficients ordered from low to\n        high.\n\n    Returns\n    -------\n    out : ndarray\n        Array representing the result of the multiplication.\n\n    See Also\n    --------\n    hermadd, hermsub, hermmul, hermdiv, hermpow\n\n    Notes\n    -----\n    The multiplication uses the recursion relationship for Hermite\n    polynomials in the form\n\n    .. math::\n\n        xP_i(x) = (P_{i + 1}(x)/2 + i*P_{i - 1}(x))\n\n    Examples\n    --------\n    >>> from numpy.polynomial.hermite import hermmulx\n    >>> hermmulx([1, 2, 3])\n    array([2. , 6.5, 1. , 1.5])",
   }
   -/
-
+  
   /-  Multiply a Hermite series by x using the recursion relationship xP_i(x) = (P_{i+1}(x)/2 + i*P_{i-1}(x)) -/
-
+  
   /-  Specification: hermmulx multiplies a Hermite series by x using the recursion relationship for Hermite polynomials.
   
       The algorithm implements the recursion: $$xP_i(x) = (P_{i+1}(x)/2 + i*P_{i-1}(x))$$
@@ -32,16 +32,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def hermmulx {n : Nat} (c : Vector Float n) : Id (Vector Float (n + 1)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem hermmulx_spec {n : Nat} (c : Vector Float n) :
@@ -63,8 +63,9 @@ vc-condition: |-
       ⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

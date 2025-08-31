@@ -8,12 +8,12 @@ vc-description: |-
     "doc": "Chebyshev series whose graph is a straight line.\n\n    Parameters\n    ----------\n    off, scl : scalars\n        The specified line is given by ``off + scl*x``.\n\n    Returns\n    -------\n    y : ndarray\n        This module's representation of the Chebyshev series for\n        ``off + scl*x``.\n\n    See Also\n    --------\n    numpy.polynomial.polynomial.polyline\n    numpy.polynomial.legendre.legline\n    numpy.polynomial.laguerre.lagline\n    numpy.polynomial.hermite.hermline\n    numpy.polynomial.hermite_e.hermeline\n\n    Examples\n    --------\n    >>> import numpy.polynomial.chebyshev as C\n    >>> C.chebline(3,2)\n    array([3, 2])\n    >>> C.chebval(-3, C.chebline(3,2)) # should be -3\n    -3.0",
   }
   -/
-
+  
   /-  Chebyshev series whose graph is a straight line.
       Returns coefficients for the Chebyshev series representing off + scl*x.
       For simplicity, we always return a 2-element vector where the second element
       might be zero when scl = 0. -/
-
+  
   /-  Specification: chebline returns correct Chebyshev coefficients for a linear function.
       The key mathematical property is that the Chebyshev series T₀(x) = 1 and T₁(x) = x,
       so the coefficients [off, scl] directly represent off*T₀(x) + scl*T₁(x) = off + scl*x.
@@ -33,16 +33,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def chebline (off scl : Float) : Id (Vector Float 2) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem chebline_spec (off scl : Float) :
@@ -52,8 +52,9 @@ vc-condition: |-
                    result.get ⟨1, by decide⟩ = scl⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

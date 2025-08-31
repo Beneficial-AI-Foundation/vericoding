@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "Return the companion matrix of c.\n\n    The companion matrix for power series cannot be made symmetric by\n    scaling the basis, so this function differs from those for the\n    orthogonal polynomials.\n\n    Parameters\n    ----------\n    c : array_like\n        1-D array of polynomial coefficients ordered from low to high\n        degree.\n\n    Returns\n    -------\n    mat : ndarray\n        Companion matrix of dimensions (deg, deg).\n\n    Examples\n    --------\n    >>> from numpy.polynomial import polynomial as P\n    >>> c = (1, 2, 3)\n    >>> P.polycompanion(c)\n    array([[ 0.        , -0.33333333],\n           [ 1.        , -0.66666667]])",
   }
   -/
-
+  
   /-  Return the companion matrix of a polynomial.
       
       The companion matrix C for a polynomial p(x) = c[0] + c[1]*x + ... + c[n]*x^n
@@ -19,7 +19,7 @@ vc-description: |-
       - Last row: [-c[0]/c[n], -c[1]/c[n], ..., -c[n-1]/c[n]]
       
       The companion matrix is used to find roots of the polynomial as eigenvalues. -/
-
+  
   /-  Specification: polycompanion constructs the companion matrix of a polynomial.
       
       The companion matrix satisfies the following properties:
@@ -41,16 +41,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def polycompanion {n : Nat} (c : Vector Float (n + 2)) : Id (Vector (Vector Float (n + 1)) (n + 1)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem polycompanion_spec {n : Nat} (c : Vector Float (n + 2)) 
@@ -67,8 +67,9 @@ vc-condition: |-
               0⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -8,7 +8,7 @@ vc-description: |-
       The function operates element-wise on the input vectors, computing the
       hypotenuse for each pair of corresponding elements.
   -/
-
+  
   /-  Specification: numpy.hypot returns a vector where each element is the
       hypotenuse computed from the corresponding elements of x1 and x2.
       
@@ -29,16 +29,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_hypot {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_hypot_spec {n : Nat} (x1 x2 : Vector Float n) :
@@ -57,8 +57,9 @@ vc-condition: |-
         (x2.get i = 0 → result.get i = Float.abs (x1.get i))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -8,10 +8,10 @@ vc-description: |-
     "doc": "Return the scaled companion matrix of c.\n\n    The basis polynomials are scaled so that the companion matrix is\n    symmetric when \`c\` is an Hermite basis polynomial. This provides\n    better eigenvalue estimates than the unscaled case and for basis\n    polynomials the eigenvalues are guaranteed to be real if\n    \`numpy.linalg.eigvalsh\` is used to obtain them.\n\n    Parameters\n    ----------\n    c : array_like\n        1-D array of Hermite series coefficients ordered from low to high\n        degree.\n\n    Returns\n    -------\n    mat : ndarray\n        Scaled companion matrix of dimensions (deg, deg).\n\n    Examples\n    --------\n    >>> from numpy.polynomial.hermite import hermcompanion\n    >>> hermcompanion([1, 0, 1])\n    array([[0.        , 0.35355339],\n           [0.70710678, 0.        ]])",
   }
   -/
-
+  
   /-  Return the scaled companion matrix of Hermite polynomial coefficients.
       The companion matrix is symmetric when c represents a Hermite basis polynomial. -/
-
+  
   /-  Specification: hermcompanion produces a scaled companion matrix with specific properties.
       For a coefficient vector of length n+2, the result is an (n+1)×(n+1) matrix where:
       1. The super-diagonal and sub-diagonal contain sqrt(k/2) for k = 1 to n
@@ -24,16 +24,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def hermcompanion {n : Nat} (c : Vector Float (n + 2)) : Id (Vector (Vector Float (n + 1)) (n + 1)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem hermcompanion_spec {n : Nat} (c : Vector Float (n + 2)) 
@@ -60,8 +60,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

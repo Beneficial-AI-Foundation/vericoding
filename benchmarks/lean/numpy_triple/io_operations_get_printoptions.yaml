@@ -1,4 +1,14 @@
 vc-description: |-
+  /- 
+  {
+    "name": "numpy.get_printoptions",
+    "category": "String formatting",
+    "description": "Return the current print options",
+    "url": "https://numpy.org/doc/stable/reference/generated/numpy.get_printoptions.html",
+    "doc": "Return the current print options.\n\n    Returns\n    -------\n    print_opts : dict\n        Dictionary of current print options with keys\n\n        - precision : int\n        - threshold : int\n        - edgeitems : int\n        - linewidth : int\n        - suppress : bool\n        - nanstr : str\n        - infstr : str\n        - sign : str\n        - formatter : dict of callables\n        - floatmode : str\n        - legacy : str or False\n\n        For a full description of these options, see \`set_printoptio...",
+  }
+  -/
+  
   /-  numpy.get_printoptions: Return the current print options
       
       Returns a structure containing the current print options that control
@@ -8,7 +18,7 @@ vc-description: |-
       
       This function reads the current state of NumPy's print formatting system.
   -/
-
+  
   /-  Specification: get_printoptions returns a valid PrintOptions structure
       with sensible default values.
       
@@ -21,8 +31,7 @@ vc-preamble: |-
   import Std.Tactic.Do
   open Std.Do
   
-  /-  Structure representing NumPy print options -/
-  
+  /-- Structure representing NumPy print options -/
   structure PrintOptions where
     /-- Number of digits of precision for floating point output -/
     precision : Nat
@@ -46,16 +55,16 @@ vc-preamble: |-
     legacy : Option String
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def get_printoptions : Id PrintOptions :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem get_printoptions_spec :
@@ -72,8 +81,9 @@ vc-condition: |-
                     result.floatmode = "maxprec" ∨ result.floatmode = "maxprec_equal")⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

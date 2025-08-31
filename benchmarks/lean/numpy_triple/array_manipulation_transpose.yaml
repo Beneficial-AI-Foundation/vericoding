@@ -10,7 +10,7 @@ vc-description: |-
     "source_location": "numpy/_core/fromnumeric.py"
   }
   -/
-
+  
   /-  numpy.transpose: Returns a matrix with rows and columns swapped.
   
       For 2D arrays (matrices), transpose swaps the rows and columns.
@@ -19,7 +19,7 @@ vc-description: |-
   
       This simplified version handles 2D matrix transpose only.
   -/
-
+  
   /-  Specification: numpy.transpose returns a matrix where rows and columns are swapped.
   
       Precondition: True (no special preconditions for basic transpose)
@@ -37,17 +37,17 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_transpose {rows cols : Nat} (a : Vector (Vector Float cols) rows) : 
       Id (Vector (Vector Float rows) cols) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_transpose_spec {rows cols : Nat} (a : Vector (Vector Float cols) rows) :
@@ -57,8 +57,9 @@ vc-condition: |-
                     (result.get j).get i = (a.get i).get j⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

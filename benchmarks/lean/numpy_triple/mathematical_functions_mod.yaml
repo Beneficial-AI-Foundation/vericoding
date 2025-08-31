@@ -8,7 +8,7 @@ vc-description: |-
       For two arguments of floating point type, the result is:
       x1 - floor(x1/x2) * x2
   -/
-
+  
   /-  Specification: numpy.mod returns a vector where each element is the remainder
       of the corresponding elements from x1 and x2.
   
@@ -27,16 +27,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_mod {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_mod_spec {n : Nat} (x1 x2 : Vector Float n) :
@@ -53,8 +53,9 @@ vc-condition: |-
         (b < 0 → r ≤ 0 ∧ r > b)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

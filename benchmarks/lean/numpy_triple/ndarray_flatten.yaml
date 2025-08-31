@@ -12,7 +12,7 @@ vc-description: |-
       
       Example: [[1,2], [3,4]] becomes [1, 2, 3, 4]
   -/
-
+  
   /-  Specification: flatten returns a 1D vector containing all elements of the 2D matrix
       in row-major order.
       
@@ -29,16 +29,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def flatten {rows cols : Nat} (mat : Vector (Vector Float cols) rows) : Id (Vector Float (rows * cols)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem flatten_spec {rows cols : Nat} (mat : Vector (Vector Float cols) rows) :
@@ -50,8 +50,9 @@ vc-condition: |-
                    True⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

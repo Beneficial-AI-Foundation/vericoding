@@ -6,7 +6,7 @@ vc-description: |-
       
       Returns an array of the same shape as x, containing the negated values.
   -/
-
+  
   /-  Specification: numpy.negative returns a vector where each element is the
       negative of the corresponding element in x.
   
@@ -25,16 +25,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_negative {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_negative_spec {n : Nat} (x : Vector Float n) :
@@ -43,8 +43,9 @@ vc-condition: |-
       ⦃⇓result => ⌜∀ i : Fin n, result.get i = -(x.get i)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

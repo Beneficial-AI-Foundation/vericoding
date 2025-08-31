@@ -20,7 +20,7 @@ vc-description: |-
     ]
   }
   -/
-
+  
   /-  
   Universal function accumulate method: Accumulate the result of applying a binary operator
   to all elements in a vector.
@@ -34,7 +34,7 @@ vc-description: |-
   
   The result has the same shape as the input array.
   -/
-
+  
   /-  
   Specification: accumulate applies a binary operator cumulatively to produce
   intermediate results at each position.
@@ -60,16 +60,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def accumulate {n : Nat} (op : Float → Float → Float) (a : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem accumulate_spec {n : Nat} (op : Float → Float → Float) (a : Vector Float n) :
@@ -88,8 +88,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

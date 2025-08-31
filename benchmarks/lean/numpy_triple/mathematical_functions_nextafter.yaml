@@ -22,7 +22,7 @@ vc-description: |-
       - Testing floating-point precision limits
       - Implementing robust numerical algorithms
   -/
-
+  
   /-  Specification: numpy.nextafter returns a vector where each element is the next
       representable floating-point value after x1[i] in the direction of x2[i].
       
@@ -48,16 +48,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def nextafter {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem nextafter_spec {n : Nat} (x1 x2 : Vector Float n) :
@@ -77,8 +77,9 @@ vc-condition: |-
          Float.isFinite (result.get i) ∨ result.get i = Float.inf ∨ result.get i = -Float.inf)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

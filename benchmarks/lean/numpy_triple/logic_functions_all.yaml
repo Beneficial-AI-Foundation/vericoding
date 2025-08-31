@@ -8,11 +8,11 @@ vc-description: |-
     "doc": "Test whether all array elements along a given axis evaluate to True.\n\nParameters\n----------\na : array_like\n    Input array or object that can be converted to an array.\naxis : None or int or tuple of ints, optional\n    Axis or axes along which a logical AND reduction is performed.\n    The default (axis=None) is to perform a logical AND over all\n    the dimensions of the input array. axis may be negative, in\n    which case it counts from the last to the first axis.\n    \n    .. versionadded:: 1.7.0\n    \n    If this is a tuple of ints, a reduction is performed on multiple\n    axes, instead of a single axis or all the axes as before.\nout : ndarray, optional\n    Alternate output array in which to place the result.\n    It must have the same shape as the expected output and its\n    type is preserved (e.g., if dtype(out) is float, the result\n    will consist of 0.0's and 1.0's). See Output type determination\n    for more details.\nkeepdims : bool, optional\n    If this is set to True, the axes which are reduced are left\n    in the result as dimensions with size one. With this option,\n    the result will broadcast correctly against the input array.\n    \n    If the default value is passed, then keepdims will not be\n    passed through to the all method of sub-classes of\n    ndarray, however any non-default value will be. If the\n    sub-class' method does not implement keepdims any\n    exceptions will be raised.\nwhere : array_like of bool, optional\n    Elements to include in checking for all True values.\n    See reduce for details.\n    \n    .. versionadded:: 1.20.0\n\nReturns\n-------\nall : ndarray, bool\n    A new boolean or array is returned unless out is specified,\n    in which case a reference to out is returned.\n\nSee Also\n--------\nndarray.all : equivalent method\n\nany : Test whether any element along a given axis evaluates to True.\n\nNotes\n-----\nNot a Number (NaN), positive infinity and negative infinity\nevaluate to True because these are not equal to zero.\n\nExamples\n--------\n>>> np.all([[True,False],[True,True]])\nFalse\n\n>>> np.all([[True,False],[True,True]], axis=0)\narray([ True, False])\n\n>>> np.all([-1, 4, 5])\nTrue\n\n>>> np.all([1.0, np.nan])\nTrue\n\n>>> np.all([[True, True], [False, True]], where=[[True], [False]])\nTrue\n\n>>> o=np.array(False)\n>>> z=np.all([-1, 4, 5], out=o)\n>>> id(z), id(o), z\n(28293632, 28293632, array(True)) # may vary",
   }
   -/
-
+  
   /-  Test whether all array elements evaluate to True.
       Elements are considered True if they are non-zero.
       NaN, positive infinity and negative infinity evaluate to True. -/
-
+  
   /-  Specification: all returns True if and only if all elements are non-zero.
       This includes proper handling of special float values:
       - NaN evaluates to True (it is not equal to zero)
@@ -41,16 +41,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def all {n : Nat} (a : Vector Float n) : Id Bool :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem all_spec {n : Nat} (a : Vector Float n) :
@@ -62,8 +62,9 @@ vc-condition: |-
                     (∀ i : Fin n, a.get i ≠ 0 → result = true)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

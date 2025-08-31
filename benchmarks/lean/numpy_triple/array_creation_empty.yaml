@@ -9,7 +9,7 @@ vc-description: |-
     "signature": "numpy.empty(shape, dtype=float, order='C', *, device=None, like=None)"
   }
   -/
-
+  
   /-  numpy.empty: Return a new array of given shape and type, without initializing entries.
   
       Creates a new vector of the specified length containing uninitialized (arbitrary) values.
@@ -19,7 +19,7 @@ vc-description: |-
       For 1D arrays, this takes a size parameter n and returns a Vector Float n
       with arbitrary values.
   -/
-
+  
   /-  Specification: numpy.empty returns a vector of the specified size with arbitrary values.
   
       Properties:
@@ -44,16 +44,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def empty (n : Nat) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem empty_spec (n : Nat) :
@@ -62,8 +62,9 @@ vc-condition: |-
       ⦃⇓result => ⌜∀ i : Fin n, ∃ v : Float, result.get i = v⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -12,7 +12,7 @@ vc-description: |-
       where N represents the number of elements. The "Delta Degrees of Freedom"
       parameter adjusts the divisor in the standard deviation calculation.
   -/
-
+  
   /-  Specification: numpy.std returns the standard deviation of all elements.
   
       The standard deviation is computed as the square root of the variance:
@@ -32,16 +32,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_std {n : Nat} (a : Vector Float (n + 1)) (ddof : Nat := 0) : Id Float :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_std_spec {n : Nat} (a : Vector Float (n + 1)) (ddof : Nat) (h_ddof : ddof < n + 1) :
@@ -58,8 +58,9 @@ vc-condition: |-
         (N - ddof > 0)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

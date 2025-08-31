@@ -13,7 +13,7 @@ vc-description: |-
       Returns:
       - Fin n - Index of the minimum non-NaN value
   -/
-
+  
   /-  Specification: nanargmin returns the index of the minimum non-NaN value.
       
       Precondition: At least one element in the vector is not NaN
@@ -29,16 +29,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def nanargmin {n : Nat} (a : Vector Float (n + 1)) (h_has_valid : ∃ i : Fin (n + 1), ¬(a.get i).isNaN) : Id (Fin (n + 1)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem nanargmin_spec {n : Nat} (a : Vector Float (n + 1)) (h_has_valid : ∃ i : Fin (n + 1), ¬(a.get i).isNaN) :
@@ -49,8 +49,9 @@ vc-condition: |-
                (∀ j : Fin (n + 1), j < idx → (a.get j).isNaN ∨ a.get j > a.get idx)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

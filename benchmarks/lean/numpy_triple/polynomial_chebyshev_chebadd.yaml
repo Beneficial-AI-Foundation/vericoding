@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "Add one Chebyshev series to another.\n\n    Returns the sum of two Chebyshev series `c1` + `c2`.  The arguments\n    are sequences of coefficients ordered from lowest order term to\n    highest, i.e., [1,2,3] represents the series ``T_0 + 2*T_1 + 3*T_2``.\n\n    Parameters\n    ----------\n    c1, c2 : array_like\n        1-D arrays of Chebyshev series coefficients ordered from low to\n        high.\n\n    Returns\n    -------\n    out : ndarray\n        Array representing the Chebyshev series of their sum.\n\n    See Also\n    --------\n    chebsub, chebmulx, chebmul, chebdiv, chebpow\n\n    Notes\n    -----\n    Unlike multiplication, division, etc., the sum of two Chebyshev series\n    is a Chebyshev series (without having to \"reproject\" the result onto\n    the basis set) so addition, just like that of \"standard\" polynomials,\n    is simply \"component-wise.\"\n\n    Examples\n    --------\n    >>> from numpy.polynomial import chebyshev as C\n    >>> c1 = (1,2,3)\n    >>> c2 = (3,2,1)\n    >>> C.chebadd(c1,c2)\n    array([4., 4., 4.])",
   }
   -/
-
+  
   /-  Add two Chebyshev series coefficient-wise.
       
       This function adds two Chebyshev polynomial series represented by their coefficients.
@@ -17,7 +17,7 @@ vc-description: |-
       
       The addition is performed component-wise, padding with zeros if the arrays have different lengths.
   -/
-
+  
   /-  Specification: chebadd performs coefficient-wise addition of two Chebyshev series.
       
       The specification captures both the mathematical properties and implementation details:
@@ -34,16 +34,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def chebadd {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) : Id (Vector Float (max n m)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem chebadd_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) :
@@ -69,8 +69,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -8,7 +8,7 @@ vc-description: |-
       - eigenvalues: Vector of eigenvalues λ_i
       - eigenvectors: Matrix where column i is the eigenvector corresponding to eigenvalue λ_i
   -/
-
+  
   /-  Specification: eig computes the eigenvalues and right eigenvectors of a square matrix.
       
       The fundamental eigenvalue equation is: A * v = λ * v, where:
@@ -29,16 +29,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def eig {n : Nat} (a : Vector (Vector Float n) n) : Id (Vector Float n × Vector (Vector Float n) n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem eig_spec {n : Nat} (a : Vector (Vector Float n) n) :
@@ -73,8 +73,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

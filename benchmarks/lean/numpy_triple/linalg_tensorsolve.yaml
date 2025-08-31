@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "Solve the tensor equation a x = b for x.\n\nIt is assumed that all indices of x are summed over in the product, and the dimensions of a are rearranged such that a is reshaped to a 2D matrix.",
   }
   -/
-
+  
   /-  
   Solve the tensor equation a x = b for x.
   
@@ -21,7 +21,7 @@ vc-description: |-
   coefficient matrix a is reshaped from tensor form to a 2D matrix, and the 
   solution is reshaped back to tensor form.
   -/
-
+  
   /-  
   Specification: tensorsolve solves the tensor equation a x = b for x.
   
@@ -44,17 +44,17 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def tensorsolve {n : Nat} (a : Vector (Vector Float n) n) (b : Vector Float n) : 
       Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem tensorsolve_spec {n : Nat} (a : Vector (Vector Float n) n) (b : Vector Float n)
@@ -96,8 +96,9 @@ vc-condition: |-
                     (a_inv.get i).get j * b.get j)))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

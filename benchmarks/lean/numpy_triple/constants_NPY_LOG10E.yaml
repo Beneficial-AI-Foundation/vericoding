@@ -7,9 +7,9 @@ vc-description: |-
     "doc": "log10(e) = 0.434294481903251827651128918916605082",
   }
   -/
-
+  
   /-  Base 10 logarithm of Euler's number e -/
-
+  
   /-  Specification: nPY_LOG10E returns the base 10 logarithm of e with correct mathematical properties -/
 
 vc-preamble: |-
@@ -18,16 +18,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def nPY_LOG10E : Id Float :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem nPY_LOG10E_spec :
@@ -47,8 +47,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

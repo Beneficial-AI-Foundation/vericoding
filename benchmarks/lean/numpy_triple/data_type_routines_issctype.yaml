@@ -1,8 +1,16 @@
 vc-description: |-
-  /-  Helper function to check if a DataType is a scalar type -/
+  /- 
+  {
+    "name": "numpy.issctype",
+    "category": "Data Type Testing",
+    "description": "Determines whether the given object represents a scalar data-type",
+    "url": "https://numpy.org/doc/stable/reference/generated/numpy.issctype.html",
+    "doc": "Determines whether the given object represents a scalar data-type.\n\nParameters\n----------\nrep : any\n    If rep is an instance of a scalar dtype, True is returned. If not, False is returned.\n\nReturns\n-------\nout : bool\n    Boolean result of check whether rep is a scalar dtype.\n\nExamples\n--------\n>>> np.issctype(np.int32)\nTrue\n>>> np.issctype(list)\nFalse\n>>> np.issctype(1.1)\nFalse",
+  }
+  -/
   
   /-  Determines whether the given object represents a scalar data-type -/
-
+  
   /-  Specification: issctype returns true if and only if the input represents a scalar data type -/
 
 vc-preamble: |-
@@ -10,8 +18,7 @@ vc-preamble: |-
   import Std.Tactic.Do
   open Std.Do
   
-  /-  Represents different kinds of data types that can be tested -/
-  
+  /-- Represents different kinds of data types that can be tested -/
   inductive DataType
     /-- Scalar integer type -/
     | scalar_int : DataType
@@ -29,18 +36,9 @@ vc-preamble: |-
     | composite_type : DataType
     /-- Unknown type -/
     | unknown_type : DataType
-
-vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
-
-vc-signature: |-
-  def isScalarType (dt : DataType) : Bool :=
   
-  def issctype (rep : DataType) : Id Bool :=
-
-vc-implementation: |-
-  <vc-implementation>
+  /-- Helper function to check if a DataType is a scalar type -/
+  def isScalarType (dt : DataType) : Bool :=
     match dt with
     | DataType.scalar_int => true
     | DataType.scalar_float => true
@@ -50,10 +48,18 @@ vc-implementation: |-
     | DataType.array_type => false
     | DataType.composite_type => false
     | DataType.unknown_type => false
-  
-  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def issctype (rep : DataType) : Id Bool :=
+
+vc-implementation: |-
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem issctype_spec (rep : DataType) :
@@ -66,8 +72,9 @@ vc-condition: |-
                                     rep = DataType.scalar_string)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

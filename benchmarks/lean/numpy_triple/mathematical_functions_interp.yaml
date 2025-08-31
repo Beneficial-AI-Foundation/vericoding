@@ -7,11 +7,11 @@ vc-description: |-
     "doc": "One-dimensional linear interpolation for monotonically increasing sample points.\n\nReturns the one-dimensional piecewise linear interpolant to a function with given discrete data points (xp, fp), evaluated at x.",
   }
   -/
-
+  
   /-  One-dimensional linear interpolation for monotonically increasing sample points.
       Returns the one-dimensional piecewise linear interpolant to a function with given
       discrete data points (xp, fp), evaluated at x. -/
-
+  
   /-  Specification: interp performs linear interpolation between discrete data points -/
 
 vc-preamble: |-
@@ -20,17 +20,17 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def interp {n m : Nat} (x : Vector Float n) (xp : Vector Float (m + 1)) (fp : Vector Float (m + 1)) 
       (h_increasing : ∀ i j : Fin (m + 1), i < j → xp.get i < xp.get j) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem interp_spec {n m : Nat} (x : Vector Float n) (xp : Vector Float (m + 1)) (fp : Vector Float (m + 1)) 
@@ -54,8 +54,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

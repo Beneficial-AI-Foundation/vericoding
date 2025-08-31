@@ -11,7 +11,7 @@ vc-description: |-
       The derivative of T_n is n*U_{n-1}, where U_{n-1} can be expressed
       in terms of Chebyshev polynomials T_k using specific recurrence relations.
   -/
-
+  
   /-  Specification: chebder differentiates a Chebyshev series once.
   
       The Chebyshev derivative algorithm works by:
@@ -43,17 +43,17 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def chebder {n : Nat} (c : Vector Float (n + 1)) (scl : Float := 1) :
       Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem chebder_spec {n : Nat} (c : Vector Float (n + 1)) (scl : Float := 1) :
@@ -73,8 +73,9 @@ vc-condition: |-
                 True⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

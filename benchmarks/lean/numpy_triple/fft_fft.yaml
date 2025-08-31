@@ -1,7 +1,12 @@
 vc-description: |-
-  /-  Complex exponential function -/
-  
-  /-  Convert Float to Complex -/
+  /- 
+  {
+    "name": "numpy.fft.fft",
+    "description": "Compute the one-dimensional discrete Fourier Transform",
+    "url": "https://numpy.org/doc/stable/reference/generated/numpy.fft.fft.html",
+    "doc": "numpy.fft.fft(a, n=None, axis=-1, norm=None, out=None)\n\nCompute the one-dimensional discrete Fourier Transform using the efficient Fast Fourier Transform (FFT) algorithm.\n\nParameters:\n- a: Input array (can be complex)\n- n: Optional length of transformed axis (default: input length)\n- axis: Axis to compute FFT (default: last axis)\n- norm: Normalization mode (\"backward\", \"ortho\", \"forward\")\n- out: Optional output array\n\nReturns:\n- Complex ndarray transformed along specified axis\n\nNotes:\n- Most efficient when input size is a power of 2\n- FFT calculates Discrete Fourier Transform efficiently\n- Uses symmetries to optimize calculation\n- Supports real and complex inputs\n- Handles input cropping and zero-padding\n- Provides flexible normalization options\n\nExample:\nimport numpy as np\nnp.fft.fft(np.exp(2j * np.pi * np.arange(8) / 8))",
+  }
+  -/
   
   /-  Compute the one-dimensional discrete Fourier Transform
   
@@ -14,7 +19,7 @@ vc-description: |-
       - N is the length of the vector
       - i is the imaginary unit
   -/
-
+  
   /-  Specification: FFT computes the discrete Fourier transform
   
       The FFT satisfies the DFT equation and has the following properties:
@@ -33,8 +38,7 @@ vc-preamble: |-
   import Std.Tactic.Do
   open Std.Do
   
-  /-  Complex number type for FFT -/
-  
+  /-- Complex number type for FFT -/
   structure Complex where
     /-- Real part of complex number -/
     re : Float
@@ -42,40 +46,25 @@ vc-preamble: |-
     im : Float
   deriving Repr
   
-  /-  Complex multiplication -/
-  
+  /-- Complex exponential function -/
+  def cexp (θ : Float) : Complex :=
+    { re := Float.cos θ, im := Float.sin θ }
+  /-- Complex multiplication -/
   instance : Mul Complex where
     mul z w := { re := z.re * w.re - z.im * w.im, im := z.re * w.im + z.im * w.re }
   
-  /-  Complex addition -/
-  
+  /-- Complex addition -/
   instance : Add Complex where
     add z w := { re := z.re + w.re, im := z.im + w.im }
   
-  /-  Zero complex number -/
-  
+  /-- Zero complex number -/
   instance : Zero Complex where
     zero := { re := 0, im := 0 }
-
-vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
-
-vc-signature: |-
-  def cexp (θ : Float) : Complex :=
   
+  /-- Convert Float to Complex -/
   def Float.toComplex (x : Float) : Complex := { re := x, im := 0 }
-  
   /-- Sum of complex numbers over finite indices -/
   def complexSum {n : Nat} (f : Fin n → Complex) : Complex :=
-  
-  def fft {n : Nat} (a : Vector Complex n) : Id (Vector Complex n) :=
-
-vc-implementation: |-
-  <vc-implementation>
-    { re := Float.cos θ, im := Float.sin θ }
-  
-  
     match n with
     | 0 => 0
     | n + 1 =>
@@ -83,10 +72,18 @@ vc-implementation: |-
         | ⟨0, _⟩ => f ⟨0, by omega⟩
         | ⟨i + 1, h⟩ => f ⟨i + 1, h⟩ + go ⟨i, by omega⟩
       go ⟨n, by omega⟩
-  
-  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def fft {n : Nat} (a : Vector Complex n) : Id (Vector Complex n) :=
+
+vc-implementation: |-
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem fft_spec {n : Nat} (a : Vector Complex n) (h : n > 0) :
@@ -105,8 +102,9 @@ vc-condition: |-
               result.get k = sum)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

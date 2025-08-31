@@ -9,12 +9,12 @@ vc-description: |-
     "signature": "numpy.asmatrix(data, dtype=None)"
   }
   -/
-
+  
   /-  Interpret the input as a matrix. In our simplified model, this represents
       a 1D vector as a matrix type. Since numpy.asmatrix doesn't make a copy
       if the input is already a matrix or ndarray, this function acts as an
       identity operation with matrix type semantics. -/
-
+  
   /-  Specification: asmatrix interprets input data as a matrix without copying.
       
       The function preserves the original data structure and values while
@@ -34,16 +34,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def asmatrix {n : Nat} (data : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem asmatrix_spec {n : Nat} (data : Vector Float n) :
@@ -52,8 +52,9 @@ vc-condition: |-
       ⦃⇓result => ⌜∀ i : Fin n, result.get i = data.get i⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

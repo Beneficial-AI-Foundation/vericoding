@@ -10,7 +10,7 @@ vc-description: |-
     "signature": "numpy.atleast_1d(*arrays)"
   }
   -/
-
+  
   /-  numpy.atleast_1d: Convert inputs to arrays with at least one dimension.
       
       This function ensures that the input has at least one dimension.
@@ -21,7 +21,7 @@ vc-description: |-
       a vector and returns it unchanged, since Vectors already have at least
       one dimension by construction.
   -/
-
+  
   /-  Specification: atleast_1d returns the input vector unchanged.
       
       Since Vectors in Lean already have at least one dimension by their type,
@@ -37,16 +37,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def atleast_1d {n : Nat} (arr : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem atleast_1d_spec {n : Nat} (arr : Vector Float n) :
@@ -55,8 +55,9 @@ vc-condition: |-
       ⦃⇓result => ⌜result = arr ∧ (∀ i : Fin n, result.get i = arr.get i)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

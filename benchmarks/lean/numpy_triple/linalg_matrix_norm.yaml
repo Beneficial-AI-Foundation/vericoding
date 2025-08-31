@@ -8,9 +8,9 @@ vc-description: |-
     "doc": "Computes the matrix norm of a matrix.\n\nThis function is able to return one of seven different matrix norms, depending on the value of the ord parameter.",
   }
   -/
-
+  
   /-  Compute matrix norm of a matrix (Frobenius norm by default) -/
-
+  
   /-  Specification: matrix_norm computes the Frobenius norm of a matrix 
       The Frobenius norm is the square root of the sum of squares of all elements.
       
@@ -28,16 +28,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def matrix_norm {rows cols : Nat} (x : Vector (Vector Float cols) rows) : Id Float :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem matrix_norm_spec {rows cols : Nat} (x : Vector (Vector Float cols) rows) :
@@ -50,8 +50,9 @@ vc-condition: |-
                  ∃ i : Fin rows, ∃ j : Fin cols, (x.get i).get j ≠ 0 → res > 0)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -9,13 +9,13 @@ vc-description: |-
     "signature": "numpy.ones(shape, dtype=None, order='C', *, device=None, like=None)"
   }
   -/
-
+  
   /-  Return a new vector of given size filled with ones.
       
       This function creates a vector where every element is exactly 1.0,
       matching NumPy's ones function behavior for 1D arrays.
   -/
-
+  
   /-  Specification: ones returns a vector where all elements are exactly 1.0.
       
       This specification captures the following properties:
@@ -42,16 +42,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def ones (n : Nat) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem ones_spec (n : Nat) :
@@ -63,8 +63,9 @@ vc-condition: |-
                    (∀ i : Fin n, ∀ x : Float, x * result.get i = x)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

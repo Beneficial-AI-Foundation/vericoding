@@ -14,7 +14,7 @@ vc-description: |-
       - Independence: Spawned sequences are non-overlapping
       - Uniform distribution: Output is uniformly distributed over the state space
   -/
-
+  
   /-  Specification: SeedSequence produces a seed state from entropy sources
       with reproducibility and non-degeneracy properties.
   
@@ -32,17 +32,17 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def seedSequence {n : Nat} (entropy : Vector UInt32 n) (spawn_key : Vector UInt32 0) 
       (pool_size : Nat := 4) : Id (Vector UInt32 pool_size) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem seedSequence_spec {n : Nat} (entropy : Vector UInt32 n) (spawn_key : Vector UInt32 0)
@@ -66,8 +66,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

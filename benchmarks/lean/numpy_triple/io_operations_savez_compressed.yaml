@@ -8,14 +8,14 @@ vc-description: |-
     "doc": "Save several arrays into a single file in compressed \`\`.npz\`\` format.\n\n    Provide arrays as keyword arguments to store them under the\n    corresponding name in the output file: \`\`savez_compressed(fn, x=x, y=y)\`\`.\n\n    If arrays are specified as positional arguments, i.e.,\n    \`\`savez_compressed(fn, x, y)\`\`, their names will be \`arr_0\`, \`arr_1\`, etc.\n\n    Parameters\n    ----------\n    file : file, str, or pathlib.Path\n        Either the filename (string) or an open file (file-like object)\n      ...",
   }
   -/
-
+  
   /-  Save several arrays into a single file in compressed .npz format.
       
       This function saves multiple arrays to a compressed archive file.
       Arrays are stored with either provided names or automatic names (arr_0, arr_1, etc.).
       The resulting file can be loaded back using numpy.load.
   -/
-
+  
   /-  Specification: savez_compressed saves arrays to a compressed archive file.
       
       The function should:
@@ -31,16 +31,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def savez_compressed {n : Nat} (filename : String) (arrays : Vector (Vector Float n) n) : Id Unit :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem savez_compressed_spec {n : Nat} (filename : String) (arrays : Vector (Vector Float n) n) 
@@ -60,8 +60,9 @@ vc-condition: |-
                      (filename.endsWith ".npz" ∧ final_filename = filename))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

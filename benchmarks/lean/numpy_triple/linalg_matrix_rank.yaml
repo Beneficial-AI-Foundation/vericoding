@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "Return matrix rank of array using SVD method.\n\nRank is the number of singular values greater than a threshold.\n\nParameters:\n- A: Input vector or matrix\n- tol: Threshold for 'small' singular values\n- hermitian: If True, A is assumed to be Hermitian\n\nReturns:\n- rank: Rank of matrix",
   }
   -/
-
+  
   /-  numpy.linalg.matrix_rank: Return matrix rank of array using SVD method.
       
       The rank of a matrix is the number of linearly independent columns
@@ -18,7 +18,7 @@ vc-description: |-
       This implementation focuses on the core mathematical behavior for
       square matrices, using default tolerance.
   -/
-
+  
   /-  Specification: matrix_rank computes the rank of a matrix using SVD method.
       
       The rank is the number of singular values greater than a numerical threshold.
@@ -45,16 +45,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def matrix_rank {m n : Nat} (A : Vector (Vector Float n) m) : Id Nat :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem matrix_rank_spec {m n : Nat} (A : Vector (Vector Float n) m) :
@@ -88,8 +88,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

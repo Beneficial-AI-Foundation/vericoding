@@ -1,7 +1,7 @@
 vc-description: |-
   /-  Calculate exp(x) - 1 for all elements in the vector.
       This function provides greater precision than exp(x) - 1 for small values of x. -/
-
+  
   /-  Specification: expm1 computes exp(x) - 1 element-wise with enhanced numerical precision -/
 
 vc-preamble: |-
@@ -10,16 +10,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def expm1 {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem expm1_spec {n : Nat} (x : Vector Float n) :
@@ -42,8 +42,9 @@ vc-condition: |-
         result.get i > -1⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

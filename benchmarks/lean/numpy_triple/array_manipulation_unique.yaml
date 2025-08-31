@@ -10,7 +10,7 @@ vc-description: |-
     "signature": "numpy.unique(ar, return_index=False, return_inverse=False, return_counts=False, axis=None, *, equal_nan=True)"
   }
   -/
-
+  
   /-  numpy.unique: Find the unique elements of a vector and return them sorted.
       
       Returns a new vector containing each distinct element from the input exactly once,
@@ -19,7 +19,7 @@ vc-description: |-
       
       The output size depends on the number of unique elements in the input.
   -/
-
+  
   /-  Specification: numpy.unique returns a sorted vector containing each distinct element 
       from the input exactly once.
       
@@ -37,16 +37,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_unique {n : Nat} (arr : Vector Float n) : Id (Σ m : Nat, Vector Float m) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_unique_spec {n : Nat} (arr : Vector Float n) :
@@ -64,8 +64,9 @@ vc-condition: |-
                     (∀ i : Fin n, ∃ j : Fin m, arr.get i = unique_arr.get j)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

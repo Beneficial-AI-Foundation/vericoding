@@ -8,7 +8,7 @@ vc-description: |-
       Input: A matrix with rows × cols dimensions
       Output: A matrix with cols × rows dimensions (transposed)
   -/
-
+  
   /-  Specification: numpy.linalg.matrix_transpose returns the transpose of the input matrix.
       
       For a matrix x with dimensions rows × cols, the transpose x_T has dimensions cols × rows.
@@ -24,16 +24,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_matrix_transpose {rows cols : Nat} (x : Vector (Vector Float cols) rows) : Id (Vector (Vector Float rows) cols) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_matrix_transpose_spec {rows cols : Nat} (x : Vector (Vector Float cols) rows) :
@@ -42,8 +42,9 @@ vc-condition: |-
       ⦃⇓result => ⌜∀ i : Fin rows, ∀ j : Fin cols, (result.get j).get i = (x.get i).get j⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "Chebyshev points of the first kind.\n\n    The Chebyshev points of the first kind are the points ``cos(x)``,\n    where ``x = [pi*(k + .5)/npts for k in range(npts)]``.\n\n    Parameters\n    ----------\n    npts : int\n        Number of sample points desired.\n\n    Returns\n    -------\n    pts : ndarray\n        The Chebyshev points of the first kind.\n\n    See Also\n    --------\n    chebpts2",
   }
   -/
-
+  
   /-  numpy.polynomial.chebyshev.chebpts1: Chebyshev points of the first kind.
       
       The Chebyshev points of the first kind are the points cos(π*(k + 0.5)/n)
@@ -19,7 +19,7 @@ vc-description: |-
       The implementation uses the identity sin(x) = cos(π/2 - x) to compute
       the values using sine instead of cosine.
   -/
-
+  
   /-  Specification: chebpts1 returns a vector of n Chebyshev points of the first kind.
       
       The k-th point (0-indexed) is cos(π*(k + 0.5)/n), which equals
@@ -39,16 +39,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def chebpts1 (n : Nat) (h : n > 0) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem chebpts1_spec (n : Nat) (h : n > 0) :
@@ -62,8 +62,9 @@ vc-condition: |-
                     result.get k = -result.get ⟨n - 1 - k.val, sorry⟩)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

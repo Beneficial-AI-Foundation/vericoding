@@ -11,7 +11,7 @@ vc-description: |-
       The returned array will have size less than or equal to the input array,
       with equality only when all elements are already unique.
   -/
-
+  
   /-  Specification: numpy.unique returns sorted unique elements without duplicates.
   
       Precondition: True (no special preconditions)
@@ -26,16 +26,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def unique {n : Nat} (ar : Vector Float n) : Id (Σ m : Nat, Vector Float m) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem unique_spec {n : Nat} (ar : Vector Float n) :
@@ -53,8 +53,9 @@ vc-condition: |-
                     (∀ i : Fin n, ∃ j : Fin m, ar.get i = unique_arr.get j)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

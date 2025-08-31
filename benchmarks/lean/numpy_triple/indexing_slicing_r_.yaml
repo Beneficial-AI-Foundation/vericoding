@@ -10,7 +10,7 @@ vc-description: |-
       
       For example, numpy.r_[array1, array2] concatenates array1 and array2.
   -/
-
+  
   /-  Specification: numpy.r_ concatenates arrays along the first axis.
       
       Precondition: True (no special preconditions for basic concatenation)
@@ -30,17 +30,17 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def r_ {n m : Nat} (a : Vector Float n) (b : Vector Float m) : 
       Id (Vector Float (n + m)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem r__spec {n m : Nat} (a : Vector Float n) (b : Vector Float m) :
@@ -50,8 +50,9 @@ vc-condition: |-
                    (∀ j : Fin m, result.get (j.natAdd n) = b.get j)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

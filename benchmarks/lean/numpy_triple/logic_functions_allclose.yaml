@@ -12,7 +12,7 @@ vc-description: |-
       This function returns True if ALL elements satisfy this condition,
       False otherwise.
   -/
-
+  
   /-  Specification: allclose returns true iff all elements are within tolerance.
   
       Precondition: rtol >= 0 and atol >= 0 (tolerance values must be non-negative)
@@ -26,16 +26,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def allclose {n : Nat} (a b : Vector Float n) (rtol atol : Float) : Id Bool :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem allclose_spec {n : Nat} (a b : Vector Float n) (rtol atol : Float) 
@@ -45,8 +45,9 @@ vc-condition: |-
       ⦃⇓result => ⌜result = (∀ i : Fin n, Float.abs (a.get i - b.get i) <= atol + rtol * Float.abs (b.get i))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

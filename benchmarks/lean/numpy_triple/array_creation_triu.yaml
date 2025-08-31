@@ -9,7 +9,7 @@ vc-description: |-
     "signature": "numpy.triu(m, k=0)"
   }
   -/
-
+  
   /-  Upper triangle of a matrix.
       
       Returns a copy of a matrix with the elements below the k-th diagonal zeroed.
@@ -17,7 +17,7 @@ vc-description: |-
       - k < 0: include |k| diagonals below the main diagonal
       - k > 0: zero out k diagonals above the main diagonal as well
   -/
-
+  
   /-  Specification: triu returns an upper triangular matrix with specific properties.
       
       Core behavior:
@@ -42,17 +42,17 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def triu {rows cols : Nat} (m : Vector (Vector Float cols) rows) (k : Int := 0) : 
       Id (Vector (Vector Float cols) rows) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem triu_spec {rows cols : Nat} (m : Vector (Vector Float cols) rows) (k : Int) :
@@ -70,8 +70,9 @@ vc-condition: |-
                      (result.get i).get j = 0)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

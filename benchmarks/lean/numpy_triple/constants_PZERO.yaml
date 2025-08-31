@@ -8,9 +8,9 @@ vc-description: |-
     "doc": "IEEE 754 floating point representation of positive zero.\n\nDEPRECATED: Removed from main namespace in NumPy 2.0. Use 0.0 instead.",
   }
   -/
-
+  
   /-  IEEE 754 floating point representation of positive zero -/
-
+  
   /-  Specification: PZERO represents IEEE 754 positive zero with the following properties:
       1. It equals the standard zero value
       2. It behaves as the additive identity
@@ -23,16 +23,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def PZERO : Id Float :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem PZERO_spec :
@@ -69,8 +69,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

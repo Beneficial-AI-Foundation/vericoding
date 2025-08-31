@@ -5,7 +5,7 @@ vc-description: |-
       ordered from lowest degree to highest, to an array of the coefficients
       of the equivalent polynomial (relative to the "standard" basis) ordered
       from lowest to highest degree. -/
-
+  
   /-  Specification: cheb2poly converts Chebyshev coefficients to polynomial coefficients.
       
       The conversion satisfies the mathematical property that if we have Chebyshev series
@@ -28,16 +28,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def cheb2poly {n : Nat} (c : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem cheb2poly_spec {n : Nat} (c : Vector Float n) :
@@ -85,8 +85,9 @@ vc-condition: |-
               True)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -10,9 +10,9 @@ vc-description: |-
     "signature": "numpy.copyto(dst, src, casting='same_kind', where=True)"
   }
   -/
-
+  
   /-  Copies values from one vector to another, with optional conditional copying using a boolean mask -/
-
+  
   /-  Specification: copyto copies elements from src to dst where the mask is true, 
       preserving dst elements where the mask is false -/
 
@@ -22,16 +22,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def copyto {n : Nat} {T : Type} (dst : Vector T n) (src : Vector T n) (mask : Vector Bool n) : Id (Vector T n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem copyto_spec {n : Nat} {T : Type} (dst : Vector T n) (src : Vector T n) (mask : Vector Bool n) :
@@ -40,8 +40,9 @@ vc-condition: |-
       ⦃⇓result => ⌜∀ i : Fin n, result.get i = if mask.get i then src.get i else dst.get i⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

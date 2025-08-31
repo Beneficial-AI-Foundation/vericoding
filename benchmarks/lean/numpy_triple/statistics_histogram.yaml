@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "numpy.histogram(a, bins=10, range=None, density=None, weights=None)\n\nCompute the histogram of a dataset.\n\nParameters\n----------\na : array_like\n    Input data. The histogram is computed over the flattened array.\nbins : int or sequence of scalars or str, optional\n    If bins is an int, it defines the number of equal-width bins in the given range (10, by default). If bins is a sequence, it defines a monotonically increasing array of bin edges, including the rightmost edge, allowing for non-uniform bin widths.\nrange : (float, float), optional\n    The lower and upper range of the bins. If not provided, range is simply (a.min(), a.max()). Values outside the range are ignored.\ndensity : bool, optional\n    If False, the result will contain the number of samples in each bin. If True, the result is the value of the probability density function at the bin, normalized such that the integral over the range is 1.\nweights : array_like, optional\n    An array of weights, of the same shape as a. Each value in a only contributes its associated weight towards the bin count (instead of 1).\n\nReturns\n-------\nhist : array\n    The values of the histogram.\nbin_edges : array of dtype float\n    Return the bin edges (length(hist)+1).",
   }
   -/
-
+  
   /-  numpy.histogram: Compute the histogram of a dataset.
   
       Computes the histogram of a dataset by dividing the range into equal-width bins
@@ -23,7 +23,7 @@ vc-description: |-
       - Correct counting of values in each bin
       - Conservation of total count
   -/
-
+  
   /-  Specification: histogram correctly partitions data into bins and counts occurrences.
       
       The histogram satisfies fundamental mathematical properties:
@@ -43,8 +43,8 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def histogram {n_data n_bins : Nat} (data : Vector Float n_data) (min_val max_val : Float)
@@ -52,9 +52,9 @@ vc-signature: |-
       Id (Vector Nat n_bins × Vector Float (n_bins + 1)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem histogram_spec {n_data n_bins : Nat} (data : Vector Float n_data) (min_val max_val : Float)
@@ -78,8 +78,9 @@ vc-condition: |-
           (data.toList.filter (fun x => min_val ≤ x ∧ x ≤ max_val)).length)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

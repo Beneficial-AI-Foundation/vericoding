@@ -8,9 +8,9 @@ vc-description: |-
     "doc": "γ = 0.5772156649015328606065120900824024310421...\n\nThe Euler-Mascheroni constant is a mathematical constant recurring in analysis and number theory, defined as the limiting difference between the harmonic series and the natural logarithm.",
   }
   -/
-
+  
   /-  The Euler-Mascheroni constant (γ), approximately 0.577215... -/
-
+  
   /-  Specification: euler_gamma represents the Euler-Mascheroni constant γ,
       which is the limiting difference between the harmonic series and the natural logarithm.
       It satisfies key mathematical properties and bounds -/
@@ -21,16 +21,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def euler_gamma : Id Float :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem euler_gamma_spec :
@@ -54,8 +54,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

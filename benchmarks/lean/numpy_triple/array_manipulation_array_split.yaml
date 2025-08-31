@@ -10,7 +10,7 @@ vc-description: |-
     "signature": "numpy.array_split(ary, indices_or_sections, axis=0)"
   }
   -/
-
+  
   /-  Split a vector into k sub-vectors.
       
       When splitting a vector of length n into k sections:
@@ -20,7 +20,7 @@ vc-description: |-
       This ensures all elements are distributed as evenly as possible,
       with larger sub-vectors appearing first.
   -/
-
+  
   /-  Specification: array_split distributes elements evenly with mathematical properties
       
       The specification captures:
@@ -35,17 +35,17 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def array_split {n k : Nat} (v : Vector Float n) (hk : k > 0) : 
       Id (Vector (Σ m : Nat, Vector Float m) k) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem array_split_spec {n k : Nat} (v : Vector Float n) (hk : k > 0) :
@@ -71,8 +71,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

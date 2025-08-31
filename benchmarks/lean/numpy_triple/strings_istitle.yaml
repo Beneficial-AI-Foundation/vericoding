@@ -1,5 +1,13 @@
 vc-description: |-
-  /-  Helper function to check if a string is titlecased according to Python's str.istitle() logic -/
+  /- 
+  {
+    "name": "numpy.strings.istitle",
+    "category": "String information",
+    "description": "Returns true for each element if the element is a titlecased string and there is at least one character, false otherwise",
+    "url": "https://numpy.org/doc/stable/reference/generated/numpy.strings.istitle.html",
+    "doc": "Returns true for each element if the element is a titlecased string and there is at least one character, false otherwise.\n\nParameters\n----------\na : array_like, with \`StringDType\`, \`bytes_\` or \`str_\` dtype\n\nReturns\n-------\nout : ndarray\n    Output array of bools",
+  }
+  -/
   
   /-  numpy.strings.istitle: Returns true for each element if the element is a titlecased string and there is at least one character, false otherwise.
   
@@ -17,7 +25,7 @@ vc-description: |-
       - "" → False
       - "123" → False
   -/
-
+  
   /-  Specification: numpy.strings.istitle returns a vector where each element indicates
       whether the corresponding string element is titlecased.
       
@@ -33,18 +41,9 @@ vc-preamble: |-
   import Std.Do.Triple
   import Std.Tactic.Do
   open Std.Do
-
-vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
-
-vc-signature: |-
-  def isTitlecased (s : String) : Bool :=
   
-  def istitle {n : Nat} (a : Vector String n) : Id (Vector Bool n) :=
-
-vc-implementation: |-
-  <vc-implementation>
+  /-- Helper function to check if a string is titlecased according to Python's str.istitle() logic -/
+  def isTitlecased (s : String) : Bool :=
     if s.isEmpty then false
     else
       let chars := s.toList
@@ -64,10 +63,18 @@ vc-implementation: |-
             else
               checkTitleCase rest true
         checkTitleCase chars true
-  
-  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def istitle {n : Nat} (a : Vector String n) : Id (Vector Bool n) :=
+
+vc-implementation: |-
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem istitle_spec {n : Nat} (a : Vector String n) :
@@ -76,8 +83,9 @@ vc-condition: |-
       ⦃⇓result => ⌜∀ i : Fin n, result.get i = isTitlecased (a.get i)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

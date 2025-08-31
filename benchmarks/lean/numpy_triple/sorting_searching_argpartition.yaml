@@ -3,7 +3,7 @@ vc-description: |-
       Returns an array of indices that partition the input array such that
       the kth element is in its final sorted position and all smaller
       elements are moved before it and all larger elements behind it. -/
-
+  
   /-  Specification: argpartition returns indices that correctly partition the array.
       The kth element is in its final sorted position, with all smaller elements
       before it and all larger elements after it. -/
@@ -14,16 +14,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def argpartition {n : Nat} (a : Vector Float n) (kth : Fin n) : Id (Vector (Fin n) n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem argpartition_spec {n : Nat} (a : Vector Float n) (kth : Fin n) :
@@ -40,8 +40,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

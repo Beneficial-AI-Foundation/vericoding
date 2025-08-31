@@ -5,7 +5,7 @@ vc-description: |-
     "description": "The number of supported input/output type combinations"
   }
   -/
-
+  
   /-  numpy.ufunc.ntypes: Returns the number of supported input/output type combinations
       for a universal function.
       
@@ -18,7 +18,7 @@ vc-description: |-
       - np.exp.ntypes returns around 10 (fewer supported types)
       - np.remainder.ntypes returns around 16 (intermediate support)
   -/
-
+  
   /-  Specification: ntypes returns the count of supported type combinations
       for a ufunc, which must be a positive number for any valid ufunc.
       
@@ -34,16 +34,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def ntypes {n : Nat} (ufunc_type_combinations : Vector String n) : Id Nat :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem ntypes_spec {n : Nat} (ufunc_type_combinations : Vector String (n + 1)) :
@@ -52,8 +52,9 @@ vc-condition: |-
       ⦃⇓result => ⌜result = n + 1 ∧ result > 0⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

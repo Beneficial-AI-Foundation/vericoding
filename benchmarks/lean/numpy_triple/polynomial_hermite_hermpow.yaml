@@ -8,12 +8,12 @@ vc-description: |-
     "doc": "Raise a Hermite series to a power.\n\n    Returns the Hermite series `c` raised to the power `pow`. The\n    argument `c` is a sequence of coefficients ordered from low to high.\n    i.e., [1,2,3] is the series  ``P_0 + 2*P_1 + 3*P_2.``\n\n    Parameters\n    ----------\n    c : array_like\n        1-D array of Hermite series coefficients ordered from low to\n        high.\n    pow : integer\n        Power to which the series will be raised\n    maxpower : integer, optional\n        Maximum power allowed. This is mainly to limit growth of the series\n        to unmanageable size. Default is 16\n\n    Returns\n    -------\n    coef : ndarray\n        Hermite series of power.\n\n    See Also\n    --------\n    hermadd, hermsub, hermmulx, hermmul, hermdiv\n\n    Examples\n    --------\n    >>> from numpy.polynomial.hermite import hermpow\n    >>> hermpow([1, 2, 3], 2)\n    array([81.,  52.,  82.,  12.,   9.])",
   }
   -/
-
+  
   /-  Raise a Hermite polynomial series to a power.
       Given coefficients `c` representing a Hermite series (ordered from low to high degree),
       returns the coefficients of the series raised to the power `pow`.
       The `maxpower` parameter limits the maximum degree of the result. -/
-
+  
   /-  Specification: hermpow raises a Hermite series to a power by repeated multiplication.
       Key properties:
       1. For pow = 0, the result is the constant polynomial [1]
@@ -28,17 +28,17 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def hermpow {n : Nat} (c : Vector Float n) (pow : Nat) (maxpower : Nat := 16) : 
       Id (Vector Float (min (n + (n - 1) * pow) (maxpower + 1))) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem hermpow_spec {n : Nat} (c : Vector Float n) (pow : Nat) (maxpower : Nat := 16) :
@@ -76,8 +76,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

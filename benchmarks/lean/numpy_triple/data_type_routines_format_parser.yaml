@@ -9,7 +9,7 @@ vc-description: |-
       The function handles common NumPy format strings like 'f8' (float64),
       'i4' (int32), 'S5' (string of length 5), etc.
   -/
-
+  
   /-  Specification: numpy.format_parser creates a structured data type from format descriptions.
       
       Precondition: All format strings in formats are valid NumPy format descriptors
@@ -26,8 +26,7 @@ vc-preamble: |-
   import Std.Tactic.Do
   open Std.Do
   
-  /-  A format descriptor for structured data types -/
-  
+  /-- A format descriptor for structured data types -/
   inductive FormatDescriptor where
     /-- 64-bit floating point ('f8') -/
     | float64 : FormatDescriptor
@@ -41,8 +40,7 @@ vc-preamble: |-
     | float32 : FormatDescriptor
     deriving Repr, BEq
   
-  /-  A field in a structured data type -/
-  
+  /-- A field in a structured data type -/
   structure Field where
     /-- Field name -/
     name : String
@@ -52,8 +50,7 @@ vc-preamble: |-
     title : Option String := none
     deriving Repr, BEq
   
-  /-  A structured data type specification -/
-  
+  /-- A structured data type specification -/
   structure DType (n : Nat) where
     /-- Vector of fields -/
     fields : Vector Field n
@@ -62,8 +59,8 @@ vc-preamble: |-
     deriving Repr, BEq
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_format_parser {n : Nat} 
@@ -73,9 +70,9 @@ vc-signature: |-
       (aligned : Bool := false) : Id (DType n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_format_parser_spec {n : Nat} 
@@ -107,8 +104,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -9,11 +9,11 @@ vc-description: |-
     "signature": "numpy.ascontiguousarray(a, dtype=None, *, like=None)"
   }
   -/
-
+  
   /-  Return a contiguous array (ndim >= 1) in memory (C order).
       This function ensures the input array is contiguous in C order and guarantees
       minimum dimensionality of 1. For non-empty input, preserves all elements. -/
-
+  
   /-  Specification: ascontiguousarray returns a contiguous array with same content,
       ensuring minimum dimensionality of 1. For non-empty arrays, elements are preserved
       exactly. For empty arrays, returns a 1-dimensional array with 1 element. -/
@@ -24,16 +24,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def ascontiguousarray {n : Nat} (a : Vector Float n) : Id (Vector Float (max n 1)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem ascontiguousarray_spec {n : Nat} (a : Vector Float n) :
@@ -47,8 +47,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

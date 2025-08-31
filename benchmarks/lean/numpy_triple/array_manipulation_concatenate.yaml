@@ -10,7 +10,7 @@ vc-description: |-
     "source_location": "C implementation in numpy/_core/src/multiarray/multiarraymodule.c"
   }
   -/
-
+  
   /-  numpy.concatenate: Join a sequence of arrays along an existing axis.
   
       For 1D arrays, concatenates two vectors end-to-end to produce a single 
@@ -19,7 +19,7 @@ vc-description: |-
       The result vector has size n + m where n and m are the sizes of the 
       input vectors.
   -/
-
+  
   /-  Specification: concatenate joins two vectors preserving all elements in order.
   
       Precondition: True (no special preconditions for concatenation)
@@ -35,16 +35,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def concatenate {n m : Nat} (a : Vector Float n) (b : Vector Float m) : Id (Vector Float (n + m)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem concatenate_spec {n m : Nat} (a : Vector Float n) (b : Vector Float m) :
@@ -54,8 +54,9 @@ vc-condition: |-
                    (∀ j : Fin m, result.get ⟨n + j.val, by omega⟩ = b.get j)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

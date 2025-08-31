@@ -2,7 +2,7 @@ vc-description: |-
   /-  Evaluate a 3-D polynomial at points (x, y, z).
       This function evaluates the polynomial p(x,y,z) = Σ_{i,j,k} c[i,j,k] * x^i * y^j * z^k
       where the sum is over all valid indices of the coefficient tensor c. -/
-
+  
   /-  Specification: polyval3d evaluates a 3-dimensional polynomial at each point (x[i], y[i], z[i]).
       The polynomial is defined as the sum of c[i,j,k] * x^i * y^j * z^k over all coefficient indices. -/
 
@@ -12,8 +12,8 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def polyval3d {n : Nat} {deg_x deg_y deg_z : Nat} 
@@ -22,9 +22,9 @@ vc-signature: |-
       Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem polyval3d_spec {n : Nat} {deg_x deg_y deg_z : Nat} 
@@ -38,8 +38,9 @@ vc-condition: |-
                      val = ((c.get ⟨0, sorry⟩).get ⟨0, sorry⟩).get ⟨0, sorry⟩)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

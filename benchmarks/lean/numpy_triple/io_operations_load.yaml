@@ -12,7 +12,7 @@ vc-description: |-
       
       Memory mapping is not considered in this simplified specification.
   -/
-
+  
   /-  Specification: numpy.load returns a vector containing the data from the file.
       
       This specification captures the essential properties of the load operation:
@@ -37,16 +37,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def load {n : Nat} (file : String) (allow_pickle : Bool := false) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem load_spec {n : Nat} (file : String) (allow_pickle : Bool := false) 
@@ -60,8 +60,9 @@ vc-condition: |-
                       (∀ i : Fin n, result.get i = second_load.get i))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

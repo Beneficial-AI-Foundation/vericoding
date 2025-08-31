@@ -10,11 +10,11 @@ vc-description: |-
     "signature": "numpy.hsplit(ary, indices_or_sections)"
   }
   -/
-
+  
   /-  Split a 1D array into multiple sub-arrays horizontally.
       For simplicity, we focus on the 1D case where the array is split into 
       k equal parts. In numpy, hsplit on 1D arrays is equivalent to split with axis=0. -/
-
+  
   /-  Specification: hsplit divides a 1D array into k equal sub-arrays.
       Each sub-array has n/k elements. The i-th sub-array contains elements 
       from index i*(n/k) to (i+1)*(n/k)-1 of the original array.
@@ -30,8 +30,8 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def hsplit {n k : Nat} (arr : Vector Float n) 
@@ -39,9 +39,9 @@ vc-signature: |-
       Id (Vector (Vector Float (n / k)) k) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem hsplit_spec {n k : Nat} (arr : Vector Float n) 
@@ -56,8 +56,9 @@ vc-condition: |-
                     arr.get i = (result.get p).get e)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

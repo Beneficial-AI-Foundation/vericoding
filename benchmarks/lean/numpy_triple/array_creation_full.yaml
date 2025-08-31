@@ -9,7 +9,7 @@ vc-description: |-
     "signature": "numpy.full(shape, fill_value, dtype=None, order='C', *, device=None, like=None)"
   }
   -/
-
+  
   /-  numpy.full: Return a new array of given shape and type, filled with fill_value.
   
       Creates a new vector of size n where every element is set to the specified
@@ -19,7 +19,7 @@ vc-description: |-
       The function creates a vector filled with identical values, which is useful
       for initialization and creating constant arrays.
   -/
-
+  
   /-  Specification: numpy.full returns a vector where every element equals fill_value.
   
       This specification captures the complete mathematical behavior of numpy.full:
@@ -54,16 +54,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def full (α : Type) [Inhabited α] (n : Nat) (fill_value : α) : Id (Vector α n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem full_spec (α : Type) [Inhabited α] [DecidableEq α] (n : Nat) (fill_value : α) :
@@ -80,8 +80,9 @@ vc-condition: |-
                    (n > 0 → ∀ h : n - 1 < n, result.get ⟨n - 1, h⟩ = fill_value)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

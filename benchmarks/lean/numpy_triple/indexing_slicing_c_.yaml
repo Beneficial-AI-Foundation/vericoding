@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "Translates slice objects to concatenation along the second axis.\n\nThis is short-hand for \`\`np.r_['-1,2,0', index expression]\`\`, which is useful because of its common occurrence. In particular, arrays will be stacked along their last axis after being upgraded to at least 2-D with 1's post-pended to the shape (column vectors made out of 1-D arrays).",
   }
   -/
-
+  
   /-  numpy.c_: Translates slice objects to concatenation along the second axis.
       
       This function takes two vectors and stacks them as columns to create a 2-D array.
@@ -16,7 +16,7 @@ vc-description: |-
       
       This is equivalent to column_stack([arr1, arr2]) for 1-D arrays.
   -/
-
+  
   /-  Specification: c_ creates a 2-D array by stacking two vectors as columns.
       
       Precondition: True (no special preconditions)
@@ -30,16 +30,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def c_ {n : Nat} (arr1 arr2 : Vector Float n) : Id (Vector (Vector Float 2) n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem c_spec {n : Nat} (arr1 arr2 : Vector Float n) :
@@ -49,8 +49,9 @@ vc-condition: |-
         result.get i = ⟨#[arr1.get i, arr2.get i], by simp⟩⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

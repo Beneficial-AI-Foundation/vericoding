@@ -9,11 +9,11 @@ vc-description: |-
     "signature": "numpy.ogrid = <numpy.lib.ndmgr.OGridClass object>"
   }
   -/
-
+  
   /-  Create a 1D open grid from start to stop with n evenly spaced points.
       This is a simplified version of ogrid that handles the common case of
       creating a single evenly-spaced vector (like ogrid[start:stop:nj]) -/
-
+  
   /-  Specification: ogrid creates n evenly spaced points from start to stop (inclusive).
       When n > 1, the spacing between consecutive points is (stop - start) / (n - 1).
       For n = 1, the single point is at start. -/
@@ -24,16 +24,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def ogrid {n : Nat} (start stop : Float) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem ogrid_spec {n : Nat} (start stop : Float) (h : n > 0) :
@@ -49,8 +49,9 @@ vc-condition: |-
                            result.get ⟨n - 1, Nat.sub_lt h (Nat.zero_lt_one)⟩ = stop)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

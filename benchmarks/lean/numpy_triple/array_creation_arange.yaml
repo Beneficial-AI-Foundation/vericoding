@@ -9,9 +9,9 @@ vc-description: |-
     "signature": "numpy.arange([start, ]stop, [step, ]dtype=None, *, device=None, like=None)"
   }
   -/
-
+  
   /-  Return evenly spaced values within a given interval [start, stop) with given step -/
-
+  
   /-  Specification: arange generates evenly spaced values from start to stop (exclusive) with given step.
       Each element at index i has value start + i * step, and all values are within bounds -/
 
@@ -21,16 +21,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def arange {n : Nat} (start stop step : Float) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem arange_spec {n : Nat} (start stop step : Float) 
@@ -43,8 +43,9 @@ vc-condition: |-
                            (step < 0 → start > stop ∧ ∀ i : Fin n, result.get i > stop))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

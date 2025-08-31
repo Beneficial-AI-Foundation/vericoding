@@ -9,7 +9,7 @@ vc-description: |-
       array by joining two arrays end-to-end. Unlike in-place operations,
       this always returns a new array.
   -/
-
+  
   /-  Specification: numpy.append creates a new array containing all elements
       from arr followed by all elements from values.
       
@@ -26,17 +26,17 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_append {n m : Nat} (arr : Vector Float n) (values : Vector Float m) : 
       Id (Vector Float (n + m)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_append_spec {n m : Nat} (arr : Vector Float n) (values : Vector Float m) :
@@ -46,8 +46,9 @@ vc-condition: |-
                   (∀ j : Fin m, result.get (j.natAdd n) = values.get j)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

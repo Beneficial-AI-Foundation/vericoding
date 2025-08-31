@@ -12,7 +12,7 @@ vc-description: |-
   
       This is a binary element-wise operation equivalent to x1 & x2.
   -/
-
+  
   /-  Specification: numpy.logical_and returns a vector where each element
       is the logical AND of the corresponding elements from x1 and x2.
   
@@ -33,16 +33,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_logical_and {n : Nat} (x1 x2 : Vector Bool n) : Id (Vector Bool n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_logical_and_spec {n : Nat} (x1 x2 : Vector Bool n) :
@@ -51,8 +51,9 @@ vc-condition: |-
       ⦃⇓result => ⌜∀ i : Fin n, result.get i = (x1.get i ∧ x2.get i)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

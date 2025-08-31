@@ -5,7 +5,7 @@ vc-description: |-
       where Hᵢ(x) are Hermite polynomials.
       
       The roots are obtained as eigenvalues of the companion matrix. -/
-
+  
   /-  Specification: hermroots computes the roots of a Hermite polynomial.
       
       Key properties:
@@ -22,16 +22,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def hermroots {n : Nat} (c : Vector Float n) : Id (Vector Float (n - 1)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem hermroots_spec {n : Nat} (c : Vector Float n) (h_pos : n > 0) :
@@ -65,8 +65,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -8,9 +8,9 @@ vc-description: |-
     "doc": "Return a copy of each string element where all tab characters are replaced by one or more spaces.\n\nParameters\n----------\na : array_like, with \`StringDType\`, \`bytes_\` or \`str_\` dtype\n    Input array\ntabsize : array_like, with any integer dtype, optional\n    Replace tabs with \`tabsize\` number of spaces. Default is 8.\n\nReturns\n-------\nout : ndarray\n    Output array of \`StringDType\`, \`bytes_\` or \`str_\` dtype,\n    depending on input type",
   }
   -/
-
+  
   /-  Expand tabs in strings to spaces with configurable tab size -/
-
+  
   /-  Specification: expandtabs replaces tab characters with appropriate number of spaces -/
 
 vc-preamble: |-
@@ -19,16 +19,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def expandtabs {n : Nat} (a : Vector String n) (tabsize : Vector Nat n) : Id (Vector String n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem expandtabs_spec {n : Nat} (a : Vector String n) (tabsize : Vector Nat n) 
@@ -58,8 +58,9 @@ vc-condition: |-
             mapping j < mapping k))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

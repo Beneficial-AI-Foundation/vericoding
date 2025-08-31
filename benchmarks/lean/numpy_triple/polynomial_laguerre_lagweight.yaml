@@ -11,7 +11,7 @@ vc-description: |-
       Returns:
       - w: The weight function at x (exp(-x) for each element).
   -/
-
+  
   /-  Specification: lagweight returns a vector where each element is exp(-x[i])
       for the corresponding element in x.
   
@@ -28,16 +28,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def lagweight {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem lagweight_spec {n : Nat} (x : Vector Float n) :
@@ -46,8 +46,9 @@ vc-condition: |-
       ⦃⇓result => ⌜∀ i : Fin n, result.get i = Float.exp (-x.get i)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -8,7 +8,7 @@ vc-description: |-
       a from x, b from y, and c from z. The resulting points form
       a grid with x in the first dimension, y in the second, and z in
       the third. -/
-
+  
   /-  Specification: chebgrid3d evaluates a 3D Chebyshev series on the Cartesian product.
       The result at position (ix, iy, iz) is the sum over all coefficient indices (i, j, k)
       of c[i][j][k] * T_i(x[ix]) * T_j(y[iy]) * T_k(z[iz]) where T_n is the n-th
@@ -33,8 +33,8 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def chebgrid3d {nx ny nz : Nat} {ni nj nk : Nat}
@@ -43,9 +43,9 @@ vc-signature: |-
       Id (Vector (Vector (Vector Float nz) ny) nx) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem chebgrid3d_spec {nx ny nz : Nat} {ni nj nk : Nat}
@@ -69,8 +69,9 @@ vc-condition: |-
               chebyshev_T k.val (z.get iz)))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

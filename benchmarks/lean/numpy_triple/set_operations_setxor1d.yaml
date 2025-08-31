@@ -7,7 +7,7 @@ vc-description: |-
       The result contains elements that appear in ar1 but not in ar2, or in ar2 
       but not in ar1, sorted in ascending order.
   -/
-
+  
   /-  Specification: numpy.setxor1d returns the symmetric difference of two arrays.
   
       Precondition: True (no special preconditions)
@@ -24,16 +24,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_setxor1d {n m k : Nat} (ar1 : Vector Float n) (ar2 : Vector Float m) : Id (Vector Float k) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_setxor1d_spec {n m k : Nat} (ar1 : Vector Float n) (ar2 : Vector Float m) :
@@ -56,8 +56,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

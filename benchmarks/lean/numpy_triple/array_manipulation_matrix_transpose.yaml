@@ -10,11 +10,11 @@ vc-description: |-
     "signature": "numpy.matrix_transpose(x)"
   }
   -/
-
+  
   /-  Transposes a matrix by swapping rows and columns.
       For a matrix with shape (m, n), returns a matrix with shape (n, m)
       where result[i, j] = input[j, i] -/
-
+  
   /-  Specification: matrix_transpose swaps rows and columns, producing a transposed matrix
       where the element at position (i, j) in the result equals the element at position (j, i)
       in the input. The result has dimensions swapped: an m×n matrix becomes n×m. -/
@@ -25,16 +25,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def matrixTranspose {m n : Nat} (mat : Vector (Vector Float n) m) : Id (Vector (Vector Float m) n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem matrixTranspose_spec {m n : Nat} (mat : Vector (Vector Float n) m) :
@@ -54,8 +54,9 @@ vc-condition: |-
                      (∀ i : Fin n, ∀ j : Fin m, (result.get i).get j = ((matrixTranspose mat2).get i).get j))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

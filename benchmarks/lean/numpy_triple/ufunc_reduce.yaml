@@ -23,10 +23,10 @@ vc-description: |-
     ]
   }
   -/
-
+  
   /-  Reduces an array by applying a binary operation repeatedly along an axis.
       For 1D arrays, this applies the operation successively to pairs of elements. -/
-
+  
   /-  Specification: reduce applies a binary operation repeatedly to reduce an array to a single value.
       The operation is applied left-associatively: ((a[0] op a[1]) op a[2]) op ... op a[n-1] -/
 
@@ -36,16 +36,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def reduce {n : Nat} (op : Float → Float → Float) (arr : Vector Float (n + 1)) : Id Float :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem reduce_spec {n : Nat} (op : Float → Float → Float) (arr : Vector Float (n + 1)) :
@@ -60,8 +60,9 @@ vc-condition: |-
                             result = fold_fn ⟨n, Nat.lt_succ_self _⟩)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

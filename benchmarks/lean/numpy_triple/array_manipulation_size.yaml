@@ -10,9 +10,9 @@ vc-description: |-
     "signature": "numpy.size(a, axis=None)"
   }
   -/
-
+  
   /-  Returns the number of elements in a vector -/
-
+  
   /-  Specification: size returns the length of the vector, which is its type parameter n -/
 
 vc-preamble: |-
@@ -21,16 +21,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def size {n : Nat} (a : Vector Float n) : Id Nat :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem size_spec {n : Nat} (a : Vector Float n) :
@@ -39,8 +39,9 @@ vc-condition: |-
       ⦃⇓result => ⌜result = n⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

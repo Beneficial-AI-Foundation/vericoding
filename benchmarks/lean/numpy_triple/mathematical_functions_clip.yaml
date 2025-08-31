@@ -18,7 +18,7 @@ vc-description: |-
       - If a_min > a_max, all values become a_max
       - No validation is performed to ensure a_min < a_max
   -/
-
+  
   /-  Specification: numpy.clip returns a vector where each element is clipped to the interval [min_val, max_val].
   
       Mathematical Properties:
@@ -42,16 +42,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def clip {n : Nat} (arr : Vector Float n) (min_val max_val : Float) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem clip_spec {n : Nat} (arr : Vector Float n) (min_val max_val : Float) :
@@ -66,8 +66,9 @@ vc-condition: |-
           result.get i = max_val)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

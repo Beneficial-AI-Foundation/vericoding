@@ -7,7 +7,7 @@ vc-description: |-
     "doc": "Compute hyperbolic tangent element-wise.\n\nEquivalent to np.sinh(x)/np.cosh(x) or -1j * np.tan(1j*x).",
   }
   -/
-
+  
   /-  numpy.tanh: Compute hyperbolic tangent element-wise.
   
       The hyperbolic tangent function is defined as:
@@ -20,7 +20,7 @@ vc-description: |-
       
       Returns an array of the same shape as x, containing the hyperbolic tangent of each element.
   -/
-
+  
   /-  Specification: numpy.tanh returns a vector where each element is the hyperbolic tangent
       of the corresponding element in x.
       
@@ -42,16 +42,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def tanh {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem tanh_spec {n : Nat} (x : Vector Float n) :
@@ -79,8 +79,9 @@ vc-condition: |-
           (x.get i < 0 → result.get i < 0 ∧ result.get i > -1)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

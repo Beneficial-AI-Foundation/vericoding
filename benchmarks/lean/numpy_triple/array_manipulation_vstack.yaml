@@ -10,11 +10,11 @@ vc-description: |-
     "signature": "numpy.vstack(tup, *, dtype=None, casting='same_kind')"
   }
   -/
-
+  
   /-  Stack two vectors vertically to create a 2D matrix.
       For 1D vectors, this treats them as row vectors and stacks them vertically.
       This is a simplified version focusing on the common case of stacking two 1D vectors. -/
-
+  
   /-  Specification: vstack stacks two vectors vertically, creating a 2x n matrix
       where the first row is vector a and the second row is vector b.
       
@@ -30,16 +30,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def vstack {n : Nat} (a b : Vector Float n) : Id (Vector (Vector Float n) 2) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem vstack_spec {n : Nat} (a b : Vector Float n) :
@@ -49,8 +49,9 @@ vc-condition: |-
                    (∀ j : Fin n, (result.get 1).get j = b.get j)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

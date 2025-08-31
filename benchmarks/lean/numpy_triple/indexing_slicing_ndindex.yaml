@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "An N-dimensional iterator object to index arrays.\n\nGiven the shape of an array, an \`ndindex\` instance iterates over the N-dimensional index of the array.",
   }
   -/
-
+  
   /-  Generate N-dimensional indices for an array with given shape.
       Returns a vector of index tuples, where each tuple represents a valid
       N-dimensional index for an array with the specified dimensions.
@@ -18,7 +18,7 @@ vc-description: |-
       
       Example: For shape (2, 3), generates [(0,0), (0,1), (0,2), (1,0), (1,1), (1,2)]
   -/
-
+  
   /-  Specification: ndindex generates all valid N-dimensional indices for a given shape.
       This comprehensive specification captures:
       1. The output contains exactly m*n index pairs for a 2D array of shape (m, n)
@@ -37,16 +37,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def ndindex {m n : Nat} (shape : Nat × Nat) : Id (Vector (Fin m × Fin n) (m * n)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem ndindex_spec {m n : Nat} (shape : Nat × Nat) (h_shape : shape = (m, n)) :
@@ -63,8 +63,9 @@ vc-condition: |-
                         k.val = i.val * n + j.val)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

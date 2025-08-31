@@ -8,7 +8,7 @@ vc-description: |-
       The flat iterator acts as a view into the underlying array data, preserving
       the order of elements as they appear in memory (row-major order).
   -/
-
+  
   /-  Specification: numpy.ndarray.flat returns a flattened view of the array.
   
       Precondition: True (no special preconditions for flattening)
@@ -22,16 +22,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_flat {n : Nat} (a : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_flat_spec {n : Nat} (a : Vector Float n) :
@@ -40,8 +40,9 @@ vc-condition: |-
       ⦃⇓result => ⌜∀ i : Fin n, result.get i = a.get i⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -8,9 +8,9 @@ vc-description: |-
     "doc": "Returns a boolean array which is \`True\` where the string element in \`a\` starts with \`prefix\`, otherwise \`False\`.\n\nParameters\n----------\na : array_like, with \`StringDType\`, \`bytes_\` or \`str_\` dtype\nprefix : array_like, with \`StringDType\`, \`bytes_\` or \`str_\` dtype\nstart, end : array_like, with any integer dtype, optional\n    With optional \`start\`, test beginning at that position. With optional \`end\`, stop comparing at that position.\n\nReturns\n-------\nout : ndarray\n    Output array of bools",
   }
   -/
-
+  
   /-  Check if strings in array start with given prefixes -/
-
+  
   /-  Specification: startswith returns boolean array indicating which strings start with corresponding prefixes -/
 
 vc-preamble: |-
@@ -19,16 +19,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def startswith {n : Nat} (a : Vector String n) (prefixes : Vector String n) : Id (Vector Bool n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem startswith_spec {n : Nat} (a : Vector String n) (prefixes : Vector String n) :
@@ -47,8 +47,9 @@ vc-condition: |-
           (a.get i).take (prefixes.get i).length ≠ (prefixes.get i))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

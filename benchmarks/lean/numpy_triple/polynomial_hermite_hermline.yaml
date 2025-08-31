@@ -8,7 +8,7 @@ vc-description: |-
       
       Note: When scl = 0, the second element is 0, representing a constant function.
   -/
-
+  
   /-  Specification: hermline returns Hermite coefficients for a linear function.
       
       The Hermite series representation of off + scl*x has coefficients:
@@ -26,16 +26,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def hermline (off scl : Float) : Id (Vector Float 2) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem hermline_spec (off scl : Float) :
@@ -47,8 +47,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

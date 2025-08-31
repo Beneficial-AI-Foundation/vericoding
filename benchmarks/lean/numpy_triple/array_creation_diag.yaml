@@ -9,9 +9,9 @@ vc-description: |-
     "signature": "numpy.diag(v, k=0)"
   }
   -/
-
+  
   /-  Construct a diagonal matrix from a 1-D vector -/
-
+  
   /-  Specification: diag constructs a square matrix with v on the main diagonal.
       
       This captures the mathematical property that numpy.diag(v) creates a matrix M
@@ -38,16 +38,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def diag {n : Nat} (v : Vector Float n) : Id (Vector (Vector Float n) n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem diag_spec {n : Nat} (v : Vector Float n) :
@@ -89,8 +89,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

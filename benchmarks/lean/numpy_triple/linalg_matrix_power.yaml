@@ -12,7 +12,7 @@ vc-description: |-
       - A^n = A * A^(n-1) for n > 1
       - A^(-n) = (A^(-1))^n for n < 0
   -/
-
+  
   /-  Specification: matrix_power raises a square matrix to an integer power.
       
       Precondition: The matrix A must be square (n×n). For negative powers,
@@ -41,16 +41,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def matrix_power {n : Nat} (A : Vector (Vector Float n) n) (exp : Int) : Id (Vector (Vector Float n) n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem matrix_power_spec {n : Nat} (A : Vector (Vector Float n) n) (exp : Int) :
@@ -90,8 +90,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

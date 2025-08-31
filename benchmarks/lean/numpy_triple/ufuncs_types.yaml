@@ -1,10 +1,15 @@
 vc-description: |-
-  /-  Convert TypeCode to character representation -/
-  
-  /-  Format a type signature as a string (input1input2...->output) -/
+  /- 
+  {
+    "name": "types",
+    "description": "List of supported data type signatures",
+    "details": "Shows input->output type mappings",
+    "example": "add.types: ['??->?', 'bb->b', 'BB->B', 'hh->h', ...]"
+  }
+  -/
   
   /-  Returns the list of supported data type signatures for a universal function -/
-
+  
   /-  Specification: types returns formatted type signatures as strings -/
 
 vc-preamble: |-
@@ -12,8 +17,7 @@ vc-preamble: |-
   import Std.Tactic.Do
   open Std.Do
   
-  /-  Data type character codes used in NumPy ufunc type signatures -/
-  
+  /-- Data type character codes used in NumPy ufunc type signatures -/
   inductive TypeCode where
     | bool     : TypeCode  -- '?'
     | byte     : TypeCode  -- 'b' 
@@ -34,25 +38,13 @@ vc-preamble: |-
     | clongdouble: TypeCode -- 'G'
     | object   : TypeCode  -- 'O'
   
-  /-  Type signature representing input->output mapping for ufuncs -/
-  
+  /-- Type signature representing input->output mapping for ufuncs -/
   structure TypeSignature where
     input_types : List TypeCode
     output_type : TypeCode
-
-vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
-
-vc-signature: |-
+  
+  /-- Convert TypeCode to character representation -/
   def typeCodeToChar (tc : TypeCode) : Char :=
-  
-  def formatTypeSignature (sig : TypeSignature) : String :=
-  
-  def types {n : Nat} (ufunc_signatures : Vector TypeSignature n) : Id (Vector String n) :=
-
-vc-implementation: |-
-  <vc-implementation>
     match tc with
     | TypeCode.bool => '?'
     | TypeCode.byte => 'b'
@@ -72,15 +64,23 @@ vc-implementation: |-
     | TypeCode.complex128 => 'D'
     | TypeCode.clongdouble => 'G'
     | TypeCode.object => 'O'
-  
-  
+  /-- Format a type signature as a string (input1input2...->output) -/
+  def formatTypeSignature (sig : TypeSignature) : String :=
     let input_chars := sig.input_types.map typeCodeToChar
     let input_str := String.mk input_chars
     s!"{input_str}->{typeCodeToChar sig.output_type}"
-  
-  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def types {n : Nat} (ufunc_signatures : Vector TypeSignature n) : Id (Vector String n) :=
+
+vc-implementation: |-
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem types_spec {n : Nat} (ufunc_signatures : Vector TypeSignature n) :
@@ -91,8 +91,9 @@ vc-condition: |-
         (ufunc_signatures.get i).input_types.length > 0⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

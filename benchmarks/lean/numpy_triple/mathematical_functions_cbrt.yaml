@@ -7,7 +7,7 @@ vc-description: |-
     "doc": "Return the cube-root of an array, element-wise.",
   }
   -/
-
+  
   /-  numpy.cbrt: Return the cube-root of an array, element-wise.
   
       Computes the cube root of each element in the input array.
@@ -16,7 +16,7 @@ vc-description: |-
   
       Returns an array of the same shape as x, containing the cube roots.
   -/
-
+  
   /-  Specification: numpy.cbrt returns a vector where each element is the
       cube root of the corresponding element in x.
   
@@ -38,16 +38,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def cbrt {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem cbrt_spec {n : Nat} (x : Vector Float n) :
@@ -56,8 +56,9 @@ vc-condition: |-
       ⦃⇓result => ⌜∀ i : Fin n, (result.get i) ^ 3 = x.get i⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -7,7 +7,7 @@ vc-description: |-
     "doc": "PCG64DXSM(seed=None)\n\nBitGenerator for the PCG-64 DXSM pseudo-random number generator.\n\nPCG-64 DXSM is an implementation of O'Neill's permutation congruential generator with the DXSM output mixer. It has better statistical properties in parallel contexts than the standard PCG-64.\n\nParameters:\n- seed : None, int, array_like[ints], SeedSequence, BitGenerator, Generator\n    A seed to initialize the BitGenerator",
   }
   -/
-
+  
   /-  PCG64DXSM: BitGenerator for the PCG-64 DXSM pseudo-random number generator.
   
       PCG-64 DXSM is a 128-bit implementation of O'Neill's permutation congruential generator
@@ -22,7 +22,7 @@ vc-description: |-
       This function generates a sequence of random 64-bit unsigned integers given
       a seed value.
   -/
-
+  
   /-  Specification: PCG64DXSM generates a sequence of pseudo-random numbers with specific mathematical properties.
   
       The PCG64DXSM generator satisfies the following properties:
@@ -39,16 +39,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def PCG64DXSM {n : Nat} (seed : UInt64) : Id (Vector UInt64 n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem PCG64DXSM_spec {n : Nat} (seed : UInt64) :
@@ -68,8 +68,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

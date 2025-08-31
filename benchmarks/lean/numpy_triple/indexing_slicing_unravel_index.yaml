@@ -8,10 +8,10 @@ vc-description: |-
     "doc": "Converts a flat index or array of flat indices into a tuple of coordinate arrays.\n\nParameters\n----------\nindices : array_like\n    An integer array whose elements are indices into the flattened version of an array of dimensions shape.\nshape : tuple of ints\n    The shape of the array to use for unraveling indices.\norder : {'C', 'F'}, optional\n    Determines whether the indices should be viewed as indexing in row-major (C-style) or column-major (Fortran-style) order.\n\nReturns\n-------\nunraveled_coords : tuple of ndarray\n    Each array in the tuple has the same shape as the indices array.",
   }
   -/
-
+  
   /-  Converts flat indices into multi-dimensional coordinates for a given shape.
       This is the inverse operation of ravel_multi_index. -/
-
+  
   /-  Specification: unravel_index converts flat indices to multi-dimensional coordinates
       such that the coordinates are valid for the given shape and represent the correct
       positions in the multi-dimensional array. -/
@@ -22,16 +22,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def unravel_index {n d : Nat} (indices : Vector Nat n) (shape : Vector Nat d) : Id (Vector (Vector Nat d) n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem unravel_index_spec {n d : Nat} (indices : Vector Nat n) (shape : Vector Nat d) 
@@ -48,8 +48,9 @@ vc-condition: |-
         (∀ i j : Fin n, i ≠ j → indices.get i ≠ indices.get j → coords.get i ≠ coords.get j)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

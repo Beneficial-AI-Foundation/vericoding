@@ -15,7 +15,7 @@ vc-description: |-
       - The function is a universal function (ufunc) implemented in C
       - Uses optimized C loops for different data types
   -/
-
+  
   /-  Specification: numpy.multiply returns a vector where each element is the product
       of the corresponding elements from x1 and x2.
   
@@ -39,16 +39,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def multiply {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem multiply_spec {n : Nat} (x1 x2 : Vector Float n) :
@@ -57,8 +57,9 @@ vc-condition: |-
       ⦃⇓result => ⌜∀ i : Fin n, result.get i = x1.get i * x2.get i⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

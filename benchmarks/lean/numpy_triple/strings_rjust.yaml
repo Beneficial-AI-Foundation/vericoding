@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "Return an array with the elements of \`a\` right-justified in a string of length \`width\`.\n\nParameters\n----------\na : array_like, with \`StringDType\`, \`bytes_\` or \`str_\` dtype\nwidth : array_like, with any integer dtype\n    The length of the resulting strings, unless \`\`width < str_len(a)\`\`.\nfillchar : array_like, with \`StringDType\`, \`bytes_\` or \`str_\` dtype, optional\n    The character to use for padding. Default is space.\n\nReturns\n-------\nout : ndarray\n    Output array of \`StringDType\`, \`bytes_\` or \`str_\` dtype,\n    depending on input types",
   }
   -/
-
+  
   /-  numpy.strings.rjust: Return an array with the elements of a right-justified in a string of length width.
   
       Right-justifies each string in the input array by padding it with the specified
@@ -30,7 +30,7 @@ vc-description: |-
       4. Character preservation: Original string appears as contiguous substring
       5. Width compliance: Result length equals max(original.length, width)
   -/
-
+  
   /-  Specification: rjust returns a vector where each string is right-justified
       to the specified width using the given fill character.
   
@@ -48,16 +48,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def rjust {n : Nat} (a : Vector String n) (width : Nat) (fillchar : String) : Id (Vector String n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem rjust_spec {n : Nat} (a : Vector String n) (width : Nat) (fillchar : String)
@@ -87,8 +87,9 @@ vc-condition: |-
           (orig.length = 0 → res.length = width)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

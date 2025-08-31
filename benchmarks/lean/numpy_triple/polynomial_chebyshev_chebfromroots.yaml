@@ -1,8 +1,4 @@
 vc-description: |-
-  /-  Evaluate the k-th Chebyshev polynomial of the first kind at x -/
-  
-  /-  Evaluate a polynomial in Chebyshev basis at point x given coefficients -/
-  
   /-  Generate a Chebyshev series with given roots.
       
       Returns the coefficients of the polynomial p(x) = (x - r₀) * (x - r₁) * ... * (x - rₙ)
@@ -10,7 +6,7 @@ vc-description: |-
       
       The output coefficients c satisfy: p(x) = c₀ + c₁ * T₁(x) + ... + cₙ * Tₙ(x)
       where Tₙ(x) is the n-th Chebyshev polynomial of the first kind. -/
-
+  
   /-  Specification: chebfromroots generates Chebyshev coefficients such that:
       1. The output has exactly n+1 coefficients where n is the number of roots
       2. The polynomial represented by these coefficients has the given roots
@@ -21,36 +17,33 @@ vc-preamble: |-
   import Std.Do.Triple
   import Std.Tactic.Do
   open Std.Do
-
-vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
-
-vc-signature: |-
+  
+  /-- Evaluate the k-th Chebyshev polynomial of the first kind at x -/
   def evalChebyshevT (k : Nat) (x : Float) : Float :=
-  
-  def evalChebyshevPoly {n : Nat} (coeffs : Vector Float n) (x : Float) : Float :=
-  
-  def chebfromroots {n : Nat} (roots : Vector Float n) : Id (Vector Float (n + 1)) :=
-
-vc-implementation: |-
-  <vc-implementation>
     match k with
     | 0 => 1
     | 1 => x
     | k + 2 => 2 * x * evalChebyshevT (k + 1) x - evalChebyshevT k x
-  
-  
+  /-- Evaluate a polynomial in Chebyshev basis at point x given coefficients -/
+  def evalChebyshevPoly {n : Nat} (coeffs : Vector Float n) (x : Float) : Float :=
     let rec sumTerms (i : Nat) (acc : Float) : Float :=
       if h : i < n then
         sumTerms (i + 1) (acc + coeffs.get ⟨i, h⟩ * evalChebyshevT i x)
       else
         acc
     sumTerms 0 0
-  
-  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def chebfromroots {n : Nat} (roots : Vector Float n) : Id (Vector Float (n + 1)) :=
+
+vc-implementation: |-
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem chebfromroots_spec {n : Nat} (roots : Vector Float n) :
@@ -72,8 +65,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -8,11 +8,11 @@ vc-description: |-
     "doc": "Remove small Poly series coefficients.\n\n    Parameters\n    ----------\n    seq : sequence\n        Sequence of Poly series coefficients.\n\n    Returns\n    -------\n    series : sequence\n        Subsequence with trailing zeros removed. If the resulting sequence\n        would be empty, return the first element. The returned sequence may\n        or may not be a view.\n\n    Notes\n    -----\n    Do not lose the type info if the sequence contains unknown objects.",
   }
   -/
-
+  
   /-  Remove trailing zeros from a sequence of polynomial coefficients.
       Returns the sequence with trailing zeros removed. If the sequence would be empty 
       after trimming, returns the first element. Empty sequences are handled. -/
-
+  
   /-  Specification: trimseq removes trailing zeros while preserving at least one element.
       For non-empty sequences, if the last element is non-zero, return the sequence unchanged.
       If the last element is zero, trim trailing zeros but always keep at least one element. -/
@@ -23,16 +23,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def trimseq {n : Nat} (seq : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem trimseq_spec {n : Nat} (seq : Vector Float n) :
@@ -55,8 +55,9 @@ vc-condition: |-
                       (k.val > 0 → seq.get k ≠ 0)))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

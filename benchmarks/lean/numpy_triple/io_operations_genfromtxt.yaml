@@ -8,10 +8,10 @@ vc-description: |-
     "doc": "Load data from a text file, with missing values handled as specified",
   }
   -/
-
+  
   /-  Load data from a text file with missing value handling. This is a simplified 
       version focusing on numeric data parsing from delimited text. -/
-
+  
   /-  Specification: genfromtxt parses delimited text data into a matrix structure,
       handling missing values by filling them with the specified default value.
       The function skips the specified number of header lines and parses the
@@ -23,8 +23,8 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def genfromtxt {rows cols : Nat} (input : Vector String rows) 
@@ -32,9 +32,9 @@ vc-signature: |-
       Id (Vector (Vector Float cols) (rows - skip_header)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem genfromtxt_spec {rows cols : Nat} (input : Vector String rows) 
@@ -63,8 +63,9 @@ vc-condition: |-
                                      field_str.toNat!.toFloat)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

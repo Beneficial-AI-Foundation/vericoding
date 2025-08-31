@@ -19,7 +19,7 @@ vc-description: |-
       - The function handles axis parameter (ignored in 1D case)
       - Supports optional dtype, initial value, and where condition
   -/
-
+  
   /-  Specification: sum computes the sum of all elements in a vector.
       
       The sum operation has several important mathematical properties:
@@ -42,16 +42,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def sum {n : Nat} (a : Vector Float n) : Id Float :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem sum_spec {n : Nat} (a : Vector Float n) :
@@ -62,8 +62,9 @@ vc-condition: |-
                    (∀ i : Fin n, a.get i = 0) → result = 0⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

@@ -1,4 +1,14 @@
 vc-description: |-
+  /- 
+  {
+    "name": "numpy.set_printoptions",
+    "category": "String formatting",
+    "description": "Set printing options",
+    "url": "https://numpy.org/doc/stable/reference/generated/numpy.set_printoptions.html",
+    "doc": "Set printing options",
+  }
+  -/
+  
   /-  numpy.set_printoptions: Set printing options for NumPy arrays
   
       Sets the global printing options that control how floating point numbers,
@@ -8,7 +18,7 @@ vc-description: |-
       All parameters are optional and only modify the corresponding option if
       provided. Options not specified retain their current values.
   -/
-
+  
   /-  Specification: set_printoptions correctly updates the global print options
       according to the provided parameters while validating input constraints.
       
@@ -21,8 +31,7 @@ vc-preamble: |-
   import Std.Tactic.Do
   open Std.Do
   
-  /-  Structure representing NumPy print options -/
-  
+  /-- Structure representing NumPy print options -/
   structure PrintOptions where
     /-- Number of digits of precision for floating point output -/
     precision : Nat
@@ -46,8 +55,8 @@ vc-preamble: |-
     legacy : Option String
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def set_printoptions 
@@ -63,9 +72,9 @@ vc-signature: |-
       (legacy : Option String := none) : Id Unit :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem set_printoptions_spec 
@@ -105,8 +114,9 @@ vc-condition: |-
       ⦃⇓_ => ⌜True⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

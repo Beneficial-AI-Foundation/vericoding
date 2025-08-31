@@ -8,7 +8,7 @@ vc-description: |-
       same shape, returns an array of booleans. This function is the basis for
       the == operator when used with numpy arrays.
   -/
-
+  
   /-  Specification: numpy.equal returns a boolean vector where each element indicates
       whether the corresponding elements in x1 and x2 are equal.
   
@@ -32,16 +32,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_equal {T : Type} [BEq T] {n : Nat} (x1 x2 : Vector T n) : Id (Vector Bool n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_equal_spec {T : Type} [BEq T] {n : Nat} (x1 x2 : Vector T n) :
@@ -56,8 +56,9 @@ vc-condition: |-
                     (∀ i : Fin n, result.get i = true ∨ result.get i = false)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

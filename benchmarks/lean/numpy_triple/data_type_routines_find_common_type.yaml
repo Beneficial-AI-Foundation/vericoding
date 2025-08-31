@@ -1,6 +1,13 @@
 vc-description: |-
-  /-  Type hierarchy for promotion rules -/
-
+  /-  numpy.find_common_type: Determine common type following standard coercion rules.
+      
+      This function determines the common data type by following NumPy's type promotion rules.
+      It returns the maximum of array_types ignoring scalar_types, unless the maximum of 
+      scalar_types is of a different kind (dtype.kind).
+      
+      Note: This function is deprecated in NumPy 1.25.0 in favor of numpy.result_type.
+  -/
+  
   /-  Specification: find_common_type implements NumPy's type promotion rules correctly.
       
       The function should:
@@ -19,8 +26,7 @@ vc-preamble: |-
   import Std.Tactic.Do
   open Std.Do
   
-  /-  Data type representation for NumPy types -/
-  
+  /-- Data type representation for NumPy types -/
   inductive DType where
     /-- 8-bit signed integer -/
     | int8 
@@ -50,12 +56,8 @@ vc-preamble: |-
     | bool
     /-- Object type -/
     | object
-
-vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
-
-vc-signature: |-
+  
+  /-- Type hierarchy for promotion rules -/
   def DType.kind : DType → Char
     | DType.bool => 'b'
     | DType.int8 | DType.int16 | DType.int32 | DType.int64 => 'i'
@@ -63,7 +65,6 @@ vc-signature: |-
     | DType.float32 | DType.float64 => 'f'
     | DType.complex64 | DType.complex128 => 'c'
     | DType.object => 'O'
-  
   /-- Type precedence for promotion (higher values have higher precedence) -/
   def DType.precedence : DType → Nat
     | DType.bool => 0
@@ -80,21 +81,18 @@ vc-signature: |-
     | DType.complex64 => 11
     | DType.complex128 => 12
     | DType.object => 13
-  
-  /-- numpy.find_common_type: Determine common type following standard coercion rules.
-      
-      This function determines the common data type by following NumPy's type promotion rules.
-      It returns the maximum of array_types ignoring scalar_types, unless the maximum of 
-      scalar_types is of a different kind (dtype.kind).
-      
-      Note: This function is deprecated in NumPy 1.25.0 in favor of numpy.result_type.
-  -/
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
   def find_common_type {n m : Nat} (array_types : Vector DType n) (scalar_types : Vector DType m) : Id (Option DType) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem find_common_type_spec {n m : Nat} (array_types : Vector DType n) (scalar_types : Vector DType m) 
@@ -121,8 +119,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

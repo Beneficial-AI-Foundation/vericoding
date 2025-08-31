@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "Compute the truth value of NOT x element-wise.\n\nParameters\n----------\nx : array_like\n    Logical NOT is applied to the elements of x.\nout : ndarray, None, or tuple of ndarray and None, optional\n    A location into which the result is stored. If provided, it must have\n    a shape that the inputs broadcast to. If not provided or None,\n    a freshly-allocated array is returned. A tuple (possible only as a\n    keyword argument) must have length equal to the number of outputs.\nwhere : array_like, optional\n    This condition is broadcast over the input. At locations where the\n    condition is True, the out array will be set to the ufunc result.\n    Elsewhere, the out array will retain its original value.\n    Note that if an uninitialized out array is created via the default\n    out=None, locations within it where the condition is False will\n    remain uninitialized.\n**kwargs\n    For other keyword-only arguments, see the\n    ufunc docs.\n\nReturns\n-------\ny : bool or ndarray of bool\n    Boolean result with the same shape as x of the NOT operation\n    on elements of x.\n    This is a scalar if x is a scalar.\n\nSee Also\n--------\nlogical_and, logical_or, logical_xor\n\nExamples\n--------\n>>> np.logical_not(3)\nFalse\n>>> np.logical_not([True, False, 0, 1])\narray([False,  True,  True, False])\n\n>>> x = np.arange(5)\n>>> np.logical_not(x<3)\narray([False, False, False,  True,  True])",
   }
   -/
-
+  
   /-  numpy.logical_not: Compute the truth value of NOT x element-wise.
   
       For each element in the input array, applies logical NOT operation.
@@ -17,7 +17,7 @@ vc-description: |-
       
       Returns a boolean array of the same shape as the input.
   -/
-
+  
   /-  Specification: numpy.logical_not returns a vector where each element is the
       logical NOT of the corresponding element in x, following NumPy's truthiness rules.
   
@@ -38,16 +38,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def logical_not {n : Nat} (x : Vector Float n) : Id (Vector Bool n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem logical_not_spec {n : Nat} (x : Vector Float n) :
@@ -56,8 +56,9 @@ vc-condition: |-
       ⦃⇓result => ⌜∀ i : Fin n, result.get i = (x.get i = 0.0)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

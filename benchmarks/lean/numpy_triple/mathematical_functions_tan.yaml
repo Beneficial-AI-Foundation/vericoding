@@ -1,6 +1,6 @@
 vc-description: |-
   /-  Compute tangent element-wise. Equivalent to sin(x)/cos(x) element-wise. -/
-
+  
   /-  Specification: tan computes the tangent of each element, equivalent to sin(x)/cos(x),
       and is undefined when cos(x) = 0 (i.e., x = π/2 + kπ for integer k) -/
 
@@ -10,16 +10,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def tan {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem tan_spec {n : Nat} (x : Vector Float n) 
@@ -30,8 +30,9 @@ vc-condition: |-
                                   result.get i = Float.sin (x.get i) / Float.cos (x.get i)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

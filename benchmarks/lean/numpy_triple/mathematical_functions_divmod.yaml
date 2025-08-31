@@ -18,7 +18,7 @@ vc-description: |-
       2. Remainder bounds: 0 ≤ |remainder[i]| < |x2[i]| (for positive divisors)
       3. Sign consistency: remainder has same sign as divisor (Python % semantics)
   -/
-
+  
   /-  Specification: numpy.divmod returns a tuple of vectors containing the quotient 
       and remainder of element-wise division.
   
@@ -40,16 +40,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def divmod {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Float n × Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem divmod_spec {n : Nat} (x1 x2 : Vector Float n) :
@@ -64,8 +64,9 @@ vc-condition: |-
                       (x2.get i < 0 → x2.get i < remainder.get i ∧ remainder.get i ≤ 0)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

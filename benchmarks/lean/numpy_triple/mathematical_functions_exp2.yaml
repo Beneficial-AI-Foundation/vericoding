@@ -7,7 +7,7 @@ vc-description: |-
     "doc": "Calculate 2**p for all p in the input array.",
   }
   -/
-
+  
   /-  numpy.exp2: Calculate 2 raised to the power of each element in the input vector.
   
       Computes 2^p for all p in the input vector, element-wise.
@@ -22,7 +22,7 @@ vc-description: |-
       operates element-wise on arrays and supports broadcasting.
       For finite input values, the result is always positive.
   -/
-
+  
   /-  Specification: numpy.exp2 computes 2 raised to the power of each element 
       in the input vector.
   
@@ -47,16 +47,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def exp2 {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem exp2_spec {n : Nat} (x : Vector Float n) :
@@ -66,8 +66,9 @@ vc-condition: |-
                                  result.get i > 0⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

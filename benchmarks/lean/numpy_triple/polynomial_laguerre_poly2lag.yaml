@@ -15,7 +15,7 @@ vc-description: |-
       Note: The conversion maintains the same degree structure but transforms
       the basis from standard polynomial to Laguerre polynomial basis.
   -/
-
+  
   /-  Specification: poly2lag converts polynomial coefficients to Laguerre series coefficients.
   
       The mathematical property is that the conversion preserves the polynomial
@@ -38,16 +38,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def poly2lag {n : Nat} (pol : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem poly2lag_spec {n : Nat} (pol : Vector Float n) :
@@ -65,8 +65,9 @@ vc-condition: |-
                     True)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

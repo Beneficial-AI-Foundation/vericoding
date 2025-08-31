@@ -11,7 +11,7 @@ vc-description: |-
       
       This captures the rate of change of the function represented by the array.
   -/
-
+  
   /-  Specification: numpy.gradient computes the numerical gradient using finite differences.
       
       The gradient satisfies these mathematical properties:
@@ -41,16 +41,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_gradient {n : Nat} (f : Vector Float (n + 1)) : Id (Vector Float (n + 1)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_gradient_spec {n : Nat} (f : Vector Float (n + 1)) :
@@ -76,8 +76,9 @@ vc-condition: |-
                   (∀ i : Fin (n + 1), grad.get i = 0))⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

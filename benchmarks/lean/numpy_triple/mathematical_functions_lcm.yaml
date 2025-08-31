@@ -7,7 +7,7 @@ vc-description: |-
     "doc": "Returns the lowest common multiple of |x1| and |x2|.",
   }
   -/
-
+  
   /-  numpy.lcm: Returns the lowest common multiple of |x1| and |x2| element-wise.
   
       Computes the lowest common multiple (LCM) of the absolute values of 
@@ -29,7 +29,7 @@ vc-description: |-
       - lcm(8, 12) = 24
       - lcm(7, 11) = 77 (coprime numbers)
   -/
-
+  
   /-  Specification: lcm returns a vector where each element is the lowest 
       common multiple of the absolute values of the corresponding elements 
       from x1 and x2.
@@ -56,16 +56,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def lcm {n : Nat} (x1 x2 : Vector Int n) : Id (Vector Int n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem lcm_spec {n : Nat} (x1 x2 : Vector Int n) :
@@ -93,8 +93,9 @@ vc-condition: |-
                    (∀ i : Fin n, x1.get i ≠ 0 → x2.get i ≠ 0 → result.get i > 0)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

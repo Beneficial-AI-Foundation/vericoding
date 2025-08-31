@@ -7,7 +7,7 @@ vc-description: |-
     "doc": "Modified Bessel function of the first kind, order 0.\n\nDefinition: i0(x) = sum((x/2)**2k / (k!)**2, k=0..inf)",
   }
   -/
-
+  
   /-  numpy.i0: Modified Bessel function of the first kind, order 0.
   
       Computes the Modified Bessel function of the first kind, order 0, element-wise.
@@ -19,7 +19,7 @@ vc-description: |-
   
       Returns an array of the same shape as x, containing the i0 values of each element.
   -/
-
+  
   /-  Specification: numpy.i0 returns a vector where each element is the Modified
       Bessel function of the first kind, order 0, of the corresponding element in x.
   
@@ -40,16 +40,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def i0 {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem i0_spec {n : Nat} (x : Vector Float n) :
@@ -67,8 +67,9 @@ vc-condition: |-
           (∀ j : Fin n, x.get i ≥ 0 → x.get j ≥ 0 → x.get i ≤ x.get j → result.get i ≤ result.get j)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

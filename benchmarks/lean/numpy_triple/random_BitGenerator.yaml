@@ -1,4 +1,13 @@
 vc-description: |-
+  /- 
+  {
+    "name": "numpy.random.BitGenerator",
+    "description": "Base class for bit generators",
+    "url": "https://numpy.org/doc/stable/reference/random/bit_generators/index.html",
+    "doc": "BitGenerator(seed=None)\n\nBase class for bit generators.\n\nThe BitGenerator has a limited set of responsibilities. It manages state and provides functions to produce random doubles and random unsigned 32- and 64-bit values.\n\nThis class should not be instantiated directly.",
+  }
+  -/
+  
   /-  numpy.random.BitGenerator: Base class for bit generators.
       
       The BitGenerator manages state and provides functions to produce random doubles 
@@ -11,7 +20,7 @@ vc-description: |-
       Returns:
       - A BitGeneratorState that can be used to generate random values
   -/
-
+  
   /-  Specification: numpy.random.BitGenerator creates a properly initialized BitGenerator state.
       
       Precondition: True (any seed value is valid, including None)
@@ -24,10 +33,9 @@ vc-preamble: |-
   import Std.Tactic.Do
   open Std.Do
   
-  /-  BitGenerator state representing the internal state of a pseudo-random number generator.
+  /-- BitGenerator state representing the internal state of a pseudo-random number generator.
       This is an abstract representation that can be seeded and used to generate random values.
   -/
-  
   structure BitGeneratorState where
     /-- The seed value used to initialize the generator, or None if no seed was provided -/
     seed : Option UInt64
@@ -35,16 +43,16 @@ vc-preamble: |-
     internal_state : UInt64
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_random_BitGenerator (seed : Option UInt64) : Id BitGeneratorState :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_random_BitGenerator_spec (seed : Option UInt64) :
@@ -55,8 +63,9 @@ vc-condition: |-
                    (seed.isNone → result.internal_state = 0)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

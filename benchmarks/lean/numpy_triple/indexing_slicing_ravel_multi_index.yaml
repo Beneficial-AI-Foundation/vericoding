@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "Converts a tuple of index arrays into an array of flat indices, applying boundary modes to the multi-index.\n\nParameters\n----------\nmulti_index : tuple of array_like\n    A tuple of integer arrays, one array for each dimension.\ndims : tuple of ints\n    The shape of array into which the indices from multi_index apply.\nmode : {'raise', 'wrap', 'clip'}, optional\n    Specifies how out-of-bounds indices are handled.\norder : {'C', 'F'}, optional\n    Determines whether the multi-index should be viewed as indexing in row-major (C-style) or column-major (Fortran-style) order.\n\nReturns\n-------\nraveled_indices : ndarray\n    An array of indices into the flattened version of an array of dimensions dims.",
   }
   -/
-
+  
   /-  Convert 2D multi-indices to flat indices using C-style (row-major) ordering.
       
       Takes arrays of row and column indices and converts them to flat indices
@@ -17,7 +17,7 @@ vc-description: |-
       
       The function requires that all indices are within bounds of the specified dimensions.
   -/
-
+  
   /-  Specification: ravel_multi_index converts 2D indices to flat indices using row-major ordering.
       
       Precondition: All row and column indices must be within bounds
@@ -39,8 +39,8 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def ravel_multi_index {n : Nat} (row_indices col_indices : Vector Nat n) 
@@ -49,9 +49,9 @@ vc-signature: |-
       (h_cols_valid : ∀ i : Fin n, col_indices.get i < cols) : Id (Vector Nat n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem ravel_multi_index_spec {n : Nat} (row_indices col_indices : Vector Nat n) 
@@ -64,8 +64,9 @@ vc-condition: |-
                                 result.get i < rows * cols⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

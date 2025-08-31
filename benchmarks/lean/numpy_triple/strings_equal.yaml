@@ -8,7 +8,7 @@ vc-description: |-
     "doc": "Return (x1 == x2) element-wise.\n\nFor string arrays, performs element-wise string comparison.\n\nParameters\n----------\nx1, x2 : array_like\n    Input arrays with string dtype.\n    If \`\`x1.shape != x2.shape\`\`, they must be broadcastable to a common\n    shape (which becomes the shape of the output).\nout : ndarray, None, or tuple of ndarray and None, optional\n    A location into which the result is stored.\nwhere : array_like, optional\n    This condition is broadcast over the input.\nkwargs\n    For other keyword-only arguments, see the ufunc docs.\n\nReturns\n-------\nout : ndarray or scalar\n    Output array, element-wise comparison of x1 and x2.\n    Typically of type bool, unless \`\`dtype=object\`\` is passed.",
   }
   -/
-
+  
   /-  numpy.strings.equal: Return (x1 == x2) element-wise for string arrays.
   
       Performs element-wise string comparison between two vectors of strings.
@@ -17,7 +17,7 @@ vc-description: |-
       This function compares strings lexicographically and returns True for each
       position where the strings are identical, False otherwise.
   -/
-
+  
   /-  Specification: numpy.strings.equal returns element-wise equality comparison.
   
       Precondition: True (no special preconditions for string equality)
@@ -36,16 +36,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def equal {n : Nat} (x1 x2 : Vector String n) : Id (Vector Bool n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem equal_spec {n : Nat} (x1 x2 : Vector String n) :
@@ -59,8 +59,9 @@ vc-condition: |-
                    (x1 = x2 → ∀ i : Fin n, result.get i = true)⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

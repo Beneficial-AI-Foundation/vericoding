@@ -17,7 +17,7 @@ vc-description: |-
       - lbnd: Lower bound of the integral (default: 0)
       - scl: Scaling factor applied after each integration (default: 1)
   -/
-
+  
   /-  Specification: chebint integrates Chebyshev series coefficients m times.
   
       The function performs m successive integrations of the Chebyshev series,
@@ -49,17 +49,17 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def chebint {n : Nat} (c : Vector Float n) (m : Nat) (k : Vector Float m) 
       (lbnd : Float) (scl : Float) : Id (Vector Float (n + m)) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem chebint_spec {n : Nat} (c : Vector Float n) (m : Nat) (k : Vector Float m) 
@@ -95,8 +95,9 @@ vc-condition: |-
       ⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

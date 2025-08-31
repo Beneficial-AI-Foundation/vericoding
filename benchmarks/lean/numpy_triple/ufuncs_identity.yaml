@@ -12,7 +12,7 @@ vc-description: |-
     }
   }
   -/
-
+  
   /-  ufunc.identity: Get the identity element for a ufunc operation.
   
       Returns the identity element for a given binary operation, which is the value
@@ -25,7 +25,7 @@ vc-description: |-
       
       Some operations may have no identity element, in which case None is returned.
   -/
-
+  
   /-  Specification: ufunc_identity returns the identity element if it exists.
   
       Precondition: The operation is a valid binary function
@@ -39,16 +39,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def ufunc_identity (op : Float → Float → Float) : Id (Option Float) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem ufunc_identity_spec (op : Float → Float → Float) :
@@ -59,8 +59,9 @@ vc-condition: |-
         | none => ¬∃ id : Float, ∀ x : Float, op x id = x ∧ op id x = x⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

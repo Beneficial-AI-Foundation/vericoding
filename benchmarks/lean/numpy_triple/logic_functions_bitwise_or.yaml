@@ -8,7 +8,7 @@ vc-description: |-
       For integer inputs, the result is the bitwise OR of the binary
       representations. For boolean inputs, it performs logical OR.
   -/
-
+  
   /-  Specification: numpy.bitwise_or returns a vector where each element is the 
       bitwise OR of the corresponding elements from x1 and x2.
   
@@ -26,33 +26,29 @@ vc-preamble: |-
   import Std.Tactic.Do
   open Std.Do
   
-  /-  Axiomatically define bitwise OR operation for integers -/
-  
+  /-- Axiomatically define bitwise OR operation for integers -/
   axiom Int.bitwise_or : Int → Int → Int
   
-  /-  Bitwise OR is commutative -/
-  
+  /-- Bitwise OR is commutative -/
   axiom Int.bitwise_or_comm (x y : Int) : Int.bitwise_or x y = Int.bitwise_or y x
   
-  /-  Bitwise OR with zero is identity -/
-  
+  /-- Bitwise OR with zero is identity -/
   axiom Int.bitwise_or_zero (x : Int) : Int.bitwise_or x 0 = x
   
-  /-  Bitwise OR is idempotent -/
-  
+  /-- Bitwise OR is idempotent -/
   axiom Int.bitwise_or_idempotent (x : Int) : Int.bitwise_or x x = x
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def numpy_bitwise_or {n : Nat} (x1 x2 : Vector Int n) : Id (Vector Int n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem numpy_bitwise_or_spec {n : Nat} (x1 x2 : Vector Int n) :
@@ -67,8 +63,9 @@ vc-condition: |-
                    Int.bitwise_or (x1.get i) (x1.get i) = x1.get i⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+

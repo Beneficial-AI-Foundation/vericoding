@@ -7,7 +7,7 @@ vc-description: |-
     "doc": "numpy.fft.ifftshift(x, axes=None)\n\nThe inverse of fftshift. Although identical for even-length x, the functions differ by one sample for odd-length x.\n\nParameters:\n- x (array_like): Input array\n- axes (int or shape tuple, optional): Axes over which to calculate. Defaults to None, which shifts all axes.\n\nReturns:\n- y (ndarray): The shifted array\n\nExample:\nimport numpy as np\nfreqs = np.fft.fftfreq(9, d=1./9).reshape(3, 3)\nfreqs\n# Output: array([[ 0.,  1.,  2.],\n#                [ 3.,  4., -4.],\n#                [-3., -2., -1.]])\nnp.fft.ifftshift(np.fft.fftshift(freqs))\n# Output: same as original freqs array\n\nSee also: numpy.fft.fftshift",
   }
   -/
-
+  
   /-  The inverse of fftshift - undoes the frequency domain shifting.
       
       This function performs the inverse operation of fftshift, moving the 
@@ -17,7 +17,7 @@ vc-description: |-
       
       The function performs a circular shift by -(n/2) positions.
   -/
-
+  
   /-  Specification: ifftshift performs the inverse of fftshift.
       
       The function performs a circular shift that undoes the centering of 
@@ -47,16 +47,16 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  -- <vc-helpers>
+  -- </vc-helpers>
 
 vc-signature: |-
   def ifftshift {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
 
 vc-implementation: |-
-  <vc-implementation>
+  -- <vc-implementation>
     sorry
-  </vc-implementation>
+  -- </vc-implementation>
 
 vc-condition: |-
   theorem ifftshift_spec {n : Nat} (x : Vector Float n) :
@@ -65,8 +65,9 @@ vc-condition: |-
       ⦃⇓result => ⌜∀ i : Fin n, result.get i = x.get ⟨(i.val + n / 2) % n, sorry⟩⌝⦄ := by
 
 vc-proof: |-
-  <vc-proof>
+  -- <vc-proof>
     sorry
-  </vc-proof>
+  -- </vc-proof>
 
 vc-postamble: |-
+
