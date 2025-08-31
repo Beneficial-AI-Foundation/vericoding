@@ -1,0 +1,44 @@
+/- 
+{
+  "name": "numpy.linalg.trace",
+  "category": "Norms and numbers",
+  "description": "Return the sum along diagonals of the array",
+  "url": "https://numpy.org/doc/stable/reference/generated/numpy.linalg.trace.html",
+  "doc": "Return the sum along diagonals of the array.\n\nIf a is 2-D, returns the sum along the diagonal. If a has more dimensions, then axes along which the trace is taken can be specified.",
+}
+-/
+
+/-  Returns the sum along the main diagonal of a square matrix.
+    The trace is the sum of diagonal elements at positions (i, i) for i = 0 to n-1. -/
+
+/-  Specification: trace computes the sum of the main diagonal elements of a square matrix.
+    The trace is mathematically defined as the sum of elements x[i][i] for i from 0 to n-1.
+    This is a fundamental operation in linear algebra with important mathematical properties:
+    - trace(A + B) = trace(A) + trace(B) (linearity)
+    - trace(cA) = c * trace(A) (scalar multiplication)
+    - trace(A) = trace(A^T) (transpose invariance) -/
+
+import Std.Do.Triple
+import Std.Tactic.Do
+open Std.Do
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def trace {n : Nat} (x : Vector (Vector Float n) n) : Id Float :=
+-- <vc-implementation>
+  sorry
+-- </vc-implementation>
+
+theorem trace_spec {n : Nat} (x : Vector (Vector Float n) n) :
+    ⦃⌜True⌝⦄
+    trace x
+    ⦃⇓result => ⌜result = (List.range n).foldl (fun acc i => 
+      if h : i < n then
+        acc + (x.get ⟨i, h⟩).get ⟨i, h⟩
+      else acc
+    ) 0 ∧ 
+    (∀ i : Fin n, (x.get i).get i ≠ 0 → result ≠ 0)⌝⦄ := by
+-- <vc-proof>
+  sorry
+-- </vc-proof>

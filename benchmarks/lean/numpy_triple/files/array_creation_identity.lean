@@ -1,0 +1,39 @@
+/- 
+{
+  "name": "numpy.identity",
+  "category": "From shape or value",
+  "description": "Return the identity array",
+  "url": "https://numpy.org/doc/stable/reference/generated/numpy.identity.html",
+  "doc": "\nReturn the identity array.\n\nThe identity array is a square array with ones on the main diagonal.\n\nParameters\n----------\nn : int\n    Number of rows (and columns) in n x n output.\ndtype : data-type, optional\n    Data-type of the output. Defaults to float.\nlike : array_like, optional\n    Reference object to allow the creation of arrays which are not NumPy arrays.\n\nReturns\n-------\nout : ndarray\n    n x n array with its main diagonal set to one, and all other elements 0.\n\nExamples\n--------\n>>> np.identity(3)\narray([[1.,  0.,  0.],\n       [0.,  1.,  0.],\n       [0.,  0.,  1.]])\n",
+  "signature": "numpy.identity(n, dtype=None, *, like=None)"
+}
+-/
+
+/-  Return the identity matrix of size n×n.
+    The identity matrix is a square matrix with ones on the main diagonal
+    and zeros elsewhere. -/
+
+/-  Specification: identity returns an n×n matrix where:
+    - diagonal elements (i,i) are 1.0
+    - off-diagonal elements (i,j) where i≠j are 0.0 -/
+
+import Std.Do.Triple
+import Std.Tactic.Do
+open Std.Do
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def identity (n : Nat) : Id (Vector (Vector Float n) n) :=
+-- <vc-implementation>
+  sorry
+-- </vc-implementation>
+
+theorem identity_spec (n : Nat) :
+    ⦃⌜True⌝⦄
+    identity n
+    ⦃⇓result => ⌜∀ i j : Fin n, 
+                   (result.get i).get j = if i = j then (1.0 : Float) else (0.0 : Float)⌝⦄ := by
+-- <vc-proof>
+  sorry
+-- </vc-proof>

@@ -1,0 +1,28 @@
+use vstd::prelude::*;
+
+verus! {
+
+// returns an index of the largest element of array 'a' in the range [0..n)
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+fn findMax(a: &[i32], n: usize) -> (r: usize)
+    requires
+        a.len() > 0,
+        0 < n <= a.len(),
+    ensures
+        0 <= r < n <= a.len(),
+        forall|k: usize| 0 <= k < n <= a.len() ==> a[r as int] >= a[k as int],
+// </vc-spec>
+// <vc-code>
+{
+    assume(false);
+    0
+}
+// </vc-code>
+
+fn main() {}
+
+}

@@ -1,0 +1,111 @@
+/- 
+-----Description-----
+The task is to compute the element-wise sum of two integer arrays. The result should be a new array where each element is the sum of the corresponding elements from the two input arrays. The problem assumes that both arrays have the same length.
+
+-----Input-----
+The input consists of two parameters:
+• a: An array of integers.
+• b: An array of integers.
+Note: Both arrays must have the same length.
+
+-----Output-----
+The output is an array of integers that:
+• Has the same size as the input arrays.
+• Contains elements where each element at index i is computed as a[i]! + b[i]! from the input arrays.
+
+-----Note-----
+It is assumed that the two input arrays have equal lengths.
+-/
+
+@[reducible, simp]
+def arraySum_precond (a : Array Int) (b : Array Int) : Prop :=
+  a.size = b.size
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def arraySum (a : Array Int) (b : Array Int) (h_precond : arraySum_precond (a) (b)) : Array Int :=
+-- <vc-implementation>
+  sorry
+-- </vc-implementation>
+
+@[reducible, simp]
+def arraySum_postcond (a : Array Int) (b : Array Int) (result: Array Int) (h_precond : arraySum_precond (a) (b)) :=
+  (result.size = a.size) ∧ (∀ i : Nat, i < a.size → a[i]! + b[i]! = result[i]!)
+
+theorem arraySum_spec_satisfied (a: Array Int) (b: Array Int) (h_precond : arraySum_precond (a) (b)) :
+    arraySum_postcond (a) (b) (arraySum (a) (b) h_precond) h_precond := by
+-- <vc-proof>
+  sorry
+-- </vc-proof>
+
+/-
+-- Invalid Inputs
+[
+    {
+        "input": {
+            "a": "#[1, 2, 3, 4]",
+            "b": "#[5, 6, 7]"
+        }
+    }
+]
+-- Tests
+[
+    {
+        "input": {
+            "a": "#[1, 2, 3]",
+            "b": "#[4, 5, 6]"
+        },
+        "expected": "#[5, 7, 9]",
+        "unexpected": [
+            "#[5, 6, 9]",
+            "#[4, 7, 9]"
+        ]
+    },
+    {
+        "input": {
+            "a": "#[0, 0, 0]",
+            "b": "#[0, 0, 0]"
+        },
+        "expected": "#[0, 0, 0]",
+        "unexpected": [
+            "#[0, 0, 1]",
+            "#[1, 0, 0]"
+        ]
+    },
+    {
+        "input": {
+            "a": "#[-1, 2, 3]",
+            "b": "#[1, -2, 4]"
+        },
+        "expected": "#[0, 0, 7]",
+        "unexpected": [
+            "#[0, 1, 7]",
+            "#[0, 0, 6]"
+        ]
+    },
+    {
+        "input": {
+            "a": "#[10]",
+            "b": "#[-10]"
+        },
+        "expected": "#[0]",
+        "unexpected": [
+            "#[1]",
+            "#[-1]"
+        ]
+    },
+    {
+        "input": {
+            "a": "#[100, 200, 300]",
+            "b": "#[100, 200, 300]"
+        },
+        "expected": "#[200, 400, 600]",
+        "unexpected": [
+            "#[200, 400, 601]",
+            "#[199, 400, 600]",
+            "#[200, 399, 600]"
+        ]
+    }
+]
+-/

@@ -1,0 +1,137 @@
+/- 
+-----Description-----
+Given a sorted list of distinct integers and a target value, return the index if the target is found. If it is not found, return the index where it would be inserted to maintain the sorted order.
+
+This function must preserve the sorted property of the list. The list is assumed to be strictly increasing and contain no duplicates.
+
+-----Input-----
+xs : List Int — a sorted list of distinct integers in increasing order
+target : Int — the integer to search for
+
+-----Output-----
+A natural number (Nat) representing the index at which the target is found, or the index at which it should be inserted to maintain sorted order.
+-/
+
+@[reducible]
+def searchInsert_precond (xs : List Int) (target : Int) : Prop :=
+  List.Pairwise (· < ·) xs
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def searchInsert (xs : List Int) (target : Int) (h_precond : searchInsert_precond (xs) (target)) : Nat :=
+-- <vc-implementation>
+  sorry
+-- </vc-implementation>
+
+@[reducible]
+def searchInsert_postcond (xs : List Int) (target : Int) (result: Nat) (h_precond : searchInsert_precond (xs) (target)) : Prop :=
+  let allBeforeLess := (List.range result).all (fun i => xs[i]! < target)
+  let inBounds := result ≤ xs.length
+  let insertedCorrectly :=
+    result < xs.length → target ≤ xs[result]!
+  inBounds ∧ allBeforeLess ∧ insertedCorrectly
+
+theorem searchInsert_spec_satisfied (xs: List Int) (target: Int) (h_precond : searchInsert_precond (xs) (target)) :
+    searchInsert_postcond (xs) (target) (searchInsert (xs) (target) h_precond) h_precond := by
+-- <vc-proof>
+  sorry
+-- </vc-proof>
+
+/-
+-- Invalid Inputs
+[
+    {
+        "input": {
+            "xs": "[2, 1]",
+            "target": 5
+        }
+    },
+    {
+        "input": {
+            "xs": "[1, 1]",
+            "target": 2
+        }
+    }
+]
+-- Tests
+[
+    {
+        "input": {
+            "xs": "[1, 3, 5, 6]",
+            "target": 5
+        },
+        "expected": 2,
+        "unexpected": [
+            0,
+            1,
+            3,
+            4
+        ]
+    },
+    {
+        "input": {
+            "xs": "[1, 3, 5, 6]",
+            "target": 2
+        },
+        "expected": 1,
+        "unexpected": [
+            0,
+            2,
+            3
+        ]
+    },
+    {
+        "input": {
+            "xs": "[1, 3, 5, 6]",
+            "target": 7
+        },
+        "expected": 4,
+        "unexpected": [
+            2,
+            3
+        ]
+    },
+    {
+        "input": {
+            "xs": "[1, 3, 5, 6]",
+            "target": 0
+        },
+        "expected": 0,
+        "unexpected": [
+            1,
+            2
+        ]
+    },
+    {
+        "input": {
+            "xs": "[]",
+            "target": 3
+        },
+        "expected": 0,
+        "unexpected": [
+            1
+        ]
+    },
+    {
+        "input": {
+            "xs": "[10]",
+            "target": 5
+        },
+        "expected": 0,
+        "unexpected": [
+            1
+        ]
+    },
+    {
+        "input": {
+            "xs": "[10]",
+            "target": 15
+        },
+        "expected": 1,
+        "unexpected": [
+            0
+        ]
+    }
+]
+-/

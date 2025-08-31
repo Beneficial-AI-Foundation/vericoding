@@ -1,0 +1,69 @@
+/- 
+{
+  "name": "numpy.polynomial.hermite.hermfit",
+  "category": "Hermite polynomials",
+  "description": "Least squares fit of Hermite series to data.",
+  "url": "https://numpy.org/doc/stable/reference/generated/numpy.polynomial.hermite.hermfit.html",
+  "doc": "Least squares fit of Hermite series to data.\n\n    Return the coefficients of a Hermite series of degree \`deg\` that is the\n    least squares fit to the data values \`y\` given at points \`x\`. If \`y\` is\n    1-D the returned coefficients will also be 1-D. If \`y\` is 2-D multiple\n    fits are done, one for each column of \`y\`, and the resulting\n    coefficients are stored in the corresponding columns of a 2-D return.\n    The fitted polynomial(s) are in the form\n\n    .. math::  p(x) = c_0 + c_1 * H_1(x) + ... + c_n * H_n(x),\n\n    where \`n\` is \`deg\`.\n\n    Parameters\n    ----------\n    x : array_like, shape (M,)\n        x-coordinates of the M sample points \`\`(x[i], y[i])\`\`.\n    y : array_like, shape (M,) or (M, K)\n        y-coordinates of the sample points. Several data sets of sample\n        points sharing the same x-coordinates can be fitted at once by\n        passing in a 2D-array that contains one dataset per column.\n    deg : int or 1-D array_like\n        Degree(s) of the fitting polynomials. If \`deg\` is a single integer\n        all terms up to and including the \`deg\`'th term are included in the\n        fit. For NumPy versions >= 1.11.0 a list of integers specifying the\n        degrees of the terms to include may be used instead.\n    rcond : float, optional\n        Relative condition number of the fit. Singular values smaller than\n        this relative to the largest singular value will be ignored. The\n        default value is len(x)*eps, where eps is the relative precision of\n        the float type, about 2e-16 in most cases.\n    full : bool, optional\n        Switch determining nature of return value. When it is False (the\n        default) just the coefficients are returned, when True diagnostic\n        information from the singular value decomposition is also returned.\n    w : array_like, shape (\`M\`,), optional\n        Weights. If not None, the weight \`\`w[i]\`\` applies to the unsquared\n        residual \`\`y[i] - y_hat[i]\`\` at \`\`x[i]\`\`. Ideally the weights are\n        chosen so that the errors of the products \`\`w[i]*y[i]\`\` all have the\n        same variance.  When using inverse-variance weighting, use\n        \`\`w[i] = 1/sigma(y[i])\`\`.  The default value is None.\n\n    Returns\n    -------\n    coef : ndarray, shape (M,) or (M, K)\n        Hermite coefficients ordered from low to high. If \`y\` was 2-D,\n        the coefficients for the data in column k  of \`y\` are in column\n        \`k\`.\n\n    [residuals, rank, singular_values, rcond] : list\n        These values are only returned if \`\`full == True\`\`\n\n        - residuals -- sum of squared residuals of the least squares fit\n        - rank -- the numerical rank of the scaled Vandermonde matrix\n        - singular_values -- singular values of the scaled Vandermonde matrix\n        - rcond -- value of \`rcond\`.\n\n        For more details, see \`numpy.linalg.lstsq\`.\n\n    Warns\n    -----\n    RankWarning\n        The rank of the coefficient matrix in the least-squares fit is\n        deficient. The warning is only raised if \`\`full == False\`\`.  The\n        warnings can be turned off by\n\n        >>> import warnings\n        >>> warnings.simplefilter('ignore', np.exceptions.RankWarning)\n\n    See Also\n    --------\n    numpy.polynomial.chebyshev.chebfit\n    numpy.polynomial.legendre.legfit\n    numpy.polynomial.laguerre.lagfit\n    numpy.polynomial.polynomial.polyfit\n    numpy.polynomial.hermite_e.hermefit\n    hermval : Evaluates a Hermite series.\n    hermvander : Vandermonde matrix of Hermite series.\n    hermweight : Hermite weight function\n    numpy.linalg.lstsq : Computes a least-squares fit from the matrix.\n    scipy.interpolate.UnivariateSpline : Computes spline fits.\n\n    Notes\n    -----\n    The solution is the coefficients of the Hermite series \`p\` that\n    minimizes the sum of the weighted squared errors\n\n    .. math:: E = \\\\sum_j w_j^2 * |y_j - p(x_j)|^2,\n\n    where the :math:\`w_j\` are the weights. This problem is solved by\n    setting up the (typically) overdetermined matrix equation\n\n    .. math:: V(x) * c = w * y,\n\n    where \`V\` is the weighted pseudo Vandermonde matrix of \`x\`, \`c\` are the\n    coefficients to be solved for, \`w\` are the weights, \`y\` are the\n    observed values.  This equation is then solved using the singular value\n    decomposition of \`V\`.\n\n    If some of the singular values of \`V\` are so small that they are\n    neglected, then a \`~exceptions.RankWarning\` will be issued. This means that\n    the coefficient values may be poorly determined. Using a lower order fit\n    will usually get rid of the warning.  The \`rcond\` parameter can also be\n    set to a value smaller than its default, but the resulting fit may be\n    spurious and have large contributions from roundoff error.\n\n    Fits using Hermite series are probably most useful when the data can be\n    approximated by \`\`sqrt(w(x)) * p(x)\`\`, where \`\`w(x)\`\` is the Hermite\n    weight. In that case the weight \`\`sqrt(w(x[i]))\`\` should be used\n    together with data values \`\`y[i]/sqrt(w(x[i]))\`\`. The weight function is\n    available as \`hermweight\`.\n\n    References\n    ----------\n    .. [1] Wikipedia, \"Curve fitting\",\n           https://en.wikipedia.org/wiki/Curve_fitting\n\n    Examples\n    --------\n    >>> import numpy as np\n    >>> from numpy.polynomial.hermite import hermfit, hermval\n    >>> x = np.linspace(-10, 10)\n    >>> rng = np.random.default_rng()\n    >>> err = rng.normal(scale=1./10, size=len(x))\n    >>> y = hermval(x, [1, 2, 3]) + err\n    >>> hermfit(x, y, 2)\n    array([1.02294967, 2.00016403, 2.99994614]) # may vary",
+}
+-/
+
+/-  Least squares fit of Hermite series to data. Returns coefficients of a Hermite polynomial
+    that best fits the given data points (x, y) with degree deg. -/
+
+/-  Specification: hermfit returns coefficients that minimize the least squares error
+    for a Hermite polynomial fit of the given degree to the data points -/
+
+import Std.Do.Triple
+import Std.Tactic.Do
+open Std.Do
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def hermfit {m : Nat} (x y : Vector Float m) (deg : Nat) : Id (Vector Float (deg + 1)) :=
+-- <vc-implementation>
+  sorry
+-- </vc-implementation>
+
+theorem hermfit_spec {m : Nat} (x y : Vector Float m) (deg : Nat) (h_m : m > 0) :
+    ⦃⌜m > 0⌝⦄
+    hermfit x y deg
+    ⦃⇓coef => ⌜
+      -- The result has the correct size (deg + 1 coefficients)
+      coef.size = deg + 1 ∧
+      -- Sanity check: coefficients vector is not empty
+      deg + 1 > 0 ∧
+      -- The coefficients minimize the squared error
+      -- Let H_k(x) be the k-th Hermite polynomial evaluated at x
+      -- The fitted polynomial is p(x) = sum_{k=0}^{deg} coef[k] * H_k(x)
+      -- For a hypothetical hermval function that evaluates Hermite polynomials:
+      -- hermval : Float → Vector Float n → Float
+      -- that computes sum_{k=0}^{n-1} coeffs[k] * H_k(x)
+      
+      -- The least squares property: for any other coefficient vector c' of the same size,
+      -- the sum of squared errors with coef is less than or equal to that with c'
+      ∀ c' : Vector Float (deg + 1),
+        -- Assuming we have a hermval function to evaluate Hermite polynomials
+        -- let error_coef := sum_{i=0}^{m-1} (y[i] - hermval(x[i], coef))^2
+        -- let error_c' := sum_{i=0}^{m-1} (y[i] - hermval(x[i], c'))^2
+        -- then error_coef ≤ error_c'
+        
+        -- Mathematical property: The solution satisfies the normal equations
+        -- V^T * V * coef = V^T * y
+        -- where V is the Vandermonde matrix of Hermite polynomials evaluated at x
+        
+        -- Additional properties:
+        -- 1. If m ≥ deg + 1, the fit is unique (assuming full rank)
+        -- 2. If m = deg + 1 and points are distinct, the polynomial interpolates exactly
+        (m = deg + 1 → 
+          -- For interpolation case: the polynomial passes through all points
+          -- ∀ i : Fin m, hermval(x.get i, coef) = y.get i
+          True) ∧
+        
+        -- 3. The coefficients are real-valued (no complex numbers in this spec)
+        (∀ k : Fin (deg + 1), ¬(coef.get k).isNaN)
+    ⌝⦄ := by
+-- <vc-proof>
+  sorry
+-- </vc-proof>

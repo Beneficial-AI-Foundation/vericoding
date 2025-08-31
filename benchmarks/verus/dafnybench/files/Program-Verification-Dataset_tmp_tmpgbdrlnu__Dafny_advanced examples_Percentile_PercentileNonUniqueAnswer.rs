@@ -1,0 +1,61 @@
+use vstd::prelude::*;
+
+verus! {
+
+// Sum of elements of A from indices 0 to end.
+// end is inclusive! (not James's normal way of thinking!!)
+spec fn sum_upto(a: Seq<int>, end: int) -> int
+    recommends -1 <= end < a.len()
+    decreases end + 1
+    when end >= -1
+{
+    if end == -1 {
+        0
+    } else {
+        a[end] + sum_upto(a, end - 1)
+    }
+}
+
+spec fn sum(a: Seq<int>) -> int {
+    sum_upto(a, a.len() - 1)
+}
+
+
+// example showing that, with the original postcondition, the answer is non-unique!
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+#[verifier::external_body]
+fn percentile_non_unique_answer() -> (result: (int, Vec<int>, int, int, int))
+    ensures (forall|i: int| 0 <= i < result.1@.len() ==> result.1@[i] > 0)
+    ensures (0 <= result.0 && result.0 <= 100)
+    ensures (result.2 == sum(result.1@))
+    ensures (result.2 > 0)
+
+    ensures (-1 <= result.3 && result.3 < result.1@.len())
+    ensures (sum_upto(result.1@, result.3) <= (result.0/100) * result.2)
+    ensures (result.3+1 < result.1@.len() ==> sum_upto(result.1@, result.3+1) >= (result.0/100) * result.2)
+
+    ensures (-1 <= result.4 && result.4 < result.1@.len())
+    ensures (sum_upto(result.1@, result.4) <= (result.0/100) * result.2)
+    ensures (result.4+1 < result.1@.len() ==> sum_upto(result.1@, result.4+1) >= (result.0/100) * result.2)
+
+    ensures (result.3 != result.4)
+// </vc-spec>
+// <vc-code>
+{
+    assume(false);
+    unimplemented!()
+}
+// </vc-code>
+
+// proof that, with the corrected postcondition, the answer is unique
+// lemma for previous proof: when an array has strictly positive elements, the
+// sums strictly increase left to right
+
+fn main() {
+}
+
+}

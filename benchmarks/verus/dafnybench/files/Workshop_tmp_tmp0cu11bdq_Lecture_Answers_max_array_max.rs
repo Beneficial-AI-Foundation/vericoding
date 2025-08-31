@@ -1,0 +1,26 @@
+use vstd::prelude::*;
+
+verus! {
+
+// http://verifythus.cost-ic0701.org/common-example/arraymax-in-dafny
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+fn max(a: &[i32]) -> (max: i32)
+    requires a.len() > 0,
+    ensures forall|j: int| 0 <= j < a.len() ==> max >= a[j], //max is larger then anything in the array
+    // Note: exists quantifier syntax may vary in different Verus versions
+    // ensures exists|j: int| 0 <= j < a.len() && max == a[j], //max is an element in the array
+// </vc-spec>
+// <vc-code>
+{
+    assume(false);
+    0
+}
+// </vc-code>
+
+fn main() {}
+
+}

@@ -1,0 +1,117 @@
+/- 
+-----Description-----
+This task involves identifying the first occurrence of a pair of indices in an array of integers such that the sum of the corresponding elements equals the given target value. The focus is on determining the earliest valid pair (i, j), with 0 ≤ i < j < nums.size, where the sum of the two numbers equals the target, without considering any language-specific or implementation details.
+
+-----Input-----
+The input consists of:
+• nums: An array of integers.
+• target: An integer representing the desired sum.
+
+-----Output-----
+The output is a pair of natural numbers (i, j) that satisfy:
+• 0 ≤ i < j < nums.size.
+• nums[i] + nums[j] = target.
+• Any valid pair with indices preceding (i, j) does not yield the target sum, and no index between i and j forms a valid sum with nums[i].
+
+-----Note-----
+It is assumed that the array has at least two elements and that there exists at least one valid pair whose sum is equal to the target.
+-/
+
+@[reducible, simp]
+def twoSum_precond (nums : Array Int) (target : Int) : Prop :=
+  nums.size > 1 ∧ ¬ List.Pairwise (fun a b => a + b ≠ target) nums.toList
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def twoSum (nums : Array Int) (target : Int) (h_precond : twoSum_precond (nums) (target)) : (Nat × Nat) :=
+-- <vc-implementation>
+  sorry
+-- </vc-implementation>
+
+@[reducible, simp]
+def twoSum_postcond (nums : Array Int) (target : Int) (result: (Nat × Nat)) (h_precond : twoSum_precond (nums) (target)) :=
+  let (i, j) := result
+  -- two sum holds
+  i < j ∧ j < nums.size ∧ nums[i]! + nums[j]! = target ∧
+  -- i must be the first i
+  List.Pairwise (fun a b => a + b ≠ target) (nums.toList.take i) ∧
+  List.all (nums.toList.take i) (fun a => List.all (nums.toList.drop i) (fun b => a + b ≠ target) ) ∧
+  -- j must be the first j
+  List.all (nums.toList.drop (j + 1)) (fun a => a + nums[j]! ≠ target)
+
+theorem twoSum_spec_satisfied (nums: Array Int) (target: Int) (h_precond : twoSum_precond (nums) (target)) :
+    twoSum_postcond (nums) (target) (twoSum (nums) (target) h_precond) h_precond := by
+-- <vc-proof>
+  sorry
+-- </vc-proof>
+
+/-
+-- Invalid Inputs
+[
+    {
+        "input": {
+            "nums": "#[1]",
+            "target": 11
+        }
+    }
+]
+-- Tests
+[
+    {
+        "input": {
+            "nums": "#[2, 7, 11, 15]",
+            "target": 9
+        },
+        "expected": "(0, 1)",
+        "unexpected": [
+            "(0, 2)",
+            "(1, 3)"
+        ]
+    },
+    {
+        "input": {
+            "nums": "#[3, 2, 4]",
+            "target": 6
+        },
+        "expected": "(1, 2)",
+        "unexpected": [
+            "(0, 2)",
+            "(0, 1)"
+        ]
+    },
+    {
+        "input": {
+            "nums": "#[-1, 0, 1, 2]",
+            "target": 1
+        },
+        "expected": "(0, 3)",
+        "unexpected": [
+            "(1, 2)",
+            "(2, 3)"
+        ]
+    },
+    {
+        "input": {
+            "nums": "#[5, 75, 25]",
+            "target": 100
+        },
+        "expected": "(1, 2)",
+        "unexpected": [
+            "(0, 2)",
+            "(0, 1)"
+        ]
+    },
+    {
+        "input": {
+            "nums": "#[1, 2, 3, 4, 5]",
+            "target": 9
+        },
+        "expected": "(3, 4)",
+        "unexpected": [
+            "(2, 4)",
+            "(1, 3)"
+        ]
+    }
+]
+-/

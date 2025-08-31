@@ -1,0 +1,128 @@
+/- 
+-----Description-----
+This test implements a function in Lean 4 that finds the maximum sum of any contiguous subarray within a list of integers. A subarray is a continuous section of the original array. If all integers in the list are negative, the function should return 0 (representing the empty subarray).
+
+-----Input-----
+numbers: A list of integers that may contain positive, negative, or zero values.
+
+-----Output-----
+An integer representing the maximum sum of any contiguous subarray. If the list is empty or contains only negative numbers, the function returns 0.
+-/
+
+@[reducible, simp]
+def maxSubarraySum_precond (numbers : List Int) : Prop :=
+  True
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def maxSubarraySum (numbers : List Int) (h_precond : maxSubarraySum_precond (numbers)) : Int :=
+-- <vc-implementation>
+  sorry
+-- </vc-implementation>
+
+@[reducible, simp]
+def maxSubarraySum_postcond (numbers : List Int) (result: Int) (h_precond : maxSubarraySum_precond (numbers)) : Prop :=
+  let subArraySums :=
+    List.range (numbers.length + 1) |>.flatMap (fun start =>
+      List.range (numbers.length - start + 1) |>.map (fun len =>
+        numbers.drop start |>.take len |>.sum))
+  subArraySums.contains result ∧ subArraySums.all (· ≤ result)
+
+theorem maxSubarraySum_spec_satisfied (numbers: List Int) (h_precond : maxSubarraySum_precond (numbers)) :
+    maxSubarraySum_postcond (numbers) (maxSubarraySum (numbers) h_precond) h_precond := by
+-- <vc-proof>
+  sorry
+-- </vc-proof>
+
+/-
+-- Invalid Inputs
+[]
+-- Tests
+[
+    {
+        "input": {
+            "numbers": "[1, 2, 3, -2, 5]"
+        },
+        "expected": 9,
+        "unexpected": [
+            6,
+            10,
+            1
+        ]
+    },
+    {
+        "input": {
+            "numbers": "[-2, -3, 4, -1, -2, 1, 5, -3]"
+        },
+        "expected": 7,
+        "unexpected": [
+            5,
+            4,
+            9
+        ]
+    },
+    {
+        "input": {
+            "numbers": "[-1, -2, -3, -4]"
+        },
+        "expected": 0,
+        "unexpected": [
+            1,
+            -1,
+            -10
+        ]
+    },
+    {
+        "input": {
+            "numbers": "[5, -3, 2, 1, -2]"
+        },
+        "expected": 5,
+        "unexpected": [
+            3,
+            6,
+            4
+        ]
+    },
+    {
+        "input": {
+            "numbers": "[0, 0, 0, 0]"
+        },
+        "expected": 0,
+        "unexpected": [
+            1,
+            -1
+        ]
+    },
+    {
+        "input": {
+            "numbers": "[]"
+        },
+        "expected": 0,
+        "unexpected": [
+            1
+        ]
+    },
+    {
+        "input": {
+            "numbers": "[10]"
+        },
+        "expected": 10,
+        "unexpected": [
+            0,
+            5
+        ]
+    },
+    {
+        "input": {
+            "numbers": "[-5, 8, -3, 4, -1]"
+        },
+        "expected": 9,
+        "unexpected": [
+            8,
+            3,
+            0
+        ]
+    }
+]
+-/

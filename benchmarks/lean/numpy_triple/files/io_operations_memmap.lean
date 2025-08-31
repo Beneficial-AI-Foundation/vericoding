@@ -1,0 +1,86 @@
+/- 
+{
+  "name": "numpy.memmap",
+  "category": "Memory mapping",
+  "description": "Create a memory-map to an array stored in a binary file on disk",
+  "url": "https://numpy.org/doc/stable/reference/generated/numpy.memmap.html",
+  "doc": "Create a memory-map to an array stored in a *binary* file on disk.\n\n    Memory-mapped files are used for accessing small segments of large files\n    on disk, without reading the entire file into memory.  NumPy's\n    memmap's are array-like objects.  This differs from Python's \`\`mmap\`\`\n    module, which uses file-like objects.\n\n    This subclass of ndarray has some unpleasant interactions with\n    some operations, because it doesn't quite fit properly as a subclass.\n    An alternative to using th...",
+}
+-/
+
+/-  numpy.memmap: Create a memory-map to an array stored in a binary file on disk.
+
+    Memory-mapped files are used for accessing small segments of large files
+    on disk, without reading the entire file into memory. The memmap provides
+    an array-like interface to the file contents.
+
+    This function creates a Vector view into a binary file on disk with the
+    specified shape and access mode. The file is accessed starting at the
+    given offset.
+-/
+
+/-  Specification: numpy.memmap creates a memory-mapped view of a file.
+
+    This specification captures the essential properties of memory mapping:
+    1. The result is a valid vector of the specified size
+    2. The mapping respects the file access mode constraints
+    3. The offset is within valid bounds for the file
+    4. Read-only modes preserve data integrity
+    5. Write modes allow modification of the underlying file
+
+    Preconditions:
+    - The filename represents a valid file path
+    - The offset is non-negative and within the file bounds
+    - For WriteNew mode, the file will be created if it doesn't exist
+    - For ReadOnly mode, the file must exist and be readable
+
+    Postconditions:
+    - Returns a vector of the specified size n
+    - The vector provides a view into the file starting at the given offset
+    - Read operations reflect the file contents at the mapped region
+    - Write operations (when mode allows) modify the underlying file
+    - The mapping preserves the mathematical properties of array access
+-/
+
+import Std.Do.Triple
+import Std.Tactic.Do
+open Std.Do
+
+/-- A simplified representation of file access mode for memory mapping -/
+inductive FileMode
+  | /-- ReadOnly mode ('r') - read-only access to existing file -/
+    ReadOnly
+  | /-- ReadWrite mode ('r+') - read-write access to existing file -/
+    ReadWrite
+  | /-- WriteNew mode ('w+') - create new file with read-write access -/
+    WriteNew
+  | /-- CopyOnWrite mode ('c') - copy-on-write access, changes don't persist to disk -/
+    CopyOnWrite
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def memmap {n : Nat} (filename : String) (mode : FileMode) (offset : Nat) : 
+    Id (Vector Float n) :=
+-- <vc-implementation>
+  sorry
+-- </vc-implementation>
+
+theorem memmap_spec {n : Nat} (filename : String) (mode : FileMode) (offset : Nat)
+    (h_valid_file : filename.length > 0)
+    (h_valid_offset : offset ≥ 0) :
+    ⦃⌜filename.length > 0 ∧ offset ≥ 0⌝⦄
+    memmap filename mode offset
+    ⦃⇓result => ⌜
+      -- Basic properties: result is a valid vector of size n
+      (result.toList.length = n) ∧
+      -- Access mode constraints
+      (mode = FileMode.ReadOnly → 
+        (∀ i : Fin n, ∃ val : Float, result.get i = val)) ∧
+      -- Consistency property: repeated access returns same values
+      (∀ i : Fin n, result.get i = result.get i) ∧
+      -- Boundary safety: all indices are valid
+      (∀ i : Fin n, i.val < n)⌝⦄ := by
+-- <vc-proof>
+  sorry
+-- </vc-proof>

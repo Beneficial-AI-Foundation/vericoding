@@ -1,0 +1,101 @@
+/- 
+-----Description-----
+This task requires writing a Lean 4 method that transforms an array of integers by replacing every element with its cube. In other words, for each element in the input array, the output array should contain the result of multiplying that element by itself three times.
+
+-----Input-----
+The input consists of:
+a: An array of integers (which may be empty or non-empty).
+
+-----Output-----
+The output is an array of integers:
+Returns an array with the same length as the input, where each element is the cube of the corresponding element in the input array.
+
+-----Note-----
+There are no additional preconditions; the method should work correctly for any array of integers.
+-/
+
+@[reducible, simp]
+def cubeElements_precond (a : Array Int) : Prop :=
+  True
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def cubeElements (a : Array Int) (h_precond : cubeElements_precond (a)) : Array Int :=
+-- <vc-implementation>
+  sorry
+-- </vc-implementation>
+
+@[reducible, simp]
+def cubeElements_postcond (a : Array Int) (result: Array Int) (h_precond : cubeElements_precond (a)) :=
+  (result.size = a.size) ∧
+  (∀ i, i < a.size → result[i]! = a[i]! * a[i]! * a[i]!)
+
+theorem cubeElements_spec_satisfied (a: Array Int) (h_precond : cubeElements_precond (a)) :
+    cubeElements_postcond (a) (cubeElements (a) h_precond) h_precond := by
+-- <vc-proof>
+  sorry
+-- </vc-proof>
+
+/-
+-- Invalid Inputs
+[]
+-- Tests
+[
+    {
+        "input": {
+            "a": "#[1, 2, 3, 4]"
+        },
+        "expected": "#[1, 8, 27, 64]",
+        "unexpected": [
+            "#[1, 4, 9, 16]",
+            "#[1, 8, 27, 63]",
+            "#[0, 0, 0, 0]"
+        ]
+    },
+    {
+        "input": {
+            "a": "#[0, -1, -2, 3]"
+        },
+        "expected": "#[0, -1, -8, 27]",
+        "unexpected": [
+            "#[0, 1, 8, -27]",
+            "#[0, -1, -8, 26]",
+            "#[1, -1, -8, 27]"
+        ]
+    },
+    {
+        "input": {
+            "a": "#[]"
+        },
+        "expected": "#[]",
+        "unexpected": [
+            "#[1]",
+            "#[-1]",
+            "#[0]"
+        ]
+    },
+    {
+        "input": {
+            "a": "#[5]"
+        },
+        "expected": "#[125]",
+        "unexpected": [
+            "#[5]",
+            "#[25]",
+            "#[0]"
+        ]
+    },
+    {
+        "input": {
+            "a": "#[-3, -3]"
+        },
+        "expected": "#[-27, -27]",
+        "unexpected": [
+            "#[27, 27]",
+            "#[-9, -9]",
+            "#[-27, 27]"
+        ]
+    }
+]
+-/

@@ -1,0 +1,100 @@
+/- 
+-----Description-----
+This task requires writing a Lean 4 method that computes the product of the first even and the first odd number encountered in a list of integers. The method should search the list for the earliest even number and the earliest odd number, then return the product of these two numbers.
+
+-----Input-----
+The input consists of:
+lst: A list of integers.
+
+-----Output-----
+The output is an integer:
+Returns the product resulting from multiplying the first even number and the first odd number found in the list.
+
+-----Note-----
+The input list is assumed to contain at least one even number and one odd number.
+-/
+
+@[reducible, simp]
+def findProduct_precond (lst : List Int) : Prop :=
+  lst.length > 1 ∧
+  (∃ x ∈ lst, isEven x) ∧
+  (∃ x ∈ lst, isOdd x)
+
+-- <vc-helpers>
+def isEven (n : Int) : Bool :=
+  n % 2 = 0
+
+def isOdd (n : Int) : Bool :=
+  n % 2 ≠ 0
+
+def firstEvenOddIndices (lst : List Int) : Option (Nat × Nat) :=
+  let evenIndex := lst.findIdx? isEven
+  let oddIndex := lst.findIdx? isOdd
+  match evenIndex, oddIndex with
+  | some ei, some oi => some (ei, oi)
+  | _, _ => none
+-- </vc-helpers>
+
+def findProduct (lst : List Int) (h_precond : findProduct_precond (lst)) : Int :=
+-- <vc-implementation>
+  sorry
+-- </vc-implementation>
+
+@[reducible, simp]
+def findProduct_postcond (lst : List Int) (result: Int) (h_precond : findProduct_precond (lst)) :=
+  match firstEvenOddIndices lst with
+  | some (ei, oi) => result = lst[ei]! * lst[oi]!
+  | none => True
+
+theorem findProduct_spec_satisfied (lst: List Int) (h_precond : findProduct_precond (lst)) :
+    findProduct_postcond (lst) (findProduct (lst) h_precond) h_precond := by
+-- <vc-proof>
+  sorry
+-- </vc-proof>
+
+/-
+-- Invalid Inputs
+[
+    {
+        "input": {
+            "lst": "[2]"
+        }
+    }
+]
+-- Tests
+[
+    {
+        "input": {
+            "lst": "[2, 3, 4, 5]"
+        },
+        "expected": 6,
+        "unexpected": [
+            8,
+            0,
+            10
+        ]
+    },
+    {
+        "input": {
+            "lst": "[2, 4, 3, 6]"
+        },
+        "expected": 6,
+        "unexpected": [
+            8,
+            0,
+            24
+        ]
+    },
+    {
+        "input": {
+            "lst": "[1, 2, 5, 4]"
+        },
+        "expected": 2,
+        "unexpected": [
+            5,
+            0,
+            10
+        ]
+    }
+]
+-/

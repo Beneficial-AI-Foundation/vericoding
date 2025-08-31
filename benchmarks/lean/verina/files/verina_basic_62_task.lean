@@ -1,0 +1,109 @@
+/- 
+-----Description-----
+The problem involves finding the first occurrence of a specified key in an array of integers. Your task is to identify the index at which the key appears for the first time in the array and return that index. If the key is not found, return -1.
+
+-----Input-----
+The input consists of:
+• a: An array of integers.
+• key: An integer representing the value to search for in the array.
+
+-----Output-----
+The output is an integer which represents:
+• The index in the array where the key is found, provided that the index is in the range [0, a.size).
+• -1 if the key is not present in the array.
+In addition, if the output is not -1, then a[(Int.toNat result)]! equals key and every element in the array prior to this index is not equal to key.
+
+-----Note-----
+The function performs a linear search beginning at index 0 and returns the first occurrence of the key. There are no additional preconditions on the input array; it can be empty or non-empty.
+-/
+
+@[reducible, simp]
+def Find_precond (a : Array Int) (key : Int) : Prop :=
+  True
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def Find (a : Array Int) (key : Int) (h_precond : Find_precond (a) (key)) : Int :=
+-- <vc-implementation>
+  sorry
+-- </vc-implementation>
+
+@[reducible, simp]
+def Find_postcond (a : Array Int) (key : Int) (result: Int) (h_precond : Find_precond (a) (key)) :=
+  (result = -1 ∨ (result ≥ 0 ∧ result < Int.ofNat a.size))
+  ∧ ((result ≠ -1) → (a[(Int.toNat result)]! = key ∧ ∀ (i : Nat), i < Int.toNat result → a[i]! ≠ key))
+  ∧ ((result = -1) → ∀ (i : Nat), i < a.size → a[i]! ≠ key)
+
+theorem Find_spec_satisfied (a: Array Int) (key: Int) (h_precond : Find_precond (a) (key)) :
+    Find_postcond (a) (key) (Find (a) (key) h_precond) h_precond := by
+-- <vc-proof>
+  sorry
+-- </vc-proof>
+
+/-
+-- Invalid Inputs
+[]
+-- Tests
+[
+    {
+        "input": {
+            "a": "#[1, 2, 3, 4, 5]",
+            "key": 3
+        },
+        "expected": 2,
+        "unexpected": [
+            1,
+            3,
+            0
+        ]
+    },
+    {
+        "input": {
+            "a": "#[5, 7, 5, 9]",
+            "key": 5
+        },
+        "expected": 0,
+        "unexpected": [
+            2,
+            -1
+        ]
+    },
+    {
+        "input": {
+            "a": "#[2, 4, 6, 8]",
+            "key": 5
+        },
+        "expected": -1,
+        "unexpected": [
+            0,
+            1,
+            3
+        ]
+    },
+    {
+        "input": {
+            "a": "#[]",
+            "key": 10
+        },
+        "expected": -1,
+        "unexpected": [
+            0,
+            1,
+            10
+        ]
+    },
+    {
+        "input": {
+            "a": "#[0, -3, -1, -3]",
+            "key": -3
+        },
+        "expected": 1,
+        "unexpected": [
+            0,
+            2,
+            3
+        ]
+    }
+]
+-/

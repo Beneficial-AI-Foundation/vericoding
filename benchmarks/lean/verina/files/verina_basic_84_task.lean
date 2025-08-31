@@ -1,0 +1,112 @@
+/- 
+-----Description-----
+You are given an array of integers and a threshold value k. The problem is to create a new array where every element greater than k is replaced with -1 while every other element remains unchanged.
+
+-----Input-----
+The input consists of:
+• arr: An array of integers.
+• k: An integer used as the threshold for replacement.
+
+-----Output-----
+The output is an array of integers that satisfies the following conditions:
+• For every index i, if arr[i] is greater than k, then the returned array at index i is -1.
+• For every index i, if arr[i] is less than or equal to k, then the returned array at index i remains unchanged.
+
+-----Note-----
+It is assumed that the input array may be empty or non-empty, and that k can be any integer. There are no additional preconditions.
+-/
+
+@[reducible, simp]
+def replace_precond (arr : Array Int) (k : Int) : Prop :=
+  True
+
+-- <vc-helpers>
+def replace_loop (oldArr : Array Int) (k : Int) : Nat → Array Int → Array Int
+| i, acc =>
+  if i < oldArr.size then
+    if (oldArr[i]!) > k then
+      replace_loop oldArr k (i+1) (acc.set! i (-1))
+    else
+      replace_loop oldArr k (i+1) acc
+  else
+    acc
+-- </vc-helpers>
+
+def replace (arr : Array Int) (k : Int) (h_precond : replace_precond (arr) (k)) : Array Int :=
+-- <vc-implementation>
+  sorry
+-- </vc-implementation>
+
+@[reducible, simp]
+def replace_postcond (arr : Array Int) (k : Int) (result: Array Int) (h_precond : replace_precond (arr) (k)) :=
+  (∀ i : Nat, i < arr.size → (arr[i]! > k → result[i]! = -1)) ∧
+  (∀ i : Nat, i < arr.size → (arr[i]! ≤ k → result[i]! = arr[i]!))
+
+theorem replace_spec_satisfied (arr: Array Int) (k: Int) (h_precond : replace_precond (arr) (k)) :
+    replace_postcond (arr) (k) (replace (arr) (k) h_precond) h_precond := by
+-- <vc-proof>
+  sorry
+-- </vc-proof>
+
+/-
+-- Invalid Inputs
+[]
+-- Tests
+[
+    {
+        "input": {
+            "arr": "#[1, 5, 3, 10]",
+            "k": 4
+        },
+        "expected": "#[1, -1, 3, -1]",
+        "unexpected": [
+            "#[1, 5, 3, 10]",
+            "#[1, -1, 3, 10]"
+        ]
+    },
+    {
+        "input": {
+            "arr": "#[-1, 0, 1, 2]",
+            "k": 2
+        },
+        "expected": "#[-1, 0, 1, 2]",
+        "unexpected": [
+            "#[0, 0, 1, 2]",
+            "#[-1, 0, 1, 1]"
+        ]
+    },
+    {
+        "input": {
+            "arr": "#[100, 50, 100]",
+            "k": 100
+        },
+        "expected": "#[100, 50, 100]",
+        "unexpected": [
+            "#[100, 50, -1]",
+            "#[100, 50, 50]"
+        ]
+    },
+    {
+        "input": {
+            "arr": "#[-5, -2, 0, 3]",
+            "k": -3
+        },
+        "expected": "#[-5, -1, -1, -1]",
+        "unexpected": [
+            "#[-5, -2, -1, -1]",
+            "#[-5, -1, 0, -1]"
+        ]
+    },
+    {
+        "input": {
+            "arr": "#[1, 2, 3]",
+            "k": 5
+        },
+        "expected": "#[1, 2, 3]",
+        "unexpected": [
+            "#[1, 3, 3]",
+            "#[1, 2, -1]"
+        ]
+    }
+]
+-/

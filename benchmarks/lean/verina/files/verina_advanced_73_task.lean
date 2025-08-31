@@ -1,0 +1,114 @@
+/- 
+-----Description-----
+This task requires writing a Lean 4 method that finds the first missing natural number in an increasingly sorted list. The method should return the smallest natural number that is not in the list, ensuring that all natural numbers that are smaller is inside the list.
+
+-----Input-----
+The input consists of a list of natural numbers sorted in increasing order:
+l: The sorted list
+
+-----Output-----
+The output is a natural number:
+Returns the smallest natural number that is not in the list, which means all natural numbers that are smaller than the returned value should be inside the input list.
+-/
+
+@[reducible]
+def smallestMissing_precond (l : List Nat) : Prop :=
+  List.Pairwise (· < ·) l
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def smallestMissing (l : List Nat) (h_precond : smallestMissing_precond (l)) : Nat :=
+-- <vc-implementation>
+  sorry
+-- </vc-implementation>
+
+@[reducible]
+def smallestMissing_postcond (l : List Nat) (result: Nat) (h_precond : smallestMissing_precond (l)) : Prop :=
+  result ∉ l ∧ ∀ candidate : Nat, candidate < result → candidate ∈ l
+
+theorem smallestMissing_spec_satisfied (l: List Nat) (h_precond : smallestMissing_precond (l)) :
+    smallestMissing_postcond (l) (smallestMissing (l) h_precond) h_precond := by
+-- <vc-proof>
+  sorry
+-- </vc-proof>
+
+/-
+-- Invalid Inputs
+[
+    {
+        "input": {
+            "l": "[1, 1]"
+        }
+    },
+    {
+        "input": {
+            "l": "[1, 0]"
+        }
+    }
+]
+-- Tests
+[
+    {
+        "input": {
+            "l": "[0, 1, 2, 4, 5]"
+        },
+        "expected": 3,
+        "unexpected": [
+            1,
+            2,
+            0
+        ]
+    },
+    {
+        "input": {
+            "l": "[]"
+        },
+        "expected": 0,
+        "unexpected": [
+            1,
+            2,
+            3
+        ]
+    },
+    {
+        "input": {
+            "l": "[1, 2, 3, 4]"
+        },
+        "expected": 0,
+        "unexpected": [
+            1,
+            2,
+            3,
+            4
+        ]
+    },
+    {
+        "input": {
+            "l": "[0, 1, 2, 3, 4]"
+        },
+        "expected": 5,
+        "unexpected": [
+            0,
+            1,
+            2,
+            3,
+            4
+        ]
+    },
+    {
+        "input": {
+            "l": "[2, 3, 4, 5, 6]"
+        },
+        "expected": 0,
+        "unexpected": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+        ]
+    }
+]
+-/
