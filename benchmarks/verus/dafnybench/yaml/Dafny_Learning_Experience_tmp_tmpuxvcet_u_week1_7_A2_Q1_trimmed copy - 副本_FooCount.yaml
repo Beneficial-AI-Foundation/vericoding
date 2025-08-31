@@ -1,8 +1,10 @@
+vc-description: |-
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   spec fn count(hi: nat, s: Seq<int>) -> int
       recommends 0 <= hi <= s.len()
       decreases hi
@@ -40,5 +42,6 @@ vc-code: |-
 
 vc-postamble: |-
   fn main() {}
-
+  
   }
+

@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   use vstd::prelude::*;
   
@@ -13,7 +15,6 @@ vc-preamble: |-
   spec fn set_of_seq<T>(s: Seq<T>) -> Set<T> {
       s.to_set()
   }
-  
 
 vc-helpers: |-
   // <vc-helpers>
@@ -44,3 +45,4 @@ vc-postamble: |-
   }
   
   }
+

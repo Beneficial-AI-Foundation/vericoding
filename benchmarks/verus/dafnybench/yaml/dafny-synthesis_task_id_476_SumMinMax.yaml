@@ -1,8 +1,10 @@
+vc-description: |-
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   // The order of the recursion in these two functions
   // must match the order of the iteration in the algorithm above
   spec fn min_seq(a: Seq<int>) -> int
@@ -65,3 +67,4 @@ vc-postamble: |-
   fn main() {}
   
   }
+

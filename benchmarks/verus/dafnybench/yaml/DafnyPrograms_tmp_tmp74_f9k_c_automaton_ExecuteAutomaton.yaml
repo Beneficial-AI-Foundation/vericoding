@@ -1,8 +1,10 @@
+vc-description: |-
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   /**
   Consider cellular automata: a row of cells is repeatedly updated according to a rule. In this exercise I dabbled with,
   each cell has the value either false or true. Each cell's next state depends only on the immediate neighbours, in the 
@@ -10,7 +12,7 @@ vc-preamble: |-
   will contain the initial row, plus a row for each number of steps.
    */
   struct Automaton {}
-
+  
   /**
   This method computes the automaton.
   Provide the initial row: init, the rule and the desired number of steps
@@ -56,7 +58,8 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-
+  
   fn main() {}
-
+  
   }
+

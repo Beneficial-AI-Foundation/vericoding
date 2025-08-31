@@ -1,8 +1,10 @@
+vc-description: |-
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   // method CountLessThan(numbers: set<int>, threshold: int) returns (count: int)
   // //   ensures count == |set i | i in numbers && i < threshold|
   //     ensures count == |SetLessThan(numbers, threshold)|
@@ -245,3 +247,4 @@ vc-postamble: |-
   fn main() {}
   
   }
+

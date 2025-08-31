@@ -1,8 +1,10 @@
+vc-description: |-
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   uninterp spec fn power(n: int, alpha: int) -> int;
   
   uninterp spec fn log(n: int, alpha: int) -> int;
@@ -29,5 +31,6 @@ vc-code: |-
 vc-postamble: |-
   fn main() {
   }
-
+  
   } // verus!
+

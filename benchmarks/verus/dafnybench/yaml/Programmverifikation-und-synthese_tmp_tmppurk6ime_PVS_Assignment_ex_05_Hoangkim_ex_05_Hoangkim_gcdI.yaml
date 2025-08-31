@@ -1,8 +1,10 @@
+vc-description: |-
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   //Problem01
   spec fn fib(n: nat) -> nat
       decreases n
@@ -54,8 +56,9 @@ vc-postamble: |-
   
   
   // # sum: 9 pts
-
+  
   fn main() {
   }
-
+  
   }
+

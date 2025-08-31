@@ -1,8 +1,10 @@
+vc-description: |-
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   /* 
   HumanEvalX 3
   You're given a list of deposit and withdrawal operations on a bank account that starts with zero balance. 
@@ -43,3 +45,4 @@ vc-postamble: |-
   fn main() {}
   
   }
+

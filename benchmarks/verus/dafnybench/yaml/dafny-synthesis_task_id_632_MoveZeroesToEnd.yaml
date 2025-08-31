@@ -1,8 +1,10 @@
+vc-description: |-
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   fn swap(arr: &mut Vec<i32>, i: usize, j: usize)
       requires 
           old(arr).len() > 0,
@@ -26,7 +28,7 @@ vc-preamble: |-
           (if arr[0] == value { 1nat } else { 0nat }) + count(arr.skip(1), value)
       }
   }
-
+  
   proof fn count_bound(arr: Seq<i32>, value: i32)
       ensures count(arr, value) <= arr.len(),
       decreases arr.len(),
@@ -66,7 +68,8 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-
+  
   fn main() {}
-
+  
   }
+

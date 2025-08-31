@@ -1,6 +1,8 @@
+vc-description: |-
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -31,3 +33,4 @@ vc-postamble: |-
   fn main() {}
   
   }
+

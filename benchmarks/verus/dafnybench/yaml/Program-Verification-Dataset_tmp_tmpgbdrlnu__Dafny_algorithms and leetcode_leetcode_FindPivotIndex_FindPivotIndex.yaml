@@ -1,8 +1,10 @@
+vc-description: |-
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   /*
   https://leetcode.com/problems/find-pivot-index/description/
   Given an array of integers nums, calculate the pivot index of this array.
@@ -105,3 +107,4 @@ vc-postamble: |-
   }
   
   }
+

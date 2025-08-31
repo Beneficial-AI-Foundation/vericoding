@@ -1,8 +1,10 @@
+vc-description: |-
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   spec fn sum_ints(n: int) -> int
       decreases n when n >= 0
   {
@@ -36,5 +38,6 @@ vc-code: |-
 vc-postamble: |-
   fn main() {
   }
-
+  
   }
+

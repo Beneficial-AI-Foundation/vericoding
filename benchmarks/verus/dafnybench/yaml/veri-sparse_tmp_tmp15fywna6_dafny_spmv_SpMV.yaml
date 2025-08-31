@@ -1,8 +1,10 @@
+vc-description: |-
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   spec fn sum(X_val: Seq<int>, X_crd: Seq<nat>, v: Seq<int>, b: int, k: int) -> int
       decreases k - b
   {
@@ -49,8 +51,9 @@ vc-postamble: |-
   // 0 0 0 0 0 0 0 0
   // 1 0 0 0 0 0 0 0
   // 0 0 0 0 0 0 0 0
-
+  
   fn main() {
   }
-
+  
   }
+

@@ -1,8 +1,10 @@
+vc-description: |-
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   // Exercise 1.a)
   spec fn sum(a: Seq<int>, i: int, j: int) -> int
       decreases j - i
@@ -15,23 +17,23 @@ vc-preamble: |-
           0  // default case
       }
   }
-
+  
   // Exercise 1.b)
-
+  
   // Exercise 1.c)
-
+  
   spec fn is_prefix_sum_for(a: Seq<int>, c: Seq<int>) -> bool {
       a.len() + 1 == c.len()
       && c[0] == 0
       && forall |j: int| #![auto] 1 <= j <= a.len() ==> c[j] == sum(a, 0, j)
   }
-
+  
   // Exercise 2.
   pub enum List<T> {
       Nil,
       Cons { head: T, tail: Box<List<T>> }
   }
-
+  
   fn from_array<T: Copy + PartialEq>(a: &Vec<T>) -> (l: List<T>)
       requires a.len() > 0
       ensures forall |j: int| #![auto] 0 <= j < a.len() ==> mem(a@[j], &l)
@@ -39,7 +41,7 @@ vc-preamble: |-
       assume(false);
       List::Nil
   }
-
+  
   spec fn mem<T: PartialEq>(x: T, l: &List<T>) -> bool
       decreases l
   {
@@ -70,7 +72,8 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-
+  
   fn main() {}
-
+  
   }
+

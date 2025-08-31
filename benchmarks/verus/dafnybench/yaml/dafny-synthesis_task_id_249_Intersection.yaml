@@ -1,8 +1,10 @@
+vc-description: |-
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   // Predicate to check if an element exists in an array
   spec fn in_array(a: &[i32], x: i32) -> bool {
       exists|i: int| 0 <= i < a.len() && a[i as int] == x
@@ -32,5 +34,6 @@ vc-code: |-
 
 vc-postamble: |-
   fn main() {}
-
+  
   }
+

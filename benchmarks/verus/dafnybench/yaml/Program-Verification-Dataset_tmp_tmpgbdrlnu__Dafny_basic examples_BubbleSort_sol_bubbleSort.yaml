@@ -1,8 +1,10 @@
+vc-description: |-
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   spec fn sorted_between(a: &Vec<i32>, from: usize, to: usize) -> bool
       recommends
           from <= to,
@@ -39,5 +41,6 @@ vc-code: |-
 vc-postamble: |-
   fn main() {
   }
-
+  
   }
+

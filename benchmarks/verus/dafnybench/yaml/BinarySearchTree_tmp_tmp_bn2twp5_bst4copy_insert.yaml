@@ -1,14 +1,16 @@
+vc-description: |-
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   #[derive(PartialEq, Eq)]
   pub enum Tree {
       Empty,
       Node(Box<Tree>, int, Box<Tree>),
   }
-
+  
   pub open spec fn binary_search_tree(tree: Tree) -> bool
       decreases tree
   {
@@ -24,7 +26,7 @@ vc-preamble: |-
           }
       }
   }
-
+  
   pub open spec fn max_value(tree: Tree, max: int) -> bool
       decreases tree
   {
@@ -35,7 +37,7 @@ vc-preamble: |-
           }
       }
   }
-
+  
   pub open spec fn min_value(tree: Tree, min: int) -> bool
       decreases tree
   {
@@ -46,7 +48,7 @@ vc-preamble: |-
           }
       }
   }
-
+  
   impl Tree {
       pub open spec fn get_node_value(self) -> int
           recommends !matches!(self, Tree::Empty)
@@ -57,7 +59,7 @@ vc-preamble: |-
           }
       }
   }
-
+  
   fn insert_recursion(tree: Tree, value: int) -> (res: Tree)
       requires binary_search_tree(tree),
       ensures 
@@ -91,7 +93,8 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-
+  
   fn main() {}
-
+  
   }
+

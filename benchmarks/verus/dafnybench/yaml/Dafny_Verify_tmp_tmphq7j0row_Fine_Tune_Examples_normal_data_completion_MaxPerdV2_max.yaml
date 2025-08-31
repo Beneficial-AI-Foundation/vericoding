@@ -1,6 +1,8 @@
+vc-description: |-
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
   
   spec fn contains(v: i32, a: Seq<i32>, n: int) -> bool {
@@ -38,3 +40,4 @@ vc-postamble: |-
   fn main() {}
   
   }
+

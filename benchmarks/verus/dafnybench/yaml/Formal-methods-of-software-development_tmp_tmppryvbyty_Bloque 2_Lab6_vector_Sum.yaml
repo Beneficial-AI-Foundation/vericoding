@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   use vstd::prelude::*;
   
@@ -71,7 +73,7 @@ vc-preamble: |-
     assume(false);
   }
   
-  // REVERSE HAS THE SAME MULTISET 
+  // REVERSE HAS THE SAME MULTISET
 
 vc-helpers: |-
   // <vc-helpers>
@@ -96,3 +98,4 @@ vc-postamble: |-
   }
   
   }
+

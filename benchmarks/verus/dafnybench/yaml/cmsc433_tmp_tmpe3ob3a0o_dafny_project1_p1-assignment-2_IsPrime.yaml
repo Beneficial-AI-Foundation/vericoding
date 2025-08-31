@@ -1,8 +1,10 @@
+vc-description: |-
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   // ASSIGNMENT P1
   // CMSC 433 FALL 2023
   // PERFECT SCORE:  100 POINTS
@@ -45,7 +47,7 @@ vc-preamble: |-
   
   
   // Question 5 (10 points)
-
+  
   // Euclid's algorithm is used to compute the greatest common divisor of two
   // positive integers.  If m and n are two such integers, then gcd(m,n) is the
   // largest positve integer that evenly divides both m and n, where j evenly divides i
@@ -95,7 +97,8 @@ vc-postamble: |-
   // are no duplicate elements in array a.  Note that the requires clause allows
   // you to assume that a is sorted, and that this precondition is necessary for
   // the ensures clause to imply a lack of duplicates.
-
+  
   fn main() {}
-
+  
   }
+

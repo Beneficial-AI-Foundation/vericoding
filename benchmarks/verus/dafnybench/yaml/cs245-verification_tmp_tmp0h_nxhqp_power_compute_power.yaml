@@ -1,6 +1,8 @@
+vc-description: |-
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
   
   //power -- Stephanie Renee McIntyre
@@ -53,3 +55,4 @@ vc-postamble: |-
   fn main() {}
   
   }
+

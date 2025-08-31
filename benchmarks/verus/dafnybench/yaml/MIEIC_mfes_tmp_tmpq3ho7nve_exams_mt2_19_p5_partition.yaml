@@ -1,8 +1,10 @@
+vc-description: |-
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   type T = int; // example
   
    // Partitions a nonempty array 'a', by reordering the elements in the array,
@@ -36,5 +38,6 @@ vc-code: |-
 
 vc-postamble: |-
   fn main() {}
-
+  
   }
+

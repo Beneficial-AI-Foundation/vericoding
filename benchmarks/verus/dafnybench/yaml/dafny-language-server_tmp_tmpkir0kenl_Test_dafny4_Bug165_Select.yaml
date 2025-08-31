@@ -1,8 +1,10 @@
+vc-description: |-
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   // Using generic type parameter with uninterpreted body
   spec fn f<T>(a: T) -> bool {
       true  // placeholder uninterpreted function
@@ -19,7 +21,7 @@ vc-spec: |-
       ensures
           forall|e: T| f(e) ==> s1.to_multiset().count(e) == r.to_multiset().count(e),
           forall|e: T| !f(e) ==> r.to_multiset().count(e) == 0,
-
+  
   fn main_impl<T>(s1: Seq<T>)
   // </vc-spec>
 
@@ -38,5 +40,6 @@ vc-postamble: |-
   
   fn main() {
   }
-
+  
   }
+

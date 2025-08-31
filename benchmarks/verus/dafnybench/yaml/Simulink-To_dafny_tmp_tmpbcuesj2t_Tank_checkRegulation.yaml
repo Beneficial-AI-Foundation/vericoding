@@ -1,8 +1,10 @@
+vc-description: |-
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   #[derive(PartialEq, Eq)]
   enum Valve {
       ON,
@@ -68,5 +70,6 @@ vc-code: |-
 vc-postamble: |-
   fn main() {
   }
-
+  
   }
+

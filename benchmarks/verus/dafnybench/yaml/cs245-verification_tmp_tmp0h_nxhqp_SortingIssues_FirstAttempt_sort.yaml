@@ -1,8 +1,10 @@
+vc-description: |-
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   // Sorting: 
   //        Pre/Post Condition Issues - An investigation 
   //                                      -- Stephanie McIntyre
@@ -38,5 +40,6 @@ vc-code: |-
 vc-postamble: |-
   fn main() {
   }
-
+  
   }
+

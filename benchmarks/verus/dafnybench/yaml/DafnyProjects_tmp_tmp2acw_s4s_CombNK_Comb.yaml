@@ -1,8 +1,10 @@
+vc-description: |-
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   /* 
    * Formal specification and verification of a dynamic programming algorithm for calculating C(n, k).
    * FEUP, MIEIC, MFES, 2020/21.
@@ -42,5 +44,6 @@ vc-code: |-
 
 vc-postamble: |-
   fn main() {}
-
+  
   }
+

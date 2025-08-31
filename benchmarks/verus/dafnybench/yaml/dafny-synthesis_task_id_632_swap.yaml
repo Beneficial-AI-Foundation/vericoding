@@ -1,14 +1,16 @@
+vc-description: |-
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   spec fn count(arr: Seq<int>, value: int) -> nat
       decreases arr.len()
   {
       if arr.len() == 0 { 0nat } else { (if arr[0] == value { 1nat } else { 0nat }) + count(arr.skip(1), value) }
   }
-
+  
   proof fn count_bound(arr: Seq<int>, value: int)
       ensures count(arr, value) <= arr.len()
       decreases arr.len()
@@ -45,5 +47,6 @@ vc-code: |-
 
 vc-postamble: |-
   fn main() {}
-
+  
   }
+

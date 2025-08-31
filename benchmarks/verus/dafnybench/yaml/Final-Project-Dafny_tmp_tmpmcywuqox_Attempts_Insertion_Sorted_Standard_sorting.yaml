@@ -1,8 +1,10 @@
+vc-description: |-
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   spec fn insertion_sorted(array: Seq<int>, left: int, right: int) -> bool
       recommends 0 <= left <= right <= array.len()
   {
@@ -29,5 +31,6 @@ vc-code: |-
 
 vc-postamble: |-
   fn main() {}
-
+  
   }
+

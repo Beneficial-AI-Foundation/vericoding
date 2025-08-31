@@ -1,8 +1,10 @@
+vc-description: |-
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   // Write an *iterative* Verus method reverse with signature:
 
 vc-helpers: |-
@@ -40,9 +42,10 @@ vc-code: |-
 
 vc-postamble: |-
   // Notice it compiles and the executable generates output (just to see the vectors printed in reverse).
-
+  
   fn main() {
       
   }
-
+  
   }
+
