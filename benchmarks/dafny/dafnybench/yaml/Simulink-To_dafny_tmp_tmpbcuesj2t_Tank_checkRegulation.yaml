@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   datatype Valve = ON | OFF
   
@@ -48,5 +50,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  
 

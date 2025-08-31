@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   //predicate for primeness
   ghost predicate prime(n: nat)
@@ -61,3 +63,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
+

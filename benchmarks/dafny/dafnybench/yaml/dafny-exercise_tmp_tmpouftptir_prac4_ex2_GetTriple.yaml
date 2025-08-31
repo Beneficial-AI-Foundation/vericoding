@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   predicate triple(a: array<int>) 
   reads a
@@ -26,5 +28,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  
 

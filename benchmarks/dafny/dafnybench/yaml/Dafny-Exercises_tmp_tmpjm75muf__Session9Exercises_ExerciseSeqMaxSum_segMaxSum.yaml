@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function Sum(v:array<int>,i:int,j:int):int
   reads v
@@ -49,3 +51,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
+

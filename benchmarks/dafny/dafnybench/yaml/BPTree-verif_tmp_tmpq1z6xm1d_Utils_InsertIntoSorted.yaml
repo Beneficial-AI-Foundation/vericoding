@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // method CountLessThan(numbers: set<int>, threshold: int) returns (count: int)
   // //   ensures count == |set i | i in numbers && i < threshold|
@@ -160,5 +162,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  
 

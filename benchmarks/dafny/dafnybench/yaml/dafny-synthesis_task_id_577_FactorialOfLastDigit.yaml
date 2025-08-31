@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function Factorial(n: int): int
       requires n >= 0
@@ -26,5 +28,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  
 

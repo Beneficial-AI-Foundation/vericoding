@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // Checks if array 'a' is sorted.
   predicate isSorted(a: array<int>)
@@ -41,3 +43,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
+

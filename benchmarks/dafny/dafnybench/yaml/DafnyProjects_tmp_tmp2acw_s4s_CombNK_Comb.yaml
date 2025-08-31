@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   /* 
   * Formal specification and verification of a dynamic programming algorithm for calculating C(n, k).
@@ -30,5 +32,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  
 

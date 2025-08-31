@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   
   function set_of_seq<T>(s: seq<T>): set<T>
@@ -29,3 +31,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
+

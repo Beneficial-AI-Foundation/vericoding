@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // Helper predicate
   predicate is_sorted(nums: seq<int>)
@@ -32,3 +34,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
+

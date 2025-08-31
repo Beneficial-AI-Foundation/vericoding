@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // Function
   function find_max(x: int, y: int): int
@@ -27,3 +29,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
+

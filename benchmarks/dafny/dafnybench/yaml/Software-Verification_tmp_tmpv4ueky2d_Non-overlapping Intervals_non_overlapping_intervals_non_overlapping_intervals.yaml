@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // Bubble Sort
   method bubble_sort(a: array2<int>)
@@ -48,3 +50,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
+

@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   predicate merged(a1: seq<int>, a2: seq<int>, b: array<int>, start: int, end: int)
     reads b
@@ -48,3 +50,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
+

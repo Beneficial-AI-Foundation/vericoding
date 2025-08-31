@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   
   function RecursivePositiveProduct(q: seq<int>): int
@@ -43,3 +45,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
+

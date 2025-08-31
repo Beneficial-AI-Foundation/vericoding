@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function IsLetter(c: char): bool 
   {
@@ -54,5 +56,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  
 

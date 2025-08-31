@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   predicate isPrefixPred(pre:string, str:string)
   {
@@ -56,3 +58,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
+

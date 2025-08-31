@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   /* https://leetcode.com/problems/longest-palindromic-substring/
   Given a string s, return the longest palindromic substring in s.
@@ -172,3 +174,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
+

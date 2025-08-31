@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   predicate sorted_between (a:array<int>, from:nat, to:nat)
     reads a;
@@ -37,5 +39,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  
 

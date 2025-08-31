@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // The order of the recursion in these two functions
   // must match the order of the iteration in the algorithm above
@@ -38,3 +40,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
+

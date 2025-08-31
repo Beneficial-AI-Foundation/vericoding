@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   predicate quickSorted(Seq: seq<int>)
   {
@@ -24,5 +26,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  
 

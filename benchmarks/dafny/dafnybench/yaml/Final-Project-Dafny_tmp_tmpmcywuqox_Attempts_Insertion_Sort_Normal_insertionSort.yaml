@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   predicate sorted (a: array<int>)
   
@@ -43,5 +45,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  
 

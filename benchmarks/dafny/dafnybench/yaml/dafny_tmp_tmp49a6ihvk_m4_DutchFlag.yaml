@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   datatype Color = Red | White | Blue
   
@@ -26,5 +28,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  
 

@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function Power(base: int, exponent: int): int
       requires exponent >= 0
@@ -26,3 +28,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
+

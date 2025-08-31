@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   ghost function SetProduct(s : set<int>) : int
   {
@@ -24,3 +26,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
+

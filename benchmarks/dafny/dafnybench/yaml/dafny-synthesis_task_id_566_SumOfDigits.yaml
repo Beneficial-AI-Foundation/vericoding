@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   //lemma DivIsZero()
   //  ensures forall num, den : nat :: den >= 1 && num < den ==> num/den == 0
@@ -81,3 +83,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
+
