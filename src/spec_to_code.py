@@ -28,14 +28,17 @@ def main():
     # Parse command line arguments
     args = parse_command_line_arguments()
 
-    # Set up configuration, wandb run, prompts, LLM provider, and verification tool
     config = setup_configuration(args)
-    wandb_run = init_wandb_run(config, args.no_wandb)
+    llm_provider, resolved_model = create_llm_provider(config.llm)
+    
+    # NOW print the complete startup info with resolved model
+    print_startup_info(config, resolved_model)
+    
+    # Continue with the rest of initialization
+    wandb_run = init_wandb_run(config, args.no_wandb, resolved_model)
     # Use mode-based prompt file selection unless a non-default prompts_file is specified
     prompts_file = None if config.language_config.prompts_file == "prompts.yaml" else config.language_config.prompts_file
     prompt_loader = init_prompt_loader(config.language, config.mode, prompts_file)
-    llm_provider = create_llm_provider(config.llm_provider, config.llm_model)
-    print_startup_info(config)
     check_tool_availability(config)
 
     # Find all YAML specification files
@@ -43,18 +46,22 @@ def main():
     print(f"Found {len(spec_files)} YAML specification files to process")
     print("")
 
+    # Reset token tracking for this run
+    from vericoding.core.llm_providers import reset_global_token_stats
+    reset_global_token_stats()
+
     # Process specifications in parallel
     start_time = time.time()
     results = process_files_parallel(config, prompt_loader, llm_provider, spec_files)
     end_time = time.time()
     processing_time = end_time - start_time
 
+    # Finalize wandb run with summary and artifacts
+    finalize_wandb_run(wandb_run, config, results, processing_time, args.delete_after_upload, resolved_model)
+
     # Print summary with reports
     print_summary(config, results, processing_time)
     
-    # Finalize wandb run with summary and artifacts
-    finalize_wandb_run(wandb_run, config, results, processing_time, args.delete_after_upload)
-
 
 if __name__ == "__main__":
     main()

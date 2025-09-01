@@ -40,7 +40,6 @@ class LanguageConfig:
     compile_check_command: list[str] | None  # Optional compilation check
     code_block_patterns: list[str]  # Regex patterns for code blocks
     keywords: list[str]  # Language-specific keywords
-    spec_patterns: list[str]  # Patterns for specification blocks
 
 
 @dataclass
@@ -64,8 +63,7 @@ class ProcessingConfig:
     debug_mode: bool
     max_workers: int
     api_rate_limit_delay: int
-    llm_provider: str
-    llm_model: str | None
+    llm: str
     mode: str
     max_directory_traversal_depth: int = 50
 
@@ -185,7 +183,7 @@ def setup_configuration(args) -> ProcessingConfig:
 
     
     # Create output directory structure
-    output_dir = str(base_dir / f"code_from_spec_on_{timestamp}" / args.language)
+    output_dir = str(base_dir / f"vericoder_{args.llm}_{timestamp}" / args.language)
     summary_file = str(Path(output_dir) / "summary.txt")
 
     Path(output_dir).mkdir(parents=True, exist_ok=True)
@@ -202,24 +200,10 @@ def setup_configuration(args) -> ProcessingConfig:
         debug_mode=args.debug,
         max_workers=args.workers,
         api_rate_limit_delay=args.api_rate_limit_delay,
-        llm_provider=args.llm_provider,
-        llm_model=args.llm_model,
+        llm=args.llm,
         mode=args.mode,
         max_directory_traversal_depth=args.max_directory_traversal_depth,
     )
 
-    print("\nConfiguration:")
-    print(f"- Language: {language_config.name}")
-    print(f"- Directory: {files_dir}")
-    print(f"- Output directory: {output_dir}")
-    print(f"- Max iterations: {config.max_iterations}")
-    print(f"- Parallel workers: {config.max_workers}")
-    print(f"- Tool path: {get_tool_path(config)}")
-    print(f"- LLM Provider: {config.llm_provider}")
-    print(f"- LLM Model: {config.llm_model or 'default'}")
-    print(f"- Mode: {config.mode}")
-    print(f"- Debug mode: {'Enabled' if config.debug_mode else 'Disabled'}")
-    print(f"- API rate limit delay: {config.api_rate_limit_delay}s")
-    print("\nProceeding with configuration...")
-
+    # Don't print detailed configuration here anymore - will be printed after LLM model is resolved
     return config

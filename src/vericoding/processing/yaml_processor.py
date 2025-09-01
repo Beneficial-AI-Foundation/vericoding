@@ -11,18 +11,18 @@ def load_yaml(yaml_path: Path) -> dict:
         return yaml.safe_load(f) or {}
 
 
-def yaml_to_code(data: dict, spec: bool = True, vibe: bool = False) -> str:
+def yaml_to_code(data: dict, spec_mode: bool = True, vibe_mode: bool = False) -> str:
     """Convert YAML dict to spec, adding section tags based on flags.
 
     Args:
         data: YAML dictionary
-        spec: If True, include vc-spec section
-        vibe: If True, include vc-description section
+        spec_mode: If True, include vc-spec section
+        vibe_mode: If True, include vc-description section
     """
     output: list[str] = []
 
     # If neither spec nor vibe, return minimal output
-    if not spec and not vibe:
+    if not spec_mode and not vibe_mode:
         return "// no spec or vibe included"
 
     # Preamble
@@ -36,7 +36,7 @@ def yaml_to_code(data: dict, spec: bool = True, vibe: bool = False) -> str:
     output.append("")
 
     # Description (vibe)
-    if vibe:
+    if vibe_mode:
         output.append("// <vc-description>")
         desc_content = str(data['vc-description']).strip()
         # Use multi-line comment block
@@ -48,11 +48,10 @@ def yaml_to_code(data: dict, spec: bool = True, vibe: bool = False) -> str:
 
     # Spec
     output.append("// <vc-spec>")
-    if spec:
+    if spec_mode:
         output.append(str(data['vc-spec']).strip())
     output.append("// </vc-spec>")
-    output.append("")
-
+    
     # Code
     output.append("// <vc-code>")
     output.append(str(data['vc-code']).strip())
@@ -66,40 +65,62 @@ def yaml_to_code(data: dict, spec: bool = True, vibe: bool = False) -> str:
 
 
 def extract_sections(text: str) -> Tuple[str, str, str]:
-    """Extract vc-helpers, vc-spec, and vc-code sections from LLM markdown blocks."""
-
-    helpers_pattern = r'```vc-helpers\n(.*?)```'
-    spec_pattern = r'```vc-spec\n(.*?)```'
-    code_pattern = r'```vc-code\n(.*?)```'
-
-    helpers_match = re.search(helpers_pattern, text, re.DOTALL)
-    spec_match = re.search(spec_pattern, text, re.DOTALL)
-    code_match = re.search(code_pattern, text, re.DOTALL)
+    """Extract vc-helpers, vc-spec, and vc-code sections from LLM markdown blocks.
     
-    helpers = helpers_match.group(1).strip() if helpers_match else ""
-    spec = spec_match.group(1).strip() if spec_match else ""
-    code = code_match.group(1).strip() if code_match else ""
-    
+    Be tolerant of:
+    - CRLF vs LF newlines
+    - Leading whitespace before fences
+    - Alternative language fences (e.g., ```dafny or ```dfy for code)
+    - Fallback to the first fenced block for code if labeled blocks are missing
+    - Missing closing fences: capture until next fence or end-of-text
+    """
+
+    def find_block(label: str) -> str:
+        # Labeled fence, allowing leading spaces and CRLF, stopping at next fence or end
+        pattern = rf'(?ms)^\s*```{label}\s*\r?\n([\s\S]*?)(?:\r?\n\s*```|\Z)'
+        m = re.search(pattern, text)
+        return m.group(1).strip() if m else ""
+
+    helpers = find_block('vc-helpers')
+    spec = find_block('vc-spec')
+    code = find_block('vc-code')
+
+    # If code is missing, try alternative labeled fences common to Dafny, Verus, Lean
+    if not code:
+        alt_labels = ['dafny', 'dfy', 'verus', 'rust', 'rs', 'lean', 'lean4']
+        for lbl in alt_labels:
+            pattern = rf'(?ms)^\s*```{lbl}\s*\r?\n([\s\S]*?)(?:\r?\n\s*```|\Z)'
+            m = re.search(pattern, text)
+            if m:
+                code = m.group(1).strip()
+                break
+
+    # Final fallback: first fenced block of any language or unlabeled
+    if not code:
+        any_fence = re.search(r'(?ms)^\s*```[^\n]*\r?\n([\s\S]*?)(?:\r?\n\s*```|\Z)', text)
+        if any_fence:
+            code = any_fence.group(1).strip()
+
+    # Sanitize: strip any stray markdown fence lines that leaked into content
+    def strip_fences(s: str) -> str:
+        if not s:
+            return s
+        # Remove any lines that start with ``` (with or without language label)
+        s = re.sub(r'(?m)^\s*```.*\n?', '', s)
+        return s.strip()
+
+    helpers = strip_fences(helpers)
+    spec = strip_fences(spec)
+    code = strip_fences(code)
+
     return helpers, spec, code
 
 
-def update_sections(data: dict, helpers: str, code: str, spec: str = "") -> None:
+def update_sections(data: dict, helpers: str, code: str, spec: str, spec_mode: bool = True) -> None:
     data['vc-helpers'] = (helpers or "").strip()
     data['vc-code'] = (code or "").strip()
-    if spec:  # Only update spec if provided
-        data['vc-spec'] = spec.strip()
+    if not spec_mode:  # only update spec if we are not in spec mode
+        data['vc-spec'] = (spec or "").strip()
 
 
-def save_yaml(output_path: Path, yaml_data: dict) -> None:
-    """Save YAML to disk with readable formatting using literal block style."""
-    with output_path.open("w") as f:
-        for key, value in yaml_data.items():
-            if value and value.strip():
-                # Non-empty content: use literal block style with content
-                f.write(f"{key}: |-\n")
-                for line in value.split('\n'):
-                    f.write(f"  {line}\n")
-            else:
-                # Empty content: use literal block style with blank line
-                f.write(f"{key}: |-\n\n")
-            f.write("\n")
+

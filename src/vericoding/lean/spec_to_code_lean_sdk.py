@@ -135,7 +135,7 @@ def process_spec_file_with_mcp(file_path: Path,
         Dictionary with results
     """
     base_file_name = file_path.stem
-    output_dir = file_path.parent / f"mcp_output_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+    output_dir = file_path.parent / f"vericoder_mcp_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
     output_dir.mkdir(exist_ok=True)
     
     print(f"Processing {file_path.name} with MCP tools...")

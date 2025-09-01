@@ -445,7 +445,7 @@ class TestFactoryFunction:
     @patch.dict(os.environ, {"ANTHROPIC_API_KEY": "test-anthropic-key"})
     def test_create_claude_provider(self):
         """Test creating Claude provider via factory."""
-        provider = create_llm_provider("claude")
+        provider, resolved_model = create_llm_provider("claude")
         assert isinstance(provider, AnthropicProvider)
         assert provider.api_key == "test-anthropic-key"
         assert provider.model == "claude-sonnet-4-20250514"
@@ -453,9 +453,10 @@ class TestFactoryFunction:
     @patch.dict(os.environ, {"ANTHROPIC_API_KEY": "test-key"})
     def test_create_claude_provider_custom_model(self):
         """Test creating Claude provider with custom model."""
-        provider = create_llm_provider("claude", model="claude-3-opus-20240229")
+        provider, resolved_model = create_llm_provider("claude", model="claude-3-opus-20240229")
         assert isinstance(provider, AnthropicProvider)
         assert provider.model == "claude-3-opus-20240229"
+        assert resolved_model == "claude-3-opus-20240229"
 
     @patch.dict(os.environ, {"OPENAI_API_KEY": "test-openai-key"})
     @patch("builtins.__import__")
@@ -467,7 +468,7 @@ class TestFactoryFunction:
         mock_openai.OpenAI.return_value = mock_client
         mock_import.return_value = mock_openai
 
-        provider = create_llm_provider("openai")
+        provider, resolved_model = create_llm_provider("openai")
         assert isinstance(provider, OpenAIProvider)
         assert provider.api_key == "test-openai-key"
         assert provider.model == "gpt-4o"
@@ -482,7 +483,7 @@ class TestFactoryFunction:
         mock_openai.OpenAI.return_value = mock_client
         mock_import.return_value = mock_openai
 
-        provider = create_llm_provider("deepseek")
+        provider, resolved_model = create_llm_provider("deepseek")
         assert isinstance(provider, DeepSeekProvider)
         assert provider.api_key == "test-deepseek-key"
 
@@ -496,7 +497,7 @@ class TestFactoryFunction:
         mock_openai.OpenAI.return_value = mock_client
         mock_import.return_value = mock_openai
 
-        provider = create_llm_provider("grok")
+        provider, resolved_model = create_llm_provider("grok")
         assert isinstance(provider, GrokProvider)
         assert provider.api_key == "test-grok-key"
         assert provider.model == "grok-3"
@@ -585,7 +586,7 @@ class TestProviderIntegration:
         for provider_name, env_var, expected_class in test_cases:
             with patch.dict(os.environ, {env_var: "test-key"}):
                 with patch("anthropic.Anthropic"):  # Only needed for Anthropic
-                    provider = create_llm_provider(provider_name)
+                    provider, resolved_model = create_llm_provider(provider_name)
                     assert isinstance(provider, expected_class)
                     assert provider.api_key == "test-key"
                     assert hasattr(provider, "call_api")

@@ -55,25 +55,25 @@ def save_iteration_code(
 
     base_name = relative_path.stem
 
-    if phase in ["original", "generated", "current"]:
-        iteration_file_name = f"{base_name}_iter_{iteration}_{phase}{config.language_config.output_extension}"
+    # Save any phase for easier debugging (e.g., original, generated, current, raw)
+    iteration_file_name = f"{base_name}_iter_{iteration}_{phase}{config.language_config.output_extension}"
 
-        relative_dir = relative_path.parent
-        # Save debug files in a separate 'debug' subdirectory
-        debug_output_subdir = (
-            Path(config.output_dir) / "debug" / relative_dir
-            if str(relative_dir) != "."
-            else Path(config.output_dir) / "debug"
-        )
+    relative_dir = relative_path.parent
+    # Save debug files in a separate 'debug' subdirectory
+    debug_output_subdir = (
+        Path(config.output_dir) / "debug" / relative_dir
+        if str(relative_dir) != "."
+        else Path(config.output_dir) / "debug"
+    )
 
-        with _file_write_lock:
-            debug_output_subdir.mkdir(parents=True, exist_ok=True)
-            iteration_path = debug_output_subdir / iteration_file_name
-            with iteration_path.open("w") as f:
-                f.write(code)
+    with _file_write_lock:
+        debug_output_subdir.mkdir(parents=True, exist_ok=True)
+        iteration_path = debug_output_subdir / iteration_file_name
+        with iteration_path.open("w") as f:
+            f.write(code)
 
-        debug_path = f"debug/{relative_dir}" if str(relative_dir) != "." else "debug"
-        logger.info(f"    💾 Saved {phase} code to: {debug_path}/{iteration_file_name}")
+    debug_path = f"debug/{relative_dir}" if str(relative_dir) != "." else "debug"
+    logger.info(f"    💾 Saved {phase} code to: {debug_path}/{iteration_file_name}")
 
 
 def prepare_output_paths(
@@ -107,32 +107,6 @@ def parse_command_line_arguments():
     parser = argparse.ArgumentParser(
         description="Unified Specification-to-Code Processing",
         formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog=f"""
-Supported languages: {", ".join(available_languages.keys())}
-Supported LLM providers: claude, gpt, o1, gemini, grok, deepseek, glm, mistral, openrouter
-
-Examples:
-  python spec_to_code.py dafny ./specs  # Uses Claude Opus 4.1 (Aug 2025, best for reasoning)
-  python spec_to_code.py lean ./NumpySpec/DafnySpecs --iterations 3
-  python spec_to_code.py verus ./benchmarks/verus_specs --debug --iterations 5
-  
-  # Easy provider switching (all use OpenRouter with one API key):
-  python spec_to_code.py dafny ./specs --llm-provider claude    # Claude Opus 4.1 (Aug 2025)
-  python spec_to_code.py dafny ./specs --llm-provider gpt       # GPT-5 (Aug 2025)
-  python spec_to_code.py dafny ./specs --llm-provider o1        # O1 reasoning model
-  python spec_to_code.py dafny ./specs --llm-provider gemini    # Gemini 2.5 Pro (June 2025)
-  python spec_to_code.py dafny ./specs --llm-provider grok      # Grok 4 (July 2025)
-  python spec_to_code.py dafny ./specs --llm-provider deepseek  # DeepSeek V3.1 (Aug 2025)
-  python spec_to_code.py dafny ./specs --llm-provider glm       # GLM-4.5 Turbo (2025)
-  python spec_to_code.py dafny ./specs --llm-provider mistral   # Mistral Large 2 (2025)
-  
-  # Custom models (override defaults):
-  python spec_to_code.py dafny ./specs --llm-provider claude --llm-model anthropic/claude-3.5-haiku
-  python spec_to_code.py dafny ./specs --llm-provider gpt --llm-model openai/o1-preview
-  python spec_to_code.py dafny ./specs --output-folder /path/to/results
-  python spec_to_code.py dafny ./specs --mode vibe
-  python spec_to_code.py dafny ./specs --mode specvibe --debug
-        """,
     )
 
     parser.add_argument(
@@ -193,17 +167,15 @@ Examples:
     )
 
     parser.add_argument(
-        "--llm-provider",
+        "--llm",
         type=str,
-        choices=["claude", "gpt", "o1", "gemini", "grok", "deepseek", "glm", "mistral", "openrouter"],
-        default="claude",
-        help="LLM provider to use. All use OpenRouter with optimized models (default: claude)",
-    )
-
-    parser.add_argument(
-        "--llm-model",
-        type=str,
-        help="Specific model to use (defaults to provider's default model)",
+        choices=[
+            "claude-sonnet", "claude-opus", "gpt", "gpt-mini", "o1", "gemini", "gemini-flash", "grok", "grok-code",
+            "deepseek", "glm", "mistral-medium", "mistral-codestral",
+            "qwen-thinking", "qwen-coder", "claude-direct", "openai-direct"
+        ],
+        default="claude-direct",
+        help="LLM model to use. Most use OpenRouter, *-direct options use native APIs (default: claude-direct)",
     )
 
     parser.add_argument(
@@ -223,24 +195,27 @@ Examples:
     return parser.parse_args()
 
 
-def print_startup_info(config):
-    """Print startup information and configuration details."""
+def print_startup_info(config, resolved_model=None):
+    """Print comprehensive startup information and configuration details."""
     from vericoding.core.language_tools import get_tool_path
     
-    print(
-        f"Starting specification-to-code processing of {config.language_config.name} files (PARALLEL VERSION)..."
-    )
-    print(f"Directory: {config.files_dir}")
-    print(f"Output directory: {config.output_dir}")
-    print(f"Tool path: {get_tool_path(config)}")
-    print(f"Max iterations: {config.max_iterations}")
-    print(f"Parallel workers: {config.max_workers}")
-    print(f"Debug mode: {'Enabled' if config.debug_mode else 'Disabled'}")
-
+    print(f"\n=== {config.language_config.name.upper()} SPECIFICATION-TO-CODE PROCESSING ===")
+    print(f"🚀 Starting parallel processing with {config.max_workers} workers\n")
+    
+    print("Configuration:")
+    print(f"- Language: {config.language_config.name}")
+    print(f"- Directory: {config.files_dir}")
+    print(f"- Output directory: {config.output_dir}")
+    print(f"- Max iterations: {config.max_iterations}")
+    print(f"- Tool path: {get_tool_path(config)}")
+    print(f"- LLM Model: {resolved_model or config.llm}")
+    print(f"- Mode: {config.mode}")
+    print(f"- Debug mode: {'Enabled' if config.debug_mode else 'Disabled'}")
+    print(f"- API rate limit delay: {config.api_rate_limit_delay}s")
+    
     if config.debug_mode:
-        print(
-            "DEBUG MODE: Saves code after each iteration to debug/ subdirectory for analysis."
-        )
+        print("💾 DEBUG MODE: Saves code after each iteration to debug/ subdirectory")
     else:
-        print("NORMAL MODE: Saves only final implementation files.")
+        print("📝 NORMAL MODE: Saves only final implementation files")
+    print("\nProceeding with processing...")
     print("")

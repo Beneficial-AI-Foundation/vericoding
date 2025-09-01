@@ -215,7 +215,6 @@ class TestLanguageConfig:
             compile_check_command=["test_tool", "compile"],
             code_block_patterns=["```test", "```"],
             keywords=["function", "method"],
-            spec_patterns=["requires", "ensures"],
         )
 
         assert config.name == "test_lang"
@@ -236,7 +235,6 @@ class TestLanguageConfig:
             "compile_check_command": ["tool", "compile"],
             "code_block_patterns": ["```"],
             "keywords": ["function"],
-            "spec_patterns": ["requires"],
         }
 
         config1 = LanguageConfig(name="lang", **common_args)

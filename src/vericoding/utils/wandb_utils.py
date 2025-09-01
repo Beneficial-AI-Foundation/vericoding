@@ -24,6 +24,9 @@ def enabled() -> bool:
         return False
 
 
+
+
+
 def log(data: Dict[str, Any]) -> None:
     """Safely log a dict of metrics to wandb (no-op if disabled)."""
     if not enabled():
@@ -44,7 +47,7 @@ def log_exception(file_path: str) -> None:
     })
 
 
-def init_wandb_run(config, no_wandb: bool = False) -> Optional["wandb.Run"]:
+def init_wandb_run(config, no_wandb: bool = False, resolved_model: str = None) -> Optional["wandb.Run"]:
     """Initialize a wandb run with proper configuration."""
     if no_wandb or not os.getenv("WANDB_API_KEY"):
         if no_wandb:
@@ -54,16 +57,20 @@ def init_wandb_run(config, no_wandb: bool = False) -> Optional["wandb.Run"]:
         return None
     
     try:
-        # Initialize wandb run
-        run_name = f"vericoding_{config.language}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+        # Initialize wandb run  
+        run_name = f"vericoding_{config.language}_{config.llm}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
         wandb_mode = os.getenv("WANDB_MODE", "online")
+        # Extract spec_dir and trim to start from "benchmarks" if present
+        spec_dir = str(config.files_dir)
+        if "benchmarks" in spec_dir:
+            spec_dir = "benchmarks" + spec_dir.split("benchmarks", 1)[1]
+        
         wandb_config = {
+            "spec_dir": spec_dir,
             "language": config.language,
+            "llm_model": resolved_model,
             "max_iterations": config.max_iterations,
-            "llm_provider": config.llm_provider,
-            "llm_model": config.llm_model,
             "max_workers": config.max_workers,
-            "files_dir": config.files_dir,
             "mode": config.mode,
             "wandb_mode": wandb_mode,
         }
@@ -72,7 +79,7 @@ def init_wandb_run(config, no_wandb: bool = False) -> Optional["wandb.Run"]:
             project=os.getenv("WANDB_PROJECT", "vericoding"),
             entity=os.getenv("WANDB_ENTITY"),
             name=run_name,
-            tags=[config.language, config.llm_provider, config.mode],
+            tags=[config.llm],
             mode=wandb_mode
         )
         # Update config with allow_val_change to avoid errors when keys already exist
@@ -189,8 +196,25 @@ def log_iteration(
     error_msg: str = "",
     is_final: bool = False,
     artifact: Optional["wandb.Artifact"] = None,
+    iterations_data: Optional[list] = None,
 ) -> None:
-    """Log metrics and files for a verification iteration."""
+    """Log metrics and files for a verification iteration, and optionally append to iterations_data."""
+    # Add to iterations_data if provided
+    if iterations_data is not None:
+        from vericoding.processing.spec_processor import IterationData
+        import time
+        
+        iterations_data.append(IterationData(
+            file_path=file_path,
+            iteration=iteration,
+            success=success,
+            vc_spec=yaml_dict.get("vc-spec", ""),
+            vc_code=yaml_dict.get("vc-code", ""),
+            verifier_message=error_msg,
+            timestamp=time.time()
+        ))
+    
+    # Continue with wandb logging if enabled
     if not enabled():
         return
     
@@ -291,12 +315,14 @@ def _create_failure_analysis_table(failed_results):
 
 
 
-def finalize_wandb_run(wandb_run, config, results, processing_time, delete_after_upload: bool = False):
+def finalize_wandb_run(wandb_run, config, results, processing_time, delete_after_upload: bool = False, resolved_model: str = None):
     """Finalize wandb run with summary metrics and artifact upload."""
     if not wandb_run:
         return
         
     try:
+        from vericoding.core.llm_providers import get_global_token_stats
+        
         # Calculate basic statistics
         successful = [r for r in results if r.success]
         failed = [r for r in results if not r.success]
@@ -312,6 +338,9 @@ def finalize_wandb_run(wandb_run, config, results, processing_time, delete_after
         
         # Calculate timing statistics
         avg_time_per_file = processing_time / len(results) if results else 0
+        
+        # Get token usage statistics
+        token_stats = get_global_token_stats()
         
         # Basic summary metrics
         wandb.run.summary["total_files"] = len(results)
@@ -330,13 +359,12 @@ def finalize_wandb_run(wandb_run, config, results, processing_time, delete_after
             wandb.run.summary["max_iterations"] = max(all_iterations)
             wandb.run.summary["total_llm_calls"] = total_llm_calls
         
-        # Configuration context
-        wandb.run.summary["language"] = config.language
-        wandb.run.summary["llm_provider"] = config.llm_provider
-        wandb.run.summary["llm_model"] = config.llm_model or "default"
-        wandb.run.summary["max_iterations_config"] = config.max_iterations
-        wandb.run.summary["max_workers"] = config.max_workers
-        wandb.run.summary["mode"] = config.mode
+        # Token usage metrics
+        wandb.run.summary["total_input_tokens"] = token_stats["input_tokens"]
+        wandb.run.summary["total_output_tokens"] = token_stats["output_tokens"]
+        
+        # LLM configuration context  
+        wandb.run.summary["llm_model"] = resolved_model or config.llm
         
         # Create enhanced failure analysis table
         _create_failure_analysis_table(failed)
@@ -345,7 +373,7 @@ def finalize_wandb_run(wandb_run, config, results, processing_time, delete_after
         print("\n📤 Uploading generated files to wandb...")
         artifact = wandb.Artifact(
             name=f"generated_code_{config.language}",
-            type="code",
+            type="code", 
             description=f"Generated {config.language} code from specifications"
         )
         

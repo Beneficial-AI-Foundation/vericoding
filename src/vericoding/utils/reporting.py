@@ -1,7 +1,6 @@
 """Summary and CSV generation utilities."""
 
 import csv
-from datetime import datetime
 from pathlib import Path
 
 from ..core.config import ProcessingConfig
@@ -78,67 +77,34 @@ def generate_csv_results(config: ProcessingConfig, results: list) -> str:
     return str(csv_file)
 
 
-def generate_subfolder_analysis_csv(config: ProcessingConfig, results: list) -> str:
-    """Generate CSV file with subfolder success rate analysis."""
-    csv_file = Path(config.output_dir) / "subfolder_analysis.csv"
-
-    # Analyze results by subfolder
-    from collections import defaultdict
-
-    subfolder_stats = defaultdict(lambda: {"success": 0, "failed": 0, "total": 0})
-
-    for result in results:
-        # Extract subfolder from file path
-        file_path = Path(result.spec_yaml_file)
-        if len(file_path.parts) > 1:
-            subfolder = file_path.parts[0]
-        else:
-            subfolder = "root"
-
-        subfolder_stats[subfolder]["total"] += 1
-        if result.success:
-            subfolder_stats[subfolder]["success"] += 1
-        else:
-            subfolder_stats[subfolder]["failed"] += 1
-
-    with csv_file.open("w", newline="") as csvfile:
-        writer = csv.writer(csvfile)
-        # Write header
-        writer.writerow(["subfolder", "successful", "failed", "total", "success_rate"])
-
-        # Write subfolder statistics sorted by name
-        for subfolder in sorted(subfolder_stats.keys()):
-            stats = subfolder_stats[subfolder]
-            success_rate = (
-                (stats["success"] / stats["total"] * 100) if stats["total"] > 0 else 0.0
-            )
-            writer.writerow(
-                [
-                    subfolder,
-                    stats["success"],
-                    stats["failed"],
-                    stats["total"],
-                    f"{success_rate:.1f}%",
-                ]
-            )
-
-    print(f"Subfolder analysis CSV saved to: {csv_file}")
-    return str(csv_file)
-
-
 def print_summary(config: ProcessingConfig, results: list, processing_time: float) -> str:
     """Generate and print processing summary with reports."""
+    from vericoding.core.llm_providers import get_global_token_stats
+    
     successful = [r for r in results if r.success]
     failed = [r for r in results if not r.success]
 
     # Create simple summary
+    # Calculate percentages safely (avoid division by zero)
+    total_files = len(results)
+    success_rate = (len(successful) / total_files * 100) if total_files > 0 else 0
+    avg_time_per_file = (processing_time / total_files) if total_files > 0 else 0
+    
+    # Get token usage statistics
+    token_stats = get_global_token_stats()
+    
     summary_lines = [
         f"=== {config.language_config.name.upper()} PROCESSING SUMMARY ===",
-        f"Total files: {len(results)}",
-        f"Successful: {len(successful)} ({len(successful) / len(results) * 100:.1f}%)",
+        f"Total files: {total_files}",
+        f"Successful: {len(successful)} ({success_rate:.1f}%)",
         f"Failed: {len(failed)}",
         f"Processing time: {processing_time:.2f}s",
-        f"Average per file: {processing_time / len(results):.2f}s",
+        f"Average per file: {avg_time_per_file:.2f}s",
+        "",
+        f"=== TOKEN USAGE ===",
+        f"Total LLM calls: {token_stats['total_calls']}",
+        f"Input tokens: {token_stats['input_tokens']:,}",
+        f"Output tokens: {token_stats['output_tokens']:,}",
         "",
         "Successful files:",
     ]
@@ -163,9 +129,8 @@ def print_summary(config: ProcessingConfig, results: list, processing_time: floa
     print(f"\nSummary saved to: {config.summary_file}")
     print(f"Files saved to: {config.output_dir}")
 
-    # Generate CSV reports
+    # Generate CSV report
     generate_csv_results(config, results)
-    generate_subfolder_analysis_csv(config, results)
 
     # Print final celebration
     print(f"\n🎉 Processing completed: {len(successful)}/{len(results)} files successful")

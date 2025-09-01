@@ -129,14 +129,17 @@ def verify_file(config: ProcessingConfig, file_path: str) -> VerificationResult:
 
 
 def find_spec_files(config: ProcessingConfig) -> list[str]:
-    """Find YAML specification files for the current language."""
+    """Find YAML specification files directly in the given folder (non-recursive)."""
     try:
-        files = []
-        for root, _dirs, filenames in os.walk(config.files_dir):
-            for f in filenames:
-                if f.endswith(('.yaml', '.yml')):
-                    file_path = str(Path(root) / f)
-                    files.append(file_path)
+        base_dir = Path(config.files_dir)
+        if not base_dir.is_dir():
+            print(f"Error: {config.files_dir} is not a directory")
+            return []
+
+        files: list[str] = []
+        for entry in sorted(base_dir.iterdir()):
+            if entry.is_file() and entry.suffix.lower() in {".yaml", ".yml"}:
+                files.append(str(entry))
         return files
     except Exception as e:
         print(f"Error reading directory {config.files_dir}: {e}")

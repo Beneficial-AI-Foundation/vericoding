@@ -119,7 +119,7 @@ def setup_configuration(args=None):
     # Create timestamped output directory
     timestamp = datetime.now().strftime("%d-%m_%Hh%M")
     process_id = os.getpid()
-    default_output_dir = os.path.join(LEAN_FILES_DIR, f"code_from_spec_on_{timestamp}_pid{process_id}")
+    default_output_dir = os.path.join(LEAN_FILES_DIR, f"vericoder_lean_{timestamp}_pid{process_id}")
     OUTPUT_DIR = args.output_dir or default_output_dir
     DEBUG_DIR = os.path.join(OUTPUT_DIR, "debug")  # Debug files subdirectory
     SUMMARY_FILE = os.path.join(OUTPUT_DIR, "summary.txt")

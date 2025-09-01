@@ -119,7 +119,6 @@ def add (x y : ℕ) : ℕ := sorry
                     compile_check_command=["dafny", "build"],
                     code_block_patterns=["dafny"],
                     keywords=["method", "function", "predicate"],
-                    spec_patterns=[r"ensures.*", r"requires.*"],
                 )
             }
 
@@ -177,7 +176,7 @@ fix_verification: "Fix verification errors"
         # Test with mock API key
         with patch.dict(os.environ, {"ANTHROPIC_API_KEY": "test-key"}):
             try:
-                provider = create_llm_provider("claude")
+                provider, resolved_model = create_llm_provider("claude")
                 assert provider is not None
                 assert provider.model == "claude-sonnet-4-20250514"  # default model
                 print("✓ LLM provider creation works")
@@ -187,7 +186,7 @@ fix_verification: "Fix verification errors"
         # Test with custom model
         with patch.dict(os.environ, {"ANTHROPIC_API_KEY": "test-key"}):
             try:
-                provider = create_llm_provider("claude", "claude-3-5-haiku-20241022")
+                provider, resolved_model = create_llm_provider("claude", "claude-3-5-haiku-20241022")
                 assert provider.model == "claude-3-5-haiku-20241022"
                 print("✓ Custom model selection works")
             except Exception as e:
