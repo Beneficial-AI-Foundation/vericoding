@@ -1,0 +1,96 @@
+
+
+// <vc-helpers>
+predicate isEven(n: int)
+  ensures isEven(n) <==> n % 2 == 0
+{
+  n % 2 == 0
+}
+
+function findMaxEven(x: int, y: int): (r: int)
+  requires 0 <= x <= y
+  ensures r % 2 == 0
+  ensures x <= r <= y
+  ensures forall i : int :: x <= i <= y && isEven(i) ==> r >= i
+{
+  if y % 2 == 0 then y else 
+    if y - 1 >= x then y - 1 else x
+}
+
+lemma findMaxEvenLemma(x: int, y: int)
+  requires 0 <= x <= y
+  ensures findMaxEven(x, y) % 2 == 0
+{
+}
+
+lemma findMaxEvenAlwaysEven(x: int, y: int)
+  requires 0 <= x <= y
+  ensures findMaxEven(x, y) % 2 == 0
+{
+}
+
+lemma findMaxEvenInRange(x: int, y: int)
+  requires 0 <= x <= y
+  ensures x <= findMaxEven(x, y) <= y
+{
+}
+
+lemma findMaxEvenMaximal(x: int, y: int)
+  requires 0 <= x <= y
+  ensures forall i : int :: x <= i <= y && i % 2 == 0 ==> findMaxEven(x, y) >= i
+{
+}
+
+lemma findMaxEvenHandlesEqualCase(x: int)
+  requires 0 <= x
+  ensures findMaxEven(x, x) == x || findMaxEven(x, x) == x - 1
+{
+}
+
+lemma findMaxEvenReturnsValidWhenEqual(x: int)
+  requires 0 <= x
+  ensures x % 2 == 0 ==> findMaxEven(x, x) == x
+  ensures x % 2 != 0 ==> findMaxEven(x, x) == x - 1
+{
+}
+
+// Additional lemma to help with the x >= y case
+lemma NothingToFindWhenXGreaterEqualY(x: int, y: int)
+  requires 0 <= x && 0 <= y
+  ensures (x >= y) ==> (findMaxEven(x, y) % 2 == 0 && x <= findMaxEven(x, y) <= y) == (x <= y)
+{
+}
+// </vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+method choose_num(x : int, y : int) returns (num : int)
+  // pre-conditions-start
+  requires 0 <= x && 0 <= y
+  // pre-conditions-end
+  // post-conditions-start
+  ensures num == -1 || (num >= x && num <= y)
+  ensures num == -1 || num % 2 == 0
+  ensures num == -1 || (forall i : int :: x <= i <= y && i % 2 == 0 ==> num >= i)
+  ensures num == -1 <==> x >= y
+  // post-conditions-end
+// </vc-spec>
+// <vc-code>
+{
+  if x > y {
+    num := -1;
+  } else {
+    num := findMaxEven(x, y);
+    assert num % 2 == 0 by {
+      findMaxEvenAlwaysEven(x, y);
+    }
+    assert x <= num <= y by {
+      findMaxEvenInRange(x, y);
+    }
+    assert forall i : int :: x <= i <= y && i % 2 == 0 ==> num >= i by {
+      findMaxEvenMaximal(x, y);
+    }
+  }
+}
+// </vc-code>
+

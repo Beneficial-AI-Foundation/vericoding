@@ -11,11 +11,12 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-
-
 vc-description: |-
+
+  /*
   function_signature: def find_closest_elements(numbers: List[float]) -> Tuple[float, float]
   From a supplied list of numbers (of length at least two) select and return two that are the closest to each other and return them in order (smaller number, larger number).
+  */
 
 vc-spec: |-
   method find_closest_elements(s: seq<real>) returns (l : real, h : real)
@@ -34,3 +35,5 @@ vc-code: |-
   }
 
 vc-postamble: |-
+
+

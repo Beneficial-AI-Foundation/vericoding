@@ -1,0 +1,25 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+
+// </vc-helpers>
+
+// <vc-spec>
+fn monotonic(l: Vec<i32>) -> (ret: bool)
+    // post-conditions-start
+    ensures
+        ret <==> (forall|i: int, j: int| 0 <= i < j < l@.len() ==> l@.index(i) <= l@.index(j)) || (
+        forall|i: int, j: int| 0 <= i < j < l@.len() ==> l@.index(i) >= l@.index(j)),
+    // post-conditions-end
+// </vc-spec>
+// <vc-code>
+{
+    (forall|i: int, j: int| 0 <= i < j < l@.len() ==> l@.index(i) <= l@.index(j))
+        || (forall|i: int, j: int| 0 <= i < j < l@.len() ==> l@.index(i) >= l@.index(j))
+}
+// </vc-code>
+
+fn main() {}
+}

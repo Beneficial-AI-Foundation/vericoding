@@ -14,11 +14,12 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-
-
 vc-description: |-
+
+  /*
   function_signature: def encrypt(str : str) -> str
   Create a function encrypt that takes a string as an argument and returns a string encrypted with the alphabet being rotated. The alphabet should be rotated in a manner such that the letters shift down by two multiplied to two places.
+  */
 
 vc-spec: |-
   method encrypt(s: string) returns (r: string)
@@ -36,3 +37,5 @@ vc-code: |-
   }
 
 vc-postamble: |-
+
+

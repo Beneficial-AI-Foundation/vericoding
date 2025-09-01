@@ -1,0 +1,170 @@
+use vstd::calc;
+use vstd::prelude::*;
+use vstd::seq_lib::lemma_multiset_commutative;
+use vstd::seq_lib::lemma_seq_contains_after_push;
+
+verus! {
+
+// <vc-helpers>
+proof fn lemma_insert_maintains_sorted(v: Seq<i32>, x: i32, pos: int) -> (result: Seq<i32>)
+    requires
+        forall|i: int, j: int| 0 <= i < j < v.len() ==> v[i] < v[j],
+        0 <= pos <= v.len(),
+        forall|i: int| 0 <= i < pos ==> v[i] < x,
+        forall|i: int| pos <= i < v.len() ==> x <= v[i],
+    ensures
+        result.len() == v.len() + 1,
+        result[pos] == x,
+        forall|i: int| 0 <= i < pos ==> result[i] == v[i],
+        forall|i: int| pos < i < result.len() ==> result[i] == v[i - 1],
+        forall|i: int, j: int| 0 <= i < j < result.len() ==> result[i] < result[j],
+{
+    let result = v.insert(pos, x);
+    
+    assert forall|i: int, j: int| 0 <= i < j < result.len() implies result[i] < result[j] by {
+        if i < pos && j == pos {
+            assert(result[i] == v[i]);
+            assert(result[j] == x);
+            assert(v[i] < x);
+        } else if i == pos && j > pos {
+            assert(result[i] == x);
+            assert(result[j] == v[j - 1]);
+            assert(x <= v[j - 1]);
+            if x == v[j - 1] {
+                assert(false); // contradiction since elements are unique
+            }
+            assert(x < v[j - 1]);
+        } else if i < pos && j > pos {
+            assert(result[i] == v[i]);
+            assert(result[j] == v[j - 1]);
+            assert(v[i] < x);
+            assert(x <= v[j - 1]);
+            if x == v[j - 1] {
+                assert(false); // contradiction
+            }
+            assert(x < v[j - 1]);
+            assert(v[i] < v[j - 1]);
+        } else if i < pos && j < pos {
+            assert(result[i] == v[i]);
+            assert(result[j] == v[j]);
+            assert(v[i] < v[j]);
+        } else if i > pos && j > pos {
+            assert(result[i] == v[i - 1]);
+            assert(result[j] == v[j - 1]);
+            assert(v[i - 1] < v[j - 1]);
+        }
+    }
+    
+    result
+}
+
+proof fn lemma_binary_search_bounds(v: Vec<i32>, x: i32, pos: usize)
+    requires
+        forall|i: int, j: int| 0 <= i < j < v.len() ==> v[i] < v[j],
+        pos <= v.len(),
+        (pos == 0 || v[pos as int - 1] < x),
+        (pos == v.len() || x <= v[pos as int]),
+    ensures
+        forall|i: int| 0 <= i < pos ==> v[i] < x,
+        forall|i: int| pos <= i < v.len() ==> x <= v[i],
+{
+    assert forall|i: int| 0 <= i < pos implies v[i] < x by {
+        if pos > 0 && i < pos {
+            if i == pos - 1 {
+                assert(v[i] < x);
+            } else {
+                assert(v[i] < v[pos as int - 1]);
+                assert(v[pos as int - 1] < x);
+                assert(v[i] < x);
+            }
+        }
+    }
+    
+    assert forall|i: int| pos <= i < v.len() implies x <= v[i] by {
+        if pos < v.len() && i >= pos {
+            if i == pos {
+                assert(x <= v[i]);
+            } else {
+                assert(v[pos as int] <= v[i]);
+                assert(x <= v[pos as int]);
+                assert(x <= v[i]);
+            }
+        }
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn unique(s: Vec<i32>) -> (result: Vec<i32>)
+    // post-conditions-start
+    ensures
+        forall|i: int, j: int| 0 <= i < j < result.len() ==> result[i] < result[j],
+        forall|i: int| #![auto] 0 <= i < result.len() ==> s@.contains(result[i]),
+        forall|i: int| #![trigger s[i]] 0 <= i < s.len() ==> result@.contains(s[i]),
+    // post-conditions-end
+// </vc-spec>
+// <vc-code>
+{
+    let mut result: Vec<i32> = Vec::new();
+    
+    for i in 0..s.len()
+        invariant
+            forall|j: int, k: int| 0 <= j < k < result.len() ==> result[j] < result[k],
+            forall|j: int| #![auto] 0 <= j < result.len() ==> s@.contains(result[j]),
+            forall|j: int| #![trigger s[j]] 0 <= j < i ==> result@.contains(s[j]),
+    {
+        let x = s[i];
+        
+        if !result@.contains(x) {
+            let mut pos = 0;
+            
+            while pos < result.len() && result[pos] < x
+                invariant
+                    0 <= pos <= result.len(),
+                    forall|j: int| 0 <= j < pos ==> result[j] < x,
+                    forall|j: int, k: int| 0 <= j < k < result.len() ==> result[j] < result[k],
+            {
+                pos += 1;
+            }
+            
+            proof {
+                lemma_binary_search_bounds(result, x, pos);
+            }
+            
+            // Manual insertion: add element at the end first
+            result.push(x);
+            
+            // Shift elements to the right to make space at position pos
+            let mut j = result.len() - 1;
+            while j > pos
+                invariant
+                    pos < j <= result.len() - 1,
+                    result.len() > 0,
+                    forall|k: int| 0 <= k < pos ==> result[k] < x,
+                    forall|k: int| pos <= k < j ==> result[k] < x,
+                    forall|k: int| j < k < result.len() ==> result[k] == x,
+                    result[j as int] == x,
+                    forall|k: int, l: int| 0 <= k < l < j ==> result[k] < result[l],
+                    forall|k: int, l: int| j < k < l < result.len() ==> result[k] == result[l],
+            {
+                result.set(j, result[j - 1]);
+                j -= 1;
+            }
+            
+            // Place x at position pos
+            result.set(pos, x);
+            
+            proof {
+                let old_result = result@.remove(pos as int);
+                let new_result = lemma_insert_maintains_sorted(old_result, x, pos as int);
+                assert(result@ =~= new_result);
+            }
+        }
+    }
+    
+    result
+}
+// </vc-code>
+
+fn main() {}
+}

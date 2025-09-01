@@ -11,11 +11,12 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-
-
 vc-description: |-
+
+  /*
   function_signature: method circular_shift(a: nat, shift: nat) returns (shifted: string)
   Process input. Ensures: returns the correct size/count; the condition holds for all values; returns the correct size/count.
+  */
 
 vc-spec: |-
   method circular_shift(a: nat, shift: nat) returns (shifted: string)
@@ -39,3 +40,4 @@ vc-postamble: |-
   {
     assume{:axiom} false;
   }
+

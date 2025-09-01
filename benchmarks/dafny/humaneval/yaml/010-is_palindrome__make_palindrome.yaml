@@ -7,11 +7,12 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-
-
 vc-description: |-
+
+  /*
   function_signature: method make_palindrome(s: string) returns (result: string)
   Process input. Ensures: the size is bounded; the result is a palindrome; ensures starts_with(result, s).
+  */
 
 vc-spec: |-
   method make_palindrome(s: string) returns (result: string)
@@ -35,3 +36,4 @@ vc-postamble: |-
   {
     assume{:axiom} false;
   }
+

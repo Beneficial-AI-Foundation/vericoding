@@ -1,0 +1,100 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+// No additional helpers needed
+// </vc-helpers>
+
+// <vc-spec>
+fn binary_search_recursive(v: &[i32], elem: i32, c: isize, f: isize) -> (p: isize)
+    // pre-conditions-start
+    requires
+        v.len() <= 100_000,
+        forall|i: int, j: int| 0 <= i < j < v.len() ==> v[i] <= v[j],
+        0 <= c <= f + 1 <= v.len(),
+        forall|k: int| 0 <= k < c ==> v[k] <= elem,
+        forall|k: int| f < k < v.len() ==> v[k] > elem,
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        -1 <= p < v.len(),
+        forall|u: int| 0 <= u <= p ==> v[u] <= elem,
+        forall|w: int| p < w < v.len() ==> v[w] > elem,
+    // post-conditions-end
+    decreases f - c + 1
+// </vc-spec>
+// <vc-code>
+{
+    if c > f {
+        let p: isize = if c == 0 {
+            -1
+        } else {
+            c - 1
+        };
+        proof {
+            assert(forall|u: int, j: int| 0 <= u < j < v.len() ==> v@[u] <= v@[j]);
+            assert(-1 <= p < v.len());
+            if p == -1 {
+                assert(c == 0);
+                assert(forall|u: int| 0 <= u <= p ==> v@[u] <= elem);
+                assert(forall|k: int| f < k < v.len() ==> v@[k] > elem);
+                assert(f == -1);
+                assert(forall|w: int| p < w < v.len() ==> v@[w] > elem);
+            } else {
+                assert(c > 0);
+                assert(p == c - 1);
+                assert(f == c - 1);
+                assert(forall|u: int| 0 <= u <= p ==> v@[u] <= elem);
+                assert(forall|k: int| 0 <= k < c ==> v@[k] <= elem);
+                assert(forall|w: int| p < w < v.len() ==> v@[w] > elem);
+                assert(forall|k: int| f < k < v.len() ==> v@[k] > elem);
+            }
+        }
+        p
+    } else {
+        let mid = c + (f - c) / 2;
+        assert(0 <= mid < v.len());
+        assert(forall|i: int, j: int| 0 <= i < j < v.len() ==> v@[i] <= v@[j]);
+        if v@[mid] <= elem {
+            // Recurse right
+            assert(forall|k: int| #![auto] 0 <= k < c ==> v@[k] <= elem);
+            assert(forall|k: int| f < k < v.len() ==> v@[k] > elem);
+            assert(forall|k: int| 0 <= k < mid ==> v@[k] <= elem) by {
+                if mid == c {
+                    assert(forall|k: int| 0 <= k < mid ==> k < c ==> v@[k] <= elem);
+                } else {
+                    assert(forall|k: int| 0 <= k < c ==> v@[k] <= elem);
+                    assert(forall|k: int| c <= k < mid ==> v@[k] <= v@[mid] <= elem);
+                }
+            };
+            assert(forall|k: int| (mid - 1) < k < v.len() ==> v@[k] > elem) by {
+                assert(forall|k: int| f < k < v.len() ==> v@[k] > elem);
+            };
+            assert(mid <= f + 1 <= v.len());
+            binary_search_recursive(v, elem, mid, f)
+        } else {
+            // Recurse left
+            assert(forall|k: int| 0 <= k < c ==> v@[k] <= elem);
+            assert(forall|k: int| f < k < v.len() ==> v@[k] > elem);
+            if mid - 1 >= -1 {
+                assert(c <= (mid - 1) + 1);
+                assert(forall|k: int| 0 <= k < c ==> v@[k] <= elem);
+                assert(forall|k: int| (mid - 1) < k < v.len() ==> v@[k] > elem) by {
+                    assert(v@[mid] > elem);
+                    assert(forall|i: int| mid <= i < v.len() ==> v@[i] >= v@[mid] > elem);
+                    assert(forall|k: int| f < k < v.len() ==> v@[k] > elem);
+                };
+            } else {
+                assert(mid - 1 == -1);
+                assert(f < v.len());
+                assert(forall|k: int| (mid - 1) < k < v.len() ==> v@[k] > elem);
+            }
+            binary_search_recursive(v, elem, c, mid - 1)
+        }
+    }
+}
+// </vc-code>
+
+fn main() {}
+}

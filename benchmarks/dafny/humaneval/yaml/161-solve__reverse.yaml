@@ -11,11 +11,12 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-
-
 vc-description: |-
+
+  /*
   function_signature: method reverse(s: string) returns (rev: string)
   Reverse order. Ensures: returns the correct size/count; the condition holds for all values.
+  */
 
 vc-spec: |-
   method reverse(s: string) returns (rev: string)
@@ -41,3 +42,4 @@ vc-postamble: |-
     if 'a' <= c <= 'z' then c - 'a' + 'A' else c - 'A' + 'a'
   }
   // pure-end
+

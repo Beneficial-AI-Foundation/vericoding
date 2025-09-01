@@ -1,0 +1,44 @@
+
+
+// <vc-helpers>
+lemma ForallImplies<T>(s: seq<T>, P: T -> bool, Q: T -> bool)
+  requires (forall i :: 0 <= i < |s| ==> P(s[i]))
+  ensures (forall i :: 0 <= i < |s| ==> Q(s[i]))
+  decreases |s|
+{
+  if |s| > 0 {
+    assert P(s[0]);
+    ForallImplies(s[1..], P, Q);
+  }
+}
+// </vc-helpers>
+
+// <vc-spec>
+method can_arrange(arr: seq<int>) returns (pos: int)
+  // pre-conditions-start
+  requires |arr| > 0
+  requires forall i, j :: 0 <= i < j < |arr| ==> arr[i] != arr[j]
+  // pre-conditions-end
+  // post-conditions-start
+  ensures pos == -1 ==> forall i :: 1 <= i < |arr| ==> arr[i] >= arr[i - 1]
+  ensures pos >= 0 ==> 1 <= pos < |arr| && arr[pos] < arr[pos - 1]
+  ensures pos >= 0 ==> forall i :: pos < i < |arr| ==> arr[i] >= arr[i - 1]
+  // post-conditions-end
+// </vc-spec>
+// <vc-code>
+{
+    var i := 1;
+    while i < |arr|
+        invariant 1 <= i <= |arr|
+        invariant forall j :: 1 <= j < i ==> arr[j] >= arr[j - 1]
+    {
+        if arr[i] < arr[i - 1]
+        {
+            return i;
+        }
+        i := i + 1;
+    }
+    return -1;
+}
+// </vc-code>
+

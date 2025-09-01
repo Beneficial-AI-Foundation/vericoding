@@ -1,0 +1,46 @@
+function contains_char(s: string, c: char): bool
+  decreases |s|
+  requires forall i :: 0 <= i < |s| ==> 'a' <= s[i] <= 'z' || 'A' <= s[i] <= 'Z'
+  requires 'a' <= c <= 'z'
+{
+  if |s| == 0 then false else s[0] == c || s[0] == upper_char(c) || contains_char(s[1..], c)
+}
+function upper_char(c: char) : (C: char)
+  requires 'a' <= c <= 'z'
+  ensures 'A' <= C <= 'Z'
+{ c - 'a' + 'A' }
+
+// <vc-helpers>
+
+// </vc-helpers>
+
+// <vc-spec>
+method count_distinct_characters(s: string) returns (count: int)
+  // pre-conditions-start
+  requires forall i :: 0 <= i < |s| ==> 'a' <= s[i] <= 'z' || 'A' <= s[i] <= 'Z'
+  // pre-conditions-end
+  // post-conditions-start
+  ensures count == |set c | 'a' <= c <= 'z' && contains_char(s, c)|
+  // post-conditions-end
+// </vc-spec>
+// <vc-code>
+{
+  var i: int := 0;
+  count := 0;
+  ghost var G: set<char> := {};
+  while i <= 'z' - 'a'
+    invariant 0 <= i <= 'z' - 'a' + 1
+    invariant G == set c | 'a' <= c <= 'z' && c - 'a' < i && contains_char(s, c) |
+    invariant count == |G|
+    decreases 'z' - 'a' - i + 1
+  {
+    var c0: char := 'a' + i;
+    if contains_char(s, c0) {
+      count := count + 1;
+      ghost G := G + {c0};
+    }
+    i := i + 1;
+  }
+}
+// </vc-code>
+

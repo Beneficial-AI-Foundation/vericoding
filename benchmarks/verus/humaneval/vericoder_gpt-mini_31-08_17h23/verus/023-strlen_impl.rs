@@ -1,0 +1,26 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+// no helpers needed
+// </vc-helpers>
+
+// <vc-spec>
+fn strlen(string: &Vec<char>) -> (length: usize)
+    // post-conditions-start
+    ensures
+        length == string.len(),
+    // post-conditions-end
+// </vc-spec>
+// <vc-code>
+{
+    // impl-start
+    let length: usize = string.len();
+    length
+    // impl-end
+}
+// </vc-code>
+
+fn main() {}
+}

@@ -1,0 +1,50 @@
+
+
+// <vc-helpers>
+
+// </vc-helpers>
+
+// <vc-spec>
+method checkSubstring(s: string, sub: string) returns (result: bool)
+// </vc-spec>
+// <vc-code>
+{
+  if |sub| == 0 {
+    return true;
+  }
+  if |sub| > |s| {
+    return false;
+  }
+  
+  var i := 0;
+  while i <= |s| - |sub|
+    invariant 0 <= i <= |s| - |sub| + 1
+  {
+    var j := 0;
+    var found := true;
+    while j < |sub| && found
+      invariant 0 <= j <= |sub|
+      invariant found ==> (forall k :: 0 <= k < j ==> s[i + k] == sub[k])
+    {
+      if s[i + j] != sub[j] {
+        found := false;
+      }
+      j := j + 1;
+    }
+    if found {
+      return true;
+    }
+    i := i + 1;
+  }
+  return false;
+}
+// </vc-code>
+
+method filter_by_substring(strings: seq<string>, substring: string) returns (res : seq<string>)
+    // post-conditions-start
+    ensures |res| <= |strings|
+    ensures (forall s :: s in res ==> s in strings)
+    // post-conditions-end
+{
+  assume{:axiom} false;
+}

@@ -1,0 +1,65 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn spec_bracketing_helper(brackets: Seq<char>) -> (result:(int, bool)) {
+    brackets.fold_left(
+        (0, true),
+        |p: (int, bool), c|
+            {
+                let (x, b) = p;
+                match (c) {
+                    '<' => (x + 1, b),
+                    '>' => (x - 1, b && x - 1 >= 0),
+                    _ => (x, b),
+                }
+            },
+    )
+}
+// pure-end
+// pure-end
+
+spec fn spec_bracketing(brackets: Seq<char>) -> (result:bool) {
+    let p = spec_bracketing_helper(brackets);
+    p.1 && p.0 == 0
+}
+// pure-end
+
+// <vc-helpers>
+
+// </vc-helpers>
+
+// <vc-spec>
+fn correct_bracketing(brackets: &str) -> (ret: bool)
+    // pre-conditions-start
+    requires
+        brackets@.len() <= i32::MAX,
+        -brackets@.len() >= i32::MIN,
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        ret <==> spec_bracketing(brackets@),
+    // post-conditions-end
+// </vc-spec>
+// <vc-code>
+{
+    let mut count = 0;
+    for c in brackets.chars() {
+        invariant count >= 0;
+        match c {
+            '<' => count += 1,
+            '>' => {
+                if count == 0 {
+                    return false;
+                }
+                count -= 1;
+            }
+            _ => {}
+        }
+    }
+    count == 0
+}
+// </vc-code>
+
+} // verus!
+fn main() {}

@@ -9,11 +9,12 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-
-
 vc-description: |-
+
+  /*
   function_signature: method is_cube(n: nat) returns (r: bool)
   Check if condition holds. Ensures: if true, then there exists an integer r such that N = r³; if false, then no integer r satisfies N = r³.
+  */
 
 vc-spec: |-
   method is_cube(n: nat) returns (r: bool)
@@ -32,3 +33,4 @@ vc-code: |-
 vc-postamble: |-
   function cube(n: int): int { n * n * n }
   // pure-end
+

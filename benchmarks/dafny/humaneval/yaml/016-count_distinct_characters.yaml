@@ -12,11 +12,12 @@ vc-preamble: |-
   { c - 'a' + 'A' }
 
 vc-helpers: |-
-
-
 vc-description: |-
+
+  /*
   function_signature: def count_distinct_characters(string: str) -> int
   Given a string, find out how many distinct characters (regardless of case) does it consist of
+  */
 
 vc-spec: |-
   method count_distinct_characters(s: string) returns (count: int)
@@ -33,3 +34,5 @@ vc-code: |-
   }
 
 vc-postamble: |-
+
+

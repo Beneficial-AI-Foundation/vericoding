@@ -1,12 +1,12 @@
 vc-preamble: |-
-
-
 vc-helpers: |-
 
 
 vc-description: |-
+  /*
   function_signature: def get_positive(l: list)
   Return only positive numbers in the list.
+  */
 
 vc-spec: |-
   method get_positive(l : seq<int>) returns (result : seq<int>)
@@ -23,3 +23,5 @@ vc-code: |-
   }
 
 vc-postamble: |-
+
+

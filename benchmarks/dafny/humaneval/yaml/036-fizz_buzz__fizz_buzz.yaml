@@ -1,12 +1,12 @@
 vc-preamble: |-
-
-
 vc-helpers: |-
 
 
 vc-description: |-
+  /*
   function_signature: method fizz_buzz(n: nat) returns (result: nat)
   Process input. Requires: returns the correct size/count. Ensures: returns the correct value.
+  */
 
 vc-spec: |-
   method fizz_buzz(n: nat) returns (result: nat)
@@ -38,3 +38,4 @@ vc-postamble: |-
     if |s| == 0 then 0 else s[0] + sum(s[1..])
   }
   // pure-end
+

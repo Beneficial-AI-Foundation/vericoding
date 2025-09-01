@@ -22,11 +22,12 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-
-
 vc-description: |-
+
+  /*
   function_signature: method SortSeq(s: SortSeqState) returns (sorted: SortSeqState)
   Sort elements. Ensures: the result is sorted according to the ordering relation; returns the correct size/count; returns a sorted permutation of the input.
+  */
 
 vc-spec: |-
   method SortSeq(s: SortSeqState) returns (sorted: SortSeqState)
@@ -42,3 +43,5 @@ vc-code: |-
   }
 
 vc-postamble: |-
+
+

@@ -37,11 +37,12 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-
-
 vc-description: |-
+
+  /*
   function_signature: method decode_shift(s: string) returns (t: string)
   Decode data. Requires: the condition holds for all values. Ensures: returns the correct size/count; the condition holds for all values.
+  */
 
 vc-spec: |-
   method decode_shift(s: string) returns (t: string)
@@ -59,3 +60,5 @@ vc-code: |-
   }
 
 vc-postamble: |-
+
+

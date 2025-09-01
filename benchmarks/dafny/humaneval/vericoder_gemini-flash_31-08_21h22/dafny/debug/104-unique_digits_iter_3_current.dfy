@@ -1,0 +1,96 @@
+function HasNoEvenDigit(n: int) : bool
+  decreases n
+{
+  n >= 0 && ((n < 10 && n % 2 == 1) || (n % 2 == 1 && HasNoEvenDigit(n / 10)))
+}
+
+// <vc-helpers>
+function DigitsOf(n: int): set<int>
+  requires n >= 0
+  decreases n
+{
+  if n == 0 then {0} else {n % 10} + DigitsOf(n / 10)
+}
+
+function IsUniqueDigit(n: int): bool
+  requires n >= 0
+{
+  // The Card property is part of the sequence type, not set type
+  // This helper function is unused anyway, so it can be safely removed or fixed.
+  // For the sake of fixing the compilation error, we will replace `s.Card()` with `|s|`.
+  var s := DigitsOf(n);
+  |s| <= 1 // Use |s| for set cardinality
+}
+
+lemma lemma_HasNoEvenDigit_preserves_unique_digit_property(k: int)
+  requires k >= 0
+  ensures HasNoEvenDigit(k) ==> (forall d | d in DigitsOf(k) :: d % 2 == 1)
+{
+  if k < 10 {
+    assert DigitsOf(k) == {k};
+  } else {
+    // inductive step handled by Dafny's built-in reasoning about recursive functions
+  }
+}
+// </vc-helpers>
+
+// <vc-spec>
+method UniqueDigits(x: seq<int>) returns (result: seq<int>)
+  // post-conditions-start
+  ensures forall i :: 0 <= i < |result| ==> HasNoEvenDigit(result[i])
+  ensures forall i, j :: 0 <= i < j < |result| ==> result[i] <= result[j]
+  ensures forall e :: e in x && HasNoEvenDigit(e) ==> e in result
+  ensures forall e :: e in result ==> e in x
+  // post-conditions-end
+// </vc-spec>
+// <vc-code>
+{
+    var unique_has_no_even_digits: seq<int> := [];
+    for i := 0 to |x| - 1
+        invariant forall k :: 0 <= k < |unique_has_no_even_digits| ==> HasNoEvenDigit(unique_has_no_even_digits[k])
+        invariant forall e :: e in unique_has_no_even_digits ==> (e in x[..i] && HasNoEvenDigit(e))
+        invariant forall e :: (e in x[..i] && HasNoEvenDigit(e)) ==> (e in unique_has_no_even_digits)
+    {
+        if HasNoEvenDigit(x[i]) {
+            var found := false;
+            for j := 0 to |unique_has_no_even_digits| - 1
+                invariant forall k :: 0 <= k < j ==> unique_has_no_even_digits[k] != x[i]
+            {
+                if unique_has_no_even_digits[j] == x[i] {
+                    found := true;
+                    break;
+                }
+            }
+            if !found {
+                unique_has_no_even_digits := unique_has_no_even_digits + [x[i]];
+            }
+        }
+    }
+
+    // Sort the sequence using Selection Sort
+    for i := 0 to |unique_has_no_even_digits| - 2
+        invariant forall k :: 0 <= k < i ==> forall l :: k < l < |unique_has_no_even_digits| ==> unique_has_no_even_digits[k] <= unique_has_no_even_digits[l]
+        invariant forall k :: 0 <= k < |unique_has_no_even_digits| ==> HasNoEvenDigit(unique_has_no_even_digits[k])
+        invariant forall e :: e in unique_has_no_even_digits ==> e in x
+        invariant multiset(unique_has_no_even_digits) == multiset(old(unique_has_no_even_digits)) // The set of elements should remain the same
+    {
+        var min_idx := i;
+        for j := i + 1 to |unique_has_no_even_digits| - 1
+            invariant i <= min_idx < j
+            invariant forall k :: i <= k < j ==> unique_has_no_even_digits[min_idx] <= unique_has_no_even_digits[k]
+        {
+            if unique_has_no_even_digits[j] < unique_has_no_even_digits[min_idx] {
+                min_idx := j;
+            }
+        }
+        // Swap elements only if min_idx is different from i
+        if min_idx != i {
+            var temp := unique_has_no_even_digits[i];
+            unique_has_no_even_digits := unique_has_no_even_digits[..i] + [unique_has_no_even_digits[min_idx]] + unique_has_no_even_digits[i+1 .. min_idx] + [temp] + unique_has_no_even_digits[min_idx+1 ..];
+        }
+    }
+
+    result := unique_has_no_even_digits;
+}
+// </vc-code>
+

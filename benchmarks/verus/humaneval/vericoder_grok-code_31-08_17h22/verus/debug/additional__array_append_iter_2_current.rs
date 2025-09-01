@@ -1,0 +1,33 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+// </vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+#[verifier::loop_isolation(false)]
+fn array_append(a: Vec<i32>, b: i32) -> (result: Vec<i32>)
+    // post-conditions-start
+    ensures
+        result.len() == a.len() + 1,
+        forall|i: int| #![auto] 0 <= i && i < result.len() ==> result[i] == (if i < a.len() { a[i] } else { b }),
+    // post-conditions-end
+// </vc-spec>
+// <vc-code>
+{
+    let mut result = a.clone();
+    result.push(b);
+    proof {
+        assert(result@.len() == a@.len() + 1);
+        assert(forall|i: int| #![trigger result@[i]] 0 <= i && i < a@.len() ==>
+            result@[i] == a@[i]);
+        assert(result@[(a@.len() as int)] == b);
+    }
+    result
+}
+// </vc-code>
+
+fn main() {}
+}
