@@ -15,25 +15,18 @@ vc-preamble: |-
   positive first and then strictnegative, i is the firs neg or len if not any */
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   method separate(v:array<int>) returns (i:int)
   modifies v
   ensures 0<=i<=v.Length
   ensures positive(v[0..i]) && strictNegative(v,i,v.Length)
   ensures isPermutation(v[0..v.Length], old(v[0..v.Length]))
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
 
 vc-postamble: |-
   
-

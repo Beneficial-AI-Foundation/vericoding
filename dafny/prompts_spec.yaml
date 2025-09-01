@@ -28,11 +28,12 @@ generate_code: |
   ```
   
   ```vc-code
-  [Implementation of the method specified in SPEC]
+  [ONLY the method body implementation between braces {{ }} - NO signature]
   ```
   
   REQUIREMENTS:
-  - The CODE section must contain a verified implementation of the method specified in the SPEC section
+  - The CODE section must contain ONLY the method body implementation inside braces {{ }}
+  - Do NOT include the method signature in CODE - it's already provided in the SPEC section
   - The HELPERS section may be updated to support the verification of the new implementation
   - Output ONLY valid Dafny code - NO conversational text, explanations, or comments outside the code
   - Use the exact format: ```vc-helpers and ```vc-code
@@ -71,10 +72,12 @@ fix_verification: |
   ```
   
   ```vc-code
-  [Fixed implementation that passes verification]
+  [ONLY the fixed method body implementation between braces {{ }} - NO signature]
   ```
   
   REQUIREMENTS:
+  - The CODE section must contain ONLY the method body implementation inside braces {{ }}
+  - Do NOT include the method signature in CODE - it's already provided in the SPEC section
   - The CODE section must be fixed to pass verification
   - The HELPERS section may be updated to support the verification of the fixed implementation
   - Output ONLY valid Dafny code - NO conversational text, explanations, or comments outside the code

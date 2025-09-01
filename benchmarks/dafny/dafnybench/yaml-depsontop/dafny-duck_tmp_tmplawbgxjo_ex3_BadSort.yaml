@@ -10,24 +10,17 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   method BadSort(a: string) returns (b: string)
   requires forall i :: 0<=i<|a| ==> a[i] in {'b', 'a', 'd'}
   ensures sortedbad(b)
   ensures multiset(b[..]) == multiset(a[..])
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
 
 vc-postamble: |-
   
-

@@ -65,23 +65,17 @@ vc-preamble: |-
   // of elements in the array.
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   method Reverse (a : array<int>) returns (aRev : array<int>)
       ensures aRev.Length == a.Length
       ensures forall i : int :: 0 <= i < a.Length ==> a[i] == aRev[aRev.Length-i-1]
       ensures fresh(aRev) // Indicates returned object is newly created in method body
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
 
 vc-postamble: |-
   // Question 9 (20 points)
@@ -90,4 +84,3 @@ vc-postamble: |-
   // are no duplicate elements in array a.  Note that the requires clause allows
   // you to assume that a is sorted, and that this precondition is necessary for
   // the ensures clause to imply a lack of duplicates.
-

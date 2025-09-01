@@ -39,21 +39,15 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   method FindAddends(q: seq<int>, x: int) returns (i: nat, j: nat)
       requires Sorted(q) && HasAddends(q, x)
       ensures i < j < |q| && q[i]+q[j] == x
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
 
 vc-postamble: |-

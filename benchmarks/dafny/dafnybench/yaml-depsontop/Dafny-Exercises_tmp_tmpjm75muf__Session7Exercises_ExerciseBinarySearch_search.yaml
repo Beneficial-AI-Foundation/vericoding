@@ -12,24 +12,17 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   method search(v:array<int>,elem:int) returns (b:bool)
    requires sorted(v[0..v.Length])
   ensures b==(elem in v[0..v.Length])
    //Implement by calling binary search function
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
 
 vc-postamble: |-
   //Recursive binary search
-

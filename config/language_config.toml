@@ -10,7 +10,7 @@ default_tool_path = "dafny"
 prompts_file = "prompts.yaml"
 
 # Verification command patterns
-verify_command = ["{tool_path}", "verify", "--allow-warnings", "{file_path}"]
+verify_command = ["{tool_path}", "verify", "{file_path}"]
 compile_check_command = ["{tool_path}", "resolve", "--allow-warnings", "{file_path}"]
 
 # Code extraction patterns
@@ -36,11 +36,8 @@ keywords = [
     "class "
 ]
 
-# Specification preservation patterns
-spec_patterns = [
-    "ATOM\\([^)]+\\)",  # ATOM blocks
-    "opaque\\s+(?:function|predicate)[^{;]+(?:\\{[^}]*\\}|;)"  # opaque functions
-]
+
+
 
 [lean]
 name = "Lean"
@@ -83,11 +80,7 @@ keywords = [
     "↔"
 ]
 
-# Specification preservation patterns
-spec_patterns = [
-    "axiom\\s+[^:]+:[^⊢]*",  # axioms
-    "opaque\\s+def[^:]+:[^⊢]*"  # opaque definitions
-]
+
 
 [verus]
 name = "Verus"
@@ -130,10 +123,7 @@ keywords = [
     "pub proof fn"
 ]
 
-# Specification preservation patterns
-spec_patterns = [
-    "spec fn [^{;]+(?:\\{[^}]*\\}|;)"  # spec functions
-]
+
 
 
 

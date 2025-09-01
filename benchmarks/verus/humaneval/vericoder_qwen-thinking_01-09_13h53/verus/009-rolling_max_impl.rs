@@ -34,15 +34,12 @@ fn rolling_max(numbers: Vec<i32>) -> (result: Vec<i32>)
     }
     let mut result = Vec::new();
     result.push(numbers[0]);
-    let mut i = 1;
+    let mut i: usize = 1;
     while i < numbers.len() {
-        invariant {
-            result.len() == i &&
-            result[i-1] == seq_max(numbers@.take(i))
-        };
-        let new_max = if result[i-1] > numbers[i] { result[i-1] } else { numbers[i] };
+        invariant { i >= 1 && result.len() == i && result[(i-1)] == seq_max(numbers@.take(i)) };
+        let new_max = if result[(i-1)] > numbers[i] { result[(i-1)] } else { numbers[i] };
         result.push(new_max);
-        i += 1;
+        i = i + 1;
     }
     return result;
 }

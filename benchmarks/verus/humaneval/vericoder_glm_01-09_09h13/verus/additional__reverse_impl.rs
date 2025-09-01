@@ -23,10 +23,14 @@ fn reverse(a: &[i32]) -> (result: Vec<i32>)
         invariant
             i <= n,
             result.len() == n,
-            forall|k: int| 0 <= k < (i as int) ==> result[k as usize] == a[n - 1 - (k as usize)],
+            forall|k: int| 0 <= k < i as int ==> result[k] == a[n as int - 1 - k],
     {
         let j = n - 1 - i;
-        result.set(i,
+        result.set(i, a[j]);
+        i = i + 1;
+    }
+    result
+}
 // </vc-code>
 
 fn main() {}

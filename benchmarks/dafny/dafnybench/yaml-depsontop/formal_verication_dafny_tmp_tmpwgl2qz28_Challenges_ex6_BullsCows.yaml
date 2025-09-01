@@ -31,26 +31,19 @@ vc-preamble: |-
   {forall j, k :: 0<=j<k<|u| ==> u[j] != u[k]}
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   method BullsCows (s:seq<nat>, u:seq<nat>) returns (b:nat, c:nat) 
   requires 0 < |u| == |s| <= 10
   requires nomultiples(u) && nomultiples(s);
   ensures b >= 0 && c >= 0
   ensures b == bullspec(s, u)
   ensures c == cowspec(s, u)
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
 
 vc-postamble: |-
   
-

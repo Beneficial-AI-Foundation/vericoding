@@ -7,24 +7,17 @@ vc-preamble: |-
   // preconditions, as proved by the MaximumIsUnique lemma below.
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   method Maximum(values: seq<int>) returns (max: int)
     requires values != []
     ensures max in values
     ensures forall i | 0 <= i < |values| :: values[i] <= max
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
 
 vc-postamble: |-
   
-

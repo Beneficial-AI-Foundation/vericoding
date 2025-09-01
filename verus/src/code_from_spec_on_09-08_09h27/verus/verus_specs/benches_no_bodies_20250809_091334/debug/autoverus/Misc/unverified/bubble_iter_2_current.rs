@@ -1,1 +1,0 @@
-nums.set(i, nums[min_idx]);

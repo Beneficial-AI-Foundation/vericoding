@@ -37,8 +37,8 @@ fn longest(strings: &Vec<Vec<u8>>) -> (result: Option<&Vec<u8>>)
         let n = strings.len();
         let mut i = 1;
         while i < n {
-            invariant (forall |j: usize| (j < i) ==> #[trigger] strings[j].len() <= strings[max_index].len()) &&
-                      (forall |j: usize| (j < max_index) ==> #[trigger] strings[j].len() < strings[max_index].len());
+            invariant (forall |j: usize| (j < i) ==> #[trigger] strings[j].len() <= strings[max_index].len());
+            invariant (forall |j: usize| (j < max_index) ==> #[trigger] strings[j].len() < strings[max_index].len());
             if strings[i].len() > strings[max_index].len() {
                 max_index = i;
             }

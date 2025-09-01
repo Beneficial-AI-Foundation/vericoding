@@ -51,22 +51,16 @@ vc-preamble: |-
   // You do *not* need to implement the method!
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   method Euclid (m : int, n : int) returns (gcd : int)
       requires m > 1 && n > 1 && m >= n  // TODO
       ensures gcd > 0 && gcd <= n && gcd <= m && m % gcd == 0 && n % gcd == 0 // TODO
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
 
 vc-postamble: |-
   // Question 7 (20 points)
@@ -89,4 +83,3 @@ vc-postamble: |-
   // are no duplicate elements in array a.  Note that the requires clause allows
   // you to assume that a is sorted, and that this precondition is necessary for
   // the ensures clause to imply a lack of duplicates.
-

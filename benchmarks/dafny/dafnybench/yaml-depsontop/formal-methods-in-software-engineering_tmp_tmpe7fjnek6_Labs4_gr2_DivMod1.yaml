@@ -100,24 +100,17 @@ vc-preamble: |-
   */
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   method DivMod1(a: int, b: int) returns (q: int, r: int)
   requires b > 0 && a >= 0
   ensures a == b*q + r && 0 <= r < b
   //decreases *
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
 
 vc-postamble: |-
   
-

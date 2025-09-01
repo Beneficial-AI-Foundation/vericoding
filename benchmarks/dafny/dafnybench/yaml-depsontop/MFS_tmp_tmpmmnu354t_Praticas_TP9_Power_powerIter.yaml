@@ -15,24 +15,17 @@ vc-preamble: |-
   // Iterative version, imperative, with time complexity O(n) and space complexity O(1).
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   method powerIter(b: real, n: nat) returns (p : real)
       ensures p == power(b, n)
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
 
 vc-postamble: |-
   // Recursive version, imperative, with time and space complexity O(log n).
   
   // A simple test case to make sure the specification is adequate.
-

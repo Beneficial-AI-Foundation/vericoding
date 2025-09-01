@@ -18,11 +18,8 @@ vc-preamble: |-
   // this file.
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   method SearchRecursive( a: seq<real>, i: int, j: int, x: real ) returns ( k: int )
       decreases j-i;
       requires 0 <= i <= j <= |a|;
@@ -30,16 +27,12 @@ vc-spec: |-
       ensures i <= k <= j
       ensures forall r | i <= r < k :: a[r] >= x;
       ensures forall r | k <= r < j :: a[r] < x;
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
 
 vc-postamble: |-
   // Ef eftirfarandi fall er ekki samþykkt þá eru
   // föllin ekki að haga sér rétt að mati Dafny.
-

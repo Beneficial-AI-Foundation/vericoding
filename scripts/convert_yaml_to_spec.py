@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Convert YAML files to Dafny spec files using yaml_to_code with spec=True and vibe=True.
+Convert YAML files to Dafny spec files using yaml_to_code with spec_mode=True and vibe_mode=True.
 """
 
 from __future__ import annotations
@@ -25,7 +25,7 @@ def convert_yaml_to_spec(yaml_path: Path, output_dir: Path) -> bool:
         data = load_yaml(yaml_path)
         
         # Convert to Dafny code with both spec and vibe
-        dafny_code = yaml_to_code(data, spec=True, vibe=True)
+        dafny_code = yaml_to_code(data, spec_mode=True, vibe_mode=True)
         
         # Create output file path
         output_path = output_dir / (yaml_path.stem + ".dfy")

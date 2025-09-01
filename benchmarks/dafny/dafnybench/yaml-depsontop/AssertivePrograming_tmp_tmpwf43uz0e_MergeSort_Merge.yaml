@@ -97,23 +97,17 @@ vc-preamble: |-
   //This lemma helps dafny see that after adding the next value from c to b the prefixes are still the same subsets.
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   method Merge(b: array<int>, c: array<int>, d: array<int>)
       requires b != c && b != d && b.Length == c.Length + d.Length
       requires Sorted(c[..]) && Sorted(d[..])
       ensures Sorted(b[..]) && multiset(b[..]) == multiset(c[..])+multiset(d[..])
       modifies b
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
 
 vc-postamble: |-

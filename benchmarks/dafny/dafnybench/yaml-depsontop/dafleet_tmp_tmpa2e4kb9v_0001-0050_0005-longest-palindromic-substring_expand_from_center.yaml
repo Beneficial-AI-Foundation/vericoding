@@ -150,11 +150,8 @@ vc-preamble: |-
   // because its both ends are the bogus char.
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   method expand_from_center(s: string, i0: int, j0: int) returns (lo: int, hi: int)
     requires 0 <= i0 <= j0 <= |s|
     requires palindromic(s, i0, j0)
@@ -162,13 +159,10 @@ vc-spec: |-
     ensures forall i, j | 0 <= i <= j <= |s| && palindromic(s, i, j)  // Among all palindromes
       && i + j == i0 + j0                                             // sharing the same center,
       :: j - i <= hi - lo                                             // `s[lo..hi]` is longest.
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
 
 vc-postamble: |-
