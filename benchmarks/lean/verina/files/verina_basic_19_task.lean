@@ -1,0 +1,109 @@
+/- 
+-----Description-----
+This task requires writing a Lean 4 method that checks whether an array of integers is sorted in non-decreasing order. The method should return true if every element is less than or equal to the element that follows it, and false otherwise.
+
+-----Input-----
+The input consists of:
+a: An array of integers. The array can be empty or have any length.
+
+-----Output-----
+The output is a Boolean value:
+Returns true if the array is sorted in non-decreasing order.
+Returns false if the array is not sorted in non-decreasing order.
+
+-----Note-----
+A true result guarantees that for every valid pair of indices i and j (with i < j), the element at position i is less than or equal to the element at position j. A false result indicates that there exists at least one adjacent pair of elements where the first element is greater than the second.
+-/
+
+@[reducible, simp]
+def isSorted_precond (a : Array Int) : Prop :=
+  True
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def isSorted (a : Array Int) (h_precond : isSorted_precond (a)) : Bool :=
+-- <vc-implementation>
+  sorry
+-- </vc-implementation>
+
+@[reducible, simp]
+def isSorted_postcond (a : Array Int) (result: Bool) (h_precond : isSorted_precond (a)) :=
+  (∀ i, (hi : i < a.size - 1) → a[i] ≤ a[i + 1]) ↔ result
+
+theorem isSorted_spec_satisfied (a: Array Int) (h_precond : isSorted_precond (a)) :
+    isSorted_postcond (a) (isSorted (a) h_precond) h_precond := by
+-- <vc-proof>
+  sorry
+-- </vc-proof>
+
+/-
+-- Invalid Inputs
+[]
+-- Tests
+[
+    {
+        "input": {
+            "a": "#[1, 2, 3, 4, 5]"
+        },
+        "expected": true,
+        "unexpected": [
+            false
+        ]
+    },
+    {
+        "input": {
+            "a": "#[5, 4, 3, 2, 1]"
+        },
+        "expected": false,
+        "unexpected": [
+            true
+        ]
+    },
+    {
+        "input": {
+            "a": "#[1, 3, 2, 4, 5]"
+        },
+        "expected": false,
+        "unexpected": [
+            true
+        ]
+    },
+    {
+        "input": {
+            "a": "#[]"
+        },
+        "expected": true,
+        "unexpected": [
+            false
+        ]
+    },
+    {
+        "input": {
+            "a": "#[10]"
+        },
+        "expected": true,
+        "unexpected": [
+            false
+        ]
+    },
+    {
+        "input": {
+            "a": "#[2, 2, 2, 2]"
+        },
+        "expected": true,
+        "unexpected": [
+            false
+        ]
+    },
+    {
+        "input": {
+            "a": "#[1, 2, 2, 3]"
+        },
+        "expected": true,
+        "unexpected": [
+            false
+        ]
+    }
+]
+-/

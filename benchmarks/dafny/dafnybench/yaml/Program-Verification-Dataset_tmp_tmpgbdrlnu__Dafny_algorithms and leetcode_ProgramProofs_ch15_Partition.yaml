@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   predicate SplitPoint(a: array<int>, n: int)
       reads a
@@ -41,5 +43,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  
 

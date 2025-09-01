@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   predicate sorted(a:array<int>, from:int, to:int)
     requires a != null;
@@ -36,5 +38,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  
 

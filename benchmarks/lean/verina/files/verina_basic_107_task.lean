@@ -1,0 +1,105 @@
+/- 
+-----Description-----
+This task involves computing the average of two integers. The objective is to determine a value that closely approximates the true arithmetic mean when using integer division, ensuring that the result reflects the necessary rounding behavior.
+
+-----Input-----
+The input consists of:
+• a: An integer.
+• b: An integer.
+
+-----Output-----
+The output is an integer representing the computed average of a and b using integer division.
+
+-----Note-----
+The specification requires that the computed average satisfies the condition that 2 * avg is between (a + b - 1) and (a + b + 1), ensuring that the result meets the expected rounding boundaries.
+-/
+
+@[reducible, simp]
+def ComputeAvg_precond (a : Int) (b : Int) : Prop :=
+  True
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def ComputeAvg (a : Int) (b : Int) (h_precond : ComputeAvg_precond (a) (b)) : Int :=
+-- <vc-implementation>
+  sorry
+-- </vc-implementation>
+
+@[reducible, simp]
+def ComputeAvg_postcond (a : Int) (b : Int) (result: Int) (h_precond : ComputeAvg_precond (a) (b)) :=
+  2 * result = a + b - ((a + b) % 2)
+
+theorem ComputeAvg_spec_satisfied (a: Int) (b: Int) (h_precond : ComputeAvg_precond (a) (b)) :
+    ComputeAvg_postcond (a) (b) (ComputeAvg (a) (b) h_precond) h_precond := by
+-- <vc-proof>
+  sorry
+-- </vc-proof>
+
+/-
+-- Invalid Inputs
+[]
+-- Tests
+[
+    {
+        "input": {
+            "a": 4,
+            "b": 6
+        },
+        "expected": 5,
+        "unexpected": [
+            4,
+            6,
+            7
+        ]
+    },
+    {
+        "input": {
+            "a": 3,
+            "b": 5
+        },
+        "expected": 4,
+        "unexpected": [
+            3,
+            5,
+            6
+        ]
+    },
+    {
+        "input": {
+            "a": 3,
+            "b": 4
+        },
+        "expected": 3,
+        "unexpected": [
+            2,
+            4,
+            5
+        ]
+    },
+    {
+        "input": {
+            "a": -3,
+            "b": 7
+        },
+        "expected": 2,
+        "unexpected": [
+            1,
+            3,
+            0
+        ]
+    },
+    {
+        "input": {
+            "a": -5,
+            "b": 5
+        },
+        "expected": 0,
+        "unexpected": [
+            1,
+            -1,
+            2
+        ]
+    }
+]
+-/

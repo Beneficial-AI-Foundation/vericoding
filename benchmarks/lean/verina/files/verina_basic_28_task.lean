@@ -1,0 +1,125 @@
+/- 
+-----Description-----
+This task requires writing a Lean 4 method that determines whether a given natural number is prime. A number (with n ≥ 2) is considered prime if it is divisible only by 1 and itself. The method should return true when the input number is prime and false otherwise.
+
+-----Input-----
+The input consists of:
+n: A natural number (Nat) such that n ≥ 2.
+
+-----Output-----
+The output is a Boolean value:
+Returns true if the input number is prime (i.e., there is no integer k with 1 < k < n that divides n).
+Returns false if the input number is not prime (i.e., there exists an integer k with 1 < k < n that divides n).
+
+-----Note-----
+The input is expected to satisfy the condition n ≥ 2.
+-/
+
+@[reducible, simp]
+def isPrime_precond (n : Nat) : Prop :=
+  n ≥ 2
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def isPrime (n : Nat) (h_precond : isPrime_precond (n)) : Bool :=
+-- <vc-implementation>
+  sorry
+-- </vc-implementation>
+
+@[reducible, simp]
+def isPrime_postcond (n : Nat) (result: Bool) (h_precond : isPrime_precond (n)) :=
+  (result → (List.range' 2 (n - 2)).all (fun k => n % k ≠ 0)) ∧
+  (¬ result → (List.range' 2 (n - 2)).any (fun k => n % k = 0))
+
+theorem isPrime_spec_satisfied (n: Nat) (h_precond : isPrime_precond (n)) :
+    isPrime_postcond (n) (isPrime (n) h_precond) h_precond := by
+-- <vc-proof>
+  sorry
+-- </vc-proof>
+
+/-
+-- Invalid Inputs
+[
+    {
+        "input": {
+            "n": 0
+        }
+    }
+]
+-- Tests
+[
+    {
+        "input": {
+            "n": 2
+        },
+        "expected": true,
+        "unexpected": [
+            false
+        ]
+    },
+    {
+        "input": {
+            "n": 3
+        },
+        "expected": true,
+        "unexpected": [
+            false
+        ]
+    },
+    {
+        "input": {
+            "n": 4
+        },
+        "expected": false,
+        "unexpected": [
+            true
+        ]
+    },
+    {
+        "input": {
+            "n": 5
+        },
+        "expected": true,
+        "unexpected": [
+            false
+        ]
+    },
+    {
+        "input": {
+            "n": 9
+        },
+        "expected": false,
+        "unexpected": [
+            true
+        ]
+    },
+    {
+        "input": {
+            "n": 11
+        },
+        "expected": true,
+        "unexpected": [
+            false
+        ]
+    },
+    {
+        "input": {
+            "n": 12
+        },
+        "expected": false,
+        "unexpected": [
+            true
+        ]
+    },
+    {
+        "input": {
+            "n": 13
+        },
+        "expected": true,
+        "unexpected": [
+            false
+        ]
+    }
+]
+-/

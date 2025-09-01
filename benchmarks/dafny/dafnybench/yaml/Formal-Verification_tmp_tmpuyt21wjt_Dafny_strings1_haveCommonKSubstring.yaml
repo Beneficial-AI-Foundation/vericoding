@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   predicate isNotPrefixPred(pre:string, str:string)
   {
@@ -36,6 +38,11 @@ vc-preamble: |-
   {
     |str1| >= k && |str2| >= k && (exists i :: 0 <= i <= |str1| - k && isSubstringPredicate((str1[i..])[..k], str2))
   }
+  
+  predicate maxCommonSubstringPredicate(str1: string, str2: string, len:nat)
+  {
+     forall k :: len < k <= |str1| ==> !haveCommonKSubstringPredicate(k, str1, str2)
+  }
 
 vc-helpers: |-
   // <vc-helpers>
@@ -56,8 +63,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  predicate maxCommonSubstringPredicate(str1: string, str2: string, len:nat)
-  {
-     forall k :: len < k <= |str1| ==> !haveCommonKSubstringPredicate(k, str1, str2)
-  }
 

@@ -1,0 +1,99 @@
+/- 
+-----Description-----
+This task requires determining the smaller of two integers. Given two input numbers, the goal is to compare them and return the one that is less than or equal to the other.
+
+-----Input-----
+The input consists of two integers:
+• x: The first integer.
+• y: The second integer.
+
+-----Output-----
+The output is an integer representing the minimum of the two input integers:
+• Returns x if x is less than or equal to y.
+• Returns y if x is greater than y.
+-/
+
+@[reducible, simp]
+def myMin_precond (x : Int) (y : Int) : Prop :=
+  True
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def myMin (x : Int) (y : Int) (h_precond : myMin_precond (x) (y)) : Int :=
+-- <vc-implementation>
+  sorry
+-- </vc-implementation>
+
+@[reducible, simp]
+def myMin_postcond (x : Int) (y : Int) (result: Int) (h_precond : myMin_precond (x) (y)) :=
+  (x ≤ y → result = x) ∧ (x > y → result = y)
+
+theorem myMin_spec_satisfied (x: Int) (y: Int) (h_precond : myMin_precond (x) (y)) :
+    myMin_postcond (x) (y) (myMin (x) (y) h_precond) h_precond := by
+-- <vc-proof>
+  sorry
+-- </vc-proof>
+
+/-
+-- Invalid Inputs
+[]
+-- Tests
+[
+    {
+        "input": {
+            "x": 3,
+            "y": 5
+        },
+        "expected": 3,
+        "unexpected": [
+            5,
+            8
+        ]
+    },
+    {
+        "input": {
+            "x": 10,
+            "y": 7
+        },
+        "expected": 7,
+        "unexpected": [
+            10,
+            17
+        ]
+    },
+    {
+        "input": {
+            "x": 4,
+            "y": 4
+        },
+        "expected": 4,
+        "unexpected": [
+            0,
+            8
+        ]
+    },
+    {
+        "input": {
+            "x": -5,
+            "y": 0
+        },
+        "expected": -5,
+        "unexpected": [
+            0,
+            -4
+        ]
+    },
+    {
+        "input": {
+            "x": 0,
+            "y": -10
+        },
+        "expected": -10,
+        "unexpected": [
+            0,
+            -8
+        ]
+    }
+]
+-/

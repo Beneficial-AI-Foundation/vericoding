@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function sumNegativesTo( a:array<int>, n:int ) : int
     requires a != null;
@@ -26,5 +28,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  
 

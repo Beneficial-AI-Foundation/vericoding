@@ -1,0 +1,42 @@
+vc-description: |-
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn verify_neg(a: &[int], idx: int) -> nat
+      decreases idx
+  {
+      if idx <= 0 {
+          0nat
+      } else {
+          verify_neg(a, idx - 1) + (if a[idx - 1] < 0 { 1nat } else { 0nat })
+      }
+  }
+
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  // <vc-spec>
+  fn count_neg(a: &[int]) -> (cnt: usize)
+      ensures cnt == verify_neg(a, a.len() as int)
+  // </vc-spec>
+
+vc-code: |-
+  // <vc-code>
+  {
+      assume(false);
+      0
+  }
+  // </vc-code>
+
+vc-postamble: |-
+  
+  fn main() {
+  }
+  
+  }
+

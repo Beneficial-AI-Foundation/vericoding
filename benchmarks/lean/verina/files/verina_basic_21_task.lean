@@ -1,0 +1,127 @@
+/- 
+-----Description-----
+This task requires writing a Lean 4 method that determines whether one list is a sublist of another. In other words, the method should check if the first list appears as a contiguous sequence within the second list and return true if it does, and false otherwise.
+
+-----Input-----
+The input consists of two lists of integers:
+sub: A list of integers representing the potential sublist.
+main: A list of integers in which to search for the sublist.
+
+-----Output-----
+The output is a Boolean value:
+Returns true if the first list appears as a contiguous sequence within the second list.
+Returns false if the first list does not appear as a contiguous sequence in the second list.
+
+-----Note-----
+There are no preconditions for this method; the sequences are always non-null.
+-/
+
+@[reducible, simp]
+def isSublist_precond (sub : List Int) (main : List Int) : Prop :=
+  True
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def isSublist (sub : List Int) (main : List Int) (h_precond : isSublist_precond (sub) (main)) : Bool :=
+-- <vc-implementation>
+  sorry
+-- </vc-implementation>
+
+@[reducible, simp]
+def isSublist_postcond (sub : List Int) (main : List Int) (result: Bool) (h_precond : isSublist_precond (sub) (main)) :=
+  (∃ i, i + sub.length ≤ main.length ∧ sub = (main.drop i).take sub.length) ↔ result
+
+theorem isSublist_spec_satisfied (sub: List Int) (main: List Int) (h_precond : isSublist_precond (sub) (main)) :
+    isSublist_postcond (sub) (main) (isSublist (sub) (main) h_precond) h_precond := by
+-- <vc-proof>
+  sorry
+-- </vc-proof>
+
+/-
+-- Invalid Inputs
+[]
+-- Tests
+[
+    {
+        "input": {
+            "sub": "[1, 2]",
+            "main": "[3, 1, 2, 4]"
+        },
+        "expected": true,
+        "unexpected": [
+            false
+        ]
+    },
+    {
+        "input": {
+            "sub": "[2, 3]",
+            "main": "[3, 1, 2, 4]"
+        },
+        "expected": false,
+        "unexpected": [
+            true
+        ]
+    },
+    {
+        "input": {
+            "sub": "[3, 1]",
+            "main": "[3, 1, 2, 4]"
+        },
+        "expected": true,
+        "unexpected": [
+            false
+        ]
+    },
+    {
+        "input": {
+            "sub": "[4]",
+            "main": "[3, 1, 2, 4]"
+        },
+        "expected": true,
+        "unexpected": [
+            false
+        ]
+    },
+    {
+        "input": {
+            "sub": "[5]",
+            "main": "[3, 1, 2, 4]"
+        },
+        "expected": false,
+        "unexpected": [
+            true
+        ]
+    },
+    {
+        "input": {
+            "sub": "[]",
+            "main": "[3, 1, 2, 4]"
+        },
+        "expected": true,
+        "unexpected": [
+            false
+        ]
+    },
+    {
+        "input": {
+            "sub": "[1, 2]",
+            "main": "[]"
+        },
+        "expected": false,
+        "unexpected": [
+            true
+        ]
+    },
+    {
+        "input": {
+            "sub": "[]",
+            "main": "[]"
+        },
+        "expected": true,
+        "unexpected": [
+            false
+        ]
+    }
+]
+-/

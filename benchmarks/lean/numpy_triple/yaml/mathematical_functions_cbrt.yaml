@@ -1,0 +1,64 @@
+vc-description: |-
+  /- 
+  {
+    "name": "numpy.cbrt",
+    "description": "Return the cube-root of an array, element-wise",
+    "url": "https://numpy.org/doc/stable/reference/generated/numpy.cbrt.html",
+    "doc": "Return the cube-root of an array, element-wise.",
+  }
+  -/
+  
+  /-  numpy.cbrt: Return the cube-root of an array, element-wise.
+  
+      Computes the cube root of each element in the input array.
+      The cube root function is defined for all real numbers, including negative numbers.
+      For any real number x, cbrt(x) = y such that y³ = x.
+  
+      Returns an array of the same shape as x, containing the cube roots.
+  -/
+  
+  /-  Specification: numpy.cbrt returns a vector where each element is the
+      cube root of the corresponding element in x.
+  
+      Precondition: True (cube root is defined for all real numbers)
+      Postcondition: For all indices i, (result[i])³ = x[i]
+      
+      Mathematical properties:
+      - cbrt(x³) = x for all x
+      - cbrt(-x) = -cbrt(x) (odd function)
+      - cbrt(0) = 0
+      - cbrt(1) = 1
+      - cbrt(8) = 2
+      - cbrt(-8) = -2
+  -/
+
+vc-preamble: |-
+  import Std.Do.Triple
+  import Std.Tactic.Do
+  open Std.Do
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def cbrt {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    sorry
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem cbrt_spec {n : Nat} (x : Vector Float n) :
+      ⦃⌜True⌝⦄
+      cbrt x
+      ⦃⇓result => ⌜∀ i : Fin n, (result.get i) ^ 3 = x.get i⌝⦄ := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+

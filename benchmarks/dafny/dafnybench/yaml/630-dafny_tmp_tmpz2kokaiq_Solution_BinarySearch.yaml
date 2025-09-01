@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function sorted(a: array<int>) : bool
       reads a
@@ -16,7 +18,7 @@ vc-spec: |-
       ensures 0 <= index < a.Length ==> a[index] == x
       ensures index == -1 ==> forall i : int :: 0 <= i < a.Length ==> a[i] != x
   // </vc-spec>
-  
+
 vc-code: |-
   // <vc-code>
   {

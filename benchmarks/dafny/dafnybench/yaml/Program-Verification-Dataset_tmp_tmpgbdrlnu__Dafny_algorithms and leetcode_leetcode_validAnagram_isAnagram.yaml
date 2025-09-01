@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   method toMultiset(s: string) returns (mset: multiset<char>)
       ensures multiset(s) == mset
@@ -29,5 +31,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  
 

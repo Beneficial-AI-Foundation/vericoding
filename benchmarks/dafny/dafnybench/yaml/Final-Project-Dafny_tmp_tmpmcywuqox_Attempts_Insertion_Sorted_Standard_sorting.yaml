@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   predicate InsertionSorted(Array: array<int>, left: int, right: int)  
     requires 0 <= left <= right <= Array.Length       
@@ -26,5 +28,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  
 

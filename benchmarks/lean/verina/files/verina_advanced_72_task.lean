@@ -1,0 +1,121 @@
+/- 
+-----Description-----
+This task requires writing a Lean 4 method that given an natural number n, returns the smallest prime factor that is less than 10. If none exist, return 0
+
+-----Input-----
+The input consists of one natural number:
+n: The main natural number.
+
+-----Output-----
+The output is an natural number:
+Returns the smallest prime factor that is less than 10 or, if none exist, 0
+-/
+
+@[reducible, simp]
+def singleDigitPrimeFactor_precond (n : Nat) : Prop :=
+  True
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def singleDigitPrimeFactor (n : Nat) (h_precond : singleDigitPrimeFactor_precond (n)) : Nat :=
+-- <vc-implementation>
+  sorry
+-- </vc-implementation>
+
+@[reducible, simp]
+def singleDigitPrimeFactor_postcond (n : Nat) (result: Nat) (h_precond : singleDigitPrimeFactor_precond (n)) : Prop :=
+  result ∈ [0, 2, 3, 5, 7] ∧
+  (result = 0 → (n = 0 ∨ [2, 3, 5, 7].all (n % · ≠ 0))) ∧
+  (result ≠ 0 → n ≠ 0 ∧ n % result == 0 ∧ (List.range result).all (fun x => x ∈ [2, 3, 5, 7] → n % x ≠ 0))
+
+theorem singleDigitPrimeFactor_spec_satisfied (n: Nat) (h_precond : singleDigitPrimeFactor_precond (n)) :
+    singleDigitPrimeFactor_postcond (n) (singleDigitPrimeFactor (n) h_precond) h_precond := by
+-- <vc-proof>
+  sorry
+-- </vc-proof>
+
+/-
+-- Invalid Inputs
+[]
+-- Tests
+[
+    {
+        "input": {
+            "n": 0
+        },
+        "expected": 0,
+        "unexpected": [
+            1,
+            2,
+            3
+        ]
+    },
+    {
+        "input": {
+            "n": 98
+        },
+        "expected": 2,
+        "unexpected": [
+            7,
+            8,
+            9
+        ]
+    },
+    {
+        "input": {
+            "n": 9
+        },
+        "expected": 3,
+        "unexpected": [
+            4,
+            5,
+            6
+        ]
+    },
+    {
+        "input": {
+            "n": 73
+        },
+        "expected": 0,
+        "unexpected": [
+            1,
+            2,
+            3
+        ]
+    },
+    {
+        "input": {
+            "n": 529
+        },
+        "expected": 0,
+        "unexpected": [
+            7,
+            8,
+            9
+        ]
+    },
+    {
+        "input": {
+            "n": 161
+        },
+        "expected": 7,
+        "unexpected": [
+            0,
+            1,
+            2
+        ]
+    },
+    {
+        "input": {
+            "n": 0
+        },
+        "expected": 0,
+        "unexpected": [
+            1,
+            2,
+            3
+        ]
+    }
+]
+-/

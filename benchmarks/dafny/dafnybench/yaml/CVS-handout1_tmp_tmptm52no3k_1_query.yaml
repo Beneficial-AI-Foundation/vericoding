@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   /*                                      Cumulative Sums over Arrays                                        */
   
@@ -22,6 +24,16 @@ vc-preamble: |-
   
   
   //(b)
+  
+  //(c)
+  
+  predicate is_prefix_sum_for (a: array<int>, c: array<int>)
+      requires a.Length + 1 == c.Length
+      requires c[0] == 0
+      reads c, a
+  {
+      forall i: int :: 0 <= i < a.Length ==> c[i+1] == c[i] + a[i]
+  }
 
 vc-helpers: |-
   // <vc-helpers>
@@ -42,13 +54,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  //(c)
-  
-  predicate is_prefix_sum_for (a: array<int>, c: array<int>)
-      requires a.Length + 1 == c.Length
-      requires c[0] == 0
-      reads c, a
-  {
-      forall i: int :: 0 <= i < a.Length ==> c[i+1] == c[i] + a[i]
-  }
 

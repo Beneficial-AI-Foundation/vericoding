@@ -1,0 +1,51 @@
+/- 
+{
+  "name": "numpy.from_dlpack",
+  "category": "From existing data",
+  "description": "Create a NumPy array from an object implementing the __dlpack__ protocol",
+  "url": "https://numpy.org/doc/stable/reference/generated/numpy.from_dlpack.html",
+  "doc": "\nCreate a NumPy array from an object implementing the __dlpack__ protocol.\n\nParameters\n----------\nx : object\n    A Python object that implements the __dlpack__ and __dlpack_device__ methods.\ndevice : device, optional\n    Device on which to place the created array. Must be \"cpu\" if specified.\ncopy : bool, optional\n    If True, the array is copied. If False, the array is not copied. \n    If None (default), the array is only copied if necessary.\n\nReturns\n-------\nout : ndarray\n    Array created from the input object.\n\nNotes\n-----\nThis function allows for interoperability with other libraries that support the DLPack protocol.\n",
+  "signature": "numpy.from_dlpack(x, /, *, device=None, copy=None)"
+}
+-/
+
+/-  Create a NumPy array from an object implementing the DLPack protocol -/
+
+/-  Specification: from_dlpack creates a vector from a DLPack-compatible object -/
+
+import Std.Do.Triple
+import Std.Tactic.Do
+open Std.Do
+
+/-- Abstract type representing a DLPack-compatible object -/
+structure DLPackObject (α : Type) (n : Nat) where
+  /-- The underlying data vector -/
+  data : Vector α n
+  /-- Whether the object has __dlpack__ method -/
+  has_dlpack : Bool
+  /-- Whether the object has __dlpack_device__ method -/
+  has_dlpack_device : Bool
+  /-- The device on which the object resides -/
+  device : String
+  deriving Repr
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def from_dlpack {α : Type} {n : Nat} (x : DLPackObject α n) (device : Option String := none) 
+    (copy : Option Bool := none) : Id (Vector α n) :=
+-- <vc-implementation>
+  sorry
+-- </vc-implementation>
+
+theorem from_dlpack_spec {α : Type} {n : Nat} (x : DLPackObject α n) 
+    (device : Option String := none) (copy : Option Bool := none) :
+    ⦃⌜x.has_dlpack ∧ x.has_dlpack_device ∧ 
+      (device.isNone ∨ device = some "cpu")⌝⦄
+    from_dlpack x device copy
+    ⦃⇓result => ⌜∀ i : Fin n, result.get i = x.data.get i ∧
+                 (copy = some true → result ≠ x.data) ∧
+                 (copy = some false → result = x.data)⌝⦄ := by
+-- <vc-proof>
+  sorry
+-- </vc-proof>

@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function gcd(m: nat, n: nat) : nat
   requires m>0 && n>0;
@@ -7,26 +9,7 @@ vc-preamble: |-
       else if( m > n) then gcd(m-n,n)
       else gcd(m, n-m)
   }
-
-vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
-
-vc-spec: |-
-  // <vc-spec>
-  method exp_by_sqr(x0: real, n0: nat) returns (r:real)
-  requires x0 >= 0.0;
-  ensures r == exp(x0, n0);
-  // </vc-spec>
-
-vc-code: |-
-  // <vc-code>
-  {
-    assume false;
-  }
-  // </vc-code>
-
-vc-postamble: |-
+  
   function exp(x: real, n: nat) :real
   decreases n;
   {
@@ -60,4 +43,24 @@ vc-postamble: |-
   //     assert (i == y);
   //     return z;
   // }
+
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  // <vc-spec>
+  method exp_by_sqr(x0: real, n0: nat) returns (r:real)
+  requires x0 >= 0.0;
+  ensures r == exp(x0, n0);
+  // </vc-spec>
+
+vc-code: |-
+  // <vc-code>
+  {
+    assume false;
+  }
+  // </vc-code>
+
+vc-postamble: |-
 

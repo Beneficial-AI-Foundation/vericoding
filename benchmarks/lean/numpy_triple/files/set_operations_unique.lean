@@ -1,0 +1,36 @@
+/- 
+{
+  "name": "numpy.unique",
+  "category": "Unique operations",
+  "description": "Find the unique elements of an array",
+  "url": "https://numpy.org/doc/stable/reference/generated/numpy.unique.html",
+  "doc": "Find the unique elements of an array.\n\nReturns the sorted unique elements of an array. There are three optional\noutputs in addition to the unique elements:\n\n* the indices of the input array that give the unique values\n* the indices of the unique array that reconstruct the input array\n* the number of times each unique value comes up in the input array\n\nParameters\n----------\nar : array_like\n    Input array. Unless `axis` is specified, this will be flattened if it\n    is not already 1-D.\nreturn_index : bool, optional\n    If True, also return the indices of `ar` (along the specified axis,\n    if provided, or in the flattened array) that result in the unique array.\nreturn_inverse : bool, optional\n    If True, also return the indices of the unique array (for the specified\n    axis, if provided) that can be used to reconstruct `ar`.\nreturn_counts : bool, optional\n    If True, also return the number of times each unique item appears\n    in `ar`.\naxis : int or None, optional\n    The axis to operate on. If None, `ar` will be flattened. If an integer,\n    the subarrays indexed by the given axis will be flattened and treated\n    as the elements of a 1-D array with the dimension of the given axis,\n    see the notes for more details.  Object arrays or structured arrays\n    that contain objects are not supported if the `axis` kwarg is used. The\n    default is None.\n\n    .. versionadded:: 1.13.0\n\nequal_nan : bool, optional\n    If True, collapses multiple NaN values in the return array into one.\n\n    .. versionadded:: 1.24\n\nReturns\n-------\nunique : ndarray\n    The sorted unique values.\nunique_indices : ndarray, optional\n    The indices of the first occurrences of the unique values in the\n    original array. Only provided if `return_index` is True.\nunique_inverse : ndarray, optional\n    The indices to reconstruct the original array from the\n    unique array. Only provided if `return_inverse` is True.\nunique_counts : ndarray, optional\n    The number of times each of the unique values comes up in the\n    original array. Only provided if `return_counts` is True.\n\n    .. versionadded:: 1.9.0",
+}
+-/
+
+/-  Find the unique elements of a vector and return them in sorted order -/
+
+/-  Specification: unique returns sorted unique elements from the input vector -/
+
+import Std.Do.Triple
+import Std.Tactic.Do
+open Std.Do
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def unique {n : Nat} (arr : Vector Int n) : Id (List Int) :=
+-- <vc-implementation>
+  sorry
+-- </vc-implementation>
+
+theorem unique_spec {n : Nat} (arr : Vector Int n) :
+    ⦃⌜True⌝⦄
+    unique arr
+    ⦃⇓result => ⌜(∀ i j : Nat, i < j → j < result.length → result[i]? < result[j]?) ∧ 
+                  (∀ i : Nat, i < result.length → ∃ j : Fin n, result[i]? = some (arr.get j)) ∧
+                  (∀ i j : Nat, i < result.length → j < result.length → i ≠ j → result[i]? ≠ result[j]?) ∧
+                  (∀ i : Fin n, ∃ j : Nat, j < result.length ∧ some (arr.get i) = result[j]?)⌝⦄ := by
+-- <vc-proof>
+  sorry
+-- </vc-proof>

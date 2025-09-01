@@ -8,6 +8,6 @@ rm benchmarks/lean/wrong_format.txt
 python3 src/formatting/numpy_triple_copy_files.py
 python3 src/formatting/numpy_triple_replace_files.py
 python3 src/formatting/numpy_triple_check_format.py
-python3 src/formatting/numpy_triple_parse_files.py
-python3 src/formatting/numpy_triple_impl_proof.py 
-python3 src/formatting/numpy_triple_empty_descriptions.py
+# python3 src/formatting/numpy_triple_analyze_components.py
+# python3 src/formatting/numpy_triple_impl_proof.py 
+# python3 src/formatting/numpy_triple_empty_descriptions.py

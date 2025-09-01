@@ -1,0 +1,109 @@
+/- 
+-----Description-----
+The task is to determine the position of a target integer in a given array. The goal is to return the index corresponding to the first occurrence of the target value. If the target is not present in the array, the result should indicate that by returning the size of the array. This description focuses entirely on understanding the problem without specifying any particular implementation method.
+
+-----Input-----
+The input consists of:
+• a: An array of integers.
+• e: An integer representing the target to search for in the array.
+
+-----Output-----
+The output is a natural number (Nat) which is:
+• The index of the first occurrence of the target integer if found.
+• The size of the array if the target integer is not present.
+
+-----Note-----
+There are no strict preconditions on the input; the method should work correctly for any array of integers. The specification ensures that the returned index is always valid: it is either within the array bounds with a matching element or equals the array’s size if the element is absent.
+-/
+
+import Mathlib
+
+@[reducible, simp]
+def LinearSearch_precond (a : Array Int) (e : Int) : Prop :=
+  True
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def LinearSearch (a : Array Int) (e : Int) (h_precond : LinearSearch_precond (a) (e)) : Nat :=
+-- <vc-implementation>
+  sorry
+-- </vc-implementation>
+
+@[reducible, simp]
+def LinearSearch_postcond (a : Array Int) (e : Int) (result: Nat) (h_precond : LinearSearch_precond (a) (e)) :=
+  result ≤ a.size ∧ (result = a.size ∨ a[result]! = e) ∧ (∀ i, i < result → a[i]! ≠ e)
+
+theorem LinearSearch_spec_satisfied (a: Array Int) (e: Int) (h_precond : LinearSearch_precond (a) (e)) :
+    LinearSearch_postcond (a) (e) (LinearSearch (a) (e) h_precond) h_precond := by
+-- <vc-proof>
+  sorry
+-- </vc-proof>
+
+/-
+-- Invalid Inputs
+[]
+-- Tests
+[
+    {
+        "input": {
+            "a": "#[1, 3, 5, 7, 9]",
+            "e": 5
+        },
+        "expected": "2",
+        "unexpected": [
+            "1",
+            "3",
+            "4"
+        ]
+    },
+    {
+        "input": {
+            "a": "#[2, 4, 6, 8]",
+            "e": 5
+        },
+        "expected": "4",
+        "unexpected": [
+            "1",
+            "3",
+            "5"
+        ]
+    },
+    {
+        "input": {
+            "a": "#[5, 5, 5]",
+            "e": 5
+        },
+        "expected": "0",
+        "unexpected": [
+            "1",
+            "2",
+            "3"
+        ]
+    },
+    {
+        "input": {
+            "a": "#[10, 9, 8, 7]",
+            "e": 10
+        },
+        "expected": "0",
+        "unexpected": [
+            "1",
+            "2",
+            "3"
+        ]
+    },
+    {
+        "input": {
+            "a": "#[1, 2, 3, 3, 4]",
+            "e": 3
+        },
+        "expected": "2",
+        "unexpected": [
+            "1",
+            "3",
+            "4"
+        ]
+    }
+]
+-/

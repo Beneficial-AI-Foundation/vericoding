@@ -1,0 +1,57 @@
+vc-description: |-
+  /- 
+  {
+    "name": "numpy.diagflat",
+    "category": "Diagonal operations",
+    "description": "Create a two-dimensional array with the flattened input as a diagonal",
+    "url": "https://numpy.org/doc/stable/reference/generated/numpy.diagflat.html",
+    "doc": "Create a two-dimensional array with the flattened input as a diagonal.\n\nParameters\n----------\nv : array_like\n    Input data, which is flattened and set as the \`k\`-th diagonal of the output.\nk : int, optional\n    Diagonal to set; 0, the default, corresponds to the \"main\" diagonal.\n\nReturns\n-------\nout : ndarray\n    The 2-D output array.",
+  }
+  -/
+  
+  /-  numpy.diagflat: Create a two-dimensional array with the flattened input as a diagonal.
+  
+      Creates a square matrix where the input vector is placed along the main diagonal.
+      All other elements are zero. The resulting matrix has size n×n where n is the
+      length of the input vector.
+      
+      For the main diagonal (k=0), the matrix element at position (i,i) contains
+      the i-th element of the input vector.
+  -/
+  
+  /-  Specification: diagflat returns a square matrix where the input vector forms the main diagonal.
+  
+      Properties:
+      1. The result is a square n×n matrix
+      2. For all i, j: if i = j then result[i][j] = v[i] (diagonal elements)
+      3. For all i, j: if i ≠ j then result[i][j] = 0 (off-diagonal elements are zero)
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def diagflat {n : Nat} (v : Vector Float n) : Vector (Vector Float n) n :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    sorry
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem diagflat_spec {n : Nat} (v : Vector Float n) :
+      let result := diagflat v
+      ∀ i : Fin n, ∀ j : Fin n,
+        (i = j → (result.get i).get j = v.get i) ∧
+        (i ≠ j → (result.get i).get j = 0) := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+

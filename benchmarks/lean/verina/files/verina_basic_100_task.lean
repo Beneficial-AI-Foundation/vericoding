@@ -1,0 +1,103 @@
+/- 
+-----Description-----
+This task involves determining the triple of a given integer. The goal is to create a function that, for any integer provided as input, returns a value equal to three times that integer, including handling the case when the input is zero.
+
+-----Input-----
+The input consists of:
+• x: An integer.
+
+-----Output-----
+The output is an integer that represents three times the input integer.
+• If x = 0, the output will be 0.
+• Otherwise, the output will be computed as x + 2 * x, which is equivalent to 3 * x.
+
+-----Note-----
+There are no additional preconditions. It is assumed that x is a valid integer.
+-/
+
+import Mathlib
+
+@[reducible, simp]
+def Triple_precond (x : Int) : Prop :=
+  True
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def Triple (x : Int) (h_precond : Triple_precond (x)) : Int :=
+-- <vc-implementation>
+  sorry
+-- </vc-implementation>
+
+@[reducible, simp]
+def Triple_postcond (x : Int) (result: Int) (h_precond : Triple_precond (x)) :=
+  result / 3 = x ∧ result / 3 * 3 = result
+
+theorem Triple_spec_satisfied (x: Int) (h_precond : Triple_precond (x)) :
+    Triple_postcond (x) (Triple (x) h_precond) h_precond := by
+-- <vc-proof>
+  sorry
+-- </vc-proof>
+
+/-
+-- Invalid Inputs
+[]
+-- Tests
+[
+    {
+        "input": {
+            "x": 0
+        },
+        "expected": 0,
+        "unexpected": [
+            1,
+            -1,
+            10
+        ]
+    },
+    {
+        "input": {
+            "x": 1
+        },
+        "expected": 3,
+        "unexpected": [
+            2,
+            4,
+            0
+        ]
+    },
+    {
+        "input": {
+            "x": -2
+        },
+        "expected": -6,
+        "unexpected": [
+            -4,
+            -2,
+            6
+        ]
+    },
+    {
+        "input": {
+            "x": 10
+        },
+        "expected": 30,
+        "unexpected": [
+            20,
+            40,
+            0
+        ]
+    },
+    {
+        "input": {
+            "x": -5
+        },
+        "expected": -15,
+        "unexpected": [
+            -10,
+            -5,
+            15
+        ]
+    }
+]
+-/

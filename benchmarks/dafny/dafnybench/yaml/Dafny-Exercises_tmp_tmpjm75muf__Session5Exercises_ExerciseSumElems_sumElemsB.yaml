@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function SumR(s:seq<int>):int
   decreases s
@@ -38,5 +40,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  
 

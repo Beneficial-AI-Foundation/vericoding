@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   method find_min_index(a : array<int>, s: int, e: int) returns (min_i: int)
   requires a.Length > 0
@@ -62,5 +64,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  
 

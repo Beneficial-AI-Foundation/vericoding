@@ -1,0 +1,53 @@
+vc-description: |-
+  /- 
+  {
+    "name": "numpy.polynomial.hermite_e.hermeint",
+    "category": "HermiteE polynomials",
+    "description": "Integrate a Hermite_e series.",
+    "url": "https://numpy.org/doc/stable/reference/generated/numpy.polynomial.hermite_e.hermeint.html",
+    "doc": "Integrate a Hermite_e series.\n\n    Returns the Hermite_e series coefficients `c` integrated `m` times from\n    `lbnd` along `axis`. At each iteration the resulting series is\n    **multiplied** by `scl` and an integration constant, `k`, is added.\n    The scaling factor is for use in a linear change of variable.  (\"Buyer\n    beware\": note that, depending on what one is doing, one may want `scl`\n    to be the reciprocal of what one might expect; for more information,\n    see the Notes section below.)  The argument `c` is an array of\n    coefficients from low to high degree along each axis, e.g., [1,2,3]\n    represents the series ``H_0 + 2*H_1 + 3*H_2`` while [[1,2],[1,2]]\n    represents ``1*H_0(x)*H_0(y) + 1*H_1(x)*H_0(y) + 2*H_0(x)*H_1(y) +\n    2*H_1(x)*H_1(y)`` if axis=0 is ``x`` and axis=1 is ``y``.\n\n    Parameters\n    ----------\n    c : array_like\n        Array of Hermite_e series coefficients. If c is multidimensional\n        the different axis correspond to different variables with the\n        degree in each axis given by the corresponding index.\n    m : int, optional\n        Order of integration, must be positive. (Default: 1)\n    k : {[], list, scalar}, optional\n        Integration constant(s).  The value of the first integral at\n        ``lbnd`` is the first value in the list, the value of the second\n        integral at ``lbnd`` is the second value, etc.  If ``k == []`` (the\n        default), all constants are set to zero.  If ``m == 1``, a single\n        scalar can be given instead of a list.\n    lbnd : scalar, optional\n        The lower bound of the integral. (Default: 0)\n    scl : scalar, optional\n        Following each integration the result is *multiplied* by `scl`\n        before the integration constant is added. (Default: 1)\n    axis : int, optional\n        Axis over which the integral is taken. (Default: 0).\n\n    Returns\n    -------\n    S : ndarray\n        Hermite_e series coefficients of the integral.\n\n    Raises\n    ------\n    ValueError\n        If ``m < 0``, ``len(k) > m``, ``np.ndim(lbnd) != 0``, or\n        ``np.ndim(scl) != 0``.\n\n    See Also\n    --------\n    hermeder\n\n    Notes\n    -----\n    Note that the result of each integration is *multiplied* by `scl`.\n    Why is this important to note?  Say one is making a linear change of\n    variable :math:`u = ax + b` in an integral relative to `x`.  Then\n    :math:`dx = du/a`, so one will need to set `scl` equal to\n    :math:`1/a` - perhaps not what one would have first thought.\n\n    Also note that, in general, the result of integrating a C-series needs\n    to be \"reprojected\" onto the C-series basis set.  Thus, typically,\n    the result of this function is \"unintuitive,\" albeit correct; see\n    Examples section below.\n\n    Examples\n    --------\n    >>> from numpy.polynomial.hermite_e import hermeint\n    >>> hermeint([1, 2, 3]) # integrate once, value 0 at 0.\n    array([1., 1., 1., 1.])\n    >>> hermeint([1, 2, 3], m=2) # integrate twice, value & deriv 0 at 0\n    array([-0.25      ,  1.        ,  0.5       ,  0.33333333,  0.25      ]) # may vary\n    >>> hermeint([1, 2, 3], k=1) # integrate once, value 1 at 0.\n    array([2., 1., 1., 1.])\n    >>> hermeint([1, 2, 3], lbnd=-1) # integrate once, value 0 at -1\n    array([-1.,  1.,  1.,  1.])\n    >>> hermeint([1, 2, 3], m=2, k=[1, 2], lbnd=-1)\n    array([ 1.83333333,  0.        ,  0.5       ,  0.33333333,  0.25      ]) # may vary",
+  }
+  -/
+  
+  /-  Integrate a Hermite_e series coefficients vector m times with scaling and integration constants -/
+  
+  /-  Specification: hermeint integrates Hermite_e series coefficients preserving mathematical properties -/
+
+vc-preamble: |-
+  import Std.Do.Triple
+  import Std.Tactic.Do
+  open Std.Do
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def hermeint {n : Nat} (c : Vector Float n) (m : Nat) (k : Vector Float m) (lbnd : Float) (scl : Float) : Id (Vector Float (n + m)) :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    sorry
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem hermeint_spec {n m : Nat} (c : Vector Float n) (integConsts : Vector Float m) (lbnd : Float) (scl : Float) 
+      (h_scl_nonzero : scl ≠ 0) :
+      ⦃⌜scl ≠ 0⌝⦄
+      hermeint c m integConsts lbnd scl
+      ⦃⇓result => ⌜
+        -- Each integration step incorporates a constant from integConsts
+        (∀ step : Fin m, ∃ contrib : Float, contrib = integConsts.get step) ∧
+        -- The scaling factor scl multiplies the coefficients at each integration step
+        (scl ≠ 0) ∧
+        -- The boundary point lbnd affects the constant term
+        (∃ boundaryEffect : Float, True)
+      ⌝⦄ := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+

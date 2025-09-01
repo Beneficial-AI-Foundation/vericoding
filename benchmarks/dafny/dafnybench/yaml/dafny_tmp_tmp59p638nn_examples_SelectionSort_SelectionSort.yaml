@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   twostate predicate Preserved(a: array<int>, left: nat, right: nat)
       reads a
@@ -38,5 +40,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  
 

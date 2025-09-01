@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   predicate IsVowel(c: char)
   {
@@ -23,5 +25,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  
 

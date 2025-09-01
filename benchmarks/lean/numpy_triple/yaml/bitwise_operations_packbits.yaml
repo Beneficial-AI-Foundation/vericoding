@@ -1,0 +1,77 @@
+vc-description: |-
+  /- 
+  {
+    "name": "numpy.packbits",
+    "category": "Bit packing",
+    "description": "Packs the elements of a binary-valued array into bits in a uint8 array",
+    "url": "https://numpy.org/doc/stable/reference/generated/numpy.packbits.html",
+    "doc": "Packs the elements of a binary-valued array into bits in a uint8 array.\n\nThe result is padded to full bytes by inserting zero bits at the end.\n\nParameters\n----------\na : array_like\n    An array of integers or booleans whose elements should be packed to bits.\naxis : int, optional\n    The dimension over which bit-packing is done.\n    None implies packing the flattened array.\nbitorder : {'big', 'little'}, optional\n    The order of the input bits. 'big' will mimic bin(val), 3 = 0b00000011 => [0, 0, 0, 0, 0, 0, 1, 1], 'little' will reverse the order to [1, 1, 0, 0, 0, 0, 0, 0].\n    Defaults to 'big'.\n\nReturns\n-------\npacked : ndarray\n    Array of type uint8 whose elements represent bits corresponding to the logical (0 or nonzero) value of the input elements. The shape of packed has the same number of dimensions as the input (unless axis is None, in which case the output is 1-D).\n\nExamples\n--------\n>>> a = np.array([[[1,0,1],\n...                [0,1,0]],\n...               [[1,1,0],\n...                [0,0,1]]])\n>>> b = np.packbits(a, axis=-1)\n>>> b\narray([[[160],\n        [ 64]],\n       [[192],\n        [ 32]]], dtype=uint8)\n\nNote that in binary 160 = 2^5 + 2^7, 64 = 2^6, 192 = 2^6 + 2^7, and 32 = 2^5.",
+  }
+  -/
+  
+  /-  Packs binary-valued elements into bits in a UInt8 array.
+      Each group of 8 binary values is packed into one UInt8.
+      The result is padded with zeros if needed. -/
+  
+  /-  Specification: packbits correctly packs binary values into UInt8 bytes according to bitorder.
+      For big-endian: first element goes to MSB (bit 7)
+      For little-endian: first element goes to LSB (bit 0) -/
+
+vc-preamble: |-
+  import Std.Do.Triple
+  import Std.Tactic.Do
+  open Std.Do
+  
+  /-- Enumeration for bit ordering in packbits -/
+  inductive BitOrder
+    | big    -- MSB first (default): bit 7 is first element
+    | little -- LSB first: bit 0 is first element
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def packbits {n : Nat} (a : Vector Bool n) (bitorder : BitOrder := BitOrder.big) : 
+      Id (Vector UInt8 ((n + 7) / 8)) :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    sorry
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem packbits_spec {n : Nat} (a : Vector Bool n) (bitorder : BitOrder := BitOrder.big) :
+      ⦃⌜True⌝⦄
+      packbits a bitorder
+      ⦃⇓result => ⌜∀ byte_idx : Fin ((n + 7) / 8), 
+                    result.get byte_idx = 
+                      (match bitorder with
+                       | BitOrder.big => 
+                         -- Big-endian: bit 7 is first, bit 0 is last
+                         let start_idx := byte_idx.val * 8
+                         let bits_in_byte := min 8 (n - start_idx)
+                         (List.range bits_in_byte).foldl (fun acc bit_pos =>
+                           if h : start_idx + bit_pos < n then
+                             let bit := if a.get ⟨start_idx + bit_pos, h⟩ then 1 else 0
+                             acc ||| (bit <<< (7 - bit_pos)).toUInt8
+                           else acc
+                         ) 0
+                       | BitOrder.little => 
+                         -- Little-endian: bit 0 is first, bit 7 is last  
+                         let start_idx := byte_idx.val * 8
+                         let bits_in_byte := min 8 (n - start_idx)
+                         (List.range bits_in_byte).foldl (fun acc bit_pos =>
+                           if h : start_idx + bit_pos < n then
+                             let bit := if a.get ⟨start_idx + bit_pos, h⟩ then 1 else 0
+                             acc ||| (bit <<< bit_pos).toUInt8
+                           else acc
+                         ) 0)⌝⦄ := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+

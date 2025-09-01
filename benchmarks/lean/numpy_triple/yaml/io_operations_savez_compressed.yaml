@@ -1,0 +1,68 @@
+vc-description: |-
+  /- 
+  {
+    "name": "numpy.savez_compressed",
+    "category": "Binary file I/O",
+    "description": "Save several arrays into a single file in compressed .npz format",
+    "url": "https://numpy.org/doc/stable/reference/generated/numpy.savez_compressed.html",
+    "doc": "Save several arrays into a single file in compressed \`\`.npz\`\` format.\n\n    Provide arrays as keyword arguments to store them under the\n    corresponding name in the output file: \`\`savez_compressed(fn, x=x, y=y)\`\`.\n\n    If arrays are specified as positional arguments, i.e.,\n    \`\`savez_compressed(fn, x, y)\`\`, their names will be \`arr_0\`, \`arr_1\`, etc.\n\n    Parameters\n    ----------\n    file : file, str, or pathlib.Path\n        Either the filename (string) or an open file (file-like object)\n      ...",
+  }
+  -/
+  
+  /-  Save several arrays into a single file in compressed .npz format.
+      
+      This function saves multiple arrays to a compressed archive file.
+      Arrays are stored with either provided names or automatic names (arr_0, arr_1, etc.).
+      The resulting file can be loaded back using numpy.load.
+  -/
+  
+  /-  Specification: savez_compressed saves arrays to a compressed archive file.
+      
+      The function should:
+      1. Create a compressed .npz file at the specified path
+      2. Store each array in the archive with proper naming
+      3. Ensure the file is readable by compatible loading functions
+      4. Handle filename extension automatically (.npz appended if not present)
+  -/
+
+vc-preamble: |-
+  import Std.Do.Triple
+  import Std.Tactic.Do
+  open Std.Do
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def savez_compressed {n : Nat} (filename : String) (arrays : Vector (Vector Float n) n) : Id Unit :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    sorry
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem savez_compressed_spec {n : Nat} (filename : String) (arrays : Vector (Vector Float n) n) 
+      (h_valid_path : filename ≠ "") :
+      ⦃⌜filename ≠ ""⌝⦄
+      savez_compressed filename arrays
+      ⦃⇓result => ⌜result = () ∧ 
+                   -- File creation property: a compressed archive is created
+                   (∃ file_created : Bool, file_created = true) ∧
+                   -- Data preservation: each array is stored with proper naming
+                   (∀ i : Fin n, ∃ array_name : String, 
+                     array_name = "arr_" ++ toString i.val ∧
+                     (∃ array_stored : Bool, array_stored = true)) ∧
+                   -- Filename handling: .npz extension is ensured
+                   (∃ final_filename : String, 
+                     final_filename = filename ++ ".npz" ∨ 
+                     (filename.endsWith ".npz" ∧ final_filename = filename))⌝⦄ := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+

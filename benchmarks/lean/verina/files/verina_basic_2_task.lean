@@ -1,0 +1,129 @@
+/- 
+-----Description-----
+This task requires writing a Lean 4 method that finds the smallest number in an array of integers.
+
+-----Input-----
+The input consists of:
+s: An array of integers.
+
+-----Output-----
+The output is an option integer:
+Returns the smallest number found in the input array or none if the array is empty.
+-/
+
+@[reducible, simp]
+def findSmallest_precond (s : Array Nat) : Prop :=
+  True
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def findSmallest (s : Array Nat) (h_precond : findSmallest_precond (s)) : Option Nat :=
+-- <vc-implementation>
+  sorry
+-- </vc-implementation>
+
+@[reducible, simp]
+def findSmallest_postcond (s : Array Nat) (result: Option Nat) (h_precond : findSmallest_precond (s)) :=
+  let xs := s.toList
+  match result with
+  | none => xs = []
+  | some r => r ∈ xs ∧ (∀ x, x ∈ xs → r ≤ x)
+
+theorem findSmallest_spec_satisfied (s: Array Nat) (h_precond : findSmallest_precond (s)) :
+    findSmallest_postcond (s) (findSmallest (s) h_precond) h_precond := by
+-- <vc-proof>
+  sorry
+-- </vc-proof>
+
+/-
+-- Invalid Inputs
+[]
+-- Tests
+[
+    {
+        "input": {
+            "s": "#[3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]"
+        },
+        "expected": "some (1)",
+        "unexpected": [
+            "some (2)",
+            "some (0)",
+            "none"
+        ]
+    },
+    {
+        "input": {
+            "s": "#[0, 1, 2, 3, 4, 5]"
+        },
+        "expected": "some (0)",
+        "unexpected": [
+            "some (1)",
+            "none"
+        ]
+    },
+    {
+        "input": {
+            "s": "#[1]"
+        },
+        "expected": "some (1)",
+        "unexpected": [
+            "some (0)",
+            "some (2)",
+            "none"
+        ]
+    },
+    {
+        "input": {
+            "s": "#[10, 10, 10]"
+        },
+        "expected": "some (10)",
+        "unexpected": [
+            "some (9)",
+            "some (0)",
+            "none"
+        ]
+    },
+    {
+        "input": {
+            "s": "#[3, 2, 2, 2, 2, 2, 2, 1]"
+        },
+        "expected": "some (1)",
+        "unexpected": [
+            "some (2)",
+            "some (0)",
+            "none"
+        ]
+    },
+    {
+        "input": {
+            "s": "#[0]"
+        },
+        "expected": "some (0)",
+        "unexpected": [
+            "some (1)",
+            "none"
+        ]
+    },
+    {
+        "input": {
+            "s": "#[100, 99, 98]"
+        },
+        "expected": "some (98)",
+        "unexpected": [
+            "some (99)",
+            "some (97)",
+            "none"
+        ]
+    },
+    {
+        "input": {
+            "s": "#[]"
+        },
+        "expected": "none",
+        "unexpected": [
+            "some (0)"
+        ]
+    }
+]
+-/

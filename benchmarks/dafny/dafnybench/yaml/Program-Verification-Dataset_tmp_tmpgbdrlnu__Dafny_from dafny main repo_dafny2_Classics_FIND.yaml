@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // RUN: %testDafnyForEachResolver "%s" -- --warn-deprecation:false
   
@@ -45,5 +47,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  
 

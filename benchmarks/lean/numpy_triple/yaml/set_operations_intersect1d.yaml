@@ -1,0 +1,58 @@
+vc-description: |-
+  /- 
+  {
+    "name": "numpy.intersect1d",
+    "category": "Set operations",
+    "description": "Find the intersection of two arrays",
+    "url": "https://numpy.org/doc/stable/reference/generated/numpy.intersect1d.html",
+    "doc": "Find the intersection of two arrays.\n\nReturn the sorted, unique values that are in both of the input arrays.\n\nParameters\n----------\nar1, ar2 : array_like\n    Input arrays. Will be flattened if not already 1D.\nassume_unique : bool\n    If True, the input arrays are both assumed to be unique, which\n    can speed up the calculation.  If True but \`\`ar1\`\` or \`\`ar2\`\` are not\n    unique, incorrect results and out-of-bounds indices could result.\n    Default is False.\nreturn_indices : bool\n    If True, the indices which correspond to the intersection of the two\n    arrays are returned. The first instance of a value is used if there are\n    multiple. Default is False.\n\n    .. versionadded:: 1.15.0\n\nReturns\n-------\nintersect1d : ndarray\n    Sorted 1D array of common and unique elements.\ncomm1 : ndarray\n    The indices of the first occurrences of the common values in \`ar1\`.\n    Only provided if \`return_indices\` is True.\ncomm2 : ndarray\n    The indices of the first occurrences of the common values in \`ar2\`.\n    Only provided if \`return_indices\` is True.",
+  }
+  -/
+  
+  /-  Find the intersection of two arrays.
+      Returns the sorted, unique values that are in both input arrays. -/
+  
+  /-  Specification: intersect1d returns a sorted array of unique values 
+      that exist in both input arrays -/
+
+vc-preamble: |-
+  import Std.Do.Triple
+  import Std.Tactic.Do
+  open Std.Do
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def intersect1d {n m k : Nat} (ar1 : Vector Int n) (ar2 : Vector Int m) : Id (Vector Int k) :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    sorry
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem intersect1d_spec {n m k : Nat} (ar1 : Vector Int n) (ar2 : Vector Int m) :
+      ⦃⌜True⌝⦄
+      intersect1d ar1 ar2
+      ⦃⇓result => ⌜
+        -- Result contains only values that exist in both arrays
+        (∀ i : Fin k, ∃ j : Fin n, ∃ l : Fin m, 
+          result.get i = ar1.get j ∧ result.get i = ar2.get l) ∧
+        -- Result is sorted in ascending order
+        (∀ i j : Fin k, i < j → result.get i ≤ result.get j) ∧
+        -- Result contains unique values (no duplicates)
+        (∀ i j : Fin k, i ≠ j → result.get i ≠ result.get j) ∧
+        -- Result is complete (contains all common values)
+        (∀ val : Int, (∃ i : Fin n, ar1.get i = val) ∧ (∃ j : Fin m, ar2.get j = val) →
+          ∃ l : Fin k, result.get l = val)
+      ⌝⦄ := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+

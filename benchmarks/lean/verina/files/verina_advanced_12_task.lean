@@ -1,0 +1,98 @@
+/- 
+-----Description-----
+Write a Lean 4 function that returns the first duplicate integer found in a list. The function should return the value of the first duplicate it encounters, scanning from left to right. If no duplicates exist, return -1.
+
+-----Input-----
+lst: A list of integers.
+
+-----Output-----
+An integer representing the first duplicated value if any exists, otherwise -1.
+-/
+
+@[reducible]
+def firstDuplicate_precond (lst : List Int) : Prop :=
+  True
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def firstDuplicate (lst : List Int) (h_precond : firstDuplicate_precond (lst)) : Int :=
+-- <vc-implementation>
+  sorry
+-- </vc-implementation>
+
+@[reducible]
+def firstDuplicate_postcond (lst : List Int) (result: Int) (h_precond : firstDuplicate_precond (lst)) : Prop :=
+  -- if result = -1, then lst does not contain any duplicates
+  (result = -1 → List.Nodup lst) ∧
+  -- if result is not -1, then it is the first duplicate in lst
+  (result ≠ -1 →
+    lst.count result > 1 ∧
+    (lst.filter (fun x => lst.count x > 1)).head? = some result
+  )
+
+theorem firstDuplicate_spec_satisfied (lst: List Int) (h_precond : firstDuplicate_precond (lst)) :
+    firstDuplicate_postcond (lst) (firstDuplicate (lst) h_precond) h_precond := by
+-- <vc-proof>
+  sorry
+-- </vc-proof>
+
+/-
+-- Invalid Inputs
+[]
+-- Tests
+[
+    {
+        "input": {
+            "lst": "[1, 2, 3, 2, 4]"
+        },
+        "expected": 2,
+        "unexpected": [
+            1,
+            3,
+            -1
+        ]
+    },
+    {
+        "input": {
+            "lst": "[5, 1, 2, 3, 4, 5]"
+        },
+        "expected": 5,
+        "unexpected": [
+            1,
+            0
+        ]
+    },
+    {
+        "input": {
+            "lst": "[1, 2, 3, 4, 5]"
+        },
+        "expected": -1,
+        "unexpected": [
+            1,
+            2,
+            3
+        ]
+    },
+    {
+        "input": {
+            "lst": "[7, 7, 7, 7]"
+        },
+        "expected": 7,
+        "unexpected": [
+            -1
+        ]
+    },
+    {
+        "input": {
+            "lst": "[]"
+        },
+        "expected": -1,
+        "unexpected": [
+            0,
+            1,
+            2
+        ]
+    }
+]
+-/

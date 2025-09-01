@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // A8Q1 — Steph Renee McIntyre
   // Following the solutions from Carmen Bruni
@@ -9,6 +11,10 @@ vc-preamble: |-
     {
       if (n == 0) then 1 else a * power(a, n - 1)
     }
+  
+  /* Proof of implieds can be seen on LEARN.
+      Note: If you are unconvinced, putting asserts for each condition will demonstrate the correctness of the statements. 
+  */
 
 vc-helpers: |-
   // <vc-helpers>
@@ -29,7 +35,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  /* Proof of implieds can be seen on LEARN.
-      Note: If you are unconvinced, putting asserts for each condition will demonstrate the correctness of the statements. 
-  */
 

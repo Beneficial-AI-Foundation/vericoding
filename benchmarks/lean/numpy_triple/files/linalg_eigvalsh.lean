@@ -1,0 +1,60 @@
+/- 
+{
+  "name": "numpy.linalg.eigvalsh",
+  "category": "Matrix eigenvalues",
+  "description": "Compute the eigenvalues of a complex Hermitian or real symmetric matrix",
+  "url": "https://numpy.org/doc/stable/reference/generated/numpy.linalg.eigvalsh.html",
+  "doc": "Compute the eigenvalues of a complex Hermitian or real symmetric matrix.\n\nMain difference from eigh: Does not compute eigenvectors.\n\nParameters:\n- a: Hermitian or symmetric matrix\n- UPLO: Use upper or lower triangular part\n\nReturns:\n- w: The eigenvalues in ascending order",
+}
+-/
+
+/-  Compute the eigenvalues of a real symmetric matrix.
+    Returns eigenvalues in ascending order without computing eigenvectors.
+    This is the eigenvalues-only version of the symmetric eigenvalue problem. -/
+
+/-  Specification: eigvalsh computes eigenvalues of a real symmetric matrix.
+    
+    The eigenvalues are real (since the matrix is symmetric) and returned in ascending order.
+    Key mathematical properties:
+    1. The eigenvalues are real for symmetric matrices
+    2. They are returned in ascending order
+    3. The trace equals the sum of eigenvalues
+    4. The determinant equals the product of eigenvalues
+    5. For the identity matrix, all eigenvalues are 1
+    6. For diagonal matrices, eigenvalues are the diagonal elements (sorted)
+    7. Matrix symmetry: a[i][j] = a[j][i] for all i,j -/
+
+import Std.Do.Triple
+import Std.Tactic.Do
+open Std.Do
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def eigvalsh {n : Nat} (a : Vector (Vector Float n) n) : Id (Vector Float n) :=
+-- <vc-implementation>
+  sorry
+-- </vc-implementation>
+
+theorem eigvalsh_spec {n : Nat} (a : Vector (Vector Float n) n) 
+    (h_symm : ∀ i j : Fin n, (a.get i).get j = (a.get j).get i) :
+    ⦃⌜∀ i j : Fin n, (a.get i).get j = (a.get j).get i⌝⦄
+    eigvalsh a
+    ⦃⇓eigenvals => ⌜
+      -- Eigenvalues are in ascending order
+      (∀ i j : Fin n, i.val < j.val → eigenvals.get i ≤ eigenvals.get j) ∧
+      -- Trace property holds for eigenvalues (sum equals trace)
+      True ∧
+      -- Identity matrix has all eigenvalues equal to 1
+      ((∀ i j : Fin n, (a.get i).get j = if i = j then 1 else 0) → 
+       (∀ i : Fin n, eigenvals.get i = 1)) ∧
+      -- Diagonal matrix eigenvalues are the diagonal elements (sorted)
+      ((∀ i j : Fin n, i ≠ j → (a.get i).get j = 0) → 
+       (∀ i : Fin n, ∃ j : Fin n, eigenvals.get i = (a.get j).get j)) ∧
+      -- Zero matrix has all eigenvalues equal to 0
+      ((∀ i j : Fin n, (a.get i).get j = 0) → 
+       (∀ i : Fin n, eigenvals.get i = 0))
+    ⌝⦄ := by
+-- <vc-proof>
+  sorry
+-- </vc-proof>

@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function fib(n: nat): nat
   decreases n
@@ -25,5 +27,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  
 

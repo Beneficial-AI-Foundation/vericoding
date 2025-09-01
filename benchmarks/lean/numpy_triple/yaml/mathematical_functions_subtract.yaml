@@ -1,0 +1,69 @@
+vc-description: |-
+  /- 
+  {
+    "name": "numpy.subtract",
+    "description": "Subtract arguments, element-wise",
+    "url": "https://numpy.org/doc/stable/reference/generated/numpy.subtract.html",
+    "doc": "Subtract arguments, element-wise.",
+  }
+  -/
+  
+  /-  numpy.subtract: Subtract arguments, element-wise.
+  
+      Subtracts two vectors element-wise. If the vectors have the same shape,
+      each element of the result is the difference of the corresponding elements
+      from the input vectors.
+  
+      This is equivalent to x1 - x2 in terms of array broadcasting.
+      The operation is the inverse of addition: (x1 - x2) + x2 = x1.
+  -/
+  
+  /-  Specification: numpy.subtract returns a vector where each element is the difference
+      of the corresponding elements from x1 and x2.
+  
+      Precondition: True (no special preconditions for basic subtraction)
+      Postcondition: For all indices i, result[i] = x1[i] - x2[i]
+      
+      Mathematical properties:
+      - Subtraction is anti-commutative: x1 - x2 = -(x2 - x1)
+      - Subtraction is the inverse of addition: (x1 - x2) + x2 = x1
+      - Subtracting zero leaves the original value: x1 - 0 = x1
+      - Subtracting a value from itself yields zero: x1 - x1 = 0
+  -/
+
+vc-preamble: |-
+  import Std.Do.Triple
+  import Std.Tactic.Do
+  open Std.Do
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def subtract {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Float n) :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    sorry
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem subtract_spec {n : Nat} (x1 x2 : Vector Float n) :
+      ⦃⌜True⌝⦄
+      subtract x1 x2
+      ⦃⇓result => ⌜∀ i : Fin n, result.get i = x1.get i - x2.get i ∧
+                    -- Sanity check: subtracting zero preserves the original value
+                    (x2.get i = 0 → result.get i = x1.get i) ∧
+                    -- Sanity check: subtracting a value from itself yields zero
+                    (x1.get i = x2.get i → result.get i = 0) ∧
+                    -- Anti-commutativity property can be verified
+                    result.get i = -(x2.get i - x1.get i)⌝⦄ := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+

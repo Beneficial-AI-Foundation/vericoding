@@ -1,0 +1,35 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn all_equal(s: Seq<i32>) -> bool {
+    forall|i: int, j: int| 0 <= i < s.len() && 0 <= j < s.len() ==> s[i] == s[j]
+}
+//forall|i: int, j: int| 0 <= i <= j < s.len() ==> s[i] == s[j]
+//forall|i: int| 0 < i < s.len() ==> s[i-1] == s[i]
+//forall|i: int| 0 <= i < s.len() - 1 ==> s[i] == s[i+1]
+
+
+//Ordered indexes
+
+//All equal to first
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+fn mall_equal1(v: &[i32]) -> (b: bool)
+    ensures b == all_equal(v@)
+// </vc-spec>
+// <vc-code>
+{
+    assume(false);
+    false
+}
+// </vc-code>
+
+
+fn main() {
+}
+
+}

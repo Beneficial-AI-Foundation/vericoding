@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   predicate sorted (a:array<int>, start:int, end:int) // all "before" end are sorted      
    requires a!=null       
@@ -27,5 +29,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  
 

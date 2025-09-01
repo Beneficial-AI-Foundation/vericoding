@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   /*predicate palindrome<T(==)> (s:seq<T>)
   {
@@ -13,25 +15,6 @@ vc-preamble: |-
       else v[0]+sum(v[1..])
   }
   
-
-vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
-
-vc-spec: |-
-  // <vc-spec>
-  method vector_Sum(v:seq<int>) returns (x:int)
-  ensures x == sum(v)
-  // </vc-spec>
-
-vc-code: |-
-  // <vc-code>
-  {
-    assume false;
-  }
-  // </vc-code>
-
-vc-postamble: |-
   // Structural Induction on Sequences
   
   // MAXIMUM OF A SEQUENCE
@@ -70,6 +53,24 @@ vc-postamble: |-
     assume{:axiom} false;
   }
   
-  // REVERSE HAS THE SAME MULTISET 
-  
-  
+  // REVERSE HAS THE SAME MULTISET
+
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  // <vc-spec>
+  method vector_Sum(v:seq<int>) returns (x:int)
+  ensures x == sum(v)
+  // </vc-spec>
+
+vc-code: |-
+  // <vc-code>
+  {
+    assume false;
+  }
+  // </vc-code>
+
+vc-postamble: |-
+

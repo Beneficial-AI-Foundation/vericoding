@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   predicate sorted(a: array?<int>, l: int, u: int)
       reads a
@@ -27,5 +29,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  
 

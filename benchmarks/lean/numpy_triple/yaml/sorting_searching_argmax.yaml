@@ -1,0 +1,50 @@
+vc-description: |-
+  /-  numpy.argmax: Returns the index of the maximum value in a vector.
+  
+      Returns the index of the maximum value among all elements in the array.
+      Requires a non-empty array since there is no maximum of an empty set.
+      
+      In case of multiple occurrences of the maximum values, the indices
+      corresponding to the first occurrence are returned.
+  
+      This function returns the position of the largest element in the array.
+  -/
+  
+  /-  Specification: numpy.argmax returns the index of the maximum element.
+  
+      Precondition: True (non-empty constraint is in the type)
+      Postcondition: The element at the returned index is the maximum value,
+      and it is the first occurrence of such maximum value.
+  -/
+
+vc-preamble: |-
+  import Std.Do.Triple
+  import Std.Tactic.Do
+  open Std.Do
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def argmax {n : Nat} (a : Vector Float (n + 1)) : Id (Fin (n + 1)) :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    sorry
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem argmax_spec {n : Nat} (a : Vector Float (n + 1)) :
+      ⦃⌜True⌝⦄
+      argmax a
+      ⦃⇓i => ⌜(∀ j : Fin (n + 1), a.get j ≤ a.get i) ∧ 
+              (∀ j : Fin (n + 1), a.get j = a.get i → i ≤ j)⌝⦄ := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+

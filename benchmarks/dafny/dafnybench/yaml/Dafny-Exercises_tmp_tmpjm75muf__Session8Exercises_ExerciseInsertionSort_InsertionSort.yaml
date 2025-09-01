@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   predicate sorted_seg(a:array<int>, i:int, j:int) //i and j included
   requires 0 <= i <= j+1 <= a.Length
@@ -26,5 +28,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  
 
