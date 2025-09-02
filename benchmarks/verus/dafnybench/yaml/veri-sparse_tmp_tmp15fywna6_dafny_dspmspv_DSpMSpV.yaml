@@ -77,7 +77,7 @@ vc-spec: |-
                   X_pos[idx as int + 1], v_val.len() as nat)
           } else {
               0
-          })
+          }})
   // </vc-spec>
 
 vc-code: |-
