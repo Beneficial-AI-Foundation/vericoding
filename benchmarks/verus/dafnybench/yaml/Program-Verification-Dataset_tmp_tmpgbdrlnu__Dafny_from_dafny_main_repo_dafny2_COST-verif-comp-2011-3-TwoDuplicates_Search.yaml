@@ -64,9 +64,9 @@ vc-preamble: |-
   // verifies and compiles the program (for this program in less than 11 seconds)
   // without further human intervention.
   
-  spec fn uninterp is_duplicate(a: Seq<int>, p: int) -> bool;
+  uninterp spec fn is_duplicate(a: Seq<int>, p: int) -> bool;
   
-  spec fn uninterp is_prefix_duplicate(a: Seq<int>, k: usize, p: int) -> bool;
+  uninterp spec fn is_prefix_duplicate(a: Seq<int>, k: usize, p: int) -> bool;
 
 vc-helpers: |-
   // <vc-helpers>

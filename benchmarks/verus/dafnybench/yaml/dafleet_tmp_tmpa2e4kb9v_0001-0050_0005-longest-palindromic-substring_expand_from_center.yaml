@@ -89,7 +89,7 @@ vc-preamble: |-
       if start == a.len() - 1 {
           (start, a[start])
       } else {
-          let (i, v) = argmax(a, start + 1);
+          let (i, v) = argmax(a.clone(), start + 1);
           if a[start] >= v { (start, a[start]) } else { (i, v) }
       }
   }

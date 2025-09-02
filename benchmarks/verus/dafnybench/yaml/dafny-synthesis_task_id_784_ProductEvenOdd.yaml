@@ -28,8 +28,8 @@ vc-preamble: |-
   
   fn first_even_odd_indices(lst: Seq<int>) -> (r: (usize, usize))
       requires lst.len() >= 2,
-      requires exists|i: int| 0 <= i < lst.len() && is_even(lst[i]),
-      requires exists|i: int| 0 <= i < lst.len() && is_odd(lst[i]),
+               (exists|i: int| 0 <= i < lst.len() && is_even(lst[i])),
+               (exists|i: int| 0 <= i < lst.len() && is_odd(lst[i])),
       ensures ({
           let (even_index, odd_index) = r;
           &&& 0 <= even_index < lst.len()
