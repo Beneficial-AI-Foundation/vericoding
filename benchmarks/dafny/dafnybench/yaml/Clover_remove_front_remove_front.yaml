@@ -1,0 +1,24 @@
+vc-description: |-
+
+vc-preamble: |-
+
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  // <vc-spec>
+  method remove_front(a:array<int>) returns (c:array<int>)
+    requires a.Length>0
+    ensures  a[1..] == c[..]
+  // </vc-spec>
+
+vc-code: |-
+  // <vc-code>
+  {
+    assume false;
+  }
+  // </vc-code>
+
+vc-postamble: |-
+

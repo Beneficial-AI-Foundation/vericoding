@@ -1,0 +1,26 @@
+vc-description: |-
+
+vc-preamble: |-
+  //https://leetcode.com/problems/remove-element/
+
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  // <vc-spec>
+  method removeElement(nums: array<int>, val: int) returns (i: int)
+      ensures forall k :: 0 < k < i < nums.Length ==> nums[k] != val
+      modifies nums
+  // </vc-spec>
+
+vc-code: |-
+  // <vc-code>
+  {
+    assume false;
+  }
+  // </vc-code>
+
+vc-postamble: |-
+  ///compileTarget:js
+
