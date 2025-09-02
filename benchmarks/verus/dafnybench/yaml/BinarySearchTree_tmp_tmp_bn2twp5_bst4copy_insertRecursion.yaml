@@ -66,11 +66,12 @@ vc-helpers: |-
 vc-spec: |-
   // <vc-spec>
   fn insert_recursion(tree: Tree, value: int) -> (res: Tree)
-      requires binary_search_tree(tree),
-      decreases tree,
-      ensures res != Tree::Empty ==> binary_search_tree(res),
-      ensures forall|x: int| min_value(tree, x) && x < value ==> min_value(res, x),
-      ensures forall|x: int| max_value(tree, x) && x > value ==> max_value(res, x),
+      requires binary_search_tree(tree)
+      ensures 
+          res != Tree::Empty ==> binary_search_tree(res),
+          forall|x: int| min_value(tree, x) && x < value ==> min_value(res, x),
+          forall|x: int| max_value(tree, x) && x > value ==> max_value(res, x)
+      decreases tree
   // </vc-spec>
 
 vc-code: |-
