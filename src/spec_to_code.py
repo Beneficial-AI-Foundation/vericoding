@@ -10,11 +10,8 @@ from vericoding.utils.io_utils import parse_command_line_arguments, print_startu
 # Import the modular components
 from vericoding.core.config import load_environment, setup_configuration
 from vericoding.core.llm_providers import create_llm_provider
-from vericoding.core.language_tools import (
-    get_tool_path,
-    check_tool_availability,
-    find_spec_files,
-)
+from vericoding.core.language_tools import check_tool_availability,find_spec_files
+
 from vericoding.processing.spec_processor import process_files_parallel
 from vericoding.utils.reporting import print_summary
 
@@ -31,7 +28,6 @@ def main():
     config = setup_configuration(args)
     llm_provider, resolved_model = create_llm_provider(config.llm)
     
-    # NOW print the complete startup info with resolved model
     print_startup_info(config, resolved_model)
     
     # Continue with the rest of initialization

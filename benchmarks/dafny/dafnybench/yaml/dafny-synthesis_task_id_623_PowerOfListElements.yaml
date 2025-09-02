@@ -1,5 +1,12 @@
+vc-description: |-
+
 vc-preamble: |-
-  
+  function Power(base: int, exponent: int): int
+      requires exponent >= 0
+  {
+      if exponent == 0 then 1
+      else base * Power(base, exponent-1)
+  }
 
 vc-helpers: |-
   // <vc-helpers>
@@ -21,10 +28,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  function Power(base: int, exponent: int): int
-      requires exponent >= 0
-  {
-      if exponent == 0 then 1
-      else base * Power(base, exponent-1)
-  }
 

@@ -1,5 +1,11 @@
+vc-description: |-
+
 vc-preamble: |-
   
+  function set_of_seq<T>(s: seq<T>): set<T>
+  {
+    set x: T | x in s :: x
+  }
 
 vc-helpers: |-
   // <vc-helpers>
@@ -25,10 +31,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  
-  function set_of_seq<T>(s: seq<T>): set<T>
-  {
-    set x: T | x in s :: x
-  }
-  
-  
+

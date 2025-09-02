@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function sum(s: seq<int>, i: nat): int
       requires i <= |s|
@@ -40,5 +42,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  
 

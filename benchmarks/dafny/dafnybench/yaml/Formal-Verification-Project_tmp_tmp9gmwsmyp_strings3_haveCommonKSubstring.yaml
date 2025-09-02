@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   method isPrefix(pre: string, str: string) returns (res:bool)
       ensures !res <==> isNotPrefixPred(pre,str)
@@ -67,5 +69,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  
 

@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function abs(x: real): real
   {
@@ -27,5 +29,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  
 

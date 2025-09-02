@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function Sum(v:array<int>,i:int,j:int):int
   reads v
@@ -14,6 +16,21 @@ vc-preamble: |-
   {
   forall l,ss {:induction l}::0<=l<=i && ss==i+1==> Sum(v,l,ss)<=s
   }
+  
+  function Sum2(v:array<int>,i:int,j:int):int
+  reads v
+  requires 0<=i<=j<=v.Length
+  decreases j-i
+  {
+      if (i==j) then 0
+      else v[i]+Sum2(v,i+1,j)
+  }
+  
+  //Now do the same but with a loop from right to left
+  predicate SumMaxToRight2(v:array<int>,j:int,i:int,s:int)//maximum sum stuck to the right
+  reads v
+  requires 0<=j<=i<v.Length
+  {(forall l,ss {:induction l}::j<=l<=i && ss==i+1 ==> Sum2(v,l,ss)<=s)}
 
 vc-helpers: |-
   // <vc-helpers>
@@ -34,18 +51,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  function Sum2(v:array<int>,i:int,j:int):int
-  reads v
-  requires 0<=i<=j<=v.Length
-  decreases j-i
-  {
-      if (i==j) then 0
-      else v[i]+Sum2(v,i+1,j)
-  }
-  
-  //Now do the same but with a loop from right to left
-  predicate SumMaxToRight2(v:array<int>,j:int,i:int,s:int)//maximum sum stuck to the right
-  reads v
-  requires 0<=j<=i<v.Length
-  {(forall l,ss {:induction l}::j<=l<=i && ss==i+1 ==> Sum2(v,l,ss)<=s)}
 

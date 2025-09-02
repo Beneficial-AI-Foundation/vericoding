@@ -1,0 +1,40 @@
+vc-description: |-
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  // recursive definition of factorial
+  spec fn factorial(n: nat) -> nat
+      decreases n
+  {
+      if n == 0 { 1 } else { n * factorial((n - 1) as nat) }
+  }
+  
+  // iterative implementation of factorial
+
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  // <vc-spec>
+  fn iterative_factorial(n: u32) -> (result: u32)
+      requires n < 13, // prevent overflow
+      ensures result == factorial(n as nat)
+  // </vc-spec>
+
+vc-code: |-
+  // <vc-code>
+  {
+      assume(false);
+      0
+  }
+  // </vc-code>
+
+vc-postamble: |-
+  fn main() {}
+  
+  }
+

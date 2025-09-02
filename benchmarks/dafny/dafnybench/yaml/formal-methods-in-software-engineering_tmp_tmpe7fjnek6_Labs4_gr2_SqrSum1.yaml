@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   /*
   Dafny include 2 limbaje:
@@ -37,26 +39,7 @@ vc-preamble: |-
       if (n == 0) then 0 else n*n + SqrSumRec(n-1)
   }
   /*
-
-vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
-
-vc-spec: |-
-  // <vc-spec>
-  method SqrSum1(n: int) returns (s: int)
-      requires n >= 0
-      ensures s == SqrSumRec(n)  // s = 0^2 + 1^2 + 2^2 + ... + n^2 == n(n+1)(2n+1)/6
-  // </vc-spec>
-
-vc-code: |-
-  // <vc-code>
-  {
-    assume false;
-  }
-  // </vc-code>
-
-vc-postamble: |-
+  
   */
   
   // verificarea programului pentru suma de patrate
@@ -118,4 +101,24 @@ vc-postamble: |-
   }
   
   */
+
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  // <vc-spec>
+  method SqrSum1(n: int) returns (s: int)
+      requires n >= 0
+      ensures s == SqrSumRec(n)  // s = 0^2 + 1^2 + 2^2 + ... + n^2 == n(n+1)(2n+1)/6
+  // </vc-spec>
+
+vc-code: |-
+  // <vc-code>
+  {
+    assume false;
+  }
+  // </vc-code>
+
+vc-postamble: |-
 

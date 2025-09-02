@@ -1,0 +1,42 @@
+vc-description: |-
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  // program verifies
+  
+  spec fn sortedbad(s: Seq<char>) -> bool {
+      // no b's after non-b's
+      (forall|i: int, j: int| 0 <= i <= j < s.len() && s[i] == 'b' && s[j] != 'b' ==> i < j) &&
+      // only non-d's before d's
+      (forall|i: int, j: int| 0 <= i <= j < s.len() && s[i] != 'd' && s[j] == 'd' ==> i < j)
+  }
+
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  // <vc-spec>
+  fn bad_sort(a: Seq<char>) -> (b: Seq<char>)
+      requires 
+          forall|i: int| 0 <= i < a.len() ==> a[i] == 'b' || a[i] == 'a' || a[i] == 'd',
+      ensures 
+          sortedbad(b) && b.to_multiset() == a.to_multiset(),
+  // </vc-spec>
+
+vc-code: |-
+  // <vc-code>
+  {
+      assume(false);
+      a
+  }
+  // </vc-code>
+
+vc-postamble: |-
+  fn main() {}
+  
+  }
+

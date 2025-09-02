@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   /* 
   MIPS 0
@@ -41,26 +43,7 @@ vc-preamble: |-
           var bit: bv10 := if arr[index] then 1 as bv10 else 0 as bv10;
           (bit << index) + ArrayToBv10Helper(arr, index - 1)
   }
-
-vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
-
-vc-spec: |-
-  // <vc-spec>
-  method ArrayToSequence(arr: array<bool>) returns (res: seq<bool>) // Converts boolean array to boolean sequence
-      ensures |res| == arr.Length
-      ensures forall k :: 0 <= k < arr.Length ==> res[k] == arr[k]
-  // </vc-spec>
-
-vc-code: |-
-  // <vc-code>
-  {
-    assume false;
-  }
-  // </vc-code>
-
-vc-postamble: |-
+  
   function isBitSet(x: bv10, bitIndex: nat): bool
       requires bitIndex < 10
       ensures isBitSet(x, bitIndex) <==> (x & (1 << bitIndex)) != 0
@@ -95,4 +78,24 @@ vc-postamble: |-
       var c: bv10 := a + b;
       Bv10ToSeq(c)
   }
+
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  // <vc-spec>
+  method ArrayToSequence(arr: array<bool>) returns (res: seq<bool>) // Converts boolean array to boolean sequence
+      ensures |res| == arr.Length
+      ensures forall k :: 0 <= k < arr.Length ==> res[k] == arr[k]
+  // </vc-spec>
+
+vc-code: |-
+  // <vc-code>
+  {
+    assume false;
+  }
+  // </vc-code>
+
+vc-postamble: |-
 

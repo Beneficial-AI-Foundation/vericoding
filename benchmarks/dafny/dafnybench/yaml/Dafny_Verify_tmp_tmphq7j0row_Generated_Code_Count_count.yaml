@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function has_count(v: int, a: array<int>, n: int): int
       reads a  // This allows the function to read from array 'a'
@@ -26,5 +28,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  
 

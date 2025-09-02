@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function Stairs(n: nat): nat {
     if n <= 1 then 1 else Stairs(n - 2) + Stairs(n - 1)
@@ -23,5 +25,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  
 

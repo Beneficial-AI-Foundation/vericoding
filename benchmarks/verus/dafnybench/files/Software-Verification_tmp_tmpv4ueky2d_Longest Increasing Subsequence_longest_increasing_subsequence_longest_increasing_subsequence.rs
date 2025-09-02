@@ -1,0 +1,32 @@
+use vstd::prelude::*;
+
+verus! {
+
+// Function
+spec fn find_max(x: int, y: int) -> int {
+    if x > y { x } else { y }
+}
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+fn longest_increasing_subsequence(nums: &Vec<i32>) -> (max: i32)
+    requires 
+        1 <= nums.len() <= 2500,
+        forall|i: int| 0 <= i < nums.len() ==> #[trigger] nums[i] >= -10000 && #[trigger] nums[i] <= 10000,
+    // TODO: modify the ensures clause so that max is indeed equal to the longest increasing subsequence
+    ensures 
+        max >= 1,
+// </vc-spec>
+// <vc-code>
+{
+  assume(false);
+  1 // unreachable but needed for return type
+}
+// </vc-code>
+
+fn main() {
+}
+
+}

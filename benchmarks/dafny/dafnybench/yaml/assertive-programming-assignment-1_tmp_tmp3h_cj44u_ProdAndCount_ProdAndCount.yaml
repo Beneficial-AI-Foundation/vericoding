@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   
   function RecursivePositiveProduct(q: seq<int>): int
@@ -14,6 +16,14 @@ vc-preamble: |-
       if q == [] then 0
       else if q[|q|-1] == key then 1+RecursiveCount(key, q[..|q|-1])
       else RecursiveCount(key, q[..|q|-1])
+  }
+  
+  function county(elem: int, key: int): int{
+      if elem==key then 1 else 0
+  }
+  
+  function prody(elem: int): int{
+      if elem <= 0 then 1 else elem
   }
 
 vc-helpers: |-
@@ -35,11 +45,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  function county(elem: int, key: int): int{
-      if elem==key then 1 else 0
-  }
-  
-  function prody(elem: int): int{
-      if elem <= 0 then 1 else elem
-  }
 

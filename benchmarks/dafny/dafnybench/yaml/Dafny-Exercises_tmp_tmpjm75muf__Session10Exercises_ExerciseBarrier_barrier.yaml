@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   //Method barrier below receives an array and an integer p
   //and returns a boolean b which is true if and only if 
@@ -34,5 +36,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  
 

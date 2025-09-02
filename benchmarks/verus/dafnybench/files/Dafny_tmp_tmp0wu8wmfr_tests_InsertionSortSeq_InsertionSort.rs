@@ -1,0 +1,32 @@
+use vstd::prelude::*;
+
+verus! {
+
+// Insertion sort.
+//
+// Author: Snorri Agnarsson, snorri@hi.is
+
+
+spec fn is_sorted(s: Seq<int>) -> bool {
+    forall|p: int, q: int| 0 <= p < q < s.len() ==> s[p] <= s[q]
+}
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+fn insertion_sort(s: Seq<int>) -> (r: Seq<int>)
+    ensures
+        s.to_multiset() == r.to_multiset(),
+        is_sorted(r),
+// </vc-spec>
+// <vc-code>
+{
+    assume(false);
+    s
+}
+// </vc-code>
+
+fn main() {}
+
+}

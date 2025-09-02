@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   datatype Tree = Empty | Node(int,Tree,Tree)
   
@@ -61,5 +63,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  
 

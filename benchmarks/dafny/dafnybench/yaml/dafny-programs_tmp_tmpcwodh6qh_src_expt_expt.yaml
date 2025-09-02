@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   ghost function Expt(b: int, n: nat): int
     requires n >= 0
@@ -23,4 +25,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
- 
+

@@ -1,0 +1,33 @@
+use vstd::prelude::*;
+
+verus! {
+
+//Algorithm 1: From left to right return the first
+
+//Algorithm 2: From right to left return the last
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+fn mfirstMaximum(v: &Vec<i32>) -> (i: usize)
+    requires v.len() > 0,
+    ensures 
+        0 <= i < v.len() &&
+        (forall|k: int| 0 <= k < v.len() ==> v[i as int] >= v[k]) &&
+        (forall|l: int| 0 <= l < i ==> v[i as int] > v[l]),
+    //Algorithm: from left to right
+// </vc-spec>
+// <vc-code>
+{
+    assume(false);
+    0
+}
+// </vc-code>
+
+//Algorithm : from left to right
+//Algorithm : from right to left
+
+fn main() {}
+
+}

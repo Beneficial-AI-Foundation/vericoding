@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   predicate isPeek(v:array<int>,i:int)
    reads v
@@ -34,5 +36,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  
 
