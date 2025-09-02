@@ -20,7 +20,7 @@ vc-helpers: |-
 
 vc-spec: |-
   // <vc-spec>
-  fn M(N: int, a: &[int]) -> (result: (int, int))
+  fn M(N: i32, a: &[i32]) -> (result: (i32, i32))
       requires 
           0 <= N,
           a.len() == N,
@@ -33,7 +33,7 @@ vc-code: |-
   // <vc-code>
   {
       assume(false);
-      unreached()
+      (0, 0)
   }
   // </vc-code>
 
