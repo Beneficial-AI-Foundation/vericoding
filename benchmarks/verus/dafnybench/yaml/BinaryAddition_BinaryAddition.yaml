@@ -101,7 +101,7 @@ vc-spec: |-
   fn binary_addition(s: &[bool; 10], t: &[bool; 10]) -> (sresult: Vec<bool>) // Generated program for bit addition
       requires s.len() == 10 && t.len() == 10
       ensures sresult.len() == 10,
-      ensures bit_addition(s, t) == sresult@, // Verification of correctness
+              bit_addition(s, t) == sresult@, // Verification of correctness
   // </vc-spec>
 
 vc-code: |-

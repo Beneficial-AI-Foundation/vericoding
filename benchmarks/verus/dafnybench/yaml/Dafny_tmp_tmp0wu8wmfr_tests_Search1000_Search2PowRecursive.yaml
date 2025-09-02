@@ -38,7 +38,6 @@ vc-helpers: |-
 vc-spec: |-
   // <vc-spec>
   fn search_2_pow_recursive(a: &[i32], i: usize, n: usize, x: i32) -> (k: usize)
-      decreases n
       requires
           i + n <= a.len(),
           ({(forall|p: int, q: int|
@@ -53,6 +52,7 @@ vc-spec: |-
           ({(forall|r: int|
               0 <= r && k as int <= r < (i + n) as int ==> 
               a[r] >= x)}),
+      decreases n
   // </vc-spec>
 
 vc-code: |-
