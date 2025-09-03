@@ -2,9 +2,8 @@ name: Test Conversion Consistency - Lean NumPy Triple
 
 on:
   push:
-    branches: [ main, develop ]
-  pull_request:
     branches: [ main ]
+  pull_request:
   workflow_dispatch:
 
 jobs:
