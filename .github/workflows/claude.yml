@@ -35,7 +35,20 @@ jobs:
         uses: anthropics/claude-code-action@v1
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          model: "claude-opus-4"
+          model: "claude-opus-4-1"
+          allowed_tools: |
+            Bash(*),
+            Read(*),
+            Write(*),
+            Edit(*),
+            MultiEdit(*),
+            NotebookEdit(*),
+            Glob(*),
+            Grep(*),
+            LS(*),
+            WebFetch(*),
+            TodoRead(*),
+            TodoWrite(*)
           
           # This is an optional setting that allows Claude to read CI results on PRs
           additional_permissions: |
