@@ -241,3 +241,5 @@ auto-update-stale = true    # Auto-update stale working copies when switching co
 
 - `#v[..]` is the literal syntax for a `Vector`
 - A good default tactic is `try?`
+- For Numpy-like functions, use `Vector a n` as the base type, it's in prelude.
+- `mathlib` is full of noncomputable code. Avoid using its data structures, only its theorems.
