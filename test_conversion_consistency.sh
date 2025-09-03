@@ -1,6 +1,8 @@
 #!/bin/bash
 
-# Simplified test script for dafny/dafnybench consistency
+# Test script for conversion consistency 
+# Usage: ./test_conversion_consistency.sh <type> <path>
+# Example: ./test_conversion_consistency.sh dfy benchmarks/dafny/dafnybench
 
 set -e
 
@@ -15,21 +17,43 @@ log_warn() { echo -e "${YELLOW}[WARN]${NC} $1"; }
 log_error() { echo -e "${RED}[ERROR]${NC} $1"; }
 
 main() {
-    log_info "Testing conversion consistency for dafny/dafnybench..."
+    # Parse arguments
+    if [[ $# -ne 2 ]]; then
+        log_error "Usage: $0 <type> <path>"
+        log_error "  type: dfy, lean, or rs"
+        log_error "  path: path to benchmark directory (e.g., benchmarks/dafny/dafnybench)"
+        exit 1
+    fi
     
-    local benchmark_path="benchmarks/dafny/dafnybench"
+    local file_type="$1"
+    local benchmark_path="$2"
+    
+    # Validate file type
+    case "$file_type" in
+        "dfy"|"lean"|"rs") ;;
+        *) 
+            log_error "Invalid file type: $file_type. Must be dfy, lean, or rs"
+            exit 1
+            ;;
+    esac
+    
+    log_info "Testing conversion consistency for $benchmark_path (.$file_type files)..."
+    
     local yaml_dir="$benchmark_path/yaml"
     local files_dir="$benchmark_path/files"
-    local jsonl_file="$benchmark_path/dafny_dafnybench.jsonl"
-    local generated_dir="$yaml_dir"_dfy
+    
+    # Determine JSONL filename based on benchmark path
+    local benchmark_name=$(basename "$benchmark_path")
+    local lang_name=$(basename "$(dirname "$benchmark_path")")
+    local jsonl_file="$benchmark_path/${lang_name}_${benchmark_name}.jsonl"
     
     # Count files
     local yaml_count=$(find "$yaml_dir" -name "*.yaml" | wc -l)
-    local files_count=$(find "$files_dir" -name "*.dfy" | wc -l)
+    local files_count=$(find "$files_dir" -name "*.$file_type" | wc -l)
     local jsonl_entries=$(wc -l < "$jsonl_file")
     
     log_info "YAML files: $yaml_count"
-    log_info "Generated files (.dfy): $files_count" 
+    log_info "Generated files (.$file_type): $files_count" 
     log_info "JSONL entries: $jsonl_entries"
     
     # Test file counts
@@ -76,13 +100,13 @@ main() {
     # Find differing files
     local differing_files=()
     
-    if uv run src/convert_from_yaml.py "$temp_yaml2" --suffix dfy --dir >/dev/null 2>&1; then
-        local temp_generated_dir="$temp_yaml2"_dfy
+    if uv run src/convert_from_yaml.py "$temp_yaml2" --suffix "$file_type" --dir >/dev/null 2>&1; then
+        local temp_generated_dir="$temp_yaml2"_"$file_type"
         
         if [[ -d "$temp_generated_dir" ]]; then
             log_info "Comparing files..."
             
-            for f in "$temp_generated_dir"/*.dfy; do
+            for f in "$temp_generated_dir"/*."$file_type"; do
                 local basename_f=$(basename "$f")
                 local existing_file="$files_dir/$basename_f"
                 

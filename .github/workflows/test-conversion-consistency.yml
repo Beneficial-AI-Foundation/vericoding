@@ -32,7 +32,7 @@ jobs:
       run: chmod +x test_conversion_consistency.sh
       
     - name: Run conversion consistency tests
-      run: ./test_conversion_consistency.sh
+      run: ./test_conversion_consistency.sh dfy benchmarks/dafny/dafnybench
       
     - name: Upload test results on failure
       if: failure()
