@@ -51,6 +51,15 @@ lean_lib Generated where
   globs := #[.andSubmodules `Generated]
   srcDir := "lean"
 
+lean_lib NumpyTripleFiles where
+  srcDir := "benchmarks/lean/numpy_triple/files"
+
+lean_lib HumanEvalFiles where
+  srcDir := "benchmarks/lean/humaneval/files"
+
+lean_lib VerinaFiles where
+  srcDir := "benchmarks/lean/verina/files"
+
 @[default_target]
 lean_exe vericoding where
   root := `Main
