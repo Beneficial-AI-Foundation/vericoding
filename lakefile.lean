@@ -24,20 +24,6 @@ This project contains formal specifications and verifications ported from variou
 particularly Dafny benchmarks and NumPy specifications.
 -/
 
-@[default_target]
-lean_lib Vericoding where
-  globs := #[.andSubmodules `Vericoding]
-  srcDir := "lean"
-
-@[default_target]
-lean_lib Benchmarks where
-  globs := #[.andSubmodules `Benchmarks]
-  srcDir := "lean"
-
-@[default_target]
-lean_lib NumpyHoareTriple where
-  globs := #[.andSubmodules `NumpyHoareTriple]
-  srcDir := "lean"
 
 lean_lib BenchmarksGenerated where
   globs := #[.andSubmodules `BenchmarksGenerated]
@@ -45,14 +31,7 @@ lean_lib BenchmarksGenerated where
 
 lean_lib DafnyBenchSpecs where
   globs := #[.andSubmodules `DafnyBenchSpecs]
-  srcDir := "lean"
 
-lean_lib Generated where
-  globs := #[.andSubmodules `Generated]
-  srcDir := "lean"
-
-@[default_target]
-lean_exe vericoding where
-  root := `Main
-  srcDir := "lean"
-  supportInterpreter := true
+lean_lib HumanEval where
+  globs := #[.andSubmodules `humaneval]
+  srcDir := "benchmarks/lean"
