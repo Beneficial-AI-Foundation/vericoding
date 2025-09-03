@@ -37,6 +37,13 @@ jobs:
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           model: "claude-opus-4"
+          allowed_tools: |
+              Bash(*),
+              Read(*),
+              Glob(*),
+              Grep(*),
+              LS(*),
+              TodoRead(*)
           prompt: |
             Please review this pull request and provide feedback on:
             - Code quality and best practices
