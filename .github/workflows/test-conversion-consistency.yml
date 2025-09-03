@@ -10,6 +10,28 @@ jobs:
   test-conversion-consistency:
     runs-on: ubuntu-latest
     
+    strategy:
+      matrix:
+        include:
+          - name: "Dafny DafnyBench"
+            type: "dfy"
+            path: "benchmarks/dafny/dafnybench"
+          - name: "Verus DafnyBench"
+            type: "rs"
+            path: "benchmarks/verus/dafnybench"
+          - name: "Lean HumanEval"
+            type: "lean"
+            path: "benchmarks/lean/humaneval"
+          - name: "Lean NumPy Triple"
+            type: "lean"
+            path: "benchmarks/lean/numpy_triple"
+          - name: "Lean Verina"
+            type: "lean"
+            path: "benchmarks/lean/verina"
+      fail-fast: false
+    
+    name: ${{ matrix.name }}
+    
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
@@ -31,13 +53,13 @@ jobs:
       run: chmod +x test_conversion_consistency.sh
       
     - name: Run conversion consistency tests
-      run: ./test_conversion_consistency.sh dfy benchmarks/dafny/dafnybench
+      run: ./test_conversion_consistency.sh ${{ matrix.type }} ${{ matrix.path }}
       
     - name: Upload test results on failure
       if: failure()
       uses: actions/upload-artifact@v4
       with:
-        name: test-results
+        name: test-results-${{ matrix.name }}
         path: |
           benchmarks/
           test_conversion_consistency.sh
