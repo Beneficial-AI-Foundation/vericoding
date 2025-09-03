@@ -1,0 +1,23 @@
+
+ghost function Exp_int(x: nat, y:nat): nat
+{
+  if y == 0 then 1 else x * Exp_int(x, y - 1)
+}
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+method ModExpPow2_int(x: nat, y:nat, n:nat, z: nat) returns (res:nat)
+  requires y == Exp_int(2, n)
+  requires z > 0
+  ensures res == Exp_int(x,y) % z
+  decreases n
+// </vc-spec>
+// <vc-code>
+{
+  res := 0;
+  assume{:axiom} false;
+  return res;
+}
+// </vc-code>
