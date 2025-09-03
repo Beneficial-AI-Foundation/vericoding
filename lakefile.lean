@@ -52,12 +52,15 @@ lean_lib Generated where
   srcDir := "lean"
 
 lean_lib NumpyTripleFiles where
+  globs := #[.andSubmodules `NumpyTripleFiles]
   srcDir := "benchmarks/lean/numpy_triple/files"
 
 lean_lib HumanEvalFiles where
+  globs := #[.andSubmodules `HumanEvalFiles]
   srcDir := "benchmarks/lean/humaneval/files"
 
 lean_lib VerinaFiles where
+  globs := #[.andSubmodules `VerinaFiles]
   srcDir := "benchmarks/lean/verina/files"
 
 @[default_target]
