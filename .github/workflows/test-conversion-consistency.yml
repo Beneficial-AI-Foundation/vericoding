@@ -55,12 +55,3 @@ jobs:
     - name: Run conversion consistency tests
       run: ./test_conversion_consistency.sh ${{ matrix.type }} ${{ matrix.path }}
       
-    - name: Upload test results on failure
-      if: failure()
-      uses: actions/upload-artifact@v4
-      with:
-        name: test-results-${{ matrix.name }}
-        path: |
-          benchmarks/
-          test_conversion_consistency.sh
-        retention-days: 7
