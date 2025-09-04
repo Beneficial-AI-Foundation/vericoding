@@ -34,5 +34,5 @@ particularly Dafny benchmarks and NumPy specifications.
 --   globs := #[.andSubmodules `DafnyBenchSpecs]
 
 lean_lib Benchmarks where
-  globs := #[.andSubmodules `humaneval, .andSubmodules `verina, .andSubmodules `numpy_triple, .andSubmodules `apps_train]
+  globs := #[.submodules `humaneval, .submodules `verina.files, .submodules `numpy_triple.files]
   srcDir := "benchmarks/lean"
