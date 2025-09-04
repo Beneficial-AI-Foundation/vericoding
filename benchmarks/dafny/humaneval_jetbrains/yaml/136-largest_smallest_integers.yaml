@@ -1,0 +1,36 @@
+vc-preamble: |-
+  datatype Option<T> = None | Some(value: T)
+  function get_value(o: Option<int>): int
+    requires o.Some?
+    ensures get_value(o) == o.value
+  {
+    o.value
+  }
+
+vc-helpers: |-
+vc-description: |-
+
+  /*
+  function_signature: def largest_smallest_integers(lst: List[int]) -> Tuple[ Optional[Int], Optional[Int] ]
+  Create a function that returns a tuple (a, b), where 'a' is the largest of negative integers, and 'b' is the smallest of positive integers in a list. If there is no negative or positive integers, return them as None.
+  */
+
+vc-spec: |-
+  method largest_smallest_integers(arr: seq<int>) returns (a: Option<int>, b: Option<int>)
+    // post-conditions-start
+    ensures a.None? ==> forall i :: 0 <= i < |arr| ==> arr[i] >= 0
+    ensures a.Some? ==> get_value(a) in arr && get_value(a) < 0
+    ensures a.Some? ==> forall i :: 0 <= i < |arr| && arr[i] < 0 ==> arr[i] <= get_value(a)
+    ensures b.None? ==> forall i :: 0 <= i < |arr| ==> arr[i] <= 0
+    ensures b.Some? ==> get_value(b) in arr && get_value(b) > 0
+    ensures b.Some? ==> forall i :: 0 <= i < |arr| && arr[i] > 0 ==> arr[i] >= get_value(b)
+    // post-conditions-end
+
+vc-code: |-
+  {
+    assume false;
+  }
+
+vc-postamble: |-
+
+
