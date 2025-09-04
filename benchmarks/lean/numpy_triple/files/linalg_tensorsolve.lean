@@ -1,4 +1,4 @@
-/- 
+/-
 {
   "name": "numpy.linalg.tensorsolve",
   "category": "Solving equations and inverting matrices",
@@ -8,20 +8,20 @@
 }
 -/
 
-/-  
+/-
 Solve the tensor equation a x = b for x.
 
 This function solves for x in the tensor equation a x = b, where:
 - a is a coefficient tensor that can be reshaped to a square matrix
-- b is the right-hand tensor  
+- b is the right-hand tensor
 - x is the solution tensor
 
-For simplicity, we model this as solving a square linear system where the 
-coefficient matrix a is reshaped from tensor form to a 2D matrix, and the 
+For simplicity, we model this as solving a square linear system where the
+coefficient matrix a is reshaped from tensor form to a 2D matrix, and the
 solution is reshaped back to tensor form.
 -/
 
-/-  
+/-
 Specification: tensorsolve solves the tensor equation a x = b for x.
 
 This specification captures the mathematical properties of tensor equation solving:
@@ -38,13 +38,12 @@ The specification handles the basic case where:
 
 import Std.Do.Triple
 import Std.Tactic.Do
-import numpy_hoare_triple.linalg.LinAlgError
 open Std.Do
 
 -- <vc-helpers>
 -- </vc-helpers>
 
-def tensorsolve {n : Nat} (a : Vector (Vector Float n) n) (b : Vector Float n) : 
+def tensorsolve {n : Nat} (a : Vector (Vector Float n) n) (b : Vector Float n) :
     Id (Vector Float n) :=
 -- <vc-implementation>
   sorry
@@ -54,38 +53,38 @@ theorem tensorsolve_spec {n : Nat} (a : Vector (Vector Float n) n) (b : Vector F
     (h_invertible : ∃ a_inv : Vector (Vector Float n) n,
       -- Matrix a is invertible (has an inverse)
       (∀ i j : Fin n,
-        let matrix_mult_ij := List.sum (List.ofFn fun k : Fin n => 
+        let matrix_mult_ij := List.sum (List.ofFn fun k : Fin n =>
           (a.get i).get k * (a_inv.get k).get j)
         matrix_mult_ij = if i = j then 1.0 else 0.0) ∧
       (∀ i j : Fin n,
-        let matrix_mult_ij := List.sum (List.ofFn fun k : Fin n => 
+        let matrix_mult_ij := List.sum (List.ofFn fun k : Fin n =>
           (a_inv.get i).get k * (a.get k).get j)
         matrix_mult_ij = if i = j then 1.0 else 0.0)) :
     ⦃⌜∃ a_inv : Vector (Vector Float n) n,
       (∀ i j : Fin n,
-        let matrix_mult_ij := List.sum (List.ofFn fun k : Fin n => 
+        let matrix_mult_ij := List.sum (List.ofFn fun k : Fin n =>
           (a.get i).get k * (a_inv.get k).get j)
         matrix_mult_ij = if i = j then 1.0 else 0.0) ∧
       (∀ i j : Fin n,
-        let matrix_mult_ij := List.sum (List.ofFn fun k : Fin n => 
+        let matrix_mult_ij := List.sum (List.ofFn fun k : Fin n =>
           (a_inv.get i).get k * (a.get k).get j)
         matrix_mult_ij = if i = j then 1.0 else 0.0)⌝⦄
     tensorsolve a b
     ⦃⇓x => ⌜(∀ i : Fin n,
-              List.sum (List.ofFn fun j : Fin n => 
+              List.sum (List.ofFn fun j : Fin n =>
                 (a.get i).get j * x.get j) = b.get i) ∧
             (∀ y : Vector Float n,
               (∀ i : Fin n,
-                List.sum (List.ofFn fun j : Fin n => 
-                  (a.get i).get j * y.get j) = b.get i) → 
+                List.sum (List.ofFn fun j : Fin n =>
+                  (a.get i).get j * y.get j) = b.get i) →
               y = x) ∧
             (∀ a_inv : Vector (Vector Float n) n,
-              (∀ i j : Fin n, 
-                let matrix_mult_ij := List.sum (List.ofFn fun k : Fin n => 
+              (∀ i j : Fin n,
+                let matrix_mult_ij := List.sum (List.ofFn fun k : Fin n =>
                   (a.get i).get k * (a_inv.get k).get j)
                 matrix_mult_ij = if i = j then 1.0 else 0.0) →
               (∀ i : Fin n,
-                x.get i = List.sum (List.ofFn fun j : Fin n => 
+                x.get i = List.sum (List.ofFn fun j : Fin n =>
                   (a_inv.get i).get j * b.get j)))⌝⦄ := by
 -- <vc-proof>
   sorry

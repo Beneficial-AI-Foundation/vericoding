@@ -1,4 +1,4 @@
-/- 
+/-
 -----Description-----
 This problem involves combining two maps by creating a new map that includes every key from both inputs. When a key is found in both maps, the value from the second map is used in the result.
 

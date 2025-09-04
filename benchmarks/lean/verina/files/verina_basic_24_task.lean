@@ -1,4 +1,4 @@
-/- 
+/-
 -----Description-----
 This task requires writing a Lean 4 method that finds the difference between the first even number and the first odd number in an array of integers. The method should process the array sequentially until it identifies the first even number and the first odd number, and then return the difference calculated as (first even number) minus (first odd number).
 
@@ -13,12 +13,13 @@ Returns the difference computed as the first even number minus the first odd num
 -----Note-----
 The input array is assumed to be non-empty and to contain at least one even number and one odd number.
 -/
+import Mathlib
 
 @[reducible, simp]
 def firstEvenOddDifference_precond (a : Array Int) : Prop :=
   a.size > 1 ∧
-  (∃ x ∈ a, isEven x) ∧
-  (∃ x ∈ a, isOdd x)
+  (∃ x ∈ a, Even x) ∧
+  (∃ x ∈ a, Odd x)
 
 -- <vc-helpers>
 def isEven (n : Int) : Bool :=
