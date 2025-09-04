@@ -7,7 +7,7 @@ This module contains specifications for partitioning and QuickSelect algorithm
 using multisets to find the k-th smallest element.
 -/
 
-import NumpySpec.DafnyBenchmarks.Multiset
+import Multiset
 
 namespace DafnyBenchmarks
 

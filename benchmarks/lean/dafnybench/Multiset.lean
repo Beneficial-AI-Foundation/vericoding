@@ -67,4 +67,10 @@ instance {α : Type} [DecidableEq α] : BEq (Multiset α) where
 
 end Multiset
 
+/-- Extension method to convert List to Multiset -/
+def List.toMultiset {α : Type} (l : List α) : Multiset α := Multiset.ofList l
+
+/-- Extension method to convert Array to Multiset -/
+def Array.toMultiset {α : Type} (a : Array α) : Multiset α := Multiset.ofArray a
+
 end NumpySpec.DafnyBenchmarks
