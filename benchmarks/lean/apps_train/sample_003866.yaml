@@ -1,42 +1,45 @@
 vc-description: |-
   The new football league season is coming and the Football Association need some help resetting the league standings. Normally the initial league standing is done in alphabetical order (from A to Z) but this year the FA have decided to freshen it up. 
-
+  
   It has been decided that team who finished first last season will begin the next season in first place. Regardless of what letter their club begins with. e.g. if Manchester City were in first place last year, they will begin the season in position one. All other teams should be in alphabetical order. 
-
+  
   The teams will be fed in as an object ({}). The key will be will be their position from last season and the value is the club's name e.g. Arsenal. 
-
+  
   The output should be an object ({}) with the key as the club's starting position for the new season and the value should be club's name e.g. Arsenal.
-
+  
   For example. If in the previous season the standings were:
-
+  
   1:'Leeds United'
   2:'Liverpool'
   3:'Manchester City'
   4:'Coventry'
   5:'Arsenal' 
-
+  
   Then the new season standings should 
-
+  
   1:'Leeds United' (first last season)
   2:'Arsenal' (alphabetical)
   3:'Coventry' (alphabetical) 
   4:'Liverpool' (alphabetical) 
   5:'Manchester City' (alphabetical)
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def premier_league_standings (teams : TeamMap) : TeamMap := sorry
 
+vc-definitions: |-
+  def premier_league_standings (teams : TeamMap) : TeamMap := sorry
+  
   theorem first_place_always_present (teams : TeamMap) 
     (h : teams.teams.any (fun p => p.1 = "1")) :
     let result := premier_league_standings teams
     result.teams.any (fun p => p.1 = "1") ∧
     (result.teams.find? (fun p => p.1 = "1")).map Prod.snd = 
     (teams.teams.find? (fun p => p.1 = "1")).map Prod.snd := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem result_is_sorted (teams : TeamMap)
     (h1 : teams.teams.any (fun p => p.1 = "1"))
     (h2 : teams.teams.length ≥ 2) :
@@ -51,37 +54,37 @@ vc-theorems: |
     | [] => true
     | xs => ∀ i j, i < j → j < xs.length → 
            (xs.get ⟨i, sorry⟩).2 ≤ (xs.get ⟨j, sorry⟩).2 := sorry
-
-
+  
   theorem keys_are_sequential (teams : TeamMap)
     (h : teams.teams.any (fun p => p.1 = "1")) :
     let result := premier_league_standings teams
     ∀ i, i < result.teams.length → 
     result.teams.any (fun p => p.1 = toString (i + 1)) := sorry
-
-
+  
   theorem no_duplicate_teams (teams : TeamMap)
     (h : teams.teams.any (fun p => p.1 = "1")) :
     let result := premier_league_standings teams
     (result.teams.map Prod.snd).Nodup := sorry
-
+  
   /--
   info: {'1': 'Arsenal'}
   -/
   #guard_msgs in
   #eval premier_league_standings {"1": "Arsenal"}
-
+  
   /--
   info: {'1': 'Leeds United', '2': 'Accrington Stanley', '3': 'Arsenal'}
   -/
   #guard_msgs in
   #eval premier_league_standings {"2": "Arsenal", "3": "Accrington Stanley", "1": "Leeds United"}
-
+  
   /--
   info: {'1': 'Leeds United', '2': 'Arsenal', '3': 'Coventry', '4': 'Liverpool', '5': 'Manchester City'}
   -/
   #guard_msgs in
   #eval premier_league_standings {"1": "Leeds United", "2": "Liverpool", "3": "Manchester City", "4": "Coventry", "5": "Arsenal"}
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

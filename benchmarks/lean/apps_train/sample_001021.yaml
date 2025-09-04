@@ -4,84 +4,83 @@ vc-description: |-
   - change $N$ to $\mathop{\mathrm{digitsum}}(N)$
   Here, $\mathop{\mathrm{digitsum}}(x)$ is the sum of decimal digits of $x$. For example, $\mathop{\mathrm{digitsum}}(123)=1+2+3=6$, $\mathop{\mathrm{digitsum}}(100)=1+0+0=1$, $\mathop{\mathrm{digitsum}}(365)=3+6+5=14$.
   You may perform any number of operations (including zero) in any order. Please find the minimum obtainable value of $N$ and the minimum number of operations required to obtain this value.
-
+  
   -----Input-----
   - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
   - The first and only line of each test case contains two space-separated integers $N$ and $D$.
-
+  
   -----Output-----
   For each test case, print a single line containing two space-separated integers — the minimum value of $N$ and the minimum required number of operations.
-
+  
   -----Constraints-----
   - $1 \le T \le 10$
   - $1 \le N, D \le 10^{10}$
-
+  
   -----Subtasks-----
   Subtask #1 (30 points): $1 \le N, D \le 100$
   Subtask #2 (70 points): original constraints
-
+  
   -----Example Input-----
   3
   2 1
   9 3
   11 13
-
+  
   -----Example Output-----
   1 9
   3 2
   1 4
-
+  
   -----Explanation-----
   Example case 1: The value $N=1$ can be achieved by 8 successive "add" operations (changing $N$ to $10$) and one "digit-sum" operation.
   Example case 2: You can prove that you cannot obtain $N=1$ and $N=2$, and you can obtain $N=3$.
   The value $N=3$ can be achieved by one "add" and one "digitsum" operation, changing $9$ to $12$ and $12$ to $3$.  
   Example case 3: $N=1$ can be achieved by operations "add", "add", "digitsum", "digitsum": $11 \rightarrow 24 \rightarrow 37 \rightarrow 10 \rightarrow 1$.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def solve_min_value (n d : Nat) : Nat × Nat :=
     sorry
+
 vc-theorems: |-
   theorem result_smaller_than_input (n d : Nat) (h1 : n > 0) (h2 : d > 0) :
     let (result_n, _) := solve_min_value n d
     result_n ≤ n :=
   sorry
-
-
+  
   theorem result_nonnegative (n d : Nat) (h1 : n > 0) (h2 : d > 0) :
     let (result_n, _) := solve_min_value n d
     result_n ≥ 0 :=
   sorry
-
-
+  
   theorem ops_nonnegative (n d : Nat) (h1 : n > 0) (h2 : d > 0) :
     let (_, result_ops) := solve_min_value n d
     result_ops ≥ 0 :=
   sorry
-
-
+  
   theorem larger_numbers_get_smaller (n : Nat) (h : n > 9) :
     let (result_n, _) := solve_min_value n 1
     result_n < n :=
   sorry
-
-
+  
   theorem function_is_deterministic (n d : Nat) (h1 : n > 0) (h2 : d > 0) :
     solve_min_value n d = solve_min_value n d :=
   sorry
-
-
+  
   theorem one_stays_one :
     (solve_min_value 1 1).1 = 1 :=
   sorry
-
-
+  
   theorem single_digit_not_increase (h : 9 ≥ 1) :
     (solve_min_value 9 1).1 ≤ 9 :=
   sorry
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
+

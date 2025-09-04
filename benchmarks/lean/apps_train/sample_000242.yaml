@@ -1,71 +1,60 @@
 vc-description: |-
   In English, we have a concept called root, which can be followed by some other words to form another longer word - let's call this word successor. For example, the root an, followed by other, which can form another word another.
-
-
-
-
+  
   Now, given a dictionary consisting of many roots and a sentence. You need to replace all the successor in the sentence with the root forming it. If a successor has many roots can form it, replace it with the root with the shortest length.
-
-
-
+  
   You need to output the sentence after the replacement.
-
-
-
+  
   Example 1:
-
+  
   Input: dict = ["cat", "bat", "rat"]
   sentence = "the cattle was rattled by the battery"
   Output: "the cat was rat by the bat"
-
-
-
-
+  
   Note:
-
+  
   The input will only have lower-case letters.
    1 
    1 
    1 
    1
+
 vc-preamble: |-
-  import Imports.AllImports
-
   def replace_words (dict : List String) (sentence : String) : String := sorry
-
+  
   def splitIntoWords (s : String) : List String := s.split (· == ' ')
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def wordCount (s : String) : Nat := (splitIntoWords s).length
 
+vc-definitions: |-
+  def wordCount (s : String) : Nat := (splitIntoWords s).length
+  
   theorem replace_words_output_length_matches_input
     (dict : List String) (words : List String) (h_words : words.length > 0) 
     (sentence := String.intercalate " " words) : 
     wordCount (replace_words dict sentence) = words.length := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem replace_words_output_words_valid
     (dict : List String) (words : List String) (h_words : words.length > 0)
     (sentence := String.intercalate " " words) :
     let result := splitIntoWords (replace_words dict sentence)
     ∀ (i : Nat) (h : i < words.length),
       result[i]! = words[i]! ∨ result[i]! ∈ dict := sorry
-
-
+  
   theorem replace_words_replacement_preserves_prefix
     (dict : List String) (words : List String) (h_words : words.length > 0)
     (sentence := String.intercalate " " words) :
     let result := splitIntoWords (replace_words dict sentence)
     ∀ (i : Nat) (h : i < words.length),
       result[i]! ∈ dict → words[i]!.startsWith result[i]! := sorry
-
-
+  
   theorem empty_dict_preserves_input
     (dict : List String) (word : String) (h_dict : dict = []) :
     replace_words dict word = word := sorry
-
-
+  
   theorem replace_words_idempotent
     (dict : List String) (words : List String) (h_words : words.length > 0) 
     (h_dict : dict.length > 0)
@@ -73,18 +62,20 @@ vc-theorems: |
     let once := replace_words dict sentence
     let twice := replace_words dict once
     once = twice := sorry
-
+  
   /--
   info: 'the cat was rat by the bat'
   -/
   #guard_msgs in
   #eval replace_words ["cat", "bat", "rat"] "the cattle was rattled by the battery"
-
+  
   /--
   info: 'a a a'
   -/
   #guard_msgs in
   #eval replace_words ["a", "aa", "aaa"] "aa aaa aaaa"
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+

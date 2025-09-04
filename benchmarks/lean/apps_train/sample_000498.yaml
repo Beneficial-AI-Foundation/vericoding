@@ -6,37 +6,37 @@ vc-description: |-
   Snuke will write an integer between 1 and N (inclusive) on each vertex (multiple vertices may have the same integer written on them) and then keep only the edges satisfying the condition below, removing the other edges.
   Condition: Let x and y be the integers written on the vertices that are the endpoints of the edge. Exactly one of x and y equals the label of the edge.
   We call a way of writing integers on the vertices good if (and only if) the graph is still connected after removing the edges not satisfying the condition above. Determine whether a good way of writing integers exists, and present one such way if it exists.
-
+  
   -----Constraints-----
    - 2 \leq N \leq 10^5
    - N-1 \leq M \leq 2 \times 10^5
    - 1 \leq u_i,v_i,c_i \leq N
    - The given graph is connected and has no self-loops.
-
+  
   -----Input-----
   Input is given from Standard Input in the following format:
   N M
   u_1 v_1 c_1
   \vdots
   u_M v_M c_M
-
+  
   -----Output-----
   If there is no good way of writing integers, print No.
   Otherwise, print N lines. The i-th line should contain the integer written on Vertex i.
   Any good way of writing integers will be accepted.
-
+  
   -----Sample Input-----
   3 4
   1 2 1
   2 3 2
   3 1 3
   1 3 1
-
+  
   -----Sample Output-----
   1
   2
   1
-
+  
    - We write 1, 2, and 1 on Vertex 1, 2, and 3, respectively.
    - Edge 1 connects Vertex 1 and 2, and its label is 1.
    - Only the integer written on Vertex 1 equals the label, so this edge will not get removed.
@@ -47,35 +47,37 @@ vc-description: |-
    - Edge 4 connects Vertex 1 and 3, and its label is 1.
    - Both integers written on the vertices equal the label, so this edge will be removed.
    - After Edge 3 and 4 are removed, the graph will still be connected, so this is a good way of writing integers.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def solve_graph_labeling (n : Nat) (edges : List (Nat × Nat × Nat)) : List Nat := sorry
 
+vc-definitions: |-
+  def solve_graph_labeling (n : Nat) (edges : List (Nat × Nat × Nat)) : List Nat := sorry
+  
   theorem solve_impossible_n2 :
     solve_graph_labeling 2 [(1,2,1)] = [] := sorry
+
 vc-theorems: |-
   theorem solve_disconnected_graph :
     solve_graph_labeling 4 [(1,2,1)] = [] := sorry
-
-
+  
   theorem solve_triangle :
     solve_graph_labeling 3 [(1,2,1), (2,3,2), (3,1,3)] = [1,2,1] := sorry
-
-
+  
   theorem solve_square_exists (result : List Nat) :
     solve_graph_labeling 4 [(1,2,1), (2,3,2), (3,4,1), (4,1,2)] = result →
     result.length = 4 := sorry
-
-
+  
   theorem solve_square_valid_colors (result : List Nat) (u v c : Nat) 
     (h1 : u - 1 < result.length) (h2 : v - 1 < result.length) :
     solve_graph_labeling 4 [(1,2,1), (2,3,2), (3,4,1), (4,1,2)] = result →
     (u,v,c) ∈ [(1,2,1), (2,3,2), (3,4,1), (4,1,2)] →
     (result.get ⟨u-1, h1⟩ = c) ≠ (result.get ⟨v-1, h2⟩ = c) := sorry
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+

@@ -2,17 +2,17 @@ vc-description: |-
   Devu is a class teacher of a class of n students. One day, in the morning prayer of the school, all the students of his class were standing in a line. You are given information of their arrangement by a string s. The string s consists of only letters 'B' and 'G', where 'B' represents a boy and 'G' represents a girl.
   Devu wants inter-gender interaction among his class should to be maximum. So he does not like seeing two or more boys/girls standing nearby (i.e. continuous) in the line. e.g. he does not like the arrangements BBG and GBB, but he likes BG, GBG etc.
   Now by seeing the initial arrangement s of students, Devu may get furious and now he wants to change this arrangement into a likable arrangement. For achieving that, he can swap positions of any two students (not necessary continuous). Let the cost of swapping people from position i with position j (i ≠ j) be c(i, j). You are provided an integer variable type, then the cost of the the swap will be defined by c(i, j) = |j − i|type.
-
+  
   Please help Devu in finding minimum cost of swaps needed to convert the current arrangement into a likable one.
-
+  
   -----Input-----
   The first line of input contains an integer T, denoting the number of test cases. Then T test cases are follow.
   The first line of each test case contains an integer type, denoting the type of the cost function. Then the next line contains string s of length n, denoting the initial arrangement s of students.
   Note that the integer n is not given explicitly in input.
-
+  
   -----Output-----
   For each test case, print a single line containing the answer of the test case, that is, the minimum cost to convert the current arrangement into a likable one. If it is not possible to convert the current arrangement into a likable one, then print -1 instead of the minimum cost.
-
+  
   -----Constraints and Subtasks-----Subtask 1: 25 points
   - 1 ≤ T ≤ 105
   - 1 ≤ n ≤ 105
@@ -32,7 +32,7 @@ vc-description: |-
   - 1 ≤ T ≤ 102
   - 1 ≤ n ≤ 103
   - type can be 0, 1 or 2, that is type ∈ {0, 1, 2}.
-
+  
   -----Example-----
   Input:
   8
@@ -52,7 +52,7 @@ vc-description: |-
   BBGG
   2
   BGB
-
+  
   Output:
   -1
   0
@@ -62,7 +62,7 @@ vc-description: |-
   3
   1
   0
-
+  
   -----Explanation-----
   Note type of the first 3 test cases is 0. So c(i, j) = 1. Hence we just have to count minimum number of swaps needed.
   Example case 1. There is no way to make sure that both the boys does not stand nearby. So answer is -1.
@@ -75,32 +75,31 @@ vc-description: |-
   Then type of the last 2 test cases is 2. So c(i, j) = (j − i)2
   Example case 7. Swap boy at position 1 with girl at position 2. After swap the arrangement will be BGBG which is a valid arrangement. So answer is (2 - 1)2 = 1.
   Example case 8. Arrangement is already valid. No swap is needed. So answer is 0.
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def calculate_min_cost (cost_type : Nat) (arrangement : Arrangement) : Int :=
   sorry
-
-
+  
   def countBs (arr : Arrangement) : Nat :=
   match arr with
   | Arrangement.mk s => s.filter (· = 'B') |>.length
-
-
+  
   def countGs (arr : Arrangement) : Nat :=
   match arr with
   | Arrangement.mk s => s.filter (· = 'G') |>.length
-
-
+  
   def length (arr : Arrangement) : Nat :=
   match arr with
   | Arrangement.mk s => s.length
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def absDiff (a b : Nat) : Nat :=
   if a ≥ b then a - b else b - a
+
 vc-theorems: |-
   theorem cost_type_and_arrangement_bounds 
     (cost_type : Nat) (arrangement : Arrangement)
@@ -117,8 +116,7 @@ vc-theorems: |-
       (cost_type = 1 → result ≤ (length arrangement) * (length arrangement)) ∧
       (cost_type = 2 → result ≤ (length arrangement) * (length arrangement) * (length arrangement))) :=
   sorry
-
-
+  
   theorem balanced_arrangement_special_case
     (arrangement : Arrangement)
     (h1 : length arrangement ≥ 1)
@@ -131,6 +129,8 @@ vc-theorems: |-
     (b_count = g_count ∧ length arrangement = 2 → 
       result = 0 ∨ result = 1) :=
   sorry
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
+

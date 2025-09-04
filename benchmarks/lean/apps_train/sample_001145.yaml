@@ -4,26 +4,26 @@ vc-description: |-
   Through his app, Alex receives various requests from his customers. Each request has the form "I want to watch this movie at this showtime". Let's assume that the number of people who come to watch a movie at a given showtime is the same as the number of requests for that movie at that showtime.
   It is not necessary to accommodate everyone's requests ― Alex just wants to earn the maximum amount of money. There is no restriction on the capacity of the theatre. However, for each movie that is not watched by anyone, Alex would suffer a loss of Rs 100 (deducted from the profit).
   You are given $N$ requests Alex received during one day. Find the maximum amount of money he can earn on that day by choosing when to play which movies and with which prices. 
-
+  
   -----Input-----
   - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
   - The first line of each test case contains a single integer $N$.
   - $N$ lines follow. Each of these lines contains a character $m$, followed by a space and an integer $t$, describing a request to see the movie $m$ at the showtime $t$.
-
+  
   -----Output-----
   For each test case, print a single line containing one integer ― the maximum profit Alex can earn (possibly negative).
   Finally, print a line containing one integer ― the total profit over all test cases, i.e. over $T$ days.
-
+  
   -----Constraints-----
   - $1 \le T \le 150$
   - $0 \le N \le 100$
   - $m$ is 'A', 'B', 'C' or 'D'
   - $t$ is $12$, $3$, $6$ or $9$
-
+  
   -----Subtasks-----
   Subtask #1 (30 points): it is possible to fulfill all requests
   Subtask #2 (70 points): original constraints
-
+  
   -----Example Input-----
   5
   12
@@ -53,7 +53,7 @@ vc-description: |-
   1
   D 12
   0 
-
+  
   -----Example Output-----
   575
   525
@@ -61,7 +61,7 @@ vc-description: |-
   -200 
   -400
   475
-
+  
   -----Explanation-----
   Example case 1: The following table shows the number of people that want to watch the movies at the given showtimes:  12  3  6  9   A   0  1  0 1  B   3  0  0  2   C   1  0  2  0   D   0  2  0  0 
   The maximum number of requests was sent for movie B at 12 PM. Therefore, we play this movie at this time and the tickets cost Rs 100. Next, we play movie D at 3 PM with ticket price Rs 75 and movie C at 6 PM with ticket price Rs 50. Finally, we have a slot for 9 PM and the only movie we can play at that time now is movie A, with ticket price Rs 25. The total profit is $3 \cdot 100 + 2 \cdot 75 + 2 \cdot 50 + 1 \cdot 25 = 300 + 150 + 100 + 25 = 575$. Since each movie was watched by at least one person, there is no additional loss.
@@ -72,55 +72,56 @@ vc-description: |-
   Example case 4: The optimal solution is to play movie D at 12 PM; the other three movies go unattended. We have to deduct Rs 300, so the profit is $1 \cdot 100 - 300 = -200$.
   Example case 5: Since there are no requests for any movie at any time, all movies go unattended and Alex just suffers a loss of Rs 400.
   The total profit for all 5 days is $575+525-25-200-400 = 475$.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def maximize_profit (n : Nat) (requests : List Request) : Int := sorry
 
+vc-definitions: |-
+  def maximize_profit (n : Nat) (requests : List Request) : Int := sorry
+  
   theorem profit_is_bounded_above (n : Nat) (requests : List Request) :
     maximize_profit n requests ≤ n * 100 - 100 := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem profit_has_lower_bound (n : Nat) (requests : List Request) :
     maximize_profit n requests ≥ -400 := sorry 
-
-
+  
   theorem empty_requests_profit (requests : List Request) :
     requests = [] → maximize_profit 0 requests = -400 := sorry
-
-
+  
   theorem single_request_above_min (r : Request) :
     maximize_profit 1 [r] > -400 := sorry 
-
-
+  
   theorem same_movie_diff_times_above_min (m : Char) :
     let reqs := [⟨m, "3"⟩, ⟨m, "6"⟩, ⟨m, "9"⟩, ⟨m, "12"⟩]
     maximize_profit 4 reqs > -400 := sorry
-
-
+  
   theorem diff_movies_same_time_above_min (t : String) :
     let reqs := [⟨'A', t⟩, ⟨'B', t⟩, ⟨'C', t⟩, ⟨'D', t⟩] 
     maximize_profit 4 reqs > -400 := sorry
-
+  
   /--
   info: 575
   -/
   #guard_msgs in
   #eval maximize_profit 12 [("A", "3"), ("B", "12"), ("C", "6"), ("A", "9"), ("B", "12"), ("C", "12"), ("D", "3"), ("B", "9"), ("D", "3"), ("B", "12"), ("B", "9"), ("C", "6")]
-
+  
   /--
   info: 525
   -/
   #guard_msgs in
   #eval maximize_profit 7 [("A", "9"), ("A", "9"), ("B", "6"), ("C", "3"), ("D", "12"), ("A", "9"), ("B", "6")]
-
+  
   /--
   info: -400
   -/
   #guard_msgs in
   #eval maximize_profit 0 []
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+

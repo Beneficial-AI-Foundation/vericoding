@@ -8,7 +8,7 @@ vc-description: |-
   var bitmap = [0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0];
   ```
   As you can see, with a bitmap, the length of the vector represents the range of unique values in the set (in this case `0-20`), and the `0/1` represents whether or not the current index is equal to a value in the set.
-
+  
   Task:
   Your task is to write a function `toBits` that will take in a set of uniqe integers and output a bit vector/bitmap (an array in javascript) using `1`s and `0`s to represent present and non-present values.
   Input:
@@ -21,34 +21,37 @@ vc-description: |-
   `let exampleOutput = [0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0,...]`
   More in-depth bitmap kata coming very soon, happy coding!
   To learn more about bitmapping and to see the inspiration for making these kata, checkout the book Programming Pearls by Jon Bently.  It's a powerful resource for any programmer!
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def to_bits (s : String) : List Nat := sorry
 
+vc-definitions: |-
+  def to_bits (s : String) : List Nat := sorry
+  
   theorem to_bits_length (s : String) (h : ∃ nums : List Nat, 
       (∀ n ∈ nums, n < 5000) ∧ 
       (s = String.intercalate "\n" (nums.map toString))) : 
     (to_bits s).length = 5000 := sorry
+
 vc-theorems: |-
   theorem to_bits_binary (s : String) (h : ∃ nums : List Nat, 
       (∀ n ∈ nums, n < 5000) ∧ 
       (s = String.intercalate "\n" (nums.map toString))) :
     ∀ x ∈ to_bits s, x = 0 ∨ x = 1 := sorry
-
-
+  
   theorem to_bits_indices {nums : List Nat} (s : String) (h : 
       (∀ n ∈ nums, n < 5000) ∧ 
       (s = String.intercalate "\n" (nums.map toString))) :
     ((List.enum (to_bits s)).filter (fun p => p.2 = 1)).map Prod.fst = nums := sorry
-
-
+  
   theorem to_bits_invalid_chars (s : String) :
     (∃ c ∈ s.data, ¬(c = '\n' ∨ ('0' ≤ c ∧ c ≤ '9'))) →
     to_bits s = [] := sorry
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
+

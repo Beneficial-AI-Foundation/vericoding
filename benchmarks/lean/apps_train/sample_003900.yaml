@@ -1,46 +1,48 @@
 vc-description: |-
   Write a function that takes an integer and returns an array `[A, B, C]`, where `A` is the number of multiples of 3 (but not 5) below the given integer, `B` is the number of multiples of 5 (but not 3) below the given integer and `C` is the number of multiples of 3 and 5 below the given integer. 
-
+  
   For example, `solution(20)` should return `[5, 2, 1]`
-
+  
   ~~~if:r
   ```r
   # in R, returns a numeric vector
   solution(20)
   [1] 5 2 1
-
+  
   class(solution(20))
   [1] "numeric"
   ```
   ~~~
+
 vc-preamble: |-
-  import Imports.AllImports
-
   def solution (n : Nat) : Array Nat := sorry
-
+  
   def isMultipleOf3 (x : Nat) : Bool := x % 3 == 0
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
+
 vc-definitions: |-
   def isMultipleOf5 (x : Nat) : Bool := x % 5 == 0
+  
+  -- Output format properties
 
-  -- Output format properties 
 vc-theorems: |-
   theorem solution_output_format (n : Nat) (h : n > 0) : 
     (solution n).size = 3 ∧ 
     ∀ i < 3, (solution n)[i]! ≥ 0 := sorry
-
+  
   -- Sum matches total multiples
-
+  
   theorem solution_sum_matches_multiples (n : Nat) (h : n > 0) :
     let result := solution n
     let total := result[0]! + result[1]! + result[2]!
     let multiples := (List.range n).filter (fun x => isMultipleOf3 x || isMultipleOf5 x)
     total = multiples.length := sorry
-
+  
   -- Components match exclusive counts
-
+  
   theorem solution_component_counts (n : Nat) (h : n > 0) :
     let result := solution n
     let only3 := (List.range n).filter (fun x => isMultipleOf3 x && !isMultipleOf5 x)
@@ -49,13 +51,15 @@ vc-theorems: |-
     result[0]! = only3.length ∧
     result[1]! = only5.length ∧  
     result[2]! = both.length := sorry
-
+  
   -- Edge cases
-
+  
   theorem solution_edge_cases :
     solution 1 = #[0, 0, 0] ∧
     solution 3 = #[0, 0, 0] ∧
     solution 4 = #[1, 0, 0] := sorry
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
+

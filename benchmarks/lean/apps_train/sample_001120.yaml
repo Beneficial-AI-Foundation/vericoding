@@ -1,42 +1,42 @@
 vc-description: |-
   Recently, chef Ciel often hears about lucky numbers.
-
+  
   Everybody knows that lucky numbers are positive integers
   whose decimal representation contains only the lucky digits 4 and 7.
   For example, numbers 47, 744, 4 are lucky and 5, 17, 467 are not.
-
+  
   Ciel decides to make Ciel numbers.
   As you know, Ciel likes the digit 8 very much.
   And then, Ciel likes the digits 5 and 3.
   So Ciel defines Ciel numbers as the positive integers k such that d(k, 8) ≥ d(k, 5) ≥ d(k, 3) and d(k, i) = 0 for all i = 0, 1, 2, 4, 6, 7, 9,
   where d(k, i) denotes the number of the digit i in the decimal representation of the integer k.
   For example, the first few Ciel numbers are 8, 58, 85, 88, 358, 385, 538, 583, 588, 835, 853, 858, 885, 888, ....
-
+  
   Ciel's restaurant has N menus.
   And Ciel want to know how many menus have Ciel numbers as their price.
   Your task is to find it.
-
+  
   -----Input-----
-
+  
   The first line contains an integer N.
   Then N lines follow.
   Each line has the name Si of the menu and its price Pi separated by a single space.
-
+  
   -----Output-----
-
+  
   Print the number of menus whose prices are one of Ciel numbers.
-
+  
   -----Constraints-----
-
+  
   1 ≤ N ≤ 1000
-
+  
   1 ≤ |Si| ≤ 100, where |Si| denotes the length of Si
-
+  
   Each letter of Si is either an alphabetical letter or a digit or a single quotation mark or a space.
-
+  
   1 ≤ Pi < 1000000 (106)
   Pi contains no leading zeros.
-
+  
   -----Sample Input-----
   6
   milk 58
@@ -45,44 +45,44 @@ vc-description: |-
   rice omelet 85855
   unagi 1
   The first    and last letters can be a space    358
-
+  
   -----Sample Output-----
   3
-
+  
   -----Output details-----
-
+  
   58 and 888888 and 358 are Ciel numbers.
   80 and 85855 and 1 are not Ciel numbers.
-
+  
   -----Notes-----
-
+  
   Different operating systems have different ways of representing a newline; do not assume one particular way will be used.
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def count_ciel_number_prices (menu_items : List String) : Nat :=
     sorry
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def count_char (s : String) (c : Char) : Nat :=
     s.foldl (fun acc x => if x = c then acc + 1 else acc) 0
-vc-theorems: |
+
+vc-theorems: |-
   theorem count_result_bounded (menu_items : List String) :
     0 ≤ count_ciel_number_prices menu_items ∧ 
     count_ciel_number_prices menu_items ≤ menu_items.length :=
   sorry
-
-
+  
   theorem count_result_bounded_with_format 
     (menu_items : List String)
     (h : ∀ item ∈ menu_items, ∃ words price, item = words ++ " " ++ price ∧ price.all (λ c => '0' ≤ c ∧ c ≤ '9')) :
     0 ≤ count_ciel_number_prices menu_items ∧
     count_ciel_number_prices menu_items ≤ menu_items.length :=
   sorry
-
-
+  
   theorem count_ciel_numbers_positive
     (menu_items : List String)
     (h : ∃ item ∈ menu_items, 
@@ -92,24 +92,26 @@ vc-theorems: |
       count_char price '5' ≥ count_char price '3') :
     count_ciel_number_prices menu_items > 0 :=
   sorry
-
+  
   /--
   info: 3
   -/
   #guard_msgs in
   #eval count_ciel_number_prices ["milk 58", "Ciel"s Drink 80", "The curry 2nd edition 888888", "rice omelet 85855", "unagi 1", "The first and last letters can be a space 358"]
-
+  
   /--
   info: 2
   -/
   #guard_msgs in
   #eval count_ciel_number_prices ["menu 8", "special 853", "dessert 123"]
-
+  
   /--
   info: 0
   -/
   #guard_msgs in
   #eval count_ciel_number_prices ["item 44", "item2 77"]
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+

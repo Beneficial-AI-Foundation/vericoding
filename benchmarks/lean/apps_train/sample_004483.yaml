@@ -1,48 +1,53 @@
 vc-description: |-
   ```if:python,php
   In this kata you will have to write a function that takes `litres` and `price_per_litre` as arguments. Purchases of 2 or more litres get a discount of 5 cents per litre, purchases of 4 or more litres get a discount of 10 cents per litre, and so on every two litres, up to a maximum discount of 25 cents per litre. But total discount per litre cannot be more than 25 cents. Return the toal cost rounded to 2 decimal places. Also you can guess that there will not be negative or non-numeric inputs.
-
+  
   Good Luck!
   ```
-
+  
   ```if:csharp,java,javascript
   In this kata you will have to write a function that takes `litres` and `pricePerLitre` as arguments. Purchases of 2 or more litres get a discount of 5 cents per litre, purchases of 4 or more litres get a discount of 10 cents per litre, and so on every two litres, up to a maximum discount of 25 cents per litre. But total discount per litre cannot be more than 25 cents. Return the toal cost rounded to 2 decimal places. Also you can guess that there will not be negative or non-numeric inputs.
-
+  
   Good Luck!
   ```
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def fuelPrice (litres : Float) (price : Float) : Float :=
     sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem fuel_price_discount_steps (litres : Float) (price : Float)
     (h₁ : litres ≥ 0) (h₂ : litres ≤ 1000)
     (h₃ : price ≥ 0.25) (h₄ : price ≤ 100) :
     let maxDiscount := min ((Float.floor (litres/2)) * 0.05) 0.25
     let discountedPrice := price - maxDiscount
     fuelPrice litres price = discountedPrice * litres := sorry
-
+  
   /--
   info: 212.5
   -/
   #guard_msgs in
   #eval fuel_price 10 21.5
-
+  
   /--
   info: 390
   -/
   #guard_msgs in
   #eval fuel_price 40 10
-
+  
   /--
   info: 83.7
   -/
   #guard_msgs in
   #eval fuel_price 15 5.83
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

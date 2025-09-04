@@ -1,8 +1,8 @@
 vc-description: |-
   You have a grid with `$m$` rows and `$n$` columns. Return the number of unique ways that start from the top-left corner and go to the bottom-right corner. You are only allowed to move right and down.
-
+  
   For example, in the below grid of `$2$` rows and `$3$` columns, there are `$10$` unique paths:
-
+  
   ```
   o----o----o----o
   |    |    |    |
@@ -10,54 +10,56 @@ vc-description: |-
   |    |    |    |
   o----o----o----o
   ```
-
+  
   **Note:** there are random tests for grids up to 1000 x 1000 in most languages, so a naive solution will not work.
-
+  
   ---
   *Hint: use mathematical permutation and combination*
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def numberOfRoutes (m n : Nat) : Nat := sorry
 
+vc-definitions: |-
+  def numberOfRoutes (m n : Nat) : Nat := sorry
+  
   theorem numberOfRoutes_positive (m n : Nat) (h1: m > 0) (h2: n > 0) : 
     numberOfRoutes m n > 0 := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem numberOfRoutes_symmetric (m n : Nat) :
     numberOfRoutes m n = numberOfRoutes n m := sorry
-
-
+  
   theorem numberOfRoutes_single_row (n : Nat) (h: n > 0) :
     numberOfRoutes 1 n = n + 1 := sorry
-
-
+  
   theorem numberOfRoutes_single_col (n : Nat) (h: n > 0) :
     numberOfRoutes n 1 = n + 1 := sorry
-
-
+  
   theorem numberOfRoutes_minimal :
     numberOfRoutes 1 1 = 2 := sorry
-
+  
   /--
   info: 2
   -/
   #guard_msgs in
   #eval number_of_routes 1 1
-
+  
   /--
   info: 35
   -/
   #guard_msgs in
   #eval number_of_routes 3 4
-
+  
   /--
   info: 462
   -/
   #guard_msgs in
   #eval number_of_routes 5 6
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
+

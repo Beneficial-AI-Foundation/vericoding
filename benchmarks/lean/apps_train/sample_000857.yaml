@@ -1,19 +1,19 @@
 vc-description: |-
   As we all know, Chef is cooking string for long days, his new discovery on string is the longest common pattern length. The longest common pattern length between two strings is the maximum number of characters that both strings have in common. Characters are case sensitive, that is, lower case and upper case characters are considered as different. Note that characters can repeat in a string and a character might have one or more occurrence in common between two strings. For example, if Chef has two strings A = "Codechef" and B = "elfedcc", then the longest common pattern length of A and B is 5 (common characters are c, d, e, e, f).
   Chef wants to test you with the problem described above. He will give you two strings of Latin alphabets and digits, return him the longest common pattern length.
-
+  
   -----Input-----
   The first line of the input contains an integer T, denoting the number of test cases. Then the description of T test cases follows.
   The first line of each test case contains a string A. The next line contains another character string B.
-
+  
   -----Output-----
   For each test case, output a single line containing a single integer, the longest common pattern length between A and B.
-
+  
   -----Constraints-----
   - 1 ≤ T ≤ 100
   - 1 ≤ |A|, |B| ≤ 10000 (104), where |S| denotes the length of the string S
   - Both of A and B can contain only alphabet characters (both lower and upper case) and digits
-
+  
   -----Example-----
   Input:
   4
@@ -25,81 +25,80 @@ vc-description: |-
   acaa
   Codechef
   elfedcc
-
+  
   Output:
   0
   4
   3
   5
-
+  
   -----Explanation-----
   Example case 1. There is no common character.
   Example case 2. All the characters are same.
   Example case 3. Three characters (a, a and c) are same.
   Example case 4. This sample is mentioned by the statement.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def find_longest_common_pattern (s1 s2 : List Char) : Nat :=
     sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem symmetric_property (s1 s2 : List Char) :
     find_longest_common_pattern s1 s2 = find_longest_common_pattern s2 s1 := by
     sorry
-
-
+  
   theorem self_property (s : List Char) :
     find_longest_common_pattern s s = s.length := by
     sorry
-
-
+  
   theorem length_bounds (s1 s2 : List Char) :
     find_longest_common_pattern s1 s2 ≤ min s1.length s2.length := by
     sorry
-
-
+  
   theorem non_negative (s1 s2 : List Char) :
     0 ≤ find_longest_common_pattern s1 s2 := by
     sorry
-
-
+  
   theorem substring_property (s1 s2 s3 : List Char) :
     find_longest_common_pattern s1 s2 ≤ 
     find_longest_common_pattern (s1 ++ s3) (s2 ++ s3) := by
     sorry
-
-
+  
   theorem empty_string_property (s : List Char) :
     find_longest_common_pattern ([] : List Char) s = 0 ∧
     find_longest_common_pattern s ([] : List Char) = 0 := by
     sorry
-
-
+  
   theorem repetition_property (s : List Char) (n : Nat) :
     find_longest_common_pattern (List.replicate n s).join (List.replicate n s).join =
     find_longest_common_pattern s s * n := by
     sorry
-
+  
   /--
   info: 0
   -/
   #guard_msgs in
   #eval find_longest_common_pattern "abcd" "xyz"
-
+  
   /--
   info: 4
   -/
   #guard_msgs in
   #eval find_longest_common_pattern "abcd" "bcda"
-
+  
   /--
   info: 5
   -/
   #guard_msgs in
   #eval find_longest_common_pattern "Codechef" "elfedcc"
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
+

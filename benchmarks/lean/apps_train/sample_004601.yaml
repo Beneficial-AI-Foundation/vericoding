@@ -1,40 +1,43 @@
 vc-description: |-
   As you see in Example test cases, the os running this service is ```posix```.
-
+  
   Return the output by executing the command given as the string on posix os.
-
+  
   See the example test cases for the expected data format.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def get_output (cmd : String) : String := sorry
 
+vc-definitions: |-
+  def get_output (cmd : String) : String := sorry
+  
   theorem pwd_returns_valid_path :
     let result := get_output "pwd"
     result.length > 0 ∧ result.contains '/' := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem ls_returns_content :
     let result := get_output "ls"
     result.length > 0 := sorry
-
-
+  
   theorem basic_commands_return_nonempty (cmd : String) :
     (cmd = "ls" ∨ cmd = "pwd" ∨ cmd = "echo hello") →
     let result := get_output cmd
     result.length > 0 := sorry
-
-
+  
   theorem invalid_command_returns_empty :
     get_output "thiscommanddoesnotexist" = "" := sorry
-
+  
   /--
   info: 'hello world\n'
   -/
   #guard_msgs in
   #eval get_output "echo "hello world""
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

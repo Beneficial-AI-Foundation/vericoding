@@ -1,24 +1,27 @@
 vc-description: |-
   Return a new array consisting of elements which are multiple of their own index in input array (length > 1).
-
+  
   Some cases: 
-
+  
   ```
   [22, -6, 32, 82, 9, 25] =>  [-6, 32, 25]
-
+  
   [68, -1, 1, -7, 10, 10] => [-1, 10]
-
+  
   [-56,-85,72,-26,-14,76,-27,72,35,-21,-67,87,0,21,59,27,-92,68] => [-85, 72, 0, 68]
   ```
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def multiple_of_index (arr : List Int) : List Int :=
     sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem multiple_of_index_basic_properties (arr : List Int) (h : arr ≠ []) :
     let result := multiple_of_index arr
     -- Result length is at most one less than input length
@@ -26,38 +29,38 @@ vc-theorems: |
     -- Every element in result appears in original array 
     ∀ x ∈ result, x ∈ arr :=
     sorry
-
-
+  
   theorem empty_result_divisibility (arr : List Int) (h : arr ≠ []) :
     let result := multiple_of_index arr
     (∀ (i : Fin arr.length), 1 ≤ i.val → (arr.get i) % i.val ≠ 0) →
     result = [] :=
     sorry
-
-
+  
   theorem all_zeros (arr : List Int) (h : arr.length ≥ 2) (h2 : ∀ x ∈ arr, x = 0) :
     let result := multiple_of_index arr
     (∀ x ∈ result, x = 0) ∧
     result.length = arr.length - 1 :=
     sorry
-
+  
   /--
   info: [-6, 32, 25]
   -/
   #guard_msgs in
   #eval multiple_of_index [22, -6, 32, 82, 9, 25]
-
+  
   /--
   info: [-1, 10]
   -/
   #guard_msgs in
   #eval multiple_of_index test2
-
+  
   /--
   info: [-85, 72, 0, 68]
   -/
   #guard_msgs in
   #eval multiple_of_index test3
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

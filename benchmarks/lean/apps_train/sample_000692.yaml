@@ -9,20 +9,20 @@ vc-description: |-
   - If the parities of the number of occurrences in $S$ and $R$ are the same for each letter, the process succeeds.
   For different substrings, we may choose different values of $C$.
   Help Sed find the number of good substrings in the string $S$.
-
+  
   -----Input-----
   - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
   - The first and only line of each test case contains a single string $S$.
-
+  
   -----Output-----
   For each test case, print a single line containing one integer ― the number of good substrings.
-
+  
   -----Constraints-----
   - $1 \le T \le 10^5$
   - $1 \le S \le 10^5$
   - $S$ contains only lowercase English letters ('a' through 'z') and '?'
   - the sum of $|S|$ over all test cases does not exceed $10^5$
-
+  
   -----Example Input-----
   5
   aa?
@@ -30,14 +30,14 @@ vc-description: |-
   ????
   asfhaslskfak
   af??avvnfed?fav?faf????
-
+  
   -----Example Output-----
   2
   6
   4
   2
   27
-
+  
   -----Explanation-----
   Example case 1: All letters occur an even number of times in $S$. The six substrings of $S$ are "a", "a", "?", "aa", "a?" and "aa?" (note that "a" is counted twice). Which of them are good?
   - "a" is not good as 'a' occurs an odd number of times in this substring and there are no '?' to replace.
@@ -47,19 +47,24 @@ vc-description: |-
   - "aa?" is not a good substring. For any replacement letter $C$, we find that $C$ occurs an odd number of times in $R$.
   Example case 2: We especially note that "a???" is not a good substring. Since all '?' have to be replaced by the same character, we can only get strings of the form "aaaa", "abbb", "accc", etc., but none of them match the criteria for a good substring.
   Example case 3: Any substring with even length is good.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def solve (s : String) : Nat := sorry
 
+vc-definitions: |-
+  def solve (s : String) : Nat := sorry
+  
   theorem solve_single_wildcard : solve "aa?" = 2 := sorry
+
 vc-theorems: |-
   theorem solve_multi_wildcard : solve "a???" = 6 := sorry
-
+  
   theorem solve_all_wildcards : solve "????" = 4 := sorry
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
+

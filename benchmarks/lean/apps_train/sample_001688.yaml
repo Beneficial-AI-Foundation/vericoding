@@ -1,35 +1,37 @@
 vc-description: |-
   ## A Knight's Tour
-
+  
   A knight's tour is a sequence of moves of a knight on a chessboard such that the knight visits every square only once.
-
+  
   https://en.wikipedia.org/wiki/Knight%27s_tour
-
+  
   Traditional chess boards are 8x8 grids, but for this kata we are interested in generating tours for any square board sizes.
-
+  
   You will be asked to find a knight's path for any NxN board from any start position.
-
+  
   I have provided a tool to visualize the output of your code at the following link: http://jsfiddle.net/7sbyya59/2/
-
+  
   EDIT: The expected output is a 2D array `(n x 2)` comprised of the `[x,y]` coordinates of the Knight's path taken in sequential order. (e.g. `[[2,3],[4,4],...,[x,y]]`)
-
+  
   All test cases will have a passing solution.
-
+  
   -dg
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def knights_tour (start : Pos) (size : Nat) : List Pos :=
     sorry
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def is_valid_knight_move (p1 p2 : Pos) : Bool :=
     let dx := if p1.x ≥ p2.x then p1.x - p2.x else p2.x - p1.x
     let dy := if p1.y ≥ p2.y then p1.y - p2.y else p2.y - p1.y
     (dx == 2 && dy == 1) || (dx == 1 && dy == 2)
-vc-theorems: |
+
+vc-theorems: |-
   theorem knights_tour_returns_valid_path (start : Pos) (size : Nat) 
       (h1 : size ≥ 5) (h2 : start.x < size) (h2' : start.y < size) :
       let path := knights_tour start size
@@ -44,8 +46,7 @@ vc-theorems: |
       -- All moves are valid knight moves
       (∀ i, i < path.length - 1 → is_valid_knight_move (path.get! i) (path.get! (i+1))) := by
     sorry
-
-
+  
   theorem small_boards_sequential (size : Nat) (h : size ≤ 4) :
       let start := ⟨0,0⟩
       let path := knights_tour start size
@@ -53,24 +54,26 @@ vc-theorems: |
         (List.range size).map (fun y => ⟨x,y⟩))
       path = expected := by
     sorry
-
+  
   /--
   info: 25
   -/
   #guard_msgs in
   #eval len knights_tour((0, 0), 5)
-
+  
   /--
   info: 36
   -/
   #guard_msgs in
   #eval len knights_tour((2, 2), 6)
-
+  
   /--
   info: 64
   -/
   #guard_msgs in
   #eval len knights_tour((0, 0), 8)
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+

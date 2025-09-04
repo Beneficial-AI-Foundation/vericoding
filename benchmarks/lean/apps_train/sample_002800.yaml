@@ -1,20 +1,22 @@
 vc-description: |-
   Have you heard about the myth that [if you fold a paper enough times, you can reach the moon with it](http://scienceblogs.com/startswithabang/2009/08/31/paper-folding-to-the-moon/)? Sure you have, but exactly how many? Maybe it's time to write a program to figure it out.
-
+  
   You know that a piece of paper has a thickness of `0.0001m`. Given `distance` in units of meters, calculate how many times you have to fold the paper to make the paper reach this distance.  
   (If you're not familiar with the concept of folding a paper: Each fold doubles its total thickness.)
-
+  
   Note: Of course you can't do half a fold. You should know what this means ;P
-
+  
   Also, if somebody is giving you a negative distance, it's clearly bogus and you should yell at them by returning `null` (or whatever equivalent in your language. In Shell please return `None`).
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def fold_to (distance : Float) (thickness : Float := 0.0001) : Option Float := sorry
 
+vc-definitions: |-
+  def fold_to (distance : Float) (thickness : Float := 0.0001) : Option Float := sorry
+  
   theorem fold_to_positive_distance {distance : Float} 
     (h1 : distance ≥ 0) 
     (h2 : distance < 1e10) :
@@ -22,12 +24,12 @@ vc-definitions: |
     match res with
     | some n => n ≥ 0 ∧ 2^n * 0.0001 ≥ distance
     | none => False := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem fold_to_negative_distance {distance : Float}
     (h : distance < 0) :
     fold_to distance = none := sorry
-
-
+  
   theorem fold_to_custom_thickness {distance thickness : Float}
     (h1 : distance ≥ 0)
     (h2 : distance < 1e10)
@@ -37,32 +39,32 @@ vc-theorems: |
     match res with
     | some n => n ≥ 0 ∧ 2^n * thickness ≥ distance
     | none => True := sorry
-
-
+  
   theorem fold_to_zero :
     fold_to 0 = some 0 := sorry
-
-
+  
   theorem fold_to_zero_custom_thickness :
     fold_to 0 0.1 = some 0 := sorry
-
+  
   /--
   info: 42
   -/
   #guard_msgs in
   #eval fold_to 384000000
-
+  
   /--
   info: 0
   -/
   #guard_msgs in
   #eval fold_to 5e-05
-
+  
   /--
   info: None
   -/
   #guard_msgs in
   #eval fold_to -1
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

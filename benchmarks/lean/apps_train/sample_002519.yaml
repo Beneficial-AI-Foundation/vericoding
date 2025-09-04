@@ -2,41 +2,45 @@ vc-description: |-
   =====Problem Statement=====
   Here is a sample line of code that can be executed in Python:
   print("Hello, World!")
-
+  
   You can just as easily store a string as a variable and then print it to stdout:
   my_string = "Hello, World!"
   print(my_string)
-
+  
   The above code will print Hello, World! on your screen. Try it yourself in the editor below!
-
+  
   =====Input Format=====
   You do not need to read any input in this challenge.
-
+  
   =====Output Format=====
   Print Hello, World! to stdout.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def hello_world : String := sorry
 
+vc-definitions: |-
+  def hello_world : String := sorry
+  
   theorem hello_world_consistency :
     hello_world = hello_world := by sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem hello_world_is_string (s : String := hello_world) : 
     s = hello_world := by sorry
-
-
+  
   theorem hello_world_non_empty :
     hello_world.length > 0 := by sorry
-
+  
   /--
   info: 'Hello, World!'
   -/
   #guard_msgs in
-  #eval hello_world 
+  #eval hello_world
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

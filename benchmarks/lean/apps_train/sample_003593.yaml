@@ -1,111 +1,107 @@
 vc-description: |-
   # Do you ever wish you could talk like Siegfried of KAOS ?
-
+  
   ## YES, of course you do!
-
+  
   https://en.wikipedia.org/wiki/Get_Smart
-
-
-
+  
   # Task
-
+  
   Write the function ```siegfried``` to replace the letters of a given sentence.
-
+  
   Apply the rules using the course notes below. Each week you will learn some more rules.
-
+  
   Und by ze fifz vek yu vil be speakink viz un aksent lik Siegfried viz no trubl at al!
-
-
+  
   # Lessons
-
+  
   ## Week 1
-
+  
   * ```ci``` -> ```si```
   * ```ce``` -> ```se```
   * ```c``` -> ```k``` (except ```ch``` leave alone)
-
+  
   ## Week 2
-
+  
   * ```ph``` -> ```f```
-
+  
   ## Week 3
-
+  
   * remove trailing ```e``` (except for all 2 and 3 letter words)
   * replace double letters with single letters (e.g. ```tt``` -> ```t```)
-
+  
   ## Week 4
-
+  
   * ```th``` -> ```z```
   * ```wr``` -> ```r```
   * ```wh``` -> ```v```
   * ```w``` -> ```v```
-
+  
   ## Week 5
-
+  
   * ```ou``` -> ```u```
   * ```an``` -> ```un```
   * ```ing``` -> ```ink``` (but only when ending words)
   * ```sm``` -> ```schm``` (but only when beginning words)
-
-
-
+  
   # Notes
-
+  
   * You must retain the case of the original sentence
   * Apply rules strictly in the order given above
   * Rules are cummulative. So for week 3 first apply week 1 rules, then week 2 rules, then week 3 rules
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def Char.isAscii (c : Char) : Bool := sorry
 
+vc-definitions: |-
+  def Char.isAscii (c : Char) : Bool := sorry
+  
   def siegfried (week : Nat) (text : String) : String := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem siegfried_length (week : Nat) (text : String) 
     (h1 : week ≤ 5) (h2 : text.length > 0) : 
     (siegfried week text).length ≤ text.length := sorry
-
-
+  
   theorem siegfried_consistent (text : String) (h : text.length > 0) :
     siegfried 5 text = siegfried 5 text := sorry
-
-
+  
   theorem siegfried_idempotent (week : Nat) (text : String) 
     (h1 : week ≤ 5) (h2 : text.length > 0) :
     siegfried week (siegfried week text) = siegfried week text := sorry
-
-
+  
   theorem siegfried_week_0 (text : String) (h : text.length > 0) :
     siegfried 0 text = text := sorry
-
-
+  
   theorem siegfried_c_replacement (text : String) 
     (h1 : text.length > 0)
     (h2 : ∀ c ∈ text.data, c = 'c' ∨ c = 'C') :
     let result := siegfried 1 text
     (∀ c ∈ result.data, c.toLower ≠ 'c') ∧
     (∃ c ∈ result.data, c.toLower = 'k') := sorry
-
+  
   /--
   info: 'Sity sivilians'
   -/
   #guard_msgs in
   #eval siegfried 1 "City civilians"
-
+  
   /--
   info: 'Met me at the sam plas at non'
   -/
   #guard_msgs in
   #eval siegfried 3 "Meet me at the same place at noon"
-
+  
   /--
   info: 'Schmart und 99 ver husbund und vif'
   -/
   #guard_msgs in
   #eval siegfried 5 "Smart and 99 were husband and wife"
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

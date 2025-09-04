@@ -7,19 +7,20 @@ vc-description: |-
   56328116  # 5 + 6 + 3 + 2 = 8 + 1 + 1 + 6
   ```
   Such tickets were either eaten after being used or collected for bragging rights.
-
+  
   Your task is to write a funtion ```luck_check(str)```, which returns ```true/True``` if argument is string decimal representation of a lucky ticket number, or ```false/False``` for all other numbers. It should throw errors for empty strings or strings which don't represent a decimal number.
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def List.sum (xs : List Nat) : Nat :=
     xs.foldl (· + ·) 0
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def luck_check (s : String) : Option Bool := sorry
 
+vc-definitions: |-
+  def luck_check (s : String) : Option Bool := sorry
+  
   theorem lucky_number_symmetry {n : Nat} : 
     n > 0 → let s := toString n;
     match luck_check s with
@@ -28,38 +29,39 @@ vc-definitions: |
         let rightHalf := s.drop ((s.length + 1) / 2);
         (leftHalf.toList.map Char.toNat).sum = (rightHalf.toList.map Char.toNat).sum
     | _ => True := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem lucky_number_numeric {s : String} :
     (∀ c ∈ s.data, c.isDigit) →
     s.length > 0 →
     (luck_check s).isSome := sorry
-
-
+  
   theorem non_numeric_input_none {s : String} :
     (∃ c ∈ s.data, !c.isDigit) →
     luck_check s = none := sorry
-
-
+  
   theorem empty_string_none :
     luck_check "" = none := sorry
-
+  
   /--
   info: True
   -/
   #guard_msgs in
   #eval luck_check "003111"
-
+  
   /--
   info: True
   -/
   #guard_msgs in
   #eval luck_check "17935"
-
+  
   /--
   info: False
   -/
   #guard_msgs in
   #eval luck_check "543970707"
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

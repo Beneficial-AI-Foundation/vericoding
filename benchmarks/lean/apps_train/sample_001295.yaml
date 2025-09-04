@@ -1,78 +1,81 @@
 vc-description: |-
   You are given a sequence $A_1, A_2, \ldots, A_N$. Calculate the number of ways to remove a non-empty contiguous subsequence from it such that the resulting sequence is non-empty and strictly increasing.
-
+  
   -----Input-----
   - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
   - The first line of each test case contains a single integer $N$.
   - The second line contains $N$ space-separated integers $A_1, A_2, \ldots, A_N$.
-
+  
   -----Output-----
   For each test case, print a single line containing one integer ― the number of ways.
-
+  
   -----Constraints-----
   - $1 \le T \le 10$
   - $1 \le N \le 10^5$
   - $|A_i| \le 10^9$ for each valid $i$
-
+  
   -----Subtasks-----
   Subtask #1 (40 points): $N \le 1,000$
   Subtask #2 (60 points): original constraints
-
+  
   -----Example Input-----
   2
   3
   1 1 2
   4
   2 4 3 5
-
+  
   -----Example Output-----
   4
   7
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def solve_subsequence_removal (n : Nat) (arr : List Nat) : Nat := sorry
 
+vc-definitions: |-
+  def solve_subsequence_removal (n : Nat) (arr : List Nat) : Nat := sorry
+  
   def is_increasing (lst : List Nat) : Bool := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem sequence_bounds (n : Nat) (arr : List Nat) : 
     arr.length = n →
     let result := solve_subsequence_removal n arr
     result ≥ 0 ∧ result ≤ n * (n+1) / 2 := sorry
-
-
+  
   theorem strictly_increasing_sequence (n : Nat) :
     n > 0 →
     let arr := List.range n 
     solve_subsequence_removal n arr = n * (n+1) / 2 - 1 := sorry
-
-
+  
   theorem duplicate_elements (n : Nat) (arr : List Nat) :
     n > 0 →
     let all_ones := List.replicate n 1
     let result := solve_subsequence_removal n all_ones
     result ≥ 0 ∧ result ≤ n * (n+1) / 2 := sorry
-
+  
   /--
   info: 4
   -/
   #guard_msgs in
   #eval solve_subsequence_removal 3 [1, 1, 2]
-
+  
   /--
   info: 7
   -/
   #guard_msgs in
   #eval solve_subsequence_removal 4 [2, 4, 3, 5]
-
+  
   /--
   info: 14
   -/
   #guard_msgs in
   #eval solve_subsequence_removal 5 [1, 2, 3, 4, 5]
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+

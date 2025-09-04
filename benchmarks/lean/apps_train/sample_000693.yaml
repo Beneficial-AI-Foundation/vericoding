@@ -1,66 +1,67 @@
 vc-description: |-
   Chef got into a fight with the evil Dr Doof. Dr Doof has decided to destroy all even numbers from the universe using his Evil-Destroy-inator. Chef has $N$ integers with him. To stop Doof, Chef has to find an odd number which is an integer multiple of all $N$ numbers that he has with him. Find if it is possible for Chef to prevent Dr Doof from destroying the even numbers.
   Formally, given $N$ positive integers, find if there exists an odd number which is an integer multiple of all the given $N$ numbers. If yes, print "YES", otherwise "NO". You can print any letter in any case.
-
+  
   -----Input-----
   - First line contains $T$, number of testcases. Each testcase consists of $2$ lines.
   - The first line of each test case consists of a positive integer $N$, denoting the number of positive integers Chef has.
   - The second line of each test case contains $N$ space separated integers $A_i$ each denoting an integer that Chef has with him.
-
+  
   -----Output-----
   For every test case, if there exists such an odd number, print "YES" on a separate line, otherwise "NO". The judge is case insensitive. That means, your code can print any letter in any case ( "Yes", "yes" or "YES" are all accepted).
-
+  
   -----Constraints-----
   - $1 \leq T \leq 10^3$
   - $1 \leq N \leq 10^3$
   - $1 \leq A_i \leq 10^3$
-
+  
   -----Sample Input-----
   2
   5
   1 2 5 4 3
   1
   7
-
+  
   -----Sample Output-----
   NO
   YES
-
+  
   -----Explanation-----
   For test $1$: There exists no odd number.
   For test $2$: The possible odd numbers can be $7$, $21$, $49$, $315$, …
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def can_find_odd_multiple (n : Nat) (arr : List Int) : Bool :=
     sorry
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def isEven (x : Int) : Bool :=
     x % 2 == 0
+
 vc-theorems: |-
   theorem all_even_no_odd_multiple {n : Nat} {arr : List Int} :  
     (∀ x ∈ arr, isEven x = true) → 
     can_find_odd_multiple n arr = false :=
   sorry
-
-
+  
   theorem single_number_case (x : Int) :
     can_find_odd_multiple 1 [x] = (!isEven x) :=
   sorry
-
-
+  
   theorem gcd_property {n : Nat} {arr : List Int} :
     n = arr.length →
     can_find_odd_multiple n arr = true ∨ can_find_odd_multiple n arr = false :=
   sorry
-
-
+  
   theorem parity_preservation {n : Nat} {arr : List Int} :
     can_find_odd_multiple n arr = can_find_odd_multiple n arr :=
   sorry
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
+

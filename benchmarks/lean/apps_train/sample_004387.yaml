@@ -1,7 +1,7 @@
 vc-description: |-
   Fans of The Wire will appreciate this one. 
   For those that haven't seen the show, the Barksdale Organization has a simple method for encoding telephone numbers exchanged via pagers: "Jump to the other side of the 5 on the keypad, and swap 5's and 0's."
-
+  
   Here's a keypad for visualization.
   ```
   ┌───┬───┬───┐
@@ -14,60 +14,62 @@ vc-description: |-
       │ 0 │
       └───┘
   ```
-
+  
   Detective, we're hot on their trail! We have a big pile of encoded messages here to use as evidence, but it would take way too long to decode by hand. Could you write a program to do this for us?
-
-
+  
   Write a funciton called decode(). Given an encoded string, return the actual phone number in string form. Don't worry about input validation, parenthesies, or hyphens.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def decode (s : String) : String := sorry
 
+vc-definitions: |-
+  def decode (s : String) : String := sorry
+  
   theorem decode_twice (s : String) 
     (h : ∀ c ∈ s.data, c.toNat ≥ 48 ∧ c.toNat ≤ 57) : -- ensure only digits 0-9
     decode (decode s) = s := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem decode_preserves_length (s : String) 
     (h : ∀ c ∈ s.data, c.toNat ≥ 48 ∧ c.toNat ≤ 57) :
     (decode s).length = s.length := sorry
-
-
+  
   theorem decode_outputs_digits (s : String) 
     (h : ∀ c ∈ s.data, c.toNat ≥ 48 ∧ c.toNat ≤ 57) 
     (h2 : s.length > 0) :
     ∀ c ∈ (decode s).data, c.toNat ≥ 48 ∧ c.toNat ≤ 57 := sorry
-
-
+  
   theorem decode_empty : decode "" = "" := sorry
-
+  
   theorem decode_consistent_mapping (s : String)
     (h : ∀ c ∈ s.data, c.toNat ≥ 48 ∧ c.toNat ≤ 57)
     (h2 : s.length ≥ 2) :
     ∀ (i j : String.Pos), i.1 < j.1 → j.1 < s.length → 
       s.get i = s.get j → 
       (decode s).get i = (decode s).get j := sorry
-
+  
   /--
   info: '6957678787'
   -/
   #guard_msgs in
   #eval decode "4103432323"
-
+  
   /--
   info: '6957672135'
   -/
   #guard_msgs in
   #eval decode "4103438970"
-
+  
   /--
   info: '6956750342'
   -/
   #guard_msgs in
   #eval decode "4104305768"
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

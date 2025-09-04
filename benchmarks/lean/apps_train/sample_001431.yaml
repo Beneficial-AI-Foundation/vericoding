@@ -2,40 +2,43 @@ vc-description: |-
   As we all know caterpillars love to eat leaves. Usually, a caterpillar sits on leaf, eats as much of it as it can (or wants), then stretches out to its full length to reach a new leaf with its front end, and finally "hops" to it by contracting its back end to that leaf.
   We have with us a very long, straight branch of a tree with leaves distributed uniformly along its length, and a set of caterpillars sitting on the first leaf. (Well, our leaves are big enough to accommodate upto $20$ caterpillars!). As time progresses our caterpillars eat and hop repeatedly, thereby damaging many leaves. Not all caterpillars are of the same length, so different caterpillars may eat different sets of leaves. We would like to find out the number of leaves that will be undamaged at the end of this eating spree. We assume that adjacent leaves are a unit distance apart and the length of the caterpillars is also given in the same unit.
   For example suppose our branch had $20$ leaves (placed $1$ unit apart) and $3$ caterpillars of length $3, 2$ and $5$ units respectively. Then, first caterpillar would first eat leaf $1$, then hop to leaf $4$ and eat it and then hop to leaf $7$ and eat it and so on. So the first caterpillar would end up eating the leaves at positions $1,4,7,10,13,16$ and $19$. The second caterpillar would eat the leaves at positions $1,3,5,7,9,11,13,15,17$ and $19$. The third caterpillar would eat the leaves at positions $1,6,11$ and $16$. Thus we would have undamaged leaves at positions $2,8,12,14,18$ and $20$. So the answer to this example is $6$.
-
+  
   -----Input:-----
   The first line of the input contains two integers $N$ and $K$, where $N$ is the number of leaves and $K$ is the number of caterpillars. Lines $2,3,...,K+1$ describe the lengths of the $K$ caterpillars. Line $i+1$ ($1 \leq i \leq K$) contains a single integer representing the length of the $i^{th}$ caterpillar.
-
+  
   -----Output:-----
   A line containing a single integer, which is the number of leaves left on the branch after all the caterpillars have finished their eating spree.
-
+  
   -----Constraints:-----
   - $1 \leq N \leq 1000000000$.
   - $1 \leq K \leq 20$.
   - The length of the caterpillars lie between $1$ and $N$.
   - $50 \%$ of test cases will also satisfy $1 \leq N \leq 10000000$ and $1 \leq K \leq 16$.
-
+  
   -----Sample Input:-----
   20 3
   3
   2
   5
-
+  
   -----Sample Output:-----
   6
-
+  
   -----Hint:-----
   You may use $64$-bit integers (long long in C/C++) to avoid errors while multiplying large integers. The maximum value you can store in a $32$-bit integer is $2^{31}-1$, which is approximately $2 \cdot 10^9$. $64$-bit integers can store values greater than $10^{18}$.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def lcm (a b : Nat) : Nat := sorry
 
+vc-definitions: |-
+  def lcm (a b : Nat) : Nat := sorry
+  
   def solve_caterpillars (n : Nat) (lengths : List Nat) : Nat := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem lcm_positive 
     (a b : Nat)
     (h1 : 1 ≤ a ∧ a ≤ 1000)
@@ -45,24 +48,26 @@ vc-theorems: |
     (r % a = 0) ∧
     (r % b = 0) ∧
     (∀ x, 2 ≤ x ∧ x ≤ min a b → ¬((r/x) % a = 0 ∧ (r/x) % b = 0)) := sorry
-
+  
   /--
   info: 6
   -/
   #guard_msgs in
   #eval solve_caterpillars 20 [3, 2, 5]
-
+  
   /--
   info: 3
   -/
   #guard_msgs in
   #eval solve_caterpillars 10 [2, 3]
-
+  
   /--
   info: 5
   -/
   #guard_msgs in
   #eval solve_caterpillars 15 [2, 3]
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
+

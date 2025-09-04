@@ -1,45 +1,46 @@
 vc-description: |-
   You are playing following game: given an array A of N natural numbers. All numbers in the array A are at most M. On every turn you may pick any two different elements Ai and Aj (i≠j), such that Ai, Aj ≤ M, and add K to both. The game ends when you are not able to continue. That is, when there is no pair (i,j) left such that both of them are less than equal to M.
-
+  
   Let's call two arrays different if the sum of all their elements is different. When the game ends, you note down the final array A. How many different final arrays can you have.
-
+  
   -----Input-----
-
+  
   The first line contains three integers N, M and K. N elements of the array follow in the next line.
-
+  
   -----Output-----
-
+  
   Output single integer - answer for the given problem modulo 109+7.
-
-
+  
   -----Constraints-----
   -  1 ≤ N ≤ 105
   -  1 ≤ M,K ≤ 1012
   -  1 ≤ Ai ≤ M
-
+  
   -----Example-----
   Input:
   3 3 2
   1 2 3
   Output:
   2
-
+  
   -----Explanation-----
-
+  
   All possible sums are 14 and 10. You can get them by, for example, these arrays:
   A=(5, 4, 5),
   A=(1, 4, 5)
-
+  
   The above arrays are different because their sums are different.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def count_different_arrays (N: Nat) (M: Nat) (K: Nat) (A: List Nat) : Nat :=
     sorry
-
+  
   @[simp] theorem count_different_arrays_in_range
     (N M K: Nat) (A: List Nat)
     (h1: N ≥ 1) (h2: M ≥ 1) (h3: K ≥ 1)  
@@ -48,6 +49,7 @@ vc-definitions: |
     1 ≤ count_different_arrays N M K A ∧ 
     count_different_arrays N M K A ≤ 10^9 + 7 :=
   sorry
+
 vc-theorems: |-
   theorem count_different_arrays_single_element
     (M K: Nat) (A: List Nat)
@@ -56,8 +58,7 @@ vc-theorems: |-
     (h4: ∀ x ∈ A, x ≥ 1 ∧ x ≤ M) :
     count_different_arrays 1 M K A = 1 :=
   sorry
-
-
+  
   theorem count_different_arrays_symmetry 
     (N M K: Nat) (A: List Nat)
     (h1: N ≥ 1) (h2: M ≥ 1) (h3: K ≥ 1)
@@ -66,8 +67,7 @@ vc-theorems: |-
     count_different_arrays N M K A = 
     count_different_arrays N M K A.reverse :=
   sorry
-
-
+  
   theorem count_different_arrays_monotone_K
     (N M K: Nat) (A: List Nat)
     (h1: N ≥ 1) (h2: M ≥ 1) (h3: K > 1)
@@ -76,6 +76,8 @@ vc-theorems: |-
     count_different_arrays N M K A ≤ 
     count_different_arrays N M (K-1) A :=
   sorry
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
+

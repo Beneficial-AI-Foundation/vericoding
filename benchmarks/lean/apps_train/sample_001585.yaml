@@ -1,95 +1,87 @@
 vc-description: |-
   You are given 2 numbers is `n` and `k`. You need to find the number of integers between 1 and n (inclusive) that contains exactly `k` non-zero digit.
-
+  
   Example1 
-
+  
   `
   almost_everywhere_zero(100, 1) return 19`
-
+  
   by following condition we have 19 numbers that have k = 1 digits( not count zero ) 
   ` [1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100]`
-
-
+  
   Example2  
-
+  
   `
   almost_everywhere_zero(11, 2) return 1`
-
+  
   we have only `11` that has 2 digits(ten not count because zero is not count) 
   ` 11`
-
-
-
-
-
+  
   constrains
-
-
+  
   `1≤n<pow(10,100)`
-
-
+  
   `1≤k≤100`
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def almost_everywhere_zero (n : Nat) (k : Nat) : Nat :=
     sorry
-
-
+  
   def comb (n : Nat) (k : Nat) : Nat :=
     sorry
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def num_digits (n : Nat) : Nat :=
     sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem aez_valid_inputs (n : Nat) (k : Nat) :
     let result := almost_everywhere_zero n k
     result ≥ 0 :=
   sorry
-
-
+  
   theorem aez_zero_k (n : Nat) (h : n > 0) :
     almost_everywhere_zero n 0 = 1 :=
   sorry
-
-
+  
   theorem aez_k_greater_than_digits (n : Nat) (k : Nat) (h1 : n > 0) (h2 : k > num_digits n) :
     almost_everywhere_zero n k = 0 :=
   sorry
-
-
+  
   theorem comb_properties (n k : Nat) :
     let result := comb n k
     (k > n → result = 0) ∧
     ((k = 0 ∨ k = n) → result ≤ 1) ∧
     (k ≤ n → comb n k = comb n (n-k)) :=
   sorry
-
-
+  
   theorem aez_single_nonzero (n : Nat) (h : n > 0) :
     almost_everywhere_zero n 1 ≥ num_digits n :=
   sorry
-
+  
   /--
   info: 19
   -/
   #guard_msgs in
   #eval almost_everywhere_zero 100 1
-
+  
   /--
   info: 1
   -/
   #guard_msgs in
   #eval almost_everywhere_zero 11 2
-
+  
   /--
   info: 9
   -/
   #guard_msgs in
   #eval almost_everywhere_zero 20 2
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+

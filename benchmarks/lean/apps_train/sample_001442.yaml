@@ -3,22 +3,22 @@ vc-description: |-
   Each box can contain a maximum of one box and the box which is kept in another box cannot
   hold any box itself.
   Find the minimum number of boxes that will remain on the ground after putting boxes into each other.
-
+  
   -----Input:-----
   - The first line contains a single integer n.
   - The next n lines contain the integer a[i] - the size of the i-th box.
-
+  
   -----Output:-----
   Output a single integer denoting the minimum number of boxes remaining on the ground.
-
+  
   -----Constraints-----
   - $1 \leq n \leq 5*10^5$
   - $1 \leq a[i] \leq 10^5$
-
+  
   -----Subtasks-----
   - 30 points : $1 \leq n \leq 10^2$
   - 70 points : $1 \leq n \leq 5*10^5$
-
+  
   -----Sample Input:-----
   5
   16
@@ -26,58 +26,60 @@ vc-description: |-
   4
   8
   2
-
+  
   -----Sample Output:-----
   3
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def min_boxes_remaining (boxes : List Nat) (n : Nat) : Nat :=
     sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem min_boxes_result_bounds (boxes : List Nat) (n : Nat) (h : boxes.length = n) :
     min_boxes_remaining boxes n ≥ boxes.length / 2 ∧ 
     min_boxes_remaining boxes n ≤ boxes.length := by
     sorry
-
-
+  
   theorem min_boxes_is_nat (boxes : List Nat) (n : Nat) (h : boxes.length = n) :
     ∃ k : Nat, min_boxes_remaining boxes n = k := by
     sorry
-
-
+  
   theorem min_boxes_perm (boxes₁ boxes₂ : List Nat) (n : Nat) 
     (h₁ : boxes₁.length = n) (h₂ : boxes₂.length = n)
     (h₃ : ∀ x, boxes₁.count x = boxes₂.count x) :
     min_boxes_remaining boxes₁ n = min_boxes_remaining boxes₂ n := by
     sorry
-
-
+  
   theorem min_boxes_powers_two (size : Nat) :
     let boxes := List.map (fun i => 2^i) (List.range size)
     min_boxes_remaining boxes size = size/2 + size%2 := by
     sorry
-
+  
   /--
   info: 3
   -/
   #guard_msgs in
   #eval min_boxes_remaining 5 boxes1.copy()
-
+  
   /--
   info: 2
   -/
   #guard_msgs in
   #eval min_boxes_remaining 3 boxes2.copy()
-
+  
   /--
   info: 2
   -/
   #guard_msgs in
   #eval min_boxes_remaining 4 boxes3.copy()
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+

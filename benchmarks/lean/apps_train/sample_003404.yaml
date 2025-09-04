@@ -1,83 +1,83 @@
 vc-description: |-
   Make a function that receives a value, ```val``` and outputs the smallest higher number than the given value, and this number belong to a set of positive integers that have the following properties:
-
+  
   - their digits occur only once
-
+  
   - they are odd
-
+  
   - they are multiple of three
-
+  
   ```python
   next_numb(12) == 15
-
+  
   next_numb(13) == 15
-
+  
   next_numb(99) == 105
-
+  
   next_numb(999999) == 1023459
-
+  
   next_number(9999999999) == "There is no possible number that
   fulfills those requirements"
   ```
-
+  
   Enjoy the kata!!
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def hasUniqueDigits (n : Nat) : Bool := sorry
 
+vc-definitions: |-
+  def hasUniqueDigits (n : Nat) : Bool := sorry
+  
   def nextNumb (n : Nat) : Nat ⊕ String := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem nextNumb_greater (n : Nat) 
     (h : ∃ (m : Nat), nextNumb n = Sum.inl m) :
     (Classical.choose h) > n := sorry
-
-
+  
   theorem nextNumb_div_three (n : Nat)
     (h : ∃ (m : Nat), nextNumb n = Sum.inl m) :
     (Classical.choose h) % 3 = 0 := sorry
-
-
+  
   theorem nextNumb_odd (n : Nat)
     (h : ∃ (m : Nat), nextNumb n = Sum.inl m) :
     (Classical.choose h) % 2 = 1 := sorry
-
-
+  
   theorem nextNumb_unique_digits (n : Nat)
     (h : ∃ (m : Nat), nextNumb n = Sum.inl m) :
     hasUniqueDigits (Classical.choose h) = true := sorry
-
-
+  
   theorem nextNumb_minimal (n : Nat)
     (h : ∃ (m : Nat), nextNumb n = Sum.inl m) :
     ∀ k : Nat, n < k ∧ k < (Classical.choose h) →
     ¬(k % 3 = 0 ∧ k % 2 = 1 ∧ hasUniqueDigits k = true) := sorry
-
-
+  
   theorem nextNumb_too_large (n : Nat)
     (h : n ≥ 9876543210) :
     ∃ msg : String, nextNumb n = Sum.inr msg := sorry
-
+  
   /--
   info: 15
   -/
   #guard_msgs in
   #eval next_numb 12
-
+  
   /--
   info: 105
   -/
   #guard_msgs in
   #eval next_numb 99
-
+  
   /--
   info: 1023459
   -/
   #guard_msgs in
   #eval next_numb 999999
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
+

@@ -1,95 +1,93 @@
 vc-description: |-
   A new task for you!
-
+  
   You have to create a method, that corrects a given time string.
   There was a problem in addition, so many of the time strings are broken.
   Time-Format is european. So from "00:00:00" to "23:59:59".
-
-
+  
   Some examples:
-
+  
   "09:10:01" -> "09:10:01"
   "11:70:10" -> "12:10:10"
   "19:99:99" -> "20:40:39"
   "24:01:01" -> "00:01:01"
-
+  
   If the input-string is null or empty return exactly this value! (empty string for C++)
   If the time-string-format is invalid, return null. (empty string for C++)
-
+  
   Have fun coding it and please don't forget to vote and rank this kata! :-) 
-
+  
   I have created other katas. Have a look if you like coding and challenges.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def timeCorrect (s : Option String) : Option String := sorry
 
+vc-definitions: |-
+  def timeCorrect (s : Option String) : Option String := sorry
+  
   def isValidTimeFormat (s : String) : Bool := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem invalid_input_returns_none_or_same
     (s : Option String) : 
     s.isNone ∨ (s = some "") → timeCorrect s = s := sorry
-
-
+  
   theorem invalid_format_returns_none
     (s : String) :
     ¬isValidTimeFormat s → timeCorrect (some s) = none := sorry
-
-
+  
   theorem output_format_hours
     (s : String) :
     isValidTimeFormat s →
     ∀ t, timeCorrect (some s) = some t →
     ∃ (h : Nat), h < 24 ∧ t.take 2 = toString h := sorry
-
-
+  
   theorem output_format_minutes
     (s : String) :
     isValidTimeFormat s →
     ∀ t, timeCorrect (some s) = some t →
     ∃ (m : Nat), m < 60 ∧ String.drop (String.take t 5) 3 = toString m := sorry
-
-
+  
   theorem output_format_seconds
     (s : String) :
     isValidTimeFormat s →
     ∀ t, timeCorrect (some s) = some t →
     ∃ (s' : Nat), s' < 60 ∧ String.drop t 6 = toString s' := sorry
-
-
+  
   theorem output_format_length
     (s : String) :
     isValidTimeFormat s →
     ∀ t, timeCorrect (some s) = some t →
     t.length = 8 := sorry
-
-
+  
   theorem output_format_colons
     (s : String) :
     isValidTimeFormat s →
     ∀ t, timeCorrect (some s) = some t →
     t.data.get! 2 = ':' ∧ t.data.get! 5 = ':' := sorry
-
+  
   /--
   info: '09:10:01'
   -/
   #guard_msgs in
   #eval time_correct "09:10:01"
-
+  
   /--
   info: '20:40:39'
   -/
   #guard_msgs in
   #eval time_correct "19:99:99"
-
+  
   /--
   info: '00:01:01'
   -/
   #guard_msgs in
   #eval time_correct "24:01:01"
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

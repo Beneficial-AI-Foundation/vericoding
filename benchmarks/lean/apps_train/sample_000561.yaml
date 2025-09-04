@@ -3,77 +3,78 @@ vc-description: |-
   The editor was flattered by the script and agreed to you to proceed. The editor will edit the script in this way to suit her style. For each word replace it with a sub-sequence of itself such that it contains the character 'a'. 
   A subsequence is a sequence that can be derived from another sequence by deleting some or no elements without changing the order of the remaining elements Wikipedia 
   Now given a script with $N$ words, for each word in the script you wish to know the number of subsequences with which it can be replaced. 
-
+  
   -----Input:-----
   - First-line will contain $N$, the number of words in the script. Then next $N$ line with one test case each. 
   - Each test case contains a single word $W_i$
-
+  
   -----Output:-----
   For each test case, output in a single line number of subsequences with which it can be replaced. 
-
+  
   -----Constraints-----
   - $1 \leq N \leq 1000$
   - $1 \leq$ length of $W_i$  $\leq 20$
   - $W_i$  on contains lowercase english alphabets and does not have the character 'r'
-
+  
   -----Sample Input 1:-----
   2
   abc
   aba
-
+  
   -----Sample Output 1:-----
   4
   6
-
+  
   -----EXPLANATION:-----
   This subsequences with which $abc$ can be replaed : ${a,ab,ac,abc}$. 
   This subsequences with which $aba$ can be replaed : ${a,ab,aba,a,ba,a}$. 
-
+  
   -----Sample Input 2:-----
   3
   abcde
   abcdea
   xyz
-
+  
   -----Sample Output 2:-----
   16
   48
   0
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def count_valid_subsequences (words: List String) : List Nat :=
     sorry
+
 vc-theorems: |-
   theorem output_length_matches_input (words: List String) :
     List.length (count_valid_subsequences words) = List.length words :=
     sorry
-
-
+  
   theorem all_outputs_nonnegative (words: List String) :
     ∀ x ∈ count_valid_subsequences words, x ≥ 0 :=
     sorry
-
-
+  
   theorem no_a_gives_zero (words: List String) 
     (h: ∀ w ∈ words, ∀ c ∈ w.data, c ≠ 'a') :
     ∀ x ∈ count_valid_subsequences words, x = 0 :=
     sorry
-
-
+  
   theorem all_a_gives_maximum (words: List String)
     (h: ∀ w ∈ words, ∀ c ∈ w.data, c = 'a') :
     count_valid_subsequences words = words.map (fun w => 2^w.length - 1) :=
     sorry
-
-
+  
   theorem result_less_than_2_pow_n (words: List String) :
     ∀ (i: Nat), i < words.length → 
       (count_valid_subsequences words).get! i < 2^(words.get! i).length :=
     sorry
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
+

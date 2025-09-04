@@ -1,55 +1,59 @@
 vc-description: |-
   Write a function that when given a number >= 0, returns an Array of ascending length subarrays.
-
+  
   ```
   pyramid(0) => [ ]
   pyramid(1) => [ [1] ]
   pyramid(2) => [ [1], [1, 1] ]
   pyramid(3) => [ [1], [1, 1], [1, 1, 1] ]
   ```
-
+  
   **Note:** the subarrays should be filled with `1`s
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def pyramid (n : Int) : List (List Nat) := sorry
 
+vc-definitions: |-
+  def pyramid (n : Int) : List (List Nat) := sorry
+  
   theorem pyramid_length {n : Nat} : 
     List.length (pyramid n) = n := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem pyramid_row_length {n : Nat} {i : Nat} :
     i < n → List.length (List.get! (pyramid n) i) = i + 1 := sorry
-
-
+  
   theorem pyramid_all_ones {n : Nat} : 
     ∀ row ∈ pyramid n, ∀ x ∈ row, x = 1 := sorry
-
+  
   /--
   info: []
   -/
   #guard_msgs in
   #eval pyramid 0
-
+  
   /--
   info: [[1]]
   -/
   #guard_msgs in
   #eval pyramid 1
-
+  
   /--
   info: [[1], [1, 1]]
   -/
   #guard_msgs in
   #eval pyramid 2
-
+  
   /--
   info: [[1], [1, 1], [1, 1, 1]]
   -/
   #guard_msgs in
   #eval pyramid 3
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
+

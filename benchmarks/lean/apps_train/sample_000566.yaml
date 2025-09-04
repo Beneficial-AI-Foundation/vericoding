@@ -7,16 +7,16 @@ vc-description: |-
   - if $s$ is a balanced bracket sequence, then so is $(s)$.
   - if $s$ and $t$ are balanced bracket sequences, then so is $st$.
   $Note :-$ The input files are large. The use of Fast I/O is recommended.
-
+  
   -----Input-----
   - The first line contains a single integer $T$ denoting the number of testcases.
   - The first line of each test case contains the string $S$.
   - The next line contains a single integer $Q$ denoting the number of cases to consider.
   - The next line contains $Q$ space separated integers, each denoting $t_i$.
-
+  
   -----Output-----
   For each query, print the minimum value of $x$ in a separate line. If no such $x$ exists, print $-1$.
-
+  
   -----Constraints-----
   - $1 \leq T \leq 10^3$
   - $1 \leq |S| \leq 10^7$
@@ -24,28 +24,30 @@ vc-description: |-
   - $1 \leq t_i \leq N$
   - Every character of $S$ is either $($ or $)$.
   - Sum of $|S|$ and $Q$ over all testcases for a particular test file does not exceed $10^7$ and $10^6$ respectively.
-
+  
   -----Sample Input-----
   1
   )())((()
   3
   1 7 6
-
+  
   -----Sample Output-----
   3
   8
   -1
-
+  
   -----Explanation-----
   For the first query, Chef chooses to let $S_1$ pass through him, gets hit by $S_2$ and finally completes a balanced bracket sequence by adding $S_3$ to $S_2$ at time $x$ = $3$.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def solveBracketSequence (s : String) (queries : List Nat) : List Int := sorry
 
+vc-definitions: |-
+  def solveBracketSequence (s : String) (queries : List Nat) : List Int := sorry
+  
   theorem arbitrary_brackets_results_valid 
     (s : String) 
     (queries : List Nat) 
@@ -55,6 +57,7 @@ vc-definitions: |
     (h4 : ∀ q ∈ queries, 0 < q ∧ q ≤ s.length) :
     let result := solveBracketSequence s queries
     ∀ r ∈ result, -1 ≤ r ∧ r ≤ s.length := sorry
+
 vc-theorems: |-
   theorem arbitrary_brackets_positions_valid
     (s : String)
@@ -69,8 +72,7 @@ vc-theorems: |-
       r ∈ result →
       r ≠ -1 →
       s.data[r.toNat - 1]? = some ')' ∧ r > q := sorry
-
-
+  
   theorem all_open_brackets_no_matches
     (s : String)
     (queries : List Nat)
@@ -80,8 +82,7 @@ vc-theorems: |-
     (h4 : ∀ q ∈ queries, 0 < q ∧ q ≤ s.length) :
     let result := solveBracketSequence s queries
     ∀ r ∈ result, r = -1 := sorry
-
-
+  
   theorem all_close_brackets_no_matches
     (s : String)
     (queries : List Nat)
@@ -91,6 +92,8 @@ vc-theorems: |-
     (h4 : ∀ q ∈ queries, 0 < q ∧ q ≤ s.length) :
     let result := solveBracketSequence s queries
     ∀ r ∈ result, r = -1 := sorry
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+

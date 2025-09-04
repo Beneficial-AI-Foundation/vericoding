@@ -1,61 +1,62 @@
 vc-description: |-
   Create a function that takes a string as a parameter and does the following, in this order:
-
+  
   1. replaces every letter with the letter following it in the alphabet (see note below)
   2. makes any vowels capital
   3. makes any consonants lower case
-
+  
   **Note:** the alphabet should wrap around, so `Z` becomes `A`
-
+  
   So, for example the string `"Cat30"` would return `"dbU30"` (`Cat30 --> Dbu30 --> dbU30`)
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def String.isAlpha : Char → Bool :=
     sorry
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def changer : String → String :=
     sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem changer_length (s : String) :
     s.length = (changer s).length :=
     sorry
-
-
+  
   theorem changer_nonalpha_unchanged {s : String} {i : String.Pos} {c : Char} :
     c = s.get i → ¬(String.isAlpha c) → (changer s).get i = c :=
     sorry
-
-
+  
   theorem changer_empty :
     changer "" = "" :=
     sorry
-
-
+  
   theorem changer_boundary_case :
     changer "abcxyz" = "bcdyzA" :=
     sorry
-
+  
   /--
   info: 'dbU30'
   -/
   #guard_msgs in
   #eval changer "Cat30"
-
+  
   /--
   info: 'Ifmmp xpsmE'
   -/
   #guard_msgs in
   #eval changer "Hello World"
-
+  
   /--
   info: 'A'
   -/
   #guard_msgs in
   #eval changer "z"
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

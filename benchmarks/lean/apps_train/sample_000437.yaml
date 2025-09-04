@@ -1,31 +1,33 @@
 vc-description: |-
   Given a string which contains only lowercase letters, remove duplicate letters so that every letter appear once and only once. You must make sure your result is the smallest in lexicographical order among all possible results.
-   
+  
   Example 1:
-   
-   
+  
   Input: "bcabc"
   Output: "abc"
-   
-   
+  
   Example 2:
-   
-   
+  
   Input: "cbacdcbc"
   Output: "acdb"
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def remove_duplicate_letters (s : String) : String := sorry
 
+vc-definitions: |-
+  def remove_duplicate_letters (s : String) : String := sorry
+  
   theorem output_is_subset_of_input (s : String) (h : s.length > 0) :
     ∀ (c : Char), c ∈ (remove_duplicate_letters s).data → c ∈ s.data := sorry
+
 vc-theorems: |-
   theorem output_has_no_duplicates (s : String) (h : s.length > 0) :
     ∀ c, (remove_duplicate_letters s).data.count c ≤ 1 := sorry
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
+

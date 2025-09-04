@@ -1,9 +1,9 @@
 vc-description: |-
   ```if:csharp
   ## Terminal Game - Create Hero Class
-
+  
   In this first kata in the series, you need to define a Hero class to be used in a terminal game. The hero should have the following attributes:
-
+  
   attribute | type | value
   ---|---|---
   Name | string | user argument or "Hero"
@@ -12,12 +12,12 @@ vc-description: |-
   Damage | float | 5
   Experience | int | 0
   ```
-
+  
   ```if-not:csharp
   ## Terminal Game - Create Hero Prototype
-
+  
   In this first kata in the series, you need to define a Hero prototype to be used in a terminal game. The hero should have the following attributes:
-
+  
   attribute | value
   ---|---
   name | user argument or 'Hero'
@@ -26,14 +26,17 @@ vc-description: |-
   damage | 5
   experience | 0
   ```
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def Hero.new : Hero := sorry
   def Hero.newWithName (name : String) : Hero := sorry
+
 vc-theorems: |-
   theorem hero_named_properties (name : String) : 
     let hero := Hero.newWithName name
@@ -42,8 +45,7 @@ vc-theorems: |-
     hero.health = 100 ∧ 
     hero.damage = 5 ∧ 
     hero.experience = 0 := sorry
-
-
+  
   theorem hero_default_properties : 
     let hero := Hero.new
     hero.name = "Hero" ∧ 
@@ -51,6 +53,8 @@ vc-theorems: |-
     hero.health = 100 ∧ 
     hero.damage = 5 ∧ 
     hero.experience = 0 := sorry
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
+

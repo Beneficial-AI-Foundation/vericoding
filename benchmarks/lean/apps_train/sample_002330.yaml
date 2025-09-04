@@ -1,86 +1,78 @@
 vc-description: |-
   Given a word, you need to judge whether the usage of capitals in it is right or not.
-
-
-
+  
   We define the usage of capitals in a word to be right when one of the following cases holds:
-
+  
   All letters in this word are capitals, like "USA".
   All letters in this word are not capitals, like "leetcode".
   Only the first letter in this word is capital if it has more than one letter, like "Google".
-
+  
   Otherwise, we define that this word doesn't use capitals in a right way.
-
-
-
+  
   Example 1:
-
+  
   Input: "USA"
   Output: True
-
-
-
+  
   Example 2:
-
+  
   Input: "FlaG"
   Output: False
-
-
-
+  
   Note:
   The input will be a non-empty word consisting of uppercase and lowercase latin letters.
-vc-preamble: |-
-  import Imports.AllImports
 
+vc-preamble: |-
   def isLowercase (c : Char) : Bool := 'a' ≤ c ∧ c ≤ 'z'
   def isUppercase (c : Char) : Bool := 'A' ≤ c ∧ c ≤ 'Z'
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def isTitle (s : String) : Bool := sorry
   def detect_capital_use (s : String) : Bool := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem all_lowercase_valid (s : String) : 
     (∀ c ∈ s.data, isLowercase c) → detect_capital_use s = true := sorry
-
-
+  
   theorem all_uppercase_valid (s : String) :
     (∀ c ∈ s.data, isUppercase c) → detect_capital_use s = true := sorry
-
-
+  
   theorem titlecase_valid (s : String) :
     s.length > 0 → isTitle s → detect_capital_use s = true := sorry
-
-
+  
   theorem empty_string_valid :
     detect_capital_use "" = true := sorry
-
-
+  
   theorem mixed_case_invalid (s : String) :
     s.length ≥ 2 → 
     ¬(∀ c ∈ s.data, isLowercase c) →
     ¬(∀ c ∈ s.data, isUppercase c) →
     ¬(isTitle s) →
     detect_capital_use s = false := sorry
-
+  
   /--
   info: True
   -/
   #guard_msgs in
   #eval detect_capital_use "USA"
-
+  
   /--
   info: False
   -/
   #guard_msgs in
   #eval detect_capital_use "FlaG"
-
+  
   /--
   info: True
   -/
   #guard_msgs in
   #eval detect_capital_use "Google"
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

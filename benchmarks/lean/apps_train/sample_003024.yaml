@@ -1,40 +1,41 @@
 vc-description: |-
   Looking at consecutive powers of `2`, starting with `2^1`:
-
+  
   `2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, ...`
-
+  
   Note that out of all the digits `0-9`, the last one ever to appear is `7`. It only shows up for the first time in the number `32768 (= 2^15)`.
-
+  
   So let us define LAST DIGIT TO APPEAR as the last digit to be written down when writing down all the powers of `n`, starting with `n^1`.
-
-
+  
   ## Your task
-
+  
   You'll be given a positive integer ```1 =< n <= 10000```, and must return the last digit to appear, as an integer.
-
+  
   If for any reason there are digits which never appear in the sequence of powers, return `None`/`nil`.
-
+  
   Please note: The Last digit to appear can be in the same number as the penultimate one. For example for `n = 8`, the last digit to appear is `7`, although `3` appears slightly before it, in the same number:
   `8, 64, 512, 4096, 32768, ...`
-vc-preamble: |-
-  import Imports.AllImports
 
+vc-preamble: |-
   def digits_of (n : Nat) : List Nat := sorry
   def digit_sequence_of_powers (n : Nat) : List Nat := sorry
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
+
 vc-definitions: |-
   def last_digit_to_appear (n : Nat) : Option Nat := sorry
-
+  
   -- Theorem stating result is a single digit if not None
-vc-theorems: |
+
+vc-theorems: |-
   theorem result_is_single_digit {n d : Nat} (h : n ≥ 2)
     (res : last_digit_to_appear n = some d) :
     0 ≤ d ∧ d ≤ 9 := sorry
-
+  
   -- Theorem stating if result exists, it must appear last in sequence
-
+  
   theorem appears_last {n d : Nat} (h : n ≥ 2) 
     (res : last_digit_to_appear n = some d)
     (digits : List Nat)
@@ -43,31 +44,33 @@ vc-theorems: |
     (is_sequence : digits = digit_sequence_of_powers n)
     (h_len : digits.length > 0) :
     d = digits[digits.length - 1]'(Nat.sub_lt h_len (by exact Nat.zero_lt_one)) := sorry
-
+  
   -- Theorem for None case - either powers stabilize or never complete
-
+  
   theorem none_result_characterization {n : Nat} (h : n ≥ 2)
     (res : last_digit_to_appear n = none) :
     (∀ k : Nat, k > 1 → digits_of (n^k) = digits_of n) ∨
     (∃ x : Nat, x ≤ 9 ∧ ∀ k : Nat, k ≤ 100 → x ∉ digits_of (n^k)) := sorry
-
+  
   /--
   info: 7
   -/
   #guard_msgs in
   #eval last_digit_to_appear 2
-
+  
   /--
   info: 7
   -/
   #guard_msgs in
   #eval last_digit_to_appear 8
-
+  
   /--
   info: None
   -/
   #guard_msgs in
   #eval last_digit_to_appear 100
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

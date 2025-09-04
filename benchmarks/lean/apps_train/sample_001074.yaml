@@ -4,21 +4,21 @@ vc-description: |-
   Can you help Kim find the number of different pairs of buttons he can press to break through the door? 
   Note: Two pairs are considered different if any of the buttons pressed in the pair is different (by position of the button pressed). Two pairs are not considered different if they're the same position of buttons, pressed in a different order. 
   Please refer to the samples for more details.
-
+  
   -----Input:-----
   - The first line contains a single integer $T$, representing the number of testcases. $2T$ lines follow, 2 for each testcase.
   - For each testcase, the first line contains a single integer $N$, the number of buttons.
   - The second line of each testcase contains $N$ space-separated integers, $A_1, A_2, \ldots, A_N$, representing the numbers written on each button.
-
+  
   -----Output:-----
   Print a single number, $K$, representing the number of pairs of buttons in $A$ which have an odd sum.
-
+  
   -----Subtasks-----
   For all subtasks,  $1 \leq T \leq 10$, $1 \leq N \leq 100000$, and $1 \leq A_i \leq 100000$ for all $A_i$.
   Subtask 1 [15 points] : $N \leq 2$, There are at most 2 buttons
   Subtask 2 [45 points] : $N \leq 1000$, There are at most 1000 buttons
   Subtask 3 [40 points] : No additional constraints.
-
+  
   -----Sample Input:-----
   3
   4
@@ -27,12 +27,12 @@ vc-description: |-
   5 7
   1
   4
-
+  
   -----Sample Output:-----
   3
   0
   0
-
+  
   -----EXPLANATION:-----
   This section uses 1-indexing.
   In the first sample, the buttons are: $[3, 5, 3, 4]$
@@ -42,43 +42,42 @@ vc-description: |-
   In total, there are 3 pairs with an odd sum, so the answer is 3.
   In the second sample, the buttons are: $[5, 7]$. There are no odd pairs, so the answer is $0$.
   In the third sample, the buttons are: $[4]$. There are no pairs at all, so the answer is $0$.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |+
-  def count_odd_button_sums (n : Nat) (buttons : List Nat) : Nat := sorry
 
+vc-definitions: |-
+  def count_odd_button_sums (n : Nat) (buttons : List Nat) : Nat := sorry
+  
   theorem result_non_negative (n : Nat) (buttons : List Nat) :
     count_odd_button_sums n buttons ≥ 0 := sorry
 
-
-
-
-
-
-vc-theorems: |
+vc-theorems: |-
   theorem single_button_gives_zero (n : Nat) :
     count_odd_button_sums 1 [n] = 0 := sorry
-
+  
   /--
   info: 3
   -/
   #guard_msgs in
   #eval count_odd_button_sums 4 [3, 5, 3, 4]
-
+  
   /--
   info: 0
   -/
   #guard_msgs in
   #eval count_odd_button_sums 2 [5, 7]
-
+  
   /--
   info: 0
   -/
   #guard_msgs in
   #eval count_odd_button_sums 1 [4]
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
+

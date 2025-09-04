@@ -2,192 +2,107 @@ vc-description: |-
   table {
           width: 236px;
       }
-
+  
       table, tr, td {
           border: 0px;
       }
-
+  
   In a grid of 4 by 4 squares you want to place a skyscraper in each square with only some clues:
-
+  
   The height of the skyscrapers is between 1 and 4
   No two skyscrapers in a row or column may have the same number of floors
   A clue is the number of skyscrapers that you can see in a row or column from the outside
   Higher skyscrapers block the view of lower skyscrapers located behind them
-
-
+  
   Can you write a program that can solve this puzzle?
-
-
+  
   Example:
-
-
+  
   To understand how the puzzle works, this is an example of a row with 2 clues. Seen from the left side there are 4 buildings visible while seen from the right side only 1:
-
-
-
-
+  
    4
-      
-      
-      
-      
+  
    1
-
-
-
+  
   There is only one way in which the skyscrapers can be placed. From left-to-right all four buildings must be visible and no building may hide behind another building:
-
-
-
-
+  
    4
    1
    2
    3
    4
    1
-
-
-
+  
   Example of a 4 by 4 puzzle with the solution:
-
-
-
-
-    
-      
-      
+  
    1
    2
-    
-
-
-    
-    
-    
-    
-    
-    
-
-
-    
-    
-    
-    
-    
+  
    2
-
-
+  
    1
-    
-    
-    
-    
-    
-
-
-    
-    
-    
-    
-    
-    
-
-
-    
-    
-    
+  
    3
-    
-    
-
-
-
-
-
-    
-    
-    
+  
    1
    2
-    
-
-
-    
+  
    2
    1
    4
    3
-    
-
-
-    
+  
    3
    4
    1
    2
    2
-
-
+  
    1
    4
    2
    3
    1
-    
-
-
-    
+  
    1
    3
    2
    4
-    
-
-
-    
-    
-    
+  
    3
-    
-    
-
-
-
+  
   Task:
-
-
-
+  
   Finish:
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def solve_puzzle (clues : List Nat) : Option Board :=
   sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem solution_dimensions {clues : List Nat} {sol : Board} 
     (h : solve_puzzle clues = some sol) : 
     sol.rows.length = 4 ∧ ∀ row, row ∈ sol.rows → row.length = 4 :=
   sorry
-
-
+  
   theorem solution_value_range {clues : List Nat} {sol : Board}
     (h : solve_puzzle clues = some sol) :
     ∀ row, row ∈ sol.rows → ∀ x, x ∈ row → 1 ≤ x ∧ x ≤ 4 :=
   sorry 
-
-
+  
   theorem solution_row_uniqueness {clues : List Nat} {sol : Board}
     (h : solve_puzzle clues = some sol) :
     ∀ row, row ∈ sol.rows → 
     ∀ x y, x ∈ row → y ∈ row → x ≠ y → 
     List.indexOf x row ≠ List.indexOf y row :=
   sorry
-
-
+  
   theorem solution_col_uniqueness {clues : List Nat} {sol : Board}
     (h : solve_puzzle clues = some sol) :
     ∀ i j : Nat, i < 4 → j < 4 → i ≠ j →
@@ -195,18 +110,20 @@ vc-theorems: |
     (col = sol.rows.map (λ row => row[i]!)) →
     col[i]! ≠ col[j]! :=
   sorry
-
+  
   /--
   info: expected1
   -/
   #guard_msgs in
   #eval solve_puzzle (2, 2, 1, 3, 2, 2, 3, 1, 1, 2, 2, 3, 3, 2, 1, 3)
-
+  
   /--
   info: expected2
   -/
   #guard_msgs in
   #eval solve_puzzle (0, 0, 1, 2, 0, 2, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0)
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+

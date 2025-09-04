@@ -14,38 +14,38 @@ vc-description: |-
     3 4 5
   We can see that dist(0,1) + dist(0,2) + dist(0,3) + dist(0,4) + dist(0,5)
   equals 1 + 1 + 2 + 2 + 2 = 8.  Hence, answer[0] = 8, and so on.
-
+  
   Note: 1 <= N <= 10000
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def Tree (n : Nat) (edges : List (Nat × Nat)) : Prop := sorry 
-
+  
   def sumOfDistancesInTree (n : Nat) (edges : List (Nat × Nat)) : List Nat := sorry
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def degree (node : Nat) (edges : List (Nat × Nat)) : Nat := sorry
 
+vc-definitions: |-
+  def degree (node : Nat) (edges : List (Nat × Nat)) : Nat := sorry
+  
   def isLeafNode (node : Nat) (edges : List (Nat × Nat)) : Prop :=
     degree node edges = 1
-vc-theorems: |
+
+vc-theorems: |-
   theorem sumOfDistances_output_length 
     (n : Nat) (edges : List (Nat × Nat)) : 
     Tree n edges →
     List.length (sumOfDistancesInTree n edges) = n := 
   sorry
-
-
+  
   theorem sumOfDistances_nonnegative
     (n : Nat) (edges : List (Nat × Nat)) 
     (i : Nat) (h : i < List.length (sumOfDistancesInTree n edges)) :
     Tree n edges →
     List.get! (sumOfDistancesInTree n edges) i ≥ 0 :=
   sorry
-
-
+  
   theorem sumOfDistances_leaf_nodes_max  
     (n : Nat) (edges : List (Nat × Nat)) 
     (node : Nat) (h : node < n) :
@@ -54,24 +54,26 @@ vc-theorems: |
     List.get! (sumOfDistancesInTree n edges) node ≤ 
       List.foldr max 0 (sumOfDistancesInTree n edges) :=
   sorry
-
+  
   /--
   info: [8, 12, 6, 10, 10, 10]
   -/
   #guard_msgs in
   #eval sum_of_distances_in_tree 6 [[0, 1], [0, 2], [2, 3], [2, 4], [2, 5]]
-
+  
   /--
   info: [2, 3, 3]
   -/
   #guard_msgs in
   #eval sum_of_distances_in_tree 3 [[0, 1], [0, 2]]
-
+  
   /--
   info: [6, 4, 4, 6]
   -/
   #guard_msgs in
   #eval sum_of_distances_in_tree 4 [[0, 1], [1, 2], [2, 3]]
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+

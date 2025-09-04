@@ -4,15 +4,15 @@ vc-description: |-
   - it is possible to move from this cell to each adjacent cell containing a plant without crossing any fences
   - it is impossible to move from this cell to any cell containing weeds or to leave the grid without crossing any fences
   The fences can only be built between cells or on the boundary of the grid, i.e. on the sides of cells. The total length of the built fences is the number of pairs of side-adjacent cells such that there is a fence built on their common side plus the number of sides of cells on the boundary of the grid which have fences built on them. Find the minimum required total length of fences that need to be built.
-
+  
   -----Input-----
   - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
   - The first line of each test case contains three space-separated integers $N$, $M$ and $K$.
   - $K$ lines follow. Each of these lines contains two space-separated integers $r$ and $c$ denoting that the cell in row $r$ and column $c$ contains a plant.
-
+  
   -----Output-----
   For each test case, print a single line containing one integer — the minimum required length of fences.
-
+  
   -----Constraints-----
   - $1 \le T \le 10$
   - $1 \le N, M \le 10^9$
@@ -20,11 +20,11 @@ vc-description: |-
   - $1 \le r \le N$
   - $1 \le c \le M$
   - the cells containing plants are pairwise distinct
-
+  
   -----Subtasks-----
   Subtask #1 (30 points): $1 \le N, M \le 1,000$
   Subtask #2 (70 points): original constraints
-
+  
   -----Example Input-----
   2
   4 4 9
@@ -39,39 +39,43 @@ vc-description: |-
   4 3
   4 4 1
   1 1
-
+  
   -----Example Output-----
   20
   4
-
+  
   -----Explanation-----
   Example case 1: The field looks like this ('x' denotes a cell containing a plant, '.' denotes a cell containing weeds):
   ...x
   xxx.
   x.x.
   xxx.
-
+  
   An optimal solution is to build fences around the topmost plant (with length $4$), around the remaining eight plants (with length $12$) and around the hole between them (with length $4$). The total length is $4+12+4 = 20$.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def calculate_min_fences (n m : Nat) (plants : List (Nat × Nat)) : Nat := sorry
 
+vc-definitions: |-
+  def calculate_min_fences (n m : Nat) (plants : List (Nat × Nat)) : Nat := sorry
+  
   theorem fence_positive {n m : Nat} {plants : List (Nat × Nat)}
     (h1 : n > 0) (h2 : m > 0) (h3 : plants ≠ []) :
     (calculate_min_fences n m plants) > 0 := sorry
+
 vc-theorems: |-
   theorem single_plant_perimeter {n m : Nat} {p : Nat × Nat}
     (h1 : n > 0) (h2 : m > 0) :
     (calculate_min_fences n m [p]) = 4 := sorry
-
-
+  
   theorem max_perimeter_bound {n m : Nat} {plants : List (Nat × Nat)}
     (h1 : n > 0) (h2 : m > 0) :
     (calculate_min_fences n m plants) ≤ 4 * plants.length := sorry
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
+

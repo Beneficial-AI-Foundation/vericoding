@@ -1,13 +1,13 @@
 vc-description: |-
   The prime `149` has 3 permutations which are also primes: `419`, `491` and `941`.
-
+  
   There are 3 primes below `1000` with three prime permutations:
   ```python
   149 ==> 419 ==> 491 ==> 941
   179 ==> 197 ==> 719 ==> 971
   379 ==> 397 ==> 739 ==> 937
   ```
-
+  
   But there are 9 primes below `1000` with two prime permutations:
   ```python
   113 ==> 131 ==> 311
@@ -20,76 +20,79 @@ vc-description: |-
   359 ==> 593 ==> 953
   389 ==> 839 ==> 983
   ```
-
+  
   Finally, we can find 34 primes below `1000` with only one prime permutation: 
   ```python
   [13, 17, 37, 79, 107, 127, 139, 181, 191, 239, 241, 251, 277, 281, 283, 313, 347, 349, 367, 457, 461, 463, 467, 479, 563, 569, 577, 587, 619, 683, 709, 769, 787, 797]
   ```
-
+  
   Each set of permuted primes are represented by its smallest value, for example the set `149, 419, 491, 941` is represented by `149`, and the set has 3 permutations.
-
+  
   **Notes**
   * the original number (`149` in the above example) is **not** counted as a permutation;
   * permutations with leading zeros are **not valid**
-
+  
   ## Your Task
-
+  
   Your task is to create a function that takes two arguments:
   * an upper limit (`n_max`) and
   * the number of prime permutations (`k_perms`) that the primes should generate **below** `n_max`
-
+  
   The function should return the following three values as a list:
   * the number of permutational primes below the given limit,
   * the smallest prime such prime,
   * and the largest such prime
-
+  
   If no eligible primes were found below the limit, the output should be `[0, 0, 0]`
-
+  
   ## Examples
-
+  
   Let's see how it would be with the previous cases:
   ```python
   permutational_primes(1000, 3) ==> [3, 149, 379]
   ''' 3 primes with 3 permutations below 1000, smallest: 149, largest: 379 '''
-
+  
   permutational_primes(1000, 2) ==> [9, 113, 389]
   ''' 9 primes with 2 permutations below 1000, smallest: 113, largest: 389 '''
-
+  
   permutational_primes(1000, 1) ==> [34, 13, 797]
   ''' 34 primes with 1 permutation below 1000, smallest: 13, largest: 797 '''
   ```
-
+  
   Happy coding!!
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
+
 vc-definitions: |-
   def permutational_primes (n_max k_perms : Nat) : List Nat := sorry
-
+  
   -- Type signature property
-vc-theorems: |
+
+vc-theorems: |-
   theorem perm_primes_returns_three_nats (n_max k_perms : Nat) : 
     let result := permutational_primes n_max k_perms;
     result.length = 3
     ∧ result.all (λ x => x ≥ 0) := sorry
-
+  
   -- Count non-negative property  
-
+  
   theorem perm_primes_count_nonneg (n_max k_perms : Nat) :
     let result := permutational_primes n_max k_perms;
     (result.get! 0) ≥ 0 := sorry
-
+  
   -- Zero count implies zero min/max property
-
+  
   theorem perm_primes_zero_count (n_max k_perms : Nat) :
     let result := permutational_primes n_max k_perms;
     (result.get! 0 = 0) →
     (result.get! 1 = 0 ∧ result.get! 2 = 0) := sorry
-
+  
   -- Valid count implies valid min/max property  
-
+  
   theorem perm_primes_valid_bounds (n_max k_perms : Nat) :
     let result := permutational_primes n_max k_perms;
     (result.get! 0 > 0) →
@@ -98,24 +101,26 @@ vc-theorems: |
      ∧ result.get! 1 ≤ result.get! 2
      ∧ result.get! 1 < n_max
      ∧ result.get! 2 < n_max) := sorry
-
+  
   /--
   info: [3, 149, 379]
   -/
   #guard_msgs in
   #eval permutational_primes 1000 3
-
+  
   /--
   info: [9, 113, 389]
   -/
   #guard_msgs in
   #eval permutational_primes 1000 2
-
+  
   /--
   info: [34, 13, 797]
   -/
   #guard_msgs in
   #eval permutational_primes 1000 1
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+

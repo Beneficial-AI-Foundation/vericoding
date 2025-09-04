@@ -4,7 +4,7 @@ vc-description: |-
   The time it takes to traverse this edge is D_i minutes, regardless of direction and who traverses the edge (Takahashi or Aoki).
   Takahashi departs Vertex S and Aoki departs Vertex T at the same time. Takahashi travels to Vertex T and Aoki travels to Vertex S, both in the shortest time possible.
   Find the number of the pairs of ways for Takahashi and Aoki to choose their shortest paths such that they never meet (at a vertex or on an edge) during the travel, modulo 10^9 + 7.
-
+  
   -----Constraints-----
    - 1 \leq N \leq 100 000
    - 1 \leq M \leq 200 000
@@ -16,7 +16,7 @@ vc-description: |-
    - U_i \neq V_i (1 \leq i \leq M)
    - D_i are integers.
    - The given graph is connected.
-
+  
   -----Input-----
   Input is given from Standard Input in the following format:
   N M
@@ -25,10 +25,10 @@ vc-description: |-
   U_2 V_2 D_2
   :
   U_M V_M D_M
-
+  
   -----Output-----
   Print the answer.
-
+  
   -----Sample Input-----
   4 4
   1 3
@@ -36,59 +36,61 @@ vc-description: |-
   2 3 1
   3 4 1
   4 1 1
-
+  
   -----Sample Output-----
   2
-
+  
   There are two ways to choose shortest paths that satisfies the condition:
    - Takahashi chooses the path 1 \rightarrow 2 \rightarrow 3, and Aoki chooses the path 3 \rightarrow 4 \rightarrow 1.
    - Takahashi chooses the path 1 \rightarrow 4 \rightarrow 3, and Aoki chooses the path 3 \rightarrow 2 \rightarrow 1.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def count_no_meet_paths (N M S T : Nat) (edges : List (Nat × Nat × Nat)) : Nat :=
   sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem count_no_meet_paths_nonnegative (N M S T : Nat) (edges : List (Nat × Nat × Nat)) :
     count_no_meet_paths N M S T edges ≥ 0 :=
   sorry
-
-
+  
   theorem count_no_meet_paths_upper_bound (N M S T : Nat) (edges : List (Nat × Nat × Nat)) :
     count_no_meet_paths N M S T edges < 10^9 + 7 :=
   sorry
-
-
+  
   theorem count_no_meet_paths_symmetry (N M S T : Nat) (edges : List (Nat × Nat × Nat)) :
     count_no_meet_paths N M S T edges = count_no_meet_paths N M T S edges :=
   sorry
-
-
+  
   theorem count_no_meet_paths_edge_reversal (N M S T : Nat) (edges : List (Nat × Nat × Nat)) :
     count_no_meet_paths N M S T edges = 
     count_no_meet_paths N M S T (edges.map (fun (e : Nat × Nat × Nat) => (e.2.1, e.1, e.2.2))) :=
   sorry
-
+  
   /--
   info: 2
   -/
   #guard_msgs in
   #eval count_no_meet_paths 
-
+  
   /--
   info: 2
   -/
   #guard_msgs in
   #eval count_no_meet_paths 
-
+  
   /--
   info: 6
   -/
   #guard_msgs in
-  #eval count_no_meet_paths 
+  #eval count_no_meet_paths
+
 vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
+

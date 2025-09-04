@@ -1,12 +1,12 @@
 vc-description: |-
   # Task
-
+  
   **Your task** is to implement function `printNumber` (`print_number` in C/C++ and Python `Kata.printNumber` in Java) that returns string that represents given number in text format (see examples below).
-
+  
   Arguments:
    - `number` — Number that we need to print (`num` in C/C++/Java)
    - `char` — Character for building number (`ch` in C/C++/Java)
-
+  
   # Examples
   ```c,python
   print_number(99, '$')
@@ -21,7 +21,7 @@ vc-description: |-
   //$   $$$$   $$$$   $$$$   $$     $$     $\n
   //$                                      $\n
   //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-
+  
   print_number(12345, '*')
   //Should return
   //****************************************\n
@@ -34,7 +34,7 @@ vc-description: |-
   //*  ****** ******  ****      ** *****   *\n
   //*                                      *\n
   //****************************************
-
+  
   print_number(67890, '@')
   //Should return
   //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n
@@ -54,22 +54,25 @@ vc-description: |-
    - Numbers should have the same shape as in the examples (6x6 by the way)
    - Returned string should be joined by `\n` character (except of the end)
    - Returned string should have 1 character *(height)* border (use the same character as for number) + padding (1 character in height vertical and 2 horizontal with ` `) around borders and 1 character margin between "digits"
-   
+  
    *Suggestions and translations are welcome.*
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def print_number (number : Nat) (char : Char) : String := sorry
 
+vc-definitions: |-
+  def print_number (number : Nat) (char : Char) : String := sorry
+  
   theorem print_number_dimensions (n : Nat) (c : Char) :
     let result := print_number n c
     let lines := result.splitOn "\n"
     lines.length = 10 ∧ 
     lines.all (fun line => line.length = 40) := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem print_number_borders (n : Nat) (c : Char) :
     let result := print_number n c
     let lines := result.splitOn "\n"
@@ -78,8 +81,7 @@ vc-theorems: |
     (∀ ch ∈ lines[lines.length - 1]!.data, ch = c) ∧ 
     lines[1]! = (String.mk [c] ++ String.mk (List.replicate 38 ' ') ++ String.mk [c]) ∧
     lines[lines.length - 2]! = (String.mk [c] ++ String.mk (List.replicate 38 ' ') ++ String.mk [c]) := sorry
-
-
+  
   theorem print_number_middle_structure (n : Nat) (c : Char) :
     let result := print_number n c
     let lines := result.splitOn "\n"
@@ -89,28 +91,29 @@ vc-theorems: |
       line.get? ⟨line.length - 1⟩ = some c ∧
       (line.take 3).drop 1 = "  " ∧
       (line.take line.length).drop (line.length - 3) = "  " := sorry
-
-
+  
   theorem print_number_char_independence (n : Nat) :
     (print_number n '*').replace (String.mk ['*']) "#" = print_number n '#' := sorry
-
+  
   /--
   info: expected
   -/
   #guard_msgs in
   #eval print_number 99 "$"
-
+  
   /--
   info: expected
   -/
   #guard_msgs in
   #eval print_number 12345 "*"
-
+  
   /--
   info: expected
   -/
   #guard_msgs in
   #eval print_number 67890 "@"
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

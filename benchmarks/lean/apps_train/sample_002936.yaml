@@ -1,15 +1,17 @@
 vc-description: |-
   Given a number, return a string with dash``` '-' ```marks before and after each odd integer,  but do not begin or end the string with a dash mark.
-
+  
   Ex:
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def dashatize (n : Option Int) : String := sorry
 
+vc-definitions: |-
+  def dashatize (n : Option Int) : String := sorry
+  
   theorem dashatize_basic_props {n : Int} :
     let result := dashatize (some n);
     -- Result is a string containing only digits and dashes
@@ -20,33 +22,35 @@ vc-definitions: |
     -- Doesn't start/end with dash
     ∧ (result.length > 0 → result.front ≠ '-')
     ∧ (result.length > 0 → result.back ≠ '-') := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem dashatize_preserves_number {n : Int} :
     let result := dashatize (some n);
     let digits := result.data.filter Char.isDigit;
     String.toNat! (String.mk digits) = Int.natAbs n := sorry
-
-
+  
   theorem dashatize_none :
     dashatize none = "None" := sorry
-
+  
   /--
   info: '2-7-4'
   -/
   #guard_msgs in
   #eval dashatize 274
-
+  
   /--
   info: '5-3-1-1'
   -/
   #guard_msgs in
   #eval dashatize 5311
-
+  
   /--
   info: '86-3-20'
   -/
   #guard_msgs in
   #eval dashatize 86320
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

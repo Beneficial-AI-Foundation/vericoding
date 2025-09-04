@@ -1,67 +1,68 @@
 vc-description: |-
   While surfing in web I found interesting math problem called "Always perfect". That means if you add 1 to the product of four consecutive numbers the answer is ALWAYS a perfect square.
   For example we have: 1,2,3,4 and the product will be 1X2X3X4=24. If we add 1 to the product that would become 25, since the result number is a perfect square the square root of 25 would be 5.
-
+  
   So now lets write a function which takes numbers separated by commas in string format and returns the number which is a perfect square and the square root of that number.
-
+  
   If string contains other characters than number or it has more or less than 4 numbers separated by comma function returns "incorrect input".
-
+  
   If string contains 4 numbers but not consecutive it returns "not consecutive".
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def check_root (s : String) : String := sorry
-
+  
   def sqrt (n : Nat) : Nat := sorry
-
-
+  
   def is_consecutive (a b c d : Int) : Bool := 
     b = a + 1 ∧ c = b + 1 ∧ d = c + 1
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
+
 vc-definitions: |-
   def countChar (s : String) (c : Char) : Nat := sorry
-
+  
   theorem invalid_input (s : String) 
     (h : s.isEmpty ∨ 
          (countChar s ',' ≠ 3) ∨ 
          ¬(s.split (fun x => x = ',') |>.all (fun n => n.all (fun c => c.isDigit ∨ c = '-')))) :
     check_root s = "incorrect input" := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem consecutive_valid {a b c d : Int} (h : is_consecutive a b c d) :
     check_root s!"{a},{b},{c},{d}" = 
       let prod := a * b * c * d + 1
       s!"{prod}, {sqrt prod.toNat}" := sorry
-
-
+  
   theorem non_consecutive {a b c d : Int} (h : ¬is_consecutive a b c d) :
     check_root s!"{a},{b},{c},{d}" = "not consecutive" := sorry
-
-
+  
   /--
   info: '25, 5'
   -/
   #guard_msgs in
   #eval check_root "1,2,3,4"
-
+  
   /--
   info: '25, 5'
   -/
   #guard_msgs in
   #eval check_root "-4,-3,-2,-1"
-
+  
   /--
   info: 'incorrect input'
   -/
   #guard_msgs in
   #eval check_root "1,2,3"
-
+  
   /--
   info: 'not consecutive'
   -/
   #guard_msgs in
   #eval check_root "1,3,5,7"
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

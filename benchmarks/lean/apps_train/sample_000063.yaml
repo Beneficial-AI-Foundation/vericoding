@@ -1,31 +1,28 @@
 vc-description: |-
   There is a road with length $l$ meters. The start of the road has coordinate $0$, the end of the road has coordinate $l$.
-
+  
   There are two cars, the first standing at the start of the road and the second standing at the end of the road. They will start driving simultaneously. The first car will drive from the start to the end and the second car will drive from the end to the start.
-
+  
   Initially, they will drive with a speed of $1$ meter per second. There are $n$ flags at different coordinates $a_1, a_2, \ldots, a_n$. Each time when any of two cars drives through a flag, the speed of that car increases by $1$ meter per second.
-
+  
   Find how long will it take for cars to meet (to reach the same coordinate). 
-
-
+  
   -----Input-----
-
+  
   The first line contains one integer $t$ ($1 \leq t \leq 10^4$): the number of test cases.
-
+  
   The first line of each test case contains two integers $n$, $l$ ($1 \leq n \leq 10^5$, $1 \leq l \leq 10^9$): the number of flags and the length of the road.
-
+  
   The second line contains $n$ integers $a_1, a_2, \ldots, a_n$ in the increasing order ($1 \leq a_1 < a_2 < \ldots < a_n < l$).
-
+  
   It is guaranteed that the sum of $n$ among all test cases does not exceed $10^5$.
-
-
+  
   -----Output-----
-
+  
   For each test case print a single real number: the time required for cars to meet.
-
+  
   Your answer will be considered correct, if its absolute or relative error does not exceed $10^{-6}$. More formally, if your answer is $a$ and jury's answer is $b$, your answer will be considered correct if $\frac{|a-b|}{\max{(1, b)}} \leq 10^{-6}$.
-
-
+  
   -----Example-----
   Input
   5
@@ -39,70 +36,68 @@ vc-description: |-
   413470354 982876160
   9 478
   1 10 25 33 239 445 453 468 477
-
+  
   Output
   3.000000000000000
   3.666666666666667
   2.047619047619048
   329737645.750000000000000
   53.700000000000000
-
-
-
+  
   -----Note-----
-
+  
   In the first test case cars will meet in the coordinate $5$.
-
+  
   The first car will be in the coordinate $1$ in $1$ second and after that its speed will increase by $1$ and will be equal to $2$ meters per second. After $2$ more seconds it will be in the coordinate $5$. So, it will be in the coordinate $5$ in $3$ seconds.
-
+  
   The second car will be in the coordinate $9$ in $1$ second and after that its speed will increase by $1$ and will be equal to $2$ meters per second. After $2$ more seconds it will be in the coordinate $5$. So, it will be in the coordinate $5$ in $3$ seconds.
-
+  
   In the second test case after $1$ second the first car will be in the coordinate $1$ and will have the speed equal to $2$ meters per second, the second car will be in the coordinate $9$ and will have the speed equal to $1$ meter per second. So, they will meet after $\frac{9-1}{2+1} = \frac{8}{3}$ seconds. So, the answer is equal to $1 + \frac{8}{3} = \frac{11}{3}$.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def solve_cars_meeting (n l : Nat) (flags : List Nat) : Nat :=
     sorry
+
 vc-theorems: |-
   theorem meeting_time_positive (n l : Nat) (flags : List Nat) 
     (h1 : n > 0) (h2 : l > n) (h3 : flags.length = n) :
     solve_cars_meeting n l flags > 0 :=
     sorry
-
-
+  
   theorem meeting_time_less_than_length (n l : Nat) (flags : List Nat)
     (h1 : n > 0) (h2 : l > n) (h3 : flags.length = n) :
     solve_cars_meeting n l flags < l :=
     sorry
-
-
+  
   theorem meeting_time_less_than_half (n l : Nat) (flags : List Nat)
     (h1 : n > 0) (h2 : l > n) (h3 : flags.length = n) :
     solve_cars_meeting n l flags ≤ l/2 :=
     sorry
-
-
+  
   theorem flags_strictly_increasing (n l : Nat) (flags : List Nat)
     (h1 : n > 0) (h2 : l > n) (h3 : flags.length = n) :
     ∀ i : Fin (n-1), flags[i.val] < flags[i.val+1] :=
     sorry
-
-
+  
   theorem flags_within_bounds (n l : Nat) (flags : List Nat)
     (h1 : n > 0) (h2 : l > n) (h3 : flags.length = n) :
     ∀ x ∈ flags, 0 < x ∧ x < l :=
     sorry
-
-
+  
   theorem numerical_stability (n l : Nat) (flags flags_perturbed : List Nat)
     (h1 : n > 0) (h2 : l > n) (h3 : flags.length = n) 
     (h4 : flags_perturbed.length = n)
     (h5 : ∀ (i : Fin n), flags[i.val] - flags_perturbed[i.val] ≤ 1) :
     solve_cars_meeting n l flags - solve_cars_meeting n l flags_perturbed ≤ 1 :=
     sorry
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
+

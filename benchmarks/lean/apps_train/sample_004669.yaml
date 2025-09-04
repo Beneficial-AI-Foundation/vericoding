@@ -1,44 +1,46 @@
 vc-description: |-
   Write the function `resistor_parallel` that receive an undefined number of resistances parallel resistors and return the total resistance.
-
+  
   You can assume that there will be no 0 as parameter.  
   Also there will be at least 2 arguments.
-
+  
   Formula:  
   `total = 1 / (1/r1 + 1/r2 + .. + 1/rn)`
-
+  
   Examples:  
   `resistor_parallel(20, 20)` will return `10.0`  
   `resistor_parallel(20, 20, 40)` will return `8.0`
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def resistor_parallel (r : List Float) : Float := sorry
-
+  
   theorem parallel_resistance_positive {r : List Float} (h : ∀ x ∈ r, x > 0) : 
     resistor_parallel r > 0 := 
   sorry
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def sum_list : List Float → Float 
     | [] => 0
     | x::xs => x + sum_list xs
+
 vc-theorems: |-
   theorem single_resistor_identity {r : Float} (h : r > 0) :
     resistor_parallel [r] = r :=
   sorry
-
-
+  
   theorem parallel_symmetric {r1 r2 : Float} (h1 : r1 > 0) (h2 : r2 > 0) :
     resistor_parallel [r1, r2] = resistor_parallel [r2, r1] :=
   sorry
-
-
+  
   theorem inverse_sum_relationship {r : List Float} (h : ∀ x ∈ r, x > 0) :
     1 / (resistor_parallel r) = sum_list (r.map (λ x => 1/x)) :=
   sorry
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
+

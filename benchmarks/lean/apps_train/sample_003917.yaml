@@ -1,77 +1,80 @@
 vc-description: |-
   # Valid HK Phone Number
-
+  
   ## Overview
-
+  
   In Hong Kong, a valid phone number has the format ```xxxx xxxx``` where ```x``` is a decimal digit (0-9).  For example:
-
+  
   ## Task
-
+  
   Define two functions, ```isValidHKPhoneNumber``` and ```hasValidHKPhoneNumber```, that ```return```s whether a given string is a valid HK phone number and contains a valid HK phone number respectively (i.e. ```true/false``` values).
-
+  
   If in doubt please refer to the example tests.
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def isValidHKPhoneNumber (s : String) : Bool := sorry
   def hasValidHKPhoneNumber (s : String) : Bool := sorry
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def isValidDigitStr (s : String) : Bool := sorry
 
+vc-definitions: |-
+  def isValidDigitStr (s : String) : Bool := sorry
+  
   theorem valid_number_is_accepted {d1 d2 : String} : 
     isValidDigitStr d1 → isValidDigitStr d2 →
     isValidHKPhoneNumber (d1 ++ " " ++ d2) ∧ 
     hasValidHKPhoneNumber (d1 ++ " " ++ d2) := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem invalid_numbers_are_rejected {s : String} :
     (∃ i, String.get? s i = some ' ') →
     (∃ i n, String.get? s i = some n ∧ (n < '0' ∨ n > '9')) →
     ¬isValidHKPhoneNumber s := sorry
-
-
+  
   theorem has_valid_number_with_text {d1 d2 pre suf : String} :
     isValidDigitStr d1 → isValidDigitStr d2 →
     hasValidHKPhoneNumber (pre ++ d1 ++ " " ++ d2 ++ suf) ∧
     ¬isValidHKPhoneNumber (pre ++ d1 ++ " " ++ d2 ++ suf) := sorry
-
+  
   /--
   info: True
   -/
   #guard_msgs in
   #eval is_valid_HK_phone_number "1234 5678"
-
+  
   /--
   info: False
   -/
   #guard_msgs in
   #eval is_valid_HK_phone_number "abcd efgh"
-
+  
   /--
   info: False
   -/
   #guard_msgs in
   #eval is_valid_HK_phone_number "836g 2986"
-
+  
   /--
   info: True
   -/
   #guard_msgs in
   #eval has_valid_HK_phone_number "Call 1234 5678 now"
-
+  
   /--
   info: False
   -/
   #guard_msgs in
   #eval has_valid_HK_phone_number "No number here"
-
+  
   /--
   info: True
   -/
   #guard_msgs in
   #eval has_valid_HK_phone_number "8365 2986 is my number"
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

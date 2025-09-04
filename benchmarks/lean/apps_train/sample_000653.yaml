@@ -3,18 +3,18 @@ vc-description: |-
   You are given two point of a straightline in X and Y axis and they are A(x1 , y1) and B(x2 ,y2) . Problem setter will give you another point C(x3 , y3) . If C exist in AB straightline ,then print “YES” . Otherwise ,print “NO” in first line and print the minimum distance from C to AB straightline in second line .
   Please , save the life of Chef .
   Note : It is not possible that A and B point is similar .
-
+  
   -----Input:-----
   The first line of the input contains a single integer t (1≤t≤100) — the number of test cases .
   Each test case starts with four integers( x1, y1 , x2 , y2 ) in first line .
   Next line contains a single number q ,the number of queries . Each query contains two integers ( x3 ,y3 )
-
+  
   -----Output:-----
   Print , q number of “YES” or “NO” (as it mentioned above) in each test case .For every test case , print “Test case : i ” ( 1<= i <=T )
-
+  
   -----Constraints-----
   -1000 <=  x1 , y1 , x2 , y2 , x3 , y3 <= 1000
-
+  
   -----Sample Input:-----
   2
   3  5  6  5
@@ -24,7 +24,7 @@ vc-description: |-
   3  4  7  10
   1
   7  4
-
+  
   -----Sample Output:-----
   Test case : 1
   YES
@@ -33,16 +33,19 @@ vc-description: |-
   Test case : 2
   NO
   3.328201
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def String.toFloat? (s : String) : Option Float := sorry
 
+vc-definitions: |-
+  def String.toFloat? (s : String) : Option Float := sorry
+  
   def solve_geometry (x1 y1 x2 y2 : Int) (queries : List (Int × Int)) : List String :=
   sorry
+
 vc-theorems: |-
   theorem solve_geometry_basic_properties {x1 y1 x2 y2 : Int} (h : x1 ≠ x2) 
     (queries : List (Int × Int)) :
@@ -54,6 +57,8 @@ vc-theorems: |-
         then List.get! result i = "YES" ∨ List.get! result i = "NO"
         else ∃ d : Float, (List.get! result i).toFloat? = some d ∧ d ≥ 0 :=
   sorry
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
+

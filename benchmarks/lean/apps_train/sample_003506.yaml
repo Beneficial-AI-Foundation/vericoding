@@ -1,6 +1,6 @@
 vc-description: |-
   In this simple assignment you are given a number and have to make it negative. But maybe the number is already negative?
-
+  
   **Example:**
   ``` c
   makeNegative(1); // return -1
@@ -101,31 +101,31 @@ vc-description: |-
   (make-negative 0)    ; 0
   (make-negative 0.12) ; -0.12
   ```
-
+  
   **Notes:**
-
+  
   - The number can be negative already, in which case no change is required.
   - Zero (0) is not checked for any specific sign. Negative zeros make no mathematical sense.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def abs (n : Int) : Int := sorry
 
+vc-definitions: |-
+  def abs (n : Int) : Int := sorry
+  
   def make_negative (n : Int) : Int := sorry
+
 vc-theorems: |-
   theorem make_negative_is_nonpositive (n : Int) : 
     make_negative n ≤ 0 := sorry
-
-
-
-
-
-
+  
   theorem make_negative_idempotent (n : Int) (h : n ≤ 0) :
     make_negative (make_negative n) = make_negative n := sorry
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
+

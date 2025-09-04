@@ -1,96 +1,96 @@
 vc-description: |-
   There are n cards of different colours placed in a line, each of them can be either red, green or blue cards. Count the minimum number of cards to withdraw from the line so that no two adjacent cards have the same colour.
-
+  
   -----Input-----
   - The first line of each input contains an integer n— the total number of cards.
   - The next line of the input contains a string s, which represents the colours of the cards. We'll consider the cards in a line numbered from 1 to n from left to right. Then the $i^t$$^h$ alphabet equals "G", if the $i^t$$^h$ card is green, "R" if the card is red,  and "B", if it's blue.
-
+  
   -----Output-----
   - Print a single integer — the answer to the problem.
-
+  
   -----Constraints-----
   - $1 \leq n \leq 50$
-
+  
   -----Sample Input 1:-----
   5
   RGGBG
-
+  
   -----Sample Input 2:-----
   5
   RRRRR
-
+  
   -----Sample Input 3:-----
   2
   BB
-
+  
   -----Sample Output 1:-----
   1
-
+  
   -----Sample Output 2:-----
   4
-
+  
   -----Sample Output 3:-----
   1
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def count_min_cards_to_remove (n : Nat) (colors : List Color) : Nat :=
     sorry
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def countAdjacentSame (colors : List Color) : Nat :=
     (List.zip colors colors.tail).filter (fun (x, y) => decide (x = y)) |>.length
-vc-theorems: |
+
+vc-theorems: |-
   theorem min_cards_upper_bound {n : Nat} {colors : List Color} 
     (h : colors.length = n) (h1 : n > 0) :
     count_min_cards_to_remove n colors ≤ n - 1 :=
   sorry
-
-
+  
   theorem min_cards_non_negative {n : Nat} {colors : List Color} 
     (h : colors.length = n) (h1 : n > 0) :
     count_min_cards_to_remove n colors ≥ 0 :=
   sorry
-
-
+  
   theorem min_cards_equals_adjacent_same {n : Nat} {colors : List Color}
     (h : colors.length = n) (h1 : n > 0) :
     count_min_cards_to_remove n colors = countAdjacentSame colors :=
   sorry
-
-
+  
   theorem min_cards_all_same_color {n : Nat} {colors : List Color}
     (h : colors.length = n) (h1 : n > 0)
     (h2 : ∀ i j, i < colors.length → j < colors.length → colors[i]! = colors[j]!) :
     count_min_cards_to_remove n colors = n - 1 :=
   sorry
-
-
+  
   theorem min_cards_alternating {n : Nat} {colors : List Color}
     (h : colors.length = n) (h1 : n ≥ 2)
     (h2 : ∀ i, i < colors.length - 1 → colors[i]! ≠ colors[i+1]!) :
     count_min_cards_to_remove n colors = 0 :=
   sorry
-
+  
   /--
   info: 1
   -/
   #guard_msgs in
   #eval count_min_cards_to_remove 5 "RGGBG"
-
+  
   /--
   info: 4
   -/
   #guard_msgs in
   #eval count_min_cards_to_remove 5 "RRRRR"
-
+  
   /--
   info: 1
   -/
   #guard_msgs in
   #eval count_min_cards_to_remove 2 "BB"
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
+

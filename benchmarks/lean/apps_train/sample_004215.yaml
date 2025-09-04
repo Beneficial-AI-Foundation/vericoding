@@ -1,17 +1,17 @@
 vc-description: |-
   # Task
    Consider a string of lowercase Latin letters and space characters (" "). 
-   
+  
    First, rearrange the letters in each word `alphabetically`. 
-   
+  
    And then rearrange the words in ascending order of the sum of their characters' `ASCII` values. 
-   
+  
    If two or more words have the same `ASCII` value, rearrange them by their length in ascending order; If their length still equals to each other, rearrange them `alphabetically`.
-   
+  
    Finally, return the result.
-
+  
   # Example
-
+  
    For `s = "batman is bruce wayne"`, the result should be `"is bceru aenwy aamntb"`.
   ``` 
   After rearranging the letters the string turns into
@@ -19,49 +19,44 @@ vc-description: |-
   The ASCII values of each word are: [627, 220, 529, 548].
   After sorting the words the following string is obtained:
   "is bceru aenwy aamntb" (with ASCII values of [220, 529, 548, 627]).```
-
+  
    For `s = "peter parker is spiderman"`, the result should be `"is eeprt aekprr adeimnprs"`
-
+  
    `(ASCII values: [220, 554, 645, 963])`
-
+  
   # Input/Output
-
-
+  
    - `[input]` string `s`
-
+  
     A string of lowercase words. Each word is separated by exactly one space character.
-
-
+  
    - `[output]` a string
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def revamp (s : String) : String := sorry
-
+  
   def sumChars (s : String) : Nat := sorry
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |+
+
+vc-definitions: |-
   def sortString (s : String) : String := sorry
-
-
-
+  
   theorem output_has_same_word_count (s : String) :
-    (String.split (revamp s) (· = ' ')).length = (String.split s (· = ' ')).length := sorry 
-
+    (String.split (revamp s) (· = ' ')).length = (String.split s (· = ' ')).length := sorry
 
 vc-theorems: |-
   theorem words_internally_sorted (s : String) :
     let result := String.split (revamp s) (· = ' ')
     ∀ word, word ∈ result → 
       word = sortString word := sorry
-
-
-
-
+  
   theorem empty_string :
     revamp "" = "" := sorry
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
+

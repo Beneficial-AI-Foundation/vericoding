@@ -1,9 +1,9 @@
 vc-description: |-
   In this Kata, we will check if a string contains consecutive letters as they appear in the English alphabet and if each letter occurs only once. 
-
+  
   ```Haskell
   Rules are: (1) the letters are adjacent in the English alphabet, and (2) each letter occurs only once.
-
+  
   For example: 
   solve("abc") = True, because it contains a,b,c
   solve("abd") = False, because a, b, d are not consecutive/adjacent in the alphabet, and c is missing.
@@ -12,64 +12,64 @@ vc-description: |-
   solve("v") = True
   ```
   All inputs will be lowercase letters. 
-
+  
   More examples in test cases. Good luck!
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def solve (s : String) : Bool :=
     sorry
-
-
+  
   def eraseDuplicates (xs : List α) : List α :=
     sorry
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def sortList (xs : List α) : List α :=
     sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem solve_valid_string_properties (s : String) :
     solve s → 
     (s.length : Nat) = (eraseDuplicates s.toList).length ∧ 
     sortList (s.toList.map Char.toLower) = s.toList := by
     sorry
-
-
+  
   theorem solve_invalid_chars (s : String) :
     s.toList.all (λ c => ¬c.isLower) →
     ¬(solve s) := by
     sorry
-
-
+  
   theorem solve_duplicates (s : String) :
     s.length > 0 →
     ¬(solve (s ++ s)) := by
     sorry
-
-
+  
   theorem solve_empty :
     ¬(solve "") := by
     sorry
-
+  
   /--
   info: True
   -/
   #guard_msgs in
   #eval solve "abc"
-
+  
   /--
   info: False
   -/
   #guard_msgs in
   #eval solve "abd"
-
+  
   /--
   info: True
   -/
   #guard_msgs in
   #eval solve "dabc"
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

@@ -1,62 +1,63 @@
 vc-description: |-
   Given two non-negative integers num1 and num2 represented as string, return the sum of num1 and num2.
-
+  
   Note:
-
+  
   The length of both num1 and num2 is < 5100.
   Both num1 and num2 contains only digits 0-9.
   Both num1 and num2 does not contain any leading zero.
   You must not use any built-in BigInteger library or convert the inputs to integer directly.
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def add_strings (a b : String) : String :=
     sorry
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def int_to_str (n : Nat) : String :=
     sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem add_strings_matches_int_addition 
     (a b : Nat) (h1 : a ≤ 10^6) (h2 : b ≤ 10^6) :
     add_strings (int_to_str a) (int_to_str b) = int_to_str (a + b) :=
     sorry 
-
-
+  
   theorem add_zero_right (n : Nat) (h : n ≤ 10^6) :
     add_strings (int_to_str n) "0" = int_to_str n :=
     sorry
-
-
+  
   theorem add_zero_left (n : Nat) (h : n ≤ 10^6) :
     add_strings "0" (int_to_str n) = int_to_str n :=
     sorry
-
-
+  
   theorem add_strings_commutative (n : Nat) (h : n ≤ 10^6) :
     add_strings (int_to_str n) (int_to_str 42) = 
     add_strings (int_to_str 42) (int_to_str n) :=  
     sorry
-
+  
   /--
   info: '172'
   -/
   #guard_msgs in
   #eval add_strings "123" "49"
-
+  
   /--
   info: '0'
   -/
   #guard_msgs in
   #eval add_strings "0" "0"
-
+  
   /--
   info: '1000'
   -/
   #guard_msgs in
   #eval add_strings "999" "1"
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

@@ -1,32 +1,32 @@
 vc-description: |-
   Hello everyone.
-
+  
   I have a simple challenge for you today. In mathematics, the formula for finding the sum to infinity of a geometric sequence is: 
-
-
-
+  
   **ONLY IF** `-1 < r < 1`
-
+  
   where:
-
+  
   * `a` is the first term of the sequence
   * `r` is the common ratio of the sequence (calculated by dividing one term in the sequence by the previous term)
-
+  
   For example: `1 + 0.5 + 0.25 + 0.125 + ... = 2`
-
+  
   Your challenge is to calculate the sum to infinity of the given sequence. The solution must be rounded to 3 decimal places.
-
+  
   If there are no solutions, for example if `r` is out of the above boundaries, return `"No Solutions"`.
-
+  
   Hope you enjoy, let me know of any issues or improvements!
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def sumToInfinity (sequence : List Float) : Option Float := sorry
 
+vc-definitions: |-
+  def sumToInfinity (sequence : List Float) : Option Float := sorry
+  
   theorem geometric_sequence_properties {sequence : List Float}
     (hlen : sequence.length ≥ 4)
     (hfirst : sequence.head! ≠ 0)
@@ -35,34 +35,36 @@ vc-definitions: |
     ∃ (result : Float),
       sumToInfinity sequence = some result ∧
       ¬ result.isNaN := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem invalid_ratio_no_solution {sequence : List Float}
     (hlen : sequence.length = 4)
     (hfirst : sequence.head! ≠ 0)
     (hratio : (sequence.get! 1 / sequence.get! 0).abs ≥ 1) :
     sumToInfinity sequence = none := sorry
-
-
+  
   theorem basic_convergence :
     sumToInfinity [1, 0.5, 0.25, 0.125] = some 2.0 := sorry
-
+  
   /--
   info: 2
   -/
   #guard_msgs in
   #eval sum_to_infinity [1, 0.5, 0.25, 0.125]
-
+  
   /--
   info: 416.667
   -/
   #guard_msgs in
   #eval sum_to_infinity [250, 100, 40, 16]
-
+  
   /--
   info: 26.25
   -/
   #guard_msgs in
   #eval sum_to_infinity [21, 4.2, 0.84, 0.168]
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

@@ -1,14 +1,14 @@
 vc-description: |-
   You task is to implement an simple interpreter for the notorious esoteric language [HQ9+](https://esolangs.org/wiki/HQ9+) that will work for a single character input:
-
+  
   - If the input is `'H'`, return `'Hello World!'`
   - If the input is `'Q'`, return the input
   - If the input is `'9'`, return the full lyrics of [99 Bottles of Beer](http://www.99-bottles-of-beer.net/lyrics.html). It should be formatted like this:
-
+  
   ```if:rust
   __Note__: In Rust, return `Some` containing the appropriate value.
   ```
-
+  
   ```
   99 bottles of beer on the wall, 99 bottles of beer.
   Take one down and pass it around, 98 bottles of beer on the wall.
@@ -26,41 +26,39 @@ vc-description: |-
   No more bottles of beer on the wall, no more bottles of beer.
   Go to the store and buy some more, 99 bottles of beer on the wall.
   ```
-
+  
   - For everything else, don't return anything (return `null` in C#, `None` in Rust).
-
+  
   (`+` has no visible effects so we can safely ignore it.)
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def HQ9 (s : String) : Option String :=
     sorry
-
-
+  
   def contains (haystack needle : String) : Bool :=
     sorry
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def count (haystack needle : String) : Nat :=
     sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem hq9_invalid_none :
     HQ9 "" = none ∧ HQ9 " " = none :=
     sorry
-
-
+  
   theorem h_returns_hello :
     HQ9 "H" = some "Hello World!" :=
     sorry
-
-
+  
   theorem q_returns_q :
     HQ9 "Q" = some "Q" :=
     sorry
-
-
+  
   theorem nine_returns_song (result : String) :
     HQ9 "9" = some result →
     contains result "99 bottles of beer" = true ∧
@@ -69,30 +67,31 @@ vc-theorems: |
     count result "of beer" ≥ 190 ∧
     count result "\n" ≥ 99 :=
     sorry
-
-
+  
   theorem non_hq9_returns_none (s : String) :
     s ≠ "H" → s ≠ "Q" → s ≠ "9" →
     HQ9 s = none :=
     sorry
-
+  
   /--
   info: None
   -/
   #guard_msgs in
   #eval HQ9 "X"
-
+  
   /--
   info: 'Hello World!'
   -/
   #guard_msgs in
   #eval HQ9 "H"
-
+  
   /--
   info: 'Q'
   -/
   #guard_msgs in
   #eval HQ9 "Q"
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

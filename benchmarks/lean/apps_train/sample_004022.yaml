@@ -1,17 +1,16 @@
 vc-description: |-
   A palindrome is a word, phrase, number, or other sequence of characters which reads the same backward as forward. Examples of numerical palindromes are: 
-
+  
   * 232
   * 110011
   * 54322345
-
+  
   Complete the function to test if the given number (`num`) **can be rearranged** to form a numerical palindrome or not. Return a boolean (`true` if it can be rearranged to a palindrome, and `false` if it cannot). Return `"Not valid"` if the input is not an integer or is less than 0.
-
+  
   For this kata, single digit numbers are **NOT** considered numerical palindromes.  
-
-
+  
   ## Examples
-
+  
   ```
   5        =>  false
   2121     =>  true
@@ -21,51 +20,52 @@ vc-description: |-
   "109982" =>  "Not valid"
   -42      =>  "Not valid"
   ```
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def palindrome : (n : Int) → String ⊕ Bool := sorry
-
+  
   theorem negative_numbers {n : Int} (h : n < 0) : palindrome n = Sum.inl "Not valid" := sorry
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
+
 vc-definitions: |-
   def countOddDigits (n : Int) : Nat := sorry
-
+  
   theorem different_digits_odd_count {n : Int} (h1 : n ≥ 100) (h2 : n ≤ 9999)
     (h3 : countOddDigits n > 1) : palindrome n = Sum.inr false := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem non_integers_text (s : String) : palindrome 0 = Sum.inl "Not valid" := sorry
-
+  
   theorem non_integers_dec (d : Float) : palindrome 0 = Sum.inl "Not valid" := sorry
-
-
+  
   theorem single_digits {n : Int} (h1 : n ≥ 0) (h2 : n ≤ 9) : 
     palindrome n = Sum.inr false := sorry
-
-
+  
   theorem repeated_digits {n : Int} (h1 : n ≥ 1) (h2 : n ≤ 9) :
     palindrome (n * 11) = Sum.inr true := sorry
-
-
+  
   /--
   info: False
   -/
   #guard_msgs in
   #eval palindrome 5
-
+  
   /--
   info: True
   -/
   #guard_msgs in
   #eval palindrome 1331
-
+  
   /--
   info: 'Not valid'
   -/
   #guard_msgs in
   #eval palindrome "ololo"
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

@@ -4,26 +4,26 @@ vc-description: |-
   For example, the niceness of the sequence [1,2,2]$[1, 2, 2]$ is gcd(1,2)+gcd(1,2)+gcd(2,2)=4$gcd(1, 2) + gcd(1, 2) + gcd(2, 2) = 4$.
   You are given a sequence A1,A2,…,AN$A_1, A_2, \dots, A_N$; each of its elements is either a positive integer or missing.
   Consider all possible ways to replace each missing element of A$A$ by a positive integer (not necessarily the same for each element) such that the sum of all elements is equal to S$S$. Your task is to find the total niceness of all resulting sequences, i.e. compute the niceness of each possible resulting sequence and sum up all these values. Since the answer may be very large, compute it modulo 109+7$10^9 + 7$.
-
+  
   -----Input-----
   - The first line of the input contains a single integer T$T$ denoting the number of test cases. The description of T$T$ test cases follows.
   - The first line of each test case contains two space-separated integers N$N$ and S$S$. 
   - The second line contains N$N$ space-separated integers A1,A2,…,AN$A_1, A_2, \dots, A_N$. Missing elements in this sequence are denoted by −1$-1$.
-
+  
   -----Output-----
   For each test case, print a single line containing one integer — the total niceness modulo 109+7$10^9 + 7$.
-
+  
   -----Constraints-----
   - 1≤T≤20$1 \le T \le 20$
   - 1≤N,S≤50$1 \le N, S \le 50$
   - 1≤Ai≤50$1 \le A_i \le 50$ or Ai=−1$A_i = -1$ for each valid i$i$
-
+  
   -----Subtasks-----
   Subtask #1 (30 points):
   - 1≤N,S≤18$1 \le N, S \le 18$
   - 1≤Ai≤18$1 \le A_i \le 18$ or Ai=−1$A_i = -1$ for each valid i$i$
   Subtask #2 (70 points): original constraints
-
+  
   -----Example Input-----
   3
   3 3
@@ -32,35 +32,35 @@ vc-description: |-
   1 -1 -1 3
   3 10
   -1 -1 -1
-
+  
   -----Example Output-----
   3
   23
   150
-
+  
   -----Explanation-----
   Example case 1: There is only one possible way to fill in the missing element; the resulting sequence is [1,1,1]$[1, 1, 1]$. Its niceness is 3$3$.
   Example case 2: There is only three possible ways to fill in the missing elements; the resulting sequences are [1,1,3,3]$[1, 1, 3, 3]$, [1,3,1,3]$[1, 3, 1, 3]$, and [1,2,2,3]$[1, 2, 2, 3]$. The sum of their niceness is 8+8+7=23$8 + 8 + 7 = 23$.
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def calc_total_niceness (n : Nat) (target_sum : Nat) (nums : List Int) : Nat :=
   sorry
-
-
+  
   def gcd (a b : Nat) : Nat :=
   sorry
-
-
+  
   def list_sum (xs : List Int) : Int :=
   sorry
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def list_sum_nat (xs : List Nat) : Nat :=
   sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem result_within_mod (n : Nat) (target_sum : Nat) (nums : List Int)
     (h1 : 1 ≤ n ∧ n ≤ 50)
     (h2 : 1 ≤ target_sum ∧ target_sum ≤ 1000)
@@ -69,8 +69,7 @@ vc-theorems: |
     let result := calc_total_niceness n target_sum nums
     0 ≤ result ∧ result < 10^9 + 7 :=
   sorry
-
-
+  
   theorem zero_sum_no_missing (n : Nat) (h : 1 ≤ n ∧ n ≤ 50) :
     let ones := List.replicate n 1
     let expected := list_sum_nat ((List.range n).bind (fun i =>
@@ -79,8 +78,7 @@ vc-theorems: |
       )))
     calc_total_niceness n n ones = expected % (10^9 + 7) :=
   sorry
-
-
+  
   theorem impossible_cases (n : Nat) (target_sum : Nat) (nums : List Int)
     (h1 : 1 ≤ n ∧ n ≤ 50)
     (h2 : 1 ≤ target_sum ∧ target_sum ≤ 1000)
@@ -90,8 +88,7 @@ vc-theorems: |
      target_sum < list_sum (nums_with_missing.filter (· ≠ -1)) →
      calc_total_niceness nums_with_missing.length target_sum nums_with_missing = 0) :=
   sorry
-
-
+  
   theorem order_invariance (n : Nat) (target_sum : Nat) (nums : List Int)
     (h1 : 1 ≤ n ∧ n ≤ 10)
     (h2 : 1 ≤ target_sum ∧ target_sum ≤ 20)
@@ -102,24 +99,26 @@ vc-theorems: |
     calc_total_niceness nums.length target_sum nums = 
     calc_total_niceness perm.length target_sum perm :=
   sorry
-
+  
   /--
   info: 3
   -/
   #guard_msgs in
   #eval calc_total_niceness 3 3 [1, 1, -1]
-
+  
   /--
   info: 23
   -/
   #guard_msgs in
   #eval calc_total_niceness 4 8 [1, -1, -1, 3]
-
+  
   /--
   info: 150
   -/
   #guard_msgs in
   #eval calc_total_niceness 3 10 [-1, -1, -1]
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+

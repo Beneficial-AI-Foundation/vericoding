@@ -1,66 +1,57 @@
 vc-description: |-
   Zonal Computing Olympiad 2012, 26 Nov 2011
-
+  
   It's dinner time in Castle Camelot, and the fearsome Knights of the Round Table are clamouring for dessert. You, the chef, are in a soup.  There are N knights, including King Arthur, each with a different preference for dessert, but you cannot afford to make desserts for all of them.
-
+  
   You are given the cost of manufacturing each Knight's preferred dessert–since it is a round table, the list starts with the cost of King Arthur's dessert, and goes counter-clockwise.
-
+  
   You decide to pick the cheapest desserts to make, such that for every pair of adjacent Knights, at least one gets his dessert. This will ensure that the Knights do not protest.<p>A strange feature of the Knights is that they will not complain about not getting dessert unless they get support from both their neighbours.  So, you decide to pick the cheapest desserts to make, such that for every pair of adjacent Knights, at least one gets his dessert.</p>
-
+  
   What is the minimum cost of tonight's dinner, given this condition?
-
+  
   For instance, suppose there are 5 Knights and their desserts cost 1, 2, 1, 2 and 2.  In this case, the minimum cost is 4, which you can achieve by feeding the first, third and fourth (or fifth) Knights.  
-
+  
   -----Input format-----
   There are 2 lines of input.  The first line contains a single integer N, the number of seats at the table. The next line contains N space separated integers, each being the cost of the dessert of a Knight, listed in counterclockwise order around the table, starting with King Arthur.
-
+  
   -----Output format-----
   The output should be a single line containing a single integer, the minimum possible cost for you, the chef.
-
+  
   -----Testdata-----
   Each Knight's dessert costs strictly more than 0 and strictly less than 1000.  You may assume that 1 ≤ N ≤ 106.  In 30% of the test cases, 1 ≤ N ≤ 103.
-
+  
   - Subtask 1 (30 marks)
   - Subtask 2 (70 marks)
-
+  
   -----Sample Input-----
   5
   1 2 1 2 2
-
+  
   -----Sample Output-----
   4
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def List.sum : List Nat → Nat 
   | [] => 0
   | x::xs => x + List.sum xs
-
-
+  
   def List.minimum : List Nat → Option Nat
   | [] => none
   | [x] => some x
   | x::xs => match List.minimum xs with
     | none => some x
     | some m => some (min x m)
-
-
+  
   def min_dessert_cost (n : Nat) (costs : List Nat) : Nat := sorry
-
-
-
-
-
-
-
-
-
+  
   theorem min_dessert_cost_uniform (n : Nat)
     (h1 : n ≥ 3) :
     min_dessert_cost n (List.replicate n 1) = (n + 1) / 2 := sorry
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
+
 vc-definitions: |-
   def alternating_sums (costs : List Nat) : Nat × Nat :=
     let rec helper (xs : List Nat) (isEven : Bool) : Nat × Nat :=
@@ -71,24 +62,27 @@ vc-definitions: |-
         if isEven then (evens + x, odds)
         else (evens, odds + x)
     helper costs true
-vc-theorems: |
+
+vc-theorems: |-
   /--
   info: 4
   -/
   #guard_msgs in
   #eval min_dessert_cost 5 [1, 2, 1, 2, 2]
-
+  
   /--
   info: 3
   -/
   #guard_msgs in
   #eval min_dessert_cost 3 [1, 2, 3]
-
+  
   /--
   info: 20
   -/
   #guard_msgs in
   #eval min_dessert_cost 4 [5, 10, 15, 20]
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
+

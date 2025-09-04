@@ -9,7 +9,7 @@ vc-description: |-
   6. pop: Pop the last element from the list.
   7. reverse: Reverse the list.
   Initialize your list and read in the value of n followed by n lines of commands where each command will be 7 of the types listed above. Iterate through each command in order and perform the corresponding operation on your list.
-
+  
   =====Example=====
   N = 4
   append 1
@@ -22,36 +22,38 @@ vc-description: |-
   print: Print the array
   Output:
   [1, 3, 2]
-
+  
   =====Input Format=====
   The first line contains an integer, n, denoting the number of commands. Each line i of the subsequent n lines contains one of the commands described above.
-
+  
   =====Constraints=====
   The elements added to the list must be integers
-
+  
   =====Output Format=====
   For each command of type print, print the list on a new line.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def process_list_commands (commands : List String) : List String := sorry
 
+vc-definitions: |-
+  def process_list_commands (commands : List String) : List String := sorry
+  
   theorem process_list_commands_result_type 
     (commands : List String) :
     let result := process_list_commands commands
     result.all (fun str => str.any (· = '[') ∧ str.any (· = ']')) :=
   sorry
+
 vc-theorems: |-
   theorem process_list_commands_print_count
     (commands : List String) : 
     let result := process_list_commands commands
     result.length = (commands.filter (· = "print")).length :=
   sorry
-
-
+  
   theorem process_list_commands_invalid_fails
     (commands : List String) :
     commands.any (fun cmd => ¬(cmd.startsWith "append" ∨ 
@@ -62,6 +64,8 @@ vc-theorems: |-
                               cmd = "pop")) →
     process_list_commands commands = [] :=
   sorry
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
+

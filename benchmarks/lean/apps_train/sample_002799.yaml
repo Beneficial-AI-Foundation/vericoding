@@ -1,64 +1,67 @@
 vc-description: |-
   This kata is all about adding numbers.
-
+  
   You will create a function named add. It will return the sum of all the arguments. Sounds easy, doesn't it?
-
+  
   Well Here's the Twist. The inputs will gradually decrease with their index as parameter to the function.
-
+  
   ```python
     add(3,4,6) #returns (3/1)+(4/2)+(6/3)=7
   ```
-
+  
   Remember the function will return 0 if no arguments are passed and it must round the result if sum is a float.
-
+  
   Example
   ```python
     add() #=> 0
     add(1,2,3) #=> 3
     add(1,4,-6,20) #=> 6
   ```
-
+  
   Check my another kata here!! http://www.codewars.com/kata/555b73a81a6285b6ce000047
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def add (nums : List Float) : Int := sorry
 
+vc-definitions: |-
+  def add (nums : List Float) : Int := sorry
+  
   theorem add_returns_int (nums : List Float) :
     add nums = add nums := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem add_empty_list :
     add [] = 0 := sorry
-
-
+  
   theorem add_single_number (x : Float) :
     add [x] = Int.ofNat (x.toUInt64.toNat) := sorry 
-
-
+  
   theorem add_weighted_sum (nums : List Float) (h : nums ≠ []) :
     ∃ w : Float, w = (nums.enum.foldl (fun acc p => acc + p.2/(Float.ofNat (p.1 + 1))) 0) ∧ 
     (w - Float.ofInt (add nums)).abs < 0.01 := sorry
-
+  
   /--
   info: 300
   -/
   #guard_msgs in
   #eval add 100 200 300
-
+  
   /--
   info: 2
   -/
   #guard_msgs in
   #eval add 2
-
+  
   /--
   info: 2
   -/
   #guard_msgs in
   #eval add 4 -3 -2
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

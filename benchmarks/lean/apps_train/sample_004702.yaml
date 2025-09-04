@@ -1,56 +1,57 @@
 vc-description: |-
   # Write this function
-
+  
   ![](http://i.imgur.com/mlbRlEm.png)
-
+  
   `for i from 1 to n`, do `i % m` and return the `sum`
-
+  
       f(n=10, m=5) // returns 20 (1+2+3+4+0 + 1+2+3+4+0)
-
+  
   *You'll need to get a little clever with performance, since n can be a very large number*
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def List.sum (l : List Nat) : Nat :=
     match l with
     | [] => 0
     | x :: xs => x + List.sum xs
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def f (n m : Nat) : Nat := sorry
 
+vc-definitions: |-
+  def f (n m : Nat) : Nat := sorry
+  
   theorem result_non_negative (n m : Nat) (hn : n > 0) (hm : m > 0) :
     f n m ≥ 0 := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem monotonic_increase (n delta m : Nat) 
     (hn : n > 0) (hd : delta > 0) (hm : m > 0) :
     f (n + delta) m ≥ f n m := sorry
-
-
-
-
+  
   theorem base_case_one (m : Nat) (hm : m > 1) :
     f 1 m = 1 % m := sorry
-
+  
   /--
   info: 20
   -/
   #guard_msgs in
   #eval f 10 5
-
+  
   /--
   info: 6
   -/
   #guard_msgs in
   #eval f 5 3
-
+  
   /--
   info: 12
   -/
   #guard_msgs in
   #eval f 7 4
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
+

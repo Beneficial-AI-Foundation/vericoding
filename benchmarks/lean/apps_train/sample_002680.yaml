@@ -1,35 +1,36 @@
 vc-description: |-
   Deoxyribonucleic acid (DNA) is a chemical found in the nucleus of cells and carries the "instructions" for the development and functioning of living organisms.
-
+  
   If you want to know more http://en.wikipedia.org/wiki/DNA
-
+  
   In DNA strings, symbols "A" and "T" are complements of each other, as "C" and "G". 
   You have function with one side of the DNA (string, except for Haskell); you need to get the other complementary side. DNA strand is never empty or there is no DNA at all (again, except for Haskell).
-
+  
   More similar exercise are found here http://rosalind.info/problems/list-view/ (source)
-
+  
   ```python
   DNA_strand ("ATTGC") # return "TAACG"
-
+  
   DNA_strand ("GTAT") # return "CATA"
   ```
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def DNA_strand : List Base → List Base
     | xs => sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem dna_complement_length {xs : List Base} :
     (DNA_strand xs).length = xs.length := by sorry
-
-
+  
   theorem dna_complement_involution {xs : List Base} :
     DNA_strand (DNA_strand xs) = xs := by sorry
-
-
+  
   theorem dna_complement_maps_correctly {xs : List Base} {i : Nat} (h : i < xs.length) :
     match xs.get ⟨i, h⟩ with
     | Base.A => (DNA_strand xs).get ⟨i, by {rw [dna_complement_length]; exact h}⟩ = Base.T
@@ -37,24 +38,26 @@ vc-theorems: |
     | Base.C => (DNA_strand xs).get ⟨i, by {rw [dna_complement_length]; exact h}⟩ = Base.G
     | Base.G => (DNA_strand xs).get ⟨i, by {rw [dna_complement_length]; exact h}⟩ = Base.C
     := by sorry
-
+  
   /--
   info: 'TTTT'
   -/
   #guard_msgs in
   #eval DNA_strand "AAAA"
-
+  
   /--
   info: 'TAACG'
   -/
   #guard_msgs in
   #eval DNA_strand "ATTGC"
-
+  
   /--
   info: 'CATA'
   -/
   #guard_msgs in
   #eval DNA_strand "GTAT"
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

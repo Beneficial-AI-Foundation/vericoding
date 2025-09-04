@@ -4,76 +4,77 @@ vc-description: |-
   - Toggle the i_th bit of the string (0 to 1 or 1 to 0)
   By performing operations on the string (can be zero times), you have to convert the string with no adjacent bit being the same.
   Can you help chef ?
-
+  
   -----Input:-----
   - First line will contain $T$, number of test cases. Then the test cases follow. 
   - First line of each test case, contains the size of the  string $N$
   - Seond line contains a single line of input, the binary string. 
-
+  
   -----Output:-----
   For each testcase, output in a single line answer - the minimum operations.
-
+  
   -----Constraints-----
   - $1 \leq T \leq 100$
   - $2 \leq |S| \leq 10^3$
-
+  
   -----Sample Input:-----
   1
   4
   1011
-
+  
   -----Sample Output:-----
   1
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def min_operations_to_alternating (n : Nat) (s : String) : Nat :=
     sorry
-
-
+  
   def is_alternating (s : String) : Bool := 
     sorry
-
-
+  
   def make_alternating_01 (n : Nat) : String :=
-    sorry 
+    sorry
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def make_alternating_10 (n : Nat) : String :=
     sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem uniform_string_flips (n : Nat) (c : Char) :
     let s := String.mk (List.replicate n c)
     let ops := min_operations_to_alternating n s  
     ops = n/2 ∨ ops = (n+1)/2 :=
     sorry
-
-
+  
   theorem length_result_bounded (n : Nat) (s : String) :
     s.length = n → 
     let ops := min_operations_to_alternating n s
     0 ≤ ops ∧ ops ≤ n :=
     sorry
-
+  
   /--
   info: 1
   -/
   #guard_msgs in
   #eval min_operations_to_alternating 4 "1011"
-
+  
   /--
   info: 2
   -/
   #guard_msgs in
   #eval min_operations_to_alternating 4 "1111"
-
+  
   /--
   info: 0
   -/
   #guard_msgs in
   #eval min_operations_to_alternating 6 "101010"
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
+

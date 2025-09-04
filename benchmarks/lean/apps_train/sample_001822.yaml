@@ -1,69 +1,72 @@
 vc-description: |-
   An integer has sequential digits if and only if each digit in the number is one more than the previous digit.
   Return a sorted list of all the integers in the range [low, high] inclusive that have sequential digits.
-   
+  
   Example 1:
   Input: low = 100, high = 300
   Output: [123,234]
   Example 2:
   Input: low = 1000, high = 13000
   Output: [1234,2345,3456,4567,5678,6789,12345]
-
-   
+  
   Constraints:
-
+  
   10 <= low <= high <= 10^9
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
+
 vc-definitions: |-
   def isSequential (n: Nat) : Bool := sorry
   def sequentialDigits (low high: Nat) : List Nat := sorry
-
+  
   -- Results should be between the given bounds
-vc-theorems: |
+
+vc-theorems: |-
   theorem result_between_bounds {low high : Nat} {n : Nat} (h: n ∈ sequentialDigits low high) : 
     low ≤ n ∧ n ≤ high := sorry
-
+  
   -- All returned numbers should have sequential digits
-
+  
   theorem all_sequential {low high : Nat} {n : Nat} (h: n ∈ sequentialDigits low high) :
     isSequential n = true := sorry
-
+  
   -- Results should be sorted ascending
-
+  
   theorem results_sorted {low high : Nat} {i j : Nat} (hi: i < (sequentialDigits low high).length) 
     (hj: j < (sequentialDigits low high).length) (h_lt: i < j) :
     (sequentialDigits low high)[i]! ≤ (sequentialDigits low high)[j]! := sorry
-
+  
   -- Edge case behavior
-
+  
   theorem edge_case_same_number_12 :
     sequentialDigits 12 12 = [12] := sorry
-
-
+  
   theorem edge_case_same_number_10 :
     sequentialDigits 10 10 = [] := sorry
-
+  
   /--
   info: [123, 234]
   -/
   #guard_msgs in
   #eval sequential_digits 100 300
-
+  
   /--
   info: [1234, 2345, 3456, 4567, 5678, 6789, 12345]
   -/
   #guard_msgs in
   #eval sequential_digits 1000 13000
-
+  
   /--
   info: [12, 23, 34, 45, 56, 67, 78, 89]
   -/
   #guard_msgs in
   #eval sequential_digits 10 100
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+

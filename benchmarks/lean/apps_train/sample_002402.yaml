@@ -1,68 +1,65 @@
 vc-description: |-
   Given an array with n integers, your task is to check if it could become non-decreasing by modifying at most 1 element.
-
-
-
+  
   We define an array is non-decreasing if array[i]  holds for every i (1 
-
+  
   Example 1:
-
+  
   Input: [4,2,3]
   Output: True
   Explanation: You could modify the first 4 to 1 to get a non-decreasing array.
-
-
-
+  
   Example 2:
-
+  
   Input: [4,2,1]
   Output: False
   Explanation: You can't get a non-decreasing array by modify at most one element.
-
-
-
+  
   Note:
   The n belongs to [1, 10,000].
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def check_possibility (nums : List Int) : Bool := sorry
 
+vc-definitions: |-
+  def check_possibility (nums : List Int) : Bool := sorry
+  
   theorem single_element_valid {n : List Int} :
     n.length = 1 → check_possibility n = true := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem two_elements_fixable {n : List Int} :
     n.length = 2 → check_possibility n = true := sorry
-
-
+  
   theorem sorted_list_valid {n : List Int} :
     (∀ i j, i < j → i < n.length → j < n.length → n[i]! ≤ n[j]!) →
     check_possibility n = true := sorry
-
-
+  
   theorem three_descending_not_fixable :
     check_possibility [3, 2, 1] = false := sorry
-
+  
   /--
   info: True
   -/
   #guard_msgs in
   #eval check_possibility [4, 2, 3]
-
+  
   /--
   info: False
   -/
   #guard_msgs in
   #eval check_possibility [4, 2, 1]
-
+  
   /--
   info: True
   -/
   #guard_msgs in
   #eval check_possibility [1, 2, 3]
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

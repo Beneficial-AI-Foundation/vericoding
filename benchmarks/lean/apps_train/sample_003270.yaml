@@ -1,37 +1,39 @@
 vc-description: |-
   Given the sum and gcd of two numbers, return those two numbers in ascending order. If the numbers do not exist, return `-1`, (or `NULL` in C, `tuple (-1,-1)` in C#, `pair (-1,-1)` in C++,`None` in Rust, `array {-1,-1} ` in Java and Golang).
-
+  
   ```
   For example: 
   Given sum = 12 and gcd = 4...
-
+  
   solve(12,4) = [4,8]. The two numbers 4 and 8 sum to 12 and have a gcd of 4.
-
+  
   solve(12,5) = -1. No two numbers exist that sum to 12 and have gcd of 5.
-
+  
   solve(10,2) = [2,8]. Note that [4,6] is also a possibility but we pick the one with the lower first element: 2 < 4, so we take [2,8].
   ```
-
+  
   More examples in test cases. 
-
+  
   Good luck!
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def solve (sum gcd : Nat) : Option (Nat × Nat) :=
     sorry
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
+
 vc-definitions: |-
   def gcd (a b : Nat) : Nat :=
     sorry
-
+  
   -- For any x,y > 0:
   -- If solve returns None, then sum not divisible by gcd
   -- If solve returns Some (a,b), then:
   --   a + b = sum, gcd(a,b) = gcd, a ≤ b
-vc-theorems: |
+
+vc-theorems: |-
   theorem solve_properties (x y : Nat) (h1: x > 0) (h2: y > 0) :
     let s := x + y
     let g := gcd x y
@@ -39,30 +41,32 @@ vc-theorems: |
     | none => s % g ≠ 0 
     | some (a, b) => a + b = s ∧ gcd a b = g ∧ a ≤ b
     := sorry
-
+  
   -- For any x > 0:
   -- solve(2x, x) = (x,x)
-
+  
   theorem solve_same_number (x : Nat) (h: x > 0) :
     solve (2*x) x = some (x, x) := sorry
-
+  
   /--
   info: [3, 3]
   -/
   #guard_msgs in
   #eval solve 6 3
-
+  
   /--
   info: [2, 6]
   -/
   #guard_msgs in
   #eval solve 8 2
-
+  
   /--
   info: [4, 8]
   -/
   #guard_msgs in
   #eval solve 12 4
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

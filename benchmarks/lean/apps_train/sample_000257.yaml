@@ -1,14 +1,14 @@
 vc-description: |-
   Given an equation, represented by words on left side and the result on right side.
   You need to check if the equation is solvable under the following rules:
-
+  
   Each character is decoded as one digit (0 - 9).
   Every pair of different characters they must map to different digits.
   Each words[i] and result are decoded as one number without leading zeros.
   Sum of numbers on left side (words) will equal to the number on right side (result). 
-
+  
   Return True if the equation is solvable otherwise return False.
-   
+  
   Example 1:
   Input: words = ["SEND","MORE"], result = "MONEY"
   Output: true
@@ -22,35 +22,35 @@ vc-description: |-
   Example 3:
   Input: words = ["THIS","IS","TOO"], result = "FUNNY"
   Output: true
-
+  
   Example 4:
   Input: words = ["LEET","CODE"], result = "POINT"
   Output: false
-
-   
+  
   Constraints:
-
+  
   2 <= words.length <= 5
   1 <= words[i].length, result.length <= 7
   words[i], result contains only upper case English letters.
   Number of different characters used on the expression is at most 10.
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def Solution := String
-
+  
   def isSolvable (words : List String) (result : String) : Bool :=
     sorry
-
-
+  
   def isAlpha (s : String) : Bool :=
     sorry
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def isUpper (s : String) : Bool :=
-    sorry 
+    sorry
+
 vc-theorems: |-
   theorem valid_solution_constraints {words : List String} {result : String}
     (h1 : ∀ w ∈ words, isAlpha w ∧ isUpper w)
@@ -60,8 +60,7 @@ vc-theorems: |-
     (h5 : result.length ≥ words.foldr (fun w acc => max w.length acc) 0) :
     ∃ solution : Bool, isSolvable words result = solution :=
     sorry
-
-
+  
   theorem known_valid_cases_work 
     (h1 : isSolvable ["SEND", "MORE"] "MONEY" = true)
     (h2 : isSolvable ["SIX", "SEVEN", "SEVEN"] "TWENTY" = true) :
@@ -70,8 +69,7 @@ vc-theorems: |-
       (words = ["SIX", "SEVEN", "SEVEN"] ∧ result = "TWENTY") →
       isSolvable words result = true :=
     sorry
-
-
+  
   theorem modified_valid_case_exists_solution
     {words result : String} 
     (h1 : words.length > 0)
@@ -82,6 +80,8 @@ vc-theorems: |-
           words.length = orig_result.length) :
     ∃ solution : Bool, isSolvable [words] result = solution :=
     sorry
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+

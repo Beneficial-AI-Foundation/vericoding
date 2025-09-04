@@ -3,60 +3,65 @@ vc-description: |-
   ABCXYZ company has up to 100 employees.
   The company decides to create a unique identification number (UID) for each of its employees.
   The company has assigned you the task of validating all the randomly generated UIDs.
-
+  
   A valid UID must follow the rules below:
-
+  
   It must contain at least 2 uppercase English alphabet characters.
   It must contain at least 3 digits (0-9).
   It should only contain alphanumeric characters (a-z, A-Z & 0-9).
   No character should repeat.
   There must be exactly 10 characters in a valid UID.
-
+  
   =====Input Format=====
   The first line contains an integer T, the number of test cases.
   The next T lines contains an employee's UID.
-
+  
   =====Output Format=====
   For each test case, print 'Valid' if the UID is valid. Otherwise, print 'Invalid', on separate lines. Do not print the quotation marks.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
+
 vc-definitions: |-
   def validate_uids (uids : List String) : List String := sorry
-
+  
   -- Output format theorem
-vc-theorems: |
+
+vc-theorems: |-
   theorem validate_uids_format (uids : List String) :
     let results := validate_uids uids
     results.length = uids.length ∧ 
     results.all (fun x => x = "Valid" ∨ x = "Invalid") := sorry
-
+  
   -- Result always Valid or Invalid for arbitrary strings
-
+  
   theorem validate_uids_valid_results (strings : List String) :
     (validate_uids strings).all (fun x => x = "Valid" ∨ x = "Invalid") := sorry
-
+  
   -- Known cases theorem
-
+  
   theorem validate_uids_known_cases :
     validate_uids ["B1CD102354"] = ["Invalid"] ∧ 
     validate_uids ["B1CDEF2354"] = ["Valid"] ∧
     validate_uids ["12345abcdeF"] = ["Invalid"] ∧
     validate_uids ["abcdefghij"] = ["Invalid"] := sorry
-
+  
   /--
   info: ['Invalid', 'Valid']
   -/
   #guard_msgs in
   #eval validate_uids ["B1CD102354", "B1CDEF2354"]
-
+  
   /--
   info: ['Valid']
   -/
   #guard_msgs in
   #eval validate_uids ["B1CDEF2354"]
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

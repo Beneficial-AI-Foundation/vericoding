@@ -1,19 +1,19 @@
 vc-description: |-
   We have the numbers with different colours with the sequence: ['red', 'yellow', 'blue'].
-
+  
   That sequence colours the numbers in the following way:
-
+  
    1   2   3    4    5   6  7   8   9   10   11  12   13 .....
-
+  
   We have got the following recursive function:
-
+  
     ```
   f(1) = 1
   f(n) = f(n - 1) + n
   ```
-
+  
   Some terms of this sequence with their corresponding colour are:
-
+  
   ```
   term   value   colour
   1        1     "red"
@@ -24,66 +24,68 @@ vc-description: |-
   6       21     "blue"
   7       28     "red"
   ```
-
+  
   The three terms of the same colour "blue", higher than 3, are: `[6, 15, 21]`
-
+  
   We need a function `same_col_seq(), that may receive three arguments:
-
+  
   - `val`, an integer number
   - `k`, an integer number
   - `colour`, the name of one of the three colours(red, yellow or blue), as a string.
-
+  
   The function will output a sorted array with the smallest `k` terms, having the same marked colour, but higher than `val`.
-
+  
   Let's see some examples:
-
+  
   ```python
   same_col_seq(3, 3, 'blue') == [6, 15, 21]
   same_col_seq(100, 4, 'red') == [136, 190, 253, 325]
   ```
-
+  
   The function may output an empty list if it does not find terms of the sequence with the wanted colour in the range [val, 2* k * val]
-
+  
   ```python
   same_col_seq(250, 6, 'yellow') == []
   ```
-
+  
   That means that the function did not find any "yellow" term in the range `[250, 3000]`
-   
+  
   Tests will be with the following features:
-
+  
   * Nmber of tests: `100`
   * `100 < val < 1000000`
   * `3 < k < 20`
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def same_col_seq (val k : Nat) (c : Color) : List Nat := sorry
 
+vc-definitions: |-
+  def same_col_seq (val k : Nat) (c : Color) : List Nat := sorry
+  
   theorem same_col_seq_valid_length (val k : Nat) (c : Color) :
     let result := same_col_seq val k c
     List.length result ≤ k := sorry
+
 vc-theorems: |-
   theorem same_col_seq_greater_than_val (val k : Nat) (c : Color) :
     let result := same_col_seq val k c
     ∀ x ∈ result, x > val := sorry
-
-
+  
   theorem same_col_seq_ascending (val k : Nat) (c : Color) :
     let result := same_col_seq val k c
     ∀ i j, i < j → j < result.length → result[i]! < result[j]! := sorry
-
-
+  
   theorem same_col_seq_color_match (val k : Nat) (c : Color) :
     let result := same_col_seq val k c
     ∀ x ∈ result, x % 3 = c.idx := sorry
-
-
+  
   theorem same_col_seq_zero_k (val : Nat) (c : Color) :
     same_col_seq val 0 c = [] := sorry
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
+

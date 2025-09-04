@@ -1,15 +1,15 @@
 vc-description: |-
   You are the judge at a competitive eating competition and you need to choose a winner!
-
+  
   There are three foods at the competition and each type of food is worth a different amount of points.
   Points are as follows:
-
+  
   - Chickenwings: 5 points  
-
+  
   - Hamburgers: 3 points   
-
+  
   - Hotdogs: 2 points
-
+  
   Write a function that helps you create a scoreboard. 
   It takes as a parameter a list of objects representing the participants, for example:
   ```
@@ -27,23 +27,24 @@ vc-description: |-
   ]
   ```
   Happy judging!
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def contestant_score (c : Contestant) : Nat :=
     sorry
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def scoreboard (contestants : List Contestant) : List Contestant :=
     sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem scoreboard_preserves_length (contestants : List Contestant) :
     List.length (scoreboard contestants) = List.length contestants :=
     sorry
-
-
+  
   theorem scoreboard_sorted_scores (contestants : List Contestant) 
       (h : contestants.length > 1) :
     let result := scoreboard contestants
@@ -55,29 +56,30 @@ vc-theorems: |
       then (result.get i).name ≤ (result.get ⟨i.val + 1, by sorry⟩).name 
       else score₁ > score₂ :=
     sorry
-
-
+  
   theorem empty_scoreboard :
     scoreboard [] = [] :=
     sorry
-
+  
   /--
   info: expected1
   -/
   #guard_msgs in
   #eval scoreboard [{"name": "Billy The Beast", "chickenwings": 17, "hamburgers": 7, "hotdogs": 8}, {"name": "Habanero Hillary", "chickenwings": 5, "hamburgers": 17, "hotdogs": 11}, {"name": "Joey Jaws", "chickenwings": 8, "hamburgers": 8, "hotdogs": 15}, {"name": "Big Bob", "chickenwings": 20, "hamburgers": 4, "hotdogs": 11}]
-
+  
   /--
   info: expected2
   -/
   #guard_msgs in
   #eval scoreboard [{"name": "Joey Jaws", "chickenwings": 0, "hamburgers": 1, "hotdogs": 1}, {"name": "Big Bob", "chickenwings": 1, "hamburgers": 0, "hotdogs": 0}]
-
+  
   /--
   info: []
   -/
   #guard_msgs in
   #eval scoreboard []
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

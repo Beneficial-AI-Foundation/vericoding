@@ -1,23 +1,20 @@
 vc-description: |-
   Let's call some positive integer classy if its decimal representation contains no more than $3$ non-zero digits. For example, numbers $4$, $200000$, $10203$ are classy and numbers $4231$, $102306$, $7277420000$ are not.
-
+  
   You are given a segment $[L; R]$. Count the number of classy integers $x$ such that $L \le x \le R$.
-
+  
   Each testcase contains several segments, for each of them you are required to solve the problem separately.
-
-
+  
   -----Input-----
-
+  
   The first line contains a single integer $T$ ($1 \le T \le 10^4$) — the number of segments in a testcase.
-
+  
   Each of the next $T$ lines contains two integers $L_i$ and $R_i$ ($1 \le L_i \le R_i \le 10^{18}$).
-
-
+  
   -----Output-----
-
+  
   Print $T$ lines — the $i$-th line should contain the number of classy integers on a segment $[L_i; R_i]$.
-
-
+  
   -----Example-----
   Input
   4
@@ -25,54 +22,56 @@ vc-description: |-
   1024 1024
   65536 65536
   999999 1000001
-
+  
   Output
   1000
   1
   0
   2
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def isClassyNumber (n : Nat) : Bool := sorry
 
+vc-definitions: |-
+  def isClassyNumber (n : Nat) : Bool := sorry
+  
   def countClassyIntegers (start : Nat) (finish : Nat) : Nat := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem count_is_nonnegative (start finish : Nat) : 
     countClassyIntegers start finish ≥ 0 := sorry
-
-
+  
   theorem count_bounded_by_range (start finish : Nat) :
     countClassyIntegers start finish ≤ finish - start + 1 := sorry
-
-
+  
   theorem empty_range_is_zero (start finish : Nat) :
     start > finish → countClassyIntegers start finish = 0 := sorry
-
-
+  
   theorem singleton_range_classy (n : Nat) :
     countClassyIntegers n n = (if isClassyNumber n then 1 else 0) := sorry
-
+  
   /--
   info: 1000
   -/
   #guard_msgs in
   #eval count_classy_integers 1 1000
-
+  
   /--
   info: 1
   -/
   #guard_msgs in
   #eval count_classy_integers 1024 1024
-
+  
   /--
   info: 2
   -/
   #guard_msgs in
   #eval count_classy_integers 999999 1000001
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+

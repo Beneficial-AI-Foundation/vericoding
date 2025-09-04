@@ -1,37 +1,40 @@
 vc-description: |-
   Write a function that will randomly upper and lower characters in a string - `randomCase()` (`random_case()` for Python).
-
+  
   A few examples:
-
+  
   ```
   randomCase("Lorem ipsum dolor sit amet, consectetur adipiscing elit") == "lOReM ipSum DOloR SiT AmeT, cOnsEcTEtuR aDiPiSciNG eLIt"
-
+  
   randomCase("Donec eleifend cursus lobortis") == "DONeC ElEifEnD CuRsuS LoBoRTIs"
   ```
-
+  
   Note: this function will work within the basic ASCII character set to make this kata easier - so no need to make the function multibyte safe.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def randomCase (s : String) : String := sorry
 
+vc-definitions: |-
+  def randomCase (s : String) : String := sorry
+  
   theorem randomCase_length_preserved (s : String) : 
     (randomCase s).length = s.length := sorry
+
 vc-theorems: |-
   theorem randomCase_chars_preserved (s : String) :
     (randomCase s).toLower = s.toLower := sorry
-
-
+  
   theorem randomCase_changes_some_chars (s : String) 
     (h : s.length ≥ 10) :
     ∃ result, randomCase result ≠ s := sorry
-
-
+  
   theorem randomCase_only_changes_case (s : String) (i : String.Pos) :
     (s.get i).toLower = ((randomCase s).get i).toLower := sorry
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

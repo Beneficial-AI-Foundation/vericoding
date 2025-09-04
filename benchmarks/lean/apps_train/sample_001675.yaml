@@ -1,19 +1,19 @@
 vc-description: |-
   This Kata is a continuation of [Part 1](http://www.codewars.com/kata/the-fusc-function-part-1). The `fusc` function is defined recursively as follows:
-
+  
       fusc(0) = 0
       fusc(1) = 1
       fusc(2n) = fusc(n)
       fusc(2n + 1) = fusc(n) + fusc(n + 1)
-      
+  
   Your job is to produce the code for the `fusc` function. In this kata, your function will be tested with large values of `n` more than 1000 bits (in JS and PHP: at most 52 bits), so you should be concerned about stack overflow and timeouts.
-
+  
   Method suggestion:
-
+  
   Imagine that instead of `fusc(n)`, you were to implement `fib(n)`, which returns the n'th Fibonacci number.
-
+  
   The function is recursively defined by:
-
+  
   ```
   1.    fib(0) = 1
   2.    fib(1) = 1
@@ -32,9 +32,9 @@ vc-description: |-
   3.    a * fib(n + 1) + b * fib(n + 2) = b * fib(n) + (a + b) * fib(n + 1)
   ```
   Now the two sides have the same form (call it `F`), which we can define as: 
-
+  
   ```F(a, b, n) = a * fib(n) + b * fib(n + 1)```
-
+  
   In fact, we can write equation 3) as:
   ```
   3.    F(a, b, n + 1) = F(b, a + b, n)
@@ -47,18 +47,18 @@ vc-description: |-
   ```
   5.    fib(n) = F(1, 0, n)
   ```
-
+  
   The next step is to translate the above into code:
   ```
   def fib(n):
-
+  
       def F(a, b, n):
           if n == 0: return a + b    # see 4. above
           return F(b, a + b, n - 1)  # see 3. above
-
+  
       return F(1, 0, n)              # see 5. above
   ```
-
+  
   The final step (optional for languages that support tail call optimization) is to replace the tail recursive function `F` with a loop:
   ```
   def fib(n):
@@ -68,54 +68,56 @@ vc-description: |-
       return a + b .                 # see 4. above
   ```
   Voila! Now, go do the same with `fusc`.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
+
 vc-definitions: |-
   def fusc (n : Nat) : Nat := sorry
-
+  
   @[simp]
-vc-theorems: |
+
+vc-theorems: |-
   theorem fusc_zero : fusc 0 = 0 := sorry
-
+  
   @[simp] 
-
+  
   theorem fusc_one : fusc 1 = 1 := sorry
-
+  
   theorem fusc_non_negative (n : Nat) : 
     fusc n ≥ 0 := sorry
-
-
+  
   theorem fusc_double (n : Nat) :
     fusc (2 * n) = fusc n := sorry 
-
-
+  
   theorem fusc_odd (n : Nat) :
     fusc (2 * n + 1) = fusc n + fusc (n + 1) := sorry
-
-
+  
   theorem fusc_consecutive_coprime (n : Nat) :
     Nat.gcd (fusc n) (fusc (n + 1)) = 1 := sorry
-
+  
   /--
   info: 0
   -/
   #guard_msgs in
   #eval fusc 0
-
+  
   /--
   info: 1
   -/
   #guard_msgs in
   #eval fusc 1
-
+  
   /--
   info: 21
   -/
   #guard_msgs in
   #eval fusc 85
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
+

@@ -1,15 +1,15 @@
 vc-description: |-
   < PREVIOUS KATA
   NEXT KATA >
-
+  
   ## Task:
-
+  
   You have to write a function `pattern` which returns the following Pattern(See Examples) upto desired number of rows. 
-
+  
   * Note:`Returning` the pattern is not the same as `Printing` the pattern.
-
+  
   ## Parameters:
-      
+  
       pattern(        n        ,        y        );
                       ^                 ^         
                       |                 |         
@@ -18,11 +18,11 @@ vc-description: |-
                   should be         should be     
                    created          repeated      
                                    vertically    
-      
+  
   * Note: `Basic Pattern` means what we created in Complete The Pattern #12 i.e. a `simple X`.
-
+  
   ## Rules/Note:
-
+  
   * The pattern should be created using only unit digits.
   * If `n < 1` then it should return "" i.e. empty string.
   * If `y <= 1` then the basic pattern should not be repeated vertically.
@@ -32,14 +32,13 @@ vc-description: |-
     + `y ∈ (-∞,25]`
   * If only one argument is passed then the function `pattern` should run as if `y <= 1`.
   * The function `pattern` should work when extra arguments are passed, by ignoring the extra arguments.
-     
-     
+  
   ## Examples:
-
+  
   #### Having Two Arguments:
-
+  
   ##### pattern(4,3):
-
+  
           1     1
            2   2 
             3 3  
@@ -59,9 +58,9 @@ vc-description: |-
             3 3  
            2   2 
           1     1
-         
+  
   ##### pattern(10,2):
-
+  
           1                 1
            2               2 
             3             3  
@@ -99,13 +98,11 @@ vc-description: |-
             3             3  
            2               2 
           1                 1
-
-
-
+  
   #### Having Only One Argument:
-
+  
   ##### pattern(25):
-
+  
           1                                               1
            2                                             2 
             3                                           3  
@@ -155,23 +152,24 @@ vc-description: |-
             3                                           3  
            2                                             2 
           1                                               1
-          
-          
+  
   >>>LIST OF ALL MY KATAS<<<
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def pattern (n : Nat) (y : Nat := 1) : String := sorry
 
+vc-definitions: |-
+  def pattern (n : Nat) (y : Nat := 1) : String := sorry
+  
   def stringToNat (s : String) : Nat := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem pattern_empty (n : Nat) :
     (n = 0 ∨ n < 0) → pattern n = "" := sorry
-
-
+  
   theorem pattern_basic_properties (n : Nat) (h : 0 < n ∧ n ≤ 9) :
     let result := pattern n
     let lines := result.splitOn "\n"
@@ -180,8 +178,7 @@ vc-theorems: |
     lines.get! 0 = lines.get! (lines.length - 1) ∧
     (lines.get! 0).contains '1' ∧
     (lines.get! (n-1)).contains ((toString n).data.get! 0) := sorry
-
-
+  
   theorem pattern_repetition (n y : Nat) (h1 : 0 < n ∧ n ≤ 5) (h2 : 0 < y ∧ y ≤ 3) :
     let result := pattern n y
     let lines := result.splitOn "\n"
@@ -189,24 +186,26 @@ vc-theorems: |
     lines.get! 0 = lines.get! (lines.length - 1) ∧
     (lines.get! 0).contains '1' ∧
     matchingLines.length ≥ y := sorry
-
+  
   /--
   info: ''
   -/
   #guard_msgs in
   #eval pattern 0
-
+  
   /--
   info: expected
   -/
   #guard_msgs in
   #eval pattern 3
-
+  
   /--
   info: expected
   -/
   #guard_msgs in
   #eval pattern 2 2
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

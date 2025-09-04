@@ -3,7 +3,7 @@ vc-description: |-
   Like-time coefficient of a dish is defined as the time taken to cook that dish including previous dishes multiplied by its satisfaction level  i.e.  time[i]*satisfaction[i]
   Return the maximum sum of Like-time coefficient that the chef can obtain after dishes preparation.
   Dishes can be prepared in any order and the chef can discard some dishes to get this maximum value.
-   
+  
   Example 1:
   Input: satisfaction = [-1,-8,0,5,-9]
   Output: 14
@@ -12,75 +12,73 @@ vc-description: |-
   Input: satisfaction = [4,3,2]
   Output: 20
   Explanation: Dishes can be prepared in any order, (2*1 + 3*2 + 4*3 = 20)
-
+  
   Example 3:
   Input: satisfaction = [-1,-4,-5]
   Output: 0
   Explanation: People don't like the dishes. No dish is prepared.
-
+  
   Example 4:
   Input: satisfaction = [-2,5,-1,0,3,-3]
   Output: 35
-
-   
+  
   Constraints:
-
+  
   n == satisfaction.length
   1 <= n <= 500
   -10^3 <= satisfaction[i] <= 10^3
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def max_satisfaction (satisfaction : List Int) : Int :=
     sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem max_satisfaction_nonnegative
     (satisfaction : List Int) :
     max_satisfaction satisfaction ≥ 0 :=
     sorry
-
-
+  
   theorem max_satisfaction_empty :
     max_satisfaction [] = 0 :=
     sorry
-
-
-
-
+  
   theorem max_satisfaction_single_zero :
     max_satisfaction [0] = 0 :=
     sorry
-
-
+  
   theorem max_satisfaction_single_positive :
     max_satisfaction [1] = 1 :=
     sorry
-
-
+  
   theorem max_satisfaction_single_negative :
     max_satisfaction [-1] = 0 :=
     sorry
-
+  
   /--
   info: 14
   -/
   #guard_msgs in
   #eval max_satisfaction [-1, -8, 0, 5, -9]
-
+  
   /--
   info: 20
   -/
   #guard_msgs in
   #eval max_satisfaction [4, 3, 2]
-
+  
   /--
   info: 35
   -/
   #guard_msgs in
   #eval max_satisfaction [-2, 5, -1, 0, 3, -3]
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
+

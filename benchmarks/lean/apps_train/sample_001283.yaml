@@ -3,16 +3,16 @@ vc-description: |-
   Sergey wants to buy N meals, which he had enumerated by integers from 1 to N. He knows that the meal i costs Ci rubles. He also knows that there are M meal sets in the restaurant.
   The meal set is basically a set of meals, where you pay Pj burles and get Qj meals - Aj, 1, Aj, 2, ..., Aj, Qj.
   Sergey has noticed that sometimes he can save money by buying the meals in the meal sets instead of buying each one separately. And now he is curious about what is the smallest amount of rubles he needs to spend to have at least one portion of each of the meals.
-
+  
   -----Input-----
   The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
   The first line of each test case contains a pair of integer numbers N and M denoting the number of meals and the number of the meal sets.
   The second line contains N space-separated integers C1, C2, ..., CN denoting the costs of the meals, bought separately.
   Each of the following M lines starts with a pair of integer numbers Pi and Qi, denoting the cost of the meal set and the number of meals in it, followed with the integer numbers Ai, 1 Ai, 2, ..., Ai, Qi denoting the meal numbers.
-
+  
   -----Output-----
   For each test case, output a single line containing the minimal total amount of money Sergey needs to spend in order to have at least one portion of each meal.
-
+  
   -----Constraints-----
   - 1 ≤ Pi, Ci ≤ 106
   - 1 ≤ M ≤ min{2N, 2 × 100000}
@@ -20,7 +20,7 @@ vc-description: |-
   - Subtask 1 (16 points): 1 ≤ T ≤ 103, 1 ≤ N ≤ 8
   - Subtask 2 (23 points): For each test file, either 1 ≤ T ≤ 10, 1 ≤ N ≤ 12 or the constraints for Subtask 1 are held.
   - Subtask 3 (61 points): For each test file, either T = 1, 1 ≤ N ≤ 18 or the constraints for Subtask 1 or 2 are held.
-
+  
   -----Example-----
   Input:1
   3 3
@@ -28,30 +28,31 @@ vc-description: |-
   11 3 1 2 3
   5 2 1 2
   5 2 1 3
-
+  
   Output:10
-
+  
   -----Explanation-----
   Example case 1. If Sergey buys all the meals separately, it would cost him 3 + 5 + 6 = 14 rubles. He can buy all of them at once by buying the first meal set, which costs for 11 rubles, but the optimal strategy would be either to buy the second and the third meal set, thus, paying 5 + 5 = 10 rubles, or to buy the third meal set and the second meal separately by paying the same amount of 10 rubles.
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def List.sum : List Nat → Nat 
     | [] => 0
     | x::xs => x + List.sum xs
-
-
+  
   def min_in_list : List Nat → Nat → Nat
     | [], default => default
     | [x], _ => x
     | x::xs, default => min x (min_in_list xs default)
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def solve_meal_sets (n m : Nat) (costs : List Nat) (meal_sets : List (List Nat)) : Nat :=
   sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem solve_meal_sets_basic_properties 
     (n : Nat) (costs : List Nat) (meal_costs : List Nat) :
     n > 0 → n ≤ 5 →
@@ -63,8 +64,7 @@ vc-theorems: |
     let result := solve_meal_sets n m costs meal_sets 
     result > 0 ∧ result ≤ List.sum costs := by
     sorry
-
-
+  
   theorem solve_meal_sets_bounded_by_min
     (n : Nat) (costs : List Nat) (meal_costs : List Nat) :
     n > 0 → n ≤ 5 →
@@ -76,47 +76,46 @@ vc-theorems: |
     let result := solve_meal_sets n m costs meal_sets
     result ≤ min (List.sum costs) (min_in_list meal_costs (List.sum costs)) := by
     sorry
-
-
+  
   theorem solve_meal_sets_empty_meals
     (costs : List Nat) :
     costs = [4, 5] →
     solve_meal_sets 2 0 costs [] = 9 := by
     sorry
-
-
+  
   theorem solve_meal_sets_single_optimal_meal
     (costs : List Nat) (meal_sets : List (List Nat)) :
     costs = [10] →
     meal_sets = [[5, 1, 1]] →
     solve_meal_sets 1 1 costs meal_sets = 5 := by
     sorry
-
-
+  
   theorem solve_meal_sets_two_items_optimal_meal
     (costs : List Nat) (meal_sets : List (List Nat)) :
     costs = [10, 10] →
     meal_sets = [[15, 2, 1, 2]] →
     solve_meal_sets 2 1 costs meal_sets = 15 := by
     sorry
-
+  
   /--
   info: 10
   -/
   #guard_msgs in
   #eval solve_meal_sets 3 3 [3, 5, 6] [[11, 3, 1, 2, 3], [5, 2, 1, 2], [5, 2, 1, 3]]
-
+  
   /--
   info: 7
   -/
   #guard_msgs in
   #eval solve_meal_sets 2 1 [4, 5] [[7, 2, 1, 2]]
-
+  
   /--
   info: 8
   -/
   #guard_msgs in
   #eval solve_meal_sets 1 1 [10] [[8, 1, 1]]
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+

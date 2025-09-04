@@ -1,51 +1,55 @@
 vc-description: |-
   In this Kata, you will be given a multi-dimensional array containing `2 or more` sub-arrays of integers. Your task is to find the maximum product that can be formed by taking any one element from each sub-array.
-
+  
   ```
   Examples:
   solve( [[1, 2],[3, 4]] ) = 8. The max product is given by 2 * 4
   solve( [[10,-15],[-1,-3]] ) = 45, given by (-15) * (-3)
   solve( [[1,-1],[2,3],[10,-100]] ) = 300, given by (-1) * 3 * (-100)
   ```
-
+  
   More examples in test cases. Good luck!
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def solve (nums : List (List Int)) : Int :=
     sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem solve_positive_only {nums : List (List Int)}
     (h : ∀ l ∈ nums, ∀ x ∈ l, 0 ≤ x ∧ x ≤ 100) :
     solve nums = (nums.map (List.foldl max 0)).foldl (· * ·) 1 :=
   sorry
-
-
+  
   theorem solve_unit_arrays {nums : List (List Int)}
     (h : ∀ l ∈ nums, l = [1]) :
     solve nums = 1 :=
   sorry
-
+  
   /--
   info: 8
   -/
   #guard_msgs in
   #eval solve [[1, 2], [3, 4]]
-
+  
   /--
   info: 45
   -/
   #guard_msgs in
   #eval solve [[10, -15], [-1, -3]]
-
+  
   /--
   info: 12
   -/
   #guard_msgs in
   #eval solve [[-1, 2, -3, 4], [1, -2, 3, -4]]
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
+

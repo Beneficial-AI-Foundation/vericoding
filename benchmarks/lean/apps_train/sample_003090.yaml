@@ -5,24 +5,25 @@ vc-description: |-
    "(p1**n1)(p2**n2)...(pk**nk)"
   ```
   where ```a ** b``` means ```a``` to the power of ```b```
-
+  
   with the p(i) in increasing order and n(i) empty if
   n(i) is 1.
   ```
   Example: n = 86240 should return "(2**5)(5)(7**2)(11)"
   ```
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def is_prime (n : Nat) : Bool := sorry
-
+  
   def get_factors (n : Nat) : List Nat := sorry
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def prime_factors (n : Nat) : String := sorry
 
+vc-definitions: |-
+  def prime_factors (n : Nat) : String := sorry
+  
   theorem prime_factors_valid_format (n : Nat) (h : n ≥ 2) :
     let result := prime_factors n
     ∀ part : String,
@@ -35,6 +36,7 @@ vc-definitions: |
      (¬String.contains part '*' →
       part.toNat?.isSome ∧
       is_prime part.toNat!)) := sorry
+
 vc-theorems: |-
   theorem prime_factors_preserves_value (n : Nat) (h : n ≥ 2) :
     let result := prime_factors n
@@ -50,14 +52,14 @@ vc-theorems: |-
         else acc * part.trim.toNat!)
       1
     reconstructed = n := sorry
-
-
+  
   theorem prime_number_input (p : Nat) (h₁ : p ≥ 2) (h₂ : is_prime p) :
     prime_factors p = s!"({p})" := sorry
-
-
+  
   theorem powers_of_two (n : Nat) (h : n ≥ 1) :
     prime_factors (2^n) = s!"(2**{n})" := sorry
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
+

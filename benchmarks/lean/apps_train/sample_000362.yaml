@@ -9,29 +9,29 @@ vc-description: |-
   Output: 2
   Explanation: 
   The best strategy is take the first bus to the bus stop 7, then take the second bus to the bus stop 6.
-
-   
+  
   Constraints:
-
+  
   1 <= routes.length <= 500.
   1 <= routes[i].length <= 10^5.
   0 <= routes[i][j] < 10 ^ 6.
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def numBusesToDestination (routes: List (List Nat)) (source: Nat) (target: Nat) : Int :=
     sorry
-
-
+  
   def findMaxInList (l: List Nat) : Nat :=
     sorry
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def findMaxInRoutes (routes: List (List Nat)) : Nat :=
     sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem impossible_path_property
     (routes: List (List Nat))
     (h: routes ≠ [])
@@ -39,8 +39,7 @@ vc-theorems: |
     let maxStop := findMaxInRoutes routes
     numBusesToDestination routes 0 (maxStop + 1) = -1 :=
   sorry
-
-
+  
   theorem result_range_property
     (routes: List (List Nat))
     (h: routes ≠ [])
@@ -52,31 +51,32 @@ vc-theorems: |
     (h4: routeEnd ∈ route) :
     numBusesToDestination routes start routeEnd ≥ -1 := 
   sorry
-
-
+  
   theorem empty_routes_property
     (routes: List (List Nat))
     (h: routes = [] ∨ routes = [[]]) :
     numBusesToDestination routes 1 2 = -1 := 
   sorry
-
+  
   /--
   info: 2
   -/
   #guard_msgs in
   #eval numBusesToDestination [[1, 2, 7], [3, 6, 7]] 1 6
-
+  
   /--
   info: 2
   -/
   #guard_msgs in
   #eval numBusesToDestination [[1, 2, 3], [3, 4, 5]] 1 5
-
+  
   /--
   info: 3
   -/
   #guard_msgs in
   #eval numBusesToDestination [[1, 2], [2, 3], [3, 4]] 1 4
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+

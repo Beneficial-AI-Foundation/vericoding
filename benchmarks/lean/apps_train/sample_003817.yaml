@@ -1,24 +1,27 @@
 vc-description: |-
   Given a string of words, you need to find the highest scoring word.
-
+  
   Each letter of a word scores points according to its position in the alphabet: `a = 1, b = 2, c = 3` etc.
-
+  
   You need to return the highest scoring word as a string.
-
+  
   If two words score the same, return the word that appears earliest in the original string.
-
+  
   All letters will be lowercase and all inputs will be valid.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def high (s : String) : String := sorry
 
+vc-definitions: |-
+  def high (s : String) : String := sorry
+  
   def wordScore (word : String) : Nat :=
     sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem high_gives_highest_score_word (text : String) : 
     text ≠ "" → (∀ c ∈ text.data, c = ' ' ∨ (97 ≤ c.val ∧ c.val ≤ 122)) →
     let words := text.split (· = ' ')
@@ -28,38 +31,38 @@ vc-theorems: |
     result ∈ words ∧ 
     ∀ w ∈ words, wordScore result ≥ wordScore w := by
     sorry
-
-
+  
   theorem high_single_word (word : String) :
     word ≠ "" →
     (∀ c ∈ word.data, 97 ≤ c.val ∧ c.val ≤ 122) →
     high word = word := by
     sorry
-
-
+  
   theorem high_only_spaces (text : String) :
     text ≠ "" →
     (∀ c ∈ text.data, c = ' ') →
     ¬∃ result, result = high text := by
     sorry
-
+  
   /--
   info: 'taxi'
   -/
   #guard_msgs in
   #eval high "man i need a taxi up to ubud"
-
+  
   /--
   info: 'volcano'
   -/
   #guard_msgs in
   #eval high "what time are we climbing up the volcano"
-
+  
   /--
   info: 'semynak'
   -/
   #guard_msgs in
   #eval high "take me to semynak"
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

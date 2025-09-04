@@ -1,37 +1,42 @@
 vc-description: |-
   Create a combat function that takes the player's current health and the amount of damage recieved, and returns the player's new health.
   Health can't be less than 0.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
+
 vc-definitions: |-
   def combat (health damage : Int) : Int := sorry
-
+  
   theorem combat_positive_inputs (health damage : Int) 
     (h₁ : health ≥ 0) (h₂ : damage ≥ 0) : 
     combat health damage = max 0 (health - damage) ∧ 
     combat health damage ≥ 0 := 
     sorry
-vc-theorems: |
+
+vc-theorems: |-
   /--
   info: 95
   -/
   #guard_msgs in
   #eval combat 100 5
-
+  
   /--
   info: 67
   -/
   #guard_msgs in
   #eval combat 83 16
-
+  
   /--
   info: 0
   -/
   #guard_msgs in
   #eval combat 20 30
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
+

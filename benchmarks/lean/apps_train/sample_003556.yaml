@@ -1,65 +1,67 @@
 vc-description: |-
   There were and still are many problem in CW about palindrome numbers and palindrome strings. We suposse that you know which kind of numbers they are. If not, you may search about them using your favourite search engine.
-
+  
   In this kata you will be given a positive integer, ```val``` and you have to create the function ```next_pal()```(```nextPal``` Javascript) that will output the smallest palindrome number higher than ```val```.
-
+  
   Let's see:
   ```python
   For Python
   next_pal(11) == 22
-
+  
   next_pal(188) == 191
-
+  
   next_pal(191) == 202
-
+  
   next_pal(2541) == 2552
   ```
-
+  
   You will be receiving values higher than 10, all valid.
-
+  
   Enjoy it!!
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def next_pal (n: Nat) : Nat := sorry
 
+vc-definitions: |-
+  def next_pal (n: Nat) : Nat := sorry
+  
   def isPalindrome (n: Nat) : Bool := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem next_pal_is_palindrome (n: Nat) (h: n ≤ 10^6) : 
     isPalindrome (next_pal n) = true := sorry
-
-
+  
   theorem next_pal_is_greater (n: Nat) (h: n ≤ 10^6) :
     next_pal n > n := sorry
-
-
+  
   theorem next_pal_is_minimal (n: Nat) (h: n ≤ 10^6) :
     ∀ m, n < m ∧ m < next_pal n → isPalindrome m = false := sorry
-
-
+  
   theorem next_pal_idempotent (n: Nat) (h: n ≤ 10^6) :
     next_pal (next_pal n) > next_pal n := sorry
-
+  
   /--
   info: 22
   -/
   #guard_msgs in
   #eval next_pal 11
-
+  
   /--
   info: 191
   -/
   #guard_msgs in
   #eval next_pal 188
-
+  
   /--
   info: 202
   -/
   #guard_msgs in
   #eval next_pal 191
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
+

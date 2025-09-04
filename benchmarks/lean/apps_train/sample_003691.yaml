@@ -1,24 +1,24 @@
 vc-description: |-
   < PREVIOUS KATA
   NEXT KATA >
-   
+  
   ###Task:
-
+  
   You have to write a function `pattern` which returns the following Pattern(See Examples) upto (3n-2) rows, where n is parameter.
-
+  
   * Note:`Returning` the pattern is not the same as `Printing` the pattern.
-
+  
   ####Rules/Note:
   * The pattern should be created using only unit digits.
   * If `n < 1` then it should return "" i.e. empty string.
   * `The length of each line is same`, and is equal to the length of longest line in the pattern i.e. `length = (3n-2)`.
   * Range of Parameters (for the sake of CW Compiler) :
     + `n ∈ (-∞,50]`
-
+  
   ###Examples:
-
+  
     + pattern(5) :
-
+  
               11111    
               22222    
               33333    
@@ -32,9 +32,9 @@ vc-description: |-
               33333    
               22222    
               11111    
-          
+  
     + pattern(11):
-
+  
                     11111111111          
                     22222222222          
                     33333333333          
@@ -66,57 +66,59 @@ vc-description: |-
                     33333333333          
                     22222222222          
                     11111111111          
-                    
+  
   >>>LIST OF ALL MY KATAS<<<
+
 vc-preamble: |-
-  import Imports.AllImports
-
   def pattern (n : Nat) : String := sorry 
-
+  
   def isSingleDigit (c: Char) : Bool :=
     '0' ≤ c ∧ c ≤ '9'
-
-
+  
   def stringContainsSubstr (s : String) (substr : String) : Bool := sorry
   def stringContainsChar (s : String) (c : Char) : Bool := sorry
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def stringRepeat (n : Nat) (s : String) : String := sorry
 
+vc-definitions: |-
+  def stringRepeat (n : Nat) (s : String) : String := sorry
+  
   theorem non_positive_input_returns_empty_string {n : Int} (h : n ≤ 0) :
     pattern n.toNat = "" := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem single_digit_correct {n : Nat} (h1 : n ≥ 1) (h2 : n ≤ 9) :
     let lines := (pattern n).splitOn "\n"
     let middle := lines.get! (n-1)
     (∀ i : Nat, 1 ≤ i ∧ i < n → stringContainsSubstr middle (toString i)) ∧
     stringContainsSubstr middle (stringRepeat n (toString n)) := sorry
-
-
+  
   theorem double_digit_wrapping {n : Nat} (h1 : n ≥ 10) (h2 : n ≤ 100) :
     let lines := (pattern n).splitOn "\n"
     let middle := lines.get! (n-1)
     ∀ c ∈ middle.data, isSingleDigit c := sorry
-
+  
   /--
   info: expected1
   -/
   #guard_msgs in
   #eval pattern 3
-
+  
   /--
   info: expected2
   -/
   #guard_msgs in
   #eval pattern 5
-
+  
   /--
   info: ''
   -/
   #guard_msgs in
   #eval pattern -3
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

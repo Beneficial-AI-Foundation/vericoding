@@ -1,7 +1,7 @@
 vc-description: |-
   Given two integer arrays arr1 and arr2, and the integer d, return the distance value between the two arrays.
   The distance value is defined as the number of elements arr1[i] such that there is not any element arr2[j] where |arr1[i]-arr2[j]| <= d.
-   
+  
   Example 1:
   Input: arr1 = [4,5,8], arr2 = [10,9,1,8], d = 2
   Output: 2
@@ -21,74 +21,73 @@ vc-description: |-
   |8-9|=1 <= d=2
   |8-1|=7 > d=2
   |8-8|=0 <= d=2
-
+  
   Example 2:
   Input: arr1 = [1,4,2,3], arr2 = [-4,-3,6,10,20,30], d = 3
   Output: 2
-
+  
   Example 3:
   Input: arr1 = [2,1,100,3], arr2 = [-5,-2,10,-3,7], d = 6
   Output: 1
-
-   
+  
   Constraints:
-
+  
   1 <= arr1.length, arr2.length <= 500
   -10^3 <= arr1[i], arr2[j] <= 10^3
   0 <= d <= 100
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def find_distance_value (arr1 arr2 : List Int) (d : Nat) : Nat := sorry
-
+  
   theorem find_distance_value_non_negative 
     (arr1 arr2 : List Int) (d : Nat) 
     (h1 : arr1 ≠ []) (h2 : arr2 ≠ []) :
     find_distance_value arr1 arr2 d ≥ 0 := sorry
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |+
+
+vc-definitions: |-
   def abs (x : Int) : Int :=
     if x ≥ 0 then x else -x
 
-
-vc-theorems: |
+vc-theorems: |-
   theorem find_distance_value_bounded 
     (arr1 arr2 : List Int) (d : Nat)
     (h1 : arr1 ≠ []) (h2 : arr2 ≠ []) :
     find_distance_value arr1 arr2 d ≤ arr1.length := sorry
-
-
+  
   theorem find_distance_value_empty_arr2
     (arr1 : List Int) (d : Nat)  
     (h : arr1 ≠ []) :
     find_distance_value arr1 [] d = arr1.length := sorry
-
-
+  
   theorem find_distance_value_zero_distance
     (arr1 arr2 : List Int)
     (h1 : arr1 ≠ []) (h2 : arr2 ≠ []) :  
     find_distance_value arr1 arr2 0 = 
       (arr1.filter (fun x => x ∉ arr2)).length := sorry
-
+  
   /--
   info: 2
   -/
   #guard_msgs in
   #eval find_distance_value [4, 5, 8] [10, 9, 1, 8] 2
-
+  
   /--
   info: 2
   -/
   #guard_msgs in
   #eval find_distance_value [1, 4, 2, 3] [-4, -3, 6, 10, 20, 30] 3
-
+  
   /--
   info: 1
   -/
   #guard_msgs in
   #eval find_distance_value [2, 1, 100, 3] [-5, -2, 10, -3, 7] 6
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
+

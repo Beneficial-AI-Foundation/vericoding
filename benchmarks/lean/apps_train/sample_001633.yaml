@@ -1,76 +1,73 @@
 vc-description: |-
   Your task is the exact same as for the easy version. But this time, the marmots subtract the village's population P from their random number before responding to Heidi's request.
-
+  
   Also, there are now villages with as few as a single inhabitant, meaning that $1 \leq P \leq 1000$.
-
+  
   Can you help Heidi find out whether a village follows a Poisson or a uniform distribution?
-
-
+  
   -----Input-----
-
+  
   Same as for the easy and medium versions. But remember that now 1 ≤ P ≤ 1000 and that the marmots may provide positive as well as negative integers.
-
-
+  
   -----Output-----
-
+  
   Output one line per village, in the same order as provided in the input. The village's line shall state poisson if the village's distribution is of the Poisson type, and uniform if the answers came from a uniform distribution.
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def identify_distribution (samples : List Int) : String :=
     sorry
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def isValidDistribution (s : String) : Bool :=
     s = "uniform" || s = "poisson"
-vc-theorems: |
+
+vc-theorems: |-
   theorem identify_distribution_valid (samples : List Int) 
     (h : samples.length ≥ 2) :
     isValidDistribution (identify_distribution samples) := sorry
-
-
+  
   theorem identify_distribution_deterministic (samples : List Int) :
     identify_distribution samples = identify_distribution samples := sorry
-
-
+  
   theorem identify_distribution_uniform (samples : List Int) :
     samples.length ≥ 2 → identify_distribution samples = "uniform" := sorry
-
-
+  
   theorem identify_distribution_poisson (samples : List Int) : 
     samples.length ≥ 2 → identify_distribution samples = "poisson" := sorry
-
-
+  
   theorem identify_distribution_scale_invariant (samples : List Int) 
     (scale : Int) (h : scale ≠ 0) :
     identify_distribution samples = 
     identify_distribution (samples.map (· * scale)) := sorry
-
-
+  
   theorem identify_distribution_order_invariant (samples₁ samples₂ : List Int)
     (h : samples₁.length = samples₂.length) 
     (h2 : ∀ x, x ∈ samples₁ ↔ x ∈ samples₂) :
     identify_distribution samples₁ = identify_distribution samples₂ := sorry
-
+  
   /--
   info: 'poisson'
   -/
   #guard_msgs in
   #eval identify_distribution [1, 2, 3, 2, 1]
-
+  
   /--
   info: 'poisson'
   -/
   #guard_msgs in
   #eval identify_distribution [10, 8, 9, 8, 12]
-
+  
   /--
   info: 'poisson'
   -/
   #guard_msgs in
   #eval identify_distribution [-5, -4, -3, -4, -5]
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+

@@ -11,25 +11,25 @@ vc-description: |-
   - grade B for score greater or equal to $y$, but smaller than $z$
   - grade A for score greater or equal to $z$
   Your task is to find thresholds $x$, $y$ and $z$ that result in a perfect balance of grades. If there are multiple solutions, choose the one with the maximum value of $x+y+z$ (because coach Khaled wants seem smarter than his students); it can be proved that there is at most one such solution. Sometimes, there is no way to choose the thresholds and coach Khaled would resign because his exam questions were low-quality.
-
+  
   -----Input-----
   - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
   - The first line of each test case contains a single integer $N$.
   - The second line contains $N$ space-separated integers $A_1, A_2, \ldots, A_N$.
-
+  
   -----Output-----
   For each test case, if there is no solution, print a single line containing the integer $-1$; otherwise, print a single line containing three space-separated integers $x$, $y$ and $z$.
-
+  
   -----Constraints-----
   - $1 \le T \le 1,000$
   - $4 \le N \le 100$
   - $N$ is divisible by $4$
   - $0 \le A_i \le 100$ for each valid $i$
   - the sum of $N$ over all test cases does not exceed $5,000$
-
+  
   -----Subtasks-----
   Subtask #1 (100 points): original constraints
-
+  
   -----Example Input-----
   6
   4
@@ -44,7 +44,7 @@ vc-description: |-
   30 30 40 50
   4
   30 40 40 50
-
+  
   -----Example Output-----
   60 75 90
   -1
@@ -52,18 +52,20 @@ vc-description: |-
   -1
   -1
   -1
-
+  
   -----Explanation-----
   Example case 1: The default distribution is the correct one.
   Example case 4: All students have the same score and grade, so there is no way to choose the thresholds and coach Khaled must resign.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def solve_grading_thresholds (n : Nat) (scores : List Nat) : String := sorry
 
+vc-definitions: |-
+  def solve_grading_thresholds (n : Nat) (scores : List Nat) : String := sorry
+  
   theorem valid_score_thresholds (n : Nat) (scores : List Nat)
     (h_n : n ∈ [4, 8, 12, 16, 20])
     (h_scores : ∀ x ∈ scores, x ≤ 100)
@@ -76,7 +78,8 @@ vc-definitions: |
       b = (scores.toArray.qsort (· ≤ ·)).toList.get! (2*n/4) ∧  
       c = (scores.toArray.qsort (· ≤ ·)).toList.get! (3*n/4)
     else True := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem duplicate_scores_invalid (n : Nat) (base_score : Nat)
     (h_n : n ∈ [4, 8, 12, 16])
     (h_base : base_score ≤ 100) :
@@ -84,24 +87,26 @@ vc-theorems: |
     let dup_val := scores.get! ((n/4)-1)
     let scores_with_dup := scores.take (n/4) ++ [dup_val] ++ scores.drop (n/4 + 1)
     solve_grading_thresholds n scores_with_dup = "-1" := sorry
-
+  
   /--
   info: '60 75 90'
   -/
   #guard_msgs in
   #eval solve_grading_thresholds 4 #[90, 25, 60, 75]
-
+  
   /--
   info: '1 2 3'
   -/
   #guard_msgs in
   #eval solve_grading_thresholds 4 #[0, 1, 2, 3]
-
+  
   /--
   info: '-1'
   -/
   #guard_msgs in
   #eval solve_grading_thresholds 4 #[30, 30, 40, 50]
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+

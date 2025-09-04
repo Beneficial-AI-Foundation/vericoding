@@ -4,11 +4,10 @@ vc-description: |-
   The system will count the number of customers and when the n-th customer arrive he/she will have a discount on the bill. (i.e if the cost is x the new cost is x - (discount * x) / 100). Then the system will start counting customers again.
   The customer orders a certain amount of each product where product[i] is the id of the i-th product the customer ordered and amount[i] is the number of units the customer ordered of that product.
   Implement the Cashier class:
-
+  
   Cashier(int n, int discount, int[] products, int[] prices) Initializes the object with n, the discount, the products and their prices.
   double getBill(int[] product, int[] amount) returns the value of the bill and apply the discount if needed. Answers within 10^-5 of the actual value will be accepted as correct.
-
-   
+  
   Example 1:
   Input
   ["Cashier","getBill","getBill","getBill","getBill","getBill","getBill","getBill"]
@@ -24,10 +23,9 @@ vc-description: |-
   cashier.getBill([7,3],[10,10]);                      // return 4000.0
   cashier.getBill([7,5,3,1,6,4,2],[10,10,10,9,9,9,7]); // return 7350.0, Bill was 14700.0 but as the system counted three more customers, he will have a 50% discount and the bill becomes 7350.0
   cashier.getBill([2,3,5],[5,3,2]);                    // return 2500.0
-
-   
+  
   Constraints:
-
+  
   1 <= n <= 10^4
   0 <= discount <= 100
   1 <= products.length <= 200
@@ -41,33 +39,35 @@ vc-description: |-
   1 <= amount[i] <= 1000
   At most 1000 calls will be made to getBill.
   Answers within 10^-5 of the actual value will be accepted as correct.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def Cashier.getBill (c: Cashier) (selected_products: List Nat) (amounts: List Nat) : Nat :=
     sorry
+
 vc-theorems: |-
   theorem cashier_initialization_n {n disc prods prices : Nat} (c : Cashier) :
     c.n = n → c.n > 0 :=
   sorry
-
-
+  
   theorem cashier_initialization_discount {n disc prods prices: Nat} (c : Cashier) :
     c.discount = disc → c.discount ≥ 0 ∧ c.discount ≤ 100 :=
   sorry
-
-
+  
   theorem cashier_products_nonempty {n disc : Nat} {prods prices : List Nat} (c : Cashier) :
     c.products.length > 0 :=
   sorry
-
-
+  
   theorem bill_nonnegative {n disc : Nat} {prods prices selected amounts : List Nat} (c : Cashier) :
     c.getBill selected amounts ≥ 0 := 
   sorry
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+

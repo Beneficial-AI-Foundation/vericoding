@@ -5,77 +5,78 @@ vc-description: |-
   You are supposed to find the total atomic weight of the element represented by the given formula.
   For example, for the formula $(x_2y_2)_3z$, given string $S$ will be: $(x2y2)3z$. Hence, substituting values of x, y and z, total atomic weight will be 
   $(2*2+4*2)*3 + 10 = 46$.
-
+  
   -----Input:-----
   - First line will contain $T$, number of testcases. Then the testcases follow. 
   - Each testcase contains of a single line of input $S$. 
-
+  
   -----Output:-----
   For each testcase, output in a single line, the total atomic weight.
-
+  
   -----Constraints-----
   - $1 \leq T \leq 100$
   - Length of string $S \leq 100$
   - String contains $x, y, z, 1, 2,..., 9$ and parenthesis
-
+  
   -----Sample Input:-----
   2
   (xy)2
   x(x2y)3(z)2
-
+  
   -----Sample Output:-----
   12
   46
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def solve_atomic_weight (f : ChemicalFormula) : Nat :=
     sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem atomic_weight_positive (f : ChemicalFormula) :
     solve_atomic_weight f > 0 := by
     sorry
-
-
+  
   theorem atomic_weight_consistent (f : ChemicalFormula) :
     solve_atomic_weight f = solve_atomic_weight f := by
     sorry
-
-
+  
   theorem atomic_weight_x :
     solve_atomic_weight ⟨"x"⟩ = 2 := by
     sorry
-
-
+  
   theorem atomic_weight_y :
     solve_atomic_weight ⟨"y"⟩ = 4 := by
     sorry
-
-
+  
   theorem atomic_weight_z :
     solve_atomic_weight ⟨"z"⟩ = 10 := by
     sorry
-
+  
   /--
   info: 12
   -/
   #guard_msgs in
   #eval solve_atomic_weight "(xy)2"
-
+  
   /--
   info: 46
   -/
   #guard_msgs in
   #eval solve_atomic_weight "x(x2y)3(z)2"
-
+  
   /--
   info: 16
   -/
   #guard_msgs in
   #eval solve_atomic_weight "xyz"
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+

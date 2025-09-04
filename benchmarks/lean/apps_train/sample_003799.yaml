@@ -1,63 +1,66 @@
 vc-description: |-
   Write a function that reverses the bits in an integer.
-
+  
   For example, the number `417` is `110100001` in binary. Reversing the binary is `100001011` which is `267`.
-
+  
   You can assume that the number is not negative.
+
 vc-preamble: |-
-  import Imports.AllImports
-
   def reverse_bits (n : Nat) : Nat := sorry
-
+  
   -- Result is non-negative (trivial in Lean since Nat is used)
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
+
 vc-definitions: |-
   def count_ones (n : Nat) : Nat := sorry
-
+  
   -- Number of 1 bits is preserved
-vc-theorems: |
+
+vc-theorems: |-
   theorem reverse_bits_nonneg (n : Nat) :
     reverse_bits n ≥ 0 := sorry
-
+  
   -- Helper function to count ones
-
+  
   theorem reverse_bits_preserves_ones (n : Nat) (h : n < 2^32) :
     count_ones n = count_ones (reverse_bits n) := sorry 
-
+  
   -- Power of 2 input results in power of 2 output
-
+  
   theorem reverse_bits_preserves_power_of_two (n : Nat) (h : n < 2^32) 
     (h₁ : n ≠ 0) (h₂ : n &&& (n - 1) = 0) :
     (reverse_bits n) &&& ((reverse_bits n) - 1) = 0 := sorry
-
+  
   -- Edge cases
-
+  
   theorem reverse_bits_zero :
     reverse_bits 0 = 0 := sorry
-
-
+  
   theorem reverse_bits_one :
     reverse_bits 1 = 1 := sorry
-
+  
   /--
   info: 267
   -/
   #guard_msgs in
   #eval reverse_bits 417
-
+  
   /--
   info: 0
   -/
   #guard_msgs in
   #eval reverse_bits 0
-
+  
   /--
   info: 1
   -/
   #guard_msgs in
   #eval reverse_bits 1024
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
+

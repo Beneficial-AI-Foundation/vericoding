@@ -3,57 +3,59 @@ vc-description: |-
   Gru does not like to just give everyone the same number of bananas, so instead, he wants to distribute bananas in such a way that each minion gets a $distinct$ amount of bananas. That is, no two minions should get the same number of bananas.
   Gru also loves $gcd$. The higher the $gcd$, the happier Gru and the minions get. So help Gru in distributing the bananas in such a way that each Minion gets a distinct amount of bananas and gcd of this distribution is highest possible. Output this maximum gcd. If such a distribution is not possible output $-1$.
   Note: You have to distribute $all$ $N$ bananas. 
-
+  
   -----Input:-----
   - First line will contain $T$, number of testcases. Then the testcases follow. 
   - Each testcase consists of a single line of input, which has two integers: $N, K$. 
-
+  
   -----Output:-----
   For each testcase, output in a single line the maximum gcd or -1.
-
+  
   -----Constraints-----
   - $1 \leq T \leq 100$
   - $1 \leq N, K \leq 10^9$
-
+  
   -----Sample Input:-----
   1
   6 3
-
+  
   -----Sample Output:-----
   1
-
+  
   -----EXPLANATION:-----
   The only possible distribution is $[1, 2, 3]$. So the answer is 1.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def find_max_gcd (n k : Int) : Int :=
     sorry
+
 vc-theorems: |-
   theorem find_max_gcd_divides_n {n k : Int} (hn : n > 0) (hk : k > 0)
       (h : (k * (k + 1)) / 2 ≤ n) (hres : find_max_gcd n k ≠ -1) :
     n % (find_max_gcd n k) = 0 :=
     sorry
-
-
+  
   theorem find_max_gcd_positive {n k : Int} (hn : n > 0) (hk : k > 0) 
       (h : (k * (k + 1)) / 2 ≤ n) (hres : find_max_gcd n k ≠ -1) :
     find_max_gcd n k > 0 :=
     sorry
-
-
+  
   theorem find_max_gcd_invalid_n {n k : Int} (hn : n ≤ 0) (hk : k > 0) :
     find_max_gcd n k = -1 :=
     sorry
-
-
+  
   theorem find_max_gcd_dist_condition {n k : Int} (hn : n > 0) (hk : k > 0) 
       (hres : find_max_gcd n k ≠ -1) :
     (k * (k + 1)) / 2 ≤ n :=
     sorry
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
+

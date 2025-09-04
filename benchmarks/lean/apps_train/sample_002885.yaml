@@ -1,87 +1,90 @@
 vc-description: |-
   # Task
-
+  
   Your task is to write a function for calculating the score of a 10 pin bowling game. The input for the function is a list of pins knocked down per roll for one player. Output is the player's total score.
-
+  
   # Rules
-
+  
   ## General rules
   Rules of bowling in a nutshell:
-
+  
   * A game consists of 10 frames. In each frame the player rolls 1 or 2 balls, except for the 10th frame, where the player rolls 2 or 3 balls.
-
+  
   * The total score is the sum of your scores for the 10 frames
-
+  
   * If you knock down fewer than 10 pins with 2 balls, your frame score is the number of pins knocked down
-
+  
   * If you knock down all 10 pins with 2 balls (spare), you score the amount of pins knocked down plus a bonus - amount of pins knocked down with the next ball
-
+  
   * If you knock down all 10 pins with 1 ball (strike), you score the amount of pins knocked down plus a bonus - amount of pins knocked down with the next 2 balls
-
+  
   ## Rules for 10th frame
   As the 10th frame is the last one, in case of spare or strike there will be no next balls for the bonus. To account for that:
-
+  
   * if the last frame is a spare, player rolls 1 bonus ball.
   * if the last frame is a strike, player rolls 2 bonus balls.
-
+  
   These bonus balls on 10th frame are only counted as a bonus to the respective spare or strike.
-
+  
   # More information
   http://en.wikipedia.org/wiki/Ten-pin_bowling#Scoring
-
+  
   # Input
   You may assume that the input is always valid. This means:
-
+  
   * input list length is correct
   * number of pins knocked out per roll is valid
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def bowling_score (rolls : List Nat) : Nat := sorry
 
+vc-definitions: |-
+  def bowling_score (rolls : List Nat) : Nat := sorry
+  
   theorem score_bounds (rolls : List Nat) (validRolls : True) :
     let score := bowling_score rolls
     0 ≤ score ∧ score ≤ 300 := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem frame_scores (rolls : List Nat) (validRolls : True) :
     ∀ (i : Nat) (h : i < rolls.length), 
       (rolls.get ⟨i, h⟩ = 10 → rolls.get ⟨i, h⟩ ≤ 10) ∧ 
       (rolls.get ⟨i, h⟩ ≠ 10 → 
        ∀ (h' : i + 1 < rolls.length), 
        rolls.get ⟨i, h⟩ + rolls.get ⟨i + 1, h'⟩ ≤ 10) := sorry
-
-
+  
   theorem all_zeros (rolls : List Nat) :
     rolls.length = 20 → 
     (∀ x ∈ rolls, x = 0) →
     bowling_score rolls = 0 := sorry
-
-
+  
   theorem perfect_game (rolls : List Nat) :
     rolls.length = 12 →
     (∀ x ∈ rolls, x = 10) →
     bowling_score rolls = 300 := sorry
-
+  
   /--
   info: 0
   -/
   #guard_msgs in
   #eval bowling_score [0] * 20
-
+  
   /--
   info: 20
   -/
   #guard_msgs in
   #eval bowling_score [1] * 20
-
+  
   /--
   info: 300
   -/
   #guard_msgs in
   #eval bowling_score [10] * 12
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

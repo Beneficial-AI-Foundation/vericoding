@@ -1,13 +1,12 @@
 vc-description: |-
   A grid is a perfect starting point for many games (Chess, battleships, Candy Crush!).
-
+  
   Making a digital chessboard I think is an interesting way of visualising how loops can work together.
-
+  
   Your task is to write a function that takes two integers `rows` and `columns` and returns a chessboard pattern as a two dimensional array.
-
+  
   So `chessBoard(6,4)` should return an array like this:
-
-
+  
       [
               ["O","X","O","X"],
               ["X","O","X","O"],
@@ -16,35 +15,37 @@ vc-description: |-
               ["O","X","O","X"],
               ["X","O","X","O"]
       ]
-
+  
   And `chessBoard(3,7)` should return this:
-
-
+  
       [
           ["O","X","O","X","O","X","O"],
           ["X","O","X","O","X","O","X"],
           ["O","X","O","X","O","X","O"]
       ]
-
+  
   The white spaces should be represented by an: `'O'`
-
+  
   and the black an: `'X'`
-
+  
   The first row should always start with a white space `'O'`
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def chess_board (rows: Nat) (cols: Nat) : List (List Char) := sorry
 
+vc-definitions: |-
+  def chess_board (rows: Nat) (cols: Nat) : List (List Char) := sorry
+  
   theorem chess_board_dimensions (rows cols: Nat) 
       (h1: 0 < rows) (h2: 0 < cols) :
     let board := chess_board rows cols
     (board.length = rows) ∧ 
     (∀ row ∈ board, row.length = cols) := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem chess_board_alternating (rows cols: Nat)
       (h1: 0 < rows) (h2: 0 < cols) :
     let board := chess_board rows cols
@@ -56,29 +57,30 @@ vc-theorems: |
       -- Vertically adjacent cells differ 
       (r > 0 → (board.get! r).get! c ≠ (board.get! (r-1)).get! c)
     ) := sorry
-
-
+  
   theorem chess_board_square_diagonals (size: Nat) (h: 0 < size) :
     let board := chess_board size size
     ∀ i < size, (board.get! i).get! i = (board.get! 0).get! 0 := sorry
-
+  
   /--
   info: [['O']]
   -/
   #guard_msgs in
   #eval chess_board 1 1
-
+  
   /--
   info: [['O', 'X'], ['X', 'O']]
   -/
   #guard_msgs in
   #eval chess_board 2 2
-
+  
   /--
   info: expected
   -/
   #guard_msgs in
   #eval chess_board 3 4
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

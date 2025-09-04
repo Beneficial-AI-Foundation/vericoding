@@ -1,8 +1,8 @@
 vc-description: |-
   You are to write a function to transpose a guitar tab up or down a number of semitones. The amount to transpose is a number, positive or negative. The tab is given as an array, with six elements for each guitar string (fittingly passed as strings). Output your tab in a similar form.
-
+  
   Guitar tablature (or 'tab') is an alternative to sheet music, where notes are replaced by fret numbers and the five lines of the staff are replaced by six lines to represent each of the guitar's strings. It is still read from left to right like sheet music, and notes written directly above each other are played at the same time.
-
+  
   For example, Led Zeppelin's Stairway to Heaven begins:
   ```
   e|-------5-7-----7-|-8-----8-2-----2-|-0---------0-----|-----------------|
@@ -22,22 +22,25 @@ vc-description: |-
   E|-----------------|-------------------|-----------------|------------------|
   ```
   Note how when the 8th fret note on the top string in bar 2 gets transposed to the 10th fret, extra '-' are added on the other strings below so as to retain the single '-' that originally separated that beat (i.e. column) from the following note – fret 7 on the B string.
-
+  
   Each beat must retain at least one '-' separator before the next, to keep the tab legible. The inputted test tabs all obey this convention.
-
+  
   Electric guitars usually have 22 frets, with the 0th fret being an open string. If your fret numbers transpose to either negative values or values over 22, you should return 'Out of frets!' (and probably detune your guitar).
-
+  
   Tests include some randomly generated guitar tabs, which come with no guarantee of musical quality and/or playability...!
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def transpose (amount : Int) (tab : List String) : List String := sorry
 
+vc-definitions: |-
+  def transpose (amount : Int) (tab : List String) : List String := sorry
+  
   def Nat.toString (n : Nat) : String := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem transpose_basic_format 
     (tab : List String)
     (amount : Int)
@@ -62,18 +65,20 @@ vc-theorems: |
         (n ≥ 0 ∧ n ≤ 22))
     else True :=
   sorry
-
+  
   /--
   info: expected1
   -/
   #guard_msgs in
   #eval transpose 2 ["e|-------5-7-----7-|-8-----8-2-----2-|-0---------0-----|-----------------|", "B|-----5-----5-----|---5-------3-----|---1---1-----1---|-0-1-1-----------|", "G|---5---------5---|-----5-------2---|-----2---------2-|-0-2-2-----------|", "D|-7-------6-------|-5-------4-------|-3---------------|-----------------|", "A|-----------------|-----------------|-----------------|-2-0-0---0--/8-7-|", "E|-----------------|-----------------|-----------------|-----------------|"]
-
+  
   /--
   info: 'Out of frets!'
   -/
   #guard_msgs in
   #eval transpose -1 ["e|-----------------|---------------|----------------|------------------|", "B|-----------------|---------------|----------------|------------------|", "G|--0---3---5----0-|---3---6-5-----|-0---3---5----3-|---0----(0)-------|", "D|--0---3---5----0-|---3---6-5-----|-0---3---5----3-|---0----(0)-------|", "A|-----------------|---------------|----------------|------------------|", "E|-----------------|---------------|----------------|------------------|"]
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

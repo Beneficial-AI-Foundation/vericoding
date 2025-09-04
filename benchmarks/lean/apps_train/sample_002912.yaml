@@ -1,20 +1,20 @@
 vc-description: |-
   We like parsed SQL or PL/SQL blocks...
-
+  
   You need to write function that return list of literals indices from source block, excluding "in" comments, OR return empty list if no literals found.
-
+  
   input:
   some fragment of sql or pl/sql code
-
+  
   output:
   list of literals indices [(start, end), ...] OR empty list
-
+  
   Sample:
   ```
   get_textliterals("'this' is sample") -> [(0,6)]
   get_textliterals("'this' is sample 'too'") -> [(0, 6), (15, 20)]
   ```
-
+  
   Text literal: any text between single quotes
   Sample:
   ```
@@ -33,7 +33,7 @@ vc-description: |-
     this is long multy-line comment
     */
   ```
-
+  
   Note: 
   1) handle single quote inside literal
   ```
@@ -54,47 +54,50 @@ vc-description: |-
   s := 'test
   ```
   There is one literal in this code: "'test"
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
+
 vc-definitions: |-
   def get_textliterals (code : String) : List (Nat × Nat) := sorry
-
+  
   /-- Valid result format ensures result is list of natural number pairs -/
+
 vc-theorems: |-
   theorem valid_result_format (code : String) :
     ∀ result : List (Nat × Nat), result = get_textliterals code → 
     ∀ p ∈ result, ∃ (s e : Nat), p = (s, e) := sorry
-
+  
   /-- All ranges in result are valid positions within code length -/
-
+  
   theorem valid_ranges (code : String) :
     ∀ p ∈ get_textliterals code, 
     let (s, e) := p
     s < e ∧ e ≤ code.length := sorry
-
+  
   /-- All result ranges start and end with single quotes -/
-
+  
   theorem valid_quotes (code : String) :
     ∀ p ∈ get_textliterals code,
     let (s, e) := p
     s < code.length ∧ e ≤ code.length →
     code.data[s]! = '\'' ∧ 
     code.data[e - 1]! = '\'' := sorry
-
+  
   /-- Result ranges are non-overlapping and ordered -/
-
+  
   theorem non_overlapping (code : String) :
     ∀ i, i < (get_textliterals code).length - 1 →
     let ranges := get_textliterals code
     let p₁ := ranges[i]!
     let p₂ := ranges[i+1]!
     p₁.2 ≤ p₂.1 := sorry
-
+  
   /-- Result ranges do not contain SQL comments -/
-
+  
   theorem no_comments (code : String) :
     ∀ p ∈ get_textliterals code,
     let (s, e) := p
@@ -103,6 +106,8 @@ vc-theorems: |-
       ((code.data[i]! = '/' ∧ code.data[i+1]! = '*') ∨
        (code.data[i]! = '*' ∧ code.data[i+1]! = '/') ∨
        (code.data[i]! = '-' ∧ code.data[i+1]! = '-'))) := sorry
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

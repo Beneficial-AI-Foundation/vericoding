@@ -1,6 +1,6 @@
 vc-description: |-
   A [Narcissistic Number](https://en.wikipedia.org/wiki/Narcissistic_number) is a positive number which is the sum of its own digits, each raised to the power of the number of digits in a given base. In this Kata, we will restrict ourselves to decimal (base 10).
-
+  
   For example, take 153 (3 digits):
   ```
       1^3 + 5^3 + 3^3 = 1 + 125 + 27 = 153
@@ -9,39 +9,41 @@ vc-description: |-
   ```
       1^4 + 6^4 + 3^4 + 4^4 = 1 + 1296 + 81 + 256 = 1634
   ```
-
+  
   The Challenge:
-
+  
   Your code must return **true or false** depending upon whether the given number is a Narcissistic number in base 10.
-
+  
   Error checking for text strings or other invalid inputs is not required, only valid positive non-zero integers will be passed into the function.
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def narcissistic (n : Nat) : Bool :=
     sorry
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
+
 vc-definitions: |-
   def digit_power_sum (n : Nat) : Nat :=
     sorry
-
+  
   -- For any natural number, narcissistic returns a boolean
-vc-theorems: |
+
+vc-theorems: |-
   theorem narcissistic_returns_bool (n : Nat) :
     ∃ (b : Bool), narcissistic n = b :=
     sorry 
-
+  
   -- The narcissistic function returns true when the sum of each digit raised to 
   -- the power of number of digits equals the original number
-
+  
   theorem narcissistic_digit_power_sum (n : Nat) :
     narcissistic n = (n = digit_power_sum n) :=
     sorry
-
+  
   -- Known narcissistic numbers
-
+  
   theorem known_narcissistic_numbers :
     narcissistic 0 = true ∧ 
     narcissistic 1 = true ∧
@@ -58,24 +60,26 @@ vc-theorems: |
     narcissistic 371 = true ∧
     narcissistic 407 = true :=
     sorry
-
+  
   /--
   info: True
   -/
   #guard_msgs in
   #eval narcissistic 153
-
+  
   /--
   info: True
   -/
   #guard_msgs in
   #eval narcissistic 1634
-
+  
   /--
   info: False
   -/
   #guard_msgs in
   #eval narcissistic 123
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

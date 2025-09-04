@@ -1,25 +1,28 @@
 vc-description: |-
   Kontti language is a finnish word play game.
-
+  
   You add `-kontti` to the end of each word and then swap their characters until and including the first vowel ("aeiouy"); 
-
+  
   For example the word `tame` becomes `kome-tantti`; `fruity` becomes `koity-fruntti` and so on.
-
+  
   If no vowel is present, the word stays the same.
-
+  
   Write a string method that turns a sentence into kontti language!
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def kontti (s : String) : String := sorry
 
+vc-definitions: |-
+  def kontti (s : String) : String := sorry
+  
   theorem kontti_preserves_word_count (s : String) 
     (h : ∃ w : List String, w.all (λ x => ∃ v, v ∈ ['a', 'e', 'i', 'o', 'u'] ∧ v ∈ x.data) ∧ s = String.intercalate " " w) :
     (String.split (kontti s) (· = ' ')).length = (String.split s (· = ' ')).length := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem kontti_basic_format (s : String)
     (h : ∃ w : List String, w.all (λ x => ∃ v, v ∈ ['a', 'e', 'i', 'o', 'u'] ∧ v ∈ x.data) ∧ s = String.intercalate " " w) :
     let result := kontti s
@@ -28,8 +31,7 @@ vc-theorems: |
         word.data[i]? = some 'k' ∧ word.data[i+1]? = some 'o') ∧
       (∃ i : Nat, i + 4 ≤ word.length ∧ word.data.drop i = "ntti".data) ∧
       (word.data.filter (· = '-')).length = 1 := sorry
-
-
+  
   theorem kontti_vowel_words (s : String)
     (h : ∃ w : List String, w.all (λ x => ∀ c ∈ x.data, c ∈ ['a', 'e', 'i', 'o', 'u']) ∧ s = String.intercalate " " w)
     (h₂ : s ≠ "") :
@@ -37,24 +39,26 @@ vc-theorems: |
     ∀ word ∈ String.split result (· = ' '),
       (∃ i, i < word.data.length ∧ word.data[i]? = some '-') ∧
       (∃ i : Nat, i + 4 ≤ word.length ∧ word.data.drop i = "ntti".data) := sorry
-
+  
   /--
   info: 'komppu-lantti'
   -/
   #guard_msgs in
   #eval kontti "lamppu"
-
+  
   /--
   info: 'kolly-sintti kome-gantti'
   -/
   #guard_msgs in
   #eval kontti "silly game"
-
+  
   /--
   info: 'koz-xyntti komppu-lantti'
   -/
   #guard_msgs in
   #eval kontti "xyz lamppu"
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

@@ -1,24 +1,24 @@
 vc-description: |-
   Bob has n heap(s) of gravel (initially there are exactly c piece(s) in each). He wants to do m operation(s) with that heaps, each maybe:
-
+  
   - adding pieces of gravel onto the heaps from u to v, exactly k pieces for each,
   - or querying "how many pieces of gravel are there in the heap p now?".
-
+  
   -----Request-----
   Help Bob do operations of the second type.
-
+  
   -----Input-----
-
+  
   - The first line contains the integers n,m,c, respectively.
   - m following lines, each forms:
-
+  
   - S u v k to describe an operation of the first type.
   - Q p to describe an operation of the second type.
   (Each integer on a same line, or between the characters S, Q and the integers is separated by at least one space character)
-
+  
   -----Output-----
   For each operation of the second type, output (on a single line) an integer answering to the respective query (follows the respective Input order).
-
+  
   -----Example-----Input:
   7 5 0
   Q 7
@@ -30,75 +30,75 @@ vc-description: |-
   0
   1
   2
-
+  
   -----Limitations-----
   - 0<n≤106
   - 0<m≤250 000
   - 0<u≤v≤n
   - 0≤c,k≤109
   - 0<p≤n
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def fenwick_operations (n : Nat) (m : Nat) (c : Int) (ops : List String) : List Int :=
     sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem fenwick_results_length (n : Nat) (m : Nat) (c : Int) (ops : List String) :
     let results := fenwick_operations n m c ops
     let num_queries := (ops.filter (fun op => op.startsWith "Q")).length
     results.length = num_queries := sorry
-
-
+  
   theorem fenwick_results_are_ints (n : Nat) (m : Nat) (c : Int) (ops : List String) :
     let results := fenwick_operations n m c ops
     ∀ x ∈ results, x = x := sorry
-
-
+  
   theorem fenwick_empty_ops (n : Nat) :
     fenwick_operations n 0 0 [] = [] := sorry
-
-
+  
   theorem fenwick_input_bounds (n m : Nat) (c : Int) (ops : List String) : 
     (2 ≤ n ∧ n ≤ 100) →
     (1 ≤ m ∧ m ≤ 20) →
     (-1000 ≤ c ∧ c ≤ 1000) →
     fenwick_operations n m c ops ≠ [] := sorry
-
-
+  
   theorem fenwick_valid_query_bounds (pos : Nat) (n : Nat) :
     1 ≤ pos → pos ≤ n → 
     ∀ (m : Nat) (c : Int) (ops : List String),
     let results := fenwick_operations n m c ops
     results ≠ [] := sorry
-
-
+  
   theorem fenwick_valid_update_bounds (u v : Nat) (k : Int) (n : Nat) :
     1 ≤ u → u ≤ v → v ≤ n →
     -100 ≤ k → k ≤ 100 →
     ∀ (m : Nat) (c : Int) (ops : List String),
     let results := fenwick_operations n m c ops
     results ≠ [] := sorry
-
+  
   /--
   info: [0, 1, 2]
   -/
   #guard_msgs in
   #eval fenwick_operations 7 5 0 ["Q 7", "S 1 7 1", "Q 3", "S 1 3 1", "Q 3"]
-
+  
   /--
   info: [1, 3]
   -/
   #guard_msgs in
   #eval fenwick_operations 3 3 1 ["Q 1", "S 1 2 2", "Q 2"]
-
+  
   /--
   info: [2, 3]
   -/
   #guard_msgs in
   #eval fenwick_operations 5 4 0 ["S 1 3 2", "Q 2", "S 2 4 1", "Q 3"]
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+

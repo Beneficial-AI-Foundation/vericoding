@@ -7,16 +7,16 @@ vc-description: |-
   The paper is folded in such a way that there is still a flat rectangular sheet of paper lying on the table after each operation, but it consists of multiple layers of the original sheet. The lengths of the horizontal and vertical sides of the resulting sheet (after performing these $N$ operations) are $W$ and $H$ respectively. Let's build an Euclidean coordinate system on the paper, where the point $(0, 0)$ corresponds to the bottom left corner and $(W, H)$ to the upper right corner.
   Chef then draws $M$ points on this folded sheet of paper. The ink used to draw them soaks deep into the paper, so each point is drawn on all layers of the paper (and also on both faces of each layer). 
   Finally, Chef completely unfolds the paper. He's asking you to compute the distance between the nearest pair of points.
-
+  
   -----Input-----
   - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
   - The first line of each test case contains four space-separated integers $N$, $M$, $W$ and $H$.
   - The second line contains a single string $S$.
   - Each of the following $M$ lines contains two space-separated integers $X$ and $Y$ denoting the coordinates of one point.
-
+  
   -----Output-----
   For each test case, print a single line containing one real number ― the minimum distance. Your answer will be considered correct if its absolute or relative error does not exceed $10^{-6}$.
-
+  
   -----Constraints-----
   - $1 \le T \le 50$
   - $2 \le M \le 1,000$
@@ -25,11 +25,11 @@ vc-description: |-
   - $1 \le X \le W-1$
   - $1 \le Y \le H-1$
   - the points are pairwise distinct
-
+  
   -----Subtasks-----
   Subtask #1 (50 points): all characters of $S$ are 'U'
   Subtask #2 (50 points): original constraints
-
+  
   -----Example Input-----
   2
   6 2 10 10
@@ -40,32 +40,32 @@ vc-description: |-
   RUDL
   1 1
   9 9
-
+  
   -----Example Output-----
   1.41421356237
   2.00000000000
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def solve_paper_folding (N M W H : Nat) (S : String) (points : List (Nat × Nat)) : Float := sorry
 
+vc-definitions: |-
+  def solve_paper_folding (N M W H : Nat) (S : String) (points : List (Nat × Nat)) : Float := sorry
+  
   theorem paper_folding_non_negative (N M W H : Nat) (S : String) (points : List (Nat × Nat)) :
     solve_paper_folding N M W H S points ≥ 0 := sorry
+
 vc-theorems: |-
   theorem paper_folding_finite (N M W H : Nat) (S : String) (points : List (Nat × Nat)) :
     Float.isFinite (solve_paper_folding N M W H S points) := sorry
-
-
-
-
-
-
+  
   theorem identical_points_result_near_zero (n : Nat) (hn : n ≥ 5) 
     (points : List (Nat × Nat)) (hpoints : points = [(n/2, n/2), (n/2, n/2)]) :
     solve_paper_folding 4 2 n n "UDLR" points ≤ 1e-6 := sorry
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
+

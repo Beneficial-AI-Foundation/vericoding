@@ -1,21 +1,20 @@
 vc-description: |-
   On a 2-dimensional grid, there are 4 types of squares:
-
+  
   1 represents the starting square.  There is exactly one starting square.
   2 represents the ending square.  There is exactly one ending square.
   0 represents empty squares we can walk over.
   -1 represents obstacles that we cannot walk over.
-
+  
   Return the number of 4-directional walks from the starting square to the ending square, that walk over every non-obstacle square exactly once.
-   
-
+  
   Example 1:
   Input: [[1,0,0,0],[0,0,0,0],[0,0,2,-1]]
   Output: 2
   Explanation: We have the following two paths: 
   1. (0,0),(0,1),(0,2),(0,3),(1,3),(1,2),(1,1),(1,0),(2,0),(2,1),(2,2)
   2. (0,0),(1,0),(2,0),(2,1),(1,1),(0,1),(0,2),(0,3),(1,3),(1,2),(2,2)
-
+  
   Example 2:
   Input: [[1,0,0,0],[0,0,0,0],[0,0,0,2]]
   Output: 4
@@ -24,69 +23,70 @@ vc-description: |-
   2. (0,0),(0,1),(1,1),(1,0),(2,0),(2,1),(2,2),(1,2),(0,2),(0,3),(1,3),(2,3)
   3. (0,0),(1,0),(2,0),(2,1),(2,2),(1,2),(1,1),(0,1),(0,2),(0,3),(1,3),(2,3)
   4. (0,0),(1,0),(2,0),(2,1),(1,1),(0,1),(0,2),(0,3),(1,3),(1,2),(2,2),(2,3)
-
+  
   Example 3:
   Input: [[0,1],[2,0]]
   Output: 0
   Explanation: 
   There is no path that walks over every empty square exactly once.
   Note that the starting and ending square can be anywhere in the grid.
-
-
-
-
-   
+  
   Note:
-
+  
   1 <= grid.length * grid[0].length <= 20
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
+
 vc-definitions: |-
   def unique_paths_covering_all_squares (grid : List (List Int)) : Int :=
   sorry
-
+  
   -- Different grid dimensions produce valid output
-vc-theorems: |
+
+vc-theorems: |-
   theorem valid_dims_produce_valid_output {rows cols : Nat} 
     (h1 : rows > 0) (h2 : cols > 0) (h3 : rows ≤ 5) (h4 : cols ≤ 5) :
     let grid := List.replicate rows (List.replicate cols 0)
     -- assuming we can place start/end points at (0,0) and (rows-1,cols-1)
     unique_paths_covering_all_squares grid ≥ 0 := 
   sorry
-
+  
   -- Valid grids produce natural number outputs
-
+  
   theorem valid_grid_produces_nat_output (grid : List (List Int))
     (h : ∀ row ∈ grid, ∀ cell ∈ row, cell ∈ [-1, 0, 1, 2]) :
     unique_paths_covering_all_squares grid ≥ 0 :=
   sorry
-
+  
   -- Adjacent start/end has exactly one path
-
+  
   theorem adjacent_start_end_one_path :
     unique_paths_covering_all_squares [[1,2]] = 1 :=
   sorry
-
+  
   /--
   info: 2
   -/
   #guard_msgs in
   #eval unique_paths_covering_all_squares [[1, 0, 0, 0], [0, 0, 0, 0], [0, 0, 2, -1]]
-
+  
   /--
   info: 4
   -/
   #guard_msgs in
   #eval unique_paths_covering_all_squares [[1, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 2]]
-
+  
   /--
   info: 0
   -/
   #guard_msgs in
   #eval unique_paths_covering_all_squares [[0, 1], [2, 0]]
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+

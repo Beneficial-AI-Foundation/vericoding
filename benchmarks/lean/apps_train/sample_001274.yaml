@@ -8,19 +8,19 @@ vc-description: |-
   At the king's first visit the richest person to have met the minister has wealth $7$ and he would be beheaded. At the second visit, the wealth of the richest person who has met the minister and is still alive has wealth $6$ and so he would be beheaded. At the third visit the richest person to have met the minister who is still alive has wealth $18$ and so he would be beheaded.
   You may assume that the input is such that whenever the king walks in, it is always possible to behead someone.
   Your aim is to write a program that will enable the prime minister to identify the richest man to have met the minister and who is still alive quickly. You may assume that no two citizens have the same wealth.
-
+  
   -----Input:-----
   The first line of the input consists of two numbers $N$ and $M$, where $N$ is the number of citizens in the kingdom and M is the number of visits to the court by the king.
   The next $N+M$ lines describe the order in which the $N$ citizens' appearances are interleaved with the $M$ visits by the king. A citizen's visit is denoted by a positive integer, signifying his wealth. You may assume that no two citizens have the same wealth. A visit by the king is denoted by $-1$.
-
+  
   -----Output:-----
   Your output should consist of $M$ lines, where the $i^{th}$ line contains the wealth of the citizen who is beheaded at the $i^{th}$ visit of the king.
-
+  
   -----Constraints:-----
   - $1 \leq M \leq 10000$.
   - $1 \leq N \leq 100000$.
   - You may assume that in $50 \%$ of the inputs $1 \leq M \leq 1000$ and $1 \leq N \leq 8000$.
-
+  
   -----Sample Input-----
   10 3
   1 
@@ -36,25 +36,28 @@ vc-description: |-
   2
   -1
   4
-
+  
   -----Sample Output-----
   7
   6
   18
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def solveExecutions (citizens : List Int) (visits : Nat) : List Int := sorry
 
+vc-definitions: |-
+  def solveExecutions (citizens : List Int) (visits : Nat) : List Int := sorry
+  
   theorem basic_execution_length
     {wealth_values : List Int}
     (h₁ : ∀ x ∈ wealth_values, 1 ≤ x ∧ x ≤ 10000)
     (h₂ : 1 ≤ wealth_values.length ∧ wealth_values.length ≤ 20)
     (h₃ : citizens = [wealth_values[0]!, -1])
     : (solveExecutions citizens 1).length = 1 := sorry
+
 vc-theorems: |-
   theorem basic_execution_value
     {wealth_values : List Int}
@@ -62,20 +65,20 @@ vc-theorems: |-
     (h₂ : 1 ≤ wealth_values.length ∧ wealth_values.length ≤ 20)
     (h₃ : citizens = [wealth_values[0]!, -1])
     : (solveExecutions citizens 1)[0]! = wealth_values[0]! := sorry
-
-
+  
   theorem single_pair_length
     {wealth : Int}
     (h₁ : 1 ≤ wealth ∧ wealth ≤ 10000)
     (h₂ : citizens = [wealth, -1])
     : (solveExecutions citizens 1).length = 1 := sorry
-
-
+  
   theorem single_pair_value
     {wealth : Int}
     (h₁ : 1 ≤ wealth ∧ wealth ≤ 10000) 
     (h₂ : citizens = [wealth, -1])
     : (solveExecutions citizens 1)[0]! = wealth := sorry
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
+

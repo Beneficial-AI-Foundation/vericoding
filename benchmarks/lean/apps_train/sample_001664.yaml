@@ -2,75 +2,75 @@ vc-description: |-
   Given two different positions on a chess board, find the least number of moves it would take a knight to get from one to the other.
   The positions will be passed as two arguments in algebraic notation.
   For example, `knight("a3", "b5")` should return 1.
-
+  
   The knight is not allowed to move off the board.
   The board is 8x8.
-
+  
   For information on knight moves, see https://en.wikipedia.org/wiki/Knight_%28chess%29
-
+  
   For information on algebraic notation, see
   https://en.wikipedia.org/wiki/Algebraic_notation_%28chess%29
-
+  
   (Warning: many of the tests were generated randomly. If any do not work, the test cases will return the input, output, and expected output; please post them.)
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def abs (n : Nat) : Nat :=
     sorry
-
-
+  
   def isValidPos (pos : String) : Bool :=
     sorry
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def knight (s e : String) : Nat :=
     sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem knight_valid_range {s e : String} 
     (h1 : isValidPos s) (h2 : isValidPos e) : 
     let m := knight s e
     0 ≤ m ∧ m ≤ 6 := 
     sorry
-
-
+  
   theorem knight_same_position {p : String}
     (h : isValidPos p) :
     knight p p = 0 :=
     sorry
-
-
+  
   theorem knight_diagonal_adjacent {s e : String}  
     (h1 : isValidPos s) (h2 : isValidPos e)
     (h3 : abs ((s.get! ⟨0⟩).toNat - (e.get! ⟨0⟩).toNat) = 1)
     (h4 : abs ((s.get! ⟨1⟩).toNat - (e.get! ⟨1⟩).toNat) = 1) :
     knight s e = 2 :=
     sorry
-
-
+  
   theorem knight_symmetric {p t : String}
     (h1 : isValidPos p) (h2 : isValidPos t) :
     knight p t = knight t p :=
     sorry
-
+  
   /--
   info: 1
   -/
   #guard_msgs in
   #eval knight "a3" "b5"
-
+  
   /--
   info: 2
   -/
   #guard_msgs in
   #eval knight "a1" "c5"
-
+  
   /--
   info: 0
   -/
   #guard_msgs in
   #eval knight "d5" "d5"
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
+

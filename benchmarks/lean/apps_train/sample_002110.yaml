@@ -1,104 +1,100 @@
 vc-description: |-
   Recently, Dima met with Sasha in a philatelic store, and since then they are collecting coins together. Their favorite occupation is to sort collections of coins. Sasha likes having things in order, that is why he wants his coins to be arranged in a row in such a way that firstly come coins out of circulation, and then come coins still in circulation. 
-
+  
   For arranging coins Dima uses the following algorithm. One step of his algorithm looks like the following:
-
+  
     He looks through all the coins from left to right;  If he sees that the i-th coin is still in circulation, and (i + 1)-th coin is already out of circulation, he exchanges these two coins and continues watching coins from (i + 1)-th.  
-
+  
   Dima repeats the procedure above until it happens that no two coins were exchanged during this procedure. Dima calls hardness of ordering the number of steps required for him according to the algorithm above to sort the sequence, e.g. the number of times he looks through the coins from the very beginning. For example, for the ordered sequence hardness of ordering equals one.
-
+  
   Today Sasha invited Dima and proposed him a game. First he puts n coins in a row, all of them are out of circulation. Then Sasha chooses one of the coins out of circulation and replaces it with a coin in circulation for n times. During this process Sasha constantly asks Dima what is the hardness of ordering of the sequence. 
-
+  
   The task is more complicated because Dima should not touch the coins and he should determine hardness of ordering in his mind. Help Dima with this task. 
-
-
+  
   -----Input-----
-
+  
   The first line contains single integer n (1 ≤ n ≤ 300 000) — number of coins that Sasha puts behind Dima.
-
+  
   Second line contains n distinct integers p_1, p_2, ..., p_{n} (1 ≤ p_{i} ≤ n) — positions that Sasha puts coins in circulation to. At first Sasha replaces coin located at position p_1, then coin located at position p_2 and so on. Coins are numbered from left to right.
-
-
+  
   -----Output-----
-
+  
   Print n + 1 numbers a_0, a_1, ..., a_{n}, where a_0 is a hardness of ordering at the beginning, a_1 is a hardness of ordering after the first replacement and so on. 
-
-
+  
   -----Examples-----
   Input
   4
   1 3 4 2
-
+  
   Output
   1 2 3 2 1
-
+  
   Input
   8
   6 8 3 4 7 2 1 5
-
+  
   Output
   1 2 2 3 4 3 4 5 1
-
-
-
+  
   -----Note-----
-
+  
   Let's denote as O coin out of circulation, and as X — coin is circulation.
-
+  
   At the first sample, initially in row there are coins that are not in circulation, so Dima will look through them from left to right and won't make any exchanges.
-
+  
   After replacement of the first coin with a coin in circulation, Dima will exchange this coin with next three times and after that he will finally look through the coins and finish the process.
-
+  
   XOOO  →  OOOX
-
+  
   After replacement of the third coin, Dima's actions look this way:
-
+  
   XOXO  →  OXOX  →  OOXX
-
+  
   After replacement of the fourth coin, Dima's actions look this way:
-
+  
   XOXX  →  OXXX
-
+  
   Finally, after replacement of the second coin, row becomes consisting of coins that are in circulation and Dima will look through coins from left to right without any exchanges.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def find_hardness_of_ordering (n : Nat) (positions : List Nat) : List Nat := sorry
 
+vc-definitions: |-
+  def find_hardness_of_ordering (n : Nat) (positions : List Nat) : List Nat := sorry
+  
   def is_valid_permutation (n : Nat) (positions : List Nat) : Bool := sorry
+
 vc-theorems: |-
   theorem hardness_list_length {n : Nat} (h : n > 0) 
     (positions : List Nat) (h2 : positions = List.range' 1 n) :
     (find_hardness_of_ordering n positions).length = n + 1 := sorry
-
-
+  
   theorem first_last_element_one {n : Nat} (h : n > 0) 
     (positions : List Nat) (h2 : is_valid_permutation n positions) :
     let result := find_hardness_of_ordering n positions
     (result.get ⟨0, sorry⟩ = 1) ∧ 
     (result.get ⟨n, sorry⟩ = 1) := sorry
-
-
+  
   theorem adjacent_diff_at_most_one {n : Nat} (h : n > 0)
     (positions : List Nat) (h2 : is_valid_permutation n positions) :
     let result := find_hardness_of_ordering n positions
     ∀ i, i < result.length - 1 → 
     (result.get ⟨i, sorry⟩).sub (result.get ⟨i+1, sorry⟩) ≤ 1 := sorry
-
-
+  
   theorem all_values_positive {n : Nat} (h : n > 0)
     (positions : List Nat) (h2 : is_valid_permutation n positions) :
     let result := find_hardness_of_ordering n positions
     ∀ i, i < result.length → result.get ⟨i, sorry⟩ > 0 := sorry
-
-
+  
   theorem max_value_bounded {n : Nat} (h : n > 0)
     (positions : List Nat) (h2 : is_valid_permutation n positions) :
     let result := find_hardness_of_ordering n positions
     ∀ i, i < result.length → result.get ⟨i, sorry⟩ ≤ n := sorry
+
 vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: guarded
+

@@ -1,55 +1,60 @@
 vc-description: |-
   Dhote and Shweta went on a tour by plane for the first time.Dhote was surprised by the conveyor belt  at the airport.As Shweta was getting bored Dhote had an idea of playing a game with her.He asked Shweta to count the number of bags whose individual weight is greater than or equal to the half of the total number of bags on the conveyor belt.Shweta got stuck in the puzzle! Help Shweta. 
-
+  
   -----Input:-----
   - First line will contain T$T$, number of testcases. Then the testcases follow. 
   - Each testcase contains of a single line of input, one  integers N$N$.
   - next line conatins N$N$ integers that represents weight of bag 
-
+  
   -----Output:-----
   For each testcase, print required answer in new line .
-
+  
   -----Constraints-----
   - 1≤T≤1000$1 \leq T \leq 1000$
   - 1≤N≤105$1 \leq N \leq 10^5$
   - 1≤weightofbag≤105$ 1\leq  weight of bag   \leq 10^5$ 
-
+  
   -----Sample Input:-----
   1
   4 
   1 2 3 4
-
+  
   -----Sample Output:-----
   3
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
+
 vc-definitions: |-
   def count_heavy_bags (size : Nat) (weights : List Nat) : Nat := sorry
-
+  
   theorem count_heavy_bags_bounds (size : Nat) (weights : List Nat) :
     let result := count_heavy_bags size weights
     0 ≤ result ∧ result ≤ weights.length := sorry
-vc-theorems: |
+
+vc-theorems: |-
   /--
   info: 3
   -/
   #guard_msgs in
   #eval count_heavy_bags 4 [1, 2, 3, 4]
-
+  
   /--
   info: 0
   -/
   #guard_msgs in
   #eval count_heavy_bags 3 [1, 1, 1]
-
+  
   /--
   info: 3
   -/
   #guard_msgs in
   #eval count_heavy_bags 5 [5, 4, 3, 2, 1]
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
+

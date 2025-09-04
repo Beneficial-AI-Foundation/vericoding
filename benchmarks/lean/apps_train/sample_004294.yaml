@@ -1,64 +1,65 @@
 vc-description: |-
   Truncate the given string (first argument) if it is longer than the given maximum length (second argument). Return the truncated string with a `"..."` ending.
-
+  
   Note that inserting the three dots to the end will add to the string length.
-
+  
   However, if the given maximum string length num is less than or equal to 3, then the addition of the three dots does not add to the string length in determining the truncated string.
-
-
+  
   ## Examples
   ```
   ('codewars', 9)  ==>  'codewars'
   ('codewars', 7)  ==>  'code...'
   ('codewars', 2)  ==>  'co...'
   ```
-
+  
   [Taken from FCC](https://www.freecodecamp.com/challenges/truncate-a-string)
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def truncateString (s : String) (n : Nat) : String := sorry
 
+vc-definitions: |-
+  def truncateString (s : String) (n : Nat) : String := sorry
+  
   theorem truncateString_length (s : String) (n : Nat) : 
     (truncateString s n).length ≤ max n 3 := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem truncateString_preserves_short (s : String) (n : Nat) :
     s.length ≤ n → truncateString s n = s := sorry
-
-
+  
   theorem truncateString_ellipsis (s : String) (n : Nat) :
     s.length > n → (truncateString s n).endsWith "..." := sorry
-
-
+  
   theorem truncateString_prefix_long (s : String) (n : Nat) :
     n > 3 → s.length > n → 
     (truncateString s n).dropRight 3 = s.take (n-3) := sorry 
-
-
+  
   theorem truncateString_prefix_short (s : String) (n : Nat) :
     n ≤ 3 → s.length > n →
     (truncateString s n).dropRight 3 = s.take n := sorry
-
+  
   /--
   info: 'codewars'
   -/
   #guard_msgs in
   #eval truncate_string "codewars" 9
-
+  
   /--
   info: 'code...'
   -/
   #guard_msgs in
   #eval truncate_string "codewars" 7
-
+  
   /--
   info: 'co...'
   -/
   #guard_msgs in
   #eval truncate_string "codewars" 2
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

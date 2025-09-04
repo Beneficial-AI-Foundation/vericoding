@@ -1,6 +1,6 @@
 vc-description: |-
   You will be given an array of positive integers. The array should be sorted by the amount of distinct perfect squares and reversed, that can be generated from each number permuting its digits.
-
+  
   E.g.: ```arr = [715, 112, 136, 169, 144]``` 
   ``` 
   Number   Perfect Squares w/ its Digits   Amount
@@ -12,11 +12,11 @@ vc-description: |-
   ``` 
   So the output will have the following order:
   ```[169, 144, 112, 136, 715]``` 
-
+  
   When we have two or more numbers with the same amount of perfect squares in their permutations, we sorted by their values.
-
+  
   In the example given above, we can see that 112 and 136 both generate a perfect square. So 112 comes first.
-
+  
   Examples for this kata:
   ```python
   sort_by_perfsq([715, 112, 136, 169, 144]) == [169, 144, 112, 136, 715]
@@ -27,7 +27,7 @@ vc-description: |-
   sort_by_perfsq([234, 61, 16, 441, 144, 728]) == [144, 441, 16, 61, 234, 728]
   # number of perfect squares:                      2    2    1   0   0    0
   ```
-
+  
   Features of the random tests:
   ~~~if:ruby,python
   - Number of tests: 80
@@ -39,40 +39,43 @@ vc-description: |-
   - Arrays between 4 and 16 elements
   - Integers having from 1 to 7 digits included
   ~~~
-
+  
   Enjoy it!!
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def List.toBag {α : Type u} [BEq α] (l : List α) : Bag α where
     count a := List.length (List.filter (fun x => x == a) l)
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def sort_by_perfsq (arr : List Nat) : List Nat := sorry
 
+vc-definitions: |-
+  def sort_by_perfsq (arr : List Nat) : List Nat := sorry
+  
   theorem sort_by_perfsq_maintains_length {arr : List Nat} :
     List.length (sort_by_perfsq arr) = List.length arr := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem sort_by_perfsq_maintains_elements {arr : List Nat} :
     (sort_by_perfsq arr).toBag = arr.toBag := sorry
-
-
+  
   theorem sort_by_perfsq_idempotent {arr : List Nat} :
     sort_by_perfsq (sort_by_perfsq arr) = sort_by_perfsq arr := sorry
-
+  
   /--
   info: expected1
   -/
   #guard_msgs in
   #eval sort_by_perfsq [715, 112, 136, 169, 144]
-
+  
   /--
   info: expected2
   -/
   #guard_msgs in
   #eval sort_by_perfsq [234, 61, 16, 441, 144, 728]
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

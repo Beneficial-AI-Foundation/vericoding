@@ -1,94 +1,96 @@
 vc-description: |-
   A beautiful sequence is defined as a sequence that do not have any repeating elements in it.
   You will be given any random sequence of integers, and you have to tell whether it is a beautiful sequence or not. 
-
+  
   -----Input:-----
   - The first line of the input contains a single integer $T$. $T$ denoting the number of test cases. The description of $T$ test cases is as follows.
   - The next line of the input contains a single integer $N$. $N$ denotes the total number of elements in the sequence.
   - The next line of the input contains $N$ space-separated integers $A1, A2, A3...An$ denoting the sequence.
-
+  
   -----Output:-----
   - Print "prekrasnyy"(without quotes) if the given sequence is a beautiful sequence, else print "ne krasivo"(without quotes)
   Note: each test case output must be printed on new line
-
+  
   -----Constraints:-----
   - $1 \leq T \leq 10^2$
   - $1 \leq N \leq 10^3$
   - $1 \leq A1, A2, A3...An \leq 10^5$
-
+  
   -----Sample Input:-----
   2
   4
   1 2 3 4
   6
   1 2 3 5 1 4
-
+  
   -----Sample Output:-----
   prekrasnyy
   ne krasivo
-
+  
   -----Explanation:-----
   - 
   As 1st sequence do not have any elements repeating, hence it is a beautiful sequence
   - 
   As in 2nd sequence the element 1 is repeated twice, hence it is not a beautiful sequence
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def check_sequence (n : Nat) (arr : List Int) : String := sorry
 
+vc-definitions: |-
+  def check_sequence (n : Nat) (arr : List Int) : String := sorry
+  
   theorem check_sequence_returns_valid_output (n : Nat) (arr : List Int) :
     n > 0 → arr.length > 0 →
     (check_sequence n arr = "prekrasnyy" ∨ check_sequence n arr = "ne krasivo") :=
   sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem check_sequence_prekrasnyy_implies_unique (n : Nat) (arr : List Int) :
     n > 0 → arr.length > 0 →
     check_sequence n arr = "prekrasnyy" →
     ∀ (i : Fin arr.length) (j : Fin arr.length), 
       i.val ≠ j.val → (arr.get i) ≠ (arr.get j) :=
   sorry
-
-
+  
   theorem check_sequence_ne_krasivo_implies_duplicate (n : Nat) (arr : List Int) :
     n > 0 → arr.length > 0 →
     check_sequence n arr = "ne krasivo" →
     ∃ (i : Fin arr.length) (j : Fin arr.length), 
       i.val ≠ j.val ∧ (arr.get i) = (arr.get j) :=
   sorry
-
-
+  
   theorem check_sequence_n_independent (n₁ n₂ : Nat) (arr : List Int) :
     n₁ > 0 → n₂ > 0 → arr.length > 0 →
     check_sequence n₁ arr = check_sequence n₂ arr :=
   sorry
-
-
+  
   theorem check_sequence_single_element (n : Nat) (arr : List Int) :
     n > 0 → arr.length = 1 →
     check_sequence n arr = "prekrasnyy" :=
   sorry
-
+  
   /--
   info: 'prekrasnyy'
   -/
   #guard_msgs in
   #eval check_sequence 4 [1, 2, 3, 4]
-
+  
   /--
   info: 'ne krasivo'
   -/
   #guard_msgs in
   #eval check_sequence 6 [1, 2, 3, 5, 1, 4]
-
+  
   /--
   info: 'prekrasnyy'
   -/
   #guard_msgs in
   #eval check_sequence 1 [1]
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+

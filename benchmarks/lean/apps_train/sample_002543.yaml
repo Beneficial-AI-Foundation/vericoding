@@ -1,24 +1,24 @@
 vc-description: |-
   In a far away country called AlgoLandia, there are `N` islands numbered `1` to `N`. Each island is denoted by `k[i]`. King Algolas, king of AlgoLandia, built `N - 1` bridges in the country. A bridge is built between islands `k[i]` and `k[i+1]`. Bridges are two-ways and are expensive to build.
-
+  
   The problem is that there are gangs who wants to destroy the bridges. In order to protect the bridges, the king wants to assign elite guards to the bridges. A bridge between islands `k[i]` and `k[i+1]` is safe when there is an elite guard in island `k[i]` or `k[i+1]`. There are already elite guards assigned in some islands.
-
+  
   Your task now is to determine the minimum number of additional elite guards that needs to be hired to guard all the bridges.
-
+  
   ### Note:
   You are given a sequence `k` with `N` length.
   `k[i] = true`, means that there is an elite guard in that island; `k[i] = false` means no elite guard. It is guaranteed that AlgoLandia have at least `2` islands.
-
+  
   ### Sample Input 1
   ```
   k = [true, true, false, true, false]
   ```
-
+  
   ### Sample Output 1
   ```
   0
   ```
-
+  
   ### Sample Input 2
   ```
   k = [false, false, true, false, false]
@@ -27,49 +27,50 @@ vc-description: |-
   ```
   2
   ```
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def find_needed_guards (islands : List Bool) : Nat :=
   sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem guard_count_nonnegative (islands : List Bool) : 
     find_needed_guards islands ≥ 0 :=
   sorry
-
-
+  
   theorem guard_count_bounded_by_unguarded (islands : List Bool) :
     let unguarded := (islands.filter (fun x => !x)).length
     find_needed_guards islands ≤ (unguarded + 1) / 2 :=
   sorry
-
-
-
-
+  
   theorem single_island_needs_no_guards (islands : List Bool) :
     islands.length = 1 → find_needed_guards islands = 0 :=
   sorry
-
+  
   /--
   info: 0
   -/
   #guard_msgs in
   #eval find_needed_guards [True, True, False, True, False]
-
+  
   /--
   info: 2
   -/
   #guard_msgs in
   #eval find_needed_guards [False, False, True, False, False]
-
+  
   /--
   info: 2
   -/
   #guard_msgs in
   #eval find_needed_guards [False, False, False, False, False]
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
+

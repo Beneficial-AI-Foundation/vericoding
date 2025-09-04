@@ -1,53 +1,47 @@
 vc-description: |-
   # Overview
-
+  
   The goal here is to solve a puzzle (the "pieces of paper" kind of puzzle). You will receive different pieces of that puzzle as input, and you will have to find in what order you have to rearrange them so that the "picture" of the puzzle is complete.
-
-
-
+  
   ## Puzzle pieces
-
+  
   All the pieces of the puzzle will be represented in the following way:
-
+  
   * 4 numbers, grouped in 2 tuples, which are representing the "picture" on the piece. Every piece has a 2x2 size.
   * 1 id number. All id numbers are unique in a puzzle, but their value may be random.
   * Note that all numbers will be non-negative integers (except for outer border "picture" numbers in C#)
-
+  
   For example, 
-                  
+  
       ((1, 2), (3, 4), 1) 
        Puzzle piece id ^  
-
+  
   is equivalent the the following square piece of puzzle, having the id number `1`:
-
+  
       +---+
       |1 2|
       |3 4|
       +---+
-
+  
   If the piece is on a border or is a corner, some numbers will be replaced with `None` (`-1` in C#):
   ```python
   ((None, None), (1, 2), 10)       -->   upper border
   ((9, None), (None, None), 11)   -->   bottom right corner
   ```
-
-   
-
+  
   Note that you cannot flip or rotate the pieces (_would you like to change the picture!?_)
-
-
-
+  
   ## Solving the puzzle
-
+  
   * You'll get an array of pieces as well as the size of the puzzle (width and height).  
   * Two pieces can be assembled if they share the same pattern on the border where they are in contact (see example below).
   * Puzzle pieces being unique, you'll never encounter two different pieces that could be assembled with the same third one. So to say: borders are unique.
   * Once you found the proper arrangment for all the pieces, return the solved puzzle as a list of tuples (height * width) of the id number of the piece at its correct position. (For C#, return the solved puzzle as a 2-dimensional array of integers.)
-
+  
   ## Example:
-
+  
   Inputs:
-
+  
   ```python
   width, height = 3,3
   pieces = [ ((None, 5), (None, None), 3), 
@@ -60,15 +54,15 @@ vc-description: |-
              ((None, None), (11, None), 4),
              ((None, None), (4, 11), 6) ]`
   ```
-
+  
   In this case, the expected output would be:
-
+  
   ```python
   expected = [(7, 6, 4), (8, 5, 2), (3, 1, 9)]
   ```
-
+  
   ... the solved puzzle looking like this:
-
+  
   ```python
            Puzzle Solved:                     Related id numbers:
    -----------------------------                  7    6    4
@@ -82,46 +76,43 @@ vc-description: |-
   |None None|None None|None None|
    -----------------------------
   ```
-
+  
   ### Notes:
-
+  
   * Be careful about performances, you'll have to handle rather big puzzles.
   * Width and height will be between 2 and 100 (inclusive)
   * The puzzle may be rectangular too
-vc-preamble: |-
-  import Imports.AllImports
 
+vc-preamble: |-
   def getMatchingPieces (pieces: List Piece) : Piece → Bool := sorry
   def checkFit (p1 p2: Piece) (dir: String) : Bool := sorry
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def puzzleSolver (pieces: List Piece) (width height: Nat) : Option (List (List Nat)) := sorry
 
+vc-definitions: |-
+  def puzzleSolver (pieces: List Piece) (width height: Nat) : Option (List (List Nat)) := sorry
+  
   theorem getMatchingPieces_preserves_length (pieces: List Piece):
     pieces.length = (pieces.filter (getMatchingPieces pieces)).length := sorry
+
 vc-theorems: |-
   theorem getMatchingPieces_contains_all_ids (pieces: List Piece) (p: Piece):
     p ∈ pieces → p ∈ (pieces.filter (getMatchingPieces pieces)) := sorry
-
-
+  
   theorem checkFit_returns_bool (p1 p2: Piece) (dir: String):
     checkFit p1 p2 dir = true ∨ checkFit p1 p2 dir = false := sorry
-
-
+  
   theorem checkFit_right (p1 p2: Piece):
     checkFit p1 p2 "right" = (p1.right + p2.left = 0) := sorry
-
-
+  
   theorem checkFit_down (p1 p2: Piece): 
     checkFit p1 p2 "down" = (p1.down + p2.up = 0) := sorry
-
-
+  
   theorem checkFit_invalid (p1 p2: Piece) (dir: String):
     dir ≠ "right" → dir ≠ "down" → checkFit p1 p2 dir = false := sorry
-
-
+  
   theorem puzzleSolver_result_dimensions {pieces: List Piece} {width height: Nat}
     (result: Option (List (List Nat))):
     result = puzzleSolver pieces width height →
@@ -130,8 +121,7 @@ vc-theorems: |-
     | none => True
     | some grid => grid.length = height ∧ grid.all (fun row => row.length = width)
     := sorry
-
-
+  
   theorem puzzleSolver_uses_valid_pieces {pieces: List Piece} {width height: Nat}
     (result: Option (List (List Nat))):
     result = puzzleSolver pieces width height →
@@ -140,8 +130,7 @@ vc-theorems: |-
     | none => True  
     | some grid => ∀ id ∈ grid.join, ∃ p ∈ pieces, p.id = id
     := sorry
-
-
+  
   theorem puzzleSolver_pieces_fit {pieces: List Piece} {width height: Nat}
     (result: Option (List (List Nat))):
     result = puzzleSolver pieces width height →
@@ -166,6 +155,8 @@ vc-theorems: |-
         | _, _, _ => false
       else true
     := sorry
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
+

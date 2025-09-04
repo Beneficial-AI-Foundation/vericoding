@@ -7,22 +7,22 @@ vc-description: |-
    - Fennec: selects an uncolored cell that is adjacent to a black cell, and paints it black.
    - Snuke: selects an uncolored cell that is adjacent to a white cell, and paints it white.
   A player loses when she/he cannot paint a cell. Determine the winner of the game when Fennec and Snuke play optimally.
-
+  
   -----Constraints-----
    - 2 \leq N \leq 10^5
    - 1 \leq a_i, b_i \leq N
    - The given graph is a tree.
-
+  
   -----Input-----
   Input is given from Standard Input in the following format:
   N
   a_1 b_1
   :
   a_{N-1} b_{N-1}
-
+  
   -----Output-----
   If Fennec wins, print Fennec; if Snuke wins, print Snuke.
-
+  
   -----Sample Input-----
   7
   3 6
@@ -31,54 +31,55 @@ vc-description: |-
   7 4
   5 7
   1 4
-
+  
   -----Sample Output-----
   Fennec
-
+  
   For example, if Fennec first paints Cell 2 black, she will win regardless of Snuke's moves.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def solve_tree_coloring (n : Nat) (edges : List (Nat × Nat)) : String := sorry
 
+vc-definitions: |-
+  def solve_tree_coloring (n : Nat) (edges : List (Nat × Nat)) : String := sorry
+  
   def is_valid_tree (n : Nat) (edges : List (Nat × Nat)) : Bool := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem tree_coloring_result_valid (n : Nat) (edges : List (Nat × Nat)) :
     is_valid_tree n edges → 
     solve_tree_coloring n edges = "Fennec" ∨ solve_tree_coloring n edges = "Snuke" := sorry
-
-
+  
   theorem invalid_tree_error (n : Nat) (edges : List (Nat × Nat)) :
     ¬is_valid_tree n edges →
     solve_tree_coloring n edges = "Error" := sorry
-
-
+  
   theorem line_graph_valid_result (n : Nat) (h : n ≥ 2) :
     let edges := List.map (fun i => (i, i+1)) (List.range (n-1))
     solve_tree_coloring n edges = "Fennec" ∨ solve_tree_coloring n edges = "Snuke" := sorry
-
-
+  
   theorem basic_case_1 :
     solve_tree_coloring 4 [(1,4), (4,2), (2,3)] = "Snuke" := sorry
-
-
+  
   theorem basic_case_2 :
     solve_tree_coloring 7 [(3,6), (1,2), (3,1), (7,4), (5,7), (1,4)] = "Fennec" := sorry
-
+  
   /--
   info: 'Fennec'
   -/
   #guard_msgs in
   #eval solve_tree_coloring 7 [(3, 6), (1, 2), (3, 1), (7, 4), (5, 7), (1, 4)]
-
+  
   /--
   info: 'Snuke'
   -/
   #guard_msgs in
   #eval solve_tree_coloring 4 [(1, 4), (4, 2), (2, 3)]
+
 vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
+

@@ -1,54 +1,56 @@
 vc-description: |-
   The Tower of Hanoi problem involves 3 towers.  A number of rings decreasing in size are placed on one tower.  All rings must then be moved to another tower, but at no point can a larger ring be placed on a smaller ring.
-
+  
   Your task:  Given a number of rings, return the MINIMUM number of moves needed to move all the rings from one tower to another.
-
+  
   Reference: Tower of Hanoi, Courtesy of Coolmath Games
-
+  
   NB:  This problem may seem very complex, but in reality there is an amazingly simple formula to calculate the minimum number.  Just Learn how to solve the problem via the above link (if you are not familiar with it), and then think hard.  Your solution should be in no way extraordinarily long and complex.  The Kata ranking is for figuring out the solution, but the coding skills required are minimal.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def tower_of_hanoi (n : Nat) : Nat := sorry
 
+vc-definitions: |-
+  def tower_of_hanoi (n : Nat) : Nat := sorry
+  
   theorem tower_power_of_two (n : Nat) : 
     tower_of_hanoi n = 2^n - 1 := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem tower_positive (n : Nat) : 
     n > 0 → tower_of_hanoi n > 0 := sorry
-
-
+  
   theorem tower_more_than_double (n : Nat) :
     n > 0 → tower_of_hanoi n > 2 * tower_of_hanoi (n-1) := sorry
-
-
+  
   theorem tower_base_zero :
     tower_of_hanoi 0 = 0 := sorry
-
-
+  
   theorem tower_base_one :
     tower_of_hanoi 1 = 1 := sorry
-
+  
   /--
   info: 15
   -/
   #guard_msgs in
   #eval tower_of_hanoi 4
-
+  
   /--
   info: 31
   -/
   #guard_msgs in
   #eval tower_of_hanoi 5
-
+  
   /--
   info: 1023
   -/
   #guard_msgs in
   #eval tower_of_hanoi 10
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
+

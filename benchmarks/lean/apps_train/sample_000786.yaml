@@ -14,7 +14,7 @@ vc-description: |-
   You have to answer$Q$(1 <= $Q$<= 100 ) queries
   For each query you are given an integer $i$ (0 <= $i$ <= $10^9$ ). You have to print the element present at the ith position of the $LIST$. 
   Help John solve this problem.
-
+  
   -----Input:-----
   - The First Line of input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
   - The First Line of each test case contains the  integer $N$.
@@ -22,10 +22,10 @@ vc-description: |-
   - The third line of each test case contains an integer $Q$.
   - Then the next $Q$ line follows.  
   - An integer $i$ (0 <= $i$ <= 10^9 )
-
+  
   -----Output:-----
   You have to answer the $Q$ queries in the next $Q$ lines. 
-
+  
   -----Constraints-----
   - $1 \leq T \leq 10$
   - $1 \leq N \leq 10^9$
@@ -34,7 +34,7 @@ vc-description: |-
   - $2 \leq C \leq 10$
   - $2 \leq Q \leq 100$
   - $0 \leq i \leq 10^9$
-
+  
   -----Sample Input:-----
   1
   56
@@ -44,13 +44,13 @@ vc-description: |-
   1
   2
   3
-
+  
   -----Sample Output:-----
   56
   6
   2
   2
-
+  
   -----EXPLANATION:-----
   This list is :
   $N$ = 56 and $A$ = 3, $B$ = 5, $C$ = 7. 
@@ -70,17 +70,20 @@ vc-description: |-
   We have to keep repeating this process. If any of the numbers got by $N$ dividing by either $A$, $B$, $C$ have 0 after the decimal point then we have to take the first digit of the number. 
   for example: if we got 12.005 then here we take 1 and add it to the list and then assign N = 1 
   Now the queries ask for the elements at index 0, 1, 2, 3 of the $LIST$ which is 56,6, 2, 2
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
+
 vc-definitions: |-
   def solve_list_pattern (n : Nat) (a b c : Nat) (queries : List Nat) : List Nat :=
   sorry
-
+  
   /-- Output list length matches query list length -/
-vc-theorems: |
+
+vc-theorems: |-
   theorem solve_list_pattern_length {n a b c : Nat} {queries : List Nat} 
     (h1 : n ≥ 1) (h2 : n ≤ 10^9)
     (h3 : a ≥ 1) (h4 : a ≤ 100)
@@ -90,9 +93,9 @@ vc-theorems: |
     (h11 : ∀ q ∈ queries, q ≥ 0 ∧ q ≤ 100) :
     (solve_list_pattern n a b c queries).length = queries.length :=
   sorry
-
+  
   /-- All output values are single digits except possibly first -/
-
+  
   theorem solve_list_pattern_range {n a b c : Nat} {queries : List Nat}
     (h1 : n ≥ 1) (h2 : n ≤ 10^9)
     (h3 : a ≥ 1) (h4 : a ≤ 100)
@@ -102,9 +105,9 @@ vc-theorems: |
     (h11 : ∀ q ∈ queries, q ≥ 0 ∧ q ≤ 100) :
     ∀ i ∈ (solve_list_pattern n a b c queries).tail, i ≤ 9 :=
   sorry
-
+  
   /-- First query at index 0 returns initial n -/
-
+  
   theorem solve_list_pattern_init {n a b c : Nat} {queries : List Nat}
     (h1 : n ≥ 1) (h2 : n ≤ 10^9)
     (h3 : a ≥ 1) (h4 : a ≤ 100)
@@ -115,9 +118,9 @@ vc-theorems: |
     (h12 : 0 ∈ queries) :
     (solve_list_pattern n a b c queries)[queries.indexOf 0]? = some n :=
   sorry
-
+  
   /-- Function is idempotent (same inputs produce same outputs) -/
-
+  
   theorem solve_list_pattern_idempotent {n a b c : Nat} {queries : List Nat}
     (h1 : n ≥ 1) (h2 : n ≤ 10^9)
     (h3 : a ≥ 1) (h4 : a ≤ 100)
@@ -127,12 +130,14 @@ vc-theorems: |
     (h11 : ∀ q ∈ queries, q ≥ 0 ∧ q ≤ 100) :
     solve_list_pattern n a b c queries = solve_list_pattern n a b c queries :=
   sorry
-
+  
   /--
   info: [56, 6, 2, 2]
   -/
   #guard_msgs in
   #eval solve_list_pattern 56 3 5 7 [0, 1, 2, 3]
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
+

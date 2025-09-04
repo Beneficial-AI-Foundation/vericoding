@@ -2,51 +2,52 @@ vc-description: |-
   Return all non-negative integers of length n such that the absolute difference between every two consecutive digits is k.
   Note that every number in the answer must not have leading zeros except for the number 0 itself. For example, 01 has one leading zero and is invalid, but 0 is valid.
   You may return the answer in any order.
-   
+  
   Example 1:
   Input: n = 3, k = 7
   Output: [181,292,707,818,929]
   Explanation: Note that 070 is not a valid number, because it has leading zeroes.
-
+  
   Example 2:
   Input: n = 2, k = 1
   Output: [10,12,21,23,32,34,43,45,54,56,65,67,76,78,87,89,98]
-
+  
   Example 3:
   Input: n = 2, k = 0
   Output: [11,22,33,44,55,66,77,88,99]
-
+  
   Example 4:
   Input: n = 2, k = 1
   Output: [10,12,21,23,32,34,43,45,54,56,65,67,76,78,87,89,98]
-
+  
   Example 5:
   Input: n = 2, k = 2
   Output: [13,20,24,31,35,42,46,53,57,64,68,75,79,86,97]
-
-   
+  
   Constraints:
-
+  
   2 <= n <= 9
   0 <= k <= 9
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def nums_same_consec_diff (n k : Nat) : List Nat := sorry
 
+vc-definitions: |-
+  def nums_same_consec_diff (n k : Nat) : List Nat := sorry
+  
   def absDiff (a b : Nat) : Nat :=
     if a ≥ b then a - b else b - a
-vc-theorems: |
+
+vc-theorems: |-
   theorem single_digit_case (n : Nat) (h : 1 ≤ n ∧ n ≤ 9) :
     let result := nums_same_consec_diff 1 n
     List.length result = 10 ∧ 
     (∀ x ∈ result, 0 ≤ x ∧ x ≤ 9) ∧
     result = List.range 10 := sorry
-
-
+  
   theorem result_properties (n k : Nat) (h1 : 2 ≤ n ∧ n ≤ 9) (h2 : k ≤ 9) :
     let result := nums_same_consec_diff n k
     let str_len := fun x => String.length (toString x)
@@ -56,37 +57,37 @@ vc-theorems: |
     (∀ x ∈ result, first_digit x ≠ '0') ∧
     (∀ x ∈ result, ∀ i < n-1, 
       absDiff (digit_at x i) (digit_at x (i+1)) = k) := sorry
-
-
+  
   theorem zero_difference (n : Nat) (h : 2 ≤ n ∧ n ≤ 9) :
     let result := nums_same_consec_diff n 0
     (∀ x ∈ result, List.length ((toString x).data.eraseDups) = 1) ∧
     List.length result = 9 := sorry
-
-
+  
   theorem max_difference (n : Nat) (h : 2 ≤ n ∧ n ≤ 9) :
     let result := nums_same_consec_diff n 9
     let digit_at := fun x i => ((toString x).data.get! i).toNat
     ∀ x ∈ result, ∀ i < n-1,
       absDiff (digit_at x i) (digit_at x (i+1)) = 9 := sorry
-
+  
   /--
   info: [181, 292, 707, 818, 929]
   -/
   #guard_msgs in
   #eval nums_same_consec_diff 3 7
-
+  
   /--
   info: [10, 12, 21, 23, 32, 34, 43, 45, 54, 56, 65, 67, 76, 78, 87, 89, 98]
   -/
   #guard_msgs in
   #eval nums_same_consec_diff 2 1
-
+  
   /--
   info: [11, 22, 33, 44, 55, 66, 77, 88, 99]
   -/
   #guard_msgs in
   #eval nums_same_consec_diff 2 0
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+

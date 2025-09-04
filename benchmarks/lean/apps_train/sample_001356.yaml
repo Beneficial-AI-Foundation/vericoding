@@ -4,58 +4,63 @@ vc-description: |-
   - Let's denote the number of different integers in the grid by $K$; then, each of these integers should lie between $1$ and $K$ inclusive.
   - $K$ should be minimum possible.
   Find the minimum value of $K$ and a resulting (filled) grid. If there are multiple solutions, you may find any one.
-
+  
   -----Input-----
   - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
   - The first and only line of each test case contains two space-separated integers $N$ and $M$.
-
+  
   -----Output-----
   - For each test case, print $N+1$ lines.
   - The first line should contain a single integer — the minimum $K$.
   - Each of the following $N$ lines should contain $M$ space-separated integers between $1$ and $K$ inclusive. For each valid $i, j$, the $j$-th integer on the $i$-th line should denote the number in the $i$-th row and $j$-th column of the grid.
-
+  
   -----Constraints-----
   - $1 \le T \le 500$
   - $1 \le N, M \le 50$
   - the sum of $N \cdot M$ over all test cases does not exceed $7 \cdot 10^5$
-
+  
   -----Subtasks-----
   Subtask #1 (100 points): original constraints
-
+  
   -----Example Input-----
   2
   1 1
   2 3
-
+  
   -----Example Output-----
   1
   1
   3
   1 1 2
   2 3 3
-
+  
   -----Explanation-----
   Example case 1: There is only one cell in the grid, so the only valid way to fill it is to write $1$ in this cell. Note that we cannot use any other integer than $1$.
   Example case 2: For example, the integers written in the neighbours of cell $(2, 2)$ are $1$, $2$ and $3$; all these numbers are pairwise distinct and the integer written inside the cell $(2, 2)$ does not matter. Note that there are pairs of neighbouring cells with the same integer written in them, but this is OK.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def solve_grid_puzzle (n m : Nat) : Nat × Array (Array Nat) := sorry
 
+vc-definitions: |-
+  def solve_grid_puzzle (n m : Nat) : Nat × Array (Array Nat) := sorry
+  
   theorem grid_dimensions {n m : Nat} 
       (h1 : n > 0) (h2 : m > 0) : 
       let (k, arr) := solve_grid_puzzle n m
       (Array.size arr = n) ∧
       (∀ row ∈ arr, Array.size row = m) := sorry
+
 vc-theorems: |-
   theorem valid_colors {n m : Nat}
       (h1 : n > 0) (h2 : m > 0) :
       let (k, arr) := solve_grid_puzzle n m
       (k > 0) ∧
       (∀ row ∈ arr, ∀ c ∈ row, 1 ≤ c ∧ c ≤ k) := sorry
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
+

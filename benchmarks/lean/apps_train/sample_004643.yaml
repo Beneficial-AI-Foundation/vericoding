@@ -1,43 +1,45 @@
 vc-description: |-
   You are given an n by n ( square ) grid of characters, for example:
-
+  
   ```python
   [['m', 'y', 'e'], 
    ['x', 'a', 'm'], 
    ['p', 'l', 'e']]
   ```
-
+  
   You are also given a list of integers as input, for example:
-
+  
   ```python
   [1, 3, 5, 8]
   ```
-
+  
   You have to find the characters in these indexes of the grid if you think of the indexes as:
-
+  
   ```python
   [[1, 2, 3], 
    [4, 5, 6], 
    [7, 8, 9]]
   ```
-
+  
   Remember that the indexes start from one and not zero.
-
+  
   Then you output a string like this:
-
+  
   ```python
   "meal"
   ```
-
+  
   All inputs will be valid.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def grid_index (grid : List (List Char)) (indexes : List Nat) : List Char := sorry
 
+vc-definitions: |-
+  def grid_index (grid : List (List Char)) (indexes : List Nat) : List Char := sorry
+  
   theorem grid_index_length 
     (grid : List (List Char)) 
     (size : Nat) 
@@ -48,7 +50,8 @@ vc-definitions: |
     (h3 : ∀ row ∈ grid, row.length = size)
     (h4 : indexes.all (λ i => i > 0 ∧ i ≤ size * size)) :
     (grid_index grid indexes).length = indexes.length := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem grid_index_matches_position
     (grid : List (List Char))
     (size : Nat)
@@ -61,8 +64,7 @@ vc-theorems: |
     (h4 : i < indexes.length)
     (h5 : indexes[i]! > 0 ∧ indexes[i]! ≤ size * size) :
     (grid_index grid indexes)[i]! = grid[(indexes[i]! - 1) / size]![(indexes[i]! - 1) % size]! := sorry
-
-
+  
   theorem grid_index_uniform_grid
     (size : Nat)
     (c : Char)
@@ -72,24 +74,26 @@ vc-theorems: |
     (h2 : grid = List.replicate size (List.replicate size c))
     (h3 : indexes.all (λ i => i > 0 ∧ i ≤ size * size)) :
     (grid_index grid indexes).all (· = c) := sorry
-
+  
   /--
   info: 'meal'
   -/
   #guard_msgs in
   #eval grid_index [["m", "y", "e"], ["x", "a", "m"], ["p", "l", "e"]] [1, 3, 5, 8]
-
+  
   /--
   info: 'hello'
   -/
   #guard_msgs in
   #eval grid_index [["h", "e", "l"], ["l", "o", "!"], ["?", "?", "?"]] [1, 2, 3, 4, 5]
-
+  
   /--
   info: 'ad'
   -/
   #guard_msgs in
   #eval grid_index [["a", "b"], ["c", "d"]] [1, 4]
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

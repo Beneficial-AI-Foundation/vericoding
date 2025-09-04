@@ -1,46 +1,45 @@
 vc-description: |-
   Given a string text, you want to use the characters of text to form as many instances of the word "balloon" as possible.
   You can use each character in text at most once. Return the maximum number of instances that can be formed.
-   
+  
   Example 1:
-
+  
   Input: text = "nlaebolko"
   Output: 1
-
+  
   Example 2:
-
+  
   Input: text = "loonbalxballpoon"
   Output: 2
-
+  
   Example 3:
   Input: text = "leetcode"
   Output: 0
-
-   
+  
   Constraints:
-
+  
   1 <= text.length <= 10^4
   text consists of lower case English letters only.
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def max_balloons (s : String) : Nat :=
     sorry
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def makeBalloonsString (n : Nat) : String :=
     String.join (List.replicate n "balloon")
-vc-theorems: |
+
+vc-theorems: |-
   theorem max_balloons_nonnegative (text : String) : 
     max_balloons text ≥ 0 := sorry
-
-
+  
   theorem max_balloons_upper_bound (text : String) :
     max_balloons text ≤ text.length / 7 := sorry
-
-
+  
   theorem max_balloons_has_needed_chars (text : String) (c : Char) :
     let result := max_balloons text
     let needed := match c with
@@ -51,33 +50,33 @@ vc-theorems: |
       | 'n' => result
       | _ => 0
     (text.toList.filter (· = c)).length ≥ needed := sorry
-
-
+  
   theorem max_balloons_exact (n : Nat) :
     max_balloons (makeBalloonsString n) = n := sorry
-
-
+  
   theorem max_balloons_no_relevant_chars (text : String) 
     (h : ∀ c ∈ text.toList, c ∉ ['b', 'a', 'l', 'o', 'n']) :
     max_balloons text = 0 := sorry
-
+  
   /--
   info: 1
   -/
   #guard_msgs in
   #eval max_balloons "nlaebolko"
-
+  
   /--
   info: 2
   -/
   #guard_msgs in
   #eval max_balloons "loonbalxballpoon"
-
+  
   /--
   info: 0
   -/
   #guard_msgs in
   #eval max_balloons "leetcode"
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

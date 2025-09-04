@@ -1,72 +1,75 @@
 vc-description: |-
   Given the number pledged for a year, current value and name of the month, return string that gives information about the challenge status:
-
+  
   - ahead of schedule
   - behind schedule
   - on track
   - challenge is completed
-
+  
   Examples:
-
+  
   `(12, 1, "February")` - should return `"You are on track."`
-
+  
   `(12, 1, "March")` - should return `"You are 1 behind schedule."`
-
+  
   `(12, 5, "March")` - should return `"You are 3 ahead of schedule."`
-
+  
   `(12, 12, "September")` - should return `"Challenge is completed."`
-
+  
   Details:
   - you do not need to do any prechecks (input will always be a natural number and correct name of the month)
   - months should be as even as possible (i.e. for 100 items: January, February, March and April - 9, other months 8)
   - count only the item for completed months (i.e. for March check the values from January and February) and it means that for January you should always return `"You are on track."`.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
+
 vc-definitions: |-
   def check_challenge (pledged current : Nat) (month : Month) : String := sorry
-
+  
   /- Completeness property -/
-vc-theorems: |
+
+vc-theorems: |-
   theorem check_challenge_completed 
     {pledged current : Nat} {month : Month}
     (h : pledged = current) : 
     check_challenge pledged current month = "Challenge is completed." := sorry
-
+  
   /- January always on track -/
-
+  
   theorem check_challenge_january
     {pledged current : Nat}
     (h : pledged ≠ current) :
     check_challenge pledged current Month.January = "You are on track." := sorry
-
+  
   /- Output format property -/
-
+  
   theorem check_challenge_format
     {pledged current : Nat} {month : Month} :
     (check_challenge pledged current month = "Challenge is completed." ∨
      check_challenge pledged current month = "You are on track." ∨
      ∃ n : Nat, check_challenge pledged current month = s!"{n} ahead of schedule!" ∨
                check_challenge pledged current month = s!"{n} behind schedule.") := sorry
-
+  
   /- Behind implies lower progress -/
-
+  
   theorem check_challenge_behind
     {pledged current : Nat} {month : Month} {n : Nat}
     (h : check_challenge pledged current month = s!"{n} behind schedule.") :
     n > 0 := sorry
-
+  
   /- Ahead implies higher progress -/
-
+  
   theorem check_challenge_ahead  
     {pledged current : Nat} {month : Month} {n : Nat}
     (h : check_challenge pledged current month = s!"{n} ahead of schedule!") :
     n > 0 := sorry
-
+  
   /- Zero current property -/
-
+  
   theorem check_challenge_zero
     {pledged : Nat} {month : Month} :
     check_challenge pledged 0 month = 
@@ -76,24 +79,26 @@ vc-theorems: |
         "You are on track."
       else
         s!"{pledged} behind schedule." := sorry
-
+  
   /--
   info: 'You are on track.'
   -/
   #guard_msgs in
   #eval check_challenge 12 1 "February"
-
+  
   /--
   info: 'You are 1 behind schedule.'
   -/
   #guard_msgs in
   #eval check_challenge 12 1 "March"
-
+  
   /--
   info: 'Challenge is completed.'
   -/
   #guard_msgs in
   #eval check_challenge 12 12 "September"
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

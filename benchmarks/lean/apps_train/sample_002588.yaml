@@ -1,20 +1,20 @@
 vc-description: |-
   The task is very simple.
-
+  
   You must to return pyramids. Given a number ```n```  you print a pyramid with ```n``` floors
-
+  
   For example , given a ```n=4``` you must to print this pyramid:
-
+  
   ```
      /\
     /  \
    /    \
   /______\ 
-     
+  
   ```
-
+  
   Other example, given a ```n=6``` you must to print this pyramid:
-
+  
   ```  
        /\
       /  \
@@ -22,11 +22,11 @@ vc-description: |-
     /      \
    /        \
   /__________\
-
+  
   ```
-
+  
   Another example, given a ```n=10```, you must to print this pyramid:
-
+  
   ```
            /\
           /  \
@@ -38,31 +38,30 @@ vc-description: |-
     /              \
    /                \
   /__________________\
-
+  
   ```
-
+  
   Note: an extra line feed character is needed at the end of the string. Case `n=0` should so return `"\n"`.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def pyramid (n : Nat) : String := sorry
 
+vc-definitions: |-
+  def pyramid (n : Nat) : String := sorry
+  
   def String.stripRight (s : String) : String := sorry
+
 vc-theorems: |-
   theorem pyramid_empty_newline : pyramid 0 = "\n" := sorry
-
+  
   theorem pyramid_single_level : pyramid 1 = "/\\\n" := sorry
-
-
+  
   theorem pyramid_ends_with_newline {n : Nat} : 
     (pyramid n).endsWith "\n" := sorry 
-
-
-
-
+  
   theorem pyramid_line_structure {n : Nat} (h : n > 0) :
     let lines := (pyramid n).splitOn "\n"
     ∀ i < n,
@@ -70,12 +69,13 @@ vc-theorems: |-
     let content := line.trim
     content.front = '/' ∧ 
     content.back = '\\' := sorry
-
-
+  
   theorem pyramid_last_line_underscores {n : Nat} (h : n > 1) :
     let lines := (pyramid n).splitOn "\n"
     let lastLine := lines.get! (n-1)
     lastLine.contains '_' := sorry
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
+

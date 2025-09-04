@@ -4,25 +4,27 @@ vc-description: |-
   Print the three most common characters along with their occurrence count.
   Sort in descending order of occurrence count.
   If the occurrence count is the same, sort the characters in alphabetical order.
-
+  
   For example, according to the conditions described above, GOOGLE would have it's logo with the letters G, O, E. 
-
+  
   =====Input Format=====
   A single line of input containing the string S.
-
+  
   =====Constraints=====
   3≤len(S)≤10^4
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def get_top_three_chars (s : String) : String :=
     sorry
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def String.count (s : String) (c : String) : Nat :=
     sorry
+
 vc-theorems: |-
   theorem get_top_three_chars_valid_format (s : String)
     (h : s.length > 0)
@@ -41,8 +43,7 @@ vc-theorems: |-
     (let chars := lines.map (λ l => (l.splitOn " ").get! 0);
      chars.eraseDups = chars) :=
     sorry
-
-
+  
   theorem get_top_three_chars_alphabetical_tiebreak (s : String)
     (h : s.length ≥ 2)
     (h2 : ∀ c ∈ s.data, c = 'a' ∨ c = 'b') :
@@ -57,6 +58,8 @@ vc-theorems: |-
       let char2 := parts2.get! 0;
       count1 = count2 → char1 > char2 :=
     sorry
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
+

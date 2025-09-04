@@ -1,62 +1,64 @@
 vc-description: |-
   =====Function Descriptions=====
   shape
-
+  
   The shape tool gives a tuple of array dimensions and can be used to change the dimensions of an array.
-
+  
   (a). Using shape to get array dimensions
-
+  
   import numpy
-
+  
   my__1D_array = numpy.array([1, 2, 3, 4, 5])
   print my_1D_array.shape     #(5,) -> 5 rows and 0 columns
-
+  
   my__2D_array = numpy.array([[1, 2],[3, 4],[6,5]])
   print my_2D_array.shape     #(3, 2) -> 3 rows and 2 columns 
-
+  
   (b). Using shape to change array dimensions
-
+  
   import numpy
-
+  
   change_array = numpy.array([1,2,3,4,5,6])
   change_array.shape = (3, 2)
   print change_array      
-
+  
   #Output
   [[1 2]
   [3 4]
   [5 6]]
-
+  
   reshape
-
+  
   The reshape tool gives a new shape to an array without changing its data. It creates a new array and does not modify the original array itself.
-
+  
   import numpy
-
+  
   my_array = numpy.array([1,2,3,4,5,6])
   print numpy.reshape(my_array,(3,2))
-
+  
   #Output
   [[1 2]
   [3 4]
   [5 6]]
-
+  
   =====Problem Statement=====
   You are given a space separated list of nine integers. Your task is to convert this list into a 3X3 NumPy array.
-
+  
   =====Input Format=====
   A single line of input containing 9 space separated integers.
-
+  
   =====Output Format=====
   Print the 3X3 NumPy array.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def convert_to_3x3_array (input: String) : Except String (Array (Array Int)) := sorry
 
+vc-definitions: |-
+  def convert_to_3x3_array (input: String) : Except String (Array (Array Int)) := sorry
+  
   theorem convert_to_3x3_array_correct (numbers: List Int) 
     (h1: numbers.length = 9) : 
     let str := String.intercalate " " (numbers.map toString)
@@ -67,28 +69,29 @@ vc-definitions: |
         (result.get! 1).size = 3 ∧
         (result.get! 2).size = 3
     | .error _ => False := sorry
+
 vc-theorems: |-
   theorem convert_to_3x3_array_invalid_input (input: String)
     (h1: ¬String.all input (fun c => c.isDigit ∨ c = ' ')) :
     match convert_to_3x3_array input with
     | .ok _ => False
     | .error _ => True := sorry
-
-
+  
   theorem convert_to_3x3_array_too_few_numbers (numbers: List Int)
     (h1: numbers.length < 9) :
     let str := String.intercalate " " (numbers.map toString)
     match convert_to_3x3_array str with
     | .ok _ => False
     | .error _ => True := sorry
-
-
+  
   theorem convert_to_3x3_array_too_many_numbers (numbers: List Int)
     (h1: numbers.length > 9) :
     let str := String.intercalate " " (numbers.map toString)
     match convert_to_3x3_array str with
     | .ok _ => False
     | .error _ => True := sorry
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
+

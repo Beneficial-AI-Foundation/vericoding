@@ -1,76 +1,73 @@
 vc-description: |-
   You are given a permutation $p_1, p_2, \ldots, p_n$.
-
+  
   In one move you can swap two adjacent values.
-
+  
   You want to perform a minimum number of moves, such that in the end there will exist a subsegment $1,2,\ldots, k$, in other words in the end there should be an integer $i$, $1 \leq i \leq n-k+1$ such that $p_i = 1, p_{i+1} = 2, \ldots, p_{i+k-1}=k$.
-
+  
   Let $f(k)$ be the minimum number of moves that you need to make a subsegment with values $1,2,\ldots,k$ appear in the permutation.
-
+  
   You need to find $f(1), f(2), \ldots, f(n)$.
-
-
+  
   -----Input-----
-
+  
   The first line of input contains one integer $n$ ($1 \leq n \leq 200\,000$): the number of elements in the permutation.
-
+  
   The next line of input contains $n$ integers $p_1, p_2, \ldots, p_n$: given permutation ($1 \leq p_i \leq n$).
-
-
+  
   -----Output-----
-
+  
   Print $n$ integers, the minimum number of moves that you need to make a subsegment with values $1,2,\ldots,k$ appear in the permutation, for $k=1, 2, \ldots, n$.
-
-
+  
   -----Examples-----
   Input
   5
   5 4 3 2 1
-
+  
   Output
   0 1 3 6 10 
-
+  
   Input
   3
   1 2 3
-
+  
   Output
   0 0 0
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def BinaryIndexedTree : Type := Unit
   def BinaryIndexedTree.mk (n : Nat) : BinaryIndexedTree := sorry 
-
+  
   def BinaryIndexedTree.add (self : BinaryIndexedTree) (i : Nat) (x : Int) : Unit := sorry
   def BinaryIndexedTree.sum (self : BinaryIndexedTree) (i : Nat) : Int := sorry
-
+  
   def BinaryIndexedTree.sum_range (self : BinaryIndexedTree) (l r : Nat) : Int := sorry
   def BinaryIndexedTree.data (self : BinaryIndexedTree) : List Int := sorry
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def solve (n : Nat) (perm : List Nat) : List Nat := sorry
 
+vc-definitions: |-
+  def solve (n : Nat) (perm : List Nat) : List Nat := sorry
+  
   theorem bit_init_properties (n : Nat) (h : n > 0) :
     let bit := BinaryIndexedTree.mk n
     List.length (BinaryIndexedTree.data bit) = n + 1 ∧ 
     List.all (BinaryIndexedTree.data bit) (λ x => x = 0) := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem bit_add_sum_properties (n i : Nat) (x : Int) (h1 : n > 0) (h2 : i > 0) (h3 : i ≤ n) :
     let bit := BinaryIndexedTree.mk n
     let bit' := BinaryIndexedTree.add bit i x
     BinaryIndexedTree.sum bit i = x ∧ BinaryIndexedTree.sum bit n = x := sorry
-
-
+  
   theorem bit_range_sum_property (n l r : Nat) (h1 : n > 0) (h2 : l > 0) (h3 : r > 0)
     (h4 : l ≤ r) (h5 : r ≤ n) :
     let bit := BinaryIndexedTree.mk n
     let bit' := List.foldl (λ b i => BinaryIndexedTree.add b (i + l) 1) bit (List.range (r - l + 1))
     BinaryIndexedTree.sum_range bit' l r = r - l + 1 := sorry
-
-
+  
   theorem solve_properties (n : Nat) (perm : List Nat) (h1 : n > 0) 
     (h2 : List.length perm = n)
     (h3 : ∀ i j, i < j → perm.get! i < perm.get! j)
@@ -79,24 +76,26 @@ vc-theorems: |
     List.length result = n ∧
     List.all result (λ x => x ≥ 0) ∧
     result.head? = some 0 := sorry
-
+  
   /--
   info: [0, 1, 3, 6, 10]
   -/
   #guard_msgs in
   #eval solve 5 [5, 4, 3, 2, 1]
-
+  
   /--
   info: [0, 0, 0]
   -/
   #guard_msgs in
   #eval solve 3 [1, 2, 3]
-
+  
   /--
   info: [0]
   -/
   #guard_msgs in
   #eval solve 1 [1]
+
 vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
+

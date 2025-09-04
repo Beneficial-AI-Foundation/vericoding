@@ -1,12 +1,8 @@
 vc-description: |-
   Every natural number, ```n```, may have a prime factorization like:
-
-
-
+  
   We define the arithmetic derivative of ```n```, ```n'``` the value of the expression:
-
-
-
+  
   Let's do the calculation for ```n = 231525```.
   ```
   231525 = 3³5²7³ 
@@ -21,7 +17,7 @@ vc-description: |-
   231525 ---> 423360 ---> 1899072 ---> 7879680 ---> 51895296
   ```
   We need a function ```chain_arith_deriv()``` that receives two arguments: ```start``` and ```k```, amount of terms of the chain.
-
+  
   The function should output the chain in an array format:
   ```
   chain_arith_deriv(start, k) ---> [start, term1, term2, .....term(k-1)] # a total of k-terms
@@ -41,15 +37,18 @@ vc-description: |-
   3 ≤ k ≤ 15
   ```
   Enjoy it and do your best!
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def isPrime (n : Nat) : Bool := sorry
 
-  def chain_arith_deriv (n : Nat) (k : Nat) : String ⊕ List Nat := sorry 
+vc-definitions: |-
+  def isPrime (n : Nat) : Bool := sorry
+  
+  def chain_arith_deriv (n : Nat) (k : Nat) : String ⊕ List Nat := sorry
+
 vc-theorems: |-
   theorem chain_length {n k : Nat} (h1 : n ≥ 2) (h2 : k ≥ 1) (h3 : k ≤ 10) :
     let result := chain_arith_deriv n k
@@ -57,12 +56,13 @@ vc-theorems: |-
     | Sum.inl s => ∃ p, isPrime p ∧ s = s!"{p} is a prime number" 
     | Sum.inr l => l.length = k ∧ l.head? = some n
     := sorry
-
-
+  
   theorem small_primes {p k : Nat} 
     (h1 : p ≥ 2) (h2 : p ≤ 100) (h3 : k ≥ 1) (h4 : k ≤ 10)
     (h5 : isPrime p) :
     chain_arith_deriv p k = Sum.inl s!"{p} is a prime number" := sorry
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
+

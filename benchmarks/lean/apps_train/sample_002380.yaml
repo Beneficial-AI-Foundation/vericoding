@@ -2,39 +2,39 @@ vc-description: |-
   Given a date, return the corresponding day of the week for that date.
   The input is given as three integers representing the day, month and year respectively.
   Return the answer as one of the following values {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"}.
-   
+  
   Example 1:
   Input: day = 31, month = 8, year = 2019
   Output: "Saturday"
-
+  
   Example 2:
   Input: day = 18, month = 7, year = 1999
   Output: "Sunday"
-
+  
   Example 3:
   Input: day = 15, month = 8, year = 1993
   Output: "Sunday"
-
-   
+  
   Constraints:
-
+  
   The given dates are valid dates between the years 1971 and 2100.
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def day_of_the_week (day month year : Nat) : Day :=
     sorry
-
-
+  
   def isValidDate (day month year : Nat) : Prop :=
     day ≥ 1 ∧ day ≤ 31 ∧ month ≥ 1 ∧ month ≤ 12
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def isLeapYear (year : Nat) : Prop :=
     year % 4 = 0 ∧ (year % 100 ≠ 0 ∨ year = 2000)
-vc-theorems: |
+
+vc-theorems: |-
   theorem valid_dates {day month year : Nat} 
     (hday : day ≥ 1 ∧ day ≤ 31)
     (hmonth : month ≥ 1 ∧ month ≤ 12)
@@ -42,40 +42,40 @@ vc-theorems: |
     (hvalid : isValidDate day month year) :
     ∃ d : Day, day_of_the_week day month year = d :=
   sorry
-
-
+  
   theorem leap_year {year month : Nat}
     (hyear : year ≥ 1971 ∧ year ≤ 2100)
     (hmonth : month = 2)
     (hleap : isLeapYear year) :
     ∃ d : Day, day_of_the_week 29 2 year = d :=
   sorry
-
-
+  
   theorem year_boundaries {year : Nat}
     (hyear : year ≥ 1971 ∧ year ≤ 2100) :
     ∃ d1 d2 : Day, 
       day_of_the_week 1 1 year = d1 ∧
       day_of_the_week 31 12 year = d2 :=
   sorry
-
+  
   /--
   info: 'Saturday'
   -/
   #guard_msgs in
   #eval day_of_the_week 31 8 2019
-
+  
   /--
   info: 'Sunday'
   -/
   #guard_msgs in
   #eval day_of_the_week 18 7 1999
-
+  
   /--
   info: 'Sunday'
   -/
   #guard_msgs in
   #eval day_of_the_week 15 8 1993
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

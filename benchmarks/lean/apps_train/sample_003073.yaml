@@ -1,17 +1,17 @@
 vc-description: |-
   # Task
    We have a N×N `matrix` (N<10) and a robot. 
-   
+  
    We wrote in each point of matrix x and y coordinates of a point of matrix. 
-   
+  
    When robot goes to a point of matrix, reads x and y and transfer to point with x and y coordinates.
-   
+  
    For each point in the matrix we want to know if robot returns back to it after `EXACTLY k` moves. So your task is to count points to which Robot returns in `EXACTLY k` moves. 
-   
+  
    You should stop counting moves as soon as the robot returns to the starting point. That is, if the robot returns to the starting point in fewer than k moves, that point should not count as a valid point.
-   
+  
   # example
-
+  
    For:
    ```
    matrix=[
@@ -34,31 +34,31 @@ vc-description: |-
   (Robot can not transfer back to 2,2)
   ```
   So the result is 8.
-
+  
   # Input/Output
-
-
+  
    - `[input]` 2D integer array matrix
-   
+  
    n x n matrix. 3 <= n <=9
-   
-   
+  
    - `[input]` integer `k`
-   
+  
    `2 <= k <= 5`
-   
-   
+  
    - `[output]` an integer
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def robotTransfer : List (List String) → Nat → Nat := sorry
 
+vc-definitions: |-
+  def robotTransfer : List (List String) → Nat → Nat := sorry
+  
   def parseCoords (s : String) : Option (Nat × Nat) := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem robotTransfer_2x2_valid_output 
     (matrix : List (List String)) 
     (k : Nat) 
@@ -70,8 +70,7 @@ vc-theorems: |
       | none => False)
     (h4 : 1 ≤ k ∧ k ≤ 10)
     : 0 ≤ robotTransfer matrix k ∧ robotTransfer matrix k ≤ 4 := sorry
-
-
+  
   theorem robotTransfer_2x2_valid_matrix_format
     (matrix : List (List String)) 
     (h1 : matrix.length = 2)
@@ -80,18 +79,20 @@ vc-theorems: |
       match parseCoords cell with
       | some (x, y) => x ≤ 1 ∧ y ≤ 1
       | none => False := sorry
-
+  
   /--
   info: 8
   -/
   #guard_msgs in
   #eval robot_transfer [["0,1", "0,0", "1,2"], ["1,1", "1,0", "0,2"], ["2,1", "2,0", "0,0"]] 2
-
+  
   /--
   info: 4
   -/
   #guard_msgs in
   #eval robot_transfer [["0,1", "0,0"], ["1,1", "1,0"]] 2
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

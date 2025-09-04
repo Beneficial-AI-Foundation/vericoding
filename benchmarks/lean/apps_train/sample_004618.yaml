@@ -1,103 +1,100 @@
 vc-description: |-
   The date is March 24, 2437 and the the Earth has been nearly completely destroyed by the actions of its inhabitants. Our last hope in this disaster lies in a shabby time machine built from old toasters and used microwave parts.  
-
+  
   The World Time Agency requires you to travel back in time to prevent disaster.  You are ordered to "remove" certain babies from the timeline.  
-
+  
   Historical newspapers and records provide the Date, Month, and Year for each mission.  Unfortunately the time machine takes input only as the number of days to travel back in time.  It is your job to calculate how many days you will need to travel back from today's date (March 24, 2437) for each mission.
-
+  
   For example, if a historical newspaper says a dangerous baby was born on:
   Date = 21, Month = 3, Year = 2437
   Then your function must compute that it was 3 Days ago.
-
+  
   Another example would be that a baby born on Date = 24, Month = 3, Year = 2436 would have been born 365 days ago.
-
+  
   You will not have time travel past the year 0.
-
+  
   Note that while this is a fairly simple task, it is complicated by the fact that newspapers used the Julian calendar instead of the current Gregorian calendar prior to September 14, 1752.  In 1752, it was declared that Sep 2, 1752 was proceeded immediately by September 14, 1752, entirely omitting September 3-13. Furthermore, the rules for leap years changed on that date.
-
+  
   After 1752, leap years are on any year divisible by four, except for years which are divisible by 100. An exception to that exception is that years divisible by 400 are always leap years.  For example, 1803, 1900, 2001, 2019, and 2100 are not leap years, but 1804, 2000 and 2020 are leap years. 
   However in the Julian calander prior to and including 1752, leap years were on every year divisible by 4, without the exception of years divisible by 100.  The years 1752, 1700, 1600, and 0 were all leap years.
-
+  
   Good luck agent, the world depends on you!
-
-
+  
   Note: It is not required, but if you find it helpful to visualize the switch from the Julian to the Gregorian calendar, please see these links:
-
+  
   Please observe that much of September 1752 is missing here: https://www.timeanddate.com/calendar/?year=1752&country=1
-
+  
   Please observe that 1700 is a leap year here: https://www.timeanddate.com/calendar/?year=1700&country=1
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def days_until (date month year : Int) : Int :=
     sorry
-
-
+  
   def isValidDate (date month year : Int) : Bool :=
     sorry
-
-
+  
   def dateCompare (d1 m1 y1 d2 m2 y2 : Int) : Bool :=
     if y1 ≠ y2 then y1 > y2
     else if m1 ≠ m2 then m1 > m2
     else d1 > d2
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def dateDiffDays (d1 m1 y1 d2 m2 y2 : Int) : Int :=
     sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem days_until_is_int {date month year : Int} 
     (h : isValidDate date month year = true) :
     ∃ n : Int, days_until date month year = n :=
   sorry
-
-
+  
   theorem days_until_target_date {date month year : Int}
     (h1 : date = 24)
     (h2 : month = 3) 
     (h3 : year = 2437) :
     days_until date month year = 0 :=
   sorry
-
-
+  
   theorem days_until_future_dates {date month year : Int}
     (h1 : isValidDate date month year = true)
     (h2 : dateCompare date month year 24 3 2437 = true) :
     days_until date month year < 0 :=
   sorry
-
-
+  
   theorem days_until_past_dates {date month year : Int}
     (h1 : isValidDate date month year = true)
     (h2 : dateCompare 24 3 2437 date month year = true) :
     days_until date month year > 0 :=
   sorry
-
-
+  
   theorem days_until_symmetry {date month year : Int} 
     (h : isValidDate date month year = true) :
     days_until date month year = dateDiffDays year month date 2437 3 24 :=
   sorry
-
+  
   /--
   info: 3
   -/
   #guard_msgs in
   #eval days_until 21 3 2437
-
+  
   /--
   info: 365
   -/
   #guard_msgs in
   #eval days_until 24 3 2436
-
+  
   /--
   info: 28
   -/
   #guard_msgs in
   #eval days_until 24 2 2437
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
+

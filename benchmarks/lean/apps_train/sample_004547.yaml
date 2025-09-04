@@ -1,80 +1,80 @@
 vc-description: |-
   While developing a website, you detect that some of the members have troubles logging in. Searching through the code you find that all logins ending with a "\_" make problems. So you want to write a function that takes an array of pairs of login-names and e-mails, and outputs an array of all login-name, e-mails-pairs from the login-names that end with "\_".
-
+  
   If you have the input-array:
-
+  
   ```
   [ [ "foo", "foo@foo.com" ], [ "bar_", "bar@bar.com" ] ]
   ```
-
+  
   it should output
-
+  
   ```
   [ [ "bar_", "bar@bar.com" ] ]
   ```
-
+  
   You *have to* use the *filter*-method which returns each element of the array for which the *filter*-method returns true.
-
+  
   ```python
   https://docs.python.org/3/library/functions.html#filter
   ```
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def search_names (logins : List (String × String)) : List (String × String) :=
     sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem search_names_subset (logins : List (String × String)) :
     ∀ x, x ∈ search_names logins → x ∈ logins :=
     sorry
-
-
+  
   theorem search_names_all_underscore (logins : List (String × String)) :
     ∀ x ∈ search_names logins, x.1.endsWith "_" :=
     sorry
-
-
+  
   theorem search_names_contains_all_matching (logins : List (String × String)) :
     (search_names logins).length = 
       (logins.filter (fun x => x.1.endsWith "_")).length :=
     sorry
-
-
+  
   theorem search_names_preserves_order (logins : List (String × String)) :
     search_names logins = logins.filter (fun x => x.1.endsWith "_") :=
     sorry
-
-
+  
   theorem search_names_empty_input :
     search_names [] = [] :=
     sorry
-
-
+  
   theorem search_names_no_matching (logins : List (String × String)) :
     (∀ x ∈ logins, ¬x.1.endsWith "_") →
     search_names logins = [] :=
     sorry
-
+  
   /--
   info: [['bar_', 'bar@bar.com']]
   -/
   #guard_msgs in
   #eval search_names [["foo", "foo@foo.com"], ["bar_", "bar@bar.com"]]
-
+  
   /--
   info: [['foo_', 'foo@foo.com'], ['bar_', 'bar@bar.com']]
   -/
   #guard_msgs in
   #eval search_names [["foo_", "foo@foo.com"], ["bar_", "bar@bar.com"], ["baz", "baz@baz.com"]]
-
+  
   /--
   info: []
   -/
   #guard_msgs in
   #eval search_names [["foo", "foo@foo.com"], ["bar", "bar@bar.com"]]
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

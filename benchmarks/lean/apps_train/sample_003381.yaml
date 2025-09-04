@@ -4,7 +4,7 @@ vc-description: |-
   - first remove all letter 'a', followed by letter 'b', then 'c', etc...
   - remove the leftmost character first.
   ```
-
+  
   ```Python
   For example: 
   solve('abracadabra', 1) = 'bracadabra' # remove the leftmost 'a'.
@@ -13,69 +13,69 @@ vc-description: |-
   solve('abracadabra', 8) = 'rdr'
   solve('abracadabra',50) = ''
   ```
-
+  
   More examples in the test cases. Good luck!
-
+  
   Please also try: 
-
+  
   [Simple time difference](https://www.codewars.com/kata/5b76a34ff71e5de9db0000f2)
-
+  
   [Simple remove duplicates](https://www.codewars.com/kata/5ba38ba180824a86850000f7)
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def solve (text : String) (k : Nat) : String := sorry
-
+  
   def get_char_indices (s : String) (c : Char) : List Nat := sorry
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def List.sorted (l : List Nat) : Prop := 
     ∀ i j, i < j → j < l.length → 
     match l.get? i, l.get? j with
     | some vi, some vj => vi ≤ vj
     | _, _ => True
-vc-theorems: |
+
+vc-theorems: |-
   theorem solve_result_length (text : String) (k : Nat) (h : text.length > 0) :
     (solve text k).length = max 0 (text.length - min k text.length) := sorry
-
-
+  
   theorem solve_chars_from_original (text : String) (k : Nat) (h : text.length > 0) :
     ∀ c, c ∈ (solve text k).data → c ∈ text.data := sorry
-
-
+  
   theorem solve_maintains_order (text : String) (k : Nat) (h : text.length > 0) :
     ∀ c, c ∈ (solve text k).data →
       let result_indices := get_char_indices (solve text k) c
       let orig_indices := get_char_indices text c
       List.sorted result_indices := sorry
-
-
+  
   theorem solve_k_zero (text : String) (h : text.length > 0) :
     solve text 0 = text := sorry
-
-
+  
   theorem solve_k_length (text : String) (h : text.length > 0) :
     solve text text.length = "" := sorry
-
+  
   /--
   info: 'bracadabra'
   -/
   #guard_msgs in
   #eval solve "abracadabra" 1
-
+  
   /--
   info: 'rcdbr'
   -/
   #guard_msgs in
   #eval solve "abracadabra" 6
-
+  
   /--
   info: 'cccbbabaccbc'
   -/
   #guard_msgs in
   #eval solve "cccaabababaccbc" 3
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

@@ -10,25 +10,25 @@ vc-description: |-
   Limak enjoys this game very much and wants to play as long as possible.
   In particular, he doesn't start a new command while the previously chosen soldier moves.
   Can you tell him, how many seconds he can play at most?
-
+  
   -----Input-----
   The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
-
+  
   The only line of each test case contains a string S describing the row with N cells.
   Each character is either '0' or '1', denoting an empty cell or a cell with a soldier respectively.
-
+  
   -----Output-----
   For each test case, output a single line containing one integer — the maximum possible number of seconds Limak will play the game.
-
+  
   -----Constraints-----
   - 1 ≤ T ≤ 5
   - 1 ≤ N ≤ 105 (N denotes the length of the string S)
-
+  
   -----Subtasks-----
   - Subtask #1 (25 points): 1 ≤ N ≤ 10
   - Subtask #2 (25 points): 1 ≤ N ≤ 2000
   - Subtask #3 (50 points): Original constraints.
-
+  
   -----Example-----
   Input:
   4
@@ -36,13 +36,13 @@ vc-description: |-
   1100001
   000000000111
   001110100011010
-
+  
   Output:
   8
   10
   0
   48
-
+  
   -----Explanation-----
   Test case 1.
   The initial string is 10100.
@@ -70,69 +70,69 @@ vc-description: |-
   There is only one possible scenario:
   - 1100001 is changed to 1000011 in 5 seconds (1 second to choose a soldier and 4 seconds for the soldier to move 4 cells to the right).
   - 1000011 is changed to 0000111 in 5 seconds.
-
+  
   The total time is 5 + 5 = 10 seconds.
   Test case 3.
   The game is over immediately because all soldiers occupy rightmost cells already.
   The answer is 0.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def solve_moving_soldiers (s : String) : Nat :=
     sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem empty_string :
     solve_moving_soldiers "" = 0 :=
   sorry
-
-
+  
   theorem all_zeros (n : Nat) :
     solve_moving_soldiers (String.mk (List.replicate n '0')) = 0 :=
   sorry
-
-
+  
   theorem all_ones (n : Nat) :
     solve_moving_soldiers (String.mk (List.replicate n '1')) = 0 :=
   sorry
-
-
+  
   theorem trailing_ones_invariant (s₁ s₂ : String) :
     s₂ = s₁ ++ String.mk (List.replicate 3 '1') →
     solve_moving_soldiers s₁ = solve_moving_soldiers s₂ :=
   sorry
-
-
+  
   theorem result_nonnegative (s : String) :
     solve_moving_soldiers s ≥ 0 :=
   sorry
-
-
+  
   theorem no_movement_needed (s : String) :
     (s.toList.filter (· = '1')).length = 0 ∨
     (s.toList.dropWhile (· = '1')).isEmpty →
     solve_moving_soldiers s = 0 :=
   sorry
-
+  
   /--
   info: 8
   -/
   #guard_msgs in
   #eval solve_moving_soldiers "10100"
-
+  
   /--
   info: 10
   -/
   #guard_msgs in
   #eval solve_moving_soldiers "1100001"
-
+  
   /--
   info: 0
   -/
   #guard_msgs in
   #eval solve_moving_soldiers "000000000111"
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
+

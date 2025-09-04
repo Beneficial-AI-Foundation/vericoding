@@ -1,55 +1,55 @@
 vc-description: |-
   Given a positive integer n, find the least number of perfect square numbers (for example, 1, 4, 9, 16, ...) which sum to n.
-
+  
   Example 1:
-
-
+  
   Input: n = 12
   Output: 3 
   Explanation: 12 = 4 + 4 + 4.
-
+  
   Example 2:
-
-
+  
   Input: n = 13
   Output: 2
   Explanation: 13 = 4 + 9.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def sqrt (n : Nat) : Nat := sorry
 
+vc-definitions: |-
+  def sqrt (n : Nat) : Nat := sorry
+  
   def numSquares (n : Nat) : Nat := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem numSquares_bounds (n : Nat) (h : n ≥ 1) : 
     1 ≤ numSquares n ∧ numSquares n ≤ 4 := sorry
-
-
-
-
+  
   theorem numSquares_four_pattern (k m : Nat) (h : 4^k * (8*m + 7) > 0) :
     numSquares (4^k * (8*m + 7)) = 4 := sorry
-
+  
   /--
   info: 3
   -/
   #guard_msgs in
   #eval numSquares 12
-
+  
   /--
   info: 2
   -/
   #guard_msgs in
   #eval numSquares 13
-
+  
   /--
   info: 4
   -/
   #guard_msgs in
   #eval numSquares 7
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
+

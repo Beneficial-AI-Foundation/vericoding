@@ -1,73 +1,72 @@
 vc-description: |-
   In the year 4242, the language Haskell has evolved so much that it has become an AI. It can solve very challenging problems, in very little time. Humanity is worried that Haskell will take over the world. All hopes remain tied to the Competitive Programming community as they are the expert in shaving milliseconds off code runtime. Haskell creators have found one particular task that if solved faster than Haskell itself, can be used to hack into Haskell's codebase and thus defeat it. The exact details of the task are as follows,
-
-
+  
   " Calculate the sum, S(N, K) = , for Q queries. Here Fi is ith Fibonacci number defined as: Fi = i if i = 0 or 1 and Fi = Fi-1 + Fi-2 if i >= 2. "
-
-
+  
   You being a member of the Competitive Programming community are encouraged to make a submission to this task.
-
+  
   -----Input-----
-
+  
   The first line contains a single integer Q, the number of queries.
-
+  
   Each of the next Q lines contain two integers each, Ni and Ki.
-
+  
   -----Output-----
-
+  
   Output Q lines with one integer each. The ith line should contain the value S(Ni, Ki).
-
+  
   -----Constraints-----
   - 1 <= Q <= 5*104
   - 1 <= N <= 1018
   - 1 <= K <= 1018
-
+  
   -----Example-----
   Input:
   1
   1 1
   Output:
   1
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def fibonacci_sum (n k : Nat) : Nat := sorry
 
+vc-definitions: |-
+  def fibonacci_sum (n k : Nat) : Nat := sorry
+  
   def MOD := 1000000007
-vc-theorems: |
+
+vc-theorems: |-
   theorem fibonacci_sum_bounds (n k : Nat) :
     fibonacci_sum n k < MOD := sorry
-
-
+  
   theorem fibonacci_sum_base_case : 
     fibonacci_sum 1 1 = 1 := sorry
-
-
+  
   theorem fibonacci_sum_mod_equiv (n k : Nat) :
     fibonacci_sum n k = fibonacci_sum n (k + MOD) := sorry
-
-
+  
   theorem fibonacci_sum_zero_k (n : Nat) :
     fibonacci_sum n 0 = 0 := sorry
-
-
+  
   theorem fibonacci_sum_negative_n_error (n : Int) (k : Nat) :
     n < 0 → fibonacci_sum (Int.toNat n) k = 0 := sorry
-
+  
   /--
   info: 1
   -/
   #guard_msgs in
   #eval fibonacci_sum 1 1
-
+  
   /--
   info: 2
   -/
   #guard_msgs in
   #eval fibonacci_sum 1 2
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+

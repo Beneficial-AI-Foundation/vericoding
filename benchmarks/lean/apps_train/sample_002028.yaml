@@ -1,54 +1,51 @@
 vc-description: |-
   You are given an array consisting of n non-negative integers a_1, a_2, ..., a_{n}.
-
+  
   You are going to destroy integers in the array one by one. Thus, you are given the permutation of integers from 1 to n defining the order elements of the array are destroyed.
-
+  
   After each element is destroyed you have to find out the segment of the array, such that it contains no destroyed elements and the sum of its elements is maximum possible. The sum of elements in the empty segment is considered to be 0.
-
-
+  
   -----Input-----
-
+  
   The first line of the input contains a single integer n (1 ≤ n ≤ 100 000) — the length of the array.
-
+  
   The second line contains n integers a_1, a_2, ..., a_{n} (0 ≤ a_{i} ≤ 10^9). 
-
+  
   The third line contains a permutation of integers from 1 to n — the order used to destroy elements.
-
-
+  
   -----Output-----
-
+  
   Print n lines. The i-th line should contain a single integer — the maximum possible sum of elements on the segment containing no destroyed elements, after first i operations are performed.
-
-
+  
   -----Examples-----
   Input
   4
   1 3 2 5
   3 4 1 2
-
+  
   Output
   5
   4
   3
   0
-
+  
   Input
   5
   1 2 3 4 5
   4 2 3 5 1
-
+  
   Output
   6
   5
   5
   1
   0
-
+  
   Input
   8
   5 5 4 4 6 6 5 5
   5 2 8 7 1 3 4 6
-
+  
   Output
   18
   16
@@ -58,24 +55,25 @@ vc-description: |-
   6
   6
   0
-
-
-
+  
   -----Note-----
-
+  
   Consider the first sample:   Third element is destroyed. Array is now 1 3  *  5. Segment with maximum sum 5 consists of one integer 5.  Fourth element is destroyed. Array is now 1 3  *   * . Segment with maximum sum 4 consists of two integers 1 3.  First element is destroyed. Array is now  *  3  *   * . Segment with maximum sum 3 consists of one integer 3.  Last element is destroyed. At this moment there are no valid nonempty segments left in this array, so the answer is equal to 0.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def solve_array_destroy (n : Nat) (nums : List Nat) (destroy_order : List Nat) : List Nat := sorry
 
+vc-definitions: |-
+  def solve_array_destroy (n : Nat) (nums : List Nat) (destroy_order : List Nat) : List Nat := sorry
+  
   def list_sum (l : List Nat) : Nat :=
     match l with 
     | [] => 0
     | x::xs => x + list_sum xs
+
 vc-theorems: |-
   theorem solve_array_destroy_output_valid 
     (n : Nat) (nums destroy_order : List Nat)
@@ -92,8 +90,7 @@ vc-theorems: |-
     (∀ i < result.length - 1, match result.get? i, result.get? (i+1) with
       | some x, some y => x ≥ y
       | _, _ => True) := sorry
-
-
+  
   theorem solve_array_destroy_adjacent_valid
     (n : Nat) (nums destroy_order : List Nat)
     (h1 : n ≥ 2) (h2 : n ≤ 20)
@@ -105,8 +102,7 @@ vc-theorems: |-
     let result := solve_array_destroy n nums destroy_order
     result.length = n ∧
     (result.length > 0 → result.get? (result.length - 1) = some 0) := sorry
-
-
+  
   theorem solve_array_destroy_max_bound
     (n : Nat) (nums destroy_order : List Nat)
     (h1 : n > 0) (h2 : n ≤ 50)
@@ -118,6 +114,8 @@ vc-theorems: |-
     let result := solve_array_destroy n nums destroy_order
     result.length = n ∧
     ∀ x ∈ result, x ≤ list_sum nums := sorry
+
 vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: guarded
+

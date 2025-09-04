@@ -1,60 +1,63 @@
 vc-description: |-
   You should write a function that takes a string and a positive integer `n`, splits the string into parts of length `n` and returns them in an array. It is ok for the last element to have less than `n` characters.
-
+  
   If `n` is not a valid size (`> 0`) (or is absent), you should return an empty array.
-
+  
   If `n` is greater than the length of the string, you should return an array with the only element being the same string.
-
+  
   Examples:
-
+  
   ```python
   string_chunk('codewars', 2) # ['co', 'de', 'wa', 'rs']
   string_chunk('thiskataeasy', 4) # ['this', 'kata', 'easy']
   string_chunk('hello world', 3) # ['hel', 'lo ', 'wor', 'ld']
   string_chunk('sunny day', 0) # []
   ```
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def string_chunk (s : String) (n : Nat) : List String := sorry
 
+vc-definitions: |-
+  def string_chunk (s : String) (n : Nat) : List String := sorry
+  
   theorem string_chunk_length_property (s : String) (n : Nat) (h : n > 0) :
     s.length > 0 → String.length (String.join (string_chunk s n)) = String.length s := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem string_chunk_size_property (s : String) (n : Nat) (h : n > 0) :
     let chunks := string_chunk s n
     chunks.length > 0 →
     (∀ chunk ∈ chunks, chunk.length ≤ n) ∧
     (∀ chunk ∈ chunks.dropLast, chunk.length = n) := sorry
-
-
+  
   theorem string_chunk_invalid_n (s : String) (n : Nat) :
     n = 0 → string_chunk s n = [] := sorry
-
-
+  
   theorem string_chunk_reconstructs_original (s : String) (n : Nat) (h : n > 0) :
     String.join (string_chunk s n) = s := sorry
-
+  
   /--
   info: ['co', 'de', 'wa', 'rs']
   -/
   #guard_msgs in
   #eval string_chunk "codewars" 2
-
+  
   /--
   info: []
   -/
   #guard_msgs in
   #eval string_chunk "hello" 0
-
+  
   /--
   info: ['hi']
   -/
   #guard_msgs in
   #eval string_chunk "hi" 5
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

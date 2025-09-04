@@ -1,14 +1,13 @@
 vc-description: |-
   Implement the class SubrectangleQueries which receives a rows x cols rectangle as a matrix of integers in the constructor and supports two methods:
   1. updateSubrectangle(int row1, int col1, int row2, int col2, int newValue)
-
+  
   Updates all values with newValue in the subrectangle whose upper left coordinate is (row1,col1) and bottom right coordinate is (row2,col2).
-
+  
   2. getValue(int row, int col)
-
+  
   Returns the current value of the coordinate (row,col) from the rectangle.
-
-   
+  
   Example 1:
   Input
   ["SubrectangleQueries","getValue","updateSubrectangle","getValue","getValue","updateSubrectangle","getValue","getValue"]
@@ -39,7 +38,7 @@ vc-description: |-
   // 10  10  10 
   subrectangleQueries.getValue(3, 1); // return 10
   subrectangleQueries.getValue(0, 2); // return 5
-
+  
   Example 2:
   Input
   ["SubrectangleQueries","getValue","updateSubrectangle","getValue","getValue","updateSubrectangle","getValue"]
@@ -54,10 +53,9 @@ vc-description: |-
   subrectangleQueries.getValue(2, 2); // return 100
   subrectangleQueries.updateSubrectangle(1, 1, 2, 2, 20);
   subrectangleQueries.getValue(2, 2); // return 20
-
-   
+  
   Constraints:
-
+  
   There will be at most 500 operations considering both methods: updateSubrectangle and getValue.
   1 <= rows, cols <= 100
   rows == rectangle.length
@@ -67,15 +65,18 @@ vc-description: |-
   1 <= newValue, rectangle[i][j] <= 10^9
   0 <= row < rows
   0 <= col < cols
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def getValue (s : SubrectangleQueries) (i j : Nat) : Int := sorry
 
+vc-definitions: |-
+  def getValue (s : SubrectangleQueries) (i j : Nat) : Int := sorry
+  
   def updateSubrectangle (s : SubrectangleQueries) (row1 col1 row2 col2 : Nat) (newValue : Int) : Unit := sorry
+
 vc-theorems: |-
   theorem initial_rectangle_values (rectangle : List (List Int)) (i j : Nat)
     (h1 : i < rectangle.length)
@@ -83,8 +84,7 @@ vc-theorems: |-
     (h3 : rectangle.length > 0)
     (h4 : (rectangle.head!).length > 0) :
     getValue { rectangle := rectangle } i j = (rectangle.get! i).get! j := sorry
-
-
+  
   theorem update_covers_entire_rectangle (rectangle : List (List Int)) (testVal : Int)
     (h1 : rectangle.length > 0)
     (h2 : (rectangle.head!).length > 0) :
@@ -94,8 +94,7 @@ vc-theorems: |-
     let _ := updateSubrectangle s 0 0 (rows - 1) (cols - 1) testVal
     ∀ i j, i < rows → j < cols →
       getValue s i j = testVal := sorry
-
-
+  
   theorem multiple_updates_overlap (rectangle : List (List Int))
     (h1 : rectangle.length > 0)
     (h2 : (rectangle.head!).length > 0) :
@@ -107,8 +106,7 @@ vc-theorems: |-
     let _ := updateSubrectangle s (rows / 2) (cols / 2) (rows - 1) (cols - 1) 30
     ∀ i j, i ≥ rows / 2 → i < rows → j ≥ cols / 2 → j < cols →
       getValue s i j = 30 := sorry
-
-
+  
   theorem sequential_same_region_updates (rectangle : List (List Int)) (updates : List Int)
     (h1 : rectangle.length > 0)
     (h2 : (rectangle.head!).length > 0)
@@ -120,6 +118,8 @@ vc-theorems: |-
       let _ := updateSubrectangle s 0 0 (rows - 1) (cols - 1) val
       i < rows → j < cols →
         getValue s i j = val := sorry
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+

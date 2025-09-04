@@ -7,85 +7,87 @@ vc-description: |-
   - Set $i = j$
   - Repeat steps $2, 3$ and $4$ in order $M-1$ more times.
   Find the number of ways in which Chef can construct a Love Graph. Since the answer can be very large, compute it modulo $10^9+7$.
-
+  
   -----Input-----
   - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows. 
   - The first line of each test case contains two space-separated integers $N$ and $M$.
-
+  
   -----Output-----
   For each test case, print a single line containing one integer — the number of ways in which Chef can construct a Love Graph modulo $10^9+7$.
-
+  
   -----Constraints-----
   - $1 \leq T \leq 10^5$
   - $2 \leq N \leq 10^9$
   - $1 \leq M \leq 10^{18}$
-
+  
   -----Subtasks-----
   - 30 points:
   - $1 \leq T \leq 100$
   - $2 \leq N \leq 10$
   - $1 \leq M \leq 10$ 
   - 70 points: original constraints
-
+  
   -----Sample Input-----
   1
-
+  
   2 1   
-
+  
   -----Sample Output-----
   2   
-
+  
   -----Explanation-----
   There are two ways of constructing Love Graph.
-
+  
   In first way, we pick Vertex 1 and then join with Vertex 2.
-
+  
   In second way, we pick Vertex 2 and then join with Vertex 1.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def count_love_graphs (n m : Nat) : Nat := sorry
 
+vc-definitions: |-
+  def count_love_graphs (n m : Nat) : Nat := sorry
+  
   theorem count_love_graphs_mod (n m : Nat) (h1 : n ≥ 1) (h2 : m ≥ 0) :
     count_love_graphs n m < 1000000007 := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem count_love_graphs_nonneg (n m : Nat) (h1 : n ≥ 1) (h2 : m ≥ 0) :
     count_love_graphs n m ≥ 0 := sorry
-
-
+  
   theorem count_love_graphs_base_case (m : Nat) :
     count_love_graphs 1 m = if m = 0 then 1 else 0 := sorry
-
-
+  
   theorem count_love_graphs_single_edge (n : Nat) (h : n ≥ 2) :
     count_love_graphs n 1 = (n * (n-1)) % 1000000007 := sorry
-
-
+  
   theorem count_love_graphs_small_values :
     count_love_graphs 2 1 = 2 ∧ 
     count_love_graphs 3 1 = 6 ∧ 
     count_love_graphs 2 2 = 2 := sorry
-
+  
   /--
   info: 2
   -/
   #guard_msgs in
   #eval count_love_graphs 2 1
-
+  
   /--
   info: 12
   -/
   #guard_msgs in
   #eval count_love_graphs 3 2
-
+  
   /--
   info: 12
   -/
   #guard_msgs in
   #eval count_love_graphs 4 1
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
+

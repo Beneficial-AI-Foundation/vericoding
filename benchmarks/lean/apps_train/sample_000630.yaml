@@ -9,28 +9,28 @@ vc-description: |-
   It is not possible for a particle to move to a cell that already contains a particle or to a cell that does not exist (leave the grid).
   It is possible to apply a force in each of these directions. When a force is applied in a given direction, all particles will simultaneously start moving in this direction as long as it is still possible for them to move.
   You are given a sequence of forces. Each subsequent force is applied only after all particles have stopped moving. Determine which cells of the grid contain particles after all forces from this sequence are applied in the given order.
-
+  
   -----Input-----
   - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
   - The first line of each test case contains two space-separated integers $n$ and $m$.
   - $n$ lines describing the initial grid follow. For each $i$ ($1 \le i \le n$), the $i$-th of these lines contains a binary string with length $m$ describing the $i$-th row of the grid. For each $j$ ($1 \le j \le m$), if the $j$-th character of this string is '1', then the cell $(i, j)$ contains a particle, and if it is '0', then the cell $(i, j)$ is empty.
   - The last line contains a single string $S$ describing the sequence of applied forces. Each character of this string corresponds to applying a force in some direction; forces applied in the directions left, right, up, down correspond to characters 'L', 'R', 'U', 'D' respectively.
-
+  
   -----Output-----
   For each test case, print $n$ lines each containing a binary string of length $m$, describing the resulting grid (after all the forces are applied) in the same format as the input grid.
-
+  
   -----Constraints-----
   - $1 \le T \le 200$
   - $1 \le n, m \le 100$
   - $1 \le |S| \le 2 \cdot 10^4$
-
+  
   -----Subtasks-----
   Subtaks #1 (30 points):
   - $1 \le T \le 10$
   - $1 \le n, m \le 10$
   - $1 \le |S| \le 100$
   Subtask #2 (70 points): Original constraints
-
+  
   -----Example Input-----
   3
   4 4
@@ -50,7 +50,7 @@ vc-description: |-
   10
   00
   D
-
+  
   -----Example Output-----
   0011
   0011
@@ -63,56 +63,56 @@ vc-description: |-
   00
   00
   11
-
+  
   -----Explanation-----
   Example case 1: The initial grid is:
   1010
   0010
   1001
   0100
-
+  
   After applying the first force (in the direction "L", i.e. to the left), the grid is:
   1100
   1000
   1100
   1000
-
+  
   After applying the second force (in the direction "R"), the grid is:
   0011
   0001
   0011
   0001
-
+  
   After applying the third force (in the direction "D"), the grid is:
   0001
   0001
   0011
   0011
-
+  
   After applying the fourth force (in the direction "U"), the final grid is:
   0011
   0011
   0001
   0001
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def isValidGrid (grid : List (List Char)) : Bool :=
     sorry
-
-
+  
   def countOnes (grid : List (List Char)) : Nat :=
     sorry
-
-
+  
   def isGravityConsistent (grid : List (List Char)) (force : Char) : Bool :=
     sorry
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def solveParticleGrid (n m : Nat) (grid : List (List Char)) (forces : List Char) : List (List Char) :=
     sorry
+
 vc-theorems: |-
   theorem grid_dimensions {n m : Nat} {grid : List (List Char)} {forces : List Char}
     (h1 : isValidGrid grid) :
@@ -120,22 +120,19 @@ vc-theorems: |-
     List.length result = n ∧ 
     ∀ row ∈ result, List.length row = m :=
     sorry
-
-
+  
   theorem grid_valid_chars {n m : Nat} {grid : List (List Char)} {forces : List Char}
     (h1 : isValidGrid grid) :
     let result := solveParticleGrid n m grid forces
     ∀ row ∈ result, ∀ c ∈ row, c = '0' ∨ c = '1' :=
     sorry
-
-
+  
   theorem preserved_ones_count {n m : Nat} {grid : List (List Char)} {forces : List Char}
     (h1 : isValidGrid grid) :
     let result := solveParticleGrid n m grid forces
     countOnes grid = countOnes result :=
     sorry
-
-
+  
   theorem final_gravity_consistent {n m : Nat} {grid : List (List Char)} {forces : List Char}
     (h1 : isValidGrid grid) 
     (h2 : forces ≠ []) :
@@ -143,6 +140,8 @@ vc-theorems: |-
     let lastForce := List.getLast forces h2
     isGravityConsistent result lastForce :=
     sorry
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
+

@@ -1,23 +1,23 @@
 vc-description: |-
   The chef is trying to solve some pattern problems, Chef wants your help to code it. Chef has one number K to form a new pattern. Help the chef to code this pattern problem.
-
+  
   -----Input:-----
   - First-line will contain $T$, the number of test cases. Then the test cases follow. 
   - Each test case contains a single line of input, one integer $K$. 
-
+  
   -----Output:-----
   For each test case, output as the pattern.
-
+  
   -----Constraints-----
   - $1 \leq T \leq 100$
   - $1 \leq K \leq 100$
-
+  
   -----Sample Input:-----
   3
   5
   3
   4
-
+  
   -----Sample Output:-----
   1   1
   2 2
@@ -31,26 +31,28 @@ vc-description: |-
   22
   33
   4  4
-
+  
   -----EXPLANATION:-----
   No need, else pattern can be decode easily.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def solvePattern (k: Nat) : List String := sorry
 
+vc-definitions: |-
+  def solvePattern (k: Nat) : List String := sorry
+  
   theorem pattern_length_matches_input {k: Nat} (h: k ≥ 2) (h2: k ≤ 100) : 
     (solvePattern k).length = k := sorry
+
 vc-theorems: |-
   theorem each_line_has_correct_number {k: Nat} (h: k ≥ 2) (h2: k ≤ 100) :
     ∀ i: Nat, i < k → 
       let line := (solvePattern k).get ⟨i, by sorry⟩
       line.contains '1' ∧ line.length > 0 := sorry
-
-
+  
   theorem whitespace_structure {k: Nat} (h: k ≥ 2) (h2: k ≤ 100) :
     let pattern := solvePattern k
     if k % 2 = 0 then
@@ -65,8 +67,7 @@ vc-theorems: |-
       ∀ i: Nat, i < k → i ≠ middle_idx → 
         let line := pattern.get ⟨i, by sorry⟩
         (line.data.filter (fun x => x = ' ')).length > 0 := sorry
-
-
+  
   theorem line_endpoints {k: Nat} (h: k ≥ 2) (h2: k ≤ 100) :
     let pattern := solvePattern k
     let first := pattern.get ⟨0, by sorry⟩
@@ -75,6 +76,8 @@ vc-theorems: |-
     first.endsWith "1" ∧
     last.startsWith (toString k) ∧
     last.endsWith (toString k) := sorry
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
+

@@ -1,76 +1,76 @@
 vc-description: |-
   # Write Number in Expanded Form
-
+  
   You will be given a number and you will need to return it as a string in [Expanded Form](https://www.mathplacementreview.com/arithmetic/whole-numbers.php#expanded-form). For example:
-
+  
   ```python
   expanded_form(12) # Should return '10 + 2'
   expanded_form(42) # Should return '40 + 2'
   expanded_form(70304) # Should return '70000 + 300 + 4'
   ```
-
+  
   NOTE: All numbers will be whole numbers greater than 0.
-
+  
   If you liked this kata, check out [part 2](https://www.codewars.com/kata/write-number-in-expanded-form-part-2)!!
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def expanded_form (n : Nat) : String := sorry
-
+  
   def list_sum (xs : List Nat) : Nat := 
     match xs with
     | [] => 0
     | x :: rest => x + list_sum rest
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def string_to_nat (s : String) : Nat := sorry
 
+vc-definitions: |-
+  def string_to_nat (s : String) : Nat := sorry
+  
   def list_sorted_desc (xs : List Nat) : Bool := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem expanded_form_sum_equals_input (n : Nat) (h : 0 < n) (h2 : n ≤ 1000000) : 
     let parts := (expanded_form n).split (· = '+')
     list_sum (parts.map string_to_nat) = n := sorry
-
-
+  
   theorem expanded_form_divisible_by_powers_of_ten (n : Nat) (h : 0 < n) (h2 : n ≤ 1000000) :
     let parts := (expanded_form n).split (· = '+')
     ∀ (i : Nat) (p : String), i < parts.length → p ∈ parts →
     string_to_nat p % (10^i) = 0 := sorry
-
-
+  
   theorem expanded_form_no_leading_zeros (n : Nat) (h : 0 < n) :
     let parts := (expanded_form n).split (· = '+')
     ∀ p ∈ parts, ¬(p.get? 0 = some '0') := sorry
-
-
+  
   theorem expanded_form_descending_order (n : Nat) (h : 0 < n) :
     let parts := (expanded_form n).split (· = '+')
     let nums := parts.map string_to_nat
     list_sorted_desc nums = true := sorry
-
-
+  
   theorem expanded_form_single_digit (n : Nat) (h : 0 < n) (h2 : n < 10) :
     expanded_form n = toString n := sorry
-
+  
   /--
   info: '2'
   -/
   #guard_msgs in
   #eval expanded_form 2
-
+  
   /--
   info: '40 + 2'
   -/
   #guard_msgs in
   #eval expanded_form 42
-
+  
   /--
   info: '70000 + 300 + 4'
   -/
   #guard_msgs in
   #eval expanded_form 70304
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

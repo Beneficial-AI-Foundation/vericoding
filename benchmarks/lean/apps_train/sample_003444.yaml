@@ -1,56 +1,60 @@
 vc-description: |-
   Time to win the lottery!
-
+  
   Given a lottery ticket (ticket), represented by an array of 2-value arrays, you must find out if you've won the jackpot.  Example ticket:
-
+  
   To do this, you must first count the 'mini-wins' on your ticket.  Each sub array has both a string and a number within it. If the character code of any of the characters in the string matches the number, you get a mini win. Note you can only have one mini win per sub array.
-
+  
   Once you have counted all of your mini wins, compare that number to the other input provided (win). If your total is more than or equal to (win), return 'Winner!'. Else return 'Loser!'.
-
+  
   All inputs will be in the correct format. Strings on tickets are not always the same length.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def isWinner (ticket : List (String × Nat)) (win : Nat) : String := sorry
 
+vc-definitions: |-
+  def isWinner (ticket : List (String × Nat)) (win : Nat) : String := sorry
+  
   theorem bingo_result_valid (ticket : List (String × Nat)) (win : Nat) :
     win ≥ 0 → ticket.length > 0 → ticket.length ≤ 10 → 
     (isWinner ticket win = "Winner!" ∨ isWinner ticket win = "Loser!") := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem bingo_matches_determine_win (ticket : List (String × Nat)) (win : Nat) : 
     win ≥ 0 → ticket.length > 0 → ticket.length ≤ 10 →
     (let m := (ticket.filter (fun p => p.1.any (fun c => c = Char.ofNat p.2))).length;
     isWinner ticket win = (if m ≥ win then "Winner!" else "Loser!")) := sorry
-
+  
   theorem bingo_zero_always_wins (ticket : List (String × Nat)) :
     ticket.length > 0 → ticket.length ≤ 10 →
     isWinner ticket 0 = "Winner!" := sorry
-
-
+  
   theorem bingo_impossible_win (ticket : List (String × Nat)) :
     ticket.length > 0 → ticket.length ≤ 10 →
     isWinner ticket (ticket.length + 1) = "Loser!" := sorry
-
+  
   /--
   info: 'Loser!'
   -/
   #guard_msgs in
   #eval bingo [["ABC", 65], ["HGR", 74], ["BYHT", 74]] 2
-
+  
   /--
   info: 'Winner!'
   -/
   #guard_msgs in
   #eval bingo [["ABC", 65], ["HGR", 74], ["BYHT", 74]] 1
-
+  
   /--
   info: 'Loser!'
   -/
   #guard_msgs in
   #eval bingo [["HGTYRE", 74], ["BE", 66], ["JKTY", 74]] 3
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

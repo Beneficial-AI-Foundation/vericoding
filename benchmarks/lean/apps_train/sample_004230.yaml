@@ -1,26 +1,28 @@
 vc-description: |-
   Welcome.
-
+  
   In this kata you are required to, given a string, replace every letter with its position in the alphabet.
-
+  
   If anything in the text isn't a letter, ignore it and don't return it.
-
+  
   `"a" = 1`, `"b" = 2`, etc.
-
+  
   ## Example
-
+  
   ```python
   alphabet_position("The sunset sets at twelve o' clock.")
   ```
   Should return `"20 8 5 19 21 14 19 5 20 19 5 20 19 1 20 20 23 5 12 22 5 15 3 12 15 3 11"` (as a string)
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def alphabetPosition (s : String) : String := sorry
 
+vc-definitions: |-
+  def alphabetPosition (s : String) : String := sorry
+  
   theorem output_matches_input_letters (s : String) :
     let result := alphabetPosition s
     let inputLetters := s.data.filter Char.isAlpha
@@ -33,28 +35,31 @@ vc-definitions: |
         match num.toNat? with
         | some n => n = letter.toLower.toNat - 96
         | none => false) := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem only_letters_full_conversion {s : String} (h₁ : s.length > 0) 
     (h₂ : s.data.all Char.isAlpha) : 
     ((alphabetPosition s).split (· = ' ')).length = s.length := sorry
-
+  
   /--
   info: expected1
   -/
   #guard_msgs in
   #eval alphabet_position "The sunset sets at twelve o" clock."
-
+  
   /--
   info: expected2
   -/
   #guard_msgs in
   #eval alphabet_position "-.-""
-
+  
   /--
   info: expected3
   -/
   #guard_msgs in
   #eval alphabet_position "aBc"
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

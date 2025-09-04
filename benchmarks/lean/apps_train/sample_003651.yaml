@@ -2,7 +2,7 @@ vc-description: |-
   Calculate the product of all elements in an array.
   ```if:csharp
   If the array is *null*, you should throw `ArgumentNullException` and if the array is empty, you should throw `InvalidOperationException`.
-
+  
   As a challenge, try writing your method in just one line of code. It's possible to have only 36 characters within your method.
   ```
   ```if:javascript
@@ -29,49 +29,51 @@ vc-description: |-
   ```if:julia
   If the input is `nothing` or an empty array, return `nothing`
   ```
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def product (nums : List Int) : Option Int := sorry
 
+vc-definitions: |-
+  def product (nums : List Int) : Option Int := sorry
+  
   theorem product_empty (nums : List Int) : 
     nums = [] → product nums = none
     := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem product_nonempty (nums : List Int) : 
     nums ≠ [] → product nums = some (nums.foldl (·*·) 1)
     := sorry
-
-
+  
   theorem product_positive (nums : List Int) (h : ∀ x ∈ nums, x > 0) :
     product nums = some (nums.foldl (·*·) 1) → nums.foldl (·*·) 1 > 0
     := sorry
-
-
+  
   theorem product_negative_parity (nums : List Int) (h : ∀ x ∈ nums, x < 0) :
     product nums = some (nums.foldl (·*·) 1) → 
       (nums.foldl (·*·) 1 > 0) = (nums.length % 2 = 0)
     := sorry
-
-
+  
   theorem product_commutative (nums : List Int) (h : nums.length ≥ 2) :
     product nums = product nums.reverse
     := sorry
-
+  
   /--
   info: 540
   -/
   #guard_msgs in
   #eval product [5, 4, 1, 3, 9]
-
+  
   /--
   info: -672
   -/
   #guard_msgs in
   #eval product [-2, 6, 7, 8]
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

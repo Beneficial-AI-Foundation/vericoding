@@ -5,16 +5,16 @@ vc-description: |-
   There are Q$Q$ compos (numbered 1$1$ through Q$Q$). For each valid i$i$, the i$i$-th compo has two parameters Ai$A_i$ and Bi$B_i$, which means that it includes the challenges Ai,Ai+1,…,Bi$A_i, A_i+1, \ldots, B_i$.
   Each participant has to select a subset of the compos (possibly empty or the set of all Q$Q$ compos) and participate in all challenges those compos include. A participant may not select the same compo twice, but may participate in the same challenge more than once if it is included in multiple chosen compos.
   For each player, find the maximum skill level this player can reach if the compos are chosen optimally.
-
+  
   -----Input-----
   - The first line of the input contains a single integer T$T$ denoting the number of test cases. The description of T$T$ test cases follows.
   - The first line of each test case contains three space-separated integers N$N$, M$M$ and Q$Q$.
   - M$M$ lines follow. For each valid i$i$, the i$i$-th of these lines contains three space-separated integers Li$L_i$, Ri$R_i$ and Xi$X_i$.
   - Q$Q$ more lines follow. For each valid i$i$, the i$i$-th of these lines contains two space-separated integers Ai$A_i$ and Bi$B_i$.
-
+  
   -----Output-----
   For each test case, print a single line containing N$N$ space-separated integers. For each valid i$i$, the i$i$-th of these integers should denote the maximum skill level of the i$i$-th player.
-
+  
   -----Constraints-----
   - 1≤T≤1,000$1 \le T \le 1,000$
   - 1≤N≤100,000$1 \le N \le 100,000$
@@ -26,7 +26,7 @@ vc-description: |-
   - the sum of N$N$ over all test cases does not exceed 1,000,000$1,000,000$
   - the sum of M$M$ over all test cases does not exceed 5,000$5,000$
   - the sum of Q$Q$ over all test cases does not exceed 50,000$50,000$
-
+  
   -----Example Input-----
   1
   5 3 4
@@ -37,42 +37,46 @@ vc-description: |-
   1 3
   1 1
   2 3
-
+  
   -----Example Output-----
   3 0 0 4 4
-
+  
   -----Explanation-----
   Example case 1:
   - The first player will select the 3$3$-rd compo.
   - The second and third players will not select any compo.
   - The fourth player will select the 1$1$-st, 2$2$-nd and 4$4$-th compos.
   - The fifth player will select all the compos.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def cooking_challenge (n m q : Nat) (challenges : List (Nat × Nat × Int)) (combos : List (Nat × Nat)) : List Nat := sorry
 
+vc-definitions: |-
+  def cooking_challenge (n m q : Nat) (challenges : List (Nat × Nat × Int)) (combos : List (Nat × Nat)) : List Nat := sorry
+  
   theorem cooking_challenge_output_length
     (n m q : Nat)
     (challenges : List (Nat × Nat × Int))
     (combos : List (Nat × Nat))
     : List.length (cooking_challenge n m q challenges combos) = n := sorry
+
 vc-theorems: |-
   theorem cooking_challenge_output_nonnegative 
     (n m q : Nat)
     (challenges : List (Nat × Nat × Int)) 
     (combos : List (Nat × Nat))
     : ∀ x ∈ cooking_challenge n m q challenges combos, x ≥ 0 := sorry
-
-
+  
   theorem cooking_challenge_output_natural
     (n m q : Nat)
     (challenges : List (Nat × Nat × Int))
     (combos : List (Nat × Nat))
     : ∀ x ∈ cooking_challenge n m q challenges combos, ∃ k : Nat, x = k := sorry
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
+

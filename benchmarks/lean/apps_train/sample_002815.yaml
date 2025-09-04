@@ -1,13 +1,13 @@
 vc-description: |-
   Coffee Vending Machine Problems [Part 1]
-
+  
   You have a vending machine, but it can not give the change back. You decide to implement this functionality. First of all, you need to know the minimum number of coins for this operation (i'm sure you don't want to return 100 pennys instead of 1$ coin).
   So, find an optimal number of coins required, if you have unlimited set of coins with given denominations.
-
+  
   Assume all inputs are valid positive integers, and every set of coin denominations has len 4 for simplicity;
-
+  
   Examples:
-
+  
   optimal_number_of_coins(1, [1, 2, 5, 10]) 
   (1 penny) so returns 1  
   optimal_number_of_coins(5, [1, 2, 5, 10])
@@ -23,16 +23,18 @@ vc-description: |-
   optimal_number_of_coins(7, [1, 1, 1, 25])
   (1+1+1+1+1+1+1) = 7 so returns 7
   etc..
-
+  
   Have fun =)
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def optimalNumberOfCoins (n : Nat) (coins : List Nat) : Option Nat := sorry
 
+vc-definitions: |-
+  def optimalNumberOfCoins (n : Nat) (coins : List Nat) : Option Nat := sorry
+  
   theorem optimal_coins_properties
       (n : Nat)
       (coins : List Nat)
@@ -48,6 +50,7 @@ vc-definitions: |
           (1 ∈ coins → r ≤ n) ∧
           (∀ c ∈ coins, n % c = 0 → r ≤ n / c)
       := sorry
+
 vc-theorems: |-
   theorem optimal_coins_zero
       (coins : List Nat)
@@ -55,11 +58,12 @@ vc-theorems: |-
       (h2 : coins.length ≤ 10)
       (h3 : ∀ c ∈ coins, c ≥ 1 ∧ c ≤ 100) :
       optimalNumberOfCoins 0 coins = some 0 := sorry
-
-
+  
   theorem optimal_coins_edge_cases :
       optimalNumberOfCoins 1 [1] = some 1 ∧
       optimalNumberOfCoins 1 [2] = none := sorry
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
+

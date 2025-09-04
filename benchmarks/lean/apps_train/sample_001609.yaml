@@ -1,6 +1,6 @@
 vc-description: |-
   Finally the clowns of Synapse have decided to take their site online. The convener of the clowns has heard from somewhere that knowing URI's is very important for their website, so kindly help him with this task.
-
+  
   Uniform Resource Identifiers (or URIs) are strings like
   http://synapse.daiict.ac.in/codemutants/, mailto:clown_convener@synapse.daiict.ac.in,
   ftp://10.100.93.93/night_halters, or even just output.txt that are
@@ -22,7 +22,7 @@ vc-description: |-
   shown, and output the resulting string on a line by itself. Note that the
   percent-encoding for an asterisk is %2a (with a lowercase "a") rather than
   %2A (with an uppercase "A").
-
+  
   -----Example-----
   Input:
   Happy Joy Joy!
@@ -32,7 +32,7 @@ vc-description: |-
   ?
   the 7% solution
   #
-
+  
   Output:
   Happy%20Joy%20Joy%21
   http://synapse.daiict.ac.in/
@@ -40,14 +40,16 @@ vc-description: |-
   %28%2a%2a%29
   ?
   the%207%25%20solution
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def encode_uri : List String → List String := sorry
 
+vc-definitions: |-
+  def encode_uri : List String → List String := sorry
+  
   def encodings : List (String × String) := [
     (" ", "%20"),
     ("!", "%21"), 
@@ -57,6 +59,7 @@ vc-definitions: |
     (")", "%29"),
     ("*", "%2a")
   ]
+
 vc-theorems: |-
   theorem encode_uri_properties (strings : List String) (h : strings ≠ []) :
     let result := encode_uri (strings ++ ["#"]);
@@ -66,13 +69,14 @@ vc-theorems: |-
       (List.foldl (fun acc (p : String × String) => 
         acc.replace p.snd p.fst) encoded encodings) = orig) :=
   sorry
-
-
+  
   theorem encode_uri_terminates (strings : List String) 
     (h : ∀ s ∈ strings, s.data ≠ []) :
     encode_uri (strings ++ ["#"] ++ strings) = 
     encode_uri (strings ++ ["#"]) :=
   sorry
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
+

@@ -1,19 +1,19 @@
 vc-description: |-
   ### Please also check out other katas in [Domino Tiling series](https://www.codewars.com/collections/5d19554d13dba80026a74ff5)!
-
+  
   ---
-
+  
   # Task
-
+  
   A domino is a rectangular block with `2` units wide and `1` unit high. A domino can be placed on a grid in two ways: horizontal or vertical.
-
+  
   ```
   ## or #
         #
   ```
-
+  
   You have infinitely many dominoes, and you want to fill a board that is `2*N` units wide and `5` units high:
-
+  
   ```
   <---   2N   --->
   ################
@@ -22,82 +22,84 @@ vc-description: |-
   ################
   ################
   ```
-
+  
   The task is to find **the number of ways** you can fill the given grid with dominoes.
-
+  
   Since the answer will be very large, please give your answer **modulo 12345787**.
-
+  
   # Examples
-
+  
   ```python
   five_by_2n(1) == 8
   five_by_2n(2) == 95
   five_by_2n(3) == 1183
   five_by_2n(5) == 185921
-
+  
   five_by_2n(10) == 8228892
   five_by_2n(20) == 9942990
   five_by_2n(50) == 2308182
   five_by_2n(100) == 334896
-
+  
   five_by_2n(1000) == 6032838
   five_by_2n(10000) == 2392948
   ```
-
+  
   # Constraints
-
+  
   `1 <= N <= 10000`
-
+  
   All inputs are valid integers.
-
+  
   # Hint
-
+  
   The reference solution uses eleven mutual recurrence equations.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def five_by_2n (n : Nat) : Nat :=
     sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem five_by_2n_positive (n : Nat) : 
     n > 0 → five_by_2n n > 0 :=
     sorry
-
-
+  
   theorem five_by_2n_bounded (n : Nat) :
     n > 0 → five_by_2n n < 12345787 :=
     sorry 
-
-
+  
   theorem five_by_2n_deterministic (n : Nat) :
     five_by_2n n = five_by_2n n :=
     sorry
-
-
+  
   theorem five_by_2n_sequential (n : Nat) :
     n > 0 → True :=
     sorry
-
+  
   /--
   info: 8
   -/
   #guard_msgs in
   #eval five_by_2n 1
-
+  
   /--
   info: 95
   -/
   #guard_msgs in
   #eval five_by_2n 2
-
+  
   /--
   info: 1183
   -/
   #guard_msgs in
   #eval five_by_2n 3
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
+

@@ -1,81 +1,78 @@
 vc-description: |-
   Dreamoon loves summing up something for no reason. One day he obtains two integers a and b occasionally. He wants to calculate the sum of all nice integers. Positive integer x is called nice if $\operatorname{mod}(x, b) \neq 0$ and $\frac{\operatorname{div}(x, b)}{\operatorname{mod}(x, b)} = k$, where k is some integer number in range [1, a].
-
+  
   By $\operatorname{div}(x, y)$ we denote the quotient of integer division of x and y. By $\operatorname{mod}(x, y)$ we denote the remainder of integer division of x and y. You can read more about these operations here: http://goo.gl/AcsXhT.
-
+  
   The answer may be large, so please print its remainder modulo 1 000 000 007 (10^9 + 7). Can you compute it faster than Dreamoon?
-
-
+  
   -----Input-----
-
+  
   The single line of the input contains two integers a, b (1 ≤ a, b ≤ 10^7).
-
-
+  
   -----Output-----
-
+  
   Print a single integer representing the answer modulo 1 000 000 007 (10^9 + 7).
-
-
+  
   -----Examples-----
   Input
   1 1
-
+  
   Output
   0
-
+  
   Input
   2 2
-
+  
   Output
   8
-
-
-
+  
   -----Note-----
-
+  
   For the first sample, there are no nice integers because $\operatorname{mod}(x, 1)$ is always zero.
-
+  
   For the second sample, the set of nice integers is {3, 5}.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def MOD := 1000000007
 
+vc-definitions: |-
+  def MOD := 1000000007
+  
   def solve_nice_integers (a b : Nat) : Nat :=
     sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem solve_nice_integers_non_negative (a b : Nat) 
     (ha : a > 0) (hb : b > 0) (hbound_a : a ≤ 1000) (hbound_b : b ≤ 1000) :
     solve_nice_integers a b ≥ 0 := 
     sorry
-
-
-
-
+  
   theorem solve_nice_integers_base_case :
     solve_nice_integers 1 1 = 0 :=
     sorry
-
+  
   /--
   info: 0
   -/
   #guard_msgs in
   #eval solve_nice_integers 1 1
-
+  
   /--
   info: 8
   -/
   #guard_msgs in
   #eval solve_nice_integers 2 2
-
+  
   /--
   info: 247750000
   -/
   #guard_msgs in
   #eval solve_nice_integers 1000 1000
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
+

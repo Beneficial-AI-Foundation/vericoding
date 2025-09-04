@@ -16,7 +16,7 @@ vc-description: |-
   ```
   {{a}, {b}, {c}, {d}, {a,b}, {a,c}, {a,d}, {b,c}, {b,d},{c,d}, {a,b,c}, {a,b,d}, {a,c,d}, {b,c,d}, {a,b,c,d}} (15 subsets, only the ones that have no repeated elements inside)
   ```
-
+  
   The function ```est_subsets()``` (javascript: ``estSubsets()```) will calculate the number of these subsets.
   It will receive the array as an argument and according to its features will output the amount of different subsets without repetitions of its elements.
   ```python
@@ -27,64 +27,64 @@ vc-description: |-
   ```
   Low Performance Tests: 40
   Length of the arrays between 6 and 15
-
+  
   High Performance Tests: 80
   Length of the arrays between 15 and 100 (Python an Ruby) and between 15 and 50 javascript)
   ```
   Just do it!
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def est_subsets {α : Type} [BEq α] [Hashable α] (arr : List α) : Nat :=
     sorry
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def list_unique_count {α : Type} [BEq α] [Hashable α] (arr : List α) : Nat :=
     sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem est_subsets_count_prop {α : Type} [BEq α] [Hashable α] (arr : List α) :
     est_subsets arr = 2^(list_unique_count arr) - 1 :=
     sorry
-
-
+  
   theorem est_subsets_nonneg {α : Type} [BEq α] [Hashable α] (arr : List α) :
     est_subsets arr ≥ 0 :=
     sorry
-
-
+  
   theorem est_subsets_empty {α : Type} [BEq α] [Hashable α] :
     est_subsets ([] : List α) = 0 :=
     sorry
-
-
+  
   theorem est_subsets_duplicates {α : Type} [BEq α] [Hashable α] (arr : List α) :
     est_subsets arr = est_subsets (arr ++ arr) :=
     sorry
-
-
+  
   theorem est_subsets_is_nat {α : Type} [BEq α] [Hashable α] (arr : List α) :
     est_subsets arr = 2^(list_unique_count arr) - 1 :=
     sorry
-
+  
   /--
   info: 15
   -/
   #guard_msgs in
   #eval est_subsets [1, 2, 3, 4]
-
+  
   /--
   info: 15
   -/
   #guard_msgs in
   #eval est_subsets ["a", "b", "c", "d", "d"]
-
+  
   /--
   info: 15
   -/
   #guard_msgs in
   #eval est_subsets [1, 2, 2, 3, 3, 3, 4]
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
+

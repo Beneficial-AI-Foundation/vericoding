@@ -1,59 +1,63 @@
 vc-description: |-
   Related to MrZizoScream's Product Array kata. You might want to solve that one first :)
-
+  
   ```if:javascript
   **Note:** Node 10 has now been enabled, and you can now use its BigInt capabilities if you wish, though your resulting array must still contain strings (e.g. "99999999999", not 9999999999n)
-
+  
   Pre-node 10: You will need to use the BigNumber.js library! Please use `.toFixed(0)` or `.toPrecision()` to round instead of `.toString(10)`, as the latter is _very_ slow
   ```
-
+  
   This is an adaptation of a problem I came across on LeetCode. 
-
+  
   Given an array of numbers, your task is to return a new array where each index (`new_array[i]`) is equal to the product of the original array, except for the number at that index (`array[i]`).
-
+  
   **Two things to keep in mind:**
-
+  
   * Zeroes will be making their way into some of the arrays you are given
   * O(n^2) solutions will not pass.
-
+  
   Examples:
-
+  
   **Note**: All inputs will be valid arrays of nonzero length.
-
+  
   Have fun! Please upvote if you enjoyed :)
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def List.product (l : List Int) : Int := sorry 
-
+  
   def product_sans_n (nums : List Int) : List Int := sorry
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def count_zeros (l : List Int) : Nat :=
     l.filter (· = 0) |>.length
-vc-theorems: |
+
+vc-theorems: |-
   theorem product_sans_n_length {nums : List Int} (h : nums ≠ []) : 
     (product_sans_n nums).length = nums.length := sorry
-
+  
   /--
   info: [24, 12, 8, 6]
   -/
   #guard_msgs in
   #eval product_sans_n [1, 2, 3, 4]
-
+  
   /--
   info: [0, -18, 0]
   -/
   #guard_msgs in
   #eval product_sans_n [9, 0, -2]
-
+  
   /--
   info: [0, 0, 0]
   -/
   #guard_msgs in
   #eval product_sans_n [0, -99, 0]
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
+

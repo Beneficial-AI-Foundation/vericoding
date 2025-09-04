@@ -1,8 +1,8 @@
 vc-description: |-
   Dee is lazy but she's kind and she likes to eat out at all the nice restaurants and gastropubs in town. To make paying quick and easy she uses a simple mental algorithm she's called The Fair %20 Rule. She's gotten so good she can do this in a few seconds and it always impresses her dates but she's perplexingly still single. Like you probably. 
-
+  
   This is how she does it:
-
+  
    - She rounds the price `P` at the tens place e.g:
      - 25 becomes 30
      - 24 becomes 20
@@ -18,68 +18,70 @@ vc-description: |-
      - When she's satisfied: `R = 1` and she'll add 1 to `T`
      - Unsatisfied: `R = 0` and she'll subtract 1 from `T`
      - Appalled: `R = -1` she'll divide `T` by 2, **rounds down** and subtracts 1
-   
+  
   ## Your Task
-
+  
   Implement a method `calc_tip` that takes two integer arguments for price `p` 
-
+  
   where `1 <= p <= 1000` and a rating `r` which is one of `-1, 0, 1`.
-
+  
   The return value `T` should be a non negative integer.
-
+  
   *Note: each step should be done in the order listed.*
-
+  
   Dee always politely smiles and says "Thank you" on her way out. Dee is nice. Be like Dee.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def calc_tip (price : Int) (rating : Int) : Int := sorry
 
+vc-definitions: |-
+  def calc_tip (price : Int) (rating : Int) : Int := sorry
+  
   theorem tip_always_non_negative (price : Int) (rating : Int) 
     (h₁ : price ≥ 0) (h₂ : price ≤ 10000) (h₃ : rating ≥ -1) (h₄ : rating ≤ 1) : 
     calc_tip price rating ≥ 0 := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem higher_rating_higher_tip_1 (price : Int) 
     (h₁ : price ≥ 0) (h₂ : price ≤ 10000) :
     calc_tip price 1 ≥ calc_tip price 0 := sorry
-
-
+  
   theorem higher_rating_higher_tip_2 (price : Int)
     (h₁ : price ≥ 0) (h₂ : price ≤ 10000) :
     calc_tip price 0 ≥ calc_tip price (-1) := sorry
-
-
+  
   theorem tip_scales_with_price (price : Int) (rating : Int)
     (h₁ : price > 100) (h₂ : price ≤ 10000) (h₃ : rating ≥ -1) (h₄ : rating ≤ 1) :
     calc_tip price rating ≥ calc_tip (price / 2) rating := sorry
-
-
+  
   theorem tip_rounding_consistency (price : Int) (h₁ : price ≥ 0) (h₂ : price ≤ 1000) :
     let rounded_down := calc_tip (price - (price % 10)) 0
     let rounded_up := calc_tip (price + (10 - price % 10)) 0
     let actual := calc_tip price 0
     actual = rounded_down ∨ actual = rounded_up := sorry
-
+  
   /--
   info: 3
   -/
   #guard_msgs in
   #eval calc_tip 24 1
-
+  
   /--
   info: 2
   -/
   #guard_msgs in
   #eval calc_tip 25 0
-
+  
   /--
   info: 6
   -/
   #guard_msgs in
   #eval calc_tip 144 -1
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

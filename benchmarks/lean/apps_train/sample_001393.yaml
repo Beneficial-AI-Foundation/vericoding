@@ -8,25 +8,25 @@ vc-description: |-
   - Whenever a dog receives the ball, it must either pass it to another dog or finish the game by scoring a goal.
   While the dogs were playing, Chef also created a game for developers. He defined the result of a game of soccer for dogs as the sequence of dogs which received the ball in the order in which they received it. The last dog in the sequence is the dog that decided to score a goal; if a dog never received the ball, it does not appear in the sequence. In the game for developers, you should find the number of possible results of soccer for dogs.
   Find this number of possible results modulo 109+7$10^9 + 7$. Two results of soccer for dogs (sequences of dogs' numbers) are considered different if these sequences have different lengths or if there is a valid index i$i$ such that the i$i$-th dog in one sequence is different from the i$i$-th dog in the other sequence.
-
+  
   -----Input-----
   - The first line of the input contains a single integer T$T$ denoting the number of test cases. The description of T$T$ test cases follows.
   - The first line of each test case contains a single integer N$N$.
   - The second line contains N$N$ space-separated integers A1,A2,…,AN$A_1, A_2, \ldots, A_N$ denoting the skill levels of the dogs.
-
+  
   -----Output-----
   For each test case, print a single line containing one integer - the number of different results of soccer for dogs, modulo 109+7$10^9 + 7$.
-
+  
   -----Constraints-----
   - 1≤T≤10$1 \le T \le 10$
   - 1≤N≤105$1 \le N \le 10^5$
   - 1≤Ai≤2$1 \le A_i \le 2$ for each valid i$i$
-
+  
   -----Subtasks-----
   Subtask #1 (10 points): N≤10$N \le 10$
   Subtask #2 (30 points): N≤103$N \le 10^3$
   Subtask #3 (60 points): original constraints
-
+  
   -----Example Input-----
   3
   4
@@ -35,75 +35,76 @@ vc-description: |-
   2 2 2
   4
   1 2 1 1
-
+  
   -----Example Output-----
   4
   5
   6
-
+  
   -----Explanation-----
   Example case 1: The following results are possible: 1$1$, [1,2]$[1, 2]$, [1,2,3]$[1, 2, 3]$, [1,2,3,4]$[1, 2, 3, 4]$.
   Example case 2: The following results are possible: [1]$[1]$, [1,2]$[1, 2]$, [1,2,3]$[1, 2, 3]$, [1,3,2]$[1, 3, 2]$, [1,3]$[1, 3]$.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def MOD := 1000000007
 
+vc-definitions: |-
+  def MOD := 1000000007
+  
   def count_dog_soccer_results (n: Nat) (skills: List Nat) : Nat :=
     sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem result_within_mod_bounds {n : Nat} {skills : List Nat} :
     0 ≤ count_dog_soccer_results n skills ∧ 
     count_dog_soccer_results n skills < MOD :=
     sorry
-
-
+  
   theorem result_at_least_n {n : Nat} {skills : List Nat} 
     (h : skills.length = n) :
     count_dog_soccer_results n skills ≥ n :=
     sorry
-
-
+  
   theorem all_ones_returns_n {n : Nat} {skills : List Nat}
     (h1 : skills.length = n)
     (h2 : ∀ x ∈ skills, x = 1) :
     count_dog_soccer_results n skills = n :=
     sorry
-
-
+  
   theorem all_twos_at_least_n {n : Nat} {skills : List Nat}
     (h1 : skills.length = n)
     (h2 : ∀ x ∈ skills, x = 2) :
     count_dog_soccer_results n skills ≥ n :=
     sorry
-
-
+  
   theorem append_one_increases {n : Nat} {skills : List Nat}
     (h : skills.length = n) :
     count_dog_soccer_results n skills < 
     count_dog_soccer_results (n+1) (skills ++ [1]) :=
     sorry
-
+  
   /--
   info: 4
   -/
   #guard_msgs in
   #eval count_dog_soccer_results 4 [1, 1, 1, 1]
-
+  
   /--
   info: 5
   -/
   #guard_msgs in
   #eval count_dog_soccer_results 3 [2, 2, 2]
-
+  
   /--
   info: 6
   -/
   #guard_msgs in
   #eval count_dog_soccer_results 4 [1, 2, 1, 1]
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+

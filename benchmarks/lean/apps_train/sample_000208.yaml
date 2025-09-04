@@ -11,56 +11,52 @@ vc-description: |-
   Input: A = [2, 4, 5, 10]
   Output: 7
   Explanation: We can make these trees: [2], [4], [5], [10], [4, 2, 2], [10, 2, 5], [10, 5, 2].
-   
+  
   Note:
-
+  
   1 <= A.length <= 1000.
   2 <= A[i] <= 10 ^ 9.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def numFactoredBinaryTrees (arr : Array Nat) : Nat := sorry
-
-
-
-
-
-
-
-
-
+  
   theorem numFactoredBinaryTrees_single_element
     (n : Nat)
     (h : n = 2) :
     numFactoredBinaryTrees #[n] = 1 := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem numFactoredBinaryTrees_prime_numbers :
     numFactoredBinaryTrees #[2, 3, 5, 7] = 4 := sorry
-
-
+  
   theorem numFactoredBinaryTrees_perfect_squares :
     numFactoredBinaryTrees #[2, 4] > 2 := sorry
-
+  
   /--
   info: 3
   -/
   #guard_msgs in
   #eval numFactoredBinaryTrees #[2, 4]
-
+  
   /--
   info: 7
   -/
   #guard_msgs in
   #eval numFactoredBinaryTrees #[2, 4, 5, 10]
-
+  
   /--
   info: 2
   -/
   #guard_msgs in
   #eval numFactoredBinaryTrees #[2, 3]
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
+

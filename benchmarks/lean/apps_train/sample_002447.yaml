@@ -2,92 +2,93 @@ vc-description: |-
   =====Function Descriptions=====
   any()
   This expression returns True if any element of the iterable is true. If the iterable is empty, it will return False.
-
+  
   Code
   >>> any([1>0,1==0,1<0])
   True
   >>> any([1<0,2<1,3<2])
   False
-
+  
   all()
   This expression returns True if all of the elements of the iterable are true. If the iterable is empty, it will return True.
-
+  
   Code
   >>> all(['a'<'b','b'<'c'])
   True
   >>> all(['a'<'b','c'<'b'])
   False
-
+  
   =====Problem Statement=====
   You are given a space separated list of integers. If all the integers are positive, then you need to check if any integer is a palindromic integer.
-
+  
   =====Input Format=====
   The first line contains an integer N. N is the total number of integers in the list. The second line contains the space separated list of N integers.
-
+  
   =====Constraints=====
   0<N<100
-
+  
   =====Output Format=====
   Print True if all the conditions of the problem statement are satisfied. Otherwise, print False.
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def isPalindrome (n : Nat) : Bool :=
     sorry
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def check_palindromic_positives (nums : List Int) : Bool :=
     sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem palindromic_positives_negative_number
     {nums : List Int}
     (h : ∃ x ∈ nums, x ≤ 0) :
     check_palindromic_positives nums = false :=
     sorry
-
-
+  
   theorem palindromic_positives_all_positive
     {nums : List Int}
     (h : ∀ x ∈ nums, x > 0) :
     check_palindromic_positives nums = 
       nums.any (fun x => isPalindrome x.toNat) :=
     sorry
-
-
+  
   theorem single_digits_palindromic
     {nums : List Int}
     (h1 : ∀ x ∈ nums, x > 0)
     (h2 : ∀ x ∈ nums, x < 10) :
     check_palindromic_positives nums = true :=
     sorry
-
-
+  
   theorem non_positive_false 
     {nums : List Int}
     (h : ∀ x ∈ nums, x ≤ 0)
     (h_nonempty : nums ≠ []) :
     check_palindromic_positives nums = false :=
     sorry
-
+  
   /--
   info: True
   -/
   #guard_msgs in
   #eval check_palindromic_positives [12, 9, 61, 5, 14]
-
+  
   /--
   info: False
   -/
   #guard_msgs in
   #eval check_palindromic_positives [-1, 9, 61, 5, 14]
-
+  
   /--
   info: False
   -/
   #guard_msgs in
   #eval check_palindromic_positives [12, 34, 56, 78]
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

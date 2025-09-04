@@ -3,60 +3,64 @@ vc-description: |-
   ```
   s = "Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill";
   ```
-
+  
   Could you make a program that 
   - makes this string uppercase
   - gives it sorted in alphabetical order by last name. 
-
+  
   When the last names are the same, sort them by first name.
   Last name and first name of a guest come in the result between parentheses separated by a comma.
-
+  
   So the result of function `meeting(s)` will be:
   ```
   "(CORWILL, ALFRED)(CORWILL, FRED)(CORWILL, RAPHAEL)(CORWILL, WILFRED)(TORNBULL, BARNEY)(TORNBULL, BETTY)(TORNBULL, BJON)"
   ```
   It can happen that in two distinct families with the same family name two people have the same first name too.
-
+  
   # Notes
   - You can see another examples in the "Sample tests".
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def meeting (input : String) : Option String := sorry
 
+vc-definitions: |-
+  def meeting (input : String) : Option String := sorry
+  
   theorem meeting_single_name_transformation {name first last : String}
     (h : name = first ++ ":" ++ last) :
     meeting name = some ("(" ++ last.toUpper ++ ", " ++ first.toUpper ++ ")") := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem meeting_invalid_format_no_colon (s : String) 
     (h : ¬ s.contains ':') : 
     meeting s = none := sorry
-
-
+  
   theorem meeting_invalid_format_multiple_colons (s : String)
     (h : (s.splitOn ":").length > 2) :
     meeting s = none := sorry
-
+  
   /--
   info: expected1
   -/
   #guard_msgs in
   #eval meeting "Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill"
-
+  
   /--
   info: expected2
   -/
   #guard_msgs in
   #eval meeting "Alex:Gates;Bill:Gates;Steve:Jobs"
-
+  
   /--
   info: expected3
   -/
   #guard_msgs in
   #eval meeting "John:Smith;Jane:Smith;Joe:Brown"
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

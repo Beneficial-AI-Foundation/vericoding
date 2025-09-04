@@ -7,9 +7,9 @@ vc-description: |-
   Output
   Your function should return an array of integers, with each integer in its final position.
   Test Example
-
+  
   The diagram above is a visual representation of the test example below. The yellow highlighted path shows the path taken by the 2 value. Each time it encounters a crosspiece, it shifts position.
-
+  
   ```python
   ladder = [
           '001001',
@@ -21,41 +21,42 @@ vc-description: |-
           '101001',
           '010100'
   ]
-
+  
   amidakuji(ladder) # [4, 2, 0, 5, 3, 6, 1]
   ```
-
+  
   Other Technical Details
-
+  
   A function visualizer is preloaded to help illustrate the structure of the ladder; you can call this function with test inputs
   No two rungs will ever be adjacent (so there is no ambiguity about directional path)
   Full Test Suite: 10 fixed tests and 100 randomly-generated tests
   Test input dimension upper bounds:
-
+  
   maximum width: 20
   maximum height: 50
-
-
+  
   Inputs will always be valid
-
+  
   If you enjoyed this kata, be sure to check out my other katas
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def amidakuji (ladder : List (List Char)) : List Nat :=
     sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem amidakuji_length
     {ladder : List (List Char)}
     (h1 : ∀ row ∈ ladder, row.length = (ladder.head!).length)
     (h2 : ∀ row ∈ ladder, ∀ c ∈ row, c = '0' ∨ c = '1') :
     (amidakuji ladder).length = (ladder.head!).length + 1 :=
     sorry
-
-
+  
   theorem amidakuji_permutation
     {ladder : List (List Char)}
     (h1 : ∀ row ∈ ladder, row.length = (ladder.head!).length)
@@ -64,39 +65,39 @@ vc-theorems: |
       List.Perm perm (List.range ((ladder.head!).length + 1)) ∧
       amidakuji ladder = perm :=
     sorry
-
-
+  
   theorem amidakuji_empty_rows
     {ladder : List (List Char)}
     (h : ∀ row ∈ ladder, row.isEmpty) :
     amidakuji ladder = List.range 1 :=
     sorry
-
-
+  
   theorem amidakuji_no_swaps
     {ladder : List (List Char)}
     (h1 : ∀ row ∈ ladder, row.length = (ladder.head!).length)
     (h2 : ∀ row ∈ ladder, ∀ c ∈ row, c = '0') :
     amidakuji ladder = List.range ((ladder.head!).length + 1) :=
     sorry
-
+  
   /--
   info: [4, 2, 0, 5, 3, 6, 1]
   -/
   #guard_msgs in
   #eval amidakuji ["001001", "010000", "100100", "001000", "100101", "010010", "101001", "010100"]
-
+  
   /--
   info: [1, 0, 2]
   -/
   #guard_msgs in
   #eval amidakuji ["10"]
-
+  
   /--
   info: [0, 1, 2, 3]
   -/
   #guard_msgs in
   #eval amidakuji ["000"]
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+

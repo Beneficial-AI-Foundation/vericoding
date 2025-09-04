@@ -3,26 +3,26 @@ vc-description: |-
   You are provided three arrays  A , B and C   of any length (their lengths may or may not be equal).  
   Your task is to find the sum of f(X , Y , Z) over all triplets (X, Y , Z) where   X, Y and Z  belong to  A, B and C respectively.
   Output your sum for each test case modulo 1000000007.
-
+  
   -----Input-----
   - The first line contains a single integer, T, which is the number of test cases. The description of each testcase follows:
   - The first line of each testcase contains 3 integers: p, q and r. These denote the lengths of A,B and C respectively. 
   - The second line contains p integers, which are the elements of A
   - The third line contains q integers, which are the elements of B
   - The fourth line contains r integers, which are the elements of C
-
+  
   -----Output-----
   Output the required sum modulo  1000000007  for each test case in a new line.
-
+  
   -----Constraints-----
   - 1 ≤ T ≤ 10 
   - 1 ≤ p, q, r ≤ 100000 
   - 1 ≤ every array element ≤ 1000000000
-
+  
   -----Subtasks  -----
   - Subtask #1 (30 points): 1 ≤ p,q,r  ≤ 100 
   - Subtask #2 (70 points): 1 ≤ p,q,r  ≤ 100000 
-
+  
   -----Example : -----
   Input:
   1 
@@ -30,10 +30,10 @@ vc-description: |-
   1 2 3
   5
   4 5 6
-
+  
   Output:
   399
-
+  
   -----Explanation: -----
   As there is only one choice for Y which equals to 5, to get a non-zero function value,we can choose any element for X from the set { 1 , 2 , 3 } and for Z from the set { 4  , 5 } 
   So triplets which give non-zero function values are: 
@@ -44,41 +44,42 @@ vc-description: |-
   { 3 , 5  , 4 } :  ( 3 + 5 ) * ( 5 + 4 )  = 72 
   { 3 , 5  , 5 } :  ( 3 + 5 ) * ( 5 + 5 )  = 80 
   Final answer : 54 + 60 + 63 + 70 + 72 + 80  = 399
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |+
-  def MOD := 1000000007
 
+vc-definitions: |-
+  def MOD := 1000000007
+  
   def calculate_triplet_sum (A B C : List Nat) : Nat := sorry
 
-
-
-
-vc-theorems: |
+vc-theorems: |-
   theorem single_value_case (y : Nat) :
     y ≥ 1 →
     calculate_triplet_sum [1] [y] [1] = (1 + y) * (y + 1) := sorry
-
+  
   /--
   info: 399
   -/
   #guard_msgs in
   #eval calculate_triplet_sum [1, 2, 3] [5] [4, 5, 6]
-
+  
   /--
   info: 9
   -/
   #guard_msgs in
   #eval calculate_triplet_sum [1] [2] [1]
-
+  
   /--
   info: 12
   -/
   #guard_msgs in
   #eval calculate_triplet_sum [1] [2] [2]
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
+

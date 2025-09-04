@@ -3,95 +3,100 @@ vc-description: |-
   - Tackle - Deal damage worth $X$ points  
   - Grow - Increase damage by $Y$ points i.e. $X$ = $X$ + $Y$ 
   But, it can only perform Grow first (0 or more times) and then tackle (0 or more) times after which it cannot perform Grow again.
-
+  
   That is, it cannot perform the Grow operation once it has performed the tackle operation.  
   A pokemon can be caught only if it’s health is exactly 1. A wild pokemon has appeared and has health worth $H$ points. Find the minimum number of moves required to catch it or say that it is not possible.  
-
+  
   -----Input:-----
   - 
   The first line of the input consists of a single integer $T$ denoting the number of test cases.
   - 
   Each test case consists of 3 space-separated integers $H$, $X$ and $Y$.
-
+  
   -----Output:-----
   - For each test case, print a single line containing one integer - the minimum number of moves required to catch the pokemon if it is possible to catch it else print -1.
-
+  
   -----Constraints-----
   - 
   1 <= $T$ <= 103
   - 
   1 <=  $X$, $Y$ < $H$ <= 109
-
+  
   -----Subtasks-----
   Subtask #1 (30 points):
   - 1 <=  $X$, $Y$ < $H$ <= 1000
   Subtask #2 (70 points):
   - Original Constraints
-
+  
   -----Sample Input:-----
   2
-
+  
   101 10 10
-
+  
   11 3 3  
-
+  
   -----Sample Output:-----
   6
-
+  
   -1  
-
+  
   -----EXPLANATION:-----
   - 
   Example Case 1:
-
+  
   Ash can make use of Grow once. So $X$ = 10 + 10 = 20
-
+  
   Then he can do Tackle 5 times to decrease $H$ to 1.
-
+  
   OR
-
+  
   Ash can make use of Grow 4 times. So $X$ = 10 + 4*10 = 50
-
+  
   Then he can do Tackle 2 times to decrease $H$ to 1.
-
+  
   Hence, a total of 6 moves are required either way which is minimum.  
   - 
   Example Case 2:
-
+  
   No matter how many times Ash uses Grow or Tackle, pokemon can never be caught.
+
 vc-preamble: |-
-  import Imports.AllImports
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
-  def min_moves_to_catch (h x y : Nat) : Int := sorry
 
+vc-definitions: |-
+  def min_moves_to_catch (h x y : Nat) : Int := sorry
+  
   theorem result_valid (n : Nat) :
     let result := min_moves_to_catch (n + 1) n n
     result = -1 ∨ result > 0 := sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem equal_positions_catchable (n : Nat) : 
     let h := n * n + 1
     min_moves_to_catch h n n ≠ -1 := sorry
-
+  
   /--
   info: 6
   -/
   #guard_msgs in
   #eval min_moves_to_catch 101 10 10
-
+  
   /--
   info: -1
   -/
   #guard_msgs in
   #eval min_moves_to_catch 11 3 3
-
+  
   /--
   info: 3
   -/
   #guard_msgs in
   #eval min_moves_to_catch 21 5 5
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+

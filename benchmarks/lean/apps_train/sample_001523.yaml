@@ -4,7 +4,7 @@ vc-description: |-
   For example, consider the following candidate for the input text: 
   This is a sample piece of text to illustrate this 
   problem.
-
+  
   The corresponding output would read as:
   a
   illustrate
@@ -16,25 +16,25 @@ vc-description: |-
   text
   this
   to
-
+  
   -----Input format-----
   - The first line of input contains a single integer $N$, indicating the number of lines in the input.
   - This is followed by $N$ lines of input text.
-
+  
   -----Output format-----
   - The first line of output contains a single integer $M$ indicating the number of distinct words in the given text. 
   - The next $M$ lines list out these words in lexicographic order.
-
+  
   -----Constraints-----
   - $1 \leq N \leq 10000$
   - There are at most 80 characters in each line.
   - There are at the most 1000 distinct words in the given text.
-
+  
   -----Sample Input-----
   2
   This is a sample piece of text to illustrate this 
   problem. 
-
+  
   -----Sample Output-----
   10
   a
@@ -47,31 +47,33 @@ vc-description: |-
   text
   this
   to
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def process_text (lines : List String) : List String :=
     sorry
-
+  
   inductive List.LocalSorted : List String → Prop where
     | nil : List.LocalSorted []
     | single (x : String) : List.LocalSorted [x]
     | cons (x y : String) (rest : List String) 
       (h₁ : x ≤ y) (h₂ : List.LocalSorted (y::rest)) : 
       List.LocalSorted (x::y::rest)
-
+  
   inductive List.LocalNodup : List α → Prop where
     | nil : List.LocalNodup []
     | cons (x : α) (xs : List α) 
       (h₁ : x ∉ xs) (h₂ : List.LocalNodup xs) : 
       List.LocalNodup (x::xs)
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def words (s : String) : List String :=
     sorry
-vc-theorems: |
+
+vc-theorems: |-
   theorem process_text_output_properties {lines : List String} :
     let result := process_text lines
     -- First element is length of remaining list
@@ -83,14 +85,12 @@ vc-theorems: |
     -- No duplicates
     result.tail.LocalNodup :=
     sorry
-
-
+  
   theorem process_text_empty_strings {lines : List String} :
     (∀ x ∈ lines, x = "") → 
     process_text lines = ["0"] :=
     sorry
-
-
+  
   theorem process_text_case_insensitive_count {lines : List String} 
     (h₁ : ∀ x ∈ lines, x.length > 0)
     (h₂ : ∀ x ∈ lines, ∀ c ∈ x.toList, c.isAlpha ∨ c = ' ') :
@@ -99,18 +99,20 @@ vc-theorems: |
     let original_words := (lines.bind (λ s => words s)).map String.toLower |>.eraseDups
     result.tail.length = original_words.length :=
     sorry
-
+  
   /--
   info: ['0']
   -/
   #guard_msgs in
   #eval process_text [""]
-
+  
   /--
   info: ['1', 'the']
   -/
   #guard_msgs in
   #eval process_text ["The THE the", "THE"]
+
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+

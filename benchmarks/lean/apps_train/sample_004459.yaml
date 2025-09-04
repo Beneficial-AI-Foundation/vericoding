@@ -1,34 +1,34 @@
 vc-description: |-
   `late_clock` function receive an array with 4 digits and should return the latest time that can be built with those digits.
   The time should be in `HH:MM` format.
-
+  
   Examples:
   ```
   [1, 9, 8, 3] => 19:38
   [9, 1, 2, 5] => 21:59
   ```
-
+  
   You can suppose the input is correct and you can build from it a correct 24-hour time.
-vc-preamble: |
-  import Imports.AllImports
 
+vc-preamble: |-
   def isValidTime (t : Time) : Prop := 
     t.hours ≤ 23 ∧ t.minutes ≤ 59
-
-
+  
   def lateClock (digits : List Nat) : String :=
   sorry
-
-
+  
   def toNat (c : Char) : Nat :=
   sorry
+
 vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
-vc-definitions: |
+
+vc-definitions: |-
   def getDigit (s : String) (i : Nat) : Char :=
   s.data.get! i
-vc-theorems: |
+
+vc-theorems: |-
   theorem late_clock_output_format 
     {digits : List Nat}
     (h : digits.length = 4)
@@ -42,8 +42,7 @@ vc-theorems: |
     (getDigit result 3).isDigit ∧
     (getDigit result 4).isDigit :=
   sorry
-
-
+  
   theorem late_clock_valid_time
     {digits : List Nat}
     (h : digits.length = 4)
@@ -56,8 +55,7 @@ vc-theorems: |
     }
     isValidTime t :=
   sorry
-
-
+  
   theorem late_clock_uses_all_digits
     {digits : List Nat}
     (h : digits.length = 4)
@@ -75,24 +73,26 @@ vc-theorems: |
       (∀ b : Fin 4, ∃ a : Fin 4, σ a = b) ∧
       (∀ i : Fin 4, digits.get! i.val = result_digits.get! (σ i).val) :=
   sorry
-
+  
   /--
   info: '21:59'
   -/
   #guard_msgs in
   #eval late_clock [9, 1, 2, 5]
-
+  
   /--
   info: '19:38'
   -/
   #guard_msgs in
   #eval late_clock [1, 9, 8, 3]
-
+  
   /--
   info: '22:20'
   -/
   #guard_msgs in
   #eval late_clock [0, 2, 2, 2]
+
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
