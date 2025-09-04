@@ -172,7 +172,7 @@ def parse_command_line_arguments():
         choices=[
             "claude-sonnet", "claude-opus", "gpt", "gpt-mini", "o1", "gemini", "gemini-flash", "grok", "grok-code",
             "deepseek", "glm", "mistral-medium", "mistral-codestral",
-            "qwen-thinking", "qwen-coder", "claude-direct", "openai-direct"
+            "qwen-thinking", "qwen-coder", "claude-direct", "openai-direct", "grok-direct"
         ],
         default="claude-direct",
         help="LLM model to use. Most use OpenRouter, *-direct options use native APIs (default: claude-direct)",

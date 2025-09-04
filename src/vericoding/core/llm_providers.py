@@ -182,7 +182,7 @@ class DeepSeekProvider(LLMProvider):
 class GrokProvider(LLMProvider):
     """Grok (xAI) LLM provider."""
 
-    def __init__(self, api_key: str, model: str = "grok-3", **kwargs):
+    def __init__(self, api_key: str, model: str = "grok-4", **kwargs):
         super().__init__(api_key, model, **kwargs)
         try:
             import openai  # Grok uses OpenAI-compatible API
@@ -374,6 +374,11 @@ def create_llm_provider(llm_name: str) -> tuple[LLMProvider, str]:
             "class": AnthropicProvider,
             "default_model": "claude-sonnet-4-20250514",
             "env_var": "ANTHROPIC_API_KEY",
+        },
+        "grok-direct": {
+            "class": GrokProvider,
+            "default_model": "grok-4",
+            "env_var": "XAI_API_KEY",
         },
     }
 
