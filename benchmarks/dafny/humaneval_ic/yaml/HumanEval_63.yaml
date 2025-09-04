@@ -1,0 +1,68 @@
+vc-description: |-
+  This verification task involves implementing the FibFib sequence, which is a modified Fibonacci sequence. The FibFib sequence is defined with base cases fibfib(0) = 0, fibfib(1) = 0, fibfib(2) = 1, and for n >= 3, fibfib(n) = fibfib(n-1) + fibfib(n-2) + fibfib(n-3). The expected implementation should efficiently compute the n-th element using dynamic programming rather than naive recursion.
+
+vc-preamble: |-
+  // ======= TASK =======
+  // Compute the n-th element of the FibFib sequence, which is defined by:
+  // fibfib(0) = 0, fibfib(1) = 0, fibfib(2) = 1
+  // fibfib(n) = fibfib(n-1) + fibfib(n-2) + fibfib(n-3) for n >= 3
+  
+  // ======= SPEC REQUIREMENTS =======
+  function fibfib_spec(n: int): int
+      requires n >= 0
+  {
+      if n == 0 then 0
+      else if n == 1 then 0
+      else if n == 2 then 1
+      else fibfib_spec(n-1) + fibfib_spec(n-2) + fibfib_spec(n-3)
+  }
+
+vc-helpers: |-
+  // ======= HELPERS =======
+
+vc-spec: |-
+  // ======= MAIN METHOD =======
+  method fibfib(n: int) returns (result: int)
+      requires n >= 0
+      ensures result == fibfib_spec(n)
+      ensures n == 0 ==> result == 0
+      ensures n == 1 ==> result == 0
+      ensures n == 2 ==> result == 1
+      ensures n >= 3 ==> result == fibfib_spec(n-1) + fibfib_spec(n-2) + fibfib_spec(n-3)
+
+vc-code: |-
+  {
+      // Handle base cases
+      if n == 0 {
+          result := 0;
+      } else if n == 1 {
+          result := 0;
+      } else if n == 2 {
+          result := 1;
+      } else {
+          // Use dynamic programming for efficiency
+          // Keep track of the last three values
+          var a := 0;  // fibfib(0)
+          var b := 0;  // fibfib(1)
+          var c := 1;  // fibfib(2)
+
+          // Compute iteratively from 3 to n
+          var i := 3;
+          while i <= n
+              invariant 3 <= i <= n + 1
+              invariant a == fibfib_spec(i-3)
+              invariant b == fibfib_spec(i-2)
+              invariant c == fibfib_spec(i-1)
+          {
+              var next_val := a + b + c;
+              a := b;
+              b := c;
+              c := next_val;
+              i := i + 1;
+          }
+
+          result := c;
+      }
+  }
+
+vc-postamble: |-
