@@ -1,0 +1,68 @@
+vc-description: |-
+  Your task is to determine how many files of the copy queue you will be able to save into your Hard Disk Drive. The files must be saved in the order they appear in the queue. 
+  
+  ### Input:
+  
+  * Array of file sizes `(0 <= s <= 100)`
+  * Capacity of the HD `(0 <= c <= 500)`
+  
+  ### Output:
+  
+  * Number of files that can be fully saved in the HD. 
+  
+  ### Examples:
+  
+  ```
+  save([4,4,4,3,3], 12) -> 3
+  # 4+4+4 <= 12, but 4+4+4+3 > 12
+  ```
+  
+  ```
+  save([4,4,4,3,3], 11) -> 2
+  # 4+4 <= 11, but 4+4+4 > 11
+  ```
+  
+  Do not expect any negative or invalid inputs.
+
+vc-preamble: |-
+  def sum (l : List Nat) : Nat :=
+    match l with
+    | [] => 0
+    | x::xs => x + sum xs
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def save (sizes : List Nat) (hd : Nat) : Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem save_valid_result_range (sizes : List Nat) (hd : Nat) (h : sizes.length > 0) :
+    let result := save sizes hd
+    0 ≤ result ∧ result ≤ sizes.length :=
+  sorry
+  
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval save [4, 4, 4, 3, 3] 12
+  
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval save [4, 4, 4, 3, 3] 11
+  
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval save [4, 8, 15, 16, 23, 42] 108
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible
+

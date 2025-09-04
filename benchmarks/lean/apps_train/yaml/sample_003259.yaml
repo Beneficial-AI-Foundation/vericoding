@@ -1,0 +1,26 @@
+vc-description: |-
+  You have been presented with a cipher, your goal is to re-create the cipher with little information. Use the examples provided to see if you can find a solution to how this cipher is made. You will be given no hints, only the handful of phrases that have already been deciphered for you. 
+  
+  Your only hint: Spaces are left alone, they are not altered in any way. Anytime there is a space, it should remain untouched and in place.
+  
+  I hope you enjoy, but this one should be genuinely infuriating.
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def cipher (s : String) : String := sorry
+  
+  theorem cipher_length_preservation {s : String} :
+    s.any (fun c => 97 ≤ c.toNat ∧ c.toNat ≤ 122 ∨ c = ' ') →
+    (cipher s).length = s.length := sorry
+
+vc-theorems: |-
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible
+

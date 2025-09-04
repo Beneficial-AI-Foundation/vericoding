@@ -1,0 +1,85 @@
+vc-description: |-
+  -----
+  CHEF N TIMINGS
+  -----
+  
+  One day chef was working with some random numbers. Then he found something
+  interesting. He observed that no 240, 567, 9999 and 122 and called these numbers
+  nice as the digits in numbers are in increasing order. Also he called 434, 452, 900
+  are not nice as digits are in decreasing order
+  
+  Now you are given a no and chef
+  wants you to find out largest "nice" integer which is smaller than or equal to the
+  given integer.
+  
+  -----Constraints-----
+  
+  1< t < 1000 
+  
+  1< N < 10^18
+  
+  -----Input Format-----
+  
+  First line contains no. of test cases t. Then t test cases follow. Each test case
+  contain a integer n.
+  
+  -----Output-----
+  
+  Output a integer for each test case in a new line which is largest nice
+  integer smaller or equal to the given integer. 
+  
+  -----Example Text Case-----
+  Input:
+  
+  1
+  132
+  
+  Output:
+  
+  129
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def find_largest_nice_number (n: Nat) : Nat := sorry
+  
+  theorem output_is_natural (n: Nat) (h: n > 0) :
+    find_largest_nice_number n ≥ 0 := by sorry
+
+vc-theorems: |-
+  theorem output_le_input (n: Nat) (h: n > 0) : 
+    find_largest_nice_number n ≤ n := by sorry
+  
+  theorem output_is_valid_number (n: Nat) (h: n > 0) :
+    let res := toString (find_largest_nice_number n)
+    res.length > 0 ∧ 
+    res.get 0 ≠ '0' ∧
+    res.data.all (fun c => c.isDigit)
+    := by sorry
+  
+  /--
+  info: 129
+  -/
+  #guard_msgs in
+  #eval find_largest_nice_number 132
+  
+  /--
+  info: 999
+  -/
+  #guard_msgs in
+  #eval find_largest_nice_number 999
+  
+  /--
+  info: 499
+  -/
+  #guard_msgs in
+  #eval find_largest_nice_number 543
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+

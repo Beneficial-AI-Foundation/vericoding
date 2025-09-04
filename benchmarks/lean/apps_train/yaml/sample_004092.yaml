@@ -1,0 +1,76 @@
+vc-description: |-
+  # Do you speak retsec?
+  You and your friends want to play undercover agents. In order to exchange your *secret* messages, you've come up with the following system: you take the word, cut it in half, and place the first half behind the latter. If the word has an uneven number of characters, you leave the middle at its previous place:
+  
+  ![retsec examples](http://i.imgur.com/Ozy6p09.png)
+  
+  That way, you'll be able to exchange your messages in private.
+  
+  # Task
+  You're given a single word. Your task is to swap the halves. If the word has an uneven length, leave the character in the middle at that position and swap the chunks around it.
+  
+  ## Examples
+  ```python
+  reverse_by_center("secret")  == "retsec" # no center character
+  reverse_by_center("agent")   == "nteag"  # center character is "e"
+  ```
+  
+  ## Remarks
+  Don't use this to actually exchange messages in private.
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def reverseByCenter (s : String) : String :=
+    sorry
+
+vc-theorems: |-
+  theorem reverseByCenter_length_preserved (s : String) :
+    (reverseByCenter s).length = s.length :=
+  sorry
+  
+  theorem reverseByCenter_is_reversible (s : String) :
+    reverseByCenter (reverseByCenter s) = s :=
+  sorry
+  
+  theorem reverseByCenter_ends_swapped {s : String} (h : s.length ≥ 2) :
+    let n := s.length/2
+    (reverseByCenter s).take n = s.takeRight n ∧
+    (reverseByCenter s).takeRight n = s.take n :=
+  sorry
+  
+  theorem reverseByCenter_middle_preserved {s : String} (h : s.length ≥ 3) :
+    let n := s.length/2
+    (reverseByCenter s).drop n = s.drop n :=
+  sorry
+  
+  theorem reverseByCenter_empty :
+    reverseByCenter "" = "" :=
+  sorry
+  
+  /--
+  info: 'retsec'
+  -/
+  #guard_msgs in
+  #eval reverse_by_center "secret"
+  
+  /--
+  info: 'nteag'
+  -/
+  #guard_msgs in
+  #eval reverse_by_center "agent"
+  
+  /--
+  info: 'war'
+  -/
+  #guard_msgs in
+  #eval reverse_by_center "raw"
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

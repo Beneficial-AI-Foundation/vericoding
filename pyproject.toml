@@ -22,6 +22,8 @@ dependencies = [
     "tqdm>=4.67.1",
     "ruamel-yaml>=0.18.15",
     "openai>=1.104.2",
+    "datasets>=4.0.0",
+    "ruamel-yaml>=0.18.15",
 ]
 
 [project.optional-dependencies]
@@ -39,6 +41,7 @@ dev = [
 
 [project.scripts]
 vericode-lean = "vericoding.lean.spec_to_code_lean:main"
+fvapps-to-yaml = "fvapps_2_yaml:main"
 
 [build-system]
 requires = ["hatchling"]
@@ -46,5 +49,6 @@ build-backend = "hatchling.build"
 
 [dependency-groups]
 dev = [
+    "ruff>=0.12.10",
     "wandb>=0.21.0",
 ]

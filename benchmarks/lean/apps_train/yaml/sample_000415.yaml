@@ -1,0 +1,77 @@
+vc-description: |-
+  Given two integers dividend and divisor, divide two integers without using multiplication, division and mod operator.
+  
+  Return the quotient after dividing dividend by divisor.
+  
+  The integer division should truncate toward zero.
+  
+  Example 1:
+  
+  Input: dividend = 10, divisor = 3
+  Output: 3
+  
+  Example 2:
+  
+  Input: dividend = 7, divisor = -3
+  Output: -2
+  
+  Note:
+  
+         Both dividend and divisor will be 32-bit signed integers.
+         The divisor will never be 0.
+         Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−231,  231 − 1]. For the purpose of this problem, assume that your function returns 231 − 1 when the division result overflows.
+
+vc-preamble: |-
+  def MAX_INT : Int := 2147483647
+  def MIN_INT : Int := -2147483648
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def divide (dividend : Int) (divisor : Int) : Int := sorry
+  
+  theorem divide_bounds (dividend divisor : Int) (h : divisor ≠ 0) :
+    MIN_INT ≤ divide dividend divisor ∧ divide dividend divisor ≤ MAX_INT := sorry
+
+vc-theorems: |-
+  theorem divide_accuracy (dividend divisor : Int) (h1 : divisor ≠ 0) 
+    (h2 : divide dividend divisor ≠ MAX_INT) :
+    (divide dividend divisor * divisor - dividend).natAbs < divisor.natAbs := sorry
+  
+  theorem divide_by_zero (dividend : Int) :
+    divide dividend 0 = MAX_INT := sorry 
+  
+  theorem min_int_overflow :
+    divide MIN_INT (-1) = MAX_INT := sorry
+  
+  theorem divide_sign_positive (dividend divisor : Int) (h : dividend * divisor > 0) :
+    divide dividend divisor ≥ 0 := sorry
+  
+  theorem divide_sign_negative (dividend divisor : Int) 
+    (h1 : dividend * divisor < 0) (h2 : divide dividend divisor ≠ MAX_INT) :
+    divide dividend divisor ≤ 0 := sorry
+  
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval divide 10 3
+  
+  /--
+  info: -2
+  -/
+  #guard_msgs in
+  #eval divide 7 -3
+  
+  /--
+  info: 2147483647
+  -/
+  #guard_msgs in
+  #eval divide -2147483648 -1
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+

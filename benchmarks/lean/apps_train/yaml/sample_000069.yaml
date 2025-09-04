@@ -1,0 +1,108 @@
+vc-description: |-
+  Word $s$ of length $n$ is called $k$-complete if   $s$ is a palindrome, i.e. $s_i=s_{n+1-i}$ for all $1 \le i \le n$;  $s$ has a period of $k$, i.e. $s_i=s_{k+i}$ for all $1 \le i \le n-k$. 
+  
+  For example, "abaaba" is a $3$-complete word, while "abccba" is not.
+  
+  Bob is given a word $s$ of length $n$ consisting of only lowercase Latin letters and an integer $k$, such that $n$ is divisible by $k$. He wants to convert $s$ to any $k$-complete word.
+  
+  To do this Bob can choose some $i$ ($1 \le i \le n$) and replace the letter at position $i$ with some other lowercase Latin letter.
+  
+  So now Bob wants to know the minimum number of letters he has to replace to convert $s$ to any $k$-complete word.
+  
+  Note that Bob can do zero changes if the word $s$ is already $k$-complete.
+  
+  You are required to answer $t$ test cases independently.
+  
+  -----Input-----
+  
+  The first line contains a single integer $t$ ($1 \le t\le 10^5$) — the number of test cases.
+  
+  The first line of each test case contains two integers $n$ and $k$ ($1 \le k < n \le 2 \cdot 10^5$, $n$ is divisible by $k$).
+  
+  The second line of each test case contains a word $s$ of length $n$.
+  
+  It is guaranteed that word $s$ only contains lowercase Latin letters. And it is guaranteed that the sum of $n$ over all test cases will not exceed $2 \cdot 10^5$.
+  
+  -----Output-----
+  
+  For each test case, output one integer, representing the minimum number of characters he has to replace to convert $s$ to any $k$-complete word.
+  
+  -----Example-----
+  Input
+  4
+  6 2
+  abaaba
+  6 3
+  abaaba
+  36 9
+  hippopotomonstrosesquippedaliophobia
+  21 7
+  wudixiaoxingxingheclp
+  
+  Output
+  2
+  0
+  23
+  16
+  
+  -----Note-----
+  
+  In the first test case, one optimal solution is aaaaaa.
+  
+  In the second test case, the given word itself is $k$-complete.
+
+vc-preamble: |-
+  def min_replacements (n k : Nat) (s : String) : Nat :=
+    sorry
+  
+  def is_palindrome (s : String) : Bool :=
+    sorry
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def max_char_count (s : String) : Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem min_replacements_nonneg (n k : Nat) (s : String) :
+    min_replacements n k s ≥ 0 :=
+    sorry
+  
+  theorem min_replacements_bounded (n k : Nat) (s : String) :
+    min_replacements n k s ≤ n :=
+    sorry
+  
+  theorem uniform_string_zero (n k : Nat) (s : String) :
+    s = String.mk (List.replicate n 'a') →
+    min_replacements n (min k n) s = 0 :=
+    sorry
+  
+  theorem min_replacements_type (n k : Nat) (s : String) :
+    min_replacements n k s ≥ 0 :=
+    sorry
+  
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval min_replacements 6 2 "abaaba"
+  
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval min_replacements 6 3 "abaaba"
+  
+  /--
+  info: 23
+  -/
+  #guard_msgs in
+  #eval min_replacements 36 9 "hippopotomonstrosesquippedaliophobia"
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible
+

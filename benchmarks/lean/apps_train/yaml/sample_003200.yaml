@@ -1,0 +1,75 @@
+vc-description: |-
+  _Based on [Project Euler problem 35](https://projecteuler.net/problem=35)_
+  
+  A circular prime is a prime in which every circular permutation of that number is also prime. Circular permutations are created by rotating the digits of the number, for example: `197, 971, 719`. One-digit primes are circular primes by definition.
+  
+  Complete the function that dertermines if a number is a circular prime.
+  
+  There are 100 random tests for numbers up to 10000.
+
+vc-preamble: |-
+  def sqrt (n : Nat) : Nat :=
+    sorry
+  
+  def circular_permutations (n : Nat) : List Nat :=
+    sorry
+  
+  def is_prime (n : Nat) : Bool :=
+    sorry
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def circular_prime (n : Nat) : Bool :=
+    sorry
+
+vc-theorems: |-
+  theorem circular_perms_length (n : Nat) (h : n > 0) : 
+    List.length (circular_permutations n) = String.length (toString n) :=
+    sorry
+  
+  theorem circular_perms_digit_count (n : Nat) (h : n > 0) :
+    ∀ p ∈ circular_permutations n, 
+      List.length (toString p).data = List.length (toString n).data :=
+    sorry
+  
+  theorem prime_basic_properties (n : Nat) :
+    is_prime n = true → 
+      (n > 1 ∧ 
+       ∀ i, 2 ≤ i → i ≤ sqrt n → n % i ≠ 0) :=
+    sorry
+  
+  theorem circular_prime_properties (n : Nat) :
+    circular_prime n = true →
+      ∀ x ∈ circular_permutations n, is_prime x = true :=
+    sorry
+  
+  theorem circular_prime_symmetry (n : Nat) :
+    circular_prime n = true →
+      ∀ p ∈ circular_permutations n, circular_prime p = true :=
+    sorry
+  
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval circular_prime 197
+  
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval circular_prime 179
+  
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval circular_prime 7
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

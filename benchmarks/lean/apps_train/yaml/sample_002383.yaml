@@ -1,0 +1,100 @@
+vc-description: |-
+  In a deck of cards, each card has an integer written on it.
+  Return true if and only if you can choose X >= 2 such that it is possible to split the entire deck into 1 or more groups of cards, where:
+  
+  Each group has exactly X cards.
+  All the cards in each group have the same integer.
+  
+  Example 1:
+  Input: deck = [1,2,3,4,4,3,2,1]
+  Output: true
+  Explanation: Possible partition [1,1],[2,2],[3,3],[4,4].
+  
+  Example 2:
+  Input: deck = [1,1,1,2,2,2,3,3]
+  Output: false´
+  Explanation: No possible partition.
+  
+  Example 3:
+  Input: deck = [1]
+  Output: false
+  Explanation: No possible partition.
+  
+  Example 4:
+  Input: deck = [1,1]
+  Output: true
+  Explanation: Possible partition [1,1].
+  
+  Example 5:
+  Input: deck = [1,1,2,2,2,2]
+  Output: true
+  Explanation: Possible partition [1,1],[2,2],[2,2].
+  
+  Constraints:
+  
+  1 <= deck.length <= 10^4
+  0 <= deck[i] < 10^4
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def has_groups_size_x (deck : List Int) : Bool := sorry
+  
+  @[simp]
+
+vc-theorems: |-
+  theorem unique_elements_no_groups (deck : List Int) 
+    (h : ∀ x ∈ deck, (List.count x deck) = 1) : 
+    ¬has_groups_size_x deck := sorry
+  
+  theorem repeating_elements_divisible 
+    (group_size : Nat) (num_groups : Nat)
+    (h1 : group_size ≥ 2) (h2 : num_groups ≥ 1)
+    (deck : List Int)
+    (h3 : deck = List.join (List.map (fun i => List.replicate group_size (Int.ofNat i)) (List.range num_groups))) :
+    has_groups_size_x deck := sorry
+  
+  theorem mixed_groups_common_factor
+    (size1 size2 : Nat)
+    (h1 : size1 ≥ 2) (h2 : size2 ≥ 2)
+    (deck : List Int)
+    (h3 : ∃ k ≥ 2, size1 % k = 0 ∧ size2 % k = 0)
+    (h4 : deck = List.replicate size1 1 ++ List.replicate size2 2) :
+    has_groups_size_x deck := sorry
+  
+  theorem permutation_invariant
+    (deck1 deck2 : List Int)
+    (h : List.Perm deck1 deck2) :
+    has_groups_size_x deck1 = has_groups_size_x deck2 := sorry
+  
+  theorem doubled_deck_property
+    (deck : List Int)
+    (h : deck.length ≥ 1) :
+    has_groups_size_x deck ≤ has_groups_size_x (deck ++ deck) := sorry
+  
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval has_groups_size_x [1, 2, 3, 4, 4, 3, 2, 1]
+  
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval has_groups_size_x [1, 1, 1, 2, 2, 2, 3, 3]
+  
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval has_groups_size_x [1, 1, 2, 2, 2, 2]
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

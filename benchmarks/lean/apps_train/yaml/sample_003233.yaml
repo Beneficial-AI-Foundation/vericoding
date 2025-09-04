@@ -1,0 +1,69 @@
+vc-description: |-
+  **Debug** a function called calculate that takes 3 values. The first and third values are numbers. The second value is a character. If the character is "+" , "-", "\*", or "/", the function will return the result of the corresponding mathematical function on the two numbers. If the string is not one of the specified characters, the function should return null.
+  
+  ```
+  calculate(2,"+", 4); //Should return 6
+  calculate(6,"-", 1.5); //Should return 4.5
+  calculate(-4,"*", 8); //Should return -32
+  calculate(49,"/", -7); //Should return -7
+  calculate(8,"m", 2); //Should return null
+  calculate(4,"/",0) //should return null
+  ```
+  
+  Kind of a fork (not steal :)) of [Basic Calculator][1] kata by [TheDoctor][2]. 
+  
+  [1]: http://www.codewars.com/kata/basic-calculator/javascript
+  [2]: http://www.codewars.com/users/528c45adbd9daa384300068d
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def calculate (a : Float) (op : String) (b : Float) : Option Float := sorry
+  
+  inductive IsValidOp : String → Prop where
+    | plus : IsValidOp "+"
+    | minus : IsValidOp "-"
+    | times : IsValidOp "*"
+    | divide : IsValidOp "/"
+
+vc-theorems: |-
+  theorem calculate_valid_ops {a b : Float} {op : String} (h : IsValidOp op) :
+    match op with
+    | "+" => calculate a op b = some (a + b)
+    | "-" => calculate a op b = some (a - b)
+    | "*" => calculate a op b = some (a * b)
+    | "/" => match Float.toString b with
+             | "0" => calculate a op b = none 
+             | _ => calculate a op b = some (a / b)
+    | _ => True
+    := sorry
+  
+  theorem calculate_invalid_ops {a b : Float} {op : String} (h : ¬IsValidOp op) :
+    calculate a op b = none := sorry
+  
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval calculate 2 "+" 4
+  
+  /--
+  info: -7
+  -/
+  #guard_msgs in
+  #eval calculate 49 "/" -7
+  
+  /--
+  info: None
+  -/
+  #guard_msgs in
+  #eval calculate 8 "m" 2
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

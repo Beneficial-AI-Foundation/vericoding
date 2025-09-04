@@ -1,0 +1,90 @@
+vc-description: |-
+  You have an array A of size N containing only positive numbers. You have to output the maximum possible value of A[i]%A[j] where 1<=i,j<=N. 
+  
+  -----Input-----
+  The first line of each test case contains a single integer N denoting the size of the array. The next N lines contains integers A1, A2, ..., AN denoting the numbers
+  
+  -----Output-----
+  Output a single integer answering what is asked in the problem.
+  
+  -----Subtask 1 (20 points)-----
+  - 1 ≤ N ≤ 5000
+  - 1 ≤ A[i] ≤ 2*(10^9)
+  
+  -----Subtask 2 (80 points)-----
+  - 1 ≤ N ≤ 1000000
+  - 1 ≤ A[i] ≤ 2*(10^9)
+  
+  -----Example-----
+  Input:
+  2
+  1
+  2
+  
+  Output:
+  1
+  
+  -----Explanation-----
+  There will be four values, A[0]%A[0] = 0, A[0]%A[1]=1, A[1]%A[0]=0, A[1]%A[1]=0, and hence the output will be the maximum among them all, that is 1.
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def find_max_modulo (arr : List Nat) : Nat := sorry 
+  
+  @[simp] def max_list (l : List Nat) : Nat := sorry
+
+vc-theorems: |-
+  theorem find_max_modulo_non_negative (arr : List Nat) (h : arr.length > 0) :
+    find_max_modulo arr ≥ 0 := sorry
+  
+  theorem find_max_modulo_bounded_by_max (arr : List Nat) (h : arr.length > 0) :
+    find_max_modulo arr ≤ max_list arr := sorry
+  
+  theorem find_max_modulo_is_maximal (arr : List Nat) (h : arr.length > 0) :
+    let max_val := max_list arr
+    let others := arr.filter (· ≠ max_val)
+    let second_max := if others.length > 0 then max_list others else 0
+    let candidates := (arr.filter (· ≠ 0)).map (max_val % ·) ++ [second_max % max_val]
+    find_max_modulo arr = max_list candidates := sorry
+  
+  theorem find_max_modulo_duplicate_invariant (arr : List Nat) (h : arr.length > 0) :
+    find_max_modulo arr = find_max_modulo (arr ++ arr) := sorry
+  
+  theorem find_max_modulo_ordering_invariant {arr₁ arr₂ : List Nat} 
+    (h₁ : arr₁.length > 0) (h₂ : arr₁.length = arr₂.length) 
+    (h₃ : ∀ x, x ∈ arr₁ ↔ x ∈ arr₂) :
+    find_max_modulo arr₁ = find_max_modulo arr₂ := sorry
+  
+  theorem find_max_modulo_empty_error :
+    ∀ (arr : List Nat), arr.length = 0 → find_max_modulo arr = 0 := sorry
+  
+  theorem find_max_modulo_zero_error (arr : List Nat) :
+    arr = [0] → find_max_modulo arr = 0 := sorry
+  
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval find_max_modulo [1, 2]
+  
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval find_max_modulo [5, 2, 7, 3]
+  
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval find_max_modulo [100]
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded
+

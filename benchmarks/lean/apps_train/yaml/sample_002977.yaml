@@ -1,0 +1,97 @@
+vc-description: |-
+  # Task
+   Let's call `product(x)` the product of x's digits. Given an array of integers a, calculate `product(x)` for each x in a, and return the number of distinct results you get.
+  
+  # Example
+  
+   For `a = [2, 8, 121, 42, 222, 23]`, the output should be `3`.
+  
+   Here are the products of the array's elements:
+  ```
+  2: product(2) = 2;
+  8: product(8) = 8;
+  121: product(121) = 1 * 2 * 1 = 2;
+  42: product(42) = 4 * 2 = 8;
+  222: product(222) = 2 * 2 * 2 = 8;
+  23: product(23) = 2 * 3 = 6.```
+  As you can see, there are only `3` different products: `2, 6 and 8.`
+  
+  # Input/Output
+  
+   - `[input]` integer array `a`
+  
+      Constraints:
+  
+      `1 ≤ a.length ≤ 10000,`
+  
+      `1 ≤ a[i] ≤ 1000000000.`
+  
+   - `[output]` an integer
+  
+      The number of different digit products in `a`.
+
+vc-preamble: |-
+  def uniqueDigitProducts (nums : List Nat) : Nat :=
+    sorry
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def List.toSet (l : List α) : List α :=
+    sorry
+
+vc-theorems: |-
+  theorem uniqueDigitProducts_bounds_nat {nums : List Nat} (h : nums.length > 0) : 
+    1 ≤ uniqueDigitProducts nums ∧ uniqueDigitProducts nums ≤ nums.length :=
+  sorry
+  
+  theorem uniqueDigitProducts_single_digits {nums : List Nat} 
+    (h1 : nums.length > 0)
+    (h2 : ∀ n ∈ nums, n ≤ 9) :
+    uniqueDigitProducts nums ≤ (List.toSet nums).length :=
+  sorry
+  
+  theorem uniqueDigitProducts_all_zeros {nums : List Nat}
+    (h1 : nums.length > 0) 
+    (h2 : ∀ n ∈ nums, n = 0) :
+    uniqueDigitProducts nums = 1 :=
+  sorry
+  
+  theorem uniqueDigitProducts_three_digit_no_zeros {nums : List Nat}
+    (h1 : nums.length > 0)
+    (h2 : ∀ n ∈ nums, 100 ≤ n ∧ n ≤ 999)
+    (h3 : ∀ n ∈ nums, ¬ toString n = "0") :
+    uniqueDigitProducts nums > 0 :=
+  sorry
+  
+  theorem uniqueDigitProducts_permutation {nums : List Nat}
+    (h : nums.length > 1) :
+    let n := nums[0]
+    let nums_with_perm := n :: nums
+    uniqueDigitProducts nums_with_perm ≥ uniqueDigitProducts nums :=
+  sorry
+  
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval unique_digit_products [2, 8, 121, 42, 222, 23]
+  
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval unique_digit_products [239]
+  
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval unique_digit_products [100, 101, 111]
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+

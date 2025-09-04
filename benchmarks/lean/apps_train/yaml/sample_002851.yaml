@@ -1,0 +1,74 @@
+vc-description: |-
+  ### Description
+  As hex values can include letters `A` through to `F`, certain English words can be spelled out, such as `CAFE`, `BEEF`, or `FACADE`.
+  This vocabulary can be extended by using numbers to represent other letters, such as `5EAF00D`, or `DEC0DE5`.
+  
+  Given a string, your task is to return the decimal sum of all words in the string that can be interpreted as such hex values.
+  
+  ### Example
+  
+  Working with the string `BAG OF BEES`:  
+  * `BAG` ==> `0` as it is not a valid hex value  
+  * `OF` ==> `0F` ==> `15`  
+  * `BEES` ==> `BEE5` ==> `48869`
+  
+  So `hex_word_sum('BAG OF BEES')` returns the sum of these, `48884`.
+  
+  ### Notes
+  * Inputs are all uppercase and contain no punctuation
+  * `0` can be substituted for `O`
+  * `5` can be substituted for `S`
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def hexWordSum (s : String) : Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem hex_word_sum_output_type (s : String) :
+    let result := hexWordSum s
+    result ≥ 0 := by sorry
+  
+  theorem hex_word_sum_mixed_strings_valid (s : String) :
+    let result := hexWordSum s
+    result ≥ 0 := by sorry
+  
+  theorem hex_word_substitutions (word : String) :
+    let converted := word.replace "O" "0" |>.replace "S" "5"
+    (∀ c ∈ converted.toList, c ∈ ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']) →
+    hexWordSum word = String.toNat! converted := by sorry
+  
+  theorem hex_word_sum_empty :
+    hexWordSum "" = 0 ∧ hexWordSum "   " = 0 := by sorry
+  
+  theorem hex_word_sum_invalid_chars (s : String) :
+    (∀ c ∈ s.toList, c ∉ ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'O', 'S']) →
+    hexWordSum s = 0 := by sorry
+  
+  /--
+  info: 14613198
+  -/
+  #guard_msgs in
+  #eval hex_word_sum "DEFACE"
+  
+  /--
+  info: 23294
+  -/
+  #guard_msgs in
+  #eval hex_word_sum "SAFE"
+  
+  /--
+  info: 49374
+  -/
+  #guard_msgs in
+  #eval hex_word_sum "CODE"
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+

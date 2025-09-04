@@ -1,0 +1,70 @@
+vc-description: |-
+  You are given an array of integers [A1,A2,…,AN]$[A_1, A_2, \ldots, A_N]$. Let's call adding an element to this array at any position (including the beginning and the end) or removing an arbitrary element from it a modification. It is not allowed to remove an element from the array if it is empty.
+  Find the minimum number of modifications which must be performed so that the resulting array can be partitioned into permutations. Formally, it must be possible to partition elements of the resulting array into zero or more groups (multisets; not necessarily identical) in such a way that each element belongs to exactly one group and for each group, if it contains L$L$ elements, then it must contain only integers 1$1$ through L$L$, each of them exactly once.
+  
+  -----Input-----
+  - The first line of the input contains a single integer T$T$ denoting the number of test cases. The description of T$T$ test cases follows.
+  - The first line of each test case contains a single integer N$N$.
+  - The second line contains N$N$ space-separated integers A1,A2,…,AN$A_1, A_2, \ldots, A_N$.
+  
+  -----Output-----
+  For each test case, print a single line containing one integer ― the minimum required number of modifications.
+  
+  -----Constraints-----
+  - 1≤T≤1,000$1 \le T \le 1,000$
+  - 1≤N≤106$1 \le N \le 10^6$
+  - 1≤Ai≤109$1 \le A_i \le 10^9$ for each valid i$i$
+  - the sum of N$N$ over all test cases does not exceed 106$10^6$
+  
+  -----Subtasks-----
+  Subtask #1 (50 points):
+  - 1≤N≤1,000$1 \le N \le 1,000$
+  - the sum of N$N$ over all test cases does not exceed 10,000$10,000$
+  Subtask #2 (50 points): original constraints
+  
+  -----Example Input-----
+  2
+  5
+  1 4 1 2 2
+  4
+  2 3 2 3
+  
+  -----Example Output-----
+  1
+  2
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def min_modifications (arr : List Nat) : Nat := sorry
+  
+  theorem min_modifications_non_negative (arr : List Nat) :
+    min_modifications arr ≥ 0 := sorry
+
+vc-theorems: |-
+  theorem min_modifications_upper_bound (arr : List Nat) :
+    min_modifications arr ≤ arr.length * arr.length := sorry
+  
+  theorem min_modifications_empty :
+    min_modifications [] = 0 := sorry
+  
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval min_modifications [1, 4, 1, 2, 2]
+  
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval min_modifications [2, 3, 2, 3]
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+

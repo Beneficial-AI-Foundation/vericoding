@@ -1,0 +1,81 @@
+vc-description: |-
+  ###Task:
+  
+  You have to write a function `pattern` which creates the following pattern (see examples) up to the desired number of rows.
+  
+  * If the Argument is 0 or a Negative Integer then it should return "" i.e. empty string.
+  
+  * If any even number is passed as argument then the pattern should last upto the largest odd number which is smaller than the passed even number.
+  
+  ###Examples:
+  
+  pattern(9):
+  
+      1
+      333
+      55555
+      7777777
+      999999999
+  
+  pattern(6):
+  
+      1
+      333
+      55555
+  
+  ```Note: There are no spaces in the pattern```
+  
+  ```Hint: Use \n in string to jump to next line```
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def pattern (n : Int) : String := sorry
+  
+  theorem pattern_nonpos {n : Int} (h : n ≤ 0) : 
+    pattern n = "" := sorry
+
+vc-theorems: |-
+  theorem pattern_line_structure {n : Int} (h : n > 0) (i : Nat) (h2 : i < n) :
+    let lines := (pattern n).splitOn "\n"
+    let expected_num := 2 * i + 1
+    lines[i]! = String.mk (List.replicate expected_num (toString expected_num).data[0]!) := sorry
+  
+  theorem pattern_examples : 
+    pattern 0 = "" ∧ 
+    pattern (-1) = "" ∧
+    pattern 4 = "1\n333" ∧
+    pattern 5 = "1\n333\n55555" := sorry
+  
+  /--
+  info: '1\n333'
+  -/
+  #guard_msgs in
+  #eval pattern 4
+  
+  /--
+  info: '1\n333\n55555'
+  -/
+  #guard_msgs in
+  #eval pattern 5
+  
+  /--
+  info: ''
+  -/
+  #guard_msgs in
+  #eval pattern 0
+  
+  /--
+  info: ''
+  -/
+  #guard_msgs in
+  #eval pattern -5
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

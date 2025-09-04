@@ -1,0 +1,71 @@
+vc-description: |-
+  This is a problem that involves adding numbers to items in a list.
+  In a list you will have to add the item's remainder when divided by a given divisor to each item.
+  
+  For example if the item is 40 and the divisor is 3 you would have to add 1 since 40 minus the closest multiple of 3 which is 39 is 1. So the 40 in the list will become 41. You would have to return the modified list in this problem.
+  
+  For this problem you will receive a divisor called `div` as well as simple list of whole numbers called `nums`. Good luck and happy coding.
+  
+  # Examples
+  ```python
+  nums = [2, 7, 5, 9, 100, 34, 32, 0], div = 3
+    ==>  [4, 8, 7, 9, 101, 35, 34, 0] 
+  
+  nums = [1000, 999, 998, 997], div = 5
+     ==> [1000, 1003, 1001, 999]
+  
+  nums = [], div = 2
+     ==> []
+  ```
+  
+  **Note:** random tests check lists containing up to 10000 elements.
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def solve (nums : List Int) (div : Int) : List Int := sorry
+  
+  theorem solve_output_length {nums : List Int} {div : Int} (h : div > 0) :
+    (solve nums div).length = nums.length := sorry
+
+vc-theorems: |-
+  theorem solve_elements_geq_input {nums : List Int} {div : Int} (h : div > 0) :
+    ∀ (i : Nat), i < nums.length → 
+      ((solve nums div).get ⟨i, by sorry⟩) ≥ (nums.get ⟨i, by sorry⟩) := sorry
+  
+  theorem solve_diff_less_than_div {nums : List Int} {div : Int} (h : div > 0) :
+    ∀ (i : Nat), i < nums.length →
+      ((solve nums div).get ⟨i, by sorry⟩) - (nums.get ⟨i, by sorry⟩) < div := sorry
+  
+  theorem solve_div_one {nums : List Int} :
+    solve nums 1 = nums := sorry
+  
+  theorem solve_empty {div : Int} (h : div > 0) :
+    solve [] div = [] := sorry
+  
+  /--
+  info: expected1
+  -/
+  #guard_msgs in
+  #eval solve [2, 7, 5, 9, 100, 34, 32, 0] 3
+  
+  /--
+  info: expected2
+  -/
+  #guard_msgs in
+  #eval solve [] 2
+  
+  /--
+  info: expected3
+  -/
+  #guard_msgs in
+  #eval solve [1000, 999, 998, 997] 5
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

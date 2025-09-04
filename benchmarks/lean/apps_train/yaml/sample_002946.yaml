@@ -1,0 +1,79 @@
+vc-description: |-
+  >When no more interesting kata can be resolved, I just choose to create the new kata, to solve their own, to enjoy the process  --myjinxin2015 said
+  
+  # Description:
+   Given two array of integers(`arr1`,`arr2`). Your task is going to find a pair of numbers(an element in arr1, and another element in arr2), their difference is as big as possible(absolute value); Again, you should to find a pair of numbers, their difference is as small as possible. Return the maximum and minimum difference values by an array: `[  max difference,  min difference  ]`
+  
+   For example:
+   ```
+   Given arr1 = [3,10,5], arr2 = [20,7,15,8]
+   should return [17,2] because 20 - 3 = 17, 10 - 8 = 2
+   ```
+  
+  # Note:
+   - arr1 and arr2 contains only integers(positive, negative or 0);
+   - arr1 and arr2 may have different lengths, they always has at least one element;
+   - All inputs are valid.
+   - This is a simple version, if you want some challenges, [try the challenge version](https://www.codewars.com/kata/583c592928a0c0449d000099).
+  
+  # Some Examples
+   ```
+   maxAndMin([3,10,5],[20,7,15,8]) === [17,2]
+   maxAndMin([3],[20]) === [17,17]
+   maxAndMin([3,10,5],[3,10,5]) === [7,0]
+   maxAndMin([1,2,3,4,5],[6,7,8,9,10]) === [9,1]
+   ```
+
+vc-preamble: |-
+  def abs (x : Int) : Int :=
+    if x ≥ 0 then x else -x
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def max_and_min (arr1 arr2 : List Int) : List Int :=
+    sorry
+
+vc-theorems: |-
+  theorem max_and_min_output_size {arr1 arr2 : List Int} 
+    (h1 : arr1 ≠ []) (h2 : arr2 ≠ []) : 
+    let result := max_and_min arr1 arr2
+    result.length = 2 :=
+  sorry
+  
+  theorem max_and_min_order {arr1 arr2 : List Int}
+    (h1 : arr1 ≠ []) (h2 : arr2 ≠ []) :
+    let result := max_and_min arr1 arr2
+    result[0]! ≥ result[1]! :=
+  sorry
+  
+  theorem max_and_min_nonneg {arr1 arr2 : List Int}
+    (h1 : arr1 ≠ []) (h2 : arr2 ≠ []) :
+    let result := max_and_min arr1 arr2
+    result[0]! ≥ 0 ∧ result[1]! ≥ 0 :=
+  sorry
+  
+  /--
+  info: [17, 2]
+  -/
+  #guard_msgs in
+  #eval max_and_min [3, 10, 5] [20, 7, 15, 8]
+  
+  /--
+  info: [17, 17]
+  -/
+  #guard_msgs in
+  #eval max_and_min [3] [20]
+  
+  /--
+  info: [9, 1]
+  -/
+  #guard_msgs in
+  #eval max_and_min [1, 2, 3, 4, 5] [6, 7, 8, 9, 10]
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible
+

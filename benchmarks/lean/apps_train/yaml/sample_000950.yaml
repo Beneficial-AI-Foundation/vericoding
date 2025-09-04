@@ -1,0 +1,67 @@
+vc-description: |-
+  You are given a grid of size M x N, where each square is colored with some random color among K colors with each having equal probability.
+  
+  A Good Rectangle is defined as one where all squares lying on the inner border are of the same color.
+  
+  What is the expected number of Good Rectangles in the given grid.
+  
+  -----Input-----
+  
+  - 
+  First Line contains M, N, K
+  
+  -----Output-----
+  A single value rounded off to the nearest Integer corresponding to the required answer.
+  
+  -----Constraints-----
+  -  1 <= N <= 105 
+  -  1 <= M <= 105 
+  -  1 <= K <= 105 
+  
+  -----Example-----
+  Input:
+  1 3 1
+  Output:
+  6
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def solve_good_rectangles (M N K : Nat) : Nat := sorry
+  
+  theorem good_rectangles_positive (M N K : Nat) (h₁ : M > 0) (h₂ : N > 0) (h₃ : K > 0) :
+    solve_good_rectangles M N K > 0 := sorry
+
+vc-theorems: |-
+  theorem good_rectangles_symmetric (M N K : Nat) :
+    solve_good_rectangles M N K = solve_good_rectangles N M K := sorry
+  
+  theorem good_rectangles_edge_case_k_gt_one (M N K : Nat) (h₁ : M = 1) (h₂ : N = 1) (h₃ : K > 1) :
+    solve_good_rectangles M N K = 1 := sorry
+  
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval solve_good_rectangles 1 3 1
+  
+  /--
+  info: 9
+  -/
+  #guard_msgs in
+  #eval solve_good_rectangles 2 2 1
+  
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval solve_good_rectangles 1 1 2
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible
+

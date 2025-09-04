@@ -1,0 +1,44 @@
+vc-description: |-
+  Write a function that takes two arguments, and returns a new array populated with the elements **that only appear once, in either one array or the other, taken only once**; display order should follow what appears in arr1 first, then arr2: 
+  
+  ```python
+  hot_singles([1, 2, 3, 3], [3, 2, 1, 4, 5]) # [4, 5]
+  hot_singles(["tartar", "blanket", "cinnamon"], ["cinnamon", "blanket", "domino"]) # ["tartar", "domino"]
+  hot_singles([77, "ciao"], [78, 42, "ciao"]) # [77, 78, 42]
+  hot_singles([1, 2, 3, 3], [3, 2, 1, 4, 5, 4]) # [4,5]
+  ```
+  
+  SPECIAL THANKS: @JulianKolbe !
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def hot_singles {α} [BEq α] (arr1 : List α) (arr2 : List α) : List α := sorry
+  
+  theorem hot_singles_elements_from_inputs {α} [BEq α] (arr1 arr2 : List α) :
+    ∀ x ∈ hot_singles arr1 arr2, x ∈ arr1 ∨ x ∈ arr2 := sorry
+
+vc-theorems: |-
+  theorem hot_singles_exclusive {α} [BEq α] (arr1 arr2 : List α) :
+    ∀ x ∈ hot_singles arr1 arr2, (x ∈ arr1) ≠ (x ∈ arr2) := sorry
+  
+  theorem hot_singles_no_duplicates {α} [BEq α] (arr1 arr2 : List α) :
+    List.Nodup (hot_singles arr1 arr2) := sorry
+  
+  theorem hot_singles_symmetric_difference {α} [BEq α] (arr1 arr2 : List α) :
+    ∀ x, x ∈ hot_singles arr1 arr2 ↔ (x ∈ arr1 ∧ x ∉ arr2) ∨ (x ∈ arr2 ∧ x ∉ arr1) := sorry
+  
+  theorem hot_singles_empty_second {α} [BEq α] (arr : List α) :
+    hot_singles arr [] = arr := sorry
+  
+  theorem hot_singles_same_array {α} [BEq α] (arr : List α) :
+    hot_singles arr arr = [] := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+

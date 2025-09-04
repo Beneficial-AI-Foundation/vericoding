@@ -1,0 +1,57 @@
+vc-description: |-
+  An anagram is a word, a phrase, or a sentence formed from another by rearranging its letters. An example of this is "angel", which is an anagram of "glean".
+  
+  Write a function that receives an array of words, and returns the total number of distinct pairs of anagramic words inside it.
+  
+  Some examples:
+  
+  - There are 2 anagrams in the array `["dell", "ledl", "abc", "cba"]`
+  - There are 7 anagrams in the array `["dell", "ledl", "abc", "cba", "bca", "bac"]`
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def anagram_counter (words : List String) : Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem anagram_counter_properties (words : List String) :
+    let result := anagram_counter words
+    let n := words.length
+    let max_pairs := n * (n-1) / 2
+    result ≥ 0 ∧ result ≤ max_pairs := by sorry
+  
+  theorem identical_words_property (word : String) (n : Nat) :
+    let words := List.replicate n word
+    let expected := n * (n-1) / 2
+    anagram_counter words = expected := by sorry
+  
+  theorem empty_list_property :
+    anagram_counter [] = 0 := by sorry
+  
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval anagram_counter []
+  
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval anagram_counter ["dell", "ledl", "abc", "cba"]
+  
+  /--
+  info: 7
+  -/
+  #guard_msgs in
+  #eval anagram_counter ["dell", "ledl", "abc", "cba", "bca", "bac"]
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+

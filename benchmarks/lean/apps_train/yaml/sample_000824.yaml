@@ -1,0 +1,92 @@
+vc-description: |-
+  Give me Biscuit
+  
+  Sunny wants to make slices of biscuit of size c * d into identical pieces.
+  
+  but each piece is a square having maximum possible side length with no left over piece of biscuit.
+  
+  Input Format
+  
+  The first line contains an integer N.
+  
+  N lines follow. Each line contains two space separated integers c and d.
+  
+  which denote length and breadth of the biscuit.
+  
+  Constraints
+  
+  1 <= N <= 1000
+  
+  1 <= c,d <= 1000
+  Output Format
+  
+  N lines, each containing an integer that denotes the number of squares of maximum size, when the biscuit is cut as per the given condition.
+  
+  Sample Input 
+  
+  2
+  
+  2 2
+  
+  6 9
+  
+  Sample Output 
+  
+  1
+  
+  6
+  
+  Explanation 
+  
+  The 1st testcase has a biscuit whose original dimensions are 2 X 2, the biscuit is uncut and is a square.
+  
+  Hence the answer is 1.
+  
+  The 2nd testcase has a biscuit of size 6 X 9 . We can cut it into 54 squares of size 1 X 1 , 6 of size 3 X 3 . For other sizes we will have leftovers.
+  
+  Hence, the number of squares of maximum size that can be cut is 6.
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def number_of_squares (l w : Nat) : Nat := sorry
+  
+  theorem square_input (n : Nat) (h : n > 0) :
+    number_of_squares n n = 1 := sorry
+
+vc-theorems: |-
+  theorem commutative (l w : Nat) (h₁ : l > 0) (h₂ : w > 0) :
+    number_of_squares l w = number_of_squares w l := sorry
+  
+  theorem output_bounds (l w : Nat) (h₁ : l > 0) (h₂ : w > 0) :
+    1 ≤ number_of_squares l w ∧ number_of_squares l w ≤ l * w := sorry
+  
+  theorem scaling (l factor : Nat) (h₁ : l > 0) (h₂ : factor > 0) :
+    number_of_squares (l * factor) (l * factor) = number_of_squares l l := sorry
+  
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval number_of_squares 2 2
+  
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval number_of_squares 6 9
+  
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval number_of_squares 4 6
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible
+

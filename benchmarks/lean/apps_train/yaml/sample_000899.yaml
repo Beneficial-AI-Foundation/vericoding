@@ -1,0 +1,102 @@
+vc-description: |-
+  Petr is organizing Petr Mitrichev Contest #11. The top N coders according to codechef ratings (excluding Petr himself) agreed to participate in the contest. The participants have been ranked from 0 to N-1 according to their ratings. Petr had asked each participant to choose a coder with rating higher than himself/ herself, whom he/she would like to be team-mates with, and the ith ranked coder's choice is stored as choice[i]. As expected, programmers turned out to be lazy, and only a few of them actually filled in their choices. If choice[i] = -1, then it means the ith coder was lazy and did not fill his/her choice. Of course, the top-ranked person (i.e., rank = 0),  Gennady Korotkevich  (obviously), despite clearly not being a lazy person, was not able to fill any choice, because he is the top ranked coder, so choice[0] is always equal to -1.
+  
+  Petr, being the organizer, had to undertake the arduous task of filling in the choices for the lazy participants. Unfortunately, he also got lazy and adopted the following random strategy:
+  
+  For each lazy person i (i.e., for all i > 0, such that choice[i] = -1), he flips an unbiased coin (i.e. with 1/2 probability it lands Heads, and with 1/2 probability it lands Tails). Notice that no coin is flipped for i=0, since Gennady is not lazy despite his choice being -1.
+  
+  If it lands Heads, he will not change the choice of this person. That is, he leaves choice[i] as -1.
+  
+  Otherwise, if it lands Tails, he will uniformly at random select one of the top i ranked participants as choice of ith person. That is, he sets choice[i] = j, where j is randomly and uniformly chosen from 0 to i-1, inclusive.
+  
+  After this process of filling the choice array, Petr is wondering about the maximum number of teams he can have such that all the valid choices are respected (i.e. if choice[i] = j and j != -1, then i and j should be in the same team). 
+  
+  Petr now has to arrange for computers. As each team will need a computer, he wants to know the expected value of maximum number of teams. As he is too busy in organizing this contest, can you please help him?
+  
+  -----Input:-----
+  The first line of input contains T, the number of test cases. Each test case contains 2 lines.
+  The first line contains a single integer N.
+  The second line contains N integers, which specify the choice array: choice[0], choice[1],..,choice[N-1].
+  
+  -----Output:-----
+  Each test case's output must be in a new line and must be 1 number which is the expected number of teams. Your answer should be within an absolute error of 10-6 from the correct answer.
+  
+  -----Constraints-----
+  - 1 ≤ T ≤ 10
+  - 1 ≤ N ≤ 1000
+  - The sum of all the T Ns in one test file ≤ 5000
+  - -1 ≤ choice[i] ≤ i-1 , for all 0 ≤ i < N
+  - choice[0] will be equal to -1, always
+  
+  -----Example-----
+  Input:
+  1
+  5
+  -1 -1 1 2 1
+  
+  Output:
+  1.5
+  
+  -----Explanation:-----
+  choice[2] = 1 implies 1 and 2 should be in the same team. choice[3] = 2 implies that 2 and 3 have to be in the same team. Therefore, 1, 2 and 3 have to be in the same team. Also, choice[4] = 1 implies that 1 and 4 have to be in the same team, which means that 1, 2, 3 and 4 — all have to be in the same team.
+  The only lazy person is 1. So with probability 1/2, Petr leaves his choice unchanged, or with the remaining 1/2 probability, he assigns choice[1] = 0, as 0 is the only higher ranked person for 1. In the first case, you can get 2 teams: {0} and {1, 2, 3 ,4}.
+  In the second case, because choice[1] = 0, 0 and 1 are forced to be in the same team, and hence {0, 1, 2, 3, 4} is the only possible team.
+  Therefore, with 1/2 probability, number of teams = 1 and with another 1/2 probability, it is 2. Hence, expected number of teams = (1/2 * 1) + (1/2 * 2) = 1.5.
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def solve_teams (n : Nat) (choices : List Int) : Float := sorry
+  
+  -- Property tests as theorems
+
+vc-theorems: |-
+  theorem solve_teams_basic_properties
+    (n : Nat)
+    (choices : List Int)
+    (h : n > 0)
+    (h1 : choices.length = n)
+    (h2 : ∀ x ∈ choices, -1 ≤ x ∧ x ≤ 100) :
+    let result := solve_teams n choices
+    0 ≤ result ∧ result ≤ Float.ofNat n := sorry
+  
+  theorem solve_teams_single_person
+    (choices : List Int)
+    (h : choices.length = 1) : 
+    solve_teams 1 choices = 1.0 := sorry
+  
+  theorem solve_teams_no_lazy
+    (n : Nat)
+    (choices : List Int)
+    (h : n > 0)
+    (h1 : choices.length = n)
+    (h2 : ∀ x ∈ choices, x ≥ 0) :
+    let result := solve_teams n choices
+    ∃ k : Nat, result = Float.ofNat k := sorry
+  
+  theorem solve_teams_all_lazy
+    (n : Nat)
+    (choices : List Int)
+    (h : n > 0)
+    (h1 : choices.length = n)
+    (h2 : ∀ x ∈ choices, x = -1) :
+    let result := solve_teams n choices
+    0 ≤ result ∧ result ≤ Float.ofNat n := sorry
+  
+  theorem solve_teams_one_lazy
+    (n : Nat)
+    (choices : List Int)
+    (h : n > 1) 
+    (h1 : choices.length = n)
+    (h2 : choices.head? = some (-1))
+    (h3 : ∀ x ∈ choices.tail, x = 1) :
+    solve_teams n choices = 1.0 := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded
+

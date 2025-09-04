@@ -1,0 +1,105 @@
+vc-description: |-
+  The dragon's curve is a self-similar fractal which can be obtained by a recursive method. 
+  
+  Starting with the string `D0 = 'Fa'`, at each step simultaneously perform the following operations:
+  
+  ```
+  replace 'a' with: 'aRbFR'
+  replace 'b' with: 'LFaLb'
+  ```
+  
+  For example (spaces added for more visibility) : 
+  
+  ```
+  1st iteration: Fa -> F aRbF R
+  2nd iteration: FaRbFR -> F aRbFR R LFaLb FR
+  ```
+  
+  After `n` iteration, remove `'a'` and `'b'`. You will have a string with `'R'`,`'L'`, and `'F'`. This is a set of instruction. Starting at the origin of a grid looking in the `(0,1)` direction, `'F'` means a step forward, `'L'` and `'R'` mean respectively turn left and right. After executing all instructions, the trajectory will give a beautifull self-replicating pattern called 'Dragon Curve'
+  
+  The goal of this kata is to code a function wich takes one parameter `n`, the number of iterations needed and return the string of instruction as defined above. For example: 
+  
+  ```
+  n=0, should return: 'F'
+  n=1, should return: 'FRFR'
+  n=2, should return: 'FRFRRLFLFR'
+  ```
+  
+  `n` should be a number and non-negative integer. All other case should return the empty string: `''`.
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def dragon_curve (n : α) : String := sorry
+  
+  theorem dragon_curve_integer_bounds {n : Int} :
+    let result := dragon_curve n
+    result.all (fun c => c = 'F' ∨ c = 'R' ∨ c = 'L') ∧
+    (n < 0 → result = "") :=
+  sorry
+
+vc-theorems: |-
+  theorem dragon_curve_float_to_empty :
+    ∀ (n : Float), dragon_curve n = "" :=
+  sorry
+  
+  theorem dragon_curve_string_to_empty :
+    ∀ (s : String), dragon_curve s = "" :=
+  sorry
+  
+  theorem dragon_curve_base_case :
+    dragon_curve 0 = "F" :=
+  sorry
+  
+  theorem dragon_curve_length_increases :
+    ∀ (n : Nat), n > 0 → String.length (dragon_curve n) > String.length (dragon_curve (n-1)) :=
+  sorry
+  
+  theorem dragon_curve_chars_valid :
+    ∀ (n : Nat), (dragon_curve n).all (fun c => c = 'F' ∨ c = 'R' ∨ c = 'L') :=
+  sorry
+  
+  /--
+  info: ''
+  -/
+  #guard_msgs in
+  #eval dragon_curve "a"
+  
+  /--
+  info: ''
+  -/
+  #guard_msgs in
+  #eval dragon_curve 1.1
+  
+  /--
+  info: ''
+  -/
+  #guard_msgs in
+  #eval dragon_curve -1
+  
+  /--
+  info: 'F'
+  -/
+  #guard_msgs in
+  #eval dragon_curve 0
+  
+  /--
+  info: 'FRFR'
+  -/
+  #guard_msgs in
+  #eval dragon_curve 1
+  
+  /--
+  info: 'FRFRRLFLFR'
+  -/
+  #guard_msgs in
+  #eval dragon_curve 2
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

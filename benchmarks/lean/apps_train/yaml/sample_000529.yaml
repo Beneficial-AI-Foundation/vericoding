@@ -1,0 +1,137 @@
+vc-description: |-
+  Ram and Shyam are playing a game of Truth and Dare. In this game, Shyam will ask Ram to perform tasks of two types:
+  - Truth task: Ram has to truthfully answer a question.
+  - Dare task: Ram has to perform a given task.
+  Each task is described by an integer. (If a truth task and a dare task are described by the same integer, they are still different tasks.) You are given four lists of tasks:
+  - $T_{r, 1}, T_{r, 2}, \dots, T_{r, t_r}$: the truth tasks Ram can perform.
+  - $D_{r, 1}, D_{r, 2}, \dots, D_{r, d_r}$: the dare tasks Ram can perform.
+  - $T_{s, 1}, T_{s, 2}, \dots, T_{s, t_s}$: the truth tasks Shyam can ask Ram to perform.
+  - $D_{s, 1}, D_{s, 2}, \dots, D_{s, d_s}$: the dare tasks Shyam can ask Ram to perform.
+  Note that the elements of these lists are not necessarily distinct, each task may be repeated any number of times in each list.
+  Shyam wins the game if he can find a task Ram cannot perform. Ram wins if he performs all tasks Shyam asks him to. Find the winner of the game.
+  Let's take an example where Ram can perform truth tasks $3$, $2$ and $5$ and dare tasks $2$ and $100$, and Shyam can give him truth tasks $2$ and $3$ and a dare task $100$. We can see that whichever truth or dare tasks Shyam asks Ram to perform, Ram can easily perform them, so he wins. However, if Shyam can give him dare tasks $3$ and $100$, then Ram will not be able to perform dare task $3$, so Shyam wins.
+  
+  -----Input-----
+  - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+  - The first line of each test case contains a single integer $t_r$.
+  - The second line contains $t_r$ space-separated integers $T_{r, 1}, T_{r, 2}, \dots, T_{r, t_r}$.
+  - The third line contains a single integer $d_r$.
+  - The fourth line contains $d_r$ space-separated integers $D_{r, 1}, D_{r, 2}, \dots, D_{r, d_r}$.
+  - The fifth line contains a single integer $t_s$.
+  - The sixth line contains $t_s$ space-separated integers $T_{s, 1}, T_{s, 2}, \dots, T_{s, t_s}$.
+  - The seventh line contains a single integer $d_s$.
+  - The eighth line contains $d_s$ space-separated integers $D_{s, 1}, D_{s, 2}, \dots, D_{s, d_s}$.
+  
+  -----Output-----
+  For each test case, print a single line containing the string "yes" if Ram wins the game or "no" otherwise.
+  
+  -----Constraints-----
+  - $1 \le T \le 100$
+  - $1 \le t_r, d_r, t_s, d_s \le 100$
+  - $1 \le T_{r, i} \le 100$ for each valid $i$
+  - $1 \le D_{r, i} \le 100$ for each valid $i$
+  - $1 \le T_{s, i} \le 100$ for each valid $i$
+  - $1 \le D_{s, i} \le 100$ for each valid $i$
+  
+  -----Example Input-----
+  4
+  2
+  1 2
+  3
+  1 3 2
+  1
+  2
+  2
+  3 2
+  2
+  1 2
+  3
+  1 3 2
+  1
+  2
+  3
+  3 2 4
+  3
+  3 2 5
+  2
+  2 100
+  1
+  2
+  1
+  100
+  2
+  1 2
+  3
+  1 3 2
+  1
+  2
+  3
+  3 2 2
+  
+  -----Example Output-----
+  yes
+  no
+  yes
+  yes
+  
+  -----Explanation-----
+  Example case 1: Ram's truth tasks are $[1, 2]$ and his dare tasks are $[1, 3, 2]$. Shyam's truth tasks are $[2]$ and his dare tasks are $[3, 2]$. Ram can perform all tasks Shyam gives him.
+  Example case 2: Ram's truth tasks are $[1, 2]$ and his dare tasks are $[1, 3, 2]$. Shyam's truth tasks are $[2]$ and his dare tasks are $[3, 2, 4]$. If Shyam asks Ram to perform dare task $4$, Ram will not be able to do it.
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def can_ram_win (tr_list dr_list ts_list ds_list : List Int) : String :=
+    sorry
+
+vc-theorems: |-
+  theorem can_ram_win_returns_valid_result (tr_list dr_list ts_list ds_list : List Int) :
+    (can_ram_win tr_list dr_list ts_list ds_list = "yes") ∨
+    (can_ram_win tr_list dr_list ts_list ds_list = "no") :=
+  sorry
+  
+  theorem ram_wins_implies_tasks_present (tr_list dr_list ts_list ds_list : List Int) :
+    can_ram_win tr_list dr_list ts_list ds_list = "yes" →
+    (∀ t ∈ ts_list, t ∈ tr_list) ∧ (∀ d ∈ ds_list, d ∈ dr_list) :=
+  sorry
+  
+  theorem ram_loses_implies_task_missing (tr_list dr_list ts_list ds_list : List Int) :
+    can_ram_win tr_list dr_list ts_list ds_list = "no" →
+    (∃ t ∈ ts_list, t ∉ tr_list) ∨ (∃ d ∈ ds_list, d ∉ dr_list) :=
+  sorry
+  
+  theorem empty_required_lists_always_wins (tr_list dr_list : List Int) :
+    can_ram_win tr_list dr_list [] [] = "yes" :=
+  sorry
+  
+  theorem missing_truth_task_loses (tr_list dr_list ts_list ds_list : List Int)
+    (x : Int) (h : ts_list ≠ []) (h2 : ∀ t ∈ ts_list, t < x) :
+    can_ram_win tr_list dr_list (ts_list ++ [x]) ds_list = "no" :=
+  sorry
+  
+  /--
+  info: 'yes'
+  -/
+  #guard_msgs in
+  #eval can_ram_win [1, 2] [1, 3, 2] [2] [3, 2]
+  
+  /--
+  info: 'no'
+  -/
+  #guard_msgs in
+  #eval can_ram_win [1, 2] [1, 3, 2] [2] [3, 2, 4]
+  
+  /--
+  info: 'yes'
+  -/
+  #guard_msgs in
+  #eval can_ram_win [3, 2, 5] [2, 100] [2] [100]
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+

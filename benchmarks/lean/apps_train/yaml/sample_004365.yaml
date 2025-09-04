@@ -1,0 +1,71 @@
+vc-description: |-
+  Ronald's uncle left him 3 fertile chickens in his will. When life gives you chickens, you start a business selling chicken eggs which is exactly what Ronald decided to do. 
+  
+  A chicken lays 300 eggs in its first year. However, each chicken's egg production decreases by 20% every following year (rounded down) until when it dies (after laying its quota of eggs). 
+  
+  After his first successful year of business, Ronald decides to buy 3 more chickens at the start of each year.  
+  
+  Your Task: 
+  
+  For a given year, and life span of chicken span,  calculate how many eggs Ronald's chickens will lay him that year, whereby year=1 is when Ronald first got his inheritance and span>0.
+  
+  If year=0, make sure to return "No chickens yet!".
+  
+  Note: 
+  1. All chickens have the same life span regardless of when they are bought. 
+  2. Let's assume all calculations are made at the end of the year so don't bother taking eggs laid per month into consideration. 
+  3. Each chicken's egg production goes down by 20% each year, NOT the total number of eggs produced by each 'batch' of chickens. While this might appear to be the same thing, it doesn't once non-integers come into play so take care that this is reflected in your kata!
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def egged (year : Nat) (span : Nat) : String ⊕ Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem egged_year_zero (span : Nat) :
+    span > 0 → egged 0 span = Sum.inl "No chickens yet!" :=
+  sorry
+  
+  theorem egged_non_negative (year span : Nat) :
+    year > 0 → span > 0 → ∃ n : Nat, egged year span = Sum.inr n :=
+  sorry
+  
+  theorem egged_monotone_span (year span : Nat) :
+    year > 0 → span > 1 → 
+    match egged year span, egged year (span - 1) with
+    | Sum.inr n, Sum.inr m => n ≥ m
+    | _, _ => False
+    :=
+  sorry
+  
+  theorem egged_first_year (year : Nat) :
+    year > 0 → egged year 1 = Sum.inr 900 :=
+  sorry
+  
+  /--
+  info: 'No chickens yet!'
+  -/
+  #guard_msgs in
+  #eval egged 0 5
+  
+  /--
+  info: 900
+  -/
+  #guard_msgs in
+  #eval egged 2 1
+  
+  /--
+  info: 900
+  -/
+  #guard_msgs in
+  #eval egged 1 15
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

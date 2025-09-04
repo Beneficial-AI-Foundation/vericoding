@@ -1,0 +1,71 @@
+vc-description: |-
+  In a 2D grid of 0s and 1s, we change at most one 0 to a 1.
+  After, what is the size of the largest island? (An island is a 4-directionally connected group of 1s).
+  Example 1:
+  Input: [[1, 0], [0, 1]]
+  Output: 3
+  Explanation: Change one 0 to 1 and connect two 1s, then we get an island with area = 3.
+  
+  Example 2:
+  Input: [[1, 1], [1, 0]]
+  Output: 4
+  Explanation: Change the 0 to 1 and make the island bigger, only one island with area = 4.
+  Example 3:
+  Input: [[1, 1], [1, 1]]
+  Output: 4
+  Explanation: Can't change any 0 to 1, only one island with area = 4.
+  
+  Notes:
+  
+  1 <= grid.length = grid[0].length <= 50.
+  0 <= grid[i][j] <= 1.
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def largest_island (grid : List (List Nat)) : Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem largest_island_properties (grid : List (List Nat)) :
+    let result := largest_island grid
+    -- Result within bounds
+    (result ≥ 0 ∧ result ≤ grid.length * (grid.head?.getD []).length) ∧
+    -- All 0s means result is 1
+    (grid.all (fun row => row.all (fun cell => cell = 0)) → result = 1) ∧
+    -- All 1s means result is grid size
+    (grid.all (fun row => row.all (fun cell => cell = 1)) → result = grid.length * (grid.head?.getD []).length)
+    := by sorry
+  
+  theorem largest_island_dimensions (grid : List (List Nat)) :
+    largest_island grid ≤ grid.length * (grid.head?.getD []).length := by sorry
+  
+  theorem largest_island_singleton :
+    largest_island [[0]] = 1 ∧ largest_island [[1]] = 1 := by sorry
+  
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval largest_island [[1, 0], [0, 1]]
+  
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval largest_island [[1, 1], [1, 0]]
+  
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval largest_island [[1, 1], [1, 1]]
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+

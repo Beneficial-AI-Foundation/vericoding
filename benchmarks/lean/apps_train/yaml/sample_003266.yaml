@@ -1,0 +1,76 @@
+vc-description: |-
+  # Description
+  
+  Given a number `n`, you should find a set of numbers for which the sum equals `n`. This set must consist exclusively of values that are a power of `2` (eg: `2^0 => 1, 2^1 => 2, 2^2 => 4, ...`).
+  
+  The function `powers` takes a single parameter, the number `n`, and should return an array of unique numbers.
+  
+  ## Criteria
+  
+  The function will always receive a valid input: any positive integer between `1` and the max integer value for your language (eg: for JavaScript this would be `9007199254740991` otherwise known as `Number.MAX_SAFE_INTEGER`).
+  
+  The function should return an array of numbers that are a **power of 2** (`2^x = y`).
+  
+  Each member of the returned array should be **unique**. (eg: the valid answer for `powers(2)` is `[2]`, not `[1, 1]`)
+  
+  Members should be sorted in **ascending order** (small -> large). (eg: the valid answer for `powers(6)` is `[2, 4]`, not `[4, 2]`)
+
+vc-preamble: |-
+  def sum : List Nat → Nat 
+    | [] => 0
+    | x::xs => x + sum xs
+  
+  def isSorted : List Nat → Bool
+    | [] => true
+    | [_] => true
+    | x::y::rest => x ≤ y && isSorted (y::rest)
+  
+  def countUnique : List Nat → Nat 
+    | [] => 0
+    | x::xs => if xs.contains x then countUnique xs else 1 + countUnique xs
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def powers (n: Nat) : List Nat := sorry
+  
+  def isPowerOfTwo (n: Nat) : Bool := 
+    n != 0 && n &&& (n - 1) == 0
+
+vc-theorems: |-
+  theorem powers_sum_equals_input (n: Nat) (h: n > 0) : 
+    sum (powers n) = n := sorry
+  
+  theorem powers_are_powers_of_two (n: Nat) (h: n > 0) :
+    ∀ p ∈ powers n, isPowerOfTwo p = true := sorry
+  
+  theorem powers_are_sorted (n: Nat) (h: n > 0) :
+    isSorted (powers n) = true := sorry
+  
+  theorem powers_are_unique (n: Nat) (h: n > 0) :
+    (powers n).length = countUnique (powers n) := sorry
+  
+  /--
+  info: [4]
+  -/
+  #guard_msgs in
+  #eval powers 4
+  
+  /--
+  info: [2, 4]
+  -/
+  #guard_msgs in
+  #eval powers 6
+  
+  /--
+  info: [2, 4, 8]
+  -/
+  #guard_msgs in
+  #eval powers 14
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+

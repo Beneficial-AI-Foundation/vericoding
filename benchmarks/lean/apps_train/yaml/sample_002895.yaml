@@ -1,0 +1,87 @@
+vc-description: |-
+  Given a positive integer `n`, return first n dgits of Thue-Morse sequence, as a string (see examples).
+  
+  Thue-Morse sequence is a binary sequence with 0 as the first element. The rest of the sequece is obtained by adding the Boolean (binary) complement of a group obtained so far.
+  
+  ```
+  For example:
+  
+  0
+  01
+  0110
+  01101001
+  and so on...
+  ```
+  
+  ![alt](https://upload.wikimedia.org/wikipedia/commons/f/f1/Morse-Thue_sequence.gif)
+  
+  Ex.:
+  ```python
+  thue_morse(1);  #"0"
+  thue_morse(2);  #"01"
+  thue_morse(5);  #"01101"
+  thue_morse(10): #"0110100110"
+  ```
+  
+  - You don't need to test if n is valid - it will always be a positive integer.
+  - `n` will be between 1 and 10000
+  
+  [Thue-Morse on Wikipedia](https://en.wikipedia.org/wiki/Thue%E2%80%93Morse_sequence)
+  
+  [Another kata on Thue-Morse](https://www.codewars.com/kata/simple-fun-number-106-is-thue-morse) by @myjinxin2015
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def thue_morse (n : Nat) : String := sorry
+  
+  /-- The length of thue_morse(n) equals n and contains only 0's and 1's -/
+
+vc-theorems: |-
+  theorem thue_morse_length (n : Nat) : 
+    (thue_morse n).length = n ∧ 
+    ∀ p : String.Pos, 
+      String.contains "01" ((thue_morse n).get p) := sorry
+  
+  /-- Any longer sequence starts with the shorter sequence -/
+  
+  theorem thue_morse_prefix_consistency (n : Nat) :
+    (thue_morse (n + 1)).take n = thue_morse n := sorry
+  
+  /-- If n > 0, the sequence starts with 0 -/
+  
+  theorem thue_morse_starts_correct (n : Nat) (h : n > 0) :
+    ∃ p : String.Pos, (thue_morse n).get p = '0' := sorry
+  
+  /--
+  info: '0'
+  -/
+  #guard_msgs in
+  #eval thue_morse 1
+  
+  /--
+  info: '01'
+  -/
+  #guard_msgs in
+  #eval thue_morse 2
+  
+  /--
+  info: '01101'
+  -/
+  #guard_msgs in
+  #eval thue_morse 5
+  
+  /--
+  info: '0110100110'
+  -/
+  #guard_msgs in
+  #eval thue_morse 10
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

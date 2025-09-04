@@ -1,0 +1,62 @@
+vc-description: |-
+  Given n non-negative integers a1, a2, ..., an, where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i, 0). Find two lines, which together with x-axis forms a container, such that the container contains the most water.
+  
+  Note: You may not slant the container and n is at least 2.
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def maxArea (heights : List Nat) : Nat := sorry
+  
+  theorem maxArea_nonnegative (heights : List Nat) :
+    heights.length ≥ 2 → maxArea heights ≥ 0 := sorry
+
+vc-theorems: |-
+  theorem maxArea_upper_bound (heights : List Nat) :
+    heights.length ≥ 2 → 
+    maxArea heights ≤ (List.maximum? heights).getD 0 * (heights.length - 1) := sorry
+  
+  theorem maxArea_is_maximum (heights : List Nat) (i j : Nat) (hi : i < heights.length) (hj : j < heights.length) :
+    heights.length ≥ 2 →
+    i < j →
+    maxArea heights ≥ min (heights.get ⟨i, hi⟩) (heights.get ⟨j, hj⟩) * (j - i) := sorry
+  
+  theorem maxArea_symmetric (heights : List Nat) :
+    heights.length ≥ 2 →
+    maxArea heights = maxArea heights.reverse := sorry
+  
+  theorem maxArea_uniform (value length : Nat) : 
+    length ≥ 2 →
+    maxArea (List.replicate length value) = value * (length - 1) := sorry
+  
+  theorem maxArea_interpolation (heights : List Nat) :
+    heights.length ≥ 2 →
+    let interpolated := heights.take 1 ++ List.replicate (heights.length - 2) 0 ++ heights.drop (heights.length - 1)
+    maxArea heights ≥ maxArea interpolated := sorry
+  
+  /--
+  info: 49
+  -/
+  #guard_msgs in
+  #eval max_area [1, 8, 6, 2, 5, 4, 8, 3, 7]
+  
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval max_area [1, 1]
+  
+  /--
+  info: 16
+  -/
+  #guard_msgs in
+  #eval max_area [4, 3, 2, 1, 4]
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded
+

@@ -1,0 +1,121 @@
+vc-description: |-
+  *It seemed a good idea at the time...*
+  
+  # Why I did it?
+  
+  After a year on **Codewars** I really needed a holiday...
+  
+  But not wanting to drift backwards in the honour rankings while I was away, I hatched a cunning plan!
+  
+  # The Cunning Plan
+  
+  So I borrowed my friend's "Clone Machine" and cloned myself :-)
+  
+  Now my clone can do my Kata solutions for me and I can relax!
+  
+  Brilliant!!
+  
+  Furthermore, at the end of the day my clone can re-clone herself...
+  
+  Double brilliant!!
+  
+  I wonder why I didn't think to do this earlier?
+  
+  So as I left for the airport I gave my clone instructions to:
+  
+  * do my Kata solutions for me
+  * feed the cat
+  * try to keep the house tidy and not eat too much
+  * sleep
+  * clone yourself
+  * repeat same next day
+  
+  # The Flaw
+  
+  Well, how was I supposed to know that cloned DNA is faulty?
+  
+  :-(
+  
+  Every time they sleep they wake up with decreased ability - they get slower... they get dumber... they are only able to solve 1 less Kata than they could the previous day.
+  
+  For example, if they can solve 10 Kata today, then tomorrow they can solve only 9 Kata, then 8, 7, 6... Eventually they can't do much more than sit around all day playing video games.
+  
+  And (unlike me), when the clone cannot solve any more Kata they are no longer clever enough to operate the clone machine either!
+  
+  # The Return Home
+  
+  I suspected something was wrong when I noticed my **Codewars** honour had stopped rising.
+  
+  I made a hasty return home...
+  
+  ...and found 100s of clones scattered through the house. Mostly they sit harmlessly mumbling to themselves. The largest group have made a kind of nest in my loungeroom where they sit catatonic in front of the PlayStation.
+  
+  The whole place needs fumigating.
+  
+  The fridge and pantry are empty.
+  
+  And I can't find the cat.
+  
+  # Kata Task
+  
+  Write a method to predict the final outcome where:
+  
+  Input:
+  
+  * `kata-per-day` is the number of Kata I can solve per day
+  
+  Output:
+  
+  * ```[number-of-clones, number-of-kata-solved-by-clones]```
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def clonewars (n : Int) : List Int := sorry
+  
+  theorem clonewars_positive (n : Int) (h : 0 ≤ n ∧ n ≤ 10) :
+    let result := clonewars n
+    List.length result = 2 ∧
+    1 ≤ List.get! result 0 ∧ 
+    0 ≤ List.get! result 1 := sorry
+
+vc-theorems: |-
+  theorem clonewars_negative (n : Int) (h : n < 0) :
+    clonewars n = [1, 0] := sorry
+  
+  theorem clonewars_growth (n : Int) (h : 1 ≤ n ∧ n ≤ 10) :
+    let smaller := clonewars (n-1)
+    let bigger := clonewars n
+    List.get! bigger 0 ≥ List.get! smaller 0 ∧
+    List.get! bigger 1 ≥ List.get! smaller 1 := sorry
+  
+  theorem clonewars_base_cases :
+    clonewars 0 = [1, 0] ∧
+    clonewars 1 = [1, 1] := sorry
+  
+  /--
+  info: [1, 0]
+  -/
+  #guard_msgs in
+  #eval clonewars 0
+  
+  /--
+  info: [1, 1]
+  -/
+  #guard_msgs in
+  #eval clonewars 1
+  
+  /--
+  info: [16, 57]
+  -/
+  #guard_msgs in
+  #eval clonewars 5
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

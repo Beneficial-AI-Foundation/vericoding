@@ -1,0 +1,87 @@
+vc-description: |-
+  Oh no!  You have stumbled upon a mysterious signal consisting of beeps of various lengths, and it is of utmost importance that you find out the secret message hidden in the beeps.  There are long and short beeps, the longer ones roughly three times as long as the shorter ones.  Hmm... that sounds familiar.
+  
+  That's right: your job is to implement a decoder for the Morse alphabet.  Rather than dealing with actual beeps, we will use a common string encoding of Morse.  A long beep is represened by a dash (`-`) and a short beep by a dot (`.`).  A series of long and short beeps make up a letter, and letters are separated by spaces (` `).  Words are separated by double spaces.
+  
+  You should implement the International Morse Alphabet.  You need to support letters a-z and digits 0-9 as follows:
+  
+      a .-      h ....    o ---     u ..-      1 .----     6 -....
+      b -...    i ..      p .--.    v ...-     2 ..---     7 --...
+      c -.-.    j .---    q --.-    w .--      3 ...--     8 ---..
+      d -..     k -.-     r .-.     x -..-     4 ....-     9 ----.
+      e .       l .-..    s ...     y -.--     5 .....     0 -----
+      f ..-.    m --      t -       z --..
+      g --.     n -.
+  
+  ## Examples
+  
+      .... . .-.. .-.. ---  .-- --- .-. .-.. -..   → "hello world"
+      .---- ... -  .- -. -..  ..--- -. -..         → "1st and 2nd"
+  
+  ```if:python
+  A dictionnary `TOME` is preloaded for you, with the information above to convert morse code to letters.
+  ```
+  ```if:javascrip
+  An object `TOME` is preloaded for you, with the information above to convert morse code to letters.
+  ```
+  ```if:ruby
+  A Hashmap `$dict` is preloaded for you, with the information above to convert morse code to letters.
+  ```
+
+vc-preamble: |-
+  def MORSE_CHARS := [
+    ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", 
+    ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", 
+    "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--..", "-----",
+    ".----", "..---", "...--", "....-", ".....", "-....", "--...", 
+    "---..", "----."
+  ]
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def decode (s : String) : String := sorry
+  
+  def splitString (s : String) (sep : Char) : List String := sorry
+
+vc-theorems: |-
+  theorem decode_preserves_word_count (morse_words : List (List String))
+    (h_valid : ∀ w ∈ morse_words, ∀ c ∈ w, c ∈ MORSE_CHARS)
+    (morse_string := String.intercalate "  " (morse_words.map (String.intercalate " "))) :
+    (splitString (decode morse_string) ' ').length = morse_words.length := sorry
+  
+  theorem decode_returns_alphanumeric (morse_words : List (List String))
+    (h_valid : ∀ w ∈ morse_words, ∀ c ∈ w, c ∈ MORSE_CHARS)
+    (morse_string := String.intercalate "  " (morse_words.map (String.intercalate " "))) :
+    ∀ c ∈ (decode morse_string).data, c.isAlphanum ∨ c = ' ' := sorry
+  
+  theorem decode_empty_string :
+    decode "" = "" := sorry
+  
+  theorem decode_singleton_space :
+    decode " " = " " := sorry
+  
+  /--
+  info: 'hello world'
+  -/
+  #guard_msgs in
+  #eval decode ".... . .-.. .-.. ---  .-- --- .-. .-.. -.."
+  
+  /--
+  info: '1st and 2nd'
+  -/
+  #guard_msgs in
+  #eval decode ".---- ... -  .- -. -..  ..--- -. -.."
+  
+  /--
+  info: ''
+  -/
+  #guard_msgs in
+  #eval decode ""
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

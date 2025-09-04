@@ -1,0 +1,92 @@
+vc-description: |-
+  =====Problem Statement=====
+  You are given an HTML code snippet of N lines.
+  Your task is to detect and print all the HTML tags, attributes and attribute values.
+  
+  Print the detected items in the following format:
+  
+  Tag1
+  Tag2
+  -> Attribute2[0] > Attribute_value2[0]
+  -> Attribute2[1] > Attribute_value2[1]
+  -> Attribute2[2] > Attribute_value2[2]
+  Tag3
+  -> Attribute3[0] > Attribute_value3[0]
+  
+  The -> symbol indicates that the tag contains an attribute. It is immediately followed by the name of the attribute and the attribute value.
+  The > symbol acts as a separator of attributes and attribute values.
+  
+  If an HTML tag has no attribute then simply print the name of the tag.
+  
+  Note: Do not detect any HTML tag, attribute or attribute value inside the HTML comment tags (<!-- Comments -->). Comments can be multiline.
+  All attributes have an attribute value.
+  
+  =====Input Format=====
+  The first line contains an integer N, the number of lines in the HTML code snippet.
+  The next N lines contain HTML code.
+  
+  =====Constraints=====
+  0<N<100
+  
+  =====Output Format=====
+  Print the HTML tags, attributes and attribute values in order of their occurrence from top to bottom in the snippet.
+  
+  Format your answers as explained in the problem statement.
+
+vc-preamble: |-
+  def parse_html (s : String) : String :=
+    sorry
+  
+  def is_lowercase_letter (c : Char) : Bool :=
+    sorry
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def split_lines (s : String) : List String :=
+    s.splitOn "\n"
+
+vc-theorems: |-
+  theorem single_tag_parse {tag : String} 
+    (h : ∀ c, c ∈ tag.data → is_lowercase_letter c) :
+    parse_html s!"<{tag}>" = tag :=
+    sorry
+  
+  theorem tag_with_attrs_parse {tag : String} {attrs : List (String × String)}
+    (h1 : ∀ c, c ∈ tag.data → is_lowercase_letter c)
+    (h2 : ∀ (k v : String), (k, v) ∈ attrs → ∀ c, c ∈ k.data → is_lowercase_letter c) :
+    let attr_str := String.join (attrs.map (fun (k,v) => s!"{k}=\"{v}\""))
+    let html := s!"<{tag} {attr_str}>"
+    let result := split_lines (parse_html html)
+    result[0]! = tag ∧
+    (∀ i k v, attrs[i]! = (k,v) → result[i+1]! = s!"-> {k} > {v}") :=
+    sorry
+  
+  theorem multiple_tags_parse {tags : List String} {attrs_list : List (List (String × String))}
+    (h1 : tags.length > 0)
+    (h2 : attrs_list.length = tags.length)
+    (h3 : ∀ tag, tag ∈ tags → ∀ c, c ∈ tag.data → is_lowercase_letter c)
+    (h4 : ∀ attrs, attrs ∈ attrs_list → ∀ k v, (k,v) ∈ attrs → ∀ c, c ∈ k.data → is_lowercase_letter c) :
+    let html_parts := tags.zip attrs_list |>.map (fun (tag, attrs) =>
+      let attr_str := String.join (attrs.map (fun (k,v) => s!"{k}=\"{v}\""))
+      s!"<{tag} {attr_str}>"
+    )
+    let html := String.intercalate "\n" html_parts
+    let result := split_lines (parse_html html)
+    ∀ i : Nat, i < tags.length →
+      result[i]! = tags[i]! ∧
+      ∀ j k v, attrs_list[i]![j]! = (k,v) →
+        result[i + j + 1]! = s!"-> {k} > {v}" :=
+    sorry
+  
+  theorem self_closing_tag_parse {tag : String}
+    (h : ∀ c, c ∈ tag.data → is_lowercase_letter c) :
+    parse_html s!"<{tag}/>" = tag :=
+    sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+

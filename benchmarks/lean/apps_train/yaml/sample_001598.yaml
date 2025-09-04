@@ -1,0 +1,107 @@
+vc-description: |-
+  This kata is  blatantly copied from  inspired by This Kata
+  Welcome
+  
+  this is the second in the series of the string iterations kata!
+  
+  Here we go!
+  
+  ---------------------------------------------------------------------------------
+  
+  We have a string s
+  
+  Let's say you start with this: "String"
+  
+  The first thing you do is reverse it: "gnirtS"
+  
+  Then you will take the string from the 1st position and reverse it again: "gStrin"
+  
+  Then you will take the string from the 2nd position and reverse it again: "gSnirt"
+  
+  Then you will take the string from the 3rd position and reverse it again: "gSntri"
+  
+  Continue this pattern until you have done every single position, and then you will return the string you have created. For this particular string, you would return: 
+  "gSntir"
+  
+  now,
+  
+  The Task:
+  
+  In this kata, we also have a number x
+  
+  take that reversal function, and apply it to the string x times.
+  
+  return the result of the string after applying the reversal function to it x times.
+  
+      example where s = "String" and x = 3:
+  
+      after 0 iteration  s = "String"
+      after 1 iteration  s = "gSntir"
+      after 2 iterations s = "rgiStn"
+      after 3 iterations s = "nrtgSi"
+  
+      so you would return "nrtgSi".
+  
+   Note 
+  
+  String lengths may exceed 2 million
+  
+  x exceeds a billion
+  
+  be read to optimize
+  
+  if this is too hard, go here https://www.codewars.com/kata/string-%3E-n-iterations-%3E-string/java
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def string_func (s : String) (x : Nat) : String := sorry 
+  
+  theorem string_func_length_preserving (s : String) (x : Nat) 
+    (h : s.length ≥ 2) : 
+    (string_func s x).length = s.length := sorry
+
+vc-theorems: |-
+  theorem string_func_permutation (s : String) (x : Nat)
+    (h : s.length ≥ 2) :
+    ∃ (perm : List Char), perm.length = s.length ∧ 
+    (string_func s x).toList = perm ∧
+    ∀ c, c ∈ perm ↔ c ∈ s.toList := sorry
+  
+  theorem string_func_iteration_consistency (s : String) (k : Nat)
+    (h : s.length ≥ 2) :
+    let iter := fun (s : String) => string_func s 1
+    Nat.recOn k s (fun _ res => iter res) = string_func s k := sorry
+  
+  theorem string_func_cycle (s : String)
+    (h : s.length ≥ 2) :
+    ∃ (n m : Nat), n > m ∧ 
+    let iter := fun (s : String) => string_func s 1
+    iter (iter s) = s := sorry
+  
+  /--
+  info: 'nrtgSi'
+  -/
+  #guard_msgs in
+  #eval string_func "String" 3
+  
+  /--
+  info: 'iitkIl !e '
+  -/
+  #guard_msgs in
+  #eval string_func "I like it!" 1234
+  
+  /--
+  info: 'fonroisreinrddgdneyscou'
+  -/
+  #guard_msgs in
+  #eval string_func "codingisfornerdsyounerd" 10101010
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+

@@ -1,0 +1,58 @@
+vc-description: |-
+  Given a positive integer n, find the number of non-negative integers less than or equal to n, whose binary representations do NOT contain consecutive ones.
+  
+  Example 1:
+  
+  Input: 5
+  Output: 5
+  Explanation: 
+  Here are the non-negative integers 
+  
+  Note:
+  1 9
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def find_integers_without_consecutive_ones (n : Nat) : Nat := sorry
+  
+  theorem output_properties (x : Nat) : 
+    let result := find_integers_without_consecutive_ones x
+    result ≥ 2 ∧ result > 0 := sorry
+
+vc-theorems: |-
+  theorem monotonic_relation (x y : Nat) :
+    x < y → find_integers_without_consecutive_ones x ≤ find_integers_without_consecutive_ones y := sorry 
+  
+  theorem known_values :
+    (find_integers_without_consecutive_ones 1 = 2) ∧
+    (find_integers_without_consecutive_ones 2 = 3) ∧  
+    (find_integers_without_consecutive_ones 5 = 5) ∧
+    (find_integers_without_consecutive_ones 10 = 8) := sorry
+  
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval find_integers_without_consecutive_ones 1
+  
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval find_integers_without_consecutive_ones 5
+  
+  /--
+  info: 8
+  -/
+  #guard_msgs in
+  #eval find_integers_without_consecutive_ones 10
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+

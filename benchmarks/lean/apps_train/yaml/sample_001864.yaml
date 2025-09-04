@@ -1,0 +1,87 @@
+vc-description: |-
+  We are given two arrays A and B of words.  Each word is a string of lowercase letters.
+  Now, say that word b is a subset of word a if every letter in b occurs in a, including multiplicity.  For example, "wrr" is a subset of "warrior", but is not a subset of "world".
+  Now say a word a from A is universal if for every b in B, b is a subset of a. 
+  Return a list of all universal words in A.  You can return the words in any order.
+  
+  Example 1:
+  Input: A = ["amazon","apple","facebook","google","leetcode"], B = ["e","o"]
+  Output: ["facebook","google","leetcode"]
+  
+  Example 2:
+  Input: A = ["amazon","apple","facebook","google","leetcode"], B = ["l","e"]
+  Output: ["apple","google","leetcode"]
+  
+  Example 3:
+  Input: A = ["amazon","apple","facebook","google","leetcode"], B = ["e","oo"]
+  Output: ["facebook","google"]
+  
+  Example 4:
+  Input: A = ["amazon","apple","facebook","google","leetcode"], B = ["lo","eo"]
+  Output: ["google","leetcode"]
+  
+  Example 5:
+  Input: A = ["amazon","apple","facebook","google","leetcode"], B = ["ec","oc","ceo"]
+  Output: ["facebook","leetcode"]
+  
+  Note:
+  
+  1 <= A.length, B.length <= 10000
+  1 <= A[i].length, B[i].length <= 10
+  A[i] and B[i] consist only of lowercase letters.
+  All words in A[i] are unique: there isn't i != j with A[i] == A[j].
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def word_subsets (A B: List String) : List String := sorry
+  
+  def count_char (c: Char) (s: String) : Nat := sorry
+
+vc-theorems: |-
+  theorem word_subsets_result_subset
+    (A B: List String) 
+    (result := word_subsets A B) :
+    ∀ x, x ∈ result → x ∈ A := sorry
+  
+  theorem word_subsets_letters_count
+    (A B: List String) 
+    (result := word_subsets A B) :
+    ∀ w ∈ result, ∀ b_word ∈ B, ∀ letter : Char, 
+    let max_count := (List.map (fun b => count_char letter b) B).maximum?
+    match max_count with
+    | some count => count_char letter w ≥ count
+    | none => True := sorry
+  
+  theorem word_subsets_single_word
+    (w: String) :
+    let result := word_subsets [w] [(w.get! 0).toString]
+    (count_char (w.get! 0) w ≥ 1) →
+    result = [w] := sorry
+  
+  /--
+  info: sorted(['facebook', 'google', 'leetcode'])
+  -/
+  #guard_msgs in
+  #eval sorted word_subsets(A1, B1)
+  
+  /--
+  info: sorted(['apple', 'google', 'leetcode'])
+  -/
+  #guard_msgs in
+  #eval sorted word_subsets(A2, B2)
+  
+  /--
+  info: sorted(['facebook', 'leetcode'])
+  -/
+  #guard_msgs in
+  #eval sorted word_subsets(A3, B3)
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+

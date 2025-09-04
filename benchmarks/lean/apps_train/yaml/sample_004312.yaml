@@ -1,0 +1,134 @@
+vc-description: |-
+  # Your task
+  Oh no... more lemmings!! And in Lemmings Planet a huge battle
+  is being fought between the two great rival races: the green
+  lemmings and the blue lemmings. Everybody was now assigned
+  to battle and they will fight until one of the races completely
+  dissapears: the Deadly War has begun!
+  
+  Every single lemming has a power measure that describes its
+  ability to fight. When two single lemmings fight with each one,
+  the lemming with more power survives and the other one dies.
+  However, the power of the living lemming gets smaller after the
+  fight, exactly in the value of the power of the lemming that died.
+  For example, if we have a green lemming with power ``50`` and a
+  blue lemming with power ``40``, the blue one dies and the green one
+  survives, but having only power 10 after the battle ``(50-40=10)``.
+  If two lemmings have the same power when they fight, both of
+  them die.
+  
+  In the fight between the two races, there are a certain number of battlefields. Each race assigns one
+  lemming for each battlefield, starting with the most powerful. So for example, if a race has 5 lemmings
+  with power ```{50, 50, 40, 40, 30}``` and we have `3` battlefields, then a lemming with power `50` will be assigned
+  to battlefield 1, another with `50` power will be assigned to battlefield 2 and last a lemming with power `40` will go to battlefield 3. The other race will do the same.
+  
+  The Deadly War is processed by having each race send its best soldiers as described to the battle-
+  fields, making a battle round. Then, all battles process at the same time, and some of the lemmings
+  will emerge victorious (but with less power) and some of them will die. The surviving ones will return to their race’s army and then a new round will begin, with each race sending again its best remaining soldiers to the battlefields. If at some point a race does not have enough soldiers to fill all battlefields, then only the ones with soldiers from both races will have a fight.
+  
+  The Deadly War ends when one of the races has no more lemmings or when both of them disappear
+  at the same time. For example, imagine a war with 2 battlefields and a green army with powers `{20,10}` and a blue army with powers `{10, 10, 15}`. The first round will have `20 vs 15` in battlefield 1 and `10 vs 10` in battlefield 2. After these battles, green race will still have a power `5` lemming (that won on battlefield 1) and blue race will have one with power 10 (that did not fight). The ones in battlefield 2
+  died, since they both had the same power. Afer that comes a second round, and only battlefield 1 will have a fight, being `5 vs 10`. The blue lemming wins, killing the last green soldier and giving the victory to the blue race!
+  
+  But in the real battle, will victory be green or blue?
+  
+  Given the number of battefields and the armies of both races, your task is to discover which race
+  will win the Deadly War and show the power of the surviving soldiers.
+  
+  ## Input
+  
+  You are given B, SG and SB, representing respectively the number of battlefields available, a vector of integers size `n` of lemmings in the green army 
+  and a vector of integers size `n` of lemmings in the blue army  (1 ≤ B, SG, SB ≤ 100000).
+  
+  The lemmings in each army do not need to come in any particular order.
+  
+  ## Output
+  For each test case you should return :
+  
+  • "Green and Blue died" if both races died in the same round
+  
+  • "Green wins : Each surviving soldier in descending order" if the green army won the Deadly War
+  
+  • "Blue wins : Each surviving soldier in descending order" if the blue army won the Deadly War
+  
+  ## Example
+  
+  ```python
+  lemming_battle(5, [10], [10]) == "Green and Blue died"
+  lemming_battle(2, [20,10], [10,10,15]) == "Blue wins: 5"
+  lemming_battle(3, [50,40,30,40,50], [50,30,30,20,60]) == "Green wins: 10 10"
+  ```
+
+vc-preamble: |-
+  def lemming_battle (battlefield : Nat) (green blue : List Nat) : String :=
+    sorry
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def parse_survivors (s : String) : List Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem lemming_battle_valid_result (battlefield : Nat) (green blue : List Nat)
+      (h1 : battlefield > 0) (h2 : battlefield ≤ 100)
+      (h3 : ∀ x ∈ green, x > 0 ∧ x ≤ 1000) 
+      (h4 : ∀ x ∈ blue, x > 0 ∧ x ≤ 1000)
+      (h5 : green ≠ []) (h6 : blue ≠ []) :
+      let result := lemming_battle battlefield green blue
+      (result = "Green and Blue died" ∨ 
+       (∃ s : String, result = "Green wins: " ++ s) ∨
+       (∃ s : String, result = "Blue wins: " ++ s)) := sorry
+  
+  theorem lemming_battle_survivor_count (battlefield : Nat) (green blue : List Nat)
+      (h1 : battlefield > 0) (h2 : battlefield ≤ 100)
+      (h3 : ∀ x ∈ green, x > 0 ∧ x ≤ 1000)
+      (h4 : ∀ x ∈ blue, x > 0 ∧ x ≤ 1000)
+      (h5 : green ≠ []) (h6 : blue ≠ []) :
+      let result := lemming_battle battlefield green blue 
+      ((result.startsWith "Green wins" → List.length (parse_survivors result) ≤ List.length green) ∧
+       (result.startsWith "Blue wins" → List.length (parse_survivors result) ≤ List.length blue)) := sorry
+  
+  theorem lemming_battle_max_survivor_value (battlefield : Nat) (green blue : List Nat)
+      (h1 : battlefield > 0) (h2 : battlefield ≤ 100)
+      (h3 : ∀ x ∈ green, x > 0 ∧ x ≤ 1000)
+      (h4 : ∀ x ∈ blue, x > 0 ∧ x ≤ 1000)
+      (h5 : green ≠ []) (h6 : blue ≠ []) :
+      let result := lemming_battle battlefield green blue
+      let maxGreen := (List.maximum? green).getD 0
+      let maxBlue := (List.maximum? blue).getD 0
+      ∀ s ∈ parse_survivors result, s ≤ max maxGreen maxBlue := sorry
+  
+  theorem equal_armies_draw (n : Nat) 
+      (h1 : n > 0) (h2 : n ≤ 100) :
+      lemming_battle 1 [n] [n] = "Green and Blue died" := sorry
+  
+  theorem battlefield_size_limit (battlefield army_size : Nat)
+      (h1 : battlefield > 0) (h2 : battlefield ≤ 100)
+      (h3 : army_size > 0) (h4 : army_size ≤ 100) :
+      lemming_battle battlefield (List.replicate army_size 1) (List.replicate army_size 1) = "Green and Blue died" := sorry
+  
+  /--
+  info: 'Green and Blue died'
+  -/
+  #guard_msgs in
+  #eval lemming_battle 5 [10] [10]
+  
+  /--
+  info: 'Blue wins: 5'
+  -/
+  #guard_msgs in
+  #eval lemming_battle 2 [20, 10] [10, 10, 15]
+  
+  /--
+  info: 'Green wins: 10 10'
+  -/
+  #guard_msgs in
+  #eval lemming_battle 3 [50, 40, 30, 40, 50] [50, 30, 30, 20, 60]
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

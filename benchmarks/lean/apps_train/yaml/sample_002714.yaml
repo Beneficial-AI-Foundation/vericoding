@@ -1,0 +1,104 @@
+vc-description: |-
+  >When no more interesting kata can be resolved, I just choose to create the new kata, to solve their own, to enjoy the process  --myjinxin2015 said
+  
+  # Description:
+   Given a string `str` that contains some "(" or ")". Your task is to find the longest substring in `str`(all brackets in the substring are closed). The result is the length of the longest substring.
+  
+   For example:
+   ```
+   str = "()()("
+   findLongest(str) === 4 
+   "()()" is the longest substring
+   ```
+  
+  # Note:
+   - All inputs are valid.
+   - If no such substring found, return 0.
+   - Please pay attention to the performance of code. ;-)
+   - In the performance test(100000 brackets str x 100 testcases), the time consuming of each test case should be within 35ms. This means, your code should run as fast as a rocket ;-) 
+  
+  # Some Examples
+   ```
+   findLongest("()") === 2
+   findLongest("()(") === 2
+   findLongest("()()") === 4
+   findLongest("()()(") === 4
+   findLongest("(()())") === 6
+   findLongest("(()(())") === 6
+   findLongest("())(()))") === 4
+   findLongest("))((") === 0
+   findLongest("") === 0
+   ```
+
+vc-preamble: |-
+  def findLongest (s : String) : Nat :=
+    sorry
+  
+  def isValidParens (s : String) : Bool :=
+    sorry
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def substringFromTo (s : String) (i j : Nat) : String :=
+    sorry
+
+vc-theorems: |-
+  theorem findLongest_valid (s : String) :
+    let result := findLongest s
+    result ≤ s.length ∧ 
+    result % 2 = 0 :=
+  sorry
+  
+  theorem findLongest_optimal (s : String) :
+    let result := findLongest s
+    ∀ i j, i < s.length → j ≤ s.length → j > i →
+      let substr := substringFromTo s i j
+      isValidParens substr → substr.length ≤ result :=
+  sorry
+  
+  theorem findLongest_exists (s : String) :
+    let result := findLongest s
+    result > 0 →
+    ∃ i j, i < s.length ∧ j ≤ s.length ∧ j > i ∧
+      let substr := substringFromTo s i j
+      substr.length = result ∧ 
+      isValidParens substr :=
+  sorry
+  
+  theorem findLongest_matched_pairs (n : Nat) :
+    let s := String.mk (List.replicate n '(' ++ List.replicate n ')')
+    findLongest s = 2 * n :=
+  sorry
+  
+  theorem findLongest_unmatched_surround (n : Nat) :
+    n > 0 →
+    let balanced := String.mk (List.replicate n '(' ++ List.replicate n ')')
+    let s := ")" ++ balanced ++ "("
+    findLongest s = 2 * n :=
+  sorry
+  
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval find_longest ")()"
+  
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval find_longest "((()"
+  
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval find_longest "())(()))"
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

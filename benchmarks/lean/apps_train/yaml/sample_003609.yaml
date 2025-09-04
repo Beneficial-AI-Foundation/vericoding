@@ -1,0 +1,51 @@
+vc-description: |-
+  Alex just got a new hula hoop, he loves it but feels discouraged because his little brother is better than him
+  
+  Write a program where Alex can input (n) how many times the hoop goes round and it will return him an encouraging message :) 
+  
+  -If Alex gets 10 or more hoops, return the string "Great, now move on to tricks".
+  
+  -If he doesn't get 10 hoops, return the string "Keep at it until you get it".
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def hoop_count (n : Int) : String := sorry
+  
+  theorem hoop_count_return_value (n : Int) :
+    (hoop_count n = "Keep at it until you get it") ∨
+    (hoop_count n = "Great, now move on to tricks") := sorry
+
+vc-theorems: |-
+  theorem hoop_count_less_than_ten (n : Int) :
+    n < 10 → hoop_count n = "Keep at it until you get it" := sorry
+  
+  theorem hoop_count_ten_or_more (n : Int) :
+    n ≥ 10 → hoop_count n = "Great, now move on to tricks" := sorry
+  
+  /--
+  info: 'Keep at it until you get it'
+  -/
+  #guard_msgs in
+  #eval hoop_count 6
+  
+  /--
+  info: 'Great, now move on to tricks'
+  -/
+  #guard_msgs in
+  #eval hoop_count 10
+  
+  /--
+  info: 'Great, now move on to tricks'
+  -/
+  #guard_msgs in
+  #eval hoop_count 22
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

@@ -1,0 +1,92 @@
+vc-description: |-
+  # Task
+   Yesterday you found some shoes in your room. Each shoe is described by two values:
+  ```
+  type indicates if it's a left or a right shoe;
+  size is the size of the shoe.
+  ```
+   Your task is to check whether it is possible to pair the shoes you found in such a way that each pair consists of a right and a left shoe of an equal size.
+  
+  # Example
+  
+   For:
+  ```
+  shoes = [[0, 21], 
+           [1, 23], 
+           [1, 21], 
+           [0, 23]]
+           ```
+  the output should be `true;`
+  
+   For:
+  ```
+  shoes = [[0, 21], 
+           [1, 23], 
+           [1, 21], 
+           [1, 23]]
+           ```
+  the output should be `false.`
+  
+  # Input/Output
+  
+   - `[input]` 2D integer array `shoes`
+  
+   Array of shoes. Each shoe is given in the format [type, size], where type is either 0 or 1 for left and right respectively, and size is a positive integer.
+  
+   Constraints: `2 ≤ shoes.length ≤ 50,  1 ≤ shoes[i][1] ≤ 100.`
+  
+   - `[output]` a boolean value
+  
+     `true` if it is possible to pair the shoes, `false` otherwise.
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def LRShoe := Nat × Nat  -- (left/right, size)
+  
+  def pair_of_shoes (shoes : List LRShoe) : Bool :=
+    sorry
+
+vc-theorems: |-
+  theorem pair_of_shoes_valid (shoes : List LRShoe) :
+    (∀ s ∈ shoes, s.1 ≤ 1) →
+    ∀ result, result = pair_of_shoes shoes → result = true ∨ result = false
+    := by sorry
+  
+  theorem pair_of_shoes_count_matches (shoes : List LRShoe) :
+    let left_count := fun size => (shoes.filter (fun s => s.1 = 0 ∧ s.2 = size)).length
+    let right_count := fun size => (shoes.filter (fun s => s.1 = 1 ∧ s.2 = size)).length
+    pair_of_shoes shoes = true ↔ ∀ size, left_count size = right_count size
+    := by sorry
+  
+  theorem pair_of_shoes_symmetry (shoes : List LRShoe) :
+    let swapped := shoes.map (fun s => (1 - s.1, s.2))
+    pair_of_shoes shoes = pair_of_shoes swapped
+    := by sorry
+  
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval pair_of_shoes [[0, 21], [1, 23], [1, 21], [0, 23]]
+  
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval pair_of_shoes [[0, 21], [1, 23], [1, 21], [1, 23]]
+  
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval pair_of_shoes [[0, 23], [1, 21], [1, 23], [0, 21], [1, 22], [0, 22]]
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

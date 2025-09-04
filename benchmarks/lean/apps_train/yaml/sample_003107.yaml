@@ -1,0 +1,57 @@
+vc-description: |-
+  You're given a string containing a sequence of words separated with whitespaces. Let's say it is a sequence of patterns: a name and a corresponding number - like this:
+  
+  ```"red 1 yellow 2 black 3 white 4"```
+  
+  You want to turn it into a different **string** of objects you plan to work with later on - like this:
+  
+  ```"[{name : 'red', id : '1'}, {name : 'yellow', id : '2'}, {name : 'black', id : '3'}, {name : 'white', id : '4'}]"```
+  
+  Doing this manually is a pain. So you've decided to write a short function that would make the computer do the job for you. Keep in mind, the pattern isn't necessarily a word and a number. Consider anything separeted by a whitespace, just don't forget: an array of objects with two elements: name and id.
+  
+  As a result you'll have a string you may just copy-paste whenever you feel like defining a list of objects - now without the need to put in names, IDs, curly brackets, colon signs, screw up everything, fail searching for a typo and begin anew. This might come in handy with large lists.
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def words_to_object (s : String) : String := sorry
+  
+  theorem empty_string_to_object :
+    words_to_object "" = "[]" := by sorry
+
+vc-theorems: |-
+  theorem valid_pairs_object {n : Nat} (h : 0 < n ∧ n ≤ 10) :
+    let input := String.join (List.map (fun i => "color" ++ toString i ++ " " ++ toString i ++ " ") (List.range n))
+    let result := words_to_object input
+    let expected_substring (i : Nat) := "{name : 'color" ++ toString i ++ "', id : '" ++ toString i ++ "'}"
+    -- Result has correct brackets
+    (result.startsWith "[" ∧ result.endsWith "]") ∧
+    -- Each pair exists in result
+    (∀ i, i < n → (expected_substring i).all (fun c => result.contains c)) := by sorry
+  
+  /--
+  info: expected1
+  -/
+  #guard_msgs in
+  #eval words_to_object "red 1 yellow 2 black 3 white 4"
+  
+  /--
+  info: expected2
+  -/
+  #guard_msgs in
+  #eval words_to_object "1 red 2 white 3 violet 4 green"
+  
+  /--
+  info: expected3
+  -/
+  #guard_msgs in
+  #eval words_to_object ""
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

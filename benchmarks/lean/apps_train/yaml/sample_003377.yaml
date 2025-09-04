@@ -1,0 +1,69 @@
+vc-description: |-
+  Another Fibonacci... yes but with other kinds of result.
+  The function is named `aroundFib` or `around_fib`, depending of the language.
+  Its parameter is `n` (positive integer).
+  
+  First you have to calculate `f` the value of `fibonacci(n)` with `fibonacci(0) --> 0` and
+  `fibonacci(1) --> 1` (see: )
+  
+  - 1) Find the count of each digit `ch` in `f` (`ch`: digit from 0 to 9), call this count `cnt` and find the maximum
+  value of `cnt`, call this maximum `maxcnt`. If there are ties, the digit `ch` to consider is the first one - in natural digit order - giving `maxcnt`.
+  
+  - 2) Cut the value `f` into chunks of length at most `25`. The last chunk may be 25 long or less.
+  
+  ```
+  Example: for `n=100` you have only one chunk `354224848179261915075`
+  Example: for `n=180` f is `18547707689471986212190138521399707760` and you have two chunks 
+  `1854770768947198621219013` and `8521399707760`. First length here is 25 and second one is 13.
+  ```
+  
+  - At last return a string in the following format:
+  "Last chunk ...; Max is ... for digit ..."
+  
+  where Max is `maxcnt` and digit the first `ch` (in 0..9) leading to `maxcnt`.
+  
+  ```
+  Example: for `n=100` -> "Last chunk 354224848179261915075; Max is 3 for digit 1" 
+  Example: for `n=180` -> "Last chunk 8521399707760; Max is 7 for digit 7"
+  Example: for `n=18000` -> "Last chunk 140258776000; Max is 409 for digit 1"
+  ```
+  # Beware: 
+  `fib(18000)` has `3762` digits. Values of `n` are between `500` and `25000`.
+  
+  # Note
+  Translators are welcome for all languages, except for Ruby since the Bash tests needing Ruby a Ruby reference solution is already there though not yet published.
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def around_fib (n : Nat) : String := sorry
+  
+  theorem around_fib_result_format (n : Nat) (h : n ≤ 1000) : 
+    let result := around_fib n
+    ∃ last_chunk max_count max_digit, 
+      String.startsWith result "Last chunk " ∧
+      result.any (fun c => c = ';') ∧
+      String.length result > 0 ∧
+      0 ≤ max_digit ∧ max_digit ≤ 9 ∧
+      max_count > 0 ∧
+      String.length last_chunk ≤ 25 := sorry
+
+vc-theorems: |-
+  theorem around_fib_string_properties (n : Nat) (h : n ≤ 100) :
+    let result := around_fib n
+    let parts := String.split result (· == ';')
+    let lastChunk := (String.split (parts.head!) (· == ' ')).getLast!
+    ∃ maxCount : Nat,
+      maxCount > 0 ∧
+      (parts.length = 2) ∧
+      String.any result (· == ';') ∧
+      String.any result (· == 'f') := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+

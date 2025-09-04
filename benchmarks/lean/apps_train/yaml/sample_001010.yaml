@@ -1,0 +1,61 @@
+vc-description: |-
+  Ripul was skilled in the art of lapidary. He used to collect stones and convert it into decorative items for sale.  There were n stone shops. Each shop was having one exclusive stone of value s[i] , where 1<=i<=n.  If number of stones collected are more than 1, then total value will be product of values of all the stones he collected. Ripul wants to have maximum value of stones he collected. Help Ripul in picking up the subarray which leads to maximum value of stones he collected.
+  
+  -----Input:-----
+  - First line will contain $T$, number of testcases. Then the testcases follow. 
+  - The first line of each testcase contains an integer $N$, denoting number of elements in the given array.
+  - The second line contains $N$ space-separated integers $S1$, $S2$, …, $SN$ denoting the value of stone in each shop. 
+  
+  -----Output:-----
+  For each testcase, output the maximum value of stones possible, the starting index and ending index of the chosen subarray (0-based indexing). If there are multiple subarrays with same value, print the one with greater starting index. If there are multiple answer subarrays with same starting index, print the one with greater ending index. (The answer will fit in 64 bit binary number).
+  
+  -----Constraints-----
+  - $1 \leq T \leq 10$
+  - $1 \leq N \leq 10^5$
+  - $-100 \leq S[i] \leq 100$
+  
+  -----Subtasks-----
+  - 30 points : $1 \leq N \leq 10^3$
+  - 70 points : $1 \leq N \leq 10^5$
+  
+  -----Sample Input:-----
+  1
+  3
+  
+  1 2 3
+  
+  -----Sample Output:-----
+  6 1 2
+  
+  -----EXPLANATION:-----
+  If Ripul collects all the all the three gems, total value will be 6 (1 * 2 * 3).
+  If Ripul collects last two gems, total value will be 6 (1 * 2 * 3).
+  So, he picks the subarray with greater starting index.
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def find_max_stone_value (N : Nat) (stones : List Int) : Int × Nat × Nat := sorry
+  
+  theorem valid_indices {N : Nat} {stones : List Int} (h : N > 0) (h2 : stones.length > 0) : 
+    let (val, start, finish) := find_max_stone_value N stones;
+    0 ≤ start ∧ start ≤ finish ∧ finish < N := sorry
+
+vc-theorems: |-
+  theorem value_matches_slice {N : Nat} {stones : List Int} (h : N > 0) (h2 : stones.length > 0) :
+    let (val, start, finish) := find_max_stone_value N stones;
+    val = (List.range (finish - start + 1)).foldl (fun acc i => acc * stones[start + i]!) 1 := sorry 
+  
+  theorem value_is_maximum {stones : List Int} (h : stones.length > 0) :
+    let (val, start, finish) := find_max_stone_value (stones.length) stones;
+    ∀ i j, 0 ≤ i → i ≤ j → j < stones.length → 
+      val ≥ (List.range (j - i + 1)).foldl (fun acc k => acc * stones[i + k]!) 1 := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded
+

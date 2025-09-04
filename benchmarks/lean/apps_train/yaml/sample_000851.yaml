@@ -1,0 +1,124 @@
+vc-description: |-
+  Vanja and Miksi really like games. After playing one game for a long time, they decided to invent another game!
+  In this game, they have a sequence $A_1, A_2, \dots, A_N$ and two numbers $Z_1$ and $Z_2$. The rules of the game are as follows:
+  - The players take turns alternately, starting with Vanja.
+  - There is an integer $S$; at the beginning, $S = 0$.
+  - In each turn, the current player must choose an arbitrary element of $A$ and either add that number to $S$ or subtract it from $S$. Each element can be selected multiple times.
+  - Afterwards, if $S = Z_1$ or $S = Z_2$, the current player (the player who made $S$ equal to $Z_1$ or $Z_2$) is the winner of the game.
+  - If the game lasts for $10^{10}$ turns, Vanja and Miksi decide to declare it a tie.
+  Can you help the boys determine the winner of the game? Please note that the game can end in a tie (if nobody can make $S = Z_1$ or $S = Z_2$ in the first $10^{10}$ moves).
+  Both players play optimally, i.e. if there is a move which guarantees the current player's victory regardless of the other player's moves, the current player will make such a move. If the current player cannot win and there is a move which guarantees that the game will end in a tie, the current player will make such a move.
+  
+  -----Input-----
+  - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+  - The first line of each test case contains three space-separated integers $N$, $Z_1$ and $Z_2$.
+  - The second line contains $N$ space-separated integers $A_1, A_2, \dots, A_N$.
+  
+  -----Output-----
+  - For each test case, print a single line containing one integer — the final result of the game:
+  - $1$ if Vanja (the first player) has a winning strategy
+  - $2$ if Miksi (the second player) has a winning strategy
+  - $0$ if the game ends in a tie
+  
+  -----Constraints-----
+  - $1 \le T \le 50$
+  - $1 \le N \le 50$
+  - $|Z_1|, |Z_2| \le 10^9$
+  - $|A_i| \le 10^9$ for each valid $i$
+  
+  -----Subtasks-----
+  Subtask #1 (25 points): $N = 2$
+  Subtask #2 (75 points): original constraints
+  
+  -----Example Input-----
+  3
+  2 6 4
+  -4 10
+  1 1 -1
+  2
+  2 0 7
+  3 4
+  
+  -----Example Output-----
+  1
+  0
+  2
+  
+  -----Explanation-----
+  Example case 1: The first player can choose the value $A_1 = -4$, subtract it from $S = 0$ and obtain $S = - (-4) = 4 = Z_2$. The winner is the first player.  
+  Example case 2: It can be proven that neither player is able to reach $S = Z_1$ or $S = Z_2$. The result is a tie.
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+
+vc-theorems: |-
+  theorem result_validity 
+    (N : Nat) (Z1 Z2 : Int) (A : List Int)
+    (h1 : N > 0) (h2 : N ≤ 100)
+    (h3 : Z1 ≥ -1000) (h4 : Z1 ≤ 1000)
+    (h5 : Z2 ≥ -1000) (h6 : Z2 ≤ 1000)
+    (h7 : ∀ a ∈ A, a ≥ -1000 ∧ a ≤ 1000)
+    (h8 : A.length ≥ 1) (h9 : A.length ≤ 100) :
+    let result := solve_game N Z1 Z2 A
+    result = 0 ∨ result = 1 ∨ result = 2 := sorry
+  
+  -- Property: Result should be 1 if target is immediately reachable
+  
+  theorem immediate_win
+    (N : Nat) (Z : Int) (A : List Int) (a : Int)
+    (h1 : N > 0) (h2 : N ≤ 100)
+    (h3 : Z ≥ -1000) (h4 : Z ≤ 1000)
+    (h5 : a ∈ A)
+    (h6 : A.length ≥ 1) (h7 : A.length ≤ 100)
+    (h8 : Int.natAbs a = Int.natAbs Z) :
+    solve_game N Z (Z + 1) [a] = 1 := sorry
+  
+  -- Property: Result should be symmetric for negated inputs
+  
+  theorem negation_symmetry
+    (N : Nat) (Z1 Z2 : Int) (A : List Int)
+    (h1 : N > 0) (h2 : N ≤ 100)
+    (h3 : Z1 ≥ -1000) (h4 : Z1 ≤ 1000)
+    (h5 : Z2 ≥ -1000) (h6 : Z2 ≤ 1000)
+    (h7 : ∀ a ∈ A, a ≥ -1000 ∧ a ≤ 1000)
+    (h8 : A.length ≥ 1) (h9 : A.length ≤ 100) :
+    solve_game N Z1 Z2 A = solve_game N (-Z1) (-Z2) (A.map (·*(-1))) := sorry
+  
+  -- Property: Single number case should be deterministic
+  
+  theorem single_number
+    (num Z1 Z2 : Int)
+    (h1 : num ≥ -1000) (h2 : num ≤ 1000)
+    (h3 : Z1 ≥ -1000) (h4 : Z1 ≤ 1000)
+    (h5 : Z2 ≥ -1000) (h6 : Z2 ≤ 1000) :
+    let result := solve_game 1 Z1 Z2 [num]
+    (Int.natAbs num = Int.natAbs Z1 ∨ Int.natAbs num = Int.natAbs Z2) → result = 1 ∧
+    ¬(Int.natAbs num = Int.natAbs Z1 ∨ Int.natAbs num = Int.natAbs Z2) → (result = 0 ∨ result = 2) := sorry
+  
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval solve_game 2 6 4 [-4, 10]
+  
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval solve_game 1 1 -1 [2]
+  
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval solve_game 2 0 7 [3, 4]
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+

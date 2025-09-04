@@ -1,0 +1,97 @@
+vc-description: |-
+  =====Problem Statement=====
+  A valid email address meets the following criteria:
+  
+  It's composed of a username, domain name, and extension assembled in this format: username@domain.extension
+  The username starts with an English alphabetical character, and any subsequent characters consist of one or more of the following: alphanumeric characters, -,., and _.
+  The domain and extension contain only English alphabetical characters.
+  The extension is 1, 2, or 3 characters in length.
+  
+  Given n pairs of names and email addresses as input, print each name and email address pair having a valid email address on a new line.
+  
+  Hint: Try using Email.utils() to complete this challenge. For example, this code:
+  
+  import email.utils
+  print email.utils.parseaddr('DOSHI <DOSHI@hackerrank.com>')
+  print email.utils.formataddr(('DOSHI', 'DOSHI@hackerrank.com'))
+  
+  produces this output:
+  
+  ('DOSHI', 'DOSHI@hackerrank.com')
+  DOSHI <DOSHI@hackerrank.com>
+  
+  =====Input Format=====
+  The first line contains a single integer, n, denoting the number of email address.
+  Each line i of the n subsequent lines contains a name and an email address as two space-separated values following this format:
+  name <user@email.com>
+  
+  =====Constraints=====
+  0<n<100
+  
+  =====Output Format=====
+  Print the space-separated name and email address pairs containing valid email addresses only. Each pair must be printed on a new line in the following format:
+  name <user@email.com>
+  
+  You must print each valid email address in the same order as it was received as input.
+
+vc-preamble: |-
+  def Email := String
+  def validate_emails (emails : List Email) : List Email := sorry
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def isValidEmailFormat (e : Email) : Bool := sorry
+  
+  /-- For a list of valid email addresses, all should be returned unchanged -/
+
+vc-theorems: |-
+  theorem validate_valid_emails (emails : List Email) 
+    (h : ∀ e ∈ emails, isValidEmailFormat e) :
+    validate_emails emails = emails :=
+  sorry
+  
+  /-- For a list of invalid email addresses, an empty list should be returned -/
+  
+  theorem validate_invalid_emails (emails : List Email)
+    (h : ∀ e ∈ emails, ¬ isValidEmailFormat e) :
+    validate_emails emails = [] := 
+  sorry
+  
+  /-- For a mixed list of valid and invalid emails, only valid ones should be returned -/
+  
+  theorem validate_mixed_emails (emails : List Email)
+    (valid : List Email := emails.filter isValidEmailFormat) :
+    validate_emails emails = valid :=
+  sorry
+  
+  /-- Function should not crash on arbitrary string input -/
+  
+  theorem validate_arbitrary_input (inputs : List String) :
+    ∃ result, validate_emails inputs = result :=
+  sorry
+  
+  /--
+  info: ['DEXTER <dexter@hotmail.com>']
+  -/
+  #guard_msgs in
+  #eval validate_emails ["DEXTER <dexter@hotmail.com>", "VIRUS <virus!@variable.:p>"]
+  
+  /--
+  info: ['ALICE <alice123@gmail.com>']
+  -/
+  #guard_msgs in
+  #eval validate_emails ["ALICE <alice123@gmail.com>"]
+  
+  /--
+  info: ['CAROL <carol@xyz.com>']
+  -/
+  #guard_msgs in
+  #eval validate_emails ["INVALID <inv@k.>", "CAROL <carol@xyz.com>"]
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

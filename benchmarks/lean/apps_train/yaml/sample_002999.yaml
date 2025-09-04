@@ -1,0 +1,67 @@
+vc-description: |-
+  Mr. Square is going on a holiday. He wants to bring 2 of his favorite squares with him, so he put them in his rectangle suitcase.
+  
+  Write a function that, given the size of the squares and the suitcase, return whether the squares can fit inside the suitcase.
+  ```Python
+  fit_in(a,b,m,n)
+  a,b are the sizes of the 2 squares
+  m,n are the sizes of the suitcase
+  ```
+  
+  # Example
+  ```Python
+  fit_in(1,2,3,2) should return True
+  fit_in(1,2,2,1) should return False
+  fit_in(3,2,3,2) should return False
+  fit_in(1,2,1,2) should return False
+  ```
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def fit_in (a b m n : Nat) : Bool := sorry
+  
+  theorem fit_in_symmetry {a b m n : Nat} : 
+    fit_in a b m n = fit_in b a m n ∧ 
+    fit_in a b m n = fit_in a b n m := sorry
+
+vc-theorems: |-
+  theorem fit_in_identical_small_dimensions {a b : Nat} :
+    let m := min a b - 1
+    ¬fit_in a b m m := sorry
+  
+  theorem fit_in_large_container {a b : Nat} (h : a ≤ 1000) (h2 : b ≤ 1000) :
+    let large := 2 * max a b + 10
+    fit_in a b large large := sorry
+  
+  theorem fit_in_constraints {a b m n : Nat} :
+    fit_in a b m n → 
+    max a b ≤ min m n ∧ 
+    a + b ≤ max m n := sorry
+  
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval fit_in 1 2 3 2
+  
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval fit_in 1 2 2 1
+  
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval fit_in 3 2 3 2
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

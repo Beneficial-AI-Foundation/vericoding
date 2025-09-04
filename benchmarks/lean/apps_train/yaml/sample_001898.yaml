@@ -1,0 +1,108 @@
+vc-description: |-
+  We have an array of integers, nums, and an array of requests where requests[i] = [starti, endi]. The ith request asks for the sum of nums[starti] + nums[starti + 1] + ... + nums[endi - 1] + nums[endi]. Both starti and endi are 0-indexed.
+  Return the maximum total sum of all requests among all permutations of nums.
+  Since the answer may be too large, return it modulo 109 + 7.
+  
+  Example 1:
+  Input: nums = [1,2,3,4,5], requests = [[1,3],[0,1]]
+  Output: 19
+  Explanation: One permutation of nums is [2,1,3,4,5] with the following result: 
+  requests[0] -> nums[1] + nums[2] + nums[3] = 1 + 3 + 4 = 8
+  requests[1] -> nums[0] + nums[1] = 2 + 1 = 3
+  Total sum: 8 + 3 = 11.
+  A permutation with a higher total sum is [3,5,4,2,1] with the following result:
+  requests[0] -> nums[1] + nums[2] + nums[3] = 5 + 4 + 2 = 11
+  requests[1] -> nums[0] + nums[1] = 3 + 5  = 8
+  Total sum: 11 + 8 = 19, which is the best that you can do.
+  
+  Example 2:
+  Input: nums = [1,2,3,4,5,6], requests = [[0,1]]
+  Output: 11
+  Explanation: A permutation with the max total sum is [6,5,4,3,2,1] with request sums [11].
+  Example 3:
+  Input: nums = [1,2,3,4,5,10], requests = [[0,2],[1,3],[1,1]]
+  Output: 47
+  Explanation: A permutation with the max total sum is [4,10,5,3,2,1] with request sums [19,18,10].
+  
+  Constraints:
+  
+  n == nums.length
+  1 <= n <= 105
+  0 <= nums[i] <= 105
+  1 <= requests.length <= 105
+  requests[i].length == 2
+  0 <= starti <= endi < n
+
+vc-preamble: |-
+  def MOD := 1000000007
+  
+  def maxSumRangeQuery (nums : List Nat) (requests : List (Nat × Nat)) : Nat :=
+    sorry
+  
+  def listSum (l : List Nat) : Nat :=
+    sorry
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def listSortDescending (l : List Nat) : List Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem maxSumRangeQuery_bounded
+    (nums : List Nat) 
+    (requests : List (Nat × Nat))
+    (h1 : nums.length > 0)
+    (h2 : requests.length > 0)
+    (h3 : ∀ r ∈ requests, r.1 ≤ r.2 ∧ r.2 < nums.length) :
+    0 ≤ maxSumRangeQuery nums requests ∧ maxSumRangeQuery nums requests < MOD :=
+    sorry 
+  
+  theorem maxSumRangeQuery_deterministic
+    (nums : List Nat)
+    (requests : List (Nat × Nat))
+    (h1 : nums.length > 0)
+    (h2 : requests.length > 0)
+    (h3 : ∀ r ∈ requests, r.1 ≤ r.2 ∧ r.2 < nums.length) :
+    maxSumRangeQuery nums requests = maxSumRangeQuery nums requests :=
+    sorry
+  
+  theorem maxSumRangeQuery_single_request
+    (nums : List Nat)
+    (h : nums.length > 0) :
+    let requests := [(0, nums.length - 1)]
+    maxSumRangeQuery nums requests = (listSum nums) % MOD :=
+    sorry
+  
+  theorem maxSumRangeQuery_overlapping_bounds
+    (nums : List Nat)
+    (h1 : nums.length > 1) :
+    let requests := [(0, nums.length / 2), (nums.length / 4, nums.length - 1)]
+    let sorted_prefix := (listSortDescending nums).take nums.length
+    maxSumRangeQuery nums requests ≤ (listSum sorted_prefix) * 2 % MOD :=
+    sorry
+  
+  /--
+  info: 19
+  -/
+  #guard_msgs in
+  #eval max_sum_range_query [1, 2, 3, 4, 5] [[1, 3], [0, 1]]
+  
+  /--
+  info: 11
+  -/
+  #guard_msgs in
+  #eval max_sum_range_query [1, 2, 3, 4, 5, 6] [[0, 1]]
+  
+  /--
+  info: 47
+  -/
+  #guard_msgs in
+  #eval max_sum_range_query [1, 2, 3, 4, 5, 10] [[0, 2], [1, 3], [1, 1]]
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+

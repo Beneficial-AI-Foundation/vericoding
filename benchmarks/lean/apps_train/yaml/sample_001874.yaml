@@ -1,0 +1,101 @@
+vc-description: |-
+  Given a m * n grid, where each cell is either 0 (empty) or 1 (obstacle). In one step, you can move up, down, left or right from and to an empty cell.
+  Return the minimum number of steps to walk from the upper left corner (0, 0) to the lower right corner (m-1, n-1) given that you can eliminate at most k obstacles. If it is not possible to find such walk return -1.
+  
+  Example 1:
+  Input: 
+  grid = 
+  [[0,0,0],
+   [1,1,0],
+   [0,0,0],
+   [0,1,1],
+   [0,0,0]], 
+  k = 1
+  Output: 6
+  Explanation: 
+  The shortest path without eliminating any obstacle is 10. 
+  The shortest path with one obstacle elimination at position (3,2) is 6. Such path is (0,0) -> (0,1) -> (0,2) -> (1,2) -> (2,2) -> (3,2) -> (4,2).
+  
+  Example 2:
+  Input: 
+  grid = 
+  [[0,1,1],
+   [1,1,1],
+   [1,0,0]], 
+  k = 1
+  Output: -1
+  Explanation: 
+  We need to eliminate at least two obstacles to find such a walk.
+  
+  Constraints:
+  
+  grid.length == m
+  grid[0].length == n
+  1 <= m, n <= 40
+  1 <= k <= m*n
+  grid[i][j] == 0 or 1
+  grid[0][0] == grid[m-1][n-1] == 0
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def shortest_path (grid : List (List Nat)) (k : Nat) : Int := sorry
+  
+  theorem shortest_path_result_valid (grid : List (List Nat)) (k : Nat) :
+    shortest_path grid k ≥ -1 := sorry
+
+vc-theorems: |-
+  theorem shortest_path_with_sufficient_k 
+    (grid : List (List Nat)) (k rows cols : Nat)
+    (h₁ : grid.length = rows)
+    (h₂ : ∀ row ∈ grid, row.length = cols)
+    (h₃ : k ≥ rows + cols - 2) :
+    let result := shortest_path grid k;
+    -1 < result ∧ result ≤ rows + cols - 2 := sorry
+  
+  theorem shortest_path_blocked_ends 
+    (grid : List (List Nat)) 
+    (h₁ : grid ≠ [])
+    (h₂ : (∃ first ∈ grid, first ≠ [] ∧ first.head? = some 1) ∨ 
+          (∃ last ∈ grid, last ≠ [] ∧ last.getLast? = some 1)) :
+    shortest_path grid 0 = -1 := sorry
+  
+  theorem shortest_path_min_length 
+    (grid : List (List Nat)) (k rows cols : Nat)
+    (h₁ : grid.length = rows)
+    (h₂ : ∀ row ∈ grid, row.length = cols) :
+    let result := shortest_path grid k;
+    result ≠ -1 → result ≥ rows + cols - 2 := sorry
+  
+  theorem shortest_path_empty_grid (rows cols : Nat) 
+    (h₁ : rows > 0)
+    (h₂ : cols > 0) :
+    let empty_grid := List.replicate rows (List.replicate cols 0);
+    shortest_path empty_grid 0 = rows + cols - 2 := sorry
+  
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval shortest_path [[0, 0, 0], [1, 1, 0], [0, 0, 0], [0, 1, 1], [0, 0, 0]] 1
+  
+  /--
+  info: -1
+  -/
+  #guard_msgs in
+  #eval shortest_path [[0, 1, 1], [1, 1, 1], [1, 0, 0]] 1
+  
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval shortest_path [[0, 0], [0, 0]] 1
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+

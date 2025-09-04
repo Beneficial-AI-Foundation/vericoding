@@ -1,0 +1,76 @@
+vc-description: |-
+  # Task
+   Mr.Odd is my friend. Some of his common dialogues are “Am I looking odd?” , “It’s looking very odd” etc. Actually “odd” is his favorite word.
+  
+   In this valentine when he went to meet his girlfriend. But he forgot to take gift. Because of this he told his gf that he did an odd thing. His gf became angry and gave him punishment.
+  
+   His gf gave him a string str of contain only lowercase letter and told him,
+  
+   “You have to take 3 index `i,j,k` such that `i ".u..dbo"(no more odd)`
+  
+   For `str="ooudddbd"`, the result should be `2`.
+  
+   `"ooudddbd"(cut 1st odd)--> ".ou..dbd"(cut 2nd odd) --> "..u...b."`
+  
+  # Input/Output
+  
+   - `[input]` string `str`
+  
+    a non-empty string that contains only lowercase letters.
+  
+    `0 < str.length <= 10000`
+  
+   - `[output]` an integer
+  
+    the maximum number of "odd".
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def odd (s : String) : Nat := sorry
+  
+  theorem odd_non_negative (s : String) : odd s ≥ 0 := sorry
+
+vc-theorems: |-
+  theorem odd_smaller_than_string (s : String) : odd s ≤ s.length := sorry
+  
+  theorem odd_deterministic (s : String) : odd s = odd s := sorry
+  
+  theorem odd_bounded_by_chars (s : String) (h : s.data.all (fun c => c = 'o' ∨ c = 'd')) :
+    odd s ≤ (s.data.filter (· = 'o')).length := sorry
+  
+  theorem odd_bounded_by_d_chars (s : String) (h : s.data.all (fun c => c = 'o' ∨ c = 'd')) :
+    odd s ≤ (s.data.filter (· = 'd')).length / 2 := sorry
+  
+  theorem odd_empty_string : odd "" = 0 := sorry
+  
+  theorem odd_no_pattern (s : String) :
+    s.data.all (fun c => c = 'x') →
+    odd s = 0 := sorry
+  
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval odd "oudddbo"
+  
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval odd "ooudddbd"
+  
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval odd "qoddoldfoodgodnooofostorodrnvdmddddeidfoi"
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible
+

@@ -1,0 +1,57 @@
+vc-description: |-
+  # Grains
+  
+  Write a program that calculates the number of grains of wheat on a chessboard given that the number on each square is double the previous one.
+  
+  There are 64 squares on a chessboard.
+  
+  #Example:
+  square(1) = 1
+  square(2) = 2
+  square(3) = 4
+  square(4) = 8
+  etc...
+  
+  Write a program that shows how many grains were on each square
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def square (n : Int) : Int :=
+    sorry
+
+vc-theorems: |-
+  theorem square_positive_integers (n : Int) (h : n ≥ 1) (h2 : n ≤ 20) : 
+    square n = (2 : Int) * square (n-1) ∧ square n > 0 :=
+    sorry
+  
+  theorem square_invalid_inputs (n : Int) (h : n ≤ 0) :
+    ¬∃ (result : Int), square n = result :=
+    sorry
+  
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval square 1
+  
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval square 3
+  
+  /--
+  info: 32768
+  -/
+  #guard_msgs in
+  #eval square 16
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+

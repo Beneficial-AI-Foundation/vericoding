@@ -1,0 +1,67 @@
+vc-description: |-
+  ### Task:
+  
+  You have to write a function `pattern` which creates the following pattern (See Examples) upto desired number of rows.
+  
+  If the Argument is `0` or a Negative Integer then it should return `""` i.e. empty string.
+  
+  ### Examples:
+  
+  `pattern(9)`:
+  
+      123456789
+      234567891
+      345678912
+      456789123
+      567891234
+      678912345
+      789123456
+      891234567
+      912345678
+  
+  `pattern(5)`:
+  
+      12345
+      23451
+      34512
+      45123
+      51234
+  
+  Note: There are no spaces in the pattern
+  
+  Hint: Use `\n` in string to jump to next line
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def pattern (n : Int) : String := sorry
+  
+  def natToString (n : Nat) : String := sorry
+
+vc-theorems: |-
+  theorem non_positive_returns_empty {n : Int} (h : n ≤ 0) : 
+    pattern n = "" := sorry
+  
+  theorem cycling_property {n : Int} (h : n > 0) (h2 : n ≤ 50) :
+    ∀ i : Nat, i < n.toNat →
+      (let row := String.splitOn (pattern n) "\n";
+       let digits := (row.get ⟨i, sorry⟩).replace "10" "A";
+       digits = String.join (List.map
+         (fun j => (natToString ((i + j) % n.toNat + 1)).replace "10" "A")
+         (List.range n.toNat))) := sorry
+  
+  theorem pattern_dimensions {n : Int} (h : n > 0) (h2 : n ≤ 50) :
+    let rows := String.splitOn (pattern n) "\n"
+    -- n rows
+    (rows.length = n.toNat) ∧ 
+    -- Each row at least n chars
+    (∀ row ∈ rows, row.length ≥ n.toNat) := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+

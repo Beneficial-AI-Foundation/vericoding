@@ -1,0 +1,94 @@
+vc-description: |-
+  You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security system connected and it will automatically contact the police if two adjacent houses were broken into on the same night.
+  Given a list of non-negative integers representing the amount of money of each house, determine the maximum amount of money you can rob tonight without alerting the police.
+  
+  Example 1:
+  Input: nums = [1,2,3,1]
+  Output: 4
+  Explanation: Rob house 1 (money = 1) and then rob house 3 (money = 3).
+               Total amount you can rob = 1 + 3 = 4.
+  
+  Example 2:
+  Input: nums = [2,7,9,3,1]
+  Output: 12
+  Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (money = 1).
+               Total amount you can rob = 2 + 9 + 1 = 12.
+  
+  Constraints:
+  
+  0 <= nums.length <= 100
+  0 <= nums[i] <= 400
+
+vc-preamble: |-
+  def rob (nums : List Nat) : Nat :=
+    sorry
+  
+  def elementsAtEvenIndices (nums : List Nat) : List Nat :=
+    sorry
+  
+  def elementsAtOddIndices (nums : List Nat) : List Nat :=
+    sorry
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def list_sum (nums : List Nat) : Nat :=
+    List.foldl Nat.add 0 nums
+
+vc-theorems: |-
+  theorem rob_nonnegative (nums : List Nat) :
+    rob nums ≥ 0 :=
+    sorry
+  
+  theorem rob_even_indices_bound (nums : List Nat) (h : nums ≠ []) :
+    rob nums ≥ List.foldl Nat.max 0 (elementsAtEvenIndices nums) :=
+    sorry
+  
+  theorem rob_odd_indices_bound (nums : List Nat) (h : nums ≠ []) :
+    rob nums ≥ List.foldl Nat.max 0 (elementsAtOddIndices nums) :=
+    sorry
+  
+  theorem rob_minimum_of_first_two (nums : List Nat) (h : nums.length ≥ 2) :
+    rob nums ≥ Nat.max (nums.get ⟨0, sorry⟩) (nums.get ⟨1, sorry⟩) :=
+    sorry
+  
+  theorem rob_subset_sum (nums : List Nat) :
+    rob nums ≤ list_sum nums :=
+    sorry
+  
+  theorem rob_empty :
+    rob [] = 0 :=
+    sorry
+  
+  theorem rob_singleton (n : Nat) :
+    rob [n] = n :=
+    sorry
+  
+  theorem rob_pair (n m : Nat) :
+    rob [n, m] = Nat.max n m :=
+    sorry
+  
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval rob [1, 2, 3, 1]
+  
+  /--
+  info: 12
+  -/
+  #guard_msgs in
+  #eval rob [2, 7, 9, 3, 1]
+  
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval rob [2, 1]
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

@@ -1,0 +1,81 @@
+vc-description: |-
+  If we alternate the vowels and consonants in the string `"have"`, we get the following list, arranged alphabetically:
+  `['ahev', 'aveh', 'ehav', 'evah', 'vahe', 'veha']`. These are the only possibilities in which vowels and consonants are alternated. The first element, `ahev`, is alphabetically lowest. 
+  
+  Given a string:
+  * alternate the vowels and consonants and return the lexicographically lowest element in the list
+  * If any two or more vowels or consonants must follow each other, return `"failed"`
+  * if the number of vowels and consonants are equal, the first letter of the result must be a vowel.
+  
+  Examples: 
+  
+  ```Haskell
+  solve("codewars") = "failed". However you alternate vowels and consonants, two consonants must follow each other
+  solve("oruder") = "edorur"
+  solve("orudere") = "ederoru". This is the only option that allows you to alternate vowels & consonants.
+  ```
+  
+  ```if c:
+  In C, return an allocated string even if the response is "failed".
+  ```
+  
+  Vowels will be any of "aeiou". Input will be a lowercase string, no spaces. See test cases for more examples. 
+  
+  Good luck!
+  
+  If you like this Kata, please try: 
+  
+  [Consonant value](https://www.codewars.com/kata/59c633e7dcc4053512000073)
+  
+  [Alternate capitalization](https://www.codewars.com/kata/59cfc000aeb2844d16000075)
+
+vc-preamble: |-
+  def isVowel (c : Char) : Bool :=
+    c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u'
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def solve (s : String) : String :=
+    sorry
+
+vc-theorems: |-
+  theorem output_format {s : String} (h : s.length > 0) :
+    let result := solve s
+    (result = "failed") ∨ 
+    (∀ c, c ∈ result.data → c ∈ s.data) := 
+    sorry
+  
+  theorem alternating_pattern {s : String} (h : s.length > 0) :
+    let result := solve s
+    result ≠ "failed" → result.length > 1 →
+    ∀ i : Fin result.length, i.val + 1 < result.length →
+      ∀ pos pos' : String.Pos, 
+        pos.byteIdx = i.val → pos'.byteIdx = i.val + 1 →
+        isVowel (result.get pos) ≠ isVowel (result.get pos') :=
+    sorry
+  
+  /--
+  info: 'ajav'
+  -/
+  #guard_msgs in
+  #eval solve "java"
+  
+  /--
+  info: 'edorur'
+  -/
+  #guard_msgs in
+  #eval solve "oruder"
+  
+  /--
+  info: 'failed'
+  -/
+  #guard_msgs in
+  #eval solve "codewars"
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

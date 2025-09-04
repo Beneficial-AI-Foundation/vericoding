@@ -1,0 +1,76 @@
+vc-description: |-
+  ## Task
+  In this kata you'll be given a string of English digits "collapsed" together, like this:
+  
+  `zeronineoneoneeighttwoseventhreesixfourtwofive`
+  
+  Your task is to split the string back to digits:
+  
+  `zero nine one one eight two seven three six four two five`
+  
+  ## Examples
+  ```
+  three -> three
+  eightsix -> eight six
+  fivefourseven -> five four seven
+  ninethreesixthree -> nine three six three
+  fivethreefivesixthreenineonesevenoneeight -> five three five six three nine one seven one eight
+  ```
+
+vc-preamble: |-
+  def NUMBER_WORDS : List String := ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+  
+  def uncollapse (s : String) : String :=
+    sorry
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def isSubstring (pattern : String) (s : String) : Bool :=
+    sorry
+
+vc-theorems: |-
+  theorem uncollapse_random_combinations (numbers : List String)
+    (h : numbers ≠ [] ∧ ∀ n ∈ numbers, n ∈ NUMBER_WORDS) :
+    uncollapse (String.join numbers) = String.join (List.intersperse " " numbers) :=
+  sorry
+  
+  theorem uncollapse_preserves_order (numbers : List String)
+    (h : numbers.length ≥ 2 ∧ ∀ n ∈ numbers, n ∈ NUMBER_WORDS) :
+    (uncollapse (String.join numbers)).split (. == ' ') = numbers :=
+  sorry
+  
+  theorem uncollapse_single_number (num : String)
+    (h : num ∈ NUMBER_WORDS) :
+    uncollapse num = num :=
+  sorry
+  
+  theorem uncollapse_invalid_input (s : String)
+    (h : ∀ word ∈ NUMBER_WORDS, isSubstring word s = false) :
+    uncollapse s = "" :=
+  sorry
+  
+  /--
+  info: 'three'
+  -/
+  #guard_msgs in
+  #eval uncollapse "three"
+  
+  /--
+  info: 'eight six'
+  -/
+  #guard_msgs in
+  #eval uncollapse "eightsix"
+  
+  /--
+  info: 'five four seven'
+  -/
+  #guard_msgs in
+  #eval uncollapse "fivefourseven"
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

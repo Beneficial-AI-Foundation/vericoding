@@ -1,0 +1,53 @@
+vc-description: |-
+  If you can't sleep, just count sheep!!
+  
+  ## Task:
+  Given a non-negative integer, `3` for example, return a string with a murmur: `"1 sheep...2 sheep...3 sheep..."`.  Input will always be valid, i.e. no negative integers.
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def count_sheep (n: Int) : String := sorry
+  
+  theorem count_sheep_format {n: Nat} :
+    count_sheep n = String.join (List.map (fun i => s!"{i} sheep...") (List.range n)) := sorry
+
+vc-theorems: |-
+  theorem count_sheep_count {n: Nat} :
+    (count_sheep n).length = n * ("1 sheep...".length) := sorry
+  
+  theorem count_sheep_ordered {n: Nat} (h: n > 0) :
+    count_sheep n ≠ "" := sorry
+  
+  theorem count_sheep_zero :
+    count_sheep 0 = "" := sorry
+  
+  theorem count_sheep_negative {n: Int} (h: n < 0) :
+    count_sheep n = "" := sorry
+  
+  /--
+  info: '1 sheep...2 sheep...3 sheep...'
+  -/
+  #guard_msgs in
+  #eval count_sheep 3
+  
+  /--
+  info: '1 sheep...'
+  -/
+  #guard_msgs in
+  #eval count_sheep 1
+  
+  /--
+  info: ''
+  -/
+  #guard_msgs in
+  #eval count_sheep 0
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

@@ -1,0 +1,118 @@
+vc-description: |-
+  # Is the string uppercase?
+  
+  ## Task
+  
+  ```if-not:haskell,csharp,javascript,coffeescript,elixir,forth,go,dart,julia,cpp,reason,typescript,racket,ruby
+  Create a method `is_uppercase()` to see whether the string is ALL CAPS. For example:
+  ```
+  ```if:haskell,reason,typescript
+  Create a method `isUpperCase` to see whether the string is ALL CAPS. For example:
+  ```
+  ```if:csharp
+  Create an extension method `IsUpperCase` to see whether the string is ALL CAPS. For example:
+  ```
+  ```if:julia
+  Create a function `isupper` to see whether the string is ALL CAPS. For example:
+  ```
+  ```if:cpp
+  Create a function `is_uppercase()` to see whether the string is ALL CAPS. For example:
+  ```
+  ```if:javascript,coffeescript
+  Add the `isUpperCase` method to `String` to see whether the string is ALL CAPS. For example:
+  ```
+  ```if:elixir
+  Create a method `upper_case?` to see whether the string is ALL CAPS. For example:
+  ```
+  ```if:forth,factor
+  Create a word `uppercase?` to check whether a string is ALL CAPS. For example:
+  ```
+  ```if:go
+  Create a method `IsUpperCase` to see whether the string is ALL CAPS. For example:
+  ```
+  ```if:racket
+  Create a method `upcase?` to see whether the string is ALL CAPS. For example:
+  ```
+  ```if:ruby
+  Create a method `is_upcase?` to see whether the string is ALL CAPS. For example:
+  ```
+  
+  ```python
+  is_uppercase("c") == False
+  is_uppercase("C") == True
+  is_uppercase("hello I AM DONALD") == False
+  is_uppercase("HELLO I AM DONALD") == True
+  is_uppercase("ACSKLDFJSgSKLDFJSKLDFJ") == False
+  is_uppercase("ACSKLDFJSGSKLDFJSKLDFJ") == True
+  ```
+  
+  In this Kata, a string is said to be in ALL CAPS whenever it does not contain any lowercase letter so any string containing no letters at all is trivially considered to be in ALL CAPS.
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def is_uppercase (s : String) : Bool := sorry
+  
+  theorem empty_or_no_letters_is_true (s : String) :
+    (∀ c ∈ s.data, !c.isAlpha) → is_uppercase s := sorry
+
+vc-theorems: |-
+  theorem all_uppercase_is_true (s : String) :
+    (∀ c ∈ s.data, c.isUpper) → is_uppercase s := sorry
+  
+  theorem any_lowercase_is_false (s : String) :
+    s ≠ "" → (∃ c ∈ s.data, c.isLower) → ¬(is_uppercase s) := sorry
+  
+  theorem mixed_case_rule (s : String) :
+    is_uppercase s = ¬(∃ c ∈ s.data, c.isLower) := sorry
+  
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_uppercase "c"
+  
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_uppercase "C"
+  
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_uppercase "hello I AM DONALD"
+  
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_uppercase "HELLO I AM DONALD"
+  
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_uppercase "ACSKLDFJSgSKLDFJSKLDFJ"
+  
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_uppercase "ACSKLDFJSGSKLDFJSKLDFJ"
+  
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_uppercase "123 !@#"
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

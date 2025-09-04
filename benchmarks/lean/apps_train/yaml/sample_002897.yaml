@@ -1,0 +1,46 @@
+vc-description: |-
+  Write a function that replaces 'two', 'too' and 'to' with the number '2'. Even if the sound is found mid word (like in octopus) or not in lowercase grandma still thinks that should be replaced with a 2. Bless her.
+  
+  ```text
+  'I love to text' becomes 'I love 2 text'
+  'see you tomorrow' becomes 'see you 2morrow'
+  'look at that octopus' becomes 'look at that oc2pus'
+  ```
+  
+  Note that 'too' should become '2', not '2o'
+
+vc-preamble: |-
+  def textin (s : String) : String :=
+    sorry
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def containsSubstr (s : String) (sub : String) : Bool :=
+    sorry
+
+vc-theorems: |-
+  theorem result_is_string (s : String) :
+    textin s = textin s
+    := by sorry
+  
+  theorem output_length_leq_input (s : String) : 
+    (textin s).length ≤ s.length 
+    := by sorry
+  
+  theorem no_target_words (s : String) :
+    ¬containsSubstr (String.toLower (textin s)) "two" ∧
+    ¬containsSubstr (String.toLower (textin s)) "too" ∧
+    ¬containsSubstr (String.toLower (textin s)) "to"
+    := by sorry
+  
+  theorem idempotent (s : String) :
+    textin (textin s) = textin s 
+    := by sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+

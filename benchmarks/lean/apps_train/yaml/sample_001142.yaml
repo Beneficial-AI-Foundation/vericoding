@@ -1,0 +1,67 @@
+vc-description: |-
+  Chef has a natural number N. Cheffina challenges chef to check whether the given number is divisible by the sum of its digits or not. If the given number is divisible then print "Yes" else "No".
+  
+  -----Input:-----
+  - First-line will contain $T$, the number of test cases. Then the test cases follow. 
+  - Each test case contains a single line of input, $N$. 
+  
+  -----Output:-----
+  For each test case, output in a single line answer.
+  
+  -----Constraints-----
+  - $1 \leq T \leq 10^6$
+  - $1 \leq N \leq 10^6$
+  
+  -----Sample Input:-----
+  2
+  16
+  27
+  
+  -----Sample Output:-----
+  No
+  Yes
+
+vc-preamble: |-
+  def digitSum (n : Nat) : Nat :=
+    sorry
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def isDivisibleByDigitSum (n : Nat) : String :=
+    sorry
+
+vc-theorems: |-
+  theorem isDivisibleByDigitSum_spec (n : Nat) (h : n > 0) :
+    let ds := digitSum n
+    isDivisibleByDigitSum n = "Yes" ↔ n % ds = 0
+    := sorry
+  
+  theorem isDivisibleByDigitSum_returns_valid_result (n : Nat) (h : n > 0) :
+    isDivisibleByDigitSum n = "Yes" ∨ isDivisibleByDigitSum n = "No"
+    := sorry
+  
+  /--
+  info: 'No'
+  -/
+  #guard_msgs in
+  #eval is_divisible_by_digit_sum 16
+  
+  /--
+  info: 'Yes'
+  -/
+  #guard_msgs in
+  #eval is_divisible_by_digit_sum 27
+  
+  /--
+  info: 'Yes'
+  -/
+  #guard_msgs in
+  #eval is_divisible_by_digit_sum 45
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+

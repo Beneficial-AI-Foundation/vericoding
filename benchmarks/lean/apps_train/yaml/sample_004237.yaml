@@ -1,0 +1,66 @@
+vc-description: |-
+  # Task
+  N lamps are placed in a line, some are switched on and some are off. What is the smallest number of lamps that need to be switched so that on and off lamps will alternate with each other? 
+  
+  You are given an array `a` of zeros and ones - `1` mean switched-on lamp and `0` means switched-off.
+  
+  Your task is to find the smallest number of lamps that need to be switched.
+  
+  # Example
+  
+  For `a = [1, 0, 0, 1, 1, 1, 0]`, the result should be `3`.
+  ```
+  a     --> 1 0 0 1 1 1 0
+  swith --> 0 1     0
+  became--> 0 1 0 1 0 1 0 ```
+  
+  # Input/Output
+  
+  - `[input]` integer array `a`
+  
+  array of zeros and ones - initial lamp setup, 1 mean switched-on lamp and 0 means switched-off.
+  
+  `2 < a.length <= 1000`
+  
+  - `[output]` an integer
+  
+  minimum number of switches.
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def lamps (a: List Nat) : Nat := sorry
+  
+  theorem lamps_result_bounded (a: List Nat) : 
+    lamps a ≤ a.length ∧ 0 ≤ lamps a := sorry
+
+vc-theorems: |-
+  theorem lamps_alternating_sequence (a: List Nat) (h: a.length > 0) :
+    lamps ((List.range a.length).map (fun i => i % 2)) = 0 := sorry
+  
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval lamps [1, 0, 0, 1, 1, 1, 0]
+  
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval lamps [1, 0, 1]
+  
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval lamps [1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0]
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible
+

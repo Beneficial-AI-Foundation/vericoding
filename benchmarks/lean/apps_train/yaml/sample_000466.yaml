@@ -1,0 +1,96 @@
+vc-description: |-
+  N cars are going to the same destination along a one lane road.  The destination is target miles away.
+  Each car i has a constant speed speed[i] (in miles per hour), and initial position position[i] miles towards the target along the road.
+  A car can never pass another car ahead of it, but it can catch up to it, and drive bumper to bumper at the same speed.
+  The distance between these two cars is ignored - they are assumed to have the same position.
+  A car fleet is some non-empty set of cars driving at the same position and same speed.  Note that a single car is also a car fleet.
+  If a car catches up to a car fleet right at the destination point, it will still be considered as one car fleet.
+  
+  How many car fleets will arrive at the destination?
+  
+  Example 1:
+  Input: target = 12, position = [10,8,0,5,3], speed = [2,4,1,1,3]
+  Output: 3
+  Explanation:
+  The cars starting at 10 and 8 become a fleet, meeting each other at 12.
+  The car starting at 0 doesn't catch up to any other car, so it is a fleet by itself.
+  The cars starting at 5 and 3 become a fleet, meeting each other at 6.
+  Note that no other cars meet these fleets before the destination, so the answer is 3.
+  
+  Note:
+  
+  0 <= N <= 10 ^ 4
+  0 < target <= 10 ^ 6
+  0 < speed[i] <= 10 ^ 6
+  0 <= position[i] < target
+  All initial positions are different.
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def car_fleet (target: Int) (positions: List Int) (speeds: List Int) : Int :=
+    sorry
+
+vc-theorems: |-
+  theorem car_fleet_bounded (target: Int) (positions: List Int) (speeds: List Int)
+    (h1: target > 0) (h2: target ≤ 1000)
+    (h3: ∀ p ∈ positions, 0 ≤ p ∧ p ≤ 100)
+    (h4: ∀ s ∈ speeds, 1 ≤ s ∧ s ≤ 10)
+    (h5: positions.length = speeds.length)
+    (h6: positions.length ≤ 10) :
+    car_fleet target positions speeds ≤ positions.length :=
+  sorry
+  
+  theorem car_fleet_empty (target: Int) :
+    car_fleet target [] [] = 0 :=
+  sorry
+  
+  theorem car_fleet_single (target: Int) (pos: Int) (speed: Int)
+    (h1: target > 0) :
+    car_fleet target [pos] [speed] = 1 :=
+  sorry
+  
+  theorem car_fleet_same_pos_speed (target: Int) (positions: List Int) (speeds: List Int)
+    (h1: positions ≠ [])
+    (h2: ∀ p ∈ positions, p = positions.head!)
+    (h3: ∀ s ∈ speeds, s = speeds.head!)
+    (h4: positions.length = speeds.length) :
+    car_fleet target positions speeds = 1 :=
+  sorry
+  
+  theorem car_fleet_merge_same_pos (target: Int)
+    (h1: target = 10) :
+    car_fleet 10 [5, 5] [2, 3] = 1 :=
+  sorry
+  
+  theorem car_fleet_no_merge_separated (target: Int) 
+    (h1: target = 10) :
+    car_fleet 10 [0, 5] [1, 2] = 2 :=
+  sorry
+  
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval car_fleet 12 [10, 8, 0, 5, 3] [2, 4, 1, 1, 3]
+  
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval car_fleet 10 [0] [1]
+  
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval car_fleet 10 [] []
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+

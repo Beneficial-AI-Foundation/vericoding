@@ -1,0 +1,81 @@
+vc-description: |-
+  ## Task
+  
+  Create a function that given a sequence of strings, groups the elements that can be obtained by rotating others, ignoring upper or lower cases. 
+  
+  In the event that an element appears more than once in the input sequence, only one of them will be taken into account for the result, discarding the rest. 
+  
+  ## Input
+  
+  Sequence of strings. Valid characters for those strings are uppercase and lowercase characters from the alphabet and whitespaces.
+  
+  ## Output
+  
+  Sequence of elements. Each element is the group of inputs that can be obtained by rotating the strings. 
+  
+  Sort the elements of each group alphabetically. 
+  
+  Sort the groups descendingly by size and in the case of a tie, by the first element of the group alphabetically.
+  
+  ## Examples
+  
+  ```python
+  ['Tokyo', 'London', 'Rome', 'Donlon', 'Kyoto', 'Paris', 'Okyot'] --> [['Kyoto', 'Okyot', 'Tokyo'], ['Donlon', 'London'], ['Paris'], ['Rome']]
+  
+  ['Rome', 'Rome', 'Rome', 'Donlon', 'London'] --> [['Donlon', 'London'], ['Rome']]
+  
+  [] --> []
+  ```
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def group_cities (cities : List String) : List (List String) := sorry 
+  
+  theorem group_cities_is_list_of_lists (cities : List String) :
+    let result := group_cities cities
+    ∀ group, group ∈ result → group = ([] : List String) ∨ group ≠ [] := by sorry
+
+vc-theorems: |-
+  theorem group_cities_groups_sorted_by_size (cities : List String) :
+    let result := group_cities cities
+    ∀ i j, i < j → j < result.length → 
+      (result.get ⟨i, by sorry⟩).length ≥ (result.get ⟨j, by sorry⟩).length := by sorry
+  
+  theorem group_cities_groups_rotations :
+    let result := group_cities ["Tokyo", "London", "Rome", "Donlon", "Kyoto"]
+    (∃ group ∈ result, "Tokyo" ∈ group ∧ "Kyoto" ∈ group) ∧
+    (∃ group ∈ result, "London" ∈ group ∧ "Donlon" ∈ group) := by sorry
+  
+  theorem group_cities_empty :
+    group_cities [] = [] := by sorry
+  
+  theorem group_cities_duplicates :
+    (group_cities ["Rome", "Rome", "Rome"]).length = 1 := by sorry
+  
+  /--
+  info: expected1
+  -/
+  #guard_msgs in
+  #eval group_cities ["Tokyo", "London", "Rome", "Donlon", "Kyoto", "Paris", "Okyot"]
+  
+  /--
+  info: expected2
+  -/
+  #guard_msgs in
+  #eval group_cities ["Rome", "Rome", "Rome", "Donlon", "London"]
+  
+  /--
+  info: expected3
+  -/
+  #guard_msgs in
+  #eval group_cities []
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

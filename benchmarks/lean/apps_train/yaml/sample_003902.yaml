@@ -1,0 +1,59 @@
+vc-description: |-
+  You are given an array (which will have a length of at least 3, but could be very large) containing integers. The array is either entirely comprised of odd integers or entirely comprised of even integers except for a single integer `N`. Write a method that takes the array as an argument and returns this "outlier" `N`.
+  
+  ## Examples
+  
+  ```python
+  [2, 4, 0, 100, 4, 11, 2602, 36]
+  Should return: 11 (the only odd number)
+  
+  [160, 3, 1719, 19, 11, 13, -21]
+  Should return: 160 (the only even number)
+  ```
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def find_outlier (integers : List Int) : Int := sorry
+  
+  theorem find_outlier_even_list (integers : List Int) 
+    (h1 : integers.length ≥ 3)
+    (h2 : (integers.filter (fun x => x % 2 ≠ 0)).length = 1) :
+    let result := find_outlier integers
+    result % 2 ≠ 0 ∧ 
+    ∀ x ∈ integers, x ≠ result → x % 2 = 0 := sorry
+
+vc-theorems: |-
+  theorem find_outlier_odd_list (integers : List Int)
+    (h1 : integers.length ≥ 3)
+    (h2 : (integers.filter (fun x => x % 2 = 0)).length = 1) :
+    let result := find_outlier integers
+    result % 2 = 0 ∧
+    ∀ x ∈ integers, x ≠ result → x % 2 ≠ 0 := sorry
+  
+  /--
+  info: 11
+  -/
+  #guard_msgs in
+  #eval find_outlier [2, 4, 0, 100, 4, 11, 2602, 36]
+  
+  /--
+  info: 160
+  -/
+  #guard_msgs in
+  #eval find_outlier [160, 3, 1719, 19, 11, 13, -21]
+  
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval find_outlier [1, 1, 0]
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible
+

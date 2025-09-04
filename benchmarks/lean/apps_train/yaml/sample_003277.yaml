@@ -1,0 +1,62 @@
+vc-description: |-
+  The snail crawls up the column. During the day it crawls up some distance. During the night she sleeps, so she slides down for some distance (less than crawls up during the day).
+  
+  Your function takes three arguments:
+  1. The height of the column (meters)
+  2. The distance that the snail crawls during the day (meters)
+  3. The distance that the snail slides down during the night (meters)
+  
+  Calculate number of day when the snail will reach the top of the column.
+
+vc-preamble: |-
+  def snail (column : Int) (day : Int) (night : Int) : Int :=
+    sorry
+  
+  -- Helper function to simulate ceiling division
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def ceilDiv (a b : Int) : Int :=
+    sorry
+
+vc-theorems: |-
+  theorem snail_result_positive {column day night : Int}
+    (h1 : column > 0)
+    (h2 : day > night)
+    (h3 : day > 0)
+    (h4 : night ≥ 0) :
+    snail column day night ≥ 1 := sorry
+  
+  theorem snail_reaches_top {column day night : Int}
+    (h1 : column > 0)
+    (h2 : day > night)
+    (h3 : day > 0)
+    (h4 : night ≥ 0) :
+    let result := snail column day night
+    (result * day) - ((result-1) * night) ≥ column := sorry
+  
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval snail 3 2 1
+  
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval snail 10 3 1
+  
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval snail 5 10 3
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible
+

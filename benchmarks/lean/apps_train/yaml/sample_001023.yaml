@@ -1,0 +1,81 @@
+vc-description: |-
+  Chef is planning a huge party for all of you and has ordered M pizzas. He wants to invite as many people to the party. However, he knows that everyone will have exactly one slice of a pizza (regardless of the size) and he wants to make sure that he has enough pizza slices. 
+  Chef is very lazy and will only make a total of N straight cuts among all the pizzas. Each pizza is also of different size and to avoid the slices getting too small the chef can only make a max of Ai cuts to the ith pizza. He wants to maximize the number of slices of pizza. Since chef is busy with preparing other aspects of the party he wants you to find out the maximum number of slices he can get following the constraints. 
+  If a pizza is not cut at all then it is considered as 1 slice.  
+  
+  -----Input-----
+  First line contains two integers M and N.
+  The second line of input contains the array A.
+  
+  -----Output-----
+  Output a single integer - the maximum number of slices chef can get.
+  
+  -----Constraints-----
+  - 1 ≤ M ≤ 2*105
+  - 1 ≤ N,Ai ≤ 2*105
+  
+  -----Subtasks-----
+  - Subtask 1: 1 ≤ M,N ≤ 100 - 10 points 
+  - Subtask 2: 1 ≤ N ≤ 100, 
+  1 ≤ M ≤ 105 - 20 points
+  - Subtask 3: Original Constraints - 70 points
+  
+  -----Example-----
+  Input:
+  5 10
+  1 2 3 4 5
+  Output:
+  31
+  
+  -----Explanation-----
+  Example case 1. One of the optimal way to cut would be to do {0, 1,  0, 4, 5} cuts.
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def maxPizzaSlices (m: Nat) (n: Nat) (cuts: List Nat) : Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem max_pizza_slices_positive (m n: Nat) (cuts: List Nat) (h1: m > 0) (h2: n > 0) (h3: cuts.length > 0) :
+    maxPizzaSlices m n cuts > 0 :=
+    sorry
+  
+  theorem max_pizza_slices_min_bound (m n: Nat) (cuts: List Nat) (h1: m > 0) (h2: n > 0) (h3: cuts.length > 0) :
+    maxPizzaSlices m n cuts ≥ m :=
+    sorry
+  
+  theorem max_pizza_slices_max_bound (m n: Nat) (cuts: List Nat) (h1: m > 0) (h2: n > 0) (h3: cuts.length > 0) :
+    maxPizzaSlices m n cuts ≤ m + (n * (n + 1)) / 2 :=
+    sorry
+  
+  theorem single_pizza_formula (n cuts: Nat) (h1: cuts ≤ n) :
+    maxPizzaSlices 1 n [cuts] = 1 + (cuts * (cuts + 1)) / 2 :=
+    sorry
+  
+  /--
+  info: 31
+  -/
+  #guard_msgs in
+  #eval max_pizza_slices 5 10 [1, 2, 3, 4, 5]
+  
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval max_pizza_slices 2 3 [1, 2]
+  
+  /--
+  info: 8
+  -/
+  #guard_msgs in
+  #eval max_pizza_slices 3 4 [2, 1, 1]
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+

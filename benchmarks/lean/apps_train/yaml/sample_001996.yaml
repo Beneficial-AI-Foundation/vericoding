@@ -1,0 +1,65 @@
+vc-description: |-
+  Recently, on the course of algorithms and data structures, Valeriy learned how to use a deque. He built a deque filled with $n$ elements. The $i$-th element is $a_i$ ($i$ = $1, 2, \ldots, n$). He gradually takes the first two leftmost elements from the deque (let's call them $A$ and $B$, respectively), and then does the following: if $A > B$, he writes $A$ to the beginning and writes $B$ to the end of the deque, otherwise, he writes to the beginning $B$, and $A$ writes to the end of the deque. We call this sequence of actions an operation.
+  
+  For example, if deque was $[2, 3, 4, 5, 1]$, on the operation he will write $B=3$ to the beginning and $A=2$ to the end, so he will get $[3, 4, 5, 1, 2]$.
+  
+  The teacher of the course, seeing Valeriy, who was passionate about his work, approached him and gave him $q$ queries. Each query consists of the singular number $m_j$ $(j = 1, 2, \ldots, q)$. It is required for each query to answer which two elements he will pull out on the $m_j$-th operation.
+  
+  Note that the queries are independent and for each query the numbers $A$ and $B$ should be printed in the order in which they will be pulled out of the deque.
+  
+  Deque is a data structure representing a list of elements where insertion of new elements or deletion of existing elements can be made from both sides.
+  
+  -----Input-----
+  
+  The first line contains two integers $n$ and $q$ ($2 \leq n \leq 10^5$, $0 \leq q \leq 3 \cdot 10^5$) — the number of elements in the deque and the number of queries. The second line contains $n$ integers $a_1$, $a_2$, ..., $a_n$, where $a_i$ $(0 \leq a_i \leq 10^9)$ — the deque element in $i$-th position. The next $q$ lines contain one number each, meaning $m_j$ ($1 \leq m_j \leq 10^{18}$).
+  
+  -----Output-----
+  
+  For each teacher's query, output two numbers $A$ and $B$ — the numbers that Valeriy pulls out of the deque for the $m_j$-th operation.
+  
+  -----Examples-----
+  Input
+  5 3
+  1 2 3 4 5
+  1
+  2
+  10
+  
+  Output
+  1 2
+  2 3
+  5 2
+  
+  Input
+  2 0
+  0 0
+  
+  Output
+  
+  -----Note----- Consider all 10 steps for the first test in detail: $[1, 2, 3, 4, 5]$ — on the first operation, $A$ and $B$ are $1$ and $2$, respectively.
+  
+  So, $2$ we write to the beginning of the deque, and $1$ — to the end.
+  
+  We get the following status of the deque: $[2, 3, 4, 5, 1]$. $[2, 3, 4, 5, 1] \Rightarrow A = 2, B = 3$. $[3, 4, 5, 1, 2]$ $[4, 5, 1, 2, 3]$ $[5, 1, 2, 3, 4]$ $[5, 2, 3, 4, 1]$ $[5, 3, 4, 1, 2]$ $[5, 4, 1, 2, 3]$ $[5, 1, 2, 3, 4]$ $[5, 2, 3, 4, 1] \Rightarrow A = 5, B = 2$.
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def solve_deque_ops (nums: List Nat) (queries: List Nat) : List (Nat × Nat) := sorry
+  
+  theorem solve_deque_ops_empty_queries
+    (nums: List Nat) 
+    (h1: nums.length ≥ 2) (h2: nums.length ≤ 10) :
+    solve_deque_ops nums [] = [] := 
+    sorry
+
+vc-theorems: |-
+
+vc-postamble: |-
+  -- Apps difficulty: competition
+  -- Assurance level: guarded_and_plausible
+

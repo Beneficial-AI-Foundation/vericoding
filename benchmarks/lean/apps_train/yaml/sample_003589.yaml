@@ -1,0 +1,78 @@
+vc-description: |-
+  You should have done Product Partitions I to do this second part.
+  If you solved it, you should have notice that we try to obtain the multiplicative partitions with ```n ≤ 100 ```.
+  
+  In this kata we will have more challenging values, our ```n ≤  10000```. So, we need a more optimized a faster code.
+  
+  We need the function ```prod_int_partII()``` that will give all the amount of different products, excepting the number itself multiplied by one.
+  
+  The function ```prod_int_partII()``` will receive two arguments, the number ```n``` for the one we have to obtain all the multiplicative partitions, and an integer s that determines the products that have an amount of factors equals to ```s```.
+  
+  The function will output a list with this structure:
+  ```python
+  [(1), (2), [(3)]]
+  
+  (1) Total amount of different products we can obtain, using the factors of n. (We do not consider the product n . 1)
+  
+  (2) Total amount of products that have an amount of factors equals to s.
+  
+  [(3)] A list of lists with each product represented with by a sorted list of the factors. All the product- lists should be sorted also.
+  If we have only one product-list as a result, the function will give only the list 
+  and will not use the list of lists
+  ```
+  Let's see some cases:
+  ```python
+  prod_int_partII(36, 3) == [8, 3, [[2, 2, 9], [2, 3, 6], [3, 3, 4]]]
+  
+  /// (1) ----> 8 # Amount of different products, they are: [2, 2, 3, 3], [2, 2, 9], 
+  [2, 3, 6], [2, 18], [3, 3, 4], [3, 12], [4, 9], [6, 6] (8 products)
+  
+      (2) ----> 3 # Amount of products with three factors (see them bellow)
+  
+      (3) ----> [[2, 2, 9], [2, 3, 6], [3, 3, 4]] # These are the products with 3 factors
+  ```
+  ```python
+  prod_int_partII(48, 5) == [11, 1, [2, 2, 2, 2, 3]] # Only one list.
+  ```
+  Again consider that some numbers will not have multiplicative partitions.
+  ```python
+  prod_int_partII(37, 2) == [0, 0, []]
+  ```
+  Happy coding!!
+  
+  (Recursion is advisable)
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def prod_int_partII (n s : Nat) : Nat × Nat × List (List Nat) := sorry
+  
+  theorem prod_int_properties (n s : Nat) (h1 : n ≥ 1) (h2 : n ≤ 1000) (h3 : s ≥ 1) (h4 : s ≤ 10) :
+    let result := prod_int_partII n s
+    let total := result.1
+    let count := result.2.1
+    let factors := result.2.2
+    count ≥ 0 ∧
+    (factors ≠ [] → List.length factors = count) ∧
+    (count > 0 → ∀ f ∈ factors, List.length f = s ∧ 
+      ∀ (i : Nat), i < List.length f - 1 → 
+        (List.get! f i) ≥ 2 ∧ (List.get! f i) * (List.get! f (i + 1)) ≥ (List.get! f i)) := sorry
+
+vc-theorems: |-
+  theorem single_factor (n : Nat) (h : n ≥ 1) (h2 : n ≤ 100) :
+    let result := prod_int_partII n 1
+    let count := result.2.1
+    count ≤ 1 ∧
+    (count = 1 → result.2.2 = [[n]]) := sorry
+  
+  theorem prime_factors (p : Nat) (h : p ∈ [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47]) :
+    (prod_int_partII p 2).2.1 = 0 := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+

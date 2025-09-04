@@ -1,0 +1,98 @@
+vc-description: |-
+  Chef had an interesting dream last night. He dreamed of a new revolutionary chicken recipe. When he woke up today he tried very hard to reconstruct the ingredient list. But, he could only remember certain ingredients. To simplify the problem, the ingredient list can be represented by a string of lowercase characters 'a' - 'z'.
+  Chef can recall some characters of the ingredient list, all the others, he has forgotten. However, he is quite sure that the ingredient list was a palindrome.
+  You are given the ingredient list Chef dreamed last night. The forgotten characters are represented by a question mark ('?'). Count the number of ways Chef can replace the forgotten characters with characters 'a' - 'z' in such a way that resulting ingredient list is a palindrome.
+  
+  -----Input-----
+  The first line of input contains a single integer T, the number of test cases. T lines follow, each containing a single non-empty string - the ingredient list as recalled by Chef. Whatever letters he couldn't recall are represented by a '?'.
+  
+  -----Output-----
+  For each test case, output a single line containing the number of valid ways the ingredient list could be completed. Since the answers can be very large, output each answer modulo 10,000,009.
+  
+  -----Example-----
+  Input:
+  5
+  ?
+  ??
+  ab?
+  a?c
+  aba
+  
+  Output:
+  26
+  26
+  1
+  0
+  1
+  
+  -----Constraints-----
+  
+  1 ≤ T ≤ 20
+  
+  1 ≤ sum of length of all input strings ≤ 1,000,000
+  
+  Each input string contains only lowercase roman letters ('a' - 'z') or question marks.
+
+vc-preamble: |-
+  def isPalindrome (s : String) : Bool := sorry
+  
+  def countPalindromeCompletions (s : String) : Nat := sorry
+  
+  def reverseString (s : String) : String := sorry
+  
+  theorem countPalindromeCompletions_nonnegative (s : String) : 
+    countPalindromeCompletions s ≥ 0 := sorry
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def mkPos (s : String) (i : Nat) (h : i < s.length) : String.Pos := ⟨i⟩
+  
+  theorem countPalindromeCompletions_impossible_case (s : String) (i : Nat) 
+    (h1 : i < s.length / 2)
+    (h2 : i < s.length)
+    (h3 : s.length - 1 - i < s.length)
+    (h4 : s.get (mkPos s i h2) ≠ '?' ∧ s.get (mkPos s (s.length - 1 - i) h3) ≠ '?')
+    (h5 : s.get (mkPos s i h2) ≠ s.get (mkPos s (s.length - 1 - i) h3)) :
+    countPalindromeCompletions s = 0 := sorry
+
+vc-theorems: |-
+  theorem countPalindromeCompletions_bounded (s : String) :
+    countPalindromeCompletions s ≤ 10000009 := sorry
+  
+  theorem countPalindromeCompletions_all_question_marks (s : String) (h : ∀ c ∈ s.data, c = '?') :
+    countPalindromeCompletions s = (26 ^ ((s.length + 1) / 2)) % 10000009 := sorry
+  
+  theorem countPalindromeCompletions_no_question_marks (s : String) (h : '?' ∉ s.data) :
+    countPalindromeCompletions s = if isPalindrome s then 1 else 0 := sorry
+  
+  theorem countPalindromeCompletions_deterministic (s : String) :
+    countPalindromeCompletions s = countPalindromeCompletions s := sorry
+  
+  theorem countPalindromeCompletions_symmetry (s : String) :
+    countPalindromeCompletions s = countPalindromeCompletions (reverseString s) := sorry
+  
+  /--
+  info: 26
+  -/
+  #guard_msgs in
+  #eval count_palindrome_completions "?"
+  
+  /--
+  info: 26
+  -/
+  #guard_msgs in
+  #eval count_palindrome_completions "??"
+  
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval count_palindrome_completions "aba"
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+

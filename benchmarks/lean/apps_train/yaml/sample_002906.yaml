@@ -1,0 +1,47 @@
+vc-description: |-
+  You have an award-winning garden and everyday the plants need exactly 40mm of water. You created a great piece of JavaScript to calculate the amount of water your plants will need when you have taken into consideration the amount of rain water that is forecast for the day. Your jealous neighbour hacked your computer and filled your code with bugs. 
+  
+  Your task is to debug the code before your plants die!
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def rain_amount (mm : Int) : String := sorry
+  
+  theorem rain_amount_preserves_invariants (mm : Int) :
+    (mm < 40 → rain_amount mm = s!"You need to give your plant {40 - mm}mm of water") ∧
+    (mm ≥ 40 → rain_amount mm = "Your plant has had more than enough water for today!") :=
+  sorry
+
+vc-theorems: |-
+  theorem rain_amount_calculation (mm : Int) :
+    (mm < 40 → rain_amount mm = s!"You need to give your plant {40 - mm}mm of water") ∧
+    (mm ≥ 40 → rain_amount mm = "Your plant has had more than enough water for today!") :=
+  sorry
+  
+  /--
+  info: 'Your plant has had more than enough water for today!'
+  -/
+  #guard_msgs in
+  #eval rain_amount 100
+  
+  /--
+  info: 'Your plant has had more than enough water for today!'
+  -/
+  #guard_msgs in
+  #eval rain_amount 40
+  
+  /--
+  info: 'You need to give your plant 35mm of water'
+  -/
+  #guard_msgs in
+  #eval rain_amount 5
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

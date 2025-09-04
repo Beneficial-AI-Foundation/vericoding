@@ -1,0 +1,79 @@
+vc-description: |-
+  You have to create a function,named `insertMissingLetters`, that takes in a `string` and outputs the same string processed in a particular way.
+  
+  The function should insert **only after the first occurrence** of each character of the input string, all the **alphabet letters** that:
+  
+  -**are NOT** in the original string  
+  -**come after** the letter of the string you are processing  
+  
+  Each added letter should be in `uppercase`, the letters of the original string will always be in `lowercase`.
+  
+  Example:  
+  
+  `input`: "holly"  
+  
+  `missing letters`: "a,b,c,d,e,f,g,i,j,k,m,n,p,q,r,s,t,u,v,w,x,z"  
+  
+  `output`: "hIJKMNPQRSTUVWXZoPQRSTUVWXZlMNPQRSTUVWXZlyZ"  
+  
+  You don't need to validate input, the input string will always contain a certain amount of lowercase letters  (min 1 / max 50).
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def insert_missing_letters (s : String) : String :=
+    sorry
+
+vc-theorems: |-
+  theorem result_includes_input (s : String) (c : Char) :
+    c ∈ s.data → c ∈ (insert_missing_letters s).data :=
+    sorry
+  
+  theorem length_preserves_or_increases (s : String) :
+    (insert_missing_letters s).length ≥ s.length :=
+    sorry
+  
+  theorem result_only_contains_letters (s : String) (c : Char) :
+    c ∈ (insert_missing_letters s).data → c.isAlpha :=
+    sorry
+  
+  theorem case_pattern (s : String) (i : String.Pos) (c : Char) :
+    c = (insert_missing_letters s).get i →
+      (∃ j : String.Pos, j ≤ i ∧ c.toLower = s.get j → c.isLower) ∧
+      (¬∃ j : String.Pos, j ≤ i ∧ c.toLower = s.get j → c.isUpper) :=
+    sorry
+  
+  theorem single_letter_z : 
+    insert_missing_letters "z" = "z" :=
+    sorry
+  
+  theorem single_letter_a :
+    insert_missing_letters "a" = "aBCDEFGHIJKLMNOPQRSTUVWXYZ" :=
+    sorry
+  
+  /--
+  info: 'hIJKMNPQRSTUVWXYZeFGIJKMNPQRSTUVWXYZlMNPQRSTUVWXYZloPQRSTUVWXYZ'
+  -/
+  #guard_msgs in
+  #eval insert_missing_letters "hello"
+  
+  /--
+  info: 'pQRSTUVWYZiJKLMNOQRSTUVWYZxYZxaBCDEFGHJKLMNOQRSTUVWYZ'
+  -/
+  #guard_msgs in
+  #eval insert_missing_letters "pixxa"
+  
+  /--
+  info: 'z'
+  -/
+  #guard_msgs in
+  #eval insert_missing_letters "z"
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

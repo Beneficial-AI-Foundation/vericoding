@@ -1,0 +1,68 @@
+vc-description: |-
+  Write a function that takes an arbitrary number of strings and interlaces them (combines them by alternating characters from each string).
+  
+  For example `combineStrings('abc', '123')` should return `'a1b2c3'`.
+  
+  If the strings are different lengths the function should interlace them until each string runs out, continuing to add characters from the remaining strings.
+  
+  For example `combineStrings('abcd', '123')` should return `'a1b2c3d'`.
+  
+  The function should take any number of arguments and combine them.
+  
+  For example `combineStrings('abc', '123', '£$%')` should return `'a1£b2$c3%'`.
+  
+  **Note: if only one argument is passed return only that string. If no arguments are passed return an empty string.**
+
+vc-preamble: |-
+  def combine_strings : List String → String
+    | _ => sorry
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def countChar (s : String) (c : Char) : Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem combine_strings_length (strings : List String) :
+    (combine_strings strings).length = List.foldl (· + ·) 0 (strings.map String.length) :=
+  sorry
+  
+  theorem combine_strings_freq (strings : List String) (s : String) (c : Char) 
+    (h : s ∈ strings) :
+    (countChar (combine_strings strings) c) ≥ 
+    (countChar s c) :=
+  sorry
+  
+  theorem combine_strings_empty :
+    combine_strings [] = "" :=
+  sorry
+  
+  theorem combine_strings_singleton (s : String) :
+    combine_strings [s] = s :=
+  sorry
+  
+  /--
+  info: 'abc'
+  -/
+  #guard_msgs in
+  #eval combine_strings "abc"
+  
+  /--
+  info: 'a1b2c3'
+  -/
+  #guard_msgs in
+  #eval combine_strings "abc" "123"
+  
+  /--
+  info: 'a1$b2%c3^d&'
+  -/
+  #guard_msgs in
+  #eval combine_strings "abcd" "123" "$%^&"
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

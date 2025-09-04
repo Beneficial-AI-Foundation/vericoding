@@ -1,0 +1,131 @@
+vc-description: |-
+  # An introduction to propositional logic
+  
+  Logic and proof theory are fields that study the formalization of logical statements and the structure of valid proofs. One of the most common ways to represent logical reasonings is with **propositional logic**.
+  
+  A propositional formula is no more than what you normally use in your *if statements*, but without functions or predicates. The basic unit for these formulas are **literals**. Let's see some examples:
+  
+  ```
+  f = p ∧ q
+  ```
+  
+  Here ```p``` and ```q``` would be the literals. This formula means that *f* evaluates to ```True``` only when both ```p``` **and** ```q``` are True too. The ```∧``` operator is formally called **conjunction** and is often called **and**.
+  
+  ```
+  f = p ∨ q
+  ```
+  
+  This formula means that *f* evaluates to ```True``` only when any of ```p``` **or** ```q``` are  True. This includes the case when both are True. The ```∨``` operator is formally called **disjunction** and is often called **or**.
+  
+  ```
+  f = ¬p
+  ```
+  
+  The ```¬``` operator is analogous to the **not** operation. it evaluates to True only when its argument evaluates to False.
+  
+  Normally, there are also two other operators called **implication** and **biconditional**, but we will ignore them for this kata (they can be expressed in terms of the other three anyways).
+  
+  Once we know this, can construct what is called an **interpretation** in order to evaluate a propositional formula. This is a fancy name for any structure that tells us which literals are False and which ones are True. Normally, interpretations are given as a set:
+  
+  ```python
+  p = Literal('p')
+  q = Literal('q')
+  r = Literal('r')
+  
+  f = p ∨ q ∨ ¬r
+  
+  i_1 = {p, q} # p and q are True, r is False
+  i_2 = {r}    # r is True, p and q are False
+  i_3 = {}     # p, q and r are False
+  
+  # Note: the 'evaluate' function is not given
+  evaluate(f, i_1) == True
+  evaluate(f, i_2) == False
+  evaluate(f, i_3) == True
+  ```
+  
+  As you can see, if the literal is in the set, we say it evaluates to True, else it is False.
+  
+  As a final note, an interpretation that makes a formula True is called a **model** when all the literals in the set appear in the formula.
+  
+  # The SAT problem
+  
+  This is a famous NP problem that is stated as follows:
+  
+  > Given a propositional formula *F*, does it exist an interpretation such that it evaluates to True? (i.e. is *F* **satisfiable**?)
+  
+  Numerous algorithms exist for this purpose, and your task is to program one of them. Right now, you are not supposed to program an efficient algorithm, but I may create a performance version if this kata gets good reception :)
+  
+  # Specification
+  
+  Program a ```sat(f: Formula)``` function that returns the following:
+  - ```False``` if ```f``` is not satisfiable.
+  - An interpretation that makes ```f``` evaluate to True in the case that it is satisfiable.
+  
+  # Preloaded code
+  
+  You are given a class ```Formula``` that has the following members:
+  
+  - ```args```: arguments of the operation if the formula is not a literal (children nodes of the formula's tree). They are given as a list of Formula objects that has one element in the case of the negation operator and two or more elements in the case of the conjunction and disjunction operators.
+  - ```is_literal()```: True if the formula is a literal (i.e. not an operation).
+  - ```is_and()```: True if the formula is a **conjunction**.
+  - ```is_or()```: True if the formula is a **disjunction**. 
+  - ```is_not()```: True if the formula is a **negation**. 
+  
+  You are also given a class ```Literal``` that extends from ```Formula``` and has the following members:
+  
+  - ```name```: string that represents the literal. Two literals with the same name **are the same literal**.
+  *Note: the rest of members are not guaranteed in the case of a literal*
+  
+  The ```&``` operator is overloaded as the conjunction, ```|``` as the disjunction and ```~``` as the negation. Also, a ```__repr__``` function is given for debugging purposes.
+  
+  # Extra examples
+  
+  ```
+  f = ¬(p ∨ q) # Satisfiable with {}
+  ```
+  ```
+  f = ¬(p ∧ q) # Satisfiable with {p}, {q} and {}
+  ```
+  ```
+  f = p ∧ (q ∨ r) # Satisfiable with {p, q}, {p, r} and {p, q, r}
+  ```
+  ```
+  f = ¬p ∨ ¬q # Satisfiable with {p}, {q} and {} (See De Morgan's Laws)
+  ```
+  ```
+  f = p ∧ ¬p # Not satisfiable
+  ```
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def sat (f : Formula) : Option Model := sorry
+  
+  theorem sat_returns_model_or_false (f : Formula) (m : Model) :
+    (sat f = some m) → ∀ s ∈ m, ∃ name, Formula.lit name = Formula.lit s
+    := sorry
+
+vc-theorems: |-
+  theorem not_p_and_p_unsatisfiable (p : Formula) :
+    sat (Formula.and [p, Formula.not p]) = none 
+    := sorry
+  
+  theorem p_or_not_p_satisfiable (p : Formula) :
+    sat (Formula.or [p, Formula.not p]) ≠ none
+    := sorry
+  
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval sat Formula()
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

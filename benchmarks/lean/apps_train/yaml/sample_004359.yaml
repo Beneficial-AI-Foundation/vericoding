@@ -1,0 +1,57 @@
+vc-description: |-
+  The Mormons are trying to find new followers and in order to do that they embark on missions.
+  
+  Each time they go on a mission, every Mormons converts a fixed number of people (reach) into followers. This continues and every freshly converted Mormon as well as every original Mormon go on another mission and convert the same fixed number of people each. The process continues until they reach a predefined target number of followers (input into the model).
+  
+  Converted Mormons are unique so that there's no duplication amongst them.
+  
+  Create a function Mormons(startingNumber, reach, target) that calculates how many missions Mormons need to embark on, in order to reach their target. While each correct solution will pass, for more fun try to make a recursive function.
+  
+  All model inputs are valid positive integers.
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def mormons (starting reach target : Nat) : Nat := sorry
+  
+  theorem mormons_non_negative (starting reach target : Nat) :
+    mormons starting reach target ≥ 0 := sorry
+
+vc-theorems: |-
+  theorem mormons_zero_if_target_leq_starting (starting reach target : Nat) :
+    target ≤ starting →
+    mormons starting reach target = 0 := sorry
+  
+  theorem mormons_reaches_target (starting reach target : Nat) :
+    starting * ((reach + 1) ^ (mormons starting reach target)) ≥ target := sorry
+  
+  theorem mormons_minimal (starting reach target : Nat) :
+    mormons starting reach target > 0 →
+    starting * ((reach + 1) ^ (mormons starting reach target - 1)) < target := sorry
+  
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval mormons 40 2 120
+  
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval mormons 40 2 121
+  
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval mormons 20 3 500
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

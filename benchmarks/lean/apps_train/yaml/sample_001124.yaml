@@ -1,0 +1,91 @@
+vc-description: |-
+  Every great chef knows that lucky numbers are positive integers whose decimal representations contain only the lucky digits 4 and 7. For example, numbers 47, 744, 4 are lucky and 5, 17, 467 are not.  
+  
+  Our chef has recently returned from the Lucky country. He observed that every restaurant in the Lucky country had a lucky number as its name. 
+  He believes that having a lucky number as a restaurant name can indeed turn out to be very lucky.  
+  
+  Our chef believes that it is possible to make a lucky number having N digits even luckier. Any number following the rules below is called Lucky lucky number -  
+  
+  1. The number contains only digits 4 and 7. 
+  
+  2. Count of digit 4 in the number should be divisible by 7. 
+  
+  3. Count of digit 7 in the number should be divisible by 4. 
+  
+  Help our chef to compute the count of digit 4 in the smallest Lucky lucky number having N digits. 
+  
+  -----Input-----
+  
+  First line contains T, number of test cases. Each of the next T lines contains a number N, the number of digits in the Lucky lucky number to be formed. 
+  
+  1<=T<=1000 
+  
+  1<=N<=1000000000 (10^9) 
+  
+  -----Output-----
+  
+  If it is not possible to form a Lucky lucky number having N digits, output -1.
+  Otherwise, output the count of digit 4 in the smallest Lucky lucky number having N digits.
+  
+  -----Example-----
+  Input:
+  5
+  7
+  4
+  11
+  1
+  15
+  
+  Output:
+  7
+  0
+  7
+  -1
+  7
+  
+  Explanation
+  For the last test case, N = 15, the smallest lucky lucky number is
+  444444477777777. The count of digit 4 is 7.
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def find_lucky_count (n: Int) : Int :=
+    sorry
+
+vc-theorems: |-
+  theorem find_lucky_count_zero :
+    find_lucky_count 0 = 0 := sorry
+  
+  theorem find_lucky_count_seven :
+    find_lucky_count 7 = 7 := sorry
+  
+  theorem find_lucky_count_fourteen :
+    find_lucky_count 14 = 14 := sorry
+  
+  /--
+  info: 7
+  -/
+  #guard_msgs in
+  #eval find_lucky_count 7
+  
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval find_lucky_count 4
+  
+  /--
+  info: 7
+  -/
+  #guard_msgs in
+  #eval find_lucky_count 15
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible
+

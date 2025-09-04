@@ -1,0 +1,79 @@
+vc-description: |-
+  Chef is baking a cake.
+  
+  While baking, in each minute the size of cake doubles as compared to its previous size.
+  
+  In this cake, baking of cake is directly proportional to its size.
+  You are given $a$, the total time taken(in minutes) to bake the whole cake.
+  
+  Let cake be half baked at $k^{th}$ minute.         
+  Your task is to find the value of $k+2$.
+  
+  -----Input:-----
+  - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of T test cases follows.               
+  - The first and only line of each test case contains a single integer $a$.
+  
+  -----Output:-----
+  For each testcase , print one line, the value of $k+2$.
+  
+  -----Constraints-----
+  - $1 \leq T \leq 8 $
+  - $2 \leq a \leq 10^{128}$
+  
+  -----Sample Input:-----
+  1
+  
+  2
+  
+  -----Sample Output:-----
+  3
+  
+  -----Explaination-----
+  Time was 1 min when cake was half baked by chef so answer is 1+2=3
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def solve_cake_baking (time_taken : Int) : Int := sorry
+  
+  theorem solve_cake_baking_positive {time_taken : Int} (h : time_taken > 0) :
+    solve_cake_baking time_taken > 0 := sorry
+
+vc-theorems: |-
+  theorem solve_cake_baking_formula {time_taken : Int} :
+    solve_cake_baking time_taken = time_taken/2 + 2 := sorry
+  
+  theorem solve_cake_baking_greater_than_half {time_taken : Int} (h : time_taken > 0) :
+    solve_cake_baking time_taken > time_taken/2 := sorry
+  
+  theorem solve_cake_baking_specific_cases :
+    solve_cake_baking 2 = 3 ∧ 
+    solve_cake_baking 4 = 4 ∧ 
+    solve_cake_baking 10 = 7 := sorry
+  
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval solve_cake_baking 2
+  
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval solve_cake_baking 4
+  
+  /--
+  info: 7
+  -/
+  #guard_msgs in
+  #eval solve_cake_baking 10
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+

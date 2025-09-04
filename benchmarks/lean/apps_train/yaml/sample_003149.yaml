@@ -1,0 +1,96 @@
+vc-description: |-
+  # RoboScript #1 - Implement Syntax Highlighting
+  
+  ## Disclaimer
+  
+  The story presented in this Kata Series is purely fictional; any resemblance to actual programming languages, products, organisations or people should be treated as purely coincidental.
+  
+  ## About this Kata Series
+  
+  This Kata Series is based on a fictional story about a computer scientist and engineer who owns a firm that sells a toy robot called MyRobot which can interpret its own (esoteric) programming language called RoboScript.  Naturally, this Kata Series deals with the software side of things (I'm afraid Codewars cannot test your ability to build a physical robot!).
+  
+  ## Story
+  
+  You are a computer scientist and engineer who has recently founded a firm which sells a toy product called MyRobot which can move by receiving a set of instructions by reading a file containing a script.  Initially you have planned the robot to be able to interpret JavaScript files for its movement instructions but you later decided that it would make MyRobot too hard to operate for most customers out there who aren't even computer programmers in the first place.  For this reason, you have decided to invent a new (esoteric) scripting language called RoboScript which has a much simpler syntax so non-computer programmers can easily learn how to write scripts in this language which would enable them to properly operate MyRobot.  However, you are currently at the initial stage of inventing this new Esolang.  The first step to popularize this (esoteric) scripting language is naturally to invent a new editor for it which provides syntax highlighting for this language so your customers feel like they are writing a proper program when they are writing scripts for MyRobot.
+  
+  ## Task
+  
+  Your MyRobot-specific (esoteric) scripting language called RoboScript only ever contains the following characters: `F`, `L`, `R`, the digits `0-9` and brackets (`(` and `)`).  Your goal is to write a function `highlight` which accepts 1 required argument `code` which is the RoboScript program passed in as a string and returns the script with syntax highlighting.  The following commands/characters should have the following colors:
+  
+  - `F` - Wrap this command around `` and `` tags so that it is highlighted pink in our editor
+  - `L` - Wrap this command around `` and `` tags so that it is highlighted red in our editor
+  - `R` - Wrap this command around `` and `` tags so that it is highlighted green in our editor
+  - Digits from `0` through `9` - Wrap these around `` and `` tags so that they are highlighted orange in our editor
+  - Round Brackets - Do not apply any syntax highlighting to these characters
+  
+  For example:
+  
+  And for multiple characters with the same color, simply wrap them with a **single** `` tag of the correct color:
+  
+  Note that the use of `` tags must be **exactly** the same format as demonstrated above.  Even if your solution produces the same visual result as the expected answers, if you miss a space betwen `"color:"` and `"green"`, for example, you will fail the tests.
+  
+  ## Kata in this Series
+  
+  1. **RoboScript #1 - Implement Syntax Highlighting**
+  2. [RoboScript #2 - Implement the RS1 Specification](https://www.codewars.com/kata/5870fa11aa0428da750000da)
+  3. [RoboScript #3 - Implement the RS2 Specification](https://www.codewars.com/kata/58738d518ec3b4bf95000192)
+  4. [RoboScript #4 - RS3 Patterns to the Rescue](https://www.codewars.com/kata/594b898169c1d644f900002e)
+  5. [RoboScript #5 - The Final Obstacle (Implement RSU)](https://www.codewars.com/kata/5a12755832b8b956a9000133)
+
+vc-preamble: |-
+  def highlight (s : String) : String := sorry 
+  
+  def colorFor (c : Char) : String := sorry
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def String.count (s : String) (sub : String) : Nat := sorry
+  
+  theorem letter_get_correct_colors (c : Char) (h: c ∈ ['F', 'L', 'R']): 
+    let color := 
+      match c with
+      | 'F' => "pink"
+      | 'L' => "red" 
+      | 'R' => "green"
+      | _ => ""
+    colorFor c = color 
+    := sorry
+
+vc-theorems: |-
+  theorem numbers_get_orange (c : Char) (h : c.isDigit) :
+    colorFor c = "orange" := sorry
+  
+  theorem consecutive_chars_single_span (s : String) (h: s.all (· = s.get! 0)) :
+    (highlight s).count "<span" = 1 := sorry
+  
+  theorem highlight_maintains_content (s : String) :
+    let stripped := (highlight s).replace "<span" "" |>.replace "</span" "" |>.replace "style=\"color: pink\"" "" 
+                     |>.replace "style=\"color: red\"" "" |>.replace "style=\"color: green\"" ""
+                     |>.replace "style=\"color: orange\"" ""
+    stripped = s := sorry
+  
+  /--
+  info: expected1
+  -/
+  #guard_msgs in
+  #eval highlight "F3RF5LF7"
+  
+  /--
+  info: expected2
+  -/
+  #guard_msgs in
+  #eval highlight "FFFR345F2LL"
+  
+  /--
+  info: expected3
+  -/
+  #guard_msgs in
+  #eval highlight "FF(LF6(RF3)2)3"
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

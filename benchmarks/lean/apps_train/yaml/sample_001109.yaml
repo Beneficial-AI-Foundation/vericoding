@@ -1,0 +1,85 @@
+vc-description: |-
+  You are given a string S containing only lowercase characters. 
+  You can rearrange the string and you have to print minimum number of characters needed(can be 0) to make it palindrome.
+  
+  -----Input:-----
+  - First line contain an interger T denoting number of testcases.
+  - First line of each testcase contains integer N, size of string.
+  - Second line of each testcase contains string S.
+  
+  -----Output:-----
+  For each test case, print a single line containing one integer ― the minimum number of characters needed(can be 0) to make it palindrome.
+  
+  -----Constraints-----
+  - $1 \leq T \leq 1000$
+  - $1 \leq N \leq 10^5$
+  
+  -----Sample Input:-----
+  3
+  1
+  a
+  9
+  abbbcbddd
+  6
+  abcdef
+  
+  -----Sample Output:-----
+  0
+  2
+  5
+  
+  -----EXPLANATION:-----
+  - Example case 1: a is already a palindrome.
+  - Example case 2: abbddcddbba is palindrome by adding 2 more characters.
+  - Example case 3: abdefcfedba is palindrome by adding 5 more characters.
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def min_chars_to_palindrome (s : String) : Nat := sorry
+  
+  def count_char (s : String) (c : Char) : Nat := 
+    s.data.filter (· = c) |>.length
+
+vc-theorems: |-
+  theorem min_chars_palindrome_non_negative (s : String) : 
+    min_chars_to_palindrome s ≥ 0 := sorry
+  
+  theorem empty_string_needs_no_changes :
+    min_chars_to_palindrome "" = 0 := sorry
+  
+  theorem single_char_needs_no_changes (c : Char) :
+    min_chars_to_palindrome (String.mk [c]) = 0 := sorry
+  
+  theorem result_bounded_by_length (s : String) :
+    min_chars_to_palindrome s ≤ max (s.length - 1) 0 := sorry
+  
+  theorem repeated_chars_palindrome (c : Char) (n : Nat) :
+    min_chars_to_palindrome (String.mk (List.replicate n c)) = 0 := sorry
+  
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval min_chars_to_palindrome "a"
+  
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval min_chars_to_palindrome "abbbcbddd"
+  
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval min_chars_to_palindrome "abcdef"
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible
+

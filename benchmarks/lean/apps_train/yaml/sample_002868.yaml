@@ -1,0 +1,106 @@
+vc-description: |-
+  Check if given chord is minor or major.
+  
+  _____________________________________________________________
+  Rules:
+  
+  1. Basic minor/major chord have three elements.
+  
+  2. Chord is minor when interval between first and second element equals 3 and between second and third -> 4.
+  
+  3. Chord is major when interval between first and second element equals 4 and between second and third -> 3.
+  
+  4. In minor/major chord interval between first and third element equals... 7.
+  
+  _______________________________________________________________
+  There is a preloaded list of the 12 notes of a chromatic scale built on C. This means that there are (almost) all allowed note' s names in music.
+  
+  notes = 
+  ['C', ['C#', 'Db'], 'D', ['D#', 'Eb'], 'E', 'F', ['F#', 'Gb'], 'G', ['G#', 'Ab'], 'A', ['A#', 'Bb'], 'B']
+  
+  Note that e. g. 'C#' - 'C' = 1, 'C' - 'C#' = 1, 'Db' - 'C' = 1 and 'B' - 'C' = 1. 
+  
+  Input:
+  String of notes separated by whitespace, e. g. 'A C# E'
+  
+  Output:
+  String message: 'Minor', 'Major' or 'Not a chord'.
+
+vc-preamble: |-
+  def NoteNames : List String := ["C", "C#", "Db", "D", "D#", "Eb", "E", "F", "F#", "Gb", "G", "G#", "Ab", "A", "A#", "Bb", "B"]
+  
+  /-- The main function that determines if a chord is major, minor, or invalid -/
+  
+  def minor_or_major (input : String) : String := sorry
+  
+  /-- Returns the list of words in a string -/
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def splitString (s : String) : List String := sorry
+  
+  /-- Invalid input types should return "Not a chord" -/
+
+vc-theorems: |-
+  theorem invalid_input_numeric (n : Nat) :
+    minor_or_major (toString n) = "Not a chord" := sorry
+  
+  /-- Wrong number of notes (not equal to 3) should return "Not a chord" -/
+  
+  theorem wrong_note_count (notes : String) :
+    (splitString notes).length ≠ 3 → minor_or_major notes = "Not a chord" := sorry
+  
+  /-- Invalid note names should return "Not a chord" -/
+  
+  theorem invalid_note_names (notes : String) :
+    (∃ note, note ∈ splitString notes ∧ note ∉ NoteNames) → 
+    minor_or_major notes = "Not a chord" := sorry
+  
+  /-- Known major chords should return "Major" -/
+  
+  theorem known_major_chords :
+    minor_or_major "C E G" = "Major" ∧
+    minor_or_major "F# A# C#" = "Major" := sorry
+  
+  /-- Known minor chords should return "Minor" -/
+  
+  theorem known_minor_chords :
+    minor_or_major "C Eb G" = "Minor" ∧
+    minor_or_major "F# A C#" = "Minor" := sorry
+  
+  /-- Enharmonic equivalents should produce the same result -/
+  
+  theorem enharmonic_equivalence (n1 n2 : String) (other1 other2 : String) :
+    ((n1 = "C#" ∧ n2 = "Db") ∨ 
+     (n1 = "D#" ∧ n2 = "Eb") ∨
+     (n1 = "F#" ∧ n2 = "Gb") ∨
+     (n1 = "G#" ∧ n2 = "Ab") ∨
+     (n1 = "A#" ∧ n2 = "Bb")) →
+    minor_or_major (s!"{n1} {other1} {other2}") = 
+    minor_or_major (s!"{n2} {other1} {other2}") := sorry
+  
+  /--
+  info: 'Major'
+  -/
+  #guard_msgs in
+  #eval minor_or_major "C E G"
+  
+  /--
+  info: 'Minor'
+  -/
+  #guard_msgs in
+  #eval minor_or_major "C Eb G"
+  
+  /--
+  info: 'Not a chord'
+  -/
+  #guard_msgs in
+  #eval minor_or_major "C D G"
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

@@ -1,0 +1,72 @@
+vc-description: |-
+  Given a set of numbers, return the additive inverse of each. Each positive becomes negatives, and the negatives become positives.
+  
+  ~~~if-not:racket
+  ```
+  invert([1,2,3,4,5]) == [-1,-2,-3,-4,-5]
+  invert([1,-2,3,-4,5]) == [-1,2,-3,4,-5]
+  invert([]) == []
+  ```
+  ~~~
+  
+  ```if:javascript,python,ruby,php,elixir,dart
+  You can assume that all values are integers. Do not mutate the input array/list.
+  ```
+  
+  ```if:c
+  ### Notes:
+  - All values are greater than `INT_MIN`
+  - The input should be modified, not returned.
+  ```
+  ~~~if:racket
+  ```racket
+  (invert '(1 2 3 4 5))   ; '(-1 -2 -3 -4 -5)
+  (invert '(1 -2 3 -4 5)) ; '(-1 2 -3 4 -5)
+  (invert '())            ; '()
+  ```
+  ~~~
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def invert (xs : List Int) : List Int := sorry
+  
+  def abs (n : Int) : Int :=
+    if n ≥ 0 then n else -n
+
+vc-theorems: |-
+  theorem invert_length (xs : List Int) :
+    (invert xs).length = xs.length := sorry
+  
+  theorem invert_involution (xs : List Int) :
+    invert (invert xs) = xs := sorry
+  
+  theorem invert_empty : 
+    invert [] = [] := sorry
+  
+  /--
+  info: [-1, -2, -3, -4, -5]
+  -/
+  #guard_msgs in
+  #eval invert [1, 2, 3, 4, 5]
+  
+  /--
+  info: [-1, 2, -3, 4, -5]
+  -/
+  #guard_msgs in
+  #eval invert [1, -2, 3, -4, 5]
+  
+  /--
+  info: []
+  -/
+  #guard_msgs in
+  #eval invert []
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible
+

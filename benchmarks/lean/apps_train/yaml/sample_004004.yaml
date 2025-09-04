@@ -1,0 +1,94 @@
+vc-description: |-
+  Given two arrays `a` and `b` write a function `comp(a, b)` (`compSame(a, b)` in Clojure) that checks whether the two arrays have the "same" elements, with the same multiplicities. "Same" means, here, that the elements in `b` are the elements in `a` squared, regardless of the order.
+  
+  ## Examples
+  ## Valid arrays
+  ```
+  a = [121, 144, 19, 161, 19, 144, 19, 11]  
+  b = [121, 14641, 20736, 361, 25921, 361, 20736, 361]
+  ```
+  `comp(a, b)` returns true because in `b` 121 is the square of 11, 14641 is the square of 121, 20736 the square of 144, 361 the square of 19, 25921 the square of 161, and so on. It gets obvious if we write `b`'s elements in terms of squares:
+  ```
+  a = [121, 144, 19, 161, 19, 144, 19, 11] 
+  b = [11*11, 121*121, 144*144, 19*19, 161*161, 19*19, 144*144, 19*19]
+  ```
+  ### Invalid arrays
+  If we change the first number to something else, `comp` may not return true anymore:
+  ```
+  a = [121, 144, 19, 161, 19, 144, 19, 11]  
+  b = [132, 14641, 20736, 361, 25921, 361, 20736, 361]
+  ```
+  `comp(a,b)` returns false because in `b` 132 is not the square of any number of `a`.
+  ```
+  a = [121, 144, 19, 161, 19, 144, 19, 11]  
+  b = [121, 14641, 20736, 36100, 25921, 361, 20736, 361]
+  ```
+  `comp(a,b)` returns false because in `b` 36100 is not the square of any number of `a`.
+  
+  ## Remarks
+  - `a` or `b` might be `[]` (all languages except R, Shell).
+  - `a` or `b` might be `nil` or `null` or `None` or `nothing` (except in Haskell, Elixir, C++, Rust, R, Shell, PureScript). 
+  
+  If `a` or `b` are `nil` (or `null` or `None`), the problem doesn't make sense so return false.
+  
+  #### Note for C
+  The two arrays have the same size `(> 0)` given as parameter in function `comp`.
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def comp : (List Int) → (List Int) → Bool := sorry
+  
+  theorem comp_none_inputs (l : List Int) : 
+    comp [] l = false ∨ comp l [] = false ∨ comp [] [] = false
+    := sorry
+
+vc-theorems: |-
+  theorem comp_array_squared (arr : List Int) :
+    let squared := arr.map (fun x => x * x)
+    comp arr squared = true
+    := sorry
+  
+  theorem comp_different_lengths (arr1 arr2 : List Int) :
+    arr1.length ≠ arr2.length → comp arr1 arr2 = false
+    := sorry
+  
+  theorem comp_permutations (arr : List Int) :
+    arr ≠ [] →
+    let squared := arr.map (fun x => x * x)
+    let shuffled := squared.reverse
+    comp arr shuffled = true
+    := sorry
+  
+  theorem comp_empty_arrays :
+    comp [] [] = true ∧ 
+    comp [] [1] = false ∧
+    comp [1] [] = false
+    := sorry
+  
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval comp [121, 144, 19, 161, 19, 144, 19, 11] [121, 14641, 20736, 361, 25921, 361, 20736, 361]
+  
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval comp [] [1]
+  
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval comp None [1, 2, 3]
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

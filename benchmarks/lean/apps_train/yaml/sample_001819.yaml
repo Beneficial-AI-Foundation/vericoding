@@ -1,0 +1,81 @@
+vc-description: |-
+  In a given 2D binary array A, there are two islands.  (An island is a 4-directionally connected group of 1s not connected to any other 1s.)
+  Now, we may change 0s to 1s so as to connect the two islands together to form 1 island.
+  Return the smallest number of 0s that must be flipped.  (It is guaranteed that the answer is at least 1.)
+  
+  Example 1:
+  Input: A = [[0,1],[1,0]]
+  Output: 1
+  Example 2:
+  Input: A = [[0,1,0],[0,0,0],[0,0,1]]
+  Output: 2
+  Example 3:
+  Input: A = [[1,1,1,1,1],[1,0,0,0,1],[1,0,1,0,1],[1,0,0,0,1],[1,1,1,1,1]]
+  Output: 1
+  
+  Constraints:
+  
+  2 <= A.length == A[0].length <= 100
+  A[i][j] == 0 or A[i][j] == 1
+
+vc-preamble: |-
+  def Grid := List (List Nat)
+  
+  def shortest_bridge (grid: Grid) : Nat :=
+    sorry
+  
+  def is_valid_grid (grid: Grid) : Bool :=
+    sorry
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def has_two_islands (grid: Grid) : Bool :=
+    sorry
+
+vc-theorems: |-
+  theorem shortest_bridge_non_negative 
+    (grid: Grid) 
+    (h1: is_valid_grid grid = true)
+    (h2: has_two_islands grid = true) :
+    shortest_bridge grid ≥ 0 :=
+  sorry
+  
+  theorem shortest_bridge_less_than_dimensions
+    (grid: Grid)
+    (h1: is_valid_grid grid = true)
+    (h2: has_two_islands grid = true) :
+    shortest_bridge grid < grid.length * (grid.head!).length :=
+  sorry
+  
+  theorem shortest_bridge_assumptions
+    (grid: Grid)
+    (h1: is_valid_grid grid = true)
+    (h2: has_two_islands grid = true) :
+    0 ≤ shortest_bridge grid ∧ shortest_bridge grid < grid.length * (grid.head!).length :=
+  sorry
+  
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval shortest_bridge [[0, 1], [1, 0]]
+  
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval shortest_bridge [[0, 1, 0], [0, 0, 0], [0, 0, 1]]
+  
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval shortest_bridge [[1, 1, 1, 1, 1], [1, 0, 0, 0, 1], [1, 0, 1, 0, 1], [1, 0, 0, 0, 1], [1, 1, 1, 1, 1]]
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+

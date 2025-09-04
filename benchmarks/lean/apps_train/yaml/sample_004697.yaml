@@ -1,0 +1,107 @@
+vc-description: |-
+  # Story
+  
+  Those pesky rats have returned and this time they have taken over the Town Square.
+  
+  The Pied Piper has been enlisted again to play his magical tune and coax all the rats towards him.
+  
+  But some of the rats are deaf and are going the wrong way!
+  
+  # Kata Task
+  
+  How many deaf rats are there?
+  
+  ## Input Notes
+  
+  * The Town Square is a rectangle of square paving stones (the Square has 1-15 pavers per side)
+  * The Pied Piper is always present
+  
+  ## Output Notes
+  * Deaf rats are those that are moving to paving stone **further away** from the Piper than where they are now
+  * Use Euclidian distance for your calculations
+  
+  ## Legend
+  
+  * `P` = The Pied Piper
+  * `←` `↑` `→` `↓` `↖` `↗` `↘` `↙` = Rats going in different directions
+  * space = Everything else
+  
+  # Examples
+  
+  ex1 - has 1 deaf rat
+  
+  ↗ P              
+    ↘   ↖
+    ↑              
+  ↗        
+  
+  ---
+  
+  ex2 - has 7 deaf rats
+  
+      ↗            
+  P ↓   ↖ ↑
+      ←   ↓
+    ↖ ↙   ↙
+  ↓ ↓ ↓
+
+vc-preamble: |-
+  def DIRS := [('←', (0,-1)), ('↑', (-1,0)), ('→', (0,1)), ('↓', (1,0)),
+              ('↖', (-1,-1)), ('↗', (-1,1)), ('↘', (1,1)), ('↙', (1,-1))]
+  
+  def count_deaf_rats (town: List String) : Nat :=
+    sorry
+  
+  def listSum : List Nat → Nat 
+    | [] => 0
+    | x::xs => x + listSum xs
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def countChar (s: String) (c: Char) : Nat :=
+    s.toList.filter (· == c) |>.length
+
+vc-theorems: |-
+  theorem valid_output_range (town: List String) 
+    (h1: town.length > 0)
+    (h2: listSum (town.map (fun row => countChar row 'P')) = 1)
+    : let total_rats := listSum (town.map (fun row => 
+        listSum ((DIRS.map Prod.fst).map (fun c => countChar row c))))
+      let result := count_deaf_rats town
+      0 ≤ result ∧ result ≤ total_rats :=
+    sorry
+  
+  theorem empty_town :
+    count_deaf_rats [" P "] = 0 :=
+    sorry
+  
+  theorem simple_case :
+    count_deaf_rats ["P →", "← ←"] = 2 :=
+    sorry
+  
+  theorem all_directions :
+    let dirChars := DIRS.map Prod.fst
+    let town := ["P " ++ String.mk dirChars]
+    let result := count_deaf_rats town
+    0 ≤ result ∧ result ≤ DIRS.length :=
+    sorry
+  
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval count_deaf_rats ["↗ P     ", "  ↘   ↖", "  ↑     ", "↗       "]
+  
+  /--
+  info: 7
+  -/
+  #guard_msgs in
+  #eval count_deaf_rats ["    ↗    ", "P ↓   ↖ ↑", "    ←   ↓", "  ↖ ↙   ↙", "↓ ↓ ↓    "]
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

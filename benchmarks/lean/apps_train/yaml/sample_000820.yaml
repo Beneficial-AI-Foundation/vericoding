@@ -1,0 +1,68 @@
+vc-description: |-
+  The Petrozavodsk camp takes place in about one month. Jafar wants to participate in the camp, but guess what? His coach is Yalalovichik.
+  Yalalovichik is a legendary coach, famous in the history of competitive programming. However, he is only willing to send to the camp students who solve really hard problems on Timus. The deadline that Yalalovichik set before has passed and he refuses to send Jafar to the camp.
+  Jafar decided to make Yalalovichik happy in hopes of changing his decision, so he invented a new sequence of numbers and named them Yalalovichik numbers. Jafar is writing a research paper about their properties and wants to publish it in the Science Eagle yearly journal.
+  A Yalalovichik number is created in the following way:
+  - Consider an integer $N$ in decimal notation; let's call it the base of the Yalalovichik number $Y_N$. $N$ may not contain the digit $0$.
+  - Treat $N$ as a decimal string. Compute all left shifts of this string $N_0, N_1, \ldots, N_{|N|-1}$ ($|N|$ denotes the number of digits of $N$); specifically, $N_k$ denotes the string formed by moving the first $k$ digits of $N$ to the end in the same order.
+  - Concatenate the strings $N_0, N_1, \ldots, N_{|N|-1}$. The resulting string is the decimal notation of $Y_N$.
+  For example, if $N = 123$, the left shifts are $123, 231, 312$ and thus $Y_N = 123231312$.
+  You are given the base $N$. Calculate the value of $Y_N$ modulo $10^9+7$.
+  
+  -----Input-----
+  - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+  - The first and only line of each test case contains a single decimal integer $N$.
+  
+  -----Output-----
+  For each test case, print a single line containing one integer — the value of the Yalalovichik number $Y_N$ modulo $10^9+7$.
+  
+  -----Constraints-----
+  - $1 \le T \le 200$
+  - $|N| \le 10^5$
+  - $N$ does not contain the digit $0$
+  - the sum of $|N|$ over all test cases does not exceed $10^6$
+  
+  -----Example Input-----
+  1
+  123
+  
+  -----Example Output-----
+  123231312
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def MOD := 1000000007
+  
+  def solve_yalalovichik (s : String) : Nat := sorry
+
+vc-theorems: |-
+  theorem single_digit_identity (c : Char) (h : c.isDigit) :
+    solve_yalalovichik (String.mk [c]) = c.toNat - '0'.toNat := sorry
+  
+  /--
+  info: 123231312
+  -/
+  #guard_msgs in
+  #eval solve_yalalovichik "123"
+  
+  /--
+  info: 3443
+  -/
+  #guard_msgs in
+  #eval solve_yalalovichik "34"
+  
+  /--
+  info: 9
+  -/
+  #guard_msgs in
+  #eval solve_yalalovichik "9"
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible
+

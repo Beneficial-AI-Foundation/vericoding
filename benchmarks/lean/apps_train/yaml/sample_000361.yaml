@@ -1,0 +1,70 @@
+vc-description: |-
+  Given a non-empty array of unique positive integers A, consider the following graph:
+  
+  There are A.length nodes, labelled A[0] to A[A.length - 1];
+  There is an edge between A[i] and A[j] if and only if A[i] and A[j] share a common factor greater than 1.
+  
+  Return the size of the largest connected component in the graph.
+  
+  Example 1:
+  Input: [4,6,15,35]
+  Output: 4
+  
+  Example 2:
+  Input: [20,50,9,63]
+  Output: 2
+  
+  Example 3:
+  Input: [2,3,6,7,4,12,21,39]
+  Output: 8
+  
+  Note:
+  
+  1 <= A.length <= 20000
+  1 <= A[i] <= 100000
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def largest_component_size (nums : List Nat) : Nat := sorry
+  
+  theorem largest_component_size_bounds {nums : List Nat} (h : nums ≠ []) : 
+    let result := largest_component_size nums
+    0 < result ∧ result ≤ nums.length := sorry
+
+vc-theorems: |-
+  theorem largest_component_size_idempotent {nums : List Nat} :
+    largest_component_size nums = largest_component_size nums := sorry
+  
+  theorem all_evens_max_component {nums : List Nat} (h : nums.all (fun n => n % 2 = 0)) :
+    largest_component_size nums = nums.length := sorry
+  
+  theorem single_prime_component_one (p : Nat) :
+    largest_component_size [p] = 1 := sorry
+  
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval largest_component_size [4, 6, 15, 35]
+  
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval largest_component_size [20, 50, 9, 63]
+  
+  /--
+  info: 8
+  -/
+  #guard_msgs in
+  #eval largest_component_size [2, 3, 6, 7, 4, 12, 21, 39]
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+

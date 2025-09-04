@@ -1,0 +1,87 @@
+vc-description: |-
+  Given a positive integer, check whether it has alternating bits: namely, if two adjacent bits will always have different values.
+  
+  Example 1:
+  
+  Input: 5
+  Output: True
+  Explanation:
+  The binary representation of 5 is: 101
+  
+  Example 2:
+  
+  Input: 7
+  Output: False
+  Explanation:
+  The binary representation of 7 is: 111.
+  
+  Example 3:
+  
+  Input: 11
+  Output: False
+  Explanation:
+  The binary representation of 11 is: 1011.
+  
+  Example 4:
+  
+  Input: 10
+  Output: True
+  Explanation:
+  The binary representation of 10 is: 1010.
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def has_alternating_bits (n : Nat) : Bool := sorry
+  
+  def binary_to_list (n : Nat) : List Bool := sorry
+
+vc-theorems: |-
+  theorem alternating_bits_adjacent_different (n : Nat) :
+    has_alternating_bits n = true →
+    ∀ bits, bits = binary_to_list n →
+    ∀ i h₁ h₂, i < bits.length - 1 →
+    bits[i]'h₁ ≠ bits[i+1]'h₂ := sorry
+  
+  theorem alternating_bits_balanced_ones_zeros (n : Nat) :
+    has_alternating_bits n = true →
+    ∀ bits, bits = binary_to_list n →
+    let ones := bits.filter id |>.length;
+    let zeros := bits.filter not |>.length;
+    ones ≤ zeros + 1 ∧ zeros ≤ ones + 1 := sorry
+  
+  theorem power_of_two_not_alternating (n : Nat) :
+    n > 1 →
+    n &&& (n-1) = 0 → 
+    has_alternating_bits n = false := sorry
+  
+  theorem alternating_bits_consistent (n : Nat) :
+    let result := has_alternating_bits n
+    has_alternating_bits n = result := sorry
+  
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval has_alternating_bits 5
+  
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval has_alternating_bits 7
+  
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval has_alternating_bits 10
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
