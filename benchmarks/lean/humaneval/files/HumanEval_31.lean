@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def is_prime(n)"
 docstring: |
     Return true if a given number is prime, and false otherwise.

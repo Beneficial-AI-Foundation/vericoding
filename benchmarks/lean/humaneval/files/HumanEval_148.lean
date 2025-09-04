@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def bf(planet1: str, planet2: str) -> List[str]"
 docstring: |
     There are eight planets in our solar system: the closest to the Sun

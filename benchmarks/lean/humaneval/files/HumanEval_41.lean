@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def car_race_collision(x: Nat) -> Nat"
 docstring: |
     Imagine a road that's a perfectly straight infinitely long line.

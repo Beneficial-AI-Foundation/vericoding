@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def string_sequence(n: int) -> str"
 docstring: |
     Return a string containing space-delimited numbers starting from 0 upto n inclusive.

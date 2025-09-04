@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def is_bored(s: str) -> int"
 docstring: |
     You'll be given a string of words, and your task is to count the number

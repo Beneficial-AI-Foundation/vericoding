@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def prod_signs(arr: List[int]) -> Optional[int]"
 docstring: |
     You are given an array arr of integers and you need to return

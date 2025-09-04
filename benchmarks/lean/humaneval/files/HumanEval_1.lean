@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def separate_paren_groups(paren_string: str) -> List[str]"
 docstring: |
     Input to this function is a string containing multiple groups of nested parentheses. Your goal is to

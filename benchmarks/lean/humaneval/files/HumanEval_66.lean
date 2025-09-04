@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def digitSum(string: str) -> Nat"
 docstring: |
     Write a function that takes a string as input and returns the sum of the upper characters only'

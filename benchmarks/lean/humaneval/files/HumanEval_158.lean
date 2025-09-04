@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def find_max(words: List String) -> String"
 docstring: |
     Write a function that accepts a list of strings.

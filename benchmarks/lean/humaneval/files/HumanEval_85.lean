@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def solve(n: list[int]) -> int"
 docstring: |
     Given a non-empty list of integers lst, add the even elements that are at odd indices.

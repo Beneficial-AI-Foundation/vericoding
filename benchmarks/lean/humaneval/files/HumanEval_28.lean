@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def concatenate(strings: List[str]) -> str"
 docstring: |
     Concatenate list of strings into a single string

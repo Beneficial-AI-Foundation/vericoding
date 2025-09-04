@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def encode(s : str) -> str"
 docstring: |
     Write a function that takes a message, and encodes in such a

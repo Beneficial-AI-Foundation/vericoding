@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def exchange(lst1: list[int], lst2: list[int]) -> str"
 docstring: |
     In this problem, you will implement a function that takes two lists of numbers,

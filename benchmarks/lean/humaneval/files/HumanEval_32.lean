@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def find_zero(xs: list)"
 docstring: |
     xs are coefficients of a polynomial.

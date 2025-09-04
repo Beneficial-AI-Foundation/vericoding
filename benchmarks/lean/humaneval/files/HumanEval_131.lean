@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def digits(n: int) -> int"
 docstring: |
     Given a positive integer n, return the product of the odd digits.

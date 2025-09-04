@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def decimal_to_binary(decimal: nat) -> string"
 docstring: |
     You will be given a number in decimal form and your task is to convert it to

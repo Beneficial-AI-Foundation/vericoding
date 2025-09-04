@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def sum_squares(lst: List[float]) -> int"
 docstring: |
     You are given a list of numbers.

@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def factorize(n: int) -> List[int]"
 docstring: |
     Return list of prime factors of given integer in the order from smallest to largest.

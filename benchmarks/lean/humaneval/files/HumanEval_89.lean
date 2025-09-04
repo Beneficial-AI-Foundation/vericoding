@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def encrypt(str : str) -> str"
 docstring: |
     Create a function encrypt that takes a string as an argument and

@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def strange_sort_list(lst: List[int]) -> List[int]"
 docstring: |
     Given list of integers, return list in strange order.

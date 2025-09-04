@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def count_distinct_characters(string: str) -> int"
 docstring: |
     Given a string, find out how many distinct characters (regardless of case) does it consist of

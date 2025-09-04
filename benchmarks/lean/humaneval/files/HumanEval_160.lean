@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def do_algebra(operator: List String, operand: List Nat) -> Int"
 docstring: |
     Given two lists operator, and operand. The first list has basic algebra operations, and

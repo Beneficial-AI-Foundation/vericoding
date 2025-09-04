@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def total_match(lst1: List[str], lst2: List[str]) -> List[str]"
 docstring: |
   Write a function that accepts two lists of strings and returns the list that has

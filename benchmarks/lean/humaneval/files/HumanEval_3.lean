@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def below_zero(operations: List[int]) -> bool"
 docstring: |
     You're given a list of deposit and withdrawal operations on a bank account that starts with

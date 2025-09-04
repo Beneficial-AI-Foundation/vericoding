@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def mean_absolute_deviation(numbers: List[float]) -> float"
 docstring: |
     For a given list of input numbers, calculate Mean Absolute Deviation

@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def smallest_change(arr: List[int]) -> int"
 docstring: |
     Given an array arr of integers, find the minimum number of elements that

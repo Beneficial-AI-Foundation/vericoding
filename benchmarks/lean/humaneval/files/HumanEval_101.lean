@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def words_string(s: string) -> List[string]"
 docstring: |
     You will be given a string of words separated by commas or spaces. Your task is

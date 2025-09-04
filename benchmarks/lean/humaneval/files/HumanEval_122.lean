@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def add_elements(arr: List[int], k: int) -> int"
 docstring: |
     Given a non-empty array of integers arr and an integer k, return

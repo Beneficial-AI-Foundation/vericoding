@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def remove_duplicates(numbers: List[int]) -> List[int]"
 docstring: |
     From a list of integers, remove all elements that occur more than once.

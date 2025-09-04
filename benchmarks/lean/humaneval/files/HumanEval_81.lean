@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def numerical_letter_grade(grades: list[float]) -> list[str]"
 docstring: |
     It is the last week of the semester and the teacher has to give the grades

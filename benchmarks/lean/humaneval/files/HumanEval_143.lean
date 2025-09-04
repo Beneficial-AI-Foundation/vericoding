@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def words_in_sentence(sentence: str) -> str"
 docstring: |
     You are given a string representing a sentence,

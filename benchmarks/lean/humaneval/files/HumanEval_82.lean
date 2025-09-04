@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def prime_length(s: str) -> bool"
 docstring: |
     Write a function that takes a string and returns True if the string

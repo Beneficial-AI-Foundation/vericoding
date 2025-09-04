@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def max_element(l: list)"
 docstring: |
     Return maximum element in the list.

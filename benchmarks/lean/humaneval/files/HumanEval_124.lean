@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def valid_date(date: str) -> Bool"
 docstring: |
     You have to write a function which validates a given date string and

@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def tri(n: int) -> List[int]"
 docstring: |
     Everyone knows Fibonacci sequence, it was studied deeply by mathematicians in

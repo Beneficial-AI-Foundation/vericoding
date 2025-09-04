@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def split_words(txt)"
 docstring: |
     Given a string of words, return a list of words split on whitespace, if no whitespaces exists in the text you

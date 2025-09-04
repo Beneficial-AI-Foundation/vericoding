@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def prime_fib(n: int)"
 docstring: |
     prime_fib returns n-th prime Fibonacci number.

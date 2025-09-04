@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def fruit_distribution(string: str, Nat n) -> Nat"
 docstring: |
     In this task, you will be given a string that represents a number of apples and oranges

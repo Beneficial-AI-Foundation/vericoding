@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def minPath(grid, k)"
 docstring: |
     Given a grid with N rows and N columns (N >= 2) and a positive integer k,

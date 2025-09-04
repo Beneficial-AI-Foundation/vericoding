@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def all_prefixes(string: str) -> List[str]"
 docstring: |
     Return list of all prefixes from shortest to longest of the input string

@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def is_simple_power(x: int, n: int) -> bool"
 docstring: |
     Your task is to write a function that returns true if a number x is a simple

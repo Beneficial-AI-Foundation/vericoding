@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def starts_one_ends(n: int) -> int"
 docstring: |
     Given a positive integer n, return the count of the numbers of n-digit

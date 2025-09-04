@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def derivative(xs: List Int) -> List Int"
 docstring: |
     xs represent coefficients of a polynomial.

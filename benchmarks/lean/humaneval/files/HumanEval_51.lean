@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def remove_vowels(string: str) -> string"
 docstring: |
     remove_vowels is a function that takes string and returns string without vowels.

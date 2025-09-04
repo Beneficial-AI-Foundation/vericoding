@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def triples_sum_to_zero(numbers: List[int]) -> Bool"
 docstring: |
     triples_sum_to_zero takes a list of integers as an input.

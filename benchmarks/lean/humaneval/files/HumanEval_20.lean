@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def find_closest_elements(numbers: List[float]) -> Tuple[float, float]"
 docstring: |
     From a supplied list of numbers (of length at least two) select and return two that are the closest to each

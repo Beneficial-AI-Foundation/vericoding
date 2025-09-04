@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def change_base(x: Nat, base: Nat) -> String"
 docstring: |
     Change numerical base of input number x to base.

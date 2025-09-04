@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def fix_spaces(text: str) -> str"
 docstring: |
     Given a string text, replace all spaces in it with underscores,

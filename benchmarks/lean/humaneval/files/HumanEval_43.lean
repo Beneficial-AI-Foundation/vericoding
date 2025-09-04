@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def pairs_sum_to_zero(numbers: List[int]) -> Bool"
 docstring: |
     pairs_sum_to_zero takes a list of integers as an input.

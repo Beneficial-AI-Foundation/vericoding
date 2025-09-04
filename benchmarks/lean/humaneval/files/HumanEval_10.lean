@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def make_palindrome(string: str) -> str"
 docstring: |
     Find the shortest palindrome that begins with a supplied string.

@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def rounded_avg(n: nat, m: nat) -> Option[string]"
 docstring: |
     You are given two positive integers n and m, and your task is to compute the

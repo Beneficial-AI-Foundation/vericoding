@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def double_the_difference(numbers: List[float]) -> Int"
 docstring: |
     Given a list of numbers, return the sum of squares of the numbers

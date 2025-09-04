@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def remove_vowels(string: str) -> Nat"
 docstring: |
     Write a function vowels_count which takes a string representing

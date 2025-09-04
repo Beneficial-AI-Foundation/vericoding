@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def solve(string : String) -> String"
 docstring: |
     You are given a string s.

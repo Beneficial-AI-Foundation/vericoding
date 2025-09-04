@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def parse_music(music_string: str) -> List[int]"
 docstring: |
     Input to this function is a string representing musical notes in a special ASCII format.

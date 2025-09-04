@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def check_dict_case(s : dict[str, str]) -> bool"
 docstring: |
     Given a dictionary, return True if all keys are strings in lower

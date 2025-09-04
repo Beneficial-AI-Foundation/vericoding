@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def hex_key(num: string) -> int"
 docstring: |
     You have been tasked to write a function that receives

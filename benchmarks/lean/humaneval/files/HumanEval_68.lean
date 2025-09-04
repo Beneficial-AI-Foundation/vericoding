@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def pluck(numbers: List[Int]) -> List[Int]"
 docstring: |
     Given an array representing a branch of a tree that has non-negative integer nodes

@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def monotonic(numbers: List[int]) -> Bool"
 docstring: |
     Return True if list elements are monotonically increasing or decreasing.

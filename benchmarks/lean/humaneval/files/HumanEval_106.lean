@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def f(n: int) -> List[int]"
 docstring: |
     Implement the function f that takes n as a parameter,

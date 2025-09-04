@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def get_odd_collatz (n: int) -> List[int]"
 docstring: |
     Given a positive integer n, return a sorted list that has the odd numbers in collatz sequence.

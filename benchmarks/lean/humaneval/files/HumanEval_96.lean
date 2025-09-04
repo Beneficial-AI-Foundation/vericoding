@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def count_up_to(n : int) -> list[int]"
 docstring: |
     Implement a function that takes an non-negative integer and returns an array of the first n

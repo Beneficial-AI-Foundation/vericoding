@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def intersection(interval1: Tuple[Int, Int], interval2: Tuple[Int, Int]) -> str"
 docstring: |
     You are given two intervals,

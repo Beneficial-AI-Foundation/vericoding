@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def encode_cyclic(s: str) -> str"
 docstring: |
   Returns an encoded string by cycling each group of three consecutive characters.

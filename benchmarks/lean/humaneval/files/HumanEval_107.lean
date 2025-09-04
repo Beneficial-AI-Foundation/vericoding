@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def even_odd_palindrome(n: nat) -> (nat, nat)"
 docstring: |
     Given a positive integer n, return a tuple that has the number of even and odd

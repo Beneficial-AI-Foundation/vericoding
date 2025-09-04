@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def next_smallest(lst: List[int]) -> Optional[int]"
 docstring: |
     You are given a list of integers.

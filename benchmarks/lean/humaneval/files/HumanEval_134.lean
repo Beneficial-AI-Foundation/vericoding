@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def check_if_last_char_is_a_letter(txt: str) -> Bool"
 docstring: |
     Create a function that returns True if the last character

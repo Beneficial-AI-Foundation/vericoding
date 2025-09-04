@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def strlen(string: str) -> int"
 docstring: |
     Return length of given string

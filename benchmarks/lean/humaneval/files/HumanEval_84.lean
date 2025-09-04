@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def solve(n: int) -> str"
 docstring: |
     Given a positive integer N, return the total sum of its digits in binary.

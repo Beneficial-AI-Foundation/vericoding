@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def make_a_pile(n: int) -> List[int]"
 docstring: |
     Given a positive integer n, you have to make a pile of n levels of stones.

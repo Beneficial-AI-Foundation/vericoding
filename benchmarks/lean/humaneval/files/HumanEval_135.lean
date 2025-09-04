@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def can_arrange(arr: List[int]) -> int"
 docstring: |
     Create a function which returns the largest index of an element which

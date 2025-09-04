@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def select_words(s : str, n : int) -> list[str]"
 docstring: |
     Given a string s and a natural number n, you have been tasked to implement

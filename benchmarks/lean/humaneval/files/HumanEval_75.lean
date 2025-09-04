@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def is_multiply_prime(a: int) -> bool"
 docstring: |
     Write a function that returns true if the given number is the multiplication of 3 prime numbers

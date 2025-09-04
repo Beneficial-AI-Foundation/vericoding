@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def order_by_points(nums: List[int]) -> List[int]"
 docstring: |
     Write a function which sorts the given list of integers

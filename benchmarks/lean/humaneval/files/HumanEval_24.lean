@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def largest_divisor(n: int) -> int"
 docstring: |
     For a given number n, find the largest number that divides n evenly, smaller than n

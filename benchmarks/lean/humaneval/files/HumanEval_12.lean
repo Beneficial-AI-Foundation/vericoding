@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def longest(strings: List[str]) -> Optional[str]"
 docstring: |
     Out of list of strings, return the longest one. Return the first one in case of multiple

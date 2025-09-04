@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def sum_largest_prime(lst : list[int]) -> int"
 docstring: |
     You are given a list of integers.

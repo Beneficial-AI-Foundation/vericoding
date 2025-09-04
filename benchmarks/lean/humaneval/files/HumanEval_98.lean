@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def count_upper(s : String) -> Int"
 docstring: |
     Given a string s, count the number of uppercase vowels in even indices.

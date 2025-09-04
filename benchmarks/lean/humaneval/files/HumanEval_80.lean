@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def is_happy(s: str) -> bool"
 docstring: |
     You are given a string s.

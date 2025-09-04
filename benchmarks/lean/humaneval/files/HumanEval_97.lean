@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def multiply(a : Int, b : Int) -> Int"
 docstring: |
     Complete the function that takes two integers and returns

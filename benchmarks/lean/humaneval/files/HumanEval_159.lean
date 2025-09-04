@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def eat(number: Nat, need: Nat, remaining: Nat) -> List Nat"
 docstring: |
     You're a hungry rabbit, and you already have eaten a certain number of carrots,

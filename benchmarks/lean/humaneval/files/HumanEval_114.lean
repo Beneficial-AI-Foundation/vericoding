@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def minSubArraySum(nums : list[int]) -> int"
 docstring: |
     Given an array of integers nums, find the minimum sum of any non-empty sub-array

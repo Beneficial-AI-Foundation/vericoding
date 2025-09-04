@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def match_parens(l : list[str]) -> str"
 docstring: |
     You are given a list of two strings, both strings consist of open

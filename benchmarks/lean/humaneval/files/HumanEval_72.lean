@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def will_it_fly(q: List[int], w: int) -> bool"
 docstring: |
     Write a function that returns True if the object q will fly, and False otherwise.

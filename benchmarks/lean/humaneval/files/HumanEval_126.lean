@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def is_sorted(lst: List[int]) -> Bool"
 docstring: |
     Given a list of numbers, return whether or not they are sorted

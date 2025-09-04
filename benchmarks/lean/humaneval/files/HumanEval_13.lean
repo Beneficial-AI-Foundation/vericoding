@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def greatest_common_divisor(a: int, b: int) -> int"
 docstring: |
     Return a greatest common divisor of two integers a and b

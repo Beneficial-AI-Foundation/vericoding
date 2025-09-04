@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def sum_squares(lst: List[int]) -> int"
 docstring: |
     This function will take a list of integers. For all entries in the list, the function shall square the integer entry if its index is a

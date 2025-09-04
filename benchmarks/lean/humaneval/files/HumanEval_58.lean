@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def common(l1: List[Int], l2: List[Int]) -> List[Int]"
 docstring: |
     Return sorted unique common elements for two lists.

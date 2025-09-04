@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def correct_bracketing(brackets: str) -> Bool"
 docstring: |
     brackets is a string of "(" and ")".

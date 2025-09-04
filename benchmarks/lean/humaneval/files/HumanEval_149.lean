@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def sorted_list_sum(lst: List[str]) -> List[str]"
 docstring: |
     Write a function that accepts a list of strings as a parameter,

@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def search(numbers: List[int]) -> int"
 docstring: |
     You are given a non-empty list of positive integers. Return the greatest integer that is greater than

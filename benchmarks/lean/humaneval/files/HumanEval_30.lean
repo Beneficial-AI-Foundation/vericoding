@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def get_positive(l: list)"
 docstring: |
     Return only positive numbers in the list.

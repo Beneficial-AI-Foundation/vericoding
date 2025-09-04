@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def x_or_y(int n, int x, int y) -> int"
 docstring: |
     A simple program which should return the value of x if n is

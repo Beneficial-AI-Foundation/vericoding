@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def modp(n: Nat, p: Nat) -> Nat"
 docstring: |
     Return 2^n modulo p (be aware of numerics).

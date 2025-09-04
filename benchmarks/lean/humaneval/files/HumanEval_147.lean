@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def get_max_triples(n: int) -> int"
 docstring: |
     You are given a positive integer n. You have to create an integer array a of length n.

@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def largest_prime_factor(n: Nat) -> Nat"
 docstring: |
     Return the largest prime factor of n. Assume n > 1 and is not a prime.

@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def triangle_area(a: float, h: float) -> float"
 docstring: |
     Given length of a side and high return area for a triangle.

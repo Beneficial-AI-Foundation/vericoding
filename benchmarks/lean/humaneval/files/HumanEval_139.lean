@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def special_factorial(n: int) -> int"
 docstring: |
     The Brazilian factorial is defined as:

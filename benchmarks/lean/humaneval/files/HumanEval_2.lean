@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def truncate_number(number: float) -> float"
 docstring: |
     Given a positive floating point number, it can be decomposed into

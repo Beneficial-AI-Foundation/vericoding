@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def sort_third(l: list)"
 docstring: |
     This function takes a list l and returns a list l' such that

@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def fib(n: int) -> int"
 docstring: |
     Return n-th Fibonacci number.

@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def sort_array(lst : list(int)) -> list(int)"
 docstring: |
     """

@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def has_close_elements(numbers: List[float], threshold: float) -> bool"
 docstring: Check if in given list of numbers, are any two numbers closer to each other than given threshold.
 test_cases:

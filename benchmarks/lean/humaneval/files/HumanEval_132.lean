@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def is_nested(string: str) -> Bool"
 docstring: |
     Create a function that takes a string as input which contains only parentheses.

@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def right_angle_triangle(a: Nat, b: Nat, c: Nat) -> Bool"
 docstring: |
     Given the lengths of the three sides of a triangle. Return True if the three

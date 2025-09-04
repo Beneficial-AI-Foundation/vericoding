@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def sort_numbers(numbers: str) -> str"
 docstring: |
     Input is a space-delimited string of numberals from 'zero' to 'nine'.

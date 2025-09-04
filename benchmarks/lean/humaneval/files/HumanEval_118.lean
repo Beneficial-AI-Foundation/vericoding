@@ -1,4 +1,4 @@
-/-
+/- 
 function_signature: "def get_closest_vowel(s : str) -> str"
 docstring: |
     You are given a word. Your task is to find the closest vowel that stands between
