@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def can_arrange(arr: List[int]) -> int"
 docstring: |
     Create a function which returns the largest index of an element which
@@ -12,7 +12,9 @@ test_cases:
     expected_output: -1
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def string_xor(a: str, b: str) -> str"
 docstring: |
     Input are two strings a and b consisting only of 1s and 0s.
@@ -10,7 +10,9 @@ test_cases:
     expected_output: "100"
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

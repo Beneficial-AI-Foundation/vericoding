@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def add_elements(arr: List[int], k: int) -> int"
 docstring: |
     Given a non-empty array of integers arr and an integer k, return
@@ -12,7 +12,9 @@ test_cases:
     expected_output: 24
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

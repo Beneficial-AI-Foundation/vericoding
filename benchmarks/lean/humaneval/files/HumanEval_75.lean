@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def is_multiply_prime(a: int) -> bool"
 docstring: |
     Write a function that returns true if the given number is the multiplication of 3 prime numbers
@@ -8,7 +8,9 @@ test_cases:
     expected_output: True
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

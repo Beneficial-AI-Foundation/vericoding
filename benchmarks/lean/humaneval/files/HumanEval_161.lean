@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def solve(string : String) -> String"
 docstring: |
     You are given a string s.
@@ -15,7 +15,9 @@ test_cases:
     expected_output: "#A@c"
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

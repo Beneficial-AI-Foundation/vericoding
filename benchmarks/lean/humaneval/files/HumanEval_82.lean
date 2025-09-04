@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def prime_length(s: str) -> bool"
 docstring: |
     Write a function that takes a string and returns True if the string
@@ -14,7 +14,9 @@ test_cases:
     output: False
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

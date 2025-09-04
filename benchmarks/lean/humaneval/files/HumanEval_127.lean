@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def intersection(interval1: Tuple[Int, Int], interval2: Tuple[Int, Int]) -> str"
 docstring: |
     You are given two intervals,
@@ -22,7 +22,9 @@ test_cases:
     expected_output: "YES"
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

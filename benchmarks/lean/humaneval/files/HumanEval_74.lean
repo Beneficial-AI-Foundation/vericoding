@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def total_match(lst1: List[str], lst2: List[str]) -> List[str]"
 docstring: |
   Write a function that accepts two lists of strings and returns the list that has
@@ -17,7 +17,9 @@ test_cases:
     expected_output: ['4']
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

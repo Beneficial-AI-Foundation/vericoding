@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def triples_sum_to_zero(numbers: List[int]) -> Bool"
 docstring: |
     triples_sum_to_zero takes a list of integers as an input.
@@ -11,7 +11,9 @@ test_cases:
     expected_output: True
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

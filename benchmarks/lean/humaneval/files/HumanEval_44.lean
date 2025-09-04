@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def change_base(x: Nat, base: Nat) -> String"
 docstring: |
     Change numerical base of input number x to base.
@@ -13,7 +13,9 @@ test_cases:
     expected_output: '111'
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

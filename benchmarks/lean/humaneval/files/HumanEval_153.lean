@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def Strongest_Extension(class_name: String, extensions: List[String]) -> String"
 docstring: |
     You will be given the name of a class (a string) and a list of extensions.
@@ -19,7 +19,9 @@ test_cases:
     expected_output: 'my_class.AA'
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

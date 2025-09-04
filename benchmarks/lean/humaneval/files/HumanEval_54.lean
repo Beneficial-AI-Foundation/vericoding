@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def same_chars(s0: string, s1: string) -> Bool"
 docstring: Check if two words have the same characters.
 test_cases:
@@ -8,7 +8,9 @@ test_cases:
     expected_output: False
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

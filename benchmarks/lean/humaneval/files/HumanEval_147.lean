@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def get_max_triples(n: int) -> int"
 docstring: |
     You are given a positive integer n. You have to create an integer array a of length n.
@@ -10,7 +10,9 @@ test_cases:
     expected_output: 1
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

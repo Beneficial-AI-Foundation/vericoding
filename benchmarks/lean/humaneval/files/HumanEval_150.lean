@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def x_or_y(int n, int x, int y) -> int"
 docstring: |
     A simple program which should return the value of x if n is
@@ -10,7 +10,9 @@ test_cases:
     expected_output: 5
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

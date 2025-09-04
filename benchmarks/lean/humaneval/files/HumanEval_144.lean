@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def simplify(x: str, n: str) -> Bool"
 docstring: |
     Your task is to implement a function that will simplify the expression
@@ -16,7 +16,9 @@ test_cases:
     expected_output: False
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def even_odd_palindrome(n: nat) -> (nat, nat)"
 docstring: |
     Given a positive integer n, return a tuple that has the number of even and odd
@@ -10,7 +10,9 @@ test_cases:
     expected_output: (4, 6)
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

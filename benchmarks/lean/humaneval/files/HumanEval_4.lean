@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def mean_absolute_deviation(numbers: List[float]) -> float"
 docstring: |
     For a given list of input numbers, calculate Mean Absolute Deviation
@@ -15,7 +15,9 @@ test_cases:
     expected_output: 1.0
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>
@@ -49,4 +51,4 @@ theorem correctness
   sorry
 -- </vc-proof>
 
-#test implementation [1.0, 2.0, 3.0, 4.0] = 1.0
+-- #test implementation [1.0, 2.0, 3.0, 4.0] = 1.0

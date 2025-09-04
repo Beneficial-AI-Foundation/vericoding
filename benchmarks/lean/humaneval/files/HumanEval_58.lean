@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def common(l1: List[Int], l2: List[Int]) -> List[Int]"
 docstring: |
     Return sorted unique common elements for two lists.
@@ -9,7 +9,9 @@ test_cases:
     expected_output: [2, 3]
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

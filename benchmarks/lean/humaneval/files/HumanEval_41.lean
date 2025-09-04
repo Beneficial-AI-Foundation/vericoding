@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def car_race_collision(x: Nat) -> Nat"
 docstring: |
     Imagine a road that's a perfectly straight infinitely long line.
@@ -16,7 +16,9 @@ test_cases:
     expected_output: 25
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

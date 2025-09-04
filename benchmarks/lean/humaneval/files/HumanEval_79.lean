@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def decimal_to_binary(decimal: nat) -> string"
 docstring: |
     You will be given a number in decimal form and your task is to convert it to
@@ -14,7 +14,9 @@ test_cases:
     expected_output: "db100000db"
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

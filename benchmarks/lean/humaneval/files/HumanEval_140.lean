@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def fix_spaces(text: str) -> str"
 docstring: |
     Given a string text, replace all spaces in it with underscores,
@@ -15,7 +15,9 @@ test_cases:
     expected_output: "_Example-3"
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

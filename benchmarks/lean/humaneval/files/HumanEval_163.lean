@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def generate_integers(a : Nat, b : Nat) -> List Nat"
 docstring: |
     Given two positive integers a and b, return the even digits between a
@@ -12,7 +12,9 @@ test_cases:
     expected_output: [10, 12, 14]
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

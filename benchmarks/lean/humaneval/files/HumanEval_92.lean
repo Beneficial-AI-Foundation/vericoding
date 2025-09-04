@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def any_int(a: float, b: float, c: float) -> bool"
 docstring: |
     Create a function that takes 3 numbers.
@@ -15,7 +15,9 @@ test_cases:
     expected_output: false
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

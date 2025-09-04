@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def smallest_change(arr: List[int]) -> int"
 docstring: |
     Given an array arr of integers, find the minimum number of elements that
@@ -13,7 +13,9 @@ test_cases:
     expected_output: 0
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

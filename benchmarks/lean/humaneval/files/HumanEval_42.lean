@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def incr_list(numbers: List[Int]) -> List[Int]"
 docstring: |
     incr_list takes a list of integers as input and returns a new list
@@ -10,7 +10,9 @@ test_cases:
     expected_output: [2, 4, -1, 2]
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

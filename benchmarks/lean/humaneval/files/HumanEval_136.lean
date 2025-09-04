@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def largest_smallest_integers(lst: List[int]) -> Tuple[ Optional[Int], Optional[Int] ]"
 docstring: |
     Create a function that returns a tuple (a, b), where 'a' is
@@ -14,7 +14,9 @@ test_cases:
     expected_output: (None, None)
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

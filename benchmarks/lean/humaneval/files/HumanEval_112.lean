@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def reverse_delete(s : str, c : str) -> (str, bool)"
 docstring: |
     We are given two strings s and c, you have to deleted all the characters in s that are equal to any character in c
@@ -15,7 +15,9 @@ test_cases:
     expected_output: ('cdedc', True)
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

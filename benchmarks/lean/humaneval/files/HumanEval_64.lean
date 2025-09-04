@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def remove_vowels(string: str) -> Nat"
 docstring: |
     Write a function vowels_count which takes a string representing
@@ -12,7 +12,9 @@ test_cases:
     expected_output: 3
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

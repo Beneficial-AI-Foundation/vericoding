@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def add(x: Int, y: Int) -> Int"
 docstring: Add two numbers x and y
 test_cases:
@@ -8,7 +8,9 @@ test_cases:
     expected_output: 12
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

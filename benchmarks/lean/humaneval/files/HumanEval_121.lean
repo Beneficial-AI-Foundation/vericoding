@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def solution(lst: List[int]) -> int"
 docstring: |
     Given a non-empty list of integers, return the sum of all of the odd elements that
@@ -12,7 +12,9 @@ test_cases:
     expected_output: 0
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>
@@ -28,7 +30,7 @@ def problem_spec
 -- inputs
 (lst: List Int) :=
 -- spec
-let spec (result : Int) :=
+let spec (_ : Int) :=
 lst ≠ [] → ∀ i,  i < lst.length ∧ i % 2 = 0 →
   (lst.length = 1 → impl lst = 0) ∧
   (i + 1 < lst.length →

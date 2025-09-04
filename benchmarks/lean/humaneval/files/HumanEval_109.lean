@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def move_one_ball(arr: List[int]) -> bool"
 docstring: |
     We have an array 'arr' of N integers arr[1], arr[2], ..., arr[N].The
@@ -23,7 +23,9 @@ test_cases:
     expected_output: False
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

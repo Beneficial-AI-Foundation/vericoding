@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def digits(n: int) -> int"
 docstring: |
     Given a positive integer n, return the product of the odd digits.
@@ -12,7 +12,9 @@ test_cases:
     expected_output: 15
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

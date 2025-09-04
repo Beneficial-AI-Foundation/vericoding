@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def choose_num(x: int, y: int) -> int"
 docstring: |
     This function takes two positive numbers x and y and returns the
@@ -11,7 +11,9 @@ test_cases:
     expected_output: -1
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

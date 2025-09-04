@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def count_nums(arr: List[int]) -> int"
 docstring: |
     Write a function count_nums which takes an array of integers and returns
@@ -14,7 +14,9 @@ test_cases:
     expected_output: 3
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

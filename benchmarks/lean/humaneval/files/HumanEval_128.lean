@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def prod_signs(arr: List[int]) -> Optional[int]"
 docstring: |
     You are given an array arr of integers and you need to return
@@ -14,7 +14,9 @@ test_cases:
     expected_output: None
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

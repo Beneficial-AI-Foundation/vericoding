@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def max_fill_count(grid : list[list[int]], capacity : int) -> int"
 docstring: |
     You are given a rectangular grid of wells. Each row represents a single well,
@@ -22,7 +22,9 @@ test_cases:
     expected_output: 0
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

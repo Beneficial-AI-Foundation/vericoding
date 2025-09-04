@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def maximum(arr: List[int], k: int) -> List[int]"
 docstring: |
     Given an array arr of integers and a positive integer k, return a sorted list of length
@@ -15,7 +15,9 @@ test_cases:
 
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

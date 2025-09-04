@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def cycpattern_check(String a, String b) -> Bool"
 docstring: |
     You are given 2 words. You need to return True if the second word or any of its rotations is a substring in the first word, else False
@@ -17,7 +17,9 @@ test_cases:
     expected_output: True
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

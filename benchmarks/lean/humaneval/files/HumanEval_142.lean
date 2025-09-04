@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def sum_squares(lst: List[int]) -> int"
 docstring: |
     This function will take a list of integers. For all entries in the list, the function shall square the integer entry if its index is a
@@ -13,7 +13,9 @@ test_cases:
     expected_output: -126
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def encrypt(str : str) -> str"
 docstring: |
     Create a function encrypt that takes a string as an argument and
@@ -16,7 +16,9 @@ test_cases:
     output: "ix"
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

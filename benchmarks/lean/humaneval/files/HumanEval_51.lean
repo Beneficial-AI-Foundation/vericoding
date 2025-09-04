@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def remove_vowels(string: str) -> string"
 docstring: |
     remove_vowels is a function that takes string and returns string without vowels.
@@ -15,7 +15,9 @@ test_cases:
     expected_output: "B"
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

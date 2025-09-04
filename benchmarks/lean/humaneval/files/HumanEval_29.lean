@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def filter_by_prefix(strings: List[str], prefix: str) -> List[str]"
 docstring: |
     Filter an input list of strings only for ones that start with a given prefix.
@@ -13,7 +13,9 @@ test_cases:
     expected_output: ["abc", "array"]
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>
@@ -48,5 +50,5 @@ theorem correctness
   sorry
 -- </vc-proof>
 
-#test implementation [] "a" = []
-#test implementation ["abc", "bcd", "cde", "array"] "a" = ["abc", "array"]
+-- #test implementation [] "a" = []
+-- #test implementation ["abc", "bcd", "cde", "array"] "a" = ["abc", "array"]

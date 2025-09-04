@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def sum_squares(lst: List[float]) -> int"
 docstring: |
     You are given a list of numbers.
@@ -17,7 +17,9 @@ test_cases:
     expected_output: 6
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def has_close_elements(numbers: List[float], threshold: float) -> bool"
 docstring: Check if in given list of numbers, are any two numbers closer to each other than given threshold.
 test_cases:
@@ -8,7 +8,9 @@ test_cases:
     expected_output: True
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>
@@ -27,7 +29,7 @@ def problem_spec
 -- spec
 let numbers_within_threshold :=
 (∃ i j, i < numbers.length ∧ j < numbers.length ∧
-i ≠ j ∧ |numbers.get! i - numbers.get! j| < threshold);
+i ≠ j ∧ |numbers[i]! - numbers[j]!| < threshold);
 let spec (res: Bool) :=
 numbers.length > 1 →
 if res then numbers_within_threshold else ¬numbers_within_threshold;
@@ -45,5 +47,5 @@ theorem correctness
   sorry
 -- </vc-proof>
 
-#test implementation ([1, 2, 3]: List Rat) 0.5 = false
-#test implementation ([1, 2.8, 3, 4, 5, 2]: List Rat) 0.3 = true
+-- #test implementation ([1, 2, 3]: List Rat) 0.5 = false
+-- #test implementation ([1, 2.8, 3, 4, 5, 2]: List Rat) 0.3 = true

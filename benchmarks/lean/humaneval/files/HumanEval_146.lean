@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def specialFilter(nums: List[int]) -> int"
 docstring: |
     Write a function that takes an array of numbers as input and returns
@@ -11,7 +11,9 @@ test_cases:
     expected_output: 2
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

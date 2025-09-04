@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def below_threshold(numbers: List[Int], threshold: Int) -> bool"
 docstring: Return True if all numbers in the list l are below threshold t, and False otherwise.
 test_cases:
@@ -8,7 +8,9 @@ test_cases:
     expected_output: False
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

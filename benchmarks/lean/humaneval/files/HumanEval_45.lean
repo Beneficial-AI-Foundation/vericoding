@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def triangle_area(a: float, h: float) -> float"
 docstring: |
     Given length of a side and high return area for a triangle.
@@ -9,7 +9,9 @@ test_cases:
     expected_output: 8.0
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

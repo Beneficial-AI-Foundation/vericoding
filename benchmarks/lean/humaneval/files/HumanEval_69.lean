@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def search(numbers: List[int]) -> int"
 docstring: |
     You are given a non-empty list of positive integers. Return the greatest integer that is greater than
@@ -14,7 +14,9 @@ test_cases:
     expected_output: -1
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

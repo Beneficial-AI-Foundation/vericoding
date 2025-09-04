@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def histogram(s : str) -> Dict[str, int]"
 docstring: |
     Given a string representing a space separated lowercase letters, return a dictionary
@@ -18,7 +18,9 @@ test_cases:
     expected_output: {}
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def double_the_difference(numbers: List[float]) -> Int"
 docstring: |
     Given a list of numbers, return the sum of squares of the numbers
@@ -14,7 +14,9 @@ test_cases:
     expected_output: 0
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

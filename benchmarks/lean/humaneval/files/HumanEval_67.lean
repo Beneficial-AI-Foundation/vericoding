@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def fruit_distribution(string: str, Nat n) -> Nat"
 docstring: |
     In this task, you will be given a string that represents a number of apples and oranges
@@ -17,7 +17,9 @@ test_cases:
     expected_output: 19
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

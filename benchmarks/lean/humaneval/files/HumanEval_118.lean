@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def get_closest_vowel(s : str) -> str"
 docstring: |
     You are given a word. Your task is to find the closest vowel that stands between
@@ -20,7 +20,9 @@ test_cases:
     expected_output: ""
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

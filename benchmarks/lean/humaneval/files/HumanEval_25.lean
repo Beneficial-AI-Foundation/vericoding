@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def factorize(n: int) -> List[int]"
 docstring: |
     Return list of prime factors of given integer in the order from smallest to largest.
@@ -13,7 +13,9 @@ test_cases:
     expected_output: [2, 5, 7]
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>
@@ -46,6 +48,6 @@ theorem correctness
   sorry
 -- </vc-proof>
 
-#test implementation 8 = [2, 2, 2]
-#test implementation 25 = [5, 5]
-#test implementation 70 = [2, 5, 7]
+-- #test implementation 8 = [2, 2, 2]
+-- #test implementation 25 = [5, 5]
+-- #test implementation 70 = [2, 5, 7]

@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def iscube(a: int) -> bool"
 docstring: |
     Write a function that takes an integer a and returns True if this integer is a cube of some integer number.
@@ -18,7 +18,9 @@ test_cases:
     expected_output: False
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

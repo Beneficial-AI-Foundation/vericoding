@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def words_in_sentence(sentence: str) -> str"
 docstring: |
     You are given a string representing a sentence,
@@ -17,7 +17,9 @@ test_cases:
     expected_output: "go for"
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def compare(scores: List float, guesses: List float) -> List [float]"
 docstring: |
     I think we all remember that feeling when the result of some long-awaited
@@ -17,7 +17,9 @@ test_cases:
     expected_output: [4,4,1,0,0,6]
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

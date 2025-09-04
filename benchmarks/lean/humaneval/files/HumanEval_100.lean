@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def make_a_pile(n: int) -> List[int]"
 docstring: |
     Given a positive integer n, you have to make a pile of n levels of stones.
@@ -13,7 +13,9 @@ test_cases:
     expected_output: [3, 5, 7]
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

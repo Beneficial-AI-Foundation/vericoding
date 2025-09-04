@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def max_fill_count(grid : list[list[int]], capacity : int) -> int"
 docstring: |
     Please write a function that sorts an array of non-negative integers according to
@@ -11,7 +11,9 @@ test_cases:
     expected_output: [0, 1, 2, 3, 4]
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>
@@ -31,8 +33,8 @@ let spec (result : List Nat) :=
   ∀ x : Nat, lst.count x = result.count x ∧
   result.length = lst.length ∧
   (∀ i j : Nat, i < j → j < result.length →
-    Nat.digits 2 (result.get! i) < Nat.digits 2 (result.get! j) ∨
-    (Nat.digits 2 (result.get! i) = Nat.digits 2 (result.get! j) ∧ result.get! i < result.get! j))
+    Nat.digits 2 (result[i]!) < Nat.digits 2 (result[j]!) ∨
+    (Nat.digits 2 (result[i]!) = Nat.digits 2 (result[j]!) ∧ result[i]! < result[j]!))
 -- program termination
 ∃ result,
   implementation lst = result ∧

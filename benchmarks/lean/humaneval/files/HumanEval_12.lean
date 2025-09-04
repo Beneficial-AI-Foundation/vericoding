@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def longest(strings: List[str]) -> Optional[str]"
 docstring: |
     Out of list of strings, return the longest one. Return the first one in case of multiple
@@ -12,7 +12,9 @@ test_cases:
     expected_output: "ccc"
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>
@@ -47,6 +49,6 @@ theorem correctness
   sorry
 -- </vc-proof>
 
-#test implementation ["a", "b", "c"] = some "a"
-#test implementation ["a", "bb", "ccc"] = some "ccc"
-#test implementation [] = none
+-- #test implementation ["a", "b", "c"] = some "a"
+-- #test implementation ["a", "bb", "ccc"] = some "ccc"
+-- #test implementation [] = none

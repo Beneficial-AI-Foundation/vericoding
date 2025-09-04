@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def file_name_check(file_name: str) -> str"
 docstring: |
     Create a function which takes a string representing a file's name, and returns
@@ -17,7 +17,9 @@ test_cases:
     expected_output: "No"
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

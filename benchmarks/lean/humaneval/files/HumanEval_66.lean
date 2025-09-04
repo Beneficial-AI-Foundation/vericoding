@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def digitSum(string: str) -> Nat"
 docstring: |
     Write a function that takes a string as input and returns the sum of the upper characters only'
@@ -12,7 +12,9 @@ test_cases:
     expected_output: 69
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

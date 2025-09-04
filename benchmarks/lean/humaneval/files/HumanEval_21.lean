@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def rescale_to_unit(numbers: List[float]) -> List[float]"
 docstring: |
     Given list of numbers (of at least two elements), apply a linear transform to that list,
@@ -8,7 +8,9 @@ test_cases:
     expected_output: [0.0, 0.25, 0.5, 0.75, 1.0]
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

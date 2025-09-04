@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def sum_to_n(n: Nat) -> Nat"
 docstring: |
     sum_to_n is a function that sums numbers from 1 to n.
@@ -9,7 +9,9 @@ test_cases:
     expected_output: 4950
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

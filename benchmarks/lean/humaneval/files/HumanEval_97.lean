@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def multiply(a : Int, b : Int) -> Int"
 docstring: |
     Complete the function that takes two integers and returns
@@ -16,7 +16,9 @@ test_cases:
     expected_output: 20
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

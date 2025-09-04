@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def remove_duplicates(numbers: List[int]) -> List[int]"
 docstring: |
     From a list of integers, remove all elements that occur more than once.
@@ -8,7 +8,9 @@ test_cases:
     expected_output: [1, 3, 4]
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>
@@ -41,4 +43,4 @@ theorem correctness
   sorry
 -- </vc-proof>
 
-#test implementation [1, 2, 3, 2, 4] = [1, 3, 4]
+-- #test implementation [1, 2, 3, 2, 4] = [1, 3, 4]

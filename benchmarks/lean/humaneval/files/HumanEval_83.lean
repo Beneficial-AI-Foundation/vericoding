@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def starts_one_ends(n: int) -> int"
 docstring: |
     Given a positive integer n, return the count of the numbers of n-digit
@@ -12,7 +12,9 @@ test_cases:
     output: 18
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

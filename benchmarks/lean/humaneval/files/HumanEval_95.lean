@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def check_dict_case(s : dict[str, str]) -> bool"
 docstring: |
     Given a dictionary, return True if all keys are strings in lower
@@ -18,7 +18,9 @@ test_cases:
     expected_output: True
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

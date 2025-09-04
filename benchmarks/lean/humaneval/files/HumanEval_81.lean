@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def numerical_letter_grade(grades: list[float]) -> list[str]"
 docstring: |
     It is the last week of the semester and the teacher has to give the grades
@@ -29,7 +29,9 @@ test_cases:
 note: formalization uses a list of tuples instead of a hashmap because Hashable Float is not available in the standard library.
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

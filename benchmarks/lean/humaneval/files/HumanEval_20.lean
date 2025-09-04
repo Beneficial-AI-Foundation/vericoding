@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def find_closest_elements(numbers: List[float]) -> Tuple[float, float]"
 docstring: |
     From a supplied list of numbers (of length at least two) select and return two that are the closest to each
@@ -10,7 +10,9 @@ test_cases:
     expected_output: (2.0, 2.0)
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>
@@ -47,5 +49,5 @@ theorem correctness
   sorry
 -- </vc-proof>
 
-#test implementation [1.0, 2.0, 3.0, 4.0, 5.0, 2.2] = (2.0, 2.2)
-#test implementation [1.0, 2.0, 3.0, 4.0, 5.0, 2.0] = (2.0, 2.0)
+-- #test implementation [1.0, 2.0, 3.0, 4.0, 5.0, 2.2] = (2.0, 2.2)
+-- #test implementation [1.0, 2.0, 3.0, 4.0, 5.0, 2.0] = (2.0, 2.0)

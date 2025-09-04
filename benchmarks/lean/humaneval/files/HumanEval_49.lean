@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def modp(n: Nat, p: Nat) -> Nat"
 docstring: |
     Return 2^n modulo p (be aware of numerics).
@@ -13,7 +13,9 @@ test_cases:
     expected_output: 1
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

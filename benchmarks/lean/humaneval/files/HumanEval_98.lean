@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def count_upper(s : String) -> Int"
 docstring: |
     Given a string s, count the number of uppercase vowels in even indices.
@@ -12,7 +12,9 @@ test_cases:
     expected_output: 0
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

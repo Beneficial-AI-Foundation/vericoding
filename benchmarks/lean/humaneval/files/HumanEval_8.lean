@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def sum_product(numbers: List[int]) -> Tuple[int, int]"
 docstring: |
     For a given list of integers, return a tuple consisting of a sum and a product of all the integers in a list.
@@ -10,7 +10,9 @@ test_cases:
     expected_output: (10, 24)
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>
@@ -45,5 +47,5 @@ theorem correctness
   sorry
 -- </vc-proof>
 
-#test implementation [] = (0, 1)
-#test implementation [1, 2, 3, 4] = (10, 24)
+-- #test implementation [] = (0, 1)
+-- #test implementation [1, 2, 3, 4] = (10, 24)

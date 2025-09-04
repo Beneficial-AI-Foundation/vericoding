@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def words_string(s: string) -> List[string]"
 docstring: |
     You will be given a string of words separated by commas or spaces. Your task is
@@ -10,7 +10,9 @@ test_cases:
     expected_output: ["One", "two", "three", "four", "five", "six"]
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def pluck(numbers: List[Int]) -> List[Int]"
 docstring: |
     Given an array representing a branch of a tree that has non-negative integer nodes
@@ -19,7 +19,9 @@ test_cases:
     expected_output: [0, 1]
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

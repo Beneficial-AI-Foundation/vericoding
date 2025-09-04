@@ -1,4 +1,4 @@
-/- 
+/-
 function_signature: "def hex_key(num: string) -> int"
 docstring: |
     You have been tasked to write a function that receives
@@ -24,7 +24,9 @@ test_cases:
     expected_output: 2
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>
