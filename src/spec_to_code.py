@@ -13,6 +13,7 @@ import platform
 import shutil
 import subprocess
 import sys
+import tempfile
 import time
 from datetime import datetime
 from pathlib import Path
@@ -705,7 +706,6 @@ def main():
                 )
                 
                 # Create a formatted text file with the prompts
-                import tempfile
                 with tempfile.NamedTemporaryFile(mode='w', suffix='.txt', delete=False) as tmp_file:
                     tmp_file.write(f"System Prompts for {config.language}\n")
                     tmp_file.write("=" * 80 + "\n\n")
@@ -723,8 +723,7 @@ def main():
                 wandb.log_artifact(prompts_artifact)
                 
                 # Clean up temp file
-                import os as os_module
-                os_module.unlink(tmp_path)
+                os.unlink(tmp_path)
                 
                 print(f"✅ System prompts artifact uploaded to wandb")
         except Exception as e:
