@@ -19,7 +19,9 @@ test_cases:
     expected_output: 'my_class.AA'
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

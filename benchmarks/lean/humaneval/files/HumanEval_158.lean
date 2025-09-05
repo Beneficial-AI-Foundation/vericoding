@@ -14,7 +14,9 @@ test_cases:
     expected_output: "aaaaaaa"
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>
@@ -31,7 +33,7 @@ def problem_spec
 (words: List String) :=
 let unique_chars (string: String) :=
   let string_idx := {i: Nat | i < string.length}.toFinset;
-  let characters := string_idx.image (fun i => string.toList.get! i);
+  let characters := string_idx.image (fun i => string.toList[i]!);
   characters.card;
 -- spec
 let spec (result: String) :=

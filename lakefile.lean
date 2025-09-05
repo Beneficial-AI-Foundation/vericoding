@@ -2,7 +2,7 @@ import Lake
 open Lake DSL
 
 require mathlib from git
-  "https://github.com/leanprover-community/mathlib4" @ "master"
+  "https://github.com/leanprover-community/mathlib4" @ "v4.23.0-rc2"
 
 package Vericoding where
   version := v!"0.1.0"
@@ -24,14 +24,15 @@ This project contains formal specifications and verifications ported from variou
 particularly Dafny benchmarks and NumPy specifications.
 -/
 
+-- not required any longer?
+-- lean_lib BenchmarksGenerated where
+--   globs := #[.andSubmodules `BenchmarksGenerated]
+--   srcDir := "lean"
 
-lean_lib BenchmarksGenerated where
-  globs := #[.andSubmodules `BenchmarksGenerated]
-  srcDir := "lean"
+-- not required any longer?
+-- lean_lib DafnyBenchSpecs where
+--   globs := #[.andSubmodules `DafnyBenchSpecs]
 
-lean_lib DafnyBenchSpecs where
-  globs := #[.andSubmodules `DafnyBenchSpecs]
-
-lean_lib HumanEval where
-  globs := #[.andSubmodules `humaneval]
+lean_lib Benchmarks where
+  globs := #[.submodules `humaneval.files, .submodules `verina.files, .submodules `numpy_triple.files]
   srcDir := "benchmarks/lean"

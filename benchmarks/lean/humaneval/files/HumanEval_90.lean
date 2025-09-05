@@ -21,7 +21,9 @@ test_cases:
     output: None
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>
@@ -39,11 +41,11 @@ def problem_spec
 -- spec
 let spec (result : Option Int) :=
   match result with
-  | none => ¬ (∃ i j, i < lst.length ∧ j < lst.length ∧ i ≠ j ∧ lst.get! i < lst.get! j)
+  | none => ¬ (∃ i j, i < lst.length ∧ j < lst.length ∧ i ≠ j ∧ lst[i]! < lst[j]!)
   | some result =>
     let smaller_els := lst.filter (· < result);
     0 < smaller_els.length ∧
-    smaller_els.all (λ x => x = smaller_els.get! 0);
+    smaller_els.all (λ x => x = smaller_els[0]!);
 -- program termination
 ∃ result,
   implementation lst = result ∧

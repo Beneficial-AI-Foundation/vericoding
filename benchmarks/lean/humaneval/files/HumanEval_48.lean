@@ -13,7 +13,21 @@ test_cases:
     expected_output: "False"
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
+
+/--
+name: is_palindrome
+use: |
+  Helper to check if a string is a palindrome.
+problems:
+  - 10
+  - 48
+-/
+def is_palindrome
+(s: String): Bool :=
+s = s.toList.reverse.asString
 
 -- <vc-helpers>
 -- </vc-helpers>

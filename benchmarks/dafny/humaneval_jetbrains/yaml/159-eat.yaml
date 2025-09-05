@@ -1,0 +1,29 @@
+vc-preamble: |-
+vc-helpers: |-
+
+
+vc-description: |-
+  /*
+  function_signature: def eat(number: Nat, need: Nat, remaining: Nat) -> List Nat
+  You're a hungry rabbit, and you already have eaten a certain number of carrots, but now you need to eat more carrots to complete the day's meals. you should return an array of [ total number of eaten carrots after your meals, the number of carrots left after your meals ] if there are not enough remaining carrots, you will eat all remaining carrots, but will still be hungry.
+  */
+
+vc-spec: |-
+  method eat(number : int, need : int, remaining : int) returns (result: seq<int>)
+    // pre-conditions-start
+    requires number >= 0 && need >= 0 && remaining >= 0
+    // pre-conditions-end
+    // post-conditions-start
+    ensures |result| == 2
+    ensures remaining >= need ==> result[0] == number + need && result[1] == remaining - need
+    ensures remaining < need ==> result[0] == number + remaining && result[1] == 0
+    // post-conditions-end
+
+vc-code: |-
+  {
+    assume false;
+  }
+
+vc-postamble: |-
+
+

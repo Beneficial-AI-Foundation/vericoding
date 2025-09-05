@@ -14,7 +14,9 @@ test_cases:
      "the number of odd elements 8n the str8ng 8 of the 8nput."]
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

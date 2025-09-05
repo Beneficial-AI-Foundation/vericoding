@@ -19,7 +19,9 @@ test_cases:
     expected_output: ["Uncle"]
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>
@@ -48,7 +50,7 @@ let spec (result : List String) :=
     let first_word := result[0]!
     first_word ∈ words ∧
     (first_word.data.filter (fun c => is_consonant c)).length = n ∧
-    let first_word_idx := words.indexOf first_word
+    let first_word_idx := words.idxOf first_word
     (∀ i, i < first_word_idx →
       (words[i]!.data.filter (fun c => is_consonant c)).length ≠ n) ∧
     result.tail! =

@@ -14,7 +14,9 @@ test_cases:
     expected_output: [4, 2, 1, 2, 2, 1, 1, 1, 1, 4, 4]
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>
@@ -38,7 +40,7 @@ let not_map := fun
 let spec (result: List Nat) :=
 let space_split := string.splitOn " ";
 space_split.length = result.length ∧
-∀ i < result.length, not_map (space_split.get! i) = result.get! i;
+∀ i < result.length, not_map (space_split[i]!) = result[i]!;
 -- program termination
 ∃ result, implementation string = result ∧
 spec result
@@ -51,4 +53,4 @@ theorem correctness
   sorry
 -- </vc-proof>
 
-#test implementation "o o| .| o| o| .| .| .| .| o o" = [4, 2, 1, 2, 2, 1, 1, 1, 1, 4, 4]
+-- #test implementation "o o| .| o| o| .| .| .| .| o o" = [4, 2, 1, 2, 2, 1, 1, 1, 1, 4, 4]

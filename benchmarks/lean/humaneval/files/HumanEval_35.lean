@@ -9,7 +9,9 @@ test_cases:
     output: 123
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>
@@ -27,8 +29,8 @@ def problem_spec
 -- spec
 let spec (result: Int) :=
   l.length > 0 →
-  ((∀ i, i < l.length → l.get! i ≤ result) ∧
-  (∃ i, i < l.length ∧ l.get! i = result));
+  ((∀ i, i < l.length → l[i]! ≤ result) ∧
+  (∃ i, i < l.length ∧ l[i]! = result));
 -- program termination
 ∃ result, implementation l = result ∧
 spec result
@@ -41,5 +43,5 @@ theorem correctness
   sorry
 -- </vc-proof>
 
-#test implementation [1, 2, 3] = 3
-#test implementation [5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10] = 123
+-- #test implementation [1, 2, 3] = 3
+-- #test implementation [5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10] = 123

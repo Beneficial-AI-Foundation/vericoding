@@ -15,7 +15,9 @@ test_cases:
     expected_output: "NO"
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 import Std
 
 -- <vc-helpers>
@@ -36,18 +38,18 @@ def problem_spec
 let spec (result : String) :=
   lst1 ≠ [] → lst2 ≠ [] →
   let bool_result := ∃ exchange: List (Nat × Nat),
-    let lst1_idxs := exchange.map (fun (a, b) => a)
-    let lst2_idxs := exchange.map (fun (a, b) => b)
+    let lst1_idxs := exchange.map (fun (a, _) => a)
+    let lst2_idxs := exchange.map (fun (_, b) => b)
     lst1_idxs.all (fun i => i < lst1.length) ∧
     lst2_idxs.all (fun i => i < lst2.length) ∧
     lst1_idxs.Nodup ∧
     lst2_idxs.Nodup ∧
     ∀ i, i < lst1.length →
-      (i ∉ lst1_idxs → Even (lst1.get! i)) ∧
+      (i ∉ lst1_idxs → Even (lst1[i]!)) ∧
       (i ∈ lst1_idxs →
         -- find the (a, b) in exchange where a = i
         let i_idx := (lst1_idxs.indexesOf i).head!
-        Even (lst2.get! (lst2_idxs.get! i_idx)))
+        Even (lst2[lst2_idxs[i_idx]!]!))
   (bool_result → result = "YES") ∧
   (result = "NO" → ¬ bool_result) ∧
   (result ≠ "YES" ∧ result ≠ "NO" → False)

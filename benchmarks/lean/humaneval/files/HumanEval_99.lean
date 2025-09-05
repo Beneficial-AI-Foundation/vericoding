@@ -11,7 +11,9 @@ test_cases:
     expected_output: 15
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 import Std
 
 -- <vc-helpers>
@@ -42,7 +44,7 @@ let spec (result : Option Int) := match result with
     let parts := s.split (fun c => c = '.')
     (parts.length = 1 → result = s.toInt!) ∧
     (parts.length = 2 →
-      let integer_part := parts.get! 0
+      let integer_part := parts[0]!
       let is_negative := s.data.head! = '-'
       |((integer_part.toInt! - result) : ℚ)| ≤ 0.5 ∧
       (is_negative → |((integer_part.toInt! - result) : ℚ)| = 0.5 → integer_part.toInt? < result) ∧

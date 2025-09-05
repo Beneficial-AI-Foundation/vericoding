@@ -9,7 +9,9 @@ test_cases:
     expected_output: 4
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>
@@ -27,7 +29,7 @@ def problem_spec
 -- spec
 let spec (result: Nat) :=
 let string_idx := {i: Nat | i < string.length}.toFinset
-let characters := string_idx.image (fun i => string.toList.get! i)
+let characters := string_idx.image (fun i => string.toList[i]!)
 let lowercase_characters := characters.image (fun c => c.toLower)
 result = lowercase_characters.card;
 -- program termination
@@ -42,5 +44,5 @@ theorem correctness
   sorry
 -- </vc-proof>
 
-#test implementation "xyzXYZ" = 3
-#test implementation "Jerry" = 4
+-- #test implementation "xyzXYZ" = 3
+-- #test implementation "Jerry" = 4

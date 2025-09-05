@@ -17,7 +17,9 @@ test_cases:
     expected_output: 3
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>
@@ -57,8 +59,8 @@ theorem correctness
   sorry
 -- </vc-proof>
 
-#test implementation "aaa" "a" = 3
-#test implementation "aaaa" "aa" = 3
-#test implementation "" "a" = 0
-#test implementation "a" "" = 1
-#test implementation "a" "a" = 1
+-- #test implementation "aaa" "a" = 3
+-- #test implementation "aaaa" "aa" = 3
+-- #test implementation "" "a" = 0
+-- #test implementation "a" "" = 1
+-- #test implementation "a" "a" = 1

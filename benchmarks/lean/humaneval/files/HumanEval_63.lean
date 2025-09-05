@@ -17,7 +17,26 @@ test_cases:
     output: 24
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
+
+/--
+name: fibonacci_non_computable_3
+use: |
+  Non-computable definition to check if a number is a Fibonacci number such that
+  fib(n) = fib(n - 1) + fib(n - 2) + fib(n - 3).
+problems:
+  - 63
+-/
+inductive fibonacci_non_computable_3 : ℕ → ℕ → Prop
+| base0 : fibonacci_non_computable_3 0 0
+| base1 : fibonacci_non_computable_3 1 0
+| base2 : fibonacci_non_computable_3 2 1
+| step : ∀ n f₁ f₂ f₃, fibonacci_non_computable_3 n f₁ →
+fibonacci_non_computable_3 (n + 1) f₂ →
+fibonacci_non_computable_3 (n + 2) f₃ →
+fibonacci_non_computable_3 (n + 3) (f₁ + f₂ + f₃)
 
 -- <vc-helpers>
 -- </vc-helpers>

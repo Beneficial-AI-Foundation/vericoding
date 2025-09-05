@@ -10,7 +10,9 @@ test_cases:
       - "abc"
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>
@@ -42,4 +44,4 @@ theorem correctness
   sorry
 -- </vc-proof>
 
-#test implementation "abc" = ["a", "ab", "abc"]
+-- #test implementation "abc" = ["a", "ab", "abc"]

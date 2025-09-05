@@ -17,7 +17,19 @@ test_cases:
     expected_output: [1, 5]
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
+
+/--
+name: collatz_reachable
+use: |
+  Helper to check if a natural number m is reachable in the Collatz sequence starting at n.
+problems:
+  - 123
+-/
+def collatz_reachable (n m : Nat) : Prop :=
+  ∃ k, Nat.iterate (fun x => if x % 2 = 0 then x / 2 else x * 3 + 1) k n = m
 
 -- <vc-helpers>
 -- </vc-helpers>
