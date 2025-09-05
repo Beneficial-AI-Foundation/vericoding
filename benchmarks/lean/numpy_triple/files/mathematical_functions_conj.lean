@@ -42,9 +42,7 @@ def Complex.normSq (z : Complex) : Float :=
 -- </vc-helpers>
 
 def conj {n : Nat} (x : Vector Complex n) : Id (Vector Complex n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem conj_spec {n : Nat} (x : Vector Complex n) :
     ⦃⌜True⌝⦄
@@ -67,6 +65,4 @@ theorem conj_spec {n : Nat} (x : Vector Complex n) :
                     let conjX := result.get i
                     let conjY := Complex.mk y.real (-y.imag)
                     conjProd = Complex.mul conjX conjY)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

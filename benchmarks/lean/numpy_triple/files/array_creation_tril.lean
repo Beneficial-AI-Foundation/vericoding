@@ -12,18 +12,18 @@
 /-  numpy.tril: Lower triangle of a matrix.
 
     Returns a copy of the input matrix with elements above the k-th diagonal zeroed.
-    
+
     - k = 0 (default): zeros elements above the main diagonal
     - k < 0: zeros elements above the k-th diagonal below the main diagonal
     - k > 0: zeros elements above the k-th diagonal above the main diagonal
-    
+
     For a matrix element at position (i, j):
     - It is kept if i >= j - k
     - It is zeroed if i < j - k
 -/
 
 /-  Specification: tril returns a lower triangular matrix by zeroing elements above the k-th diagonal.
-    
+
     Mathematical Properties:
     1. Shape preservation: The output matrix has the same dimensions as the input
     2. Lower triangle preservation: Elements on or below the k-th diagonal are unchanged
@@ -33,12 +33,12 @@
        - k < 0: diagonal below the main diagonal
        - k > 0: diagonal above the main diagonal
     5. Idempotency: Applying tril twice with the same k yields the same result
-    
+
     Element-wise specification:
     For each element at position (i, j):
     - If i ≥ j - k (on or below the k-th diagonal), the element is preserved
     - If i < j - k (above the k-th diagonal), the element is set to 0
-    
+
     Special cases:
     - k ≥ cols: All elements are preserved (entire matrix is "lower triangular")
     - k ≤ -rows: All elements are zeroed (no elements are "on or below" such a diagonal)
@@ -53,9 +53,7 @@ open Std.Do
 
 def tril {rows cols : Nat} (m : Vector (Vector Float cols) rows) (k : Int := 0) : 
     Id (Vector (Vector Float cols) rows) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem tril_spec {rows cols : Nat} (m : Vector (Vector Float cols) rows) (k : Int := 0) :
     ⦃⌜True⌝⦄
@@ -79,6 +77,4 @@ theorem tril_spec {rows cols : Nat} (m : Vector (Vector Float cols) rows) (k : I
                   (∀ (i : Fin rows) (j : Fin cols),
                     let twice_applied := tril result k
                     (twice_applied.get i).get j = (result.get i).get j)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

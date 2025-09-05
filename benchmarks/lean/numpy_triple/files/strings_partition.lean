@@ -12,7 +12,7 @@
 
     Partitions each string in the input vector at the first occurrence of the separator.
     Returns a 3-tuple of vectors: (before_separator, separator, after_separator).
-    
+
     For each element in the input array, splits the element at the first occurrence
     of the separator, and returns three vectors containing the part before the separator,
     the separator itself, and the part after the separator. If the separator is not found,
@@ -57,9 +57,7 @@ open Std.Do
 -- </vc-helpers>
 
 def partition {n : Nat} (a : Vector String n) (sep : String) : Id (Vector String n × Vector String n × Vector String n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem partition_spec {n : Nat} (a : Vector String n) (sep : String) :
     ⦃⌜True⌝⦄
@@ -80,6 +78,4 @@ theorem partition_spec {n : Nat} (a : Vector String n) (sep : String) :
                    (sep_i = "" → after_i = "" ∧ before_i = original) ∧
                    -- Length preservation: total length is preserved
                    original.length = before_i.length + sep_i.length + after_i.length⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

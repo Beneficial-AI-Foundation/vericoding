@@ -29,9 +29,7 @@ open Std.Do
 -- </vc-helpers>
 
 def fmax {n : Nat} (x y : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem fmax_spec {n : Nat} (x y : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -53,6 +51,4 @@ theorem fmax_spec {n : Nat} (x y : Vector Float n) :
         (result.get i = x.get i ∨ result.get i = y.get i)) ∧
       -- NaN preservation: result is NaN iff both inputs are NaN
       ((result.get i).isNaN ↔ ((x.get i).isNaN ∧ (y.get i).isNaN))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

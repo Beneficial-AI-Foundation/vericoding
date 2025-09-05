@@ -30,9 +30,7 @@ def isPalindromeHelper (x : List Char) (i j : Nat) : Bool :=
 -- </vc-helpers>
 
 def IsPalindrome (x : List Char) (h_precond : IsPalindrome_precond (x)) : Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def IsPalindrome_postcond (x : List Char) (result: Bool) (h_precond : IsPalindrome_precond (x)) :=
@@ -40,9 +38,7 @@ def IsPalindrome_postcond (x : List Char) (result: Bool) (h_precond : IsPalindro
 
 theorem IsPalindrome_spec_satisfied (x: List Char) (h_precond : IsPalindrome_precond (x)) :
     IsPalindrome_postcond (x) (IsPalindrome (x) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

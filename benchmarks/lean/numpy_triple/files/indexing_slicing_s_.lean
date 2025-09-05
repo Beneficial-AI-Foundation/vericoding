@@ -41,9 +41,7 @@ structure Slice where
 -- </vc-helpers>
 
 def s_ (start : Option Nat) (stop : Option Nat) (step : Option Nat := none) : Id Slice :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem s_spec (start : Option Nat) (stop : Option Nat) (step : Option Nat := none) :
     ⦃⌜(step.isSome → step.get! > 0) ∧ 
@@ -54,6 +52,4 @@ theorem s_spec (start : Option Nat) (stop : Option Nat) (step : Option Nat := no
                slice.step = step ∧
                (slice.step.isSome → slice.step.get! > 0) ∧
                ((slice.start.isSome ∧ slice.stop.isSome) → slice.start.get! ≤ slice.stop.get!)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -8,20 +8,20 @@
 -/
 
 /-  numpy.random.BitGenerator: Base class for bit generators.
-    
+
     The BitGenerator manages state and provides functions to produce random doubles 
     and random unsigned 32- and 64-bit values. This function initializes a BitGenerator
     with an optional seed value.
-    
+
     Parameters:
     - seed: Optional seed value to initialize the generator (None uses system entropy)
-    
+
     Returns:
     - A BitGeneratorState that can be used to generate random values
 -/
 
 /-  Specification: numpy.random.BitGenerator creates a properly initialized BitGenerator state.
-    
+
     Precondition: True (any seed value is valid, including None)
     Postcondition: The returned state has the provided seed (or maintains None if no seed given)
                   and has a valid internal state representation.
@@ -44,9 +44,7 @@ structure BitGeneratorState where
 -- </vc-helpers>
 
 def numpy_random_BitGenerator (seed : Option UInt64) : Id BitGeneratorState :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_random_BitGenerator_spec (seed : Option UInt64) :
     ⦃⌜True⌝⦄
@@ -54,6 +52,4 @@ theorem numpy_random_BitGenerator_spec (seed : Option UInt64) :
     ⦃⇓result => ⌜result.seed = seed ∧ 
                  (seed.isSome → result.internal_state ≠ 0) ∧
                  (seed.isNone → result.internal_state = 0)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

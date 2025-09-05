@@ -25,9 +25,7 @@ open Std.Do
 -- </vc-helpers>
 
 def hermesub {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) : Id (Vector Float (max n m)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem hermesub_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) :
     ⦃⌜True⌝⦄
@@ -35,6 +33,4 @@ theorem hermesub_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) :
     ⦃⇓result => ⌜∀ i : Fin (max n m), 
       result.get i = (if h₁ : i.val < n then c1.get ⟨i.val, h₁⟩ else 0) - 
                      (if h₂ : i.val < m then c2.get ⟨i.val, h₂⟩ else 0)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

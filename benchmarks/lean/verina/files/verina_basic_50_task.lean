@@ -25,9 +25,7 @@ def Abs_precond (x : Int) : Prop :=
 -- </vc-helpers>
 
 def Abs (x : Int) (h_precond : Abs_precond (x)) : Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def Abs_postcond (x : Int) (result: Int) (h_precond : Abs_precond (x)) :=
@@ -35,9 +33,7 @@ def Abs_postcond (x : Int) (result: Int) (h_precond : Abs_precond (x)) :=
 
 theorem Abs_spec_satisfied (x: Int) (h_precond : Abs_precond (x)) :
     Abs_postcond (x) (Abs (x) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

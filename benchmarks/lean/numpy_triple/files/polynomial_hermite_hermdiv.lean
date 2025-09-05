@@ -1,14 +1,14 @@
 /-  Divide one Hermite series by another.
-    
+
     Returns the quotient-with-remainder of two Hermite series
     c1 / c2. The arguments are sequences of coefficients from lowest
     order term to highest, e.g., [1,2,3] represents the series
     P_0 + 2*P_1 + 3*P_2.
-    
+
     Parameters:
     - c1: 1-D array of Hermite series coefficients (dividend)
     - c2: 1-D array of Hermite series coefficients (divisor)
-    
+
     Returns:
     - (quo, rem): Pair of arrays representing quotient and remainder
 -/
@@ -26,9 +26,7 @@ open Std.Do
 
 def hermdiv {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) (h : m > 0) : 
     Id (Vector Float n × Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem hermdiv_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) (h : m > 0)
     (h_nonzero : ∃ i : Fin m, c2.get i ≠ 0) :
@@ -39,6 +37,4 @@ theorem hermdiv_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) (h 
                 (∀ i : Fin n, rem.get i = 0) ∨ 
                 (∃ k : Fin n, (∀ j : Fin n, j ≥ k → rem.get j = 0) ∧
                               (k < m ∨ m > n))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

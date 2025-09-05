@@ -22,9 +22,7 @@ def smallestMissingNumber_precond (s : List Nat) : Prop :=
 -- </vc-helpers>
 
 def smallestMissingNumber (s : List Nat) (h_precond : smallestMissingNumber_precond (s)) : Nat :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def smallestMissingNumber_postcond (s : List Nat) (result: Nat) (h_precond : smallestMissingNumber_precond (s)) :=
@@ -32,9 +30,7 @@ def smallestMissingNumber_postcond (s : List Nat) (result: Nat) (h_precond : sma
 
 theorem smallestMissingNumber_spec_satisfied (s: List Nat) (h_precond : smallestMissingNumber_precond (s)) :
     smallestMissingNumber_postcond (s) (smallestMissingNumber (s) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

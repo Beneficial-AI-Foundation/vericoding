@@ -13,7 +13,7 @@
 
 /-  Specification: left_shift performs bitwise left shift operation on each element.
     The result is equivalent to multiplying x1[i] by 2^x2[i] for non-negative shifts.
-    
+
     Mathematical properties:
     1. Core behavior: Each element result[i] = x1[i] * 2^x2[i] for non-negative shifts
     2. Identity property: Shifting by 0 returns the original value
@@ -29,9 +29,7 @@ open Std.Do
 -- </vc-helpers>
 
 def left_shift {n : Nat} (x1 x2 : Vector Int n) : Id (Vector Int n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem left_shift_spec {n : Nat} (x1 x2 : Vector Int n) 
     (h_nonneg : ∀ i : Fin n, x2.get i ≥ 0) :
@@ -42,6 +40,4 @@ theorem left_shift_spec {n : Nat} (x1 x2 : Vector Int n)
                  (∀ i : Fin n, x1.get i = 0 → result.get i = 0) ∧
                  (∀ i : Fin n, x1.get i > 0 ∧ x2.get i > 0 → result.get i > x1.get i) ∧
                  (∀ i : Fin n, x1.get i < 0 ∧ x2.get i > 0 → result.get i < x1.get i)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -11,22 +11,22 @@
 -/
 
 /-  Split a 1D vector into equal sections (simplified version of dsplit).
-    
+
     Since dsplit operates on the 3rd axis of 3D arrays, this simplified version
     demonstrates the splitting behavior on a 1D vector. The actual dsplit would
     work on nested Vector structures representing 3D arrays.
-    
+
     This function divides a vector into k equal sections, where k must divide
     the length of the vector evenly. Returns a list of vectors.
 -/
 
 /-  Specification: dsplit divides a vector into equal sections.
-    
+
     Precondition: sections = k and k > 0 (array size must be k * n)
     Postcondition: Returns k sub-vectors, each of size n. The i-th sub-vector
                    contains elements from positions i*n to (i+1)*n-1 of the 
                    original array.
-    
+
     Mathematical property: Concatenating all sub-vectors in order reconstructs
                           the original vector.
 -/
@@ -40,9 +40,7 @@ open Std.Do
 
 def dsplit {n k : Nat} (arr : Vector Float (k * n)) (sections : Nat) 
   (h : sections = k ∧ k > 0) : Id (List (Vector Float n)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem dsplit_spec {n k : Nat} (arr : Vector Float (k * n))
   (h : k > 0) :
@@ -58,6 +56,4 @@ theorem dsplit_spec {n k : Nat} (arr : Vector Float (k * n))
                     _ = (i.val + 1) * n := by rw [Nat.add_mul, Nat.one_mul]
                     _ ≤ k * n := Nat.mul_le_mul_right _ (Nat.succ_le_of_lt h1)
                 ⟩⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

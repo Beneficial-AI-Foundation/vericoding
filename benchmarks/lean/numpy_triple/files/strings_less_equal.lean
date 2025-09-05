@@ -13,7 +13,7 @@
     Performs element-wise string comparison between two vectors of strings.
     Returns a boolean vector indicating whether each string in x1 is lexicographically 
     less than or equal to the corresponding string in x2.
-    
+
     This function compares strings lexicographically and returns True for each
     position where x1[i] <= x2[i], False otherwise.
 -/
@@ -22,7 +22,7 @@
 
     Precondition: True (no special preconditions for string comparison)
     Postcondition: For all indices i, result[i] = (x1[i] <= x2[i])
-    
+
     Mathematical Properties:
     - Reflexive: less_equal x x returns all True (x <= x is always true)
     - Antisymmetric: if less_equal x y and less_equal y x are both True, then equal x y is True
@@ -42,9 +42,7 @@ open Std.Do
 -- </vc-helpers>
 
 def less_equal {n : Nat} (x1 x2 : Vector String n) : Id (Vector Bool n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem less_equal_spec {n : Nat} (x1 x2 : Vector String n) :
     ⦃⌜True⌝⦄
@@ -63,6 +61,4 @@ theorem less_equal_spec {n : Nat} (x1 x2 : Vector String n) :
                  (∀ i : Fin n, ∀ z : String, x1.get i <= z ∧ z <= x2.get i → x1.get i <= x2.get i) ∧
                  -- Decidability: result is always boolean (true or false)
                  (∀ i : Fin n, result.get i = true ∨ result.get i = false)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

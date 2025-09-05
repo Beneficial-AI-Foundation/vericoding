@@ -36,9 +36,7 @@ def swap (a : Array Int) (i j : Nat) : Array Int :=
 -- </vc-helpers>
 
 def SelectionSort (a : Array Int) (h_precond : SelectionSort_precond (a)) : Array Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def SelectionSort_postcond (a : Array Int) (result: Array Int) (h_precond : SelectionSort_precond (a)) :=
@@ -46,9 +44,7 @@ def SelectionSort_postcond (a : Array Int) (result: Array Int) (h_precond : Sele
 
 theorem SelectionSort_spec_satisfied (a: Array Int) (h_precond : SelectionSort_precond (a)) :
     SelectionSort_postcond (a) (SelectionSort (a) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

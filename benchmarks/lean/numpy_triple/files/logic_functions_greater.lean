@@ -2,9 +2,9 @@
 
     Returns a boolean vector where each element indicates whether the
     corresponding element in x1 is greater than the corresponding element in x2.
-    
+
     This is equivalent to x1 > x2 in terms of array broadcasting.
-    
+
     Follows IEEE 754 standard for floating point comparisons:
     - Comparisons with NaN always return false
     - Returns boolean array of same shape as inputs
@@ -13,7 +13,7 @@
 /-  Specification: numpy.greater returns a boolean vector where each element
     is true if and only if the corresponding element in x1 is greater than
     the corresponding element in x2.
-    
+
     This specification captures:
     1. Basic element-wise comparison semantics
     2. Antisymmetry property of greater-than relation
@@ -31,9 +31,7 @@ open Std.Do
 -- </vc-helpers>
 
 def numpy_greater {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Bool n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_greater_spec {n : Nat} (x1 x2 : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -45,6 +43,4 @@ theorem numpy_greater_spec {n : Nat} (x1 x2 : Vector Float n) :
                              ((x1.get i).isNaN ∨ (x2.get i).isNaN → result.get i = false) ∧
                              -- Boolean result: each element is either true or false
                              (result.get i = true ∨ result.get i = false)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

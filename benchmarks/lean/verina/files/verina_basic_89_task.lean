@@ -21,9 +21,7 @@ def SetToSeq_precond (s : List Int) : Prop :=
 -- </vc-helpers>
 
 def SetToSeq (s : List Int) (h_precond : SetToSeq_precond (s)) : List Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def SetToSeq_postcond (s : List Int) (result: List Int) (h_precond : SetToSeq_precond (s)) :=
@@ -36,9 +34,7 @@ def SetToSeq_postcond (s : List Int) (result: List Int) (h_precond : SetToSeq_pr
 
 theorem SetToSeq_spec_satisfied (s: List Int) (h_precond : SetToSeq_precond (s)) :
     SetToSeq_postcond (s) (SetToSeq (s) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

@@ -11,11 +11,11 @@
 /-  Test element-wise for negative infinity, return result as bool array. -/
 
 /-  Specification: isneginf returns True for negative infinity elements, False otherwise.
-    
+
     This function tests each element according to IEEE 754 floating-point standard:
     - Returns true if the element is negative infinity (-∞)
     - Returns false for all other values including positive infinity, NaN, finite numbers, and zero
-    
+
     Mathematical properties:
     1. Negative infinity detection: result[i] = true iff x[i] is negative infinity
     2. Distinction from positive infinity: only negative infinity returns true
@@ -32,9 +32,7 @@ open Std.Do
 -- </vc-helpers>
 
 def isneginf {n : Nat} (x : Vector Float n) : Id (Vector Bool n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem isneginf_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -54,6 +52,4 @@ theorem isneginf_spec {n : Nat} (x : Vector Float n) :
       (result[i] = true → (x[i]).isInf ∧ (x[i]) < 0) ∧
       -- Exclusivity: cannot be both negative infinity and NaN
       (result[i] = true → ¬(x[i]).isNaN)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

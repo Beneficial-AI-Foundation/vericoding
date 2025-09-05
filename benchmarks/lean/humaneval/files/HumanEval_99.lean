@@ -20,9 +20,7 @@ import Std
 -- </vc-helpers>
 
 def implementation (s: String) : Option Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -59,10 +57,8 @@ let spec (result : Option Int) := match result with
 theorem correctness
 (s: String)
 : problem_spec implementation s
-:=
--- <vc-proof>
+:= by
   sorry
--- </vc-proof>
 
 -- #test implementation "10" = some 10
 -- #test implementation "15.3" = some 15

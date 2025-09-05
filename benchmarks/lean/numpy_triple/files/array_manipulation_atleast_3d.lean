@@ -11,7 +11,7 @@
 -/
 
 /-  numpy.atleast_3d: View a 1D vector as a 3D array with shape (1, n, 1).
-    
+
     This is a specialization of numpy.atleast_3d for 1D input.
     The function reshapes a 1D array of shape (n,) into a 3D array 
     of shape (1, n, 1) while preserving all elements.
@@ -22,7 +22,7 @@
     - Each element arr[i] is accessible at position [0][i][0] in the result
     - All elements are preserved without modification
     - The transformation is injective (different inputs produce different outputs)
-    
+
     Mathematical properties:
     1. Element preservation: Every element from the input appears exactly once in the output
     2. Shape expansion: A 1D shape (n,) becomes 3D shape (1, n, 1)
@@ -38,9 +38,7 @@ open Std.Do
 -- </vc-helpers>
 
 def atleast_3d {n : Nat} (arr : Vector Float n) : Id (Vector (Vector (Vector Float 1) n) 1) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem atleast_3d_spec {n : Nat} (arr : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -53,6 +51,4 @@ theorem atleast_3d_spec {n : Nat} (arr : Vector Float n) :
                   (result.size = 1) ∧
                   (∀ (j : Fin 1), (result.get j).size = n) ∧
                   (∀ (j : Fin 1) (k : Fin n), ((result.get j).get k).size = 1)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

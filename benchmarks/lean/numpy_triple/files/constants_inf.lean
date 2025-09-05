@@ -25,9 +25,7 @@ open Std.Do
 -- </vc-helpers>
 
 def inf : Id Float :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem inf_spec :
     ⦃⌜True⌝⦄
@@ -50,6 +48,4 @@ theorem inf_spec :
       -- Property 7: inf is positive
       result > 0
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

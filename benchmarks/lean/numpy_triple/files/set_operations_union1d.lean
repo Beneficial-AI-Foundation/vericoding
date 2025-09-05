@@ -2,7 +2,7 @@
 
     Returns the unique, sorted array of values that are in either of the two
     input arrays. The function is equivalent to unique(concatenate(ar1, ar2)).
-    
+
     The input arrays are flattened if they are not already 1D, and the result
     is always a 1D array containing the union of all elements from both arrays,
     with duplicates removed and elements sorted in ascending order.
@@ -27,9 +27,7 @@ open Std.Do
 -- </vc-helpers>
 
 def union1d {n m : Nat} (ar1 : Vector Float n) (ar2 : Vector Float m) : Id (Vector Float (n + m)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem union1d_spec {n m : Nat} (ar1 : Vector Float n) (ar2 : Vector Float m) :
     ⦃⌜True⌝⦄
@@ -47,6 +45,4 @@ theorem union1d_spec {n m : Nat} (ar1 : Vector Float n) (ar2 : Vector Float m) :
       -- Uniqueness property: no duplicate elements
       (∀ i j : Fin (n + m), i ≠ j → result.get i ≠ result.get j)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

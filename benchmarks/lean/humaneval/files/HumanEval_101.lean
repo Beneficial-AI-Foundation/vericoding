@@ -18,9 +18,7 @@ import Std.Data.HashMap
 -- </vc-helpers>
 
 def implementation (s: String) : List String :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -41,10 +39,8 @@ spec result
 theorem correctness
 (s: String)
 : problem_spec implementation s
-:=
--- <vc-proof>
+:= by
   sorry
--- </vc-proof>
 
 -- #test implementation "Hi, my name is John" = ["Hi", "my", "name", "is", "John"]
 -- #test implementation "One, two, three, four, five, six" = ["One", "two", "three", "four", "five", "six"]

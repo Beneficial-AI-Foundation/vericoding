@@ -13,9 +13,9 @@
 
     Precondition: All elements must be positive (x[i] > 0) since the logarithm
     is only defined for positive real numbers.
-    
+
     Postcondition: For all indices i, result[i] = Float.log2 x[i]
-    
+
     Mathematical properties:
     - log2(2^x) = x for any x
     - log2(x * y) = log2(x) + log2(y) for positive x, y
@@ -32,14 +32,10 @@ open Std.Do
 -- </vc-helpers>
 
 def log2 {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem log2_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜∀ i : Fin n, x.get i > 0⌝⦄
     log2 x
     ⦃⇓result => ⌜∀ i : Fin n, result.get i = Float.log2 (x.get i)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

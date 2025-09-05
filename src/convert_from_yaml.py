@@ -28,11 +28,10 @@ def get_template(suffix: str) -> list[str]:
     """Get template for the output file."""
     if suffix == 'lean':
         return ['vc-description', '\n', 'vc-preamble', '\n', 'vc-helpers', '\n', 
-                    'vc-signature', 'vc-implementation', '\n', 
-                    'vc-condition', 'vc-proof', '\n', 'vc-postamble']
+                'vc-definitions', '\n', 'vc-theorems', '\n', 'vc-postamble']
     elif suffix == 'dfy' or suffix == 'rs':
         return ['vc-description', '\n', 'vc-preamble', '\n', 'vc-helpers', '\n', 
-                    'vc-spec', 'vc-code', '\n', 'vc-postamble']
+                'vc-spec', 'vc-code', '\n', 'vc-postamble']
     else:
         raise ValueError(f"Unsupported suffix: {suffix}")
 
@@ -330,7 +329,9 @@ def process_benchmarks(benchmarks_dir: Path, suffix: str = None, use_all_keys: b
         if level1_dir.is_dir():
             for level2_dir in level1_dir.iterdir():
                 if level2_dir.is_dir():
-                    level2_dirs.append(level2_dir)
+                    yaml_dir = level2_dir / "yaml"
+                    if yaml_dir.exists():
+                        level2_dirs.append(level2_dir)
     
     if not level2_dirs:
         print(f"No level-2 subdirectories found in {benchmarks_dir}")

@@ -20,9 +20,7 @@ open Std.Do
 -- </vc-helpers>
 
 def NPY_PI_2 : Id Float :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem NPY_PI_2_spec :
     ⦃⌜True⌝⦄
@@ -43,6 +41,4 @@ theorem NPY_PI_2_spec :
       -- 4*(π/2) = 2π is approximately 6.2832... (full circle)
       6.283 < 4 * result ∧ 4 * result < 6.284
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

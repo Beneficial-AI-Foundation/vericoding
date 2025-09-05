@@ -30,9 +30,7 @@ open Std.Do
 -- </vc-helpers>
 
 def zeros (n : Nat) (α : Type) [Zero α] : Id (Vector α n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem zeros_spec (n : Nat) (α : Type) [Zero α] [Add α] [Mul α] :
     ⦃⌜True⌝⦄
@@ -46,6 +44,4 @@ theorem zeros_spec (n : Nat) (α : Type) [Zero α] [Add α] [Mul α] :
                  (∀ v : Vector α n, ∀ i : Fin n,
                    result.get i * v.get i = 0) ∧
                  (n > 0 → result.get ⟨0, sorry⟩ = 0)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

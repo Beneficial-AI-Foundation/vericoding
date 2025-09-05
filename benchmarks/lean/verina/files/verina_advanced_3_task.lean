@@ -7,7 +7,6 @@ The input consists of two arrays:
 a: The first array.
 b: The second array.
 
-
 -----Output-----
 The output is an integer:
 Returns the length of array a and b's longest common subsequence.
@@ -23,9 +22,7 @@ def intMax (x y : Int) : Int :=
 -- </vc-helpers>
 
 def LongestCommonSubsequence (a : Array Int) (b : Array Int) (h_precond : LongestCommonSubsequence_precond (a) (b)) : Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible]
 def LongestCommonSubsequence_postcond (a : Array Int) (b : Array Int) (result: Int) (h_precond : LongestCommonSubsequence_precond (a) (b)) : Prop :=
@@ -37,9 +34,7 @@ def LongestCommonSubsequence_postcond (a : Array Int) (b : Array Int) (result: I
 
 theorem LongestCommonSubsequence_spec_satisfied (a: Array Int) (b: Array Int) (h_precond : LongestCommonSubsequence_precond (a) (b)) :
     LongestCommonSubsequence_postcond (a) (b) (LongestCommonSubsequence (a) (b) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

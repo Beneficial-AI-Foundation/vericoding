@@ -11,9 +11,7 @@ open Std.Do
 -- </vc-helpers>
 
 def tan {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem tan_spec {n : Nat} (x : Vector Float n) 
     (h_valid : ∀ i : Fin n, Float.cos (x.get i) ≠ 0) :
@@ -21,6 +19,4 @@ theorem tan_spec {n : Nat} (x : Vector Float n)
     tan x
     ⦃⇓result => ⌜∀ i : Fin n, result.get i = Float.tan (x.get i) ∧ 
                                 result.get i = Float.sin (x.get i) / Float.cos (x.get i)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

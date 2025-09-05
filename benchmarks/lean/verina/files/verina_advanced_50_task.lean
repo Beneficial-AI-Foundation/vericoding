@@ -19,9 +19,7 @@ def mergeSorted_precond (a1 : Array Nat) (a2 : Array Nat) : Prop :=
 -- </vc-helpers>
 
 def mergeSorted (a1 : Array Nat) (a2 : Array Nat) : Array Nat :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible]
 def mergeSorted_postcond (a1 : Array Nat) (a2 : Array Nat) (result: Array Nat) : Prop :=
@@ -30,9 +28,7 @@ def mergeSorted_postcond (a1 : Array Nat) (a2 : Array Nat) (result: Array Nat) :
 
 theorem mergeSorted_spec_satisfied (a1: Array Nat) (a2: Array Nat) :
     mergeSorted_postcond (a1) (a2) (mergeSorted (a1) (a2)) := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

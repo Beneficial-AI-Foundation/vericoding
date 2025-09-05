@@ -20,9 +20,7 @@ def searchInsert_precond (xs : List Int) (target : Int) : Prop :=
 -- </vc-helpers>
 
 def searchInsert (xs : List Int) (target : Int) (h_precond : searchInsert_precond (xs) (target)) : Nat :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible]
 def searchInsert_postcond (xs : List Int) (target : Int) (result: Nat) (h_precond : searchInsert_precond (xs) (target)) : Prop :=
@@ -34,9 +32,7 @@ def searchInsert_postcond (xs : List Int) (target : Int) (result: Nat) (h_precon
 
 theorem searchInsert_spec_satisfied (xs: List Int) (target: Int) (h_precond : searchInsert_precond (xs) (target)) :
     searchInsert_postcond (xs) (target) (searchInsert (xs) (target) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

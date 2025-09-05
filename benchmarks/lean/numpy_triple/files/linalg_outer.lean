@@ -16,13 +16,13 @@
     is the product of the i-th element of the first vector and the j-th element
     of the second vector. This captures the fundamental mathematical property
     that outer(a,b)[i,j] = a[i] * b[j].
-    
+
     The specification includes:
     1. Core property: Each matrix element equals the product of corresponding vector elements
     2. Row structure: Each row i is the vector b scaled by a[i]
     3. Column structure: Each column j is the vector a scaled by b[j]
     4. Bilinearity: The outer product is linear in both arguments
-    
+
     This captures the essential mathematical behavior of the outer product operation,
     which is fundamental in linear algebra and tensor analysis. -/
 
@@ -34,9 +34,7 @@ open Std.Do
 -- </vc-helpers>
 
 def outer {m n : Nat} [Mul α] (a : Vector α m) (b : Vector α n) : Id (Vector (Vector α n) m) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem outer_spec {m n : Nat} [Mul α] (a : Vector α m) (b : Vector α n) :
     ⦃⌜True⌝⦄
@@ -46,6 +44,4 @@ theorem outer_spec {m n : Nat} [Mul α] (a : Vector α m) (b : Vector α n) :
       -- This captures the fundamental definition of outer product: (a ⊗ b)[i,j] = a[i] * b[j]
       ∀ (i : Fin m) (j : Fin n), (result.get i).get j = a.get i * b.get j
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

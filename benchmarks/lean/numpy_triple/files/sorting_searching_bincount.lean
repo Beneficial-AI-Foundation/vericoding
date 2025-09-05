@@ -3,7 +3,7 @@
     Count number of occurrences of each value in array of non-negative ints.
     The number of bins (of size 1) is one larger than the largest value in x.
     Each bin gives the number of occurrences of its index value in x.
-    
+
     This function takes a 1D array of non-negative integers and returns
     an array where the i-th element is the count of how many times the
     value i appears in the input array.
@@ -24,9 +24,7 @@ open Std.Do
 
 def numpy_bincount {n : Nat} (x : Vector Nat n) (max_val : Nat) 
     (h_bounds : ∀ i : Fin n, x.get i ≤ max_val) : Id (Vector Nat (max_val + 1)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_bincount_spec {n : Nat} (x : Vector Nat n) (max_val : Nat) 
     (h_bounds : ∀ i : Fin n, x.get i ≤ max_val) :
@@ -34,6 +32,4 @@ theorem numpy_bincount_spec {n : Nat} (x : Vector Nat n) (max_val : Nat)
     numpy_bincount x max_val h_bounds
     ⦃⇓result => ⌜∀ val : Fin (max_val + 1), 
                    result.get val = (x.toList.filter (· = val.val)).length⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

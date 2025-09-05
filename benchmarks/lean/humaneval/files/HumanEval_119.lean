@@ -43,9 +43,7 @@ let chars := paren_string.toList;
 -- </vc-helpers>
 
 def implementation (l: List String) : String :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -69,10 +67,8 @@ let spec (result : String) :=
 theorem correctness
 (l: List String)
 : problem_spec implementation l
-:=
--- <vc-proof>
+:= by
   sorry
--- </vc-proof>
 
 -- #test implementation ['()(', ')'] = "Yes"
 -- #test implementation [')', ')'] = "No"

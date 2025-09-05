@@ -36,14 +36,10 @@ open Std.Do
 -- </vc-helpers>
 
 def add {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem add_spec {n : Nat} (x1 x2 : Vector Float n) :
     ⦃⌜True⌝⦄
     add x1 x2
     ⦃⇓result => ⌜∀ i : Fin n, result.get i = x1.get i + x2.get i⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

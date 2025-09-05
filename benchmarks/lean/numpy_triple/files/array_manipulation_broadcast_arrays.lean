@@ -29,9 +29,7 @@ open Std.Do
 def broadcast_arrays {m n : Nat} (a : Vector Float m) (b : Vector Float n) 
     (h_broadcast : m = 1 ∨ n = 1 ∨ m = n) : 
     Id (Vector Float (max m n) × Vector Float (max m n)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem broadcast_arrays_spec {m n : Nat} (a : Vector Float m) (b : Vector Float n)
     (h_broadcast : m = 1 ∨ n = 1 ∨ m = n) :
@@ -48,6 +46,4 @@ theorem broadcast_arrays_spec {m n : Nat} (a : Vector Float m) (b : Vector Float
        (n = 1 → ∀ i : Fin (max m n), b_broadcast.get i = b.get ⟨0, sorry⟩) ∧
        (m = 1 ∧ n > 1 → ∀ i : Fin (max m n), i.val < n → b_broadcast.get i = b.get ⟨i.val, sorry⟩) ∧
        (m = n → ∀ i : Fin (max m n), i.val < n → b_broadcast.get i = b.get ⟨i.val, sorry⟩)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

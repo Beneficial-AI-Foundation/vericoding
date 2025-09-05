@@ -20,9 +20,7 @@ open Std.Do
 -- </vc-helpers>
 
 def less_equal {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Bool n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem less_equal_spec {n : Nat} (x1 x2 : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -31,6 +29,4 @@ theorem less_equal_spec {n : Nat} (x1 x2 : Vector Float n) :
                  (result.get i = true ↔ x1.get i ≤ x2.get i) ∧
                  (result.get i = false ↔ x1.get i > x2.get i) ∧
                  (x1.get i = x2.get i → result.get i = true)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -19,7 +19,7 @@
 
     The mathematical property is that the conversion preserves the polynomial
     but expresses it in terms of Laguerre polynomials instead of standard monomials.
-    
+
     Key properties:
     1. Same degree: Both input and output have the same number of coefficients
     2. Basis transformation: Standard polynomial → Laguerre polynomial basis
@@ -39,9 +39,7 @@ open Std.Do
 -- </vc-helpers>
 
 def poly2lag {n : Nat} (pol : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem poly2lag_spec {n : Nat} (pol : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -56,6 +54,4 @@ theorem poly2lag_spec {n : Nat} (pol : Vector Float n) :
                   -- Laguerre polynomial: Σ(i=0 to n-1) result[i] * L_i(x)
                   -- where L_i(x) is the i-th Laguerre polynomial
                   True)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

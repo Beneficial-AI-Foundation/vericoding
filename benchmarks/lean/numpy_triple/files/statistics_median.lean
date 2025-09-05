@@ -27,9 +27,7 @@ open Std.Do
 -- </vc-helpers>
 
 def median {n : Nat} (a : Vector Float (n + 1)) : Id Float :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem median_spec {n : Nat} (a : Vector Float (n + 1)) :
     ⦃⌜True⌝⦄
@@ -61,6 +59,4 @@ theorem median_spec {n : Nat} (a : Vector Float (n + 1)) :
             -- or can be computed from values in the vector
             (∃ i : Fin (n + 1), m = sorted.get i ∨ 
              ∃ i j : Fin (n + 1), m = (sorted.get i + sorted.get j) / 2)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

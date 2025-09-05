@@ -9,18 +9,18 @@
 -/
 
 /-  Evaluate a 2-D HermiteE series at points (x, y).
-    
+
     This function computes the bivariate HermiteE polynomial:
     p(x,y) = ∑_{i,j} c_{i,j} * He_i(x) * He_j(y)
-    
+
     where He_i and He_j are the HermiteE basis polynomials.
 -/
 
 /-  Specification: hermeval2d evaluates a 2D HermiteE series at corresponding points.
-    
+
     This function implements the mathematical formula:
     p(x,y) = ∑_{i,j} c_{i,j} * He_i(x) * He_j(y)
-    
+
     Key properties:
     1. Bivariate polynomial evaluation using HermiteE basis
     2. Mathematical correctness and linearity properties
@@ -36,9 +36,7 @@ open Std.Do
 
 def hermeval2d {n m : Nat} (x y : Vector Float n) (c : Vector (Vector Float m) n) : 
     Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem hermeval2d_spec {n m : Nat} (x y : Vector Float n) (c : Vector (Vector Float m) n) :
     ⦃⌜True⌝⦄
@@ -103,6 +101,4 @@ theorem hermeval2d_spec {n m : Nat} (x y : Vector Float n) (c : Vector (Vector F
                      ∃ const_result : Vector Float n,
                      hermeval2d x y const_coeff = pure const_result ∧
                      ∀ k : Fin n, const_result.get k = 1))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

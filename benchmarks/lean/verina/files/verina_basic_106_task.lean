@@ -25,9 +25,7 @@ def arraySum_precond (a : Array Int) (b : Array Int) : Prop :=
 -- </vc-helpers>
 
 def arraySum (a : Array Int) (b : Array Int) (h_precond : arraySum_precond (a) (b)) : Array Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def arraySum_postcond (a : Array Int) (b : Array Int) (result: Array Int) (h_precond : arraySum_precond (a) (b)) :=
@@ -35,9 +33,7 @@ def arraySum_postcond (a : Array Int) (b : Array Int) (result: Array Int) (h_pre
 
 theorem arraySum_spec_satisfied (a: Array Int) (b: Array Int) (h_precond : arraySum_precond (a) (b)) :
     arraySum_postcond (a) (b) (arraySum (a) (b) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

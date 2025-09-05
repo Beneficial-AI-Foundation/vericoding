@@ -13,13 +13,13 @@
 /-  Specification: iscomplexobj returns True for complex type vectors.
     This function checks the type, not the values - even complex numbers
     with zero imaginary part are considered complex objects.
-    
+
     Key properties:
     - Always returns true for vectors of complex numbers
     - Type-based checking: independent of actual values
     - Zero complex numbers (0+0i) are still complex objects
     - Complex vectors with any values are complex objects
-    
+
     Mathematical properties:
     - Type consistency: all Complex vectors are complex objects
     - Value independence: result depends only on type, not values
@@ -41,9 +41,7 @@ structure Complex where
 -- </vc-helpers>
 
 def iscomplexobj {n : Nat} (x : Vector Complex n) : Id Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem iscomplexobj_spec {n : Nat} (x : Vector Complex n) :
     ⦃⌜True⌝⦄
@@ -63,6 +61,4 @@ theorem iscomplexobj_spec {n : Nat} (x : Vector Complex n) :
       -- Mathematical property: zero complex numbers are complex
       (let zero_complex : Complex := {re := 0.0, im := 0.0}
        result = true)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

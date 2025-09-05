@@ -9,31 +9,31 @@
 -/
 
 /-  numpy.linalg.matrix_rank: Return matrix rank of array using SVD method.
-    
+
     The rank of a matrix is the number of linearly independent columns
     (or rows). For numerical computation, this is determined by counting
     the number of singular values greater than a threshold.
-    
+
     This implementation focuses on the core mathematical behavior for
     square matrices, using default tolerance.
 -/
 
 /-  Specification: matrix_rank computes the rank of a matrix using SVD method.
-    
+
     The rank is the number of singular values greater than a numerical threshold.
     This corresponds to the number of linearly independent columns (or rows).
-    
+
     Mathematical definition:
     - For a matrix A, rank(A) = number of non-zero singular values
     - In numerical computation, "non-zero" means above a threshold
-    
+
     Key properties verified:
     1. Bounds: 0 ≤ rank(A) ≤ min(m, n) for m×n matrix
     2. Zero matrix: rank(0) = 0 (all elements zero)
     3. Identity matrix: rank(I) = n for n×n identity matrix
     4. Rank deficiency: If a row/column is all zeros, rank < full rank
     5. Linear dependence: If rows/columns are linearly dependent, rank < full rank
-    
+
     The threshold behavior ensures numerical stability but is not explicitly
     specified here for simplicity.
 -/
@@ -46,9 +46,7 @@ open Std.Do
 -- </vc-helpers>
 
 def matrix_rank {m n : Nat} (A : Vector (Vector Float n) m) : Id Nat :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem matrix_rank_spec {m n : Nat} (A : Vector (Vector Float n) m) :
     ⦃⌜True⌝⦄
@@ -79,6 +77,4 @@ theorem matrix_rank_spec {m n : Nat} (A : Vector (Vector Float n) m) :
         ∃ h₁ : 0 < m, ∃ h₂ : 0 < n,
         (result = 1 ↔ (A.get ⟨0, h₁⟩).get ⟨0, h₂⟩ ≠ 0))
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

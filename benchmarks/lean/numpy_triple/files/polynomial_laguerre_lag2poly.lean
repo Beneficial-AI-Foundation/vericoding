@@ -30,9 +30,7 @@ axiom evaluatePolynomial {k : Nat} : Vector Float k → Float → Float
 -- </vc-helpers>
 
 def lag2poly {n : Nat} (c : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem lag2poly_spec {n : Nat} (c : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -50,6 +48,4 @@ theorem lag2poly_spec {n : Nat} (c : Vector Float n) :
       -- Basic identity check at evaluation point x = 0
       (evaluatePolynomial result 0 = evaluateLaguerrePolynomial c 0)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

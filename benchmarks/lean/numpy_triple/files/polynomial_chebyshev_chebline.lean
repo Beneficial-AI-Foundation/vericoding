@@ -16,10 +16,10 @@
 /-  Specification: chebline returns correct Chebyshev coefficients for a linear function.
     The key mathematical property is that the Chebyshev series T₀(x) = 1 and T₁(x) = x,
     so the coefficients [off, scl] directly represent off*T₀(x) + scl*T₁(x) = off + scl*x.
-    
+
     The result is always a 2-element vector [off, scl], even when scl = 0.
     This represents the Chebyshev series: off * T₀(x) + scl * T₁(x) = off + scl*x
-    
+
     Mathematical Properties:
     1. The first coefficient equals the offset parameter
     2. The second coefficient equals the scale parameter
@@ -34,15 +34,11 @@ open Std.Do
 -- </vc-helpers>
 
 def chebline (off scl : Float) : Id (Vector Float 2) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem chebline_spec (off scl : Float) :
     ⦃⌜True⌝⦄
     chebline off scl
     ⦃⇓result => ⌜result.get ⟨0, by decide⟩ = off ∧ 
                  result.get ⟨1, by decide⟩ = scl⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

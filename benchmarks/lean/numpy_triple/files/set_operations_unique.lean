@@ -20,9 +20,7 @@ open Std.Do
 -- </vc-helpers>
 
 def unique {n : Nat} (arr : Vector Int n) : Id (List Int) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem unique_spec {n : Nat} (arr : Vector Int n) :
     ⦃⌜True⌝⦄
@@ -31,6 +29,4 @@ theorem unique_spec {n : Nat} (arr : Vector Int n) :
                   (∀ i : Nat, i < result.length → ∃ j : Fin n, result[i]? = some (arr.get j)) ∧
                   (∀ i j : Nat, i < result.length → j < result.length → i ≠ j → result[i]? ≠ result[j]?) ∧
                   (∀ i : Fin n, ∃ j : Nat, j < result.length ∧ some (arr.get i) = result[j]?)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

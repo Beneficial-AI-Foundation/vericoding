@@ -29,9 +29,7 @@ def copyFrom (a : Array Int) (i : Nat) (acc : Array Int) : Array Int :=
 -- </vc-helpers>
 
 def remove_front (a : Array Int) (h_precond : remove_front_precond (a)) : Array Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def remove_front_postcond (a : Array Int) (result: Array Int) (h_precond : remove_front_precond (a)) :=
@@ -39,9 +37,7 @@ def remove_front_postcond (a : Array Int) (result: Array Int) (h_precond : remov
 
 theorem remove_front_spec_satisfied (a: Array Int) (h_precond : remove_front_precond (a)) :
     remove_front_postcond (a) (remove_front (a) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

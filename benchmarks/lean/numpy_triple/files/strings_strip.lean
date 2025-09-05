@@ -14,7 +14,7 @@
     This is a combination of lstrip and rstrip operations. The behavior depends on the chars parameter:
     - If chars is None, whitespace characters are removed from both ends
     - If chars is provided, any combination of those characters is removed from both ends
-    
+
     The function preserves the shape of the input array and handles empty strings
     appropriately by returning them unchanged.
 
@@ -59,9 +59,7 @@ open Std.Do
 -- </vc-helpers>
 
 def strip {n : Nat} (a : Vector String n) (chars : Option String) : Id (Vector String n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem strip_spec {n : Nat} (a : Vector String n) (chars : Option String) :
     ⦃⌜True⌝⦄
@@ -122,6 +120,4 @@ theorem strip_spec {n : Nat} (a : Vector String n) (chars : Option String) :
         ∃ origJ origK : Nat, j < origJ → origJ < origK → origK < original.length →
           result.get? ⟨j⟩ = original.get? ⟨origJ⟩ ∧ 
           result.get? ⟨k⟩ = original.get? ⟨origK⟩)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

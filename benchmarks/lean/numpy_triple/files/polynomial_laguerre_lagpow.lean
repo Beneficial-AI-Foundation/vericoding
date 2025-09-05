@@ -25,9 +25,7 @@ open Std.Do
 -- </vc-helpers>
 
 def lagpow {n : Nat} (c : Vector Float n) (pow : Nat) (maxpower : Nat) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem lagpow_spec {n : Nat} (c : Vector Float n) (pow : Nat) (maxpower : Nat) 
     (h_pow_pos : pow > 0) (h_max_bound : pow ≤ maxpower) (h_max_reasonable : maxpower ≤ 16) :
@@ -41,6 +39,4 @@ theorem lagpow_spec {n : Nat} (c : Vector Float n) (pow : Nat) (maxpower : Nat)
       -- This satisfies the fundamental polynomial exponentiation property
       True -- Placeholder for more complex Laguerre polynomial properties
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

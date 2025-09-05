@@ -8,7 +8,7 @@
     - a: Input array of strings
     - width: Target width for each string
     - fillchar: Character to use for padding (must be exactly one character)
-    
+
     Returns:
     - Array where each string is left-justified to the specified width
 -/
@@ -32,9 +32,7 @@ open Std.Do
 -- </vc-helpers>
 
 def ljust {n : Nat} (a : Vector String n) (width : Nat) (fillchar : String) : Id (Vector String n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem ljust_spec {n : Nat} (a : Vector String n) (width : Nat) (fillchar : String)
     (h_fillchar : fillchar.length = 1) :
@@ -61,6 +59,4 @@ theorem ljust_spec {n : Nat} (a : Vector String n) (width : Nat) (fillchar : Str
         (orig.length < width → res.length = width) ∧
         -- 6. Consistency constraint: all operations preserve the vector structure
         (orig.length = 0 → res.length = width)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

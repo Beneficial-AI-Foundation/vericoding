@@ -1,19 +1,19 @@
 /-  numpy.hypot: Given the 'legs' of a right triangle, return its hypotenuse.
-    
+
     Computes the hypotenuse of a right triangle given the lengths of its two legs.
     This is equivalent to sqrt(x1^2 + x2^2), but is implemented in a way that
     avoids overflow for large values.
-    
+
     The function operates element-wise on the input vectors, computing the
     hypotenuse for each pair of corresponding elements.
 -/
 
 /-  Specification: numpy.hypot returns a vector where each element is the
     hypotenuse computed from the corresponding elements of x1 and x2.
-    
+
     Precondition: True (no special preconditions)
     Postcondition: For all indices i, result[i] = sqrt(x1[i]² + x2[i]²)
-    
+
     Mathematical properties:
     1. The result is always non-negative
     2. The result follows the Pythagorean theorem
@@ -30,9 +30,7 @@ open Std.Do
 -- </vc-helpers>
 
 def numpy_hypot {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_hypot_spec {n : Nat} (x1 x2 : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -48,6 +46,4 @@ theorem numpy_hypot_spec {n : Nat} (x1 x2 : Vector Float n) :
       -- Special cases
       (x1.get i = 0 → result.get i = Float.abs (x2.get i)) ∧
       (x2.get i = 0 → result.get i = Float.abs (x1.get i))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

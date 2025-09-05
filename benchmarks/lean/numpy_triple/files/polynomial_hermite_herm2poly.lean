@@ -11,15 +11,15 @@
 /-  Convert a Hermite series to a polynomial.
     Converts coefficients of a Hermite series (ordered from lowest to highest degree)
     to coefficients of the equivalent standard polynomial (ordered from lowest to highest degree).
-    
+
     The Hermite polynomials H_n(x) satisfy the recurrence relation:
     H_{n+1}(x) = 2x * H_n(x) - 2n * H_{n-1}(x)
     with H_0(x) = 1 and H_1(x) = 2x
-    
+
     This function performs the inverse transformation, converting from Hermite basis to standard basis. -/
 
 /-  Specification: herm2poly converts Hermite series coefficients to standard polynomial coefficients.
-    
+
     The conversion satisfies:
     1. The output has the same length as the input
     2. For n=1 (constant), the output equals the input
@@ -36,9 +36,7 @@ open Std.Do
 -- </vc-helpers>
 
 def herm2poly {n : Nat} (c : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem herm2poly_spec {n : Nat} (c : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -58,6 +56,4 @@ theorem herm2poly_spec {n : Nat} (c : Vector Float n) :
       (∃ poly2herm : Vector Float n → Vector Float n, 
         poly2herm result = c)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

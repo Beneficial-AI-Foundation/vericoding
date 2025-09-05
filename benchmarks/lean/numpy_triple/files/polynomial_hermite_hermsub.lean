@@ -9,7 +9,7 @@
 -/
 
 /-  Subtract one Hermite series from another.
-    
+
     Returns the difference of two Hermite series c1 - c2. The sequences of coefficients 
     are from lowest order term to highest. The subtraction is component-wise, with 
     missing coefficients treated as zero. -/
@@ -26,9 +26,7 @@ open Std.Do
 
 def hermsub {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) : 
     Id (Vector Float (max n m)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem hermsub_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) :
     ⦃⌜True⌝⦄
@@ -44,6 +42,4 @@ theorem hermsub_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) :
       (m > n → ∀ i : Nat, n ≤ i ∧ i < m → 
         result.get ⟨i, sorry⟩ = -c2.get ⟨i, sorry⟩)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

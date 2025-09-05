@@ -20,9 +20,7 @@ open Std.Do
 -- </vc-helpers>
 
 def typecodes (category : String) : Id (Option String) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem typecodes_spec (category : String) :
     ⦃⌜True⌝⦄
@@ -39,6 +37,4 @@ theorem typecodes_spec (category : String) :
       (category = "All" → result = some "?bhilqnpBHILQNPfdgFDGSUVOMm") ∧
       (category ∉ ["Character", "Integer", "UnsignedInteger", "Float", "Complex", "AllInteger", "AllFloat", "Datetime", "All"] → result = none)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

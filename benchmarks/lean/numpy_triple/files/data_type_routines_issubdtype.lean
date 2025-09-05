@@ -23,7 +23,7 @@
     Precondition: True (works with any valid NumPy data types)
     Postcondition: The result is True if and only if arg1 is a subtype of arg2 
     according to the NumPy type hierarchy rules.
-    
+
     Key properties:
     1. Reflexivity: Every type is a subtype of itself
     2. Transitivity: If A is subtype of B and B is subtype of C, then A is subtype of C
@@ -120,9 +120,7 @@ def isSubDType : NumpyDType → NumpyDType → Bool
 -- </vc-helpers>
 
 def issubdtype (arg1 arg2 : NumpyDType) : Id Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem issubdtype_spec (arg1 arg2 : NumpyDType) :
     ⦃⌜True⌝⦄
@@ -141,6 +139,4 @@ theorem issubdtype_spec (arg1 arg2 : NumpyDType) :
                  (arg1 = NumpyDType.float32 ∧ arg2 = NumpyDType.float64 → result = false) ∧
                  (arg1 = NumpyDType.float64 ∧ arg2 = NumpyDType.float32 → result = false) ∧
                  (arg1 = NumpyDType.int32 ∧ arg2 = NumpyDType.floating NumpyDType.generic → result = false)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

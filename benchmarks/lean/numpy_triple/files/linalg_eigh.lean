@@ -27,9 +27,7 @@ structure EighResult (n : Nat) where
 -- </vc-helpers>
 
 def eigh {n : Nat} (a : Vector (Vector Float n) n) : Id (EighResult n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem eigh_spec {n : Nat} (a : Vector (Vector Float n) n) 
     (h_symmetric : ∀ i j : Fin n, (a.get i).get j = (a.get j).get i) :
@@ -54,6 +52,4 @@ theorem eigh_spec {n : Nat} (a : Vector (Vector Float n) n)
             acc + (a.get j).get ⟨k, by sorry⟩ * (v_i.get ⟨k, by sorry⟩)) 0
           av_j = lambda_i * (v_i.get j))
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

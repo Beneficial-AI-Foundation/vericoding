@@ -27,14 +27,10 @@ open Std.Do
 -- </vc-helpers>
 
 def asanyarray {n : Nat} (a : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem asanyarray_spec {n : Nat} (a : Vector Float n) :
     ⦃⌜True⌝⦄
     asanyarray a
     ⦃⇓result => ⌜∀ i : Fin n, result.get i = a.get i⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

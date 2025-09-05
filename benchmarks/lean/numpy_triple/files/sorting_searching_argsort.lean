@@ -20,9 +20,7 @@ open Std.Do
 -- </vc-helpers>
 
 def argsort {n : Nat} (a : Vector Float n) : Id (Vector (Fin n) n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem argsort_spec {n : Nat} (a : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -34,6 +32,4 @@ theorem argsort_spec {n : Nat} (a : Vector Float n) :
                    (∀ i j : Fin n, i < j → a.get (indices.get i) ≤ a.get (indices.get j)) ∧
                    -- For equal elements, maintain relative order (stable sort)
                    (∀ i j : Fin n, i < j → a.get (indices.get i) = a.get (indices.get j) → indices.get i < indices.get j)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -12,7 +12,7 @@
 
     Precondition: True (no special preconditions for squaring)
     Postcondition: For all indices i, result[i] = x[i]^2
-    
+
     Mathematical Properties:
     - Result is always non-negative: ∀ i, result[i] ≥ 0
     - Preserves zeros: x[i] = 0 → result[i] = 0
@@ -27,15 +27,11 @@ open Std.Do
 -- </vc-helpers>
 
 def numpy_square {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_square_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
     numpy_square x
     ⦃⇓result => ⌜∀ i : Fin n, result.get i = (x.get i) * (x.get i) ∧ 
                  result.get i ≥ 0⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

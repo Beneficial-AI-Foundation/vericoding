@@ -19,14 +19,10 @@ open Std.Do
 -- </vc-helpers>
 
 def signbit {n : Nat} (x : Vector Float n) : Id (Vector Bool n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem signbit_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
     signbit x
     ⦃⇓result => ⌜∀ i : Fin n, result.get i = (x.get i < 0)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

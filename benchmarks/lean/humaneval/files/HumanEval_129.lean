@@ -21,9 +21,7 @@ import Std.Data.HashMap
 -- </vc-helpers>
 
 def implementation (text: String) : Option (List String) × Option Nat :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -56,10 +54,8 @@ spec result
 
 theorem correctness
 (text: String)
-: problem_spec implementation text :=
--- <vc-proof>
+: problem_spec implementation text := by
   sorry
--- </vc-proof>
 
 -- #test implementation "Hello world!" = (some ["Hello", "world!"], none)
 -- #test implementation "Hello,world!" = (some ["Hello", "world!"], none)

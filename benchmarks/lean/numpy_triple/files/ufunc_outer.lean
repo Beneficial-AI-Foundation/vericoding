@@ -61,9 +61,7 @@ open Std.Do
 
 def outer {m n : Nat} (op : Float → Float → Float) (a : Vector Float m) (b : Vector Float n) : 
     Id (Vector (Vector Float n) m) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem outer_spec {m n : Nat} (op : Float → Float → Float) (a : Vector Float m) (b : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -78,6 +76,4 @@ theorem outer_spec {m n : Nat} (op : Float → Float → Float) (a : Vector Floa
       -- Structural property: result represents all pairs from Cartesian product
       (∀ i : Fin m, ∀ j : Fin n, ∃ ai bj, ai = a.get i ∧ bj = b.get j ∧ (result.get i).get j = op ai bj)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

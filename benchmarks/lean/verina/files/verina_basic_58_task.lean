@@ -27,9 +27,7 @@ def double_array_elements_aux (s_old s : Array Int) (i : Nat) : Array Int :=
 -- </vc-helpers>
 
 def double_array_elements (s : Array Int) (h_precond : double_array_elements_precond (s)) : Array Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def double_array_elements_postcond (s : Array Int) (result: Array Int) (h_precond : double_array_elements_precond (s)) :=
@@ -37,9 +35,7 @@ def double_array_elements_postcond (s : Array Int) (result: Array Int) (h_precon
 
 theorem double_array_elements_spec_satisfied (s: Array Int) (h_precond : double_array_elements_precond (s)) :
     double_array_elements_postcond (s) (double_array_elements (s) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

@@ -19,9 +19,7 @@ open Std.Do
 -- </vc-helpers>
 
 def NPY_2_PI : Id Float :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem NPY_2_PI_spec :
     ⦃⌜True⌝⦄
@@ -41,6 +39,4 @@ theorem NPY_2_PI_spec :
       -- 2/π divided by 2 gives 1/π ≈ 0.3183...
       0.318 < result / 2 ∧ result / 2 < 0.319
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

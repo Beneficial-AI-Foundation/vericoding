@@ -39,9 +39,7 @@ def block {r1 c1 r2 c2 : Nat}
     (bottomLeft : Vector (Vector Float c1) r2)
     (bottomRight : Vector (Vector Float c2) r2) : 
     Id (Vector (Vector Float (c1 + c2)) (r1 + r2)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem block_spec {r1 c1 r2 c2 : Nat}
     (topLeft : Vector (Vector Float c1) r1)
@@ -64,6 +62,4 @@ theorem block_spec {r1 c1 r2 c2 : Nat}
       (∀ (i : Fin r2) (j : Fin c2),
         (result.get ⟨r1 + i.val, by omega⟩).get ⟨c1 + j.val, by omega⟩ = (bottomRight.get i).get j)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

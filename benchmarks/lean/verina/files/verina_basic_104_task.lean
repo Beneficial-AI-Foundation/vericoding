@@ -28,9 +28,7 @@ def update_map_precond (m1 : Map Int Int) (m2 : Map Int Int) : Prop :=
 -- </vc-helpers>
 
 def update_map (m1 : Map Int Int) (m2 : Map Int Int) (h_precond : update_map_precond (m1) (m2)) : Map Int Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def find? {K V : Type} [BEq K] [BEq V] (m : Map K V) (k : K) : Option V :=
   m.entries.find? (fun p => p.1 == k) |>.map (·.2)
@@ -53,9 +51,7 @@ def update_map_postcond (m1 : Map Int Int) (m2 : Map Int Int) (result: Map Int I
 
 theorem update_map_spec_satisfied (m1: Map Int Int) (m2: Map Int Int) (h_precond : update_map_precond (m1) (m2)) :
     update_map_postcond (m1) (m2) (update_map (m1) (m2) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

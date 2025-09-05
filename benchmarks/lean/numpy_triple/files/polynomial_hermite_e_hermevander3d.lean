@@ -64,9 +64,7 @@ open Std.Do
 
 def hermevander3d {n : Nat} (x y z : Vector Float n) (deg : Vector Nat 3) : 
     Id (Vector (Vector Float ((deg.get ⟨0, by simp⟩ + 1) * (deg.get ⟨1, by simp⟩ + 1) * (deg.get ⟨2, by simp⟩ + 1))) n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem hermevander3d_spec {n : Nat} (x y z : Vector Float n) (deg : Vector Nat 3) :
     ⦃⌜True⌝⦄
@@ -76,13 +74,13 @@ theorem hermevander3d_spec {n : Nat} (x y z : Vector Float n) (deg : Vector Nat 
       let y_deg := deg.get ⟨1, by simp⟩
       let z_deg := deg.get ⟨2, by simp⟩
       let order := (x_deg + 1) * (y_deg + 1) * (z_deg + 1)
-      
+
       -- Shape property: result has n rows, each with order elements (enforced by types)
       True ∧
-      
+
       -- Base case: first column is all ones (He_0(x)*He_0(y)*He_0(z) = 1*1*1 = 1)
       (∀ p : Fin n, order > 0 → (result.get p).get ⟨0, by sorry⟩ = 1) ∧
-      
+
       -- Mathematical consistency: tensor product structure
       (∃ hermite_poly : Nat → Float → Float,
         -- HermiteE polynomial base cases
@@ -98,7 +96,7 @@ theorem hermevander3d_spec {n : Nat} (x y z : Vector Float n) (deg : Vector Nat 
           col_idx < order →
           (result.get p).get ⟨col_idx, by sorry⟩ = 
             hermite_poly i (x.get p) * hermite_poly j (y.get p) * hermite_poly k (z.get p))) ∧
-      
+
       -- Orthogonality property: HermiteE polynomials are orthogonal with respect to Gaussian weight
       (∀ p : Fin n, ∀ i₁ j₁ k₁ i₂ j₂ k₂ : Nat,
         i₁ ≤ x_deg → j₁ ≤ y_deg → k₁ ≤ z_deg →
@@ -110,14 +108,14 @@ theorem hermevander3d_spec {n : Nat} (x y z : Vector Float n) (deg : Vector Nat 
         -- Different polynomial products are linearly independent
         (result.get p).get ⟨col_idx₁, by sorry⟩ ≠ (result.get p).get ⟨col_idx₂, by sorry⟩ ∨ 
         x.get p = 0 ∧ y.get p = 0 ∧ z.get p = 0) ∧
-      
+
       -- Consistency with evaluation: dot product with coefficients equals 3D polynomial evaluation
       (∀ p : Fin n, ∀ coeff : Vector Float order,
         ∃ polynomial_value : Float,
           -- The dot product of the Vandermonde row with coefficients
           -- equals the evaluation of the 3D HermiteE polynomial expansion
           polynomial_value = (List.sum (List.ofFn (fun i : Fin order => (result.get p).get i * coeff.get i)))) ∧
-      
+
       -- Parity property: HermiteE polynomials satisfy He_n(-x) = (-1)^n * He_n(x)
       (∃ hermite_poly : Nat → Float → Float,
         (∀ k : Nat, k ≤ max (max x_deg y_deg) z_deg → ∀ t : Float,
@@ -130,6 +128,4 @@ theorem hermevander3d_spec {n : Nat} (x y z : Vector Float n) (deg : Vector Nat 
           (result.get p).get ⟨col_idx, by sorry⟩ = 
             hermite_poly i (x.get p) * hermite_poly j (y.get p) * hermite_poly k (z.get p)))
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

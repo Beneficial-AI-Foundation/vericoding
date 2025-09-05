@@ -26,9 +26,7 @@ open Std.Do
 -- </vc-helpers>
 
 def hermgauss (deg : Nat) (h : deg > 0) : Id (Vector Float deg × Vector Float deg) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem hermgauss_spec (deg : Nat) (h : deg > 0) :
     ⦃⌜deg > 0⌝⦄
@@ -45,6 +43,4 @@ theorem hermgauss_spec (deg : Nat) (h : deg > 0) :
                  (∀ i j : Fin deg, i ≠ j → points.get i ≠ points.get j) ∧
                  -- For Gauss-Hermite quadrature, the points are sorted
                  (∀ i j : Fin deg, i < j → points.get i < points.get j)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

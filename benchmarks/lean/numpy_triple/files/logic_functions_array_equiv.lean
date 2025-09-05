@@ -2,7 +2,7 @@
 
     Shape consistent means they are either the same shape, or one input array
     can be broadcasted to create the same shape as the other one.
-    
+
     For 1D arrays of the same size, this means element-wise comparison.
     The function returns True if all corresponding elements are equal.
 -/
@@ -11,7 +11,7 @@
 
     Precondition: True (works for any two vectors of the same size)
     Postcondition: result = true iff all elements at corresponding indices are equal
-    
+
     Mathematical properties satisfied:
     - Reflexivity: array_equiv a a = true (any array is equivalent to itself)
     - Symmetry: array_equiv a b = array_equiv b a (equivalence is symmetric)
@@ -28,14 +28,10 @@ open Std.Do
 -- </vc-helpers>
 
 def array_equiv {n : Nat} (a1 a2 : Vector Float n) : Id Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem array_equiv_spec {n : Nat} (a1 a2 : Vector Float n) :
     ⦃⌜True⌝⦄
     array_equiv a1 a2
     ⦃⇓result => ⌜result = (∀ i : Fin n, a1.get i = a2.get i)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

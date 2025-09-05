@@ -20,9 +20,7 @@ open Std.Do
 -- </vc-helpers>
 
 def legmul {n m : Nat} (c1 : Vector Float (n + 1)) (c2 : Vector Float (m + 1)) : Id (Vector Float (n + m + 1)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem legmul_spec {n m : Nat} (c1 : Vector Float (n + 1)) (c2 : Vector Float (m + 1)) :
     ⦃⌜True⌝⦄
@@ -38,6 +36,4 @@ theorem legmul_spec {n m : Nat} (c1 : Vector Float (n + 1)) (c2 : Vector Float (
        -- The result represents the correct polynomial product
        (∀ i : Fin (n + m + 1), ∃ coeff : Float, result.get i = coeff)
        ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -9,30 +9,30 @@
 -/
 
 /-  Raise a Chebyshev series to a power.
-    
+
     Returns the Chebyshev series c raised to the power pow. The
     argument c is a sequence of coefficients ordered from low to high,
     i.e., [1,2,3] represents the series T_0 + 2*T_1 + 3*T_2.
-    
+
     The power must be a non-negative integer. Special cases:
     - pow = 0 returns [1] (the constant polynomial 1)
     - pow = 1 returns the input series unchanged
     - pow > 1 returns the series multiplied by itself pow times
-    
+
     The result length grows as: 1 + (n - 1) * pow, where n is the input length. -/
 
 /-  Specification: chebpow computes the power of a Chebyshev series.
-    
+
     This specification captures:
     1. Special cases for pow = 0 and pow = 1
     2. The mathematical property that (T(x))^pow represents the polynomial T(x) raised to power pow
     3. The result is a valid Chebyshev series representation
-    
+
     Key properties:
     - pow = 0: Returns [1], representing the constant polynomial 1
     - pow = 1: Returns the input unchanged
     - pow > 1: Returns coefficients such that if c represents T(x), result represents (T(x))^pow
-    
+
     The specification ensures:
     - Correct handling of the constant term (T_0 coefficient)
     - Proper coefficient computation through repeated Chebyshev multiplication
@@ -48,9 +48,7 @@ open Std.Do
 def chebpow {n : Nat} (c : Vector Float n) (pow : Nat) (maxpower : Nat := 16) 
     (h_nonzero : n > 0) (h_maxpower : pow ≤ maxpower) : 
     Id (Vector Float (if pow = 0 then 1 else 1 + (n - 1) * pow)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem chebpow_spec {n : Nat} (c : Vector Float n) (pow : Nat) 
     (maxpower : Nat := 16) (h_nonzero : n > 0) (h_maxpower : pow ≤ maxpower) :
@@ -79,6 +77,4 @@ theorem chebpow_spec {n : Nat} (c : Vector Float n) (pow : Nat)
                   -- At least one coefficient beyond the first two is non-zero
                   ∃ k : Nat, k ≥ 2 ∧ k < result.toList.length ∧ 
                     result.get ⟨k, sorry⟩ ≠ 0)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

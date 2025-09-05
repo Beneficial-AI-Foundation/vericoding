@@ -2,7 +2,7 @@
 
     Returns the index of the maximum value among all elements in the array.
     Requires a non-empty array since there is no maximum of an empty set.
-    
+
     In case of multiple occurrences of the maximum values, the indices
     corresponding to the first occurrence are returned.
 
@@ -24,15 +24,11 @@ open Std.Do
 -- </vc-helpers>
 
 def argmax {n : Nat} (a : Vector Float (n + 1)) : Id (Fin (n + 1)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem argmax_spec {n : Nat} (a : Vector Float (n + 1)) :
     ⦃⌜True⌝⦄
     argmax a
     ⦃⇓i => ⌜(∀ j : Fin (n + 1), a.get j ≤ a.get i) ∧ 
             (∀ j : Fin (n + 1), a.get j = a.get i → i ≤ j)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

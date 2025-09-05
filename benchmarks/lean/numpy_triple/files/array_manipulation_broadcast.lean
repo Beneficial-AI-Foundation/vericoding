@@ -11,25 +11,25 @@
 -/
 
 /-  numpy.broadcast: Produce an object that mimics broadcasting between two vectors.
-    
+
     This simplified version handles broadcasting between a column vector (m × 1)
     and a row vector (1 × n), producing an object that represents the m × n
     broadcast result.
-    
+
     The broadcast object allows iteration over all element pairs that would
     result from the broadcasting operation.
 -/
 
 /-  Specification: broadcast creates an object that correctly pairs elements
     according to NumPy broadcasting rules.
-    
+
     For a column vector x of shape (m, 1) and row vector y of shape (1, n),
     the broadcast object has shape (m, n) and element (i, j) is the pair (x[i], y[j]).
-    
+
     Preconditions: 
     - m > 0 (x is non-empty)
     - n > 0 (y is non-empty)
-    
+
     Postconditions:
     - The resulting shape is (m, n)
     - Element at position (i, j) is the pair (x[i], y[j])
@@ -40,7 +40,7 @@ import Std.Tactic.Do
 open Std.Do
 
 /-- Structure representing a broadcast object for two vectors.
-    
+
     A broadcast object encapsulates the result of broadcasting two vectors
     against each other. It produces pairs of elements following NumPy's
     broadcasting rules.
@@ -56,9 +56,7 @@ structure BroadcastObject (T : Type) where
 
 def broadcast {m n : Nat} (x : Vector Float m) (y : Vector Float n) 
     (hm : m > 0) (hn : n > 0) : Id (BroadcastObject Float) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem broadcast_spec {m n : Nat} (x : Vector Float m) (y : Vector Float n)
     (hm : m > 0) (hn : n > 0) :
@@ -67,6 +65,4 @@ theorem broadcast_spec {m n : Nat} (x : Vector Float m) (y : Vector Float n)
     ⦃⇓result => ⌜result.shape = (m, n) ∧
                  ∀ (i : Fin m) (j : Fin n), 
                    result.getElement ⟨i.val, by sorry⟩ ⟨j.val, by sorry⟩ = (x.get i, y.get j)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

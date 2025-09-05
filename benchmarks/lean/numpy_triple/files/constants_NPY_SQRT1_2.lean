@@ -19,9 +19,7 @@ open Std.Do
 -- </vc-helpers>
 
 def NPY_SQRT1_2 : Id Float :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem NPY_SQRT1_2_spec :
     ⦃⌜True⌝⦄
@@ -31,6 +29,4 @@ theorem NPY_SQRT1_2_spec :
                  result = Float.sqrt 0.5 ∧
                  result = 1.0 / Float.sqrt 2.0 ∧
                  Float.abs (result - 0.707106781186547524400844362104849039) < 1e-15⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

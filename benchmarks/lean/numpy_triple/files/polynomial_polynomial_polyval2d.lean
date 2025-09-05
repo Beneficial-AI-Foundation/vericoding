@@ -14,7 +14,7 @@
 
 /-  Specification: polyval2d evaluates a 2D polynomial with coefficient matrix c at point pairs (x, y).
     The result at each point (xᵢ, yᵢ) is the polynomial value p(xᵢ, yᵢ) = Σᵢⱼ cᵢⱼ·xᵢⁱ·yᵢʲ
-    
+
     Mathematical properties:
     - For coefficient matrix c[i][j], evaluates p(x,y) = Σᵢⱼ c[i][j]·xⁱ·yʲ
     - Reduces to 1D polyval when one variable is zero: p(x,0) uses first column c[*][0]
@@ -31,9 +31,7 @@ open Std.Do
 
 def polyval2d {m nx ny : Nat} (x y : Vector Float m) 
     (c : Vector (Vector Float (ny + 1)) (nx + 1)) : Id (Vector Float m) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem polyval2d_spec {m nx ny : Nat} (x y : Vector Float m) 
     (c : Vector (Vector Float (ny + 1)) (nx + 1)) :
@@ -46,6 +44,4 @@ theorem polyval2d_spec {m nx ny : Nat} (x y : Vector Float m)
                   (∀ i : Fin (nx + 1), ∀ j : Fin (ny + 1), (c.get i).get j = 0 → poly_val = 0) ∧
                   -- Evaluation at origin gives constant term
                   (x.get k = 0 ∧ y.get k = 0 → poly_val = (c.get ⟨0, Nat.zero_lt_succ _⟩).get ⟨0, Nat.zero_lt_succ _⟩)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -12,9 +12,7 @@ open Std.Do
 -- </vc-helpers>
 
 def isclose {n : Nat} (a b : Vector Float n) (rtol : Float) (atol : Float) (equal_nan : Bool) : Id (Vector Bool n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem isclose_spec {n : Nat} (a b : Vector Float n) (rtol : Float) (atol : Float) (equal_nan : Bool) 
     (h_rtol_nonneg : rtol ≥ 0) (h_atol_nonneg : atol ≥ 0) :
@@ -37,6 +35,4 @@ theorem isclose_spec {n : Nat} (a b : Vector Float n) (rtol : Float) (atol : Flo
           Float.abs (a.get i - b.get i) > atol + rtol * Float.abs (b.get i)) ∨
          (¬Float.isFinite (a.get i) ∨ ¬Float.isFinite (b.get i)) ∧ a.get i ≠ b.get i ∨
          ((a.get i).isNaN ∧ (b.get i).isNaN ∧ equal_nan = false))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -22,9 +22,7 @@ open Std.Do
 -- </vc-helpers>
 
 def polyfromroots {n : Nat} (roots : Vector Float n) : Id (Vector Float (n + 1)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem polyfromroots_spec {n : Nat} (roots : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -33,6 +31,4 @@ theorem polyfromroots_spec {n : Nat} (roots : Vector Float n) :
                  ∀ i : Fin n, ∃ (eval_poly : Float → Float), 
                    (∀ x : Float, eval_poly x = 0 ↔ x = roots.get i) ∧
                    eval_poly (roots.get i) = 0⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

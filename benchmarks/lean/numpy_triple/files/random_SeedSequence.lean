@@ -34,9 +34,7 @@ open Std.Do
 
 def seedSequence {n : Nat} (entropy : Vector UInt32 n) (spawn_key : Vector UInt32 0) 
     (pool_size : Nat := 4) : Id (Vector UInt32 pool_size) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem seedSequence_spec {n : Nat} (entropy : Vector UInt32 n) (spawn_key : Vector UInt32 0)
     (pool_size : Nat := 4) :
@@ -57,6 +55,4 @@ theorem seedSequence_spec {n : Nat} (entropy : Vector UInt32 n) (spawn_key : Vec
       -- Well-defined output: result has the correct size
       (result.size = pool_size)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

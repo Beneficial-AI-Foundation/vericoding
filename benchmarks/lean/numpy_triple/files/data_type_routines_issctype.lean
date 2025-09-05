@@ -51,9 +51,7 @@ def isScalarType (dt : DataType) : Bool :=
 -- </vc-helpers>
 
 def issctype (rep : DataType) : Id Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem issctype_spec (rep : DataType) :
     ⦃⌜True⌝⦄
@@ -63,6 +61,4 @@ theorem issctype_spec (rep : DataType) :
                                   rep = DataType.scalar_complex ∨ 
                                   rep = DataType.scalar_bool ∨ 
                                   rep = DataType.scalar_string)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

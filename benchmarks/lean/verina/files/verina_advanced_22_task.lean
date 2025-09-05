@@ -29,9 +29,7 @@ def isPeakValley_precond (lst : List Int) : Prop :=
 -- </vc-helpers>
 
 def isPeakValley (lst : List Int) (h_precond : isPeakValley_precond (lst)) : Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def isPeakValley_postcond (lst : List Int) (result: Bool) (h_precond : isPeakValley_precond (lst)) : Prop :=
@@ -55,9 +53,7 @@ def isPeakValley_postcond (lst : List Int) (result: Bool) (h_precond : isPeakVal
 
 theorem isPeakValley_spec_satisfied (lst: List Int) (h_precond : isPeakValley_precond (lst)) :
     isPeakValley_postcond (lst) (isPeakValley (lst) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

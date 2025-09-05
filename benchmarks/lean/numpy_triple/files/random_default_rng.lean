@@ -11,7 +11,7 @@
 
     Creates a new Generator instance using PCG64 as the underlying BitGenerator.
     This is the recommended way to create random number generators in NumPy.
-    
+
     If seed is None, the generator will be initialized with fresh entropy from the OS.
     If seed is provided, the generator will be deterministically initialized with that seed.
 -/
@@ -45,9 +45,7 @@ structure Generator where
 -- </vc-helpers>
 
 def default_rng (seed : Option Nat := none) : Id Generator :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem default_rng_spec (seed : Option Nat := none) :
     ⦃⌜True⌝⦄
@@ -55,6 +53,4 @@ theorem default_rng_spec (seed : Option Nat := none) :
     ⦃⇓result => ⌜result.initialized = true ∧ 
                  result.bitGenerator.seed = seed ∧
                  (seed.isSome → result.bitGenerator.state ≠ 0)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

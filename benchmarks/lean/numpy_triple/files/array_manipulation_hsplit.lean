@@ -17,7 +17,7 @@
 /-  Specification: hsplit divides a 1D array into k equal sub-arrays.
     Each sub-array has n/k elements. The i-th sub-array contains elements 
     from index i*(n/k) to (i+1)*(n/k)-1 of the original array.
-    
+
     Mathematical properties:
     1. The concatenation of all sub-arrays equals the original array
     2. Each sub-array has exactly n/k elements
@@ -33,9 +33,7 @@ open Std.Do
 def hsplit {n k : Nat} (arr : Vector Float n) 
     (h_divides : k > 0 ∧ n % k = 0) : 
     Id (Vector (Vector Float (n / k)) k) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem hsplit_spec {n k : Nat} (arr : Vector Float n) 
     (h_divides : k > 0 ∧ n % k = 0) :
@@ -47,6 +45,4 @@ theorem hsplit_spec {n k : Nat} (arr : Vector Float n)
                  (∀ i : Fin n, ∃ (p : Fin k) (e : Fin (n / k)), 
                   i.val = p.val * (n / k) + e.val ∧
                   arr.get i = (result.get p).get e)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -20,9 +20,7 @@ open Std.Do
 -- </vc-helpers>
 
 def hermeint {n : Nat} (c : Vector Float n) (m : Nat) (k : Vector Float m) (lbnd : Float) (scl : Float) : Id (Vector Float (n + m)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem hermeint_spec {n m : Nat} (c : Vector Float n) (integConsts : Vector Float m) (lbnd : Float) (scl : Float) 
     (h_scl_nonzero : scl ≠ 0) :
@@ -36,6 +34,4 @@ theorem hermeint_spec {n m : Nat} (c : Vector Float n) (integConsts : Vector Flo
       -- The boundary point lbnd affects the constant term
       (∃ boundaryEffect : Float, True)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

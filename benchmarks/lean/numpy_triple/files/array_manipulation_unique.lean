@@ -11,17 +11,17 @@
 -/
 
 /-  numpy.unique: Find the unique elements of a vector and return them sorted.
-    
+
     Returns a new vector containing each distinct element from the input exactly once,
     sorted in ascending order. This is a simplified version that only returns the 
     unique values without the optional indices or counts.
-    
+
     The output size depends on the number of unique elements in the input.
 -/
 
 /-  Specification: numpy.unique returns a sorted vector containing each distinct element 
     from the input exactly once.
-    
+
     Precondition: True
     Postcondition: 
     - The result is sorted in ascending order
@@ -38,9 +38,7 @@ open Std.Do
 -- </vc-helpers>
 
 def numpy_unique {n : Nat} (arr : Vector Float n) : Id (Σ m : Nat, Vector Float m) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_unique_spec {n : Nat} (arr : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -55,6 +53,4 @@ theorem numpy_unique_spec {n : Nat} (arr : Vector Float n) :
                   (∀ i : Fin m, ∃ j : Fin n, unique_arr.get i = arr.get j) ∧
                   -- Every distinct element from input appears in result
                   (∀ i : Fin n, ∃ j : Fin m, arr.get i = unique_arr.get j)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

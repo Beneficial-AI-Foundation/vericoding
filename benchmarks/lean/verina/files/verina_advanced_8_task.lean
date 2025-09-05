@@ -26,9 +26,7 @@ def canCompleteCircuit_precond (gas : List Int) (cost : List Int) : Prop :=
 -- </vc-helpers>
 
 def canCompleteCircuit (gas : List Int) (cost : List Int) (h_precond : canCompleteCircuit_precond (gas) (cost)) : Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible]
 def canCompleteCircuit_postcond (gas : List Int) (cost : List Int) (result: Int) (h_precond : canCompleteCircuit_precond (gas) (cost)) : Prop :=
@@ -46,9 +44,7 @@ def canCompleteCircuit_postcond (gas : List Int) (cost : List Int) (result: Int)
 
 theorem canCompleteCircuit_spec_satisfied (gas: List Int) (cost: List Int) (h_precond : canCompleteCircuit_precond (gas) (cost)) :
     canCompleteCircuit_postcond (gas) (cost) (canCompleteCircuit (gas) (cost) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

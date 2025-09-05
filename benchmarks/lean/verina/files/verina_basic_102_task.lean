@@ -25,9 +25,7 @@ def twoSum_precond (nums : Array Int) (target : Int) : Prop :=
 -- </vc-helpers>
 
 def twoSum (nums : Array Int) (target : Int) (h_precond : twoSum_precond (nums) (target)) : (Nat × Nat) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def twoSum_postcond (nums : Array Int) (target : Int) (result: (Nat × Nat)) (h_precond : twoSum_precond (nums) (target)) :=
@@ -42,9 +40,7 @@ def twoSum_postcond (nums : Array Int) (target : Int) (result: (Nat × Nat)) (h_
 
 theorem twoSum_spec_satisfied (nums: Array Int) (target: Int) (h_precond : twoSum_precond (nums) (target)) :
     twoSum_postcond (nums) (target) (twoSum (nums) (target) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

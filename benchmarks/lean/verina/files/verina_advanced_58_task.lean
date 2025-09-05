@@ -31,9 +31,7 @@ def nextUgly (seq : List Nat) (c2 c3 c5 : Nat) : (Nat × Nat × Nat × Nat) :=
 -- </vc-helpers>
 
 def nthUglyNumber (n : Nat) (h_precond : nthUglyNumber_precond (n)) : Nat :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def divideOut : Nat → Nat → Nat
   | n, p =>
@@ -61,9 +59,7 @@ def nthUglyNumber_postcond (n : Nat) (result: Nat) (h_precond : nthUglyNumber_pr
 
 theorem nthUglyNumber_spec_satisfied (n: Nat) (h_precond : nthUglyNumber_precond (n)) :
     nthUglyNumber_postcond (n) (nthUglyNumber (n) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

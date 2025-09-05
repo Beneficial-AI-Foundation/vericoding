@@ -64,9 +64,7 @@ open Std.Do
 -- </vc-helpers>
 
 def mod {n : Nat} (a values : Vector String n) : Id (Vector String n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem mod_spec {n : Nat} (a values : Vector String n) :
     ⦃⌜True⌝⦄
@@ -90,6 +88,4 @@ theorem mod_spec {n : Nat} (a values : Vector String n) :
       -- Preservation: the result contains the original format structure with substitutions
       (format_str.contains '%' → 
         (formatted.length ≥ format_str.length - 2 ∨ formatted.length = 0))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -131,9 +131,7 @@ def evalArith_precedence (ts : List String) (r : Int) : Prop :=
 -- </vc-helpers>
 
 def implementation (operator: List String) (operand : List Nat) : Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -153,9 +151,7 @@ spec result
 
 theorem correctness
 (operator : List String) (operand : List Nat)
-: problem_spec implementation operator operand :=
--- <vc-proof>
+: problem_spec implementation operator operand := by
   sorry
--- </vc-proof>
 
 -- #test implementation ['+', '*', '-'] [2,3,4,5] = 9

@@ -28,9 +28,7 @@ def nextGreaterElement_precond (nums1 : List Int) (nums2 : List Int) : Prop :=
 -- </vc-helpers>
 
 def nextGreaterElement (nums1 : List Int) (nums2 : List Int) (h_precond : nextGreaterElement_precond (nums1) (nums2)) : List Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible]
 def nextGreaterElement_postcond (nums1 : List Int) (nums2 : List Int) (result: List Int) (h_precond : nextGreaterElement_precond (nums1) (nums2)) : Prop :=
@@ -59,9 +57,7 @@ def nextGreaterElement_postcond (nums1 : List Int) (nums2 : List Int) (result: L
 
 theorem nextGreaterElement_spec_satisfied (nums1: List Int) (nums2: List Int) (h_precond : nextGreaterElement_precond (nums1) (nums2)) :
     nextGreaterElement_postcond (nums1) (nums2) (nextGreaterElement (nums1) (nums2) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

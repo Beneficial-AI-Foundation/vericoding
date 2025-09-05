@@ -9,7 +9,7 @@
 -/
 
 /-  numpy.iinfo: Returns machine limits for integer types.
-    
+
     Takes an integer type specification and returns information about 
     the number of bits, minimum value, and maximum value for that type.
     This provides access to the fundamental machine limits for integer
@@ -17,7 +17,7 @@
 -/
 
 /-  Specification: numpy.iinfo returns correct machine limits for integer types.
-    
+
     Precondition: True (no special preconditions for type information)
     Postcondition: The returned IntInfo structure contains:
       - Correct bit count for the specified type
@@ -62,9 +62,7 @@ inductive IntType where
 -- </vc-helpers>
 
 def iinfo (int_type : IntType) : Id IntInfo :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem iinfo_spec (int_type : IntType) :
     ⦃⌜True⌝⦄
@@ -80,6 +78,4 @@ theorem iinfo_spec (int_type : IntType) :
       | IntType.UInt32 => info.bits = 32 ∧ info.min = 0 ∧ info.max = 4294967295
       | IntType.UInt64 => info.bits = 64 ∧ info.min = 0 ∧ info.max = 18446744073709551615
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

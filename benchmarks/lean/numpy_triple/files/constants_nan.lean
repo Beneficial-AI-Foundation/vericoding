@@ -25,9 +25,7 @@ open Std.Do
 -- </vc-helpers>
 
 def nan : Id Float :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem nan_spec :
     ⦃⌜True⌝⦄
@@ -53,6 +51,4 @@ theorem nan_spec :
       Float.isNaN (result - result) ∧
       Float.isNaN (Float.sqrt result)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

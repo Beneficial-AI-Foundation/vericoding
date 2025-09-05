@@ -19,7 +19,7 @@
     - Pads strings with leading zeros to reach the target width
     - Preserves sign characters ('+' or '-') at the beginning
     - Returns original string if it's already >= target width
-    
+
     From NumPy documentation:
     - Parameters: a (array_like) - Input array with string dtype
                   width (int) - Target width for zero-filling
@@ -61,9 +61,7 @@ open Std.Do
 -- </vc-helpers>
 
 def zfill {n : Nat} (a : Vector String n) (width : Nat) : Id (Vector String n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem zfill_spec {n : Nat} (a : Vector String n) (width : Nat) :
     ⦃⌜True⌝⦄
@@ -110,6 +108,4 @@ theorem zfill_spec {n : Nat} (a : Vector String n) (width : Nat) :
       -- 9. Zero character constraint: padding uses only '0' characters
       (original.length < width → 
          ∀ j : Nat, j < (width - original.length) → result.get? ⟨j⟩ = some '0')⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

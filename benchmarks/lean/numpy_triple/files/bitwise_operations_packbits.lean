@@ -30,9 +30,7 @@ inductive BitOrder
 
 def packbits {n : Nat} (a : Vector Bool n) (bitorder : BitOrder := BitOrder.big) : 
     Id (Vector UInt8 ((n + 7) / 8)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem packbits_spec {n : Nat} (a : Vector Bool n) (bitorder : BitOrder := BitOrder.big) :
     ⦃⌜True⌝⦄
@@ -60,6 +58,4 @@ theorem packbits_spec {n : Nat} (a : Vector Bool n) (bitorder : BitOrder := BitO
                            acc ||| (bit <<< bit_pos).toUInt8
                          else acc
                        ) 0)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

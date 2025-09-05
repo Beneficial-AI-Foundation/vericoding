@@ -23,9 +23,7 @@ noncomputable def check_derivative : List ℤ → List ℤ
 -- </vc-helpers>
 
 def implementation (xs: List Int) : List Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -43,10 +41,8 @@ spec result
 
 theorem correctness
 (xs: List Int)
-: problem_spec implementation xs :=
--- <vc-proof>
+: problem_spec implementation xs := by
   sorry
--- </vc-proof>
 
 -- #test implementation [3, 1, 2, 4, 5] : List Int = [1, 4, 12, 20]
 -- #test implementation [1, 2, 3] : List Int = [2, 6]

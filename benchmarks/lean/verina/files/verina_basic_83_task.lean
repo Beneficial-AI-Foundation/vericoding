@@ -25,9 +25,7 @@ def concat_precond (a : Array Int) (b : Array Int) : Prop :=
 -- </vc-helpers>
 
 def concat (a : Array Int) (b : Array Int) (h_precond : concat_precond (a) (b)) : Array Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def concat_postcond (a : Array Int) (b : Array Int) (result: Array Int) (h_precond : concat_precond (a) (b)) :=
@@ -37,9 +35,7 @@ def concat_postcond (a : Array Int) (b : Array Int) (result: Array Int) (h_preco
 
 theorem concat_spec_satisfied (a: Array Int) (b: Array Int) (h_precond : concat_precond (a) (b)) :
     concat_postcond (a) (b) (concat (a) (b) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

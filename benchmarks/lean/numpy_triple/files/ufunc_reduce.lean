@@ -37,9 +37,7 @@ open Std.Do
 -- </vc-helpers>
 
 def reduce {n : Nat} (op : Float → Float → Float) (arr : Vector Float (n + 1)) : Id Float :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem reduce_spec {n : Nat} (op : Float → Float → Float) (arr : Vector Float (n + 1)) :
     ⦃⌜True⌝⦄
@@ -51,6 +49,4 @@ theorem reduce_spec {n : Nat} (op : Float → Float → Float) (arr : Vector Flo
                             op (fold_fn ⟨i.val, Nat.lt_succ_of_lt i.isLt⟩) 
                                (arr.get ⟨i.val + 1, Nat.succ_lt_succ i.isLt⟩)) ∧
                           result = fold_fn ⟨n, Nat.lt_succ_self _⟩)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

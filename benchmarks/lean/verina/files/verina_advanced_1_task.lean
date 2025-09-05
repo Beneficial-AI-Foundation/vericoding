@@ -27,9 +27,7 @@ def filterlist (x : Int) (nums : List Int) : List Int :=
 -- </vc-helpers>
 
 def FindSingleNumber (nums : List Int) (h_precond : FindSingleNumber_precond (nums)) : Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible]
 def FindSingleNumber_postcond (nums : List Int) (result: Int) (h_precond : FindSingleNumber_precond (nums)) : Prop :=
@@ -43,9 +41,7 @@ def FindSingleNumber_postcond (nums : List Int) (result: Int) (h_precond : FindS
 
 theorem FindSingleNumber_spec_satisfied (nums: List Int) (h_precond : FindSingleNumber_precond (nums)) :
     FindSingleNumber_postcond (nums) (FindSingleNumber (nums) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

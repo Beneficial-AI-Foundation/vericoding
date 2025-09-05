@@ -2,11 +2,11 @@
 
     Returns a vector of indices where the corresponding elements in the input
     array are non-zero. The indices are returned in row-major, C-style order.
-    
+
     For a 1D array, this returns a vector containing all indices i such that
     a[i] ≠ 0. Since the output size depends on the input values, we use
     a List structure to accommodate the dynamic nature of the result.
-    
+
     Note: In the full NumPy implementation, this returns a tuple of arrays
     (one for each dimension), but for 1D arrays we simplify to a single list.
 -/
@@ -29,9 +29,7 @@ open Std.Do
 -- </vc-helpers>
 
 def nonzero {n : Nat} (a : Vector Float n) : Id (List (Fin n)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem nonzero_spec {n : Nat} (a : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -41,6 +39,4 @@ theorem nonzero_spec {n : Nat} (a : Vector Float n) :
                    (∀ i₁ i₂ : Fin n, i₁ ∈ indices → i₂ ∈ indices → i₁ < i₂ → 
                     (indices.idxOf i₁ < indices.idxOf i₂)) ∧
                    (indices.Nodup)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

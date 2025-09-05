@@ -8,18 +8,18 @@
 -/
 
 /-  numpy.nanprod: Return the product of array elements treating NaNs as ones.
-    
+
     Computes the product of all elements in the array, treating NaN values as 1.
     This is useful for computing products while ignoring missing or invalid data
     represented as NaN.
-    
+
     For empty arrays, returns 1 as the identity element of multiplication.
     For arrays containing only NaN values, returns 1.
     For arrays with mixed NaN and non-NaN values, returns the product of the non-NaN values.
 -/
 
 /-  Specification: numpy.nanprod returns the product of all non-NaN elements in the vector.
-    
+
     Precondition: True (works for any vector, including empty)
     Postcondition: result equals the product of all non-NaN elements, satisfying:
     1. NaN values are treated as 1 (multiplicative identity)
@@ -38,9 +38,7 @@ open Std.Do
 -- </vc-helpers>
 
 def nanprod {n : Nat} (a : Vector Float n) : Id Float :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem nanprod_spec {n : Nat} (a : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -50,6 +48,4 @@ theorem nanprod_spec {n : Nat} (a : Vector Float n) :
                  (∀ i : Fin n, ¬(a.get i).isNaN → 
                    ∃ filtered : List Float, filtered = (a.toList.filter (fun x => ¬x.isNaN)) ∧
                    result = filtered.foldl (· * ·) 1)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

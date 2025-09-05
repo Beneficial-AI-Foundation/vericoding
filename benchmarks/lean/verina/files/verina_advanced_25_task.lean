@@ -23,9 +23,7 @@ def maxInArray (arr : Array Nat) : Nat :=
 -- </vc-helpers>
 
 def lengthOfLIS (nums : List Int) (h_precond : lengthOfLIS_precond (nums)) : Nat :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible]
 def lengthOfLIS_postcond (nums : List Int) (result: Nat) (h_precond : lengthOfLIS_precond (nums)) : Prop :=
@@ -35,9 +33,7 @@ def lengthOfLIS_postcond (nums : List Int) (result: Nat) (h_precond : lengthOfLI
 
 theorem lengthOfLIS_spec_satisfied (nums: List Int) (h_precond : lengthOfLIS_precond (nums)) :
     lengthOfLIS_postcond (nums) (lengthOfLIS (nums) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

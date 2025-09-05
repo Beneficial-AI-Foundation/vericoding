@@ -21,9 +21,7 @@ open Std.Do
 -- </vc-helpers>
 
 def fromstring {n : Nat} (input : String) (sep : String) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem fromstring_spec {n : Nat} (input : String) (sep : String)
     (h_n_pos : n > 0)
@@ -67,6 +65,4 @@ theorem fromstring_spec {n : Nat} (input : String) (sep : String)
       (input = "1, 2" ∧ sep = "," ∧ n = 2 →
         result.get ⟨0, sorry⟩ = 1.0 ∧ result.get ⟨1, sorry⟩ = 2.0)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

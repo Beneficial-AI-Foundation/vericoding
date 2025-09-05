@@ -23,7 +23,7 @@
 
     Precondition: All elements are non-negative (to use well-defined bitwise operations)
     Postcondition: For all indices i, result[i] = x1[i] XOR x2[i]
-    
+
     Mathematical properties:
     - XOR is commutative: x1[i] XOR x2[i] = x2[i] XOR x1[i]
     - XOR is associative: (a XOR b) XOR c = a XOR (b XOR c)
@@ -39,9 +39,7 @@ open Std.Do
 -- </vc-helpers>
 
 def bitwise_xor {n : Nat} (x1 x2 : Vector Int n) : Id (Vector Int n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem bitwise_xor_spec {n : Nat} (x1 x2 : Vector Int n) 
     (h_nonneg : ∀ i : Fin n, x1.get i ≥ 0 ∧ x2.get i ≥ 0) :
@@ -52,6 +50,4 @@ theorem bitwise_xor_spec {n : Nat} (x1 x2 : Vector Int n)
                 (∀ i : Fin n, x1.get i = 0 → result.get i = x2.get i) ∧
                 (∀ i : Fin n, x2.get i = 0 → result.get i = x1.get i) ∧
                 (∀ i : Fin n, x1.get i = x2.get i → result.get i = 0)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

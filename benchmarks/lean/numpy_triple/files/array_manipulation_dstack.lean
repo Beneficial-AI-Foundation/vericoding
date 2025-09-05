@@ -14,19 +14,19 @@
 
     For a sequence of 1D arrays (vectors), this function stacks them along a new third axis,
     creating a 3D array. Each input vector becomes a "slice" in the depth dimension.
-    
+
     For 1D inputs of length n, the output shape is (1, n, k) where k is the number of arrays.
     This is because 1D arrays are first reshaped to (1, n) then stacked along axis 2.
-    
+
     The result is always at least 3-dimensional.
 -/
 
 /-  Specification: numpy.dstack stacks 1D arrays along the third axis.
-    
+
     For k+1 input vectors each of length n:
     - The output has shape (1, n, k+1)
     - Element at position [0][i][j] equals arrays[j][i]
-    
+
     This specification captures the core behavior where each input vector
     contributes one "layer" in the depth dimension of the output.
 -/
@@ -40,9 +40,7 @@ open Std.Do
 
 def numpy_dstack {k n : Nat} (arrays : Vector (Vector Float n) (k + 1)) : 
     Id (Vector (Vector (Vector Float (k + 1)) n) 1) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_dstack_spec {k n : Nat} (arrays : Vector (Vector Float n) (k + 1)) :
     ⦃⌜True⌝⦄
@@ -58,6 +56,4 @@ theorem numpy_dstack_spec {k n : Nat} (arrays : Vector (Vector Float n) (k + 1))
       (∀ i : Fin n, ∀ j : Fin (k + 1), 
         ((result.get ⟨0, by simp⟩).get i).get j = (arrays.get j).get i)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

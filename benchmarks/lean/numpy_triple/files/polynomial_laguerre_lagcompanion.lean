@@ -25,9 +25,7 @@ open Std.Do
 -- </vc-helpers>
 
 def lagcompanion {n : Nat} (c : Vector Float (n + 2)) : Id (Vector (Vector Float (n + 1)) (n + 1)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem lagcompanion_spec {n : Nat} (c : Vector Float (n + 2)) 
     (h_nonzero : c.get (Fin.last (n + 1)) ≠ 0) :
@@ -41,6 +39,4 @@ theorem lagcompanion_spec {n : Nat} (c : Vector Float (n + 2))
              -- Off-diagonal elements for tridiagonal structure
              (∀ i : Fin n, (mat.get (i.castSucc)).get (i.succ) = -(Float.ofNat i.val + 1)) ∧
              (∀ i : Fin n, (mat.get (i.succ)).get (i.castSucc) = -(Float.ofNat i.val + 1))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

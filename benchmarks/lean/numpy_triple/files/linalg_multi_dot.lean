@@ -11,12 +11,12 @@
 /-  Multi-dot product: compute the dot product of multiple matrices in a single function call
     with optimal parenthesization. This function performs a chain of matrix multiplications
     A₁ × A₂ × ... × Aₙ where the parenthesization is chosen to minimize computational cost.
-    
+
     For three matrices A, B, C, this computes A × B × C with the optimal evaluation order.
     The result is independent of parenthesization due to associativity of matrix multiplication. -/
 
 /-  Specification: Multi-dot performs a chain of matrix multiplications with optimal parenthesization.
-    
+
     Mathematical properties:
     1. Associativity: (A × B) × C = A × (B × C) - the result is independent of parenthesization
     2. Dimension compatibility: A is n₁×n₂, B is n₂×n₃, C is n₃×n₄, result is n₁×n₄
@@ -25,7 +25,7 @@
        the total number of scalar multiplications needed
     5. Correctness: the result equals the sequential application of matrix multiplications
     6. Non-empty constraint: at least two matrices are required (enforced by signature)
-    
+
     This specification captures the essential mathematical behavior while abstracting away 
     the optimization details. The key insight is that matrix multiplication is associative,
     so different parenthesizations yield the same mathematical result. -/
@@ -42,9 +42,7 @@ def multi_dot {n₁ n₂ n₃ n₄ : Nat}
     (B : Vector (Vector Float n₃) n₂) 
     (C : Vector (Vector Float n₄) n₃) : 
     Id (Vector (Vector Float n₄) n₁) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem multi_dot_spec {n₁ n₂ n₃ n₄ : Nat} 
     (A : Vector (Vector Float n₂) n₁) 
@@ -64,6 +62,4 @@ theorem multi_dot_spec {n₁ n₂ n₃ n₄ : Nat}
                           row.toList 
                           (List.map (fun col => col.get j) C.toList))) 
                         B.toList))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -19,9 +19,7 @@ import Std.Data.HashMap
 -- </vc-helpers>
 
 def implementation (x shift: Nat) : String :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -46,10 +44,8 @@ spec result
 theorem correctness
 (x shift: Nat)
 : problem_spec implementation x shift
-:=
--- <vc-proof>
+:= by
   sorry
--- </vc-proof>
 
 -- #test implementation (12 : Int) (1 : Int) = "21"
 -- #test implementation (12 : Int) (2 : Int) = "12"

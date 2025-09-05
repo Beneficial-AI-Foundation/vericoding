@@ -9,18 +9,18 @@
 -/
 
 /-  numpy.get_printoptions: Return the current print options
-    
+
     Returns a structure containing the current print options that control
     how arrays are formatted when displayed. These options include precision
     for floating point numbers, threshold for array summarization, and
     various string representations.
-    
+
     This function reads the current state of NumPy's print formatting system.
 -/
 
 /-  Specification: get_printoptions returns a valid PrintOptions structure
     with sensible default values.
-    
+
     Precondition: True (no special preconditions)
     Postcondition: Result contains valid print options with proper constraints
 -/
@@ -56,9 +56,7 @@ structure PrintOptions where
 -- </vc-helpers>
 
 def get_printoptions : Id PrintOptions :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem get_printoptions_spec :
     ⦃⌜True⌝⦄
@@ -72,6 +70,4 @@ theorem get_printoptions_spec :
                  (result.sign = "-" ∨ result.sign = "+" ∨ result.sign = " ") ∧
                  (result.floatmode = "fixed" ∨ result.floatmode = "unique" ∨ 
                   result.floatmode = "maxprec" ∨ result.floatmode = "maxprec_equal")⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

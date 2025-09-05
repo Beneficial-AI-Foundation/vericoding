@@ -41,9 +41,7 @@ def isValidSignedBinary (s : String) : Bool :=
 -- </vc-helpers>
 
 def binary_repr (num : Int) (width : Option Nat := none) : Id String :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem binary_repr_spec (num : Int) (width : Option Nat := none) :
     ⦃⌜width.map (· ≥ 1) |>.getD true⌝⦄
@@ -52,23 +50,23 @@ theorem binary_repr_spec (num : Int) (width : Option Nat := none) :
       -- Result is a valid binary string (possibly with sign)
       (width.isNone → isValidSignedBinary result) ∧
       (width.isSome → isValidBinary result) ∧
-      
+
       -- Length constraints
       (width.isSome → result.length = width.get!) ∧
-      
+
       -- Positive numbers: standard binary representation
       (num ≥ 0 ∧ width.isNone → 
         result = natToBinaryString num.natAbs) ∧
-      
+
       -- Positive numbers with width: padded with zeros
       (num ≥ 0 ∧ width.isSome → 
         ∃ (binary : String), binary = natToBinaryString num.natAbs ∧
         result = String.mk (List.replicate (width.get! - binary.length) '0') ++ binary) ∧
-      
+
       -- Negative numbers without width: signed representation
       (num < 0 ∧ width.isNone → 
         result = "-" ++ natToBinaryString num.natAbs) ∧
-      
+
       -- Negative numbers with width: two's complement
       (num < 0 ∧ width.isSome → 
         let w := width.get!
@@ -80,6 +78,4 @@ theorem binary_repr_spec (num : Int) (width : Option Nat := none) :
         -- Padded with 1s if needed
         result.length = w)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

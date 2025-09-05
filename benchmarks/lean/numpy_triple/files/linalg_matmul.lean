@@ -14,7 +14,7 @@
 
 /-  Specification: Matrix multiplication produces a result where each element is the dot product 
     of the corresponding row from the first matrix and column from the second matrix.
-    
+
     Mathematical properties:
     1. Dimensions are compatible: A is m×n, B is n×p, result is m×p
     2. Each element C[i][j] = sum of A[i][k] * B[k][j] for k from 0 to n-1
@@ -31,9 +31,7 @@ open Std.Do
 
 def matmul {m n p : Nat} (A : Vector (Vector Float n) m) (B : Vector (Vector Float p) n) : 
     Id (Vector (Vector Float p) m) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem matmul_spec {m n p : Nat} (A : Vector (Vector Float n) m) (B : Vector (Vector Float p) n) :
     ⦃⌜True⌝⦄
@@ -42,6 +40,4 @@ theorem matmul_spec {m n p : Nat} (A : Vector (Vector Float n) m) (B : Vector (V
               (C.get i).get j = List.sum (List.zipWith (· * ·) 
                 (A.get i).toList 
                 (List.map (fun row => row.get j) B.toList))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -24,9 +24,7 @@ open Std.Do
 -- </vc-helpers>
 
 def fromstring {n : Nat} (input : String) (sep : String) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem fromstring_spec {n : Nat} (input : String) (sep : String) 
     (h_valid : (input.splitOn sep).length = n) 
@@ -35,6 +33,4 @@ theorem fromstring_spec {n : Nat} (input : String) (sep : String)
     fromstring (n := n) input sep
     ⦃⇓result => ⌜∀ i : Fin n, 
        (input.splitOn sep)[i.val]!.trim ≠ ""⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

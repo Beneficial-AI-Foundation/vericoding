@@ -45,9 +45,7 @@ def laggrid3d {nx ny nz : Nat} {dim1 dim2 dim3 : Nat}
     (x : Vector Float nx) (y : Vector Float ny) (z : Vector Float nz) 
     (c : Vector (Vector (Vector Float dim3) dim2) dim1) : 
     Id (Vector (Vector (Vector Float nz) ny) nx) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem laggrid3d_spec {nx ny nz : Nat} {dim1 dim2 dim3 : Nat} 
     (x : Vector Float nx) (y : Vector Float ny) (z : Vector Float nz) 
@@ -64,6 +62,4 @@ theorem laggrid3d_spec {nx ny nz : Nat} {dim1 dim2 dim3 : Nat}
       (∀ i : Fin nx, ∀ j : Fin ny, ∀ k : Fin nz,
         ∃ val : Float, ((result.get i).get j).get k = val)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

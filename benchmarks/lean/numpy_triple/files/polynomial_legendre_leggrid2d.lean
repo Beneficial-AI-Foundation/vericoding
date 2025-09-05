@@ -14,7 +14,7 @@
 
 /-  Specification: leggrid2d correctly evaluates a 2-D Legendre series
     on the Cartesian product of input points.
-    
+
     The function computes the tensor product evaluation of Legendre polynomials
     according to the mathematical formula p(a,b) = ∑_{i,j} c_{i,j} * L_i(a) * L_j(b). -/
 
@@ -29,9 +29,7 @@ def leggrid2d {nx ny : Nat} {deg_x deg_y : Nat}
     (x : Vector Float nx) (y : Vector Float ny) 
     (c : Vector (Vector Float deg_y) deg_x) : 
     Id (Vector (Vector Float ny) nx) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem leggrid2d_spec {nx ny : Nat} {deg_x deg_y : Nat}
     (x : Vector Float nx) (y : Vector Float ny) 
@@ -56,6 +54,4 @@ theorem leggrid2d_spec {nx ny : Nat} {deg_x deg_y : Nat}
           (∀ k : Fin deg_x, ∀ l : Fin deg_y,
             ∃ contrib : Float, contrib = (c.get k).get l * x.get i * y.get j))
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

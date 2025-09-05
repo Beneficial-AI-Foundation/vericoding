@@ -19,9 +19,7 @@ open Std.Do
 -- </vc-helpers>
 
 def fabs {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem fabs_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -35,6 +33,4 @@ theorem fabs_spec {n : Nat} (x : Vector Float n) :
                   Float.abs (result.get i) = result.get i ∧
                   -- Symmetry: abs(x) = abs(-x)
                   result.get i = Float.abs (-(x.get i))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

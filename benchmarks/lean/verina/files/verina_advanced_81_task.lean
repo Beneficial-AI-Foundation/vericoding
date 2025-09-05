@@ -19,9 +19,7 @@ def uniqueSorted_precond (arr : List Int) : Prop :=
 -- </vc-helpers>
 
 def uniqueSorted (arr : List Int) (h_precond : uniqueSorted_precond (arr)) : List Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def uniqueSorted_postcond (arr : List Int) (result: List Int) (h_precond : uniqueSorted_precond (arr)) : Prop :=
@@ -29,9 +27,7 @@ def uniqueSorted_postcond (arr : List Int) (result: List Int) (h_precond : uniqu
 
 theorem uniqueSorted_spec_satisfied (arr: List Int) (h_precond : uniqueSorted_precond (arr)) :
     uniqueSorted_postcond (arr) (uniqueSorted (arr) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

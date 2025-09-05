@@ -12,7 +12,7 @@
 
 /-  Specification: matrix_norm computes the Frobenius norm of a matrix 
     The Frobenius norm is the square root of the sum of squares of all elements.
-    
+
     Properties:
     1. Non-negativity: norm is always ≥ 0
     2. Zero property: norm is 0 iff all elements are 0
@@ -29,9 +29,7 @@ open Std.Do
 -- </vc-helpers>
 
 def matrix_norm {rows cols : Nat} (x : Vector (Vector Float cols) rows) : Id Float :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem matrix_norm_spec {rows cols : Nat} (x : Vector (Vector Float cols) rows) :
     ⦃⌜True⌝⦄
@@ -41,6 +39,4 @@ theorem matrix_norm_spec {rows cols : Nat} (x : Vector (Vector Float cols) rows)
              (∀ i : Fin rows, ∀ j : Fin cols, Float.abs ((x.get i).get j) ≤ res) ∧
              (rows > 0 ∧ cols > 0 → 
                ∃ i : Fin rows, ∃ j : Fin cols, (x.get i).get j ≠ 0 → res > 0)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

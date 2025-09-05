@@ -30,9 +30,7 @@ open Std.Do
 -- </vc-helpers>
 
 def numpy_rint {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_rint_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -48,6 +46,4 @@ theorem numpy_rint_spec {n : Nat} (x : Vector Float n) :
       (∀ k : Int, x.get i = Float.ofInt k + 0.5 → 
         (k % 2 = 0 → result.get i = Float.ofInt k) ∧
         (k % 2 = 1 → result.get i = Float.ofInt (k + 1)))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

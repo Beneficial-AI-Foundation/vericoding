@@ -32,9 +32,7 @@ structure ChebyshevPoly (n : Nat) where
 -- </vc-helpers>
 
 def chebyshev {n : Nat} (coef : Vector Float n) : Id (ChebyshevPoly n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem chebyshev_spec {n : Nat} (coef : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -51,6 +49,4 @@ theorem chebyshev_spec {n : Nat} (coef : Vector Float n) :
                  result.domain_min < result.domain_max ∧
                  -- Window interval is valid
                  result.window_min < result.window_max⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

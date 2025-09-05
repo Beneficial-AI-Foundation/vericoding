@@ -27,9 +27,7 @@ open Std.Do
 -- </vc-helpers>
 
 def lexsort {n k : Nat} (keys : Vector (Vector Float n) k) (h : k > 0) : Id (Vector (Fin n) n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem lexsort_spec {n k : Nat} (keys : Vector (Vector Float n) k) (h : k > 0) :
     ⦃⌜k > 0⌝⦄
@@ -51,6 +49,4 @@ theorem lexsort_spec {n k : Nat} (keys : Vector (Vector Float n) k) (h : k > 0) 
         (∀ l : Fin k, (keys.get l).get i = (keys.get l).get j) → 
         ∃ p q : Fin n, indices.get p = i ∧ indices.get q = j ∧ p < q)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

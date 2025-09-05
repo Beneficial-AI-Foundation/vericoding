@@ -34,9 +34,7 @@ def hermiteE : Nat → Float → Float
 
 def hermefit {m : Nat} (x : Vector Float m) (y : Vector Float m) (deg : Nat) 
     (h_size : deg + 1 ≤ m) (h_nonempty : m > 0) : Id (Vector Float (deg + 1)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem hermefit_spec {m : Nat} (x : Vector Float m) (y : Vector Float m) (deg : Nat)
     (h_size : deg + 1 ≤ m) (h_nonempty : m > 0) :
@@ -88,6 +86,4 @@ theorem hermefit_spec {m : Nat} (x : Vector Float m) (y : Vector Float m) (deg :
           hermiteE k.val (x.get i))
         Float.abs ((residuals.zip basis_vals).map (fun p => p.1 * p.2)).sum < 1e-10)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

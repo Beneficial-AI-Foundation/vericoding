@@ -1,9 +1,9 @@
 /-  Pseudo-Vandermonde matrix of given degrees for 2D Hermite polynomials.
-    
+
     Returns a matrix where each row corresponds to a sample point (x[i], y[i]),
     and columns represent products of Hermite polynomials H_i(x) * H_j(y).
     The column at index (ydeg + 1)*i + j contains H_i(x) * H_j(y).
-    
+
     This creates the design matrix for fitting 2D Hermite polynomial surfaces,
     where coefficients are arranged in row-major order: c_00, c_01, ..., c_10, c_11, ...
 -/
@@ -22,9 +22,7 @@ open Std.Do
 
 def hermvander2d {n : Nat} (x y : Vector Float n) (xdeg ydeg : Nat) : 
     Id (Vector (Vector Float ((xdeg + 1) * (ydeg + 1))) n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem hermvander2d_spec {n : Nat} (x y : Vector Float n) (xdeg ydeg : Nat) :
     ⦃⌜True⌝⦄
@@ -58,6 +56,4 @@ theorem hermvander2d_spec {n : Nat} (x y : Vector Float n) (xdeg ydeg : Nat) :
              let j := idx.val % (ydeg + 1)
              ∀ (h_i : i < xdeg + 1) (h_j : j < ydeg + 1),
              idx.val = (ydeg + 1) * i + j)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

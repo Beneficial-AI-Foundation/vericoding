@@ -1,16 +1,16 @@
 /-  Compute the sign and (natural) logarithm of the determinant of a square matrix.
-    
+
     This function is more numerically stable than computing log(det(a)) directly,
     especially for very small or very large determinants.
-    
+
     For real matrices, the sign is -1, 0, or 1.
     For complex matrices, the sign has absolute value 1 (on the unit circle) or 0.
-    
+
     The determinant can be recovered as: det = sign * exp(logabsdet)
 -/
 
 /-  Specification: slogdet computes the sign and natural logarithm of the determinant
-    
+
     The function returns a tuple (sign, logabsdet) where:
     - sign is -1, 0, or 1 for real matrices
     - logabsdet is the natural log of the absolute value of the determinant
@@ -27,9 +27,7 @@ open Std.Do
 -- </vc-helpers>
 
 def slogdet {n : Nat} (a : Vector (Vector Float n) n) : Id (Float × Float) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem slogdet_spec {n : Nat} (a : Vector (Vector Float n) n) :
     ⦃⌜True⌝⦄
@@ -63,6 +61,4 @@ theorem slogdet_spec {n : Nat} (a : Vector (Vector Float n) n) :
       -- General stability property: logabsdet is finite when determinant is non-zero
       (sign ≠ 0 → Float.isFinite logabsdet)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

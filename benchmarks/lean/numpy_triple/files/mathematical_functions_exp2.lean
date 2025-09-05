@@ -16,7 +16,7 @@
     From NumPy documentation:
     - Parameters: x (array_like) - Input values
     - Returns: y (ndarray) - 2**x, element-wise
-    
+
     The function is implemented as a universal function (ufunc) that
     operates element-wise on arrays and supports broadcasting.
     For finite input values, the result is always positive.
@@ -48,15 +48,11 @@ open Std.Do
 -- </vc-helpers>
 
 def exp2 {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem exp2_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
     exp2 x
     ⦃⇓result => ⌜∀ i : Fin n, result.get i = (2 : Float) ^ (x.get i) ∧ 
                                result.get i > 0⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

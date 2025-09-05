@@ -25,14 +25,10 @@ open Std.Do
 -- </vc-helpers>
 
 def fromiter {α : Type} (n : Nat) (iter : Fin n → α) : Id (Vector α n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem fromiter_spec {α : Type} (n : Nat) (iter : Fin n → α) :
     ⦃⌜True⌝⦄
     fromiter n iter
     ⦃⇓result => ⌜∀ i : Fin n, result.get i = iter i⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

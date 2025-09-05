@@ -21,9 +21,7 @@ open Std.Do
 
 def legvander3d {n : Nat} (x y z : Vector Float n) (deg_x deg_y deg_z : Nat) : 
     Id (Vector (Vector Float ((deg_x + 1) * (deg_y + 1) * (deg_z + 1))) n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem legvander3d_spec {n : Nat} (x y z : Vector Float n) (deg_x deg_y deg_z : Nat) :
     ⦃⌜True⌝⦄
@@ -41,6 +39,4 @@ theorem legvander3d_spec {n : Nat} (x y z : Vector Float n) (deg_x deg_y deg_z :
         ∃ L_p_x L_q_y L_r_z : Float, 
           (result.get i).get ⟨col_idx, sorry⟩ = L_p_x * L_q_y * L_r_z)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

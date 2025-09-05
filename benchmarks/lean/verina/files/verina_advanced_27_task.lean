@@ -41,9 +41,7 @@ partial def lcsAux (xs : List Char) (ys : List Char) : List Char :=
 -- </vc-helpers>
 
 def longestCommonSubsequence (s1 : String) (s2 : String) (h_precond : longestCommonSubsequence_precond (s1) (s2)) : String :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible]
 def longestCommonSubsequence_postcond (s1 : String) (s2 : String) (result: String) (h_precond : longestCommonSubsequence_precond (s1) (s2)) : Prop :=
@@ -55,9 +53,7 @@ def longestCommonSubsequence_postcond (s1 : String) (s2 : String) (result: Strin
 
 theorem longestCommonSubsequence_spec_satisfied (s1: String) (s2: String) (h_precond : longestCommonSubsequence_precond (s1) (s2)) :
     longestCommonSubsequence_postcond (s1) (s2) (longestCommonSubsequence (s1) (s2) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

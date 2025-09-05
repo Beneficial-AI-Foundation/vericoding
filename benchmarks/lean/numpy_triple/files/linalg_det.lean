@@ -24,9 +24,7 @@ open Std.Do
 -- </vc-helpers>
 
 def det {n : Nat} (a : Vector (Vector Float n) n) : Id Float :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem det_spec {n : Nat} (a : Vector (Vector Float n) n) :
     ⦃⌜True⌝⦄
@@ -54,6 +52,4 @@ theorem det_spec {n : Nat} (a : Vector (Vector Float n) n) :
       -- The determinant is linear in each row
       (True) -- Placeholder for more advanced multilinear properties
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -31,8 +31,6 @@ function ArrayToBv10Helper(arr: array<bool>, index: nat): bv10
     requires arr.Length == 10
     requires 0 <= index < arr.Length
     decreases index
-    ensures forall i :: 0 <= i < index ==> ((ArrayToBv10Helper(arr, i) >> i) & 1) == (if arr
-        [i] then 1 else 0)
 {
     if index == 0 then
         (if arr[0] then 1 else 0) as bv10
@@ -59,9 +57,21 @@ function Bv10ToSeq(x: bv10): seq<bool> // Converts bitvector to boolean sequence
     ensures |Bv10ToSeq(x)| == 10
     ensures forall i: nat :: 0 <= i < 10 ==> Bv10ToSeq(x)[i] == isBitSet(x, i)
 {
-    [isBitSet(x, 0), isBitSet(x, 1), isBitSet(x, 2), isBitSet(x, 3),
+    var result := [isBitSet(x, 0), isBitSet(x, 1), isBitSet(x, 2), isBitSet(x, 3),
     isBitSet(x, 4), isBitSet(x, 5), isBitSet(x, 6), isBitSet(x, 7),
-    isBitSet(x, 8), isBitSet(x, 9)]
+    isBitSet(x, 8), isBitSet(x, 9)];
+    assert result[0] == isBitSet(x, 0);
+    assert result[1] == isBitSet(x, 1);
+    assert result[2] == isBitSet(x, 2);
+    assert result[3] == isBitSet(x, 3);
+    assert result[4] == isBitSet(x, 4);
+    assert result[5] == isBitSet(x, 5);
+    assert result[6] == isBitSet(x, 6);
+    assert result[7] == isBitSet(x, 7);
+    assert result[8] == isBitSet(x, 8);
+    assert result[9] == isBitSet(x, 9);
+    assert forall i: nat :: 0 <= i < 10 ==> result[i] == isBitSet(x, i);
+    result
 }
 
 function BoolToInt(a: bool): int {

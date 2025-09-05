@@ -15,7 +15,7 @@
     1. It contains at least one cased character (letters that have uppercase/lowercase versions)
     2. All cased characters are lowercase
     3. Non-cased characters (numbers, symbols, whitespace) are ignored for the check
-    
+
     Examples:
     - Empty string "" → false (no cased characters)
     - "123" → false (no cased characters)
@@ -37,7 +37,7 @@
     3. Strings with only non-cased characters (digits, symbols, whitespace) return false
     4. Strings with any uppercase letters return false
     5. Strings with at least one lowercase letter and no uppercase letters return true
-    
+
     Edge Cases:
     - Empty string: false (no cased characters)
     - "123": false (no cased characters) 
@@ -56,9 +56,7 @@ open Std.Do
 -- </vc-helpers>
 
 def islower {n : Nat} (a : Vector String n) : Id (Vector Bool n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem islower_spec {n : Nat} (a : Vector String n) :
     ⦃⌜True⌝⦄
@@ -66,6 +64,4 @@ theorem islower_spec {n : Nat} (a : Vector String n) :
     ⦃⇓result => ⌜∀ i : Fin n, result.get i = 
       ((∃ c ∈ (a.get i).toList, c.isAlpha ∧ c.isLower) ∧ 
        (∀ c ∈ (a.get i).toList, c.isAlpha → c.isLower))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -23,9 +23,7 @@ def isEven_precond (n : Int) : Prop :=
 -- </vc-helpers>
 
 def isEven (n : Int) (h_precond : isEven_precond (n)) : Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def isEven_postcond (n : Int) (result: Bool) (h_precond : isEven_precond (n)) :=
@@ -33,9 +31,7 @@ def isEven_postcond (n : Int) (result: Bool) (h_precond : isEven_precond (n)) :=
 
 theorem isEven_spec_satisfied (n: Int) (h_precond : isEven_precond (n)) :
     isEven_postcond (n) (isEven (n) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

@@ -20,9 +20,7 @@ def isPalindrome_precond (s : String) : Prop :=
 -- </vc-helpers>
 
 def isPalindrome (s : String) (h_precond : isPalindrome_precond (s)) : Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def isPalindrome_postcond (s : String) (result: Bool) (h_precond : isPalindrome_precond (s)) : Prop :=
@@ -31,9 +29,7 @@ def isPalindrome_postcond (s : String) (result: Bool) (h_precond : isPalindrome_
 
 theorem isPalindrome_spec_satisfied (s: String) (h_precond : isPalindrome_precond (s)) :
     isPalindrome_postcond (s) (isPalindrome (s) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

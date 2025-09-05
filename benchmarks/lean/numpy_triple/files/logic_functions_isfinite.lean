@@ -20,9 +20,7 @@ open Std.Do
 -- </vc-helpers>
 
 def isfinite {n : Nat} (x : Vector Float n) : Id (Vector Bool n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem isfinite_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -44,6 +42,4 @@ theorem isfinite_spec {n : Nat} (x : Vector Float n) :
         ((x.get i + y).isFinite ∨ (x.get i + y).isInf)) ∧
       -- IEEE 754 compliance: finite values exclude special values
       (result.get i = true → ¬(x.get i).isNaN ∧ ¬(x.get i).isInf)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

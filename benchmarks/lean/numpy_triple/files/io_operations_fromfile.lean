@@ -75,9 +75,7 @@ def DType.to_type : DType → Type
 
 def fromfile {n : Nat} (file : FileHandle) (dtype : DType) (count : Int) 
     (sep : String) (offset : Nat) : Id (Vector (dtype.to_type) n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem fromfile_spec {n : Nat} (file : FileHandle) (dtype : DType) (count : Int) 
     (sep : String) (offset : Nat) 
@@ -111,6 +109,4 @@ theorem fromfile_spec {n : Nat} (file : FileHandle) (dtype : DType) (count : Int
                  (∀ i : Fin n, 
                    -- Each element has the correct type for the specified dtype
                    True)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

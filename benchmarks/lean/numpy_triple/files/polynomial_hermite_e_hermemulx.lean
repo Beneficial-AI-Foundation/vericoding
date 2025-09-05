@@ -22,9 +22,7 @@ open Std.Do
 -- </vc-helpers>
 
 def hermemulx {n : Nat} (c : Vector Float n) : Id (Vector Float (n + 1)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem hermemulx_spec {n : Nat} (c : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -38,6 +36,4 @@ theorem hermemulx_spec {n : Nat} (c : Vector Float n) :
       -- For i ≥ 1: result[i+1] gets c[i] (coefficient shift up)
       (∀ i : Fin n, i.val ≥ 1 → result.get ⟨i.val + 1, sorry⟩ = c.get i)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

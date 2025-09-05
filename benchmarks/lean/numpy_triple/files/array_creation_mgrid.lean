@@ -22,9 +22,7 @@ open Std.Do
 -- </vc-helpers>
 
 def mgrid {n : Nat} (start stop step : Float) (h_valid : n = ((stop - start) / step).toUInt64.toNat) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem mgrid_spec {n : Nat} (start stop step : Float) (h_valid : n = ((stop - start) / step).toUInt64.toNat) 
     (h_step_pos : step > 0) (h_range : start < stop) :
@@ -32,6 +30,4 @@ theorem mgrid_spec {n : Nat} (start stop step : Float) (h_valid : n = ((stop - s
     mgrid start stop step h_valid
     ⦃⇓result => ⌜∀ i : Fin n, result.get i = start + Float.ofNat i.val * step ∧
                  result.get i < stop⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

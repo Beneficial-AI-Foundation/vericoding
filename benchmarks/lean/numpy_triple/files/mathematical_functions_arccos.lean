@@ -25,9 +25,7 @@ open Std.Do
 -- </vc-helpers>
 
 def arccos {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem arccos_spec {n : Nat} (x : Vector Float n) 
     (h_valid : ∀ i : Fin n, -1 ≤ x.get i ∧ x.get i ≤ 1) :
@@ -44,6 +42,4 @@ theorem arccos_spec {n : Nat} (x : Vector Float n)
       (x.get i = 1 → result.get i = 0) ∧
       -- Monotonicity: arccos is decreasing on [-1, 1]
       (∀ j : Fin n, x.get i ≤ x.get j → result.get j ≤ result.get i)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

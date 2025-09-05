@@ -26,9 +26,7 @@ open Std.Do
 -- </vc-helpers>
 
 def nancumprod {n : Nat} (arr : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem nancumprod_spec {n : Nat} (arr : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -43,6 +41,4 @@ theorem nancumprod_spec {n : Nat} (arr : Vector Float n) :
       result.get i = (List.range (i.val + 1)).foldl (fun acc idx => 
         let val := arr.get ⟨idx, by sorry⟩
         if Float.isNaN val then acc else acc * val) 1.0⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -20,9 +20,7 @@ open Std.Do
 -- </vc-helpers>
 
 def lagmul {n m : Nat} (c1 : Vector Float (n + 1)) (c2 : Vector Float (m + 1)) : Id (Vector Float (n + m + 1)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem lagmul_spec {n m : Nat} (c1 : Vector Float (n + 1)) (c2 : Vector Float (m + 1)) :
     ⦃⌜True⌝⦄
@@ -31,6 +29,4 @@ theorem lagmul_spec {n m : Nat} (c1 : Vector Float (n + 1)) (c2 : Vector Float (
                  ∀ i : Fin (n + m + 1), result.get i ≠ 0 → 
                    ∃ (j : Fin (n + 1)) (k : Fin (m + 1)), 
                      j.val + k.val = i.val ∧ c1.get j ≠ 0 ∧ c2.get k ≠ 0⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

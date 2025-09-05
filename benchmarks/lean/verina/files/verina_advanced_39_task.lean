@@ -19,9 +19,7 @@ def maxOfList_precond (lst : List Nat) : Prop :=
 -- </vc-helpers>
 
 def maxOfList (lst : List Nat) (h_precond : maxOfList_precond (lst)) : Nat :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def maxOfList_postcond (lst : List Nat) (result: Nat) (h_precond : maxOfList_precond (lst)) : Prop :=
@@ -29,9 +27,7 @@ def maxOfList_postcond (lst : List Nat) (result: Nat) (h_precond : maxOfList_pre
 
 theorem maxOfList_spec_satisfied (lst: List Nat) (h_precond : maxOfList_precond (lst)) :
     maxOfList_postcond (lst) (maxOfList (lst) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

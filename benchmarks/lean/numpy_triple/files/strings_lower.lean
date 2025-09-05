@@ -52,9 +52,7 @@ open Std.Do
 -- </vc-helpers>
 
 def lower {n : Nat} (a : Vector String n) : Id (Vector String n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem lower_spec {n : Nat} (a : Vector String n) :
     ⦃⌜True⌝⦄
@@ -85,6 +83,4 @@ theorem lower_spec {n : Nat} (a : Vector String n) :
         ∃ origChar : Char, 
           original.get? ⟨j⟩ = some origChar ∧ 
           (origChar.isUpper → result.get? ⟨j⟩ = some origChar.toLower))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

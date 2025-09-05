@@ -134,9 +134,7 @@ def is_subsequence (xs ys : List Char) : Bool :=
 -- </vc-helpers>
 
 def implementation (lst: String) : Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -158,10 +156,8 @@ spec result
 
 theorem correctness
 (string: String)
-: problem_spec implementation string :=
--- <vc-proof>
+: problem_spec implementation string := by
   sorry
--- </vc-proof>
 
 -- #test implementation "(())" = true
 -- #test implementation "()))))))((((()" = false

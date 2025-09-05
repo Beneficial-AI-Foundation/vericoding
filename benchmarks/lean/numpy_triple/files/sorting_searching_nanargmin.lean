@@ -1,20 +1,20 @@
 /-  numpy.nanargmin: Return the indices of the minimum values in the specified axis ignoring NaNs.
-    
+
     For all-NaN slices ValueError is raised. Warning: the results cannot be trusted 
     if a slice contains only NaNs and Infs.
-    
+
     This function finds the index of the minimum value in a vector, ignoring NaN values.
     If all values are NaN, it should raise an error (represented as a precondition).
-    
+
     Parameters:
     - a : Vector Float n - Input data vector
-    
+
     Returns:
     - Fin n - Index of the minimum non-NaN value
 -/
 
 /-  Specification: nanargmin returns the index of the minimum non-NaN value.
-    
+
     Precondition: At least one element in the vector is not NaN
     Postcondition: 
     1. The returned index points to a non-NaN value
@@ -30,9 +30,7 @@ open Std.Do
 -- </vc-helpers>
 
 def nanargmin {n : Nat} (a : Vector Float (n + 1)) (h_has_valid : ∃ i : Fin (n + 1), ¬(a.get i).isNaN) : Id (Fin (n + 1)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem nanargmin_spec {n : Nat} (a : Vector Float (n + 1)) (h_has_valid : ∃ i : Fin (n + 1), ¬(a.get i).isNaN) :
     ⦃⌜∃ i : Fin (n + 1), ¬(a.get i).isNaN⌝⦄
@@ -40,6 +38,4 @@ theorem nanargmin_spec {n : Nat} (a : Vector Float (n + 1)) (h_has_valid : ∃ i
     ⦃⇓idx => ⌜¬(a.get idx).isNaN ∧ 
              (∀ j : Fin (n + 1), ¬(a.get j).isNaN → a.get idx ≤ a.get j) ∧
              (∀ j : Fin (n + 1), j < idx → (a.get j).isNaN ∨ a.get j > a.get idx)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

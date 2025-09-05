@@ -30,9 +30,7 @@ open Std.Do
 -- </vc-helpers>
 
 def moveaxis {n : Nat} (a : Vector Float n) (source dest : Nat) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem moveaxis_spec {n : Nat} (a : Vector Float n) (source dest : Nat) :
     ⦃⌜True⌝⦄
@@ -47,6 +45,4 @@ theorem moveaxis_spec {n : Nat} (a : Vector Float n) (source dest : Nat) :
        -- Property: for any valid indices i < j, if a[i] ≤ a[j], then result[i] ≤ result[j]
        -- This shows that relative ordering is preserved
        (∀ i j : Fin n, i < j → a.get i ≤ a.get j → result.get i ≤ result.get j)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

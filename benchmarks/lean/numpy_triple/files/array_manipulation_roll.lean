@@ -17,7 +17,7 @@
     For positive shift, elements move to the right and wrap around.
     For negative shift, elements move to the left and wrap around.
     Empty vectors are returned unchanged.
-    
+
     Mathematical property: result[i] = a[(i - shift) mod n]
     where the modulo operation handles negative values correctly. -/
 
@@ -29,9 +29,7 @@ open Std.Do
 -- </vc-helpers>
 
 def roll {n : Nat} {α : Type} (a : Vector α n) (shift : Int) : Id (Vector α n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem roll_spec {n : Nat} {α : Type} (a : Vector α n) (shift : Int) :
     ⦃⌜True⌝⦄
@@ -41,6 +39,4 @@ theorem roll_spec {n : Nat} {α : Type} (a : Vector α n) (shift : Int) :
                    let srcIdx := ((i.val : Int) - shift) % (n : Int)
                    let normalizedIdx := if srcIdx < 0 then srcIdx + n else srcIdx
                    result.get i = a.get ⟨normalizedIdx.toNat, by sorry⟩)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

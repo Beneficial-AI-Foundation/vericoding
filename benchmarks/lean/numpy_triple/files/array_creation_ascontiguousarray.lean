@@ -25,9 +25,7 @@ open Std.Do
 -- </vc-helpers>
 
 def ascontiguousarray {n : Nat} (a : Vector Float n) : Id (Vector Float (max n 1)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem ascontiguousarray_spec {n : Nat} (a : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -38,6 +36,4 @@ theorem ascontiguousarray_spec {n : Nat} (a : Vector Float n) :
       (n = 0 → max n 1 = 1) ∧
       (n > 0 → ∀ i : Fin n, ∃ j : Fin (max n 1), result.get j = a.get i)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

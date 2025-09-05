@@ -13,9 +13,7 @@ open Std.Do
 -- </vc-helpers>
 
 def polyvander {n : Nat} (x : Vector Float n) (deg : Nat) : Id (Vector (Vector Float (deg + 1)) n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem polyvander_spec {n : Nat} (x : Vector Float n) (deg : Nat) :
     ⦃⌜True⌝⦄
@@ -23,6 +21,4 @@ theorem polyvander_spec {n : Nat} (x : Vector Float n) (deg : Nat) :
     ⦃⇓V => ⌜∀ i : Fin n, 
              (V.get i).get ⟨0, Nat.zero_lt_succ deg⟩ = 1.0 ∧ 
              (deg > 0 → (V.get i).get ⟨1, sorry⟩ = x.get i)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

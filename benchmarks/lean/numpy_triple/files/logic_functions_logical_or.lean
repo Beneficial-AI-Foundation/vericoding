@@ -9,14 +9,14 @@
 -/
 
 /-  Compute the truth value of x1 OR x2 element-wise.
-    
+
     Performs logical OR operation on corresponding elements of two boolean vectors.
     The function returns a vector where each element is the logical OR of the 
     corresponding elements from the input vectors.
 -/
 
 /-  Specification: logical_or computes element-wise logical OR operation
-    
+
     This specification captures the mathematical properties of logical OR:
     - Commutativity: a ∨ b = b ∨ a
     - Associativity: (a ∨ b) ∨ c = a ∨ (b ∨ c)
@@ -24,7 +24,7 @@
     - Absorption with true: a ∨ true = true
     - Idempotent: a ∨ a = a
     - De Morgan's law: ¬(a ∨ b) = (¬a) ∧ (¬b)
-    
+
     Sanity checks:
     - For empty vectors (n = 0), the result is empty by vacuous truth
     - logical_or([true, false], [false, false]) = [true, false]
@@ -41,9 +41,7 @@ open Std.Do
 -- </vc-helpers>
 
 def logical_or {n : Nat} (x1 x2 : Vector Bool n) : Id (Vector Bool n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem logical_or_spec {n : Nat} (x1 x2 : Vector Bool n) :
     ⦃⌜True⌝⦄
@@ -61,6 +59,4 @@ theorem logical_or_spec {n : Nat} (x1 x2 : Vector Bool n) :
                  (x1.get i = true ∨ x2.get i = true → result.get i = true) ∧
                  -- Result is false only when both operands are false
                  (x1.get i = false ∧ x2.get i = false → result.get i = false)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

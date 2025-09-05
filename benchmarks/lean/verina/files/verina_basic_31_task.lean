@@ -27,9 +27,7 @@ def shiftMinus32 (c : Char) : Char :=
 -- </vc-helpers>
 
 def toUppercase (s : String) (h_precond : toUppercase_precond (s)) : String :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def toUppercase_postcond (s : String) (result: String) (h_precond : toUppercase_precond (s)) :=
@@ -42,9 +40,7 @@ def toUppercase_postcond (s : String) (result: String) (h_precond : toUppercase_
 
 theorem toUppercase_spec_satisfied (s: String) (h_precond : toUppercase_precond (s)) :
     toUppercase_postcond (s) (toUppercase (s) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

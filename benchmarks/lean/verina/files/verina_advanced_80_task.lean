@@ -18,7 +18,7 @@ Returns the indices of the two numbers in the array that add up to the target. T
 def twoSum_precond (nums : Array Int) (target : Int) : Prop :=
   -- The array must have at least 2 elements
   nums.size ≥ 2 ∧
-  
+
   -- There exists exactly one pair of indices whose values sum to the target
   (List.range nums.size).any (fun i =>
     (List.range i).any (fun j => nums[i]! + nums[j]! = target)) ∧
@@ -31,9 +31,7 @@ def twoSum_precond (nums : Array Int) (target : Int) : Prop :=
 -- </vc-helpers>
 
 def twoSum (nums : Array Int) (target : Int) (h_precond : twoSum_precond (nums) (target)) : Array Nat :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible]
 def twoSum_postcond (nums : Array Int) (target : Int) (result: Array Nat) (h_precond : twoSum_precond (nums) (target)) : Prop :=
@@ -51,9 +49,7 @@ def twoSum_postcond (nums : Array Int) (target : Int) (result: Array Nat) (h_pre
 
 theorem twoSum_spec_satisfied (nums: Array Int) (target: Int) (h_precond : twoSum_precond (nums) (target)) :
     twoSum_postcond (nums) (target) (twoSum (nums) (target) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

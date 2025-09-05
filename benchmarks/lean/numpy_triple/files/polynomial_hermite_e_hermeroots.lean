@@ -16,7 +16,7 @@
 /-  Specification: hermeroots returns the roots of the HermiteE series defined by coefficients.
     For a HermiteE series with n coefficients, there are at most n-1 roots.
     Each root r satisfies: p(r) = 0 where p(x) = Σ c[i] * He_i(x)
-    
+
     Mathematical properties:
     1. The polynomial p(x) = Σ c[i] * He_i(x) where He_i are HermiteE basis polynomials
     2. He_i(x) are the "probabilists'" Hermite polynomials related to the standard normal distribution
@@ -32,9 +32,7 @@ open Std.Do
 -- </vc-helpers>
 
 def hermeroots {n : Nat} (c : Vector Float n) : Id (Vector Float (n - 1)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem hermeroots_spec {n : Nat} (c : Vector Float (n + 1)) (h_nonzero : c.get ⟨n, by simp⟩ ≠ 0) :
     ⦃⌜c.get ⟨n, by simp⟩ ≠ 0⌝⦄
@@ -57,6 +55,4 @@ theorem hermeroots_spec {n : Nat} (c : Vector Float (n + 1)) (h_nonzero : c.get 
       -- 3. Mathematical property: HermiteE roots are related to eigenvalues of companion matrix
       -- (Implementation detail captured in postcondition)
       True⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

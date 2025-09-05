@@ -56,9 +56,7 @@ structure TimeDelta64 where
 -- </vc-helpers>
 
 def timedelta64 (value : Int64) (unit : TimeUnit) : Id TimeDelta64 :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem timedelta64_spec (value : Int64) (unit : TimeUnit) :
     ⦃⌜True⌝⦄
@@ -66,6 +64,4 @@ theorem timedelta64_spec (value : Int64) (unit : TimeUnit) :
     ⦃⇓result => ⌜result.value = value ∧ result.unit = unit ∧ 
                 result.value ≥ -9223372036854775808 ∧ 
                 result.value ≤ 9223372036854775807⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

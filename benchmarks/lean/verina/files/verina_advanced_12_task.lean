@@ -17,9 +17,7 @@ def firstDuplicate_precond (lst : List Int) : Prop :=
 -- </vc-helpers>
 
 def firstDuplicate (lst : List Int) (h_precond : firstDuplicate_precond (lst)) : Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible]
 def firstDuplicate_postcond (lst : List Int) (result: Int) (h_precond : firstDuplicate_precond (lst)) : Prop :=
@@ -33,9 +31,7 @@ def firstDuplicate_postcond (lst : List Int) (result: Int) (h_precond : firstDup
 
 theorem firstDuplicate_spec_satisfied (lst: List Int) (h_precond : firstDuplicate_precond (lst)) :
     firstDuplicate_postcond (lst) (firstDuplicate (lst) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

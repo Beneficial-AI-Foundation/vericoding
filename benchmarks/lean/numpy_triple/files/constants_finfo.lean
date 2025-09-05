@@ -9,18 +9,18 @@
 -/
 
 /-  numpy.finfo: Returns machine limits for floating point types.
-    
+
     Given a floating-point data type, returns a structure containing
     information about the numerical properties and limits of that type,
     including epsilon, maximum/minimum values, and precision details.
-    
+
     For now, we model this as a function that takes Unit and returns
     FloatInfo for the default Float type.
 -/
 
 /-  Specification: numpy.finfo returns consistent and mathematically valid
     information about floating-point type limits.
-    
+
     The returned structure satisfies fundamental properties of floating-point
     representations according to IEEE 754 standard.
 -/
@@ -48,9 +48,7 @@ structure FloatInfo where
 -- </vc-helpers>
 
 def numpy_finfo : Id FloatInfo :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_finfo_spec :
     ⦃⌜True⌝⦄
@@ -88,6 +86,4 @@ theorem numpy_finfo_spec :
       -- Approximately: precision ≈ mantissa_bits * log10(2)
       info.precision ≤ info.nmant
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

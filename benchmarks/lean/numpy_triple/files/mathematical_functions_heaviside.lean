@@ -15,7 +15,7 @@
     - If x1[i] < 0, result[i] = 0
     - If x1[i] = 0, result[i] = x2[i]
     - If x1[i] > 0, result[i] = 1
-    
+
     This specification captures the complete behavior of the heaviside step function
     including the crucial property that it's completely determined by the sign of x1
     and uses x2 as the value at the discontinuity point. -/
@@ -28,9 +28,7 @@ open Std.Do
 -- </vc-helpers>
 
 def heaviside {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem heaviside_spec {n : Nat} (x1 x2 : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -45,6 +43,4 @@ theorem heaviside_spec {n : Nat} (x1 x2 : Vector Float n) :
         (∀ j : Fin n, x1.get i ≤ x1.get j → x1.get i ≠ 0 → x1.get j ≠ 0 → result.get i ≤ result.get j) ∧
         -- Boundary behavior: result is either 0, 1, or x2
         (result.get i ≠ 0 → result.get i ≠ 1 → result.get i = x2.get i)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

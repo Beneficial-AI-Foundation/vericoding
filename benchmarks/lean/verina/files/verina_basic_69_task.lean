@@ -29,9 +29,7 @@ def linearSearchAux (a : Array Int) (e : Int) (n : Nat) : Nat :=
 -- </vc-helpers>
 
 def LinearSearch (a : Array Int) (e : Int) (h_precond : LinearSearch_precond (a) (e)) : Nat :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def LinearSearch_postcond (a : Array Int) (e : Int) (result: Nat) (h_precond : LinearSearch_precond (a) (e)) :=
@@ -39,9 +37,7 @@ def LinearSearch_postcond (a : Array Int) (e : Int) (result: Nat) (h_precond : L
 
 theorem LinearSearch_spec_satisfied (a: Array Int) (e: Int) (h_precond : LinearSearch_precond (a) (e)) :
     LinearSearch_postcond (a) (e) (LinearSearch (a) (e) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

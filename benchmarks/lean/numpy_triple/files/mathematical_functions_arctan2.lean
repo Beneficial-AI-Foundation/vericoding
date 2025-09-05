@@ -13,9 +13,9 @@
     using the signs of both arguments to determine the quadrant of the result.
     This gives the signed angle in radians between the positive x-axis and the
     point (x2, x1).
-    
+
     The result is in the range [-π, π].
-    
+
     Special cases:
     - arctan2(+0, +0) = +0
     - arctan2(+0, -0) = +π
@@ -29,25 +29,25 @@
 
 /-  Specification: numpy.arctan2 returns a vector where each element is the
     arc tangent of x1[i]/x2[i], computed using both signs to determine the quadrant.
-    
+
     Mathematical properties:
     1. The result is the angle θ such that:
        - x1[i] = r * sin(θ)
        - x2[i] = r * cos(θ)
        where r = sqrt(x1[i]² + x2[i]²)
-    
+
     2. arctan2 correctly handles all four quadrants based on the signs of x1 and x2
-    
+
     3. Special case: arctan2(0, 0) = 0 by convention
-    
+
     4. For x2 > 0, arctan2(x1, x2) = arctan(x1/x2)
-    
+
     5. Key quadrant properties:
        - If x1 ≥ 0 and x2 > 0: result is in [0, π/2)
        - If x1 > 0 and x2 ≤ 0: result is in (π/2, π]
        - If x1 ≤ 0 and x2 < 0: result is in (-π, -π/2]
        - If x1 < 0 and x2 ≥ 0: result is in [-π/2, 0)
-    
+
     Precondition: True (handles all real inputs including zeros)
     Postcondition: Each result[i] is the arc tangent of x1[i]/x2[i] with correct quadrant
 -/
@@ -60,9 +60,7 @@ open Std.Do
 -- </vc-helpers>
 
 def numpy_arctan2 {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_arctan2_spec {n : Nat} (x1 x2 : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -91,6 +89,4 @@ theorem numpy_arctan2_spec {n : Nat} (x1 x2 : Vector Float n) :
           let r := Float.sqrt (x1.get i * x1.get i + x2.get i * x2.get i)
           (Float.abs (x1.get i - r * Float.sin (result.get i)) < 1e-7 ∧
            Float.abs (x2.get i - r * Float.cos (result.get i)) < 1e-7))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

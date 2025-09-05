@@ -21,9 +21,7 @@ open Std.Do
 
 def fill_diagonal {T : Type} {rows cols : Nat} (mat : Vector (Vector T cols) rows) (val : T) : 
     Id (Vector (Vector T cols) rows) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem fill_diagonal_spec {T : Type} {rows cols : Nat} (mat : Vector (Vector T cols) rows) (val : T) :
     ⦃⌜True⌝⦄
@@ -34,6 +32,4 @@ theorem fill_diagonal_spec {T : Type} {rows cols : Nat} (mat : Vector (Vector T 
       -- Non-diagonal elements remain unchanged
       (∀ i : Fin rows, ∀ j : Fin cols, i.val ≠ j.val → 
         (result.get i).get j = (mat.get i).get j)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

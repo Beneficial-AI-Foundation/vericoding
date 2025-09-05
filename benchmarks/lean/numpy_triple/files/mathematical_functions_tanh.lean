@@ -11,18 +11,18 @@
 
     The hyperbolic tangent function is defined as:
     tanh(x) = sinh(x) / cosh(x) = (e^x - e^(-x)) / (e^x + e^(-x))
-    
+
     This function is bounded between -1 and 1, and is the ratio of
     hyperbolic sine to hyperbolic cosine. It has a sigmoid-like shape,
     approaching -1 as x approaches negative infinity and approaching 1
     as x approaches positive infinity.
-    
+
     Returns an array of the same shape as x, containing the hyperbolic tangent of each element.
 -/
 
 /-  Specification: numpy.tanh returns a vector where each element is the hyperbolic tangent
     of the corresponding element in x.
-    
+
     Precondition: True (no special preconditions for hyperbolic tangent)
     Postcondition: 
     1. For all indices i, result[i] = sinh(x[i]) / cosh(x[i])
@@ -43,9 +43,7 @@ open Std.Do
 -- </vc-helpers>
 
 def tanh {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem tanh_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -70,6 +68,4 @@ theorem tanh_spec {n : Nat} (x : Vector Float n) :
         (x.get i > 0 → result.get i > 0 ∧ result.get i < 1) ∧
         -- Asymptotic behavior: for large negative x, tanh(x) approaches -1
         (x.get i < 0 → result.get i < 0 ∧ result.get i > -1)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -20,9 +20,7 @@ def removeDuplicates_precond (nums : List Int) : Prop :=
 -- </vc-helpers>
 
 def removeDuplicates (nums : List Int) (h_precond : removeDuplicates_precond (nums)) : Nat :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible]
 def removeDuplicates_postcond (nums : List Int) (result: Nat) (h_precond : removeDuplicates_precond (nums)) : Prop :=
@@ -31,9 +29,7 @@ def removeDuplicates_postcond (nums : List Int) (result: Nat) (h_precond : remov
 
 theorem removeDuplicates_spec_satisfied (nums: List Int) (h_precond : removeDuplicates_precond (nums)) :
     removeDuplicates_postcond (nums) (removeDuplicates (nums) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

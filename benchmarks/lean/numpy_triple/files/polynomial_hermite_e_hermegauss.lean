@@ -34,9 +34,7 @@ open Std.Do
 -- </vc-helpers>
 
 def hermegauss (deg : Nat) (h : deg > 0) : Id (Vector Float deg × Vector Float deg) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem hermegauss_spec (deg : Nat) (h : deg > 0) :
     ⦃⌜deg > 0⌝⦄
@@ -52,6 +50,4 @@ theorem hermegauss_spec (deg : Nat) (h : deg > 0) :
       -- Weights are symmetric (same symmetry as points)
       (∀ i : Fin deg, ∃ j : Fin deg, x.get i = -(x.get j) → w.get i = w.get j)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -22,9 +22,7 @@ open Std.Do
 -- </vc-helpers>
 
 def numpy_where {n : Nat} (condition : Vector Bool n) (x y : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_where_spec {n : Nat} (condition : Vector Bool n) (x y : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -32,6 +30,4 @@ theorem numpy_where_spec {n : Nat} (condition : Vector Bool n) (x y : Vector Flo
     ⦃⇓result => ⌜∀ i : Fin n, 
       (condition.get i = true → result.get i = x.get i) ∧
       (condition.get i = false → result.get i = y.get i)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

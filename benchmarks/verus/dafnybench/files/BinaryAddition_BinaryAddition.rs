@@ -64,7 +64,7 @@ spec fn array_to_bv10_helper(arr: &[bool; 10], index: nat) -> u16
 // Convert array to sequence
 fn array_to_sequence(arr: &[bool; 10]) -> (res: Vec<bool>)
     ensures res.len() == 10,
-    ensures forall|k: int| 0 <= k < 10 ==> res[k] == arr[k]
+            (forall|k: int| 0 <= k < 10 ==> res[k] == arr[k]),
 {
     assume(false);
     Vec::new()
@@ -96,7 +96,7 @@ spec fn bit_addition(s: &[bool; 10], t: &[bool; 10]) -> Seq<bool> {
 fn binary_addition(s: &[bool; 10], t: &[bool; 10]) -> (sresult: Vec<bool>) // Generated program for bit addition
     requires s.len() == 10 && t.len() == 10
     ensures sresult.len() == 10,
-    ensures bit_addition(s, t) == sresult@, // Verification of correctness
+            bit_addition(s, t) == sresult@, // Verification of correctness
 // </vc-spec>
 // <vc-code>
 {

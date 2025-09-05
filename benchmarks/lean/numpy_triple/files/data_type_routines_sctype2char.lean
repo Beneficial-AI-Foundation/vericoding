@@ -9,10 +9,10 @@
 -/
 
 /-  numpy.sctype2char: Return the string representation of a scalar dtype
-    
+
     Converts a scalar data type to its corresponding single-character string representation.
     This is used internally by numpy to represent data types in a compact form.
-    
+
     The mapping follows numpy's dtype.char convention:
     - int32 → 'l'
     - float64 (double) → 'd'  
@@ -23,7 +23,7 @@
 
 /-  Specification: sctype2char returns the correct character representation
     for each scalar type.
-    
+
     Precondition: Valid scalar type (guaranteed by type system)
     Postcondition: Returns the standard numpy character for the given type
 -/
@@ -47,9 +47,7 @@ inductive ScalarType
 -- </vc-helpers>
 
 def sctype2char (sctype : ScalarType) : Id String :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem sctype2char_spec (sctype : ScalarType) :
     ⦃⌜True⌝⦄
@@ -64,6 +62,4 @@ theorem sctype2char_spec (sctype : ScalarType) :
       (sctype = ScalarType.bytes → result = "S") ∧
       (sctype = ScalarType.object → result = "O")
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -42,9 +42,7 @@ inductive IntegerType
 -- </vc-helpers>
 
 def iinfo (intType : IntegerType) : Id IntegerInfo :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem iinfo_spec (intType : IntegerType) :
     ⦃⌜True⌝⦄
@@ -66,6 +64,4 @@ theorem iinfo_spec (intType : IntegerType) :
           info.bits = 32 ∧ info.min = 0 ∧ info.max = 4294967295
       | IntegerType.UInt64 => 
           info.bits = 64 ∧ info.min = 0 ∧ info.max = 18446744073709551615⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

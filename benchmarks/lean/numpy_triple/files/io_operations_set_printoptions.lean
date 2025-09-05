@@ -13,14 +13,14 @@
     Sets the global printing options that control how floating point numbers,
     arrays and other NumPy objects are displayed. This function modifies the
     global state of NumPy's print formatting system.
-    
+
     All parameters are optional and only modify the corresponding option if
     provided. Options not specified retain their current values.
 -/
 
 /-  Specification: set_printoptions correctly updates the global print options
     according to the provided parameters while validating input constraints.
-    
+
     Precondition: All optional parameters must satisfy their validation constraints
     Postcondition: The global print state is updated with the provided options
 -/
@@ -66,9 +66,7 @@ def set_printoptions
     (sign : Option String := none)
     (floatmode : Option String := none)
     (legacy : Option String := none) : Id Unit :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem set_printoptions_spec 
     (precision : Option Nat := none)
@@ -105,6 +103,4 @@ theorem set_printoptions_spec
         (l = "1.13" ∨ l = "1.21" ∨ l = "1.25" ∨ l = "2.1" ∨ l = "2.2"))⌝⦄
     set_printoptions precision threshold edgeitems linewidth suppress nanstr infstr sign floatmode legacy
     ⦃⇓_ => ⌜True⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

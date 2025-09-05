@@ -11,9 +11,7 @@ open Std.Do
 -- </vc-helpers>
 
 def expm1 {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem expm1_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -33,6 +31,4 @@ theorem expm1_spec {n : Nat} (x : Vector Float n) :
       (x.get i > 0 → result.get i > x.get i) ∧
       -- Upper bound for negative values: expm1(x) > -1 for all x
       result.get i > -1⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

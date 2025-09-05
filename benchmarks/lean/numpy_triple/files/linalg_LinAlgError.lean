@@ -38,18 +38,14 @@ inductive LinAlgError where
 -- </vc-helpers>
 
 def checkLinAlgError (condition : Bool) (errorType : String → LinAlgError) (message : String) : Id (Option LinAlgError) :=
--- <vc-implementation>
   if condition then
     return some (errorType message)
   else
     return none
--- </vc-implementation>
 
 theorem checkLinAlgError_spec (condition : Bool) (errorType : String → LinAlgError) (message : String) :
     ⦃⌜True⌝⦄
     checkLinAlgError condition errorType message
     ⦃⇓result => ⌜(condition = true → result = some (errorType message)) ∧ 
                   (condition = false → result = none)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

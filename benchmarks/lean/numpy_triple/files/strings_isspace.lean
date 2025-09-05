@@ -14,12 +14,12 @@
     A string is considered whitespace if:
     1. It contains at least one character (non-empty)
     2. All characters are whitespace (space, tab, newline, form feed, carriage return, etc.)
-    
+
     Behavior:
     - Empty strings return false
     - Strings with only whitespace characters return true
     - Strings with any non-whitespace character return false
-    
+
     Examples:
     - " " (single space) → true
     - "\t" (tab) → true  
@@ -54,9 +54,7 @@ open Std.Do
 -- </vc-helpers>
 
 def isspace {n : Nat} (a : Vector String n) : Id (Vector Bool n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem isspace_spec {n : Nat} (a : Vector String n) :
     ⦃⌜True⌝⦄
@@ -66,6 +64,4 @@ theorem isspace_spec {n : Nat} (a : Vector String n) :
                  (a.get i = "" → result.get i = false) ∧
                  -- Mathematical property: Result is boolean (trivially true but explicit)
                  (result.get i = true ∨ result.get i = false)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

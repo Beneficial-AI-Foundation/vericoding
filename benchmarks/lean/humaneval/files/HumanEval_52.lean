@@ -16,9 +16,7 @@ import Std.Data.HashMap
 -- </vc-helpers>
 
 def implementation (numbers: List Int) (threshold: Int) : Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -41,10 +39,8 @@ spec result
 theorem correctness
 (numbers: List Int)
 (threshold: Int)
-: problem_spec implementation numbers threshold  :=
--- <vc-proof>
+: problem_spec implementation numbers threshold  := by
   sorry
--- </vc-proof>
 
 -- #test implementation ([1, 2, 4, 10]: List Int) 100 = true
 -- #test implementation ([1, 20, 4, 10]: List Int) 5 = false

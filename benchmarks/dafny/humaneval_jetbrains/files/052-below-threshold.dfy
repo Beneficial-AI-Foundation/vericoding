@@ -1,0 +1,11 @@
+/*
+function_signature: def below_threshold(numbers: List[Int], threshold: Int) -> bool
+*/
+
+method below_threshold(l : seq<int>, t : int) returns (b : bool)
+    // post-conditions-start
+    ensures b == (forall i : int :: i >= 0 && i < |l| ==> l[i] < t)
+    // post-conditions-end
+{
+  assume false;
+}

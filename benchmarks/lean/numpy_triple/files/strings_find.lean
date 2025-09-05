@@ -20,9 +20,7 @@ open Std.Do
 -- </vc-helpers>
 
 def find {n : Nat} (a : Vector String n) (sub : Vector String n) (start : Vector Int n) (endPos : Vector Int n) : Id (Vector Int n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem find_spec {n : Nat} (a : Vector String n) (sub : Vector String n) (start : Vector Int n) (endPos : Vector Int n) :
     ⦃⌜∀ i : Fin n, 0 ≤ start.get i ∧ start.get i ≤ endPos.get i ∧ endPos.get i < (a.get i).length⌝⦄
@@ -49,6 +47,4 @@ theorem find_spec {n : Nat} (a : Vector String n) (sub : Vector String n) (start
       (start.get i + (sub.get i).length > (a.get i).length → result.get i = -1) ∧
       -- Sanity check 3: if start > end, no substring can be found
       (start.get i > endPos.get i → result.get i = -1)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

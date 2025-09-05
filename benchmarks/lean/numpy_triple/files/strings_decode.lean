@@ -41,9 +41,7 @@ open Std.Do
 -- </vc-helpers>
 
 def decode {n : Nat} (a : Vector ByteArray n) (encoding : String := "utf-8") (errors : String := "strict") : Id (Vector String n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem decode_spec {n : Nat} (a : Vector ByteArray n) (encoding : String := "utf-8") (errors : String := "strict") :
     ⦃⌜∀ i : Fin n, (a.get i).size ≥ 0⌝⦄
@@ -75,6 +73,4 @@ theorem decode_spec {n : Nat} (a : Vector ByteArray n) (encoding : String := "ut
                   (∀ enc1 enc2 : String, enc1 ≠ enc2 →
                     decode a enc1 errors ≠ decode a enc2 errors ∨
                     (∀ j : Fin n, (a.get j).size = 0))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

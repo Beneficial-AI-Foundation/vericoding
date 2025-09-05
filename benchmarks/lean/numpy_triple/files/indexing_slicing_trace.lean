@@ -9,20 +9,20 @@
 -/
 
 /-  numpy.trace: Return the sum along diagonals of the array.
-    
+
     For a 2D matrix, computes the sum of elements along the diagonal
     with an optional offset. For offset=0, it computes the sum of 
     elements a[i,i] for all valid i. For positive offset, it sums
     a[i,i+offset], and for negative offset, it sums a[i-offset,i].
-    
+
     This implementation focuses on the 2D case as the core functionality.
 -/
 
 /-  Specification: numpy.trace returns the sum along the diagonal.
-    
+
     For a 2D matrix with given offset, the trace is the sum of all
     elements a[i,j] where j = i + offset and both i,j are valid indices.
-    
+
     Precondition: True
     Postcondition: Result equals the sum of diagonal elements with given offset
 -/
@@ -35,9 +35,7 @@ open Std.Do
 -- </vc-helpers>
 
 def trace {rows cols : Nat} (a : Vector (Vector Float cols) rows) (offset : Int) : Id Float :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem trace_spec {rows cols : Nat} (a : Vector (Vector Float cols) rows) (offset : Int) :
     ⦃⌜True⌝⦄
@@ -57,6 +55,4 @@ theorem trace_spec {rows cols : Nat} (a : Vector (Vector Float cols) rows) (offs
           (∀ ij ∈ valid_indices, ij.1.val = ij.2.val + offset.natAbs) ∧
           result = valid_indices.foldl (fun acc ij => acc + (a.get ij.1).get ij.2) 0)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -15,14 +15,14 @@
     Given coefficients c = [c₀, c₁, ..., cₙ₋₁] representing the Hermite series
     P₀(x)⋅c₀ + P₁(x)⋅c₁ + ... + Pₙ₋₁(x)⋅cₙ₋₁, this function computes the 
     coefficients of the series raised to the given power.
-    
+
     Mathematical properties:
     - Power 0: Returns [1.0] (multiplicative identity for Hermite polynomials)
     - Power 1: Returns the original coefficients unchanged (preserves the polynomial)
     - Power ≥ 2: Uses repeated multiplication following Hermite polynomial algebra
     - Result degree: The degree of the result polynomial is (n-1) * pow
     - Respects maxpower limit: pow must not exceed maxpower to prevent excessive growth
-    
+
     This implements the mathematical operation (P(x))^pow where P(x) is the Hermite polynomial
     represented by the input coefficients, and the result gives the coefficients of the
     polynomial raised to the given power in the Hermite basis.
@@ -36,9 +36,7 @@ open Std.Do
 -- </vc-helpers>
 
 def hermepow {n : Nat} (c : Vector Float n) (pow : Nat) (maxpower : Nat) : Id (Vector Float (1 + (n - 1) * pow)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem hermepow_spec {n : Nat} (c : Vector Float n) (pow : Nat) (maxpower : Nat)
     (h_pow_bound : pow ≤ maxpower) (h_maxpower_reasonable : maxpower ≤ 16) :
@@ -55,6 +53,4 @@ theorem hermepow_spec {n : Nat} (c : Vector Float n) (pow : Nat) (maxpower : Nat
                    result.get ⟨1 + (n - 1) * pow - 1, by sorry⟩ = highest_coeff ∧
                    -- Mathematical property: this preserves polynomial multiplication structure
                    True)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

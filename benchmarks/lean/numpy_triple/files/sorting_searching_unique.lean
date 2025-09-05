@@ -3,10 +3,10 @@
     Returns the sorted unique elements of an array. This operation removes
     duplicate values and returns them in sorted order. The result contains
     each unique value exactly once.
-    
+
     For a 1D array, this function eliminates duplicate elements and sorts
     the remaining unique elements in ascending order.
-    
+
     The returned array will have size less than or equal to the input array,
     with equality only when all elements are already unique.
 -/
@@ -27,9 +27,7 @@ open Std.Do
 -- </vc-helpers>
 
 def unique {n : Nat} (ar : Vector Float n) : Id (Σ m : Nat, Vector Float m) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem unique_spec {n : Nat} (ar : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -44,6 +42,4 @@ theorem unique_spec {n : Nat} (ar : Vector Float n) :
                   (∀ i : Fin m, ∃ j : Fin n, unique_arr.get i = ar.get j) ∧
                   -- Every distinct element from input appears in result
                   (∀ i : Fin n, ∃ j : Fin m, ar.get i = unique_arr.get j)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

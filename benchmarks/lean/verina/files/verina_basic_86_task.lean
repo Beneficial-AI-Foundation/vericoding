@@ -32,9 +32,7 @@ def rotateAux (a : Array Int) (offset : Int) (i : Nat) (len : Nat) (b : Array In
 -- </vc-helpers>
 
 def rotate (a : Array Int) (offset : Int) (h_precond : rotate_precond (a) (offset)) : Array Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def rotate_postcond (a : Array Int) (offset : Int) (result: Array Int) (h_precond : rotate_precond (a) (offset)) :=
@@ -44,9 +42,7 @@ def rotate_postcond (a : Array Int) (offset : Int) (result: Array Int) (h_precon
 
 theorem rotate_spec_satisfied (a: Array Int) (offset: Int) (h_precond : rotate_precond (a) (offset)) :
     rotate_postcond (a) (offset) (rotate (a) (offset) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

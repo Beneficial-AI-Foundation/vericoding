@@ -2,10 +2,10 @@
 
     True division of the inputs, element-wise. This is equivalent to 
     division in Python 3 and numpy.divide. Always returns a floating point result.
-    
+
     The result is computed element-wise as x1[i] / x2[i] for all valid indices i.
     Division by zero will result in infinity or NaN depending on the numerator.
-    
+
     This function is an alias for numpy.divide but ensures floating point output.
 -/
 
@@ -14,7 +14,7 @@
 
     Precondition: All elements in x2 must be non-zero to avoid division by zero
     Postcondition: For all indices i, result[i] = x1[i] / x2[i]
-    
+
     Mathematical properties:
     - Preserves vector length (result has same size as inputs)
     - Element-wise division: result[i] = x1[i] / x2[i]
@@ -32,9 +32,7 @@ open Std.Do
 -- </vc-helpers>
 
 def true_divide {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem true_divide_spec {n : Nat} (x1 x2 : Vector Float n) :
     ⦃⌜∀ i : Fin n, x2.get i ≠ 0⌝⦄
@@ -42,6 +40,4 @@ theorem true_divide_spec {n : Nat} (x1 x2 : Vector Float n) :
     ⦃⇓result => ⌜∀ i : Fin n, result.get i = x1.get i / x2.get i ∧ 
                   result.get i = (x1.get i * (1 / x2.get i)) ∧
                   (x2.get i * result.get i = x1.get i)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

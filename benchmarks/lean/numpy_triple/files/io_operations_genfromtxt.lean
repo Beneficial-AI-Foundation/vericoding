@@ -26,9 +26,7 @@ open Std.Do
 def genfromtxt {rows cols : Nat} (input : Vector String rows) 
     (delimiter : String) (fill_value : Float) (skip_header : Nat) :
     Id (Vector (Vector Float cols) (rows - skip_header)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem genfromtxt_spec {rows cols : Nat} (input : Vector String rows) 
     (delimiter : String) (fill_value : Float) (skip_header : Nat)
@@ -54,6 +52,4 @@ theorem genfromtxt_spec {rows cols : Nat} (input : Vector String rows)
                                    fill_value 
                                  else 
                                    field_str.toNat!.toFloat)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

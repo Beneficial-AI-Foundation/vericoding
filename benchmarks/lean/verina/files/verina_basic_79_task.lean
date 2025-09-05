@@ -34,9 +34,7 @@ def findP (a : Array Int) (x : Nat) (m : Int) (i : Nat) : Nat :=
 -- </vc-helpers>
 
 def onlineMax (a : Array Int) (x : Nat) (h_precond : onlineMax_precond (a) (x)) : Int × Nat :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def onlineMax_postcond (a : Array Int) (x : Nat) (result: Int × Nat) (h_precond : onlineMax_precond (a) (x)) :=
@@ -49,9 +47,7 @@ def onlineMax_postcond (a : Array Int) (x : Nat) (result: Int × Nat) (h_precond
 
 theorem onlineMax_spec_satisfied (a: Array Int) (x: Nat) (h_precond : onlineMax_precond (a) (x)) :
     onlineMax_postcond (a) (x) (onlineMax (a) (x) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

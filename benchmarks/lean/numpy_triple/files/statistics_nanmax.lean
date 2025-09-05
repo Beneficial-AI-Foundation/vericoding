@@ -10,7 +10,7 @@
 
 /-  Returns the maximum value of all elements in a non-empty vector, ignoring NaN values.
     When all elements are NaN, returns NaN.
-    
+
     Mathematical Properties:
     - Ignores NaN values in the computation
     - Returns the maximum of all non-NaN elements
@@ -19,7 +19,7 @@
     - For vectors with no NaN values, behaves identically to regular max -/
 
 /-  Specification: nanmax returns the maximum value in the vector, ignoring NaN values.
-    
+
     Mathematical properties:
     1. If there exists at least one non-NaN element, the result is the maximum among non-NaN elements
     2. If all elements are NaN, the result is NaN
@@ -36,9 +36,7 @@ open Std.Do
 -- </vc-helpers>
 
 def nanmax {n : Nat} (a : Vector Float (n + 1)) : Id Float :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem nanmax_spec {n : Nat} (a : Vector Float (n + 1)) :
     ⦃⌜True⌝⦄
@@ -64,6 +62,4 @@ theorem nanmax_spec {n : Nat} (a : Vector Float (n + 1)) :
                      (∀ j : Fin (n + 1), a.get j ≤ result))) ∧
                  -- Sanity check: result is either NaN or exists in the vector
                  (result.isNaN ∨ (∃ witness : Fin (n + 1), result = a.get witness))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

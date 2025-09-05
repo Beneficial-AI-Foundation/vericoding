@@ -20,9 +20,7 @@ open Std.Do
 -- </vc-helpers>
 
 def NPY_1_PI : Id Float :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem NPY_1_PI_spec :
     ⦃⌜True⌝⦄
@@ -45,6 +43,4 @@ theorem NPY_1_PI_spec :
       -- result * 3.14159... ≈ 1
       0.99999 < result * 3.141592653589793 ∧ result * 3.141592653589793 < 1.00001
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

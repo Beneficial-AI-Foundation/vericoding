@@ -1,23 +1,23 @@
 /-  MT19937 BitGenerator for the Mersenne Twister pseudo-random number generator
-    
+
     MT19937 provides a capsule containing function pointers that produce doubles, 
     and unsigned 32 and 64-bit integers. This implementation focuses on the core
     state initialization and next value generation.
 
     The Mersenne Twister is a pseudorandom number generator that maintains an
     internal state and produces a sequence of 32-bit integers with a period of 2^19937 - 1.
-    
+
     Parameters:
     - seed : UInt32 optional seed value to initialize the generator
-    
+
     The generator produces uniformly distributed values in [0, 2^32 - 1]
 -/
 
 /-  Specification: MT19937 initializes the generator state with proper seeding
-    
+
     The MT19937 generator maintains a state vector of 624 32-bit integers.
     When initialized with a seed, it produces a deterministic sequence.
-    
+
     Precondition: None (any seed value is valid)
     Postcondition: 
     1. The state vector has exactly 624 elements
@@ -35,9 +35,7 @@ open Std.Do
 -- </vc-helpers>
 
 def mt19937 (seed : UInt32) : Id (Vector UInt32 624) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem mt19937_spec (seed : UInt32) :
     ⦃⌜True⌝⦄
@@ -64,6 +62,4 @@ theorem mt19937_spec (seed : UInt32) :
           state'.get ⟨0, by simp⟩ = seed' → 
           (∀ j : Fin 624, state.get j = state'.get j))
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

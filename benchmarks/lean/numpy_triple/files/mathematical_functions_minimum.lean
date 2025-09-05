@@ -2,15 +2,15 @@
 
     Compare two arrays and returns a new array containing the element-wise minima.
     If one of the elements being compared is NaN, then that element is returned.
-    
+
     This is different from numpy.min which returns a single minimum value.
     This function performs element-wise comparison and returns a new array.
-    
+
     Binary universal function: minimum(x1, x2)
-    
+
     Parameters:
     - x1, x2: Vector Float n - Input vectors of the same size
-    
+
     Returns:
     - Vector Float n - The element-wise minimum of x1 and x2
 -/
@@ -24,7 +24,7 @@
     3. Idempotency: min(a, a) = a
     4. Element-wise operation: result[i] = min(x1[i], x2[i]) for all i
     5. NaN propagation: if either x1[i] or x2[i] is NaN, result[i] is NaN
-    
+
     Precondition: True (no special preconditions for element-wise minimum)
     Postcondition: For all indices i, result[i] = min(x1[i], x2[i])
 -/
@@ -37,9 +37,7 @@ open Std.Do
 -- </vc-helpers>
 
 def minimum {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem minimum_spec {n : Nat} (x1 x2 : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -51,6 +49,4 @@ theorem minimum_spec {n : Nat} (x1 x2 : Vector Float n) :
                  result.get i ≤ x1.get i ∧ result.get i ≤ x2.get i ∧
                  -- Definitional property: result equals one of the inputs
                  (result.get i = x1.get i ∨ result.get i = x2.get i)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

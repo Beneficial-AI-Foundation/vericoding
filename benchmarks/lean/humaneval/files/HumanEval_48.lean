@@ -33,9 +33,7 @@ s = s.toList.reverse.asString
 -- </vc-helpers>
 
 def implementation (string: String) : Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -52,10 +50,8 @@ spec result
 theorem correctness
 (s: String)
 : problem_spec implementation s
-:=
--- <vc-proof>
+:= by
   sorry
--- </vc-proof>
 
 -- #test implementation "" = true
 -- #test implementation "aba" = true

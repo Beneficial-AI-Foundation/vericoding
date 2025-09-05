@@ -17,9 +17,7 @@ open Std.Do
 -- </vc-helpers>
 
 def format_float (x : Float) (parens : Bool := false) : Id String :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem format_float_spec (x : Float) (parens : Bool := false) :
     ⦃⌜True⌝⦄
@@ -47,6 +45,4 @@ theorem format_float_spec (x : Float) (parens : Bool := false) :
       (result.all (fun c => c.isDigit ∨ c = '.' ∨ c = '-' ∨ c = '+' ∨ c = 'e' ∨ c = 'E' ∨ 
                             c = '(' ∨ c = ')' ∨ c = 'n' ∨ c = 'a' ∨ c = 'i' ∨ c = 'f' ∨ c = 'I' ∨ c = 'N'))
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

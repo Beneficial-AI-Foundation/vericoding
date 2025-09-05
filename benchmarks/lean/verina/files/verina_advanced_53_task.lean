@@ -24,9 +24,7 @@ def minimumRightShifts_precond (nums : List Int) : Prop :=
 -- </vc-helpers>
 
 def minimumRightShifts (nums : List Int) (h_precond : minimumRightShifts_precond (nums)) : Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def minimumRightShifts_postcond (nums : List Int) (result: Int) (h_precond : minimumRightShifts_precond (nums)) : Prop :=
@@ -56,9 +54,7 @@ def minimumRightShifts_postcond (nums : List Int) (result: Int) (h_precond : min
 
 theorem minimumRightShifts_spec_satisfied (nums: List Int) (h_precond : minimumRightShifts_precond (nums)) :
     minimumRightShifts_postcond (nums) (minimumRightShifts (nums) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

@@ -1,0 +1,82 @@
+This verification task involves determining whether two rectangular paintings can be placed on a rectangular board without overlapping. 
+
+The paintings can be rotated 90 degrees, which creates multiple placement configurations to consider. The solution must check all possible orientations and arrangements to determine if both paintings fit within the board dimensions.
+
+// ======= TASK =======
+// Given a rectangular board and two rectangular paintings, determine if both paintings 
+// can be placed on the board without overlapping. Paintings can be rotated 90 degrees.
+
+// ======= SPEC REQUIREMENTS =======
+predicate validInput(input: string)
+{
+    |input| > 0
+}
+
+function parseInput(input: string): (int, int, int, int, int, int)
+    requires validInput(input)
+    ensures var (a, b, c, d, e, f) := parseInput(input); 
+            a > 0 && b > 0 && c > 0 && d > 0 && e > 0 && f > 0 &&
+            a <= 1000 && b <= 1000 && c <= 1000 && d <= 1000 && e <= 1000 && f <= 1000
+{
+    (1, 1, 1, 1, 1, 1)
+}
+
+function max(x: int, y: int): int
+{
+    if x >= y then x else y
+}
+
+// ======= HELPERS =======
+
+// ======= MAIN METHOD =======
+method solve(input: string) returns (output: string)
+    requires |input| > 0
+    requires validInput(input)
+    ensures output == "YES" || output == "NO"
+    ensures 
+        var (a, b, c, d, e, f) := parseInput(input);
+        output == "YES" <==> 
+            ((c + e <= a && max(d, f) <= b) ||
+             (c + e <= b && max(d, f) <= a) ||
+             (c + f <= a && max(d, e) <= b) ||
+             (c + f <= b && max(d, e) <= a) ||
+             (d + e <= a && max(c, f) <= b) ||
+             (d + e <= b && max(c, f) <= a) ||
+             (d + f <= a && max(c, e) <= b) ||
+             (d + f <= b && max(c, e) <= a))
+{
+    var (a, b, c, d, e, f) := parseInput(input);
+
+    var canFit := false;
+
+    if c + e <= a && max(d, f) <= b {
+        canFit := true;
+    }
+    else if c + e <= b && max(d, f) <= a {
+        canFit := true;
+    }
+    else if c + f <= a && max(d, e) <= b {
+        canFit := true;
+    }
+    else if c + f <= b && max(d, e) <= a {
+        canFit := true;
+    }
+    else if d + e <= a && max(c, f) <= b {
+        canFit := true;
+    }
+    else if d + e <= b && max(c, f) <= a {
+        canFit := true;
+    }
+    else if d + f <= a && max(c, e) <= b {
+        canFit := true;
+    }
+    else if d + f <= b && max(c, e) <= a {
+        canFit := true;
+    }
+
+    if canFit {
+        output := "YES";
+    } else {
+        output := "NO";
+    }
+}

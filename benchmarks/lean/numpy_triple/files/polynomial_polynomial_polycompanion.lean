@@ -9,25 +9,25 @@
 -/
 
 /-  Return the companion matrix of a polynomial.
-    
+
     The companion matrix C for a polynomial p(x) = c[0] + c[1]*x + ... + c[n]*x^n
     is an (n×n) matrix where the characteristic polynomial is p(x).
-    
+
     For a polynomial of degree n, the companion matrix has the form:
     - First (n-1) rows: [0, 0, ..., 0, 1, 0, ..., 0] (identity shifted)
     - Last row: [-c[0]/c[n], -c[1]/c[n], ..., -c[n-1]/c[n]]
-    
+
     The companion matrix is used to find roots of the polynomial as eigenvalues. -/
 
 /-  Specification: polycompanion constructs the companion matrix of a polynomial.
-    
+
     The companion matrix satisfies the following properties:
     1. Dimension: Returns an (n+1)×(n+1) matrix for polynomial of degree n+1
     2. Structure: First n rows form shifted identity matrix pattern  
     3. Last row: Contains normalized negative coefficients [-c[0]/c[n+1], -c[1]/c[n+1], ..., -c[n]/c[n+1]]
     4. Leading coefficient: c[n+1] ≠ 0 (required for well-defined companion matrix)
     5. Eigenvalue property: The eigenvalues of the companion matrix are the roots of the polynomial
-    
+
     Mathematical properties:
     - Characteristic polynomial: det(λI - C) = c[0] + c[1]*λ + ... + c[n+1]*λ^(n+1)
     - Rank: The matrix has full rank n+1 when c[n+1] ≠ 0
@@ -42,9 +42,7 @@ open Std.Do
 -- </vc-helpers>
 
 def polycompanion {n : Nat} (c : Vector Float (n + 2)) : Id (Vector (Vector Float (n + 1)) (n + 1)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem polycompanion_spec {n : Nat} (c : Vector Float (n + 2)) 
     (h_leading : c.get ⟨n + 1, sorry⟩ ≠ 0) :
@@ -58,6 +56,4 @@ theorem polycompanion_spec {n : Nat} (c : Vector Float (n + 2))
             -(c.get ⟨j.val, sorry⟩) / (c.get ⟨n + 1, sorry⟩)
           else 
             0⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

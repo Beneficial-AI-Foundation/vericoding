@@ -12,7 +12,7 @@
 
     Returns the index of the maximum value among all non-NaN elements in the array.
     Requires that at least one element is not NaN, otherwise it would raise an error.
-    
+
     In case of multiple occurrences of the maximum values, the indices
     corresponding to the first occurrence are returned.
 
@@ -34,9 +34,7 @@ open Std.Do
 -- </vc-helpers>
 
 def nanargmax {n : Nat} (a : Vector Float (n + 1)) (h_not_all_nan : ∃ i : Fin (n + 1), ¬(a.get i).isNaN) : Id (Fin (n + 1)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem nanargmax_spec {n : Nat} (a : Vector Float (n + 1)) (h_not_all_nan : ∃ i : Fin (n + 1), ¬(a.get i).isNaN) :
     ⦃⌜∃ i : Fin (n + 1), ¬(a.get i).isNaN⌝⦄
@@ -44,6 +42,4 @@ theorem nanargmax_spec {n : Nat} (a : Vector Float (n + 1)) (h_not_all_nan : ∃
     ⦃⇓idx => ⌜¬(a.get idx).isNaN ∧ 
              (∀ j : Fin (n + 1), ¬(a.get j).isNaN → a.get j ≤ a.get idx) ∧
              (∀ j : Fin (n + 1), ¬(a.get j).isNaN → a.get j = a.get idx → idx ≤ j)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

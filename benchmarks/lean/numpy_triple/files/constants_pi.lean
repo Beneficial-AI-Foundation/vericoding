@@ -21,9 +21,7 @@ open Std.Do
 -- </vc-helpers>
 
 def pi : Id Float :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem pi_spec :
     ⦃⌜True⌝⦄
@@ -42,6 +40,4 @@ theorem pi_spec :
       -- pi/4 is approximately 0.7854... (useful for eighth circle calculations)
       0.785 < result / 4 ∧ result / 4 < 0.786
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

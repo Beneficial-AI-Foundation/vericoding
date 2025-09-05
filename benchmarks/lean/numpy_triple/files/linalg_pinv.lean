@@ -36,9 +36,7 @@ open Std.Do
 -- </vc-helpers>
 
 def pinv {m n : Nat} (a : Vector (Vector Float n) m) : Id (Vector (Vector Float m) n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem pinv_spec {m n : Nat} (a : Vector (Vector Float n) m) :
     ⦃⌜True⌝⦄
@@ -52,6 +50,4 @@ theorem pinv_spec {m n : Nat} (a : Vector (Vector Float n) m) :
       ((∀ i : Fin m, ∀ j : Fin n, (a.get i).get j = 0.0) → 
        (∀ i : Fin n, ∀ j : Fin m, (a_pinv.get i).get j = 0.0))
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

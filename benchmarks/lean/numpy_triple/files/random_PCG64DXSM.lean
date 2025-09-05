@@ -40,9 +40,7 @@ open Std.Do
 -- </vc-helpers>
 
 def PCG64DXSM {n : Nat} (seed : UInt64) : Id (Vector UInt64 n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem PCG64DXSM_spec {n : Nat} (seed : UInt64) :
     ⦃⌜True⌝⦄
@@ -59,6 +57,4 @@ theorem PCG64DXSM_spec {n : Nat} (seed : UInt64) :
         let other := (PCG64DXSM seed' : Id (Vector UInt64 n))
         n > 0 → ∃ (i : Fin n), result.get i ≠ other.get i)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -8,17 +8,17 @@
 -/
 
 /-  numpy.floor: Return the floor of the input, element-wise.
-    
+
     The floor of each element x is the largest integer i, such that i <= x.
     This is a fundamental mathematical operation that rounds down to the
     nearest integer.
-    
+
     Returns an array of the same shape as x, containing the floor of each element.
 -/
 
 /-  Specification: numpy.floor returns a vector where each element is the
     floor (largest integer less than or equal to) the corresponding element in x.
-    
+
     Precondition: True (floor is defined for all real numbers)
     Postcondition: For all indices i, result[i] is the floor of x[i], meaning:
     - result[i] is an integer value (represented as Float)
@@ -39,9 +39,7 @@ open Std.Do
 -- </vc-helpers>
 
 def numpy_floor {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_floor_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -55,6 +53,4 @@ theorem numpy_floor_spec {n : Nat} (x : Vector Float n) :
       (∃ k : Int, result.get i = Float.ofInt k → (result.get i).floor = result.get i) ∧
       result.get i = -((-x.get i).ceil) ∧
       (∃ k : Int, x.get i = Float.ofInt k → result.get i = x.get i)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

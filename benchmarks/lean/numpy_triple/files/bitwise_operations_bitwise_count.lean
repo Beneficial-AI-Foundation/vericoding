@@ -33,9 +33,7 @@ def popcount (n : Nat) : Nat :=
 -- </vc-helpers>
 
 def bitwise_count {n : Nat} (x : Vector Int n) : Id (Vector Nat n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem bitwise_count_spec {n : Nat} (x : Vector Int n) :
     ⦃⌜True⌝⦄
@@ -49,6 +47,4 @@ theorem bitwise_count_spec {n : Nat} (x : Vector Int n) :
                  (∀ i : Fin n, x.get i < 0 → result.get i = popcount (Int.natAbs (x.get i))) ∧
                  (∀ i : Fin n, ∀ m : Int, x.get i = m → result.get i = popcount (Int.natAbs m)) ∧
                  (∀ i : Fin n, ∀ j : Fin n, x.get i = -(x.get j) → result.get i = result.get j)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

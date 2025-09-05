@@ -29,14 +29,10 @@ open Std.Do
 -- </vc-helpers>
 
 def lagweight {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem lagweight_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
     lagweight x
     ⦃⇓result => ⌜∀ i : Fin n, result.get i = Float.exp (-x.get i)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

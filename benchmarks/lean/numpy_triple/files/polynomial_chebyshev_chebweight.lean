@@ -13,7 +13,7 @@
 
 /-  Specification: chebweight computes the Chebyshev weight function 1/sqrt(1 - x²).
     The function is well-defined when all elements are in the open interval (-1, 1).
-    
+
     Mathematical properties:
     1. The weight function equals 1/sqrt(1 - x²) for each element
     2. The result is always positive for valid inputs
@@ -29,9 +29,7 @@ open Std.Do
 -- </vc-helpers>
 
 def chebweight {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem chebweight_spec {n : Nat} (x : Vector Float n)
     (h_valid : ∀ i : Fin n, -1 < x.get i ∧ x.get i < 1) :
@@ -45,6 +43,4 @@ theorem chebweight_spec {n : Nat} (x : Vector Float n)
             (∀ i j : Fin n, x.get i = -(x.get j) → w.get i = w.get j) ∧
             -- Numerical stability: the implementation should use factored form
             (∀ i : Fin n, w.get i = 1 / (Float.sqrt (1 + x.get i) * Float.sqrt (1 - x.get i)))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -25,9 +25,7 @@ open Std.Do
 -- </vc-helpers>
 
 def lagsub {n : Nat} (c1 c2 : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem lagsub_spec {n : Nat} (c1 c2 : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -41,6 +39,4 @@ theorem lagsub_spec {n : Nat} (c1 c2 : Vector Float n) :
       -- then result represents polynomial (p - q)(x) in the Laguerre basis
       True -- Placeholder for more complex Laguerre polynomial properties
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

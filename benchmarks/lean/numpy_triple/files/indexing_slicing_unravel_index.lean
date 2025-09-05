@@ -23,9 +23,7 @@ open Std.Do
 -- </vc-helpers>
 
 def unravel_index {n d : Nat} (indices : Vector Nat n) (shape : Vector Nat d) : Id (Vector (Vector Nat d) n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem unravel_index_spec {n d : Nat} (indices : Vector Nat n) (shape : Vector Nat d) 
     (h_shape_pos : ∀ i : Fin d, shape.get i > 0)
@@ -39,6 +37,4 @@ theorem unravel_index_spec {n d : Nat} (indices : Vector Nat n) (shape : Vector 
       (∀ i : Fin n, ∀ j : Fin d, (coords.get i).get j < shape.get j) ∧
       -- Uniqueness: different flat indices produce different coordinates
       (∀ i j : Fin n, i ≠ j → indices.get i ≠ indices.get j → coords.get i ≠ coords.get j)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

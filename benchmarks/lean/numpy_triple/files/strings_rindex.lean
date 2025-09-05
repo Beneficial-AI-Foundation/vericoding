@@ -24,9 +24,7 @@ open Std.Do
 -- </vc-helpers>
 
 def rindex {n : Nat} (a : Vector String n) (sub : Vector String n) (start : Vector Int n) (endPos : Vector Int n) : Id (Vector Int n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem rindex_spec {n : Nat} (a : Vector String n) (sub : Vector String n) (start : Vector Int n) (endPos : Vector Int n) :
     ⦃⌜∀ i : Fin n, 
@@ -50,6 +48,4 @@ theorem rindex_spec {n : Nat} (a : Vector String n) (sub : Vector String n) (sta
       -- This is the highest (rightmost) index where substring is found in the range
       (∀ j : Nat, Int.natAbs (result.get i) < j ∧ j + (sub.get i).length ≤ min (endPos.get i + 1).toNat (a.get i).length → 
         ¬(((a.get i).drop j).take (sub.get i).length = sub.get i))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

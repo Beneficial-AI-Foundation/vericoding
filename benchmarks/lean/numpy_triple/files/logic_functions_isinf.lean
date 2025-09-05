@@ -8,11 +8,11 @@
 /-  Test element-wise for positive or negative infinity in a vector -/
 
 /-  Specification: isinf returns true for positive or negative infinity, false otherwise.
-    
+
     This function tests each element according to IEEE 754 floating-point standard:
     - Returns true if the element is positive infinity or negative infinity
     - Returns false for all other values including NaN, finite numbers, and zero
-    
+
     Mathematical properties:
     1. Infinity detection: result[i] = true iff x[i] is infinite
     2. Distinction from NaN: infinity and NaN are mutually exclusive
@@ -29,9 +29,7 @@ open Std.Do
 -- </vc-helpers>
 
 def isinf {n : Nat} (x : Vector Float n) : Id (Vector Bool n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem isinf_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -43,6 +41,4 @@ theorem isinf_spec {n : Nat} (x : Vector Float n) :
       (x.get i = 0.0 → result.get i = false) ∧
       (result.get i = true → ¬(x.get i).isFinite) ∧
       (result.get i = true → ¬(x.get i).isNaN)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

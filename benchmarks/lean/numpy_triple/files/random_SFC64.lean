@@ -26,9 +26,7 @@ structure SFC64State where
 -- </vc-helpers>
 
 def sfc64 (seed : Option UInt64) : Id SFC64State :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem sfc64_spec (seed : Option UInt64) :
     ⦃⌜True⌝⦄
@@ -40,6 +38,4 @@ theorem sfc64_spec (seed : Option UInt64) :
                    ∃ state1 state2 : SFC64State, 
                      (sfc64 (some s1)).run = state1 ∧ (sfc64 (some s2)).run = state2 ∧
                      (state1.a ≠ state2.a ∨ state1.b ≠ state2.b ∨ state1.c ≠ state2.c ∨ state1.counter ≠ state2.counter))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

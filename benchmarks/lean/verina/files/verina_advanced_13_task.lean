@@ -6,7 +6,6 @@ A chord is defined as a line segment connecting two distinct points on a circle.
 
 Constraints
 
-
 - 2\leq N \leq 2\times 10^5
 - 1\leq A_i,B_i \leq 2N
 - A_1,\dots,A_N,B_1,\dots,B_N are all distinct
@@ -33,9 +32,7 @@ def hasChordIntersection_precond (N : Nat) (chords : List (List Nat)) : Prop :=
 -- </vc-helpers>
 
 def hasChordIntersection (N : Nat) (chords : List (List Nat)) (h_precond : hasChordIntersection_precond (N) (chords)) : Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible]
 def hasChordIntersection_postcond (N : Nat) (chords : List (List Nat)) (result: Bool) (h_precond : hasChordIntersection_precond (N) (chords)) : Prop :=
@@ -64,9 +61,7 @@ def hasChordIntersection_postcond (N : Nat) (chords : List (List Nat)) (result: 
 
 theorem hasChordIntersection_spec_satisfied (N: Nat) (chords: List (List Nat)) (h_precond : hasChordIntersection_precond (N) (chords)) :
     hasChordIntersection_postcond (N) (chords) (hasChordIntersection (N) (chords) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

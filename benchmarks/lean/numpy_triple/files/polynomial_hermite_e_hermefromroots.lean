@@ -1,11 +1,11 @@
 /-  Generate a HermiteE series with given roots.
-    
+
     Returns the coefficients of the polynomial p(x) = (x - r₀) * (x - r₁) * ... * (x - rₙ₋₁)
     in HermiteE form, where rᵢ are the roots specified in the input vector.
-    
+
     The output coefficients c satisfy: p(x) = c₀ + c₁ * He₁(x) + ... + cₙ * Heₙ(x)
     where Heₙ(x) is the n-th probabilist's Hermite polynomial (HermiteE).
-    
+
     This function converts from the standard polynomial representation with given roots
     to the HermiteE polynomial basis representation. -/
 
@@ -39,9 +39,7 @@ def evalHermiteEPoly {n : Nat} (coeffs : Vector Float n) (x : Float) : Float :=
 -- </vc-helpers>
 
 def hermefromroots {n : Nat} (roots : Vector Float n) : Id (Vector Float (n + 1)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem hermefromroots_spec {n : Nat} (roots : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -70,6 +68,4 @@ theorem hermefromroots_spec {n : Nat} (roots : Vector Float n) :
       -- Continuity property: the polynomial is well-defined for all finite inputs
       (∀ x : Float, x = x → evalHermiteEPoly coeffs x = evalHermiteEPoly coeffs x)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

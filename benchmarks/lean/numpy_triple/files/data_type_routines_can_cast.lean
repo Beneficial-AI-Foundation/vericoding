@@ -25,7 +25,6 @@ inductive CastingRule
   | unrestricted -- any data conversions may be done
   deriving Repr, DecidableEq
 
-
 -- Data type enumeration for supported numeric types
 inductive DType
   | int8   | int16  | int32  | int64
@@ -38,9 +37,7 @@ inductive DType
 -- </vc-helpers>
 
 def can_cast (from_dtype to_dtype : DType) (casting : CastingRule) : Id Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem can_cast_spec (from_dtype to_dtype : DType) (casting : CastingRule) :
     ⦃⌜True⌝⦄
@@ -48,10 +45,10 @@ theorem can_cast_spec (from_dtype to_dtype : DType) (casting : CastingRule) :
     ⦃⇓result => ⌜
       -- Basic reflexivity: any type can cast to itself with any rule
       (from_dtype = to_dtype → result = true) ∧
-      
+
       -- No casting rule: only identical types allowed
       (casting = CastingRule.no → (result = true ↔ from_dtype = to_dtype)) ∧
-      
+
       -- Safe casting preserves values
       (casting = CastingRule.safe → 
         (result = true → 
@@ -70,7 +67,7 @@ theorem can_cast_spec (from_dtype to_dtype : DType) (casting : CastingRule) :
            ((from_dtype = DType.float32 ∨ from_dtype = DType.float64) ∧ (to_dtype = DType.complex64 ∨ to_dtype = DType.complex128)) ∨
            -- Same type is always safe
            (from_dtype = to_dtype)))) ∧
-      
+
       -- Same kind casting allows within numeric families
       (casting = CastingRule.same_kind → 
         (result = true → 
@@ -88,13 +85,11 @@ theorem can_cast_spec (from_dtype to_dtype : DType) (casting : CastingRule) :
             (to_dtype = DType.float32 ∨ to_dtype = DType.float64 ∨ to_dtype = DType.complex64 ∨ to_dtype = DType.complex128)) ∨
            ((from_dtype = DType.float32 ∨ from_dtype = DType.float64) ∧ 
             (to_dtype = DType.complex64 ∨ to_dtype = DType.complex128))))) ∧
-      
+
       -- Unrestricted casting allows any conversion
       (casting = CastingRule.unrestricted → result = true) ∧
-      
+
       -- Equiv casting allows same types (byte-order changes only)
       (casting = CastingRule.equiv → (result = true ↔ from_dtype = to_dtype))
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

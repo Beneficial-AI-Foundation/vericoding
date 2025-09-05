@@ -7,7 +7,7 @@
 
     Parameters:
     - a : array_like - Array to be sorted
-    
+
     Returns:
     - sorted_array : ndarray - Array of the same type and shape as a, with elements sorted
 -/
@@ -31,15 +31,11 @@ open Std.Do
 -- </vc-helpers>
 
 def sort {n : Nat} (a : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem sort_spec {n : Nat} (a : Vector Float n) :
     ⦃⌜True⌝⦄
     sort a
     ⦃⇓result => ⌜(∀ i j : Fin n, i.val < j.val → result.get i ≤ result.get j) ∧
                 (∀ x : Float, (result.toList.count x) = (a.toList.count x))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>
