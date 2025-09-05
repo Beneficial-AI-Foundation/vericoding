@@ -1,0 +1,44 @@
+import Std
+import Mathlib
+
+open Std.Do
+
+/-!
+{
+  "name": "Dafny-experiences_tmp_tmp150sm9qy_dafny_started_tutorial_dafny_tutorial_array_FindMax",
+  "category": "Dafny Translation",
+  "description": "Automatically translated from Dafny specification: Dafny-experiences_tmp_tmp150sm9qy_dafny_started_tutorial_dafny_tutorial_array_FindMax",
+  "source": "Dafny",
+  "translation_date": "2024",
+  "functions": ,
+  "methods": 
+}
+-/
+
+namespace DafnyBenchmarks
+
+/--
+Finds the index of the maximum element in an array.
+
+@param a The input array of integers
+@return The index i of the maximum element
+
+Requirements:
+- Array must be non-empty
+
+Ensures:
+- Return value is a valid index (0 ≤ i < a.size)
+- The element at index i is greater than or equal to all other elements
+-/
+def FindMax (a : Array Int) : Int := sorry
+
+/--
+Specification for FindMax method
+-/
+theorem FindMax_spec (a : Array Int) :
+  a.size > 0 →
+  let i := FindMax a
+  0 ≤ i ∧ i < a.size ∧
+  ∀ k, 0 ≤ k ∧ k < a.size → a.get ⟨k⟩ ≤ a.get ⟨i⟩ := sorry
+
+end DafnyBenchmarks
