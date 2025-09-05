@@ -226,13 +226,9 @@ def setup_configuration(args) -> ProcessingConfig:
         meaningful_part = Path(input_path.name)
 
     # Create output directory structure
-    # For Lean, put files under lean/ directory so lake can find them
+    # For Lean, place generated files under the input folder so `lake build` can see them
     if args.language == "lean":
-        # Use project root lean/ directory for Lean files
-        project_root = src_base.parent if src_base.name == "src" else src_base
-        output_dir = str(
-            project_root / "lean" / "Generated" / f"Run_{timestamp}" / meaningful_part
-        )
+        output_dir = str(Path(files_dir) / "_gen" / f"Run_{timestamp}")
     else:
         output_dir = str(
             src_base / f"code_from_spec_on_{timestamp}" / args.language / meaningful_part
