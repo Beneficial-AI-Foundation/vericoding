@@ -11,22 +11,6 @@ open Std.Do
     Example: Match("hello", "h?llo") = true
 -/
 def matchPattern (s p : String) : Bool := sorry
-  
-  if sChars.length ≠ pChars.length then
-    false
-  else
-    let rec checkMatch (i : Nat) : Bool :=
-      if h : i < sChars.length then
-        if h2 : i < pChars.length then
-          if pChars[i] ≠ '?' && sChars[i] ≠ pChars[i] then
-            false
-          else
-            checkMatch (i + 1)
-        else
-          true -- This case shouldn't happen given precondition
-      else
-        true
-    checkMatch 0
 
 /-- Specification: match returns true if and only if for all positions,
     either the characters match or the pattern has a '?' at that position.

@@ -14,14 +14,6 @@ open Std.Do
     - result = true iff there exists an i where s[i] < 0
 -/
 def belowZero (operations : List Int) : (Array Int × Bool) := sorry
-  
-  for op in operations do
-    balance := balance + op
-    balances := balances.push balance
-    if balance < 0 then
-      result := true
-  
-  return (balances, result)
 
 /-- Specification: belowZero tracks running balance and detects negative values.
     

@@ -12,7 +12,8 @@ import dafnybench.Multiset
 namespace DafnyBenchmarks
 
 /-- Predicate to check if an array is sorted in non-decreasing order -/
-def isSorted (s : Array Int) : Prop := sorry
+def isSorted (s : Array Int) : Prop :=
+  ∀ i j, i ≤ j → i < s.size → j < s.size → s[i]! ≤ s[j]!
 
 /-- Insertion sort implementation -/
 def insertionSort (s : Array Int) : Array Int := sorry

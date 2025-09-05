@@ -14,20 +14,6 @@ open Std.Do
              and element at index 2 (which is 4) is the first that exceeds 3.
 -/
 def onlineMax (a : Array Int) (x : Nat) : (Int × Nat) := sorry
-  
-  let m := if h : 0 < a.size then findMaxBefore 1 a[0] else 0
-  
-  -- Find first position >= x where element > m
-  let rec findFirstGreater (i : Nat) : Nat :=
-    if h : i < a.size then
-      if a[i] > m then
-        i
-      else
-        findFirstGreater (i + 1)
-    else
-      a.size - 1
-  
-  (m, findFirstGreater x)
 
 /-- Specification: onlineMax finds the maximum in [0,x) and the position of the
     first element that exceeds it.

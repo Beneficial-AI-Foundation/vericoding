@@ -26,7 +26,9 @@ theorem query_spec (a : Array Int) (i j : Nat)
   sorry
 
 /-- Predicate that checks if c is a valid prefix sum array for a -/
-def is_prefix_sum_for (a c : Array Int) : Prop := sorry
+def is_prefix_sum_for (a c : Array Int) : Prop :=
+  c.size = a.size + 1 ∧ c[0]! = 0 ∧
+  ∀ k, k < a.size → c[k + 1]! = c[k]! + a[k]!
 
 /-- Fast query using precomputed prefix sums.
     

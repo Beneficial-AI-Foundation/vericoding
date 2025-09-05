@@ -20,7 +20,9 @@ termination_by j - i
 def query (a : Array Int) (i j : Nat) : Int := sorry
 
 /-- Predicate that checks if c is a valid prefix sum array for a -/
-def isPrefixSumFor (a c : Array Int) : Prop := sorry
+def isPrefixSumFor (a c : Array Int) : Prop :=
+  c.size = a.size + 1 ∧ c[0]! = 0 ∧
+  ∀ k, k < a.size → c[k + 1]! = c[k]! + a[k]!
 
 /-- Fast query using prefix sum array -/
 def queryFast (a c : Array Int) (i j : Nat) : Int := sorry

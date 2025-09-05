@@ -10,7 +10,8 @@
 namespace DafnyBenchmarks
 
 /-- Predicate to check if an array is sorted -/
-def sorted (a : Array Int) : Prop := sorry
+def sorted (a : Array Int) : Prop :=
+  ∀ i j, i ≤ j → i < a.size → j < a.size → a[i]! ≤ a[j]!
 
 /-- Binary search implementation -/
 def binarySearch (a : Array Int) (x : Int) : Int := sorry

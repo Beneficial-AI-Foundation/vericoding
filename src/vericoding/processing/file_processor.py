@@ -124,6 +124,16 @@ def process_spec_file(
                     mcp_context_table.add_data(
                         str(relative_path), "generate", 0, len(lsp_context), preview
                     )
+                    # Quick tool usage signals for hover/goals
+                    try:
+                        hover_calls = lsp_context.count(" hover\n")
+                        goal_calls = lsp_context.count(" goals\n")
+                        wandb.log({
+                            "mcp/hover_calls_generate": hover_calls,
+                            "mcp/goal_calls_generate": goal_calls,
+                        })
+                    except Exception:
+                        pass
 
             generate_prompt = prompt_loader.format_prompt(
                 "generate_code", code=original_code, lspContext=lsp_context, errorDetails=""
@@ -263,6 +273,16 @@ def process_spec_file(
                         mcp_context_table.add_data(
                             str(relative_path), "fix", iteration, len(lsp_context), preview
                         )
+                        try:
+                            hover_calls = lsp_context.count(" hover\n")
+                            goal_calls = lsp_context.count(" goals\n")
+                            wandb.log({
+                                "mcp/hover_calls_fix": hover_calls,
+                                "mcp/goal_calls_fix": goal_calls,
+                                "mcp/fix_iteration": iteration,
+                            })
+                        except Exception:
+                            pass
 
                 fix_prompt = prompt_loader.format_prompt(
                     "fix_verification",

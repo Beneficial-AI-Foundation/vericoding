@@ -17,13 +17,24 @@ inductive Tree where
   deriving Repr, DecidableEq
 
 /-- Predicate to check if all values in tree are less than max -/
-def maxValue (tree : Tree) (max : Int) : Prop := sorry
+def maxValue (tree : Tree) (max : Int) : Prop :=
+  match tree with
+  | Tree.Empty => True
+  | Tree.Node l v r => v ≤ max ∧ maxValue l max ∧ maxValue r max
 
 /-- Predicate to check if all values in tree are greater than min -/
-def minValue (tree : Tree) (min : Int) : Prop := sorry
+def minValue (tree : Tree) (min : Int) : Prop :=
+  match tree with
+  | Tree.Empty => True
+  | Tree.Node l v r => min ≤ v ∧ minValue l min ∧ minValue r min
 
 /-- Binary search tree invariant -/
-def BinarySearchTree (tree : Tree) : Prop := sorry
+def BinarySearchTree (tree : Tree) : Prop :=
+  match tree with
+  | Tree.Empty => True
+  | Tree.Node l v r =>
+      BinarySearchTree l ∧ BinarySearchTree r ∧
+      maxValue l v ∧ minValue r v
 
 /-- Get minimum value from a tree -/
 def getMin (tree : Tree) : Option Int := sorry

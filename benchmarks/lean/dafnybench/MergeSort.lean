@@ -1,53 +1,61 @@
 /-
   Port of AssertivePrograming_tmp_tmpwf43uz0e_MergeSort_spec.dfy
-  
+
   This specification describes the merge sort algorithm:
   - MergeSort: Recursively sorts an array by dividing it into two halves
   - Merge: Combines two sorted arrays into one sorted array
-  
+
   The implementation should maintain the multiset of elements while sorting.
 -/
 
 namespace DafnyBenchmarks
 
 /-- Predicate to check if an array is sorted -/
-def Sorted (a : Array Int) : Prop := sorry
+def Sorted (a : Array Int) : Prop :=
+  ∀ i j, i ≤ j → i < a.size → j < a.size → a[i]! ≤ a[j]!
 
 /-- Merge two sorted arrays into one sorted array -/
 def merge (c d : Array Int) : Array Int := sorry
 
 /-- Merge sort implementation -/
 def mergeSort (a : Array Int) : Array Int := sorry
-termination_by a.size
+
 
 /-- Count occurrences of an element in an array -/
-def count (a : Array Int) (x : Int) : Nat := sorry
+def count (a : Array Int) (x : Int) : Nat :=
+  (a.toList.filter (fun y => y = x)).length
 
 /-- Arrays have same elements (multiset equality) -/
-def sameElements (a b : Array Int) : Prop := sorry
+def sameElements (a b : Array Int) : Prop :=
+  ∀ x, count a x = count b x
 
 /-- Specification for mergeSort -/
 theorem mergeSort_spec (a : Array Int) :
     let b := mergeSort a
-    b.size = a.size ∧ 
-    Sorted b ∧ 
+    b.size = a.size ∧
+    Sorted b ∧
     sameElements a b := by
   sorry
 
 /-- Specification for merge -/
-theorem merge_spec (c d : Array Int) 
-    (h1 : Sorted c) 
+theorem merge_spec (c d : Array Int)
+    (h1 : Sorted c)
     (h2 : Sorted d) :
     let b := merge c d
-    Sorted b ∧ 
+    Sorted b ∧
     b.size = c.size + d.size ∧
     ∀ x, count b x = count c x + count d x := by
   sorry
 
 /-- Loop invariant for merge: subset preservation -/
-def InvSubSet (b c d : Array Int) (i j : Nat) : Prop := sorry
+def InvSubSet (b c d : Array Int) (i j : Nat) : Prop :=
+  ∀ x,
+    ((b.extract 0 (i + j)).toList.filter (fun y => y = x)).length =
+      ((c.extract 0 i).toList.filter (fun y => y = x)).length +
+      ((d.extract 0 j).toList.filter (fun y => y = x)).length
 
 /-- Loop invariant for merge: sortedness -/
-def InvSorted (b c d : Array Int) (i j : Nat) : Prop := sorry
+def InvSorted (b c d : Array Int) (i j : Nat) : Prop :=
+  Sorted (b.extract 0 (i + j)) ∧ i ≤ c.size ∧ j ≤ d.size ∧ Sorted c ∧ Sorted d
 
 end DafnyBenchmarks

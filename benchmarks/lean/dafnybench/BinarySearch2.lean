@@ -8,7 +8,8 @@ open Std.Do
     This version explicitly states that every element is less than or equal
     to all later elements, which is stronger than just checking adjacent pairs
     but equivalent in meaning. -/
-def isSorted (a : Array Int) : Prop := sorry
+ def isSorted (a : Array Int) : Prop :=
+   ∀ i j, i ≤ j → i < a.size → j < a.size → a[i]! ≤ a[j]!
 
 /-- Binary search implementation.
     
@@ -34,7 +35,8 @@ theorem binSearch_spec (a : Array Int) (K : Int)
     This version only checks adjacent elements. While equivalent to the
     stronger version, it requires additional lemmas to prove loop invariants
     in binary search, as noted in the original Dafny comments. -/
-def isSorted_weak (a : Array Int) : Prop := sorry
+ def isSorted_weak (a : Array Int) : Prop :=
+   ∀ j, 1 ≤ j ∧ j < a.size → a[j - 1]! ≤ a[j]!
 
 /-- Lemma showing the two definitions of sorted are equivalent -/
 theorem isSorted_equiv (a : Array Int) :

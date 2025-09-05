@@ -313,10 +313,21 @@ def setup_configuration(args) -> ProcessingConfig:
     )
     print(f"- API rate limit delay: {config.api_rate_limit_delay}s")
     if config.language == 'lean' and config.use_mcp:
-        # Attempt to start persistent MCP session (non-fatal)
-        ensure_server_started()
-        print("- MCP (lean-lsp-mcp): Persistent session enabled")
+        # Attempt to start persistent MCP session
+        from vericoding.lean.mcp_helpers import ensure_server_started as _mcp_start, tools_available as _mcp_tools
+        mcp_ok = _mcp_start()
+        tools = _mcp_tools() if mcp_ok else []
+        status = "Enabled" if mcp_ok else "Not available"
+        print(f"- MCP (lean-lsp-mcp): {status}; tools: {', '.join(tools) if tools else '[]'}")
         atexit.register(close_server)
+        try:
+            if wandb.run:
+                wandb.log({
+                    "mcp/status": int(mcp_ok),
+                    "mcp/tools_count": len(tools),
+                })
+        except Exception:
+            pass
     print("\nProceeding with configuration...")
 
     return config

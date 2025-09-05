@@ -29,10 +29,25 @@ from mcp.client.session import ClientSession
 
 # Persistent client state
 _portal: BlockingPortal | None = None
+_portal_cm = None  # context manager owning the portal
 _session: ClientSession | None = None
 _client_cm = None
+_errlog_file = None
 _available_tools: set[str] = set()
 _lock = threading.Lock()
+
+# Simple file logger for MCP activity
+def _log(msg: str) -> None:
+    try:
+        root = get_repo_root()
+        logdir = os.path.join(str(root), "logs")
+        os.makedirs(logdir, exist_ok=True)
+        path = os.path.join(logdir, "lean_mcp.log")
+        from datetime import datetime
+        with open(path, "a", encoding="utf-8") as f:
+            f.write(f"[{datetime.now().isoformat(timespec='seconds')}] {msg}\n")
+    except Exception:
+        pass
 
 
 def _content_to_text(content) -> str:
@@ -54,38 +69,58 @@ def _content_to_text(content) -> str:
 async def _start_session_async(init_timeout: int) -> bool:
     global _session, _client_cm, _available_tools
     # Run via `lake env` to ensure Lean project environment is available
+    uvx_path = shutil.which("uvx") or "uvx"
     server = StdioServerParameters(
         command="lake",
-        args=["env", "uvx", "lean-lsp-mcp"],
+        args=["env", uvx_path, "lean-lsp-mcp"],
         cwd=str(get_repo_root()),
     )
-    cm = stdio_client(server)
+    _log("MCP: starting server via: lake env uvx lean-lsp-mcp")
+    # Capture server stderr to a file for debugging
+    errf = None
+    try:
+        root = get_repo_root()
+        logdir = os.path.join(str(root), "logs")
+        os.makedirs(logdir, exist_ok=True)
+        err_path = os.path.join(logdir, "lean_mcp.stderr.log")
+        errf = open(err_path, "ab", buffering=0)
+    except Exception:
+        errf = None
+    cm = stdio_client(server, errlog=errf if errf is not None else None)
     read, write = await cm.__aenter__()
     sess = ClientSession(read, write)
     with anyio.fail_after(init_timeout):
         await sess.initialize()
+    _log("MCP: initialized session")
     tools = await sess.list_tools()
     names = set()
     for t in getattr(tools, "tools", []) or []:
         name = getattr(t, "name", None)
         if name:
             names.add(name)
+    _log(f"MCP: tools available: {sorted(list(names))}")
     _session = sess
     _client_cm = cm
+    # Store errlog handle for teardown
+    global _errlog_file
+    _errlog_file = errf
     _available_tools = names
     return True
 
 
 def _ensure_persistent_started() -> bool:
-    global _portal
+    global _portal, _portal_cm
     with _lock:
         if _portal is not None and _session is not None:
             return True
-        _portal = start_blocking_portal()
+        # start_blocking_portal is a context manager; we must enter it
+        _portal_cm = start_blocking_portal()
+        _portal = _portal_cm.__enter__()
         init_timeout = int(os.getenv("MCP_INIT_TIMEOUT", "10"))
         try:
             return bool(_portal.call(_start_session_async, init_timeout))
-        except Exception:
+        except Exception as e:
+            _log(f"MCP: failed to start session: {e}")
             return False
 
 
@@ -97,11 +132,23 @@ async def _call_tool_async(name: str, args: dict, timeout_sec: int):
 
 def _call_tool(name: str, args: dict, timeout_sec: int) -> str:
     if not _ensure_persistent_started():
+        _log("MCP: _call_tool aborted, session not started")
         return ""
     assert _portal is not None
     try:
-        return _portal.call(_call_tool_async, name, args, timeout_sec)
-    except Exception:
+        res = _portal.call(_call_tool_async, name, args, timeout_sec)
+        # Small, safe summary for logs
+        where = ""
+        try:
+            fp = args.get("file_path")
+            ln = args.get("line")
+            where = f" {fp}:{ln}" if fp and ln else ""
+        except Exception:
+            pass
+        _log(f"MCP: call_tool {name}{where} -> {len(res)} chars")
+        return res
+    except Exception as e:
+        _log(f"MCP: call_tool {name} error: {e}")
         return ""
 
 
@@ -150,12 +197,22 @@ def _collect_context_persistent(file_path: str, lines: list[int]) -> str:
 
 def ensure_server_started() -> bool:
     """Ensure a persistent MCP session is running."""
-    return _ensure_persistent_started()
+    ok = _ensure_persistent_started()
+    _log(f"MCP: ensure_server_started -> {ok}")
+    return ok
+
+
+def tools_available() -> list[str]:
+    """Return list of tool names if session started, else empty list."""
+    if not _ensure_persistent_started():
+        return []
+    # Snapshot to avoid mutation while reading
+    return sorted(list(_available_tools))
 
 
 def close_server() -> None:
+    global _portal, _portal_cm, _session, _client_cm, _available_tools, _errlog_file
     """Close persistent MCP session and tear down portal."""
-    global _portal, _session, _client_cm, _available_tools
     with _lock:
         if _portal is None:
             return
@@ -164,14 +221,23 @@ def close_server() -> None:
                 _portal.call(_client_cm.__aexit__, None, None, None)
         except Exception:
             pass
+        # Properly exit the portal context manager
         try:
-            _portal.close()
+            if _portal_cm is not None:
+                _portal_cm.__exit__(None, None, None)
         except Exception:
             pass
         _portal = None
+        _portal_cm = None
         _session = None
         _client_cm = None
         _available_tools = set()
+        try:
+            if _errlog_file is not None:
+                _errlog_file.close()
+        except Exception:
+            pass
+        _errlog_file = None
 
 
 def collect_lsp_context(file_path: str, lines: list[int]) -> str:
