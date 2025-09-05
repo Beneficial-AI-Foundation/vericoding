@@ -37,6 +37,13 @@ lean_lib DafnyBench where
     globs := #[.andSubmodules `dafnybench]
     srcDir := "benchmarks/lean"
 
+-- Generated implementations live under `benchmarks/lean/dafnybench/_gen/...`.
+-- This separate library lets us `lake build DafnyBenchGenerated` to compile all
+-- generated files without touching the handwritten specs.
+lean_lib DafnyBenchGenerated where
+  globs := #[.andSubmodules `dafnybench._gen]
+  srcDir := "benchmarks/lean"
+
 @[default_target]
 lean_lib Benchmarks where
   globs := #[

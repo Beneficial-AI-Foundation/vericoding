@@ -1,5 +1,10 @@
 generate_code: |
-  The task is to generate a Lean file that is verified from an incomplete Lean file that contains the keyword "sorry" in place of desired code and proof blocks.  
+  The task is to generate a Lean file that verifies, starting from an incomplete Lean file that contains the keyword "sorry" in place of desired code and proof blocks.
+
+  Tooling you can and should use during the process:
+  - Lean LSP MCP: use hover/types, goal state, tactic state, diagnostics, completions.
+    Ask for: hover at symbols, current goals at sorrys, term goals, diagnostic messages.
+    Use these to iteratively refine proofs instead of guessing.
   
   INPUT: a Lean file of the form
          def def_type_1 := sorry     
@@ -45,7 +50,12 @@ generate_code: |
   {code}
 
 fix_verification: |
- The task is to review definitions and theorems in a Lean file that do not verify due to missing or invalid implementations or proofs. 
+ The task is to review definitions and theorems in a Lean file that do not verify due to missing or invalid implementations or proofs.
+
+ You have access to Lean LSP MCP tools; use them aggressively:
+ - Read diagnostic messages at reported positions.
+ - Get hover/types, expected term goals, and current goal states near failing tactics or sorrys.
+ - Use completions to discover available lemmas and rewrite rules.
  INPUT: a Lean file that contains some definitions and theorems that dont verify due to missing or invalid implementations or proofs. 
  The file contains:
  - some atoms (def, lemma, theorem, ...) that have the comment -- LLM HELPER before them. These atoms you can change and remove at will. 
@@ -90,4 +100,3 @@ fix_verification: |
 
   Code Below:
   {code}
-
