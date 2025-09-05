@@ -428,3 +428,14 @@ outdated:
     @echo ""
     @echo "=== Lean Dependencies ==="
     @echo "Run 'lake update' to check for and install updates"
+dafny:
+    # Run Lean DafnyBench with MCP, 1 worker, debug, gpt-5 high reasoning
+    uv run src/spec_to_code.py lean ./benchmarks/lean/dafnybench \
+        --iterations 1 \
+        --workers 1 \
+        --use-mcp \
+        --llm-provider openai \
+        --llm-model gpt-5 \
+        --reasoning-effort high \
+        --api-rate-limit-delay 1 \
+        --debug
