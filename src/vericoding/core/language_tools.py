@@ -100,6 +100,7 @@ def verify_file(config: ProcessingConfig, file_path: str) -> VerificationResult:
     tool_path = get_tool_path(config)
     try:
         # First try compilation check if available
+        fallback_to_lean = False
         if config.language_config.compile_check_command:
             cmd = [
                 part.format(tool_path=tool_path, file_path=file_path)
@@ -121,11 +122,21 @@ def verify_file(config: ProcessingConfig, file_path: str) -> VerificationResult:
                 if result.returncode != 0:
                     # Compilation failed
                     full_output = result.stdout + result.stderr
-                    return VerificationResult(
-                        success=False,
-                        output=full_output,
-                        error=f"Compilation failed: {full_output}",
-                    )
+                    # If Lean reports unknown module path, fall back to direct lean check
+                    if config.language == "lean" and (
+                        "unknown module source path" in full_output
+                        or "unknown module" in full_output
+                    ):
+                        logger.info(
+                            "    ℹ️  Lake could not resolve module path; will fall back to `lake env lean`"
+                        )
+                        fallback_to_lean = True
+                    else:
+                        return VerificationResult(
+                            success=False,
+                            output=full_output,
+                            error=f"Compilation failed: {full_output}",
+                        )
             except subprocess.TimeoutExpired as e:
                 timeout_msg = f"⏱️  TIMEOUT: Compilation check timed out after 60 seconds"
                 logger.info(f"    {timeout_msg}")
@@ -134,10 +145,14 @@ def verify_file(config: ProcessingConfig, file_path: str) -> VerificationResult:
                 )
 
         # Try verification
-        cmd = [
-            part.format(tool_path=tool_path, file_path=file_path)
-            for part in config.language_config.verify_command
-        ]
+        # Try verification (with fallback for Lean tmp dirs)
+        if config.language == "lean" and fallback_to_lean:
+            cmd = ["lake", "env", "lean", f"{file_path}"]
+        else:
+            cmd = [
+                part.format(tool_path=tool_path, file_path=file_path)
+                for part in config.language_config.verify_command
+            ]
         timeout_value = getattr(
             config.language_config, "timeout", 120
         )  # Default to 120 seconds if not specified
