@@ -16,6 +16,7 @@ fn reverse(a: &Vec<char>) -> (b: Vec<char>)
 // <vc-code>
 {
     assume(false);
+    Vec::new()
 }
 // </vc-code>
 

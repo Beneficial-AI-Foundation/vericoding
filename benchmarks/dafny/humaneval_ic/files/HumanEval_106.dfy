@@ -1,0 +1,61 @@
+This task requires implementing a method that generates a sequence of natural numbers based on position-dependent calculations. For each position i (0-indexed), if (i+1) is even, the element should be the factorial of (i+1); if (i+1) is odd, the element should be the sum of integers from 1 to (i+1).
+
+// ======= TASK =======
+// Given a positive integer n, return a list of length n where each element at position i (0-indexed) 
+// is calculated as follows: if (i+1) is even, use factorial of (i+1); if (i+1) is odd, use sum of 
+// integers from 1 to (i+1).
+
+// ======= SPEC REQUIREMENTS =======
+function factorial(n: nat): nat
+{
+    if n <= 1 then 1 else n * factorial(n - 1)
+}
+
+function sum_range(n: nat): nat
+{
+    if n == 0 then 0 else n + sum_range(n - 1)
+}
+
+predicate ValidResult(n: nat, result: seq<nat>)
+{
+    |result| == n &&
+    forall i :: 0 <= i < n ==> 
+        (if (i + 1) % 2 == 0 then result[i] == factorial(i + 1)
+         else result[i] == sum_range(i + 1))
+}
+
+// ======= HELPERS =======
+
+// ======= MAIN METHOD =======
+method f(n: nat) returns (result: seq<nat>)
+    ensures ValidResult(n, result)
+{
+    result := [];
+
+    for i := 1 to n + 1 
+        invariant |result| == i - 1
+        invariant forall k :: 0 <= k < i - 1 ==> 
+            (if (k + 1) % 2 == 0 then result[k] == factorial(k + 1)
+             else result[k] == sum_range(k + 1))
+    {
+        if i % 2 == 0 {  // i is even
+            // Calculate factorial of i
+            var fact: nat := 1;
+            for j := 1 to i + 1 
+                invariant fact == factorial(j - 1)
+            {
+                fact := fact * j;
+            }
+            result := result + [fact];
+        } else {  // i is odd
+            // Calculate sum from 1 to i
+            var sum_val: nat := 0;
+            for j := 1 to i + 1 
+                invariant sum_val == sum_range(j - 1)
+            {
+                sum_val := sum_val + j;
+            }
+            result := result + [sum_val];
+        }
+    }
+}

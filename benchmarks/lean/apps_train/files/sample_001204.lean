@@ -1,0 +1,48 @@
+Chef received a permutation $P_1, P_2, \ldots, P_N$ and also an integer $D$ from his good friend Grux, because Grux was afraid he would forget them somewhere. However, since Grux was just playing with the permutation, it was all shuffled, and Chef only likes sorted permutations, so he decided to sort it by performing some swaps.
+Chef wants to use the integer $D$ he just received, so he is only willing to swap two elements of the permutation whenever their absolute difference is exactly $D$. He has limited time, so you should determine the minimum number of swaps he needs to perform to sort the permutation, or tell him that it is impossible to sort it his way.
+
+-----Input-----
+- The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+- The first line of each test case contains two space-separated integers $N$ and $D$.
+- The second line contains $N$ space-separated integers $P_1, P_2, \ldots, P_N$.
+
+-----Output-----
+For each test case, print a single line containing one integer ― the minimum number of swaps, or $-1$ if it is impossible to sort the permutation.
+
+-----Constraints-----
+- $1 \le T \le 20$
+- $1 \le N \le 200,000$
+- $1 \le D \le N$
+- $1 \le P_i \le N$ for each valid $i$
+- $P_1, P_2, \ldots, P_N$ are pairwise distinct
+- the sum of $N$ over all test cases does not exceed $10^6$
+
+-----Subtasks-----
+Subtask #1 (20 points): $D = 1$
+Subtask #2 (30 points):
+- $N \le 1,000$
+- the sum of $N$ over all test cases does not exceed $10,000$
+Subtask #3 (50 points): original constraints
+
+-----Example Input-----
+2
+5 2   
+3 4 5 2 1
+5 2    
+4 3 2 1 5  
+
+-----Example Output-----
+3
+-1
+
+-----Explanation-----
+Example case 1: Chef can perform the following swaps in this order:
+- swap the first and fifth element
+- swap the third and fifth element
+- swap the second and fourth element
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- Apps difficulty: interview
+-- Assurance level: guarded_and_plausible

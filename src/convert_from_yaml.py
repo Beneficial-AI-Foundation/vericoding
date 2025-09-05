@@ -102,7 +102,7 @@ def convert_yaml_to_jsonl(yaml_path: Path, output_path: Path = None) -> None:
         raise ValueError(f"{yaml_path} is not a directory")
     
     # Find all .yaml files in the directory
-    yaml_files = list(yaml_path.glob("*.yaml"))
+    yaml_files = sorted(list(yaml_path.glob("*.yaml")))
     
     if not yaml_files:
         print(f"No .yaml files found in {yaml_path}")
@@ -144,7 +144,7 @@ def convert_yaml_to_dir(suffix: str, yaml_path: Path, output_path: Path = None, 
         raise ValueError(f"{yaml_path} is not a directory")
     
     # Find all .yaml files in the directory
-    yaml_files = list(yaml_path.glob("*.yaml"))
+    yaml_files = sorted(list(yaml_path.glob("*.yaml")))
     
     if not yaml_files:
         print(f"No .yaml files found in {yaml_path}")
@@ -478,7 +478,7 @@ def main():
             clear_implementation(args.yaml_file)
         elif args.yaml_file.is_dir():
             # Process all YAML files in directory
-            yaml_files = list(args.yaml_file.glob("*.yaml"))
+            yaml_files = sorted(list(args.yaml_file.glob("*.yaml")))
             if not yaml_files:
                 print(f"No .yaml files found in {args.yaml_file}")
                 return

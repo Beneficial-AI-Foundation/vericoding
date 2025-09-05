@@ -1,0 +1,73 @@
+Note that the only difference between String Transformation 1 and String Transformation 2 is in the move Koa does. In this version the letter $y$ Koa selects must be strictly greater alphabetically than $x$ (read statement for better understanding). You can make hacks in these problems independently.
+
+Koa the Koala has two strings $A$ and $B$ of the same length $n$ ($|A|=|B|=n$) consisting of the first $20$ lowercase English alphabet letters (ie. from a to t).
+
+In one move Koa:
+
+  selects some subset of positions $p_1, p_2, \ldots, p_k$ ($k \ge 1; 1 \le p_i \le n; p_i \neq p_j$ if $i \neq j$) of $A$ such that $A_{p_1} = A_{p_2} = \ldots = A_{p_k} = x$ (ie. all letters on this positions are equal to some letter $x$).
+
+  selects a letter $y$ (from the first $20$ lowercase letters in English alphabet) such that $y>x$ (ie. letter $y$ is strictly greater alphabetically than $x$).
+
+  sets each letter in positions $p_1, p_2, \ldots, p_k$ to letter $y$. More formally: for each $i$ ($1 \le i \le k$) Koa sets $A_{p_i} = y$.
+
+ Note that you can only modify letters in string $A$.
+
+Koa wants to know the smallest number of moves she has to do to make strings equal to each other ($A = B$) or to determine that there is no way to make them equal. Help her!
+
+-----Input-----
+
+Each test contains multiple test cases. The first line contains $t$ ($1 \le t \le 10$) — the number of test cases. Description of the test cases follows.
+
+The first line of each test case contains one integer $n$ ($1 \le n \le 10^5$) — the length of strings $A$ and $B$.
+
+The second line of each test case contains string $A$ ($|A|=n$).
+
+The third line of each test case contains string $B$ ($|B|=n$).
+
+Both strings consists of the first $20$ lowercase English alphabet letters (ie. from a to t).
+
+It is guaranteed that the sum of $n$ over all test cases does not exceed $10^5$.
+
+-----Output-----
+
+For each test case:
+
+Print on a single line the smallest number of moves she has to do to make strings equal to each other ($A = B$) or $-1$ if there is no way to make them equal.
+
+-----Example-----
+Input
+5
+3
+aab
+bcc
+4
+cabc
+abcb
+3
+abc
+tsr
+4
+aabd
+cccd
+5
+abcbd
+bcdda
+
+Output
+2
+-1
+3
+2
+-1
+
+-----Note-----  In the $1$-st test case Koa:   selects positions $1$ and $2$ and sets $A_1 = A_2 = $ b ($\color{red}{aa}b \rightarrow \color{blue}{bb}b$).  selects positions $2$ and $3$ and sets $A_2 = A_3 = $ c ($b\color{red}{bb} \rightarrow b\color{blue}{cc}$). 
+
+  In the $2$-nd test case Koa has no way to make string $A$ equal $B$.
+
+  In the $3$-rd test case Koa:   selects position $1$ and sets $A_1 = $ t ($\color{red}{a}bc \rightarrow \color{blue}{t}bc$).  selects position $2$ and sets $A_2 = $ s ($t\color{red}{b}c \rightarrow t\color{blue}{s}c$).  selects position $3$ and sets $A_3 = $ r ($ts\color{red}{c} \rightarrow ts\color{blue}{r}$).
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- Apps difficulty: competition
+-- Assurance level: guarded_and_plausible

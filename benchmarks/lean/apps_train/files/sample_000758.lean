@@ -1,0 +1,29 @@
+Pankaj likes to eat Ice cream when he is working late into the night. Today has been yet another long day for Pankaj. So, he wants to eat ice cream now. He opens the fridge and sees that he has 2 types of containers holding the ice cream.
+The first container is a cone with radius r1 and height h1. There is also a hemisphere on the top of the cone which has the same radius. The other container is a cylindrical with radius r2 and height h2. Pankaj wants to know the amount (volume) of ice cream in both the containers. Since Pankaj is tired after coding all day, you have to help him with this task.
+
+-----Input-----
+- The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
+- Each test case consists of a single line having the r1, h1, r2 and h2. Each value is given upto 2 decimal places. See example for more information.
+
+-----Output-----
+- For each test case, output a single line containing the volumes of the two containers separated by space. The answer is considered correct if it is correct upto 6 decimal places.
+
+-----Constraints-----
+- 1 ≤ T ≤ 100
+- 0 <  r1, h1, r2, h2 ≤ 100
+
+-----Example-----
+Input:
+2
+1.00 1.00 1.00 1.00
+3.02 7.23 5.20 6.00
+
+Output:
+3.141592654 3.141592654
+126.739919445 509.691992118
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- Apps difficulty: interview
+-- Assurance level: guarded

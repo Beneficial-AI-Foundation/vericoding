@@ -1,0 +1,45 @@
+# Task
+
+Given an array of roots of a polynomial equation, you should reconstruct this equation.
+
+___
+
+## Output details:
+
+* If the power equals `1`, omit it: `x = 0` instead of `x^1 = 0`
+* If the power equals `0`, omit the `x`: `x - 2 = 0` instead of `x - 2x^0 = 0`
+* There should be no 2 signs in a row: `x - 1 = 0` instead of `x + -1 = 0`
+* If the coefficient equals `0`, skip it: `x^2 - 1 = 0` instead of `x^2 + 0x - 1 = 0`
+* Repeating roots should not be filtered out: `x^2 - 4x + 4 = 0` instead of `x - 2 = 0`
+* The coefficient before `q^n` is always `1`: `x^n + ... = 0` instead of `Ax^n + ... = 0`
+
+___
+
+## Example:
+
+```
+polynomialize([0])        =>  "x = 0"
+polynomialize([1])        =>  "x - 1 = 0"
+polynomialize([1, -1])    =>  "x^2 - 1 = 0"
+polynomialize([0, 2, 3])  =>  "x^3 - 5x^2 + 6x = 0"
+```
+
+___
+
+## Tests:
+
+```python
+      Main suite:                  Edge cases:
+ (Reference - 4000 ms)         (Reference - 30 ms)
+
+N of roots | N of tests      N of roots | N of tests
+-----------------------      -----------------------
+    1-10   |   100              20-40   |    125
+ 700-750   |    25               2-20   |    125
+```
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

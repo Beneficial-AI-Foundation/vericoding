@@ -1,0 +1,59 @@
+Teacher Sungjae wanted to hold a programming competition for his students where every participant need to be included into  team. The participants submitted their team names before the deadline. After the competition ran for half an hour, (It is assured that each registered team will submit absolutely once within half an hour) Sungjae mistakenly pressed a button that changed the order of the registered team names. Now in the submission list, order of the characters in the team's name doesn't matter. That means $abc$, $acb$, $bac$, $bca$, $cab$, $cba$ refers to the same team. The competition ran for two hours and then ended. Sungjae now counting each of the team's score and wants to print the registered team names and score. The scoreboard should be ordered based on scores in decreasing order and if two teams have same score, Sangjae would follow lexicographical order.
+$N$.$B$. frequency of each character's in a registered team's name will not match with another team. 
+That means two teams named $xoxo$ and $oxox$ is not possible. Because both of them have the same frequency of each of the characters (two 'o' and two 'x'). Similarly $abb$ and $bab$ is not possible (because both of them have one 'a' and two 'b').
+It is ensured that only possible test cases will be given.
+
+-----Input:-----Input:
+- 
+First line will contain $T$, number of testcases. Then the testcases follow. 
+- 
+The first line of each test case contains two integers , $N$ and $R$ - total number of submissions and the number of submissions within first half an hour. 
+- 
+Then $R$  lines follow: the i'th line contains a string $ti$, registered names of the teams and an integer $pi$, points they got on that submission.
+- 
+Then $N-R$  lines follow: the i-th line contains a string $ti$- the i-th team's name (in any order) in lowercase letter only and $pi$ -points they got on that submission.
+
+-----Output:-----Output:
+For each testcase,print the scoreboard.
+That means print the teams name and their point according to their score in decreasing order and if some of them have same score,print the teams name in lexicographical order
+
+-----Constraints-----Constraints
+- $1 \leq T \leq 10$
+- $1 \leq R \leq N \leq 1000$
+- $1 \leq ti \leq 1000$
+- $1 \leq pi \leq 10^6$
+Sum of points ($pi$) of a team will not cross $10^9$.
+
+-----Sample Input:-----Sample Input:
+1
+10 5
+amigoes  1
+bannermen 1
+monarchy 4
+outliers 5
+iniciador 10
+aegimos 2
+iiiacdnor 1
+eilorstu 1
+gimosae 3
+mnachroy 7
+
+-----Sample Output:-----Sample Output:
+iniciador 11
+monarchy 11
+amigoes 6
+outliers 6
+bannermen 1
+
+-----Explanation:-----Explanation:
+
+$It$ $is$ $assured$ $that$ $each$ $team$ $will$ $submit$ $once$ $within$ $first$ $half$ $an$ $hour$.That means -                                          
+
+that kind of submissions isn't possible within first half an hour.
+Dataset can be huge. Use faster I/O method.
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- Apps difficulty: interview
+-- Assurance level: guarded_and_plausible

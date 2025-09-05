@@ -1,0 +1,63 @@
+On February 14 Denis decided to give Valentine to Nastya and did not come up with anything better than to draw a huge red heart on the door of the length $k$ ($k \ge 3$). Nastya was very confused by this present, so she decided to break the door, throwing it on the mountains.
+
+Mountains are described by a sequence of heights $a_1, a_2, \dots, a_n$ in order from left to right ($k \le n$). It is guaranteed that neighboring heights are not equal to each other (that is, $a_i \ne a_{i+1}$ for all $i$ from $1$ to $n-1$).
+
+Peaks of mountains on the segment $[l,r]$ (from $l$ to $r$) are called indexes $i$ such that $l < i < r$, $a_{i - 1} < a_i$ and $a_i > a_{i + 1}$. It is worth noting that the boundary indexes $l$ and $r$ for the segment are not peaks. For example, if $n=8$ and $a=[3,1,4,1,5,9,2,6]$, then the segment $[1,8]$ has only two peaks (with indexes $3$ and $6$), and there are no peaks on the segment $[3, 6]$.
+
+To break the door, Nastya throws it to a segment $[l,l+k-1]$ of consecutive mountains of length $k$ ($1 \le l \le n-k+1$). When the door touches the peaks of the mountains, it breaks into two parts, after that these parts will continue to fall in different halves and also break into pieces when touching the peaks of the mountains, and so on. Formally, the number of parts that the door will break into will be equal to $p+1$, where $p$ is the number of peaks on the segment $[l,l+k-1]$.
+
+Nastya wants to break it into as many pieces as possible. Help her choose such a segment of mountains $[l, l+k-1]$ that the number of peaks on it is maximum. If there are several optimal segments, Nastya wants to find one for which the value $l$ is minimal.
+
+Formally, you need to choose a segment of mountains $[l, l+k-1]$ that has the maximum number of peaks. Among all such segments, you need to find the segment that has the minimum possible value $l$.
+
+-----Input-----
+
+The first line contains an integer $t$ ($1 \leq t \leq 10^4$)  — the number of test cases. Then the descriptions of the test cases follow.
+
+The first line of each test case contains two integers $n$ and $k$ ($3 \leq k \leq n \leq 2 \cdot 10^5$)  — the number of mountains and the length of the door.
+
+The second line of the input data set contains $n$ integers $a_1, a_2, \dots, a_n$ ($0 \leq a_i \leq 10 ^ 9$, $a_i \neq a_{i + 1}$)  — the heights of mountains.
+
+It is guaranteed that the sum of $n$ over all the test cases will not exceed $2 \cdot 10^5$.
+
+-----Output-----
+
+For each test case, output two integers $t$ and $l$  — the maximum number of parts that the door can split into, and the left border of the segment of length $k$ that the door should be reset to.
+
+-----Example-----
+Input
+5
+8 6
+1 2 4 1 2 4 1 2
+5 3
+3 2 3 2 1
+10 4
+4 3 4 3 2 3 2 1 0 1
+15 7
+3 7 4 8 2 3 4 5 21 2 3 4 2 1 3
+7 5
+1 2 3 4 5 6 1
+
+Output
+3 2
+2 2
+2 1
+3 1
+2 3
+
+-----Note-----
+
+In the first example, you need to select a segment of mountains from $2$ to $7$. In this segment, the indexes $3$ and $6$ are peaks, so the answer is $3$ (only $2$ peaks, so the door will break into $3$ parts). It is not difficult to notice that the mountain segments $[1, 6]$ and $[3, 8]$ are not suitable since they only have a $1$ peak (for the first segment, the $6$ index is not a peak, and for the second segment, the $3$ index is not a peak).
+
+In the second example, you need to select a segment of mountains from $2$ to $4$. In this segment, the index $3$ is a peak, so the answer is $2$ (only $1$ peak, so the door will break into $2$ parts).
+
+In the third example, you need to select a segment of mountains from $1$ to $4$. In this segment, the index $3$ is a peak, so the answer is $2$ (only $1$ peak, so the door will break into $2$ parts). You can see that on the segments $[2, 5]$, $[4, 7]$ and $[5, 8]$ the number of peaks is also $1$, but these segments have a left border greater than the segment $[1, 4]$, so they are not the correct answer.
+
+def count_peaks (window : List Nat) : Nat :=
+  sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

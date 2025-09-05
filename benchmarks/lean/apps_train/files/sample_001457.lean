@@ -1,0 +1,34 @@
+Tuzik and Vanya are playing the following game.
+They have an N × M board and a chip to indicate the current game position. The chip can be placed on any one cell of the game board, each of which is uniquely identified by an ordered pair of positive integers (r, c), where 1 ≤ r ≤ N is the row number and 1 ≤ c ≤ M is the column number.
+Initially, the chip is placed at the cell identified as (1, 1). For his move, a player can move it either 1, 2 or 3 cells up, or 1 or 2 cells to the right. The player who can not move the chip loses. In other words, a player suffers defeat if the chip is placed in the cell (N, M) at the start of his turn.
+Tuzik starts the game. You have to determine who will win the game if both players play optimally.
+
+-----Input-----
+The first line contains an integer T denoting the number of tests. Each of the following T lines contain two integers N and M.
+
+-----Output-----
+For each test output "Tuzik" or "Vanya" on a separate line, indicating who will win the game.
+
+-----Constraints-----
+- 1 ≤ T ≤ 100
+- 1 ≤ N, M ≤ 106
+
+-----Example-----
+Input:
+2
+4 4
+2 2
+
+Output:
+Tuzik
+Vanya
+
+-----Explanation-----Test case 1: On his first turn Tuzik moves chip 3 cells up to the cell (4, 1). On his turn Vanya can move chip only right to the cell (4, 2) or to the cell (4, 3) and after that Tuzik moves it to (4, 4) and finishes the game.
+
+Test case 2: On his first Turn Tuzik can move chip to the cell (2, 1) or (1, 2), but on his next turn Vanya moves it to (2, 2) and wins the game.
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

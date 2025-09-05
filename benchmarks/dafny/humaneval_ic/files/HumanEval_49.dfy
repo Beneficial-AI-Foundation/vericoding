@@ -1,0 +1,43 @@
+This verification task involves implementing efficient modular exponentiation to compute 2^n mod p. The method should use binary exponentiation (repeated squaring) for optimal O(log n) time complexity, maintaining appropriate loop invariants to prove correctness.
+
+// ======= TASK =======
+// Compute 2^n modulo p using efficient modular exponentiation.
+// Input: n (non-negative integer exponent), p (positive integer modulus)
+// Output: Integer result of 2^n mod p
+
+// ======= SPEC REQUIREMENTS =======
+function power(base: int, exp: nat): int
+{
+    if exp == 0 then 1
+    else base * power(base, exp - 1)
+}
+
+// ======= HELPERS =======
+
+// ======= MAIN METHOD =======
+method modp(n: int, p: int) returns (result: int)
+    requires n >= 0 && p > 0
+    ensures result >= 0 && result < p
+    ensures result == power(2, n) % p
+{
+    if n == 0 {
+        return 1 % p;
+    }
+
+    var base := 2 % p;
+    var exp := n;
+    result := 1 % p;
+
+    while exp > 0 
+        invariant result >= 0 && base >= 0
+        invariant result < p && base < p
+        invariant exp >= 0
+        invariant (result * power(base, exp)) % p == power(2, n) % p
+    {
+        if exp % 2 == 1 {
+            result := (result * base) % p;
+        }
+        base := (base * base) % p;
+        exp := exp / 2;
+    }
+}

@@ -36,8 +36,8 @@ decreases n
 
 // <vc-spec>
 fn exp_by_sqr(x0: u32, n0: u32) -> (r: u32)
-requires x0 >= 0;
-ensures r == exp(x0 as int, n0 as nat);
+    requires x0 >= 0
+    ensures r == exp(x0 as int, n0 as nat)
 // </vc-spec>
 // <vc-code>
 {

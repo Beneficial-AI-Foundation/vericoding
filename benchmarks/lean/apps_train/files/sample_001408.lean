@@ -1,0 +1,36 @@
+Today, Chef has a fencing job at hand and has to fence up a surface covering N$N$ points. 
+To minimize his work, he started looking for an algorithm that had him fence the least amount of length. 
+He came up with the Convex Hull algorithm, but soon realized it gave him some random shape to fence. However, Chef likes rectangles and has a favourite number M$M$. 
+Help him find the minimum perimeter he has to fence if he wants to fence a rectangle, with slope of one of the sides as M$M$, to cover all the points.
+
+-----Input:-----
+- The first line contains two integers N$N$ and M$M$, the number of points and the Chef's favourite Number.
+- The next n lines contain two space separated integers X$X$ and Y$Y$, the coordinates of the point.
+
+-----Output:-----
+Print a single decimal number, denoting the perimeter of the rectangle. Answer will considered correct if it has absolute error less than 10−6$10^{-6}$.
+
+-----Constraints-----
+- 2≤N≤1000000$2 \leq N \leq 1000000$
+- −1000≤M≤1000$-1000 \leq M \leq 1000$
+- −1000000≤X≤1000000$-1000000 \leq X \leq 1000000$
+- −1000000≤Y≤1000000$-1000000 \leq Y \leq 1000000$
+
+-----Sample Input:-----
+4 1
+0 1
+0 -1
+1 0
+-1 0
+
+-----Sample Output:-----
+5.656854249492380
+
+-----Note:-----
+- As the input size is large, it is recommended to use Fast IO.
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- Apps difficulty: interview
+-- Assurance level: guarded_and_plausible

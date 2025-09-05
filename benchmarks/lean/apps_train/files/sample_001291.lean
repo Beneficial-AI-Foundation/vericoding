@@ -1,0 +1,36 @@
+The $String$ Family gave birth to a new $Tripartite$ $trio$ $sisters$ and named them $Hema$, $Rekha$ and $Sushma$. Hema and Rekha are very fond of parties whereas Sushma hates them. One day Hema and Rekha asked their parents to buy them candies to distribute to people in their birthday party. (Remember Hema, Rekha and Sushma were born on the same day). But Sushma was uninterested in the party and only wanted candies for herself.
+You will be given a list $P$ of possible number of candidates coming to the party. Were $P[i]$ denotes the count of people coming in the i th possibility. In each case every person should get maximum possible equal number of candies  such that after distributing the candies, there are always $R$ candies remaining for Sushma. You have to calculate the minimum number of candies required to buy so that, in any possible situation of the given array, each person coming to party gets equal number of candies (at least 1 and maximum possible out of total) and there are always $R$ candies remaining for Sushma.
+
+-----Input:-----
+- First line will contain $T$, number of testcases. Then the testcases follow. 
+- First line of each test case contain  $N$, number of possible count of people coming to party
+- Next line contain $N$ spaced integers denoting the count of people 
+- Next line contain $R$ the number of candies always remaining after maximum equal distribution
+
+-----Output:-----
+For each testcase, output in a single line answer, the minimum number of candies required to buy.
+
+-----Constraints-----
+- $1 \leq T \leq 100$
+- $1 \leq N \leq 10^4$
+- $1 \leq P[i] \leq 41$
+- $0 \leq R < min(P[i])$
+
+-----Sample Input:-----
+1
+2
+2 3
+1
+
+-----Sample Output:-----
+7
+
+def min_candies_for_party (people_counts: List Nat) (remainder: Nat) : Nat := sorry
+
+def gcd (a b : Nat) : Nat := sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- Apps difficulty: interview
+-- Assurance level: guarded_and_plausible

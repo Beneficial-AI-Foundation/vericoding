@@ -18,8 +18,9 @@ spec fn min_function(a: int, b: int) -> int
 // <vc-spec>
 fn min_array(a: &Vec<i32>) -> (m: i32)
     requires a.len() > 0
-    ensures forall|k: int| 0 <= k < a.len() ==> m <= a[k]
-    ensures exists|k: int| 0 <= k < a.len() && m == a[k]
+    ensures 
+        forall|k: int| 0 <= k < a.len() ==> m <= a[k],
+        exists|k: int| 0 <= k < a.len() && m == a[k]
 // </vc-spec>
 // <vc-code>
 {

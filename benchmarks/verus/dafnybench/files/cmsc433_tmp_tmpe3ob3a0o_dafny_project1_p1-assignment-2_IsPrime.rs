@@ -63,9 +63,9 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn is_prime(m: int) -> (is_prime: bool)
+fn is_prime(m: i32) -> (is_prime: bool)
     requires m > 0, // m must be greater than 0
-    ensures is_prime <==> (m > 1 && forall|j: int| 2 <= j < m ==> #[trigger] (m % j) != 0),
+    ensures is_prime <==> (m > 1 && forall|j: int| 2 <= j < m ==> #[trigger] (m % j as i32) != 0),
     // ensures states that "is_prime is true iff m > 1 && not divisible by [2, m-1)"
 // </vc-spec>
 // <vc-code>

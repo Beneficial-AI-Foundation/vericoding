@@ -1,0 +1,44 @@
+We all know how great ABD aka AB-DE-VILLIERS is. However his team mates were jealous of him and posed a problem for him to solve.The problem description is as follows :
+
+Given an array of integers,find the length of the largest subarray(contiguous) of the given array with the maximum possible GCD (Greatest Common Divisor).
+
+For info on GCD ,see this link: https://en.wikipedia.org/wiki/Greatest_common_divisor
+
+GCD of the subarray is defined as the GCD of all the elements of the subarray.
+As ABD is not aware of competitive programming he asks your help. Help him!
+
+-----Input-----
+First line will contain integer N denoting the size of array.
+
+Second line will contain N integers denoting array elements.
+
+-----Output-----
+The answer as specified in the problem statement .
+
+-----Constraints-----
+1 <= N <= 1000000
+
+1 <= array[i] <=100000000000
+
+-----Example-----
+Input:
+4
+2 4 8 3
+
+Output:
+1
+
+Explanation
+GCD of all possible subarrays of the given array are : 2 , 2 , 2 , 1 , 4 , 4, 1 , 8 , 1 , 3
+
+Largest GCD possible : 8
+
+Length of the largest subarray with GCD as 8 is 1
+
+Hence answer is 1 .
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- Apps difficulty: interview
+-- Assurance level: guarded_and_plausible

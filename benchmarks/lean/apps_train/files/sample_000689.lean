@@ -1,0 +1,34 @@
+You are given a square matrix $M$ with $N$ rows (numbered $1$ through $N$) and $N$ columns (numbered $1$ through $N$). Initially, all the elements of this matrix are equal to $A$. The matrix is broken down in $N$ steps (numbered $1$ through $N$); note that during this process, some elements of the matrix are simply marked as removed, but all elements are still indexed in the same way as in the original matrix. For each valid $i$, the $i$-th step consists of the following:
+- Elements $M_{1, N-i+1}, M_{2, N-i+1}, \ldots, M_{i-1, N-i+1}$ are removed.
+- Elements $M_{i, N-i+1}, M_{i, N-i+2}, \ldots, M_{i, N}$ are removed.
+- Let's denote the product of all $2i-1$ elements removed in this step by $p_i$. Each of the remaining elements of the matrix (those which have not been removed yet) is multiplied by $p_i$.
+Find the sum $p_1 + p_2 + p_3 + \ldots + p_N$. Since this number could be very large, compute it modulo $10^9+7$.
+
+-----Input-----
+- The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+- The first and only line of each test case contains two space-separated integers $N$ and $A$.
+
+-----Output-----
+For each test case, print a single line containing one integer ― the sum of products at each step modulo $10^9+7$.
+
+-----Constraints-----
+- $1 \le T \le 250$
+- $1 \le N \le 10^5$
+- $0 \le A \le 10^9$
+- the sum of $N$ over all test cases does not exceed $10^5$
+
+-----Example Input-----
+1
+3 2
+
+-----Example Output-----
+511620149
+
+-----Explanation-----
+Example case 1:
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- Apps difficulty: interview
+-- Assurance level: guarded_and_plausible

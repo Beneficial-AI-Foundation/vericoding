@@ -1,0 +1,28 @@
+In this kata you must determine the lowest floor in a building from which you cannot drop an egg without it breaking. You may assume that all eggs are the same; if one egg breaks when dropped from floor `n`, all eggs will. If an egg survives a drop from some floor, it will survive a drop from any floor below too. 
+
+You are given `num_eggs` eggs and are allowed to make a maximum of `num_drops` drops. If an egg does not break when dropped, it may be reused. You may assume that it is feasible to determine the floor with the given number of eggs and drops.
+
+Example 1: 
+You are given 1 egg and 10 drops. You start by dropping the egg from the first floor (floor numbering starts at 1). If it breaks, the answer is 1. If it does not break, you drop it from the second floor. If it breaks, the answer is 2. Otherwise you continue in the same manner until you reach a floor where the egg breaks. You may assume that you will reach that floor before you have exhausted your drops (i.e., in this example, the egg will break when dropped from floor 10 or lower).
+
+Example 2: You are given 2 eggs and 10 drops. The highest floor for which this problem has a solution is floor 55, so you may assume that the answer is floor 55 or a lower floor. You will have to determine how the number 55 is derived and generalize it for any number of eggs and drops.
+
+To solve this problem, you need to write a function `solve` that takes an argument `emulator` and returns the lowest floor from which an egg will break if dropped. The `emulator` object has the following properties and method which you may invoke:
+
+  1. `emulator.eggs` returns the number of eggs you have left. You may use this property to detemine the number of eggs you are given initially.
+  2. `emulator.drops` returns the the number of drops you have left. You may use this property to detemine the number of drops you are given initially.
+  3. `emulator.drop(n)` returns `True` if an egg dropped from floor `n` breaks and `False` if it does not break. The number of times that you may invoke this method is limited to the number of drops you were given. If invoked after no drops are left, it will throw an exception. Same happens if you invoke this method after all your eggs are broken. 
+
+You are not allowed to access any other method or state attribute of the `emulator` object, even if you can. This is considered cheating and is a very dishonorable thing to do! Note that `emulator.__dict__` has been disabled. 
+
+Note: [This kata](http://www.codewars.com/kata/faberge-easter-eggs-crush-test) is similar although not the same.
+
+def height (n m : Nat) : Nat := sorry
+
+def TestEmulator := Nat × Nat × Nat
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

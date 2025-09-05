@@ -90,12 +90,11 @@ fn q(x: u32, y: u32) -> (z: u32)
     requires y - x > 2
     ensures x < z*z < y
 
-fn strange()
-    ensures 1 == 2
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
+    x + 1  // Return a dummy value
 }
 // </vc-code>
 

@@ -1,0 +1,45 @@
+We are interested in obtaining two scores from a given integer:
+
+**First score**: The sum of all the integers obtained from the power set of the digits of the given integer that have the same order 
+
+E.g:
+```
+integer = 1234 ---> (1 + 2 + 3 + 4) + (12 + 13 + 14 + 23 + 24 + 34) + 
+(123 + 124 + 134 + 234) + 1234 = 10 + 120 + 615 + 1234 = 1979
+```
+**Second score**: The sum of all the integers obtained from the all the contiguous substrings of the given integer as a string.
+
+E.g.
+```
+integer = 1234 ---> (1 + 2 + 3 + 4) + (12 + 23 + 34) + (123 + 234) + 1234 = 10 + 69 + 357 + 1234 = 1670
+```
+The first integer, higher than ```100```, that has both scores with ```3``` common divisors is ```204```. Its first score is ```258``` and the second one ```234```. The common divisors for both scores are ```2, 3, 6```.
+
+In fact the integers ```294``` and ```468``` are the ones in the range ```[100, 500]```, that have both scores with ```7``` common divisors, the maximum amount of common factors in that range.
+
+Your task in this kata is to create a function that may find the integer or integers that have the maximum amount of common divisors for the scores described above.
+
+The example given above will be:
+```python
+find_int_inrange(100, 500) == [7, 294, 468]
+```
+As you can see, the function should receive the limits of a range [a, b], and outputs an array with the maximum amount of factors, ```max_am_div``` and the found numbers sorted
+```
+find_int_inrange(a, b) ----> [max_am_div, k1, k2, ...., kn] # k1 < k2 < ...< kn
+```
+The function may output only one number.
+```python
+find_int_inrange(100, 300) == [7, 294]
+```
+Enjoy it!
+
+Features of the random tests:
+```
+100 < a < b < 55000 
+```
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

@@ -1,0 +1,70 @@
+This task implements a function to filter positive numbers from a list of integers. The function should return a new sequence containing only the positive numbers (greater than 0) while preserving their original order from the input sequence.
+
+// ======= TASK =======
+// Given a list of integers, return a new list containing only the positive numbers 
+// (numbers greater than 0) in their original order.
+
+// ======= SPEC REQUIREMENTS =======
+predicate IsPositive(x: int)
+{
+    x > 0
+}
+
+predicate AllPositive(s: seq<int>)
+{
+    forall i :: 0 <= i < |s| ==> IsPositive(s[i])
+}
+
+predicate AllElementsFromOriginal(result: seq<int>, original: seq<int>)
+{
+    forall x :: x in result ==> x in original
+}
+
+predicate ContainsAllPositives(result: seq<int>, original: seq<int>)
+{
+    forall i :: 0 <= i < |original| && IsPositive(original[i]) ==> original[i] in result
+}
+
+predicate PreservesOrder(result: seq<int>, original: seq<int>)
+{
+    forall i, j :: 0 <= i < j < |result| ==> 
+        (exists k1, k2 :: 0 <= k1 < k2 < |original| && original[k1] == result[i] && original[k2] == result[j] &&
+        forall k :: k1 < k < k2 ==> !IsPositive(original[k]))
+}
+
+function CountPositives(s: seq<int>): int
+{
+    |set x | x in s && IsPositive(x)|
+}
+
+// ======= HELPERS =======
+
+// ======= MAIN METHOD =======
+method get_positive(l: seq<int>) returns (result: seq<int>)
+    ensures AllPositive(result)
+    ensures AllElementsFromOriginal(result, l)
+    ensures ContainsAllPositives(result, l)
+    ensures |result| == CountPositives(l)
+    ensures PreservesOrder(result, l)
+{
+    result := [];
+    var i := 0;
+    while i < |l|
+        invariant 0 <= i <= |l|
+        invariant AllPositive(result)
+        invariant AllElementsFromOriginal(result, l)
+        invariant ContainsAllPositives(result, l[..i])
+        invariant forall x :: x in result ==> exists j :: 0 <= j < i && l[j] == x
+        invariant PreservesOrder(result, l[..i])
+        invariant (set x | x in result) == (set x | x in l[..i] && IsPositive(x))
+        invariant |result| == CountPositives(l[..i])
+    {
+        if IsPositive(l[i]) && l[i] !in result {
+            result := result + [l[i]];
+        }
+        i := i + 1;
+    }
+
+    assert l[..i] == l;
+    assert (set x | x in result) == (set x | x in l && IsPositive(x));
+}

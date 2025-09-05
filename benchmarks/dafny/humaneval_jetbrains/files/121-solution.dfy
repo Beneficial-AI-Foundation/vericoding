@@ -1,0 +1,19 @@
+/*
+function_signature: def solution(lst: List[int]) -> int
+Given a non-empty list of integers, return the sum of all of the odd elements that are in even positions.
+*/
+
+method solution(numbers: seq<int>) returns (s: int)
+  // post-conditions-start
+  ensures s == sum(numbers, seq(|numbers|, i requires 0 <= i < |numbers| => i % 2 == 0 && numbers[i] % 2 == 1))
+  // post-conditions-end
+{
+  assume false;
+}
+
+function sum(s: seq<int>, p: seq<bool>) : int
+  requires |s| == |p|
+{
+  if |s| == 0 then 0 else (if p[0] then s[0] else 0) + sum(s[1..], p[1..])
+}
+// pure-end

@@ -1,0 +1,39 @@
+Henry and Derek are waiting on a room, eager to join the Snackdown 2016 Qualifier Round. They decide to pass the time by playing a game.  
+In this game's setup, they write N positive integers on a blackboard. Then the players take turns, starting with Henry. In a turn, a player selects one of the integers, divides it by 2, 3, 4, 5 or 6, and then takes the floor to make it an integer again. If the integer becomes 0, it is erased from the board. The player who makes the last move wins.  
+
+Henry and Derek are very competitive, so aside from wanting to win Snackdown, they also want to win this game. Assuming they play with the optimal strategy, your task is to predict who wins the game.  
+
+-----Input-----
+The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
+The first line of each test case contains a single integer N denoting the number of integers they wrote on the board. The second line contains N space-separated integers A1, A2, ..., AN denoting the integers themselves.
+
+-----Output-----
+For each test case, output a single line containing either “Henry” or “Derek” (without quotes), denoting the winner of the game.
+
+-----Constraints-----
+- 1 ≤ T ≤ 1000
+- 1 ≤ N ≤ 100
+- 1 ≤ Ai ≤ 1018
+
+-----Example-----
+Input:2
+2
+3 4
+3
+1 3 5
+
+Output:Henry
+Derek
+
+-----Explanation-----
+Example case 1. In this test case, the numbers on the board are [3,4]. Henry can win by selecting 4 and then dividing it by 2. The integers on the board are now [3,2]. Derek now has a couple of choices:
+- Derek can divide 2 by 3, 4, 5 or 6, making it 0 and removing it. Now only one integer remains on the board, 3, and Henry can just divide it by 6 to finish, and win, the game.
+- Derek can divide 3 by 4, 5 or 6, making it 0 and removing it. Now only one integer remains on the board, 2, and Henry can just divide it by 6 to finish, and win, the game.
+- Derek can divide 2 by 2. Now the integers are [1,3]. Henry can respond by dividing 3 by 3. The integers are now [1,1]. Now Derek has no choice but to divide 1 by 2, 3, 4, 5 or 6 and remove it (because it becomes 0). Henry can respond by dividing the remaining 1 by 2 to finish, and win, the game.
+- Derek can divide 3 by 2 or 3. Now the integers are [1,2]. Henry can respond by dividing 2 by 2. The integers are now [1,1]. This leads to a situation as in the previous case and Henry wins.
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

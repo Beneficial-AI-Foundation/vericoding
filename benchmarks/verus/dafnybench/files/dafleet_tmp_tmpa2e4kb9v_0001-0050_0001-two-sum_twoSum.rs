@@ -13,13 +13,16 @@ Output: [0,1]
 Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
 */
 
-
 spec fn correct_pair(pair: (int, int), nums: Seq<int>, target: int) -> bool {
     let (i, j) = pair;
     &&& 0 <= i < nums.len()
     &&& 0 <= j < nums.len()
     &&& i != j  // "you may not use the same element twice"
     &&& nums[i] + nums[j] == target
+}
+
+spec fn seq_i32_to_int(s: Seq<i32>) -> Seq<int> {
+    s.map(|i, v| v as int)
 }
 
 // We actually make a weaker pre-condition: there exists at least one solution.
@@ -39,9 +42,6 @@ spec fn correct_pair(pair: (int, int), nums: Seq<int>, target: int) -> bool {
 */
 
 // <vc-helpers>
-spec fn seq_i32_to_int(s: Seq<i32>) -> Seq<int> {
-    s.map(|i, v| v as int)
-}
 // </vc-helpers>
 
 // <vc-spec>

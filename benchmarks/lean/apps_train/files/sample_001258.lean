@@ -1,0 +1,31 @@
+The  Chef  has bought $N$ boxes of Tiles. The number of tiles present in  $i^{th}$ box is  $i$  ($i   $ varies from $1$ to $N$) . The Chef  has two houses  with  $N$  rooms  each, whose  floors  is a square with area $(i*i)$ ,i varies from $(1....N)$. He want to distribute equal number of tiles from $i^{th}$ box to any two rooms (each room must belong to one house ) such that all tiles  of $i^ { th}$  box is used and floor of  both rooms of different houses are tiled completely.
+Since chef is busy doing some other works so he wants your help to count the total number of rooms of both houses that will be tiled completely.
+Note $:$ size of  each tile present in boxes has length and breadth equal to $1$. It is not mandatory to use all the boxes.
+A room should be tilled completely from a single box.
+
+-----Input:-----
+- First line will contain $T$, number of testcases. Then the testcases follow. 
+- Each testcase contains one integer $N$.
+
+-----Output:-----
+For each testcase print  the total number of rooms of both houses that will be tiled completely.
+
+-----Constraints-----
+- $1 \leq T \leq 5000$
+- $1 \leq N \leq 10^{12}$
+
+-----Sample Input:-----
+1
+16
+
+-----Sample Output:-----
+4
+
+-----EXPLANATION:-----
+The room $1$ and $2$ of both the houses are completely tiled.
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- Apps difficulty: interview
+-- Assurance level: guarded

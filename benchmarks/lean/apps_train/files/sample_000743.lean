@@ -1,0 +1,47 @@
+The chef is trying to decode some pattern problems, Chef wants your help to code it. Chef has one number K to form a new pattern. Help the chef to code this pattern problem.
+
+-----Input:-----
+- First-line will contain $T$, the number of test cases. Then the test cases follow. 
+- Each test case contains a single line of input, one integer $K$. 
+
+-----Output:-----
+For each test case, output as the pattern.
+
+-----Constraints-----
+- $1 \leq T \leq 100$
+- $1 \leq K \leq 100$
+
+-----Sample Input:-----
+4
+1
+2
+3
+4
+
+-----Sample Output:-----
+1 
+1 01 
+11 001 
+1 01 11 
+001 101 011 
+111 0001 1001 
+1 01 11 001 
+101 011 111 0001 
+1001 0101 1101 0011 
+1011 0111 1111 00001 
+
+-----EXPLANATION:-----
+No need, else pattern can be decode easily.
+
+def generate_pattern (k: Nat) : List (List String) := sorry
+
+theorem pattern_dimensions {k: Nat} (h: k > 0) :
+  let pattern := generate_pattern k
+  List.length pattern = k ∧ 
+  pattern.all (fun row => List.length row = k) := sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- Apps difficulty: interview
+-- Assurance level: guarded

@@ -1,0 +1,69 @@
+This task involves counting hexadecimal digits that represent prime numbers in a given hexadecimal string. The prime hexadecimal digits are: 2, 3, 5, 7, B (decimal 11), and D (decimal 13). The implementation should iterate through the string and count occurrences of these specific characters.
+
+// ======= TASK =======
+// Given a hexadecimal string, count how many hexadecimal digits represent prime numbers.
+// Prime hexadecimal digits are: 2, 3, 5, 7, B (decimal 11), D (decimal 13).
+
+// ======= SPEC REQUIREMENTS =======
+predicate is_hex_char(c: char)
+{
+    c in "0123456789ABCDEF"
+}
+
+predicate is_valid_hex_string(s: string)
+{
+    forall i :: 0 <= i < |s| ==> is_hex_char(s[i])
+}
+
+predicate is_prime_hex_digit(c: char)
+{
+    c == '2' || c == '3' || c == '5' || c == '7' || c == 'B' || c == 'D'
+}
+
+function count_prime_hex_digits(s: string): int
+{
+    if |s| == 0 then 0
+    else (if is_prime_hex_digit(s[0]) then 1 else 0) + count_prime_hex_digits(s[1..])
+}
+
+// ======= HELPERS =======
+lemma append_count_lemma(s: string, c: char)
+    ensures count_prime_hex_digits(s + [c]) == count_prime_hex_digits(s) + (if is_prime_hex_digit(c) then 1 else 0)
+{
+    if |s| == 0 {
+        assert s + [c] == [c];
+        assert count_prime_hex_digits([c]) == (if is_prime_hex_digit(c) then 1 else 0) + count_prime_hex_digits([]);
+    } else {
+        assert s + [c] == [s[0]] + s[1..] + [c];
+        assert s + [c] == [s[0]] + (s[1..] + [c]);
+        append_count_lemma(s[1..], c);
+    }
+}
+
+// ======= MAIN METHOD =======
+method hex_key(num: string) returns (count: int)
+    requires is_valid_hex_string(num)
+    ensures count >= 0
+    ensures count <= |num|
+    ensures count == count_prime_hex_digits(num)
+{
+    count := 0;
+    var i := 0;
+    while i < |num|
+        invariant 0 <= i <= |num|
+        invariant count >= 0
+        invariant count <= i
+        invariant count == count_prime_hex_digits(num[0..i])
+    {
+        var digit := num[i];
+        assert num[0..i+1] == num[0..i] + [digit];
+        append_count_lemma(num[0..i], digit);
+        if is_prime_hex_digit(digit)
+        {
+            count := count + 1;
+        }
+        i := i + 1;
+    }
+    assert i == |num|;
+    assert num[0..i] == num;
+}

@@ -1,0 +1,55 @@
+Chef would like go shopping to buy ingredients for his special dish. The local grocery store has some special discount offers. If you want to buy some set of ingredients you will pay for all ingredients except the cheapest one. Chef would like to spend as little money as possible. You have to help him. :)
+
+The store is pretty small and stocks only one unit of each ingredients. Opposite each ingredient is a hanging price tag corresponding to it. The salesman walked away for a minute, giving Chef an opportunity to swap some price tags. He would like to swap some tags to minimize his purchase cost.
+
+-----Input-----
+The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows. 
+
+The first line of each test case contains a single integer N denoting the number of ingredients Chef needs to buy. The second line contains N space-separated integers A1, A2, ... , AN denoting the value  written on the price tags opposite the needed ingredients. The third line contains a single integer M denoting the number of special offers. The following M lines lists inventory of special offers, one offer per line. Each line contains an integer Ci followed by Ci integers denoting the indices of ingredients constituting the ith discount offer.
+
+-----Output-----
+For each test case, output a single line containing the minimal purchase cost.
+
+-----Constraints-----
+- T ≤ 5
+- 1 ≤ N ≤ 15
+- 1 ≤ Ai ≤ 106
+- 0 ≤ M ≤ 2N-1
+- 2 ≤ Ci ≤ N
+- Subtask 1 (15 points):  1 ≤ N ≤  5
+- Subtask 2 (25 points):  1 ≤ N ≤ 10
+- Subtask 3 (60 points):  1 ≤ N ≤ 15
+
+-----Example-----
+Input:
+1
+4 
+1 2 3 4
+3
+2 1 2
+2 3 4
+3 1 2 3
+
+Output:
+6
+
+def sum (l : List Nat) : Nat :=
+  match l with
+  | [] => 0
+  | h::t => h + sum t
+
+def minimum (l : List Nat) : Nat := 
+  match l with
+  | [] => 0
+  | h::t => min h (minimum t)
+
+def maximum (l : List Nat) : Nat :=
+  match l with
+  | [] => 0
+  | h::t => max h (maximum t)
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

@@ -1,0 +1,40 @@
+Given a non-empty string check if it can be constructed by taking a substring of it and appending multiple copies of the substring together.  You may assume the given string consists of lowercase English letters only and its length  will not exceed 10000. 
+
+Example 1:
+
+Input: "abab"
+
+Output: True
+
+Explanation: It's the substring "ab" twice.
+
+Example 2:
+
+Input: "aba"
+
+Output: False
+
+Example 3:
+
+Input: "abcabcabcabc"
+
+Output: True
+
+Explanation: It's the substring "abc" four times. (And the substring "abcabc" twice.)
+
+def repeatedSubstringPattern (s: String) : Bool := sorry
+
+theorem repeatedSubstringPattern_single_char {s: String} :
+  s.length = 1 → ¬repeatedSubstringPattern s := sorry
+
+def rotateString (s: String) : String := sorry
+
+theorem repeatedSubstringPattern_rotation {s: String} (h: s.length ≥ 2) :
+  repeatedSubstringPattern s → 
+  repeatedSubstringPattern (rotateString s) := sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

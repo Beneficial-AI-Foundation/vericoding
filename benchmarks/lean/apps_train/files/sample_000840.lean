@@ -1,0 +1,34 @@
+As we all know, Dhoni loves drinking milk. Once he and Sir Jadeja were invited in the inauguration of a Dairy company in Ranchi.
+
+The company had arranged  n   jars of milk from various breeds of cows , jar number  i  containing  a[i]  litres of milk. Since Dhoni loves driking milk more than Sir Jadeja, so Kohli suggested a plan for them. His plan was that each time Dhoni will choose a jar containing the maximum amount of milk. If this jar has less than  k   litres of milk or if Dhoni has already drunk more than  m  number of times from this jar, then the milk contained in the jar will be drunk by Sir Jadeja. Sir Jadeja will drink all the milk left in that jar. Otherwise Dhoni will drink exactly k  litres of milk from the jar and put it back at its position. Dhoni will do so until he has given all jars to Sir Jadeja.
+
+You have to calculate how much milk Sir Jadega will get after Dhoni satisfies his hunger modulo 1,000,000,007.
+
+-----Input-----
+- The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
+-  The first line of each test case contains integer N , M, K denoting the number of milk jars, maximum number of time Dhoni will drink from any jar and maximum amount of milk Dhoni will drink at any time respectively. The second line contains N space-separated integers A1, A2, ..., AN denoting the amount of milk in each jar. 
+
+-----Output-----
+- For each test case, output a single line containing the amount of milk Sir Jadega will get modulo 1,000,000,007.
+
+-----Constraints-----
+- 1 ≤ T ≤  10 
+- 1 ≤ N ≤  10^5 
+- 0 ≤ M ≤  10^6 
+- 1 ≤ K ≤  10^6 
+- 0 ≤ Ai ≤  10^9 
+
+-----Example-----
+Input:
+1
+3 3 3
+15 8 10
+
+Output:
+9
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- Apps difficulty: interview
+-- Assurance level: guarded_and_plausible
