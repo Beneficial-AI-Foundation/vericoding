@@ -47,6 +47,7 @@ file_extension = ".lean"
 tool_path_env = "LEAN_PATH"
 default_tool_path = "lean"
 prompts_file = "prompts-lean.yaml"
+timeout = 60
 
 # Verification command patterns
 verify_command = ["lake", "env", "lean", "{file_path}"]
