@@ -132,6 +132,10 @@ def verify_file(config: ProcessingConfig, file_path: str) -> VerificationResult:
         full_output = result.stdout + result.stderr
 
         success = result.returncode == 0
+        # Treat sorry warnings as failures for Lean unless explicitly bypassed elsewhere
+        if config.language == "lean":
+            if "warning: declaration uses 'sorry'" in full_output:
+                success = False
 
         if success:
             return VerificationResult(success=True, output=full_output, error=None)
