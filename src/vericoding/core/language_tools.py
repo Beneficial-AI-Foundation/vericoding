@@ -3,11 +3,15 @@
 import os
 import shutil
 import subprocess
+import shlex
+import logging
 from dataclasses import dataclass
 from pathlib import Path
 
 from .config import ProcessingConfig
 from vericoding.utils.git_utils import get_repo_root
+
+logger = logging.getLogger(__name__)
 
 
 @dataclass
@@ -102,12 +106,16 @@ def verify_file(config: ProcessingConfig, file_path: str) -> VerificationResult:
                 for part in config.language_config.compile_check_command
             ]
             try:
+                _cwd = get_repo_root() if config.language == "lean" else None
+                logger.info(
+                    f"    ▶ compile_check cmd: (cwd={_cwd or os.getcwd()}) $ {shlex.join(cmd)}"
+                )
                 result = subprocess.run(
                     cmd,
                     capture_output=True,
                     text=True,
                     timeout=60,
-                    cwd=get_repo_root() if config.language == "lean" else None,
+                    cwd=_cwd,
                 )
 
                 if result.returncode != 0:
@@ -120,7 +128,7 @@ def verify_file(config: ProcessingConfig, file_path: str) -> VerificationResult:
                     )
             except subprocess.TimeoutExpired as e:
                 timeout_msg = f"⏱️  TIMEOUT: Compilation check timed out after 60 seconds"
-                print(f"    {timeout_msg}")
+                logger.info(f"    {timeout_msg}")
                 return VerificationResult(
                     success=False, output=str(e), error=timeout_msg
                 )
@@ -133,12 +141,16 @@ def verify_file(config: ProcessingConfig, file_path: str) -> VerificationResult:
         timeout_value = getattr(
             config.language_config, "timeout", 120
         )  # Default to 120 seconds if not specified
+        _cwd = get_repo_root() if config.language == "lean" else None
+        logger.info(
+            f"    ▶ verify cmd: (cwd={_cwd or os.getcwd()}) $ {shlex.join(cmd)} [timeout={timeout_value}s]"
+        )
         result = subprocess.run(
             cmd,
             capture_output=True,
             text=True,
             timeout=timeout_value,
-            cwd=get_repo_root() if config.language == "lean" else None,
+            cwd=_cwd,
         )
         full_output = result.stdout + result.stderr
 
@@ -146,6 +158,7 @@ def verify_file(config: ProcessingConfig, file_path: str) -> VerificationResult:
         # Treat sorry warnings as failures for Lean unless explicitly bypassed elsewhere
         if config.language == "lean":
             if "warning: declaration uses 'sorry'" in full_output:
+                logger.info("    ⚠️  Lean 'sorry' warnings detected; marking as failure")
                 success = False
 
         if success:
@@ -159,7 +172,7 @@ def verify_file(config: ProcessingConfig, file_path: str) -> VerificationResult:
 
     except subprocess.TimeoutExpired as e:
         timeout_msg = f"⏱️  TIMEOUT: Verification timed out after {timeout_value} seconds"
-        print(f"    {timeout_msg}")
+        logger.info(f"    {timeout_msg}")
         return VerificationResult(
             success=False, output=str(e), error=timeout_msg
         )

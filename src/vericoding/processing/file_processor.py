@@ -148,6 +148,7 @@ def process_spec_file(
             output_subdir
             / f"{base_file_name}_impl{config.language_config.file_extension}"
         )
+        logger.info(f"    💾 Writing output file: {output_path.resolve()}")
         with output_path.open("w") as f:
             f.write(generated_code)
 
@@ -219,7 +220,7 @@ def process_spec_file(
                         if verification.output:
                             f.write("\nAdditional Output:\n")
                             f.write(verification.output)
-                    logger.info(f"    💾 Saved full error log to: debug/{relative_path.parent}/{base_file_name}_iter{iteration}_error.log")
+                    logger.info(f"    💾 Saved full error log to: {error_log_path.resolve()}")
                 
                 logger.info(
                     f"    ✗ Verification failed: {verification.error[:200] if verification.error else 'Unknown error'}..."
