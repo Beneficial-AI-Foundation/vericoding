@@ -36,10 +36,26 @@ def get_template(suffix: str) -> list[str]:
     else:
         raise ValueError(f"Unsupported suffix: {suffix}")
 
-def convert_spec_to_file(spec: dict, output_path: Path) -> None:
-    """Convert spec dictionary to target file format by concatenating sections."""
+def convert_spec_to_file(spec: dict, output_path: Path, use_all_keys: bool = False) -> None:
+    """Convert spec dictionary to target file format by concatenating sections.
     
-    template = get_template(output_path.suffix[1:])
+    Args:
+        spec: Dictionary containing the spec data
+        output_path: Path to the output file
+        use_all_keys: If True, use all keys from spec (except 'id') as template with newlines between them.
+                      If False, use the standard template based on file suffix.
+    """
+    
+    if use_all_keys:
+        # Create template from all keys in spec (except 'id') with newlines between them
+        keys = [key for key in spec.keys() if key != 'id']
+        template = []
+        for i, key in enumerate(keys):
+            template.append(key)
+            if i < len(keys) - 1:  # Add newline between keys, but not after the last one
+                template.append('\n')
+    else:
+        template = get_template(output_path.suffix[1:])
     
     content = spec_to_string(spec, template)
     
@@ -49,14 +65,20 @@ def convert_spec_to_file(spec: dict, output_path: Path) -> None:
     # print(f"Converted spec -> {output_path}")
 
 
-def convert_yaml_to_file(yaml_path: Path, output_path: Path) -> None:
-    """Convert YAML spec to target file format by concatenating sections."""
+def convert_yaml_to_file(yaml_path: Path, output_path: Path, use_all_keys: bool = False) -> None:
+    """Convert YAML spec to target file format by concatenating sections.
+    
+    Args:
+        yaml_path: Path to the input YAML file
+        output_path: Path to the output file
+        use_all_keys: If True, use all keys from spec (except id) as template with newlines between them.
+    """
     
     yaml = YAML()
     yaml.preserve_quotes = True  # Preserve original formatting
     spec = yaml.load(yaml_path)
     
-    convert_spec_to_file(spec, output_path)
+    convert_spec_to_file(spec, output_path, use_all_keys)
     print(f"Converted {yaml_path} -> {output_path}")
 
 
@@ -108,8 +130,15 @@ def convert_yaml_to_jsonl(yaml_path: Path, output_path: Path = None) -> None:
     print(f"Converted {len(yaml_files)} YAML files to {output_path}")
 
 
-def convert_yaml_to_dir(suffix: str, yaml_path: Path, output_path: Path = None) -> None:
-    """Convert all YAML files in a directory to a new directory with specified suffix."""
+def convert_yaml_to_dir(suffix: str, yaml_path: Path, output_path: Path = None, use_all_keys: bool = False) -> None:
+    """Convert all YAML files in a directory to a new directory with specified suffix.
+    
+    Args:
+        suffix: File suffix for the output files
+        yaml_path: Path to the input YAML directory
+        output_path: Output directory path (optional)
+        use_all_keys: If True, use all keys from spec (except id) as template with newlines between them.
+    """
     
     if not yaml_path.is_dir():
         raise ValueError(f"{yaml_path} is not a directory")
@@ -133,7 +162,7 @@ def convert_yaml_to_dir(suffix: str, yaml_path: Path, output_path: Path = None) 
     if suffix in ['lean', 'dfy', 'rs']:
         for yaml_file in yaml_files:
             output_file = output_dir / f"{yaml_file.stem}.{suffix}"
-            convert_yaml_to_file(yaml_file, output_file)  
+            convert_yaml_to_file(yaml_file, output_file, use_all_keys)  
 
     elif suffix == 'json':
         for yaml_file in yaml_files:
@@ -146,8 +175,15 @@ def convert_yaml_to_dir(suffix: str, yaml_path: Path, output_path: Path = None) 
     print(f"Converted {len(yaml_files)} YAML files to {output_dir}")
 
 
-def convert_jsonl_to_dir(suffix: str, jsonl_path: Path, output_path: Path = None) -> None:
-    """Convert all entries in a JSONL file to individual files with specified suffix."""
+def convert_jsonl_to_dir(suffix: str, jsonl_path: Path, output_path: Path = None, use_all_keys: bool = False) -> None:
+    """Convert all entries in a JSONL file to individual files with specified suffix.
+    
+    Args:
+        suffix: File suffix for the output files
+        jsonl_path: Path to the JSONL file
+        output_path: Output directory path (optional)
+        use_all_keys: If True, use all keys from spec (except id) as template with newlines between them.
+    """
     
     if not jsonl_path.is_file():
         raise ValueError(f"{jsonl_path} is not a file")
@@ -182,7 +218,7 @@ def convert_jsonl_to_dir(suffix: str, jsonl_path: Path, output_path: Path = None
                 
                 if suffix in ['lean', 'dfy', 'rs']:
                     output_file = output_dir / f"{file_id}.{suffix}"
-                    convert_spec_to_file(spec, output_file)
+                    convert_spec_to_file(spec, output_file, use_all_keys)
                 
                 elif suffix == 'json':
                     output_file = output_dir / f"{file_id}.{suffix}"
@@ -204,7 +240,70 @@ def convert_jsonl_to_dir(suffix: str, jsonl_path: Path, output_path: Path = None
         print(f"Converted {processed_count} entries from {jsonl_path} to {output_dir}")
 
 
-def process_benchmarks(benchmarks_dir: Path, suffix: str = None) -> None:
+def process_bench(bench_dir: Path, suffix: str = None, use_all_keys: bool = False) -> None:
+    """Process a single benchmark directory to convert YAML files.
+    
+    Args:
+        bench_dir: Path to the benchmark directory (should contain a 'yaml' subdirectory)
+        suffix: File suffix for the output files (e.g., 'dfy', 'lean', 'rs'). 
+                If None, auto-detects from parent directory structure.
+        use_all_keys: If True, use all keys from spec (except id) as template with newlines between them.
+    
+    Creates:
+        1. A JSONL file in the benchmark directory with naming pattern: XXX_YYY.jsonl
+        2. A 'files' folder in the benchmark directory with individual files
+    """
+    
+    # Validate bench_dir
+    if not bench_dir.exists():
+        raise FileNotFoundError(f"Benchmark directory {bench_dir} does not exist")
+    
+    if not bench_dir.is_dir():
+        raise ValueError(f"{bench_dir} is not a directory")
+    
+    # Construct yaml_dir path
+    yaml_dir = bench_dir / "yaml"
+    
+    # Validate yaml_dir exists
+    if not yaml_dir.exists():
+        raise FileNotFoundError(f"YAML directory {yaml_dir} does not exist")
+    
+    if not yaml_dir.is_dir():
+        raise ValueError(f"{yaml_dir} is not a directory")
+    
+    # Get the parent directory (level1_dir) for suffix detection
+    level1_dir = bench_dir.parent
+    
+    level1_name = level1_dir.name
+    level2_name = bench_dir.name
+    
+    # Determine suffix - use provided suffix or auto-detect from parent directory
+    if suffix is not None:
+        bench_suffix = suffix
+    else:
+        # Auto-detect suffix from parent directory structure
+        if level1_name == "dafny":
+            bench_suffix = "dfy"
+        elif level1_name == "lean":
+            bench_suffix = "lean"
+        elif level1_name == "verus":
+            bench_suffix = "rs"
+        else:
+            raise ValueError(f"Unknown benchmark type '{level1_name}'. Expected 'dafny', 'lean', or 'verus'. Use suffix parameter to specify manually.")
+    
+    print(f"Processing {bench_dir} with suffix '{bench_suffix}'...")
+    
+    # 1. Convert all YAML files to JSONL using custom naming: XXX_YYY.jsonl
+    jsonl_filename = f"{level1_name}_{level2_name}.jsonl"
+    jsonl_path = bench_dir / jsonl_filename
+    convert_yaml_to_jsonl(yaml_dir, jsonl_path)
+    
+    # 2. Convert JSONL to individual files in 'files' folder
+    files_dir = bench_dir / "files"
+    convert_jsonl_to_dir(bench_suffix, jsonl_path, files_dir, use_all_keys)
+
+
+def process_benchmarks(benchmarks_dir: Path, suffix: str = None, use_all_keys: bool = False) -> None:
     """Process benchmark directories to convert YAML files.
     
     For each level-2 subfolder of benchmarks/XXX/YYY:
@@ -212,6 +311,11 @@ def process_benchmarks(benchmarks_dir: Path, suffix: str = None) -> None:
     2. If it exists, convert YAML files to files with the appropriate suffix in 'files' folder
        (suffix determined by XXX: dafny->dfy, lean->lean, verus->rs)
     3. Convert all YAML files to a JSONL file using custom naming: XXX_YYY.jsonl
+    
+    Args:
+        benchmarks_dir: Path to the benchmarks directory
+        suffix: File suffix for the output files (optional, auto-detected if None)
+        use_all_keys: If True, use all keys from spec (except id) as template with newlines between them.
     """
     
     if not benchmarks_dir.exists():
@@ -235,12 +339,7 @@ def process_benchmarks(benchmarks_dir: Path, suffix: str = None) -> None:
     processed_count = 0
     
     for level2_dir in level2_dirs:
-        yaml_dir = level2_dir / "yaml"
-        
-        # Check if yaml folder exists
-        if not yaml_dir.exists() or not yaml_dir.is_dir():
-            continue
-        
+
         # Determine suffix based on level-1 directory name (XXX)
         level1_name = level2_dir.parent.name
         if suffix is None:
@@ -255,47 +354,37 @@ def process_benchmarks(benchmarks_dir: Path, suffix: str = None) -> None:
         else:
             dir_suffix = suffix
         
-        print(f"Processing {level2_dir} with suffix '{dir_suffix}'...")
-        
-        # 1. Convert all YAML files to JSONL using custom naming: XXX_YYY.jsonl
-        level2_name = level2_dir.name
-        jsonl_filename = f"{level1_name}_{level2_name}.jsonl"
-        jsonl_path = level2_dir / jsonl_filename
-        convert_yaml_to_jsonl(yaml_dir, jsonl_path)
-        
-        # 2. Convert JSONL to individual files in 'files' folder
-        files_dir = level2_dir / "files"
-        convert_jsonl_to_dir(dir_suffix, jsonl_path, files_dir)
-        
+        # Use the new process_bench function
+        process_bench(level2_dir, dir_suffix, use_all_keys)
         processed_count += 1
     
     print(f"Processed {processed_count} benchmark directories")
 
 
-def spec_to_yaml(spec: dict, yaml_path: Path, required_keys: list[str] = None) -> None:
+def spec_to_yaml(spec: dict, yaml_path: Path, recommended_keys: list[str] = None) -> None:
     """Write a spec dictionary to a YAML file with proper multiline string formatting.
     
     Args:
         spec: Dictionary containing the spec data
         yaml_path: Path to the output YAML file
-        required_keys: List of keys that must be present in spec, in the order they should appear in the YAML file.
+        recommended_keys: List of keys that should be present in spec, in the order they should appear in the YAML file.
                       If None, writes all keys in arbitrary order without validation.
     """
     
-    # Validate required keys if provided
-    if required_keys is not None:
-        # Check for missing required keys
-        missing_keys = [key for key in required_keys if key not in spec]
+    # Validate recommended keys if provided
+    if recommended_keys is not None:
+        # Check for missing recommended keys
+        missing_keys = [key for key in recommended_keys if key not in spec]
         if missing_keys:
-            raise ValueError(f"Missing required keys in spec: {missing_keys}")
+            raise ValueError(f"Missing recommended keys in spec: {missing_keys}")
         
-        # Check for extra keys not in required list
-        extra_keys = [key for key in spec.keys() if key not in required_keys]
+        # Check for extra keys not in recommended list
+        extra_keys = [key for key in spec.keys() if key not in recommended_keys]
         if extra_keys:
-            raise ValueError(f"Spec contains keys not in required list: {extra_keys}")
+            raise ValueError(f"Spec contains keys not in recommended list: {extra_keys}")
         
-        # Use required_keys for ordering
-        keys_to_write = required_keys
+        # Use recommended_keys for ordering
+        keys_to_write = recommended_keys
     else:
         # Use all keys in arbitrary order
         keys_to_write = list(spec.keys())
@@ -339,10 +428,10 @@ def clear_implementation(yaml_path: Path) -> None:
             spec[field] = "-- <"+field+">\n  sorry\n-- </"+field+">\n\n"
     
     # Write the modified spec back to YAML
-    # Get required keys in the order they appeared in the original file 
+    # Get recommended keys in the order they appeared in the original file 
     # Thankfully ruamel.yaml preserves the order of keys when loading
-    required_keys = [key for key in spec.keys()]
-    spec_to_yaml(spec, yaml_path, required_keys=required_keys)
+    recommended_keys = [key for key in spec.keys()]
+    spec_to_yaml(spec, yaml_path, recommended_keys=recommended_keys)
     
     print(f"Cleared implementation fields in {yaml_path}")
 
@@ -359,17 +448,26 @@ def main():
     parser.add_argument('--benchmarks', type=Path, metavar='BENCHMARKS_DIR',
                        help='Process benchmark directories. For each level-2 subfolder benchmarks/XXX/YYY, '
                             'convert YAML files in yaml/ folder to files/ folder and create JSONL file')
+    parser.add_argument('--bench', type=Path, metavar='BENCH_DIR',
+                       help='Process a single benchmark directory. Takes a benchmark directory (should contain a yaml subdirectory). Suffix is auto-detected from parent directory if not provided via --suffix')
+    parser.add_argument('--use-all-keys', action='store_true',
+                       help='Use all keys from spec (except id) as template with newlines between them, instead of predefined templates')
     
     args = parser.parse_args()
     
     # Handle benchmarks processing
     if args.benchmarks is not None:
-        process_benchmarks(args.benchmarks, args.suffix)
+        process_benchmarks(args.benchmarks, args.suffix, args.use_all_keys)
+        return
+    
+    # Handle single benchmark processing
+    if args.bench is not None:
+        process_bench(args.bench, args.suffix, args.use_all_keys)
         return
     
     # For non-benchmarks processing, yaml_file is required
     if args.yaml_file is None:
-        parser.error("yaml_file is required when not using --benchmarks")
+        parser.error("yaml_file is required when not using --benchmarks or --bench")
     
     if not args.yaml_file.exists():
         raise FileNotFoundError(f"{args.yaml_file} does not exist")
@@ -397,7 +495,7 @@ def main():
         if args.suffix == 'jsonl':
             print("Error: --dir option is not available for jsonl suffix (use without --dir for JSONL)")
             return
-        convert_yaml_to_dir(args.suffix, args.yaml_file)
+        convert_yaml_to_dir(args.suffix, args.yaml_file, use_all_keys=args.use_all_keys)
     elif args.suffix == 'json':
         output_path = args.yaml_file.with_suffix(f'.{args.suffix}')
         convert_yaml_to_json(args.yaml_file, output_path)
@@ -405,7 +503,7 @@ def main():
         convert_yaml_to_jsonl(args.yaml_file)
     else:
         output_path = args.yaml_file.with_suffix(f'.{args.suffix}')
-        convert_yaml_to_file(args.yaml_file, output_path)
+        convert_yaml_to_file(args.yaml_file, output_path, args.use_all_keys)
 
 
 if __name__ == '__main__':
