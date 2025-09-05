@@ -53,10 +53,12 @@ def _content_to_text(content) -> str:
 
 async def _start_session_async(init_timeout: int) -> bool:
     global _session, _client_cm, _available_tools
-    if shutil.which("lean-lsp-mcp"):
-        server = StdioServerParameters(command="lean-lsp-mcp", cwd=str(get_repo_root()))
-    else:
-        server = StdioServerParameters(command="uvx", args=["lean-lsp-mcp"], cwd=str(get_repo_root()))
+    # Run via `lake env` to ensure Lean project environment is available
+    server = StdioServerParameters(
+        command="lake",
+        args=["env", "uvx", "lean-lsp-mcp"],
+        cwd=str(get_repo_root()),
+    )
     cm = stdio_client(server)
     read, write = await cm.__aenter__()
     sess = ClientSession(read, write)
