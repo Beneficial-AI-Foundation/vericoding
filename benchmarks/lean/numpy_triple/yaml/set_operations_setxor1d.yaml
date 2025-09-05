@@ -3,7 +3,7 @@ vc-description: |-
   
       Return the sorted, unique values that are in only one (not both) of the
       input arrays. This is equivalent to the symmetric difference of two sets.
-      
+  
       The result contains elements that appear in ar1 but not in ar2, or in ar2 
       but not in ar1, sorted in ascending order.
   -/
@@ -27,15 +27,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def numpy_setxor1d {n m k : Nat} (ar1 : Vector Float n) (ar2 : Vector Float m) : Id (Vector Float k) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem numpy_setxor1d_spec {n m k : Nat} (ar1 : Vector Float n) (ar2 : Vector Float m) :
       ⦃⌜True⌝⦄
       numpy_setxor1d ar1 ar2
@@ -54,11 +50,7 @@ vc-condition: |-
            (∃ i : Fin m, ar2.get i = x ∧ ¬∃ j : Fin n, ar1.get j = x)) →
           ∃ i : Fin k, result.get i = x)
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

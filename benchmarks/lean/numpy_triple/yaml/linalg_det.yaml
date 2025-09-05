@@ -26,15 +26,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def det {n : Nat} (a : Vector (Vector Float n) n) : Id Float :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem det_spec {n : Nat} (a : Vector (Vector Float n) n) :
       ⦃⌜True⌝⦄
       det a
@@ -61,11 +57,7 @@ vc-condition: |-
         -- The determinant is linear in each row
         (True) -- Placeholder for more advanced multilinear properties
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

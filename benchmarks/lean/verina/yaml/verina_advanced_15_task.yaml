@@ -21,15 +21,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def increasingTriplet (nums : List Int) (h_precond : increasingTriplet_precond (nums)) : Bool :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible]
   def increasingTriplet_postcond (nums : List Int) (result: Bool) (h_precond : increasingTriplet_precond (nums)) : Prop :=
     let nums' := nums.zipIdx
@@ -52,11 +48,7 @@ vc-condition: |-
   
   theorem increasingTriplet_spec_satisfied (nums: List Int) (h_precond : increasingTriplet_precond (nums)) :
       increasingTriplet_postcond (nums) (increasingTriplet (nums) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

@@ -23,15 +23,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def majorityElement (xs : List Nat) (h_precond : majorityElement_precond (xs)) : Nat :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible]
   def majorityElement_postcond (xs : List Nat) (result: Nat) (h_precond : majorityElement_precond (xs)) : Prop :=
     let count := xs.count result
@@ -39,11 +35,7 @@ vc-condition: |-
   
   theorem majorityElement_spec_satisfied (xs: List Nat) (h_precond : majorityElement_precond (xs)) :
       majorityElement_postcond (xs) (majorityElement (xs) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

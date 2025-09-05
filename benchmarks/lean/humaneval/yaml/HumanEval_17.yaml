@@ -24,15 +24,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def implementation (string: String) : List Nat :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   def problem_spec
   -- function signature
   (implementation: String → List Nat)
@@ -56,11 +52,7 @@ vc-condition: |-
   (string: String)
   : problem_spec implementation string
   :=
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation "o o| .| o| o| .| .| .| .| o o" = [4, 2, 1, 2, 2, 1, 1, 1, 1, 4, 4]

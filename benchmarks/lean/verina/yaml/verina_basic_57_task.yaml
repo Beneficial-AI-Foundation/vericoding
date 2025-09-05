@@ -32,15 +32,11 @@ vc-helpers: |-
     count 0 0
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def CountLessThan (numbers : Array Int) (threshold : Int) (h_precond : CountLessThan_precond (numbers) (threshold)) : Nat :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def CountLessThan_postcond (numbers : Array Int) (threshold : Int) (result: Nat) (h_precond : CountLessThan_precond (numbers) (threshold)) :=
     result - numbers.foldl (fun count n => if n < threshold then count + 1 else count) 0 = 0 ∧
@@ -48,11 +44,7 @@ vc-condition: |-
   
   theorem CountLessThan_spec_satisfied (numbers: Array Int) (threshold: Int) (h_precond : CountLessThan_precond (numbers) (threshold)) :
       CountLessThan_postcond (numbers) (threshold) (CountLessThan (numbers) (threshold) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

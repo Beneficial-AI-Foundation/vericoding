@@ -24,15 +24,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def implementation (words: List String) : String :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   def problem_spec
   -- function signature
   (impl: List String → String)
@@ -60,11 +56,7 @@ vc-condition: |-
   theorem correctness
   (words: List String)
   : problem_spec implementation words :=
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation ["name", "of", "string"]= "string"

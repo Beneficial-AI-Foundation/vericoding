@@ -35,16 +35,12 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def from_dlpack {α : Type} {n : Nat} (x : DLPackObject α n) (device : Option String := none) 
       (copy : Option Bool := none) : Id (Vector α n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem from_dlpack_spec {α : Type} {n : Nat} (x : DLPackObject α n) 
       (device : Option String := none) (copy : Option Bool := none) :
       ⦃⌜x.has_dlpack ∧ x.has_dlpack_device ∧ 
@@ -53,11 +49,7 @@ vc-condition: |-
       ⦃⇓result => ⌜∀ i : Fin n, result.get i = x.data.get i ∧
                    (copy = some true → result ≠ x.data) ∧
                    (copy = some false → result = x.data)⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

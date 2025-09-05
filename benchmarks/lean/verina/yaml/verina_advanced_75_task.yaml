@@ -27,15 +27,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def task_code (sequence : List Int) (h_precond : task_code_precond (sequence)) : Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def task_code_postcond (sequence : List Int) (result: Int) (h_precond : task_code_precond (sequence)) : Prop :=
     let subArrays :=
@@ -47,11 +43,7 @@ vc-condition: |-
   
   theorem task_code_spec_satisfied (sequence: List Int) (h_precond : task_code_precond (sequence)) :
       task_code_postcond (sequence) (task_code (sequence) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

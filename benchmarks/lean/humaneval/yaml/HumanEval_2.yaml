@@ -21,15 +21,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def implementation (number: Rat) : Rat :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   def problem_spec
   -- function signature
   (impl: Rat → Rat)
@@ -49,11 +45,7 @@ vc-condition: |-
   theorem correctness
   (number: Rat)
   : problem_spec implementation number :=
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation 3.5 = 0.5

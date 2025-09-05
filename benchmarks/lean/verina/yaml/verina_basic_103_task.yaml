@@ -26,15 +26,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def UpdateElements (a : Array Int) (h_precond : UpdateElements_precond (a)) : Array Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def UpdateElements_postcond (a : Array Int) (result: Array Int) (h_precond : UpdateElements_precond (a)) :=
     result[4]! = (a[4]!) + 3 ∧
@@ -43,11 +39,7 @@ vc-condition: |-
   
   theorem UpdateElements_spec_satisfied (a: Array Int) (h_precond : UpdateElements_precond (a)) :
       UpdateElements_postcond (a) (UpdateElements (a) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

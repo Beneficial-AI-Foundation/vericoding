@@ -1,21 +1,21 @@
 vc-description: |-
   /-  numpy.ndarray.flatten: Return a copy of the array collapsed into one dimension.
-      
+  
       Flattens a 2D matrix into a 1D vector using row-major (C-style) order.
       Each row is placed sequentially in the output vector.
-      
+  
       Parameters:
       - mat: 2D matrix represented as Vector of Vectors
-      
+  
       Returns:
       - 1D vector containing all elements in row-major order
-      
+  
       Example: [[1,2], [3,4]] becomes [1, 2, 3, 4]
   -/
   
   /-  Specification: flatten returns a 1D vector containing all elements of the 2D matrix
       in row-major order.
-      
+  
       Precondition: True (no special preconditions)
       Postcondition: 
       - The result has size rows * cols
@@ -32,15 +32,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def flatten {rows cols : Nat} (mat : Vector (Vector Float cols) rows) : Id (Vector Float (rows * cols)) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem flatten_spec {rows cols : Nat} (mat : Vector (Vector Float cols) rows) :
       ⦃⌜True⌝⦄
       flatten mat
@@ -48,11 +44,7 @@ vc-condition: |-
                    ∀ (r : Fin rows) (c : Fin cols), 
                    -- Elements are preserved in row-major order
                    True⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

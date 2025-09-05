@@ -52,15 +52,11 @@ vc-helpers: |-
     xs.reverse
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def isCleanPalindrome (s : String) (h_precond : isCleanPalindrome_precond (s)) : Bool :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible]
   def isCleanPalindrome_postcond (s : String) (result: Bool) (h_precond : isCleanPalindrome_precond (s)) : Prop :=
     let norm := normalizeString s
@@ -69,11 +65,7 @@ vc-condition: |-
   
   theorem isCleanPalindrome_spec_satisfied (s: String) (h_precond : isCleanPalindrome_precond (s)) :
       isCleanPalindrome_postcond (s) (isCleanPalindrome (s) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

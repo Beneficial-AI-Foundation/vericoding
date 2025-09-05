@@ -38,15 +38,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def ix_ {m n : Nat} (seq1 : Vector Int m) (seq2 : Vector Int n) : Id (Vector (Vector Int 1) m × Vector (Vector Int n) 1) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem ix_spec {m n : Nat} (seq1 : Vector Int m) (seq2 : Vector Int n) :
       ⦃⌜True⌝⦄
       ix_ seq1 seq2
@@ -60,11 +56,7 @@ vc-condition: |-
                      (∀ i : Fin m, ∀ j : Fin n, 
                        (result.1.get i).get ⟨0, Nat.zero_lt_one⟩ = seq1.get i ∧
                        (result.2.get ⟨0, Nat.zero_lt_one⟩).get j = seq2.get j)⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

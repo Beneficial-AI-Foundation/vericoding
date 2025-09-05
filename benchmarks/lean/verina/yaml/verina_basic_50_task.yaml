@@ -27,26 +27,18 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def Abs (x : Int) (h_precond : Abs_precond (x)) : Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def Abs_postcond (x : Int) (result: Int) (h_precond : Abs_precond (x)) :=
     (x ≥ 0 → x = result) ∧ (x < 0 → x + result = 0)
   
   theorem Abs_spec_satisfied (x: Int) (h_precond : Abs_precond (x)) :
       Abs_postcond (x) (Abs (x) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

@@ -27,15 +27,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def implementation (string: String) (n: Nat) : Nat :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   def problem_spec
   -- function signature
   (implementation: String → Nat → Nat)
@@ -54,11 +50,7 @@ vc-condition: |-
   (s: String) (n : Nat)
   : problem_spec implementation s n
   :=
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation "5 apples and 6 oranges" 19 = 8

@@ -21,15 +21,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def isItEight (n : Int) (h_precond : isItEight_precond (n)) : Bool :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible]
   def isItEight_postcond (n : Int) (result: Bool) (h_precond : isItEight_precond (n)) : Prop :=
     let absN := Int.natAbs n;
@@ -37,11 +33,7 @@ vc-condition: |-
   
   theorem isItEight_spec_satisfied (n: Int) (h_precond : isItEight_precond (n)) :
       isItEight_postcond (n) (isItEight (n) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

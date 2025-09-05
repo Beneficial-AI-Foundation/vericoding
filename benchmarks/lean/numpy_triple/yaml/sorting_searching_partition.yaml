@@ -23,15 +23,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def partition {n : Nat} (arr : Vector Float n) (kth : Fin n) : Id (Vector Float n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem partition_spec {n : Nat} (arr : Vector Float n) (kth : Fin n) :
       ⦃⌜True⌝⦄
       partition arr kth
@@ -49,11 +45,7 @@ vc-condition: |-
         -- The result contains the same elements as the original (multiset equality)
         (∀ x : Float, (List.ofFn (fun i => result.get i)).count x = (List.ofFn (fun i => arr.get i)).count x)
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

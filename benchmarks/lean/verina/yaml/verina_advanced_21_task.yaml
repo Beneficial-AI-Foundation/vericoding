@@ -22,15 +22,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def isPalindrome (s : String) (h_precond : isPalindrome_precond (s)) : Bool :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def isPalindrome_postcond (s : String) (result: Bool) (h_precond : isPalindrome_precond (s)) : Prop :=
     (result → (s.toList == s.toList.reverse)) ∧
@@ -38,11 +34,7 @@ vc-condition: |-
   
   theorem isPalindrome_spec_satisfied (s: String) (h_precond : isPalindrome_precond (s)) :
       isPalindrome_postcond (s) (isPalindrome (s) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

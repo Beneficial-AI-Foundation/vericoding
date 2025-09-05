@@ -24,15 +24,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def euler_gamma : Id Float :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem euler_gamma_spec :
       ⦃⌜True⌝⦄
       euler_gamma
@@ -52,11 +48,7 @@ vc-condition: |-
         -- Mathematical property: 1 - euler_gamma is positive (approximately 0.4228...)
         0 < 1 - result ∧ 1 - result < 0.5
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

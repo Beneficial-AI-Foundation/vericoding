@@ -29,26 +29,18 @@ vc-helpers: |-
       s
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def double_array_elements (s : Array Int) (h_precond : double_array_elements_precond (s)) : Array Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def double_array_elements_postcond (s : Array Int) (result: Array Int) (h_precond : double_array_elements_precond (s)) :=
     result.size = s.size ∧ ∀ i, i < s.size → result[i]! = 2 * s[i]!
   
   theorem double_array_elements_spec_satisfied (s: Array Int) (h_precond : double_array_elements_precond (s)) :
       double_array_elements_postcond (s) (double_array_elements (s) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

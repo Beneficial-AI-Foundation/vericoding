@@ -31,15 +31,11 @@ vc-helpers: |-
     s.data.map toLower
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def allVowels (s : String) (h_precond : allVowels_precond (s)) : Bool :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible]
   def allVowels_postcond (s : String) (result: Bool) (h_precond : allVowels_precond (s)) : Prop :=
     let chars := normalize_str s
@@ -47,11 +43,7 @@ vc-condition: |-
   
   theorem allVowels_spec_satisfied (s: String) (h_precond : allVowels_precond (s)) :
       allVowels_postcond (s) (allVowels (s) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

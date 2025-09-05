@@ -23,15 +23,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def arctan {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem arctan_spec {n : Nat} (x : Vector Float n) :
       ⦃⌜True⌝⦄
       arctan x
@@ -56,11 +52,7 @@ vc-condition: |-
                     (Float.abs (x.get i - 1.0) < 1e-10 → Float.abs (result.get i - 0.7854) < 1e-6) ∧
                     (Float.abs (x.get i - (-1.0)) < 1e-10 → Float.abs (result.get i - (-0.7854)) < 1e-6)
                     ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

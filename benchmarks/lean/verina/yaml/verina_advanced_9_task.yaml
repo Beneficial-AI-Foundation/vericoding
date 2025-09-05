@@ -30,15 +30,11 @@ vc-helpers: |-
     (sumOfDigits x) % d = 0
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def countSumDivisibleBy (n : Nat) (d : Nat) (h_precond : countSumDivisibleBy_precond (n) (d)) : Nat :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible]
   def countSumDivisibleBy_postcond (n : Nat) (d : Nat) (result: Nat) (h_precond : countSumDivisibleBy_precond (n) (d)) : Prop :=
     (List.length (List.filter (fun x => x < n ∧ (sumOfDigits x) % d = 0) (List.range n))) - result = 0 ∧
@@ -46,11 +42,7 @@ vc-condition: |-
   
   theorem countSumDivisibleBy_spec_satisfied (n: Nat) (d: Nat) (h_precond : countSumDivisibleBy_precond (n) (d)) :
       countSumDivisibleBy_postcond (n) (d) (countSumDivisibleBy (n) (d) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

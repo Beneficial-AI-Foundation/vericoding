@@ -26,15 +26,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def implementation (lst1: List Int) (lst2: List Int) : String :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   def problem_spec
   -- function signature
   (implementation: List Int → List Int → String)
@@ -70,11 +66,7 @@ vc-condition: |-
   (lst2: List Int)
   : problem_spec implementation lst1 lst2
   :=
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation ([1, 2, 3, 4], [1, 2, 3, 4]) = "YES"

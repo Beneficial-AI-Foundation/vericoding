@@ -22,15 +22,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def capitalize {n : Nat} (a : Vector String n) : Id (Vector String n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem capitalize_spec {n : Nat} (a : Vector String n) :
       ⦃⌜True⌝⦄
       capitalize a
@@ -49,11 +45,7 @@ vc-condition: |-
         (original = "" → result = "") ∧
         -- Mathematical property: the operation is deterministic
         (result = original.capitalize)⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

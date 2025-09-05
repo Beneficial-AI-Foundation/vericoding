@@ -28,15 +28,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def True_ : Id Bool :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem True__spec :
       ⦃⌜True⌝⦄
       True_
@@ -44,11 +40,7 @@ vc-condition: |-
                    (∀ b : Bool, result && b = b) ∧
                    (∀ b : Bool, result || b = true) ∧
                    (!result = false)⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

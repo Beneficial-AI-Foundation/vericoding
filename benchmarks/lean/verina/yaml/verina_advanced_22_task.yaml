@@ -31,15 +31,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def isPeakValley (lst : List Int) (h_precond : isPeakValley_precond (lst)) : Bool :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def isPeakValley_postcond (lst : List Int) (result: Bool) (h_precond : isPeakValley_precond (lst)) : Prop :=
     let len := lst.length
@@ -62,11 +58,7 @@ vc-condition: |-
   
   theorem isPeakValley_spec_satisfied (lst: List Int) (h_precond : isPeakValley_precond (lst)) :
       isPeakValley_postcond (lst) (isPeakValley (lst) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

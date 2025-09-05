@@ -35,15 +35,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def swapcase {n : Nat} (a : Vector String n) : Id (Vector String n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem swapcase_spec {n : Nat} (a : Vector String n) :
       ⦃⌜True⌝⦄
       swapcase a
@@ -79,11 +75,7 @@ vc-condition: |-
             (origChar.isLower → result.get? ⟨j⟩ = some origChar.toUpper) ∧
             (origChar.isUpper → result.get? ⟨j⟩ = some origChar.toLower) ∧
             (¬origChar.isAlpha → result.get? ⟨j⟩ = some origChar))⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

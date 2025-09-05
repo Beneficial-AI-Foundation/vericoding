@@ -76,16 +76,12 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def fromfile {n : Nat} (file : FileHandle) (dtype : DType) (count : Int) 
       (sep : String) (offset : Nat) : Id (Vector (dtype.to_type) n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem fromfile_spec {n : Nat} (file : FileHandle) (dtype : DType) (count : Int) 
       (sep : String) (offset : Nat) 
       (h_count_valid : count = -1 ∨ count > 0)
@@ -118,11 +114,7 @@ vc-condition: |-
                    (∀ i : Fin n, 
                      -- Each element has the correct type for the specified dtype
                      True)⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

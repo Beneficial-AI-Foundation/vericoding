@@ -54,15 +54,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def lower {n : Nat} (a : Vector String n) : Id (Vector String n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem lower_spec {n : Nat} (a : Vector String n) :
       ⦃⌜True⌝⦄
       lower a
@@ -92,11 +88,7 @@ vc-condition: |-
           ∃ origChar : Char, 
             original.get? ⟨j⟩ = some origChar ∧ 
             (origChar.isUpper → result.get? ⟨j⟩ = some origChar.toLower))⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

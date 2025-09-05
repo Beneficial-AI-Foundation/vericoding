@@ -32,15 +32,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def lag2poly {n : Nat} (c : Vector Float n) : Id (Vector Float n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem lag2poly_spec {n : Nat} (c : Vector Float n) :
       ⦃⌜True⌝⦄
       lag2poly c
@@ -57,11 +53,7 @@ vc-condition: |-
         -- Basic identity check at evaluation point x = 0
         (evaluatePolynomial result 0 = evaluateLaguerrePolynomial c 0)
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

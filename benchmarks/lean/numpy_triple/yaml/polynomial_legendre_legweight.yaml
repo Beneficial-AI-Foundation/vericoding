@@ -24,24 +24,16 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def legweight {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem legweight_spec {n : Nat} (x : Vector Float n) :
       ⦃⌜True⌝⦄
       legweight x
       ⦃⇓result => ⌜∀ i : Fin n, result.get i = 1.0⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

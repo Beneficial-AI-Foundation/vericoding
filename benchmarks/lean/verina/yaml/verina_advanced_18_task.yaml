@@ -34,15 +34,11 @@ vc-helpers: |-
     go n 0
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def isArmstrong (n : Nat) (h_precond : isArmstrong_precond (n)) : Bool :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible]
   def isArmstrong_postcond (n : Nat) (result: Bool) (h_precond : isArmstrong_precond (n)) : Prop :=
     let n' := List.foldl (fun acc d => acc + d ^ countDigits n) 0 (List.map (fun c => c.toNat - '0'.toNat) (toString n).toList)
@@ -51,11 +47,7 @@ vc-condition: |-
   
   theorem isArmstrong_spec_satisfied (n: Nat) (h_precond : isArmstrong_precond (n)) :
       isArmstrong_postcond (n) (isArmstrong (n) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

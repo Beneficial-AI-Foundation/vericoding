@@ -26,15 +26,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def tile {α : Type} {n : Nat} (A : Vector α n) (reps : Nat) : Id (Vector α (n * reps)) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem tile_spec {α : Type} {n : Nat} (A : Vector α n) (reps : Nat) (h_reps : reps > 0) :
       ⦃⌜reps > 0⌝⦄
       tile A reps
@@ -49,11 +45,7 @@ vc-condition: |-
           -- If n = succ n', then n > 0
           exact Nat.mod_lt i.val (Nat.zero_lt_succ n')
       ⟩⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

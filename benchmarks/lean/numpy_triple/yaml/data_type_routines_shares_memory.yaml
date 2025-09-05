@@ -13,10 +13,10 @@ vc-description: |-
   
       This function determines if two arrays share memory by checking
       if they reference the same underlying memory locations.
-      
+  
       Unlike may_share_memory, this function provides a definitive answer
       about memory sharing rather than a conservative estimate.
-      
+  
       The function can be exponentially slow for some inputs due to the
       complexity of the overlap detection algorithm.
   -/
@@ -39,15 +39,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def shares_memory {n m : Nat} (a : Vector Float n) (b : Vector Float m) : Id Bool :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem shares_memory_spec {n m : Nat} (a : Vector Float n) (b : Vector Float m) :
       ⦃⌜True⌝⦄
       shares_memory a b
@@ -64,11 +60,7 @@ vc-condition: |-
         -- (in contrast to may_share_memory which is conservative)
         (result = true → True) ∧ (result = false → True)
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

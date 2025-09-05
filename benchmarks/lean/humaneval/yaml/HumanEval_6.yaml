@@ -14,7 +14,7 @@ vc-preamble: |-
   import Mathlib
   import Mathlib.Algebra.Polynomial.Basic
   import Std.Data.HashMap
-
+  
   /--
   name: string_eq_iff_data_eq
   use: |
@@ -35,7 +35,7 @@ vc-preamble: |-
     intro h
     apply String.data_eq_of_eq
     exact h
-
+  
   /--
   name: balanced_paren_non_computable
   use: |
@@ -53,7 +53,7 @@ vc-preamble: |-
   let chars := paren_string.toList;
   (∀ (i : ℕ), i ≤ chars.length → ((chars.take i).count bracket_type_right) ≤ ((chars.take i).count bracket_type_left)) ∧
   (chars.count bracket_type_left = chars.count bracket_type_right)
-
+  
   /--
   name: count_max_paren_depth_helper
   use: |
@@ -95,7 +95,7 @@ vc-preamble: |-
       have h_temp : paren_string.length > 0 := by linarith
       assumption
     }
-
+  
   /--
   name: count_max_paren_depth
   use: |
@@ -112,15 +112,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def implementation (paren_string: String) : List Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   def problem_spec
   -- function signature
   (implementation: String → List Int)
@@ -143,11 +139,7 @@ vc-condition: |-
   (paren_string: String)
   : problem_spec implementation paren_string
   :=
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation "(()()) ((())) () ((())()())" = [2, 3, 1, 3]

@@ -14,7 +14,7 @@ vc-description: |-
       For a 1D vector, returns a list of indices where elements are non-zero.
       Each index corresponds to a position in the original vector where the element is non-zero.
       The returned indices are in the same order as they appear in the original vector.
-      
+  
       This function is equivalent to finding all positions i such that a[i] ≠ 0.
       The result is a list of indices, not suitable for direct array indexing but useful
       for analysis and conditional processing.
@@ -40,15 +40,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def argwhere {n : Nat} (a : Vector Float n) : Id (List (Fin n)) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem argwhere_spec {n : Nat} (a : Vector Float n) :
       ⦃⌜True⌝⦄
       argwhere a
@@ -60,11 +56,7 @@ vc-condition: |-
           indices.idxOf i < indices.idxOf j) ∧
         (indices = [] ↔ ∀ i : Fin n, a.get i = 0)
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

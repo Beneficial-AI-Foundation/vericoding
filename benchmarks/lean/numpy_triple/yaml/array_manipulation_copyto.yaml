@@ -25,24 +25,16 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def copyto {n : Nat} {T : Type} (dst : Vector T n) (src : Vector T n) (mask : Vector Bool n) : Id (Vector T n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem copyto_spec {n : Nat} {T : Type} (dst : Vector T n) (src : Vector T n) (mask : Vector Bool n) :
       ⦃⌜True⌝⦄
       copyto dst src mask
       ⦃⇓result => ⌜∀ i : Fin n, result.get i = if mask.get i then src.get i else dst.get i⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

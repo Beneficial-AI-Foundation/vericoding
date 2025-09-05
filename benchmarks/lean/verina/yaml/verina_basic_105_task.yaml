@@ -35,26 +35,18 @@ vc-helpers: |-
       else c
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def arrayProduct (a : Array Int) (b : Array Int) (h_precond : arrayProduct_precond (a) (b)) : Array Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def arrayProduct_postcond (a : Array Int) (b : Array Int) (result: Array Int) (h_precond : arrayProduct_precond (a) (b)) :=
     (result.size = a.size) ∧ (∀ i, i < a.size → a[i]! * b[i]! = result[i]!)
   
   theorem arrayProduct_spec_satisfied (a: Array Int) (b: Array Int) (h_precond : arrayProduct_precond (a) (b)) :
       arrayProduct_postcond (a) (b) (arrayProduct (a) (b) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

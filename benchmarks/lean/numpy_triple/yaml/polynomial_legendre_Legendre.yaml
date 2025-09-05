@@ -34,18 +34,14 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def mkLegendre {n : Nat} (coef : Vector Float n) 
       (domain : Vector Float 2 := ⟨#[-1.0, 1.0], rfl⟩)
       (window : Vector Float 2 := ⟨#[-1.0, 1.0], rfl⟩)
       (symbol : String := "x") : Id (Legendre (n := n)) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem mkLegendre_spec {n : Nat} (coef : Vector Float n) 
       (domain : Vector Float 2 := ⟨#[-1.0, 1.0], rfl⟩)
       (window : Vector Float 2 := ⟨#[-1.0, 1.0], rfl⟩)
@@ -71,11 +67,7 @@ vc-condition: |-
         -- where Pᵢ are the Legendre polynomials  
         (∀ x : Float, ∃ polyval : Float, True)
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

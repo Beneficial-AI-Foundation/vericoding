@@ -15,7 +15,7 @@ vc-description: |-
   
       For 1D arrays, concatenates two vectors end-to-end to produce a single 
       vector containing all elements from both input vectors in order.
-      
+  
       The result vector has size n + m where n and m are the sizes of the 
       input vectors.
   -/
@@ -38,25 +38,17 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def concatenate {n m : Nat} (a : Vector Float n) (b : Vector Float m) : Id (Vector Float (n + m)) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem concatenate_spec {n m : Nat} (a : Vector Float n) (b : Vector Float m) :
       ⦃⌜True⌝⦄
       concatenate a b
       ⦃⇓result => ⌜(∀ i : Fin n, result.get ⟨i.val, by omega⟩ = a.get i) ∧
                    (∀ j : Fin m, result.get ⟨n + j.val, by omega⟩ = b.get j)⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

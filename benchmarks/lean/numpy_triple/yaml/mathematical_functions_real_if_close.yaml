@@ -44,15 +44,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def real_if_close {n : Nat} (arr : Vector Complex n) (tol : Float := 100.0) : Id (Vector Complex n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem real_if_close_spec {n : Nat} (arr : Vector Complex n) (tol : Float := 100.0) 
       (h_tol_pos : tol > 0) :
       ⦃⌜tol > 0⌝⦄
@@ -72,11 +68,7 @@ vc-condition: |-
         ((∀ i : Fin n, (arr.get i).im = 0) → 
           ∀ i : Fin n, result.get i = arr.get i)
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

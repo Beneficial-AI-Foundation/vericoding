@@ -26,15 +26,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def fromstring {n : Nat} (input : String) (sep : String) : Id (Vector Float n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem fromstring_spec {n : Nat} (input : String) (sep : String) 
       (h_valid : (input.splitOn sep).length = n) 
       (h_nonempty : sep ≠ "") :
@@ -42,11 +38,7 @@ vc-condition: |-
       fromstring (n := n) input sep
       ⦃⇓result => ⌜∀ i : Fin n, 
          (input.splitOn sep)[i.val]!.trim ≠ ""⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

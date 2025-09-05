@@ -64,15 +64,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def bitwise_or {n : Nat} (x1 x2 : Vector Int n) : Id (Vector Int n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem bitwise_or_spec {n : Nat} (x1 x2 : Vector Int n) :
       ⦃⌜True⌝⦄
       bitwise_or x1 x2
@@ -95,11 +91,7 @@ vc-condition: |-
         -- Idempotency verification
         (x1 = x2 → result = x1)
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

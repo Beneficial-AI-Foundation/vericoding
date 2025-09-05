@@ -18,15 +18,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def implementation (s0 s1: String) : Bool :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   def problem_spec
   -- function signature
   (impl: String → String → Bool)
@@ -44,11 +40,7 @@ vc-condition: |-
   theorem correctness
   (s0 s1: String)
   : problem_spec implementation s0 s1  :=
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation 'eabcdzzzz' 'dddzzzzzzzddeddabc' = true

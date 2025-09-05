@@ -23,15 +23,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def SetToSeq (s : List Int) (h_precond : SetToSeq_precond (s)) : List Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def SetToSeq_postcond (s : List Int) (result: List Int) (h_precond : SetToSeq_precond (s)) :=
     -- Contains exactly the elements of the set
@@ -43,11 +39,7 @@ vc-condition: |-
   
   theorem SetToSeq_spec_satisfied (s: List Int) (h_precond : SetToSeq_precond (s)) :
       SetToSeq_postcond (s) (SetToSeq (s) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

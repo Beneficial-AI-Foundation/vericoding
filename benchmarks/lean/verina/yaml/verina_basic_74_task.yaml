@@ -31,26 +31,18 @@ vc-helpers: |-
       current
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def maxArray (a : Array Int) (h_precond : maxArray_precond (a)) : Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def maxArray_postcond (a : Array Int) (result: Int) (h_precond : maxArray_precond (a)) :=
     (∀ (k : Nat), k < a.size → result >= a[k]!) ∧ (∃ (k : Nat), k < a.size ∧ result = a[k]!)
   
   theorem maxArray_spec_satisfied (a: Array Int) (h_precond : maxArray_precond (a)) :
       maxArray_postcond (a) (maxArray (a) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

@@ -28,15 +28,11 @@ vc-helpers: |-
     x % 2 ≠ 0
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def findFirstOdd (a : Array Int) (h_precond : findFirstOdd_precond (a)) : Option Nat :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def findFirstOdd_postcond (a : Array Int) (result: Option Nat) (h_precond : findFirstOdd_precond (a)) :=
     match result with
@@ -46,11 +42,7 @@ vc-condition: |-
   
   theorem findFirstOdd_spec_satisfied (a: Array Int) (h_precond : findFirstOdd_precond (a)) :
       findFirstOdd_postcond (a) (findFirstOdd (a) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

@@ -42,15 +42,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def makeLaguerre {n : Nat} (coefficients : Vector Float n) : Id (Laguerre n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem makeLaguerre_spec {n : Nat} (coefficients : Vector Float n) :
       ⦃⌜True⌝⦄
       makeLaguerre coefficients
@@ -74,11 +70,7 @@ vc-condition: |-
         -- Basic sanity check for coefficient preservation
         (∀ i : Fin n, result.coef.get i = coefficients.get i)
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

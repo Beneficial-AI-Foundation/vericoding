@@ -37,15 +37,11 @@ vc-helpers: |-
     (a[Int.toNat i]!)[Int.toNat j]!
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def SlopeSearch (a : Array (Array Int)) (key : Int) (h_precond : SlopeSearch_precond (a) (key)) : (Int × Int) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def SlopeSearch_postcond (a : Array (Array Int)) (key : Int) (result: (Int × Int)) (h_precond : SlopeSearch_precond (a) (key)) :=
     let (m, n) := result;
@@ -54,11 +50,7 @@ vc-condition: |-
   
   theorem SlopeSearch_spec_satisfied (a: Array (Array Int)) (key: Int) (h_precond : SlopeSearch_precond (a) (key)) :
       SlopeSearch_postcond (a) (key) (SlopeSearch (a) (key) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

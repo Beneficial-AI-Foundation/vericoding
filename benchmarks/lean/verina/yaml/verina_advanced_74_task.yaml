@@ -27,15 +27,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def solution (nums : List Nat) : Nat :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible]
   def solution_postcond (nums : List Nat) (result: Nat) : Prop :=
     let n := nums.length;
@@ -72,11 +68,7 @@ vc-condition: |-
   
   theorem solution_spec_satisfied (nums: List Nat) :
       solution_postcond (nums) (solution (nums)) := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

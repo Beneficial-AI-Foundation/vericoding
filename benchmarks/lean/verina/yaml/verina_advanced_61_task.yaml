@@ -30,15 +30,11 @@ vc-helpers: |-
     revSuffix.reverse
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def productExceptSelf (nums : List Int) (h_precond : productExceptSelf_precond (nums)) : List Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   -- Specification Helper: Product of a list of Ints
   -- Defined locally if not available/imported
   def List.myprod : List Int → Int
@@ -52,11 +48,7 @@ vc-condition: |-
   
   theorem productExceptSelf_spec_satisfied (nums: List Int) (h_precond : productExceptSelf_precond (nums)) :
       productExceptSelf_postcond (nums) (productExceptSelf (nums) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

@@ -39,27 +39,19 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def lstsq {M N : Nat} (a : Vector (Vector Float N) M) (b : Vector Float M) : 
       Id (Vector Float N) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem lstsq_spec {M N : Nat} (a : Vector (Vector Float N) M) (b : Vector Float M) 
       (h_dims : M > 0 ∧ N > 0) :
       ⦃⌜M > 0 ∧ N > 0⌝⦄
       lstsq a b
       ⦃⇓x => ⌜∀ y : Vector Float N, 
              normSq (vecSub b (matVecMul a x)) ≤ normSq (vecSub b (matVecMul a y))⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

@@ -26,15 +26,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def index {n : Nat} (a : Vector String n) (sub : Vector String n) (start : Vector Int n) (endPos : Vector Int n) : Id (Vector Int n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem index_spec {n : Nat} (a : Vector String n) (sub : Vector String n) (start : Vector Int n) (endPos : Vector Int n) :
       ⦃⌜∀ i : Fin n, 
         -- Valid range bounds
@@ -57,11 +53,7 @@ vc-condition: |-
         -- This is the lowest (leftmost) index where substring is found in the range
         (∀ j : Nat, (start.get i).toNat ≤ j ∧ j < Int.natAbs (result.get i) → 
           ¬(((a.get i).drop j).take (sub.get i).length = sub.get i))⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

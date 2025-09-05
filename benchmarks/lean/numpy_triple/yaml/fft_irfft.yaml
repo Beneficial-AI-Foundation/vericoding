@@ -33,15 +33,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def irfft {k : Nat} (a : Vector Complex k) (n : Nat) : Id (Vector Float n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem irfft_spec {k : Nat} (a : Vector Complex k) (n : Nat) 
       (h_length : n = 2 * (k - 1)) 
       (h_hermitian : isHermitianSymmetric a) 
@@ -62,11 +58,7 @@ vc-condition: |-
         -- Length relationship: output length is twice the input length minus 2
         (n = 2 * (k - 1))
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

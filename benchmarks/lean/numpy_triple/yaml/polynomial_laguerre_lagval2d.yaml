@@ -27,16 +27,12 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def lagval2d {nx ny m : Nat} (x : Vector Float m) (y : Vector Float m) 
       (c : Vector (Vector Float (ny + 1)) (nx + 1)) : Id (Vector Float m) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem lagval2d_spec {nx ny m : Nat} (x : Vector Float m) (y : Vector Float m) 
       (c : Vector (Vector Float (ny + 1)) (nx + 1)) :
       ⦃⌜True⌝⦄
@@ -52,11 +48,7 @@ vc-condition: |-
         -- Sanity check: result preserves input shape
         result.size = x.size ∧ result.size = y.size
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

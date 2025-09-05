@@ -26,24 +26,16 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def poly2leg {n : Nat} (pol : Vector Float n) : Id (Vector Float n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem poly2leg_spec {n : Nat} (pol : Vector Float n) :
       ⦃⌜True⌝⦄
       poly2leg pol
       ⦃⇓result => ⌜∀ i : Fin n, ∃ c : Float, result.get i = c⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

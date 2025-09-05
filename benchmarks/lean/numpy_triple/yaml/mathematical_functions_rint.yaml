@@ -32,15 +32,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def numpy_rint {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem numpy_rint_spec {n : Nat} (x : Vector Float n) :
       ⦃⌜True⌝⦄
       numpy_rint x
@@ -55,11 +51,7 @@ vc-condition: |-
         (∀ k : Int, x.get i = Float.ofInt k + 0.5 → 
           (k % 2 = 0 → result.get i = Float.ofInt k) ∧
           (k % 2 = 1 → result.get i = Float.ofInt (k + 1)))⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

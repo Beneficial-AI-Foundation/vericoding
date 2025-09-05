@@ -106,26 +106,18 @@ vc-helpers: |-
           exact ih (x + 1) x_succ_le_i i_lt_next_fuel
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def isPerfectSquare (n : Nat) : Bool :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def isPerfectSquare_postcond (n : Nat) (result : Bool) : Prop :=
     result ↔ ∃ i : Nat, i * i = n
   
   theorem isPerfectSquare_spec_satisfied (n : Nat) :
       isPerfectSquare_postcond n (isPerfectSquare n) := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

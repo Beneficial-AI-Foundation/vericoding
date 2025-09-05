@@ -27,15 +27,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def e : Id Float :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem e_spec :
       ⦃⌜True⌝⦄
       e
@@ -61,11 +57,7 @@ vc-condition: |-
         -- NumPy's value should satisfy this within floating-point precision
         Float.abs (Float.log result - 1.0) < 1e-15
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

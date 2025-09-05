@@ -18,7 +18,7 @@ vc-preamble: |-
   import Mathlib
   import Mathlib.Algebra.Polynomial.Basic
   import Std.Data.HashMap
-
+  
   /--
   name: romanCharToValue
   use: |
@@ -36,7 +36,7 @@ vc-preamble: |-
   | 'd' => 500
   | 'm' => 1000
   | _   => 0
-
+  
   /--
   name: validSubtractivePairs
   use: |
@@ -47,7 +47,7 @@ vc-preamble: |-
   -/
   def validSubtractivePairs : List (Char × Char) :=
     [('i', 'v'), ('i', 'x'), ('x', 'l'), ('x', 'c'), ('c', 'd'), ('c', 'm')]
-
+  
   /--
   name: maxRepetitions
   use: |
@@ -60,7 +60,7 @@ vc-preamble: |-
   | 'i' | 'x' | 'c' | 'm' => 3
   | 'v' | 'l' | 'd'       => 1
   | _                    => 0
-
+  
   /--
   name: countRepetitions
   use: |
@@ -72,7 +72,7 @@ vc-preamble: |-
   def countRepetitions : List Char → Char → Nat → Nat
   | [], _, n => n
   | (h :: t), c, n => if h = c then countRepetitions t c (n + 1) else n
-
+  
   /--
   name: validRepetition
   use: |
@@ -87,7 +87,7 @@ vc-preamble: |-
     let max := maxRepetitions c
     let count := countRepetitions rest c 1
     count ≤ max ∧ validRepetition (rest.drop (count - 1))
-
+  
   /--
   name: validSubtractiveOrder
   use: |
@@ -108,7 +108,7 @@ vc-preamble: |-
         false
       else
         validSubtractiveOrder (c2 :: rest)
-
+  
   /--
   name: isValidRoman
   use: |
@@ -121,7 +121,7 @@ vc-preamble: |-
     s.data.all (λ c => romanCharToValue c ≠ 0) ∧
     validRepetition s.data ∧
     validSubtractiveOrder s.data
-
+  
   /--
   name: romanToDecimalAux
   use: |
@@ -141,7 +141,7 @@ vc-preamble: |-
       else
         val1 + romanToDecimalAux (c2 :: rest)
   | [c] => romanCharToValue c
-
+  
   /--
   name: romanToDecimal
   use: |
@@ -157,15 +157,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def implementation (num: Nat) : String :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   def problem_spec
   -- function signature
   (impl: Nat → String)
@@ -183,11 +179,7 @@ vc-condition: |-
   theorem correctness
   (num: Nat)
   : problem_spec implementation num :=
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation 19 = "xix"

@@ -25,24 +25,16 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def fromfunction {n : Nat} (f : Fin n → Float) : Id (Vector Float n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem fromfunction_spec {n : Nat} (f : Fin n → Float) :
       ⦃⌜True⌝⦄
       fromfunction f
       ⦃⇓result => ⌜∀ i : Fin n, result.get i = f i⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

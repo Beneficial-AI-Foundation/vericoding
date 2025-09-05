@@ -22,15 +22,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def runLengthEncoder (input : String) (h_precond : runLengthEncoder_precond (input)) : String :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible]
   def runLengthEncoder_postcond (input : String) (result: String) (h_precond : runLengthEncoder_precond (input)) : Prop :=
     -- Helper functions
@@ -104,11 +100,7 @@ vc-condition: |-
   
   theorem runLengthEncoder_spec_satisfied (input: String) (h_precond : runLengthEncoder_precond (input)) :
       runLengthEncoder_postcond (input) (runLengthEncoder (input) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

@@ -23,15 +23,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def implementation (arr: List Int) : List String :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   def problem_spec
   -- function signature
   (implementation: List Int → List String)
@@ -52,11 +48,7 @@ vc-condition: |-
   (arr: List Int)
   : problem_spec implementation arr
   :=
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation [2, 1, 1, 4, 5, 8, 2, 3] = ["Eight", "Five", "Four", "Three", "Two", "Two", "One", "One"]

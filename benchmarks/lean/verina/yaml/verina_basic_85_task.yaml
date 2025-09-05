@@ -35,26 +35,18 @@ vc-helpers: |-
       arr
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def reverse (a : Array Int) (h_precond : reverse_precond (a)) : Array Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def reverse_postcond (a : Array Int) (result: Array Int) (h_precond : reverse_precond (a)) :=
     (result.size = a.size) ∧ (∀ i : Nat, i < a.size → result[i]! = a[a.size - 1 - i]!)
   
   theorem reverse_spec_satisfied (a: Array Int) (h_precond : reverse_precond (a)) :
       reverse_postcond (a) (reverse (a) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

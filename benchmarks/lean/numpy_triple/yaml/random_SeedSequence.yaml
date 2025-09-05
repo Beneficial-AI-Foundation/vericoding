@@ -35,16 +35,12 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def seedSequence {n : Nat} (entropy : Vector UInt32 n) (spawn_key : Vector UInt32 0) 
       (pool_size : Nat := 4) : Id (Vector UInt32 pool_size) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem seedSequence_spec {n : Nat} (entropy : Vector UInt32 n) (spawn_key : Vector UInt32 0)
       (pool_size : Nat := 4) :
       ⦃⌜True⌝⦄
@@ -64,11 +60,7 @@ vc-condition: |-
         -- Well-defined output: result has the correct size
         (result.size = pool_size)
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

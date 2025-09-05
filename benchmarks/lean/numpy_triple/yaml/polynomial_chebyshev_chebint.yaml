@@ -4,12 +4,12 @@ vc-description: |-
       Returns the Chebyshev series coefficients integrated m times from
       lbnd along axis. At each iteration the resulting series is
       multiplied by scl and an integration constant k is added.
-      
+  
       The integration transforms Chebyshev polynomials according to the
       recurrence relations for Chebyshev polynomial integrals. For a 
       single integration (m=1) of coefficients [c₀, c₁, ..., cₙ], the 
       result follows the Chebyshev integration formula.
-      
+  
       Parameters:
       - c: Vector of Chebyshev series coefficients (low to high degree)
       - m: Order of integration (must be positive)
@@ -26,7 +26,7 @@ vc-description: |-
       2. Applies the Chebyshev integration recurrence relations
       3. Adjusts the constant term to satisfy the boundary condition at lbnd
       4. Adds the corresponding integration constant from k
-      
+  
       Mathematical properties:
       - The result has m more coefficients than the input (integration increases degree)
       - For m=0, returns the original coefficients unchanged
@@ -35,7 +35,7 @@ vc-description: |-
         ∫ T₁(x) dx = T₂(x)/4
         ∫ T₀(x) dx = T₁(x)
       - The constant term is adjusted so the integral equals k[i] at x=lbnd
-      
+  
       Sanity checks:
       - The output vector has exactly n + m coefficients
       - When m = 0, the function should return the input unchanged
@@ -52,16 +52,12 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def chebint {n : Nat} (c : Vector Float n) (m : Nat) (k : Vector Float m) 
       (lbnd : Float) (scl : Float) : Id (Vector Float (n + m)) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem chebint_spec {n : Nat} (c : Vector Float n) (m : Nat) (k : Vector Float m) 
       (lbnd : Float) (scl : Float) (h_m_pos : m > 0) :
       ⦃⌜m > 0 ∧ scl ≠ 0⌝⦄
@@ -93,11 +89,7 @@ vc-condition: |-
         -- Scaling by zero should produce zero coefficients (except possibly constant terms)
         (scl = 0 → ∀ i : Fin (n + m), i.val > 0 → result.get i = 0)
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

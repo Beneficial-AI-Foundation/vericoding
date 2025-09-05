@@ -31,15 +31,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def imag {n : Nat} (val : Vector (Float × Float) n) : Id (Vector Float n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem imag_spec {n : Nat} (val : Vector (Float × Float) n) :
       ⦃⌜True⌝⦄
       imag val
@@ -51,11 +47,7 @@ vc-condition: |-
                      let scaled_complex := (α * (val.get i).1, α * (val.get i).2)
                      result.get i = (val.get i).2 → 
                      α * result.get i = α * (val.get i).2)⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

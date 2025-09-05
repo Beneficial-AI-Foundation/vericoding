@@ -39,15 +39,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def implementation (nums: List Int) : List Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   def problem_spec
   -- function signature
   (impl: List Int → List Int)
@@ -73,11 +69,7 @@ vc-condition: |-
   theorem correctness
   (nums: List Int)
   : problem_spec implementation nums :=
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation [1, 11, -1, -11, -12] = [-1, -11, 1, -12, 11]

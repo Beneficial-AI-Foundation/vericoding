@@ -22,15 +22,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def isfinite {n : Nat} (x : Vector Float n) : Id (Vector Bool n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem isfinite_spec {n : Nat} (x : Vector Float n) :
       ⦃⌜True⌝⦄
       isfinite x
@@ -51,11 +47,7 @@ vc-condition: |-
           ((x.get i + y).isFinite ∨ (x.get i + y).isInf)) ∧
         -- IEEE 754 compliance: finite values exclude special values
         (result.get i = true → ¬(x.get i).isNaN ∧ ¬(x.get i).isInf)⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

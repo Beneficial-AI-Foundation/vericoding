@@ -35,15 +35,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def hermmulx {n : Nat} (c : Vector Float n) : Id (Vector Float (n + 1)) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem hermmulx_spec {n : Nat} (c : Vector Float n) :
       ⦃⌜True⌝⦄
       hermmulx c
@@ -61,11 +57,7 @@ vc-condition: |-
             -- Contribution from c[k+1]*(k+1) when k+1 < n
             (if h2 : k.val + 1 < n then c.get ⟨k.val + 1, sorry⟩ * Float.ofNat (k.val + 1) else 0)⌝
       ⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

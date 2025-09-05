@@ -7,7 +7,6 @@ vc-description: |-
   
   You can choose any non-empty subset of students. The goal is to compute the maximum product of any such subset.
   
-  
   ----Input---
   nums: An non-empty list of integers.
   
@@ -27,15 +26,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def maxStrength (nums : List Int) (h_precond : maxStrength_precond (nums)) : Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible]
   def maxStrength_postcond (nums : List Int) (result: Int) (h_precond : maxStrength_precond (nums)) : Prop :=
     let sublists := nums.sublists.filter (· ≠ [])
@@ -44,11 +39,7 @@ vc-condition: |-
   
   theorem maxStrength_spec_satisfied (nums: List Int) (h_precond : maxStrength_precond (nums)) :
       maxStrength_postcond (nums) (maxStrength (nums) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

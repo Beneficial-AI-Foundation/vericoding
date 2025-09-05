@@ -26,15 +26,11 @@ vc-helpers: |-
     omega
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def arraySum (a : Array Int) (h_precond : arraySum_precond (a)) : Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   def sumTo (a : Array Int) (n : Nat) : Int :=
     if n = 0 then 0
     else sumTo a (n - 1) + a[n - 1]!
@@ -45,11 +41,7 @@ vc-condition: |-
   
   theorem arraySum_spec_satisfied (a: Array Int) (h_precond : arraySum_precond (a)) :
       arraySum_postcond (a) (arraySum (a) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

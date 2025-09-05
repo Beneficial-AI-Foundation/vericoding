@@ -22,25 +22,17 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def lagline (off scl : Float) : Id (Vector Float 2) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem lagline_spec (off scl : Float) :
       ⦃⌜True⌝⦄
       lagline off scl
       ⦃⇓result => ⌜(scl = 0 → result.get 0 = off ∧ result.get 1 = 0) ∧
                    (scl ≠ 0 → result.get 0 = off + scl ∧ result.get 1 = -scl)⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

@@ -21,15 +21,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def nPY_LOGE2 : Id Float :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem nPY_LOGE2_spec :
       ⦃⌜True⌝⦄
       nPY_LOGE2
@@ -49,11 +45,7 @@ vc-condition: |-
         -- More precise bounds check
         0.693147 < result ∧ result < 0.693148
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

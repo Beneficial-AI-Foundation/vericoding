@@ -29,15 +29,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def fmin {n : Nat} (x y : Vector Float n) : Id (Vector Float n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem fmin_spec {n : Nat} (x y : Vector Float n) :
       ⦃⌜True⌝⦄
       fmin x y
@@ -56,11 +52,7 @@ vc-condition: |-
           result.get i ≤ x.get i ∧ result.get i ≤ y.get i) ∧
         (¬(result.get i).isNaN → 
           (result.get i = x.get i ∨ result.get i = y.get i))⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

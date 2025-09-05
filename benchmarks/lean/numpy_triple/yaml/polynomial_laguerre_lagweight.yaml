@@ -31,24 +31,16 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def lagweight {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem lagweight_spec {n : Nat} (x : Vector Float n) :
       ⦃⌜True⌝⦄
       lagweight x
       ⦃⇓result => ⌜∀ i : Fin n, result.get i = Float.exp (-x.get i)⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

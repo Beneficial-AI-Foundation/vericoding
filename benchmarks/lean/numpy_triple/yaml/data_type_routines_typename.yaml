@@ -22,15 +22,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def typename (char : String) : Id String :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem typename_spec (char : String) :
       ⦃⌜True⌝⦄
       typename char
@@ -63,11 +59,7 @@ vc-condition: |-
                  "S", "U", "V", "b", "d", "g", "f", "i", "h", "l", "q"] → 
          result = "unknown type" ∨ result = char)
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

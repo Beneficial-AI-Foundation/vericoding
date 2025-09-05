@@ -27,26 +27,18 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def containsConsecutiveNumbers (a : Array Int) (h_precond : containsConsecutiveNumbers_precond (a)) : Bool :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def containsConsecutiveNumbers_postcond (a : Array Int) (result: Bool) (h_precond : containsConsecutiveNumbers_precond (a)) :=
     (∃ i, i < a.size - 1 ∧ a[i]! + 1 = a[i + 1]!) ↔ result
   
   theorem containsConsecutiveNumbers_spec_satisfied (a: Array Int) (h_precond : containsConsecutiveNumbers_precond (a)) :
       containsConsecutiveNumbers_postcond (a) (containsConsecutiveNumbers (a) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

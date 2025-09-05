@@ -26,15 +26,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def trimcoef {n : Nat} (c : Vector Float n) (tol : Float) : Id (Vector Float (n + 1)) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem trimcoef_spec {n : Nat} (c : Vector Float n) (tol : Float) 
       (h_tol_nonneg : tol ≥ 0) :
       ⦃⌜tol ≥ 0⌝⦄
@@ -61,11 +57,7 @@ vc-condition: |-
         (∀ i : Fin (n + 1), (∀ j : Fin (n + 1), j > i → Float.abs (result.get j) ≤ tol) →
           (∀ k : Fin (n + 1), k ≥ i → Float.abs (result.get k) ≤ tol))
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

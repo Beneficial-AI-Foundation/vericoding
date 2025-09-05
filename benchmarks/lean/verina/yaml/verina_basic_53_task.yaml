@@ -23,26 +23,18 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def CalSum (N : Nat) (h_precond : CalSum_precond (N)) : Nat :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def CalSum_postcond (N : Nat) (result: Nat) (h_precond : CalSum_precond (N)) :=
     2 * result = N * (N + 1)
   
   theorem CalSum_spec_satisfied (N: Nat) (h_precond : CalSum_precond (N)) :
       CalSum_postcond (N) (CalSum (N) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

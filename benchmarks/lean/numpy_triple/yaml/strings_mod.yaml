@@ -66,15 +66,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def mod {n : Nat} (a values : Vector String n) : Id (Vector String n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem mod_spec {n : Nat} (a values : Vector String n) :
       ⦃⌜True⌝⦄
       mod a values
@@ -97,11 +93,7 @@ vc-condition: |-
         -- Preservation: the result contains the original format structure with substitutions
         (format_str.contains '%' → 
           (formatted.length ≥ format_str.length - 2 ∨ formatted.length = 0))⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

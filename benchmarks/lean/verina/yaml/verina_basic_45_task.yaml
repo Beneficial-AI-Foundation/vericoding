@@ -38,15 +38,11 @@ vc-helpers: |-
     | _, _ => none
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def findProduct (lst : List Int) (h_precond : findProduct_precond (lst)) : Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def findProduct_postcond (lst : List Int) (result: Int) (h_precond : findProduct_precond (lst)) :=
     match firstEvenOddIndices lst with
@@ -55,11 +51,7 @@ vc-condition: |-
   
   theorem findProduct_spec_satisfied (lst: List Int) (h_precond : findProduct_precond (lst)) :
       findProduct_postcond (lst) (findProduct (lst) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

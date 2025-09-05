@@ -24,15 +24,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def intersect1d {n m k : Nat} (ar1 : Vector Int n) (ar2 : Vector Int m) : Id (Vector Int k) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem intersect1d_spec {n m k : Nat} (ar1 : Vector Int n) (ar2 : Vector Int m) :
       ⦃⌜True⌝⦄
       intersect1d ar1 ar2
@@ -48,11 +44,7 @@ vc-condition: |-
         (∀ val : Int, (∃ i : Fin n, ar1.get i = val) ∧ (∃ j : Fin m, ar2.get j = val) →
           ∃ l : Fin k, result.get l = val)
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

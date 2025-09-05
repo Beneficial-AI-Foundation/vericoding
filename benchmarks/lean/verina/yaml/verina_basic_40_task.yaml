@@ -51,15 +51,11 @@ vc-helpers: |-
   termination_by s.size - i
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def secondSmallest (s : Array Int) (h_precond : secondSmallest_precond (s)) : Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def secondSmallest_postcond (s : Array Int) (result: Int) (h_precond : secondSmallest_precond (s)) :=
     (∃ i, i < s.size ∧ s[i]! = result) ∧
@@ -68,11 +64,7 @@ vc-condition: |-
   
   theorem secondSmallest_spec_satisfied (s: Array Int) (h_precond : secondSmallest_precond (s)) :
       secondSmallest_postcond (s) (secondSmallest (s) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-
