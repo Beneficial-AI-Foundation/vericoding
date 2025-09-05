@@ -7,6 +7,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from .config import ProcessingConfig
+from vericoding.utils.git_utils import get_repo_root
 
 
 @dataclass
@@ -101,7 +102,13 @@ def verify_file(config: ProcessingConfig, file_path: str) -> VerificationResult:
                 for part in config.language_config.compile_check_command
             ]
             try:
-                result = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
+                result = subprocess.run(
+                    cmd,
+                    capture_output=True,
+                    text=True,
+                    timeout=60,
+                    cwd=get_repo_root() if config.language == "lean" else None,
+                )
 
                 if result.returncode != 0:
                     # Compilation failed
@@ -127,7 +134,11 @@ def verify_file(config: ProcessingConfig, file_path: str) -> VerificationResult:
             config.language_config, "timeout", 120
         )  # Default to 120 seconds if not specified
         result = subprocess.run(
-            cmd, capture_output=True, text=True, timeout=timeout_value
+            cmd,
+            capture_output=True,
+            text=True,
+            timeout=timeout_value,
+            cwd=get_repo_root() if config.language == "lean" else None,
         )
         full_output = result.stdout + result.stderr
 

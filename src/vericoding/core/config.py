@@ -38,6 +38,7 @@ class LanguageConfig:
     code_block_patterns: list[str]  # Regex patterns for code blocks
     keywords: list[str]  # Language-specific keywords
     spec_patterns: list[str]  # Patterns for specification blocks
+    timeout: int | None = None  # Optional per-language verify timeout
 
 
 @dataclass
