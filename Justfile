@@ -438,4 +438,5 @@ dafny:
         --llm-model gpt-5 \
         --reasoning-effort high \
         --api-rate-limit-delay 1 \
+        --strict-specs \
         --debug

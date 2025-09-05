@@ -313,12 +313,10 @@ def setup_configuration(args) -> ProcessingConfig:
     )
     print(f"- API rate limit delay: {config.api_rate_limit_delay}s")
     if config.language == 'lean' and config.use_mcp:
-        # Start persistent pantograph server early
-        if ensure_server_started():
-            print("- MCP (pantograph): Enabled (persistent server)")
-            atexit.register(close_server)
-        else:
-            print("- MCP (pantograph): Not available; continuing without")
+        # Attempt to start persistent MCP session (non-fatal)
+        ensure_server_started()
+        print("- MCP (lean-lsp-mcp): Persistent session enabled")
+        atexit.register(close_server)
     print("\nProceeding with configuration...")
 
     return config

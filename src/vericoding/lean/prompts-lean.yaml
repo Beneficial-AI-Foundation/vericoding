@@ -6,7 +6,9 @@ generate_code: |
     Ask for: hover at key symbols, current goals at the sorry lines, term goals, diagnostic messages; iterate based on the feedback instead of guessing.
 
   CRITICAL RULES:
-  - Do not change any signatures (names, binders, types) of existing defs/lemmas/theorems.
+  - Do not change any specifications or signatures.
+    - Do not modify predicate/Prop definitions (e.g., specification predicates like isSorted).
+    - Do not change names, binders, or types of existing defs/lemmas/theorems.
   - Do not output any `sorry`.
   - You may add helper defs/lemmas with a preceding comment `-- LLM HELPER`.
   - Return ONLY the Lean code in a ```lean fenced block. No prose.
@@ -29,7 +31,9 @@ fix_verification: |
   You are the Vericoder for Lean 4. The file below does not verify. Repair it by modifying only bodies of existing defs/theorems/lemmas (keep names and types). Use Lean LSP MCP for goals/diagnostics/completions and add helper items prefixed with `-- LLM HELPER` if needed. Output ONLY a verified Lean file.
 
   CRITICAL RULES:
-  - Keep all existing signatures unchanged.
+  - Do not change any specifications or signatures.
+    - Do not modify predicate/Prop definitions (e.g., specification predicates like isSorted).
+    - Keep names, binders, and types of existing defs/lemmas/theorems unchanged.
   - No `sorry` in the output.
   - Add only minimal helpers with `-- LLM HELPER` comments.
   - Return ONLY the Lean code in a ```lean fenced block.
