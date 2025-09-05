@@ -39,28 +39,20 @@ jobs:
         id: claude-review
         uses: anthropics/claude-code-action@v1
         with:
+          track_progress: true
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           model: "claude-opus-4-1"
-          allowed_tools: |
-              Bash(*),
-              Read(*),
-              Glob(*),
-              Grep(*),
-              LS(*),
-              TodoRead(*)
           prompt: |
-            Please review this pull request and provide feedback on:
-            - Code quality and best practices
-            - Potential bugs or issues
-            - Performance considerations
-            - Security concerns
-            - Test coverage
-            
-            Use the repository's CLAUDE.md for guidance on style and conventions. Be constructive and helpful in your feedback.
-
-            Use `gh pr comment` with your Bash tool to leave your review as a comment on the PR.
+            REPO: ${{github.repository }}
+            PR NUMBER: ${{ github.event.pull_request.number }}
+            Please review this pull request and try to make it better.
           
           # See https://github.com/anthropics/claude-code-action/blob/main/docs/usage.md
           # or https://docs.anthropic.com/en/docs/claude-code/sdk#command-line for available options
-          claude_args: '--dangerously-skip-permissions --allowed-tools "Bash(*)" --model claude-opus-4-1'
+          claude_args: |
+            --dangerously-skip-permissions
+            --allowedTools Bash,Read,Grep,Glob,LS,TodoRead,MultiEdit,Edit
+            --model claude-opus-4-1
+            --mcp-config '{"mcpServers": { "github-mcp": { "command": "uvx", "args": ["lean-lsp-mcp"]}}}'
+          
 
