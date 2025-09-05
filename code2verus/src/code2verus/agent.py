@@ -1,4 +1,5 @@
 """Agent creation and translation logic for code2verus"""
+
 from pydantic_ai import Agent
 import logfire
 
@@ -10,8 +11,10 @@ from code2verus.utils import extract_rust_code
 def create_agent(source_language: str = "dafny"):
     """Create and return a configured PydanticAI agent with tools"""
     # Load language-specific system prompt
-    language_prompt = cfg.get("system_prompts", {}).get(source_language.lower(), system_prompt)
-    
+    language_prompt = cfg.get("system_prompts", {}).get(
+        source_language.lower(), system_prompt
+    )
+
     return Agent(
         cfg["model"],
         name="code2verus",
@@ -23,7 +26,9 @@ def create_agent(source_language: str = "dafny"):
     )
 
 
-async def translate_code_to_verus(source_code: str, source_language: str = "dafny", is_yaml: bool = False) -> tuple[str, int]:
+async def translate_code_to_verus(
+    source_code: str, source_language: str = "dafny", is_yaml: bool = False
+) -> tuple[str, int]:
     """Translate source code to Verus using the agent"""
     agent = create_agent(source_language)
 
@@ -32,11 +37,32 @@ async def translate_code_to_verus(source_code: str, source_language: str = "dafn
 
         Make sure the preamble starts with `use vstd::prelude::*;`, immediately followed by a `verus!` block, which starts in the preamble, and closes in the postamble, containing `fn main()`.
 
+        **CRITICAL FORMATTING RULES**:
+        - ALWAYS use standard Rust comment blocks `/* ... */` for multi-line comments. NEVER use `/- ... -/` style comments.
+        - ALWAYS comment out any content inside the `fn main()` function. If the main function has any content, wrap all content with `// ` comment markers. Empty main functions `fn main() {{}}` should remain as is.
+
+        **CRITICAL IMPLEMENTATION RULE**: For `<vc-implementation>` sections, DO NOT implement the actual function logic. Instead, always return a placeholder implementation with the pattern:
+        ```rust
+        {{
+            return true; // TODO: Remove this line and implement the function body
+        }}
+        ```
+        For boolean return types, use `true`. For other types, use appropriate default values (0 for integers, false for booleans, etc.).
+
+        **CRITICAL PROOF RULE**: For `<vc-proof>` sections, always use:
+        ```rust
+        assume(false); // TODO: Remove this line and implement the proof
+        ```
+
         IMPORTANT: In your response, include the final YAML file containing Verus code in a code block marked with ```verus. Do not include explanations or summaries in the code block - only the executable Verus code.    
         """
 
     default_prompt = f"""\
         Use the `verus` tool to make sure your output compiles. 
+
+        **CRITICAL FORMATTING RULES**:
+        - ALWAYS use standard Rust comment blocks `/* ... */` for multi-line comments. NEVER use `/- ... -/` style comments.
+        - ALWAYS comment out any content inside the `fn main()` function. If the main function has any content, wrap all content with `// ` comment markers. Empty main functions `fn main() {{}}` should remain as is.
 
         IMPORTANT: In your response, include the final Verus code in a code block marked with ```rust or ```verus. Do not include explanations or summaries in the code block - only the executable Verus code.
         """
