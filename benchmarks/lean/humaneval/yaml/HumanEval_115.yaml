@@ -60,7 +60,7 @@ vc-theorems: |-
   (grid: List (List Nat))
   (capacity: Nat)
   : problem_spec implementation grid capacity
-  :=
+  := by
     sorry
 
 vc-postamble: |-

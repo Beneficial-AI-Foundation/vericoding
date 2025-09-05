@@ -45,7 +45,7 @@ vc-theorems: |-
   theorem correctness
   (n: Int)
   : problem_spec implementation n
-  :=
+  := by
     sorry
 
 vc-postamble: |-

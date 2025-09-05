@@ -49,7 +49,7 @@ vc-theorems: |-
   theorem correctness
   (x base : Nat)
   : problem_spec implementation x base
-  :=
+  := by
     sorry
 
 vc-postamble: |-

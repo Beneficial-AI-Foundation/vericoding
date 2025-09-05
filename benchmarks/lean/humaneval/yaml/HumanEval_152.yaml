@@ -51,7 +51,7 @@ vc-theorems: |-
   
   theorem correctness
   (scores guesses: List Rat)
-  : problem_spec implementation scores guesses :=
+  : problem_spec implementation scores guesses := by
     sorry
 
 vc-postamble: |-

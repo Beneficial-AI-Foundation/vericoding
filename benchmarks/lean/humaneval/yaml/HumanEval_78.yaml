@@ -69,7 +69,7 @@ vc-theorems: |-
   theorem correctness
   (num: String)
   : problem_spec implementation num
-  :=
+  := by
     sorry
 
 vc-postamble: |-

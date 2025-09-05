@@ -51,7 +51,7 @@ vc-theorems: |-
   (numbers: List Int)
   (delimeter: Int)
   : problem_spec implementation numbers delimeter
-  :=
+  := by
     sorry
 
 vc-postamble: |-

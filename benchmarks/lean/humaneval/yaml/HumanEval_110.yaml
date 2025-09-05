@@ -65,7 +65,7 @@ vc-theorems: |-
   (lst1: List Int)
   (lst2: List Int)
   : problem_spec implementation lst1 lst2
-  :=
+  := by
     sorry
 
 vc-postamble: |-

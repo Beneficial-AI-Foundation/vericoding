@@ -54,7 +54,7 @@ vc-theorems: |-
   
   theorem correctness
   (arr: List Int)
-  : problem_spec implementation arr :=
+  : problem_spec implementation arr := by
     sorry
 
 vc-postamble: |-

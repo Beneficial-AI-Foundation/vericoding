@@ -55,7 +55,7 @@ vc-theorems: |-
   theorem correctness
   (lst1: List String) (lst2: List String)
   : problem_spec implementation lst1 lst2
-  :=
+  := by
     sorry
 
 vc-postamble: |-

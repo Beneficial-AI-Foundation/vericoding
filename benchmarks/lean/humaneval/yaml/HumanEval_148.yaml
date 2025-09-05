@@ -63,7 +63,7 @@ vc-theorems: |-
   theorem correctness
   (planet1: String)
   (planet2: String)
-  : problem_spec implementation planet1 planet2 :=
+  : problem_spec implementation planet1 planet2 := by
     sorry
 
 vc-postamble: |-

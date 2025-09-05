@@ -48,7 +48,7 @@ vc-theorems: |-
   (strings: List String)
   (pref: String)
   : problem_spec implementation strings pref
-  :=
+  := by
     sorry
 
 vc-postamble: |-

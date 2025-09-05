@@ -69,7 +69,7 @@ vc-theorems: |-
   (s: String)
   (n: Nat)
   : problem_spec implementation s n
-  :=
+  := by
     sorry
 
 vc-postamble: |-

@@ -67,7 +67,7 @@ vc-theorems: |-
   theorem correctness
   (class_name: String)
   (extensions: List String)
-  : problem_spec implementation class_name extensions :=
+  : problem_spec implementation class_name extensions := by
     sorry
 
 vc-postamble: |-

@@ -41,7 +41,7 @@ vc-theorems: |-
   
   theorem correctness
   (n x y: Int)
-  : problem_spec implementation n x y :=
+  : problem_spec implementation n x y := by
     sorry
 
 vc-postamble: |-

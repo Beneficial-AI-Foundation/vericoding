@@ -63,7 +63,7 @@ vc-theorems: |-
   theorem correctness
   (interval1: Int × Int)
   (interval2: Int × Int)
-  : problem_spec implementation interval1 interval2 :=
+  : problem_spec implementation interval1 interval2 := by
     sorry
 
 vc-postamble: |-

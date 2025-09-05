@@ -72,7 +72,7 @@ vc-theorems: |-
   theorem correctness
   (l: List String)
   : problem_spec implementation l
-  :=
+  := by
     sorry
 
 vc-postamble: |-

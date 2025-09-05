@@ -50,7 +50,7 @@ vc-theorems: |-
   theorem correctness
   (xs: List Rat)
   : problem_spec implementation xs
-  :=
+  := by
     sorry
 
 vc-postamble: |-

@@ -56,7 +56,7 @@ vc-theorems: |-
   
   theorem correctness
   (text: String)
-  : problem_spec implementation text :=
+  : problem_spec implementation text := by
     sorry
 
 vc-postamble: |-

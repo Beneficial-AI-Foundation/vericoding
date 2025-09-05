@@ -46,7 +46,7 @@ vc-theorems: |-
   theorem correctness
   (numbers : List Int)
   : problem_spec implementation numbers
-  :=
+  := by
     sorry
 
 vc-postamble: |-

@@ -52,7 +52,7 @@ vc-theorems: |-
   theorem correctness
   (str: String)
   : problem_spec implementation str
-  :=
+  := by
     sorry
 
 vc-postamble: |-

@@ -57,7 +57,7 @@ vc-theorems: |-
   (string: String)
   (substring: String)
   : problem_spec implementation string substring
-  :=
+  := by
     sorry
 
 vc-postamble: |-

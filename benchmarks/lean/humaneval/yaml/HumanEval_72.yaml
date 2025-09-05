@@ -48,7 +48,7 @@ vc-theorems: |-
   theorem correctness
   (q: List Int) (w: Int)
   : problem_spec implementation q w
-  :=
+  := by
     sorry
 
 vc-postamble: |-

@@ -49,7 +49,7 @@ vc-theorems: |-
   theorem correctness
   (arr: List Int)
   (k: Nat)
-  : problem_spec implementation arr k :=
+  : problem_spec implementation arr k := by
     sorry
 
 vc-postamble: |-

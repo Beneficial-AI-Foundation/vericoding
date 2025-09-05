@@ -156,7 +156,7 @@ vc-theorems: |-
   
   theorem correctness
   (operator : List String) (operand : List Nat)
-  : problem_spec implementation operator operand :=
+  : problem_spec implementation operator operand := by
     sorry
 
 vc-postamble: |-

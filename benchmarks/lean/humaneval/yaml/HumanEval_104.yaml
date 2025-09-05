@@ -45,7 +45,7 @@ vc-theorems: |-
   theorem correctness
   (x: List Nat)
   : problem_spec implementation x
-  :=
+  := by
     sorry
 
 vc-postamble: |-

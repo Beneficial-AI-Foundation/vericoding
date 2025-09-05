@@ -55,7 +55,7 @@ vc-theorems: |-
   theorem correctness
   (s c: String)
   : problem_spec implementation s c
-  :=
+  := by
     sorry
 
 vc-postamble: |-

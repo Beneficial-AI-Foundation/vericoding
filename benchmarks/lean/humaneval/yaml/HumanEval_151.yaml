@@ -51,7 +51,7 @@ vc-theorems: |-
   
   theorem correctness
   (numbers: List Rat)
-  : problem_spec implementation numbers :=
+  : problem_spec implementation numbers := by
     sorry
 
 vc-postamble: |-

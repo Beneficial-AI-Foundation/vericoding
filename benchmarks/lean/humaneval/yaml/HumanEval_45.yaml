@@ -40,7 +40,7 @@ vc-theorems: |-
   theorem correctness
   (a h : Rat)
   : problem_spec implementation a h
-  :=
+  := by
     sorry
 
 vc-postamble: |-

@@ -51,7 +51,7 @@ vc-theorems: |-
   
   theorem correctness
   (a b: Nat)
-  : problem_spec implementation a b :=
+  : problem_spec implementation a b := by
     sorry
 
 vc-postamble: |-

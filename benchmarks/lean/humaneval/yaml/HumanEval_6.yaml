@@ -138,7 +138,7 @@ vc-theorems: |-
   theorem correctness
   (paren_string: String)
   : problem_spec implementation paren_string
-  :=
+  := by
     sorry
 
 vc-postamble: |-

@@ -78,7 +78,7 @@ vc-theorems: |-
   theorem correctness
   (grid: List (List Nat))
   (k: Nat)
-  : problem_spec implementation grid k :=
+  : problem_spec implementation grid k := by
     sorry
 
 vc-postamble: |-

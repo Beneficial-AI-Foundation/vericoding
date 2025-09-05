@@ -61,7 +61,7 @@ vc-theorems: |-
   
   theorem correctness
   (date: String)
-  : problem_spec implementation date :=
+  : problem_spec implementation date := by
     sorry
 
 vc-postamble: |-

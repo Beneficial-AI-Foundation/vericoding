@@ -43,7 +43,7 @@ vc-theorems: |-
   theorem correctness
   (lst: List Int)
   : problem_spec implementation lst
-  :=
+  := by
     sorry
 
 vc-postamble: |-

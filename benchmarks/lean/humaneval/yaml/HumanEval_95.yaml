@@ -55,7 +55,7 @@ vc-theorems: |-
   theorem correctness
   (D: Std.HashMap String String)
   : problem_spec implementation D
-  :=
+  := by
     sorry
 
 vc-postamble: |-

@@ -63,7 +63,7 @@ vc-theorems: |-
   
   theorem correctness
   (brackets: String)
-  : problem_spec implementation brackets :=
+  : problem_spec implementation brackets := by
     sorry
 
 vc-postamble: |-

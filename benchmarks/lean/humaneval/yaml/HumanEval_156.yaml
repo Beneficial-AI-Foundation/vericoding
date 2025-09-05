@@ -178,7 +178,7 @@ vc-theorems: |-
   
   theorem correctness
   (num: Nat)
-  : problem_spec implementation num :=
+  : problem_spec implementation num := by
     sorry
 
 vc-postamble: |-

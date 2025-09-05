@@ -86,7 +86,7 @@ vc-theorems: |-
   theorem correctness
   (grades: List Float)
   : problem_spec implementation grades
-  :=
+  := by
     sorry
 
 vc-postamble: |-

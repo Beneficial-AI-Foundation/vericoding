@@ -44,7 +44,7 @@ vc-theorems: |-
   
   theorem correctness
   (number: Rat)
-  : problem_spec implementation number :=
+  : problem_spec implementation number := by
     sorry
 
 vc-postamble: |-
