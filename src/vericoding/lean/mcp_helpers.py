@@ -25,6 +25,7 @@ from anyio.from_thread import start_blocking_portal
 from anyio.abc import BlockingPortal
 
 from mcp.client.stdio import StdioServerParameters, stdio_client
+from mcp.client import streamable_http
 from mcp.client.session import ClientSession
 
 # Persistent client state
@@ -241,7 +242,222 @@ def close_server() -> None:
 
 
 def collect_lsp_context(file_path: str, lines: list[int]) -> str:
-    return _collect_context_persistent(file_path, lines)
+    # Prefer persistent session; fallback can be noisy on mcp==1.12.3.
+    # Only use fallback if explicitly enabled via env MCP_FALLBACK=1.
+    if _ensure_persistent_started() and _tools():
+        return _collect_context_persistent(file_path, lines)
+    if os.getenv("MCP_FALLBACK", "0") == "1":
+        _log("MCP: persistent session unavailable; using one-shot fallback")
+        try:
+            return anyio.run(_collect_context_once_async, file_path, lines)
+        except Exception as e:
+            _log(f"MCP: fallback failed: {e}")
+            # Try HTTP fallback next
+            try:
+                return anyio.run(_collect_context_http_once_async, file_path, lines)
+            except Exception as e2:
+                _log(f"MCP: http fallback failed: {e2}")
+                return ""
+    _log("MCP: persistent session unavailable; skipping MCP context (no fallback)")
+    return ""
+
+
+async def _collect_context_once_async(file_path: str, lines: list[int]) -> str:
+    """One-shot stdio session for context collection (fallback)."""
+    init_timeout = int(os.getenv("MCP_INIT_TIMEOUT", "20"))
+    tool_timeout = int(os.getenv("MCP_TOOL_TIMEOUT", "10"))
+    uvx_path = shutil.which("uvx") or "uvx"
+    server = StdioServerParameters(
+        command="lake", args=["env", uvx_path, "lean-lsp-mcp"], cwd=str(get_repo_root())
+    )
+    _log("MCP: fallback start via lake env uvx lean-lsp-mcp")
+    ctxs: list[str] = []
+    try:
+        async with stdio_client(server) as (read, write):
+            sess = ClientSession(read, write)
+            with anyio.fail_after(init_timeout):
+                await sess.initialize()
+            tools = await sess.list_tools()
+            names = set()
+            for t in getattr(tools, "tools", []) or []:
+                n = getattr(t, "name", None)
+                if n:
+                    names.add(n)
+            _log(f"MCP: fallback tools: {sorted(list(names))}")
+            fpath = str(Path(file_path).resolve())
+            # diagnostics
+            if "lean_diagnostic_messages" in names:
+                diag = await sess.call_tool(
+                    "lean_diagnostic_messages", {"file_path": fpath}, read_timeout_seconds=timedelta(seconds=tool_timeout)
+                )
+                txt = _content_to_text(getattr(diag, "content", None))
+                if txt:
+                    ctxs.append("[diagnostics]\n" + txt)
+            for ln in lines:
+                if "lean_goal" in names:
+                    r = await sess.call_tool(
+                        "lean_goal",
+                        {"file_path": fpath, "line": int(ln), "column": 1},
+                        read_timeout_seconds=timedelta(seconds=tool_timeout),
+                    )
+                    txt = _content_to_text(getattr(r, "content", None))
+                    if txt:
+                        ctxs.append(f"[line {ln}] goals\n{txt}")
+                if "lean_hover_info" in names:
+                    r = await sess.call_tool(
+                        "lean_hover_info",
+                        {"file_path": fpath, "line": int(ln), "column": 1},
+                        read_timeout_seconds=timedelta(seconds=tool_timeout),
+                    )
+                    txt = _content_to_text(getattr(r, "content", None))
+                    if txt:
+                        ctxs.append(f"[line {ln}] hover\n{txt}")
+                if "lean_state_search" in names:
+                    r = await sess.call_tool(
+                        "lean_state_search",
+                        {"file_path": fpath, "line": int(ln), "column": 1},
+                        read_timeout_seconds=timedelta(seconds=tool_timeout),
+                    )
+                    txt = _content_to_text(getattr(r, "content", None))
+                    if txt:
+                        ctxs.append(f"[line {ln}] state_search\n{txt}")
+                if "lean_hammer_premise" in names:
+                    r = await sess.call_tool(
+                        "lean_hammer_premise",
+                        {"file_path": fpath, "line": int(ln), "column": 1},
+                        read_timeout_seconds=timedelta(seconds=tool_timeout),
+                    )
+                    txt = _content_to_text(getattr(r, "content", None))
+                    if txt:
+                        ctxs.append(f"[line {ln}] hammer\n{txt}")
+                if "lean_loogle" in names:
+                    r = await sess.call_tool(
+                        "lean_loogle",
+                        {"file_path": fpath, "line": int(ln), "column": 1},
+                        read_timeout_seconds=timedelta(seconds=tool_timeout),
+                    )
+                    txt = _content_to_text(getattr(r, "content", None))
+                    if txt:
+                        ctxs.append(f"[line {ln}] loogle\n{txt}")
+                if "lean_leansearch" in names:
+                    r = await sess.call_tool(
+                        "lean_leansearch",
+                        {"file_path": fpath, "line": int(ln), "column": 1},
+                        read_timeout_seconds=timedelta(seconds=tool_timeout),
+                    )
+                    txt = _content_to_text(getattr(r, "content", None))
+                    if txt:
+                        ctxs.append(f"[line {ln}] leansearch\n{txt}")
+    except Exception as e:
+        _log(f"MCP: fallback __aexit__ issue: {e}")
+    return "\n\n".join(ctxs)
+
+
+async def _collect_context_http_once_async(file_path: str, lines: list[int]) -> str:
+    """One-shot HTTP transport session (server spawned separately)."""
+    init_timeout = int(os.getenv("MCP_INIT_TIMEOUT", "20"))
+    tool_timeout = int(os.getenv("MCP_TOOL_TIMEOUT", "10"))
+    # Pick a free port
+    import socket, subprocess, time
+    s = socket.socket()
+    s.bind(("127.0.0.1", 0))
+    host, port = s.getsockname()
+    s.close()
+    # Launch server process
+    uvx_path = shutil.which("uvx") or "uvx"
+    cmd = ["lake", "env", uvx_path, "lean-lsp-mcp", "--transport", "streamable-http", "--host", host, "--port", str(port)]
+    _log(f"MCP: http fallback launching: {' '.join(cmd)}")
+    root = str(get_repo_root())
+    err_path = os.path.join(root, "logs", "lean_mcp_http.stderr.log")
+    os.makedirs(os.path.join(root, "logs"), exist_ok=True)
+    with open(err_path, "ab", buffering=0) as errf:
+        proc = subprocess.Popen(cmd, cwd=root, stdout=subprocess.DEVNULL, stderr=errf)
+        try:
+            # Wait briefly for server to come up
+            time.sleep(0.5)
+            url = f"http://{host}:{port}"
+            async with streamable_http.streamablehttp_client(url) as (read, write, get_sid):
+                sess = ClientSession(read, write)
+                with anyio.fail_after(init_timeout):
+                    await sess.initialize()
+                tools = await sess.list_tools()
+                names = set()
+                for t in getattr(tools, "tools", []) or []:
+                    n = getattr(t, "name", None)
+                    if n:
+                        names.add(n)
+                _log(f"MCP: http fallback tools: {sorted(list(names))}")
+                fpath = str(Path(file_path).resolve())
+                ctxs: list[str] = []
+                # diagnostics
+                if "lean_diagnostic_messages" in names:
+                    diag = await sess.call_tool(
+                        "lean_diagnostic_messages", {"file_path": fpath}, read_timeout_seconds=timedelta(seconds=tool_timeout)
+                    )
+                    txt = _content_to_text(getattr(diag, "content", None))
+                    if txt:
+                        ctxs.append("[diagnostics]\n" + txt)
+                for ln in lines:
+                    if "lean_goal" in names:
+                        r = await sess.call_tool(
+                            "lean_goal",
+                            {"file_path": fpath, "line": int(ln), "column": 1},
+                            read_timeout_seconds=timedelta(seconds=tool_timeout),
+                        )
+                        txt = _content_to_text(getattr(r, "content", None))
+                        if txt:
+                            ctxs.append(f"[line {ln}] goals\n{txt}")
+                    if "lean_hover_info" in names:
+                        r = await sess.call_tool(
+                            "lean_hover_info",
+                            {"file_path": fpath, "line": int(ln), "column": 1},
+                            read_timeout_seconds=timedelta(seconds=tool_timeout),
+                        )
+                        txt = _content_to_text(getattr(r, "content", None))
+                        if txt:
+                            ctxs.append(f"[line {ln}] hover\n{txt}")
+                    if "lean_state_search" in names:
+                        r = await sess.call_tool(
+                            "lean_state_search",
+                            {"file_path": fpath, "line": int(ln), "column": 1},
+                            read_timeout_seconds=timedelta(seconds=tool_timeout),
+                        )
+                        txt = _content_to_text(getattr(r, "content", None))
+                        if txt:
+                            ctxs.append(f"[line {ln}] state_search\n{txt}")
+                    if "lean_hammer_premise" in names:
+                        r = await sess.call_tool(
+                            "lean_hammer_premise",
+                            {"file_path": fpath, "line": int(ln), "column": 1},
+                            read_timeout_seconds=timedelta(seconds=tool_timeout),
+                        )
+                        txt = _content_to_text(getattr(r, "content", None))
+                        if txt:
+                            ctxs.append(f"[line {ln}] hammer\n{txt}")
+                    if "lean_loogle" in names:
+                        r = await sess.call_tool(
+                            "lean_loogle",
+                            {"file_path": fpath, "line": int(ln), "column": 1},
+                            read_timeout_seconds=timedelta(seconds=tool_timeout),
+                        )
+                        txt = _content_to_text(getattr(r, "content", None))
+                        if txt:
+                            ctxs.append(f"[line {ln}] loogle\n{txt}")
+                    if "lean_leansearch" in names:
+                        r = await sess.call_tool(
+                            "lean_leansearch",
+                            {"file_path": fpath, "line": int(ln), "column": 1},
+                            read_timeout_seconds=timedelta(seconds=tool_timeout),
+                        )
+                        txt = _content_to_text(getattr(r, "content", None))
+                        if txt:
+                            ctxs.append(f"[line {ln}] leansearch\n{txt}")
+                return "\n\n".join(ctxs)
+        finally:
+            try:
+                proc.terminate()
+            except Exception:
+                pass
 
 
 def collect_lsp_context_safe(file_path: str, lines: Iterable[int]) -> str:

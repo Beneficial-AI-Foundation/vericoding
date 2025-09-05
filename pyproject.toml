@@ -10,7 +10,6 @@ requires-python = ">=3.12"
 dependencies = [
     "pydantic>=2.0",
     "anthropic>=0.58.2",
-    "claude-code-sdk>=0.0.16",
     "wandb>=0.21.0",
     "jinja2>=3.1.0",
     "pyyaml>=6.0.2", # Keep for backward compatibility during migration
@@ -22,9 +21,9 @@ dependencies = [
     "tqdm>=4.67.1",
     "ruamel-yaml>=0.18.15",
     "openai>=1.104.2",
-    "pantograph>=0.1.0",
     "datasets>=4.0.0",
     "lean-lsp-mcp>=0.6.4",
+    "mcp==1.12.3",
 ]
 
 [project.optional-dependencies]
