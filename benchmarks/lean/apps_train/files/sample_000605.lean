@@ -1,0 +1,51 @@
+Chef has a rectangular piece of paper. He puts it on a big board in such a way that two sides of the paper are horizontal and two are vertical, and then he performs a sequence of $N$ operations. You are given a string $S$ with length $N$; for each valid $i$, the $i$-th character of $S$ determines the type of the $i$-th operation:
+- 'R': Pick up the paper from the right side and fold it onto the left side.
+- 'L': Pick up the paper from the left side and fold it onto the right side.
+- 'U': Pick up the paper from the upper side and fold it onto the bottom side.
+- 'D': Pick up the paper from the bottom side and fold it onto the upper side.
+The paper is folded in such a way that there is still a flat rectangular sheet of paper lying on the table after each operation, but it consists of multiple layers of the original sheet. The lengths of the horizontal and vertical sides of the resulting sheet (after performing these $N$ operations) are $W$ and $H$ respectively. Let's build an Euclidean coordinate system on the paper, where the point $(0, 0)$ corresponds to the bottom left corner and $(W, H)$ to the upper right corner.
+Chef then draws $M$ points on this folded sheet of paper. The ink used to draw them soaks deep into the paper, so each point is drawn on all layers of the paper (and also on both faces of each layer). 
+Finally, Chef completely unfolds the paper. He's asking you to compute the distance between the nearest pair of points.
+
+-----Input-----
+- The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+- The first line of each test case contains four space-separated integers $N$, $M$, $W$ and $H$.
+- The second line contains a single string $S$.
+- Each of the following $M$ lines contains two space-separated integers $X$ and $Y$ denoting the coordinates of one point.
+
+-----Output-----
+For each test case, print a single line containing one real number ― the minimum distance. Your answer will be considered correct if its absolute or relative error does not exceed $10^{-6}$.
+
+-----Constraints-----
+- $1 \le T \le 50$
+- $2 \le M \le 1,000$
+- $1 \le N \le 1,000$
+- $3 \le W, H \le 10^9$
+- $1 \le X \le W-1$
+- $1 \le Y \le H-1$
+- the points are pairwise distinct
+
+-----Subtasks-----
+Subtask #1 (50 points): all characters of $S$ are 'U'
+Subtask #2 (50 points): original constraints
+
+-----Example Input-----
+2
+6 2 10 10
+ULRDDL
+4 4
+5 5
+4 2 10 10
+RUDL
+1 1
+9 9
+
+-----Example Output-----
+1.41421356237
+2.00000000000
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- Apps difficulty: interview
+-- Assurance level: guarded_and_plausible

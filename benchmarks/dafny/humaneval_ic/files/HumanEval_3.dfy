@@ -1,0 +1,38 @@
+Given a list of integers representing bank account operations (positive for deposits, negative for withdrawals), determine if the account balance ever drops below zero. The account starts with a balance of zero.
+
+// ======= TASK =======
+// Given a list of integers representing bank account operations (positive for deposits, 
+// negative for withdrawals), determine if the account balance ever drops below zero. 
+// The account starts with a balance of zero.
+
+// ======= SPEC REQUIREMENTS =======
+function sum_prefix(ops: seq<int>, len: nat): int
+  requires len <= |ops|
+{
+  if len == 0 then 0
+  else sum_prefix(ops, len-1) + ops[len-1]
+}
+
+// ======= HELPERS =======
+
+// ======= MAIN METHOD =======
+method below_zero(operations: seq<int>) returns (result: bool)
+  ensures result <==> (exists i :: 0 < i <= |operations| && sum_prefix(operations, i) < 0)
+{
+    var balance := 0;
+
+    for i := 0 to |operations|
+      invariant balance == sum_prefix(operations, i)
+      invariant forall j :: 0 < j <= i ==> sum_prefix(operations, j) >= 0
+    {
+        balance := balance + operations[i];
+        if balance < 0 {
+            assert balance == sum_prefix(operations, i+1);
+            assert 0 < i+1 <= |operations|;
+            assert sum_prefix(operations, i+1) < 0;
+            return true;
+        }
+    }
+
+    return false;
+}

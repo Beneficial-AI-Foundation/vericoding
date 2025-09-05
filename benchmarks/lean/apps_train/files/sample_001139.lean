@@ -1,0 +1,41 @@
+Tonight, Chef would like to hold a party for his $N$ friends.
+All friends are invited and they arrive at the party one by one in an arbitrary order. However, they have certain conditions — for each valid $i$, when the $i$-th friend arrives at the party and sees that at that point, strictly less than $A_i$ other people (excluding Chef) have joined the party, this friend leaves the party; otherwise, this friend joins the party.
+Help Chef estimate how successful the party can be — find the maximum number of his friends who could join the party (for an optimal choice of the order of arrivals).
+
+-----Input-----
+- The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+- The first line of each test case contains a single integer $N$.
+- The second line contains $N$ space-separated integers $A_1, A_2, \ldots, A_N$.
+
+-----Output-----
+For each test case, print a single line containing one integer — the maximum number of Chef's friends who could join the party.
+
+-----Constraints-----
+- $1 \le T \le 1,000$
+- $1 \le N \le 10^5$
+- the sum of $N$ over all test cases does not exceed $10^6$
+
+-----Example Input-----
+3
+2
+0 0
+6
+3 1 0 0 5 5
+3
+1 2 3
+
+-----Example Output-----
+2
+4
+0
+
+-----Explanation-----
+Example case 1: Chef has two friends. Both of them do not require anyone else to be at the party before they join, so they will both definitely join the party.
+Example case 2: At the beginning, friends $3$ and $4$ can arrive and join the party, since they do not require anyone else to be at the party before they join. After that, friend $2$ can arrive; this friend would see that there are two people at the party and therefore also join. Then, friend $1$ will also join, so in the end, there would be $4$ people attending the party.
+Example case 3: No one will attend the party because each of Chef's friends will find zero people at the party and leave, regardless of the order in which they arrive.
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- Apps difficulty: interview
+-- Assurance level: guarded_and_plausible

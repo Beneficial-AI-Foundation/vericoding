@@ -1,0 +1,42 @@
+Ada is playing pawn chess with Suzumo.
+Pawn chess is played on a long board with N$N$ squares in one row. Initially, some of the squares contain pawns.
+Note that the colours of the squares and pawns do not matter in this game, but otherwise, the standard chess rules apply:
+- no two pawns can occupy the same square at the same time
+- a pawn cannot jump over another pawn (they are no knights!), i.e. if there is a pawn at square i$i$, then it can only be moved to square i−2$i-2$ if squares i−1$i-1$ and i−2$i-2$ are empty
+- pawns cannot move outside of the board (outs are forbidden)
+The players alternate turns; as usual, Ada plays first. In each turn, the current player must choose a pawn and move it either one or two squares to the left of its current position. The player that cannot make a move loses.
+Can Ada always beat Suzumo? Remember that Ada is a chess grandmaster, so she always plays optimally.
+
+-----Input-----
+- The first line of the input contains a single integer T$T$ denoting the number of test cases. The description of T$T$ test cases follows.
+- The first and only line of each test case contains a single string S$S$ with length N$N$ describing the initial board from left to right. An empty square and a square containing a pawn are denoted by the characters '.' and 'P' respectively.
+
+-----Output-----
+For each test case, print a single line containing the string "Yes" if Ada wins the game or "No" otherwise (without quotes).
+
+-----Constraints-----
+- 1≤T≤500$1 \le T \le 500$
+- 2≤N≤128$2 \le N \le 128$
+- S$S$ contains only characters '.' and 'P'
+
+-----Example Input-----
+1
+..P.P
+
+-----Example Output-----
+Yes
+
+-----Explanation-----
+Example case 1: Ada can move the first pawn two squares to the left; the board after this move looks like
+P...P
+
+and now, Suzumo can only move the second pawn. If he moves it one square to the left, Ada will move it two squares to the left on her next move, and if he moves it two squares to the left, Ada will move it one square to the left, so the board after Ada's next move will look like
+PP...
+
+and Suzumo cannot make any move here.
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

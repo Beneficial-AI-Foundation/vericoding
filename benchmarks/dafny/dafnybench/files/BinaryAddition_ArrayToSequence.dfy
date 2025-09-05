@@ -31,8 +31,6 @@ function ArrayToBv10Helper(arr: array<bool>, index: nat): bv10
     requires arr.Length == 10
     requires 0 <= index < arr.Length
     decreases index
-    ensures forall i :: 0 <= i < index ==> ((ArrayToBv10Helper(arr, i) >> i) & 1) == (if arr
-        [i] then 1 else 0)
 {
     if index == 0 then
         (if arr[0] then 1 else 0) as bv10
@@ -48,32 +46,12 @@ function isBitSet(x: bv10, bitIndex: nat): bool
     (x & (1 << bitIndex)) != 0
 }
 
-function Bv10ToSeq(x: bv10): seq<bool> // Converts bitvector to boolean sequence
-    ensures |Bv10ToSeq(x)| == 10
-    ensures forall i: nat :: 0 <= i < 10 ==> Bv10ToSeq(x)[i] == isBitSet(x, i)
-{
-    [isBitSet(x, 0), isBitSet(x, 1), isBitSet(x, 2), isBitSet(x, 3),
-    isBitSet(x, 4), isBitSet(x, 5), isBitSet(x, 6), isBitSet(x, 7),
-    isBitSet(x, 8), isBitSet(x, 9)]
-}
-
 function BoolToInt(a: bool): int {
     if a then 1 else 0
 }
 
 function XOR(a: bool, b: bool): bool {
     (a || b) && !(a && b)
-}
-
-function BitAddition(s: array<bool>, t: array<bool>): seq<bool> // Performs traditional bit addition
-    reads s
-    reads t
-    requires s.Length == 10 && t.Length == 10
-{
-    var a: bv10 := ArrayToBv10(s);
-    var b: bv10 := ArrayToBv10(t);
-    var c: bv10 := a + b;
-    Bv10ToSeq(c)
 }
 
 // <vc-helpers>

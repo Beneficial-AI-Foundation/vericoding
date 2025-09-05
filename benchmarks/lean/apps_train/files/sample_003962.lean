@@ -1,0 +1,89 @@
+# Introduction and Warm-up (Highly recommended)
+
+# [Playing With Lists/Arrays Series](https://www.codewars.com/collections/playing-with-lists-slash-arrays)
+___
+
+# Task
+
+**_Given_** an **_array of integers_** , **_Find the minimum sum_** which is obtained *from summing each Two integers product* .
+___
+
+# Notes 
+
+* **_Array/list_** *will contain* **_positives only_** . 
+* **_Array/list_** *will always has* **_even size_**
+___
+
+# Input >> Output Examples
+
+```
+minSum({5,4,2,3}) ==> return (22) 
+```
+
+## **_Explanation_**:
+
+* **_The minimum sum_** *obtained from summing each two integers product* ,  ` 5*2 + 3*4 = 22`
+___
+
+```
+minSum({12,6,10,26,3,24}) ==> return (342)
+```
+
+## **_Explanation_**:
+
+* **_The minimum sum_** *obtained from summing each two integers product* ,  ` 26*3 + 24*6 + 12*10 = 342`
+
+___
+
+```
+minSum({9,2,8,7,5,4,0,6}) ==> return (74)
+```
+
+## **_Explanation_**:
+
+* **_The minimum sum_** *obtained from summing each two integers product* ,  ` 9*0 + 8*2 +7*4 +6*5 = 74`
+
+___
+
+___
+___
+___
+
+# [Playing with Numbers Series](https://www.codewars.com/collections/playing-with-numbers)
+
+# [Playing With Lists/Arrays Series](https://www.codewars.com/collections/playing-with-lists-slash-arrays)
+
+# [For More Enjoyable Katas](http://www.codewars.com/users/MrZizoScream/authored)
+___
+
+## ALL translations are welcomed
+
+## Enjoy Learning !!
+# Zizou
+
+def sum : List Nat → Nat 
+| [] => 0
+| (x::xs) => x + sum xs
+
+def maxList : List Nat → Nat 
+| [] => 0
+| [x] => x
+| (x::xs) => max x (maxList xs)
+
+def zipWith (f : Nat → Nat → Nat) : List Nat → List Nat → List Nat
+| [], _ => []
+| _, [] => []
+| (x::xs), (y::ys) => f x y :: zipWith f xs ys
+
+def min_sum (nums : List Nat) : Nat := sorry
+
+theorem min_sum_non_negative (nums : List Nat) 
+  (h : nums.length ≥ 2) 
+  (h2 : nums.length % 2 = 0) :
+  min_sum nums ≥ 0 := sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded

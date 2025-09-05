@@ -1,0 +1,78 @@
+Convert a list of numerical GPA values to corresponding letter grades using a specified grading scale. The grading scale maps GPA ranges to letter grades from A+ (4.0) down to E (0.0).
+
+// ======= TASK =======
+// Convert a list of numerical GPA values to corresponding letter grades using a specified grading scale.
+// The grading scale maps GPA ranges to letter grades from A+ (4.0) down to E (0.0).
+
+// ======= SPEC REQUIREMENTS =======
+function getLetterGrade(gpa: real): string
+{
+    if gpa == 4.0 then "A+"
+    else if gpa > 3.7 then "A"
+    else if gpa > 3.3 then "A-"
+    else if gpa > 3.0 then "B+"
+    else if gpa > 2.7 then "B"
+    else if gpa > 2.3 then "B-"
+    else if gpa > 2.0 then "C+"
+    else if gpa > 1.7 then "C"
+    else if gpa > 1.3 then "C-"
+    else if gpa > 1.0 then "D+"
+    else if gpa > 0.7 then "D"
+    else if gpa > 0.0 then "D-"
+    else "E"
+}
+
+predicate ValidLetterGrades(grades: seq<string>)
+{
+    forall grade :: grade in grades ==> grade in {"A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"}
+}
+
+// ======= HELPERS =======
+
+// ======= MAIN METHOD =======
+method numerical_letter_grade(grades: seq<real>) returns (letter_grades: seq<string>)
+    ensures |letter_grades| == |grades|
+    ensures forall i :: 0 <= i < |grades| ==> letter_grades[i] == getLetterGrade(grades[i])
+    ensures ValidLetterGrades(letter_grades)
+{
+    letter_grades := [];
+
+    for i := 0 to |grades|
+        invariant |letter_grades| == i
+        invariant forall j :: 0 <= j < i ==> letter_grades[j] == getLetterGrade(grades[j])
+        invariant ValidLetterGrades(letter_grades)
+    {
+        var gpa := grades[i];
+        var grade: string;
+
+        if gpa == 4.0 {
+            grade := "A+";
+        } else if gpa > 3.7 {
+            grade := "A";
+        } else if gpa > 3.3 {
+            grade := "A-";
+        } else if gpa > 3.0 {
+            grade := "B+";
+        } else if gpa > 2.7 {
+            grade := "B";
+        } else if gpa > 2.3 {
+            grade := "B-";
+        } else if gpa > 2.0 {
+            grade := "C+";
+        } else if gpa > 1.7 {
+            grade := "C";
+        } else if gpa > 1.3 {
+            grade := "C-";
+        } else if gpa > 1.0 {
+            grade := "D+";
+        } else if gpa > 0.7 {
+            grade := "D";
+        } else if gpa > 0.0 {
+            grade := "D-";
+        } else {
+            grade := "E";
+        }
+
+        letter_grades := letter_grades + [grade];
+    }
+}

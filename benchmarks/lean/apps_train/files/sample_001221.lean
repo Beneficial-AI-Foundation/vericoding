@@ -1,0 +1,40 @@
+Mohit's girlfriend is playing a game with Nicky. The description of the game is as follows:
+- Initially on a table Player 1 will put N gem-stones.
+- Players will play alternatively, turn by turn.
+- At each move a player can take at most M gem-stones (at least 1 gem-stone must be taken) from the available gem-stones on the table.(Each gem-stone has same cost.)
+- Each players gem-stone are gathered in player's side.
+- The player that empties the table purchases food from it (using all his gem-stones; one gem-stone can buy one unit of food), and the other one puts all his gem-stones back on to the table. Again the game continues with the "loser" player starting.
+- The game continues until all the gem-stones are used to buy food.
+- The main objective of the game is to consume maximum units of food.
+
+	Mohit's girlfriend is weak in mathematics and prediction so she asks help from Mohit, in return she shall kiss Mohit. Mohit task is to predict the maximum units of food her girlfriend can eat, if, she starts first. Being the best friend of Mohit, help him in predicting the answer.
+
+-----Input-----
+- Single line contains two space separated integers N and M.
+
+-----Output-----
+- The maximum units of food Mohit's girlfriend can eat.
+
+-----Constraints and Subtasks-----
+- 1 <= M <= N <= 100
+Subtask 1: 10 points
+- 1 <= M <= N <= 5
+Subtask 2: 20 points
+- 1 <= M <= N <= 10
+Subtask 3: 30 points
+- 1 <= M <= N <= 50
+Subtask 3: 40 points
+- Original Constraints.
+
+-----Example-----
+Input:
+4 2
+
+Output:
+2
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- Apps difficulty: interview
+-- Assurance level: guarded

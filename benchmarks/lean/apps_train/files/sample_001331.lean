@@ -1,0 +1,59 @@
+Chef works as a cook in a restaurant. Each morning, he has to drive down a straight road with length K$K$ to reach the restaurant from his home. Let's describe this road using a coordinate X$X$; the position of Chef's home is X=0$X = 0$ and the position of the restaurant is X=K$X = K$.
+The road has exactly two lanes (numbered 1$1$ and 2$2$), but there are N$N$ obstacles (numbered 1$1$ through N$N$) on it. For each valid i$i$, the i$i$-th obstacle blocks the lane Li$L_i$ at the position X=Xi$X = X_i$ and does not block the other lane.
+When driving, Chef cannot pass through an obstacle. He can switch lanes in zero time at any integer X$X$-coordinate which does not coincide with the X$X$-coordinate of any obstacle. However, whenever he switches lanes, he cannot switch again until driving for at least D$D$ units of distance, and he can travel only in the direction of increasing X$X$. Chef can start driving in any lane he wants. He can not switch lanes at non-integer  X$X$-coordinate.
+Sometimes, it is impossible to reach the restaurant without stopping at an obstacle. Find the maximum possible distance Chef can travel before he has to reach an obstacle which is in the same lane as him. If he can avoid all obstacles and reach the restaurant, the answer is K$K$.
+
+-----Input-----
+- The first line of the input contains a single integer T$T$ denoting the number of test cases. The description of T$T$ test cases follows.
+- The first line of each test case contains three space-separated integers N$N$, K$K$ and D$D$.
+- The second line contains N$N$ space-separated integers X1,X2,…,XN$X_1, X_2, \ldots, X_N$.
+- The third line contains N$N$ space-separated integers L1,L2,…,LN$L_1, L_2, \ldots, L_N$.
+
+-----Output-----
+For each test case, print a single line containing one integer ― the maximum distance Chef can travel.
+
+-----Constraints-----
+- 1≤T≤1,000$1 \le T \le 1,000$
+- 1≤N≤105$1 \le N \le 10^5$
+- 2≤K≤109$2 \le K \le 10^9$
+- 1≤D≤109$1 \le D \le 10^9$
+- 1≤Xi≤K−1$1 \le X_i \le K-1$ for each valid i$i$
+- Xi<Xi+1$X_i < X_{i+1}$ for each valid i$i$
+- 1≤Li≤2$1 \le L_i \le 2$ for each valid i$i$
+- the sum of N$N$ over all test cases does not exceed 106$10^6$
+
+-----Subtasks-----
+Subtask #1 (100 points): original constraints
+
+-----Example Input-----
+4
+2 10 20
+4 7
+1 2
+4 15 20
+4 6 9 13
+1 2 2 1
+5 10 1
+1 3 5 7 9
+1 2 1 2 1
+2 10 2
+4 5
+1 2
+
+-----Example Output-----
+10
+13
+10
+5
+
+-----Explanation-----
+Example case 1: Chef can start in lane 2$2$ and switch to lane 1$1$ at the position X=6$X = 6$, then continue until reaching the restaurant.
+Example case 2: Chef can start in lane 2$2$ and switch to lane 1$1$ at X=5$X = 5$. However, he cannot avoid the obstacle at X=13$X = 13$, because he has not driven for at least 20$20$ units since the last switch.
+Example case 3: Chef should start in lane 2$2$ and then switch lanes at the positions X=2$X=2$, X=4$X=4$, X=6$X=6$ and X=8$X=8$. This way, he can reach the restaurant.
+Example case 4: Chef can start in lane 2$2$ but he cannot escape the second obstacle at X$X$=5 since the first obstacle at X$X$=4 doesn't give enough space for Chef to switch lanes.
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

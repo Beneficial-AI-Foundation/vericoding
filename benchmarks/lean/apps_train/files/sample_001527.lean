@@ -1,0 +1,41 @@
+-----Problem Statement-----
+You all must have played the game candy crush. So here is a bomb which works much the fruit bomb in candy crush. A designer, Anton, designed a very powerful bomb. The bomb, when placed on a location $(x, y)$ in a $R \times C$ grid, wipes out the row $x$ and column $y$ completely.
+You are given a $R\times C$ grid with $N$ targets. You have only one bomb. Your aim is to maximize the damage and hence destroy most number of targets. Given the location of targets on the grid, find out the number of targets that can destroyed.
+The grid system uses index starting with $0$.
+
+-----Input-----
+- First line contains three space separated integers, $R$, $C$ and $N$. Then, $N$ lines follow.
+- Each line contains space separated integers $r$ and $c$ mentioning the location of the target.
+
+-----Output-----
+A single integer giving the number of targets that can be destroyed.
+
+-----Constraints-----
+- $1 \leq R, C \leq 3 \times 10^5$
+- $1 \leq N \leq min(R \times C,  3 \times 10^5)$
+- $0 \leq r < R$
+- $0 \leq c < C$
+- Any input pair $(r, c)$ is not repeated.
+
+-----Subtasks-----
+The total marks will be divided into:
+- 20% : $R, C \leq 10^3$
+- 80% : Original Constraints
+
+-----Sample Input-----
+2 3 3
+1 1
+0 0
+0 2
+
+-----Sample Output-----
+3
+
+-----EXPLANATION-----
+It is possible to destroy all the targets if we place the bomb at $(0, 1)$. Hence, total number of targets destroyed is $3$, which is our answer.
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- Apps difficulty: interview
+-- Assurance level: guarded_and_plausible
