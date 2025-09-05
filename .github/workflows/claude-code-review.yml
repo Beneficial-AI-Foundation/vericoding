@@ -20,11 +20,15 @@ jobs:
     
     runs-on: ubuntu-latest
     permissions:
-      contents: read
-      pull-requests: read
-      issues: read
+      contents: write
+      pull-requests: write
+      issues: write
       id-token: write
-    
+      actions: write      # Ability to manage GitHub Actions
+      checks: write       # Ability to create and update check runs
+      statuses: write     # Ability to update commit statuses
+      discussions: write  # Ability to manage discussions
+      packages: write     # Ability to manage packages
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -58,5 +62,5 @@ jobs:
           
           # See https://github.com/anthropics/claude-code-action/blob/main/docs/usage.md
           # or https://docs.anthropic.com/en/docs/claude-code/sdk#command-line for available options
-          claude_args: '--allowed-tools "Bash(gh issue view:*),Bash(gh search:*),Bash(gh issue list:*),Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*),Bash(gh pr list:*)"'
+          claude_args: '--dangerously-skip-permissions --allowed-tools "Bash(*)" --model claude-opus-4-1'
 
