@@ -40,7 +40,11 @@ def call_llm_api(config: ProcessingConfig, prompt: str) -> str:
 
     # Create the LLM provider
     try:
-        llm_provider = create_llm_provider(config.llm_provider, config.llm_model)
+        llm_provider = create_llm_provider(
+            config.llm_provider,
+            config.llm_model,
+            reasoning_effort=getattr(config, "llm_reasoning_effort", None),
+        )
         
         # Log LLM call start
         start_time = time.time()

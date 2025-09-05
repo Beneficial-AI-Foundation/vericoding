@@ -66,8 +66,9 @@ class AnthropicProvider(LLMProvider):
 class OpenAIProvider(LLMProvider):
     """OpenAI GPT LLM provider."""
 
-    def __init__(self, api_key: str, model: str = "gpt-4o", **kwargs):
+    def __init__(self, api_key: str, model: str = "gpt-4o", reasoning_effort: str | None = None, **kwargs):
         super().__init__(api_key, model, **kwargs)
+        self.reasoning_effort = reasoning_effort
         try:
             import openai
 
@@ -78,19 +79,49 @@ class OpenAIProvider(LLMProvider):
             )
 
     def call_api(self, prompt: str) -> str:
+        def _should_use_responses(model: str) -> bool:
+            m = model.lower() if model else ""
+            return any(tok in m for tok in ["gpt-5", "o4", "reason", "gpt-4o-reasoning"])
+
         try:
+            if _should_use_responses(self.model):
+                # Use Responses API for reasoning models
+                try:
+                    kwargs: dict = {"model": self.model, "input": prompt}
+                    # Newer SDK uses max_output_tokens instead of max_tokens
+                    kwargs["max_output_tokens"] = self.max_tokens
+                    if self.reasoning_effort:
+                        kwargs["reasoning"] = {"effort": self.reasoning_effort}
+                    resp = self.client.responses.create(**kwargs)
+                    # Prefer output_text when available
+                    if hasattr(resp, "output_text") and resp.output_text:
+                        return resp.output_text
+                    # Fallback: concatenate text parts
+                    if hasattr(resp, "content") and resp.content:
+                        parts = []
+                        for p in resp.content:
+                            if getattr(p, "type", None) == "output_text" and hasattr(p, "text"):
+                                parts.append(p.text)
+                            elif hasattr(p, "text"):
+                                parts.append(p.text)
+                        if parts:
+                            return "\n".join(parts)
+                    # Last resort: string cast
+                    return str(resp)
+                except Exception as e:
+                    # Fallback to Chat Completions
+                    pass
+
             response = self.client.chat.completions.create(
                 model=self.model,
                 messages=[{"role": "user", "content": prompt}],
                 max_tokens=self.max_tokens,
                 timeout=self.timeout,
             )
-
             if response.choices and len(response.choices) > 0:
                 return response.choices[0].message.content
             else:
                 raise ValueError("Unexpected response format from OpenAI API")
-
         except Exception as e:
             raise ValueError(f"Error calling OpenAI API: {str(e)}")
 
@@ -168,7 +199,7 @@ class MockProvider(LLMProvider):
         return ""  # No env var required
 
 
-def create_llm_provider(provider_name: str, model: str = None) -> LLMProvider:
+def create_llm_provider(provider_name: str, model: str = None, **kwargs) -> LLMProvider:
     """Factory function to create LLM providers."""
     provider_configs = {
         "claude": {
@@ -212,4 +243,4 @@ def create_llm_provider(provider_name: str, model: str = None) -> LLMProvider:
         )
 
     selected_model = model or config["default_model"]
-    return config["class"](api_key, selected_model)
+    return config["class"](api_key, selected_model, **kwargs)

@@ -64,6 +64,7 @@ class ProcessingConfig:
     api_rate_limit_delay: int
     llm_provider: str
     llm_model: str | None
+    llm_reasoning_effort: str | None = None
     max_directory_traversal_depth: int = 50
 
     # Static configuration loaded once

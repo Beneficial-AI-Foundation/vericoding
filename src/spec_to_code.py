@@ -143,6 +143,13 @@ Examples:
         help="Specific model to use (defaults to provider's default model)",
     )
 
+    parser.add_argument(
+        "--reasoning-effort",
+        type=str,
+        choices=["low", "medium", "high"],
+        help="For reasoning-capable models (e.g., gpt-5, o4), set reasoning effort.",
+    )
+
     return parser.parse_args()
 
 
@@ -253,6 +260,7 @@ def setup_configuration(args) -> ProcessingConfig:
         llm_provider=args.llm_provider,
         llm_model=args.llm_model,
         max_directory_traversal_depth=args.max_directory_traversal_depth,
+        llm_reasoning_effort=args.reasoning_effort,
     )
 
     print("\nConfiguration:")
@@ -264,6 +272,8 @@ def setup_configuration(args) -> ProcessingConfig:
     print(f"- Tool path: {get_tool_path(config)}")
     print(f"- LLM Provider: {config.llm_provider}")
     print(f"- LLM Model: {config.llm_model or 'default'}")
+    if args.reasoning_effort:
+        print(f"- Reasoning effort: {args.reasoning_effort}")
     print(f"- Debug mode: {'Enabled' if config.debug_mode else 'Disabled'}")
     print(
         f"- Spec preservation: {'Strict' if config.strict_spec_verification else 'Relaxed (default)'}"
@@ -690,7 +700,11 @@ def main():
     # Check if the required API key is available for the selected LLM provider
     try:
         # This will raise an error if the API key is not available
-        create_llm_provider(config.llm_provider, config.llm_model)
+        create_llm_provider(
+            config.llm_provider,
+            config.llm_model,
+            reasoning_effort=getattr(config, "llm_reasoning_effort", None),
+        )
         print(f"✓ {config.llm_provider.upper()} API key found and provider initialized")
     except Exception as e:
         print(f"Error: {str(e)}")
