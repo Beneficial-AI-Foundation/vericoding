@@ -6,28 +6,6 @@
         "lean-lsp-mcp"
       ]
     },
-    "leanexplore": {
-      "command": "uvx",
-      "args": [
-        "--upgrade",
-        "--from",
-        "lean-explore",
-        "leanexplore",
-        "mcp",
-        "serve",
-        "--backend",
-        "local"
-      ]
-    },
-    "LeanTool": {
-      "command": "poetry",
-      "args": [
-        "run",
-        "python",
-        "leanmcp.py"
-      ],
-      "cwd": ".mcp-tools/LeanTool"
-    },
     "browsermcp": {
       "command": "npx",
       "args": ["@browsermcp/mcp@latest"]
