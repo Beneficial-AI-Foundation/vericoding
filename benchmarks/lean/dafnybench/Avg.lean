@@ -10,7 +10,7 @@ open Std.Do
     Specification from Dafny:
     - result = (a + b) / 2 (integer division)
 -/
-def computeAvg (a : Int) (b : Int) : Id Int :=
+def computeAvg (a : Int) (b : Int) : Int :=
   (a + b) / 2
 
 /-- Specification: computeAvg returns the integer average.
@@ -20,6 +20,6 @@ def computeAvg (a : Int) (b : Int) : Id Int :=
 -/
 theorem computeAvg_spec (a : Int) (b : Int) :
     ⦃⌜True⌝⦄
-    computeAvg a b
+    (pure (computeAvg a b) : Id _)
     ⦃⇓result => ⌜result = (a + b) / 2⌝⦄ := by
   sorry

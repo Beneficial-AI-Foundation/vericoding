@@ -11,7 +11,7 @@ open Std.Do
     
     Returns a pair with the values swapped.
 -/
-def swapGeneral (X : Int) (Y : Int) : Id (Int × Int) :=
+def swapGeneral (X : Int) (Y : Int) : Int × Int :=
   (Y, X)
 
 /-- Specification: swapGeneral returns the input values swapped.
@@ -21,7 +21,7 @@ def swapGeneral (X : Int) (Y : Int) : Id (Int × Int) :=
 -/
 theorem swapGeneral_spec (X : Int) (Y : Int) :
     ⦃⌜True⌝⦄
-    swapGeneral X Y
+    (pure (swapGeneral X Y) : Id _)
     ⦃⇓result => ⌜let (x, y) := result
                  x = Y ∧ y = X⌝⦄ := by
   sorry

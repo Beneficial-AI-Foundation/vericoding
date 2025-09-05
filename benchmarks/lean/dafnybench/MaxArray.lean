@@ -9,7 +9,7 @@ open Std.Do
     
     Example: maxArray([3, 1, 4, 1, 5]) = 5
 -/
-def maxArray (a : Array Int) : Id Int :=
+def maxArray (a : Array Int) : Int :=
   let rec findMax (i : Nat) (currentMax : Int) : Int :=
     if h : i < a.size then
       let elem := a[i]
@@ -33,7 +33,7 @@ def maxArray (a : Array Int) : Id Int :=
 -/
 theorem maxArray_spec (a : Array Int) :
     ⦃⌜a.size ≥ 1⌝⦄
-    maxArray a
+    (pure (maxArray a) : Id _)
     ⦃⇓m => ⌜
       (∀ k : Fin a.size, m ≥ a[k]) ∧
       (∃ k : Fin a.size, m = a[k])

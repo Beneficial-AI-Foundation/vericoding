@@ -18,13 +18,13 @@ def factorial : Nat → Nat
   | n + 1 => (n + 1) * factorial n
 
 /-- Iterative implementation of factorial -/
-def iterativeFactorial (n : Nat) : Id Nat :=
+def iterativeFactorial (n : Nat) : Nat :=
   sorry
 
 /-- Specification for iterativeFactorial -/
 theorem iterativeFactorial_spec (n : Nat) :
   ⦃⌜True⌝⦄
-  iterativeFactorial n
+  (pure (iterativeFactorial n) : Id _)
   ⦃⇓result => ⌜result = factorial n⌝⦄ := by
   sorry
 

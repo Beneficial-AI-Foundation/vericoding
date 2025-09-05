@@ -10,7 +10,7 @@ open Std.Do
     
     Example: Match("hello", "h?llo") = true
 -/
-def matchPattern (s p : String) : Id Bool :=
+def matchPattern (s p : String) : Bool :=
   let sChars := s.data
   let pChars := p.data
   
@@ -38,7 +38,7 @@ def matchPattern (s p : String) : Id Bool :=
 -/
 theorem matchPattern_spec (s p : String) :
     ⦃⌜s.length = p.length⌝⦄
-    matchPattern s p
+    (pure (matchPattern s p) : Id _)
     ⦃⇓result => ⌜result ↔ ∀ n : Nat, n < s.length → 
       (s.data.get? n = p.data.get? n ∨ p.data.get? n = some '?')⌝⦄ := by
   sorry

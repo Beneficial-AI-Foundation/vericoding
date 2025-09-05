@@ -26,7 +26,7 @@ theorem skippingLemma (a : Array Int) (j : Nat)
   sorry
 
 /-- Find the index of the first zero in the array, or return -1 if none exists -/
-def findZero (a : Array Int) : Id Int :=
+def findZero (a : Array Int) : Int :=
   sorry
 
 /-- Specification for findZero -/
@@ -34,7 +34,7 @@ theorem findZero_spec (a : Array Int)
     (h_nonneg : ∀ i, i < a.size → 0 ≤ a[i]!)
     (h_incr : ∀ i, 0 < i ∧ i < a.size → a[i-1]! - 1 ≤ a[i]!) :
   ⦃⌜True⌝⦄
-  findZero a
+  (pure (findZero a) : Id _)
   ⦃⇓index => ⌜
     (index < 0 → ∀ i, i < a.size → a[i]! ≠ 0) ∧
     (0 ≤ index → index.natAbs < a.size ∧ a[index.natAbs]! = 0)

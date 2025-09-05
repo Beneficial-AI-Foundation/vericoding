@@ -11,7 +11,7 @@ open Std.Do
     - If x >= 0, then result = x
     - If x < 0, then x + result = 0 (i.e., result = -x)
 -/
-def abs (x : Int) : Id Int :=
+def abs (x : Int) : Int :=
   if x >= 0 then x else -x
 
 /-- Specification: abs returns the absolute value of x.
@@ -23,6 +23,6 @@ def abs (x : Int) : Id Int :=
 -/
 theorem abs_spec (x : Int) :
     ⦃⌜True⌝⦄
-    abs x
+    (pure (abs x) : Id _)
     ⦃⇓result => ⌜(x >= 0 → result = x) ∧ (x < 0 → x + result = 0)⌝⦄ := by
   sorry

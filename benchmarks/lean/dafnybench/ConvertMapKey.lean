@@ -9,7 +9,7 @@ open Std.Do
     Given a map from natural numbers to booleans and an injective function on naturals,
     creates a new map where each key k is replaced by f(k), preserving the values.
 -/
-def convertMapKey (inputs : Std.HashMap Nat Bool) (f : Nat → Nat) : Id (Std.HashMap Nat Bool) :=
+def convertMapKey (inputs : Std.HashMap Nat Bool) (f : Nat → Nat) : Std.HashMap Nat Bool :=
   sorry
 
 /-- Specification: ConvertMapKey transforms keys while preserving values.
@@ -22,7 +22,7 @@ def convertMapKey (inputs : Std.HashMap Nat Bool) (f : Nat → Nat) : Id (Std.Ha
 theorem convertMapKey_spec (inputs : Std.HashMap Nat Bool) (f : Nat → Nat)
     (hf_inj : ∀ n1 n2 : Nat, n1 ≠ n2 → f n1 ≠ f n2) :
     ⦃⌜True⌝⦄
-    convertMapKey inputs f
+    (pure (convertMapKey inputs f) : Id _)
     ⦃⇓result => ⌜(∀ k : Nat, inputs.contains k ↔ result.contains (f k)) ∧
                   (∀ k : Nat, inputs.contains k → 
                     result.get? (f k) = inputs.get? k)⌝⦄ := by

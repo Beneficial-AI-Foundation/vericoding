@@ -9,8 +9,8 @@ open Std.Do
     
     This is a simple predicate that checks the parity of an integer.
 -/
-def computeIsEven (x : Int) : Id Bool :=
-  pure (x % 2 = 0)
+def computeIsEven (x : Int) : Bool :=
+  sorry
 
 /-- Specification: computeIsEven returns true if and only if x is even.
 
@@ -21,7 +21,7 @@ def computeIsEven (x : Int) : Id Bool :=
 -/
 theorem computeIsEven_spec (x : Int) :
     ⦃⌜True⌝⦄
-    computeIsEven x
+    (pure (computeIsEven x) : Id _)
     ⦃⇓is_even => ⌜is_even = (x % 2 = 0)⌝⦄ := by
   mvcgen [computeIsEven]
   sorry

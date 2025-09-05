@@ -22,13 +22,13 @@ def pivot (a : Array Int) (stop pvt : Nat) : Prop :=
   ∀ x y, 0 ≤ x → x < pvt → pvt < y → y < stop → a[x]! ≤ a[y]!
 
 /-- Bubble sort algorithm -/
-def bubbleSort (a : Array Int) : Id (Array Int) := 
+def bubbleSort (a : Array Int) : Array Int := 
   sorry
 
 /-- Specification: bubbleSort returns a sorted permutation of the input array -/
 theorem bubbleSort_spec (a : Array Int) (h : a.size > 0) :
   ⦃⌜a.size > 0⌝⦄ 
-  bubbleSort a
+  (pure (bubbleSort a) : Id _)
   ⦃⇓result => ⌜sorted result 0 result.size ∧ result.toList.length = a.toList.length⌝⦄ := by
   mvcgen [bubbleSort]
   sorry

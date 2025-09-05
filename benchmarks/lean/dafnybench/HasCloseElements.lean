@@ -14,13 +14,11 @@ open Std.Do
 -/
 def ratAbs (x : Rat) : Rat := if x ≥ 0 then x else -x
 
-def hasCloseElements (numbers : List Rat) (threshold : Rat) : Id Bool :=
-  pure (
-    let rec checkPairs : List Rat → Bool
-      | [] => false
-      | x :: xs => xs.any (fun y => ratAbs (x - y) < threshold) || checkPairs xs
-    checkPairs numbers
-  )
+def hasCloseElements (numbers : List Rat) (threshold : Rat) : Bool :=
+  let rec checkPairs : List Rat → Bool
+    | [] => false
+    | x :: xs => xs.any (fun y => ratAbs (x - y) < threshold) || checkPairs xs
+  checkPairs numbers
 
 /-- Specification: hasCloseElements returns true if and only if there exist two distinct
     elements in the sequence whose absolute difference is less than the threshold.
@@ -32,7 +30,7 @@ def hasCloseElements (numbers : List Rat) (threshold : Rat) : Id Bool :=
 -/
 theorem hasCloseElements_spec (numbers : List Rat) (threshold : Rat) :
     ⦃⌜threshold ≥ 0⌝⦄
-    hasCloseElements numbers threshold
+    (pure (hasCloseElements numbers threshold) : Id _)
     ⦃⇓res => ⌜(res = true → ∃ i j : Fin numbers.length, i ≠ j ∧ 
                 ratAbs (numbers[i] - numbers[j]) < threshold) ∧
               (res = false → ∀ i j : Fin numbers.length, i < j → 

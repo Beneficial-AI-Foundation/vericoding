@@ -14,7 +14,7 @@ open Std.Do
     - All numbers in the result are even
     - The relative order of even numbers is preserved
 -/
-def findEvenNumbers (arr : Array Int) : Id (Array Int) :=
+def findEvenNumbers (arr : Array Int) : Array Int :=
   arr.filter (fun x => x % 2 = 0)
 
 /-- Specification: findEvenNumbers returns an array containing exactly the even numbers
@@ -29,7 +29,7 @@ def findEvenNumbers (arr : Array Int) : Id (Array Int) :=
 -/
 theorem findEvenNumbers_spec (arr : Array Int) :
     ⦃⌜True⌝⦄
-    findEvenNumbers arr
+    (pure (findEvenNumbers arr) : Id _)
     ⦃⇓result => ⌜(∀ x : Int, x ∈ arr.toList ∧ x % 2 = 0 → x ∈ result.toList) ∧
                  (∀ x : Int, x ∉ arr.toList → x ∉ result.toList) ∧
                  (∀ i : Fin result.size, result[i] % 2 = 0) ∧

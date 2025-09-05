@@ -21,7 +21,7 @@ def sum (a : Array Int) (i j : Nat) : Int :=
 termination_by j - i
 
 /-- Query method that returns the sum from index i to j -/
-def query (a : Array Int) (i j : Nat) : Id Int := 
+def query (a : Array Int) (i j : Nat) : Int := 
   sorry
 
 /-- Predicate that checks if c is a valid prefix sum array for a -/
@@ -30,14 +30,14 @@ def isPrefixSumFor (a c : Array Int) : Prop :=
   ∀ i, i < a.size → c[i + 1]! = c[i]! + a[i]!
 
 /-- Fast query using prefix sum array -/
-def queryFast (a c : Array Int) (i j : Nat) : Id Int := 
+def queryFast (a c : Array Int) (i j : Nat) : Int := 
   sorry
 
 /-- Specification: query returns the sum from index i to j -/
 theorem query_spec (a : Array Int) (i j : Nat)
   (h : 0 ≤ i ∧ i ≤ j ∧ j ≤ a.size) :
   ⦃⌜0 ≤ i ∧ i ≤ j ∧ j ≤ a.size⌝⦄ 
-  query a i j
+  (pure (query a i j) : Id _)
   ⦃⇓result => ⌜result = sum a i j⌝⦄ := by
   mvcgen [query]
   sorry
@@ -50,7 +50,7 @@ theorem queryFast_spec (a c : Array Int) (i j : Nat)
   ⦃⌜a.size + 1 = c.size ∧ c[0]! = 0 ∧ 
     0 ≤ i ∧ i ≤ j ∧ j ≤ a.size ∧
     isPrefixSumFor a c⌝⦄ 
-  queryFast a c i j
+  (pure (queryFast a c i j) : Id _)
   ⦃⇓result => ⌜result = sum a i j⌝⦄ := by
   mvcgen [queryFast]
   sorry

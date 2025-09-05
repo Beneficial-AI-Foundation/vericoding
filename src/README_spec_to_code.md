@@ -30,12 +30,12 @@ The new interface requires specifying the language as the first argument:
 ```bash
 # Old way (language-specific scripts)
 python dafny/spec_to_code.py ./specs
-python lean/spec_to_code_lean.py ./NumpySpec/DafnySpecs
+python lean/spec_to_code_lean.py ./benchmarks/lean/dafnybench
 python verus/spec_to_code.py ./benchmarks/verus_specs
 
 # New way (unified script)
 python spec_to_code.py dafny ./specs
-python spec_to_code.py lean ./NumpySpec/DafnySpecs
+python spec_to_code.py lean ./benchmarks/lean/dafnybench
 python spec_to_code.py verus ./benchmarks/verus_specs
 ```
 

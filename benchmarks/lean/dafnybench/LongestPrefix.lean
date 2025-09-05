@@ -10,7 +10,7 @@ open Std.Do
     
     Example: LongestCommonPrefix("hello", "help") = "hel"
 -/
-def longestCommonPrefix (str1 str2 : List Char) : Id (List Char) :=
+def longestCommonPrefix (str1 str2 : List Char) : List Char :=
   let rec loop (i : Nat) (acc : List Char) : List Char :=
     if h : i < min str1.length str2.length then
       if h1 : i < str1.length then
@@ -35,7 +35,7 @@ def longestCommonPrefix (str1 str2 : List Char) : Id (List Char) :=
 -/
 theorem longestCommonPrefix_spec (str1 str2 : List Char) :
     ⦃⌜True⌝⦄
-    longestCommonPrefix str1 str2
+    (pure (longestCommonPrefix str1 str2) : Id _)
     ⦃⇓result => ⌜
       -- prefix is a prefix of str1
       result.length ≤ str1.length ∧ result = str1.take result.length ∧

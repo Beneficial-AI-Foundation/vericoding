@@ -11,7 +11,7 @@ open Std.Do
     
     Returns a pair with the values swapped.
 -/
-def swapSimultaneous (X : Int) (Y : Int) : Id (Int × Int) :=
+def swapSimultaneous (X : Int) (Y : Int) : Int × Int :=
   (Y, X)
 
 /-- Specification: swapSimultaneous returns the input values swapped.
@@ -21,7 +21,7 @@ def swapSimultaneous (X : Int) (Y : Int) : Id (Int × Int) :=
 -/
 theorem swapSimultaneous_spec (X : Int) (Y : Int) :
     ⦃⌜True⌝⦄
-    swapSimultaneous X Y
+    (pure (swapSimultaneous X Y) : Id _)
     ⦃⇓result => ⌜let (x, y) := result
                  x = Y ∧ y = X⌝⦄ := by
   sorry

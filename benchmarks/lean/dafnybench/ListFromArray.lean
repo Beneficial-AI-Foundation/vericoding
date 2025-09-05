@@ -39,13 +39,13 @@ def get {α : Type} [Inhabited α] : (l : FList α) → (i : Nat) → i < length
 end FList
 
 /-- Convert an array to a functional list -/
-def fromArray {α : Type} (a : Array α) : Id (FList α) := 
+def fromArray {α : Type} (a : Array α) : FList α := 
   sorry
 
 /-- Specification: fromArray preserves length, elements, and membership -/
 theorem fromArray_spec {α : Type} [BEq α] [Inhabited α] (a : Array α) :
   ⦃⌜a.size ≥ 0⌝⦄ 
-  fromArray a
+  (pure (fromArray a) : Id _)
   ⦃⇓result => ⌜FList.length result = a.size ∧
     (∀ i h, FList.get result i h = a[i]!) ∧
     (∀ x, FList.mem result x = true → ∃ i, i < a.size ∧ a[i]! = x)⌝⦄ := by

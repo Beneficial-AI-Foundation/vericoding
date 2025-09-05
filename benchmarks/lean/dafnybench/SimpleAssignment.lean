@@ -12,13 +12,13 @@ import Std.Tactic.Do
 open Std.Do
 
 /-- Simple assignment method that adds 1 to the input -/
-def simple (y : Int) : Id Int := 
+def simple (y : Int) : Int := 
   sorry
 
 /-- Specification: when y = 6, simple returns 7 -/
 theorem simple_spec :
   ⦃⌜(6 : Int) = 6⌝⦄ 
-  simple 6
+  (pure (simple 6) : Id _)
   ⦃⇓result => ⌜result = 7⌝⦄ := by
   mvcgen [simple]
   sorry

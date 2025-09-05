@@ -35,13 +35,13 @@ def correct_pair (pair : Nat × Nat) (nums : List Int) (target : Int) : Prop :=
     Postconditions:
     - Returns a correct pair (i, j)
 -/
-def twoSum (nums : List Int) (target : Int) : Id (Nat × Nat) := do
+def twoSum (nums : List Int) (target : Int) : Nat × Nat :=
   sorry -- Implementation left as exercise
 
 theorem twoSum_spec (nums : List Int) (target : Int)
     (h_exists : ∃ i j : Nat, correct_pair (i, j) nums target) :
     ⦃⌜True⌝⦄
-    twoSum nums target
+    (pure (twoSum nums target) : Id _)
     ⦃⇓result => ⌜correct_pair result nums target⌝⦄ := by
   mvcgen [twoSum]
   sorry

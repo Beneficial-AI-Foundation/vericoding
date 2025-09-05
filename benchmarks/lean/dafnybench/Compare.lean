@@ -7,7 +7,7 @@ open Std.Do
 
     Returns true if the two inputs are equal, false otherwise.
 -/
-def compare {T : Type} [DecidableEq T] (a b : T) : Id Bool :=
+def compare {T : Type} [DecidableEq T] (a b : T) : Bool :=
   sorry
 
 /-- Specification: Compare returns true iff the inputs are equal.
@@ -19,6 +19,6 @@ def compare {T : Type} [DecidableEq T] (a b : T) : Id Bool :=
 -/
 theorem compare_spec {T : Type} [DecidableEq T] (a b : T) :
     ⦃⌜True⌝⦄
-    compare a b
+    (pure (compare a b) : Id _)
     ⦃⇓eq => ⌜(a = b → eq = true) ∧ (a ≠ b → eq = false)⌝⦄ := by
   sorry

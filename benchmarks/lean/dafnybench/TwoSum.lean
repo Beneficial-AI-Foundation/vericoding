@@ -9,7 +9,7 @@ open Std.Do
     This is based on the LeetCode problem:
     https://leetcode.com/problems/two-sum/
 -/
-def twoSum (nums : Array Int) (target : Int) : Id (Int × Int) := do
+def twoSum (nums : Array Int) (target : Int) : Int × Int :=
   sorry -- Implementation left as exercise
 
 /-- Specification: twoSum returns indices i and j where:
@@ -29,7 +29,7 @@ theorem twoSum_spec (nums : Array Int) (target : Int)
     (h_size : nums.size > 1)
     (h_exists : ∃ i j : Fin nums.size, i.val < j.val ∧ nums[i] + nums[j] = target) :
     ⦃⌜True⌝⦄
-    twoSum nums target
+    (pure (twoSum nums target) : Id _)
     ⦃⇓result => ⌜let (i, j) := result
                  0 ≤ i ∧ i < j ∧ j < nums.size ∧
                  nums[i.toNat]! + nums[j.toNat]! = target ∧

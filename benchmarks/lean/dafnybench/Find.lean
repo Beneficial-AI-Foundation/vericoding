@@ -10,10 +10,10 @@ open Std.Do
 
     This implements a linear search algorithm.
 -/
-def find (a : Array Int) (key : Int) : Id Int :=
+def find (a : Array Int) (key : Int) : Int :=
   match a.findIdx? (· = key) with
-  | some idx => pure (idx : Int)
-  | none => pure (-1)
+  | some idx => (idx : Int)
+  | none => (-1)
 
 /-- Specification: find returns the index of the first occurrence of key in array a,
     or -1 if key is not found.
@@ -26,7 +26,7 @@ def find (a : Array Int) (key : Int) : Id Int :=
 -/
 theorem find_spec (a : Array Int) (key : Int) :
     ⦃⌜True⌝⦄
-    find a key
+    (pure (find a key) : Id _)
     ⦃⇓index => ⌜-1 ≤ index ∧ index < a.size ∧
                 (index ≠ -1 → a[index.toNat]! = key ∧ 
                   (∀ i : Nat, i < index.toNat → a[i]! ≠ key)) ∧

@@ -3,19 +3,19 @@ Binary search on a decreasing sequence.
 Ported from Dafny specification at:
 dafny/benchmarks/dafny-bench_specs/atomizer_supported/Dafny_tmp_tmp0wu8wmfr_Heimaverkefni 2_BinarySearchDec_spec.dfy
 
-This module contains specifications for searching in a decreasing sequence.
+This module contains specifications for searching in a decreasing sequence.-
 The sequence is sorted in descending order (larger values come first).
 -/
 
 namespace DafnyBenchmarks
 
-/-- Recursive binary search on a decreasing sequence -/ 
+/-- Recursive binary search on a decreasing sequence -/
 def searchRecursive (a : Array Int) (i j : Nat) (x : Int) : Nat := by
   -- Implementation intentionally omitted for the benchmark; to be filled by agents.
   -- Keeping the specification below while leaving the implementation abstract.
   sorry
 
-/-- Iterative binary search on a decreasing sequence -/ 
+/-- Iterative binary search on a decreasing sequence -/
 def searchLoop (a : Array Int) (i j : Nat) (x : Int) : Nat := by
   -- Implementation intentionally omitted for the benchmark; to be filled by agents.
   sorry

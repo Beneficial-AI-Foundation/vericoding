@@ -8,7 +8,7 @@ open Std.Do
     Copies `len` elements from `src` starting at index `sStart` 
     into `dest` starting at index `dStart`, returning a new array.
 -/
-def copy (src : Array Int) (sStart : Nat) (dest : Array Int) (dStart : Nat) (len : Nat) : Id (Array Int) :=
+def copy (src : Array Int) (sStart : Nat) (dest : Array Int) (dStart : Nat) (len : Nat) : Array Int :=
   sorry
 
 /-- Specification: Copy preserves array structure while copying a segment.
@@ -26,7 +26,7 @@ theorem copy_spec (src dest : Array Int) (sStart dStart len : Nat)
     (hsrc : src.size ≥ sStart + len)
     (hdest : dest.size ≥ dStart + len) :
     ⦃⌜True⌝⦄
-    copy src sStart dest dStart len
+    (pure (copy src sStart dest dStart len) : Id _)
     ⦃⇓result => ⌜result.size = dest.size ∧
                   (∀ i : Nat, i < dStart → result[i]? = dest[i]?) ∧
                   (∀ i : Nat, i ≥ dStart + len → result[i]? = dest[i]?) ∧

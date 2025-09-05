@@ -45,24 +45,24 @@ def optimize (e : Exp) : Exp :=
   | e => e
 
 /-- Prove that optimization preserves expression semantics -/
-def optimizeCorrect (e : Exp) (s : String → Option Int) : Id Unit :=
+def optimizeCorrect (e : Exp) (s : String → Option Int) : Unit :=
   sorry
 
 /-- Specification for optimizeCorrect -/
 theorem optimizeCorrect_spec (e : Exp) (s : String → Option Int) :
   ⦃⌜True⌝⦄
-  optimizeCorrect e s
+  (pure (optimizeCorrect e s) : Id _)
   ⦃⇓_ => ⌜eval e s = eval (optimize e) s⌝⦄ := by
   sorry
 
 /-- Test various optimization features -/
-def optimizeFeatures : Id Unit :=
+def optimizeFeatures : Unit :=
   sorry
 
 /-- Specification for optimizeFeatures -/
 theorem optimizeFeatures_spec :
   ⦃⌜True⌝⦄
-  optimizeFeatures
+  (pure optimizeFeatures : Id _)
   ⦃⇓_ => ⌜True⌝⦄ := by
   sorry
 

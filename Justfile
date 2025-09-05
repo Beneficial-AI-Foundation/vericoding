@@ -1,4 +1,4 @@
-# Justfile for NumpySpec project
+# Justfile for VeriCoding project
 # Usage: just <command>
 
 # Settings
@@ -51,7 +51,7 @@ lint: setup-python
 
 # Main setup entrypoint
 setup:
-    @echo "🚀 Starting NumpySpec environment setup..."
+    @echo "🚀 Starting VeriCoding environment setup..."
     @echo "   Platform: {{os()}} ({{arch()}})"
     @echo "   CI: {{is_ci}}"
     if [ "{{is_ci}}" = "true" ]; then just _setup-ci; else just _setup-local; fi
@@ -91,8 +91,8 @@ _update-shell-rc:
         echo "   - {{home_dir}}\\.local\\bin"
     else
         RC_FILE=$(if [[ "{{shell_name}}" == *"zsh"* ]]; then echo "$HOME/.zshrc"; elif [[ "{{shell_name}}" == *"bash"* ]]; then echo "$HOME/.bashrc"; else echo "$HOME/.profile"; fi)
-        if ! grep -q "# NumpySpec toolchain" "$RC_FILE" 2>/dev/null; then
-            echo '# NumpySpec toolchain — cargo / elan / uv' >> "$RC_FILE"
+        if ! grep -q "# VeriCoding toolchain" "$RC_FILE" 2>/dev/null; then
+            echo '# VeriCoding toolchain — cargo / elan / uv' >> "$RC_FILE"
             echo 'export PATH="$HOME/.elan/bin:$HOME/.cargo/bin:$HOME/.local/bin:$PATH"' >> "$RC_FILE"
             echo "✅ Added PATH to $RC_FILE - restart your shell or run: source $RC_FILE"
         fi

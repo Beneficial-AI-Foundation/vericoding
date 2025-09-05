@@ -14,13 +14,13 @@ def Main : IO Unit := do
     
     Note: The original specification doesn't provide postconditions.
 -/
-def H (a c : Array Int) (n j : Nat) : Id Unit := do
+def H (a c : Array Int) (n j : Nat) : Unit := 
   sorry -- Implementation left as exercise
 
 theorem H_spec (a c : Array Int) (n j : Nat)
     (h_bounds : j < n ∧ n = a.size ∧ n = c.size) :
     ⦃⌜True⌝⦄
-    H a c n j
+    (pure (H a c n j) : Id _)
     ⦃⇓_ => ⌜True⌝⦄ := by
   sorry
 
@@ -31,13 +31,13 @@ theorem H_spec (a c : Array Int) (n j : Nat)
     
     Note: The original specification doesn't provide postconditions.
 -/
-def K (a c : Array Int) (n : Nat) : Id Unit := do
+def K (a c : Array Int) (n : Nat) : Unit := 
   sorry -- Implementation left as exercise
 
 theorem K_spec (a c : Array Int) (n : Nat)
     (h_bounds : n ≤ a.size ∧ n ≤ c.size) :
     ⦃⌜True⌝⦄
-    K a c n
+    (pure (K a c n) : Id _)
     ⦃⇓_ => ⌜True⌝⦄ := by
   sorry
 
@@ -48,13 +48,13 @@ theorem K_spec (a c : Array Int) (n : Nat)
     
     Note: The original specification doesn't provide postconditions.
 -/
-def L (a c : Array Int) (n : Nat) : Id Unit := do
+def L (a c : Array Int) (n : Nat) : Unit := 
   sorry -- Implementation left as exercise
 
 theorem L_spec (a c : Array Int) (n : Nat)
     (h_bounds : n ≤ a.size ∧ a.size = c.size) :
     ⦃⌜True⌝⦄
-    L a c n
+    (pure (L a c n) : Id _)
     ⦃⇓_ => ⌜True⌝⦄ := by
   sorry
 
@@ -66,13 +66,13 @@ theorem L_spec (a c : Array Int) (n : Nat)
     
     Note: The original specification doesn't provide postconditions.
 -/
-def M' (a c : Array Int) (m n k l : Nat) : Id Unit := do
+def M' (a c : Array Int) (m n k l : Nat) : Unit := 
   sorry -- Implementation left as exercise
 
 theorem M'_spec (a c : Array Int) (m n k l : Nat)
     (h_a : k + m ≤ a.size)
     (h_c : l + n ≤ c.size) :
     ⦃⌜True⌝⦄
-    M' a c m n k l
+    (pure (M' a c m n k l) : Id _)
     ⦃⇓_ => ⌜True⌝⦄ := by
   sorry

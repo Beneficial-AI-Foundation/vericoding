@@ -10,7 +10,7 @@ open Std.Do
 
     The array is modified in-place.
 -/
-def replace (arr : Array Int) (k : Int) : Id (Array Int) :=
+def replace (arr : Array Int) (k : Int) : Array Int :=
   Array.ofFn fun i : Fin arr.size => if arr[i] > k then -1 else arr[i]
 
 /-- Specification: replace modifies the array such that all elements
@@ -21,7 +21,7 @@ def replace (arr : Array Int) (k : Int) : Id (Array Int) :=
 -/
 theorem replace_spec (arr : Array Int) (k : Int) :
     ⦃⌜True⌝⦄
-    replace arr k
+    (pure (replace arr k) : Id _)
     ⦃⇓result => ⌜result.size = arr.size ∧
                  ∀ i : Fin arr.size, 
                    (arr[i] > k → result[i.val]'(by sorry) = -1) ∧

@@ -21,7 +21,7 @@ def Array2D.get (a : Array2D α) (i : Nat) (j : Nat) (hi : i < a.rows) (hj : j <
 
     Returns the row and column indices of the key.
 -/
-def slopeSearch (a : Array2D Int) (key : Int) : Id (Nat × Nat) :=
+def slopeSearch (a : Array2D Int) (key : Int) : (Nat × Nat) :=
   -- Simple implementation - just find the first occurrence
   -- In a real implementation, this would use the sorted property efficiently
   let rec findKey (r c : Nat) : Option (Nat × Nat) :=
@@ -54,7 +54,7 @@ theorem slopeSearch_spec (a : Array2D Int) (key : Int)
                     a.get i j (by sorry) (by sorry) ≤ a.get i' j (by sorry) (by sorry))
     (h_exists : ∃ i j, i < a.rows ∧ j < a.cols ∧ a.get i j (by sorry) (by sorry) = key) :
     ⦃⌜True⌝⦄
-    slopeSearch a key
+    (pure (slopeSearch a key) : Id _)
     ⦃⇓result => ⌜let (m, n) := result
                  m < a.rows ∧ n < a.cols ∧ 
                  a.get m n (by sorry) (by sorry) = key⌝⦄ := by

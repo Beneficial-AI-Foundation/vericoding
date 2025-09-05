@@ -13,26 +13,26 @@ import Std.Tactic.Do
 open Std.Do
 
 /-- Checks if pre is a prefix of str -/
-def isPrefix (pre str : String) : Id Bool := 
+def isPrefix (pre str : String) : Bool := 
   sorry
 
 /-- Checks if sub is a substring of str -/
-def isSubstring (sub str : String) : Id Bool := 
+def isSubstring (sub str : String) : Bool := 
   sorry
 
 /-- Checks if str1 and str2 have a common substring of length k -/
-def haveCommonKSubstring (k : Nat) (str1 str2 : String) : Id Bool := 
+def haveCommonKSubstring (k : Nat) (str1 str2 : String) : Bool := 
   sorry
 
 /-- Returns the length of the longest common substring of str1 and str2 -/
-def maxCommonSubstringLength (str1 str2 : String) : Id Nat := 
+def maxCommonSubstringLength (str1 str2 : String) : Nat := 
   sorry
 
 /-- Specification: isPrefix returns true iff pre is a prefix of str -/
 theorem isPrefix_spec (pre str : String) 
   (h : 0 < pre.length ∧ pre.length ≤ str.length) :
   ⦃⌜0 < pre.length ∧ pre.length ≤ str.length⌝⦄ 
-  isPrefix pre str
+  (pure (isPrefix pre str) : Id _)
   ⦃⇓result => ⌜result = true ↔ str.startsWith pre⌝⦄ := by
   mvcgen [isPrefix]
   sorry
@@ -41,7 +41,7 @@ theorem isPrefix_spec (pre str : String)
 theorem isSubstring_spec (sub str : String)
   (h : 0 < sub.length ∧ sub.length ≤ str.length) :
   ⦃⌜0 < sub.length ∧ sub.length ≤ str.length⌝⦄ 
-  isSubstring sub str
+  (pure (isSubstring sub str) : Id _)
   ⦃⇓result => ⌜result = true ↔ ∃ i, i + sub.length ≤ str.length ∧ 
     (∀ j, j < sub.length → str.get ⟨i + j⟩ = sub.get ⟨j⟩)⌝⦄ := by
   mvcgen [isSubstring]
@@ -51,7 +51,7 @@ theorem isSubstring_spec (sub str : String)
 theorem haveCommonKSubstring_spec (k : Nat) (str1 str2 : String)
   (h : 0 < k ∧ k ≤ str1.length ∧ k ≤ str2.length) :
   ⦃⌜0 < k ∧ k ≤ str1.length ∧ k ≤ str2.length⌝⦄ 
-  haveCommonKSubstring k str1 str2
+  (pure (haveCommonKSubstring k str1 str2) : Id _)
   ⦃⇓result => ⌜result = true ↔ 
     ∃ (i j : Nat), i + k ≤ str1.length ∧ j + k ≤ str2.length ∧
     (∀ idx, idx < k → str1.get ⟨i + idx⟩ = str2.get ⟨j + idx⟩)⌝⦄ := by
@@ -62,7 +62,7 @@ theorem haveCommonKSubstring_spec (k : Nat) (str1 str2 : String)
 theorem maxCommonSubstringLength_spec (str1 str2 : String)
   (h : 0 < str1.length ∧ 0 < str2.length) :
   ⦃⌜0 < str1.length ∧ 0 < str2.length⌝⦄ 
-  maxCommonSubstringLength str1 str2
+  (pure (maxCommonSubstringLength str1 str2) : Id _)
   ⦃⇓result => ⌜∀ k, k > result → ¬(haveCommonKSubstring k str1 str2 = true)⌝⦄ := by
   mvcgen [maxCommonSubstringLength]
   sorry

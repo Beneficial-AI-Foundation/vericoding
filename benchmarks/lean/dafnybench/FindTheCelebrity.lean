@@ -25,13 +25,13 @@ def isCelebrity (n : Int) (i : Int) : Prop :=
   ∀ j, 0 ≤ j ∧ j < n ∧ i ≠ j → knows j i ∧ ¬knows i j
 
 /-- Find a celebrity among n people, returning -1 if none exists -/
-def findCelebrity (n : Int) : Id Int :=
+def findCelebrity (n : Int) : Int :=
   sorry
 
 /-- Specification for findCelebrity -/
 theorem findCelebrity_spec (n : Int) (h : 2 ≤ n ∧ n ≤ 100) :
   ⦃⌜True⌝⦄
-  findCelebrity n
+  (pure (findCelebrity n) : Id _)
   ⦃⇓r => ⌜
     (0 ≤ r ∧ r < n → isCelebrity n r) ∧
     (r = -1 → ∀ i, 0 ≤ i ∧ i < n → ¬isCelebrity n i)

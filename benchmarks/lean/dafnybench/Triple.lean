@@ -9,7 +9,7 @@ open Std.Do
 
     Returns the tripled value.
 -/
-def triple (x : Int) : Id Int :=
+def triple (x : Int) : Int :=
   3 * x
 
 /-- Specification: triple returns three times the input value.
@@ -19,6 +19,6 @@ def triple (x : Int) : Id Int :=
 -/
 theorem triple_spec (x : Int) :
     ⦃⌜True⌝⦄
-    triple x
+    (pure (triple x) : Id _)
     ⦃⇓result => ⌜result = 3 * x⌝⦄ := by
     sorry

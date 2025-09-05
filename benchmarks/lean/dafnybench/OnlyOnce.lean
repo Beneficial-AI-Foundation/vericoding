@@ -11,7 +11,7 @@ open Std.Do
     Example: only_once([1, 2, 3, 2, 4], 3) = true
              only_once([1, 2, 3, 2, 4], 2) = false
 -/
-def onlyOnce {α : Type} [BEq α] (a : Array α) (key : α) : Id Bool :=
+def onlyOnce {α : Type} [BEq α] (a : Array α) (key : α) : Bool :=
   let rec countOccurrences (i : Nat) (count : Nat) : Nat :=
     if h : i < a.size then
       if a[i] == key then
@@ -29,6 +29,6 @@ def onlyOnce {α : Type} [BEq α] (a : Array α) (key : α) : Id Bool :=
 -/
 theorem onlyOnce_spec {α : Type} [BEq α] [LawfulBEq α] (a : Array α) (key : α) :
     ⦃⌜True⌝⦄
-    onlyOnce a key
+    (pure (onlyOnce a key) : Id _)
     ⦃⇓b => ⌜b ↔ (a.toList.count key = 1)⌝⦄ := by
   sorry

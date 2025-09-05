@@ -8,7 +8,6 @@ without requiring Mathlib.
 In a real implementation, this would be replaced with Mathlib's Multiset.
 -/
 
-namespace NumpySpec.DafnyBenchmarks
 
 /-- A multiset (bag) is a collection where elements can appear multiple times -/
 structure Multiset (α : Type) where
@@ -54,9 +53,9 @@ def insert {α : Type} (x : α) (m : Multiset α) : Multiset α := sorry
 /-- Check if multiset is empty -/
 def isEmpty {α : Type} (m : Multiset α) : Bool := sorry
 
-/-- Notation for membership -/
-instance {α : Type} [DecidableEq α] : Membership α (Multiset α) where
-  mem x m := mem x m
+-- /-- Notation for membership -/
+-- instance {α : Type} [DecidableEq α] : Membership α (Multiset α) where
+--   mem x m := mem x m
 
 /-- Decidable equality for multisets -/
 instance {α : Type} [DecidableEq α] : DecidableEq (Multiset α) := sorry
@@ -67,4 +66,20 @@ instance {α : Type} [DecidableEq α] : BEq (Multiset α) where
 
 end Multiset
 
-end NumpySpec.DafnyBenchmarks
+/-! Convenience conversions used by DafnyBench specs -/
+
+namespace List
+
+/-- Convert a list to a multiset. Stubbed for specs. -/
+def toMultiset {α : Type} (l : List α) : Multiset α :=
+  Multiset.ofList l
+
+end List
+
+namespace Array
+
+/-- Convert an array to a multiset. Stubbed for specs. -/
+def toMultiset {α : Type} (a : Array α) : Multiset α :=
+  Multiset.ofArray a
+
+end Array

@@ -21,15 +21,14 @@ def isSorted (a : Array Int) : Prop :=
     Postconditions:
     - Returns true iff there exists an index i such that a[i] = K
 -/
-def binSearch (a : Array Int) (K : Int) : Id Bool := do
+def binSearch (a : Array Int) (K : Int) : Bool :=
   sorry -- Implementation left as exercise
 
 theorem binSearch_spec (a : Array Int) (K : Int)
     (h_sorted : isSorted a) :
     ⦃⌜True⌝⦄
-    binSearch a K
+    (pure (binSearch a K) : Id _)
     ⦃⇓result => ⌜result = true ↔ ∃ i : Nat, i < a.size ∧ a[i]! = K⌝⦄ := by
-  mvcgen [binSearch]
   sorry
 
 /-- Alternative (weaker but equivalent) definition of sorted array.

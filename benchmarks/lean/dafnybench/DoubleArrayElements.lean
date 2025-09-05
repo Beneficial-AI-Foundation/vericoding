@@ -7,7 +7,7 @@ open Std.Do
 
     Modifies the input array by multiplying each element by 2.
 -/
-def doubleArrayElements (s : Array Int) : Id (Array Int) :=
+def doubleArrayElements (s : Array Int) : Array Int :=
   sorry
 
 /-- Specification: DoubleArrayElements doubles all elements.
@@ -17,7 +17,7 @@ def doubleArrayElements (s : Array Int) : Id (Array Int) :=
 -/
 theorem doubleArrayElements_spec (s : Array Int) :
     ⦃⌜True⌝⦄
-    doubleArrayElements s
+    (pure (doubleArrayElements s) : Id _)
     ⦃⇓result => ⌜result.size = s.size ∧ 
                   ∀ i : Fin s.size, result[i.val]? = some (2 * s[i])⌝⦄ := by
   sorry

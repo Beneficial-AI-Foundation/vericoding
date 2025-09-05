@@ -8,7 +8,7 @@ which partitions an array of colors (Red, White, Blue) such that
 all reds come before whites, and all whites come before blues.
 -/
 
-import NumpySpec.DafnyBenchmarks.Multiset
+import dafnybench.Multiset
 
 namespace DafnyBenchmarks
 
@@ -24,26 +24,9 @@ def below (c d : Color) : Bool :=
   c == Color.Red || c == d || d == Color.Blue
 
 /-- Dutch Flag algorithm implementation -/
-def dutchFlag (a : Array Color) : Array Color :=
-  let rec partition (arr : Array Color) (i j k : Nat) : Array Color :=
-    if i > j then arr
-    else if h : i < arr.size then
-      match arr[i] with
-      | Color.Red => 
-        if hk : k < arr.size then
-          let arr' := arr.swap i k
-          partition arr' (i + 1) j (k + 1)
-        else arr
-      | Color.White => 
-        partition arr (i + 1) j k
-      | Color.Blue => 
-        if hj : j < arr.size then
-          let arr' := arr.swap i j
-          partition arr' i (j - 1) k
-        else arr
-    else arr
-  termination_by sorry
-  partition a 0 (if a.size = 0 then 0 else a.size - 1) 0
+def dutchFlag (a : Array Color) : Array Color := by
+  -- Implementation intentionally omitted for the benchmark; to be filled by agents.
+  sorry
 
 /-- Specification for the Dutch Flag algorithm -/
 theorem dutchFlag_spec (a : Array Color) :

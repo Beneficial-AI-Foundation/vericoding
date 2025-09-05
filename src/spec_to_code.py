@@ -58,7 +58,7 @@ Supported LLM providers: claude, openai, deepseek
 
 Examples:
   python spec_to_code.py dafny ./specs
-  python spec_to_code.py lean ./NumpySpec/DafnySpecs --iterations 3
+  python spec_to_code.py lean ./benchmarks/lean/dafnybench --iterations 3
   python spec_to_code.py verus ./benchmarks/verus_specs --debug --iterations 5
   python spec_to_code.py dafny ./specs --workers 8 --iterations 3 --llm-provider openai
   python spec_to_code.py verus ./specs --workers 2 --debug --llm-provider deepseek --llm-model deepseek-chat

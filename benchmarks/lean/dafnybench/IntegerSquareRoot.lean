@@ -14,30 +14,19 @@ open Std.Do
     - squareRoot 8 = 2
     - squareRoot 9 = 3
 -/
-def squareRoot (N : Nat) : Id Nat :=
-  pure (
-    -- Simple iterative approach to find integer square root
-    let rec findRoot (guess : Nat) : Nat :=
-      if h : guess ≤ N then
-        if (guess + 1) * (guess + 1) > N then
-          guess
-        else
-          findRoot (guess + 1)
-      else
-        guess
-    termination_by n - guess
-    findRoot 0
-  )
+def squareRoot (N : Nat) : Nat :=
+  -- Implementation intentionally omitted for the benchmark; to be filled by agents.
+  sorry
 
 /-- Specification: squareRoot returns the integer square root of N.
 
     Precondition: True (works for any natural number)
     Postcondition: r² ≤ N < (r+1)²
-    
+
     This ensures that r is the largest natural number whose square doesn't exceed N.
 -/
 theorem squareRoot_spec (N : Nat) :
     ⦃⌜True⌝⦄
-    squareRoot N
+    (pure (squareRoot N) : Id _)
     ⦃⇓r => ⌜r * r ≤ N ∧ N < (r + 1) * (r + 1)⌝⦄ := by
   sorry

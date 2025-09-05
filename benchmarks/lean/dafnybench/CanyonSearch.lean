@@ -8,7 +8,7 @@ open Std.Do
     Given two non-empty sorted arrays, finds the minimum absolute difference
     between any element from the first array and any element from the second array.
 -/
-def canyonSearch (a : Array Int) (b : Array Int) : Id Nat :=
+def canyonSearch (a : Array Int) (b : Array Int) : Nat :=
   sorry
 
 /-- Specification: CanyonSearch finds the minimum absolute difference between array elements.
@@ -26,7 +26,7 @@ theorem canyonSearch_spec (a b : Array Int)
     (ha_sorted : ∀ i j : Fin a.size, i < j → a[i] ≤ a[j])
     (hb_sorted : ∀ i j : Fin b.size, i < j → b[i] ≤ b[j]) :
     ⦃⌜True⌝⦄
-    canyonSearch a b
+    (pure (canyonSearch a b) : Id _)
     ⦃⇓d => ⌜(∃ i : Fin a.size, ∃ j : Fin b.size, 
               d = Int.natAbs (a[i] - b[j])) ∧
             (∀ i : Fin a.size, ∀ j : Fin b.size, 

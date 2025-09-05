@@ -10,8 +10,8 @@ open Std.Do
 
     Returns: Always returns 7.
 -/
-def returnSeven (x : Int) : Id Int :=
-  pure 7
+def returnSeven (x : Int) : Int :=
+  7
 
 /-- Specification: returnSeven always returns the value 7,
     regardless of the input.
@@ -21,6 +21,6 @@ def returnSeven (x : Int) : Id Int :=
 -/
 theorem returnSeven_spec (x : Int) :
     ⦃⌜True⌝⦄
-    returnSeven x
+    (pure (returnSeven x) : Id _)
     ⦃⇓result => ⌜result = 7⌝⦄ := by
   sorry

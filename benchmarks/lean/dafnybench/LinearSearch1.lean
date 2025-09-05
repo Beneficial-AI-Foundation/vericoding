@@ -11,10 +11,10 @@ open Std.Do
     This variant returns array.size when the element is not found, making it
     easy to check if the search was successful by comparing with array.size.
 -/
-def linearSearch (a : Array Int) (e : Int) : Id Nat :=
+def linearSearch (a : Array Int) (e : Int) : Nat :=
   match a.findIdx? (· = e) with
-  | some idx => pure idx
-  | none => pure a.size
+  | some idx => idx
+  | none => a.size
 
 /-- Specification: linearSearch returns the index of the first occurrence of e,
     or a.size if e is not in the array.
@@ -28,7 +28,7 @@ def linearSearch (a : Array Int) (e : Int) : Id Nat :=
 -/
 theorem linearSearch_spec (a : Array Int) (e : Int) :
     ⦃⌜True⌝⦄
-    linearSearch a e
+    (pure (linearSearch a e) : Id _)
     ⦃⇓n => ⌜0 ≤ n ∧ n ≤ a.size ∧
             (n = a.size ∨ (n < a.size ∧ a[n]! = e)) ∧
             (∀ i : Nat, i < n → a[i]! ≠ e)⌝⦄ := by

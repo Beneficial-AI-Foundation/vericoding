@@ -18,12 +18,12 @@ open Std.Do
     - If result < 0:
       - The key does not exist in the array
 -/
-def find (a : Array Int) (key : Int) : Id Int := do
+def find (a : Array Int) (key : Int) : Int :=
   sorry -- Implementation left as exercise
 
 theorem find_spec (a : Array Int) (key : Int) :
     ⦃⌜True⌝⦄
-    find a key
+    (pure (find a key) : Id _)
     ⦃⇓i => ⌜(0 ≤ i → (i < a.size ∧ 
                        a[i.toNat]! = key ∧
                        ∀ k : Nat, 0 ≤ k ∧ k < i → a[k]! ≠ key)) ∧

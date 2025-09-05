@@ -12,7 +12,7 @@ open Std.Do
     - result.length = a.length
     - For all i, result[i] = a[i] + b[i]
 -/
-def arraySum (a : Array Int) (b : Array Int) : Id (Array Int) :=
+def arraySum (a : Array Int) (b : Array Int) : Array Int :=
   if h : a.size = b.size then
     Array.ofFn fun i : Fin a.size => a[i] + b[i.val]'(h ▸ i.2)
   else
@@ -27,7 +27,7 @@ def arraySum (a : Array Int) (b : Array Int) : Id (Array Int) :=
 -/
 theorem arraySum_spec (a : Array Int) (b : Array Int) :
     ⦃⌜a.size = b.size⌝⦄
-    arraySum a b
+    (pure (arraySum a b) : Id _)
     ⦃⇓result => ⌜result.size = a.size ∧ 
                  (∀ i : Fin a.size, result[i.val]'(by sorry) = a[i] + b[i.val]'(by sorry))⌝⦄ := by
   sorry

@@ -24,12 +24,12 @@ def InMap (nums : List Int) (m : Std.HashMap Int Nat) (target : Int) : Prop :=
       - No valid pair exists with second index < r.2
     - If r.1 = -1: No valid pair exists in the entire array
 -/
-def twoSum (nums : Array Int) (target : Int) : Id (Int × Int) := do
+def twoSum (nums : Array Int) (target : Int) : Int × Int :=
   sorry -- Implementation left as exercise
 
 theorem twoSum_spec (nums : Array Int) (target : Int) :
     ⦃⌜True⌝⦄
-    twoSum nums target
+    (pure (twoSum nums target) : Id _)
     ⦃⇓r => ⌜(0 ≤ r.1 → 0 ≤ r.1 ∧ r.1 < r.2 ∧ r.2 < nums.size ∧
                        nums[r.1.toNat]! + nums[r.2.toNat]! = target ∧
                        (∀ i j : Nat, 0 ≤ i ∧ i < j ∧ j < r.2 → 

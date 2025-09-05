@@ -13,7 +13,7 @@ open Std.Do
     Example: onlineMax([3, 1, 4, 1, 5], 2) returns (m=3, p=2) since max of [3,1] is 3
              and element at index 2 (which is 4) is the first that exceeds 3.
 -/
-def onlineMax (a : Array Int) (x : Nat) : Id (Int × Nat) :=
+def onlineMax (a : Array Int) (x : Nat) : (Int × Nat) :=
   -- Find max in [0, x)
   let rec findMaxBefore (i : Nat) (currentMax : Int) : Int :=
     if h : i < x then
@@ -58,7 +58,7 @@ def onlineMax (a : Array Int) (x : Nat) : Id (Int × Nat) :=
 -/
 theorem onlineMax_spec (a : Array Int) (x : Nat) :
     ⦃⌜1 ≤ x ∧ x < a.size ∧ a.size ≠ 0⌝⦄
-    onlineMax a x
+    (pure (onlineMax a x) : Id _)
     ⦃⇓(m, p) => ⌜
       x ≤ p ∧ p < a.size ∧
       (∀ i : Nat, i < x → a[i]'(by sorry) ≤ m) ∧

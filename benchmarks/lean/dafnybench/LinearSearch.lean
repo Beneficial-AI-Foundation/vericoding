@@ -20,13 +20,13 @@ The specifications ensure:
 namespace DafnyBenchmarks
 
 /-- Recursive linear search in a subsequence from index i to j -/
-def searchRecursive (a : List Int) (i j : Nat) (x : Int) : Id Int :=
+def searchRecursive (a : List Int) (i j : Nat) (x : Int) : Int :=
   sorry
 
 /-- Specification for searchRecursive -/
 theorem searchRecursive_spec (a : List Int) (i j : Nat) (x : Int) (h : 0 ≤ i ∧ i ≤ j ∧ j ≤ a.length) :
   ⦃⌜True⌝⦄
-  searchRecursive a i j x
+  (pure (searchRecursive a i j x) : Id _)
   ⦃⇓k => ⌜
     -- Result is within bounds or -1
     (i ≤ k.natAbs ∧ k.natAbs < j) ∨ k = -1 ∧
@@ -40,13 +40,13 @@ theorem searchRecursive_spec (a : List Int) (i j : Nat) (x : Int) (h : 0 ≤ i �
   sorry
 
 /-- Iterative linear search in a subsequence from index i to j -/
-def searchLoop (a : List Int) (i j : Nat) (x : Int) : Id Int :=
+def searchLoop (a : List Int) (i j : Nat) (x : Int) : Int :=
   sorry
 
 /-- Specification for searchLoop -/
 theorem searchLoop_spec (a : List Int) (i j : Nat) (x : Int) (h : 0 ≤ i ∧ i ≤ j ∧ j ≤ a.length) :
   ⦃⌜True⌝⦄
-  searchLoop a i j x
+  (pure (searchLoop a i j x) : Id _)
   ⦃⇓k => ⌜
     -- Result is within bounds or -1
     (i ≤ k.natAbs ∧ k.natAbs < j) ∨ k = -1 ∧

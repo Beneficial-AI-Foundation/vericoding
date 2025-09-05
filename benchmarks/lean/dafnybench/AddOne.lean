@@ -12,13 +12,13 @@ import Std.Tactic.Do
 open Std.Do
 
 /-- Returns x + 1 -/
-def addOne (x : Int) : Id Int := 
+def addOne (x : Int) : Int := 
   sorry
 
 /-- Specification: addOne returns x + 1 -/
 theorem addOne_spec (x : Int) :
   ⦃⌜True⌝⦄ 
-  addOne x
+  (pure (addOne x) : Id _)
   ⦃⇓result => ⌜result = x + 1⌝⦄ := by
   mvcgen [addOne]
   sorry

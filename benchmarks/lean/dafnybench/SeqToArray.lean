@@ -10,7 +10,7 @@ open Std.Do
 
     Returns a new array with the same elements as the list.
 -/
-def seqToArray {α : Type} (xs : List α) : Id (Array α) :=
+def seqToArray {α : Type} (xs : List α) : Array α :=
   xs.toArray
 
 /-- Specification: seqToArray creates an array with the same length
@@ -21,7 +21,7 @@ def seqToArray {α : Type} (xs : List α) : Id (Array α) :=
 -/
 theorem seqToArray_spec {α : Type} (xs : List α) :
     ⦃⌜True⌝⦄
-    seqToArray xs
+    (pure (seqToArray xs) : Id _)
     ⦃⇓result => ⌜result.size = xs.length ∧
                  ∀ i : Fin xs.length, result[i.val]'(by sorry) = xs[i]⌝⦄ := by
   sorry

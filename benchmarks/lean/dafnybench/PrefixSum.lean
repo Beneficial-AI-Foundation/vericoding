@@ -22,13 +22,13 @@ def sum (a : Array Int) (i j : Nat) : Int :=
     Postconditions:
     - Returns sum(a, i, j)
 -/
-def query (a : Array Int) (i j : Nat) : Id Int := do
+def query (a : Array Int) (i j : Nat) : Int :=
   sorry -- Implementation left as exercise
 
 theorem query_spec (a : Array Int) (i j : Nat) 
     (h_bounds : 0 ≤ i ∧ i ≤ j ∧ j ≤ a.size) :
     ⦃⌜True⌝⦄
-    query a i j
+    (pure (query a i j) : Id _)
     ⦃⇓result => ⌜result = sum a i j⌝⦄ := by
   mvcgen [query]
   sorry
@@ -48,14 +48,14 @@ def is_prefix_sum_for (a c : Array Int) : Prop :=
     Postconditions:
     - Returns sum(a, i, j)
 -/
-def queryFast (a c : Array Int) (i j : Nat) : Id Int := do
+def queryFast (a c : Array Int) (i j : Nat) : Int :=
   sorry -- Implementation left as exercise
 
 theorem queryFast_spec (a c : Array Int) (i j : Nat)
     (h_prefix : is_prefix_sum_for a c)
     (h_bounds : 0 ≤ i ∧ i ≤ j ∧ j ≤ a.size ∧ a.size < c.size) :
     ⦃⌜True⌝⦄
-    queryFast a c i j
+    (pure (queryFast a c i j) : Id _)
     ⦃⇓result => ⌜result = sum a i j⌝⦄ := by
   mvcgen [queryFast]
   sorry
@@ -78,13 +78,13 @@ def mem {α : Type} [DecidableEq α] (x : α) : MyList α → Bool
     Postconditions:
     - All elements of the array are members of the returned list
 -/
-def from_array (α : Type) [DecidableEq α] (a : Array α) : Id (MyList α) := do
+def from_array (α : Type) [DecidableEq α] (a : Array α) : MyList α :=
   sorry -- Implementation left as exercise
 
 theorem from_array_spec (α : Type) [DecidableEq α] [Inhabited α] (a : Array α)
     (h_size : a.size > 0) :
     ⦃⌜True⌝⦄
-    from_array α a
+    (pure (from_array α a) : Id _)
     ⦃⇓result => ⌜∀ j : Nat, 0 ≤ j ∧ j < a.size → mem a[j]! result = true⌝⦄ := by
   mvcgen [from_array]
   sorry

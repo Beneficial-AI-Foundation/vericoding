@@ -10,7 +10,7 @@ open Std.Do
 
     Returns a new array with length one less than the input.
 -/
-def removeFront {α : Type} (a : Array α) : Id (Array α) :=
+def removeFront {α : Type} (a : Array α) : Array α :=
   if h : a.size > 0 then
     Array.ofFn fun i : Fin (a.size - 1) => a[i.val + 1]'(by sorry)
   else
@@ -24,7 +24,7 @@ def removeFront {α : Type} (a : Array α) : Id (Array α) :=
 -/
 theorem removeFront_spec {α : Type} (a : Array α) (h : a.size > 0) :
     ⦃⌜a.size > 0⌝⦄
-    removeFront a
+    (pure (removeFront a) : Id _)
     ⦃⇓result => ⌜result.size = a.size - 1 ∧ 
                  ∀ i : Fin result.size, result[i] = a[i.val + 1]'(by sorry)⌝⦄ := by
   sorry

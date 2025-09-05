@@ -10,7 +10,7 @@ open Std.Do
 
     The array is modified in-place.
 -/
-def reverse (a : Array Int) : Id (Array Int) :=
+def reverse (a : Array Int) : Array Int :=
   Array.ofFn fun i : Fin a.size => a[a.size - 1 - i.val]'(by sorry)
 
 /-- Specification: reverse modifies the array so that each element
@@ -21,7 +21,7 @@ def reverse (a : Array Int) : Id (Array Int) :=
 -/
 theorem reverse_spec (a : Array Int) :
     ⦃⌜True⌝⦄
-    reverse a
+    (pure (reverse a) : Id _)
     ⦃⇓result => ⌜result.size = a.size ∧
                  ∀ i : Fin a.size, result[i.val]'(by sorry) = a[a.size - 1 - i.val]'(by sorry)⌝⦄ := by
   sorry
