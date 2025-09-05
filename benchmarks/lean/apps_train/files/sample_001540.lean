@@ -1,0 +1,40 @@
+Chef is playing a game with his brother Chefu. He asked Chefu to choose a positive integer $N$, multiply it by a given integer $A$, then choose a divisor of $N$ (possibly $N$ itself) and add it to the product. Let's denote the resulting integer by $M$; more formally, $M = A \cdot N + d$, where $d$ is some divisor of $N$.
+Chefu told Chef the value of $M$ and now, Chef should guess $N$. Help him find all values of $N$ which Chefu could have chosen.
+
+-----Input-----
+- The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+- The first and only line of each test case contains two space-separated integers $A$ and $M$.
+
+-----Output-----
+For each test case, print two lines. The first line should contain a single integer $C$ denoting the number of possible values of $N$. The second line should contain $C$ space-separated integers denoting all possible values of $N$ in increasing order.
+It is guaranteed that the sum of $C$ over all test cases does not exceed $10^7$.
+
+-----Constraints-----
+- $1 \le T \le 100$
+- $2 \le M \le 10^{10}$
+- $1 \le A < M$
+
+-----Subtasks-----
+Subtask #1 (50 points):
+- $M \le 10^6$
+Subtask #2 (50 points): original constraints
+
+-----Example Input-----
+3
+3 35
+5 50
+4 65
+
+-----Example Output-----
+1
+10
+0
+
+3
+13 15 16
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

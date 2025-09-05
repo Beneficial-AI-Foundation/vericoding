@@ -1,0 +1,54 @@
+In this problem you are given a sequence of $N$ positive integers $S[1],S[2],\dots,S[N]$. In addition you are given an integer $T$, and your aim  is to find the number of quadruples $(i,j,k,l)$, such that $1 \le i < j < k < l \le N$, and $S[i] + S[j] + S[k] + S[l] = T$.  That is, the number of ways of picking four numbers from the sequence summing up to $T$.
+
+-----Constraints:-----
+For all test cases,
+- $1 \le N \le 5000$
+- $1 \le T \le 10^6$
+- $1 \le S[i] \le 10^9$, for all $i$.
+Subtask $1:10\%$
+It is guaranteed that $N \le 50$.
+Subtask $2:50\%$
+It is guaranteed that $N \le 300$.
+Subtask $3:40\%$
+No additional guarantees.
+
+-----Input Format:-----
+There is only one line of input with $N+2$ space separated integers. The first two integers are $N$ and $T$. The next $N$ integers are $S[1],S[2],\dots,S[N]$.
+
+-----Output Format:-----
+A single integer which is the number of valid quadruples.
+
+-----Sample Input 1:-----
+6 20 3 1 1 2 5 10
+
+-----Sample Output 1:-----
+1
+
+-----Explanation 1:-----
+The quadruple $(1,4,5,6)$ is valid  because $S[1]+S[4]+S[5]+S[6]=3+2+5+10=20$. You can check that no other quadruple is valid and hence the answer is $1$.
+
+-----Sample Input 2:-----
+6 13 1 2 3 4 5 4 
+
+-----Sample Output 2:-----
+3
+
+-----Explanation 2:-----
+You can verify that the only quadruples that are valid are $(2,3,4,6),(1,3,4,5)$  and $(1,3,5,6)$. Thus, the answer is $3$.
+
+-----Note:-----
+As the answer might be large, please use 64 bit integers (long long int in
+C/C++ and long in Java) instead of 32 bit int.
+
+def count_quadruples (n : Nat) (target : Int) (nums : List Int) : Nat :=
+  sorry
+
+def listMax : List Int → Int 
+  | [] => 0
+  | (x::xs) => max x (listMax xs)
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- Apps difficulty: interview
+-- Assurance level: guarded_and_plausible

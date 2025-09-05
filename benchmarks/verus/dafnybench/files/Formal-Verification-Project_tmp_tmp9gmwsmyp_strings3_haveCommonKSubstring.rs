@@ -34,7 +34,7 @@ spec fn is_not_substring_pred(sub: Seq<char>, str: Seq<char>) -> bool {
 fn is_substring(sub: Seq<char>, str: Seq<char>) -> (res: bool)
     ensures
         res <==> is_substring_pred(sub, str),
-        //!res <==> is_not_substring_pred(sub, str), // This postcondition follows from the above lemma.
+        // !res <==> is_not_substring_pred(sub, str), // This postcondition follows from the above lemma.
 {
     assume(false);
     false
@@ -62,7 +62,7 @@ spec fn have_not_common_k_substring_pred(k: nat, str1: Seq<char>, str2: Seq<char
 fn have_common_k_substring(k: nat, str1: Seq<char>, str2: Seq<char>) -> (found: bool)
     ensures
         found <==> have_common_k_substring_pred(k, str1, str2),
-        //!found <==> have_not_common_k_substring_pred(k, str1, str2), // This postcondition follows from the above lemma.
+        // !found <==> have_not_common_k_substring_pred(k, str1, str2), // This postcondition follows from the above lemma.
 // </vc-spec>
 // <vc-code>
 {

@@ -1,0 +1,21 @@
+Write a function which takes a number and returns the corresponding ASCII char for that value.
+
+Example: 
+
+~~~if-not:java,racket
+```
+get_char(65) # => 'A'
+```
+~~~
+~~~if:java
+~~~
+~~~if:racket
+~~~
+
+For ASCII table, you can refer to http://www.asciitable.com/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

@@ -1,0 +1,45 @@
+A number K$K$ is said to be magical if it can be represented as a power of 2 only.That is K$K$=2x$2^{x}$ for some natural number x$x$. 
+Given a string of digits S$S$ of length N$N$, Let P be a valid arrangement of S.
+By valid arrangement we mean that it should not have any leading zeroes.
+Find the sum of all such distinct Pi's, which, when treated as a number is magical.
+Two arrangements are said to be distinct, if there is atleast one index where they differ. 
+As the sum can be very large, print the sum modulo 109+7$10^{9}+7$.
+
+-----Input:-----
+-The first line of the input contains a single integer T$T$ denoting the number of test cases. 
+-Only line of each test case contains a string S$S$ of length N$N$, consisting only of digits between 0 to 9.
+
+-----Output:-----
+For each test case, print a single integer denoting the sum of all such magical Pi′s$Pi's$ modulo 109+7$10^{9}+7$.
+If no such Pi$Pi$ exists print "-1".
+
+-----Constraints-----
+- 1≤T≤1000$1 \leq T \leq 1000$
+- 2≤N≤1000$2 \leq N \leq 1000$
+- String only consists of digits between 0 to 9, both inclusive.
+
+-----Subtasks-----
+- 10 points : 1≤N≤5$1 \leq N \leq 5$
+- 40 points : 1≤N≤100$1 \leq N \leq 100$
+- 50 points : Original Constraints
+
+-----Sample Input:-----
+2
+35566
+
+31
+
+-----Sample Output:-----
+65536
+
+-1
+
+-----EXPLANATION:-----
+Only arrangement is 65536.
+No arrangement of 31 gives us a power of two.
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

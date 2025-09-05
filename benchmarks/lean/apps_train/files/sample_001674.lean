@@ -1,0 +1,94 @@
+# Background
+
+The famous Collatz Sequence is generated with the following rules:
+
+* Start with a positive integer `a[0] = n`.
+* If `a[i]` is even, `a[i+1] = a[i] / 2`.
+* Otherwise, `a[i+1] = a[i] * 3 + 1`.
+
+However, for the purpose of this Kata, I give a **slightly modified definition**:
+
+* If `a[i]` is even, `a[i+1] = a[i] / 2`. This step is a step-down, or `D`.
+* Otherwise, `a[i+1] = (a[i] * 3 + 1) / 2`. This step is a step-up, or `U`.
+
+Also, for any starting number, the sequence is generated indefinitely, not ending at 1.
+
+# Problem Description
+
+For any given starting number, we can record the types of steps(`D` or `U`) from it.
+For example, if we start with the number 11, the Collatz steps look like this:
+```
+a[0] = 11
+a[1] = (11 * 3 + 1) / 2 = 17 -> U
+a[2] = (17 * 3 + 1) / 2 = 26 -> U
+a[3] = 26 / 2 = 13           -> D
+a[4] = (13 * 3 + 1) / 2 = 20 -> U
+a[5] = 20 / 2 = 10           -> D
+a[6] = 10 / 2 = 5            -> D
+a[7] = (5 * 3 + 1) / 2 = 8   -> U
+a[8] = 8 / 2 = 4             -> D
+a[9] = 4 / 2 = 2             -> D
+a[10] = 2 / 2 = 1            -> D
+a[11] = (1 * 3 + 1) / 2 = 2  -> U
+a[12] = 2 / 2 = 1            -> D
+...
+```
+
+```
+11 -> 17 -> 26 -> 13 -> 20 -> 10 -> 5 -> 8 -> 4 -> 2 -> 1 -> 2 -> 1 -> ...
+   U     U     D     U     D     D    U    D    D    D    U    D
+```
+
+Based on the steps shown above, the first four Collatz steps of 11 is `UUDU`.
+Also, 107 is the smallest number over 100 whose Collatz steps start with `UUDU`, and
+1003 is the smallest number over 1000 with the property.
+
+A special example is the number 1, which can generate any number of `UD`.
+
+Find the smallest integer exceeding or equal to `n` whose Collatz steps start with the given string `steps`.
+
+# Constraints
+
+`1 <= n <= 10 ** 9`
+
+`n` is always a valid integer.
+
+`1 <= length(steps) <= 25`
+
+The string `steps` will entirely consist of `U`s and `D`s.
+
+# Examples
+
+```python
+collatz_steps(1, 'UUDU') == 11
+collatz_steps(100, 'UUDU') == 107
+collatz_steps(1000, 'UUDU') == 1003
+
+collatz_steps(1, 'UD') == 1
+collatz_steps(1, 'UDUD') == 1
+collatz_steps(1, 'UDUDUD') == 1
+```
+
+# Hint
+
+If you are completely lost, start by answering the following question:
+
+* After applying the given steps (e.g. `UUDU`) to an initial number `x`,
+  what fraction do you get?
+
+After that, you might want to study about [modular inverse](https://en.wikipedia.org/wiki/Modular_multiplicative_inverse).
+
+# Acknowledgement
+
+This problem was inspired by [Project Euler #277: A Modified Collatz sequence](https://projecteuler.net/problem=277).
+
+If you enjoyed this Kata, please also have a look at [my other Katas](https://www.codewars.com/users/Bubbler/authored)!
+
+def collatz_steps (n : Nat) (s : String) : Nat :=
+  sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- Apps difficulty: interview
+-- Assurance level: guarded

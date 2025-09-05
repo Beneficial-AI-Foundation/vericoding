@@ -1,0 +1,53 @@
+As you know America’s Presidential Elections are about to take place and the most popular leader of the Republican party Donald Trump is famous for throwing allegations against anyone he meets.
+
+He goes to a rally and meets n people which he wants to offend. For each person i he can choose an integer between 1 to max[i].
+
+He wants to decide in how many ways he can offend all these persons (N) given the condition that all numbers chosen by him for each person are distinct.
+So he needs your help to find out the number of ways in which he can do that. If no solution is possible print 0
+
+-----Input-----
+The first line of the input contains an integer T (1<=T<=100) denoting the number of test cases. The description of T test cases follows.
+
+The first line of each test case contains a single integer N denoting the number of people Trump wants to offend. The second line contains N space-separated integers maxnumber[0], maxnumber[1], ..., maxnumber[n-1] denoting the maxnumber that trump can choose for each person. 
+
+-----Output-----
+For each test case, output a single line containing the number of ways Trump can assign numbers to the people, modulo 1,000,000,007. If it's impossible to assign distinct integers to the people, print 0
+
+-----Constraints-----
+- 1 ≤ T ≤ 100
+- 1 ≤ N ≤ 50
+- 1 ≤ Maxnumber[i] ≤ 3000
+
+-----Example-----
+Input:
+3
+1
+4
+2
+10 5
+4
+2 3 1 3
+
+Output:
+4
+45
+0
+
+-----Explanation-----
+In case 1, He can choose any number from 1 to 4
+
+In case 2,Out of the total 50 combination he can not take (1,1) ,(2,2) , (3,3) ,(4,4) or (5,5).
+
+def MOD := 1000000007
+
+def calculate_offense_ways (n : Nat) (numbers : List Nat) : Nat :=
+sorry
+
+def isSorted (l : List Nat) : Bool :=
+sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- Apps difficulty: interview
+-- Assurance level: guarded_and_plausible

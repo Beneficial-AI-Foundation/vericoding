@@ -1,0 +1,59 @@
+Ziota found a video game called "Monster Invaders".
+
+Similar to every other shooting RPG game, "Monster Invaders" involves killing monsters and bosses with guns.
+
+For the sake of simplicity, we only consider two different types of monsters and three different types of guns.
+
+Namely, the two types of monsters are:   a normal monster with $1$ hp.  a boss with $2$ hp. 
+
+And the three types of guns are:   Pistol, deals $1$ hp in damage to one monster, $r_1$ reloading time  Laser gun, deals $1$ hp in damage to all the monsters in the current level (including the boss), $r_2$ reloading time  AWP, instantly kills any monster, $r_3$ reloading time 
+
+The guns are initially not loaded, and the Ziota can only reload 1 gun at a time.
+
+The levels of the game can be considered as an array $a_1, a_2, \ldots, a_n$, in which the $i$-th stage has $a_i$ normal monsters and 1 boss. Due to the nature of the game, Ziota cannot use the Pistol (the first type of gun) or AWP (the third type of gun) to shoot the boss before killing all of the $a_i$ normal monsters.
+
+If Ziota damages the boss but does not kill it immediately, he is forced to move out of the current level to an arbitrary adjacent level (adjacent levels of level $i$ $(1 < i < n)$ are levels $i - 1$ and $i + 1$, the only adjacent level of level $1$ is level $2$, the only adjacent level of level $n$ is level $n - 1$). Ziota can also choose to move to an adjacent level at any time. Each move between adjacent levels are managed by portals with $d$ teleportation time.
+
+In order not to disrupt the space-time continuum within the game, it is strictly forbidden to reload or shoot monsters during teleportation. 
+
+Ziota starts the game at level 1. The objective of the game is rather simple, to kill all the bosses in all the levels. He is curious about the minimum time to finish the game (assuming it takes no time to shoot the monsters with a loaded gun and Ziota has infinite ammo on all the three guns). Please help him find this value.
+
+-----Input-----
+
+The first line of the input contains five integers separated by single spaces: $n$ $(2 \le n \le 10^6)$ — the number of stages, $r_1, r_2, r_3$ $(1 \le r_1 \le r_2 \le r_3 \le 10^9)$ — the reload time of the three guns respectively, $d$ $(1 \le d \le 10^9)$ — the time of moving between adjacent levels.
+
+The second line of the input contains $n$ integers separated by single spaces $a_1, a_2, \dots, a_n$ $(1 \le a_i \le 10^6, 1 \le i \le n)$.
+
+-----Output-----
+
+Print one integer, the minimum time to finish the game.
+
+-----Examples-----
+Input
+4 1 3 4 3
+3 2 5 1
+
+Output
+34
+Input
+4 2 4 4 1
+4 5 1 2
+
+Output
+31
+
+-----Note-----
+
+In the first test case, the optimal strategy is:  Use the pistol to kill three normal monsters and AWP to kill the boss (Total time $1\cdot3+4=7$)  Move to stage two (Total time $7+3=10$)  Use the pistol twice and AWP to kill the boss (Total time $10+1\cdot2+4=16$)  Move to stage three (Total time $16+3=19$)  Use the laser gun and forced to move to either stage four or two, here we move to stage four (Total time $19+3+3=25$)  Use the pistol once, use AWP to kill the boss (Total time $25+1\cdot1+4=30$)  Move back to stage three (Total time $30+3=33$)  Kill the boss at stage three with the pistol (Total time $33+1=34$) 
+
+Note that here, we do not finish at level $n$, but when all the bosses are killed.
+
+def List.sum : List Nat → Nat 
+  | [] => 0
+  | (h::t) => h + sum t
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- Apps difficulty: competition
+-- Assurance level: guarded
