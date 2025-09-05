@@ -39,7 +39,6 @@ jobs:
         id: claude-review
         uses: anthropics/claude-code-action@v1
         with:
-          track_progress: true
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           model: "claude-opus-4-1"
           additional_permissions: |
