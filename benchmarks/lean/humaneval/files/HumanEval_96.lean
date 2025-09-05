@@ -18,7 +18,9 @@ test_cases:
     expected_output: [2,3,5,7,11,13,17]
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>
@@ -37,7 +39,7 @@ def problem_spec
 let spec (result : List Nat) :=
   match n with
   | 0 => result = []
-  | n => n > 0 → (∀ i, i < result.length → (Nat.Prime (result.get! i)) ∧ (result.get! i) < n) ∧
+  | n => n > 0 → (∀ i, i < result.length → (Nat.Prime (result[i]!)) ∧ (result[i]!) < n) ∧
          (∀ i : Nat, i < n → Nat.Prime i → i ∈ result)
 -- program termination
 ∃ result,

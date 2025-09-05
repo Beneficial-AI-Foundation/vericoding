@@ -13,7 +13,9 @@ test_cases:
     expected_output: "tHKS KS C MGSSCGG"
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>
@@ -33,8 +35,8 @@ let spec (result : String) :=
   s.data.all (λ c => c.isAlpha) →
   result.length = s.length ∧
   (∀ i, i < s.length →
-    let c := s.data.get! i;
-    let c' := result.data.get! i;
+    let c := s.data[i]!;
+    let c' := result.data[i]!;
     match c with
     | 'a' | 'e' | 'i' | 'o' | 'u' | 'A' | 'E' | 'I' | 'O' | 'U' =>
       c.isUpper → c'.val = c.toLower.val + 2 ∧

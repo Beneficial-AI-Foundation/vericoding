@@ -11,7 +11,25 @@ test_cases:
     expected_output: 21
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
+
+/--
+name: fibonacci_non_computable
+use: |
+  Non-computable definition to check if a number is a Fibonacci number.
+problems:
+  - 55
+sample_problems:
+  - 3
+-/
+inductive fibonacci_non_computable : ℕ → ℕ → Prop
+| base0 : fibonacci_non_computable 0 0
+| base1 : fibonacci_non_computable 1 1
+| step  : ∀ n f₁ f₂, fibonacci_non_computable n f₁ →
+fibonacci_non_computable (n + 1) f₂ →
+fibonacci_non_computable (n + 2) (f₁ + f₂)
 
 -- <vc-helpers>
 -- </vc-helpers>

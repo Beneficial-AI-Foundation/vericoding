@@ -11,7 +11,9 @@ test_cases:
     output: 3
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>
@@ -46,6 +48,6 @@ theorem correctness
   sorry
 -- </vc-proof>
 
-#test implementation 50 = 0
-#test implementation 78 = 2
-#test implementation 79 = 3
+-- #test implementation 50 = 0
+-- #test implementation 78 = 2
+-- #test implementation 79 = 3

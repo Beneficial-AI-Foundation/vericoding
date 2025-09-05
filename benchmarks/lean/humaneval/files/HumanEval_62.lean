@@ -11,7 +11,13 @@ test_cases:
     expected_output: [2, 6]
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
+
+noncomputable def check_derivative : List ℤ → List ℤ
+  | []       => []
+  | (x::rest)  => (Polynomial.eval 1 (Polynomial.derivative (Polynomial.C x * Polynomial.X ^ rest.length))) :: (check_derivative rest)
 
 -- <vc-helpers>
 -- </vc-helpers>

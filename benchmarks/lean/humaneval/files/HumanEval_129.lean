@@ -13,7 +13,9 @@ test_cases:
     expected_output: 3
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>
@@ -39,7 +41,7 @@ let spec (result: Option (List String) × Option Nat) :=
     (words = none ↔ ∀ ch, ch ∈ text.toList →  (ch = ',' ∨ ch = ' ')) ∧
     (∀ num, ord = some num → (text.get! 0).toNat = num) ∧
     (∀ lst, words = some lst → ∀ i, i < lst.length →
-      let str := lst.get! i;
+      let str := lst[i]!;
       text.containsSubstr str) ∧
     (∀ lst, words = some lst →
       let first := text.takeWhile (fun c => c ≠ ',' ∧ c ≠ ' ');

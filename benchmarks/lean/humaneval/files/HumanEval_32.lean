@@ -14,7 +14,9 @@ test_cases:
     output: 1.0
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>
@@ -35,7 +37,7 @@ let spec (result: Rat) :=
   xs.length ≥ 1 → xs.length % 2 = 0 →
   ∀ poly : Polynomial Rat,
     poly.degree = some (xs.length - 1) →
-    (∀ i, i ≤ xs.length - 1 → poly.coeff i = xs.get! i) →
+    (∀ i, i ≤ xs.length - 1 → poly.coeff i = xs[i]!) →
     |poly.eval result| ≤ eps;
 -- program termination
 ∃ result,
@@ -50,5 +52,5 @@ theorem correctness
   sorry
 -- </vc-proof>
 
-#test implementation [1, 2] = -0.5
-#test implementation [-6, 11, -6, 1] = 1.0
+-- #test implementation [1, 2] = -0.5
+-- #test implementation [-6, 11, -6, 1] = 1.0

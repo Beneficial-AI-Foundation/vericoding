@@ -19,7 +19,9 @@ test_cases:
     expected_output: 7
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>
@@ -37,9 +39,9 @@ def problem_spec
 -- spec
 let spec (result : Nat) :=
   lst.any (fun num => Nat.Prime num) →
-    result > 0 ∧ ∃ i, i < lst.length ∧ Prime (lst.get! i) ∧
-    (∀ j, j < lst.length ∧ Prime (lst.get! j) → lst.get! i ≤ lst.get! j) ∧
-    result = (Nat.digits 10 (lst.get! i)).sum
+    result > 0 ∧ ∃ i, i < lst.length ∧ Prime (lst[i]!) ∧
+    (∀ j, j < lst.length ∧ Prime (lst[j]!) → lst[i]! ≤ lst[j]!) ∧
+    result = (Nat.digits 10 (lst[i]!)).sum
 -- program termination
 ∃ result,
   implementation lst = result ∧

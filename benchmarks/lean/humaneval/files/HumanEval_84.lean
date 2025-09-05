@@ -12,7 +12,9 @@ test_cases:
 Note: The spec formalization takes the result, makes it a list of 0/1s and then reverse it and uses Nat.ofDigits. The reversal is because ofDigits expects little-endian order.
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>

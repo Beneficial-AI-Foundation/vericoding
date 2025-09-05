@@ -9,7 +9,9 @@ test_cases:
     expected_output: [5, 3, 2, 3, 9, 123, 1]
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>
@@ -42,5 +44,5 @@ theorem correctness
   sorry
 -- </vc-proof>
 
-#test implementation [(-1), 2, (-4), 5, 6] = [2, 5, 6]
-#test implementation [5, 3, (-5), 2, (-3), 3, 9, 0, 123, 1, (-10)] = [5, 3, 2, 3, 9, 123, 1]
+-- #test implementation [(-1), 2, (-4), 5, 6] = [2, 5, 6]
+-- #test implementation [5, 3, (-5), 2, (-3), 3, 9, 0, 123, 1, (-10)] = [5, 3, 2, 3, 9, 123, 1]

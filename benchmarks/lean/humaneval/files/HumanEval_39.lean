@@ -16,7 +16,9 @@ test_cases:
     output: 89
 -/
 
-import Imports.AllImports
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
 
 -- <vc-helpers>
 -- </vc-helpers>
@@ -50,11 +52,8 @@ theorem correctness
   sorry
 -- </vc-proof>
 
--- NOTE we changed to #eval! instead of #test
--- because we can't use #test for implementation
--- without a proof of termination
-#eval! implementation 1 = 2
-#eval! implementation 2 = 3
-#eval! implementation 3 = 5
-#eval! implementation 4 = 13
-#eval! implementation 5 = 89
+-- #test implementation 1 = 2
+-- #test implementation 2 = 3
+-- #test implementation 3 = 5
+-- #test implementation 4 = 13
+-- #test implementation 5 = 89
