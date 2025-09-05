@@ -14,6 +14,11 @@ from ..utils.io_utils import save_iteration_code
 import wandb
 import hashlib
 from .code_fixer import extract_code, verify_spec_preservation, restore_specs
+try:
+    from ..lean.mcp_helpers import collect_lsp_context_safe  # optional
+except Exception:
+    def collect_lsp_context_safe(_file: str, _lines: list[int]) -> str:
+        return ""
 
 # Set up a basic logger
 logging.basicConfig(level=logging.INFO, format="%(message)s")
@@ -104,8 +109,13 @@ def process_spec_file(
         # Step 1: Generate code from specifications
         logger.info("  Step 1: Generating code from specifications...")
         try:
+            lsp_context = ""
+            if config.use_mcp and config.language == "lean":
+                sorry_lines = [i + 1 for i, ln in enumerate(original_code.splitlines()) if "sorry" in ln]
+                lsp_context = collect_lsp_context_safe(file_path, sorry_lines)
+
             generate_prompt = prompt_loader.format_prompt(
-                "generate_code", code=original_code
+                "generate_code", code=original_code, lspContext=lsp_context
             )
         except KeyError as e:
             logger.info(f"  ✗ Prompt error: {e}")
@@ -232,11 +242,17 @@ def process_spec_file(
             # Only attempt fix if not on last iteration
             if iteration < config.max_iterations:
                 logger.info("    Attempting to fix errors...")
+                lsp_context = ""
+                if config.use_mcp and config.language == "lean":
+                    sorry_lines = [i + 1 for i, ln in enumerate(current_code.splitlines()) if "sorry" in ln]
+                    lsp_context = collect_lsp_context_safe(str(output_path), sorry_lines)
+
                 fix_prompt = prompt_loader.format_prompt(
                     "fix_verification",
                     code=current_code,
                     errorDetails=error_details,
                     iteration=iteration,
+                    lspContext=lsp_context,
                 )
 
                 # Track fix prompt for W&B logging

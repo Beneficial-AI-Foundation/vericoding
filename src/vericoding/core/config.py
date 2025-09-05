@@ -67,6 +67,7 @@ class ProcessingConfig:
     llm_model: str | None
     llm_reasoning_effort: str | None = None
     max_directory_traversal_depth: int = 50
+    use_mcp: bool = False
 
     # Static configuration loaded once
     _static_config: LanguageConfigResult | None = None

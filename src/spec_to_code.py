@@ -156,6 +156,12 @@ Examples:
         help="Optional Lake target to build at the end for overall stats (e.g., DafnyBench)",
     )
 
+    parser.add_argument(
+        "--use-mcp",
+        action="store_true",
+        help="Use Lean LSP MCP to gather hover/goals/diagnostics context and include in prompts (Lean only)",
+    )
+
     return parser.parse_args()
 
 
@@ -239,9 +245,15 @@ def setup_configuration(args) -> ProcessingConfig:
         meaningful_part = Path(input_path.name)
 
     # Create output directory structure
-    # For Lean, place generated files under the input folder so `lake build` can see them
+    # For Lean, place generated files under a sibling namespace so default targets don't pull them in.
+    # We use benchmarks/lean/dafnybench_gen/Run_<ts>/... and add a dedicated Lake target.
     if args.language == "lean":
-        output_dir = str(Path(files_dir) / "_gen" / f"Run_{timestamp}")
+        try:
+            from vericoding.utils import get_repo_root  # type: ignore
+        except Exception:
+            get_repo_root = lambda: Path.cwd()
+        repo_root = Path(get_repo_root())
+        output_dir = str(repo_root / "benchmarks/lean/dafnybench_gen" / f"Run_{timestamp}")
     else:
         output_dir = str(
             src_base / f"code_from_spec_on_{timestamp}" / args.language / meaningful_part
@@ -267,6 +279,7 @@ def setup_configuration(args) -> ProcessingConfig:
         llm_model=args.llm_model,
         max_directory_traversal_depth=args.max_directory_traversal_depth,
         llm_reasoning_effort=args.reasoning_effort,
+        use_mcp=args.use_mcp,
     )
 
     print("\nConfiguration:")

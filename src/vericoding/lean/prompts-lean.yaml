@@ -46,6 +46,9 @@ generate_code: |
   Moreover, for any new definition, lemma or theorem you add, add a comment of the form -- LLM HELPER on the line just before it. 
   - Return ONLY the Lean code, no explanations or markdown
   
+  AUXILIARY CONTEXT FROM LEAN LSP (optional):
+  {lspContext}
+
   LEAN SPECIFICATION WITH EMPTY DEFINITIONS AND PROOF BODIES:
   {code}
 
@@ -92,6 +95,9 @@ fix_verification: |
   - do not use sorry in the output file
   - output valid Lean code
   - Return ONLY the Lean code, no explanations or markdown
+
+  AUXILIARY CONTEXT FROM LEAN LSP (optional):
+  {lspContext}
 
   OUTPUT: Return ONLY the complete Lean code file, wrapped in a ```lean code block. Do not include any explanations, reasoning, or markdown outside the code block.
   
