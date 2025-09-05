@@ -1,0 +1,47 @@
+import Std
+import Mathlib
+
+open Std.Do
+
+/-!
+{
+  "name": "Dafny_tmp_tmp0wu8wmfr_Heimaverkefni 3_InsertionSortMultiset_Search",
+  "category": "Dafny Translation",
+  "description": "Automatically translated from Dafny specification: Dafny_tmp_tmp0wu8wmfr_Heimaverkefni 3_InsertionSortMultiset_Search",
+  "source": "Dafny",
+  "translation_date": "2024",
+  "functions": ,
+  "methods": 
+}
+-/
+
+namespace DafnyBenchmarks
+
+/--
+Search method that finds insertion point for value x in sorted array s.
+Translated from Dafny specification.
+
+@param s The sorted input array
+@param x The value to find insertion point for
+@return k The insertion point index
+-/
+def Search (s : Array Int) (x : Int) : Int :=
+  sorry
+
+/--
+Specification for Search method ensuring:
+1. Array is sorted in ascending order
+2. Return value k is within array bounds
+3. All elements before k are <= x
+4. All elements after k are >= x
+5. Array remains unchanged
+-/
+theorem Search_spec (s : Array Int) (x : Int) (k : Int) :
+  (∀ p q, 0 ≤ p → p < q → q < s.size → s.get ⟨p⟩ ≤ s.get ⟨q⟩) →
+  (k = Search s x) →
+  (0 ≤ k ∧ k ≤ s.size) ∧
+  (∀ i, 0 ≤ i → i < k → s.get ⟨i⟩ ≤ x) ∧
+  (∀ i, k ≤ i → i < s.size → s.get ⟨i⟩ ≥ x) :=
+  sorry
+
+end DafnyBenchmarks
