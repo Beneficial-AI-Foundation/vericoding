@@ -94,21 +94,27 @@ class OpenAIProvider(LLMProvider):
                         kwargs["reasoning"] = {"effort": self.reasoning_effort}
                     resp = self.client.responses.create(**kwargs)
                     # Prefer output_text when available
-                    if hasattr(resp, "output_text") and resp.output_text:
-                        return resp.output_text
-                    # Fallback: concatenate text parts
-                    if hasattr(resp, "content") and resp.content:
-                        parts = []
-                        for p in resp.content:
-                            if getattr(p, "type", None) == "output_text" and hasattr(p, "text"):
-                                parts.append(p.text)
-                            elif hasattr(p, "text"):
-                                parts.append(p.text)
-                        if parts:
-                            return "\n".join(parts)
-                    # Last resort: string cast
-                    return str(resp)
-                except Exception as e:
+                    if hasattr(resp, "output_text") and getattr(resp, "output_text"):
+                        return getattr(resp, "output_text")
+                    # Next: try concatenating text from items in `output`
+                    out = []
+                    if hasattr(resp, "output") and getattr(resp, "output"):
+                        for item in getattr(resp, "output"):
+                            # Try item.text first
+                            if hasattr(item, "text") and item.text:
+                                out.append(item.text)
+                            # Try item.content (list of segments)
+                            segs = getattr(item, "content", None)
+                            if isinstance(segs, (list, tuple)):
+                                for seg in segs:
+                                    t = getattr(seg, "text", None)
+                                    if t:
+                                        out.append(t)
+                    if out:
+                        return "\n".join(out)
+                    # Could not extract text, fall back to Chat Completions
+                    raise ValueError("No text in Responses API output")
+                except Exception:
                     # Fallback to Chat Completions
                     pass
 
