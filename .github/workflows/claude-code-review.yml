@@ -53,6 +53,6 @@ jobs:
             --dangerously-skip-permissions
             --allowedTools Bash,Read,Grep,Glob,LS,TodoRead,MultiEdit,Edit
             --model claude-opus-4-1
-            --mcp-config '{"mcpServers": { "github-mcp": { "command": "uvx", "args": ["lean-lsp-mcp"]}}}'
+            --mcp-config '{"mcpServers": { "lean-lsp-mcp": { "command": "uvx", "args": ["lean-lsp-mcp"]}}}'
           
 
