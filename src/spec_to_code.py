@@ -165,6 +165,13 @@ Examples:
         help="Use Lean LSP MCP to gather hover/goals/diagnostics context and include in prompts (Lean only) [default: enabled]",
     )
 
+    parser.add_argument(
+        "--tool-calling",
+        action="store_true",
+        default=True,
+        help="Enable LLM tool-calling (OpenAI) to invoke Lean MCP tools mid-turn [default: enabled]",
+    )
+
     return parser.parse_args()
 
 
@@ -283,6 +290,7 @@ def setup_configuration(args) -> ProcessingConfig:
         max_directory_traversal_depth=args.max_directory_traversal_depth,
         llm_reasoning_effort=args.reasoning_effort,
         use_mcp=args.use_mcp,
+        llm_tool_calling=args.tool_calling,
     )
 
     print("\nConfiguration:")

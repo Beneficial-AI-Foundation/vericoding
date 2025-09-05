@@ -113,6 +113,8 @@ def process_spec_file(
             if config.use_mcp and config.language == "lean":
                 sorry_lines = [i + 1 for i, ln in enumerate(original_code.splitlines()) if "sorry" in ln]
                 lsp_context = collect_lsp_context_safe(file_path, sorry_lines)
+                if wandb.run and lsp_context:
+                    wandb.log({"mcp/original_lsp_context_len": len(lsp_context)})
 
             generate_prompt = prompt_loader.format_prompt(
                 "generate_code", code=original_code, lspContext=lsp_context
@@ -246,6 +248,8 @@ def process_spec_file(
                 if config.use_mcp and config.language == "lean":
                     sorry_lines = [i + 1 for i, ln in enumerate(current_code.splitlines()) if "sorry" in ln]
                     lsp_context = collect_lsp_context_safe(str(output_path), sorry_lines)
+                    if wandb.run and lsp_context:
+                        wandb.log({"mcp/fix_lsp_context_len": len(lsp_context)})
 
                 fix_prompt = prompt_loader.format_prompt(
                     "fix_verification",

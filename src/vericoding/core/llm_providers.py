@@ -205,6 +205,130 @@ class MockProvider(LLMProvider):
         return ""  # No env var required
 
 
+class OpenAIToolCallingProvider(LLMProvider):
+    """OpenAI Chat Completions with tool-calling for Lean MCP integration."""
+
+    def __init__(self, api_key: str, model: str = "gpt-4o", reasoning_effort: str | None = None, **kwargs):
+        super().__init__(api_key, model, **kwargs)
+        self.reasoning_effort = reasoning_effort
+        try:
+            import openai
+            self.client = openai.OpenAI(api_key=api_key)
+        except ImportError:
+            raise ImportError("OpenAI package not installed. Install with: pip install openai")
+
+        self.tools = [
+            {
+                "type": "function",
+                "function": {
+                    "name": "lean_goal",
+                    "description": "Get Lean goal state at file/line/column",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "file_path": {"type": "string"},
+                            "line": {"type": "integer"},
+                            "column": {"type": "integer", "default": 1},
+                        },
+                        "required": ["file_path", "line"],
+                    },
+                },
+            },
+            {
+                "type": "function",
+                "function": {
+                    "name": "lean_hover",
+                    "description": "Get Lean hover/type info at file/line/column",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "file_path": {"type": "string"},
+                            "line": {"type": "integer"},
+                            "column": {"type": "integer", "default": 1},
+                        },
+                        "required": ["file_path", "line"],
+                    },
+                },
+            },
+            {
+                "type": "function",
+                "function": {
+                    "name": "lean_diagnostics",
+                    "description": "Run lean on file and return diagnostics output",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "file_path": {"type": "string"}
+                        },
+                        "required": ["file_path"],
+                    },
+                },
+            },
+        ]
+
+    def _exec_tool(self, name: str, args: dict) -> str:
+        import json, subprocess
+        from vericoding.utils.git_utils import get_repo_root
+        try:
+            from vericoding.lean.mcp_helpers import collect_lsp_context
+        except Exception:
+            collect_lsp_context = None
+
+        if name in ("lean_goal", "lean_hover"):
+            if collect_lsp_context is None:
+                return "pantograph not available"
+            file_path = args.get("file_path")
+            line = int(args.get("line", 1))
+            return collect_lsp_context(file_path, [line])
+        elif name == "lean_diagnostics":
+            file_path = args.get("file_path")
+            try:
+                proc = subprocess.run(
+                    ["lake", "env", "lean", file_path],
+                    capture_output=True,
+                    text=True,
+                    timeout=60,
+                    cwd=get_repo_root(),
+                )
+                return (proc.stdout or "") + (proc.stderr or "")
+            except Exception as e:
+                return f"error: {e}"
+        return f"unknown tool: {name}"
+
+    def call_api(self, prompt: str) -> str:
+        import json, wandb
+        messages = [{"role": "user", "content": prompt}]
+        while True:
+            resp = self.client.chat.completions.create(
+                model=self.model,
+                messages=messages,
+                tools=self.tools,
+                tool_choice="auto",
+                max_tokens=self.max_tokens,
+            )
+            choice = resp.choices[0]
+            msg = choice.message
+            tool_calls = getattr(msg, "tool_calls", None)
+            if tool_calls:
+                if wandb.run:
+                    for tc in tool_calls:
+                        wandb.log({"tools/calls": 1, "tools/name": tc.function.name})
+                messages.append({"role": "assistant", "tool_calls": [tc.dict() for tc in tool_calls], "content": msg.content or ""})
+                for tc in tool_calls:
+                    name = tc.function.name
+                    args_json = tc.function.arguments or "{}"
+                    try:
+                        args = json.loads(args_json)
+                    except Exception:
+                        args = {}
+                    result = self._exec_tool(name, args)
+                    messages.append({"role": "tool", "tool_call_id": tc.id, "content": result})
+                continue
+            return msg.content or ""
+
+    def get_required_env_var(self) -> str:
+        return "OPENAI_API_KEY"
+
 def create_llm_provider(provider_name: str, model: str = None, **kwargs) -> LLMProvider:
     """Factory function to create LLM providers."""
     provider_configs = {
@@ -228,6 +352,11 @@ def create_llm_provider(provider_name: str, model: str = None, **kwargs) -> LLMP
             "default_model": "mock",
             "env_var": "",  # No key required
         },
+        "openai-tools": {
+            "class": OpenAIToolCallingProvider,
+            "default_model": "gpt-4o",
+            "env_var": "OPENAI_API_KEY",
+        },
     }
 
     if provider_name not in provider_configs:
@@ -249,4 +378,7 @@ def create_llm_provider(provider_name: str, model: str = None, **kwargs) -> LLMP
         )
 
     selected_model = model or config["default_model"]
+    if provider_name == "openai" and kwargs.get("tool_calling"):
+        tools_cfg = provider_configs["openai-tools"]
+        return tools_cfg["class"](api_key, selected_model, **kwargs)
     return config["class"](api_key, selected_model, **kwargs)
