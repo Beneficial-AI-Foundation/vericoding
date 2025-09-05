@@ -1,4 +1,5 @@
 """Utility functions for code2verus"""
+
 import re
 import subprocess
 from pathlib import Path
@@ -9,7 +10,7 @@ from code2verus.config import cfg
 def check_verus_availability():
     """Check if Verus is available and working"""
     verus_path = cfg.get("verus_path", "verus")
-    
+
     try:
         # Try to run verus with --version flag
         result = subprocess.run(
@@ -18,7 +19,7 @@ def check_verus_availability():
             text=True,
             timeout=10,
         )
-        
+
         if result.returncode == 0:
             version_info = result.stdout.strip()
             print(f"Verus found: {version_info}")
@@ -28,10 +29,12 @@ def check_verus_availability():
             if result.stderr:
                 print(f"Stderr: {result.stderr}")
             return False
-            
+
     except FileNotFoundError:
         print(f"Error: Verus executable not found at '{verus_path}'")
-        print("Please ensure Verus is installed and available in your PATH, or update the verus_path in config.yml")
+        print(
+            "Please ensure Verus is installed and available in your PATH, or update the verus_path in config.yml"
+        )
         return False
     except subprocess.TimeoutExpired:
         print("Error: Verus command timed out")
@@ -68,7 +71,18 @@ def extract_rust_code(text: str) -> str:
         for match in matches:
             code = match.strip()
             # Check if it looks like Rust/Verus code (contains common keywords)
-            if any(keyword in code for keyword in ['fn ', 'use ', 'impl ', 'struct ', 'requires', 'ensures', 'proof']):
+            if any(
+                keyword in code
+                for keyword in [
+                    "fn ",
+                    "use ",
+                    "impl ",
+                    "struct ",
+                    "requires",
+                    "ensures",
+                    "proof",
+                ]
+            ):
                 return code
         # If no good match, return the first one
         return matches[0].strip()
