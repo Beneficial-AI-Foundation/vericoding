@@ -133,21 +133,23 @@ Examples:
         "--llm-provider",
         type=str,
         choices=["claude", "openai", "deepseek", "mock"],
-        default="claude",
-        help="LLM provider to use (default: claude). Use 'mock' for offline testing.",
+        default="openai",
+        help="LLM provider to use (default: openai). Use 'mock' for offline testing.",
     )
 
     parser.add_argument(
         "--llm-model",
         type=str,
-        help="Specific model to use (defaults to provider's default model)",
+        default="gpt-5",
+        help="Specific model to use (default: gpt-5 for OpenAI)",
     )
 
     parser.add_argument(
         "--reasoning-effort",
         type=str,
         choices=["low", "medium", "high"],
-        help="For reasoning-capable models (e.g., gpt-5, o4), set reasoning effort.",
+        default="high",
+        help="For reasoning-capable models (e.g., gpt-5, o4), set reasoning effort (default: high).",
     )
 
     parser.add_argument(
@@ -159,7 +161,8 @@ Examples:
     parser.add_argument(
         "--use-mcp",
         action="store_true",
-        help="Use Lean LSP MCP to gather hover/goals/diagnostics context and include in prompts (Lean only)",
+        default=True,
+        help="Use Lean LSP MCP to gather hover/goals/diagnostics context and include in prompts (Lean only) [default: enabled]",
     )
 
     return parser.parse_args()
