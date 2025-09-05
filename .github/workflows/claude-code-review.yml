@@ -42,6 +42,8 @@ jobs:
           track_progress: true
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           model: "claude-opus-4-1"
+          additional_permissions: |
+            actions: "read"
           prompt: |
             REPO: ${{github.repository }}
             PR NUMBER: ${{ github.event.pull_request.number }}
