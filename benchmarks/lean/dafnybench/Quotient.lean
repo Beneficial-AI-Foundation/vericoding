@@ -10,8 +10,7 @@ open Std.Do
     
     Example: Quotient(17, 5) = (r=2, q=3) because 17 = 3 * 5 + 2
 -/
-def quotient (x y : Nat) : Int × Int :=
-  sorry
+def quotient (x y : Nat) : Int × Int := sorry
 
 /-- Specification: quotient computes integer division with remainder correctly.
     

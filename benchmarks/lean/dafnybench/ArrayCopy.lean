@@ -11,8 +11,7 @@ open Std.Do
     - result.length = source.length
     - For all valid indices i, result[i] = source[i]
 -/
-def arrayCopy {α : Type} (s : Array α) : Array α :=
-  s.toList.toArray
+def arrayCopy {α : Type} (s : Array α) : Array α := sorry
 
 /-- Specification: arrayCopy creates an identical copy.
     

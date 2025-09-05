@@ -13,12 +13,10 @@ import Std.Tactic.Do
 open Std.Do
 
 /-- Returns the maximum of two natural numbers -/
-def maxNat (x y : Nat) : Nat := 
-  sorry
+def maxNat (x y : Nat) : Nat := sorry
 
 /-- Method with specific pre and post conditions -/
-def m1 (x y : Int) : Int := 
-  sorry
+def m1 (x y : Int) : Int := sorry
 
 /-- Fibonacci function -/
 def fib : Nat → Nat
@@ -27,8 +25,7 @@ def fib : Nat → Nat
   | n + 2 => fib (n + 1) + fib n
 
 /-- Imperative fibonacci -/
-def fibImperative (n : Nat) : Nat := 
-  sorry
+def fibImperative (n : Nat) : Nat := sorry
 
 /-- Functional list datatype -/
 inductive FList (α : Type) where
@@ -45,12 +42,10 @@ def add : FList Int → Int
 end FList
 
 /-- Imperative list sum -/
-def addImp (l : FList Int) : Int := 
-  sorry
+def addImp (l : FList Int) : Int := sorry
 
 /-- Find maximum in an array -/
-def maxArray (a : Array Int) : Int := 
-  sorry
+def maxArray (a : Array Int) : Int := sorry
 
 /-- Specification: maxNat returns the maximum of x and y -/
 theorem maxNat_spec (x y : Nat) :

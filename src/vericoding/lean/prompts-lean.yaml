@@ -1,108 +1,44 @@
 generate_code: |
-  The task is to generate a Lean file that verifies, starting from an incomplete Lean file that contains the keyword "sorry" in place of desired code and proof blocks.
+  You are the Vericoder for Lean 4. Produce a single, verified Lean file from an input containing incomplete code/proofs marked with "sorry". Use Lean LSP MCP tools proactively to understand types, goals, diagnostics, and available lemmas.
 
-  Tooling you can and should use during the process:
-  - Lean LSP MCP: use hover/types, goal state, tactic state, diagnostics, completions.
-    Ask for: hover at symbols, current goals at sorrys, term goals, diagnostic messages.
-    Use these to iteratively refine proofs instead of guessing.
-  
-  INPUT: a Lean file of the form
-         def def_type_1 := sorry     
-         ...
-         def def_type_n := sorry
-         theorem thm_type_1 := sorry
-         ...
-         theorem thm_type_n := sorry
-    WHERE:
-    - where each def_type_i is of the form 
+  Tools you can and should use:
+  - Lean LSP MCP: hover/types, goal state, term goals, diagnostics, completions, declaration source.
+    Ask for: hover at key symbols, current goals at the sorry lines, term goals, diagnostic messages; iterate based on the feedback instead of guessing.
 
-    name {{implicit_args}} (hypotheses) (arguments) : result
-
-    where "sorry" represents a missing implementation for a desired function.
-
-    - each theorem represents a property about one or more of the def_type_i. The theorem thype thm_type_i is of the form
-    {{implicit_arg1 : Type1}} 
-    (explicit_arg2 : Type2) 
-    (hypothesis : Prop) 
-    : Conclusion
-
-    where "Conclusion" is a formula or conjunction of formulas representing the desired properties for some of the missing implementations in def def_type_1, ..., def def_type_n
-
-  OUTPUT: Return ONLY the complete Lean code file, wrapped in a ```lean code block. Do not include any explanations, reasoning, or markdown outside the code block.
-  
-  The output should be a verified Lean file of the form:
-        def def_type_1 := implementation_1
-        ...
-        def def_type_n := implementation_n
-        theorem thm_type_1 := proof_1
-        ...
-        theorem thm_type_n := proof_n
-    
   CRITICAL RULES:
-  - do not change any of def_type_i or thm_type_i 
-  - do not use sorry in the output file
-  - the input file may contain additional definitions (without "sorry") that you can use in implementations if needed. 
-  - you can add helper definitions, theorems, and lemmas as needed, but the initial definitions and theorems must remain unchanged. 
-  Moreover, for any new definition, lemma or theorem you add, add a comment of the form -- LLM HELPER on the line just before it. 
-  - Return ONLY the Lean code, no explanations or markdown
-  
-  AUXILIARY CONTEXT FROM LEAN LSP (optional):
+  - Do not change any signatures (names, binders, types) of existing defs/lemmas/theorems.
+  - Do not output any `sorry`.
+  - You may add helper defs/lemmas with a preceding comment `-- LLM HELPER`.
+  - Return ONLY the Lean code in a ```lean fenced block. No prose.
+
+  Hints on approach:
+  - Read diagnostics; fix syntax/type issues first.
+  - Inspect goals near each sorry; solve with standard tactics, library lemmas, or by adding helpers.
+  - Keep implementations simple; prefer structural recursion and total functions.
+
+  AUXILIARY CONTEXT FROM LEAN LSP (skim usefully):
   {lspContext}
 
-  LEAN SPECIFICATION WITH EMPTY DEFINITIONS AND PROOF BODIES:
+  ERROR DETAILS (may be empty on the first pass):
+  {errorDetails}
+
+  INPUT LEAN FILE (with sorrys):
   {code}
 
 fix_verification: |
- The task is to review definitions and theorems in a Lean file that do not verify due to missing or invalid implementations or proofs.
+  You are the Vericoder for Lean 4. The file below does not verify. Repair it by modifying only bodies of existing defs/theorems/lemmas (keep names and types). Use Lean LSP MCP for goals/diagnostics/completions and add helper items prefixed with `-- LLM HELPER` if needed. Output ONLY a verified Lean file.
 
- You have access to Lean LSP MCP tools; use them aggressively:
- - Read diagnostic messages at reported positions.
- - Get hover/types, expected term goals, and current goal states near failing tactics or sorrys.
- - Use completions to discover available lemmas and rewrite rules.
- INPUT: a Lean file that contains some definitions and theorems that dont verify due to missing or invalid implementations or proofs. 
- The file contains:
- - some atoms (def, lemma, theorem, ...) that have the comment -- LLM HELPER before them. These atoms you can change and remove at will. 
+  CRITICAL RULES:
+  - Keep all existing signatures unchanged.
+  - No `sorry` in the output.
+  - Add only minimal helpers with `-- LLM HELPER` comments.
+  - Return ONLY the Lean code in a ```lean fenced block.
 
- For all the other atoms (that do not have the comment -- LLM HELPER) your are allowed to change the definition or prooof body, but you are not allowed to change the name, type, or signature of the atom.
-
-  More precisely, these atoms will be of the form:
-  def def_type_1 := implementation_1
-  ...
-  def def_type_n := implementation_n
-  theorem thm_type_1 := proof_1
-  ...
-  theorem thm_type_n := proof_n
-    
-  and you are allowed to change the implementation_i and proof_i, but you are not allowed to change def_type_i or thm_type_i. So the output file should contain:
-
-  def def_type_1 := implementation_upd_1
-  ...
-  def def_type_n := implementation_upd_n
-  theorem thm_type_1 := proof_upd_1
-  ...
-  theorem thm_type_n := proof_upd_n
-  where implementation_upd_i and proof_upd_i are the updated implementations and proofs that should verify.
-
-    
-  POSITIVE CRITICAL RULES:
-  - you can change the implementation of def_type_i and proof of thm_type_i to fix the verification errors
-  - you can add helper definitions, theorems, and lemmas as needed, but the initial definitions and theorems must remain unchanged. 
-  Moreover, for any new definition, lemma or theorem you add, add a comment of the form -- LLM HELPER on the line just before it. 
-  
-  NEGATIVE CRITICAL RULES:
-  - you should not add trivial annotations (requires true, invariant true, ensures true, etc.)
-  - you should not add null checks on non-nullable types
-  - do not use sorry in the output file
-  - output valid Lean code
-  - Return ONLY the Lean code, no explanations or markdown
-
-  AUXILIARY CONTEXT FROM LEAN LSP (optional):
+  AUXILIARY CONTEXT FROM LEAN LSP (skim usefully):
   {lspContext}
 
-  OUTPUT: Return ONLY the complete Lean code file, wrapped in a ```lean code block. Do not include any explanations, reasoning, or markdown outside the code block.
-  
-  ERROR DETAILS from Lean verification of the given code:
+  ERROR DETAILS from Lean verification:
   {errorDetails}
 
-  Code Below:
+  INPUT LEAN FILE (current attempt):
   {code}

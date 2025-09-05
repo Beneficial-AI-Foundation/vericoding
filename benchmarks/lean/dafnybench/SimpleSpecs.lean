@@ -10,12 +10,10 @@ a non-positive integer and a midpoint calculation.
 namespace DafnyBenchmarks
 
 /-- Function that returns a non-positive integer -/
-def f : Int :=
-  -1  -- Simple implementation that satisfies the spec
+def f : Int := sorry
 
 /-- Compute the midpoint between two integers -/
-def mid (p q : Int) : Int :=
-  p + (q - p) / 2
+def mid (p q : Int) : Int := sorry
 
 /-- Specification for f -/
 theorem f_spec :

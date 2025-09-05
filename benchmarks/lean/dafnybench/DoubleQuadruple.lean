@@ -7,8 +7,7 @@ open Std.Do
 
     Returns a pair (a, b) where a is twice the input and b is four times the input.
 -/
-def doubleQuadruple (x : Int) : (Int × Int) :=
-  sorry
+def doubleQuadruple (x : Int) : (Int × Int) := sorry
 
 /-- Specification: DoubleQuadruple returns 2x and 4x.
 

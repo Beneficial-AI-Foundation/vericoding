@@ -13,10 +13,7 @@ open Std.Do
     - s[i+1] = s[i] + operations[i] (running sum)
     - result = true iff there exists an i where s[i] < 0
 -/
-def belowZero (operations : List Int) : (Array Int × Bool) := Id.run do
-  let mut balances : Array Int := #[0]
-  let mut balance := 0
-  let mut result := false
+def belowZero (operations : List Int) : (Array Int × Bool) := sorry
   
   for op in operations do
     balance := balance + op

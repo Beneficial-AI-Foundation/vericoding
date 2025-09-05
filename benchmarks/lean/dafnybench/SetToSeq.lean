@@ -11,9 +11,7 @@ open Std.Do
 
     Returns a list containing all set elements.
 -/
-def setToSeq {α : Type} [DecidableEq α] (s : List α) : List α :=
-  -- Remove duplicates to simulate set behavior
-  s.eraseDups
+def setToSeq {α : Type} [DecidableEq α] (s : List α) : List α := sorry
 
 /-- Specification: setToSeq creates a list that contains exactly
     the same elements as the input set (as a multiset).

@@ -18,14 +18,10 @@ structure PartitionResult where
   post : List Int
 
 /-- Partition a list around a pivot element -/
-def partition (lst : List Int) (h : lst ≠ []) : PartitionResult := by
-  -- Implementation intentionally omitted for the benchmark; to be filled by agents.
-  sorry
+def partition (lst : List Int) (h : lst ≠ []) : PartitionResult := sorry
 
 /-- QuickSelect algorithm to find the k-th smallest element -/
-def quickSelect (lst : List Int) (k : Nat) (h : lst ≠ [] ∧ k < lst.length) : PartitionResult := by
-  -- Implementation intentionally omitted for the benchmark; to be filled by agents.
-  sorry
+def quickSelect (lst : List Int) (k : Nat) (h : lst ≠ [] ∧ k < lst.length) : PartitionResult := sorry
 
 /-- Specification for partition -/
 theorem partition_spec (lst : List Int) (h : lst ≠ []) :

@@ -18,8 +18,7 @@ open Std.Do
     - If result < 0:
       - The key does not exist in the array
 -/
-def find (a : Array Int) (key : Int) : Int :=
-  sorry -- Implementation left as exercise
+def find (a : Array Int) (key : Int) : Int := sorry
 
 theorem find_spec (a : Array Int) (key : Int) :
     ⦃⌜True⌝⦄

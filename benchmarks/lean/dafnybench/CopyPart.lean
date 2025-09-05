@@ -8,8 +8,7 @@ open Std.Do
     Copies `len` elements from `src` starting at index `sStart` 
     into `dest` starting at index `dStart`, returning a new array.
 -/
-def copy (src : Array Int) (sStart : Nat) (dest : Array Int) (dStart : Nat) (len : Nat) : Array Int :=
-  sorry
+def copy (src : Array Int) (sStart : Nat) (dest : Array Int) (dStart : Nat) (len : Nat) : Array Int := sorry
 
 /-- Specification: Copy preserves array structure while copying a segment.
 

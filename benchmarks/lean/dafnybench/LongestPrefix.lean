@@ -10,20 +10,7 @@ open Std.Do
     
     Example: LongestCommonPrefix("hello", "help") = "hel"
 -/
-def longestCommonPrefix (str1 str2 : List Char) : List Char :=
-  let rec loop (i : Nat) (acc : List Char) : List Char :=
-    if h : i < min str1.length str2.length then
-      if h1 : i < str1.length then
-        if h2 : i < str2.length then
-          if str1[i] = str2[i] then
-            loop (i + 1) (acc ++ [str1[i]])
-          else
-            acc
-        else acc
-      else acc
-    else
-      acc
-  loop 0 []
+def longestCommonPrefix (str1 str2 : List Char) : List Char := sorry
 
 /-- Specification: longestCommonPrefix returns a prefix that is the longest common prefix
     of both input strings.

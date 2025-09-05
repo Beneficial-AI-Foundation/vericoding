@@ -15,8 +15,7 @@ open Std.Do
     - arr[j] becomes the old value of arr[i]
     - All other elements remain unchanged
 -/
-def swap (arr : Array Int) (i : Nat) (j : Nat) : StateM (Array Int) Unit := do
-  pure ()
+def swap (arr : Array Int) (i : Nat) (j : Nat) : StateM (Array Int) Unit := sorry
 
 /-- Specification: swap exchanges the elements at positions i and j.
     

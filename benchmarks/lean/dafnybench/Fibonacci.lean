@@ -19,8 +19,7 @@ def fibonacci : Nat → Nat
   | n + 2 => fibonacci (n + 1) + fibonacci n
 
 /-- Iterative calculation of Fibonacci numbers -/
-def fibonacciIterative (n : Nat) : Nat :=
-  sorry
+def fibonacciIterative (n : Nat) : Nat := sorry
 
 /-- Specification for fibonacciIterative -/
 theorem fibonacciIterative_spec (n : Nat) :

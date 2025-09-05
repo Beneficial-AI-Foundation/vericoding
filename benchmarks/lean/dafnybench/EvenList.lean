@@ -14,8 +14,7 @@ open Std.Do
     - All numbers in the result are even
     - The relative order of even numbers is preserved
 -/
-def findEvenNumbers (arr : Array Int) : Array Int :=
-  arr.filter (fun x => x % 2 = 0)
+def findEvenNumbers (arr : Array Int) : Array Int := sorry
 
 /-- Specification: findEvenNumbers returns an array containing exactly the even numbers
     from the input array in their original order.

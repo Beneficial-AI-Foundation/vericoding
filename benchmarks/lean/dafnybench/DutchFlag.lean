@@ -20,13 +20,10 @@ inductive Color
 deriving DecidableEq, Inhabited
 
 /-- Predicate defining the ordering relation between colors -/
-def below (c d : Color) : Bool :=
-  c == Color.Red || c == d || d == Color.Blue
+def below (c d : Color) : Bool := sorry
 
 /-- Dutch Flag algorithm implementation -/
-def dutchFlag (a : Array Color) : Array Color := by
-  -- Implementation intentionally omitted for the benchmark; to be filled by agents.
-  sorry
+def dutchFlag (a : Array Color) : Array Color := sorry
 
 /-- Specification for the Dutch Flag algorithm -/
 theorem dutchFlag_spec (a : Array Color) :

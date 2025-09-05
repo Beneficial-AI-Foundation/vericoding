@@ -13,8 +13,7 @@ open Std.Do
     
     Returns a pair with the values swapped.
 -/
-def swapBitvectors (X : UInt8) (Y : UInt8) : UInt8 × UInt8 :=
-  (Y, X)
+def swapBitvectors (X : UInt8) (Y : UInt8) : UInt8 × UInt8 := sorry
 
 /-- Specification: swapBitvectors returns the input values swapped.
     

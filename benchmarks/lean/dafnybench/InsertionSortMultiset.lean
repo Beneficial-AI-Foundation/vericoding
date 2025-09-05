@@ -12,19 +12,13 @@ import dafnybench.Multiset
 namespace DafnyBenchmarks
 
 /-- Binary search in a sorted array -/
-def search (s : Array Int) (x : Int) : Nat := by
-  -- Implementation intentionally omitted for the benchmark; to be filled by agents.
-  sorry
+def search (s : Array Int) (x : Int) : Nat := sorry
 
 /-- Insert element at position in array -/
-def insertAt (arr : Array Int) (pos : Nat) (elem : Int) : Array Int := by
-  -- Implementation intentionally omitted for the benchmark; to be filled by agents.
-  sorry
+def insertAt (arr : Array Int) (pos : Nat) (elem : Int) : Array Int := sorry
 
 /-- Insertion sort implementation -/
-def insertionSort (l : List Int) : Array Int := by
-  -- Implementation intentionally omitted for the benchmark; to be filled by agents.
-  sorry
+def insertionSort (l : List Int) : Array Int := sorry
 
 /-- Specification for binary search -/
 theorem search_spec (s : Array Int) (x : Int)

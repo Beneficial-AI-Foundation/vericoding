@@ -12,11 +12,7 @@ open Std.Do
     - result.length = a.length
     - For all i, result[i] = a[i] + b[i]
 -/
-def arraySum (a : Array Int) (b : Array Int) : Array Int :=
-  if h : a.size = b.size then
-    Array.ofFn fun i : Fin a.size => a[i] + b[i.val]'(h ▸ i.2)
-  else
-    #[]  -- Return empty array if sizes don't match
+def arraySum (a : Array Int) (b : Array Int) : Array Int := sorry
 
 /-- Specification: arraySum computes element-wise addition.
     

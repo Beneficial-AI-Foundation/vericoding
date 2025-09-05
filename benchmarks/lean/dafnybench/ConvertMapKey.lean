@@ -9,8 +9,7 @@ open Std.Do
     Given a map from natural numbers to booleans and an injective function on naturals,
     creates a new map where each key k is replaced by f(k), preserving the values.
 -/
-def convertMapKey (inputs : Std.HashMap Nat Bool) (f : Nat → Nat) : Std.HashMap Nat Bool :=
-  sorry
+def convertMapKey (inputs : Std.HashMap Nat Bool) (f : Nat → Nat) : Std.HashMap Nat Bool := sorry
 
 /-- Specification: ConvertMapKey transforms keys while preserving values.
 

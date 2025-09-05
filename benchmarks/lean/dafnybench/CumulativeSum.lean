@@ -13,25 +13,17 @@ import Std.Tactic.Do
 open Std.Do
 
 /-- Computes the sum of array elements from index i to j (exclusive) -/
-def sum (a : Array Int) (i j : Nat) : Int :=
-  if h : i < j ∧ j ≤ a.size then
-    if i = j then 0
-    else a[i]! + sum a (i + 1) j
-  else 0
+def sum (a : Array Int) (i j : Nat) : Int := sorry
 termination_by j - i
 
 /-- Query method that returns the sum from index i to j -/
-def query (a : Array Int) (i j : Nat) : Int := 
-  sorry
+def query (a : Array Int) (i j : Nat) : Int := sorry
 
 /-- Predicate that checks if c is a valid prefix sum array for a -/
-def isPrefixSumFor (a c : Array Int) : Prop :=
-  a.size + 1 = c.size ∧ c[0]! = 0 ∧
-  ∀ i, i < a.size → c[i + 1]! = c[i]! + a[i]!
+def isPrefixSumFor (a c : Array Int) : Prop := sorry
 
 /-- Fast query using prefix sum array -/
-def queryFast (a c : Array Int) (i j : Nat) : Int := 
-  sorry
+def queryFast (a c : Array Int) (i j : Nat) : Int := sorry
 
 /-- Specification: query returns the sum from index i to j -/
 theorem query_spec (a : Array Int) (i j : Nat)

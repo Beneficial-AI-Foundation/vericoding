@@ -13,8 +13,7 @@ open Std.Do
     - "hello" is not a palindrome
     - "" (empty string) is a palindrome
 -/
-def isPalindrome (x : List Char) : Bool :=
-  sorry
+def isPalindrome (x : List Char) : Bool := sorry
 
 /-- Specification: isPalindrome returns true if and only if the sequence reads
     the same forwards and backwards.

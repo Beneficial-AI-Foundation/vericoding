@@ -9,8 +9,7 @@ open Std.Do
     This is based on the LeetCode problem:
     https://leetcode.com/problems/two-sum/
 -/
-def twoSum (nums : Array Int) (target : Int) : Int × Int :=
-  sorry -- Implementation left as exercise
+def twoSum (nums : Array Int) (target : Int) : Int × Int := sorry
 
 /-- Specification: twoSum returns indices i and j where:
     - 0 ≤ i < j < nums.length

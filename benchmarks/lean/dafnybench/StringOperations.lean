@@ -13,20 +13,16 @@ import Std.Tactic.Do
 open Std.Do
 
 /-- Checks if pre is a prefix of str -/
-def isPrefix (pre str : String) : Bool := 
-  sorry
+def isPrefix (pre str : String) : Bool := sorry
 
 /-- Checks if sub is a substring of str -/
-def isSubstring (sub str : String) : Bool := 
-  sorry
+def isSubstring (sub str : String) : Bool := sorry
 
 /-- Checks if str1 and str2 have a common substring of length k -/
-def haveCommonKSubstring (k : Nat) (str1 str2 : String) : Bool := 
-  sorry
+def haveCommonKSubstring (k : Nat) (str1 str2 : String) : Bool := sorry
 
 /-- Returns the length of the longest common substring of str1 and str2 -/
-def maxCommonSubstringLength (str1 str2 : String) : Nat := 
-  sorry
+def maxCommonSubstringLength (str1 str2 : String) : Nat := sorry
 
 /-- Specification: isPrefix returns true iff pre is a prefix of str -/
 theorem isPrefix_spec (pre str : String) 

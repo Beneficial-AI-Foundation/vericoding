@@ -12,8 +12,7 @@ import Std.Tactic.Do
 open Std.Do
 
 /-- Simple assignment method that adds 1 to the input -/
-def simple (y : Int) : Int := 
-  sorry
+def simple (y : Int) : Int := sorry
 
 /-- Specification: when y = 6, simple returns 7 -/
 theorem simple_spec :

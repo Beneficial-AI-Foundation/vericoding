@@ -15,16 +15,7 @@ open Std.Do
     - p: The number of characters to insert from nl
     - pos: The position in line where insertion should occur
 -/
-def insert (line : Array Char) (l : Nat) (nl : Array Char) (p : Nat) (pos : Nat) : Array Char :=
-  if l + p ≤ line.size ∧ p ≤ nl.size ∧ pos ≤ l then
-    (
-      line.extract 0 pos ++ 
-      nl.extract 0 p ++ 
-      line.extract pos l ++ 
-      Array.mk (List.replicate p ' ')
-    )
-  else
-    line
+def insert (line : Array Char) (l : Nat) (nl : Array Char) (p : Nat) (pos : Nat) : Array Char := sorry
 
 /-- Specification: insert modifies the line array by inserting p characters from nl at position pos,
     preserving the original content before and after the insertion point.

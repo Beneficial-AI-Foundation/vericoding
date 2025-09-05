@@ -37,11 +37,13 @@ lean_lib DafnyBench where
     globs := #[.andSubmodules `dafnybench]
     srcDir := "benchmarks/lean"
 
--- Generated implementations live under `benchmarks/lean/dafnybench/_gen/...`.
+-- Generated implementations live under the sibling path
+-- `benchmarks/lean/dafnybench_gen/Run_<timestamp>/...`.
 -- This separate library lets us `lake build DafnyBenchGenerated` to compile all
 -- generated files without touching the handwritten specs.
 -- Generated code builds under a sibling namespace `dafnybench_gen` so the
--- main `DafnyBench` target does not pull it in.
+-- main `DafnyBench` target does not pull it in. Any legacy paths under
+-- `benchmarks/lean/dafnybench/_gen` are no longer used by the generator.
 lean_lib DafnyBenchGenerated where
   globs := #[.andSubmodules `dafnybench_gen]
   srcDir := "benchmarks/lean"

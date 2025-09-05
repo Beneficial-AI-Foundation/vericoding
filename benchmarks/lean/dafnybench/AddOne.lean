@@ -12,8 +12,7 @@ import Std.Tactic.Do
 open Std.Do
 
 /-- Returns x + 1 -/
-def addOne (x : Int) : Int := 
-  sorry
+def addOne (x : Int) : Int := sorry
 
 /-- Specification: addOne returns x + 1 -/
 theorem addOne_spec (x : Int) :

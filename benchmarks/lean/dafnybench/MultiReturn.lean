@@ -9,8 +9,7 @@ open Std.Do
     
     Example: MultipleReturns(5, 3) = (8, 2)
 -/
-def multipleReturns (x y : Int) : (Int × Int) :=
-  (x + y, x - y)
+def multipleReturns (x y : Int) : (Int × Int) := sorry
 
 /-- Specification: multipleReturns computes the sum and difference correctly.
     

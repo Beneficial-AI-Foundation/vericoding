@@ -7,14 +7,11 @@ open Std.Do
 
     Scans the array from left to right looking for the element e.
     Returns the index of the first occurrence of e, or the array length if e is not found.
-    
+
     This variant returns array.size when the element is not found, making it
     easy to check if the search was successful by comparing with array.size.
 -/
-def linearSearch (a : Array Int) (e : Int) : Nat :=
-  match a.findIdx? (· = e) with
-  | some idx => idx
-  | none => a.size
+def linearSearch (a : Array Int) (e : Int) : Nat := sorry
 
 /-- Specification: linearSearch returns the index of the first occurrence of e,
     or a.size if e is not in the array.
@@ -33,3 +30,4 @@ theorem linearSearch_spec (a : Array Int) (e : Int) :
             (n = a.size ∨ (n < a.size ∧ a[n]! = e)) ∧
             (∀ i : Nat, i < n → a[i]! ≠ e)⌝⦄ := by
   sorry
+

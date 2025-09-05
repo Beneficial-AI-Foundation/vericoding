@@ -11,8 +11,7 @@ open Std.Do
     
     Returns a pair with the values swapped.
 -/
-def swapSimultaneous (X : Int) (Y : Int) : Int × Int :=
-  (Y, X)
+def swapSimultaneous (X : Int) (Y : Int) : Int × Int := sorry
 
 /-- Specification: swapSimultaneous returns the input values swapped.
     

@@ -4,8 +4,7 @@ import Std.Tactic.Do
 open Std.Do
 
 /-- Main method (empty in original specification) -/
-def Main : IO Unit := do
-  return ()
+def Main : IO Unit := sorry
 
 /-- Method H - operates on two arrays with specific index constraints.
     
@@ -14,8 +13,7 @@ def Main : IO Unit := do
     
     Note: The original specification doesn't provide postconditions.
 -/
-def H (a c : Array Int) (n j : Nat) : Unit := 
-  sorry -- Implementation left as exercise
+def H (a c : Array Int) (n j : Nat) : Unit := sorry
 
 theorem H_spec (a c : Array Int) (n j : Nat)
     (h_bounds : j < n ∧ n = a.size ∧ n = c.size) :
@@ -31,8 +29,7 @@ theorem H_spec (a c : Array Int) (n j : Nat)
     
     Note: The original specification doesn't provide postconditions.
 -/
-def K (a c : Array Int) (n : Nat) : Unit := 
-  sorry -- Implementation left as exercise
+def K (a c : Array Int) (n : Nat) : Unit := sorry
 
 theorem K_spec (a c : Array Int) (n : Nat)
     (h_bounds : n ≤ a.size ∧ n ≤ c.size) :
@@ -48,8 +45,7 @@ theorem K_spec (a c : Array Int) (n : Nat)
     
     Note: The original specification doesn't provide postconditions.
 -/
-def L (a c : Array Int) (n : Nat) : Unit := 
-  sorry -- Implementation left as exercise
+def L (a c : Array Int) (n : Nat) : Unit := sorry
 
 theorem L_spec (a c : Array Int) (n : Nat)
     (h_bounds : n ≤ a.size ∧ a.size = c.size) :
@@ -66,8 +62,7 @@ theorem L_spec (a c : Array Int) (n : Nat)
     
     Note: The original specification doesn't provide postconditions.
 -/
-def M' (a c : Array Int) (m n k l : Nat) : Unit := 
-  sorry -- Implementation left as exercise
+def M' (a c : Array Int) (m n k l : Nat) : Unit := sorry
 
 theorem M'_spec (a c : Array Int) (m n k l : Nat)
     (h_a : k + m ≤ a.size)

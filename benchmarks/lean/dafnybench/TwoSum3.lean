@@ -9,8 +9,7 @@ open Std.Do
     
     This is used as a loop invariant in the two-sum implementation.
 -/
-def InMap (nums : List Int) (m : Std.HashMap Int Nat) (target : Int) : Prop :=
-  ∀ j : Nat, j < nums.length → (target - nums[j]!) ∈ m
+def InMap (nums : List Int) (m : Std.HashMap Int Nat) (target : Int) : Prop := sorry
 
 /-- Two Sum with detailed specification about search order.
     
@@ -24,8 +23,7 @@ def InMap (nums : List Int) (m : Std.HashMap Int Nat) (target : Int) : Prop :=
       - No valid pair exists with second index < r.2
     - If r.1 = -1: No valid pair exists in the entire array
 -/
-def twoSum (nums : Array Int) (target : Int) : Int × Int :=
-  sorry -- Implementation left as exercise
+def twoSum (nums : Array Int) (target : Int) : Int × Int := sorry
 
 theorem twoSum_spec (nums : Array Int) (target : Int) :
     ⦃⌜True⌝⦄

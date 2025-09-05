@@ -17,76 +17,31 @@ inductive Tree where
   deriving Repr, DecidableEq
 
 /-- Predicate to check if all values in tree are less than max -/
-def maxValue (tree : Tree) (max : Int) : Prop :=
-  match tree with
-  | Tree.Empty => True
-  | Tree.Node left v right => max > v ∧ maxValue left max ∧ maxValue right max
+def maxValue (tree : Tree) (max : Int) : Prop := sorry
 
 /-- Predicate to check if all values in tree are greater than min -/
-def minValue (tree : Tree) (min : Int) : Prop :=
-  match tree with
-  | Tree.Empty => True
-  | Tree.Node left v right => min < v ∧ minValue left min ∧ minValue right min
+def minValue (tree : Tree) (min : Int) : Prop := sorry
 
 /-- Binary search tree invariant -/
-def BinarySearchTree (tree : Tree) : Prop :=
-  match tree with
-  | Tree.Empty => True
-  | Tree.Node left value right =>
-    (left = Tree.Empty ∨ ∃ v l r, left = Tree.Node l v r ∧ v < value) ∧
-    (right = Tree.Empty ∨ ∃ v l r, right = Tree.Node l v r ∧ v > value) ∧
-    BinarySearchTree left ∧ BinarySearchTree right ∧
-    minValue right value ∧ maxValue left value
+def BinarySearchTree (tree : Tree) : Prop := sorry
 
 /-- Get minimum value from a tree -/
-def getMin (tree : Tree) : Option Int :=
-  match tree with
-  | Tree.Empty => none
-  | Tree.Node Tree.Empty v _ => some v
-  | Tree.Node left _ _ => getMin left
+def getMin (tree : Tree) : Option Int := sorry
 
 /-- Get maximum value from a tree -/
-def getMax (tree : Tree) : Option Int :=
-  match tree with
-  | Tree.Empty => none
-  | Tree.Node _ v Tree.Empty => some v
-  | Tree.Node _ _ right => getMax right
+def getMax (tree : Tree) : Option Int := sorry
 
 /-- Insert a value into a BST -/
-def insert (tree : Tree) (value : Int) : Tree :=
-  match tree with
-  | Tree.Empty => Tree.Node Tree.Empty value Tree.Empty
-  | Tree.Node left v right =>
-    if value < v then Tree.Node (insert left value) v right
-    else if value > v then Tree.Node left v (insert right value)
-    else tree
+def insert (tree : Tree) (value : Int) : Tree := sorry
 
 /-- Delete a value from a BST -/
-def delete (tree : Tree) (value : Int) : Tree :=
-  match tree with
-  | Tree.Empty => Tree.Empty
-  | Tree.Node left v right =>
-    if value < v then Tree.Node (delete left value) v right
-    else if value > v then Tree.Node left v (delete right value)
-    else match left, right with
-      | Tree.Empty, _ => right
-      | _, Tree.Empty => left
-      | _, _ => 
-        match getMax left with
-        | none => tree  -- Should not happen
-        | some maxLeft => Tree.Node (delete left maxLeft) maxLeft right
+def delete (tree : Tree) (value : Int) : Tree := sorry
 
 /-- Inorder traversal of a tree -/
-def inorder (tree : Tree) : List Int :=
-  match tree with
-  | Tree.Empty => []
-  | Tree.Node left v right => inorder left ++ [v] ++ inorder right
+def inorder (tree : Tree) : List Int := sorry
 
 /-- Postorder traversal of a tree -/
-def postorder (tree : Tree) : List Int :=
-  match tree with
-  | Tree.Empty => []
-  | Tree.Node left v right => postorder left ++ postorder right ++ [v]
+def postorder (tree : Tree) : List Int := sorry
 
 /-- Specification for insert -/
 theorem insert_spec (tree : Tree) (value : Int) 

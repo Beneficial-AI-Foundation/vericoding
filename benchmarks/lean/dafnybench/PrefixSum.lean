@@ -5,14 +5,7 @@ open Std.Do
 
 /-- Sum of array elements from index i to j (exclusive).
     This is a specification function used to define correctness. -/
-def sum (a : Array Int) (i j : Nat) : Int :=
-  if h : i < j ∧ j ≤ a.size then
-    let rec loop (k : Nat) (acc : Int) : Int :=
-      if k = j then acc
-      else if h' : k < a.size then loop (k + 1) (acc + a[k])
-      else acc
-    loop i 0
-  else 0
+def sum (a : Array Int) (i j : Nat) : Int := sorry
 
 /-- Query method that computes the sum of array elements from index i to j.
     
@@ -22,8 +15,7 @@ def sum (a : Array Int) (i j : Nat) : Int :=
     Postconditions:
     - Returns sum(a, i, j)
 -/
-def query (a : Array Int) (i j : Nat) : Int :=
-  sorry -- Implementation left as exercise
+def query (a : Array Int) (i j : Nat) : Int := sorry
 
 theorem query_spec (a : Array Int) (i j : Nat) 
     (h_bounds : 0 ≤ i ∧ i ≤ j ∧ j ≤ a.size) :
@@ -34,10 +26,7 @@ theorem query_spec (a : Array Int) (i j : Nat)
   sorry
 
 /-- Predicate that checks if c is a valid prefix sum array for a -/
-def is_prefix_sum_for (a c : Array Int) : Prop :=
-  a.size + 1 = c.size ∧
-  c[0]! = 0 ∧
-  ∀ j : Nat, 1 ≤ j ∧ j ≤ a.size → c[j]! = sum a 0 j
+def is_prefix_sum_for (a c : Array Int) : Prop := sorry
 
 /-- Fast query using precomputed prefix sums.
     
@@ -48,8 +37,7 @@ def is_prefix_sum_for (a c : Array Int) : Prop :=
     Postconditions:
     - Returns sum(a, i, j)
 -/
-def queryFast (a c : Array Int) (i j : Nat) : Int :=
-  sorry -- Implementation left as exercise
+def queryFast (a c : Array Int) (i j : Nat) : Int := sorry
 
 theorem queryFast_spec (a c : Array Int) (i j : Nat)
     (h_prefix : is_prefix_sum_for a c)
@@ -78,8 +66,7 @@ def mem {α : Type} [DecidableEq α] (x : α) : MyList α → Bool
     Postconditions:
     - All elements of the array are members of the returned list
 -/
-def from_array (α : Type) [DecidableEq α] (a : Array α) : MyList α :=
-  sorry -- Implementation left as exercise
+def from_array (α : Type) [DecidableEq α] (a : Array α) : MyList α := sorry
 
 theorem from_array_spec (α : Type) [DecidableEq α] [Inhabited α] (a : Array α)
     (h_size : a.size > 0) :

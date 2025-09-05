@@ -9,8 +9,7 @@ open Std.Do
     
     This is a simple predicate that checks the parity of an integer.
 -/
-def computeIsEven (x : Int) : Bool :=
-  sorry
+def computeIsEven (x : Int) : Bool := sorry
 
 /-- Specification: computeIsEven returns true if and only if x is even.
 

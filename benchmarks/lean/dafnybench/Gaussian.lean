@@ -16,14 +16,10 @@ open Std.Internal
 namespace DafnyBenchmarks
 
 /-- Computes the squared sum of elements in a list -/ 
-def arraySquaredSum (a : List Rat) : Rat :=
-  a.foldl (fun acc x => acc + x * x) (0 : Rat)
+def arraySquaredSum (a : List Rat) : Rat := sorry
 
 /-- Gaussian mechanism for differential privacy -/
-def gaussian (size : Nat) (q q_hat : Array Rat) : Array Rat :=
-  -- Simple placeholder implementation
-  -- In reality, this would add Gaussian noise to the query
-  q
+def gaussian (size : Nat) (q q_hat : Array Rat) : Array Rat := sorry
 
 /-- Specification for gaussian -/
 theorem gaussian_spec (size : Nat) (q q_hat : Array Rat) 

@@ -10,11 +10,7 @@ open Std.Do
 
     Returns a new array of the same length with rotated elements.
 -/
-def rotate (a : Array Int) (offset : Nat) : Array Int :=
-  if a.size = 0 then 
-    a
-  else
-    Array.ofFn fun i : Fin a.size => a[(i.val + offset) % a.size]'(by sorry)
+def rotate (a : Array Int) (offset : Nat) : Array Int := sorry
 
 /-- Specification: rotate returns a new array where each element
     at position i comes from position (i + offset) % length.

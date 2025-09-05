@@ -39,6 +39,9 @@ from vericoding.utils import (
     get_git_remote_url,
     get_current_branch,
 )
+from vericoding.core import ProcessingConfig
+from vericoding.lean.mcp_helpers import ensure_server_started, close_server
+import atexit
 
 # Initialize environment loading
 load_environment()
@@ -132,9 +135,9 @@ Examples:
     parser.add_argument(
         "--llm-provider",
         type=str,
-        choices=["claude", "openai", "deepseek", "mock"],
+        choices=["claude", "openai", "deepseek"],
         default="openai",
-        help="LLM provider to use (default: openai). Use 'mock' for offline testing.",
+        help="LLM provider to use (default: openai).",
     )
 
     parser.add_argument(
@@ -309,6 +312,13 @@ def setup_configuration(args) -> ProcessingConfig:
         f"- Spec preservation: {'Strict' if config.strict_spec_verification else 'Relaxed (default)'}"
     )
     print(f"- API rate limit delay: {config.api_rate_limit_delay}s")
+    if config.language == 'lean' and config.use_mcp:
+        # Start persistent pantograph server early
+        if ensure_server_started():
+            print("- MCP (pantograph): Enabled (persistent server)")
+            atexit.register(close_server)
+        else:
+            print("- MCP (pantograph): Not available; continuing without")
     print("\nProceeding with configuration...")
 
     return config

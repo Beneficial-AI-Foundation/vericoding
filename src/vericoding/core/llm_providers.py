@@ -11,7 +11,7 @@ class LLMProvider(ABC):
     """Abstract interface for LLM providers."""
 
     def __init__(
-        self, api_key: str, model: str, max_tokens: int = 8192, timeout: float = 60.0
+        self, api_key: str, model: str, max_tokens: int = 8192, timeout: float = 60.0, **kwargs
     ):
         self.api_key = api_key
         self.model = model
@@ -85,38 +85,35 @@ class OpenAIProvider(LLMProvider):
 
         try:
             if _should_use_responses(self.model):
-                # Use Responses API for reasoning models
-                try:
-                    kwargs: dict = {"model": self.model, "input": prompt}
-                    # Newer SDK uses max_output_tokens instead of max_tokens
-                    kwargs["max_output_tokens"] = self.max_tokens
-                    if self.reasoning_effort:
-                        kwargs["reasoning"] = {"effort": self.reasoning_effort}
-                    resp = self.client.responses.create(**kwargs)
-                    # Prefer output_text when available
-                    if hasattr(resp, "output_text") and getattr(resp, "output_text"):
-                        return getattr(resp, "output_text")
-                    # Next: try concatenating text from items in `output`
-                    out = []
-                    if hasattr(resp, "output") and getattr(resp, "output"):
-                        for item in getattr(resp, "output"):
-                            # Try item.text first
-                            if hasattr(item, "text") and item.text:
-                                out.append(item.text)
-                            # Try item.content (list of segments)
-                            segs = getattr(item, "content", None)
-                            if isinstance(segs, (list, tuple)):
-                                for seg in segs:
-                                    t = getattr(seg, "text", None)
-                                    if t:
-                                        out.append(t)
-                    if out:
-                        return "\n".join(out)
-                    # Could not extract text, fall back to Chat Completions
-                    raise ValueError("No text in Responses API output")
-                except Exception:
-                    # Fallback to Chat Completions
-                    pass
+                # Use Responses API for reasoning models (no fallback to Chat for these models)
+                kwargs: dict = {"model": self.model, "input": prompt, "max_output_tokens": self.max_tokens}
+                if self.reasoning_effort:
+                    kwargs["reasoning"] = {"effort": self.reasoning_effort}
+                resp = self.client.responses.create(**kwargs)
+                # Prefer output_text when available
+                txt = getattr(resp, "output_text", None)
+                if txt:
+                    return txt
+                # Next: try concatenating text from items in `output`/`data`
+                out: list[str] = []
+                output = getattr(resp, "output", None) or getattr(resp, "data", None)
+                if isinstance(output, (list, tuple)):
+                    for item in output:
+                        # Try item.text
+                        t1 = getattr(item, "text", None)
+                        if t1:
+                            out.append(t1)
+                        # Try item.content (list of segments)
+                        segs = getattr(item, "content", None)
+                        if isinstance(segs, (list, tuple)):
+                            for seg in segs:
+                                t = getattr(seg, "text", None)
+                                if t:
+                                    out.append(t)
+                if out:
+                    return "\n".join(out)
+                # Last resort: string dump
+                return str(resp)
 
             response = self.client.chat.completions.create(
                 model=self.model,
@@ -172,44 +169,14 @@ class DeepSeekProvider(LLMProvider):
         return "DEEPSEEK_API_KEY"
 
 
-class MockProvider(LLMProvider):
-    """Mock provider for offline/testing. Returns the code embedded in the prompt.
-
-    Heuristics:
-    - If the prompt contains a marker like "Code Below:" or
-      "LEAN SPECIFICATION WITH EMPTY DEFINITIONS AND PROOF BODIES:",
-      return everything after the last such marker.
-    - Otherwise, return the prompt verbatim (the extractor will try to pull code).
-    """
-
-    def __init__(self, api_key: str = "", model: str = "mock", **kwargs):
-        super().__init__(api_key, model, **kwargs)
-
-    def call_api(self, prompt: str) -> str:
-        split_markers = [
-            "Code Below:",
-            "LEAN SPECIFICATION WITH EMPTY DEFINITIONS AND PROOF BODIES:",
-        ]
-        last_idx: Optional[int] = None
-        for marker in split_markers:
-            idx = prompt.rfind(marker)
-            if idx != -1:
-                last_idx = max(last_idx or -1, idx)
-        if last_idx is not None and last_idx >= 0:
-            # Return the content after the marker
-            after = prompt[last_idx:]
-            return after.split("\n", 1)[1] if "\n" in after else ""
-        return prompt
-
-    def get_required_env_var(self) -> str:
-        return ""  # No env var required
-
 
 class OpenAIToolCallingProvider(LLMProvider):
     """OpenAI Chat Completions with tool-calling for Lean MCP integration."""
 
     def __init__(self, api_key: str, model: str = "gpt-4o", reasoning_effort: str | None = None, **kwargs):
-        super().__init__(api_key, model, **kwargs)
+        max_tokens = kwargs.pop("max_tokens", 8192)
+        timeout = kwargs.pop("timeout", 60.0)
+        super().__init__(api_key, model, max_tokens=max_tokens, timeout=timeout)
         self.reasoning_effort = reasoning_effort
         try:
             import openai
@@ -339,7 +306,7 @@ def create_llm_provider(provider_name: str, model: str = None, **kwargs) -> LLMP
         },
         "openai": {
             "class": OpenAIProvider,
-            "default_model": "gpt-4o",
+            "default_model": "gpt-5",
             "env_var": "OPENAI_API_KEY",
         },
         "deepseek": {
@@ -347,14 +314,9 @@ def create_llm_provider(provider_name: str, model: str = None, **kwargs) -> LLMP
             "default_model": "deepseek-chat",
             "env_var": "DEEPSEEK_API_KEY",
         },
-        "mock": {
-            "class": MockProvider,
-            "default_model": "mock",
-            "env_var": "",  # No key required
-        },
         "openai-tools": {
             "class": OpenAIToolCallingProvider,
-            "default_model": "gpt-4o",
+            "default_model": "gpt-5",
             "env_var": "OPENAI_API_KEY",
         },
     }

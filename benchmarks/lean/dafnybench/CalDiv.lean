@@ -8,8 +8,7 @@ open Std.Do
     Returns a pair (x, y) where x is the quotient and y is the remainder
     when dividing 191 by 7.
 -/
-def calDiv : Int × Int :=
-  sorry
+def calDiv : Int × Int := sorry
 
 /-- Specification: CalDiv returns the quotient and remainder of 191 ÷ 7.
 

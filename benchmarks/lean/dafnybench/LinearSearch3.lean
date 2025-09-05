@@ -12,10 +12,7 @@ open Std.Do
     This is more flexible than searching for a specific value, as it can
     search based on any property.
 -/
-def linearSearch3 {T : Type} (a : Array T) (P : T → Bool) : Nat :=
-  match a.findIdx? P with
-  | some idx => idx
-  | none => panic! "No element satisfying predicate (violates precondition)"
+def linearSearch3 {T : Type} (a : Array T) (P : T → Bool) : Nat := sorry
 
 /-- Specification: linearSearch3 returns the index of the first element satisfying predicate P.
 

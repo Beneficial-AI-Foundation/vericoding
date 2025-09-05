@@ -23,8 +23,7 @@ def stairs : Nat → Nat
   | n + 2 => stairs n + stairs (n + 1)
 
 /-- Compute the number of ways to climb n stairs -/
-def climbStairs (n : Nat) : Nat :=
-  sorry
+def climbStairs (n : Nat) : Nat := sorry
 
 /-- Specification for climbStairs -/
 theorem climbStairs_spec (n : Nat) :

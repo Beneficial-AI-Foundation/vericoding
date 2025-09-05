@@ -10,8 +10,7 @@ open Std.Do
     Specification from Dafny:
     - result = true iff for all indices i in the string, s[i] is a digit
 -/
-def allDigits (s : String) : Bool :=
-  s.all (fun c => c.isDigit)
+def allDigits (s : String) : Bool := sorry
 
 /-- Specification: allDigits returns true iff all characters are digits.
     

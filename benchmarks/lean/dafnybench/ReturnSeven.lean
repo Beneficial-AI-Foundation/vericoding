@@ -10,8 +10,7 @@ open Std.Do
 
     Returns: Always returns 7.
 -/
-def returnSeven (x : Int) : Int :=
-  7
+def returnSeven (x : Int) : Int := sorry
 
 /-- Specification: returnSeven always returns the value 7,
     regardless of the input.

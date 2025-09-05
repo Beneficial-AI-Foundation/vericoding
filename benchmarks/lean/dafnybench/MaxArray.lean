@@ -9,20 +9,7 @@ open Std.Do
     
     Example: maxArray([3, 1, 4, 1, 5]) = 5
 -/
-def maxArray (a : Array Int) : Int :=
-  let rec findMax (i : Nat) (currentMax : Int) : Int :=
-    if h : i < a.size then
-      let elem := a[i]
-      if elem > currentMax then
-        findMax (i + 1) elem
-      else
-        findMax (i + 1) currentMax
-    else
-      currentMax
-  if h : 0 < a.size then
-    findMax 1 a[0]
-  else
-    0 -- This case should not happen given precondition
+def maxArray (a : Array Int) : Int := sorry
 
 /-- Specification: maxArray returns the maximum element in the array.
     

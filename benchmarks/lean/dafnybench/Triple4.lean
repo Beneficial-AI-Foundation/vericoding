@@ -10,8 +10,7 @@ open Std.Do
     
     Returns the tripled value.
 -/
-def triple4 (x : Int) : Int :=
-  3 * x
+def triple4 (x : Int) : Int := sorry
 
 /-- Specification: triple4 returns three times the input value.
     

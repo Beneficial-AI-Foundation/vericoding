@@ -10,28 +10,10 @@
 namespace DafnyBenchmarks
 
 /-- Predicate to check if an array is sorted -/
-def sorted (a : Array Int) : Prop :=
-  ∀ i j, 0 ≤ i ∧ i < j ∧ j < a.size → a[i]! ≤ a[j]!
+def sorted (a : Array Int) : Prop := sorry
 
 /-- Binary search implementation -/
-def binarySearch (a : Array Int) (x : Int) : Int :=
-  let rec search (low high : Nat) : Int :=
-    if low > high then -1
-    else
-      let mid := (low + high) / 2
-      if h : mid < a.size then
-        if a[mid] = x then mid
-        else if a[mid] < x then search (mid + 1) high
-        else 
-          if mid = 0 then -1
-          else search low (mid - 1)
-      else -1
-  termination_by high + 1 - low
-  decreasing_by
-    all_goals simp_wf
-    · omega
-    · omega
-  search 0 (a.size - 1)
+def binarySearch (a : Array Int) (x : Int) : Int := sorry
 
 /-- Specification for binarySearch -/
 theorem binarySearch_spec (a : Array Int) (x : Int) 

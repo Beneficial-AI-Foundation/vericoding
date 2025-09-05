@@ -196,22 +196,49 @@ def verify_file(config: ProcessingConfig, file_path: str) -> VerificationResult:
 
 
 def find_spec_files(config: ProcessingConfig) -> list[str]:
-    """Find specification files for the current language."""
+    """Find specification files for the current language.
+
+    For Lean, skip generated/debug folders to avoid re-processing outputs:
+    - Any directory named exactly "_gen" or ending with "_gen"
+    - Any directory starting with "Run_" or named "debug"
+    - The sibling library folder "dafnybench_gen"
+    - Common junk: ".git", ".lake", "__pycache__", "wandb"
+    """
     try:
-        files = []
-        for root, _dirs, filenames in os.walk(config.files_dir):
+        files: list[str] = []
+
+        def should_skip_dir(dir_name: str) -> bool:
+            name = dir_name
+            if name in {".git", ".lake", "__pycache__", "debug", "wandb"}:
+                return True
+            if name == "_gen" or name.endswith("_gen"):
+                return True
+            if name.startswith("Run_"):
+                return True
+            if name == "dafnybench_gen":
+                return True
+            return False
+
+        for root, dirs, filenames in os.walk(config.files_dir):
+            # Prune directories in-place for efficiency
+            dirs[:] = [d for d in dirs if not should_skip_dir(d)]
             for f in filenames:
-                if f.endswith(config.language_config.file_extension):
-                    file_path = str(Path(root) / f)
-                    # For Lean, check if file contains 'sorry'
-                    if config.language == "lean":
+                if not f.endswith(config.language_config.file_extension):
+                    continue
+                file_path = str(Path(root) / f)
+                if config.language == "lean":
+                    # Only process files that contain 'sorry'
+                    try:
                         with Path(file_path).open() as file:
                             for line in file:
                                 if "sorry" in line:
                                     files.append(file_path)
                                     break
-                    else:
-                        files.append(file_path)
+                    except Exception:
+                        # Ignore unreadable files
+                        continue
+                else:
+                    files.append(file_path)
         return files
     except Exception as e:
         print(f"Error reading directory {config.files_dir}: {e}")

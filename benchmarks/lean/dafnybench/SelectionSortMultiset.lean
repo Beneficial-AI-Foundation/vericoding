@@ -12,14 +12,10 @@ import dafnybench.Multiset
 namespace DafnyBenchmarks
 
 /-- Find the minimum element in a non-empty list -/
-def minOfList (lst : List Int) (h : lst ≠ []) : Int := by
-  -- Implementation intentionally omitted for the benchmark; to be filled by agents.
-  sorry
+def minOfList (lst : List Int) (h : lst ≠ []) : Int := sorry
 
 /-- Selection sort implementation -/
-def selectionSort (l : List Int) : Array Int := by
-  -- Implementation intentionally omitted for the benchmark; to be filled by agents.
-  sorry
+def selectionSort (l : List Int) : Array Int := sorry
 
 /-- Specification for minOfList -/
 theorem minOfList_spec (lst : List Int) (h : lst ≠ []) :

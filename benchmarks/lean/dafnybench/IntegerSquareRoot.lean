@@ -14,9 +14,7 @@ open Std.Do
     - squareRoot 8 = 2
     - squareRoot 9 = 3
 -/
-def squareRoot (N : Nat) : Nat :=
-  -- Implementation intentionally omitted for the benchmark; to be filled by agents.
-  sorry
+def squareRoot (N : Nat) : Nat := sorry
 
 /-- Specification: squareRoot returns the integer square root of N.
 

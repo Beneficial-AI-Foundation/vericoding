@@ -12,9 +12,7 @@ import Std.Data.HashMap
 namespace DafnyBenchmarks
 
 /-- Merges two maps with m2 values taking precedence -/
-def updateMap {K V : Type} [BEq K] [Hashable K] (m1 m2 : Std.HashMap K V) : Std.HashMap K V :=
-  m1.fold (init := m2) fun acc k v =>
-    if acc.contains k then acc else acc.insert k v
+def updateMap {K V : Type} [BEq K] [Hashable K] (m1 m2 : Std.HashMap K V) : Std.HashMap K V := sorry
 
 /-- Specification for updateMap -/
 theorem updateMap_spec {K V : Type} [BEq K] [Hashable K] [LawfulBEq K] (m1 m2 : Std.HashMap K V) :

@@ -10,8 +10,7 @@ open Std.Do
 
     The array is modified in-place.
 -/
-def reverse (a : Array Int) : Array Int :=
-  Array.ofFn fun i : Fin a.size => a[a.size - 1 - i.val]'(by sorry)
+def reverse (a : Array Int) : Array Int := sorry
 
 /-- Specification: reverse modifies the array so that each element
     at position i is moved to position (length - 1 - i).

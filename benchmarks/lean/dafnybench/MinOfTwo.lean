@@ -9,8 +9,7 @@ open Std.Do
     
     Example: Min(5, 3) = 3
 -/
-def minOfTwo (x y : Int) : Int :=
-  if x ≤ y then x else y
+def minOfTwo (x y : Int) : Int := sorry
 
 /-- Specification: minOfTwo returns the smaller of the two inputs.
     

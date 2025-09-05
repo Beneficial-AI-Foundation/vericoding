@@ -18,8 +18,7 @@ The specification ensures that:
 namespace DafnyBenchmarks
 
 /-- Remove all instances of `val` from array `nums` and return the new length -/
-def removeElement (nums : Array Int) (val : Int) : Nat × Array Int :=
-  sorry
+def removeElement (nums : Array Int) (val : Int) : Nat × Array Int := sorry
 
 /-- Specification for removeElement -/
 theorem removeElement_spec (nums : Array Int) (val : Int) :

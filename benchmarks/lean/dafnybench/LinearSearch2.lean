@@ -11,10 +11,7 @@ open Std.Do
     This is useful when you know the element is present and want to avoid
     handling the "not found" case.
 -/
-def linearSearch2 (a : Array Int) (e : Int) : Nat :=
-  match a.findIdx? (· = e) with
-  | some idx => idx
-  | none => panic! "Element not found (violates precondition)"
+def linearSearch2 (a : Array Int) (e : Int) : Nat := sorry
 
 /-- Specification: linearSearch2 returns the index of the first occurrence of e.
 

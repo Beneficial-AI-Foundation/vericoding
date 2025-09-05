@@ -10,8 +10,7 @@ open Std.Do
 
     Returns a pair with the values swapped.
 -/
-def swapArithmetic (X : Int) (Y : Int) : Int × Int :=
-  (Y, X)
+def swapArithmetic (X : Int) (Y : Int) : Int × Int := sorry
 
 /-- Specification: swapArithmetic returns the input values swapped.
 

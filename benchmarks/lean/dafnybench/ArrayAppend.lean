@@ -10,8 +10,7 @@ open Std.Do
     Specification from Dafny:
     - The result is array a concatenated with singleton array [b]
 -/
-def arrayAppend (a : Array Int) (b : Int) : Array Int :=
-  a.push b
+def arrayAppend (a : Array Int) (b : Int) : Array Int := sorry
 
 /-- Specification: arrayAppend creates a new array with b appended.
     

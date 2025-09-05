@@ -18,13 +18,13 @@ structure Multiset (α : Type) where
 namespace Multiset
 
 /-- The empty multiset -/
-def empty {α : Type} : Multiset α := ⟨[]⟩
+def empty {α : Type} : Multiset α := sorry
 
 /-- Convert a list to a multiset -/
-def ofList {α : Type} (l : List α) : Multiset α := ⟨l⟩
+def ofList {α : Type} (l : List α) : Multiset α := sorry
 
 /-- Convert an array to a multiset -/
-def ofArray {α : Type} (a : Array α) : Multiset α := ⟨a.toList⟩
+def ofArray {α : Type} (a : Array α) : Multiset α := sorry
 
 /-- Check if two multisets are equal (same elements with same multiplicities) -/
 def eq {α : Type} [DecidableEq α] (m1 m2 : Multiset α) : Prop := sorry
@@ -71,15 +71,13 @@ end Multiset
 namespace List
 
 /-- Convert a list to a multiset. Stubbed for specs. -/
-def toMultiset {α : Type} (l : List α) : Multiset α :=
-  Multiset.ofList l
+def toMultiset {α : Type} (l : List α) : Multiset α := sorry
 
 end List
 
 namespace Array
 
 /-- Convert an array to a multiset. Stubbed for specs. -/
-def toMultiset {α : Type} (a : Array α) : Multiset α :=
-  Multiset.ofArray a
+def toMultiset {α : Type} (a : Array α) : Multiset α := sorry
 
 end Array

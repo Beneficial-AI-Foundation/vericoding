@@ -7,8 +7,7 @@ open Std.Do
 
     Computes the sum 0 + 1 + 2 + ... + N using the formula N * (N + 1) / 2.
 -/
-def sum (N : Nat) : Int :=
-  sorry
+def sum (N : Nat) : Int := sorry
 
 /-- Specification: Sum returns the sum of integers from 0 to N.
 

@@ -10,8 +10,7 @@ open Std.Do
 
     The array is modified in-place.
 -/
-def replace (arr : Array Int) (k : Int) : Array Int :=
-  Array.ofFn fun i : Fin arr.size => if arr[i] > k then -1 else arr[i]
+def replace (arr : Array Int) (k : Int) : Array Int := sorry
 
 /-- Specification: replace modifies the array such that all elements
     greater than k become -1, while others remain unchanged.

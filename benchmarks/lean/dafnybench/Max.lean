@@ -12,8 +12,7 @@ This module implements a specification for finding the maximum of two integers.
 namespace DafnyBenchmarks
 
 /-- Return the maximum of two integers -/
-def max (a b : Int) : Int :=
-  sorry
+def max (a b : Int) : Int := sorry
 
 /-- Specification for max -/
 theorem max_spec (a b : Int) :
@@ -23,8 +22,7 @@ theorem max_spec (a b : Int) :
   sorry
 
 /-- Testing function for max -/
-def testing : Unit :=
-  sorry
+def testing : Unit := sorry
 
 /-- Specification for testing -/
 theorem testing_spec :

@@ -10,11 +10,7 @@ open Std.Do
 
     Returns a new array with length one less than the input.
 -/
-def removeFront {α : Type} (a : Array α) : Array α :=
-  if h : a.size > 0 then
-    Array.ofFn fun i : Fin (a.size - 1) => a[i.val + 1]'(by sorry)
-  else
-    panic! "Array must have at least one element"
+def removeFront {α : Type} (a : Array α) : Array α := sorry
 
 /-- Specification: removeFront returns an array containing all elements
     except the first one from the input array.

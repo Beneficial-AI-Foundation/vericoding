@@ -75,10 +75,14 @@ def process_spec_file(
     """Process a single specification file."""
     # Initialize failure tracking table if wandb is active
     failure_table = None
+    mcp_context_table = None
     if wandb.run:
         failure_table = wandb.Table(columns=[
             "file", "iteration", "spec_hash", "code_hash",
             "error_msg", "proof_state", "timestamp"
+        ])
+        mcp_context_table = wandb.Table(columns=[
+            "file", "stage", "iteration", "context_len", "context_preview"
         ])
     
     try:
@@ -115,9 +119,14 @@ def process_spec_file(
                 lsp_context = collect_lsp_context_safe(file_path, sorry_lines)
                 if wandb.run and lsp_context:
                     wandb.log({"mcp/original_lsp_context_len": len(lsp_context)})
+                    # Log skimmable context
+                    preview = lsp_context[:2000]
+                    mcp_context_table.add_data(
+                        str(relative_path), "generate", 0, len(lsp_context), preview
+                    )
 
             generate_prompt = prompt_loader.format_prompt(
-                "generate_code", code=original_code, lspContext=lsp_context
+                "generate_code", code=original_code, lspContext=lsp_context, errorDetails=""
             )
         except KeyError as e:
             logger.info(f"  ✗ Prompt error: {e}")
@@ -250,6 +259,10 @@ def process_spec_file(
                     lsp_context = collect_lsp_context_safe(str(output_path), sorry_lines)
                     if wandb.run and lsp_context:
                         wandb.log({"mcp/fix_lsp_context_len": len(lsp_context)})
+                        preview = lsp_context[:2000]
+                        mcp_context_table.add_data(
+                            str(relative_path), "fix", iteration, len(lsp_context), preview
+                        )
 
                 fix_prompt = prompt_loader.format_prompt(
                     "fix_verification",
@@ -369,8 +382,11 @@ def process_spec_file(
         )
     finally:
         # Log failure table if we have any failures
-        if wandb.run and failure_table is not None and len(failure_table.data) > 0:
-            wandb.log({"verification_failures": failure_table})
+        if wandb.run:
+            if failure_table is not None and len(failure_table.data) > 0:
+                wandb.log({"verification_failures": failure_table})
+            if mcp_context_table is not None and len(mcp_context_table.data) > 0:
+                wandb.log({"mcp_contexts": mcp_context_table})
 
 
 def process_files_parallel(

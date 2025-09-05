@@ -10,14 +10,10 @@ open Std.Do
 
     The array is sorted in-place.
 -/
-def selectionSort (a : Array Int) : Array Int :=
-  -- For now, just return a sorted copy
-  let sorted := a.toList.toArray.qsort (· < ·)
-  sorted
+def selectionSort (a : Array Int) : Array Int := sorry
 
 /-- Helper function to count occurrences of an element in an array -/
-def countOccurrences (arr : Array Int) (elem : Int) : Nat :=
-  arr.toList.filter (· = elem) |>.length
+def countOccurrences (arr : Array Int) (elem : Int) : Nat := sorry
 
 /-- Specification: selectionSort sorts the array in ascending order
     while preserving all elements.

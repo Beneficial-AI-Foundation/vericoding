@@ -12,18 +12,13 @@ import Std.Tactic.Do
 open Std.Do
 
 /-- Predicate that checks if an array segment is sorted in ascending order -/
-def sorted (a : Array Int) (start stop : Nat) : Prop :=
-  start ≤ stop ∧ stop ≤ a.size ∧
-  ∀ x y, start ≤ x → x < y → y < stop → a[x]! ≤ a[y]!
+def sorted (a : Array Int) (start stop : Nat) : Prop := sorry
 
 /-- Predicate that helps ensure swapping is valid during sorting -/
-def pivot (a : Array Int) (stop pvt : Nat) : Prop :=
-  pvt < stop ∧ stop ≤ a.size ∧
-  ∀ x y, 0 ≤ x → x < pvt → pvt < y → y < stop → a[x]! ≤ a[y]!
+def pivot (a : Array Int) (stop pvt : Nat) : Prop := sorry
 
 /-- Bubble sort algorithm -/
-def bubbleSort (a : Array Int) : Array Int := 
-  sorry
+def bubbleSort (a : Array Int) : Array Int := sorry
 
 /-- Specification: bubbleSort returns a sorted permutation of the input array -/
 theorem bubbleSort_spec (a : Array Int) (h : a.size > 0) :

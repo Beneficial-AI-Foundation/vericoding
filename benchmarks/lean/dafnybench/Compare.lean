@@ -7,8 +7,7 @@ open Std.Do
 
     Returns true if the two inputs are equal, false otherwise.
 -/
-def compare {T : Type} [DecidableEq T] (a b : T) : Bool :=
-  sorry
+def compare {T : Type} [DecidableEq T] (a b : T) : Bool := sorry
 
 /-- Specification: Compare returns true iff the inputs are equal.
 

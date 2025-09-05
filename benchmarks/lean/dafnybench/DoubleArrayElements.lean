@@ -7,8 +7,7 @@ open Std.Do
 
     Modifies the input array by multiplying each element by 2.
 -/
-def doubleArrayElements (s : Array Int) : Array Int :=
-  sorry
+def doubleArrayElements (s : Array Int) : Array Int := sorry
 
 /-- Specification: DoubleArrayElements doubles all elements.
 
