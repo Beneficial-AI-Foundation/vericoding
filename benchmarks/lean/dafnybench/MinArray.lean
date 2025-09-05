@@ -9,20 +9,7 @@ open Std.Do
     
     Example: minArray([3, 1, 4, 1, 5]) = 1
 -/
-def minArray (a : Array Int) : Id Int :=
-  let rec findMin (i : Nat) (currentMin : Int) : Int :=
-    if h : i < a.size then
-      let elem := a[i]
-      if elem < currentMin then
-        findMin (i + 1) elem
-      else
-        findMin (i + 1) currentMin
-    else
-      currentMin
-  if h : 0 < a.size then
-    findMin 1 a[0]
-  else
-    0 -- This case should not happen given precondition
+def minArray (a : Array Int) : Int := sorry
 
 /-- Specification: minArray returns the minimum element in the array.
     
@@ -33,7 +20,7 @@ def minArray (a : Array Int) : Id Int :=
 -/
 theorem minArray_spec (a : Array Int) :
     ⦃⌜a.size > 0⌝⦄
-    minArray a
+    (pure (minArray a) : Id _)
     ⦃⇓r => ⌜
       (∀ i : Fin a.size, r ≤ a[i]) ∧
       (∃ i : Fin a.size, r = a[i])

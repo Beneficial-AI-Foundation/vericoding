@@ -10,12 +10,7 @@ open Std.Do
     - i ≠ j (can't use the same element twice)
     - nums[i] + nums[j] = target
 -/
-def correct_pair (pair : Nat × Nat) (nums : List Int) (target : Int) : Prop :=
-  let (i, j) := pair
-  i < nums.length ∧
-  j < nums.length ∧
-  i ≠ j ∧
-  nums[i]! + nums[j]! = target
+def correct_pair (pair : Nat × Nat) (nums : List Int) (target : Int) : Prop := sorry
 
 /-- Two Sum Problem: Find two indices whose elements sum to the target.
     
@@ -35,13 +30,12 @@ def correct_pair (pair : Nat × Nat) (nums : List Int) (target : Int) : Prop :=
     Postconditions:
     - Returns a correct pair (i, j)
 -/
-def twoSum (nums : List Int) (target : Int) : Id (Nat × Nat) := do
-  sorry -- Implementation left as exercise
+def twoSum (nums : List Int) (target : Int) : Nat × Nat := sorry
 
 theorem twoSum_spec (nums : List Int) (target : Int)
     (h_exists : ∃ i j : Nat, correct_pair (i, j) nums target) :
     ⦃⌜True⌝⦄
-    twoSum nums target
+    (pure (twoSum nums target) : Id _)
     ⦃⇓result => ⌜correct_pair result nums target⌝⦄ := by
   mvcgen [twoSum]
   sorry

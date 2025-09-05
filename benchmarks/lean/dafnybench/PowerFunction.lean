@@ -12,18 +12,10 @@
 namespace DafnyBenchmarks
 
 /-- Power function for specification -/
-def power (a : Int) (n : Nat) : Int :=
-  match n with
-  | 0 => 1
-  | n + 1 => a * power a n
+def power (a : Int) (n : Nat) : Int := sorry
 
 /-- Compute x to the power of y0 -/
-def computePower (y0 : Nat) (x : Int) : Int :=
-  let rec loop (y : Nat) (z : Int) : Int :=
-    match y with
-    | 0 => z
-    | y + 1 => loop y (z * x)
-  loop y0 1
+def computePower (y0 : Nat) (x : Int) : Int := sorry
 
 /-- Specification for computePower -/
 theorem computePower_spec (y0 : Nat) (x : Int) :

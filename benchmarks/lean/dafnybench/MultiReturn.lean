@@ -9,8 +9,7 @@ open Std.Do
     
     Example: MultipleReturns(5, 3) = (8, 2)
 -/
-def multipleReturns (x y : Int) : Id (Int × Int) :=
-  (x + y, x - y)
+def multipleReturns (x y : Int) : (Int × Int) := sorry
 
 /-- Specification: multipleReturns computes the sum and difference correctly.
     
@@ -21,6 +20,6 @@ def multipleReturns (x y : Int) : Id (Int × Int) :=
 -/
 theorem multipleReturns_spec (x y : Int) :
     ⦃⌜True⌝⦄
-    multipleReturns x y
+    (pure (multipleReturns x y) : Id _)
     ⦃⇓(more, less) => ⌜more = x + y ∧ less = x - y⌝⦄ := by
   sorry

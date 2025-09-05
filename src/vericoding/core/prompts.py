@@ -37,6 +37,13 @@ class PromptLoader:
                 self.prompts = yaml.safe_load(f)
             return
 
+        # Then try under src/vericoding/<language>/prompts.yaml (canonical location in this project)
+        alt_lang_prompts_path = script_dir / "vericoding" / self.language / self.prompts_file
+        if alt_lang_prompts_path.exists():
+            with alt_lang_prompts_path.open() as f:
+                self.prompts = yaml.safe_load(f)
+            return
+
         # Then try in current directory
         if Path(self.prompts_file).exists():
             with Path(self.prompts_file).open() as f:

@@ -20,18 +20,15 @@ namespace DafnyBenchmarks
 opaque knows : Int → Int → Bool
 
 /-- Predicate checking if person i is a celebrity among n people -/
-def isCelebrity (n : Int) (i : Int) : Prop :=
-  n ≥ 0 ∧ 0 ≤ i ∧ i < n ∧
-  ∀ j, 0 ≤ j ∧ j < n ∧ i ≠ j → knows j i ∧ ¬knows i j
+def isCelebrity (n : Int) (i : Int) : Prop := sorry
 
 /-- Find a celebrity among n people, returning -1 if none exists -/
-def findCelebrity (n : Int) : Id Int :=
-  sorry
+def findCelebrity (n : Int) : Int := sorry
 
 /-- Specification for findCelebrity -/
 theorem findCelebrity_spec (n : Int) (h : 2 ≤ n ∧ n ≤ 100) :
   ⦃⌜True⌝⦄
-  findCelebrity n
+  (pure (findCelebrity n) : Id _)
   ⦃⇓r => ⌜
     (0 ≤ r ∧ r < n → isCelebrity n r) ∧
     (r = -1 → ∀ i, 0 ≤ i ∧ i < n → ¬isCelebrity n i)

@@ -9,8 +9,7 @@ open Std.Do
     
     Example: Min(5, 3) = 3
 -/
-def minOfTwo (x y : Int) : Id Int :=
-  if x ≤ y then x else y
+def minOfTwo (x y : Int) : Int := sorry
 
 /-- Specification: minOfTwo returns the smaller of the two inputs.
     
@@ -21,7 +20,7 @@ def minOfTwo (x y : Int) : Id Int :=
 -/
 theorem minOfTwo_spec (x y : Int) :
     ⦃⌜True⌝⦄
-    minOfTwo x y
+    (pure (minOfTwo x y) : Id _)
     ⦃⇓z => ⌜
       (x ≤ y → z = x) ∧
       (x > y → z = y)

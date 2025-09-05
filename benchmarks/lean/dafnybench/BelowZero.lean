@@ -13,18 +13,7 @@ open Std.Do
     - s[i+1] = s[i] + operations[i] (running sum)
     - result = true iff there exists an i where s[i] < 0
 -/
-def belowZero (operations : List Int) : Id (Array Int × Bool) := Id.run do
-  let mut balances : Array Int := #[0]
-  let mut balance := 0
-  let mut result := false
-  
-  for op in operations do
-    balance := balance + op
-    balances := balances.push balance
-    if balance < 0 then
-      result := true
-  
-  return (balances, result)
+def belowZero (operations : List Int) : (Array Int × Bool) := sorry
 
 /-- Specification: belowZero tracks running balance and detects negative values.
     
@@ -37,7 +26,7 @@ def belowZero (operations : List Int) : Id (Array Int × Bool) := Id.run do
 -/
 theorem belowZero_spec (operations : List Int) :
     ⦃⌜True⌝⦄
-    belowZero operations
+    (pure (belowZero operations) : Id _)
     ⦃⇓(s, result) => ⌜s.size = operations.length + 1 ∧
                       s[0]'(by sorry) = 0 ∧
                       (∀ i : Fin operations.length, 

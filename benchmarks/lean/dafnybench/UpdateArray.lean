@@ -10,10 +10,7 @@
 namespace DafnyBenchmarks
 
 /-- Updates specific elements in an array according to the specification -/
-def updateElements (a : Array Int) : Array Int :=
-  if a.size < 8 then a
-  else
-    a |>.set! 4 (a[4]! + 3) |>.set! 7 516
+def updateElements (a : Array Int) : Array Int := sorry
 
 /-- Specification for updateElements -/
 theorem updateElements_spec (a : Array Int) 

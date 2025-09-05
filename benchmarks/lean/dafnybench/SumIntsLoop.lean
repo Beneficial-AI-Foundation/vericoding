@@ -15,12 +15,7 @@ def sumInts : Nat → Nat
   | n + 1 => sumInts n + (n + 1)
 
 /-- Iterative implementation of sum of integers -/
-def sumIntsLoop (n : Nat) : Nat :=
-  let rec loop (i : Nat) (acc : Nat) : Nat :=
-    if i > n then acc
-    else loop (i + 1) (acc + i)
-  termination_by n + 1 - i
-  loop 1 0
+def sumIntsLoop (n : Nat) : Nat := sorry
 
 /-- Specification for sumIntsLoop -/
 theorem sumIntsLoop_spec (n : Nat) :

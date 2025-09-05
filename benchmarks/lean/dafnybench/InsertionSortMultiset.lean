@@ -7,40 +7,18 @@ This module contains specifications for binary search and insertion sort
 where correctness is specified using multisets.
 -/
 
-import NumpySpec.DafnyBenchmarks.Multiset
+import dafnybench.Multiset
 
 namespace DafnyBenchmarks
 
 /-- Binary search in a sorted array -/
-def search (s : Array Int) (x : Int) : Nat :=
-  let rec searchLoop (low high : Nat) : Nat :=
-    if low > high then low
-    else
-      let mid := (low + high) / 2
-      if h : mid < s.size then
-        if s[mid] ≤ x then
-          searchLoop (mid + 1) high
-        else
-          searchLoop low (mid - 1)
-      else low
-  termination_by sorry
-  searchLoop 0 (if s.size = 0 then 0 else s.size - 1)
+def search (s : Array Int) (x : Int) : Nat := sorry
 
 /-- Insert element at position in array -/
-def insertAt (arr : Array Int) (pos : Nat) (elem : Int) : Array Int :=
-  if pos ≥ arr.size then arr.push elem
-  else
-    let before := arr.extract 0 pos
-    let after := arr.extract pos arr.size
-    before.push elem ++ after
+def insertAt (arr : Array Int) (pos : Nat) (elem : Int) : Array Int := sorry
 
 /-- Insertion sort implementation -/
-def insertionSort (l : List Int) : Array Int :=
-  let arr := Array.mk l
-  let rec insertSorted (sorted : Array Int) (elem : Int) : Array Int :=
-    let pos := search sorted elem
-    insertAt sorted pos elem
-  arr.foldl insertSorted #[]
+def insertionSort (l : List Int) : Array Int := sorry
 
 /-- Specification for binary search -/
 theorem search_spec (s : Array Int) (x : Int)

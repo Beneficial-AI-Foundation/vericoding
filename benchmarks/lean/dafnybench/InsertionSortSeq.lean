@@ -7,29 +7,16 @@ This module contains specifications for checking if a sequence is sorted
 and for insertion sort algorithm.
 -/
 
-import NumpySpec.DafnyBenchmarks.Multiset
+import dafnybench.Multiset
 
 namespace DafnyBenchmarks
 
 /-- Predicate to check if an array is sorted in non-decreasing order -/
 def isSorted (s : Array Int) : Prop :=
-  ∀ p q, 0 ≤ p → p < q → q < s.size → s[p]! ≤ s[q]!
+  ∀ i j, i ≤ j → i < s.size → j < s.size → s[i]! ≤ s[j]!
 
 /-- Insertion sort implementation -/
-def insertionSort (s : Array Int) : Array Int :=
-  let rec insertSorted (sorted : Array Int) (elem : Int) : Array Int :=
-    let rec findPos (i : Nat) : Nat :=
-      if h : i < sorted.size then
-        if sorted[i] > elem then i
-        else findPos (i + 1)
-      else i
-    let pos := findPos 0
-    if pos ≥ sorted.size then sorted.push elem
-    else
-      let before := sorted.extract 0 pos
-      let after := sorted.extract pos sorted.size
-      before.push elem ++ after
-  s.foldl insertSorted #[]
+def insertionSort (s : Array Int) : Array Int := sorry
 
 /-- Specification for insertion sort -/
 theorem insertionSort_spec (s : Array Int) :

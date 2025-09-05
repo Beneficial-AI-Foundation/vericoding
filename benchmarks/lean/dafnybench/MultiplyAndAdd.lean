@@ -12,17 +12,15 @@ import Std.Tactic.Do
 open Std.Do
 
 /-- Returns the product of two integers -/
-def multiply (x y : Int) : Id Int := 
-  sorry
+def multiply (x y : Int) : Int := sorry
 
 /-- Returns the sum of two integers -/
-def add (x y : Int) : Id Int := 
-  sorry
+def add (x y : Int) : Int := sorry
 
 /-- Specification: multiply returns x * y -/
 theorem multiply_spec (x y : Int) :
   ⦃⌜True⌝⦄ 
-  multiply x y
+  (pure (multiply x y) : Id _)
   ⦃⇓result => ⌜result = x * y⌝⦄ := by
   mvcgen [multiply]
   sorry
@@ -30,7 +28,7 @@ theorem multiply_spec (x y : Int) :
 /-- Specification: add returns x + y -/
 theorem add_spec (x y : Int) :
   ⦃⌜True⌝⦄ 
-  add x y
+  (pure (add x y) : Id _)
   ⦃⇓result => ⌜result = x + y⌝⦄ := by
   mvcgen [add]
   sorry

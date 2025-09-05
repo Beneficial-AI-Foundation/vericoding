@@ -10,25 +10,7 @@ open Std.Do
     
     Example: Match("hello", "h?llo") = true
 -/
-def matchPattern (s p : String) : Id Bool :=
-  let sChars := s.data
-  let pChars := p.data
-  
-  if sChars.length ≠ pChars.length then
-    false
-  else
-    let rec checkMatch (i : Nat) : Bool :=
-      if h : i < sChars.length then
-        if h2 : i < pChars.length then
-          if pChars[i] ≠ '?' && sChars[i] ≠ pChars[i] then
-            false
-          else
-            checkMatch (i + 1)
-        else
-          true -- This case shouldn't happen given precondition
-      else
-        true
-    checkMatch 0
+def matchPattern (s p : String) : Bool := sorry
 
 /-- Specification: match returns true if and only if for all positions,
     either the characters match or the pattern has a '?' at that position.
@@ -38,7 +20,7 @@ def matchPattern (s p : String) : Id Bool :=
 -/
 theorem matchPattern_spec (s p : String) :
     ⦃⌜s.length = p.length⌝⦄
-    matchPattern s p
+    (pure (matchPattern s p) : Id _)
     ⦃⇓result => ⌜result ↔ ∀ n : Nat, n < s.length → 
       (s.data.get? n = p.data.get? n ∨ p.data.get? n = some '?')⌝⦄ := by
   sorry

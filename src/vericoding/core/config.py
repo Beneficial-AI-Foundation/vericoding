@@ -38,6 +38,7 @@ class LanguageConfig:
     code_block_patterns: list[str]  # Regex patterns for code blocks
     keywords: list[str]  # Language-specific keywords
     spec_patterns: list[str]  # Patterns for specification blocks
+    timeout: int | None = None  # Optional per-language verify timeout
 
 
 @dataclass
@@ -64,7 +65,10 @@ class ProcessingConfig:
     api_rate_limit_delay: int
     llm_provider: str
     llm_model: str | None
+    llm_reasoning_effort: str | None = None
     max_directory_traversal_depth: int = 50
+    use_mcp: bool = False
+    llm_tool_calling: bool = False
 
     # Static configuration loaded once
     _static_config: LanguageConfigResult | None = None

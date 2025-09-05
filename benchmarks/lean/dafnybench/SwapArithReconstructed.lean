@@ -11,8 +11,7 @@ open Std.Do
     
     Returns a pair with the values swapped.
 -/
-def swapArithmeticReconstructed (X : Int) (Y : Int) : Id (Int × Int) :=
-  (Y, X)
+def swapArithmeticReconstructed (X : Int) (Y : Int) : (Int × Int) := sorry
 
 /-- Specification: swapArithmeticReconstructed returns the input values swapped.
     
@@ -21,7 +20,7 @@ def swapArithmeticReconstructed (X : Int) (Y : Int) : Id (Int × Int) :=
 -/
 theorem swapArithmeticReconstructed_spec (X : Int) (Y : Int) :
     ⦃⌜True⌝⦄
-    swapArithmeticReconstructed X Y
+    (pure (swapArithmeticReconstructed X Y) : Id _)
     ⦃⇓result => ⌜let (x, y) := result
                  x = Y ∧ y = X⌝⦄ := by
   sorry

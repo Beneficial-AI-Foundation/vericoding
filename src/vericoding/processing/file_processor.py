@@ -14,6 +14,11 @@ from ..utils.io_utils import save_iteration_code
 import wandb
 import hashlib
 from .code_fixer import extract_code, verify_spec_preservation, restore_specs
+try:
+    from ..lean.mcp_helpers import collect_lsp_context_safe  # optional
+except Exception:
+    def collect_lsp_context_safe(_file: str, _lines: list[int]) -> str:
+        return ""
 
 # Set up a basic logger
 logging.basicConfig(level=logging.INFO, format="%(message)s")
@@ -40,7 +45,11 @@ def call_llm_api(config: ProcessingConfig, prompt: str) -> str:
 
     # Create the LLM provider
     try:
-        llm_provider = create_llm_provider(config.llm_provider, config.llm_model)
+        llm_provider = create_llm_provider(
+            config.llm_provider,
+            config.llm_model,
+            reasoning_effort=getattr(config, "llm_reasoning_effort", None),
+        )
         
         # Log LLM call start
         start_time = time.time()
@@ -66,10 +75,14 @@ def process_spec_file(
     """Process a single specification file."""
     # Initialize failure tracking table if wandb is active
     failure_table = None
+    mcp_context_table = None
     if wandb.run:
         failure_table = wandb.Table(columns=[
             "file", "iteration", "spec_hash", "code_hash",
             "error_msg", "proof_state", "timestamp"
+        ])
+        mcp_context_table = wandb.Table(columns=[
+            "file", "stage", "iteration", "context_len", "context_preview"
         ])
     
     try:
@@ -100,8 +113,30 @@ def process_spec_file(
         # Step 1: Generate code from specifications
         logger.info("  Step 1: Generating code from specifications...")
         try:
+            lsp_context = ""
+            if config.use_mcp and config.language == "lean":
+                sorry_lines = [i + 1 for i, ln in enumerate(original_code.splitlines()) if "sorry" in ln]
+                lsp_context = collect_lsp_context_safe(file_path, sorry_lines)
+                if wandb.run and lsp_context:
+                    wandb.log({"mcp/original_lsp_context_len": len(lsp_context)})
+                    # Log skimmable context
+                    preview = lsp_context[:2000]
+                    mcp_context_table.add_data(
+                        str(relative_path), "generate", 0, len(lsp_context), preview
+                    )
+                    # Quick tool usage signals for hover/goals
+                    try:
+                        hover_calls = lsp_context.count(" hover\n")
+                        goal_calls = lsp_context.count(" goals\n")
+                        wandb.log({
+                            "mcp/hover_calls_generate": hover_calls,
+                            "mcp/goal_calls_generate": goal_calls,
+                        })
+                    except Exception:
+                        pass
+
             generate_prompt = prompt_loader.format_prompt(
-                "generate_code", code=original_code
+                "generate_code", code=original_code, lspContext=lsp_context, errorDetails=""
             )
         except KeyError as e:
             logger.info(f"  ✗ Prompt error: {e}")
@@ -144,6 +179,7 @@ def process_spec_file(
             output_subdir
             / f"{base_file_name}_impl{config.language_config.file_extension}"
         )
+        logger.info(f"    💾 Writing output file: {output_path.resolve()}")
         with output_path.open("w") as f:
             f.write(generated_code)
 
@@ -215,7 +251,7 @@ def process_spec_file(
                         if verification.output:
                             f.write("\nAdditional Output:\n")
                             f.write(verification.output)
-                    logger.info(f"    💾 Saved full error log to: debug/{relative_path.parent}/{base_file_name}_iter{iteration}_error.log")
+                    logger.info(f"    💾 Saved full error log to: {error_log_path.resolve()}")
                 
                 logger.info(
                     f"    ✗ Verification failed: {verification.error[:200] if verification.error else 'Unknown error'}..."
@@ -227,11 +263,33 @@ def process_spec_file(
             # Only attempt fix if not on last iteration
             if iteration < config.max_iterations:
                 logger.info("    Attempting to fix errors...")
+                lsp_context = ""
+                if config.use_mcp and config.language == "lean":
+                    sorry_lines = [i + 1 for i, ln in enumerate(current_code.splitlines()) if "sorry" in ln]
+                    lsp_context = collect_lsp_context_safe(str(output_path), sorry_lines)
+                    if wandb.run and lsp_context:
+                        wandb.log({"mcp/fix_lsp_context_len": len(lsp_context)})
+                        preview = lsp_context[:2000]
+                        mcp_context_table.add_data(
+                            str(relative_path), "fix", iteration, len(lsp_context), preview
+                        )
+                        try:
+                            hover_calls = lsp_context.count(" hover\n")
+                            goal_calls = lsp_context.count(" goals\n")
+                            wandb.log({
+                                "mcp/hover_calls_fix": hover_calls,
+                                "mcp/goal_calls_fix": goal_calls,
+                                "mcp/fix_iteration": iteration,
+                            })
+                        except Exception:
+                            pass
+
                 fix_prompt = prompt_loader.format_prompt(
                     "fix_verification",
                     code=current_code,
                     errorDetails=error_details,
                     iteration=iteration,
+                    lspContext=lsp_context,
                 )
 
                 # Track fix prompt for W&B logging
@@ -344,8 +402,11 @@ def process_spec_file(
         )
     finally:
         # Log failure table if we have any failures
-        if wandb.run and failure_table is not None and len(failure_table.data) > 0:
-            wandb.log({"verification_failures": failure_table})
+        if wandb.run:
+            if failure_table is not None and len(failure_table.data) > 0:
+                wandb.log({"verification_failures": failure_table})
+            if mcp_context_table is not None and len(mcp_context_table.data) > 0:
+                wandb.log({"mcp_contexts": mcp_context_table})
 
 
 def process_files_parallel(

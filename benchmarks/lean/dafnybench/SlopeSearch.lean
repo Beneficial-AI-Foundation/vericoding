@@ -11,8 +11,7 @@ structure Array2D (α : Type) where
   h_size : data.size = rows * cols
 
 /-- Get element at position (i, j) in a 2D array -/
-def Array2D.get (a : Array2D α) (i : Nat) (j : Nat) (hi : i < a.rows) (hj : j < a.cols) : α :=
-  a.data[i * a.cols + j]'(by sorry)
+def Array2D.get (a : Array2D α) (i : Nat) (j : Nat) (hi : i < a.rows) (hj : j < a.cols) : α := sorry
 
 /-- SlopeSearch: Search for a key in a sorted 2D array.
 
@@ -21,25 +20,7 @@ def Array2D.get (a : Array2D α) (i : Nat) (j : Nat) (hi : i < a.rows) (hj : j <
 
     Returns the row and column indices of the key.
 -/
-def slopeSearch (a : Array2D Int) (key : Int) : Id (Nat × Nat) :=
-  -- Simple implementation - just find the first occurrence
-  -- In a real implementation, this would use the sorted property efficiently
-  let rec findKey (r c : Nat) : Option (Nat × Nat) :=
-    if hr : r < a.rows then
-      if hc : c < a.cols then
-        if a.get r c hr hc = key then
-          some (r, c)
-        else
-          match findKey r (c + 1) with
-          | some res => some res
-          | none => findKey (r + 1) 0
-      else
-        findKey (r + 1) 0
-    else
-      none
-  match findKey 0 0 with
-  | some (i, j) => (i, j)
-  | none => panic! "Key not found"
+def slopeSearch (a : Array2D Int) (key : Int) : (Nat × Nat) := sorry
 
 /-- Specification: slopeSearch finds the position of the key in a
     row-wise and column-wise sorted 2D array.
@@ -54,7 +35,7 @@ theorem slopeSearch_spec (a : Array2D Int) (key : Int)
                     a.get i j (by sorry) (by sorry) ≤ a.get i' j (by sorry) (by sorry))
     (h_exists : ∃ i j, i < a.rows ∧ j < a.cols ∧ a.get i j (by sorry) (by sorry) = key) :
     ⦃⌜True⌝⦄
-    slopeSearch a key
+    (pure (slopeSearch a key) : Id _)
     ⦃⇓result => ⌜let (m, n) := result
                  m < a.rows ∧ n < a.cols ∧ 
                  a.get m n (by sorry) (by sorry) = key⌝⦄ := by

@@ -47,6 +47,6 @@ These files have implementations but encounter various compilation issues:
 
 ## File Locations
 
-All ported files are in: `/Users/alokbeniwal/NumpySpec/NumpySpec/DafnyBenchmarks/`
+All ported files are in: `benchmarks/lean/dafnybench/`
 
 The specifications follow the pattern of defining functions with implementations and separate theorem statements for correctness properties, leaving proofs as `sorry` for now.

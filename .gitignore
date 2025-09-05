@@ -7,6 +7,8 @@ dist/
 
 # Environment variables
 .env
+benchmarks/**/_gen/
+benchmarks/lean/dafnybench_gen/
 
 # UV
 uv.lock

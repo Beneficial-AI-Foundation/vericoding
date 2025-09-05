@@ -39,6 +39,9 @@ from vericoding.utils import (
     get_git_remote_url,
     get_current_branch,
 )
+from vericoding.core import ProcessingConfig
+from vericoding.lean.mcp_helpers import ensure_server_started, close_server
+import atexit
 
 # Initialize environment loading
 load_environment()
@@ -58,7 +61,7 @@ Supported LLM providers: claude, openai, deepseek
 
 Examples:
   python spec_to_code.py dafny ./specs
-  python spec_to_code.py lean ./NumpySpec/DafnySpecs --iterations 3
+  python spec_to_code.py lean ./benchmarks/lean/dafnybench --iterations 3
   python spec_to_code.py verus ./benchmarks/verus_specs --debug --iterations 5
   python spec_to_code.py dafny ./specs --workers 8 --iterations 3 --llm-provider openai
   python spec_to_code.py verus ./specs --workers 2 --debug --llm-provider deepseek --llm-model deepseek-chat
@@ -133,14 +136,43 @@ Examples:
         "--llm-provider",
         type=str,
         choices=["claude", "openai", "deepseek"],
-        default="claude",
-        help="LLM provider to use (default: claude)",
+        default="openai",
+        help="LLM provider to use (default: openai).",
     )
 
     parser.add_argument(
         "--llm-model",
         type=str,
-        help="Specific model to use (defaults to provider's default model)",
+        default="gpt-5",
+        help="Specific model to use (default: gpt-5 for OpenAI)",
+    )
+
+    parser.add_argument(
+        "--reasoning-effort",
+        type=str,
+        choices=["low", "medium", "high"],
+        default="high",
+        help="For reasoning-capable models (e.g., gpt-5, o4), set reasoning effort (default: high).",
+    )
+
+    parser.add_argument(
+        "--lake-build-target",
+        type=str,
+        help="Optional Lake target to build at the end for overall stats (e.g., DafnyBench)",
+    )
+
+    parser.add_argument(
+        "--use-mcp",
+        action="store_true",
+        default=True,
+        help="Use Lean LSP MCP to gather hover/goals/diagnostics context and include in prompts (Lean only) [default: enabled]",
+    )
+
+    parser.add_argument(
+        "--tool-calling",
+        action="store_true",
+        default=True,
+        help="Enable LLM tool-calling (OpenAI) to invoke Lean MCP tools mid-turn [default: enabled]",
     )
 
     return parser.parse_args()
@@ -226,13 +258,15 @@ def setup_configuration(args) -> ProcessingConfig:
         meaningful_part = Path(input_path.name)
 
     # Create output directory structure
-    # For Lean, put files under lean/ directory so lake can find them
+    # For Lean, place generated files under a sibling namespace so default targets don't pull them in.
+    # We use benchmarks/lean/dafnybench_gen/Run_<ts>/... and add a dedicated Lake target.
     if args.language == "lean":
-        # Use project root lean/ directory for Lean files
-        project_root = src_base.parent if src_base.name == "src" else src_base
-        output_dir = str(
-            project_root / "lean" / "Generated" / f"Run_{timestamp}" / meaningful_part
-        )
+        try:
+            from vericoding.utils import get_repo_root  # type: ignore
+        except Exception:
+            get_repo_root = lambda: Path.cwd()
+        repo_root = Path(get_repo_root())
+        output_dir = str(repo_root / "benchmarks/lean/dafnybench_gen" / f"Run_{timestamp}")
     else:
         output_dir = str(
             src_base / f"code_from_spec_on_{timestamp}" / args.language / meaningful_part
@@ -257,6 +291,9 @@ def setup_configuration(args) -> ProcessingConfig:
         llm_provider=args.llm_provider,
         llm_model=args.llm_model,
         max_directory_traversal_depth=args.max_directory_traversal_depth,
+        llm_reasoning_effort=args.reasoning_effort,
+        use_mcp=args.use_mcp,
+        llm_tool_calling=args.tool_calling,
     )
 
     print("\nConfiguration:")
@@ -268,11 +305,29 @@ def setup_configuration(args) -> ProcessingConfig:
     print(f"- Tool path: {get_tool_path(config)}")
     print(f"- LLM Provider: {config.llm_provider}")
     print(f"- LLM Model: {config.llm_model or 'default'}")
+    if args.reasoning_effort:
+        print(f"- Reasoning effort: {args.reasoning_effort}")
     print(f"- Debug mode: {'Enabled' if config.debug_mode else 'Disabled'}")
     print(
         f"- Spec preservation: {'Strict' if config.strict_spec_verification else 'Relaxed (default)'}"
     )
     print(f"- API rate limit delay: {config.api_rate_limit_delay}s")
+    if config.language == 'lean' and config.use_mcp:
+        # Attempt to start persistent MCP session
+        from vericoding.lean.mcp_helpers import ensure_server_started as _mcp_start, tools_available as _mcp_tools
+        mcp_ok = _mcp_start()
+        tools = _mcp_tools() if mcp_ok else []
+        status = "Enabled" if mcp_ok else "Not available"
+        print(f"- MCP (lean-lsp-mcp): {status}; tools: {', '.join(tools) if tools else '[]'}")
+        atexit.register(close_server)
+        try:
+            if wandb.run:
+                wandb.log({
+                    "mcp/status": int(mcp_ok),
+                    "mcp/tools_count": len(tools),
+                })
+        except Exception:
+            pass
     print("\nProceeding with configuration...")
 
     return config
@@ -694,7 +749,11 @@ def main():
     # Check if the required API key is available for the selected LLM provider
     try:
         # This will raise an error if the API key is not available
-        create_llm_provider(config.llm_provider, config.llm_model)
+        create_llm_provider(
+            config.llm_provider,
+            config.llm_model,
+            reasoning_effort=getattr(config, "llm_reasoning_effort", None),
+        )
         print(f"✓ {config.llm_provider.upper()} API key found and provider initialized")
     except Exception as e:
         print(f"Error: {str(e)}")
@@ -788,6 +847,31 @@ def main():
             print(f"\n✅ Wandb run completed: {wandb_run.url}")
         except Exception as e:
             print(f"⚠️  Error logging to wandb: {e}")
+
+    # Optionally build a Lake target for coarse-grained stats
+    if args.lake_build_target and config.language == "lean":
+        print(f"\nBuilding Lake target '{args.lake_build_target}' for summary stats...")
+        try:
+            proc = subprocess.run(
+                ["lake", "build", args.lake_build_target],
+                capture_output=True,
+                text=True,
+                timeout=900,
+            )
+            combined = proc.stdout + proc.stderr
+            sorry_count = combined.count("declaration uses 'sorry'")
+            error_count = combined.count("error:")
+            print("=== LAKE BUILD SUMMARY ===")
+            print(f"Exit code: {proc.returncode}")
+            print(f"Errors: {error_count}")
+            print(f"'sorry' warnings: {sorry_count}")
+            # Save to file alongside summary
+            lake_summary_path = Path(config.output_dir) / "lake_build_summary.txt"
+            with lake_summary_path.open("w") as f:
+                f.write(combined)
+            print(f"Full Lake output saved to: {lake_summary_path}")
+        except subprocess.TimeoutExpired:
+            print("⏱️  Lake build timed out")
 
 
 if __name__ == "__main__":

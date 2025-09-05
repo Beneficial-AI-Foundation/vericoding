@@ -15,14 +15,13 @@ open Std.Do
     Postconditions:
     - Returns a boolean (purpose unclear from spec)
 -/
-def fillK (a : Array Int) (n k c : Nat) : Id Bool := do
-  sorry -- Implementation left as exercise
+def fillK (a : Array Int) (n k c : Nat) : Bool := sorry
 
 theorem fillK_spec (a : Array Int) (n k c : Nat)
     (h_c_bound : 0 ≤ c ∧ c ≤ n)
     (h_size : n = a.size) :
     ⦃⌜True⌝⦄
-    fillK a n k c
+    (pure (fillK a n k c) : Id _)
     ⦃⇓result => ⌜True⌝⦄ := by -- Postcondition not specified in original
   sorry
 
@@ -35,12 +34,11 @@ theorem fillK_spec (a : Array Int) (n k c : Nat)
     - Returns position where b starts in a, or -1 if not found
     (Note: exact postcondition not specified in original)
 -/
-def containsSubString (a b : Array Char) : Id Int := do
-  sorry -- Implementation left as exercise
+def containsSubString (a b : Array Char) : Int := sorry
 
 theorem containsSubString_spec (a b : Array Char)
     (h_size : 0 ≤ b.size ∧ b.size ≤ a.size) :
     ⦃⌜True⌝⦄
-    containsSubString a b
+    (pure (containsSubString a b) : Id _)
     ⦃⇓result => ⌜True⌝⦄ := by -- Postcondition not specified in original
   sorry

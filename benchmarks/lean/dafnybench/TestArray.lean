@@ -14,8 +14,7 @@ open Std.Do
     - a[j] becomes 60
     - All other elements remain unchanged
 -/
-def testArrayElements (a : Array Int) (j : Nat) : StateM (Array Int) Unit := do
-  pure ()
+def testArrayElements (a : Array Int) (j : Nat) : StateM (Array Int) Unit := sorry
 
 /-- Specification: testArrayElements sets element at index j to 60.
     

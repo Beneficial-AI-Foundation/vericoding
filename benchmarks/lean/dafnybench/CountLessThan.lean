@@ -9,8 +9,7 @@ open Std.Do
     Returns the number of elements in the set that are strictly less than
     the given threshold value.
 -/
-def countLessThan (numbers : Std.HashSet Int) (threshold : Int) : Id Int :=
-  sorry
+def countLessThan (numbers : Std.HashSet Int) (threshold : Int) : Int := sorry
 
 /-- Specification: CountLessThan counts elements below the threshold.
 
@@ -19,6 +18,6 @@ def countLessThan (numbers : Std.HashSet Int) (threshold : Int) : Id Int :=
 -/
 theorem countLessThan_spec (numbers : Std.HashSet Int) (threshold : Int) :
     ⦃⌜True⌝⦄
-    countLessThan numbers threshold
+    (pure (countLessThan numbers threshold) : Id _)
     ⦃⇓count => ⌜count = (numbers.toList.filter (· < threshold)).length⌝⦄ := by
   sorry

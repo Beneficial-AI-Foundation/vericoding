@@ -11,8 +11,7 @@ open Std.Do
     - result.length = a.length + b.length
     - Elements from a appear first, followed by elements from b
 -/
-def arrayConcat (a : Array Int) (b : Array Int) : Id (Array Int) :=
-  a ++ b
+def arrayConcat (a : Array Int) (b : Array Int) : Array Int := sorry
 
 /-- Specification: arrayConcat concatenates two arrays.
     
@@ -24,7 +23,7 @@ def arrayConcat (a : Array Int) (b : Array Int) : Id (Array Int) :=
 -/
 theorem arrayConcat_spec (a : Array Int) (b : Array Int) :
     ⦃⌜True⌝⦄
-    arrayConcat a b
+    (pure (arrayConcat a b) : Id _)
     ⦃⇓result => ⌜result.size = a.size + b.size ∧ 
                  (∀ k : Fin a.size, result[k.val]'(by sorry) = a[k]) ∧
                  (∀ k : Fin b.size, result[k.val + a.size]'(by sorry) = b[k])⌝⦄ := by

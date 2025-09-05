@@ -30,12 +30,12 @@ The new interface requires specifying the language as the first argument:
 ```bash
 # Old way (language-specific scripts)
 python dafny/spec_to_code.py ./specs
-python lean/spec_to_code_lean.py ./NumpySpec/DafnySpecs
+python lean/spec_to_code_lean.py ./benchmarks/lean/dafnybench
 python verus/spec_to_code.py ./benchmarks/verus_specs
 
 # New way (unified script)
 python spec_to_code.py dafny ./specs
-python spec_to_code.py lean ./NumpySpec/DafnySpecs
+python spec_to_code.py lean ./benchmarks/lean/dafnybench
 python spec_to_code.py verus ./benchmarks/verus_specs
 ```
 
@@ -90,8 +90,11 @@ To migrate from the old scripts to the unified script:
    - No changes needed to `DAFNY_PATH`, `LEAN_PATH`, or `VERUS_PATH`
 
 3. **Output directory structure**:
-   - The unified script adds the language name to the output path
-   - Example: `src/code_from_spec_on_30-07_15h30/verus/autoverus/`
+   - Lean: generated files are written under a sibling library so they don't pollute the handwritten specs. The path is:
+     `benchmarks/lean/dafnybench_gen/Run_<timestamp>/...`
+     Build them with `lake build DafnyBenchGenerated`.
+   - Other languages: the unified script adds the language name to the output path under `src/`, e.g.:
+     `src/code_from_spec_on_30-07_15h30/verus/autoverus/`
 
 4. **Prompt files**:
    - Continue using the same prompt files in their current locations

@@ -7,7 +7,7 @@ This module contains specifications for partitioning and QuickSelect algorithm
 using multisets to find the k-th smallest element.
 -/
 
-import NumpySpec.DafnyBenchmarks.Multiset
+import dafnybench.Multiset
 
 namespace DafnyBenchmarks
 
@@ -18,36 +18,10 @@ structure PartitionResult where
   post : List Int
 
 /-- Partition a list around a pivot element -/
-def partition (lst : List Int) (h : lst ≠ []) : PartitionResult :=
-  match lst with
-  | [] => ⟨[], 0, []⟩  -- This case should never happen due to h
-  | p :: rest =>
-    let pre := rest.filter (· ≤ p)
-    let post := rest.filter (· > p)
-    ⟨pre, p, post⟩
+def partition (lst : List Int) (h : lst ≠ []) : PartitionResult := sorry
 
 /-- QuickSelect algorithm to find the k-th smallest element -/
-def quickSelect (lst : List Int) (k : Nat) (h : lst ≠ [] ∧ k < lst.length) : PartitionResult :=
-  let part := partition lst h.1
-  if h : part.pre.length = k then
-    part
-  else if h2 : k < part.pre.length then
-    if hp : part.pre ≠ [] ∧ k < part.pre.length then
-      let subResult := quickSelect part.pre k hp
-      ⟨subResult.pre, subResult.pivot, subResult.post ++ [part.pivot] ++ part.post⟩
-    else
-      part  -- Should not reach here
-  else
-    if k > part.pre.length && part.post ≠ [] then
-      let newK := k - part.pre.length - 1
-      if hp : part.post ≠ [] ∧ newK < part.post.length then
-        let subResult := quickSelect part.post newK hp
-        ⟨part.pre ++ [part.pivot] ++ subResult.pre, subResult.pivot, subResult.post⟩
-      else
-        part  -- Should not reach here
-    else
-      part
-termination_by sorry
+def quickSelect (lst : List Int) (k : Nat) (h : lst ≠ [] ∧ k < lst.length) : PartitionResult := sorry
 
 /-- Specification for partition -/
 theorem partition_spec (lst : List Int) (h : lst ≠ []) :

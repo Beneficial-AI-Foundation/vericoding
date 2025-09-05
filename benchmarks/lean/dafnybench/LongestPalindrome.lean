@@ -9,9 +9,7 @@ open Std.Do
     Base cases: empty strings and single characters are palindromic.
     Recursive case: s[i..j) is palindromic if s[i] = s[j-1] and s[i+1..j-1) is palindromic.
 -/
-def palindromic (s : String) (i j : Nat) : Prop :=
-  i ≤ j ∧ j ≤ s.length ∧
-  (j - i < 2 ∨ (s.get! ⟨i⟩ = s.get! ⟨j-1⟩ ∧ palindromic s (i+1) (j-1)))
+def palindromic (s : String) (i j : Nat) : Prop := sorry
 termination_by j - i
 decreasing_by 
   simp_wf
@@ -44,14 +42,13 @@ theorem palindromic_contains (s : String) (lo hi lo' hi' : Nat)
     - Returns (lo, hi) where s[lo..hi) is palindromic
     - Among all palindromes with the same center, this is the longest
 -/
-def expand_from_center (s : String) (i0 j0 : Nat) : Id (Nat × Nat) := do
-  sorry -- Implementation left as exercise
+def expand_from_center (s : String) (i0 j0 : Nat) : Nat × Nat := sorry
 
 theorem expand_from_center_spec (s : String) (i0 j0 : Nat)
     (h_bounds : 0 ≤ i0 ∧ i0 ≤ j0 ∧ j0 ≤ s.length)
     (h_palin : palindromic s i0 j0) :
     ⦃⌜True⌝⦄
-    expand_from_center s i0 j0
+    (pure (expand_from_center s i0 j0) : Id _)
     ⦃⇓result => ⌜let (lo, hi) := result
                  0 ≤ lo ∧ lo ≤ hi ∧ hi ≤ s.length ∧
                  palindromic s lo hi ∧
@@ -76,12 +73,11 @@ theorem expand_from_center_spec (s : String) (i0 j0 : Nat)
     - The substring is palindromic
     - It is the longest palindromic substring in s
 -/
-def longestPalindrome (s : String) : Id (String × Nat × Nat) := do
-  sorry -- Implementation left as exercise
+def longestPalindrome (s : String) : String × Nat × Nat := sorry
 
 theorem longestPalindrome_spec (s : String) :
     ⦃⌜True⌝⦄
-    longestPalindrome s
+    (pure (longestPalindrome s) : Id _)
     ⦃⇓result => ⌜let (ans, lo, hi) := result
                  0 ≤ lo ∧ lo ≤ hi ∧ hi ≤ s.length ∧
                  ans = s.extract ⟨lo⟩ ⟨hi⟩ ∧

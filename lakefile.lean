@@ -33,6 +33,29 @@ particularly Dafny benchmarks and NumPy specifications.
 -- lean_lib DafnyBenchSpecs where
 --   globs := #[.andSubmodules `DafnyBenchSpecs]
 
-lean_lib Benchmarks where
-  globs := #[.submodules `humaneval.files, .submodules `verina.files, .submodules `numpy_triple.files]
+lean_lib DafnyBench where
+    globs := #[.andSubmodules `dafnybench]
+    srcDir := "benchmarks/lean"
+
+-- Generated implementations live under the sibling path
+-- `benchmarks/lean/dafnybench_gen/Run_<timestamp>/...`.
+-- This separate library lets us `lake build DafnyBenchGenerated` to compile all
+-- generated files without touching the handwritten specs.
+-- Generated code builds under a sibling namespace `dafnybench_gen` so the
+-- main `DafnyBench` target does not pull it in. Any legacy paths under
+-- `benchmarks/lean/dafnybench/_gen` are no longer used by the generator.
+lean_lib DafnyBenchGenerated where
+  globs := #[.andSubmodules `dafnybench_gen]
   srcDir := "benchmarks/lean"
+
+@[default_target]
+lean_lib Benchmarks where
+  globs := #[
+    .andSubmodules `humaneval,
+    .andSubmodules `verina,
+    .andSubmodules `numpy_triple,
+    .andSubmodules `dafnybench
+  ]
+  srcDir := "benchmarks/lean"
+
+-- need to change some names and fix missing `Imports`
