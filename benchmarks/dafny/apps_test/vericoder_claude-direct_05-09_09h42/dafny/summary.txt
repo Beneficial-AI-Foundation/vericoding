@@ -1,0 +1,57 @@
+=== DAFNY PROCESSING SUMMARY ===
+Total files: 42
+Successful: 23 (54.8%)
+Failed: 19
+Processing time: 746.17s
+Average per file: 17.77s
+
+=== TOKEN USAGE ===
+Total LLM calls: 124
+Input tokens: 347,784
+Output tokens: 155,473
+
+Successful files:
+✓ APPS_102.yaml
+✓ APPS_125.yaml
+✓ APPS_126.yaml
+✓ APPS_131.yaml
+✓ APPS_145.yaml
+✓ APPS_16.yaml
+✓ APPS_164.yaml
+✓ APPS_166.yaml
+✓ APPS_171.yaml
+✓ APPS_17.yaml
+✓ APPS_176.yaml
+✓ APPS_175.yaml
+✓ APPS_182.yaml
+✓ APPS_189.yaml
+✓ APPS_192.yaml
+✓ APPS_26.yaml
+✓ APPS_29.yaml
+✓ APPS_47.yaml
+✓ APPS_54.yaml
+✓ APPS_57.yaml
+✓ APPS_76.yaml
+✓ APPS_8.yaml
+✓ APPS_98.yaml
+
+Failed files:
+✗ APPS_121.yaml
+✗ APPS_150.yaml
+✗ APPS_11.yaml
+✗ APPS_106.yaml
+✗ APPS_157.yaml
+✗ APPS_136.yaml
+✗ APPS_162.yaml
+✗ APPS_185.yaml
+✗ APPS_179.yaml
+✗ APPS_181.yaml
+✗ APPS_22.yaml
+✗ APPS_38.yaml
+✗ APPS_36.yaml
+✗ APPS_40.yaml
+✗ APPS_60.yaml
+✗ APPS_7.yaml
+✗ APPS_86.yaml
+✗ APPS_96.yaml
+✗ APPS_85.yaml

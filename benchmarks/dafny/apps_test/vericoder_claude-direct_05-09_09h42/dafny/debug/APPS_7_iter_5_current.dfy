@@ -1,0 +1,197 @@
+// ======= TASK =======
+// Find the first day when a barn becomes empty. The barn starts full with n grains.
+// Each day d: add m grains (capped at capacity n), then d sparrows eat d grains.
+
+// ======= SPEC REQUIREMENTS =======
+predicate ValidInput(n: int, m: int)
+{
+    n >= 1 && m >= 1
+}
+
+function FirstEmptyDay(n: int, m: int): int
+    requires ValidInput(n, m)
+    ensures FirstEmptyDay(n, m) >= 1
+{
+    if m >= n then n
+    else
+        var c := n - m;
+        var r := FindMinimalR(c);
+        r + m
+}
+
+function FindMinimalR(c: int): int
+    requires c >= 0
+    ensures FindMinimalR(c) >= 0
+    ensures (1 + FindMinimalR(c)) * FindMinimalR(c) / 2 >= c
+    ensures FindMinimalR(c) > 0 ==> (1 + (FindMinimalR(c) - 1)) * (FindMinimalR(c) - 1) / 2 < c
+{
+    if c == 0 then 0
+    else FindMinimalRHelper(c, 0, c + 1)
+}
+
+function FindMinimalRHelper(c: int, l: int, r: int): int
+    requires c > 0
+    requires 0 <= l < r
+    requires (1 + l) * l / 2 < c
+    requires (1 + r) * r / 2 >= c
+    ensures FindMinimalRHelper(c, l, r) >= 0
+    ensures (1 + FindMinimalRHelper(c, l, r)) * FindMinimalRHelper(c, l, r) / 2 >= c
+    ensures FindMinimalRHelper(c, l, r) > 0 ==> (1 + (FindMinimalRHelper(c, l, r) - 1)) * (FindMinimalRHelper(c, l, r) - 1) / 2 < c
+    decreases r - l
+{
+    if r - l <= 1 then r
+    else
+        var md := (r + l) / 2;
+        if (1 + md) * md / 2 < c then
+            FindMinimalRHelper(c, md, r)
+        else
+            FindMinimalRHelper(c, l, md)
+}
+
+predicate ParsesAsInts(input: string, n: int, m: int)
+{
+    exists lines: seq<string> :: 
+        lines == SplitString(input, '\n') &&
+        |lines| > 0 &&
+        exists parts: seq<string> ::
+            parts == SplitString(lines[0], ' ') &&
+            |parts| >= 2 &&
+            StringToInt(parts[0]) == n &&
+            StringToInt(parts[1]) == m
+}
+
+// <vc-helpers>
+function SplitString(s: string, delimiter: char): seq<string>
+{
+    if |s| == 0 then []
+    else SplitStringHelper(s, delimiter, 0, 0, [])
+}
+
+function SplitStringHelper(s: string, delimiter: char, start: int, current: int, acc: seq<string>): seq<string>
+    requires 0 <= start <= current <= |s|
+    decreases |s| - current
+{
+    if current == |s| then
+        if start == current then acc
+        else acc + [s[start..current]]
+    else if s[current] == delimiter then
+        SplitStringHelper(s, delimiter, current + 1, current + 1, acc + [s[start..current]])
+    else
+        SplitStringHelper(s, delimiter, start, current + 1, acc)
+}
+
+function StringToInt(s: string): int
+{
+    if |s| == 0 then 0
+    else if s[0] == '-' then -StringToIntHelper(s[1..], 0)
+    else StringToIntHelper(s, 0)
+}
+
+function StringToIntHelper(s: string, acc: int): int
+    decreases |s|
+{
+    if |s| == 0 then acc
+    else StringToIntHelper(s[1..], acc * 10 + (s[0] as int - '0' as int))
+}
+
+function IntToString(n: int): string
+    ensures |IntToString(n)| > 0
+{
+    if n == 0 then "0"
+    else if n < 0 then "-" + IntToStringPos(-n)
+    else IntToStringPos(n)
+}
+
+function IntToStringPos(n: int): string
+    requires n > 0
+    ensures |IntToStringPos(n)| > 0
+{
+    IntToStringHelper(n, "")
+}
+
+function IntToStringHelper(n: int, acc: string): string
+    requires n >= 0
+    ensures n > 0 ==> |IntToStringHelper(n, acc)| > |acc|
+    ensures n == 0 ==> IntToStringHelper(n, acc) == acc
+    decreases n
+{
+    if n == 0 then acc
+    else IntToStringHelper(n / 10, [('0' as int + n % 10) as char] + acc)
+}
+
+lemma SplitStringResultNonEmpty(input: string)
+    requires |input| > 0
+    ensures |SplitString(input, '\n')| > 0
+{
+    assert SplitString(input, '\n') == SplitStringHelper(input, '\n', 0, 0, []);
+    SplitStringHelperNonEmpty(input, '\n', 0, 0, []);
+}
+
+lemma SplitStringHelperNonEmpty(s: string, delimiter: char, start: int, current: int, acc: seq<string>)
+    requires |s| > 0
+    requires 0 <= start <= current <= |s|
+    ensures |SplitStringHelper(s, delimiter, start, current, acc)| > 0
+    decreases |s| - current
+{
+    if current == |s| {
+        if start == current {
+            if |acc| == 0 {
+                assert start == 0 && current == 0;
+                assert false;
+            }
+        } else {
+            assert |acc + [s[start..current]]| == |acc| + 1 > 0;
+        }
+    } else if s[current] == delimiter {
+        SplitStringHelperNonEmpty(s, delimiter, current + 1, current + 1, acc + [s[start..current]]);
+    } else {
+        SplitStringHelperNonEmpty(s, delimiter, start, current + 1, acc);
+    }
+}
+
+lemma SplitStringFirstLineValid(input: string, n: int, m: int)
+    requires |input| > 0
+    requires ParsesAsInts(input, n, m)
+    ensures var lines := SplitString(input, '\n');
+            |lines| > 0 &&
+            var parts := SplitString(lines[0], ' ');
+            |parts| >= 2 &&
+            StringToInt(parts[0]) == n &&
+            StringToInt(parts[1]) == m
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+// ======= MAIN METHOD =======
+method solve(input: string) returns (output: string)
+    requires |input| > 0
+    requires exists n: int, m: int :: ValidInput(n, m) && ParsesAsInts(input, n, m)
+    ensures |output| > 0
+    ensures exists n: int, m: int :: 
+        ValidInput(n, m) && 
+        ParsesAsInts(input, n, m) &&
+        output == IntToString(FirstEmptyDay(n, m))
+// </vc-spec>
+// <vc-code>
+{
+    var lines := SplitString(input, '\n');
+    SplitStringResultNonEmpty(input);
+    
+    ghost var witness_n: int, witness_m: int :| ValidInput(witness_n, witness_m) && ParsesAsInts(input, witness_n, witness_m);
+    SplitStringFirstLineValid(input, witness_n, witness_m);
+    
+    var firstLine := lines[0];
+    var parts := SplitString(firstLine, ' ');
+    var n := StringToInt(parts[0]);
+    var m := StringToInt(parts[1]);
+    
+    assert n == witness_n && m == witness_m;
+    assert ValidInput(n, m);
+    assert ParsesAsInts(input, n, m);
+
+    var result := FirstEmptyDay(n, m);
+    output := IntToString(result);
+}
+// </vc-code>
+

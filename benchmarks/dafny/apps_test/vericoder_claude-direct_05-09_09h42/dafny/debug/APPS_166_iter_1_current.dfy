@@ -1,0 +1,269 @@
+// ======= TASK =======
+// Given a sequence of integers representing a path through a matrix, determine if there exist matrix dimensions x and y such that the path is valid.
+// The matrix A of size x × y is filled with consecutive integers where A[i][j] = y(i-1) + j for 1 ≤ i ≤ x, 1 ≤ j ≤ y.
+// From any cell (i,j), you can move to adjacent cells: (i±1,j) or (i,j±1), provided they exist in the matrix.
+// Find any valid x, y (1 ≤ x,y ≤ 10^9) that allows the given sequence to represent a valid path, or determine if no such dimensions exist.
+
+// ======= SPEC REQUIREMENTS =======
+predicate ValidInputFormat(input: string)
+{
+    var lines := SplitString(input, '\n');
+    |lines| >= 2 &&
+    var n := StringToInt(lines[0]);
+    n > 0 && n <= 200000 &&
+    var arrayParts := SplitString(lines[1], ' ');
+    |arrayParts| == n &&
+    forall i :: 0 <= i < |arrayParts| ==> 
+        var val := StringToInt(arrayParts[i]);
+        1 <= val <= 1000000000
+}
+
+predicate Solve1Condition(a: seq<int>)
+    requires |a| >= 1
+{
+    forall i :: 0 <= i < |a| - 1 ==> abs(a[i] - a[i+1]) == 1
+}
+
+predicate Solve2Condition(a: seq<int>) 
+    requires |a| >= 1
+{
+    var w := FindCommonDifference(a);
+    w > 0 &&
+    (exists i :: 0 <= i < |a| - 1 && abs(a[i] - a[i+1]) != 1) &&
+    (forall i :: 0 <= i < |a| - 1 && abs(a[i] - a[i+1]) == 1 ==> FloorDiv(a[i] - 1, w) == FloorDiv(a[i+1] - 1, w))
+}
+
+function FindCommonDifference(a: seq<int>): int
+    requires |a| >= 1
+{
+    if |a| == 1 then -1
+    else FindCommonDifferenceHelper(a, 0, -1)
+}
+
+function FloorDiv(x: int, y: int): int
+    requires y > 0
+{
+    if x >= 0 then x / y else (x - y + 1) / y
+}
+
+function abs(x: int): int
+{
+    if x >= 0 then x else -x
+}
+
+// ======= HELPERS =======
+function FindCommonDifferenceHelper(a: seq<int>, index: int, currentDiff: int): int
+    requires |a| >= 1
+    requires 0 <= index <= |a| - 1
+    decreases |a| - 1 - index
+{
+    if index >= |a| - 1 then currentDiff
+    else
+        var d := abs(a[index] - a[index+1]);
+        if d == 1 then
+            FindCommonDifferenceHelper(a, index + 1, currentDiff)
+        else if currentDiff == -1 then
+            FindCommonDifferenceHelper(a, index + 1, d)
+        else if currentDiff == d then
+            FindCommonDifferenceHelper(a, index + 1, currentDiff)
+        else
+            -1
+}
+
+function IntToString(n: int): string
+{
+    if n == 0 then "0"
+    else if n > 0 then IntToStringPos(n)
+    else "-" + IntToStringPos(-n)
+}
+
+function IntToStringPos(n: int): string
+    requires n > 0
+{
+    if n < 10 then [('0' as int + n) as char]
+    else IntToStringPos(n / 10) + [('0' as int + (n % 10)) as char]
+}
+
+function SplitString(s: string, delimiter: char): seq<string>
+{
+    SplitStringHelper(s, delimiter, 0, [], [])
+}
+
+function SplitStringHelper(s: string, delimiter: char, index: int, current: string, result: seq<string>): seq<string>
+    requires 0 <= index <= |s|
+    decreases |s| - index
+{
+    if index >= |s| then
+        if |current| > 0 then result + [current] else result
+    else if s[index] == delimiter then
+        SplitStringHelper(s, delimiter, index + 1, [], result + [current])
+    else
+        SplitStringHelper(s, delimiter, index + 1, current + [s[index]], result)
+}
+
+function StringToInt(s: string): int
+{
+    if |s| == 0 then 0
+    else if s[0] == '-' then -StringToIntPos(s[1..])
+    else StringToIntPos(s)
+}
+
+function StringToIntPos(s: string): int
+{
+    if |s| == 0 then 0
+    else StringToIntPos(s[..|s|-1]) * 10 + (s[|s|-1] as int - '0' as int)
+}
+
+// <vc-helpers>
+lemma SeqEqualityLemma(a: seq<int>, n: int, arrayParts: seq<string>)
+    requires n >= 0
+    requires |arrayParts| == n
+    ensures var computed := seq(n, i requires 0 <= i < n => StringToInt(arrayParts[i]));
+            |computed| == n
+{
+}
+
+lemma Solve1ConditionEquivalence(a: seq<int>)
+    requires |a| >= 1
+    ensures Solve1Condition(a) <==> (forall k :: 0 <= k < |a| - 1 ==> abs(a[k] - a[k+1]) == 1)
+{
+}
+
+lemma Solve2ConditionComponents(a: seq<int>)
+    requires |a| >= 1
+    ensures Solve2Condition(a) <==> 
+        (var w := FindCommonDifference(a);
+         w > 0 &&
+         (exists i :: 0 <= i < |a| - 1 && abs(a[i] - a[i+1]) != 1) &&
+         (forall i :: 0 <= i < |a| - 1 && abs(a[i] - a[i+1]) == 1 ==> FloorDiv(a[i] - 1, w) == FloorDiv(a[i+1] - 1, w)))
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+// ======= MAIN METHOD =======
+method solve(input: string) returns (output: string)
+    requires |input| > 0
+    requires ValidInputFormat(input)
+    ensures var lines := SplitString(input, '\n');
+            var n := StringToInt(lines[0]);
+            var arrayParts := SplitString(lines[1], ' ');
+            var a := seq(n, i requires 0 <= i < n => StringToInt(arrayParts[i]));
+            |a| >= 1 ==>
+            ((Solve1Condition(a) ==> output == "YES\n1000000000 1") &&
+            (!Solve1Condition(a) && Solve2Condition(a) ==> 
+                var w := FindCommonDifference(a);
+                w > 0 && output == "YES\n1000000000 " + IntToString(w)) &&
+            (!Solve1Condition(a) && !Solve2Condition(a) ==> output == "NO") &&
+            (|a| == 1 ==> output == "YES\n1000000000 1"))
+// </vc-spec>
+// <vc-code>
+{
+    var lines := SplitString(input, '\n');
+    assert |lines| >= 2;
+
+    var nStr := lines[0];
+    var n := StringToInt(nStr);
+    assert n > 0 && n <= 200000;
+
+    var arrayLine := lines[1];
+    var arrayParts := SplitString(arrayLine, ' ');
+    assert |arrayParts| == n;
+
+    var a: seq<int> := [];
+    var i := 0;
+    while i < n
+        invariant 0 <= i <= n
+        invariant |a| == i
+        invariant forall j :: 0 <= j < i ==> 1 <= a[j] <= 1000000000
+        invariant forall j :: 0 <= j < i ==> a[j] == StringToInt(arrayParts[j])
+    {
+        var val := StringToInt(arrayParts[i]);
+        assert 1 <= val <= 1000000000;
+        a := a + [val];
+        i := i + 1;
+    }
+
+    assert a == seq(n, i requires 0 <= i < n => StringToInt(arrayParts[i]));
+
+    if n == 1 {
+        assert |a| == 1;
+        assert Solve1Condition(a);
+        return "YES\n1000000000 1";
+    }
+
+    var solve1Valid := true;
+    var j := 0;
+    while j < n - 1 && solve1Valid
+        invariant 0 <= j <= n - 1
+        invariant solve1Valid ==> forall k :: 0 <= k < j ==> abs(a[k] - a[k+1]) == 1
+        invariant !solve1Valid ==> exists k :: 0 <= k < j && abs(a[k] - a[k+1]) != 1
+    {
+        if abs(a[j] - a[j+1]) != 1 {
+            solve1Valid := false;
+        }
+        j := j + 1;
+    }
+
+    if solve1Valid {
+        assert forall k :: 0 <= k < n - 1 ==> abs(a[k] - a[k+1]) == 1;
+        Solve1ConditionEquivalence(a);
+        assert Solve1Condition(a);
+        return "YES\n1000000000 1";
+    } else {
+        assert !Solve1Condition(a);
+    }
+
+    var w := FindCommonDifference(a);
+
+    if w > 0 {
+        var hasNonUnitDiff := false;
+        var k := 0;
+        while k < n - 1
+            invariant 0 <= k <= n - 1
+            invariant hasNonUnitDiff ==> exists idx :: 0 <= idx < k && abs(a[idx] - a[idx+1]) != 1
+            invariant !hasNonUnitDiff ==> forall idx :: 0 <= idx < k ==> abs(a[idx] - a[idx+1]) == 1
+        {
+            if abs(a[k] - a[k+1]) != 1 {
+                hasNonUnitDiff := true;
+            }
+            k := k + 1;
+        }
+
+        var rowConstraintValid := true;
+        var m := 0;
+        while m < n - 1 && rowConstraintValid
+            invariant 0 <= m <= n - 1
+            invariant rowConstraintValid ==> forall idx :: 0 <= idx < m && abs(a[idx] - a[idx+1]) == 1 ==> FloorDiv(a[idx] - 1, w) == FloorDiv(a[idx+1] - 1, w)
+            invariant !rowConstraintValid ==> exists idx :: 0 <= idx < m && abs(a[idx] - a[idx+1]) == 1 && FloorDiv(a[idx] - 1, w) != FloorDiv(a[idx+1] - 1, w)
+        {
+            if abs(a[m] - a[m+1]) == 1 {
+                if FloorDiv(a[m] - 1, w) != FloorDiv(a[m+1] - 1, w) {
+                    rowConstraintValid := false;
+                }
+            }
+            m := m + 1;
+        }
+
+        if hasNonUnitDiff && rowConstraintValid {
+            assert w > 0;
+            assert exists idx :: 0 <= idx < n - 1 && abs(a[idx] - a[idx+1]) != 1;
+            assert forall idx :: 0 <= idx < n - 1 && abs(a[idx] - a[idx+1]) == 1 ==> FloorDiv(a[idx] - 1, w) == FloorDiv(a[idx+1] - 1, w);
+            Solve2ConditionComponents(a);
+            assert Solve2Condition(a);
+            return "YES\n1000000000 " + IntToString(w);
+        } else {
+            Solve2ConditionComponents(a);
+            assert !Solve2Condition(a);
+        }
+    } else {
+        assert w <= 0;
+        Solve2ConditionComponents(a);
+        assert !Solve2Condition(a);
+    }
+
+    assert !Solve2Condition(a);
+    return "NO";
+}
+// </vc-code>
+

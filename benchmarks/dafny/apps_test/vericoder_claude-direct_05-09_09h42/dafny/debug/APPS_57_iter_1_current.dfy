@@ -1,0 +1,236 @@
+// ======= TASK =======
+// Given n vertices (1 ≤ n ≤ 4) from a rectangle with sides parallel to coordinate axes,
+// determine if the rectangle's area can be uniquely calculated. Return the area if it can
+// be uniquely determined, otherwise return -1.
+
+// ======= SPEC REQUIREMENTS =======
+predicate ValidInput(input: string)
+{
+    var lines := split(input, '\n');
+    |lines| > 0 && stringToInt(lines[0]) >= 1 && stringToInt(lines[0]) <= 4
+}
+
+predicate ValidPoints(points: seq<(int, int)>)
+{
+    |points| >= 1 && |points| <= 4
+}
+
+function BoundingBoxArea(points: seq<(int, int)>): int
+    requires |points| > 0
+{
+    var bounds := findBounds(points, 0, points[0].0, points[0].0, points[0].1, points[0].1);
+    (bounds.2 - bounds.0) * (bounds.3 - bounds.1)
+}
+
+function findBounds(points: seq<(int, int)>, index: int, minX: int, maxX: int, minY: int, maxY: int): (int, int, int, int)
+    requires 0 <= index <= |points|
+    requires |points| > 0
+    requires index == 0 ==> minX == points[0].0 && maxX == points[0].0 && minY == points[0].1 && maxY == points[0].1
+    decreases |points| - index
+{
+    if index >= |points| then
+        (minX, minY, maxX, maxY)
+    else
+        var newMinX := if points[index].0 < minX then points[index].0 else minX;
+        var newMaxX := if points[index].0 > maxX then points[index].0 else maxX;
+        var newMinY := if points[index].1 < minY then points[index].1 else minY;
+        var newMaxY := if points[index].1 > maxY then points[index].1 else maxY;
+        findBounds(points, index + 1, newMinX, newMaxX, newMinY, newMaxY)
+}
+
+predicate CanUniquelyDetermineArea(n: int, area: int)
+{
+    (n >= 3 && area > 0) || (n == 2 && area > 0)
+}
+
+// ======= HELPERS =======
+function split(s: string, delimiter: char): seq<string>
+{
+    if |s| == 0 then [""]
+    else splitHelper(s, delimiter, 0)
+}
+
+function splitHelper(s: string, delimiter: char, start: int): seq<string>
+    requires 0 <= start <= |s|
+    decreases |s| - start
+{
+    if start >= |s| then
+        if start == 0 then [""] else []
+    else
+        var nextDelim := findNext(s, delimiter, start);
+        if nextDelim == -1 then
+            [s[start..]]
+        else
+            [s[start..nextDelim]] + splitHelper(s, delimiter, nextDelim + 1)
+}
+
+function findNext(s: string, c: char, start: int): int
+    requires 0 <= start <= |s|
+    ensures findNext(s, c, start) == -1 || (start <= findNext(s, c, start) < |s|)
+    decreases |s| - start
+{
+    if start >= |s| then -1
+    else if s[start] == c then start
+    else findNext(s, c, start + 1)
+}
+
+function stringToInt(s: string): int
+{
+    if |s| == 0 then 0
+    else if s[0] == '-' then -stringToIntHelper(s[1..])
+    else stringToIntHelper(s)
+}
+
+function stringToIntHelper(s: string): int
+{
+    if |s| == 0 then 0
+    else if |s| == 1 then 
+        if '0' <= s[0] <= '9' then charToDigit(s[0]) else 0
+    else 
+        if '0' <= s[|s|-1] <= '9' then 
+            stringToIntHelper(s[..|s|-1]) * 10 + charToDigit(s[|s|-1])
+        else 0
+}
+
+function charToDigit(c: char): int
+    requires '0' <= c <= '9'
+{
+    (c as int) - ('0' as int)
+}
+
+function intToString(n: int): string
+{
+    if n == 0 then "0"
+    else if n < 0 then "-" + intToStringHelper(-n)
+    else intToStringHelper(n)
+}
+
+function intToStringHelper(n: int): string
+    requires n > 0
+    decreases n
+{
+    if n < 10 then
+        [digitToChar(n)]
+    else
+        intToStringHelper(n / 10) + [digitToChar(n % 10)]
+}
+
+function digitToChar(digit: int): char
+    requires 0 <= digit <= 9
+{
+    ((digit + ('0' as int)) as char)
+}
+
+// <vc-helpers>
+lemma ValidInputEnsuresNonEmpty(input: string)
+    requires ValidInput(input)
+    ensures var lines := split(input, '\n'); |lines| > 0
+{
+    var lines := split(input, '\n');
+}
+
+lemma SplitNonEmpty(s: string, delimiter: char)
+    ensures var result := split(s, delimiter); |result| > 0
+{
+    if |s| == 0 {
+        assert split(s, delimiter) == [""];
+    } else {
+        assert split(s, delimiter) == splitHelper(s, delimiter, 0);
+        SplitHelperNonEmpty(s, delimiter, 0);
+    }
+}
+
+lemma SplitHelperNonEmpty(s: string, delimiter: char, start: int)
+    requires 0 <= start <= |s|
+    ensures var result := splitHelper(s, delimiter, start); 
+            start < |s| ==> |result| > 0
+    decreases |s| - start
+{
+    if start >= |s| {
+        if start == 0 {
+            assert splitHelper(s, delimiter, start) == [""];
+        }
+    } else {
+        var nextDelim := findNext(s, delimiter, start);
+        if nextDelim == -1 {
+            assert splitHelper(s, delimiter, start) == [s[start..]];
+        } else {
+            assert splitHelper(s, delimiter, start) == [s[start..nextDelim]] + splitHelper(s, delimiter, nextDelim + 1);
+        }
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+// ======= MAIN METHOD =======
+method solve(input: string) returns (output: string)
+    requires ValidInput(input)
+    ensures |output| > 0
+// </vc-spec>
+// <vc-code>
+{
+    SplitNonEmpty(input, '\n');
+    var lines := split(input, '\n');
+    var n := stringToInt(lines[0]);
+
+    if n <= 1 {
+        output := "-1";
+        return;
+    }
+
+    if |lines| < n + 1 {
+        output := "-1";
+        return;
+    }
+
+    var minX := 1000000000;
+    var maxX := -1000000000;
+    var minY := 1000000000;
+    var maxY := -1000000000;
+    var validPoints := 0;
+
+    var i := 1;
+    while i <= n
+        invariant 1 <= i <= n + 1
+        invariant validPoints >= 0
+        invariant validPoints > 0 ==> (minX <= maxX && minY <= maxY)
+    {
+        if i < |lines| {
+            var parts := split(lines[i], ' ');
+            if |parts| >= 2 {
+                var x := stringToInt(parts[0]);
+                var y := stringToInt(parts[1]);
+
+                if validPoints == 0 {
+                    minX := x;
+                    maxX := x;
+                    minY := y;
+                    maxY := y;
+                    validPoints := 1;
+                } else {
+                    if x < minX { minX := x; }
+                    if x > maxX { maxX := x; }
+                    if y < minY { minY := y; }
+                    if y > maxY { maxY := y; }
+                    validPoints := validPoints + 1;
+                }
+            }
+        }
+        i := i + 1;
+    }
+
+    if validPoints == 0 {
+        output := "-1";
+        return;
+    }
+
+    var area := (maxX - minX) * (maxY - minY);
+
+    if CanUniquelyDetermineArea(validPoints, area) {
+        output := intToString(area);
+    } else {
+        output := "-1";
+    }
+}
+// </vc-code>
+
