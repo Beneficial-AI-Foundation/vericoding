@@ -150,6 +150,12 @@ Examples:
         help="For reasoning-capable models (e.g., gpt-5, o4), set reasoning effort.",
     )
 
+    parser.add_argument(
+        "--lake-build-target",
+        type=str,
+        help="Optional Lake target to build at the end for overall stats (e.g., DafnyBench)",
+    )
+
     return parser.parse_args()
 
 
@@ -798,6 +804,31 @@ def main():
             print(f"\n✅ Wandb run completed: {wandb_run.url}")
         except Exception as e:
             print(f"⚠️  Error logging to wandb: {e}")
+
+    # Optionally build a Lake target for coarse-grained stats
+    if args.lake_build_target and config.language == "lean":
+        print(f"\nBuilding Lake target '{args.lake_build_target}' for summary stats...")
+        try:
+            proc = subprocess.run(
+                ["lake", "build", args.lake_build_target],
+                capture_output=True,
+                text=True,
+                timeout=900,
+            )
+            combined = proc.stdout + proc.stderr
+            sorry_count = combined.count("declaration uses 'sorry'")
+            error_count = combined.count("error:")
+            print("=== LAKE BUILD SUMMARY ===")
+            print(f"Exit code: {proc.returncode}")
+            print(f"Errors: {error_count}")
+            print(f"'sorry' warnings: {sorry_count}")
+            # Save to file alongside summary
+            lake_summary_path = Path(config.output_dir) / "lake_build_summary.txt"
+            with lake_summary_path.open("w") as f:
+                f.write(combined)
+            print(f"Full Lake output saved to: {lake_summary_path}")
+        except subprocess.TimeoutExpired:
+            print("⏱️  Lake build timed out")
 
 
 if __name__ == "__main__":
