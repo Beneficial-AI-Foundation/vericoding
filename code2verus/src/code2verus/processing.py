@@ -55,6 +55,11 @@ async def process_item(
         return {"path": artifact_path, "success": True}
 
     logfire.info(f"Processing item {idx + 1}: {source_filename} ({source_language})")
+    
+    # Debug: Show preview of source code being processed
+    source_preview = source_code.split('\n')[:5]
+    logfire.info(f"Source code preview (first 5 lines):\n" + '\n'.join(source_preview))
+    
     artifact_path.mkdir(parents=True, exist_ok=True)
 
     # Exponential backoff retry logic
@@ -65,9 +70,23 @@ async def process_item(
             with open(verus_output_path, "w") as verus_file:
                 verus_file.write(verus_code)
             logfire.info(f"Generated Verus code saved to: {verus_output_path}")
+            logfire.info(f"Translation took {num_iterations} iterations")
+            
+            # Debug: Show a preview of the generated code
+            preview_lines = verus_code.split('\n')[:10]
+            logfire.info(f"Generated code preview (first 10 lines):\n" + '\n'.join(preview_lines))
 
             # Use async verification
             verification_success, verification_output, verification_error = await verify_verus_code(verus_code, is_yaml)
+
+            # Debug logging for verification results
+            logfire.info(f"Verification completed for item {idx + 1}: success={verification_success}")
+            if not verification_success:
+                logfire.info(f"Verification failed for item {idx + 1}:")
+                if verification_error:
+                    logfire.info(f"  Error: {verification_error}")
+                if verification_output:
+                    logfire.info(f"  Output: {verification_output}")
 
             info = {
                 "success": verification_success,
@@ -156,7 +175,7 @@ async def main_async(benchmark: str = "wendy-sun/DafnyBench", split: str = "test
         for idx, item in enumerate(dataset)
     ]
     existing_success_results = await asyncio.gather(*existing_success_checks)
-    skipped_count = sum(existing_success_results)
+    _skipped_count = sum(existing_success_results)
 
     # Limit concurrent API calls to prevent rate limiting
     semaphore = asyncio.Semaphore(max_concurrent)
@@ -178,9 +197,17 @@ async def main_async(benchmark: str = "wendy-sun/DafnyBench", split: str = "test
 
     # Calculate statistics
     total_successful = sum(res["success"] for res in results)
-    percentage_successful = total_successful / len(results)
+    percentage_successful = total_successful / len(results) if len(results) > 0 else 0.0
 
     print("Results:")
     print(f"  Successful files: {total_successful}")
     print(f"  Total files: {len(results)}")
     print(f"  Overall success rate: {100 * percentage_successful:.1f}%")
+    
+    # Debug: Show details about failures
+    failed_count = len(results) - total_successful
+    if failed_count > 0:
+        print(f"\nFailed items: {failed_count}")
+        for i, res in enumerate(results):
+            if not res["success"]:
+                print(f"  Item {i + 1}: Failed - check logs for details")

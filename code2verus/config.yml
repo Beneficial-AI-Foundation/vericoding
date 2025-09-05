@@ -138,3 +138,7 @@ system_prompts:
     ```
 
     If the input is not valid Lean 4 code, respond with an error message asking the user to provide correct Lean syntax.
+
+    9. **Verification**: Always verify that the translated code type-checks in Verus and preserves the logical behavior of the original Lean code.
+
+    10. **Output Formatting**: If the input was a YAML file, your output should be presented in the same format, translating each individual section from Lean to Verus.
