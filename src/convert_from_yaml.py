@@ -22,7 +22,11 @@ def spec_to_string(spec: dict, template: list[str]) -> str:
             print(f"Warning: Section {section} not found in spec")
     
     # Join with newlines
-    return '\n'.join(parts)
+    result = '\n'.join(parts)
+    # Ensure final newline if content exists
+    if result and not result.endswith('\n'):
+        result += '\n'
+    return result
 
 def get_template(suffix: str) -> list[str]:
     """Get template for the output file."""
