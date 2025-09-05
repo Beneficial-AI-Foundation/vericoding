@@ -132,9 +132,9 @@ Examples:
     parser.add_argument(
         "--llm-provider",
         type=str,
-        choices=["claude", "openai", "deepseek"],
+        choices=["claude", "openai", "deepseek", "mock"],
         default="claude",
-        help="LLM provider to use (default: claude)",
+        help="LLM provider to use (default: claude). Use 'mock' for offline testing.",
     )
 
     parser.add_argument(

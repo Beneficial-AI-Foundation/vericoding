@@ -4,6 +4,7 @@ import os
 from abc import ABC, abstractmethod
 
 import anthropic
+from typing import Optional
 
 
 class LLMProvider(ABC):
@@ -134,6 +135,39 @@ class DeepSeekProvider(LLMProvider):
         return "DEEPSEEK_API_KEY"
 
 
+class MockProvider(LLMProvider):
+    """Mock provider for offline/testing. Returns the code embedded in the prompt.
+
+    Heuristics:
+    - If the prompt contains a marker like "Code Below:" or
+      "LEAN SPECIFICATION WITH EMPTY DEFINITIONS AND PROOF BODIES:",
+      return everything after the last such marker.
+    - Otherwise, return the prompt verbatim (the extractor will try to pull code).
+    """
+
+    def __init__(self, api_key: str = "", model: str = "mock", **kwargs):
+        super().__init__(api_key, model, **kwargs)
+
+    def call_api(self, prompt: str) -> str:
+        split_markers = [
+            "Code Below:",
+            "LEAN SPECIFICATION WITH EMPTY DEFINITIONS AND PROOF BODIES:",
+        ]
+        last_idx: Optional[int] = None
+        for marker in split_markers:
+            idx = prompt.rfind(marker)
+            if idx != -1:
+                last_idx = max(last_idx or -1, idx)
+        if last_idx is not None and last_idx >= 0:
+            # Return the content after the marker
+            after = prompt[last_idx:]
+            return after.split("\n", 1)[1] if "\n" in after else ""
+        return prompt
+
+    def get_required_env_var(self) -> str:
+        return ""  # No env var required
+
+
 def create_llm_provider(provider_name: str, model: str = None) -> LLMProvider:
     """Factory function to create LLM providers."""
     provider_configs = {
@@ -152,6 +186,11 @@ def create_llm_provider(provider_name: str, model: str = None) -> LLMProvider:
             "default_model": "deepseek-chat",
             "env_var": "DEEPSEEK_API_KEY",
         },
+        "mock": {
+            "class": MockProvider,
+            "default_model": "mock",
+            "env_var": "",  # No key required
+        },
     }
 
     if provider_name not in provider_configs:
@@ -162,9 +201,9 @@ def create_llm_provider(provider_name: str, model: str = None) -> LLMProvider:
 
     config = provider_configs[provider_name]
     env_var = config["env_var"]
-    api_key = os.getenv(env_var)
+    api_key = os.getenv(env_var) if env_var else ""
 
-    if not api_key:
+    if env_var and not api_key:
         raise ValueError(
             f"{env_var} environment variable is required for {provider_name}.\n"
             f"You can set it by:\n"
