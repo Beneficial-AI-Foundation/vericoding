@@ -242,3 +242,104 @@ If you encounter rate limits:
 ### Missing API Keys
 Ensure all required API keys are set in your `.env` file
 
+## Lean YAML Translation
+
+When translating Lean YAML files to Verus YAML, Code2Verus applies semantic equivalence mapping to preserve formal verification semantics while adapting to Verus syntax and structure.
+
+### YAML Structure Mapping
+
+The tool automatically handles the structural differences between Lean and Verus YAML formats:
+
+#### Direct Field Mappings
+These fields maintain the same name but their content is translated:
+
+| Lean Field | Verus Field | Translation |
+|------------|-------------|-------------|
+| `vc-description` | `vc-description` | Lean `/- ... -/` comments → Rust `/* ... */` comments |
+| `vc-preamble` | `vc-preamble` | Lean imports → Verus imports (`use vstd::prelude::*;` + `verus! {`) |
+| `vc-helpers` | `vc-helpers` | Lean helper functions → Verus equivalents |
+| `vc-postamble` | `vc-postamble` | Lean closing → Verus closing (`}` + `fn main() {}`) |
+
+#### Transformation Mappings
+These fields are combined and restructured to match Verus semantics:
+
+| Lean Fields | Verus Field | Transformation |
+|-------------|-------------|----------------|
+| `vc-signature` + `vc-implementation` | `vc-spec` | Function signature + contracts (`requires`/`ensures` clauses) |
+| `vc-condition` + `vc-proof` | `vc-code` | Postconditions → placeholder implementation with `assume(false)` |
+
+### Translation Rules
+
+#### Comment Formatting
+- **Lean**: `/- multiline comment -/`
+- **Verus**: `/* multiline comment */`
+
+#### Placeholder Implementations
+For `vc-code` sections, always use the pattern:
+```rust
+{
+    // impl-start
+    assume(false);
+    [appropriate_default_return_value]
+    // impl-end
+}
+```
+
+**Default return values**:
+- Boolean functions: `false`
+- Vec/Array functions: `Vec::new()`
+- Integer functions: `0`
+
+#### Function Contracts
+- Lean preconditions (`removeElement_precond`) → Verus `requires` clauses
+- Lean postconditions (`removeElement_postcond`) → Verus `ensures` clauses
+- Lean theorems (`removeElement_spec_satisfied`) → Integrated into function contract
+
+#### Example Translation
+
+**Lean YAML Input**:
+```yaml
+vc-signature: |-
+  def removeElement (s : Array Int) (k : Nat) (h_precond : removeElement_precond (s) (k)) : Array Int :=
+vc-implementation: |-
+  -- <vc-implementation>
+    sorry
+  -- </vc-implementation>
+vc-condition: |-
+  @[reducible, simp]
+  def removeElement_postcond (s : Array Int) (k : Nat) (result: Array Int) :=
+    result.size = s.size - 1 ∧
+    (∀ i, i < k → result[i]! = s[i]!) ∧
+    (∀ i, i < result.size → i ≥ k → result[i]! = s[i + 1]!)
+```
+
+**Verus YAML Output**:
+```yaml
+vc-spec: |-
+  fn remove_element(s: &Vec<i32>, k: usize) -> (result: Vec<i32>)
+      requires k < s.len(),
+      ensures
+          result.len() == s.len() - 1,
+          forall|i: int| 0 <= i < k ==> result[i] == s[i],
+          forall|i: int| k <= i < result.len() ==> result[i] == s[i + 1],
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+```
+
+### Implementation Details
+
+The semantic equivalence mapping is implemented through a centralized configuration approach:
+
+1. **`config.yml`**: Contains all prompts and instructions:
+   - `system_prompts`: Language-specific system prompts for the AI agent
+   - `yaml_instructions`: YAML-specific translation instructions for each language
+   - `default_prompts`: Default instructions for non-YAML translations
+
+2. **`agent.py`**: Dynamically constructs prompts from config based on language and format type
+
+This centralized approach ensures consistency, maintainability, and eliminates prompt duplication. The formal verification semantics are preserved while adapting to Verus's syntax and verification patterns.

@@ -9,12 +9,12 @@ def load_config() -> dict:
         Path(".") / "config.yml",
         Path(__file__).parent.parent.parent / "config.yml",
     ]
-    
+
     for config_path in config_paths:
         if config_path.exists():
             with open(config_path, "r") as f:
                 return yaml.safe_load(f)
-    
+
     raise FileNotFoundError("config.yml not found in current directory or project root")
 
 
