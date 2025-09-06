@@ -1,0 +1,25 @@
+/* Write a Verus function that returns the first duplicate integer found in a list. The function should return the value of the first duplicate it encounters, scanning from left to right. If no duplicates exist, return -1.
+
+Input: lst: A sequence of integers.
+Output: An integer representing the first duplicated value if any exists, otherwise -1. */
+
+use vstd::prelude::*;
+
+verus! {
+fn first_duplicate(lst: &Seq<i32>) -> (result: i32)
+    ensures
+        /* if result = -1, then lst does not contain any duplicates */
+        (result == -1 ==> forall|i: int, j: int| 0 <= i < j < lst.len() ==> lst[i] != lst[j]) &&
+        /* if result is not -1, then it is the first duplicate in lst */
+        (result != -1 ==> 
+            exists|i: int, j: int| 0 <= i < j < lst.len() && lst[i] == lst[j] && lst[i] == result &&
+            forall|k: int, l: int| 0 <= k < l < lst.len() && lst[k] == lst[l] && l <= i ==> k >= i
+        ),
+{
+    // impl-start
+    assume(false);
+    -1
+    // impl-end
+}
+}
+fn main() {}

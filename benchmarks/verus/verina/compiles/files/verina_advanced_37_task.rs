@@ -1,0 +1,135 @@
+/* This task requires writing a Verus method that returns the majority element from a list of integers.
+
+The majority element is the one that appears more than ⌊n / 2⌋ times in the list, where n is the list's length. You may assume that a majority element always exists in the input.
+
+Input: nums: A list of integers (with at least one majority element).
+
+Output: Returns the majority element — the value that appears more than ⌊n / 2⌋ times. */
+
+use vstd::prelude::*;
+
+verus! {
+
+spec fn count_occurrences(nums: Seq<i32>, value: i32) -> nat {
+    nums.filter(|x: i32| x == value).len()
+}
+fn majority_element(nums: &Vec<i32>) -> (result: i32)
+    requires nums.len() > 0,
+    ensures ({
+        let nums_seq = nums@;
+        let n = nums_seq.len();
+        count_occurrences(nums_seq, result) > n / 2 &&
+        forall|x: i32| x == result || count_occurrences(nums_seq, x) <= n / 2
+    }),
+{
+    // impl-start
+    assume(false);
+    0
+    // impl-end
+}
+}
+fn main() {
+    /*
+    // Invalid Inputs
+    []
+    // Tests
+    [
+        {
+            "input": {
+                "nums": "[3, 2, 3]"
+            },
+            "expected": 3,
+            "unexpected": [
+                2
+            ]
+        },
+        {
+            "input": {
+                "nums": "[2, 2, 1, 1, 1, 2, 2]"
+            },
+            "expected": 2,
+            "unexpected": [
+                1
+            ]
+        },
+        {
+            "input": {
+                "nums": "[1]"
+            },
+            "expected": 1,
+            "unexpected": [
+                0
+            ]
+        },
+        {
+            "input": {
+                "nums": "[4, 4, 4, 4, 4, 2, 2, 3, 3]"
+            },
+            "expected": 4,
+            "unexpected": [
+                2,
+                3
+            ]
+        },
+        {
+            "input": {
+                "nums": "[9, 8, 9, 9, 7, 9, 6, 9, 9]"
+            },
+            "expected": 9,
+            "unexpected": [
+                6,
+                7,
+                8
+            ]
+        },
+        {
+            "input": {
+                "nums": "[0, 0, 0, 0, 1]"
+            },
+            "expected": 0,
+            "unexpected": [
+                1
+            ]
+        },
+        {
+            "input": {
+                "nums": "[100000, 100000, 100000, 100000, -100000]"
+            },
+            "expected": 100000,
+            "unexpected": [
+                -100000
+            ]
+        },
+        {
+            "input": {
+                "nums": "[-1, -1, -1, -1, 0, 1, 2]"
+            },
+            "expected": -1,
+            "unexpected": [
+                0,
+                1,
+                2
+            ]
+        },
+        {
+            "input": {
+                "nums": "[5, 5, 5, 5, 5, 5, 5]"
+            },
+            "expected": 5,
+            "unexpected": [
+                0
+            ]
+        },
+        {
+            "input": {
+                "nums": "[1, 2, 3, 3, 3, 3, 3]"
+            },
+            "expected": 3,
+            "unexpected": [
+                1,
+                2
+            ]
+        }
+    ]
+    */
+}

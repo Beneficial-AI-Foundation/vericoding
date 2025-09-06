@@ -1,0 +1,27 @@
+/* This task requires writing a Verus function that computes the length of the longest strictly increasing contiguous subarray in a list of integers. A subarray is a sequence of consecutive elements, and it is strictly increasing if each element is greater than the previous one.
+
+The function should correctly handle empty lists, lists with all equal elements, and long stretches of increasing numbers.
+
+Input:
+The input consists of a single list:
+nums: A list of integers.
+
+Output:
+The output is a natural number:
+Returns the length of the longest strictly increasing contiguous subarray. If the list is empty, the function should return 0. */
+
+use vstd::prelude::*;
+
+verus! {
+fn longest_increasing_streak(nums: &Vec<i32>) -> (result: usize)
+    ensures
+        (nums.len() == 0 ==> result == 0),
+        result <= nums.len(),
+{
+    // impl-start
+    assume(false);
+    0
+    // impl-end
+}
+}
+fn main() {}

@@ -1,0 +1,140 @@
+vc-description: |-
+  This task involves merging two sorted arrays of natural numbers (it is ill defined if inputs aren't sorted.)
+  The input consists of two arrays:
+  a1: A sorted array of natural numbers
+  a2: A sorted array of natural numbers
+  The output is an array:
+  Returns a new array with all elements from both input arrays (included once and only once)
+  The resulting array is sorted itself
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn is_sorted(v: Seq<nat>) -> bool {
+      forall|i: int, j: int| 0 <= i < j < v.len() ==> #[trigger] v[i] <= #[trigger] v[j]
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn merge_sorted(a1: &Vec<nat>, a2: &Vec<nat>) -> (result: Vec<nat>)
+      requires 
+          is_sorted(a1@),
+          is_sorted(a2@),
+      ensures
+          is_sorted(result@),
+          result@.to_multiset() == a1@.to_multiset().add(a2@.to_multiset()),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      /*
+      -- Invalid Inputs
+      [
+          {
+              "input": {
+                  "a1": "#[3, 2, 1]",
+                  "a2": "#[6, 5, 4]"
+              }
+          }
+      ]
+      -- Tests
+      [
+          {
+              "input": {
+                  "a1": "#[1, 3, 5]",
+                  "a2": "#[2, 4, 6]"
+              },
+              "expected": "#[1, 2, 3, 4, 5, 6]",
+              "unexpected": [
+                  "#[1, 3, 5, 2, 4, 6]",
+                  "#[2, 1, 3, 4, 5, 6]"
+              ]
+          },
+          {
+              "input": {
+                  "a1": "#[]",
+                  "a2": "#[1, 2, 3]"
+              },
+              "expected": "#[1, 2, 3]",
+              "unexpected": [
+                  "#[]",
+                  "#[3, 2, 1]"
+              ]
+          },
+          {
+              "input": {
+                  "a1": "#[1, 2, 3]",
+                  "a2": "#[]"
+              },
+              "expected": "#[1, 2, 3]",
+              "unexpected": [
+                  "#[]",
+                  "#[3, 2, 1]"
+              ]
+          },
+          {
+              "input": {
+                  "a1": "#[]",
+                  "a2": "#[]"
+              },
+              "expected": "#[]",
+              "unexpected": [
+                  "#[1]"
+              ]
+          },
+          {
+              "input": {
+                  "a1": "#[1, 1, 2]",
+                  "a2": "#[1, 2, 2]"
+              },
+              "expected": "#[1, 1, 1, 2, 2, 2]",
+              "unexpected": [
+                  "#[1, 1, 2, 1, 2, 2]",
+                  "#[1, 2]"
+              ]
+          },
+          {
+              "input": {
+                  "a1": "#[10, 20, 30]",
+                  "a2": "#[5, 15, 25]"
+              },
+              "expected": "#[5, 10, 15, 20, 25, 30]",
+              "unexpected": [
+                  "#[10, 20, 30, 5, 15, 25]"
+              ]
+          },
+          {
+              "input": {
+                  "a1": "#[1, 3, 5, 7, 9]",
+                  "a2": "#[2, 4, 6, 8, 10]"
+              },
+              "expected": "#[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]",
+              "unexpected": [
+                  "#[1, 3, 5, 7, 9, 2, 4, 6, 8, 10]"
+              ]
+          },
+          {
+              "input": {
+                  "a1": "#[5, 5, 5]",
+                  "a2": "#[5, 5, 5]"
+              },
+              "expected": "#[5, 5, 5, 5, 5, 5]",
+              "unexpected": [
+                  "#[5, 5, 5]"
+              ]
+          }
+      ]
+      */
+  }

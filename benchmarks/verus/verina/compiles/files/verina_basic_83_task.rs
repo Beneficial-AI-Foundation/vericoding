@@ -1,0 +1,32 @@
+/* This task involves concatenating two arrays of integers by appending the second array to the end of the first array. The goal is to produce a new array that sequentially contains all elements from the first array followed by all elements from the second array.
+
+-----Input-----
+The input consists of two parameters:
+• a: An Array of integers representing the first part of the concatenated array.
+• b: An Array of integers representing the second part of the concatenated array.
+
+-----Output-----
+The output is an Array of integers that satisfies the following:
+• The length of the output array is equal to the sum of the lengths of arrays a and b.
+• The first part of the output array (indices 0 to a.size - 1) is identical to array a.
+• The remaining part of the output array (indices a.size to a.size + b.size - 1) is identical to array b.
+
+-----Note-----
+No additional preconditions are required since the function uses the sizes of the input arrays to build the resulting array. */
+
+use vstd::prelude::*;
+
+verus! {
+fn concat(a: &Vec<i32>, b: &Vec<i32>) -> (result: Vec<i32>)
+    ensures
+        result.len() == a.len() + b.len(),
+        forall|k: int| 0 <= k < a.len() ==> result[k] == a[k],
+        forall|k: int| 0 <= k < b.len() ==> result[k + a.len()] == b[k],
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}
