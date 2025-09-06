@@ -11,17 +11,17 @@
 -/
 
 /-  numpy.trim_zeros: Trim the leading and/or trailing zeros from a 1-D array.
-    
+
     Removes zeros from the beginning and/or end of a vector based on the trim mode.
     - Front: removes leading zeros only
     - Back: removes trailing zeros only
     - Both: removes both leading and trailing zeros (default)
-    
+
     The function preserves all non-zero elements and internal zeros.
 -/
 
 /-  Specification: trim_zeros removes leading and/or trailing zeros while preserving order.
-    
+
     The function guarantees:
     1. All non-zero elements from the original array are preserved in order
     2. Internal zeros (zeros between non-zero elements) are preserved
@@ -47,9 +47,7 @@ inductive TrimMode where
 
 def trim_zeros {n : Nat} (arr : Vector Float n) (mode : TrimMode := TrimMode.Both) : 
     Id (Σ m : Nat, Vector Float m) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem trim_zeros_spec {n : Nat} (arr : Vector Float n) (mode : TrimMode) :
     ⦃⌜True⌝⦄
@@ -74,6 +72,4 @@ theorem trim_zeros_spec {n : Nat} (arr : Vector Float n) (mode : TrimMode) :
         (mode = TrimMode.Back ∨ mode = TrimMode.Both → 
           (finish = 0 ∨ arr.get ⟨finish - 1, sorry⟩ ≠ 0))
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

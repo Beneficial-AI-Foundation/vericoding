@@ -14,7 +14,7 @@
 
 /-  Specification: hermeline returns the correct Hermite series coefficients for a linear function.
     The returned coefficients represent the polynomial off + scl*x in Hermite series form.
-    
+
     Mathematical properties:
     - Always returns a vector of size 2 (degree 1 polynomial or constant with zero coefficient)
     - First coefficient (index 0) is always the offset term
@@ -33,9 +33,7 @@ open Std.Do
 -- </vc-helpers>
 
 def hermeline (off scl : Float) : Id (Vector Float 2) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem hermeline_spec (off scl : Float) :
     ⦃⌜True⌝⦄
@@ -57,6 +55,4 @@ theorem hermeline_spec (off scl : Float) :
                   -- Non-degenerate case property: non-zero scale gives linear polynomial
                   (scl ≠ 0 → ∀ x : Float, 
                     coeffs.get ⟨0, by simp⟩ + coeffs.get ⟨1, by simp⟩ * x = off + scl * x)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

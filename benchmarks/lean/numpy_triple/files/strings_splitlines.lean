@@ -21,9 +21,7 @@ open Std.Do
 -- </vc-helpers>
 
 def splitlines {n : Nat} (a : Vector String n) (keepends : Bool) : Id (Vector (List String) n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem splitlines_spec {n : Nat} (a : Vector String n) (keepends : Bool) :
     ⦃⌜True⌝⦄
@@ -54,6 +52,4 @@ theorem splitlines_spec {n : Nat} (a : Vector String n) (keepends : Bool) :
         (original = "" → lines = [""]) ∧
         -- Single newline property
         (original = "\n" → (if keepends then lines = ["\n"] else lines = ["", ""]))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

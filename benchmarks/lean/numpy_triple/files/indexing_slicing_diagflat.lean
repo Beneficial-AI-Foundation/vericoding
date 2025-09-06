@@ -13,7 +13,7 @@
     Creates a square matrix where the input vector is placed along the main diagonal.
     All other elements are zero. The resulting matrix has size n×n where n is the
     length of the input vector.
-    
+
     For the main diagonal (k=0), the matrix element at position (i,i) contains
     the i-th element of the input vector.
 -/
@@ -30,15 +30,11 @@
 -- </vc-helpers>
 
 def diagflat {n : Nat} (v : Vector Float n) : Vector (Vector Float n) n :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem diagflat_spec {n : Nat} (v : Vector Float n) :
     let result := diagflat v
     ∀ i : Fin n, ∀ j : Fin n,
       (i = j → (result.get i).get j = v.get i) ∧
       (i ≠ j → (result.get i).get j = 0) := by
--- <vc-proof>
   sorry
--- </vc-proof>

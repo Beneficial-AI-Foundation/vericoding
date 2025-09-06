@@ -24,26 +24,18 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def Triple (x : Int) (h_precond : Triple_precond (x)) : Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def Triple_postcond (x : Int) (result: Int) (h_precond : Triple_precond (x)) :=
     result / 3 = x ∧ result / 3 * 3 = result
   
   theorem Triple_spec_satisfied (x: Int) (h_precond : Triple_precond (x)) :
       Triple_postcond (x) (Triple (x) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

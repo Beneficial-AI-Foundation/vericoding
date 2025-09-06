@@ -26,9 +26,7 @@ open Std.Do
 -- </vc-helpers>
 
 def True_ : Id Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem True__spec :
     ⦃⌜True⌝⦄
@@ -37,6 +35,4 @@ theorem True__spec :
                  (∀ b : Bool, result && b = b) ∧
                  (∀ b : Bool, result || b = true) ∧
                  (!result = false)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

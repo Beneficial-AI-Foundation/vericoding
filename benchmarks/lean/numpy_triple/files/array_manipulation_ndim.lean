@@ -11,20 +11,20 @@
 -/
 
 /-  numpy.ndim: Return the number of dimensions of an array.
-    
+
     In our Vector-based framework, vectors are always 1-dimensional.
     This function returns 1 for any vector input, representing the fact
     that Vector T n is a 1D array with n elements.
-    
+
     Note: In NumPy, scalars are 0-dimensional, but in our framework,
     we represent them as Vector T 1, so this always returns 1.
 -/
 
 /-  Specification: numpy.ndim returns the number of dimensions, which is always 1 for vectors.
-    
+
     Precondition: True (no special preconditions)
     Postcondition: The result is always 1 since Vector α n represents a 1-dimensional array
-    
+
     This specification captures the mathematical property that all vectors in our
     framework are 1-dimensional arrays, regardless of their element type or size.
 -/
@@ -37,14 +37,10 @@ open Std.Do
 -- </vc-helpers>
 
 def ndim {α : Type} {n : Nat} (a : Vector α n) : Id Nat :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem ndim_spec {α : Type} {n : Nat} (a : Vector α n) :
     ⦃⌜True⌝⦄
     ndim a
     ⦃⇓result => ⌜result = 1⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

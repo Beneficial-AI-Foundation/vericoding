@@ -33,15 +33,11 @@ vc-helpers: |-
     (next, c2', c3', c5')
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def nthUglyNumber (n : Nat) (h_precond : nthUglyNumber_precond (n)) : Nat :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   def divideOut : Nat → Nat → Nat
     | n, p =>
       if h : p > 1 ∧ n > 0 ∧ n % p = 0 then
@@ -68,11 +64,7 @@ vc-condition: |-
   
   theorem nthUglyNumber_spec_satisfied (n: Nat) (h_precond : nthUglyNumber_precond (n)) :
       nthUglyNumber_postcond (n) (nthUglyNumber (n) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

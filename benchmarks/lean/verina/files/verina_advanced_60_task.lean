@@ -23,9 +23,7 @@ def partitionEvensOdds_precond (nums : List Nat) : Prop :=
 -- </vc-helpers>
 
 def partitionEvensOdds (nums : List Nat) (h_precond : partitionEvensOdds_precond (nums)) : (List Nat × List Nat) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible]
 def partitionEvensOdds_postcond (nums : List Nat) (result: (List Nat × List Nat)) (h_precond : partitionEvensOdds_precond (nums)): Prop :=
@@ -38,9 +36,7 @@ def partitionEvensOdds_postcond (nums : List Nat) (result: (List Nat × List Nat
 
 theorem partitionEvensOdds_spec_satisfied (nums: List Nat) (h_precond : partitionEvensOdds_precond (nums)) :
     partitionEvensOdds_postcond (nums) (partitionEvensOdds (nums) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

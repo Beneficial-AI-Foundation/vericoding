@@ -24,26 +24,18 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def numpy_where {n : Nat} (condition : Vector Bool n) (x y : Vector Float n) : Id (Vector Float n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem numpy_where_spec {n : Nat} (condition : Vector Bool n) (x y : Vector Float n) :
       ⦃⌜True⌝⦄
       numpy_where condition x y
       ⦃⇓result => ⌜∀ i : Fin n, 
         (condition.get i = true → result.get i = x.get i) ∧
         (condition.get i = false → result.get i = y.get i)⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

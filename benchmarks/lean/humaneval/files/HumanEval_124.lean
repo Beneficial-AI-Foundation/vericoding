@@ -29,9 +29,7 @@ import Std.Data.HashMap
 -- </vc-helpers>
 
 def implementation (date: String) : Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -58,10 +56,8 @@ spec result
 
 theorem correctness
 (date: String)
-: problem_spec implementation date :=
--- <vc-proof>
+: problem_spec implementation date := by
   sorry
--- </vc-proof>
 
 -- #test implementation "03-11-2000" = true
 -- #test implementation "15-01-2012" = false

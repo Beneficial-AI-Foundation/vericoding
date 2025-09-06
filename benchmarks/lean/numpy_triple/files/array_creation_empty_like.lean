@@ -17,12 +17,12 @@
     1. The result has the same size as the prototype array
     2. The result vector is well-formed with proper indexing
     3. The result is independent of the prototype's values (shape invariant)
-    
+
     Mathematical Properties:
     - Size preservation: |result| = |prototype| = n
     - Index validity: all valid indices for prototype are valid for result
     - Type preservation: result has same element type as prototype
-    
+
     Note: We cannot specify the actual values since they are uninitialized,
     but we can specify structural and size properties that must hold.
 -/
@@ -35,9 +35,7 @@ open Std.Do
 -- </vc-helpers>
 
 def numpy_empty_like {n : Nat} (prototype : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_empty_like_spec {n : Nat} (prototype : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -46,6 +44,4 @@ theorem numpy_empty_like_spec {n : Nat} (prototype : Vector Float n) :
                  result.size = n ∧
                  (∀ i : Fin n, ∃ v : Float, result.get i = v) ∧
                  (∀ i : Fin prototype.size, ∃ j : Fin result.size, i.val = j.val)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

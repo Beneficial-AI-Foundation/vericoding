@@ -12,10 +12,10 @@
 
     This function determines if two arrays share memory by checking
     if they reference the same underlying memory locations.
-    
+
     Unlike may_share_memory, this function provides a definitive answer
     about memory sharing rather than a conservative estimate.
-    
+
     The function can be exponentially slow for some inputs due to the
     complexity of the overlap detection algorithm.
 -/
@@ -37,9 +37,7 @@ open Std.Do
 -- </vc-helpers>
 
 def shares_memory {n m : Nat} (a : Vector Float n) (b : Vector Float m) : Id Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem shares_memory_spec {n m : Nat} (a : Vector Float n) (b : Vector Float m) :
     ⦃⌜True⌝⦄
@@ -57,6 +55,4 @@ theorem shares_memory_spec {n m : Nat} (a : Vector Float n) (b : Vector Float m)
       -- (in contrast to may_share_memory which is conservative)
       (result = true → True) ∧ (result = false → True)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

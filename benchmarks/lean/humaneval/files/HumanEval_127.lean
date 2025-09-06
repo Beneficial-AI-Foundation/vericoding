@@ -30,9 +30,7 @@ import Std.Data.HashMap
 -- </vc-helpers>
 
 def implementation (interval1: Int × Int) (interval2: Int × Int) : String :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -60,10 +58,8 @@ spec result
 theorem correctness
 (interval1: Int × Int)
 (interval2: Int × Int)
-: problem_spec implementation interval1 interval2 :=
--- <vc-proof>
+: problem_spec implementation interval1 interval2 := by
   sorry
--- </vc-proof>
 
 -- #test implementation (1, 2) (2, 3) = "NO"
 -- #test implementation (-1, 1) (0, 4) = "NO"

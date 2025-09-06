@@ -35,9 +35,7 @@ def mkLegendre {n : Nat} (coef : Vector Float n)
     (domain : Vector Float 2 := ⟨#[-1.0, 1.0], rfl⟩)
     (window : Vector Float 2 := ⟨#[-1.0, 1.0], rfl⟩)
     (symbol : String := "x") : Id (Legendre (n := n)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem mkLegendre_spec {n : Nat} (coef : Vector Float n) 
     (domain : Vector Float 2 := ⟨#[-1.0, 1.0], rfl⟩)
@@ -64,6 +62,4 @@ theorem mkLegendre_spec {n : Nat} (coef : Vector Float n)
       -- where Pᵢ are the Legendre polynomials  
       (∀ x : Float, ∃ polyval : Float, True)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

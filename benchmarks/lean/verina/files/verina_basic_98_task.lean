@@ -22,9 +22,7 @@ def Triple_precond (x : Int) : Prop :=
 -- </vc-helpers>
 
 def Triple (x : Int) (h_precond : Triple_precond (x)) : Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def Triple_postcond (x : Int) (result: Int) (h_precond : Triple_precond (x)) :=
@@ -32,9 +30,7 @@ def Triple_postcond (x : Int) (result: Int) (h_precond : Triple_precond (x)) :=
 
 theorem Triple_spec_satisfied (x: Int) (h_precond : Triple_precond (x)) :
     Triple_postcond (x) (Triple (x) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

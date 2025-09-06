@@ -12,18 +12,18 @@ vc-description: |-
   /-  For each element in a vector, return a copy with the trailing characters removed. -/
   
   /-  Specification: numpy.strings.rstrip removes trailing characters from each string in the vector.
-      
+  
       rstrip removes trailing characters from the end of each string. If chars is None, 
       whitespace characters are removed. If chars is provided, any combination of those 
       characters is removed from the end.
-      
+  
       Mathematical Properties:
       1. Element-wise transformation: Each string is processed independently
       2. Trailing character removal: Only characters at the end are removed
       3. Maximal stripping: Remove as many trailing characters as possible
       4. Character set filtering: Only characters in the specified set are removed
       5. Whitespace default: When chars is None, whitespace characters are removed
-      
+  
       From NumPy documentation:
       - Parameters: a (array_like) - Input array with string dtype
                     chars (optional) - Characters to remove, whitespace if None
@@ -39,15 +39,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def rstrip {n : Nat} (a : Vector String n) (chars : Option String) : Id (Vector String n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem rstrip_spec {n : Nat} (a : Vector String n) (chars : Option String) :
       ⦃⌜True⌝⦄
       rstrip a chars
@@ -69,11 +65,7 @@ vc-condition: |-
                stripped.back ≠ c) ∧
             -- Length constraint: result is never longer than original
             (stripped.length ≤ original.length))⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

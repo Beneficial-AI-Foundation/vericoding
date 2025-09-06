@@ -77,15 +77,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def obj2sctype (rep : NumpyObject) (default : Option NumpyScalarType) : Id (Option NumpyScalarType) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem obj2sctype_spec (rep : NumpyObject) (default : Option NumpyScalarType) :
       ⦃⌜True⌝⦄
       obj2sctype rep default
@@ -107,11 +103,7 @@ vc-condition: |-
            )
          | none => rep.is_generic_object ∧ default = none)
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

@@ -11,17 +11,17 @@
 -/
 
 /-  Split a vector into k sub-vectors.
-    
+
     When splitting a vector of length n into k sections:
     - The first (n % k) sub-vectors have size ⌈n/k⌉ = (n + k - 1) / k
     - The remaining sub-vectors have size ⌊n/k⌋ = n / k
-    
+
     This ensures all elements are distributed as evenly as possible,
     with larger sub-vectors appearing first.
 -/
 
 /-  Specification: array_split distributes elements evenly with mathematical properties
-    
+
     The specification captures:
     1. Size distribution: larger chunks come first
     2. Element preservation: all elements from the original vector appear in order
@@ -37,9 +37,7 @@ open Std.Do
 
 def array_split {n k : Nat} (v : Vector Float n) (hk : k > 0) : 
     Id (Vector (Σ m : Nat, Vector Float m) k) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem array_split_spec {n k : Nat} (v : Vector Float n) (hk : k > 0) :
     ⦃⌜k > 0⌝⦄
@@ -62,6 +60,4 @@ theorem array_split_spec {n k : Nat} (v : Vector Float n) (hk : k > 0) :
           (result.get i).2.get j = 
             v.get ⟨start_indices.get i + j.val, by sorry⟩))
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

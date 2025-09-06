@@ -9,32 +9,32 @@ vc-description: |-
   -/
   
   /-  Compute the 2-dimensional FFT of a real array.
-      
+  
       This function transforms a real 2D array into the frequency domain using
       a 2D Fast Fourier Transform. The transformation is performed over the
       last two axes by default.
-      
+  
       The key difference from fft2 is that this function starts with real input
       and exploits the Hermitian symmetry property to compute only the 
       non-negative frequency components along the last axis, making it more
       efficient for real-valued input data.
-      
+  
       Output dimensions: For input of shape (m+1, n+1), output has shape (m+1, (n+1)/2+1)
       where the last dimension is reduced due to Hermitian symmetry. -/
   
   /-  Specification for rfft2: 2D FFT of real input array
-      
+  
       Mathematical properties:
       1. Two-stage transformation: first axis uses complex FFT, second axis uses real FFT
       2. Output shape is (m+1, (n+1)/2+1) for input shape (m+1, n+1)
       3. Hermitian symmetry: Due to real input, negative frequencies are redundant
       4. DC component preservation: The (0,0) element is always real
       5. Energy conservation: Follows Parseval's theorem with proper normalization
-      
+  
       The transformation can be mathematically expressed as:
       result[k,l] = Σ_{p=0}^{m} Σ_{q=0}^{n} input[p,q] * exp(-2πi(kp/(m+1) + lq/(n+1)))
       for k ∈ [0, m] and l ∈ [0, (n+1)/2] (exploiting Hermitian symmetry)
-      
+  
       Sanity checks:
       - For zero input, output is all zeros
       - For constant input, only DC component (0,0) is non-zero
@@ -75,15 +75,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def rfft2 {m n : Nat} (a : Vector (Vector Float (n + 1)) (m + 1)) : Id (Vector (Vector Complex (((n + 1) / 2) + 1)) (m + 1)) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem rfft2_spec {m n : Nat} (a : Vector (Vector Float (n + 1)) (m + 1)) :
       ⦃⌜True⌝⦄
       rfft2 a
@@ -104,11 +100,7 @@ vc-condition: |-
         ((result.get ⟨0, by omega⟩).get ⟨0, by omega⟩).im = 0 ∧
         -- Last axis is reduced size due to Hermitian symmetry
         (result.get ⟨0, by omega⟩).size = ((n + 1) / 2) + 1⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

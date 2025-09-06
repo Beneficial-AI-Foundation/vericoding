@@ -40,9 +40,7 @@ open Std.Do
 -- </vc-helpers>
 
 def maximum {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem maximum_spec {n : Nat} (x1 x2 : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -50,6 +48,4 @@ theorem maximum_spec {n : Nat} (x1 x2 : Vector Float n) :
     ⦃⇓result => ⌜∀ i : Fin n, result.get i = max (x1.get i) (x2.get i) ∧
                  ∀ i : Fin n, result.get i ≥ x1.get i ∧ result.get i ≥ x2.get i ∧
                  (result.get i = x1.get i ∨ result.get i = x2.get i)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -1,23 +1,23 @@
 /-  Convert a Chebyshev series to a polynomial.
-    
+
     Convert an array representing the coefficients of a Chebyshev series,
     ordered from lowest degree to highest, to an array of the coefficients
     of the equivalent polynomial (relative to the "standard" basis) ordered
     from lowest to highest degree. -/
 
 /-  Specification: cheb2poly converts Chebyshev coefficients to polynomial coefficients.
-    
+
     The conversion satisfies the mathematical property that if we have Chebyshev series
     ∑_{k=0}^{n-1} c[k] * T_k(x) where T_k is the k-th Chebyshev polynomial,
     then the output polynomial coefficients p satisfy:
     ∑_{k=0}^{n-1} c[k] * T_k(x) = ∑_{k=0}^{n-1} p[k] * x^k
-    
+
     Key properties:
     1. Length preservation: output has same length as input
     2. Identity cases: for n ≤ 2, the output equals the input (since T₀(x) = 1, T₁(x) = x)
     3. Correctness: The polynomial form evaluates to the same value as the Chebyshev series
     4. Example verification: [0, 1, 2, 3] → [-2, -8, 4, 12]
-    
+
     The algorithm uses the recurrence relation of Chebyshev polynomials:
     T₀(x) = 1, T₁(x) = x, T_{n+1}(x) = 2xT_n(x) - T_{n-1}(x) -/
 
@@ -29,9 +29,7 @@ open Std.Do
 -- </vc-helpers>
 
 def cheb2poly {n : Nat} (c : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem cheb2poly_spec {n : Nat} (c : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -76,6 +74,4 @@ theorem cheb2poly_spec {n : Nat} (c : Vector Float n) :
            (∀ (ε : Float) (d : Vector Float n),
             -- If ||c - d|| < ε then ||p - cheb2poly(d)|| < κ*ε for some condition number κ
             True)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

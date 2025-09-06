@@ -25,16 +25,12 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def extract {n m : Nat} (condition : Vector Bool n) (arr : Vector Int n) : 
     Id (Vector Int m) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem extract_spec {n m : Nat} (condition : Vector Bool n) (arr : Vector Int n) :
       ⦃⌜True⌝⦄
       extract condition arr
@@ -47,11 +43,7 @@ vc-condition: |-
         -- Every True position in condition contributes exactly one element to the result  
         (∀ (i : Fin n), condition.get i = true → 
           ∃ (k : Fin m), result.get k = arr.get i)⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

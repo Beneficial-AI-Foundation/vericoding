@@ -8,7 +8,7 @@
 -/
 
 /-  Shift the zero-frequency component to the center of the spectrum.
-    
+
     This function rearranges the FFT output such that the zero-frequency 
     component is moved from the beginning to the center of the array.
     For even-length arrays, it performs a circular shift by n/2.
@@ -17,12 +17,12 @@
 
 /-  Specification: fftshift performs a circular shift that moves the zero-frequency 
     component to the center of the array.
-    
+
     The function rearranges elements by performing a circular shift:
     - Each element at position i in the result comes from position (i + n - n/2) % n in the input
     - This is equivalent to swapping the first and second halves of the array
     - The zero-frequency component (originally at index 0) moves to the center
-    
+
     Key mathematical properties:
     1. Bijective mapping: every element is preserved and appears exactly once
     2. Circular shift property: implements a specific permutation
@@ -38,9 +38,7 @@ open Std.Do
 -- </vc-helpers>
 
 def fftshift {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem fftshift_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -48,6 +46,4 @@ theorem fftshift_spec {n : Nat} (x : Vector Float n) :
     ⦃⇓result => ⌜∀ i : Fin n, result.get i = x.get ⟨(i.val + n - n / 2) % n, sorry⟩ ∧
                   (∀ j : Fin n, ∃ k : Fin n, result.get k = x.get j) ∧
                   (∀ val : Float, (∃ j : Fin n, x.get j = val) ↔ (∃ k : Fin n, result.get k = val))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

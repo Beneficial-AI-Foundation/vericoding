@@ -43,15 +43,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def i0 {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem i0_spec {n : Nat} (x : Vector Float n) :
       ⦃⌜True⌝⦄
       i0 x
@@ -65,11 +61,7 @@ vc-condition: |-
           (∀ j : Fin n, x.get j = -x.get i → result.get j = result.get i) ∧
           -- Monotonicity for non-negative values
           (∀ j : Fin n, x.get i ≥ 0 → x.get j ≥ 0 → x.get i ≤ x.get j → result.get i ≤ result.get j)⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

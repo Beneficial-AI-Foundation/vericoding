@@ -24,15 +24,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def cubeElements (a : Array Int) (h_precond : cubeElements_precond (a)) : Array Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def cubeElements_postcond (a : Array Int) (result: Array Int) (h_precond : cubeElements_precond (a)) :=
     (result.size = a.size) ∧
@@ -40,11 +36,7 @@ vc-condition: |-
   
   theorem cubeElements_spec_satisfied (a: Array Int) (h_precond : cubeElements_precond (a)) :
       cubeElements_postcond (a) (cubeElements (a) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

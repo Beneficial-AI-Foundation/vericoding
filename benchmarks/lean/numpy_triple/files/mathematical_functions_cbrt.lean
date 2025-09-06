@@ -21,7 +21,7 @@
 
     Precondition: True (cube root is defined for all real numbers)
     Postcondition: For all indices i, (result[i])³ = x[i]
-    
+
     Mathematical properties:
     - cbrt(x³) = x for all x
     - cbrt(-x) = -cbrt(x) (odd function)
@@ -39,14 +39,10 @@ open Std.Do
 -- </vc-helpers>
 
 def cbrt {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem cbrt_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
     cbrt x
     ⦃⇓result => ⌜∀ i : Fin n, (result.get i) ^ 3 = x.get i⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

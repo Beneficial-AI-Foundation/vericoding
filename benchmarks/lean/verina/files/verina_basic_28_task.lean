@@ -23,9 +23,7 @@ def isPrime_precond (n : Nat) : Prop :=
 -- </vc-helpers>
 
 def isPrime (n : Nat) (h_precond : isPrime_precond (n)) : Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def isPrime_postcond (n : Nat) (result: Bool) (h_precond : isPrime_precond (n)) :=
@@ -34,9 +32,7 @@ def isPrime_postcond (n : Nat) (result: Bool) (h_precond : isPrime_precond (n)) 
 
 theorem isPrime_spec_satisfied (n: Nat) (h_precond : isPrime_precond (n)) :
     isPrime_postcond (n) (isPrime (n) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

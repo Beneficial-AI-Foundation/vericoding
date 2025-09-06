@@ -30,9 +30,7 @@ open Std.Do
 
 def tensorinv {n : Nat} (a : Vector (Vector Float n) n) (ind : Nat) 
     (h_square : n > 0) (h_ind : ind > 0) : Id (Vector (Vector Float n) n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem tensorinv_spec {n : Nat} (a : Vector (Vector Float n) n) (ind : Nat) 
     (h_square : n > 0) (h_ind : ind > 0) 
@@ -50,6 +48,4 @@ theorem tensorinv_spec {n : Nat} (a : Vector (Vector Float n) n) (ind : Nat)
         -- This represents the mathematical property that tensorinv(a) * a ≈ I
         Float.abs (((result.get i).get j) - identity_val) < 1e-10)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

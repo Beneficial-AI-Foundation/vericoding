@@ -16,7 +16,7 @@
 
 /-  Specification: vstack stacks two vectors vertically, creating a 2x n matrix
     where the first row is vector a and the second row is vector b.
-    
+
     Mathematical properties:
     1. The result has shape (2, n) where n is the length of input vectors
     2. The first row of the result equals the first input vector
@@ -31,15 +31,11 @@ open Std.Do
 -- </vc-helpers>
 
 def vstack {n : Nat} (a b : Vector Float n) : Id (Vector (Vector Float n) 2) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem vstack_spec {n : Nat} (a b : Vector Float n) :
     ⦃⌜True⌝⦄
     vstack a b
     ⦃⇓result => ⌜(∀ j : Fin n, (result.get 0).get j = a.get j) ∧
                  (∀ j : Fin n, (result.get 1).get j = b.get j)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

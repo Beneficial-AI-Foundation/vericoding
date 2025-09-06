@@ -39,15 +39,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def isreal {n : Nat} (x : Vector Complex n) : Id (Vector Bool n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem isreal_spec {n : Nat} (x : Vector Complex n) :
       ⦃⌜True⌝⦄
       isreal x
@@ -62,11 +58,7 @@ vc-condition: |-
                    (∀ i : Fin n, result.get i = ¬((x.get i).imag ≠ 0.0)) ∧
                    -- Consistency with mathematical definition of real numbers
                    (∀ i : Fin n, result.get i = true ↔ (x.get i).imag = 0.0)⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

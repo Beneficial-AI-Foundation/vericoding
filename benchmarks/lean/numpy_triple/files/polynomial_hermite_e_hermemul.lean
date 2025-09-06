@@ -13,14 +13,14 @@
     the Hermite polynomial basis set. -/
 
 /-  Specification: hermemul computes the product of two Hermite series.
-    
+
     Mathematical background: For Hermite polynomials, multiplication is not component-wise
     but requires reprojection onto the Hermite polynomial basis. Given two Hermite series:
     - P₁(x) = c1[0]H₀(x) + c1[1]H₁(x) + ... + c1[n-1]Hₙ₋₁(x)
     - P₂(x) = c2[0]H₀(x) + c2[1]H₁(x) + ... + c2[m-1]Hₘ₋₁(x)
-    
+
     The product P₁(x) * P₂(x) must be expressed as a linear combination of Hermite polynomials.
-    
+
     Properties verified:
     1. Commutativity: hermemul c1 c2 = hermemul c2 c1 (when extended to same size)
     2. Bilinearity: multiplication distributes over addition
@@ -37,9 +37,7 @@ open Std.Do
 -- </vc-helpers>
 
 def hermemul {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) : Id (Vector Float (n + m - 1)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem hermemul_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) 
     (h_n : n > 0) (h_m : m > 0) :
@@ -47,6 +45,4 @@ theorem hermemul_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m)
     hermemul c1 c2
     ⦃⇓result => ⌜(∀ i : Fin n, c1.get i = 0) ∨ (∀ j : Fin m, c2.get j = 0) → 
                    (∀ k : Fin (n + m - 1), result.get k = 0)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -39,15 +39,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def reduce {n : Nat} (op : Float → Float → Float) (arr : Vector Float (n + 1)) : Id Float :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem reduce_spec {n : Nat} (op : Float → Float → Float) (arr : Vector Float (n + 1)) :
       ⦃⌜True⌝⦄
       reduce op arr
@@ -58,11 +54,7 @@ vc-condition: |-
                               op (fold_fn ⟨i.val, Nat.lt_succ_of_lt i.isLt⟩) 
                                  (arr.get ⟨i.val + 1, Nat.succ_lt_succ i.isLt⟩)) ∧
                             result = fold_fn ⟨n, Nat.lt_succ_self _⟩)⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

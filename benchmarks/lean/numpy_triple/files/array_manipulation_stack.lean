@@ -28,15 +28,11 @@ open Std.Do
 -- </vc-helpers>
 
 def stack {m n : Nat} (arrays : Vector (Vector Float n) m) : Id (Vector (Vector Float n) m) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem stack_spec {m n : Nat} (arrays : Vector (Vector Float n) m) :
     ⦃⌜True⌝⦄
     stack arrays
     ⦃⇓result => ⌜∀ i : Fin m, ∀ j : Fin n, 
                   (result.get i).get j = (arrays.get i).get j⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -36,15 +36,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def hermegauss (deg : Nat) (h : deg > 0) : Id (Vector Float deg × Vector Float deg) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem hermegauss_spec (deg : Nat) (h : deg > 0) :
       ⦃⌜deg > 0⌝⦄
       hermegauss deg h
@@ -59,11 +55,7 @@ vc-condition: |-
         -- Weights are symmetric (same symmetry as points)
         (∀ i : Fin deg, ∃ j : Fin deg, x.get i = -(x.get j) → w.get i = w.get j)
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

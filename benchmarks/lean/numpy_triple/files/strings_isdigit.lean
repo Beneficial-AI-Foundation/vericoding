@@ -14,11 +14,11 @@
     A string is considered to satisfy isdigit if:
     1. It contains at least one character (non-empty)
     2. All characters are digits (0-9)
-    
+
     Empty strings return false.
     Strings with any non-digit characters return false.
     Strings with only digits return true.
-    
+
     This follows the Python str.isdigit() behavior which returns False for empty strings
     and True only if all characters are numeric digits.
 -/
@@ -30,7 +30,7 @@
     Postcondition: For all indices i, result[i] = true if and only if:
     1. The string a[i] is non-empty (not equal to empty string)
     2. All characters in a[i] are digits (satisfy Char.isDigit)
-    
+
     Properties:
     - Empty strings return False
     - Strings with only numeric characters (0-9) return True
@@ -46,14 +46,10 @@ open Std.Do
 -- </vc-helpers>
 
 def isdigit {n : Nat} (a : Vector String n) : Id (Vector Bool n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem isdigit_spec {n : Nat} (a : Vector String n) :
     ⦃⌜True⌝⦄
     isdigit a
     ⦃⇓result => ⌜∀ i : Fin n, result.get i = (a.get i ≠ "" ∧ (a.get i).all Char.isDigit)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

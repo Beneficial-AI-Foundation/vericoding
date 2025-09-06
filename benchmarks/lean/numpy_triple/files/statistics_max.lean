@@ -10,7 +10,7 @@
 
 /-  Returns the maximum value of all elements in a non-empty vector.
     This is an alias for numpy.amax that returns the maximum value among all elements in the array.
-    
+
     Mathematical Properties:
     - Returns an element that exists in the vector
     - No element in the vector is greater than the returned value
@@ -19,7 +19,7 @@
 
 /-  Specification: max returns the maximum value in the vector.
     This specification delegates to amax_spec since max is an alias for amax.
-    
+
     Mathematical properties:
     1. The result is an element that exists in the vector
     2. No element in the vector is greater than the result
@@ -35,9 +35,7 @@ open Std.Do
 -- </vc-helpers>
 
 def max {n : Nat} (a : Vector Float (n + 1)) : Id Float :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem max_spec {n : Nat} (a : Vector Float (n + 1)) :
     ⦃⌜True⌝⦄
@@ -56,6 +54,4 @@ theorem max_spec {n : Nat} (a : Vector Float (n + 1)) :
                    result = a.get ⟨0, Nat.zero_lt_succ n⟩) ∧
                  -- Sanity check: the maximum exists in the vector
                  (∃ witness : Fin (n + 1), result = a.get witness)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

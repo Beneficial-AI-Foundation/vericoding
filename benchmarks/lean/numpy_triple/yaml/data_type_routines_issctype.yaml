@@ -53,15 +53,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def issctype (rep : DataType) : Id Bool :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem issctype_spec (rep : DataType) :
       ⦃⌜True⌝⦄
       issctype rep
@@ -70,11 +66,7 @@ vc-condition: |-
                                     rep = DataType.scalar_complex ∨ 
                                     rep = DataType.scalar_bool ∨ 
                                     rep = DataType.scalar_string)⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

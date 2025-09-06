@@ -24,9 +24,7 @@ open Std.Do
 
 def extract {n m : Nat} (condition : Vector Bool n) (arr : Vector Int n) : 
   Id (Vector Int m) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem extract_spec {n m : Nat} (condition : Vector Bool n) (arr : Vector Int n) :
     ⦃⌜True⌝⦄
@@ -40,6 +38,4 @@ theorem extract_spec {n m : Nat} (condition : Vector Bool n) (arr : Vector Int n
       -- Every True position in condition contributes exactly one element to the result  
       (∀ (i : Fin n), condition.get i = true → 
         ∃ (k : Fin m), result.get k = arr.get i)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

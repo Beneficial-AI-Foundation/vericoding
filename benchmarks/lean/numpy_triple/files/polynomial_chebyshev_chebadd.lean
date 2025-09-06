@@ -9,16 +9,16 @@
 -/
 
 /-  Add two Chebyshev series coefficient-wise.
-    
+
     This function adds two Chebyshev polynomial series represented by their coefficients.
     The coefficients are ordered from lowest degree to highest degree term.
     For example, [1,2,3] represents T_0 + 2*T_1 + 3*T_2 where T_i is the i-th Chebyshev polynomial.
-    
+
     The addition is performed component-wise, padding with zeros if the arrays have different lengths.
 -/
 
 /-  Specification: chebadd performs coefficient-wise addition of two Chebyshev series.
-    
+
     The specification captures both the mathematical properties and implementation details:
     1. For indices within both arrays, the result is the sum of corresponding coefficients
     2. For indices beyond one array's length, the result equals the coefficient from the longer array
@@ -35,9 +35,7 @@ open Std.Do
 -- </vc-helpers>
 
 def chebadd {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) : Id (Vector Float (max n m)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem chebadd_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) :
     ⦃⌜True⌝⦄
@@ -60,6 +58,4 @@ theorem chebadd_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) :
       (∀ i : Fin m, c2.get i ≠ 0 → ∃ j : Fin (max n m), j.val = i.val ∧ 
         (if h1 : i.val < n then result.get j = c1.get ⟨i.val, h1⟩ + c2.get i else result.get j = c2.get i))
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -13,7 +13,7 @@
     This is the eigenvalues-only version of the symmetric eigenvalue problem. -/
 
 /-  Specification: eigvalsh computes eigenvalues of a real symmetric matrix.
-    
+
     The eigenvalues are real (since the matrix is symmetric) and returned in ascending order.
     Key mathematical properties:
     1. The eigenvalues are real for symmetric matrices
@@ -32,9 +32,7 @@ open Std.Do
 -- </vc-helpers>
 
 def eigvalsh {n : Nat} (a : Vector (Vector Float n) n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem eigvalsh_spec {n : Nat} (a : Vector (Vector Float n) n) 
     (h_symm : ∀ i j : Fin n, (a.get i).get j = (a.get j).get i) :
@@ -55,6 +53,4 @@ theorem eigvalsh_spec {n : Nat} (a : Vector (Vector Float n) n)
       ((∀ i j : Fin n, (a.get i).get j = 0) → 
        (∀ i : Fin n, eigenvals.get i = 0))
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

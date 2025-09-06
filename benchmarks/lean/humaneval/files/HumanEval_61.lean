@@ -40,9 +40,7 @@ let chars := paren_string.toList;
 -- </vc-helpers>
 
 def implementation (paren_string: String) : Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -60,10 +58,8 @@ spec result
 
 theorem correctness
 (brackets: String)
-: problem_spec implementation brackets :=
--- <vc-proof>
+: problem_spec implementation brackets := by
   sorry
--- </vc-proof>
 
 -- #test implementation "(" = false
 -- #test implementation "()" = true

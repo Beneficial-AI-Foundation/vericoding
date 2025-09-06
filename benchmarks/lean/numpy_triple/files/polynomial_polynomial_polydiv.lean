@@ -1,15 +1,15 @@
 /-  numpy.polynomial.polynomial.polydiv: Divide one polynomial by another.
-    
+
     Returns the quotient-with-remainder of two polynomials c1 / c2.
     The arguments are sequences of coefficients, from lowest order term
     to highest, e.g., [1,2,3] represents 1 + 2*x + 3*x**2.
-    
+
     The function performs polynomial long division, returning both
     the quotient and remainder such that c1 = c2 * quotient + remainder.
 -/
 
 /-  Specification: polydiv performs polynomial division with remainder.
-    
+
     Precondition: The leading coefficient of c2 (highest degree term) is non-zero
     Postcondition: 
     - The division identity holds: c1 = c2 * quotient + remainder (as polynomials)
@@ -26,9 +26,7 @@ open Std.Do
 
 def polydiv {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float (m + 1)) : 
     Id (Vector Float n × Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem polydiv_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float (m + 1)) :
     ⦃⌜c2.get ⟨m, Nat.lt_succ_self m⟩ ≠ 0⌝⦄
@@ -46,6 +44,4 @@ theorem polydiv_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float (m + 1
         (∀ i : Fin n, quo.get i = c1.get i / c2.get ⟨0, by simp⟩) ∧
         (∀ i : Fin n, rem.get i = 0))
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

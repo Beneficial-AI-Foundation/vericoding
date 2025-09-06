@@ -25,9 +25,7 @@ open Std.Do
 -- </vc-helpers>
 
 def chebgauss (n : Nat) (h : n > 0) : Id (Vector Float n × Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem chebgauss_spec (n : Nat) (h : n > 0) :
     ⦃⌜n > 0⌝⦄
@@ -50,6 +48,4 @@ theorem chebgauss_spec (n : Nat) (h : n > 0) :
       -- Nodes are distinct
       (∀ i j : Fin n, i ≠ j → nodes.get i ≠ nodes.get j)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

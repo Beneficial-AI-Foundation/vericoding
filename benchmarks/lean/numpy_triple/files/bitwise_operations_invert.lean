@@ -12,7 +12,7 @@
     For signed integers, this returns the two's complement. -/
 
 /-  Specification: invert computes the bitwise NOT operation element-wise.
-    
+
     Mathematical properties:
     1. Two's complement relationship: ~x = -(x + 1)
     2. Involution property: applying invert twice returns the original value
@@ -21,7 +21,7 @@
        - ~0 = -1
        - ~(-1) = 0
     5. Sign flipping: ~x has opposite sign to x when x ≠ -1
-    
+
     The specification captures both the element-wise nature and the 
     mathematical relationship for two's complement representation. -/
 
@@ -33,9 +33,7 @@ open Std.Do
 -- </vc-helpers>
 
 def invert {n : Nat} (x : Vector Int n) : Id (Vector Int n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem invert_spec {n : Nat} (x : Vector Int n) :
     ⦃⌜True⌝⦄
@@ -45,6 +43,4 @@ theorem invert_spec {n : Nat} (x : Vector Int n) :
                  (∀ i : Fin n, x.get i = 0 → result.get i = -1) ∧
                  (∀ i : Fin n, x.get i = -1 → result.get i = 0) ∧
                  (∀ i : Fin n, x.get i ≠ -1 → (x.get i > 0 ↔ result.get i < 0))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

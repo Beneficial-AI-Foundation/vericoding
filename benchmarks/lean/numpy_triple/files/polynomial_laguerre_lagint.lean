@@ -45,9 +45,7 @@ open Std.Do
 
 def lagint {n : Nat} (c : Vector Float n) (m : Nat) (k : Vector Float m) 
     (lbnd : Float) (scl : Float) : Id (Vector Float (n + m)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem lagint_spec {n : Nat} (c : Vector Float n) (m : Nat) (k : Vector Float m) 
     (lbnd : Float) (scl : Float) :
@@ -68,6 +66,4 @@ theorem lagint_spec {n : Nat} (c : Vector Float n) (m : Nat) (k : Vector Float m
       (∀ i : Fin m, ∃ influence : Float, 
         influence = k.get i)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

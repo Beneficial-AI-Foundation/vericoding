@@ -9,7 +9,7 @@
 -/
 
 /-  Pseudo-Vandermonde matrix of Chebyshev polynomials of given degree.
-    
+
     Given a vector of sample points `x` and a degree `deg`, returns a matrix
     where each row corresponds to a sample point and each column contains
     the values of Chebyshev polynomials T_0, T_1, ..., T_deg evaluated at
@@ -27,9 +27,7 @@ open Std.Do
 -- </vc-helpers>
 
 def chebvander {n : Nat} (x : Vector Float n) (deg : Nat) : Id (Vector (Vector Float (deg + 1)) n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem chebvander_spec {n : Nat} (x : Vector Float n) (deg : Nat) :
     ⦃⌜True⌝⦄
@@ -51,6 +49,4 @@ theorem chebvander_spec {n : Nat} (x : Vector Float n) (deg : Nat) :
             (∀ i j : Fin n, x.get i = -(x.get j) → 
               ∀ k : Fin (deg + 1), 
                 (V.get i).get k = (if k.val % 2 = 0 then 1 else -1) * (V.get j).get k)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

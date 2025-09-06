@@ -24,9 +24,7 @@ open Std.Do
 -- </vc-helpers>
 
 def hermeder {n : Nat} (c : Vector Float (n + 1)) (m : Nat) (scl : Float) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem hermeder_spec {n : Nat} (c : Vector Float (n + 1)) (m : Nat) (scl : Float) 
     (h_pos_scl : scl > 0) (h_pos_m : m > 0) :
@@ -40,6 +38,4 @@ theorem hermeder_spec {n : Nat} (c : Vector Float (n + 1)) (m : Nat) (scl : Floa
       -- If all input coefficients are zero, result is zero
       (∀ i : Fin (n + 1), c.get i = 0 → ∀ j : Fin n, result.get j = 0)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

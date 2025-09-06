@@ -34,15 +34,11 @@ vc-helpers: |-
     else b
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def rotate (a : Array Int) (offset : Int) (h_precond : rotate_precond (a) (offset)) : Array Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def rotate_postcond (a : Array Int) (offset : Int) (result: Array Int) (h_precond : rotate_precond (a) (offset)) :=
     result.size = a.size ∧
@@ -51,11 +47,7 @@ vc-condition: |-
   
   theorem rotate_spec_satisfied (a: Array Int) (offset: Int) (h_precond : rotate_precond (a) (offset)) :
       rotate_postcond (a) (offset) (rotate (a) (offset) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

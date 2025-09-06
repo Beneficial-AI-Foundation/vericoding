@@ -21,15 +21,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def mergeSorted (a1 : Array Nat) (a2 : Array Nat) : Array Nat :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible]
   def mergeSorted_postcond (a1 : Array Nat) (a2 : Array Nat) (result: Array Nat) : Prop :=
     List.Pairwise (· ≤ ·) result.toList ∧
@@ -37,11 +33,7 @@ vc-condition: |-
   
   theorem mergeSorted_spec_satisfied (a1: Array Nat) (a2: Array Nat) :
       mergeSorted_postcond (a1) (a2) (mergeSorted (a1) (a2)) := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

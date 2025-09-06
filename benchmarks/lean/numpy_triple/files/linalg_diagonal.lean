@@ -27,9 +27,7 @@ open Std.Do
 -- </vc-helpers>
 
 def numpy_diagonal {m n : Nat} (x : Vector (Vector Float n) m) (offset : Int) : Id (Vector Float (min m n)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_diagonal_spec {m n : Nat} (x : Vector (Vector Float n) m) (offset : Int) 
     (h_m : m > 0) (h_n : n > 0) :
@@ -45,6 +43,4 @@ theorem numpy_diagonal_spec {m n : Nat} (x : Vector (Vector Float n) m) (offset 
         r < m ∧ c < n ∧ 
         result.get i = (x.get ⟨r, sorry⟩).get ⟨c, sorry⟩)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

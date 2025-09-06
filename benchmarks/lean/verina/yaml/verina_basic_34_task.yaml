@@ -29,15 +29,11 @@ vc-helpers: |-
     n % 2 = 0
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def findEvenNumbers (arr : Array Int) (h_precond : findEvenNumbers_precond (arr)) : Array Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def findEvenNumbers_postcond (arr : Array Int) (result: Array Int) (h_precond : findEvenNumbers_precond (arr)) :=
     (∀ x, x ∈ result → isEven x ∧ x ∈ arr.toList) ∧
@@ -49,11 +45,7 @@ vc-condition: |-
   
   theorem findEvenNumbers_spec_satisfied (arr: Array Int) (h_precond : findEvenNumbers_precond (arr)) :
       findEvenNumbers_postcond (arr) (findEvenNumbers (arr) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

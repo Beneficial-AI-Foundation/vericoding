@@ -24,15 +24,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def runLengthEncode (s : String) (h_precond : runLengthEncode_precond (s)) : List (Char × Nat) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   def decodeRLE (lst : List (Char × Nat)) : String :=
     match lst with
     | [] => ""
@@ -47,11 +43,7 @@ vc-condition: |-
   
   theorem runLengthEncode_spec_satisfied (s: String) (h_precond : runLengthEncode_precond (s)) :
       runLengthEncode_postcond (s) (runLengthEncode (s) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

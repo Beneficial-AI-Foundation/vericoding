@@ -14,7 +14,7 @@
 
     For 1D arrays, concatenates two vectors end-to-end to produce a single 
     vector containing all elements from both input vectors in order.
-    
+
     The result vector has size n + m where n and m are the sizes of the 
     input vectors.
 -/
@@ -36,15 +36,11 @@ open Std.Do
 -- </vc-helpers>
 
 def concatenate {n m : Nat} (a : Vector Float n) (b : Vector Float m) : Id (Vector Float (n + m)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem concatenate_spec {n m : Nat} (a : Vector Float n) (b : Vector Float m) :
     ⦃⌜True⌝⦄
     concatenate a b
     ⦃⇓result => ⌜(∀ i : Fin n, result.get ⟨i.val, by omega⟩ = a.get i) ∧
                  (∀ j : Fin m, result.get ⟨n + j.val, by omega⟩ = b.get j)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

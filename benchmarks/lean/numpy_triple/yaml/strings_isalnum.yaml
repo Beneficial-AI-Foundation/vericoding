@@ -14,10 +14,10 @@ vc-description: |-
       For each string in the input vector, this function checks if:
       1. The string is non-empty (has at least one character)
       2. All characters in the string are alphanumeric (letters or digits)
-      
+  
       Returns a boolean vector where True indicates the string meets both criteria,
       and False indicates the string is either empty or contains non-alphanumeric characters.
-      
+  
       This follows the Python str.isalnum() behavior which returns False for empty strings
       and True only if all characters are alphanumeric.
   -/
@@ -26,13 +26,13 @@ vc-description: |-
   
       Precondition: True (no special preconditions)
       Postcondition: For all indices i, result[i] = (a[i] is non-empty and all characters in a[i] are alphanumeric)
-      
+  
       Mathematical Properties:
       - Empty strings return False: ∀ i, a.get i = "" → result.get i = false
       - Non-empty alphanumeric strings return True: ∀ i, a.get i ≠ "" ∧ (a.get i).all Char.isAlphanum → result.get i = true
       - Strings with non-alphanumeric characters return False: ∀ i, a.get i ≠ "" ∧ ¬((a.get i).all Char.isAlphanum) → result.get i = false
       - Single alphanumeric characters return True: ∀ i, (a.get i).length = 1 ∧ ((a.get i).get! 0).isAlphanum → result.get i = true
-      
+  
       The core invariant is that the result is true if and only if the string is non-empty and all characters are alphanumeric.
   -/
 
@@ -45,24 +45,16 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def isalnum {n : Nat} (a : Vector String n) : Id (Vector Bool n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem isalnum_spec {n : Nat} (a : Vector String n) :
       ⦃⌜True⌝⦄
       isalnum a
       ⦃⇓result => ⌜∀ i : Fin n, result.get i = (a.get i ≠ "" ∧ (a.get i).all Char.isAlphanum)⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

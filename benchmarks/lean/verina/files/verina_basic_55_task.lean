@@ -21,9 +21,7 @@ def Compare_precond (a : Int) (b : Int) : Prop :=
 -- </vc-helpers>
 
 def Compare (a : Int) (b : Int) (h_precond : Compare_precond (a) (b)) : Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def Compare_postcond (a : Int) (b : Int) (result: Bool) (h_precond : Compare_precond (a) (b)) :=
@@ -31,9 +29,7 @@ def Compare_postcond (a : Int) (b : Int) (result: Bool) (h_precond : Compare_pre
 
 theorem Compare_spec_satisfied (a: Int) (b: Int) (h_precond : Compare_precond (a) (b)) :
     Compare_postcond (a) (b) (Compare (a) (b) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

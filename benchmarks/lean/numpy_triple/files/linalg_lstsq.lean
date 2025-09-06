@@ -38,9 +38,7 @@ def vecSub {n : Nat} (a b : Vector Float n) : Vector Float n :=
 
 def lstsq {M N : Nat} (a : Vector (Vector Float N) M) (b : Vector Float M) : 
     Id (Vector Float N) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem lstsq_spec {M N : Nat} (a : Vector (Vector Float N) M) (b : Vector Float M) 
     (h_dims : M > 0 ∧ N > 0) :
@@ -48,6 +46,4 @@ theorem lstsq_spec {M N : Nat} (a : Vector (Vector Float N) M) (b : Vector Float
     lstsq a b
     ⦃⇓x => ⌜∀ y : Vector Float N, 
            normSq (vecSub b (matVecMul a x)) ≤ normSq (vecSub b (matVecMul a y))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

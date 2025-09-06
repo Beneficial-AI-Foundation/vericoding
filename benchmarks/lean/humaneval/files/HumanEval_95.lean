@@ -26,9 +26,7 @@ import Std.Data.HashMap
 -- </vc-helpers>
 
 def implementation (D: Std.HashMap String String) : Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -52,10 +50,8 @@ let spec (result : Bool) :=
 theorem correctness
 (D: Std.HashMap String String)
 : problem_spec implementation D
-:=
--- <vc-proof>
+:= by
   sorry
--- </vc-proof>
 
 -- #test implementation (Std.HashMap.ofList [("a", "apple"), ("b", "banana")]) = true
 -- #test implementation (Std.HashMap.ofList [("a", "apple"), ("A", "banana"), ("B", "banana")]) = false

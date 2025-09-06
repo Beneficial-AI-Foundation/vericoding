@@ -9,21 +9,21 @@
 -/
 
 /-  Get information about the step size of a date or time type.
-    
+
     Returns a tuple containing the datetime unit and count for the given dtype.
     This information can be used to construct datetime64 and timedelta64 objects.
-    
+
     For example, 'timedelta64[25s]' would return ('s', 25).
 -/
 
 /-  Specification: datetime_data extracts the unit and count from a datetime dtype.
-    
+
     Precondition: The dtype must be a valid datetime64 or timedelta64 type.
     Postcondition: The returned tuple contains the unit and count that define the dtype.
-    
+
     For datetime64[N unit], returns (unit, N).
     For timedelta64[N unit], returns (unit, N).
-    
+
     This ensures that the returned information can be used to reconstruct
     the original dtype or create compatible datetime objects.
 -/
@@ -73,9 +73,7 @@ inductive DatetimeDtype
 -- </vc-helpers>
 
 def datetime_data (dtype : DatetimeDtype) : Id (DatetimeUnit × Nat) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem datetime_data_spec (dtype : DatetimeDtype) :
     ⦃⌜True⌝⦄
@@ -83,6 +81,4 @@ theorem datetime_data_spec (dtype : DatetimeDtype) :
     ⦃⇓result => ⌜match dtype with
        | DatetimeDtype.datetime64 info => result = (info.unit, info.count) ∧ result.2 > 0
        | DatetimeDtype.timedelta64 info => result = (info.unit, info.count) ∧ result.2 > 0⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

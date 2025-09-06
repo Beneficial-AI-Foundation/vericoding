@@ -22,7 +22,7 @@
 
     Precondition: True (no special preconditions for basic subtraction)
     Postcondition: For all indices i, result[i] = x1[i] - x2[i]
-    
+
     Mathematical properties:
     - Subtraction is anti-commutative: x1 - x2 = -(x2 - x1)
     - Subtraction is the inverse of addition: (x1 - x2) + x2 = x1
@@ -38,9 +38,7 @@ open Std.Do
 -- </vc-helpers>
 
 def subtract {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem subtract_spec {n : Nat} (x1 x2 : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -52,6 +50,4 @@ theorem subtract_spec {n : Nat} (x1 x2 : Vector Float n) :
                   (x1.get i = x2.get i → result.get i = 0) ∧
                   -- Anti-commutativity property can be verified
                   result.get i = -(x2.get i - x1.get i)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

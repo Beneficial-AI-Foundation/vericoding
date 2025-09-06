@@ -29,9 +29,7 @@ def maxArray_aux (a : Array Int) (index : Nat) (current : Int) : Int :=
 -- </vc-helpers>
 
 def maxArray (a : Array Int) (h_precond : maxArray_precond (a)) : Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def maxArray_postcond (a : Array Int) (result: Int) (h_precond : maxArray_precond (a)) :=
@@ -39,9 +37,7 @@ def maxArray_postcond (a : Array Int) (result: Int) (h_precond : maxArray_precon
 
 theorem maxArray_spec_satisfied (a: Array Int) (h_precond : maxArray_precond (a)) :
     maxArray_postcond (a) (maxArray (a) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

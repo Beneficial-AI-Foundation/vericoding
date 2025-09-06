@@ -31,15 +31,11 @@ vc-helpers: |-
     else false
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def replaceWithColon (s : String) (h_precond : replaceWithColon_precond (s)) : String :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def replaceWithColon_postcond (s : String) (result: String) (h_precond : replaceWithColon_precond (s)) :=
     let cs := s.toList
@@ -51,11 +47,7 @@ vc-condition: |-
   
   theorem replaceWithColon_spec_satisfied (s: String) (h_precond : replaceWithColon_precond (s)) :
       replaceWithColon_postcond (s) (replaceWithColon (s) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

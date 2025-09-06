@@ -33,9 +33,7 @@ open Std.Do
 -- </vc-helpers>
 
 def numpy_argwhere {n : Nat} (a : Vector Float n) : Id (List (Fin n)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_argwhere_spec {n : Nat} (a : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -47,6 +45,4 @@ theorem numpy_argwhere_spec {n : Nat} (a : Vector Float n) :
       (∀ i j : Fin n, i ∈ indices → j ∈ indices → i < j → 
         indices.idxOf i < indices.idxOf j)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -21,7 +21,7 @@
     - Multiplication: identity is 1 (x * 1 = x)
     - Logical AND: identity is True (x ∧ True = x)
     - Logical OR: identity is False (x ∨ False = x)
-    
+
     Some operations may have no identity element, in which case None is returned.
 -/
 
@@ -40,9 +40,7 @@ open Std.Do
 -- </vc-helpers>
 
 def ufunc_identity (op : Float → Float → Float) : Id (Option Float) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem ufunc_identity_spec (op : Float → Float → Float) :
     ⦃⌜True⌝⦄
@@ -50,6 +48,4 @@ theorem ufunc_identity_spec (op : Float → Float → Float) :
     ⦃⇓result => ⌜match result with
       | some id => ∀ x : Float, op x id = x ∧ op id x = x
       | none => ¬∃ id : Float, ∀ x : Float, op x id = x ∧ op id x = x⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

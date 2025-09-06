@@ -24,9 +24,7 @@ def uniqueProduct_precond (arr : Array Int) : Prop :=
 -- </vc-helpers>
 
 def uniqueProduct (arr : Array Int) (h_precond : uniqueProduct_precond (arr)) : Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def uniqueProduct_postcond (arr : Array Int) (result: Int) (h_precond : uniqueProduct_precond (arr)) :=
@@ -35,9 +33,7 @@ def uniqueProduct_postcond (arr : Array Int) (result: Int) (h_precond : uniquePr
 
 theorem uniqueProduct_spec_satisfied (arr: Array Int) (h_precond : uniqueProduct_precond (arr)) :
     uniqueProduct_postcond (arr) (uniqueProduct (arr) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

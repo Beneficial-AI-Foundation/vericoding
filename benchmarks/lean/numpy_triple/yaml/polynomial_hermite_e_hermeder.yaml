@@ -26,15 +26,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def hermeder {n : Nat} (c : Vector Float (n + 1)) (m : Nat) (scl : Float) : Id (Vector Float n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem hermeder_spec {n : Nat} (c : Vector Float (n + 1)) (m : Nat) (scl : Float) 
       (h_pos_scl : scl > 0) (h_pos_m : m > 0) :
       ⦃⌜scl > 0 ∧ m > 0⌝⦄
@@ -47,11 +43,7 @@ vc-condition: |-
         -- If all input coefficients are zero, result is zero
         (∀ i : Fin (n + 1), c.get i = 0 → ∀ j : Fin n, result.get j = 0)
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

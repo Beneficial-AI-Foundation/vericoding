@@ -12,7 +12,7 @@
     The result at position (ix, iy, iz) is the sum over all coefficient indices (i, j, k)
     of c[i][j][k] * T_i(x[ix]) * T_j(y[iy]) * T_k(z[iz]) where T_n is the n-th
     Chebyshev polynomial.
-    
+
     Mathematical properties:
     1. The output has the correct shape: nx × ny × nz
     2. Each element is computed as a triple sum over the coefficient indices
@@ -37,9 +37,7 @@ def chebgrid3d {nx ny nz : Nat} {ni nj nk : Nat}
     (x : Vector Float nx) (y : Vector Float ny) (z : Vector Float nz)
     (c : Vector (Vector (Vector Float nk) nj) ni) :
     Id (Vector (Vector (Vector Float nz) ny) nx) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem chebgrid3d_spec {nx ny nz : Nat} {ni nj nk : Nat}
     (x : Vector Float nx) (y : Vector Float ny) (z : Vector Float nz)
@@ -60,6 +58,4 @@ theorem chebgrid3d_spec {nx ny nz : Nat} {ni nj nk : Nat}
             chebyshev_T i.val (x.get ix) *
             chebyshev_T j.val (y.get iy) *
             chebyshev_T k.val (z.get iz)))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

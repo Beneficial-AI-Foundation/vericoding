@@ -22,9 +22,7 @@ import Std.Data.HashMap
 -- </vc-helpers>
 
 def implementation (numbers: List Rat) : Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -48,10 +46,8 @@ spec result
 
 theorem correctness
 (numbers: List Rat)
-: problem_spec implementation numbers :=
--- <vc-proof>
+: problem_spec implementation numbers := by
   sorry
--- </vc-proof>
 
 -- #test implementation ([1, 3, 2, 0]: List Rat) = (10: Int)
 -- #test implementation ([-1, -2, 0]: List Int) = (0: Int)

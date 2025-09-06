@@ -7,15 +7,15 @@
 -/
 
 /-  numpy.ufunc.nargs: Returns the total number of arguments the ufunc accepts.
-    
+
     This attribute represents the sum of input and output arguments for a ufunc.
     For example, np.add has nin=2, nout=1, so nargs=3.
-    
+
     This is a read-only attribute that provides metadata about the ufunc's signature.
 -/
 
 /-  Specification: numpy.ufunc.nargs returns nin + nout
-    
+
     Precondition: True (no special preconditions for reading metadata)
     Postcondition: The result equals the sum of input and output arguments
 -/
@@ -36,14 +36,10 @@ structure Ufunc where
 -- </vc-helpers>
 
 def numpy_nargs (ufunc : Ufunc) : Id Nat :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_nargs_spec (ufunc : Ufunc) :
     ⦃⌜True⌝⦄
     numpy_nargs ufunc
     ⦃⇓result => ⌜result = ufunc.nin + ufunc.nout⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

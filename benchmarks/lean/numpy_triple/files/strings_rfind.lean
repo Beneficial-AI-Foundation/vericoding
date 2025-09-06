@@ -20,9 +20,7 @@ open Std.Do
 -- </vc-helpers>
 
 def rfind {n : Nat} (a : Vector String n) (sub : Vector String n) (start : Vector Int n) (endPos : Vector Int n) : Id (Vector Int n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem rfind_spec {n : Nat} (a : Vector String n) (sub : Vector String n) (start : Vector Int n) (endPos : Vector Int n) :
     ⦃⌜∀ i : Fin n, 0 ≤ start.get i ∧ start.get i ≤ endPos.get i⌝⦄
@@ -46,6 +44,4 @@ theorem rfind_spec {n : Nat} (a : Vector String n) (sub : Vector String n) (star
         (∀ j : Int, result.get i < j ∧ j + (sub.get i).length ≤ endPos.get i + 1 ∧ 
                     start.get i ≤ j ∧ j + (sub.get i).length ≤ (a.get i).length → 
           ¬String.startsWith ((a.get i).drop (Int.natAbs j)) (sub.get i)))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -24,9 +24,7 @@ open Std.Do
 -- </vc-helpers>
 
 def index {n : Nat} (a : Vector String n) (sub : Vector String n) (start : Vector Int n) (endPos : Vector Int n) : Id (Vector Int n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem index_spec {n : Nat} (a : Vector String n) (sub : Vector String n) (start : Vector Int n) (endPos : Vector Int n) :
     ⦃⌜∀ i : Fin n, 
@@ -50,6 +48,4 @@ theorem index_spec {n : Nat} (a : Vector String n) (sub : Vector String n) (star
       -- This is the lowest (leftmost) index where substring is found in the range
       (∀ j : Nat, (start.get i).toNat ≤ j ∧ j < Int.natAbs (result.get i) → 
         ¬(((a.get i).drop j).take (sub.get i).length = sub.get i))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

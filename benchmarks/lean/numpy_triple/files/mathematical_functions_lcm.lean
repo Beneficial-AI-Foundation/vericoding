@@ -34,7 +34,7 @@
     from x1 and x2.
 
     Precondition: True (no special preconditions)
-    
+
     Postcondition: 
     1. Each element of the result is the LCM of |x1[i]| and |x2[i]|
     2. The result satisfies the mathematical properties of LCM:
@@ -57,9 +57,7 @@ open Std.Do
 -- </vc-helpers>
 
 def lcm {n : Nat} (x1 x2 : Vector Int n) : Id (Vector Int n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem lcm_spec {n : Nat} (x1 x2 : Vector Int n) :
     ⦃⌜True⌝⦄
@@ -84,6 +82,4 @@ theorem lcm_spec {n : Nat} (x1 x2 : Vector Int n) :
                     x1.get i ≠ 0 → x2.get i ≠ 0 → result.get i ≤ m) ∧
                  -- Special case: when both are non-zero, LCM is positive
                  (∀ i : Fin n, x1.get i ≠ 0 → x2.get i ≠ 0 → result.get i > 0)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -20,9 +20,7 @@ open Std.Do
 -- </vc-helpers>
 
 def fmod {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem fmod_spec {n : Nat} (x1 x2 : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -42,6 +40,4 @@ theorem fmod_spec {n : Nat} (x1 x2 : Vector Float n) :
           (result.get i ≠ 0 → (result.get i > 0 ↔ x1.get i > 0)) ∧
           -- The absolute value of remainder is less than absolute value of divisor
           Float.abs (result.get i) < Float.abs (x2.get i))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

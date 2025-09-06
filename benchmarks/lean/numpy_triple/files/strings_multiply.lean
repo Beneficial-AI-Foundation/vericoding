@@ -24,9 +24,7 @@ open Std.Do
 -- </vc-helpers>
 
 def multiply {n : Nat} (a : Vector String n) (i : Vector Int n) : Id (Vector String n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem multiply_spec {n : Nat} (a : Vector String n) (i : Vector Int n) :
     ⦃⌜True⌝⦄
@@ -41,6 +39,4 @@ theorem multiply_spec {n : Nat} (a : Vector String n) (i : Vector Int n) :
                  (∀ j : Fin n, i.get j = 0 → result.get j = "") ∧
                  -- Empty string property: Empty strings remain empty regardless of repetition
                  (∀ j : Fin n, a.get j = "" → result.get j = "")⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

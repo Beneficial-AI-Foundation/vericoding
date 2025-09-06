@@ -22,9 +22,7 @@ def isPowerOfTwo_precond (n : Int) : Prop :=
 -- </vc-helpers>
 
 def isPowerOfTwo (n : Int) (h_precond : isPowerOfTwo_precond (n)) : Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def pow (base : Int) (exp : Nat) : Int :=
   match exp with
@@ -37,9 +35,7 @@ def isPowerOfTwo_postcond (n : Int) (result: Bool) (h_precond : isPowerOfTwo_pre
 
 theorem isPowerOfTwo_spec_satisfied (n: Int) (h_precond : isPowerOfTwo_precond (n)) :
     isPowerOfTwo_postcond (n) (isPowerOfTwo (n) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

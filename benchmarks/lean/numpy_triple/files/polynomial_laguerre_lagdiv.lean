@@ -24,9 +24,7 @@ open Std.Do
 
 def lagdiv {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) : 
     Id (Vector Float n × Vector Float m) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem lagdiv_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) 
     (h_nonzero : ∃ i : Fin m, c2.get i ≠ 0) :
@@ -48,6 +46,4 @@ theorem lagdiv_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m)
                  (m > 0 → ∃ highest_nonzero : Fin m, 
                    (∀ j : Fin m, j > highest_nonzero → rem.get j = 0) ∧
                    (c2.get highest_nonzero ≠ 0))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

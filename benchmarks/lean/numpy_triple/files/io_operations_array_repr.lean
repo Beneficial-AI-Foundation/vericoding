@@ -13,7 +13,7 @@
     and properly formatted element values. -/
 
 /-  Specification: array_repr returns a well-formatted string representation of the vector.
-    
+
     The specification captures:
     1. Basic format: the string starts with "array(" and ends with ")"
     2. Element representation: each element is formatted as a string
@@ -35,9 +35,7 @@ open Std.Do
 
 def array_repr {n : Nat} (arr : Vector Float n) (max_line_width : Nat := 75) 
     (precision : Nat := 8) (suppress_small : Bool := false) : Id String :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem array_repr_spec {n : Nat} (arr : Vector Float n) (max_line_width : Nat := 75) 
     (precision : Nat := 8) (suppress_small : Bool := false) :
@@ -60,6 +58,4 @@ theorem array_repr_spec {n : Nat} (arr : Vector Float n) (max_line_width : Nat :
                  -- Format correctness: contains proper brackets
                  (result.contains '(' ∧ result.contains ')') ∧
                  (result.contains '[' ∧ result.contains ']')⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

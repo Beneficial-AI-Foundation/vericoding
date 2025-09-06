@@ -57,23 +57,6 @@ spec fn palindromic(s: Seq<char>, i: int, j: int) -> bool
 */
 
 
-// A reference implementation of Manacher's algorithm:
-// (Ref. https://en.wikipedia.org/wiki/Longest_palindromic_substring#Manacher's_algorithm) for details...
-fn longest_palindrome_prime(s: Seq<char>) -> (result: (Seq<char>, usize, usize))
-    ensures ({
-        let (ans, lo, hi) = result;
-        &&& 0 <= lo <= hi <= s.len()
-        &&& ans == s.subrange(lo as int, hi as int)
-        &&& palindromic(s, lo as int, hi as int)
-        &&& forall|i: int, j: int| 0 <= i <= j <= s.len() && palindromic(s, i, j) ==> j - i <= hi - lo
-    })
-{
-    assume(false);
-    let ghost empty_seq = Seq::<char>::empty();
-    (empty_seq, 0, 0)
-}
-
-
 // Below are helper functions and lemmas we used:
 
 // Inserts bogus characters to the original string (e.g. from `abc` to `|a|b|c|`).
@@ -103,7 +86,7 @@ fn argmax(a: Vec<i32>, start: usize) -> (result: (usize, i32))
     if start == a.len() - 1 {
         (start, a[start])
     } else {
-        let (i, v) = argmax(a, start + 1);
+        let (i, v) = argmax(a.clone(), start + 1);
         if a[start] >= v { (start, a[start]) } else { (i, v) }
     }
 }
@@ -162,16 +145,17 @@ spec fn max_interval_for_same_center(s: Seq<char>, k: int, lo: int, hi: int) -> 
 
 // <vc-spec>
 fn expand_from_center(s: Seq<char>, i0: usize, j0: usize) -> (result: (usize, usize))
-    requires 0 <= i0 <= j0 <= s.len()
-    requires palindromic(s, i0 as int, j0 as int)
-    ensures ({
-        let (lo, hi) = result;
-        &&& 0 <= lo <= hi <= s.len()
-        &&& palindromic(s, lo as int, hi as int)
-        &&& forall|i: int, j: int| 0 <= i <= j <= s.len() && palindromic(s, i, j)  // Among all palindromes
-          && i + j == i0 + j0                                             // sharing the same center,
-          ==> j - i <= hi - lo                                             // `s[lo..hi]` is longest.
-    })
+    requires 0 <= i0 <= j0 <= s.len(),
+             palindromic(s, i0 as int, j0 as int)
+    ensures 
+        ({
+            let (lo, hi) = result;
+            &&& 0 <= lo <= hi <= s.len()
+            &&& palindromic(s, lo as int, hi as int)
+            &&& forall|i: int, j: int| 0 <= i <= j <= s.len() && palindromic(s, i, j)  // Among all palindromes
+              && i + j == i0 + j0                                             // sharing the same center,
+              ==> j - i <= hi - lo                                             // `s[lo..hi]` is longest.
+        })
 // </vc-spec>
 // <vc-code>
 {

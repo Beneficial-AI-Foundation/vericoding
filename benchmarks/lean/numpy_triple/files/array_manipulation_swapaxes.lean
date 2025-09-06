@@ -16,7 +16,7 @@
 
 /-  Specification: swapaxes with axes 0 and 1 transposes a 2D array.
     The element at position (i,j) in the original becomes (j,i) in the result.
-    
+
     Mathematical properties:
     1. Dimension swap: rows become columns and vice versa
     2. Element preservation: mat[i][j] = result[j][i]
@@ -34,9 +34,7 @@ open Std.Do
 def swapaxes {rows cols : Nat} (mat : Vector (Vector Float cols) rows) 
     (axis1 axis2 : Nat) (h1 : axis1 < 2) (h2 : axis2 < 2) : 
     Id (Vector (Vector Float rows) cols) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem swapaxes_spec {rows cols : Nat} (mat : Vector (Vector Float cols) rows) 
     (h1 : rows > 0) (h2 : cols > 0) :
@@ -44,6 +42,4 @@ theorem swapaxes_spec {rows cols : Nat} (mat : Vector (Vector Float cols) rows)
     swapaxes mat 0 1 (by decide) (by decide)
     ⦃⇓result => ⌜∀ (i : Fin rows) (j : Fin cols), 
                   (mat.get i).get j = (result.get j).get i⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

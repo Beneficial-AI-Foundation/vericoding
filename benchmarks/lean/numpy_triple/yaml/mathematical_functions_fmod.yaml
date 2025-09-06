@@ -22,15 +22,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def fmod {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Float n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem fmod_spec {n : Nat} (x1 x2 : Vector Float n) :
       ⦃⌜True⌝⦄
       fmod x1 x2
@@ -49,11 +45,7 @@ vc-condition: |-
             (result.get i ≠ 0 → (result.get i > 0 ↔ x1.get i > 0)) ∧
             -- The absolute value of remainder is less than absolute value of divisor
             Float.abs (result.get i) < Float.abs (x2.get i))⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

@@ -12,7 +12,7 @@ vc-description: |-
   
       Creates a new Generator instance using PCG64 as the underlying BitGenerator.
       This is the recommended way to create random number generators in NumPy.
-      
+  
       If seed is None, the generator will be initialized with fresh entropy from the OS.
       If seed is provided, the generator will be deterministically initialized with that seed.
   -/
@@ -47,26 +47,18 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def default_rng (seed : Option Nat := none) : Id Generator :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem default_rng_spec (seed : Option Nat := none) :
       ⦃⌜True⌝⦄
       default_rng seed
       ⦃⇓result => ⌜result.initialized = true ∧ 
                    result.bitGenerator.seed = seed ∧
                    (seed.isSome → result.bitGenerator.state ≠ 0)⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

@@ -24,15 +24,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def implementation (numbers: List Rat) : Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   def problem_spec
   -- function signature
   (impl: List Rat → Int)
@@ -55,12 +51,8 @@ vc-condition: |-
   
   theorem correctness
   (numbers: List Rat)
-  : problem_spec implementation numbers :=
-
-vc-proof: |-
-  -- <vc-proof>
+  : problem_spec implementation numbers := by
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation ([1, 3, 2, 0]: List Rat) = (10: Int)

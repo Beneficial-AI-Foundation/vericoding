@@ -24,15 +24,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def lastDigit (n : Nat) (h_precond : lastDigit_precond (n)) : Nat :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def lastDigit_postcond (n : Nat) (result: Nat) (h_precond : lastDigit_precond (n)) :=
     (0 ≤ result ∧ result < 10) ∧
@@ -40,11 +36,7 @@ vc-condition: |-
   
   theorem lastDigit_spec_satisfied (n: Nat) (h_precond : lastDigit_precond (n)) :
       lastDigit_postcond (n) (lastDigit (n) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

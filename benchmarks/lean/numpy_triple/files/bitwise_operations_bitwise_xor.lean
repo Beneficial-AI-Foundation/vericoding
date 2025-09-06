@@ -32,7 +32,7 @@
     bitwise XOR of the corresponding elements from x1 and x2.
 
     Precondition: All elements are non-negative (to simplify the specification)
-    
+
     Postcondition: 
     1. For non-negative integers, each element of the result is the bitwise XOR 
        of corresponding inputs
@@ -55,9 +55,7 @@ open Std.Do
 -- </vc-helpers>
 
 def bitwise_xor {n : Nat} (x1 x2 : Vector Int n) : Id (Vector Int n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem bitwise_xor_spec {n : Nat} (x1 x2 : Vector Int n) 
     (h_nonneg : ∀ i : Fin n, x1.get i ≥ 0 ∧ x2.get i ≥ 0) :
@@ -68,6 +66,4 @@ theorem bitwise_xor_spec {n : Nat} (x1 x2 : Vector Int n)
                 (∀ i : Fin n, x1.get i = 0 → result.get i = x2.get i) ∧
                 (∀ i : Fin n, x2.get i = 0 → result.get i = x1.get i) ∧
                 (∀ i : Fin n, x1.get i = x2.get i → result.get i = 0)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

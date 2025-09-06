@@ -75,9 +75,7 @@ def complexSum {n : Nat} (f : Fin n → Complex) : Complex :=
 -- </vc-helpers>
 
 def fft {n : Nat} (a : Vector Complex n) : Id (Vector Complex n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem fft_spec {n : Nat} (a : Vector Complex n) (h : n > 0) :
     ⦃⌜n > 0⌝⦄
@@ -93,6 +91,4 @@ theorem fft_spec {n : Nat} (a : Vector Complex n) (h : n > 0) :
         (∀ k : Fin n, ∃ (sum : Complex), 
             sum = complexSum (fun j => a.get j * cexp (-2 * (3.14159265358979323846 : Float) * (k.val.toFloat * j.val.toFloat) / n.toFloat)) ∧
             result.get k = sum)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -14,7 +14,7 @@
 
 /-  Specification: leggrid3d correctly evaluates a 3-D Legendre series
     on the Cartesian product of input points.
-    
+
     The function computes the tensor product evaluation of Legendre polynomials
     according to the mathematical formula p(a,b,c) = ∑_{i,j,k} c_{i,j,k} * L_i(a) * L_j(b) * L_k(c). -/
 
@@ -29,9 +29,7 @@ def leggrid3d {nx ny nz : Nat} {deg_x deg_y deg_z : Nat}
     (x : Vector Float nx) (y : Vector Float ny) (z : Vector Float nz)
     (c : Vector (Vector (Vector Float deg_z) deg_y) deg_x) : 
     Id (Vector (Vector (Vector Float nz) ny) nx) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem leggrid3d_spec {nx ny nz : Nat} {deg_x deg_y deg_z : Nat}
     (x : Vector Float nx) (y : Vector Float ny) (z : Vector Float nz)
@@ -63,6 +61,4 @@ theorem leggrid3d_spec {nx ny nz : Nat} {deg_x deg_y deg_z : Nat}
         (((result.get i₁).get j₁).get k₁ ≠ ((result.get i₂).get j₂).get k₂ ∨
          (x.get i₁ = x.get i₂ ∧ y.get j₁ = y.get j₂ ∧ z.get k₁ = z.get k₂)))
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

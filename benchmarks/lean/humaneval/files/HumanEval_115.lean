@@ -30,9 +30,7 @@ import Std.Data.HashMap
 -- </vc-helpers>
 
 def implementation (grid: List (List Nat)) (capacity: Nat) : Nat :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -57,10 +55,8 @@ theorem correctness
 (grid: List (List Nat))
 (capacity: Nat)
 : problem_spec implementation grid capacity
-:=
--- <vc-proof>
+:= by
   sorry
--- </vc-proof>
 
 -- #test implementation [[0,0,1,0], [0,1,0,0], [1,1,1,1]] 1 = 6
 -- #test implementation [[0,0,1,1], [0,0,0,0], [1,1,1,1], [0,1,1,1]] 2 = 5

@@ -29,9 +29,7 @@ def loop (a : Array Int) (i : Nat) (currentMin : Int) : Int :=
 -- </vc-helpers>
 
 def minArray (a : Array Int) (h_precond : minArray_precond (a)) : Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def minArray_postcond (a : Array Int) (result: Int) (h_precond : minArray_precond (a)) :=
@@ -39,9 +37,7 @@ def minArray_postcond (a : Array Int) (result: Int) (h_precond : minArray_precon
 
 theorem minArray_spec_satisfied (a: Array Int) (h_precond : minArray_precond (a)) :
     minArray_postcond (a) (minArray (a) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

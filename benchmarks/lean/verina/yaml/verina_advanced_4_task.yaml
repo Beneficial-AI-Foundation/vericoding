@@ -25,15 +25,11 @@ vc-helpers: |-
     if x < y then y else x
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def LongestIncreasingSubsequence (a : Array Int) (h_precond : LongestIncreasingSubsequence_precond (a)) : Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def LongestIncreasingSubsequence_postcond (a : Array Int) (result: Int) (h_precond : LongestIncreasingSubsequence_precond (a)) : Prop :=
     let allSubseq := (a.foldl fun acc x => acc ++ acc.map (fun sub => x :: sub)) [[]] |>.map List.reverse
@@ -42,11 +38,7 @@ vc-condition: |-
   
   theorem LongestIncreasingSubsequence_spec_satisfied (a: Array Int) (h_precond : LongestIncreasingSubsequence_precond (a)) :
       LongestIncreasingSubsequence_postcond (a) (LongestIncreasingSubsequence (a) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

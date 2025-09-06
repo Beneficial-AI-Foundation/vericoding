@@ -28,15 +28,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def fromfile (n : Nat) (file : FileData) (count : Int) (offset : Nat) : Id (Vector Float n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem fromfile_spec (n : Nat) (file : FileData) (count : Int) (offset : Nat)
       (h_valid : file.valid = true)
       (h_count : count = n ∨ count = -1)
@@ -50,11 +46,7 @@ vc-condition: |-
       ⦃⇓result => ⌜∀ i : Fin n,
         result.get i = file.content.get! (offset + i.val) ∧
         n ≤ file.content.length - offset⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

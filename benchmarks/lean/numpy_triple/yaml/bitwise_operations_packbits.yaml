@@ -31,16 +31,12 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def packbits {n : Nat} (a : Vector Bool n) (bitorder : BitOrder := BitOrder.big) : 
       Id (Vector UInt8 ((n + 7) / 8)) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem packbits_spec {n : Nat} (a : Vector Bool n) (bitorder : BitOrder := BitOrder.big) :
       ⦃⌜True⌝⦄
       packbits a bitorder
@@ -67,11 +63,7 @@ vc-condition: |-
                              acc ||| (bit <<< bit_pos).toUInt8
                            else acc
                          ) 0)⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

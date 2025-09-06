@@ -8,25 +8,25 @@
 -/
 
 /-  numpy.gcd: Returns the greatest common divisor of |x1| and |x2|, element-wise.
-    
+
     The GCD is computed on the absolute values of the inputs. For two integers a and b,
     gcd(a, b) is the largest positive integer that divides both |a| and |b|.
-    
+
     Special cases:
     - gcd(0, 0) = 0
     - gcd(a, 0) = |a| for any non-zero a
     - gcd(0, b) = |b| for any non-zero b
-    
+
     Returns an array of the same shape as the broadcasted x1 and x2.
 -/
 
 /-  Specification: numpy.gcd returns a vector where each element is the
     greatest common divisor of the absolute values of the corresponding elements in x1 and x2.
-    
+
     Precondition: True (gcd is defined for all integers)
     Postcondition: For all indices i, result[i] equals the GCD of x1[i] and x2[i],
     which is mathematically equivalent to the GCD of their absolute values.
-    
+
     Mathematical properties verified:
     1. Correctness: result[i] = Int.gcd(x1[i], x2[i]) (uses Lean's built-in GCD function)
     2. Non-negativity: result[i] ≥ 0 (GCD is always non-negative)
@@ -45,9 +45,7 @@ open Std.Do
 -- </vc-helpers>
 
 def numpy_gcd {n : Nat} (x1 x2 : Vector Int n) : Id (Vector Int n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_gcd_spec {n : Nat} (x1 x2 : Vector Int n) :
     ⦃⌜True⌝⦄
@@ -61,6 +59,4 @@ theorem numpy_gcd_spec {n : Nat} (x1 x2 : Vector Int n) :
                  (∀ i : Fin n, result.get i ∣ (x1.get i) ∧ result.get i ∣ (x2.get i)) ∧
                  (∀ i : Fin n, ∀ (d : Int), d ∣ (x1.get i) → d ∣ (x2.get i) → d ∣ result.get i) ∧
                  (∀ i : Fin n, Int.gcd (x2.get i) (x1.get i) = Int.gcd (x1.get i) (x2.get i))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

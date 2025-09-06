@@ -36,15 +36,11 @@ vc-helpers: |-
   termination_by a.size + b.size - m - n
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def CanyonSearch (a : Array Int) (b : Array Int) (h_precond : CanyonSearch_precond (a) (b)) : Nat :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def CanyonSearch_postcond (a : Array Int) (b : Array Int) (result: Nat) (h_precond : CanyonSearch_precond (a) (b)) :=
     (a.any (fun ai => b.any (fun bi => result = (ai - bi).natAbs))) ∧
@@ -52,11 +48,7 @@ vc-condition: |-
   
   theorem CanyonSearch_spec_satisfied (a: Array Int) (b: Array Int) (h_precond : CanyonSearch_precond (a) (b)) :
       CanyonSearch_postcond (a) (b) (CanyonSearch (a) (b) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

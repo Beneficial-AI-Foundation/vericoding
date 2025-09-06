@@ -25,9 +25,7 @@ open Std.Do
 -- </vc-helpers>
 
 def hermcompanion {n : Nat} (c : Vector Float (n + 2)) : Id (Vector (Vector Float (n + 1)) (n + 1)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem hermcompanion_spec {n : Nat} (c : Vector Float (n + 2)) 
     (h_nonzero : c.get ⟨n + 1, by omega⟩ ≠ 0) :
@@ -51,6 +49,4 @@ theorem hermcompanion_spec {n : Nat} (c : Vector Float (n + 2))
           else
             - scale * c.get ⟨i.val, by omega⟩ / (2.0 * c.get ⟨n + 1, by omega⟩))
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

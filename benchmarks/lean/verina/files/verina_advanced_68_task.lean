@@ -20,9 +20,7 @@ def runLengthEncoder_precond (input : String) : Prop :=
 -- </vc-helpers>
 
 def runLengthEncoder (input : String) (h_precond : runLengthEncoder_precond (input)) : String :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible]
 def runLengthEncoder_postcond (input : String) (result: String) (h_precond : runLengthEncoder_precond (input)) : Prop :=
@@ -97,9 +95,7 @@ def runLengthEncoder_postcond (input : String) (result: String) (h_precond : run
 
 theorem runLengthEncoder_spec_satisfied (input: String) (h_precond : runLengthEncoder_precond (input)) :
     runLengthEncoder_postcond (input) (runLengthEncoder (input) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

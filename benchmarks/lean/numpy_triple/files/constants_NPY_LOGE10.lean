@@ -23,9 +23,7 @@ open Std.Do
 -- </vc-helpers>
 
 def npy_loge10 : Id Float :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem npy_loge10_spec :
     ⦃⌜True⌝⦄
@@ -48,6 +46,4 @@ theorem npy_loge10_spec :
       -- Mathematical property: More precise bounds
       2.30258 < result ∧ result < 2.30259
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -37,9 +37,7 @@ import Std.Data.HashMap
 -- </vc-helpers>
 
 def implementation (grades: List Float) : List String :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -83,9 +81,7 @@ let spec (result : List String) :=
 theorem correctness
 (grades: List Float)
 : problem_spec implementation grades
-:=
--- <vc-proof>
+:= by
   sorry
--- </vc-proof>
 
 -- #test implementation [4.0, 3, 1.7, 2, 3.5] = ['A+', 'B', 'C-', 'C', 'A-']

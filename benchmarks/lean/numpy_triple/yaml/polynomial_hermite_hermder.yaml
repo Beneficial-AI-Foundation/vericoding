@@ -18,16 +18,12 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def hermder {n : Nat} (c : Vector Float n) (m : Nat := 1) (scl : Float := 1.0) : 
       Id (Vector Float (n - min m n)) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem hermder_spec {n : Nat} (c : Vector Float n) (m : Nat) (scl : Float) :
       ⦃⌜True⌝⦄
       hermder c m scl
@@ -55,11 +51,7 @@ vc-condition: |-
               scl * scl * (2.0 * (i.val + 2 : Nat).toFloat) * (2.0 * (i.val + 1 : Nat).toFloat) * 
               c.get ⟨i.val + 2, sorry⟩)
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

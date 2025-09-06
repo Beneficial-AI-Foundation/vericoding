@@ -21,9 +21,7 @@ open Std.Do
 -- </vc-helpers>
 
 def partition {n : Nat} (arr : Vector Float n) (kth : Fin n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem partition_spec {n : Nat} (arr : Vector Float n) (kth : Fin n) :
     ⦃⌜True⌝⦄
@@ -42,6 +40,4 @@ theorem partition_spec {n : Nat} (arr : Vector Float n) (kth : Fin n) :
       -- The result contains the same elements as the original (multiset equality)
       (∀ x : Float, (List.ofFn (fun i => result.get i)).count x = (List.ofFn (fun i => arr.get i)).count x)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

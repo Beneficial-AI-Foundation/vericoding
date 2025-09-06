@@ -28,15 +28,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def implementation (lst: List String) : List String :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   def problem_spec
   -- function signature
   (impl: List String → List String)
@@ -60,12 +56,8 @@ vc-condition: |-
   
   theorem correctness
   (lst: List String)
-  : problem_spec implementation lst :=
-
-vc-proof: |-
-  -- <vc-proof>
+  : problem_spec implementation lst := by
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation ["aa", "a", "aaa"] = ["aa"]

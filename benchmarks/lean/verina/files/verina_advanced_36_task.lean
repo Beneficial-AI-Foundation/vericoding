@@ -21,9 +21,7 @@ def majorityElement_precond (xs : List Nat) : Prop :=
 -- </vc-helpers>
 
 def majorityElement (xs : List Nat) (h_precond : majorityElement_precond (xs)) : Nat :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible]
 def majorityElement_postcond (xs : List Nat) (result: Nat) (h_precond : majorityElement_precond (xs)) : Prop :=
@@ -32,9 +30,7 @@ def majorityElement_postcond (xs : List Nat) (result: Nat) (h_precond : majority
 
 theorem majorityElement_spec_satisfied (xs: List Nat) (h_precond : majorityElement_precond (xs)) :
     majorityElement_postcond (xs) (majorityElement (xs) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

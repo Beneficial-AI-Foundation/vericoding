@@ -14,15 +14,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def isclose {n : Nat} (a b : Vector Float n) (rtol : Float) (atol : Float) (equal_nan : Bool) : Id (Vector Bool n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem isclose_spec {n : Nat} (a b : Vector Float n) (rtol : Float) (atol : Float) (equal_nan : Bool) 
       (h_rtol_nonneg : rtol ≥ 0) (h_atol_nonneg : atol ≥ 0) :
       ⦃⌜rtol ≥ 0 ∧ atol ≥ 0⌝⦄
@@ -44,11 +40,7 @@ vc-condition: |-
             Float.abs (a.get i - b.get i) > atol + rtol * Float.abs (b.get i)) ∨
            (¬Float.isFinite (a.get i) ∨ ¬Float.isFinite (b.get i)) ∧ a.get i ≠ b.get i ∨
            ((a.get i).isNaN ∧ (b.get i).isNaN ∧ equal_nan = false))⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

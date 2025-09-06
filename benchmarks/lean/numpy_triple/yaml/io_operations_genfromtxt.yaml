@@ -26,17 +26,13 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def genfromtxt {rows cols : Nat} (input : Vector String rows) 
       (delimiter : String) (fill_value : Float) (skip_header : Nat) :
       Id (Vector (Vector Float cols) (rows - skip_header)) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem genfromtxt_spec {rows cols : Nat} (input : Vector String rows) 
       (delimiter : String) (fill_value : Float) (skip_header : Nat)
       (h_skip : skip_header < rows)
@@ -61,11 +57,7 @@ vc-condition: |-
                                      fill_value 
                                    else 
                                      field_str.toNat!.toFloat)⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

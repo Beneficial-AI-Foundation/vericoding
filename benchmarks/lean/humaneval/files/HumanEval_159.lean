@@ -38,9 +38,7 @@ import Std.Data.HashMap
 -- </vc-helpers>
 
 def implementation (a b c: Nat) : List Nat :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -62,10 +60,8 @@ spec result
 
 theorem correctness
 (a b c: Nat)
-: problem_spec implementation a b c :=
--- <vc-proof>
+: problem_spec implementation a b c := by
   sorry
--- </vc-proof>
 
 -- #test implementation 5 6 10 = [11, 4]
 -- #test implementation 4 8 9 = [12, 1]

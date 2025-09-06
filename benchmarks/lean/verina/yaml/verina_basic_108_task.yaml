@@ -32,15 +32,11 @@ vc-helpers: |-
     Array.mk sList
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def below_zero (operations : List Int) (h_precond : below_zero_precond (operations)) : (Array Int × Bool) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def below_zero_postcond (operations : List Int) (result: (Array Int × Bool)) (h_precond : below_zero_precond (operations)) :=
     let s := result.1
@@ -53,11 +49,7 @@ vc-condition: |-
   
   theorem below_zero_spec_satisfied (operations: List Int) (h_precond : below_zero_precond (operations)) :
       below_zero_postcond (operations) (below_zero (operations) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

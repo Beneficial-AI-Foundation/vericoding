@@ -26,9 +26,7 @@ open Std.Do
 -- </vc-helpers>
 
 def nanpercentile {n : Nat} (a : Vector Float n) (q : Float) (h : 0 ≤ q ∧ q ≤ 100) : Id Float :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem nanpercentile_spec {n : Nat} (a : Vector Float n) (q : Float) (h : 0 ≤ q ∧ q ≤ 100) :
     ⦃⌜0 ≤ q ∧ q ≤ 100⌝⦄
@@ -72,6 +70,4 @@ theorem nanpercentile_spec {n : Nat} (a : Vector Float n) (q : Float) (h : 0 ≤
               sorted_vals.get ⟨0, sorry⟩ ≤ result ∧ 
               result ≤ sorted_vals.get ⟨sorted_vals.length - 1, sorry⟩)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -23,9 +23,7 @@ import Std.Data.HashMap
 -- </vc-helpers>
 
 def implementation (arr: List Int) (k: Int) : List Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -54,10 +52,8 @@ spec result
 theorem correctness
 (arr: List Int)
 (k: Int)
-: problem_spec implementation arr k  :=
--- <vc-proof>
+: problem_spec implementation arr k  := by
   sorry
--- </vc-proof>
 
 -- #test implementation [2, 4, 3, 1] 3 = [2, 3, 4]
 -- #test implementation [2, 4, 3, 1] 0 = []

@@ -21,9 +21,7 @@ open Std.Do
 -- </vc-helpers>
 
 def NZERO : Id Float :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem NZERO_spec :
     ⦃⌜True⌝⦄
@@ -48,6 +46,4 @@ theorem NZERO_spec :
       -- Absolute value of negative zero is positive zero
       Float.abs result = 0.0
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

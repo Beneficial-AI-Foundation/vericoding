@@ -18,12 +18,12 @@
     The element at position (i, j) in the input matrix appears at position 
     (i, cols-1-j) in the output matrix. This captures the mathematical property
     that columns are reversed while rows remain in the same order.
-    
+
     Sanity checks:
     1. The output has the same dimensions as the input (enforced by type)
     2. Each row contains the same elements, just in reversed order
     3. For matrices with odd number of columns, the middle column stays in place
-    
+
     Mathematical properties:
     1. Element mapping: For all valid indices i and j, there exists a corresponding
        index j' such that output[i,j] = input[i,j'] where j' = cols-1-j
@@ -38,9 +38,7 @@ open Std.Do
 -- </vc-helpers>
 
 def fliplr {rows cols : Nat} (m : Vector (Vector Float cols) rows) : Id (Vector (Vector Float cols) rows) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem fliplr_spec {rows : Nat} {cols : Nat} (m : Vector (Vector Float (cols + 1)) rows) :
     ⦃⌜True⌝⦄
@@ -57,6 +55,4 @@ theorem fliplr_spec {rows : Nat} {cols : Nat} (m : Vector (Vector Float (cols + 
                    ∃ mid : Fin (cols + 1),
                    2 * mid.val = cols ∧
                    (result.get i).get mid = (m.get i).get mid)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

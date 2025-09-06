@@ -29,15 +29,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def lagval {n m : Nat} (x : Vector Float m) (c : Vector Float (n + 1)) : Id (Vector Float m) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem lagval_spec {n m : Nat} (x : Vector Float m) (c : Vector Float (n + 1)) 
       (h : n + 1 > 0) :
       ⦃⌜n + 1 > 0⌝⦄
@@ -51,11 +47,7 @@ vc-condition: |-
         -- Sanity check: result preserves input shape
         result.size = x.size
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

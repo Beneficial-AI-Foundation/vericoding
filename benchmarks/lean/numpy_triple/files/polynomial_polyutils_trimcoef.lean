@@ -24,9 +24,7 @@ open Std.Do
 -- </vc-helpers>
 
 def trimcoef {n : Nat} (c : Vector Float n) (tol : Float) : Id (Vector Float (n + 1)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem trimcoef_spec {n : Nat} (c : Vector Float n) (tol : Float) 
     (h_tol_nonneg : tol ≥ 0) :
@@ -54,6 +52,4 @@ theorem trimcoef_spec {n : Nat} (c : Vector Float n) (tol : Float)
       (∀ i : Fin (n + 1), (∀ j : Fin (n + 1), j > i → Float.abs (result.get j) ≤ tol) →
         (∀ k : Fin (n + 1), k ≥ i → Float.abs (result.get k) ≤ tol))
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

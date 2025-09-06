@@ -12,7 +12,7 @@
     Returns the standard deviation, a measure of the spread of a distribution,
     of the non-NaN array elements. The standard deviation is the square root
     of the variance computed from non-NaN values.
-    
+
     For all-NaN slices, NaN is returned. -/
 
 /-  Specification: nanstd computes the standard deviation while ignoring NaN values.
@@ -22,7 +22,7 @@
     2. If all values are NaN, result is NaN
     3. If ddof >= valid_count, result is NaN
     4. Result is always non-negative when valid
-    
+
     The standard deviation is computed as:
     1. Filter out NaN values to get valid values
     2. Calculate the mean of valid values
@@ -39,9 +39,7 @@ open Std.Do
 -- </vc-helpers>
 
 def nanstd {n : Nat} (a : Vector Float n) (ddof : Nat := 0) : Id Float :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem nanstd_spec {n : Nat} (a : Vector Float n) (ddof : Nat) :
     ⦃⌜True⌝⦄
@@ -62,6 +60,4 @@ theorem nanstd_spec {n : Nat} (a : Vector Float n) (ddof : Nat) :
                  -- Case 2: All values are NaN or ddof >= valid_count
                  else
                    result.isNaN⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

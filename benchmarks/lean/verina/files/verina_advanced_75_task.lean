@@ -25,9 +25,7 @@ def task_code_precond (sequence : List Int) : Prop :=
 -- </vc-helpers>
 
 def task_code (sequence : List Int) (h_precond : task_code_precond (sequence)) : Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def task_code_postcond (sequence : List Int) (result: Int) (h_precond : task_code_precond (sequence)) : Prop :=
@@ -40,9 +38,7 @@ def task_code_postcond (sequence : List Int) (result: Int) (h_precond : task_cod
 
 theorem task_code_spec_satisfied (sequence: List Int) (h_precond : task_code_precond (sequence)) :
     task_code_postcond (sequence) (task_code (sequence) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

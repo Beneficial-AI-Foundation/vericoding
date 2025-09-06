@@ -30,9 +30,7 @@ def buildS (operations : List Int) : Array Int :=
 -- </vc-helpers>
 
 def below_zero (operations : List Int) (h_precond : below_zero_precond (operations)) : (Array Int × Bool) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def below_zero_postcond (operations : List Int) (result: (Array Int × Bool)) (h_precond : below_zero_precond (operations)) :=
@@ -46,9 +44,7 @@ def below_zero_postcond (operations : List Int) (result: (Array Int × Bool)) (h
 
 theorem below_zero_spec_satisfied (operations: List Int) (h_precond : below_zero_precond (operations)) :
     below_zero_postcond (operations) (below_zero (operations) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

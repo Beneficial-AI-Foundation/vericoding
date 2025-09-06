@@ -28,9 +28,7 @@ open Std.Do
 -- </vc-helpers>
 
 def argmax {n : Nat} (arr : Vector Float (n + 1)) : Id (Fin (n + 1)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem argmax_spec {n : Nat} (arr : Vector Float (n + 1)) :
     ⦃⌜True⌝⦄
@@ -39,6 +37,4 @@ theorem argmax_spec {n : Nat} (arr : Vector Float (n + 1)) :
              (∀ i : Fin (n + 1), i < idx → arr.get i < arr.get idx) ∧
              (∀ i : Fin (n + 1), idx < i → arr.get i ≤ arr.get idx) ∧
              (∀ j : Fin (n + 1), arr.get j = arr.get idx → idx ≤ j)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

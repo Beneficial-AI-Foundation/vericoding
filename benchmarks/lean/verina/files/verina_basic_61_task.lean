@@ -25,9 +25,7 @@ def isDigit (c : Char) : Bool :=
 -- </vc-helpers>
 
 def allDigits (s : String) (h_precond : allDigits_precond (s)) : Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def allDigits_postcond (s : String) (result: Bool) (h_precond : allDigits_precond (s)) :=
@@ -35,9 +33,7 @@ def allDigits_postcond (s : String) (result: Bool) (h_precond : allDigits_precon
 
 theorem allDigits_spec_satisfied (s: String) (h_precond : allDigits_precond (s)) :
     allDigits_postcond (s) (allDigits (s) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

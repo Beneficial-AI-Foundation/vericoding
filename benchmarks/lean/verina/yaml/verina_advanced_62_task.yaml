@@ -23,15 +23,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def rain (heights : List (Int)) (h_precond : rain_precond (heights)) : Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible]
   def rain_postcond (heights : List (Int)) (result: Int) (h_precond : rain_precond (heights)) : Prop :=
     -- The result is the total amount of rainwater trapped by the given terrain
@@ -67,11 +63,7 @@ vc-condition: |-
   
   theorem rain_spec_satisfied (heights: List (Int)) (h_precond : rain_precond (heights)) :
       rain_postcond (heights) (rain (heights) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

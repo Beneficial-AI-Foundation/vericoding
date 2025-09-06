@@ -22,9 +22,7 @@ open Std.Do
 -- </vc-helpers>
 
 def intersect1d {n m k : Nat} (ar1 : Vector Int n) (ar2 : Vector Int m) : Id (Vector Int k) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem intersect1d_spec {n m k : Nat} (ar1 : Vector Int n) (ar2 : Vector Int m) :
     ⦃⌜True⌝⦄
@@ -41,6 +39,4 @@ theorem intersect1d_spec {n m k : Nat} (ar1 : Vector Int n) (ar2 : Vector Int m)
       (∀ val : Int, (∃ i : Fin n, ar1.get i = val) ∧ (∃ j : Fin m, ar2.get j = val) →
         ∃ l : Fin k, result.get l = val)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

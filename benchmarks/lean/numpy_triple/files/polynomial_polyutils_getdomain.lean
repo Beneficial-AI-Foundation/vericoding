@@ -22,9 +22,7 @@ open Std.Do
 -- </vc-helpers>
 
 def getdomain {n : Nat} (x : Vector Float (n + 1)) : Id (Vector Float 2) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem getdomain_spec {n : Nat} (x : Vector Float (n + 1)) :
     ⦃⌜True⌝⦄
@@ -38,6 +36,4 @@ theorem getdomain_spec {n : Nat} (x : Vector Float (n + 1)) :
       (∃ i : Fin (n + 1), x[i] = result[0]) ∧
       (∃ j : Fin (n + 1), x[j] = result[1])
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

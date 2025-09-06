@@ -25,9 +25,7 @@ import Std.Data.HashMap
 -- </vc-helpers>
 
 def implementation (a b: String) : Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -49,10 +47,8 @@ spec result
 
 theorem correctness
 (a b: String)
-: problem_spec implementation a b :=
--- <vc-proof>
+: problem_spec implementation a b := by
   sorry
--- </vc-proof>
 
 -- #test implementation "abcd" "abd" = False
 -- #test implementation "hello" "ell" = True

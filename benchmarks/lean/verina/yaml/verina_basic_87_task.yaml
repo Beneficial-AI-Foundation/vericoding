@@ -38,26 +38,18 @@ vc-helpers: |-
     else a
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def SelectionSort (a : Array Int) (h_precond : SelectionSort_precond (a)) : Array Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def SelectionSort_postcond (a : Array Int) (result: Array Int) (h_precond : SelectionSort_precond (a)) :=
     List.Pairwise (· ≤ ·) result.toList ∧ List.isPerm a.toList result.toList
   
   theorem SelectionSort_spec_satisfied (a: Array Int) (h_precond : SelectionSort_precond (a)) :
       SelectionSort_postcond (a) (SelectionSort (a) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

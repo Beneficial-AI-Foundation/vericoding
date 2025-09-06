@@ -20,9 +20,7 @@ open Std.Do
 -- </vc-helpers>
 
 def endswith {n : Nat} (a : Vector String n) (suffix : Vector String n) : Id (Vector Bool n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem endswith_spec {n : Nat} (a : Vector String n) (suffix : Vector String n) :
     ⦃⌜True⌝⦄
@@ -38,6 +36,4 @@ theorem endswith_spec {n : Nat} (a : Vector String n) (suffix : Vector String n)
       (r.get i = false → 
         (suffix.get i).length > (a.get i).length ∨
         (a.get i).drop ((a.get i).length - (suffix.get i).length) ≠ (suffix.get i))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

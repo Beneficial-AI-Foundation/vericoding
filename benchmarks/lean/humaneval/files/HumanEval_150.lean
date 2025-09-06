@@ -18,9 +18,7 @@ import Std.Data.HashMap
 -- </vc-helpers>
 
 def implementation (n x y: Int) : Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -38,10 +36,8 @@ spec result
 
 theorem correctness
 (n x y: Int)
-: problem_spec implementation n x y :=
--- <vc-proof>
+: problem_spec implementation n x y := by
   sorry
--- </vc-proof>
 
 -- #test implementation 7 34 12 = 34
 -- #test implementation 15 8 5 = 5

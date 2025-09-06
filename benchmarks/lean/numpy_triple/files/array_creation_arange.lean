@@ -22,9 +22,7 @@ open Std.Do
 -- </vc-helpers>
 
 def arange {n : Nat} (start stop step : Float) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem arange_spec {n : Nat} (start stop step : Float) 
     (h_step_nonzero : step ≠ 0) :
@@ -34,6 +32,4 @@ theorem arange_spec {n : Nat} (start stop step : Float)
                 (n > 0 → (∀ i : Fin n, result.get i = start + (i.val.toFloat) * step) ∧
                          (step > 0 → start < stop ∧ ∀ i : Fin n, result.get i < stop) ∧
                          (step < 0 → start > stop ∧ ∀ i : Fin n, result.get i > stop))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

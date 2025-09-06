@@ -15,7 +15,7 @@
 /-  Specification: percentile computes the q-th percentile value correctly.
     The percentile is defined as the value v such that at least q% of the data
     is less than or equal to v, and at least (100-q)% of the data is greater than or equal to v.
-    
+
     Mathematical properties:
     1. The percentile value must be within the range of the data (or interpolated between values)
     2. Special cases: q=0 gives minimum, q=100 gives maximum
@@ -29,9 +29,7 @@ open Std.Do
 -- </vc-helpers>
 
 def percentile {n : Nat} (arr : Vector Float (n + 1)) (q : Float) : Id Float :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem percentile_spec {n : Nat} (arr : Vector Float (n + 1)) (q : Float) 
     (h_valid_q : 0 ≤ q ∧ q ≤ 100) :
@@ -47,6 +45,4 @@ theorem percentile_spec {n : Nat} (arr : Vector Float (n + 1)) (q : Float)
       (q = 0 → ∀ i : Fin (n + 1), result ≤ arr.get i) ∧
       (q = 100 → ∀ i : Fin (n + 1), arr.get i ≤ result)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

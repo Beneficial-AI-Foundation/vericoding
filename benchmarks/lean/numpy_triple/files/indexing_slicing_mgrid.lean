@@ -14,10 +14,10 @@
     where each output array has the same shape (rows × cols). The first array contains
     row coordinates repeated across columns, and the second array contains column
     coordinates repeated across rows.
-    
+
     This is the 2D case of numpy.mgrid[start_r:stop_r, start_c:stop_c] which creates
     coordinate arrays suitable for evaluating functions over a 2D grid.
-    
+
     For 2D case with rows and cols dimensions, this returns a tuple of two matrices:
     - First matrix: row coordinates repeated across columns
     - Second matrix: column coordinates repeated across rows
@@ -34,13 +34,13 @@
     6. The arrays form a coordinate system suitable for function evaluation over a 2D grid
     7. Each coordinate position (i,j) in the first array corresponds to the row coordinate
     8. Each coordinate position (i,j) in the second array corresponds to the column coordinate
-    
+
     Mathematical properties:
     - Grid completeness: Every position (i,j) has well-defined coordinates
     - Coordinate consistency: Row array varies only along row dimension, column array varies only along column dimension
     - Spacing uniformity: Coordinates are evenly distributed within their respective ranges
     - Dense representation: All coordinate combinations are explicitly stored (not sparse)
-    
+
     This specification captures the key behavior of numpy.mgrid: creating dense coordinate
     arrays that can be used for vectorized function evaluation over 2D grids, with each
     output array having the same shape and containing the appropriate coordinate values.
@@ -56,9 +56,7 @@ open Std.Do
 def mgrid {rows cols : Nat} (start_r stop_r start_c stop_c : Float) 
     (h_rows : rows > 0) (h_cols : cols > 0) : 
     Id (Vector (Vector Float cols) rows × Vector (Vector Float cols) rows) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem mgrid_spec {rows cols : Nat} (start_r stop_r start_c stop_c : Float) 
     (h_rows : rows > 0) (h_cols : cols > 0) :
@@ -85,6 +83,4 @@ theorem mgrid_spec {rows cols : Nat} (start_r stop_r start_c stop_c : Float)
                     start_r ≤ (result.1.get i).get j ∧ (result.1.get i).get j < stop_r) ∧
                   (∀ i : Fin rows, ∀ j : Fin cols, 
                     start_c ≤ (result.2.get i).get j ∧ (result.2.get i).get j < stop_c)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

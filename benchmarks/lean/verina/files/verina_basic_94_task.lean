@@ -23,9 +23,7 @@ def iter_copy_precond (s : Array Int) : Prop :=
 -- </vc-helpers>
 
 def iter_copy (s : Array Int) (h_precond : iter_copy_precond (s)) : Array Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def iter_copy_postcond (s : Array Int) (result: Array Int) (h_precond : iter_copy_precond (s)) :=
@@ -33,9 +31,7 @@ def iter_copy_postcond (s : Array Int) (result: Array Int) (h_precond : iter_cop
 
 theorem iter_copy_spec_satisfied (s: Array Int) (h_precond : iter_copy_precond (s)) :
     iter_copy_postcond (s) (iter_copy (s) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

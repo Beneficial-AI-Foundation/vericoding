@@ -29,9 +29,7 @@ open Std.Do
 
 def histogram2d {n : Nat} {nbins : Nat} (x y : Vector Float n) (bins : Nat) 
     (h_bins_pos : bins > 0) (h_nbins_eq : nbins = bins) : Id (Vector (Vector Nat nbins) nbins × Vector Float (nbins + 1) × Vector Float (nbins + 1)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem histogram2d_spec {n : Nat} {nbins : Nat} (x y : Vector Float n) (bins : Nat) 
     (h_bins_pos : bins > 0) (h_nbins_eq : nbins = bins) :
@@ -66,6 +64,4 @@ theorem histogram2d_spec {n : Nat} {nbins : Nat} (x y : Vector Float n) (bins : 
                    (x_left ≤ x_val ∧ x_val < x_right ∧ y_left ≤ y_val ∧ y_val < y_right) ∨
                    (i = nbins - 1 ∧ j = nbins - 1 ∧ x_val = x_right ∧ y_val = y_right) →
                    (hist.get i).get j ≥ 1)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

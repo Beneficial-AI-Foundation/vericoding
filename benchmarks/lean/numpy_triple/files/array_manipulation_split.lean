@@ -14,7 +14,7 @@
 
 /-  Specification: split divides a vector into k equal-sized sub-vectors 
     where each sub-vector contains consecutive elements from the original.
-    
+
     The specification states that:
     1. The result is a vector of k sub-vectors
     2. Each sub-vector has size n/k 
@@ -31,9 +31,7 @@ open Std.Do
 
 def split {n k : Nat} (arr : Vector Float n) (h_div : k ∣ n) (h_pos : k > 0) : 
     Id (Vector (Vector Float (n / k)) k) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem split_spec {n k : Nat} (arr : Vector Float n) (h_div : k ∣ n) (h_pos : k > 0) :
     ⦃⌜k ∣ n ∧ k > 0⌝⦄
@@ -44,6 +42,4 @@ theorem split_spec {n k : Nat} (arr : Vector Float n) (h_div : k ∣ n) (h_pos :
                  (∀ idx : Fin n, ∃ (i : Fin k) (j : Fin (n / k)), 
                   idx.val = i.val * (n / k) + j.val ∧
                   arr.get idx = (result.get i).get j)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

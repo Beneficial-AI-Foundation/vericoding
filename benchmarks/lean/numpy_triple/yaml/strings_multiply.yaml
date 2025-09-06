@@ -26,15 +26,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def multiply {n : Nat} (a : Vector String n) (i : Vector Int n) : Id (Vector String n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem multiply_spec {n : Nat} (a : Vector String n) (i : Vector Int n) :
       ⦃⌜True⌝⦄
       multiply a i
@@ -48,11 +44,7 @@ vc-condition: |-
                    (∀ j : Fin n, i.get j = 0 → result.get j = "") ∧
                    -- Empty string property: Empty strings remain empty regardless of repetition
                    (∀ j : Fin n, a.get j = "" → result.get j = "")⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

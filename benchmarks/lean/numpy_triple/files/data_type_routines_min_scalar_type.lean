@@ -5,7 +5,7 @@
     The function prioritizes:
     1. Smallest possible size (in bits)
     2. Smallest scalar kind (unsigned int < signed int < float < complex)
-    
+
     For integer values, it finds the smallest integer type that can hold the value.
     For floating point values, it finds the smallest float type that can represent it.
 -/
@@ -69,9 +69,7 @@ def can_represent_value (dt : NumpyDType) (value : Float) : Prop :=
 -- </vc-helpers>
 
 def min_scalar_type (value : Float) : Id NumpyDType :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem min_scalar_type_spec (value : Float) :
     ⦃⌜True⌝⦄
@@ -87,6 +85,4 @@ theorem min_scalar_type_spec (value : Float) :
         can_represent_value dt value → 
         dtype_kind_order result ≤ dtype_kind_order dt)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

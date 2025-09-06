@@ -17,15 +17,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def argpartition {n : Nat} (a : Vector Float n) (kth : Fin n) : Id (Vector (Fin n) n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem argpartition_spec {n : Nat} (a : Vector Float n) (kth : Fin n) :
       ⦃⌜True⌝⦄
       argpartition a kth
@@ -38,11 +34,7 @@ vc-condition: |-
         -- Partition property: all elements after kth position are ≥ kth element
         (∀ i : Fin n, kth < i → a.get (indices.get kth) ≤ a.get (indices.get i))
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

@@ -19,9 +19,7 @@ def findSmallest_precond (s : Array Nat) : Prop :=
 -- </vc-helpers>
 
 def findSmallest (s : Array Nat) (h_precond : findSmallest_precond (s)) : Option Nat :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def findSmallest_postcond (s : Array Nat) (result: Option Nat) (h_precond : findSmallest_precond (s)) :=
@@ -32,9 +30,7 @@ def findSmallest_postcond (s : Array Nat) (result: Option Nat) (h_precond : find
 
 theorem findSmallest_spec_satisfied (s: Array Nat) (h_precond : findSmallest_precond (s)) :
     findSmallest_postcond (s) (findSmallest (s) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

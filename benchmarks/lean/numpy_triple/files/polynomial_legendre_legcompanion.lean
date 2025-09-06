@@ -22,9 +22,7 @@ open Std.Do
 -- </vc-helpers>
 
 def legcompanion {n : Nat} (c : Vector Float (n + 2)) : Id (Vector (Vector Float (n + 1)) (n + 1)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem legcompanion_spec {n : Nat} (c : Vector Float (n + 2)) 
     (h_nonzero : c.get ⟨n + 1, by simp⟩ ≠ 0) :
@@ -35,6 +33,4 @@ theorem legcompanion_spec {n : Nat} (c : Vector Float (n + 2))
       (result.size = n + 1) ∧
       (∀ i : Fin (n + 1), (result.get i).size = n + 1)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

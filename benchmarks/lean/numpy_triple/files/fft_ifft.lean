@@ -8,19 +8,19 @@
 -/
 
 /-  Compute the one-dimensional inverse discrete Fourier Transform (IFFT).
-    
+
     The IFFT transforms frequency domain data back to the time domain,
     computing the inverse of the DFT such that ifft(fft(x)) ≈ x.
-    
+
     For a vector of length n, the k-th coefficient is computed as:
     X[k] = (1/n) * Σ(j=0 to n-1) a[j] * exp(2πi*j*k/n) -/
 
 /-  Specification: The inverse FFT correctly computes the inverse discrete Fourier transform.
-    
+
     The IFFT satisfies the inverse DFT equation where each output element k is 
     computed as (1/n) times the sum over all input elements j, multiplied by the 
     complex exponential exp(2πi*k*j/n).
-    
+
     This is the mathematical inverse of the FFT operation, with a positive sign 
     in the exponential and a normalization factor of 1/n. -/
 
@@ -70,9 +70,7 @@ abbrev ComplexVector (n : Nat) := Vector Complex n
 -- </vc-helpers>
 
 def ifft {n : Nat} (a : ComplexVector n) : Id (ComplexVector n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem ifft_spec {n : Nat} (a : ComplexVector n) (h : n > 0) :
     ⦃⌜n > 0⌝⦄
@@ -80,6 +78,4 @@ theorem ifft_spec {n : Nat} (a : ComplexVector n) (h : n > 0) :
     ⦃⇓result => ⌜∀ k : Fin n,
         result.get k = (1.0 / n.toFloat) * complexSum (fun j =>
             a.get j * cexp (2 * (3.14159265358979323846 : Float) * (k.val.toFloat * j.val.toFloat) / n.toFloat))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

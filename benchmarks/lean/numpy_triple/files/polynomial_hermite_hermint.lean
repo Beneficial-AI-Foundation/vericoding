@@ -42,9 +42,7 @@ open Std.Do
 def hermint {n : Nat} (c : Vector Float n) (m : Nat) 
     (k : Vector Float m) (lbnd : Float) (scl : Float) 
     (h_m_pos : m > 0) : Id (Vector Float (n + m)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem hermint_spec {n : Nat} (c : Vector Float n) (m : Nat) 
     (k : Vector Float m) (lbnd : Float) (scl : Float) 
@@ -64,6 +62,4 @@ theorem hermint_spec {n : Nat} (c : Vector Float n) (m : Nat)
         -- The first coefficient is adjusted to satisfy the boundary condition at lbnd
         (∃ adjustment : Float, result.get ⟨0, by omega⟩ = adjustment))
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -53,15 +53,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def datetime64 (offset : Int) (unit : TimeUnit) : Id DateTime64 :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem datetime64_spec (offset : Int) (unit : TimeUnit) :
       ⦃⌜True⌝⦄
       datetime64 offset unit
@@ -79,11 +75,7 @@ vc-condition: |-
                    | TimeUnit.microseconds => True  -- Microseconds can use full Int range
                    | TimeUnit.nanoseconds => True)  -- Nanoseconds can use full Int range
                   ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

@@ -22,9 +22,7 @@ def moveZeroes_precond (xs : List Int) : Prop :=
 -- </vc-helpers>
 
 def moveZeroes (xs : List Int) (h_precond : moveZeroes_precond (xs)) : List Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def countVal (val : Int) : List Int → Nat
   | [] => 0
@@ -54,9 +52,7 @@ def moveZeroes_postcond (xs : List Int) (result: List Int) (h_precond : moveZero
 
 theorem moveZeroes_spec_satisfied (xs: List Int) (h_precond : moveZeroes_precond (xs)) :
     moveZeroes_postcond (xs) (moveZeroes (xs) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

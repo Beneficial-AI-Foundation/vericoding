@@ -21,26 +21,18 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def reverseString (s : String) (h_precond : reverseString_precond (s)) : String :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible]
   def reverseString_postcond (s : String) (result: String) (h_precond : reverseString_precond (s)) : Prop :=
     result.length = s.length ∧ result.toList = s.toList.reverse
   
   theorem reverseString_spec_satisfied (s: String) (h_precond : reverseString_precond (s)) :
       reverseString_postcond (s) (reverseString (s) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

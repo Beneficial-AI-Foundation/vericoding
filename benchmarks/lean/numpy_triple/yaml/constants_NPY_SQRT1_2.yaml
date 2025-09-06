@@ -21,15 +21,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def NPY_SQRT1_2 : Id Float :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem NPY_SQRT1_2_spec :
       ⦃⌜True⌝⦄
       NPY_SQRT1_2
@@ -38,11 +34,7 @@ vc-condition: |-
                    result = Float.sqrt 0.5 ∧
                    result = 1.0 / Float.sqrt 2.0 ∧
                    Float.abs (result - 0.707106781186547524400844362104849039) < 1e-15⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

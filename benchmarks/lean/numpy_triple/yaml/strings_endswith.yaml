@@ -22,15 +22,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def endswith {n : Nat} (a : Vector String n) (suffix : Vector String n) : Id (Vector Bool n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem endswith_spec {n : Nat} (a : Vector String n) (suffix : Vector String n) :
       ⦃⌜True⌝⦄
       endswith a suffix
@@ -45,11 +41,7 @@ vc-condition: |-
         (r.get i = false → 
           (suffix.get i).length > (a.get i).length ∨
           (a.get i).drop ((a.get i).length - (suffix.get i).length) ≠ (suffix.get i))⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

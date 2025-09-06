@@ -27,9 +27,7 @@ import Std.Data.HashMap
 -- </vc-helpers>
 
 def implementation (class_name: String) (extensions: List String) : String :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -64,9 +62,7 @@ spec result
 theorem correctness
 (class_name: String)
 (extensions: List String)
-: problem_spec implementation class_name extensions :=
--- <vc-proof>
+: problem_spec implementation class_name extensions := by
   sorry
--- </vc-proof>
 
 -- #test implementation 'my_class', ['AA', 'Be', 'CC'] = 'my_class.AA'

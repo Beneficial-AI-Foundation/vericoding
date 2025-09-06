@@ -13,7 +13,7 @@
     the natural numbers in the input vectors. -/
 
 /-  Specification: bitwise_and computes element-wise bitwise AND operation 
-    
+
     This specification captures the mathematical properties of bitwise AND:
     - Commutativity: a & b = b & a
     - Associativity: (a & b) & c = a & (b & c)
@@ -31,9 +31,7 @@ open Std.Do
 -- </vc-helpers>
 
 def bitwise_and {n : Nat} (x1 x2 : Vector Nat n) : Id (Vector Nat n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem bitwise_and_spec {n : Nat} (x1 x2 : Vector Nat n) :
     ⦃⌜True⌝⦄
@@ -47,6 +45,4 @@ theorem bitwise_and_spec {n : Nat} (x1 x2 : Vector Nat n) :
                  (x1.get i) &&& (x1.get i) = x1.get i ∧
                  -- Result is bounded by both operands
                  result.get i ≤ x1.get i ∧ result.get i ≤ x2.get i⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

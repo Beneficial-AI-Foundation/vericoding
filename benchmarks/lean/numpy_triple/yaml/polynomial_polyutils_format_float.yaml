@@ -19,15 +19,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def format_float (x : Float) (parens : Bool := false) : Id String :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem format_float_spec (x : Float) (parens : Bool := false) :
       ⦃⌜True⌝⦄
       format_float x parens
@@ -54,11 +50,7 @@ vc-condition: |-
         (result.all (fun c => c.isDigit ∨ c = '.' ∨ c = '-' ∨ c = '+' ∨ c = 'e' ∨ c = 'E' ∨ 
                               c = '(' ∨ c = ')' ∨ c = 'n' ∨ c = 'a' ∨ c = 'i' ∨ c = 'f' ∨ c = 'I' ∨ c = 'N'))
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

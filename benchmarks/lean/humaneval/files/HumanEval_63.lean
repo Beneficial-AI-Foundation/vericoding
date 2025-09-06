@@ -42,9 +42,7 @@ fibonacci_non_computable_3 (n + 3) (f₁ + f₂ + f₃)
 -- </vc-helpers>
 
 def implementation (n: Nat) : Nat :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -61,10 +59,8 @@ spec result
 theorem correctness
 (n: Nat)
 : problem_spec implementation n
-:=
--- <vc-proof>
+:= by
   sorry
--- </vc-proof>
 
 -- #test implementation 1 = 0
 -- #test implementation 5 = 4

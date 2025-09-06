@@ -19,9 +19,7 @@ open Std.Do
 -- </vc-helpers>
 
 def sign {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem sign_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -30,6 +28,4 @@ theorem sign_spec {n : Nat} (x : Vector Float n) :
       (x.get i < 0 → result.get i = -1) ∧
       (x.get i = 0 → result.get i = 0) ∧
       (x.get i > 0 → result.get i = 1)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

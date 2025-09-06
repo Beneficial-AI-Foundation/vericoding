@@ -13,15 +13,11 @@ open Std.Do
 -- </vc-helpers>
 
 def polyvalfromroots {n m : Nat} (x : Vector Float n) (r : Vector Float m) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem polyvalfromroots_spec {n m : Nat} (x : Vector Float n) (r : Vector Float m) :
     ⦃⌜True⌝⦄
     polyvalfromroots x r
     ⦃⇓result => ⌜∀ i : Fin n, 
                   result.get i = (List.range m).foldl (fun acc j => acc * (x.get i - r.get ⟨j, sorry⟩)) 1⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

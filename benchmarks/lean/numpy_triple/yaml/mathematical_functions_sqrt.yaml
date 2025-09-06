@@ -34,15 +34,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def sqrt {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem sqrt_spec {n : Nat} (x : Vector Float n) :
       ⦃⌜True⌝⦄
       sqrt x
@@ -52,11 +48,7 @@ vc-condition: |-
           result.get i ≥ 0) ∧
         (x.get i = 0 → result.get i = 0) ∧
         (x.get i = 1 → result.get i = 1)⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

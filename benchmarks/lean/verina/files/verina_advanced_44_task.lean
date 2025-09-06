@@ -24,9 +24,7 @@ def maxSubarraySumDivisibleByK_precond (arr : Array Int) (k : Int) : Prop :=
 -- </vc-helpers>
 
 def maxSubarraySumDivisibleByK (arr : Array Int) (k : Int) : Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible]
 def maxSubarraySumDivisibleByK_postcond (arr : Array Int) (k : Int) (result: Int) : Prop :=
@@ -39,9 +37,7 @@ def maxSubarraySumDivisibleByK_postcond (arr : Array Int) (k : Int) (result: Int
 
 theorem maxSubarraySumDivisibleByK_spec_satisfied (arr: Array Int) (k: Int) :
     maxSubarraySumDivisibleByK_postcond (arr) (k) (maxSubarraySumDivisibleByK (arr) (k)) := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

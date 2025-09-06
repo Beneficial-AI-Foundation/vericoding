@@ -22,9 +22,7 @@ open Std.Do
 -- </vc-helpers>
 
 def euler_gamma : Id Float :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem euler_gamma_spec :
     ⦃⌜True⌝⦄
@@ -45,6 +43,4 @@ theorem euler_gamma_spec :
       -- Mathematical property: 1 - euler_gamma is positive (approximately 0.4228...)
       0 < 1 - result ∧ 1 - result < 0.5
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

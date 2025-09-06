@@ -34,8 +34,8 @@ spec fn gcd(m: nat, n: nat) -> nat
 
 // <vc-spec>
 fn gcd_iterative(m: u32, n: u32) -> (g: u32)
-    requires m > 0 && n > 0
-    ensures g == gcd(m as nat, n as nat);
+    requires m > 0 && n > 0,
+    ensures g == gcd(m as nat, n as nat),
 // </vc-spec>
 // <vc-code>
 {

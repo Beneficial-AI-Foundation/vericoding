@@ -20,9 +20,7 @@ open Std.Do
 -- </vc-helpers>
 
 def legline (off scl : Float) : Id (Vector Float 2) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem legline_spec (off scl : Float) :
     ⦃⌜True⌝⦄
@@ -30,6 +28,4 @@ theorem legline_spec (off scl : Float) :
     ⦃⇓result => 
       ⌜result.get 0 = off ∧ 
        result.get 1 = scl⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -32,15 +32,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def implementation (interval1: Int × Int) (interval2: Int × Int) : String :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   def problem_spec
   -- function signature
   (impl: Int × Int → Int × Int → String)
@@ -67,12 +63,8 @@ vc-condition: |-
   theorem correctness
   (interval1: Int × Int)
   (interval2: Int × Int)
-  : problem_spec implementation interval1 interval2 :=
-
-vc-proof: |-
-  -- <vc-proof>
+  : problem_spec implementation interval1 interval2 := by
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation (1, 2) (2, 3) = "NO"

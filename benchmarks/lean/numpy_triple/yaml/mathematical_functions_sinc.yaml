@@ -47,15 +47,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def sinc {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem sinc_spec {n : Nat} (x : Vector Float n) :
       ⦃⌜True⌝⦄
       sinc x
@@ -68,11 +64,7 @@ vc-condition: |-
                       (x.get i = 0 → result.get i = 1) ∧
                       -- Continuity preservation (reflexivity property)
                       (result.get i = result.get i)⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

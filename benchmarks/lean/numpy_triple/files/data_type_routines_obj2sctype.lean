@@ -75,9 +75,7 @@ def NumpyObject.is_generic_object (obj : NumpyObject) : Prop :=
 -- </vc-helpers>
 
 def obj2sctype (rep : NumpyObject) (default : Option NumpyScalarType) : Id (Option NumpyScalarType) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem obj2sctype_spec (rep : NumpyObject) (default : Option NumpyScalarType) :
     ⦃⌜True⌝⦄
@@ -100,6 +98,4 @@ theorem obj2sctype_spec (rep : NumpyObject) (default : Option NumpyScalarType) :
          )
        | none => rep.is_generic_object ∧ default = none)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

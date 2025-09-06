@@ -25,14 +25,10 @@ open Std.Do
 -- </vc-helpers>
 
 def copy {n : Nat} (a : Vector α n) : Id (Vector α n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem copy_spec {n : Nat} (a : Vector α n) :
     ⦃⌜True⌝⦄
     copy a
     ⦃⇓result => ⌜∀ i : Fin n, result[i] = a[i]⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

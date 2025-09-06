@@ -25,9 +25,7 @@ def ComputeIsEven_precond (x : Int) : Prop :=
 -- </vc-helpers>
 
 def ComputeIsEven (x : Int) (h_precond : ComputeIsEven_precond (x)) : Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def ComputeIsEven_postcond (x : Int) (result: Bool) (h_precond : ComputeIsEven_precond (x)) :=
@@ -35,9 +33,7 @@ def ComputeIsEven_postcond (x : Int) (result: Bool) (h_precond : ComputeIsEven_p
 
 theorem ComputeIsEven_spec_satisfied (x: Int) (h_precond : ComputeIsEven_precond (x)) :
     ComputeIsEven_postcond (x) (ComputeIsEven (x) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

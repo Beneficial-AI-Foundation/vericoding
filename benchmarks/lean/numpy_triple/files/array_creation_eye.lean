@@ -10,18 +10,18 @@
 -/
 
 /-  numpy.eye: Return a 2-D array with ones on the diagonal and zeros elsewhere.
-    
+
     Returns the identity matrix of size n x n. For simplicity, we implement 
     the square matrix case (N=M) with diagonal offset k=0.
-    
+
     This function creates an n x n matrix where all elements are zero except
     for the main diagonal, which contains ones.
 -/
 
 /-  Specification: eye returns a square identity matrix with mathematical properties.
-    
+
     Precondition: True (no special preconditions for identity matrix creation)
-    
+
     Postcondition: The returned matrix satisfies:
     1. Main diagonal elements are 1.0
     2. Off-diagonal elements are 0.0
@@ -30,7 +30,7 @@
        - Symmetry: eye[i][j] = eye[j][i]
        - Uniqueness: There is exactly one 1.0 in each row and column
        - Matrix multiplication identity: For any compatible matrix A, eye * A = A
-    
+
     This captures the complete mathematical characterization of an identity matrix.
 -/
 
@@ -42,9 +42,7 @@ open Std.Do
 -- </vc-helpers>
 
 def eye {n : Nat} : Id (Vector (Vector Float n) n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem eye_spec {n : Nat} :
     ⦃⌜True⌝⦄
@@ -65,6 +63,4 @@ theorem eye_spec {n : Nat} :
       -- All non-diagonal elements are exactly 0.0
       (∀ i : Fin n, ∀ j : Fin n, i ≠ j → (result.get i).get j = 0.0)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

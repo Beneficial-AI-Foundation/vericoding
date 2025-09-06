@@ -34,14 +34,10 @@ open Std.Do
 -- </vc-helpers>
 
 def numpy_logical_and {n : Nat} (x1 x2 : Vector Bool n) : Id (Vector Bool n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_logical_and_spec {n : Nat} (x1 x2 : Vector Bool n) :
     ⦃⌜True⌝⦄
     numpy_logical_and x1 x2
     ⦃⇓result => ⌜∀ i : Fin n, result.get i = (x1.get i ∧ x2.get i)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -11,26 +11,26 @@ vc-description: |-
   -/
   
   /-  Return a new vector of given size filled with ones.
-      
+  
       This function creates a vector where every element is exactly 1.0,
       matching NumPy's ones function behavior for 1D arrays.
   -/
   
   /-  Specification: ones returns a vector where all elements are exactly 1.0.
-      
+  
       This specification captures the following properties:
       1. **Correctness**: Every element in the returned vector equals 1.0
       2. **Uniformity**: All elements are identical (constant vector)
       3. **Non-negativity**: All elements are positive (1.0 > 0)
       4. **Identity property**: Multiplying any value by an element gives the same value
       5. **Type Safety**: The returned vector has exactly n elements (enforced by type)
-      
+  
       Mathematical Properties verified:
       - ∀ i : Fin n, result[i] = 1.0 (all elements are exactly one)
       - ∀ i j : Fin n, result[i] = result[j] (uniformity/constant vector)
       - ∀ i : Fin n, result[i] > 0 (positivity)
       - ∀ i : Fin n, ∀ x : Float, x * result[i] = x (multiplicative identity)
-      
+  
       Edge cases handled:
       - When n = 0, returns an empty vector (trivially satisfies all properties)
       - When n > 0, all indices contain exactly 1.0
@@ -45,15 +45,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def ones (n : Nat) : Id (Vector Float n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem ones_spec (n : Nat) :
       ⦃⌜True⌝⦄
       ones n
@@ -61,11 +57,7 @@ vc-condition: |-
                    (∀ i j : Fin n, result.get i = result.get j) ∧
                    (∀ i : Fin n, result.get i > 0) ∧
                    (∀ i : Fin n, ∀ x : Float, x * result.get i = x)⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

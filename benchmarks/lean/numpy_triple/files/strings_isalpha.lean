@@ -14,7 +14,7 @@
     A string is considered alphabetic if:
     1. It contains at least one character
     2. All characters are alphabetic (a-z, A-Z)
-    
+
     Empty strings return false.
     Strings with numbers, symbols, or whitespace return false.
 -/
@@ -29,7 +29,7 @@
     3. Alphabetic characters are those satisfying Char.isAlpha (a-z, A-Z)
     4. Strings with digits, whitespace, or symbols return false
     5. The function is applied element-wise to each string in the vector
-    
+
     Mathematical properties:
     - Monotonicity: removing non-alphabetic characters from a string cannot make isalpha false
     - Compositionality: isalpha(s) = (s.length > 0) ∧ (∀ c ∈ s, Char.isAlpha c)
@@ -44,9 +44,7 @@ open Std.Do
 -- </vc-helpers>
 
 def isalpha {n : Nat} (a : Vector String n) : Id (Vector Bool n) :=
--- <vc-implementation>
   a.map (fun s => s ≠ "" ∧ s.toList.all Char.isAlpha)
--- </vc-implementation>
 
 theorem isalpha_spec {n : Nat} (a : Vector String n) :
     ⦃⌜True⌝⦄
@@ -64,6 +62,4 @@ theorem isalpha_spec {n : Nat} (a : Vector String n) :
       (result.get i = true → (a.get i).toList.all Char.isAlpha) ∧
       -- Mathematical property: if string has non-alphabetic char, result is false
       (∃ c ∈ (a.get i).toList, ¬Char.isAlpha c → result.get i = false)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

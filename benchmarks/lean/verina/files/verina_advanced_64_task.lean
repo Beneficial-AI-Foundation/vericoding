@@ -20,9 +20,7 @@ def removeElement_precond (lst : List Nat) (target : Nat) : Prop :=
 -- </vc-helpers>
 
 def removeElement (lst : List Nat) (target : Nat) (h_precond : removeElement_precond (lst) (target)) : List Nat :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible]
 def removeElement_postcond (lst : List Nat) (target : Nat) (result: List Nat) (h_precond : removeElement_precond (lst) (target)): Prop :=
@@ -39,9 +37,7 @@ def removeElement_postcond (lst : List Nat) (target : Nat) (result: List Nat) (h
 
 theorem removeElement_spec_satisfied (lst: List Nat) (target: Nat) (h_precond : removeElement_precond (lst) (target)):
     removeElement_postcond (lst) (target) (removeElement (lst) (target) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

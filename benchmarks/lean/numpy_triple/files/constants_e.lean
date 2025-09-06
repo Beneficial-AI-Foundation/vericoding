@@ -25,9 +25,7 @@ open Std.Do
 -- </vc-helpers>
 
 def e : Id Float :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem e_spec :
     ⦃⌜True⌝⦄
@@ -54,6 +52,4 @@ theorem e_spec :
       -- NumPy's value should satisfy this within floating-point precision
       Float.abs (Float.log result - 1.0) < 1e-15
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -43,9 +43,7 @@ open Std.Do
 -- </vc-helpers>
 
 def sin {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem sin_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -54,6 +52,4 @@ theorem sin_spec {n : Nat} (x : Vector Float n) :
                               -1 ≤ result.get i ∧ result.get i ≤ 1 ∧
                               -- Additional mathematical properties
                               (x.get i = 0 → result.get i = 0)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

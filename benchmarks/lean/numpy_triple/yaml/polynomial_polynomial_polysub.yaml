@@ -18,7 +18,7 @@ vc-description: |-
       - If i < min(n, m): result[i] = c1[i] - c2[i]
       - If min(n, m) ≤ i < n: result[i] = c1[i]
       - If min(n, m) ≤ i < m: result[i] = -c2[i]
-      
+  
       Additionally, polysub satisfies mathematical properties:
       - Anti-commutativity: polysub c1 c2 = -(polysub c2 c1)
       - Zero identity: polysub c 0 = c and polysub 0 c = -c -/
@@ -32,15 +32,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def polysub {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) : Id (Vector Float (max n m)) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem polysub_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) :
       ⦃⌜True⌝⦄
       polysub c1 c2
@@ -54,11 +50,7 @@ vc-condition: |-
               -c2.get ⟨i.val, h3.2⟩
             else
               0⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

@@ -2,7 +2,7 @@
 
     Computes the inverse sine (arcsine) of each element in the input array.
     The result is the angle in radians whose sine is the input value.
-    
+
     For real arguments, the domain is [-1, 1] and the range is [-π/2, π/2].
     Values outside [-1, 1] will result in NaN.
 
@@ -29,9 +29,7 @@ open Std.Do
 -- </vc-helpers>
 
 def numpy_arcsin {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_arcsin_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜∀ i : Fin n, -1 ≤ x.get i ∧ x.get i ≤ 1⌝⦄
@@ -44,6 +42,4 @@ theorem numpy_arcsin_spec {n : Nat} (x : Vector Float n) :
         (x.get i = 0 → result.get i = 0) ∧
         (x.get i = 1 → result.get i = 1.5707963267948966) ∧
         (x.get i = -1 → result.get i = -1.5707963267948966)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -24,15 +24,11 @@ vc-helpers: |-
   -- Count how many times a specific value appears in the list
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def moveZeroes (xs : List Int) (h_precond : moveZeroes_precond (xs)) : List Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   def countVal (val : Int) : List Int → Nat
     | [] => 0
     | x :: xs =>
@@ -61,11 +57,7 @@ vc-condition: |-
   
   theorem moveZeroes_spec_satisfied (xs: List Int) (h_precond : moveZeroes_precond (xs)) :
       moveZeroes_postcond (xs) (moveZeroes (xs) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

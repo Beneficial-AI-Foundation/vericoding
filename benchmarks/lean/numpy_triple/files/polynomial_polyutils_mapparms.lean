@@ -24,9 +24,7 @@ open Std.Do
 -- </vc-helpers>
 
 def mapparms (old new : Vector Float 2) : Id (Float × Float) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem mapparms_spec (old new : Vector Float 2) 
     (h_old_distinct : old.get ⟨0, by simp⟩ ≠ old.get ⟨1, by simp⟩) :
@@ -41,6 +39,4 @@ theorem mapparms_spec (old new : Vector Float 2)
                   -- Mathematical relationships from numpy implementation
                   scale = newlen / oldlen ∧
                   offset = (old.get ⟨1, by simp⟩ * new.get ⟨0, by simp⟩ - old.get ⟨0, by simp⟩ * new.get ⟨1, by simp⟩) / oldlen⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -39,9 +39,7 @@ the later occurrence in the index vector takes precedence.
 
 def put {n m : Nat} (a : Vector Float n) (ind : Vector Nat m) (v : Vector Float m) 
     (h_valid : ∀ i : Fin m, ind.get i < n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem put_spec {n m : Nat} (a : Vector Float n) (ind : Vector Nat m) (v : Vector Float m) 
     (h_valid : ∀ i : Fin m, ind.get i < n) :
@@ -61,6 +59,4 @@ theorem put_spec {n m : Nat} (a : Vector Float n) (ind : Vector Nat m) (v : Vect
      (∀ i j : Fin m, i ≠ j → ind.get i ≠ ind.get j) → 
      (∀ k : Fin n, ∃ i : Fin m, ind.get i = k) → 
      (∀ k : Fin n, ∃ i : Fin m, ind.get i = k ∧ result.get k = v.get i)) := by
--- <vc-proof>
   sorry
--- </vc-proof>

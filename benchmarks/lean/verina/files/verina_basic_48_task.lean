@@ -104,9 +104,7 @@ theorem check_complete (n : Nat) (x fuel : Nat) (i : Nat)
 -- </vc-helpers>
 
 def isPerfectSquare (n : Nat) : Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def isPerfectSquare_postcond (n : Nat) (result : Bool) : Prop :=
@@ -114,9 +112,7 @@ def isPerfectSquare_postcond (n : Nat) (result : Bool) : Prop :=
 
 theorem isPerfectSquare_spec_satisfied (n : Nat) :
     isPerfectSquare_postcond n (isPerfectSquare n) := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

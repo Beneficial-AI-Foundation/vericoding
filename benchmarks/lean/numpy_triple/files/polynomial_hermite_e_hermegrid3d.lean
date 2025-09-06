@@ -2,14 +2,14 @@
 
     This function evaluates a 3-dimensional HermiteE polynomial series
     on the Cartesian product of coordinate vectors x, y, and z.
-    
+
     The evaluation follows the mathematical formula:
     p(a,b,c) = sum_{i,j,k} c[i,j,k] * He_i(a) * He_j(b) * He_k(c)
-    
+
     where He_i is the i-th probabilist's Hermite polynomial (HermiteE),
     and the points (a,b,c) are formed by taking all combinations of
     elements from x, y, and z.
-    
+
     The result is a 3D tensor where result[i,j,k] contains the polynomial
     value at the point (x[i], y[j], z[k]).
 -/
@@ -19,7 +19,7 @@
 
     The function computes p(a,b,c) = sum_{i,j,k} c[i,j,k] * He_i(a) * He_j(b) * He_k(c)
     where He_i is the i-th probabilist's Hermite polynomial.
-    
+
     Mathematical Properties:
     1. The result represents evaluation at all Cartesian product points
     2. HermiteE polynomials satisfy He_0(x) = 1, He_1(x) = x, 
@@ -39,9 +39,7 @@ def hermegrid3d {nx ny nz : Nat} {deg_x deg_y deg_z : Nat}
     (x : Vector Float nx) (y : Vector Float ny) (z : Vector Float nz)
     (c : Vector (Vector (Vector Float deg_z) deg_y) deg_x) : 
     Id (Vector (Vector (Vector Float nz) ny) nx) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem hermegrid3d_spec {nx ny nz : Nat} {deg_x deg_y deg_z : Nat} 
     (x : Vector Float nx) (y : Vector Float ny) (z : Vector Float nz)
@@ -102,6 +100,4 @@ theorem hermegrid3d_spec {nx ny nz : Nat} {deg_x deg_y deg_z : Nat}
         (x.get i₁ = x.get i₂ ∧ y.get j₁ = y.get j₂ ∧ z.get k₁ = z.get k₂) →
         ((result.get i₁).get j₁).get k₁ = ((result.get i₂).get j₂).get k₂))
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -39,26 +39,18 @@ vc-helpers: |-
         insertElement x (sortList xs)
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def insertionSort (l : List Int) (h_precond : insertionSort_precond (l)) : List Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible]
   def insertionSort_postcond (l : List Int) (result: List Int) (h_precond : insertionSort_precond (l)) : Prop :=
     List.Pairwise (· ≤ ·) result ∧ List.isPerm l result
   
   theorem insertionSort_spec_satisfied (l: List Int) (h_precond : insertionSort_precond (l)) :
       insertionSort_postcond (l) (insertionSort (l) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

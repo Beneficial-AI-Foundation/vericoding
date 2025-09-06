@@ -1,20 +1,20 @@
 /-  Compute the eigenvalues and right eigenvectors of a square matrix.
-    
+
     For a square matrix A, this function computes vectors v and scalars λ such that:
     A * v = λ * v
-    
+
     Returns a pair (eigenvalues, eigenvectors) where:
     - eigenvalues: Vector of eigenvalues λ_i
     - eigenvectors: Matrix where column i is the eigenvector corresponding to eigenvalue λ_i
 -/
 
 /-  Specification: eig computes the eigenvalues and right eigenvectors of a square matrix.
-    
+
     The fundamental eigenvalue equation is: A * v = λ * v, where:
     - A is the input matrix
     - v is an eigenvector (non-zero vector)
     - λ is the corresponding eigenvalue
-    
+
     This specification captures the mathematical properties of eigenvalues and eigenvectors:
     1. The eigenvalue equation holds for each eigenvalue-eigenvector pair
     2. Eigenvectors are normalized (unit length) 
@@ -30,9 +30,7 @@ open Std.Do
 -- </vc-helpers>
 
 def eig {n : Nat} (a : Vector (Vector Float n) n) : Id (Vector Float n × Vector (Vector Float n) n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem eig_spec {n : Nat} (a : Vector (Vector Float n) n) :
     ⦃⌜True⌝⦄
@@ -64,6 +62,4 @@ theorem eig_spec {n : Nat} (a : Vector (Vector Float n) n) :
           let v_k := (eigenvectors.get ⟨k_nat, sorry⟩).get i
           v_k * v_k) = 1)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

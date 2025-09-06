@@ -26,9 +26,7 @@ open Std.Do
 -- </vc-helpers>
 
 def flatnonzero {n : Nat} (a : Vector Float n) : Id (List (Fin n)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem flatnonzero_spec {n : Nat} (a : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -44,6 +42,4 @@ theorem flatnonzero_spec {n : Nat} (a : Vector Float n) :
       (∀ i j : Fin n, i ∈ result → j ∈ result → i < j → 
         result.idxOf i < result.idxOf j)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

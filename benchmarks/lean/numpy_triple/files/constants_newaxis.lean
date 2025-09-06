@@ -14,7 +14,7 @@
 
 /-  Specification: expandToColumn creates a column matrix where each element
     is a singleton vector containing the corresponding element from the input vector.
-    
+
     Mathematical property:
     - The resulting matrix has shape (n, 1)
     - Each row contains exactly one element from the original vector
@@ -35,9 +35,7 @@ inductive NewAxis where
 -- </vc-helpers>
 
 def expandToColumn {T : Type} {n : Nat} (v : Vector T n) (axis : NewAxis) : Id (Vector (Vector T 1) n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem expandToColumn_spec {T : Type} {n : Nat} (v : Vector T n) (axis : NewAxis) :
     ⦃⌜True⌝⦄
@@ -45,6 +43,4 @@ theorem expandToColumn_spec {T : Type} {n : Nat} (v : Vector T n) (axis : NewAxi
     ⦃⇓result => ⌜∀ i : Fin n, 
                    (result.get i).size = 1 ∧ 
                    (result.get i).get ⟨0, by simp⟩ = v.get i⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

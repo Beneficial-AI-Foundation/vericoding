@@ -24,9 +24,7 @@ open Std.Do
 -- </vc-helpers>
 
 def PZERO : Id Float :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem PZERO_spec :
     ⦃⌜True⌝⦄
@@ -60,6 +58,4 @@ theorem PZERO_spec :
       -- Is finite
       Float.isFinite result
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

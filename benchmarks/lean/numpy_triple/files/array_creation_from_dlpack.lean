@@ -34,9 +34,7 @@ structure DLPackObject (α : Type) (n : Nat) where
 
 def from_dlpack {α : Type} {n : Nat} (x : DLPackObject α n) (device : Option String := none) 
     (copy : Option Bool := none) : Id (Vector α n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem from_dlpack_spec {α : Type} {n : Nat} (x : DLPackObject α n) 
     (device : Option String := none) (copy : Option Bool := none) :
@@ -46,6 +44,4 @@ theorem from_dlpack_spec {α : Type} {n : Nat} (x : DLPackObject α n)
     ⦃⇓result => ⌜∀ i : Fin n, result.get i = x.data.get i ∧
                  (copy = some true → result ≠ x.data) ∧
                  (copy = some false → result = x.data)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

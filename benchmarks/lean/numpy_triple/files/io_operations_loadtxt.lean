@@ -23,9 +23,7 @@ open Std.Do
 
 def loadtxt {rows cols : Nat} (filename : String) (delimiter : String := " ") 
     (skiprows : Nat := 0) : Id (Vector (Vector Float cols) rows) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem loadtxt_spec {rows cols : Nat} (filename : String) (delimiter : String := " ") 
     (skiprows : Nat := 0) 
@@ -39,6 +37,4 @@ theorem loadtxt_spec {rows cols : Nat} (filename : String) (delimiter : String :
       (∀ i : Fin rows, ∀ j : Fin cols, 
         let val := (result.get i).get j
         val |>.isFinite → (val ≥ -1e308 ∧ val ≤ 1e308))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

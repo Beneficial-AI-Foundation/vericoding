@@ -33,9 +33,7 @@ open Std.Do
 -- </vc-helpers>
 
 def swapcase {n : Nat} (a : Vector String n) : Id (Vector String n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem swapcase_spec {n : Nat} (a : Vector String n) :
     ⦃⌜True⌝⦄
@@ -72,6 +70,4 @@ theorem swapcase_spec {n : Nat} (a : Vector String n) :
           (origChar.isLower → result.get? ⟨j⟩ = some origChar.toUpper) ∧
           (origChar.isUpper → result.get? ⟨j⟩ = some origChar.toLower) ∧
           (¬origChar.isAlpha → result.get? ⟨j⟩ = some origChar))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

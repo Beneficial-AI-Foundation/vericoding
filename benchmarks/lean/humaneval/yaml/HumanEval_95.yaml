@@ -28,15 +28,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def implementation (D: Std.HashMap String String) : Bool :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   def problem_spec
   -- function signature
   (implementation: Std.HashMap String String → Bool)
@@ -59,12 +55,8 @@ vc-condition: |-
   theorem correctness
   (D: Std.HashMap String String)
   : problem_spec implementation D
-  :=
-
-vc-proof: |-
-  -- <vc-proof>
+  := by
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation (Std.HashMap.ofList [("a", "apple"), ("b", "banana")]) = true

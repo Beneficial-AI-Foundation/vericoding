@@ -30,15 +30,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def update_map (m1 : Map Int Int) (m2 : Map Int Int) (h_precond : update_map_precond (m1) (m2)) : Map Int Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   def find? {K V : Type} [BEq K] [BEq V] (m : Map K V) (k : K) : Option V :=
     m.entries.find? (fun p => p.1 == k) |>.map (·.2)
   @[reducible, simp]
@@ -60,11 +56,7 @@ vc-condition: |-
   
   theorem update_map_spec_satisfied (m1: Map Int Int) (m2: Map Int Int) (h_precond : update_map_precond (m1) (m2)) :
       update_map_postcond (m1) (m2) (update_map (m1) (m2) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

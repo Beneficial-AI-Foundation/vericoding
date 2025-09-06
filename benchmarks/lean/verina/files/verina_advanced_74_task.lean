@@ -25,9 +25,7 @@ def solution_precond (nums : List Nat) : Prop :=
 -- </vc-helpers>
 
 def solution (nums : List Nat) : Nat :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible]
 def solution_postcond (nums : List Nat) (result: Nat) : Prop :=
@@ -65,9 +63,7 @@ def solution_postcond (nums : List Nat) (result: Nat) : Prop :=
 
 theorem solution_spec_satisfied (nums: List Nat) :
     solution_postcond (nums) (solution (nums)) := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

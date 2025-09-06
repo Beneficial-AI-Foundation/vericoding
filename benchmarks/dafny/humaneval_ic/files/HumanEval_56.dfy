@@ -1,0 +1,62 @@
+This verification task implements a bracket matching algorithm that determines if a string containing only "<" and ">" characters has properly nested brackets. Every opening bracket "<" must have a corresponding closing bracket ">" and they must be correctly nested, meaning at no point should the number of closing brackets exceed the number of opening brackets in any prefix.
+
+// ======= TASK =======
+// Given a string containing only "<" and ">" characters, determine if every opening bracket "<" 
+// has a corresponding closing bracket ">" and they are properly nested.
+
+// ======= SPEC REQUIREMENTS =======
+function count_brackets_prefix(s: string, end: int, bracket: char): int
+    requires 0 <= end <= |s|
+    requires bracket == '<' || bracket == '>'
+{
+    if end == 0 then 0
+    else if s[end-1] == bracket then 1 + count_brackets_prefix(s, end-1, bracket)
+    else count_brackets_prefix(s, end-1, bracket)
+}
+
+predicate ValidBracketString(s: string)
+{
+    forall i :: 0 <= i < |s| ==> s[i] == '<' || s[i] == '>'
+}
+
+predicate ProperlyNested(brackets: string)
+    requires ValidBracketString(brackets)
+{
+    // At every prefix, opening brackets >= closing brackets
+    (forall k :: 0 <= k <= |brackets| ==> 
+        count_brackets_prefix(brackets, k, '<') >= count_brackets_prefix(brackets, k, '>')) &&
+    // Total opening brackets == total closing brackets
+    count_brackets_prefix(brackets, |brackets|, '<') == count_brackets_prefix(brackets, |brackets|, '>')
+}
+
+// ======= HELPERS =======
+
+// ======= MAIN METHOD =======
+method correct_bracketing(brackets: string) returns (result: bool)
+    requires ValidBracketString(brackets)
+    ensures result <==> ProperlyNested(brackets)
+{
+    var counter := 0;
+    var i := 0;
+
+    while i < |brackets|
+        invariant 0 <= i <= |brackets|
+        invariant counter == count_brackets_prefix(brackets, i, '<') - count_brackets_prefix(brackets, i, '>')
+        invariant forall k :: 0 <= k <= i ==> count_brackets_prefix(brackets, k, '<') >= count_brackets_prefix(brackets, k, '>')
+    {
+        if brackets[i] == '<' {
+            counter := counter + 1;
+        } else if brackets[i] == '>' {
+            counter := counter - 1;
+            if counter < 0 {
+                assert count_brackets_prefix(brackets, i+1, '<') < count_brackets_prefix(brackets, i+1, '>');
+                assert !(forall k :: 0 <= k <= |brackets| ==> count_brackets_prefix(brackets, k, '<') >= count_brackets_prefix(brackets, k, '>'));
+                result := false;
+                return;
+            }
+        }
+        i := i + 1;
+    }
+
+    result := counter == 0;
+}

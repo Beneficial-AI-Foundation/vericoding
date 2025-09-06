@@ -16,7 +16,7 @@ vc-description: |-
       For a one-dimensional vector, returns its length as a natural number.
       This corresponds to the single element in the shape tuple for 1D arrays
       in NumPy.
-      
+  
       In the general NumPy implementation, shape returns a tuple of dimensions.
       For our Vector type, which is inherently one-dimensional, the shape is
       simply the length parameter n.
@@ -27,7 +27,7 @@ vc-description: |-
       For a Vector of length n, the shape function returns n.
       This captures the fundamental property that the shape of a 1D array
       is its length.
-      
+  
       Precondition: True (shape is defined for all vectors)
       Postcondition: The result equals the length parameter n of the vector
   -/
@@ -41,24 +41,16 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def shape {α : Type} {n : Nat} (a : Vector α n) : Id Nat :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem shape_spec {α : Type} {n : Nat} (a : Vector α n) :
       ⦃⌜True⌝⦄
       shape a
       ⦃⇓result => ⌜result = n⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

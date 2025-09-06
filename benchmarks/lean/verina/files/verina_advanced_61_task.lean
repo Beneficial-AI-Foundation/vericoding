@@ -28,9 +28,7 @@ def computeSuffix (nums : List Int) : List Int :=
 -- </vc-helpers>
 
 def productExceptSelf (nums : List Int) (h_precond : productExceptSelf_precond (nums)) : List Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 -- Specification Helper: Product of a list of Ints
 -- Defined locally if not available/imported
@@ -45,9 +43,7 @@ def productExceptSelf_postcond (nums : List Int) (result: List Int) (h_precond :
 
 theorem productExceptSelf_spec_satisfied (nums: List Int) (h_precond : productExceptSelf_precond (nums)) :
     productExceptSelf_postcond (nums) (productExceptSelf (nums) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

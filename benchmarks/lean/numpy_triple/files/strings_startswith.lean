@@ -20,9 +20,7 @@ open Std.Do
 -- </vc-helpers>
 
 def startswith {n : Nat} (a : Vector String n) (prefixes : Vector String n) : Id (Vector Bool n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem startswith_spec {n : Nat} (a : Vector String n) (prefixes : Vector String n) :
     ⦃⌜True⌝⦄
@@ -38,6 +36,4 @@ theorem startswith_spec {n : Nat} (a : Vector String n) (prefixes : Vector Strin
       (r.get i = false → 
         (prefixes.get i).length > (a.get i).length ∨
         (a.get i).take (prefixes.get i).length ≠ (prefixes.get i))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

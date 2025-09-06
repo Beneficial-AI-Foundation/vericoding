@@ -21,7 +21,7 @@
     - If i < min(n,m), result[i] = c1[i] + c2[i]
     - If min(n,m) ≤ i < n, result[i] = c1[i] (c2 is treated as 0)
     - If min(n,m) ≤ i < m, result[i] = c2[i] (c1 is treated as 0)
-    
+
     The mathematical property: The i-th coefficient of the sum is the sum of
     the i-th coefficients of the input series, treating missing coefficients as 0.
 -/
@@ -35,9 +35,7 @@ open Std.Do
 
 def hermadd {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) : 
     Id (Vector Float (max n m)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem hermadd_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) :
     ⦃⌜True⌝⦄
@@ -54,6 +52,4 @@ theorem hermadd_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) :
                         c2.get ⟨i.val, h2⟩
                       else
                         0⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

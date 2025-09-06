@@ -44,9 +44,7 @@ open Std.Do
 def laggrid2d {nx ny : Nat} {rows cols : Nat} 
     (x : Vector Float nx) (y : Vector Float ny) (c : Vector (Vector Float cols) rows) : 
     Id (Vector (Vector Float ny) nx) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem laggrid2d_spec {nx ny : Nat} {rows cols : Nat} 
     (x : Vector Float nx) (y : Vector Float ny) (c : Vector (Vector Float cols) rows)
@@ -61,6 +59,4 @@ theorem laggrid2d_spec {nx ny : Nat} {rows cols : Nat}
       (∀ i : Fin nx, ∀ j : Fin ny, 
         ∃ val : Float, (result.get i).get j = val)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

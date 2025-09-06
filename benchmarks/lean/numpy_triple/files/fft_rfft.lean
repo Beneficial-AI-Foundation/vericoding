@@ -13,14 +13,14 @@
 
 /-  Specification for rfft: 
     The real FFT computes the DFT of real-valued input, returning only non-negative frequency components.
-    
+
     Mathematical properties:
     1. Output contains (n/2)+1 complex values representing frequencies 0 to n/2
     2. DC component (k=0) is always real (imaginary part is 0)
     3. For even n, Nyquist frequency (k=n/2) is also real
     4. The result represents the Discrete Fourier Transform for k = 0, 1, ..., n/2
     5. Each output[k] = Σ(j=0 to n-1) input[j] * exp(-2πi*k*j/n)
-    
+
     Sanity checks:
     - For constant input signals, only the DC component is non-zero
     - The transform is linear: rfft(a + b) = rfft(a) + rfft(b)
@@ -68,9 +68,7 @@ def complexSum {n : Nat} (f : Fin n → Complex) : Complex :=
 -- </vc-helpers>
 
 def rfft {n : Nat} (a : Vector Float n) : Id (Vector Complex ((n / 2) + 1)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem rfft_spec {n : Nat} (a : Vector Float n) (h : n > 0) :
     ⦃⌜n > 0⌝⦄
@@ -82,6 +80,4 @@ theorem rfft_spec {n : Nat} (a : Vector Float n) (h : n > 0) :
       (if h0 : 0 < (n / 2) + 1 then (result.get ⟨0, h0⟩).im = 0 else True) ∧
       -- For even n, Nyquist frequency is real
       (n % 2 = 0 → (if hn : n / 2 < (n / 2) + 1 then (result.get ⟨n / 2, hn⟩).im = 0 else True))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

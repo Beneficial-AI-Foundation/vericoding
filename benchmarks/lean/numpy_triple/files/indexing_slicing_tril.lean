@@ -9,30 +9,30 @@
 -/
 
 /-  numpy.tril: Lower triangle of an array.
-    
+
     Return a copy of an array with elements above the k-th diagonal zeroed.
     For simplicity, this specification focuses on square matrices and k=0 (main diagonal).
-    
+
     Given a flattened square matrix (stored in row-major order), returns a copy
     where elements above the main diagonal are set to zero.
-    
+
     This captures the essential mathematical property of extracting the lower
     triangular part of a matrix.
 -/
 
 /-  Specification: tril returns the lower triangle of a matrix with elements above the main diagonal zeroed.
-    
+
     Mathematical Properties:
     1. Shape Preservation: The output has the same shape as the input
     2. Lower Triangle Preservation: Elements at or below the main diagonal are unchanged
     3. Upper Triangle Zeroing: Elements above the main diagonal are set to zero
     4. Diagonal Definition: For a square matrix stored in row-major order,
        element at position (i,j) corresponds to index i*n + j in the flattened vector
-    
+
     The main diagonal consists of elements where i = j.
     Lower triangle consists of elements where i ≥ j.
     Upper triangle consists of elements where i < j.
-    
+
     This specification provides a foundation for formal verification of
     triangular matrix operations in numerical computing.
 -/
@@ -45,9 +45,7 @@ open Std.Do
 -- </vc-helpers>
 
 def tril {n : Nat} (matrix : Vector Float (n * n)) : Id (Vector Float (n * n)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem tril_spec {n : Nat} (matrix : Vector Float (n * n)) :
     ⦃⌜True⌝⦄
@@ -63,6 +61,4 @@ theorem tril_spec {n : Nat} (matrix : Vector Float (n * n)) :
       (∀ i : Fin n, ∀ j : Fin n, i.val < j.val → 
         ∃ (hi : i.val * n + j.val < n * n),
           result.get ⟨i.val * n + j.val, hi⟩ = 0)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

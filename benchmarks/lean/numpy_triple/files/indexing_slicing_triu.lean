@@ -9,28 +9,28 @@
 -/
 
 /-  Upper triangle of a matrix. Returns a copy of the matrix with elements below the k-th diagonal zeroed.
-    
+
     Given a matrix m and an integer k, this function returns a new matrix where:
     - Elements at position (i,j) where i+k <= j are preserved (upper triangle including k-th diagonal)
     - Elements at position (i,j) where i+k > j are set to zero (below k-th diagonal)
-    
+
     The diagonal offset k works as follows:
     - k = 0: main diagonal (default)
     - k > 0: diagonal above the main diagonal
     - k < 0: diagonal below the main diagonal -/
 
 /-  Specification: triu returns the upper triangle of a matrix with elements below the k-th diagonal set to zero.
-    
+
     Mathematical properties:
     1. Elements on and above the k-th diagonal are preserved: if i+k <= j, then result[i][j] = m[i][j]
     2. Elements below the k-th diagonal are zeroed: if i+k > j, then result[i][j] = 0
     3. The result matrix has the same dimensions as the input matrix
-    
+
     The k-th diagonal is defined as positions (i,j) where i+k = j:
     - When k=0: main diagonal (i=j)
     - When k>0: diagonal above main diagonal 
     - When k<0: diagonal below main diagonal
-    
+
     This captures the essential behavior of numpy.triu which extracts the upper triangular part
     of a matrix relative to the k-th diagonal. -/
 
@@ -42,9 +42,7 @@ open Std.Do
 -- </vc-helpers>
 
 def triu {rows cols : Nat} (m : Vector (Vector Float cols) rows) (k : Int) : Id (Vector (Vector Float cols) rows) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem triu_spec {rows cols : Nat} (m : Vector (Vector Float cols) rows) (k : Int) :
     ⦃⌜True⌝⦄
@@ -54,6 +52,4 @@ theorem triu_spec {rows cols : Nat} (m : Vector (Vector Float cols) rows) (k : I
         (result.get i).get j = (m.get i).get j) ∧
       (∀ i : Fin rows, ∀ j : Fin cols, (i.val : Int) + k > (j.val : Int) → 
         (result.get i).get j = (0 : Float))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

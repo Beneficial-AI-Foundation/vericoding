@@ -21,9 +21,7 @@ def myMin_precond (x : Int) (y : Int) : Prop :=
 -- </vc-helpers>
 
 def myMin (x : Int) (y : Int) (h_precond : myMin_precond (x) (y)) : Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def myMin_postcond (x : Int) (y : Int) (result: Int) (h_precond : myMin_precond (x) (y)) :=
@@ -31,9 +29,7 @@ def myMin_postcond (x : Int) (y : Int) (result: Int) (h_precond : myMin_precond 
 
 theorem myMin_spec_satisfied (x: Int) (y: Int) (h_precond : myMin_precond (x) (y)) :
     myMin_postcond (x) (y) (myMin (x) (y) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

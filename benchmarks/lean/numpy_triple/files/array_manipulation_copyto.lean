@@ -23,14 +23,10 @@ open Std.Do
 -- </vc-helpers>
 
 def copyto {n : Nat} {T : Type} (dst : Vector T n) (src : Vector T n) (mask : Vector Bool n) : Id (Vector T n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem copyto_spec {n : Nat} {T : Type} (dst : Vector T n) (src : Vector T n) (mask : Vector Bool n) :
     ⦃⌜True⌝⦄
     copyto dst src mask
     ⦃⇓result => ⌜∀ i : Fin n, result.get i = if mask.get i then src.get i else dst.get i⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

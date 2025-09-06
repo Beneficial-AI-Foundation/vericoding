@@ -22,15 +22,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def startswith {n : Nat} (a : Vector String n) (prefixes : Vector String n) : Id (Vector Bool n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem startswith_spec {n : Nat} (a : Vector String n) (prefixes : Vector String n) :
       ⦃⌜True⌝⦄
       startswith a prefixes
@@ -45,11 +41,7 @@ vc-condition: |-
         (r.get i = false → 
           (prefixes.get i).length > (a.get i).length ∨
           (a.get i).take (prefixes.get i).length ≠ (prefixes.get i))⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

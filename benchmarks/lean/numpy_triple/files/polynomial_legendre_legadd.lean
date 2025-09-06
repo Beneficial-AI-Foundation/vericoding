@@ -20,9 +20,7 @@ open Std.Do
 -- </vc-helpers>
 
 def legadd {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) : Id (Vector Float (max n m)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem legadd_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) :
     ⦃⌜True⌝⦄
@@ -34,6 +32,4 @@ theorem legadd_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) :
           (if h1 : i.val < n then c1.get ⟨i.val, h1⟩ else 0) +
           (if h2 : i.val < m then c2.get ⟨i.val, h2⟩ else 0)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

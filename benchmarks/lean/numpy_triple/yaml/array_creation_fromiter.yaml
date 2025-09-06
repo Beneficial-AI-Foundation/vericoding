@@ -27,24 +27,16 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def fromiter {α : Type} (n : Nat) (iter : Fin n → α) : Id (Vector α n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem fromiter_spec {α : Type} (n : Nat) (iter : Fin n → α) :
       ⦃⌜True⌝⦄
       fromiter n iter
       ⦃⇓result => ⌜∀ i : Fin n, result.get i = iter i⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

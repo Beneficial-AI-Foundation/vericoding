@@ -16,7 +16,7 @@
 
     This is a reduction operation that finds the smallest value in the array.
     NaN values are propagated - if any element is NaN, the result will be NaN.
-    
+
     Being an alias, it has identical behavior to amin but provides a more
     intuitive name for the operation.
 -/
@@ -25,7 +25,7 @@
 
     Precondition: True (non-empty constraint is enforced by type Vector Float (n + 1))
     Postcondition: result is the minimum value and is an element of the vector
-    
+
     Properties:
     1. The result is actually an element of the input vector
     2. The result is less than or equal to all elements in the vector
@@ -41,15 +41,11 @@ open Std.Do
 -- </vc-helpers>
 
 def min {n : Nat} (a : Vector Float (n + 1)) : Id Float :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem min_spec {n : Nat} (a : Vector Float (n + 1)) :
     ⦃⌜True⌝⦄
     min a
     ⦃⇓result => ⌜(∃ i : Fin (n + 1), a.get i = result) ∧
                 (∀ i : Fin (n + 1), result ≤ a.get i)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

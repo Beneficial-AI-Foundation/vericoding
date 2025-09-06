@@ -23,14 +23,10 @@ open Std.Do
 -- </vc-helpers>
 
 def fromfunction {n : Nat} (f : Fin n → Float) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem fromfunction_spec {n : Nat} (f : Fin n → Float) :
     ⦃⌜True⌝⦄
     fromfunction f
     ⦃⇓result => ⌜∀ i : Fin n, result.get i = f i⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

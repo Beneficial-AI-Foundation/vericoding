@@ -23,15 +23,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def implementation (text: String) : Option (List String) × Option Nat :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   def problem_spec
   -- function signature
   -- return a tuple of Option (List String) and Option Nat
@@ -63,12 +59,8 @@ vc-condition: |-
   
   theorem correctness
   (text: String)
-  : problem_spec implementation text :=
-
-vc-proof: |-
-  -- <vc-proof>
+  : problem_spec implementation text := by
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation "Hello world!" = (some ["Hello", "world!"], none)

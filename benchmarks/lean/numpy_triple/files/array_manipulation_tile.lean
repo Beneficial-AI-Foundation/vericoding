@@ -24,9 +24,7 @@ open Std.Do
 -- </vc-helpers>
 
 def tile {α : Type} {n : Nat} (A : Vector α n) (reps : Nat) : Id (Vector α (n * reps)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem tile_spec {α : Type} {n : Nat} (A : Vector α n) (reps : Nat) (h_reps : reps > 0) :
     ⦃⌜reps > 0⌝⦄
@@ -42,6 +40,4 @@ theorem tile_spec {α : Type} {n : Nat} (A : Vector α n) (reps : Nat) (h_reps :
         -- If n = succ n', then n > 0
         exact Nat.mod_lt i.val (Nat.zero_lt_succ n')
     ⟩⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

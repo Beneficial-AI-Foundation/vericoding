@@ -24,7 +24,7 @@ vc-description: |-
   
       Precondition: True (no special preconditions)
       Postcondition: For all indices i, result[i] = m[n-1-i]
-      
+  
       This specification captures both the sanity check (result has same size)
       and the mathematical property (elements are reversed).
   -/
@@ -38,26 +38,18 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def flipud {n : Nat} (m : Vector Float n) : Id (Vector Float n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem flipud_spec {n : Nat} (m : Vector Float n) :
       ⦃⌜True⌝⦄
       flipud m
       ⦃⇓result => ⌜∀ i : Fin n, result.get i = m.get ⟨n - 1 - i.val, by 
                      have h : i.val < n := i.isLt
                      omega⟩⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

@@ -11,19 +11,19 @@ vc-description: |-
   -/
   
   /-  An array with ones at and below the given diagonal and zeros elsewhere.
-      
+  
       Creates a matrix of shape (N, M) where T[i,j] = 1 if j ≤ i + k, and 0 otherwise.
       The parameter k controls the diagonal: k = 0 is the main diagonal,
       k < 0 is below it, and k > 0 is above it.
   -/
   
   /-  Specification: tri creates a lower triangular matrix with specified diagonal offset.
-      
+  
       The resulting matrix has ones at and below the k-th diagonal, zeros elsewhere.
       For each position (i, j):
       - If j ≤ i + k, then the value is 1.0
       - Otherwise, the value is 0.0
-      
+  
       This captures the mathematical property that defines a generalized lower triangular matrix.
   -/
 
@@ -36,25 +36,17 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def tri (N M : Nat) (k : Int) : Id (Vector (Vector Float M) N) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem tri_spec (N M : Nat) (k : Int) :
       ⦃⌜True⌝⦄
       tri N M k
       ⦃⇓result => ⌜∀ (i : Fin N) (j : Fin M), 
                     (result.get i).get j = if (j.val : Int) ≤ (i.val : Int) + k then 1.0 else 0.0⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

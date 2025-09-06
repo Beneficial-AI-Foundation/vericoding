@@ -28,16 +28,12 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def lagadd {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) : 
       Id (Vector Float (max n m)) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem lagadd_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) :
       ⦃⌜True⌝⦄
       lagadd c1 c2
@@ -50,11 +46,7 @@ vc-condition: |-
         -- Basic sanity: non-empty inputs produce non-empty output  
         (n > 0 ∨ m > 0 → max n m > 0)
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

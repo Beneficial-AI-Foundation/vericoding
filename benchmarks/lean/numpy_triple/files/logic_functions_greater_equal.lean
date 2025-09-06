@@ -3,17 +3,17 @@
     Returns a boolean vector where each element indicates whether the
     corresponding element in x1 is greater than or equal to the corresponding 
     element in x2.
-    
+
     This is equivalent to x1 >= x2 in terms of array broadcasting.
 -/
 
 /-  Specification: numpy.greater_equal returns a boolean vector where each element
     is true if and only if the corresponding element in x1 is greater than or equal
     to the corresponding element in x2.
-    
+
     Precondition: True (no special preconditions for comparison)
     Postcondition: For all indices i, result[i] = true ↔ x1[i] >= x2[i]
-    
+
     Additional properties:
     - The result is the element-wise negation of less(x1, x2)
     - Reflexivity: greater_equal(x, x) returns all true
@@ -33,9 +33,7 @@ open Std.Do
 -- </vc-helpers>
 
 def numpy_greater_equal {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Bool n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_greater_equal_spec {n : Nat} (x1 x2 : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -48,6 +46,4 @@ theorem numpy_greater_equal_spec {n : Nat} (x1 x2 : Vector Float n) :
                    (x2.get i >= x1.get i) → x1.get i = x2.get i) ∧
                   -- Boolean result: each element is either true or false
                   (∀ i : Fin n, result.get i = true ∨ result.get i = false)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

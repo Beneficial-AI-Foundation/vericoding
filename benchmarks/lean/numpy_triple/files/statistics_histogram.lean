@@ -12,10 +12,10 @@
 
     Computes the histogram of a dataset by dividing the range into equal-width bins
     and counting the number of values that fall into each bin.
-    
+
     The function returns both the histogram counts and the bin edges.
     For n_bins bins, there are n_bins+1 bin edges.
-    
+
     This implementation focuses on the core mathematical properties:
     - Monotonically increasing bin edges
     - Equal bin widths (uniform binning)
@@ -24,14 +24,14 @@
 -/
 
 /-  Specification: histogram correctly partitions data into bins and counts occurrences.
-    
+
     The histogram satisfies fundamental mathematical properties:
     1. Bin edges are monotonically increasing
     2. The first edge equals min_val and the last edge equals max_val
     3. Bin widths are equal for uniform binning
     4. Each bin count equals the number of data points in that bin
     5. The sum of all bin counts equals the number of data points in range
-    
+
     Precondition: Number of bins > 0 and min_val < max_val
     Postcondition: The result satisfies the histogram mathematical properties
 -/
@@ -46,9 +46,7 @@ open Std.Do
 def histogram {n_data n_bins : Nat} (data : Vector Float n_data) (min_val max_val : Float)
     (h_bins_pos : n_bins > 0) (h_range : min_val < max_val) : 
     Id (Vector Nat n_bins × Vector Float (n_bins + 1)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem histogram_spec {n_data n_bins : Nat} (data : Vector Float n_data) (min_val max_val : Float)
     (h_bins_pos : n_bins > 0) (h_range : min_val < max_val) :
@@ -69,6 +67,4 @@ theorem histogram_spec {n_data n_bins : Nat} (data : Vector Float n_data) (min_v
       -- Conservation: total count equals number of data points in range
       (List.sum (List.map result.1.get (List.finRange n_bins)) = 
         (data.toList.filter (fun x => min_val ≤ x ∧ x ≤ max_val)).length)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

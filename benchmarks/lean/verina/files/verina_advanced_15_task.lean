@@ -19,9 +19,7 @@ def increasingTriplet_precond (nums : List Int) : Prop :=
 -- </vc-helpers>
 
 def increasingTriplet (nums : List Int) (h_precond : increasingTriplet_precond (nums)) : Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible]
 def increasingTriplet_postcond (nums : List Int) (result: Bool) (h_precond : increasingTriplet_precond (nums)) : Prop :=
@@ -45,9 +43,7 @@ def increasingTriplet_postcond (nums : List Int) (result: Bool) (h_precond : inc
 
 theorem increasingTriplet_spec_satisfied (nums: List Int) (h_precond : increasingTriplet_precond (nums)) :
     increasingTriplet_postcond (nums) (increasingTriplet (nums) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

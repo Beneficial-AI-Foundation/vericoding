@@ -25,26 +25,18 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def iter_copy (s : Array Int) (h_precond : iter_copy_precond (s)) : Array Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def iter_copy_postcond (s : Array Int) (result: Array Int) (h_precond : iter_copy_precond (s)) :=
     (s.size = result.size) ∧ (∀ i : Nat, i < s.size → s[i]! = result[i]!)
   
   theorem iter_copy_spec_satisfied (s: Array Int) (h_precond : iter_copy_precond (s)) :
       iter_copy_postcond (s) (iter_copy (s) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

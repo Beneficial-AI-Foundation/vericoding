@@ -45,9 +45,7 @@ open Std.Do
 -- </vc-helpers>
 
 def sinc {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem sinc_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -61,6 +59,4 @@ theorem sinc_spec {n : Nat} (x : Vector Float n) :
                     (x.get i = 0 → result.get i = 1) ∧
                     -- Continuity preservation (reflexivity property)
                     (result.get i = result.get i)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

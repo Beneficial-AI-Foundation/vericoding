@@ -9,17 +9,17 @@
 -/
 
 /-  numpy.nditer: Creates an iterator for a vector that provides position and element access.
-    
+
     This is a simplified 1D version of numpy's nditer functionality.
     Returns an iterator that starts at position 0 and holds the original data.
     The iterator can be used to traverse the vector elements sequentially.
-    
+
     In numpy, nditer is a powerful multi-dimensional iterator, but for our
     Vector-based specification, we simplify it to basic position tracking.
 -/
 
 /-  Specification: nditer creates a valid iterator that starts at position 0.
-    
+
     This comprehensive specification captures:
     1. The iterator starts at position 0
     2. The iterator contains the original data unchanged
@@ -37,9 +37,7 @@ open Std.Do
 -- </vc-helpers>
 
 def nditer {n : Nat} (arr : Vector Float n) : Id (Nat × Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem nditer_spec {n : Nat} (arr : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -48,6 +46,4 @@ theorem nditer_spec {n : Nat} (arr : Vector Float n) :
                (iter.2 = arr) ∧
                (iter.1 ≤ n) ∧
                (∀ i : Fin n, iter.2.get i = arr.get i)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

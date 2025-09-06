@@ -3,7 +3,7 @@
     Computes the singular values of a matrix without computing the U and V matrices.
     The singular values are the square roots of the eigenvalues of A^T @ A (or A @ A^T),
     returned in descending order.
-    
+
     This is equivalent to calling numpy.linalg.svd(x, compute_uv=False).
     For an m×n matrix, this returns min(m,n) singular values.
 -/
@@ -15,7 +15,7 @@
     2. Sorted in descending order
     3. Square roots of eigenvalues of x^T @ x
     4. Measure the "magnitude" of the matrix in each singular direction
-    
+
     Precondition: True (singular values are defined for any matrix)
     Postcondition: Returns singular values in descending order with mathematical properties
 -/
@@ -28,9 +28,7 @@ open Std.Do
 -- </vc-helpers>
 
 def svdvals {m n : Nat} (x : Vector (Vector Float n) m) : Id (Vector Float (min m n)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem svdvals_spec {m n : Nat} (x : Vector (Vector Float n) m) :
     ⦃⌜True⌝⦄
@@ -57,6 +55,4 @@ theorem svdvals_spec {m n : Nat} (x : Vector (Vector Float n) m) :
                      (x.get row).get col * (x.get row).get col) (List.finRange n)))
                    (List.finRange m)))
                  ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

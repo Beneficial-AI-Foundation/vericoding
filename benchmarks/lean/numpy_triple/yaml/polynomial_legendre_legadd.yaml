@@ -22,15 +22,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def legadd {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) : Id (Vector Float (max n m)) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem legadd_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) :
       ⦃⌜True⌝⦄
       legadd c1 c2
@@ -41,11 +37,7 @@ vc-condition: |-
             (if h1 : i.val < n then c1.get ⟨i.val, h1⟩ else 0) +
             (if h2 : i.val < m then c2.get ⟨i.val, h2⟩ else 0)
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

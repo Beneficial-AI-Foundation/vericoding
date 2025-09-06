@@ -25,9 +25,7 @@ import Std.Data.HashMap
 -- </vc-helpers>
 
 def implementation (file_name : String) : String :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -53,10 +51,8 @@ spec result
 
 theorem correctness
 (file_name : String)
-: problem_spec implementation file_name :=
--- <vc-proof>
+: problem_spec implementation file_name := by
   sorry
--- </vc-proof>
 
 -- #test implementation "example.txt" = "Yes"
 -- #test implementation "1example.dll" = "No"

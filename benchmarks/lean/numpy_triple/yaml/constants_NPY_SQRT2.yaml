@@ -21,15 +21,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def NPY_SQRT2 : Id Float :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem NPY_SQRT2_spec :
       ⦃⌜True⌝⦄
       NPY_SQRT2
@@ -41,11 +37,7 @@ vc-condition: |-
         -- Value check: result is approximately 1.414213562373095
         Float.abs (result - 1.414213562373095048801688724209698079) < 1e-15
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

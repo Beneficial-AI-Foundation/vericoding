@@ -27,9 +27,7 @@ def copy (a : Array Int) (i : Nat) (acc : Array Int) : Array Int :=
 -- </vc-helpers>
 
 def append (a : Array Int) (b : Int) (h_precond : append_precond (a) (b)) : Array Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def append_postcond (a : Array Int) (b : Int) (result: Array Int) (h_precond : append_precond (a) (b)) :=
@@ -39,9 +37,7 @@ def append_postcond (a : Array Int) (b : Int) (result: Array Int) (h_precond : a
 
 theorem append_spec_satisfied (a: Array Int) (b: Int) (h_precond : append_precond (a) (b)) :
     append_postcond (a) (b) (append (a) (b) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

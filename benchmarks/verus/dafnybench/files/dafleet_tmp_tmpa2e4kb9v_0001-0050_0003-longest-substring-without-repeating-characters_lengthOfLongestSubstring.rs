@@ -87,8 +87,8 @@ pub open spec fn valid_interval(s: Seq<char>, iv: Interval) -> bool {
 // <vc-spec>
 fn lengthOfLongestSubstring(s: Seq<char>) -> (result: (usize, Ghost<Interval>))
     ensures 
-        valid_interval(s, result.1@) && length(result.1@) == result.0 as int,    /** `result.1@` is valid */
-        forall|iv: Interval| valid_interval(s, iv) ==> length(iv) <= result.0 as int,  /** `result.1@` is longest */
+        (valid_interval(s, result.1@) && length(result.1@) == result.0 as int),    // `result.1@` is valid 
+        (forall|iv: Interval| valid_interval(s, iv) ==> length(iv) <= result.0 as int),  // `result.1@` is longest 
 // </vc-spec>
 // <vc-code>
 {

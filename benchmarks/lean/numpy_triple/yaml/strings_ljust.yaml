@@ -9,7 +9,7 @@ vc-description: |-
       - a: Input array of strings
       - width: Target width for each string
       - fillchar: Character to use for padding (must be exactly one character)
-      
+  
       Returns:
       - Array where each string is left-justified to the specified width
   -/
@@ -34,15 +34,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def ljust {n : Nat} (a : Vector String n) (width : Nat) (fillchar : String) : Id (Vector String n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem ljust_spec {n : Nat} (a : Vector String n) (width : Nat) (fillchar : String)
       (h_fillchar : fillchar.length = 1) :
       ⦃⌜fillchar.length = 1⌝⦄
@@ -68,11 +64,7 @@ vc-condition: |-
           (orig.length < width → res.length = width) ∧
           -- 6. Consistency constraint: all operations preserve the vector structure
           (orig.length = 0 → res.length = width)⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

@@ -27,9 +27,7 @@ open Std.Do
 -- </vc-helpers>
 
 def around {n : Nat} (a : Vector Float n) (decimals : Int := 0) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem around_spec {n : Nat} (a : Vector Float n) (decimals : Int := 0) :
     ⦃⌜True⌝⦄
@@ -44,6 +42,4 @@ theorem around_spec {n : Nat} (a : Vector Float n) (decimals : Int := 0) :
        (result.get i - 1 ≤ a.get i ∧ a.get i ≤ result.get i + 1)) ∧
       -- Symmetry: rounding negatives has expected behavior
       (a.get i ≥ 0 → result.get i ≥ 0)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

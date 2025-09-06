@@ -19,9 +19,7 @@ def ifPowerOfFour_precond (n : Nat) : Prop :=
 -- </vc-helpers>
 
 def ifPowerOfFour (n : Nat) (h_precond : ifPowerOfFour_precond (n)) : Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible]
 def ifPowerOfFour_postcond (n : Nat) (result: Bool) (h_precond : ifPowerOfFour_precond (n)) : Prop :=
@@ -29,9 +27,7 @@ def ifPowerOfFour_postcond (n : Nat) (result: Bool) (h_precond : ifPowerOfFour_p
 
 theorem ifPowerOfFour_spec_satisfied (n: Nat) (h_precond : ifPowerOfFour_precond (n)) :
     ifPowerOfFour_postcond (n) (ifPowerOfFour (n) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

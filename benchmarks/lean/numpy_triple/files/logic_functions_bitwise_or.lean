@@ -13,7 +13,7 @@
 
     Precondition: True (no special preconditions for bitwise OR)
     Postcondition: For all indices i, result[i] = bitwise_or(x1[i], x2[i])
-    
+
     Mathematical properties:
     - Commutative: bitwise_or(x1[i], x2[i]) = bitwise_or(x2[i], x1[i])
     - Identity: bitwise_or(x[i], 0) = x[i]
@@ -40,9 +40,7 @@ axiom Int.bitwise_or_idempotent (x : Int) : Int.bitwise_or x x = x
 -- </vc-helpers>
 
 def numpy_bitwise_or {n : Nat} (x1 x2 : Vector Int n) : Id (Vector Int n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_bitwise_or_spec {n : Nat} (x1 x2 : Vector Int n) :
     ⦃⌜True⌝⦄
@@ -54,6 +52,4 @@ theorem numpy_bitwise_or_spec {n : Nat} (x1 x2 : Vector Int n) :
                  Int.bitwise_or (x1.get i) 0 = x1.get i ∧
                  -- Idempotent property
                  Int.bitwise_or (x1.get i) (x1.get i) = x1.get i⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

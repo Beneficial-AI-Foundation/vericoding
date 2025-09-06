@@ -10,16 +10,16 @@ vc-description: |-
   -/
   
   /-  Returns the index of the minimum value in a non-empty vector, ignoring NaN values.
-      
+  
       This function finds the index of the minimum value among all non-NaN elements in the vector.
       Requires that at least one element is not NaN, otherwise it would raise an error.
-      
+  
       In case of multiple occurrences of the minimum values, the indices
       corresponding to the first occurrence are returned.
   -/
   
   /-  Specification: nanargmin returns the index of the first minimum element among non-NaN values.
-      
+  
       This comprehensive specification captures:
       1. The returned index points to an element that is not NaN
       2. The element at the returned index is the minimum among all non-NaN elements
@@ -39,26 +39,18 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def nanargmin {n : Nat} (a : Vector Float (n + 1)) (h_not_all_nan : ∃ i : Fin (n + 1), ¬(a.get i).isNaN) : Id (Fin (n + 1)) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem nanargmin_spec {n : Nat} (a : Vector Float (n + 1)) (h_not_all_nan : ∃ i : Fin (n + 1), ¬(a.get i).isNaN) :
       ⦃⌜∃ i : Fin (n + 1), ¬(a.get i).isNaN⌝⦄
       nanargmin a h_not_all_nan
       ⦃⇓idx => ⌜¬(a.get idx).isNaN ∧ 
                (∀ j : Fin (n + 1), ¬(a.get j).isNaN → a.get idx ≤ a.get j) ∧
                (∀ j : Fin (n + 1), ¬(a.get j).isNaN → a.get j = a.get idx → idx ≤ j)⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

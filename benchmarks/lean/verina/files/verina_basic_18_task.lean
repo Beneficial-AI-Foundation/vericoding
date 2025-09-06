@@ -22,9 +22,7 @@ def sumOfDigits_precond (n : Nat) : Prop :=
 -- </vc-helpers>
 
 def sumOfDigits (n : Nat) (h_precond : sumOfDigits_precond (n)) : Nat :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def sumOfDigits_postcond (n : Nat) (result: Nat) (h_precond : sumOfDigits_precond (n)) :=
@@ -33,9 +31,7 @@ def sumOfDigits_postcond (n : Nat) (result: Nat) (h_precond : sumOfDigits_precon
 
 theorem sumOfDigits_spec_satisfied (n: Nat) (h_precond : sumOfDigits_precond (n)) :
     sumOfDigits_postcond (n) (sumOfDigits (n) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

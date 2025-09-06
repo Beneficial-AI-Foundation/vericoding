@@ -18,10 +18,10 @@
     - a: Input array of strings
     - width: Target width for each string
     - fillchar: Character to use for padding (must be exactly one character)
-    
+
     Returns:
     - Array where each string is right-justified to the specified width
-    
+
     Mathematical Properties:
     1. Length preservation: If original.length >= width, return original unchanged
     2. Right-justification: If original.length < width, pad on the left with fillchar
@@ -49,9 +49,7 @@ open Std.Do
 -- </vc-helpers>
 
 def rjust {n : Nat} (a : Vector String n) (width : Nat) (fillchar : String) : Id (Vector String n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem rjust_spec {n : Nat} (a : Vector String n) (width : Nat) (fillchar : String)
     (h_fillchar : fillchar.length = 1) :
@@ -78,6 +76,4 @@ theorem rjust_spec {n : Nat} (a : Vector String n) (width : Nat) (fillchar : Str
         (orig.length < width → res.length = width) ∧
         -- 6. Consistency constraint: all operations preserve the vector structure
         (orig.length = 0 → res.length = width)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

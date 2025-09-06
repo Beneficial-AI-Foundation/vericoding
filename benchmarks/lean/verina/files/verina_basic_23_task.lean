@@ -22,9 +22,7 @@ def differenceMinMax_precond (a : Array Int) : Prop :=
 -- </vc-helpers>
 
 def differenceMinMax (a : Array Int) (h_precond : differenceMinMax_precond (a)) : Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def differenceMinMax_postcond (a : Array Int) (result: Int) (h_precond : differenceMinMax_precond (a)) :=
@@ -32,9 +30,7 @@ def differenceMinMax_postcond (a : Array Int) (result: Int) (h_precond : differe
 
 theorem differenceMinMax_spec_satisfied (a: Array Int) (h_precond : differenceMinMax_precond (a)) :
     differenceMinMax_postcond (a) (differenceMinMax (a) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

@@ -1,20 +1,20 @@
 /-  numpy.nextafter: Return the next floating-point value after x1 towards x2, element-wise.
-    
+
     Returns the next representable floating-point value after x1 in the direction of x2.
     This function is essential for numerical computing and provides fine-grained control
     over floating-point precision. It's based on the C math library's nextafter function.
-    
+
     For each element pair (x1[i], x2[i]):
     - If x1[i] == x2[i], returns x1[i]
     - If x1[i] < x2[i], returns the smallest floating-point value greater than x1[i]
     - If x1[i] > x2[i], returns the largest floating-point value less than x1[i]
-    
+
     Special cases:
     - nextafter(x, +∞) returns the next value towards positive infinity
     - nextafter(x, -∞) returns the next value towards negative infinity
     - nextafter(±∞, y) returns ±∞ for any finite y
     - nextafter(NaN, y) or nextafter(x, NaN) returns NaN
-    
+
     This function is crucial for:
     - Numerical differentiation algorithms
     - Root finding methods requiring precise stepping
@@ -24,13 +24,13 @@
 
 /-  Specification: numpy.nextafter returns a vector where each element is the next
     representable floating-point value after x1[i] in the direction of x2[i].
-    
+
     Precondition: True (no special preconditions for nextafter)
     Postcondition: For all indices i:
       - If x1[i] == x2[i], then result[i] = x1[i]
       - If x1[i] < x2[i], then result[i] is the smallest float greater than x1[i]
       - If x1[i] > x2[i], then result[i] is the largest float less than x1[i]
-    
+
     Mathematical properties:
       1. Direction consistency: result[i] moves towards x2[i]
       2. Monotonicity: if x1[i] < x2[i], then x1[i] < result[i] ≤ x2[i]
@@ -49,9 +49,7 @@ open Std.Do
 -- </vc-helpers>
 
 def nextafter {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem nextafter_spec {n : Nat} (x1 x2 : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -68,6 +66,4 @@ theorem nextafter_spec {n : Nat} (x1 x2 : Vector Float n) :
       -- Finiteness preservation: if both inputs are finite, result is finite (unless at boundary)
       (Float.isFinite (x1.get i) ∧ Float.isFinite (x2.get i) ∧ x1.get i ≠ x2.get i → 
        Float.isFinite (result.get i) ∨ result.get i = Float.inf ∨ result.get i = -Float.inf)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

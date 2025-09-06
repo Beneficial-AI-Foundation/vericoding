@@ -13,7 +13,7 @@
 -/
 
 /-  Specification: random generates a float in the range [0, 1)
-    
+
     The random function should satisfy:
     1. The result is always in the range [0, 1)
     2. The result is deterministic given the same seed
@@ -36,14 +36,10 @@ structure RandomState where
 -- </vc-helpers>
 
 def random (state : RandomState) : Id Float :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem random_spec (state : RandomState) :
     ⦃⌜True⌝⦄
     random state
     ⦃⇓result => ⌜0 ≤ result ∧ result < 1⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

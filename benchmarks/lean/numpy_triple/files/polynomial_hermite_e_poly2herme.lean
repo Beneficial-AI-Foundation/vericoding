@@ -15,17 +15,17 @@
 -/
 
 /-  Specification: poly2herme converts polynomial coefficients to equivalent Hermite series coefficients.
-    
+
     The conversion preserves the polynomial's mathematical value but represents it in the Hermite basis.
     This is a fundamental basis transformation in polynomial algebra.
-    
+
     Key mathematical properties:
     1. Basis transformation: standard polynomial basis {1, x, x², x³, ...} → Hermite basis {He₀, He₁, He₂, He₃, ...}
     2. Value preservation: ∑ᵢ polᵢ·xⁱ = ∑ᵢ resultᵢ·Heᵢ(x) for all x
     3. Degree preservation: polynomial of degree n maps to Hermite series of degree n
     4. Invertibility: conversion can be reversed with herme2poly
     5. Horner's method: algorithm uses iterative structure for numerical stability
-    
+
     The algorithm implements: result = hermeadd(hermemulx(previous_result), current_coefficient)
     applied from highest to lowest degree coefficients.
 -/
@@ -38,9 +38,7 @@ open Std.Do
 -- </vc-helpers>
 
 def poly2herme {n : Nat} (pol : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem poly2herme_spec {n : Nat} (pol : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -75,6 +73,4 @@ theorem poly2herme_spec {n : Nat} (pol : Vector Float n) :
                     -- The algorithm builds result iteratively through hermeadd and hermemulx operations
                     intermediate_results.length = n →
                     ∃ construction_valid : Bool, construction_valid = true)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

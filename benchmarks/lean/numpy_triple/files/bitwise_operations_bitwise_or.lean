@@ -62,9 +62,7 @@ axiom bitwise_or_monotonic_nonneg (a b c : Int) (ha : 0 ≤ a) (hb : 0 ≤ b) (h
 -- </vc-helpers>
 
 def bitwise_or {n : Nat} (x1 x2 : Vector Int n) : Id (Vector Int n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem bitwise_or_spec {n : Nat} (x1 x2 : Vector Int n) :
     ⦃⌜True⌝⦄
@@ -88,6 +86,4 @@ theorem bitwise_or_spec {n : Nat} (x1 x2 : Vector Int n) :
       -- Idempotency verification
       (x1 = x2 → result = x1)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

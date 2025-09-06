@@ -72,9 +72,7 @@ def formatTypeSignature (sig : TypeSignature) : String :=
 -- </vc-helpers>
 
 def types {n : Nat} (ufunc_signatures : Vector TypeSignature n) : Id (Vector String n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem types_spec {n : Nat} (ufunc_signatures : Vector TypeSignature n) :
     ⦃⌜True⌝⦄
@@ -82,6 +80,4 @@ theorem types_spec {n : Nat} (ufunc_signatures : Vector TypeSignature n) :
     ⦃⇓result => ⌜∀ i : Fin n, 
       result.get i = formatTypeSignature (ufunc_signatures.get i) ∧
       (ufunc_signatures.get i).input_types.length > 0⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

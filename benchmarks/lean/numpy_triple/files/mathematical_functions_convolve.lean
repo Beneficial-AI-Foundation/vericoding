@@ -2,7 +2,7 @@
 
     The discrete convolution operation is defined as:
     (a * v)[n] = sum(a[m] * v[n - m], m = -∞ to ∞)
-    
+
     For finite arrays, the convolution is computed over the valid range where
     both arrays have elements. This implementation follows the 'full' mode
     which returns a convolution of length (M + N - 1) where M and N are
@@ -13,10 +13,10 @@
 
     Precondition: Both input vectors must be non-empty (enforced by types)
     Postcondition: The result vector contains the discrete convolution values
-    
+
     The convolution at position k is computed as:
     result[k] = sum(a[i] * v[k - i] for all valid i)
-    
+
     Mathematical properties:
     1. Result length is m + n - 1 (enforced by return type)
     2. Each element follows the convolution definition
@@ -31,9 +31,7 @@ open Std.Do
 -- </vc-helpers>
 
 def numpy_convolve {m n : Nat} (a : Vector Float m) (v : Vector Float n) : Id (Vector Float (m + n - 1)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_convolve_spec {m n : Nat} (a : Vector Float m) (v : Vector Float n) 
     (h_m : m > 0) (h_n : n > 0) :
@@ -53,6 +51,4 @@ theorem numpy_convolve_spec {m n : Nat} (a : Vector Float m) (v : Vector Float n
       (∀ i : Fin m, a.get i = a.get i) ∧ (∀ j : Fin n, v.get j = v.get j) →
       (∀ k : Fin (m + n - 1), result.get k = result.get k)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

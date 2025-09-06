@@ -15,14 +15,10 @@ open Std.Do
 -- </vc-helpers>
 
 def array (data : List Float) : Id (Vector Float data.length) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem array_spec (data : List Float) :
     ⦃⌜True⌝⦄
     array data
     ⦃⇓result => ⌜∀ i : Fin data.length, result.get i = data.get i⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

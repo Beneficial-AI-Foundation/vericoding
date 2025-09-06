@@ -28,15 +28,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def trace {n : Nat} (x : Vector (Vector Float n) n) : Id Float :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem trace_spec {n : Nat} (x : Vector (Vector Float n) n) :
       ⦃⌜True⌝⦄
       trace x
@@ -46,11 +42,7 @@ vc-condition: |-
         else acc
       ) 0 ∧ 
       (∀ i : Fin n, (x.get i).get i ≠ 0 → result ≠ 0)⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

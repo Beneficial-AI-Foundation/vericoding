@@ -22,9 +22,7 @@ open Std.Do
 -- </vc-helpers>
 
 def hermecompanion {n : Nat} (c : Vector Float (n + 2)) : Id (Vector (Vector Float (n + 1)) (n + 1)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem hermecompanion_spec {n : Nat} (c : Vector Float (n + 2)) 
     (h_last_nonzero : c.get ⟨n + 1, by omega⟩ ≠ 0) :
@@ -44,6 +42,4 @@ theorem hermecompanion_spec {n : Nat} (c : Vector Float (n + 2))
       (∀ i j : Fin (n + 1), j.val ≠ i.val + 1 ∧ j.val ≠ n ∧ i.val ≠ j.val + 1 → 
         (mat.get i).get j = (0 : Float))
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

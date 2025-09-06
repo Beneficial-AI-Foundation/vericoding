@@ -19,9 +19,7 @@ def smallestMissing_precond (l : List Nat) : Prop :=
 -- </vc-helpers>
 
 def smallestMissing (l : List Nat) (h_precond : smallestMissing_precond (l)) : Nat :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible]
 def smallestMissing_postcond (l : List Nat) (result: Nat) (h_precond : smallestMissing_precond (l)) : Prop :=
@@ -29,9 +27,7 @@ def smallestMissing_postcond (l : List Nat) (result: Nat) (h_precond : smallestM
 
 theorem smallestMissing_spec_satisfied (l: List Nat) (h_precond : smallestMissing_precond (l)) :
     smallestMissing_postcond (l) (smallestMissing (l) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

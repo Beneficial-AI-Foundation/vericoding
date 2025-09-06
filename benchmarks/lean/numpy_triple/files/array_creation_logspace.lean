@@ -1,14 +1,14 @@
 /-  Return numbers spaced evenly on a log scale.
-    
+
     Creates a vector of `num` samples where each element is computed as:
     - When endpoint=true: base^(start + i * (stop - start) / (num - 1)) for i in 0..num-1
     - When endpoint=false: base^(start + i * (stop - start) / num) for i in 0..num-1
-    
+
     The samples are evenly spaced in log space, meaning the exponents form an arithmetic sequence.
 -/
 
 /-  Specification: logspace generates numbers evenly spaced on a logarithmic scale.
-    
+
     The function produces a vector where:
     1. For endpoint=true: Elements follow base^(interpolated exponent) where exponents 
        are linearly interpolated from start to stop inclusive
@@ -25,9 +25,7 @@ open Std.Do
 -- </vc-helpers>
 
 def logspace {num : Nat} (start stop : Float) (endpoint : Bool) (base : Float) : Id (Vector Float num) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem logspace_spec {num : Nat} (start stop : Float) (endpoint : Bool) (base : Float) 
     (h_base_pos : base > 0) (h_base_ne_one : base ≠ 1) (h_num_pos : num > 0) :
@@ -46,6 +44,4 @@ theorem logspace_spec {num : Nat} (start stop : Float) (endpoint : Bool) (base :
       -- All elements are positive when base is positive
       (∀ i : Fin num, result.get i > 0)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

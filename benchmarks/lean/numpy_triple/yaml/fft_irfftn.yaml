@@ -11,27 +11,27 @@ vc-description: |-
   /-  For simplicity, we model this as a 1D version of irfftn, taking complex frequency domain input
       and producing real time-domain output. The function computes the inverse of rfftn,
       transforming N-dimensional frequency domain data back to real-valued time domain.
-      
+  
       This is the inverse operation to rfftn, where the input is expected to be
       Hermitian-symmetric complex data representing the frequency domain, and the output
       is real-valued time domain data.
   -/
   
   /-  Specification: irfftn computes the inverse N-dimensional discrete Fourier Transform for real output.
-      
+  
       The irfftn function is the inverse of rfftn, satisfying the property that
       irfftn(rfftn(x), x.shape) ≈ x within numerical accuracy.
-      
+  
       Mathematical properties:
       1. Inverse relationship: irfftn(rfftn(x)) ≈ x for real input x
       2. The input should be Hermitian-symmetric to produce real output
       3. Output length is determined by the shape parameter or derived from input
       4. Energy conservation (Parseval's theorem) holds with proper normalization
       5. The transform preserves the mathematical structure of the inverse DFT
-      
+  
       The function implements the inverse N-dimensional DFT formula:
       x[j] = (1/N) * Σ(k) a[k] * exp(2πi*k*j/N)
-      
+  
       Sanity checks:
       - For DC-only input (single non-zero frequency), output is constant
       - Transform is linear: irfftn(α*a + β*b) = α*irfftn(a) + β*irfftn(b)
@@ -87,15 +87,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def irfftn {k : Nat} (a : Vector Complex k) (n : Nat) : Id (Vector Float n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem irfftn_spec {k : Nat} (a : Vector Complex k) (n : Nat) 
       (h_nonempty : k > 0) 
       (h_length : n > 0) 
@@ -130,11 +126,7 @@ vc-condition: |-
             if h_i : i < k then acc + ((a.get ⟨i, h_i⟩).re ^ 2 + (a.get ⟨i, h_i⟩).im ^ 2) else acc) 0 ∧
           energy_time = (1.0 / n.toFloat) * energy_freq)
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

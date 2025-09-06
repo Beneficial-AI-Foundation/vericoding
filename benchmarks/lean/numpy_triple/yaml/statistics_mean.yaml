@@ -26,15 +26,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def mean {n : Nat} (a : Vector Float (n + 1)) : Id Float :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem mean_spec {n : Nat} (a : Vector Float (n + 1)) :
       ⦃⌜True⌝⦄
       mean a
@@ -50,11 +46,7 @@ vc-condition: |-
                    -- For constant vectors, mean equals the constant
                    ((∀ i j : Fin (n + 1), a.get i = a.get j) → 
                      result = a.get ⟨0, Nat.zero_lt_succ n⟩)⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

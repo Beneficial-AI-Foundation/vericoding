@@ -33,9 +33,7 @@ open Std.Do
 -- </vc-helpers>
 
 def hermmulx {n : Nat} (c : Vector Float n) : Id (Vector Float (n + 1)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem hermmulx_spec {n : Nat} (c : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -54,6 +52,4 @@ theorem hermmulx_spec {n : Nat} (c : Vector Float n) :
           -- Contribution from c[k+1]*(k+1) when k+1 < n
           (if h2 : k.val + 1 < n then c.get ⟨k.val + 1, sorry⟩ * Float.ofNat (k.val + 1) else 0)⌝
     ⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

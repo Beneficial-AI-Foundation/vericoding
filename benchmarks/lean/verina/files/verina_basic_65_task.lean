@@ -23,9 +23,7 @@ def SquareRoot_precond (N : Nat) : Prop :=
 -- </vc-helpers>
 
 def SquareRoot (N : Nat) (h_precond : SquareRoot_precond (N)) : Nat :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def SquareRoot_postcond (N : Nat) (result: Nat) (h_precond : SquareRoot_precond (N)) :=
@@ -33,9 +31,7 @@ def SquareRoot_postcond (N : Nat) (result: Nat) (h_precond : SquareRoot_precond 
 
 theorem SquareRoot_spec_satisfied (N: Nat) (h_precond : SquareRoot_precond (N)) :
     SquareRoot_postcond (N) (SquareRoot (N) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

@@ -35,15 +35,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def may_share_memory {n m : Nat} (a : Vector Float n) (b : Vector Float m) : Id Bool :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem may_share_memory_spec {n m : Nat} (a : Vector Float n) (b : Vector Float m) :
       ⦃⌜True⌝⦄
       may_share_memory a b
@@ -58,11 +54,7 @@ vc-condition: |-
         -- Reflexive property: an array compared with itself in the same-size case
         (n = m ∧ a.toList = b.toList → result = true ∨ result = false)
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

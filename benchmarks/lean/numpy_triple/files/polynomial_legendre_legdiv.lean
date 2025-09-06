@@ -23,9 +23,7 @@ open Std.Do
 
 def legdiv {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m)
     : Id (Vector Float (max 1 (n - m + 1)) × Vector Float (max 1 (m - 1))) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem legdiv_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m)
     (h_n : n ≥ 1) (h_m : m ≥ 1) (h_nonzero : ∃ i : Fin m, c2.get i ≠ 0) :
@@ -43,6 +41,4 @@ theorem legdiv_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m)
       -- Remainder size constraint
       (rem.size ≤ m)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

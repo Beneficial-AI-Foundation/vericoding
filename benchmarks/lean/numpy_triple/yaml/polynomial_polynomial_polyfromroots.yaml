@@ -24,15 +24,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def polyfromroots {n : Nat} (roots : Vector Float n) : Id (Vector Float (n + 1)) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem polyfromroots_spec {n : Nat} (roots : Vector Float n) :
       ⦃⌜True⌝⦄
       polyfromroots roots
@@ -40,11 +36,7 @@ vc-condition: |-
                    ∀ i : Fin n, ∃ (eval_poly : Float → Float), 
                      (∀ x : Float, eval_poly x = 0 ↔ x = roots.get i) ∧
                      eval_poly (roots.get i) = 0⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

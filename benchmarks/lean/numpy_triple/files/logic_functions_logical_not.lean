@@ -13,7 +13,7 @@
     For each element in the input array, applies logical NOT operation.
     In NumPy's interpretation: any non-zero numeric value is considered True 
     (so NOT returns False), zero is considered False (so NOT returns True).
-    
+
     Returns a boolean array of the same shape as the input.
 -/
 
@@ -22,7 +22,7 @@
 
     Precondition: True (logical NOT is defined for all numeric values)
     Postcondition: For all indices i, result[i] = true iff x[i] = 0.0
-    
+
     Mathematical properties:
     - Exactly implements NumPy's truthiness rules: 0.0 → true, non-zero → false
     - Element-wise operation preserves array shape and size (enforced by type)
@@ -39,14 +39,10 @@ open Std.Do
 -- </vc-helpers>
 
 def logical_not {n : Nat} (x : Vector Float n) : Id (Vector Bool n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem logical_not_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
     logical_not x
     ⦃⇓result => ⌜∀ i : Fin n, result.get i = (x.get i = 0.0)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

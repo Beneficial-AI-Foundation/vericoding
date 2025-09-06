@@ -26,9 +26,7 @@ open Std.Do
 
 def polyvander3d {n : Nat} (x y z : Vector Float n) (xDeg yDeg zDeg : Nat) : 
     Id (Vector (Vector Float ((xDeg + 1) * (yDeg + 1) * (zDeg + 1))) n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem polyvander3d_spec {n : Nat} (x y z : Vector Float n) (xDeg yDeg zDeg : Nat) :
     ⦃⌜True⌝⦄
@@ -38,6 +36,4 @@ theorem polyvander3d_spec {n : Nat} (x y z : Vector Float n) (xDeg yDeg zDeg : N
             let colIdxFin : Fin ((xDeg + 1) * (yDeg + 1) * (zDeg + 1)) := 
               ⟨colIdx, by sorry⟩
             (V.get p).get colIdxFin = (x.get p) ^ (Float.ofNat i.val) * (y.get p) ^ (Float.ofNat j.val) * (z.get p) ^ (Float.ofNat k.val)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

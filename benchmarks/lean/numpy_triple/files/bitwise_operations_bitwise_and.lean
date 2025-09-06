@@ -21,7 +21,7 @@
     bitwise AND of the corresponding elements from x1 and x2.
 
     Precondition: All elements are non-negative (to simplify the specification)
-    
+
     Postcondition: 
     1. For non-negative integers, each element of the result is the bitwise AND 
        of corresponding inputs
@@ -43,9 +43,7 @@ open Std.Do
 -- </vc-helpers>
 
 def bitwise_and {n : Nat} (x1 x2 : Vector Int n) : Id (Vector Int n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem bitwise_and_spec {n : Nat} (x1 x2 : Vector Int n) 
     (h_nonneg : ∀ i : Fin n, x1.get i ≥ 0 ∧ x2.get i ≥ 0) :
@@ -57,6 +55,4 @@ theorem bitwise_and_spec {n : Nat} (x1 x2 : Vector Int n)
                 (∀ i : Fin n, result.get i ≤ x2.get i) ∧
                 (∀ i : Fin n, result.get i = 0 ↔ (x1.get i = 0 ∨ x2.get i = 0)) ∧
                 (∀ i : Fin n, x1.get i = x2.get i → result.get i = x1.get i)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

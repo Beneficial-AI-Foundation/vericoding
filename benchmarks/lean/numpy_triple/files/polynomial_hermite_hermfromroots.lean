@@ -1,8 +1,8 @@
 /-  Generate a Hermite series with given roots.
-    
+
     Returns the coefficients of the polynomial p(x) = (x - r₀) * (x - r₁) * ... * (x - rₙ)
     in Hermite form. If a zero has multiplicity n, it must appear n times in the roots vector.
-    
+
     The resulting polynomial is expressed as: p(x) = c₀ + c₁ * H₁(x) + ... + cₙ * Hₙ(x)
     where Hᵢ(x) are Hermite polynomials. -/
 
@@ -20,9 +20,7 @@ open Std.Do
 -- </vc-helpers>
 
 def hermfromroots {n : Nat} (roots : Vector Float n) : Id (Vector Float (n + 1)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem hermfromroots_spec {n : Nat} (roots : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -41,6 +39,4 @@ theorem hermfromroots_spec {n : Nat} (roots : Vector Float n) :
         True  -- Placeholder for: hermval(roots.get i, coef) = 0
       )
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

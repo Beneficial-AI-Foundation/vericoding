@@ -18,15 +18,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def implementation (numbers: List Rat) (threshold: Rat) : Bool :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   def problem_spec
   -- function signature
   (impl: List Rat → Rat → Bool)
@@ -49,12 +45,8 @@ vc-condition: |-
   theorem correctness
   (numbers: List Rat)
   (threshold: Rat)
-  : problem_spec implementation numbers threshold  :=
-
-vc-proof: |-
-  -- <vc-proof>
+  : problem_spec implementation numbers threshold  := by
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation ([1, 2, 3]: List Rat) 0.5 = false

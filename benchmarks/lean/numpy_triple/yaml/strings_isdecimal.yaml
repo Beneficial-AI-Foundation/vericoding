@@ -39,15 +39,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def isdecimal {n : Nat} (a : Vector String n) : Id (Vector Bool n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem isdecimal_spec {n : Nat} (a : Vector String n) :
       ⦃⌜True⌝⦄
       isdecimal a
@@ -57,11 +53,7 @@ vc-condition: |-
                ∀ c : Char, c ∈ (a.get i).toList → c.isDigit = true)) ∧
           -- Empty string property: empty strings always return false
           (a.get i = "" → result.get i = false)⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

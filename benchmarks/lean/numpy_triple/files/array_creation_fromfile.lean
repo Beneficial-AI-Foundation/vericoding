@@ -26,9 +26,7 @@ structure FileData where
 -- </vc-helpers>
 
 def fromfile (n : Nat) (file : FileData) (count : Int) (offset : Nat) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem fromfile_spec (n : Nat) (file : FileData) (count : Int) (offset : Nat)
     (h_valid : file.valid = true)
@@ -43,6 +41,4 @@ theorem fromfile_spec (n : Nat) (file : FileData) (count : Int) (offset : Nat)
     ⦃⇓result => ⌜∀ i : Fin n,
       result.get i = file.content.get! (offset + i.val) ∧
       n ≤ file.content.length - offset⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

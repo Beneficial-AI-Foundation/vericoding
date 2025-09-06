@@ -21,9 +21,7 @@ def CalSum_precond (N : Nat) : Prop :=
 -- </vc-helpers>
 
 def CalSum (N : Nat) (h_precond : CalSum_precond (N)) : Nat :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def CalSum_postcond (N : Nat) (result: Nat) (h_precond : CalSum_precond (N)) :=
@@ -31,9 +29,7 @@ def CalSum_postcond (N : Nat) (result: Nat) (h_precond : CalSum_precond (N)) :=
 
 theorem CalSum_spec_satisfied (N: Nat) (h_precond : CalSum_precond (N)) :
     CalSum_postcond (N) (CalSum (N) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

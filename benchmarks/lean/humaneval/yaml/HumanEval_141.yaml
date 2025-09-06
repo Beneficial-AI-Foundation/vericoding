@@ -27,15 +27,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def implementation (file_name : String) : String :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   def problem_spec
   -- function signature
   (impl: String → String)
@@ -60,12 +56,8 @@ vc-condition: |-
   
   theorem correctness
   (file_name : String)
-  : problem_spec implementation file_name :=
-
-vc-proof: |-
-  -- <vc-proof>
+  : problem_spec implementation file_name := by
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation "example.txt" = "Yes"

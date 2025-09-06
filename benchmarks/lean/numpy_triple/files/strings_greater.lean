@@ -13,7 +13,7 @@
     Performs element-wise string comparison between two vectors of strings.
     Returns a boolean vector indicating whether corresponding strings from x1 
     are lexicographically greater than corresponding strings from x2.
-    
+
     This function compares strings lexicographically and returns True for each
     position where x1[i] > x2[i] in lexicographic ordering, False otherwise.
 -/
@@ -22,7 +22,7 @@
 
     Precondition: True (no special preconditions for string comparison)
     Postcondition: For all indices i, result[i] = (x1[i] > x2[i])
-    
+
     Mathematical Properties:
     - Asymmetric: if greater x1 x2 is True at position i, then greater x2 x1 is False at position i
     - Transitive: if greater x1 x2 and greater x2 x3 are both True at position i, then greater x1 x3 is True at position i
@@ -40,9 +40,7 @@ open Std.Do
 -- </vc-helpers>
 
 def greater {n : Nat} (x1 x2 : Vector String n) : Id (Vector Bool n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem greater_spec {n : Nat} (x1 x2 : Vector String n) :
     ⦃⌜True⌝⦄
@@ -57,6 +55,4 @@ theorem greater_spec {n : Nat} (x1 x2 : Vector String n) :
                  (∀ i : Fin n, result.get i = true → ∀ s : String, s < x2.get i → x1.get i > s) ∧
                  -- Decidability: result is always boolean (true or false)
                  (∀ i : Fin n, result.get i = true ∨ result.get i = false)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

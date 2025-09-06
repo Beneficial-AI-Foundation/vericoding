@@ -34,9 +34,7 @@ def char_in_typeset {n : Nat} (c : Char) (typeset : Vector Char n) : Bool :=
 -- </vc-helpers>
 
 def mintypecode {n m : Nat} (typechars : Vector Char n) (typeset : Vector Char m) (default : Char) : Id Char :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem mintypecode_spec {n m : Nat} (typechars : Vector Char n) (typeset : Vector Char m) (default : Char) 
     (h_typeset : typeset.toList = ['G', 'D', 'F', 'g', 'd', 'f']) :
@@ -45,13 +43,13 @@ theorem mintypecode_spec {n m : Nat} (typechars : Vector Char n) (typeset : Vect
     ⦃⇓result => ⌜
       -- Case 1: No input types in typeset - return default
       (∀ c ∈ typechars.toList, ¬(char_in_typeset c typeset) → result = default) ∧
-      
+
       -- Case 2: Special rule - if both 'F' and 'd' are in intersection, return 'D'
       (∃ (intersection : List Char), 
         intersection = (typechars.toList.filter (fun c => char_in_typeset c typeset)) ∧
         intersection.length > 0 ∧
         ('F' ∈ intersection ∧ 'd' ∈ intersection → result = 'D')) ∧
-      
+
       -- Case 3: Normal case - return minimum precedence type from intersection
       (∃ (intersection : List Char),
         intersection = (typechars.toList.filter (fun c => char_in_typeset c typeset)) ∧
@@ -59,16 +57,14 @@ theorem mintypecode_spec {n m : Nat} (typechars : Vector Char n) (typeset : Vect
         ¬('F' ∈ intersection ∧ 'd' ∈ intersection) →
         (result ∈ intersection ∧ 
          ∀ c ∈ intersection, typechar_precedence result ≤ typechar_precedence c)) ∧
-      
+
       -- Validity: result is either from intersection or default
       (result ∈ (typechars.toList.filter (fun c => char_in_typeset c typeset)) ∨ 
        result = default) ∧
-      
+
       -- Safety property: result can handle all input types
       (∀ c ∈ typechars.toList, char_in_typeset c typeset → 
         typechar_precedence result ≤ typechar_precedence c ∨ 
         (result = 'D' ∧ ('F' ∈ typechars.toList ∧ 'd' ∈ typechars.toList)))
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

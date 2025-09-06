@@ -23,15 +23,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def splitlines {n : Nat} (a : Vector String n) (keepends : Bool) : Id (Vector (List String) n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem splitlines_spec {n : Nat} (a : Vector String n) (keepends : Bool) :
       ⦃⌜True⌝⦄
       splitlines a keepends
@@ -61,11 +57,7 @@ vc-condition: |-
           (original = "" → lines = [""]) ∧
           -- Single newline property
           (original = "\n" → (if keepends then lines = ["\n"] else lines = ["", ""]))⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

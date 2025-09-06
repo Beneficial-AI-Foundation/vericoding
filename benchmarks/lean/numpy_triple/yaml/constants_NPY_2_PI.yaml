@@ -21,15 +21,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def NPY_2_PI : Id Float :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem NPY_2_PI_spec :
       ⦃⌜True⌝⦄
       NPY_2_PI
@@ -48,11 +44,7 @@ vc-condition: |-
         -- 2/π divided by 2 gives 1/π ≈ 0.3183...
         0.318 < result / 2 ∧ result / 2 < 0.319
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

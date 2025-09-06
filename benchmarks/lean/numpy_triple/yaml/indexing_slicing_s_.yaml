@@ -43,15 +43,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def s_ (start : Option Nat) (stop : Option Nat) (step : Option Nat := none) : Id Slice :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem s_spec (start : Option Nat) (stop : Option Nat) (step : Option Nat := none) :
       ⦃⌜(step.isSome → step.get! > 0) ∧ 
        ((start.isSome ∧ stop.isSome) → start.get! ≤ stop.get!)⌝⦄
@@ -61,11 +57,7 @@ vc-condition: |-
                  slice.step = step ∧
                  (slice.step.isSome → slice.step.get! > 0) ∧
                  ((slice.start.isSome ∧ slice.stop.isSome) → slice.start.get! ≤ slice.stop.get!)⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

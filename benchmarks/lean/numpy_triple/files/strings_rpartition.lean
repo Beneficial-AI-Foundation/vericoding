@@ -12,7 +12,7 @@
 
     Partitions each string in the input vector at the last occurrence of the separator.
     Returns a 3-tuple of vectors: (before_separator, separator, after_separator).
-    
+
     For each element in the input array, splits the element at the last occurrence
     of the separator, and returns three vectors containing the part before the separator,
     the separator itself, and the part after the separator. If the separator is not found,
@@ -57,9 +57,7 @@ open Std.Do
 -- </vc-helpers>
 
 def rpartition {n : Nat} (a : Vector String n) (sep : String) : Id (Vector String n × Vector String n × Vector String n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem rpartition_spec {n : Nat} (a : Vector String n) (sep : String) :
     ⦃⌜True⌝⦄
@@ -78,6 +76,4 @@ theorem rpartition_spec {n : Nat} (a : Vector String n) (sep : String) :
                    (sep_i = sep → sep_i = sep) ∧
                    -- If separator is not found, first two parts are empty and after contains whole string
                    (sep_i = "" → before_i = "" ∧ after_i = original)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

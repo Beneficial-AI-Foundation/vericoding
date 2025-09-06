@@ -29,15 +29,11 @@ vc-helpers: |-
       acc
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def append (a : Array Int) (b : Int) (h_precond : append_precond (a) (b)) : Array Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def append_postcond (a : Array Int) (b : Int) (result: Array Int) (h_precond : append_precond (a) (b)) :=
     (List.range' 0 a.size |>.all (fun i => result[i]! = a[i]!)) ∧
@@ -46,11 +42,7 @@ vc-condition: |-
   
   theorem append_spec_satisfied (a: Array Int) (b: Int) (h_precond : append_precond (a) (b)) :
       append_postcond (a) (b) (append (a) (b) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

@@ -26,9 +26,7 @@ import Std.Data.HashMap
 -- </vc-helpers>
 
 def implementation (lst: List (List Int)) (x: Int) : List (Nat × Nat) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -58,10 +56,8 @@ theorem correctness
 (lst: List (List Int))
 (x: Int)
 : problem_spec implementation lst x
-:=
--- <vc-proof>
+:= by
   sorry
--- </vc-proof>
 
 -- #test implementation "Hi" = "Hi"
 -- #test implementation "hello" = "ehllo"

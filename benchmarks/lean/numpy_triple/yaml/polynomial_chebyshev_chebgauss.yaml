@@ -27,15 +27,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def chebgauss (n : Nat) (h : n > 0) : Id (Vector Float n × Vector Float n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem chebgauss_spec (n : Nat) (h : n > 0) :
       ⦃⌜n > 0⌝⦄
       chebgauss n h
@@ -57,11 +53,7 @@ vc-condition: |-
         -- Nodes are distinct
         (∀ i j : Fin n, i ≠ j → nodes.get i ≠ nodes.get j)
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

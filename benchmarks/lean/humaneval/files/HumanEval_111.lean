@@ -26,9 +26,7 @@ import Std.Data.HashMap
 -- </vc-helpers>
 
 def implementation (s: String) : Std.HashMap Char Nat :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -54,10 +52,8 @@ let spec (result : Std.HashMap Char Nat) :=
 theorem correctness
 (s: String)
 : problem_spec implementation s
-:=
--- <vc-proof>
+:= by
   sorry
--- </vc-proof>
 
 -- #test implementation 'a b c' = {'a': 1, 'b': 1, 'c': 1}
 -- #test implementation 'a b b a' = {'a': 2, 'b': 2}

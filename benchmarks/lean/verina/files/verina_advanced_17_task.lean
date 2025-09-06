@@ -37,9 +37,7 @@ def sortList (l : List Int) : List Int :=
 -- </vc-helpers>
 
 def insertionSort (l : List Int) (h_precond : insertionSort_precond (l)) : List Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible]
 def insertionSort_postcond (l : List Int) (result: List Int) (h_precond : insertionSort_precond (l)) : Prop :=
@@ -47,9 +45,7 @@ def insertionSort_postcond (l : List Int) (result: List Int) (h_precond : insert
 
 theorem insertionSort_spec_satisfied (l: List Int) (h_precond : insertionSort_precond (l)) :
     insertionSort_postcond (l) (insertionSort (l) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

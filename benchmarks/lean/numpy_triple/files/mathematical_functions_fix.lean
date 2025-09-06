@@ -8,20 +8,20 @@
 -/
 
 /-  numpy.fix: Round to nearest integer towards zero, element-wise.
-    
+
     The fix (truncation) of each element x is the integer part of x,
     obtained by discarding the fractional part. This is equivalent to
     rounding towards zero.
-    
+
     For positive numbers: fix(x) = floor(x)
     For negative numbers: fix(x) = ceil(x)
-    
+
     Returns an array of the same shape as x, containing the fix of each element.
 -/
 
 /-  Specification: numpy.fix returns a vector where each element is the
     fix (truncation towards zero) of the corresponding element in x.
-    
+
     Precondition: True (fix is defined for all real numbers)
     Postcondition: For all indices i, result[i] is the fix of x[i], meaning:
     - result[i] is an integer value (represented as Float)
@@ -43,9 +43,7 @@ open Std.Do
 -- </vc-helpers>
 
 def numpy_fix {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_fix_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -60,6 +58,4 @@ theorem numpy_fix_spec {n : Nat} (x : Vector Float n) :
       (x.get i < 0 → result.get i = (x.get i).ceil) ∧
       (x.get i = 0 → result.get i = 0) ∧
       (∀ j : Fin n, x.get i ≤ x.get j → result.get i ≤ result.get j)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

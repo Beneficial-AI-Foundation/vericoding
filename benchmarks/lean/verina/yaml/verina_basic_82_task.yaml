@@ -31,26 +31,18 @@ vc-helpers: |-
       acc
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def remove_front (a : Array Int) (h_precond : remove_front_precond (a)) : Array Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def remove_front_postcond (a : Array Int) (result: Array Int) (h_precond : remove_front_precond (a)) :=
     a.size > 0 ∧ result.size = a.size - 1 ∧ (∀ i : Nat, i < result.size → result[i]! = a[i + 1]!)
   
   theorem remove_front_spec_satisfied (a: Array Int) (h_precond : remove_front_precond (a)) :
       remove_front_postcond (a) (remove_front (a) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

@@ -23,9 +23,7 @@ open Std.Do
 -- </vc-helpers>
 
 def rsplit {n : Nat} (a : Vector String n) (sep : String) (maxsplit : Nat) : Id (Vector (List String) n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem rsplit_spec {n : Nat} (a : Vector String n) (sep : String) (maxsplit : Nat) :
     ⦃⌜sep ≠ ""⌝⦄ 
@@ -47,6 +45,4 @@ theorem rsplit_spec {n : Nat} (a : Vector String n) (sep : String) (maxsplit : N
       (∀ i : Fin n, ∀ parts : List String, result.get i = parts → 
         parts.length > 1 → 
         String.intercalate sep parts = a.get i)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -1,0 +1,107 @@
+This verification task involves determining if a string is an "s-palindrome" - a string that is symmetric about its middle based on visual mirror reflection of characters. Characters can either be visually identical when mirrored or form valid mirror pairs based on their visual appearance.
+
+// ======= TASK =======
+// Determine if a string is an "s-palindrome" - a string that is symmetric about its middle 
+// based on visual mirror reflection of characters. Characters can either be visually identical 
+// when mirrored or form valid mirror pairs based on their visual appearance.
+
+// ======= SPEC REQUIREMENTS =======
+predicate isSPalindrome(s: string)
+{
+    var pal := "AHIMOoTUVvWwXxY";
+    var fir := "pq";
+    var sec := "bd";
+
+    forall i :: 0 <= i < |s| / 2 + 1 ==>
+        var l := i;
+        var r := |s| - 1 - i;
+        if l >= r then true
+        else if s[l] == s[r] && charInString(s[l], pal) then true
+        else if s[l] == s[r] && !charInString(s[l], pal) then false
+        else if s[l] != s[r] && charInString(s[l], fir) && charInString(s[r], fir) then true
+        else if s[l] != s[r] && charInString(s[l], sec) && charInString(s[r], sec) then true
+        else false
+}
+
+// ======= HELPERS =======
+function charInString(c: char, str: string): bool
+{
+    exists i :: 0 <= i < |str| && str[i] == c
+}
+
+// <vc-helpers>
+// </vc-helpers>
+
+// ======= MAIN METHOD =======
+method solve(input: string) returns (output: string)
+    requires |input| > 0
+    ensures output == "TAK" || output == "NIE"
+    ensures output == "TAK" <==> isSPalindrome(if |input| > 0 && input[|input|-1] == '\n' then input[..|input|-1] else input)
+{
+    var s := input;
+    if |s| > 0 && s[|s|-1] == '\n' {
+        s := s[..|s|-1];
+    }
+
+    var pal := "AHIMOoTUVvWwXxY";
+    var fir := "pq";
+    var sec := "bd";
+
+    var n := |s|;
+
+    if n == 0 {
+        output := "TAK";
+        return;
+    }
+
+    var l := 0;
+    var r := n - 1;
+    var flag := true;
+
+    while l < r && flag
+        invariant 0 <= l <= n
+        invariant -1 <= r < n
+        invariant l <= r ==> (0 <= l < n && 0 <= r < n)
+        invariant r == n - 1 - l
+        invariant flag ==> forall i :: 0 <= i < l ==> 
+            var li := i;
+            var ri := n - 1 - i;
+            if li >= ri then true
+            else if s[li] == s[ri] && charInString(s[li], pal) then true
+            else if s[li] == s[ri] && !charInString(s[li], pal) then false
+            else if s[li] != s[ri] && charInString(s[li], fir) && charInString(s[ri], fir) then true
+            else if s[li] != s[ri] && charInString(s[li], sec) && charInString(s[ri], sec) then true
+            else false
+        invariant !flag ==> exists i :: 0 <= i < n / 2 + 1 && 
+            var li := i;
+            var ri := n - 1 - i;
+            if li >= ri then false
+            else if s[li] == s[ri] && charInString(s[li], pal) then false
+            else if s[li] == s[ri] && !charInString(s[li], pal) then true
+            else if s[li] != s[ri] && charInString(s[li], fir) && charInString(s[ri], fir) then false
+            else if s[li] != s[ri] && charInString(s[li], sec) && charInString(s[ri], sec) then false
+            else true
+        decreases if flag then r - l + 1 else 0
+    {
+        if s[l] == s[r] && charInString(s[l], pal) {
+            l := l + 1;
+            r := r - 1;
+        } else if s[l] == s[r] {
+            flag := false;
+        } else if charInString(s[l], fir) && charInString(s[r], fir) {
+            l := l + 1;
+            r := r - 1;
+        } else if charInString(s[l], sec) && charInString(s[r], sec) {
+            l := l + 1;
+            r := r - 1;
+        } else {
+            flag := false;
+        }
+    }
+
+    if flag {
+        output := "TAK";
+    } else {
+        output := "NIE";
+    }
+}

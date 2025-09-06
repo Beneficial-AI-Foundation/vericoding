@@ -77,15 +77,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def fft {n : Nat} (a : Vector Complex n) : Id (Vector Complex n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem fft_spec {n : Nat} (a : Vector Complex n) (h : n > 0) :
       ⦃⌜n > 0⌝⦄
       fft a
@@ -100,11 +96,7 @@ vc-condition: |-
           (∀ k : Fin n, ∃ (sum : Complex), 
               sum = complexSum (fun j => a.get j * cexp (-2 * (3.14159265358979323846 : Float) * (k.val.toFloat * j.val.toFloat) / n.toFloat)) ∧
               result.get k = sum)⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

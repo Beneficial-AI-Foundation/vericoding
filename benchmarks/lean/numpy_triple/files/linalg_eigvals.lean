@@ -28,9 +28,7 @@ structure Complex where
 -- </vc-helpers>
 
 def eigvals {n : Nat} (a : Matrix (n + 1) Float) : Id (Vector Complex (n + 1)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem eigvals_spec {n : Nat} (a : Matrix (n + 1) Float) :
     ⦃⌜True⌝⦄
@@ -40,6 +38,4 @@ theorem eigvals_spec {n : Nat} (a : Matrix (n + 1) Float) :
             -- This captures the key mathematical property from the numpy documentation
             (∀ i j : Fin (n + 1), i ≠ j → (a.get i).get j = 0) →
             (∀ i : Fin (n + 1), ∃ j : Fin (n + 1), (w.get j).re = (a.get i).get i ∧ (w.get j).im = 0)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

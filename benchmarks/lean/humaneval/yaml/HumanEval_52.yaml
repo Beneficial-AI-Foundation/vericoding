@@ -18,15 +18,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def implementation (numbers: List Int) (threshold: Int) : Bool :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   def problem_spec
   -- function signature
   (impl: List Int → Int → Bool)
@@ -48,12 +44,8 @@ vc-condition: |-
   theorem correctness
   (numbers: List Int)
   (threshold: Int)
-  : problem_spec implementation numbers threshold  :=
-
-vc-proof: |-
-  -- <vc-proof>
+  : problem_spec implementation numbers threshold  := by
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation ([1, 2, 4, 10]: List Int) 100 = true

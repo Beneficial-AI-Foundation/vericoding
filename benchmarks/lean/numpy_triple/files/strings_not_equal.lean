@@ -12,7 +12,7 @@
 
     Performs element-wise string inequality comparison between two vectors of strings.
     Returns a boolean vector indicating whether corresponding strings are not equal.
-    
+
     This function compares strings lexicographically and returns True for each
     position where the strings are different, False where they are identical.
 -/
@@ -21,7 +21,7 @@
 
     Precondition: True (no special preconditions for string inequality)
     Postcondition: For all indices i, result[i] = (x1[i] != x2[i])
-    
+
     Mathematical Properties:
     - Irreflexive: not_equal x x returns all False
     - Symmetric: not_equal x y = not_equal y x  
@@ -39,14 +39,10 @@ open Std.Do
 -- </vc-helpers>
 
 def not_equal {n : Nat} (x1 x2 : Vector String n) : Id (Vector Bool n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem not_equal_spec {n : Nat} (x1 x2 : Vector String n) :
     ⦃⌜True⌝⦄
     not_equal x1 x2
     ⦃⇓result => ⌜∀ i : Fin n, result.get i = (x1.get i ≠ x2.get i)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -12,7 +12,7 @@
 
 /-  Specification: isnan returns true for NaN values and false otherwise.
     The function correctly identifies NaN values according to IEEE 754 standard.
-    
+
     Mathematical properties:
     1. NaN detection: result[i] = true iff x[i] is NaN
     2. NaN ≠ NaN property: if x[i].isNaN then x[i] ≠ x[i]
@@ -28,9 +28,7 @@ open Std.Do
 -- </vc-helpers>
 
 def isnan {n : Nat} (x : Vector Float n) : Id (Vector Bool n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem isnan_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -39,6 +37,4 @@ theorem isnan_spec {n : Nat} (x : Vector Float n) :
                  (∀ i : Fin n, result.get i = true → ¬(x.get i = x.get i)) ∧
                  (∀ i : Fin n, ¬(x.get i).isNaN → result.get i = false) ∧
                  (∀ i : Fin n, (x.get i).isFinite → result.get i = false)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

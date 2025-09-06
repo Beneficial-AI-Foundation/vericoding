@@ -25,9 +25,7 @@ def Find_precond (a : Array Int) (key : Int) : Prop :=
 -- </vc-helpers>
 
 def Find (a : Array Int) (key : Int) (h_precond : Find_precond (a) (key)) : Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def Find_postcond (a : Array Int) (key : Int) (result: Int) (h_precond : Find_precond (a) (key)) :=
@@ -37,9 +35,7 @@ def Find_postcond (a : Array Int) (key : Int) (result: Int) (h_precond : Find_pr
 
 theorem Find_spec_satisfied (a: Array Int) (key: Int) (h_precond : Find_precond (a) (key)) :
     Find_postcond (a) (key) (Find (a) (key) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

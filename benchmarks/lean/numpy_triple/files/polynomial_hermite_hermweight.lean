@@ -12,7 +12,7 @@
     Computes exp(-x²) for each element in the input vector. -/
 
 /-  Specification: hermweight computes the Hermite weight function exp(-x²) for each element.
-    
+
     The specification includes:
     1. Basic property: Each output element equals exp(-x²) of the corresponding input
     2. Non-negativity: All output values are positive (since exp is always positive)
@@ -28,9 +28,7 @@ open Std.Do
 -- </vc-helpers>
 
 def hermweight {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem hermweight_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -40,6 +38,4 @@ theorem hermweight_spec {n : Nat} (x : Vector Float n) :
             (∀ i : Fin n, x.get i = 0 → w.get i = 1) ∧
             (∀ i j : Fin n, Float.abs (x.get i) < Float.abs (x.get j) → 
                             w.get i > w.get j)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

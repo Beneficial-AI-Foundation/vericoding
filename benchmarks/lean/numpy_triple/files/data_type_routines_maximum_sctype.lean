@@ -86,9 +86,7 @@ def precisionLE (p1 p2 : Precision) : Bool :=
 -- </vc-helpers>
 
 def maximum_sctype (t : NumericType) : Id NumericType :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem maximum_sctype_spec (t : NumericType) :
     ⦃⌜True⌝⦄
@@ -96,6 +94,4 @@ theorem maximum_sctype_spec (t : NumericType) :
     ⦃⇓result => ⌜result.kind = t.kind ∧ 
                  result.precision = maxPrecisionFor t.kind ∧
                  precisionLE t.precision result.precision⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

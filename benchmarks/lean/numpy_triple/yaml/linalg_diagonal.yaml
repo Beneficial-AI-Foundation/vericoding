@@ -29,15 +29,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def numpy_diagonal {m n : Nat} (x : Vector (Vector Float n) m) (offset : Int) : Id (Vector Float (min m n)) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem numpy_diagonal_spec {m n : Nat} (x : Vector (Vector Float n) m) (offset : Int) 
       (h_m : m > 0) (h_n : n > 0) :
       ⦃⌜m > 0 ∧ n > 0⌝⦄
@@ -52,11 +48,7 @@ vc-condition: |-
           r < m ∧ c < n ∧ 
           result.get i = (x.get ⟨r, sorry⟩).get ⟨c, sorry⟩)
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

@@ -19,9 +19,7 @@ def isItEight_precond (n : Int) : Prop :=
 -- </vc-helpers>
 
 def isItEight (n : Int) (h_precond : isItEight_precond (n)) : Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible]
 def isItEight_postcond (n : Int) (result: Bool) (h_precond : isItEight_precond (n)) : Prop :=
@@ -30,9 +28,7 @@ def isItEight_postcond (n : Int) (result: Bool) (h_precond : isItEight_precond (
 
 theorem isItEight_spec_satisfied (n: Int) (h_precond : isItEight_precond (n)) :
     isItEight_postcond (n) (isItEight (n) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

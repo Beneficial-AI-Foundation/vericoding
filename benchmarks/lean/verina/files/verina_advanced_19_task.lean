@@ -50,9 +50,7 @@ def reverseList (xs : List Char) : List Char :=
 -- </vc-helpers>
 
 def isCleanPalindrome (s : String) (h_precond : isCleanPalindrome_precond (s)) : Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible]
 def isCleanPalindrome_postcond (s : String) (result: Bool) (h_precond : isCleanPalindrome_precond (s)) : Prop :=
@@ -62,9 +60,7 @@ def isCleanPalindrome_postcond (s : String) (result: Bool) (h_precond : isCleanP
 
 theorem isCleanPalindrome_spec_satisfied (s: String) (h_precond : isCleanPalindrome_precond (s)) :
     isCleanPalindrome_postcond (s) (isCleanPalindrome (s) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

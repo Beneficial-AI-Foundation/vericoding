@@ -24,15 +24,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def legder {n : Nat} (c : Vector Float n) (m : Nat) (scl : Float) : Id (Vector Float (max 1 (n - m))) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem legder_spec {n : Nat} (c : Vector Float n) (m : Nat) (scl : Float) (h : n ≥ 1) :
       ⦃⌜n ≥ 1⌝⦄
       legder c m scl
@@ -44,11 +40,7 @@ vc-condition: |-
         -- If m >= n, result is zero vector of length 1
         (m ≥ n → result.size = 1)
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

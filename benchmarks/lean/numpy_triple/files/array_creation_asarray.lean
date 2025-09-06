@@ -27,14 +27,10 @@ open Std.Do
 -- </vc-helpers>
 
 def asarray {n : Nat} (a : List Float) (h : a.length = n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem asarray_spec {n : Nat} (a : List Float) (h : a.length = n) :
     ⦃⌜a.length = n⌝⦄
     asarray a h
     ⦃⇓result => ⌜∀ i : Fin n, result.get i = a[i.val]'(by rw [h]; exact i.isLt)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

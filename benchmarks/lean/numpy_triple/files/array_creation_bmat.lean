@@ -12,11 +12,11 @@
 /-  Build a matrix from a 2x2 block structure using 4 input vectors.
     This represents a simplified version of numpy.bmat for 2x2 block matrices.
     The result is a flattened vector representing the block matrix in row-major order.
-    
+
     Mathematically, this constructs a 2x2 block matrix where each block is a 1×n vector:
     [ topLeft    | topRight    ]
     [ bottomLeft | bottomRight ]
-    
+
     The result is flattened as [topLeft | topRight | bottomLeft | bottomRight].
 -/
 
@@ -24,7 +24,7 @@
     The result is a flattened vector where blocks are arranged as:
     [topLeft | topRight | bottomLeft | bottomRight]
     This captures the essential behavior of numpy.bmat for block matrix construction.
-    
+
     Precondition: True (no special preconditions for basic block matrix construction)
     Postcondition: Each block is correctly placed in the flattened result
 -/
@@ -37,9 +37,7 @@ open Std.Do
 -- </vc-helpers>
 
 def bmat {n : Nat} (topLeft topRight bottomLeft bottomRight : Vector Float n) : Id (Vector Float (4 * n)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem bmat_spec {n : Nat} (topLeft topRight bottomLeft bottomRight : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -48,6 +46,4 @@ theorem bmat_spec {n : Nat} (topLeft topRight bottomLeft bottomRight : Vector Fl
                  (∀ i : Fin n, result.get ⟨i.val + n, by omega⟩ = topRight.get i) ∧
                  (∀ i : Fin n, result.get ⟨i.val + 2*n, by omega⟩ = bottomLeft.get i) ∧
                  (∀ i : Fin n, result.get ⟨i.val + 3*n, by omega⟩ = bottomRight.get i)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

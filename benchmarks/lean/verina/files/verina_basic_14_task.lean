@@ -23,9 +23,7 @@ def containsZ_precond (s : String) : Prop :=
 -- </vc-helpers>
 
 def containsZ (s : String) (h_precond : containsZ_precond (s)) : Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def containsZ_postcond (s : String) (result: Bool) (h_precond : containsZ_precond (s)) :=
@@ -34,9 +32,7 @@ def containsZ_postcond (s : String) (result: Bool) (h_precond : containsZ_precon
 
 theorem containsZ_spec_satisfied (s: String) (h_precond : containsZ_precond (s)) :
     containsZ_postcond (s) (containsZ (s) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

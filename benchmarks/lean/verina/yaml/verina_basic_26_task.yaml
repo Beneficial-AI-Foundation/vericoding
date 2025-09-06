@@ -25,26 +25,18 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def isEven (n : Int) (h_precond : isEven_precond (n)) : Bool :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def isEven_postcond (n : Int) (result: Bool) (h_precond : isEven_precond (n)) :=
     (result → n % 2 = 0) ∧ (¬ result → n % 2 ≠ 0)
   
   theorem isEven_spec_satisfied (n: Int) (h_precond : isEven_precond (n)) :
       isEven_postcond (n) (isEven (n) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

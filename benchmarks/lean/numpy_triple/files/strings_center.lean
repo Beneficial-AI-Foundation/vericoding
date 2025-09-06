@@ -51,7 +51,6 @@ open Std.Do
 -- </vc-helpers>
 
 def center {n : Nat} (a : Vector String n) (width : Vector Nat n) (fillchar : Char := ' ') : Id (Vector String n) :=
--- <vc-implementation>
   return Vector.ofFn (fun i => 
     let str := a.get i
     let w := width.get i
@@ -62,7 +61,6 @@ def center {n : Nat} (a : Vector String n) (width : Vector Nat n) (fillchar : Ch
       let left_pad := padding / 2
       let right_pad := padding - left_pad
       String.mk (List.replicate left_pad fillchar) ++ str ++ String.mk (List.replicate right_pad fillchar))
--- </vc-implementation>
 
 theorem center_spec {n : Nat} (a : Vector String n) (width : Vector Nat n) (fillchar : Char := ' ') :
     ⦃⌜True⌝⦄
@@ -83,6 +81,4 @@ theorem center_spec {n : Nat} (a : Vector String n) (width : Vector Nat n) (fill
           right_pad = (width.get i - (a.get i).length) - left_pad ∧
           -- Result string structure: left_pad + original + right_pad
           r.get i = (String.mk (List.replicate left_pad fillchar)) ++ (a.get i) ++ (String.mk (List.replicate right_pad fillchar)))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

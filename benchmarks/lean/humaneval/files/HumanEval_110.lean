@@ -24,9 +24,7 @@ import Std
 -- </vc-helpers>
 
 def implementation (lst1: List Int) (lst2: List Int) : String :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -62,10 +60,8 @@ theorem correctness
 (lst1: List Int)
 (lst2: List Int)
 : problem_spec implementation lst1 lst2
-:=
--- <vc-proof>
+:= by
   sorry
--- </vc-proof>
 
 -- #test implementation ([1, 2, 3, 4], [1, 2, 3, 4]) = "YES"
 -- #test implementation ([1, 2, 3, 4], [1, 5, 3, 4]) = "NO"

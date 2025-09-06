@@ -22,14 +22,10 @@ open Std.Do
 -- </vc-helpers>
 
 def size {n : Nat} (a : Vector Float n) : Id Nat :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem size_spec {n : Nat} (a : Vector Float n) :
     ⦃⌜True⌝⦄
     size a
     ⦃⇓result => ⌜result = n⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

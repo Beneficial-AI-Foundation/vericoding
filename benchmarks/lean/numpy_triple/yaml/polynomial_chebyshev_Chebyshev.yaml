@@ -34,15 +34,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def chebyshev {n : Nat} (coef : Vector Float n) : Id (ChebyshevPoly n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem chebyshev_spec {n : Nat} (coef : Vector Float n) :
       ⦃⌜True⌝⦄
       chebyshev coef
@@ -58,11 +54,7 @@ vc-condition: |-
                    result.domain_min < result.domain_max ∧
                    -- Window interval is valid
                    result.window_min < result.window_max⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

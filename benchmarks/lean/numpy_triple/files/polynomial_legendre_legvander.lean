@@ -18,9 +18,7 @@ open Std.Do
 -- </vc-helpers>
 
 def legvander {n : Nat} (x : Vector Float n) (deg : Nat) : Id (Vector (Vector Float (deg + 1)) n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem legvander_spec {n : Nat} (x : Vector Float n) (deg : Nat) :
     ⦃⌜True⌝⦄
@@ -33,6 +31,4 @@ theorem legvander_spec {n : Nat} (x : Vector Float n) (deg : Nat) :
       -- Matrix has correct dimensions and well-defined values
       (∀ i : Fin n, ∀ j : Fin (deg + 1), ∃ val : Float, (result.get i).get j = val)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

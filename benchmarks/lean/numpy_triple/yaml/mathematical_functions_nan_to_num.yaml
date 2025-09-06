@@ -27,15 +27,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def nan_to_num {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem nan_to_num_spec {n : Nat} (x : Vector Float n) :
       ⦃⌜True⌝⦄
       nan_to_num x
@@ -47,11 +43,7 @@ vc-condition: |-
         (xi = -Float.inf → ri < 0 ∧ ri.isFinite) ∧
         (xi.isFinite → ri = xi)) ∧
       (∀ i : Fin n, (result.get i).isFinite)⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

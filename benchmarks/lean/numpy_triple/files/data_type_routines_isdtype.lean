@@ -13,7 +13,7 @@
 
     Precondition: True (works for any valid dtype and kind)
     Postcondition: Returns true iff the dtype belongs to the specified kind category.
-    
+
     The function implements the following classification rules:
     - Bool: dtype is boolean
     - SignedInteger: dtype is signed integer (int8, int16, int32, int64)
@@ -101,14 +101,10 @@ def isOfKind (dtype : NumpyDType) (kind : DTypeKind) : Bool :=
 -- </vc-helpers>
 
 def numpy_isdtype (dtype : NumpyDType) (kind : DTypeKind) : Id Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_isdtype_spec (dtype : NumpyDType) (kind : DTypeKind) :
     ⦃⌜True⌝⦄
     numpy_isdtype dtype kind
     ⦃⇓result => ⌜result = isOfKind dtype kind⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

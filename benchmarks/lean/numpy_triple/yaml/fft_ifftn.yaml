@@ -9,25 +9,25 @@ vc-description: |-
   -/
   
   /-  Compute the N-dimensional inverse discrete Fourier Transform (IFFTN).
-       
+  
        The IFFTN extends the 1D inverse FFT to multiple dimensions, computing
        the inverse of the N-dimensional DFT. For a 2D array, this applies the
        inverse transform along both dimensions.
-       
+  
        For a 2D array of size m×n, the (i,j)-th output element is computed as:
        X[i,j] = (1/(m*n)) * Σ(k=0 to m-1) Σ(l=0 to n-1) a[k,l] * exp(2πi*(i*k/m + j*l/n))
-       
+  
        This is the mathematical inverse of the N-dimensional FFT. -/
   
   /-  Specification: The N-dimensional inverse FFT correctly computes the inverse discrete Fourier transform.
-       
+  
        The IFFTN satisfies the inverse N-dimensional DFT equation where each output element (i,j)
        is computed as (1/(m*n)) times the double sum over all input elements (k,l), multiplied by
        the complex exponential exp(2πi*(i*k/m + j*l/n)).
-       
+  
        This is the mathematical inverse of the N-dimensional FFT operation, with positive signs
        in the exponential and a normalization factor of 1/(m*n) for 2D case.
-       
+  
        Key properties:
        1. Inverse relationship: ifftn(fftn(x)) ≈ x within numerical accuracy
        2. Linearity: ifftn(a*x + b*y) = a*ifftn(x) + b*ifftn(y) 
@@ -81,15 +81,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def ifftn {m n : Nat} (a : Vector (ComplexVector n) m) : Id (Vector (ComplexVector n) m) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem ifftn_spec {m n : Nat} (a : Vector (ComplexVector n) m) (hm : m > 0) (hn : n > 0) :
       ⦃⌜m > 0 ∧ n > 0⌝⦄
       ifftn a
@@ -98,11 +94,7 @@ vc-condition: |-
           complexSum (fun k => complexSum (fun l =>
               (a.get k).get l * cexp (2 * (3.14159265358979323846 : Float) * 
                   (i.val.toFloat * k.val.toFloat / m.toFloat + j.val.toFloat * l.val.toFloat / n.toFloat))))⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

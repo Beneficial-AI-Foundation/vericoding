@@ -22,9 +22,7 @@ open Std.Do
 -- </vc-helpers>
 
 def legder {n : Nat} (c : Vector Float n) (m : Nat) (scl : Float) : Id (Vector Float (max 1 (n - m))) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem legder_spec {n : Nat} (c : Vector Float n) (m : Nat) (scl : Float) (h : n ≥ 1) :
     ⦃⌜n ≥ 1⌝⦄
@@ -37,6 +35,4 @@ theorem legder_spec {n : Nat} (c : Vector Float n) (m : Nat) (scl : Float) (h : 
       -- If m >= n, result is zero vector of length 1
       (m ≥ n → result.size = 1)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>
