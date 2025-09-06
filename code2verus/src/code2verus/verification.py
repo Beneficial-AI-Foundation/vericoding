@@ -15,6 +15,22 @@ def yaml_to_verus(verus_yaml: str) -> str:
         # First, try to parse the YAML as-is
         as_yaml = yaml.safe_load(verus_yaml)
 
+        # Check for forbidden fields and raise an error if found
+        forbidden_fields = [
+            "vc-implementation",
+            "vc-signature",
+            "vc-condition",
+            "vc-proof",
+        ]
+        found_forbidden = [field for field in forbidden_fields if field in as_yaml]
+
+        if found_forbidden:
+            error_msg = (
+                f"Error: Found forbidden fields in YAML: {', '.join(found_forbidden)}"
+            )
+            logfire.error(error_msg)
+            raise ValueError(error_msg)
+
         # Handle the actual YAML structure from the verina benchmark
         parts = []
 
@@ -28,23 +44,11 @@ def yaml_to_verus(verus_yaml: str) -> str:
         if "vc-helpers" in as_yaml and as_yaml["vc-helpers"]:
             parts.append(as_yaml["vc-helpers"])
 
-        if "vc-signature" in as_yaml and as_yaml["vc-signature"]:
-            parts.append(as_yaml["vc-signature"])
-
-        if "vc-implementation" in as_yaml and as_yaml["vc-implementation"]:
-            parts.append(as_yaml["vc-implementation"])
-
         if "vc-spec" in as_yaml and as_yaml["vc-spec"]:
             parts.append(as_yaml["vc-spec"])
 
         if "vc-code" in as_yaml and as_yaml["vc-code"]:
             parts.append(as_yaml["vc-code"])
-
-        if "vc-condition" in as_yaml and as_yaml["vc-condition"]:
-            parts.append(as_yaml["vc-condition"])
-
-        if "vc-proof" in as_yaml and as_yaml["vc-proof"]:
-            parts.append(as_yaml["vc-proof"])
 
         if "vc-postamble" in as_yaml and as_yaml["vc-postamble"]:
             parts.append(as_yaml["vc-postamble"])
@@ -90,45 +94,12 @@ async def verify_verus_code(
         logfire.info(f"Using raw Verus code ({len(src)} characters)")
     logfire.info(f"Verifying Verus code:\n{src[:500]}...\n")  # Log first 500 characters
 
-    # Save the Verus code to the files folder if we have the necessary information
+    # Create a temporary file for verification (don't save permanent files during verification)
     verification_file = None
-    if original_filename and benchmark_name and is_yaml:
-        try:
-            from pathlib import Path
-            from code2verus.config import ARTIFACTS
-
-            # Use the new path derivation logic if available
-            if benchmark_path:
-                from code2verus.processing import derive_output_path
-
-                files_folder = derive_output_path(benchmark_path, benchmark_name, False)
-            else:
-                # Fallback to old behavior
-                files_folder = ARTIFACTS / benchmark_name / "files"
-
-            files_folder.mkdir(parents=True, exist_ok=True)
-
-            # Create the corresponding .rs filename from the original YAML filename
-            original_path = Path(original_filename)
-            verus_filename = original_path.with_suffix(".rs").name
-            verus_file_path = files_folder / verus_filename
-
-            # Save the converted Verus code
-            with open(verus_file_path, "w") as f:
-                f.write(src)
-            logfire.info(f"Saved Verus file to: {verus_file_path}")
-            verification_file = str(verus_file_path)
-        except Exception as e:
-            logfire.info(f"Failed to save Verus file: {e}")
-
-    # If we couldn't save to files folder, create a temporary file as fallback
-    if verification_file is None:
-        with tempfile.NamedTemporaryFile(
-            mode="w", suffix=".rs", delete=False
-        ) as tmpfile:
-            tmpfile.write(src)
-            verification_file = tmpfile.name
-            logfire.info(f"Created temporary file: {verification_file}")
+    with tempfile.NamedTemporaryFile(mode="w", suffix=".rs", delete=False) as tmpfile:
+        tmpfile.write(src)
+        verification_file = tmpfile.name
+        logfire.info(f"Created temporary file: {verification_file}")
 
     try:
         # Run verus verification in a separate process
@@ -156,8 +127,8 @@ async def verify_verus_code(
         verification_output = ""
         verification_error = f"Error running Verus: {str(exc)}"
 
-    # Clean up temporary file only if we created one (not for saved files)
-    if verification_file and original_filename is None:
+    # Clean up temporary file
+    if verification_file:
         try:
             os.unlink(verification_file)
         except OSError:
