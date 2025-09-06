@@ -2,6 +2,7 @@
 
 import re
 import subprocess
+import yaml
 from pathlib import Path
 
 from code2verus.config import cfg
@@ -89,3 +90,50 @@ def extract_rust_code(text: str) -> str:
 
     # If no code blocks found, return the original text
     return text.strip()
+
+
+def concatenate_yaml_fields(yaml_content: str) -> str:
+    """Parse YAML content and concatenate all field values to create a single Verus file"""
+    try:
+        # Parse the YAML content
+        data = yaml.safe_load(yaml_content)
+
+        if not isinstance(data, dict):
+            # If it's not a dict, return the original content
+            return yaml_content
+
+        # Define the expected order of fields for Verus code
+        field_order = [
+            "vc-description",
+            "vc-preamble",
+            "vc-helpers",
+            "vc-spec",
+            "vc-code",
+            "vc-postamble",
+        ]
+
+        parts = []
+
+        # Process description as a comment
+        if "vc-description" in data and data["vc-description"]:
+            description = str(data["vc-description"]).strip()
+            if description:
+                # Add as a block comment
+                parts.append(f"/* {description} */")
+                parts.append("")  # Empty line after description
+
+        # Process other fields in order
+        for field in field_order[1:]:  # Skip vc-description as we handled it above
+            if field in data and data[field]:
+                content = str(data[field]).strip()
+                if content:
+                    parts.append(content)
+
+        return "\n".join(parts)
+
+    except yaml.YAMLError as e:
+        # If YAML parsing fails, return the original content
+        return yaml_content
+    except Exception as e:
+        # For any other error, return the original content
+        return yaml_content

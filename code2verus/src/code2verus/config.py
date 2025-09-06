@@ -22,5 +22,8 @@ _cfg = load_config()
 cfg = _cfg.get("config", {})
 system_prompt = _cfg.get("system", "")
 
+# Make the full config available for accessing sections like yaml_instructions
+full_cfg = _cfg
+
 ARTIFACTS = Path(cfg.get("artifacts_dir", "artifacts"))
 ARTIFACTS.mkdir(parents=True, exist_ok=True)

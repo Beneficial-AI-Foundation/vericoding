@@ -12,6 +12,7 @@ from code2verus.config import cfg
 
 def yaml_to_verus(verus_yaml: str) -> str:
     try:
+        # First, try to parse the YAML as-is
         as_yaml = yaml.safe_load(verus_yaml)
 
         # Handle the actual YAML structure from the verina benchmark
@@ -33,6 +34,12 @@ def yaml_to_verus(verus_yaml: str) -> str:
         if "vc-implementation" in as_yaml and as_yaml["vc-implementation"]:
             parts.append(as_yaml["vc-implementation"])
 
+        if "vc-spec" in as_yaml and as_yaml["vc-spec"]:
+            parts.append(as_yaml["vc-spec"])
+
+        if "vc-code" in as_yaml and as_yaml["vc-code"]:
+            parts.append(as_yaml["vc-code"])
+
         if "vc-condition" in as_yaml and as_yaml["vc-condition"]:
             parts.append(as_yaml["vc-condition"])
 
@@ -44,7 +51,26 @@ def yaml_to_verus(verus_yaml: str) -> str:
 
         return "\n".join(parts)
 
+    except yaml.YAMLError as e:
+        logfire.error(f"YAML parsing failed: {e}")
+        logfire.info(f"Failed YAML content (first 500 chars): {verus_yaml[:500]}...")
+
+        # Try to provide more specific error information for common issues
+        error_msg = str(e)
+        if "mapping values are not allowed here" in error_msg:
+            logfire.error(
+                "YAML Error: Likely indentation or syntax issue. Common causes:"
+            )
+            logfire.error("- Missing colons after field names")
+            logfire.error("- Incorrect indentation")
+            logfire.error("- Special characters not properly quoted")
+
+        # Fall back to using the content as-is
+        logfire.info(f"Using YAML content as-is despite parsing error")
+        return verus_yaml
+
     except Exception as e:
+        logfire.error(f"Unexpected error during YAML processing: {e}")
         logfire.info(f"Failed to parse YAML, using as-is: {e}")
         return verus_yaml
 
