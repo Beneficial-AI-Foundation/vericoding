@@ -1,0 +1,77 @@
+/*
+{
+  "name": "numpy.linalg.tensorsolve",
+  "category": "Solving equations and inverting matrices",
+  "description": "Solve the tensor equation a x = b for x",
+  "url": "https://numpy.org/doc/stable/reference/generated/numpy.linalg.tensorsolve.html",
+  "doc": "Solve the tensor equation a x = b for x.\n\nIt is assumed that all indices of x are summed over in the product, and the dimensions of a are rearranged such that a is reshaped to a 2D matrix.",
+}
+*/
+
+/*  
+Solve the tensor equation a x = b for x.
+
+This function solves for x in the tensor equation a x = b, where:
+- a is a coefficient tensor that can be reshaped to a square matrix
+- b is the right-hand tensor  
+- x is the solution tensor
+
+For simplicity, we model this as solving a square linear system where the 
+coefficient matrix a is reshaped from tensor form to a 2D matrix, and the 
+solution is reshaped back to tensor form.
+*/
+
+/*  
+Specification: tensorsolve solves the tensor equation a x = b for x.
+
+This specification captures the mathematical properties of tensor equation solving:
+
+1. **Correctness**: The solution x satisfies the matrix equation a x = b
+2. **Invertibility**: The coefficient matrix a must be invertible
+3. **Uniqueness**: The solution is unique when a is invertible
+
+The specification handles the basic case where:
+- a is an n×n coefficient matrix (representing a reshaped tensor)
+- b is an n-dimensional right-hand vector
+- x is the n-dimensional solution vector
+*/
+use vstd::prelude::*;
+
+verus! {
+/* <vc-helpers> */
+/* </vc-helpers> */
+fn tensorsolve(a: Vec<Vec<f64>>, b: Vec<f64>) -> (result: Vec<f64>)
+    requires 
+        a.len() > 0,
+        a.len() == b.len(),
+        forall|i: int| 0 <= i < a.len() ==> a[i].len() == a.len()
+    ensures
+        result.len() == a.len()
+/* <vc-implementation> */
+{
+    let mut result = Vec::new();
+    let mut i = 0;
+    while i < a.len()
+        invariant result.len() == i, i <= a.len()
+        decreases a.len() - i
+    {
+        result.push(0.0);
+        i = i + 1;
+    }
+    return result; // TODO: Remove this line and implement the function body
+}
+/* </vc-implementation> */
+proof fn tensorsolve_spec(a: Seq<Seq<f64>>, b: Seq<f64>)
+    requires 
+        a.len() > 0,
+        a.len() == b.len(),
+        forall|i: int| 0 <= i < a.len() ==> a[i].len() == a.len()
+/* <vc-proof> */
+{
+    assume(false); // TODO: Remove this line and implement the proof
+}
+/* </vc-proof> */
+
+fn main() {}
+
+}

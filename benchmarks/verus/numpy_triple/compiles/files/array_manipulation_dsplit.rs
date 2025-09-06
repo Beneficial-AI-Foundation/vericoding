@@ -1,0 +1,71 @@
+/* 
+{
+  "name": "numpy.dsplit",
+  "category": "Splitting Arrays",
+  "description": "Split array into multiple sub-arrays along the 3rd axis (depth)",
+  "url": "https://numpy.org/doc/stable/reference/generated/numpy.dsplit.html",
+  "doc": "Split array into multiple sub-arrays along the 3rd axis (depth).\n\nPlease refer to the `split` documentation. `dsplit` is equivalent\nto `split` with ``axis=2``, the array is always split along the third\naxis provided the array dimension is greater than or equal to 3.\n\nExamples\n--------\n>>> x = np.arange(16.0).reshape(2, 2, 4)\n>>> x\narray([[[ 0.,  1.,  2.,  3.],\n        [ 4.,  5.,  6.,  7.]],\n       [[ 8.,  9., 10., 11.],\n        [12., 13., 14., 15.]]])\n>>> np.dsplit(x, 2)\n[array([[[ 0.,  1.],\n        [ 4.,  5.]],\n       [[ 8.,  9.],\n        [12., 13.]]]),\n array([[[ 2.,  3.],\n        [ 6.,  7.]],\n       [[10., 11.],\n        [14., 15.]]])]\n>>> np.dsplit(x, np.array([3, 6]))\n[array([[[ 0.,  1.,  2.],\n        [ 4.,  5.,  6.]],\n       [[ 8.,  9., 10.],\n        [12., 13., 14.]]]),\n array([[[ 3.],\n        [ 7.]],\n       [[11.],\n        [15.]]]),\n array([], shape=(2, 2, 0), dtype=float64)]",
+  "source_location": "numpy/lib/_shape_base_impl.py",
+  "signature": "numpy.dsplit(ary, indices_or_sections)"
+}
+*/
+
+/*  Split a 1D vector into equal sections (simplified version of dsplit).
+    
+    Since dsplit operates on the 3rd axis of 3D arrays, this simplified version
+    demonstrates the splitting behavior on a 1D vector. The actual dsplit would
+    work on nested Vector structures representing 3D arrays.
+    
+    This function divides a vector into k equal sections, where k must divide
+    the length of the vector evenly. Returns a list of vectors.
+*/
+
+/*  Specification: dsplit divides a vector into equal sections.
+    
+    Precondition: sections = k and k > 0 (array size must be k * n)
+    Postcondition: Returns k sub-vectors, each of size n. The i-th sub-vector
+                   contains elements from positions i*n to (i+1)*n-1 of the 
+                   original array.
+    
+    Mathematical property: Concatenating all sub-vectors in order reconstructs
+                          the original vector.
+*/
+use vstd::prelude::*;
+
+verus! {
+/* <vc-helpers> */
+/* </vc-helpers> */
+spec fn dsplit(arr: Vec<f64>, sections: usize) -> Vec<Vec<f64>>
+    recommends 
+        sections > 0,
+        arr.len() % sections == 0,
+/* <vc-implementation> */
+    {
+        arbitrary() // TODO: Remove this line and implement the function body
+    }
+/* </vc-implementation> */
+proof fn dsplit_spec(arr: Vec<f64>, sections: usize) 
+    requires 
+        sections > 0,
+        arr.len() % sections == 0,
+    ensures
+        ({
+            let result = dsplit(arr, sections);
+            &&& result.len() == sections
+            &&& forall |i: int| 0 <= i < sections ==> {
+                &&& result[i].len() == arr.len() / sections
+                &&& forall |j: int| 0 <= j < arr.len() / sections ==> {
+                    result[i][j] == arr[i * (arr.len() / sections) + j]
+                }
+            }
+        })
+/* <vc-proof> */
+    {
+        assume(false); // TODO: Remove this line and implement the proof
+    }
+/* </vc-proof> */
+
+fn main() {
+}
+
+}

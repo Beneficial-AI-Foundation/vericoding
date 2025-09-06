@@ -1,0 +1,36 @@
+/* numpy.cbrt: Return the cube-root of an array, element-wise.
+
+Computes the cube root of each element in the input array.
+The cube root function is defined for all real numbers, including negative numbers.
+For any real number x, cbrt(x) = y such that y³ = x.
+
+Returns an array of the same shape as x, containing the cube roots.
+
+Specification: numpy.cbrt returns a vector where each element is the
+cube root of the corresponding element in x.
+
+Precondition: True (cube root is defined for all real numbers)
+Postcondition: For all indices i, (result[i])³ = x[i]
+
+Mathematical properties:
+- cbrt(x³) = x for all x
+- cbrt(-x) = -cbrt(x) (odd function)
+- cbrt(0) = 0
+- cbrt(1) = 1
+- cbrt(8) = 2
+- cbrt(-8) = -2 */
+
+use vstd::prelude::*;
+
+verus! {
+fn cbrt(x: &Vec<f64>) -> (result: Vec<f64>)
+    ensures
+        result.len() == x.len(),
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

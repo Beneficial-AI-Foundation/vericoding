@@ -1,0 +1,44 @@
+/* Compute the roots of a HermiteE series.
+
+Given HermiteE series coefficients c[0], c[1], ..., c[n-1], returns the roots of
+p(x) = c[0]*He_0(x) + c[1]*He_1(x) + ... + c[n-1]*He_{n-1}(x)
+where He_i(x) are the "probabilists'" or "normalized" Hermite polynomials
+
+Specification: hermeroots returns the roots of the HermiteE series defined by coefficients.
+For a HermiteE series with n coefficients, there are at most n-1 roots.
+Each root r satisfies: p(r) = 0 where p(x) = Σ c[i] * He_i(x)
+
+Mathematical properties:
+1. The polynomial p(x) = Σ c[i] * He_i(x) where He_i are HermiteE basis polynomials
+2. He_i(x) are the "probabilists'" Hermite polynomials related to the standard normal distribution
+3. The roots are found via eigenvalues of the companion matrix
+4. For degree n polynomial, there are exactly n-1 roots (counting multiplicity)
+5. The leading coefficient must be non-zero for a well-defined polynomial */
+
+use vstd::prelude::*;
+
+verus! {
+spec fn last_coeff_nonzero(c: &Vec<f32>) -> bool {
+    c.len() > 0 && c[(c.len() - 1) as int] != 0.0f32
+}
+fn hermeroots(c: &Vec<f32>) -> (result: Vec<f32>)
+    requires last_coeff_nonzero(c),
+    ensures 
+        result.len() == c.len() - 1,
+        /* Mathematical specification for HermiteE polynomial roots */
+        /* The HermiteE polynomials He_i(x) form an orthogonal basis */
+        /* For degree n polynomial: p(x) = c[0]*He_0(x) + c[1]*He_1(x) + ... + c[n]*He_n(x) */
+        /* Each root r satisfies: p(r) = 0 */
+        /* For a HermiteE polynomial of degree n (with n+1 coefficients), we get exactly n roots */
+        forall|i: int| #![trigger result[i]] 0 <= i < result.len() ==> {
+            /* All roots are finite (not NaN or infinite) */
+            true /* placeholder condition - in practice would check is_finite() */
+        },
+{
+    /* impl-start */
+    assume(false);
+    Vec::new()
+    /* impl-end */
+}
+}
+fn main() {}

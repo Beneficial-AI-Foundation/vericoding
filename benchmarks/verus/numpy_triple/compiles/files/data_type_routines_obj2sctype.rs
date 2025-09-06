@@ -1,0 +1,124 @@
+/*  numpy.obj2sctype: Return the scalar dtype or NumPy equivalent of Python type of an object.
+
+    Takes any object and returns its corresponding NumPy scalar data type.
+    If the object's type cannot be determined, returns the default value if provided,
+    otherwise returns none.
+
+    This function performs type introspection to determine the appropriate NumPy
+    scalar type for any given object, including arrays, scalars, and generic objects.
+*/
+
+/*  Specification: obj2sctype returns the appropriate NumPy scalar type for the input object.
+
+    The function correctly identifies:
+    1. Scalar types from their corresponding objects
+    2. Array element types from array objects
+    3. Generic object types
+    4. Returns default for unrecognized types
+    5. Returns none when no default is provided for unrecognized types
+
+    Precondition: True (works with any object)
+    Postcondition: The result correctly represents the scalar type of the input object
+*/
+use vstd::prelude::*;
+
+verus! {
+
+/* NumPy scalar data types represented as an enum */
+#[derive(PartialEq, Eq)]
+enum NumpyScalarType {
+    Int32,
+    Int64,
+    Float32,
+    Float64,
+    Complex64,
+    Complex128,
+    Object,
+    String,
+    Bool,
+}
+
+/* Object representation for type introspection */
+enum NumpyObject {
+    IntVal(int),
+    FloatVal(int), // Using int as placeholder for float
+    ArrayInt(Vec<int>),
+    ArrayFloat(Vec<int>), // Using int as placeholder for float
+    ArrayComplex(Vec<(int, int)>), // Using int pairs as placeholder for complex
+    GenericObj(()),
+    StringVal(Vec<char>), // Using Vec<char> as placeholder for string
+    BoolVal(bool),
+}
+
+impl NumpyObject {
+    /* Helper predicate: Check if object matches given scalar type */
+    spec fn matches_scalar_type(self, dtype: NumpyScalarType) -> bool {
+        match (self, dtype) {
+            (NumpyObject::IntVal(_), NumpyScalarType::Int64) => true,
+            (NumpyObject::FloatVal(_), NumpyScalarType::Float64) => true,
+            (NumpyObject::StringVal(_), NumpyScalarType::String) => true,
+            (NumpyObject::BoolVal(_), NumpyScalarType::Bool) => true,
+            _ => false,
+        }
+    }
+
+    /* Helper predicate: Check if object is an array with given element type */
+    spec fn is_array_with_element_type(self, dtype: NumpyScalarType) -> bool {
+        match (self, dtype) {
+            (NumpyObject::ArrayInt(_), NumpyScalarType::Int64) => true,
+            (NumpyObject::ArrayFloat(_), NumpyScalarType::Float64) => true,
+            (NumpyObject::ArrayComplex(_), NumpyScalarType::Complex128) => true,
+            _ => false,
+        }
+    }
+
+    /* Helper predicate: Check if object is a generic object */
+    spec fn is_generic_object(self) -> bool {
+        match self {
+            NumpyObject::GenericObj(_) => true,
+            _ => false,
+        }
+    }
+}
+
+spec fn obj2sctype_spec_fn(rep: NumpyObject, default: Option<NumpyScalarType>) -> Option<NumpyScalarType> {
+    match rep {
+        NumpyObject::IntVal(_) => Some(NumpyScalarType::Int64),
+        NumpyObject::FloatVal(_) => Some(NumpyScalarType::Float64),
+        NumpyObject::ArrayInt(_) => Some(NumpyScalarType::Int64),
+        NumpyObject::ArrayFloat(_) => Some(NumpyScalarType::Float64),
+        NumpyObject::ArrayComplex(_) => Some(NumpyScalarType::Complex128),
+        NumpyObject::StringVal(_) => Some(NumpyScalarType::String),
+        NumpyObject::BoolVal(_) => Some(NumpyScalarType::Bool),
+        NumpyObject::GenericObj(_) => default,
+    }
+}
+// <vc-helpers>
+// </vc-helpers>
+fn obj2sctype(rep: NumpyObject, default: Option<NumpyScalarType>) -> (result: Option<NumpyScalarType>)
+// <vc-implementation>
+{
+    return Some(NumpyScalarType::Int64); // TODO: Remove this line and implement the function body
+}
+// </vc-implementation>
+proof fn obj2sctype_correctness_spec(rep: NumpyObject, default: Option<NumpyScalarType>)
+    ensures
+        ({
+            let result = obj2sctype_spec_fn(rep, default);
+            match result {
+                Some(dtype) => 
+                    rep.matches_scalar_type(dtype) || 
+                    rep.is_array_with_element_type(dtype) || 
+                    (rep.is_generic_object() && result == default),
+                None => rep.is_generic_object() && matches!(default, None),
+            }
+        })
+// <vc-proof>
+{
+    assume(false); // TODO: Remove this line and implement the proof
+}
+// </vc-proof>
+
+fn main() {}
+
+}

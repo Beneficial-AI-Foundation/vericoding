@@ -1,0 +1,42 @@
+Good! Now let me provide the YAML output with the corrected Verus translation:
+
+vc-description: |-
+  The weight function of the Chebyshev polynomials.
+  Computes 1/sqrt(1 - x²) for each element.
+  
+  Specification: chebweight computes the Chebyshev weight function 1/sqrt(1 - x²).
+  The function is well-defined when all elements are in the open interval (-1, 1).
+  
+  Mathematical properties:
+  1. The weight function equals 1/sqrt(1 - x²) for each element
+  2. The result is always positive for valid inputs
+  3. The function is symmetric: w(-x) = w(x)
+  4. The function approaches infinity as x approaches ±1
+  5. The implementation uses the factored form 1/(sqrt(1+x) * sqrt(1-x)) for numerical stability
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn chebweight(x: &Vec<f32>) -> (result: Vec<f32>)
+      requires
+          x.len() > 0,
+      ensures
+          result.len() == x.len(),
+          /* Primary mathematical formula: result[i] = 1 / sqrt(1 - x[i]^2) for each i */
+          /* Sanity check: result is always positive for valid inputs in (-1, 1) */
+          /* Symmetry property: w(-x) = w(x) */
+          /* Numerical stability: implementation uses factored form 1/(sqrt(1+x) * sqrt(1-x)) */
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

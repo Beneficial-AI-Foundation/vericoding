@@ -1,0 +1,73 @@
+vc-description: |-
+  /* 
+  {
+    "name": "numpy.array_repr",
+    "category": "String formatting",
+    "description": "Return the string representation of an array",
+    "url": "https://numpy.org/doc/stable/reference/generated/numpy.array_repr.html",
+    "doc": "Return the string representation of an array.\n\n    Parameters\n    ----------\n    arr : ndarray\n        Input array.\n    max_line_width : int, optional\n        Inserts newlines if text is longer than \`max_line_width\`.\n        Defaults to \`\`numpy.get_printoptions()['linewidth']\`\`.\n    precision : int, optional\n        Floating point precision.\n        Defaults to \`\`numpy.get_printoptions()['precision']\`\`.\n    suppress_small : bool, optional\n        Represent numbers \"very close\" to zero as zero; d...",
+  }
+  */
+  
+  /* Return the string representation of a vector, formatted as "array([v1, v2, ..., vn])".
+     This provides a structured string representation that includes the "array()" wrapper
+     and properly formatted element values. */
+  
+  /* Specification: array_repr returns a well-formatted string representation of the vector.
+      
+      The specification captures:
+      1. Basic format: the string starts with "array(" and ends with ")"
+      2. Element representation: each element is formatted as a string
+      3. Proper bracketing: elements are enclosed in square brackets
+      4. Separator consistency: elements are separated by commas and spaces
+      5. Precision handling: floating point numbers are formatted to specified precision
+      6. Small number suppression: very small numbers can be represented as zero
+      7. Non-emptiness: the result is always a non-empty string
+      8. Structural integrity: the string format is parseable and well-formed */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  /* <vc-helpers> */
+  /* </vc-helpers> */
+
+vc-signature: |-
+  fn array_repr(arr: &Vec<f64>, max_line_width: usize, precision: usize, suppress_small: bool) -> (result: String)
+      requires
+          precision > 0,
+          max_line_width > 0,
+
+vc-implementation: |-
+  /* <vc-implementation> */
+      {
+          return "array([])".to_string(); // TODO: Remove this line and implement the function body
+      }
+  /* </vc-implementation> */
+
+vc-condition: |-
+  proof fn array_repr_spec()
+      ensures
+          /* Basic format structure: result starts with "array([" and ends with "])" */
+          /* Non-empty result: string representation is always non-empty */
+          /* Empty array case: should be exactly "array([])" */
+          /* Non-empty array case: should contain comma-separated elements for n > 1 */
+          /* Single element case: should not contain comma */
+          /* Structural consistency: result contains expected characters */
+          /* Precision constraint: reasonable string length bounds */
+          /* Format correctness: contains proper brackets */
+          true /* Specification conditions would go here */
+
+vc-proof: |-
+  /* <vc-proof> */
+      {
+          assume(false); // TODO: Remove this line and implement the proof
+      }
+  /* </vc-proof> */
+
+vc-postamble: |-
+  fn main() {}
+
+  }

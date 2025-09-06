@@ -1,0 +1,35 @@
+/* Find the intersection of two arrays.
+Returns the sorted, unique values that are in both input arrays.
+
+Specification: intersect1d returns a sorted array of unique values 
+that exist in both input arrays */
+
+use vstd::prelude::*;
+
+verus! {
+
+spec fn in_vec(v: Vec<i32>, val: i32) -> bool {
+    exists|i: int| 0 <= i < v.len() && v[i] == val
+}
+fn intersect1d(ar1: &Vec<i32>, ar2: &Vec<i32>) -> (result: Vec<i32>)
+    ensures
+        /* Result contains only values that exist in both arrays */
+        forall|i: int| 0 <= i < result.len() ==> #[trigger] result[i] == result[i] && {
+            &&& in_vec(*ar1, result[i])
+            &&& in_vec(*ar2, result[i])
+        },
+        /* Result is sorted in ascending order */
+        forall|i: int, j: int| 0 <= i < j < result.len() ==> #[trigger] result[i] <= #[trigger] result[j],
+        /* Result contains unique values (no duplicates) */
+        forall|i: int, j: int| 0 <= i < result.len() && 0 <= j < result.len() && i != j ==> 
+            #[trigger] result[i] != #[trigger] result[j],
+        /* Result is complete (contains all common values) */
+        forall|val: i32| (in_vec(*ar1, val) && in_vec(*ar2, val)) ==> #[trigger] in_vec(result, val),
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

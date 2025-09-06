@@ -1,0 +1,41 @@
+/* Evaluate a 3-D Legendre series on the Cartesian product of x, y, and z.
+This function computes p(a,b,c) = ∑_{i,j,k} c_{i,j,k} * L_i(a) * L_j(b) * L_k(c)
+for all triples (a,b,c) from the Cartesian product of x, y, and z.
+
+Specification: leggrid3d correctly evaluates a 3-D Legendre series
+on the Cartesian product of input points.
+
+The function computes the tensor product evaluation of Legendre polynomials
+according to the mathematical formula p(a,b,c) = ∑_{i,j,k} c_{i,j,k} * L_i(a) * L_j(b) * L_k(c). */
+
+use vstd::prelude::*;
+
+verus! {
+fn leggrid3d(
+    x: &Vec<f32>,
+    y: &Vec<f32>, 
+    z: &Vec<f32>,
+    c: &Vec<Vec<Vec<f32>>>
+) -> (result: Vec<Vec<Vec<f32>>>)
+    requires
+        x.len() > 0,
+        y.len() > 0,
+        z.len() > 0,
+        c.len() > 0,
+        forall|i: int| 0 <= i < c.len() ==> c[i].len() > 0,
+        forall|i: int, j: int| 0 <= i < c.len() && 0 <= j < c[i].len() ==> c[i][j].len() > 0,
+    ensures
+        result.len() == x.len(),
+        forall|i: int| 0 <= i < result.len() ==> result[i].len() == y.len(),
+        forall|i: int, j: int| 0 <= i < result.len() && 0 <= j < result[i].len() ==> result[i][j].len() == z.len(),
+        forall|i: int, j: int, k: int| 
+            0 <= i < result.len() && 0 <= j < result[i].len() && 0 <= k < result[i][j].len() ==> 
+            #[trigger] result[i][j][k] == result[i][j][k],
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

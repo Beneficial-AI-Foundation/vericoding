@@ -1,0 +1,48 @@
+vc-description: |-
+  Least squares fit of Hermite series to data. Returns coefficients of a Hermite polynomial
+  that best fits the given data points (x, y) with degree deg.
+
+  Specification: hermfit returns coefficients that minimize the least squares error
+  for a Hermite polynomial fit of the given degree to the data points
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn hermfit(x: &Vec<f64>, y: &Vec<f64>, deg: usize) -> (result: Vec<f64>)
+      requires 
+          x.len() == y.len(),
+          x.len() > 0,
+          deg >= 0,
+      ensures
+          result.len() == deg + 1,
+          deg + 1 > 0,
+          /* The coefficients minimize the squared error
+           * Let H_k(x) be the k-th Hermite polynomial evaluated at x
+           * The fitted polynomial is p(x) = sum_{k=0}^{deg} coef[k] * H_k(x)
+           * 
+           * The least squares property: for any other coefficient vector c' of the same size,
+           * the sum of squared errors with coef is less than or equal to that with c'
+           * 
+           * Mathematical property: The solution satisfies the normal equations
+           * V^T * V * coef = V^T * y
+           * where V is the Vandermonde matrix of Hermite polynomials evaluated at x
+           * 
+           * Additional properties:
+           * 1. If m >= deg + 1, the fit is unique (assuming full rank)
+           * 2. If m = deg + 1 and points are distinct, the polynomial interpolates exactly
+           * 3. The coefficients are real-valued (no complex numbers in this spec)
+           */
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

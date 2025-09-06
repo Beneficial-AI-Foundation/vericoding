@@ -1,0 +1,73 @@
+/* numpy.frexp: Decompose the elements of x into mantissa and twos exponent.
+    
+    Returns (mantissa, exponent), where x = mantissa * 2**exponent.
+    The mantissa is in the range [0.5, 1) for positive numbers, (-1, -0.5] for negative numbers,
+    or 0 if x is 0. The exponent is an integer.
+    
+    For special values:
+    - If x is 0, returns (0.0, 0)
+    - If x is infinity, returns (infinity, 0)
+    - If x is NaN, returns (NaN, 0)
+*/
+
+/* Specification: frexp decomposes each element into mantissa and exponent such that
+    x = mantissa * 2^exponent, where the mantissa is normalized to be in [0.5, 1) for
+    positive values or (-1, -0.5] for negative values.
+    
+    Precondition: True (no special preconditions)
+    Postcondition: For all indices i:
+    - If x[i] = 0, then mantissa[i] = 0 and exponent[i] = 0
+    - If x[i] is finite and non-zero, then:
+      - x[i] = mantissa[i] * 2^exponent[i] (reconstruction property)
+      - 0.5 ≤ |mantissa[i]| < 1.0 (normalization property)
+      - mantissa[i] has same sign as x[i] (sign preservation)
+    - If x[i] is infinity or NaN, then mantissa[i] = x[i] and exponent[i] = 0
+    - Result vectors have same length as input (length preservation)
+*/
+use vstd::prelude::*;
+
+verus! {
+// <vc-helpers>
+// </vc-helpers>
+fn frexp(x: Vec<f32>) -> (result: (Vec<f32>, Vec<i32>))
+// <vc-implementation>
+    ensures
+        result.0.len() == x.len(),
+        result.1.len() == x.len(),
+    {
+        let mut mantissa = Vec::new();
+        let mut exponent = Vec::new();
+        
+        for i in 0..x.len()
+            invariant
+                mantissa.len() == i,
+                exponent.len() == i,
+        {
+            mantissa.push(0.0f32);
+            exponent.push(0i32);
+        }
+        
+        return (mantissa, exponent); // TODO: Remove this line and implement the function body
+    }
+// </vc-implementation>
+proof fn frexp_spec(x: Vec<f32>) 
+    ensures
+        /* Element-wise properties (length is preserved by type)
+           For all i:
+           - Zero case: x[i] = 0 → mantissa[i] = 0 ∧ exponent[i] = 0
+           - Non-zero finite case: x[i] ≠ 0 ∧ isFinite(x[i]) → 
+             - Reconstruction: x[i] = mantissa[i] * 2^exponent[i]
+             - Normalization: 0.5 ≤ |mantissa[i]| < 1.0
+             - Sign preservation: sign(x[i]) = sign(mantissa[i])
+           - Special values: (isInf(x[i]) ∨ isNaN(x[i])) → mantissa[i] = x[i] ∧ exponent[i] = 0
+        */
+        true
+// <vc-proof>
+    {
+        assume(false); // TODO: Remove this line and implement the proof
+    }
+// </vc-proof>
+
+fn main() {}
+
+}

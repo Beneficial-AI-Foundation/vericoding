@@ -1,0 +1,49 @@
+/* numpy.strings.less: Return the truth value of (x1 < x2) element-wise for string arrays.
+
+Performs element-wise string comparison between two vectors of strings.
+Returns a boolean vector indicating whether corresponding strings from x1 
+are lexicographically less than corresponding strings from x2.
+
+This function compares strings lexicographically and returns True for each
+position where x1[i] < x2[i] in lexicographic ordering, False otherwise.
+
+Specification: numpy.strings.less returns element-wise lexicographic comparison.
+
+This function performs element-wise lexicographic comparison between two vectors
+of strings, returning a boolean vector where each element indicates whether
+the corresponding element in x1 is lexicographically less than the corresponding
+element in x2.
+
+Precondition: True (no special preconditions for string comparison)
+Postcondition: For all indices i, result[i] = (x1[i] < x2[i])
+
+Mathematical Properties:
+- Asymmetric: if less x1 x2 is True at position i, then less x2 x1 is False at position i
+- Transitive: if less x1 x2 and less x2 x3 are both True at position i, then less x1 x3 is True at position i
+- Irreflexive: less x x returns all False (no string is less than itself)
+- Trichotomous: for any two strings s1 and s2, exactly one of s1 < s2, s1 = s2, or s1 > s2 holds
+- Decidable: String comparison is decidable for all strings
+- Type-safe: Result vector has same length as input vectors
+
+String Comparison Properties:
+- Empty string is less than any non-empty string
+- Lexicographic ordering follows dictionary order (case-sensitive)
+- Comparison is based on Unicode code point values
+- Preserves strict ordering properties of the underlying string type */
+
+use vstd::prelude::*;
+
+verus! {
+fn less(x1: &Vec<String>, x2: &Vec<String>) -> (result: Vec<bool>)
+    requires x1.len() == x2.len(),
+    ensures
+        result.len() == x1.len(),
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+
+fn main() {}

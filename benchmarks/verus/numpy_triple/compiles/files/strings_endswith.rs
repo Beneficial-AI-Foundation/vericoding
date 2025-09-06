@@ -1,0 +1,37 @@
+/* Check if strings in array end with given suffixes.
+
+Returns a boolean array which is True where the string element in a ends with suffix, otherwise False.
+
+Parameters:
+- a: array-like, with StringDType, bytes_ or str_ dtype
+- suffix: array-like, with StringDType, bytes_ or str_ dtype
+- start, end: array-like, with any integer dtype, optional
+  With optional start, test beginning at that position. With optional end, stop comparing at that position.
+
+Returns:
+- out: ndarray of bools */
+
+use vstd::prelude::*;
+
+verus! {
+spec fn string_ends_with(s: Seq<char>, suffix: Seq<char>) -> bool {
+    suffix.len() <= s.len() &&
+    s.subrange(s.len() - suffix.len(), s.len() as int) == suffix
+}
+
+fn endswith(a: &Vec<String>, suffix: &Vec<String>) -> (result: Vec<bool>)
+    requires 
+        a.len() == suffix.len(),
+    ensures
+        result.len() == a.len(),
+        forall|i: int| 0 <= i < a.len() ==> {
+            result[i] == string_ends_with(a[i]@, suffix[i]@)
+        },
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

@@ -1,0 +1,64 @@
+/*
+{
+  "name": "numpy.around",
+  "description": "Evenly round to the given number of decimals",
+  "url": "https://numpy.org/doc/stable/reference/generated/numpy.around.html",
+  "doc": "Evenly round to the given number of decimals.\n\nAlias for numpy.round.",
+}
+*/
+
+/* numpy.around: Evenly round to the given number of decimals (alias for numpy.round).
+   Uses banker's rounding (round half to even) for values exactly halfway between rounded decimal values.
+   For example: 1.5 and 2.5 both round to 2.0, -0.5 and 0.5 both round to 0.0 */
+
+/* Specification: around rounds each element to the given number of decimals with the following properties:
+   1. Basic rounding: rounds to nearest representable value at the specified decimal precision
+   2. Banker's rounding: for values exactly halfway between rounded decimal values, rounds to nearest even
+   3. Zero preservation: rounding zero always produces zero
+   4. Order preservation: maintains relative ordering of elements
+   5. Bounded difference: the rounded value is close to the original value
+   6. Idempotency: rounding an already-rounded value doesn't change it */
+use vstd::prelude::*;
+
+verus! {
+// <vc-helpers>
+// </vc-helpers>
+fn around(a: Vec<i32>, decimals: i32) -> (result: Vec<i32>)
+// <vc-implementation>
+  requires true
+  ensures 
+      result.len() == a.len(),
+      forall|i: int| 0 <= i < result.len() && 0 <= i < a.len() ==> {
+          // Zero preservation: rounding zero gives zero
+          (a[i] == 0 ==> result[i] == 0) &&
+          // Order preservation: maintains ordering
+          (forall|j: int| 0 <= j < a.len() && 0 <= j < result.len() && a[i] <= a[j] ==> result[i] <= result[j]) &&
+          // Boundedness: rounded values are close to original values
+          (decimals == 0 ==> (result[i] - 1 <= a[i] && a[i] <= result[i] + 1)) &&
+          // Symmetry: rounding negatives has expected behavior
+          (a[i] >= 0 ==> result[i] >= 0)
+      }
+{
+    return a; // TODO: Remove this line and implement the function body
+}
+// </vc-implementation>
+proof fn around_spec(a: Vec<i32>, decimals: i32) 
+    ensures 
+        forall|i: int| 0 <= i < a.len() ==> {
+            // Zero preservation: rounding zero gives zero
+            (a[i] == 0 ==> true) &&
+            // Order preservation: maintains ordering
+            (forall|j: int| 0 <= j < a.len() && a[i] <= a[j] ==> true) &&
+            // Boundedness: rounded values are close to original values
+            (decimals == 0 ==> true) &&
+            // Symmetry: rounding negatives has expected behavior
+            (a[i] >= 0 ==> true)
+        }
+// <vc-proof>
+{
+    assume(false); // TODO: Remove this line and implement the proof
+}
+// </vc-proof>
+fn main() {}
+
+}

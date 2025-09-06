@@ -1,0 +1,53 @@
+vc-description: |-
+  /*
+  {
+    "name": "numpy.NZERO",
+    "category": "Special float values (deprecated)",
+    "description": "IEEE 754 floating point representation of negative zero",
+    "url": "https://numpy.org/doc/stable/reference/constants.html",
+    "doc": "IEEE 754 floating point representation of negative zero.\n\nDEPRECATED: Removed from main namespace in NumPy 2.0. Use -0.0 instead.",
+  }
+  */
+  
+  /* IEEE 754 floating point representation of negative zero */
+  
+  /* Specification: NZERO represents IEEE 754 negative zero, which equals zero 
+     but has special properties in floating point arithmetic */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+  /* <vc-helpers> */
+  /* </vc-helpers> */
+
+vc-signature: |-
+  spec fn NZERO() -> f64 {
+
+vc-implementation: |-
+  /* <vc-implementation> */
+    0.0 // TODO: Remove this line and implement the function body
+  /* </vc-implementation> */
+
+vc-condition: |-
+  }
+  
+  proof fn NZERO_spec() 
+      ensures
+          /* Negative zero equals positive zero in value */
+          NZERO() == 0.0f64
+  {
+
+vc-proof: |-
+  /* <vc-proof> */
+      assume(false); // TODO: Remove this line and implement the proof
+  /* </vc-proof> */
+
+vc-postamble: |-
+  }
+  
+  fn main() {}
+  
+  }

@@ -1,0 +1,52 @@
+/* Laguerre series whose graph is a straight line.
+
+    Parameters
+    ----------
+    off, scl : scalars
+        The specified line is given by ``off + scl*x``.
+
+    Returns
+    -------
+    y : ndarray
+        This module's representation of the Laguerre series for
+        ``off + scl*x``.
+
+    See Also
+    --------
+    numpy.polynomial.polynomial.polyline
+    numpy.polynomial.chebyshev.chebline
+    numpy.polynomial.legendre.legline
+    numpy.polynomial.hermite.hermline
+    numpy.polynomial.hermite_e.hermeline
+
+    Examples
+    --------
+    >>> from numpy.polynomial.laguerre import lagline, lagval
+    >>> lagval(0,lagline(3, 2))
+    3.0
+    >>> lagval(1,lagline(3, 2))
+    5.0
+
+Laguerre series whose graph is a straight line off + scl*x
+
+Specification: lagline returns the Laguerre series representation of off + scl*x */
+
+use vstd::prelude::*;
+
+verus! {
+
+spec fn add_f64(x: f64, y: f64) -> f64;
+spec fn sub_f64(x: f64, y: f64) -> f64;
+fn lagline(off: f64, scl: f64) -> (result: Vec<f64>)
+    ensures
+        result.len() == 2,
+        (scl == 0.0 ==> result[0] == off && result[1] == 0.0),
+        (scl != 0.0 ==> result[0] == add_f64(off, scl) && result[1] == sub_f64(0.0, scl)),
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

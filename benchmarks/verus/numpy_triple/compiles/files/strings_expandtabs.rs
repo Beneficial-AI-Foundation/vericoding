@@ -1,0 +1,29 @@
+/* numpy.strings.expandtabs - String transformation - Return a copy of each string element where all tab characters are replaced by spaces. Return a copy of each string element where all tab characters are replaced by one or more spaces. Parameters: a (array_like, with StringDType, bytes_ or str_ dtype): Input array, tabsize (array_like, with any integer dtype, optional): Replace tabs with tabsize number of spaces. Default is 8. Returns: out (ndarray): Output array of StringDType, bytes_ or str_ dtype, depending on input type. Specification: expandtabs replaces tab characters with appropriate number of spaces. */
+
+use vstd::prelude::*;
+
+verus! {
+fn expandtabs(a: &Vec<String>, tabsize: &Vec<usize>) -> (result: Vec<String>)
+    requires 
+        a.len() == tabsize.len(),
+        forall|i: int| 0 <= i < tabsize.len() ==> tabsize[i] > 0,
+    ensures
+        result.len() == a.len(),
+        forall|i: int| 0 <= i < result.len() ==> (#[trigger] result[i], {
+            let orig_str = &a[i];
+            let result_str = &result[i];
+            // Core property: result contains no tab characters  
+            (forall|j: int| 0 <= j < result_str@.len() ==> result_str@[j] != '\t') &&
+            // Identity property: strings without tabs remain unchanged
+            ((!orig_str@.contains('\t')) ==> result_str@ == orig_str@) &&
+            // Length property: result is at least as long as original
+            (result_str@.len() >= orig_str@.len())
+        }).1,
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

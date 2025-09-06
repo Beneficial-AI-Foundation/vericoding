@@ -1,0 +1,52 @@
+/* Returns true for each element if all characters in the string are alphabetic and there is at least one character, false otherwise
+
+numpy.strings.isalpha: Returns true for each element if all characters in the string are alphabetic and there is at least one character, false otherwise.
+
+    Tests whether all characters in each string are alphabetic letters.
+    A string is considered alphabetic if:
+    1. It contains at least one character
+    2. All characters are alphabetic (a-z, A-Z)
+    
+    Empty strings return false.
+    Strings with numbers, symbols, or whitespace return false.
+
+Specification: numpy.strings.isalpha returns a vector where each element indicates
+    whether the corresponding string element contains only alphabetic characters
+    and has at least one character.
+
+    Key properties:
+    1. Empty strings always return false
+    2. Non-empty strings return true iff all characters are alphabetic
+    3. Alphabetic characters are those satisfying Char.isAlpha (a-z, A-Z)
+    4. Strings with digits, whitespace, or symbols return false
+    5. The function is applied element-wise to each string in the vector
+    
+    Mathematical properties:
+    - Monotonicity: removing non-alphabetic characters from a string cannot make isalpha false
+    - Compositionality: isalpha(s) = (s.length > 0) ∧ (∀ c ∈ s, Char.isAlpha c)
+    - Deterministic: same input always produces same output */
+
+use vstd::prelude::*;
+
+verus! {
+spec fn string_len(s: &String) -> nat;
+
+spec fn string_is_empty(s: &String) -> bool {
+    string_len(s) == 0
+}
+
+spec fn all_chars_alphabetic(s: &String) -> bool;
+fn isalpha(a: &Vec<String>) -> (result: Vec<bool>)
+    ensures
+        result.len() == a.len(),
+        forall|i: int| #![auto] 0 <= i < a.len() ==> {
+            result[i] == (!string_is_empty(&a[i]) && all_chars_alphabetic(&a[i]))
+        },
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

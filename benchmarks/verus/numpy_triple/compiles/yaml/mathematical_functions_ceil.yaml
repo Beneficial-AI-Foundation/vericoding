@@ -1,0 +1,73 @@
+vc-description: |-
+  numpy.ceil: Return the ceiling of the input, element-wise.
+  
+  The ceiling of each element x is the smallest integer i, such that i >= x.
+  This is a fundamental mathematical operation that rounds up to the
+  nearest integer.
+  
+  Returns an array of the same shape as x, containing the ceiling of each element.
+  
+  Specification: numpy.ceil returns a vector where each element is the
+  ceiling (smallest integer greater than or equal to) the corresponding element in x.
+  
+  Precondition: True (ceiling is defined for all real numbers)
+  Postcondition: For all indices i, result[i] is the ceiling of x[i], meaning:
+  - result[i] is an integer value (represented as Float)
+  - result[i] ≥ x[i]
+  - result[i] < x[i] + 1
+  - There is no integer k such that x[i] ≤ k < result[i]
+  - Monotonicity: if x[i] ≤ x[j] then result[i] ≤ result[j]
+  - Relationship with floor: result[i] = -((-x[i]).floor)
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  #[verifier::spec]
+  fn f64_ge(x: f64, y: f64) -> bool {
+      arbitrary()
+  }
+
+  #[verifier::spec]
+  fn f64_lt(x: f64, y: f64) -> bool {
+      arbitrary()
+  }
+
+  #[verifier::spec]
+  fn f64_le(x: f64, y: f64) -> bool {
+      arbitrary()
+  }
+
+  #[verifier::spec]
+  fn f64_add(x: f64, y: f64) -> f64 {
+      arbitrary()
+  }
+
+  #[verifier::spec]
+  fn i32_to_f64(x: i32) -> f64 {
+      arbitrary()
+  }
+
+  fn numpy_ceil(x: &Vec<f64>) -> (result: Vec<i32>)
+      ensures
+          result.len() == x.len(),
+          forall|i: int| 0 <= i < x.len() ==> f64_ge(i32_to_f64(result[i]), x[i]),
+          forall|i: int| 0 <= i < x.len() ==> f64_lt(i32_to_f64(result[i]), f64_add(x[i], 1.0)),
+          forall|i: int, j: int| 0 <= i < x.len() && 0 <= j < x.len() && f64_le(x[i], x[j]) ==> result[i] <= result[j],
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

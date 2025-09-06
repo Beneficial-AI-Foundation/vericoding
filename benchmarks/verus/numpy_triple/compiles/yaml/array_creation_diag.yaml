@@ -1,0 +1,76 @@
+vc-description: |-
+  Extract a diagonal or construct a diagonal array.
+
+  numpy.diag function from NumPy library for building matrices.
+  
+  When given a 1-D array, returns a 2-D array with the input array on the k-th diagonal.
+  When given a 2-D array, returns a copy of its k-th diagonal.
+  
+  Parameters:
+  - v: array_like - If v is a 2-D array, return a copy of its k-th diagonal. If v is a 1-D array, return a 2-D array with v on the k-th diagonal.
+  - k: int, optional - Diagonal in question. The default is 0. Use k>0 for diagonals above the main diagonal, and k<0 for diagonals below the main diagonal.
+  
+  Returns:
+  - out: ndarray - The extracted diagonal or constructed diagonal array.
+
+  Construct a diagonal matrix from a 1-D vector.
+
+  Specification: diag constructs a square matrix with v on the main diagonal.
+  
+  This captures the mathematical property that numpy.diag(v) creates a matrix M
+  where M[i,i] = v[i] for all i, and M[i,j] = 0 for all i ≠ j.
+  
+  The result is an n×n matrix where:
+  - The main diagonal contains the elements of the input vector v
+  - All off-diagonal elements are zero
+  - This represents the canonical way to construct a diagonal matrix
+  
+  Mathematical properties verified:
+  1. Diagonal elements equality: M[i,i] = v[i]
+  2. Off-diagonal zeros: M[i,j] = 0 for i ≠ j
+  3. Diagonal matrix property: non-zero elements only on diagonal
+  4. Trace property: tr(M) = sum(v)
+  5. Symmetry: M is a symmetric matrix
+  6. Idempotence property: diag(diag(M)) reconstructs M for diagonal matrices
+  7. Zero count: exactly n elements are non-zero (assuming v has no zeros)
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn diag(v: Vec<f64>) -> (result: Vec<Vec<f64>>)
+      requires v.len() > 0,
+      ensures
+          result.len() == v.len(),
+          forall|i: int| 0 <= i < result.len() ==> result[i].len() == v.len(),
+          /* Elements on the main diagonal are from v */
+          forall|i: int| 0 <= i < v.len() ==> result[i][i] == v[i],
+          /* All off-diagonal elements are zero */
+          forall|i: int, j: int| 0 <= i < v.len() && 0 <= j < v.len() && i != j ==> result[i][j] == 0.0,
+          /* Diagonal matrix property - non-zero elements only on diagonal */
+          forall|i: int, j: int| 0 <= i < v.len() && 0 <= j < v.len() && result[i][j] != 0.0 ==> i == j,
+          /* The resulting matrix is symmetric */
+          forall|i: int, j: int| 0 <= i < v.len() && 0 <= j < v.len() ==> result[i][j] == result[j][i],
+          /* Each row has exactly one non-zero element at position i (unless v[i] = 0) */
+          forall|i: int| 0 <= i < v.len() && v[i] != 0.0 ==> 
+              result[i][i] != 0.0 && (forall|j: int| 0 <= j < v.len() && j != i ==> result[i][j] == 0.0),
+          /* Each column has exactly one non-zero element at position j (unless v[j] = 0) */
+          forall|j: int| 0 <= j < v.len() && v[j] != 0.0 ==> 
+              result[j][j] != 0.0 && (forall|i: int| 0 <= i < v.len() && i != j ==> result[i][j] == 0.0),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

@@ -1,0 +1,58 @@
+vc-description: |-
+  numpy.sctype2char: Return the string representation of a scalar dtype
+      
+  Converts a scalar data type to its corresponding single-character string representation.
+  This is used internally by numpy to represent data types in a compact form.
+      
+  The mapping follows numpy's dtype.char convention:
+  - int32 → 'l'
+  - float64 (double) → 'd'  
+  - complex128 → 'D'
+  - bytes → 'S'
+  - object → 'O'
+  
+  Specification: sctype2char returns the correct character representation
+  for each scalar type.
+      
+  Precondition: Valid scalar type (guaranteed by type system)
+  Postcondition: Returns the standard numpy character for the given type
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  /* Scalar data type enumeration for numpy types */
+  pub enum ScalarType {
+      Int32,    /* 32-bit signed integer */
+      Int64,    /* 64-bit signed integer */ 
+      Float32,  /* 32-bit floating point */
+      Float64,  /* 64-bit floating point */
+      Complex64,  /* 64-bit complex number */
+      Complex128, /* 128-bit complex number */
+      Bytes,    /* Byte string */
+      Object,   /* Generic object */
+  }
+vc-helpers: |-
+
+vc-spec: |-
+  fn sctype2char(sctype: ScalarType) -> (result: &'static str)
+      ensures
+          (sctype == ScalarType::Int32 ==> result == "l") &&
+          (sctype == ScalarType::Int64 ==> result == "q") &&
+          (sctype == ScalarType::Float32 ==> result == "f") &&
+          (sctype == ScalarType::Float64 ==> result == "d") &&
+          (sctype == ScalarType::Complex64 ==> result == "F") &&
+          (sctype == ScalarType::Complex128 ==> result == "D") &&
+          (sctype == ScalarType::Bytes ==> result == "S") &&
+          (sctype == ScalarType::Object ==> result == "O"),
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      ""
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

@@ -1,0 +1,55 @@
+/* {
+  "name": "numpy.isreal",
+  "category": "Array type testing",
+  "description": "Returns a bool array, where True if input element is real",
+  "url": "https://numpy.org/doc/stable/reference/generated/numpy.isreal.html",
+  "doc": "Returns a bool array, where True if input element is real.\n\nIf element has complex type with zero imaginary part, the return value\nfor that element is True.\n\nParameters\n----------\nx : array_like\n    Input array.\n\nReturns\n-------\nout : ndarray, bool\n    Boolean array of same shape as x.\n\nSee Also\n--------\niscomplex\nisrealobj : Return True if x is not a complex type.\n\nExamples\n--------\n>>> np.isreal([1+1j, 1+0j, 4.5, 3, 2, 2j])\narray([False,  True,  True,  True,  True, False])",
+}
+
+Returns a bool array, where True if input element is real.
+For complex numbers, checks if imaginary part is zero.
+For numbers with zero imaginary part, returns true for all elements.
+
+Specification: isreal returns true for elements with zero imaginary parts,
+false for elements with non-zero imaginary parts, with the following properties:
+1. Basic definition: returns true iff imaginary part is zero
+2. Real number detection: pure real numbers (imag = 0) return true
+3. Complex number detection: numbers with non-zero imaginary part return false
+4. Complementary to iscomplex: isreal(x) = not iscomplex(x)
+5. Element-wise operation: each element is tested independently
+6. Mathematical property: real numbers form a subset of complex numbers
+7. Consistency: if real, then can be represented as a + 0i */
+
+use vstd::prelude::*;
+
+verus! {
+
+/* Structure representing a complex number with float components */
+pub struct Complex {
+    /* The real part of the complex number */
+    pub real: f64,
+    /* The imaginary part of the complex number */
+    pub imag: f64,
+}
+fn is_real(x: &Vec<Complex>) -> (result: Vec<bool>)
+    ensures
+        result.len() == x.len(),
+        forall|i: int| 0 <= i < x.len() ==> result[i] == (x[i].imag == 0.0),
+        forall|i: int| 0 <= i < x.len() && x[i].imag == 0.0 ==> result[i] == true,
+        forall|i: int| 0 <= i < x.len() && x[i].imag != 0.0 ==> result[i] == false,
+        forall|i: int| 0 <= i < x.len() && result[i] == true ==> x[i].imag == 0.0,
+        forall|i: int| 0 <= i < x.len() && result[i] == false ==> x[i].imag != 0.0,
+        /* Mathematical property: real numbers preserve their real part */
+        forall|i: int| 0 <= i < x.len() && result[i] == true ==> x[i].real == x[i].real,
+        /* Complementary property: exactly one of isreal or iscomplex is true */
+        forall|i: int| 0 <= i < x.len() ==> result[i] == !(x[i].imag != 0.0),
+        /* Consistency with mathematical definition of real numbers */
+        forall|i: int| 0 <= i < x.len() ==> (result[i] == true) == (x[i].imag == 0.0),
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

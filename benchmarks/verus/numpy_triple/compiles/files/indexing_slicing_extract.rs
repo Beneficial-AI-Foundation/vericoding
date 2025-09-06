@@ -1,0 +1,51 @@
+/*
+{
+  "name": "numpy.extract",
+  "category": "Boolean/mask indexing",
+  "description": "Return the elements of an array that satisfy some condition",
+  "url": "https://numpy.org/doc/stable/reference/generated/numpy.extract.html",
+  "doc": "Return the elements of an array that satisfy some condition.\n\nThis is equivalent to \`\`np.compress(ravel(condition), ravel(arr))\`\`. If \`condition\` is boolean \`\`np.extract\`\` is equivalent to \`\`arr[condition]\`\`.\n\nNote that \`place\` does the exact opposite of \`extract\`.\n\nParameters\n----------\ncondition : array_like\n    An array whose nonzero or True entries indicate the elements of \`arr\` to extract.\narr : array_like\n    Input array of the same size as \`condition\`.\n\nReturns\n-------\nextract : ndarray\n    Rank 1 array of values from \`arr\` where \`condition\` is True.",
+}
+*/
+
+/*  numpy.extract: Return the elements of an array that satisfy some condition.
+    
+    Extracts elements from an array where the corresponding condition is True.
+    Both arrays must have the same size, and the result contains only the elements
+    from `arr` where `condition` is True, in the same order they appear in `arr`.
+    
+    The result size `k` must equal the number of True elements in the condition array.
+*/
+
+/*  Specification: numpy.extract returns elements where condition is True.
+    
+    Precondition: k equals the count of True elements in condition
+    Postcondition: The result contains exactly the elements from arr where condition is True,
+                  in the same order they appear in arr.
+*/
+use vstd::prelude::*;
+
+verus! {
+spec fn count_true(condition: Seq<bool>) -> nat {
+    condition.filter(|b: bool| b).len()
+}
+fn extract(condition: &Vec<bool>, arr: &Vec<f64>) -> (result: Vec<f64>)
+    requires 
+        condition.len() == arr.len(),
+    ensures
+        result.len() == count_true(condition@),
+{
+    assume(false);
+    Vec::new() // TODO: Remove this line and implement the function body
+}
+proof fn extract_spec(condition: &Vec<bool>, arr: &Vec<f64>)
+    requires condition.len() == arr.len()
+    ensures 
+        count_true(condition@) == count_true(condition@)
+{
+    assume(false); // TODO: Remove this line and implement the proof
+}
+
+fn main() {}
+
+}

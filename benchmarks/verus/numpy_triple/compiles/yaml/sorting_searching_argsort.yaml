@@ -1,0 +1,41 @@
+Great! Now I have working Verus code. Let me create the YAML response:
+
+vc-description: |-
+  Returns the indices that would sort a vector in ascending order. 
+  
+  This function implements numpy.argsort functionality - it returns an array of indices that would sort the input array. The result maintains the property that applying these indices to the original array yields a sorted sequence.
+  
+  Specification: argsort returns indices that sort the input array
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn argsort(a: &Vec<i32>) -> (result: Vec<usize>)
+      ensures
+          result.len() == a.len(),
+          /* Each result element is a valid index */
+          forall|i: int| 0 <= i < result.len() ==> result[i] < a.len(),
+          /* Result is injective (no duplicates) */
+          forall|i: int, j: int| 
+              0 <= i < result.len() && 0 <= j < result.len() && i != j ==> result[i] != result[j],
+          /* Result produces sorted order */
+          forall|i: int, j: int| 
+              0 <= i < j && j < result.len() ==> a[result[i] as int] <= a[result[j] as int],
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

@@ -1,0 +1,29 @@
+vc-description: |-
+  Convert angles from degrees to radians.
+  
+  Convert angles from degrees to radians by multiplying by π/180.
+  This function performs the standard mathematical conversion from degrees to radians
+  where π radians = 180 degrees.
+  
+  Specification: deg2rad converts each degree value to radians using the formula radians = degrees * π/180
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn deg2rad(degrees: &Vec<i32>) -> (result: Vec<i32>)
+      ensures
+          result.len() == degrees.len(),
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

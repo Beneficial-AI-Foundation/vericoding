@@ -1,0 +1,28 @@
+/* For each element, return the lowest index in the string where substring is found.
+Unlike find, this function requires that the substring be found in each string,
+ensuring all results are non-negative indices. */
+
+use vstd::prelude::*;
+
+verus! {
+fn index(a: &Vec<Seq<char>>, sub: &Vec<Seq<char>>, start: &Vec<int>, end_pos: &Vec<int>) -> (result: Vec<int>)
+    requires 
+        a.len() == sub.len() && sub.len() == start.len() && start.len() == end_pos.len(),
+        forall|i: int| 0 <= i < a.len() ==> {
+            0 <= start[i] <= end_pos[i] <= a[i].len() as int &&
+            sub[i].len() > 0
+        },
+    ensures
+        result.len() == a.len(),
+        forall|i: int| 0 <= i < result.len() ==> {
+            result[i] >= 0 &&
+            start[i] <= result[i] <= end_pos[i]
+        },
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

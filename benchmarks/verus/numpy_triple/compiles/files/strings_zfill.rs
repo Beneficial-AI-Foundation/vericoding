@@ -1,0 +1,59 @@
+/* numpy.strings.zfill: Return the numeric string left-filled with zeros.
+
+Zero-fills each string in the input array by padding it with leading zeros
+to reach the specified width. If the original string is longer than or equal
+to the width, it remains unchanged. This function is specifically designed
+for numeric strings and handles sign prefixes appropriately.
+
+The function behaves like Python's str.zfill() method:
+- Pads strings with leading zeros to reach the target width
+- Preserves sign characters ('+' or '-') at the beginning
+- Returns original string if it's already >= target width
+
+From NumPy documentation:
+- Parameters: a (array_like) - Input array with string dtype
+              width (int) - Target width for zero-filling
+- Returns: out (ndarray) - Output array with zero-filled strings
+
+Mathematical Properties:
+1. Length invariant: result length is max(original_length, width)
+2. Identity: strings already >= width remain unchanged
+3. Zero-padding: shorter strings get leading zeros
+4. Sign preservation: leading '+' or '-' characters are preserved
+5. Minimality: no over-padding beyond required width */
+
+use vstd::prelude::*;
+
+verus! {
+fn zfill(a: Vec<String>, width: usize) -> (result: Vec<String>)
+    requires width >= 0,
+    ensures
+        result.len() == a.len(),
+        forall|i: int| 0 <= i < a.len() ==> {
+            let original = a[i];
+            let result_str = result[i];
+            /* Core mathematical properties of zero-filling */
+            /* 1. Length invariant: result length is exactly max(orig.length, width) */
+            result_str@.len() == (if original@.len() >= width as nat { original@.len() } else { width as nat }) &&
+            /* 2. Identity morphism: strings already >= width are unchanged */
+            (original@.len() >= width as nat ==> result_str == original) &&
+            /* 5. Empty string handling: empty strings become all zeros */
+            (original@.len() == 0 ==> 
+               result_str@.len() == width as nat && 
+               forall|j: int| 0 <= j < width as nat ==> #[trigger] result_str@.index(j) == '0') &&
+            /* 6. Minimality constraint: no over-padding */
+            (original@.len() >= width as nat ==> result_str@.len() == original@.len()) &&
+            /* 7. Exactness constraint: padding achieves exact width requirement */
+            (original@.len() < width as nat ==> result_str@.len() == width as nat) &&
+            /* 9. Zero character constraint: padding uses only '0' characters for short strings */
+            (original@.len() < width as nat && original@.len() > 0 ==> 
+               forall|j: int| 0 <= j < (width as nat - original@.len()) ==> #[trigger] result_str@.index(j) == '0')
+        },
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

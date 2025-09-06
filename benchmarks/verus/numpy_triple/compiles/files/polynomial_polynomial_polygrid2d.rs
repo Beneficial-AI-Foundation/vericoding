@@ -1,0 +1,78 @@
+/* Evaluate a 2-D polynomial on the Cartesian product of x and y.
+
+This function returns the values:
+
+.. math:: p(a,b) = \\sum_{i,j} c_{i,j} * a^i * b^j
+
+where the points ``(a, b)`` consist of all pairs formed by taking
+`a` from `x` and `b` from `y`. The resulting points form a grid with
+`x` in the first dimension and `y` in the second.
+
+The parameters `x` and `y` are converted to arrays only if they are
+tuples or a lists, otherwise they are treated as a scalars. In either
+case, either `x` and `y` or their elements must support multiplication
+and addition both with themselves and with the elements of `c`.
+
+If `c` has fewer than two dimensions, ones are implicitly appended to
+its shape to make it 2-D. The shape of the result will be c.shape[2:] +
+x.shape + y.shape.
+
+Parameters
+----------
+x, y : array_like, compatible objects
+    The two dimensional series is evaluated at the points in the
+    Cartesian product of `x` and `y`.  If `x` or `y` is a list or
+    tuple, it is first converted to an ndarray, otherwise it is left
+    unchanged and, if it isn't an ndarray, it is treated as a scalar.
+c : array_like
+    Array of coefficients ordered so that the coefficients for terms of
+    degree i,j are contained in ``c[i,j]``. If `c` has dimension
+    greater than two the remaining indices enumerate multiple sets of
+    coefficients.
+
+Returns
+-------
+values : ndarray, compatible object
+    The values of the two dimensional polynomial at points in the Cartesian
+    product of `x` and `y`.
+
+See Also
+--------
+polyval, polyval2d, polyval3d, polygrid3d
+
+Examples
+--------
+>>> from numpy.polynomial import polynomial as P
+>>> c = ((1, 2, 3), (4, 5, 6))
+>>> P.polygrid2d([0, 1], [0, 1], c)
+array([[ 1.,  6.],
+       [ 5., 21.]])
+
+Evaluate a 2-D polynomial on the Cartesian product of x and y
+
+Specification: polygrid2d evaluates a 2-D polynomial on the Cartesian product of x and y.
+The result is a grid where result[i][j] = p(x[i], y[j]) for the polynomial defined by 
+coefficients c, where p(a,b) = sum_{i,j} c[i][j] * a^i * b^j. */
+
+use vstd::prelude::*;
+
+verus! {
+fn polygrid2d(x: &Vec<f64>, y: &Vec<f64>, c: &Vec<Vec<f64>>) -> (result: Vec<Vec<f64>>)
+    requires 
+        x.len() > 0,
+        y.len() > 0,
+        c.len() > 0,
+        forall|i: int| 0 <= i < c.len() ==> c[i].len() > 0,
+    ensures
+        result.len() == x.len(),
+        forall|i: int| 0 <= i < result.len() ==> result[i].len() == y.len(),
+        forall|i: int, j: int| 0 <= i < x.len() && 0 <= j < y.len() ==> 
+            #[trigger] result[i][j] == result[i][j],
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

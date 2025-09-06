@@ -1,0 +1,89 @@
+/*
+{
+  "name": "numpy.iinfo",
+  "category": "Data Type Information",
+  "description": "Machine limits for integer types",
+  "url": "https://numpy.org/doc/stable/reference/generated/numpy.iinfo.html",
+  "doc": "Machine limits for integer types.\n\nParameters\n----------\nint_type : integer type, dtype, or instance\n    The kind of integer data type to get information about.\n\nAttributes\n----------\nbits : int\n    The number of bits occupied by the type.\ndtype : dtype\n    The dtype for which iinfo returns information.\nmin : int\n    The smallest integer expressible by the type.\nmax : int\n    The largest integer expressible by the type.\n\nExamples\n--------\n>>> ii16 = np.iinfo(np.int16)\n>>> ii16.min\n-32768\n>>> ii16.max\n32767\n>>> ii32 = np.iinfo(np.int32)\n>>> ii32.min\n-2147483648\n>>> ii32.max\n2147483647",
+}
+*/
+
+/*  numpy.iinfo: Returns machine limits for integer types.
+    
+    Takes an integer type specification and returns information about 
+    the number of bits, minimum value, and maximum value for that type.
+    This provides access to the fundamental machine limits for integer
+    representation in numerical computing.
+*/
+
+/*  Specification: numpy.iinfo returns correct machine limits for integer types.
+    
+    Precondition: True (no special preconditions for type information)
+    Postcondition: The returned IntInfo structure contains:
+      - Correct bit count for the specified type
+      - Correct minimum value (negative for signed types, 0 for unsigned)
+      - Correct maximum value based on the bit representation
+      - Consistency between bits and min/max values
+*/
+use vstd::prelude::*;
+
+verus! {
+
+/* Integer type information structure containing machine limits for integer types */
+pub struct IntInfo {
+    /* Number of bits occupied by the type */
+    pub bits: nat,      
+    /* Smallest integer expressible by the type */
+    pub min: int,       
+    /* Largest integer expressible by the type */
+    pub max: int,
+}
+
+/* Enumeration of supported integer types */
+pub enum IntType {
+    /* 8-bit signed integer type */
+    Int8,
+    /* 16-bit signed integer type */
+    Int16,
+    /* 32-bit signed integer type */
+    Int32,
+    /* 64-bit signed integer type */
+    Int64,
+    /* 8-bit unsigned integer type */
+    UInt8,
+    /* 16-bit unsigned integer type */
+    UInt16,
+    /* 32-bit unsigned integer type */
+    UInt32,
+    /* 64-bit unsigned integer type */
+    UInt64,
+}
+// <vc-helpers>
+// </vc-helpers>
+pub open spec fn iinfo(int_type: IntType) -> IntInfo
+// <vc-implementation>
+{
+    IntInfo { bits: 0, min: 0, max: 0 } // TODO: Remove this line and implement the function body
+}
+// </vc-implementation>
+proof fn iinfo_spec(int_type: IntType)
+    ensures
+        match int_type {
+            IntType::Int8 => iinfo(int_type).bits == 8 && iinfo(int_type).min == -128 && iinfo(int_type).max == 127,
+            IntType::Int16 => iinfo(int_type).bits == 16 && iinfo(int_type).min == -32768 && iinfo(int_type).max == 32767,
+            IntType::Int32 => iinfo(int_type).bits == 32 && iinfo(int_type).min == -2147483648 && iinfo(int_type).max == 2147483647,
+            IntType::Int64 => iinfo(int_type).bits == 64 && iinfo(int_type).min == -9223372036854775808 && iinfo(int_type).max == 9223372036854775807,
+            IntType::UInt8 => iinfo(int_type).bits == 8 && iinfo(int_type).min == 0 && iinfo(int_type).max == 255,
+            IntType::UInt16 => iinfo(int_type).bits == 16 && iinfo(int_type).min == 0 && iinfo(int_type).max == 65535,
+            IntType::UInt32 => iinfo(int_type).bits == 32 && iinfo(int_type).min == 0 && iinfo(int_type).max == 4294967295,
+            IntType::UInt64 => iinfo(int_type).bits == 64 && iinfo(int_type).min == 0 && iinfo(int_type).max == 18446744073709551615,
+        }
+// <vc-proof>
+{
+    assume(false); // TODO: Remove this line and implement the proof
+}
+// </vc-proof>
+
+fn main() {}
+
+}

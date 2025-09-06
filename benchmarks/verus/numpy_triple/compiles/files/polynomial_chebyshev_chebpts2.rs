@@ -1,0 +1,40 @@
+/* Chebyshev points of the second kind.
+
+The Chebyshev points of the second kind are the points cos(x),
+where x = [pi*k/(npts - 1) for k in range(npts)] sorted in ascending
+order.
+
+Chebyshev points of the second kind.
+    
+Generates n Chebyshev points of the second kind, which are the values
+cos(π*k/(n-1)) for k from 0 to n-1, sorted in ascending order.
+These points are the extrema and endpoints of the Chebyshev polynomial T_{n-1}.
+
+Specification: chebpts2 generates Chebyshev points of the second kind
+    
+The function returns n points where:
+1. Each point is cos(π*k/(n-1)) for k from n-1 down to 0
+2. The points are sorted in ascending order
+3. The first point is -1 and the last point is 1
+4. The points are symmetric around 0 for the transformation x ↦ -x */
+
+use vstd::prelude::*;
+
+verus! {
+fn chebpts2(n: nat) -> (result: Vec<int>)
+    requires n >= 2,
+    ensures
+        result.len() == n,
+        forall|i: int, j: int| 0 <= i < j < n ==> result[i as int] <= result[j as int],
+        result[0] == -1,
+        result[(n - 1) as int] == 1,
+        forall|i: int| 0 <= i < n ==> -1 <= result[i] && result[i] <= 1,
+        forall|i: int, j: int| 0 <= i < j < n ==> result[i as int] < result[j as int],
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

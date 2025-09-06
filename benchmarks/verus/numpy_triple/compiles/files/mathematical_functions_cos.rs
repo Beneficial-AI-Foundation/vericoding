@@ -1,0 +1,38 @@
+/* Cosine element-wise.
+
+numpy.cos: Cosine element-wise.
+
+Computes the cosine of each element in the input array.
+The cosine is one of the fundamental functions of trigonometry.
+For a real number x interpreted as an angle in radians, cos(x)
+gives the x-coordinate of the point on the unit circle.
+
+Returns an array of the same shape as x, containing the cosine of each element.
+
+Specification: numpy.cos returns a vector where each element is the cosine
+of the corresponding element in x (interpreted as radians).
+
+Precondition: True (no special preconditions for cosine)
+Postcondition: For all indices i, result[i] = Float.cos x[i]
+              and result[i] is bounded between -1 and 1
+              with cos(0) = 1 */
+
+use vstd::prelude::*;
+
+verus! {
+spec fn cos_f32(x: f32) -> f32;
+
+fn numpy_cos(x: &Vec<f32>) -> (result: Vec<f32>)
+    requires true,
+    ensures
+        result.len() == x.len(),
+        forall|i: int| 0 <= i < result.len() ==> 
+            result[i] == cos_f32(x[i]),
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

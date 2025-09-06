@@ -1,0 +1,24 @@
+/* Load data from a text file into a 2D array.
+For simplicity, this specification focuses on loading a rectangular matrix of floats.
+
+Specification: loadtxt reads numeric data from a text file into a well-formed 2D array.
+The function preserves the structure of the input data and handles parsing correctly. */
+
+use vstd::prelude::*;
+
+verus! {
+fn loadtxt(filename: &str, delimiter: &str, skiprows: usize, rows: usize, cols: usize) -> (result: Vec<Vec<f64>>)
+    requires
+        rows > 0,
+        cols > 0,
+    ensures
+        result.len() == rows,
+        forall|i: int| 0 <= i < rows ==> result[i as int].len() == cols,
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

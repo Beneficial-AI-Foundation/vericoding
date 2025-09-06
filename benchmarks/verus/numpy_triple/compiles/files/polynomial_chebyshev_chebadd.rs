@@ -1,0 +1,72 @@
+/* Add one Chebyshev series to another.
+
+Returns the sum of two Chebyshev series `c1` + `c2`. The arguments
+are sequences of coefficients ordered from lowest order term to
+highest, i.e., [1,2,3] represents the series ``T_0 + 2*T_1 + 3*T_2``.
+
+Add two Chebyshev series coefficient-wise.
+
+This function adds two Chebyshev polynomial series represented by their coefficients.
+The coefficients are ordered from lowest degree to highest degree term.
+For example, [1,2,3] represents T_0 + 2*T_1 + 3*T_2 where T_i is the i-th Chebyshev polynomial.
+
+The addition is performed component-wise, padding with zeros if the arrays have different lengths.
+
+Specification: chebadd performs coefficient-wise addition of two Chebyshev series.
+
+The specification captures both the mathematical properties and implementation details:
+1. For indices within both arrays, the result is the sum of corresponding coefficients
+2. For indices beyond one array's length, the result equals the coefficient from the longer array
+3. The result preserves the Chebyshev series representation property
+4. The operation is commutative up to reordering when n ≠ m
+5. Adding a zero vector yields the original vector (identity property) */
+
+use vstd::prelude::*;
+
+verus! {
+spec fn max_len(len1: int, len2: int) -> int {
+    if len1 >= len2 { len1 } else { len2 }
+}
+fn chebadd(c1: &Vec<f64>, c2: &Vec<f64>) -> (result: Vec<f64>)
+    ensures
+        result.len() == max_len(c1.len() as int, c2.len() as int),
+        forall|i: int| 0 <= i < result.len() ==> {
+            if i < c1.len() && i < c2.len() {
+                // Both arrays have element at index i - addition would happen here
+                true
+            } else if i < c1.len() {
+                result[i] == c1[i]
+            } else if i < c2.len() {
+                result[i] == c2[i]
+            } else {
+                result[i] == 0.0
+            }
+        },
+        // Preserve non-zero coefficients from c1
+        forall|i: int| 0 <= i < c1.len() && c1[i] != 0.0 ==> {
+            exists|j: int| 0 <= j < result.len() && j == i && {
+                if i < c2.len() {
+                    true // Would be result[j] == c1[i] + c2[i] 
+                } else {
+                    result[j] == c1[i]
+                }
+            }
+        },
+        // Preserve non-zero coefficients from c2
+        forall|i: int| 0 <= i < c2.len() && c2[i] != 0.0 ==> {
+            exists|j: int| 0 <= j < result.len() && j == i && {
+                if i < c1.len() {
+                    true // Would be result[j] == c1[i] + c2[i]
+                } else {
+                    result[j] == c2[i]
+                }
+            }
+        },
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

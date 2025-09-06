@@ -1,0 +1,53 @@
+Great! Now the code verifies successfully. Let me format it properly as YAML:
+
+vc-description: |-
+  If input is complex with all imaginary parts close to zero, return real parts. Otherwise, return the original complex vector. "Close to zero" is defined as tol * (machine epsilon of the type). Specification: real_if_close returns real parts if all imaginary parts are within tolerance, otherwise returns the original complex vector. This captures the essential behavior: 1. If all imaginary parts are small (≤ tol * machineEpsilon), return only real parts 2. Otherwise, preserve the original complex numbers 3. Real parts are always preserved regardless 4. The tolerance check is applied consistently across all elements
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  struct Complex {
+      re: int,
+      im: int,
+  }
+
+  spec fn machine_epsilon() -> int { 1 }
+
+  spec fn abs_int(x: int) -> int {
+      if x >= 0 { x } else { -x }
+  }
+
+  spec fn is_close_to_zero(c: Complex, tol: int) -> bool {
+      abs_int(c.im) <= tol * machine_epsilon()
+  }
+
+  spec fn all_imaginary_parts_close_to_zero(arr: Seq<Complex>, tol: int) -> bool {
+      forall|i: int| 0 <= i < arr.len() ==> is_close_to_zero(arr[i], tol)
+  }
+
+vc-spec: |-
+  fn real_if_close(arr: Vec<Complex>, tol: int) -> (result: Vec<Complex>)
+      requires tol > 0,
+      ensures
+          result.len() == arr.len(),
+          forall|i: int| 0 <= i < result.len() ==> result[i].re == arr[i].re,
+          all_imaginary_parts_close_to_zero(arr@, tol) ==> 
+              forall|i: int| 0 <= i < result.len() ==> result[i].im == 0,
+          !all_imaginary_parts_close_to_zero(arr@, tol) ==> 
+              forall|i: int| 0 <= i < result.len() ==> result[i] == arr[i],
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

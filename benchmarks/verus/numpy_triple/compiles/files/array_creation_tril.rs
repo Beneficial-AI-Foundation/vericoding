@@ -1,0 +1,53 @@
+/* numpy.tril: Lower triangle of a matrix.
+
+Returns a copy of the input matrix with elements above the k-th diagonal zeroed.
+
+- k = 0 (default): zeros elements above the main diagonal
+- k < 0: zeros elements above the k-th diagonal below the main diagonal
+- k > 0: zeros elements above the k-th diagonal above the main diagonal
+
+For a matrix element at position (i, j):
+- It is kept if i >= j - k
+- It is zeroed if i < j - k
+
+Specification: tril returns a lower triangular matrix by zeroing elements above the k-th diagonal.
+
+Mathematical Properties:
+1. Shape preservation: The output matrix has the same dimensions as the input
+2. Lower triangle preservation: Elements on or below the k-th diagonal are unchanged
+3. Upper triangle zeroing: Elements above the k-th diagonal are set to zero
+4. Diagonal selection: The k parameter controls which diagonal forms the boundary
+   - k = 0: main diagonal (default)
+   - k < 0: diagonal below the main diagonal
+   - k > 0: diagonal above the main diagonal
+5. Idempotency: Applying tril twice with the same k yields the same result
+
+Element-wise specification:
+For each element at position (i, j):
+- If i ≥ j - k (on or below the k-th diagonal), the element is preserved
+- If i < j - k (above the k-th diagonal), the element is set to 0
+
+Special cases:
+- k ≥ cols: All elements are preserved (entire matrix is "lower triangular")
+- k ≤ -rows: All elements are zeroed (no elements are "on or below" such a diagonal) */
+
+use vstd::prelude::*;
+
+verus! {
+fn tril(m: &Vec<Vec<f64>>, k: i32) -> (result: Vec<Vec<f64>>)
+    requires
+        m.len() > 0,
+        forall|i: int| #[trigger] m[i].len() == m[0].len() && 0 <= i < m.len(),
+    ensures
+        result.len() == m.len(),
+        forall|i: int| 0 <= i < result.len() ==> #[trigger] result[i].len() == m[0].len(),
+        forall|i: int, j: int| #![auto] 0 <= i < result.len() && 0 <= j < result[i].len() ==> 
+            result[i][j] == if i >= j - k { m[i][j] } else { 0.0 },
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

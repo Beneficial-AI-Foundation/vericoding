@@ -1,0 +1,59 @@
+/*  Test element-wise for NaT (not a time) and return result as a boolean array.
+    
+    This function checks each element of a datetime64 array to determine if it
+    represents NaT (Not a Time), which is the datetime equivalent of NaN.
+    
+    Returns true for NaT values and false for all valid datetime values.
+    The function is the datetime analog of isnan for floating point values.
+*/
+
+/*  Specification: isnat returns true for NaT values and false otherwise.
+    The function correctly identifies NaT values in datetime64 arrays.
+    
+    Mathematical properties:
+    1. NaT detection: result[i] = true iff x[i] is NaT
+    2. Valid datetime detection: result[i] = false iff x[i] is a valid datetime
+    3. Result preserves shape: output vector has same length as input
+    4. Exhaustive coverage: every element is either NaT or a valid datetime
+    
+    This is the datetime analog of isnan for floating point NaN values.
+*/
+use vstd::prelude::*;
+
+verus! {
+
+/* A datetime64 type placeholder representing either a valid datetime or NaT (Not a Time) */
+pub enum DateTime64 {
+    /* Valid datetime represented as float (seconds since epoch) */
+    Valid(f64),
+    /* NaT (Not a Time) - the datetime equivalent of NaN */
+    Nat,
+}
+/* <vc-helpers> */
+/* </vc-helpers> */
+fn isnat(x: Vec<DateTime64>) -> (result: Vec<bool>)
+    ensures
+        result.len() == x.len(),
+        forall|i: int| 0 <= i < x@.len() ==> result[i] == match x[i] {
+            DateTime64::Nat => true,
+            DateTime64::Valid(_) => false,
+        },
+        forall|i: int| 0 <= i < x@.len() ==> (result[i] == true <==> x[i] == DateTime64::Nat),
+        forall|i: int| 0 <= i < x@.len() ==> (result[i] == false <==> exists|t: f64| x[i] == DateTime64::Valid(t)),
+{
+/* <vc-implementation> */
+    proof { assume(false); } // TODO: Remove this line and implement the function body
+    return Vec::new();
+/* </vc-implementation> */
+}
+
+proof fn isnat_correctness_proof(x: Vec<DateTime64>)
+{
+/* <vc-proof> */
+    assume(false); // TODO: Remove this line and implement the proof
+/* </vc-proof> */
+}
+
+fn main() {}
+
+}

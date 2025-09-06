@@ -1,0 +1,33 @@
+/* Return the imaginary part of the complex argument.
+
+Return the imaginary part of complex numbers in a vector.
+For a vector where each element is represented as a pair (real, imaginary),
+extracts the imaginary component of each element.
+For real numbers (where imaginary part is 0), returns 0.
+
+Specification: imag extracts the imaginary part of complex numbers with the following properties:
+1. Identity: Returns the imaginary part unchanged for each element
+2. Zero for real numbers: If input element is real (imaginary part is 0), output is 0
+3. Type preservation: Output has the same size as input
+4. Mathematical correctness: For complex number z = a + bi, imag(z) = b
+5. Linearity: imag preserves scalar multiplication of imaginary parts
+6. Conjugate property: imag(conj(z)) = -imag(z)
+7. Additive property: imag(z₁ + z₂) = imag(z₁) + imag(z₂) */
+
+use vstd::prelude::*;
+
+verus! {
+fn imag(val: &Vec<(f64, f64)>) -> (result: Vec<f64>)
+    ensures
+        result.len() == val.len(),
+        forall|i: int| 0 <= i < val.len() ==> result[i] == val[i].1,
+        forall|i: int| 0 <= i < val.len() ==> (val[i].1 == 0.0 ==> result[i] == 0.0),
+        forall|i: int| 0 <= i < val.len() ==> ((val[i].0 != 0.0 || val[i].1 != 0.0) ==> result[i] == val[i].1),
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

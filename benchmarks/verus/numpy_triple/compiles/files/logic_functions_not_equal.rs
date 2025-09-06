@@ -1,0 +1,51 @@
+/* numpy.not_equal: Return (x1 != x2) element-wise.
+
+Performs element-wise inequality comparison of two arrays and returns a boolean array
+of the same shape indicating where the corresponding elements are not equal.
+
+For scalar inputs, returns a single boolean value. For array inputs of the
+same shape, returns an array of booleans. This function is the basis for
+the != operator when used with numpy arrays.
+
+This is the logical negation of numpy.equal.
+
+Specification: numpy.not_equal returns a boolean vector where each element indicates
+whether the corresponding elements in x1 and x2 are not equal.
+
+Precondition: True (arrays have the same shape by the type system)
+Postcondition: For all indices i, result[i] = (x1[i] != x2[i])
+
+This specification captures both the element-wise behavior and the mathematical
+property that inequality comparison is performed at each position.
+
+Key Properties:
+1. Element-wise comparison: Each position is compared independently
+2. Boolean result: Returns true/false for each position 
+3. Irreflexivity: not_equal(x, x) returns all false
+4. Symmetry: not_equal(x, y) = not_equal(y, x)
+5. Logical negation of equality: not_equal(x, y) = ¬equal(x, y)
+6. Result shape matches input shape */
+
+use vstd::prelude::*;
+
+verus! {
+fn numpy_not_equal<T: PartialEq>(x1: &Vec<T>, x2: &Vec<T>) -> (result: Vec<bool>)
+    requires
+        x1.len() == x2.len(),
+    ensures
+        result.len() == x1.len(),
+        forall|i: int| 0 <= i < x1.len() ==> result[i] == (x1[i] != x2[i]),
+        /* Irreflexivity: comparing vector with itself yields all false */
+        (x1 == x2) ==> forall|i: int| 0 <= i < result.len() ==> result[i] == false,
+        /* Symmetry: inequality comparison is commutative */
+        forall|i: int| 0 <= i < x1.len() ==> result[i] == (x2[i] != x1[i]),
+        /* Boolean result: each element is either true or false */
+        forall|i: int| 0 <= i < result.len() ==> (result[i] == true || result[i] == false),
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

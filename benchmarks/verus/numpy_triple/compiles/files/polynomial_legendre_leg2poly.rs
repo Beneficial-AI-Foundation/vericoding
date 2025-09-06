@@ -1,0 +1,32 @@
+/* Convert a Legendre series to a polynomial (monomial basis)
+
+Specification: leg2poly converts Legendre series coefficients to polynomial coefficients
+
+This function converts an array representing the coefficients of a Legendre series,
+ordered from lowest degree to highest, to an array of the coefficients
+of the equivalent polynomial (relative to the "standard" basis) ordered
+from lowest to highest degree. */
+
+use vstd::prelude::*;
+
+verus! {
+fn leg2poly(c: &Vec<f64>) -> (result: Vec<f64>)
+    requires c.len() > 0,
+    ensures
+        result.len() == c.len(),
+        /* For small cases (n < 3), the conversion is identity */
+        c.len() < 3 ==> (forall|i: int| 0 <= i < c.len() ==> result[i] == c[i]),
+        /* The conversion transforms Legendre basis to monomial basis */
+        /* The mathematical property is that ∑ cᵢ Pᵢ(x) = ∑ result[i] xⁱ */
+        /* where Pᵢ are the Legendre polynomials */
+        #[trigger] result.len() > 0,
+        /* The transformation is well-defined and preserves polynomial degree */
+        result.len() > 0,
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

@@ -1,0 +1,72 @@
+vc-description: |-
+  /* numpy.linalg.diagonal: Returns specified diagonals of a matrix.
+
+     Extracts the diagonal elements from a matrix. The offset parameter
+     controls which diagonal to extract:
+     - offset = 0: main diagonal (elements at position [i,i])
+     - offset > 0: diagonals above the main diagonal (elements at [i,i+offset])
+     - offset < 0: diagonals below the main diagonal (elements at [i-offset,i])
+
+     For simplicity, we return a vector of size min(m,n) which is valid for offset=0.
+     The actual diagonal length depends on the offset value and matrix dimensions.
+  */
+
+  /* Specification: numpy.linalg.diagonal returns the diagonal elements of a matrix.
+
+     Precondition: The matrix must be non-empty (both dimensions > 0)
+     Postcondition: The result contains the diagonal elements extracted from the matrix.
+                    - For offset = 0: result[i] = x[i][i] (main diagonal)
+                    - The result vector has the same type as the input matrix elements
+                    - The extraction respects the mathematical definition of matrix diagonals
+  */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-signature: |-
+  fn numpy_diagonal(x: Vec<Vec<f64>>, offset: i32) -> (result: Vec<f64>)
+      requires 
+          x.len() > 0,
+          forall|i: int| 0 <= i < x.len() ==> x[i].len() > 0,
+          forall|i: int, j: int| 0 <= i < x.len() && 0 <= j < x.len() ==> x[i].len() == x[j].len()
+      ensures
+          /* Main diagonal case: result[i] = x[i][i] for all valid i */
+          offset == 0 ==> (forall|i: int| 0 <= i < result.len() ==> 
+              i < x.len() && i < x[0].len() && result[i] == x[i][i]),
+          /* General case: diagonal elements are extracted according to offset */
+          /* The function produces a valid diagonal extraction for any offset value */
+          forall|i: int| #[trigger] result[i] == result[i] && 0 <= i < result.len() ==> 
+              exists|r: int, c: int| 0 <= r < x.len() && 0 <= c < x[0].len() && 
+              result[i] == x[r][c]
+
+vc-implementation: |-
+  // <vc-implementation>
+  {
+      return Vec::new(); // TODO: Remove this line and implement the function body
+  }
+  // </vc-implementation>
+
+vc-condition: |-
+  proof fn numpy_diagonal_spec_proof(x: Vec<Vec<f64>>, offset: i32)
+      requires 
+          x.len() > 0,
+          forall|i: int| 0 <= i < x.len() ==> x[i].len() > 0,
+          forall|i: int, j: int| 0 <= i < x.len() && 0 <= j < x.len() ==> x[i].len() == x[j].len()
+
+vc-proof: |-
+  // <vc-proof>
+  {
+      assume(false); // TODO: Remove this line and implement the proof
+  }
+  // </vc-proof>
+
+vc-postamble: |-
+  fn main() {}
+
+  }

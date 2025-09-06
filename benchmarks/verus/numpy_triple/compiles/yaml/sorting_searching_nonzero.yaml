@@ -1,0 +1,53 @@
+vc-description: |-
+  numpy.nonzero: Return the indices of the elements that are non-zero.
+
+  Returns a vector of indices where the corresponding elements in the input
+  array are non-zero. The indices are returned in row-major, C-style order.
+  
+  For a 1D array, this returns a vector containing all indices i such that
+  a[i] ≠ 0. Since the output size depends on the input values, we use
+  a Vec structure to accommodate the dynamic nature of the result.
+  
+  Note: In the full NumPy implementation, this returns a tuple of arrays
+  (one for each dimension), but for 1D arrays we simplify to a single vector.
+
+  Specification: numpy.nonzero returns indices of all non-zero elements.
+
+  Precondition: True (no constraints on input)
+  Postcondition: 
+  1. Every index in the result corresponds to a non-zero element in the input
+  2. Every non-zero element in the input has its index in the result (completeness)
+  3. The indices are in ascending order (preserving array order)
+  4. No duplicates in the result
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn nonzero(a: &Vec<f64>) -> (result: Vec<usize>)
+      ensures
+          forall|i: int| 0 <= i < result.len() ==> 
+              0 <= result[i] < a.len() && a[result[i] as int] != 0.0,
+          forall|j: int| 0 <= j < a.len() && a[j] != 0.0 ==> 
+              exists|k: int| 0 <= k < result.len() && result[k] == j,
+          forall|i1: int, i2: int| 0 <= i1 < i2 < result.len() ==> 
+              result[i1] < result[i2],
+          forall|i1: int, i2: int| 0 <= i1 < i2 < result.len() ==> 
+              result[i1] != result[i2],
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

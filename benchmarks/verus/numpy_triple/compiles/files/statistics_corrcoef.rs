@@ -1,0 +1,67 @@
+/* numpy.corrcoef: Return Pearson product-moment correlation coefficients.
+
+   The correlation coefficient measures the linear relationship between two variables.
+   For two vectors x and y, the correlation coefficient is computed as:
+   
+   corr(x, y) = cov(x, y) / (std(x) * std(y))
+   
+   Where:
+   - cov(x, y) is the covariance between x and y
+   - std(x) and std(y) are the standard deviations of x and y
+   
+   This function computes the correlation coefficient between two vectors of observations.
+   The result is bounded between -1 and 1, where:
+   - 1 indicates perfect positive correlation
+   - -1 indicates perfect negative correlation  
+   - 0 indicates no linear correlation
+   
+   Requires non-empty vectors and non-zero variance in both variables.
+*/
+
+/* Specification: corrcoef computes the Pearson correlation coefficient between two vectors.
+
+   The correlation coefficient satisfies several mathematical properties:
+   1. Symmetry: corr(x, y) = corr(y, x)
+   2. Bounded: -1 ≤ corr(x, y) ≤ 1
+   3. Self-correlation: corr(x, x) = 1 (if x has non-zero variance)
+   4. Scale invariance: correlation is preserved under linear transformations
+   
+   Precondition: Both vectors have non-zero variance (not all elements equal)
+   Postcondition: Result is bounded between -1 and 1, and captures linear relationship
+*/
+use vstd::prelude::*;
+
+verus! {
+// <vc-helpers>
+// </vc-helpers>
+fn corrcoef(x: Vec<f64>, y: Vec<f64>) -> (result: f64)
+    requires
+        x.len() > 0,
+        y.len() == x.len(),
+        exists|i: int, j: int| 0 <= i < x.len() && 0 <= j < x.len() && x[i] != x[j],
+        exists|i: int, j: int| 0 <= i < y.len() && 0 <= j < y.len() && y[i] != y[j],
+// <vc-implementation>
+{
+    return 0.0; // TODO: Remove this line and implement the function body
+}
+// </vc-implementation>
+proof fn corrcoef_spec(x: Vec<f64>, y: Vec<f64>)
+    requires
+        x.len() > 0,
+        y.len() == x.len(),
+        exists|i: int, j: int| 0 <= i < x.len() && 0 <= j < x.len() && x[i] != x[j],
+        exists|i: int, j: int| 0 <= i < y.len() && 0 <= j < y.len() && y[i] != y[j],
+    /* Bounded property: correlation coefficient is always between -1 and 1
+       Relationship to covariance: correlation normalizes covariance
+       The correlation coefficient should be computed as:
+       result = cov_xy / sqrt(var_x * var_y)
+       where cov_xy is covariance and var_x, var_y are variances */
+// <vc-proof>
+{
+    assume(false); // TODO: Remove this line and implement the proof
+}
+// </vc-proof>
+fn main() {
+}
+
+}

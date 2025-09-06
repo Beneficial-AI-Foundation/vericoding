@@ -1,0 +1,43 @@
+/* 
+{
+  "name": "NPY_LOG10E",
+  "category": "C API Mathematical constants",
+  "description": "Base 10 logarithm of e",
+  "doc": "log10(e) = 0.434294481903251827651128918916605082",
+}
+*/
+
+/* Base 10 logarithm of Euler's number e */
+
+/* Specification: nPY_LOG10E returns the base 10 logarithm of e with correct mathematical properties */
+use vstd::prelude::*;
+
+verus! {
+// <vc-helpers>
+// </vc-helpers>
+fn nPY_LOG10E() -> (result: f64)
+// <vc-implementation>
+{
+    return 0.0; // TODO: Remove this line and implement the function body
+}
+// </vc-implementation>
+proof fn nPY_LOG10E_spec()
+    /* The value should be log₁₀(e) */
+    /* result == 0.434294481903251827651128918916605082 && */
+    /* Mathematical property: 10^result = e (within floating-point precision) */
+    /* ((10.0^result - e).abs() < 1e-15) && */
+    /* Another mathematical property: result * ln(10) = 1 (since log₁₀(e) * ln(10) = ln(e) = 1) */
+    /* ((result * ln(10.0) - 1.0).abs() < 1e-15) && */
+    /* The value is positive (since e > 1 and log₁₀ is increasing) */
+    /* result > 0.0 && */
+    /* The value is less than 1 (since e < 10) */
+    /* result < 1.0 */
+{
+// <vc-proof>
+    assume(false); // TODO: Remove this line and implement the proof
+// </vc-proof>
+}
+
+fn main() {}
+
+}

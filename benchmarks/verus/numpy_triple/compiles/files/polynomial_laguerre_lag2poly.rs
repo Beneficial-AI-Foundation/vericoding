@@ -1,0 +1,36 @@
+/* Convert a Laguerre series to a polynomial.
+Convert an array representing the coefficients of a Laguerre series,
+ordered from lowest degree to highest, to an array of the coefficients
+of the equivalent polynomial (relative to the "standard" basis).
+
+Specification: lag2poly converts Laguerre series coefficients to standard polynomial coefficients.
+The converted polynomial evaluates to the same values as the original Laguerre series. */
+
+use vstd::prelude::*;
+
+verus! {
+
+/* Helper function to evaluate a Laguerre polynomial at a given point */
+spec fn evaluate_laguerre_polynomial(c: Vec<f32>, x: f32) -> f32;
+
+/* Helper function to evaluate a standard polynomial at a given point */
+spec fn evaluate_polynomial(poly: Vec<f32>, x: f32) -> f32;
+fn lag2poly(c: Vec<f32>) -> (result: Vec<f32>)
+    ensures
+        result.len() == c.len(),
+        /* The converted polynomial evaluates to the same values as the Laguerre series */
+        forall|x: f32| evaluate_polynomial(result, x) == evaluate_laguerre_polynomial(c, x),
+        /* Single coefficient case: lag2poly([a]) = [a] */
+        c.len() == 1 ==> result == c,
+        /* The conversion preserves the polynomial degree */
+        c.len() > 0 ==> evaluate_polynomial(result, 0.0) == evaluate_laguerre_polynomial(c, 0.0),
+        /* Basic identity check at evaluation point x = 0 */
+        evaluate_polynomial(result, 0.0) == evaluate_laguerre_polynomial(c, 0.0),
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

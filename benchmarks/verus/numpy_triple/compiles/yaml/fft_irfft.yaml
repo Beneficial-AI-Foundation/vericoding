@@ -1,0 +1,80 @@
+vc-description: |-
+  Computes the inverse of rfft (real-valued inverse FFT)
+
+  numpy.fft.irfft
+  Description: Computes the inverse of rfft
+  URL: https://numpy.org/doc/stable/reference/generated/numpy.fft.irfft.html
+  
+  numpy.fft.irfft(a, n=None, axis=-1, norm=None, out=None)
+  
+  Computes the inverse of rfft. It performs the inverse of the one-dimensional discrete Fourier Transform for real input, such that irfft(rfft(a), len(a)) == a within numerical accuracy.
+  
+  Parameters:
+  - a: Input array
+  - n: Optional length of transformed axis (default calculates based on input)
+  - axis: Axis to compute inverse FFT (default is last axis)
+  - norm: Normalization mode ("backward", "ortho", "forward")
+  - out: Optional output array
+  
+  Returns:
+  - Real-valued ndarray transformed along specified axis
+  
+  Notes:
+  - Handles Hermitian-symmetric input from rfft
+  - Requires specifying original data length to avoid information loss
+  - Can resample a series via Fourier interpolation
+  
+  Example:
+  np.fft.irfft([1, -1j, -1])
+  # Returns: array([0., 1., 0., 0.])
+
+  Specification: irfft computes the inverse of rfft with proper length restoration
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  /* Complex number type for FFT operations */
+  #[derive(Clone, Copy, PartialEq, Eq)]
+  pub struct Complex {
+      /* Real part of the complex number */
+      pub re: i32,
+      /* Imaginary part of the complex number */
+      pub im: i32,
+  }
+
+  /* Helper function to check if a vector is Hermitian-symmetric */
+  pub open spec fn is_hermitian_symmetric(a: Seq<Complex>) -> bool {
+      forall|i: int, j: int| 0 <= i < a.len() && 0 <= j < a.len() && i + j == a.len() - 1 ==>
+          a[i].re == a[j].re && a[i].im == -a[j].im
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn irfft(a: &Vec<Complex>, n: usize) -> (result: Vec<i32>)
+      requires 
+          a.len() > 0,
+          n == 2 * (a.len() - 1),
+          is_hermitian_symmetric(a@),
+      ensures
+          result.len() == n,
+          a@[0].im == 0 ==> exists|i: int| 0 <= i < result.len() && result[i] == a@[0].re,
+          forall|i: int, j: int| 0 <= i < result.len() && 0 <= j < result.len() && i + j == n ==> 
+              result[i] == result[j],
+          is_hermitian_symmetric(a@),
+          n == 2 * (a.len() - 1),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

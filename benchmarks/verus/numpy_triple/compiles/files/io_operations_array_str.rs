@@ -1,0 +1,42 @@
+/* 
+{
+  "name": "numpy.array_str",
+  "category": "String formatting",
+  "description": "Return a string representation of the data in an array",
+  "url": "https://numpy.org/doc/stable/reference/generated/numpy.array_str.html",
+  "doc": "Return a string representation of the data in an array.\n\n    The data in the array is returned as a single string.  This function is\n    similar to `array_repr`, the difference being that `array_repr` also\n    returns information on the kind of array and its data type.\n\n    Parameters\n    ----------\n    a : ndarray\n        Input array.\n    max_line_width : int, optional\n        Inserts newlines if text is longer than `max_line_width`.\n        Defaults to ``numpy.get_printoptions()['linewidth']``...",
+}
+*/
+
+/* Return a string representation of the data in a vector */
+
+/* Specification: array_str returns a formatted string representation of the vector data */
+use vstd::prelude::*;
+
+verus! {
+/* <vc-helpers> */
+/* </vc-helpers> */
+fn array_str(a: Vec<f64>) -> (result: String)
+/* <vc-implementation> */
+{
+    return "[]".to_string(); // TODO: Remove this line and implement the function body
+}
+/* </vc-implementation> */
+proof fn array_str_spec(a: Vec<f64>)
+    ensures
+        // The result is a non-empty string (always at least "[]")
+        true, // Cannot easily specify string properties in current Verus
+        // For empty arrays, the result is exactly "[]"
+        true, // Cannot easily specify string comparison in current Verus
+        // For non-empty arrays, the string starts with '[' and ends with ']'
+        true, // Cannot easily specify string indexing in current Verus
+        // The string representation preserves the ordering of elements
+        true  // Cannot easily specify complex string ordering properties in current Verus
+/* <vc-proof> */
+{
+    assume(false); // TODO: Remove this line and implement the proof
+}
+/* </vc-proof> */
+fn main() {}
+
+}

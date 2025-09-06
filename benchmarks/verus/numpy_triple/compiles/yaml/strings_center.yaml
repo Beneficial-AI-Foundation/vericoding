@@ -1,0 +1,70 @@
+Great! The code now verifies successfully. Now let me format it as the required YAML structure:
+
+vc-description: |-
+  numpy.strings.center: Return a copy of a with its elements centered in a string of length width.
+
+  Centers strings in a field of given width with optional fill character.
+  If the original string length is greater than or equal to the target width,
+  the original string is returned unchanged. Otherwise, the string is padded
+  symmetrically with the fill character to reach the target width.
+
+  From NumPy documentation:
+  - Parameters: a (array_like with StringDType), width (array_like with integer dtype), 
+                fillchar (optional, default ' ') - The padding character
+  - Returns: out (ndarray) - Output array with centered strings
+
+  Mathematical Properties:
+  1. Length preservation: If original.length >= width, return original unchanged
+  2. Symmetric padding: If original.length < width, pad equally on both sides
+  3. Padding balance: Left and right padding differ by at most 1 character
+  4. Character preservation: Original string appears as substring in result
+  5. Width compliance: Result length equals max(original.length, width)
+
+  Specification: numpy.strings.center returns a vector where each element is the
+  corresponding element from the input centered in a field of the specified width.
+
+  Mathematical Properties:
+  1. Length preservation: If original string length >= target width, return original
+  2. Symmetric padding: If original string length < target width, pad symmetrically
+  3. Padding balance: Left and right padding counts differ by at most 1
+  4. Character preservation: Original string appears as contiguous substring
+  5. Width compliance: Result length equals max(original.length, target_width)
+  6. Fill character usage: Padding uses the specified fill character exclusively
+
+  Precondition: True (no special preconditions for string centering)
+  Postcondition: For all indices i, result[i] is the centered version of a[i]
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn center(a: &Vec<Seq<char>>, width: &Vec<usize>, fillchar: char) -> (result: Vec<Seq<char>>)
+      requires a.len() == width.len(),
+      ensures
+          result.len() == a.len(),
+          forall|i: int| 0 <= i < a.len() ==> {
+              /* Length preservation: If original string length >= target width, return original */
+              (a[i].len() >= width[i] ==> result[i] == a[i]) &&
+              /* Width compliance: Result length equals max(original.length, target_width) */
+              result[i].len() == (if a[i].len() >= width[i] { a[i].len() } else { width[i] as nat }) &&
+              /* Symmetric padding: If original string length < target width, pad symmetrically */
+              (a[i].len() < width[i] ==> {
+                  let padding = width[i] - a[i].len();
+                  let left_pad = padding / 2;
+                  let right_pad = padding - left_pad;
+                  result[i].len() == left_pad as nat + a[i].len() + right_pad as nat
+              })
+          },
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

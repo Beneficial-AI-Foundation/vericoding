@@ -1,0 +1,55 @@
+/* numpy.arcsin: Inverse sine, element-wise.
+
+   Computes the inverse sine (arcsine) of each element in the input array.
+   The result is the angle in radians whose sine is the input value.
+   
+   For real arguments, the domain is [-1, 1] and the range is [-π/2, π/2].
+   Values outside [-1, 1] will result in NaN.
+
+   Returns an array of the same shape as x, containing the inverse sine values in radians.
+*/
+
+/* Specification: numpy.arcsin returns a vector where each element is the
+   inverse sine of the corresponding element in x.
+
+   Precondition: All elements of x must be in the domain [-1, 1] for real results
+   Postcondition: For all indices i where x[i] is in [-1, 1]:
+   - result[i] = arcsin(x[i])
+   - result[i] is in the range [-π/2, π/2]
+   - sin(result[i]) = x[i] (inverse relationship holds)
+   - arcsin is monotonic: if x[i] ≤ x[j] then result[i] ≤ result[j]
+   - Special values: arcsin(0) = 0, arcsin(1) = π/2, arcsin(-1) = -π/2
+*/
+use vstd::prelude::*;
+
+verus! {
+/* <vc-helpers> */
+/* </vc-helpers> */
+exec fn numpy_arcsin(x: Vec<f64>) -> (result: Vec<f64>)
+/* <vc-implementation> */
+    ensures
+        result.len() == x.len(),
+    {
+        let mut result = Vec::new();
+        let mut i = 0;
+        while i < x.len()
+            invariant 
+                result.len() == i,
+                i <= x.len(),
+            decreases x.len() - i
+        {
+            result.push(0.0);
+            i = i + 1;
+        }
+        return result; // TODO: Remove this line and implement the function body
+    }
+/* </vc-implementation> */
+proof fn numpy_arcsin_spec()
+/* <vc-proof> */
+    {
+        assume(false); // TODO: Remove this line and implement the proof
+    }
+/* </vc-proof> */
+fn main() {}
+
+}

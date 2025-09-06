@@ -1,0 +1,92 @@
+vc-description: |-
+  Compute the N-dimensional inverse discrete Fourier Transform (IFFTN).
+  
+  The IFFTN extends the 1D inverse FFT to multiple dimensions, computing
+  the inverse of the N-dimensional DFT. For a 2D array, this applies the
+  inverse transform along both dimensions.
+  
+  For a 2D array of size m×n, the (i,j)-th output element is computed as:
+  X[i,j] = (1/(m*n)) * Σ(k=0 to m-1) Σ(l=0 to n-1) a[k,l] * exp(2πi*(i*k/m + j*l/n))
+  
+  This is the mathematical inverse of the N-dimensional FFT.
+  
+  Specification: The N-dimensional inverse FFT correctly computes the inverse discrete Fourier transform.
+  
+  The IFFTN satisfies the inverse N-dimensional DFT equation where each output element (i,j)
+  is computed as (1/(m*n)) times the double sum over all input elements (k,l), multiplied by
+  the complex exponential exp(2πi*(i*k/m + j*l/n)).
+  
+  This is the mathematical inverse of the N-dimensional FFT operation, with positive signs
+  in the exponential and a normalization factor of 1/(m*n) for 2D case.
+  
+  Key properties:
+  1. Inverse relationship: ifftn(fftn(x)) ≈ x within numerical accuracy
+  2. Linearity: ifftn(a*x + b*y) = a*ifftn(x) + b*ifftn(y) 
+  3. Parseval's theorem: energy is preserved with proper normalization
+  4. Separability: N-D transform can be computed as sequence of 1-D transforms
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  /* Complex number type for IFFTN operations */
+  #[derive(PartialEq, Copy, Clone)]
+  pub struct Complex {
+      pub re: int,
+      pub im: int,
+  }
+
+  impl Complex {
+      spec fn add(self, other: Complex) -> Complex {
+          Complex { re: self.re + other.re, im: self.im + other.im }
+      }
+
+      spec fn mul(self, other: Complex) -> Complex {
+          Complex { 
+              re: self.re * other.re - self.im * other.im, 
+              im: self.re * other.im + self.im * other.re 
+          }
+      }
+
+      spec fn scalar_mul(s: int, z: Complex) -> Complex {
+          Complex { re: s * z.re, im: s * z.im }
+      }
+
+      spec fn zero() -> Complex {
+          Complex { re: 0, im: 0 }
+      }
+  }
+
+  /* Complex exponential function e^(iθ) */
+  spec fn cexp(theta: int) -> Complex;
+
+  /* Sum of complex numbers over finite indices */
+  spec fn complex_sum<const N: usize>(f: spec_fn(usize) -> Complex) -> Complex;
+vc-helpers: |-
+
+vc-spec: |-
+  fn ifftn<const M: usize, const N: usize>(a: Vec<Vec<Complex>>) -> (result: Vec<Vec<Complex>>)
+      requires 
+          M > 0, 
+          N > 0,
+          a.len() == M,
+          forall|i: int| 0 <= i < M ==> a[i].len() == N,
+      ensures 
+          result.len() == M,
+          forall|i: int| 0 <= i < M ==> result[i].len() == N,
+          forall|i: int, j: int| 0 <= i < M && 0 <= j < N ==> {
+              /* Placeholder for inverse FFT formula: result[i][j] equals
+                 (1/(M*N)) * sum over k,l of a[k][l] * cexp(2π*(i*k/M + j*l/N)) */
+              result[i][j] == Complex::zero()
+          },
+vc-code: |-
+  {
+      /* impl-start */
+      assume(false);
+      Vec::new()
+      /* impl-end */
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

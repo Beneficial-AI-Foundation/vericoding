@@ -1,0 +1,27 @@
+/* Multiply a polynomial by x.
+Multiplies polynomial c by x, where x is the independent variable.
+For polynomial p(x) = c[0] + c[1]*x + ... + c[n-1]*x^(n-1),
+returns x*p(x) = 0 + c[0]*x + c[1]*x^2 + ... + c[n-1]*x^n
+
+Specification: polymulx multiplies a polynomial by x.
+The result has one more coefficient than the input.
+The first coefficient is always 0, and subsequent coefficients
+are the original coefficients shifted by one position.
+This represents multiplying p(x) by x to get x*p(x). */
+
+use vstd::prelude::*;
+
+verus! {
+fn polymulx(c: &Vec<f64>) -> (result: Vec<f64>)
+    ensures
+        result.len() == c.len() + 1,
+        result[0] == 0.0,
+        forall|i: int| 0 <= i < c.len() ==> result[i + 1] == c[i],
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

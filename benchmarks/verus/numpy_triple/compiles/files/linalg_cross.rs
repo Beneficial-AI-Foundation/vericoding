@@ -1,0 +1,39 @@
+/* numpy.linalg.cross: Return the cross product of 3-element vectors.
+
+Computes the cross product of two 3-element vectors. The cross product
+of two vectors a and b is a vector perpendicular to both a and b.
+
+For 3D vectors a = [a₀, a₁, a₂] and b = [b₀, b₁, b₂], the cross product
+is defined as:
+a × b = [a₁b₂ - a₂b₁, a₂b₀ - a₀b₂, a₀b₁ - a₁b₀]
+
+This follows the right-hand rule convention.
+
+Specification: numpy.linalg.cross returns the cross product of two 3D vectors.
+
+Precondition: True (both vectors must be 3-dimensional, enforced by type)
+
+Postcondition: The result is a 3D vector where:
+- result[0] = x1[1] * x2[2] - x1[2] * x2[1]
+- result[1] = x1[2] * x2[0] - x1[0] * x2[2]  
+- result[2] = x1[0] * x2[1] - x1[1] * x2[0]
+
+The cross product has the mathematical property that it is perpendicular
+to both input vectors (i.e., result · x1 = 0 and result · x2 = 0). */
+
+use vstd::prelude::*;
+
+verus! {
+fn numpy_linalg_cross(x1: [i32; 3], x2: [i32; 3]) -> (result: [i32; 3])
+    ensures
+        result[0] == x1[1] * x2[2] - x1[2] * x2[1],
+        result[1] == x1[2] * x2[0] - x1[0] * x2[2],
+        result[2] == x1[0] * x2[1] - x1[1] * x2[0],
+{
+    // impl-start
+    assume(false);
+    [0, 0, 0]
+    // impl-end
+}
+}
+fn main() {}

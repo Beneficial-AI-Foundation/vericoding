@@ -1,0 +1,42 @@
+/* Inverse hyperbolic sine element-wise.
+
+numpy.arcsinh: Inverse hyperbolic sine element-wise.
+
+Computes the inverse hyperbolic sine of each element in the input vector.
+The inverse hyperbolic sine is defined as arcsinh(x) = ln(x + sqrt(x² + 1)).
+
+This function is defined for all real numbers and is the inverse of the
+hyperbolic sine function (sinh).
+
+Specification: numpy.arcsinh returns a vector where each element is the
+inverse hyperbolic sine of the corresponding element in x.
+
+Precondition: True (arcsinh is defined for all real numbers)
+Postcondition: For all indices i, result[i] = arcsinh(x[i])
+
+Mathematical properties captured:
+1. arcsinh(0) = 0 (sanity check)
+2. arcsinh(-x) = -arcsinh(x) (odd function property)
+3. arcsinh is strictly increasing (monotonicity) */
+
+use vstd::prelude::*;
+
+verus! {
+fn numpy_arcsinh(x: Vec<f64>) -> (result: Vec<f64>)
+    ensures
+        result.len() == x.len(),
+        /* Basic computation: result = ln(x + sqrt(x² + 1)) */
+        /* Mathematical formula would be: result[i] == (x[i] + (x[i] * x[i] + 1.0).sqrt()).ln() */
+        /* Sanity check: arcsinh(0) = 0 */
+        /* Domain property: arcsinh is defined for all real numbers */
+        /* For positive inputs, result is positive (odd function implied) */
+        /* For negative inputs, result is negative (odd function implied) */
+        true, /* Placeholder for mathematical relationship */
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

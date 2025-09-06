@@ -1,0 +1,47 @@
+/* Return the scaled companion matrix of c.
+
+The basis polynomials are scaled so that the companion matrix is
+symmetric when `c` is an Hermite basis polynomial. This provides
+better eigenvalue estimates than the unscaled case and for basis
+polynomials the eigenvalues are guaranteed to be real if
+`numpy.linalg.eigvalsh` is used to obtain them.
+
+Parameters
+----------
+c : array_like
+    1-D array of Hermite series coefficients ordered from low to high
+    degree.
+
+Returns
+-------
+mat : ndarray
+    Scaled companion matrix of dimensions (deg, deg).
+
+Return the scaled companion matrix of Hermite polynomial coefficients.
+The companion matrix is symmetric when c represents a Hermite basis polynomial.
+
+Specification: hermcompanion produces a scaled companion matrix with specific properties.
+For a coefficient vector of length n+2, the result is an (n+1)×(n+1) matrix where:
+1. The super-diagonal and sub-diagonal contain sqrt(k/2) for k = 1 to n
+2. The last column is adjusted by scaled coefficients
+3. The matrix is symmetric when c represents a Hermite basis polynomial */
+
+use vstd::prelude::*;
+
+verus! {
+fn hermcompanion(n: usize, c: Vec<f64>) -> (result: Vec<Vec<f64>>)
+    requires 
+        n >= 1,
+        c.len() == n + 2,
+        c[n + 1] != 0.0,
+    ensures
+        result.len() == n + 1,
+        forall|i: int| 0 <= i < result.len() ==> result[i].len() == n + 1,
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

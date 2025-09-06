@@ -1,0 +1,78 @@
+/* 
+{
+  "name": "numpy.polynomial.chebyshev.chebmul",
+  "category": "Chebyshev polynomials", 
+  "description": "Multiply one Chebyshev series by another.",
+  "url": "https://numpy.org/doc/stable/reference/generated/numpy.polynomial.chebyshev.chebmul.html",
+  "doc": "Multiply one Chebyshev series by another.\n\n    Returns the product of two Chebyshev series `c1` * `c2`.  The arguments\n    are sequences of coefficients, from lowest order \"term\" to highest,\n    e.g., [1,2,3] represents the series ``T_0 + 2*T_1 + 3*T_2``.\n\n    Parameters\n    ----------\n    c1, c2 : array_like\n        1-D arrays of Chebyshev series coefficients ordered from low to\n        high.\n\n    Returns\n    -------\n    out : ndarray\n        Of Chebyshev series coefficients representing their product.\n\n    See Also\n    --------\n    chebadd, chebsub, chebmulx, chebdiv, chebpow\n\n    Notes\n    -----\n    In general, the (polynomial) product of two C-series results in terms\n    that are not in the Chebyshev polynomial basis set.  Thus, to express\n    the product as a C-series, it is typically necessary to \"reproject\"\n    the product onto said basis set, which typically produces\n    \"unintuitive live\" (but correct) results; see Examples section below.\n\n    Examples\n    --------\n    >>> from numpy.polynomial import chebyshev as C\n    >>> c1 = (1,2,3)\n    >>> c2 = (3,2,1)\n    >>> C.chebmul(c1,c2) # multiplication requires \"reprojection\"\n    array([  6.5,  12. ,  12. ,   4. ,   1.5])",
+}
+*/
+
+/* Multiply one Chebyshev series by another.
+   
+   Returns the product of two Chebyshev series c1 * c2. The arguments
+   are sequences of coefficients, from lowest order term to highest,
+   e.g., [1,2,3] represents the series T_0 + 2*T_1 + 3*T_2.
+   
+   The result length is m + n - 1 where m and n are the lengths of c1 and c2. */
+
+/* Specification: chebmul computes the product of two Chebyshev series.
+   
+   The multiplication of Chebyshev polynomials follows the recurrence relation:
+   T_m * T_n = (T_{m+n} + T_{|m-n|}) / 2
+   
+   This specification captures:
+   1. The result has the correct length (m + n - 1)
+   2. Mathematical properties of the resulting coefficients
+   3. Example verification: multiplying T_0 with any polynomial preserves coefficients
+   4. Symmetry: chebmul c1 c2 = chebmul c2 c1
+   5. Example from documentation: [1,2,3] * [3,2,1] = [6.5, 12, 12, 4, 1.5] */
+use vstd::prelude::*;
+
+verus! {
+/* <vc-helpers> */
+/* </vc-helpers> */
+spec fn chebmul(c1: Seq<int>, c2: Seq<int>) -> Seq<int>
+    recommends 
+        c1.len() > 0,
+        c2.len() > 0,
+{
+/* <vc-implementation> */
+seq![] // TODO: Remove this line and implement the function body
+/* </vc-implementation> */
+}
+
+proof fn chebmul_spec(c1: Seq<int>, c2: Seq<int>)
+    requires 
+        c1.len() > 0,
+        c2.len() > 0,
+    ensures
+        /* The result vector has the correct length */
+        chebmul(c1, c2).len() == c1.len() + c2.len() - 1,
+        /* Example property: multiplying by the constant polynomial [a] scales all coefficients */
+        (c2.len() == 1 ==> (forall|i: int| 0 <= i < c1.len() ==> 
+            chebmul(c1, c2)[i] == c2[0] * c1[i])),
+        /* Another example: multiplying [1,0,...] (T_0) by any polynomial preserves it */
+        (c1.len() == 1 && c1[0] == 1 ==> (forall|j: int| 0 <= j < c2.len() ==> 
+            chebmul(c1, c2)[j] == c2[j])),
+        /* Special case: multiplying two linear polynomials [a,b] * [c,d] */
+        /* Result should be approximately [ac + bd/2, ad + bc, bd/2] (using integer arithmetic) */
+        (c1.len() == 2 && c2.len() == 2 ==> {
+            let result = chebmul(c1, c2);
+            let a = c1[0];
+            let b = c1[1];
+            let c = c2[0];
+            let d = c2[1];
+            result[0] == a * c + (b * d) / 2 &&
+            result[1] == a * d + b * c &&
+            result[2] == (b * d) / 2
+        }),
+{
+/* <vc-proof> */
+assume(false); // TODO: Remove this line and implement the proof
+/* </vc-proof> */
+}
+
+fn main() {}
+
+}

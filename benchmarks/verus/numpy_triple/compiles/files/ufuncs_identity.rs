@@ -1,0 +1,58 @@
+/*
+{
+  "name": "identity",
+  "description": "The identity value for the ufunc",
+  "details": "Value such that func(x, identity) == x for all x",
+  "examples": {
+    "add.identity": "0",
+    "multiply.identity": "1",
+    "logical_and.identity": "True",
+    "logical_or.identity": "False"
+  }
+}
+*/
+
+/* ufunc.identity: Get the identity element for a ufunc operation.
+
+    Returns the identity element for a given binary operation, which is the value
+    that when combined with any other value using that operation, leaves the other
+    value unchanged. For example:
+    - Addition: identity is 0 (x + 0 = x)
+    - Multiplication: identity is 1 (x * 1 = x)
+    - Logical AND: identity is True (x ∧ True = x)
+    - Logical OR: identity is False (x ∨ False = x)
+    
+    Some operations may have no identity element, in which case None is returned.
+*/
+
+/* Specification: ufunc_identity returns the identity element if it exists.
+
+    Precondition: The operation is a valid binary function
+    Postcondition: If an identity element exists, applying the operation with
+                   that element leaves any other element unchanged
+*/
+use vstd::prelude::*;
+
+verus! {
+/* <vc-helpers> */
+/* </vc-helpers> */
+fn ufunc_identity(op: spec_fn(f32, f32) -> f32) -> (result: Option<f32>)
+    ensures match result {
+        Some(id) => forall |x: f32| #[trigger] op(x, id) == x && #[trigger] op(id, x) == x,
+        None => true, // Simplified for now
+    }
+{
+    /* <vc-implementation> */
+    assume(false); // TODO: Remove this line and implement the function body
+    return Some(0.0f32);
+    /* </vc-implementation> */
+}
+proof fn ufunc_identity_spec(op: spec_fn(f32, f32) -> f32)
+{
+    /* <vc-proof> */
+    assume(false); // TODO: Remove this line and implement the proof
+    /* </vc-proof> */
+}
+fn main() {}
+
+}

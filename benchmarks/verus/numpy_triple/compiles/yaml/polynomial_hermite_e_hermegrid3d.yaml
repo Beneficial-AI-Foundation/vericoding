@@ -1,0 +1,77 @@
+vc-description: |-
+  numpy.polynomial.hermite_e.hermegrid3d: Evaluate a 3-D HermiteE series on the Cartesian product of x, y, and z.
+
+  This function evaluates a 3-dimensional HermiteE polynomial series
+  on the Cartesian product of coordinate vectors x, y, and z.
+  
+  The evaluation follows the mathematical formula:
+  p(a,b,c) = sum_{i,j,k} c[i,j,k] * He_i(a) * He_j(b) * He_k(c)
+  
+  where He_i is the i-th probabilist's Hermite polynomial (HermiteE),
+  and the points (a,b,c) are formed by taking all combinations of
+  elements from x, y, and z.
+  
+  The result is a 3D tensor where result[i,j,k] contains the polynomial
+  value at the point (x[i], y[j], z[k]).
+
+  Specification: hermegrid3d evaluates a 3D HermiteE polynomial series 
+  on the Cartesian product of x, y, and z coordinates.
+
+  The function computes p(a,b,c) = sum_{i,j,k} c[i,j,k] * He_i(a) * He_j(b) * He_k(c)
+  where He_i is the i-th probabilist's Hermite polynomial.
+  
+  Mathematical Properties:
+  1. The result represents evaluation at all Cartesian product points
+  2. HermiteE polynomials satisfy He_0(x) = 1, He_1(x) = x, 
+     and the recurrence He_{n+1}(x) = x * He_n(x) - n * He_{n-1}(x)
+  3. The evaluation is exact for the polynomial representation
+  4. Result shape is nx × ny × nz, matching the Cartesian product
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn hermegrid3d(x: &Vec<f64>, y: &Vec<f64>, z: &Vec<f64>, c: &Vec<Vec<Vec<f64>>>) -> (result: Vec<Vec<Vec<f64>>>)
+      requires
+          x.len() > 0,
+          y.len() > 0, 
+          z.len() > 0,
+          c.len() > 0,
+          forall|i: int| 0 <= i < c.len() ==> c[i].len() > 0,
+          forall|i: int, j: int| 0 <= i < c.len() && 0 <= j < c[i].len() ==> c[i][j].len() > 0,
+      ensures
+          /* Result has correct 3D shape: nx × ny × nz */
+          result.len() == x.len(),
+          forall|i: int| 0 <= i < result.len() ==> result[i].len() == y.len(),
+          forall|i: int, j: int| 0 <= i < result.len() && 0 <= j < result[i].len() ==> result[i][j].len() == z.len(),
+          /* Each result[i,j,k] represents the polynomial evaluation at point (x[i], y[j], z[k]) */
+          forall|i: int, j: int, k: int| 
+              0 <= i < x.len() && 0 <= j < y.len() && 0 <= k < z.len() ==> (
+                  /* If coefficient tensor is empty in any dimension, result is zero */
+                  (c.len() == 0 || (c.len() > 0 && c[0].len() == 0) || (c.len() > 0 && c[0].len() > 0 && c[0][0].len() == 0)) ==> 
+                      result[i][j][k] == 0.0
+              ),
+          /* Grid property: Result corresponds to Cartesian product structure */
+          forall|i1: int, i2: int, j1: int, j2: int, k1: int, k2: int|
+              0 <= i1 < x.len() && 0 <= i2 < x.len() && 
+              0 <= j1 < y.len() && 0 <= j2 < y.len() &&
+              0 <= k1 < z.len() && 0 <= k2 < z.len() &&
+              x[i1] == x[i2] && y[j1] == y[j2] && z[k1] == z[k2] ==>
+                  result[i1][j1][k1] == result[i2][j2][k2],
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

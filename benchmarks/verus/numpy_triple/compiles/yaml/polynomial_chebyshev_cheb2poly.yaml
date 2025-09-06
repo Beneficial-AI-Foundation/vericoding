@@ -1,0 +1,68 @@
+vc-description: |-
+  Convert a Chebyshev series to a polynomial.
+      
+  Convert an array representing the coefficients of a Chebyshev series,
+  ordered from lowest degree to highest, to an array of the coefficients
+  of the equivalent polynomial (relative to the "standard" basis) ordered
+  from lowest to highest degree.
+  
+  Specification: cheb2poly converts Chebyshev coefficients to polynomial coefficients.
+      
+  The conversion satisfies the mathematical property that if we have Chebyshev series
+  ∑_{k=0}^{n-1} c[k] * T_k(x) where T_k is the k-th Chebyshev polynomial,
+  then the output polynomial coefficients p satisfy:
+  ∑_{k=0}^{n-1} c[k] * T_k(x) = ∑_{k=0}^{n-1} p[k] * x^k
+      
+  Key properties:
+  1. Length preservation: output has same length as input
+  2. Identity cases: for n ≤ 2, the output equals the input (since T₀(x) = 1, T₁(x) = x)
+  3. Correctness: The polynomial form evaluates to the same value as the Chebyshev series
+  4. Example verification: [0, 1, 2, 3] → [-2, -8, 4, 12]
+      
+  The algorithm uses the recurrence relation of Chebyshev polynomials:
+  T₀(x) = 1, T₁(x) = x, T_{n+1}(x) = 2xT_n(x) - T_{n-1}(x)
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn cheb2poly(c: &Vec<f64>) -> (result: Vec<f64>)
+      ensures
+          /* Basic properties */
+          /* 1. Length preservation */
+          result.len() == c.len(),
+          /* 2. Identity for small cases */
+          c.len() == 0 ==> result == c,
+          c.len() == 1 ==> result == c,
+          c.len() == 2 ==> result == c,
+          /* 3. Mathematical correctness: The core property is that
+             evaluating the polynomial with coefficients p at any point x
+             gives the same result as evaluating the Chebyshev series
+             with coefficients c at that point.
+             This is the fundamental correctness property of the conversion. */
+          /* For clarity, we state this property abstractly:
+             polyEval(p, x) = chebEval(c, x)
+             where polyEval computes p₀ + p₁x + p₂x² + ... + p_{n-1}x^{n-1}
+             and chebEval computes c₀T₀(x) + c₁T₁(x) + ... + c_{n-1}T_{n-1}(x) */
+          /* 4. Concrete example from NumPy documentation
+             When c = [0, 1, 2, 3], then p = [-2, -8, 4, 12]
+             This verifies: 0*T₀ + 1*T₁ + 2*T₂ + 3*T₃ = -2 - 8x + 4x² + 12x³ */
+          c.len() == 4 && c[0] == 0.0 && c[1] == 1.0 && c[2] == 2.0 && c[3] == 3.0 ==> 
+              result[0] == -2.0 && result[1] == -8.0 && result[2] == 4.0 && result[3] == 12.0,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

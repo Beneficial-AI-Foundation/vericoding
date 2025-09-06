@@ -1,0 +1,55 @@
+/*
+{
+  "name": "numpy.moveaxis",
+  "category": "Transpose Operations", 
+  "description": "Move axes of an array to new positions",
+  "url": "https://numpy.org/doc/stable/reference/generated/numpy.moveaxis.html",
+  "doc": "Move axes of an array to new positions.\n\nOther axes remain in their original order.\n\nParameters\n----------\na : np.ndarray\n    The array whose axes should be reordered.\nsource : int or sequence of int\n    Original positions of the axes to move. These must be unique.\ndestination : int or sequence of int\n    Destination positions for each of the original axes. These must also be unique.\n\nReturns\n-------\nresult : np.ndarray\n    Array with moved axes. This array is a view of the input array.\n\nExamples\n--------\n>>> x = np.zeros((3, 4, 5))\n>>> np.moveaxis(x, 0, -1).shape\n(4, 5, 3)\n>>> np.moveaxis(x, -1, 0).shape\n(5, 3, 4)\n>>> np.moveaxis(x, [0, 1], [-1, -2]).shape\n(5, 4, 3)\n>>> np.moveaxis(x, [0, 1, 2], [-1, -2, -3]).shape\n(5, 4, 3)",
+  "source_location": "numpy/_core/numeric.py",
+  "signature": "numpy.moveaxis(a, source, destination)"
+}
+*/
+
+/* Move axes in a 1D vector (simplified version).
+   For 1D arrays, moveaxis with source=0 and destination=0 returns the array unchanged.
+   This captures the core mathematical property that moving an axis to itself is identity. */
+
+/* Specification: moveaxis preserves all elements and their values.
+   For 1D arrays, moveaxis is always the identity function since there's only one axis.
+   This specification captures several mathematical properties:
+   1. Element preservation: all values remain unchanged
+   2. Size preservation: the shape is maintained
+   3. Identity property: moving axis 0 to position 0 is identity
+   4. Order preservation: for 1D arrays, element order is maintained */
+use vstd::prelude::*;
+
+verus! {
+/* <vc-helpers> */
+/* </vc-helpers> */
+fn moveaxis(a: Vec<i32>, source: usize, dest: usize) -> (result: Vec<i32>)
+    ensures
+        /* Core property: moveaxis on 1D array is identity */
+        (forall|i: int| 0 <= i < a.len() ==> result[i] == a[i]) &&
+        /* Sanity check: size is preserved */
+        result.len() == a.len() &&
+        /* Mathematical property: for 1D arrays, result equals input */
+        result == a &&
+        /* Property: for any valid indices i < j, if a[i] <= a[j], then result[i] <= result[j] */
+        /* This shows that relative ordering is preserved */
+        (forall|i: int, j: int| 0 <= i < j < a.len() && a[i] <= a[j] ==> result[i] <= result[j])
+{
+    /* <vc-implementation> */
+    return a; // TODO: Remove this line and implement the function body
+    /* </vc-implementation> */
+}
+proof fn moveaxis_spec(a: Vec<i32>, source: usize, dest: usize)
+    requires true
+{
+    /* <vc-proof> */
+    assume(false); // TODO: Remove this line and implement the proof
+    /* </vc-proof> */
+}
+fn main() {
+}
+
+}

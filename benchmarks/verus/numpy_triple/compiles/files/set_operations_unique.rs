@@ -1,0 +1,23 @@
+/* Find the unique elements of a vector and return them in sorted order. This function implements numpy.unique functionality for finding the unique elements of an array. It returns the sorted unique elements of an array. */
+
+use vstd::prelude::*;
+
+verus! {
+fn unique(arr: &Vec<i32>) -> (result: Vec<i32>)
+    ensures
+        /* result is sorted */
+        forall|i: int, j: int| 0 <= i < j < result.len() ==> result[i] < result[j],
+        /* every element in result exists in input array */
+        forall|i: int| 0 <= i < result.len() ==> exists|j: int| 0 <= j < arr.len() && result[i] == arr[j],
+        /* no duplicates in result */
+        forall|i: int, j: int| 0 <= i < result.len() && 0 <= j < result.len() && i != j ==> result[i] != result[j],
+        /* every element in input array appears in result */
+        forall|i: int| 0 <= i < arr.len() ==> exists|j: int| 0 <= j < result.len() && arr[i] == result[j],
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

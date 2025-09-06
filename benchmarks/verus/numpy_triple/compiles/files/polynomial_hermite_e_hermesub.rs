@@ -1,0 +1,23 @@
+/* Subtract one Hermite series from another.
+Returns the difference of two Hermite series c1 - c2.
+The sequences of coefficients are from lowest order term to highest.
+
+Specification: hermesub performs component-wise subtraction of Hermite series coefficients.
+The result has length equal to the maximum of the input lengths, with shorter arrays
+implicitly padded with zeros. This captures the mathematical property that polynomial 
+subtraction is component-wise and preserves the polynomial structure. */
+
+use vstd::prelude::*;
+
+verus! {
+fn hermesub(c1: &Vec<f32>, c2: &Vec<f32>) -> (result: Vec<f32>)
+    ensures
+        result.len() == if c1.len() >= c2.len() { c1.len() } else { c2.len() },
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

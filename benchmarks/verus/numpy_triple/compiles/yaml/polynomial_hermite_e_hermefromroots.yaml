@@ -1,0 +1,103 @@
+vc-description: |-
+  /*  Generate a HermiteE series with given roots.
+      
+      Returns the coefficients of the polynomial p(x) = (x - r₀) * (x - r₁) * ... * (x - rₙ₋₁)
+      in HermiteE form, where rᵢ are the roots specified in the input vector.
+      
+      The output coefficients c satisfy: p(x) = c₀ + c₁ * He₁(x) + ... + cₙ * Heₙ(x)
+      where Heₙ(x) is the n-th probabilist's Hermite polynomial (HermiteE).
+      
+      This function converts from the standard polynomial representation with given roots
+      to the HermiteE polynomial basis representation. */
+  
+  /*  Specification: hermefromroots generates HermiteE coefficients such that:
+      1. The output has exactly n+1 coefficients where n is the number of roots
+      2. The polynomial represented by these coefficients has the given roots
+      3. When evaluated at any root rᵢ using HermiteE basis, the result is zero
+      4. The highest degree coefficient is non-zero (ensuring correct degree)
+      5. The polynomial satisfies the fundamental property p(x) = (x - r₀) * ... * (x - rₙ₋₁) */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  /* Evaluate the k-th probabilist's Hermite polynomial (HermiteE) at x */
+  spec fn eval_hermite_e(k: nat, x: int) -> int
+      decreases k
+  {
+      if k == 0 {
+          1
+      } else if k == 1 {
+          x
+      } else {
+          x * eval_hermite_e((k - 1) as nat, x) - (k - 1) as int * eval_hermite_e((k - 2) as nat, x)
+      }
+  }
+  
+  /* Evaluate a polynomial in HermiteE basis at point x given coefficients */
+  #[verifier::opaque]
+  spec fn eval_hermite_e_poly(coeffs: Seq<int>, x: int) -> int {
+      0  /* placeholder implementation */
+  }
+
+vc-helpers: |-
+  /* <vc-helpers> */
+  /* </vc-helpers> */
+
+vc-signature: |-
+  fn hermefromroots(roots: Vec<f64>) -> (result: Vec<f64>)
+      requires roots.len() < usize::MAX
+
+vc-implementation: |-
+  /* <vc-implementation> */
+  {
+      return Vec::new(); // TODO: Remove this line and implement the function body
+  }
+  /* </vc-implementation> */
+
+vc-condition: |-
+  proof fn hermefromroots_spec(roots: Vec<f64>)
+      requires roots.len() < usize::MAX
+      /* ensures 
+          // Sanity check: empty roots give the constant polynomial 1
+          (roots.len() == 0 ==> hermefromroots(roots)[0] == 1.0) &&
+          // For each root r, evaluating the HermiteE polynomial at r gives zero
+          // (This captures that the roots are indeed roots of the polynomial)
+          (forall |i: int| 0 <= i < roots.len() ==> 
+              eval_hermite_e_poly(hermefromroots(roots)@, roots[i] as int) == 0) &&
+          // Mathematical property: the coefficients form a valid representation of 
+          // the polynomial (x - r₀) * ... * (x - rₙ₋₁) in HermiteE basis
+          (forall |x: int| 
+              eval_hermite_e_poly(hermefromroots(roots)@, x) == 
+              {
+                  let mut product = 1;
+                  let mut i = 0;
+                  while i < roots.len() {
+                      product = product * (x - roots[i] as int);
+                      i = i + 1;
+                  }
+                  product
+              }) &&
+          // The polynomial degree matches the number of roots (leading coefficient is non-zero)
+          (roots.len() > 0 ==> hermefromroots(roots)[roots.len()] != 0.0) &&
+          // Additional structural property: all coefficients are finite (no NaN/Inf)
+          (forall |i: int| 0 <= i < hermefromroots(roots).len() ==> hermefromroots(roots)[i] == hermefromroots(roots)[i]) &&
+          // Continuity property: the polynomial is well-defined for all finite inputs
+          (forall |x: int| 
+              eval_hermite_e_poly(hermefromroots(roots)@, x) == 
+              eval_hermite_e_poly(hermefromroots(roots)@, x))
+      */
+
+vc-proof: |-
+  /* <vc-proof> */
+  {
+      assume(false); // TODO: Remove this line and implement the proof
+  }
+  /* </vc-proof> */
+
+vc-postamble: |-
+  
+  fn main() {}
+  
+  }

@@ -1,0 +1,58 @@
+/* IEEE 754 floating point representation of Not a Number (NaN).
+
+NaN and NAN are aliases for nan. Please use nan instead of NAN.
+
+Specification: nan represents Not a Number with the following IEEE 754 properties:
+1. Float.isNaN returns true for NaN (primary property)
+2. Any arithmetic operation with NaN results in NaN
+3. NaN is not ordered (comparisons with any value are false except ≠)
+4. NaN is not finite
+5. Standard operations preserve NaN propagation */
+
+use vstd::prelude::*;
+
+verus! {
+/* IEEE 754 floating point representation of Not a Number (NaN) */
+spec fn is_nan(x: f64) -> bool {
+    arbitrary()
+}
+
+spec fn add_f64(x: f64, y: f64) -> f64 {
+    arbitrary()
+}
+
+spec fn sub_f64(x: f64, y: f64) -> f64 {
+    arbitrary()
+}
+
+spec fn mul_f64(x: f64, y: f64) -> f64 {
+    arbitrary()
+}
+
+spec fn div_f64(x: f64, y: f64) -> f64 {
+    arbitrary()
+}
+
+spec fn is_finite(x: f64) -> bool {
+    arbitrary()
+}
+
+fn nan() -> (result: f64)
+    ensures
+        is_nan(result),
+        forall|x: f64| is_nan(add_f64(result, x)),
+        forall|x: f64| is_nan(sub_f64(result, x)),
+        forall|x: f64| is_nan(mul_f64(result, x)),
+        forall|x: f64| x != 0.0 ==> is_nan(div_f64(result, x)),
+        !is_finite(result),
+        is_nan(mul_f64(result, 0.0)),
+        is_nan(div_f64(0.0, result)),
+        is_nan(sub_f64(result, result)),
+{
+    // impl-start
+    assume(false);
+    0.0
+    // impl-end
+}
+}
+fn main() {}

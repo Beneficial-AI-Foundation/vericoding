@@ -1,0 +1,51 @@
+/* numpy.linalg.svd: Singular Value Decomposition.
+
+Computes the singular value decomposition of a matrix, factorizing it as
+A = U @ diag(S) @ Vh, where U and Vh are unitary matrices and S is a 
+vector of singular values sorted in descending order.
+
+This specification focuses on the 2D case with full_matrices=False
+and compute_uv=True (the most common use case).
+
+The decomposition satisfies: A = U @ diag(S) @ Vh
+where U has orthonormal columns, Vh has orthonormal rows,
+and S contains non-negative singular values in descending order.
+
+Specification: numpy.linalg.svd returns matrices U, S, Vh such that:
+
+1. Matrix reconstruction: A = U @ diag(S) @ Vh
+2. U has orthonormal columns (U^T @ U = I)
+3. Vh has orthonormal rows (Vh @ Vh^T = I)  
+4. S contains non-negative singular values in descending order
+
+This captures the essential mathematical properties of SVD as implemented in NumPy.
+
+Precondition: True (SVD is defined for any real matrix)
+Postcondition: The returned decomposition satisfies all SVD properties */
+
+use vstd::prelude::*;
+
+verus! {
+fn numpy_svd(a: Vec<Vec<f64>>) -> (result: (Vec<Vec<f64>>, Vec<f64>, Vec<Vec<f64>>))
+    requires
+        a.len() > 0,
+        forall|i: int| 0 <= i < a.len() ==> #[trigger] a[i].len() == a[0].len(),
+    ensures ({
+        let m = a.len();
+        let n = a[0].len();
+        let min_mn = if m <= n { m } else { n };
+        let (u, s, vh) = result;
+        &&& u.len() == m
+        &&& s.len() == min_mn
+        &&& vh.len() == min_mn
+        &&& (forall|i: int| 0 <= i < m ==> #[trigger] u[i].len() == min_mn)
+        &&& (forall|i: int| 0 <= i < min_mn ==> #[trigger] vh[i].len() == n)
+    })
+{
+    // impl-start
+    assume(false);
+    (Vec::new(), Vec::new(), Vec::new())
+    // impl-end
+}
+}
+fn main() {}

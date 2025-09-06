@@ -1,0 +1,45 @@
+/*
+{
+  "name": "NPY_1_PI",
+  "category": "C API Mathematical constants",
+  "description": "1 divided by pi",
+  "doc": "1/π = 0.318309886183790671537767526745028724",
+}
+*/
+
+/* The mathematical constant 1/π (one divided by pi), approximately 0.31831... */
+
+/* Specification: NPY_1_PI represents the reciprocal of pi (1/π),
+   and satisfies key mathematical properties */
+use vstd::prelude::*;
+
+verus! {
+/* <vc-helpers> */
+/* </vc-helpers> */
+fn NPY_1_PI() -> f64
+/* <vc-implementation> */
+  {
+      return 0.0; // TODO: Remove this line and implement the function body
+  }
+/* </vc-implementation> */
+proof fn NPY_1_PI_spec()
+    ensures 
+      /* 1/π is approximately 0.31831... */
+      /* Basic sanity check: 1/π is between 0 and 1 */
+      /* More precise bounds for 1/π */
+      /* 2/π is approximately 0.6366... (double of 1/π) */
+      /* (1/π)² is approximately 0.10132... */
+      /* 1/(2π) is approximately 0.15915... (half of 1/π) */
+      /* Mathematical relationship: result * π ≈ 1 (within floating point precision) */
+      /* This would require having pi defined, so we check an approximation */
+      /* result * 3.14159... ≈ 1 */
+      true
+/* <vc-proof> */
+  {
+      assume(false); // TODO: Remove this line and implement the proof
+  }
+/* </vc-proof> */
+
+fn main() {}
+
+}

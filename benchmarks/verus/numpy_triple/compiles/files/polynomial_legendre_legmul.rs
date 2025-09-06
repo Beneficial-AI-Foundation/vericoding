@@ -1,0 +1,64 @@
+/* Multiply one Legendre series by another, producing coefficients in Legendre basis. 
+
+Specification: legmul produces the correct Legendre series coefficients for the product.
+
+Multiply one Legendre series by another.
+
+  Returns the product of two Legendre series `c1` * `c2`.  The arguments
+  are sequences of coefficients, from lowest order "term" to highest,
+  e.g., [1,2,3] represents the series ``P_0 + 2*P_1 + 3*P_2``.
+
+  Parameters
+  ----------
+  c1, c2 : array_like
+      1-D arrays of Legendre series coefficients ordered from low to
+      high.
+
+  Returns
+  -------
+  out : ndarray
+      Of Legendre series coefficients representing their product.
+
+  See Also
+  --------
+  legadd, legsub, legmulx, legdiv, legpow
+
+  Notes
+  -----
+  In general, the (polynomial) product of two C-series results in terms
+  that are not in the Legendre polynomial basis set.  Thus, to express
+  the product as a Legendre series, it is necessary to "reproject" the
+  product onto said basis set, which may produce "unintuitive" (but
+  correct) results; see Examples section below.
+
+  Examples
+  --------
+  >>> from numpy.polynomial import legendre as L
+  >>> c1 = (1,2,3)
+  >>> c2 = (3,2)
+  >>> L.legmul(c1,c2) # multiplication requires "reprojection"
+  array([  4.33333333,  10.4       ,  11.66666667,   3.6       ]) # may vary */
+
+use vstd::prelude::*;
+
+verus! {
+fn legmul(c1: Vec<i32>, c2: Vec<i32>) -> (result: Vec<i32>)
+    requires 
+        c1.len() > 0,
+        c2.len() > 0,
+    ensures
+        result.len() == c1.len() + c2.len() - 1,
+        /* The result represents the product of the two Legendre series
+         If c1 = [a₀, a₁, ...] represents a₀P₀ + a₁P₁ + ...
+         and c2 = [b₀, b₁, ...] represents b₀P₀ + b₁P₁ + ...
+         then result represents their product in Legendre basis */
+        /* Mathematical property: for constant series, multiplication is simple */
+        (c1.len() == 1 && c2.len() == 1) ==> result[0] == c1[0] * c2[0],
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

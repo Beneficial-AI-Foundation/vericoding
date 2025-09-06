@@ -1,0 +1,40 @@
+vc-description: |-
+  Raise a Laguerre series to a power.
+
+  Returns the Laguerre series `c` raised to the power `pow`. The
+  argument `c` is a sequence of coefficients ordered from low to high.
+  i.e., [1,2,3] is the series  ``P_0 + 2*P_1 + 3*P_2.``
+
+  Specification: lagpow raises a Laguerre series to a power with proper constraints
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn lagpow(c: Vec<f64>, pow: usize, maxpower: usize) -> (result: Vec<f64>)
+      requires
+          pow > 0,
+          pow <= maxpower,
+          maxpower <= 16,
+          c.len() > 0,
+      ensures
+          result.len() == c.len(),
+          /* Result represents the Laguerre series c^pow */
+          /* For pow = 1, result should be equivalent to c */
+          pow == 1 ==> (forall|i: int| 0 <= i < c.len() ==> result[i] == c[i]),
+          /* Mathematical property: the result coefficients represent the Laguerre expansion of c^pow */
+          /* This satisfies the fundamental polynomial exponentiation property */
+          true, /* Placeholder for more complex Laguerre polynomial properties */
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

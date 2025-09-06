@@ -1,0 +1,43 @@
+/*
+{
+  "name": "numpy.sign",
+  "description": "Returns an element-wise indication of the sign of a number",
+  "url": "https://numpy.org/doc/stable/reference/generated/numpy.sign.html",
+  "doc": "Returns an element-wise indication of the sign of a number.\n\nThe sign function returns -1 if x < 0, 0 if x==0, 1 if x > 0. nan is returned for nan inputs.",
+}
+*/
+
+/* Returns an element-wise indication of the sign of a number */
+
+/* Specification: sign returns -1 for negative numbers, 0 for zero, 1 for positive numbers */
+use vstd::prelude::*;
+
+verus! {
+// <vc-helpers>
+spec fn sign_spec_condition(x: Seq<i32>, result: Seq<i32>) -> bool {
+    forall|i: int| 0 <= i < x.len() ==> {
+        &&& (x[i] < 0 ==> result[i] == -1)
+        &&& (x[i] == 0 ==> result[i] == 0)
+        &&& (x[i] > 0 ==> result[i] == 1)
+    }
+}
+// </vc-helpers>
+fn sign(x: Vec<i32>) -> (result: Vec<i32>)
+    ensures
+        result.len() == x.len(),
+        sign_spec_condition(x@, result@),
+// <vc-implementation>
+    {
+        assume(false);
+        return Vec::new(); // TODO: Remove this line and implement the function body
+    }
+// </vc-implementation>
+proof fn sign_spec_proof(x: Vec<i32>)
+// <vc-proof>
+    {
+        assume(false); // TODO: Remove this line and implement the proof
+    }
+// </vc-proof>
+fn main() {}
+
+}

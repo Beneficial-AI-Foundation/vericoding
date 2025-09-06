@@ -1,0 +1,66 @@
+vc-description: |-
+  /* 
+  {
+    "name": "numpy.polynomial.hermite_e.hermecompanion",
+    "category": "HermiteE polynomials", 
+    "description": "Return the scaled companion matrix of c.",
+    "url": "https://numpy.org/doc/stable/reference/generated/numpy.polynomial.hermite_e.hermecompanion.html",
+    "doc": "Return the scaled companion matrix of c.\n\n    The basis polynomials are scaled so that the companion matrix is\n    symmetric when `c` is an HermiteE basis polynomial. This provides\n    better eigenvalue estimates than the unscaled case and for basis\n    polynomials the eigenvalues are guaranteed to be real if\n    `numpy.linalg.eigvalsh` is used to obtain them.\n\n    Parameters\n    ----------\n    c : array_like\n        1-D array of HermiteE series coefficients ordered from low to high\n        degree.\n\n    Returns\n    -------\n    mat : ndarray\n        Scaled companion matrix of dimensions (deg, deg).",
+  }
+  */
+  
+  /* Return the scaled companion matrix of HermiteE series coefficients.
+     The companion matrix is scaled for better eigenvalue estimates and
+     symmetry properties when used with HermiteE basis polynomials. */
+  
+  /* Specification: hermecompanion returns a scaled companion matrix with specific properties */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  /* <vc-helpers> */
+  /* </vc-helpers> */
+
+vc-signature: |-
+  fn hermecompanion(c: Vec<f64>) -> (result: Vec<Vec<f64>>)
+      requires 
+          c.len() >= 2,
+          c[c.len() - 1] != 0.0
+      ensures 
+          result.len() == c.len() - 1,
+          forall|i: int| 0 <= i < result.len() ==> #[trigger] result[i].len() == c.len() - 1
+
+vc-implementation: |-
+  /* <vc-implementation> */
+  {
+      assume(false);
+      return Vec::new(); // TODO: Remove this line and implement the function body
+  }
+  /* </vc-implementation> */
+
+vc-condition: |-
+  proof fn hermecompanion_spec(c: Vec<f64>)
+      requires 
+          c.len() >= 2,
+          c[c.len() - 1] != 0.0
+      ensures 
+          /* Matrix is symmetric (superdiagonal equals subdiagonal) */
+          /* Superdiagonal elements are sqrt(i+1) for i = 0 to n-1 */
+          /* Last column contains scaled coefficients except for the last element */
+          /* All other elements are zero (excluding superdiagonal, subdiagonal, and last column) */
+          true
+
+vc-proof: |-
+  /* <vc-proof> */
+  {
+      assume(false); // TODO: Remove this line and implement the proof
+  }
+  /* </vc-proof> */
+
+vc-postamble: |-
+  fn main() {}
+
+  }

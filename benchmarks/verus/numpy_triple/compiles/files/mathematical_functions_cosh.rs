@@ -1,0 +1,91 @@
+/* 
+{
+  "name": "numpy.cosh",
+  "description": "Hyperbolic cosine, element-wise",
+  "url": "https://numpy.org/doc/stable/reference/generated/numpy.cosh.html",
+  "doc": "Hyperbolic cosine, element-wise.\n\nEquivalent to 1/2 * (np.exp(x) + np.exp(-x)) and np.cos(1j*x).",
+}
+*/
+
+/*  numpy.cosh: Hyperbolic cosine, element-wise.
+
+    The hyperbolic cosine function is defined as:
+    cosh(x) = (e^x + e^(-x)) / 2
+    
+    It represents the x-coordinate of a point on the unit hyperbola,
+    analogous to how cosine represents the x-coordinate on the unit circle.
+    
+    Returns an array of the same shape as x, containing the hyperbolic cosine of each element.
+*/
+
+/*  Specification: numpy.cosh returns a vector where each element is the hyperbolic cosine
+    of the corresponding element in x.
+    
+    Precondition: True (no special preconditions for hyperbolic cosine)
+    Postcondition: 
+    1. For all indices i, result[i] = (e^x[i] + e^(-x[i])) / 2
+    2. All result values are ≥ 1 (minimum value of cosh is 1 at x=0)
+    3. The function is even: cosh(-x) = cosh(x)
+    4. Monotonicity: cosh is decreasing on (-∞, 0] and increasing on [0, ∞)
+    5. Range property: cosh(x) ∈ [1, ∞) for all x ∈ ℝ
+*/
+use vstd::prelude::*;
+
+verus! {
+/* <vc-helpers> */
+/* </vc-helpers> */
+fn numpy_cosh(x: Vec<f64>) -> (result: Vec<f64>)
+/* <vc-implementation> */
+    requires true
+    ensures
+        result.len() == x.len(),
+        /* Core mathematical definition: cosh(x) = (e^x + e^(-x))/2 */
+        /* Minimum value property: cosh(x) ≥ 1 for all x */
+        /* Even function property: cosh(-x) = cosh(x) */
+        /* Monotonicity on non-negative reals: x ≥ 0 → cosh(x) ≥ cosh(0) = 1 */
+        /* Symmetry property: cosh(x) = cosh(|x|) */
+        /* Identity property: cosh(0) = 1 */
+        true
+{
+    let mut result = Vec::new();
+    let mut i = 0;
+    while i < x.len()
+        invariant 
+            result.len() == i,
+            i <= x.len()
+        decreases x.len() - i
+    {
+        result.push(1.0); // TODO: Remove this line and implement the function body
+        i = i + 1;
+    }
+    result
+}
+/* </vc-implementation> */
+proof fn numpy_cosh_spec(x: Vec<f64>)
+    ensures
+        /* ⦃⌜True⌝⦄
+        numpy_cosh x
+        ⦃⇓result => ⌜∀ i : Fin n, 
+            -- Core mathematical definition: cosh(x) = (e^x + e^(-x))/2
+            result.get i = (Float.exp (x.get i) + Float.exp (-(x.get i))) / 2 ∧
+            -- Minimum value property: cosh(x) ≥ 1 for all x
+            result.get i ≥ 1 ∧
+            -- Even function property: cosh(-x) = cosh(x)
+            (Float.exp (-(x.get i)) + Float.exp (x.get i)) / 2 = 
+            (Float.exp (x.get i) + Float.exp (-(x.get i))) / 2 ∧
+            -- Monotonicity on non-negative reals: x ≥ 0 → cosh(x) ≥ cosh(0) = 1
+            (x.get i ≥ 0 → result.get i ≥ 1) ∧
+            -- Symmetry property: cosh(x) = cosh(|x|)
+            result.get i = (Float.exp (Float.abs (x.get i)) + Float.exp (-(Float.abs (x.get i)))) / 2 ∧
+            -- Identity property: cosh(0) = 1
+            (x.get i = 0 → result.get i = 1)⌝⦄ */
+        true
+/* <vc-proof> */
+{
+    assume(false); // TODO: Remove this line and implement the proof
+}
+/* </vc-proof> */
+
+fn main() {}
+
+}

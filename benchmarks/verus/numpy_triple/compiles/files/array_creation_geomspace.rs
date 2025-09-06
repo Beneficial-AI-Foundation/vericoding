@@ -1,0 +1,33 @@
+/* Return numbers spaced evenly on a log scale (a geometric progression).
+Each output sample is a constant multiple of the previous one.
+
+Specification: geomspace returns a geometric progression from start to stop.
+- The first element is always start
+- If endpoint is true and n > 1, the last element is stop
+- All elements form a geometric progression (constant ratio between consecutive elements)
+- Neither start nor stop can be zero */
+
+use vstd::prelude::*;
+
+verus! {
+spec fn geomspace_spec(n: nat, start: f64, stop: f64, endpoint: bool) -> bool {
+    n > 0 && start != 0.0 && stop != 0.0
+}
+
+fn geomspace(start: f64, stop: f64, endpoint: bool, n: usize) -> (result: Vec<f64>)
+    requires 
+        n > 0,
+        start != 0.0,
+        stop != 0.0,
+    ensures
+        result.len() == n,
+        n > 0 ==> result[0] == start,
+        endpoint && n > 1 ==> result[n - 1] == stop,
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

@@ -1,0 +1,68 @@
+vc-description: |-
+  /* 
+  {
+    "name": "numpy.linalg.cond",
+    "category": "Norms and numbers", 
+    "description": "Compute the condition number of a matrix",
+    "url": "https://numpy.org/doc/stable/reference/generated/numpy.linalg.cond.html",
+    "doc": "Compute the condition number of a matrix.\n\nThe condition number measures how sensitive the solution x is to errors in b for Ax=b.\n\nParameters:\n- x: The matrix\n- p: Order of the norm\n\nReturns:\n- c: The condition number",
+  }
+  */
+  
+  /*
+  Compute the condition number of a square matrix using the 2-norm.
+  
+  The condition number of a matrix A is defined as ||A|| * ||A^(-1)||,
+  where ||.|| is the matrix norm. For the 2-norm, this equals the ratio
+  of the largest singular value to the smallest singular value.
+  
+  The condition number measures how sensitive the solution x is to errors 
+  in b for the linear system Ax = b. A condition number of 1 indicates
+  a perfectly conditioned matrix, while large condition numbers indicate
+  ill-conditioned matrices.
+  */
+  
+  /*
+  Specification: The condition number is always non-negative and is at least 1 
+  for any invertible matrix. This captures the fundamental mathematical 
+  properties of condition numbers in linear algebra.
+  */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+  /* <vc-helpers> */
+  /* </vc-helpers> */
+
+vc-signature: |-
+  spec fn condition_number(x: Vec<Vec<i32>>, n: usize) -> i32 {
+
+vc-implementation: |-
+  /* <vc-implementation> */
+      1 // TODO: Remove this line and implement the function body
+  /* </vc-implementation> */
+
+vc-condition: |-
+  }
+  
+  proof fn condition_number_spec(x: Vec<Vec<i32>>, n: usize)
+      requires n > 0,
+               x.len() == n, 
+               forall|i: int| 0 <= i < n ==> x[i].len() == n,
+      ensures condition_number(x, n) >= 0 && condition_number(x, n) >= 1
+  {
+
+vc-proof: |-
+  /* <vc-proof> */
+      assume(false); // TODO: Remove this line and implement the proof
+  /* </vc-proof> */
+
+vc-postamble: |-
+  }
+  
+  fn main() {}
+  
+  }

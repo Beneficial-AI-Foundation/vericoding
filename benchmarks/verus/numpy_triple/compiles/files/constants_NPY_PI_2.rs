@@ -1,0 +1,45 @@
+/* 
+{
+  "name": "NPY_PI_2",
+  "category": "C API Mathematical constants",
+  "description": "Pi divided by 2",
+  "doc": "π/2 = 1.570796326794896619231321691639751442",
+}
+*/
+
+/* The mathematical constant π/2 (pi divided by 2), approximately 1.5708... */
+
+/* Specification: NPY_PI_2 represents π/2, which is half of pi and corresponds to 90 degrees
+   in radians. It satisfies key mathematical properties related to trigonometry and geometry */
+use vstd::prelude::*;
+
+verus! {
+// <vc-helpers>
+// </vc-helpers>
+fn NPY_PI_2() -> (result: f64)
+// <vc-implementation>
+{
+    return 1.5707963267948966f64; // TODO: Remove this line and implement the function body
+}
+// </vc-implementation>
+proof fn NPY_PI_2_spec()
+    /* 
+    The original Lean specification with floating-point constraints cannot be directly
+    translated to Verus due to limitations in floating-point reasoning. The constraints were:
+    - π/2 is approximately 1.5708...
+    - Basic sanity check: π/2 is between 1 and 2
+    - π/2 squared is approximately 2.4674...
+    - 2*(π/2) should be approximately π (3.14159...)
+    - (π/2)/2 = π/4 is approximately 0.7854...
+    - 3*(π/2) = 3π/2 is approximately 4.7124... (270 degrees)
+    - 4*(π/2) = 2π is approximately 6.2832... (full circle)
+    */
+// <vc-proof>
+{
+    assume(false); // TODO: Remove this line and implement the proof
+}
+// </vc-proof>
+
+fn main() {}
+
+}

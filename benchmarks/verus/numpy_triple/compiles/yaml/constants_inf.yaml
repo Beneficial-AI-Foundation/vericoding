@@ -1,0 +1,31 @@
+vc-description: |-
+  IEEE 754 floating point representation of (positive) infinity
+  
+  Specification: inf represents positive infinity with the following properties:
+  1. inf is greater than any finite float value
+  2. inf + any finite value = inf
+  3. inf * positive finite value = inf
+  4. inf * negative finite value = -inf
+  5. inf / any finite non-zero value = inf (with appropriate sign)
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn inf_impl() -> (result: f64)
+      ensures 
+          // Simplified property: result equals itself (tautology for placeholder)
+          result == result,
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0.0
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

@@ -1,0 +1,115 @@
+/*
+{
+  "name": "numpy.set_printoptions",
+  "category": "String formatting",
+  "description": "Set printing options",
+  "url": "https://numpy.org/doc/stable/reference/generated/numpy.set_printoptions.html",
+  "doc": "Set printing options",
+}
+*/
+
+/* numpy.set_printoptions: Set printing options for NumPy arrays
+
+    Sets the global printing options that control how floating point numbers,
+    arrays and other NumPy objects are displayed. This function modifies the
+    global state of NumPy's print formatting system.
+    
+    All parameters are optional and only modify the corresponding option if
+    provided. Options not specified retain their current values.
+*/
+
+/* Specification: set_printoptions correctly updates the global print options
+    according to the provided parameters while validating input constraints.
+    
+    Precondition: All optional parameters must satisfy their validation constraints
+    Postcondition: The global print state is updated with the provided options
+*/
+use vstd::prelude::*;
+
+verus! {
+
+/* Structure representing NumPy print options */
+pub struct PrintOptions {
+    /* Number of digits of precision for floating point output */
+    pub precision: nat,
+    /* Total number of array elements which trigger summarization */
+    pub threshold: nat,
+    /* Number of array items in summary at beginning and end */
+    pub edgeitems: nat,
+    /* Number of characters per line for line breaks */
+    pub linewidth: nat,
+    /* Whether to suppress small floating point values */
+    pub suppress: bool,
+    /* String representation of floating point not-a-number */
+    pub nanstr: String,
+    /* String representation of floating point infinity */
+    pub infstr: String,
+    /* Controls printing of the sign of floating-point types */
+    pub sign: String,
+    /* Controls interpretation of precision option */
+    pub floatmode: String,
+    /* Legacy printing mode setting */
+    pub legacy: Option<String>,
+}
+
+pub open spec fn valid_sign(s: &String) -> bool {
+    s@ =~= seq!['-'] || s@ =~= seq!['+'] || s@ =~= seq![' ']
+}
+
+pub open spec fn valid_floatmode(f: &String) -> bool {
+    f@ =~= seq!['f', 'i', 'x', 'e', 'd'] || 
+    f@ =~= seq!['u', 'n', 'i', 'q', 'u', 'e'] || 
+    f@ =~= seq!['m', 'a', 'x', 'p', 'r', 'e', 'c'] || 
+    f@ =~= seq!['m', 'a', 'x', 'p', 'r', 'e', 'c', '_', 'e', 'q', 'u', 'a', 'l']
+}
+
+pub open spec fn valid_legacy(l: &String) -> bool {
+    l@ =~= seq!['1', '.', '1', '3'] ||
+    l@ =~= seq!['1', '.', '2', '1'] ||
+    l@ =~= seq!['1', '.', '2', '5'] ||
+    l@ =~= seq!['2', '.', '1'] ||
+    l@ =~= seq!['2', '.', '2']
+}
+/* <vc-helpers> */
+/* </vc-helpers> */
+pub fn set_printoptions(
+    precision: Option<nat>,
+    threshold: Option<nat>,
+    edgeitems: Option<nat>,
+    linewidth: Option<nat>,
+    suppress: Option<bool>,
+    nanstr: Option<String>,
+    infstr: Option<String>,
+    sign: Option<String>,
+    floatmode: Option<String>,
+    legacy: Option<String>
+) -> (result: bool)
+    requires
+        forall |p: nat| precision == Some(p) ==> p > 0,
+        forall |t: nat| threshold == Some(t) ==> t > 0,
+        forall |e: nat| edgeitems == Some(e) ==> e > 0,
+        forall |l: nat| linewidth == Some(l) ==> l > 0,
+        forall |n: String| nanstr == Some(n) ==> n@.len() > 0,
+        forall |i: String| infstr == Some(i) ==> i@.len() > 0,
+        forall |s: String| sign == Some(s) ==> valid_sign(&s),
+        forall |f: String| floatmode == Some(f) ==> valid_floatmode(&f),
+        forall |l: String| legacy == Some(l) ==> valid_legacy(&l)
+    ensures
+        result == true
+{
+/* <vc-implementation> */
+    return true; // TODO: Remove this line and implement the function body
+/* </vc-implementation> */
+}
+proof fn set_printoptions_spec()
+    ensures
+        true
+{
+/* <vc-proof> */
+    assume(false); // TODO: Remove this line and implement the proof
+/* </vc-proof> */
+}
+
+fn main() {}
+
+}

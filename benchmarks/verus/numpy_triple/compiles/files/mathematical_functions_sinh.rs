@@ -1,0 +1,70 @@
+/*
+{
+  "name": "numpy.sinh",
+  "description": "Hyperbolic sine, element-wise",
+  "url": "https://numpy.org/doc/stable/reference/generated/numpy.sinh.html",
+  "doc": "Hyperbolic sine, element-wise.\n\nEquivalent to 1/2 * (np.exp(x) - np.exp(-x)) or -1j * np.sin(1j*x).",
+}
+*/
+
+/*  numpy.sinh: Hyperbolic sine, element-wise.
+
+    The hyperbolic sine function is defined as:
+    sinh(x) = (e^x - e^(-x)) / 2
+    
+    It represents the y-coordinate of a point on the unit hyperbola,
+    analogous to how sine represents the y-coordinate on the unit circle.
+    Unlike the regular sine function, sinh is unbounded and monotonic.
+    
+    Returns an array of the same shape as x, containing the hyperbolic sine of each element.
+*/
+
+/*  Specification: numpy.sinh returns a vector where each element is the hyperbolic sine
+    of the corresponding element in x.
+    
+    Precondition: True (no special preconditions for hyperbolic sine)
+    Postcondition: 
+    1. For all indices i, result[i] = (e^x[i] - e^(-x[i])) / 2
+    2. The function is odd: sinh(-x) = -sinh(x)
+    3. Monotonicity: sinh is strictly increasing on all of ℝ
+    4. Zero property: sinh(0) = 0
+    5. Range property: sinh(x) ∈ (-∞, ∞) for all x ∈ ℝ
+    6. Sign property: sinh(x) has the same sign as x
+    7. Symmetry property: sinh(-x) = -sinh(x)
+*/
+use vstd::prelude::*;
+
+verus! {
+// <vc-helpers>
+// </vc-helpers>
+fn sinh(x: Vec<f64>) -> (result: Vec<f64>)
+    requires true
+    ensures
+        result.len() == x.len()
+// <vc-implementation>
+{
+    let mut result = Vec::new();
+    let mut i = 0;
+    while i < x.len()
+        invariant 
+            result.len() == i,
+            i <= x.len()
+        decreases x.len() - i
+    {
+        result.push(0.0); // TODO: compute actual sinh value
+        i = i + 1;
+    }
+    assert(result.len() == x.len());
+    result
+}
+// </vc-implementation>
+proof fn sinh_spec(x: Vec<f64>)
+    ensures true
+// <vc-proof>
+{
+    assume(false); // TODO: Remove this line and implement the proof
+}
+// </vc-proof>
+fn main() {}
+
+}

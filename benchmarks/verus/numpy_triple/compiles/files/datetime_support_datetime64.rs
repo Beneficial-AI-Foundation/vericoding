@@ -1,0 +1,66 @@
+/* Create a datetime64 object representing an offset from 1970-01-01T00:00:00
+
+This function creates a datetime64 object from an integer offset and time unit. The datetime64 object represents a specific moment in time as an offset from the Unix epoch (1970-01-01T00:00:00 UTC) in the specified time unit. The function preserves the input parameters and ensures the result is always in UTC timezone. */
+
+use vstd::prelude::*;
+
+verus! {
+
+/* Time unit for datetime64 */
+#[derive(Copy, Clone, PartialEq, Eq)]
+pub enum TimeUnit {
+    /* Years unit ('Y') */
+    Years,
+    /* Days unit ('D') */
+    Days,
+    /* Hours unit ('h') */
+    Hours,
+    /* Minutes unit ('m') */
+    Minutes,
+    /* Seconds unit ('s') */
+    Seconds,
+    /* Milliseconds unit ('ms') */
+    Milliseconds,
+    /* Microseconds unit ('us') */
+    Microseconds,
+    /* Nanoseconds unit ('ns') */
+    Nanoseconds,
+}
+
+/* DateTime64 structure representing offset from Unix epoch */
+pub struct DateTime64 {
+    /* Offset value from 1970-01-01T00:00:00 */
+    pub offset: i32,
+    /* Time unit of the offset */
+    pub unit: TimeUnit,
+    /* Always UTC with +0000 offset */
+    pub is_utc: bool,
+}
+fn datetime64(offset: i32, unit: TimeUnit) -> (result: DateTime64)
+    ensures
+        result.offset == offset,
+        result.unit == unit,
+        result.is_utc == true,
+        /* Unit-specific validity constraints based on NumPy datetime64 limits */
+        match unit {
+            TimeUnit::Years => result.offset + 1970 >= 1 && result.offset + 1970 <= 9999,
+            TimeUnit::Days => result.offset >= -2147483648 && result.offset <= 2147483647,
+            TimeUnit::Hours => result.offset >= -2147483648 && result.offset <= 2147483647,
+            TimeUnit::Minutes => result.offset >= -2147483648 && result.offset <= 2147483647,
+            TimeUnit::Seconds => result.offset >= -2147483648 && result.offset <= 2147483647,
+            TimeUnit::Milliseconds => true,
+            TimeUnit::Microseconds => true,
+            TimeUnit::Nanoseconds => true,
+        },
+{
+    // impl-start
+    assume(false);
+    DateTime64 {
+        offset: 0,
+        unit: TimeUnit::Years,
+        is_utc: true,
+    }
+    // impl-end
+}
+}
+fn main() {}

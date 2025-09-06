@@ -1,0 +1,46 @@
+Good! Now let me create the complete YAML translation:
+
+vc-description: |-
+  Computes the bi-dimensional histogram of two data samples with equal number of bins.
+
+  Specification: histogram2d computes a 2D histogram from two equal-length vectors.
+  Mathematical properties:
+  1. Input vectors must have the same length (enforced by type system)
+  2. The histogram matrix has dimensions (nbins, nbins) where nbins = bins
+  3. Each histogram bin counts the number of points falling within its boundaries
+  4. The bin edges define the boundaries for both x and y dimensions
+  5. The total count equals the input vector length
+  6. All histogram values are non-negative
+  7. Bin edges are monotonically increasing
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn histogram2d(x: &Vec<f64>, y: &Vec<f64>, bins: usize) -> (result: (Vec<Vec<usize>>, Vec<f64>, Vec<f64>))
+      requires 
+          bins > 0,
+          x.len() == y.len(),
+      ensures
+          result.0.len() == bins,
+          forall|i: int| 0 <= i < bins ==> result.0[i].len() == bins,
+          result.1.len() == bins + 1,
+          result.2.len() == bins + 1,
+          forall|i: int, j: int| 0 <= i < bins && 0 <= j < bins ==> result.0[i][j] <= x.len(),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      (Vec::new(), Vec::new(), Vec::new())
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

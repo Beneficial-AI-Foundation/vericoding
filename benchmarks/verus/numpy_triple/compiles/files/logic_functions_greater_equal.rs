@@ -1,0 +1,48 @@
+/* numpy.greater_equal: Return the truth value of (x1 >= x2) element-wise.
+
+Returns a boolean vector where each element indicates whether the
+corresponding element in x1 is greater than or equal to the corresponding 
+element in x2.
+
+This is equivalent to x1 >= x2 in terms of array broadcasting.
+
+Specification: numpy.greater_equal returns a boolean vector where each element
+is true if and only if the corresponding element in x1 is greater than or equal
+to the corresponding element in x2.
+
+Precondition: True (no special preconditions for comparison)
+Postcondition: For all indices i, result[i] = true ↔ x1[i] >= x2[i]
+
+Additional properties:
+- The result is the element-wise negation of less(x1, x2)
+- Reflexivity: greater_equal(x, x) returns all true
+- Antisymmetry: If greater_equal(x1, x2)[i] = true and greater_equal(x2, x1)[i] = true,
+                then x1[i] = x2[i]
+- Transitivity: If greater_equal(x1, x2)[i] = true and greater_equal(x2, x3)[i] = true,
+                then greater_equal(x1, x3)[i] = true
+- For NaN values: comparison with NaN always returns false */
+
+use vstd::prelude::*;
+
+verus! {
+spec fn ge_f32(a: f32, b: f32) -> bool;
+fn numpy_greater_equal(x1: &Vec<f32>, x2: &Vec<f32>) -> (result: Vec<bool>)
+    requires x1.len() == x2.len(),
+    ensures
+        result.len() == x1.len(),
+        forall|i: int| 0 <= i < result.len() ==> (result[i] == true <==> ge_f32(x1[i as int], x2[i as int])),
+        /* Reflexivity: comparing vector with itself yields all true */
+        (x1@ == x2@) ==> forall|i: int| 0 <= i < result.len() ==> result[i] == true,
+        /* Antisymmetry with equality */
+        forall|i: int| 0 <= i < result.len() ==>
+            (result[i] == true && ge_f32(x2[i as int], x1[i as int])) ==> x1[i as int] == x2[i as int],
+        /* Boolean result: each element is either true or false */
+        forall|i: int| 0 <= i < result.len() ==> (result[i] == true || result[i] == false),
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

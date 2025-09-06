@@ -1,0 +1,45 @@
+/* Construct an array from an index array and a set of arrays to choose from.
+Given an index vector 'indices' and a vector of choice vectors 'choices',
+constructs a result vector where each element is selected from the corresponding
+choice vector based on the index value at that position.
+
+For each position i in the result, result[i] = choices[indices[i]][i]
+
+This is a simplified version focusing on the core functionality with 'raise' mode,
+where all indices must be valid (in range [0, num_choices-1]).
+
+Specification: choose constructs an array by selecting elements from choice arrays
+based on index values. Each position in the result is filled by selecting from
+the corresponding choice array at that position using the index value.
+
+Mathematical properties:
+1. The result has the same length as the index array
+2. For each position i, result[i] = choices[indices[i]][i]
+3. All indices must be valid (enforced by bounds checking)
+
+The function essentially implements: result[i] = choices[indices.get i].get i
+
+This captures the core behavior of numpy.choose in 'raise' mode where indices
+must be in valid range. */
+
+use vstd::prelude::*;
+
+verus! {
+fn choose(indices: &Vec<usize>, choices: &Vec<Vec<f64>>, num_choices: usize) -> (result: Vec<f64>)
+    requires 
+        indices.len() > 0,
+        choices.len() == num_choices,
+        forall|i: int| 0 <= i < indices.len() ==> indices[i] < num_choices,
+        forall|i: int| 0 <= i < choices.len() ==> choices[i].len() == indices.len(),
+    ensures
+        result.len() == indices.len(),
+        forall|i: int| 0 <= i < indices.len() ==> 
+            result[i] == choices[indices[i] as int][i],
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}
