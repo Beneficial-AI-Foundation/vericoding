@@ -117,22 +117,49 @@ async def process_item(
     # Exponential backoff retry logic
     for attempt in range(max_retries + 1):
         try:
-            verus_code, num_iterations = await translate_code_to_verus(
-                source_code, source_language, is_yaml
-            )
+            (
+                verus_code,
+                num_iterations,
+                rust_for_verification,
+            ) = await translate_code_to_verus(source_code, source_language, is_yaml)
+
+            # Save the main output (YAML for YAML files, Rust for regular files)
             verus_output_path = artifact_path / output_filename
             with open(verus_output_path, "w") as verus_file:
                 verus_file.write(verus_code)
             logfire.info(f"Generated Verus code saved to: {verus_output_path}")
+
+            # For YAML files, also save the Rust code in the files folder for verification
+            if is_yaml:
+                # Create the files folder equivalent path
+                files_path = derive_output_path(
+                    benchmark_path, benchmark_name, is_yaml=False
+                )
+                rust_output_path = (
+                    files_path
+                    / relative_path.parent
+                    / Path(output_filename).with_suffix(".rs").name
+                )
+                rust_output_path.parent.mkdir(parents=True, exist_ok=True)
+
+                with open(rust_output_path, "w") as rust_file:
+                    rust_file.write(rust_for_verification)
+                logfire.info(f"Generated Rust code saved to: {rust_output_path}")
+
             logfire.info(f"Translation took {num_iterations} iterations")
 
-            # Use async verification
+            # Do a final verification to get the verification status for reporting
+            # (the agent already did verification during iterations, but we need the final status)
             (
                 verification_success,
                 verification_output,
                 verification_error,
             ) = await verify_verus_code(
-                verus_code, is_yaml, output_filename, benchmark_name, benchmark_path
+                rust_for_verification,
+                is_yaml,
+                output_filename,
+                benchmark_name,
+                benchmark_path,
             )
 
             # Debug logging for verification results
