@@ -1,0 +1,63 @@
+vc-description: |-
+  numpy.rot90: Rotate an array by 90 degrees in the plane specified by axes.
+      
+  For a 2D array, this function rotates the array counterclockwise by 90 degrees
+  when k=1. The rotation transforms element at position (i,j) to position 
+  (j, n-1-i) for a square matrix of size n×n. Multiple rotations can be achieved 
+  by setting k to the desired number of 90-degree rotations.
+      
+  This specification focuses on square 2D arrays for simplicity.
+  
+  Specification: rot90 rotates a square 2D matrix by 90 degrees counterclockwise k times.
+      
+  The specification handles k modulo 4 since four 90-degree rotations return
+  to the original orientation:
+  - k ≡ 0 (mod 4): No rotation (identity)
+  - k ≡ 1 (mod 4): 90° counterclockwise rotation
+  - k ≡ 2 (mod 4): 180° rotation  
+  - k ≡ 3 (mod 4): 270° counterclockwise (= 90° clockwise)
+      
+  Mathematical properties:
+  1. rot90 is a group action: rot90(m, k1 + k2) = rot90(rot90(m, k1), k2)
+  2. rot90(m, 4) = m (period 4)
+  3. rot90(m, -k) = rot90(m, 4-k) (inverse rotation)
+      
+  For a 90° counterclockwise rotation, the transformation is:
+  - Element at position (i,j) moves to position (j, n-1-i)
+  - This preserves distances and angles (isometry)
+      
+  Sanity checks:
+  - Corner elements rotate correctly: (0,0) → (0,n-1) → (n-1,n-1) → (n-1,0) → (0,0)
+  - Center element of odd-sized matrix stays fixed for k=2
+      
+  Precondition: Matrix is non-empty (n > 0)
+  Postcondition: Elements are repositioned according to the rotation formula
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn rot90(m: Vec<Vec<f32>>, k: i32) -> (result: Vec<Vec<f32>>)
+      requires
+          m.len() > 0,
+          forall|i: int| 0 <= i < m.len() ==> m[i].len() == m.len(),
+      ensures
+          result.len() == m.len(),
+          forall|i: int| 0 <= i < result.len() ==> result[i].len() == m.len()
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

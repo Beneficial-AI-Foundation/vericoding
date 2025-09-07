@@ -1,0 +1,58 @@
+vc-description: |-
+  numpy.arctanh: Inverse hyperbolic tangent element-wise.
+  
+  Computes the inverse hyperbolic tangent of each element in the input array.
+  The inverse hyperbolic tangent is defined for values in the open interval (-1, 1).
+  
+  For a real number x with |x| < 1, arctanh(x) is the value y such that tanh(y) = x.
+  Mathematically: arctanh(x) = 0.5 * ln((1 + x) / (1 - x))
+  
+  Returns an array of the same shape as x, containing the inverse hyperbolic tangent 
+  of each element.
+
+  Specification: numpy.arctanh returns a vector where each element is the inverse
+  hyperbolic tangent of the corresponding element in x.
+  
+  Precondition: All elements must be in the open interval (-1, 1) for real-valued results
+  Postcondition: For all indices i, result[i] = Float.atanh x[i]
+  
+  Mathematical properties:
+  - arctanh(0) = 0 (identity property)
+  - arctanh is an odd function: arctanh(-x) = -arctanh(x)
+  - For |x| < 1: arctanh(x) = 0.5 * ln((1 + x) / (1 - x))
+  - arctanh is strictly increasing on (-1, 1)
+  - Domain preservation: all results are finite real numbers
+  - Range property: arctanh maps (-1, 1) to (-∞, ∞)
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn numpy_arctanh(x: Vec<f64>) -> (result: Vec<f64>)
+      requires
+          x.len() > 0,
+          forall|i: int| 0 <= i < x.len() ==> -1.0 < x[i] < 1.0,
+      ensures
+          result.len() == x.len(),
+          forall|i: int| 0 <= i < x.len() ==> result[i] == x[i].atanh(),
+          forall|i: int| 0 <= i < x.len() ==> x[i] == 0.0 ==> result[i] == 0.0,
+          forall|i: int, j: int| 0 <= i < x.len() && 0 <= j < x.len() && x[j] == -x[i] ==> result[j] == -result[i],
+          forall|i: int, j: int| 0 <= i < x.len() && 0 <= j < x.len() && x[i] < x[j] ==> result[i] < result[j],
+          forall|i: int| 0 <= i < x.len() ==> !result[i].is_nan() && !result[i].is_infinite(),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

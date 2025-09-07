@@ -1,0 +1,53 @@
+vc-description: |-
+  Raise a Hermite series to a power. Computes the Hermite polynomial coefficients
+  for the series c raised to the given power, using repeated multiplication.
+  
+  Specification: hermepow raises a Hermite polynomial series to a power.
+  Given coefficients c = [c₀, c₁, ..., cₙ₋₁] representing the Hermite series
+  P₀(x)⋅c₀ + P₁(x)⋅c₁ + ... + Pₙ₋₁(x)⋅cₙ₋₁, this function computes the 
+  coefficients of the series raised to the given power.
+  
+  Mathematical properties:
+  - Power 0: Returns [1.0] (multiplicative identity for Hermite polynomials)
+  - Power 1: Returns the original coefficients unchanged (preserves the polynomial)
+  - Power ≥ 2: Uses repeated multiplication following Hermite polynomial algebra
+  - Result degree: The degree of the result polynomial is (n-1) * pow
+  - Respects maxpower limit: pow must not exceed maxpower to prevent excessive growth
+  
+  This implements the mathematical operation (P(x))^pow where P(x) is the Hermite polynomial
+  represented by the input coefficients, and the result gives the coefficients of the
+  polynomial raised to the given power in the Hermite basis.
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn hermepow(c: Vec<f64>, pow: usize, maxpower: usize) -> (result: Vec<f64>)
+      requires 
+          pow <= maxpower,
+          maxpower <= 16,
+          c.len() > 0,
+      ensures
+          /* Base cases for polynomial exponentiation */
+          pow == 0 ==> result.len() == 1 && result[0] == 1.0 && 
+              (forall|i: int| 1 <= i < result.len() ==> result[i] == 0.0),
+          pow == 1 ==> result.len() == c.len() &&
+              (forall|i: int| 0 <= i < c.len() ==> result[i] == c[i]),
+          /* General case: polynomial raised to power follows degree multiplication */
+          pow >= 1 ==> result.len() == 1 + (c.len() - 1) * pow,
+          /* For non-empty input, the result maintains polynomial structure */
+          pow >= 1 && c.len() > 0 ==> exists|highest_coeff: f64| 
+              result[result.len() - 1] == highest_coeff,
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

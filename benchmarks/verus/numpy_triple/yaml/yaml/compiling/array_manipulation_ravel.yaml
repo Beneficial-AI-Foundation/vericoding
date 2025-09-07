@@ -1,0 +1,39 @@
+vc-description: |-
+  numpy.ravel: Return a contiguous flattened array.
+
+  For 1D arrays, ravel returns the input array unchanged since it's already
+  flat. This reflects numpy's behavior where raveling a 1D array has no effect.
+
+  For multi-dimensional arrays (not covered here), ravel would flatten them
+  into a 1D array following the specified order ('C' for row-major, 'F' for
+  column-major, etc.).
+
+  Specification: numpy.ravel returns the input vector unchanged for 1D arrays.
+
+  Precondition: True (no special preconditions for 1D ravel)
+  Postcondition: The result is identical to the input vector, maintaining
+                 all elements in their original order
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn ravel(a: Vec<f32>) -> (result: Vec<f32>)
+      ensures result@ == a@
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

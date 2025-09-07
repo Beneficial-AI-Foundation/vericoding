@@ -1,0 +1,28 @@
+vc-description: |-
+  Returns the number of elements in a vector
+  
+  Specification: size returns the length of the vector, which is its type parameter n
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn size(a: &Vec<f64>) -> (result: usize)
+      ensures result == a.len()
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

@@ -1,0 +1,38 @@
+/* Evaluate a 2-D polynomial on the Cartesian product of x and y.
+
+Specification: polygrid2d evaluates a 2-D polynomial on the Cartesian product of x and y.
+The result is a grid where result[i][j] = p(x[i], y[j]) for the polynomial defined by 
+coefficients c, where p(a,b) = sum_{i,j} c[i][j] * a^i * b^j. */
+
+use vstd::prelude::*;
+
+verus! {
+spec fn power(base: f32, exp: nat) -> f32 
+    decreases exp
+{
+    if exp == 0 {
+        1.0f32
+    } else {
+        (base as real * power(base, (exp - 1) as nat) as real) as f32
+    }
+}
+
+fn polygrid2d(x: Vec<f32>, y: Vec<f32>, c: Vec<Vec<f32>>) -> (result: Vec<Vec<f32>>)
+    requires 
+        x.len() > 0,
+        y.len() > 0,
+        c.len() > 0,
+        forall|i: int| 0 <= i < c.len() ==> c[i].len() > 0,
+    ensures
+        result.len() == x.len(),
+        forall|i: int| 0 <= i < result.len() ==> result[i].len() == y.len(),
+        forall|i: int, j: int| 0 <= i < x.len() && 0 <= j < y.len() ==>
+            exists|val: f32| result[i][j] == val
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

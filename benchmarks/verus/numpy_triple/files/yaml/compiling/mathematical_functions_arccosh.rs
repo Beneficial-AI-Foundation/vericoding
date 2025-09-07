@@ -1,0 +1,31 @@
+/* Inverse hyperbolic cosine, element-wise. 
+Returns the inverse hyperbolic cosine of each element in the input vector.
+The inverse hyperbolic cosine is defined as: arccosh(x) = log(x + sqrt(x² - 1)) for x ≥ 1
+
+Specification: arccosh computes the inverse hyperbolic cosine element-wise.
+
+Mathematical properties:
+1. Domain constraint: All input values must be ≥ 1
+2. Range: All output values are non-negative (arccosh(x) ≥ 0)
+3. Special value: arccosh(1) = 0
+4. The function is strictly increasing: x₁ < x₂ implies arccosh(x₁) < arccosh(x₂)
+5. Mathematical definition: arccosh(x) = log(x + sqrt(x² - 1))
+
+The inverse hyperbolic cosine function reverses the action of cosh on [0, ∞),
+where cosh(y) = (e^y + e^(-y))/2. These properties ensure correctness. */
+
+use vstd::prelude::*;
+
+verus! {
+fn arccosh(x: Vec<f32>) -> (result: Vec<f32>)
+    requires 
+        x.len() > 0,
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+
+fn main() {}

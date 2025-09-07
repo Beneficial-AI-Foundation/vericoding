@@ -1,0 +1,36 @@
+vc-description: |-
+  Return a contiguous array (ndim >= 1) in memory (C order).
+  This function ensures the input array is contiguous in C order and guarantees
+  minimum dimensionality of 1. For non-empty input, preserves all elements.
+  
+  Specification: ascontiguousarray returns a contiguous array with same content,
+  ensuring minimum dimensionality of 1. For non-empty arrays, elements are preserved
+  exactly. For empty arrays, returns a 1-dimensional array with 1 element.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn ascontiguousarray(a: Vec<f32>) -> (result: Vec<f32>)
+      ensures
+          result.len() >= 1,
+          a.len() > 0 ==> result.len() == a.len(),
+          a.len() == 0 ==> result.len() == 1,
+          a.len() > 0 ==> forall|i: int| 0 <= i < a.len() ==> exists|j: int| 0 <= j < result.len() && result[j] == a[i],
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

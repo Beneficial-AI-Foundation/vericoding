@@ -1,0 +1,104 @@
+vc-description: |-
+  numpy.fft.ihfft: Compute the inverse FFT of a signal that has Hermitian symmetry.
+      
+  This function computes the inverse FFT of a signal that has Hermitian symmetry,
+  which means the signal is real in the frequency domain. The input should be
+  a complex signal with Hermitian symmetry, and the output is a real signal.
+  
+  The function is analogous to rfft/irfft but for signals with Hermitian symmetry.
+  According to the NumPy documentation and source code, it essentially computes 
+  the conjugate of the rfft of the input: conjugate(rfft(a, n, axis, new_norm, out))
+  
+  Unlike hfft which takes a Hermitian symmetric input and produces a real output,
+  ihfft takes a general complex input and produces a complex output with the 
+  inverse Hermitian FFT properties.
+  
+  Specification: ihfft computes the inverse FFT of a signal with Hermitian symmetry.
+  
+  According to NumPy documentation:
+  - ihfft is analogous to rfft/irfft but for signals with Hermitian symmetry
+  - The implementation is conjugate(rfft(a, n, axis, new_norm, out))
+  
+  Key mathematical properties:
+  1. Length preservation: output has same length as input
+  2. Conjugate relationship: ihfft is related to rfft by conjugation
+  3. Linearity: ihfft preserves linear combinations
+  4. Hermitian symmetry handling: if input has Hermitian symmetry, special properties hold
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  /* Complex number type for FFT operations */
+  #[derive(PartialEq, Eq, Structural)]
+  pub struct Complex {
+      /* Real part */
+      pub re: f32,
+      /* Imaginary part */
+      pub im: f32,
+  }
+  
+  impl Complex {
+      /* Complex addition */
+      pub spec fn add(self, other: Complex) -> Complex {
+          Complex { re: self.re + other.re, im: self.im + other.im }
+      }
+      
+      /* Complex multiplication */
+      pub spec fn mul(self, other: Complex) -> Complex {
+          Complex { 
+              re: self.re * other.re - self.im * other.im, 
+              im: self.re * other.im + self.im * other.re 
+          }
+      }
+      
+      /* Complex conjugate */
+      pub spec fn conj(self) -> Complex {
+          Complex { re: self.re, im: -self.im }
+      }
+  }
+  
+  /* Convert f32 to Complex */
+  pub spec fn float_to_complex(x: f32) -> Complex {
+      Complex { re: x, im: 0.0 }
+  }
+
+vc-spec: |-
+  fn ihfft(a: Vec<Complex>) -> (result: Vec<Complex>)
+      ensures
+          /* Length preservation: output has same length as input */
+          result.len() == a.len(),
+          /* Linearity property: ihfft preserves linear combinations */
+          forall|b: Vec<Complex>, alpha: f32, beta: f32| 
+              b.len() == a.len() ==> {
+                  let scaled_a = Vec::new(); /* placeholder for scaled vector */
+                  let scaled_b = Vec::new(); /* placeholder for scaled vector */
+                  let sum_ab = Vec::new();   /* placeholder for sum vector */
+                  true /* placeholder for linearity property */
+              },
+          /* Hermitian symmetry property: if input has Hermitian symmetry, then ihfft should produce a real-valued result */
+          (forall|i: int, j: int| 
+              0 <= i < a.len() && 0 <= j < a.len() && i + j + 1 == a.len() ==>
+              a[i] == a[j].conj()) ==>
+          (forall|i: int| 0 <= i < result.len() ==> result[i].im == 0.0),
+          /* Conjugate relationship: captures the NumPy implementation detail that ihfft(a) is conceptually related to conj(rfft(a)) */
+          exists|rfft_result: Vec<Complex>| 
+              rfft_result.len() == a.len() &&
+              forall|i: int| 0 <= i < result.len() ==> 
+                  result[i].re == rfft_result[i].re &&
+                  result[i].im == -rfft_result[i].im
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

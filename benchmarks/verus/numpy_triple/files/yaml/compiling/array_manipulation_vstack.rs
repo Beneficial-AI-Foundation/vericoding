@@ -1,0 +1,32 @@
+/* Stack two vectors vertically to create a 2D matrix.
+For 1D vectors, this treats them as row vectors and stacks them vertically.
+This is a simplified version focusing on the common case of stacking two 1D vectors.
+
+Specification: vstack stacks two vectors vertically, creating a 2x n matrix
+where the first row is vector a and the second row is vector b.
+
+Mathematical properties:
+1. The result has shape (2, n) where n is the length of input vectors
+2. The first row of the result equals the first input vector
+3. The second row of the result equals the second input vector
+4. This operation preserves the elements and their order within each vector */
+
+use vstd::prelude::*;
+
+verus! {
+fn vstack(a: Vec<f32>, b: Vec<f32>) -> (result: Vec<Vec<f32>>)
+    requires a.len() == b.len(),
+    ensures
+        result.len() == 2,
+        result[0].len() == a.len(),
+        result[1].len() == b.len(),
+        forall|j: int| 0 <= j < a.len() ==> result[0][j] == a[j],
+        forall|j: int| 0 <= j < b.len() ==> result[1][j] == b[j]
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

@@ -1,0 +1,39 @@
+/* numpy.polynomial.chebyshev.chebcompanion: Return the scaled companion matrix of c.
+
+The basis polynomials are scaled so that the companion matrix is
+symmetric when c is a Chebyshev basis polynomial. This provides
+better eigenvalue estimates than the unscaled case and for basis
+polynomials the eigenvalues are guaranteed to be real if
+numpy.linalg.eigvalsh is used to obtain them.
+
+Parameters:
+- c : 1-D array of Chebyshev series coefficients ordered from low to high degree
+
+Returns:
+- mat : Scaled companion matrix of dimensions (deg, deg) where deg = len(c) - 1
+
+Specification: chebcompanion returns a scaled companion matrix with specific structure.
+
+Precondition: The input vector has at least 2 elements (enforced by type)
+
+Postcondition: The result is an (n+1) × (n+1) matrix where:
+1. The superdiagonal and subdiagonal have specific values (0.5 for most entries, sqrt(0.5) for the first)
+2. The last column is adjusted by scaled coefficients
+3. The matrix structure ensures symmetry for Chebyshev basis polynomials */
+
+use vstd::prelude::*;
+
+verus! {
+fn chebcompanion(c: Vec<f32>) -> (result: Vec<Vec<f32>>)
+    requires c.len() >= 2,
+    ensures
+        result.len() == c.len() - 1,
+        forall|i: int| 0 <= i < result.len() ==> result[i].len() == c.len() - 1,
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

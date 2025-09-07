@@ -1,0 +1,53 @@
+vc-description: |-
+  numpy.strings.encode: Encode strings using the codec
+  
+  Calls str.encode element-wise on a vector of strings.
+  Converts strings to byte arrays using the specified encoding.
+  
+  This function takes a vector of strings and returns a vector
+  of encoded byte arrays. The encoding process depends on the encoding
+  parameter, with UTF-8 being the default.
+  
+  Specification: numpy.strings.encode returns a vector where each element is the encoded byte array
+  from the corresponding string in the input vector.
+
+  Key properties:
+  1. Deterministic encoding: same input produces same output
+  2. Empty strings encode to empty byte arrays
+  3. Encoding preserves string order and length
+  4. For UTF-8 encoding, ASCII characters are preserved with same byte length
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn encode(a: Vec<String>, encoding: String, errors: String) -> (result: Vec<Vec<u8>>)
+      ensures
+          result.len() == a.len(),
+          forall|i: int| 0 <= i < a.len() ==> (
+              /* Deterministic encoding: same input produces same output */
+              (forall|j: int| 0 <= j < a.len() && a[i] == a[j] ==> result[i] == result[j]) &&
+              /* Empty strings encode to empty byte arrays */
+              (a[i].len() == 0 ==> result[i].len() == 0) &&
+              /* Non-empty strings produce non-empty byte arrays */
+              (a[i].len() > 0 ==> result[i].len() > 0) &&
+              /* For UTF-8 encoding, ASCII strings have predictable byte length */
+              (encoding == "utf-8" ==> 
+                  (forall|c: char| a[i]@.contains(c) ==> c as u32 < 128) ==> 
+                      result[i].len() == a[i].len()) &&
+              /* Encoding size relationship: encoded size is at least the string length */
+              (encoding == "utf-8" ==> result[i].len() >= a[i].len())
+          )
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

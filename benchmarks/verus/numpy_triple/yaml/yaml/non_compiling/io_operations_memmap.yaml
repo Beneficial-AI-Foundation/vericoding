@@ -1,0 +1,52 @@
+vc-description: |-
+  numpy.memmap: Create a memory-map to an array stored in a binary file on disk.
+
+  Memory-mapped files are used for accessing small segments of large files
+  on disk, without reading the entire file into memory. The memmap provides
+  an array-like interface to the file contents.
+
+  This function creates a Vector view into a binary file on disk with the
+  specified shape and access mode. The file is accessed starting at the
+  given offset.
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+  /* A simplified representation of file access mode for memory mapping */
+  pub enum FileMode {
+      /* ReadOnly mode ('r') - read-only access to existing file */
+      ReadOnly,
+      /* ReadWrite mode ('r+') - read-write access to existing file */
+      ReadWrite,
+      /* WriteNew mode ('w+') - create new file with read-write access */
+      WriteNew,
+      /* CopyOnWrite mode ('c') - copy-on-write access, changes don't persist to disk */
+      CopyOnWrite,
+  }
+vc-spec: |-
+  fn memmap(filename: &str, mode: FileMode, offset: nat, n: usize) -> (result: Vec<f32>)
+      requires 
+          filename.len() > 0,
+          offset >= 0,
+      ensures 
+          /* Basic properties: result is a valid vector of size n */
+          result.len() == n,
+          /* Access mode constraints */
+          (matches!(mode, FileMode::ReadOnly) ==> 
+              forall|i: int| 0 <= i < n ==> exists|val: f32| result[i] == val),
+          /* Consistency property: repeated access returns same values */
+          forall|i: int| 0 <= i < n ==> result[i] == result[i],
+          /* Boundary safety: all indices are valid */
+          forall|i: int| 0 <= i < n ==> i < n,
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

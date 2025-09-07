@@ -1,0 +1,51 @@
+/* numpy.power: First array elements raised to powers from second array, element-wise.
+
+Raise each base in x1 to the positionally-corresponding power in x2.
+This is equivalent to x1 ** x2 in terms of array broadcasting.
+
+The function computes x1[i] raised to the power x2[i] for each index i.
+
+Mathematical properties:
+- x^0 = 1 for any non-zero x
+- x^1 = x for any x
+- x^(a+b) = x^a * x^b for any x, a, b
+- (x^a)^b = x^(a*b) for any x, a, b
+
+Specification: numpy.power returns a vector where each element is the base
+from x1 raised to the power from x2.
+
+Precondition: For mathematical validity, we require:
+- If x1[i] = 0, then x2[i] ≥ 0 (0^negative is undefined)
+- If x1[i] < 0, then x2[i] should be an integer (for real results, checked by floor = value)
+
+Postcondition: For all indices i, result[i] = x1[i] ^ x2[i]
+
+Key mathematical properties ensured:
+1. Identity: If x2[i] = 0 and x1[i] ≠ 0, then result[i] = 1
+2. Base case: If x2[i] = 1, then result[i] = x1[i]
+3. Monotonicity: If x1[i] > 1 and x2[i] > 0, then result[i] > x1[i] */
+
+use vstd::prelude::*;
+
+verus! {
+fn numpy_power(x1: Vec<f32>, x2: Vec<f32>) -> (result: Vec<f32>)
+    requires 
+        x1.len() == x2.len(),
+        forall|i: int| 0 <= i < x1.len() ==> 
+            (x1[i] == 0.0 ==> x2[i] >= 0.0) &&
+            (x1[i] < 0.0 ==> x2[i].floor() == x2[i]),
+    ensures 
+        result.len() == x1.len(),
+        forall|i: int| 0 <= i < result.len() ==> 
+            result[i] == x1[i].powf(x2[i]) &&
+            (x2[i] == 0.0 && x1[i] != 0.0 ==> result[i] == 1.0) &&
+            (x2[i] == 1.0 ==> result[i] == x1[i]) &&
+            (x1[i] > 1.0 && x2[i] > 0.0 ==> result[i] > x1[i])
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

@@ -1,0 +1,55 @@
+vc-description: |-
+  Divide one Hermite series by another, returning quotient and remainder.
+  The dividend c1 and divisor c2 are coefficient vectors representing Hermite polynomials.
+  The division is performed in the Hermite polynomial basis with reprojection.
+  
+  Specification: hermediv performs polynomial division of Hermite series, returning
+  both quotient and remainder such that c1 = quo * c2 + rem (in Hermite basis).
+  
+  Key mathematical properties:
+  1. Division identity: The dividend equals quotient times divisor plus remainder
+  2. Remainder degree constraint: The remainder has degree less than the divisor
+  3. Non-zero divisor: The divisor must not be the zero polynomial
+  4. Reprojection: Results are reprojected onto the Hermite polynomial basis set
+  
+  The specification captures the fundamental division algorithm for polynomials
+  adapted to the Hermite polynomial basis set.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn hermediv(c1: Vec<f32>, c2: Vec<f32>) -> (result: (Vec<f32>, Vec<f32>))
+      requires 
+          c2.len() > 0,
+          exists|i: int| 0 <= i < c2.len() && c2[i] != 0.0,
+      ensures
+          {
+              let quo = result.0;
+              let rem = result.1;
+              /* Sanity check: quotient and remainder are well-formed with correct dimensions */
+              quo.len() >= 1 &&
+              rem.len() < c2.len() &&
+              /* Well-formedness: all coefficients are real numbers (not NaN or infinite) */
+              forall|i: int| 0 <= i < quo.len() ==> quo[i] == quo[i] &&
+              forall|j: int| 0 <= j < rem.len() ==> rem[j] == rem[j] &&
+              /* Mathematical property: division preserves degree relationships */
+              rem.len() < c2.len()
+          }
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      (Vec::new(), Vec::new())
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

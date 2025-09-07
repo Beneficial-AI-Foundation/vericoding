@@ -1,0 +1,54 @@
+vc-description: |-
+  Pseudo-Vandermonde matrix of given degrees for 3D Legendre polynomials.
+  Returns the pseudo-Vandermonde matrix of degrees `deg` and sample points `(x, y, z)`.
+  The pseudo-Vandermonde matrix is defined by 
+  V[..., (m+1)(n+1)i + (n+1)j + k] = L_i(x)*L_j(y)*L_k(z),
+  where 0 <= i <= l, 0 <= j <= m, and 0 <= k <= n for degrees [l, m, n].
+  
+  Specification: legvander3d constructs a 3D pseudo-Vandermonde matrix where each row 
+  corresponds to a point (x_i, y_i, z_i) and each column corresponds to a product of 
+  Legendre polynomials L_i(x) * L_j(y) * L_k(z).
+  The matrix satisfies basic properties:
+  - Each entry is a product of 1D Legendre polynomial evaluations
+  - The ordering follows the specified 3D indexing scheme
+  - The matrix has the correct dimensions
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn legvander3d(x: Vec<f32>, y: Vec<f32>, z: Vec<f32>, deg_x: usize, deg_y: usize, deg_z: usize) 
+      -> (result: Vec<Vec<f32>>)
+      requires 
+          x.len() == y.len() && y.len() == z.len(),
+          x.len() > 0,
+      ensures 
+          result.len() == x.len(),
+          forall|i: int| 0 <= i < result.len() ==> 
+              result[i].len() == (deg_x + 1) * (deg_y + 1) * (deg_z + 1),
+          forall|i: int| 0 <= i < result.len() ==> 
+              result[i][0] == 1.0,
+          forall|i: int, p: int, q: int, r: int| 
+              0 <= i < result.len() && 
+              0 <= p <= deg_x && 0 <= q <= deg_y && 0 <= r <= deg_z ==> {
+                  let col_idx = (deg_y + 1) * (deg_z + 1) * p + (deg_z + 1) * q + r;
+                  col_idx < (deg_x + 1) * (deg_y + 1) * (deg_z + 1) ==>
+                  exists|l_p_x: f32, l_q_y: f32, l_r_z: f32| result[i][col_idx] == l_p_x * l_q_y * l_r_z
+              }
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

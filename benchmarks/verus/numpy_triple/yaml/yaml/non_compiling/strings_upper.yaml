@@ -1,0 +1,61 @@
+vc-description: |-
+  numpy.strings.upper: Return an array with the elements converted to uppercase.
+
+  Converts each string element in the input vector to uppercase. This transformation
+  applies to all alphabetic characters while preserving non-alphabetic characters
+  (digits, punctuation, whitespace) unchanged.
+
+  The function preserves the shape of the input array and handles empty strings
+  appropriately by returning them unchanged.
+
+  From NumPy documentation:
+  - Parameters: a (array_like) - Input array with string dtype
+  - Returns: out (ndarray) - Output array with elements converted to uppercase
+
+  Mathematical Properties:
+  1. Element-wise transformation: result[i] = upper(a[i]) for all i
+  2. Length preservation: result[i].length = a[i].length for all i
+  3. Case transformation: lowercase letters become uppercase, others unchanged
+  4. Idempotent: upper(upper(x)) = upper(x)
+  5. Preserves vector length: result.size = a.size
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn char_to_upper(c: char) -> char;
+
+  spec fn string_to_upper(s: &str) -> String
+      decreases s.len()
+  {
+      arbitrary()
+  }
+
+  fn upper(a: Vec<String>) -> (result: Vec<String>)
+      ensures 
+          result.len() == a.len(),
+          forall|i: int| 0 <= i < result.len() ==> {
+              let original = a[i];
+              let res = result[i];
+              /* Basic correctness: result is uppercase version of original */
+              string_to_upper(&original) == res &&
+              /* Length preservation: result has same length as original */
+              res.len() == original.len() &&
+              /* Empty string case: empty input produces empty output */
+              (original.len() == 0 ==> res == "") &&
+              /* Idempotent property: applying upper twice gives same result as once */
+              string_to_upper(&res) == res
+          }
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

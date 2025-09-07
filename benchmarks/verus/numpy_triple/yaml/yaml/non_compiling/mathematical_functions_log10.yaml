@@ -1,0 +1,49 @@
+vc-description: |-
+  numpy.log10: Return the base 10 logarithm of the input array, element-wise.
+
+  The base 10 logarithm log10 is the logarithm to the base 10.
+  It is the inverse of the exponential function with base 10,
+  so that log10(10^x) = x.
+
+  Returns an array of the same shape as x, containing the base 10 logarithm
+  of each element in x.
+
+  Specification: numpy.log10 returns a vector where each element is the base 10
+  logarithm of the corresponding element in x.
+
+  Precondition: All elements must be positive (x[i] > 0)
+  Postcondition: For all indices i, result[i] = Float.log10 x[i]
+  
+  Mathematical properties:
+  1. log10(10^a) = a for positive a
+  2. log10(a * b) = log10(a) + log10(b) for positive a, b  
+  3. log10(1) = 0
+  4. log10(10) = 1
+  5. Monotonic: a < b implies log10(a) < log10(b) for positive a, b
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn numpy_log10(x: Vec<f32>) -> (result: Vec<f32>)
+      requires forall|i: int| 0 <= i < x.len() ==> x[i] > 0.0,
+      ensures 
+          result.len() == x.len(),
+          forall|i: int| 0 <= i < x.len() ==> result[i] == x[i].log10()
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

@@ -1,0 +1,48 @@
+vc-description: |-
+  Multiply a Hermite series by x using the recursion relationship xP_i(x) = (P_{i+1}(x)/2 + i*P_{i-1}(x))
+
+  Specification: hermmulx multiplies a Hermite series by x using the recursion relationship for Hermite polynomials.
+
+  The algorithm implements the recursion: xP_i(x) = (P_{i+1}(x)/2 + i*P_{i-1}(x))
+
+  Given input coefficients c[0], c[1], ..., c[n-1], the output has n+1 coefficients where:
+  - The first coefficient is always 0
+  - Each c[i] contributes c[i]/2 to position i+1 and c[i]*i to position i-1
+
+  For example, with input [1, 2, 3]:
+  - result[0] = 0 + 2*1 = 2
+  - result[1] = 1/2 + 3*2 = 0.5 + 6 = 6.5
+  - result[2] = 2/2 = 1
+  - result[3] = 3/2 = 1.5
+  Giving [2, 6.5, 1, 1.5]
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn hermmulx(c: Vec<f64>) -> (result: Vec<f64>)
+      ensures
+          result.len() == c.len() + 1,
+          forall|k: int| 0 <= k < result.len() ==> {
+              let base_contrib = if k == 0 { 0.0 } else { 0.0 };
+              let prev_contrib = if k > 0 && (k - 1) < c.len() { c[k - 1] / 2.0 } else { 0.0 };
+              let next_contrib = if (k + 1) < c.len() { c[k + 1] * ((k + 1) as f64) } else { 0.0 };
+              result[k] == base_contrib + prev_contrib + next_contrib
+          }
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

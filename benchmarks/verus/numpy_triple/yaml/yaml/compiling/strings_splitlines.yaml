@@ -1,0 +1,30 @@
+vc-description: |-
+  For each element in a, return a list of the lines in the element, breaking at line boundaries
+
+  For each element in a vector of strings, return a list of the lines in the element, breaking at line boundaries 
+
+  Specification: splitlines returns a vector where each string is split into a list of lines
+  based on line boundaries, with proper handling of keepends and line break characters
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn splitlines(a: Vec<String>, keepends: bool) -> (result: Vec<Vec<String>>)
+      requires a.len() > 0,
+      ensures 
+          result.len() == a.len(),
+          forall|i: int| 0 <= i < result.len() ==> #[trigger] result[i].len() >= 1
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

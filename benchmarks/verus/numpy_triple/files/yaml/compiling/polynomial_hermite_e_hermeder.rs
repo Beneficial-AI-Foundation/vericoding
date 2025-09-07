@@ -1,0 +1,27 @@
+/* Differentiate a Hermite_e series by taking the derivative of coefficients.
+Takes coefficients from low to high degree and returns differentiated coefficients.
+
+Specification: hermeder correctly differentiates Hermite_e series coefficients.
+The result has degree reduced by 1, and each coefficient is multiplied by its index
+and scaled by scl^m. For a single differentiation (m=1), the coefficient of degree k
+becomes k * scl * original_coefficient. */
+
+use vstd::prelude::*;
+
+verus! {
+fn hermeder(c: Vec<f64>, m: usize, scl: f64) -> (result: Vec<f64>)
+    requires 
+        c.len() > 0,
+        m > 0,
+        scl != 0.0,
+    ensures 
+        result.len() == c.len() - 1,
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+
+fn main() {}

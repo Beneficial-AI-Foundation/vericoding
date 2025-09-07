@@ -1,0 +1,63 @@
+vc-description: |-
+  numpy.polynomial.hermite.poly2herm: Convert a polynomial to a Hermite series.
+
+  Convert an array representing the coefficients of a polynomial (relative
+  to the "standard" basis) ordered from lowest degree to highest, to an
+  array of the coefficients of the equivalent Hermite series, ordered
+  from lowest to highest degree.
+
+  The conversion transforms between different polynomial bases. The standard
+  polynomial basis consists of monomials {1, x, x², x³, ...} while the
+  Hermite polynomial basis consists of Hermite polynomials {H₀(x), H₁(x), H₂(x), ...}.
+
+  The algorithm uses Hermite polynomial operations (multiplication by x and addition)
+  to build up the result iteratively from the highest degree coefficient down.
+
+  Specification: poly2herm converts polynomial coefficients to Hermite series coefficients
+  
+  The specification ensures:
+  1. The output has the same dimension as the input
+  2. The conversion preserves the polynomial function when evaluated using respective bases
+  3. For the zero polynomial (all coefficients zero), the result is also zero
+  4. The conversion is linear: poly2herm(a*p + b*q) = a*poly2herm(p) + b*poly2herm(q)
+  
+  Additionally, for specific test cases:
+  - Converting [0, 1, 2, 3] should yield [1, 2.75, 0.5, 0.375]
+  - Converting a constant polynomial [c] should yield [c]
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn poly2herm(pol: Vec<f64>) -> (result: Vec<f64>)
+      ensures
+          result.len() == pol.len(),
+          /* Zero polynomial maps to zero */
+          (forall|i: int| 0 <= i < pol.len() ==> pol[i] == 0.0) ==> 
+              (forall|i: int| 0 <= i < result.len() ==> result[i] == 0.0),
+          /* Constant polynomial preservation (when n >= 1) */
+          pol.len() > 0 ==> 
+              (forall|i: int| 1 <= i < pol.len() ==> pol[i] == 0.0) ==>
+                  result[0] == pol[0],
+          /* Specific example from documentation (when applicable) */
+          (pol.len() == 4 && pol[0] == 0.0 && pol[1] == 1.0 && 
+           pol[2] == 2.0 && pol[3] == 3.0) ==>
+              (result[0] == 1.0 && result[1] == 2.75 && 
+               result[2] == 0.5 && result[3] == 0.375)
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

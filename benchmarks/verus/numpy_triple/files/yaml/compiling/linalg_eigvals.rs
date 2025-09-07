@@ -1,0 +1,45 @@
+/* Compute the eigenvalues of a general matrix
+
+Compute the eigenvalues of a general matrix.
+
+Main difference from eig: Does not compute eigenvectors.
+
+Parameters:
+- a: Square array
+
+Returns:
+- w: The eigenvalues, not necessarily ordered
+
+Compute the eigenvalues of a general square matrix
+
+Specification: eigvals computes eigenvalues of a square matrix */
+
+use vstd::prelude::*;
+
+verus! {
+/* Complex number type for eigenvalues */
+struct Complex {
+    re: f32,
+    im: f32,
+}
+fn eigvals(a: Vec<Vec<f32>>) -> (result: Vec<Complex>)
+    requires 
+        a.len() > 0,
+        forall|i: int| 0 <= i < a.len() ==> (#[trigger] a[i]).len() == a.len(),
+    ensures 
+        result.len() == a.len(),
+        /* For diagonal matrices, eigenvalues are the diagonal elements */
+        /* This captures the key mathematical property from the numpy documentation */
+        (forall|i: int, j: int| 0 <= i < a.len() && 0 <= j < a.len() && i != j ==> #[trigger] a[i][j] == 0.0f32) ==>
+        (forall|i: int| #![auto] 0 <= i < a.len() ==> 
+            exists|j: int| 0 <= j < result.len() && 
+                result[j].re == a[i][i] && result[j].im == 0.0f32),
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+
+fn main() {}

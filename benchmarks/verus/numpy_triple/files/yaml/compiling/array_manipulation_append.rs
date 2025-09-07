@@ -1,0 +1,35 @@
+/* numpy.append: Append values to the end of an array.
+    
+For 1D arrays without axis specification, this function flattens both 
+arrays and concatenates them. The result is a 1D array containing all 
+elements from arr followed by all elements from values.
+    
+This is a fundamental array manipulation operation that creates a new
+array by joining two arrays end-to-end. Unlike in-place operations,
+this always returns a new array.
+
+Specification: numpy.append creates a new array containing all elements
+from arr followed by all elements from values.
+    
+Precondition: True (no special preconditions for basic append)
+Postcondition: 
+- The first n elements of the result come from arr
+- The next m elements come from values
+- The order of elements is preserved from both input arrays */
+
+use vstd::prelude::*;
+
+verus! {
+fn numpy_append(arr: Vec<f32>, values: Vec<f32>) -> (result: Vec<f32>)
+    ensures
+        result.len() == arr.len() + values.len(),
+        forall|i: int| 0 <= i < arr.len() ==> result[i] == arr[i],
+        forall|j: int| 0 <= j < values.len() ==> result[arr.len() + j] == values[j],
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

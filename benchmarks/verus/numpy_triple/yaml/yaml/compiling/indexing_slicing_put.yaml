@@ -1,0 +1,50 @@
+vc-description: |-
+  numpy.put: Replaces specified elements of an array with given values.
+  
+  The indexing works on the flattened target array. This operation mutates the input array
+  in-place by placing values from `v` at the positions specified by `ind`.
+  
+  For simplicity, we ignore the `mode` parameter and assume all indices are valid.
+  
+  Specification: numpy.put modifies specific elements of the input array.
+  
+  This theorem captures the core mathematical properties:
+  1. Elements at specified indices are replaced with corresponding values from `v`
+  2. All other elements remain unchanged
+  3. The result vector has the same length as the input vector
+  4. Index bounds are respected (enforced by precondition)
+  
+  Precondition: All indices in `ind` must be valid (less than array length)
+  Postcondition: Elements at specified indices are replaced with corresponding values from `v`,
+                while all other elements remain unchanged.
+  
+  This specification handles the case where indices may be duplicated - in such cases,
+  the later occurrence in the index vector takes precedence.
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn put(a: Vec<f64>, ind: Vec<usize>, v: Vec<f64>) -> (result: Vec<f64>)
+      requires 
+          ind.len() == v.len(),
+          forall|i: int| 0 <= i < ind.len() ==> ind[i] < a.len(),
+      ensures
+          result.len() == a.len(),
+          forall|i: int| 0 <= i < ind.len() ==> result[ind[i] as int] == v[i],
+          forall|j: int| 0 <= j < result.len() ==> 
+              (forall|i: int| 0 <= i < ind.len() ==> j != ind[i]) ==> result[j] == a[j],
+          ind.len() == 0 ==> result@ == a@,
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

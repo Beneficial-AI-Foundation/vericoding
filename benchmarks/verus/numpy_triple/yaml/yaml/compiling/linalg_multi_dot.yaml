@@ -1,0 +1,51 @@
+vc-description: |-
+  Multi-dot product: compute the dot product of multiple matrices in a single function call
+  with optimal parenthesization. This function performs a chain of matrix multiplications
+  A₁ × A₂ × ... × Aₙ where the parenthesization is chosen to minimize computational cost.
+  
+  For three matrices A, B, C, this computes A × B × C with the optimal evaluation order.
+  The result is independent of parenthesization due to associativity of matrix multiplication.
+
+  Specification: Multi-dot performs a chain of matrix multiplications with optimal parenthesization.
+  
+  Mathematical properties:
+  1. Associativity: (A × B) × C = A × (B × C) - the result is independent of parenthesization
+  2. Dimension compatibility: A is n₁×n₂, B is n₂×n₃, C is n₃×n₄, result is n₁×n₄
+  3. Element-wise computation: result[i][j] equals the triple sum over intermediate indices
+  4. Optimal evaluation order: the implementation chooses the parenthesization that minimizes 
+     the total number of scalar multiplications needed
+  5. Correctness: the result equals the sequential application of matrix multiplications
+  6. Non-empty constraint: at least two matrices are required (enforced by signature)
+  
+  This specification captures the essential mathematical behavior while abstracting away 
+  the optimization details. The key insight is that matrix multiplication is associative,
+  so different parenthesizations yield the same mathematical result.
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn multi_dot(A: Vec<Vec<f64>>, B: Vec<Vec<f64>>, C: Vec<Vec<f64>>) -> (result: Vec<Vec<f64>>)
+      requires 
+          A.len() > 0,
+          B.len() > 0, 
+          C.len() > 0,
+          forall|i: int| 0 <= i < A.len() ==> A[i].len() == B.len(),
+          forall|i: int| 0 <= i < B.len() ==> B[i].len() == C.len(),
+          forall|i: int| 0 <= i < C.len() ==> C[i].len() > 0,
+      ensures
+          result.len() == A.len(),
+          forall|i: int| 0 <= i < result.len() ==> result[i].len() == C[0].len(),
+vc-code: |-
+  {
+      // impl-start  
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

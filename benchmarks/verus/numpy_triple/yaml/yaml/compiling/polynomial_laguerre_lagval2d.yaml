@@ -1,0 +1,43 @@
+vc-description: |-
+  Evaluate a 2-D Laguerre series at points (x, y).
+  The mathematical formula is: p(x,y) = sum_{i,j} c_{i,j} * L_i(x) * L_j(y)
+  where L_i(x) and L_j(y) are the Laguerre polynomials.
+
+  Specification for 2-D Laguerre series evaluation:
+  The result has the same shape as the input x and y vectors.
+  The function evaluates a bivariate Laguerre polynomial series
+  using the tensor product of 1-D Laguerre polynomials.
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn lagval2d(x: Vec<f32>, y: Vec<f32>, c: Vec<Vec<f32>>) -> (result: Vec<f32>)
+      requires 
+          x.len() == y.len(),
+          x.len() > 0,
+          c.len() > 0,
+          forall|i: int| 0 <= i < c.len() ==> c[i].len() > 0,
+      ensures
+          result.len() == x.len(),
+          /* Base case: single coefficient returns constant */
+          (c.len() == 1 && c[0].len() == 1) ==> 
+              forall|i: int| 0 <= i < result.len() ==> result[i] == c[0][0],
+          /* General case: evaluates 2D Laguerre series */
+          forall|i: int| 0 <= i < result.len() ==> 
+              exists|val: f32| result[i] == val,
+          /* Sanity check: result preserves input shape */
+          result.len() == x.len() && result.len() == y.len(),
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

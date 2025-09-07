@@ -1,0 +1,112 @@
+vc-description: |-
+  numpy.min_scalar_type: For scalar a, returns the data type with the smallest size 
+  and smallest scalar kind which can hold its value.
+
+  This function determines the minimal NumPy data type that can represent a given scalar value.
+  The function prioritizes:
+  1. Smallest possible size (in bits)
+  2. Smallest scalar kind (unsigned int < signed int < float < complex)
+  
+  For integer values, it finds the smallest integer type that can hold the value.
+  For floating point values, it finds the smallest float type that can represent it.
+
+  Specification: min_scalar_type returns the minimal data type that can hold the given value.
+
+  Precondition: True (works for any scalar value)
+  Postcondition: The returned type is the minimal type that can hold the value, meaning:
+  1. The type can represent the given value
+  2. No type with smaller size can represent the value
+  3. Among types of the same size, it has the smallest kind order
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  /* Enumeration for NumPy data types */
+  #[derive(PartialEq, Eq, Structural)]
+  pub enum NumpyDType {
+      UInt8,
+      UInt16, 
+      UInt32,
+      UInt64,
+      Int8,
+      Int16,
+      Int32,
+      Int64,
+      Float16,
+      Float32,
+      Float64,
+      Complex64,
+      Complex128,
+  }
+
+  /* Define type sizes in bits */
+  spec fn dtype_size(dt: NumpyDType) -> nat {
+      match dt {
+          NumpyDType::UInt8 => 8,
+          NumpyDType::UInt16 => 16,
+          NumpyDType::UInt32 => 32,
+          NumpyDType::UInt64 => 64,
+          NumpyDType::Int8 => 8,
+          NumpyDType::Int16 => 16,
+          NumpyDType::Int32 => 32,
+          NumpyDType::Int64 => 64,
+          NumpyDType::Float16 => 16,
+          NumpyDType::Float32 => 32,
+          NumpyDType::Float64 => 64,
+          NumpyDType::Complex64 => 64,
+          NumpyDType::Complex128 => 128,
+      }
+  }
+
+  /* Define type hierarchy (order of preference) */
+  spec fn dtype_kind_order(dt: NumpyDType) -> nat {
+      match dt {
+          NumpyDType::UInt8 | NumpyDType::UInt16 | NumpyDType::UInt32 | NumpyDType::UInt64 => 0,
+          NumpyDType::Int8 | NumpyDType::Int16 | NumpyDType::Int32 | NumpyDType::Int64 => 1,
+          NumpyDType::Float16 | NumpyDType::Float32 | NumpyDType::Float64 => 2,
+          NumpyDType::Complex64 | NumpyDType::Complex128 => 3,
+      }
+  }
+
+  /* Check if a type can represent a given float value */
+  spec fn can_represent_value(dt: NumpyDType, value: f64) -> bool {
+      match dt {
+          NumpyDType::UInt8 => 0.0 <= value && value <= 255.0 && value == (value as int) as f64,
+          NumpyDType::UInt16 => 0.0 <= value && value <= 65535.0 && value == (value as int) as f64,
+          NumpyDType::UInt32 => 0.0 <= value && value <= 4294967295.0 && value == (value as int) as f64,
+          NumpyDType::UInt64 => 0.0 <= value && value <= 18446744073709551615.0 && value == (value as int) as f64,
+          NumpyDType::Int8 => -128.0 <= value && value <= 127.0 && value == (value as int) as f64,
+          NumpyDType::Int16 => -32768.0 <= value && value <= 32767.0 && value == (value as int) as f64,
+          NumpyDType::Int32 => -2147483648.0 <= value && value <= 2147483647.0 && value == (value as int) as f64,
+          NumpyDType::Int64 => -9223372036854775808.0 <= value && value <= 9223372036854775807.0 && value == (value as int) as f64,
+          NumpyDType::Float16 | NumpyDType::Float32 | NumpyDType::Float64 | NumpyDType::Complex64 | NumpyDType::Complex128 => true,
+      }
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn min_scalar_type(value: f64) -> (result: NumpyDType)
+      ensures
+          /* The result type can represent the value */
+          can_represent_value(result, value),
+          /* No smaller type can represent the value */
+          forall|dt: NumpyDType| dtype_size(dt) < dtype_size(result) ==> !can_represent_value(dt, value),
+          /* Among types of same size, it has smallest kind order */
+          forall|dt: NumpyDType| dtype_size(dt) == dtype_size(result) && can_represent_value(dt, value) ==> dtype_kind_order(result) <= dtype_kind_order(dt),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      NumpyDType::UInt8
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

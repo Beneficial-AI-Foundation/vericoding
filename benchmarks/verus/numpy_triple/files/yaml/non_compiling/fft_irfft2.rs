@@ -1,0 +1,44 @@
+/* numpy.fft.irfft2: Computes the inverse of rfft2.
+
+Performs the inverse 2-dimensional discrete Fourier Transform for real input.
+This function converts a complex frequency domain representation back to the
+real spatial domain. It is the inverse of rfft2.
+
+The function takes a complex-valued 2D array (represented as nested vectors)
+and returns a real-valued 2D array. The output shape is determined by the
+input shape and the original real signal dimensions.
+
+This is essentially irfftn with axes=(-2, -1) as defaults.
+
+Specification: numpy.fft.irfft2 returns the inverse 2D real FFT.
+
+Precondition: True (input is a well-formed 2D array)
+Postcondition: The result is a real-valued 2D array with the same dimensions.
+
+Key properties:
+1. The output preserves the matrix structure and dimensions
+2. The transformation processes all elements of the input
+3. The inverse operation produces finite real values
+4. Shape preservation ensures correct 2D FFT behavior */
+
+use vstd::prelude::*;
+
+verus! {
+fn numpy_irfft2(a: Vec<Vec<f64>>) -> (result: Vec<Vec<f64>>)
+    requires
+        a.len() > 0,
+        forall|i: int| 0 <= i < a.len() ==> a[i].len() > 0,
+        forall|i: int, j: int| 0 <= i < a.len() && 0 <= j < a.len() ==> a[i].len() == a[j].len(),
+    ensures
+        result.len() == a.len(),
+        forall|i: int| 0 <= i < result.len() ==> result[i].len() == a[0].len(),
+        forall|i: int| 0 <= i < result.len() ==> result[i].len() > 0,
+        forall|i: int, j: int| 0 <= i < result.len() && 0 <= j < result[i].len() ==> result[i][j].is_finite(),
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

@@ -1,0 +1,31 @@
+/* Perform an indirect partition along the given axis.
+Returns an array of indices that partition the input array such that
+the kth element is in its final sorted position and all smaller
+elements are moved before it and all larger elements behind it.
+
+Specification: argpartition returns indices that correctly partition the array.
+The kth element is in its final sorted position, with all smaller elements
+before it and all larger elements after it. */
+
+use vstd::prelude::*;
+
+verus! {
+fn argpartition(a: Vec<f32>, kth: usize) -> (indices: Vec<usize>)
+    requires kth < a.len(),
+    ensures
+        indices.len() == a.len(),
+        /* The indices form a valid permutation of 0..n-1 */
+        forall|i: usize| i < a.len() ==> exists|j: usize| j < indices.len() && indices[j] == i,
+        forall|i: usize, j: usize| i < indices.len() && j < indices.len() && i != j ==> indices[i] != indices[j],
+        /* Partition property: all elements before kth position are ≤ kth element */
+        forall|i: usize| i < kth ==> a[indices[i]] <= a[indices[kth]],
+        /* Partition property: all elements after kth position are ≥ kth element */
+        forall|i: usize| kth < i && i < indices.len() ==> a[indices[kth]] <= a[indices[i]],
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

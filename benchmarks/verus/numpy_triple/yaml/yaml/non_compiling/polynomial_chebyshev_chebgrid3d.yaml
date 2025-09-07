@@ -1,0 +1,85 @@
+vc-description: |-
+  Evaluate a 3-D Chebyshev series on the Cartesian product of x, y, and z.
+
+  This function returns the values:
+  p(a,b,c) = ∑_{i,j,k} c_{i,j,k} * T_i(a) * T_j(b) * T_k(c)
+
+  where the points (a, b, c) consist of all triples formed by taking
+  a from x, b from y, and c from z. The resulting points form
+  a grid with x in the first dimension, y in the second, and z in
+  the third.
+
+  Specification: chebgrid3d evaluates a 3D Chebyshev series on the Cartesian product.
+  The result at position (ix, iy, iz) is the sum over all coefficient indices (i, j, k)
+  of c[i][j][k] * T_i(x[ix]) * T_j(y[iy]) * T_k(z[iz]) where T_n is the n-th
+  Chebyshev polynomial.
+  
+  Mathematical properties:
+  1. The output has the correct shape: nx × ny × nz
+  2. Each element is computed as a triple sum over the coefficient indices
+  3. The function evaluates the 3D Chebyshev series at each grid point
+  4. For a zero coefficient array, the result is zero everywhere
+  5. The result is linear in the coefficients
+  6. The Chebyshev polynomials T_i satisfy the recurrence relation:
+     T_0(x) = 1, T_1(x) = x, T_{n+1}(x) = 2x*T_n(x) - T_{n-1}(x)
+  7. The evaluation respects the orthogonality of Chebyshev polynomials on [-1, 1]
+  8. When all x, y, z values are in [-1, 1], the series converges uniformly
+  9. The result is the tensor product of 1D Chebyshev evaluations
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn chebyshev_T(n: nat, x: f64) -> f64
+      decreases n
+  {
+      if n == 0 {
+          1.0
+      } else if n == 1 {
+          x
+      } else {
+          2.0 * x * chebyshev_T((n - 1) as nat, x) - chebyshev_T((n - 2) as nat, x)
+      }
+  }
+
+  spec fn triple_sum(c: Seq<Seq<Seq<f64>>>, x_val: f64, y_val: f64, z_val: f64) -> f64;
+
+  fn chebgrid3d(
+      x: Vec<f64>,
+      y: Vec<f64>, 
+      z: Vec<f64>,
+      c: Vec<Vec<Vec<f64>>>
+  ) -> (result: Vec<Vec<Vec<f64>>>)
+      requires 
+          x.len() > 0,
+          y.len() > 0,
+          z.len() > 0,
+          c.len() > 0,
+          c[0].len() > 0,
+          c[0][0].len() > 0,
+      ensures
+          result.len() == x.len(),
+          forall|ix: int| 0 <= ix < result.len() ==> result[ix].len() == y.len(),
+          forall|ix: int, iy: int| 0 <= ix < result.len() && 0 <= iy < result[ix].len() ==> 
+              result[ix][iy].len() == z.len(),
+          forall|ix: int, iy: int, iz: int| 
+              0 <= ix < result.len() && 0 <= iy < result[ix].len() && 0 <= iz < result[ix][iy].len() ==>
+              exists|value: f64| result[ix][iy][iz] == value &&
+                  value == triple_sum(c@.map(|row: Vec<Vec<f64>>| row@.map(|col: Vec<f64>| col@)), x[ix], y[iy], z[iz])
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

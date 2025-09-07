@@ -1,0 +1,28 @@
+vc-description: |-
+  Compute tangent element-wise. Equivalent to sin(x)/cos(x) element-wise.
+
+  Specification: tan computes the tangent of each element, equivalent to sin(x)/cos(x),
+  and is undefined when cos(x) = 0 (i.e., x = π/2 + kπ for integer k)
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn tan(x: Vec<f32>) -> (result: Vec<f32>)
+      requires 
+          x.len() > 0,
+      ensures
+          result.len() == x.len(),
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

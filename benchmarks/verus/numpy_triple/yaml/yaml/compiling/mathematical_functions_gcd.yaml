@@ -1,0 +1,65 @@
+vc-description: |-
+  numpy.gcd: Returns the greatest common divisor of |x1| and |x2|, element-wise.
+  
+  The GCD is computed on the absolute values of the inputs. For two integers a and b,
+  gcd(a, b) is the largest positive integer that divides both |a| and |b|.
+  
+  Special cases:
+  - gcd(0, 0) = 0
+  - gcd(a, 0) = |a| for any non-zero a
+  - gcd(0, b) = |b| for any non-zero b
+  
+  Returns an array of the same shape as the broadcasted x1 and x2.
+  
+  Specification: numpy.gcd returns a vector where each element is the
+  greatest common divisor of the absolute values of the corresponding elements in x1 and x2.
+  
+  Mathematical properties verified:
+  1. Correctness: result[i] = gcd(x1[i], x2[i])
+  2. Non-negativity: result[i] ≥ 0 (GCD is always non-negative)
+  3. Equivalence to absolute values: gcd(a, b) = gcd(|a|, |b|)
+  4. Special cases: gcd(0,0)=0, gcd(a,0)=|a|, gcd(0,b)=|b|
+  5. Divisibility: gcd(a,b) divides both a and b
+  6. Greatest property: any common divisor of a and b also divides gcd(a,b)
+  7. Commutativity: gcd(a,b) = gcd(b,a)
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn gcd(a: int, b: int) -> int;
+
+  spec fn int_abs(x: int) -> int {
+      if x >= 0 { x } else { -x }
+  }
+
+  fn numpy_gcd(x1: Vec<i32>, x2: Vec<i32>) -> (result: Vec<i32>)
+      requires x1.len() == x2.len(),
+      ensures
+          result.len() == x1.len(),
+          forall|i: int| 0 <= i < result.len() ==> result[i] as int == gcd(x1[i] as int, x2[i] as int),
+          forall|i: int| 0 <= i < result.len() ==> result[i] >= 0,
+          forall|i: int| 0 <= i < result.len() ==> gcd(x1[i] as int, x2[i] as int) == gcd(int_abs(x1[i] as int), int_abs(x2[i] as int)),
+          forall|i: int| 0 <= i < result.len() ==> (x1[i] == 0 && x2[i] == 0) ==> result[i] == 0,
+          forall|i: int| 0 <= i < result.len() ==> (x1[i] != 0 && x2[i] == 0) ==> result[i] as int == int_abs(x1[i] as int),
+          forall|i: int| 0 <= i < result.len() ==> (x1[i] == 0 && x2[i] != 0) ==> result[i] as int == int_abs(x2[i] as int),
+          forall|i: int| 0 <= i < result.len() ==> (result[i] as int) % (x1[i] as int) == 0 && (result[i] as int) % (x2[i] as int) == 0,
+          forall|i: int, d: int| 0 <= i < result.len() ==> (d % (x1[i] as int) == 0 && d % (x2[i] as int) == 0) ==> d % (result[i] as int) == 0,
+          forall|i: int| 0 <= i < result.len() ==> gcd(x2[i] as int, x1[i] as int) == gcd(x1[i] as int, x2[i] as int),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

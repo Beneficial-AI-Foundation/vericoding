@@ -1,0 +1,43 @@
+vc-description: |-
+  Convert a polynomial to a Chebyshev series.
+  
+  Convert coefficients of a polynomial in the standard monomial basis
+  (1, x, x², x³, ...) to coefficients in the Chebyshev polynomial basis
+  (T₀(x), T₁(x), T₂(x), T₃(x), ...).
+  
+  The input polynomial coefficients are ordered from lowest degree to highest:
+  pol = [a₀, a₁, a₂, ..., aₙ] represents the polynomial a₀ + a₁x + a₂x² + ... + aₙxⁿ
+  
+  The output Chebyshev coefficients are also ordered from lowest to highest degree:
+  result = [c₀, c₁, c₂, ..., cₙ] represents c₀T₀(x) + c₁T₁(x) + c₂T₂(x) + ... + cₙTₙ(x)
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn poly2cheb(pol: Vec<f64>) -> (result: Vec<f64>)
+      requires pol.len() > 0,
+      ensures 
+          result.len() == pol.len(),
+          /* Example from documentation: [0.0, 1.0, 2.0, 3.0] → [1.0, 3.25, 1.0, 0.75] */
+          (pol.len() == 4 && pol[0] == 0.0 && pol[1] == 1.0 && pol[2] == 2.0 && pol[3] == 3.0) ==>
+              (result[0] == 1.0 && result[1] == 3.25 && result[2] == 1.0 && result[3] == 0.75),
+          /* Quadratic polynomial x²: [0, 0, 1] → [0.5, 0, 0.5] */
+          (pol.len() == 3 && pol[0] == 0.0 && pol[1] == 0.0 && pol[2] == 1.0) ==>
+              (result[0] == 0.5 && result[1] == 0.0 && result[2] == 0.5),
+          /* Cubic polynomial x³: [0, 0, 0, 1] → [0, 0.75, 0, 0.25] */
+          (pol.len() == 4 && pol[0] == 0.0 && pol[1] == 0.0 && pol[2] == 0.0 && pol[3] == 1.0) ==>
+              (result[0] == 0.0 && result[1] == 0.75 && result[2] == 0.0 && result[3] == 0.25)
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

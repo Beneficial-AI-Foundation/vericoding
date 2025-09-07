@@ -1,0 +1,84 @@
+Great! Now let me provide the complete YAML translation:
+
+vc-description: |-
+  numpy.polynomial.chebyshev.chebint: Integrate a Chebyshev series.
+
+  Returns the Chebyshev series coefficients integrated m times from
+  lbnd along axis. At each iteration the resulting series is
+  multiplied by scl and an integration constant k is added.
+  
+  The integration transforms Chebyshev polynomials according to the
+  recurrence relations for Chebyshev polynomial integrals. For a 
+  single integration (m=1) of coefficients [c₀, c₁, ..., cₙ], the 
+  result follows the Chebyshev integration formula.
+  
+  Parameters:
+  - c: Vector of Chebyshev series coefficients (low to high degree)
+  - m: Order of integration (must be positive)
+  - k: Integration constants (defaults to zeros)
+  - lbnd: Lower bound of the integral (default: 0)
+  - scl: Scaling factor applied after each integration (default: 1)
+
+  Specification: chebint integrates Chebyshev series coefficients m times.
+
+  The function performs m successive integrations of the Chebyshev series,
+  where each integration:
+  1. Multiplies the current coefficients by scl
+  2. Applies the Chebyshev integration recurrence relations
+  3. Adjusts the constant term to satisfy the boundary condition at lbnd
+  4. Adds the corresponding integration constant from k
+  
+  Mathematical properties:
+  - The result has m more coefficients than the input (integration increases degree)
+  - For m=0, returns the original coefficients unchanged
+  - The integration follows Chebyshev polynomial recurrence relations:
+    ∫ Tₙ(x) dx = [Tₙ₊₁(x)/(2(n+1)) - Tₙ₋₁(x)/(2(n-1))] for n ≥ 2
+    ∫ T₁(x) dx = T₂(x)/4
+    ∫ T₀(x) dx = T₁(x)
+  - The constant term is adjusted so the integral equals k[i] at x=lbnd
+  
+  Sanity checks:
+  - The output vector has exactly n + m coefficients
+  - When m = 0, the function should return the input unchanged
+  - Integration constants k affect only the constant term of each integration
+  - The scaling factor scl is applied before adding integration constants
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn chebint(c: Vec<f32>, m: u32, k: Vec<f32>, lbnd: f32, scl: f32) -> (result: Vec<f32>)
+      requires 
+          m > 0,
+          scl != 0.0f32,
+          k.len() == m,
+      ensures
+          result.len() == c.len() + (m as usize),
+          /* For m=1 case, the function performs Chebyshev integration according to:
+             - T₀ integrates to T₁  
+             - T₁ integrates to T₂/4
+             - Tₙ (n≥2) integrates to [Tₙ₊₁/(2(n+1)) - Tₙ₋₁/(2(n-1))]
+             - The constant term is adjusted for boundary conditions at lbnd
+             - Integration constants from k are added appropriately
+             
+             Note: Complex floating-point arithmetic specifications are simplified
+             due to Verus limitations with f32 operations in spec contexts */
+          result.len() >= c.len(),
+          m == 1 ==> result.len() == c.len() + 1,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

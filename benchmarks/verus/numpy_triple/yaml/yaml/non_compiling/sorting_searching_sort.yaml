@@ -1,0 +1,59 @@
+vc-description: |-
+  numpy.sort: Return a sorted copy of an array.
+
+  Returns a new array with the same elements sorted in ascending order.
+  The original array is not modified. This function performs a stable sort 
+  on the array elements, meaning that when multiple records have the same key,
+  their original order is preserved.
+
+  Parameters:
+  - a : array_like - Array to be sorted
+  
+  Returns:
+  - sorted_array : ndarray - Array of the same type and shape as a, with elements sorted
+
+  Specification: numpy.sort returns a sorted permutation of the input array.
+
+  The specification captures three key properties:
+  1. Sorting property: Elements are in non-decreasing order
+  2. Permutation property: The result contains exactly the same elements as the input
+  3. Stability property: Relative order of equal elements is preserved (implicit in permutation)
+
+  Precondition: True (works for any vector)
+  Postcondition: Result is sorted and is a permutation of the input
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn count_occurrences(a: Seq<f32>, x: f32) -> nat 
+      decreases a.len()
+  {
+      if a.len() == 0 {
+          0
+      } else {
+          (if a[0] == x { 1 } else { 0 }) + count_occurrences(a.skip(1), x)
+      }
+  }
+
+  fn sort(a: Vec<f32>) -> (result: Vec<f32>)
+      ensures
+          forall|i: int, j: int| 0 <= i < j < result.len() ==> result[i] <= result[j],
+          forall|x: f32| count_occurrences(result@, x) == count_occurrences(a@, x),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}
