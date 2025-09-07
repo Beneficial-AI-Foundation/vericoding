@@ -167,31 +167,39 @@ system_prompts:
     Lean YAML:
     ```yaml
     vc-signature: |-
-      def removeElement (s : Array Int) (k : Nat) (h_precond : removeElement_precond (s) (k)) : Array Int :=
+      def mean {n : Nat} (a : Vector Int (n + 1)) : Id Int :=
     vc-implementation: |-
       -- <vc-implementation>
         sorry
       -- </vc-implementation>
     vc-condition: |-
-      @[reducible, simp]
-      def removeElement_postcond (s : Array Int) (k : Nat) (result: Array Int) (h_precond : removeElement_precond (s) (k)) :=
-        result.size = s.size - 1 ∧ (∀ i, i < k → result[i]! = s[i]!) ∧ (∀ i, i < result.size → i ≥ k → result[i]! = s[i + 1]!)
+      theorem mean_spec {n : Nat} (a : Vector Int (n + 1)) :
+          ⦃⌜True⌝⦄
+          mean a
+          ⦃⇓result => ⌜(result as int) * (n + 1) = (List.range (n + 1)).foldl (fun acc i => acc + a.get ⟨i, by sorry⟩) 0⌝⦄ := by
     ```
 
     Verus YAML:
     ```yaml
     vc-spec: |-
-      fn remove_element(s: &Vec<i32>, k: usize) -> (result: Vec<i32>)
-          requires k < s.len(),
-          ensures
-              result.len() == s.len() - 1,
-              forall|i: int| 0 <= i < k ==> result[i] == s[i],
-              forall|i: int| k <= i < result.len() ==> result[i] == s[i + 1],
+      spec fn vec_sum(a: Seq<i32>) -> int 
+          decreases a.len()
+      {
+          if a.len() == 0 {
+              0
+          } else {
+              a[0] + vec_sum(a.skip(1))
+          }
+      }
+
+      fn mean(a: Vec<i32>) -> (result: i32)
+          requires a.len() > 0,
+          ensures (result as int) * (a.len() as int) == vec_sum(a@)
     vc-code: |-
       {
           // impl-start
           assume(false);
-          Vec::new()
+          0
           // impl-end
       }
     ```
@@ -247,25 +255,77 @@ yaml_instructions:
     IMPORTANT: In your response, include ONLY the raw YAML content. Do not include explanations or summaries - only the YAML structure with Verus code.
 
   lean: |    
-    **YAML STRUCTURE REQUIREMENT**: The input is a YAML file with specific fields, and your output MUST also be a YAML file with the SAME field structure. You are NOT translating to raw Verus code - you are translating YAML to YAML where the content of each field is translated from Lean to Verus.
+    **YAML STRUCTURE REQUIREMENT**: The input is a YAML file with specific fields, and your output MUST also be a YAML file with DIFFERENT field structure. You are NOT translating to raw Verus code - you are translating YAML to YAML where the field structure changes from Lean to Verus format.
 
-    The YAML file contains Lean code split into segments with these fields:
-    - `vc-description`: Description text (translate from Lean comments to plain text)
-    - `vc-preamble`: Preamble code (translate to Verus imports and opening)
-    - `vc-helpers`: Helper functions (usually empty in output)
-    - `vc-signature`: Function signature (combine with vc-implementation to create vc-spec)
-    - `vc-implementation`: Implementation code (combine with vc-signature to create vc-spec)
-    - `vc-condition`: Postconditions (combine with vc-proof to create vc-code)  
-    - `vc-proof`: Proof code (combine with vc-condition to create vc-code)
-    - `vc-postamble`: Closing code (translate to Verus closing)
+    **CRITICAL: INPUT AND OUTPUT YAML FIELDS ARE DIFFERENT**
 
-    Your output YAML must have these fields:
+    INPUT Lean YAML has these fields:
+    - `vc-description`: Description text 
+    - `vc-preamble`: Preamble code 
+    - `vc-helpers`: Helper functions 
+    - `vc-signature`: Function signature 
+    - `vc-implementation`: Implementation code 
+    - `vc-condition`: Postconditions and theorem statements
+    - `vc-proof`: Proof code 
+    - `vc-postamble`: Closing code 
+
+    OUTPUT Verus YAML must have these fields (DIFFERENT STRUCTURE):
     - `vc-description`: Plain text description (remove /- ... -/ delimiters)
     - `vc-preamble`: Verus imports and opening verus! block
     - `vc-helpers`: Empty or translated helper functions
-    - `vc-spec`: Function signature with requires/ensures clauses
+    - `vc-spec`: Function signature with requires/ensures clauses FROM vc-condition
     - `vc-code`: Placeholder implementation body
     - `vc-postamble`: Closing verus block and main function
+
+    **ABSOLUTELY CRITICAL FIELD MAPPING**:
+    - INPUT `vc-signature` + INPUT `vc-condition` → OUTPUT `vc-spec` (extract all specifications from vc-condition)
+    - INPUT `vc-implementation` + INPUT `vc-proof` → OUTPUT `vc-code` (placeholder implementation only)
+    - INPUT `vc-condition` MUST NOT appear in output - all specifications go to `vc-spec`
+
+    **SPECIFICATION EXTRACTION RULES FROM vc-condition**:
+    
+    The INPUT `vc-condition` section contains theorem statements with complex mathematical properties in `⌜...⌝` sections. You MUST extract these and convert them to Verus `ensures` clauses in the OUTPUT `vc-spec`.
+    
+    **Convert Lean mathematical notation to Verus**: 
+    - Lean `∃ var : Type, property` → Verus `exists|var: Type| property`
+    - Lean `∀ var : Type, property` → Verus `forall|var: Type| property`  
+    - Lean `∧` → Verus `&&`
+    - Lean function calls like `a.get ⟨i, proof⟩` → Verus `a[i]`
+    - Lean `Vector.get` → Verus array/vector indexing
+    - Lean `List.foldl` → appropriate Verus summation or specification
+    
+    **EXAMPLE SPECIFICATION EXTRACTIONS**:
+    
+    **Example 1: Array manipulation (removeElement)**
+    If INPUT Lean vc-condition contains array manipulation specifications, extract them to Verus ensures clauses:
+    ```rust
+    fn remove_element(s: &Vec<i32>, k: usize) -> (result: Vec<i32>)
+        requires k < s.len(),
+        ensures
+            result.len() == s.len() - 1,
+            forall|i: int| 0 <= i < k ==> result[i] == s[i],
+            forall|i: int| k <= i < result.len() ==> result[i] == s[i + 1],
+    ```
+    
+    **Example 2: Mathematical computation (mean)**
+    If INPUT Lean vc-condition contains complex mathematical properties in `⌜...⌝` sections, extract the core mathematical relationship and express it as Verus specifications:
+    ```rust
+    spec fn vec_sum(a: Seq<i32>) -> int 
+        decreases a.len()
+    {
+        if a.len() == 0 {
+            0
+        } else {
+            a[0] + vec_sum(a.skip(1))
+        }
+    }
+
+    fn mean(a: Vec<i32>) -> (result: i32)
+        requires a.len() > 0,
+        ensures (result as int) * (a.len() as int) == vec_sum(a@)
+    ```
+    
+    This captures the mathematical property that mean × count = sum, which is the core relationship for arithmetic mean.
 
     Make sure the preamble starts with `use vstd::prelude::*;`, immediately followed by a `verus!` block, which starts in the preamble, and closes in the postamble, containing `fn main()`.
 
@@ -290,20 +350,9 @@ yaml_instructions:
     
     **EXAMPLES FROM REFERENCE TRANSLATIONS**:
     
+    **Example 1: Array Manipulation (removeElement)**
     Lean YAML structure:
     ```yaml
-    vc-description: |-
-      /- 
-      -----Description-----
-      This task requires writing a Lean 4 method...
-      -/
-    vc-preamble: |-
-      @[reducible, simp]
-      def removeElement_precond (s : Array Int) (k : Nat) : Prop :=
-        k < s.size
-    vc-helpers: |-
-      -- <vc-helpers>
-      -- </vc-helpers>
     vc-signature: |-
       def removeElement (s : Array Int) (k : Nat) (h_precond : removeElement_precond (s) (k)) : Array Int :=
     vc-implementation: |-
@@ -312,27 +361,12 @@ yaml_instructions:
       -- </vc-implementation>
     vc-condition: |-
       @[reducible, simp]
-      def removeElement_postcond ... :=
-        result.size = s.size - 1 ∧ ...
-      theorem removeElement_spec_satisfied ... :=
-    vc-proof: |-
-      -- <vc-proof>
-        sorry
-      -- </vc-proof>
-    vc-postamble: |-
-      -- </vc-postamble>
+      def removeElement_postcond (s : Array Int) (k : Nat) (result: Array Int) (h_precond : removeElement_precond (s) (k)) :=
+        result.size = s.size - 1 ∧ (∀ i, i < k → result[i]! = s[i]!) ∧ (∀ i, i < result.size → i ≥ k → result[i]! = s[i + 1]!)
     ```
     
-    Becomes Verus YAML structure:
+    Becomes Verus YAML:
     ```yaml
-    vc-description: |-
-      This task requires writing a Verus method...
-    vc-preamble: |-
-      use vstd::prelude::*;
-
-      verus! {
-    vc-helpers: |-
-
     vc-spec: |-
       fn remove_element(s: &Vec<i32>, k: usize) -> (result: Vec<i32>)
           requires k < s.len(),
@@ -345,6 +379,59 @@ yaml_instructions:
           // impl-start
           assume(false);
           Vec::new()
+          // impl-end
+      }
+    ```
+
+    **Example 2: Mathematical Computation (mean)**
+    Lean YAML structure:
+    ```yaml
+    vc-signature: |-
+      def mean {n : Nat} (a : Vector Int (n + 1)) : Id Int :=
+    vc-implementation: |-
+      -- <vc-implementation>
+        sorry
+      -- </vc-implementation>
+    vc-condition: |-
+      theorem mean_spec {n : Nat} (a : Vector Int (n + 1)) :
+          ⦃⌜True⌝⦄
+          mean a
+          ⦃⇓result => ⌜(result as int) * (n + 1) = (List.range (n + 1)).foldl (fun acc i => acc + a.get ⟨i, by sorry⟩) 0⌝⦄ := by
+    vc-proof: |-
+      -- <vc-proof>
+        sorry
+      -- </vc-proof>
+    ```
+    
+    Becomes Verus YAML structure:
+    ```yaml
+    vc-description: |-
+      Computes the arithmetic mean of all elements in a non-empty vector.
+    vc-preamble: |-
+      use vstd::prelude::*;
+
+      verus! {
+    vc-helpers: |-
+
+    vc-spec: |-
+      spec fn vec_sum(a: Seq<i32>) -> int 
+          decreases a.len()
+      {
+          if a.len() == 0 {
+              0
+          } else {
+              a[0] + vec_sum(a.skip(1))
+          }
+      }
+
+      fn mean(a: Vec<i32>) -> (result: i32)
+          requires a.len() > 0,
+          ensures (result as int) * (a.len() as int) == vec_sum(a@)
+    vc-code: |-
+      {
+          // impl-start
+          assume(false);
+          0
           // impl-end
       }
     vc-postamble: |-
@@ -371,6 +458,8 @@ yaml_instructions:
 
     **CRITICAL OUTPUT RULE**: Your response must ONLY contain raw YAML content. Do NOT wrap it in code blocks. Output the YAML directly starting with one of: vc-description: |-, vc-preamble: |-, vc-helpers: |-, vc-spec: |-, vc-code: |-, or vc-postamble: |-
 
+    **FORBIDDEN**: DO NOT create vc-condition, vc-signature, vc-implementation, or vc-proof fields in your output. These are INPUT fields only. All specifications from vc-condition must be extracted and placed in vc-spec.
+
     **MANDATORY YAML STRUCTURE**: Your output must follow this exact format:
     vc-description: |-
       [description text here]
@@ -379,7 +468,7 @@ yaml_instructions:
     vc-helpers: |-
       [helper functions here, usually empty]
     vc-spec: |-
-      [function signature with contracts here]
+      [function signature with contracts extracted from INPUT vc-condition here]
     vc-code: |-
       [placeholder implementation here]
     vc-postamble: |-

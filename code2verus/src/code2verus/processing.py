@@ -123,29 +123,6 @@ async def process_item(
                 rust_for_verification,
             ) = await translate_code_to_verus(source_code, source_language, is_yaml)
 
-            # Save the main output (YAML for YAML files, Rust for regular files)
-            verus_output_path = artifact_path / output_filename
-            with open(verus_output_path, "w") as verus_file:
-                verus_file.write(verus_code)
-            logfire.info(f"Generated Verus code saved to: {verus_output_path}")
-
-            # For YAML files, also save the Rust code in the files folder for verification
-            if is_yaml:
-                # Create the files folder equivalent path
-                files_path = derive_output_path(
-                    benchmark_path, benchmark_name, is_yaml=False
-                )
-                rust_output_path = (
-                    files_path
-                    / relative_path.parent
-                    / Path(output_filename).with_suffix(".rs").name
-                )
-                rust_output_path.parent.mkdir(parents=True, exist_ok=True)
-
-                with open(rust_output_path, "w") as rust_file:
-                    rust_file.write(rust_for_verification)
-                logfire.info(f"Generated Rust code saved to: {rust_output_path}")
-
             logfire.info(f"Translation took {num_iterations} iterations")
 
             # Do a final verification to get the verification status for reporting
@@ -161,6 +138,37 @@ async def process_item(
                 benchmark_name,
                 benchmark_path,
             )
+
+            # Determine subfolder based on compilation success
+            compilation_status = (
+                "compiling" if verification_success else "non_compiling"
+            )
+
+            # Save the main output (YAML for YAML files, Rust for regular files) in appropriate subfolder
+            status_artifact_path = artifact_path / compilation_status
+            status_artifact_path.mkdir(parents=True, exist_ok=True)
+            verus_output_path = status_artifact_path / output_filename
+            with open(verus_output_path, "w") as verus_file:
+                verus_file.write(verus_code)
+            logfire.info(f"Generated Verus code saved to: {verus_output_path}")
+
+            # For YAML files, also save the Rust code in the files folder for verification
+            if is_yaml:
+                # Create the files folder equivalent path with compilation status
+                files_path = derive_output_path(
+                    benchmark_path, benchmark_name, is_yaml=False
+                )
+                rust_status_path = (
+                    files_path / relative_path.parent / compilation_status
+                )
+                rust_output_path = (
+                    rust_status_path / Path(output_filename).with_suffix(".rs").name
+                )
+                rust_output_path.parent.mkdir(parents=True, exist_ok=True)
+
+                with open(rust_output_path, "w") as rust_file:
+                    rust_file.write(rust_for_verification)
+                logfire.info(f"Generated Rust code saved to: {rust_output_path}")
 
             # Debug logging for verification results
             logfire.info(
