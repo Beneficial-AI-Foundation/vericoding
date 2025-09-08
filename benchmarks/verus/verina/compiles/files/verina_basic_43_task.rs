@@ -1,0 +1,32 @@
+/* This task requires writing a Verus method that computes the sum of the fourth power of the first n odd natural numbers. In other words, given a non-negative integer n, the method should calculate the sum: 1⁴ + 3⁴ + 5⁴ + ... for the first n odd numbers.
+
+-----Input-----
+The input consists of:
+n: A non-negative natural number representing the number of odd natural numbers to consider.
+
+-----Output-----
+The output is a natural number:
+Returns the sum of the fourth power of the first n odd natural numbers.
+
+-----Note-----
+The input n is assumed to be a non-negative integer.
+The correctness of the result is established by a theorem that relates the computed sum to a specific formula. */
+
+use vstd::prelude::*;
+
+verus! {
+spec fn sum_of_fourth_power_of_odd_numbers(n: nat) -> nat
+{
+    // impl-start
+    0
+    // impl-end
+}
+
+proof fn sum_of_fourth_power_of_odd_numbers_spec(n: nat)
+    ensures
+        15 * sum_of_fourth_power_of_odd_numbers(n) == n * (2 * n + 1) * (7 + 24 * (n * n * n) - 12 * (n * n) - 14 * n),
+{
+    assume(false); // TODO: Remove this line and implement the proof
+}
+}
+fn main() {}

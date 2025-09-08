@@ -1,0 +1,38 @@
+/* This task requires writing a Verus method that finds the indices of two numbers in an array that add up to a target value. Given an array of integers and a target integer, the function should return the indices of the two numbers such that they add up to the target.
+
+You may assume that each input has exactly one solution, and you may not use the same element twice.
+
+-----Input-----
+The input consists of:
+nums: An array of integers.
+target: An integer representing the target sum.
+
+-----Output-----
+The output is an array of two integers:
+Returns the indices of the two numbers in the array that add up to the target. The indices should be sorted. */
+
+use vstd::prelude::*;
+
+verus! {
+fn two_sum(nums: &Vec<i32>, target: i32) -> (result: Vec<usize>)
+    requires 
+        nums.len() >= 2,
+        exists|i: int, j: int| 0 <= j < i < nums.len() && nums[i] + nums[j] == target,
+        forall|i1: int, j1: int, i2: int, j2: int| 
+            (0 <= j1 < i1 < nums.len() && nums[i1] + nums[j1] == target &&
+             0 <= j2 < i2 < nums.len() && nums[i2] + nums[j2] == target) ==> 
+            (i1 == i2 && j1 == j2),
+    ensures
+        result.len() == 2,
+        result[0] < nums.len(),
+        result[1] < nums.len(),
+        result[0] < result[1],
+        nums[result[0] as int] + nums[result[1] as int] == target,
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

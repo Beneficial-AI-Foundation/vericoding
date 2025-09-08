@@ -1,0 +1,44 @@
+vc-description: |-
+  /*
+  The problem involves finding the first occurrence of a specified key in an array of integers. Your task is to identify the index at which the key appears for the first time in the array and return that index. If the key is not found, return -1.
+  
+  -----Input-----
+  The input consists of:
+  • a: An array of integers.
+  • key: An integer representing the value to search for in the array.
+  
+  -----Output-----
+  The output is an integer which represents:
+  • The index in the array where the key is found, provided that the index is in the range [0, a.size).
+  • -1 if the key is not present in the array.
+  In addition, if the output is not -1, then a[(Int.toNat result)]! equals key and every element in the array prior to this index is not equal to key.
+  
+  -----Note-----
+  The function performs a linear search beginning at index 0 and returns the first occurrence of the key. There are no additional preconditions on the input array; it can be empty or non-empty.
+  */
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn find(a: &Vec<i32>, key: i32) -> (result: i32)
+      ensures
+          (result == -1 || (result >= 0 && result < a.len())),
+          result != -1 ==> (a[result as int] == key && forall|i: int| 0 <= i < result ==> a[i] != key),
+          result == -1 ==> forall|i: int| 0 <= i < a.len() ==> a[i] != key,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

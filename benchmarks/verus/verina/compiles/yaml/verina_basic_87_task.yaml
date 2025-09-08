@@ -1,0 +1,75 @@
+vc-description: |-
+  /*
+  This problem requires sorting an array of integers into non-decreasing order, ensuring that the output contains exactly the same elements as the input (i.e., it is a permutation of the original array).
+  
+  Input: The input consists of an array of integers (Vec<i32>).
+  
+  Output: The output is an array of integers that is:
+  • Sorted in non-decreasing order.
+  • A permutation of the input, meaning it contains exactly the same elements (with the same multiplicities) as the original array.
+  
+  Note: It is assumed that the input array is valid and that the swap operations, along with the helper functions, correctly implement the selection sort algorithm.
+  */
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  fn find_min_index_in_range(arr: &Vec<i32>, start: usize, finish: usize) -> (result: usize)
+      requires 
+          start <= finish,
+          finish <= arr.len(),
+          start < arr.len(),
+      ensures
+          start <= result < finish,
+  {
+      // impl-start
+      assume(false);
+      start
+      // impl-end
+  }
+
+  fn swap(a: &mut Vec<i32>, i: usize, j: usize)
+      requires
+          old(a).len() > 0,
+          i < old(a).len(),
+          j < old(a).len(),
+      ensures
+          a.len() == old(a).len(),
+          a[i as int] == old(a)[j as int],
+          a[j as int] == old(a)[i as int],
+          forall|k: int| 0 <= k < a.len() && k != i && k != j ==> a[k] == old(a)[k],
+  {
+      // impl-start
+      assume(false);
+      // impl-end
+  }
+
+vc-spec: |-
+  fn selection_sort(a: &Vec<i32>) -> (result: Vec<i32>)
+      ensures
+          result.len() == a.len(),
+          forall|i: int, j: int| 0 <= i <= j < result.len() ==> result[i] <= result[j],
+          result@ =~= a@,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // Invalid Inputs: []
+      // Tests:
+      // Test 1: input a = vec![3, 1, 2], expected vec![1, 2, 3]
+      // Test 2: input a = vec![0], expected vec![0] 
+      // Test 3: input a = vec![5, 4, 3, 2, 1], expected vec![1, 2, 3, 4, 5]
+      // Test 4: input a = vec![2, 2, 1, 4], expected vec![1, 2, 2, 4]
+      // Test 5: input a = vec![10, -5, 0, 3], expected vec![-5, 0, 3, 10]
+  }

@@ -1,0 +1,98 @@
+/* This task requires writing a Verus method that determines whether an array of integers contains only one distinct element. The method should return true if the array is empty or if every element in the array is the same, and false if there are at least two different elements.
+
+-----Input-----
+The input consists of:
+a: An array of integers.
+
+-----Output-----
+The output is a Boolean value:
+Returns true if the array is empty or if all elements in the array are identical.
+Returns false if the array contains at least two distinct elements.
+
+-----Note-----
+The input array is assumed to be non-null. */
+
+use vstd::prelude::*;
+
+verus! {
+fn has_only_one_distinct_element(a: &Vec<i32>) -> (result: bool)
+    requires a.len() > 0,
+    ensures
+        result ==> (forall|i: int, j: int| 0 <= i < a.len() && 0 <= j < a.len() ==> a[i] == a[j]),
+        !result ==> (exists|i: int| 0 <= i < a.len() && #[trigger] a[i] != a[0]),
+{
+    // impl-start
+    assume(false);
+    false
+    // impl-end
+}
+}
+fn main() {
+    /*
+    -- Invalid Inputs
+    [
+        {
+            "input": {
+                "a": "#[]"
+            }
+        }
+    ]
+    -- Tests
+    [
+        {
+            "input": {
+                "a": "#[1, 1, 1]"
+            },
+            "expected": true,
+            "unexpected": [
+                false
+            ]
+        },
+        {
+            "input": {
+                "a": "#[1, 2, 1]"
+            },
+            "expected": false,
+            "unexpected": [
+                true
+            ]
+        },
+        {
+            "input": {
+                "a": "#[3, 4, 5, 6]"
+            },
+            "expected": false,
+            "unexpected": [
+                true
+            ]
+        },
+        {
+            "input": {
+                "a": "#[7]"
+            },
+            "expected": true,
+            "unexpected": [
+                false
+            ]
+        },
+        {
+            "input": {
+                "a": "#[0, 0, 0, 0]"
+            },
+            "expected": true,
+            "unexpected": [
+                false
+            ]
+        },
+        {
+            "input": {
+                "a": "#[0, 0, 1, 0]"
+            },
+            "expected": false,
+            "unexpected": [
+                true
+            ]
+        }
+    ]
+    */
+}

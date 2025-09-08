@@ -1,0 +1,44 @@
+vc-description: |-
+  /*
+  This task involves creating a function that swaps two integer values. Given two integers, the function should return a pair where the first element is the second input value and the second element is the first input value.
+  
+  -----Input-----
+  The input consists of two integers:
+  • X: An integer representing the first value.
+  • Y: An integer representing the second value.
+  
+  -----Output-----
+  The output is a pair (i32, i32) that:
+  • Contains the original Y as the first element.
+  • Contains the original X as the second element.
+  
+  -----Note-----
+  There are no additional preconditions. The function simply swaps the two input values.
+  */
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+
+vc-spec: |-
+  fn swap(x: i32, y: i32) -> (result: (i32, i32))
+      ensures
+          result.0 == y,
+          result.1 == x,
+          x != y ==> result.0 != x && result.1 != y,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      (0, 0)
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}
