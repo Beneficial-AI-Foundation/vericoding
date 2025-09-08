@@ -32,118 +32,7 @@ from vericoding.utils.reporting import print_summary
 load_environment()
 logging.basicConfig(level=logging.INFO, format="%(message)s")
 
-def get_tool_version(config: ProcessingConfig) -> str:
-    """Get the version of the language tool being used."""
-    try:
-        tool_path = get_tool_path(config)
-        if config.language == "verus":
-            result = subprocess.run([tool_path, "--version"], capture_output=True, text=True, timeout=10)
-        elif config.language == "lean":
-            result = subprocess.run([tool_path, "--version"], capture_output=True, text=True, timeout=10)
-        elif config.language == "dafny":
-            result = subprocess.run([tool_path, "/version"], capture_output=True, text=True, timeout=10)
-        else:
-            return f"Unknown tool version for {config.language}"
-        
-        if result.returncode == 0:
-            return result.stdout.strip()
-        else:
-            return f"Failed to get version: {result.stderr.strip()}"
-    except Exception as e:
-        return f"Error getting version: {str(e)}"
 
-
-def get_experiment_metadata(config: ProcessingConfig, args) -> dict:
-    """Collect comprehensive metadata for the experiment."""
-    # Get git information
-    git_url = get_git_remote_url()
-    git_branch = get_current_branch()
-    
-    # Get git commit hash
-    git_commit = None
-    try:
-        result = subprocess.run(
-            ["git", "rev-parse", "HEAD"], 
-            capture_output=True, text=True, timeout=5
-        )
-        if result.returncode == 0:
-            git_commit = result.stdout.strip()
-    except Exception:
-        pass
-    
-    # Get hostname
-    hostname = platform.node()
-    
-    # Get tool version
-    tool_version = get_tool_version(config)
-    
-    # Determine input type based on directory contents
-    input_type = determine_input_type(config.files_dir)
-    
-    return {
-        # Basic experiment info
-        "language": config.language,
-        "max_iterations": config.max_iterations,
-        "llm_provider": config.llm_provider,
-        "llm_model": config.llm_model or f"{config.llm_provider}-default",
-        "strict_spec_verification": config.strict_spec_verification,
-        "max_workers": config.max_workers,
-        
-        # File and benchmark info  
-        "files_dir": config.files_dir,
-        "input_type": input_type,
-        "benchmark_files": len(find_spec_files(config)),
-        
-        # Tool versions and environment
-        "tool_version": tool_version,
-        "python_version": platform.python_version(),
-        "platform": platform.system(),
-        "platform_version": platform.release(),
-        "hostname": hostname,
-        
-        # Git information
-        "git_url": git_url,
-        "git_branch": git_branch, 
-        "git_commit": git_commit,
-        
-        # Run configuration
-        "api_rate_limit_delay": config.api_rate_limit_delay,
-        "debug_mode": config.debug_mode,
-        "timestamp": datetime.now().isoformat(),
-        
-        # Command line arguments (for reproducibility)
-        "args": vars(args),
-    }
-
-
-def determine_input_type(files_dir: str) -> str:
-    """Determine the input type based on directory contents or name."""
-    files_dir_name = Path(files_dir).name.lower()
-    
-    if "spec" in files_dir_name:
-        return "spec"
-    elif "vibe" in files_dir_name:
-        return "vibe"
-    else:
-        # Try to detect from file contents or structure
-        spec_keywords = ["requires", "ensures", "invariant", "precondition", "postcondition"]
-        try:
-            # Sample a few files to detect type
-            # Look for files in the directory to sample\n            files_path = Path(files_dir)\n            sample_files = []\n            if files_path.exists():\n                for ext in [\"*.dfy\", \"*.rs\", \"*.lean\"]:\n                    sample_files.extend(list(files_path.rglob(ext))[:2])
-            if spec_files:
-                sample_file = spec_files[0] if len(spec_files) == 1 else spec_files[:min(3, len(spec_files))]
-                for file_path in (sample_file if isinstance(sample_file, list) else [sample_file]):
-                    try:
-                        with open(file_path, 'r') as f:
-                            content = f.read().lower()
-                            if any(keyword in content for keyword in spec_keywords):
-                                return "spec"
-                    except Exception:
-                        continue
-        except Exception:
-            pass
-        
-        return "both"  # Default fallback
 
 
 def log_experiment_results_to_wandb(
@@ -373,7 +262,7 @@ def main():
     print_startup_info(config, resolved_model)
     
     # Continue with the rest of initialization
-    wandb_run = init_wandb_run(config, args.no_wandb, resolved_model)
+    wandb_run = init_wandb_run(config, args, args.no_wandb, resolved_model)
     # Use mode-based prompt file selection unless a non-default prompts_file is specified
     prompts_file = None if config.language_config.prompts_file == "prompts.yaml" else config.language_config.prompts_file
     prompt_loader = init_prompt_loader(config.language, config.mode, prompts_file)
