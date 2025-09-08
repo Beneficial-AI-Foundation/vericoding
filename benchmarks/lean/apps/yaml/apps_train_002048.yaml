@@ -1,0 +1,79 @@
+vc-description: |-
+  /-
+  While discussing a proper problem A for a Codeforces Round, Kostya created a cyclic array of positive integers $a_1, a_2, \ldots, a_n$. Since the talk was long and not promising, Kostya created a new cyclic array $b_1, b_2, \ldots, b_{n}$ so that $b_i = (a_i \mod a_{i + 1})$, where we take $a_{n+1} = a_1$. Here $mod$ is the modulo operation. When the talk became interesting, Kostya completely forgot how array $a$ had looked like. Suddenly, he thought that restoring array $a$ from array $b$ would be an interesting problem (unfortunately, not A).
+  
+  -----Input-----
+  
+  The first line contains a single integer $n$ ($2 \le n \le 140582$) — the length of the array $a$.
+  
+  The second line contains $n$ integers $b_1, b_2, \ldots, b_{n}$ ($0 \le b_i \le 187126$).
+  
+  -----Output-----
+  
+  If it is possible to restore some array $a$ of length $n$ so that $b_i = a_i \mod a_{(i \mod n) + 1}$ holds for all $i = 1, 2, \ldots, n$, print «YES» in the first line and the integers $a_1, a_2, \ldots, a_n$ in the second line. All $a_i$ should satisfy $1 \le a_i \le 10^{18}$. We can show that if an answer exists, then an answer with such constraint exists as well.
+  
+  It it impossible to restore any valid $a$, print «NO» in one line.
+  
+  You can print each letter in any case (upper or lower).
+  
+  -----Examples-----
+  Input
+  4
+  1 3 1 0
+  
+  Output
+  YES
+  1 3 5 2
+  
+  Input
+  2
+  4 4
+  
+  Output
+  NO
+  
+  -----Note-----
+  
+  In the first example:  $1 \mod 3 = 1$  $3 \mod 5 = 3$  $5 \mod 2 = 1$  $2 \mod 1 = 0$
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def solve_cyclic_array (n : Nat) (b : List Nat) : String × List Nat := sorry
+  
+  theorem solve_cyclic_array_properties {n : Nat} {b : List Nat} 
+    (h1: n ≥ 2) (h2: n = b.length) (h3: ∀ x ∈ b, x ≤ 100) :
+    let (status, arr) := solve_cyclic_array n b
+    if status = "YES" then
+      (arr.length = n ∧ 
+       (∀ i < n, arr[i]! % arr[(i+1)%n]! = b[i]!) ∧
+       (∀ x ∈ arr, x > 0))
+    else true := sorry
+
+vc-theorems: |-
+  theorem solve_cyclic_array_zeros (n : Nat) (h1: n ≥ 2) (h2: n ≤ 10) :
+    let b := List.replicate n 0
+    let (status, arr) := solve_cyclic_array n b
+    status = "YES" ∧ arr = List.replicate n 1 := sorry
+  
+  theorem solve_cyclic_array_constant (n : Nat) (val : Nat)
+    (h1: n ≥ 2) (h2: n ≤ 10) (h3: val ≥ 1) (h4: val ≤ 100) :
+    let b := List.replicate n val  
+    let (status, arr) := solve_cyclic_array n b
+    status = "NO" ∧ arr = [] := sorry
+  
+  /-
+  info: n
+  -/
+  -- #guard_msgs in
+  -- #eval len arr
+
+vc-postamble: |-
+  -- Apps difficulty: competition
+  -- Assurance level: unguarded
+

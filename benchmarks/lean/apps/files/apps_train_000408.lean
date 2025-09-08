@@ -1,0 +1,73 @@
+/-
+Given a positive integer n and you can do operations as follow:
+
+If n is even, replace n with n/2.
+If n is odd, you can replace n with either n + 1 or n - 1.
+
+What is the minimum number of replacements needed for n to become 1?
+
+Example 1:
+
+Input:
+8
+
+Output:
+3
+
+Explanation:
+8 -> 4 -> 2 -> 1
+
+Example 2:
+
+Input:
+7
+
+Output:
+4
+
+Explanation:
+7 -> 8 -> 4 -> 2 -> 1
+or
+7 -> 6 -> 3 -> 2 -> 1
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def integer_replacement (n : Nat) : Nat := sorry
+
+theorem integer_replacement_terminates (n : Nat) (h : n > 0) :
+  integer_replacement n ≥ 0 := sorry
+
+theorem integer_replacement_is_nat (n : Nat) (h : n > 0) :
+  integer_replacement n = integer_replacement n := sorry
+
+theorem integer_replacement_base_case_one :
+  integer_replacement 1 = 0 := sorry
+
+theorem integer_replacement_base_case_two :
+  integer_replacement 2 = 1 := sorry
+
+theorem integer_replacement_power_of_two (n : Nat) (h : n > 0) :
+  integer_replacement (2^n) = n := sorry
+
+/-
+info: 3
+-/
+-- #guard_msgs in
+-- #eval integer_replacement 8
+
+/-
+info: 4
+-/
+-- #guard_msgs in
+-- #eval integer_replacement 7
+
+/-
+info: 2
+-/
+-- #guard_msgs in
+-- #eval integer_replacement 3
+
+-- Apps difficulty: interview
+-- Assurance level: guarded_and_plausible

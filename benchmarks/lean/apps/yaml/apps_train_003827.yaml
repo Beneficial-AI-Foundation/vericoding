@@ -1,0 +1,61 @@
+vc-description: |-
+  /-
+  Create a function that takes a string and returns that
+  string with the first half lowercased and the last half uppercased.
+  
+  eg: foobar == fooBAR
+  
+  If it is an odd number then 'round' it up to find which letters to uppercase. See example below.
+  
+      sillycase("brian")  
+      //         --^-- midpoint  
+      //         bri    first half (lower-cased)  
+      //            AN second half (upper-cased)
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def String.sillycase (s : String) : String := sorry
+  
+  theorem sillycase_preserves_length (s : String) :
+    s.length > 0 → String.length (s.sillycase) = String.length s := sorry
+
+vc-theorems: |-
+  theorem sillycase_preserves_chars (s : String) :
+    s.length > 0 → String.toLower (s.sillycase) = String.toLower s := sorry
+  
+  theorem sillycase_first_half (s : String) (h : s.length > 0) :
+    let half := (s.length + 1) / 2;
+    String.toLower (String.take (s.sillycase) half) = String.toLower (String.take s half) := sorry
+  
+  theorem sillycase_second_half (s : String) (h : s.length > 0) :
+    let half := (s.length + 1) / 2;
+    String.toUpper (String.drop (s.sillycase) half) = String.toUpper (String.drop s half) := sorry
+  
+  /-
+  info: 'fooBAR'
+  -/
+  -- #guard_msgs in
+  -- #eval sillycase "foobar"
+  
+  /-
+  info: 'briAN'
+  -/
+  -- #guard_msgs in
+  -- #eval sillycase "brian"
+  
+  /-
+  info: 'javasCRIPT'
+  -/
+  -- #guard_msgs in
+  -- #eval sillycase "jAvASCript"
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

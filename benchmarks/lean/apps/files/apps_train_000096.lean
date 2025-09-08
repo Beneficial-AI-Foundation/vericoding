@@ -1,0 +1,90 @@
+/-
+Your friend Jeff Zebos has been trying to run his new online company, but it's not going very well. He's not getting a lot of sales on his website which he decided to call Azamon. His big problem, you think, is that he's not ranking high enough on the search engines. If only he could rename his products to have better names than his competitors, then he'll be at the top of the search results and will be a millionaire.
+
+After doing some research, you find out that search engines only sort their results lexicographically. If your friend could rename his products to lexicographically smaller strings than his competitor's, then he'll be at the top of the rankings!
+
+To make your strategy less obvious to his competitors, you decide to swap no more than two letters of the product names.
+
+Please help Jeff to find improved names for his products that are lexicographically smaller than his competitor's!
+
+Given the string $s$ representing Jeff's product name and the string $c$ representing his competitor's product name, find a way to swap at most one pair of characters in $s$ (that is, find two distinct indices $i$ and $j$ and swap $s_i$ and $s_j$) such that the resulting new name becomes strictly lexicographically smaller than $c$, or determine that it is impossible.
+
+Note: String $a$ is strictly lexicographically smaller than string $b$ if and only if one of the following holds:  $a$ is a proper prefix of $b$, that is, $a$ is a prefix of $b$ such that $a \neq b$;  There exists an integer $1 \le i \le \min{(|a|, |b|)}$ such that $a_i < b_i$ and $a_j = b_j$ for $1 \le j < i$. 
+
+-----Input-----
+
+The first line of input contains a single integer $t$ ($1 \le t \le 1500$) denoting the number of test cases. The next lines contain descriptions of the test cases.
+
+Each test case consists of a single line containing two space-separated strings $s$ and $c$ ($2 \le |s| \le 5000, 1 \le |c| \le 5000$). The strings $s$ and $c$ consists of uppercase English letters.
+
+It is guaranteed that the sum of $|s|$ in the input is at most $5000$ and the sum of the $|c|$ in the input is at most $5000$.
+
+-----Output-----
+
+For each test case, output a single line containing a single string, which is either  the new name which is obtained after swapping no more than one pair of characters that is strictly lexicographically smaller than $c$. In case there are many possible such strings, you can output any of them;  three dashes (the string "---" without quotes) if it is impossible. 
+
+-----Example-----
+Input
+3
+AZAMON APPLE
+AZAMON AAAAAAAAAAALIBABA
+APPLE BANANA
+
+Output
+AMAZON
+---
+APPLE
+
+-----Note-----
+
+In the first test case, it is possible to swap the second and the fourth letters of the string and the resulting string "AMAZON" is lexicographically smaller than "APPLE".
+
+It is impossible to improve the product's name in the second test case and satisfy all conditions.
+
+In the third test case, it is possible not to swap a pair of characters. The name "APPLE" is lexicographically smaller than "BANANA". Note that there are other valid answers, e.g., "APPEL".
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def improve_product_name (s c : String) : String := sorry
+
+theorem improve_result_is_valid (s c : String) :
+  let result := improve_product_name s c
+  (result = s ∨ result = "---" ∨ result.length = s.length) := sorry
+
+theorem improve_result_less_than_competitor (s c : String) :
+  let result := improve_product_name s c
+  (result ≠ "---" → result ≤ c) := sorry
+
+theorem improve_result_less_than_original (s c : String) :
+  let result := improve_product_name s c
+  (result ≠ "---" → result ≤ s) := sorry
+
+theorem improve_maintains_chars (s c : String) :
+  let result := improve_product_name s c
+  (result ≠ "---" ∧ result ≠ s → result.data = s.data) := sorry
+
+theorem improve_all_same_returns_self (s : String) (h : ∀ c ∈ s.data, c = 'A') :
+  improve_product_name s (s ++ "Z") = s := sorry
+
+/-
+info: 'AAZMON'
+-/
+-- #guard_msgs in
+-- #eval improve_product_name "AZAMON" "APPLE"
+
+/-
+info: '---'
+-/
+-- #guard_msgs in
+-- #eval improve_product_name "AZAMON" "AAAAAAAAAAALIBABA"
+
+/-
+info: 'APPLE'
+-/
+-- #guard_msgs in
+-- #eval improve_product_name "APPLE" "BANANA"
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

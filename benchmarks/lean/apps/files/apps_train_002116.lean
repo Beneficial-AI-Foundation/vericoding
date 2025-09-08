@@ -1,0 +1,87 @@
+/-
+Dima is a beginner programmer. During his working process, he regularly has to repeat the following operation again and again: to remove every second element from the array. One day he has been bored with easy solutions of this problem, and he has come up with the following extravagant algorithm.
+
+Let's consider that initially array contains n numbers from 1 to n and the number i is located in the cell with the index 2i - 1 (Indices are numbered starting from one) and other cells of the array are empty. Each step Dima selects a non-empty array cell with the maximum index and moves the number written in it to the nearest empty cell to the left of the selected one. The process continues until all n numbers will appear in the first n cells of the array. For example if n = 4, the array is changing as follows: [Image] 
+
+You have to write a program that allows you to determine what number will be in the cell with index x (1 ≤ x ≤ n) after Dima's algorithm finishes.
+
+-----Input-----
+
+The first line contains two integers n and q (1 ≤ n ≤ 10^18, 1 ≤ q ≤ 200 000), the number of elements in the array and the number of queries for which it is needed to find the answer.
+
+Next q lines contain integers x_{i} (1 ≤ x_{i} ≤ n), the indices of cells for which it is necessary to output their content after Dima's algorithm finishes.
+
+-----Output-----
+
+For each of q queries output one integer number, the value that will appear in the corresponding array cell after Dima's algorithm finishes.
+
+-----Examples-----
+Input
+4 3
+2
+3
+4
+
+Output
+3
+2
+4
+
+Input
+13 4
+10
+5
+4
+8
+
+Output
+13
+3
+8
+9
+
+-----Note-----
+
+The first example is shown in the picture.
+
+In the second example the final array is [1, 12, 2, 8, 3, 11, 4, 9, 5, 13, 6, 10, 7].
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def find_array_element (n : Nat) (x : Nat) : Nat :=
+sorry
+
+theorem find_array_element_in_bounds {n x : Nat} (hn : n > 0) (hx : x > 0) (hxn : x ≤ n) : 
+  1 ≤ find_array_element n x ∧ find_array_element n x ≤ n :=
+sorry
+
+theorem find_array_element_first {n : Nat} (hn : n > 0) :
+  find_array_element n 1 = 1 :=
+sorry
+
+theorem find_array_element_bijective {n : Nat} (hn : n > 1) :
+  ∀ y : Nat, 1 ≤ y ∧ y ≤ n → ∃ x : Nat, 1 ≤ x ∧ x ≤ n ∧ find_array_element n x = y :=
+sorry
+
+/-
+info: expected[i]
+-/
+-- #guard_msgs in
+-- #eval find_array_element 4 queries[i]
+
+/-
+info: expected[i]
+-/
+-- #guard_msgs in
+-- #eval find_array_element 13 queries[i]
+
+/-
+info: expected[i]
+-/
+-- #guard_msgs in
+-- #eval find_array_element 3 queries[i]
+
+-- Apps difficulty: competition
+-- Assurance level: unguarded

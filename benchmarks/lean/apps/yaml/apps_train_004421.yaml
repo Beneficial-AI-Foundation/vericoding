@@ -1,0 +1,66 @@
+vc-description: |-
+  /-
+  Convert a hash into an array. Nothing more, Nothing less.
+  
+  ```
+  {name: 'Jeremy', age: 24, role: 'Software Engineer'}
+  ```
+  should be converted into
+  
+  ```
+  [["name", "Jeremy"], ["age", 24], ["role", "Software Engineer"]]
+  ```
+  
+  ```if:python,javascript,crystal
+  **Note**: The output array should be sorted alphabetically.
+  ```
+  
+  Good Luck!
+  -/
+
+vc-preamble: |-
+  def convert_hash_to_array (d: List (String × (String ⊕ Int))) : List (String × (String ⊕ Int)) :=
+    sorry
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def LePair (p1 p2: String × (String ⊕ Int)) : Prop :=
+    p1.1 ≤ p2.1
+
+vc-theorems: |-
+  theorem convert_hash_output_is_sorted (d: List (String × (String ⊕ Int))) :
+    let result := convert_hash_to_array d
+    List.Pairwise LePair result ∧ 
+    (∀ x ∈ result, ∃ k v, x = (k, v)) ∧
+    result = d :=
+  sorry
+  
+  theorem convert_hash_empty_dict :
+    convert_hash_to_array [] = [] :=
+  sorry
+  
+  /-
+  info: expected1
+  -/
+  -- #guard_msgs in
+  -- #eval convert_hash_to_array {"name": "Jeremy"}
+  
+  /-
+  info: expected2
+  -/
+  -- #guard_msgs in
+  -- #eval convert_hash_to_array {"name": "Jeremy", "age": 24, "role": "Software Engineer"}
+  
+  /-
+  info: expected3
+  -/
+  -- #guard_msgs in
+  -- #eval convert_hash_to_array {}
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

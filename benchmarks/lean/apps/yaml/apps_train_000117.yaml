@@ -1,0 +1,110 @@
+vc-description: |-
+  /-
+  Assume that you have $k$ one-dimensional segments $s_1, s_2, \dots s_k$ (each segment is denoted by two integers — its endpoints). Then you can build the following graph on these segments. The graph consists of $k$ vertexes, and there is an edge between the $i$-th and the $j$-th vertexes ($i \neq j$) if and only if the segments $s_i$ and $s_j$ intersect (there exists at least one point that belongs to both of them).
+  
+  For example, if $s_1 = [1, 6], s_2 = [8, 20], s_3 = [4, 10], s_4 = [2, 13], s_5 = [17, 18]$, then the resulting graph is the following: [Image] 
+  
+  A tree of size $m$ is good if it is possible to choose $m$ one-dimensional segments so that the graph built on these segments coincides with this tree.
+  
+  You are given a tree, you have to find its good subtree with maximum possible size. Recall that a subtree is a connected subgraph of a tree.
+  
+  Note that you have to answer $q$ independent queries.
+  
+  -----Input-----
+  
+  The first line contains one integer $q$ ($1 \le q \le 15 \cdot 10^4$) — the number of the queries. 
+  
+  The first line of each query contains one integer $n$ ($2 \le n \le 3 \cdot 10^5$) — the number of vertices in the tree.
+  
+  Each of the next $n - 1$ lines contains two integers $x$ and $y$ ($1 \le x, y \le n$) denoting an edge between vertices $x$ and $y$. It is guaranteed that the given graph is a tree.
+  
+  It is guaranteed that the sum of all $n$ does not exceed $3 \cdot 10^5$.
+  
+  -----Output-----
+  
+  For each query print one integer — the maximum size of a good subtree of the given tree.
+  
+  -----Example-----
+  Input
+  1
+  10
+  1 2
+  1 3
+  1 4
+  2 5
+  2 6
+  3 7
+  3 8
+  4 9
+  4 10
+  
+  Output
+  8
+  
+  -----Note-----
+  
+  In the first query there is a good subtree of size $8$. The vertices belonging to this subtree are ${9, 4, 10, 2, 5, 1, 6, 3}$.
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def find_max_good_subtree (n: Nat) (edges: List (Nat × Nat)) : Nat :=
+    sorry
+  
+  -- For paths
+
+vc-theorems: |-
+  theorem find_max_good_subtree_path_positive (n: Nat) (h: n > 0) (h2: n ≤ 100)
+      (edges: List (Nat × Nat)) (h3: edges = List.map (fun i => (i, i+1)) (List.range (n-1))) :
+      find_max_good_subtree n edges > 0 :=
+    sorry
+  
+  theorem find_max_good_subtree_small_path (n: Nat) (h: n ≤ 3) (h2: n > 0)
+      (edges: List (Nat × Nat)) (h3: edges = List.map (fun i => (i, i+1)) (List.range (n-1))) :
+      find_max_good_subtree n edges = n :=
+    sorry
+  
+  -- For star graphs
+  
+  theorem find_max_good_subtree_star (n: Nat) (h: n ≥ 2) (h2: n ≤ 50)
+      (edges: List (Nat × Nat)) (h3: edges = List.map (fun i => (1, i+1)) (List.range (n-1))) :
+      find_max_good_subtree n edges = n :=
+    sorry
+  
+  -- Basic cases
+  
+  theorem find_max_good_subtree_single_edge :
+      find_max_good_subtree 2 [(1, 2)] = 2 :=
+    sorry
+  
+  theorem find_max_good_subtree_triangle_plus_edge :
+      find_max_good_subtree 4 [(1, 2), (2, 3), (3, 1), (2, 4)] = 4 :=
+    sorry
+  
+  /-
+  info: 8
+  -/
+  -- #guard_msgs in
+  -- #eval find_max_good_subtree 10 [[1, 2], [1, 3], [1, 4], [2, 5], [2, 6], [3, 7], [3, 8], [4, 9], [4, 10]]
+  
+  /-
+  info: 3
+  -/
+  -- #guard_msgs in
+  -- #eval find_max_good_subtree 3 [[1, 2], [2, 3]]
+  
+  /-
+  info: 4
+  -/
+  -- #guard_msgs in
+  -- #eval find_max_good_subtree 4 [[1, 2], [1, 3], [1, 4]]
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+

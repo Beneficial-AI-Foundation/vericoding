@@ -1,0 +1,32 @@
+/-
+Help Johnny!
+He can't make his code work!
+Easy Code
+Johnny is trying to make a function that adds the sum of two encoded strings, but he can't find the error in his code! Help him!
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def add (s1 s2 : String) : Nat := sorry
+
+theorem add_commutative (s1 s2 : String) :
+  add s1 s2 = add s2 s1 := sorry
+
+theorem add_identity (s : String) :
+  add s "" = add "" s := sorry
+
+theorem add_associative (s1 s2 s3 : String) :
+  add (s1 ++ s2) s3 = add s1 (s2 ++ s3) := sorry
+
+theorem add_positive (s1 s2 : String) :
+  add s1 s2 ≥ 0 := sorry
+
+/-
+info: 195
+-/
+-- #guard_msgs in
+-- #eval add "a" "b"
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded_and_plausible

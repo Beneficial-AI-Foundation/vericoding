@@ -1,0 +1,78 @@
+/-
+There are $5$ cities in the country.
+The map of the country is given below.
+The tour starts from the red city.
+
+Each road is associated with a character.
+Initially, there is an empty string.
+Every time a road has been travelled the character associated gets appended to the string.
+At the green city either the string can be printed or the tour can be continued.
+In the problem, you are given a string tell whether it is possible to print the string while following the rules of the country?
+
+-----Input:-----
+- First line will contain $T$, number of testcases. Then the testcases follow. 
+- Each testcase contains a single line of input, a string $ s  $. The string consists only of $0's$ and $1's$.
+
+-----Output:-----
+For each testcase, output "YES" or "NO" depending on the input.
+
+-----Constraints-----
+- 
+$1 \leq T \leq 10000$
+- 
+$1 \leq length of each string \leq 10000$
+- 
+$ 1 \leq Summation length \leq 10^5$
+
+-----Sample Input:-----
+1
+100
+
+-----Sample Output:-----
+NO
+
+-----EXPLANATION:-----
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def solve_string_tour (s: String) : String := sorry
+
+theorem short_strings_return_no 
+    (s: String) 
+    (h: s.length < 4) :
+    solve_string_tour s = "NO" := sorry
+
+theorem strings_ending_1000_return_yes
+    (s: String)
+    (h1: s.length ≥ 4)
+    (h2: s.endsWith "1000") :
+    solve_string_tour s = "YES" := sorry
+
+theorem strings_not_ending_1000_return_no
+    (s: String)
+    (h1: s.length ≥ 4)
+    (h2: ¬ s.endsWith "1000") :
+    solve_string_tour s = "NO" := sorry
+
+/-
+info: 'NO'
+-/
+-- #guard_msgs in
+-- #eval solve_string_tour "100"
+
+/-
+info: 'YES'
+-/
+-- #guard_msgs in
+-- #eval solve_string_tour "1000"
+
+/-
+info: 'YES'
+-/
+-- #guard_msgs in
+-- #eval solve_string_tour "11000"
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

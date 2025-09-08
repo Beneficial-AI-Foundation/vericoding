@@ -1,0 +1,147 @@
+vc-description: |-
+  /-
+  A chess board is normally played with 16 pawns and 16 other pieces, for this kata a variant will be played with only the pawns.  All other pieces will not be on the board.  
+  For information on how pawns move, refer [here](http://www.chesscorner.com/tutorial/basic/pawn/pawn.htm)
+  
+  Write a function that can turn a list of pawn moves into a visual representation of the resulting board.  
+  A chess move will be represented by a string,
+  ```
+  "c3"
+  ```
+  This move represents a pawn moving to `c3`.  If it was white to move, the move would represent a pawn from `c2` moving to `c3`.  If it was black to move, a pawn would move from `c4` to `c3`, because black moves in the other direction.  
+  The first move in the list and every other move will be for white's pieces.
+  
+  The letter represents the column, while the number represents the row of the square where the piece is moving  
+  
+  Captures are represented differently from normal moves:
+  
+  ```
+  "bxc3"
+  ```
+  represents a pawn on the column represented by 'b' (the second column) capturing a pawn on `c3`.
+  
+  For the sake of this kata a chess board will be represented by a list like this one:  
+  ```
+  [[".",".",".",".",".",".",".","."],
+   ["p","p","p","p","p","p","p","p"],
+   [".",".",".",".",".",".",".","."],
+   [".",".",".",".",".",".",".","."],
+   [".",".",".",".",".",".",".","."],
+   [".",".",".",".",".",".",".","."],
+   ["P","P","P","P","P","P","P","P"],
+   [".",".",".",".",".",".",".","."]]
+  ```
+  Here is an example of the board with the squares labeled:
+  ```
+  [["a8","b8","c8","d8","e8","f8","g8","h8"],
+   ["a7","b7","c7","d7","e7","f7","g7","h7"],
+   ["a6","b6","c6","d6","e6","f6","g6","h6"],
+   ["a5","b5","c5","d5","e5","f5","g5","h5"],
+   ["a4","b4","c4","d4","e4","f4","g4","h4"],
+   ["a3","b3","c3","d3","e3","f3","g3","h3"],
+   ["a2","b2","c2","d2","e2","f2","g2","h2"],
+   ["a1","b1","c1","d1","e1","f1","g1","h1"]]
+  ```
+  White pawns are represented by capital `'P'` while black pawns are lowercase `'p'`.  
+  
+  A few examples
+  ```
+  If the list/array of moves is: ["c3"]
+  >>>
+  [[".",".",".",".",".",".",".","."],
+   ["p","p","p","p","p","p","p","p"],
+   [".",".",".",".",".",".",".","."],
+   [".",".",".",".",".",".",".","."],
+   [".",".",".",".",".",".",".","."],
+   [".",".","P",".",".",".",".","."],
+   ["P","P",".","P","P","P","P","P"],
+   [".",".",".",".",".",".",".","."]]
+  ```
+  add a few more moves,
+  ```
+  If the list/array of moves is: ["d4", "d5", "f3", "c6", "f4"]
+  >>>
+  [[".",".",".",".",".",".",".","."],
+   ["p","p",".",".","p","p","p","p"],
+   [".",".","p",".",".",".",".","."],
+   [".",".",".","p",".",".",".","."],
+   [".",".",".","P",".","P",".","."],
+   [".",".",".",".",".",".",".","."],
+   ["P","P","P",".","P",".","P","P"],
+   [".",".",".",".",".",".",".","."]]
+  ```
+  now to add a capture...
+  ```
+  If the list/array of moves is: ["d4", "d5", "f3", "c6", "f4", "c5", "dxc5"]
+  >>>
+  [[".",".",".",".",".",".",".","."],
+   ["p","p",".",".","p","p","p","p"],
+   [".",".",".",".",".",".",".","."],
+   [".",".","P","p",".",".",".","."],
+   [".",".",".",".",".","P",".","."],
+   [".",".",".",".",".",".",".","."],
+   ["P","P","P",".","P",".","P","P"],
+   [".",".",".",".",".",".",".","."]]
+  ```
+  If an invalid move (a move is added that no pawn could perform, a capture where there is no piece, a move to a square where there is already a piece, etc.) is found in the list of moves, return '(move) is invalid'.
+  ```python
+  If the list/array of moves is: ["e6"]
+  >>>
+  "e6 is invalid"
+  ```
+  
+  ```python
+  If the list/array of moves is: ["e4", "d5", "exf5"]
+  >>>
+  "exf5 is invalid"
+  ```
+  The list passed to `pawn_move_tracker / PawnMoveTracker.movePawns` will always be a list of strings in the form (regex pattern): `[a-h][1-8]` or `[a-h]x[a-h][1-8]`.  
+  
+  Notes:
+  
+  * In the case of a capture, the first lowercase letter will always be adjacent to the second in the alphabet, a move like `axc5` will never be passed.
+  * A pawn can move two spaces on its first move
+  * There are no cases with the 'en-passant' rule.
+  -/
+
+vc-preamble: |-
+  def pawnMoveTracker (moves : List String) : List (List Char) := sorry
+  
+  theorem empty_moves_initial_position (moves : List String) :
+    moves = [] →
+    let board := pawnMoveTracker moves
+    (board.length = 8 ∧
+     (∀ row ∈ board, row.length = 8) ∧
+     (∀ i, i < 8 → (board.get! 1).get! i = 'p') ∧
+     (∀ i, i < 8 → (board.get! 6).get! i = 'P')) := sorry
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def countChar (c : Char) (l : List Char) : Nat :=
+    l.foldl (fun acc x => if x = c then acc + 1 else acc) 0
+
+vc-theorems: |-
+  theorem valid_moves_invariants (moves : List String) :
+    let board := pawnMoveTracker moves
+    (board.length = 8 ∧
+     (∀ row ∈ board, row.length = 8) ∧
+     let whitePawns := (board.foldl (fun acc row => acc + countChar 'P' row) 0)
+     let blackPawns := (board.foldl (fun acc row => acc + countChar 'p' row) 0)
+     0 ≤ whitePawns ∧ whitePawns ≤ 8 ∧
+     0 ≤ blackPawns ∧ blackPawns ≤ 8) := sorry
+  
+  theorem valid_first_white_move (file : Char) (rank : Char) :
+    file ∈ ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'] →
+    rank = '4' →
+    let move := String.mk [file, rank]
+    let board := pawnMoveTracker [move]
+    ((board.get! 6).get! (file.toNat - 'a'.toNat) = '.' ∧
+     (board.get! 4).get! (file.toNat - 'a'.toNat) = 'P') := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+

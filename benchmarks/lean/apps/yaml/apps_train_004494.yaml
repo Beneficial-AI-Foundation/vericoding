@@ -1,0 +1,80 @@
+vc-description: |-
+  /-
+  Uh oh, Someone at the office has dropped all these sequences on the floor and forgotten to label them with their correct bases. 
+  
+  We have to fix this before the boss gets back or we're all going to be fired!
+  
+  This is what your years of coding have been leading up to, now is your time to shine!
+  
+  ## Task
+  
+  You will have to create a function which takes in a sequence of numbers in **random order** and you will have to return the correct base of those numbers.
+  
+  The base is the number of unique digits. For example, a base 10 number can have 10 unique digits: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 and a base 2 number (Binary) can have 2 unique digits: 0 and 1.
+  
+  ### Constraints
+  
+  The sequence will always be 10 numbers long and we know that the base is going to be between 2 and 10 inclusive so no need to worry about any letters. When sorted, the sequence is made up of consecutive numbers.
+  
+  ### Examples
+  
+  ```
+  [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" ]     -->  10
+  [ "1", "2", "3", "4", "5", "6", "10", "11", "12", "13" ]  -->   7
+  ```
+  
+  **Good luck!**
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def base_finder (nums : List String) : Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem base_detection {base : Nat} (h1 : 2 ≤ base) (h2 : base ≤ 10) :
+    let numbers := List.map toString (List.range base)
+    base_finder numbers = base :=
+  sorry
+  
+  theorem base_repeating_digits {base : Nat} (h1 : 2 ≤ base) (h2 : base ≤ 10) :
+    let numbers := List.map (fun x => toString x ++ toString x) (List.range base)
+    base_finder numbers = base :=
+  sorry
+  
+  theorem base_varying_lengths {base : Nat} (h1 : 2 ≤ base) (h2 : base ≤ 10) :
+    let numbers := List.map (fun i => String.mk (List.replicate (i+1) '0')) (List.range base)
+    base_finder numbers = 1 := 
+  sorry
+  
+  theorem base_empty_sequence :
+    base_finder [] = 0 :=
+  sorry
+  
+  /-
+  info: 10
+  -/
+  -- #guard_msgs in
+  -- #eval base_finder ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+  
+  /-
+  info: 7
+  -/
+  -- #guard_msgs in
+  -- #eval base_finder ["1", "2", "3", "4", "5", "6", "10", "11", "12", "13"]
+  
+  /-
+  info: 6
+  -/
+  -- #guard_msgs in
+  -- #eval base_finder ["301", "302", "303", "304", "305", "310", "311", "312", "313", "314"]
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible
+

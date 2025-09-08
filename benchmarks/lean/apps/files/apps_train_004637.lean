@@ -1,0 +1,85 @@
+/-
+#Adding values of arrays in a shifted way
+
+You have to write a method, that gets two parameter:
+
+```markdown
+1. An array of arrays with int-numbers
+2. The shifting value
+```
+
+#The method should add the values of the arrays to one new array.
+
+The arrays in the array will all have the same size and this size will always be greater than 0.
+The shifting value is always a value from 0 up to the size of the arrays.
+There are always arrays in the array, so you do not need to check for null or empty.
+
+#1. Example:
+```
+[[1,2,3,4,5,6], [7,7,7,7,7,-7]], 0
+
+1,2,3,4,5,6
+7,7,7,7,7,-7
+
+--> [8,9,10,11,12,-1]
+```
+
+#2. Example
+```
+[[1,2,3,4,5,6], [7,7,7,7,7,7]], 3
+
+1,2,3,4,5,6
+      7,7,7,7,7,7
+
+--> [1,2,3,11,12,13,7,7,7]
+```
+
+#3. Example
+```
+[[1,2,3,4,5,6], [7,7,7,-7,7,7], [1,1,1,1,1,1]], 3
+
+1,2,3,4,5,6
+      7,7,7,-7,7,7
+            1,1,1,1,1,1
+
+--> [1,2,3,11,12,13,-6,8,8,1,1,1]
+```
+
+Have fun coding it and please don't forget to vote and rank this kata! :-)
+
+I have created other katas. Have a look if you like coding and challenges.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def sumArrays (arrays : List (List Int)) (shift : Nat) : List Int :=
+  sorry
+
+theorem sumArrays_length {arrays : List (List Int)} {shift : Nat} 
+  (h1 : arrays.length > 0)
+  (h2 : ∀ (arr₁ arr₂ : List Int), arr₁ ∈ arrays → arr₂ ∈ arrays → arr₁.length = arr₂.length) :
+  (sumArrays arrays shift).length = (arrays[0]!).length + shift * (arrays.length - 1) :=
+  sorry
+
+theorem sumArrays_zero_shift {arrays : List (List Int)} {shift : Nat}
+  (h1 : arrays.length > 0)
+  (h2 : ∀ (arr₁ arr₂ : List Int), arr₁ ∈ arrays → arr₂ ∈ arrays → arr₁.length = arr₂.length)
+  (h3 : shift = 0) :
+  sumArrays arrays shift = List.map (λ i => arrays.foldl (λ sum arr => sum + arr[0]!) 0) (List.range (arrays[0]!).length) :=
+  sorry
+
+theorem sumArrays_single_array {arr : List Int} {shift : Nat} :
+  sumArrays [arr] shift = arr :=
+  sorry
+
+theorem sumArrays_element_bound {arrays : List (List Int)} {shift : Nat}
+  (h1 : arrays.length > 0)
+  (h2 : ∀ (arr₁ arr₂ : List Int), arr₁ ∈ arrays → arr₂ ∈ arrays → arr₁.length = arr₂.length) :
+  ∀ (x : Int), x ∈ sumArrays arrays shift →
+    x ≤ arrays.foldl (λ sum arr => sum + (arr.foldl (λ m x => max m x) 0)) 0 ∧
+    -x ≤ arrays.foldl (λ sum arr => sum + (arr.foldl (λ m x => max m x) 0)) 0 :=
+  sorry
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded

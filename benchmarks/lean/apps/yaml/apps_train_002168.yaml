@@ -1,0 +1,66 @@
+vc-description: |-
+  /-
+  There is a directed graph with N vertices and N edges. The vertices are numbered 1, 2, ..., N.
+  The graph has the following N edges: (p_1, 1), (p_2, 2), ..., (p_N, N), and the graph is weakly connected. Here, an edge from Vertex u to Vertex v is denoted by (u, v), and a weakly connected graph is a graph which would be connected if each edge was bidirectional.
+  We would like to assign a value to each of the vertices in this graph so that the following conditions are satisfied. Here, a_i is the value assigned to Vertex i.
+   - Each a_i is a non-negative integer.
+   - For each edge (i, j), a_i \neq a_j holds.
+   - For each i and each integer x(0 ≤ x < a_i), there exists a vertex j such that the edge (i, j) exists and x = a_j holds.
+  Determine whether there exists such an assignment.
+  
+  -----Constraints-----
+   - 2 ≤ N ≤ 200 000
+   - 1 ≤ p_i ≤ N
+   - p_i \neq i
+   - The graph is weakly connected.
+  
+  -----Input-----
+  Input is given from Standard Input in the following format:
+  N
+  p_1 p_2 ... p_N
+  
+  -----Output-----
+  If the assignment is possible, print POSSIBLE; otherwise, print IMPOSSIBLE.
+  
+  -----Sample Input-----
+  4
+  2 3 4 1
+  
+  -----Sample Output-----
+  POSSIBLE
+  
+  The assignment is possible: {a_i} = {0, 1, 0, 1} or {a_i} = {1, 0, 1, 0}.
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def is_valid_parent_array (n: Nat) (p: List Nat) : Bool := sorry
+  
+  def solve_graph_assignment (n: Nat) (p: List Nat) : String := sorry
+
+vc-theorems: |-
+  theorem odd_cycle_impossible (n: Nat) (h1: 2 ≤ n) (h2: n % 2 = 1) : 
+    let p := (List.range (n-1)).map (λ x => x + 2) ++ [1]
+    solve_graph_assignment n p = "IMPOSSIBLE" := sorry
+  
+  theorem even_cycle_possible (n: Nat) (h1: 2 ≤ n) (h2: n % 2 = 0) :
+    let p := (List.range (n-1)).map (λ x => x + 2) ++ [1]
+    solve_graph_assignment n p = "POSSIBLE" := sorry
+  
+  theorem valid_output_format (n: Nat) (p: List Nat) (h1: 2 ≤ n) :
+    is_valid_parent_array n p →
+    (solve_graph_assignment n p = "POSSIBLE" ∨ solve_graph_assignment n p = "IMPOSSIBLE") := sorry
+  
+  theorem consistent_result (n: Nat) (p: List Nat) (h1: 2 ≤ n) :
+    is_valid_parent_array n p →
+    solve_graph_assignment n p = solve_graph_assignment n p := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: competition
+  -- Assurance level: unguarded
+

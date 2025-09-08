@@ -1,0 +1,102 @@
+vc-description: |-
+  /-
+  Get excited, folks, because it is time for the final match of Codechef Premier League (CPL)!
+  Mike and Tracy also want to watch the grand finale, but unfortunately, they could not get tickets to the match. However, Mike is not someone who gives up so easily — he has a plan to watch the match.
+  The field where the match is played is surrounded by a wall with height $K$. Outside, there are $N$ boxes (numbered $1$ through $N$). For each valid $i$, the $i$-th box has a height $H_i$.
+  Mike wants to take some boxes and stack them on top of each other to build two towers. The height of each tower is the sum of heights of all the boxes that form it. Of course, no box may be in both towers. The height of each tower should be at least $K$. Then Mike can climb on top of one tower and Tracy on top of the other, and they can watch the match uninterrupted!
+  While Mike is busy stacking the boxes, Tracy would like to know the smallest number of boxes required to build two towers such that each of them has height at least $K$, or at least that it is impossible to build such towers. Can you help Tracy?
+  
+  -----Input-----
+  - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+  - The first line of each test case contains two space-separated integers $N$ and $K$.
+  - The second line contains $N$ space-separated integers $H_1, H_2, \ldots, H_N$.
+  
+  -----Output-----
+  For each test case, print a single line containing one integer — the smallest number of boxes required to build two towers, or $-1$ if it is impossible.
+  
+  -----Constraints-----
+  - $1 \leq T \leq 5$
+  - $1 \leq N, K \leq 4,000$
+  - $1 \leq H_i \leq 10^5$ for each valid $i$
+  
+  -----Subtasks-----
+  Subtask #1 (30 points):
+  - $1 \leq N, K \leq 100$
+  - $1 \leq H_i \leq 100$ for each valid $i$
+  Subtask #2 (70 points): original constraints
+  
+  -----Example Input-----
+  2
+  8 38
+  7 8 19 7 8 7 10 20
+  4 5
+  2 10 4 9
+  
+  -----Example Output-----
+  7
+  2
+  
+  -----Explanation-----
+  Example case 1: The first tower can be built with boxes $8 + 10 + 20 = 38$ and the second tower with boxes $7 + 7 + 8 + 19 = 41$. In this case, the box with height $7$ is left unused.
+  Example case 2: We only need the box with height $10$ for one tower and the box with height $9$ for the other tower.
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def build_two_towers (n : Nat) (k : Nat) (heights : List Nat) : Int := sorry
+  
+  /- Single box twice the height of k always returns -1 -/
+
+vc-theorems: |-
+  theorem single_tall_box_impossible (height : Nat) :
+    build_two_towers 1 height [2 * height] = -1 := sorry
+  
+  /- Given a list of heights, building towers of minimum height is always possible -/
+  
+  theorem min_height_possible (heights : List Nat) (h : heights.length ≥ 2) :
+    let n := heights.length
+    let k := heights.minimum?
+    match k with
+    | none => True 
+    | some k => build_two_towers n k heights ≠ -1
+    := sorry
+  
+  /- List elements in different order produce the same result -/
+  
+  theorem permutation_preserves_result (heights1 heights2 : List Nat) 
+      (h1 : heights1.length ≥ 2)
+      (h2 : heights1.isPerm heights2) :
+    let n := heights1.length
+    let k := heights1.minimum?
+    match k with
+    | none => True
+    | some k => build_two_towers n k heights1 = build_two_towers n k heights2
+    := sorry
+  
+  /-
+  info: 7
+  -/
+  -- #guard_msgs in
+  -- #eval build_two_towers 8 38 [7, 8, 19, 7, 8, 7, 10, 20]
+  
+  /-
+  info: 2
+  -/
+  -- #guard_msgs in
+  -- #eval build_two_towers 4 5 [2, 10, 4, 9]
+  
+  /-
+  info: -1
+  -/
+  -- #guard_msgs in
+  -- #eval build_two_towers 3 10 [2, 3, 4]
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+

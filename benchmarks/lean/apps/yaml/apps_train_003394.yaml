@@ -1,0 +1,63 @@
+vc-description: |-
+  /-
+  Your classmates asked you to copy some paperwork for them. You know that there are 'n' classmates and the paperwork has 'm' pages.
+  
+  Your task is to calculate how many blank pages do you need.
+  
+  ### Example:
+  ```python
+  paperwork(5, 5) == 25
+  ```
+  
+  **Note:** if `n < 0` or `m < 0` return `0`!
+  
+  Waiting for translations and Feedback! Thanks!
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def paperwork (n m : Int) : Int := sorry
+  
+  theorem paperwork_nonnegative (n m : Int) : 
+    paperwork n m ≥ 0 := sorry
+
+vc-theorems: |-
+  theorem paperwork_zero_when_nonpositive (n m : Int) : 
+    (n ≤ 0 ∨ m ≤ 0) → paperwork n m = 0 := sorry
+  
+  theorem paperwork_mul_when_positive (n m : Int) :
+    n > 0 ∧ m > 0 → paperwork n m = n * m := sorry
+  
+  theorem paperwork_zero_nonpositive_n (n m : Int) :
+    n ≤ 0 → paperwork n m = 0 := sorry
+  
+  theorem paperwork_zero_nonpositive_m (n m : Int) :
+    m ≤ 0 → paperwork n m = 0 := sorry
+  
+  /-
+  info: 25
+  -/
+  -- #guard_msgs in
+  -- #eval paperwork 5 5
+  
+  /-
+  info: 0
+  -/
+  -- #guard_msgs in
+  -- #eval paperwork 5 -5
+  
+  /-
+  info: 0
+  -/
+  -- #guard_msgs in
+  -- #eval paperwork 5 0
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

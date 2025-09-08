@@ -1,0 +1,97 @@
+vc-description: |-
+  /-
+  Your friend is typing his name into a keyboard.  Sometimes, when typing a character c, the key might get long pressed, and the character will be typed 1 or more times.
+  You examine the typed characters of the keyboard.  Return True if it is possible that it was your friends name, with some characters (possibly none) being long pressed.
+  
+  Example 1:
+  Input: name = "alex", typed = "aaleex"
+  Output: true
+  Explanation: 'a' and 'e' in 'alex' were long pressed.
+  
+  Example 2:
+  Input: name = "saeed", typed = "ssaaedd"
+  Output: false
+  Explanation: 'e' must have been pressed twice, but it wasn't in the typed output.
+  
+  Example 3:
+  Input: name = "leelee", typed = "lleeelee"
+  Output: true
+  
+  Example 4:
+  Input: name = "laiden", typed = "laiden"
+  Output: true
+  Explanation: It's not necessary to long press any character.
+  
+  Constraints:
+  
+  1 <= name.length <= 1000
+  1 <= typed.length <= 1000
+  The characters of name and typed are lowercase letters.
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def is_long_pressed_name (name typed : String) : Bool :=
+    sorry
+
+vc-theorems: |-
+  theorem always_accepts_repeated_chars 
+    (name typed : String) 
+    (h : ∀ (i : Nat), i < name.length → typed.length ≥ name.length) :
+    is_long_pressed_name name typed = true :=
+  sorry
+  
+  theorem length_property
+    (name typed : String)
+    (h : is_long_pressed_name name typed = true) :
+    typed.length ≥ name.length :=
+  sorry
+  
+  theorem identical_strings_property
+    (s : String) :
+    is_long_pressed_name s s = true :=
+  sorry
+  
+  theorem empty_typed_property
+    (name typed : String)
+    (h1 : typed.length = 0)
+    (h2 : name.length > 0) :
+    is_long_pressed_name name typed = false :=
+  sorry
+  
+  theorem deletion_property
+    (s : String)
+    (h : s.length > 0)
+    (i : Nat)
+    (hi : i < s.length) :
+    let deleted := s.data.take i ++ s.data.drop (i+1)
+    is_long_pressed_name s (String.mk deleted) = false :=
+  sorry
+  
+  /-
+  info: True
+  -/
+  -- #guard_msgs in
+  -- #eval is_long_pressed_name "alex" "aaleex"
+  
+  /-
+  info: False
+  -/
+  -- #guard_msgs in
+  -- #eval is_long_pressed_name "saeed" "ssaaedd"
+  
+  /-
+  info: True
+  -/
+  -- #guard_msgs in
+  -- #eval is_long_pressed_name "leelee" "lleeelee"
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

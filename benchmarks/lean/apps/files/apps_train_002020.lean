@@ -1,0 +1,81 @@
+/-
+Lesha plays the recently published new version of the legendary game hacknet. In this version character skill mechanism was introduced. Now, each player character has exactly n skills. Each skill is represented by a non-negative integer a_{i} — the current skill level. All skills have the same maximum level A.
+
+Along with the skills, global ranking of all players was added. Players are ranked according to the so-called Force. The Force of a player is the sum of the following values:  The number of skills that a character has perfected (i.e., such that a_{i} = A), multiplied by coefficient c_{f}. The minimum skill level among all skills (min a_{i}), multiplied by coefficient c_{m}. 
+
+Now Lesha has m hacknetian currency units, which he is willing to spend. Each currency unit can increase the current level of any skill by 1 (if it's not equal to A yet). Help him spend his money in order to achieve the maximum possible value of the Force.
+
+-----Input-----
+
+The first line of the input contains five space-separated integers n, A, c_{f}, c_{m} and m (1 ≤ n ≤ 100 000, 1 ≤ A ≤ 10^9, 0 ≤ c_{f}, c_{m} ≤ 1000, 0 ≤ m ≤ 10^15).
+
+The second line contains exactly n integers a_{i} (0 ≤ a_{i} ≤ A), separated by spaces, — the current levels of skills.
+
+-----Output-----
+
+On the first line print the maximum value of the Force that the character can achieve using no more than m currency units.
+
+On the second line print n integers a'_{i} (a_{i} ≤ a'_{i} ≤ A), skill levels which one must achieve in order to reach the specified value of the Force, while using no more than m currency units. Numbers should be separated by spaces.
+
+-----Examples-----
+Input
+3 5 10 1 5
+1 3 1
+
+Output
+12
+2 5 2 
+
+Input
+3 5 10 1 339
+1 3 1
+
+Output
+35
+5 5 5 
+
+-----Note-----
+
+In the first test the optimal strategy is to increase the second skill to its maximum, and increase the two others by 1.
+
+In the second test one should increase all skills to maximum.
+-/
+
+def solve_hacknet (n A cf cm m : Nat) (skills : List Nat) : Nat × List Nat :=
+  sorry
+
+def list_count {α} [BEq α] (p : α → Bool) (l : List α) : Nat :=
+  match l with
+  | [] => 0
+  | x::xs => (if p x then 1 else 0) + list_count p xs
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def list_sum (l : List Nat) : Nat :=
+  match l with
+  | [] => 0
+  | x::xs => x + list_sum xs
+
+theorem solution_invariants {n A cf cm m : Nat} {skills ans : List Nat} {max_level : Nat}
+  (h : solve_hacknet n A cf cm m skills = (max_level, ans)) :
+  (ans.length = n) ∧ 
+  (∀ x ∈ ans, x ≤ A) ∧
+  (list_sum (List.map (λ i => max 0 ((ans.get! i) - (skills.get! i))) 
+    (List.range n)) ≤ m) ∧
+  (max_level = cf * (list_count (λ x => x == A) ans) + cm * (List.foldl min A ans)) := 
+  sorry
+
+theorem zero_money {n A cf : Nat} {skills : List Nat} 
+  (h : skills.length = n) :
+  solve_hacknet n A cf 1 0 skills = (0, skills) := 
+  sorry
+
+theorem infinite_money {n A : Nat} {skills : List Nat}
+  (h : skills.length = n) :
+  solve_hacknet n A 1 1 (Nat.max A 0) skills = 
+    (n + A, List.replicate n A) :=
+  sorry
+
+-- Apps difficulty: competition
+-- Assurance level: guarded

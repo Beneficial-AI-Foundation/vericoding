@@ -1,0 +1,37 @@
+/-
+Now you have to write a function that takes an argument and returns the square of it.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def square (x : Int) : Int := sorry
+
+theorem square_nonnegative (x : Int) : square x ≥ 0 := sorry
+
+theorem square_is_multiplication (x : Int) : square x = x * x := sorry
+
+theorem square_symmetric (x : Int) : square (-x) = square x := sorry
+
+theorem square_monotonic (x : Int) (h : x ≥ 0) : square (x + 1) > square x ∨ x = 0 := sorry
+
+/-
+info: 4
+-/
+-- #guard_msgs in
+-- #eval square 2
+
+/-
+info: 16
+-/
+-- #guard_msgs in
+-- #eval square 4
+
+/-
+info: 9
+-/
+-- #guard_msgs in
+-- #eval square -3
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

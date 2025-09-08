@@ -1,0 +1,59 @@
+vc-description: |-
+  /-
+  You're given a string of dominos. For each slot, there are 3 options:
+  
+    * "|" represents a standing domino
+  
+    * "/" represents a knocked over domino
+  
+    * " " represents a space where there is no domino
+  
+  For example: 
+  
+  ```python
+  "||| ||||//| |/"
+  ```
+  
+  What you must do is find the resulting string if the first domino is pushed over. Now, tipping a domino will cause the next domino to its right to fall over as well, but if a domino is already tipped over, or there is a domino missing, the reaction will stop.
+  
+  So in out example above, the result would be:
+  
+  "/// ||||//| |/"
+  
+  since the reaction would stop as soon as it gets to a space.
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def domino_reaction (s : String) : String := sorry
+  
+  theorem domino_reaction_length (s : String) : 
+    (domino_reaction s).length = s.length := sorry
+
+vc-theorems: |-
+  theorem domino_reaction_preserves_non_vertical (s : String) (i : String.Pos) : 
+    s.get i ≠ '|' → 
+    (domino_reaction s).get i = s.get i := sorry
+  
+  theorem domino_reaction_preserves_after_non_vertical (s : String) (i : String.Pos) 
+    (j : String.Pos) :
+    s.get i ≠ '|' →
+    i ≤ j →
+    (domino_reaction s).get j = s.get j := sorry
+  
+  theorem domino_reaction_valid_chars (s : String) :
+    ∀ c, c ∈ (domino_reaction s).data → 
+    c = '|' ∨ c = '/' ∨ c = ' ' := sorry 
+  
+  theorem domino_reaction_idempotent (s : String) :
+    domino_reaction (domino_reaction s) = domino_reaction s := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+

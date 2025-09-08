@@ -1,0 +1,102 @@
+vc-description: |-
+  /-
+  You will be given a string (x) featuring a cat 'C', a dog 'D' and a mouse 'm'. The rest of the string will be made up of '.'. 
+  
+  You need to find out if the cat can catch the mouse from it's current position. The cat can jump (j) characters. 
+  
+  Also, the cat cannot jump over the dog.
+  
+  So:
+  
+  if j = 5:
+  
+  ```..C.....m.``` returns 'Caught!'  <-- not more than j characters between
+  
+  ```.....C............m......``` returns 'Escaped!'  <-- as there are more than j characters between the two, the cat can't jump far enough
+  
+  if j = 10:
+  
+  ```...m.........C...D``` returns 'Caught!' <--Cat can jump far enough and jump is not over dog
+  
+  ```...m....D....C.......``` returns 'Protected!' <-- Cat can jump far enough, but dog is in the way, protecting the mouse
+  
+  Finally, if all three animals are not present, return 'boring without all three'
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def cat_mouse (s : String) (jump_dist : Nat) : String := sorry
+  
+  def findPos (s : String) (c : Char) : Nat :=
+    String.length (s.takeWhile (· ≠ c))
+
+vc-theorems: |-
+  theorem output_always_valid (s : String) (jump_dist : Nat) : 
+    cat_mouse s jump_dist = "Caught!" ∨ 
+    cat_mouse s jump_dist = "Escaped!" ∨ 
+    cat_mouse s jump_dist = "Protected!" ∨
+    cat_mouse s jump_dist = "boring without all three" := sorry
+  
+  theorem valid_game_string_output (s : String) (jump_dist : Nat) 
+    (h1 : s.contains 'C')
+    (h2 : s.contains 'D')  
+    (h3 : s.contains 'm') :
+    cat_mouse s jump_dist = "Caught!" ∨
+    cat_mouse s jump_dist = "Escaped!" ∨
+    cat_mouse s jump_dist = "Protected!" := sorry
+  
+  theorem distance_property (s : String) (jump_dist : Nat)
+    (h1 : s.contains 'C')
+    (h2 : s.contains 'D')
+    (h3 : s.contains 'm') :
+    let c := findPos s 'C'
+    let d := findPos s 'D'
+    let m := findPos s 'm'
+    (if c ≤ m then
+      if m - c ≤ jump_dist then
+        if c < d ∧ d < m then
+          cat_mouse s jump_dist = "Protected!"
+        else
+          cat_mouse s jump_dist = "Caught!"
+      else
+        cat_mouse s jump_dist = "Escaped!"
+    else
+      if c - m ≤ jump_dist then
+        if m < d ∧ d < c then
+          cat_mouse s jump_dist = "Protected!"
+        else
+          cat_mouse s jump_dist = "Caught!"
+      else
+        cat_mouse s jump_dist = "Escaped!") := sorry
+  
+  theorem missing_chars (s : String) :
+    ¬(s.contains 'C' ∧ s.contains 'D' ∧ s.contains 'm') →
+    cat_mouse s 5 = "boring without all three" := sorry
+  
+  /-
+  info: 'Caught!'
+  -/
+  -- #guard_msgs in
+  -- #eval cat_mouse "..D.....C.m" 2
+  
+  /-
+  info: 'Escaped!'
+  -/
+  -- #guard_msgs in
+  -- #eval cat_mouse "............C.............D..m..." 8
+  
+  /-
+  info: 'Protected!'
+  -/
+  -- #guard_msgs in
+  -- #eval cat_mouse ".CD......m." 10
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

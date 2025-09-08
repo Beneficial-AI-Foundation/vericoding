@@ -1,0 +1,105 @@
+vc-description: |-
+  /-
+  A binary string is called a self-destructing string if it can reduced to an empty string by performing the following operation some number of times (possibly zero): Choose a valid integer $i$ such that the $i$-th character of the current string is different from the $i+1$-th character, and remove these two characters from the string.
+  You are given a binary string $s$. Your task is to convert $s$ to a self-destructing string. To do that, you may perform the following operation any number of times (possibly zero): Choose an integer $i$ ($1 \le i \le |s|-1$) such that the $i$-th character of $s$ is different from the $i+1$-th character, and invert one of these characters (inverting a character means changing '0' to '1' or '1' to '0', e.g. the string "01" can be changed to "00").
+  Find the smallest number of operations required to convert $s$ to a self-destructing string or determine that it is impossible.
+  
+  -----Input-----
+  - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+  - The first and only line of each test case contains a single string $s$.
+  
+  -----Output-----
+  For each test case, print a single line containing one integer ― the smallest required number of operations or $-1$ if it is impossible to convert $s$ to a self-destructing string.
+  
+  -----Constraints-----
+  - $1 \le T \le 1,000$
+  - $1 \le |s| \le 10^6$
+  - $s$ contains only characters '0' and '1'
+  - the sum of $|s|$ over all test cases does not exceed $10^6$
+  
+  -----Example Input-----
+  3
+  001101
+  1101
+  110
+  
+  -----Example Output-----
+  0
+  1
+  -1
+  
+  -----Explanation-----
+  Example case 1: We already have a self-destructing string because "001101" can be converted to "0101", to "01" and finally to an empty string.
+  Example case 2: We can choose $i=3$ (since $s_3 \neq s_4$) and then invert $s_4$ to obtain "1100", which is a self-destructing string.
+  Example case 3: It can be shown that "110" cannot be converted to a self-destructing string.
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def min_ops_for_self_destruct (s : String) : Int :=
+    sorry
+  
+  /- If the input string length is odd, min_ops_for_self_destruct returns -1 -/
+
+vc-theorems: |-
+  theorem odd_length_returns_negative (s : String) :
+    String.length s % 2 = 1 → min_ops_for_self_destruct s = -1 := by
+    sorry
+  
+  /- If the input string contains only 0s or only 1s, min_ops_for_self_destruct returns -1 -/
+  
+  theorem all_ones_or_zeroes_returns_negative (s : String) :
+    (∀c ∈ s.data, c = '0') ∨ (∀c ∈ s.data, c = '1') → 
+    min_ops_for_self_destruct s = -1 := by
+    sorry
+  
+  /- If min_ops_for_self_destruct returns a non-negative result, it is bounded by half the string length -/
+  
+  theorem result_bounds (s : String) :
+    min_ops_for_self_destruct s ≠ -1 →
+    0 ≤ min_ops_for_self_destruct s ∧ min_ops_for_self_destruct s ≤ String.length s / 2 := by
+    sorry
+  
+  /- For balanced strings with equal counts of 0s and 1s and even length, min_ops_for_self_destruct returns 0 -/
+  
+  theorem balanced_strings_need_zero_ops (s : String) :
+    String.length s % 2 = 0 →
+    (s.data.filter (· = '0')).length = (s.data.filter (· = '1')).length →
+    min_ops_for_self_destruct s = 0 := by
+    sorry
+  
+  /- The result equals half the absolute difference between counts of 0s and 1s when not -1 -/
+  
+  theorem operations_count (s : String) :
+    min_ops_for_self_destruct s ≠ -1 →
+    min_ops_for_self_destruct s = 
+      (Int.natAbs ((s.data.filter (· = '0')).length - (s.data.filter (· = '1')).length)) / 2 := by
+    sorry
+  
+  /-
+  info: 0
+  -/
+  -- #guard_msgs in
+  -- #eval min_ops_for_self_destruct "001101"
+  
+  /-
+  info: 1
+  -/
+  -- #guard_msgs in
+  -- #eval min_ops_for_self_destruct "1101"
+  
+  /-
+  info: -1
+  -/
+  -- #guard_msgs in
+  -- #eval min_ops_for_self_destruct "110"
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded
+

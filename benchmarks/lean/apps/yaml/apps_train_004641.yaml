@@ -1,0 +1,96 @@
+vc-description: |-
+  /-
+  Help Suzuki rake his garden!
+  
+  The monastery has a magnificent Zen garden made of white gravel and rocks and it is raked diligently everyday by the monks. Suzuki having a keen eye is always on the lookout for anything creeping into the garden that must be removed during the daily raking such as insects or moss. 
+  
+  You will be given a string representing the garden such as:
+  
+  ```
+  garden = 'gravel gravel gravel gravel gravel gravel gravel gravel gravel rock slug ant gravel gravel snail rock gravel gravel gravel gravel gravel gravel gravel slug gravel ant gravel gravel gravel gravel rock slug gravel gravel gravel gravel gravel snail gravel gravel rock gravel snail slug gravel gravel spider gravel gravel gravel gravel gravel gravel gravel gravel moss gravel gravel gravel snail gravel gravel gravel ant gravel gravel moss gravel gravel gravel gravel snail gravel gravel gravel gravel slug gravel rock gravel gravel rock gravel gravel gravel gravel snail gravel gravel rock gravel gravel gravel gravel gravel spider gravel rock gravel gravel'
+  ```
+  
+  Rake out any items that are not a rock or gravel and replace them with gravel such that:
+  
+  ```
+  garden = 'slug spider rock gravel gravel gravel gravel gravel gravel gravel'
+  ```
+  
+  Returns a string with all items except a rock or gravel replaced with gravel:
+  
+  ```
+  garden = 'gravel gravel rock gravel gravel gravel gravel gravel gravel gravel'
+  ```
+  
+  Please also try the other Kata in this series..
+  
+  * [Help Suzuki count his vegetables...](https://www.codewars.com/kata/56ff1667cc08cacf4b00171b)
+  * [Help Suzuki purchase his Tofu!](https://www.codewars.com/kata/57d4ecb8164a67b97c00003c)
+  * [Help Suzuki pack his coal basket!](https://www.codewars.com/kata/57f09d0bcedb892791000255)
+  * [Suzuki needs help lining up his students!](https://www.codewars.com/kata/5701800886306a876a001031)
+  * [How many stairs will Suzuki climb in 20 years?](https://www.codewars.com/kata/56fc55cd1f5a93d68a001d4e)
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def rake_garden (garden : String) : String := sorry
+  
+  -- Theorem 1: Result is space-separated words
+
+vc-theorems: |-
+  theorem rake_garden_space_separated {garden : String} :
+    let result := rake_garden garden
+    let split := result.split (· = ' ')
+    (String.intercalate " " split) = result := sorry
+  
+  -- Theorem 2: All words in result are either 'rock' or 'gravel'
+  
+  theorem rake_garden_valid_words {garden : String} : 
+    let result := rake_garden garden
+    let words := result.split (· = ' ')
+    ∀ w ∈ words, w = "rock" ∨ w = "gravel" := sorry
+  
+  -- Theorem 3: Rocks remain rocks, non-gravel becomes gravel
+  
+  theorem rake_garden_transformations {garden : String} : 
+    let original := garden.split (· = ' ')
+    let result := (rake_garden garden).split (· = ' ')
+    original.length = result.length ∧
+    ∀ i, i < original.length →
+      (original[i]! = "rock" → result[i]! = "rock") ∧
+      (original[i]! ≠ "rock" ∧ original[i]! ≠ "gravel" → result[i]! = "gravel") := sorry
+  
+  -- Theorem 4: Basic cases work as expected
+  
+  theorem rake_garden_basic_cases :
+    rake_garden "rock rock rock" = "rock rock rock" ∧ 
+    rake_garden "gravel gravel" = "gravel gravel" ∧
+    rake_garden "anything else" = "gravel gravel" := sorry
+  
+  /-
+  info: expected1
+  -/
+  -- #guard_msgs in
+  -- #eval rake_garden "slug spider rock gravel"
+  
+  /-
+  info: expected2
+  -/
+  -- #guard_msgs in
+  -- #eval rake_garden "gravel gravel rock moss ant gravel spider"
+  
+  /-
+  info: expected3
+  -/
+  -- #guard_msgs in
+  -- #eval rake_garden "rock rock rock"
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

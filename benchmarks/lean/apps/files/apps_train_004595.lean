@@ -1,0 +1,46 @@
+/-
+Write a function getNumberOfSquares that will return how many integer (starting from 1, 2...) numbers raised to power of 2 and then summed up are less than some number given as a parameter.
+
+E.g 1: For n = 6 result should be 2 because 1^2 + 2^2 = 1 + 4 = 5 and 5 < 6
+E.g 2: For n = 15 result should be 3 because 1^2 + 2^2 + 3^2 = 1 + 4 + 9 = 14 and 14 < 15
+-/
+
+def get_number_of_squares (n : Int) : Nat :=
+  sorry
+
+def sum_squares (n : Nat) : Int :=
+  sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def next_square (n : Nat) : Int :=
+  sorry
+
+theorem known_sequence_values :
+  (get_number_of_squares 1 = 0) ∧
+  (get_number_of_squares 2 = 1) ∧ 
+  (get_number_of_squares 6 = 2) ∧
+  (get_number_of_squares 15 = 3) :=
+sorry
+
+/-
+info: 2
+-/
+-- #guard_msgs in
+-- #eval get_number_of_squares 6
+
+/-
+info: 3
+-/
+-- #guard_msgs in
+-- #eval get_number_of_squares 15
+
+/-
+info: 6
+-/
+-- #guard_msgs in
+-- #eval get_number_of_squares 100
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded_and_plausible

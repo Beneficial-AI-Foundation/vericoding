@@ -1,0 +1,38 @@
+vc-description: |-
+  /-
+  Regex Failure - Bug Fixing #2
+  Oh no, Timmy's received some hate mail recently but he knows better. Help Timmy fix his regex filter so he can be awesome again!
+  -/
+
+vc-preamble: |-
+  def filter_words (s : String) : String := sorry 
+  
+  theorem filter_words_output_is_string (s : String) : 
+    filter_words s = filter_words s := sorry
+  
+  /- Helper function to count occurrences of a substring -/
+  
+  def countSubstr (s : String) (sub : String) : Nat := sorry
+  
+  /- Helper function to check if a string contains a substring -/
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def containsSubstr (s : String) (sub : String) : Bool := sorry
+  
+  theorem filter_words_idempotent (s : String) :
+    filter_words (filter_words s) = filter_words s := sorry
+
+vc-theorems: |-
+  theorem filter_words_preserves_other_content (s : String) :
+    let banned_pattern := "bad|mean|ugly|horrible|hideous"
+    let remove_banned (str : String) := str.replace banned_pattern ""
+    remove_banned s = remove_banned (filter_words s) := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible
+

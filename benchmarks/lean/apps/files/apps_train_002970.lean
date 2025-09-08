@@ -1,0 +1,53 @@
+/-
+Write a method named `getExponent(n,p)` that returns the largest integer exponent `x` such that p^(x) evenly divides `n`. if `p<=1` the method should return `null`/`None` (throw an `ArgumentOutOfRange` exception in C#).
+-/
+
+def get_exponent (n p : Int) : Option Int :=
+  sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def pow (x y : Int) : Int :=
+  sorry
+
+theorem get_exponent_divides {n p : Int} (h1 : n ≥ 2) (h2 : p ≥ 2) :
+  match get_exponent n p with
+  | none => False 
+  | some k => 
+    (k = 0 → n % p ≠ 0) ∧
+    (k > 0 → n % (pow p k) = 0 ∧ n % (pow p (k + 1)) ≠ 0)
+  := sorry
+
+theorem get_exponent_nonnegative {n p : Int} (h1 : n ≥ 2) (h2 : p ≥ 2) :
+  match get_exponent n p with
+  | none => False
+  | some k => k ≥ 0
+  := sorry
+
+theorem get_exponent_invalid_divisor {n p : Int} (h : p ≤ 1) :
+  get_exponent n p = none := sorry
+
+theorem get_exponent_prime_power {n p : Int} (h1 : n ≥ 2) (h2 : p = 2) :
+  get_exponent (n * (pow p 5)) p = Option.some ((get_exponent n p).getD 0 + 5) := sorry
+
+/-
+info: 3
+-/
+-- #guard_msgs in
+-- #eval get_exponent 27 3
+
+/-
+info: 2
+-/
+-- #guard_msgs in
+-- #eval get_exponent 28 2
+
+/-
+info: None
+-/
+-- #guard_msgs in
+-- #eval get_exponent 10 0
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

@@ -1,0 +1,94 @@
+vc-description: |-
+  /-
+  ZCO is approaching, and you want to be well prepared!  
+  There are $N$ topics to cover and the $i^{th}$ topic takes $H_i$ hours to prepare (where $1 \le i \le N$). You have only $M$ days left to prepare, and you want to utilise this time wisely. You know that you can't spend more than $S$ hours in a day preparing, as you get tired after that. You don't want to study more than one topic in a day, and also, don't want to spend more than two days on any topic, as you feel that this is inefficient.  
+  Given these constraints, can you find the maximum number of topics you can prepare, if you choose the topics wisely?
+  
+  -----Input:-----
+  - First line will contain $T$, number of testcases. Then the testcases follow. 
+  - The first line of each test case contains three space-separated integers: $N$, $M$ and $S$, denoting the number of topics, the number of days remaining and the number of hours you can study in a day.  
+  - The second line of each test case contains $N$ space-separated integers $H_i$, denoting the number of hours needed to prepare for the $i^{th}$ topic.
+  
+  -----Output:-----
+  For each testcase, output in a single line: the maximum number of topics you can prepare.
+  
+  -----Constraints-----
+  - $1 \leq T \leq 10$
+  - $1 \leq N \leq 10^5$
+  - $1 \leq M \leq 10^5$
+  - $1 \leq S \leq 16$
+  - $1 \leq H_i \leq 50$
+  
+  -----Subtasks-----
+  - 30 points : Every topic takes the same number of hours to prepare (i.e. all $H_i$ are equal).
+  - 70 points : Original constraints.
+  
+  -----Sample Input:-----
+  2
+  5 4 10
+  10 24 30 19 40
+  5 4 16
+  7 16 35 10 15
+  
+  -----Sample Output:-----
+  2
+  4
+  
+  -----Explanation:-----
+  Testcase 1:
+  
+  You can choose topics $1$ and $4$. Topic $1$ will consume a single day , while topic $4$ will consume two days.  Thus, you'll be able to prepare these two topics within the 4 remaining days. But you can check that you cannot do any better.
+  Testcase 2:
+  
+  You can choose topics $1$, $2$, $4$, and $5$. Each of them will consume one day each. Thus you'll be able to cover $4$ topics.
+  -/
+
+vc-preamble: |-
+  def max_topics_prepared (N M S : Nat) (topic_hours : List Nat) : Nat := sorry
+  
+  def list_any (l : List Nat) (f : Nat → Bool) : Bool := sorry
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def list_sum (l : List Nat) : Nat := 
+    match l with
+    | [] => 0
+    | h :: t => h + list_sum t
+
+vc-theorems: |-
+  theorem max_topics_non_negative (N M S : Nat) (topic_hours : List Nat) :
+    N > 0 → M > 0 → S > 0 → S ≤ 16 → topic_hours.length > 0 → 
+    max_topics_prepared N M S topic_hours ≥ 0 := sorry
+  
+  theorem max_topics_bounded_by_length (N M S : Nat) (topic_hours : List Nat) :
+    N > 0 → M > 0 → S > 0 → S ≤ 16 → topic_hours.length > 0 →
+    max_topics_prepared N M S topic_hours ≤ topic_hours.length := sorry
+  
+  theorem max_topics_zero_when_s_too_large (N M S : Nat) (topic_hours : List Nat) :
+    N > 0 → M > 0 → S ≥ 17 → topic_hours.length > 0 →
+    max_topics_prepared N M S topic_hours = 0 := sorry
+  
+  theorem max_topics_bounded_by_feasible (N M S : Nat) (topic_hours : List Nat) :
+    N > 0 → M > 0 → S > 0 → S ≤ 16 → topic_hours.length > 0 →
+    max_topics_prepared N M S topic_hours ≤ 
+      (List.countP (fun h => h/S ≤ 2) topic_hours) := sorry
+  
+  /-
+  info: 2
+  -/
+  -- #guard_msgs in
+  -- #eval max_topics_prepared 5 4 10 [10, 24, 30, 19, 40]
+  
+  /-
+  info: 4
+  -/
+  -- #guard_msgs in
+  -- #eval max_topics_prepared 5 4 16 [7, 16, 35, 10, 15]
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible
+

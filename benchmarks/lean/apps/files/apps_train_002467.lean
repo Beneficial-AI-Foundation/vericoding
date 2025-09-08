@@ -1,0 +1,107 @@
+/-
+=====Function Descriptions=====
+Exceptions
+Errors detected during execution are called exceptions.
+
+Examples:
+ZeroDivisionError
+This error is raised when the second argument of a division or modulo operation is zero.
+>>> a = '1'
+>>> b = '0'
+>>> print int(a) / int(b)
+>>> ZeroDivisionError: integer division or modulo by zero
+
+ValueError
+This error is raised when a built-in operation or function receives an argument that has the right type but an inappropriate value.
+>>> a = '1'
+>>> b = '#'
+>>> print int(a) / int(b)
+>>> ValueError: invalid literal for int() with base 10: '#'
+
+Handling Exceptions
+The statements try and except can be used to handle selected exceptions. A try statement may have more than one except clause to specify handlers for different exceptions.
+
+#Code
+try:
+    print 1/0
+except ZeroDivisionError as e:
+    print "Error Code:",e
+Output
+
+Error Code: integer division or modulo by zero
+
+=====Problem Statement=====
+You are given two values a and b.
+Perform integer division and print a/b.
+
+=====Input Format=====
+The first line contains T, the number of test cases.
+The next T lines each contain the space separated values of a and b.
+
+=====Constraints=====
+0<T<10
+
+=====Output Format=====
+Print the value of a/b.
+In the case of ZeroDivisionError or ValueError, print the error code.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def process_divisions (l : List String) : List String := sorry
+
+theorem valid_divisions {test_cases : List String} 
+  (h : ∀ tc ∈ test_cases, ∃ a b : Int, tc = toString a ++ " " ++ toString b) :
+  let results := process_divisions test_cases
+  -- Length preservation
+  results.length = test_cases.length ∧
+  -- Each result matches expected division behavior
+  ∀ i : Fin test_cases.length,
+    let tc := test_cases[i]
+    let parts := tc.splitOn " "
+    let a := parts[0]!
+    let b := parts[1]!
+    if (String.toInt? b = some 0) then
+      results[i]! = "Error Code: integer division or modulo by zero"
+    else
+      results[i]! = toString ((String.toInt? a).get! / (String.toInt? b).get!) := sorry
+
+theorem invalid_first_number {test_cases : List String}
+  (h : ∀ tc ∈ test_cases, ∃ inv valid : String,
+    tc = inv ++ " " ++ valid ∧ 
+    String.toInt? inv = none ∧
+    String.toInt? valid ≠ none) :
+  let results := process_divisions test_cases
+  results.length = test_cases.length ∧
+  ∀ r ∈ results, (r.startsWith "Error Code:") := sorry
+
+theorem invalid_second_number {test_cases : List String}
+  (h : ∀ tc ∈ test_cases, ∃ valid inv : String,
+    tc = valid ++ " " ++ inv ∧
+    String.toInt? valid ≠ none ∧
+    String.toInt? inv = none) :
+  let results := process_divisions test_cases
+  results.length = test_cases.length ∧
+  ∀ r ∈ results, (r.startsWith "Error Code:") := sorry
+
+/-
+info: ['Error Code: integer division or modulo by zero']
+-/
+-- #guard_msgs in
+-- #eval process_divisions ["1 0"]
+
+/-
+info: ["Error Code: invalid literal for int() with base 10: '$'"]
+-/
+-- #guard_msgs in
+-- #eval process_divisions ["2 $"]
+
+/-
+info: ['3']
+-/
+-- #guard_msgs in
+-- #eval process_divisions ["3 1"]
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

@@ -1,0 +1,73 @@
+vc-description: |-
+  /-
+  Given an integer, return its base 7 string representation.
+  
+  Example 1:
+  
+  Input: 100
+  Output: "202"
+  
+  Example 2:
+  
+  Input: -7
+  Output: "-10"
+  
+  Note:
+  The input will be in range of [-1e7, 1e7].
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def convert_to_base7 (n : Int) : String := sorry
+  
+  def base7_to_decimal (s : String) : Int := sorry
+
+vc-theorems: |-
+  theorem convert_to_base7_negative_sign (x : Int) :
+    x < 0 → (convert_to_base7 x).startsWith "-" :=
+  sorry
+  
+  theorem convert_to_base7_positive_no_sign (x : Int) :
+    x ≥ 0 → ¬(convert_to_base7 x).startsWith "-" :=
+  sorry
+  
+  theorem convert_to_base7_roundtrip (x : Int) :
+    base7_to_decimal (convert_to_base7 x) = x :=
+  sorry
+  
+  theorem convert_to_base7_valid_digits (x : Int) :
+    let digits := if (convert_to_base7 x).startsWith "-" then (convert_to_base7 x).drop 1 else convert_to_base7 x
+    ∀ d, d ∈ digits.data → d ∈ ['0', '1', '2', '3', '4', '5', '6'] :=
+  sorry
+  
+  theorem convert_to_base7_single_digit (x : Int) :
+    0 ≤ x → x ≤ 6 → convert_to_base7 x = toString x :=
+  sorry
+  
+  /-
+  info: '202'
+  -/
+  -- #guard_msgs in
+  -- #eval convert_to_base7 100
+  
+  /-
+  info: '-10'
+  -/
+  -- #guard_msgs in
+  -- #eval convert_to_base7 -7
+  
+  /-
+  info: '16'
+  -/
+  -- #guard_msgs in
+  -- #eval convert_to_base7 13
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

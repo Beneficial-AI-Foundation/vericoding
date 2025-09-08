@@ -1,0 +1,57 @@
+/-
+# Summation
+
+Write a program that finds the summation of every number from 1 to num. The number will always be a positive integer greater than 0.
+
+For example:
+```if-not:racket
+~~~
+summation(2) -> 3
+1 + 2
+
+summation(8) -> 36
+1 + 2 + 3 + 4 + 5 + 6 + 7 + 8
+~~~
+```
+```if:racket
+~~~racket
+(summation 2) ; 3  (+ 1 2)
+(summation 8) ; 36 (+ 1 2 3 4 5 6 7 8)
+~~~
+```
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def summation (n : Nat) : Nat :=
+  sorry
+
+theorem summation_formula (n : Nat) (h : n > 0) : 
+  summation n = n * (n + 1) / 2 := 
+  sorry
+
+theorem summation_increasing {a b : Nat} (ha : a > 0) (hb : b > 0) :
+  summation (a + b) > summation a :=
+  sorry
+
+/-
+info: 1
+-/
+-- #guard_msgs in
+-- #eval summation 1
+
+/-
+info: 36
+-/
+-- #guard_msgs in
+-- #eval summation 8
+
+/-
+info: 253
+-/
+-- #guard_msgs in
+-- #eval summation 22
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded_and_plausible

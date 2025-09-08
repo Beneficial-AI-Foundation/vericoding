@@ -1,0 +1,88 @@
+vc-description: |-
+  /-
+  As a part of this Kata, you need to create a function that when provided with a triplet, returns the index of the numerical element that lies between the other two elements.
+  
+  The input to the function will be an array of three distinct numbers (Haskell: a tuple).
+  
+  For example:
+  
+      gimme([2, 3, 1]) => 0
+  
+  *2* is the number that fits between *1* and *3* and the index of *2* in the input array is *0*.
+  
+  Another example (just to make sure it is clear):
+  
+      gimme([5, 10, 14]) => 1
+  
+  *10* is the number that fits between *5* and *14* and the index of *10* in the input array is *1*.
+  -/
+
+vc-preamble: |-
+  def gimme (arr : List Float) : Nat :=
+    sorry
+  
+  def sort (xs : List Float) : List Float :=
+    sorry
+  
+  def sortInt (xs : List Int) : List Int :=
+    sorry
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def gimmeInt (arr : List Int) : Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem gimme_in_range {arr : List Float} (h : arr.length = 3) :
+    let res := gimme arr
+    0 ≤ res ∧ res ≤ 2 :=
+  sorry
+  
+  theorem gimme_gives_middle {arr : List Float} (h : arr.length = 3) :
+    let sorted := sort arr
+    let res := gimme arr
+    arr[res]! = sorted[1]! :=
+  sorry
+  
+  theorem gimme_integers_in_range {arr : List Int} (h : arr.length = 3) :
+    let res := gimmeInt arr
+    0 ≤ res ∧ res ≤ 2 :=
+  sorry
+  
+  theorem gimme_integers_middle {arr : List Int} (h : arr.length = 3) :
+    let sorted := sortInt arr
+    let res := gimmeInt arr
+    arr[res]! = sorted[1]! :=
+  sorry
+  
+  theorem gimme_preserves_input {arr : List Float} (h : arr.length = 3) :
+    let original := arr
+    let _ := gimme arr
+    arr = original :=
+  sorry
+  
+  /-
+  info: 0
+  -/
+  -- #guard_msgs in
+  -- #eval gimme [2, 3, 1]
+  
+  /-
+  info: 1
+  -/
+  -- #guard_msgs in
+  -- #eval gimme [5, 10, 14]
+  
+  /-
+  info: 0
+  -/
+  -- #guard_msgs in
+  -- #eval gimme [-0.41, -23, 4]
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

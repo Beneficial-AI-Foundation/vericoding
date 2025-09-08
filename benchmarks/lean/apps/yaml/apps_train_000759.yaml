@@ -1,0 +1,66 @@
+vc-description: |-
+  /-
+  Given an Integer N, write a program to reverse it.
+  
+  -----Input-----
+  
+  The first line contains an integer T, total number of testcases. Then follow T lines, each line contains an integer N. 
+  
+  -----Output-----
+  For each test case, display the reverse of the given number N, in a new line.
+  
+  -----Constraints-----
+  - 1 ≤ T ≤ 1000
+  - 1 ≤ N ≤ 1000000
+  
+  -----Example-----
+  Input
+  4
+  12345
+  31203
+  2123
+  2300
+  Output
+  54321
+  30213
+  3212
+  32
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def reverse_numbers (nums : List String) : List Int := sorry
+  
+  def is_palindrome (s : String) : Bool := sorry
+
+vc-theorems: |-
+  theorem reverse_numbers_preserves_length {nums : List String} :
+    List.length (reverse_numbers nums) = List.length nums := sorry
+  
+  /-
+  info: [54321, 30213, 3212, 32]
+  -/
+  -- #guard_msgs in
+  -- #eval reverse_numbers ["12345", "31203", "2123", "2300"]
+  
+  /-
+  info: [1, 2, 3]
+  -/
+  -- #guard_msgs in
+  -- #eval reverse_numbers ["100", "200", "300"]
+  
+  /-
+  info: [4321]
+  -/
+  -- #guard_msgs in
+  -- #eval reverse_numbers ["1234"]
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible
+

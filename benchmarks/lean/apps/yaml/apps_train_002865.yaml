@@ -1,0 +1,67 @@
+vc-description: |-
+  /-
+  # Task
+   Given an integer `n`, find the maximal number you can obtain by deleting exactly one digit of the given number.
+  
+  # Example
+  
+   For `n = 152`, the output should be `52`;
+  
+   For `n = 1001`, the output should be `101`.
+  
+  # Input/Output
+  
+   - `[input]` integer `n`
+  
+      Constraints: `10 ≤ n ≤ 1000000.`
+  
+   - `[output]` an integer
+  -/
+
+vc-preamble: |-
+  def delete_digit (n : Nat) : Nat :=
+    sorry
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def stringToNat (s : String) : Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem delete_digit_length (n : Nat) (h : n ≥ 10) : 
+    (toString (delete_digit n)).length = (toString n).length - 1 :=
+    sorry
+  
+  theorem delete_digit_smaller (n : Nat) (h : n ≥ 10) :
+    delete_digit n < n :=
+    sorry
+  
+  theorem delete_digit_natural (n : Nat) (h : n ≥ 10) :
+    delete_digit n ≥ 0 :=
+    sorry
+  
+  /-
+  info: 52
+  -/
+  -- #guard_msgs in
+  -- #eval delete_digit 152
+  
+  /-
+  info: 101
+  -/
+  -- #guard_msgs in
+  -- #eval delete_digit 1001
+  
+  /-
+  info: 1
+  -/
+  -- #guard_msgs in
+  -- #eval delete_digit 10
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible
+

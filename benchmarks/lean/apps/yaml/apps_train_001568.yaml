@@ -1,0 +1,100 @@
+vc-description: |-
+  /-
+  Consider the following array:
+  
+  ```
+  [1, 12, 123, 1234, 12345, 123456, 1234567, 12345678, 123456789, 12345678910, 1234567891011...]
+  ```
+  
+  If we join these blocks of numbers, we come up with an infinite sequence which starts with `112123123412345123456...`. The list is infinite.
+  
+  You will be given an number (`n`) and your task will be to return the element at that index in the sequence, where `1 ≤ n ≤ 10^18`. Assume the indexes start with `1`, not `0`.  For example:
+  
+  ```
+  solve(1) = 1, because the first character in the sequence is 1. There is no index 0. 
+  solve(2) = 1, because the second character is also 1.
+  solve(3) = 2, because the third character is 2.
+  ```
+  
+  More examples in the test cases. Good luck!
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def solve (n : Nat) : Nat := sorry
+  
+  /- For any natural number n, solve returns a single digit (0-9) -/
+
+vc-theorems: |-
+  theorem solve_returns_single_digit (n : Nat) :
+    solve n ≤ 9 := sorry
+  
+  /- solve is idempotent: calling it twice gives same result as once -/
+  
+  theorem solve_idempotent (n : Nat) :
+    solve n = solve (solve n) := sorry
+  
+  /- solve returns single digit for boundary values -/
+  
+  theorem solve_boundaries_single_digit :
+    solve 1 ≤ 9 ∧ 
+    solve (10^9) ≤ 9 ∧
+    solve (10^18) ≤ 9 := sorry
+  
+  /-
+  info: 1
+  -/
+  -- #guard_msgs in
+  -- #eval solve 1
+  
+  /-
+  info: 1
+  -/
+  -- #guard_msgs in
+  -- #eval solve 2
+  
+  /-
+  info: 2
+  -/
+  -- #guard_msgs in
+  -- #eval solve 3
+  
+  /-
+  info: 1
+  -/
+  -- #guard_msgs in
+  -- #eval solve 100
+  
+  /-
+  info: 1
+  -/
+  -- #guard_msgs in
+  -- #eval solve 55
+  
+  /-
+  info: 6
+  -/
+  -- #guard_msgs in
+  -- #eval solve 123456
+  
+  /-
+  info: 4
+  -/
+  -- #guard_msgs in
+  -- #eval solve 999999999999999999
+  
+  /-
+  info: 1
+  -/
+  -- #guard_msgs in
+  -- #eval solve 1000000000000000000
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+

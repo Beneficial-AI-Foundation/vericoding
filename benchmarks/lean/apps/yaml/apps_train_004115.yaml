@@ -1,0 +1,114 @@
+vc-description: |-
+  /-
+  ## Story
+  
+  There are four warriors, they need to go through a dark tunnel. Tunnel is very narrow, every time only can let two warriors through, and there are lot of dangerous traps. Fortunately, they have a lamp that can illuminate the tunnel to avoid being trapped by the trap.
+  
+  In order to pass this tunnel, they need five steps:
+  
+  1. Two people go through the tunnel with the lamp
+  2. And then one people come back with the lamp
+  3. And then two people go through the tunnel with the lamp
+  4. And then one people come back with the lamp
+  5. And then two people go through the tunnel with the lamp
+  
+  Each warrior has his own walking speed, we need to calculate the shortest time they have to cross the tunnel.
+  
+  For example:
+  
+  Four warriors is `a,b,c,d`. Their speed are `[3,4,5,6]`. It means they need 3 minutes, 4 minutes, 5 minutes and 6 minutes to cross the tunnel. The shortest crossing time should be 21 minutes, the method is as follows:
+  
+  ```
+  a and b go through the tunnel  ---> Spend 4 minutes
+  (Time spent should be calculated by the person who is slow)
+  a come back                    ---> Spend 3 minutes
+  a and c go through the tunnel  ---> Spend 5 minutes
+  a come back                    ---> Spend 3 minutes
+  a and d go through the tunnel  ---> Spend 6 minutes
+  ```
+  Do you have any other better way?
+  
+  ## Task
+  Complete function `shortestTime()` that accepts 1 argument: `speed` that are the spent time of four warriors. Returns the shortest time that all warriors go through the tunnel.
+  
+  **Note: The method in example above is not always the best way.**
+  
+  ## Example
+  -/
+
+vc-preamble: |-
+  def shortest_time (speeds: List Int) : Int :=
+    sorry
+  
+  def List.sorted (l: List Int) : List Int :=
+    sorry
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def isPermutation (l1 l2: List Int) : Bool :=
+    sorry
+
+vc-theorems: |-
+  theorem shortest_time_positive (speeds: List Int)
+    (h: speeds.length = 4)
+    (h2: ∀ x ∈ speeds, x ≥ 1) : 
+    shortest_time speeds > 0 :=
+    sorry
+  
+  theorem shortest_time_min_bound (speeds: List Int)
+    (h: speeds.length = 4)
+    (h2: ∀ x ∈ speeds, x ≥ 1) :
+    let sorted := speeds.sorted
+    shortest_time speeds ≥ sorted[0]! + sorted[1]! + sorted[3]! :=
+    sorry
+  
+  theorem shortest_time_two_crossings (speeds: List Int)
+    (h: speeds.length = 4)
+    (h2: ∀ x ∈ speeds, x ≥ 1) :
+    let sorted := speeds.sorted
+    shortest_time speeds ≥ 2 * (sorted[0]! + sorted[1]!) :=
+    sorry
+  
+  theorem shortest_time_order_invariant (speeds1 speeds2: List Int)
+    (h1: speeds1.length = 4)
+    (h2: speeds2.length = 4)
+    (h3: ∀ x ∈ speeds1, x ≥ 1)
+    (h4: ∀ x ∈ speeds2, x ≥ 1)
+    (h5: isPermutation speeds1 speeds2) :
+    shortest_time speeds1 = shortest_time speeds2 :=
+    sorry
+  
+  theorem shortest_time_monotonic (speeds: List Int)
+    (h: speeds.length = 4)
+    (h2: ∀ x ∈ speeds, x ≥ 1)
+    (i: Nat)
+    (h3: i < speeds.length) :
+    let increased := speeds.set i (speeds[i]! + 1)
+    shortest_time increased ≥ shortest_time speeds :=
+    sorry
+  
+  /-
+  info: 21
+  -/
+  -- #guard_msgs in
+  -- #eval shortest_time [3, 4, 5, 6]
+  
+  /-
+  info: 41
+  -/
+  -- #guard_msgs in
+  -- #eval shortest_time [3, 7, 10, 18]
+  
+  /-
+  info: 27
+  -/
+  -- #guard_msgs in
+  -- #eval shortest_time [5, 5, 6, 7]
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+

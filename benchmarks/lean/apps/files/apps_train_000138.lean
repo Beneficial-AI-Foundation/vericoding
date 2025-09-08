@@ -1,0 +1,42 @@
+/-
+Given a non-empty array of numbers, a0, a1, a2, … , an-1, where 0 ≤ ai < 231.
+
+Find the maximum result of ai XOR aj, where 0 ≤ i, j < n.
+
+Could you do this in O(n) runtime?
+
+Example:
+
+Input: [3, 10, 5, 25, 2, 8]
+
+Output: 28
+
+Explanation: The maximum result is 5 ^ 25 = 28.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def find_maximum_xor (nums : List Nat) : Nat := sorry
+
+theorem find_maximum_xor_non_negative (nums : List Nat) (h : nums ≠ []) :
+  find_maximum_xor nums ≥ 0 := sorry
+
+theorem find_maximum_xor_upper_bound (nums : List Nat) (h : nums ≠ []) :
+  find_maximum_xor nums ≤ List.foldr (fun i acc => 
+    List.foldr (fun j acc' => max acc' (i.xor j)) acc nums
+  ) 0 nums := sorry
+
+theorem find_maximum_xor_achievable (nums : List Nat) (h : nums.length > 1) :
+  ∃ i j, i < nums.length ∧ j < nums.length ∧ i < j ∧ 
+    (nums.get ⟨i, sorry⟩).xor (nums.get ⟨j, sorry⟩) = find_maximum_xor nums := sorry
+
+theorem find_maximum_xor_single_number (n : Nat) :
+  find_maximum_xor [n] = 0 := sorry
+
+theorem find_maximum_xor_all_zeros (nums : List Nat) (h : nums ≠ []) 
+  (h₂ : ∀ x ∈ nums, x = 0) :
+  find_maximum_xor nums = 0 := sorry
+
+-- Apps difficulty: interview
+-- Assurance level: guarded

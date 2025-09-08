@@ -1,0 +1,87 @@
+vc-description: |-
+  /-
+  You are given an integer sequence $A_1, A_2, \ldots, A_N$ and an integer $X$. Consider a $N \times N$ matrix $B$, where $B_{i,j} = A_i + A_j$ for each valid $i$ and $j$.
+  You need to find the number of square submatrices of $B$ such that the sum of their elements is $X$. Formally, find the number of quartets $(x_1, y_1, x_2, y_2)$ such that $1 \le x_1 \le x_2 \le N$, $1 \le y_1 \le y_2 \le N$, $x_2-x_1 = y_2-y_1$ and $\sum_{i=x_1}^{x_2}\sum_{j=y_1}^{y_2} B_{i,j} = X$.
+  
+  -----Input-----
+  - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+  - The first line of each test case contains two space-separated integers $N$ and $X$.
+  - The second line contains $N$ space-separated integers $A_1, A_2, \ldots, A_N$.
+  
+  -----Output-----
+  For each test case, print a single line containing one integer ― the number of square submatrices with sum $X$.
+  
+  -----Constraints-----
+  - $1 \le T \le 100$
+  - $1 \le X \le 10^6$
+  - $1 \le N \le 10^5$
+  - $1 \le A_i \le 10^6$ for each valid $i$
+  - the sum of $N$ over all test cases does not exceed $10^6$
+  
+  -----Subtasks-----
+  Subtask #1 (50 points): the sum of $N$ over all test cases does not exceed $1,000$
+  Subtask #2 (50 points): original constraints
+  
+  -----Example Input-----
+  2
+  5 36
+  1 2 3 1 12
+  4 54
+  3 3 3 3
+  
+  -----Example Output-----
+  6
+  4
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def count_square_submatrices (n : Nat) (x : Nat) (arr : List Nat) : Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem count_square_submatrices_nonnegative 
+    (n : Nat) (x : Nat) (arr : List Nat) :
+    count_square_submatrices n x arr ≥ 0 :=
+    sorry
+  
+  theorem count_square_submatrices_array_length
+    (n : Nat) (x : Nat) (arr : List Nat) :
+    arr.length = n →
+    count_square_submatrices n x arr ≥ 0 :=
+    sorry
+  
+  theorem count_square_submatrices_all_zeros 
+    (n : Nat) (x : Nat) (arr : List Nat) :
+    x > 0 →
+    (∀ i, i ∈ arr → i = 0) →
+    count_square_submatrices n x arr = 0 :=
+    sorry
+  
+  theorem count_square_submatrices_zero_array
+    (n : Nat) (x : Nat) (arr : List Nat) :
+    (∀ i, i ∈ arr → i = 0) →
+    count_square_submatrices n x arr = 0 :=
+    sorry
+  
+  /-
+  info: 6
+  -/
+  -- #guard_msgs in
+  -- #eval count_square_submatrices 5 36 [1, 2, 3, 1, 12]
+  
+  /-
+  info: 4
+  -/
+  -- #guard_msgs in
+  -- #eval count_square_submatrices 4 54 [3, 3, 3, 3]
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+

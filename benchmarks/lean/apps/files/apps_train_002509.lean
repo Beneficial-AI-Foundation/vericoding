@@ -1,0 +1,65 @@
+/-
+=====Problem Statement=====
+ABC is a right triangle, 90°, at B. Therefore, ANGLE{ABC} = 90°.
+Point M is the midpoint of hypotenuse AC.
+You are given the lengths AB and BC.
+Your task is to find ANGLE{MBC} (angle θ°, as shown in the figure) in degrees.
+
+=====Input Format=====
+The first contains the length of side AB.
+The second line contains the length of side BC.
+
+=====Constraints=====
+0<AB≤100
+0<BC≤100
+Lengths AB and BC are natural numbers.
+
+=====Output Format=====
+Output ANGLE{MBC} in degrees.
+Note: Round the angle to the nearest integer.
+Examples:
+If angle is 56.5000001°, then output 57°.
+If angle is 56.5000000°, then output 57°.
+If angle is 56.4999999°, then output 56°.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def find_angle_mbc (ab : Float) (bc : Float) : Float := sorry
+
+theorem angle_properties (ab bc : Float)
+  (h1 : ab > 0) (h2 : bc > 0)
+  (h3 : ab < bc + bc) (h4 : bc < ab + ab) :
+  let angle := find_angle_mbc ab bc
+  0 < angle ∧ angle ≤ 90 := sorry
+
+theorem equal_sides_angle (x : Float)
+  (h1 : x > 0) :
+  let angle := find_angle_mbc x x
+  angle = 45 := sorry
+
+theorem symmetric_inputs (x : Float)
+  (h1 : x > 0) :
+  find_angle_mbc x x = 45 := sorry
+
+/-
+info: '45°'
+-/
+-- #guard_msgs in
+-- #eval find_angle_mbc 10 10
+
+/-
+info: '63°'
+-/
+-- #guard_msgs in
+-- #eval find_angle_mbc 20 10
+
+/-
+info: '27°'
+-/
+-- #guard_msgs in
+-- #eval find_angle_mbc 10 20
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

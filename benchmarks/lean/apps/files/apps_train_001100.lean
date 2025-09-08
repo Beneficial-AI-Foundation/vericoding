@@ -1,0 +1,81 @@
+/-
+Vishal Wants to buy 2 gifts for his best friend whose name is Annabelle(her age is 20), So they both went for shopping in a store. But Annabelle gave, Vishal a condition that she will accept this gifts only when the total price of the gifts is the same as her age times 100.
+The store contains, a list of items whose prices are also displayed, Now Vishal is asking for your help to buy gifts, as he wants to impress Annabelle this time.
+Note: Vishal cannot buy the same item more than once.
+
+-----Input:-----
+- The first line of the input contains a single integer $T$. $T$ denoting the number of test cases. The description of $T$ test cases is as follows.
+- The next line of the input contains a single integer $N$. $N$ denotes the total number of items in store.
+- The next line of the input contains $N$ space-separated integers $A1, A2, A3...An$ where $ith$ number denotes the price of $ith$ element.
+
+-----Output:-----
+- For each test-case print "Accepted"(without quotes) if the gifts are accepted by Annabelle, else print "Rejected"(without quotes)
+
+-----Constraints:-----
+- $1 \leq T \leq 10^3$
+- $1 \leq N \leq 10^5$
+- $1 \leq A1, A2, A3...An \leq 10^7$
+
+-----Sample Input:-----
+1
+5
+10 2 1000 50 1000
+
+-----Sample Output:-----
+Accepted
+
+-----Explanation:-----
+- As the given list of items have 2 items whose price sum up to the age times 100 of Annabelle i.e. 1000+1000 = (20 *100)
+-/
+
+def find_gift_pair (n : Nat) (prices : List Nat) : String := sorry
+def process_test_cases (numCases : Nat) (cases : List (Nat × List Nat)) : List String := sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def permutation (xs : List Nat) : List Nat := sorry
+
+theorem find_gift_pair_order_independence (n : Nat) (prices : List Nat) :
+  find_gift_pair n prices = find_gift_pair n (permutation prices) := sorry
+
+theorem find_gift_pair_result (n : Nat) (prices : List Nat) :
+  find_gift_pair n prices = "Accepted" ∨ find_gift_pair n prices = "Rejected" := sorry
+
+theorem find_gift_pair_deterministic (n : Nat) (prices : List Nat) : 
+  find_gift_pair n prices = find_gift_pair n prices := sorry
+
+theorem process_test_cases_preserves_result (n : Nat) (prices : List Nat) :
+  let test_cases := [(n, prices)]
+  let results := process_test_cases 1 test_cases
+  results.length = 1 ∧
+  results[0]! = find_gift_pair n prices := sorry
+
+theorem find_gift_pair_empty : find_gift_pair 0 [] = "Rejected" := sorry
+
+theorem find_gift_pair_single : find_gift_pair 1 [1000] = "Rejected" := sorry
+
+theorem find_gift_pair_too_small : find_gift_pair 3 [1, 1, 1] = "Rejected" := sorry
+
+theorem find_gift_pair_too_large : find_gift_pair 3 [2001, 2001, 2001] = "Rejected" := sorry
+
+/-
+info: 'Accepted'
+-/
+-- #guard_msgs in
+-- #eval find_gift_pair 5 [10, 2, 1000, 50, 1000]
+
+/-
+info: 'Rejected'
+-/
+-- #guard_msgs in
+-- #eval find_gift_pair 3 [500, 500, 500]
+
+/-
+info: 'Accepted'
+-/
+-- #guard_msgs in
+-- #eval find_gift_pair 4 [1000, 1000, 50, 60]
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

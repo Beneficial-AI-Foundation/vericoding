@@ -1,0 +1,92 @@
+vc-description: |-
+  /-
+  Since due to COVID 19, India has undergone a complete 21 day lockdown. So Amol was attending an online lecture where his professor asked him to solve a question. Amol was unable to solve the question so he asked you to solve the question and give him the correct answer. 
+  
+  The question was asked a such that his professor gave him a number M and a list of integers of length N (i.e. A1, A2,..... AN) and you have to find out all the subsets that add up to M and the total number of subsets will be the final answer. 
+  
+  Input: 
+  • The first line of the input contains a single integer T denoting the number of test cases. The description of T test cases follows. 
+  
+  • The first line of each test case contains a single integer N. 
+  
+  • The second line of each test case contains a single integer M. 
+  
+  • The third line contains N space-separated integers A1, A2,..... AN. 
+  
+  Output: 
+  For each test case, print a single line containing one integer ― the no. of subsets that adds upto M.
+  
+  Constraints: 
+  • 1≤T≤5
+  
+  • 1≤N≤100 
+  
+  • 10≤M≤100 
+  
+  • 1≤Ai≤100
+  
+  ExampleInput:
+  
+  2
+  
+  4
+  
+  16
+  
+  2 4 6 10 
+  
+  4 
+  
+  20 
+  
+  2 8 12 10 
+  
+  Output:
+  
+  2
+  
+  2
+  
+  Explanation:
+  In the 1st example there are two subsets {2,4,10} and {6,10} that adds upto 16 so the output is 2.
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def countsubsetsum (target : Nat) (arr : List Nat) : Nat := sorry
+  
+  def List.sum : List Nat → Nat 
+    | [] => 0
+    | x::xs => x + List.sum xs
+
+vc-theorems: |-
+  theorem zero_sum_always_has_one_solution {arr : List Nat} : 
+    countsubsetsum 0 arr = 1 := sorry
+  
+  theorem single_element_sums {arr : List Nat} {x : Nat} :
+    x ∈ arr → countsubsetsum x arr ≥ 1 := sorry
+  
+  theorem results_non_negative {target : Nat} {arr : List Nat} :
+    countsubsetsum target arr ≥ 0 := sorry
+  
+  /-
+  info: 2
+  -/
+  -- #guard_msgs in
+  -- #eval solve_test_case 4 16 [2, 4, 6, 10]
+  
+  /-
+  info: 2
+  -/
+  -- #guard_msgs in
+  -- #eval solve_test_case 4 20 [2, 8, 12, 10]
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible
+

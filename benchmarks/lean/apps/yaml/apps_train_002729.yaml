@@ -1,0 +1,83 @@
+vc-description: |-
+  /-
+  # Task
+   You are given an array of integers. Your task is to determine the minimum number of its elements that need to be changed so that elements of the array will form an arithmetic progression. Note that if you swap two elements, you're changing both of them, for the purpose of this kata.
+  
+   Here an arithmetic progression is defined as a sequence of integers such that the difference between consecutive terms is constant. For example, `6 4 2 0 -2` and `3 3 3 3 3` are arithmetic progressions, but `0 0.5 1 1.5` and `1 -1 1 -1 1` are not.
+  
+  # Examples
+  
+    For `arr = [1, 3, 0, 7, 9]` the answer is `1` 
+  
+    Because only one element has to be changed in order to create an arithmetic progression.
+  
+    For `arr = [1, 10, 2, 12, 3, 14, 4, 16, 5]` the answer is `5` 
+  
+    The array will be changed into `[9, 10, 11, 12, 13, 14, 15, 16, 17]`.
+  
+  # Input/Output
+  
+   - `[input]` integer array `arr`
+  
+    An array of N integers.
+  
+    `2 ≤ arr.length ≤ 100`
+  
+    `-1000 ≤ arr[i] ≤ 1000`
+  
+    Note for Java users: you'll have a batch of 100 bigger random arrays, with lengths as `150 ≤ arr.length ≤ 300`.
+  
+   - `[output]` an integer
+  
+    The minimum number of elements to change.
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def fix_progression (arr : List Int) : Nat := sorry
+  
+  theorem fix_progression_bounds {arr : List Int} (h : arr ≠ []) : 
+    fix_progression arr ≤ arr.length - 1 := sorry
+
+vc-theorems: |-
+  theorem arithmetic_sequence_no_changes {arr : List Int} (h : arr.length ≥ 2) :
+    let d := arr[1]! - arr[0]!
+    let arith_seq := List.map (fun i => arr[0]! + (Int.ofNat i) * d) (List.range arr.length)
+    fix_progression arith_seq = 0 := sorry
+  
+  theorem constant_sequence_no_changes {arr : List Int} (h : arr.length ≥ 2) :
+    let const_seq := List.replicate arr.length arr[0]!
+    fix_progression const_seq = 0 := sorry
+  
+  theorem result_changes_with_perturbation {arr : List Int} (h : arr.length ≥ 3) :
+    let mid := arr.length / 2
+    let arr_perturbed := arr.set mid (arr[mid]! + 1000)
+    fix_progression arr ≤ fix_progression arr_perturbed := sorry
+  
+  /-
+  info: 0
+  -/
+  -- #guard_msgs in
+  -- #eval fix_progression [1, 2, 3]
+  
+  /-
+  info: 1
+  -/
+  -- #guard_msgs in
+  -- #eval fix_progression [1, 3, 0, 7, 9]
+  
+  /-
+  info: 5
+  -/
+  -- #guard_msgs in
+  -- #eval fix_progression [1, 10, 2, 12, 3, 14, 4, 16, 5]
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

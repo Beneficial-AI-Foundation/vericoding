@@ -1,0 +1,148 @@
+vc-description: |-
+  /-
+  ### Task:
+  
+  You have to write a function `pattern` which returns the following Pattern(See Examples) upto (2n-1) rows, where n is parameter.
+  
+  * Note:`Returning` the pattern is not the same as `Printing` the pattern.
+  
+  #### Parameters:
+  
+      pattern(        n        );
+                      ^                     
+                      |                     
+               Term upto which   
+             Basic Pattern(this)     
+                  should be         
+                   created            
+  
+  #### Rules/Note:
+  * If `n < 1` then it should return "" i.e. empty string.
+  * `The length of each line is same`, and is equal to the length of longest line in the pattern i.e (2n-1).
+  * Range of Parameters (for the sake of CW Compiler) :
+    + `n ∈ (-∞,100]`
+  
+  ### Examples:
+  
+  * pattern(5):
+  
+          1       1
+           2     2 
+            3   3  
+             4 4   
+              5    
+             4 4   
+            3   3  
+           2     2 
+          1       1
+  
+  * pattern(10):
+  
+          1                 1
+           2               2 
+            3             3  
+             4           4   
+              5         5    
+               6       6     
+                7     7      
+                 8   8       
+                  9 9        
+                   0         
+                  9 9        
+                 8   8       
+                7     7      
+               6       6     
+              5         5    
+             4           4   
+            3             3  
+           2               2 
+          1                 1
+  
+  * pattern(15):
+  
+          1                           1
+           2                         2 
+            3                       3  
+             4                     4   
+              5                   5    
+               6                 6     
+                7               7      
+                 8             8       
+                  9           9        
+                   0         0         
+                    1       1          
+                     2     2           
+                      3   3            
+                       4 4             
+                        5              
+                       4 4             
+                      3   3            
+                     2     2           
+                    1       1          
+                   0         0         
+                  9           9        
+                 8             8       
+                7               7      
+               6                 6     
+              5                   5    
+             4                     4   
+            3                       3  
+           2                         2 
+          1                           1
+  
+  [List of all my katas]("http://www.codewars.com/users/curious_db97/authored")
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def pattern (n : Int) : String := sorry
+  
+  theorem pattern_non_positive_returns_empty (n : Int) (h : n ≤ 0) :
+    pattern n = "" := sorry
+
+vc-theorems: |-
+  theorem pattern_returns_string (n : Int) :
+    ∃ s : String, pattern n = s := sorry
+  
+  theorem pattern_valid_properties {n : Int} (h : n > 0) :
+    let result := pattern n
+    let lines := String.splitOn result "\n"
+    -- Number of lines is 2n - 1
+    lines.length = (2 * n - 1).toNat ∧
+    -- Each line is palindrome
+    (∀ line ∈ lines, line.data = line.data.reverse) ∧ 
+    -- All lines have same length
+    (∀ line ∈ lines, line.length = lines[0]!.length) ∧
+    -- All digits are 0-9
+    (∀ c ∈ result.data, c.isDigit → (c.toNat - '0'.toNat) ≤ 9) ∧
+    -- Top half equals reversed bottom half
+    (lines.take n.toNat = (lines.drop (n-1).toNat).reverse)
+    := sorry
+  
+  /-
+  info: expected
+  -/
+  -- #guard_msgs in
+  -- #eval pattern 3
+  
+  /-
+  info: ''
+  -/
+  -- #guard_msgs in
+  -- #eval pattern 0
+  
+  /-
+  info: expected
+  -/
+  -- #guard_msgs in
+  -- #eval pattern 2
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

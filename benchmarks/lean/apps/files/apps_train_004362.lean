@@ -1,0 +1,68 @@
+/-
+# Task
+ If string has more than one neighboring dashes(e.g. --) replace they with one dash(-). 
+
+ Dashes are considered neighbors even if there is some whitespace **between** them.
+
+# Example
+
+ For `str = "we-are- - - code----warriors.-"`
+
+ The result should be `"we-are- code-warriors.-"`
+
+# Input/Output
+
+ - `[input]` string `str`
+
+ - `[output]` a string
+-/
+
+def replace_dashes_as_one (s : String) : String := sorry
+
+def remove_dashes (s : String) : String := sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def containsSubstring (s : String) (sub : String) : Bool := sorry
+
+theorem no_consecutive_dashes 
+  (s : String) : 
+  ¬ (containsSubstring (replace_dashes_as_one s) "--") ∧ 
+  ¬ (containsSubstring (replace_dashes_as_one s) "- -") := sorry
+
+theorem preserves_non_dash_chars
+  (s : String) :
+  remove_dashes s = remove_dashes (replace_dashes_as_one s) := sorry
+
+theorem idempotent
+  (s : String) :
+  replace_dashes_as_one (replace_dashes_as_one s) = replace_dashes_as_one s := sorry
+
+theorem dash_only_strings
+  (s : String)
+  (h : ∀ c, String.contains s c → (c = '-' ∨ c = ' ')) :
+  (∀ c, String.contains (replace_dashes_as_one s) c → (c = '-' ∨ c = ' ')) ∧
+  ¬ (containsSubstring (replace_dashes_as_one s) "--") ∧
+  ¬ (containsSubstring (replace_dashes_as_one s) "- -") := sorry
+
+/-
+info: 'we-are- code-warriors.-'
+-/
+-- #guard_msgs in
+-- #eval replace_dashes_as_one "we-are- - - code----warriors.-"
+
+/-
+info: 'a-b-c'
+-/
+-- #guard_msgs in
+-- #eval replace_dashes_as_one "a---b- - -c"
+
+/-
+info: 'a-'
+-/
+-- #guard_msgs in
+-- #eval replace_dashes_as_one "a------"
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

@@ -1,0 +1,49 @@
+/-
+Four-digit palindromes start with `[1001,1111,1221,1331,1441,1551,1551,...]` and the number at position `2` is `1111`.  
+
+You will be given two numbers `a` and `b`. Your task is to return the `a-digit` palindrome at position `b` if the palindromes were arranged in increasing order. 
+
+Therefore, `palin(4,2) = 1111`, because that is the second element of the `4-digit` palindrome series.
+
+More examples in the test cases. Good luck!
+
+If you like palindrome Katas, please try:
+
+[Palindrome integer composition](https://www.codewars.com/kata/599b1a4a3c5292b4cc0000d5)
+
+[Life without primes](https://www.codewars.com/kata/59f8750ac374cba8f0000033)
+-/
+
+def palin (length pos : Nat) : Nat := sorry
+
+def is_palindrome (n : Nat) : Bool := sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def num_length (n : Nat) : Nat := sorry
+
+theorem single_digit_palindromes (pos : Nat) (h : 0 < pos ∧ pos < 10) : 
+  let result := palin 1 pos
+  result = pos ∧ result < 10 := sorry
+
+/-
+info: 22
+-/
+-- #guard_msgs in
+-- #eval palin 2 2
+
+/-
+info: 1441
+-/
+-- #guard_msgs in
+-- #eval palin 4 5
+
+/-
+info: 102201
+-/
+-- #guard_msgs in
+-- #eval palin 6 3
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded_and_plausible

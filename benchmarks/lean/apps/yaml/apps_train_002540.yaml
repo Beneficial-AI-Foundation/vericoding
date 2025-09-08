@@ -1,0 +1,73 @@
+vc-description: |-
+  /-
+  Passer ratings are the generally accepted standard for evaluating NFL quarterbacks.
+  I knew a rating of 100 is pretty good, but never knew what makes up the rating.
+  So out of curiosity I took a look at the wikipedia page and had an idea or my first kata: https://en.wikipedia.org/wiki/Passer_rating
+  
+  ## Formula
+  
+  There are four parts to the NFL formula:
+  ```python
+  A = ((Completions / Attempts) - .3) * 5
+  B = ((Yards / Attempts) - 3) * .25
+  C = (Touchdowns / Attempt) * 20
+  D = 2.375 - ((Interceptions / Attempts) * 25)
+  ```
+  However, if the result of any calculation is greater than `2.375`, it is set to `2.375`. If the result is a negative number, it is set to zero.
+  
+  Finally the passer rating is: `((A + B + C + D) / 6) * 100`
+  
+  Return the rating rounded to the nearest tenth.
+  
+  ## Example
+  
+  Last year Tom Brady had 432 attempts, 3554 yards, 291 completions, 28 touchdowns, and 2 interceptions.
+  His passer rating was 112.2
+  
+  Happy coding!
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def passer_rating (att yds comp td ints : Nat) : Float :=
+    sorry
+
+vc-theorems: |-
+  theorem passer_rating_bounds (att yds comp td ints : Nat) (h : att > 0) :
+    let rating := passer_rating att yds comp td ints
+    0 ≤ rating ∧ rating ≤ 158.3 := sorry
+  
+  theorem completions_less_than_attempts (att yds comp td ints : Nat) :
+    comp ≤ att → passer_rating att yds comp td ints = passer_rating att yds comp td ints := sorry
+  
+  theorem terrible_rating_conditions (att : Nat) (h : att > 0) :
+    let rating := passer_rating att 0 0 0 att
+    rating < 10 := sorry
+  
+  /-
+  info: 112.2
+  -/
+  -- #guard_msgs in
+  -- #eval passer_rating 432 3554 291 28 2
+  
+  /-
+  info: 158.3
+  -/
+  -- #guard_msgs in
+  -- #eval passer_rating 5 76 4 1 0
+  
+  /-
+  info: 39.6
+  -/
+  -- #guard_msgs in
+  -- #eval passer_rating 48 192 19 2 3
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

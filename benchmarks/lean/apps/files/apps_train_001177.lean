@@ -1,0 +1,78 @@
+/-
+You have found $M$ different types of jewels in a mine and each type of jewel is present in an infinite number.
+There are $N$ different boxes located at position $(1 ,2 ,3 ,...N)$.
+Each box can collect jewels up to a certain number ( box at position $i$ have $i$ different partitions and each partition can collect at most one jewel of any type).
+Boxes at odd positions are already fully filled with jewels while boxes at even positions are completely empty.
+Print the total number of different arrangements possible so that all boxes can be fully filled.
+As the answer can be very large you can print it by doing modulo with 1000000007(10^9+7).
+
+-----Input:-----
+- First line will contain $T$, number of testcases. 
+- Each testcase contains of a single line of input, two integers $N ,  M$. 
+
+-----Output:-----
+For each testcase, Print the total number of different arrangement.
+
+-----Constraints-----
+- $1 \leq T \leq 20000$
+- $1 \leq N \leq 1e9$
+- $1 \leq M \leq 1e14$
+
+-----Sample Input:-----
+2
+1 10
+5 2
+
+-----Sample Output:-----
+1
+64
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def MOD : Nat := 1000000007
+
+def calculate_arrangements (n m : Int) : Int :=
+  sorry
+
+theorem calculate_arrangements_mod_bounds
+  (n m : Int) (hn : n > 0) (hm : m > 0) :
+  0 ≤ calculate_arrangements n m ∧ calculate_arrangements n m < MOD :=
+  sorry
+
+theorem calculate_arrangements_one_n
+  (m : Int) (hm : m > 0) :
+  calculate_arrangements 1 m = 1 :=
+  sorry
+
+theorem calculate_arrangements_nonNeg_invalid_n
+  (n m : Int) (hn : n ≤ 0) (hm : m > 0) :
+  calculate_arrangements n m ≥ 0 :=
+  sorry
+
+theorem calculate_arrangements_nonNeg_invalid_m
+  (n m : Int) (hn : n > 0) (hm : m ≤ 0) :
+  calculate_arrangements n m ≥ 0 :=
+  sorry
+
+/-
+info: 1
+-/
+-- #guard_msgs in
+-- #eval calculate_arrangements 1 10
+
+/-
+info: 64
+-/
+-- #guard_msgs in
+-- #eval calculate_arrangements 5 2
+
+/-
+info: 729
+-/
+-- #guard_msgs in
+-- #eval calculate_arrangements 4 3
+
+-- Apps difficulty: interview
+-- Assurance level: guarded

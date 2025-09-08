@@ -1,0 +1,89 @@
+vc-description: |-
+  /-
+  # Task
+   Given a string `s`, find out if its characters can be rearranged to form a palindrome.
+  
+  # Example
+  
+   For `s = "aabb"`, the output should be `true`.
+  
+   We can rearrange `"aabb"` to make `"abba"`, which is a palindrome.
+  
+  # Input/Output
+  
+   - `[input]` string `s`
+  
+      A string consisting of lowercase English letters.
+  
+      Constraints:
+  
+      `4 ≤ inputString.length ≤ 50.`
+  
+   - `[output]` a boolean value
+  
+      `true` if the characters of the inputString can be rearranged to form a palindrome, `false` otherwise.
+  -/
+
+vc-preamble: |-
+  def palindrome_rearranging (s : String) : Bool :=
+    sorry
+  
+  def String.reverse (s : String) : String :=
+    sorry
+  
+  def String.repeating (c : Char) (n : Nat) : String :=
+    sorry
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def odd_char_count (s : String) : Nat :=
+  sorry
+
+vc-theorems: |-
+  theorem palindrome_rearranging_symmetry (s : String) :
+    palindrome_rearranging s = palindrome_rearranging (String.reverse s) :=
+  sorry
+  
+  theorem palindrome_rearranging_duplicates (s : String) (h : s.length > 0) :
+    palindrome_rearranging (s ++ s) = true :=
+  sorry
+  
+  theorem palindrome_rearranging_single_char (s : String) (h : s.length > 0) (c : Char) :
+    palindrome_rearranging (String.repeating c s.length) = true :=
+  sorry
+  
+  theorem palindrome_rearranging_empty_and_single (s : String) (h : s.length ≤ 1) :
+    palindrome_rearranging s = true :=
+  sorry
+  
+  /- Count of chars with odd occurrences -/
+  
+  theorem palindrome_rearranging_odd_counts (s : String) :
+    palindrome_rearranging s = (odd_char_count s ≤ 1) :=
+  sorry
+  
+  /-
+  info: True
+  -/
+  -- #guard_msgs in
+  -- #eval palindrome_rearranging "aabb"
+  
+  /-
+  info: True
+  -/
+  -- #guard_msgs in
+  -- #eval palindrome_rearranging "abbcabb"
+  
+  /-
+  info: False
+  -/
+  -- #guard_msgs in
+  -- #eval palindrome_rearranging "aaabbb"
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

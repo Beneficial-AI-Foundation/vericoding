@@ -1,0 +1,76 @@
+/-
+Congratulations !!! You have successfully completed the heist by looting all the gifts in Santa's locker. Now it's time to decide who gets to take all the gifts, you or the Grinch, there will be no splitting. So you and Grinch decide to play a game.
+To start the game, an Integer N will be given. The game is played in turns and for each turn, the player can make any one of the following moves:
+- Divide N by any of it's odd divisors greater than 1.
+- Subtract 1 from N if N is greater than 1.
+Divisor of a number includes the number itself.
+The player who is unable to make a move loses the game.
+Since you are the mastermind of the heist, you get to play the first move.
+
+-----Input-----
+The first line contains a single integer T (1 ≤ T ≤ 100) — the number of test cases. The description of the test cases follows.
+The only line of each test case contains a single integer — N (1 ≤ N ≤ 109).
+
+-----Output-----
+For each test case, print " Me" if you win, and " Grinch" if otherwise (without quotes).
+
+-----Sample Input-----
+7
+1
+2
+3
+4
+5
+6
+12
+
+-----Sample Output-----
+Grinch
+Me
+Me
+Grinch
+Me
+Grinch
+Me
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def find_winner (n : Nat) : String := sorry
+
+theorem find_winner_valid_values (n : Nat) : 
+  n > 0 → (find_winner n = "Me" ∨ find_winner n = "Grinch") := sorry
+
+theorem find_winner_powers_of_two_one :
+  find_winner 2 = "Me" := sorry
+
+theorem find_winner_powers_of_two (n : Nat) :
+  n > 1 → find_winner (2^n) = "Grinch" := sorry
+
+theorem find_winner_one :
+  find_winner 1 = "Grinch" := sorry
+
+theorem find_winner_odd_numbers (n : Nat) :
+  n > 1 → n % 2 = 1 → find_winner n = "Me" := sorry
+
+theorem find_winner_known_cases_four :
+  find_winner 4 = "Grinch" := sorry
+
+theorem find_winner_known_cases_six :
+  find_winner 6 = "Grinch" := sorry
+
+theorem find_winner_known_cases_twelve :
+  find_winner 12 = "Me" := sorry
+
+theorem find_winner_known_cases_sixteen :
+  find_winner 16 = "Grinch" := sorry
+
+/-
+info: expected1[i]
+-/
+-- #guard_msgs in
+-- #eval find_winner test1[i]
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

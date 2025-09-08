@@ -1,0 +1,72 @@
+/-
+Write a program to check whether a given number is an ugly number.
+
+Ugly numbers are positive numbers whose prime factors only include 2, 3, 5.
+
+Example 1:
+
+Input: 6
+Output: true
+Explanation: 6 = 2 × 3
+
+Example 2:
+
+Input: 8
+Output: true
+Explanation: 8 = 2 × 2 × 2
+
+Example 3:
+
+Input: 14
+Output: false 
+Explanation: 14 is not ugly since it includes another prime factor 7.
+
+Note:
+
+       1 is typically treated as an ugly number.
+       Input is within the 32-bit signed integer range: [−231,  231 − 1].
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def is_ugly (n : Int) : Bool :=
+  sorry
+
+theorem negative_and_zero_not_ugly {x : Int} (h : x ≤ 0) : 
+  is_ugly x = false := 
+  sorry
+
+theorem products_of_2_3_5_are_ugly {x : Int} (h : x > 0) :
+  is_ugly x = true ↔ ∃ a b c : Nat, x = 2^a * 3^b * 5^c :=
+  sorry
+
+theorem primes_except_2_3_5_not_ugly {p : Int} 
+  (h1 : p > 0) 
+  (h2 : p ≠ 2) 
+  (h3 : p ≠ 3) 
+  (h4 : p ≠ 5)
+  (h5 : ∀ m : Int, 2 ≤ m → m < p → p % m ≠ 0) :
+  is_ugly p = false :=
+  sorry
+
+/-
+info: True
+-/
+-- #guard_msgs in
+-- #eval is_ugly 6
+
+/-
+info: True
+-/
+-- #guard_msgs in
+-- #eval is_ugly 8
+
+/-
+info: False
+-/
+-- #guard_msgs in
+-- #eval is_ugly 14
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

@@ -1,0 +1,93 @@
+vc-description: |-
+  /-
+  - Kids drink toddy.
+  - Teens drink coke.
+  - Young adults drink beer.
+  - Adults drink whisky.
+  
+  Make a function that receive age, and return what they drink.
+  
+  **Rules:**
+  
+  - Children under 14 old.
+  - Teens under 18 old.
+  - Young under 21 old.
+  - Adults have 21 or more.
+  
+  **Examples:**
+  
+  ```python
+  people_with_age_drink(13) == "drink toddy"
+  people_with_age_drink(17) == "drink coke"
+  people_with_age_drink(18) == "drink beer"
+  people_with_age_drink(20) == "drink beer"
+  people_with_age_drink(30) == "drink whisky"
+  ```
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def people_with_age_drink (age : Int) : String := sorry
+  
+  theorem kids_drink_toddy
+    {age : Int}
+    (h : age ≤ 13) :
+    people_with_age_drink age = "drink toddy" := sorry
+
+vc-theorems: |-
+  theorem teens_drink_coke
+    {age : Int}
+    (h1 : age ≥ 14)
+    (h2 : age ≤ 17) :
+    people_with_age_drink age = "drink coke" := sorry
+  
+  theorem young_adults_drink_beer
+    {age : Int}
+    (h1 : age ≥ 18)
+    (h2 : age ≤ 20) :
+    people_with_age_drink age = "drink beer" := sorry
+  
+  theorem adults_drink_whisky
+    {age : Int}
+    (h : age ≥ 21) :
+    people_with_age_drink age = "drink whisky" := sorry
+  
+  /-
+  info: 'drink toddy'
+  -/
+  -- #guard_msgs in
+  -- #eval people_with_age_drink 13
+  
+  /-
+  info: 'drink coke'
+  -/
+  -- #guard_msgs in
+  -- #eval people_with_age_drink 17
+  
+  /-
+  info: 'drink beer'
+  -/
+  -- #guard_msgs in
+  -- #eval people_with_age_drink 18
+  
+  /-
+  info: 'drink beer'
+  -/
+  -- #guard_msgs in
+  -- #eval people_with_age_drink 20
+  
+  /-
+  info: 'drink whisky'
+  -/
+  -- #guard_msgs in
+  -- #eval people_with_age_drink 21
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

@@ -1,0 +1,64 @@
+/-
+You've arrived at a carnival and head straight for the duck shooting tent. Why wouldn't you?
+
+You will be given a set amount of ammo, and an aim rating of between 1 and 0. No your aim is not always perfect - hey maybe someone fiddled with the sights on the gun...
+
+Anyway your task is to calculate how many successful shots you will be able to make given the available ammo and your aim score, then return a string representing the pool of ducks, with those ducks shot marked with 'X' and those that survived left unchanged. You will always shoot left to right.
+
+Example of start and end duck string with two successful shots:
+
+Start ---> |~~~~~22~2~~~~~|
+
+**Bang!! Bang!!**
+
+End  --->  |~~~~~XX~2~~~~~|
+
+All inputs will be correct type and never empty.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def duck_shoot (ammo : Nat) (aim : Float) (ducks : String) : String := sorry
+
+theorem duck_shoot_length_preserving (ammo : Nat) (aim : Float) (ducks : String) :
+  (duck_shoot ammo aim ducks).length = ducks.length := sorry
+
+theorem duck_shoot_valid_chars (ammo : Nat) (aim : Float) (ducks : String) (pos : String.Pos) :
+  let result := duck_shoot ammo aim ducks
+  result.get pos = '|' ∨ 
+  result.get pos = '~' ∨
+  result.get pos = '2' ∨ 
+  result.get pos = 'X' := sorry
+
+theorem duck_shoot_preserve_non_ducks (ammo : Nat) (aim : Float) (ducks : String) (pos : String.Pos) :
+  ducks.get pos ≠ '2' →
+  (duck_shoot ammo aim ducks).get pos = ducks.get pos := sorry
+
+theorem duck_shoot_hits_bounded (ammo : Nat) (aim : Float) (ducks : String) :
+  (duck_shoot ammo aim ducks).data.countP (· = 'X') ≤ UInt32.toNat (Float.toUInt32 (ammo.toFloat * aim)) := sorry
+
+theorem duck_shoot_hits_match_remaining (ammo : Nat) (aim : Float) (ducks : String) :
+  ducks.data.countP (· = '2') - (duck_shoot ammo aim ducks).data.countP (· = '2') = 
+  (duck_shoot ammo aim ducks).data.countP (· = 'X') := sorry
+
+/-
+info: '|~~~~~XX~2~~~~~|'
+-/
+-- #guard_msgs in
+-- #eval duck_shoot 6 0.41 "|~~~~~22~2~~~~~|"
+
+/-
+info: '|~~X~~~X2~2~~22~2~~~~2~~~|'
+-/
+-- #guard_msgs in
+-- #eval duck_shoot 4 0.64 "|~~2~~~22~2~~22~2~~~~2~~~|"
+
+/-
+info: '|~~~~~~~X~2~~~|'
+-/
+-- #guard_msgs in
+-- #eval duck_shoot 9 0.22 "|~~~~~~~2~2~~~|"
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

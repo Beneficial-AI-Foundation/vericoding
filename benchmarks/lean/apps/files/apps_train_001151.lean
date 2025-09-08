@@ -1,0 +1,75 @@
+/-
+Sandy is a professor at a very reputed institute. The institute mandates that all the lectures be communicated in English. As Sandy is not very good at English(or anything actually) the presentations he displays in class have a lot of spelling mistakes in them.
+As you have a dictionary on you containing $N$ words in it, the responsibility of correctly deducing the misspelt word falls upon your shoulders. Sandy's presentation contains in them, $Q$ words which you $think$ are wrongly spelt. A word is misspelt if a $single$ letter in it is missing or is different from the corresponding correctly spelled word in your dictionary.
+For each of the misspelt word in the presentation find out the corresponding correct word from your dictionary.
+Note : 
+- For each misspelt word in Sandy's presentation, there exists one and only one correctly spelt word in your dictionary that corresponds to it. 
+- Out of the $Q$ misspelt words given to you, there might be some which are correctly spelt i.e., that word completely matches a word in your dictionary. (Give Sandy some credit, he's a teacher after all). For such words print the word corresponding to it in your dictionary.
+- The maximum length of each string can be $L$.
+
+-----Input:-----
+- First line contains a single integer $T$ denoting the number of testcases. Then the testcases follow. 
+- The first line of each test case contains two space-separated integers $N, Q$ corresponding to the number of words in your dictionary and the number of misspelt word in Sandy's dictionary respectively.
+- $N$ lines follow each containing a single string $S$ denoting a word in your dictionary.
+- $Q$ lines follow each containing a single string $M$ denoting a misspelt word in Sandy's presentation.
+
+-----Output:-----
+In each testcase, for each of the $Q$ misspelt words, print a single word $S$ corresponding to the correctly spelt word in your dictionary.
+
+-----Constraints-----
+- $1 \leq T \leq 100$
+- $1 \leq N \leq 200$
+- $1 \leq Q \leq 200$
+- $1 \leq L \leq 100$
+- None of the words contain any spaces in them.
+- Each letter in every word is in lower case.
+
+-----Subtasks-----
+- 
+Subtask 1 : 10 points
+- $1 \leq N \leq 50$
+- $1 \leq Q \leq 10$
+- 
+Subtask 2 : 90 points
+- Original Constraints
+
+-----Sample Input:-----
+1
+5 2
+szhbdvrngk
+qzhxibnuec
+jfsalpwfkospl
+levjehdkjy
+wdfhzgatuh
+szhbdvcngk
+qzhxbnuec
+
+-----Sample Output:-----
+szhbdvrngk
+qzhxibnuec
+
+-----EXPLANATION:-----
+- In the first misspelt word $szhbdvcngk$, a single letter $c$ is different from the original word $szhbdvrngk$.
+- The second misspelt word $qzhxbnuec$ is missing the letter $i$ that  was in the original word $qzhxibnuec$.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def find_correct_spellings (dict_words : List String) (misspelled : List String) : List String :=
+  sorry
+
+theorem empty_misspelled_returns_empty {dict_words : List String} :
+  find_correct_spellings dict_words [] = [] :=
+  sorry
+
+theorem empty_dict_returns_empty {misspelled : List String} :
+  find_correct_spellings [] misspelled = [] :=
+  sorry
+
+theorem exact_matches_returned {words : List String} (w : String) :
+  w ∈ words → w ∈ find_correct_spellings words words :=
+  sorry
+
+-- Apps difficulty: interview
+-- Assurance level: guarded_and_plausible

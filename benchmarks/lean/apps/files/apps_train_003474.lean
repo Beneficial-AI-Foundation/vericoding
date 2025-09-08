@@ -1,0 +1,82 @@
+/-
+You are given a certain integer, ```n, n > 0```. You have to search the partition or partitions, of n, with maximum product value.
+
+Let'see the case for ```n = 8```.
+```
+Partition                 Product
+[8]                          8
+[7, 1]                       7
+[6, 2]                      12
+[6, 1, 1]                    6
+[5, 3]                      15
+[5, 2, 1]                   10
+[5, 1, 1, 1]                 5
+[4, 4]                      16
+[4, 3, 1]                   12
+[4, 2, 2]                   16
+[4, 2, 1, 1]                 8
+[4, 1, 1, 1, 1]              4
+[3, 3, 2]                   18   <---- partition with maximum product value
+[3, 3, 1, 1]                 9
+[3, 2, 2, 1]                12
+[3, 2, 1, 1, 1]              6
+[3, 1, 1, 1, 1, 1]           3
+[2, 2, 2, 2]                16
+[2, 2, 2, 1, 1]              8
+[2, 2, 1, 1, 1, 1]           4
+[2, 1, 1, 1, 1, 1, 1]        2
+[1, 1, 1, 1, 1, 1, 1, 1]     1
+```
+So our needed function will work in that way for Python and Ruby:
+```
+find_part_max_prod(8) == [[3, 3, 2], 18]
+```
+For javascript
+```
+findPartMaxProd(8) --> [[3, 3, 2], 18]
+```
+If there are more than one partition with maximum product value, the function should output the patitions in a length sorted way.
+Python and Ruby
+```
+find_part_max_prod(10) == [[4, 3, 3], [3, 3, 2, 2], 36]
+```
+Javascript
+```
+findPartMaxProd(10) --> [[4, 3, 3], [3, 3, 2, 2], 36]
+```
+Enjoy it!
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def findPartMaxProd (n : Nat) : List (List Nat) × Nat := sorry
+
+def sumList : List Nat → Nat
+  | [] => 0
+  | x::xs => x + sumList xs
+
+theorem find_part_max_prod_output_structure (n : Nat) (h : n > 0) (h2 : n ≤ 1000) :
+  let result := findPartMaxProd n
+  if n = 1 then
+    result = ([[1]], 1) 
+  else if n % 3 = 1 then 
+    result.1.length = 2 ∧
+    (∀ x ∈ result.1, x.length > 0)
+  else
+    result.1.length = 1 ∧
+    result.1.head?.isSome := sorry
+
+theorem find_part_max_prod_sum_equals_input (n : Nat) (h : n > 0) (h2 : n ≤ 1000) :
+  let result := findPartMaxProd n
+  ∀ parts ∈ result.1, sumList parts = n := sorry
+
+theorem find_part_max_prod_parts_valid (n : Nat) (h : n > 0) (h2 : n ≤ 1000) :
+  let result := findPartMaxProd n
+  n = 1 ∨
+  (∀ parts ∈ result.1,
+    (∀ x ∈ parts, x = 2 ∨ x = 3 ∨ x = 4) ∧ 
+    ((parts.filter (· = 4)).length ≤ 1)) := sorry
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded

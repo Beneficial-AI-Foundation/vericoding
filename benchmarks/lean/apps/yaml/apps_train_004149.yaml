@@ -1,0 +1,49 @@
+vc-description: |-
+  /-
+  A friend of mine told me privately: "I don't like palindromes". "why not?" - I replied. "Because when I want to do some programming challenges, I encounter 2 or 3 ones first related with palindromes. I'm fed up" - he confess me with anger. I said to myself:"Thankfully, that doesn't happen in Codewars".
+  Talking seriously, we have to count the palindrome integers. Doing that, perhaps, it will help us to make all the flood of palindrome programming challenges more understandable.
+  
+  For example all the integers of 1 digit (not including 0) are palindromes, 9 cases.
+  We have nine of them with two digits, so the total amount of palidromes below ```100``` (10^(2)) is ```18```.
+  At least, will we be able to calculate the amount of them for a certain number of digits?
+  Let's say for ```2000``` digits?
+  Prepare a code that given the number of digits ```n```, may output the amount of palindromes of length equals to n and the total amount of palindromes below 10^(n).
+  
+  You will see more examples in the box.
+  Happy coding!!
+  
+  (You don't know what palindromes are? Investigate, :))
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def count_pal (n : Nat) : List Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem count_pal_returns_valid_list (n : Nat) (h : n > 0 ∧ n ≤ 5) :
+    let result := count_pal n
+    List.length result = 2 ∧
+    ∀ x ∈ result, x ≥ 0 ∧
+    List.get! result 1 ≥ List.get! result 0 :=
+  sorry
+  
+  theorem count_pal_edge_case_single_digit :
+    (count_pal 1).get! 0 = 9 ∧
+    let total := (count_pal 1).get! 1
+    total > 0 ∧ total < 10 :=
+  sorry
+  
+  theorem count_pal_monotonic (n : Nat) (h : n > 0 ∧ n ≤ 4) :
+    (count_pal n).get! 1 ≤ (count_pal (n+1)).get! 1 :=
+  sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+

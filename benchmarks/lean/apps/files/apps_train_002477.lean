@@ -1,0 +1,52 @@
+/-
+=====Function Descriptions=====
+One of the built-in functions of Python is divmod, which takes two arguments a and b and returns a tuple containing the quotient of first and then the remainder.
+
+=====Problem Statement=====
+For example:
+>>> print divmod(177,10)
+(17, 7)
+
+Here, the integer division is 177/10 => 17 and the modulo operator is 177%10 => 7.
+
+Task
+Read in two integers, a and b, and print three lines.
+The first line is the integer division a//b (While using Python2 remember to import division from __future__).
+The second line is the result of the modulo operator: a%b.
+The third line prints the divmod of a and b.
+
+=====Input Format=====
+The first line contains the first integer, a, and the second line contains the second integer, b.
+
+=====Output Format=====
+Print the result as described above.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def process_divmod (a b : Int) : Option (Int × Int × (Int × Int)) :=
+  sorry
+
+theorem process_divmod_structure (a b : Int) (h : b ≠ 0) :
+  ∃ q r t, process_divmod a b = some (q, r, t) := 
+  sorry
+
+theorem process_divmod_tuple_match (a b : Int) (h : b ≠ 0) :
+  ∀ q r t, process_divmod a b = some (q, r, t) → t = (q, r) :=
+  sorry
+
+theorem process_divmod_quotient (a b : Int) (h : b ≠ 0) :
+  ∀ q r t, process_divmod a b = some (q, r, t) → q = a / b :=
+  sorry
+
+theorem process_divmod_remainder (a b : Int) (h : b ≠ 0) :
+  ∀ q r t, process_divmod a b = some (q, r, t) → r = a % b :=
+  sorry
+
+theorem process_divmod_zero (a : Int) :
+  process_divmod a 0 = none :=
+  sorry
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded

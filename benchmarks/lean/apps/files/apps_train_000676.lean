@@ -1,0 +1,70 @@
+/-
+You are given three non-negative integers $X$, $Y$ and $N$. Find the number of integers $Z$ such that $0 \le Z \le N$ and $(X \oplus Z) < (Y \oplus Z)$, where $\oplus$ denotes the bitwise XOR operation.
+
+-----Input-----
+- The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+- The first and only line of each test case contains three space-separated integers $X$, $Y$ and $N$.
+
+-----Output-----
+For each test case, print a single line containing one integer ― the number of integers $Z$ which satisfy all conditions.
+
+-----Constraints-----
+- $1 \le T \le 1,000$
+- $0 \le X, Y, N \le 2^{30} - 1$
+
+-----Subtasks-----
+Subtask #1 (5 points): $X, Y, N \le 2^6 - 1$
+Subtask #2 (95 points): original constraints
+
+-----Example Input-----
+3
+1 2 10
+2 1 10
+0 0 7
+
+-----Example Output-----
+6
+5
+0
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def count_xor_pairs (x y n : Nat) : Nat := sorry 
+
+theorem count_xor_pairs_equal_nums {x n : Nat} :
+  count_xor_pairs x x n = 0 := sorry
+
+theorem count_xor_pairs_nonneg {x y n : Nat} :
+  count_xor_pairs x y n ≥ 0 := sorry
+
+theorem count_xor_pairs_upper_bound {x y n : Nat} :
+  count_xor_pairs x y n ≤ n + 1 := sorry
+
+theorem count_xor_pairs_complement {x y n : Nat} (h : x ≠ y) :
+  count_xor_pairs x y n + count_xor_pairs y x n = n + 1 := sorry
+
+theorem count_xor_pairs_monotonic {x y n₁ n₂ : Nat} (h : n₁ ≤ n₂) :
+  count_xor_pairs x y n₁ ≤ count_xor_pairs x y n₂ := sorry
+
+/-
+info: 6
+-/
+-- #guard_msgs in
+-- #eval count_xor_pairs 1 2 10
+
+/-
+info: 5
+-/
+-- #guard_msgs in
+-- #eval count_xor_pairs 2 1 10
+
+/-
+info: 0
+-/
+-- #guard_msgs in
+-- #eval count_xor_pairs 0 0 7
+
+-- Apps difficulty: interview
+-- Assurance level: guarded_and_plausible

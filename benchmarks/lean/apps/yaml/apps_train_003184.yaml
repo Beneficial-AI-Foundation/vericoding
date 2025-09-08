@@ -1,0 +1,120 @@
+vc-description: |-
+  /-
+  # Task
+  `EvilCode` is a game similar to `Codewars`. You have to solve programming tasks as quickly as possible. However, unlike `Codewars`, `EvilCode` awards you with a medal, depending on the time you took to solve the task.
+  
+  To get a medal, your time must be (strictly) inferior to the time corresponding to the medal. You can be awarded `"Gold", "Silver" or "Bronze"` medal, or `"None"` medal at all. Only one medal (the best achieved) is awarded.
+  
+  You are given the time achieved for the task and the time corresponding to each medal. Your task is to return the awarded medal.
+  
+  Each time is given in the format `HH:MM:SS`.
+  
+  # Input/Output
+  
+  `[input]` string `userTime`
+  
+  The time the user achieved.
+  
+  `[input]` string `gold`
+  
+  The time corresponding to the gold medal.
+  
+  `[input]` string `silver`
+  
+  The time corresponding to the silver medal.
+  
+  `[input]` string `bronze`
+  
+  The time corresponding to the bronze medal.
+  
+  It is guaranteed that `gold < silver < bronze`.
+  
+  `[output]` a string
+  
+  The medal awarded, one of for options: `"Gold", "Silver", "Bronze" or "None"`.
+  
+  # Example
+  
+  For 
+  ```
+  userTime = "00:30:00", gold = "00:15:00",
+  silver = "00:45:00" and bronze = "01:15:00"```
+  
+  the output should be `"Silver"`
+  
+  For 
+  ```
+  userTime = "01:15:00", gold = "00:15:00",
+  silver = "00:45:00" and bronze = "01:15:00"```
+  
+  the output should be `"None"`
+  
+  # For Haskell version
+  ```
+  In Haskell, the result is a Maybe, returning Just String indicating 
+  the medal if they won or Nothing if they don't.
+  ```
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def evil_code_medal (user_time gold silver bronze : String) : String :=
+  sorry
+
+vc-theorems: |-
+  theorem evil_code_medal_valid_output (user_time gold silver bronze : String) :
+    let result := evil_code_medal user_time gold silver bronze
+    result = "Gold" ∨ result = "Silver" ∨ result = "Bronze" ∨ result = "None" :=
+  sorry
+  
+  theorem evil_code_medal_gold_condition (user_time gold silver bronze : String) :
+    evil_code_medal user_time gold silver bronze = "Gold" →
+    user_time < gold :=
+  sorry
+  
+  theorem evil_code_medal_silver_condition (user_time gold silver bronze : String) :
+    evil_code_medal user_time gold silver bronze = "Silver" →
+    user_time ≥ gold ∧ user_time < silver :=
+  sorry
+  
+  theorem evil_code_medal_bronze_condition (user_time gold silver bronze : String) :
+    evil_code_medal user_time gold silver bronze = "Bronze" →
+    user_time ≥ silver ∧ user_time < bronze :=
+  sorry
+  
+  theorem evil_code_medal_none_condition (user_time gold silver bronze : String) :
+    evil_code_medal user_time gold silver bronze = "None" →
+    user_time ≥ bronze :=
+  sorry
+  
+  theorem evil_code_medal_identical_times (t : String) :
+    evil_code_medal t t t t = "None" :=
+  sorry
+  
+  /-
+  info: 'Silver'
+  -/
+  -- #guard_msgs in
+  -- #eval evil_code_medal "00:30:00" "00:15:00" "00:45:00" "01:15:00"
+  
+  /-
+  info: 'None'
+  -/
+  -- #guard_msgs in
+  -- #eval evil_code_medal "01:15:00" "00:15:00" "00:45:00" "01:15:00"
+  
+  /-
+  info: 'Gold'
+  -/
+  -- #guard_msgs in
+  -- #eval evil_code_medal "00:00:01" "00:00:10" "00:01:40" "01:00:00"
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

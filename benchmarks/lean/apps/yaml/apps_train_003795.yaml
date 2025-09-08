@@ -1,0 +1,48 @@
+vc-description: |-
+  /-
+  This is now a little serie :)
+  
+  Funny Dots
+  
+  You will get two Integer n (width) and m (height) and your task is to draw following pattern. Each line is seperated with '\n'.
+  
+  Both integers are equal or greater than 1. No need to check for invalid parameters.
+  
+  e.g.:
+  
+                                            +---+---+---+
+              +---+                         | o | o | o |
+  dot(1,1) => | o |          dot(3,2) =>    +---+---+---+            
+              +---+                         | o | o | o |
+                                            +---+---+---+
+  
+   Serie: ASCII Fun
+  
+  ASCII Fun #1: X-Shape
+  ASCII Fun #2: Funny Dots
+  ASCII Fun #3: Puzzle Tiles
+  ASCII Fun #4: Build a pyramid
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def dot (n m : Nat) : String := sorry
+  
+  def is_valid_grid (s : String) : Bool := sorry
+
+vc-theorems: |-
+  theorem dot_correct_dimensions (n m : Nat)
+    (h1 : 0 < n) (h2 : n ≤ 50) (h3 : 0 < m) (h4 : m ≤ 50) :
+    let lines := (dot n m).split (· = '\n')
+    (lines.length = 2 * m + 1) ∧ 
+    (∀ line ∈ lines, line.length = 4 * n + 1) := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible
+

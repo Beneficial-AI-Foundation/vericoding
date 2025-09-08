@@ -1,0 +1,113 @@
+/-
+Chef bought an electronic board and pen. He wants to use them to record his clients' signatures.
+The board is a grid with $N$ rows (numbered $1$ through $N$) and $M$ columns (numbered $1$ through $M$) of pixels. Initially, all pixels are white. A client uses the electronic pen to sign on the board; whenever the pen touches a pixel, this pixel becomes black. Note that a signature may be non-continuous (a client may lift the pen while signing).
+Chef stores a typical signature of his current client as a matrix of characters $A_{i, j}$, where for each valid $i$ and $j$, $A_{i, j}$ is either '1' (if the cell in the $i$-th row and $j$-th column is black) or '0' (if this cell is white). The client just signed on the board; this signature is stored in the same form as a matrix $B_{i, j}$. Chef wants to know how close this signature is to this client's typical signature.
+Two signatures are considered the same if it is possible to choose (possibly negative) integers $dr$ and $dc$ such that for each $1 \le i \le N$ and $1 \le j \le M$, $A_{i, j} = B_{i + dr, j + dc}$. Here, if $B_{i + dr, j + dc}$ does not correspond to a valid cell, it is considered to be '0'.
+To compare the signatures, the colours of zero or more cells must be flipped in such a way that the signatures become the same (each flipped cell may be in any matrix). The error in the client's current signature is the minimum number of cells whose colours must be flipped. Find the error in the signature.
+
+-----Input-----
+- The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+- The first line of each test case contains two space-separated integers $N$ and $M$.
+- $N$ lines follow. For each valid $i$, the $i$-th of these lines contains a string with length $M$ describing the $i$-th row of the matrix $A$.
+- $N$ more lines follow. For each valid $i$, the $i$-th of these lines contains a string with length $M$ describing the $i$-th row of the matrix $B$.
+
+-----Output-----
+For each test case, print a single line containing one integer — the error in the current signature.
+
+-----Constraints-----
+- $1 \le T \le 50$
+- $2 \le N, M \le 25$
+
+-----Example Input-----
+5
+3 3
+100
+010
+000
+000
+010
+001
+4 4
+0000
+0110
+0000
+0011
+1100
+0000
+1100
+0000
+3 3
+100
+000
+001
+000
+010
+000
+3 3
+000
+010
+000
+100
+000
+001
+3 3
+111
+000
+000
+001
+001
+001
+
+-----Example Output-----
+0
+2
+1
+0
+2
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def BinaryString := String 
+
+def compare_signatures (n m : Nat) (sig1 sig2 : List BinaryString) : Nat :=
+  sorry
+
+theorem compare_signatures_non_negative (n m : Nat) (sig1 sig2 : List BinaryString) :
+  compare_signatures n m sig1 sig2 ≥ 0 :=
+sorry
+
+theorem compare_signatures_upper_bound (n m : Nat) (sig1 sig2 : List BinaryString) :
+  compare_signatures n m sig1 sig2 ≤ n * m :=
+sorry
+
+theorem compare_signatures_identical (n m : Nat) (sig : List BinaryString) :
+  compare_signatures n m sig sig = 0 :=
+sorry
+
+theorem compare_signatures_empty (n m : Nat) :
+  let emptySignature := List.replicate n ("0")
+  compare_signatures n m emptySignature emptySignature = 0 :=
+sorry
+
+/-
+info: 0
+-/
+-- #guard_msgs in
+-- #eval compare_signatures 3 3 ["100", "010", "000"] ["000", "010", "001"]
+
+/-
+info: 2
+-/
+-- #guard_msgs in
+-- #eval compare_signatures 4 4 ["0000", "0110", "0000", "0011"] ["1100", "0000", "1100", "0000"]
+
+/-
+info: 1
+-/
+-- #guard_msgs in
+-- #eval compare_signatures 3 3 ["100", "000", "001"] ["000", "010", "000"]
+
+-- Apps difficulty: interview
+-- Assurance level: guarded

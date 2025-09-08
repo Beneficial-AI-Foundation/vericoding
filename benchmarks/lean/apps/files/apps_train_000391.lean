@@ -1,0 +1,80 @@
+/-
+Given an array nums of integers, we need to find the maximum possible sum of elements of the array such that it is divisible by three.
+
+Example 1:
+Input: nums = [3,6,5,1,8]
+Output: 18
+Explanation: Pick numbers 3, 6, 1 and 8 their sum is 18 (maximum sum divisible by 3).
+Example 2:
+Input: nums = [4]
+Output: 0
+Explanation: Since 4 is not divisible by 3, do not pick any number.
+
+Example 3:
+Input: nums = [1,2,3,4,4]
+Output: 12
+Explanation: Pick numbers 1, 3, 4 and 4 their sum is 12 (maximum sum divisible by 3).
+
+Constraints:
+
+1 <= nums.length <= 4 * 10^4
+1 <= nums[i] <= 10^4
+-/
+
+def maxSumDivThree (nums: List Nat) : Nat :=
+  sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def sum (nums: List Nat) : Nat :=
+  sorry
+
+theorem maxSumDivThree_divisible_by_3 (nums: List Nat) :
+  maxSumDivThree nums % 3 = 0 :=
+  sorry
+
+theorem maxSumDivThree_bounded (nums: List Nat) :
+  maxSumDivThree nums ≤ sum nums :=
+  sorry
+
+theorem maxSumDivThree_nonnegative (nums: List Nat) :
+  maxSumDivThree nums ≥ 0 :=
+  sorry
+
+theorem maxSumDivThree_all_divisible (nums: List Nat) 
+  (h: ∀ n ∈ nums, n % 3 = 0) :
+  maxSumDivThree nums = sum nums :=
+  sorry
+
+theorem maxSumDivThree_none_divisible (nums: List Nat)
+  (h1: nums ≠ []) 
+  (h2: ∀ n ∈ nums, n % 3 ≠ 0) :
+  maxSumDivThree nums ≤ sum nums ∧ 
+  maxSumDivThree nums % 3 = 0 :=
+  sorry
+
+theorem maxSumDivThree_monotonic (nums: List Nat) :
+  maxSumDivThree nums ≤ maxSumDivThree (nums ++ [3]) :=
+  sorry
+
+/-
+info: 18
+-/
+-- #guard_msgs in
+-- #eval maxSumDivThree [3, 6, 5, 1, 8]
+
+/-
+info: 0
+-/
+-- #guard_msgs in
+-- #eval maxSumDivThree [4]
+
+/-
+info: 12
+-/
+-- #guard_msgs in
+-- #eval maxSumDivThree [1, 2, 3, 4, 4]
+
+-- Apps difficulty: interview
+-- Assurance level: guarded

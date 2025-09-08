@@ -1,0 +1,87 @@
+vc-description: |-
+  /-
+  Given a certain integer ```n```, we need a function ```big_primefac_div()```, that give an array with the highest prime factor and the highest divisor (not equal to n).
+  
+  Let's see some cases:
+  ```python
+  big_primefac_div(100) == [5, 50]
+  big_primefac_div(1969) == [179, 179]
+  ```
+  If n is a prime number the function will output an empty list:
+  ```python
+  big_primefac_div(997) == []
+  ```
+  If ```n``` is an negative integer number, it should be considered the division with tha absolute number of the value.
+  ```python
+  big_primefac_div(-1800) == [5, 900]
+  ```
+  If ```n``` is a float type, will be rejected if it has a decimal part with some digits different than 0. The output "The number has a decimal part. No Results". But  ```n ``` will be converted automatically to an integer if all the digits of the decimal part are 0.
+  
+  ```python
+  big_primefac_div(-1800.00) == [5, 900]
+  big_primefac_div(-1800.1) == "The number has a decimal part. No Results"
+  ```
+  Optimization and fast algorithms are a key factor to solve this kata.
+  Happy coding and enjoy it!
+  -/
+
+vc-preamble: |-
+  def isPrime (n : Nat) : Bool := sorry
+  
+  def sqrt (n : Int) : Int := sorry
+  
+  def big_primefac_div (n : Int) : Option (Int × Int) := sorry
+  
+  def abs (n : Int) : Int := sorry
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def isInteger (n : Int) : Bool := sorry 
+  
+  theorem big_primefac_div_int_valid {n : Int}
+    (h : 2 ≤ n) (h2 : n ≤ 10^6) :
+    if isInteger n then
+      match big_primefac_div n with
+      | none => True
+      | some (p, d) => p > 0 ∧ d > 0
+    else
+      big_primefac_div n = none := sorry
+
+vc-theorems: |-
+  theorem big_primefac_div_valid_pos_int {n : Int} 
+    (h : 2 ≤ n) (h2 : n ≤ 10^6) :
+    match big_primefac_div n with
+    | none => ∀ i, 2 ≤ i → i ≤ sqrt n → ¬(n % i = 0)  
+    | some (p, d) => 
+      1 < p ∧ 1 < d ∧ 
+      n % p = 0 ∧ n % d = 0 := sorry
+  
+  theorem big_primefac_div_neg {n : Int}
+    (h : -10^6 ≤ n) (h2 : n ≤ -2) :
+    big_primefac_div n = big_primefac_div (abs n) := sorry
+  
+  /-
+  info: [5, 50]
+  -/
+  -- #guard_msgs in
+  -- #eval big_primefac_div 100
+  
+  /-
+  info: []
+  -/
+  -- #guard_msgs in
+  -- #eval big_primefac_div 997
+  
+  /-
+  info: [5, 900]
+  -/
+  -- #guard_msgs in
+  -- #eval big_primefac_div -1800.0
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

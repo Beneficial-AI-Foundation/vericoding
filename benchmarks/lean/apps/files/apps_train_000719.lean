@@ -1,0 +1,64 @@
+/-
+Calculate the power of an army of numbers from 1 to $N$, both included.
+
+-----Input:-----
+- First line will contain a single integer $N$.
+
+-----Output:-----
+For each testcase, output in a single line containing the answer.
+
+-----Constraints-----
+- $1 \leq N \leq 5000$
+
+-----Sample Input:-----
+24
+
+-----Sample Output:-----
+5
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def calc_army_power (n : Nat) : Nat := sorry
+
+/- The army power is always at least 1 for positive inputs -/
+
+theorem army_power_always_positive (n : Nat) (h : n ≥ 1) : 
+  calc_army_power n ≥ 1 := sorry
+
+/- The army power is monotonic increasing -/
+
+theorem army_power_monotonic (n : Nat) (h : n > 1) :
+  calc_army_power n ≥ calc_army_power (n-1) := sorry 
+
+/- Known base cases for the army power function -/
+
+theorem army_power_base_cases :
+  (calc_army_power 1 = 1) ∧ (calc_army_power 4 = 2) := sorry
+
+/- The army power is bounded above by n -/
+
+theorem army_power_bounded (n : Nat) (h : n ≥ 1) :
+  calc_army_power n ≤ n := sorry
+
+/-
+info: 5
+-/
+-- #guard_msgs in
+-- #eval calc_army_power 24
+
+/-
+info: 1
+-/
+-- #guard_msgs in
+-- #eval calc_army_power 1
+
+/-
+info: 2
+-/
+-- #guard_msgs in
+-- #eval calc_army_power 4
+
+-- Apps difficulty: interview
+-- Assurance level: guarded

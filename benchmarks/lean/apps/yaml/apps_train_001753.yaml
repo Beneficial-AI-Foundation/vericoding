@@ -1,0 +1,83 @@
+vc-description: |-
+  /-
+  Given a m * n matrix mat and an integer K, return a matrix answer where each answer[i][j] is the sum of all elements mat[r][c] for i - K <= r <= i + K, j - K <= c <= j + K, and (r, c) is a valid position in the matrix.
+  
+  Example 1:
+  Input: mat = [[1,2,3],[4,5,6],[7,8,9]], K = 1
+  Output: [[12,21,16],[27,45,33],[24,39,28]]
+  
+  Example 2:
+  Input: mat = [[1,2,3],[4,5,6],[7,8,9]], K = 2
+  Output: [[45,45,45],[45,45,45],[45,45,45]]
+  
+  Constraints:
+  
+  m == mat.length
+  n == mat[i].length
+  1 <= m, n, K <= 100
+  1 <= mat[i][j] <= 100
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def matrixBlockSum (matrix : List (List Int)) (k : Nat) : List (List Int) := sorry
+  
+  def sumList (l : List Int) : Int := match l with
+    | [] => 0
+    | x :: xs => x + sumList xs
+
+vc-theorems: |-
+  theorem output_dimensions 
+    (matrix : List (List Int)) (k : Nat)
+    (h1 : 0 < matrix.length) 
+    (h2 : ∀ row ∈ matrix, row.length = matrix.head!.length) :
+    let result := matrixBlockSum matrix k
+    (result.length = matrix.length) ∧
+    (∀ row ∈ result, row.length = matrix.head!.length) := sorry
+  
+  theorem k_large_sums_similar 
+    (matrix : List (List Int)) (k : Nat)
+    (h1 : k ≥ matrix.length - 1)
+    (h2 : k ≥ matrix.head!.length - 1)
+    (h3 : 0 < matrix.length)
+    (h4 : ∀ row ∈ matrix, row.length = matrix.head!.length) :
+    let result := matrixBlockSum matrix k
+    let firstVal := result.head!.head!
+    let maxDiff := sumList (matrix.map (λ row => sumList (row.map (λ x => Int.natAbs x))))
+    ∀ row ∈ result, ∀ x ∈ row, Int.natAbs (x - firstVal) ≤ maxDiff := sorry
+  
+  theorem symmetry
+    (matrix : List (List Int)) (k : Nat)
+    (h1 : 0 < matrix.length)
+    (h2 : ∀ row ∈ matrix, row.length = matrix.head!.length) :
+    let result := matrixBlockSum matrix k
+    let m := matrix.length
+    let n := matrix.head!.length
+    let totalAbsSum := sumList (matrix.map (λ row => sumList (row.map (λ x => Int.natAbs x))))
+    ∀ i < m, ∀ j < n,
+      let mirror_i := m - 1 - i
+      let mirror_j := n - 1 - j
+      (0 ≤ mirror_i ∧ mirror_i < m ∧ 0 ≤ mirror_j ∧ mirror_j < n) →
+      Int.natAbs (result[i]![j]! - result[mirror_i]![mirror_j]!) ≤ totalAbsSum := sorry
+  
+  /-
+  info: expected1
+  -/
+  -- #guard_msgs in
+  -- #eval matrix_block_sum [[1, 2, 3], [4, 5, 6], [7, 8, 9]] 1
+  
+  /-
+  info: expected2
+  -/
+  -- #guard_msgs in
+  -- #eval matrix_block_sum [[1, 2, 3], [4, 5, 6], [7, 8, 9]] 2
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+

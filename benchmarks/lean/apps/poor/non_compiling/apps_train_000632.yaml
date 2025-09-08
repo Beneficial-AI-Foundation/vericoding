@@ -1,0 +1,108 @@
+vc-description: |-
+  /-
+  In these quarantine days, Chef and Chefina are getting bored. So, Chef came up with a game for her. He gets a pack of cards with numbers written on them. Chef then asks her to remove cards from the pack in the following manner: Chefina can choose any 3 cards at a time, having unique values, and remove the smallest and largest of them, and put back the middle one. For example, say Chefina chooses 3 cards that have numbers $x$, $y$, $z$ on them, such that $x <= y <= z$. Then she can throw away cards with number $x$ and $z$, but has to put the card with number $y$ on it back into the pack. Chefina can repeat this process any number of times. As soon as the pack contains cards with unique numbers, the game ends. If Chefina can determine the count of cards that will remain in the end, and tell it to Chef beforehand, she wins the game. Chefina asks for your help to win this game. Given the number written on the cards, help her find the count of cards in the pack when she wins.
+  $Note:$ You need to maximize the array length or the number of unique elements
+  
+  -----Input:-----
+  - The first line of the input consists of a single integer $T$, denoting the number of test cases. Description of $T$ test cases follow.
+  - The first line of each test case consists of a single integer $N$, denoting the number of cards in the pack
+  - The next line consists of $N$ space separated numbers $A1$, $A2$ … $An$. For each valid $i (1 <= i <= N)$, the $i$-th card has the number $Ai$ written on it.
+  
+  -----Output:-----
+  - For each test case, print the count of the cards that remain in the end.
+  
+  -----Constraints-----
+  - $1 \leq T \leq 500$
+  - $1 \leq N \leq 10^6$
+  - $1 \leq Ai \leq N$
+  
+  -----Subtasks-----
+  - 30 points : $1 \leq T \leq 20$; $ 1 \leq N \leq 5*10^5$
+  - 70 points : Original constraints
+  
+  -----Sample Input:-----
+  2
+  5
+  1 2 2 3 5
+  9
+  1 2 2 3 3 5 8 8 9
+  
+  -----Sample Output:-----
+  3
+  5
+  
+  -----EXPLANATION:-----
+  Test case 1:
+  Chefina chooses the cards with number: 2, 3, 5, throws away 2 & 5, and puts back 3. So, the pack now contains cards with numbers: 1, 2, 3. Since the pack contains cards with unique numbers only, these are the 3 final cards. 
+  Test case 2:
+  Chefina chooses the cards with number: 2, 3, 8, throws away 2 & 8,  and puts back 3. Now the pack contains cards with numbers: 1, 2, 3, 3, 5, 8, 9. Next, she chooses cards with number: 3, 5, 8 throws away 3 & 8, and puts back 5. Now the pack contains cards with number: 1, 2, 3, 5, 9. Since the pack contains cards with unique numbers only, these are the 5 final cards.
+  Note: There might be multiple options to choose the 3 cards from the pack in any turn
+  -/
+
+vc-preamble: |-
+  def List.sum (l : List Nat) : Nat :=
+    match l with 
+    | [] => 0
+    | h :: t => h + sum t
+  
+  def List.sort (l : List Nat) : List Nat :=
+    sorry
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def solve_card_game (input : String) : Int :=
+    sorry
+
+vc-theorems: |-
+  theorem solve_card_game_upper_bound {n k : Nat} {cards : List Nat} 
+    (h1 : k ≤ n) (h2 : cards.length = n) :
+    solve_card_game s!"${n} ${k} ${cards}" ≤ cards.sum :=
+    sorry
+  
+  theorem solve_card_game_lower_bound {n k : Nat} {cards : List Nat}
+    (h1 : k ≤ n) (h2 : cards.length = n) :
+    solve_card_game s!"${n} ${k} ${cards}" ≥ (cards.sort.reverse.take k).sum :=
+    sorry
+  
+  theorem solve_card_game_nonneg {n k : Nat} {cards : List Nat}
+    (h1 : k ≤ n) (h2 : cards.length = n) :
+    solve_card_game s!"${n} ${k} ${cards}" ≥ 0 :=
+    sorry
+  
+  theorem solve_card_game_single_card {n : Nat} :
+    solve_card_game s!"1 1 ${n}" = n :=
+    sorry
+  
+  theorem solve_card_game_invalid_empty :
+    solve_card_game "" = 0 :=
+    sorry
+  
+  theorem solve_card_game_invalid_format :
+    solve_card_game "a b c" = 0 :=
+    sorry
+  
+  /-
+  info: 7
+  -/
+  -- #guard_msgs in
+  -- #eval solve_card_game "4 2 1 2 3 4"
+  
+  /-
+  info: 12
+  -/
+  -- #guard_msgs in
+  -- #eval solve_card_game test2
+  
+  /-
+  info: 5
+  -/
+  -- #guard_msgs in
+  -- #eval solve_card_game test3
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+

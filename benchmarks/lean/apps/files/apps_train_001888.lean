@@ -1,0 +1,85 @@
+/-
+Given a 2D binary matrix filled with 0's and 1's, find the largest square containing only 1's and return its area.
+
+Example:
+
+Input: 
+
+1 0 1 0 0
+1 0 1 1 1
+1 1 1 1 1
+1 0 0 1 0
+
+Output: 4
+-/
+
+def maximalSquare (matrix : List (List String)) : Nat :=
+  sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def isValid (matrix : List (List String)) : Prop :=
+  match matrix with
+  | [] => True
+  | h::t => ∀ row ∈ t, row.length = h.length
+
+theorem maximal_square_is_perfect_square (matrix : List (List String)) : 
+  ∃ n : Nat, maximalSquare matrix = n * n :=
+  sorry
+
+theorem maximal_square_bounded (matrix : List (List String)) :
+  match matrix with
+  | [] => maximalSquare matrix = 0
+  | h::t => 
+    let result := maximalSquare matrix
+    let maxDim := min matrix.length h.length
+    0 ≤ result ∧ result ≤ maxDim * maxDim :=
+  sorry
+
+theorem maximal_square_all_zeros (matrix : List (List String)) 
+  (h₁ : matrix.length > 0)
+  (h₂ : ∀ (i : Nat) (j : Nat), i < matrix.length → 
+        j < matrix.head!.length → 
+        (matrix.get! i).get! j = "0") :
+  maximalSquare matrix = 0 :=
+  sorry
+
+theorem maximal_square_all_ones (matrix : List (List String))
+  (h₁ : matrix.length > 0) 
+  (h₂ : ∀ (i : Nat) (j : Nat), i < matrix.length → 
+        j < matrix.head!.length → 
+        (matrix.get! i).get! j = "1") :
+  maximalSquare matrix = (min matrix.length matrix.head!.length) * 
+                        (min matrix.length matrix.head!.length) :=
+  sorry
+
+theorem maximal_square_padding (matrix : List (List String))
+  (h : matrix.length > 0) :
+  let padRow := fun (row : List String) => "0" :: (row ++ ["0"])
+  let paddedMatrix := (List.replicate (matrix.head!.length + 2) "0") :: 
+                      (matrix.map padRow) ++ 
+                      [List.replicate (matrix.head!.length + 2) "0"]
+  maximalSquare matrix = maximalSquare paddedMatrix :=
+  sorry
+
+/-
+info: 4
+-/
+-- #guard_msgs in
+-- #eval maximal_square [["1", "0", "1", "0", "0"], ["1", "0", "1", "1", "1"], ["1", "1", "1", "1", "1"], ["1", "0", "0", "1", "0"]]
+
+/-
+info: 4
+-/
+-- #guard_msgs in
+-- #eval maximal_square [["1", "1"], ["1", "1"]]
+
+/-
+info: 0
+-/
+-- #guard_msgs in
+-- #eval maximal_square [["0"]]
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

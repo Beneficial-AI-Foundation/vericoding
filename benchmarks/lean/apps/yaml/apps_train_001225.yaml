@@ -1,0 +1,125 @@
+vc-description: |-
+  /-
+  There is a universal library, where there is a big waiting room with seating capacity for maximum $m$ people, each of whom completes reading $n$ books sequentially. Reading each book requires one unit of time. 
+  Unfortunately, reading service is provided sequentially. After all of the $m$ people enter the library, the entrance gate is closed. There is only one reading table. So when someone reads, others have to wait in the waiting room. 
+  At first everybody chooses $n$ books they want to read. It takes $x$ amount of time. People can choose books simultaneously. Then they enter the waiting room. After reading $n$ books the person leaves the library immediately. 
+  As nothing is free, the cost of reading is also not free. If a person stays in the library $t$ units of time then the cost of reading is $\left \lfloor \frac{t-n}{m} \right \rfloor$ units of money. So, the $i^{th}$ person pays for time $x$ he needs to choose books and the time $(i-1)*n$ he needs to wait for all the persons before him to complete reading.
+  Note: $\left \lfloor a \right \rfloor$ denotes the floor($a$).
+  
+  -----Input-----
+  - Each case contains three space-separated positive integers $n$, $m$ and $x$ where $n, x \leq 1000$ and $m \leq 10^{15}$. 
+  - End of input is determined by three zeros. 
+  - There are no more than 1000 test cases.
+  
+  -----Output-----
+  - For each case, output in a single line the total unit of money the library gets in that day.
+  
+  -----Sample Input-----
+  1 100 9
+  11 2 10
+  12 2 11
+  0 0 0
+  
+  -----Sample Output-----
+  9
+  15
+  16
+  
+  -----Explanation:-----
+  Testcase 2: Here, $n=11$, $m=2$, $x=10$.
+  For 1st person, 
+  $t=21$ and he/she gives $\left \lfloor \frac{21-11}{2} \right \rfloor = 5$ units of money.
+  For 2nd person,
+  $t=32$ and he/she gives $\left \lfloor \frac{32-11}{2} \right \rfloor= 10$ units of money.
+  So, total units of money $= 5+10 = 15$
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def calculate_library_fees (fee_per_day : Int) (max_fee : Int) (days_late : Int) : Int :=
+    sorry
+
+vc-theorems: |-
+  theorem fee_never_negative
+    (fee_per_day : Int)
+    (max_fee : Int) 
+    (days_late : Int)
+    (h1 : fee_per_day ≥ 0)
+    (h2 : max_fee ≥ 0) :
+    calculate_library_fees fee_per_day max_fee days_late ≥ 0 :=
+    sorry
+  
+  theorem fee_never_exceeds_max
+    (fee_per_day : Int)
+    (max_fee : Int)
+    (days_late : Int) 
+    (h1 : fee_per_day ≥ 0)
+    (h2 : max_fee ≥ 0)
+    (h3 : days_late ≥ 0) :
+    calculate_library_fees fee_per_day max_fee days_late ≤ max_fee :=
+    sorry
+  
+  theorem zero_days_means_zero_fee
+    (fee_per_day : Int)
+    (max_fee : Int)
+    (h1 : fee_per_day ≥ 0)
+    (h2 : max_fee ≥ 0) :
+    calculate_library_fees fee_per_day max_fee 0 = 0 :=
+    sorry
+  
+  theorem fee_scales_linearly
+    (fee_per_day : Int)
+    (max_fee : Int)
+    (days_late : Int)
+    (h1 : fee_per_day > 0)
+    (h2 : max_fee > 0)
+    (h3 : days_late > 0) :
+    calculate_library_fees fee_per_day max_fee days_late = 
+      min (days_late * fee_per_day) max_fee :=
+    sorry
+  
+  /-
+  info: 0
+  -/
+  -- #guard_msgs in
+  -- #eval calculate_library_fees 0 0 0
+  
+  /-
+  info: 9
+  -/
+  -- #guard_msgs in
+  -- #eval calculate_library_fees 1 10 9
+  
+  /-
+  info: 40
+  -/
+  -- #guard_msgs in
+  -- #eval calculate_library_fees 2 100 20
+  
+  /-
+  info: 30
+  -/
+  -- #guard_msgs in
+  -- #eval calculate_library_fees 5 30 10
+  
+  /-
+  info: 20
+  -/
+  -- #guard_msgs in
+  -- #eval calculate_library_fees 10 50 2
+  
+  /-
+  info: 15
+  -/
+  -- #guard_msgs in
+  -- #eval calculate_library_fees 3 15 7
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded
+

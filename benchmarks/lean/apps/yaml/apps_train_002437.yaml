@@ -1,0 +1,114 @@
+vc-description: |-
+  /-
+  =====Function Descriptions=====
+  group()
+  
+  A group() expression returns one or more subgroups of the match.
+  Code
+  
+  >>> import re
+  >>> m = re.match(r'(\w+)@(\w+)\.(\w+)','username@hackerrank.com')
+  >>> m.group(0)       # The entire match 
+  'username@hackerrank.com'
+  >>> m.group(1)       # The first parenthesized subgroup.
+  'username'
+  >>> m.group(2)       # The second parenthesized subgroup.
+  'hackerrank'
+  >>> m.group(3)       # The third parenthesized subgroup.
+  'com'
+  >>> m.group(1,2,3)   # Multiple arguments give us a tuple.
+  ('username', 'hackerrank', 'com')
+  
+  groups()
+  
+  A groups() expression returns a tuple containing all the subgroups of the match.
+  Code
+  
+  >>> import re
+  >>> m = re.match(r'(\w+)@(\w+)\.(\w+)','username@hackerrank.com')
+  >>> m.groups()
+  ('username', 'hackerrank', 'com')
+  
+  groupdict()
+  
+  A groupdict() expression returns a dictionary containing all the named subgroups of the match, keyed by the subgroup name.
+  Code
+  
+  >>> m = re.match(r'(?P<user>\w+)@(?P<website>\w+)\.(?P<extension>\w+)','myname@hackerrank.com')
+  >>> m.groupdict()
+  {'website': 'hackerrank', 'user': 'myname', 'extension': 'com'}
+  
+  =====Problem Statement=====
+  You are given a string S.
+  Your task is to find the first occurrence of an alphanumeric character in (read from left to right) that has consecutive repetitions. 
+  
+  =====Input Format=====
+  A single line of input containing the string S.
+  
+  =====Constraints=====
+  0<len(S)<100
+  
+  =====Output Format=====
+  Print the first occurrence of the repeating character. If there are no repeating characters, print -1.
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def find_first_repeated_char (s : String) : String := sorry
+  
+  theorem find_first_repeated_char_output_type (s : String) :
+    let result := find_first_repeated_char s
+    result.length = 1 ∨ result = "-1" := sorry
+
+vc-theorems: |-
+  theorem find_first_repeated_char_valid_output (s : String) :
+    let result := find_first_repeated_char s 
+    result ≠ "-1" →
+    (∃ i : Fin s.length, 
+      ∃ c : Char, result = String.mk [c] ∧
+      s.data[i.val]? = some c ∧
+      i.val + 1 < s.length ∧
+      s.data[i.val + 1]? = some c) ∧
+    ∀ j : Fin s.length, j.val + 1 < s.length →
+      s.data[j.val]? = s.data[j.val + 1]? →
+      ∃ m : Fin s.length, m.val ≤ j.val ∧ 
+      s.data[m.val]? = s.data[m.val + 1]? := sorry
+  
+  theorem find_first_repeated_char_alphanumeric (s : String) :
+    (∀ i : Fin s.length, (s.data[i.val]?).map Char.isAlphanum = some true) →
+    s.length ≥ 2 →
+    let result := find_first_repeated_char s
+    result ≠ "-1" →
+    (result.data[0]?).map Char.isAlphanum = some true := sorry
+  
+  theorem find_first_repeated_char_with_repeats (s : String) :
+    (∃ (i : Fin s.length), i.val + 1 < s.length ∧ s.data[i.val]? = s.data[i.val + 1]?) →
+    find_first_repeated_char s ≠ "-1" := sorry
+  
+  /-
+  info: '1'
+  -/
+  -- #guard_msgs in
+  -- #eval find_first_repeated_char "12345678910111213141516171820212223"
+  
+  /-
+  info: '-1'
+  -/
+  -- #guard_msgs in
+  -- #eval find_first_repeated_char "abcde"
+  
+  /-
+  info: 'a'
+  -/
+  -- #guard_msgs in
+  -- #eval find_first_repeated_char "aabbccdd"
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

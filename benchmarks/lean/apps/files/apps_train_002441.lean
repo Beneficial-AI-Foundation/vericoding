@@ -1,0 +1,73 @@
+/-
+=====Problem Statement=====
+Given a list of rational numbers,find their product.
+
+Concept
+The reduce() function applies a function of two arguments cumulatively on a list of objects in succession from left to right to reduce it to one value. Say you have a list, say [1,2,3] and you have to find its sum.
+
+>>> reduce(lambda x, y : x + y,[1,2,3])
+6
+
+You can also define an initial value. If it is specified, the function will assume initial value as the value given, and then reduce. It is equivalent to adding the initial value at the beginning of the list. For example:
+
+>>> reduce(lambda x, y : x + y, [1,2,3], -3)
+3
+
+>>> from fractions import gcd
+>>> reduce(gcd, [2,4,8], 3)
+1
+
+=====Input Format=====
+First line contains n, the number of rational numbers.
+The ith of next n lines contain two integers each, the numerator (N_i) and denominator (D_i) of the ith rational number in the list.
+
+=====Constraints=====
+1≤n≤100
+1≤N_i,D_i≤10^9
+
+=====Output Format=====
+Print only one line containing the numerator and denominator of the product of the numbers in the list in its simplest form, i.e. numerator and denominator have no common divisor other than 1.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def product (fracs: List (Int × Nat)): Int × Nat := sorry
+
+theorem product_matches_fraction_multiplication 
+  (fracs: List (Int × Nat)) (h: fracs.length > 0):
+  ∃ (x: Int × Nat), product fracs = x := sorry
+
+theorem product_result_is_simplified 
+  (fracs : List (Int × Nat)) (h: fracs.length > 0):
+  let res := product fracs
+  ∃ g : Nat, g > 0 ∧ Nat.gcd res.1.natAbs res.2 = g := sorry 
+
+theorem single_fraction_unchanged
+  (n: Int) (d: Nat) (h: d > 0):
+  product [(n,d)] = (n,d) := sorry
+
+theorem empty_list_error
+  (h: ¬∃ (x: Int × Nat), product [] = x):
+  True := sorry
+
+/-
+info: (5, 8)
+-/
+-- #guard_msgs in
+-- #eval product [(1, 2), (3, 4), (10, 6)]
+
+/-
+info: (1, 1)
+-/
+-- #guard_msgs in
+-- #eval product [(1, 1)]
+
+/-
+info: (1, 1)
+-/
+-- #guard_msgs in
+-- #eval product [(2, 3), (3, 2)]
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded

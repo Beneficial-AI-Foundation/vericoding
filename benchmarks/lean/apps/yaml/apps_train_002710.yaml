@@ -1,0 +1,76 @@
+vc-description: |-
+  /-
+  Consider the array `[3,6,9,12]`. If we generate all the combinations with repetition that sum to `12`, we get `5` combinations: `[12], [6,6], [3,9], [3,3,6], [3,3,3,3]`. The length of the sub-arrays (such as `[3,3,3,3]` should be less than or equal to the length of the initial array (`[3,6,9,12]`).  
+  
+  Given an array of positive integers and a number `n`, count all combinations with repetition of integers that sum to `n`. For example: 
+  ```Haskell
+  find([3,6,9,12],12) = 5.
+  ```
+  
+  More examples in the test cases. 
+  
+  Good luck!
+  
+  If you like this Kata, please try:
+  
+  [Array combinations](https://www.codewars.com/kata/59e66e48fc3c499ec5000103)
+  
+  [Sum of prime-indexed elements](https://www.codewars.com/kata/59f38b033640ce9fc700015b)
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def find (arr : List Nat) (target : Nat) : Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem find_non_negative (arr : List Nat) (target : Nat) 
+    (h : ∀ x ∈ arr, 0 < x) (h2 : arr ≠ []) : 
+    0 ≤ find arr target :=
+  sorry
+  
+  theorem find_zero_target (arr : List Nat) 
+    (h : ∀ x ∈ arr, 0 < x) (h2 : arr ≠ []) :
+    find arr 0 = 0 :=
+  sorry
+  
+  theorem find_small_target (arr : List Nat) (target : Nat)
+    (h : ∀ x ∈ arr, 0 < x) (h2 : arr ≠ []) 
+    (h3 : ∀ x ∈ arr, target < x) :
+    find arr target = 0 :=
+  sorry
+  
+  theorem find_permutation_equivalent (arr₁ arr₂ : List Nat) (target : Nat)
+    (h : ∀ x ∈ arr₁, 0 < x) (h2 : arr₁ ≠ [])
+    (h3 : List.length arr₁ = List.length arr₂) 
+    (h4 : ∀ x, List.count x arr₁ = List.count x arr₂) :
+    find arr₁ target = find arr₂ target :=
+  sorry
+  
+  /-
+  info: 3
+  -/
+  -- #guard_msgs in
+  -- #eval find [1, 2, 3] 5
+  
+  /-
+  info: 5
+  -/
+  -- #guard_msgs in
+  -- #eval find [3, 6, 9, 12] 12
+  
+  /-
+  info: 3
+  -/
+  -- #guard_msgs in
+  -- #eval find [1, 4, 5, 8] 8
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+

@@ -1,0 +1,68 @@
+vc-description: |-
+  /-
+  Given two numbers, hour and minutes. Return the smaller angle (in degrees) formed between the hour and the minute hand.
+  
+  Example 1:
+  
+  Input: hour = 12, minutes = 30
+  Output: 165
+  
+  Example 2:
+  
+  Input: hour = 3, minutes = 30
+  Output: 75
+  
+  Example 3:
+  
+  Input: hour = 3, minutes = 15
+  Output: 7.5
+  
+  Example 4:
+  Input: hour = 4, minutes = 50
+  Output: 155
+  
+  Example 5:
+  Input: hour = 12, minutes = 0
+  Output: 0
+  
+  Constraints:
+  
+  1 <= hour <= 12
+  0 <= minutes <= 59
+  Answers within 10^-5 of the actual value will be accepted as correct.
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def angle_between_hands (hour : Nat) (minutes : Nat) : Float := sorry 
+  
+  theorem angle_between_hands_returns_valid_angle 
+    (hour : Nat) (minutes : Nat)
+    (h1 : 1 ≤ hour ∧ hour ≤ 12) 
+    (h2 : minutes ≤ 59) :
+    0 ≤ angle_between_hands hour minutes ∧ 
+    angle_between_hands hour minutes ≤ 180 := sorry
+
+vc-theorems: |-
+  theorem angle_calculation_periodic
+    (hour : Nat) (minutes : Nat)
+    (h1 : 1 ≤ hour ∧ hour ≤ 12)
+    (h2 : minutes ≤ 59) :
+    (angle_between_hands hour minutes - 
+     angle_between_hands (if hour ≠ 12 then hour else 12) minutes) < 0.00001 := sorry
+  
+  theorem angle_is_minimal
+    (hour : Nat) (minutes : Nat) 
+    (h1 : 1 ≤ hour ∧ hour ≤ 12)
+    (h2 : minutes ≤ 59) :
+    angle_between_hands hour minutes ≤ 180 := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible
+
