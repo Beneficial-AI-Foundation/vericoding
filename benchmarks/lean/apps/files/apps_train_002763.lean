@@ -1,0 +1,40 @@
+/-
+Find the volume of a cone whose radius and height are provided as parameters to the function `volume`. Use the value of PI provided by your language (for example: `Math.PI` in JS, `math.pi` in Python or `Math::PI` in Ruby) and round down the volume to an Interger.
+
+If you complete this kata and there are no issues, please remember to give it a ready vote and a difficulty rating. :)
+-/
+
+def volume (radius height : Float) : Nat :=
+  sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def pi : Float := 3.14159
+
+theorem volume_zero :
+  volume 0 0 = 0 :=
+  sorry
+
+/- π is approximated as 3.14159 -/
+
+/-
+info: 153
+-/
+-- #guard_msgs in
+-- #eval volume 7 3
+
+/-
+info: 98520
+-/
+-- #guard_msgs in
+-- #eval volume 56 30
+
+/-
+info: 0
+-/
+-- #guard_msgs in
+-- #eval volume 0 0
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded_and_plausible

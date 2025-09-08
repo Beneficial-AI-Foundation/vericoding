@@ -1,0 +1,120 @@
+/-
+We’ve all seen katas that ask for conversion from snake-case to camel-case, from camel-case to snake-case, or from camel-case to kebab-case — the possibilities are endless.
+
+But if we don’t know the case our inputs are in, these are not very helpful.
+
+### Task:
+
+So the task here is to implement a function (called `id` in Ruby/Crystal/JavaScript/CoffeeScript and `case_id` in Python/C) that takes a string, `c_str`, and returns a string with the case the input is in. The possible case types are “kebab”, “camel”, and ”snake”. If none of the cases match with the input, or if there are no 'spaces' in the input (for example in snake case, spaces would be '_'s), return “none”. Inputs will only have letters (no numbers or special characters).
+
+### Some definitions
+
+Kebab case: `lowercase-words-separated-by-hyphens`
+
+Camel case: `lowercaseFirstWordFollowedByCapitalizedWords`
+
+Snake case: `lowercase_words_separated_by_underscores`
+
+### Examples:
+
+```python
+case_id(“hello-world”) #=> “kebab”
+case_id(“hello-to-the-world”) #=> “kebab”
+case_id(“helloWorld”) #=> “camel”
+case_id(“helloToTheWorld”) #=> “camel”
+case_id(“hello_world”) #=> “snake”
+case_id(“hello_to_the_world”) #=> “snake”
+case_id(“hello__world”) #=> “none”
+case_id(“hello_World”) #=> “none”
+case_id(“helloworld”) #=> “none”
+case_id(“hello-World”) #=> “none”
+```
+
+Also check out my other creations — [Split Without Loss](https://www.codewars.com/kata/split-without-loss), [Adding Fractions](https://www.codewars.com/kata/adding-fractions),
+[Random Integers](https://www.codewars.com/kata/random-integers), [Implement String#transpose](https://www.codewars.com/kata/implement-string-number-transpose), [Implement Array#transpose!](https://www.codewars.com/kata/implement-array-number-transpose), [Arrays and Procs #1](https://www.codewars.com/kata/arrays-and-procs-number-1), and [Arrays and Procs #2](https://www.codewars.com/kata/arrays-and-procs-number-2)
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def case_id (s : String) : String := sorry
+
+theorem case_id_result_is_valid (s : String) :
+  case_id s = "snake" ∨ case_id s = "kebab" ∨ case_id s = "camel" ∨ case_id s = "none" := sorry
+
+theorem empty_string_is_none :
+  case_id "" = "none" := sorry
+
+theorem single_word_is_none (w : String) :
+  w.all (fun c => c.isLower) →
+  case_id w = "none" := sorry
+
+theorem snake_case_recognition {words : List String} {joined : String} :
+  words.length ≥ 2 →
+  (∀ w ∈ words, w ≠ "") →
+  (∀ w ∈ words, w.all (fun c => c.isLower)) →
+  joined = String.intercalate "_" words →
+  case_id joined = "snake" := sorry
+
+theorem basic_kebab_case :
+  case_id "hello-world" = "kebab" := sorry
+
+theorem basic_camel_case :
+  case_id "helloWorld" = "camel" := sorry
+
+/-
+info: 'snake'
+-/
+-- #guard_msgs in
+-- #eval case_id "hello_world"
+
+/-
+info: 'snake'
+-/
+-- #guard_msgs in
+-- #eval case_id "hello_to_the_world"
+
+/-
+info: 'kebab'
+-/
+-- #guard_msgs in
+-- #eval case_id "hello-world"
+
+/-
+info: 'kebab'
+-/
+-- #guard_msgs in
+-- #eval case_id "hello-to-the-world"
+
+/-
+info: 'camel'
+-/
+-- #guard_msgs in
+-- #eval case_id "helloWorld"
+
+/-
+info: 'camel'
+-/
+-- #guard_msgs in
+-- #eval case_id "helloToTheWorld"
+
+/-
+info: 'none'
+-/
+-- #guard_msgs in
+-- #eval case_id "hello_World"
+
+/-
+info: 'none'
+-/
+-- #guard_msgs in
+-- #eval case_id "hello-World"
+
+/-
+info: 'none'
+-/
+-- #guard_msgs in
+-- #eval case_id "helloworld"
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

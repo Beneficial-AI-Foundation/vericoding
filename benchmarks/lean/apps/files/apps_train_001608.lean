@@ -1,0 +1,74 @@
+/-
+Alice has a hand of cards, given as an array of integers.
+Now she wants to rearrange the cards into groups so that each group is size W, and consists of W consecutive cards.
+Return true if and only if she can.
+
+Example 1:
+Input: hand = [1,2,3,6,2,3,4,7,8], W = 3
+Output: true
+Explanation: Alice's hand can be rearranged as [1,2,3],[2,3,4],[6,7,8].
+Example 2:
+Input: hand = [1,2,3,4,5], W = 4
+Output: false
+Explanation: Alice's hand can't be rearranged into groups of 4.
+
+Constraints:
+
+1 <= hand.length <= 10000
+0 <= hand[i] <= 10^9
+1 <= W <= hand.length
+
+Note: This question is the same as 1296: https://leetcode.com/problems/divide-array-in-sets-of-k-consecutive-numbers/
+-/
+
+def isNStraightHand (hand : List Int) (w : Int) : Bool :=
+  sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def isConsecutive (xs : List Int) : Bool :=
+  sorry
+
+theorem div_by_w_necessary {hand : List Int} {w : Int} 
+  (hw : 0 < w) (hw' : w ≤ 10000) (hh : List.length hand > 0) :
+  isNStraightHand hand w → List.length hand % w = 0 :=
+  sorry
+
+theorem w_one_always_true {hand : List Int} (hh : List.length hand > 0) : 
+  isNStraightHand hand 1 = true :=
+  sorry
+
+theorem monotonic_w {hand : List Int} {w : Int} 
+  (hw : 0 < w) (hw' : w < List.length hand) (hh : List.length hand > 0) :
+  isNStraightHand hand w → ¬isNStraightHand hand (w + 1) :=
+  sorry
+
+theorem consecutive_numbers_possible {hand : List Int} 
+  (hh : List.length hand > 0)
+  (h_len : List.length hand ≥ 2)
+  (h_consec : isConsecutive hand)
+  (h_div : List.length hand % 3 = 0) :
+  isNStraightHand hand 3 :=
+  sorry
+
+/-
+info: True
+-/
+-- #guard_msgs in
+-- #eval isNStraightHand [1, 2, 3, 6, 2, 3, 4, 7, 8] 3
+
+/-
+info: False
+-/
+-- #guard_msgs in
+-- #eval isNStraightHand [1, 2, 3, 4, 5] 4
+
+/-
+info: True
+-/
+-- #guard_msgs in
+-- #eval isNStraightHand [1, 1, 2, 2, 3, 3] 3
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

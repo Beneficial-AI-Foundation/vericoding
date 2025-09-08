@@ -1,0 +1,85 @@
+/-
+Given an integer n, you must transform it into 0 using the following operations any number of times:
+
+Change the rightmost (0th) bit in the binary representation of n.
+Change the ith bit in the binary representation of n if the (i-1)th bit is set to 1 and the (i-2)th through 0th bits are set to 0.
+
+Return the minimum number of operations to transform n into 0.
+
+Example 1:
+Input: n = 0
+Output: 0
+
+Example 2:
+Input: n = 3
+Output: 2
+Explanation: The binary representation of 3 is "11".
+"11" -> "01" with the 2nd operation since the 0th bit is 1.
+"01" -> "00" with the 1st operation.
+
+Example 3:
+Input: n = 6
+Output: 4
+Explanation: The binary representation of 6 is "110".
+"110" -> "010" with the 2nd operation since the 1st bit is 1 and 0th through 0th bits are 0.
+"010" -> "011" with the 1st operation.
+"011" -> "001" with the 2nd operation since the 0th bit is 1.
+"001" -> "000" with the 1st operation.
+
+Example 4:
+Input: n = 9
+Output: 14
+
+Example 5:
+Input: n = 333
+Output: 393
+
+Constraints:
+
+0 <= n <= 109
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def minimum_one_bit_operations (n: Nat) : Nat :=
+  sorry
+
+theorem minimum_one_bit_operations_valid_range (n: Nat) (h: n < 2^32) : 
+  let result := minimum_one_bit_operations n
+  0 ≤ result ∧ result < 2^32 :=
+  sorry
+
+theorem minimum_one_bit_operations_known_cases :
+  minimum_one_bit_operations 0 = 0 ∧ 
+  minimum_one_bit_operations 1 = 1 ∧
+  minimum_one_bit_operations 2 = 3 ∧
+  minimum_one_bit_operations 3 = 2 ∧
+  minimum_one_bit_operations 4 = 7 ∧
+  minimum_one_bit_operations 6 = 4 :=
+  sorry
+
+theorem minimum_one_bit_operations_deterministic (n: Nat) (h: n < 2^16) :
+  minimum_one_bit_operations n = minimum_one_bit_operations n :=
+  sorry
+
+/-
+info: 0
+-/
+-- #guard_msgs in
+-- #eval minimum_one_bit_operations 0
+
+/-
+info: 2
+-/
+-- #guard_msgs in
+-- #eval minimum_one_bit_operations 3
+
+/-
+info: 4
+-/
+-- #guard_msgs in
+-- #eval minimum_one_bit_operations 6
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

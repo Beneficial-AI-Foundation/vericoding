@@ -1,0 +1,71 @@
+/-
+Given n non-negative integers representing the histogram's bar height where the width of each bar is 1, find the area of largest rectangle in the histogram.
+
+Above is a histogram where width of each bar is 1, given height = [2,1,5,6,2,3].
+
+The largest rectangle is shown in the shaded area, which has area = 10 unit.
+
+Example:
+
+Input: [2,1,5,6,2,3]
+Output: 10
+-/
+
+def largest_rectangle_area (heights : List Nat) : Nat :=
+  sorry
+
+def listMaximum (l : List Nat) : Nat :=
+  sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def listModify (l : List Nat) (i : Nat) (f : Nat → Nat) : List Nat :=
+  sorry
+
+theorem largest_rectangle_area_non_negative (heights : List Nat) :
+  0 ≤ largest_rectangle_area heights := sorry
+
+theorem largest_rectangle_area_upper_bound (heights : List Nat) : 
+  heights ≠ [] →
+  largest_rectangle_area heights ≤ (List.length heights) * (listMaximum heights) := sorry
+
+theorem largest_rectangle_area_at_least_max_height (heights : List Nat) :
+  heights ≠ [] → 
+  largest_rectangle_area heights ≥ listMaximum heights := sorry
+
+theorem largest_rectangle_area_empty (heights : List Nat) :
+  heights = [] →
+  largest_rectangle_area heights = 0 := sorry
+
+theorem largest_rectangle_area_tall_column (heights : List Nat) :
+  heights ≠ [] →
+  let tall_height := (listMaximum heights) + 1
+  let new_heights := heights ++ [tall_height]
+  largest_rectangle_area new_heights ≥ tall_height := sorry
+
+theorem largest_rectangle_area_monotonic (heights : List Nat) (i : Nat) :
+  i < List.length heights →
+  let increased := listModify heights i (· + 1)
+  largest_rectangle_area increased ≥ largest_rectangle_area heights := sorry
+
+/-
+info: 10
+-/
+-- #guard_msgs in
+-- #eval largest_rectangle_area [2, 1, 5, 6, 2, 3]
+
+/-
+info: 3
+-/
+-- #guard_msgs in
+-- #eval largest_rectangle_area [2, 1, 2]
+
+/-
+info: 0
+-/
+-- #guard_msgs in
+-- #eval largest_rectangle_area []
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

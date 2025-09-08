@@ -1,0 +1,63 @@
+/-
+This kata aims to show the vulnerabilities of hashing functions for short messages.
+
+When provided with a SHA-256 hash, return the value that was hashed. You are also given the characters that make the expected value, but in alphabetical order.
+
+The returned value is less than 10 characters long. Return `nil` for Ruby and Crystal, `None` for Python, `null` for Java when the hash cannot be cracked with the given characters.
+
+---
+
+Example:
+--------
+```
+Example arguments: '5694d08a2e53ffcae0c3103e5ad6f6076abd960eb1f8a56577040bc1028f702b', 'cdeo'
+Correct output: 'code'
+```
+-/
+
+def sha256_cracker (h: String) (chars: String) : Option String :=
+  sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def sha256 (s: String) : String :=
+  sorry
+
+theorem found_string_matches_hash
+  {s h chars result: String} :
+  (h = sha256 s) →
+  (chars = s.toList.toString) →
+  (sha256_cracker h chars = some result) →
+  (sha256 result = h) ∧ 
+  (∀ c, c ∈ result.data → c ∈ chars.data) :=
+sorry
+
+theorem invalid_chars_return_none
+  {s h invalid_chars chars: String} :
+  (h = sha256 s) →
+  (chars = (invalid_chars.toList.filter (fun c => !s.data.contains c)).toString) →
+  (chars ≠ "") →
+  sha256_cracker h chars = none :=
+sorry
+
+theorem empty_chars_returns_none
+  {s h: String} :
+  (h = sha256 s) →
+  sha256_cracker h "" = none :=
+sorry
+
+/-
+info: 'GoOutside'
+-/
+-- #guard_msgs in
+-- #eval sha256_cracker "b8c49d81cb795985c007d78379e98613a4dfc824381be472238dbd2f974e37ae" "deGioOstu"
+
+/-
+info: 'code'
+-/
+-- #guard_msgs in
+-- #eval sha256_cracker "5694d08a2e53ffcae0c3103e5ad6f6076abd960eb1f8a56577040bc1028f702b" "cdeo"
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

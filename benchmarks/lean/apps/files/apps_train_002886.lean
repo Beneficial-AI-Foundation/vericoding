@@ -1,0 +1,57 @@
+/-
+# Task
+ Consider the following algorithm for constructing 26 strings S(1) .. S(26):
+```
+S(1) = "a";
+For i in [2, 3, ..., 26]:
+S(i) = S(i - 1) + character(i) + S(i - 1).```
+
+ For example:
+```
+S(1) = "a"
+S(2) = S(1) + "b" + S(1) = "a" + "b" + "a" = "aba"
+S(3) = S(2) + "c" + S(2) = "aba" + "c" +"aba" = "abacaba"
+...
+S(26) = S(25) + "z" + S(25)```
+Finally, we got a long string S(26). Your task is to find the `k`th symbol (indexing from 1) in the string S(26). All strings consist of lowercase letters only.
+
+# Input / Output
+
+ - `[input]` integer `k`
+
+  1 ≤ k < 2^(26)
+
+ - `[output]` a string(char in C#)
+
+  the `k`th symbol of S(26)
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def abacaba (n : Nat) : Char := sorry
+
+theorem abacaba_is_lowercase (n : Nat) : 
+  let result := abacaba n
+  97 ≤ result.toNat ∧ result.toNat ≤ 122 := sorry
+
+/-
+info: 'a'
+-/
+-- #guard_msgs in
+-- #eval abacaba 1
+
+/-
+info: 'c'
+-/
+-- #guard_msgs in
+-- #eval abacaba 4
+
+/-
+info: 'e'
+-/
+-- #guard_msgs in
+-- #eval abacaba 16
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded_and_plausible

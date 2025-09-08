@@ -1,0 +1,48 @@
+/-
+# Sentence Smash
+
+Write a function that takes an array of words and smashes them together into a sentence and returns the sentence. You can ignore any need to sanitize words or add punctuation, but you should add spaces between each word. **Be careful, there shouldn't be a space at the beginning or the end of the sentence!**
+
+## Example
+
+```
+['hello', 'world', 'this', 'is', 'great']  =>  'hello world this is great'
+```
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def smash (words : List String) : String := sorry
+
+theorem smash_is_string (words : List String) :
+  smash words = smash words := by sorry
+
+theorem smash_length (words : List String) :
+  String.length (smash words) = 
+    List.foldl (· + ·) 0 (List.map String.length words) + 
+    (if words = [] then 0 else words.length - 1) := by sorry
+
+theorem smash_nonempty_space_count {words : List String} (h : words ≠ []) :
+  smash words = smash words := by sorry
+
+/-
+info: ''
+-/
+-- #guard_msgs in
+-- #eval smash []
+
+/-
+info: 'hello'
+-/
+-- #guard_msgs in
+-- #eval smash ["hello"]
+
+/-
+info: 'hello amazing world'
+-/
+-- #guard_msgs in
+-- #eval smash ["hello", "amazing", "world"]
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

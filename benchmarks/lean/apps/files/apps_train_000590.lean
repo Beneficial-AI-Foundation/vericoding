@@ -1,0 +1,73 @@
+/-
+You are given a sequence $A_1, A_2, \ldots, A_N$. You have to split the array into maximum number of non-empty subarrays such that the gcd of elements of each subarray is equal to 1.
+
+-----Input:-----
+- The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+- The first line of each test case contains a single integer $N$.
+- The second line contains $N$ space-separated integers $A_1, A_2, \ldots, A_N$.
+
+-----Output:-----
+For each test case, print a single line containing one integer ― the maximum number of subarrays formed, or $-1$ if the array cannot be split while satisfying the above condition.
+
+-----Constraints-----
+- $1 \le T \le 3$
+- $1 \le N \le 5 \cdot 10^5$
+- $1 \le A_i \le 10^6$ for each valid $i$
+
+-----Sample Input:-----
+2
+3
+2 2 3
+4
+2 3 3 2
+
+-----Sample Output:-----
+1
+2
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def gcd_of_list (nums : List Nat) : Nat := sorry
+
+def max_gcd_subarrays (n : Nat) (arr : List Nat) : Int := sorry
+
+theorem all_ones_returns_list_length (n : Nat) (arr : List Nat) 
+  (h₁ : arr = List.replicate n 1) :
+  max_gcd_subarrays n arr = n := sorry
+
+theorem single_number_case (n : Nat) (arr : List Nat)  
+  (h₁ : arr = [n]) :
+  max_gcd_subarrays 1 arr = if n = 1 then 1 else -1 := sorry
+
+theorem empty_array_returns_minus_one :
+  max_gcd_subarrays 0 [] = -1 := sorry
+
+theorem result_always_valid (n : Nat) (arr : List Nat)
+  (h₁ : ∀ x ∈ arr, x ≥ 2)
+  (h₂ : arr.length = n)
+  (h₃ : n ≥ 2) :
+  let result := max_gcd_subarrays n arr
+  result = -1 ∨ result > 0 := sorry
+
+/-
+info: 1
+-/
+-- #guard_msgs in
+-- #eval max_gcd_subarrays 3 [2, 2, 3]
+
+/-
+info: 2
+-/
+-- #guard_msgs in
+-- #eval max_gcd_subarrays 4 [2, 3, 3, 2]
+
+/-
+info: -1
+-/
+-- #guard_msgs in
+-- #eval max_gcd_subarrays 2 [4, 6]
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

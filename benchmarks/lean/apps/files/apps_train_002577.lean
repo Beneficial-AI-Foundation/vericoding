@@ -1,0 +1,109 @@
+/-
+Write a program that, given a word, computes the scrabble score for that word.
+
+## Letter Values
+
+You'll need these:
+
+```
+Letter                           Value
+A, E, I, O, U, L, N, R, S, T       1
+D, G                               2
+B, C, M, P                         3
+F, H, V, W, Y                      4
+K                                  5
+J, X                               8
+Q, Z                               10
+```
+
+```if:ruby,javascript,cfml
+There will be a preloaded hashtable `$dict` with all these values: `$dict["E"] == 1`. 
+```
+```if:haskell
+There will be a preloaded list of `(Char, Int)` tuples called `dict` with all these values.
+```
+```if:python
+There will be a preloaded dictionary `dict_scores` with all these values: `dict_scores["E"] == 1`
+```
+
+## Examples
+```
+"cabbage" --> 14
+```
+
+"cabbage" should be scored as worth 14 points:
+
+- 3 points for C
+- 1 point for A, twice
+- 3 points for B, twice
+- 2 points for G
+- 1 point for E
+
+And to total:
+
+`3 + 2*1 + 2*3 + 2 + 1` = `3 + 2 + 6 + 3` = `14`
+
+Empty string should return `0`. The string can contain spaces and letters (upper and lower case), you should calculate the scrabble score only of the letters in that string.
+
+```
+""           --> 0
+"STREET"    --> 6
+"st re et"    --> 6
+"ca bba g  e" --> 14
+```
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def scrabble_score : String → Nat 
+  | _ => sorry
+
+theorem scrabble_score_nonnegative (word : String) : 
+  scrabble_score word ≥ 0 := sorry
+
+theorem scrabble_score_case_insensitive (word : String) :
+  scrabble_score (word.toLower) = scrabble_score (word.toUpper) := sorry
+
+theorem scrabble_score_sum_individual (word : String) :
+  word ≠ "" →
+  scrabble_score word = word.data.foldl (fun acc c => acc + scrabble_score s!"{c}") 0 := sorry
+
+/-
+info: 0
+-/
+-- #guard_msgs in
+-- #eval scrabble_score ""
+
+/-
+info: 6
+-/
+-- #guard_msgs in
+-- #eval scrabble_score "street"
+
+/-
+info: 14
+-/
+-- #guard_msgs in
+-- #eval scrabble_score "cabbage"
+
+/-
+info: 6
+-/
+-- #guard_msgs in
+-- #eval scrabble_score "STREET"
+
+/-
+info: 6
+-/
+-- #guard_msgs in
+-- #eval scrabble_score "st re et"
+
+/-
+info: 22
+-/
+-- #guard_msgs in
+-- #eval scrabble_score "quirky"
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded_and_plausible

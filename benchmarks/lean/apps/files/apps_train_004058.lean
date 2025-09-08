@@ -1,0 +1,90 @@
+/-
+To introduce the problem think to my neighbor who drives a tanker truck. 
+The level indicator is down and he is worried
+because he does not know if he will be able to make deliveries. 
+We put the truck on a horizontal ground and measured the height of the liquid in the tank.
+
+Fortunately the tank is a perfect cylinder and the vertical walls on each end are flat.
+The height of the remaining liquid is `h`, the diameter of the cylinder is `d`,
+the total volume is `vt` (h, d, vt are positive or null integers). 
+You can assume that `h` <= `d`.
+
+Could you calculate the remaining volume of the liquid?
+Your function `tankvol(h, d, vt)` returns an integer which is the truncated result (e.g floor)
+of your float calculation.
+
+Examples:
+
+```
+tankvol(40,120,3500) should return 1021 (calculation gives about: 1021.26992027)
+
+tankvol(60,120,3500) should return 1750
+
+tankvol(80,120,3500) should return 2478 (calculation gives about: 2478.73007973)
+```
+
+Tank vertical section:
+
+![alternative text](http://i.imgur.com/wmt0U43.png)
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def tankvol (h : Float) (d : Float) (vt : Int) : Int := 
+  sorry
+
+theorem tankvol_output_is_bounded 
+  (h d : Float) (vt : Int) 
+  (h_pos : h ≥ 0.1)
+  (d_pos : d ≥ 0.1) 
+  (d_bound : d ≤ 1000)
+  (h_bound : h ≤ d)
+  (vt_pos : vt ≥ 1)
+  (vt_bound : vt ≤ 1000000) :
+  0 ≤ tankvol h d vt ∧ tankvol h d vt ≤ vt := sorry
+
+theorem tankvol_full_height
+  (d : Float) (vt : Int)
+  (d_pos : d ≥ 0.1)
+  (d_bound : d ≤ 1000)
+  (vt_pos : vt ≥ 1)  
+  (vt_bound : vt ≤ 1000000) :
+  tankvol d d vt = vt := sorry
+
+theorem tankvol_half_height
+  (d : Float) (vt : Int)
+  (d_pos : d ≥ 0.1)
+  (d_bound : d ≤ 1000)
+  (vt_pos : vt ≥ 1)
+  (vt_bound : vt ≤ 1000000) :
+  tankvol (d/2) d vt = vt/2 := sorry
+
+theorem tankvol_empty
+  (d : Float) (vt : Int)
+  (d_pos : d ≥ 0.1)
+  (d_bound : d ≤ 1000)
+  (vt_pos : vt ≥ 1)
+  (vt_bound : vt ≤ 1000000) :
+  tankvol 0 d vt = 0 := sorry
+
+/-
+info: 1021
+-/
+-- #guard_msgs in
+-- #eval tankvol 40 120 3500
+
+/-
+info: 1750
+-/
+-- #guard_msgs in
+-- #eval tankvol 60 120 3500
+
+/-
+info: 2478
+-/
+-- #guard_msgs in
+-- #eval tankvol 80 120 3500
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded

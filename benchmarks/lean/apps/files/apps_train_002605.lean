@@ -1,0 +1,80 @@
+/-
+An Ironman Triathlon is one of a series of long-distance triathlon races organized by the World Triathlon Corporaion (WTC).
+It consists of a 2.4-mile swim, a 112-mile bicycle ride and a marathon (26.2-mile) (run, raced in that order and without a break. It hurts... trust me.
+
+Your task is to take a distance that an athlete is through the race, and return one of the following:
+
+If the distance is zero, return `'Starting Line... Good Luck!'`.
+
+If the athlete will be swimming, return an object with `'Swim'` as the key, and the remaining race distance as the value.
+
+If the athlete will be riding their bike, return an object with `'Bike'` as the key, and the remaining race distance as the value.
+
+If the athlete will be running, and has more than 10 miles to go, return an object with `'Run'` as the key, and the remaining race distance as the value.
+
+If the athlete has 10 miles or less to go, return return an object with `'Run'` as the key, and `'Nearly there!'` as the value.
+
+Finally, if the athlete has completed te distance, return `"You're done! Stop running!"`.
+
+All distance should be calculated to two decimal places.
+-/
+
+def SWIM_DIST : Float := 2.4
+def BIKE_DIST : Float := 112
+
+def RUN_DIST : Float := 26.2
+def TOTAL_DIST : Float := SWIM_DIST + BIKE_DIST + RUN_DIST
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def i_tri (distance : Float) : String ⊕ (String × String) := sorry
+
+theorem i_tri_result_type (distance : Float) :
+  match i_tri distance with
+  | Sum.inl _ => True
+  | Sum.inr _ => True := sorry
+
+theorem i_tri_at_start :
+  i_tri 0 = Sum.inl "Starting Line... Good Luck!" := sorry
+
+theorem i_tri_at_finish (distance : Float) :
+  distance ≥ TOTAL_DIST →
+  i_tri distance = Sum.inl "You're done! Stop running!" := sorry
+
+theorem i_tri_swim_phase (distance : Float) :
+  0 < distance → distance < SWIM_DIST → 
+  ∃ msg, i_tri distance = Sum.inr ("Swim", msg) := sorry
+
+theorem i_tri_bike_phase (distance : Float) :
+  SWIM_DIST ≤ distance → distance < SWIM_DIST + BIKE_DIST →
+  ∃ msg, i_tri distance = Sum.inr ("Bike", msg) := sorry
+
+theorem i_tri_run_phase_normal (distance : Float) :
+  SWIM_DIST + BIKE_DIST ≤ distance → distance < TOTAL_DIST - 10 →
+  ∃ msg, i_tri distance = Sum.inr ("Run", msg) ∧ msg.endsWith " to go!" := sorry
+
+theorem i_tri_run_phase_near_end (distance : Float) :
+  TOTAL_DIST - 10 ≤ distance → distance < TOTAL_DIST →
+  i_tri distance = Sum.inr ("Run", "Nearly there!") := sorry
+
+/-
+info: {'Bike': '104.60 to go!'}
+-/
+-- #guard_msgs in
+-- #eval i_tri 36
+
+/-
+info: {'Swim': '138.60 to go!'}
+-/
+-- #guard_msgs in
+-- #eval i_tri 2
+
+/-
+info: "You're done! Stop running!"
+-/
+-- #guard_msgs in
+-- #eval i_tri 151
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

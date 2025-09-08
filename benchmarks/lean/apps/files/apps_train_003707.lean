@@ -1,0 +1,72 @@
+/-
+In this Kata, you will be given a string of numbers in sequence and your task will be to return the missing number. If there is no number
+missing or there is an error in the sequence, return `-1`.
+
+For example:
+```Haskell
+missing("123567") = 4 
+missing("899091939495") = 92
+missing("9899101102") = 100
+missing("599600601602") = -1 -- no number missing
+missing("8990919395") = -1 -- error in sequence. Both 92 and 94 missing.
+```
+The sequence will always be in ascending order.
+
+More examples in the test cases. 
+
+Good luck!
+-/
+
+def String.isDigit : String → Bool :=
+  sorry
+
+def missing : String → Int :=
+  sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def isSequence : String → Bool :=
+  sorry
+
+/- For a sequence with one number removed, missing finds the removed number -/
+
+theorem missing_finds_gap {start : Nat} (h : start ≥ 1 ∧ start ≤ 99) :
+  ∀ seq target, 
+  (∃ curr, curr = start ∧ 
+    seq = String.join (List.map toString (List.range curr)) ∧
+    target = curr + 1 ∧
+    isSequence (seq.replace (toString target) "")) →
+  missing (seq.replace (toString target) "") = target :=
+sorry
+
+/- For a complete sequence with no gaps, missing returns -1 -/
+
+theorem missing_complete_sequence {start : Nat} (h : start ≥ 1 ∧ start ≤ 999) :
+  ∀ seq,
+  (∃ curr, curr = start ∧
+    seq = String.join (List.map toString (List.range curr)) ∧
+    isSequence seq) →
+  missing seq = -1 :=
+sorry
+
+/-
+info: 4
+-/
+-- #guard_msgs in
+-- #eval missing "123567"
+
+/-
+info: 92
+-/
+-- #guard_msgs in
+-- #eval missing "899091939495"
+
+/-
+info: 100
+-/
+-- #guard_msgs in
+-- #eval missing "9899101102"
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded

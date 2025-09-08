@@ -1,0 +1,73 @@
+/-
+Find the longest substring within a string that contains at most 2 unique characters.
+
+```
+substring("a") => "a"
+substring("aaa") => "aaa"
+substring("abacd") => "aba"
+substring("abacddcd") => "cddcd"
+substring("cefageaacceaccacca") => "accacca"
+```
+
+This function will take alphanumeric characters as input.
+
+In cases where there could be more than one correct answer, the first string occurrence should be used. For example, substring('abc') should return 'ab' instead of 'bc'.
+
+Although there are O(N^2) solutions to this problem, you should try to solve this problem in O(N) time. Tests may pass for O(N^2) solutions but, this is not guaranteed.
+
+This question is much harder than some of the other substring questions. It's easy to think that you have a solution and then get hung up on the implementation.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def substring (s : String) : String := sorry
+
+theorem substring_empty_or_single_char (s : String) :
+  let result := substring s
+  (s = "" → result = "") ∧ result.length ≤ s.length := sorry
+
+theorem substring_at_most_two_unique_chars (s : String) :
+  s ≠ "" →
+  let result := substring s
+  let chars := result.data
+  chars.eraseDups.length ≤ 2 := sorry
+
+theorem substring_is_contiguous (s : String) :
+  let result := substring s
+  result ≠ "" →
+  ∃ start len, (s.drop start).take len = result := sorry
+
+theorem substring_is_maximal (s : String) :
+  let result := substring s
+  ∀ start len,
+    let candidate := (s.drop start).take len
+    let candidateChars := candidate.data
+    candidateChars.eraseDups.length ≤ 2 →
+    candidate.length ≤ result.length := sorry
+
+theorem two_char_string_returns_full (s : String) :
+  s ≠ "" →
+  (∀ c ∈ s.data, c = 'a' ∨ c = 'b') →
+  substring s = s := sorry
+
+/-
+info: 'aba'
+-/
+-- #guard_msgs in
+-- #eval substring "abacd"
+
+/-
+info: 'aaa'
+-/
+-- #guard_msgs in
+-- #eval substring "aaa"
+
+/-
+info: 'cddcd'
+-/
+-- #guard_msgs in
+-- #eval substring "abacddcd"
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

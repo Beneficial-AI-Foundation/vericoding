@@ -1,0 +1,111 @@
+/-
+This is the easy version of the problem. The difference between the versions is that the easy version has no swap operations. You can make hacks only if all versions of the problem are solved.
+
+Pikachu is a cute and friendly pokémon living in the wild pikachu herd.
+
+But it has become known recently that infamous team R wanted to steal all these pokémon! Pokémon trainer Andrew decided to help Pikachu to build a pokémon army to resist.
+
+First, Andrew counted all the pokémon — there were exactly $n$ pikachu. The strength of the $i$-th pokémon is equal to $a_i$, and all these numbers are distinct.
+
+As an army, Andrew can choose any non-empty subsequence of pokemons. In other words, Andrew chooses some array $b$ from $k$ indices such that $1 \le b_1 < b_2 < \dots < b_k \le n$, and his army will consist of pokémons with forces $a_{b_1}, a_{b_2}, \dots, a_{b_k}$.
+
+The strength of the army is equal to the alternating sum of elements of the subsequence; that is, $a_{b_1} - a_{b_2} + a_{b_3} - a_{b_4} + \dots$.
+
+Andrew is experimenting with pokémon order. He performs $q$ operations. In $i$-th operation Andrew swaps $l_i$-th and $r_i$-th pokémon.
+
+Note: $q=0$ in this version of the task.
+
+Andrew wants to know the maximal stregth of the army he can achieve with the initial pokémon placement. He also needs to know the maximal strength after each operation.
+
+Help Andrew and the pokémon, or team R will realize their tricky plan!
+
+-----Input-----
+
+Each test contains multiple test cases.
+
+The first line contains one positive integer $t$ ($1 \le t \le 10^3$) denoting the number of test cases. Description of the test cases follows.
+
+The first line of each test case contains two integers $n$ and $q$ ($1 \le n \le 3 \cdot 10^5, q = 0$) denoting the number of pokémon and number of operations respectively.
+
+The second line contains $n$ distinct positive integers $a_1, a_2, \dots, a_n$ ($1 \le a_i \le n$) denoting the strengths of the pokémon.
+
+$i$-th of the last $q$ lines contains two positive integers $l_i$ and $r_i$ ($1 \le l_i \le r_i \le n$) denoting the indices of pokémon that were swapped in the $i$-th operation.
+
+It is guaranteed that the sum of $n$ over all test cases does not exceed $3 \cdot 10^5$, and the sum of $q$ over all test cases does not exceed $3 \cdot 10^5$. 
+
+-----Output-----
+
+For each test case, print $q+1$ integers: the maximal strength of army before the swaps and after each swap.
+
+-----Example-----
+Input
+3
+3 0
+1 3 2
+2 0
+1 2
+7 0
+1 2 5 4 3 6 7
+
+Output
+3
+2
+9
+
+-----Note-----
+
+In third test case we can build an army in such way: [1 2 5 4 3 6 7], its strength will be $5−3+7=9$.
+-/
+
+def List.maximum (xs : List Nat) : Nat :=
+  match xs with
+  | [] => 0
+  | (h::t) => t.foldl max h
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def find_max_army_strength (n : Nat) (arr : List Nat) : Nat :=
+  sorry
+
+theorem result_at_least_max_element {arr : List Nat} (h : arr ≠ []) : 
+  find_max_army_strength arr.length arr ≥ List.maximum arr := by
+  sorry
+
+theorem non_negative_result {arr : List Nat} (h : arr ≠ []) :
+  find_max_army_strength arr.length arr ≥ 0 := by
+  sorry
+
+theorem single_element (x : Nat) :
+  find_max_army_strength 1 [x] = x := by
+  sorry
+
+theorem two_elements (x y : Nat) :
+  find_max_army_strength 2 [x, y] ≥ max x y := by
+  sorry
+
+theorem reverse_invariant {arr : List Nat} (h : arr ≠ []) :
+  find_max_army_strength arr.length arr = 
+  find_max_army_strength arr.length arr.reverse := by
+  sorry
+
+/-
+info: 3
+-/
+-- #guard_msgs in
+-- #eval find_max_army_strength 3 [1, 3, 2]
+
+/-
+info: 2
+-/
+-- #guard_msgs in
+-- #eval find_max_army_strength 2 [1, 2]
+
+/-
+info: 9
+-/
+-- #guard_msgs in
+-- #eval find_max_army_strength 7 [1, 2, 5, 4, 3, 6, 7]
+
+-- Apps difficulty: interview
+-- Assurance level: guarded

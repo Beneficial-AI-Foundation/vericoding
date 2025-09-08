@@ -1,0 +1,74 @@
+/-
+The `depth` of an integer `n` is defined to be how many multiples of `n` it is necessary to compute before all `10` digits have appeared at least once in some multiple. 
+
+example:
+```
+let see n=42
+
+Multiple         value         digits     comment
+42*1              42            2,4 
+42*2              84             8         4 existed
+42*3              126           1,6        2 existed
+42*4              168            -         all existed
+42*5              210            0         2,1 existed
+42*6              252            5         2 existed
+42*7              294            9         2,4 existed
+42*8              336            3         6 existed 
+42*9              378            7         3,8 existed
+
+```
+Looking at the above table under `digits` column you can find all the digits from `0` to `9`, Hence it required `9` multiples of `42` to get all the digits. So the depth of `42` is `9`. Write a function named `computeDepth` which computes the depth of its integer argument.Only positive numbers greater than zero will be passed as an input.
+-/
+
+def compute_depth (n : Nat) : Nat := sorry
+
+theorem compute_depth_positive (n : Nat) (h : n > 0) : 
+  compute_depth n > 0 := sorry
+
+def has_digit (n : Nat) (d : Nat) : Prop := sorry
+
+def has_all_digits (n : Nat) : Prop :=
+  ∀ d, d < 10 → has_digit n d
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def list_product (nums : List Nat) (n : Nat) : Nat := sorry
+
+theorem compute_depth_contains_all_digits (n : Nat) (h : n > 0) :
+  ∃ nums : List Nat, 
+    nums.length = compute_depth n ∧ 
+    has_all_digits (list_product nums n) := sorry
+
+theorem compute_depth_is_minimal (n : Nat) (h : n > 0) :
+  ∀ k < compute_depth n, 
+    ¬∃ nums : List Nat,
+      nums.length = k ∧
+      has_all_digits (list_product nums n) := sorry
+
+theorem compute_depth_upper_bound (n : Nat) (h : n > 0) (h2 : n ≤ 100) :
+  compute_depth n ≤ n * 100 := sorry
+
+theorem powers_of_ten_depth_positive :
+  ∀ i : Nat, compute_depth (10^i) > 0 := sorry
+
+/-
+info: 9
+-/
+-- #guard_msgs in
+-- #eval compute_depth 42
+
+/-
+info: 8
+-/
+-- #guard_msgs in
+-- #eval compute_depth 13
+
+/-
+info: 36
+-/
+-- #guard_msgs in
+-- #eval compute_depth 25
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

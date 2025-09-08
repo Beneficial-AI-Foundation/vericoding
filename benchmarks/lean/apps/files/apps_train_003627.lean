@@ -1,0 +1,69 @@
+/-
+The [Chinese zodiac](https://en.wikipedia.org/wiki/Chinese_zodiac) is a repeating cycle of 12 years, with each year being represented by an animal and its reputed attributes. The lunar calendar is divided into cycles of 60 years each, and each year has a combination of an animal and an element. There are 12 animals and 5 elements; the animals change each year, and the elements change every 2 years. The current cycle was initiated in the year of 1984 which was the year of the Wood Rat.
+
+Since the current calendar is Gregorian, I will only be using years from the epoch 1924.
+*For simplicity I am counting the year as a whole year and not from January/February to the end of the year.*
+
+##Task
+
+Given a year, return the element and animal that year represents ("Element Animal"). 
+For example I'm born in 1998 so I'm an "Earth Tiger".
+
+```animals``` (or ```$animals``` in Ruby) is a preloaded array containing the animals in order:
+
+```['Rat', 'Ox', 'Tiger', 'Rabbit', 'Dragon', 'Snake', 'Horse', 'Goat', 'Monkey', 'Rooster', 'Dog', 'Pig']```
+
+```elements``` (or ```$elements``` in Ruby) is a preloaded array containing the elements in order:
+
+```['Wood', 'Fire', 'Earth', 'Metal', 'Water']```
+
+Tell me your zodiac sign and element in the comments. Happy coding :)
+-/
+
+def chinese_zodiac (year : Int) : String := sorry
+
+def Elements := ["Wood", "Fire", "Earth", "Metal", "Water"]
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def Animals := ["Rat", "Ox", "Tiger", "Rabbit", "Dragon", "Snake", 
+               "Horse", "Goat", "Monkey", "Rooster", "Dog", "Pig"]
+
+def String.splitToList (s : String) : List String := 
+  s.split (· = ' ')
+
+theorem cycle_12_years {y : Int} (h : y ≥ 1900 ∧ y ≤ 2100) : 
+  (chinese_zodiac y).splitToList[1]! = (chinese_zodiac (y + 12)).splitToList[1]! := sorry 
+
+theorem cycle_10_years {y : Int} (h : y ≥ 1900 ∧ y ≤ 2100) :
+  (chinese_zodiac y).splitToList[0]! = (chinese_zodiac (y + 10)).splitToList[0]! := sorry
+
+theorem valid_format {year : Int} (h : year ≥ 1900 ∧ year ≤ 2100) :
+  let result := chinese_zodiac year
+  let parts := result.splitToList
+  parts[0]! ∈ Elements ∧ parts[1]! ∈ Animals := sorry
+
+theorem deterministic {year : Int} (h : year ≥ 1900 ∧ year ≤ 2100) :
+  chinese_zodiac year = chinese_zodiac year := sorry
+
+/-
+info: 'Wood Snake'
+-/
+-- #guard_msgs in
+-- #eval chinese_zodiac 1965
+
+/-
+info: 'Earth Tiger'
+-/
+-- #guard_msgs in
+-- #eval chinese_zodiac 1998
+
+/-
+info: 'Fire Monkey'
+-/
+-- #guard_msgs in
+-- #eval chinese_zodiac 2016
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

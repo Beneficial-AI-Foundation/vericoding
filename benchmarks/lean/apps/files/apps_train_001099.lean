@@ -1,0 +1,81 @@
+/-
+Chef has N laddus of K sweetness each. Chef wants to eat all laddus, but Chef is restricted with the given condition that he must not eat two adjacent laddus. Chef starts calculating the maximum sweetness that he will get from the laddus. Find the maximum sweetness that chef gets at the end of all calculations. 
+
+-----Input:-----
+- First-line will contain $T$, the number of test cases. Then the test cases follow. 
+- Each test case contains a single line of input, two integers $N, K$. 
+
+-----Output:-----
+For each test case, output in a single line answer as Maximum sweetness the chef will have.
+
+-----Constraints-----
+- $1 \leq T \leq 10^5$
+- $1 \leq N \leq 10^5$
+- $1 \leq K \leq 10^5$
+
+-----Sample Input:-----
+2
+1 2
+4 3
+
+-----Sample Output:-----
+2
+6
+
+-----EXPLANATION:-----
+For 1) Chef will get only 1 laddu with sweetness 2.
+For 2) Chef will have multiple ways as
+[1,3], [2,4], [1,4] with sweetness 6
+[1],[2],[3],[4] with sweetness 3.
+Maximum sweetness will be 6.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def calc_max_sweetness (n k : Nat) : Nat := sorry
+
+theorem calc_max_sweetness_positive (n k : Nat) (h1 : n > 0) (h2 : k > 0) : 
+  calc_max_sweetness n k > 0 := sorry
+
+theorem calc_max_sweetness_upper_bound (n k : Nat) :
+  calc_max_sweetness n k ≤ n * k := sorry
+
+theorem calc_max_sweetness_multiple (n k : Nat) (h : k > 0) :
+  calc_max_sweetness n k % k = 0 := sorry
+
+theorem calc_max_sweetness_n_one (k : Nat) :
+  calc_max_sweetness 1 k = k := sorry
+
+theorem calc_max_sweetness_n_gt_one (n k : Nat) (h : n > 1) :
+  calc_max_sweetness n k = ((n / 2) + (n % 2)) * k := sorry
+
+theorem calc_max_sweetness_k_zero (n : Nat) :
+  calc_max_sweetness n 0 = 0 := sorry
+
+theorem calc_max_sweetness_step_two (k : Nat) :
+  calc_max_sweetness 2 k - calc_max_sweetness 1 k = 0 := sorry
+
+theorem calc_max_sweetness_step_three (k : Nat) :
+  calc_max_sweetness 3 k - calc_max_sweetness 2 k = k := sorry
+
+/-
+info: 2
+-/
+-- #guard_msgs in
+-- #eval calc_max_sweetness 1 2
+
+/-
+info: 6
+-/
+-- #guard_msgs in
+-- #eval calc_max_sweetness 4 3
+
+/-
+info: 10
+-/
+-- #guard_msgs in
+-- #eval calc_max_sweetness 3 5
+
+-- Apps difficulty: interview
+-- Assurance level: guarded_and_plausible

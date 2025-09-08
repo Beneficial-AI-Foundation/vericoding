@@ -1,0 +1,63 @@
+/-
+We have a set of consecutive numbers from ```1``` to ```n```.
+We want to count all the subsets that do not contain consecutive numbers.
+E.g.
+
+If our set ```S1``` is equal to ```[1,2,3,4,5]```
+The subsets that fulfill these property are:
+```
+[1],[2],[3],[4],[5],[1,3],[1,4],[1,5],[2,4],[2,5],[3,5],[1,3,5]
+```
+A total of      ```12   ``` subsets.
+
+From the set ```S2``` equals to```[1,2,3]```, it is obvious that we have only ```4``` subsets and are:
+```
+[1],[2],[3],[1,3]
+```
+Make a code that may give the amount of all these subsets for any integer       ```n >= 2       ```.
+
+Features of the random tests:
+```
+number of tests = 100 
+10 <= n <= 120
+```
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def count_nonconsecutive_subsets (n : Nat) : Nat :=
+  sorry
+
+theorem count_nonconsecutive_subsets_nonnegative (n : Nat) :
+  count_nonconsecutive_subsets n ≥ 0 :=
+  sorry
+
+theorem count_nonconsecutive_subsets_monotonic (n : Nat) : 
+  n > 0 → count_nonconsecutive_subsets n > count_nonconsecutive_subsets (n-1) :=
+  sorry
+
+theorem count_nonconsecutive_subsets_base_cases :
+  count_nonconsecutive_subsets 0 = 0 ∧ count_nonconsecutive_subsets 1 = 1 :=
+  sorry
+
+/-
+info: 12
+-/
+-- #guard_msgs in
+-- #eval count_nonconsecutive_subsets 5
+
+/-
+info: 4
+-/
+-- #guard_msgs in
+-- #eval count_nonconsecutive_subsets 3
+
+/-
+info: 2
+-/
+-- #guard_msgs in
+-- #eval count_nonconsecutive_subsets 2
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded_and_plausible

@@ -1,0 +1,66 @@
+/-
+Nickname Generator
+
+Write a function, `nicknameGenerator` that takes a string name as an argument and returns the first 3 or 4 letters as a nickname.
+
+If the 3rd letter is a consonant, return the first 3 letters.
+
+If the 3rd letter is a vowel, return the first 4 letters. 
+
+If the string is less than 4 characters, return "Error: Name too short".
+
+**Notes:**
+
+- Vowels are "aeiou", so discount the letter "y".
+- Input will always be a string.
+- Input will always have the first letter capitalised and the rest lowercase (e.g. Sam).
+- The input can be modified
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def isVowel (c : Char) : Bool := sorry
+def nicknameGenerator (name : String) : String := sorry
+
+theorem nickname_length (name : String) 
+  (h1 : name.length ≥ 4) 
+  (h2 : ∀ c ∈ name.data, c.isAlpha) :
+  let nickname := nicknameGenerator name
+  let h3 : 1 < name.data.length := by {
+    have : name.data.length = name.length := rfl
+    simp [this] at h1
+    exact Nat.lt_of_lt_of_le (by simp) h1
+  }
+  nickname.length = if isVowel (name.data[1]'h3) then 4 else 3 := sorry
+
+theorem nickname_prefix (name : String)
+  (h1 : name.length ≥ 4)
+  (h2 : ∀ c ∈ name.data, c.isAlpha) :
+  let nickname := nicknameGenerator name
+  nickname.take 3 = name.take 3 := sorry
+
+theorem short_name_error (name : String)
+  (h : name.length ≤ 3) :
+  nicknameGenerator name = "Error: Name too short" := sorry
+
+/-
+info: 'Jim'
+-/
+-- #guard_msgs in
+-- #eval nickname_generator "Jimmy"
+
+/-
+info: 'Saam'
+-/
+-- #guard_msgs in
+-- #eval nickname_generator "Saamy"
+
+/-
+info: 'Error: Name too short'
+-/
+-- #guard_msgs in
+-- #eval nickname_generator "Sam"
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

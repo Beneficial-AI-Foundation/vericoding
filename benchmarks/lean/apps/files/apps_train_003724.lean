@@ -1,0 +1,84 @@
+/-
+# Your Task
+You have a Petri dish with bacteria, and you are preparing to dive into the harsh micro-world. But, unfortunately, you don't have any microscope nearby, so you can't watch them.
+
+You know that you have `n` bacteria in the Petri dish and size of the i-th bacteria is bacteriai. Also you know intergalactic positive integer constant `K`.
+
+The i-th bacteria can swallow the j-th bacteria if and only if bacteriai > bacteriaj and bacteriai ≤ bacteriaj + K. The j-th bacteria disappear, but the i-th bacteria doesn't change its size.
+
+Since you don't have a microscope, you can only guess the minimal possible number of bacteria that will remain in your Petri dish when you finally find a microscope.
+
+```python
+micro_world([101, 53, 42, 102, 101, 55, 54], 1) == 3
+micro_world([20, 15, 10, 15, 20, 25], 5) == 1
+```
+
+___
+
+# Explanation
+```python
+bacteria = [101, 53, 42, 102, 101, 55, 54]
+K = 1
+```
+
+```if:cpp
+The one of possible sequences of swallows is: {101,53,42,102,101,55,54} → {101,53,42,102,55,54} → {101,42,102,55,54} → {42,102,55,54} → {42,102,55}. In total there are 3 bacteria remaining.
+```
+```if:python,ruby,javascript
+The one of possible sequences of swallows is: [101,53,42,102,101,55,54] → [101,53,42,102,55,54] → [101,42,102,55,54] → [42,102,55,54] → [42,102,55]. In total there are 3 bacteria remaining.
+```
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def micro_world (bacteria : List Nat) (k : Nat) : Nat :=
+  sorry
+
+theorem micro_world_bounds {bacteria : List Nat} (k : Nat) 
+  (h : bacteria ≠ []) : 
+  0 ≤ micro_world bacteria k ∧ micro_world bacteria k ≤ bacteria.length :=
+  sorry
+
+theorem micro_world_zero_k {bacteria : List Nat} :
+  micro_world bacteria 0 = bacteria.length :=
+  sorry
+
+theorem micro_world_monotone {bacteria : List Nat} {k : Nat} 
+  (h : k > 0) :
+  micro_world bacteria k ≤ micro_world bacteria (k-1) :=
+  sorry
+
+theorem micro_world_same_size {bacteria : List Nat} {n k : Nat}
+  (h : bacteria = List.replicate bacteria.length n) :
+  micro_world bacteria k = bacteria.length :=
+  sorry
+
+theorem micro_world_edge_cases_empty (k : Nat) :
+  micro_world [] k = 0 :=
+  sorry
+
+theorem micro_world_edge_cases_singleton (n k : Nat) :
+  micro_world [n] k = 1 :=
+  sorry
+
+/-
+info: 3
+-/
+-- #guard_msgs in
+-- #eval micro_world [101, 53, 42, 102, 101, 55, 54] 1
+
+/-
+info: 1
+-/
+-- #guard_msgs in
+-- #eval micro_world [20, 15, 10, 15, 20, 25] 5
+
+/-
+info: 4
+-/
+-- #guard_msgs in
+-- #eval micro_world [5, 3, 1, 5] 1
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded_and_plausible

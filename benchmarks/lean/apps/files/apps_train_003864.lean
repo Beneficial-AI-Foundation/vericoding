@@ -1,0 +1,66 @@
+/-
+We have the following recursive function:
+
+The 15-th term; ```f(14)``` is the first term in having more that 100 digits.
+
+In fact, 
+```
+f(14) = 2596253046576879973769082409566059879570061514363339324718953988724415850732046186170181072783243503881471037546575506836249417271830960970629933033088
+
+It has 151 digits.
+```
+Make the function ```something_acci()```, that receives ```num_dig``` (number of digits of the value) as unique argument.
+
+```something_acci()``` will output a tuple/array with the ordinal number in the sequence for the least value in having equal or more than the given number of digits.
+
+Let's see some cases:
+```python
+something_acci(20) == (12, 25)
+# f(11) = 1422313222839141753028416
+
+something_acci(100) == (15, 151)
+```
+The number of digits given will be always more than 5. ```num_dig > 5```.
+
+Happy coding!!!
+
+And the name for this kata? You have three words of the same meaning in Asian Languages.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def somethingAcci (num_digits: Nat) : Nat × Nat :=
+  sorry
+
+theorem sequence_length_at_least_six (n: Nat) : (somethingAcci n).1 ≥ 6 :=
+  sorry
+
+theorem final_digit_length_meets_request (n: Nat) : (somethingAcci n).2 ≥ n :=
+  sorry
+
+theorem sequence_grows_monotonically {n: Nat} (h: n > 1) : 
+  (somethingAcci n).1 ≥ (somethingAcci (n-1)).1 ∧ 
+  (somethingAcci n).2 ≥ (somethingAcci (n-1)).2 :=
+  sorry
+
+/-
+info: (10, 8)
+-/
+-- #guard_msgs in
+-- #eval something_acci 5
+
+/-
+info: (11, 14)
+-/
+-- #guard_msgs in
+-- #eval something_acci 10
+
+/-
+info: (12, 25)
+-/
+-- #guard_msgs in
+-- #eval something_acci 20
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded

@@ -1,0 +1,89 @@
+/-
+Consider the prime number `23`. If we sum the square of its digits we get:
+`2^2 + 3^2 = 13`, then for `13: 1^2 + 3^2 = 10`, and finally for `10: 1^2 + 0^2 = 1`. 
+
+Similarly, if we start with prime number `7`, the sequence is: `7->49->97->130->10->1`.
+
+Given a range, how many primes within that range will eventually end up being `1`? 
+
+The upperbound for the range is `50,000`. A range of `(2,25)` means that: `2 <= n < 25`. 
+
+Good luck!
+
+If you like this Kata, please try:
+
+[Prime reversion](https://www.codewars.com/kata/59b46276afcda204ed000094)
+
+[Domainant primes](https://www.codewars.com/kata/59ce11ea9f0cbc8a390000ed)
+-/
+
+def is_prime (n : Nat) : Bool :=
+  sorry
+
+def end_one (n : Nat) : Bool :=
+  sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def solve (a b : Nat) : Nat :=
+  sorry
+
+theorem is_prime_not_small (n : Nat) :
+  n ≤ 1 → is_prime n = false :=
+  sorry
+
+theorem is_prime_no_factors (n : Nat) :
+  is_prime n = true →
+  ∀ i : Nat, 2 ≤ i → i ≤ n^(1/2) → n % i ≠ 0 :=
+  sorry
+
+theorem prime_multiplication (n : Nat) :
+  2 < n → is_prime (2*n) = false :=
+  sorry
+
+theorem end_one_is_bool (n : Nat) :
+  end_one n = true ∨ end_one n = false :=
+  sorry
+
+theorem end_one_for_one :
+  end_one 1 = true :=
+  sorry
+
+theorem end_one_special_cases (n : Nat) :
+  (n = 1 ∨ n = 10) → end_one n = true :=
+  sorry
+
+theorem solve_bounded (a b : Nat) :
+  a ≤ b → 
+  0 ≤ solve a b ∧ solve a b ≤ b - a :=
+  sorry
+
+theorem solve_wrong_order (a b : Nat) :
+  b < a → solve a b = 0 :=
+  sorry
+
+theorem solve_unit_range (n : Nat) :
+  solve n (n+1) = 0 ∨ solve n (n+1) = 1 :=
+  sorry
+
+/-
+info: 4
+-/
+-- #guard_msgs in
+-- #eval solve 1 25
+
+/-
+info: 28
+-/
+-- #guard_msgs in
+-- #eval solve 100 1000
+
+/-
+info: 47
+-/
+-- #guard_msgs in
+-- #eval solve 100 2000
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded_and_plausible

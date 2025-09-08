@@ -1,0 +1,70 @@
+/-
+Create a function that finds the [integral](https://en.wikipedia.org/wiki/Integral) of the expression passed.
+
+In order to find the integral all you need to do is add one to the `exponent` (the second argument), and divide the `coefficient` (the first argument) by that new number.
+
+For example for `3x^2`, the integral would be `1x^3`: we added 1 to the exponent, and divided the coefficient by that new number).
+
+Notes:
+* The output should be a string.
+* The coefficient and exponent is always a positive integer.
+
+## Examples
+
+```
+ 3, 2  -->  "1x^3"
+12, 5  -->  "2x^6"
+20, 1  -->  "10x^2"
+40, 3  -->  "10x^4"
+90, 2  -->  "30x^3"
+```
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def integrate (coef : Int) (exp : Nat) : String := sorry
+
+theorem integrate_returns_string (coef : Int) (exp : Nat)
+  (h : coef ≠ 0) :
+  ∃ s : String, integrate coef exp = s := sorry
+
+theorem integrate_result_ends_with_power 
+  (coef : Int) (exp : Nat) (h : coef ≠ 0) :
+  ∃ (s : String), integrate coef exp = s ∧ 
+  s.endsWith s!"x^{exp + 1}" := sorry
+
+theorem integrate_coef_correct_when_divisible
+  (coef : Int) (exp : Nat) (h : coef ≠ 0)
+  (h2 : coef % (exp + 1) = 0) :
+  ∃ s : String,
+    integrate coef exp = s ∧
+    s.startsWith (toString (coef / (exp + 1))) := sorry
+
+theorem integrate_coef_correct_when_not_divisible
+  (coef : Int) (exp : Nat) (h : coef ≠ 0)
+  (h2 : coef % (exp + 1) ≠ 0) :
+  ∃ s : String,
+    integrate coef exp = s ∧ 
+    s.startsWith (toString ((coef / (exp + 1)).toNat)) := sorry
+
+/-
+info: '1x^3'
+-/
+-- #guard_msgs in
+-- #eval integrate 3 2
+
+/-
+info: '2x^6'
+-/
+-- #guard_msgs in
+-- #eval integrate 12 5
+
+/-
+info: '30x^3'
+-/
+-- #guard_msgs in
+-- #eval integrate 90 2
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

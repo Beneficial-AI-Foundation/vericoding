@@ -1,0 +1,89 @@
+/-
+Doubly linked list is one of the fundamental data structures. A doubly linked list is a sequence of elements, each containing information about the previous and the next elements of the list. In this problem all lists have linear structure. I.e. each element except the first has exactly one previous element, each element except the last has exactly one next element. The list is not closed in a cycle.
+
+In this problem you are given n memory cells forming one or more doubly linked lists. Each cell contains information about element from some list. Memory cells are numbered from 1 to n.
+
+For each cell i you are given two values:   l_{i} — cell containing previous element for the element in the cell i;  r_{i} — cell containing next element for the element in the cell i. 
+
+If cell i contains information about the element which has no previous element then l_{i} = 0. Similarly, if cell i contains information about the element which has no next element then r_{i} = 0. [Image] Three lists are shown on the picture. 
+
+For example, for the picture above the values of l and r are the following: l_1 = 4, r_1 = 7; l_2 = 5, r_2 = 0; l_3 = 0, r_3 = 0; l_4 = 6, r_4 = 1; l_5 = 0, r_5 = 2; l_6 = 0, r_6 = 4; l_7 = 1, r_7 = 0.
+
+Your task is to unite all given lists in a single list, joining them to each other in any order. In particular, if the input data already contains a single list, then there is no need to perform any actions. Print the resulting list in the form of values l_{i}, r_{i}.
+
+Any other action, other than joining the beginning of one list to the end of another, can not be performed.
+
+-----Input-----
+
+The first line contains a single integer n (1 ≤ n ≤ 100) — the number of memory cells where the doubly linked lists are located.
+
+Each of the following n lines contains two integers l_{i}, r_{i} (0 ≤ l_{i}, r_{i} ≤ n) — the cells of the previous and the next element of list for cell i. Value l_{i} = 0 if element in cell i has no previous element in its list. Value r_{i} = 0 if element in cell i has no next element in its list.
+
+It is guaranteed that the input contains the correct description of a single or more doubly linked lists. All lists have linear structure: each element of list except the first has exactly one previous element; each element of list except the last has exactly one next element. Each memory cell contains information about one element from some list, each element of each list written in one of n given cells.
+
+-----Output-----
+
+Print n lines, the i-th line must contain two integers l_{i} and r_{i} — the cells of the previous and the next element of list for cell i after all lists from the input are united in a single list. If there are many solutions print any of them.
+
+-----Example-----
+Input
+7
+4 7
+5 0
+0 0
+6 1
+0 2
+0 4
+1 0
+
+Output
+4 7
+5 6
+0 5
+6 1
+3 2
+2 4
+1 0
+-/
+
+def unite_linked_lists (n : Nat) (arr : List (List Nat)) : List (List Nat) :=
+  sorry
+
+def is_valid_linked_list (n : Nat) (arr : List (List Nat)) : Bool :=
+  sorry
+
+def count_lists (n : Nat) (arr : List (List Nat)) : Nat :=
+  sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def is_connected (n : Nat) (arr : List (List Nat)) : Bool :=
+  sorry
+
+theorem unite_linked_lists_preserves_size {n : Nat} {arr : List (List Nat)} 
+    (h1 : is_valid_linked_list n arr)
+    (h2 : count_lists n arr ≥ 2) :
+    List.length (unite_linked_lists n arr) = List.length arr :=
+  sorry
+
+theorem unite_linked_lists_maintains_validity {n : Nat} {arr : List (List Nat)}
+    (h1 : is_valid_linked_list n arr)
+    (h2 : count_lists n arr ≥ 2) :
+    is_valid_linked_list n (unite_linked_lists n arr) :=
+  sorry
+
+theorem unite_linked_lists_creates_connection {n : Nat} {arr : List (List Nat)}
+    (h1 : is_valid_linked_list n arr)
+    (h2 : count_lists n arr ≥ 2) :
+    is_connected n (unite_linked_lists n arr) :=
+  sorry
+
+theorem unite_linked_lists_reduces_count {n : Nat} {arr : List (List Nat)}
+    (h1 : is_valid_linked_list n arr)
+    (h2 : count_lists n arr ≥ 2) :
+    count_lists n (unite_linked_lists n arr) = 1 :=
+  sorry
+
+-- Apps difficulty: competition
+-- Assurance level: guarded

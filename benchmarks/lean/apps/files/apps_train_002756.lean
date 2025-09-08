@@ -1,0 +1,55 @@
+/-
+A carpet shop sells carpets in different varieties. Each carpet can come in a different roll width and can have a different price per square meter. 
+
+Write a function `cost_of_carpet` which calculates the cost (rounded to 2 decimal places) of carpeting a room, following these constraints:
+
+* The carpeting has to be done in one unique piece. If not possible, retrun `"error"`.
+* The shop sells any length of a roll of carpets, but always with a full width.
+* The cost has to be minimal.
+* The length of the room passed as argument can sometimes be shorter than its width (because we define these relatively to the position of the door in the room).
+* A length or width equal to zero is considered invalid, return `"error"` if it occurs.
+
+INPUTS:
+
+`room_width`, `room_length`, `roll_width`, `roll_cost` as floats.
+
+OUTPUT:
+
+`"error"` or the minimal cost of the room carpeting, rounded to two decimal places.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def cost_of_carpet (length width roll_width roll_cost : Float) : Float := sorry
+
+theorem cost_of_carpet_symmetry 
+  (roll_width : Float) 
+  (roll_cost : Float)
+  (h1 : roll_width > 0.1 ∧ roll_width ≤ 100)
+  (h2 : roll_cost > 0.01 ∧ roll_cost ≤ 100)
+  : let length := roll_width / 2
+    let width := roll_width / 3
+    cost_of_carpet length width roll_width roll_cost = 
+    cost_of_carpet width length roll_width roll_cost := sorry
+
+/-
+info: 200.0
+-/
+-- #guard_msgs in
+-- #eval cost_of_carpet 3 5 4 10
+
+/-
+info: 'error'
+-/
+-- #guard_msgs in
+-- #eval cost_of_carpet 0 0 4 10
+
+/-
+info: 'error'
+-/
+-- #guard_msgs in
+-- #eval cost_of_carpet 5 6 4 10
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

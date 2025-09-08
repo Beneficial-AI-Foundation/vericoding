@@ -1,0 +1,84 @@
+/-
+Ashley wrote a random number generator code.
+Due to some reasons, the code only generates random positive integers which are not evenly divisible by 10. She gives $N$ and $S$ as input to the random number generator. The code generates a random number with number of digits equal to $N$ and sum of digits equal to $S$. The code returns -1 if no number can be generated. Print "-1" in such cases (without quotes). Else print the minimum possible product of digits of the random number generated.
+
+-----Input:-----
+- First line will contain a single integer $T$, the number of testcases. 
+- Each testcase consists of two space separated integers, $N$ and $S$. 
+
+-----Output:-----
+For each testcase, output the answer on a new line.
+
+-----Constraints-----
+- $1 \leq T \leq 10^5$
+- $1 \leq N \leq 18$
+- $1 \leq S \leq 5 * N$
+
+-----Sample Input:-----
+2
+1 5
+
+2 2
+
+-----Sample Output:-----
+5
+
+1
+
+-----EXPLANATION:-----
+In first testcase, the only possible number of length 1 having digit sum 5 is 5. And it's product of digits is 5. 
+In second testcase,  only possible two digit number as a generator output is 11(as 20 is divisible by 10, it is never generated) and product of it's digits is 1.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def solve_random_generator (n s : Nat) : Int :=
+sorry
+
+theorem solve_random_generator_range (n s : Nat) :
+  solve_random_generator n s ≥ -1 := 
+sorry
+
+theorem solve_random_generator_n1 (s : Nat) :
+  solve_random_generator 1 s = s := 
+sorry
+
+theorem solve_random_generator_n2 (s : Nat) :
+  s > 1 → solve_random_generator 2 s = s - 1 :=
+sorry
+
+theorem solve_random_generator_n_gt_2 (n s : Nat) :
+  n > 2 → s > 1 → solve_random_generator n s = 0 :=
+sorry
+
+theorem solve_random_generator_invalid (n s : Nat) :
+  s ≤ 1 → n > 1 → solve_random_generator n s = -1 :=
+sorry
+
+theorem solve_random_generator_edge_cases :
+  solve_random_generator 1 0 = 0 ∧ 
+  solve_random_generator 2 1 = -1 ∧
+  solve_random_generator 10 1 = -1 :=
+sorry
+
+/-
+info: 5
+-/
+-- #guard_msgs in
+-- #eval solve_random_generator 1 5
+
+/-
+info: 1
+-/
+-- #guard_msgs in
+-- #eval solve_random_generator 2 2
+
+/-
+info: 0
+-/
+-- #guard_msgs in
+-- #eval solve_random_generator 3 5
+
+-- Apps difficulty: interview
+-- Assurance level: guarded_and_plausible

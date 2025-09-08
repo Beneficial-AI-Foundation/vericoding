@@ -1,0 +1,69 @@
+/-
+In this kata, we're going to create the function `nato` that takes a `word` and returns a string that spells the word using the [NATO phonetic alphabet](https://en.wikipedia.org/wiki/NATO_phonetic_alphabet).
+
+There should be a space between each word in the returned string, and the first letter of each word should be capitalized.
+
+For those of you that don't want your fingers to bleed, this kata already has a dictionary typed out for you.
+
+``` python
+nato("Banana") # == "Bravo Alpha November Alpha November Alpha"
+```
+``` ruby
+nato("Banana") # == "Bravo Alpha November Alpha November Alpha"
+```
+-/
+
+def isAlpha (s : String) : Bool := 
+  sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def nato (s : String) : String :=
+  sorry
+
+theorem nato_output_format {s : String} 
+  (h : s.all (fun c => c.isAlpha)) :
+  let result := nato s
+  let words := result.split (· = ' ')
+  (∀ w ∈ words, isAlpha w ∨ w.contains '-') ∧ 
+  words.length = s.length :=
+sorry
+
+theorem nato_case_insensitive {s : String}
+  (h : s.all (fun c => 'A' ≤ c ∧ c ≤ 'Z')) :
+  nato s = nato s.toUpper :=
+sorry
+
+theorem nato_valid_codes {s : String}
+  (h : s.all (fun c => 'A' ≤ c ∧ c ≤ 'Z')) :
+  let natoWords := ["Alpha", "Bravo", "Charlie", "Delta", "Echo", 
+                   "Foxtrot", "Golf", "Hotel", "India", "Juliett",
+                   "Kilo", "Lima", "Mike", "November", "Oscar", 
+                   "Papa", "Quebec", "Romeo", "Sierra", "Tango",
+                   "Uniform", "Victor", "Whiskey", "X-ray", 
+                   "Yankee", "Zulu"]
+  let result := nato s
+  ∀ w ∈ result.split (· = ' '), w ∈ natoWords :=
+sorry
+
+/-
+info: 'Bravo Alpha November Alpha November Alpha'
+-/
+-- #guard_msgs in
+-- #eval nato "Banana"
+
+/-
+info: 'Hotel India'
+-/
+-- #guard_msgs in
+-- #eval nato "Hi"
+
+/-
+info: 'Alpha Bravo Charlie'
+-/
+-- #guard_msgs in
+-- #eval nato "ABC"
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

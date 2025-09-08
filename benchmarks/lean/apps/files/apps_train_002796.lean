@@ -1,0 +1,54 @@
+/-
+Complete the function that takes two integers (`a, b`, where `a < b`) and return an array of all integers between the input parameters, **including** them.
+
+For example:
+```
+a = 1
+b = 4
+--> [1, 2, 3, 4]
+```
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def between (a b : Int) : List Int :=
+  sorry
+
+theorem between_length_matches_inputs {a b : Int} (h : a ≤ b) :
+  (between a b).length = b - a + 1 :=
+  sorry
+
+theorem between_sequential {a b : Int} (h : a ≤ b) :
+  ∀ i h1 h2, ((between a b)[i+1]'h1 = (between a b)[i]'h2 + 1) :=
+  sorry
+
+theorem between_bounds {a b : Int} (h : a ≤ b) :
+  (between a b).head? = some a ∧ 
+  (between a b).getLast? = some b :=
+  sorry
+
+theorem between_all_integers {a b : Int} (h : a ≤ b) :
+  ∀ x, x ∈ between a b → x = x :=
+  sorry
+
+/-
+info: [1, 2, 3, 4]
+-/
+-- #guard_msgs in
+-- #eval between 1 4
+
+/-
+info: [-2, -1, 0, 1, 2]
+-/
+-- #guard_msgs in
+-- #eval between -2 2
+
+/-
+info: [-1, 0, 1]
+-/
+-- #guard_msgs in
+-- #eval between -1 1
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

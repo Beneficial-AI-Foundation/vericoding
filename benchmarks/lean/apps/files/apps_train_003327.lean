@@ -1,0 +1,75 @@
+/-
+We want to know the index of the vowels in a given word, for example, there are two vowels in the word super (the second and fourth letters). 
+
+So given a string "super", we should return a list of [2, 4].
+
+        Some examples:
+        Mmmm  => []
+        Super => [2,4]
+        Apple => [1,5]
+        YoMama -> [1,2,4,6]
+
+**NOTES:**
+
+* Vowels in this context refers to: a e i o u y (including upper case)
+* This is indexed from `[1..n]` (not zero indexed!)
+-/
+
+def isVowel (c : Char) : Bool := 
+  let lc := c.toLower
+  lc == 'a' ∨ lc == 'e' ∨ lc == 'i' ∨ lc == 'o' ∨ lc == 'u' ∨ lc == 'y'
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def vowel_indices (s : String) : List Nat :=
+sorry
+
+theorem vowel_indices_in_bounds (s : String) :
+  ∀ i ∈ vowel_indices s, 0 < i ∧ i ≤ s.length :=
+sorry
+
+theorem vowel_indices_ascending (s : String) (i j : Nat) :
+  i < j → 
+  i ∈ vowel_indices s →
+  j ∈ vowel_indices s →
+  i < j :=
+sorry
+
+theorem vowel_indices_points_to_vowels (s : String) (i : Nat) :
+  i ∈ vowel_indices s → 
+  i > 0 →
+  i ≤ s.length →
+  isVowel (s.data.get! (i-1)) :=
+sorry
+
+theorem vowel_indices_finds_all_vowels (s : String) :
+  (vowel_indices s).length = (s.data.filter isVowel).length :=
+sorry
+
+theorem vowel_indices_unique (s : String) (i j : Nat) :
+  i ∈ vowel_indices s →
+  j ∈ vowel_indices s →
+  i = j ∨ i ≠ j :=
+sorry
+
+/-
+info: []
+-/
+-- #guard_msgs in
+-- #eval vowel_indices "mmm"
+
+/-
+info: [2, 4]
+-/
+-- #guard_msgs in
+-- #eval vowel_indices "super"
+
+/-
+info: [1, 2, 4, 6]
+-/
+-- #guard_msgs in
+-- #eval vowel_indices "YoMama"
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded_and_plausible

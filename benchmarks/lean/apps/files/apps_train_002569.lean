@@ -1,0 +1,79 @@
+/-
+# Task
+ You are given two strings s and t of the same length, consisting of uppercase English letters. Your task is to find the minimum number of "replacement operations" needed to get some `anagram` of the string t from the string s. A replacement operation is performed by picking exactly one character from the string s and replacing it by some other character.
+
+ About `anagram`: А string x is an anagram of a string y if one can get y by rearranging the letters of x. For example, the strings "MITE" and "TIME" are anagrams, so are "BABA" and "AABB", but "ABBAC" and "CAABA" are not.
+
+# Example
+
+ For s = "AABAA" and t = "BBAAA", the output should be 1;
+
+ For s = "OVGHK" and t = "RPGUC", the output should be 4.
+
+# Input/Output
+
+ - `[input]` string `s`
+
+    Constraints: `5 ≤ s.length ≤ 35`.
+
+ - `[input]` string `t`
+
+    Constraints: `t.length = s.length`.
+
+ - `[output]` an integer
+
+    The minimum number of replacement operations needed to get an anagram of the string t from the string s.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def create_anagram (s t : String) : Nat :=
+  sorry
+
+theorem anagram_non_negative (s t : String) :
+  create_anagram s t ≥ 0 :=
+  sorry
+
+theorem anagram_self (s : String) :
+  create_anagram s s = 0 :=
+  sorry
+
+theorem anagram_empty :
+  create_anagram "" "" = 0 :=
+  sorry
+
+theorem anagram_length_bound (s t : String) :
+  create_anagram s t ≤ String.length s :=
+  sorry
+
+theorem anagram_repeated (s : String) :
+  create_anagram s (s ++ s) = 0 ∧
+  create_anagram (s ++ s) s = String.length s :=
+  sorry
+
+theorem anagram_permutation (s : String) :
+  -- simplified condition since we can't sort without Mathlib
+  create_anagram s s = 0 :=
+  sorry
+
+/-
+info: 1
+-/
+-- #guard_msgs in
+-- #eval create_anagram "AABAA" "BBAAA"
+
+/-
+info: 4
+-/
+-- #guard_msgs in
+-- #eval create_anagram "OVGHK" "RPGUC"
+
+/-
+info: 1
+-/
+-- #guard_msgs in
+-- #eval create_anagram "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB" "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAC"
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded_and_plausible

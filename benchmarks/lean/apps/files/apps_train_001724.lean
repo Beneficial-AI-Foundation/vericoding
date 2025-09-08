@@ -1,0 +1,79 @@
+/-
+This is a classic needing (almost) no further introduction.
+
+Given a N x N chess board, place N queens on it so none can attack another: I.e. no other queens can be found horizontally, vertically or diagonally to the current.
+
+On the board below, no further queens can be positioned.
+
++-+-+
+|Q| |
++-+-+
+| | |
++-+-+
+
+In this example a queen can be located in position a or position b - but not in both, thereby making (0,0) an invalid first position:
++-+-+-+
+|Q| | |
++-+-+-+
+| | |a|
++-+-+-+
+| |b| |
++-+-+-+
+
+Return value must by an array of N x-positions. That is, the y position is given by the index. For following board, expected answer is `[1, 3, 0, 2]`:
+
++-+-+-+-+
+| |X| | |    x=1, y=0
++-+-+-+-+
+| | | |X|    x=3, y=1
++-+-+-+-+
+|X| | | |    x=0, y=2
++-+-+-+-+
+| | |X| |    x=2, y=3
++-+-+-+-+
+
+Only one solution per N is expected. If no solution can be found, return an empty array. That is, for a 1 x 1 board, the output is [0].
+
+Input is a value positive number (N>0) and can be quite large, so try to make your solution efficient. See sample tests to check how large `N` can be.
+
+Have fun :)
+
+----
+Next steps:
+ - [N queens puzzle (with one mandatory queen position)](https://www.codewars.com/kata/561bed6a31daa8df7400000e)
+ - [N queens problem (with one mandatory queen position) - challenge version](https://www.codewars.com/kata/5985ea20695be6079e000003)
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def nQueen (n : Nat) : List Nat := sorry
+
+def isValidSolution (n : Nat) (queens : List Nat) : Bool := sorry
+
+theorem solution_size (n : Nat) (h : n ≥ 4) :
+  (nQueen n).length = n := sorry
+
+theorem queens_in_bounds (n : Nat) (h : n ≥ 4) :
+  ∀ x ∈ nQueen n, 0 ≤ x ∧ x < n := sorry
+
+/-
+info: [0]
+-/
+-- #guard_msgs in
+-- #eval nQueen 1
+
+/-
+info: [1, 3, 0, 2]
+-/
+-- #guard_msgs in
+-- #eval nQueen 4
+
+/-
+info: []
+-/
+-- #guard_msgs in
+-- #eval nQueen 2
+
+-- Apps difficulty: interview
+-- Assurance level: guarded_and_plausible

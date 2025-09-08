@@ -1,0 +1,92 @@
+/-
+Iroha has a sequence of N strings S_1, S_2, ..., S_N. The length of each string is L.
+She will concatenate all of the strings in some order, to produce a long string.
+Among all strings that she can produce in this way, find the lexicographically smallest one.
+Here, a string s=s_1s_2s_3...s_n is lexicographically smaller than another string t=t_1t_2t_3...t_m if and only if one of the following holds:
+
+ - There exists an index i(1≦i≦min(n,m)), such that s_j = t_j for all indices j(1≦j<i), and s_i<t_i.
+ - s_i = t_i for all integers i(1≦i≦min(n,m)), and n<m.
+
+-----Constraints-----
+ - 1 ≦ N, L ≦ 100
+ - For each i, the length of S_i equals L.
+ - For each i, S_i consists of lowercase letters.
+
+-----Input-----
+The input is given from Standard Input in the following format:
+N L
+S_1
+S_2
+:
+S_N
+
+-----Output-----
+Print the lexicographically smallest string that Iroha can produce.
+
+-----Sample Input-----
+3 3
+dxx
+axx
+cxx
+
+-----Sample Output-----
+axxcxxdxx
+
+The following order should be used: axx, cxx, dxx.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def smallest_lexicographic_string (n l : Nat) (strings : List String) : String := sorry
+
+def strRepeat (s : String) (n : Nat) : String := 
+  match n with
+  | 0 => ""
+  | n + 1 => s ++ strRepeat s n
+
+theorem smallest_lexicographic_string_properties 
+  {n l : Nat} {strings : List String}
+  (hn : 1 ≤ n ∧ n ≤ 5)
+  (hl : 1 ≤ l ∧ l ≤ 5)
+  (hstrings : strings.length = n)
+  (hstringsLen : ∀ s ∈ strings, s.length = l)
+  : let result := smallest_lexicographic_string n l strings;
+    -- Result contains all input strings
+    (∀ s ∈ strings, s ∈ result.splitOn "")
+    -- Length is n * l
+    ∧ result.length = n * l
+    -- Result parts are sorted
+    ∧ List.length (result.splitOn "") = n := sorry
+
+theorem empty_and_single_char_strings
+  {n l : Nat}
+  (hn : 1 ≤ n ∧ n ≤ 5)
+  (hl : 1 ≤ l ∧ l ≤ 5)
+  : smallest_lexicographic_string n l (List.replicate n (strRepeat "a" l)) = strRepeat "a" (n * l) := sorry
+
+theorem single_string
+  {n : Nat}
+  (hn : 1 ≤ n ∧ n ≤ 10)
+  : smallest_lexicographic_string n 1 (List.replicate n "z") = strRepeat "z" n := sorry
+
+/-
+info: 'axxcxxdxx'
+-/
+-- #guard_msgs in
+-- #eval smallest_lexicographic_string 3 3 ["dxx", "axx", "cxx"]
+
+/-
+info: 'aaab'
+-/
+-- #guard_msgs in
+-- #eval smallest_lexicographic_string 2 2 ["ab", "aa"]
+
+/-
+info: 'abcd'
+-/
+-- #guard_msgs in
+-- #eval smallest_lexicographic_string 4 1 ["d", "b", "c", "a"]
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

@@ -1,0 +1,78 @@
+/-
+----- Statement -----
+
+You need to find a string which has exactly K positions in it such that the character at that position comes alphabetically later than the character immediately after it. If there are many such strings, print the one which has the shortest length. If there is still a tie, print the string which comes the lexicographically earliest (would occur earlier in a dictionary).
+
+-----Input-----
+The first line contains the number of test cases T. Each test case contains an integer K (≤ 100).
+
+-----Output-----
+Output T lines, one for each test case, containing the required string.  Use only lower-case letters a-z.
+
+-----Sample Input -----
+2
+1
+2
+
+-----Sample Output-----
+ba
+cba
+-/
+
+def isLowercaseLetter (c : Char) : Bool := 
+  let n := c.toNat
+  97 ≤ n && n ≤ 122
+
+def countDescendingPairs (s : List Char) : Nat :=
+  match s with
+  | [] => 0
+  | [_] => 0 
+  | x::y::xs => (if x > y then 1 else 0) + countDescendingPairs (y::xs)
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def findKDescendingPairs (k : Nat) : List Char :=
+  sorry
+
+theorem count_is_k (k : Nat) (k_pos : k > 0) :
+  let result := findKDescendingPairs k
+  countDescendingPairs result = k :=
+sorry
+
+theorem all_lowercase (k : Nat) (k_pos : k > 0) :
+  let result := findKDescendingPairs k
+  ∀ c ∈ result, isLowercaseLetter c :=
+sorry
+
+theorem minimal_length (k : Nat) (k_pos : k > 0) :
+  let result := findKDescendingPairs k
+  let expected_len := k + 1 + if k > 25 then ((k - 26) / 25) + 1 else 0
+  result.length = expected_len :=
+sorry
+
+theorem valid_chars (k : Nat) (k_pos : k > 0) :
+  let result := findKDescendingPairs k
+  ∀ c ∈ result, 97 ≤ c.toNat ∧ c.toNat ≤ 122 := 
+sorry
+
+/-
+info: 'ba'
+-/
+-- #guard_msgs in
+-- #eval find_k_descending_pairs 1
+
+/-
+info: 'cba'
+-/
+-- #guard_msgs in
+-- #eval find_k_descending_pairs 2
+
+/-
+info: 'dcba'
+-/
+-- #guard_msgs in
+-- #eval find_k_descending_pairs 3
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

@@ -1,0 +1,90 @@
+/-
+# Task
+
+Your task is to sort the characters in a string according to the following rules:
+```
+- Rule1: English alphabets are arranged from A to Z, case insensitive.
+  ie. "Type" --> "epTy"
+- Rule2: If the uppercase and lowercase of an English alphabet exist
+  at the same time, they are arranged in the order of oringal input.
+  ie. "BabA" --> "aABb"
+- Rule3: non English alphabet remain in their original position.
+  ie. "By?e" --> "Be?y"
+```
+
+# Input/Output
+
+`[input]` string `s`
+
+A non empty string contains any characters(English alphabets or non English alphabets).
+
+`[output]` a string
+
+A sorted string according to the rules above.
+
+# Example
+
+For `s = "cba"`, the output should be `"abc"`.
+
+For `s = "Cba"`, the output should be `"abC"`.
+
+For `s = "cCBbAa"`, the output should be `"AaBbcC"`.
+
+For `s = "c b a"`, the output should be `"a b c"`.
+
+For `s = "-c--b--a-"`, the output should be `"-a--b--c-"`.
+
+For `s = "Codewars"`, the output should be `"aCdeorsw"`.
+-/
+
+def sortString (s : String) : String := sorry
+
+def isAlpha (c : Char) : Bool := sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def isUpper (c : Char) : Bool := sorry
+def isLower (c : Char) : Bool := sorry
+
+theorem sort_string_preserves_length (s : String) :
+  (sortString s).length = s.length := sorry
+
+theorem sort_string_preserves_non_alpha (s : String) (i : String.Pos) :
+  ¬(isAlpha (s.get i)) →
+  (sortString s).get i = s.get i := sorry
+
+theorem sort_string_sorts_alpha (s : String) :
+  let result := sortString s
+  let alphaChars := result.data.filter isAlpha
+  ∀ i j, i < j → j < alphaChars.length →
+    (alphaChars.get ⟨i, by sorry⟩).toLower ≤ (alphaChars.get ⟨j, by sorry⟩).toLower := sorry
+
+theorem sort_string_preserves_case_counts (s : String) :
+  let result := sortString s
+  (result.data.filter isUpper).length = (s.data.filter isUpper).length ∧
+  (result.data.filter isLower).length = (s.data.filter isLower).length := sorry
+
+theorem sort_string_idempotent (s : String) :
+  sortString (sortString s) = sortString s := sorry
+
+/-
+info: 'abc'
+-/
+-- #guard_msgs in
+-- #eval sort_string "cba"
+
+/-
+info: 'abC'
+-/
+-- #guard_msgs in
+-- #eval sort_string "Cba"
+
+/-
+info: 'a b c'
+-/
+-- #guard_msgs in
+-- #eval sort_string "c b a"
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

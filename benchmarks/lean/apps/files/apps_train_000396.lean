@@ -1,0 +1,91 @@
+/-
+Given two words (beginWord and endWord), and a dictionary's word list, find the length of shortest transformation sequence from beginWord to endWord, such that:
+
+       Only one letter can be changed at a time.
+       Each transformed word must exist in the word list. Note that beginWord is not a transformed word.
+
+Note:
+
+       Return 0 if there is no such transformation sequence.
+       All words have the same length.
+       All words contain only lowercase alphabetic characters.
+       You may assume no duplicates in the word list.
+       You may assume beginWord and endWord are non-empty and are not the same.
+
+Example 1:
+
+Input:
+beginWord = "hit",
+endWord = "cog",
+wordList = ["hot","dot","dog","lot","log","cog"]
+
+Output: 5
+
+Explanation: As one shortest transformation is "hit" -> "hot" -> "dot" -> "dog" -> "cog",
+return its length 5.
+
+Example 2:
+
+Input:
+beginWord = "hit"
+endWord = "cog"
+wordList = ["hot","dot","dog","lot","log"]
+
+Output: 0
+
+Explanation: The endWord "cog" is not in wordList, therefore no possible transformation.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def ladder_length (begin_word end_word : String) (word_list : List String) : Nat := sorry
+
+-- Result should always be non-negative
+
+theorem ladder_length_nonnegative 
+  (begin_word end_word : String) (word_list : List String) :
+  ladder_length begin_word end_word word_list ≥ 0 := sorry
+
+-- If end_word not in word_list, result should be 0 
+
+theorem ladder_length_zero_when_not_in_list
+  (begin_word end_word : String) (word_list : List String) :
+  ¬(end_word ∈ word_list) → ladder_length begin_word end_word word_list = 0 := sorry
+
+-- If words differ by one letter and end_word in word_list, result should be 2
+
+theorem ladder_length_two_when_one_diff
+  (begin_word end_word : String) (word_list : List String) :
+  end_word ∈ word_list →
+  (begin_word.length = end_word.length) →
+  ((List.zip begin_word.data end_word.data).filter (fun p => p.1 ≠ p.2)).length = 1 →
+  ladder_length begin_word end_word word_list = 2 := sorry
+
+-- If words have different lengths, result should be 0
+
+theorem ladder_length_zero_when_different_lengths
+  (begin_word end_word : String) (word_list : List String) :
+  begin_word.length ≠ end_word.length →
+  ladder_length begin_word end_word word_list = 0 := sorry
+
+/-
+info: 5
+-/
+-- #guard_msgs in
+-- #eval ladder_length "hit" "cog" ["hot", "dot", "dog", "lot", "log", "cog"]
+
+/-
+info: 0
+-/
+-- #guard_msgs in
+-- #eval ladder_length "hit" "cog" ["hot", "dot", "dog", "lot", "log"]
+
+/-
+info: 2
+-/
+-- #guard_msgs in
+-- #eval ladder_length "dog" "cog" ["cog"]
+
+-- Apps difficulty: interview
+-- Assurance level: guarded

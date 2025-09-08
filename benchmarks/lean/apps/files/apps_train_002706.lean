@@ -1,0 +1,75 @@
+/-
+Write a program that prints a chessboard with N rows and M columns with the following rules:
+The top left cell must be an asterisk (*)
+Any cell touching (left, right, up or down) a cell with an asterisk must be a dot (.)
+Any cell touching (left, right, up or down) a cell with a dot must be an asterisk.
+
+A chessboard of 8 rows and 8 columns printed using these rules would be:
+```
+*.*.*.*.
+.*.*.*.*
+*.*.*.*.
+.*.*.*.*
+*.*.*.*.
+.*.*.*.*
+*.*.*.*.
+.*.*.*.*
+```
+Input
+
+A single line with two integers N and M separated by space. The number N will represent the number of rows and M the number of columns.
+
+Output
+
+Return N lines each containing M characters with the chessboard pattern.
+Empty string if N, M or both are 0.
+
+From: 2016 AIPO National Finals
+http://aipo.computing.dcu.ie/2016-aipo-national-finals-problems
+-/
+
+def chessboard (n: Nat) (m: Nat) : String := sorry
+
+def String.lines (s: String) : List String := sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def String.characterAt (s: String) (i: Nat) : Char := sorry
+
+theorem chessboard_empty_for_zero_dims {n m: Nat} :
+  (n = 0 ∨ m = 0) → chessboard n m = "" := sorry
+
+theorem chessboard_dimensions {n m: Nat} (h1 : n ≠ 0) (h2 : m ≠ 0) :
+  let lines := (chessboard n m).lines
+  lines.length = n ∧ 
+  ∀ l ∈ lines, l.length = m := sorry
+
+theorem chessboard_alternating_pattern {n m : Nat} (h1 : n > 0) (h2 : m > 0) :
+  let lines := (chessboard n m).lines
+  ∀ i j, i < n → j < m →
+    let line := lines[i]'(by sorry)
+    let char := line.characterAt j
+    ((i + j) % 2 = 0 → char = '*') ∧
+    ((i + j) % 2 ≠ 0 → char = '.') := sorry
+
+/-
+info: ''
+-/
+-- #guard_msgs in
+-- #eval chessboard 0 0
+
+/-
+info: '*.\n.*'
+-/
+-- #guard_msgs in
+-- #eval chessboard 2 2
+
+/-
+info: expected
+-/
+-- #guard_msgs in
+-- #eval chessboard 8 8
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

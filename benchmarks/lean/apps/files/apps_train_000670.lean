@@ -1,0 +1,65 @@
+/-
+In africa jungle , there were zebra's who liked to spit.
+There owner watched them for whole day and noted in his sheet where each zebra spitted.
+Now he's in a confusion and wants to know if in the jungle there are two zebra's which spitted at each other.
+Help him solve this task.
+If the zebra is present in position a spits b metres right , he can hit only zebra in position a+b , if such a zebra exists.
+
+-----Input:-----
+- The first line contains integer t(1<=t<100)- amount of zebras in jungle.
+- Each of following t lines contains two integers a(i) and b(i)(-10^4<=x(i)<=10^4,1<|d(i)|<=2.10^4) - records in owner sheet.
+- a(i) is the position of i-th zebra and b(i) is distance at which the i-th camel spitted.
+Positive values of d(i) correspond to spits right, negative values correspond to spit left.No two zebras may stand in the same position.
+
+-----Output:-----
+If there are two zebras , which spitted at each other , output YES, otherwise , output NO.
+
+-----Sample Input:-----
+2
+0 1
+1 -1
+
+-----Sample Output:-----
+YES
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def canZebrasSpatAtEachOther (positions : List (Int × Int)) : Bool := sorry
+
+theorem canZebrasSpatAtEachOther_returns_bool 
+  (positions : List (Int × Int))
+  (h1 : positions ≠ []) : 
+  canZebrasSpatAtEachOther positions = true ∨ 
+  canZebrasSpatAtEachOther positions = false := sorry
+
+theorem reciprocal_spitting
+  {positions : List (Int × Int)}
+  {pos1 pos2 dist1 dist2 : Int}
+  (h1 : positions = [(pos1, dist1), (pos2, dist2)])
+  (h2 : pos1 ≠ pos2)
+  (h3 : pos1 + dist1 = pos2)
+  (h4 : pos2 + dist2 = pos1) :
+  canZebrasSpatAtEachOther positions = true := sorry
+
+/-
+info: True
+-/
+-- #guard_msgs in
+-- #eval can_zebras_spit_at_each_other [[0, 1], [1, -1]]
+
+/-
+info: False
+-/
+-- #guard_msgs in
+-- #eval can_zebras_spit_at_each_other [[0, 1], [2, -1]]
+
+/-
+info: True
+-/
+-- #guard_msgs in
+-- #eval can_zebras_spit_at_each_other [[0, 2], [1, 1], [2, -2]]
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

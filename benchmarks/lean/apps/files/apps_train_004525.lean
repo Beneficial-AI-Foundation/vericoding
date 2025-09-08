@@ -1,0 +1,74 @@
+/-
+## Debug celsius converter
+
+Your friend is traveling abroad to the United States so he wrote a program to convert fahrenheit to celsius. Unfortunately his code has some bugs.
+
+Find the errors in the code to get the celsius converter working properly.
+
+To convert fahrenheit to celsius:
+```
+celsius = (fahrenheit - 32) * (5/9)
+```
+```if-not:ruby,typescript
+Remember that typically temperatures in the current weather conditions are given in whole numbers. It is possible for temperature sensors to report temperatures with a higher accuracy such as to the nearest tenth. Instrument error though makes this sort of accuracy unreliable for many types of temperature measuring sensors. 
+```
+
+```if:ruby
+Please round to 5dp (use `.round(5)`)
+```
+
+```if:typescript
+Please round to 5dp (use `Math.round()`)
+```
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def weather_info (temp : Float) : String := sorry
+
+def celsius_conversion (f : Float) : Float := (f - 32) * (5/9)
+
+theorem weather_info_returns_string (temp : Float) :
+  ∃ s, weather_info temp = s := sorry
+
+theorem weather_info_contains_celsius (temp : Float) :
+  ∃ s₁ s₂ : String, weather_info temp = s₁ ++ toString (celsius_conversion temp) ++ s₂ := sorry
+
+theorem weather_info_contains_patterns (temp : Float) :
+  ∃ s₁ s₂ s₃ : String, 
+    weather_info temp = s₁ ++ "is" ++ s₂ ∧
+    weather_info temp = s₃ ++ "temperature" := sorry
+
+theorem weather_info_freezing_threshold (temp : Float) :
+  celsius_conversion temp ≤ 0 → 
+    ∃ s₁ s₂ : String, weather_info temp = s₁ ++ "freezing temperature" ++ s₂ ∧
+  celsius_conversion temp > 0 → 
+    ∃ s₁ s₂ : String, weather_info temp = s₁ ++ "above freezing temperature" ++ s₂ := sorry
+
+theorem weather_info_above_freezing {temp : Float} (h : temp > 32) :
+  ∃ s₁ s₂ : String, weather_info temp = s₁ ++ "above freezing temperature" ++ s₂ := sorry
+
+theorem weather_info_freezing {temp : Float} (h : temp < 32) :
+  ∃ s₁ s₂ : String, weather_info temp = s₁ ++ "freezing temperature" ++ s₂ := sorry
+
+/-
+info: '10.0 is above freezing temperature'
+-/
+-- #guard_msgs in
+-- #eval weather_info 50
+
+/-
+info: '-5.0 is freezing temperature'
+-/
+-- #guard_msgs in
+-- #eval weather_info 23
+
+/-
+info: '0.0 is freezing temperature'
+-/
+-- #guard_msgs in
+-- #eval weather_info 32
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

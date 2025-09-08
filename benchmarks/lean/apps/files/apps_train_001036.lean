@@ -1,0 +1,51 @@
+/-
+Shivam is the youngest programmer in the world, he is just 12 years old. Shivam is learning programming and today he is writing his first program. 
+
+Program is very simple, Given two integers A and B, write a program to add these two numbers.
+
+-----Input-----
+
+The first line contains an integer T, the total number of test cases. Then follow T lines, each line contains two Integers A and B. 
+
+-----Output-----
+For each test case, add A and B and display it in a new line.
+
+-----Constraints-----
+- 1 ≤ T ≤ 1000
+- 0 ≤ A,B ≤ 10000
+
+-----Example-----
+Input
+3 
+1 2
+100 200
+10 40
+
+Output
+3
+300
+50
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def sum_numbers (input : List String) : List String := sorry
+
+theorem sum_numbers_length_matches_input {input : List String} :
+  input.length = (sum_numbers input).length := sorry
+
+theorem sum_numbers_correct_sum {input : List String} {i : Nat} (h : i < input.length) :
+  let nums := (input.get ⟨i,h⟩).split (· = ' ')
+  let a := nums.get ⟨0, sorry⟩ |>.toInt!
+  let b := nums.get ⟨1, sorry⟩ |>.toInt!
+  (sum_numbers input).get ⟨i, by rw [←sum_numbers_length_matches_input]; exact h⟩ = toString (a + b) := sorry
+
+theorem sum_numbers_result_strings {input : List String} {i : Nat} (h : i < input.length) :
+  (sum_numbers input).get ⟨i, by rw [←sum_numbers_length_matches_input]; exact h⟩ matches ".*" := sorry
+
+theorem sum_numbers_zeros {input : List String} (h : ∀ (i : Nat) (hi : i < input.length), input.get ⟨i,hi⟩ = "0 0") :
+  ∀ (i : Nat) (hi : i < input.length), (sum_numbers input).get ⟨i, by rw [←sum_numbers_length_matches_input]; exact hi⟩ = "0" := sorry
+
+-- Apps difficulty: interview
+-- Assurance level: guarded

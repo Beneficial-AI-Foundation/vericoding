@@ -1,0 +1,64 @@
+/-
+The chef is trying to decode some pattern problems, Chef wants your help to code it. Chef has one number K to form a new pattern. Help the chef to code this pattern problem.
+
+-----Input:-----
+- First-line will contain $T$, the number of test cases. Then the test cases follow. 
+- Each test case contains a single line of input, one integer $K$. 
+
+-----Output:-----
+For each test case, output as the pattern.
+
+-----Constraints-----
+- $1 \leq T \leq 100$
+- $1 \leq K \leq 100$
+
+-----Sample Input:-----
+4
+1
+2
+3
+4
+
+-----Sample Output:-----
+0
+01
+10
+010
+101
+010
+0101
+1010
+0101
+1010
+
+-----EXPLANATION:-----
+No need, else pattern can be decode easily.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def generate_pattern (k : Nat) : Array (Array Char) := sorry
+
+theorem pattern_size_correct (k : Nat) (h : k > 0) :
+  let pattern := generate_pattern k
+  (pattern.size = k) ∧ 
+  (∀ i : Fin k, pattern[i.val]!.size = k) := sorry
+
+theorem pattern_chars_valid (k : Nat) (h : k > 0) :
+  let pattern := generate_pattern k
+  ∀ i : Fin k, ∀ j : Fin k,
+  pattern[i.val]![j.val]! = '0' ∨ pattern[i.val]![j.val]! = '1' := sorry
+
+theorem pattern_alternates_correctly (k : Nat) (h : k > 0) :
+  let pattern := generate_pattern k
+  ∀ i : Fin k, ∀ j : Fin k,
+  pattern[i.val]![j.val]! = (if (i.val + j.val) % 2 = 0 then '0' else '1') := sorry
+
+theorem adjacent_elements_differ (k : Nat) (h : k > 0) :
+  let pattern := generate_pattern k
+  (∀ i : Fin k, ∀ j : Fin (k-1), pattern[i.val]![j.val]! ≠ pattern[i.val]![(j.val+1)]!) ∧
+  (∀ i : Fin (k-1), ∀ j : Fin k, pattern[i.val]![j.val]! ≠ pattern[i.val+1]![j.val]!) := sorry
+
+-- Apps difficulty: interview
+-- Assurance level: guarded

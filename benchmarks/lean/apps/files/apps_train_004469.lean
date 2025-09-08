@@ -1,0 +1,45 @@
+/-
+Write a method that takes one argument as name and then greets that name, capitalized and ends with an exclamation point.
+
+Example:
+
+```
+"riley" --> "Hello Riley!"
+"JACK"  --> "Hello Jack!"
+```
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def greet (name : String) : String := sorry
+
+theorem greet_starts_with_hello (name : String) (h : name.length > 0) :
+  (greet name).startsWith "Hello " = true := sorry
+
+theorem greet_ends_with_exclamation (name : String) (h : name.length > 0) :
+  (greet name).endsWith "!" = true := sorry
+
+theorem greet_contains_capitalized_name (name : String) (h : name.length > 0) :
+  ((greet name).drop "Hello ".length).dropRight 1 = name.capitalize := sorry
+
+/-
+info: 'Hello Riley!'
+-/
+-- #guard_msgs in
+-- #eval greet "riley"
+
+/-
+info: 'Hello Molly!'
+-/
+-- #guard_msgs in
+-- #eval greet "molly"
+
+/-
+info: 'Hello Billy!'
+-/
+-- #guard_msgs in
+-- #eval greet "BILLY"
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

@@ -1,0 +1,62 @@
+/-
+Today was a sad day. Having bought a new beard trimmer, I set it to the max setting and shaved away at my joyous beard. Stupidly, I hadnt checked just how long the max setting was, and now I look like Ive just started growing it!
+
+Your task, given a beard represented as an arrayof arrays, is to trim the beard as follows:
+
+['|', 'J', '|', '|'],
+['|', '|', '|', 'J'],
+['...', '...', '...', '...'];
+
+To trim the beard use the following rules:
+
+trim any curled hair --> replace 'J' with '|'
+trim any hair from the chin (last array) --> replace '|' or 'J' with '...'
+
+All sub arrays will be same length. Return the corrected array of arrays
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def trim (beard : List (List String)) : List (List String) := sorry
+
+theorem trim_dimensions {beard : List (List String)} (h1 : beard.length ≥ 2) 
+  (h2 : ∀ row ∈ beard, row.length ≥ 1) :
+  let result := trim beard
+  (result.length = beard.length) ∧ 
+  (∀ row ∈ result, row.length = (beard.head!).length) := sorry
+
+theorem trim_interior_rows {beard : List (List String)} (h1 : beard.length ≥ 2) 
+  (h2 : ∀ row ∈ beard, row.length ≥ 1) :
+  let result := trim beard
+  ∀ i < result.length - 1, ∀ c ∈ result[i]!, c = "|" := sorry
+
+theorem trim_last_row {beard : List (List String)} (h1 : beard.length ≥ 2)
+  (h2 : ∀ row ∈ beard, row.length ≥ 1) :
+  let result := trim beard
+  ∀ c ∈ result.getLast!, c = "..." := sorry
+
+theorem trim_idempotent {beard : List (List String)} (h1 : beard.length ≥ 2)
+  (h2 : ∀ row ∈ beard, ∀ c ∈ row, c = "|") :
+  trim (trim beard) = trim beard := sorry
+
+/-
+info: expected1
+-/
+-- #guard_msgs in
+-- #eval trim [["J", "|"], ["J", "|"], ["...", "|"]]
+
+/-
+info: expected2
+-/
+-- #guard_msgs in
+-- #eval trim [["J", "|", "J"], ["J", "|", "|"], ["...", "|", "J"]]
+
+/-
+info: expected3
+-/
+-- #guard_msgs in
+-- #eval trim [["J", "|", "J", "J"], ["J", "|", "|", "J"], ["...", "|", "J", "|"]]
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

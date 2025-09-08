@@ -1,0 +1,53 @@
+/-
+# Task
+ Given a string `str`, reverse it omitting all non-alphabetic characters.
+
+# Example
+
+ For `str = "krishan"`, the output should be `"nahsirk"`.
+
+ For `str = "ultr53o?n"`, the output should be `"nortlu"`.
+
+# Input/Output
+
+ - `[input]` string `str`
+
+  A string consists of lowercase latin letters, digits and symbols.
+
+ - `[output]` a string
+-/
+
+def isAlpha (c : Char) : Bool :=
+  sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def reverse_letter (s : String) : String :=
+  sorry
+
+theorem reverse_letter_only_letters (s : String) :
+  ∀ (c : Char), c ∈ (reverse_letter s).data → isAlpha c := by
+  sorry
+
+theorem reverse_letter_length (s : String) :
+  (reverse_letter s).length = (s.toList.filter isAlpha).length := by
+  sorry
+
+theorem reverse_letter_idempotent (s : String) :
+  reverse_letter (reverse_letter s) = String.mk (s.toList.filter isAlpha) := by
+  sorry
+
+theorem reverse_letter_preserves_case (s : String) :
+  ∃ (perm : List Char → List Char),
+    (reverse_letter s).data.map Char.toLower = 
+    (String.mk (s.toList.filter isAlpha)).data.map Char.toLower := by
+  sorry
+
+theorem reverse_letter_empty_no_letters (s : String) :
+  (∀ c ∈ s.data, ¬isAlpha c) →
+  reverse_letter s = "" := by
+  sorry
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded
