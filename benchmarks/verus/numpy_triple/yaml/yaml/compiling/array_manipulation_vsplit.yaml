@@ -1,9 +1,11 @@
 vc-description: |-
+  /*
   Split a 2D vector into multiple sub-vectors vertically (row-wise).
   This is a simplified version that handles splitting into equal parts.
   
   Specification: vsplit divides a matrix into k equal parts row-wise, 
   where each part contains consecutive rows from the original matrix
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

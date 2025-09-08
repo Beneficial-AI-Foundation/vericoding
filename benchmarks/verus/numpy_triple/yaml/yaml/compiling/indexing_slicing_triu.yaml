@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Upper triangle of a matrix. Returns a copy of the matrix with elements below the k-th diagonal zeroed.
   
   Given a matrix m and an integer k, this function returns a new matrix where:
@@ -9,7 +10,7 @@ vc-description: |-
   - k = 0: main diagonal (default)
   - k > 0: diagonal above the main diagonal
   - k < 0: diagonal below the main diagonal
-
+  
   Specification: triu returns the upper triangle of a matrix with elements below the k-th diagonal set to zero.
   
   Mathematical properties:
@@ -24,6 +25,7 @@ vc-description: |-
   
   This captures the essential behavior of numpy.triu which extracts the upper triangular part
   of a matrix relative to the k-th diagonal.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

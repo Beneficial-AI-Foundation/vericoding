@@ -1,14 +1,15 @@
 vc-description: |-
+  /*
   Compute the Heaviside step function.
-
+  
   The Heaviside step function is defined as:
     0 if x1 < 0
     x2 if x1 == 0
     1 if x1 > 0
-
+  
   Compute the Heaviside step function element-wise.
   Returns 0 if x < 0, x2 if x == 0, and 1 if x > 0.
-
+  
   Specification: The Heaviside function returns values based on the sign of x1 elements.
   For each element:
   - If x1[i] < 0, result[i] = 0
@@ -18,7 +19,7 @@ vc-description: |-
   This specification captures the complete behavior of the heaviside step function
   including the crucial property that it's completely determined by the sign of x1
   and uses x2 as the value at the discontinuity point.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

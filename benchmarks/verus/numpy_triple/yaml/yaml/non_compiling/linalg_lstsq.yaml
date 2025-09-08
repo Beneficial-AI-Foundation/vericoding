@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Return the least-squares solution to a linear matrix equation.
   
   Solves the equation a @ x = b by minimizing ||b - ax||^2.
@@ -15,7 +16,7 @@ vc-description: |-
   - s: Singular values of a
   
   Specification: lstsq returns the solution that minimizes ||b - a*x||^2
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

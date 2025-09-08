@@ -1,6 +1,9 @@
 ```verus
 vc-description: |-
+  /*
   Set printing options for NumPy arrays. Sets the global printing options that control how floating point numbers, arrays and other NumPy objects are displayed. This function modifies the global state of NumPy's print formatting system. All parameters are optional and only modify the corresponding option if provided. Options not specified retain their current values.
+  */
+
 vc-preamble: |-
   use vstd::prelude::*;
 

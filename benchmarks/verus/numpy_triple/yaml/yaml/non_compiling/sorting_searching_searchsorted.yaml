@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.searchsorted: Find indices where elements should be inserted to maintain order.
   
   Given a sorted array `a` and values `v`, returns indices such that inserting 
@@ -16,7 +17,7 @@ vc-description: |-
   - All elements at or after idx are greater than or equal to v[i] (sorted property)
   - The index is valid for insertion (between 0 and n inclusive)
   - Inserting v[i] at idx preserves the sorted order of the array
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

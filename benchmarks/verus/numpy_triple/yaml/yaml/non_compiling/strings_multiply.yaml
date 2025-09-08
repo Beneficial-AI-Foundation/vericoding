@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Return (a * i), that is string multiple concatenation, element-wise.
   Values in i of less than 0 are treated as 0 (which yields an empty string).
   
@@ -6,7 +7,7 @@ vc-description: |-
   Each output string is the corresponding input string repeated the specified number of times.
   Negative repetition counts produce empty strings. This comprehensive specification
   captures the core mathematical properties of string multiplication in NumPy.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

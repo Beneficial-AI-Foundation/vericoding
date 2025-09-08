@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Split a vector into k sub-vectors.
   
   When splitting a vector of length n into k sections:
@@ -7,7 +8,7 @@ vc-description: |-
   
   This ensures all elements are distributed as evenly as possible,
   with larger sub-vectors appearing first.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

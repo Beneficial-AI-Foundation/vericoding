@@ -1,21 +1,22 @@
 vc-description: |-
+  /*
   numpy.polynomial.hermite.hermmul: Multiply one Hermite series by another.
-
+  
   Returns the product of two Hermite series c1 * c2. The arguments
   are sequences of coefficients, from lowest order term to highest,
   e.g., [1,2,3] represents the series P_0 + 2*P_1 + 3*P_2 where P_i
   is the i-th Hermite polynomial.
-
+  
   The product of two Hermite series requires reprojection onto the
   Hermite basis, which uses the recurrence relation for Hermite
   polynomials.
-
+  
   For non-empty inputs of length m and n, the result has length m + n - 1.
   For empty inputs, returns a single zero coefficient.
-
+  
   Specification: hermmul returns the coefficients of the product of two
   Hermite series.
-
+  
   The key mathematical properties:
   1. Empty input handling: If either input is empty, returns [0]
   2. Degree property: For non-empty inputs of degree m-1 and n-1,
@@ -24,10 +25,10 @@ vc-description: |-
      the result is element-wise scaling
   4. Commutativity: hermmul c1 c2 = hermmul c2 c1 (up to floating point precision)
   5. The general multiplication follows Hermite polynomial recurrence relations
-
+  
   Precondition: True (works for all valid inputs)
   Postcondition: Captures empty input behavior, constant multiplication, and size properties
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

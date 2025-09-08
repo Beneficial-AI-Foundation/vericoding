@@ -1,8 +1,9 @@
 vc-description: |-
+  /*
   Compute the one-dimensional discrete Fourier Transform for real input.
   Returns only the non-negative frequency terms, exploiting Hermitian symmetry.
   The output length is (n/2)+1 for even n, or (n+1)/2 for odd n.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

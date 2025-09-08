@@ -1,8 +1,9 @@
 vc-description: |-
+  /*
   Subtract one Chebyshev series from another component-wise.
   The input vectors c1 and c2 represent Chebyshev series coefficients
   ordered from lowest to highest degree term.
-
+  
   Specification: chebsub performs component-wise subtraction of two Chebyshev series.
   
   The specification includes:
@@ -11,6 +12,7 @@ vc-description: |-
   2. Anti-commutativity: chebsub(c1, c2) = -chebsub(c2, c1)
   3. Identity property: subtracting a series from itself yields zero
   4. Associativity with addition: (c1 - c2) + c2 = c1
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

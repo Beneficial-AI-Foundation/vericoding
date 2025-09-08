@@ -1,6 +1,7 @@
 vc-description: |-
+  /*
   Computes the inverse of rfft (real-valued inverse FFT). This function performs the inverse of the one-dimensional discrete Fourier Transform for real input, such that irfft(rfft(a), len(a)) == a within numerical accuracy.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,6 +1,7 @@
 vc-description: |-
+  /*
   Computes the element-wise inverse tangent of a vector
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,7 +1,9 @@
 vc-description: |-
+  /*
   Return the scaled companion matrix of HermiteE series coefficients.
   The companion matrix is scaled for better eigenvalue estimates and
   symmetry properties when used with HermiteE basis polynomials.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

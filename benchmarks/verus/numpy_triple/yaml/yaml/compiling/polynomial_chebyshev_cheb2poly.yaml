@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Convert a Chebyshev series to a polynomial.
       
   Convert an array representing the coefficients of a Chebyshev series,
@@ -21,7 +22,7 @@ vc-description: |-
       
   The algorithm uses the recurrence relation of Chebyshev polynomials:
   T₀(x) = 1, T₁(x) = x, T_{n+1}(x) = 2xT_n(x) - T_{n-1}(x)
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

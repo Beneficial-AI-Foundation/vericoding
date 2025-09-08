@@ -1,10 +1,11 @@
 vc-description: |-
+  /*
   Differentiates a Laguerre series m times with optional scaling.
   Returns the coefficients of the differentiated Laguerre series.
   
   Specification: lagder differentiates a Laguerre series m times.
   Each differentiation is scaled by scl and follows Laguerre polynomial recurrence relations.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

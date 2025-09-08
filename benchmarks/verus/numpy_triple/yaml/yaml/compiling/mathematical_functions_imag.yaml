@@ -1,6 +1,7 @@
 vc-description: |-
+  /*
   Return the imaginary part of the complex argument. For a vector where each element is represented as a pair (real, imaginary), extracts the imaginary component of each element. For real numbers (where imaginary part is 0), returns 0.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

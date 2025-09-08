@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Divide one Hermite series by another.
   
   Returns the quotient-with-remainder of two Hermite series
@@ -16,7 +17,7 @@ vc-description: |-
   Specification: hermdiv divides Hermite series c1 by c2, producing quotient and remainder
   such that c1 = c2 * quo + rem in the Hermite polynomial basis, where the degree of rem
   is less than the degree of c2. The divisor must have at least one non-zero coefficient.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

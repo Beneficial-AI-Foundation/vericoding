@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.find_common_type: Determine common type following standard coercion rules.
       
   This function determines the common data type by following NumPy's type promotion rules.
@@ -18,7 +19,7 @@ vc-description: |-
       
   Precondition: At least one of the input vectors is non-empty
   Postcondition: The result follows NumPy's documented type promotion rules
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

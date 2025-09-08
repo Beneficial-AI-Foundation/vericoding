@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.cumsum: Return the cumulative sum of the elements along a given axis.
       
   For a 1D array, cumsum computes the cumulative sum where each element
@@ -8,7 +9,7 @@ vc-description: |-
   The cumulative sum is defined as:
   - result[0] = a[0]
   - result[i] = result[i-1] + a[i] for i > 0
-
+  
   Specification: numpy.cumsum returns a vector where each element is the
   cumulative sum up to that position.
   
@@ -17,7 +18,7 @@ vc-description: |-
   - For non-empty vectors, the first element equals the first element of the input
   - Each subsequent element equals the previous cumulative sum plus the current element
   - The cumulative sum has the property that result[i] = sum of a[0] through a[i]
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

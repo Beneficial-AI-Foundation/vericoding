@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Compute the 'inverse' of an N-dimensional array
   
   The result is an inverse for a relative to the tensordot operation tensordot(a, b, ind), i.e., up to floating-point accuracy, tensordot(tensorinv(a), a, ind) is the identity tensor.
@@ -15,7 +16,7 @@ vc-description: |-
   2. The tensor inverse, when applied via tensordot, acts as a left inverse
   3. The tensor must be 'square' (equal first and last dimensions products)
   4. The index parameter must be positive
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

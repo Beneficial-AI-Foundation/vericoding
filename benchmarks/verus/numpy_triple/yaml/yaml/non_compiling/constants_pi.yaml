@@ -1,8 +1,10 @@
 vc-description: |-
+  /*
   The mathematical constant pi (π), approximately 3.14159...
   
   Specification: pi represents the ratio of a circle's circumference to its diameter,
   and satisfies key mathematical properties
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

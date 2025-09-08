@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.corrcoef: Return Pearson product-moment correlation coefficients.
   
   The correlation coefficient measures the linear relationship between two variables.
@@ -17,7 +18,7 @@ vc-description: |-
   - 0 indicates no linear correlation
   
   Requires non-empty vectors and non-zero variance in both variables.
-
+  
   Specification: corrcoef computes the Pearson correlation coefficient between two vectors.
   
   The correlation coefficient satisfies several mathematical properties:
@@ -28,7 +29,7 @@ vc-description: |-
   
   Precondition: Both vectors have non-zero variance (not all elements equal)
   Postcondition: Result is bounded between -1 and 1, and captures linear relationship
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

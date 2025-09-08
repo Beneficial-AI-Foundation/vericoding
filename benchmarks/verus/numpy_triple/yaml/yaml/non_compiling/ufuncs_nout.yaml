@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   The number of output arguments for a given ufunc.
   This corresponds to the nout attribute of NumPy ufuncs.
   
@@ -20,7 +21,7 @@ vc-description: |-
   - add.nout = 1 (binary operation with single output)
   - modf.nout = 2 (returns fractional and integral parts)
   - divmod.nout = 2 (returns quotient and remainder)
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

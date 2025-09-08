@@ -1,13 +1,14 @@
 vc-description: |-
+  /*
   numpy.strings.less_equal: Return the truth value of (x1 <= x2) element-wise for string arrays.
-
+  
   Performs element-wise string comparison between two vectors of strings.
   Returns a boolean vector indicating whether each string in x1 is lexicographically 
   less than or equal to the corresponding string in x2.
   
   This function compares strings lexicographically and returns True for each
   position where x1[i] <= x2[i], False otherwise.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

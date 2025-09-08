@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.as_strided: Create a view into the array with the given shape and strides.
       
   Creates a new view of an array with specified shape and strides.
@@ -8,7 +9,7 @@ vc-description: |-
   
   For safety, we restrict to cases where the new shape is smaller
   than or equal to the original array size.
-
+  
   Specification: numpy.as_strided creates a view with specified strides.
       
   Precondition: The strided access must be valid (m * stride ≤ n)
@@ -16,7 +17,7 @@ vc-description: |-
   array at positions determined by the stride pattern.
       
   For element i in the result, it equals x[i * stride].
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,6 +1,7 @@
 vc-description: |-
+  /*
   Return the character for the minimum-size type to which given types can be safely cast
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

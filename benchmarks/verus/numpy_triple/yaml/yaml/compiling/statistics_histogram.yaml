@@ -1,6 +1,7 @@
 vc-description: |-
+  /*
   numpy.histogram: Compute the histogram of a dataset.
-
+  
   Computes the histogram of a dataset by dividing the range into equal-width bins
   and counting the number of values that fall into each bin.
   
@@ -12,7 +13,7 @@ vc-description: |-
   - Equal bin widths (uniform binning)
   - Correct counting of values in each bin
   - Conservation of total count
-
+  
   Specification: histogram correctly partitions data into bins and counts occurrences.
       
   The histogram satisfies fundamental mathematical properties:
@@ -24,7 +25,7 @@ vc-description: |-
   
   Precondition: Number of bins > 0 and min_val < max_val
   Postcondition: The result satisfies the histogram mathematical properties
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

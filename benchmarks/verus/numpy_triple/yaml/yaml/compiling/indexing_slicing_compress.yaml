@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Compresses a vector by selecting only elements where the corresponding 
   condition is true. Returns a new vector containing only the selected elements.
   The result size is the number of true values in the condition vector.
@@ -15,6 +16,7 @@ vc-description: |-
   This function implements array compression/masking, a fundamental operation
   in array programming that allows selective extraction of elements based on
   a boolean mask. It's equivalent to boolean indexing in NumPy.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

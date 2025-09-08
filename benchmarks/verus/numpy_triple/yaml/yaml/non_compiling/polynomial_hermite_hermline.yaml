@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Hermite series whose graph is a straight line.
       
   Creates a Hermite series representation for the line off + scl*x.
@@ -17,7 +18,7 @@ vc-description: |-
   These coefficients, when evaluated as a Hermite series, produce the 
   original linear function. The relationship comes from the fact that
   H₁(x) = 2x in the physicist's Hermite polynomials.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

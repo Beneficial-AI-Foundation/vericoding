@@ -1,7 +1,9 @@
 vc-description: |-
+  /*
   Return a string representation of the data in a vector
-
+  
   Specification: array_str returns a formatted string representation of the vector data
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

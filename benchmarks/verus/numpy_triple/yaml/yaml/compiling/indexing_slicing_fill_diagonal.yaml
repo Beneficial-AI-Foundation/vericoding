@@ -1,5 +1,7 @@
 vc-description: |-
+  /*
   Fill the main diagonal of a 2D matrix with a specified value
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,9 +1,11 @@
 Perfect! The code now verifies successfully. Let me provide the fixed YAML output:
 
 vc-description: |-
+  /*
   Least squares fit of Hermite series to data.
   Returns the coefficients of a HermiteE series of degree `deg` that is
   the least squares fit to the data values `y` given at points `x`.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

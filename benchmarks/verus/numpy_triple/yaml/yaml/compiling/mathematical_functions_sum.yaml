@@ -1,6 +1,7 @@
 vc-description: |-
+  /*
   numpy.sum: Sum of array elements over a given axis.
-
+  
   Computes the sum of all elements in the vector. For empty vectors,
   returns 0 as the identity element of addition.
   
@@ -18,7 +19,7 @@ vc-description: |-
   - Returns: sum_along_axis (ndarray) - Sum of array elements
   - The function handles axis parameter (ignored in 1D case)
   - Supports optional dtype, initial value, and where condition
-
+  
   Specification: sum computes the sum of all elements in a vector.
   
   The sum operation has several important mathematical properties:
@@ -33,7 +34,7 @@ vc-description: |-
   
   Precondition: True (works for any vector, including empty)
   Postcondition: Result equals the sum of all elements using fold operation
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

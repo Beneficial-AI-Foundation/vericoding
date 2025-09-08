@@ -1,21 +1,22 @@
 vc-description: |-
+  /*
   Multiply a Hermite series by x using the recursion relationship xP_i(x) = (P_{i+1}(x)/2 + i*P_{i-1}(x))
-
+  
   Specification: hermmulx multiplies a Hermite series by x using the recursion relationship for Hermite polynomials.
-
+  
   The algorithm implements the recursion: xP_i(x) = (P_{i+1}(x)/2 + i*P_{i-1}(x))
-
+  
   Given input coefficients c[0], c[1], ..., c[n-1], the output has n+1 coefficients where:
   - The first coefficient is always 0
   - Each c[i] contributes c[i]/2 to position i+1 and c[i]*i to position i-1
-
+  
   For example, with input [1, 2, 3]:
   - result[0] = 0 + 2*1 = 2
   - result[1] = 1/2 + 3*2 = 0.5 + 6 = 6.5
   - result[2] = 2/2 = 1
   - result[3] = 3/2 = 1.5
   Giving [2, 6.5, 1, 1.5]
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

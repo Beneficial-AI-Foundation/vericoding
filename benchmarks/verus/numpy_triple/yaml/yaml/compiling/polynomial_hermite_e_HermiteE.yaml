@@ -1,10 +1,11 @@
 vc-description: |-
+  /*
   An HermiteE series class.
-
+  
   The HermiteE class provides the standard Python numerical methods
   '+', '-', '*', '//', '%', 'divmod', '**', and '()' as well as the
   attributes and methods listed below.
-
+  
   Parameters
   ----------
   coef : array_like
@@ -20,11 +21,11 @@ vc-description: |-
       Symbol used to represent the independent variable in string
       representations of the polynomial expression, e.g. for printing.
       The symbol must be a valid Python identifier. Default value is 'x'.
-
+  
       .. versionadded:: 1.24
-
+  
   Create a HermiteE polynomial from coefficients with default domain and window [-1, 1]
-
+  
   Specification: Creating a HermiteE polynomial preserves coefficients and establishes mathematical properties.
       
   HermiteE polynomials are the "probabilists'" version of Hermite polynomials.
@@ -33,7 +34,7 @@ vc-description: |-
   2. Recurrence: Heₙ₊₁(x) = x * Heₙ(x) - n * Heₙ₋₁(x)
   3. Parity: He_n(-x) = (-1)^n He_n(x)
   4. Orthogonality with respect to Gaussian weight e^(-x²/2)
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

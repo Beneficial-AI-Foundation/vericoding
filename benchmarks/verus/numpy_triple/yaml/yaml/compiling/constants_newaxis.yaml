@@ -1,6 +1,7 @@
 vc-description: |-
+  /*
   A convenient alias for None, useful for indexing arrays. newaxis is an alias for None and is used to expand the dimensions of an array. Expands a vector to a column matrix (n × 1) using newaxis. This models the behavior of a[:, np.newaxis] which converts a 1D array of shape (n,) to a 2D array of shape (n, 1). Specification: expandToColumn creates a column matrix where each element is a singleton vector containing the corresponding element from the input vector. Mathematical property: The resulting matrix has shape (n, 1), each row contains exactly one element from the original vector, result[i][0] = v[i] for all valid indices.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

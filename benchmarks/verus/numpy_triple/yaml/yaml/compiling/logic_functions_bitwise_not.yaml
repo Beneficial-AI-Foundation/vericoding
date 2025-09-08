@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Compute bit-wise inversion, or bit-wise NOT, element-wise.
   
   Computes the bit-wise NOT of the underlying binary representation of
@@ -25,7 +26,7 @@ vc-description: |-
   - Bitwise NOT is its own inverse: ~~x = x
   - For any integer x: ~x = -(x + 1)
   - The operation is element-wise for arrays
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

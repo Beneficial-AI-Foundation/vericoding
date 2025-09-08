@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.delete: Return a new array with sub-arrays along an axis deleted.
   
   For a one dimensional array, this returns those entries not returned by
@@ -32,7 +33,7 @@ vc-description: |-
   - For indices i < index: result[i] = arr[i]
   - For indices i ≥ index: result[i] = arr[i+1]
   - The element arr[index] does not appear in the result (unless duplicated elsewhere)
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

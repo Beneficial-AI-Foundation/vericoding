@@ -1,7 +1,9 @@
 vc-description: |-
+  /*
   Return evenly spaced values within a given interval [start, stop) with given step.
   Specification: arange generates evenly spaced values from start to stop (exclusive) with given step.
   Each element at index i has value start + i * step, and all values are within bounds.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,10 +1,11 @@
 vc-description: |-
+  /*
   Machine limits for floating point types.
-
+  
   Returns a structure containing information about the numerical properties 
   and limits of floating-point types, including epsilon, maximum/minimum 
   values, and precision details according to IEEE 754 standard.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

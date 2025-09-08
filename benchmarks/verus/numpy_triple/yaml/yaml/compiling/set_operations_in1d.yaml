@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Test whether each element of a 1-D array is also present in a second array.
   Returns a boolean array the same length as ar1 that is True where an element 
   of ar1 is in ar2 and False otherwise.
@@ -6,7 +7,7 @@ vc-description: |-
   Specification: in1d tests membership of each element of ar1 in ar2.
   The result is a boolean vector of the same length as ar1, where each element
   indicates whether the corresponding element of ar1 is present in ar2.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

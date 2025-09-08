@@ -1,13 +1,15 @@
 vc-description: |-
+  /*
   Integrate a Legendre series, returning the coefficients of the integrated series.
   The function integrates the Legendre series with coefficients c one time,
   applying scaling factor scl and integration constant k.
-
+  
   Specification: legint correctly integrates Legendre series coefficients
   according to the mathematical properties of Legendre polynomial integration.
   
   Integration increases the degree of the polynomial by 1, and the resulting 
   coefficients satisfy the Legendre integration recurrence relations.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Subtract one polynomial from another.
   Returns the difference of two polynomials c1 - c2, where polynomials are
   represented as coefficient vectors from lowest order term to highest.
@@ -12,7 +13,7 @@ vc-description: |-
   Additionally, polysub satisfies mathematical properties:
   - Anti-commutativity: polysub c1 c2 = -(polysub c2 c1)
   - Zero identity: polysub c 0 = c and polysub 0 c = -c
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

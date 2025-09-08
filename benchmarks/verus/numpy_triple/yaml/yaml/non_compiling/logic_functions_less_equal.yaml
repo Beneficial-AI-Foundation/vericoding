@@ -1,5 +1,7 @@
 vc-description: |-
+  /*
   Return the truth value of (x1 <= x2) element-wise
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

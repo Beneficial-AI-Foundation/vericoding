@@ -1,8 +1,10 @@
 ```verus
 vc-description: |-
+  /*
   Natural logarithm of 2
   NPY_LOGE2 returns the natural logarithm of 2 with correct mathematical properties
   ln(2) = 0.693147180559945309417232121458176568
+  */
 
 vc-preamble: |-
   use vstd::prelude::*;

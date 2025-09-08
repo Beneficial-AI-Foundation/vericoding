@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.trace: Return the sum along diagonals of the array.
       
   For a 2D matrix, computes the sum of elements along the diagonal
@@ -7,6 +8,7 @@ vc-description: |-
   a[i,i+offset], and for negative offset, it sums a[i-offset,i].
       
   This implementation focuses on the 2D case as the core functionality.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

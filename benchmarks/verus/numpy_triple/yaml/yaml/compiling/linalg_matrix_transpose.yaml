@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.linalg.matrix_transpose: Transposes a matrix (or a stack of matrices).
   
   For a 2D matrix, this operation swaps the rows and columns.
@@ -15,7 +16,7 @@ vc-description: |-
   
   Precondition: True (no special preconditions for matrix transpose)
   Postcondition: For all valid indices i and j, x_T[j][i] = x[i][j]
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

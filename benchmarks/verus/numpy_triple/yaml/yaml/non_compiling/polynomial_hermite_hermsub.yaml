@@ -1,9 +1,11 @@
 vc-description: |-
+  /*
   Subtract one Hermite series from another.
       
       Returns the difference of two Hermite series c1 - c2. The sequences of coefficients 
       are from lowest order term to highest. The subtraction is component-wise, with 
       missing coefficients treated as zero.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

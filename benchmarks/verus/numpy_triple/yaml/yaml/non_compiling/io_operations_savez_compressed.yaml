@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Save several arrays into a single file in compressed .npz format.
   
   This function saves multiple arrays to a compressed archive file.
@@ -12,6 +13,7 @@ vc-description: |-
   2. Store each array in the archive with proper naming
   3. Ensure the file is readable by compatible loading functions
   4. Handle filename extension automatically (.npz appended if not present)
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

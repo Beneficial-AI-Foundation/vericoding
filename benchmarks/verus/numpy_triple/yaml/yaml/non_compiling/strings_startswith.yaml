@@ -1,6 +1,7 @@
 vc-description: |-
+  /*
   Check if strings in array start with given prefixes. Returns a boolean array which is True where the string element in a starts with prefix, otherwise False.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

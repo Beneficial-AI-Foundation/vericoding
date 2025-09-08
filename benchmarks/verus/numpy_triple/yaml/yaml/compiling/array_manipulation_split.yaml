@@ -1,8 +1,9 @@
 Perfect! Now I'll provide the fixed YAML structure:
 
 vc-description: |-
+  /*
   Split a vector into k equal parts. Requires that the vector length is divisible by k.
-
+  
   Specification: split divides a vector into k equal-sized sub-vectors 
   where each sub-vector contains consecutive elements from the original.
   
@@ -11,6 +12,7 @@ vc-description: |-
   2. Each sub-vector has size n/k 
   3. Element j of sub-vector i corresponds to element (i * (n/k) + j) of the original vector
   4. All elements from the original vector are preserved in the split
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

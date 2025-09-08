@@ -1,11 +1,13 @@
 vc-description: |-
+  /*
   Raise a Laguerre series to a power.
-
+  
   Returns the Laguerre series `c` raised to the power `pow`. The
   argument `c` is a sequence of coefficients ordered from low to high.
   i.e., [1,2,3] is the series  ``P_0 + 2*P_1 + 3*P_2.``
-
+  
   Specification: lagpow raises a Laguerre series to a power with proper constraints
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

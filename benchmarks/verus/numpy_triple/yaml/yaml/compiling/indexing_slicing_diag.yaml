@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Extract a diagonal or construct a diagonal array.
   
   numpy.diag: Extract a diagonal or construct a diagonal array.
@@ -24,6 +25,7 @@ vc-description: |-
   
   This specification provides a foundation for formal verification of diagonal
   operations in numerical computing.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Solve a linear matrix equation ax = b, where a is an n×n matrix and b is a vector.
   Returns the solution vector x such that ax = b.
   For non-empty matrices (n > 0), the solution exists and is unique when a is invertible.
@@ -15,7 +16,7 @@ vc-description: |-
   - a is an n×n square matrix (represented as Vector of Vector Float)
   - b is an n-dimensional vector
   - The solution x is unique when a is invertible
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

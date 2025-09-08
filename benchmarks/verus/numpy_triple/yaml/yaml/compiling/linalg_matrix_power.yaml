@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.linalg.matrix_power: Raise a square matrix to the (integer) power n.
       
   For positive integers n, the power is computed by repeated matrix squarings and 
@@ -32,7 +33,7 @@ vc-description: |-
   - Matrix power preserves the dimension: n×n input produces n×n output
       
   This captures the complete mathematical characterization of matrix exponentiation.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

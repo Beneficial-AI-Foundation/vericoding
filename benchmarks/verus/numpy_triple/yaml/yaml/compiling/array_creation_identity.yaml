@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Return the identity matrix of size n×n.
   The identity matrix is a square matrix with ones on the main diagonal
   and zeros elsewhere.
@@ -6,7 +7,7 @@ vc-description: |-
   Specification: identity returns an n×n matrix where:
   - diagonal elements (i,i) are 1.0
   - off-diagonal elements (i,j) where i≠j are 0.0
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

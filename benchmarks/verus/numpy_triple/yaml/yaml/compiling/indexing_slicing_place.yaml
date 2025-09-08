@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.place: Change elements of an array based on conditional and input values.
       
   Modifies elements of an array where the corresponding mask is True, using values 
@@ -7,6 +8,7 @@ vc-description: |-
       
   The parameter `k` must equal the number of True elements in the mask array.
   The parameter `v` is the size of the vals array, which must be non-empty.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

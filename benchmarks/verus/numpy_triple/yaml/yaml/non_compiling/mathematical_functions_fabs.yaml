@@ -1,5 +1,7 @@
 vc-description: |-
+  /*
   Compute the absolute values element-wise for floating-point numbers. This function returns the absolute values (positive magnitude) of the data in x. Complex values are not handled, use absolute to find the absolute values of complex data.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

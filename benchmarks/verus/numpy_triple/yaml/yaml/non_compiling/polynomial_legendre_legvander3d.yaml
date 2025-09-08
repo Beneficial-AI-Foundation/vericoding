@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Pseudo-Vandermonde matrix of given degrees for 3D Legendre polynomials.
   Returns the pseudo-Vandermonde matrix of degrees `deg` and sample points `(x, y, z)`.
   The pseudo-Vandermonde matrix is defined by 
@@ -12,7 +13,7 @@ vc-description: |-
   - Each entry is a product of 1D Legendre polynomial evaluations
   - The ordering follows the specified 3D indexing scheme
   - The matrix has the correct dimensions
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

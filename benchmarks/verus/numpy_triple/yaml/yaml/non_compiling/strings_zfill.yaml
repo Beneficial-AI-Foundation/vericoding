@@ -1,11 +1,12 @@
 vc-description: |-
+  /*
   numpy.strings.zfill: Return the numeric string left-filled with zeros.
-
+  
   Zero-fills each string in the input array by padding it with leading zeros
   to reach the specified width. If the original string is longer than or equal
   to the width, it remains unchanged. This function is specifically designed
   for numeric strings and handles sign prefixes appropriately.
-
+  
   The function behaves like Python's str.zfill() method:
   - Pads strings with leading zeros to reach the target width
   - Preserves sign characters ('+' or '-') at the beginning
@@ -15,14 +16,14 @@ vc-description: |-
   - Parameters: a (array_like) - Input array with string dtype
                 width (int) - Target width for zero-filling
   - Returns: out (ndarray) - Output array with zero-filled strings
-
+  
   Mathematical Properties:
   1. Length invariant: result length is max(original_length, width)
   2. Identity: strings already >= width remain unchanged
   3. Zero-padding: shorter strings get leading zeros
   4. Sign preservation: leading '+' or '-' characters are preserved
   5. Minimality: no over-padding beyond required width
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

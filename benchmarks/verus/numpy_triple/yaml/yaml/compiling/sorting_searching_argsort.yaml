@@ -1,5 +1,7 @@
 vc-description: |-
+  /*
   Returns the indices that would sort a vector in ascending order. Performs an indirect sort returning an array of indices that would sort the input array in ascending order. For equal elements, maintains relative order (stable sort).
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

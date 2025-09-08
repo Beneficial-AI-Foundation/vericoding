@@ -1,5 +1,7 @@
 vc-description: |-
+  /*
   Computes the inverse of rfftn. This function performs the inverse N-dimensional discrete Fourier Transform for real input using the Fast Fourier Transform (FFT). For simplicity, we model this as a 1D version of irfftn, taking complex frequency domain input and producing real time-domain output. The function computes the inverse of rfftn, transforming N-dimensional frequency domain data back to real-valued time domain.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

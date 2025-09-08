@@ -1,8 +1,10 @@
 vc-description: |-
+  /*
   The mathematical constant π/2 (pi divided by 2), approximately 1.5708...
   
   Specification: NPY_PI_2 represents π/2, which is half of pi and corresponds to 90 degrees
   in radians. It satisfies key mathematical properties related to trigonometry and geometry
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

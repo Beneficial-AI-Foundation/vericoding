@@ -1,6 +1,7 @@
 vc-description: |-
+  /*
   Returns the index of the maximum value in a non-empty vector (first occurrence)
-
+  
   Specification: argmax returns the index of the first maximum element
   This comprehensive specification captures:
   1. The returned index points to a maximum element
@@ -9,6 +10,7 @@ vc-description: |-
   4. The function returns the first occurrence of the maximum value
   5. The returned index is valid (type-safe with Fin)
   6. The result is deterministic for the same input
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

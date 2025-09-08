@@ -1,17 +1,18 @@
 vc-description: |-
+  /*
   Multiply one Laguerre series by another.
-
+  
   This function multiplies two Laguerre series represented as coefficient arrays.
   Returns the product of two Laguerre series c1 * c2. The arguments are sequences 
   of coefficients, from lowest order "term" to highest, e.g., [1,2,3] represents 
   the series P_0 + 2*P_1 + 3*P_2.
-
+  
   Parameters:
   - c1, c2: 1-D arrays of Laguerre series coefficients ordered from low to high.
   
   Returns:
   - out: Array of Laguerre series coefficients representing their product.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

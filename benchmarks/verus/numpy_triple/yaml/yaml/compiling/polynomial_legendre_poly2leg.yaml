@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Convert a polynomial to a Legendre series.
   Converts coefficients from standard polynomial basis to Legendre basis.
   
@@ -6,7 +7,7 @@ vc-description: |-
   The transformation preserves the polynomial degree and produces valid Legendre coefficients.
   The result has the same dimension as the input and represents the same polynomial
   expressed in the Legendre basis instead of the standard monomial basis.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

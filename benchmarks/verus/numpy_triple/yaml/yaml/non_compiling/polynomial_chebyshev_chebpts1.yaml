@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Chebyshev points of the first kind.
   
   The Chebyshev points of the first kind are the points cos(π*(k + 0.5)/n)
@@ -20,7 +21,7 @@ vc-description: |-
   2. The points are in descending order: for all i < j, result[i] > result[j]
   3. All points lie in the interval [-1, 1]
   4. The points are symmetric about 0: result[k] = -result[n-1-k] for all k
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

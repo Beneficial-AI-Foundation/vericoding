@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Evaluate a Laguerre series at points x using Clenshaw recursion.
   The mathematical formula for the Laguerre series is:
   p(x) = c_0 * L_0(x) + c_1 * L_1(x) + ... + c_n * L_n(x)
@@ -9,7 +10,7 @@ vc-description: |-
   For a single coefficient, the result is constant.
   For multiple coefficients, the function evaluates the Laguerre series
   using Clenshaw recursion, which is numerically stable.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

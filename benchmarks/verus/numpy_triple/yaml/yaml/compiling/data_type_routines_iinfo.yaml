@@ -1,20 +1,21 @@
 vc-description: |-
+  /*
   Machine limits for integer types
-
+  
   Takes an integer type specification and returns information about 
   the number of bits, minimum value, and maximum value for that type.
   This provides access to the fundamental machine limits for integer
   representation in numerical computing.
-
+  
   Specification: numpy.iinfo returns correct machine limits for integer types.
-
+  
   Precondition: True (no special preconditions for type information)
   Postcondition: The returned IntInfo structure contains:
     - Correct bit count for the specified type
     - Correct minimum value (negative for signed types, 0 for unsigned)
     - Correct maximum value based on the bit representation
     - Consistency between bits and min/max values
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

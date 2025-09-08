@@ -1,8 +1,9 @@
 vc-description: |-
+  /*
   Return the scaled companion matrix of Legendre series coefficients.
   The companion matrix is symmetric when c is a Legendre basis polynomial,
   providing better eigenvalue estimates.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,9 +1,11 @@
 vc-description: |-
+  /*
   Add one polynomial to another.
       
       Given two polynomials represented as coefficient vectors (from lowest to highest degree),
       returns their sum. The result has length equal to the maximum of the input lengths,
       with shorter polynomials implicitly padded with zeros.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

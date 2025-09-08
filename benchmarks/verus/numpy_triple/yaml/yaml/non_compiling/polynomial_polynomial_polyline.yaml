@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Returns a vector representing a linear polynomial off + scl*x.
       
   For the linear polynomial off + scl*x, this returns:
@@ -10,7 +11,7 @@ vc-description: |-
   
   We use Vector Float 2 to represent the general case, with the understanding
   that when scl = 0, the second coefficient is meaningless.
-
+  
   Specification: polyline creates correct linear polynomial representation.
   
   The function returns coefficients for the linear polynomial off + scl*x:
@@ -25,7 +26,7 @@ vc-description: |-
   4. Evaluation property: at x=0, polynomial evaluates to off
   5. Slope property: derivative of polynomial is scl
   6. Mathematical correctness: represents polynomial off + scl*x
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

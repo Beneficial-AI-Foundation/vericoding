@@ -1,10 +1,11 @@
 vc-description: |-
+  /*
   Evaluate a 3-D polynomial on the Cartesian product of x, y and z.
   
   Specification: polygrid3d evaluates a 3-D polynomial on the Cartesian product of x, y and z.
   The result is a 3D grid where result[i][j][k] = p(x[i], y[j], z[k]) for the polynomial 
   defined by coefficients c, where p(a,b,c) = sum_{i,j,k} c[i][j][k] * a^i * b^j * c^k.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

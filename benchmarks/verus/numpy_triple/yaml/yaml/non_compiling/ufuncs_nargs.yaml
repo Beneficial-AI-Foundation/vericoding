@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.ufunc.nargs: Returns the total number of arguments the ufunc accepts.
       
   This attribute represents the sum of input and output arguments for a ufunc.
@@ -10,7 +11,7 @@ vc-description: |-
       
   Precondition: True (no special preconditions for reading metadata)
   Postcondition: The result equals the sum of input and output arguments
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

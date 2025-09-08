@@ -1,5 +1,7 @@
 vc-description: |-
+  /*
   Integrate along the given axis using the composite trapezoidal rule. The composite trapezoidal rule approximates definite integrals using trapezoidal approximations between sample points.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

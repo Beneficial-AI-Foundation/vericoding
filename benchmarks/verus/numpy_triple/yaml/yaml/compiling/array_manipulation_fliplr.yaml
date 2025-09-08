@@ -1,8 +1,9 @@
 vc-description: |-
+  /*
   Reverses the order of columns in a 2D matrix (left/right flip).
   For a matrix with shape (rows × cols), this operation reverses the order 
   of elements along each row, effectively flipping the matrix horizontally.
-
+  
   Specification: fliplr reverses the column order in each row of the matrix.
   The element at position (i, j) in the input matrix appears at position 
   (i, cols-1-j) in the output matrix. This captures the mathematical property
@@ -18,7 +19,7 @@ vc-description: |-
      index j' such that output[i,j] = input[i,j'] where j' = cols-1-j
   2. Row preservation: Each row contains exactly the same elements as the input
   3. Column reversal: The first column becomes the last, second becomes second-to-last, etc.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

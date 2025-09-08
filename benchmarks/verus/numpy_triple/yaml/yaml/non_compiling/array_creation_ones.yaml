@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Return a new vector of given size filled with ones.
       
   This function creates a vector where every element is exactly 1.0,
@@ -22,7 +23,7 @@ vc-description: |-
   Edge cases handled:
   - When n = 0, returns an empty vector (trivially satisfies all properties)
   - When n > 0, all indices contain exactly 1.0
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

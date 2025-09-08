@@ -1,11 +1,12 @@
 vc-description: |-
+  /*
   numpy.strings.count: Returns an array with the number of non-overlapping occurrences 
   of substring sub in the range [start, end] for each element.
-
+  
   For each string in the input array, counts how many times the substring appears
   without overlapping matches within the specified range. The search is performed
   within the range [start, end) where start and end are character indices.
-
+  
   Specification: numpy.strings.count returns the number of non-overlapping occurrences 
   of substring within the specified range for each element.
   
@@ -19,7 +20,7 @@ vc-description: |-
   - For each element, the count represents non-overlapping occurrences of substring
   - If substring is longer than search range, count is 0
   - The count is maximal (greedy non-overlapping matching)
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

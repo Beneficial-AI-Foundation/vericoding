@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.nanargmin: Return the indices of the minimum values in the specified axis ignoring NaNs.
   
   For all-NaN slices ValueError is raised. Warning: the results cannot be trusted 
@@ -20,7 +21,7 @@ vc-description: |-
   1. The returned index points to a non-NaN value
   2. All non-NaN values at other indices are greater than or equal to the value at the returned index
   3. If there are ties, returns the first occurrence (smallest index)
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

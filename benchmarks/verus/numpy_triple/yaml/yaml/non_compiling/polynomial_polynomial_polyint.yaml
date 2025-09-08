@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Integrate a polynomial.
       
   Returns the polynomial coefficients integrated m times from lbnd.
@@ -8,7 +9,7 @@ vc-description: |-
       
   The input coefficients are ordered from low to high degree.
   For example, [1, 2, 3] represents 1 + 2*x + 3*x².
-
+  
   Specification: polyint integrates polynomial coefficients m times.
       
   The integration process:
@@ -23,7 +24,7 @@ vc-description: |-
   - Each integration step preserves the polynomial structure
   - The derivative of the result (m times) gives back the original scaled by scl^m
   - Integration constants k determine the value of antiderivatives at lbnd
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

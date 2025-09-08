@@ -1,5 +1,6 @@
 ```verus
 vc-description: |-
+  /*
   numpy.sqrt: Return the non-negative square-root of an array, element-wise.
 
   Computes the principal square root of each element in the input array.
@@ -23,6 +24,7 @@ vc-description: |-
 
   Precondition: True (function handles all Float inputs)
   Postcondition: For all indices i, if x[i] ≥ 0 then result[i]² = x[i] and result[i] ≥ 0
+  */
 
 vc-preamble: |-
   use vstd::prelude::*;

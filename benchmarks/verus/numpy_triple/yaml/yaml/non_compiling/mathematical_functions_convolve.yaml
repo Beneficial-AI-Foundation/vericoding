@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.convolve: Returns the discrete, linear convolution of two one-dimensional arrays.
   
   The discrete convolution operation is defined as:
@@ -21,7 +22,7 @@ vc-description: |-
   1. Result length is m + n - 1 (enforced by return type)
   2. Each element follows the convolution definition
   3. Boundary conditions: zero-padding is implicitly assumed outside array bounds
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

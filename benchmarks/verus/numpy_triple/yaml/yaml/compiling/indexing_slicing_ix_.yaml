@@ -1,12 +1,13 @@
 vc-description: |-
+  /*
   Construct an open mesh from multiple sequences
-
+  
   Construct an open mesh from two 1-D sequences. 
   This simplified version handles the case of two input sequences,
   returning two 2D arrays that form an open mesh for indexing operations.
   The first array has shape (m, 1) containing values from the first sequence,
   and the second array has shape (1, n) containing values from the second sequence.
-
+  
   Specification: ix_ creates an open mesh from two sequences
   This comprehensive specification captures:
   1. The function takes two 1-D sequences of integers
@@ -20,7 +21,7 @@ vc-description: |-
   9. Each element of the second array's single row equals the corresponding seq2 element
   10. The mesh property: for any indices (i,j), the pair (first[i][0], second[0][j]) 
       represents a coordinate in the mesh grid
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

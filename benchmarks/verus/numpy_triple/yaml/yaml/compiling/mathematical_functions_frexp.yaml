@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.frexp: Decompose the elements of x into mantissa and twos exponent.
   
   Returns (mantissa, exponent), where x = mantissa * 2**exponent.
@@ -23,7 +24,7 @@ vc-description: |-
     - mantissa[i] has same sign as x[i] (sign preservation)
   - If x[i] is infinity or NaN, then mantissa[i] = x[i] and exponent[i] = 0
   - Result vectors have same length as input (length preservation)
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

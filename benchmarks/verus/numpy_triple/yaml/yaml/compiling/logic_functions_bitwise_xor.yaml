@@ -1,16 +1,17 @@
 vc-description: |-
+  /*
   numpy.bitwise_xor: Compute the bit-wise XOR of two arrays element-wise.
-
+  
   Computes the bit-wise XOR of the underlying binary representation of
   the integers in the input arrays. This ufunc implements the C/Python
   operator ^.
-
+  
   The function works on integer and boolean types, computing the XOR
   of corresponding elements from two input vectors.
-
+  
   Specification: numpy.bitwise_xor returns a vector where each element is the 
   bitwise XOR of the corresponding elements from x1 and x2.
-
+  
   Precondition: All elements are non-negative (to use well-defined bitwise operations)
   Postcondition: For all indices i, result[i] = x1[i] XOR x2[i]
   
@@ -19,6 +20,7 @@ vc-description: |-
   - XOR is associative: (a XOR b) XOR c = a XOR (b XOR c)
   - XOR with zero is identity: x XOR 0 = x
   - XOR is self-inverse: x XOR x = 0
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

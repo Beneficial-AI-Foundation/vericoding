@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Counts the number of non-zero values in a vector.
       
   The word "non-zero" is in reference to the Python 2.x
@@ -15,7 +16,7 @@ vc-description: |-
   The result is always between 0 and n (inclusive), where n is the length of the vector.
   If all elements are zero, the result is 0.
   If all elements are non-zero, the result is n.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

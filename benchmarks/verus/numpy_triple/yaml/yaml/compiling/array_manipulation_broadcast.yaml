@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.broadcast: Produce an object that mimics broadcasting between two vectors.
       
   This simplified version handles broadcasting between a column vector (m × 1)
@@ -21,6 +22,7 @@ vc-description: |-
   Postconditions:
   - The resulting shape is (m, n)
   - Element at position (i, j) is the pair (x[i], y[j])
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

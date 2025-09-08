@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   The number of supported input/output type combinations
   
   numpy.ufunc.ntypes: Returns the number of supported input/output type combinations
@@ -20,7 +21,7 @@ vc-description: |-
   Postcondition: The result is the exact count of type combinations,
                 which is non-zero for any functional ufunc and equals
                 the length of the type combinations vector.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

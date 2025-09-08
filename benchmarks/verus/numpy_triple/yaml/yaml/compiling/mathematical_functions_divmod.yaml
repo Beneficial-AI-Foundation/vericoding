@@ -1,6 +1,7 @@
 vc-description: |-
+  /*
   numpy.divmod: Return element-wise quotient and remainder simultaneously.
-
+  
   Performs element-wise division returning both the quotient and remainder.
   For each pair of elements (x, y), returns (x // y, x % y) where:
   - x // y is the floor division (largest integer ≤ x/y)
@@ -17,10 +18,10 @@ vc-description: |-
   1. Division identity: x1[i] = x2[i] * quotient[i] + remainder[i]
   2. Remainder bounds: 0 ≤ |remainder[i]| < |x2[i]| (for positive divisors)
   3. Sign consistency: remainder has same sign as divisor (Python % semantics)
-
+  
   Specification: numpy.divmod returns a tuple of vectors containing the quotient 
   and remainder of element-wise division.
-
+  
   Mathematical Properties:
   1. Division identity: For all i, x1[i] = x2[i] * quotient[i] + remainder[i]
   2. Quotient correctness: quotient[i] = floor(x1[i] / x2[i])
@@ -31,7 +32,7 @@ vc-description: |-
   
   Precondition: All elements in x2 must be non-zero
   Postcondition: Returns (quotient, remainder) where the mathematical properties hold
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

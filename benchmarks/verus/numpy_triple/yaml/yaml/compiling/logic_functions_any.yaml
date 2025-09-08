@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Test whether any element in a vector evaluates to True.
       
   For numeric types, returns true if any element is non-zero.
@@ -20,7 +21,7 @@ vc-description: |-
   - Non-zero values (including NaN, ±∞) evaluate to True
   - Only zero evaluates to False
   - Empty arrays return False
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

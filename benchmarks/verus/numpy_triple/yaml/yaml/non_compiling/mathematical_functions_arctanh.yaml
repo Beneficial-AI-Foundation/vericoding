@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.arctanh: Inverse hyperbolic tangent element-wise.
   
   Computes the inverse hyperbolic tangent of each element in the input array.
@@ -9,7 +10,7 @@ vc-description: |-
   
   Returns an array of the same shape as x, containing the inverse hyperbolic tangent 
   of each element.
-
+  
   Specification: numpy.arctanh returns a vector where each element is the inverse
   hyperbolic tangent of the corresponding element in x.
   
@@ -23,7 +24,7 @@ vc-description: |-
   - arctanh is strictly increasing on (-1, 1)
   - Domain preservation: all results are finite real numbers
   - Range property: arctanh maps (-1, 1) to (-∞, ∞)
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

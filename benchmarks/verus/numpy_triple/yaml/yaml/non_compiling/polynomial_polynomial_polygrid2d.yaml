@@ -1,9 +1,11 @@
 vc-description: |-
+  /*
   Evaluate a 2-D polynomial on the Cartesian product of x and y.
-
+  
   Specification: polygrid2d evaluates a 2-D polynomial on the Cartesian product of x and y.
   The result is a grid where result[i][j] = p(x[i], y[j]) for the polynomial defined by 
   coefficients c, where p(a,b) = sum_{i,j} c[i][j] * a^i * b^j.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

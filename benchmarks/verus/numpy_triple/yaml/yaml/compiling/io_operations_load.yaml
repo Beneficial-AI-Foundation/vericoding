@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.load: Load arrays or pickled objects from .npy, .npz or pickled files.
       
   Loads array data from a binary file. This operation reads serialized array data
@@ -11,7 +12,7 @@ vc-description: |-
   For security reasons, pickled files should be avoided unless explicitly allowed.
   
   Memory mapping is not considered in this simplified specification.
-
+  
   Specification: numpy.load returns a vector containing the data from the file.
       
   This specification captures the essential properties of the load operation:
@@ -28,7 +29,7 @@ vc-description: |-
       
   Precondition: The file exists, is readable, and contains valid array data
   Postcondition: The returned vector faithfully represents the stored data
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

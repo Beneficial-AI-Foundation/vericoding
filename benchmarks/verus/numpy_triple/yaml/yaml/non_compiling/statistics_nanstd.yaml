@@ -1,10 +1,12 @@
 vc-description: |-
+  /*
   Compute the standard deviation along the specified axis, ignoring NaNs.
   Returns the standard deviation, a measure of the spread of a distribution,
   of the non-NaN array elements. The standard deviation is the square root
   of the variance computed from non-NaN values.
   
   For all-NaN slices, NaN is returned.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

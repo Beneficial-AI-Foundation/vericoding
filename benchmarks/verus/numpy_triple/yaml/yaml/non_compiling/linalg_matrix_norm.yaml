@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Compute matrix norm of a matrix (Frobenius norm by default)
   
   Specification: matrix_norm computes the Frobenius norm of a matrix 
@@ -10,7 +11,7 @@ vc-description: |-
   3. Homogeneity: norm(c*A) = |c| * norm(A) for scalar c
   4. Triangle inequality: norm(A + B) ≤ norm(A) + norm(B)
   5. Submultiplicativity: norm(A) dominates the absolute value of any element
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

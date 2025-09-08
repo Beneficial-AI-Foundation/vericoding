@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.atleast_2d: View inputs as arrays with at least two dimensions.
       
   For a 1D vector input, this function converts it to a 2D array (matrix)
@@ -20,6 +21,7 @@ vc-description: |-
   - The result is a matrix with 1 row and n columns
   - The single row contains all elements from the input vector in the same order
   - The transformation preserves all numerical values exactly
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,12 +1,13 @@
 vc-description: |-
+  /*
   numpy.strings.islower: Returns true for each element if all cased characters in the string are lowercase and there is at least one cased character, false otherwise.
-
+  
   Tests whether all cased characters in each string are lowercase.
   A string is considered to satisfy islower if:
   1. It contains at least one cased character (letters that have uppercase/lowercase versions)
   2. All cased characters are lowercase
   3. Non-cased characters (numbers, symbols, whitespace) are ignored for the check
-
+  
   Examples:
   - Empty string "" → false (no cased characters)
   - "123" → false (no cased characters)
@@ -15,6 +16,7 @@ vc-description: |-
   - "aBc" → false (has uppercase)
   - "abc123" → true (has lowercase, no uppercase)
   - "   " → false (no cased characters)
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

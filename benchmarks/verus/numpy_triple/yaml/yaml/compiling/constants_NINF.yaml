@@ -1,6 +1,7 @@
 Perfect! Now I can provide the YAML output with the corrected Verus code:
 
 vc-description: |-
+  /*
   IEEE 754 floating point representation of negative infinity (deprecated in NumPy 2.0)
   
   Specification: NINF represents negative infinity with the following properties:
@@ -10,6 +11,7 @@ vc-description: |-
   4. NINF * negative finite value = inf
   5. NINF / any finite non-zero value = NINF (with appropriate sign)
   6. NINF = -inf (negative of positive infinity)
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,12 +1,13 @@
 vc-description: |-
+  /*
   Return argument as a list of 1-d arrays. Takes a 2-d array of shape (M,N)
   and returns M arrays of size N (parsed by row). Optionally trims trailing 
   zeros from each array.
-
+  
   Specification: as_series returns a list of 1-d arrays where each row of the
   input becomes a separate 1-d array. When trim is false, arrays are unchanged.
   When trim is true, trailing zeros are removed from each array.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

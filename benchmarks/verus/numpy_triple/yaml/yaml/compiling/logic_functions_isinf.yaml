@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.isinf: Test element-wise for positive or negative infinity
   Returns a boolean array of the same shape as x, True where x == +/-inf, otherwise False.
   URL: https://numpy.org/doc/stable/reference/generated/numpy.isinf.html
@@ -18,7 +19,7 @@ vc-description: |-
       3. Result preserves shape: output vector has same length as input
       4. Finite values: All normal, subnormal, and zero values return false
       5. Specific infinities: Both positive and negative infinity are correctly identified
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

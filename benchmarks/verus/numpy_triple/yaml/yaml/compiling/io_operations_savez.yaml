@@ -1,6 +1,7 @@
 vc-description: |-
+  /*
   numpy.savez: Save several arrays into a single file in uncompressed .npz format.
-
+  
   Saves multiple Vector arrays to a single .npz archive file. This operation
   serializes multiple arrays into a single compressed archive, where each array
   is stored as a separate .npy file within the archive.
@@ -18,9 +19,9 @@ vc-description: |-
   - Pickle support is controlled by allow_pickle parameter
   - Invalid file paths or write permissions can cause failures
   - The archive format ensures data integrity through checksums
-
+  
   Specification: numpy.savez creates a .npz archive containing multiple arrays.
-
+  
   This specification captures the essential properties of the savez operation:
   
   1. Data Persistence: Arrays are written to disk in a retrievable format
@@ -41,7 +42,7 @@ vc-description: |-
   
   Precondition: File path is writable and arrays are valid
   Postcondition: Archive file exists and contains both arrays with recoverable data
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

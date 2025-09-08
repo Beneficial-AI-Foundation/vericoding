@@ -1,15 +1,16 @@
 vc-description: |-
+  /*
   numpy.full: Return a new array of given shape and type, filled with fill_value.
-
+  
   Creates a new vector of size n where every element is set to the specified
   fill_value. This is the 1D version of numpy.full, focusing on the core
   functionality of creating uniform arrays.
-
+  
   The function creates a vector filled with identical values, which is useful
   for initialization and creating constant arrays.
-
+  
   Specification: numpy.full returns a vector where every element equals fill_value.
-
+  
   This specification captures the complete mathematical behavior of numpy.full:
   
   1. **Sanity checks**:
@@ -34,6 +35,7 @@ vc-description: |-
      - If two vectors are created with full using the same fill_value and size,
        they are element-wise equal
      - full preserves the fill_value exactly (no transformation or casting)
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,9 +1,10 @@
 vc-description: |-
+  /*
   Base 10 logarithm of Euler's number e
   
   NPY_LOG10E returns the base 10 logarithm of e with correct mathematical properties
   log10(e) = 0.434294481903251827651128918916605082
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

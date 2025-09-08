@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Element-wise power operation with float promotion. 
   Raises each element of the base vector to the corresponding power in the exponent vector.
   All values are promoted to Float (minimum precision of Float64).
@@ -8,7 +9,7 @@ vc-description: |-
   - For zero bases: only non-negative exponents are valid
   - For negative bases: only integer exponents are mathematically valid (though NumPy allows all)
   - The result preserves the mathematical power relationship element-wise
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

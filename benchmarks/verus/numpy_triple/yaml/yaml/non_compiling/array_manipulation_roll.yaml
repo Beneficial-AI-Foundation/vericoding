@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Roll array elements along a given axis by cyclically shifting elements.
   Elements that roll beyond the last position are re-introduced at the first.
   
@@ -9,7 +10,7 @@ vc-description: |-
   
   Mathematical property: result[i] = a[(i - shift) mod n]
   where the modulo operation handles negative values correctly.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

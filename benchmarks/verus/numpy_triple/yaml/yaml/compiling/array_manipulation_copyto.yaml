@@ -1,9 +1,10 @@
 vc-description: |-
+  /*
   Copies values from one vector to another, with optional conditional copying using a boolean mask.
   
   Specification: copyto copies elements from src to dst where the mask is true, 
   preserving dst elements where the mask is false.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

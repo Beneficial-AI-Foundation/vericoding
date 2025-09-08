@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.nancumsum: Return the cumulative sum of array elements treating NaN as zero.
   
   For a 1D array, nancumsum computes the cumulative sum where NaN values are treated as zero.
@@ -12,7 +13,7 @@ vc-description: |-
   The cumulative sum with NaN handling is defined as:
   - result[0] = if a[0].isNaN then 0 else a[0]
   - result[i] = result[i-1] + (if a[i].isNaN then 0 else a[i]) for i > 0
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

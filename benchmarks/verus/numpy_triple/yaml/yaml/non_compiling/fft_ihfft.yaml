@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.fft.ihfft: Compute the inverse FFT of a signal that has Hermitian symmetry.
       
   This function computes the inverse FFT of a signal that has Hermitian symmetry,
@@ -24,7 +25,7 @@ vc-description: |-
   2. Conjugate relationship: ihfft is related to rfft by conjugation
   3. Linearity: ihfft preserves linear combinations
   4. Hermitian symmetry handling: if input has Hermitian symmetry, special properties hold
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

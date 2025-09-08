@@ -1,8 +1,9 @@
 vc-description: |-
+  /*
   The mathematical constant 2/π, approximately 0.6366...
-
+  
   Specification: NPY_2_PI represents the ratio 2/π and satisfies key mathematical properties
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

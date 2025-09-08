@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Return an array with the elements of a right-justified in a string of length width.
   
   Right-justifies each string in the input array by padding it with the specified
@@ -19,7 +20,7 @@ vc-description: |-
   3. Padding placement: Original string appears as suffix in the result
   4. Character preservation: Original string appears as contiguous substring
   5. Width compliance: Result length equals max(original.length, width)
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

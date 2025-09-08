@@ -1,6 +1,7 @@
 Perfect! Now let me provide the full YAML translation:
 
 vc-description: |-
+  /*
   Evaluates a Hermite polynomial at a given point.
   Given coefficients (c₀, c₁, ..., cₙ), evaluates ∑ᵢ cᵢ * Hᵢ(x)
   where Hᵢ is the i-th Hermite polynomial.
@@ -18,6 +19,7 @@ vc-description: |-
   3. Two coefficients [a, b] evaluates to a + b * 2x
   4. The evaluation follows the Hermite polynomial recurrence relation
   5. Hermite polynomials form an orthogonal basis
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

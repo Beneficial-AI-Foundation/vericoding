@@ -1,9 +1,11 @@
 Perfect! The code now verifies. Here's the corrected YAML translation:
 
 vc-description: |-
+  /*
   Multiply a Hermite series by x using the recursion relationship for Hermite polynomials.
   The result has one more coefficient than the input, implementing the transformation
   based on the Hermite polynomial recursion: xP_i(x) = (P_{i + 1}(x) + iP_{i - 1}(x))
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

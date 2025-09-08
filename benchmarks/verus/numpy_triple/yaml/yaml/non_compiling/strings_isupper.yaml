@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Checks if all cased characters in each string are uppercase and there is at least one character
   
   Specification: isupper returns true for each element if all cased characters 
@@ -8,7 +9,7 @@ vc-description: |-
   2. Strings with no cased characters return false  
   3. Strings with mixed case return false
   4. Strings with all cased characters uppercase return true
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

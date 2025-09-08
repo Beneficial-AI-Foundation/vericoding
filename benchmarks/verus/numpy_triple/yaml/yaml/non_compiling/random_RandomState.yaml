@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Generate a random float in the range [0, 1) using the RandomState
   This models the RandomState.random() method which is the most fundamental
   operation for generating uniformly distributed random numbers.
@@ -9,6 +10,7 @@ vc-description: |-
   1. The result is always in the range [0, 1)
   2. The result is deterministic given the same seed
   3. The result follows uniform distribution properties
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

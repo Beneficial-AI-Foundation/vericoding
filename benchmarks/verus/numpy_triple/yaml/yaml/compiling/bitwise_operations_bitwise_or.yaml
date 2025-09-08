@@ -1,5 +1,7 @@
 vc-description: |-
+  /*
   Compute the bit-wise OR of two vectors element-wise
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

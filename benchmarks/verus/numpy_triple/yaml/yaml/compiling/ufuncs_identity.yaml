@@ -1,6 +1,7 @@
 vc-description: |-
+  /*
   ufunc.identity: Get the identity element for a ufunc operation.
-
+  
   Returns the identity element for a given binary operation, which is the value
   that when combined with any other value using that operation, leaves the other
   value unchanged. For example:
@@ -8,15 +9,15 @@ vc-description: |-
   - Multiplication: identity is 1 (x * 1 = x)
   - Logical AND: identity is True (x ∧ True = x)
   - Logical OR: identity is False (x ∨ False = x)
-
+  
   Some operations may have no identity element, in which case None is returned.
-
+  
   Specification: ufunc_identity returns the identity element if it exists.
-
+  
   Precondition: The operation is a valid binary function
   Postcondition: If an identity element exists, applying the operation with
                  that element leaves any other element unchanged
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Convert an array of datetime64 values to an array of strings.
       
   Converts each datetime64 value in the input vector to its string representation.
@@ -6,11 +7,12 @@ vc-description: |-
   'UTC' adds 'Z' suffix, and 'local' would add timezone offset.
       
   For simplicity, we focus on the core conversion from datetime64 to ISO format strings.
-
+  
   Specification: datetime_as_string converts each datetime64 to its string representation.
       
   Precondition: True (no special preconditions)
   Postcondition: Each datetime64 is converted to a properly formatted ISO 8601 string
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

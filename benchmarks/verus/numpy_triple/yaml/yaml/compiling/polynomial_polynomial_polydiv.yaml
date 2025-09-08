@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.polynomial.polynomial.polydiv: Divide one polynomial by another.
       
   Returns the quotient-with-remainder of two polynomials c1 / c2.
@@ -15,7 +16,7 @@ vc-description: |-
   - The division identity holds: c1 = c2 * quotient + remainder (as polynomials)
   - The remainder has degree less than the divisor (leading coefficients are zero)
   - When the divisor is a constant polynomial, the quotient is c1 scaled by 1/c2[0]
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

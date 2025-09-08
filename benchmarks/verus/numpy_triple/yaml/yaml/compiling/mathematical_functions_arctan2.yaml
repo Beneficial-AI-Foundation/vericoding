@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.arctan2: Element-wise arc tangent of x1/x2 choosing the quadrant correctly.
   
   Computes the arc tangent of x1/x2 for each pair of corresponding elements,
@@ -17,7 +18,7 @@ vc-description: |-
   - arctan2(y, -∞) = +π for finite y > 0
   - arctan2(y, +∞) = -0 for finite y < 0
   - arctan2(y, -∞) = -π for finite y < 0
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

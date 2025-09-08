@@ -1,11 +1,12 @@
 vc-description: |-
+  /*
   Upper triangle of a matrix.
       
   Returns a copy of a matrix with the elements below the k-th diagonal zeroed.
   - k = 0: main diagonal (default)
   - k < 0: include |k| diagonals below the main diagonal
   - k > 0: zero out k diagonals above the main diagonal as well
-
+  
   Specification: triu returns an upper triangular matrix with specific properties.
       
   Core behavior:
@@ -22,7 +23,7 @@ vc-description: |-
      - k < 0: includes |k| diagonals below main diagonal in upper triangle
      - k > 0: zeros out k additional diagonals above main diagonal
   6. For square matrices when k = 0, all elements where row_index > column_index are zero
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Compute the roots of a Hermite series.
       
   Returns the roots (zeros) of the polynomial p(x) = Σᵢ c[i] * Hᵢ(x),
@@ -15,7 +16,7 @@ vc-description: |-
   4. For the linear case (n=2), provides exact formula
       
   Precondition: n > 0 to ensure valid polynomial
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

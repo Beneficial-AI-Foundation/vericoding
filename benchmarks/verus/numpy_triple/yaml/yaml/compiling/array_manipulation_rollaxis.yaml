@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.rollaxis: Roll the specified axis backwards, until it lies in a given position.
   
   For 1D arrays, this is a no-op - it returns the input array unchanged.
@@ -15,7 +16,7 @@ vc-description: |-
   
   Mathematical property: For 1D arrays, rollaxis is the identity function
   since there's only one axis that cannot be moved.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

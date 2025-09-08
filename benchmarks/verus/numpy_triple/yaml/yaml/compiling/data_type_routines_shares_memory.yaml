@@ -1,6 +1,7 @@
 vc-description: |-
+  /*
   Determine if two arrays share memory.
-
+  
   This function determines if two arrays share memory by checking
   if they reference the same underlying memory locations.
   
@@ -9,7 +10,7 @@ vc-description: |-
   
   The function can be exponentially slow for some inputs due to the
   complexity of the overlap detection algorithm.
-
+  
   Specification: shares_memory returns a boolean indicating whether two arrays actually share memory.
   
   Precondition: True (no special preconditions needed)
@@ -17,7 +18,7 @@ vc-description: |-
   If the arrays are identical references, it must return True.
   If the arrays are independent (non-overlapping memory), it must return False.
   The function is precise - it returns True if and only if the arrays share memory.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

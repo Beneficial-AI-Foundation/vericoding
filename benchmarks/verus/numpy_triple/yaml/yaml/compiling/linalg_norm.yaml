@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.linalg.norm: Compute the 2-norm (Euclidean norm) of a vector.
   
   This is the default vector norm when ord=None. For a vector x,
@@ -24,6 +25,7 @@ vc-description: |-
   
   Note: Properties like triangle inequality and homogeneity follow from
   the definition but are not explicitly stated in this specification.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

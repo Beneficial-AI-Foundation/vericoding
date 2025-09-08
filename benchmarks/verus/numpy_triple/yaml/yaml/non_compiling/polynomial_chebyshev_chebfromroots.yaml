@@ -1,5 +1,6 @@
 ```yaml
 vc-description: |-
+  /*
   Generate a Chebyshev series with given roots.
   
   Returns the coefficients of the polynomial p(x) = (x - r₀) * (x - r₁) * ... * (x - rₙ)
@@ -13,6 +14,8 @@ vc-description: |-
   2. The polynomial represented by these coefficients has the given roots
   3. When evaluated at any root rᵢ using Chebyshev basis, the result is zero
   4. The highest degree coefficient is non-zero (ensuring correct degree)
+  */
+
 vc-preamble: |-
   use vstd::prelude::*;
 

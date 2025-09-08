@@ -1,5 +1,7 @@
 vc-description: |-
+  /*
   Construct a structured array from a text file using regular expression parsing. The returned array is always a structured array, and is constructed from all matches of the regular expression in the file. Groups in the regular expression are converted to fields of the structured array.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

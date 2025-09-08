@@ -1,7 +1,8 @@
 vc-description: |-
+  /*
   Compute the variance of the elements in a vector with specified delta degrees of freedom.
   The variance is the average of the squared deviations from the mean.
-
+  
   Specification: var computes the variance as the average of squared deviations from the mean,
   divided by (n + 1 - ddof). The variance measures the spread of a distribution.
   
@@ -20,7 +21,7 @@ vc-description: |-
   This specification captures both the mathematical definition of variance
   and its key properties. When ddof=0, this gives the population variance;
   when ddof=1, this gives the sample variance (unbiased estimator).
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

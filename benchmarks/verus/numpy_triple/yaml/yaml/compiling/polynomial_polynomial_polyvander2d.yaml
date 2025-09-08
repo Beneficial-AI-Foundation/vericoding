@@ -1,6 +1,7 @@
 Perfect! Now I can provide the corrected YAML output:
 
 vc-description: |-
+  /*
   Pseudo-Vandermonde matrix of given degrees for 2D polynomials.
   Returns a matrix where V[k, (yDeg + 1)*i + j] = x[k]^i * y[k]^j
   for 0 <= i <= xDeg and 0 <= j <= yDeg.
@@ -9,7 +10,7 @@ vc-description: |-
   satisfies the polynomial power relationship V[k, (yDeg + 1)*i + j] = x[k]^i * y[k]^j.
   The matrix has dimensions n × ((xDeg + 1) * (yDeg + 1)) and represents all polynomial
   terms x^i * y^j for 0 ≤ i ≤ xDeg and 0 ≤ j ≤ yDeg.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,5 +1,7 @@
 vc-description: |-
+  /*
   Move axes of an array to new positions. Move axes in a 1D vector (simplified version). For 1D arrays, moveaxis with source=0 and destination=0 returns the array unchanged. This captures the core mathematical property that moving an axis to itself is identity. Specification: moveaxis preserves all elements and their values. For 1D arrays, moveaxis is always the identity function since there's only one axis. This specification captures several mathematical properties: 1. Element preservation: all values remain unchanged 2. Size preservation: the shape is maintained 3. Identity property: moving axis 0 to position 0 is identity 4. Order preservation: for 1D arrays, element order is maintained
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

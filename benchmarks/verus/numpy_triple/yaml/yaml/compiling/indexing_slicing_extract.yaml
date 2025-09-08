@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.extract: Return the elements of an array that satisfy some condition.
       
   Extracts elements from an array where the corresponding condition is True.
@@ -12,6 +13,7 @@ vc-description: |-
   Precondition: k equals the count of True elements in condition
   Postcondition: The result contains exactly the elements from arr where condition is True,
                 in the same order they appear in arr.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

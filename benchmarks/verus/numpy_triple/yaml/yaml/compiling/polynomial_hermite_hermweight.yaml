@@ -1,21 +1,22 @@
 vc-description: |-
+  /*
   Weight function of the Hermite polynomials.
   Computes exp(-x²) for each element in the input vector.
-
+  
   The weight function is exp(-x^2) and the interval of
   integration is [-inf, inf]. The Hermite polynomials are
   orthogonal, but not normalized, with respect to this weight function.
-
+  
   Parameters
   ----------
   x : array_like
      Values at which the weight function will be computed.
-
+  
   Returns
   -------
   w : ndarray
      The weight function at x.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,9 +1,11 @@
 vc-description: |-
+  /*
   Return the scalar type of highest precision of the same kind as the input.
   
   This function implements numpy.maximum_sctype functionality, which takes a numeric type
   and returns the highest precision type of the same kind. For example, int8 becomes int64,
   float32 becomes float128, complex64 becomes complex256.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

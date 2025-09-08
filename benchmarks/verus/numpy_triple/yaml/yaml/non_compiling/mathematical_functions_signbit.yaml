@@ -1,6 +1,7 @@
 vc-description: |-
+  /*
   Returns element-wise True where signbit is set (less than zero). Returns element-wise True where signbit is set (less than zero). Specification: signbit returns True for negative numbers and False for non-negative numbers
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

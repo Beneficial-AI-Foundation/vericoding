@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.asanyarray: Convert the input to an ndarray, but pass ndarray subclasses through.
   
   Converts the input to an ndarray, but passes ndarray subclasses through unchanged.
@@ -17,7 +18,7 @@ vc-description: |-
   
   This captures the key property of asanyarray: when given an ndarray (Vector in our case),
   it returns the same array without copying.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

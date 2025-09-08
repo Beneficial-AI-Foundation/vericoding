@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Natural logarithm of 10 (ln(10)) - C API Mathematical constant
   ln(10) = 2.302585092994045684017991454684364208
   
@@ -7,7 +8,7 @@ vc-description: |-
   2. It satisfies the property that e^(npy_loge10) = 10
   3. It is the inverse of log10(e), meaning npy_loge10 * log10(e) = 1
   4. It is useful for converting between natural and base-10 logarithms
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

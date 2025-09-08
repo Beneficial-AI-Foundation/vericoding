@@ -1,9 +1,11 @@
 vc-description: |-
+  /*
   Weight function of the Legendre polynomials. 
   The weight function is constant 1 for all input values.
   
   Specification: legweight returns a vector of all ones with the same length as input.
   This captures the mathematical property that the Legendre weight function is constant 1.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

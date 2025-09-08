@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.linalg.vector_norm: Compute the p-norm of a vector for a given order p.
       
   This function computes vector norms of different orders (p-norms).
@@ -36,6 +37,7 @@ vc-description: |-
   - p must be a non-negative real number
   - For p = 0, it counts non-zero elements (special case)
   - For p ≥ 1, it computes the standard p-norm
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

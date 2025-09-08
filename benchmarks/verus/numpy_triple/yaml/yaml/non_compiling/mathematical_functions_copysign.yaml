@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.copysign: Change the sign of x1 to that of x2, element-wise.
   
   Returns an array where each element has the magnitude of x1 but the sign of x2.
@@ -27,7 +28,7 @@ vc-description: |-
     2. |result[i]| = |x1[i]| (magnitude preservation)
     3. sign(result[i]) = sign(x2[i]) (sign copying)
     4. copysign(x1, x2) = copysign(|x1|, x2) (idempotence on magnitude)
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

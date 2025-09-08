@@ -1,10 +1,12 @@
 vc-description: |-
+  /*
   Apply a binary universal function elementwise to two vectors.
   This represents the core __call__ behavior for binary ufuncs like add, multiply, etc.
   
   Specification: ufunc.__call__ applies the operation elementwise to input vectors.
   The result has the same shape as the inputs (broadcasting to common shape) and
   each element is computed by applying the operation to corresponding elements.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

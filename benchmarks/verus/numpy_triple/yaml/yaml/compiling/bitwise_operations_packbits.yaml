@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Packs binary-valued elements into bits in a UInt8 array.
   Each group of 8 binary values is packed into one UInt8.
   The result is padded with zeros if needed.
@@ -6,7 +7,7 @@ vc-description: |-
   Specification: packbits correctly packs binary values into UInt8 bytes according to bitorder.
   For big-endian: first element goes to MSB (bit 7)
   For little-endian: first element goes to LSB (bit 0)
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

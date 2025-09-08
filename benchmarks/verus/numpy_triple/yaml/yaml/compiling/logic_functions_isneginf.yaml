@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Test element-wise for negative infinity, return result as bool array.
   
   This function tests each element according to IEEE 754 floating-point standard:
@@ -11,7 +12,7 @@ vc-description: |-
   3. Distinction from NaN: negative infinity and NaN are mutually exclusive
   4. Result preserves shape: output vector has same length as input
   5. Finite values: All normal, subnormal, and zero values return false
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

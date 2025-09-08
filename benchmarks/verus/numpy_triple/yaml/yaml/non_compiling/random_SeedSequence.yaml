@@ -1,29 +1,30 @@
 vc-description: |-
+  /*
   numpy.random.SeedSequence: Mixes sources of entropy in a reproducible way
   to set the initial state for independent and very probably non-overlapping
   BitGenerators.
-
+  
   SeedSequence takes entropy sources (integers) and mixes them using
   cryptographic hash functions to produce high-quality seed states.
   The mixing algorithm ensures that even low-quality entropy sources
   produce high-quality, uniformly distributed output.
-
+  
   Key properties:
   - Reproducible: Same entropy input always produces same output
   - Avalanche effect: Single bit changes affect all output bits
   - Independence: Spawned sequences are non-overlapping
   - Uniform distribution: Output is uniformly distributed over the state space
-
+  
   Specification: SeedSequence produces a seed state from entropy sources
   with reproducibility and non-degeneracy properties.
-
+  
   Precondition: True (accepts any entropy input, including empty)
   Postcondition: 
   1. Reproducibility: Same entropy always produces same output
   2. Non-degeneracy: Output depends on input entropy
   3. Deterministic: Function is deterministic for fixed inputs
   4. Well-defined: Always produces valid output within expected bounds
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

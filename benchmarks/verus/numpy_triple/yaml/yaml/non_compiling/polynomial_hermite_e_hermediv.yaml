@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Divide one Hermite series by another, returning quotient and remainder.
   The dividend c1 and divisor c2 are coefficient vectors representing Hermite polynomials.
   The division is performed in the Hermite polynomial basis with reprojection.
@@ -14,7 +15,7 @@ vc-description: |-
   
   The specification captures the fundamental division algorithm for polynomials
   adapted to the Hermite polynomial basis set.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Broadcast a 1D vector to a 2D matrix by repeating it along rows.
   This implements the most common broadcasting pattern: (n,) -> (m, n)
   
@@ -29,7 +30,7 @@ vc-description: |-
   Mathematical formulation:
   - For input vector v ∈ ℝⁿ and target shape (m, n)
   - Output matrix M ∈ ℝᵐˣⁿ where M[i,j] = v[j] for all i ∈ {0,...,m-1}, j ∈ {0,...,n-1}
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.spacing: Return the distance between x and the nearest adjacent number.
   
   For each element x in the input array, returns the distance to the nearest
@@ -11,6 +12,7 @@ vc-description: |-
   
   This function is crucial for understanding floating-point precision limits
   and is used in numerical analysis for error bounds and convergence testing.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

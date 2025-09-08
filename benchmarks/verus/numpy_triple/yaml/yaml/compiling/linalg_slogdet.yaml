@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Compute the sign and (natural) logarithm of the determinant of a square matrix.
       
   This function is more numerically stable than computing log(det(a)) directly,
@@ -16,6 +17,7 @@ vc-description: |-
   - logabsdet is the natural log of the absolute value of the determinant
   - The original determinant can be recovered as: det = sign * exp(logabsdet)
   - The function provides a numerically stable way to compute logarithms of determinants
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

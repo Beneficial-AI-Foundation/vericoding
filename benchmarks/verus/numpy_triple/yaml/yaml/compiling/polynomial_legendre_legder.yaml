@@ -1,7 +1,9 @@
 vc-description: |-
+  /*
   Differentiate a Legendre series.
   Returns the Legendre series coefficients c differentiated m times.
   Each differentiation is multiplied by scl (scaling factor).
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

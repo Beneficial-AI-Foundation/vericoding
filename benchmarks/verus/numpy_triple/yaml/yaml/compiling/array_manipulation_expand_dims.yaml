@@ -1,9 +1,11 @@
 vc-description: |-
+  /*
   Expand the shape of a vector by inserting a new axis at the specified position.
   axis=0 creates a row vector (1×n), axis=1 creates a column vector (n×1).
   
   Specification: expand_dims preserves all elements and adds a new dimension at the specified axis.
   The function creates a view with increased dimensions while maintaining element order and values.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

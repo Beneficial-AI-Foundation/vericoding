@@ -1,6 +1,7 @@
 vc-description: |-
+  /*
   For each element, return True if there are only decimal characters in the element.
-
+  
   For each element, return True if there are only decimal characters in the element.
   
   Specification: isdecimal returns True for each element if all characters in the string 
@@ -19,7 +20,7 @@ vc-description: |-
   - Strings with only decimal characters return True
   - Strings with non-decimal characters return False
   - Mixed decimal/non-decimal characters return False
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

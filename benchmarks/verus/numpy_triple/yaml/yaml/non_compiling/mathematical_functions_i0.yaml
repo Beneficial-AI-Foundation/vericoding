@@ -1,5 +1,6 @@
 ```rust
 vc-description: |-
+  /*
   Modified Bessel function of the first kind, order 0
 
   numpy.i0: Modified Bessel function of the first kind, order 0.
@@ -25,6 +26,7 @@ vc-description: |-
 
   Precondition: True (no special preconditions for i0)
   Postcondition: For all indices i, result[i] = i0(x[i]) with the mathematical properties above
+  */
 
 vc-preamble: |-
   use vstd::prelude::*;

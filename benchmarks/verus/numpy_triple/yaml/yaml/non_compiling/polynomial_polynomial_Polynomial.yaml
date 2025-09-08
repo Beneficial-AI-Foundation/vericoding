@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   A power series class representing a polynomial with coefficients in order of increasing degree.
   
   The Polynomial structure encapsulates coefficients from lowest to highest degree,
@@ -8,7 +9,7 @@ vc-description: |-
   The domain and window parameters support polynomial transformations by mapping
   the interval [domain[0], domain[1]] to [window[0], window[1]] through scaling
   and shifting.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

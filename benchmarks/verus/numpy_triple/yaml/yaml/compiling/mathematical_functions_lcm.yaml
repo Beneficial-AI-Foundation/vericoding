@@ -1,10 +1,11 @@
 vc-description: |-
+  /*
   Returns the lowest common multiple of |x1| and |x2| element-wise.
-
+  
   Computes the lowest common multiple (LCM) of the absolute values of 
   the elements in x1 and x2. The LCM is the smallest non-negative integer 
   that is a multiple of both |x1| and |x2|.
-
+  
   Mathematical Properties:
   - lcm(a, b) = lcm(b, a) (commutativity)
   - lcm(a, b) * gcd(a, b) = |a * b| (fundamental relationship)
@@ -12,7 +13,7 @@ vc-description: |-
   - lcm(a, b) ≥ 0 (non-negativity)
   - |a| divides lcm(a, b) and |b| divides lcm(a, b) (divisibility)
   - lcm(a, b) is minimal among all positive integers divisible by both |a| and |b|
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

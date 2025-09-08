@@ -1,11 +1,12 @@
 vc-description: |-
+  /*
   Add one Laguerre series to another.
   Returns the sum of two Laguerre series c1 + c2. The arguments
   are sequences of coefficients ordered from lowest order term to highest.
   
   Specification: lagadd performs component-wise addition of two Laguerre series coefficients.
   The result length is the maximum of the input lengths, with shorter arrays padded with zeros.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

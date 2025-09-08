@@ -1,5 +1,7 @@
 vc-description: |-
+  /*
   Multiply one Legendre series by another, producing coefficients in Legendre basis
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

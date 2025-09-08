@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Raise a polynomial to a power.
   Returns the polynomial c raised to the power pow.
   For polynomial p(x) = c[0] + c[1]*x + ... + c[n-1]*x^(n-1),
@@ -9,6 +10,7 @@ vc-description: |-
   For power 0, returns [1] (the constant polynomial 1).
   For power 1, returns the original polynomial.
   The degree grows as expected for polynomial multiplication.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

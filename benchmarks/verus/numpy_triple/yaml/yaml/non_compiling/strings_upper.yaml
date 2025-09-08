@@ -1,23 +1,25 @@
 vc-description: |-
+  /*
   numpy.strings.upper: Return an array with the elements converted to uppercase.
-
+  
   Converts each string element in the input vector to uppercase. This transformation
   applies to all alphabetic characters while preserving non-alphabetic characters
   (digits, punctuation, whitespace) unchanged.
-
+  
   The function preserves the shape of the input array and handles empty strings
   appropriately by returning them unchanged.
-
+  
   From NumPy documentation:
   - Parameters: a (array_like) - Input array with string dtype
   - Returns: out (ndarray) - Output array with elements converted to uppercase
-
+  
   Mathematical Properties:
   1. Element-wise transformation: result[i] = upper(a[i]) for all i
   2. Length preservation: result[i].length = a[i].length for all i
   3. Case transformation: lowercase letters become uppercase, others unchanged
   4. Idempotent: upper(upper(x)) = upper(x)
   5. Preserves vector length: result.size = a.size
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

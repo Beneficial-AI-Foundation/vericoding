@@ -1,6 +1,7 @@
 vc-description: |-
+  /*
   Compute the vector dot product of two vectors
-
+  
   Specification: vecdot computes the mathematical dot product as the sum of element-wise products.
   This captures the mathematical definition: a · b = Σ(i=0 to n-1) a_i * b_i.
   
@@ -9,7 +10,7 @@ vc-description: |-
   - Linearity: vecdot(c*x1, x2) = c * vecdot(x1, x2)
   - Zero vector: vecdot(0, x) = 0
   - Self-dot gives sum of squares: vecdot(x, x) = Σ(x_i²)
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

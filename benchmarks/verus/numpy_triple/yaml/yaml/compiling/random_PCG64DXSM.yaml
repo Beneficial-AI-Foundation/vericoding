@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   BitGenerator for the PCG-64 DXSM pseudo-random number generator
   
   PCG-64 DXSM is a 128-bit implementation of O'Neill's permutation congruential generator
@@ -21,6 +22,7 @@ vc-description: |-
   3. Full period: The generator has period 2^128
   4. Statistical independence: Generated values appear statistically independent
   5. Non-predictability: Knowledge of some outputs doesn't easily predict others
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

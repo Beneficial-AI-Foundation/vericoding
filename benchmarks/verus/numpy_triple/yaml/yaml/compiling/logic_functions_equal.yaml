@@ -1,16 +1,17 @@
 vc-description: |-
+  /*
   numpy.equal: Return (x1 == x2) element-wise.
-
+  
   Performs element-wise comparison of two arrays and returns a boolean array
   of the same shape indicating where the corresponding elements are equal.
   
   For scalar inputs, returns a single boolean value. For array inputs of the
   same shape, returns an array of booleans. This function is the basis for
   the == operator when used with numpy arrays.
-
+  
   Specification: numpy.equal returns a boolean vector where each element indicates
   whether the corresponding elements in x1 and x2 are equal.
-
+  
   Precondition: True (arrays have the same shape by the type system)
   Postcondition: For all indices i, result[i] = (x1[i] == x2[i])
   
@@ -23,7 +24,7 @@ vc-description: |-
   3. Reflexivity: equal(x, x) returns all true
   4. Symmetry: equal(x, y) = equal(y, x)
   5. Result shape matches input shape
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

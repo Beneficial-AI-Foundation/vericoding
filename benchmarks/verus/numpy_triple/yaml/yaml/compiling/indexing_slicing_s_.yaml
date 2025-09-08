@@ -1,8 +1,9 @@
 vc-description: |-
+  /*
   Index expression builder that creates slice objects for array indexing.
   This is a simplified version of numpy.s_ that creates slice objects
   for use in array indexing operations.
-
+  
   Specification: s_ creates a well-formed slice object
   This comprehensive specification captures:
   1. The slice object contains the provided start, stop, and step values
@@ -11,7 +12,7 @@ vc-description: |-
   4. The resulting slice is valid for array indexing operations
   5. The slice preserves the ordering constraints (start ≤ stop when both present)
   6. The step value, if present, is positive for forward slicing
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

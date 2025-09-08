@@ -1,6 +1,7 @@
 vc-description: |-
+  /*
   numpy.nonzero: Return the indices of the elements that are non-zero.
-
+  
   Returns a vector of indices where the corresponding elements in the input
   array are non-zero. The indices are returned in row-major, C-style order.
   
@@ -10,16 +11,16 @@ vc-description: |-
   
   Note: In the full NumPy implementation, this returns a tuple of arrays
   (one for each dimension), but for 1D arrays we simplify to a single vector.
-
+  
   Specification: numpy.nonzero returns indices of all non-zero elements.
-
+  
   Precondition: True (no constraints on input)
   Postcondition: 
   1. Every index in the result corresponds to a non-zero element in the input
   2. Every non-zero element in the input has its index in the result (completeness)
   3. The indices are in ascending order (preserving array order)
   4. No duplicates in the result
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

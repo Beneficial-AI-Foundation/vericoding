@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Return the scaled companion matrix of Hermite polynomial coefficients.
   The companion matrix is symmetric when c represents a Hermite basis polynomial.
   
@@ -7,7 +8,7 @@ vc-description: |-
   1. The super-diagonal and sub-diagonal contain sqrt(k/2) for k = 1 to n
   2. The last column is adjusted by scaled coefficients
   3. The matrix is symmetric when c represents a Hermite basis polynomial
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

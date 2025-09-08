@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.mgrid: Dense multi-dimensional "meshgrid" creation for 2D case.
   
   Creates a dense mesh-grid from two 1D coordinate arrays, returning a pair of 2D arrays
@@ -12,6 +13,7 @@ vc-description: |-
   For 2D case with rows and cols dimensions, this returns a tuple of two matrices:
   - First matrix: row coordinates repeated across columns
   - Second matrix: column coordinates repeated across rows
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

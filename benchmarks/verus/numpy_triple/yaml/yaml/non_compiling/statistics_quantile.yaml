@@ -1,8 +1,9 @@
 vc-description: |-
+  /*
   Compute the q-th quantile of the data in a vector.
   Specification: quantile returns a value that has the property that 
   approximately q proportion of the data is less than or equal to it.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

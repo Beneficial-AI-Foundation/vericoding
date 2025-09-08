@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.diff: Calculate the n-th discrete difference along the given axis.
   
   The first difference is given by out[i] = a[i+1] - a[i] along the given axis.
@@ -21,7 +22,7 @@ vc-description: |-
   2. Difference property: Each element represents the discrete difference
   3. Type preservation: Result maintains the same numeric type as input
   4. Monotonicity: If input is monotonic, result has consistent sign
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

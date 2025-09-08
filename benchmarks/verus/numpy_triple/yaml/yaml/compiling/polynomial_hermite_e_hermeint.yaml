@@ -1,10 +1,11 @@
 vc-description: |-
+  /*
   Integrate a Hermite_e series.
   
   Integrate a Hermite_e series coefficients vector m times with scaling and integration constants.
   
   Specification: hermeint integrates Hermite_e series coefficients preserving mathematical properties.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

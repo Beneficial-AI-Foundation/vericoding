@@ -1,21 +1,22 @@
 vc-description: |-
+  /*
   Return the companion matrix of c.
-
+  
   The companion matrix for power series cannot be made symmetric by
   scaling the basis, so this function differs from those for the
   orthogonal polynomials.
-
+  
   Parameters
   ----------
   c : array_like
       1-D array of polynomial coefficients ordered from low to high
       degree.
-
+  
   Returns
   -------
   mat : ndarray
       Companion matrix of dimensions (deg, deg).
-
+  
   Return the companion matrix of a polynomial.
   
   The companion matrix C for a polynomial p(x) = c[0] + c[1]*x + ... + c[n]*x^n
@@ -26,7 +27,7 @@ vc-description: |-
   - Last row: [-c[0]/c[n], -c[1]/c[n], ..., -c[n-1]/c[n]]
   
   The companion matrix is used to find roots of the polynomial as eigenvalues.
-
+  
   Specification: polycompanion constructs the companion matrix of a polynomial.
   
   The companion matrix satisfies the following properties:
@@ -40,7 +41,7 @@ vc-description: |-
   - Characteristic polynomial: det(λI - C) = c[0] + c[1]*λ + ... + c[n+1]*λ^(n+1)
   - Rank: The matrix has full rank n+1 when c[n+1] ≠ 0
   - Structure: C[i,j] = 1 if j = i+1 and i < n, C[n,j] = -c[j]/c[n+1], 0 otherwise
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

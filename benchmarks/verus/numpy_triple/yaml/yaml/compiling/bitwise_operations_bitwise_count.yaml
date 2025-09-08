@@ -1,8 +1,9 @@
 Perfect! The code verifies now. Here's the complete YAML output:
 
 vc-description: |-
+  /*
   Computes the number of 1-bits in the absolute value of each element in a vector
-
+  
   Specification: bitwise_count returns the count of 1-bits in the binary representation
   of the absolute value of each element. The result satisfies several properties:
   1. Each output element is the popcount of the corresponding input's absolute value
@@ -13,6 +14,7 @@ vc-description: |-
   6. The popcount is always non-negative and bounded by bit width
   7. For negative inputs, uses the absolute value
   8. The popcount operation is invariant under sign changes
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

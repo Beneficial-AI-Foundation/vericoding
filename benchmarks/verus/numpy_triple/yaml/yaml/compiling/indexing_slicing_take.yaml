@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Take elements from a source array at specified indices.
   Given a source array 'arr' and a vector of indices 'indices',
   returns a new array containing the elements from 'arr' at the positions
@@ -22,6 +23,7 @@ vc-description: |-
   must be in valid range. The use of Fin type ensures type safety and eliminates
   the need for runtime bounds checking. The result preserves the element type
   of the source array.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

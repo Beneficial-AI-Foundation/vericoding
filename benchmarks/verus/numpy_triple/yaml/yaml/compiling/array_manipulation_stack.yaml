@@ -1,14 +1,15 @@
 vc-description: |-
+  /*
   Stack a sequence of vectors along a new axis to create a 2D matrix.
   For simplicity, we focus on stacking 1D vectors along axis 0.
   The result has shape (m, n) where m is the number of vectors and n is their common length.
-
+  
   Specification: stack creates a 2D matrix where each input vector becomes a row.
   Key properties:
   1. The result preserves all input vectors as rows
   2. The i-th row of the result equals the i-th input vector
   3. Shape property: stacking m vectors of length n produces an m×n matrix
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

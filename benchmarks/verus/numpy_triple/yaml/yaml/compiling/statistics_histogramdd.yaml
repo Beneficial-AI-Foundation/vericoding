@@ -1,6 +1,8 @@
 vc-description: |-
+  /*
   Compute the multidimensional histogram of some data.
   For simplicity, we focus on 2D histograms with fixed dimensions.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

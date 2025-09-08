@@ -1,6 +1,7 @@
 Perfect! Now the code verifies. Let me provide the YAML output:
 
 vc-description: |-
+  /*
   Squeeze a single-element vector to extract its value.
   This is a simplified 1D version of numpy.squeeze for vectors of size 1.
   
@@ -15,6 +16,7 @@ vc-description: |-
   - The input must be a vector of exactly size 1
   - The output type changes from Vector to the element type
   - This models numpy's behavior where squeeze([x]) returns x as a 0D array
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

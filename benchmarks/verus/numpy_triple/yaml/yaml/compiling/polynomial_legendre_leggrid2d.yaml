@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Evaluate a 2-D Legendre series on the Cartesian product of x and y.
   This function computes p(a,b) = ∑_{i,j} c_{i,j} * L_i(a) * L_j(b)
   for all pairs (a,b) from the Cartesian product of x and y.
@@ -8,7 +9,7 @@ vc-description: |-
   
   The function computes the tensor product evaluation of Legendre polynomials
   according to the mathematical formula p(a,b) = ∑_{i,j} c_{i,j} * L_i(a) * L_j(b).
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

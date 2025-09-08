@@ -1,5 +1,7 @@
 vc-description: |-
+  /*
   Determines whether the given object represents a scalar data-type
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

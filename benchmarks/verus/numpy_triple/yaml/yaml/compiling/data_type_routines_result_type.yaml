@@ -1,10 +1,11 @@
 vc-description: |-
+  /*
   Returns the data type that results from applying NumPy type promotion rules to the arguments. 
   
   Type promotion in NumPy works similarly to the rules in languages like C++, with some differences. When both scalars and arrays are used, the array's type takes precedence and the scalar's actual value is considered.
   
   The function takes operands of some operation and returns the result type according to NumPy's type promotion hierarchy.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

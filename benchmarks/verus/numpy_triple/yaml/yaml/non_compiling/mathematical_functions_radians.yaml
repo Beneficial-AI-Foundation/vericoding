@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.radians: Convert angles from degrees to radians.
   
   Converts angles from degrees to radians element-wise.
@@ -22,7 +23,7 @@ vc-description: |-
   - 360 degrees = 2π radians
   - Maintains array shape and element-wise mapping
   - Preserves the relationship between angle measures
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

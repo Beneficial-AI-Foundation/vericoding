@@ -1,5 +1,6 @@
 ```yaml
 vc-description: |-
+  /*
   numpy.polynomial.chebyshev.chebinterpolate: Interpolate a function at the Chebyshev points of the first kind.
       
   Returns the Chebyshev series coefficients that interpolate the given function
@@ -29,6 +30,7 @@ vc-description: |-
   Precondition: True (the function can be any Float → Float function)
   Postcondition: The returned coefficients satisfy the interpolation property
                  at all Chebyshev points of the first kind
+  */
 
 vc-preamble: |-
   use vstd::prelude::*;

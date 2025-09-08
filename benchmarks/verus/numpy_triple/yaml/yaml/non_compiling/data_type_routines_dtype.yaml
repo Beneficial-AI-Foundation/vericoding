@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.dtype: Create a data type object.
   
   A numpy array is homogeneous, and contains elements described by a dtype object. 
@@ -12,7 +13,7 @@ vc-description: |-
   
   Precondition: The type_spec is a valid NumPy type specification
   Postcondition: The resulting DType has consistent attributes that match the specified type
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

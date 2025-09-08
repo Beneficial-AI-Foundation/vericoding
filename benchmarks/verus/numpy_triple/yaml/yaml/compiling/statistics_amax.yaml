@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Returns the maximum value of all elements in a non-empty vector.
   Specification: amax returns the maximum value in the vector.
   Mathematical properties:
@@ -6,7 +7,7 @@ vc-description: |-
   2. No element in the vector is greater than the result
   3. The result is unique (first occurrence if there are duplicates)
   4. For constant vectors, amax equals the constant value
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

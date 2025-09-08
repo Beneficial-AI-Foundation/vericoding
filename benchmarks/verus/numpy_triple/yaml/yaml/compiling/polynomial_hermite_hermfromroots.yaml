@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Generate a Hermite series with given roots.
       
   Returns the coefficients of the polynomial p(x) = (x - r₀) * (x - r₁) * ... * (x - rₙ)
@@ -6,7 +7,7 @@ vc-description: |-
   
   The resulting polynomial is expressed as: p(x) = c₀ + c₁ * H₁(x) + ... + cₙ * Hₙ(x)
   where Hᵢ(x) are Hermite polynomials.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

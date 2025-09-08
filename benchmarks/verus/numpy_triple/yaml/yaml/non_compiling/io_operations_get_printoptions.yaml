@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Return the current print options
   
   Returns a structure containing the current print options that control
@@ -13,7 +14,7 @@ vc-description: |-
   
   Precondition: True (no special preconditions)
   Postcondition: Result contains valid print options with proper constraints
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

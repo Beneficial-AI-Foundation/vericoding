@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Convert a polynomial to a Hermite series. 
   Converts coefficients from standard polynomial basis to Hermite series basis.
   Uses Horner's method with Hermite operations: for polynomial p(x) = aₙxⁿ + ... + a₁x + a₀,
@@ -18,6 +19,7 @@ vc-description: |-
   
   The algorithm implements: result = hermeadd(hermemulx(previous_result), current_coefficient)
   applied from highest to lowest degree coefficients.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

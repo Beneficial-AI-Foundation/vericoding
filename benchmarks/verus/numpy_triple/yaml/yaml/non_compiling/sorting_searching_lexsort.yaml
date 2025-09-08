@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Perform an indirect stable sort using a sequence of keys.
   Given multiple sorting keys, lexsort returns an array of integer indices that 
   describes the sort order by multiple columns. The last key in the sequence is used
@@ -9,7 +10,7 @@ vc-description: |-
   - If primary key differs, sort by primary key
   - If primary key is equal, sort by second-to-last key, etc.
   - The sort is stable (preserves relative order of equal elements)
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

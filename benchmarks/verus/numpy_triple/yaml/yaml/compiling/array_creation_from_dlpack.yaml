@@ -1,5 +1,7 @@
 vc-description: |-
+  /*
   Create a NumPy array from an object implementing the DLPack protocol. This function allows for interoperability with other libraries that support the DLPack protocol.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

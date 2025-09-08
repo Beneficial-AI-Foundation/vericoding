@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.tensordot: Compute tensor dot product along specified axes.
       
   Given two tensors a and b, and axes, sums the products of a's and b's 
@@ -21,7 +22,7 @@ vc-description: |-
       
   Precondition: axes = 1 (for 1-D vector case)
   Postcondition: result equals the sum of element-wise products
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

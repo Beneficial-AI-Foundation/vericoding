@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Return the string representation of a vector, formatted as "array([v1, v2, ..., vn])".
   This provides a structured string representation that includes the "array()" wrapper
   and properly formatted element values.
@@ -14,6 +15,7 @@ vc-description: |-
   6. Small number suppression: very small numbers can be represented as zero
   7. Non-emptiness: the result is always a non-empty string
   8. Structural integrity: the string format is parseable and well-formed
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

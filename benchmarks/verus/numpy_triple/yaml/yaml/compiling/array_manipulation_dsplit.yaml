@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Split a 1D vector into equal sections (simplified version of dsplit).
       
   Since dsplit operates on the 3rd axis of 3D arrays, this simplified version
@@ -17,7 +18,7 @@ vc-description: |-
       
   Mathematical property: Concatenating all sub-vectors in order reconstructs
                         the original vector.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

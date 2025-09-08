@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Subtract one Hermite series from another.
   Returns the difference of two Hermite series c1 - c2.
   The sequences of coefficients are from lowest order term to highest.
@@ -7,7 +8,7 @@ vc-description: |-
   The result has length equal to the maximum of the input lengths, with shorter arrays
   implicitly padded with zeros. This captures the mathematical property that polynomial 
   subtraction is component-wise and preserves the polynomial structure.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

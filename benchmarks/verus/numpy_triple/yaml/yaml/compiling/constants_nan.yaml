@@ -1,6 +1,7 @@
 Perfect! Now I can provide the correct YAML output with the working Verus specification:
 
 vc-description: |-
+  /*
   IEEE 754 floating point representation of Not a Number (NaN)
   
   IEEE 754 floating point representation of Not a Number (NaN)
@@ -11,6 +12,7 @@ vc-description: |-
   3. NaN is not ordered (comparisons with any value are false except ≠)
   4. NaN is not finite
   5. Standard operations preserve NaN propagation
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

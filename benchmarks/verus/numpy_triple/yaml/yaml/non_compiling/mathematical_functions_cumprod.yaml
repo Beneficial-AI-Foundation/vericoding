@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Return the cumulative product of elements along a given axis.
   
   For a vector [a₁, a₂, a₃, ..., aₙ], returns [a₁, a₁*a₂, a₁*a₂*a₃, ..., a₁*a₂*...*aₙ].
@@ -23,7 +24,7 @@ vc-description: |-
   - result[0] = a[0] (when n > 0)
   - result[i+1] = result[i] * a[i+1] (cumulative property)
   - Each element is the product of all preceding elements (including itself)
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

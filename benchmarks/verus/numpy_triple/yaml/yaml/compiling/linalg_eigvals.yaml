@@ -1,19 +1,21 @@
 vc-description: |-
+  /*
   Compute the eigenvalues of a general matrix
-
+  
   Compute the eigenvalues of a general matrix.
-
+  
   Main difference from eig: Does not compute eigenvectors.
-
+  
   Parameters:
   - a: Square array
-
+  
   Returns:
   - w: The eigenvalues, not necessarily ordered
-
+  
   Compute the eigenvalues of a general square matrix
-
+  
   Specification: eigvals computes eigenvalues of a square matrix
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

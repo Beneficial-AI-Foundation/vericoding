@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Compute the q-th quantile of the data in a vector, ignoring NaN values.
   When all elements are NaN, returns NaN.
   
@@ -10,7 +11,7 @@ vc-description: |-
   - For q=0, returns the minimum of non-NaN elements
   - For q=1, returns the maximum of non-NaN elements
   - For vectors with no NaN values, behaves identically to regular quantile
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Changes elements of an array based on conditional and input values.
   
   This function modifies the target array in-place, setting elements to values
@@ -10,7 +11,7 @@ vc-description: |-
   - mask: Boolean mask array with same shape as a
   - values: Values to put into a where mask is True
   - m: Size of values array (must be positive for repetition)
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Reverses the order of elements in a vector (1D case of numpy.flip).
       
   This function reverses the order of all elements in the input vector.
@@ -19,6 +20,7 @@ vc-description: |-
   - For n=0 (empty vector), returns empty vector
   - For n=1 (single element), returns the same vector
   - For n>1, first element becomes last, last becomes first
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

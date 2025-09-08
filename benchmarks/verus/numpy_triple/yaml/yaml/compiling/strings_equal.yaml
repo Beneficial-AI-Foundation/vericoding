@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.strings.equal: Return (x1 == x2) element-wise for string arrays.
   
   Performs element-wise string comparison between two vectors of strings.
@@ -17,6 +18,7 @@ vc-description: |-
   - Equivalence: result[i] is true if and only if x1[i] equals x2[i]
   - Reflexivity: If input vectors are identical, all result elements are true
   - Type-safe: Result vector has same length as input vectors
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

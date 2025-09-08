@@ -1,10 +1,11 @@
 vc-description: |-
+  /*
   Divide one Legendre series by another.
   Returns the quotient and remainder of two Legendre series c1 / c2.
   The arguments are sequences of coefficients from lowest order to highest.
   
   Specification: legdiv computes polynomial division in Legendre basis
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

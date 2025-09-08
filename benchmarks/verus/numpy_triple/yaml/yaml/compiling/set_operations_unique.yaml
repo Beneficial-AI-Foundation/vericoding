@@ -1,8 +1,9 @@
 vc-description: |-
+  /*
   Find the unique elements of a vector and return them in sorted order.
   
   Specification: unique returns sorted unique elements from the input vector.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,5 +1,7 @@
 vc-description: |-
+  /*
   For each element, return the highest index in the string where substring sub is found, such that sub is contained within [start, end]
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

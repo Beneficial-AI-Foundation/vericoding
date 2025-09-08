@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Differentiate a polynomial.
   
   Returns the polynomial coefficients differentiated `m` times.
@@ -22,7 +23,7 @@ vc-description: |-
   - Taking 0 derivatives returns the original polynomial
   - The constant term (i=0) disappears after one derivative
   - Higher order terms shift down by m positions
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

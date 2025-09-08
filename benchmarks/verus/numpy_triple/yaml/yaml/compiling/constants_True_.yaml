@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   NumPy's boolean scalar type representing True.
   This is NumPy's equivalent of Python's built-in True, but as a NumPy scalar type.
   Comparison operations in NumPy return this type instead of Python's bool.
@@ -8,7 +9,7 @@ vc-description: |-
   2. It is the identity element for logical AND operations
   3. It is the absorbing element for logical OR operations
   4. Its negation gives false
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

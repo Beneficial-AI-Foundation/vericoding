@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.nextafter: Return the next floating-point value after x1 towards x2, element-wise.
       
   Returns the next representable floating-point value after x1 in the direction of x2.
@@ -38,7 +39,7 @@ vc-description: |-
     4. Symmetry: nextafter(nextafter(x, y), x) moves back towards x
     5. Identity: nextafter(x, x) = x
     6. Finite precision: respects IEEE 754 floating-point representation
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

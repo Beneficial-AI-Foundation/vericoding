@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.random.default_rng: Construct a new Generator with the default BitGenerator (PCG64).
   
   Creates a new Generator instance using PCG64 as the underlying BitGenerator.
@@ -12,6 +13,7 @@ vc-description: |-
   Precondition: True (no restrictions on the seed parameter)
   Postcondition: The returned Generator is properly initialized with the given seed
   and uses PCG64 as the underlying BitGenerator.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,6 +1,7 @@
 vc-description: |-
+  /*
   Return a new vector of given size, filled with zeros
-
+  
   Specification: zeros returns a vector where all elements are zero
   This comprehensive specification captures:
   1. All elements equal to zero (basic property)
@@ -10,6 +11,7 @@ vc-description: |-
   5. The dot product with any vector is zero
   6. The norm/magnitude is zero (for types with norm)
   7. Element-wise operations preserve zero structure
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

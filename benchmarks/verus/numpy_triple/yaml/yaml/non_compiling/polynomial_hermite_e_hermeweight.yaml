@@ -1,5 +1,6 @@
 ```verus
 vc-description: |-
+  /*
   numpy.polynomial.hermite_e.hermeweight: Weight function of the Hermite_e polynomials.
 
   The weight function is exp(-x²/2) and the interval of integration is [-∞, ∞].
@@ -23,6 +24,8 @@ vc-description: |-
   - Weight function is symmetric: w(x) = w(-x)
   - Weight function achieves maximum at x = 0: w(0) = 1
   - Weight function approaches 0 as |x| → ∞
+  */
+
 vc-preamble: |-
   use vstd::prelude::*;
 

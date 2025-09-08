@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Compute the outer product of two vectors.
   Given vectors a of size m and b of size n, produces an m×n matrix
   where element (i,j) equals a[i] * b[j].
@@ -16,6 +17,7 @@ vc-description: |-
   
   This captures the essential mathematical behavior of the outer product operation,
   which is fundamental in linear algebra and tensor analysis.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

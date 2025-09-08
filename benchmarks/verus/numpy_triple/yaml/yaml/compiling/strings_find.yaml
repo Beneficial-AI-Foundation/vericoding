@@ -1,5 +1,7 @@
 vc-description: |-
+  /*
   For each element, return the lowest index in the string where substring sub is found, such that sub is contained in the range [start, end]. Returns -1 if sub is not found.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,6 +1,8 @@
 ```yaml
 vc-description: |-
+  /*
   Return the sum of array elements treating Not a Numbers (NaNs) as zero
+  */
 
 vc-preamble: |-
   use vstd::prelude::*;

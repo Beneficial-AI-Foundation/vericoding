@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.unpackbits: Unpacks elements of a uint8 array into a binary-valued output array.
   
   Each element of the input array represents a bit-field that is unpacked into
@@ -7,7 +8,7 @@ vc-description: |-
   
   This specification covers the basic 1D case with default parameters.
   For simplicity, we use Nat instead of UInt8, with the constraint that input values < 256.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
   use vstd::arithmetic::power::pow;

@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Convert a Laguerre series to a polynomial.
   Convert an array representing the coefficients of a Laguerre series,
   ordered from lowest degree to highest, to an array of the coefficients
@@ -6,7 +7,7 @@ vc-description: |-
   
   Specification: lag2poly converts Laguerre series coefficients to standard polynomial coefficients.
   The converted polynomial evaluates to the same values as the original Laguerre series.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

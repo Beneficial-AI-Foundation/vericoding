@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.fft.rfftfreq: Return the Discrete Fourier Transform sample frequencies for rfft.
   
   The function generates frequency bin centers in cycles per unit of sample spacing,
@@ -25,6 +26,7 @@ vc-description: |-
   2. The first element is always 0
   3. Each element i represents frequency i / (d * n)
   4. The last element is (n//2) / (d * n) (Nyquist frequency)
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

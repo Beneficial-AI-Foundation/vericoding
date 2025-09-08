@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.bitwise_or: Compute the bit-wise OR of two arrays element-wise.
   
   Computes the bit-wise OR of the underlying binary representation of
@@ -18,7 +19,7 @@ vc-description: |-
   - Commutative: bitwise_or(x1[i], x2[i]) = bitwise_or(x2[i], x1[i])
   - Identity: bitwise_or(x[i], 0) = x[i]
   - Idempotent: bitwise_or(x[i], x[i]) = x[i]
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

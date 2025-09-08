@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Pseudo-Vandermonde matrix of given degrees for 2D Hermite polynomials.
       
   Returns a matrix where each row corresponds to a sample point (x[i], y[i]),
@@ -12,6 +13,7 @@ vc-description: |-
   V[k][(ydeg + 1)*i + j] equals H_i(x[k]) * H_j(y[k]), where H_i denotes the 
   i-th Hermite polynomial. The Hermite polynomials follow the recurrence:
   H_0(t) = 1, H_1(t) = 2t, H_n(t) = 2t * H_{n-1}(t) - 2(n-1) * H_{n-2}(t)
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

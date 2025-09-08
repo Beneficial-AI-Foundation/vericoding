@@ -1,6 +1,7 @@
 Perfect! Now I can provide the correct YAML output:
 
 vc-description: |-
+  /*
   Evenly round to the given number of decimals.
   
   numpy.round: Evenly round to the given number of decimals.
@@ -25,7 +26,7 @@ vc-description: |-
   - Monotonicity: if a[i] ≤ a[j] then result[i] ≤ result[j]
   - For decimals=0: result[i] is an integer value
   - Approximation property: result[i] is close to a[i] within rounding precision
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

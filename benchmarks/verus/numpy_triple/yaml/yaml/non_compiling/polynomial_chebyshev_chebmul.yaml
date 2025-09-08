@@ -2,6 +2,7 @@ Perfect! Now the code verifies. Let me provide the complete YAML translation:
 
 ```yaml
 vc-description: |-
+  /*
   Multiply one Chebyshev series by another.
   
   Returns the product of two Chebyshev series c1 * c2. The arguments
@@ -9,6 +10,7 @@ vc-description: |-
   e.g., [1,2,3] represents the series T_0 + 2*T_1 + 3*T_2.
   
   The result length is m + n - 1 where m and n are the lengths of c1 and c2.
+  */
 
 vc-preamble: |-
   use vstd::prelude::*;

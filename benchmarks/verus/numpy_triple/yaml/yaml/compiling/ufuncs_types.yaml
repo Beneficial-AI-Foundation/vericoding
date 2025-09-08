@@ -1,9 +1,10 @@
 vc-description: |-
+  /*
   List of supported data type signatures
   Shows input->output type mappings
   Returns the list of supported data type signatures for a universal function
   Specification: types returns formatted type signatures as strings
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

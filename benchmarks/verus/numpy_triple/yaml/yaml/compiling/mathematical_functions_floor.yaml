@@ -1,12 +1,13 @@
 vc-description: |-
+  /*
   Return the floor of the input, element-wise.
-
+  
   The floor of each element x is the largest integer i, such that i <= x.
   This is a fundamental mathematical operation that rounds down to the
   nearest integer.
   
   Returns an array of the same shape as x, containing the floor of each element.
-
+  
   Specification: numpy.floor returns a vector where each element is the
   floor (largest integer less than or equal to) the corresponding element in x.
   
@@ -20,7 +21,7 @@ vc-description: |-
   - Idempotence: floor(floor(x)) = floor(x)
   - Relationship with ceiling: result[i] = -((-x[i]).ceil) when x[i] is not an integer
   - Integer preservation: if x[i] is an integer, then result[i] = x[i]
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

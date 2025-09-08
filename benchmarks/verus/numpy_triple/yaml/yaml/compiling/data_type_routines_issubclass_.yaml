@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.issubclass_: Determine if a class is a subclass of a second class.
       
   This function is equivalent to the Python built-in issubclass, except that it returns 
@@ -6,7 +7,7 @@ vc-description: |-
       
   In the context of NumPy, this tests relationships between NumPy data type classes
   such as whether int32 is a subclass of integer, or whether float64 is a subclass of float.
-
+  
   Specification: issubclass_ correctly determines class hierarchy relationships.
       
   This function tests whether arg1 is a subclass of arg2 according to NumPy's type
@@ -18,7 +19,7 @@ vc-description: |-
       
   Precondition: True (no special preconditions, handles all inputs gracefully)
   Postcondition: Returns True if arg1 is a subclass of arg2, False otherwise
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

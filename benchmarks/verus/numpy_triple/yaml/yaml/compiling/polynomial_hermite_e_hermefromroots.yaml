@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Generate a HermiteE series with given roots.
       
   Returns the coefficients of the polynomial p(x) = (x - r₀) * (x - r₁) * ... * (x - rₙ₋₁)
@@ -16,7 +17,7 @@ vc-description: |-
   3. When evaluated at any root rᵢ using HermiteE basis, the result is zero
   4. The highest degree coefficient is non-zero (ensuring correct degree)
   5. The polynomial satisfies the fundamental property p(x) = (x - r₀) * ... * (x - rₙ₋₁)
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

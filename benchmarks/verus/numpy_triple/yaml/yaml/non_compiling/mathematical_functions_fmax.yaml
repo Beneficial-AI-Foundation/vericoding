@@ -1,11 +1,12 @@
 vc-description: |-
+  /*
   Element-wise maximum of array elements.
-
+  
   Compare two arrays and returns a new array containing the element-wise maxima. If one of the elements being compared is a NaN, then the non-nan element is returned.
-
+  
   Element-wise maximum of two vectors, with special NaN handling.
   If one element is NaN, returns the non-NaN element.
-
+  
   Specification: fmax returns element-wise maximum with NaN handling.
   For each position i:
   - If both elements are non-NaN, returns the maximum
@@ -16,7 +17,7 @@ vc-description: |-
   - Commutative when both values are non-NaN
   - Associative when all values are non-NaN
   - Idempotent when values are non-NaN
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

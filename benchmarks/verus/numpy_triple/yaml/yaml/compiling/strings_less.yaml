@@ -1,15 +1,16 @@
 vc-description: |-
+  /*
   numpy.strings.less: Return the truth value of (x1 < x2) element-wise for string arrays.
-
+  
   Performs element-wise string comparison between two vectors of strings.
   Returns a boolean vector indicating whether corresponding strings from x1 
   are lexicographically less than corresponding strings from x2.
   
   This function compares strings lexicographically and returns True for each
   position where x1[i] < x2[i] in lexicographic ordering, False otherwise.
-
+  
   Specification: numpy.strings.less returns element-wise lexicographic comparison.
-
+  
   This function performs element-wise lexicographic comparison between two vectors
   of strings, returning a boolean vector where each element indicates whether
   the corresponding element in x1 is lexicographically less than the corresponding
@@ -31,7 +32,7 @@ vc-description: |-
   - Lexicographic ordering follows dictionary order (case-sensitive)
   - Comparison is based on Unicode code point values
   - Preserves strict ordering properties of the underlying string type
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
   use vstd::string::*;

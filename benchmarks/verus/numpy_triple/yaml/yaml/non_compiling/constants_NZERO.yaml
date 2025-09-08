@@ -1,9 +1,10 @@
 vc-description: |-
+  /*
   IEEE 754 floating point representation of negative zero.
-
+  
   Specification: NZERO represents IEEE 754 negative zero, which equals zero 
   but has special properties in floating point arithmetic
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

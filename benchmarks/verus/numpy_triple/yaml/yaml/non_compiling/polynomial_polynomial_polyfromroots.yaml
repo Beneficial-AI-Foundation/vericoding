@@ -1,10 +1,11 @@
 vc-description: |-
+  /*
   Generate a monic polynomial with given roots.
   
   Specification: polyfromroots generates a monic polynomial with given roots.
   The resulting polynomial has the form p(x) = (x - r_0)(x - r_1)...(x - r_n),
   where the coefficients are returned in ascending order of powers.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

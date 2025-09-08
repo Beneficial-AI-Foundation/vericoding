@@ -1,5 +1,7 @@
 vc-description: |-
+  /*
   Add one Legendre series to another by component-wise addition of coefficients. Specification: legadd performs component-wise addition of two Legendre series coefficients
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Compute the eigenvalues of a complex Hermitian or real symmetric matrix.
   
   This function computes the eigenvalues of a real symmetric matrix and returns them in ascending order without computing the eigenvectors. This is the eigenvalues-only version of the symmetric eigenvalue problem.
@@ -11,7 +12,7 @@ vc-description: |-
   5. For the identity matrix, all eigenvalues are 1
   6. For diagonal matrices, eigenvalues are the diagonal elements (sorted)
   7. Matrix symmetry: a[i][j] = a[j][i] for all i,j
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

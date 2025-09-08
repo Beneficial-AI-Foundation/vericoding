@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Compute the truth value of x1 OR x2 element-wise.
   
   Performs logical OR operation on corresponding elements of two boolean vectors.
@@ -21,7 +22,7 @@ vc-description: |-
   - logical_or([false, false], [false, false]) = [false, false]
   - logical_or([true, true], [false, true]) = [true, true]
   - The result is false only when both operands are false
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.strings.encode: Encode strings using the codec
   
   Calls str.encode element-wise on a vector of strings.
@@ -10,12 +11,13 @@ vc-description: |-
   
   Specification: numpy.strings.encode returns a vector where each element is the encoded byte array
   from the corresponding string in the input vector.
-
+  
   Key properties:
   1. Deterministic encoding: same input produces same output
   2. Empty strings encode to empty byte arrays
   3. Encoding preserves string order and length
   4. For UTF-8 encoding, ASCII characters are preserved with same byte length
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

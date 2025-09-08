@@ -1,6 +1,8 @@
 vc-description: |-
+  /*
   Returns x1 * 2**x2, element-wise.
   The mantissas x1 and twos exponents x2 are used to construct floating point numbers x1 * 2**x2.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

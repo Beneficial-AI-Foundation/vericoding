@@ -1,11 +1,12 @@
 vc-description: |-
+  /*
   Load data from a text file containing numeric values.
   This simplified version assumes:
   - The file contains floating-point numbers (one per line or whitespace-separated)
   - Comments starting with '#' are ignored
   - The skiprows parameter allows skipping initial lines
   Returns a vector of parsed float values.
-
+  
   Specification: loadtxt reads numeric data from a text file and returns a vector of floats.
   The preconditions ensure:
   - The file path is valid (non-empty string)
@@ -21,6 +22,7 @@ vc-description: |-
   - Order-preserving: maintains the sequential order of values in the file
   - Comment-aware: lines starting with '#' are ignored
   - Skip-aware: first skiprows lines are ignored
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

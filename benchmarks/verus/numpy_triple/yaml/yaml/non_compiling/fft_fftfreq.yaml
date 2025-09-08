@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.fft.fftfreq: Return the Discrete Fourier Transform sample frequencies.
       
   The function returns the discrete Fourier Transform sample frequencies
@@ -9,7 +10,7 @@ vc-description: |-
   
   The frequencies are arranged in standard DFT order: positive frequencies
   first, then negative frequencies.
-
+  
   Specification: fftfreq returns sample frequencies according to the DFT convention.
       
   The frequencies are arranged so that:
@@ -27,7 +28,7 @@ vc-description: |-
   - For indices i ≥ N: result[i] = (i - n) / (d*n)
   - The DC component (index 0) is always 0
   - The frequencies are symmetric around the Nyquist frequency
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

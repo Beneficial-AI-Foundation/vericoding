@@ -1,5 +1,7 @@
 vc-description: |-
+  /*
   Test element-wise for finiteness (not infinity and not NaN)
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

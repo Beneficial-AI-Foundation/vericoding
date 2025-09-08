@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Raise a Chebyshev series to a power.
       
   Returns the Chebyshev series c raised to the power pow. The
@@ -11,7 +12,7 @@ vc-description: |-
   - pow > 1 returns the series multiplied by itself pow times
       
   The result length grows as: 1 + (n - 1) * pow, where n is the input length.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

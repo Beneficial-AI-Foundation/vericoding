@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Construct an array from data in a text or binary file
   
   This function provides a highly efficient way of reading binary data with a known data-type, 
@@ -21,7 +22,7 @@ vc-description: |-
   4. Binary files respect the offset parameter
   5. The resulting vector has the correct size and data type
   6. Data is read sequentially from the file
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

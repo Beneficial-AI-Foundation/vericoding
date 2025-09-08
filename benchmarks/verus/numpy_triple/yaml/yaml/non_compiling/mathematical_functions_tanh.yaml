@@ -1,5 +1,6 @@
 ```rust
 vc-description: |-
+  /*
   Compute hyperbolic tangent element-wise.
   
   The hyperbolic tangent function is defined as:
@@ -11,6 +12,7 @@ vc-description: |-
   as x approaches positive infinity.
   
   Returns an array of the same shape as x, containing the hyperbolic tangent of each element.
+  */
 
 vc-preamble: |-
   use vstd::prelude::*;

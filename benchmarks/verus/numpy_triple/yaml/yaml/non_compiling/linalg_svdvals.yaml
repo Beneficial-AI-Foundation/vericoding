@@ -1,5 +1,6 @@
 ```yaml
 vc-description: |-
+  /*
   numpy.linalg.svdvals: Compute singular values of a matrix.
 
   Computes the singular values of a matrix without computing the U and V matrices.
@@ -19,6 +20,7 @@ vc-description: |-
   
   Precondition: True (singular values are defined for any matrix)
   Postcondition: Returns singular values in descending order with mathematical properties
+  */
 
 vc-preamble: |-
   use vstd::prelude::*;

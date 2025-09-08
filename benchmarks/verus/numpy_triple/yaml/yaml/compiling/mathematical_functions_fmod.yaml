@@ -1,5 +1,7 @@
 vc-description: |-
+  /*
   Returns the element-wise remainder of division where the remainder has the same sign as the dividend
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

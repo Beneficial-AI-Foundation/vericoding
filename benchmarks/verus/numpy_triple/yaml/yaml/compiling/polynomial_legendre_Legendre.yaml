@@ -1,10 +1,11 @@
 vc-description: |-
+  /*
   A Legendre series class.
-
+  
       The Legendre class provides the standard Python numerical methods
       '+', '-', '*', '//', '%', 'divmod', '**', and '()' as well as the
       attributes and methods listed below.
-
+  
       Parameters
       ----------
       coef : array_like
@@ -20,11 +21,11 @@ vc-description: |-
           Symbol used to represent the independent variable in string
           representations of the polynomial expression, e.g. for printing.
           The symbol must be a valid Python identifier. Default value is 'x'.
-
+  
   Create a Legendre series from coefficients
-
+  
   Specification: mkLegendre creates a valid Legendre series representation
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

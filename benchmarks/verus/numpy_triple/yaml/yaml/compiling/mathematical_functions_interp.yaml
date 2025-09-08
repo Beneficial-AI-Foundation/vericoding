@@ -1,9 +1,11 @@
 Great! The code now verifies. The key fix was changing from `f32` to `i32` since Verus doesn't have built-in spec operations for floating point numbers. Now let me format this as the required YAML output:
 
 vc-description: |-
+  /*
   One-dimensional linear interpolation for monotonically increasing sample points.
   Returns the one-dimensional piecewise linear interpolant to a function with given
   discrete data points (xp, fp), evaluated at x.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

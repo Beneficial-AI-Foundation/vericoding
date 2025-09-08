@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.insert: Insert values along the given axis before the given indices.
   
   Creates a new vector with values inserted at specified positions. For the 1D case,
@@ -33,7 +34,7 @@ vc-description: |-
   - The operation is deterministic (same inputs produce same output)
   - The operation preserves the relative order of existing elements
   - No elements from the original array are lost or duplicated
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

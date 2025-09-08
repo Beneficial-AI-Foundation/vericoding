@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Solve the tensor equation a x = b for x.
   
   This function solves for x in the tensor equation a x = b, where:
@@ -22,7 +23,7 @@ vc-description: |-
   - a is an n×n coefficient matrix (representing a reshaped tensor)
   - b is an n-dimensional right-hand vector
   - x is the n-dimensional solution vector
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

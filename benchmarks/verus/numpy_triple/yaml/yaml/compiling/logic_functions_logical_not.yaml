@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.logical_not: Compute the truth value of NOT x element-wise.
   
   For each element in the input array, applies logical NOT operation.
@@ -6,10 +7,10 @@ vc-description: |-
   (so NOT returns False), zero is considered False (so NOT returns True).
   
   Returns a boolean array of the same shape as the input.
-
+  
   Specification: numpy.logical_not returns a vector where each element is the
   logical NOT of the corresponding element in x, following NumPy's truthiness rules.
-
+  
   Precondition: True (logical NOT is defined for all numeric values)
   Postcondition: For all indices i, result[i] = true iff x[i] = 0.0
   
@@ -19,7 +20,7 @@ vc-description: |-
   - Idempotent when composed with itself and appropriate conversion
   - For special float values: logical_not(NaN) = false, logical_not(∞) = false
   - Boundary case: logical_not(-0.0) = true (since -0.0 = 0.0)
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

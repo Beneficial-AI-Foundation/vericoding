@@ -1,5 +1,7 @@
 vc-description: |-
+  /*
   Multiply a Laguerre series by x using the recursion relationship for Laguerre polynomials.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

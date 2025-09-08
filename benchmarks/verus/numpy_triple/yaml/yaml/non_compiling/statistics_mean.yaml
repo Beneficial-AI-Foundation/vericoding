@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Computes the arithmetic mean of all elements in a non-empty vector.
   
   Specification: mean computes the arithmetic average of all elements.
@@ -6,6 +7,7 @@ vc-description: |-
   1. The result is the sum of all elements divided by the count
   2. The mean lies between the minimum and maximum values
   3. For constant vectors, mean equals the constant value
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

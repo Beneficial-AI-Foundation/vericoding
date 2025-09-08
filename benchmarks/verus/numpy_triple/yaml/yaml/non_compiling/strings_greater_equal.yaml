@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.strings.greater_equal: Return the truth value of (x1 >= x2) element-wise for string arrays.
   
   Performs element-wise string comparison between two vectors of strings.
@@ -7,12 +8,12 @@ vc-description: |-
   
   This function compares strings lexicographically and returns True for each
   position where x1[i] >= x2[i], False otherwise.
-
+  
   Examples:
   - greater_equal ["apple", "banana"] ["apple", "banana"] = [true, true]
   - greater_equal ["zebra", "apple"] ["apple", "banana"] = [true, false]
   - greater_equal ["a", "bb"] ["aa", "b"] = [false, true]
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

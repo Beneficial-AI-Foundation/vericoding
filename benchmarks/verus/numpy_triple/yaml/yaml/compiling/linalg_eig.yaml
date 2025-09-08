@@ -1,6 +1,7 @@
 Great! Now I have working Verus code. Let me format this as the required YAML output:
 
 vc-description: |-
+  /*
   Compute the eigenvalues and right eigenvectors of a square matrix.
       
   For a square matrix A, this function computes vectors v and scalars λ such that:
@@ -22,7 +23,7 @@ vc-description: |-
   2. Eigenvectors are normalized (unit length) 
   3. For diagonal matrices, eigenvalues are the diagonal elements
   4. Identity matrix has eigenvalue 1 with multiplicity n
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

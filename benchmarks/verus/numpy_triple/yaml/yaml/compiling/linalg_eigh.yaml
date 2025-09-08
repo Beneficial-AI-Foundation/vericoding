@@ -1,9 +1,11 @@
 vc-description: |-
+  /*
   Compute eigenvalues and eigenvectors of a Hermitian or symmetric matrix.
   
   Returns the eigenvalues and eigenvectors of a complex Hermitian or symmetric matrix.
   The function takes a Hermitian or symmetric matrix and returns eigenvalues in ascending order
   and the normalized eigenvectors satisfying the eigenvalue equation.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

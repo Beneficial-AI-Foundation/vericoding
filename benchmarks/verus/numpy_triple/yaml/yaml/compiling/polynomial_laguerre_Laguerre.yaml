@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   {
     "name": "numpy.polynomial.laguerre.Laguerre",
     "category": "Laguerre polynomials",
@@ -11,6 +12,7 @@ vc-description: |-
   Constructor for Laguerre series with default domain and window
   
   Specification for Laguerre series construction and properties
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,5 +1,6 @@
 ```yaml
 vc-description: |-
+  /*
   numpy.polynomial.laguerre.lagint: Integrate a Laguerre series.
   
   Returns the Laguerre series coefficients c integrated m times from
@@ -25,6 +26,7 @@ vc-description: |-
   2. Integration is linear: lagint(α*c1 + β*c2) = α*lagint(c1) + β*lagint(c2) 
   3. For zero coefficients, integration with constants gives the constant
   4. Multiple integrations accumulate degree increases
+  */
 
 vc-preamble: |-
   use vstd::prelude::*;

@@ -1,7 +1,8 @@
 vc-description: |-
+  /*
   Divides one Laguerre series by another, returning quotient and remainder.
   The division is performed in the Laguerre polynomial basis.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

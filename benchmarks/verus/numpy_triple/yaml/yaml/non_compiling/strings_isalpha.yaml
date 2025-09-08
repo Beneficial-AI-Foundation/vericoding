@@ -1,6 +1,7 @@
 vc-description: |-
+  /*
   numpy.strings.isalpha: Returns true for each element if all characters in the string are alphabetic and there is at least one character, false otherwise.
-
+  
   Tests whether all characters in each string are alphabetic letters.
   A string is considered alphabetic if:
   1. It contains at least one character
@@ -8,11 +9,11 @@ vc-description: |-
   
   Empty strings return false.
   Strings with numbers, symbols, or whitespace return false.
-
+  
   Specification: numpy.strings.isalpha returns a vector where each element indicates
   whether the corresponding string element contains only alphabetic characters
   and has at least one character.
-
+  
   Key properties:
   1. Empty strings always return false
   2. Non-empty strings return true iff all characters are alphabetic
@@ -24,7 +25,7 @@ vc-description: |-
   - Monotonicity: removing non-alphabetic characters from a string cannot make isalpha false
   - Compositionality: isalpha(s) = (s.length > 0) ∧ (∀ c ∈ s, Char.isAlpha c)
   - Deterministic: same input always produces same output
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

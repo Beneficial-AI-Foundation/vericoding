@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.hypot: Given the 'legs' of a right triangle, return its hypotenuse.
       
   Computes the hypotenuse of a right triangle given the lengths of its two legs.
@@ -20,7 +21,7 @@ vc-description: |-
   3. The result is symmetric: hypot(a, b) = hypot(b, a)
   4. For positive inputs, hypot(a, b) ≥ max(Float.abs(a), Float.abs(b))
   5. hypot(0, a) = Float.abs(a) and hypot(a, 0) = Float.abs(a)
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

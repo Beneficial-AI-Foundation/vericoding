@@ -1,6 +1,7 @@
 Good! Now I have a working basic specification. Let me create the full YAML output with the corrected Verus code:
 
 vc-description: |-
+  /*
   Remove "small" "trailing" coefficients from a polynomial.
   Small means small in absolute value controlled by tolerance parameter.
   Trailing means highest order coefficients.
@@ -8,6 +9,7 @@ vc-description: |-
   Specification: trimcoef removes trailing coefficients with absolute value ≤ tol.
   If all coefficients are small, returns a single zero.
   The tolerance must be non-negative.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

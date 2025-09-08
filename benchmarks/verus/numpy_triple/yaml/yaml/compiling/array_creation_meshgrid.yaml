@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Return coordinate matrices from two coordinate vectors using 'xy' (Cartesian) indexing.
   For inputs of length m and n, returns two matrices of shape (n, m) where:
   - The first matrix has x values repeated along rows
@@ -6,7 +7,7 @@ vc-description: |-
   
   Specification: meshgrid creates coordinate matrices where x values are repeated 
   along rows and y values are repeated along columns in 'xy' indexing mode
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

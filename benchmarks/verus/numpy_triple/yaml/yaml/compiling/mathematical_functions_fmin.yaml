@@ -1,11 +1,12 @@
 vc-description: |-
+  /*
   Element-wise minimum of array elements.
-
+  
   Compare two arrays and returns a new array containing the element-wise minima. If one of the elements being compared is a NaN, then the non-nan element is returned.
-
+  
   Element-wise minimum of two vectors, with special NaN handling.
   If one element is NaN, returns the non-NaN element.
-
+  
   Specification: fmin returns element-wise minimum with NaN handling.
   For each position i:
   - If both elements are non-NaN, returns the minimum
@@ -14,6 +15,7 @@ vc-description: |-
   - If both are NaN, returns NaN
   - Mathematical properties: commutativity (ignoring NaN order), 
     idempotence for non-NaN values, and boundedness
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

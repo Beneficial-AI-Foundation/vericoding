@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.argmin: Returns the index of the minimum value in a vector.
       
   Returns the index of the minimum value among all elements in the array.
@@ -7,6 +8,7 @@ vc-description: |-
   This function returns the position of the smallest element in the array.
   In case of multiple occurrences of the minimum value, the index of the
   first occurrence is returned.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

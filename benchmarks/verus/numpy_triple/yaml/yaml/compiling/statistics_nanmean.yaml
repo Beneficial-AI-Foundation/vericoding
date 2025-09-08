@@ -1,8 +1,9 @@
 vc-description: |-
+  /*
   Compute the arithmetic mean along the specified axis, ignoring NaNs.
   Returns the average of the array elements, ignoring NaN values.
   If all values are NaN, returns NaN.
-
+  
   Specification: nanmean computes the arithmetic mean while ignoring NaN values.
   
   Mathematical properties:
@@ -12,6 +13,7 @@ vc-description: |-
   4. NaN values are completely ignored in the computation
   5. For vectors without NaN values, behaves identically to regular mean
   6. The result is bounded by the minimum and maximum of non-NaN elements
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

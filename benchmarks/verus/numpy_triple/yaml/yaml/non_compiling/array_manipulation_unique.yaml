@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.unique: Find the unique elements of a vector and return them sorted.
       
   Returns a new vector containing each distinct element from the input exactly once,
@@ -16,7 +17,7 @@ vc-description: |-
   - No duplicates exist in the result
   - Every element in result comes from the input array
   - Every distinct element from input appears in result
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

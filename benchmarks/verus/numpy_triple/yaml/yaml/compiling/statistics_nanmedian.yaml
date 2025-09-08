@@ -1,9 +1,11 @@
 vc-description: |-
+  /*
   Compute the median along the specified axis, ignoring NaNs.
   Returns the median of the array elements.
   For a vector V of length N, the median is the middle value of a sorted copy of V
   (ignoring NaN values), when N is odd, and the average of the two middle values when N is even.
   If all values are NaN, returns NaN.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

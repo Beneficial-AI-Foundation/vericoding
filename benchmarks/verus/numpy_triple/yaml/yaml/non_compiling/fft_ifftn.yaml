@@ -1,6 +1,7 @@
 I need to output just the YAML content without the verification block:
 
 vc-description: |-
+  /*
   Compute the N-dimensional inverse discrete Fourier Transform (IFFTN).
   
   The IFFTN extends the 1D inverse FFT to multiple dimensions, computing
@@ -11,6 +12,7 @@ vc-description: |-
   X[i,j] = (1/(m*n)) * Sum(k=0 to m-1) Sum(l=0 to n-1) a[k,l] * exp(2*pi*i*(i*k/m + j*l/n))
   
   This is the mathematical inverse of the N-dimensional FFT.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,6 +1,7 @@
 vc-description: |-
+  /*
   numpy.tril: Lower triangle of a matrix.
-
+  
   Returns a copy of the input matrix with elements above the k-th diagonal zeroed.
   
   - k = 0 (default): zeros elements above the main diagonal
@@ -10,7 +11,7 @@ vc-description: |-
   For a matrix element at position (i, j):
   - It is kept if i >= j - k
   - It is zeroed if i < j - k
-
+  
   Specification: tril returns a lower triangular matrix by zeroing elements above the k-th diagonal.
   
   Mathematical Properties:
@@ -31,7 +32,7 @@ vc-description: |-
   Special cases:
   - k ≥ cols: All elements are preserved (entire matrix is "lower triangular")
   - k ≤ -rows: All elements are zeroed (no elements are "on or below" such a diagonal)
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

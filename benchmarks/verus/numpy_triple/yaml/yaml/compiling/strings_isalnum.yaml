@@ -1,6 +1,7 @@
 vc-description: |-
+  /*
   Returns true for each element if all characters in the string are alphanumeric and there is at least one character, false otherwise.
-
+  
   For each string in the input vector, this function checks if:
   1. The string is non-empty (has at least one character)
   2. All characters in the string are alphanumeric (letters or digits)
@@ -10,7 +11,7 @@ vc-description: |-
   
   This follows the Python str.isalnum() behavior which returns False for empty strings
   and True only if all characters are alphanumeric.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

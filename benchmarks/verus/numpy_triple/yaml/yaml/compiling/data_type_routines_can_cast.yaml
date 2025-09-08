@@ -1,5 +1,7 @@
 vc-description: |-
+  /*
   Returns True if cast between data types can occur according to the casting rule
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

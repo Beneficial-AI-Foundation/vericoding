@@ -1,11 +1,12 @@
 vc-description: |-
+  /*
   Return the binary representation of the input number as a string.
   For negative numbers, if width is not given, a minus sign is added to the front.
   If width is given, the two's complement of the number is returned.
   
   Specification: binary_repr correctly converts integers to binary strings with proper
   handling of negative numbers (signed representation without width, two's complement with width)
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

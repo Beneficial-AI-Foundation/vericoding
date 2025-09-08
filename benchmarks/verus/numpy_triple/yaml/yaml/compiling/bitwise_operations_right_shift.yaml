@@ -1,5 +1,7 @@
 vc-description: |-
+  /*
   Shift the bits of an integer to the right element-wise. This operation is equivalent to dividing each element by 2^shift_amount using integer division. For negative inputs, the behavior follows arithmetic right shift with sign extension.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

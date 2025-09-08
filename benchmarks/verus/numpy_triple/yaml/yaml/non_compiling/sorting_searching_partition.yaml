@@ -1,5 +1,7 @@
 vc-description: |-
+  /*
   Return a partitioned copy of an array around the k-th element. Specification: partition rearranges elements so that the k-th element is in its sorted position, with smaller elements before it and equal/greater elements after it.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

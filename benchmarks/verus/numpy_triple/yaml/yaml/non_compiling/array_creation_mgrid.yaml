@@ -1,8 +1,9 @@
 vc-description: |-
+  /*
   Creates a 1D meshgrid from start to stop with step size.
   This is a simplified version of mgrid that handles only the single-slice case.
   Specification: mgrid creates a vector of evenly spaced values from start to stop (exclusive) with given step
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

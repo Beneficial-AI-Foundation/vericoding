@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Construct a diagonal matrix from a 1-D vector.
   
   Specification: diag constructs a square matrix with v on the main diagonal.
@@ -19,7 +20,7 @@ vc-description: |-
   5. Symmetry: M is a symmetric matrix
   6. Idempotence property: diag(diag(M)) reconstructs M for diagonal matrices
   7. Zero count: exactly n elements are non-zero (assuming v has no zeros)
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

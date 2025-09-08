@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Return numbers spaced evenly on a log scale.
       
   Creates a vector of `num` samples where each element is computed as:
@@ -15,7 +16,7 @@ vc-description: |-
   2. For endpoint=false: Similar but stop value is excluded from the range
   3. The base must be positive and not equal to 1 for meaningful results
   4. For num > 1, the spacing between consecutive log values is uniform
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Trigonometric inverse cosine, element-wise.
   Returns the arc cosine of each element in the input vector.
   The result is in the range [0, π].
@@ -8,7 +9,7 @@ vc-description: |-
   Postcondition: The result contains the arc cosine of each input element,
   with values in the range [0, π], and satisfies cos(arccos(x)) = x for valid inputs.
   Additionally, arccos is monotonically decreasing on its domain [-1, 1].
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

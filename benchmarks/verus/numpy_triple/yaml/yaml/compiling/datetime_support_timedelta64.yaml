@@ -1,13 +1,15 @@
 vc-description: |-
+  /*
   A timedelta stored as a 64-bit integer.
-
+  
   See arrays.datetime for more information.
-
+  
   Character code: 'm'
-
+  
   Create a timedelta64 object from a numeric value and time unit
-
+  
   Specification: timedelta64 creates a time duration object with given value and unit
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

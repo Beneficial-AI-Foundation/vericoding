@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.random.BitGenerator: Base class for bit generators.
   
   The BitGenerator manages state and provides functions to produce random doubles 
@@ -16,7 +17,7 @@ vc-description: |-
   Precondition: True (any seed value is valid, including None)
   Postcondition: The returned state has the provided seed (or maintains None if no seed given)
               and has a valid internal state representation.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

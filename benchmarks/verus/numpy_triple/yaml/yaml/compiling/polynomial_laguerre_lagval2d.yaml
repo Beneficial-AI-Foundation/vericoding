@@ -1,12 +1,14 @@
 vc-description: |-
+  /*
   Evaluate a 2-D Laguerre series at points (x, y).
   The mathematical formula is: p(x,y) = sum_{i,j} c_{i,j} * L_i(x) * L_j(y)
   where L_i(x) and L_j(y) are the Laguerre polynomials.
-
+  
   Specification for 2-D Laguerre series evaluation:
   The result has the same shape as the input x and y vectors.
   The function evaluates a bivariate Laguerre polynomial series
   using the tensor product of 1-D Laguerre polynomials.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.rot90: Rotate an array by 90 degrees in the plane specified by axes.
       
   For a 2D array, this function rotates the array counterclockwise by 90 degrees
@@ -32,7 +33,7 @@ vc-description: |-
       
   Precondition: Matrix is non-empty (n > 0)
   Postcondition: Elements are repositioned according to the rotation formula
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

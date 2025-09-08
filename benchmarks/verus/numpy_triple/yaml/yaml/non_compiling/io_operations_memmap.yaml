@@ -1,13 +1,15 @@
 vc-description: |-
+  /*
   numpy.memmap: Create a memory-map to an array stored in a binary file on disk.
-
+  
   Memory-mapped files are used for accessing small segments of large files
   on disk, without reading the entire file into memory. The memmap provides
   an array-like interface to the file contents.
-
+  
   This function creates a Vector view into a binary file on disk with the
   specified shape and access mode. The file is accessed starting at the
   given offset.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,5 +1,6 @@
 ```yaml
 vc-description: |-
+  /*
   A Chebyshev series class.
 
   The Chebyshev class provides the standard Python numerical methods
@@ -25,6 +26,8 @@ vc-description: |-
   Create a Chebyshev polynomial from coefficients with default domain and window [-1, 1]
 
   Specification: Creating a Chebyshev polynomial preserves coefficients and sets default domain/window
+  */
+
 vc-preamble: |-
   use vstd::prelude::*;
 

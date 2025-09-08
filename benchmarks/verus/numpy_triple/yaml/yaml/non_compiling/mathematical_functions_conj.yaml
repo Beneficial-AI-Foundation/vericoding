@@ -1,6 +1,7 @@
 vc-description: |-
+  /*
   Return the complex conjugate of a vector of complex numbers, element-wise
-
+  
   Specification: conj computes the complex conjugate of each element with the following properties:
   1. Basic definition: conj(a + bi) = a - bi for complex numbers
   2. Real preservation: For purely real numbers, conj(x) = x
@@ -8,7 +9,7 @@ vc-description: |-
   4. Magnitude preservation: |conj(x)| = |x| (conjugate preserves magnitude)
   5. Distributive over addition: conj(x + y) = conj(x) + conj(y)
   6. Distributive over multiplication: conj(x * y) = conj(x) * conj(y)
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

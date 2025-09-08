@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.select: Return an array drawn from elements in choicelist, depending on conditions.
   
   For each element position, returns the element from the first choice array
@@ -12,7 +13,7 @@ vc-description: |-
   Precondition: condlist and choicelist have the same length
   Postcondition: Each element is selected from the first matching choice array,
                  or default if no conditions match
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

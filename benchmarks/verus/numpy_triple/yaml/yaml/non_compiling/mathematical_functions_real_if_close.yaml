@@ -1,18 +1,19 @@
 vc-description: |-
+  /*
   If input is complex with all imaginary parts close to zero, return real parts.
   "Close to zero" is defined as tol * (machine epsilon of the type for a).
-
+  
   If input is complex with all imaginary parts close to zero, return real parts.
   Otherwise, return the original complex vector.
   "Close to zero" is defined as tol * (machine epsilon of the type).
-
+  
   Specification: real_if_close returns real parts if all imaginary parts are within tolerance,
   otherwise returns the original complex vector. This captures the essential behavior:
   1. If all imaginary parts are small (≤ tol * machineEpsilon), return only real parts
   2. Otherwise, preserve the original complex numbers
   3. Real parts are always preserved regardless
   4. The tolerance check is applied consistently across all elements
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

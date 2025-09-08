@@ -1,11 +1,12 @@
 vc-description: |-
+  /*
   Multi-dot product: compute the dot product of multiple matrices in a single function call
   with optimal parenthesization. This function performs a chain of matrix multiplications
   A₁ × A₂ × ... × Aₙ where the parenthesization is chosen to minimize computational cost.
   
   For three matrices A, B, C, this computes A × B × C with the optimal evaluation order.
   The result is independent of parenthesization due to associativity of matrix multiplication.
-
+  
   Specification: Multi-dot performs a chain of matrix multiplications with optimal parenthesization.
   
   Mathematical properties:
@@ -20,6 +21,7 @@ vc-description: |-
   This specification captures the essential mathematical behavior while abstracting away 
   the optimization details. The key insight is that matrix multiplication is associative,
   so different parenthesizations yield the same mathematical result.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

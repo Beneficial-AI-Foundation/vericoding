@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.ndenumerate: Multidimensional index iterator that yields pairs of array coordinates and values.
       
   For a 1D array, this creates a vector of tuples where each tuple contains
@@ -14,7 +15,7 @@ vc-description: |-
       
   Precondition: True (no special preconditions needed)
   Postcondition: For all indices i, result[i] = (i, arr[i])
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

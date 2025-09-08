@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Compute the bit-wise AND of two vectors element-wise.
   Computes the bit-wise AND of the underlying binary representation of
   the natural numbers in the input vectors.
@@ -12,7 +13,7 @@ vc-description: |-
   - Absorption with zero: a & 0 = 0
   - Idempotent: a & a = a
   - Monotonicity: if a ≤ b, then a & c ≤ b & c
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

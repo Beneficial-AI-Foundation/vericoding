@@ -1,5 +1,6 @@
 ```verus
 vc-description: |-
+  /*
   numpy.cos: Cosine element-wise.
 
   Computes the cosine of each element in the input array.
@@ -16,6 +17,8 @@ vc-description: |-
   Postcondition: For all indices i, result[i] = Float.cos x[i]
                 and result[i] is bounded between -1 and 1
                 with cos(0) = 1
+  */
+
 vc-preamble: |-
   use vstd::prelude::*;
 

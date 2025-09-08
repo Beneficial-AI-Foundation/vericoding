@@ -1,6 +1,7 @@
 Perfect! Now I can provide the corrected YAML translation:
 
 vc-description: |-
+  /*
   Evaluate a 2-D Hermite series at points (x, y).
   
   Given a 2D coefficient matrix c where c[i,j] is the coefficient for H_i(x) * H_j(y),
@@ -9,7 +10,7 @@ vc-description: |-
   
   The x and y vectors must have the same length, and the function evaluates
   the 2D polynomial at each pair of corresponding points (x[k], y[k]).
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

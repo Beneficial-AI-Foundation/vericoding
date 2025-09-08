@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.allclose: Returns True if two arrays are element-wise equal within a tolerance.
   
   The tolerance values are positive, typically very small numbers. The
@@ -17,7 +18,7 @@ vc-description: |-
   Precondition: rtol >= 0 and atol >= 0 (tolerance values must be non-negative)
   Postcondition: result = true iff all elements satisfy the tolerance condition
                  abs(a[i] - b[i]) <= atol + rtol * abs(b[i]) for all i
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

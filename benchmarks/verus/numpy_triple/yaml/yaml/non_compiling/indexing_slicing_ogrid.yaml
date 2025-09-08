@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.ogrid: Open multi-dimensional "meshgrid".
       
   Returns an open (i.e. not fleshed out) mesh-grid when indexed, 
@@ -18,7 +19,7 @@ vc-description: |-
   - result[i] = start + i * step
   - All elements are in the range [start, stop)
   - The sequence is arithmetic with common difference step
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.multiply: Multiply arguments element-wise.
   
   Multiplies two vectors element-wise. If the vectors have the same shape,
@@ -30,7 +31,7 @@ vc-description: |-
   
   Precondition: True (no special preconditions for basic multiplication)
   Postcondition: For all indices i, result[i] = x1[i] * x2[i]
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Stack two vectors vertically to create a 2D matrix.
   For 1D vectors, this treats them as row vectors and stacks them vertically.
   This is a simplified version focusing on the common case of stacking two 1D vectors.
@@ -11,7 +12,7 @@ vc-description: |-
   2. The first row of the result equals the first input vector
   3. The second row of the result equals the second input vector
   4. This operation preserves the elements and their order within each vector
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,20 +1,21 @@
 vc-description: |-
+  /*
   numpy.diagflat: Create a two-dimensional array with the flattened input as a diagonal.
-
+  
   Creates a square matrix where the input vector is placed along the main diagonal.
   All other elements are zero. The resulting matrix has size n×n where n is the
   length of the input vector.
-
+  
   For the main diagonal (k=0), the matrix element at position (i,i) contains
   the i-th element of the input vector.
-
+  
   Specification: diagflat returns a square matrix where the input vector forms the main diagonal.
-
+  
   Properties:
   1. The result is a square n×n matrix
   2. For all i, j: if i = j then result[i][j] = v[i] (diagonal elements)
   3. For all i, j: if i ≠ j then result[i][j] = 0 (off-diagonal elements are zero)
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

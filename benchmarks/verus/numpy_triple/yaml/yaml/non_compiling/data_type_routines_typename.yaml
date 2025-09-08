@@ -1,5 +1,7 @@
 vc-description: |-
+  /*
   Return a description for the given data type code
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

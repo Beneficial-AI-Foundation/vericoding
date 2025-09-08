@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.linalg.cross: Return the cross product of 3-element vectors.
   
   Computes the cross product of two 3-element vectors. The cross product
@@ -21,7 +22,7 @@ vc-description: |-
   
   The cross product has the mathematical property that it is perpendicular
   to both input vectors (i.e., result · x1 = 0 and result · x2 = 0).
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

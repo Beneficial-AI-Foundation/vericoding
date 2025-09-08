@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Get information about the step size of a date or time type.
   
   Returns a tuple containing the datetime unit and count for the given dtype.
@@ -16,6 +17,7 @@ vc-description: |-
   
   This ensures that the returned information can be used to reconstruct
   the original dtype or create compatible datetime objects.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

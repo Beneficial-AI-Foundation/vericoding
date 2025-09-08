@@ -1,6 +1,7 @@
 vc-description: |-
+  /*
   numpy.hstack: Stack arrays in sequence horizontally (column wise).
-
+  
   For 1D arrays, hstack stacks arrays horizontally by concatenating them
   along the first axis. This is equivalent to concatenation for 1D arrays.
   
@@ -9,9 +10,9 @@ vc-description: |-
   
   Note: For higher dimensional arrays, hstack would concatenate along the
   second axis, but this specification focuses on the 1D case.
-
+  
   Specification: numpy.hstack concatenates 1D arrays horizontally.
-
+  
   For 1D arrays, horizontal stacking means concatenating them end-to-end,
   which is the same behavior as numpy.concatenate.
   
@@ -22,7 +23,7 @@ vc-description: |-
   - First n elements come from array a
   - Next m elements come from array b
   - The order of elements is preserved from both input arrays
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

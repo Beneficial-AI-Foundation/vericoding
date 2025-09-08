@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   The inverse of fftshift - undoes the frequency domain shifting.
       
   This function performs the inverse operation of fftshift, moving the 
@@ -7,7 +8,7 @@ vc-description: |-
   For odd-length arrays, it differs by one sample position.
   
   The function performs a circular shift by -(n/2) positions.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

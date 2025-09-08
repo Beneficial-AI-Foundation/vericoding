@@ -1,9 +1,10 @@
 vc-description: |-
+  /*
   Machine limits for floating point types.
       
   Returns machine limits for the Float type.
   This provides information about the precision and range of Float values.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

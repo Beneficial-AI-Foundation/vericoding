@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Philox (4x64) pseudo-random number generator.
   
   Philox is a counter-based RNG that generates pseudo-random numbers
@@ -18,7 +19,7 @@ vc-description: |-
   
   Precondition: True (no special preconditions)
   Postcondition: All values are in [0, 1) and sequence is deterministic based on seed
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Evaluate a 2-D HermiteE series at points (x, y).
       
   This function computes the bivariate HermiteE polynomial:
@@ -13,7 +14,7 @@ vc-description: |-
   1. Bivariate polynomial evaluation using HermiteE basis
   2. Mathematical correctness and linearity properties
   3. Point-wise evaluation for corresponding (x,y) pairs
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Universal function outer method: Apply a binary operator to all pairs (a, b) 
   with a in A and b in B.
   
@@ -11,6 +12,7 @@ vc-description: |-
   - When op = (^), this becomes the power of all pairs
   
   The result has shape (m, n) where m is the length of A and n is the length of B.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

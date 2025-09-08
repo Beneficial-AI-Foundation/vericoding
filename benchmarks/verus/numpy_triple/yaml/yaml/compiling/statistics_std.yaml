@@ -1,6 +1,7 @@
 vc-description: |-
+  /*
   numpy.std: Compute the standard deviation along the specified axis.
-
+  
   Returns the standard deviation, a measure of the spread of a distribution,
   of the array elements. The standard deviation is computed for the flattened
   array by default, otherwise over the specified axis.
@@ -11,9 +12,9 @@ vc-description: |-
   With ddof parameter, the divisor used in calculations is N - ddof,
   where N represents the number of elements. The "Delta Degrees of Freedom"
   parameter adjusts the divisor in the standard deviation calculation.
-
+  
   Specification: numpy.std returns the standard deviation of all elements.
-
+  
   The standard deviation is computed as the square root of the variance:
   std = sqrt(sum((x_i - mean)²) / (N - ddof))
   
@@ -23,7 +24,7 @@ vc-description: |-
   3. When ddof = 0, uses population standard deviation (divide by N)
   4. When ddof = 1, uses sample standard deviation (divide by N-1)
   5. Mathematical correctness: the formula exactly matches NumPy's implementation
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   For each element in a vector, return a copy with the trailing characters removed.
   
   Specification: numpy.strings.rstrip removes trailing characters from each string in the vector.
@@ -18,7 +19,7 @@ vc-description: |-
   - Parameters: a (array_like) - Input array with string dtype
                 chars (optional) - Characters to remove, whitespace if None
   - Returns: out (ndarray) - Output array with trailing characters removed
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

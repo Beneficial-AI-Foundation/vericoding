@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Compute the 2-dimensional FFT of a real array.
       
   This function transforms a real 2D array into the frequency domain using
@@ -12,7 +13,7 @@ vc-description: |-
       
   Output dimensions: For input of shape (m+1, n+1), output has shape (m+1, (n+1)/2+1)
   where the last dimension is reduced due to Hermitian symmetry.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

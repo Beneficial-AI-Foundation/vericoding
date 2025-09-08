@@ -1,6 +1,7 @@
 Perfect! Now let me construct the full YAML response:
 
 vc-description: |-
+  /*
   Return a copy of a with its elements centered in a string of length width.
   
   Centers strings in a field of given width with optional fill character.
@@ -19,7 +20,7 @@ vc-description: |-
   3. Padding balance: Left and right padding differ by at most 1 character
   4. Character preservation: Original string appears as substring in result
   5. Width compliance: Result length equals max(original.length, width)
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,10 +1,11 @@
 vc-description: |-
+  /*
   Core signature for generalized ufuncs
   Defines core dimensionality of inputs and outputs
   Example: matmul.signature: '(n,k),(k,m)->(n,m)'
   Parse a ufunc signature string into a structured representation
   Specification: parseSignature correctly parses ufunc signature strings
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

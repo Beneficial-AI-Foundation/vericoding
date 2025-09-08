@@ -1,11 +1,12 @@
 vc-description: |-
+  /*
   Compute the roots of a Laguerre series.
-
+  
   Return the roots (a.k.a. "zeros") of the polynomial
   p(x) = sum_i c[i] * L_i(x).
-
+  
   Specification: lagroots computes the roots of a Laguerre polynomial
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

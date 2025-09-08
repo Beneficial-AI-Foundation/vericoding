@@ -1,8 +1,10 @@
 vc-description: |-
+  /*
   The mathematical constant 1/π (one divided by pi), approximately 0.31831...
   
   Specification: NPY_1_PI represents the reciprocal of pi (1/π),
   and satisfies key mathematical properties
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

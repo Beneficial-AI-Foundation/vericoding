@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Computes the sample points and weights for Gauss-Hermite quadrature.
   
   Gauss-Hermite quadrature.
@@ -37,7 +38,7 @@ vc-description: |-
       3. The weights sum to a positive value (specifically sqrt(π))
       4. The quadrature exactly integrates polynomials up to degree 2*deg - 1 with weight exp(-x²)
       5. Points are symmetric around 0 and are distinct
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

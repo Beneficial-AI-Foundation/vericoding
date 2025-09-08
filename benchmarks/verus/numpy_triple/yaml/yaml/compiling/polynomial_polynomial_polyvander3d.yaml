@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Pseudo-Vandermonde matrix of given degrees for 3D polynomials.
   Returns a matrix where V[p, (yDeg + 1)*(zDeg + 1)*i + (zDeg + 1)*j + k] = x[p]^i * y[p]^j * z[p]^k
   for 0 <= i <= xDeg, 0 <= j <= yDeg and 0 <= k <= zDeg.
@@ -7,7 +8,7 @@ vc-description: |-
   satisfies the polynomial power relationship V[p, (yDeg + 1)*(zDeg + 1)*i + (zDeg + 1)*j + k] = x[p]^i * y[p]^j * z[p]^k.
   The matrix has dimensions n × ((xDeg + 1) * (yDeg + 1) * (zDeg + 1)) and represents all polynomial
   terms x^i * y^j * z^k for 0 ≤ i ≤ xDeg, 0 ≤ j ≤ yDeg, and 0 ≤ k ≤ zDeg.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

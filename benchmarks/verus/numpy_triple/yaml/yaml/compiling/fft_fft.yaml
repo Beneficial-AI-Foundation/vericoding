@@ -1,27 +1,28 @@
 vc-description: |-
+  /*
   Compute the one-dimensional discrete Fourier Transform
-
+  
   The FFT computes the DFT defined as:
   X[k] = Σ(n=0 to N-1) x[n] * exp(-2πi*k*n/N)
-
+  
   where:
   - x is the input vector
   - X is the output vector
   - N is the length of the vector
   - i is the imaginary unit
-
+  
   Specification: FFT computes the discrete Fourier transform
-
+  
   The FFT satisfies the DFT equation and has the following properties:
   1. Each output element is the sum of input elements weighted by complex exponentials
   2. The transform is linear
   3. Parseval's theorem: energy is preserved (with proper normalization)
   4. FFT(FFT^(-1)(x)) = x (inverse property when combined with IFFT)
-
+  
   The specification captures the fundamental DFT formula where each output
   element k is computed as the sum over all input elements j, multiplied
   by the complex exponential exp(-2πi*k*j/n).
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

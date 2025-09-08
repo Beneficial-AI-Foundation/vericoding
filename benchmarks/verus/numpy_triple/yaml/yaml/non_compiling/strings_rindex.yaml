@@ -1,11 +1,13 @@
 vc-description: |-
+  /*
   For each element, return the highest index in the string where substring is found.
   Unlike rfind, this function requires that the substring be found in each string,
   ensuring all results are non-negative indices.
-
+  
   Specification: rindex returns the highest index where substring is found within range.
   The key difference from rfind is that rindex has a stronger precondition:
   the substring must exist in each string within the specified range.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

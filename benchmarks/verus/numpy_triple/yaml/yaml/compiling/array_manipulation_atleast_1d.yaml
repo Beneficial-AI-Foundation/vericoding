@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.atleast_1d: Convert inputs to arrays with at least one dimension.
       
   This function ensures that the input has at least one dimension.
@@ -16,7 +17,7 @@ vc-description: |-
       
   Precondition: True (no special preconditions)
   Postcondition: The result is identical to the input vector
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,10 +1,11 @@
 Good, that works. Let me now build the YAML output with proper floating-point handling, avoiding the spec comparison methods that don't exist for f32:
 
 vc-description: |-
+  /*
   Inverse hyperbolic cosine, element-wise. 
   Returns the inverse hyperbolic cosine of each element in the input vector.
   The inverse hyperbolic cosine is defined as: arccosh(x) = log(x + sqrt(x² - 1)) for x ≥ 1
-
+  
   Specification: arccosh computes the inverse hyperbolic cosine element-wise.
   
   Mathematical properties:
@@ -16,7 +17,7 @@ vc-description: |-
   
   The inverse hyperbolic cosine function reverses the action of cosh on [0, ∞),
   where cosh(y) = (e^y + e^(-y))/2. These properties ensure correctness.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Returns the index of the maximum value in a non-empty vector, ignoring NaN values.
   
   This function finds the index of the maximum value among all non-NaN elements in the vector.
@@ -17,6 +18,7 @@ vc-description: |-
   5. The precondition ensures at least one element is not NaN
   6. All non-NaN elements are less than or equal to the maximum
   7. Among elements with the same maximum value, the first index is returned
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Evaluate a 2D polynomial at points (x, y).
   Given a coefficient matrix c and evaluation points (x, y),
   computes p(x,y) = Σᵢⱼ cᵢⱼ·xⁱ·yʲ for each point pair
@@ -12,7 +13,7 @@ vc-description: |-
   - Bilinear in coefficients: p(x,y, αc₁ + βc₂) = α·p(x,y,c₁) + β·p(x,y,c₂)  
   - Constant term: p(0,0) = c[0][0]
   - Degree-0 in both variables gives constant: c = [[c₀₀]] → p(x,y) = c₀₀ for all (x,y)
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

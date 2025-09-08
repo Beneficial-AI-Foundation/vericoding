@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.format_parser: Class to convert formats, names, titles description to a dtype.
       
   This function takes format descriptions, field names, and optional titles
@@ -18,7 +19,7 @@ vc-description: |-
   3. Each field has the correct format descriptor parsed from the formats vector
   4. If titles are provided, each field has the corresponding title
   5. The alignment setting is preserved
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

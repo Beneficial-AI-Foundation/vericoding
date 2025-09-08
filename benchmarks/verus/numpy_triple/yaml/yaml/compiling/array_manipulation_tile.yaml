@@ -1,9 +1,11 @@
 vc-description: |-
+  /*
   Constructs a vector by repeating the input vector `reps` times.
   For 1D case: tile([a, b, c], 3) = [a, b, c, a, b, c, a, b, c]
   
   Specification: tile repeats the input vector `reps` times, where each element
   at position i in the result corresponds to element at position (i % n) in the input
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

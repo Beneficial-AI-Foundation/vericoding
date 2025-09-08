@@ -1,9 +1,11 @@
 vc-description: |-
+  /*
   Converts a flat index or array of flat indices into a tuple of coordinate arrays.
   This is the inverse operation of ravel_multi_index.
   Specification: unravel_index converts flat indices to multi-dimensional coordinates
   such that the coordinates are valid for the given shape and represent the correct
   positions in the multi-dimensional array.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,10 +1,12 @@
 vc-description: |-
+  /*
   Compute the determinant of a square matrix.
   
   The determinant satisfies fundamental mathematical properties including:
   - Explicit formulas for small matrices
   - Multilinear properties
   - Behavior under elementary row operations
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

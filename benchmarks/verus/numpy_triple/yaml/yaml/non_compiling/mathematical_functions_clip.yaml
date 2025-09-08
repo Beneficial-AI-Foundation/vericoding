@@ -1,6 +1,7 @@
 vc-description: |-
+  /*
   numpy.clip: Clip (limit) the values in an array.
-
+  
   Given an interval [min_val, max_val], values outside the interval are clipped to the interval edges.
   Values smaller than min_val become min_val, and values larger than max_val become max_val.
   
@@ -17,9 +18,9 @@ vc-description: |-
   Special behavior:
   - If a_min > a_max, all values become a_max
   - No validation is performed to ensure a_min < a_max
-
+  
   Specification: numpy.clip returns a vector where each element is clipped to the interval [min_val, max_val].
-
+  
   Mathematical Properties:
   1. Element-wise correctness: 
      - If arr[i] < min_val, then result[i] = min_val
@@ -33,7 +34,7 @@ vc-description: |-
   
   Precondition: True (no special preconditions, handles all real number inputs)
   Postcondition: For all indices i, result[i] is the clipped value of arr[i]
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

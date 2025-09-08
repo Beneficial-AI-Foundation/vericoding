@@ -1,11 +1,12 @@
 vc-description: |-
+  /*
   Divide one Chebyshev series by another, returning quotient and remainder.
   The input vectors represent Chebyshev series coefficients from lowest to highest order.
   
   Specification: chebdiv performs polynomial division in the Chebyshev basis,
   satisfying the division algorithm property that c1 = c2 * quotient + remainder,
   where the degree of remainder is less than the degree of c2.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

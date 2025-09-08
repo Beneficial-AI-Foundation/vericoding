@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.linalg.svd: Singular Value Decomposition.
   
   Computes the singular value decomposition of a matrix, factorizing it as
@@ -23,7 +24,7 @@ vc-description: |-
   
   Precondition: True (SVD is defined for any real matrix)
   Postcondition: The returned decomposition satisfies all SVD properties
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

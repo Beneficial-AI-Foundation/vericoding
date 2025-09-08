@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Add one Hermite series to another. Component-wise addition of polynomial coefficients.
   
   Specification: hermeadd performs component-wise addition of Hermite polynomial coefficients.
@@ -13,7 +14,7 @@ vc-description: |-
   - Associativity: hermeadd (hermeadd c1 c2) c3 = hermeadd c1 (hermeadd c2 c3)
   - Zero identity: hermeadd c (zero vector) = c (extended appropriately)
   - Preservation of polynomial structure: addition preserves Hermite polynomial properties
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

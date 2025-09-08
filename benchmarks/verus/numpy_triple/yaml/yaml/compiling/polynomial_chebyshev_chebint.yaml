@@ -1,8 +1,9 @@
 Great! Now let me provide the complete YAML translation:
 
 vc-description: |-
+  /*
   numpy.polynomial.chebyshev.chebint: Integrate a Chebyshev series.
-
+  
   Returns the Chebyshev series coefficients integrated m times from
   lbnd along axis. At each iteration the resulting series is
   multiplied by scl and an integration constant k is added.
@@ -18,9 +19,9 @@ vc-description: |-
   - k: Integration constants (defaults to zeros)
   - lbnd: Lower bound of the integral (default: 0)
   - scl: Scaling factor applied after each integration (default: 1)
-
+  
   Specification: chebint integrates Chebyshev series coefficients m times.
-
+  
   The function performs m successive integrations of the Chebyshev series,
   where each integration:
   1. Multiplies the current coefficients by scl
@@ -42,7 +43,7 @@ vc-description: |-
   - When m = 0, the function should return the input unchanged
   - Integration constants k affect only the constant term of each integration
   - The scaling factor scl is applied before adding integration constants
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,12 +1,13 @@
 vc-description: |-
+  /*
   Transposes a matrix by swapping rows and columns.
   For a matrix with shape (m, n), returns a matrix with shape (n, m)
   where result[i, j] = input[j, i]
-
+  
   Specification: matrix_transpose swaps rows and columns, producing a transposed matrix
   where the element at position (i, j) in the result equals the element at position (j, i)
   in the input. The result has dimensions swapped: an m×n matrix becomes n×m.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

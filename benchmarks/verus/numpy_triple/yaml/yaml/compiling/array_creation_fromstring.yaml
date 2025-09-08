@@ -1,8 +1,9 @@
 vc-description: |-
+  /*
   A new 1-D array initialized from text data in a string
   
   Specification: fromstring parses a string into a vector of floats using a separator
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

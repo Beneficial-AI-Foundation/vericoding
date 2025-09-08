@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   numpy.put: Replaces specified elements of an array with given values.
   
   The indexing works on the flattened target array. This operation mutates the input array
@@ -20,6 +21,7 @@ vc-description: |-
   
   This specification handles the case where indices may be duplicated - in such cases,
   the later occurrence in the index vector takes precedence.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

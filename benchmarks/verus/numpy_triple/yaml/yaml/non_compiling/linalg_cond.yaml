@@ -1,15 +1,16 @@
 vc-description: |-
+  /*
   Compute the condition number of a matrix.
-
+  
   The condition number measures how sensitive the solution x is to errors in b for Ax=b.
-
+  
   Parameters:
   - x: The matrix
   - p: Order of the norm
-
+  
   Returns:
   - c: The condition number
-
+  
   Compute the condition number of a square matrix using the 2-norm.
   
   The condition number of a matrix A is defined as ||A|| * ||A^(-1)||,
@@ -24,7 +25,7 @@ vc-description: |-
   Specification: The condition number is always non-negative and is at least 1 
   for any invertible matrix. This captures the fundamental mathematical 
   properties of condition numbers in linear algebra.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

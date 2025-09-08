@@ -1,8 +1,10 @@
 vc-description: |-
+  /*
   Compute the roots of a HermiteE series.
   Given HermiteE series coefficients c[0], c[1], ..., c[n-1], returns the roots of
   p(x) = c[0]*He_0(x) + c[1]*He_1(x) + ... + c[n-1]*He_{n-1}(x)
   where He_i(x) are the "probabilists'" or "normalized" Hermite polynomials
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

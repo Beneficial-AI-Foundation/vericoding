@@ -1,8 +1,9 @@
 vc-description: |-
+  /*
   Check if strings in array end with given suffixes
   Specification: endswith returns boolean array indicating which strings end with corresponding suffixes
   Returns a boolean array which is True where the string element in a ends with suffix, otherwise False
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

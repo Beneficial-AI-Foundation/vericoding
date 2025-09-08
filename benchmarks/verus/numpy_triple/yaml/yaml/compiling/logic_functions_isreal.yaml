@@ -1,8 +1,9 @@
 vc-description: |-
+  /*
   Returns a bool array, where True if input element is real.
   For complex numbers, checks if imaginary part is zero.
   For numbers with zero imaginary part, returns true for all elements.
-
+  
   Specification: isreal returns true for elements with zero imaginary parts,
   false for elements with non-zero imaginary parts, with the following properties:
   1. Basic definition: returns true iff imaginary part is zero
@@ -12,7 +13,7 @@ vc-description: |-
   5. Element-wise operation: each element is tested independently
   6. Mathematical property: real numbers form a subset of complex numbers
   7. Consistency: if real, then can be represented as a + 0i
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,10 +1,12 @@
 vc-description: |-
+  /*
   Create a 1-D array from text data in a string.
   Parses a string containing numeric data separated by a specified separator
   and returns a vector of the parsed values.
   Specification: fromstring creates a vector by parsing numeric values from a string.
   The function parses the input string using the given separator and converts
   the resulting substrings to floating-point numbers.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

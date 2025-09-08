@@ -1,5 +1,6 @@
 ```yaml
 vc-description: |-
+  /*
   numpy.bincount: Count number of occurrences of each value in array of non-negative ints.
 
   Count number of occurrences of each value in array of non-negative ints.
@@ -14,6 +15,7 @@ vc-description: |-
 
   Precondition: All values in x are non-negative and ≤ max_val
   Postcondition: result[i] = count of occurrences of value i in x
+  */
 
 vc-preamble: |-
   use vstd::prelude::*;

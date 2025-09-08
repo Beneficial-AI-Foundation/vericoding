@@ -1,7 +1,9 @@
 vc-description: |-
+  /*
   Return a domain suitable for given abscissae (real numbers).
   For real inputs, returns the minimum and maximum values as a 2-element vector.
   This represents the smallest interval containing all points in the input vector.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

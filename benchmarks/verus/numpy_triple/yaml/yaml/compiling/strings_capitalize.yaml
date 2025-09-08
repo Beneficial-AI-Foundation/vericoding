@@ -1,5 +1,7 @@
 vc-description: |-
+  /*
   Return a copy of a with only the first character of each element capitalized
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 
