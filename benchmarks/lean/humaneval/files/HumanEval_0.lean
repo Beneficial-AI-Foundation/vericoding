@@ -70,25 +70,21 @@ theorem correctness
             convert hlt using 1
             simp
     · -- Case: implementation returns false, show ¬∃ i j, ...
-      push_neg
+      push_neg  
       intros i j hi hj hij_ne
-      by_contra! h_contra
-      -- h_contra : |numbers[i]! - numbers[j]!| < threshold
-      -- Now show the implementation should be true, contradicting h
-      have : (numbers.any fun x ↦ numbers.any fun y ↦ decide (x ≠ y ∧ |x - y| < threshold)) = true := by
-        rw [List.any_eq_true]
-        use numbers[i]!
-        constructor
-        · grind
-        · rw [List.any_eq_true]
-          use numbers[j]!
-          constructor
-          · grind
-          · simp
-            constructor
-            · sorry -- This needs a more sophisticated approach
-            · convert h_contra using 1 <;> simp [hi, hj]
-      exact h this
+      -- Direct approach: if implementation is false, then no two distinct elements are close
+      -- So if i ≠ j, either numbers[i]! = numbers[j]! or they're far apart
+      by_cases h_eq : numbers[i]! = numbers[j]!
+      · -- Case: numbers[i]! = numbers[j]!
+        simp [h_eq]
+        -- This means |numbers[i]! - numbers[j]!| = 0, so we need threshold ≤ 0
+        -- But wait, this reveals an issue with the proof approach...
+      · -- Case: numbers[i]! ≠ numbers[j]!  
+        -- The implementation being false means these distinct elements are far apart
+        have h_false : (numbers.any fun x ↦ numbers.any fun y ↦ decide (x ≠ y ∧ |x - y| < threshold)) = false := by
+          rwa [Bool.not_eq_true] at h
+        -- Use this to show numbers[i]! and numbers[j]! are far apart
+        sorry -- This is the right approach but needs the right lemma
 
 #eval implementation ([1, 2, 3]: List Rat) (1/2) -- Should be false
 #eval implementation ([1, 28/10, 3, 4, 5, 2]: List Rat) (3/10) -- Should be true
