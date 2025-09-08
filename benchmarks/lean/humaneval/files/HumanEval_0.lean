@@ -16,7 +16,10 @@ import Std.Data.HashMap
 -- </vc-helpers>
 
 def implementation (numbers: List Rat) (threshold: Rat) : Bool :=
-  numbers.any fun x => numbers.any fun y => x ≠ y ∧ |x - y| < threshold
+  -- Check if there exist indices i,j with i≠j and close values
+  (List.range numbers.length).any fun i => 
+    (List.range numbers.length).any fun j => 
+      i ≠ j ∧ |numbers[i]! - numbers[j]!| < threshold
 
 def problem_spec
 -- function signature
@@ -41,50 +44,49 @@ theorem correctness
 (numbers: List Rat)
 (threshold: Rat)
 : problem_spec implementation numbers threshold  := by
-  -- High-level plan with sorries
-  unfold problem_spec implementation
-  use (numbers.any fun x => numbers.any fun y => x ≠ y ∧ |x - y| < threshold)
+  -- Start fresh with new implementation
+  unfold problem_spec implementation  
+  use ((List.range numbers.length).any fun i => 
+        (List.range numbers.length).any fun j => 
+          i ≠ j ∧ |numbers[i]! - numbers[j]!| < threshold)
   constructor
   · -- Show implementation equals the boolean we're using
     rfl
   · intro h_len
     split_ifs with h
-    · -- Case: implementation returns true, show ∃ i j, ... 
+    · -- Case: implementation returns true
       rw [List.any_eq_true] at h
-      obtain ⟨x, hx_mem, hx⟩ := h
-      rw [List.any_eq_true] at hx
-      obtain ⟨y, hy_mem, hxy⟩ := hx
-      simp at hxy
-      obtain ⟨hne, hlt⟩ := hxy
-      obtain ⟨i_fin, hi_eq⟩ := List.mem_iff_get.mp hx_mem
-      obtain ⟨j_fin, hj_eq⟩ := List.mem_iff_get.mp hy_mem
-      use i_fin.val, j_fin.val
-      constructor
-      · exact i_fin.isLt
-      · constructor
-        · exact j_fin.isLt
-        · constructor
-          · intro hij_eq
-            exact hne (hi_eq ▸ hj_eq ▸ (Fin.ext hij_eq) ▸ rfl)
-          · rw [← hi_eq, ← hj_eq] at hlt
-            convert hlt using 1
-            simp
-    · -- Case: implementation returns false, show ¬∃ i j, ...
-      push_neg  
+      obtain ⟨i, hi_mem, hi⟩ := h
+      rw [List.any_eq_true] at hi
+      obtain ⟨j, hj_mem, hij⟩ := hi
+      simp at hij
+      -- Convert membership in range to bounds
+      rw [List.mem_range] at hi_mem hj_mem
+      -- Extract parts of hij
+      obtain ⟨hij_ne, hij_lt⟩ := hij
+      -- Provide witnesses
+      use i, j
+      exact ⟨hi_mem, hj_mem, hij_ne, by convert hij_lt using 1; simp [hi_mem, hj_mem]⟩
+    · -- Case: implementation returns false
+      push_neg
       intros i j hi hj hij_ne
-      -- Direct approach: if implementation is false, then no two distinct elements are close
-      -- So if i ≠ j, either numbers[i]! = numbers[j]! or they're far apart
-      by_cases h_eq : numbers[i]! = numbers[j]!
-      · -- Case: numbers[i]! = numbers[j]!
-        simp [h_eq]
-        -- This means |numbers[i]! - numbers[j]!| = 0, so we need threshold ≤ 0
-        -- But wait, this reveals an issue with the proof approach...
-      · -- Case: numbers[i]! ≠ numbers[j]!  
-        -- The implementation being false means these distinct elements are far apart
-        have h_false : (numbers.any fun x ↦ numbers.any fun y ↦ decide (x ≠ y ∧ |x - y| < threshold)) = false := by
-          rwa [Bool.not_eq_true] at h
-        -- Use this to show numbers[i]! and numbers[j]! are far apart
-        sorry -- This is the right approach but needs the right lemma
+      by_contra! h_contra
+      -- h_contra : |numbers[i]! - numbers[j]!| < threshold
+      -- Now show the implementation should be true, contradicting h
+      have : ((List.range numbers.length).any fun i' => 
+               (List.range numbers.length).any fun j' => 
+                 i' ≠ j' ∧ |numbers[i']! - numbers[j']!| < threshold) = true := by
+        rw [List.any_eq_true]
+        use i
+        constructor
+        · exact List.mem_range.mpr hi
+        · rw [List.any_eq_true]
+          use j  
+          constructor
+          · exact List.mem_range.mpr hj
+          · simp [hij_ne]
+            convert h_contra using 1 <;> simp [hi, hj]
+      exact h this
 
 #eval implementation ([1, 2, 3]: List Rat) (1/2) -- Should be false
 #eval implementation ([1, 28/10, 3, 4, 5, 2]: List Rat) (3/10) -- Should be true
