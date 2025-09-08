@@ -32,7 +32,6 @@ class LanguageConfig:
 
     name: str
     file_extension: str  # e.g., ".yaml" for input files
-    output_extension: str  # e.g., ".dfy", ".lean", ".rs" for output files
     tool_path_env: str  # Environment variable name
     default_tool_path: str | Path  # Path to the language tool
     prompts_file: str | Path  # Path to prompts file

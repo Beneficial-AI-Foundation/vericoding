@@ -35,11 +35,6 @@ keywords = [
     "class "
 ]
 
-# Specification preservation patterns
-spec_patterns = [
-    "ATOM\\([^)]+\\)",  # ATOM blocks
-    "opaque\\s+(?:function|predicate)[^{;]+(?:\\{[^}]*\\}|;)"  # opaque functions
-]
 
 [lean]
 name = "Lean"
@@ -81,11 +76,6 @@ keywords = [
     "↔"
 ]
 
-# Specification preservation patterns
-spec_patterns = [
-    "axiom\\s+[^:]+:[^⊢]*",  # axioms
-    "opaque\\s+def[^:]+:[^⊢]*"  # opaque definitions
-]
 
 [verus]
 name = "Verus"
@@ -127,10 +117,6 @@ keywords = [
     "pub proof fn"
 ]
 
-# Specification preservation patterns
-spec_patterns = [
-    "spec fn [^{;]+(?:\\{[^}]*\\}|;)"  # spec functions
-]
 
 
 

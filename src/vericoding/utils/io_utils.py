@@ -56,7 +56,7 @@ def save_iteration_code(
     base_name = relative_path.stem
 
     # Save any phase for easier debugging (e.g., original, generated, current, raw)
-    iteration_file_name = f"{base_name}_iter_{iteration}_{phase}{config.language_config.output_extension}"
+    iteration_file_name = f"{base_name}_iter_{iteration}_{phase}{config.language_config.file_extension}"
 
     relative_dir = relative_path.parent
     # Save debug files in a separate 'debug' subdirectory
@@ -97,7 +97,7 @@ def prepare_output_paths(
         output_subdir.mkdir(parents=True, exist_ok=True)
 
     yaml_output_path = output_subdir / f"{base_file_name}_impl.yaml"
-    code_output_path = output_subdir / f"{base_file_name}_impl{config.language_config.output_extension}"
+    code_output_path = output_subdir / f"{base_file_name}_impl{config.language_config.file_extension}"
     return yaml_output_path, code_output_path, str(code_output_path)
 
 
