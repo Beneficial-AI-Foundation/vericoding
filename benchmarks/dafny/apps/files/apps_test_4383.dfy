@@ -1,0 +1,59 @@
+Determine if a child's age qualifies for Shichi-Go-San celebration.
+Shichi-Go-San celebrates children who are exactly 3, 5, or 7 years old.
+Input is a string containing an integer X (1 ≤ X ≤ 9).
+Output "YES" if X is 3, 5, or 7, otherwise "NO".
+
+predicate ValidInput(s: string)
+{
+    |s| > 0 && exists i: int :: 0 <= i < |s| && '0' <= s[i] <= '9'
+}
+
+predicate IsCelebratedAge(age: int)
+{
+    age == 3 || age == 5 || age == 7
+}
+
+function ParseIntegerValue(s: string): int
+    requires |s| > 0
+    requires exists i: int :: 0 <= i < |s| && '0' <= s[i] <= '9'
+{
+    ParseIntegerHelper(s, 0)
+}
+
+function ParseIntegerHelper(s: string, startIndex: int): int
+    requires 0 <= startIndex <= |s|
+    decreases |s| - startIndex
+{
+    if startIndex >= |s| then 0
+    else if s[startIndex] == ' ' || s[startIndex] == '\n' || s[startIndex] == '\t' then
+        ParseIntegerHelper(s, startIndex + 1)
+    else if '0' <= s[startIndex] <= '9' then
+        ParseDigits(s, startIndex, 0)
+    else
+        0
+}
+
+function ParseDigits(s: string, index: int, acc: int): int
+    requires 0 <= index <= |s|
+    decreases |s| - index
+{
+    if index >= |s| || !('0' <= s[index] <= '9') then acc
+    else ParseDigits(s, index + 1, acc * 10 + (s[index] as int - '0' as int))
+}
+
+method solve(stdin_input: string) returns (result: string)
+    requires ValidInput(stdin_input)
+    ensures var n := ParseIntegerValue(stdin_input); 
+            IsCelebratedAge(n) ==> result == "YES\n"
+    ensures var n := ParseIntegerValue(stdin_input);
+            !IsCelebratedAge(n) ==> result == "NO\n"
+    ensures result == "YES\n" || result == "NO\n"
+{
+    var n := ParseIntegerValue(stdin_input);
+
+    if IsCelebratedAge(n) {
+        result := "YES\n";
+    } else {
+        result := "NO\n";
+    }
+}

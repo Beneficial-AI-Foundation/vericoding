@@ -1,0 +1,76 @@
+Given n messages arriving at specified times, determine the maximum money achievable by time T.
+Each message has initial value A that decreases by B per minute after arrival.
+Earn C per unread message per minute. All messages must be read by time T.
+
+predicate ValidInput(n: int, a: int, b: int, c: int, t: int, arrivals: seq<int>) 
+{
+    1 <= n <= 1000 &&
+    1 <= a <= 1000 &&
+    1 <= b <= 1000 &&
+    1 <= c <= 1000 &&
+    1 <= t <= 1000 &&
+    |arrivals| == n &&
+    forall i :: 0 <= i < |arrivals| ==> 1 <= arrivals[i] <= t
+}
+
+function sum_seq(s: seq<int>): int
+{
+    if |s| == 0 then 0
+    else s[0] + sum_seq(s[1..])
+}
+
+function MaxMoney(n: int, a: int, b: int, c: int, t: int, arrivals: seq<int>): int
+    requires ValidInput(n, a, b, c, t, arrivals)
+{
+    if b > c then n * a
+    else n * a + (c - b) * (n * t - sum_seq(arrivals))
+}
+
+lemma sum_seq_slice_lemma(s: seq<int>, i: int)
+    requires 0 <= i < |s|
+    ensures sum_seq(s[0..i+1]) == sum_seq(s[0..i]) + s[i]
+{
+    if i == 0 {
+        assert s[0..1] == [s[0]];
+        assert sum_seq(s[0..1]) == s[0];
+        assert s[0..0] == [];
+        assert sum_seq(s[0..0]) == 0;
+    } else {
+        assert s[0..i+1] == [s[0]] + s[1..i+1];
+        assert s[0..i] == [s[0]] + s[1..i];
+        assert sum_seq(s[0..i+1]) == s[0] + sum_seq(s[1..i+1]);
+        assert sum_seq(s[0..i]) == s[0] + sum_seq(s[1..i]);
+        sum_seq_slice_lemma(s[1..], i-1);
+        assert sum_seq((s[1..])[0..i-1+1]) == sum_seq((s[1..])[0..i-1]) + (s[1..])[i-1];
+        assert (s[1..])[0..i] == s[1..i+1];
+        assert (s[1..])[0..i-1] == s[1..i];
+        assert (s[1..])[i-1] == s[i];
+        assert sum_seq(s[1..i+1]) == sum_seq(s[1..i]) + s[i];
+    }
+}
+
+method solve(n: int, a: int, b: int, c: int, t: int, arrivals: seq<int>) returns (result: int)
+    requires ValidInput(n, a, b, c, t, arrivals)
+    ensures result == MaxMoney(n, a, b, c, t, arrivals)
+{
+    if b > c {
+        result := n * a;
+    } else {
+        var acc := 0;
+        var i := 0;
+        while i < |arrivals|
+            invariant 0 <= i <= |arrivals|
+            invariant acc == i * t - sum_seq(arrivals[0..i])
+        {
+            sum_seq_slice_lemma(arrivals, i);
+            acc := acc + (t - arrivals[i]);
+            i := i + 1;
+        }
+        assert i == |arrivals| == n;
+        assert arrivals[0..i] == arrivals[0..n] == arrivals;
+        assert acc == n * t - sum_seq(arrivals);
+        acc := acc * (c - b);
+        acc := acc + n * a;
+        result := acc;
+    }
+}

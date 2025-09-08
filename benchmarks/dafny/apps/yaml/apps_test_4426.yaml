@@ -1,0 +1,64 @@
+vc-description: |-
+  Given a day of the week as a string, determine how many days until the next Sunday.
+  Input is one of "SUN", "MON", "TUE", "WED", "THU", "FRI", or "SAT".
+  Output is the number of days until the next Sunday (1-7, where 7 means next Sunday is in a week).
+
+vc-preamble: |-
+  predicate ValidDay(day: string) {
+      day in ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
+  }
+  
+  function DaysUntilSunday(day: string): int
+      requires ValidDay(day)
+  {
+      match day
+      case "SUN" => 7
+      case "MON" => 6  
+      case "TUE" => 5
+      case "WED" => 4
+      case "THU" => 3
+      case "FRI" => 2
+      case "SAT" => 1
+  }
+
+vc-helpers: |-
+  function findIndex(s: seq<string>, target: string): int
+      ensures |s| == 0 ==> findIndex(s, target) == -1
+      ensures |s| > 0 && target in s ==> findIndex(s, target) >= 0
+      ensures |s| > 0 && target in s ==> findIndex(s, target) < |s|
+      ensures |s| > 0 && target in s ==> s[findIndex(s, target)] == target
+      ensures |s| > 0 && target !in s ==> findIndex(s, target) == -1
+      ensures |s| > 0 && target in s ==> forall i :: 0 <= i < findIndex(s, target) ==> s[i] != target
+  {
+      if |s| == 0 then -1
+      else if s[0] == target then 0
+      else
+          var rest := findIndex(s[1..], target);
+          if rest == -1 then -1 else 1 + rest
+  }
+
+vc-spec: |-
+  method DaysToNextSunday(day: string) returns (result: int)
+      requires ValidDay(day)
+      ensures result >= 1 && result <= 7
+      ensures result == DaysUntilSunday(day)
+
+vc-code: |-
+  {
+      var weekDays := ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+      var index := findIndex(weekDays, day);
+      
+      assert day in weekDays;
+      assert index >= 0 && index <= 6;
+      assert day == "SUN" ==> index == 0;
+      assert day == "MON" ==> index == 1;
+      assert day == "TUE" ==> index == 2;
+      assert day == "WED" ==> index == 3;
+      assert day == "THU" ==> index == 4;
+      assert day == "FRI" ==> index == 5;
+      assert day == "SAT" ==> index == 6;
+      
+      result := 7 - index;
+  }
+
+vc-postamble: |-

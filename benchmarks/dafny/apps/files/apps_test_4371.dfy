@@ -1,0 +1,61 @@
+Given a string S of digits (1-9), find the minimum absolute difference between 753 and any 3-digit number formed by taking three consecutive digits from S.
+
+predicate ValidInput(S: string)
+{
+    |S| >= 3 && forall i :: 0 <= i < |S| ==> '1' <= S[i] <= '9'
+}
+
+function StringToInt(s: string): int
+    requires |s| == 3
+    requires forall i :: 0 <= i < |s| ==> '1' <= s[i] <= '9'
+    ensures StringToInt(s) >= 111
+    ensures StringToInt(s) <= 999
+{
+    100 * ((s[0] as int) - ('0' as int)) + 
+    10 * ((s[1] as int) - ('0' as int)) + 
+    ((s[2] as int) - ('0' as int))
+}
+
+function abs(x: int): int
+    ensures abs(x) >= 0
+    ensures abs(x) == x || abs(x) == -x
+{
+    if x >= 0 then x else -x
+}
+
+predicate IsMinimumDifference(S: string, result: int)
+    requires ValidInput(S)
+{
+    result >= 0 &&
+    (exists i :: 0 <= i <= |S| - 3 && result == abs(753 - StringToInt(S[i..i+3]))) &&
+    (forall i :: 0 <= i <= |S| - 3 ==> result <= abs(753 - StringToInt(S[i..i+3])))
+}
+
+method solve(S: string) returns (result: int)
+    requires ValidInput(S)
+    ensures IsMinimumDifference(S, result)
+{
+    var minDiff := abs(753 - StringToInt(S[0..3]));
+    var minIndex := 0;
+
+    var i := 1;
+    while i <= |S| - 3
+        invariant 1 <= i <= |S| - 2
+        invariant minDiff >= 0
+        invariant 0 <= minIndex <= |S| - 3
+        invariant minIndex < i
+        invariant minDiff == abs(753 - StringToInt(S[minIndex..minIndex+3]))
+        invariant forall j :: 0 <= j < i ==> minDiff <= abs(753 - StringToInt(S[j..j+3]))
+    {
+        var substring := S[i..i+3];
+        var num := StringToInt(substring);
+        var diff := abs(753 - num);
+        if diff < minDiff {
+            minDiff := diff;
+            minIndex := i;
+        }
+        i := i + 1;
+    }
+
+    result := minDiff;
+}

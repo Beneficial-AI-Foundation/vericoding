@@ -1,0 +1,192 @@
+Count visible lanterns on a train path from point 1 to point L. 
+Lanterns are located at positions divisible by v (i.e., at positions v, 2v, 3v, ...). 
+A standing train blocks visibility at positions l through r (inclusive). 
+Determine how many lanterns are visible (not blocked by the standing train).
+
+predicate ValidInput(input: string)
+{
+    var lines := SplitLines(input);
+    |lines| > 0 &&
+    IsValidInteger(lines[0]) &&
+    var t := ParseInt(lines[0]);
+    t >= 0 && |lines| >= t + 1 &&
+    (forall i :: 1 <= i <= t ==> (
+        |SplitSpaces(lines[i])| >= 4 &&
+        (forall j :: 0 <= j < 4 ==> IsValidInteger(SplitSpaces(lines[i])[j])) &&
+        var parts := SplitSpaces(lines[i]);
+        var L := ParseInt(parts[0]);
+        var v := ParseInt(parts[1]);
+        var l := ParseInt(parts[2]);
+        var r := ParseInt(parts[3]);
+        L >= 1 && v >= 1 && l >= 1 && r >= l && r <= L
+    ))
+}
+
+predicate ValidOutput(output: string, input: string)
+{
+    forall c :: c in output ==> (c >= '0' && c <= '9') || c == '-' || c == '\n'
+}
+
+predicate OutputMatchesAlgorithm(output: string, input: string)
+    requires ValidInput(input)
+{
+    var lines := SplitLines(input);
+    var t := ParseInt(lines[0]);
+    t >= 0 &&
+    var expectedLines := seq(t, i requires 0 <= i < t => 
+        if i + 1 < |lines| && |SplitSpaces(lines[i + 1])| >= 4 then
+            var parts := SplitSpaces(lines[i + 1]);
+            var L := ParseInt(parts[0]);
+            var v := ParseInt(parts[1]);
+            var l := ParseInt(parts[2]);
+            var r := ParseInt(parts[3]);
+            var totalLanterns := L / v;
+            var blockedLanterns := r / v - (l - 1) / v;
+            var visibleLanterns := totalLanterns - blockedLanterns;
+            IntToString(visibleLanterns)
+        else
+            "0"
+    );
+    output == JoinLines(expectedLines)
+}
+
+predicate IsValidInteger(s: string)
+{
+    |s| > 0 && (
+        (s[0] == '-' && |s| > 1 && forall i :: 1 <= i < |s| ==> s[i] >= '0' && s[i] <= '9') ||
+        (s[0] != '-' && forall i :: 0 <= i < |s| ==> s[i] >= '0' && s[i] <= '9')
+    )
+}
+
+function JoinLines(lines: seq<string>): string
+{
+    if |lines| == 0 then ""
+    else if |lines| == 1 then lines[0]
+    else lines[0] + "\n" + JoinLines(lines[1..])
+}
+
+function SplitLines(s: string): seq<string>
+{
+    SplitByChar(s, '\n')
+}
+
+function SplitSpaces(s: string): seq<string>
+{
+    SplitByChar(s, ' ')
+}
+
+function SplitByChar(s: string, delimiter: char): seq<string>
+{
+    if |s| == 0 then
+        [""]
+    else
+        var i := FindChar(s, delimiter, 0);
+        if i == -1 then
+            [s]
+        else if i == 0 then
+            [""] + SplitByChar(s[1..], delimiter)
+        else 
+            assert 0 < i < |s|;
+            [s[..i]] + SplitByChar(s[i+1..], delimiter)
+}
+
+function FindChar(s: string, c: char, start: int): int
+    requires 0 <= start <= |s|
+    ensures FindChar(s, c, start) == -1 || (start <= FindChar(s, c, start) < |s|)
+    decreases |s| - start
+{
+    if start >= |s| then -1
+    else if s[start] == c then start
+    else FindChar(s, c, start + 1)
+}
+
+function ParseInt(s: string): int
+{
+    if |s| == 0 then 0
+    else if s[0] == '-' then -ParseIntHelper(s[1..])
+    else ParseIntHelper(s)
+}
+
+function ParseIntHelper(s: string): int
+{
+    if |s| == 0 then 0
+    else ParseIntHelper(s[..|s|-1]) * 10 + (s[|s|-1] as int - '0' as int)
+}
+
+function IntToString(n: int): string
+    ensures forall c :: c in IntToString(n) ==> (c >= '0' && c <= '9') || c == '-'
+{
+    if n == 0 then "0"
+    else if n < 0 then "-" + IntToStringHelper(-n)
+    else IntToStringHelper(n)
+}
+
+function IntToStringHelper(n: int): string
+    requires n >= 0
+    ensures forall c :: c in IntToStringHelper(n) ==> c >= '0' && c <= '9'
+{
+    if n == 0 then ""
+    else IntToStringHelper(n / 10) + [('0' as int + n % 10) as char]
+}
+
+method solve(input: string) returns (output: string)
+    requires |input| > 0
+    requires ValidInput(input)
+    ensures ValidOutput(output, input)
+    ensures OutputMatchesAlgorithm(output, input)
+{
+    var lines := SplitLines(input);
+    var t := ParseInt(lines[0]);
+
+    var resultLines: seq<string> := [];
+
+    var i := 1;
+    while i <= t
+        invariant 1 <= i <= t + 1
+        invariant |lines| >= t + 1
+        invariant |resultLines| == i - 1
+        invariant forall j :: 0 <= j < |resultLines| ==> 
+            (forall c :: c in resultLines[j] ==> (c >= '0' && c <= '9') || c == '-')
+        invariant forall j :: 0 <= j < |resultLines| ==> 
+            if j + 1 < |lines| && |SplitSpaces(lines[j + 1])| >= 4 then
+                var parts := SplitSpaces(lines[j + 1]);
+                var L := ParseInt(parts[0]);
+                var v := ParseInt(parts[1]);
+                var l := ParseInt(parts[2]);
+                var r := ParseInt(parts[3]);
+                v >= 1 &&
+                var totalLanterns := L / v;
+                var blockedLanterns := r / v - (l - 1) / v;
+                var visibleLanterns := totalLanterns - blockedLanterns;
+                resultLines[j] == IntToString(visibleLanterns)
+            else
+                resultLines[j] == "0"
+    {
+        if i < |lines| {
+            var parts := SplitSpaces(lines[i]);
+            if |parts| >= 4 {
+                assert ValidInput(input);
+                assert 1 <= i <= t;
+                var L := ParseInt(parts[0]);
+                var v := ParseInt(parts[1]);
+                var l := ParseInt(parts[2]);
+                var r := ParseInt(parts[3]);
+                assert v >= 1;
+
+                var totalLanterns := L / v;
+                var blockedLanterns := r / v - (l - 1) / v;
+                var visibleLanterns := totalLanterns - blockedLanterns;
+
+                var lineResult := IntToString(visibleLanterns);
+                resultLines := resultLines + [lineResult];
+            } else {
+                resultLines := resultLines + ["0"];
+            }
+        } else {
+            resultLines := resultLines + ["0"];
+        }
+        i := i + 1;
+    }
+
+    output := JoinLines(resultLines);
+}

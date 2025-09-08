@@ -1,0 +1,55 @@
+Given an even string S, find the length of the longest even string that can be 
+obtained by deleting one or more characters from the end of S. An even string
+is one that can be split into two identical halves.
+
+predicate IsEvenString(s: string)
+{
+    |s| >= 2 && |s| % 2 == 0 && s[..|s|/2] == s[|s|/2..]
+}
+
+predicate ValidInput(S: string)
+{
+    |S| >= 2 && IsEvenString(S)
+}
+
+predicate ValidSolution(S: string, result: int)
+{
+    2 <= result < |S| && result % 2 == 0 && IsEvenString(S[..result])
+}
+
+predicate IsMaximalSolution(S: string, result: int)
+{
+    ValidSolution(S, result) && 
+    forall k :: result < k < |S| && k % 2 == 0 ==> !IsEvenString(S[..k])
+}
+
+method solve(S: string) returns (result: int)
+    requires ValidInput(S)
+    requires exists k :: ValidSolution(S, k)
+    ensures ValidSolution(S, result)
+    ensures IsMaximalSolution(S, result)
+{
+    var x := |S|;
+    var i := 0;
+
+    while i < x
+        invariant 0 <= i <= x
+        invariant i % 2 == 0
+        invariant forall k :: x - 2 - i < k < |S| && k % 2 == 0 ==> !IsEvenString(S[..k])
+    {
+        var y := x - 2 - i;
+
+        if y >= 2 && y % 2 == 0 {
+            if IsEvenString(S[..y]) {
+                result := y;
+                return;
+            }
+        }
+
+        i := i + 2;
+    }
+
+    // This should never be reached due to the precondition
+    assert false;
+    result := 2;
+}

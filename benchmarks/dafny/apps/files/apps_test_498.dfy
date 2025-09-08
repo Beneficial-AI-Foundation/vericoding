@@ -1,0 +1,56 @@
+Given a classroom with n lanes and m desks per lane, where each desk has 2 seats (left and right),
+find the lane, desk, and side for seat number k. Seats are numbered 1 to 2nm in order:
+by lane first, then by desk within each lane, then left seat before right seat within each desk.
+
+predicate ValidInput(n: int, m: int, k: int)
+{
+    1 <= n <= 10000 && 1 <= m <= 10000 && 1 <= k <= 2 * n * m
+}
+
+predicate ValidOutput(n: int, m: int, lane: int, desk: int, side: string)
+{
+    1 <= lane <= n && 1 <= desk <= m && (side == "L" || side == "R")
+}
+
+predicate CorrectSolution(n: int, m: int, k: int, lane: int, desk: int, side: string)
+    requires ValidInput(n, m, k)
+{
+    lane == (k - 1) / (2 * m) + 1 &&
+    desk == (k - 1) % (2 * m) / 2 + 1 &&
+    (side == "L" <==> (k - 1) % (2 * m) % 2 == 0)
+}
+
+lemma LaneBounds(n: int, m: int, k: int)
+    requires ValidInput(n, m, k)
+    ensures 1 <= (k - 1) / (2 * m) + 1 <= n
+{
+    assert k <= 2 * n * m;
+    assert k - 1 <= 2 * n * m - 1;
+    assert (k - 1) / (2 * m) <= (2 * n * m - 1) / (2 * m);
+    assert (2 * n * m - 1) / (2 * m) < n;
+}
+
+lemma DeskBounds(n: int, m: int, k: int)
+    requires ValidInput(n, m, k)
+    ensures 1 <= (k - 1) % (2 * m) / 2 + 1 <= m
+{
+    assert (k - 1) % (2 * m) < 2 * m;
+    assert (k - 1) % (2 * m) / 2 < m;
+}
+
+method solve(n: int, m: int, k: int) returns (lane: int, desk: int, side: string)
+    requires ValidInput(n, m, k)
+    ensures ValidOutput(n, m, lane, desk, side)
+    ensures CorrectSolution(n, m, k, lane, desk, side)
+{
+    LaneBounds(n, m, k);
+    DeskBounds(n, m, k);
+    
+    lane := (k - 1) / (2 * m) + 1;
+    desk := (k - 1) % (2 * m) / 2 + 1;
+    if ((k - 1) % (2 * m) % 2 == 0) {
+        side := "L";
+    } else {
+        side := "R";
+    }
+}

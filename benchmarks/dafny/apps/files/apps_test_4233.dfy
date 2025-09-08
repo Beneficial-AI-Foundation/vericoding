@@ -1,0 +1,286 @@
+Given an n×m grid containing '*' and '.' characters, find a set of stars that exactly reproduces this pattern.
+A star has a center (x,y) and size s, placing '*' at the center and s positions in each cardinal direction.
+Output the number of stars and their parameters, or "-1" if impossible.
+
+predicate ValidInput(input: string)
+{
+    var lines := Split(input, '\n');
+    |lines| >= 1 && 
+    (var firstLine := Split(lines[0], ' ');
+     |firstLine| == 2 &&
+     StringToInt(firstLine[0]) > 0 && StringToInt(firstLine[1]) > 0 &&
+     (var n := StringToInt(firstLine[0]);
+      var m := StringToInt(firstLine[1]);
+      n >= 3 && m >= 3 && |lines| >= n + 1 &&
+      (forall i :: 1 <= i <= n ==> i < |lines| && |lines[i]| >= m) &&
+      (forall i :: 1 <= i <= n ==> forall j :: 0 <= j < m ==> lines[i][j] in {'*', '.'})))
+}
+
+ghost predicate ExistsValidStarDecomposition(input: string)
+requires ValidInput(input)
+{
+    var lines := Split(input, '\n');
+    var firstLine := Split(lines[0], ' ');
+    var n := StringToInt(firstLine[0]);
+    var m := StringToInt(firstLine[1]);
+
+    exists k: int, stars: seq<(int, int, int)> :: 
+        0 <= k <= n * m && |stars| == k &&
+        (forall s :: s in stars ==> 
+            1 <= s.0 <= n && 1 <= s.1 <= m && 1 <= s.2 <= min(n, m)) &&
+        ValidStarDecomposition(input, stars)
+}
+
+predicate ValidStarDecomposition(input: string, stars: seq<(int, int, int)>)
+requires ValidInput(input)
+{
+    var lines := Split(input, '\n');
+    var firstLine := Split(lines[0], ' ');
+    var n := StringToInt(firstLine[0]);
+    var m := StringToInt(firstLine[1]);
+    // Each star is valid and within bounds
+    (forall s :: s in stars ==> 
+        s.0 >= 1 && s.0 <= n && s.1 >= 1 && s.1 <= m && s.2 > 0 &&
+        ValidStar(n, m, s.0, s.1, s.2)) &&
+    // The stars exactly cover all '*' positions
+    (forall i, j :: 1 <= i <= n && 1 <= j <= m ==>
+        (lines[i][j-1] == '*' <==> CoveredByStars(stars, i, j)) &&
+        (lines[i][j-1] == '.' <==> !CoveredByStars(stars, i, j)))
+}
+
+predicate ValidStar(n: int, m: int, x: int, y: int, s: int)
+{
+    x >= 1 && x <= n && y >= 1 && y <= m && s > 0 &&
+    x - s >= 1 && x + s <= n && y - s >= 1 && y + s <= m
+}
+
+predicate CoveredByStars(stars: seq<(int, int, int)>, i: int, j: int)
+{
+    exists s :: s in stars && CoveredByStar(s.0, s.1, s.2, i, j)
+}
+
+predicate CoveredByStar(x: int, y: int, size: int, i: int, j: int)
+{
+    (i == x && j == y) || // center
+    (i == x && 1 <= AbsInt(j - y) <= size) || // horizontal ray
+    (j == y && 1 <= AbsInt(i - x) <= size)    // vertical ray
+}
+
+predicate StartsWithIntAndValidFormat(s: string, k: int)
+{
+    |s| > 0 && 
+    |IntToString(k)| <= |s| && 
+    s[..|IntToString(k)|] == IntToString(k)
+}
+
+function FormatStarOutput(k: int, stars: seq<(int, int, int)>): string
+requires k >= 0 && |stars| == k
+{
+    var result := IntToString(k) + "\n";
+    var idx := 0;
+    FormatStarOutputHelper(result, stars, idx)
+}
+
+function FormatStarOutputHelper(result: string, stars: seq<(int, int, int)>, idx: int): string
+requires 0 <= idx <= |stars|
+decreases |stars| - idx
+{
+    if idx >= |stars| then result
+    else 
+        var newResult := result + IntToString(stars[idx].0) + " " + IntToString(stars[idx].1) + " " + IntToString(stars[idx].2) + "\n";
+        FormatStarOutputHelper(newResult, stars, idx + 1)
+}
+
+function AbsInt(x: int): int
+{
+    if x >= 0 then x else -x
+}
+
+function min(a: int, b: int): int
+{
+    if a <= b then a else b
+}
+
+function Split(s: string, delimiter: char): seq<string>
+{
+    if |s| == 0 then [""]
+    else SplitHelper(s, delimiter, 0, 0)
+}
+
+function SplitHelper(s: string, delimiter: char, start: int, pos: int): seq<string>
+requires 0 <= start <= pos <= |s|
+decreases |s| - pos
+{
+    if pos >= |s| then
+        if start < |s| then [s[start..]] else [""]
+    else if s[pos] == delimiter then
+        [s[start..pos]] + SplitHelper(s, delimiter, pos + 1, pos + 1)
+    else
+        SplitHelper(s, delimiter, start, pos + 1)
+}
+
+function StringToInt(s: string): int
+{
+    if |s| == 0 then 0
+    else if s[0] == '-' then -StringToIntHelper(s[1..])
+    else StringToIntHelper(s)
+}
+
+function StringToIntHelper(s: string): int
+{
+    if |s| == 0 then 0
+    else if |s| == 1 then
+        if '0' <= s[0] <= '9' then s[0] as int - '0' as int else 0
+    else
+        StringToIntHelper(s[..|s|-1]) * 10 + (if '0' <= s[|s|-1] <= '9' then s[|s|-1] as int - '0' as int else 0)
+}
+
+function IntToString(n: int): string
+{
+    if n < 0 then "-" + IntToStringHelper(-n)
+    else IntToStringHelper(n)
+}
+
+function IntToStringHelper(n: int): string
+requires n >= 0
+ensures |IntToStringHelper(n)| > 0
+{
+    if n < 10 then 
+        var charCode := '0' as int + n;
+        if charCode <= 127 then [charCode as char] else ['0']
+    else IntToStringHelper(n / 10) + IntToStringHelper(n % 10)
+}
+
+method solve(input: string) returns (result: string)
+requires |input| > 0
+ensures ValidInput(input) ==> 
+    (result == "-1\n" <==> !ExistsValidStarDecomposition(input))
+ensures ValidInput(input) && result != "-1\n" ==>
+    (exists k: int, stars: seq<(int, int, int)> ::
+        k >= 0 && |stars| == k &&
+        ValidStarDecomposition(input, stars) &&
+        result == FormatStarOutput(k, stars))
+ensures ValidInput(input) ==> result != ""
+ensures !ValidInput(input) ==> result == "-1\n"
+ensures result == "-1\n" || (exists k: int :: k >= 0 && StartsWithIntAndValidFormat(result, k))
+ensures result == "" || result[|result|-1..] == "\n"
+{
+    var lines := Split(input, '\n');
+    if |lines| < 1 { result := "-1\n"; return; }
+
+    var firstLine := Split(lines[0], ' ');
+    if |firstLine| != 2 { result := "-1\n"; return; }
+
+    var n := StringToInt(firstLine[0]);
+    var m := StringToInt(firstLine[1]);
+
+    if n < 3 || m < 3 || |lines| < n + 1 { result := "-1\n"; return; }
+
+    // Check if input is valid according to ValidInput predicate
+    if !ValidInput(input) { result := "-1\n"; return; }
+
+    var pole := new char[n, m];
+    var metka := new int[n, m];
+
+    // Read grid
+    var i := 0;
+    while i < n 
+        invariant 0 <= i <= n
+        invariant ValidInput(input)
+        invariant var lines := Split(input, '\n'); |lines| >= n + 1
+        invariant var lines := Split(input, '\n'); forall ii :: 1 <= ii <= n ==> ii < |lines| && |lines[ii]| >= m
+    {
+        var j := 0;
+        while j < m
+            invariant 0 <= j <= m
+            invariant i < n
+            invariant ValidInput(input)
+            invariant var lines := Split(input, '\n'); |lines| >= n + 1
+            invariant var lines := Split(input, '\n'); i + 1 < |lines|
+            invariant var lines := Split(input, '\n'); |lines[i + 1]| >= m
+        {
+            pole[i, j] := lines[i + 1][j];
+            if pole[i, j] == '.' {
+                metka[i, j] := 0;
+            } else {
+                metka[i, j] := 1;
+            }
+            j := j + 1;
+        }
+        i := i + 1;
+    }
+
+    var k := 0;
+    var ans : seq<(int, int, int)> := [];
+
+    i := 0;
+    while i < n
+        invariant 0 <= i <= n
+        invariant k == |ans|
+    {
+        var j := 0;
+        while j < m 
+            invariant 0 <= j <= m
+            invariant k == |ans|
+        {
+            if pole[i, j] == '*' {
+                var e := 0;
+                while i - e - 1 >= 0 && j - e - 1 >= 0 && i + e + 1 < n && j + e + 1 < m && 
+                      pole[i - e - 1, j] == '*' && pole[i, j - e - 1] == '*' && 
+                      pole[i + e + 1, j] == '*' && pole[i, j + e + 1] == '*'
+                    invariant e >= 0
+                {
+                    e := e + 1;
+                    metka[i, j] := 0;
+                    metka[i - e, j] := 0;
+                    metka[i, j - e] := 0;
+                    metka[i + e, j] := 0;
+                    metka[i, j + e] := 0;
+                }
+                if e != 0 {
+                    k := k + 1;
+                    ans := ans + [(i + 1, j + 1, e)];
+                }
+            }
+            j := j + 1;
+        }
+        i := i + 1;
+    }
+
+    var flag := true;
+    i := 0;
+    while i < n 
+        invariant 0 <= i <= n
+    {
+        var j := 0;
+        while j < m 
+            invariant 0 <= j <= m
+        {
+            if metka[i, j] == 1 {
+                flag := false;
+                break;
+            }
+            j := j + 1;
+        }
+        if !flag { break; }
+        i := i + 1;
+    }
+
+    if !flag {
+        result := "-1\n";
+    } else {
+        result := IntToString(k) + "\n";
+        var idx := 0;
+        while idx < k 
+            invariant 0 <= idx <= k
+            invariant idx <= |ans|
+            invariant k == |ans|
+        {
+            var tmpCall1 := IntToString(ans[idx].0);
+            var tmpCall2 := IntToString(ans[idx].1);
+            var tmpCall3 := IntToString(ans[idx].2);
+            result := result + tmpCall1 + " " + tmpCall2 + " " + tmpCall3 + "\n";
+            idx := idx + 1;
+        }
+    }
+}

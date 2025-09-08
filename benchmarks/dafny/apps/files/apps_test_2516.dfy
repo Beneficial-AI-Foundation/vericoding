@@ -1,0 +1,86 @@
+Given a string S of length N containing only digits 0-9 and a prime number P,
+count how many contiguous substrings of S are divisible by P when interpreted
+as base-10 integers.
+
+predicate isPrime(p: int)
+    requires p >= 2
+{
+    forall k :: 2 <= k < p ==> p % k != 0
+}
+
+predicate ValidInput(n: int, p: int, s: string)
+{
+    n >= 1 &&
+    p >= 2 &&
+    isPrime(p) &&
+    |s| == n &&
+    forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'
+}
+
+function substringToInt(s: string): int
+    requires forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'
+    requires |s| > 0
+{
+    if |s| == 1 then s[0] as int - '0' as int
+    else substringToInt(s[..|s|-1]) * 10 + (s[|s|-1] as int - '0' as int)
+}
+
+predicate ValidResult(result: int, n: int)
+{
+    result >= 0 && result <= n * (n + 1) / 2
+}
+
+method solve(n: int, p: int, s: string) returns (result: int)
+    requires ValidInput(n, p, s)
+    ensures ValidResult(result, n)
+{
+    result := 0;
+
+    if p == 2 || p == 5 {
+        // For p = 2 or 5, only the last digit matters
+        var i := 0;
+        while i < n
+            invariant 0 <= i <= n
+            invariant result >= 0
+            invariant result <= i * (i + 1) / 2
+        {
+            var digit := s[i] as int - '0' as int;
+            if digit % p == 0 {
+                result := result + (i + 1);
+            }
+            i := i + 1;
+        }
+    } else {
+        // General case using modular arithmetic
+        var mod := new int[p];
+        var j := 0;
+        while j < p
+            invariant 0 <= j <= p
+            invariant forall k :: 0 <= k < j ==> mod[k] == 0
+        {
+            mod[j] := 0;
+            j := j + 1;
+        }
+        mod[0] := 1;
+
+        var current := 0;
+        var i := 0;
+
+        while i < n
+            invariant 0 <= i <= n
+            invariant 0 <= current < p
+            invariant result >= 0
+            invariant result <= i * (i + 1) / 2
+            invariant p != 2 && p != 5
+            invariant isPrime(p)
+            invariant forall k :: 0 <= k < p ==> mod[k] >= 0
+            invariant forall k :: 0 <= k < p ==> mod[k] <= i + 1
+        {
+            var digit := s[i] as int - '0' as int;
+            current := (current * 10 + digit) % p;
+            result := result + mod[current];
+            mod[current] := mod[current] + 1;
+            i := i + 1;
+        }
+    }
+}

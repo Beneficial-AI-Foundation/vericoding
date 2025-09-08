@@ -1,0 +1,269 @@
+Given a 1×n grid where Alice claims to have placed k ships of size a (consecutive cells)
+such that no two ships intersect or touch, and Bob makes m shots that all "miss",
+determine the first shot after which we can be certain Alice is cheating
+(i.e., it becomes impossible to place k non-intersecting, non-touching ships without hitting a shot).
+
+predicate ValidInput(n: int, k: int, a: int, m: int, shots: seq<int>)
+{
+    n > 0 && k > 0 && a > 0 && m > 0 && |shots| == m &&
+    (forall i :: 0 <= i < |shots| ==> 1 <= shots[i] <= n)
+}
+
+function canPlaceShipsFunc(n: int, k: int, a: int, shots: seq<int>, numShots: int): bool
+    requires n > 0 && k > 0 && a > 0 && numShots >= 0
+    requires numShots <= |shots|
+    requires forall i :: 0 <= i < |shots| ==> 1 <= shots[i] <= n
+{
+    var hitCells := set i | 0 <= i < numShots && i < |shots| :: shots[i];
+    greedyShipPlacement(n, k, a, hitCells) >= k
+}
+
+function greedyShipPlacement(n: int, k: int, a: int, hitCells: set<int>): int
+    requires n > 0 && k > 0 && a > 0
+    requires forall cell :: cell in hitCells ==> 1 <= cell <= n
+{
+    greedyPlaceShipsFromPosition(1, n, k, a, hitCells)
+}
+
+function greedyPlaceShipsFromPosition(pos: int, n: int, k: int, a: int, hitCells: set<int>): int
+    requires pos >= 1 && n > 0 && k >= 0 && a > 0
+    requires forall cell :: cell in hitCells ==> 1 <= cell <= n
+    decreases n - pos + 1, k
+{
+    if pos > n || k == 0 then 0
+    else if pos + a - 1 <= n && forall cell :: pos <= cell <= pos + a - 1 ==> cell !in hitCells then
+        1 + greedyPlaceShipsFromPosition(pos + a + 1, n, k - 1, a, hitCells)
+    else
+        greedyPlaceShipsFromPosition(pos + 1, n, k, a, hitCells)
+}
+
+predicate isNaturalNumberString(str: string)
+{
+    |str| > 0 && str[0] != '0' && forall i :: 0 <= i < |str| ==> '0' <= str[i] <= '9'
+}
+
+function parseInputSpec(input: string): seq<string>
+    requires |input| > 0
+    ensures |parseInputSpec(input)| >= 0
+{
+    []
+}
+
+function parseThreeIntsSpec(line: string): (int, int, int)
+    ensures parseThreeIntsSpec(line).0 > 0 && parseThreeIntsSpec(line).1 > 0 && parseThreeIntsSpec(line).2 > 0
+{
+    (1, 1, 1)
+}
+
+function parseIntSpec(line: string): int
+    ensures parseIntSpec(line) >= 0
+{
+    0
+}
+
+function parseIntArraySpec(line: string): seq<int>
+    ensures forall i :: 0 <= i < |parseIntArraySpec(line)| ==> parseIntArraySpec(line)[i] > 0
+{
+    []
+}
+
+function intToStringSpec(value: int): string
+    requires value >= 1
+    ensures |intToStringSpec(value)| > 0
+    ensures isNaturalNumberString(intToStringSpec(value))
+{
+    "1"
+}
+
+method parseInput(input: string) returns (lines: seq<string>) 
+    requires |input| > 0
+    ensures |lines| >= 0
+{
+    lines := [];
+    var current := "";
+    var i := 0;
+    while i < |input|
+        invariant 0 <= i <= |input|
+    {
+        if input[i] == '\n' {
+            lines := lines + [current];
+            current := "";
+        } else {
+            current := current + [input[i]];
+        }
+        i := i + 1;
+    }
+    if |current| > 0 {
+        lines := lines + [current];
+    }
+}
+
+method parseThreeInts(line: string) returns (triple: (int, int, int))
+    ensures triple.0 > 0 && triple.1 > 0 && triple.2 > 0
+{
+    triple := (1, 1, 1);
+}
+
+method parseInt(line: string) returns (value: int)
+    ensures value >= 0
+{
+    value := 0;
+}
+
+method parseIntArray(line: string) returns (values: seq<int>)
+    ensures forall i :: 0 <= i < |values| ==> values[i] > 0
+{
+    values := [];
+}
+
+method intToString(value: int) returns (str: string)
+    requires value >= 1
+    ensures |str| > 0
+    ensures isNaturalNumberString(str)
+{
+    str := "1";
+}
+
+method checkCanPlaceShips(n: int, k: int, a: int, shots: seq<int>, numShots: int) returns (canPlace: bool)
+    requires n > 0 && k > 0 && a > 0 && numShots >= 0
+    requires numShots <= |shots|
+    requires forall i :: 0 <= i < |shots| ==> 1 <= shots[i] <= n
+    ensures canPlace == canPlaceShipsFunc(n, k, a, shots, numShots)
+{
+    var hitCells := {};
+    var i := 0;
+    while i < numShots && i < |shots|
+        invariant 0 <= i <= numShots && i <= |shots|
+        invariant hitCells == set j | 0 <= j < i && j < |shots| :: shots[j]
+        invariant forall cell :: cell in hitCells ==> 1 <= cell <= n
+    {
+        hitCells := hitCells + {shots[i]};
+        i := i + 1;
+    }
+
+    var shipsPlaced := greedyShipPlacementMethod(n, k, a, hitCells);
+    canPlace := shipsPlaced >= k;
+}
+
+method greedyShipPlacementMethod(n: int, k: int, a: int, hitCells: set<int>) returns (shipsPlaced: int)
+    requires n > 0 && k > 0 && a > 0
+    requires forall cell :: cell in hitCells ==> 1 <= cell <= n
+    ensures shipsPlaced == greedyShipPlacement(n, k, a, hitCells)
+{
+    shipsPlaced := greedyPlaceShipsFromPositionMethod(1, n, k, a, hitCells);
+}
+
+method greedyPlaceShipsFromPositionMethod(pos: int, n: int, k: int, a: int, hitCells: set<int>) returns (shipsPlaced: int)
+    requires pos >= 1 && n > 0 && k >= 0 && a > 0
+    requires forall cell :: cell in hitCells ==> 1 <= cell <= n
+    ensures shipsPlaced == greedyPlaceShipsFromPosition(pos, n, k, a, hitCells)
+    decreases n - pos + 1, k
+{
+    if pos > n || k == 0 {
+        shipsPlaced := 0;
+    } else if pos + a - 1 <= n && forall cell :: pos <= cell <= pos + a - 1 ==> cell !in hitCells {
+        var remainingShips := greedyPlaceShipsFromPositionMethod(pos + a + 1, n, k - 1, a, hitCells);
+        shipsPlaced := 1 + remainingShips;
+    } else {
+        shipsPlaced := greedyPlaceShipsFromPositionMethod(pos + 1, n, k, a, hitCells);
+    }
+}
+
+method findFirstCheatShot(n: int, k: int, a: int, shots: seq<int>, m: int) returns (firstShot: int)
+    requires n > 0 && k > 0 && a > 0 && m > 0
+    requires m <= |shots|
+    requires forall i :: 0 <= i < |shots| ==> 1 <= shots[i] <= n
+    requires !canPlaceShipsFunc(n, k, a, shots, m)
+    ensures 1 <= firstShot <= m
+    ensures !canPlaceShipsFunc(n, k, a, shots, firstShot)
+    ensures firstShot == 1 || canPlaceShipsFunc(n, k, a, shots, firstShot-1)
+{
+    var low := 0;
+    var high := m;
+
+    while high - low > 1
+        invariant 0 <= low < high <= m
+        invariant low == 0 || canPlaceShipsFunc(n, k, a, shots, low)
+        invariant !canPlaceShipsFunc(n, k, a, shots, high)
+        decreases high - low
+    {
+        var mid := (low + high + 1) / 2;
+        var canPlace := checkCanPlaceShips(n, k, a, shots, mid);
+        if canPlace {
+            low := mid;
+        } else {
+            high := mid;
+        }
+    }
+
+    firstShot := high;
+}
+
+method solve(stdin_input: string) returns (result: string)
+    requires |stdin_input| > 0
+    requires stdin_input[|stdin_input|-1] == '\n'
+    ensures |result| > 0
+    ensures result[|result|-1] == '\n'
+    ensures result == "-1\n" || (exists shot_num_str :: |shot_num_str| > 0 && result == shot_num_str + "\n" && isNaturalNumberString(shot_num_str))
+    ensures var lines := parseInputSpec(stdin_input);
+            if |lines| >= 3 then
+                var firstLine := parseThreeIntsSpec(lines[0]);
+                var n, k, a := firstLine.0, firstLine.1, firstLine.2;
+                var m := parseIntSpec(lines[1]);
+                var shots := parseIntArraySpec(lines[2]);
+                if ValidInput(n, k, a, m, shots) then
+                    if canPlaceShipsFunc(n, k, a, shots, m) then
+                        result == "-1\n"
+                    else
+                        exists shot_idx :: 1 <= shot_idx <= m && 
+                                         result == intToStringSpec(shot_idx) + "\n" &&
+                                         !canPlaceShipsFunc(n, k, a, shots, shot_idx) &&
+                                         (shot_idx == 1 || canPlaceShipsFunc(n, k, a, shots, shot_idx-1))
+                else
+                    true
+            else
+                true
+{
+    var lines := parseInput(stdin_input);
+    if |lines| < 3 {
+        result := "-1\n";
+        return;
+    }
+
+    var firstLine := parseThreeInts(lines[0]);
+    var n, k, a := firstLine.0, firstLine.1, firstLine.2;
+    var m := parseInt(lines[1]);
+    var shots := parseIntArray(lines[2]);
+
+    if |shots| != m || m <= 0 || n <= 0 || k <= 0 || a <= 0 {
+        result := "-1\n";
+        return;
+    }
+
+    var validShots := true;
+    var i := 0;
+    while i < |shots|
+        invariant 0 <= i <= |shots|
+        invariant validShots ==> forall j :: 0 <= j < i ==> 1 <= shots[j] <= n
+    {
+        if shots[i] < 1 || shots[i] > n {
+            validShots := false;
+            break;
+        }
+        i := i + 1;
+    }
+
+    if !validShots {
+        result := "-1\n";
+        return;
+    }
+
+    var canPlaceAllShips := checkCanPlaceShips(n, k, a, shots, m);
+    if canPlaceAllShips {
+        result := "-1\n";
+    } else {
+        var firstCheatShot := findFirstCheatShot(n, k, a, shots, m);
+        var shotStr := intToString(firstCheatShot);
+        result := shotStr + "\n";
+    }
+}

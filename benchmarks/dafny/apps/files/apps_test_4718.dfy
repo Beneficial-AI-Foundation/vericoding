@@ -1,0 +1,27 @@
+Given a date string in format "2017/01/dd" where dd represents a day from 01 to 31,
+replace the year "2017" with "2018" and output the corrected date string.
+
+predicate ValidInput(dateStr: string) 
+{
+    |dateStr| == 10 && dateStr[0..4] == "2017"
+}
+
+predicate ValidOutput(input: string, output: string)
+    requires |input| >= 4
+{
+    output == "2018" + input[4..] &&
+    |output| == 10 &&
+    output[0..4] == "2018" &&
+    output[4..] == input[4..]
+}
+
+method solve(dateStr: string) returns (result: string)
+    requires ValidInput(dateStr)
+    ensures ValidOutput(dateStr, result)
+{
+    if |dateStr| >= 4 {
+        result := "2018" + dateStr[4..];
+    } else {
+        result := dateStr;
+    }
+}

@@ -1,0 +1,147 @@
+vc-description: |-
+  An infinite table is filled starting from cell (1,1) which contains integer 1.
+  Each cell (x,y) contains the sum of the cell above it (x-1,y) and the cell to its left (x,y-1).
+  For boundary cases: cell(1,y) = y and cell(x,1) = x.
+  Given start coordinates (x₁, y₁) and end coordinates (x₂, y₂), find the number of
+  different possible sums when traversing from start to end cell, moving only down or right.
+
+vc-preamble: |-
+  predicate ValidInput(input: string)
+  {
+      |input| > 0
+  }
+  
+  predicate ValidTestCase(x1: int, y1: int, x2: int, y2: int)
+  {
+      1 <= x1 <= x2 && 1 <= y1 <= y2
+  }
+  
+  function CountDifferentSums(x1: int, y1: int, x2: int, y2: int): int
+      requires ValidTestCase(x1, y1, x2, y2)
+  {
+      (x2 - x1) * (y2 - y1) + 1
+  }
+
+vc-helpers: |-
+  function splitLines(s: string): seq<string>
+  {
+      splitByChar(s, '\n')
+  }
+  
+  function splitSpaces(s: string): seq<string>
+  {
+      splitByChar(s, ' ')
+  }
+  
+  function splitByChar(s: string, delimiter: char): seq<string>
+      decreases |s|
+  {
+      if |s| == 0 then []
+      else 
+          var i := findChar(s, delimiter, 0);
+          if i == -1 then [s]
+          else if i == 0 then [""] + splitByChar(s[1..], delimiter)
+          else [s[..i]] + splitByChar(s[i+1..], delimiter)
+  }
+  
+  function findChar(s: string, c: char, start: int): int
+      requires 0 <= start
+      ensures -1 <= findChar(s, c, start) < |s|
+      ensures findChar(s, c, start) >= 0 ==> start <= findChar(s, c, start) < |s|
+      decreases |s| - start
+  {
+      if start >= |s| then -1
+      else if s[start] == c then start
+      else findChar(s, c, start + 1)
+  }
+  
+  function parseNumber(s: string): int
+  {
+      if |s| == 0 then 0
+      else parseNumberHelper(s, 0, 0)
+  }
+  
+  function parseNumberHelper(s: string, i: int, acc: int): int
+      requires 0 <= i
+      requires acc >= 0
+      decreases |s| - i
+  {
+      if i >= |s| then acc
+      else if '0' <= s[i] <= '9' then
+          parseNumberHelper(s, i + 1, acc * 10 + (s[i] as int - '0' as int))
+      else acc
+  }
+  
+  function intToString(n: int): string
+  {
+      if n == 0 then "0"
+      else if n < 0 then "-" + intToStringPos(-n)
+      else intToStringPos(n)
+  }
+  
+  function intToStringPos(n: int): string
+      requires n > 0
+      decreases n
+  {
+      if n < 10 then [('0' as int + n) as char]
+      else intToStringPos(n / 10) + [('0' as int + (n % 10)) as char]
+  }
+  
+  function joinLines(lines: seq<string>): string
+  {
+      if |lines| == 0 then ""
+      else if |lines| == 1 then lines[0]
+      else lines[0] + "\n" + joinLines(lines[1..])
+  }
+
+vc-spec: |-
+  method solve(input: string) returns (output: string)
+      requires ValidInput(input)
+      ensures |output| >= 0
+
+vc-code: |-
+  {
+      var lines := splitLines(input);
+      if |lines| == 0 { return ""; }
+  
+      var t := parseNumber(lines[0]);
+      if t < 0 { return ""; }
+  
+      var results: seq<string> := [];
+  
+      var i := 1;
+      var processed := 0;
+      while processed < t && i < |lines|
+          invariant |results| == processed
+          invariant 0 <= processed <= t
+          invariant 1 <= i <= |lines|
+          invariant i == processed + 1
+          decreases t - processed
+      {
+          var parts := splitSpaces(lines[i]);
+          if |parts| >= 4 {
+              var x1 := parseNumber(parts[0]);
+              var y1 := parseNumber(parts[1]);
+              var x2 := parseNumber(parts[2]);
+              var y2 := parseNumber(parts[3]);
+  
+              if ValidTestCase(x1, y1, x2, y2) {
+                  var result := CountDifferentSums(x1, y1, x2, y2);
+                  var tmpCall1 := intToString(result);
+                  results := results + [tmpCall1];
+              } else {
+                  var result := (x2 - x1) * (y2 - y1) + 1;
+                  var tmpCall1 := intToString(result);
+                  results := results + [tmpCall1];
+              }
+          } else {
+              results := results + [""];
+          }
+          i := i + 1;
+          processed := processed + 1;
+      }
+  
+      output := joinLines(results);
+  }
+
+vc-postamble: |-

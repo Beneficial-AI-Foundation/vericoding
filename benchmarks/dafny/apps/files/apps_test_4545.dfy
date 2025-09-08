@@ -1,0 +1,26 @@
+Given an N×N grid with N² total squares where A squares are painted white,
+determine how many squares are painted black (N² - A).
+
+predicate ValidInput(N: int, A: int)
+{
+    1 <= N <= 100 && 0 <= A <= N * N
+}
+
+function BlackSquares(N: int, A: int): int
+    requires ValidInput(N, A)
+{
+    N * N - A
+}
+
+predicate ValidOutput(N: int, A: int, result: int)
+    requires ValidInput(N, A)
+{
+    result == BlackSquares(N, A) && result >= 0
+}
+
+method CalculateBlackSquares(N: int, A: int) returns (blackSquares: int)
+    requires ValidInput(N, A)
+    ensures ValidOutput(N, A, blackSquares)
+{
+    blackSquares := N * N - A;
+}

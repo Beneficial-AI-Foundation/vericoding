@@ -1,0 +1,80 @@
+vc-description: |-
+  Given N mountains indexed from west to east with heights, count how many mountain inns 
+  allow ocean visibility. Mountain 1 (westmost) always has visibility. Mountain i (i ≥ 2) 
+  has visibility if and only if its height is greater than or equal to the maximum height 
+  of all mountains to its west.
+
+vc-preamble: |-
+  function maxHeightUpTo(heights: seq<int>, up_to_index: int): int
+    requires 0 <= up_to_index < |heights|
+    decreases up_to_index
+  {
+    if up_to_index == 0 then heights[0]
+    else if heights[up_to_index] >= maxHeightUpTo(heights, up_to_index - 1) then heights[up_to_index]
+    else maxHeightUpTo(heights, up_to_index - 1)
+  }
+  
+  predicate hasOceanVisibility(heights: seq<int>, mountain_index: int)
+    requires 0 <= mountain_index < |heights|
+  {
+    mountain_index == 0 || heights[mountain_index] >= maxHeightUpTo(heights, mountain_index - 1)
+  }
+
+vc-helpers: |-
+  
+
+vc-spec: |-
+  method solve(N: int, heights: seq<int>) returns (result: int)
+    requires N > 0
+    requires |heights| == N
+    requires N <= 20
+    requires forall i :: 0 <= i < N ==> 1 <= heights[i] <= 100
+    ensures 1 <= result <= N
+    ensures result == |set i | 0 <= i < N && hasOceanVisibility(heights, i)|
+
+vc-code: |-
+  {
+    var top := heights[0];
+    var cnt := 1;
+  
+    assert hasOceanVisibility(heights, 0);
+    assert (set j | 0 <= j < 1 && hasOceanVisibility(heights, j)) == {0};
+    assert cnt == |set j | 0 <= j < 1 && hasOceanVisibility(heights, j)|;
+  
+    var i := 1;
+    while i < N
+      invariant 1 <= i <= N
+      invariant cnt >= 1
+      invariant cnt <= i
+      invariant top == maxHeightUpTo(heights, i - 1)
+      invariant cnt == |set j | 0 <= j < i && hasOceanVisibility(heights, j)|
+      invariant hasOceanVisibility(heights, 0)
+      invariant forall j :: 1 <= j < i ==> (hasOceanVisibility(heights, j) <==> heights[j] >= maxHeightUpTo(heights, j - 1))
+    {
+      assert hasOceanVisibility(heights, i) <==> heights[i] >= maxHeightUpTo(heights, i - 1);
+      assert maxHeightUpTo(heights, i - 1) == top;
+      assert hasOceanVisibility(heights, i) <==> heights[i] >= top;
+  
+      var oldSet := set j | 0 <= j < i && hasOceanVisibility(heights, j);
+      var newSet := set j | 0 <= j < i + 1 && hasOceanVisibility(heights, j);
+  
+      if top <= heights[i] {
+        assert hasOceanVisibility(heights, i);
+        assert newSet == oldSet + {i};
+        assert |newSet| == |oldSet| + 1;
+        cnt := cnt + 1;
+        top := heights[i];
+      } else {
+        assert !hasOceanVisibility(heights, i);
+        assert newSet == oldSet;
+        assert |newSet| == |oldSet|;
+      }
+  
+      assert cnt == |newSet|;
+      i := i + 1;
+    }
+  
+    result := cnt;
+  }
+
+vc-postamble: |-

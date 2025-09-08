@@ -1,0 +1,125 @@
+Given a binary string, repeatedly remove adjacent pairs of '0' and '1' characters.
+Find the minimum possible length after performing this operation any number of times.
+Each operation removes exactly one '0' and one '1', so the result is the absolute
+difference between the count of '0's and '1's in the original string.
+
+predicate is_binary_string(s: string)
+{
+    forall i :: 0 <= i < |s| ==> s[i] == '0' || s[i] == '1'
+}
+
+predicate is_valid_integer(s: string)
+{
+    |s| > 0 && (s[0] != '0' || |s| == 1) && forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'
+}
+
+function count_char(s: string, c: char): int
+{
+    if |s| == 0 then 0
+    else (if s[0] == c then 1 else 0) + count_char(s[1..], c)
+}
+
+function abs_diff_count(s: string): int
+    requires is_binary_string(s)
+{
+    var count0 := count_char(s, '0');
+    var count1 := count_char(s, '1');
+    if count1 >= count0 then count1 - count0 else count0 - count1
+}
+
+function int_to_string(n: int): string
+    requires n >= 0
+{
+    if n == 0 then "0"
+    else if n < 10 then [char_of_digit(n)]
+    else int_to_string(n / 10) + [char_of_digit(n % 10)]
+}
+
+function char_of_digit(d: int): char
+    requires 0 <= d <= 9
+{
+    match d
+        case 0 => '0'
+        case 1 => '1' 
+        case 2 => '2'
+        case 3 => '3'
+        case 4 => '4'
+        case 5 => '5'
+        case 6 => '6'
+        case 7 => '7'
+        case 8 => '8'
+        case 9 => '9'
+}
+
+function string_to_int(s: string): int
+    requires is_valid_integer(s)
+{
+    if |s| == 0 then 0
+    else if |s| == 1 then (s[0] as int) - ('0' as int)
+    else string_to_int(s[0..|s|-1]) * 10 + ((s[|s|-1] as int) - ('0' as int))
+}
+
+function min(a: int, b: int): int
+{
+    if a <= b then a else b
+}
+
+method solve(stdin_input: string) returns (result: string)
+    requires |stdin_input| > 0
+    requires exists i :: 0 <= i < |stdin_input| && stdin_input[i] == '\n'
+    requires exists newline_pos :: 0 <= newline_pos < |stdin_input| && stdin_input[newline_pos] == '\n' &&
+             newline_pos + 1 < |stdin_input| &&
+             exists binary_end :: newline_pos + 1 <= binary_end <= |stdin_input| &&
+             (binary_end == |stdin_input| || stdin_input[binary_end] == '\n') &&
+             is_valid_integer(stdin_input[0..newline_pos]) &&
+             is_binary_string(stdin_input[newline_pos + 1..binary_end])
+    ensures |result| > 0
+    ensures result[|result|-1] == '\n'
+    ensures exists newline_pos :: 0 <= newline_pos < |stdin_input| && stdin_input[newline_pos] == '\n' &&
+            newline_pos + 1 < |stdin_input| &&
+            exists binary_end :: newline_pos + 1 <= binary_end <= |stdin_input| &&
+            (binary_end == |stdin_input| || stdin_input[binary_end] == '\n') &&
+            is_binary_string(stdin_input[newline_pos + 1..binary_end]) &&
+            result == int_to_string(abs_diff_count(stdin_input[newline_pos + 1..binary_end])) + "\n"
+{
+    var newline_pos := 0;
+    while newline_pos < |stdin_input| && stdin_input[newline_pos] != '\n'
+        invariant 0 <= newline_pos <= |stdin_input|
+        invariant forall i :: 0 <= i < newline_pos ==> stdin_input[i] != '\n'
+    {
+        newline_pos := newline_pos + 1;
+    }
+
+    var binary_start := newline_pos + 1;
+    var binary_end := binary_start;
+
+    while binary_end < |stdin_input| && stdin_input[binary_end] != '\n'
+        invariant binary_start <= binary_end <= |stdin_input|
+    {
+        binary_end := binary_end + 1;
+    }
+
+    var binary_string := stdin_input[binary_start..binary_end];
+
+    var witness_newline :| 0 <= witness_newline < |stdin_input| && stdin_input[witness_newline] == '\n' &&
+                          witness_newline + 1 < |stdin_input| &&
+                          exists binary_end_witness :: witness_newline + 1 <= binary_end_witness <= |stdin_input| &&
+                          (binary_end_witness == |stdin_input| || stdin_input[binary_end_witness] == '\n') &&
+                          is_valid_integer(stdin_input[0..witness_newline]) &&
+                          is_binary_string(stdin_input[witness_newline + 1..binary_end_witness]);
+
+    var binary_end_witness :| witness_newline + 1 <= binary_end_witness <= |stdin_input| &&
+                              (binary_end_witness == |stdin_input| || stdin_input[binary_end_witness] == '\n') &&
+                              is_valid_integer(stdin_input[0..witness_newline]) &&
+                              is_binary_string(stdin_input[witness_newline + 1..binary_end_witness]);
+
+    assert newline_pos <= witness_newline;
+    assert witness_newline < |stdin_input| && stdin_input[witness_newline] == '\n';
+    assert witness_newline + 1 < |stdin_input|;
+    assert witness_newline + 1 <= binary_end_witness <= |stdin_input|;
+    assert binary_end_witness == |stdin_input| || stdin_input[binary_end_witness] == '\n';
+    assert is_binary_string(stdin_input[witness_newline + 1..binary_end_witness]);
+
+    var abs_diff := abs_diff_count(stdin_input[witness_newline + 1..binary_end_witness]);
+    result := int_to_string(abs_diff) + "\n";
+}

@@ -1,0 +1,81 @@
+Schedule an optimal event with singer Devu and comedian Churu within a time limit.
+Devu must sing all n songs in order with 10-minute rest periods between songs.
+Churu tells 5-minute jokes during rest periods and any remaining time.
+Find the maximum number of jokes possible, or return -1 if impossible.
+
+function SumSeq(s: seq<int>): int
+{
+  if |s| == 0 then 0 else s[0] + SumSeq(s[1..])
+}
+
+predicate ValidInput(n: int, d: int, t: seq<int>)
+{
+  1 <= n <= 100 && 1 <= d <= 10000 &&
+  |t| == n &&
+  forall i :: 0 <= i < |t| ==> 1 <= t[i] <= 100
+}
+
+function MinTimeNeeded(n: int, t: seq<int>): int
+  requires |t| == n
+{
+  SumSeq(t) + 10 * (n - 1)
+}
+
+predicate ValidResult(n: int, d: int, t: seq<int>, result: int)
+  requires ValidInput(n, d, t)
+{
+  var songSum := SumSeq(t);
+  var minTime := MinTimeNeeded(n, t);
+  if minTime > d then
+    result == -1
+  else
+    result == (d - songSum) / 5 && result >= 0
+}
+
+lemma SumLemma(s: seq<int>, x: int)
+  ensures SumSeq(s + [x]) == SumSeq(s) + x
+{
+  if |s| == 0 {
+    assert s + [x] == [x];
+    assert SumSeq([x]) == x;
+    assert SumSeq(s) == 0;
+  } else {
+    assert s == [s[0]] + s[1..];
+    assert s + [x] == [s[0]] + (s[1..] + [x]);
+    SumLemma(s[1..], x);
+  }
+}
+
+method solve(n: int, d: int, t: seq<int>) returns (result: int)
+  requires ValidInput(n, d, t)
+  ensures ValidResult(n, d, t, result)
+{
+  var songSum := 0;
+  var i := 0;
+  while i < |t|
+    invariant 0 <= i <= |t|
+    invariant songSum >= 0
+    invariant songSum == SumSeq(t[..i])
+  {
+    assert i < |t|;
+    assert t[..i+1] == t[..i] + [t[i]];
+    SumLemma(t[..i], t[i]);
+    songSum := songSum + t[i];
+    i := i + 1;
+  }
+
+  assert i == |t|;
+  assert t[..|t|] == t;
+  assert songSum == SumSeq(t);
+  var minTimeNeeded := songSum + 10 * n - 10;
+
+  if minTimeNeeded > d {
+    result := -1;
+  } else {
+    result := (d - songSum) / 5;
+    assert minTimeNeeded <= d;
+    assert songSum + 10 * n - 10 <= d;
+    assert songSum <= d - 10 * n + 10;
+    assert d >= songSum;
+  }
+}

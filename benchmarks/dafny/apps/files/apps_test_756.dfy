@@ -1,0 +1,58 @@
+Given a 90-minute game with certain interesting minutes, determine how many
+minutes are watched before turning off the TV. The TV turns off immediately
+after 15 consecutive boring minutes occur.
+
+predicate ValidInput(n: int, a: seq<int>) {
+    n >= 1 && n <= 90 &&
+    |a| == n &&
+    (forall i :: 0 <= i < n ==> 1 <= a[i] <= 90) &&
+    (forall i :: 0 <= i < n - 1 ==> a[i] < a[i + 1])
+}
+
+function findCutoff(a: seq<int>, index: int, cutoff: int): int
+    requires 0 <= index <= |a|
+    decreases |a| - index
+{
+    if index >= |a| then cutoff
+    else if a[index] > cutoff then cutoff
+    else findCutoff(a, index + 1, a[index] + 15)
+}
+
+function min(x: int, y: int): int
+{
+    if x <= y then x else y
+}
+
+predicate ValidOutput(result: int, n: int, a: seq<int>) {
+    ValidInput(n, a) ==>
+    (1 <= result <= 90 &&
+     result == min(90, findCutoff(a, 0, 15)))
+}
+
+lemma findCutoffLowerBound(a: seq<int>, index: int, cutoff: int)
+    requires 0 <= index <= |a|
+    requires cutoff >= 1
+    requires forall i :: 0 <= i < |a| ==> a[i] >= 1
+    ensures findCutoff(a, index, cutoff) >= 1
+    decreases |a| - index
+{
+    if index >= |a| {
+    } else if a[index] > cutoff {
+    } else {
+        findCutoffLowerBound(a, index + 1, a[index] + 15);
+    }
+}
+
+method solve(n: int, a: seq<int>) returns (result: int)
+    requires ValidInput(n, a)
+    ensures ValidOutput(result, n, a)
+{
+    findCutoffLowerBound(a, 0, 15);
+    var cutoff := findCutoff(a, 0, 15);
+
+    if cutoff <= 90 {
+        result := cutoff;
+    } else {
+        result := 90;
+    }
+}

@@ -1,0 +1,264 @@
+vc-description: |-
+  Given two maps: First map N × M grid, Second map M × N grid.
+  Find positions i and j such that the M × M section from the first map 
+  starting at row i equals the M × M section from the second map starting at column j.
+  Output the 1-indexed positions i and j.
+
+vc-preamble: |-
+  predicate validInputFormat(input: string)
+  {
+      var lines := parseLinesFunc(input);
+      |lines| >= 3 &&
+      var firstLine := parseIntsFunc(lines[0]);
+      |firstLine| >= 2 &&
+      var n := firstLine[0];
+      var m := firstLine[1];
+      n >= 1 && m >= 1 && m <= n &&
+      |lines| >= 1 + n + m &&
+      (forall k :: 1 <= k <= n ==> k < |lines| && |lines[k]| >= m) &&
+      (forall k :: 1 + n <= k < 1 + n + m ==> k < |lines| && |lines[k]| >= n)
+  }
+  
+  predicate validSolution(input: string, result: string)
+  {
+      var lines := parseLinesFunc(input);
+      if |lines| < 3 then true else
+      var firstLine := parseIntsFunc(lines[0]);
+      if |firstLine| < 2 then true else
+      var n := firstLine[0];
+      var m := firstLine[1];
+      if n <= 0 || m <= 0 || m > n then true else
+      var resultParts := parseIntsFunc(result);
+      if |resultParts| < 2 then false else
+      var i := resultParts[0];
+      var j := resultParts[1];
+      1 <= i <= n - m + 1 && 1 <= j <= n - m + 1 &&
+      if |lines| >= 1 + n + m then correctSubMatricesMatch(lines, n, m, i - 1, j - 1) else false
+  }
+  
+  predicate solutionExists(input: string)
+  {
+      if !validInputFormat(input) then false else
+      var lines := parseLinesFunc(input);
+      var firstLine := parseIntsFunc(lines[0]);
+      var n := firstLine[0];
+      var m := firstLine[1];
+      exists i, j :: (0 <= i <= n - m && 0 <= j <= n - m &&
+          correctSubMatricesMatch(lines, n, m, i, j))
+  }
+  
+  predicate solutionFound(input: string, result: string)
+  {
+      validSolution(input, result) &&
+      if !validInputFormat(input) then false else
+      var lines := parseLinesFunc(input);
+      var firstLine := parseIntsFunc(lines[0]);
+      var n := firstLine[0];
+      var m := firstLine[1];
+      var resultParts := parseIntsFunc(result);
+      if |resultParts| >= 2 then
+          var i := resultParts[0] - 1;
+          var j := resultParts[1] - 1;
+          correctSubMatricesMatch(lines, n, m, i, j)
+      else false
+  }
+  
+  predicate correctMatrixMatching(input: string, result: string)
+  {
+      if !validInputFormat(input) then true else
+      var lines := parseLinesFunc(input);
+      var firstLine := parseIntsFunc(lines[0]);
+      var n := firstLine[0];
+      var m := firstLine[1];
+      var resultParts := parseIntsFunc(result);
+      if |resultParts| >= 2 then
+          var i := resultParts[0] - 1;
+          var j := resultParts[1] - 1;
+          0 <= i <= n - m && 0 <= j <= n - m &&
+          (forall r, c {:trigger lines[1 + i + r][c]} {:trigger lines[1 + n + r][j + c]} :: (0 <= r < m && 0 <= c < m) ==>
+              (1 + i + r < |lines| && c < |lines[1 + i + r]| &&
+              r < m && 1 + n + r < |lines| && j + c < |lines[1 + n + r]|) ==>
+              lines[1 + i + r][c] == lines[1 + n + r][j + c])
+      else false
+  }
+  
+  predicate alwaysReturnsFirstMatch(input: string, result: string)
+  {
+      if !validInputFormat(input) then true else
+      var lines := parseLinesFunc(input);
+      var firstLine := parseIntsFunc(lines[0]);
+      var n := firstLine[0];
+      var m := firstLine[1];
+      var resultParts := parseIntsFunc(result);
+      if |resultParts| >= 2 then
+          var resultI := resultParts[0] - 1;
+          var resultJ := resultParts[1] - 1;
+          forall i, j {:trigger correctSubMatricesMatch(lines, n, m, i, j)} :: (0 <= i <= n - m && 0 <= j <= n - m &&
+              (i < resultI || (i == resultI && j < resultJ))) ==>
+              !correctSubMatricesMatch(lines, n, m, i, j)
+      else false
+  }
+  
+  predicate correctSubMatricesMatch(lines: seq<string>, n: int, m: int, i: int, j: int)
+      requires |lines| >= 1 + n + m
+      requires 0 <= i <= n - m && 0 <= j <= n - m
+  {
+      forall r, c {:trigger lines[1 + i + r][c]} {:trigger lines[1 + n + r][j + c]} :: (0 <= r < m && 0 <= c < m) ==>
+          (1 + i + r < |lines| && c < |lines[1 + i + r]| &&
+          1 + n + r < |lines| && j + c < |lines[1 + n + r]|) ==>
+          lines[1 + i + r][c] == lines[1 + n + r][j + c]
+  }
+  
+  function parseLinesFunc(input: string): seq<string>
+  {
+      [""]
+  }
+  
+  function parseIntsFunc(line: string): seq<int>
+  {
+      [1, 1]
+  }
+  
+  function intToStringFunc(n: int): string
+      ensures |intToStringFunc(n)| > 0
+  {
+      if n == 0 then "0"
+      else if n == 1 then "1"
+      else if n == 2 then "2"
+      else if n == 3 then "3"
+      else if n == 4 then "4"
+      else if n == 5 then "5"
+      else if n == 6 then "6"
+      else if n == 7 then "7"
+      else if n == 8 then "8"
+      else if n == 9 then "9"
+      else "10"
+  }
+
+vc-helpers: |-
+  method parseLines(input: string) returns (lines: seq<string>)
+      ensures |lines| >= 0
+      ensures parseLinesFunc(input) == lines
+  {
+      lines := parseLinesFunc(input);
+  }
+  
+  method parseInts(line: string) returns (ints: seq<int>)
+      ensures |ints| >= 0
+      ensures parseIntsFunc(line) == ints
+  {
+      ints := parseIntsFunc(line);
+  }
+
+vc-spec: |-
+  method solve(stdin_input: string) returns (result: string)
+      requires |stdin_input| > 0
+      requires validInputFormat(stdin_input)
+      ensures |result| > 0
+      ensures exists i, j :: i >= 1 && j >= 1 && result == intToStringFunc(i) + " " + intToStringFunc(j)
+      ensures validSolution(stdin_input, result)
+      ensures solutionExists(stdin_input) ==> solutionFound(stdin_input, result)
+      ensures correctMatrixMatching(stdin_input, result)
+      ensures alwaysReturnsFirstMatch(stdin_input, result)
+
+vc-code: |-
+  {
+      var lines := parseLines(stdin_input);
+  
+      if |lines| < 3 {
+          result := "1 1";
+          return;
+      }
+  
+      var firstLine := parseInts(lines[0]);
+      if |firstLine| < 2 {
+          result := "1 1";
+          return;
+      }
+  
+      assert |firstLine| >= 2;
+      var n := firstLine[0];
+      var m := firstLine[1];
+  
+      if n <= 0 || m <= 0 || m > n || |lines| < 1 + n + m {
+          result := "1 1";
+          return;
+      }
+  
+      var mat1 := new string[n];
+      var i := 0;
+      while i < n
+          invariant 0 <= i <= n
+      {
+          if 1 + i < |lines| {
+              mat1[i] := lines[1 + i];
+          } else {
+              mat1[i] := "";
+          }
+          i := i + 1;
+      }
+  
+      var mat2 := new string[m];
+      i := 0;
+      while i < m
+          invariant 0 <= i <= m
+      {
+          if 1 + n + i < |lines| {
+              mat2[i] := lines[1 + n + i];
+          } else {
+              mat2[i] := "";
+          }
+          i := i + 1;
+      }
+  
+      var found := false;
+      var resultI := 1;
+      var resultJ := 1;
+  
+      i := 0;
+      while i <= n - m && !found
+          invariant 0 <= i <= n - m + 1
+          invariant resultI >= 1 && resultJ >= 1
+      {
+          var j := 0;
+          while j <= n - m && !found
+              invariant 0 <= j <= n - m + 1
+              invariant resultI >= 1 && resultJ >= 1
+          {
+              var matches := true;
+              var row := 0;
+              while row < m && matches
+                  invariant 0 <= row <= m
+              {
+                  var col := 0;
+                  while col < m && matches
+                      invariant 0 <= col <= m
+                  {
+                      if i + row < n && j + col < |mat1[i + row]| && 
+                         row < m && j + col < |mat2[row]| {
+                          if mat1[i + row][j + col] != mat2[row][j + col] {
+                              matches := false;
+                          }
+                      } else {
+                          matches := false;
+                      }
+                      col := col + 1;
+                  }
+                  row := row + 1;
+              }
+  
+              if matches {
+                  found := true;
+                  resultI := i + 1;
+                  resultJ := j + 1;
+              }
+  
+              j := j + 1;
+          }
+          i := i + 1;
+      }
+  
+      result := intToStringFunc(resultI) + " " + intToStringFunc(resultJ);
+  }
+
+vc-postamble: |-

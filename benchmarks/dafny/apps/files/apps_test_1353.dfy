@@ -1,0 +1,40 @@
+Find the minimum cost for Ann to make exactly n subway rides, given two ticket options:
+single-ride tickets (cost a rubles each) and multi-ride tickets (cost b rubles, covers m rides).
+Ann can buy any combination of these tickets.
+
+predicate ValidInput(n: int, m: int, a: int, b: int)
+{
+    n >= 1 && n <= 1000 &&
+    m >= 1 && m <= 1000 &&
+    a >= 1 && a <= 1000 &&
+    b >= 1 && b <= 1000
+}
+
+function OptimalCost(n: int, m: int, a: int, b: int): int
+    requires ValidInput(n, m, a, b)
+{
+    min(
+        n * a,  // All single tickets
+        min(
+            ((n + m - 1) / m) * b,  // All multi-ride tickets (with potential waste)
+            (n / m) * b + (n % m) * a  // Mixed: multi-ride + single for remainder
+        )
+    )
+}
+
+function min(x: int, y: int): int
+{
+    if x <= y then x else y
+}
+
+method solve(n: int, m: int, a: int, b: int) returns (result: int)
+    requires ValidInput(n, m, a, b)
+    ensures result >= 0
+    ensures result == OptimalCost(n, m, a, b)
+{
+    var allSingleCost := n * a;
+    var allMultiCost := ((n + m - 1) / m) * b;
+    var mixedCost := (n / m) * b + (n % m) * a;
+    
+    result := min(allSingleCost, min(allMultiCost, mixedCost));
+}

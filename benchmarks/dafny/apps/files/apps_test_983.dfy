@@ -1,0 +1,103 @@
+Given an array of n integers and coefficients p, q, r, find the maximum value of 
+p·a_i + q·a_j + r·a_k where indices i, j, k satisfy 1 ≤ i ≤ j ≤ k ≤ n.
+
+function max_prefix(s: seq<int>, i: int): int
+    requires 0 <= i < |s|
+{
+    if i == 0 then s[0]
+    else if s[i] > max_prefix(s, i-1) then s[i]
+    else max_prefix(s, i-1)
+}
+
+function max_seq(s: seq<int>): int
+    requires |s| > 0
+{
+    if |s| == 1 then s[0]
+    else if s[|s|-1] > max_seq(s[..|s|-1]) then s[|s|-1]
+    else max_seq(s[..|s|-1])
+}
+
+function max_expression(n: int, p: int, q: int, r: int, a: seq<int>): int
+    requires n > 0
+    requires |a| == n
+{
+    var s1 := seq(n, i requires 0 <= i < n => a[i] * p);
+    var s2 := seq(n, i requires 0 <= i < n => max_prefix(s1, i) + a[i] * q);
+    var s3 := seq(n, i requires 0 <= i < n => max_prefix(s2, i) + a[i] * r);
+    max_seq(s3)
+}
+
+predicate ValidInput(n: int, a: seq<int>)
+{
+    n > 0 && |a| == n
+}
+
+method solve(n: int, p: int, q: int, r: int, a: seq<int>) returns (result: int)
+    requires ValidInput(n, a)
+    ensures result == max_expression(n, p, q, r, a)
+{
+    var s1 := new int[n];
+    var s2 := new int[n];
+    var s3 := new int[n];
+
+    // s1[i] = a[i] * p
+    var i := 0;
+    while i < n
+        invariant 0 <= i <= n
+        invariant forall k :: 0 <= k < i ==> s1[k] == a[k] * p
+    {
+        s1[i] := a[i] * p;
+        i := i + 1;
+    }
+
+    // s2[i] = max(s1[0..i]) + a[i] * q
+    var maxS1 := s1[0];
+    i := 0;
+    while i < n
+        invariant 0 <= i <= n
+        invariant i > 0 ==> maxS1 == max_prefix(s1[..], i-1)
+        invariant i == 0 ==> maxS1 == s1[0]
+        invariant forall k :: 0 <= k < i ==> s2[k] == max_prefix(s1[..], k) + a[k] * q
+    {
+        if i > 0 && s1[i] > maxS1 {
+            maxS1 := s1[i];
+        }
+        s2[i] := maxS1 + a[i] * q;
+        if i == 0 {
+            maxS1 := s1[0];
+        }
+        i := i + 1;
+    }
+
+    // s3[i] = max(s2[0..i]) + a[i] * r
+    var maxS2 := s2[0];
+    i := 0;
+    while i < n
+        invariant 0 <= i <= n
+        invariant i > 0 ==> maxS2 == max_prefix(s2[..], i-1)
+        invariant i == 0 ==> maxS2 == s2[0]
+        invariant forall k :: 0 <= k < i ==> s3[k] == max_prefix(s2[..], k) + a[k] * r
+    {
+        if i > 0 && s2[i] > maxS2 {
+            maxS2 := s2[i];
+        }
+        s3[i] := maxS2 + a[i] * r;
+        if i == 0 {
+            maxS2 := s2[0];
+        }
+        i := i + 1;
+    }
+
+    // return max(s3)
+    result := s3[0];
+    i := 1;
+    while i < n
+        invariant 1 <= i <= n
+        invariant result == max_seq(s3[..i])
+    {
+        if s3[i] > result {
+            result := s3[i];
+        }
+        i := i + 1;
+    }
+}

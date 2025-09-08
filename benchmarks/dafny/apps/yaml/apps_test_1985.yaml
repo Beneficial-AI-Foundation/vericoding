@@ -1,0 +1,148 @@
+vc-description: |-
+  Given k jury members who sequentially add points to an initial score, determine how many
+  possible initial scores could produce a given set of observed intermediate scores.
+
+vc-preamble: |-
+  function sum(s: seq<int>): int
+  {
+      if |s| == 0 then 0 else s[0] + sum(s[1..])
+  }
+  
+  function computeInitialScore(pos: int, a: seq<int>, b: seq<int>): int
+      requires 0 <= pos < |a|
+      requires |b| > 0
+  {
+      b[0] - sum(a[0..pos+1])
+  }
+  
+  function computeBackwardScores(pos: int, scoreAtPos: int, a: seq<int>): set<int>
+      requires 0 <= pos < |a|
+      decreases pos
+  {
+      if pos == 0 then {scoreAtPos}
+      else {scoreAtPos} + computeBackwardScores(pos - 1, scoreAtPos - a[pos], a)
+  }
+  
+  function computeForwardScores(pos: int, scoreAtPos: int, a: seq<int>): set<int>
+      requires 0 <= pos < |a|
+      decreases |a| - pos
+  {
+      if pos == |a| - 1 then {}
+      else computeForwardScores(pos + 1, scoreAtPos + a[pos + 1], a) + {scoreAtPos + a[pos + 1]}
+  }
+  
+  function computeScores(pos: int, scoreAtPos: int, a: seq<int>): set<int>
+      requires 0 <= pos < |a|
+  {
+      var backwards := computeBackwardScores(pos, scoreAtPos, a);
+      var forwards := computeForwardScores(pos, scoreAtPos, a);
+      backwards + forwards
+  }
+  
+  predicate isValidInitialScore(pos: int, k: int, a: seq<int>, b: seq<int>)
+      requires 0 <= pos < k
+      requires k > 0
+      requires |a| == k
+      requires |b| > 0
+  {
+      var scores := computeScores(pos, b[0], a);
+      forall j :: 0 <= j < |b| ==> b[j] in scores
+  }
+  
+  function validInitialScores(k: int, a: seq<int>, b: seq<int>): set<int>
+      requires k > 0
+      requires |a| == k
+      requires |b| > 0
+      requires forall i :: 0 <= i < k ==> -2000 <= a[i] <= 2000
+      requires forall i :: 0 <= i < |b| ==> -4000000 <= b[i] <= 4000000
+  {
+      set i | 0 <= i < k && isValidInitialScore(i, k, a, b) :: computeInitialScore(i, a, b)
+  }
+  
+  predicate ValidInput(k: int, n: int, a: seq<int>, b: seq<int>)
+  {
+      k > 0 && n > 0 && |a| == k && |b| == n && n <= k &&
+      (forall i, j :: 0 <= i < j < n ==> b[i] != b[j]) &&
+      (forall i :: 0 <= i < k ==> -2000 <= a[i] <= 2000) &&
+      (forall i :: 0 <= i < n ==> -4000000 <= b[i] <= 4000000)
+  }
+
+vc-helpers: |-
+  
+
+vc-spec: |-
+  method solve(k: int, n: int, a: seq<int>, b: seq<int>) returns (result: int)
+      requires ValidInput(k, n, a, b)
+      ensures result >= 0
+      ensures result <= k
+      ensures result == |validInitialScores(k, a, b)|
+
+vc-code: |-
+  {
+      var res := {};
+  
+      var i := 0;
+      while i < k
+          invariant 0 <= i <= k
+          invariant res == set pos | 0 <= pos < i && isValidInitialScore(pos, k, a, b) :: computeInitialScore(pos, a, b)
+          invariant |res| <= i
+      {
+          var our := {};
+          var curr := b[0];
+  
+          var j := i;
+          while j >= 0
+              invariant -1 <= j <= i
+              invariant our == set idx | j < idx <= i :: (b[0] - sum(a[j+1..idx+1]))
+              invariant curr == b[0] - sum(a[j+1..i+1])
+          {
+              our := our + {curr};
+              curr := curr - a[j];
+              j := j - 1;
+          }
+          var first := curr;
+          assert first == computeInitialScore(i, a, b);
+  
+          var good := true;
+          curr := b[0];
+  
+          j := i + 1;
+          while j < k
+              invariant i + 1 <= j <= k
+              invariant our == computeBackwardScores(i, b[0], a) + set idx | i < idx < j :: (b[0] + sum(a[i+1..idx+1]))
+              invariant curr == b[0] + sum(a[i+1..j])
+          {
+              curr := curr + a[j];
+              our := our + {curr};
+              j := j + 1;
+          }
+  
+          assert our == computeScores(i, b[0], a);
+  
+          good := true;
+          var idx := 0;
+          while idx < n && good
+              invariant 0 <= idx <= n
+              invariant good == (forall l :: 0 <= l < idx ==> b[l] in our)
+          {
+              if b[idx] !in our {
+                  good := false;
+              }
+              idx := idx + 1;
+          }
+  
+          assert good == (forall l :: 0 <= l < n ==> b[l] in our);
+          assert good == isValidInitialScore(i, k, a, b);
+  
+          if good {
+              res := res + {first};
+          }
+  
+          i := i + 1;
+      }
+  
+      assert res == validInitialScores(k, a, b);
+      result := |res|;
+  }
+
+vc-postamble: |-

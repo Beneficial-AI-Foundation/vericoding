@@ -1,0 +1,25 @@
+Given two integers A and B representing cookies in two tins, determine if cookies
+can be distributed equally among three goats by choosing A, B, or A+B total cookies.
+
+predicate ValidInput(A: int, B: int)
+{
+    1 <= A <= 100 && 1 <= B <= 100
+}
+
+predicate DistributionPossible(A: int, B: int)
+{
+    A % 3 == 0 || B % 3 == 0 || (A + B) % 3 == 0
+}
+
+method solve(A: int, B: int) returns (result: string)
+    requires ValidInput(A, B)
+    ensures result == "Possible" <==> DistributionPossible(A, B)
+    ensures result == "Possible" || result == "Impossible"
+{
+    var C := A + B;
+    if A % 3 == 0 || B % 3 == 0 || C % 3 == 0 {
+        result := "Possible";
+    } else {
+        result := "Impossible";
+    }
+}

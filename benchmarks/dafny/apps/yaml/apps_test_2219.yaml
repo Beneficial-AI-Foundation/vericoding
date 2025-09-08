@@ -1,0 +1,275 @@
+vc-description: |-
+  Given integers n and k, find the minimum number of steps to reduce n to 0 using operations:
+  1. Decrease n by 1, or 2. Divide n by k (only if n is divisible by k)
+
+vc-preamble: |-
+  function minStepsToZero(n: nat, k: nat): nat
+      requires k >= 2
+      decreases n
+  {
+      if n == 0 then 0
+      else if n % k == 0 then 1 + minStepsToZero(n / k, k)
+      else (n % k) + minStepsToZero(n - (n % k), k)
+  }
+  
+  predicate validInput(input: string)
+  {
+      |input| > 0 && 
+      var lines := splitLinesFunc(input);
+      |lines| >= 1 &&
+      isValidNumber(lines[0]) &&
+      var t := stringToIntFunc(lines[0]);
+      t >= 1 && t <= 100 &&
+      |lines| >= t + 1 &&
+      forall i :: 1 <= i <= t ==> validTestCase(lines[i])
+  }
+  
+  predicate validTestCase(line: string)
+  {
+      var parts := splitSpacesFunc(line);
+      |parts| == 2 &&
+      isValidNumber(parts[0]) &&
+      isValidNumber(parts[1]) &&
+      var n := stringToIntFunc(parts[0]);
+      var k := stringToIntFunc(parts[1]);
+      n >= 1 && k >= 2
+  }
+  
+  predicate isValidNumber(s: string)
+  {
+      |s| >= 1 &&
+      (s == "0" || (s[0] != '0' && forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9')) &&
+      forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'
+  }
+  
+  function expectedOutput(input: string): string
+      requires validInput(input)
+  {
+      var lines := splitLinesFunc(input);
+      var t := stringToIntFunc(lines[0]);
+      var results := seq(t, i requires 0 <= i < t => 
+          var parts := splitSpacesFunc(lines[i+1]);
+          var n := stringToIntFunc(parts[0]);
+          var k := stringToIntFunc(parts[1]);
+          intToStringFunc(minStepsToZero(n, k))
+      );
+      joinLinesSeq(results)
+  }
+
+vc-helpers: |-
+  function splitLinesFunc(input: string): seq<string>
+      requires |input| >= 0
+      ensures |splitLinesFunc(input)| >= 0
+      ensures forall i :: 0 <= i < |splitLinesFunc(input)| ==> |splitLinesFunc(input)[i]| >= 0
+  {
+      if |input| == 0 then []
+      else splitLinesHelper(input, 0, "")
+  }
+  
+  function splitLinesHelper(input: string, pos: int, current: string): seq<string>
+      requires 0 <= pos <= |input|
+      decreases |input| - pos
+  {
+      if pos == |input| then
+          if current == "" then [] else [current]
+      else if input[pos] == '\n' then
+          [current] + splitLinesHelper(input, pos + 1, "")
+      else
+          splitLinesHelper(input, pos + 1, current + [input[pos]])
+  }
+  
+  function splitSpacesFunc(line: string): seq<string>
+      requires |line| >= 0
+      ensures |splitSpacesFunc(line)| >= 0
+      ensures forall i :: 0 <= i < |splitSpacesFunc(line)| ==> |splitSpacesFunc(line)[i]| >= 0
+  {
+      splitSpacesHelper(line, 0, "")
+  }
+  
+  function splitSpacesHelper(line: string, pos: int, current: string): seq<string>
+      requires 0 <= pos <= |line|
+      decreases |line| - pos
+  {
+      if pos == |line| then
+          if current == "" then [] else [current]
+      else if line[pos] == ' ' then
+          if current == "" then splitSpacesHelper(line, pos + 1, "")
+          else [current] + splitSpacesHelper(line, pos + 1, "")
+      else
+          splitSpacesHelper(line, pos + 1, current + [line[pos]])
+  }
+  
+  function stringToIntFunc(s: string): nat
+      requires |s| >= 0
+      requires forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'
+      ensures stringToIntFunc(s) >= 0
+  {
+      if |s| == 0 then 0
+      else stringToIntHelper(s, 0)
+  }
+  
+  function stringToIntHelper(s: string, pos: int): nat
+      requires 0 <= pos <= |s|
+      requires forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'
+      decreases |s| - pos
+  {
+      if pos == |s| then 0
+      else (s[pos] as nat - '0' as nat) * pow10(|s| - pos - 1) + stringToIntHelper(s, pos + 1)
+  }
+  
+  function pow10(n: nat): nat
+  {
+      if n == 0 then 1 else 10 * pow10(n - 1)
+  }
+  
+  function intToStringFunc(n: nat): string
+      requires n >= 0
+      ensures |intToStringFunc(n)| >= 1
+      ensures forall i :: 0 <= i < |intToStringFunc(n)| ==> '0' <= intToStringFunc(n)[i] <= '9'
+      ensures forall i :: 0 <= i < |intToStringFunc(n)| ==> intToStringFunc(n)[i] != '\0'
+  {
+      if n == 0 then "0"
+      else intToStringHelper(n)
+  }
+  
+  function intToStringHelper(n: nat): string
+      requires n > 0
+      ensures |intToStringHelper(n)| >= 1
+      ensures forall i :: 0 <= i < |intToStringHelper(n)| ==> '0' <= intToStringHelper(n)[i] <= '9'
+      ensures forall i :: 0 <= i < |intToStringHelper(n)| ==> intToStringHelper(n)[i] != '\0'
+  {
+      if n < 10 then [(n as char + '0' as char)]
+      else intToStringHelper(n / 10) + [(n % 10) as char + '0' as char]
+  }
+  
+  function joinLinesSeq(lines: seq<string>): string
+      requires |lines| >= 0
+      requires forall i :: 0 <= i < |lines| ==> |lines[i]| >= 0
+      requires forall i :: 0 <= i < |lines| ==> 
+          forall j :: 0 <= j < |lines[i]| ==> lines[i][j] != '\0'
+      ensures forall i :: 0 <= i < |joinLinesSeq(lines)| ==> joinLinesSeq(lines)[i] != '\0'
+  {
+      if |lines| == 0 then ""
+      else if |lines| == 1 then lines[0]
+      else lines[0] + "\n" + joinLinesSeq(lines[1..])
+  }
+  
+  method splitLines(input: string) returns (lines: seq<string>)
+      requires |input| >= 0
+      ensures |lines| >= 0
+      ensures forall i :: 0 <= i < |lines| ==> |lines[i]| >= 0
+      ensures lines == splitLinesFunc(input)
+  {
+      return splitLinesFunc(input);
+  }
+  
+  method splitSpaces(line: string) returns (parts: seq<string>)
+      requires |line| >= 0
+      ensures |parts| >= 0
+      ensures forall i :: 0 <= i < |parts| ==> |parts[i]| >= 0
+      ensures parts == splitSpacesFunc(line)
+  {
+      return splitSpacesFunc(line);
+  }
+  
+  method stringToInt(s: string) returns (result: nat)
+      requires |s| >= 0
+      requires forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'
+      ensures result >= 0
+      ensures result == stringToIntFunc(s)
+  {
+      return stringToIntFunc(s);
+  }
+  
+  method intToString(n: nat) returns (result: string)
+      requires n >= 0
+      ensures |result| >= 1
+      ensures forall i :: 0 <= i < |result| ==> '0' <= result[i] <= '9'
+      ensures forall i :: 0 <= i < |result| ==> result[i] != '\0'
+      ensures result == intToStringFunc(n)
+  {
+      return intToStringFunc(n);
+  }
+  
+  method joinLines(lines: seq<string>) returns (result: string)
+      requires |lines| >= 0
+      requires forall i :: 0 <= i < |lines| ==> |lines[i]| >= 0
+      requires forall i :: 0 <= i < |lines| ==> 
+          forall j :: 0 <= j < |lines[i]| ==> lines[i][j] != '\0'
+      ensures |result| >= 0
+      ensures forall i :: 0 <= i < |result| ==> result[i] != '\0'
+      ensures result == joinLinesSeq(lines)
+  {
+      return joinLinesSeq(lines);
+  }
+  
+  method solveCase(n0: nat, k: nat) returns (ans: nat)
+      requires k >= 2
+      ensures ans >= 0
+      ensures n0 == 0 ==> ans == 0
+      ensures n0 > 0 ==> ans > 0
+      ensures ans == minStepsToZero(n0, k)
+  {
+      var n := n0;
+      ans := 0;
+  
+      while n != 0
+          decreases n
+          invariant ans >= 0
+          invariant n >= 0
+          invariant ans + minStepsToZero(n, k) == minStepsToZero(n0, k)
+          invariant n0 > 0 ==> (n > 0 || ans > 0)
+      {
+          if n % k == 0 {
+              ans := ans + 1;
+              n := n / k;
+          } else {
+              var remainder := n % k;
+              ans := ans + remainder;
+              n := n - remainder;
+          }
+      }
+  }
+
+vc-spec: |-
+  method solve(input: string) returns (result: string)
+      requires |input| > 0
+      requires validInput(input)
+      ensures |result| >= 0
+      ensures forall i :: 0 <= i < |result| ==> result[i] != '\0'
+      ensures result == expectedOutput(input)
+
+vc-code: |-
+  {
+      var lines := splitLines(input);
+      var t := stringToInt(lines[0]);
+      var outputs: seq<string> := [];
+  
+      var i := 1;
+      while i <= t
+          invariant 1 <= i <= t + 1
+          invariant |outputs| == i - 1
+          invariant |lines| >= t + 1
+          invariant forall j :: 1 <= j < i ==> validTestCase(lines[j])
+          invariant forall j :: 0 <= j < |outputs| ==> 
+              (forall k :: 0 <= k < |outputs[j]| ==> outputs[j][k] != '\0')
+          invariant forall j :: 0 <= j < |outputs| ==> 
+              var parts := splitSpacesFunc(lines[j+1]);
+              var n := stringToIntFunc(parts[0]);
+              var k := stringToIntFunc(parts[1]);
+              outputs[j] == intToStringFunc(minStepsToZero(n, k))
+      {
+          var parts := splitSpaces(lines[i]);
+          var n := stringToInt(parts[0]);
+          var k := stringToInt(parts[1]);
+  
+          var ans := solveCase(n, k);
+          var tmpCall1 := intToString(ans);
+          outputs := outputs + [tmpCall1];
+          i := i + 1;
+      }
+  
+      result := joinLines(outputs);
+  }
+
+vc-postamble: |-

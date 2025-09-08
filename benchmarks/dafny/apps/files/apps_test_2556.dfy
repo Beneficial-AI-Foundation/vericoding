@@ -1,0 +1,189 @@
+Given n rooms, for each room i install at most c_i radiators to achieve at least sum_i total sections.
+Each radiator with k sections costs k² burles. Find the minimum cost for each room.
+
+predicate ValidInput(input: string)
+{
+    |input| > 0
+}
+
+predicate ValidOutput(input: string, output: string)
+    requires ValidInput(input)
+{
+    var inputPairs := GetInputPairs(input);
+    var expectedResults := seq(|inputPairs|, i requires 0 <= i < |inputPairs| => 
+        if inputPairs[i].0 > 0 && inputPairs[i].1 >= 0 then
+            ComputeMinimumCost(inputPairs[i].0, inputPairs[i].1)
+        else 0);
+    output == FormatResults(expectedResults)
+}
+
+function ComputeMinimumCost(c: int, s: int): int
+    requires c > 0 && s >= 0
+    ensures ComputeMinimumCost(c, s) >= 0
+{
+    var a := s / c;
+    var r := s % c;
+    (c - r) * a * a + r * (a + 1) * (a + 1)
+}
+
+function GetInputPairs(input: string): seq<(int, int)>
+    requires |input| > 0
+    ensures |GetInputPairs(input)| >= 0
+{
+    var lines := SplitLines(input);
+    if |lines| == 0 then []
+    else 
+        var n := ParseInt(lines[0]);
+        GetPairsFromLines(lines, 1, n)
+}
+
+function FormatResults(results: seq<int>): string
+    requires forall j :: 0 <= j < |results| ==> results[j] >= 0
+    ensures |FormatResults(results)| >= 0
+{
+    FormatResultsHelper(results, 0, "")
+}
+
+function GetPairsFromLines(lines: seq<string>, start: nat, count: nat): seq<(int, int)>
+    requires start <= |lines|
+    ensures |GetPairsFromLines(lines, start, count)| <= count
+    decreases count
+{
+    if count == 0 || start >= |lines| then []
+    else
+        var parts := SplitSpaces(lines[start]);
+        var pair := if |parts| >= 2 then (ParseInt(parts[0]), ParseInt(parts[1])) else (0, 0);
+        [pair] + GetPairsFromLines(lines, start + 1, count - 1)
+}
+
+function FormatResultsHelper(results: seq<int>, index: nat, acc: string): string
+    requires index <= |results|
+    requires forall j :: 0 <= j < |results| ==> results[j] >= 0
+    ensures |FormatResultsHelper(results, index, acc)| >= |acc|
+    decreases |results| - index
+{
+    if index == |results| then acc
+    else
+        var line := IntToString(results[index]) + (if index == |results| - 1 then "" else "\n");
+        FormatResultsHelper(results, index + 1, acc + line)
+}
+
+function IntToString(n: int): string
+    requires n >= 0
+    ensures |IntToString(n)| > 0
+{
+    if n == 0 then "0"
+    else IntToStringHelper(n, "")
+}
+
+function IntToStringHelper(n: int, acc: string): string
+    requires n >= 0
+    ensures |IntToStringHelper(n, acc)| >= |acc|
+    decreases n
+{
+    if n == 0 then acc
+    else 
+        var digit := (n % 10) as char + ('0' as int) as char;
+        IntToStringHelper(n / 10, [digit] + acc)
+}
+
+function SplitLines(input: string): seq<string>
+    requires |input| >= 0
+    ensures |SplitLines(input)| >= 0
+{
+    SplitHelper(input, '\n')
+}
+
+function SplitSpaces(line: string): seq<string>
+    requires |line| >= 0
+    ensures |SplitSpaces(line)| >= 0
+{
+    SplitHelper(line, ' ')
+}
+
+function SplitHelper(s: string, delimiter: char): seq<string>
+    requires |s| >= 0
+    ensures |SplitHelper(s, delimiter)| >= 0
+{
+    if |s| == 0 then []
+    else SplitRecursive(s, delimiter, 0, "", [])
+}
+
+function SplitRecursive(s: string, delimiter: char, index: nat, current: string, acc: seq<string>): seq<string>
+    requires index <= |s|
+    requires |current| >= 0
+    requires |acc| >= 0
+    ensures |SplitRecursive(s, delimiter, index, current, acc)| >= |acc|
+    decreases |s| - index
+{
+    if index == |s| then
+        if |current| > 0 then acc + [current] else acc
+    else if s[index] == delimiter then
+        var newAcc := if |current| > 0 then acc + [current] else acc;
+        SplitRecursive(s, delimiter, index + 1, "", newAcc)
+    else
+        SplitRecursive(s, delimiter, index + 1, current + [s[index]], acc)
+}
+
+function ParseInt(s: string): int
+    requires |s| >= 0
+    ensures ParseInt(s) >= 0 || |s| == 0
+{
+    if |s| == 0 then 0
+    else ParseIntHelper(s, 0, 0)
+}
+
+function ParseIntHelper(s: string, index: nat, acc: int): int
+    requires index <= |s|
+    requires acc >= 0
+    ensures ParseIntHelper(s, index, acc) >= 0
+    decreases |s| - index
+{
+    if index == |s| then acc
+    else if '0' <= s[index] <= '9' then
+        ParseIntHelper(s, index + 1, acc * 10 + (s[index] as int - '0' as int))
+    else
+        ParseIntHelper(s, index + 1, acc)
+}
+
+method solve(input: string) returns (result: string)
+    requires ValidInput(input)
+    ensures ValidOutput(input, result)
+{
+    var lines := SplitLines(input);
+    if |lines| == 0 { return ""; }
+
+    var n := ParseInt(lines[0]);
+    var inputPairs := GetInputPairs(input);
+    var results: seq<int> := [];
+
+    var i := 0;
+    while i < |inputPairs|
+        invariant 0 <= i <= |inputPairs|
+        invariant |results| == i
+        invariant forall j :: 0 <= j < |results| ==> results[j] >= 0
+        invariant forall j :: 0 <= j < |results| ==> 
+            results[j] == (if inputPairs[j].0 > 0 && inputPairs[j].1 >= 0 then
+                ComputeMinimumCost(inputPairs[j].0, inputPairs[j].1)
+            else 0)
+    {
+        var c := inputPairs[i].0;
+        var s := inputPairs[i].1;
+
+        if c > 0 && s >= 0 {
+            var cost := ComputeMinimumCost(c, s);
+            results := results + [cost];
+        } else {
+            results := results + [0];
+        }
+        i := i + 1;
+    }
+
+    var expectedResults := seq(|inputPairs|, i requires 0 <= i < |inputPairs| => 
+        if inputPairs[i].0 > 0 && inputPairs[i].1 >= 0 then
+            ComputeMinimumCost(inputPairs[i].0, inputPairs[i].1)
+        else 0);
+    assert results == expectedResults;
+
+    result := FormatResults(results);
+}

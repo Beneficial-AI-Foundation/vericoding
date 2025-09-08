@@ -1,0 +1,54 @@
+Given a positive integer N, find the minimum value of F(A,B) over all pairs of positive integers (A,B) 
+such that A × B = N, where F(A,B) is defined as the maximum of the number of digits in A and the number of digits in B.
+
+function numDigits(n: int): int
+  requires n >= 1
+  ensures numDigits(n) >= 1
+  decreases n
+{
+  if n < 10 then 1
+  else 1 + numDigits(n / 10)
+}
+
+predicate ValidInput(N: int) {
+  N >= 1
+}
+
+function F(a: int, b: int): int
+  requires a >= 1 && b >= 1
+{
+  var digitsA := numDigits(a);
+  var digitsB := numDigits(b);
+  if digitsA > digitsB then digitsA else digitsB
+}
+
+predicate IsFactorPair(a: int, b: int, N: int) {
+  a >= 1 && b >= 1 && a * b == N
+}
+
+method solve(N: int) returns (result: int)
+  requires ValidInput(N)
+  ensures result >= 1
+  ensures exists a, b :: IsFactorPair(a, b, N) && result == F(a, b)
+  ensures forall a, b :: IsFactorPair(a, b, N) ==> result <= F(a, b)
+{
+  var ans := F(1, N);
+  var i := 1;
+
+  while i * i <= N
+    invariant 1 <= i
+    invariant ans >= 1
+    invariant exists a, b :: IsFactorPair(a, b, N) && ans == F(a, b)
+    invariant forall a, b :: IsFactorPair(a, b, N) && a < i ==> ans <= F(a, b)
+  {
+    if N % i == 0 {
+      var a := i;
+      var b := N / i;
+      var f_val := F(a, b);
+      ans := if f_val < ans then f_val else ans;
+    }
+    i := i + 1;
+  }
+
+  result := ans;
+}

@@ -1,0 +1,149 @@
+Given a shelf, process queries of three types:
+- L id: Add book with index id to the leftmost position
+- R id: Add book with index id to the rightmost position  
+- ? id: Find the minimum number of books to remove from either end to make book id leftmost or rightmost
+For each ? query, output the minimum number of removals needed.
+
+predicate ValidInput(queries: seq<(char, int)>)
+{
+    && |queries| > 0
+    && (forall i :: 0 <= i < |queries| ==> queries[i].0 in {'L', 'R', '?'})
+    && (forall i :: 0 <= i < |queries| ==> queries[i].1 > 0)
+    && (forall i, j :: 0 <= i < j < |queries| && queries[i].0 in {'L', 'R'} && queries[j].0 in {'L', 'R'} ==> queries[i].1 != queries[j].1)
+    && (forall i :: 0 <= i < |queries| && queries[i].0 == '?' ==> 
+        exists j :: 0 <= j < i && queries[j].0 in {'L', 'R'} && queries[j].1 == queries[i].1)
+    && (exists i :: 0 <= i < |queries| && queries[i].0 == '?')
+}
+
+predicate ValidOutput(queries: seq<(char, int)>, results: seq<int>)
+    requires ValidInput(queries)
+{
+    && |results| == |set i | 0 <= i < |queries| && queries[i].0 == '?'|
+    && (forall i :: 0 <= i < |results| ==> results[i] >= 0)
+    && (forall r_idx :: 0 <= r_idx < |results| ==> 
+        (exists q_idx :: 0 <= q_idx < |queries| && queries[q_idx].0 == '?' &&
+         results[r_idx] == ComputeMinRemovals(queries, q_idx)))
+    && (forall q_idx :: 0 <= q_idx < |queries| && queries[q_idx].0 == '?' ==>
+        (exists r_idx :: 0 <= r_idx < |results| &&
+         results[r_idx] == ComputeMinRemovals(queries, q_idx)))
+}
+
+datatype BookshelfState = BookshelfState(positions: map<int, int>, head: int, tail: int)
+
+function ComputeMinRemovals(queries: seq<(char, int)>, query_idx: int): int
+    requires 0 <= query_idx < |queries|
+    requires queries[query_idx].0 == '?'
+    requires forall i :: 0 <= i < |queries| ==> queries[i].0 in {'L', 'R', '?'}
+    requires forall i :: 0 <= i < |queries| ==> queries[i].1 > 0
+    requires forall i, j :: 0 <= i < j < |queries| && queries[i].0 in {'L', 'R'} && queries[j].0 in {'L', 'R'} ==> queries[i].1 != queries[j].1
+    requires forall i :: 0 <= i < |queries| && queries[i].0 == '?' ==> 
+        exists j :: 0 <= j < i && queries[j].0 in {'L', 'R'} && queries[j].1 == queries[i].1
+{
+    var book_id := queries[query_idx].1;
+    var state := SimulateQueries(queries, query_idx);
+    assert book_id in state.positions;
+    var pos := state.positions[book_id];
+    var left_removals := pos - state.head;
+    var right_removals := state.tail - pos;
+    var min_removals := if left_removals <= right_removals then left_removals else right_removals;
+    min_removals - 1
+}
+
+function SimulateQueries(queries: seq<(char, int)>, up_to: int): BookshelfState
+    requires 0 <= up_to < |queries|
+    requires forall i :: 0 <= i < |queries| ==> queries[i].0 in {'L', 'R', '?'}
+    requires forall i :: 0 <= i < |queries| ==> queries[i].1 > 0
+    requires forall i, j :: 0 <= i < j < |queries| && queries[i].0 in {'L', 'R'} && queries[j].0 in {'L', 'R'} ==> queries[i].1 != queries[j].1
+    requires forall i :: 0 <= i < |queries| && queries[i].0 == '?' ==> 
+        exists j :: 0 <= j < i && queries[j].0 in {'L', 'R'} && queries[j].1 == queries[i].1
+    ensures queries[up_to].0 == '?' ==> queries[up_to].1 in SimulateQueries(queries, up_to).positions
+{
+    var n := |queries|;
+    var initial_state := BookshelfState(map[], n - 1, n);
+    SimulateQueriesHelper(queries, up_to, 0, initial_state)
+}
+
+function SimulateQueriesHelper(queries: seq<(char, int)>, up_to: int, current: int, state: BookshelfState): BookshelfState
+    requires 0 <= current <= up_to + 1
+    requires 0 <= up_to < |queries|
+    requires forall i :: 0 <= i < |queries| ==> queries[i].0 in {'L', 'R', '?'}
+    requires forall i :: 0 <= i < |queries| ==> queries[i].1 > 0
+    requires forall i, j :: 0 <= i < j < |queries| && queries[i].0 in {'L', 'R'} && queries[j].0 in {'L', 'R'} ==> queries[i].1 != queries[j].1
+    requires forall i :: 0 <= i < |queries| && queries[i].0 == '?' ==> 
+        exists j :: 0 <= j < i && queries[j].0 in {'L', 'R'} && queries[j].1 == queries[i].1
+    requires forall i :: current <= i <= up_to && queries[i].0 == '?' ==>
+        exists j :: 0 <= j < i && queries[j].0 in {'L', 'R'} && queries[j].1 == queries[i].1
+    requires forall j :: 0 <= j < current && queries[j].0 in {'L', 'R'} ==> queries[j].1 in state.positions
+    ensures current > up_to ==> SimulateQueriesHelper(queries, up_to, current, state) == state
+    ensures current <= up_to && queries[up_to].0 == '?' ==> queries[up_to].1 in SimulateQueriesHelper(queries, up_to, current, state).positions
+    decreases up_to + 1 - current
+{
+    if current > up_to then state
+    else if queries[current].0 == 'L' then
+        var book_id := queries[current].1;
+        var new_state := BookshelfState(
+            state.positions[book_id := state.head],
+            state.head - 1,
+            state.tail
+        );
+        SimulateQueriesHelper(queries, up_to, current + 1, new_state)
+    else if queries[current].0 == 'R' then
+        var book_id := queries[current].1;
+        var new_state := BookshelfState(
+            state.positions[book_id := state.tail],
+            state.head,
+            state.tail + 1
+        );
+        SimulateQueriesHelper(queries, up_to, current + 1, new_state)
+    else
+        SimulateQueriesHelper(queries, up_to, current + 1, state)
+}
+
+method solve(queries: seq<(char, int)>) returns (results: seq<int>)
+    requires ValidInput(queries)
+    ensures ValidOutput(queries, results)
+{
+    var n := |queries|;
+    var d := map[];
+    var matr := new int[2 * n + 1];
+    var head := n - 1;
+    var tail := n;
+    var results_list: seq<int> := [];
+
+    for i := 0 to n
+        invariant head >= -1
+        invariant tail <= 2 * n + 1
+        invariant forall k :: k in d ==> 0 <= d[k] <= 2 * n
+        invariant forall j :: 0 <= j < i && queries[j].0 in {'L', 'R'} ==> queries[j].1 in d
+        invariant |results_list| == |set j | 0 <= j < i && queries[j].0 == '?'|
+        invariant forall idx :: 0 <= idx < |results_list| ==> results_list[idx] >= 0
+        invariant forall r_idx :: 0 <= r_idx < |results_list| ==> 
+            (exists q_idx :: 0 <= q_idx < i && queries[q_idx].0 == '?' &&
+             results_list[r_idx] == ComputeMinRemovals(queries, q_idx))
+        invariant forall q_idx :: 0 <= q_idx < i && queries[q_idx].0 == '?' ==>
+            (exists r_idx :: 0 <= r_idx < |results_list| &&
+             results_list[r_idx] == ComputeMinRemovals(queries, q_idx))
+    {
+        var st := queries[i].0;
+        var book_id := queries[i].1;
+
+        if st == 'L' {
+            matr[head] := book_id;
+            d := d[book_id := head];
+            head := head - 1;
+        } else if st == 'R' {
+            matr[tail] := book_id;
+            d := d[book_id := tail];
+            tail := tail + 1;
+        } else {
+            assert book_id in d;
+            var pos := d[book_id];
+            var left_removals := pos - head;
+            var right_removals := tail - pos;
+            var min_removals := if left_removals <= right_removals then left_removals else right_removals;
+            results_list := results_list + [min_removals - 1];
+        }
+    }
+
+    results := results_list;
+}

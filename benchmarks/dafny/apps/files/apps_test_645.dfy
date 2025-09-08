@@ -1,0 +1,68 @@
+Given n cards with letters/digits, determine minimum cards to flip to verify:
+"If a card has a vowel on one side, then it has an even digit on the other side."
+Input: string representing visible sides. Output: minimum flips needed.
+
+predicate IsVowel(c: char) {
+  c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u'
+}
+
+predicate IsOddDigit(c: char) {
+  c == '1' || c == '3' || c == '5' || c == '7' || c == '9'
+}
+
+predicate NeedsFlipping(c: char) {
+  IsVowel(c) || IsOddDigit(c)
+}
+
+function CountFlips(s: string): int {
+  |set i | 0 <= i < |s| && NeedsFlipping(s[i])|
+}
+
+function toString(n: int): string
+  requires n >= 0
+{
+  if n == 0 then "0"
+  else if n == 1 then "1"
+  else if n == 2 then "2"
+  else if n == 3 then "3"
+  else if n == 4 then "4"
+  else if n == 5 then "5"
+  else if n == 6 then "6"
+  else if n == 7 then "7"
+  else if n == 8 then "8"
+  else if n == 9 then "9"
+  else if n == 10 then "10"
+  else if n < 20 then "1" + toString(n - 10)
+  else if n < 100 then toString(n / 10) + toString(n % 10)
+  else "99+"
+}
+
+method solve(s: string) returns (result: string)
+  requires |s| >= 1 && |s| <= 50
+  ensures |result| > 0
+  ensures result == toString(CountFlips(s)) + "\n"
+{
+  var count := 0;
+  var i := 0;
+
+  while i < |s|
+    invariant 0 <= i <= |s|
+    invariant count >= 0
+    invariant count == |set j | 0 <= j < i && NeedsFlipping(s[j])|
+  {
+    var oldSet := set j | 0 <= j < i && NeedsFlipping(s[j]);
+    var newSet := set j | 0 <= j < i+1 && NeedsFlipping(s[j]);
+    
+    if NeedsFlipping(s[i]) {
+      assert newSet == oldSet + {i};
+      assert |newSet| == |oldSet| + 1;
+      count := count + 1;
+    } else {
+      assert newSet == oldSet;
+      assert |newSet| == |oldSet|;
+    }
+    i := i + 1;
+  }
+
+  result := toString(count) + "\n";
+}

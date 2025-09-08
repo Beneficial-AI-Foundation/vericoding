@@ -1,0 +1,86 @@
+vc-description: |-
+  Given a rectangular room with dimensions a × b meters, accommodate exactly n students 
+  such that each student has at least 6 square meters of space. You can increase either 
+  or both dimensions by any positive integer amount. Find the minimum possible area and 
+  corresponding dimensions.
+
+vc-preamble: |-
+  predicate ValidInput(n: int, a: int, b: int)
+  {
+    n > 0 && a > 0 && b > 0
+  }
+  
+  predicate ValidOutput(result: seq<int>, n: int, a: int, b: int)
+  {
+    |result| == 3 &&
+    result[0] >= 6 * n &&
+    result[1] > 0 && result[2] > 0 &&
+    result[0] == result[1] * result[2] &&
+    ((result[1] >= a && result[2] >= b) || (result[1] >= b && result[2] >= a))
+  }
+
+vc-helpers: |-
+  function ceildiv(a: int, b: int): int
+    requires b > 0
+  {
+    if a % b == 0 then a / b else a / b + 1
+  }
+
+vc-spec: |-
+  method solve(n: int, a: int, b: int) returns (result: seq<int>)
+    requires ValidInput(n, a, b)
+    ensures ValidOutput(result, n, a, b)
+
+vc-code: |-
+  {
+    var s := 6 * n;
+  
+    if a * b >= s {
+      result := [a * b, a, b];
+      return;
+    }
+  
+    var t := 1;
+    while t * t <= 6 * n {
+      t := t + 1;
+    }
+  
+    var tgt := a * ceildiv(s, a);
+    var tgta := a;
+    var tgtb := ceildiv(s, a);
+  
+    // Check if b fits in the other orientation
+    var alt_area := b * ceildiv(s, b);
+    if alt_area < tgt {
+      tgt := alt_area;
+      tgta := ceildiv(s, b);
+      tgtb := b;
+    }
+  
+    var i := 1;
+    while i <= t {
+      var c := ceildiv(s, i);
+  
+      if a <= i && b <= c {
+        if tgt > i * c {
+          tgt := i * c;
+          tgta := i;
+          tgtb := c;
+        }
+      }
+  
+      if b <= i && a <= c {
+        if tgt > i * c {
+          tgt := i * c;
+          tgta := c;
+          tgtb := i;
+        }
+      }
+  
+      i := i + 1;
+    }
+  
+    result := [tgt, tgta, tgtb];
+  }
+
+vc-postamble: |-

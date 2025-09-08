@@ -1,0 +1,99 @@
+vc-description: |-
+  Given a string of uppercase letters A-Z with length 1-10, determine if all letters
+  belong to the same predefined group. Group 1: A,E,F,H,I,K,L,M,N,T,V,W,X,Y,Z.
+  Group 2: B,C,D,G,J,O,P,Q,R,S,U. Output "YES" if all letters in same group, "NO" otherwise.
+
+vc-preamble: |-
+  predicate ValidInput(word: string) 
+  {
+      1 <= |word| <= 10 && forall i :: 0 <= i < |word| ==> 'A' <= word[i] <= 'Z'
+  }
+  
+  function Group1(): string { "AEFHIKLMNTVWXYZ" }
+  function Group2(): string { "BCDGJOPQRSU" }
+  
+  predicate AllInGroup1(word: string)
+  {
+      forall i :: 0 <= i < |word| ==> word[i] in Group1()
+  }
+  
+  predicate AllInGroup2(word: string)
+  {
+      forall i :: 0 <= i < |word| ==> word[i] in Group2()
+  }
+  
+  predicate AllInSameGroup(word: string)
+  {
+      AllInGroup1(word) || AllInGroup2(word)
+  }
+
+vc-helpers: |-
+  
+
+vc-spec: |-
+  method solve(word: string) returns (result: string)
+      requires ValidInput(word)
+      ensures AllInSameGroup(word) <==> result == "YES"
+      ensures result == "YES" || result == "NO"
+
+vc-code: |-
+  {
+      var group1 := Group1();
+      var group2 := Group2();
+  
+      var hasGroup1 := false;
+      var hasGroup2 := false;
+  
+      var i := 0;
+      while i < |word|
+          invariant 0 <= i <= |word|
+          invariant hasGroup1 <==> exists k :: 0 <= k < i && word[k] in group1
+          invariant hasGroup2 <==> exists k :: 0 <= k < i && word[k] in group2
+          invariant forall k :: 0 <= k < i ==> (word[k] in group1 <==> word[k] !in group2)
+          invariant forall k :: 0 <= k < i ==> (word[k] in group1 || word[k] in group2)
+      {
+          var c := word[i];
+          var inGroup1 := false;
+  
+          var j := 0;
+          while j < |group1|
+              invariant 0 <= j <= |group1|
+              invariant inGroup1 <==> exists k :: 0 <= k < j && group1[k] == c
+          {
+              if group1[j] == c {
+                  inGroup1 := true;
+                  break;
+              }
+              j := j + 1;
+          }
+  
+          assert inGroup1 <==> c in group1;
+          assert c in group1 <==> c !in group2;
+  
+          if inGroup1 {
+              hasGroup1 := true;
+          } else {
+              hasGroup2 := true;
+          }
+  
+          i := i + 1;
+      }
+  
+      assert hasGroup1 <==> exists k :: 0 <= k < |word| && word[k] in group1;
+      assert hasGroup2 <==> exists k :: 0 <= k < |word| && word[k] in group2;
+      assert forall k :: 0 <= k < |word| ==> (word[k] in group1 || word[k] in group2);
+  
+      var allInGroup1 := forall k :: 0 <= k < |word| ==> word[k] in group1;
+      var allInGroup2 := forall k :: 0 <= k < |word| ==> word[k] in group2;
+  
+      assert allInGroup1 <==> !hasGroup2;
+      assert allInGroup2 <==> !hasGroup1;
+  
+      if !hasGroup1 || !hasGroup2 {
+          result := "YES";
+      } else {
+          result := "NO";
+      }
+  }
+
+vc-postamble: |-

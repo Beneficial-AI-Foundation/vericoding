@@ -1,0 +1,77 @@
+Given a positive integer x, find the positive integer not exceeding x that has the maximum sum of digits. 
+If multiple such integers exist, return the largest one.
+
+function intToDigits(x: int): seq<int>
+  requires x >= 0
+{
+  if x == 0 then [0]
+  else intToDigitsHelper(x)
+}
+
+function intToDigitsHelper(x: int): seq<int>
+  requires x > 0
+  decreases x
+{
+  if x < 10 then [x]
+  else intToDigitsHelper(x / 10) + [x % 10]
+}
+
+function digitSum(digits: seq<int>): int
+{
+  if |digits| == 0 then 0
+  else digits[0] + digitSum(digits[1..])
+}
+
+predicate ValidInput(x: int)
+{
+  x >= 1
+}
+
+predicate ValidResult(x: int, result: int)
+  requires ValidInput(x)
+{
+  result > 0 &&
+  result <= x &&
+  (forall y :: 1 <= y <= x ==> digitSum(intToDigits(y)) <= digitSum(intToDigits(result))) &&
+  (forall y :: 1 <= y <= x && digitSum(intToDigits(y)) == digitSum(intToDigits(result)) ==> y <= result)
+}
+
+function digitsToInt(digits: seq<int>): int
+{
+  digitsToIntHelper(digits, 0)
+}
+
+function digitsToIntHelper(digits: seq<int>, acc: int): int
+{
+  if |digits| == 0 then acc
+  else digitsToIntHelper(digits[1..], acc * 10 + digits[0])
+}
+
+method solve(x: int) returns (result: int)
+  requires ValidInput(x)
+  ensures ValidResult(x, result)
+{
+  var maxSum := digitSum(intToDigits(1));
+  var bestValue := 1;
+  var y := 2;
+
+  while y <= x
+    invariant 2 <= y <= x + 1
+    invariant 1 <= bestValue < y
+    invariant bestValue <= x
+    invariant maxSum == digitSum(intToDigits(bestValue))
+    invariant forall z :: 1 <= z < y ==> digitSum(intToDigits(z)) <= maxSum
+    invariant forall z :: 1 <= z < y && digitSum(intToDigits(z)) == maxSum ==> z <= bestValue
+  {
+    var currentSum := digitSum(intToDigits(y));
+    if currentSum > maxSum {
+      maxSum := currentSum;
+      bestValue := y;
+    } else if currentSum == maxSum && y > bestValue {
+      bestValue := y;
+    }
+    y := y + 1;
+  }
+
+  result := bestValue;
+}

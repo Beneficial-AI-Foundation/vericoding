@@ -1,0 +1,57 @@
+Given a king's position on a standard 8×8 chess board, determine the number of valid moves 
+the king can make. The position is given as a two-character string "cd" where 'c' is the 
+column ('a' to 'h') and 'd' is the row ('1' to '8'). A king can move exactly one square 
+in any direction but cannot move outside the board boundaries.
+
+predicate ValidInput(position: string)
+{
+  |position| == 2 && 'a' <= position[0] <= 'h' && '1' <= position[1] <= '8'
+}
+
+predicate IsCorner(position: string)
+  requires ValidInput(position)
+{
+  (position[0] == 'a' || position[0] == 'h') && (position[1] == '1' || position[1] == '8')
+}
+
+predicate IsEdge(position: string)
+  requires ValidInput(position)
+{
+  (position[0] == 'a' || position[0] == 'h' || position[1] == '1' || position[1] == '8') && !IsCorner(position)
+}
+
+predicate IsInterior(position: string)
+  requires ValidInput(position)
+{
+  !IsCorner(position) && !IsEdge(position)
+}
+
+function ValidMoves(position: string): int
+  requires ValidInput(position)
+{
+  if IsCorner(position) then 3
+  else if IsEdge(position) then 5
+  else 8
+}
+
+method solve(position: string) returns (moves: int)
+  requires ValidInput(position)
+  ensures moves == ValidMoves(position)
+  ensures IsCorner(position) ==> moves == 3
+  ensures IsEdge(position) ==> moves == 5
+  ensures IsInterior(position) ==> moves == 8
+  ensures moves == 3 || moves == 5 || moves == 8
+{
+  var col := position[0];
+  var row := position[1];
+
+  if (col == 'a' || col == 'h') && (row == '1' || row == '8') {
+    moves := 3;
+  }
+  else if (col == 'a' || col == 'h') || (row == '1' || row == '8') {
+    moves := 5;
+  }
+  else {
+    moves := 8;
+  }
+}

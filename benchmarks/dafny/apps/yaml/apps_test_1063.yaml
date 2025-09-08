@@ -1,0 +1,267 @@
+vc-description: |-
+  Given a sequence of n strings where each string contains digits and question marks (?),
+  restore the original strictly increasing sequence of positive integers by replacing each
+  question mark with a single digit (0-9). The resulting sequence must be strictly increasing,
+  all numbers must be positive integers (no leading zeros allowed), and each ? represents
+  exactly one missing digit.
+
+vc-preamble: |-
+  predicate isWellFormedInput(stdin_input: string)
+  {
+      var lines := splitLines(stdin_input);
+      if |lines| < 1 then false
+      else
+          var n := parseInt(lines[0]);
+          n >= 0 && |lines| >= n + 1 &&
+          (forall i :: 1 <= i <= n && i < |lines| ==> 
+              |lines[i]| >= 1 && |lines[i]| <= 8 &&
+              (forall j :: 0 <= j < |lines[i]| ==> 
+                  (lines[i][j] >= '0' && lines[i][j] <= '9') || lines[i][j] == '?'))
+  }
+  
+  ghost predicate hasValidSolution(stdin_input: string)
+      requires isWellFormedInput(stdin_input)
+  {
+      var lines := splitLines(stdin_input);
+      var n := parseInt(lines[0]);
+      if n <= 0 then true
+      else
+          var inputStrings := lines[1..n+1];
+          exists solution :: isValidSequenceSolution(inputStrings, solution)
+  }
+  
+  predicate isValidSequenceSolution(input: seq<string>, solution: seq<string>)
+  {
+      |input| == |solution| &&
+      (forall i :: 0 <= i < |input| ==> 
+          |input[i]| == |solution[i]| &&
+          forall j :: 0 <= j < |input[i]| ==> 
+              (input[i][j] != '?' ==> input[i][j] == solution[i][j]) &&
+              (input[i][j] == '?' ==> solution[i][j] >= '0' && solution[i][j] <= '9')) &&
+      (forall i :: 0 <= i < |solution| ==> isValidPositiveInteger(solution[i])) &&
+      isStrictlyIncreasingSequence(solution)
+  }
+  
+  predicate isValidPositiveInteger(s: string)
+  {
+      |s| >= 1 && 
+      (forall i :: 0 <= i < |s| ==> (s[i] >= '0' && s[i] <= '9')) &&
+      (|s| == 1 || s[0] != '0')
+  }
+  
+  predicate isStrictlyIncreasingSequence(nums: seq<string>)
+      requires forall i :: 0 <= i < |nums| ==> isValidPositiveInteger(nums[i])
+  {
+      forall i :: 0 <= i < |nums| - 1 ==> isLexicographicallySmaller(nums[i], nums[i+1])
+  }
+  
+  predicate isLexicographicallySmaller(a: string, b: string)
+      requires isValidPositiveInteger(a) && isValidPositiveInteger(b)
+  {
+      |a| < |b| || (|a| == |b| && a < b)
+  }
+
+vc-helpers: |-
+  function splitLines(s: string): seq<string>
+  {
+      if |s| == 0 then []
+      else if '\n' !in s then [s]
+      else 
+          var newlineIndex := findNewline(s, 0);
+          if newlineIndex == |s| then [s]
+          else [s[..newlineIndex]] + splitLines(s[newlineIndex+1..])
+  }
+  
+  function findNewline(s: string, start: int): int
+      requires 0 <= start <= |s|
+      ensures start <= findNewline(s, start) <= |s|
+      ensures findNewline(s, start) == |s| || s[findNewline(s, start)] == '\n'
+      decreases |s| - start
+  {
+      if start >= |s| then |s|
+      else if s[start] == '\n' then start
+      else findNewline(s, start + 1)
+  }
+  
+  function parseInt(s: string): int
+  {
+      if |s| == 0 then 0
+      else if |s| == 1 && s[0] >= '0' && s[0] <= '9' then (s[0] as int) - ('0' as int)
+      else if s[0] >= '0' && s[0] <= '9' then 
+          ((s[0] as int) - ('0' as int)) * pow10(|s| - 1) + parseInt(s[1..])
+      else 0
+  }
+  
+  function pow10(n: nat): nat
+  {
+      if n == 0 then 1 else 10 * pow10(n - 1)
+  }
+  
+  function makeSmallestValidNumber(template: string): string
+  {
+      if |template| == 0 then ""
+      else if template[0] == '?' then "1" + replaceQuestionsWithZeros(template[1..])
+      else template[0..1] + makeSmallestValidNumber(template[1..])
+  }
+  
+  function replaceQuestionsWithZeros(s: string): string
+  {
+      if |s| == 0 then ""
+      else if s[0] == '?' then "0" + replaceQuestionsWithZeros(s[1..])
+      else s[0..1] + replaceQuestionsWithZeros(s[1..])
+  }
+  
+  method tryMakeLarger(current: string, previous: string) returns (success: bool, result: string)
+      requires |current| == |previous|
+  {
+      var chars := new char[|current|];
+      var i := 0;
+      while i < |current|
+          invariant 0 <= i <= |current|
+          modifies chars
+      {
+          chars[i] := current[i];
+          i := i + 1;
+      }
+  
+      success := solveMakeLargerThanPrevious(chars, previous, 0);
+      if success {
+          result := seqToString(chars[..]);
+      } else {
+          result := current;
+      }
+  }
+  
+  function seqToString(chars: seq<char>): string
+  {
+      chars
+  }
+  
+  method solveMakeLargerThanPrevious(chars: array<char>, previous: string, index: int) returns (success: bool)
+      requires chars.Length == |previous|
+      requires 0 <= index <= chars.Length
+      modifies chars
+      decreases chars.Length - index
+  {
+      if index >= chars.Length {
+          success := false;
+          return;
+      }
+  
+      if chars[index] == '?' {
+          chars[index] := previous[index];
+          success := solveMakeLargerThanPrevious(chars, previous, index + 1);
+          if success {
+              return;
+          }
+  
+          if previous[index] < '9' {
+              chars[index] := (previous[index] as int + 1) as char;
+              var i := index + 1;
+              while i < chars.Length
+                  invariant index + 1 <= i <= chars.Length
+                  modifies chars
+              {
+                  if chars[i] == '?' {
+                      chars[i] := '0';
+                  }
+                  i := i + 1;
+              }
+              success := true;
+              return;
+          } else {
+              success := false;
+              return;
+          }
+      } else if chars[index] > previous[index] {
+          var i := index + 1;
+          while i < chars.Length
+              invariant index + 1 <= i <= chars.Length
+              modifies chars
+          {
+              if chars[i] == '?' {
+                  chars[i] := '0';
+              }
+              i := i + 1;
+          }
+          success := true;
+          return;
+      } else if chars[index] < previous[index] {
+          success := false;
+          return;
+      } else {
+          success := solveMakeLargerThanPrevious(chars, previous, index + 1);
+          return;
+      }
+  }
+  
+  function joinWithNewlines(strs: seq<string>): string
+  {
+      if |strs| == 0 then ""
+      else if |strs| == 1 then strs[0]
+      else strs[0] + "\n" + joinWithNewlines(strs[1..])
+  }
+
+vc-spec: |-
+  method solve(stdin_input: string) returns (result: string)
+      requires |stdin_input| > 0
+      requires isWellFormedInput(stdin_input)
+      ensures |result| > 0
+      ensures result == "NO\n" || (|result| > 4 && result[..4] == "YES\n")
+
+vc-code: |-
+  {
+      var lines := splitLines(stdin_input);
+      if |lines| < 1 {
+          result := "NO\n";
+          return;
+      }
+  
+      var n := parseInt(lines[0]);
+      if n <= 0 || |lines| < n + 1 {
+          result := "NO\n";
+          return;
+      }
+  
+      var inputStrings := lines[1..n+1];
+      var modifiedStrings := inputStrings;
+      var previous := "0";
+      var possible := true;
+  
+      var i := 0;
+      while i < n && possible
+          invariant 0 <= i <= n
+          invariant |modifiedStrings| == n
+          invariant |inputStrings| == n
+      {
+          var current := modifiedStrings[i];
+  
+          if |previous| > |current| {
+              possible := false;
+          } else if |previous| < |current| {
+              current := makeSmallestValidNumber(current);
+              modifiedStrings := modifiedStrings[i := current];
+          } else {
+              var success, newCurrent := tryMakeLarger(current, previous);
+              if success {
+                  modifiedStrings := modifiedStrings[i := newCurrent];
+                  current := newCurrent;
+              } else {
+                  possible := false;
+              }
+          }
+  
+          if possible {
+              previous := current;
+          }
+          i := i + 1;
+      }
+  
+      if possible {
+          result := "YES\n" + joinWithNewlines(modifiedStrings) + "\n";
+      } else {
+          result := "NO\n";
+      }
+  }
+
+vc-postamble: |-

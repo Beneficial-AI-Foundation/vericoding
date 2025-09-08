@@ -1,0 +1,83 @@
+Given a building with n towers and h floors each, find minimum travel time between pairs of locations.
+Horizontal passages exist between adjacent towers only on floors a through b (inclusive).
+Moving between adjacent floors or towers takes exactly 1 minute.
+
+predicate ValidBuildingParams(n: int, h: int, a: int, b: int)
+{
+    n >= 1 && h >= 1 && 1 <= a <= b <= h
+}
+
+predicate ValidQuery(query: (int, int, int, int), n: int, h: int)
+{
+    1 <= query.0 <= n && 1 <= query.1 <= h &&
+    1 <= query.2 <= n && 1 <= query.3 <= h
+}
+
+predicate ValidQueries(queries: seq<(int, int, int, int)>, n: int, h: int)
+{
+    forall i :: 0 <= i < |queries| ==> ValidQuery(queries[i], n, h)
+}
+
+function MinTravelTime(t1: int, f1: int, t2: int, f2: int, a: int, b: int): int
+{
+    if t1 == t2 then
+        abs(f1 - f2)
+    else if f1 >= a && f1 <= b then
+        abs(t2 - t1) + abs(f2 - f1)
+    else if f1 < a then
+        abs(a - f1) + abs(t2 - t1) + abs(f2 - a)
+    else
+        abs(b - f1) + abs(t2 - t1) + abs(f2 - b)
+}
+
+predicate CorrectResults(queries: seq<(int, int, int, int)>, results: seq<int>, a: int, b: int)
+{
+    |results| == |queries| &&
+    forall i :: 0 <= i < |queries| ==>
+        var t1, f1, t2, f2 := queries[i].0, queries[i].1, queries[i].2, queries[i].3;
+        results[i] == MinTravelTime(t1, f1, t2, f2, a, b)
+}
+
+function abs(x: int): int
+{
+    if x >= 0 then x else -x
+}
+
+method solve(n: int, h: int, a: int, b: int, queries: seq<(int, int, int, int)>) returns (results: seq<int>)
+    requires ValidBuildingParams(n, h, a, b)
+    requires ValidQueries(queries, n, h)
+    ensures CorrectResults(queries, results, a, b)
+{
+    results := [];
+
+    for i := 0 to |queries|
+        invariant 0 <= i <= |queries|
+        invariant |results| == i
+        invariant forall j :: 0 <= j < i ==>
+            var t1, f1, t2, f2 := queries[j].0, queries[j].1, queries[j].2, queries[j].3;
+            results[j] == MinTravelTime(t1, f1, t2, f2, a, b)
+    {
+        var t1, f1, t2, f2 := queries[i].0, queries[i].1, queries[i].2, queries[i].3;
+        var travelTime: int;
+
+        if t1 == t2 {
+            travelTime := abs(f1 - f2);
+        } else if f1 >= a && f1 <= b {
+            var tmpCall1 := abs(t2 - t1);
+            var tmpCall2 := abs(f2 - f1);
+            travelTime := tmpCall1 + tmpCall2;
+        } else if f1 < a {
+            var tmpCall3 := abs(a - f1);
+            var tmpCall4 := abs(t2 - t1);
+            var tmpCall5 := abs(f2 - a);
+            travelTime := tmpCall3 + tmpCall4 + tmpCall5;
+        } else {
+            var tmpCall6 := abs(b - f1);
+            var tmpCall7 := abs(t2 - t1);
+            var tmpCall8 := abs(f2 - b);
+            travelTime := tmpCall6 + tmpCall7 + tmpCall8;
+        }
+
+        results := results + [travelTime];
+    }
+}

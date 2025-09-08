@@ -1,0 +1,136 @@
+Given a function f(a, b) defined as f(a, 0) = 0 and f(a, b) = 1 + f(a, b - gcd(a, b)) for b > 0,
+calculate f(x, y) for given integers x and y. The input is a string containing two integers
+separated by a space, and the output is a string containing the result.
+
+predicate ValidInput(input: string)
+{
+    |input| > 0 &&
+    (exists i :: 0 <= i < |input| && input[i] == ' ') &&
+    (forall j :: 0 <= j < |input| ==> ('0' <= input[j] <= '9' || input[j] == ' ' || input[j] == '\n'))
+}
+
+function gcd(a: nat, b: nat): nat
+    ensures gcd(a, b) > 0 || (a == 0 && b == 0)
+    ensures a > 0 ==> gcd(a, b) <= a
+    ensures b > 0 ==> gcd(a, b) <= b
+    ensures (a != 0 || b != 0) ==> (a % gcd(a, b) == 0 && b % gcd(a, b) == 0)
+    ensures gcd(a, 0) == a
+    ensures gcd(0, b) == b
+    decreases a + b
+{
+    if a == 0 then b
+    else if b == 0 then a  
+    else if a > b then gcd(a - b, b)
+    else gcd(a, b - a)
+}
+
+function f_mathematical(x: nat, y: nat): nat
+    ensures y == 0 ==> f_mathematical(x, y) == 0
+    ensures y > 0 ==> f_mathematical(x, y) > 0
+    ensures y > 0 ==> f_mathematical(x, y) <= y
+    ensures y > 0 ==> f_mathematical(x, y) == 1 + f_mathematical(x, y - gcd(x, y))
+    decreases y
+{
+    if y == 0 then 0
+    else 
+        var g := gcd(x, y);
+        if g >= y then 1
+        else 1 + f_mathematical(x, y - g)
+}
+
+predicate ValidOutput(result: string)
+{
+    |result| > 0 &&
+    forall i :: 0 <= i < |result| ==> ('0' <= result[i] <= '9' || result[i] == '\n') &&
+    result[|result|-1] == '\n'
+}
+
+function find_space(input: string, start: nat): nat
+    requires 0 <= start <= |input|
+    requires exists i :: start <= i < |input| && input[i] == ' '
+    ensures start <= find_space(input, start) < |input|
+    ensures input[find_space(input, start)] == ' '
+    decreases |input| - start
+{
+    if start < |input| && input[start] == ' ' then start
+    else find_space(input, start + 1)
+}
+
+function parse_nat(s: string): nat
+    ensures parse_nat(s) >= 0
+    ensures |s| == 0 ==> parse_nat(s) == 0
+    ensures |s| == 1 && '0' <= s[0] <= '9' ==> parse_nat(s) == (s[0] as nat - '0' as nat)
+{
+    if |s| == 0 then 0
+    else parse_nat_helper(s, 0, 0)
+}
+
+function parse_nat_helper(s: string, pos: nat, acc: nat): nat
+    requires 0 <= pos <= |s|
+    ensures parse_nat_helper(s, pos, acc) >= acc
+    ensures pos >= |s| ==> parse_nat_helper(s, pos, acc) == acc
+    decreases |s| - pos
+{
+    if pos >= |s| then acc
+    else if '0' <= s[pos] <= '9' then
+        parse_nat_helper(s, pos + 1, acc * 10 + (s[pos] as nat - '0' as nat))
+    else acc
+}
+
+function nat_to_string(n: nat): string
+    ensures |nat_to_string(n)| > 0
+    ensures n == 0 ==> nat_to_string(n) == "0"
+    ensures n > 0 ==> |nat_to_string(n)| >= 1
+    ensures forall i :: 0 <= i < |nat_to_string(n)| ==> '0' <= nat_to_string(n)[i] <= '9'
+{
+    if n == 0 then "0"
+    else nat_to_string_helper(n, "")
+}
+
+function nat_to_string_helper(n: nat, acc: string): string
+    requires n > 0
+    requires forall i :: 0 <= i < |acc| ==> '0' <= acc[i] <= '9'
+    ensures |nat_to_string_helper(n, acc)| > |acc|
+    ensures |nat_to_string_helper(n, acc)| >= 1
+    ensures forall i :: 0 <= i < |nat_to_string_helper(n, acc)| ==> '0' <= nat_to_string_helper(n, acc)[i] <= '9'
+    decreases n
+{
+    if n < 10 then 
+        var digit_char := ('0' as int + n as int) as char;
+        [digit_char] + acc
+    else 
+        var digit_char := ('0' as int + (n % 10) as int) as char;
+        nat_to_string_helper(n / 10, [digit_char] + acc)
+}
+
+method solve(input: string) returns (result: string)
+    requires ValidInput(input)
+    ensures ValidOutput(result)
+{
+    var space_idx := 0;
+    while space_idx < |input| && input[space_idx] != ' '
+        invariant 0 <= space_idx <= |input|
+    {
+        space_idx := space_idx + 1;
+    }
+
+    if space_idx >= |input| {
+        return "0\n";
+    }
+
+    var x_str := input[..space_idx];
+    var y_str_raw := input[space_idx + 1..];
+
+    var y_str := if |y_str_raw| > 0 && y_str_raw[|y_str_raw|-1] == '\n' 
+                 then y_str_raw[..|y_str_raw|-1] 
+                 else y_str_raw;
+
+    var x := parse_nat(x_str);
+    var y := parse_nat(y_str);
+
+    var d := gcd(x, y);
+    var reduced_x := if d > 0 then x / d else 0;
+    var reduced_y := if d > 0 then y / d else 0;
+    var answer := f_mathematical(reduced_x, reduced_y);
+    return nat_to_string(answer) + "\n";
+}

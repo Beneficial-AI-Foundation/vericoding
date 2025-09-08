@@ -1,0 +1,149 @@
+Three players each have a ribbon (string). The beauty of a ribbon is the maximum frequency of any character.
+In n turns, each player must change exactly one character. After n turns, the player with highest beauty wins.
+Find the winner assuming optimal play, or "Draw" if tied.
+
+predicate ValidInput(input: string) {
+    |input| > 0
+}
+
+predicate ValidOutput(result: string) {
+    result == "Kuro" || result == "Shiro" || result == "Katie" || result == "Draw" || result == ""
+}
+
+function OptimalScore(ribbon: string, turns: int): int
+    requires |ribbon| >= 0 && turns >= 0
+    ensures OptimalScore(ribbon, turns) >= 0
+{
+    var maxFreq := MaxCharFreq(ribbon);
+    var length := |ribbon|;
+    if turns == 1 && maxFreq == length then 
+        if maxFreq > 0 then maxFreq - 1 else 0
+    else if length < maxFreq + turns then length
+    else maxFreq + turns
+}
+
+function SplitLines(input: string): seq<string>
+    requires |input| >= 0
+    ensures |SplitLines(input)| >= 0
+    ensures forall i :: 0 <= i < |SplitLines(input)| ==> '\n' !in SplitLines(input)[i]
+{
+    if |input| == 0 then []
+    else if input[0] == '\n' then [""] + SplitLines(input[1..])
+    else 
+        var rest := SplitLines(input[1..]);
+        if |rest| == 0 then [input[0..1]]
+        else [input[0..1] + rest[0]] + rest[1..]
+}
+
+function ParseInt(s: string): int
+    requires |s| >= 0
+    ensures ParseInt(s) >= 0
+{
+    ParseIntHelper(s, 0, 0)
+}
+
+function ParseIntHelper(s: string, idx: int, acc: int): int
+    requires 0 <= idx <= |s|
+    requires acc >= 0
+    ensures ParseIntHelper(s, idx, acc) >= acc
+    decreases |s| - idx
+{
+    if idx == |s| then acc
+    else if '0' <= s[idx] <= '9' then 
+        ParseIntHelper(s, idx + 1, acc * 10 + (s[idx] as int - '0' as int))
+    else acc
+}
+
+function MaxCharFreq(s: string): int
+    requires |s| >= 0
+    ensures MaxCharFreq(s) >= 0
+    ensures MaxCharFreq(s) <= |s|
+{
+    if |s| == 0 then 0
+    else
+        var alphabet := "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        MaxFreqHelper(s, alphabet, 0, 0)
+}
+
+function MaxFreqHelper(s: string, alphabet: string, idx: int, maxSoFar: int): int
+    requires 0 <= idx <= |alphabet|
+    requires maxSoFar >= 0
+    requires maxSoFar <= |s|
+    ensures MaxFreqHelper(s, alphabet, idx, maxSoFar) >= maxSoFar
+    ensures MaxFreqHelper(s, alphabet, idx, maxSoFar) <= |s|
+    decreases |alphabet| - idx
+{
+    if idx == |alphabet| then maxSoFar
+    else 
+        var freq := CountChar(s, alphabet[idx]);
+        MaxFreqHelper(s, alphabet, idx + 1, if freq > maxSoFar then freq else maxSoFar)
+}
+
+function CountChar(s: string, c: char): int
+    requires |s| >= 0
+    ensures CountChar(s, c) >= 0
+    ensures CountChar(s, c) <= |s|
+{
+    if |s| == 0 then 0
+    else (if s[0] == c then 1 else 0) + CountChar(s[1..], c)
+}
+
+function Max3(a: int, b: int, c: int): int
+{
+    if a >= b && a >= c then a
+    else if b >= c then b
+    else c
+}
+
+method solve(input: string) returns (result: string)
+    requires ValidInput(input)
+    ensures ValidOutput(result)
+    ensures var lines := SplitLines(input);
+            if |lines| < 4 then result == ""
+            else (
+                var turns := ParseInt(lines[0]);
+                var s0 := lines[1];
+                var s1 := lines[2]; 
+                var s2 := lines[3];
+                var score0 := OptimalScore(s0, turns);
+                var score1 := OptimalScore(s1, turns);
+                var score2 := OptimalScore(s2, turns);
+                var maxScore := Max3(score0, score1, score2);
+                var winners := (if score0 == maxScore then 1 else 0) + (if score1 == maxScore then 1 else 0) + (if score2 == maxScore then 1 else 0);
+                (winners > 1 ==> result == "Draw") &&
+                (winners == 1 && score0 == maxScore ==> result == "Kuro") &&
+                (winners == 1 && score1 == maxScore ==> result == "Shiro") &&
+                (winners == 1 && score2 == maxScore ==> result == "Katie")
+            )
+{
+    var lines := SplitLines(input);
+    if |lines| < 4 { return ""; }
+
+    var turns := ParseInt(lines[0]);
+    var s0 := lines[1];
+    var s1 := lines[2]; 
+    var s2 := lines[3];
+
+    var score0 := OptimalScore(s0, turns);
+    var score1 := OptimalScore(s1, turns);
+    var score2 := OptimalScore(s2, turns);
+
+    var maxScore := Max3(score0, score1, score2);
+    var winners := 0;
+    var winner := 0;
+
+    if score0 == maxScore { winners := winners + 1; winner := 0; }
+    if score1 == maxScore { winners := winners + 1; winner := 1; }
+    if score2 == maxScore { winners := winners + 1; winner := 2; }
+
+    if winners > 1 {
+        result := "Draw";
+    } else {
+        match winner {
+            case 0 => result := "Kuro";
+            case 1 => result := "Shiro"; 
+            case 2 => result := "Katie";
+            case _ => result := "Draw";
+        }
+    }
+}

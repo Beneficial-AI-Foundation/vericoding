@@ -1,0 +1,48 @@
+Given n hotels at distinct integer coordinates on a number line, find the number of positions 
+where a new hotel can be built such that the minimum distance from the new hotel to any 
+existing hotel is exactly d.
+
+predicate ValidInput(n: int, d: int, hotels: seq<int>)
+{
+    n > 0 && d > 0 && |hotels| == n &&
+    (forall i :: 0 <= i < n - 1 ==> hotels[i] < hotels[i + 1])
+}
+
+function SumContributions(hotels: seq<int>, d: int, i: int): int
+    requires 0 <= i <= |hotels| - 1
+    requires d > 0
+    requires forall j :: 0 <= j < |hotels| - 1 ==> hotels[j] < hotels[j + 1]
+{
+    if i == 0 then 0
+    else
+        var gap := hotels[i] - hotels[i-1];
+        var contribution := if gap == 2*d then 1 else if gap > 2*d then 2 else 0;
+        contribution + SumContributions(hotels, d, i-1)
+}
+
+predicate CorrectResult(n: int, d: int, hotels: seq<int>, result: int)
+    requires ValidInput(n, d, hotels)
+{
+    result == 2 + SumContributions(hotels, d, n-1) && result >= 2
+}
+
+method solve(n: int, d: int, hotels: seq<int>) returns (result: int)
+    requires ValidInput(n, d, hotels)
+    ensures CorrectResult(n, d, hotels, result)
+{
+    var ans := 2;
+    var i := 1;
+    while i < n
+        invariant 1 <= i <= n
+        invariant ans == 2 + SumContributions(hotels, d, i-1)
+    {
+        var dx := hotels[i] - hotels[i - 1];
+        if dx == 2 * d {
+            ans := ans + 1;
+        } else if dx > 2 * d {
+            ans := ans + 2;
+        }
+        i := i + 1;
+    }
+    result := ans;
+}

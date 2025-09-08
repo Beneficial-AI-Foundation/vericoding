@@ -1,0 +1,73 @@
+Given n tasks numbered 1 to n and parameter k, find the starting task that minimizes
+total "telling off power" when Dima performs tasks in circular order and Inna
+interrupts every k tasks (1st, (k+1)th, (2k+1)th, etc.).
+
+predicate ValidInput(n: int, k: int, powers: seq<int>)
+{
+    n > 0 && k > 0 && k <= n && n % k == 0 && |powers| == n
+}
+
+predicate IsOptimalStartingTask(result: int, n: int, k: int, powers: seq<int>)
+    requires ValidInput(n, k, powers)
+{
+    1 <= result <= k
+}
+
+function sum_starting_at(powers: seq<int>, start: int, n: int, k: int): int
+    requires 0 <= start
+    requires k > 0
+    requires |powers| == n
+    requires n > 0
+    decreases n - start
+{
+    if start >= n then 0
+    else powers[start] + sum_starting_at(powers, start + k, n, k)
+}
+
+function min_element(L: seq<int>): int
+    requires |L| > 0
+    decreases |L|
+{
+    if |L| == 1 then L[0]
+    else if L[0] <= min_element(L[1..]) then L[0]
+    else min_element(L[1..])
+}
+
+method solve(n: int, k: int, powers: seq<int>) returns (result: int)
+    requires ValidInput(n, k, powers)
+    ensures IsOptimalStartingTask(result, n, k, powers)
+{
+    var L: seq<int> := [];
+    var i := 0;
+
+    while i < k
+        invariant 0 <= i <= k
+        invariant |L| == i
+        invariant forall j :: 0 <= j < i ==> L[j] == sum_starting_at(powers, j, n, k)
+    {
+        var s := sum_starting_at(powers, i, n, k);
+        L := L + [s];
+        i := i + 1;
+    }
+
+    var minVal := L[0];
+    var minIndex := 0;
+
+    if |L| > 1 {
+        i := 1;
+        while i < |L|
+            invariant 1 <= i <= |L|
+            invariant 0 <= minIndex < |L|
+            invariant minVal == L[minIndex]
+            invariant forall j :: 0 <= j < i ==> L[minIndex] <= L[j]
+        {
+            if L[i] < minVal {
+                minVal := L[i];
+                minIndex := i;
+            }
+            i := i + 1;
+        }
+    }
+
+    result := minIndex + 1;
+}

@@ -1,0 +1,85 @@
+vc-description: |-
+  Given n problems and two robots, determine the minimum possible maximum point value
+  needed to ensure the first robot scores strictly more points than the second robot.
+  Return -1 if the first robot cannot outperform the second robot.
+
+vc-preamble: |-
+  predicate ValidInput(n: int, r: seq<int>, b: seq<int>)
+  {
+      n > 0 && |r| == n && |b| == n &&
+      (forall i :: 0 <= i < n ==> r[i] == 0 || r[i] == 1) &&
+      (forall i :: 0 <= i < n ==> b[i] == 0 || b[i] == 1)
+  }
+  
+  function RobotAdvantageCount(n: int, r: seq<int>, b: seq<int>): int
+      requires ValidInput(n, r, b)
+  {
+      |set i | 0 <= i < n && r[i] == 1 && b[i] == 0|
+  }
+  
+  function OpponentAdvantageCount(n: int, r: seq<int>, b: seq<int>): int
+      requires ValidInput(n, r, b)
+  {
+      |set i | 0 <= i < n && r[i] == 0 && b[i] == 1|
+  }
+  
+  predicate CanWin(n: int, r: seq<int>, b: seq<int>)
+      requires ValidInput(n, r, b)
+  {
+      RobotAdvantageCount(n, r, b) > 0
+  }
+  
+  function MinMaxPointValue(n: int, r: seq<int>, b: seq<int>): int
+      requires ValidInput(n, r, b)
+      requires CanWin(n, r, b)
+  {
+      OpponentAdvantageCount(n, r, b) / RobotAdvantageCount(n, r, b) + 1
+  }
+
+vc-helpers: |-
+  
+
+vc-spec: |-
+  method solve(n: int, r: seq<int>, b: seq<int>) returns (result: int)
+      requires ValidInput(n, r, b)
+      ensures if CanWin(n, r, b) then result == MinMaxPointValue(n, r, b) else result == -1
+
+vc-code: |-
+  {
+      var a := 0;
+      var bb := 0;
+      var i := 0;
+      while i < n
+          invariant 0 <= i <= n
+          invariant a == |set j | 0 <= j < i && r[j] == 1 && b[j] == 0|
+          invariant bb == |set j | 0 <= j < i && r[j] == 0 && b[j] == 1|
+      {
+          var old_a := a;
+          var old_bb := bb;
+  
+          if r[i] == 1 && b[i] == 0 {
+              a := a + 1;
+          }
+          if r[i] == 0 && b[i] == 1 {
+              bb := bb + 1;
+          }
+  
+          ghost var set_a_old := set j | 0 <= j < i && r[j] == 1 && b[j] == 0;
+          ghost var set_a_new := set j | 0 <= j < i + 1 && r[j] == 1 && b[j] == 0;
+          ghost var set_bb_old := set j | 0 <= j < i && r[j] == 0 && b[j] == 1;
+          ghost var set_bb_new := set j | 0 <= j < i + 1 && r[j] == 0 && b[j] == 1;
+  
+          assert set_a_new == set_a_old + (if r[i] == 1 && b[i] == 0 then {i} else {});
+          assert set_bb_new == set_bb_old + (if r[i] == 0 && b[i] == 1 then {i} else {});
+  
+          i := i + 1;
+      }
+  
+      if a == 0 {
+          result := -1;
+      } else {
+          result := bb / a + 1;
+      }
+  }
+
+vc-postamble: |-

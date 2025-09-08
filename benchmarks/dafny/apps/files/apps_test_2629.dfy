@@ -1,0 +1,128 @@
+Given a positive integer n, create an n×n matrix filled with integers from 1 to n² 
+arranged in clockwise spiral order, starting from the top-left corner.
+
+function min(a: int, b: int): int
+{
+  if a <= b then a else b
+}
+
+function SpiralOrder(row: int, col: int, n: int): int
+  requires 0 <= row < n && 0 <= col < n && n >= 1
+  decreases n - 2 * min(min(row, col), min(n-1-row, n-1-col)) - 1
+{
+  var layer := min(min(row, col), min(n-1-row, n-1-col));
+  var layerStart := 4 * layer * (n - layer - 1) + layer;
+
+  if row == layer then
+    // Top row of current layer
+    layerStart + (col - layer)
+  else if col == n - 1 - layer then
+    // Right column of current layer
+    layerStart + (n - 2 * layer - 1) + (row - layer)
+  else if row == n - 1 - layer then
+    // Bottom row of current layer
+    layerStart + 2 * (n - 2 * layer - 1) + (n - 1 - layer - col)
+  else
+    // Left column of current layer
+    layerStart + 3 * (n - 2 * layer - 1) + (n - 1 - layer - row)
+}
+
+predicate ValidInput(n: int)
+{
+  n >= 1
+}
+
+predicate ValidSpiralMatrix(matrix: array2<int>, n: int)
+  reads matrix
+{
+  matrix.Length0 == n && matrix.Length1 == n &&
+  (forall i, j :: 0 <= i < n && 0 <= j < n ==> matrix[i, j] == SpiralOrder(i, j, n) + 1)
+}
+
+method generateMatrix(n: int) returns (matrix: array2<int>)
+  requires ValidInput(n)
+  ensures ValidSpiralMatrix(matrix, n)
+  ensures matrix.Length0 == n && matrix.Length1 == n
+  ensures forall i, j :: 0 <= i < n && 0 <= j < n ==> 1 <= matrix[i, j] <= n * n
+  ensures forall v :: 1 <= v <= n * n ==> exists i, j :: 0 <= i < n && 0 <= j < n && matrix[i, j] == v
+{
+  matrix := new int[n, n];
+
+  var left := 0;
+  var right := n - 1;
+  var up := 0;
+  var bottom := n - 1;
+  var count := 1;
+
+  while left <= right && up <= bottom
+    invariant 0 <= left <= right + 1 <= n
+    invariant 0 <= up <= bottom + 1 <= n
+    invariant 1 <= count <= n * n + 1
+    invariant count == 1 + 4 * ((n - right - 1) + (n - bottom - 1)) - 4 * ((n - right - 1) * (n - bottom - 1)) / n
+    decreases (right - left + 1) + (bottom - up + 1)
+  {
+    // Fill top row from left to right
+    var i := left;
+    while i <= right && up < n
+      invariant left <= i <= right + 1
+      invariant 1 <= count <= n * n + 1
+      invariant up < n
+    {
+      if up < n && i < n {
+        matrix[up, i] := count;
+        count := count + 1;
+      }
+      i := i + 1;
+    }
+    up := up + 1;
+
+    // Fill right column from up to bottom
+    i := up;
+    while i <= bottom && right >= 0
+      invariant up <= i <= bottom + 1
+      invariant 1 <= count <= n * n + 1
+      invariant right >= 0 && right < n
+    {
+      if i < n && right < n {
+        matrix[i, right] := count;
+        count := count + 1;
+      }
+      i := i + 1;
+    }
+    right := right - 1;
+
+    // Fill bottom row from right to left (if we still have rows)
+    if up <= bottom && bottom >= 0 {
+      i := right;
+      while i >= left
+        invariant left - 1 <= i <= right
+        invariant 1 <= count <= n * n + 1
+        invariant bottom >= 0 && bottom < n
+      {
+        if bottom < n && i >= 0 && i < n {
+          matrix[bottom, i] := count;
+          count := count + 1;
+        }
+        i := i - 1;
+      }
+      bottom := bottom - 1;
+    }
+
+    // Fill left column from bottom to up (if we still have columns)
+    if left <= right && left >= 0 {
+      i := bottom;
+      while i >= up
+        invariant up - 1 <= i <= bottom
+        invariant 1 <= count <= n * n + 1
+        invariant left >= 0 && left < n
+      {
+        if i >= 0 && i < n && left < n {
+          matrix[i, left] := count;
+          count := count + 1;
+        }
+        i := i - 1;
+      }
+      left := left + 1;
+    }
+  }
+}

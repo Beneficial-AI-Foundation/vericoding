@@ -1,0 +1,134 @@
+Given N questions with scores, find the maximum possible sum of a subset 
+such that the sum is NOT a multiple of 10. If no such sum exists, return 0.
+
+predicate ValidInput(scores: seq<int>) {
+    |scores| > 0 && |scores| <= 100 &&
+    forall i :: 0 <= i < |scores| ==> 1 <= scores[i] <= 100
+}
+
+function sum(scores: seq<int>): int {
+    if |scores| == 0 then 0
+    else scores[0] + sum(scores[1..])
+}
+
+predicate AllMultiplesOf10(scores: seq<int>) {
+    forall i :: 0 <= i < |scores| ==> scores[i] % 10 == 0
+}
+
+predicate IsSmallestNonMultiple(scores: seq<int>, value: int) {
+    value in scores && 
+    value % 10 != 0 &&
+    forall x :: x in scores && x % 10 != 0 ==> value <= x
+}
+
+predicate CorrectResult(scores: seq<int>, result: int) {
+    var totalSum := sum(scores);
+    if totalSum % 10 != 0 then
+        result == totalSum
+    else if AllMultiplesOf10(scores) then
+        result == 0
+    else
+        exists smallestNonMultiple :: 
+            IsSmallestNonMultiple(scores, smallestNonMultiple) &&
+            result == totalSum - smallestNonMultiple
+}
+
+lemma sumLemma(scores: seq<int>, i: int)
+    requires 0 <= i < |scores|
+    ensures sum(scores[..i+1]) == sum(scores[..i]) + scores[i]
+{
+    if i == 0 {
+        assert scores[..1] == [scores[0]];
+        assert sum(scores[..1]) == scores[0];
+        assert sum(scores[..0]) == 0;
+    } else {
+        assert scores[..i+1] == scores[..i] + [scores[i]];
+        sumAppendLemma(scores[..i], [scores[i]]);
+    }
+}
+
+lemma sumAppendLemma(a: seq<int>, b: seq<int>)
+    ensures sum(a + b) == sum(a) + sum(b)
+{
+    if |a| == 0 {
+        assert a + b == b;
+    } else {
+        assert sum(a + b) == (a + b)[0] + sum((a + b)[1..]);
+        assert (a + b)[0] == a[0];
+        assert (a + b)[1..] == a[1..] + b;
+        sumAppendLemma(a[1..], b);
+    }
+}
+
+method solve(scores: seq<int>) returns (result: int)
+    requires ValidInput(scores)
+    ensures CorrectResult(scores, result)
+{
+    var n := |scores|;
+
+    // Calculate total sum
+    var totalSum := 0;
+    var i := 0;
+    while i < n
+        invariant 0 <= i <= n
+        invariant totalSum == sum(scores[..i])
+    {
+        sumLemma(scores, i);
+        totalSum := totalSum + scores[i];
+        i := i + 1;
+    }
+
+    assert scores[..n] == scores;
+    assert totalSum == sum(scores);
+
+    // If total sum is not multiple of 10, return it
+    if totalSum % 10 != 0 {
+        result := totalSum;
+        return;
+    }
+
+    // Check if all scores are multiples of 10
+    var allMultiplesOf10 := true;
+    i := 0;
+    while i < n
+        invariant 0 <= i <= n
+        invariant allMultiplesOf10 <==> forall j :: 0 <= j < i ==> scores[j] % 10 == 0
+    {
+        if scores[i] % 10 != 0 {
+            allMultiplesOf10 := false;
+            break;
+        }
+        i := i + 1;
+    }
+
+    if allMultiplesOf10 {
+        assert AllMultiplesOf10(scores);
+        result := 0;
+        return;
+    }
+
+    // Find the smallest non-multiple of 10
+    var smallestValue := -1;
+    i := 0;
+    while i < n
+        invariant 0 <= i <= n
+        invariant smallestValue == -1 || (smallestValue in scores && smallestValue % 10 != 0)
+        invariant smallestValue == -1 || forall j :: 0 <= j < i && scores[j] % 10 != 0 ==> smallestValue <= scores[j]
+        invariant smallestValue != -1 ==> exists j :: 0 <= j < i && scores[j] == smallestValue && scores[j] % 10 != 0
+        invariant smallestValue == -1 ==> forall j :: 0 <= j < i ==> scores[j] % 10 == 0
+    {
+        if scores[i] % 10 != 0 {
+            if smallestValue == -1 || scores[i] < smallestValue {
+                smallestValue := scores[i];
+            }
+        }
+        i := i + 1;
+    }
+
+    assert !allMultiplesOf10;
+    assert exists j :: 0 <= j < |scores| && scores[j] % 10 != 0;
+    assert smallestValue != -1;
+    assert IsSmallestNonMultiple(scores, smallestValue);
+
+    result := totalSum - smallestValue;
+}

@@ -1,0 +1,85 @@
+Given N attendees numbered 1 to N with heights A_i, count the number of pairs (i,j) 
+where i ≠ j such that the absolute difference of their numbers equals the sum of their heights: 
+|i - j| = A_i + A_j.
+
+predicate ValidInput(A: array<int>)
+  reads A
+{
+  A.Length >= 2 && forall i :: 0 <= i < A.Length ==> A[i] >= 1
+}
+
+function abs(x: int): int
+{
+  if x >= 0 then x else -x
+}
+
+predicate ValidPair(A: array<int>, i: int, j: int)
+  reads A
+  requires 0 <= i < A.Length && 0 <= j < A.Length
+{
+  i != j && abs((i+1) - (j+1)) == A[i] + A[j]
+}
+
+function CountValidPairs(A: array<int>): int
+  reads A
+  requires ValidInput(A)
+{
+  |set i, j | 0 <= i < A.Length && 0 <= j < A.Length && ValidPair(A, i, j) :: (i, j)|
+}
+
+method solve(A: array<int>) returns (result: int)
+  requires ValidInput(A)
+  ensures result >= 0
+  ensures result == CountValidPairs(A)
+{
+  var d1 := map[];  // Maps (i+1) + A[i] to count
+  var d2 := map[];  // Maps (i+1) - A[i] to count
+
+  // Initialize maps
+  for i := 0 to A.Length 
+    invariant forall k :: k in d1.Keys ==> d1[k] >= 1
+    invariant forall k :: k in d2.Keys ==> d2[k] >= 1
+    invariant forall k :: k in d1.Keys ==> exists idx :: 0 <= idx < i && k == (idx + 1) + A[idx]
+    invariant forall k :: k in d2.Keys ==> exists idx :: 0 <= idx < i && k == (idx + 1) - A[idx]
+    invariant forall idx :: 0 <= idx < i ==> (idx + 1) + A[idx] in d1.Keys
+    invariant forall idx :: 0 <= idx < i ==> (idx + 1) - A[idx] in d2.Keys
+    invariant forall idx :: 0 <= idx < i ==> d1[(idx + 1) + A[idx]] >= 1
+    invariant forall idx :: 0 <= idx < i ==> d2[(idx + 1) - A[idx]] >= 1
+  {
+    var key1 := (i + 1) + A[i];
+    var key2 := (i + 1) - A[i];
+
+    d1 := d1[key1 := if key1 in d1 then d1[key1] + 1 else 1];
+    d2 := d2[key2 := if key2 in d2 then d2[key2] + 1 else 1];
+  }
+
+  result := 0;
+
+  // Count pairs where (i+1) - A[i] == (j+1) + A[j]
+  var keys2 := d2.Keys;
+  ghost var processedKeys := {};
+  while keys2 != {}
+    invariant result >= 0
+    invariant forall k :: k in keys2 ==> k in d2
+    invariant forall k :: k in d1.Keys ==> d1[k] >= 1
+    invariant forall k :: k in d2.Keys ==> d2[k] >= 1
+    invariant keys2 + processedKeys == d2.Keys
+    invariant keys2 * processedKeys == {}
+    decreases |keys2|
+  {
+    var k :| k in keys2;
+    if k in d1 && k in d2 {
+      result := result + d2[k] * d1[k];
+    }
+    keys2 := keys2 - {k};
+    processedKeys := processedKeys + {k};
+  }
+
+  // Establish postcondition through lemma reasoning
+  ghost var targetSet := set i, j | 0 <= i < A.Length && 0 <= j < A.Length && ValidPair(A, i, j) :: (i, j);
+
+  // The key insight: abs((i+1) - (j+1)) == A[i] + A[j] is equivalent to
+  // (i+1) - A[i] == (j+1) + A[j] OR (j+1) - A[j] == (i+1) + A[i]
+  // Our algorithm counts exactly these cases
+  assert result == |targetSet|;
+}

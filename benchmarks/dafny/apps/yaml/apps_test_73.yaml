@@ -1,0 +1,52 @@
+vc-description: |-
+  Calculate the minimum number of days needed to finish reading a book with c pages.
+  Day 1: Read min(v_1, v_0) pages. Day n (n >= 2): Go back l pages, then read min(v_1, v_0 + (n-1) * a) pages total.
+  The book is finished when the last page is read for the first time.
+
+vc-preamble: |-
+  function computePosition(days: int, v0: int, v1: int, a: int, l: int): int
+      requires days >= 0
+      requires v0 >= 0 && v1 >= v0 && a >= 0 && l >= 0
+      decreases days
+  {
+      if days == 0 then 0
+      else
+          var prevPos := computePosition(days - 1, v0, v1, a, l);
+          var afterReread := if prevPos - l > 0 then prevPos - l else 0;
+          var readToday := if v1 < v0 + a * (days - 1) then v1 else v0 + a * (days - 1);
+          afterReread + readToday
+  }
+
+vc-helpers: |-
+  
+
+vc-spec: |-
+  method solve(c: int, v0: int, v1: int, a: int, l: int) returns (result: int)
+      requires 1 <= c <= 1000
+      requires 0 <= l < v0 <= v1 <= 1000
+      requires 0 <= a <= 1000
+      ensures result >= 1
+      ensures computePosition(result, v0, v1, a, l) >= c
+      ensures forall days :: 1 <= days < result ==> computePosition(days, v0, v1, a, l) < c
+
+vc-code: |-
+  {
+      var cur := 0;
+      var cnt := 0;
+  
+      while cur < c
+          invariant cnt >= 0
+          invariant cur >= 0
+          invariant cur == computePosition(cnt, v0, v1, a, l)
+          invariant forall days :: 1 <= days < cnt ==> computePosition(days, v0, v1, a, l) < c
+          decreases c - cur + 1
+      {
+          cur := if cur - l > 0 then cur - l else 0;
+          cur := cur + (if v1 < v0 + a * cnt then v1 else v0 + a * cnt);
+          cnt := cnt + 1;
+      }
+  
+      result := cnt;
+  }
+
+vc-postamble: |-

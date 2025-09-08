@@ -1,0 +1,127 @@
+Given three candy packs with a, b, and c candies respectively, determine if it's possible 
+to distribute these packs between two students such that each receives the same total number 
+of candies. Each pack must be given entirely to one student.
+
+predicate ValidInputFormat(input: string)
+{
+    |input| > 0 && 
+    var nums := ExtractNumbers(input, 0, [], "");
+    |nums| >= 3 && 
+    (forall i :: 0 <= i < 3 ==> 1 <= nums[i] <= 100)
+}
+
+function ParseThreeIntsFunc(input: string): (int, int, int)
+    requires |input| > 0
+    requires ValidInputFormat(input)
+    ensures ParseThreeIntsFunc(input).0 >= 1 && ParseThreeIntsFunc(input).1 >= 1 && ParseThreeIntsFunc(input).2 >= 1
+    ensures ParseThreeIntsFunc(input).0 <= 100 && ParseThreeIntsFunc(input).1 <= 100 && ParseThreeIntsFunc(input).2 <= 100
+{
+    var nums := ExtractNumbers(input, 0, [], "");
+    (nums[0], nums[1], nums[2])
+}
+
+predicate CanDistributeEqually(a: int, b: int, c: int)
+{
+    a + b == c || b + c == a || c + a == b
+}
+
+function ExtractNumbers(input: string, pos: int, nums: seq<int>, current: string): seq<int>
+    requires 0 <= pos <= |input|
+    requires forall i :: 0 <= i < |current| ==> '0' <= current[i] <= '9'
+    requires forall i :: 0 <= i < |nums| ==> nums[i] >= 0
+    ensures |ExtractNumbers(input, pos, nums, current)| >= |nums|
+    ensures forall i :: 0 <= i < |ExtractNumbers(input, pos, nums, current)| ==> ExtractNumbers(input, pos, nums, current)[i] >= 0
+    decreases |input| - pos
+{
+    if pos >= |input| then
+        if |current| > 0 && forall i :: 0 <= i < |current| ==> '0' <= current[i] <= '9'
+        then 
+            assert StringToIntFunc(current) >= 0;
+            nums + [StringToIntFunc(current)]
+        else nums
+    else if input[pos] == ' ' || input[pos] == '\n' || input[pos] == '\t' then
+        if |current| > 0 && forall i :: 0 <= i < |current| ==> '0' <= current[i] <= '9'
+        then 
+            assert StringToIntFunc(current) >= 0;
+            ExtractNumbers(input, pos + 1, nums + [StringToIntFunc(current)], "")
+        else ExtractNumbers(input, pos + 1, nums, "")
+    else if '0' <= input[pos] <= '9' then
+        ExtractNumbers(input, pos + 1, nums, current + [input[pos]])
+    else
+        ExtractNumbers(input, pos + 1, nums, current)
+}
+
+function StringToIntFunc(s: string): int
+    requires |s| > 0
+    requires forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'
+    ensures StringToIntFunc(s) >= 0
+{
+    if |s| == 0 then 0
+    else StringToIntHelper(s, 0)
+}
+
+function StringToIntHelper(s: string, acc: int): int
+    requires acc >= 0
+    requires forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'
+    ensures StringToIntHelper(s, acc) >= acc
+{
+    if |s| == 0 then acc
+    else StringToIntHelper(s[1..], acc * 10 + CharToDigit(s[0]))
+}
+
+function CharToDigit(c: char): int
+    requires '0' <= c <= '9'
+    ensures 0 <= CharToDigit(c) <= 9
+    ensures CharToDigit(c) == c as int - '0' as int
+{
+    if c == '0' then 0
+    else if c == '1' then 1
+    else if c == '2' then 2
+    else if c == '3' then 3
+    else if c == '4' then 4
+    else if c == '5' then 5
+    else if c == '6' then 6
+    else if c == '7' then 7
+    else if c == '8' then 8
+    else if c == '9' then 9
+    else 0
+}
+
+method ParseThreeInts(input: string) returns (result: (int, int, int))
+    requires |input| > 0
+    requires ValidInputFormat(input)
+    ensures result.0 >= 1 && result.1 >= 1 && result.2 >= 1
+    ensures result.0 <= 100 && result.1 <= 100 && result.2 <= 100
+    ensures result == ParseThreeIntsFunc(input)
+{
+    var nums := ExtractNumbers(input, 0, [], "");
+    assert ValidInputFormat(input);
+    assert |nums| >= 3;
+    assert forall i :: 0 <= i < 3 ==> 1 <= nums[i] <= 100;
+    result := (nums[0], nums[1], nums[2]);
+}
+
+method solve(input: string) returns (result: string)
+    requires |input| > 0
+    requires ValidInputFormat(input)
+    ensures result == "Yes\n" || result == "No\n"
+    ensures var numbers := ParseThreeIntsFunc(input);
+            var a := numbers.0;
+            var b := numbers.1; 
+            var c := numbers.2;
+            result == "Yes\n" <==> CanDistributeEqually(a, b, c)
+    ensures var numbers := ParseThreeIntsFunc(input);
+            numbers.0 >= 1 && numbers.1 >= 1 && numbers.2 >= 1 &&
+            numbers.0 <= 100 && numbers.1 <= 100 && numbers.2 <= 100
+{
+    var numbers := ParseThreeInts(input);
+    var a := numbers.0;
+    var b := numbers.1;
+    var c := numbers.2;
+
+    if CanDistributeEqually(a, b, c) {
+        result := "Yes\n";
+    } else {
+        result := "No\n";
+    }
+}
