@@ -1,0 +1,112 @@
+vc-description: |-
+  /-
+  Implement a function which 
+  creates a **[radix tree](https://en.wikipedia.org/wiki/Radix_tree)** (a space-optimized trie [prefix tree]) 
+  in which each node that is the only child is merged with its parent [unless a word from the input ends there]) 
+  from a given list of words 
+  using dictionaries (aka hash maps or hash tables) where:
+  
+  1. The dictionary keys are the nodes.
+  2. Leaf nodes are empty dictionaries.
+  3. The value for empty input is an empty dictionary.
+  4. Words are all lowercase or empty strings.
+  5. Words can contain duplicates.
+  
+  ### Examples:
+  
+  ```python
+  >>> radix_tree()
+  {}
+  
+  >>> radix_tree("")
+  {}
+  
+  >>> radix_tree("", "")
+  {}
+  
+  >>> radix_tree("radix", "tree")
+  {"radix": {}, "tree": {}}
+  
+  >>> radix_tree("ape", "apple")
+  {"ap": {"e": {}, "ple": {}}}
+  
+  >>> radix_tree("apple", "applet", "apple", "ape")
+  {"ap": {"ple": {"t": {}}, "e": {}}}
+  
+  >>> radix_tree("romane", "romanus", "romulus", "rubens", "rubicon", "rubicundus")
+  {"r": {"om": {"an": {"e": {}, "us": {}}, "ulus": {}},
+         "ub": {"ens": {}, "ic": {"on": {}, "undus": {}}}}}
+  
+  >>> radix_tree("appleabcd", "apple")
+  {"apple": {"abcd": {}}}
+  ```
+  -/
+
+vc-preamble: |-
+  def radix_tree (words: List String) : NodeMap :=
+    sorry
+  
+  def reconstruct_word (t: NodeMap) : String :=
+    sorry
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def get_all_prefixes (t: NodeMap) : List String :=
+    sorry
+
+vc-theorems: |-
+  theorem radix_tree_empty_input :  
+    ∀ (words: List String), 
+    (∀ w ∈ words, w = "") → 
+    radix_tree words = NodeMap.leaf :=
+  sorry
+  
+  theorem radix_tree_deterministic :
+    ∀ (words: List String),
+    radix_tree words = radix_tree words :=
+  sorry 
+  
+  theorem radix_tree_order_independent :
+    ∀ (words₁ words₂: List String),
+    words₁.length = words₂.length →
+    (∀ w, w ∈ words₁ ↔ w ∈ words₂) →
+    radix_tree words₁ = radix_tree words₂ :=
+  sorry
+  
+  theorem radix_tree_single_word :
+    ∀ (w: String),
+    w ≠ "" →
+    reconstruct_word (radix_tree [w]) = w :=
+  sorry
+  
+  theorem radix_tree_prefixes_shared :
+    ∀ (words: List String) (p: String),
+    p ∈ get_all_prefixes (radix_tree words) →
+    ∃ w₁ w₂, w₁ ∈ words ∧ w₂ ∈ words ∧ w₁ ≠ w₂ :=
+  sorry
+  
+  /-
+  info: {}
+  -/
+  -- #guard_msgs in
+  -- #eval radix_tree ""
+  
+  /-
+  info: {'ap': {'e': {}, 'ple': {}}}
+  -/
+  -- #guard_msgs in
+  -- #eval radix_tree "ape" "apple"
+  
+  /-
+  info: {'rom': {'an': {'e': {}, 'us': {}}, 'ulus': {}}}
+  -/
+  -- #guard_msgs in
+  -- #eval radix_tree "romane" "romanus" "romulus"
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

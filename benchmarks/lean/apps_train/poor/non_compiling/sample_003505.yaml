@@ -1,0 +1,69 @@
+vc-description: |-
+  /-
+  Description:
+  
+  The mean (or average) is the most popular measure of central tendency; however it does not behave very well when the data is skewed (i.e. wages distribution). In such cases, it's better to use the median.
+  
+  Your task for this kata is to find the median of an array consisting of n elements.
+  
+  You can assume that all inputs are arrays of numbers in integer format. For the empty array your code should return `NaN` (false in JavaScript/`NULL` in PHP/`nil` in Ruby).
+  
+  Examples:
+  
+  Input `[1, 2, 3, 4]` --> Median `2.5`
+  
+  Input `[3, 4, 1, 2, 5]` --> Median `3`
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def median (lst: List Int) : Float := sorry
+  
+  namespace MedianTheorems
+
+vc-theorems: |-
+  theorem median_nonempty_returns_number (lst: List Int) (h: lst ≠ []) : 
+    let result := median lst
+    ∃ n: Float, result = n := sorry
+  
+  theorem median_empty_is_nan : 
+    let result := median []
+    Float.isNaN result := sorry
+  
+  theorem median_same_elements {lst: List Int} (h: lst ≠ []) 
+    (head: lst.head? = some (lst.head!)) :
+    (∀ x ∈ lst, x = lst.head!) → 
+    median lst = Float.ofInt lst.head! := sorry
+  
+  theorem median_sort_invariant {lst: List Int} (h: lst ≠ []) :
+    median lst = median (List.mergeSort (· ≤ ·) lst) := sorry
+  
+  end MedianTheorems
+  
+  /-
+  info: 2.5
+  -/
+  -- #guard_msgs in
+  -- #eval median [1, 2, 3, 4]
+  
+  /-
+  info: 3
+  -/
+  -- #guard_msgs in
+  -- #eval median [3, 4, 1, 2, 5]
+  
+  /-
+  info: 1
+  -/
+  -- #guard_msgs in
+  -- #eval median [1]
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

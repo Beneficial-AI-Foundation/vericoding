@@ -1,0 +1,117 @@
+vc-description: |-
+  /-
+  Daenerys Targaryen has been suggested by her counselors to leave the Meereen and start conquering other parts of the world. But she knows giving up on the people of Meereen means victory of slavery. Her plan is to start conquering rest of the world while she remains in Meereen. She can only trust her bravest and most beloved Daario Naharis to undertake this risk. She asks him to conquer a few nations and promises him a help from her dragons. She also promises to marry him if he successfully conquers all the nations and not if he is defeated.
+  Daario has to conquer 'N' number of nations each nation with army size A[i]. He attacks the nations serially. As promised, he gets help from Daenerys's Dragons. His first 'M' attacks are made with the help of Dragons.
+  
+  For first 'M' attacks, he gains A[i] soldiers.
+  
+  For the rest, he looses ceiling of A[i]/2 soldiers.
+  
+  He is defeated if he is left with no army before he conquers all the 'N' nations. He has no army initially and only has Dragons.
+  
+  -----Input-----
+  First line has 'T' which is the number of test cases.
+  For each test cases there are two space separated integers 'N' and 'M' denoting the number of nations and the number of nations he has Dragon's help for respectively.
+  Follows N space separated integers denoting the size of army of each nation.
+  
+  -----Output-----
+  Print 'VICTORY' if Daario conquers all nations and 'DEFEAT' if he doesn't.  
+  
+  -----Constraints-----
+  - 1 ≤ T ≤ 500
+  - 1 ≤ M ≤N ≤ 100000
+  - 1 ≤ A[i] ≤ 100000
+  
+  -----Example-----
+  Input:
+  
+  3
+  5 3
+  1 2 3 4 5
+  6 2
+  4 4 4 4 4 4
+  7 4 
+  10 10 10 10 50 60 70
+  Output:
+  
+  VICTORY
+  VICTORY
+  DEFEAT 
+  
+  -----Explanation-----
+  Example case 1.
+  
+  First 3 attacks add 1,2,3 to his army making it 6. (1+2+3 = 6)
+  
+  Then he looses 2 and 3 making it 1. (6-2-3 = 1)
+  
+  He conquers all so VICTORY.
+  
+  Example case 2.
+  
+  First 2 attacks add 4,4 to his army making it 8. (4+4 = 8)
+  
+  Then he looses 2,2,2,2 making it 0. (8-2-2-2-2 = 0)
+  
+  He conquers all so VICTORY.
+  
+  Example case 3.
+  
+  First 4 attacks add 10,10,10,10 to his army making it 40. (10+10+10+10 = 40)
+  
+  Then he looses 25 and then all 15 out of possible 30 making it 0. (40-25-15 = 0)
+  
+  He is defeated on 6th attack so DEFEAT.
+  -/
+
+vc-preamble: |-
+  def List.sum : List Nat → Nat 
+  | [] => 0
+  | (x::xs) => x + sum xs
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def check_conquest (n m : Nat) (armies : List Nat) : BattleResult := sorry
+  
+  theorem check_conquest_valid_result (n m : Nat) (armies : List Nat) :
+    check_conquest n m armies = BattleResult.VICTORY ∨ 
+    check_conquest n m armies = BattleResult.DEFEAT := sorry
+
+vc-theorems: |-
+  theorem check_conquest_enough_armies (n m : Nat) (armies : List Nat) :
+    n ≤ m → check_conquest n m armies = BattleResult.VICTORY := sorry
+  
+  theorem check_conquest_insufficient_armies (n m : Nat) (armies : List Nat) :
+    n > m → (List.take m armies).sum ≤ 0 → 
+    check_conquest n m armies = BattleResult.DEFEAT := sorry
+  
+  theorem check_conquest_monotone (n m : Nat) (armies : List Nat) :
+    n > m →
+    check_conquest n m armies = BattleResult.VICTORY →
+    check_conquest n m (armies.map (· + 1)) = BattleResult.VICTORY := sorry
+  
+  /-
+  info: 'VICTORY'
+  -/
+  -- #guard_msgs in
+  -- #eval check_conquest 5 3 [1, 2, 3, 4, 5]
+  
+  /-
+  info: 'VICTORY'
+  -/
+  -- #guard_msgs in
+  -- #eval check_conquest 6 2 [4, 4, 4, 4, 4, 4]
+  
+  /-
+  info: 'DEFEAT'
+  -/
+  -- #guard_msgs in
+  -- #eval check_conquest 7 4 [10, 10, 10, 10, 50, 60, 70]
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+

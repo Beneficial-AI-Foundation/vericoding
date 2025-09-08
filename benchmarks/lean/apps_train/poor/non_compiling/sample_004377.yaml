@@ -1,0 +1,89 @@
+vc-description: |-
+  /-
+  ---
+  
+  # Story
+  
+  The Pied Piper has been enlisted to play his magical tune and coax all the rats out of town.
+  
+  But some of the rats are deaf and are going the wrong way!
+  
+  # Kata Task
+  
+  How many deaf rats are there?
+  
+  # Legend
+  
+  * ```P``` = The Pied Piper
+  * ```O~``` = Rat going left
+  * ```~O``` = Rat going right
+  
+  # Example
+  
+  * ex1 ```~O~O~O~O P``` has 0 deaf rats
+  
+  * ex2 ```P O~ O~ ~O O~``` has 1 deaf rat
+  
+  * ex3 ```~O~O~O~OP~O~OO~``` has 2 deaf rats
+  
+  ---
+  
+  # Series
+  
+  * [The deaf rats of Hamelin (2D)](https://www.codewars.com/kata/the-deaf-rats-of-hamelin-2d)
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def Town := String
+  def countDeafRats (t : Town) : Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem non_negative_count : ∀ (t : Town),
+    countDeafRats t ≥ 0 :=
+    sorry
+  
+  theorem count_below_total : ∀ (t : Town) (n : Nat),
+    countDeafRats t ≤ n :=
+    sorry
+  
+  theorem spaces_dont_matter : ∀ (t1 t2 : Town),
+    countDeafRats t1 = countDeafRats t2 :=
+    sorry
+  
+  theorem single_rat_direction : ∀ (t : Town) (r : RatPair),
+    countDeafRats t ≤ 1 :=
+    sorry
+  
+  theorem empty_town_count :  
+    countDeafRats "P" = 0 :=
+    sorry
+  
+  /-
+  info: 0
+  -/
+  -- #guard_msgs in
+  -- #eval count_deaf_rats "~O~O~O~O P"
+  
+  /-
+  info: 1
+  -/
+  -- #guard_msgs in
+  -- #eval count_deaf_rats "P O~ O~ ~O O~"
+  
+  /-
+  info: 2
+  -/
+  -- #guard_msgs in
+  -- #eval count_deaf_rats "~O~O~O~OP~O~OO~"
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+

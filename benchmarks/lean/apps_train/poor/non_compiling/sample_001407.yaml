@@ -1,0 +1,71 @@
+vc-description: |-
+  /-
+  Chef has recently been playing a lot of chess in preparation for the ICCT (International Chef Chess Tournament).
+  Since putting in long hours is not an easy task, Chef's mind wanders elsewhere. He starts counting the number of squares with odd side length on his chessboard..
+  However, Chef is not satisfied. He wants to know the number of squares of odd side length on a generic $N*N$ chessboard.
+  
+  -----Input:-----
+  - The first line will contain a single integer $T$, the number of test cases.
+  - The next $T$ lines will have a single integer $N$, the size of the chess board.
+  
+  -----Output:-----
+  For each test case, print a integer denoting the number of squares with odd length.
+  
+  -----Constraints-----
+  - $1 \leq T \leq 100$
+  - $1 \leq N \leq 1000$
+  
+  -----Sample Input:-----
+  2
+  3
+  8
+  
+  -----Sample Output:-----
+  10
+  120
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def count_odd_squares (n : Int) : Int := sorry
+  
+  theorem count_odd_squares_positive (n : Int) : 
+    n > 0 → count_odd_squares n > 0 := sorry
+
+vc-theorems: |-
+  theorem count_odd_squares_odd_numbers (n : Int) (hn : n > 0) :
+    n % 2 = 1 → count_odd_squares n = Nat.sum (List.filter (fun i => i % 2 = 1) (List.range (n.toNat))) := sorry
+  
+  theorem count_odd_squares_monotonic (n : Int) :
+    n > 1 → count_odd_squares n > count_odd_squares (n-1) := sorry
+  
+  theorem count_odd_squares_nonpositive (n : Int) :
+    n ≤ 0 → count_odd_squares n = 0 := sorry
+  
+  /-
+  info: 10
+  -/
+  -- #guard_msgs in
+  -- #eval count_odd_squares 3
+  
+  /-
+  info: 120
+  -/
+  -- #guard_msgs in
+  -- #eval count_odd_squares 8
+  
+  /-
+  info: 1
+  -/
+  -- #guard_msgs in
+  -- #eval count_odd_squares 1
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded
+

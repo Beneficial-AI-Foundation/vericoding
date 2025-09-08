@@ -1,0 +1,135 @@
+vc-description: |-
+  /-
+  Every Friday Chef and his N - 1 friends go for a party. At these parties, they play board games. This Friday, they are playing a game named "Boats! Boats! Boats!". In this game players have to transport cookies between Venice and Constantinople. Each player has a personal storage. The players are numbered from 1 to N, Chef is numbered 1. Rules for determining a winner are very difficult, therefore Chef asks you to write a program, which will determine who is a winner. 
+  
+  There are 6 types of cookies. For each cookie in the storage player gets 1 point. Also player gets additional points if he packs his cookies in some boxes as follows: 
+  
+  - A box containing 4 different types of cookies fetches 1 additional point.
+  - A box containing 5 different types of cookies fetches 2 additional points.
+  - A box containing 6 different types of cookies fetches 4 additional points.
+  
+  Obviously a cookie can be put into a single box.
+  
+  For each player, you know the number of cookies in his storage (denoted by c[i]), also the types of cookies in the storage given denoted by type[i][j].
+  
+  Your task is to determine the winner of this game. Output "tie" if there are two or more players with same maximum score, "chef" if only Chef has a maximum score, winner's index in all other cases.
+  
+  -----Input-----
+  
+  The first line of input contains a single integer T denoting the number of test cases. This will be followed by T test cases.
+  The first line of each test case contains an integer N denoting the number of players.
+  The second line of each test case contains an integer c[i] denoting the number of cookies in the i-th storage, followed by c[i] space-separated integers type[i][j] which denote the type if j-th cookie in the storage i-th.
+  
+  -----Output-----
+  For each test case, output a single line containing the answer as specified in the statement.
+  
+  -----Constraints and Subtasks-----Subtask #1 : (20 points)  
+  
+  - 1 ≤ T ≤ 10 
+  - 1 ≤  N  ≤ 100  
+  - 1 ≤  c[i]  ≤  100  
+  - 1 ≤  type[i][j]  ≤  3   
+  Subtask #2 : (80 points)  
+  
+  - 1 ≤ T ≤ 10 
+  - 1 ≤  N  ≤ 100  
+  - 1 ≤  c[i]  ≤  100  
+  - 1 ≤  type[i][j]  ≤  6  
+  
+  -----Example-----
+  Input:
+  3
+  2
+  6 1 2 3 4 5 6
+  9 3 3 3 4 4 4 5 5 5
+  2
+  5 2 3 4 5 6
+  7 1 1 2 2 3 3 4
+  3
+  4 1 1 2 3
+  4 1 2 2 3
+  4 1 2 3 3
+  Output:
+  chef
+  2
+  tie
+  
+  -----Explanation-----
+  Example case 1.
+  Chef has total 6 cookie, so he gets 6 points for that. Also, he can put all his cookies (as they are all distinct) in a bag of size 6. It will fetch him additional 4 points. So, Chef's total points will be 10.
+  The second player has 9 cookies, he gets 9 points for that. Other than this, he can't create a bag with either 4, 5 or 6 distinct cookies. So, his final score is 9.
+  10 > 9 - Chef wins.
+  Example case 2.
+  Chef has 5 + 2 (a bag with 5 different cookies) = 7.
+  The second player has 7 + 1(a bag with 4 different cookies) = 8.
+  7 < 8 - the second player wins.
+  Example case 3.
+  Every player has 4 cookies and can't create any bag of sweets. So, it's a tie.
+  -/
+
+vc-preamble: |-
+  def cookieStorageStr (num : Nat) (types : List Nat) : String := sorry
+  
+  def determineWinner (n : Nat) (storages : List String) : String := sorry
+  
+  structure ScoreData where
+    score: Nat
+    uniqueTypes: Nat
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def calculateScore (cookies : List Nat) : Nat :=
+    let score := cookies.head!
+    let types := cookies.tail!.eraseDups
+    let numTypes := types.length
+    match numTypes with
+    | n => if n ≥ 6 then score + 4
+           else if n ≥ 5 then score + 2
+           else if n ≥ 4 then score + 1
+           else score
+
+vc-theorems: |-
+  theorem winner_validity (n : Nat) (storages : List String) :
+    let result := determineWinner n storages
+    (result = "tie" ∨ result = "chef" ∨ result.toNat? ≠ none) ∧ 
+    (result.toNat?.isSome → 1 ≤ result.toNat! ∧ result.toNat! ≤ n) := sorry
+  
+  theorem winner_has_highest_score (n : Nat) (storages : List String) :
+    let result := determineWinner n storages
+    let scores := storages.map (λ s => 
+      let cookies := (s.split (· = ' ')).map String.toNat!
+      calculateScore cookies)
+    let maxScore := scores.maximum?
+    match result with 
+    | "tie" => maxScore.isSome ∧ (scores.filter (· = maxScore!)).length ≥ 2 
+    | "chef" => maxScore.isSome ∧ scores.head! = maxScore! ∧ 
+                (scores.filter (· = maxScore!)).length = 1
+    | _ => maxScore.isSome ∧ 
+           scores[result.toNat! - 1]! = maxScore! ∧
+           (scores.filter (· = maxScore!)).length = 1 := sorry
+  
+  /-
+  info: 'chef'
+  -/
+  -- #guard_msgs in
+  -- #eval determine_winner 2 ["6 1 2 3 4 5 6", "9 3 3 3 4 4 4 5 5 5"]
+  
+  /-
+  info: '2'
+  -/
+  -- #guard_msgs in
+  -- #eval determine_winner 2 ["5 2 3 4 5 6", "7 1 1 2 2 3 3 4"]
+  
+  /-
+  info: 'tie'
+  -/
+  -- #guard_msgs in
+  -- #eval determine_winner 3 ["4 1 1 2 3", "4 1 2 2 3", "4 1 2 3 3"]
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+
