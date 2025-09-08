@@ -1,0 +1,54 @@
+=== LEAN SPECIFICATION-TO-CODE PROCESSING SUMMARY (PARALLEL VERSION) ===
+
+Language: Lean
+LLM Provider: claude
+LLM Model: default
+Test directory: benchmarks/lean/humaneval/first10
+Output directory: /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_11h42/first10
+Max iterations: 5
+Parallel workers: 4
+Test date: 2025-09-08T11:49:12.381606
+
+Total original files: 11
+
+=== OVERALL STATISTICS ===
+Total successful: 1
+Total failed: 10
+Success rate: 9.1%
+
+=== SUCCESS RATE BY SUBFOLDER ===
+root:
+  Successful: 1
+  Failed: 10
+  Total: 11
+  Success rate: 9.1%
+
+=== SUCCESSFUL FILES (VERIFIED) ===
+✓ HumanEval_2.lean -> HumanEval_2_impl.lean
+
+=== FAILED FILES (VERIFICATION) ===
+✗ HumanEval_3.lean
+✗ HumanEval_8.lean
+✗ HumanEval_9.lean
+✗ HumanEval_5.lean
+✗ HumanEval_7.lean
+✗ HumanEval_4.lean
+✗ HumanEval_1.lean
+✗ HumanEval_6.lean
+✗ HumanEval_10.lean
+✗ HumanEval_0.lean
+
+=== PARALLEL PROCESSING FEATURES ===
+Parallel workers: 4
+API rate limiting: 1s between calls
+Debug mode: Enabled
+- Saves original specification as *_iter_0_original.lean
+- Saves initial generated code as *_iter_1_generated.lean
+- Saves current working version for each iteration as *_iter_N_current.lean
+- Saves final implementation as *_impl.lean
+- Full debugging: all intermediate files are saved
+
+- Debug mode control: Enabled
+- Configurable file output based on debug setting
+
+Generated on: 2025-09-08T11:49:12.381677

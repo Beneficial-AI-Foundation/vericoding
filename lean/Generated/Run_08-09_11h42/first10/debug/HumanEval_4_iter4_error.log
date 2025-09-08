@@ -1,0 +1,116 @@
+=== Verification Error - Iteration 4 ===
+File: benchmarks/lean/humaneval/first10/HumanEval_4.lean
+Time: 2025-09-08 11:46:07
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: ✖ [7087/7087] Building Generated.«Run_08-09_11h42».first10.HumanEval_4_impl (3.1s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_11h42/first10/HumanEval_4_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_11h42/first10/HumanEval_4_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_11h42/first10/HumanEval_4_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_11h42/first10/HumanEval_4_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_11h42/first10/HumanEval_4_impl.setup.json --json
+error: lean/Generated/Run_08-09_11h42/first10/HumanEval_4_impl.lean:51:6: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ?a / ?b * ?b
+in the target expression
+  numbers.sum / ↑numbers.length * ↑numbers.length = numbers.sum
+
+numbers : List ℚ
+h : 0 < numbers.length
+⊢ numbers.sum / ↑numbers.length * ↑numbers.length = numbers.sum
+error: lean/Generated/Run_08-09_11h42/first10/HumanEval_4_impl.lean:58:6: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  |?a| / |?b|
+in the target expression
+  |x - numbers.sum / ↑numbers.length| = |x * ↑numbers.length - numbers.sum| / ↑numbers.length
+
+x : ℚ
+numbers : List ℚ
+h : 0 < numbers.length
+h_ne_zero : ↑numbers.length ≠ 0
+⊢ |x - numbers.sum / ↑numbers.length| = |x * ↑numbers.length - numbers.sum| / ↑numbers.length
+error: lean/Generated/Run_08-09_11h42/first10/HumanEval_4_impl.lean:64:6: Unknown constant `List.sum_map_div_left`
+error: lean/Generated/Run_08-09_11h42/first10/HumanEval_4_impl.lean:63:70: unsolved goals
+α : Type u_1
+inst✝ : DivisionRing α
+l : List α
+f : α → α
+⊢ (map (fun x ↦ f x / ↑l.length) l).sum = (map f l).sum / ↑l.length
+error: lean/Generated/Run_08-09_11h42/first10/HumanEval_4_impl.lean:73:2: Type mismatch
+  abs_sub_mean_eq (↑x) numbers h
+has type
+  |↑x - numbers.sum / ↑numbers.length| = |↑x * ↑numbers.length - numbers.sum| / ↑numbers.length
+but is expected to have type
+  (List.map (fun x ↦ |x - numbers.sum / ↑numbers.length|) numbers)[x]? = some a✝ ↔
+    (List.map (fun x ↦ |x * ↑numbers.length - numbers.sum| / ↑numbers.length) numbers)[x]? = some a✝
+error: lean/Generated/Run_08-09_11h42/first10/HumanEval_4_impl.lean:87:8: numerals are data in Lean, but the expected type is a proposition
+  0 < numbers.length → 0 = (List.map (fun x ↦ |x * ↑numbers.length - numbers.sum|) numbers).sum : Prop
+error: lean/Generated/Run_08-09_11h42/first10/HumanEval_4_impl.lean:88:4: No goals to be solved
+error: lean/Generated/Run_08-09_11h42/first10/HumanEval_4_impl.lean:96:4: Type mismatch
+  result
+has type
+  ℚ
+of sort `Type` but is expected to have type
+  0 < numbers.length →
+    0 ≤ (List.map (fun x ↦ |x - numbers.sum / ↑numbers.length|) numbers).sum / ↑numbers.length ∧
+      (List.map (fun x ↦ |x - numbers.sum / ↑numbers.length|) numbers).sum / ↑numbers.length * ↑numbers.length *
+          ↑numbers.length =
+        (List.map (fun x ↦ |x * ↑numbers.length - numbers.sum|) numbers).sum
+of sort `Prop`
+error: lean/Generated/Run_08-09_11h42/first10/HumanEval_4_impl.lean:97:4: No goals to be solved
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_11h42».first10.HumanEval_4_impl
+error: build failed
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+✖ [7087/7087] Building Generated.«Run_08-09_11h42».first10.HumanEval_4_impl (3.1s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_11h42/first10/HumanEval_4_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_11h42/first10/HumanEval_4_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_11h42/first10/HumanEval_4_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_11h42/first10/HumanEval_4_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_11h42/first10/HumanEval_4_impl.setup.json --json
+error: lean/Generated/Run_08-09_11h42/first10/HumanEval_4_impl.lean:51:6: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ?a / ?b * ?b
+in the target expression
+  numbers.sum / ↑numbers.length * ↑numbers.length = numbers.sum
+
+numbers : List ℚ
+h : 0 < numbers.length
+⊢ numbers.sum / ↑numbers.length * ↑numbers.length = numbers.sum
+error: lean/Generated/Run_08-09_11h42/first10/HumanEval_4_impl.lean:58:6: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  |?a| / |?b|
+in the target expression
+  |x - numbers.sum / ↑numbers.length| = |x * ↑numbers.length - numbers.sum| / ↑numbers.length
+
+x : ℚ
+numbers : List ℚ
+h : 0 < numbers.length
+h_ne_zero : ↑numbers.length ≠ 0
+⊢ |x - numbers.sum / ↑numbers.length| = |x * ↑numbers.length - numbers.sum| / ↑numbers.length
+error: lean/Generated/Run_08-09_11h42/first10/HumanEval_4_impl.lean:64:6: Unknown constant `List.sum_map_div_left`
+error: lean/Generated/Run_08-09_11h42/first10/HumanEval_4_impl.lean:63:70: unsolved goals
+α : Type u_1
+inst✝ : DivisionRing α
+l : List α
+f : α → α
+⊢ (map (fun x ↦ f x / ↑l.length) l).sum = (map f l).sum / ↑l.length
+error: lean/Generated/Run_08-09_11h42/first10/HumanEval_4_impl.lean:73:2: Type mismatch
+  abs_sub_mean_eq (↑x) numbers h
+has type
+  |↑x - numbers.sum / ↑numbers.length| = |↑x * ↑numbers.length - numbers.sum| / ↑numbers.length
+but is expected to have type
+  (List.map (fun x ↦ |x - numbers.sum / ↑numbers.length|) numbers)[x]? = some a✝ ↔
+    (List.map (fun x ↦ |x * ↑numbers.length - numbers.sum| / ↑numbers.length) numbers)[x]? = some a✝
+error: lean/Generated/Run_08-09_11h42/first10/HumanEval_4_impl.lean:87:8: numerals are data in Lean, but the expected type is a proposition
+  0 < numbers.length → 0 = (List.map (fun x ↦ |x * ↑numbers.length - numbers.sum|) numbers).sum : Prop
+error: lean/Generated/Run_08-09_11h42/first10/HumanEval_4_impl.lean:88:4: No goals to be solved
+error: lean/Generated/Run_08-09_11h42/first10/HumanEval_4_impl.lean:96:4: Type mismatch
+  result
+has type
+  ℚ
+of sort `Type` but is expected to have type
+  0 < numbers.length →
+    0 ≤ (List.map (fun x ↦ |x - numbers.sum / ↑numbers.length|) numbers).sum / ↑numbers.length ∧
+      (List.map (fun x ↦ |x - numbers.sum / ↑numbers.length|) numbers).sum / ↑numbers.length * ↑numbers.length *
+          ↑numbers.length =
+        (List.map (fun x ↦ |x * ↑numbers.length - numbers.sum|) numbers).sum
+of sort `Prop`
+error: lean/Generated/Run_08-09_11h42/first10/HumanEval_4_impl.lean:97:4: No goals to be solved
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_11h42».first10.HumanEval_4_impl
+error: build failed

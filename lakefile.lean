@@ -24,15 +24,15 @@ This project contains formal specifications and verifications ported from variou
 particularly Dafny benchmarks and NumPy specifications.
 -/
 
--- not required any longer?
--- lean_lib BenchmarksGenerated where
---   globs := #[.andSubmodules `BenchmarksGenerated]
---   srcDir := "lean"
+-- Generated code from spec_to_code.py runs
+lean_lib Generated where
+  globs := #[.andSubmodules `Generated]
+  srcDir := "lean"
 
 -- not required any longer?
 -- lean_lib DafnyBenchSpecs where
 --   globs := #[.andSubmodules `DafnyBenchSpecs]
 
 lean_lib Benchmarks where
-  globs := #[.submodules `humaneval.files, .submodules `verina.files, .submodules `numpy_triple.files]
+  globs := #[.submodules `humaneval.files, .submodules `humaneval.first10, .submodules `verina.files, .submodules `numpy_triple.files]
   srcDir := "benchmarks/lean"
