@@ -8,94 +8,6 @@ generate_code: |
   HELPERS : auxiliary code and proofs 
   // </vc-helpers>
   
-  // <vc-spec>
-  SPEC : specification of a method to be implemented with signature and pre/post conditions.
-  // </vc-spec>
-  
-  // <vc-code>
-  CODE : placeholder for the required implementation.
-  // </vc-code>
-  
-  POSTAMBLE (possibly empty): auxiliary code and definitions.
-
-  The task is to generate code for the CODE and HELPERS sections that will make the Dafny file verified. 
-  
-  OUTPUT FORMAT:
-  Return the updated sections in this exact format with explicit code blocks:
-  
-  ```vc-helpers
-  [Updated or new helper code and proofs needed for verification]
-  ```
-  
-  ```vc-code
-  [Implementation of the method specified in SPEC]
-  ```
-  
-  REQUIREMENTS:
-  - The CODE section must contain a verified implementation of the method specified in the SPEC section
-  - The HELPERS section may be updated to support the verification of the new implementation
-  - Output ONLY valid Dafny code - NO conversational text, explanations, or comments outside the code
-  - Use the exact format: ```vc-helpers and ```vc-code
-
-  DAFNY FILE:
-  {code}
-
-fix_verification: |
-  
-  You are given a Dafny file that failed verification. 
-  It has following five consecutive blocks: 
-
-  PREAMBLE (possibly empty): auxiliary code and definitions.
-  
-  // <vc-helpers>
-  HELPERS : auxiliary code and proofs 
-  // </vc-helpers>
-  
-  // <vc-spec>
-  SPEC : specification of a method with signature and pre/post conditions.
-  // </vc-spec>
-  
-  // <vc-code>
-  CODE : implementation that failed verification.
-  // </vc-code>
-  
-  POSTAMBLE (possibly empty): auxiliary code and definitions.
-
-  The task is to fix the verification errors in the CODE and HELPERS sections. 
-  
-  OUTPUT FORMAT:
-  Return the fixed sections in this exact format with explicit code blocks:
-  
-  ```vc-helpers
-  [Updated helper code and proofs to fix verification errors]
-  ```
-  
-  ```vc-code
-  [Fixed implementation that passes verification]
-  ```
-  
-  REQUIREMENTS:
-  - The CODE section must be fixed to pass verification
-  - The HELPERS section may be updated to support the verification of the fixed implementation
-  - Output ONLY valid Dafny code - NO conversational text, explanations, or comments outside the code
-  - Use the exact format: ```vc-helpers and ```vc-code
-
-  ERROR DETAILS from Dafny verification of the given code:
-  {errorDetails}
-
-  DAFNY FILE:
-  {code}
-
-generate_code_vibe: |
-  
-  You are given a Dafny file with following five consecutive blocks. 
-
-  PREAMBLE (possibly empty): auxiliary code and definitions.
-  
-  // <vc-helpers>
-  HELPERS : auxiliary code and proofs 
-  // </vc-helpers>
-  
   // <vc-description>
   DESCRIPTION : natural language description of what the method should do.
   // </vc-description>
@@ -138,7 +50,7 @@ generate_code_vibe: |
   DAFNY FILE:
   {code}
 
-fix_verification_vibe: |
+fix_verification: |
   
   You are given a Dafny file that failed verification. 
   It has following five consecutive blocks: 
@@ -196,4 +108,3 @@ fix_verification_vibe: |
 
   DAFNY FILE:
   {code}
-

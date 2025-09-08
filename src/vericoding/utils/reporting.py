@@ -1,7 +1,6 @@
 """Summary and CSV generation utilities."""
 
 import csv
-from datetime import datetime
 from pathlib import Path
 
 from ..core.config import ProcessingConfig
@@ -31,17 +30,17 @@ def generate_csv_results(config: ProcessingConfig, results: list) -> str:
         # Write results
         for result in results:
             spec_name = str(
-                Path(result.file).with_suffix("")
+                Path(result.spec_yaml_file).with_suffix("")
             )  # Remove extension and preserve path
             spec_to_code = "SUCCESS" if result.success else "FAILED"
 
             # Extract subfolder
-            file_path = Path(result.file)
+            file_path = Path(result.spec_yaml_file)
             subfolder = file_path.parts[0] if len(file_path.parts) > 1 else "root"
 
             # Generate spec link
             # result.file is already relative to config.files_dir, so construct the full path correctly
-            spec_full_path = Path(config.files_dir) / result.file
+            spec_full_path = Path(config.files_dir) / result.spec_yaml_file
             try:
                 spec_rel_path = spec_full_path.relative_to(Path(repo_root))
             except ValueError:
@@ -56,16 +55,16 @@ def generate_csv_results(config: ProcessingConfig, results: list) -> str:
             )
 
             # Generate impl link
-            if result.output:
+            if result.code_file:
                 try:
-                    impl_rel_path = Path(result.output).relative_to(Path(repo_root))
+                    impl_rel_path = Path(result.code_file).relative_to(Path(repo_root))
                 except ValueError:
                     # If the output path is not within repo_root, try to make it relative from current working directory
                     try:
-                        impl_rel_path = Path(result.output).relative_to(Path.cwd())
+                        impl_rel_path = Path(result.code_file).relative_to(Path.cwd())
                     except ValueError:
                         # If still not relative, use the path as-is
-                        impl_rel_path = Path(result.output)
+                        impl_rel_path = Path(result.code_file)
                 impl_link = (
                     get_github_url(impl_rel_path, repo_url, branch) if repo_url else ""
                 )
@@ -78,182 +77,63 @@ def generate_csv_results(config: ProcessingConfig, results: list) -> str:
     return str(csv_file)
 
 
-def generate_subfolder_analysis_csv(config: ProcessingConfig, results: list) -> str:
-    """Generate CSV file with subfolder success rate analysis."""
-    csv_file = Path(config.output_dir) / "subfolder_analysis.csv"
-
-    # Analyze results by subfolder
-    from collections import defaultdict
-
-    subfolder_stats = defaultdict(lambda: {"success": 0, "failed": 0, "total": 0})
-
-    for result in results:
-        # Extract subfolder from file path
-        file_path = Path(result.file)
-        if len(file_path.parts) > 1:
-            subfolder = file_path.parts[0]
-        else:
-            subfolder = "root"
-
-        subfolder_stats[subfolder]["total"] += 1
-        if result.success:
-            subfolder_stats[subfolder]["success"] += 1
-        else:
-            subfolder_stats[subfolder]["failed"] += 1
-
-    with csv_file.open("w", newline="") as csvfile:
-        writer = csv.writer(csvfile)
-        # Write header
-        writer.writerow(["subfolder", "successful", "failed", "total", "success_rate"])
-
-        # Write subfolder statistics sorted by name
-        for subfolder in sorted(subfolder_stats.keys()):
-            stats = subfolder_stats[subfolder]
-            success_rate = (
-                (stats["success"] / stats["total"] * 100) if stats["total"] > 0 else 0.0
-            )
-            writer.writerow(
-                [
-                    subfolder,
-                    stats["success"],
-                    stats["failed"],
-                    stats["total"],
-                    f"{success_rate:.1f}%",
-                ]
-            )
-
-    print(f"Subfolder analysis CSV saved to: {csv_file}")
-    return str(csv_file)
-
-
-def generate_summary(config: ProcessingConfig, results: list) -> str:
-    """Generate a summary of the processing results."""
+def print_summary(config: ProcessingConfig, results: list, processing_time: float) -> str:
+    """Generate and print processing summary with reports."""
+    from vericoding.core.llm_providers import get_global_token_stats
+    
     successful = [r for r in results if r.success]
     failed = [r for r in results if not r.success]
 
-    # Analyze results by subfolder
-    from collections import defaultdict
-
-    subfolder_stats = defaultdict(lambda: {"success": 0, "failed": 0, "total": 0})
-
-    for result in results:
-        # Extract subfolder from file path
-        file_path = Path(result.file)
-        if len(file_path.parts) > 1:
-            subfolder = file_path.parts[0]
-        else:
-            subfolder = "root"
-
-        subfolder_stats[subfolder]["total"] += 1
-        if result.success:
-            subfolder_stats[subfolder]["success"] += 1
-        else:
-            subfolder_stats[subfolder]["failed"] += 1
-
+    # Create simple summary
+    # Calculate percentages safely (avoid division by zero)
+    total_files = len(results)
+    success_rate = (len(successful) / total_files * 100) if total_files > 0 else 0
+    avg_time_per_file = (processing_time / total_files) if total_files > 0 else 0
+    
+    # Get token usage statistics
+    token_stats = get_global_token_stats()
+    
     summary_lines = [
-        f"=== {config.language_config.name.upper()} SPECIFICATION-TO-CODE PROCESSING SUMMARY (PARALLEL VERSION) ===",
+        f"=== {config.language_config.name.upper()} PROCESSING SUMMARY ===",
+        f"Total files: {total_files}",
+        f"Successful: {len(successful)} ({success_rate:.1f}%)",
+        f"Failed: {len(failed)}",
+        f"Processing time: {processing_time:.2f}s",
+        f"Average per file: {avg_time_per_file:.2f}s",
         "",
-        f"Language: {config.language_config.name}",
-        f"LLM Provider: {config.llm_provider}",
-        f"LLM Model: {config.llm_model or 'default'}",
-        f"Test directory: {config.files_dir}",
-        f"Output directory: {config.output_dir}",
-        f"Max iterations: {config.max_iterations}",
-        f"Parallel workers: {config.max_workers}",
-        f"Test date: {datetime.now().isoformat()}",
+        f"=== TOKEN USAGE ===",
+        f"Total LLM calls: {token_stats['total_calls']}",
+        f"Input tokens: {token_stats['input_tokens']:,}",
+        f"Output tokens: {token_stats['output_tokens']:,}",
         "",
-        f"Total original files: {len(results)}",
-        "",
-        "=== OVERALL STATISTICS ===",
-        f"Total successful: {len(successful)}",
-        f"Total failed: {len(failed)}",
-        f"Success rate: {(len(successful) / len(results) * 100) if results else 0.0:.1f}%",
-        "",
-        "=== SUCCESS RATE BY SUBFOLDER ===",
+        "Successful files:",
     ]
-
-    # Sort subfolders by name for consistent output
-    for subfolder in sorted(subfolder_stats.keys()):
-        stats = subfolder_stats[subfolder]
-        success_rate = (
-            (stats["success"] / stats["total"] * 100) if stats["total"] > 0 else 0.0
-        )
-        summary_lines.extend(
-            [
-                f"{subfolder}:",
-                f"  Successful: {stats['success']}",
-                f"  Failed: {stats['failed']}",
-                f"  Total: {stats['total']}",
-                f"  Success rate: {success_rate:.1f}%",
-                "",
-            ]
-        )
-
-    summary_lines.extend(
-        [
-            "=== SUCCESSFUL FILES (VERIFIED) ===",
-        ]
-    )
-
+    
     for result in successful:
-        output_file = Path(result.output).name if result.output else "no output"
-        summary_lines.append(f"✓ {result.file} -> {output_file}")
-
-    summary_lines.extend(
-        [
-            "",
-            "=== FAILED FILES (VERIFICATION) ===",
-        ]
-    )
-
-    summary_lines.extend([f"✗ {result.file}" for result in failed])
-
-    summary_lines.extend(
-        [
-            "",
-            "=== PARALLEL PROCESSING FEATURES ===",
-            f"Parallel workers: {config.max_workers}",
-            f"API rate limiting: {config.api_rate_limit_delay}s between calls",
-            f"Debug mode: {'Enabled' if config.debug_mode else 'Disabled'}",
-        ]
-    )
-
-    if config.debug_mode:
-        summary_lines.extend(
-            [
-                "- Saves original specification as *_iter_0_original"
-                + config.language_config.file_extension,
-                "- Saves initial generated code as *_iter_1_generated"
-                + config.language_config.file_extension,
-                "- Saves current working version for each iteration as *_iter_N_current"
-                + config.language_config.file_extension,
-                "- Saves final implementation as *_impl"
-                + config.language_config.file_extension,
-                "- Full debugging: all intermediate files are saved",
-            ]
-        )
-    else:
-        summary_lines.extend(
-            [
-                "- Saves only final implementation as *_impl"
-                + config.language_config.file_extension,
-                "- No intermediate files saved (debug mode disabled)",
-            ]
-        )
-
-    summary_lines.extend(
-        [
-            "",
-            f"- Debug mode control: {'Enabled' if config.debug_mode else 'Disabled'}",
-            "- Configurable file output based on debug setting",
-            "",
-            f"Generated on: {datetime.now().isoformat()}",
-        ]
-    )
+        summary_lines.append(f"✓ {Path(result.spec_yaml_file).name}")
+    
+    if failed:
+        summary_lines.extend(["", "Failed files:"])
+        for result in failed:
+            summary_lines.append(f"✗ {Path(result.spec_yaml_file).name}")
 
     summary = "\n".join(summary_lines)
 
+    # Save summary to file
     with Path(config.summary_file).open("w") as f:
         f.write(summary)
+
+    # Print to console
+    print("")
+    print(summary)
+    print(f"\nSummary saved to: {config.summary_file}")
+    print(f"Files saved to: {config.output_dir}")
+
+    # Generate CSV report
+    generate_csv_results(config, results)
+
+    # Print final celebration
+    print(f"\n🎉 Processing completed: {len(successful)}/{len(results)} files successful")
+    print(f"⚡ Completed in {processing_time:.2f}s with {config.max_workers} workers")
 
     return summary

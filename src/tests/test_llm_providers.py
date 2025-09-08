@@ -8,6 +8,7 @@ from vericoding.core.llm_providers import (
     AnthropicProvider,
     OpenAIProvider,
     DeepSeekProvider,
+    GrokProvider,
     create_llm_provider,
 )
 
@@ -342,13 +343,109 @@ class TestDeepSeekProvider:
             provider.call_api("Test prompt")
 
 
+class TestGrokProvider:
+    """Test Grok (xAI) provider implementation."""
+
+    @patch("builtins.__import__")
+    def test_initialization_with_custom_base_url(self, mock_import):
+        """Test provider initializes with Grok (xAI) base URL."""
+        # Mock openai module
+        mock_openai = Mock()
+        mock_client = Mock()
+        mock_openai.OpenAI.return_value = mock_client
+        mock_import.return_value = mock_openai
+
+        GrokProvider(api_key="test-key")
+        mock_openai.OpenAI.assert_called_once_with(
+            api_key="test-key", base_url="https://api.x.ai/v1"
+        )
+
+    def test_initialization_missing_openai_package(self):
+        """Test error when openai package is not installed."""
+        with patch("builtins.__import__", side_effect=ImportError()):
+            with pytest.raises(ImportError, match="OpenAI package not installed"):
+                GrokProvider(api_key="test-key")
+
+    @patch("builtins.__import__")
+    def test_get_required_env_var(self, mock_import):
+        """Test required environment variable name."""
+        # Mock openai module
+        mock_openai = Mock()
+        mock_client = Mock()
+        mock_openai.OpenAI.return_value = mock_client
+        mock_import.return_value = mock_openai
+
+        provider = GrokProvider(api_key="test")
+        assert provider.get_required_env_var() == "XAI_API_KEY"
+
+    @patch("builtins.__import__")
+    def test_call_api_success(self, mock_import):
+        """Test successful API call."""
+        # Setup mock response
+        mock_choice = Mock()
+        mock_choice.message.content = "Test response from Grok"
+        mock_response = Mock()
+        mock_response.choices = [mock_choice]
+
+        # Mock openai module
+        mock_openai = Mock()
+        mock_client = Mock()
+        mock_client.chat.completions.create.return_value = mock_response
+        mock_openai.OpenAI.return_value = mock_client
+        mock_import.return_value = mock_openai
+
+        provider = GrokProvider(api_key="test-key")
+        result = provider.call_api("Test prompt")
+
+        assert result == "Test response from Grok"
+        mock_client.chat.completions.create.assert_called_once_with(
+            model="grok-3",
+            messages=[{"role": "user", "content": "Test prompt"}],
+            max_tokens=8192,
+            timeout=60.0,
+        )
+
+    @patch("builtins.__import__")
+    def test_call_api_empty_choices(self, mock_import):
+        """Test API call with empty choices."""
+        mock_response = Mock()
+        mock_response.choices = []
+
+        # Mock openai module
+        mock_openai = Mock()
+        mock_client = Mock()
+        mock_client.chat.completions.create.return_value = mock_response
+        mock_openai.OpenAI.return_value = mock_client
+        mock_import.return_value = mock_openai
+
+        provider = GrokProvider(api_key="test-key")
+
+        with pytest.raises(ValueError, match="Unexpected response format"):
+            provider.call_api("Test prompt")
+
+    @patch("builtins.__import__")
+    def test_call_api_error(self, mock_import):
+        """Test API call with error."""
+        # Mock openai module
+        mock_openai = Mock()
+        mock_client = Mock()
+        mock_client.chat.completions.create.side_effect = Exception("API error")
+        mock_openai.OpenAI.return_value = mock_client
+        mock_import.return_value = mock_openai
+
+        provider = GrokProvider(api_key="test-key")
+
+        with pytest.raises(ValueError, match="Error calling Grok API"):
+            provider.call_api("Test prompt")
+
+
 class TestFactoryFunction:
     """Test the create_llm_provider factory function."""
 
     @patch.dict(os.environ, {"ANTHROPIC_API_KEY": "test-anthropic-key"})
     def test_create_claude_provider(self):
         """Test creating Claude provider via factory."""
-        provider = create_llm_provider("claude")
+        provider, resolved_model = create_llm_provider("claude")
         assert isinstance(provider, AnthropicProvider)
         assert provider.api_key == "test-anthropic-key"
         assert provider.model == "claude-sonnet-4-20250514"
@@ -356,9 +453,10 @@ class TestFactoryFunction:
     @patch.dict(os.environ, {"ANTHROPIC_API_KEY": "test-key"})
     def test_create_claude_provider_custom_model(self):
         """Test creating Claude provider with custom model."""
-        provider = create_llm_provider("claude", model="claude-3-opus-20240229")
+        provider, resolved_model = create_llm_provider("claude", model="claude-3-opus-20240229")
         assert isinstance(provider, AnthropicProvider)
         assert provider.model == "claude-3-opus-20240229"
+        assert resolved_model == "claude-3-opus-20240229"
 
     @patch.dict(os.environ, {"OPENAI_API_KEY": "test-openai-key"})
     @patch("builtins.__import__")
@@ -370,7 +468,7 @@ class TestFactoryFunction:
         mock_openai.OpenAI.return_value = mock_client
         mock_import.return_value = mock_openai
 
-        provider = create_llm_provider("openai")
+        provider, resolved_model = create_llm_provider("openai")
         assert isinstance(provider, OpenAIProvider)
         assert provider.api_key == "test-openai-key"
         assert provider.model == "gpt-4o"
@@ -385,9 +483,24 @@ class TestFactoryFunction:
         mock_openai.OpenAI.return_value = mock_client
         mock_import.return_value = mock_openai
 
-        provider = create_llm_provider("deepseek")
+        provider, resolved_model = create_llm_provider("deepseek")
         assert isinstance(provider, DeepSeekProvider)
         assert provider.api_key == "test-deepseek-key"
+
+    @patch.dict(os.environ, {"XAI_API_KEY": "test-grok-key"})
+    @patch("builtins.__import__")
+    def test_create_grok_provider(self, mock_import):
+        """Test creating Grok provider via factory."""
+        # Mock openai module
+        mock_openai = Mock()
+        mock_client = Mock()
+        mock_openai.OpenAI.return_value = mock_client
+        mock_import.return_value = mock_openai
+
+        provider, resolved_model = create_llm_provider("grok")
+        assert isinstance(provider, GrokProvider)
+        assert provider.api_key == "test-grok-key"
+        assert provider.model == "grok-3"
 
     def test_unsupported_provider(self):
         """Test error for unsupported provider."""
@@ -430,10 +543,11 @@ class TestProviderInheritance:
         assert issubclass(AnthropicProvider, LLMProvider)
         assert issubclass(OpenAIProvider, LLMProvider)
         assert issubclass(DeepSeekProvider, LLMProvider)
+        assert issubclass(GrokProvider, LLMProvider)
 
     def test_providers_implement_required_methods(self):
         """Test that all providers implement required abstract methods."""
-        providers = [AnthropicProvider, OpenAIProvider, DeepSeekProvider]
+        providers = [AnthropicProvider, OpenAIProvider, DeepSeekProvider, GrokProvider]
 
         for provider_class in providers:
             # Check that abstract methods are implemented
@@ -472,7 +586,7 @@ class TestProviderIntegration:
         for provider_name, env_var, expected_class in test_cases:
             with patch.dict(os.environ, {env_var: "test-key"}):
                 with patch("anthropic.Anthropic"):  # Only needed for Anthropic
-                    provider = create_llm_provider(provider_name)
+                    provider, resolved_model = create_llm_provider(provider_name)
                     assert isinstance(provider, expected_class)
                     assert provider.api_key == "test-key"
                     assert hasattr(provider, "call_api")
@@ -491,8 +605,8 @@ class TestProviderIntegration:
             with pytest.raises(ValueError):
                 provider.call_api("test prompt")
 
-        # Test OpenAI and DeepSeek providers (they use the same openai client)
-        openai_providers = [OpenAIProvider, DeepSeekProvider]
+        # Test OpenAI, DeepSeek, and Grok providers (they use the same openai client)
+        openai_providers = [OpenAIProvider, DeepSeekProvider, GrokProvider]
         for provider_class in openai_providers:
             with patch("builtins.__import__") as mock_import:
                 # Mock openai module

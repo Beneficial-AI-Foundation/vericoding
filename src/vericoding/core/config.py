@@ -1,6 +1,8 @@
 """Configuration management for vericoding."""
 
+import sys
 from dataclasses import dataclass
+from datetime import datetime
 from pathlib import Path
 import tomllib
 
@@ -29,7 +31,8 @@ class LanguageConfig:
     """Configuration for a specific programming language."""
 
     name: str
-    file_extension: str  # e.g., ".dfy", ".py", ".rs"
+    file_extension: str  # e.g., ".yaml" for input files
+    output_extension: str  # e.g., ".dfy", ".lean", ".rs" for output files
     tool_path_env: str  # Environment variable name
     default_tool_path: str | Path  # Path to the language tool
     prompts_file: str | Path  # Path to prompts file
@@ -37,7 +40,6 @@ class LanguageConfig:
     compile_check_command: list[str] | None  # Optional compilation check
     code_block_patterns: list[str]  # Regex patterns for code blocks
     keywords: list[str]  # Language-specific keywords
-    spec_patterns: list[str]  # Patterns for specification blocks
 
 
 @dataclass
@@ -59,11 +61,10 @@ class ProcessingConfig:
     output_dir: str
     summary_file: str
     debug_mode: bool
-    strict_spec_verification: bool
     max_workers: int
     api_rate_limit_delay: int
-    llm_provider: str
-    llm_model: str | None
+    llm: str
+    mode: str
     max_directory_traversal_depth: int = 50
 
     # Static configuration loaded once
@@ -90,7 +91,7 @@ class ProcessingConfig:
 def load_language_config() -> LanguageConfigResult:
     """Load language configuration from TOML file."""
     # Try to find config file relative to this module's location
-    module_dir = Path(__file__).parent.parent.parent  # Go up to the repository root
+    module_dir = Path(__file__).parent.parent.parent.parent  # Go up to the repository root
     config_path = module_dir / "config" / "language_config.toml"
 
     if not config_path.exists():
@@ -148,3 +149,61 @@ def load_language_config() -> LanguageConfigResult:
         raise ValueError(
             f"Error processing configuration from {config_path}: {e}"
         ) from e
+
+
+def setup_configuration(args) -> ProcessingConfig:
+    """Set up processing configuration from command line arguments."""
+    from .language_tools import get_tool_path
+    
+    available_languages = ProcessingConfig.get_available_languages()
+    language_config = available_languages[args.language]
+
+    print(
+        f"=== {language_config.name} Specification-to-Code Processing Configuration ===\n"
+    )
+
+    files_dir = str(args.folder)
+
+    if not Path(files_dir).is_dir():
+        print(f"Error: Directory '{files_dir}' does not exist or is not accessible.")
+        sys.exit(1)
+
+    # Create timestamped output directory
+    timestamp = datetime.now().strftime("%d-%m_%Hh%M")
+
+    # Determine the base directory for output
+    if args.output_folder:
+        # Use the provided output folder as the base
+        base_dir = Path(args.output_folder).resolve()
+        base_dir.mkdir(parents=True, exist_ok=True)
+    else:
+        # Create output directory as sibling to the input specs folder
+        input_path = Path(files_dir).resolve()
+        base_dir = input_path.parent
+
+    
+    # Create output directory structure
+    output_dir = str(base_dir / f"vericoder_{args.llm}_{timestamp}" / args.language)
+    summary_file = str(Path(output_dir) / "summary.txt")
+
+    Path(output_dir).mkdir(parents=True, exist_ok=True)
+    print(f"Created output directory: {output_dir}")
+
+    # Create configuration object
+    config = ProcessingConfig(
+        language=args.language,
+        language_config=language_config,
+        files_dir=files_dir,
+        max_iterations=args.iterations,
+        output_dir=output_dir,
+        summary_file=summary_file,
+        debug_mode=args.debug,
+        max_workers=args.workers,
+        api_rate_limit_delay=args.api_rate_limit_delay,
+        llm=args.llm,
+        mode=args.mode,
+        max_directory_traversal_depth=args.max_directory_traversal_depth,
+    )
+
+    # Don't print detailed configuration here anymore - will be printed after LLM model is resolved
+    return config
