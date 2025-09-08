@@ -79,16 +79,16 @@ theorem correctness
         rw [List.any_eq_true]
         use numbers[i]!
         constructor
-        · sorry -- numbers[i]! ∈ numbers when i < numbers.length
+        · grind
         · rw [List.any_eq_true]
           use numbers[j]!
           constructor
-          · sorry -- numbers[j]! ∈ numbers when j < numbers.length
+          · grind
           · simp
             constructor
-            · sorry -- ¬numbers[i]?.getD default = numbers[j]?.getD default
+            · sorry -- This needs a more sophisticated approach
             · convert h_contra using 1 <;> simp [hi, hj]
       exact h this
 
--- #test implementation ([1, 2, 3]: List Rat) 0.5 = false
--- #test implementation ([1, 2.8, 3, 4, 5, 2]: List Rat) 0.3 = true
+#eval implementation ([1, 2, 3]: List Rat) (1/2) -- Should be false
+#eval implementation ([1, 28/10, 3, 4, 5, 2]: List Rat) (3/10) -- Should be true
