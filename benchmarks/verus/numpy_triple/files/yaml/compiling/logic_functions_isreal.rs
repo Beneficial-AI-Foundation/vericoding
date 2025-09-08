@@ -1,0 +1,44 @@
+/* Returns a bool array, where True if input element is real.
+For complex numbers, checks if imaginary part is zero.
+For numbers with zero imaginary part, returns true for all elements.
+
+Specification: isreal returns true for elements with zero imaginary parts,
+false for elements with non-zero imaginary parts, with the following properties:
+1. Basic definition: returns true iff imaginary part is zero
+2. Real number detection: pure real numbers (imag = 0) return true
+3. Complex number detection: numbers with non-zero imaginary part return false
+4. Complementary to iscomplex: isreal(x) = not iscomplex(x)
+5. Element-wise operation: each element is tested independently
+6. Mathematical property: real numbers form a subset of complex numbers
+7. Consistency: if real, then can be represented as a + 0i */
+
+use vstd::prelude::*;
+
+verus! {
+
+/* Structure representing a complex number with float components */
+struct Complex {
+    /* The real part of the complex number */
+    real: f64,
+    /* The imaginary part of the complex number */
+    imag: f64,
+}
+fn isreal(x: &Vec<Complex>) -> (result: Vec<bool>)
+    ensures
+        result.len() == x.len(),
+        forall|i: int| 0 <= i < x.len() ==> result[i] == (x[i].imag == 0.0),
+        forall|i: int| 0 <= i < x.len() ==> (x[i].imag == 0.0 ==> result[i] == true),
+        forall|i: int| 0 <= i < x.len() ==> (x[i].imag != 0.0 ==> result[i] == false),
+        forall|i: int| 0 <= i < x.len() ==> (result[i] == true ==> x[i].imag == 0.0),
+        forall|i: int| 0 <= i < x.len() ==> (result[i] == false ==> x[i].imag != 0.0),
+        forall|i: int| 0 <= i < x.len() ==> (result[i] == true ==> x[i].real == x[i].real),
+        forall|i: int| 0 <= i < x.len() ==> result[i] == !(x[i].imag != 0.0),
+        forall|i: int| 0 <= i < x.len() ==> (result[i] == true <==> x[i].imag == 0.0),
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

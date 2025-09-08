@@ -1,0 +1,42 @@
+vc-description: |-
+  /*
+  Generate a Vandermonde matrix.
+  
+  Generate a Vandermonde matrix with decreasing powers (default behavior).
+  The Vandermonde matrix is a matrix with terms of a geometric progression in each row.
+  For a 1D input vector x of length n and specified number of columns m,
+  the output is an n×m matrix where entry (i,j) = x[i]^(m-1-j)
+  
+  Specification: vander generates a Vandermonde matrix where each row contains
+  powers of the corresponding element from the input vector.
+  In the default decreasing mode, column j contains x^(m-1-j) for each element x.
+  This means the first column has the highest powers and the last column has x^0 = 1.
+  */
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn vander(x: Vec<f32>, m: usize) -> (result: Vec<Vec<f32>>)
+      requires 
+          x.len() > 0,
+          m > 0,
+      ensures 
+          result.len() == x.len(),
+          forall|i: int| 0 <= i < result.len() ==> result[i].len() == m,
+          forall|i: int, j: int| 
+              0 <= i < result.len() && 0 <= j < m ==> 
+              result[i][j] == x[i].pow((m - 1 - j) as i32),
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

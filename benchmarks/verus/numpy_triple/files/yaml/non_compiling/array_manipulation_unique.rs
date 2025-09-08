@@ -1,0 +1,39 @@
+/* numpy.unique: Find the unique elements of a vector and return them sorted.
+    
+Returns a new vector containing each distinct element from the input exactly once,
+sorted in ascending order. This is a simplified version that only returns the 
+unique values without the optional indices or counts.
+    
+The output size depends on the number of unique elements in the input.
+
+Specification: numpy.unique returns a sorted vector containing each distinct element 
+from the input exactly once.
+    
+Precondition: True
+Postcondition: 
+- The result is sorted in ascending order
+- No duplicates exist in the result
+- Every element in result comes from the input array
+- Every distinct element from input appears in result */
+
+use vstd::prelude::*;
+
+verus! {
+fn numpy_unique(arr: Vec<f64>) -> (result: Vec<f64>)
+    ensures
+        /* The result is sorted in ascending order */
+        forall|i: int, j: int| 0 <= i < j < result.len() ==> result[i] < result[j],
+        /* No duplicates exist in the result */
+        forall|i: int, j: int| 0 <= i < result.len() && 0 <= j < result.len() && i != j ==> result[i] != result[j],
+        /* Every element in result comes from the input array */
+        forall|i: int| 0 <= i < result.len() ==> exists|j: int| 0 <= j < arr.len() && result[i] == arr[j],
+        /* Every distinct element from input appears in result */
+        forall|i: int| 0 <= i < arr.len() ==> exists|j: int| 0 <= j < result.len() && arr[i] == result[j],
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

@@ -1,0 +1,48 @@
+vc-description: |-
+  /*
+  Counts the number of non-zero values in a vector.
+      
+  The word "non-zero" is in reference to the Python 2.x
+  built-in method `__nonzero__()` (renamed `__bool__()`
+  in Python 3.x) of Python objects that tests an object's
+  "truthfulness". For example, any number is considered
+  truthful if it is nonzero, whereas any string is considered
+  truthful if it is not the empty string. Thus, this function
+  counts how many elements in the vector are non-zero.
+  
+  Specification: count_nonzero returns the number of non-zero elements in the vector.
+      
+  The function counts exactly those elements that are not equal to zero.
+  The result is always between 0 and n (inclusive), where n is the length of the vector.
+  If all elements are zero, the result is 0.
+  If all elements are non-zero, the result is n.
+  */
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn count_nonzero(a: Vec<i32>) -> (count: usize)
+      ensures
+          count <= a.len(),
+          a.len() == 0 ==> count == 0,
+          (forall|i: int| 0 <= i < a.len() ==> a[i] == 0) ==> count == 0,
+          (forall|i: int| 0 <= i < a.len() ==> a[i] != 0) ==> count == a.len(),
+          (exists|i: int| 0 <= i < a.len() && a[i] != 0) ==> count > 0,
+          (exists|i: int| 0 <= i < a.len() && a[i] == 0) ==> count < a.len()
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

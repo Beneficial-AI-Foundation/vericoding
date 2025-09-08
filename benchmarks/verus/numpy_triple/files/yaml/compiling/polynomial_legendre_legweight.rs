@@ -1,0 +1,21 @@
+/* Weight function of the Legendre polynomials. 
+The weight function is constant 1 for all input values.
+
+Specification: legweight returns a vector of all ones with the same length as input.
+This captures the mathematical property that the Legendre weight function is constant 1. */
+
+use vstd::prelude::*;
+
+verus! {
+fn legweight(x: Vec<f32>) -> (result: Vec<f32>)
+    ensures 
+        result.len() == x.len(),
+        forall|i: int| 0 <= i < result.len() ==> result[i] == 1.0f32
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

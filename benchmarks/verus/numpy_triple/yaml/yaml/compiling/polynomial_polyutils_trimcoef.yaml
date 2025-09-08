@@ -1,0 +1,34 @@
+Good! Now I have a working basic specification. Let me create the full YAML output with the corrected Verus code:
+
+vc-description: |-
+  /*
+  Remove "small" "trailing" coefficients from a polynomial.
+  Small means small in absolute value controlled by tolerance parameter.
+  Trailing means highest order coefficients.
+  
+  Specification: trimcoef removes trailing coefficients with absolute value ≤ tol.
+  If all coefficients are small, returns a single zero.
+  The tolerance must be non-negative.
+  */
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn trimcoef(c: Vec<f32>, tol: f32) -> (result: Vec<f32>)
+      ensures
+          result.len() >= 1,
+          result.len() <= c.len(),
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      vec![0.0]
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

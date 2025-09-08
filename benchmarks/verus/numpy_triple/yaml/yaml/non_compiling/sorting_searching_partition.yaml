@@ -1,0 +1,42 @@
+vc-description: |-
+  /*
+  Return a partitioned copy of an array around the k-th element. Specification: partition rearranges elements so that the k-th element is in its sorted position, with smaller elements before it and equal/greater elements after it.
+  */
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn is_sorted(v: Seq<f32>) -> bool {
+      forall|i: int, j: int| 0 <= i < j < v.len() ==> v[i] <= v[j]
+  }
+
+  spec fn multiset_eq(a: Seq<f32>, b: Seq<f32>) -> bool {
+      a.len() == b.len() &&
+      forall|x: f32| a.filter(|y| *y == x).len() == b.filter(|y| *y == x).len()
+  }
+
+  fn partition(arr: Vec<f32>, kth: usize) -> (result: Vec<f32>)
+      requires kth < arr.len(),
+      ensures
+          result.len() == arr.len(),
+          forall|i: int| 0 <= i < kth ==> result[i] <= result[kth as int],
+          forall|i: int| kth < i < result.len() ==> result[i as int] >= result[kth as int],
+          exists|sorted: Seq<f32>| 
+              is_sorted(sorted) &&
+              multiset_eq(sorted, arr@) &&
+              result[kth as int] == sorted[kth as int],
+          multiset_eq(result@, arr@)
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

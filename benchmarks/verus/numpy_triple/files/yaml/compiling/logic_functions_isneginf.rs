@@ -1,0 +1,33 @@
+/* Test element-wise for negative infinity, return result as bool array.
+
+This function tests each element according to IEEE 754 floating-point standard:
+- Returns true if the element is negative infinity (-∞)
+- Returns false for all other values including positive infinity, NaN, finite numbers, and zero
+
+Mathematical properties:
+1. Negative infinity detection: result[i] = true iff x[i] is negative infinity
+2. Distinction from positive infinity: only negative infinity returns true
+3. Distinction from NaN: negative infinity and NaN are mutually exclusive
+4. Result preserves shape: output vector has same length as input
+5. Finite values: All normal, subnormal, and zero values return false */
+
+use vstd::prelude::*;
+
+verus! {
+spec fn is_neg_infinity(x: f32) -> bool;
+
+fn isneginf(x: Vec<f32>) -> (result: Vec<bool>)
+    requires x.len() > 0,
+    ensures
+        result.len() == x.len(),
+        forall|i: int| 0 <= i < x.len() ==> {
+            &&& (result[i] == is_neg_infinity(x[i]))
+        }
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

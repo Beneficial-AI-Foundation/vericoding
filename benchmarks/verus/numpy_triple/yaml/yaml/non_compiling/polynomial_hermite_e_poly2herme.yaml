@@ -1,0 +1,55 @@
+vc-description: |-
+  /*
+  Convert a polynomial to a Hermite series. 
+  Converts coefficients from standard polynomial basis to Hermite series basis.
+  Uses Horner's method with Hermite operations: for polynomial p(x) = aₙxⁿ + ... + a₁x + a₀,
+  builds the equivalent Hermite series by iteratively applying hermeadd(hermemulx(result), coefficient).
+  
+  Specification: poly2herme converts polynomial coefficients to equivalent Hermite series coefficients.
+  
+  The conversion preserves the polynomial's mathematical value but represents it in the Hermite basis.
+  This is a fundamental basis transformation in polynomial algebra.
+  
+  Key mathematical properties:
+  1. Basis transformation: standard polynomial basis {1, x, x², x³, ...} → Hermite basis {He₀, He₁, He₂, He₃, ...}
+  2. Value preservation: ∑ᵢ polᵢ·xⁱ = ∑ᵢ resultᵢ·Heᵢ(x) for all x
+  3. Degree preservation: polynomial of degree n maps to Hermite series of degree n
+  4. Invertibility: conversion can be reversed with herme2poly
+  5. Horner's method: algorithm uses iterative structure for numerical stability
+  
+  The algorithm implements: result = hermeadd(hermemulx(previous_result), current_coefficient)
+  applied from highest to lowest degree coefficients.
+  */
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn poly2herme(pol: Vec<f64>) -> (result: Vec<f64>)
+      requires pol.len() > 0,
+      ensures 
+          result.len() == pol.len(),
+          /* Degree preservation: the effective degree is preserved */
+          (forall|i: int| 0 <= i < pol.len() ==> pol[i] != 0.0 ==> 
+              exists|j: int| 0 <= j < result.len() && result[j] != 0.0),
+          /* Non-trivial transformation: for non-zero polynomials, transformation is meaningful */
+          (exists|i: int| 0 <= i < pol.len() && pol[i] != 0.0) ==> 
+              (exists|j: int| 0 <= j < result.len() && result[j] != 0.0),
+          /* Linearity property: transformation is linear in coefficients */
+          (forall|alpha: f64| (forall|pol_scaled: Seq<f64>| pol_scaled.len() == pol.len() ==>
+              (forall|k: int| 0 <= k < pol.len() ==> pol_scaled[k] == alpha * pol[k]) ==>
+                  exists|result_scaled: Seq<f64>| result_scaled.len() == result.len() &&
+                      forall|k: int| 0 <= k < result.len() ==> result_scaled[k] == alpha * result[k]))
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

@@ -1,0 +1,50 @@
+vc-description: |-
+  /*
+  Return the string representation of a vector, formatted as "array([v1, v2, ..., vn])".
+  This provides a structured string representation that includes the "array()" wrapper
+  and properly formatted element values.
+  
+  Specification: array_repr returns a well-formatted string representation of the vector.
+  
+  The specification captures:
+  1. Basic format: the string starts with "array(" and ends with ")"
+  2. Element representation: each element is formatted as a string
+  3. Proper bracketing: elements are enclosed in square brackets
+  4. Separator consistency: elements are separated by commas and spaces
+  5. Precision handling: floating point numbers are formatted to specified precision
+  6. Small number suppression: very small numbers can be represented as zero
+  7. Non-emptiness: the result is always a non-empty string
+  8. Structural integrity: the string format is parseable and well-formed
+  */
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn array_repr(arr: Vec<f32>, max_line_width: usize, precision: usize, suppress_small: bool) -> (result: String)
+      requires 
+          precision > 0,
+          max_line_width > 0,
+      ensures
+          result.starts_with("array(["),
+          result.ends_with("])"),
+          result.len() > 0,
+          arr.len() == 0 ==> result@ == "array([])",
+          arr.len() > 1 ==> result.contains(','),
+          arr.len() == 1 ==> !result.contains(','),
+          result.len() <= max_line_width + 20,
+          result.contains('(') && result.contains(')'),
+          result.contains('[') && result.contains(']'),
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      String::new()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

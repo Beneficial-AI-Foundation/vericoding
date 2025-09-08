@@ -1,0 +1,84 @@
+vc-description: |-
+  /*
+  Check for a complex type or an array of complex numbers
+  
+  The type of the input is checked, not the value. Even if the input
+  has an imaginary part equal to zero, iscomplexobj evaluates to True.
+  
+  Parameters
+  ----------
+  x : any
+      The input can be of any type and shape.
+  
+  Returns
+  -------
+  iscomplexobj : bool
+      The return value, True if x is of a complex type or has at least
+      one complex element.
+  
+  Specification: iscomplexobj returns True for complex type vectors.
+  This function checks the type, not the values - even complex numbers
+  with zero imaginary part are considered complex objects.
+  
+  Key properties:
+  - Always returns true for vectors of complex numbers
+  - Type-based checking: independent of actual values
+  - Zero complex numbers (0+0i) are still complex objects
+  - Complex vectors with any values are complex objects
+  
+  Mathematical properties:
+  - Type consistency: all Complex vectors are complex objects
+  - Value independence: result depends only on type, not values
+  - Idempotent: checking complex vectors always yields true
+  */
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  /* Complex number with real and imaginary parts */
+  struct Complex {
+      /* Real part */
+      re: f64,
+      /* Imaginary part */
+      im: f64,
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn iscomplexobj(x: Vec<Complex>) -> (result: bool)
+      ensures
+          result == true,
+          /* Sanity check: complex numbers with zero imaginary part are still complex */
+          forall|real_val: f64| {
+              let zero_im_complex = Complex { re: real_val, im: 0.0 };
+              forall|vec_with_zero_im: Vec<Complex>| 
+                  (forall|j: int| 0 <= j < vec_with_zero_im.len() ==> 
+                      vec_with_zero_im[j].re == zero_im_complex.re &&
+                      vec_with_zero_im[j].im == zero_im_complex.im) ==>
+                  result == true
+          },
+          /* Type consistency: complex type always returns true */
+          forall|other_vec: Vec<Complex>| result == true,
+          /* Value independence: different complex values still return true */
+          forall|i: int, re_val: f64, im_val: f64| 
+              0 <= i < x.len() ==> result == true,
+          /* Mathematical property: zero complex numbers are complex */
+          {
+              let zero_complex = Complex { re: 0.0, im: 0.0 };
+              result == true
+          }
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      true
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

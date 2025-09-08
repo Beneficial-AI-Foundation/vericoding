@@ -1,0 +1,80 @@
+vc-description: |-
+  /*
+  Return the binary representation of the input number as a string.
+  For negative numbers, if width is not given, a minus sign is added to the front.
+  If width is given, the two's complement of the number is returned.
+  
+  Specification: binary_repr correctly converts integers to binary strings with proper
+  handling of negative numbers (signed representation without width, two's complement with width)
+  */
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  /* Helper function to convert a natural number to its binary string representation */
+  spec fn nat_to_binary_string(n: nat) -> Seq<char>
+      decreases n
+  {
+      if n == 0 {
+          seq!['0']
+      } else {
+          let digit = if n % 2 == 0 { '0' } else { '1' };
+          nat_to_binary_string(n / 2).push(digit)
+      }
+  }
+
+  /* Helper function to check if a string represents a valid binary number */
+  spec fn is_valid_binary(s: Seq<char>) -> bool {
+      s.len() > 0 && (forall|i: int| 0 <= i < s.len() ==> s[i] == '0' || s[i] == '1')
+  }
+
+  /* Helper function to check if a string represents a valid signed binary number */
+  spec fn is_valid_signed_binary(s: Seq<char>) -> bool {
+      if s.len() > 0 && s[0] == '-' {
+          is_valid_binary(s.skip(1))
+      } else {
+          is_valid_binary(s)
+      }
+  }
+
+vc-spec: |-
+  fn binary_repr(num: i32, width: Option<usize>) -> (result: Vec<char>)
+      requires 
+          width.is_some() ==> width.get_Some_0() >= 1,
+      ensures 
+          /* Result is a valid binary string (possibly with sign) */
+          width.is_none() ==> is_valid_signed_binary(result@),
+          width.is_some() ==> is_valid_binary(result@),
+          
+          /* Length constraints */
+          width.is_some() ==> result.len() == width.get_Some_0(),
+          
+          /* Positive numbers: standard binary representation */
+          (num >= 0 && width.is_none()) ==> 
+              result@ == nat_to_binary_string(num as nat),
+          
+          /* Negative numbers without width: signed representation */
+          (num < 0 && width.is_none()) ==> 
+              result@.len() > 0 && result@[0] == '-' && is_valid_binary(result@.skip(1)),
+          
+          /* Two's complement properties for negative numbers with width */
+          (num < 0 && width.is_some()) ==> {
+              let w = width.get_Some_0();
+              let two_comp = (1u32 << w) as i32 + num;
+              two_comp >= 0 && two_comp < (1i32 << w) && result.len() == w
+          }
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+  }
+
+  fn main() {}

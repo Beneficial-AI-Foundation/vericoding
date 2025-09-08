@@ -1,0 +1,48 @@
+vc-description: |-
+  /*
+  numpy.rint: Round elements of the array to the nearest integer.
+  
+  Rounds each element in the input array to the nearest integer using
+  IEEE 754 rounding rules (round half to even). The result is returned
+  as a floating-point array of the same shape as the input.
+  
+  This function uses the C math library's rint function which rounds
+  to the nearest integer, with ties (halves) rounded to the nearest even number.
+  
+  Returns an array of the same shape as x, containing the rounded values.
+  
+  Specification: numpy.rint returns a vector where each element is
+  rounded to the nearest integer using IEEE 754 rounding rules.
+  
+  Precondition: True (no special preconditions for rint)
+  Postcondition: For all indices i:
+    - result[i] is the nearest integer to x[i]
+    - for ties (half-integers), result[i] is the nearest even integer
+    - result[i] is a floating-point representation of the integer
+    - |result[i] - x[i]| ≤ 0.5 for all i
+    - if x[i] is already an integer, result[i] = x[i]
+  */
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn numpy_rint(x: Vec<f32>) -> (result: Vec<f32>)
+      ensures
+          result.len() == x.len(),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

@@ -1,0 +1,83 @@
+vc-description: |-
+  /*
+  Return the least-squares solution to a linear matrix equation.
+  
+  Solves the equation a @ x = b by minimizing ||b - ax||^2.
+  
+  Parameters:
+  - a: Coefficient matrix (M, N)
+  - b: Ordinate values (M,) or (M, K)
+  - rcond: Cut-off ratio for small singular values
+  
+  Returns tuple of:
+  - x: Least-squares solution
+  - residuals: Sums of squared residuals
+  - rank: Rank of matrix a
+  - s: Singular values of a
+  
+  Specification: lstsq returns the solution that minimizes ||b - a*x||^2
+  */
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  /* Helper function to compute dot product of two vectors */
+  spec fn dot_product(u: Seq<f32>, v: Seq<f32>) -> f32
+      requires u.len() == v.len()
+      decreases u.len()
+  {
+      if u.len() == 0 {
+          0.0
+      } else {
+          u[0] * v[0] + dot_product(u.skip(1), v.skip(1))
+      }
+  }
+
+  /* Matrix-vector multiplication */
+  spec fn mat_vec_mul(a: Seq<Seq<f32>>, x: Seq<f32>) -> Seq<f32>
+      requires 
+          a.len() > 0,
+          forall|i: int| 0 <= i < a.len() ==> a[i].len() == x.len()
+  {
+      Seq::new(a.len(), |i: int| dot_product(a[i], x))
+  }
+
+  /* Euclidean norm squared of a vector */
+  spec fn norm_sq(v: Seq<f32>) -> f32 {
+      dot_product(v, v)
+  }
+
+  /* Vector subtraction */
+  spec fn vec_sub(a: Seq<f32>, b: Seq<f32>) -> Seq<f32>
+      requires a.len() == b.len()
+  {
+      Seq::new(a.len(), |i: int| a[i] - b[i])
+  }
+
+vc-spec: |-
+  fn lstsq(a: Vec<Vec<f32>>, b: Vec<f32>) -> (x: Vec<f32>)
+      requires 
+          a.len() > 0,
+          b.len() > 0,
+          a.len() == b.len(),
+          forall|i: int| 0 <= i < a.len() ==> a[i]@.len() > 0,
+          forall|i: int, j: int| 0 <= i < a.len() && 0 <= j < a.len() ==> a[i]@.len() == a[j]@.len(),
+      ensures
+          forall|y: Seq<f32>| y.len() == x@.len() ==> 
+              norm_sq(vec_sub(b@, mat_vec_mul(a@.map(|row| row@), x@))) <= 
+              norm_sq(vec_sub(b@, mat_vec_mul(a@.map(|row| row@), y)))
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

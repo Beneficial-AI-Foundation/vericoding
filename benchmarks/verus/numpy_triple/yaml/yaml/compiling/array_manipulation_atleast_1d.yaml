@@ -1,0 +1,45 @@
+vc-description: |-
+  /*
+  numpy.atleast_1d: Convert inputs to arrays with at least one dimension.
+      
+  This function ensures that the input has at least one dimension.
+  - Scalar inputs are converted to 1-dimensional arrays with a single element
+  - Higher-dimensional inputs (vectors) are preserved unchanged
+      
+  For the Vector-based implementation, we provide a version that takes
+  a vector and returns it unchanged, since Vectors already have at least
+  one dimension by construction.
+      
+  Specification: atleast_1d returns the input vector unchanged.
+      
+  Since Vectors in Lean already have at least one dimension by their type,
+  this function acts as an identity function for vectors.
+      
+  Precondition: True (no special preconditions)
+  Postcondition: The result is identical to the input vector
+  */
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn atleast_1d(arr: Vec<f64>) -> (result: Vec<f64>)
+      ensures
+          result == arr,
+          forall|i: int| 0 <= i < arr.len() ==> result[i] == arr[i],
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

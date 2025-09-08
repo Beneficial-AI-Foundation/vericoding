@@ -1,0 +1,45 @@
+vc-description: |-
+  /*
+  numpy.strings.istitle: Returns true for each element if the element is a titlecased string and there is at least one character, false otherwise.
+  
+  A string is considered titlecased if:
+  1. It contains at least one character
+  2. Each word starts with an uppercase letter followed by lowercase letters
+  3. Words are separated by non-alphabetic characters
+  4. There is at least one cased character in the string
+  
+  Examples:
+  - "Title Case" → True
+  - "Numpy Is Great" → True  
+  - "numpy is great" → False
+  - "NUMPY IS GREAT" → False
+  - "" → False
+  - "123" → False
+  */
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  /* Helper function to check if a string is titlecased according to Python's str.istitle() logic */
+  spec fn is_titlecased(s: Seq<char>) -> bool;
+
+vc-spec: |-
+  fn istitle(a: Vec<String>) -> (result: Vec<bool>)
+      ensures 
+          result.len() == a.len(),
+          forall|i: int| 0 <= i < a.len() ==> result[i] == is_titlecased(a[i]@)
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

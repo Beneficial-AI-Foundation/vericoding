@@ -1,0 +1,35 @@
+/* ufunc.identity: Get the identity element for a ufunc operation.
+
+Returns the identity element for a given binary operation, which is the value
+that when combined with any other value using that operation, leaves the other
+value unchanged. For example:
+- Addition: identity is 0 (x + 0 = x)
+- Multiplication: identity is 1 (x * 1 = x)
+- Logical AND: identity is True (x ∧ True = x)
+- Logical OR: identity is False (x ∨ False = x)
+
+Some operations may have no identity element, in which case None is returned.
+
+Specification: ufunc_identity returns the identity element if it exists.
+
+Precondition: The operation is a valid binary function
+Postcondition: If an identity element exists, applying the operation with
+               that element leaves any other element unchanged */
+
+use vstd::prelude::*;
+
+verus! {
+fn ufunc_identity(op: spec_fn(f64, f64) -> f64) -> (result: Option<f64>)
+    ensures
+        match result {
+            Some(id) => forall|x: f64| op(x, id) == x && op(id, x) == x,
+            None => !exists|id: f64| forall|x: f64| op(x, id) == x && op(id, x) == x,
+        }
+{
+    // impl-start
+    assume(false);
+    None
+    // impl-end
+}
+}
+fn main() {}

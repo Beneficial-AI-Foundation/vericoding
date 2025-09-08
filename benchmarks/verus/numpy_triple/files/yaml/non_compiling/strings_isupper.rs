@@ -1,0 +1,38 @@
+/* Checks if all cased characters in each string are uppercase and there is at least one character
+
+Specification: isupper returns true for each element if all cased characters 
+in the string are uppercase and there is at least one character, false otherwise.
+Mathematical properties:
+1. Empty strings return false
+2. Strings with no cased characters return false  
+3. Strings with mixed case return false
+4. Strings with all cased characters uppercase return true */
+
+use vstd::prelude::*;
+
+verus! {
+spec fn has_cased_char(chars: Seq<char>) -> bool {
+    exists|c: char| chars.contains(c) && (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')
+}
+
+spec fn all_cased_chars_upper(chars: Seq<char>) -> bool {
+    forall|c: char| chars.contains(c) && ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) ==> (c >= 'A' && c <= 'Z')
+}
+
+fn isupper(a: Vec<String>) -> (result: Vec<bool>)
+    ensures 
+        result.len() == a.len(),
+        forall|i: int| 0 <= i < a.len() ==> {
+            let s = a[i].as_bytes();
+            result[i] == (s.len() > 0 && 
+                         has_cased_char(s@.map(|b: u8| b as char)) && 
+                         all_cased_chars_upper(s@.map(|b: u8| b as char)))
+        }
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

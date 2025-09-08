@@ -1,0 +1,40 @@
+vc-description: |-
+  /*
+  numpy.array2string: Return a string representation of an array
+  
+  Converts an array to its string representation with customizable separator.
+  This function provides a way to format arrays for display purposes.
+  
+  The separator parameter controls how elements are separated in the output.
+  
+  Specification: array2string returns a string representation of the array
+  
+  Precondition: True (no special preconditions)
+  Postcondition: result is non-empty string that starts with '[' and ends with ']'
+  */
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn array2string(arr: Vec<f32>, separator: &str) -> (result: Vec<char>)
+      ensures
+          result@.len() > 0,
+          result@[0] == '[',
+          result@[result@.len() - 1] == ']'
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      vec!['[', ']']
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

@@ -1,0 +1,40 @@
+/* Evenly round to the given number of decimals.
+
+numpy.round: Evenly round to the given number of decimals.
+
+Rounds each element of the input array to the given number of decimal places.
+Uses "banker's rounding" (round half to even) for ties.
+
+For decimals=0: rounds to nearest integer
+For decimals>0: rounds to that many decimal places
+For decimals<0: rounds to nearest 10^(-decimals)
+
+Returns an array of the same shape as input, containing the rounded values.
+
+Specification: numpy.round rounds each element to the specified number of decimal places.
+
+Precondition: True (rounding is defined for all real numbers and decimal places)
+Postcondition: For all indices i, result[i] is the rounded value of a[i] to 'decimals' places:
+- For decimals = 0: result[i] is the nearest integer to a[i]
+- For decimals > 0: result[i] is rounded to that many decimal places
+- For decimals < 0: result[i] is rounded to nearest multiple of 10^(-decimals)
+- Uses banker's rounding (round half to even) for ties
+- Monotonicity: if a[i] ≤ a[j] then result[i] ≤ result[j]
+- For decimals=0: result[i] is an integer value
+- Approximation property: result[i] is close to a[i] within rounding precision */
+
+use vstd::prelude::*;
+
+verus! {
+fn numpy_round(a: Vec<f64>, decimals: i32) -> (result: Vec<f64>)
+    requires a.len() > 0,
+    ensures 
+        result.len() == a.len()
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

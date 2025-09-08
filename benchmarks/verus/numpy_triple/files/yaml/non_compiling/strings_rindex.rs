@@ -1,0 +1,46 @@
+/* For each element, return the highest index in the string where substring is found.
+Unlike rfind, this function requires that the substring be found in each string,
+ensuring all results are non-negative indices.
+
+Specification: rindex returns the highest index where substring is found within range.
+The key difference from rfind is that rindex has a stronger precondition:
+the substring must exist in each string within the specified range. */
+
+use vstd::prelude::*;
+
+verus! {
+fn rindex(a: Vec<String>, sub: Vec<String>, start: Vec<i32>, end_pos: Vec<i32>) -> (result: Vec<i32>)
+    requires 
+        a.len() == sub.len() && sub.len() == start.len() && start.len() == end_pos.len(),
+        forall|i: int| 0 <= i < a.len() ==> {
+            /* Valid range bounds */
+            0 <= start[i] && start[i] <= end_pos[i] &&
+            end_pos[i] <= (a[i].len() as i32) &&
+            /* Substring must exist in each string within the range (precondition for rindex) */
+            exists|j: nat| (start[i] as nat) <= j && 
+              j + sub[i].len() <= ((end_pos[i] + 1) as nat).min(a[i].len() as nat) &&
+              a[i].as_bytes().subrange(j as int, (j + sub[i].len()) as int) == sub[i].as_bytes()
+        },
+    ensures
+        result.len() == a.len(),
+        forall|i: int| 0 <= i < a.len() ==> {
+            /* Result is always non-negative (no -1 values like rfind) */
+            result[i] >= 0 &&
+            /* Result is within the valid search range */
+            start[i] <= result[i] && 
+            result[i] <= end_pos[i] &&
+            /* The substring is found at the returned index */
+            (result[i] as nat) + sub[i].len() <= a[i].len() &&
+            a[i].as_bytes().subrange(result[i] as int, (result[i] as nat + sub[i].len()) as int) == sub[i].as_bytes() &&
+            /* This is the highest (rightmost) index where substring is found in the range */
+            forall|j: nat| (result[i] as nat) < j && j + sub[i].len() <= ((end_pos[i] + 1) as nat).min(a[i].len() as nat) ==> 
+                !(a[i].as_bytes().subrange(j as int, (j + sub[i].len()) as int) == sub[i].as_bytes())
+        },
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

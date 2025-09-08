@@ -1,0 +1,29 @@
+/* Generate indices for a 1D grid of given size.
+Returns a 2D array where the first dimension has size 1 and contains 
+the indices [0, 1, 2, ..., n-1]
+
+Specification: indices generates a grid of index values
+This comprehensive specification captures:
+1. The output has the correct shape: (1, n) for 1D case
+2. The single row contains exactly the indices [0, 1, 2, ..., n-1]
+3. Each position i contains the value i
+4. The indices are in ascending order
+5. The result covers all valid indices for the given dimension */
+
+use vstd::prelude::*;
+
+verus! {
+fn indices(n: usize) -> (grid: Vec<Vec<usize>>)
+    ensures 
+        grid.len() == 1,
+        grid[0].len() == n,
+        forall|i: int| 0 <= i < n ==> grid[0][i] == i,
+        forall|i: int, j: int| 0 <= i < j < n ==> grid[0][i] < grid[0][j],
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

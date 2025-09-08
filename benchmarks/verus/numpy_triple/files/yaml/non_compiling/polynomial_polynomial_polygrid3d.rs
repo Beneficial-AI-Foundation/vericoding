@@ -1,0 +1,47 @@
+/* Evaluate a 3-D polynomial on the Cartesian product of x, y and z.
+
+Specification: polygrid3d evaluates a 3-D polynomial on the Cartesian product of x, y and z.
+The result is a 3D grid where result[i][j][k] = p(x[i], y[j], z[k]) for the polynomial 
+defined by coefficients c, where p(a,b,c) = sum_{i,j,k} c[i][j][k] * a^i * b^j * c^k. */
+
+use vstd::prelude::*;
+
+verus! {
+spec fn pow_f32(base: f32, exp: usize) -> f32
+    decreases exp
+{
+    if exp == 0 {
+        1.0
+    } else {
+        base * pow_f32(base, exp - 1)
+    }
+}
+
+fn polygrid3d(
+    x: Vec<f32>, 
+    y: Vec<f32>, 
+    z: Vec<f32>,
+    c: Vec<Vec<Vec<f32>>>
+) -> (result: Vec<Vec<Vec<f32>>>)
+    requires 
+        x.len() > 0,
+        y.len() > 0, 
+        z.len() > 0,
+        c.len() > 0,
+        forall|i: int| 0 <= i < c.len() ==> c[i].len() > 0,
+        forall|i: int, j: int| 0 <= i < c.len() && 0 <= j < c[i].len() ==> c[i][j].len() > 0,
+    ensures
+        result.len() == x.len(),
+        forall|i: int| 0 <= i < result.len() ==> result[i].len() == y.len(),
+        forall|i: int, j: int| 0 <= i < result.len() && 0 <= j < result[i].len() ==> result[i][j].len() == z.len(),
+        forall|i: int, j: int, k: int| 
+            0 <= i < x.len() && 0 <= j < y.len() && 0 <= k < z.len() ==>
+            exists|val: f32| result[i][j][k] == val
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

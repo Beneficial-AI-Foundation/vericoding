@@ -1,0 +1,53 @@
+vc-description: |-
+  /*
+  Construct a structured array from a text file using regular expression parsing. The returned array is always a structured array, and is constructed from all matches of the regular expression in the file. Groups in the regular expression are converted to fields of the structured array.
+  */
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  /* A simple abstraction for regular expressions */
+  pub struct RegExp {
+      /* The regular expression pattern */
+      pub pattern: String,
+  }
+
+  /* A simple abstraction for structured data types */
+  pub struct StructuredDataType {
+      /* List of field names and their types */
+      pub fields: Vec<(String, String)>,
+  }
+
+  /* A simple abstraction for structured array elements */
+  pub struct StructuredElement {
+      /* List of field values as strings */
+      pub values: Vec<String>,
+  }
+vc-helpers: |-
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+vc-spec: |-
+  fn fromregex(file_content: &str, regexp: &RegExp, dtype: &StructuredDataType) -> (result: Vec<StructuredElement>)
+      requires 
+          dtype.fields.len() > 0,
+      ensures
+          forall|i: int| 0 <= i < result.len() ==> 
+              result[i].values.len() == dtype.fields.len(),
+          forall|i: int, j: int| 0 <= i < result.len() && 0 <= j < result[i].values.len() ==>
+              exists|match_group: String| result[i].values[j] == match_group,
+          forall|i: int, j: int| 0 <= i < result.len() && 0 <= j < result.len() ==>
+              result[i].values.len() == result[j].values.len(),
+          result.len() > 0 ==> file_content.len() > 0,
+          forall|i: int| 0 <= i < result.len() ==> 
+              exists|substring: String| substring.len() > 0,
+vc-postamble: |-
+
+  }
+  fn main() {}

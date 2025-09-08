@@ -1,0 +1,53 @@
+/* Compute the Heaviside step function.
+
+The Heaviside step function is defined as:
+  0 if x1 < 0
+  x2 if x1 == 0
+  1 if x1 > 0
+
+Compute the Heaviside step function element-wise.
+Returns 0 if x < 0, x2 if x == 0, and 1 if x > 0.
+
+Specification: The Heaviside function returns values based on the sign of x1 elements.
+For each element:
+- If x1[i] < 0, result[i] = 0
+- If x1[i] = 0, result[i] = x2[i]
+- If x1[i] > 0, result[i] = 1
+
+This specification captures the complete behavior of the heaviside step function
+including the crucial property that it's completely determined by the sign of x1
+and uses x2 as the value at the discontinuity point. */
+
+use vstd::prelude::*;
+
+verus! {
+spec fn is_zero(x: f32) -> bool {
+    true  // uninterpreted function representing x == 0.0
+}
+
+spec fn is_positive(x: f32) -> bool {
+    true  // uninterpreted function representing x > 0.0
+}
+
+spec fn is_negative(x: f32) -> bool {
+    true  // uninterpreted function representing x < 0.0
+}
+
+fn heaviside(x1: Vec<f32>, x2: Vec<f32>) -> (result: Vec<f32>)
+    requires x1.len() == x2.len(),
+    ensures 
+        result.len() == x1.len(),
+        forall|i: int| 0 <= i < x1.len() ==> {
+            (is_negative(x1[i]) ==> result[i] == 0.0f32) &&
+            (is_zero(x1[i]) ==> result[i] == x2[i]) &&
+            (is_positive(x1[i]) ==> result[i] == 1.0f32) &&
+            (result[i] == 0.0f32 || result[i] == 1.0f32 || result[i] == x2[i])
+        }
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

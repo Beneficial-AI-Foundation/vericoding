@@ -1,0 +1,44 @@
+/* numpy.subtract: Subtract arguments, element-wise.
+
+Subtracts two vectors element-wise. If the vectors have the same shape,
+each element of the result is the difference of the corresponding elements
+from the input vectors.
+
+This is equivalent to x1 - x2 in terms of array broadcasting.
+The operation is the inverse of addition: (x1 - x2) + x2 = x1.
+
+Specification: numpy.subtract returns a vector where each element is the difference
+of the corresponding elements from x1 and x2.
+
+Precondition: True (no special preconditions for basic subtraction)
+Postcondition: For all indices i, result[i] = x1[i] - x2[i]
+
+Mathematical properties:
+- Subtraction is anti-commutative: x1 - x2 = -(x2 - x1)
+- Subtraction is the inverse of addition: (x1 - x2) + x2 = x1
+- Subtracting zero leaves the original value: x1 - 0 = x1
+- Subtracting a value from itself yields zero: x1 - x1 = 0 */
+
+use vstd::prelude::*;
+
+verus! {
+fn subtract(x1: Vec<f32>, x2: Vec<f32>) -> (result: Vec<f32>)
+    requires 
+        x1.len() == x2.len(),
+    ensures
+        result.len() == x1.len(),
+        forall|i: int| 0 <= i < result.len() ==> result[i] == x1[i] - x2[i],
+        /* Sanity check: subtracting zero preserves the original value */
+        forall|i: int| 0 <= i < result.len() && x2[i] == 0.0 ==> result[i] == x1[i],
+        /* Sanity check: subtracting a value from itself yields zero */
+        forall|i: int| 0 <= i < result.len() && x1[i] == x2[i] ==> result[i] == 0.0,
+        /* Anti-commutativity property can be verified */
+        forall|i: int| 0 <= i < result.len() ==> result[i] == -(x2[i] - x1[i]),
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

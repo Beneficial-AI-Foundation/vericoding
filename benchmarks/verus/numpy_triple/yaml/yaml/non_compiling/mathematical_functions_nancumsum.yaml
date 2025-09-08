@@ -1,0 +1,67 @@
+vc-description: |-
+  /*
+  numpy.nancumsum: Return the cumulative sum of array elements treating NaN as zero.
+  
+  For a 1D array, nancumsum computes the cumulative sum where NaN values are treated as zero.
+  Unlike regular cumsum, NaN values do not propagate and are replaced with zero during computation.
+  
+  Examples:
+  - [1, NaN, 3] becomes [1, 1, 4] (NaN treated as 0)
+  - [NaN, 2, 3] becomes [0, 2, 5] (leading NaN becomes 0)
+  - [1, 2, NaN, 4] becomes [1, 3, 3, 7] (NaN contributes 0 to sum)
+  
+  The cumulative sum with NaN handling is defined as:
+  - result[0] = if a[0].isNaN then 0 else a[0]
+  - result[i] = result[i-1] + (if a[i].isNaN then 0 else a[i]) for i > 0
+  */
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn cumsum_with_nan_handling(a: Seq<f32>, idx: int) -> f32
+      recommends 0 <= idx < a.len()
+      decreases idx
+  {
+      if idx == 0 {
+          if a[0].is_nan() { 0.0 } else { a[0] }
+      } else {
+          cumsum_with_nan_handling(a, idx - 1) + (if a[idx].is_nan() { 0.0 } else { a[idx] })
+      }
+  }
+
+  spec fn vec_sum_up_to(a: Seq<f32>, up_to: int) -> f32
+      recommends 0 <= up_to <= a.len()
+      decreases up_to
+  {
+      if up_to == 0 {
+          0.0
+      } else {
+          vec_sum_up_to(a, up_to - 1) + (if a[up_to - 1].is_nan() { 0.0 } else { a[up_to - 1] })
+      }
+  }
+
+vc-spec: |-
+  fn nancumsum(a: Vec<f32>) -> (result: Vec<f32>)
+      ensures
+          result.len() == a.len(),
+          a.len() > 0 ==> result[0] == (if a[0].is_nan() { 0.0 } else { a[0] }),
+          forall|i: int| 1 <= i < a.len() ==> 
+              result[i] == result[i - 1] + (if a[i].is_nan() { 0.0 } else { a[i] }),
+          forall|i: int| 0 <= i < a.len() ==> 
+              result[i] == vec_sum_up_to(a@, i + 1),
+          forall|i: int| 0 <= i < a.len() ==> !result[i].is_nan(),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

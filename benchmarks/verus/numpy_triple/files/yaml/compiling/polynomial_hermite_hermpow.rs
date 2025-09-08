@@ -1,0 +1,50 @@
+/* Raise a Hermite polynomial series to a power.
+Given coefficients `c` representing a Hermite series (ordered from low to high degree),
+returns the coefficients of the series raised to the power `pow`.
+The `maxpower` parameter limits the maximum degree of the result.
+
+Specification: hermpow raises a Hermite series to a power by repeated multiplication.
+Key properties:
+1. For pow = 0, the result is the constant polynomial [1]
+2. For pow = 1, the result equals the input polynomial
+3. For pow > 1, the result is obtained by repeated Hermite multiplication
+4. The result degree is bounded by min(n + (n-1)*pow - 1, maxpower)
+5. The operation respects the algebraic properties of polynomial exponentiation */
+
+use vstd::prelude::*;
+
+verus! {
+fn hermpow(c: Vec<f64>, pow: usize, maxpower: usize) -> (result: Vec<f64>)
+    requires 
+        c.len() > 0,
+        maxpower >= 0,
+    ensures
+        /* Sanity check: result has bounded size */
+        result.len() <= maxpower + 1,
+        result.len() == if c.len() + (c.len() - 1) * pow <= maxpower + 1 {
+            c.len() + (c.len() - 1) * pow
+        } else {
+            maxpower + 1
+        },
+        
+        /* Property 1: Power of 0 gives constant polynomial [1] */
+        pow == 0 ==> result.len() == 1 && result[0] == 1.0,
+        
+        /* Property 2: Power of 1 preserves the polynomial (up to size constraints) */
+        (pow == 1 && c.len() <= maxpower + 1) ==> (
+            result.len() == c.len() &&
+            forall|i: int| 0 <= i < c.len() ==> result[i] == c[i]
+        ),
+        
+        /* Property 3: The result represents c^pow in the Hermite polynomial basis */
+        /* For non-zero inputs with pow > 0, result is non-trivial */
+        ((exists|i: int| 0 <= i < c.len() && c[i] != 0.0) && pow > 0) ==> 
+            exists|j: int| 0 <= j < result.len() && result[j] != 0.0,
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

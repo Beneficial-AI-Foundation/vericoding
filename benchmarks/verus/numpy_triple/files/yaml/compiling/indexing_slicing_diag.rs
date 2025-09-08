@@ -1,0 +1,44 @@
+/* Extract a diagonal or construct a diagonal array.
+
+numpy.diag: Extract a diagonal or construct a diagonal array.
+
+For simplicity, this specification focuses on extracting the diagonal
+from a square matrix represented as a flattened vector.
+Given a flattened n×n matrix, returns the diagonal elements.
+
+This specification captures the essential mathematical property of
+diagonal extraction in a type-safe manner using Vector types.
+
+Specification: diag extracts diagonal elements from a flattened matrix.
+
+Mathematical Properties:
+1. Diagonal Extraction: For a flattened n×n matrix stored in row-major order,
+   the diagonal elements are located at positions i*n + i for i ∈ [0, n).
+
+2. Type Safety: The function maintains type safety by using Vector types
+   that encode the size information at the type level.
+
+3. Correctness: Each element in the result vector corresponds to a diagonal
+   element from the original matrix, preserving the mathematical structure.
+
+This specification provides a foundation for formal verification of diagonal
+operations in numerical computing. */
+
+use vstd::prelude::*;
+
+verus! {
+fn diag(matrix: Vec<f32>, n: usize) -> (result: Vec<f32>)
+    requires 
+        matrix.len() == n * n,
+        n > 0,
+    ensures
+        result.len() == n,
+        forall|i: int| 0 <= i < n ==> result[i] == matrix[i * n + i],
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

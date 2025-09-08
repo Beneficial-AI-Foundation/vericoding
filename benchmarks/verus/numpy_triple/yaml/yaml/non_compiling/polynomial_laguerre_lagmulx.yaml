@@ -1,0 +1,28 @@
+vc-description: |-
+  /*
+  Multiply a Laguerre series by x using the recursion relationship for Laguerre polynomials.
+  */
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn lagmulx(c: Vec<f32>) -> (result: Vec<f32>)
+      requires c.len() > 0,
+      ensures 
+          result.len() == c.len() + 1,
+          result[0] == c[0],
+          result[1] == 0.0_f32 - c[0],
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

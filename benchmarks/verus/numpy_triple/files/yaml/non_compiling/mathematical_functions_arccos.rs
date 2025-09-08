@@ -1,0 +1,36 @@
+/* Trigonometric inverse cosine, element-wise.
+Returns the arc cosine of each element in the input vector.
+The result is in the range [0, π].
+
+Specification: arccos returns the inverse cosine of each element.
+Precondition: All elements must be in the range [-1, 1] for valid results.
+Postcondition: The result contains the arc cosine of each input element,
+with values in the range [0, π], and satisfies cos(arccos(x)) = x for valid inputs.
+Additionally, arccos is monotonically decreasing on its domain [-1, 1]. */
+
+use vstd::prelude::*;
+
+verus! {
+fn arccos(x: Vec<f32>) -> (result: Vec<f32>)
+    requires 
+        x.len() > 0,
+        forall|i: int| 0 <= i < x.len() ==> -1.0 <= x[i] && x[i] <= 1.0,
+    ensures
+        result.len() == x.len(),
+        forall|i: int| 0 <= i < result.len() ==> {
+            /* Range constraint: arccos maps [-1, 1] to [0, π] */
+            0.0 <= result[i] && result[i] <= 3.141592653589793 &&
+            /* Boundary values: arccos(-1) = π, arccos(1) = 0 */
+            (x[i] == -1.0 ==> result[i] == 3.141592653589793) &&
+            (x[i] == 1.0 ==> result[i] == 0.0)
+        },
+        /* Monotonicity: arccos is decreasing on [-1, 1] */
+        forall|i: int, j: int| 0 <= i < x.len() && 0 <= j < x.len() && x[i] <= x[j] ==> result[j] <= result[i]
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

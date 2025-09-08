@@ -1,0 +1,55 @@
+vc-description: |-
+  /*
+  numpy.union1d: Find the union of two arrays.
+  
+  Returns the unique, sorted array of values that are in either of the two
+  input arrays. The function is equivalent to unique(concatenate(ar1, ar2)).
+  
+  The input arrays are flattened if they are not already 1D, and the result
+  is always a 1D array containing the union of all elements from both arrays,
+  with duplicates removed and elements sorted in ascending order.
+  
+  Specification: numpy.union1d returns the sorted union of two arrays.
+  
+  Precondition: True (no special preconditions needed)
+  Postcondition: The result contains:
+  1. All elements from ar1 and ar2 (union property)
+  2. Elements are sorted in ascending order  
+  3. No duplicate elements (uniqueness property)
+  4. Every element in the result comes from one of the input arrays
+  5. Every element from input arrays appears in the result
+  */
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn union1d(ar1: Vec<f32>, ar2: Vec<f32>) -> (result: Vec<f32>)
+      ensures
+          /* Union property: every element from either input array is in result */
+          forall|i: int| 0 <= i < ar1.len() ==> exists|j: int| 0 <= j < result.len() && result[j] == ar1[i],
+          forall|i: int| 0 <= i < ar2.len() ==> exists|j: int| 0 <= j < result.len() && result[j] == ar2[i],
+          /* Completeness: every element in result comes from one of the input arrays */
+          forall|j: int| 0 <= j < result.len() ==> 
+              (exists|i: int| 0 <= i < ar1.len() && result[j] == ar1[i]) ||
+              (exists|i: int| 0 <= i < ar2.len() && result[j] == ar2[i]),
+          /* Sorted property: result is sorted in ascending order */
+          forall|i: int, j: int| 0 <= i < j < result.len() ==> result[i] <= result[j],
+          /* Uniqueness property: no duplicate elements */
+          forall|i: int, j: int| 0 <= i < result.len() && 0 <= j < result.len() && i != j ==> result[i] != result[j],
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

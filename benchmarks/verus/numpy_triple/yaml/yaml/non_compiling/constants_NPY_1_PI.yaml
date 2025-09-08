@@ -1,0 +1,34 @@
+vc-description: |-
+  /*
+  The mathematical constant 1/π (one divided by pi), approximately 0.31831...
+  
+  Specification: NPY_1_PI represents the reciprocal of pi (1/π),
+  and satisfies key mathematical properties
+  */
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn NPY_1_PI() -> (result: f32)
+      ensures
+          0.31830f32 <= result && result <= 0.31832f32,
+          0.0f32 < result && result < 1.0f32,
+          0.318309f32 <= result && result <= 0.318310f32,
+          0.6366f32 <= 2.0f32 * result && 2.0f32 * result <= 0.6367f32,
+          0.10131f32 <= result * result && result * result <= 0.10133f32,
+          0.15915f32 <= result / 2.0f32 && result / 2.0f32 <= 0.15916f32,
+          0.99999f32 <= result * 3.141592653589793f32 && result * 3.141592653589793f32 <= 1.00001f32,
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0.31830988618379067f32
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

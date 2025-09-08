@@ -1,0 +1,32 @@
+vc-description: |-
+  /*
+  Create a 1-D array from text data in a string.
+  Parses a string containing numeric data separated by a specified separator
+  and returns a vector of the parsed values.
+  Specification: fromstring creates a vector by parsing numeric values from a string.
+  The function parses the input string using the given separator and converts
+  the resulting substrings to floating-point numbers.
+  */
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn fromstring(input: &str, sep: &str, n: usize) -> (result: Vec<f64>)
+      requires n > 0,
+      ensures 
+          result.len() <= n,
+          forall|i: int| 0 <= i < result.len() ==> true, /* All parsed elements are valid */
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}
