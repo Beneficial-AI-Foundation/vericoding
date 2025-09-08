@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   This task requires writing a Verus function that returns the nth "ugly number". Ugly numbers are positive integers whose only prime factors are 2, 3, or 5.
   
   The function should generate ugly numbers in ascending order and return the nth one. The first ugly number is 1.
@@ -11,6 +12,7 @@ vc-description: |-
   Output:
   The output is a natural number:
   The nth smallest ugly number.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

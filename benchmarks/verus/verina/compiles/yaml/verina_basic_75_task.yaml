@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   This task involves finding the minimum element in a non-empty array of integers. The goal is to identify and return the smallest number present in the array.
   
   -----Input-----
@@ -12,6 +13,7 @@ vc-description: |-
   
   -----Note-----
   It is assumed that the input array contains at least one element. The implementation uses a helper function (loop) to recursively compare elements and determine the minimum value.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

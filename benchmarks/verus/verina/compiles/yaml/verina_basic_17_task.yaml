@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   This task requires writing a Verus method that converts all uppercase characters in a given string to their lowercase equivalents while keeping the other characters unchanged. The output string must have the same length as the input string.
   
   -----Input-----
@@ -11,6 +12,7 @@ vc-description: |-
   
   -----Note-----
   There are no preconditions; the method is expected to work for any non-null string.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

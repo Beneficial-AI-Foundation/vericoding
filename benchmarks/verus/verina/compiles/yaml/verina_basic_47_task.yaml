@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   This task requires writing a Verus method that calculates the sum of all the elements in an array of integers. The method should process the entire array and return the total sum of its elements.
   
   -----Input-----
@@ -11,6 +12,7 @@ vc-description: |-
   
   -----Note-----
   - The input array is assumed not to be null.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

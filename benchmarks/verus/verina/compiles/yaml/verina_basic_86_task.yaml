@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   This task requires writing a Verus method that rotates an array of integers to the left by a specified offset.
   
   -----Input-----
@@ -13,6 +14,7 @@ vc-description: |-
   
   -----Note-----
   If the array is empty, the method should return an empty array.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

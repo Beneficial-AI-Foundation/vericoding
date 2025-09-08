@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   This task requires writing a Verus method that multiplies two integers. The method should return the product of the two input numbers.
   
   -----Input-----
@@ -9,7 +10,7 @@ vc-description: |-
   -----Output-----
   The output is an integer:
   Returns the product of the two input integers (a * b).
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   This task requires writing a Verus method that determines whether a given natural number is prime. A number (with n ≥ 2) is considered prime if it is divisible only by 1 and itself. The method should return true when the input number is prime and false otherwise.
   
   Input:
@@ -12,6 +13,7 @@ vc-description: |-
   
   Note:
   The input is expected to satisfy the condition n ≥ 2.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   The task is to determine whether there exists at least one pair of different floating-point numbers in a list such that the absolute difference between them is less than a given threshold. The focus is solely on deciding if such a pair is present in the list.
   
   Input:
@@ -13,7 +14,7 @@ vc-description: |-
   
   Note:
   It is assumed that the list of numbers is provided and that the threshold is non-negative.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

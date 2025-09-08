@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   This task requires writing a Verus method that determines if a given string is a palindrome, ignoring all
   non-alphanumeric characters and case differences. For example, the string "A man, a plan, a canal: Panama" should return
   true.
@@ -10,6 +11,7 @@ vc-description: |-
   -----Output-----
   A boolean (Bool):
   true if s is a palindrome when ignoring non-alphanumeric characters and case. false otherwise.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

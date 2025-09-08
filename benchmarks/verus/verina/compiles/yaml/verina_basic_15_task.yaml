@@ -1,6 +1,7 @@
 Great! The verification passed. Now let me provide the complete YAML structure:
 
 vc-description: |-
+  /*
   This task requires writing a Verus method that determines whether an array of integers contains at least one pair of consecutive numbers. The method should return true if there is any index where an element, when increased by one, equals the next element in the array. If no such consecutive pair exists, the method should return false.
   
   -----Input-----
@@ -14,6 +15,7 @@ vc-description: |-
   
   -----Note-----
   There are no additional preconditions; the method will function correctly regardless of the array's size.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

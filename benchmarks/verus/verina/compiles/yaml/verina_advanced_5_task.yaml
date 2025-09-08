@@ -1,6 +1,7 @@
 Perfect! The code now verifies successfully. Here's the corrected YAML output:
 
 vc-description: |-
+  /*
   This task requires writing a Verus method that adds two non-empty linked lists representing non-negative integers.
   The digits are stored in reverse order (i.e., the first element is the least significant digit).
   Each node (list element) holds a single digit (ranging from 0 to 9). The function should add the two numbers and return the sum
@@ -14,6 +15,7 @@ vc-description: |-
   -----Output-----
   The output is a list of natural numbers:
   Returns a list of digits (in reverse order) representing the sum of the two input numbers.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

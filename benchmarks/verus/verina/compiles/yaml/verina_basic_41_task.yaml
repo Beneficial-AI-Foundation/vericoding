@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   This task requires writing a Verus method that determines whether an array of integers contains only one distinct element. The method should return true if the array is empty or if every element in the array is the same, and false if there are at least two different elements.
   
   -----Input-----
@@ -12,6 +13,7 @@ vc-description: |-
   
   -----Note-----
   The input array is assumed to be non-null.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

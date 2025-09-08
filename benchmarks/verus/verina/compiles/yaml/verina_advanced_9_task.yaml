@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   This task requires writing a Verus method of which given a number n and divisor d, it counts all the number that is smaller than
   n whose sum of digits is divisible by d.
   -----Input-----
@@ -9,6 +10,7 @@ vc-description: |-
   -----Output-----
   The output is a natural number:
   Ensure this match the count that satisfy the property.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

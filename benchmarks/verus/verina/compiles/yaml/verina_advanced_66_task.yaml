@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Given an input string "words_str", this task requires writing a Verus function that reverses the order of its words. A word is defined as a contiguous sequence of non-space characters. The function must remove any extra spaces so that the output string contains words separated by a single space and has no leading or trailing spaces. The characters within each word must stay the same as the original input.
   
   -----Input-----
@@ -6,7 +7,7 @@ vc-description: |-
   
   -----Output-----
   A string with the words from the input reversed, where words are separated by a single space, with no extra spaces at the beginning or end.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

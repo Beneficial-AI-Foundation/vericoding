@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   This task requires writing a Verus method that computes the sum of the fourth power of the first n odd natural numbers. In other words, given a non-negative integer n, the method should calculate the sum: 1⁴ + 3⁴ + 5⁴ + ... for the first n odd numbers.
   
   -----Input-----
@@ -12,6 +13,7 @@ vc-description: |-
   -----Note-----
   The input n is assumed to be a non-negative integer.
   The correctness of the result is established by a theorem that relates the computed sum to a specific formula.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

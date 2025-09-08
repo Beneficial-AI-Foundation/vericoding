@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   You are given an array of integers and a threshold value k. The problem is to create a new array where every element greater than k is replaced with -1 while every other element remains unchanged.
   
   -----Input-----
@@ -13,7 +14,7 @@ vc-description: |-
   
   -----Note-----
   It is assumed that the input array may be empty or non-empty, and that k can be any integer. There are no additional preconditions.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

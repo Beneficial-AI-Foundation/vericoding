@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   This task requires writing a Verus method that determines whether a given integer is even. In other words, the method should return true if the number is even and false if the number is odd.
   
   -----Input-----
@@ -12,7 +13,7 @@ vc-description: |-
   
   -----Note-----
   There are no preconditions; the method will always work for any integer input.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

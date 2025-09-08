@@ -1,10 +1,11 @@
 vc-description: |-
+  /*
   This task requires writing a Verus function that finds the single number in a non-empty list of integers, where every element appears exactly twice except for one element that appears only once. The function should return the integer that appears only once.
-
+  
   Input: The input is a non-empty list of integers where each integer appears exactly twice except for one element that appears only once.
-
+  
   Output: The output is a single integer - the unique integer that appears exactly once in the list.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

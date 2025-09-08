@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   The task is to compute the element-wise sum of two integer arrays. The result should be a new array where each element is the sum of the corresponding elements from the two input arrays. The problem assumes that both arrays have the same length.
   
   Input:
@@ -14,7 +15,7 @@ vc-description: |-
   
   Note:
   It is assumed that the two input arrays have equal lengths.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

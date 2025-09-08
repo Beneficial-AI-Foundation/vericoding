@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   This task requires writing a Verus method that determines whether one list is a sublist of another. In other words, the method should check if the first list appears as a contiguous sequence within the second list and return true if it does, and false otherwise.
   
   -----Input-----
@@ -13,6 +14,7 @@ vc-description: |-
   
   -----Note-----
   There are no preconditions for this method; the sequences are always non-null.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   This task requires writing a Verus method that checks whether an array of integers is sorted in non-decreasing order. The method should return true if every element is less than or equal to the element that follows it, and false otherwise.
   
   -----Input-----
@@ -12,6 +13,7 @@ vc-description: |-
   
   -----Note-----
   A true result guarantees that for every valid pair of indices i and j (with i < j), the element at position i is less than or equal to the element at position j. A false result indicates that there exists at least one adjacent pair of elements where the first element is greater than the second.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

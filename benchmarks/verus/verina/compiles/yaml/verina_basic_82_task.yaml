@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   This task is about processing an array of integers by producing a new array that excludes the first element. The objective is to define a clear behavior: if the array contains at least one element, return a modified array starting from the second element.
   
   -----Input-----
@@ -13,7 +14,7 @@ vc-description: |-
   
   -----Note-----
   It is assumed that the input array is non-empty.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

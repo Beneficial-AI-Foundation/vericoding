@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   This task requires writing a Verus method that determines whether a given string contains the character 'z' or 'Z'. The method should return true if the string includes either the lowercase or uppercase letter 'z', and false otherwise.
   
   -----Input-----
@@ -12,6 +13,7 @@ vc-description: |-
   
   -----Note-----
   There are no preconditions; the method will always work as strings and sequences are considered non-null.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   This problem involves updating an array of integers by modifying two specific positions. Specifically, the element at index 4 should be increased by 3, and the element at index 7 should be changed to 516. The goal is to correctly update these positions while leaving the rest of the array unchanged. The description assumes that the array contains at least 8 elements.
   
   -----Input-----
@@ -13,7 +14,7 @@ vc-description: |-
   
   -----Note-----
   It is assumed that the input array has a size of at least 8 elements. Indices are 0-indexed.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

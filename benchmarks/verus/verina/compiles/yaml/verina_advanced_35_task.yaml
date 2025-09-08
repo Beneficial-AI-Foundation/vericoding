@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   This task requires writing a Verus function that finds the majority element in a sequence of integers. The majority element is the element that appears more than ⌊n/2⌋ times, where n is the sequence's length. You may assume that a majority element always exists in the input.
   
   -----Input-----
@@ -6,6 +7,7 @@ vc-description: |-
   
   -----Output-----
   - An integer: the element that appears more than ⌊n/2⌋ times.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

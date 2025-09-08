@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   The task is to search for a specific integer in a 2D array where the rows and columns are sorted in non-decreasing order. The goal is to locate the key and return its position as row and column indices, or return (-1, -1) if the algorithm fails to find the key.
   
   -----Input-----
@@ -13,6 +14,7 @@ vc-description: |-
   
   -----Note-----
   It is assumed that the input 2D array is sorted by rows and columns.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   This task involves creating a function that swaps two integer values. Given two integers, the function should return a pair where the first element is the second input value and the second element is the first input value.
   
   -----Input-----
@@ -13,7 +14,7 @@ vc-description: |-
   
   -----Note-----
   There are no additional preconditions. The function simply swaps the two input values.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

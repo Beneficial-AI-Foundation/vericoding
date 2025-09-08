@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   This task requires writing a Verus method that determines whether a given string contains all 5 English vowels: a, e, i, o, u.
   
   The check is case-insensitive, meaning that both uppercase and lowercase vowels count.
@@ -10,6 +11,7 @@ vc-description: |-
   -----Output-----
   The output is true or false:
   Returns true if the input string contains all 5 vowels (a, e, i, o, u), false otherwise.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

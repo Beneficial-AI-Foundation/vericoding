@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   This task requires writing a function that processes an array of integers and produces a new array containing only the even numbers from the input. The order of these even numbers should remain the same as in the original array, ensuring that every even number from the input appears in the output and that every element in the output is even.
   
   -----Input-----
@@ -12,6 +13,7 @@ vc-description: |-
   
   -----Note-----
   There are no additional preconditions. The function must adhere to the provided specification which enforces evenness and order preservation for the elements in the output array.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,6 +1,7 @@
 Good! Now let me provide the YAML output with the corrected Verus code:
 
 vc-description: |-
+  /*
   This task requires writing a Verus method that given a 0-indexed integer array `nums` representing the scores of students in an exam. A teacher wants to select a non empty group of students such that the strength of group is maximized.
   
   The strength of a group is defined as the product of the selected student scores.
@@ -14,7 +15,7 @@ vc-description: |-
   -----Output-----
   
   An integer representing the maximum strength.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   This task requires writing a Verus method that determines if a given integer is strictly greater than every element in a provided array. The method should return true only if the integer is larger than each element in the array; otherwise, it should return false.
   
   -----Input-----
@@ -13,7 +14,7 @@ vc-description: |-
   
   -----Note-----
   The array is assumed to be non-null.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

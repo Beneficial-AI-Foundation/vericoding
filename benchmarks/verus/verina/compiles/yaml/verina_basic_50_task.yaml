@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   This task is about calculating the absolute value of an integer. The goal is to determine the non-negative value of a given integer: if the integer is non-negative, it remains unchanged; if it is negative, its positive counterpart is returned.
   
   -----Input-----
@@ -12,6 +13,7 @@ vc-description: |-
   
   -----Note-----
   This function should correctly handle zero, positive, and negative integers.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

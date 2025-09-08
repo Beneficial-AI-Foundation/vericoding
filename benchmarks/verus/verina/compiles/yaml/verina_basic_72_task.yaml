@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   -----Description-----
   The problem asks you to construct a new list by adding an extra number to the end of an existing list of numbers. The focus is on understanding what the final list should look like when a given number is included as the last element.
   
@@ -12,6 +13,7 @@ vc-description: |-
   
   -----Note-----
   There are no special preconditions; the method is expected to work correctly for any array of integers and any integer b.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

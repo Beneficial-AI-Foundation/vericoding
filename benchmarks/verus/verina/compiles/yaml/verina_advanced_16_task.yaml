@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   Implement the insertion sort algorithm in Verus. The function takes a single Vec of integers
   as input and returns a new Vec that contains the same integers in ascending order.
   
@@ -12,7 +13,7 @@ vc-description: |-
   Example:
   Input:  [3, 1, 4, 2]
   Output: [1, 2, 3, 4]
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

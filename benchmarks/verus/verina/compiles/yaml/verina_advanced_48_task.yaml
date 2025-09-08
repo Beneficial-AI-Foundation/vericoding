@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   This task requires implementing the merge sort algorithm in Verus to sort a list of integers in ascending order. Merge sort is a divide-and-conquer algorithm that recursively splits the input list into two halves, sorts them separately, and then merges the sorted halves to produce the final sorted result.
   
   The merge sort algorithm works as follows:
@@ -16,6 +17,7 @@ vc-description: |-
   Output:
   The output is a list of integers:
   Returns a new list containing all elements from the input list, sorted in ascending order.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

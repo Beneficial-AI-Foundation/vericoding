@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   This task requires writing a Verus method that determines whether a given number `n` is an Armstrong number (also known as a Narcissistic number). An Armstrong number is a number that is equal to the sum of its own digits raised to the power of the number of digits.
   
   Input: The input consists of one natural number:
@@ -6,6 +7,7 @@ vc-description: |-
   
   Output: The output is a boolean value:
   - `bool`: Return `true` if `n` is an Armstrong number, otherwise return `false`.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

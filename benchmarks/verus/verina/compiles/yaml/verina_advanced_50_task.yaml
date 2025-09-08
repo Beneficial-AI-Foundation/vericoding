@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   This task involves merging two sorted arrays of natural numbers (it is ill defined if inputs aren't sorted.)
   The input consists of two arrays:
   a1: A sorted array of natural numbers
@@ -6,7 +7,7 @@ vc-description: |-
   The output is an array:
   Returns a new array with all elements from both input arrays (included once and only once)
   The resulting array is sorted itself
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   This task requires writing a Verus function that calculates the minimum number of right shifts required to sort a given list of distinct positive integers.
   
   A right shift operation on a list nums of length n moves the element at index i to index (i + 1) % n for all indices i. Effectively, the last element moves to the first position, and all other elements shift one position to the right.
@@ -13,7 +14,7 @@ vc-description: |-
   The output is a single integer (i32):
   - If the list can be sorted using right shifts, return the minimum number of shifts required (an integer >= 0).
   - If the list cannot be sorted using right shifts, return -1.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

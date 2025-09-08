@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   This task requires writing a Verus method that decomposes a natural number `n` into its prime factorization components based on a user-provided list of primes. Specifically, it calculates the exponents for each prime in the factorization such that:
   \[ n = \prod p^e \]
   In other words, it determines the exponent e for each prime p.
@@ -11,6 +12,7 @@ vc-description: |-
   -----Output-----
   The output is `Vec<(nat, nat)>`:
   Return a list of pair/Cartesian product of two natural numbers (p, e), where p is the prime and e is the exponent of p in the factorization. Each prime in the output must be from the input list, and every prime in the input list must appear in the output.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
   use vstd::arithmetic::power::pow;

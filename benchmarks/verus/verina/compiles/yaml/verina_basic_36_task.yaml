@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   This task requires writing a Verus method that takes a given string and returns a new string where every occurrence of a space, comma, or dot is replaced with a colon. The transformation must preserve the original string's length and leave all other characters unmodified.
   
   Input:
@@ -13,6 +14,7 @@ vc-description: |-
   
   Note:
   There are no preconditions; the input string is assumed to be non-null.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

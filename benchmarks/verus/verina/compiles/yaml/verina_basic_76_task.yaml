@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   This task requires determining the smaller of two integers. Given two input numbers, the goal is to compare them and return the one that is less than or equal to the other.
   
   -----Input-----
@@ -10,7 +11,7 @@ vc-description: |-
   The output is an integer representing the minimum of the two input integers:
   • Returns x if x is less than or equal to y.
   • Returns y if x is greater than y.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

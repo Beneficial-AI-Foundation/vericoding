@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   This task involves concatenating two arrays of integers by appending the second array to the end of the first array. The goal is to produce a new array that sequentially contains all elements from the first array followed by all elements from the second array.
   
   -----Input-----
@@ -14,7 +15,7 @@ vc-description: |-
   
   -----Note-----
   No additional preconditions are required since the function uses the sizes of the input arrays to build the resulting array.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

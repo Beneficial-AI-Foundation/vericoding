@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   This task involves determining the triple of a given integer. The goal is to create a function that, for any integer provided as input, returns a value equal to three times that integer, including handling the case when the input is zero.
   
   -----Input-----
@@ -12,7 +13,7 @@ vc-description: |-
   
   -----Note-----
   There are no additional preconditions. It is assumed that x is a valid integer.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

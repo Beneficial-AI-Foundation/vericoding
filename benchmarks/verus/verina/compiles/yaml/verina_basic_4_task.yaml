@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   This task requires writing a Verus method that finds the kth element in a given array using 1-based indexing. The method should return the element at the specified position, where the first element is at position 1.
   
   -----Input-----
@@ -13,6 +14,7 @@ vc-description: |-
   -----Note-----
   The input k is assumed to be valid (between 1 and array length inclusive).
   The array is assumed to be non-empty.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

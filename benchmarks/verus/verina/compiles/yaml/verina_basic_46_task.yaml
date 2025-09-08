@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   This task requires writing a Verus method that finds the last occurrence of a specified element in a sorted array of integers. The method should return the index corresponding to the last occurrence of the element if it is present; if the element is absent, it should return -1. Additionally, the array must remain unchanged after the method is executed.
   
   Input:
@@ -13,7 +14,7 @@ vc-description: |-
   
   Note:
   The input array is assumed to be sorted in non-decreasing order and remains unchanged by the method.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

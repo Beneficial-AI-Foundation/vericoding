@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   This task involves converting a list of integers into an array such that the array contains all the elements of the list in the exact same order. The objective is to ensure that the array has the same number of elements as the list and that each element in the array corresponds exactly to the element at the same position in the list.
   
   Input:
@@ -13,7 +14,7 @@ vc-description: |-
   Note:
   There are no additional preconditions; the method should work correctly for any list of elements.
   A corresponding specification is provided stating that the array's size equals the list's length and that each element is preserved.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

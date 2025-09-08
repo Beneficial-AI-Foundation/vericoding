@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   This task requires writing a Verus method that rotates a list of integers to the right by a specified number of positions. The method should produce a new list where each element is shifted to the right while preserving the original list's length.
   
   -----Input-----
@@ -13,6 +14,7 @@ vc-description: |-
   -----Note-----
   • The precondition requires that n is non-negative.
   • If the input list is empty, it should be returned unchanged.
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

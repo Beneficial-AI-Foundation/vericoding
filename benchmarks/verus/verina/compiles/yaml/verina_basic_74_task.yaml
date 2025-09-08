@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   This task involves identifying the maximum value in a non-empty array of integers. The objective is to determine which element in the array is greater than or equal to every other element, ensuring that the selected value is one of the elements in the array.
   
   -----Input-----
@@ -12,7 +13,7 @@ vc-description: |-
   
   -----Note-----
   It is assumed that the provided array is non-empty. In cases where the array is empty, the function's behavior is not defined.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 

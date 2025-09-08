@@ -1,4 +1,5 @@
 vc-description: |-
+  /*
   This task requires writing a Verus method that moves all zeroes in a given integer vector to the end, while preserving the relative order of the non-zero elements.
   
   The method `move_zeroes` processes the input vector by separating the non-zero and zero elements. It then returns a new vector formed by appending all non-zero elements followed by all the zero elements.
@@ -10,7 +11,7 @@ vc-description: |-
   -----Output-----
   The output is a vector of integers:
   Returns a vector (type: Vec<i32>) with the same elements as the input, where all zeroes appear at the end, and the non-zero elements maintain their original relative order.
-
+  */
 vc-preamble: |-
   use vstd::prelude::*;
 
