@@ -14,28 +14,14 @@ from vericoding.utils.wandb_utils import init_wandb_run, finalize_wandb_run
 from vericoding.utils.io_utils import parse_command_line_arguments, print_startup_info
     
 # Import the modular components
-from vericoding.core import (
-    load_environment,
-    ProcessingConfig,
-    PromptLoader,
-    create_llm_provider,
-)
 from vericoding.core.language_tools import (
     get_tool_path,
     check_tool_availability,
     find_spec_files,
 )
-from vericoding.processing import process_files_parallel
-from vericoding.utils import (
-    generate_summary,
-    generate_csv_results,
-    generate_subfolder_analysis_csv,
-    get_git_remote_url,
-    get_current_branch,
-)
- 
+
  # Initialize environment loading
-from vericoding.core.config import load_environment, setup_configuration
+from vericoding.core.config import load_environment, setup_configuration, ProcessingConfig
 from vericoding.core.llm_providers import create_llm_provider
 from vericoding.core.language_tools import check_tool_availability,find_spec_files
 
