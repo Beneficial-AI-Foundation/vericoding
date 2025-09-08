@@ -1,0 +1,40 @@
+=== Verification Error - Iteration 5 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/lean/humaneval/files/HumanEval_49.lean
+Time: 2025-09-08 14:49:42
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: ✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_49_impl (2.8s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_49_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_49_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_49_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_49_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_49_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_49_impl.lean:48:8: numerals are data in Lean, but the expected type is a proposition
+  False : Prop
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_49_impl.lean:49:4: No goals to be solved
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_49_impl.lean:66:6: Type mismatch
+  Nat.div_add_mod (Nat.pow 2 n) p
+has type
+  p * (Nat.pow 2 n / p) + Nat.pow 2 n % p = Nat.pow 2 n
+but is expected to have type
+  Nat.pow 2 n / p * p + Nat.pow 2 n % p = Nat.pow 2 n
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_49_impl
+error: build failed
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_49_impl (2.8s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_49_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_49_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_49_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_49_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_49_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_49_impl.lean:48:8: numerals are data in Lean, but the expected type is a proposition
+  False : Prop
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_49_impl.lean:49:4: No goals to be solved
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_49_impl.lean:66:6: Type mismatch
+  Nat.div_add_mod (Nat.pow 2 n) p
+has type
+  p * (Nat.pow 2 n / p) + Nat.pow 2 n % p = Nat.pow 2 n
+but is expected to have type
+  Nat.pow 2 n / p * p + Nat.pow 2 n % p = Nat.pow 2 n
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_49_impl
+error: build failed

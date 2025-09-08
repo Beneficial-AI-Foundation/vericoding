@@ -1,0 +1,454 @@
+=== Verification Error - Iteration 3 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/lean/humaneval/files/HumanEval_118.lean
+Time: 2025-09-08 15:31:18
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: ✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_118_impl (21s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_118_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_118_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_118_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_118_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_118_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_118_impl.lean:53:4: Type mismatch
+  h
+has type
+  c.isAlpha = true ∧
+    ¬c = 'a' ∧ ¬c = 'e' ∧ ¬c = 'i' ∧ ¬c = 'o' ∧ ¬c = 'u' ∧ ¬c = 'A' ∧ ¬c = 'E' ∧ ¬c = 'I' ∧ ¬c = 'O' ∧ ¬c = 'U'
+but is expected to have type
+  is_consonant_prop c
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_118_impl.lean:57:4: Type mismatch
+  h
+has type
+  is_consonant_prop c
+but is expected to have type
+  c.isAlpha = true ∧
+    ¬c = 'a' ∧ ¬c = 'e' ∧ ¬c = 'i' ∧ ¬c = 'o' ∧ ¬c = 'u' ∧ ¬c = 'A' ∧ ¬c = 'E' ∧ ¬c = 'I' ∧ ¬c = 'O' ∧ ¬c = 'U'
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_118_impl.lean:67:13: Tactic `left` failed: target is not an inductive datatype
+
+case inl
+c : Char
+h : c = 'a'
+⊢ ¬c = 'a' →
+    ¬c = 'e' → ¬c = 'i' → ¬c = 'o' → ¬c = 'u' → ¬c = 'A' → ¬c = 'E' → ¬c = 'I' → ¬c = 'O' → ¬c = 'U' → c.isAlpha = false
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_118_impl.lean:70:15: Tactic `left` failed: target is not an inductive datatype
+
+case inr.inl
+c : Char
+h : c = 'e'
+⊢ ¬c = 'a' →
+    ¬c = 'e' → ¬c = 'i' → ¬c = 'o' → ¬c = 'u' → ¬c = 'A' → ¬c = 'E' → ¬c = 'I' → ¬c = 'O' → ¬c = 'U' → c.isAlpha = false
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_118_impl.lean:73:17: Tactic `left` failed: target is not an inductive datatype
+
+case inr.inr.inl
+c : Char
+h : c = 'i'
+⊢ ¬c = 'a' →
+    ¬c = 'e' → ¬c = 'i' → ¬c = 'o' → ¬c = 'u' → ¬c = 'A' → ¬c = 'E' → ¬c = 'I' → ¬c = 'O' → ¬c = 'U' → c.isAlpha = false
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_118_impl.lean:76:19: Tactic `left` failed: target is not an inductive datatype
+
+case inr.inr.inr.inl
+c : Char
+h : c = 'o'
+⊢ ¬c = 'a' →
+    ¬c = 'e' → ¬c = 'i' → ¬c = 'o' → ¬c = 'u' → ¬c = 'A' → ¬c = 'E' → ¬c = 'I' → ¬c = 'O' → ¬c = 'U' → c.isAlpha = false
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_118_impl.lean:79:21: Tactic `left` failed: target is not an inductive datatype
+
+case inr.inr.inr.inr.inl
+c : Char
+h : c = 'u'
+⊢ ¬c = 'a' →
+    ¬c = 'e' → ¬c = 'i' → ¬c = 'o' → ¬c = 'u' → ¬c = 'A' → ¬c = 'E' → ¬c = 'I' → ¬c = 'O' → ¬c = 'U' → c.isAlpha = false
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_118_impl.lean:82:23: Tactic `right` failed: target is not an inductive datatype
+
+case inr.inr.inr.inr.inr.inl
+c : Char
+h : c = 'A'
+⊢ ¬c = 'a' →
+    ¬c = 'e' → ¬c = 'i' → ¬c = 'o' → ¬c = 'u' → ¬c = 'A' → ¬c = 'E' → ¬c = 'I' → ¬c = 'O' → ¬c = 'U' → c.isAlpha = false
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_118_impl.lean:85:25: Tactic `right` failed: target is not an inductive datatype
+
+case inr.inr.inr.inr.inr.inr.inl
+c : Char
+h : c = 'E'
+⊢ ¬c = 'a' →
+    ¬c = 'e' → ¬c = 'i' → ¬c = 'o' → ¬c = 'u' → ¬c = 'A' → ¬c = 'E' → ¬c = 'I' → ¬c = 'O' → ¬c = 'U' → c.isAlpha = false
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_118_impl.lean:88:27: Tactic `right` failed: target is not an inductive datatype
+
+case inr.inr.inr.inr.inr.inr.inr.inl
+c : Char
+h : c = 'I'
+⊢ ¬c = 'a' →
+    ¬c = 'e' → ¬c = 'i' → ¬c = 'o' → ¬c = 'u' → ¬c = 'A' → ¬c = 'E' → ¬c = 'I' → ¬c = 'O' → ¬c = 'U' → c.isAlpha = false
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_118_impl.lean:91:29: Tactic `right` failed: target is not an inductive datatype
+
+case inr.inr.inr.inr.inr.inr.inr.inr.inl
+c : Char
+h : c = 'O'
+⊢ ¬c = 'a' →
+    ¬c = 'e' → ¬c = 'i' → ¬c = 'o' → ¬c = 'u' → ¬c = 'A' → ¬c = 'E' → ¬c = 'I' → ¬c = 'O' → ¬c = 'U' → c.isAlpha = false
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_118_impl.lean:92:29: Tactic `right` failed: target is not an inductive datatype
+
+case inr.inr.inr.inr.inr.inr.inr.inr.inr
+c : Char
+h : c = 'U'
+⊢ ¬c = 'a' →
+    ¬c = 'e' → ¬c = 'i' → ¬c = 'o' → ¬c = 'u' → ¬c = 'A' → ¬c = 'E' → ¬c = 'I' → ¬c = 'O' → ¬c = 'U' → c.isAlpha = false
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_118_impl.lean:135:12: Tactic `introN` failed: There are no additional binders or `let` bindings in the goal to introduce
+
+case h_1
+s : String
+h_alpha : (s.data.all fun c ↦ c.isAlpha) = true
+x✝ : Option Char
+result✝ : Char
+heq✝ : find_closest_vowel_aux s.data = some result✝
+⊢ ({ data := [result✝] } = "" →
+      ∀ (x x_1 : ℕ),
+        x < x_1 →
+          ∀ (x_2 : ℕ),
+            x_1 < x_2 →
+              x_2 < s.length →
+                ¬s.data[x]?.getD 'A' = 'a' →
+                  ¬s.data[x]?.getD 'A' = 'e' →
+                    ¬s.data[x]?.getD 'A' = 'i' →
+                      ¬s.data[x]?.getD 'A' = 'o' →
+                        ¬s.data[x]?.getD 'A' = 'u' →
+                          ¬s.data[x]?.getD 'A' = 'A' →
+                            ¬s.data[x]?.getD 'A' = 'E' →
+                              ¬s.data[x]?.getD 'A' = 'I' →
+                                ¬s.data[x]?.getD 'A' = 'O' →
+                                  ¬s.data[x]?.getD 'A' = 'U' →
+                                    (s.data[x]?.getD 'A').isAlpha = true →
+                                      (¬s.data[x_1]?.getD 'A' = 'a' →
+                                          ¬s.data[x_1]?.getD 'A' = 'e' →
+                                            ¬s.data[x_1]?.getD 'A' = 'i' →
+                                              ¬s.data[x_1]?.getD 'A' = 'o' →
+                                                ¬s.data[x_1]?.getD 'A' = 'u' →
+                                                  ¬s.data[x_1]?.getD 'A' = 'A' →
+                                                    ¬s.data[x_1]?.getD 'A' = 'E' →
+                                                      ¬s.data[x_1]?.getD 'A' = 'I' →
+                                                        ¬s.data[x_1]?.getD 'A' = 'O' →
+                                                          ¬s.data[x_1]?.getD 'A' = 'U' →
+                                                            (s.data[x_1]?.getD 'A').isAlpha = false) →
+                                        ¬s.data[x_2]?.getD 'A' = 'a' →
+                                          ¬s.data[x_2]?.getD 'A' = 'e' →
+                                            ¬s.data[x_2]?.getD 'A' = 'i' →
+                                              ¬s.data[x_2]?.getD 'A' = 'o' →
+                                                ¬s.data[x_2]?.getD 'A' = 'u' →
+                                                  ¬s.data[x_2]?.getD 'A' = 'A' →
+                                                    ¬s.data[x_2]?.getD 'A' = 'E' →
+                                                      ¬s.data[x_2]?.getD 'A' = 'I' →
+                                                        ¬s.data[x_2]?.getD 'A' = 'O' →
+                                                          ¬s.data[x_2]?.getD 'A' = 'U' →
+                                                            (s.data[x_2]?.getD 'A').isAlpha = false) ∧
+    (¬{ data := [result✝] } = "" →
+      result✝ ∈ s.data ∧
+        (¬result✝ = 'a' →
+            ¬result✝ = 'e' →
+              ¬result✝ = 'i' →
+                ¬result✝ = 'o' →
+                  ¬result✝ = 'u' →
+                    ¬result✝ = 'A' →
+                      ¬result✝ = 'E' → ¬result✝ = 'I' → ¬result✝ = 'O' → ¬result✝ = 'U' → result✝.isAlpha = false) ∧
+          ∃ i j,
+            i < j ∧
+              ∃ x,
+                j < x ∧
+                  x < s.length ∧
+                    ((¬s.data[i]?.getD 'A' = 'a' ∧
+                          ¬s.data[i]?.getD 'A' = 'e' ∧
+                            ¬s.data[i]?.getD 'A' = 'i' ∧ ¬s.data[i]?.getD 'A' = 'o' ∧ ¬s.data[i]?.getD 'A' = 'u') ∧
+                        (¬s.data[i]?.getD 'A' = 'A' ∧
+                            ¬s.data[i]?.getD 'A' = 'E' ∧
+                              ¬s.data[i]?.getD 'A' = 'I' ∧ ¬s.data[i]?.getD 'A' = 'O' ∧ ¬s.data[i]?.getD 'A' = 'U') ∧
+                          (s.data[i]?.getD 'A').isAlpha = true) ∧
+                      (¬s.data[j]?.getD 'A' = 'a' →
+                          ¬s.data[j]?.getD 'A' = 'e' →
+                            ¬s.data[j]?.getD 'A' = 'i' →
+                              ¬s.data[j]?.getD 'A' = 'o' →
+                                ¬s.data[j]?.getD 'A' = 'u' →
+                                  ¬s.data[j]?.getD 'A' = 'A' →
+                                    ¬s.data[j]?.getD 'A' = 'E' →
+                                      ¬s.data[j]?.getD 'A' = 'I' →
+                                        ¬s.data[j]?.getD 'A' = 'O' →
+                                          ¬s.data[j]?.getD 'A' = 'U' → (s.data[j]?.getD 'A').isAlpha = false) ∧
+                        ((¬s.data[x]?.getD 'A' = 'a' ∧
+                              ¬s.data[x]?.getD 'A' = 'e' ∧
+                                ¬s.data[x]?.getD 'A' = 'i' ∧ ¬s.data[x]?.getD 'A' = 'o' ∧ ¬s.data[x]?.getD 'A' = 'u') ∧
+                            (¬s.data[x]?.getD 'A' = 'A' ∧
+                                ¬s.data[x]?.getD 'A' = 'E' ∧
+                                  ¬s.data[x]?.getD 'A' = 'I' ∧
+                                    ¬s.data[x]?.getD 'A' = 'O' ∧ ¬s.data[x]?.getD 'A' = 'U') ∧
+                              (s.data[x]?.getD 'A').isAlpha = true) ∧
+                          result✝ = s.data[j]?.getD 'A' ∧
+                            ∀ (i' j' k' : ℕ),
+                              i' < j' →
+                                j' < k' →
+                                  k' < s.length →
+                                    ¬s.data[i']?.getD 'A' = 'a' →
+                                      ¬s.data[i']?.getD 'A' = 'e' →
+                                        ¬s.data[i']?.getD 'A' = 'i' →
+                                          ¬s.data[i']?.getD 'A' = 'o' →
+                                            ¬s.data[i']?.getD 'A' = 'u' →
+                                              ¬s.data[i']?.getD 'A' = 'A' →
+                                                ¬s.data[i']?.getD 'A' = 'E' →
+                                                  ¬s.data[i']?.getD 'A' = 'I' →
+                                                    ¬s.data[i']?.getD 'A' = 'O' →
+                                                      ¬s.data[i']?.getD 'A' = 'U' →
+                                                        (s.data[i']?.getD 'A').isAlpha = true →
+                                                          (¬s.data[j']?.getD 'A' = 'a' →
+                                                              ¬s.data[j']?.getD 'A' = 'e' →
+                                                                ¬s.data[j']?.getD 'A' = 'i' →
+                                                                  ¬s.data[j']?.getD 'A' = 'o' →
+                                                                    ¬s.data[j']?.getD 'A' = 'u' →
+                                                                      ¬s.data[j']?.getD 'A' = 'A' →
+                                                                        ¬s.data[j']?.getD 'A' = 'E' →
+                                                                          ¬s.data[j']?.getD 'A' = 'I' →
+                                                                            ¬s.data[j']?.getD 'A' = 'O' →
+                                                                              ¬s.data[j']?.getD 'A' = 'U' →
+                                                                                (s.data[j']?.getD 'A').isAlpha =
+                                                                                  false) →
+                                                            ¬s.data[k']?.getD 'A' = 'a' →
+                                                              ¬s.data[k']?.getD 'A' = 'e' →
+                                                                ¬s.data[k']?.getD 'A' = 'i' →
+                                                                  ¬s.data[k']?.getD 'A' = 'o' →
+                                                                    ¬s.data[k']?.getD 'A' = 'u' →
+                                                                      ¬s.data[k']?.getD 'A' = 'A' →
+                                                                        ¬s.data[k']?.getD 'A' = 'E' →
+                                                                          ¬s.data[k']?.getD 'A' = 'I' →
+                                                                            ¬s.data[k']?.getD 'A' = 'O' →
+                                                                              ¬s.data[k']?.getD 'A' = 'U' →
+                                                                                (s.data[k']?.getD 'A').isAlpha = true →
+                                                                                  j' ≤ j)
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_118_impl.lean:137:6: Tactic `simp` failed with a nested error:
+(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_118_impl
+error: build failed
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_118_impl (21s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_118_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_118_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_118_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_118_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_118_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_118_impl.lean:53:4: Type mismatch
+  h
+has type
+  c.isAlpha = true ∧
+    ¬c = 'a' ∧ ¬c = 'e' ∧ ¬c = 'i' ∧ ¬c = 'o' ∧ ¬c = 'u' ∧ ¬c = 'A' ∧ ¬c = 'E' ∧ ¬c = 'I' ∧ ¬c = 'O' ∧ ¬c = 'U'
+but is expected to have type
+  is_consonant_prop c
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_118_impl.lean:57:4: Type mismatch
+  h
+has type
+  is_consonant_prop c
+but is expected to have type
+  c.isAlpha = true ∧
+    ¬c = 'a' ∧ ¬c = 'e' ∧ ¬c = 'i' ∧ ¬c = 'o' ∧ ¬c = 'u' ∧ ¬c = 'A' ∧ ¬c = 'E' ∧ ¬c = 'I' ∧ ¬c = 'O' ∧ ¬c = 'U'
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_118_impl.lean:67:13: Tactic `left` failed: target is not an inductive datatype
+
+case inl
+c : Char
+h : c = 'a'
+⊢ ¬c = 'a' →
+    ¬c = 'e' → ¬c = 'i' → ¬c = 'o' → ¬c = 'u' → ¬c = 'A' → ¬c = 'E' → ¬c = 'I' → ¬c = 'O' → ¬c = 'U' → c.isAlpha = false
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_118_impl.lean:70:15: Tactic `left` failed: target is not an inductive datatype
+
+case inr.inl
+c : Char
+h : c = 'e'
+⊢ ¬c = 'a' →
+    ¬c = 'e' → ¬c = 'i' → ¬c = 'o' → ¬c = 'u' → ¬c = 'A' → ¬c = 'E' → ¬c = 'I' → ¬c = 'O' → ¬c = 'U' → c.isAlpha = false
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_118_impl.lean:73:17: Tactic `left` failed: target is not an inductive datatype
+
+case inr.inr.inl
+c : Char
+h : c = 'i'
+⊢ ¬c = 'a' →
+    ¬c = 'e' → ¬c = 'i' → ¬c = 'o' → ¬c = 'u' → ¬c = 'A' → ¬c = 'E' → ¬c = 'I' → ¬c = 'O' → ¬c = 'U' → c.isAlpha = false
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_118_impl.lean:76:19: Tactic `left` failed: target is not an inductive datatype
+
+case inr.inr.inr.inl
+c : Char
+h : c = 'o'
+⊢ ¬c = 'a' →
+    ¬c = 'e' → ¬c = 'i' → ¬c = 'o' → ¬c = 'u' → ¬c = 'A' → ¬c = 'E' → ¬c = 'I' → ¬c = 'O' → ¬c = 'U' → c.isAlpha = false
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_118_impl.lean:79:21: Tactic `left` failed: target is not an inductive datatype
+
+case inr.inr.inr.inr.inl
+c : Char
+h : c = 'u'
+⊢ ¬c = 'a' →
+    ¬c = 'e' → ¬c = 'i' → ¬c = 'o' → ¬c = 'u' → ¬c = 'A' → ¬c = 'E' → ¬c = 'I' → ¬c = 'O' → ¬c = 'U' → c.isAlpha = false
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_118_impl.lean:82:23: Tactic `right` failed: target is not an inductive datatype
+
+case inr.inr.inr.inr.inr.inl
+c : Char
+h : c = 'A'
+⊢ ¬c = 'a' →
+    ¬c = 'e' → ¬c = 'i' → ¬c = 'o' → ¬c = 'u' → ¬c = 'A' → ¬c = 'E' → ¬c = 'I' → ¬c = 'O' → ¬c = 'U' → c.isAlpha = false
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_118_impl.lean:85:25: Tactic `right` failed: target is not an inductive datatype
+
+case inr.inr.inr.inr.inr.inr.inl
+c : Char
+h : c = 'E'
+⊢ ¬c = 'a' →
+    ¬c = 'e' → ¬c = 'i' → ¬c = 'o' → ¬c = 'u' → ¬c = 'A' → ¬c = 'E' → ¬c = 'I' → ¬c = 'O' → ¬c = 'U' → c.isAlpha = false
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_118_impl.lean:88:27: Tactic `right` failed: target is not an inductive datatype
+
+case inr.inr.inr.inr.inr.inr.inr.inl
+c : Char
+h : c = 'I'
+⊢ ¬c = 'a' →
+    ¬c = 'e' → ¬c = 'i' → ¬c = 'o' → ¬c = 'u' → ¬c = 'A' → ¬c = 'E' → ¬c = 'I' → ¬c = 'O' → ¬c = 'U' → c.isAlpha = false
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_118_impl.lean:91:29: Tactic `right` failed: target is not an inductive datatype
+
+case inr.inr.inr.inr.inr.inr.inr.inr.inl
+c : Char
+h : c = 'O'
+⊢ ¬c = 'a' →
+    ¬c = 'e' → ¬c = 'i' → ¬c = 'o' → ¬c = 'u' → ¬c = 'A' → ¬c = 'E' → ¬c = 'I' → ¬c = 'O' → ¬c = 'U' → c.isAlpha = false
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_118_impl.lean:92:29: Tactic `right` failed: target is not an inductive datatype
+
+case inr.inr.inr.inr.inr.inr.inr.inr.inr
+c : Char
+h : c = 'U'
+⊢ ¬c = 'a' →
+    ¬c = 'e' → ¬c = 'i' → ¬c = 'o' → ¬c = 'u' → ¬c = 'A' → ¬c = 'E' → ¬c = 'I' → ¬c = 'O' → ¬c = 'U' → c.isAlpha = false
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_118_impl.lean:135:12: Tactic `introN` failed: There are no additional binders or `let` bindings in the goal to introduce
+
+case h_1
+s : String
+h_alpha : (s.data.all fun c ↦ c.isAlpha) = true
+x✝ : Option Char
+result✝ : Char
+heq✝ : find_closest_vowel_aux s.data = some result✝
+⊢ ({ data := [result✝] } = "" →
+      ∀ (x x_1 : ℕ),
+        x < x_1 →
+          ∀ (x_2 : ℕ),
+            x_1 < x_2 →
+              x_2 < s.length →
+                ¬s.data[x]?.getD 'A' = 'a' →
+                  ¬s.data[x]?.getD 'A' = 'e' →
+                    ¬s.data[x]?.getD 'A' = 'i' →
+                      ¬s.data[x]?.getD 'A' = 'o' →
+                        ¬s.data[x]?.getD 'A' = 'u' →
+                          ¬s.data[x]?.getD 'A' = 'A' →
+                            ¬s.data[x]?.getD 'A' = 'E' →
+                              ¬s.data[x]?.getD 'A' = 'I' →
+                                ¬s.data[x]?.getD 'A' = 'O' →
+                                  ¬s.data[x]?.getD 'A' = 'U' →
+                                    (s.data[x]?.getD 'A').isAlpha = true →
+                                      (¬s.data[x_1]?.getD 'A' = 'a' →
+                                          ¬s.data[x_1]?.getD 'A' = 'e' →
+                                            ¬s.data[x_1]?.getD 'A' = 'i' →
+                                              ¬s.data[x_1]?.getD 'A' = 'o' →
+                                                ¬s.data[x_1]?.getD 'A' = 'u' →
+                                                  ¬s.data[x_1]?.getD 'A' = 'A' →
+                                                    ¬s.data[x_1]?.getD 'A' = 'E' →
+                                                      ¬s.data[x_1]?.getD 'A' = 'I' →
+                                                        ¬s.data[x_1]?.getD 'A' = 'O' →
+                                                          ¬s.data[x_1]?.getD 'A' = 'U' →
+                                                            (s.data[x_1]?.getD 'A').isAlpha = false) →
+                                        ¬s.data[x_2]?.getD 'A' = 'a' →
+                                          ¬s.data[x_2]?.getD 'A' = 'e' →
+                                            ¬s.data[x_2]?.getD 'A' = 'i' →
+                                              ¬s.data[x_2]?.getD 'A' = 'o' →
+                                                ¬s.data[x_2]?.getD 'A' = 'u' →
+                                                  ¬s.data[x_2]?.getD 'A' = 'A' →
+                                                    ¬s.data[x_2]?.getD 'A' = 'E' →
+                                                      ¬s.data[x_2]?.getD 'A' = 'I' →
+                                                        ¬s.data[x_2]?.getD 'A' = 'O' →
+                                                          ¬s.data[x_2]?.getD 'A' = 'U' →
+                                                            (s.data[x_2]?.getD 'A').isAlpha = false) ∧
+    (¬{ data := [result✝] } = "" →
+      result✝ ∈ s.data ∧
+        (¬result✝ = 'a' →
+            ¬result✝ = 'e' →
+              ¬result✝ = 'i' →
+                ¬result✝ = 'o' →
+                  ¬result✝ = 'u' →
+                    ¬result✝ = 'A' →
+                      ¬result✝ = 'E' → ¬result✝ = 'I' → ¬result✝ = 'O' → ¬result✝ = 'U' → result✝.isAlpha = false) ∧
+          ∃ i j,
+            i < j ∧
+              ∃ x,
+                j < x ∧
+                  x < s.length ∧
+                    ((¬s.data[i]?.getD 'A' = 'a' ∧
+                          ¬s.data[i]?.getD 'A' = 'e' ∧
+                            ¬s.data[i]?.getD 'A' = 'i' ∧ ¬s.data[i]?.getD 'A' = 'o' ∧ ¬s.data[i]?.getD 'A' = 'u') ∧
+                        (¬s.data[i]?.getD 'A' = 'A' ∧
+                            ¬s.data[i]?.getD 'A' = 'E' ∧
+                              ¬s.data[i]?.getD 'A' = 'I' ∧ ¬s.data[i]?.getD 'A' = 'O' ∧ ¬s.data[i]?.getD 'A' = 'U') ∧
+                          (s.data[i]?.getD 'A').isAlpha = true) ∧
+                      (¬s.data[j]?.getD 'A' = 'a' →
+                          ¬s.data[j]?.getD 'A' = 'e' →
+                            ¬s.data[j]?.getD 'A' = 'i' →
+                              ¬s.data[j]?.getD 'A' = 'o' →
+                                ¬s.data[j]?.getD 'A' = 'u' →
+                                  ¬s.data[j]?.getD 'A' = 'A' →
+                                    ¬s.data[j]?.getD 'A' = 'E' →
+                                      ¬s.data[j]?.getD 'A' = 'I' →
+                                        ¬s.data[j]?.getD 'A' = 'O' →
+                                          ¬s.data[j]?.getD 'A' = 'U' → (s.data[j]?.getD 'A').isAlpha = false) ∧
+                        ((¬s.data[x]?.getD 'A' = 'a' ∧
+                              ¬s.data[x]?.getD 'A' = 'e' ∧
+                                ¬s.data[x]?.getD 'A' = 'i' ∧ ¬s.data[x]?.getD 'A' = 'o' ∧ ¬s.data[x]?.getD 'A' = 'u') ∧
+                            (¬s.data[x]?.getD 'A' = 'A' ∧
+                                ¬s.data[x]?.getD 'A' = 'E' ∧
+                                  ¬s.data[x]?.getD 'A' = 'I' ∧
+                                    ¬s.data[x]?.getD 'A' = 'O' ∧ ¬s.data[x]?.getD 'A' = 'U') ∧
+                              (s.data[x]?.getD 'A').isAlpha = true) ∧
+                          result✝ = s.data[j]?.getD 'A' ∧
+                            ∀ (i' j' k' : ℕ),
+                              i' < j' →
+                                j' < k' →
+                                  k' < s.length →
+                                    ¬s.data[i']?.getD 'A' = 'a' →
+                                      ¬s.data[i']?.getD 'A' = 'e' →
+                                        ¬s.data[i']?.getD 'A' = 'i' →
+                                          ¬s.data[i']?.getD 'A' = 'o' →
+                                            ¬s.data[i']?.getD 'A' = 'u' →
+                                              ¬s.data[i']?.getD 'A' = 'A' →
+                                                ¬s.data[i']?.getD 'A' = 'E' →
+                                                  ¬s.data[i']?.getD 'A' = 'I' →
+                                                    ¬s.data[i']?.getD 'A' = 'O' →
+                                                      ¬s.data[i']?.getD 'A' = 'U' →
+                                                        (s.data[i']?.getD 'A').isAlpha = true →
+                                                          (¬s.data[j']?.getD 'A' = 'a' →
+                                                              ¬s.data[j']?.getD 'A' = 'e' →
+                                                                ¬s.data[j']?.getD 'A' = 'i' →
+                                                                  ¬s.data[j']?.getD 'A' = 'o' →
+                                                                    ¬s.data[j']?.getD 'A' = 'u' →
+                                                                      ¬s.data[j']?.getD 'A' = 'A' →
+                                                                        ¬s.data[j']?.getD 'A' = 'E' →
+                                                                          ¬s.data[j']?.getD 'A' = 'I' →
+                                                                            ¬s.data[j']?.getD 'A' = 'O' →
+                                                                              ¬s.data[j']?.getD 'A' = 'U' →
+                                                                                (s.data[j']?.getD 'A').isAlpha =
+                                                                                  false) →
+                                                            ¬s.data[k']?.getD 'A' = 'a' →
+                                                              ¬s.data[k']?.getD 'A' = 'e' →
+                                                                ¬s.data[k']?.getD 'A' = 'i' →
+                                                                  ¬s.data[k']?.getD 'A' = 'o' →
+                                                                    ¬s.data[k']?.getD 'A' = 'u' →
+                                                                      ¬s.data[k']?.getD 'A' = 'A' →
+                                                                        ¬s.data[k']?.getD 'A' = 'E' →
+                                                                          ¬s.data[k']?.getD 'A' = 'I' →
+                                                                            ¬s.data[k']?.getD 'A' = 'O' →
+                                                                              ¬s.data[k']?.getD 'A' = 'U' →
+                                                                                (s.data[k']?.getD 'A').isAlpha = true →
+                                                                                  j' ≤ j)
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_118_impl.lean:137:6: Tactic `simp` failed with a nested error:
+(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_118_impl
+error: build failed

@@ -1,0 +1,126 @@
+=== Verification Error - Iteration 1 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/lean/humaneval/files/HumanEval_51.lean
+Time: 2025-09-08 16:07:16
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: ✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_51_impl (10s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_51_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_51_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.lean:27:2: Invalid field `filter`: The environment does not contain `String.filter`
+  string
+has type
+  String
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.lean:48:3: Invalid field `filter`: The environment does not contain `String.filter`
+  s
+has type
+  String
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.lean:49:8: Unknown constant `String.all_filter`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.lean:48:31: unsolved goals
+s : String
+p : Char → Bool
+⊢ sorry () = true
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.lean:53:3: Invalid field `filter`: The environment does not contain `String.filter`
+  s
+has type
+  String
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.lean:54:8: Unknown constant `String.length_filter_le`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.lean:53:36: unsolved goals
+s : String
+p : Char → Bool
+⊢ sorry () ≤ s.length
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.lean:58:3: Invalid field `filter`: The environment does not contain `String.filter`
+  s
+has type
+  String
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.lean:59:8: Unknown constant `String.contains_filter_subset`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.lean:58:44: unsolved goals
+s : String
+p : Char → Bool
+c : Char
+⊢ ∀ (a : sorry ()), s.contains c = true
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.lean:63:31: Invalid field `filter`: The environment does not contain `String.filter`
+  s
+has type
+  String
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.lean:64:8: Unknown constant `String.contains_filter_iff`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.lean:63:57: unsolved goals
+s : String
+p : Char → Bool
+c : Char
+⊢ s.contains c = true ∧ p c = true → sorry ()
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.lean:76:17: Unknown identifier `is_consonant`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.lean:76:6: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.lean:78:4: No goals to be solved
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.lean:71:13: This simp argument is unused:
+  exists_prop
+
+Hint: Omit it from the simp argument list.
+  simp only ̵[̵e̵x̵i̵s̵t̵s̵_̵p̵r̵o̵p̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_51_impl
+error: build failed
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_51_impl (10s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_51_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_51_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.lean:27:2: Invalid field `filter`: The environment does not contain `String.filter`
+  string
+has type
+  String
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.lean:48:3: Invalid field `filter`: The environment does not contain `String.filter`
+  s
+has type
+  String
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.lean:49:8: Unknown constant `String.all_filter`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.lean:48:31: unsolved goals
+s : String
+p : Char → Bool
+⊢ sorry () = true
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.lean:53:3: Invalid field `filter`: The environment does not contain `String.filter`
+  s
+has type
+  String
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.lean:54:8: Unknown constant `String.length_filter_le`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.lean:53:36: unsolved goals
+s : String
+p : Char → Bool
+⊢ sorry () ≤ s.length
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.lean:58:3: Invalid field `filter`: The environment does not contain `String.filter`
+  s
+has type
+  String
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.lean:59:8: Unknown constant `String.contains_filter_subset`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.lean:58:44: unsolved goals
+s : String
+p : Char → Bool
+c : Char
+⊢ ∀ (a : sorry ()), s.contains c = true
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.lean:63:31: Invalid field `filter`: The environment does not contain `String.filter`
+  s
+has type
+  String
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.lean:64:8: Unknown constant `String.contains_filter_iff`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.lean:63:57: unsolved goals
+s : String
+p : Char → Bool
+c : Char
+⊢ s.contains c = true ∧ p c = true → sorry ()
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.lean:76:17: Unknown identifier `is_consonant`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.lean:76:6: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.lean:78:4: No goals to be solved
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_51_impl.lean:71:13: This simp argument is unused:
+  exists_prop
+
+Hint: Omit it from the simp argument list.
+  simp only ̵[̵e̵x̵i̵s̵t̵s̵_̵p̵r̵o̵p̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_51_impl
+error: build failed

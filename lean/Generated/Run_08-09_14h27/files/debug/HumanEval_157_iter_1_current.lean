@@ -1,0 +1,58 @@
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def implementation (a b c: Nat) : Bool :=
+  0 < a && 0 < b && 0 < c && 
+  (a * a + b * b = c * c || a * a + c * c = b * b || b * b + c * c = a * a)
+
+def problem_spec
+-- function signature
+(impl: Nat → Nat → Nat → Bool)
+-- inputs
+(a b c: Nat) :=
+-- spec
+let spec (result: Bool) :=
+result ↔
+  0 < a ∧ 0 < b ∧ 0 < c ∧
+  ((a * a + b * b = c * c) ∨
+  (a * a + c * c = b * b) ∨
+  (b * b + c * c = a * a))
+-- program terminates
+∃ result, impl a b c = result ∧
+-- return value satisfies spec
+spec result
+
+-- LLM HELPER
+lemma bool_and_iff (p q : Prop) [Decidable p] [Decidable q] : 
+  (decide p && decide q) = true ↔ (p ∧ q) := by
+  simp [Bool.and_eq_true, decide_eq_true]
+
+-- LLM HELPER  
+lemma bool_or_iff (p q r : Prop) [Decidable p] [Decidable q] [Decidable r] :
+  (decide p || decide q || decide r) = true ↔ (p ∨ q ∨ r) := by
+  simp [Bool.or_eq_true, decide_eq_true]
+
+theorem correctness
+(a b c: Nat)
+: problem_spec implementation a b c := by
+  unfold problem_spec implementation
+  simp only [exists_prop]
+  constructor
+  · rfl
+  · simp only [Bool.and_eq_true, Bool.or_eq_true, decide_eq_true]
+    constructor
+    · intro h
+      cases' h with h1 h_rest
+      cases' h_rest with h2 h_rest
+      cases' h_rest with h3 h4
+      exact ⟨h1, h2, h3, h4⟩
+    · intro ⟨h1, h2, h3, h4⟩
+      exact ⟨h1, h2, h3, h4⟩
+
+-- #test implementation ([1, 2, 2, -4]: List Int) = (-9: Int)
+-- #test implementation ([0, 1]: List Int) = (0: Int)
+-- #test implementation ([]: List Int) = none

@@ -1,0 +1,204 @@
+=== LEAN SPECIFICATION-TO-CODE PROCESSING SUMMARY (PARALLEL VERSION) ===
+
+Language: Lean
+LLM Provider: claude
+LLM Model: default
+Test directory: /Users/sergiu.bursuc/baif/vericoding/benchmarks/lean/humaneval/files
+Output directory: /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files
+Max iterations: 5
+Parallel workers: 4
+Test date: 2025-09-08T16:18:59.307586
+
+Total original files: 161
+
+=== OVERALL STATISTICS ===
+Total successful: 9
+Total failed: 152
+Success rate: 5.6%
+
+=== SUCCESS RATE BY SUBFOLDER ===
+root:
+  Successful: 9
+  Failed: 152
+  Total: 161
+  Success rate: 5.6%
+
+=== SUCCESSFUL FILES (VERIFIED) ===
+✓ HumanEval_87.lean -> HumanEval_87_impl.lean
+✓ HumanEval_45.lean -> HumanEval_45_impl.lean
+✓ HumanEval_74.lean -> HumanEval_74_impl.lean
+✓ HumanEval_63.lean -> HumanEval_63_impl.lean
+✓ HumanEval_121.lean -> HumanEval_121_impl.lean
+✓ HumanEval_55.lean -> HumanEval_55_impl.lean
+✓ HumanEval_155.lean -> HumanEval_155_impl.lean
+✓ HumanEval_41.lean -> HumanEval_41_impl.lean
+✓ HumanEval_30.lean -> HumanEval_30_impl.lean
+
+=== FAILED FILES (VERIFICATION) ===
+✗ HumanEval_48.lean
+✗ HumanEval_72.lean
+✗ HumanEval_126.lean
+✗ HumanEval_130.lean
+✗ HumanEval_25.lean
+✗ HumanEval_13.lean
+✗ HumanEval_64.lean
+✗ HumanEval_33.lean
+✗ HumanEval_52.lean
+✗ HumanEval_91.lean
+✗ HumanEval_44.lean
+✗ HumanEval_147.lean
+✗ HumanEval_29.lean
+✗ HumanEval_106.lean
+✗ HumanEval_110.lean
+✗ HumanEval_3.lean
+✗ HumanEval_151.lean
+✗ HumanEval_68.lean
+✗ HumanEval_2.lean
+✗ HumanEval_150.lean
+✗ HumanEval_69.lean
+✗ HumanEval_86.lean
+✗ HumanEval_28.lean
+✗ HumanEval_107.lean
+✗ HumanEval_111.lean
+✗ HumanEval_53.lean
+✗ HumanEval_146.lean
+✗ HumanEval_32.lean
+✗ HumanEval_65.lean
+✗ HumanEval_12.lean
+✗ HumanEval_90.lean
+✗ HumanEval_49.lean
+✗ HumanEval_131.lean
+✗ HumanEval_24.lean
+✗ HumanEval_73.lean
+✗ HumanEval_15.lean
+✗ HumanEval_54.lean
+✗ HumanEval_42.lean
+✗ HumanEval_127.lean
+✗ HumanEval_97.lean
+✗ HumanEval_116.lean
+✗ HumanEval_141.lean
+✗ HumanEval_78.lean
+✗ HumanEval_157.lean
+✗ HumanEval_81.lean
+✗ HumanEval_39.lean
+✗ HumanEval_100.lean
+✗ HumanEval_5.lean
+✗ HumanEval_161.lean
+✗ HumanEval_120.lean
+✗ HumanEval_19.lean
+✗ HumanEval_58.lean
+✗ HumanEval_23.lean
+✗ HumanEval_136.lean
+✗ HumanEval_62.lean
+✗ HumanEval_35.lean
+✗ HumanEval_9.lean
+✗ HumanEval_34.lean
+✗ HumanEval_8.lean
+✗ HumanEval_160.lean
+✗ HumanEval_75.lean
+✗ HumanEval_59.lean
+✗ HumanEval_18.lean
+✗ HumanEval_4.lean
+✗ HumanEval_80.lean
+✗ HumanEval_156.lean
+✗ HumanEval_101.lean
+✗ HumanEval_38.lean
+✗ HumanEval_117.lean
+✗ HumanEval_79.lean
+✗ HumanEval_96.lean
+✗ HumanEval_14.lean
+✗ HumanEval_43.lean
+✗ HumanEval_140.lean
+✗ HumanEval_83.lean
+✗ HumanEval_7.lean
+✗ HumanEval_114.lean
+✗ HumanEval_95.lean
+✗ HumanEval_102.lean
+✗ HumanEval_143.lean
+✗ HumanEval_138.lean
+✗ HumanEval_17.lean
+✗ HumanEval_40.lean
+✗ HumanEval_159.lean
+✗ HumanEval_56.lean
+✗ HumanEval_60.lean
+✗ HumanEval_118.lean
+✗ HumanEval_37.lean
+✗ HumanEval_21.lean
+✗ HumanEval_99.lean
+✗ HumanEval_134.lean
+✗ HumanEval_163.lean
+✗ HumanEval_76.lean
+✗ HumanEval_122.lean
+✗ HumanEval_123.lean
+✗ HumanEval_98.lean
+✗ HumanEval_135.lean
+✗ HumanEval_77.lean
+✗ HumanEval_20.lean
+✗ HumanEval_36.lean
+✗ HumanEval_119.lean
+✗ HumanEval_158.lean
+✗ HumanEval_16.lean
+✗ HumanEval_61.lean
+✗ HumanEval_57.lean
+✗ HumanEval_139.lean
+✗ HumanEval_94.lean
+✗ HumanEval_142.lean
+✗ HumanEval_115.lean
+✗ HumanEval_154.lean
+✗ HumanEval_103.lean
+✗ HumanEval_82.lean
+✗ HumanEval_89.lean
+✗ HumanEval_66.lean
+✗ HumanEval_6.lean
+✗ HumanEval_108.lean
+✗ HumanEval_27.lean
+✗ HumanEval_149.lean
+✗ HumanEval_31.lean
+✗ HumanEval_70.lean
+✗ HumanEval_153.lean
+✗ HumanEval_1.lean
+✗ HumanEval_132.lean
+✗ HumanEval_104.lean
+✗ HumanEval_85.lean
+✗ HumanEval_124.lean
+✗ HumanEval_112.lean
+✗ HumanEval_93.lean
+✗ HumanEval_50.lean
+✗ HumanEval_46.lean
+✗ HumanEval_145.lean
+✗ HumanEval_128.lean
+✗ HumanEval_10.lean
+✗ HumanEval_11.lean
+✗ HumanEval_129.lean
+✗ HumanEval_51.lean
+✗ HumanEval_47.lean
+✗ HumanEval_92.lean
+✗ HumanEval_144.lean
+✗ HumanEval_113.lean
+✗ HumanEval_152.lean
+✗ HumanEval_84.lean
+✗ HumanEval_105.lean
+✗ HumanEval_0.lean
+✗ HumanEval_133.lean
+✗ HumanEval_125.lean
+✗ HumanEval_148.lean
+✗ HumanEval_71.lean
+✗ HumanEval_26.lean
+✗ HumanEval_109.lean
+✗ HumanEval_88.lean
+✗ HumanEval_67.lean
+
+=== PARALLEL PROCESSING FEATURES ===
+Parallel workers: 4
+API rate limiting: 1s between calls
+Debug mode: Enabled
+- Saves original specification as *_iter_0_original.lean
+- Saves initial generated code as *_iter_1_generated.lean
+- Saves current working version for each iteration as *_iter_N_current.lean
+- Saves final implementation as *_impl.lean
+- Full debugging: all intermediate files are saved
+
+- Debug mode control: Enabled
+- Configurable file output based on debug setting
+
+Generated on: 2025-09-08T16:18:59.307931

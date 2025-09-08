@@ -1,0 +1,106 @@
+=== Verification Error - Iteration 5 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/lean/humaneval/files/HumanEval_57.lean
+Time: 2025-09-08 15:45:11
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: ✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_57_impl (4.6s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_57_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_57_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_57_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_57_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_57_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_57_impl.lean:67:4: 'is_increasing.check_inc' has already been declared
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_57_impl.lean:72:4: 'is_decreasing.check_dec' has already been declared
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_57_impl.lean:86:6: Tactic `right` failed: right tactic works for inductive types with exactly 2 constructors
+
+case cons.mp
+x y : ℤ
+ys : List ℤ
+h : is_increasing.check_inc x (y :: ys) = true
+⊢ x ≤ y ∧ is_increasing.check_inc y ys = true
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_57_impl.lean:92:6: Invalid alternative name 'inl': Expected 'intro'
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_57_impl.lean:93:6: Invalid alternative name 'inr': Expected 'intro'
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_57_impl.lean:91:6: Alternative 'intro' has not been provided
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_57_impl.lean:110:6: Tactic `right` failed: right tactic works for inductive types with exactly 2 constructors
+
+case cons.mp
+x y : ℤ
+ys : List ℤ
+h : is_decreasing.check_dec x (y :: ys) = true
+⊢ y ≤ x ∧ is_decreasing.check_dec y ys = true
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_57_impl.lean:116:6: Invalid alternative name 'inl': Expected 'intro'
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_57_impl.lean:117:6: Invalid alternative name 'inr': Expected 'intro'
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_57_impl.lean:115:6: Alternative 'intro' has not been provided
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_57_impl.lean:125:6: declaration uses 'sorry'
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_57_impl.lean:138:6: declaration uses 'sorry'
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_57_impl.lean:168:60: Type mismatch
+  h_mono
+has type
+  1 < numbers.length → is_increasing numbers = true ∨ is_decreasing numbers = true
+but is expected to have type
+  is_decreasing numbers = true
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_57_impl.lean:175:56: Type mismatch
+  h_not_mono.left
+has type
+  1 < numbers.length
+but is expected to have type
+  is_increasing numbers = false
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_57_impl.lean:176:56: Type mismatch
+  h_not_mono.right
+has type
+  is_increasing numbers = false ∧ is_decreasing numbers = false
+but is expected to have type
+  is_decreasing numbers = false
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_57_impl
+error: build failed
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_57_impl (4.6s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_57_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_57_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_57_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_57_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_57_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_57_impl.lean:67:4: 'is_increasing.check_inc' has already been declared
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_57_impl.lean:72:4: 'is_decreasing.check_dec' has already been declared
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_57_impl.lean:86:6: Tactic `right` failed: right tactic works for inductive types with exactly 2 constructors
+
+case cons.mp
+x y : ℤ
+ys : List ℤ
+h : is_increasing.check_inc x (y :: ys) = true
+⊢ x ≤ y ∧ is_increasing.check_inc y ys = true
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_57_impl.lean:92:6: Invalid alternative name 'inl': Expected 'intro'
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_57_impl.lean:93:6: Invalid alternative name 'inr': Expected 'intro'
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_57_impl.lean:91:6: Alternative 'intro' has not been provided
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_57_impl.lean:110:6: Tactic `right` failed: right tactic works for inductive types with exactly 2 constructors
+
+case cons.mp
+x y : ℤ
+ys : List ℤ
+h : is_decreasing.check_dec x (y :: ys) = true
+⊢ y ≤ x ∧ is_decreasing.check_dec y ys = true
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_57_impl.lean:116:6: Invalid alternative name 'inl': Expected 'intro'
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_57_impl.lean:117:6: Invalid alternative name 'inr': Expected 'intro'
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_57_impl.lean:115:6: Alternative 'intro' has not been provided
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_57_impl.lean:125:6: declaration uses 'sorry'
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_57_impl.lean:138:6: declaration uses 'sorry'
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_57_impl.lean:168:60: Type mismatch
+  h_mono
+has type
+  1 < numbers.length → is_increasing numbers = true ∨ is_decreasing numbers = true
+but is expected to have type
+  is_decreasing numbers = true
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_57_impl.lean:175:56: Type mismatch
+  h_not_mono.left
+has type
+  1 < numbers.length
+but is expected to have type
+  is_increasing numbers = false
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_57_impl.lean:176:56: Type mismatch
+  h_not_mono.right
+has type
+  is_increasing numbers = false ∧ is_decreasing numbers = false
+but is expected to have type
+  is_decreasing numbers = false
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_57_impl
+error: build failed

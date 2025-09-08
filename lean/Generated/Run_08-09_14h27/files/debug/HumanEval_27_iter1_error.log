@@ -1,0 +1,76 @@
+=== Verification Error - Iteration 1 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/lean/humaneval/files/HumanEval_27.lean
+Time: 2025-09-08 15:52:15
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: ✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_27_impl (5.2s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_27_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_27_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_27_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_27_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_27_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_27_impl.lean:51:8: Unknown constant `Char.toLower_isLower`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_27_impl.lean:57:8: Unknown constant `Char.toUpper_isUpper`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_27_impl.lean:66:2: Function expected at
+  List.length_map f
+but this term has type
+  (List.map f ?m.8).length = List.length ?m.8
+
+Note: Expected a function because this term is being applied to the argument
+  l
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_27_impl.lean:70:8: This simp argument is unused:
+  String.mk
+
+Hint: Omit it from the simp argument list.
+  simp [̵S̵t̵r̵i̵n̵g̵.̵m̵k̵,̵ ̵S̵t̵r̵i̵n̵g̵.̵t̵o̵L̵i̵s̵t̵]̵[̲S̲t̲r̲i̲n̲g̲.̲t̲o̲L̲i̲s̲t̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_27_impl.lean:73:58: unused variable `h`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_27_impl.lean:75:8: This simp argument is unused:
+  String.mk
+
+Hint: Omit it from the simp argument list.
+  simp [̵S̵t̵r̵i̵n̵g̵.̵m̵k̵,̵ ̵S̵t̵r̵i̵n̵g̵.̵t̵o̵L̵i̵s̵t̵]̵[̲S̲t̲r̲i̲n̲g̲.̲t̲o̲L̲i̲s̲t̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_27_impl.lean:86:11: Unknown identifier `spec`
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_27_impl
+error: build failed
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_27_impl (5.2s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_27_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_27_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_27_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_27_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_27_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_27_impl.lean:51:8: Unknown constant `Char.toLower_isLower`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_27_impl.lean:57:8: Unknown constant `Char.toUpper_isUpper`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_27_impl.lean:66:2: Function expected at
+  List.length_map f
+but this term has type
+  (List.map f ?m.8).length = List.length ?m.8
+
+Note: Expected a function because this term is being applied to the argument
+  l
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_27_impl.lean:70:8: This simp argument is unused:
+  String.mk
+
+Hint: Omit it from the simp argument list.
+  simp [̵S̵t̵r̵i̵n̵g̵.̵m̵k̵,̵ ̵S̵t̵r̵i̵n̵g̵.̵t̵o̵L̵i̵s̵t̵]̵[̲S̲t̲r̲i̲n̲g̲.̲t̲o̲L̲i̲s̲t̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_27_impl.lean:73:58: unused variable `h`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_27_impl.lean:75:8: This simp argument is unused:
+  String.mk
+
+Hint: Omit it from the simp argument list.
+  simp [̵S̵t̵r̵i̵n̵g̵.̵m̵k̵,̵ ̵S̵t̵r̵i̵n̵g̵.̵t̵o̵L̵i̵s̵t̵]̵[̲S̲t̲r̲i̲n̲g̲.̲t̲o̲L̲i̲s̲t̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_27_impl.lean:86:11: Unknown identifier `spec`
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_27_impl
+error: build failed

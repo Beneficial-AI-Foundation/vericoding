@@ -1,0 +1,58 @@
+=== Verification Error - Iteration 1 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/lean/humaneval/files/HumanEval_50.lean
+Time: 2025-09-08 16:01:26
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: ✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_50_impl (3.5s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_50_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_50_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_50_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_50_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_50_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_50_impl.lean:65:4: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_50_impl.lean:79:4: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_50_impl.lean:102:10: Tactic `introN` failed: There are no additional binders or `let` bindings in the goal to introduce
+
+case h.right.left
+s : String
+⊢ (fun string ↦
+        decide
+          (∀ i < string.length,
+            have c := string.get! { byteIdx := i };
+            'a'.toNat ≤ c.toNat ∧ c.toNat ≤ 'z'.toNat ∨ 'A'.toNat ≤ c.toNat ∧ c.toNat ≤ 'Z'.toNat))
+      (implementation s) =
+    true
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_50_impl.lean:116:26: Unknown constant `String.length_map`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_50_impl.lean:115:2: unsolved goals
+case h.right.right.right.left
+s : String
+⊢ (String.map shift_char s).length = s.length
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_50_impl
+error: build failed
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_50_impl (3.5s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_50_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_50_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_50_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_50_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_50_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_50_impl.lean:65:4: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_50_impl.lean:79:4: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_50_impl.lean:102:10: Tactic `introN` failed: There are no additional binders or `let` bindings in the goal to introduce
+
+case h.right.left
+s : String
+⊢ (fun string ↦
+        decide
+          (∀ i < string.length,
+            have c := string.get! { byteIdx := i };
+            'a'.toNat ≤ c.toNat ∧ c.toNat ≤ 'z'.toNat ∨ 'A'.toNat ≤ c.toNat ∧ c.toNat ≤ 'Z'.toNat))
+      (implementation s) =
+    true
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_50_impl.lean:116:26: Unknown constant `String.length_map`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_50_impl.lean:115:2: unsolved goals
+case h.right.right.right.left
+s : String
+⊢ (String.map shift_char s).length = s.length
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_50_impl
+error: build failed

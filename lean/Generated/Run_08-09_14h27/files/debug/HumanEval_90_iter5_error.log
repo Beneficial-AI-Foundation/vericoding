@@ -1,0 +1,352 @@
+=== Verification Error - Iteration 5 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/lean/humaneval/files/HumanEval_90.lean
+Time: 2025-09-08 14:46:51
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: ✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_90_impl (3.1s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_90_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_90_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:59:8: Invalid rewrite argument: Expected an equality or iff proof or definition name, but `List.toFinset_toList
+  ?hs` is a proof of
+  (List.toFinset ?m.46).toList.Perm ?m.46
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:67:6: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ?x ∈ List.insertionSort ?r ?l
+in the target expression
+  ∀ (x_1 : ℤ), x_1 ∈ x ↔ x_1 ∈ lst
+
+lst : List ℤ
+x : List ℤ := List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList
+sorted : List ℤ := List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList
+⊢ ∀ (x_1 : ℤ), x_1 ∈ x ↔ x_1 ∈ lst
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:73:35: Unknown constant `List.length_toList`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:79:6: Unknown constant `List.nodup_insertionSort`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:78:18: unsolved goals
+lst : List ℤ
+⊢ let sorted := List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList;
+  sorted.Nodup
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:91:6: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:106:18: Unknown constant `List.getElem_eq_get`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:106:39: Unknown constant `List.get!_eq_getElem`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:107:12: Type mismatch
+  h_eq
+has type
+  sorted[0]?.getD 0 = sorted[1]?.getD 0
+but is expected to have type
+  sorted.get ⟨0, h0_bound⟩ = sorted.get ⟨1, h1_bound⟩
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:108:17: Invalid `⟨...⟩` notation: The expected type of this term could not be determined
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:108:33: Invalid `⟨...⟩` notation: The expected type of this term could not be determined
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:121:18: Unknown constant `List.getElem_eq_get`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:121:39: Unknown constant `List.get!_eq_getElem`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:122:12: Type mismatch
+  this
+has type
+  sorted.get ⟨0, h0_bound⟩ ≤ sorted.get ⟨1, h1_bound⟩
+but is expected to have type
+  sorted[0]?.getD 0 ≤ sorted[1]?.getD 0
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:127:18: Unknown constant `List.get!_mem`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:126:40: unsolved goals
+lst : List ℤ
+sorted : List ℤ := List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList
+h : sorted.length ≥ 2
+h_len : 2 ≤ sorted.length
+h0_lt : 0 < sorted.length
+h1_lt : 1 < sorted.length
+h_distinct : sorted[0]! ≠ sorted[1]!
+sorted_prop :
+  have sorted := List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList;
+  List.Sorted (fun x1 x2 ↦ x1 ≤ x2) sorted ∧ sorted.toFinset = lst.toFinset
+h_lt : sorted[0]! < sorted[1]!
+⊢ sorted[0]?.getD 0 ∈ sorted
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:132:24: Application type mismatch: The argument
+  h_lt
+has type
+  sorted[0]! < sorted[1]!
+but is expected to have type
+  decide (sorted[0]! < sorted[1]!) = true
+in the application
+  ⟨h_mem, h_lt⟩
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:140:39: Type mismatch
+  hy_prop.right
+has type
+  decide (y < sorted[1]!) = true
+but is expected to have type
+  y < sorted[1]!
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:150:28: failed to synthesize
+  OfNat (Fin sorted.length) 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  Fin sorted.length
+due to the absence of the instance above
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:152:26: failed to synthesize
+  OfNat (Fin sorted.length) 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  Fin sorted.length
+due to the absence of the instance above
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:152:35: Type mismatch
+  Nat.pos_of_ne_zero ?m.489
+has type
+  (0 : ℕ) < ?m.488
+but is expected to have type
+  (0 : Fin sorted.length) < k
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:168:25: Unknown identifier `hk_eq`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:181:22: Unknown constant `List.getElem_eq_get`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:181:43: Unknown constant `List.get!_eq_getElem`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:182:16: Type mismatch
+  h_eq
+has type
+  sorted[0]?.getD 0 = sorted[1]?.getD 0
+but is expected to have type
+  sorted.get ⟨0, h0_bound⟩ = sorted.get ⟨1, h1_bound⟩
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:184:22: Unknown constant `List.Nodup.get_inj_iff.mp`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:190:20: Unknown constant `List.getElem_eq_get`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:190:41: Unknown constant `List.get!_eq_getElem`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:191:14: Type mismatch
+  this
+has type
+  sorted.get ⟨0, h0_bound⟩ ≤ sorted.get ⟨1, h1_bound⟩
+but is expected to have type
+  sorted[0]?.getD 0 ≤ sorted[1]?.getD 0
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:195:53: Unknown constant `List.get!_mem`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:195:44: unsolved goals
+lst : List ℤ
+sorted : List ℤ := List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList
+h : sorted.length ≥ 2
+y : ℤ
+hy : y ∈ List.filter (fun x ↦ decide (x < sorted[1]!)) lst
+hy_prop : y ∈ lst ∧ decide (y < sorted[1]!) = true
+hy_mem : y ∈ lst
+hy_lt : y < sorted[1]!
+y_in_sorted : y ∈ sorted
+y_eq_first : y = sorted[0]!
+h0_bound : 0 < sorted.length
+h1_bound : 1 < sorted.length
+h_sorted : List.Sorted (fun x1 x2 ↦ x1 ≤ x2) sorted
+h_distinct : sorted[0]! ≠ sorted[1]!
+h_le : sorted[0]! ≤ sorted[1]!
+h_lt : sorted[0]! < sorted[1]!
+⊢ sorted[0]?.getD 0 ∈ sorted
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:198:14: Type mismatch
+  h_lt
+has type
+  sorted[0]! < sorted[1]!
+but is expected to have type
+  decide (sorted[0]! < sorted[1]!) = true
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:201:84: Unknown constant `List.get!_mem`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:204:75: Type mismatch
+  this_prop.right
+has type
+  decide ((List.filter (fun x ↦ decide (x < sorted[1]!)) lst)[0]! < sorted[1]!) = true
+but is expected to have type
+  (List.filter (fun x ↦ decide (x < sorted[1]!)) lst)[0]! < sorted[1]!
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:209:17: Tactic `cases` failed with a nested error:
+Dependent elimination failed: Failed to solve equation
+  (List.filter (fun x ↦ decide (x < sorted[1]!)) lst).get!Internal 0 = sorted.get k
+at case `Eq.refl`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:135:6: unsolved goals
+case h.right.right
+lst : List ℤ
+sorted : List ℤ := List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList
+h : sorted.length ≥ 2
+y : ℤ
+hy : y ∈ List.filter (fun x ↦ decide (x < sorted[1]!)) lst
+hy_prop : y ∈ lst ∧ decide (y < sorted[1]!) = true
+hy_mem : y ∈ lst
+hy_lt : y < sorted[1]!
+y_in_sorted : y ∈ sorted
+y_eq_first : y = sorted[0]!
+smaller_first : (List.filter (fun x ↦ decide (x < sorted[1]!)) lst)[0]! = sorted[0]!
+⊢ decide (sorted[0]! = sorted[0]!) = true
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:235:6: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:237:26: Tactic `introN` failed: There are no additional binders or `let` bindings in the goal to introduce
+
+case h.right
+lst : List ℤ
+sorted : List ℤ := List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList
+h : sorted.length < 2
+i j : ℕ
+hi : i < lst.length
+hj : j < lst.length
+hij : i ≠ j
+⊢ lst[j]! ≤ lst[i]!
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_90_impl
+error: build failed
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_90_impl (3.1s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_90_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_90_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:59:8: Invalid rewrite argument: Expected an equality or iff proof or definition name, but `List.toFinset_toList
+  ?hs` is a proof of
+  (List.toFinset ?m.46).toList.Perm ?m.46
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:67:6: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ?x ∈ List.insertionSort ?r ?l
+in the target expression
+  ∀ (x_1 : ℤ), x_1 ∈ x ↔ x_1 ∈ lst
+
+lst : List ℤ
+x : List ℤ := List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList
+sorted : List ℤ := List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList
+⊢ ∀ (x_1 : ℤ), x_1 ∈ x ↔ x_1 ∈ lst
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:73:35: Unknown constant `List.length_toList`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:79:6: Unknown constant `List.nodup_insertionSort`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:78:18: unsolved goals
+lst : List ℤ
+⊢ let sorted := List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList;
+  sorted.Nodup
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:91:6: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:106:18: Unknown constant `List.getElem_eq_get`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:106:39: Unknown constant `List.get!_eq_getElem`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:107:12: Type mismatch
+  h_eq
+has type
+  sorted[0]?.getD 0 = sorted[1]?.getD 0
+but is expected to have type
+  sorted.get ⟨0, h0_bound⟩ = sorted.get ⟨1, h1_bound⟩
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:108:17: Invalid `⟨...⟩` notation: The expected type of this term could not be determined
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:108:33: Invalid `⟨...⟩` notation: The expected type of this term could not be determined
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:121:18: Unknown constant `List.getElem_eq_get`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:121:39: Unknown constant `List.get!_eq_getElem`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:122:12: Type mismatch
+  this
+has type
+  sorted.get ⟨0, h0_bound⟩ ≤ sorted.get ⟨1, h1_bound⟩
+but is expected to have type
+  sorted[0]?.getD 0 ≤ sorted[1]?.getD 0
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:127:18: Unknown constant `List.get!_mem`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:126:40: unsolved goals
+lst : List ℤ
+sorted : List ℤ := List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList
+h : sorted.length ≥ 2
+h_len : 2 ≤ sorted.length
+h0_lt : 0 < sorted.length
+h1_lt : 1 < sorted.length
+h_distinct : sorted[0]! ≠ sorted[1]!
+sorted_prop :
+  have sorted := List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList;
+  List.Sorted (fun x1 x2 ↦ x1 ≤ x2) sorted ∧ sorted.toFinset = lst.toFinset
+h_lt : sorted[0]! < sorted[1]!
+⊢ sorted[0]?.getD 0 ∈ sorted
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:132:24: Application type mismatch: The argument
+  h_lt
+has type
+  sorted[0]! < sorted[1]!
+but is expected to have type
+  decide (sorted[0]! < sorted[1]!) = true
+in the application
+  ⟨h_mem, h_lt⟩
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:140:39: Type mismatch
+  hy_prop.right
+has type
+  decide (y < sorted[1]!) = true
+but is expected to have type
+  y < sorted[1]!
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:150:28: failed to synthesize
+  OfNat (Fin sorted.length) 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  Fin sorted.length
+due to the absence of the instance above
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:152:26: failed to synthesize
+  OfNat (Fin sorted.length) 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  Fin sorted.length
+due to the absence of the instance above
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:152:35: Type mismatch
+  Nat.pos_of_ne_zero ?m.489
+has type
+  (0 : ℕ) < ?m.488
+but is expected to have type
+  (0 : Fin sorted.length) < k
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:168:25: Unknown identifier `hk_eq`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:181:22: Unknown constant `List.getElem_eq_get`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:181:43: Unknown constant `List.get!_eq_getElem`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:182:16: Type mismatch
+  h_eq
+has type
+  sorted[0]?.getD 0 = sorted[1]?.getD 0
+but is expected to have type
+  sorted.get ⟨0, h0_bound⟩ = sorted.get ⟨1, h1_bound⟩
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:184:22: Unknown constant `List.Nodup.get_inj_iff.mp`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:190:20: Unknown constant `List.getElem_eq_get`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:190:41: Unknown constant `List.get!_eq_getElem`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:191:14: Type mismatch
+  this
+has type
+  sorted.get ⟨0, h0_bound⟩ ≤ sorted.get ⟨1, h1_bound⟩
+but is expected to have type
+  sorted[0]?.getD 0 ≤ sorted[1]?.getD 0
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:195:53: Unknown constant `List.get!_mem`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:195:44: unsolved goals
+lst : List ℤ
+sorted : List ℤ := List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList
+h : sorted.length ≥ 2
+y : ℤ
+hy : y ∈ List.filter (fun x ↦ decide (x < sorted[1]!)) lst
+hy_prop : y ∈ lst ∧ decide (y < sorted[1]!) = true
+hy_mem : y ∈ lst
+hy_lt : y < sorted[1]!
+y_in_sorted : y ∈ sorted
+y_eq_first : y = sorted[0]!
+h0_bound : 0 < sorted.length
+h1_bound : 1 < sorted.length
+h_sorted : List.Sorted (fun x1 x2 ↦ x1 ≤ x2) sorted
+h_distinct : sorted[0]! ≠ sorted[1]!
+h_le : sorted[0]! ≤ sorted[1]!
+h_lt : sorted[0]! < sorted[1]!
+⊢ sorted[0]?.getD 0 ∈ sorted
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:198:14: Type mismatch
+  h_lt
+has type
+  sorted[0]! < sorted[1]!
+but is expected to have type
+  decide (sorted[0]! < sorted[1]!) = true
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:201:84: Unknown constant `List.get!_mem`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:204:75: Type mismatch
+  this_prop.right
+has type
+  decide ((List.filter (fun x ↦ decide (x < sorted[1]!)) lst)[0]! < sorted[1]!) = true
+but is expected to have type
+  (List.filter (fun x ↦ decide (x < sorted[1]!)) lst)[0]! < sorted[1]!
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:209:17: Tactic `cases` failed with a nested error:
+Dependent elimination failed: Failed to solve equation
+  (List.filter (fun x ↦ decide (x < sorted[1]!)) lst).get!Internal 0 = sorted.get k
+at case `Eq.refl`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:135:6: unsolved goals
+case h.right.right
+lst : List ℤ
+sorted : List ℤ := List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList
+h : sorted.length ≥ 2
+y : ℤ
+hy : y ∈ List.filter (fun x ↦ decide (x < sorted[1]!)) lst
+hy_prop : y ∈ lst ∧ decide (y < sorted[1]!) = true
+hy_mem : y ∈ lst
+hy_lt : y < sorted[1]!
+y_in_sorted : y ∈ sorted
+y_eq_first : y = sorted[0]!
+smaller_first : (List.filter (fun x ↦ decide (x < sorted[1]!)) lst)[0]! = sorted[0]!
+⊢ decide (sorted[0]! = sorted[0]!) = true
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:235:6: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:237:26: Tactic `introN` failed: There are no additional binders or `let` bindings in the goal to introduce
+
+case h.right
+lst : List ℤ
+sorted : List ℤ := List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList
+h : sorted.length < 2
+i j : ℕ
+hi : i < lst.length
+hj : j < lst.length
+hij : i ≠ j
+⊢ lst[j]! ≤ lst[i]!
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_90_impl
+error: build failed

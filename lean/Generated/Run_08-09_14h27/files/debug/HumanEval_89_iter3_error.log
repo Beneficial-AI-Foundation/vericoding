@@ -1,0 +1,132 @@
+=== Verification Error - Iteration 3 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/lean/humaneval/files/HumanEval_89.lean
+Time: 2025-09-08 15:50:51
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: ✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_89_impl (3.8s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_89_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_89_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_89_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_89_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_89_impl.setup.json --json
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_89_impl.lean:60:17: unused name: h_lower
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_89_impl.lean:78:14: maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_89_impl.lean:82:14: maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_89_impl.lean:85:8: Type mismatch
+  Eq.symm (Nat.div_add_mod (c.toNat - 97 + 4) 26)
+has type
+  c.toNat - 97 + 4 = 26 * ((c.toNat - 97 + 4) / 26) + (c.toNat - 97 + 4) % 26
+but is expected to have type
+  c.toNat - 97 + 4 = (c.toNat - 97 + 4) % 26 + 26 * ((c.toNat - 97 + 4) / 26)
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_89_impl.lean:86:113: unsolved goals
+c : Char
+h : c.isLower = true
+offset_eq : c.toNat - 97 + 4 = (c.toNat - 97 + 4) % 26 + 26 * ((c.toNat - 97 + 4) / 26)
+⊢ 55199 ≤ (c.toNat - 97 + 4) % 26 → 57343 < (c.toNat - 97 + 4) % 26 + 97 ∧ (c.toNat - 97 + 4) % 26 < 1114015
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_89_impl.lean:93:10: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ?a % ?n % ?n
+in the target expression
+  (4 + (4 + (c.toNat - 97))) % 26 = c.toNat - 97
+
+case right
+c : Char
+h : c.isLower = true
+offset_eq : c.toNat - 97 + 4 = (c.toNat - 97 + 4) % 26 + 26 * ((c.toNat - 97 + 4) / 26)
+char_nat_eq : (Char.ofNat ((c.toNat - 97 + 4) % 26 + 97)).toNat = (c.toNat - 97 + 4) % 26 + 97
+⊢ (4 + (4 + (c.toNat - 97))) % 26 = c.toNat - 97
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_89_impl.lean:95:2: No goals to be solved
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_89_impl.lean:92:12: This simp argument is unused:
+  Nat.mod_self
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵N̵a̵t̵.̵m̵o̵d̵_̵s̵e̵l̵f̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_89_impl.lean:100:8: Function expected at
+  List.length_map f
+but this term has type
+  (List.map f ?m.9).length = List.length ?m.9
+
+Note: Expected a function because this term is being applied to the argument
+  l
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_89_impl.lean:108:8: Unknown constant `List.get!_map`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_89_impl.lean:114:2: Type mismatch
+  { data := List.map shift_char str.data }
+has type
+  String
+of sort `Type` but is expected to have type
+  (∀ a ∈ str.data, (shift_char a).isLower = true) →
+    ∀ i < str.length,
+      (((Option.map shift_char str.data[i]?).getD 'A').toNat - 97 + 4) % 26 = (str.data[i]?.getD 'A').toNat - 97
+of sort `Prop`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_89_impl.lean:115:2: No goals to be solved
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_89_impl
+error: build failed
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_89_impl (3.8s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_89_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_89_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_89_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_89_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_89_impl.setup.json --json
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_89_impl.lean:60:17: unused name: h_lower
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_89_impl.lean:78:14: maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_89_impl.lean:82:14: maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_89_impl.lean:85:8: Type mismatch
+  Eq.symm (Nat.div_add_mod (c.toNat - 97 + 4) 26)
+has type
+  c.toNat - 97 + 4 = 26 * ((c.toNat - 97 + 4) / 26) + (c.toNat - 97 + 4) % 26
+but is expected to have type
+  c.toNat - 97 + 4 = (c.toNat - 97 + 4) % 26 + 26 * ((c.toNat - 97 + 4) / 26)
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_89_impl.lean:86:113: unsolved goals
+c : Char
+h : c.isLower = true
+offset_eq : c.toNat - 97 + 4 = (c.toNat - 97 + 4) % 26 + 26 * ((c.toNat - 97 + 4) / 26)
+⊢ 55199 ≤ (c.toNat - 97 + 4) % 26 → 57343 < (c.toNat - 97 + 4) % 26 + 97 ∧ (c.toNat - 97 + 4) % 26 < 1114015
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_89_impl.lean:93:10: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ?a % ?n % ?n
+in the target expression
+  (4 + (4 + (c.toNat - 97))) % 26 = c.toNat - 97
+
+case right
+c : Char
+h : c.isLower = true
+offset_eq : c.toNat - 97 + 4 = (c.toNat - 97 + 4) % 26 + 26 * ((c.toNat - 97 + 4) / 26)
+char_nat_eq : (Char.ofNat ((c.toNat - 97 + 4) % 26 + 97)).toNat = (c.toNat - 97 + 4) % 26 + 97
+⊢ (4 + (4 + (c.toNat - 97))) % 26 = c.toNat - 97
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_89_impl.lean:95:2: No goals to be solved
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_89_impl.lean:92:12: This simp argument is unused:
+  Nat.mod_self
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵N̵a̵t̵.̵m̵o̵d̵_̵s̵e̵l̵f̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_89_impl.lean:100:8: Function expected at
+  List.length_map f
+but this term has type
+  (List.map f ?m.9).length = List.length ?m.9
+
+Note: Expected a function because this term is being applied to the argument
+  l
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_89_impl.lean:108:8: Unknown constant `List.get!_map`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_89_impl.lean:114:2: Type mismatch
+  { data := List.map shift_char str.data }
+has type
+  String
+of sort `Type` but is expected to have type
+  (∀ a ∈ str.data, (shift_char a).isLower = true) →
+    ∀ i < str.length,
+      (((Option.map shift_char str.data[i]?).getD 'A').toNat - 97 + 4) % 26 = (str.data[i]?.getD 'A').toNat - 97
+of sort `Prop`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_89_impl.lean:115:2: No goals to be solved
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_89_impl
+error: build failed

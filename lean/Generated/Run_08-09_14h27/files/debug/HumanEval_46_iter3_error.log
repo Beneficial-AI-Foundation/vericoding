@@ -1,0 +1,164 @@
+=== Verification Error - Iteration 3 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/lean/humaneval/files/HumanEval_46.lean
+Time: 2025-09-08 16:03:05
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: ✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_46_impl (20s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_46_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_46_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_46_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_46_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_46_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_46_impl.lean:41:29: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  f ≥ 0
+  e ≥ 0
+  e - f ≥ 1
+where
+ e := ↑i
+ f := ↑n
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_46_impl.lean:79:22: Unknown identifier `f₁'`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_46_impl.lean:79:33: Unknown identifier `f₁'`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_46_impl.lean:80:37: Application type mismatch: The argument
+  h₂'
+has type
+  fibonacci_non_computable_4 n f₂'
+but is expected to have type
+  fibonacci_non_computable_4 (n + 1) f₂'
+in the application
+  ih2 f₂' h₂'
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_46_impl.lean:81:37: Application type mismatch: The argument
+  h₃'
+has type
+  fibonacci_non_computable_4 (n + 1) f₃'
+but is expected to have type
+  fibonacci_non_computable_4 (n + 2) f₃'
+in the application
+  ih3 f₃' h₃'
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_46_impl.lean:82:37: Application type mismatch: The argument
+  h₄'
+has type
+  fibonacci_non_computable_4 (n + 2) f₄'
+but is expected to have type
+  fibonacci_non_computable_4 (n + 3) f₄'
+in the application
+  ih4 f₄' h₄'
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_46_impl.lean:78:43: unsolved goals
+case step.step
+n✝ a n f₁ f₂ f₃ f₄ : ℕ
+h₁ : fibonacci_non_computable_4 n f₁
+h₂ : fibonacci_non_computable_4 (n + 1) f₂
+h₃ : fibonacci_non_computable_4 (n + 2) f₃
+h₄ : fibonacci_non_computable_4 (n + 3) f₄
+ih1 : ∀ (b : ℕ), fibonacci_non_computable_4 n b → f₁ = b
+ih2 : ∀ (b : ℕ), fibonacci_non_computable_4 (n + 1) b → f₂ = b
+ih3 : ∀ (b : ℕ), fibonacci_non_computable_4 (n + 2) b → f₃ = b
+ih4 : ∀ (b : ℕ), fibonacci_non_computable_4 (n + 3) b → f₄ = b
+f₂' f₃' f₄' h₁' : ℕ
+h₂' : fibonacci_non_computable_4 n f₂'
+h₃' : fibonacci_non_computable_4 (n + 1) f₃'
+h₄' : fibonacci_non_computable_4 (n + 2) f₄'
+a✝ : fibonacci_non_computable_4 (n + 3) h₁'
+eq1 : f₁ = sorry
+eq2 : f₂ = f₂'
+eq3 : f₃ = f₃'
+eq4 : f₄ = f₄'
+⊢ sorry + f₂' + f₃' + f₄' = f₂' + f₃' + f₄' + h₁'
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_46_impl.lean:98:4: Tactic `apply` failed: could not unify the conclusion of `fibonacci_non_computable_4.step`
+  fibonacci_non_computable_4 (?n + 4) (?f₁ + ?f₂ + ?f₃ + ?f₄)
+with the goal
+  fibonacci_non_computable_4 (n + 1 + 3) (implementation.loop (n + 1 + 3) 4 0 0 2 0)
+
+Note: The full type of `fibonacci_non_computable_4.step` is
+  ∀ (n f₁ f₂ f₃ f₄ : ℕ),
+    fibonacci_non_computable_4 n f₁ →
+      fibonacci_non_computable_4 (n + 1) f₂ →
+        fibonacci_non_computable_4 (n + 2) f₃ →
+          fibonacci_non_computable_4 (n + 3) f₄ → fibonacci_non_computable_4 (n + 4) (f₁ + f₂ + f₃ + f₄)
+
+case succ.succ.succ.succ
+n : ℕ
+this : n + 1 + 3 = n + 4
+⊢ fibonacci_non_computable_4 (n + 1 + 3) (implementation.loop (n + 1 + 3) 4 0 0 2 0)
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_46_impl
+error: build failed
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_46_impl (20s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_46_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_46_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_46_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_46_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_46_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_46_impl.lean:41:29: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  f ≥ 0
+  e ≥ 0
+  e - f ≥ 1
+where
+ e := ↑i
+ f := ↑n
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_46_impl.lean:79:22: Unknown identifier `f₁'`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_46_impl.lean:79:33: Unknown identifier `f₁'`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_46_impl.lean:80:37: Application type mismatch: The argument
+  h₂'
+has type
+  fibonacci_non_computable_4 n f₂'
+but is expected to have type
+  fibonacci_non_computable_4 (n + 1) f₂'
+in the application
+  ih2 f₂' h₂'
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_46_impl.lean:81:37: Application type mismatch: The argument
+  h₃'
+has type
+  fibonacci_non_computable_4 (n + 1) f₃'
+but is expected to have type
+  fibonacci_non_computable_4 (n + 2) f₃'
+in the application
+  ih3 f₃' h₃'
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_46_impl.lean:82:37: Application type mismatch: The argument
+  h₄'
+has type
+  fibonacci_non_computable_4 (n + 2) f₄'
+but is expected to have type
+  fibonacci_non_computable_4 (n + 3) f₄'
+in the application
+  ih4 f₄' h₄'
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_46_impl.lean:78:43: unsolved goals
+case step.step
+n✝ a n f₁ f₂ f₃ f₄ : ℕ
+h₁ : fibonacci_non_computable_4 n f₁
+h₂ : fibonacci_non_computable_4 (n + 1) f₂
+h₃ : fibonacci_non_computable_4 (n + 2) f₃
+h₄ : fibonacci_non_computable_4 (n + 3) f₄
+ih1 : ∀ (b : ℕ), fibonacci_non_computable_4 n b → f₁ = b
+ih2 : ∀ (b : ℕ), fibonacci_non_computable_4 (n + 1) b → f₂ = b
+ih3 : ∀ (b : ℕ), fibonacci_non_computable_4 (n + 2) b → f₃ = b
+ih4 : ∀ (b : ℕ), fibonacci_non_computable_4 (n + 3) b → f₄ = b
+f₂' f₃' f₄' h₁' : ℕ
+h₂' : fibonacci_non_computable_4 n f₂'
+h₃' : fibonacci_non_computable_4 (n + 1) f₃'
+h₄' : fibonacci_non_computable_4 (n + 2) f₄'
+a✝ : fibonacci_non_computable_4 (n + 3) h₁'
+eq1 : f₁ = sorry
+eq2 : f₂ = f₂'
+eq3 : f₃ = f₃'
+eq4 : f₄ = f₄'
+⊢ sorry + f₂' + f₃' + f₄' = f₂' + f₃' + f₄' + h₁'
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_46_impl.lean:98:4: Tactic `apply` failed: could not unify the conclusion of `fibonacci_non_computable_4.step`
+  fibonacci_non_computable_4 (?n + 4) (?f₁ + ?f₂ + ?f₃ + ?f₄)
+with the goal
+  fibonacci_non_computable_4 (n + 1 + 3) (implementation.loop (n + 1 + 3) 4 0 0 2 0)
+
+Note: The full type of `fibonacci_non_computable_4.step` is
+  ∀ (n f₁ f₂ f₃ f₄ : ℕ),
+    fibonacci_non_computable_4 n f₁ →
+      fibonacci_non_computable_4 (n + 1) f₂ →
+        fibonacci_non_computable_4 (n + 2) f₃ →
+          fibonacci_non_computable_4 (n + 3) f₄ → fibonacci_non_computable_4 (n + 4) (f₁ + f₂ + f₃ + f₄)
+
+case succ.succ.succ.succ
+n : ℕ
+this : n + 1 + 3 = n + 4
+⊢ fibonacci_non_computable_4 (n + 1 + 3) (implementation.loop (n + 1 + 3) 4 0 0 2 0)
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_46_impl
+error: build failed

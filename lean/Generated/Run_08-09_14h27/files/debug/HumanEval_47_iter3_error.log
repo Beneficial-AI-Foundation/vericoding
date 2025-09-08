@@ -1,0 +1,616 @@
+=== Verification Error - Iteration 3 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/lean/humaneval/files/HumanEval_47.lean
+Time: 2025-09-08 16:08:30
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: ✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_47_impl (5.5s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_47_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_47_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.lean:64:31: Type mismatch
+  x1✝ ≤ x2✝
+has type
+  Prop
+of sort `Type` but is expected to have type
+  ∀ (c : ?m.16), ?m.11 x1✝ x2✝ = true → ?m.11 x2✝ c = true → ?m.11 x1✝ c = true
+of sort `Prop`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.lean:67:67: expected token
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.lean:73:29: Unknown identifier `sorted_list_perm`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.lean:83:15: Unknown identifier `sorted_list_perm`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.lean:81:78: unsolved goals
+numbers : List ℚ
+h_pos : 0 < numbers.length
+h_odd : numbers.length % 2 = 1
+⊢ (numbers.mergeSort fun x1 x2 ↦ decide (x1 ≤ x2))[numbers.length / 2]! ∈ numbers ∧
+    (List.filter (fun x ↦ decide (x ≤ (numbers.mergeSort fun x1 x2 ↦ decide (x1 ≤ x2))[numbers.length / 2]!))
+            numbers).length ≥
+        (numbers.length + 1) / 2 ∧
+      (List.filter (fun x ↦ decide ((numbers.mergeSort fun x1 x2 ↦ decide (x1 ≤ x2))[numbers.length / 2]! ≤ x))
+            numbers).length ≥
+        (numbers.length + 1) / 2
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.lean:84:53: unexpected token '!'; expected command
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.lean:105:9: unsolved goals
+numbers : List ℚ
+h_pos : 0 < numbers.length
+h_even : numbers.length % 2 = 0
+⊢ numbers.length / 2 ≤
+    (List.filter
+        (fun x ↦
+          decide
+            (x ≤
+              ((numbers.mergeSort fun x1 x2 ↦ decide (x1 ≤ x2))[numbers.length / 2 - 1]?.getD default +
+                  (numbers.mergeSort fun x1 x2 ↦ decide (x1 ≤ x2))[numbers.length / 2]?.getD default) /
+                2))
+        numbers).length
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.lean:105:18: unsolved goals
+numbers : List ℚ
+h_pos : 0 < numbers.length
+h_even : numbers.length % 2 = 0
+⊢ numbers.length / 2 ≤
+    (List.filter
+        (fun x ↦
+          decide
+            (((numbers.mergeSort fun x1 x2 ↦ decide (x1 ≤ x2))[numbers.length / 2 - 1]?.getD default +
+                  (numbers.mergeSort fun x1 x2 ↦ decide (x1 ≤ x2))[numbers.length / 2]?.getD default) /
+                2 ≤
+              x))
+        numbers).length
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.lean:105:27: unsolved goals
+numbers : List ℚ
+h_pos : 0 < numbers.length
+h_even : numbers.length % 2 = 0
+⊢ (List.filter
+        (fun x ↦
+          decide
+            (x ≤
+              ((numbers.mergeSort fun x1 x2 ↦ decide (x1 ≤ x2))[numbers.length / 2 - 1]?.getD default +
+                  (numbers.mergeSort fun x1 x2 ↦ decide (x1 ≤ x2))[numbers.length / 2]?.getD default) /
+                2))
+        numbers).max? =
+    some ((numbers.mergeSort fun x1 x2 ↦ decide (x1 ≤ x2))[numbers.length / 2 - 1]?.getD default)
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.lean:105:36: unsolved goals
+numbers : List ℚ
+h_pos : 0 < numbers.length
+h_even : numbers.length % 2 = 0
+⊢ (List.filter
+        (fun x ↦
+          decide
+            (((numbers.mergeSort fun x1 x2 ↦ decide (x1 ≤ x2))[numbers.length / 2 - 1]?.getD default +
+                  (numbers.mergeSort fun x1 x2 ↦ decide (x1 ≤ x2))[numbers.length / 2]?.getD default) /
+                2 ≤
+              x))
+        numbers).min? =
+    some ((numbers.mergeSort fun x1 x2 ↦ decide (x1 ≤ x2))[numbers.length / 2]?.getD default)
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.lean:129:13: Application type mismatch: The argument
+  fun x x_1 x_2 ↦ ?m.46
+has type
+  (x :
+      (List.filter
+                (fun x ↦
+                  decide (x ≤ if numbers = [] then 0 else (sorted_list numbers)[numbers.length / 2]?.getD default))
+                numbers).length +
+            (List.filter
+                (fun x ↦
+                  decide ((if numbers = [] then 0 else (sorted_list numbers)[numbers.length / 2]?.getD default) ≤ x))
+                numbers).length -
+          (List.filter
+              (fun x ↦ decide (x = if numbers = [] then 0 else (sorted_list numbers)[numbers.length / 2]?.getD default))
+              numbers).length =
+        numbers.length) →
+    (x_1 :
+        numbers.length ≤
+          2 *
+            (List.filter
+                (fun x ↦
+                  decide (x ≤ if numbers = [] then 0 else (sorted_list numbers)[numbers.length / 2]?.getD default))
+                numbers).length) →
+      (x_2 : ?m.47 x x_1) → ?m.48 x x_1 x_2
+but is expected to have type
+  (List.filter
+              (fun x ↦ decide (x ≤ if numbers = [] then 0 else (sorted_list numbers)[numbers.length / 2]?.getD default))
+              numbers).length +
+          (List.filter
+              (fun x ↦
+                decide ((if numbers = [] then 0 else (sorted_list numbers)[numbers.length / 2]?.getD default) ≤ x))
+              numbers).length -
+        (List.filter
+            (fun x ↦ decide (x = if numbers = [] then 0 else (sorted_list numbers)[numbers.length / 2]?.getD default))
+            numbers).length =
+      numbers.length →
+    numbers.length ≤
+        2 *
+          (List.filter
+              (fun x ↦ decide (x ≤ if numbers = [] then 0 else (sorted_list numbers)[numbers.length / 2]?.getD default))
+              numbers).length →
+      numbers.length ≤
+        2 *
+          (List.filter
+              (fun x ↦
+                decide ((if numbers = [] then 0 else (sorted_list numbers)[numbers.length / 2]?.getD default) ≤ x))
+              numbers).length
+in the application
+  And.intro fun x x_1 x_2 ↦ ?m.46
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.lean:129:46: Invalid `⟨...⟩` notation: The expected type
+  List.Mem (if numbers = [] then 0 else (sorted_list numbers)[numbers.length / 2]?.getD default) numbers
+has more than one constructor
+
+Note: This notation can only be used when the expected type is an inductive type with a single constructor
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.lean:129:26: Invalid `⟨...⟩` notation: The expected type of this term could not be determined
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.lean:134:13: Application type mismatch: The argument
+  fun x x_1 x_2 ↦ ?m.64
+has type
+  (x :
+      (List.filter
+                (fun x ↦
+                  decide
+                    (x ≤
+                      if numbers = [] then 0
+                      else
+                        ((sorted_list numbers)[numbers.length / 2 - 1]?.getD default +
+                            (sorted_list numbers)[numbers.length / 2]?.getD default) /
+                          2))
+                numbers).length +
+            (List.filter
+                (fun x ↦
+                  decide
+                    ((if numbers = [] then 0
+                      else
+                        ((sorted_list numbers)[numbers.length / 2 - 1]?.getD default +
+                            (sorted_list numbers)[numbers.length / 2]?.getD default) /
+                          2) ≤
+                      x))
+                numbers).length -
+          (List.filter
+              (fun x ↦
+                decide
+                  (x =
+                    if numbers = [] then 0
+                    else
+                      ((sorted_list numbers)[numbers.length / 2 - 1]?.getD default +
+                          (sorted_list numbers)[numbers.length / 2]?.getD default) /
+                        2))
+              numbers).length =
+        numbers.length) →
+    (x_1 :
+        numbers.length ≤
+          2 *
+            (List.filter
+                (fun x ↦
+                  decide
+                    (x ≤
+                      if numbers = [] then 0
+                      else
+                        ((sorted_list numbers)[numbers.length / 2 - 1]?.getD default +
+                            (sorted_list numbers)[numbers.length / 2]?.getD default) /
+                          2))
+                numbers).length) →
+      (x_2 : ?m.65 x x_1) → ?m.66 x x_1 x_2
+but is expected to have type
+  (List.filter
+              (fun x ↦
+                decide
+                  (x ≤
+                    if numbers = [] then 0
+                    else
+                      ((sorted_list numbers)[numbers.length / 2 - 1]?.getD default +
+                          (sorted_list numbers)[numbers.length / 2]?.getD default) /
+                        2))
+              numbers).length +
+          (List.filter
+              (fun x ↦
+                decide
+                  ((if numbers = [] then 0
+                    else
+                      ((sorted_list numbers)[numbers.length / 2 - 1]?.getD default +
+                          (sorted_list numbers)[numbers.length / 2]?.getD default) /
+                        2) ≤
+                    x))
+              numbers).length -
+        (List.filter
+            (fun x ↦
+              decide
+                (x =
+                  if numbers = [] then 0
+                  else
+                    ((sorted_list numbers)[numbers.length / 2 - 1]?.getD default +
+                        (sorted_list numbers)[numbers.length / 2]?.getD default) /
+                      2))
+            numbers).length =
+      numbers.length →
+    numbers.length ≤
+        2 *
+          (List.filter
+              (fun x ↦
+                decide
+                  (x ≤
+                    if numbers = [] then 0
+                    else
+                      ((sorted_list numbers)[numbers.length / 2 - 1]?.getD default +
+                          (sorted_list numbers)[numbers.length / 2]?.getD default) /
+                        2))
+              numbers).length →
+      numbers.length ≤
+        2 *
+          (List.filter
+              (fun x ↦
+                decide
+                  ((if numbers = [] then 0
+                    else
+                      ((sorted_list numbers)[numbers.length / 2 - 1]?.getD default +
+                          (sorted_list numbers)[numbers.length / 2]?.getD default) /
+                        2) ≤
+                    x))
+              numbers).length
+in the application
+  And.intro fun x x_1 x_2 ↦ ?m.64
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.lean:134:46: Invalid `⟨...⟩` notation: The expected type
+  numbers.length % 2 = 0 →
+    (List.filter
+              (fun x ↦
+                decide
+                  ((if numbers = [] then 0
+                    else
+                      ((sorted_list numbers)[numbers.length / 2 - 1]?.getD default +
+                          (sorted_list numbers)[numbers.length / 2]?.getD default) /
+                        2) ≤
+                    x))
+              numbers).max?.isSome =
+        true ∧
+      (List.filter
+                (fun x ↦
+                  decide
+                    (x ≤
+                      if numbers = [] then 0
+                      else
+                        ((sorted_list numbers)[numbers.length / 2 - 1]?.getD default +
+                            (sorted_list numbers)[numbers.length / 2]?.getD default) /
+                          2))
+                numbers).min?.isSome =
+          true ∧
+        (if numbers = [] then 0
+          else
+            2 *
+              (((sorted_list numbers)[numbers.length / 2 - 1]?.getD default +
+                  (sorted_list numbers)[numbers.length / 2]?.getD default) /
+                2)) =
+          (List.filter
+                  (fun x ↦
+                    decide
+                      ((if numbers = [] then 0
+                        else
+                          ((sorted_list numbers)[numbers.length / 2 - 1]?.getD default +
+                              (sorted_list numbers)[numbers.length / 2]?.getD default) /
+                            2) ≤
+                        x))
+                  numbers).max?.get! +
+            (List.filter
+                  (fun x ↦
+                    decide
+                      (x ≤
+                        if numbers = [] then 0
+                        else
+                          ((sorted_list numbers)[numbers.length / 2 - 1]?.getD default +
+                              (sorted_list numbers)[numbers.length / 2]?.getD default) /
+                            2))
+                  numbers).min?.get!
+is not an inductive type
+
+Note: This notation can only be used when the expected type is an inductive type with a single constructor
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.lean:134:26: Invalid `⟨...⟩` notation: The expected type of this term could not be determined
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.lean:124:10: This simp argument is unused:
+  if_neg (ne_of_gt h_pos)
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵i̵f̵_̵n̵e̵g̵ ̵(̵n̵e̵_̵o̵f̵_̵g̵t̵ ̵h̵_̵p̵o̵s̵)̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_47_impl
+error: build failed
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_47_impl (5.5s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_47_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_47_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.lean:64:31: Type mismatch
+  x1✝ ≤ x2✝
+has type
+  Prop
+of sort `Type` but is expected to have type
+  ∀ (c : ?m.16), ?m.11 x1✝ x2✝ = true → ?m.11 x2✝ c = true → ?m.11 x1✝ c = true
+of sort `Prop`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.lean:67:67: expected token
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.lean:73:29: Unknown identifier `sorted_list_perm`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.lean:83:15: Unknown identifier `sorted_list_perm`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.lean:81:78: unsolved goals
+numbers : List ℚ
+h_pos : 0 < numbers.length
+h_odd : numbers.length % 2 = 1
+⊢ (numbers.mergeSort fun x1 x2 ↦ decide (x1 ≤ x2))[numbers.length / 2]! ∈ numbers ∧
+    (List.filter (fun x ↦ decide (x ≤ (numbers.mergeSort fun x1 x2 ↦ decide (x1 ≤ x2))[numbers.length / 2]!))
+            numbers).length ≥
+        (numbers.length + 1) / 2 ∧
+      (List.filter (fun x ↦ decide ((numbers.mergeSort fun x1 x2 ↦ decide (x1 ≤ x2))[numbers.length / 2]! ≤ x))
+            numbers).length ≥
+        (numbers.length + 1) / 2
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.lean:84:53: unexpected token '!'; expected command
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.lean:105:9: unsolved goals
+numbers : List ℚ
+h_pos : 0 < numbers.length
+h_even : numbers.length % 2 = 0
+⊢ numbers.length / 2 ≤
+    (List.filter
+        (fun x ↦
+          decide
+            (x ≤
+              ((numbers.mergeSort fun x1 x2 ↦ decide (x1 ≤ x2))[numbers.length / 2 - 1]?.getD default +
+                  (numbers.mergeSort fun x1 x2 ↦ decide (x1 ≤ x2))[numbers.length / 2]?.getD default) /
+                2))
+        numbers).length
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.lean:105:18: unsolved goals
+numbers : List ℚ
+h_pos : 0 < numbers.length
+h_even : numbers.length % 2 = 0
+⊢ numbers.length / 2 ≤
+    (List.filter
+        (fun x ↦
+          decide
+            (((numbers.mergeSort fun x1 x2 ↦ decide (x1 ≤ x2))[numbers.length / 2 - 1]?.getD default +
+                  (numbers.mergeSort fun x1 x2 ↦ decide (x1 ≤ x2))[numbers.length / 2]?.getD default) /
+                2 ≤
+              x))
+        numbers).length
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.lean:105:27: unsolved goals
+numbers : List ℚ
+h_pos : 0 < numbers.length
+h_even : numbers.length % 2 = 0
+⊢ (List.filter
+        (fun x ↦
+          decide
+            (x ≤
+              ((numbers.mergeSort fun x1 x2 ↦ decide (x1 ≤ x2))[numbers.length / 2 - 1]?.getD default +
+                  (numbers.mergeSort fun x1 x2 ↦ decide (x1 ≤ x2))[numbers.length / 2]?.getD default) /
+                2))
+        numbers).max? =
+    some ((numbers.mergeSort fun x1 x2 ↦ decide (x1 ≤ x2))[numbers.length / 2 - 1]?.getD default)
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.lean:105:36: unsolved goals
+numbers : List ℚ
+h_pos : 0 < numbers.length
+h_even : numbers.length % 2 = 0
+⊢ (List.filter
+        (fun x ↦
+          decide
+            (((numbers.mergeSort fun x1 x2 ↦ decide (x1 ≤ x2))[numbers.length / 2 - 1]?.getD default +
+                  (numbers.mergeSort fun x1 x2 ↦ decide (x1 ≤ x2))[numbers.length / 2]?.getD default) /
+                2 ≤
+              x))
+        numbers).min? =
+    some ((numbers.mergeSort fun x1 x2 ↦ decide (x1 ≤ x2))[numbers.length / 2]?.getD default)
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.lean:129:13: Application type mismatch: The argument
+  fun x x_1 x_2 ↦ ?m.46
+has type
+  (x :
+      (List.filter
+                (fun x ↦
+                  decide (x ≤ if numbers = [] then 0 else (sorted_list numbers)[numbers.length / 2]?.getD default))
+                numbers).length +
+            (List.filter
+                (fun x ↦
+                  decide ((if numbers = [] then 0 else (sorted_list numbers)[numbers.length / 2]?.getD default) ≤ x))
+                numbers).length -
+          (List.filter
+              (fun x ↦ decide (x = if numbers = [] then 0 else (sorted_list numbers)[numbers.length / 2]?.getD default))
+              numbers).length =
+        numbers.length) →
+    (x_1 :
+        numbers.length ≤
+          2 *
+            (List.filter
+                (fun x ↦
+                  decide (x ≤ if numbers = [] then 0 else (sorted_list numbers)[numbers.length / 2]?.getD default))
+                numbers).length) →
+      (x_2 : ?m.47 x x_1) → ?m.48 x x_1 x_2
+but is expected to have type
+  (List.filter
+              (fun x ↦ decide (x ≤ if numbers = [] then 0 else (sorted_list numbers)[numbers.length / 2]?.getD default))
+              numbers).length +
+          (List.filter
+              (fun x ↦
+                decide ((if numbers = [] then 0 else (sorted_list numbers)[numbers.length / 2]?.getD default) ≤ x))
+              numbers).length -
+        (List.filter
+            (fun x ↦ decide (x = if numbers = [] then 0 else (sorted_list numbers)[numbers.length / 2]?.getD default))
+            numbers).length =
+      numbers.length →
+    numbers.length ≤
+        2 *
+          (List.filter
+              (fun x ↦ decide (x ≤ if numbers = [] then 0 else (sorted_list numbers)[numbers.length / 2]?.getD default))
+              numbers).length →
+      numbers.length ≤
+        2 *
+          (List.filter
+              (fun x ↦
+                decide ((if numbers = [] then 0 else (sorted_list numbers)[numbers.length / 2]?.getD default) ≤ x))
+              numbers).length
+in the application
+  And.intro fun x x_1 x_2 ↦ ?m.46
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.lean:129:46: Invalid `⟨...⟩` notation: The expected type
+  List.Mem (if numbers = [] then 0 else (sorted_list numbers)[numbers.length / 2]?.getD default) numbers
+has more than one constructor
+
+Note: This notation can only be used when the expected type is an inductive type with a single constructor
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.lean:129:26: Invalid `⟨...⟩` notation: The expected type of this term could not be determined
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.lean:134:13: Application type mismatch: The argument
+  fun x x_1 x_2 ↦ ?m.64
+has type
+  (x :
+      (List.filter
+                (fun x ↦
+                  decide
+                    (x ≤
+                      if numbers = [] then 0
+                      else
+                        ((sorted_list numbers)[numbers.length / 2 - 1]?.getD default +
+                            (sorted_list numbers)[numbers.length / 2]?.getD default) /
+                          2))
+                numbers).length +
+            (List.filter
+                (fun x ↦
+                  decide
+                    ((if numbers = [] then 0
+                      else
+                        ((sorted_list numbers)[numbers.length / 2 - 1]?.getD default +
+                            (sorted_list numbers)[numbers.length / 2]?.getD default) /
+                          2) ≤
+                      x))
+                numbers).length -
+          (List.filter
+              (fun x ↦
+                decide
+                  (x =
+                    if numbers = [] then 0
+                    else
+                      ((sorted_list numbers)[numbers.length / 2 - 1]?.getD default +
+                          (sorted_list numbers)[numbers.length / 2]?.getD default) /
+                        2))
+              numbers).length =
+        numbers.length) →
+    (x_1 :
+        numbers.length ≤
+          2 *
+            (List.filter
+                (fun x ↦
+                  decide
+                    (x ≤
+                      if numbers = [] then 0
+                      else
+                        ((sorted_list numbers)[numbers.length / 2 - 1]?.getD default +
+                            (sorted_list numbers)[numbers.length / 2]?.getD default) /
+                          2))
+                numbers).length) →
+      (x_2 : ?m.65 x x_1) → ?m.66 x x_1 x_2
+but is expected to have type
+  (List.filter
+              (fun x ↦
+                decide
+                  (x ≤
+                    if numbers = [] then 0
+                    else
+                      ((sorted_list numbers)[numbers.length / 2 - 1]?.getD default +
+                          (sorted_list numbers)[numbers.length / 2]?.getD default) /
+                        2))
+              numbers).length +
+          (List.filter
+              (fun x ↦
+                decide
+                  ((if numbers = [] then 0
+                    else
+                      ((sorted_list numbers)[numbers.length / 2 - 1]?.getD default +
+                          (sorted_list numbers)[numbers.length / 2]?.getD default) /
+                        2) ≤
+                    x))
+              numbers).length -
+        (List.filter
+            (fun x ↦
+              decide
+                (x =
+                  if numbers = [] then 0
+                  else
+                    ((sorted_list numbers)[numbers.length / 2 - 1]?.getD default +
+                        (sorted_list numbers)[numbers.length / 2]?.getD default) /
+                      2))
+            numbers).length =
+      numbers.length →
+    numbers.length ≤
+        2 *
+          (List.filter
+              (fun x ↦
+                decide
+                  (x ≤
+                    if numbers = [] then 0
+                    else
+                      ((sorted_list numbers)[numbers.length / 2 - 1]?.getD default +
+                          (sorted_list numbers)[numbers.length / 2]?.getD default) /
+                        2))
+              numbers).length →
+      numbers.length ≤
+        2 *
+          (List.filter
+              (fun x ↦
+                decide
+                  ((if numbers = [] then 0
+                    else
+                      ((sorted_list numbers)[numbers.length / 2 - 1]?.getD default +
+                          (sorted_list numbers)[numbers.length / 2]?.getD default) /
+                        2) ≤
+                    x))
+              numbers).length
+in the application
+  And.intro fun x x_1 x_2 ↦ ?m.64
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.lean:134:46: Invalid `⟨...⟩` notation: The expected type
+  numbers.length % 2 = 0 →
+    (List.filter
+              (fun x ↦
+                decide
+                  ((if numbers = [] then 0
+                    else
+                      ((sorted_list numbers)[numbers.length / 2 - 1]?.getD default +
+                          (sorted_list numbers)[numbers.length / 2]?.getD default) /
+                        2) ≤
+                    x))
+              numbers).max?.isSome =
+        true ∧
+      (List.filter
+                (fun x ↦
+                  decide
+                    (x ≤
+                      if numbers = [] then 0
+                      else
+                        ((sorted_list numbers)[numbers.length / 2 - 1]?.getD default +
+                            (sorted_list numbers)[numbers.length / 2]?.getD default) /
+                          2))
+                numbers).min?.isSome =
+          true ∧
+        (if numbers = [] then 0
+          else
+            2 *
+              (((sorted_list numbers)[numbers.length / 2 - 1]?.getD default +
+                  (sorted_list numbers)[numbers.length / 2]?.getD default) /
+                2)) =
+          (List.filter
+                  (fun x ↦
+                    decide
+                      ((if numbers = [] then 0
+                        else
+                          ((sorted_list numbers)[numbers.length / 2 - 1]?.getD default +
+                              (sorted_list numbers)[numbers.length / 2]?.getD default) /
+                            2) ≤
+                        x))
+                  numbers).max?.get! +
+            (List.filter
+                  (fun x ↦
+                    decide
+                      (x ≤
+                        if numbers = [] then 0
+                        else
+                          ((sorted_list numbers)[numbers.length / 2 - 1]?.getD default +
+                              (sorted_list numbers)[numbers.length / 2]?.getD default) /
+                            2))
+                  numbers).min?.get!
+is not an inductive type
+
+Note: This notation can only be used when the expected type is an inductive type with a single constructor
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.lean:134:26: Invalid `⟨...⟩` notation: The expected type of this term could not be determined
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_47_impl.lean:124:10: This simp argument is unused:
+  if_neg (ne_of_gt h_pos)
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵i̵f̵_̵n̵e̵g̵ ̵(̵n̵e̵_̵o̵f̵_̵g̵t̵ ̵h̵_̵p̵o̵s̵)̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_47_impl
+error: build failed

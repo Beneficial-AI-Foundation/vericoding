@@ -1,0 +1,560 @@
+=== Verification Error - Iteration 4 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/lean/humaneval/files/HumanEval_127.lean
+Time: 2025-09-08 14:52:53
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: ✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_127_impl (20s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_127_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_127_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_127_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_127_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_127_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_127_impl.lean:27:8: linarith failed to find a contradiction
+case h
+n d : ℕ
+h✝¹ : ¬d * d > n
+h✝ : ¬n % d = 0
+h1 : ¬d * d > n
+h2 : ¬n % d = 0
+h3 : d * d ≤ n
+h4 : d * d < (d + 2) * (d + 2)
+a✝ : n + (d + 2) * (d + 2) - d * d < (d + 2) * (d + 2)
+⊢ False
+failed
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_127_impl.lean:28:6: linarith failed to find a contradiction
+case h
+n d : ℕ
+h✝¹ : ¬d * d > n
+h✝ : ¬n % d = 0
+h1 : ¬d * d > n
+h2 : ¬n % d = 0
+h3 : d * d ≤ n
+h4 : d * d < (d + 2) * (d + 2)
+h5 : (d + 2) * (d + 2) ≤ n + (d + 2) * (d + 2) - d * d
+a✝ : n - d * d ≤ n - (d + 2) * (d + 2)
+⊢ False
+failed
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_127_impl.lean:54:6: No goals to be solved
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_127_impl.lean:57:25: Unknown constant `Even.two_dvd_of_mod_two_eq_zero`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_127_impl.lean:58:24: Unknown constant `Nat.eq_two_of_even_prime`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_127_impl.lean:114:4: Tactic `rfl` failed: The left-hand side
+  implementation (s1, e1) (s2, e2)
+is not definitionally equal to the right-hand side
+  implementation interval1 interval2
+
+case h.left
+interval1 interval2 : ℤ × ℤ
+s1 e1 s2 e2 : ℤ
+intersectionStart : ℤ := ⋯
+intersectionEnd : ℤ := ⋯
+hasIntersection : Prop := ⋯
+isPrime : Prop := ⋯
+⊢ implementation (s1, e1) (s2, e2) = implementation interval1 interval2
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_127_impl.lean:120:8: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  if intersectionStart ≤ intersectionEnd then ?m.84 else ?m.85
+in the target expression
+  have intersectionStart := max s1 s2;
+  have intersectionEnd := min e1 e2;
+  have hasIntersection := intersectionStart ≤ intersectionEnd;
+  have isPrime := Nat.Prime (intersectionEnd - intersectionStart).toNat;
+  ((match interval1 with
+        | (s1, e1) =>
+          match interval2 with
+          | (s2, e2) =>
+            have intersectionStart := max s1 s2;
+            have intersectionEnd := min e1 e2;
+            if intersectionStart ≤ intersectionEnd then
+              have length := intersectionEnd - intersectionStart;
+              if length ≥ 0 ∧ isPrimeNat length.toNat = true then "YES" else "NO"
+            else "NO") =
+        "YES" ↔
+      hasIntersection ∧ isPrime) ∧
+    ((match interval1 with
+          | (s1, e1) =>
+            match interval2 with
+            | (s2, e2) =>
+              have intersectionStart := max s1 s2;
+              have intersectionEnd := min e1 e2;
+              if intersectionStart ≤ intersectionEnd then
+                have length := intersectionEnd - intersectionStart;
+                if length ≥ 0 ∧ isPrimeNat length.toNat = true then "YES" else "NO"
+              else "NO") =
+          "NO" ↔
+        ¬hasIntersection ∨ ¬isPrime) ∧
+      ((match interval1 with
+          | (s1, e1) =>
+            match interval2 with
+            | (s2, e2) =>
+              have intersectionStart := max s1 s2;
+              have intersectionEnd := min e1 e2;
+              if intersectionStart ≤ intersectionEnd then
+                have length := intersectionEnd - intersectionStart;
+                if length ≥ 0 ∧ isPrimeNat length.toNat = true then "YES" else "NO"
+              else "NO") =
+          "YES" ∨
+        (match interval1 with
+          | (s1, e1) =>
+            match interval2 with
+            | (s2, e2) =>
+              have intersectionStart := max s1 s2;
+              have intersectionEnd := min e1 e2;
+              if intersectionStart ≤ intersectionEnd then
+                have length := intersectionEnd - intersectionStart;
+                if length ≥ 0 ∧ isPrimeNat length.toNat = true then "YES" else "NO"
+              else "NO") =
+          "NO")
+
+case pos
+interval1 interval2 : ℤ × ℤ
+s1 e1 s2 e2 : ℤ
+intersectionStart : ℤ := max s1 s2
+intersectionEnd : ℤ := min e1 e2
+hasIntersection : Prop := intersectionStart ≤ intersectionEnd
+isPrime : Prop := Nat.Prime (intersectionEnd - intersectionStart).toNat
+h1 : s1 ≤ e1
+h2 : s2 ≤ e2
+h : intersectionStart ≤ intersectionEnd
+⊢ have intersectionStart := max s1 s2;
+  have intersectionEnd := min e1 e2;
+  have hasIntersection := intersectionStart ≤ intersectionEnd;
+  have isPrime := Nat.Prime (intersectionEnd - intersectionStart).toNat;
+  ((match interval1 with
+        | (s1, e1) =>
+          match interval2 with
+          | (s2, e2) =>
+            have intersectionStart := max s1 s2;
+            have intersectionEnd := min e1 e2;
+            if intersectionStart ≤ intersectionEnd then
+              have length := intersectionEnd - intersectionStart;
+              if length ≥ 0 ∧ isPrimeNat length.toNat = true then "YES" else "NO"
+            else "NO") =
+        "YES" ↔
+      hasIntersection ∧ isPrime) ∧
+    ((match interval1 with
+          | (s1, e1) =>
+            match interval2 with
+            | (s2, e2) =>
+              have intersectionStart := max s1 s2;
+              have intersectionEnd := min e1 e2;
+              if intersectionStart ≤ intersectionEnd then
+                have length := intersectionEnd - intersectionStart;
+                if length ≥ 0 ∧ isPrimeNat length.toNat = true then "YES" else "NO"
+              else "NO") =
+          "NO" ↔
+        ¬hasIntersection ∨ ¬isPrime) ∧
+      ((match interval1 with
+          | (s1, e1) =>
+            match interval2 with
+            | (s2, e2) =>
+              have intersectionStart := max s1 s2;
+              have intersectionEnd := min e1 e2;
+              if intersectionStart ≤ intersectionEnd then
+                have length := intersectionEnd - intersectionStart;
+                if length ≥ 0 ∧ isPrimeNat length.toNat = true then "YES" else "NO"
+              else "NO") =
+          "YES" ∨
+        (match interval1 with
+          | (s1, e1) =>
+            match interval2 with
+            | (s2, e2) =>
+              have intersectionStart := max s1 s2;
+              have intersectionEnd := min e1 e2;
+              if intersectionStart ≤ intersectionEnd then
+                have length := intersectionEnd - intersectionStart;
+                if length ≥ 0 ∧ isPrimeNat length.toNat = true then "YES" else "NO"
+              else "NO") =
+          "NO")
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_127_impl.lean:205:8: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  if intersectionStart ≤ intersectionEnd then ?m.89 else ?m.90
+in the target expression
+  have intersectionStart := max s1 s2;
+  have intersectionEnd := min e1 e2;
+  have hasIntersection := intersectionStart ≤ intersectionEnd;
+  have isPrime := Nat.Prime (intersectionEnd - intersectionStart).toNat;
+  ((match interval1 with
+        | (s1, e1) =>
+          match interval2 with
+          | (s2, e2) =>
+            have intersectionStart := max s1 s2;
+            have intersectionEnd := min e1 e2;
+            if intersectionStart ≤ intersectionEnd then
+              have length := intersectionEnd - intersectionStart;
+              if length ≥ 0 ∧ isPrimeNat length.toNat = true then "YES" else "NO"
+            else "NO") =
+        "YES" ↔
+      hasIntersection ∧ isPrime) ∧
+    ((match interval1 with
+          | (s1, e1) =>
+            match interval2 with
+            | (s2, e2) =>
+              have intersectionStart := max s1 s2;
+              have intersectionEnd := min e1 e2;
+              if intersectionStart ≤ intersectionEnd then
+                have length := intersectionEnd - intersectionStart;
+                if length ≥ 0 ∧ isPrimeNat length.toNat = true then "YES" else "NO"
+              else "NO") =
+          "NO" ↔
+        ¬hasIntersection ∨ ¬isPrime) ∧
+      ((match interval1 with
+          | (s1, e1) =>
+            match interval2 with
+            | (s2, e2) =>
+              have intersectionStart := max s1 s2;
+              have intersectionEnd := min e1 e2;
+              if intersectionStart ≤ intersectionEnd then
+                have length := intersectionEnd - intersectionStart;
+                if length ≥ 0 ∧ isPrimeNat length.toNat = true then "YES" else "NO"
+              else "NO") =
+          "YES" ∨
+        (match interval1 with
+          | (s1, e1) =>
+            match interval2 with
+            | (s2, e2) =>
+              have intersectionStart := max s1 s2;
+              have intersectionEnd := min e1 e2;
+              if intersectionStart ≤ intersectionEnd then
+                have length := intersectionEnd - intersectionStart;
+                if length ≥ 0 ∧ isPrimeNat length.toNat = true then "YES" else "NO"
+              else "NO") =
+          "NO")
+
+case neg
+interval1 interval2 : ℤ × ℤ
+s1 e1 s2 e2 : ℤ
+intersectionStart : ℤ := max s1 s2
+intersectionEnd : ℤ := min e1 e2
+hasIntersection : Prop := intersectionStart ≤ intersectionEnd
+isPrime : Prop := Nat.Prime (intersectionEnd - intersectionStart).toNat
+h1 : s1 ≤ e1
+h2 : s2 ≤ e2
+h : ¬intersectionStart ≤ intersectionEnd
+⊢ have intersectionStart := max s1 s2;
+  have intersectionEnd := min e1 e2;
+  have hasIntersection := intersectionStart ≤ intersectionEnd;
+  have isPrime := Nat.Prime (intersectionEnd - intersectionStart).toNat;
+  ((match interval1 with
+        | (s1, e1) =>
+          match interval2 with
+          | (s2, e2) =>
+            have intersectionStart := max s1 s2;
+            have intersectionEnd := min e1 e2;
+            if intersectionStart ≤ intersectionEnd then
+              have length := intersectionEnd - intersectionStart;
+              if length ≥ 0 ∧ isPrimeNat length.toNat = true then "YES" else "NO"
+            else "NO") =
+        "YES" ↔
+      hasIntersection ∧ isPrime) ∧
+    ((match interval1 with
+          | (s1, e1) =>
+            match interval2 with
+            | (s2, e2) =>
+              have intersectionStart := max s1 s2;
+              have intersectionEnd := min e1 e2;
+              if intersectionStart ≤ intersectionEnd then
+                have length := intersectionEnd - intersectionStart;
+                if length ≥ 0 ∧ isPrimeNat length.toNat = true then "YES" else "NO"
+              else "NO") =
+          "NO" ↔
+        ¬hasIntersection ∨ ¬isPrime) ∧
+      ((match interval1 with
+          | (s1, e1) =>
+            match interval2 with
+            | (s2, e2) =>
+              have intersectionStart := max s1 s2;
+              have intersectionEnd := min e1 e2;
+              if intersectionStart ≤ intersectionEnd then
+                have length := intersectionEnd - intersectionStart;
+                if length ≥ 0 ∧ isPrimeNat length.toNat = true then "YES" else "NO"
+              else "NO") =
+          "YES" ∨
+        (match interval1 with
+          | (s1, e1) =>
+            match interval2 with
+            | (s2, e2) =>
+              have intersectionStart := max s1 s2;
+              have intersectionEnd := min e1 e2;
+              if intersectionStart ≤ intersectionEnd then
+                have length := intersectionEnd - intersectionStart;
+                if length ≥ 0 ∧ isPrimeNat length.toNat = true then "YES" else "NO"
+              else "NO") =
+          "NO")
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_127_impl
+error: build failed
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_127_impl (20s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_127_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_127_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_127_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_127_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_127_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_127_impl.lean:27:8: linarith failed to find a contradiction
+case h
+n d : ℕ
+h✝¹ : ¬d * d > n
+h✝ : ¬n % d = 0
+h1 : ¬d * d > n
+h2 : ¬n % d = 0
+h3 : d * d ≤ n
+h4 : d * d < (d + 2) * (d + 2)
+a✝ : n + (d + 2) * (d + 2) - d * d < (d + 2) * (d + 2)
+⊢ False
+failed
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_127_impl.lean:28:6: linarith failed to find a contradiction
+case h
+n d : ℕ
+h✝¹ : ¬d * d > n
+h✝ : ¬n % d = 0
+h1 : ¬d * d > n
+h2 : ¬n % d = 0
+h3 : d * d ≤ n
+h4 : d * d < (d + 2) * (d + 2)
+h5 : (d + 2) * (d + 2) ≤ n + (d + 2) * (d + 2) - d * d
+a✝ : n - d * d ≤ n - (d + 2) * (d + 2)
+⊢ False
+failed
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_127_impl.lean:54:6: No goals to be solved
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_127_impl.lean:57:25: Unknown constant `Even.two_dvd_of_mod_two_eq_zero`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_127_impl.lean:58:24: Unknown constant `Nat.eq_two_of_even_prime`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_127_impl.lean:114:4: Tactic `rfl` failed: The left-hand side
+  implementation (s1, e1) (s2, e2)
+is not definitionally equal to the right-hand side
+  implementation interval1 interval2
+
+case h.left
+interval1 interval2 : ℤ × ℤ
+s1 e1 s2 e2 : ℤ
+intersectionStart : ℤ := ⋯
+intersectionEnd : ℤ := ⋯
+hasIntersection : Prop := ⋯
+isPrime : Prop := ⋯
+⊢ implementation (s1, e1) (s2, e2) = implementation interval1 interval2
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_127_impl.lean:120:8: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  if intersectionStart ≤ intersectionEnd then ?m.84 else ?m.85
+in the target expression
+  have intersectionStart := max s1 s2;
+  have intersectionEnd := min e1 e2;
+  have hasIntersection := intersectionStart ≤ intersectionEnd;
+  have isPrime := Nat.Prime (intersectionEnd - intersectionStart).toNat;
+  ((match interval1 with
+        | (s1, e1) =>
+          match interval2 with
+          | (s2, e2) =>
+            have intersectionStart := max s1 s2;
+            have intersectionEnd := min e1 e2;
+            if intersectionStart ≤ intersectionEnd then
+              have length := intersectionEnd - intersectionStart;
+              if length ≥ 0 ∧ isPrimeNat length.toNat = true then "YES" else "NO"
+            else "NO") =
+        "YES" ↔
+      hasIntersection ∧ isPrime) ∧
+    ((match interval1 with
+          | (s1, e1) =>
+            match interval2 with
+            | (s2, e2) =>
+              have intersectionStart := max s1 s2;
+              have intersectionEnd := min e1 e2;
+              if intersectionStart ≤ intersectionEnd then
+                have length := intersectionEnd - intersectionStart;
+                if length ≥ 0 ∧ isPrimeNat length.toNat = true then "YES" else "NO"
+              else "NO") =
+          "NO" ↔
+        ¬hasIntersection ∨ ¬isPrime) ∧
+      ((match interval1 with
+          | (s1, e1) =>
+            match interval2 with
+            | (s2, e2) =>
+              have intersectionStart := max s1 s2;
+              have intersectionEnd := min e1 e2;
+              if intersectionStart ≤ intersectionEnd then
+                have length := intersectionEnd - intersectionStart;
+                if length ≥ 0 ∧ isPrimeNat length.toNat = true then "YES" else "NO"
+              else "NO") =
+          "YES" ∨
+        (match interval1 with
+          | (s1, e1) =>
+            match interval2 with
+            | (s2, e2) =>
+              have intersectionStart := max s1 s2;
+              have intersectionEnd := min e1 e2;
+              if intersectionStart ≤ intersectionEnd then
+                have length := intersectionEnd - intersectionStart;
+                if length ≥ 0 ∧ isPrimeNat length.toNat = true then "YES" else "NO"
+              else "NO") =
+          "NO")
+
+case pos
+interval1 interval2 : ℤ × ℤ
+s1 e1 s2 e2 : ℤ
+intersectionStart : ℤ := max s1 s2
+intersectionEnd : ℤ := min e1 e2
+hasIntersection : Prop := intersectionStart ≤ intersectionEnd
+isPrime : Prop := Nat.Prime (intersectionEnd - intersectionStart).toNat
+h1 : s1 ≤ e1
+h2 : s2 ≤ e2
+h : intersectionStart ≤ intersectionEnd
+⊢ have intersectionStart := max s1 s2;
+  have intersectionEnd := min e1 e2;
+  have hasIntersection := intersectionStart ≤ intersectionEnd;
+  have isPrime := Nat.Prime (intersectionEnd - intersectionStart).toNat;
+  ((match interval1 with
+        | (s1, e1) =>
+          match interval2 with
+          | (s2, e2) =>
+            have intersectionStart := max s1 s2;
+            have intersectionEnd := min e1 e2;
+            if intersectionStart ≤ intersectionEnd then
+              have length := intersectionEnd - intersectionStart;
+              if length ≥ 0 ∧ isPrimeNat length.toNat = true then "YES" else "NO"
+            else "NO") =
+        "YES" ↔
+      hasIntersection ∧ isPrime) ∧
+    ((match interval1 with
+          | (s1, e1) =>
+            match interval2 with
+            | (s2, e2) =>
+              have intersectionStart := max s1 s2;
+              have intersectionEnd := min e1 e2;
+              if intersectionStart ≤ intersectionEnd then
+                have length := intersectionEnd - intersectionStart;
+                if length ≥ 0 ∧ isPrimeNat length.toNat = true then "YES" else "NO"
+              else "NO") =
+          "NO" ↔
+        ¬hasIntersection ∨ ¬isPrime) ∧
+      ((match interval1 with
+          | (s1, e1) =>
+            match interval2 with
+            | (s2, e2) =>
+              have intersectionStart := max s1 s2;
+              have intersectionEnd := min e1 e2;
+              if intersectionStart ≤ intersectionEnd then
+                have length := intersectionEnd - intersectionStart;
+                if length ≥ 0 ∧ isPrimeNat length.toNat = true then "YES" else "NO"
+              else "NO") =
+          "YES" ∨
+        (match interval1 with
+          | (s1, e1) =>
+            match interval2 with
+            | (s2, e2) =>
+              have intersectionStart := max s1 s2;
+              have intersectionEnd := min e1 e2;
+              if intersectionStart ≤ intersectionEnd then
+                have length := intersectionEnd - intersectionStart;
+                if length ≥ 0 ∧ isPrimeNat length.toNat = true then "YES" else "NO"
+              else "NO") =
+          "NO")
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_127_impl.lean:205:8: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  if intersectionStart ≤ intersectionEnd then ?m.89 else ?m.90
+in the target expression
+  have intersectionStart := max s1 s2;
+  have intersectionEnd := min e1 e2;
+  have hasIntersection := intersectionStart ≤ intersectionEnd;
+  have isPrime := Nat.Prime (intersectionEnd - intersectionStart).toNat;
+  ((match interval1 with
+        | (s1, e1) =>
+          match interval2 with
+          | (s2, e2) =>
+            have intersectionStart := max s1 s2;
+            have intersectionEnd := min e1 e2;
+            if intersectionStart ≤ intersectionEnd then
+              have length := intersectionEnd - intersectionStart;
+              if length ≥ 0 ∧ isPrimeNat length.toNat = true then "YES" else "NO"
+            else "NO") =
+        "YES" ↔
+      hasIntersection ∧ isPrime) ∧
+    ((match interval1 with
+          | (s1, e1) =>
+            match interval2 with
+            | (s2, e2) =>
+              have intersectionStart := max s1 s2;
+              have intersectionEnd := min e1 e2;
+              if intersectionStart ≤ intersectionEnd then
+                have length := intersectionEnd - intersectionStart;
+                if length ≥ 0 ∧ isPrimeNat length.toNat = true then "YES" else "NO"
+              else "NO") =
+          "NO" ↔
+        ¬hasIntersection ∨ ¬isPrime) ∧
+      ((match interval1 with
+          | (s1, e1) =>
+            match interval2 with
+            | (s2, e2) =>
+              have intersectionStart := max s1 s2;
+              have intersectionEnd := min e1 e2;
+              if intersectionStart ≤ intersectionEnd then
+                have length := intersectionEnd - intersectionStart;
+                if length ≥ 0 ∧ isPrimeNat length.toNat = true then "YES" else "NO"
+              else "NO") =
+          "YES" ∨
+        (match interval1 with
+          | (s1, e1) =>
+            match interval2 with
+            | (s2, e2) =>
+              have intersectionStart := max s1 s2;
+              have intersectionEnd := min e1 e2;
+              if intersectionStart ≤ intersectionEnd then
+                have length := intersectionEnd - intersectionStart;
+                if length ≥ 0 ∧ isPrimeNat length.toNat = true then "YES" else "NO"
+              else "NO") =
+          "NO")
+
+case neg
+interval1 interval2 : ℤ × ℤ
+s1 e1 s2 e2 : ℤ
+intersectionStart : ℤ := max s1 s2
+intersectionEnd : ℤ := min e1 e2
+hasIntersection : Prop := intersectionStart ≤ intersectionEnd
+isPrime : Prop := Nat.Prime (intersectionEnd - intersectionStart).toNat
+h1 : s1 ≤ e1
+h2 : s2 ≤ e2
+h : ¬intersectionStart ≤ intersectionEnd
+⊢ have intersectionStart := max s1 s2;
+  have intersectionEnd := min e1 e2;
+  have hasIntersection := intersectionStart ≤ intersectionEnd;
+  have isPrime := Nat.Prime (intersectionEnd - intersectionStart).toNat;
+  ((match interval1 with
+        | (s1, e1) =>
+          match interval2 with
+          | (s2, e2) =>
+            have intersectionStart := max s1 s2;
+            have intersectionEnd := min e1 e2;
+            if intersectionStart ≤ intersectionEnd then
+              have length := intersectionEnd - intersectionStart;
+              if length ≥ 0 ∧ isPrimeNat length.toNat = true then "YES" else "NO"
+            else "NO") =
+        "YES" ↔
+      hasIntersection ∧ isPrime) ∧
+    ((match interval1 with
+          | (s1, e1) =>
+            match interval2 with
+            | (s2, e2) =>
+              have intersectionStart := max s1 s2;
+              have intersectionEnd := min e1 e2;
+              if intersectionStart ≤ intersectionEnd then
+                have length := intersectionEnd - intersectionStart;
+                if length ≥ 0 ∧ isPrimeNat length.toNat = true then "YES" else "NO"
+              else "NO") =
+          "NO" ↔
+        ¬hasIntersection ∨ ¬isPrime) ∧
+      ((match interval1 with
+          | (s1, e1) =>
+            match interval2 with
+            | (s2, e2) =>
+              have intersectionStart := max s1 s2;
+              have intersectionEnd := min e1 e2;
+              if intersectionStart ≤ intersectionEnd then
+                have length := intersectionEnd - intersectionStart;
+                if length ≥ 0 ∧ isPrimeNat length.toNat = true then "YES" else "NO"
+              else "NO") =
+          "YES" ∨
+        (match interval1 with
+          | (s1, e1) =>
+            match interval2 with
+            | (s2, e2) =>
+              have intersectionStart := max s1 s2;
+              have intersectionEnd := min e1 e2;
+              if intersectionStart ≤ intersectionEnd then
+                have length := intersectionEnd - intersectionStart;
+                if length ≥ 0 ∧ isPrimeNat length.toNat = true then "YES" else "NO"
+              else "NO") =
+          "NO")
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_127_impl
+error: build failed

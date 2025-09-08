@@ -1,0 +1,470 @@
+=== Verification Error - Iteration 2 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/lean/humaneval/files/HumanEval_90.lean
+Time: 2025-09-08 14:43:53
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: ✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_90_impl (3.3s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_90_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_90_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:58:6: Unknown constant `List.toFinset_insertionSort`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:56:60: unsolved goals
+lst : List ℤ
+⊢ (List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList).toFinset = lst.toFinset
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:66:6: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ?x ∈ List.insertionSort ?r ?l
+in the target expression
+  ∀ (x_1 : ℤ), x_1 ∈ x ↔ x_1 ∈ lst
+
+lst : List ℤ
+x : List ℤ := List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList
+sorted : List ℤ := List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList
+⊢ ∀ (x_1 : ℤ), x_1 ∈ x ↔ x_1 ∈ lst
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:69:96: Invalid field `length`: The environment does not contain `Function.length`
+  fun x1 x2 ↦ x1 ≤ x2
+has type
+  ?m.9 → ?m.9 → Prop
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:72:4: Unknown constant `List.get!_mem`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:78:48: Invalid field `length`: The environment does not contain `Function.length`
+  fun x1 x2 ↦ x1 ≤ x2
+has type
+  ?m.9 → ?m.9 → Prop
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:79:48: Invalid field `length`: The environment does not contain `Function.length`
+  fun x1 x2 ↦ x1 ≤ x2
+has type
+  ?m.23 → ?m.23 → Prop
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:83:53: Invalid field `length`: The environment does not contain `Function.length`
+  fun x1 x2 ↦ x1 ≤ x2
+has type
+  ?m.81 → ?m.81 → Prop
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:84:53: Invalid field `length`: The environment does not contain `Function.length`
+  fun x1 x2 ↦ x1 ≤ x2
+has type
+  ?m.97 → ?m.97 → Prop
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:85:6: Unknown constant `List.get!_eq_get`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:81:107: unsolved goals
+lst : List ℤ
+i j : ℕ
+hi : i < sorry
+hj : j < sorry
+hij : i < j
+h_sorted : List.Sorted (fun x1 x2 ↦ x1 ≤ x2) (List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList)
+hi' : i < sorry
+hj' : j < sorry
+⊢ (List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList)[i]! ≤
+    (List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList)[j]!
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:99:6: Tactic `rfl` failed: The left-hand side
+  if (List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList).length ≥ 2 then
+    some (List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList)[1]!
+  else none
+is not definitionally equal to the right-hand side
+  some sorted[1]!
+
+case h.left
+lst : List ℤ
+sorted : List ℤ := ⋯
+h : sorted.length ≥ 2
+⊢ (if (List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList).length ≥ 2 then
+      some (List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList)[1]!
+    else none) =
+    some sorted[1]!
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:109:61: No goals to be solved
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:111:14: Function expected at
+  h_eq
+but this term has type
+  sorted[0]! = sorted[1]!
+
+Note: Expected a function because this term is being applied to the argument
+  this
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:121:80: Application type mismatch: The argument
+  h_lt
+has type
+  sorted[0]! < sorted[1]!
+but is expected to have type
+  decide (sorted[0]! < sorted[1]!) = true
+in the application
+  ⟨h_mem, h_lt⟩
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:128:39: Type mismatch
+  hy_prop.right
+has type
+  decide (y < sorted[1]!) = true
+but is expected to have type
+  y < sorted[1]!
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:136:26: `List.mem_iff_get?` has been deprecated: Use `List.mem_iff_getElem?` instead
+
+Note: The updated constant has a different type:
+  ∀ {α : Type u_1} {a : α} {l : List α}, a ∈ l ↔ ∃ i, l[i]? = some a
+instead of
+  ∀ {α : Type u_1} {a : α} {l : List α}, a ∈ l ↔ ∃ n, l.get? n = some a
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:140:60: Type mismatch
+  hk
+has type
+  val = y
+but is expected to have type
+  y = val
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:141:47: Unknown constant `List.get?_eq_some.mp`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:149:16: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  val
+in the target expression
+  sorted[1]! ≤ sorted[k]!
+
+lst : List ℤ
+sorted : List ℤ := List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList
+h : sorted.length ≥ 2
+h_len : 2 ≤ sorted.length
+h0_lt : 0 < sorted.length
+h1_lt : 1 < sorted.length
+h_distinct : sorted[0]! ≠ sorted[1]!
+h_lt : sorted[0]! < sorted[1]!
+smaller_els : List ℤ := List.filter (fun x ↦ decide (x < sorted[1]!)) lst
+y : ℤ
+hy : y ∈ List.filter (fun x ↦ decide (x < sorted[1]!)) lst
+hy_prop : y ∈ lst ∧ decide (y < sorted[1]!) = true
+hy_mem : y ∈ lst
+hy_lt : y < sorted[1]!
+y_in_sorted : y ∈ sorted
+k : ℕ
+hk : sorted.get? k = some y
+val : ℤ
+hk_some : sorted[k]? = some val
+hk_val : y = val
+hk_bound : k < sorted.length
+hk_ne : ¬k = 0
+hk_pos : 0 < k
+hk_ge_one : 1 ≤ k
+this : sorted[1]! ≤ sorted[k]!
+⊢ False
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:152:14: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  k
+in the target expression
+  y = val
+
+case h.right.right.intro.some
+lst : List ℤ
+sorted : List ℤ := List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList
+h : sorted.length ≥ 2
+h_len : 2 ≤ sorted.length
+h0_lt : 0 < sorted.length
+h1_lt : 1 < sorted.length
+h_distinct : sorted[0]! ≠ sorted[1]!
+h_lt : sorted[0]! < sorted[1]!
+smaller_els : List ℤ := List.filter (fun x ↦ decide (x < sorted[1]!)) lst
+y : ℤ
+hy : y ∈ List.filter (fun x ↦ decide (x < sorted[1]!)) lst
+hy_prop : y ∈ lst ∧ decide (y < sorted[1]!) = true
+hy_mem : y ∈ lst
+hy_lt : y < sorted[1]!
+y_in_sorted : y ∈ sorted
+k : ℕ
+hk : sorted.get? k = some y
+val : ℤ
+hk_some : sorted[k]? = some val
+hk_val : y = val
+hk_bound : k < sorted.length
+hk_zero : k = 0
+⊢ decide (y = (List.filter (fun x ↦ decide (x < sorted[1]!)) lst)[0]!) = true
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:196:6: Tactic `rfl` failed: The left-hand side
+  if (List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList).length ≥ 2 then
+    some (List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList)[1]!
+  else none
+is not definitionally equal to the right-hand side
+  none
+
+case h.left
+lst : List ℤ
+sorted : List ℤ := ⋯
+h : ¬sorted.length ≥ 2
+⊢ (if (List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList).length ≥ 2 then
+      some (List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList)[1]!
+    else none) =
+    none
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:198:26: Tactic `introN` failed: There are no additional binders or `let` bindings in the goal to introduce
+
+case h.right
+lst : List ℤ
+sorted : List ℤ := List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList
+h : sorted.length < 2
+i j : ℕ
+hi : i < lst.length
+hj : j < lst.length
+hij : i ≠ j
+⊢ lst[j]! ≤ lst[i]!
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:97:15: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  simp only [h̵,̵ ̵ite_true, true_and]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:97:18: This simp argument is unused:
+  ite_true
+
+Hint: Omit it from the simp argument list.
+  simp only [h, i̵t̵e̵_̵t̵r̵u̵e̵,̵ ̵true_and]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:97:28: This simp argument is unused:
+  true_and
+
+Hint: Omit it from the simp argument list.
+  simp only [h, ite_true,̵ ̵t̵r̵u̵e̵_̵a̵n̵d̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:194:15: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  simp only [h̵,̵ ̵ite_false, true_and]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:194:18: This simp argument is unused:
+  ite_false
+
+Hint: Omit it from the simp argument list.
+  simp only [h, i̵t̵e̵_̵f̵a̵l̵s̵e̵,̵ ̵true_and]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:194:29: This simp argument is unused:
+  true_and
+
+Hint: Omit it from the simp argument list.
+  simp only [h, ite_false,̵ ̵t̵r̵u̵e̵_̵a̵n̵d̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_90_impl
+error: build failed
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_90_impl (3.3s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_90_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_90_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:58:6: Unknown constant `List.toFinset_insertionSort`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:56:60: unsolved goals
+lst : List ℤ
+⊢ (List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList).toFinset = lst.toFinset
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:66:6: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ?x ∈ List.insertionSort ?r ?l
+in the target expression
+  ∀ (x_1 : ℤ), x_1 ∈ x ↔ x_1 ∈ lst
+
+lst : List ℤ
+x : List ℤ := List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList
+sorted : List ℤ := List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList
+⊢ ∀ (x_1 : ℤ), x_1 ∈ x ↔ x_1 ∈ lst
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:69:96: Invalid field `length`: The environment does not contain `Function.length`
+  fun x1 x2 ↦ x1 ≤ x2
+has type
+  ?m.9 → ?m.9 → Prop
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:72:4: Unknown constant `List.get!_mem`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:78:48: Invalid field `length`: The environment does not contain `Function.length`
+  fun x1 x2 ↦ x1 ≤ x2
+has type
+  ?m.9 → ?m.9 → Prop
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:79:48: Invalid field `length`: The environment does not contain `Function.length`
+  fun x1 x2 ↦ x1 ≤ x2
+has type
+  ?m.23 → ?m.23 → Prop
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:83:53: Invalid field `length`: The environment does not contain `Function.length`
+  fun x1 x2 ↦ x1 ≤ x2
+has type
+  ?m.81 → ?m.81 → Prop
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:84:53: Invalid field `length`: The environment does not contain `Function.length`
+  fun x1 x2 ↦ x1 ≤ x2
+has type
+  ?m.97 → ?m.97 → Prop
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:85:6: Unknown constant `List.get!_eq_get`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:81:107: unsolved goals
+lst : List ℤ
+i j : ℕ
+hi : i < sorry
+hj : j < sorry
+hij : i < j
+h_sorted : List.Sorted (fun x1 x2 ↦ x1 ≤ x2) (List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList)
+hi' : i < sorry
+hj' : j < sorry
+⊢ (List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList)[i]! ≤
+    (List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList)[j]!
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:99:6: Tactic `rfl` failed: The left-hand side
+  if (List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList).length ≥ 2 then
+    some (List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList)[1]!
+  else none
+is not definitionally equal to the right-hand side
+  some sorted[1]!
+
+case h.left
+lst : List ℤ
+sorted : List ℤ := ⋯
+h : sorted.length ≥ 2
+⊢ (if (List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList).length ≥ 2 then
+      some (List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList)[1]!
+    else none) =
+    some sorted[1]!
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:109:61: No goals to be solved
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:111:14: Function expected at
+  h_eq
+but this term has type
+  sorted[0]! = sorted[1]!
+
+Note: Expected a function because this term is being applied to the argument
+  this
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:121:80: Application type mismatch: The argument
+  h_lt
+has type
+  sorted[0]! < sorted[1]!
+but is expected to have type
+  decide (sorted[0]! < sorted[1]!) = true
+in the application
+  ⟨h_mem, h_lt⟩
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:128:39: Type mismatch
+  hy_prop.right
+has type
+  decide (y < sorted[1]!) = true
+but is expected to have type
+  y < sorted[1]!
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:136:26: `List.mem_iff_get?` has been deprecated: Use `List.mem_iff_getElem?` instead
+
+Note: The updated constant has a different type:
+  ∀ {α : Type u_1} {a : α} {l : List α}, a ∈ l ↔ ∃ i, l[i]? = some a
+instead of
+  ∀ {α : Type u_1} {a : α} {l : List α}, a ∈ l ↔ ∃ n, l.get? n = some a
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:140:60: Type mismatch
+  hk
+has type
+  val = y
+but is expected to have type
+  y = val
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:141:47: Unknown constant `List.get?_eq_some.mp`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:149:16: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  val
+in the target expression
+  sorted[1]! ≤ sorted[k]!
+
+lst : List ℤ
+sorted : List ℤ := List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList
+h : sorted.length ≥ 2
+h_len : 2 ≤ sorted.length
+h0_lt : 0 < sorted.length
+h1_lt : 1 < sorted.length
+h_distinct : sorted[0]! ≠ sorted[1]!
+h_lt : sorted[0]! < sorted[1]!
+smaller_els : List ℤ := List.filter (fun x ↦ decide (x < sorted[1]!)) lst
+y : ℤ
+hy : y ∈ List.filter (fun x ↦ decide (x < sorted[1]!)) lst
+hy_prop : y ∈ lst ∧ decide (y < sorted[1]!) = true
+hy_mem : y ∈ lst
+hy_lt : y < sorted[1]!
+y_in_sorted : y ∈ sorted
+k : ℕ
+hk : sorted.get? k = some y
+val : ℤ
+hk_some : sorted[k]? = some val
+hk_val : y = val
+hk_bound : k < sorted.length
+hk_ne : ¬k = 0
+hk_pos : 0 < k
+hk_ge_one : 1 ≤ k
+this : sorted[1]! ≤ sorted[k]!
+⊢ False
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:152:14: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  k
+in the target expression
+  y = val
+
+case h.right.right.intro.some
+lst : List ℤ
+sorted : List ℤ := List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList
+h : sorted.length ≥ 2
+h_len : 2 ≤ sorted.length
+h0_lt : 0 < sorted.length
+h1_lt : 1 < sorted.length
+h_distinct : sorted[0]! ≠ sorted[1]!
+h_lt : sorted[0]! < sorted[1]!
+smaller_els : List ℤ := List.filter (fun x ↦ decide (x < sorted[1]!)) lst
+y : ℤ
+hy : y ∈ List.filter (fun x ↦ decide (x < sorted[1]!)) lst
+hy_prop : y ∈ lst ∧ decide (y < sorted[1]!) = true
+hy_mem : y ∈ lst
+hy_lt : y < sorted[1]!
+y_in_sorted : y ∈ sorted
+k : ℕ
+hk : sorted.get? k = some y
+val : ℤ
+hk_some : sorted[k]? = some val
+hk_val : y = val
+hk_bound : k < sorted.length
+hk_zero : k = 0
+⊢ decide (y = (List.filter (fun x ↦ decide (x < sorted[1]!)) lst)[0]!) = true
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:196:6: Tactic `rfl` failed: The left-hand side
+  if (List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList).length ≥ 2 then
+    some (List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList)[1]!
+  else none
+is not definitionally equal to the right-hand side
+  none
+
+case h.left
+lst : List ℤ
+sorted : List ℤ := ⋯
+h : ¬sorted.length ≥ 2
+⊢ (if (List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList).length ≥ 2 then
+      some (List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList)[1]!
+    else none) =
+    none
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:198:26: Tactic `introN` failed: There are no additional binders or `let` bindings in the goal to introduce
+
+case h.right
+lst : List ℤ
+sorted : List ℤ := List.insertionSort (fun x1 x2 ↦ x1 ≤ x2) lst.toFinset.toList
+h : sorted.length < 2
+i j : ℕ
+hi : i < lst.length
+hj : j < lst.length
+hij : i ≠ j
+⊢ lst[j]! ≤ lst[i]!
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:97:15: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  simp only [h̵,̵ ̵ite_true, true_and]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:97:18: This simp argument is unused:
+  ite_true
+
+Hint: Omit it from the simp argument list.
+  simp only [h, i̵t̵e̵_̵t̵r̵u̵e̵,̵ ̵true_and]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:97:28: This simp argument is unused:
+  true_and
+
+Hint: Omit it from the simp argument list.
+  simp only [h, ite_true,̵ ̵t̵r̵u̵e̵_̵a̵n̵d̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:194:15: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  simp only [h̵,̵ ̵ite_false, true_and]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:194:18: This simp argument is unused:
+  ite_false
+
+Hint: Omit it from the simp argument list.
+  simp only [h, i̵t̵e̵_̵f̵a̵l̵s̵e̵,̵ ̵true_and]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_90_impl.lean:194:29: This simp argument is unused:
+  true_and
+
+Hint: Omit it from the simp argument list.
+  simp only [h, ite_false,̵ ̵t̵r̵u̵e̵_̵a̵n̵d̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_90_impl
+error: build failed

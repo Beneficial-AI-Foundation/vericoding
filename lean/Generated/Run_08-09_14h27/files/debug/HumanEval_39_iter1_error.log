@@ -1,0 +1,432 @@
+=== Verification Error - Iteration 1 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/lean/humaneval/files/HumanEval_39.lean
+Time: 2025-09-08 14:57:01
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: ✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_39_impl (16s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_39_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_39_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:95:10: numerals are data in Lean, but the expected type is a proposition
+  ∃ x, Nat.fib x = implementation 1 : Prop
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:97:8: Type mismatch
+  fib_2
+has type
+  Nat.fib 3 = 2
+but is expected to have type
+  Nat.Prime (implementation 1)
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:99:8: Type mismatch
+  prime_2
+has type
+  Nat.Prime 2
+but is expected to have type
+  (fun S ↦ S = ∅ ∧ ∀ y ∈ S, (∃ k, y = Nat.fib k) ∧ y < implementation 1 ∧ Nat.Prime y) ?right.right.w ∧
+    ∀ (y : Finset ℕ),
+      (fun S ↦ S = ∅ ∧ ∀ y ∈ S, (∃ k, y = Nat.fib k) ∧ y < implementation 1 ∧ Nat.Prime y) y → y = ?right.right.w
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:104:12: numerals are data in Lean, but the expected type is a proposition
+  ∃ x, Nat.fib x = implementation 2 : Prop
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:106:10: Type mismatch
+  fib_3
+has type
+  Nat.fib 4 = 3
+but is expected to have type
+  Nat.Prime (implementation 2)
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:108:10: Type mismatch
+  prime_3
+has type
+  Nat.Prime 3
+but is expected to have type
+  (fun S ↦ S.card = 1 ∧ ∀ y ∈ S, (∃ k, y = Nat.fib k) ∧ y < implementation 2 ∧ Nat.Prime y) ?right.right.w ∧
+    ∀ (y : Finset ℕ),
+      (fun S ↦ S.card = 1 ∧ ∀ y ∈ S, (∃ k, y = Nat.fib k) ∧ y < implementation 2 ∧ Nat.Prime y) y → y = ?right.right.w
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:111:10: No goals to be solved
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:124:14: numerals are data in Lean, but the expected type is a proposition
+  ∃ x, Nat.fib x = implementation 3 : Prop
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:126:12: Type mismatch
+  fib_5
+has type
+  Nat.fib 5 = 5
+but is expected to have type
+  Nat.Prime (implementation 3)
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:128:12: Type mismatch
+  prime_5
+has type
+  Nat.Prime 5
+but is expected to have type
+  (fun S ↦ S.card = 2 ∧ ∀ y ∈ S, (∃ k, y = Nat.fib k) ∧ y < implementation 3 ∧ Nat.Prime y) ?right.right.w ∧
+    ∀ (y : Finset ℕ),
+      (fun S ↦ S.card = 2 ∧ ∀ y ∈ S, (∃ k, y = Nat.fib k) ∧ y < implementation 3 ∧ Nat.Prime y) y → y = ?right.right.w
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:131:12: No goals to be solved
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:152:16: numerals are data in Lean, but the expected type is a proposition
+  ∃ x, Nat.fib x = implementation 4 : Prop
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:154:14: Type mismatch
+  fib_13
+has type
+  Nat.fib 7 = 13
+but is expected to have type
+  Nat.Prime (implementation 4)
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:156:14: Type mismatch
+  prime_13
+has type
+  Nat.Prime 13
+but is expected to have type
+  (fun S ↦ S.card = 3 ∧ ∀ y ∈ S, (∃ k, y = Nat.fib k) ∧ y < implementation 4 ∧ Nat.Prime y) ?right.right.w ∧
+    ∀ (y : Finset ℕ),
+      (fun S ↦ S.card = 3 ∧ ∀ y ∈ S, (∃ k, y = Nat.fib k) ∧ y < implementation 4 ∧ Nat.Prime y) y → y = ?right.right.w
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:159:14: No goals to be solved
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:189:18: numerals are data in Lean, but the expected type is a proposition
+  ∃ x, Nat.fib x = implementation 5 : Prop
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:191:16: Type mismatch
+  fib_89
+has type
+  Nat.fib 11 = 89
+but is expected to have type
+  Nat.Prime (implementation 5)
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:193:16: Type mismatch
+  prime_89
+has type
+  Nat.Prime 89
+but is expected to have type
+  (fun S ↦ S.card = 4 ∧ ∀ y ∈ S, (∃ k, y = Nat.fib k) ∧ y < implementation 5 ∧ Nat.Prime y) ?right.right.w ∧
+    ∀ (y : Finset ℕ),
+      (fun S ↦ S.card = 4 ∧ ∀ y ∈ S, (∃ k, y = Nat.fib k) ∧ y < implementation 5 ∧ Nat.Prime y) y → y = ?right.right.w
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:196:16: No goals to be solved
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:235:18: numerals are data in Lean, but the expected type is a proposition
+  ∃ x, Nat.fib x = implementation n : Prop
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:237:16: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:239:14: unsolved goals
+case right.right.h
+n : ℕ
+h : n > 0
+h1 : ¬n = 1
+h2 : ¬n = 2
+h3 : ¬n = 3
+h4 : ¬n = 4
+h5 : ¬n = 5
+⊢ (Finset.card ?right.right.w = n - 1 ∧
+      ∀ y ∈ ?right.right.w, (∃ k, y = Nat.fib k) ∧ y < implementation n ∧ Nat.Prime y) ∧
+    ∀ (y : Finset ℕ),
+      y.card = n - 1 → (∀ y_1 ∈ y, (∃ k, y_1 = Nat.fib k) ∧ y_1 < implementation n ∧ Nat.Prime y_1) → y = ?right.right.w
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:103:14: This simp argument is unused:
+  h1
+
+Hint: Omit it from the simp argument list.
+  simp [h1̵,̵ ̵h̵2]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:123:16: This simp argument is unused:
+  h1
+
+Hint: Omit it from the simp argument list.
+  simp [h1̵,̵ ̵h̵2, h3]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:123:20: This simp argument is unused:
+  h2
+
+Hint: Omit it from the simp argument list.
+  simp [h1, h2̵,̵ ̵h̵3]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:151:18: This simp argument is unused:
+  h1
+
+Hint: Omit it from the simp argument list.
+  simp [h1̵,̵ ̵h̵2, h3, h4]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:151:22: This simp argument is unused:
+  h2
+
+Hint: Omit it from the simp argument list.
+  simp [h1, h2̵,̵ ̵h̵3, h4]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:151:26: This simp argument is unused:
+  h3
+
+Hint: Omit it from the simp argument list.
+  simp [h1, h2, h3̵,̵ ̵h̵4]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:188:20: This simp argument is unused:
+  h1
+
+Hint: Omit it from the simp argument list.
+  simp [h1̵,̵ ̵h̵2, h3, h4, h5]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:188:24: This simp argument is unused:
+  h2
+
+Hint: Omit it from the simp argument list.
+  simp [h1, h2̵,̵ ̵h̵3, h4, h5]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:188:28: This simp argument is unused:
+  h3
+
+Hint: Omit it from the simp argument list.
+  simp [h1, h2, h3̵,̵ ̵h̵4, h5]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:188:32: This simp argument is unused:
+  h4
+
+Hint: Omit it from the simp argument list.
+  simp [h1, h2, h3, h4̵,̵ ̵h̵5]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:234:20: This simp argument is unused:
+  h1
+
+Hint: Omit it from the simp argument list.
+  simp [h1̵,̵ ̵h̵2, h3, h4, h5]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:234:24: This simp argument is unused:
+  h2
+
+Hint: Omit it from the simp argument list.
+  simp [h1, h2̵,̵ ̵h̵3, h4, h5]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:234:28: This simp argument is unused:
+  h3
+
+Hint: Omit it from the simp argument list.
+  simp [h1, h2, h3̵,̵ ̵h̵4, h5]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:234:32: This simp argument is unused:
+  h4
+
+Hint: Omit it from the simp argument list.
+  simp [h1, h2, h3, h4̵,̵ ̵h̵5]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:234:36: This simp argument is unused:
+  h5
+
+Hint: Omit it from the simp argument list.
+  simp [h1, h2, h3, h4,̵ ̵h̵5̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_39_impl
+error: build failed
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_39_impl (16s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_39_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_39_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:95:10: numerals are data in Lean, but the expected type is a proposition
+  ∃ x, Nat.fib x = implementation 1 : Prop
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:97:8: Type mismatch
+  fib_2
+has type
+  Nat.fib 3 = 2
+but is expected to have type
+  Nat.Prime (implementation 1)
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:99:8: Type mismatch
+  prime_2
+has type
+  Nat.Prime 2
+but is expected to have type
+  (fun S ↦ S = ∅ ∧ ∀ y ∈ S, (∃ k, y = Nat.fib k) ∧ y < implementation 1 ∧ Nat.Prime y) ?right.right.w ∧
+    ∀ (y : Finset ℕ),
+      (fun S ↦ S = ∅ ∧ ∀ y ∈ S, (∃ k, y = Nat.fib k) ∧ y < implementation 1 ∧ Nat.Prime y) y → y = ?right.right.w
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:104:12: numerals are data in Lean, but the expected type is a proposition
+  ∃ x, Nat.fib x = implementation 2 : Prop
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:106:10: Type mismatch
+  fib_3
+has type
+  Nat.fib 4 = 3
+but is expected to have type
+  Nat.Prime (implementation 2)
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:108:10: Type mismatch
+  prime_3
+has type
+  Nat.Prime 3
+but is expected to have type
+  (fun S ↦ S.card = 1 ∧ ∀ y ∈ S, (∃ k, y = Nat.fib k) ∧ y < implementation 2 ∧ Nat.Prime y) ?right.right.w ∧
+    ∀ (y : Finset ℕ),
+      (fun S ↦ S.card = 1 ∧ ∀ y ∈ S, (∃ k, y = Nat.fib k) ∧ y < implementation 2 ∧ Nat.Prime y) y → y = ?right.right.w
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:111:10: No goals to be solved
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:124:14: numerals are data in Lean, but the expected type is a proposition
+  ∃ x, Nat.fib x = implementation 3 : Prop
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:126:12: Type mismatch
+  fib_5
+has type
+  Nat.fib 5 = 5
+but is expected to have type
+  Nat.Prime (implementation 3)
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:128:12: Type mismatch
+  prime_5
+has type
+  Nat.Prime 5
+but is expected to have type
+  (fun S ↦ S.card = 2 ∧ ∀ y ∈ S, (∃ k, y = Nat.fib k) ∧ y < implementation 3 ∧ Nat.Prime y) ?right.right.w ∧
+    ∀ (y : Finset ℕ),
+      (fun S ↦ S.card = 2 ∧ ∀ y ∈ S, (∃ k, y = Nat.fib k) ∧ y < implementation 3 ∧ Nat.Prime y) y → y = ?right.right.w
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:131:12: No goals to be solved
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:152:16: numerals are data in Lean, but the expected type is a proposition
+  ∃ x, Nat.fib x = implementation 4 : Prop
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:154:14: Type mismatch
+  fib_13
+has type
+  Nat.fib 7 = 13
+but is expected to have type
+  Nat.Prime (implementation 4)
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:156:14: Type mismatch
+  prime_13
+has type
+  Nat.Prime 13
+but is expected to have type
+  (fun S ↦ S.card = 3 ∧ ∀ y ∈ S, (∃ k, y = Nat.fib k) ∧ y < implementation 4 ∧ Nat.Prime y) ?right.right.w ∧
+    ∀ (y : Finset ℕ),
+      (fun S ↦ S.card = 3 ∧ ∀ y ∈ S, (∃ k, y = Nat.fib k) ∧ y < implementation 4 ∧ Nat.Prime y) y → y = ?right.right.w
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:159:14: No goals to be solved
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:189:18: numerals are data in Lean, but the expected type is a proposition
+  ∃ x, Nat.fib x = implementation 5 : Prop
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:191:16: Type mismatch
+  fib_89
+has type
+  Nat.fib 11 = 89
+but is expected to have type
+  Nat.Prime (implementation 5)
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:193:16: Type mismatch
+  prime_89
+has type
+  Nat.Prime 89
+but is expected to have type
+  (fun S ↦ S.card = 4 ∧ ∀ y ∈ S, (∃ k, y = Nat.fib k) ∧ y < implementation 5 ∧ Nat.Prime y) ?right.right.w ∧
+    ∀ (y : Finset ℕ),
+      (fun S ↦ S.card = 4 ∧ ∀ y ∈ S, (∃ k, y = Nat.fib k) ∧ y < implementation 5 ∧ Nat.Prime y) y → y = ?right.right.w
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:196:16: No goals to be solved
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:235:18: numerals are data in Lean, but the expected type is a proposition
+  ∃ x, Nat.fib x = implementation n : Prop
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:237:16: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:239:14: unsolved goals
+case right.right.h
+n : ℕ
+h : n > 0
+h1 : ¬n = 1
+h2 : ¬n = 2
+h3 : ¬n = 3
+h4 : ¬n = 4
+h5 : ¬n = 5
+⊢ (Finset.card ?right.right.w = n - 1 ∧
+      ∀ y ∈ ?right.right.w, (∃ k, y = Nat.fib k) ∧ y < implementation n ∧ Nat.Prime y) ∧
+    ∀ (y : Finset ℕ),
+      y.card = n - 1 → (∀ y_1 ∈ y, (∃ k, y_1 = Nat.fib k) ∧ y_1 < implementation n ∧ Nat.Prime y_1) → y = ?right.right.w
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:103:14: This simp argument is unused:
+  h1
+
+Hint: Omit it from the simp argument list.
+  simp [h1̵,̵ ̵h̵2]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:123:16: This simp argument is unused:
+  h1
+
+Hint: Omit it from the simp argument list.
+  simp [h1̵,̵ ̵h̵2, h3]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:123:20: This simp argument is unused:
+  h2
+
+Hint: Omit it from the simp argument list.
+  simp [h1, h2̵,̵ ̵h̵3]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:151:18: This simp argument is unused:
+  h1
+
+Hint: Omit it from the simp argument list.
+  simp [h1̵,̵ ̵h̵2, h3, h4]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:151:22: This simp argument is unused:
+  h2
+
+Hint: Omit it from the simp argument list.
+  simp [h1, h2̵,̵ ̵h̵3, h4]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:151:26: This simp argument is unused:
+  h3
+
+Hint: Omit it from the simp argument list.
+  simp [h1, h2, h3̵,̵ ̵h̵4]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:188:20: This simp argument is unused:
+  h1
+
+Hint: Omit it from the simp argument list.
+  simp [h1̵,̵ ̵h̵2, h3, h4, h5]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:188:24: This simp argument is unused:
+  h2
+
+Hint: Omit it from the simp argument list.
+  simp [h1, h2̵,̵ ̵h̵3, h4, h5]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:188:28: This simp argument is unused:
+  h3
+
+Hint: Omit it from the simp argument list.
+  simp [h1, h2, h3̵,̵ ̵h̵4, h5]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:188:32: This simp argument is unused:
+  h4
+
+Hint: Omit it from the simp argument list.
+  simp [h1, h2, h3, h4̵,̵ ̵h̵5]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:234:20: This simp argument is unused:
+  h1
+
+Hint: Omit it from the simp argument list.
+  simp [h1̵,̵ ̵h̵2, h3, h4, h5]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:234:24: This simp argument is unused:
+  h2
+
+Hint: Omit it from the simp argument list.
+  simp [h1, h2̵,̵ ̵h̵3, h4, h5]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:234:28: This simp argument is unused:
+  h3
+
+Hint: Omit it from the simp argument list.
+  simp [h1, h2, h3̵,̵ ̵h̵4, h5]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:234:32: This simp argument is unused:
+  h4
+
+Hint: Omit it from the simp argument list.
+  simp [h1, h2, h3, h4̵,̵ ̵h̵5]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_39_impl.lean:234:36: This simp argument is unused:
+  h5
+
+Hint: Omit it from the simp argument list.
+  simp [h1, h2, h3, h4,̵ ̵h̵5̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_39_impl
+error: build failed

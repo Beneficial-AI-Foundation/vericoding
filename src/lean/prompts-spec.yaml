@@ -1,0 +1,189 @@
+generate_code: |
+  The task is to generate a Lean file that is verified from an incomplete Lean file that contains the keyword "sorry" in place of desired code and proof blocks.  
+  
+  INPUT: a Lean file of the form
+         def def_type_1 := sorry     
+         ...
+         def def_type_n := sorry
+         theorem thm_type_1 := sorry
+         ...
+         theorem thm_type_n := sorry
+    WHERE:
+    - where each def_type_i is of the form 
+
+    name {{implicit_args}} (hypotheses) (arguments) : result
+
+    where "sorry" represents a missing implementation for a desired function.
+
+    - each theorem represents a property about one or more of the def_type_i. The theorem thype thm_type_i is of the form
+    {{implicit_arg1 : Type1}} 
+    (explicit_arg2 : Type2) 
+    (hypothesis : Prop) 
+    : Conclusion
+
+    where "Conclusion" is a formula or conjunction of formulas representing the desired properties for some of the missing implementations in def def_type_1, ..., def def_type_n
+
+  OUTPUT: Return ONLY the complete Lean code file, wrapped in a ```lean code block. Do not include any explanations, reasoning, or markdown outside the code block.
+  
+  The output should be a verified Lean file of the form:
+        def def_type_1 := implementation_1
+        ...
+        def def_type_n := implementation_n
+        theorem thm_type_1 := proof_1
+        ...
+        theorem thm_type_n := proof_n
+    
+  CRITICAL RULES:
+  - do not change any of def_type_i or thm_type_i 
+  - do not use sorry in the output file
+  - the input file may contain additional definitions (without "sorry") that you can use in implementations if needed. 
+  - you can add helper definitions, theorems, and lemmas as needed, but the initial definitions and theorems must remain unchanged. 
+  Moreover, for any new definition, lemma or theorem you add, add a comment of the form -- LLM HELPER on the line just before it. 
+  - Return ONLY the Lean code, no explanations or markdown
+
+  LEAN TYPE SYSTEM GUIDANCE:
+  - CRITICAL: Distinguish between `Bool` (computational values: true/false) and `Prop` (logical statements)
+  - Use `Bool` for function return types, `Prop` for theorem conclusions and logical conditions
+  - For `Fin` types: ensure bounds are satisfied (e.g., use `Fin.mk` with proof of bounds)
+  - Use `↑` for type coercions (e.g., `↑n` to convert `Nat` to `Int` or `Rat`)
+  - When mixing types, check that appropriate instances exist (e.g., `HSub ℚ ℤ`)
+
+  MATHLIB API USAGE:
+  - NEVER invent lemma names - only use existing mathlib constants
+  - When unsure about lemma names, use `#check` or search tactics instead of guessing
+  - Common patterns: `List.sum_*`, `Rat.*`, `Int.*`, `Nat.*` - but verify they exist
+  - Prefer standard library functions over custom implementations
+
+  TACTIC STRATEGY:
+  - Always check the current goal state before applying tactics
+  - Use `try?` to explore available tactics when stuck
+  - Avoid applying tactics when "No goals to be solved"
+  - For `rewrite`: ensure the pattern actually appears in the goal
+  - Use `omega` only for linear arithmetic over integers/naturals
+  - For complex arithmetic, break into smaller steps with `have` statements
+  - Prefer `simp` over manual rewrites when possible
+
+  PROOF CONSTRUCTION:
+  - Break complex proofs into helper lemmas
+  - Use `cases` for pattern matching and `induction` for recursive structures  
+  - Use `by_cases` for boolean conditions
+  - When omega fails, try manual reasoning with basic arithmetic lemmas
+  - Check types carefully - ensure computational and logical parts align
+
+  COMMON PITFALLS TO AVOID:
+  - Don't mix `Bool` return values with `Prop` specifications
+  - Don't assume lemmas exist without checking
+  - Don't apply rewrites without matching patterns
+  - Don't use deprecated APIs (e.g., use `le_of_not_gt` not `le_of_not_lt`)
+  - Don't overuse `omega` for non-linear or complex constraints
+
+  SIMPLICITY AND SUCCESS GUIDELINES:
+  - PREFER SIMPLE SOLUTIONS: Use direct implementations over complex inductive proofs
+  - AVOID INVENTING CONSTANTS: If unsure about a mathlib constant, use basic operations instead
+  - USE BASIC TACTICS FIRST: Try `simp`, `rw`, `exact` before advanced tactics like `omega`, `induction`
+  - MINIMIZE HELPER FUNCTIONS: Only create helpers if absolutely necessary
+  - TEST INCREMENTALLY: Build simple working versions before adding complexity
+  - WHEN STUCK: Try a completely different, simpler approach rather than complex fixes
+  
+  LEAN SPECIFICATION WITH EMPTY DEFINITIONS AND PROOF BODIES:
+  {code}
+
+fix_verification: |
+ The task is to review definitions and theorems in a Lean file that do not verify due to missing or invalid implementations or proofs. 
+ INPUT: a Lean file that contains some definitions and theorems that dont verify due to missing or invalid implementations or proofs. 
+ The file contains:
+ - some atoms (def, lemma, theorem, ...) that have the comment -- LLM HELPER before them. These atoms you can change and remove at will. 
+
+ For all the other atoms (that do not have the comment -- LLM HELPER) your are allowed to change the definition or prooof body, but you are not allowed to change the name, type, or signature of the atom.
+
+  More precisely, these atoms will be of the form:
+  def def_type_1 := implementation_1
+  ...
+  def def_type_n := implementation_n
+  theorem thm_type_1 := proof_1
+  ...
+  theorem thm_type_n := proof_n
+    
+  and you are allowed to change the implementation_i and proof_i, but you are not allowed to change def_type_i or thm_type_i. So the output file should contain:
+
+  def def_type_1 := implementation_upd_1
+  ...
+  def def_type_n := implementation_upd_n
+  theorem thm_type_1 := proof_upd_1
+  ...
+  theorem thm_type_n := proof_upd_n
+  where implementation_upd_i and proof_upd_i are the updated implementations and proofs that should verify.
+
+    
+  POSITIVE CRITICAL RULES:
+  - you can change the implementation of def_type_i and proof of thm_type_i to fix the verification errors
+  - you can add helper definitions, theorems, and lemmas as needed, but the initial definitions and theorems must remain unchanged. 
+  Moreover, for any new definition, lemma or theorem you add, add a comment of the form -- LLM HELPER on the line just before it. 
+  
+  NEGATIVE CRITICAL RULES:
+  - you should not add trivial annotations (requires true, invariant true, ensures true, etc.)
+  - you should not add null checks on non-nullable types
+  - do not use sorry in the output file
+  - output valid Lean code
+  - Return ONLY the Lean code, no explanations or markdown
+
+  ERROR-SPECIFIC DEBUGGING GUIDANCE:
+  - "Unknown constant": The lemma/constant name doesn't exist. Search mathlib or use simpler approaches.
+  - "Tactic 'rewrite' failed": The pattern doesn't match the goal. Examine the actual goal structure.
+  - "failed to synthesize": Type mismatch. Check type coercions and instance availability.
+  - "Type mismatch": Ensure `Bool` vs `Prop` distinction. Use appropriate type conversions.
+  - "No goals to be solved": Remove the redundant tactic - the goal is already proven.
+  - "omega could not prove": The constraint is too complex. Break into simpler arithmetic steps.
+  - "numerals are data": You're using a number where a proposition is expected.
+
+  LEAN TYPE SYSTEM GUIDANCE:
+  - CRITICAL: Distinguish between `Bool` (computational values: true/false) and `Prop` (logical statements)
+  - Use `Bool` for function return types, `Prop` for theorem conclusions and logical conditions
+  - For `Fin` types: ensure bounds are satisfied (e.g., use `Fin.mk` with proof of bounds)
+  - Use `↑` for type coercions (e.g., `↑n` to convert `Nat` to `Int` or `Rat`)
+  - When mixing types, check that appropriate instances exist (e.g., `HSub ℚ ℤ`)
+
+  MATHLIB API USAGE:
+  - NEVER invent lemma names - only use existing mathlib constants
+  - When unsure about lemma names, use `#check` or search tactics instead of guessing
+  - Common patterns: `List.sum_*`, `Rat.*`, `Int.*`, `Nat.*` - but verify they exist
+  - Prefer standard library functions over custom implementations
+
+  TACTIC STRATEGY:
+  - Always check the current goal state before applying tactics
+  - Use `try?` to explore available tactics when stuck
+  - Avoid applying tactics when "No goals to be solved"
+  - For `rewrite`: ensure the pattern actually appears in the goal
+  - Use `omega` only for linear arithmetic over integers/naturals
+  - For complex arithmetic, break into smaller steps with `have` statements
+  - Prefer `simp` over manual rewrites when possible
+
+  PROOF CONSTRUCTION:
+  - Break complex proofs into helper lemmas
+  - Use `cases` for pattern matching and `induction` for recursive structures  
+  - Use `by_cases` for boolean conditions
+  - When omega fails, try manual reasoning with basic arithmetic lemmas
+  - Check types carefully - ensure computational and logical parts align
+
+  COMMON PITFALLS TO AVOID:
+  - Don't mix `Bool` return values with `Prop` specifications
+  - Don't assume lemmas exist without checking
+  - Don't apply rewrites without matching patterns
+  - Don't use deprecated APIs (e.g., use `le_of_not_gt` not `le_of_not_lt`)
+  - Don't overuse `omega` for non-linear or complex constraints
+
+  SIMPLICITY AND SUCCESS GUIDELINES:
+  - PREFER SIMPLE SOLUTIONS: Use direct implementations over complex inductive proofs
+  - AVOID INVENTING CONSTANTS: If unsure about a mathlib constant, use basic operations instead
+  - USE BASIC TACTICS FIRST: Try `simp`, `rw`, `exact` before advanced tactics like `omega`, `induction`
+  - MINIMIZE HELPER FUNCTIONS: Only create helpers if absolutely necessary
+  - TEST INCREMENTALLY: Build simple working versions before adding complexity
+  - WHEN STUCK: Try a completely different, simpler approach rather than complex fixes
+
+  OUTPUT: Return ONLY the complete Lean code file, wrapped in a ```lean code block. Do not include any explanations, reasoning, or markdown outside the code block.
+  
+  ERROR DETAILS from Lean verification of the given code:
+  {errorDetails}
+
+  Code Below:
+  {code}

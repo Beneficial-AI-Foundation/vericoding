@@ -1,0 +1,2522 @@
+=== Verification Error - Iteration 3 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/lean/humaneval/files/HumanEval_148.lean
+Time: 2025-09-08 16:14:39
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: ✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_148_impl (4.7s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_148_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_148_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_148_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_148_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_148_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_148_impl.lean:51:2: No goals to be solved
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_148_impl.lean:70:8: Unknown constant `List.Sorted.sublist`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_148_impl.lean:71:2: No goals to be solved
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_148_impl.lean:92:4: unsolved goals
+case pos
+planet1 planet2 : String
+h :
+  planet1 ∉ ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] ∨
+    planet2 ∉ ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+⊢ if
+      ¬planet1 = "Mercury" ∧
+          ¬planet1 = "Venus" ∧
+            ¬planet1 = "Earth" ∧
+              ¬planet1 = "Mars" ∧
+                ¬planet1 = "Jupiter" ∧ ¬planet1 = "Saturn" ∧ ¬planet1 = "Uranus" ∧ ¬planet1 = "Neptune" ∨
+        ¬planet2 = "Mercury" ∧
+          ¬planet2 = "Venus" ∧
+            ¬planet2 = "Earth" ∧
+              ¬planet2 = "Mars" ∧
+                ¬planet2 = "Jupiter" ∧ ¬planet2 = "Saturn" ∧ ¬planet2 = "Uranus" ∧ ¬planet2 = "Neptune" then
+    (¬planet1 = "Mercury" →
+        ¬planet1 = "Venus" →
+          ¬planet1 = "Earth" →
+            ¬planet1 = "Mars" →
+              ¬planet1 = "Jupiter" → ¬planet1 = "Saturn" → ¬planet1 = "Uranus" → planet1 = "Neptune") →
+      (¬planet2 = "Mercury" →
+          ¬planet2 = "Venus" →
+            ¬planet2 = "Earth" →
+              ¬planet2 = "Mars" →
+                ¬planet2 = "Jupiter" → ¬planet2 = "Saturn" → ¬planet2 = "Uranus" → planet2 = "Neptune") →
+        ((if
+                  List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                    List.idxOf planet2
+                      ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+              else List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) =
+              0 →
+            (if
+                  List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                    List.idxOf planet2
+                      ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+              else List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ≤
+              1) ∧
+          ((if
+                    List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                      List.idxOf planet2
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                  List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                else
+                  List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                2 →
+              (if
+                    List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                      List.idxOf planet2
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                  List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                else
+                  List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ≤
+                2) ∧
+            ((if
+                      List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                    List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                  else
+                    List.idxOf planet2
+                      ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                  3 →
+                (if
+                      List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                    List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                  else
+                    List.idxOf planet1
+                      ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ≤
+                  3) ∧
+              ((if
+                        List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                      List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                    else
+                      List.idxOf planet2
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                    4 →
+                  (if
+                        List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                      List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                    else
+                      List.idxOf planet1
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ≤
+                    4) ∧
+                ((if
+                          List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                        List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                      else
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                      5 →
+                    (if
+                          List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                      else
+                        List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ≤
+                      5) ∧
+                  ((if
+                            List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                          List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                        else
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                        6 →
+                      (if
+                            List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                        else
+                          List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ≤
+                        6) ∧
+                    ((if
+                            List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                          List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                        else
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                        7 →
+                      (if
+                            List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                        else
+                          List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ≤
+                        7)
+  else
+    (∀ (str : String),
+        (¬planet1 = "Mercury" →
+            ¬planet1 = "Venus" →
+              ¬planet1 = "Earth" →
+                ¬planet1 = "Mars" →
+                  ¬planet1 = "Jupiter" → ¬planet1 = "Saturn" → ¬planet1 = "Uranus" → planet1 = "Neptune") →
+          (¬planet2 = "Mercury" →
+              ¬planet2 = "Venus" →
+                ¬planet2 = "Earth" →
+                  ¬planet2 = "Mars" →
+                    ¬planet2 = "Jupiter" → ¬planet2 = "Saturn" → ¬planet2 = "Uranus" → planet2 = "Neptune") →
+            str = "Venus" ∨
+                str = "Earth" ∨ str = "Mars" ∨ str = "Jupiter" ∨ str = "Saturn" ∨ str = "Uranus" ∨ str = "Neptune" →
+              (if
+                      List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                    List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                  else
+                    List.idxOf planet2
+                      ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                  List.idxOf str ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] →
+                (List.idxOf str ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                    if
+                        List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                      List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                    else
+                      List.idxOf planet1
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) →
+                  str = "Mercury" ∨
+                    str = "Venus" ∨
+                      str = "Earth" ∨
+                        str = "Mars" ∨ str = "Jupiter" ∨ str = "Saturn" ∨ str = "Uranus" ∨ str = "Neptune") ∧
+      (((((¬planet1 = "Mercury" →
+                  ¬planet1 = "Venus" →
+                    ¬planet1 = "Earth" →
+                      ¬planet1 = "Mars" →
+                        ¬planet1 = "Jupiter" → ¬planet1 = "Saturn" → ¬planet1 = "Uranus" → planet1 = "Neptune") ∧
+                (¬planet2 = "Mercury" →
+                  ¬planet2 = "Venus" →
+                    ¬planet2 = "Earth" →
+                      ¬planet2 = "Mars" →
+                        ¬planet2 = "Jupiter" → ¬planet2 = "Saturn" → ¬planet2 = "Uranus" → planet2 = "Neptune")) ∧
+              (if
+                      List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                    List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                  else
+                    List.idxOf planet2
+                      ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) =
+                  0 ∧
+                1 <
+                  if
+                      List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                    List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                  else
+                    List.idxOf planet1
+                      ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ↔
+            (1 <
+                if
+                    List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                      List.idxOf planet2
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                  List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                else
+                  List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ∧
+              (if
+                    List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                      List.idxOf planet2
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                  List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                else
+                  List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) =
+                0) ∧
+          ((((¬planet1 = "Mercury" →
+                    ¬planet1 = "Venus" →
+                      ¬planet1 = "Earth" →
+                        ¬planet1 = "Mars" →
+                          ¬planet1 = "Jupiter" → ¬planet1 = "Saturn" → ¬planet1 = "Uranus" → planet1 = "Neptune") ∧
+                  (¬planet2 = "Mercury" →
+                    ¬planet2 = "Venus" →
+                      ¬planet2 = "Earth" →
+                        ¬planet2 = "Mars" →
+                          ¬planet2 = "Jupiter" → ¬planet2 = "Saturn" → ¬planet2 = "Uranus" → planet2 = "Neptune")) ∧
+                (if
+                        List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                      List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                    else
+                      List.idxOf planet2
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                    2 ∧
+                  2 <
+                    if
+                        List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                      List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                    else
+                      List.idxOf planet1
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ↔
+              (2 <
+                  if
+                      List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                    List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                  else
+                    List.idxOf planet1
+                      ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ∧
+                (if
+                      List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                    List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                  else
+                    List.idxOf planet2
+                      ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                  2) ∧
+            ((((¬planet1 = "Mercury" →
+                      ¬planet1 = "Venus" →
+                        ¬planet1 = "Earth" →
+                          ¬planet1 = "Mars" →
+                            ¬planet1 = "Jupiter" → ¬planet1 = "Saturn" → ¬planet1 = "Uranus" → planet1 = "Neptune") ∧
+                    (¬planet2 = "Mercury" →
+                      ¬planet2 = "Venus" →
+                        ¬planet2 = "Earth" →
+                          ¬planet2 = "Mars" →
+                            ¬planet2 = "Jupiter" → ¬planet2 = "Saturn" → ¬planet2 = "Uranus" → planet2 = "Neptune")) ∧
+                  (if
+                          List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                        List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                      else
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                      3 ∧
+                    3 <
+                      if
+                          List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                      else
+                        List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ↔
+                (3 <
+                    if
+                        List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                      List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                    else
+                      List.idxOf planet1
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ∧
+                  (if
+                        List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                      List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                    else
+                      List.idxOf planet2
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                    3) ∧
+              ((((¬planet1 = "Mercury" →
+                        ¬planet1 = "Venus" →
+                          ¬planet1 = "Earth" →
+                            ¬planet1 = "Mars" →
+                              ¬planet1 = "Jupiter" → ¬planet1 = "Saturn" → ¬planet1 = "Uranus" → planet1 = "Neptune") ∧
+                      (¬planet2 = "Mercury" →
+                        ¬planet2 = "Venus" →
+                          ¬planet2 = "Earth" →
+                            ¬planet2 = "Mars" →
+                              ¬planet2 = "Jupiter" → ¬planet2 = "Saturn" → ¬planet2 = "Uranus" → planet2 = "Neptune")) ∧
+                    (if
+                            List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                          List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                        else
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                        4 ∧
+                      4 <
+                        if
+                            List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                        else
+                          List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ↔
+                  (4 <
+                      if
+                          List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                      else
+                        List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ∧
+                    (if
+                          List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                        List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                      else
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                      4) ∧
+                ((((¬planet1 = "Mercury" →
+                          ¬planet1 = "Venus" →
+                            ¬planet1 = "Earth" →
+                              ¬planet1 = "Mars" →
+                                ¬planet1 = "Jupiter" →
+                                  ¬planet1 = "Saturn" → ¬planet1 = "Uranus" → planet1 = "Neptune") ∧
+                        (¬planet2 = "Mercury" →
+                          ¬planet2 = "Venus" →
+                            ¬planet2 = "Earth" →
+                              ¬planet2 = "Mars" →
+                                ¬planet2 = "Jupiter" →
+                                  ¬planet2 = "Saturn" → ¬planet2 = "Uranus" → planet2 = "Neptune")) ∧
+                      (if
+                              List.idxOf planet1
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                List.idxOf planet2
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                            List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                          else
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                          5 ∧
+                        5 <
+                          if
+                              List.idxOf planet1
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                List.idxOf planet2
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                          else
+                            List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ↔
+                    (5 <
+                        if
+                            List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                        else
+                          List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ∧
+                      (if
+                            List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                          List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                        else
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                        5) ∧
+                  ((((¬planet1 = "Mercury" →
+                            ¬planet1 = "Venus" →
+                              ¬planet1 = "Earth" →
+                                ¬planet1 = "Mars" →
+                                  ¬planet1 = "Jupiter" →
+                                    ¬planet1 = "Saturn" → ¬planet1 = "Uranus" → planet1 = "Neptune") ∧
+                          (¬planet2 = "Mercury" →
+                            ¬planet2 = "Venus" →
+                              ¬planet2 = "Earth" →
+                                ¬planet2 = "Mars" →
+                                  ¬planet2 = "Jupiter" →
+                                    ¬planet2 = "Saturn" → ¬planet2 = "Uranus" → planet2 = "Neptune")) ∧
+                        (if
+                                List.idxOf planet1
+                                    ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                  List.idxOf planet2
+                                    ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                              List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                            else
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                            6 ∧
+                          6 <
+                            if
+                                List.idxOf planet1
+                                    ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                  List.idxOf planet2
+                                    ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                            else
+                              List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ↔
+                      (6 <
+                          if
+                              List.idxOf planet1
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                List.idxOf planet2
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                          else
+                            List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ∧
+                        (if
+                              List.idxOf planet1
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                List.idxOf planet2
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                            List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                          else
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                          6) ∧
+                    ((((¬planet1 = "Mercury" →
+                            ¬planet1 = "Venus" →
+                              ¬planet1 = "Earth" →
+                                ¬planet1 = "Mars" →
+                                  ¬planet1 = "Jupiter" →
+                                    ¬planet1 = "Saturn" → ¬planet1 = "Uranus" → planet1 = "Neptune") ∧
+                          (¬planet2 = "Mercury" →
+                            ¬planet2 = "Venus" →
+                              ¬planet2 = "Earth" →
+                                ¬planet2 = "Mars" →
+                                  ¬planet2 = "Jupiter" →
+                                    ¬planet2 = "Saturn" → ¬planet2 = "Uranus" → planet2 = "Neptune")) ∧
+                        (if
+                                List.idxOf planet1
+                                    ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                  List.idxOf planet2
+                                    ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                              List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                            else
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                            7 ∧
+                          7 <
+                            if
+                                List.idxOf planet1
+                                    ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                  List.idxOf planet2
+                                    ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                            else
+                              List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ↔
+                      (7 <
+                          if
+                              List.idxOf planet1
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                List.idxOf planet2
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                          else
+                            List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ∧
+                        (if
+                              List.idxOf planet1
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                List.idxOf planet2
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                            List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                          else
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                          7)) ∧
+        List.Sorted
+          (fun a b ↦
+            List.idxOf a ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+              List.idxOf b ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"])
+          (if
+              ¬planet1 = "Mercury" ∧
+                  ¬planet1 = "Venus" ∧
+                    ¬planet1 = "Earth" ∧
+                      ¬planet1 = "Mars" ∧
+                        ¬planet1 = "Jupiter" ∧ ¬planet1 = "Saturn" ∧ ¬planet1 = "Uranus" ∧ ¬planet1 = "Neptune" ∨
+                ¬planet2 = "Mercury" ∧
+                  ¬planet2 = "Venus" ∧
+                    ¬planet2 = "Earth" ∧
+                      ¬planet2 = "Mars" ∧
+                        ¬planet2 = "Jupiter" ∧ ¬planet2 = "Saturn" ∧ ¬planet2 = "Uranus" ∧ ¬planet2 = "Neptune" then
+            []
+          else
+            List.filter
+              (fun planet ↦
+                decide
+                    ((if
+                          List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                        List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                      else
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                      List.idxOf planet
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) &&
+                  decide
+                    (List.idxOf planet ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                      if
+                          List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                      else
+                        List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]))
+              ["Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"])
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_148_impl.lean:95:6: Tactic `constructor` failed: target is not an inductive datatype
+
+case neg
+planet1 planet2 : String
+h :
+  planet1 ∈ ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] ∧
+    planet2 ∈ ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+⊢ if
+      ¬planet1 = "Mercury" ∧
+          ¬planet1 = "Venus" ∧
+            ¬planet1 = "Earth" ∧
+              ¬planet1 = "Mars" ∧
+                ¬planet1 = "Jupiter" ∧ ¬planet1 = "Saturn" ∧ ¬planet1 = "Uranus" ∧ ¬planet1 = "Neptune" ∨
+        ¬planet2 = "Mercury" ∧
+          ¬planet2 = "Venus" ∧
+            ¬planet2 = "Earth" ∧
+              ¬planet2 = "Mars" ∧
+                ¬planet2 = "Jupiter" ∧ ¬planet2 = "Saturn" ∧ ¬planet2 = "Uranus" ∧ ¬planet2 = "Neptune" then
+    (¬planet1 = "Mercury" →
+        ¬planet1 = "Venus" →
+          ¬planet1 = "Earth" →
+            ¬planet1 = "Mars" →
+              ¬planet1 = "Jupiter" → ¬planet1 = "Saturn" → ¬planet1 = "Uranus" → planet1 = "Neptune") →
+      (¬planet2 = "Mercury" →
+          ¬planet2 = "Venus" →
+            ¬planet2 = "Earth" →
+              ¬planet2 = "Mars" →
+                ¬planet2 = "Jupiter" → ¬planet2 = "Saturn" → ¬planet2 = "Uranus" → planet2 = "Neptune") →
+        ((if
+                  List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                    List.idxOf planet2
+                      ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+              else List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) =
+              0 →
+            (if
+                  List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                    List.idxOf planet2
+                      ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+              else List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ≤
+              1) ∧
+          ((if
+                    List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                      List.idxOf planet2
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                  List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                else
+                  List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                2 →
+              (if
+                    List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                      List.idxOf planet2
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                  List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                else
+                  List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ≤
+                2) ∧
+            ((if
+                      List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                    List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                  else
+                    List.idxOf planet2
+                      ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                  3 →
+                (if
+                      List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                    List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                  else
+                    List.idxOf planet1
+                      ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ≤
+                  3) ∧
+              ((if
+                        List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                      List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                    else
+                      List.idxOf planet2
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                    4 →
+                  (if
+                        List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                      List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                    else
+                      List.idxOf planet1
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ≤
+                    4) ∧
+                ((if
+                          List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                        List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                      else
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                      5 →
+                    (if
+                          List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                      else
+                        List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ≤
+                      5) ∧
+                  ((if
+                            List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                          List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                        else
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                        6 →
+                      (if
+                            List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                        else
+                          List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ≤
+                        6) ∧
+                    ((if
+                            List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                          List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                        else
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                        7 →
+                      (if
+                            List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                        else
+                          List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ≤
+                        7)
+  else
+    (∀ (str : String),
+        (¬planet1 = "Mercury" →
+            ¬planet1 = "Venus" →
+              ¬planet1 = "Earth" →
+                ¬planet1 = "Mars" →
+                  ¬planet1 = "Jupiter" → ¬planet1 = "Saturn" → ¬planet1 = "Uranus" → planet1 = "Neptune") →
+          (¬planet2 = "Mercury" →
+              ¬planet2 = "Venus" →
+                ¬planet2 = "Earth" →
+                  ¬planet2 = "Mars" →
+                    ¬planet2 = "Jupiter" → ¬planet2 = "Saturn" → ¬planet2 = "Uranus" → planet2 = "Neptune") →
+            str = "Venus" ∨
+                str = "Earth" ∨ str = "Mars" ∨ str = "Jupiter" ∨ str = "Saturn" ∨ str = "Uranus" ∨ str = "Neptune" →
+              (if
+                      List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                    List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                  else
+                    List.idxOf planet2
+                      ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                  List.idxOf str ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] →
+                (List.idxOf str ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                    if
+                        List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                      List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                    else
+                      List.idxOf planet1
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) →
+                  str = "Mercury" ∨
+                    str = "Venus" ∨
+                      str = "Earth" ∨
+                        str = "Mars" ∨ str = "Jupiter" ∨ str = "Saturn" ∨ str = "Uranus" ∨ str = "Neptune") ∧
+      (((((¬planet1 = "Mercury" →
+                  ¬planet1 = "Venus" →
+                    ¬planet1 = "Earth" →
+                      ¬planet1 = "Mars" →
+                        ¬planet1 = "Jupiter" → ¬planet1 = "Saturn" → ¬planet1 = "Uranus" → planet1 = "Neptune") ∧
+                (¬planet2 = "Mercury" →
+                  ¬planet2 = "Venus" →
+                    ¬planet2 = "Earth" →
+                      ¬planet2 = "Mars" →
+                        ¬planet2 = "Jupiter" → ¬planet2 = "Saturn" → ¬planet2 = "Uranus" → planet2 = "Neptune")) ∧
+              (if
+                      List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                    List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                  else
+                    List.idxOf planet2
+                      ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) =
+                  0 ∧
+                1 <
+                  if
+                      List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                    List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                  else
+                    List.idxOf planet1
+                      ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ↔
+            (1 <
+                if
+                    List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                      List.idxOf planet2
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                  List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                else
+                  List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ∧
+              (if
+                    List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                      List.idxOf planet2
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                  List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                else
+                  List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) =
+                0) ∧
+          ((((¬planet1 = "Mercury" →
+                    ¬planet1 = "Venus" →
+                      ¬planet1 = "Earth" →
+                        ¬planet1 = "Mars" →
+                          ¬planet1 = "Jupiter" → ¬planet1 = "Saturn" → ¬planet1 = "Uranus" → planet1 = "Neptune") ∧
+                  (¬planet2 = "Mercury" →
+                    ¬planet2 = "Venus" →
+                      ¬planet2 = "Earth" →
+                        ¬planet2 = "Mars" →
+                          ¬planet2 = "Jupiter" → ¬planet2 = "Saturn" → ¬planet2 = "Uranus" → planet2 = "Neptune")) ∧
+                (if
+                        List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                      List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                    else
+                      List.idxOf planet2
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                    2 ∧
+                  2 <
+                    if
+                        List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                      List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                    else
+                      List.idxOf planet1
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ↔
+              (2 <
+                  if
+                      List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                    List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                  else
+                    List.idxOf planet1
+                      ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ∧
+                (if
+                      List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                    List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                  else
+                    List.idxOf planet2
+                      ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                  2) ∧
+            ((((¬planet1 = "Mercury" →
+                      ¬planet1 = "Venus" →
+                        ¬planet1 = "Earth" →
+                          ¬planet1 = "Mars" →
+                            ¬planet1 = "Jupiter" → ¬planet1 = "Saturn" → ¬planet1 = "Uranus" → planet1 = "Neptune") ∧
+                    (¬planet2 = "Mercury" →
+                      ¬planet2 = "Venus" →
+                        ¬planet2 = "Earth" →
+                          ¬planet2 = "Mars" →
+                            ¬planet2 = "Jupiter" → ¬planet2 = "Saturn" → ¬planet2 = "Uranus" → planet2 = "Neptune")) ∧
+                  (if
+                          List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                        List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                      else
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                      3 ∧
+                    3 <
+                      if
+                          List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                      else
+                        List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ↔
+                (3 <
+                    if
+                        List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                      List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                    else
+                      List.idxOf planet1
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ∧
+                  (if
+                        List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                      List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                    else
+                      List.idxOf planet2
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                    3) ∧
+              ((((¬planet1 = "Mercury" →
+                        ¬planet1 = "Venus" →
+                          ¬planet1 = "Earth" →
+                            ¬planet1 = "Mars" →
+                              ¬planet1 = "Jupiter" → ¬planet1 = "Saturn" → ¬planet1 = "Uranus" → planet1 = "Neptune") ∧
+                      (¬planet2 = "Mercury" →
+                        ¬planet2 = "Venus" →
+                          ¬planet2 = "Earth" →
+                            ¬planet2 = "Mars" →
+                              ¬planet2 = "Jupiter" → ¬planet2 = "Saturn" → ¬planet2 = "Uranus" → planet2 = "Neptune")) ∧
+                    (if
+                            List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                          List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                        else
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                        4 ∧
+                      4 <
+                        if
+                            List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                        else
+                          List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ↔
+                  (4 <
+                      if
+                          List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                      else
+                        List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ∧
+                    (if
+                          List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                        List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                      else
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                      4) ∧
+                ((((¬planet1 = "Mercury" →
+                          ¬planet1 = "Venus" →
+                            ¬planet1 = "Earth" →
+                              ¬planet1 = "Mars" →
+                                ¬planet1 = "Jupiter" →
+                                  ¬planet1 = "Saturn" → ¬planet1 = "Uranus" → planet1 = "Neptune") ∧
+                        (¬planet2 = "Mercury" →
+                          ¬planet2 = "Venus" →
+                            ¬planet2 = "Earth" →
+                              ¬planet2 = "Mars" →
+                                ¬planet2 = "Jupiter" →
+                                  ¬planet2 = "Saturn" → ¬planet2 = "Uranus" → planet2 = "Neptune")) ∧
+                      (if
+                              List.idxOf planet1
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                List.idxOf planet2
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                            List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                          else
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                          5 ∧
+                        5 <
+                          if
+                              List.idxOf planet1
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                List.idxOf planet2
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                          else
+                            List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ↔
+                    (5 <
+                        if
+                            List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                        else
+                          List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ∧
+                      (if
+                            List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                          List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                        else
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                        5) ∧
+                  ((((¬planet1 = "Mercury" →
+                            ¬planet1 = "Venus" →
+                              ¬planet1 = "Earth" →
+                                ¬planet1 = "Mars" →
+                                  ¬planet1 = "Jupiter" →
+                                    ¬planet1 = "Saturn" → ¬planet1 = "Uranus" → planet1 = "Neptune") ∧
+                          (¬planet2 = "Mercury" →
+                            ¬planet2 = "Venus" →
+                              ¬planet2 = "Earth" →
+                                ¬planet2 = "Mars" →
+                                  ¬planet2 = "Jupiter" →
+                                    ¬planet2 = "Saturn" → ¬planet2 = "Uranus" → planet2 = "Neptune")) ∧
+                        (if
+                                List.idxOf planet1
+                                    ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                  List.idxOf planet2
+                                    ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                              List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                            else
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                            6 ∧
+                          6 <
+                            if
+                                List.idxOf planet1
+                                    ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                  List.idxOf planet2
+                                    ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                            else
+                              List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ↔
+                      (6 <
+                          if
+                              List.idxOf planet1
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                List.idxOf planet2
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                          else
+                            List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ∧
+                        (if
+                              List.idxOf planet1
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                List.idxOf planet2
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                            List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                          else
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                          6) ∧
+                    ((((¬planet1 = "Mercury" →
+                            ¬planet1 = "Venus" →
+                              ¬planet1 = "Earth" →
+                                ¬planet1 = "Mars" →
+                                  ¬planet1 = "Jupiter" →
+                                    ¬planet1 = "Saturn" → ¬planet1 = "Uranus" → planet1 = "Neptune") ∧
+                          (¬planet2 = "Mercury" →
+                            ¬planet2 = "Venus" →
+                              ¬planet2 = "Earth" →
+                                ¬planet2 = "Mars" →
+                                  ¬planet2 = "Jupiter" →
+                                    ¬planet2 = "Saturn" → ¬planet2 = "Uranus" → planet2 = "Neptune")) ∧
+                        (if
+                                List.idxOf planet1
+                                    ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                  List.idxOf planet2
+                                    ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                              List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                            else
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                            7 ∧
+                          7 <
+                            if
+                                List.idxOf planet1
+                                    ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                  List.idxOf planet2
+                                    ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                            else
+                              List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ↔
+                      (7 <
+                          if
+                              List.idxOf planet1
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                List.idxOf planet2
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                          else
+                            List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ∧
+                        (if
+                              List.idxOf planet1
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                List.idxOf planet2
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                            List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                          else
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                          7)) ∧
+        List.Sorted
+          (fun a b ↦
+            List.idxOf a ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+              List.idxOf b ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"])
+          (if
+              ¬planet1 = "Mercury" ∧
+                  ¬planet1 = "Venus" ∧
+                    ¬planet1 = "Earth" ∧
+                      ¬planet1 = "Mars" ∧
+                        ¬planet1 = "Jupiter" ∧ ¬planet1 = "Saturn" ∧ ¬planet1 = "Uranus" ∧ ¬planet1 = "Neptune" ∨
+                ¬planet2 = "Mercury" ∧
+                  ¬planet2 = "Venus" ∧
+                    ¬planet2 = "Earth" ∧
+                      ¬planet2 = "Mars" ∧
+                        ¬planet2 = "Jupiter" ∧ ¬planet2 = "Saturn" ∧ ¬planet2 = "Uranus" ∧ ¬planet2 = "Neptune" then
+            []
+          else
+            List.filter
+              (fun planet ↦
+                decide
+                    ((if
+                          List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                        List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                      else
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                      List.idxOf planet
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) &&
+                  decide
+                    (List.idxOf planet ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                      if
+                          List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                      else
+                        List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]))
+              ["Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"])
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_148_impl.lean:92:12: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵h̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_148_impl.lean:93:12: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵h̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_148_impl
+error: build failed
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_148_impl (4.7s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_148_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_148_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_148_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_148_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_148_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_148_impl.lean:51:2: No goals to be solved
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_148_impl.lean:70:8: Unknown constant `List.Sorted.sublist`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_148_impl.lean:71:2: No goals to be solved
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_148_impl.lean:92:4: unsolved goals
+case pos
+planet1 planet2 : String
+h :
+  planet1 ∉ ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] ∨
+    planet2 ∉ ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+⊢ if
+      ¬planet1 = "Mercury" ∧
+          ¬planet1 = "Venus" ∧
+            ¬planet1 = "Earth" ∧
+              ¬planet1 = "Mars" ∧
+                ¬planet1 = "Jupiter" ∧ ¬planet1 = "Saturn" ∧ ¬planet1 = "Uranus" ∧ ¬planet1 = "Neptune" ∨
+        ¬planet2 = "Mercury" ∧
+          ¬planet2 = "Venus" ∧
+            ¬planet2 = "Earth" ∧
+              ¬planet2 = "Mars" ∧
+                ¬planet2 = "Jupiter" ∧ ¬planet2 = "Saturn" ∧ ¬planet2 = "Uranus" ∧ ¬planet2 = "Neptune" then
+    (¬planet1 = "Mercury" →
+        ¬planet1 = "Venus" →
+          ¬planet1 = "Earth" →
+            ¬planet1 = "Mars" →
+              ¬planet1 = "Jupiter" → ¬planet1 = "Saturn" → ¬planet1 = "Uranus" → planet1 = "Neptune") →
+      (¬planet2 = "Mercury" →
+          ¬planet2 = "Venus" →
+            ¬planet2 = "Earth" →
+              ¬planet2 = "Mars" →
+                ¬planet2 = "Jupiter" → ¬planet2 = "Saturn" → ¬planet2 = "Uranus" → planet2 = "Neptune") →
+        ((if
+                  List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                    List.idxOf planet2
+                      ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+              else List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) =
+              0 →
+            (if
+                  List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                    List.idxOf planet2
+                      ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+              else List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ≤
+              1) ∧
+          ((if
+                    List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                      List.idxOf planet2
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                  List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                else
+                  List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                2 →
+              (if
+                    List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                      List.idxOf planet2
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                  List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                else
+                  List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ≤
+                2) ∧
+            ((if
+                      List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                    List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                  else
+                    List.idxOf planet2
+                      ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                  3 →
+                (if
+                      List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                    List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                  else
+                    List.idxOf planet1
+                      ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ≤
+                  3) ∧
+              ((if
+                        List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                      List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                    else
+                      List.idxOf planet2
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                    4 →
+                  (if
+                        List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                      List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                    else
+                      List.idxOf planet1
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ≤
+                    4) ∧
+                ((if
+                          List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                        List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                      else
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                      5 →
+                    (if
+                          List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                      else
+                        List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ≤
+                      5) ∧
+                  ((if
+                            List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                          List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                        else
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                        6 →
+                      (if
+                            List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                        else
+                          List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ≤
+                        6) ∧
+                    ((if
+                            List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                          List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                        else
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                        7 →
+                      (if
+                            List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                        else
+                          List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ≤
+                        7)
+  else
+    (∀ (str : String),
+        (¬planet1 = "Mercury" →
+            ¬planet1 = "Venus" →
+              ¬planet1 = "Earth" →
+                ¬planet1 = "Mars" →
+                  ¬planet1 = "Jupiter" → ¬planet1 = "Saturn" → ¬planet1 = "Uranus" → planet1 = "Neptune") →
+          (¬planet2 = "Mercury" →
+              ¬planet2 = "Venus" →
+                ¬planet2 = "Earth" →
+                  ¬planet2 = "Mars" →
+                    ¬planet2 = "Jupiter" → ¬planet2 = "Saturn" → ¬planet2 = "Uranus" → planet2 = "Neptune") →
+            str = "Venus" ∨
+                str = "Earth" ∨ str = "Mars" ∨ str = "Jupiter" ∨ str = "Saturn" ∨ str = "Uranus" ∨ str = "Neptune" →
+              (if
+                      List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                    List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                  else
+                    List.idxOf planet2
+                      ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                  List.idxOf str ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] →
+                (List.idxOf str ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                    if
+                        List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                      List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                    else
+                      List.idxOf planet1
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) →
+                  str = "Mercury" ∨
+                    str = "Venus" ∨
+                      str = "Earth" ∨
+                        str = "Mars" ∨ str = "Jupiter" ∨ str = "Saturn" ∨ str = "Uranus" ∨ str = "Neptune") ∧
+      (((((¬planet1 = "Mercury" →
+                  ¬planet1 = "Venus" →
+                    ¬planet1 = "Earth" →
+                      ¬planet1 = "Mars" →
+                        ¬planet1 = "Jupiter" → ¬planet1 = "Saturn" → ¬planet1 = "Uranus" → planet1 = "Neptune") ∧
+                (¬planet2 = "Mercury" →
+                  ¬planet2 = "Venus" →
+                    ¬planet2 = "Earth" →
+                      ¬planet2 = "Mars" →
+                        ¬planet2 = "Jupiter" → ¬planet2 = "Saturn" → ¬planet2 = "Uranus" → planet2 = "Neptune")) ∧
+              (if
+                      List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                    List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                  else
+                    List.idxOf planet2
+                      ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) =
+                  0 ∧
+                1 <
+                  if
+                      List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                    List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                  else
+                    List.idxOf planet1
+                      ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ↔
+            (1 <
+                if
+                    List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                      List.idxOf planet2
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                  List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                else
+                  List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ∧
+              (if
+                    List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                      List.idxOf planet2
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                  List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                else
+                  List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) =
+                0) ∧
+          ((((¬planet1 = "Mercury" →
+                    ¬planet1 = "Venus" →
+                      ¬planet1 = "Earth" →
+                        ¬planet1 = "Mars" →
+                          ¬planet1 = "Jupiter" → ¬planet1 = "Saturn" → ¬planet1 = "Uranus" → planet1 = "Neptune") ∧
+                  (¬planet2 = "Mercury" →
+                    ¬planet2 = "Venus" →
+                      ¬planet2 = "Earth" →
+                        ¬planet2 = "Mars" →
+                          ¬planet2 = "Jupiter" → ¬planet2 = "Saturn" → ¬planet2 = "Uranus" → planet2 = "Neptune")) ∧
+                (if
+                        List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                      List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                    else
+                      List.idxOf planet2
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                    2 ∧
+                  2 <
+                    if
+                        List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                      List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                    else
+                      List.idxOf planet1
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ↔
+              (2 <
+                  if
+                      List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                    List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                  else
+                    List.idxOf planet1
+                      ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ∧
+                (if
+                      List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                    List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                  else
+                    List.idxOf planet2
+                      ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                  2) ∧
+            ((((¬planet1 = "Mercury" →
+                      ¬planet1 = "Venus" →
+                        ¬planet1 = "Earth" →
+                          ¬planet1 = "Mars" →
+                            ¬planet1 = "Jupiter" → ¬planet1 = "Saturn" → ¬planet1 = "Uranus" → planet1 = "Neptune") ∧
+                    (¬planet2 = "Mercury" →
+                      ¬planet2 = "Venus" →
+                        ¬planet2 = "Earth" →
+                          ¬planet2 = "Mars" →
+                            ¬planet2 = "Jupiter" → ¬planet2 = "Saturn" → ¬planet2 = "Uranus" → planet2 = "Neptune")) ∧
+                  (if
+                          List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                        List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                      else
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                      3 ∧
+                    3 <
+                      if
+                          List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                      else
+                        List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ↔
+                (3 <
+                    if
+                        List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                      List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                    else
+                      List.idxOf planet1
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ∧
+                  (if
+                        List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                      List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                    else
+                      List.idxOf planet2
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                    3) ∧
+              ((((¬planet1 = "Mercury" →
+                        ¬planet1 = "Venus" →
+                          ¬planet1 = "Earth" →
+                            ¬planet1 = "Mars" →
+                              ¬planet1 = "Jupiter" → ¬planet1 = "Saturn" → ¬planet1 = "Uranus" → planet1 = "Neptune") ∧
+                      (¬planet2 = "Mercury" →
+                        ¬planet2 = "Venus" →
+                          ¬planet2 = "Earth" →
+                            ¬planet2 = "Mars" →
+                              ¬planet2 = "Jupiter" → ¬planet2 = "Saturn" → ¬planet2 = "Uranus" → planet2 = "Neptune")) ∧
+                    (if
+                            List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                          List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                        else
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                        4 ∧
+                      4 <
+                        if
+                            List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                        else
+                          List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ↔
+                  (4 <
+                      if
+                          List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                      else
+                        List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ∧
+                    (if
+                          List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                        List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                      else
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                      4) ∧
+                ((((¬planet1 = "Mercury" →
+                          ¬planet1 = "Venus" →
+                            ¬planet1 = "Earth" →
+                              ¬planet1 = "Mars" →
+                                ¬planet1 = "Jupiter" →
+                                  ¬planet1 = "Saturn" → ¬planet1 = "Uranus" → planet1 = "Neptune") ∧
+                        (¬planet2 = "Mercury" →
+                          ¬planet2 = "Venus" →
+                            ¬planet2 = "Earth" →
+                              ¬planet2 = "Mars" →
+                                ¬planet2 = "Jupiter" →
+                                  ¬planet2 = "Saturn" → ¬planet2 = "Uranus" → planet2 = "Neptune")) ∧
+                      (if
+                              List.idxOf planet1
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                List.idxOf planet2
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                            List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                          else
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                          5 ∧
+                        5 <
+                          if
+                              List.idxOf planet1
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                List.idxOf planet2
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                          else
+                            List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ↔
+                    (5 <
+                        if
+                            List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                        else
+                          List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ∧
+                      (if
+                            List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                          List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                        else
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                        5) ∧
+                  ((((¬planet1 = "Mercury" →
+                            ¬planet1 = "Venus" →
+                              ¬planet1 = "Earth" →
+                                ¬planet1 = "Mars" →
+                                  ¬planet1 = "Jupiter" →
+                                    ¬planet1 = "Saturn" → ¬planet1 = "Uranus" → planet1 = "Neptune") ∧
+                          (¬planet2 = "Mercury" →
+                            ¬planet2 = "Venus" →
+                              ¬planet2 = "Earth" →
+                                ¬planet2 = "Mars" →
+                                  ¬planet2 = "Jupiter" →
+                                    ¬planet2 = "Saturn" → ¬planet2 = "Uranus" → planet2 = "Neptune")) ∧
+                        (if
+                                List.idxOf planet1
+                                    ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                  List.idxOf planet2
+                                    ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                              List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                            else
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                            6 ∧
+                          6 <
+                            if
+                                List.idxOf planet1
+                                    ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                  List.idxOf planet2
+                                    ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                            else
+                              List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ↔
+                      (6 <
+                          if
+                              List.idxOf planet1
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                List.idxOf planet2
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                          else
+                            List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ∧
+                        (if
+                              List.idxOf planet1
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                List.idxOf planet2
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                            List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                          else
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                          6) ∧
+                    ((((¬planet1 = "Mercury" →
+                            ¬planet1 = "Venus" →
+                              ¬planet1 = "Earth" →
+                                ¬planet1 = "Mars" →
+                                  ¬planet1 = "Jupiter" →
+                                    ¬planet1 = "Saturn" → ¬planet1 = "Uranus" → planet1 = "Neptune") ∧
+                          (¬planet2 = "Mercury" →
+                            ¬planet2 = "Venus" →
+                              ¬planet2 = "Earth" →
+                                ¬planet2 = "Mars" →
+                                  ¬planet2 = "Jupiter" →
+                                    ¬planet2 = "Saturn" → ¬planet2 = "Uranus" → planet2 = "Neptune")) ∧
+                        (if
+                                List.idxOf planet1
+                                    ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                  List.idxOf planet2
+                                    ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                              List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                            else
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                            7 ∧
+                          7 <
+                            if
+                                List.idxOf planet1
+                                    ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                  List.idxOf planet2
+                                    ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                            else
+                              List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ↔
+                      (7 <
+                          if
+                              List.idxOf planet1
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                List.idxOf planet2
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                          else
+                            List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ∧
+                        (if
+                              List.idxOf planet1
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                List.idxOf planet2
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                            List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                          else
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                          7)) ∧
+        List.Sorted
+          (fun a b ↦
+            List.idxOf a ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+              List.idxOf b ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"])
+          (if
+              ¬planet1 = "Mercury" ∧
+                  ¬planet1 = "Venus" ∧
+                    ¬planet1 = "Earth" ∧
+                      ¬planet1 = "Mars" ∧
+                        ¬planet1 = "Jupiter" ∧ ¬planet1 = "Saturn" ∧ ¬planet1 = "Uranus" ∧ ¬planet1 = "Neptune" ∨
+                ¬planet2 = "Mercury" ∧
+                  ¬planet2 = "Venus" ∧
+                    ¬planet2 = "Earth" ∧
+                      ¬planet2 = "Mars" ∧
+                        ¬planet2 = "Jupiter" ∧ ¬planet2 = "Saturn" ∧ ¬planet2 = "Uranus" ∧ ¬planet2 = "Neptune" then
+            []
+          else
+            List.filter
+              (fun planet ↦
+                decide
+                    ((if
+                          List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                        List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                      else
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                      List.idxOf planet
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) &&
+                  decide
+                    (List.idxOf planet ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                      if
+                          List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                      else
+                        List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]))
+              ["Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"])
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_148_impl.lean:95:6: Tactic `constructor` failed: target is not an inductive datatype
+
+case neg
+planet1 planet2 : String
+h :
+  planet1 ∈ ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] ∧
+    planet2 ∈ ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+⊢ if
+      ¬planet1 = "Mercury" ∧
+          ¬planet1 = "Venus" ∧
+            ¬planet1 = "Earth" ∧
+              ¬planet1 = "Mars" ∧
+                ¬planet1 = "Jupiter" ∧ ¬planet1 = "Saturn" ∧ ¬planet1 = "Uranus" ∧ ¬planet1 = "Neptune" ∨
+        ¬planet2 = "Mercury" ∧
+          ¬planet2 = "Venus" ∧
+            ¬planet2 = "Earth" ∧
+              ¬planet2 = "Mars" ∧
+                ¬planet2 = "Jupiter" ∧ ¬planet2 = "Saturn" ∧ ¬planet2 = "Uranus" ∧ ¬planet2 = "Neptune" then
+    (¬planet1 = "Mercury" →
+        ¬planet1 = "Venus" →
+          ¬planet1 = "Earth" →
+            ¬planet1 = "Mars" →
+              ¬planet1 = "Jupiter" → ¬planet1 = "Saturn" → ¬planet1 = "Uranus" → planet1 = "Neptune") →
+      (¬planet2 = "Mercury" →
+          ¬planet2 = "Venus" →
+            ¬planet2 = "Earth" →
+              ¬planet2 = "Mars" →
+                ¬planet2 = "Jupiter" → ¬planet2 = "Saturn" → ¬planet2 = "Uranus" → planet2 = "Neptune") →
+        ((if
+                  List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                    List.idxOf planet2
+                      ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+              else List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) =
+              0 →
+            (if
+                  List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                    List.idxOf planet2
+                      ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+              else List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ≤
+              1) ∧
+          ((if
+                    List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                      List.idxOf planet2
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                  List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                else
+                  List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                2 →
+              (if
+                    List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                      List.idxOf planet2
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                  List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                else
+                  List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ≤
+                2) ∧
+            ((if
+                      List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                    List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                  else
+                    List.idxOf planet2
+                      ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                  3 →
+                (if
+                      List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                    List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                  else
+                    List.idxOf planet1
+                      ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ≤
+                  3) ∧
+              ((if
+                        List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                      List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                    else
+                      List.idxOf planet2
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                    4 →
+                  (if
+                        List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                      List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                    else
+                      List.idxOf planet1
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ≤
+                    4) ∧
+                ((if
+                          List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                        List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                      else
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                      5 →
+                    (if
+                          List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                      else
+                        List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ≤
+                      5) ∧
+                  ((if
+                            List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                          List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                        else
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                        6 →
+                      (if
+                            List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                        else
+                          List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ≤
+                        6) ∧
+                    ((if
+                            List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                          List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                        else
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                        7 →
+                      (if
+                            List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                        else
+                          List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ≤
+                        7)
+  else
+    (∀ (str : String),
+        (¬planet1 = "Mercury" →
+            ¬planet1 = "Venus" →
+              ¬planet1 = "Earth" →
+                ¬planet1 = "Mars" →
+                  ¬planet1 = "Jupiter" → ¬planet1 = "Saturn" → ¬planet1 = "Uranus" → planet1 = "Neptune") →
+          (¬planet2 = "Mercury" →
+              ¬planet2 = "Venus" →
+                ¬planet2 = "Earth" →
+                  ¬planet2 = "Mars" →
+                    ¬planet2 = "Jupiter" → ¬planet2 = "Saturn" → ¬planet2 = "Uranus" → planet2 = "Neptune") →
+            str = "Venus" ∨
+                str = "Earth" ∨ str = "Mars" ∨ str = "Jupiter" ∨ str = "Saturn" ∨ str = "Uranus" ∨ str = "Neptune" →
+              (if
+                      List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                    List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                  else
+                    List.idxOf planet2
+                      ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                  List.idxOf str ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] →
+                (List.idxOf str ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                    if
+                        List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                      List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                    else
+                      List.idxOf planet1
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) →
+                  str = "Mercury" ∨
+                    str = "Venus" ∨
+                      str = "Earth" ∨
+                        str = "Mars" ∨ str = "Jupiter" ∨ str = "Saturn" ∨ str = "Uranus" ∨ str = "Neptune") ∧
+      (((((¬planet1 = "Mercury" →
+                  ¬planet1 = "Venus" →
+                    ¬planet1 = "Earth" →
+                      ¬planet1 = "Mars" →
+                        ¬planet1 = "Jupiter" → ¬planet1 = "Saturn" → ¬planet1 = "Uranus" → planet1 = "Neptune") ∧
+                (¬planet2 = "Mercury" →
+                  ¬planet2 = "Venus" →
+                    ¬planet2 = "Earth" →
+                      ¬planet2 = "Mars" →
+                        ¬planet2 = "Jupiter" → ¬planet2 = "Saturn" → ¬planet2 = "Uranus" → planet2 = "Neptune")) ∧
+              (if
+                      List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                    List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                  else
+                    List.idxOf planet2
+                      ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) =
+                  0 ∧
+                1 <
+                  if
+                      List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                    List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                  else
+                    List.idxOf planet1
+                      ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ↔
+            (1 <
+                if
+                    List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                      List.idxOf planet2
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                  List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                else
+                  List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ∧
+              (if
+                    List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                      List.idxOf planet2
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                  List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                else
+                  List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) =
+                0) ∧
+          ((((¬planet1 = "Mercury" →
+                    ¬planet1 = "Venus" →
+                      ¬planet1 = "Earth" →
+                        ¬planet1 = "Mars" →
+                          ¬planet1 = "Jupiter" → ¬planet1 = "Saturn" → ¬planet1 = "Uranus" → planet1 = "Neptune") ∧
+                  (¬planet2 = "Mercury" →
+                    ¬planet2 = "Venus" →
+                      ¬planet2 = "Earth" →
+                        ¬planet2 = "Mars" →
+                          ¬planet2 = "Jupiter" → ¬planet2 = "Saturn" → ¬planet2 = "Uranus" → planet2 = "Neptune")) ∧
+                (if
+                        List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                      List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                    else
+                      List.idxOf planet2
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                    2 ∧
+                  2 <
+                    if
+                        List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                      List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                    else
+                      List.idxOf planet1
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ↔
+              (2 <
+                  if
+                      List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                    List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                  else
+                    List.idxOf planet1
+                      ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ∧
+                (if
+                      List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                    List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                  else
+                    List.idxOf planet2
+                      ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                  2) ∧
+            ((((¬planet1 = "Mercury" →
+                      ¬planet1 = "Venus" →
+                        ¬planet1 = "Earth" →
+                          ¬planet1 = "Mars" →
+                            ¬planet1 = "Jupiter" → ¬planet1 = "Saturn" → ¬planet1 = "Uranus" → planet1 = "Neptune") ∧
+                    (¬planet2 = "Mercury" →
+                      ¬planet2 = "Venus" →
+                        ¬planet2 = "Earth" →
+                          ¬planet2 = "Mars" →
+                            ¬planet2 = "Jupiter" → ¬planet2 = "Saturn" → ¬planet2 = "Uranus" → planet2 = "Neptune")) ∧
+                  (if
+                          List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                        List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                      else
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                      3 ∧
+                    3 <
+                      if
+                          List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                      else
+                        List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ↔
+                (3 <
+                    if
+                        List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                      List.idxOf planet2 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                    else
+                      List.idxOf planet1
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ∧
+                  (if
+                        List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                      List.idxOf planet1 ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                    else
+                      List.idxOf planet2
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                    3) ∧
+              ((((¬planet1 = "Mercury" →
+                        ¬planet1 = "Venus" →
+                          ¬planet1 = "Earth" →
+                            ¬planet1 = "Mars" →
+                              ¬planet1 = "Jupiter" → ¬planet1 = "Saturn" → ¬planet1 = "Uranus" → planet1 = "Neptune") ∧
+                      (¬planet2 = "Mercury" →
+                        ¬planet2 = "Venus" →
+                          ¬planet2 = "Earth" →
+                            ¬planet2 = "Mars" →
+                              ¬planet2 = "Jupiter" → ¬planet2 = "Saturn" → ¬planet2 = "Uranus" → planet2 = "Neptune")) ∧
+                    (if
+                            List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                          List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                        else
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                        4 ∧
+                      4 <
+                        if
+                            List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                        else
+                          List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ↔
+                  (4 <
+                      if
+                          List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                      else
+                        List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ∧
+                    (if
+                          List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                        List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                      else
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                      4) ∧
+                ((((¬planet1 = "Mercury" →
+                          ¬planet1 = "Venus" →
+                            ¬planet1 = "Earth" →
+                              ¬planet1 = "Mars" →
+                                ¬planet1 = "Jupiter" →
+                                  ¬planet1 = "Saturn" → ¬planet1 = "Uranus" → planet1 = "Neptune") ∧
+                        (¬planet2 = "Mercury" →
+                          ¬planet2 = "Venus" →
+                            ¬planet2 = "Earth" →
+                              ¬planet2 = "Mars" →
+                                ¬planet2 = "Jupiter" →
+                                  ¬planet2 = "Saturn" → ¬planet2 = "Uranus" → planet2 = "Neptune")) ∧
+                      (if
+                              List.idxOf planet1
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                List.idxOf planet2
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                            List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                          else
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                          5 ∧
+                        5 <
+                          if
+                              List.idxOf planet1
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                List.idxOf planet2
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                          else
+                            List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ↔
+                    (5 <
+                        if
+                            List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                        else
+                          List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ∧
+                      (if
+                            List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                          List.idxOf planet1
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                        else
+                          List.idxOf planet2
+                            ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                        5) ∧
+                  ((((¬planet1 = "Mercury" →
+                            ¬planet1 = "Venus" →
+                              ¬planet1 = "Earth" →
+                                ¬planet1 = "Mars" →
+                                  ¬planet1 = "Jupiter" →
+                                    ¬planet1 = "Saturn" → ¬planet1 = "Uranus" → planet1 = "Neptune") ∧
+                          (¬planet2 = "Mercury" →
+                            ¬planet2 = "Venus" →
+                              ¬planet2 = "Earth" →
+                                ¬planet2 = "Mars" →
+                                  ¬planet2 = "Jupiter" →
+                                    ¬planet2 = "Saturn" → ¬planet2 = "Uranus" → planet2 = "Neptune")) ∧
+                        (if
+                                List.idxOf planet1
+                                    ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                  List.idxOf planet2
+                                    ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                              List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                            else
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                            6 ∧
+                          6 <
+                            if
+                                List.idxOf planet1
+                                    ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                  List.idxOf planet2
+                                    ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                            else
+                              List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ↔
+                      (6 <
+                          if
+                              List.idxOf planet1
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                List.idxOf planet2
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                          else
+                            List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ∧
+                        (if
+                              List.idxOf planet1
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                List.idxOf planet2
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                            List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                          else
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                          6) ∧
+                    ((((¬planet1 = "Mercury" →
+                            ¬planet1 = "Venus" →
+                              ¬planet1 = "Earth" →
+                                ¬planet1 = "Mars" →
+                                  ¬planet1 = "Jupiter" →
+                                    ¬planet1 = "Saturn" → ¬planet1 = "Uranus" → planet1 = "Neptune") ∧
+                          (¬planet2 = "Mercury" →
+                            ¬planet2 = "Venus" →
+                              ¬planet2 = "Earth" →
+                                ¬planet2 = "Mars" →
+                                  ¬planet2 = "Jupiter" →
+                                    ¬planet2 = "Saturn" → ¬planet2 = "Uranus" → planet2 = "Neptune")) ∧
+                        (if
+                                List.idxOf planet1
+                                    ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                  List.idxOf planet2
+                                    ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                              List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                            else
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                            7 ∧
+                          7 <
+                            if
+                                List.idxOf planet1
+                                    ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                  List.idxOf planet2
+                                    ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                              List.idxOf planet2
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                            else
+                              List.idxOf planet1
+                                ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ↔
+                      (7 <
+                          if
+                              List.idxOf planet1
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                List.idxOf planet2
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                          else
+                            List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) ∧
+                        (if
+                              List.idxOf planet1
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                                List.idxOf planet2
+                                  ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                            List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                          else
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                          7)) ∧
+        List.Sorted
+          (fun a b ↦
+            List.idxOf a ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+              List.idxOf b ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"])
+          (if
+              ¬planet1 = "Mercury" ∧
+                  ¬planet1 = "Venus" ∧
+                    ¬planet1 = "Earth" ∧
+                      ¬planet1 = "Mars" ∧
+                        ¬planet1 = "Jupiter" ∧ ¬planet1 = "Saturn" ∧ ¬planet1 = "Uranus" ∧ ¬planet1 = "Neptune" ∨
+                ¬planet2 = "Mercury" ∧
+                  ¬planet2 = "Venus" ∧
+                    ¬planet2 = "Earth" ∧
+                      ¬planet2 = "Mars" ∧
+                        ¬planet2 = "Jupiter" ∧ ¬planet2 = "Saturn" ∧ ¬planet2 = "Uranus" ∧ ¬planet2 = "Neptune" then
+            []
+          else
+            List.filter
+              (fun planet ↦
+                decide
+                    ((if
+                          List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                        List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                      else
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) <
+                      List.idxOf planet
+                        ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]) &&
+                  decide
+                    (List.idxOf planet ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                      if
+                          List.idxOf planet1
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] <
+                            List.idxOf planet2
+                              ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"] then
+                        List.idxOf planet2
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+                      else
+                        List.idxOf planet1
+                          ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]))
+              ["Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"])
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_148_impl.lean:92:12: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵h̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_148_impl.lean:93:12: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵h̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_148_impl
+error: build failed

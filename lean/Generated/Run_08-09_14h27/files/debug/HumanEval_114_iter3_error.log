@@ -1,0 +1,60 @@
+=== Verification Error - Iteration 3 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/lean/humaneval/files/HumanEval_114.lean
+Time: 2025-09-08 15:23:45
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: ✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_114_impl (2.8s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_114_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_114_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_114_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_114_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_114_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_114_impl.lean:54:30: unsolved goals
+x : ℤ
+xs : List ℤ
+⊢ ∃ a ∈ List.foldr (fun a acc ↦ List.flatMap (fun x ↦ [x, a :: x]) acc) [[]] xs, [x] = a ∨ a = []
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_114_impl.lean:74:2: No goals to be solved
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_114_impl.lean:103:6: Tactic `constructor` failed: no applicable constructor found
+
+case h.right.nil
+⊢ False
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_114_impl.lean:125:10: Tactic `rfl` failed: The left-hand side
+  minSubArraySumAux xs x x
+is not definitionally equal to the right-hand side
+  x
+
+case h.right.right
+x : ℤ
+xs : List ℤ
+h : minSubArraySumAux xs x x ≤ x
+⊢ minSubArraySumAux xs x x = x
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_114_impl
+error: build failed
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_114_impl (2.8s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_114_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_114_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_114_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_114_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_114_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_114_impl.lean:54:30: unsolved goals
+x : ℤ
+xs : List ℤ
+⊢ ∃ a ∈ List.foldr (fun a acc ↦ List.flatMap (fun x ↦ [x, a :: x]) acc) [[]] xs, [x] = a ∨ a = []
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_114_impl.lean:74:2: No goals to be solved
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_114_impl.lean:103:6: Tactic `constructor` failed: no applicable constructor found
+
+case h.right.nil
+⊢ False
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_114_impl.lean:125:10: Tactic `rfl` failed: The left-hand side
+  minSubArraySumAux xs x x
+is not definitionally equal to the right-hand side
+  x
+
+case h.right.right
+x : ℤ
+xs : List ℤ
+h : minSubArraySumAux xs x x ≤ x
+⊢ minSubArraySumAux xs x x = x
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_114_impl
+error: build failed

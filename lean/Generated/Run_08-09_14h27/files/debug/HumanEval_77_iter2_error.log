@@ -1,0 +1,138 @@
+=== Verification Error - Iteration 2 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/lean/humaneval/files/HumanEval_77.lean
+Time: 2025-09-08 15:37:58
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: ✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_77_impl (3.4s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_77_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_77_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_77_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_77_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_77_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_77_impl.lean:47:12: 'is_perfect_cube.check' has already been declared
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_77_impl.lean:40:13: failed to prove termination, possible solutions:
+  - Use `have`-expressions to prove the remaining goals
+  - Use `termination_by` to specify a different well-founded relation
+  - Use `decreasing_by` to specify your own tactic for discharging this kind of goal
+bound : ℤ
+n : ℕ
+h✝ : ¬↑n > bound
+⊢ bound.natAbs - (n + 1) < bound.natAbs - n
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_77_impl.lean:84:10: expected checkColGt
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_77_impl.lean:82:64: unsolved goals
+case ofNat
+a : ℤ
+h_zero : ¬a = 0
+h_pos : 0 < a
+a✝ : ℕ
+hn : a = Int.ofNat a✝ ^ 3
+⊢ ∃ k, Int.ofNat k = Int.ofNat a✝ ∨ Int.ofNat k = -Int.ofNat a✝
+
+case negSucc
+a : ℤ
+h_zero : ¬a = 0
+h_pos : 0 < a
+a✝ : ℕ
+hn : a = Int.negSucc a✝ ^ 3
+⊢ ∃ k, Int.ofNat k = Int.negSucc a✝ ∨ Int.ofNat k = -Int.negSucc a✝
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_77_impl.lean:81:6: unsolved goals
+case pos
+a n : ℤ
+hn : a = n ^ 3
+h_zero : ¬a = 0
+h_pos : 0 < a
+this : ∃ k, Int.ofNat k = n ∨ Int.ofNat k = -n
+⊢ a = 0 ∨ is_perfect_cube.check a |a| 0 = true
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_77_impl.lean:80:4: unsolved goals
+case neg
+a n : ℤ
+hn : a = n ^ 3
+h_zero : ¬a = 0
+h_pos : ¬0 < a
+⊢ a = 0 ∨ if 0 < a then is_perfect_cube.check a |a| 0 = true else sorry () = true
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_77_impl.lean:73:90: unsolved goals
+case mpr
+a : ℤ
+⊢ is_perfect_cube a = true → ∃ n, a = n ^ 3
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_77_impl.lean:77:10: declaration uses 'sorry'
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_77_impl.lean:110:2: Type mismatch
+  is_perfect_cube a
+has type
+  Bool
+of sort `Type` but is expected to have type
+  is_perfect_cube a = true → ∃ n, a = n ^ 3
+of sort `Prop`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_77_impl.lean:111:2: Tactic `constructor` failed: target is not an inductive datatype
+
+case mpr
+a : ℤ
+⊢ (∃ n, a = n ^ 3) → is_perfect_cube a = true
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_77_impl
+error: build failed
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_77_impl (3.4s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_77_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_77_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_77_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_77_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_77_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_77_impl.lean:47:12: 'is_perfect_cube.check' has already been declared
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_77_impl.lean:40:13: failed to prove termination, possible solutions:
+  - Use `have`-expressions to prove the remaining goals
+  - Use `termination_by` to specify a different well-founded relation
+  - Use `decreasing_by` to specify your own tactic for discharging this kind of goal
+bound : ℤ
+n : ℕ
+h✝ : ¬↑n > bound
+⊢ bound.natAbs - (n + 1) < bound.natAbs - n
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_77_impl.lean:84:10: expected checkColGt
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_77_impl.lean:82:64: unsolved goals
+case ofNat
+a : ℤ
+h_zero : ¬a = 0
+h_pos : 0 < a
+a✝ : ℕ
+hn : a = Int.ofNat a✝ ^ 3
+⊢ ∃ k, Int.ofNat k = Int.ofNat a✝ ∨ Int.ofNat k = -Int.ofNat a✝
+
+case negSucc
+a : ℤ
+h_zero : ¬a = 0
+h_pos : 0 < a
+a✝ : ℕ
+hn : a = Int.negSucc a✝ ^ 3
+⊢ ∃ k, Int.ofNat k = Int.negSucc a✝ ∨ Int.ofNat k = -Int.negSucc a✝
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_77_impl.lean:81:6: unsolved goals
+case pos
+a n : ℤ
+hn : a = n ^ 3
+h_zero : ¬a = 0
+h_pos : 0 < a
+this : ∃ k, Int.ofNat k = n ∨ Int.ofNat k = -n
+⊢ a = 0 ∨ is_perfect_cube.check a |a| 0 = true
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_77_impl.lean:80:4: unsolved goals
+case neg
+a n : ℤ
+hn : a = n ^ 3
+h_zero : ¬a = 0
+h_pos : ¬0 < a
+⊢ a = 0 ∨ if 0 < a then is_perfect_cube.check a |a| 0 = true else sorry () = true
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_77_impl.lean:73:90: unsolved goals
+case mpr
+a : ℤ
+⊢ is_perfect_cube a = true → ∃ n, a = n ^ 3
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_77_impl.lean:77:10: declaration uses 'sorry'
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_77_impl.lean:110:2: Type mismatch
+  is_perfect_cube a
+has type
+  Bool
+of sort `Type` but is expected to have type
+  is_perfect_cube a = true → ∃ n, a = n ^ 3
+of sort `Prop`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_77_impl.lean:111:2: Tactic `constructor` failed: target is not an inductive datatype
+
+case mpr
+a : ℤ
+⊢ (∃ n, a = n ^ 3) → is_perfect_cube a = true
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_77_impl
+error: build failed

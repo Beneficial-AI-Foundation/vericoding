@@ -1,0 +1,576 @@
+=== Verification Error - Iteration 2 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/lean/humaneval/files/HumanEval_136.lean
+Time: 2025-09-08 15:04:32
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: ✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_136_impl (13s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_136_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_136_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:50:10: Unknown constant `List.head!_mem`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:50:4: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:53:4: Type mismatch
+  h_head
+has type
+  h_filter.head! ∈ h_filter
+but is expected to have type
+  h_filter.head! ∈ lst ∧ h_filter.head! < 0
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:55:8: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  List.foldl max (List.filter (fun x ↦ decide (x < 0)) lst).head! (List.filter (fun x ↦ decide (x < 0)) lst)
+in the target expression
+  a ∈ lst
+
+case left
+lst : List ℤ
+a : ℤ
+h_nonempty : List.filter (fun x ↦ decide (x < 0)) lst ≠ []
+h_max : a = List.foldl max (List.filter (fun x ↦ decide (x < 0)) lst).head! (List.filter (fun x ↦ decide (x < 0)) lst)
+h_filter : List ℤ
+h_head : h_filter.head! ∈ h_filter
+h_head_mem : h_filter.head! ∈ lst ∧ h_filter.head! < 0
+⊢ a ∈ lst
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:63:8: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  List.foldl max (List.filter (fun x ↦ decide (x < 0)) lst).head! (List.filter (fun x ↦ decide (x < 0)) lst)
+in the target expression
+  a < 0
+
+case right.left
+lst : List ℤ
+a : ℤ
+h_nonempty : List.filter (fun x ↦ decide (x < 0)) lst ≠ []
+h_max : a = List.foldl max (List.filter (fun x ↦ decide (x < 0)) lst).head! (List.filter (fun x ↦ decide (x < 0)) lst)
+h_filter : List ℤ
+h_head : h_filter.head! ∈ h_filter
+h_head_mem : h_filter.head! ∈ lst ∧ h_filter.head! < 0
+⊢ a < 0
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:71:8: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  List.foldl max (List.filter (fun x ↦ decide (x < 0)) lst).head! (List.filter (fun x ↦ decide (x < 0)) lst)
+in the target expression
+  i ≤ a
+
+case right.right
+lst : List ℤ
+a : ℤ
+h_nonempty : List.filter (fun x ↦ decide (x < 0)) lst ≠ []
+h_max : a = List.foldl max (List.filter (fun x ↦ decide (x < 0)) lst).head! (List.filter (fun x ↦ decide (x < 0)) lst)
+h_filter : List ℤ
+h_head : h_filter.head! ∈ h_filter
+h_head_mem : h_filter.head! ∈ lst ∧ h_filter.head! < 0
+i : ℤ
+hi_mem : i ∈ lst
+hi_neg : i < 0
+⊢ i ≤ a
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:52:10: This simp argument is unused:
+  List.mem_filter
+
+Hint: Omit it from the simp argument list.
+  simp [̵L̵i̵s̵t̵.̵m̵e̵m̵_̵f̵i̵l̵t̵e̵r̵]̵ ̵at h_head
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:84:10: Unknown constant `List.head!_mem`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:84:4: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:87:4: Type mismatch
+  h_head
+has type
+  h_filter.head! ∈ h_filter
+but is expected to have type
+  h_filter.head! ∈ lst ∧ 0 < h_filter.head!
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:89:8: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  List.foldl min (List.filter (fun x ↦ decide (x > 0)) lst).head! (List.filter (fun x ↦ decide (x > 0)) lst)
+in the target expression
+  b ∈ lst
+
+case left
+lst : List ℤ
+b : ℤ
+h_nonempty : List.filter (fun x ↦ decide (x > 0)) lst ≠ []
+h_min : b = List.foldl min (List.filter (fun x ↦ decide (x > 0)) lst).head! (List.filter (fun x ↦ decide (x > 0)) lst)
+h_filter : List ℤ
+h_head : h_filter.head! ∈ h_filter
+h_head_mem : h_filter.head! ∈ lst ∧ 0 < h_filter.head!
+⊢ b ∈ lst
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:97:8: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  List.foldl min (List.filter (fun x ↦ decide (x > 0)) lst).head! (List.filter (fun x ↦ decide (x > 0)) lst)
+in the target expression
+  0 < b
+
+case right.left
+lst : List ℤ
+b : ℤ
+h_nonempty : List.filter (fun x ↦ decide (x > 0)) lst ≠ []
+h_min : b = List.foldl min (List.filter (fun x ↦ decide (x > 0)) lst).head! (List.filter (fun x ↦ decide (x > 0)) lst)
+h_filter : List ℤ
+h_head : h_filter.head! ∈ h_filter
+h_head_mem : h_filter.head! ∈ lst ∧ 0 < h_filter.head!
+⊢ 0 < b
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:105:8: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  List.foldl min (List.filter (fun x ↦ decide (x > 0)) lst).head! (List.filter (fun x ↦ decide (x > 0)) lst)
+in the target expression
+  b ≤ i
+
+case right.right
+lst : List ℤ
+b : ℤ
+h_nonempty : List.filter (fun x ↦ decide (x > 0)) lst ≠ []
+h_min : b = List.foldl min (List.filter (fun x ↦ decide (x > 0)) lst).head! (List.filter (fun x ↦ decide (x > 0)) lst)
+h_filter : List ℤ
+h_head : h_filter.head! ∈ h_filter
+h_head_mem : h_filter.head! ∈ lst ∧ 0 < h_filter.head!
+i : ℤ
+hi_mem : i ∈ lst
+hi_pos : 0 < i
+⊢ b ≤ i
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:86:10: This simp argument is unused:
+  List.mem_filter
+
+Hint: Omit it from the simp argument list.
+  simp [̵L̵i̵s̵t̵.̵m̵e̵m̵_̵f̵i̵l̵t̵e̵r̵]̵ ̵at h_head
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:122:14: Unknown constant `List.isEmpty_iff_eq_nil`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:123:8: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:125:14: Unknown constant `List.isEmpty_iff_eq_nil`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:126:8: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:129:12: Unknown constant `List.isEmpty_iff_eq_nil`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:133:8: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:135:8: Tactic `apply` failed: could not unify the type of `filter_min_some h_pos rfl`
+  List.foldl min (List.filter (fun x ↦ decide (x > 0)) lst).head! (List.filter (fun x ↦ decide (x > 0)) lst) ∈ lst ∧
+    0 < List.foldl min (List.filter (fun x ↦ decide (x > 0)) lst).head! (List.filter (fun x ↦ decide (x > 0)) lst) ∧
+      ∀ i ∈ lst,
+        0 < i →
+          List.foldl min (List.filter (fun x ↦ decide (x > 0)) lst).head! (List.filter (fun x ↦ decide (x > 0)) lst) ≤ i
+with the goal
+  (∀ a ∈ lst, 0 ≤ a) ∧
+    0 < List.foldl min positives.head! positives ∧
+      List.foldl min positives.head! positives ∈ lst ∧ ∀ i ∈ lst, 0 < i → List.foldl min positives.head! positives ≤ i
+
+case h.right
+lst : List ℤ
+negatives : List ℤ := ⋯
+positives : List ℤ := ⋯
+h_neg : negatives = []
+h_pos : ¬positives = []
+⊢ (∀ a ∈ lst, 0 ≤ a) ∧
+    0 < List.foldl min positives.head! positives ∧
+      List.foldl min positives.head! positives ∈ lst ∧ ∀ i ∈ lst, 0 < i → List.foldl min positives.head! positives ≤ i
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:138:12: Unknown constant `List.isEmpty_iff_eq_nil`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:142:8: Tactic `apply` failed: could not unify the type of `filter_max_some h_neg rfl`
+  List.foldl max (List.filter (fun x ↦ decide (x < 0)) lst).head! (List.filter (fun x ↦ decide (x < 0)) lst) ∈ lst ∧
+    List.foldl max (List.filter (fun x ↦ decide (x < 0)) lst).head! (List.filter (fun x ↦ decide (x < 0)) lst) < 0 ∧
+      ∀ i ∈ lst,
+        i < 0 →
+          i ≤ List.foldl max (List.filter (fun x ↦ decide (x < 0)) lst).head! (List.filter (fun x ↦ decide (x < 0)) lst)
+with the goal
+  ((∃ x ∈ lst, x < 0) ∧
+      List.foldl max (List.filter (fun x ↦ decide (x < 0)) lst).head! (List.filter (fun x ↦ decide (x < 0)) lst) =
+        List.foldl max negatives.head! negatives) ∧
+    ∀ a ∈ lst, a ≤ 0
+
+case h.left
+lst : List ℤ
+negatives : List ℤ := ⋯
+positives : List ℤ := ⋯
+h_neg : ¬negatives = []
+h_pos : positives = []
+⊢ ((∃ x ∈ lst, x < 0) ∧
+      List.foldl max (List.filter (fun x ↦ decide (x < 0)) lst).head! (List.filter (fun x ↦ decide (x < 0)) lst) =
+        List.foldl max negatives.head! negatives) ∧
+    ∀ a ∈ lst, a ≤ 0
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:143:8: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:146:12: Unknown constant `List.isEmpty_iff_eq_nil`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:150:8: Tactic `apply` failed: could not unify the type of `filter_max_some h_neg rfl`
+  List.foldl max (List.filter (fun x ↦ decide (x < 0)) lst).head! (List.filter (fun x ↦ decide (x < 0)) lst) ∈ lst ∧
+    List.foldl max (List.filter (fun x ↦ decide (x < 0)) lst).head! (List.filter (fun x ↦ decide (x < 0)) lst) < 0 ∧
+      ∀ i ∈ lst,
+        i < 0 →
+          i ≤ List.foldl max (List.filter (fun x ↦ decide (x < 0)) lst).head! (List.filter (fun x ↦ decide (x < 0)) lst)
+with the goal
+  ((∃ x ∈ lst, x < 0) ∧
+      List.foldl max (List.filter (fun x ↦ decide (x < 0)) lst).head! (List.filter (fun x ↦ decide (x < 0)) lst) =
+        List.foldl max negatives.head! negatives) ∧
+    (∃ x ∈ lst, 0 < x) ∧
+      List.foldl min (List.filter (fun x ↦ decide (0 < x)) lst).head! (List.filter (fun x ↦ decide (0 < x)) lst) =
+        List.foldl min positives.head! positives
+
+case h.left
+lst : List ℤ
+negatives : List ℤ := ⋯
+positives : List ℤ := ⋯
+h_neg : ¬negatives = []
+h_pos : ¬positives = []
+⊢ ((∃ x ∈ lst, x < 0) ∧
+      List.foldl max (List.filter (fun x ↦ decide (x < 0)) lst).head! (List.filter (fun x ↦ decide (x < 0)) lst) =
+        List.foldl max negatives.head! negatives) ∧
+    (∃ x ∈ lst, 0 < x) ∧
+      List.foldl min (List.filter (fun x ↦ decide (0 < x)) lst).head! (List.filter (fun x ↦ decide (0 < x)) lst) =
+        List.foldl min positives.head! positives
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:151:8: Tactic `apply` failed: could not unify the type of `filter_min_some h_pos rfl`
+  List.foldl min (List.filter (fun x ↦ decide (x > 0)) lst).head! (List.filter (fun x ↦ decide (x > 0)) lst) ∈ lst ∧
+    0 < List.foldl min (List.filter (fun x ↦ decide (x > 0)) lst).head! (List.filter (fun x ↦ decide (x > 0)) lst) ∧
+      ∀ i ∈ lst,
+        0 < i →
+          List.foldl min (List.filter (fun x ↦ decide (x > 0)) lst).head! (List.filter (fun x ↦ decide (x > 0)) lst) ≤ i
+with the goal
+  (List.foldl max negatives.head! negatives < 0 ∧
+      List.foldl max negatives.head! negatives ∈ lst ∧
+        ∀ i ∈ lst, i < 0 → i ≤ List.foldl max negatives.head! negatives) ∧
+    0 < List.foldl min positives.head! positives ∧
+      List.foldl min positives.head! positives ∈ lst ∧ ∀ i ∈ lst, 0 < i → List.foldl min positives.head! positives ≤ i
+
+case h.right
+lst : List ℤ
+negatives : List ℤ := ⋯
+positives : List ℤ := ⋯
+h_neg : ¬negatives = []
+h_pos : ¬positives = []
+⊢ (List.foldl max negatives.head! negatives < 0 ∧
+      List.foldl max negatives.head! negatives ∈ lst ∧
+        ∀ i ∈ lst, i < 0 → i ≤ List.foldl max negatives.head! negatives) ∧
+    0 < List.foldl min positives.head! positives ∧
+      List.foldl min positives.head! positives ∈ lst ∧ ∀ i ∈ lst, 0 < i → List.foldl min positives.head! positives ≤ i
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:120:12: This simp argument is unused:
+  h_neg
+
+Hint: Omit it from the simp argument list.
+  simp [h_n̵e̵g̵,̵ ̵h̵_̵pos]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:120:19: This simp argument is unused:
+  h_pos
+
+Hint: Omit it from the simp argument list.
+  simp [h_neg,̵ ̵h̵_̵p̵o̵s̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:131:12: This simp argument is unused:
+  h_neg
+
+Hint: Omit it from the simp argument list.
+  simp [h_n̵e̵g̵,̵ ̵h̵_̵pos]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:131:19: This simp argument is unused:
+  h_pos
+
+Hint: Omit it from the simp argument list.
+  simp [h_neg,̵ ̵h̵_̵p̵o̵s̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:140:12: This simp argument is unused:
+  h_neg
+
+Hint: Omit it from the simp argument list.
+  simp [h_n̵e̵g̵,̵ ̵h̵_̵pos]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:140:19: This simp argument is unused:
+  h_pos
+
+Hint: Omit it from the simp argument list.
+  simp [h_neg,̵ ̵h̵_̵p̵o̵s̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:148:12: This simp argument is unused:
+  h_neg
+
+Hint: Omit it from the simp argument list.
+  simp [h_n̵e̵g̵,̵ ̵h̵_̵pos]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:148:19: This simp argument is unused:
+  h_pos
+
+Hint: Omit it from the simp argument list.
+  simp [h_neg,̵ ̵h̵_̵p̵o̵s̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_136_impl
+error: build failed
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_136_impl (13s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_136_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_136_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:50:10: Unknown constant `List.head!_mem`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:50:4: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:53:4: Type mismatch
+  h_head
+has type
+  h_filter.head! ∈ h_filter
+but is expected to have type
+  h_filter.head! ∈ lst ∧ h_filter.head! < 0
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:55:8: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  List.foldl max (List.filter (fun x ↦ decide (x < 0)) lst).head! (List.filter (fun x ↦ decide (x < 0)) lst)
+in the target expression
+  a ∈ lst
+
+case left
+lst : List ℤ
+a : ℤ
+h_nonempty : List.filter (fun x ↦ decide (x < 0)) lst ≠ []
+h_max : a = List.foldl max (List.filter (fun x ↦ decide (x < 0)) lst).head! (List.filter (fun x ↦ decide (x < 0)) lst)
+h_filter : List ℤ
+h_head : h_filter.head! ∈ h_filter
+h_head_mem : h_filter.head! ∈ lst ∧ h_filter.head! < 0
+⊢ a ∈ lst
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:63:8: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  List.foldl max (List.filter (fun x ↦ decide (x < 0)) lst).head! (List.filter (fun x ↦ decide (x < 0)) lst)
+in the target expression
+  a < 0
+
+case right.left
+lst : List ℤ
+a : ℤ
+h_nonempty : List.filter (fun x ↦ decide (x < 0)) lst ≠ []
+h_max : a = List.foldl max (List.filter (fun x ↦ decide (x < 0)) lst).head! (List.filter (fun x ↦ decide (x < 0)) lst)
+h_filter : List ℤ
+h_head : h_filter.head! ∈ h_filter
+h_head_mem : h_filter.head! ∈ lst ∧ h_filter.head! < 0
+⊢ a < 0
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:71:8: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  List.foldl max (List.filter (fun x ↦ decide (x < 0)) lst).head! (List.filter (fun x ↦ decide (x < 0)) lst)
+in the target expression
+  i ≤ a
+
+case right.right
+lst : List ℤ
+a : ℤ
+h_nonempty : List.filter (fun x ↦ decide (x < 0)) lst ≠ []
+h_max : a = List.foldl max (List.filter (fun x ↦ decide (x < 0)) lst).head! (List.filter (fun x ↦ decide (x < 0)) lst)
+h_filter : List ℤ
+h_head : h_filter.head! ∈ h_filter
+h_head_mem : h_filter.head! ∈ lst ∧ h_filter.head! < 0
+i : ℤ
+hi_mem : i ∈ lst
+hi_neg : i < 0
+⊢ i ≤ a
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:52:10: This simp argument is unused:
+  List.mem_filter
+
+Hint: Omit it from the simp argument list.
+  simp [̵L̵i̵s̵t̵.̵m̵e̵m̵_̵f̵i̵l̵t̵e̵r̵]̵ ̵at h_head
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:84:10: Unknown constant `List.head!_mem`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:84:4: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:87:4: Type mismatch
+  h_head
+has type
+  h_filter.head! ∈ h_filter
+but is expected to have type
+  h_filter.head! ∈ lst ∧ 0 < h_filter.head!
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:89:8: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  List.foldl min (List.filter (fun x ↦ decide (x > 0)) lst).head! (List.filter (fun x ↦ decide (x > 0)) lst)
+in the target expression
+  b ∈ lst
+
+case left
+lst : List ℤ
+b : ℤ
+h_nonempty : List.filter (fun x ↦ decide (x > 0)) lst ≠ []
+h_min : b = List.foldl min (List.filter (fun x ↦ decide (x > 0)) lst).head! (List.filter (fun x ↦ decide (x > 0)) lst)
+h_filter : List ℤ
+h_head : h_filter.head! ∈ h_filter
+h_head_mem : h_filter.head! ∈ lst ∧ 0 < h_filter.head!
+⊢ b ∈ lst
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:97:8: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  List.foldl min (List.filter (fun x ↦ decide (x > 0)) lst).head! (List.filter (fun x ↦ decide (x > 0)) lst)
+in the target expression
+  0 < b
+
+case right.left
+lst : List ℤ
+b : ℤ
+h_nonempty : List.filter (fun x ↦ decide (x > 0)) lst ≠ []
+h_min : b = List.foldl min (List.filter (fun x ↦ decide (x > 0)) lst).head! (List.filter (fun x ↦ decide (x > 0)) lst)
+h_filter : List ℤ
+h_head : h_filter.head! ∈ h_filter
+h_head_mem : h_filter.head! ∈ lst ∧ 0 < h_filter.head!
+⊢ 0 < b
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:105:8: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  List.foldl min (List.filter (fun x ↦ decide (x > 0)) lst).head! (List.filter (fun x ↦ decide (x > 0)) lst)
+in the target expression
+  b ≤ i
+
+case right.right
+lst : List ℤ
+b : ℤ
+h_nonempty : List.filter (fun x ↦ decide (x > 0)) lst ≠ []
+h_min : b = List.foldl min (List.filter (fun x ↦ decide (x > 0)) lst).head! (List.filter (fun x ↦ decide (x > 0)) lst)
+h_filter : List ℤ
+h_head : h_filter.head! ∈ h_filter
+h_head_mem : h_filter.head! ∈ lst ∧ 0 < h_filter.head!
+i : ℤ
+hi_mem : i ∈ lst
+hi_pos : 0 < i
+⊢ b ≤ i
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:86:10: This simp argument is unused:
+  List.mem_filter
+
+Hint: Omit it from the simp argument list.
+  simp [̵L̵i̵s̵t̵.̵m̵e̵m̵_̵f̵i̵l̵t̵e̵r̵]̵ ̵at h_head
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:122:14: Unknown constant `List.isEmpty_iff_eq_nil`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:123:8: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:125:14: Unknown constant `List.isEmpty_iff_eq_nil`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:126:8: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:129:12: Unknown constant `List.isEmpty_iff_eq_nil`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:133:8: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:135:8: Tactic `apply` failed: could not unify the type of `filter_min_some h_pos rfl`
+  List.foldl min (List.filter (fun x ↦ decide (x > 0)) lst).head! (List.filter (fun x ↦ decide (x > 0)) lst) ∈ lst ∧
+    0 < List.foldl min (List.filter (fun x ↦ decide (x > 0)) lst).head! (List.filter (fun x ↦ decide (x > 0)) lst) ∧
+      ∀ i ∈ lst,
+        0 < i →
+          List.foldl min (List.filter (fun x ↦ decide (x > 0)) lst).head! (List.filter (fun x ↦ decide (x > 0)) lst) ≤ i
+with the goal
+  (∀ a ∈ lst, 0 ≤ a) ∧
+    0 < List.foldl min positives.head! positives ∧
+      List.foldl min positives.head! positives ∈ lst ∧ ∀ i ∈ lst, 0 < i → List.foldl min positives.head! positives ≤ i
+
+case h.right
+lst : List ℤ
+negatives : List ℤ := ⋯
+positives : List ℤ := ⋯
+h_neg : negatives = []
+h_pos : ¬positives = []
+⊢ (∀ a ∈ lst, 0 ≤ a) ∧
+    0 < List.foldl min positives.head! positives ∧
+      List.foldl min positives.head! positives ∈ lst ∧ ∀ i ∈ lst, 0 < i → List.foldl min positives.head! positives ≤ i
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:138:12: Unknown constant `List.isEmpty_iff_eq_nil`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:142:8: Tactic `apply` failed: could not unify the type of `filter_max_some h_neg rfl`
+  List.foldl max (List.filter (fun x ↦ decide (x < 0)) lst).head! (List.filter (fun x ↦ decide (x < 0)) lst) ∈ lst ∧
+    List.foldl max (List.filter (fun x ↦ decide (x < 0)) lst).head! (List.filter (fun x ↦ decide (x < 0)) lst) < 0 ∧
+      ∀ i ∈ lst,
+        i < 0 →
+          i ≤ List.foldl max (List.filter (fun x ↦ decide (x < 0)) lst).head! (List.filter (fun x ↦ decide (x < 0)) lst)
+with the goal
+  ((∃ x ∈ lst, x < 0) ∧
+      List.foldl max (List.filter (fun x ↦ decide (x < 0)) lst).head! (List.filter (fun x ↦ decide (x < 0)) lst) =
+        List.foldl max negatives.head! negatives) ∧
+    ∀ a ∈ lst, a ≤ 0
+
+case h.left
+lst : List ℤ
+negatives : List ℤ := ⋯
+positives : List ℤ := ⋯
+h_neg : ¬negatives = []
+h_pos : positives = []
+⊢ ((∃ x ∈ lst, x < 0) ∧
+      List.foldl max (List.filter (fun x ↦ decide (x < 0)) lst).head! (List.filter (fun x ↦ decide (x < 0)) lst) =
+        List.foldl max negatives.head! negatives) ∧
+    ∀ a ∈ lst, a ≤ 0
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:143:8: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:146:12: Unknown constant `List.isEmpty_iff_eq_nil`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:150:8: Tactic `apply` failed: could not unify the type of `filter_max_some h_neg rfl`
+  List.foldl max (List.filter (fun x ↦ decide (x < 0)) lst).head! (List.filter (fun x ↦ decide (x < 0)) lst) ∈ lst ∧
+    List.foldl max (List.filter (fun x ↦ decide (x < 0)) lst).head! (List.filter (fun x ↦ decide (x < 0)) lst) < 0 ∧
+      ∀ i ∈ lst,
+        i < 0 →
+          i ≤ List.foldl max (List.filter (fun x ↦ decide (x < 0)) lst).head! (List.filter (fun x ↦ decide (x < 0)) lst)
+with the goal
+  ((∃ x ∈ lst, x < 0) ∧
+      List.foldl max (List.filter (fun x ↦ decide (x < 0)) lst).head! (List.filter (fun x ↦ decide (x < 0)) lst) =
+        List.foldl max negatives.head! negatives) ∧
+    (∃ x ∈ lst, 0 < x) ∧
+      List.foldl min (List.filter (fun x ↦ decide (0 < x)) lst).head! (List.filter (fun x ↦ decide (0 < x)) lst) =
+        List.foldl min positives.head! positives
+
+case h.left
+lst : List ℤ
+negatives : List ℤ := ⋯
+positives : List ℤ := ⋯
+h_neg : ¬negatives = []
+h_pos : ¬positives = []
+⊢ ((∃ x ∈ lst, x < 0) ∧
+      List.foldl max (List.filter (fun x ↦ decide (x < 0)) lst).head! (List.filter (fun x ↦ decide (x < 0)) lst) =
+        List.foldl max negatives.head! negatives) ∧
+    (∃ x ∈ lst, 0 < x) ∧
+      List.foldl min (List.filter (fun x ↦ decide (0 < x)) lst).head! (List.filter (fun x ↦ decide (0 < x)) lst) =
+        List.foldl min positives.head! positives
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:151:8: Tactic `apply` failed: could not unify the type of `filter_min_some h_pos rfl`
+  List.foldl min (List.filter (fun x ↦ decide (x > 0)) lst).head! (List.filter (fun x ↦ decide (x > 0)) lst) ∈ lst ∧
+    0 < List.foldl min (List.filter (fun x ↦ decide (x > 0)) lst).head! (List.filter (fun x ↦ decide (x > 0)) lst) ∧
+      ∀ i ∈ lst,
+        0 < i →
+          List.foldl min (List.filter (fun x ↦ decide (x > 0)) lst).head! (List.filter (fun x ↦ decide (x > 0)) lst) ≤ i
+with the goal
+  (List.foldl max negatives.head! negatives < 0 ∧
+      List.foldl max negatives.head! negatives ∈ lst ∧
+        ∀ i ∈ lst, i < 0 → i ≤ List.foldl max negatives.head! negatives) ∧
+    0 < List.foldl min positives.head! positives ∧
+      List.foldl min positives.head! positives ∈ lst ∧ ∀ i ∈ lst, 0 < i → List.foldl min positives.head! positives ≤ i
+
+case h.right
+lst : List ℤ
+negatives : List ℤ := ⋯
+positives : List ℤ := ⋯
+h_neg : ¬negatives = []
+h_pos : ¬positives = []
+⊢ (List.foldl max negatives.head! negatives < 0 ∧
+      List.foldl max negatives.head! negatives ∈ lst ∧
+        ∀ i ∈ lst, i < 0 → i ≤ List.foldl max negatives.head! negatives) ∧
+    0 < List.foldl min positives.head! positives ∧
+      List.foldl min positives.head! positives ∈ lst ∧ ∀ i ∈ lst, 0 < i → List.foldl min positives.head! positives ≤ i
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:120:12: This simp argument is unused:
+  h_neg
+
+Hint: Omit it from the simp argument list.
+  simp [h_n̵e̵g̵,̵ ̵h̵_̵pos]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:120:19: This simp argument is unused:
+  h_pos
+
+Hint: Omit it from the simp argument list.
+  simp [h_neg,̵ ̵h̵_̵p̵o̵s̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:131:12: This simp argument is unused:
+  h_neg
+
+Hint: Omit it from the simp argument list.
+  simp [h_n̵e̵g̵,̵ ̵h̵_̵pos]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:131:19: This simp argument is unused:
+  h_pos
+
+Hint: Omit it from the simp argument list.
+  simp [h_neg,̵ ̵h̵_̵p̵o̵s̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:140:12: This simp argument is unused:
+  h_neg
+
+Hint: Omit it from the simp argument list.
+  simp [h_n̵e̵g̵,̵ ̵h̵_̵pos]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:140:19: This simp argument is unused:
+  h_pos
+
+Hint: Omit it from the simp argument list.
+  simp [h_neg,̵ ̵h̵_̵p̵o̵s̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:148:12: This simp argument is unused:
+  h_neg
+
+Hint: Omit it from the simp argument list.
+  simp [h_n̵e̵g̵,̵ ̵h̵_̵pos]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_136_impl.lean:148:19: This simp argument is unused:
+  h_pos
+
+Hint: Omit it from the simp argument list.
+  simp [h_neg,̵ ̵h̵_̵p̵o̵s̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_136_impl
+error: build failed

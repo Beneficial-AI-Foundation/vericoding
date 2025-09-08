@@ -1,0 +1,392 @@
+=== Verification Error - Iteration 5 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/lean/humaneval/files/HumanEval_128.lean
+Time: 2025-09-08 16:06:37
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: ✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_128_impl (3.1s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_128_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_128_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:72:2: Type mismatch
+  Int.natAbs_abs x
+has type
+  |x|.natAbs = x.natAbs
+but is expected to have type
+  |x| = Int.ofNat x.natAbs
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:76:8: Unknown constant `Int.abs_pos.mpr`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:90:24: Function expected at
+  List.mem_cons_self
+but this term has type
+  ?m.96 ∈ ?m.96 :: ?m.97
+
+Note: Expected a function because this term is being applied to the argument
+  head
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:93:26: Function expected at
+  List.mem_cons_self
+but this term has type
+  ?m.112 ∈ ?m.112 :: ?m.113
+
+Note: Expected a function because this term is being applied to the argument
+  head
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:97:8: Tactic `apply` failed: could not unify the conclusion of `List.sum_pos ?m.147`
+  0 < List.sum ?m.147
+with the goal
+  0 < (List.map (fun x ↦ |x|) tail).sum
+
+Note: The full type of `List.sum_pos ?m.147` is
+  (∀ x ∈ ?m.147, 0 < x) → ?m.147 ≠ [] → 0 < List.sum ?m.147
+
+case neg
+head : ℤ
+tail : List ℤ
+h_nemp : head :: tail ≠ []
+h_nozero : 0 ∉ head :: tail
+h_pos : ∀ x ∈ head :: tail, 0 < |x|
+h : ¬tail = []
+h_pos_tail : ∀ x ∈ tail, 0 < |x|
+⊢ 0 < (List.map (fun x ↦ |x|) tail).sum
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:98:10: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:97:27: Application type mismatch: The argument
+  fun x hx ↦ ?m.143
+has type
+  (x : ?m.140) → (hx : ?m.144 x) → ?m.145 x hx
+but is expected to have type
+  List ?m.136
+in the application
+  List.sum_pos fun x hx ↦ ?m.143
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:112:4: Type mismatch
+  none
+has type
+  Option ?m.41
+of sort `Type ?u.12345` but is expected to have type
+  match none with
+  | none => arr = []
+  | some result =>
+    (result < 0 ↔
+        ((List.filter (fun x ↦ decide (x < 0)) arr).length % 2 = 1 ∧ 0 ∉ arr) ∧
+          result = -(List.map (fun x ↦ |x|) arr).sum) ∧
+      (0 < result ↔
+          ((List.filter (fun x ↦ decide (x < 0)) arr).length % 2 = 0 ∧ 0 ∉ arr) ∧
+            result = (List.map (fun x ↦ |x|) arr).sum) ∧
+        (result = 0 ↔ 0 ∈ arr)
+of sort `Prop`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:113:4: No goals to be solved
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:116:4: Type mismatch
+  some 0
+has type
+  Option ?m.49
+of sort `Type ?u.13250` but is expected to have type
+  0 < 0 ↔ ((List.filter (fun x ↦ decide (x < 0)) arr).length % 2 = 1 ∧ 0 ∉ arr) ∧ 0 = -(List.map (fun x ↦ |x|) arr).sum
+of sort `Prop`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:119:6: Tactic `constructor` failed: target is not an inductive datatype
+
+case right.left
+arr : List ℤ
+h1 : ¬arr = []
+h2 : 0 ∈ arr
+⊢ (List.filter (fun x ↦ decide (x < 0)) arr).length % 2 = 0 → 0 ∉ arr → ¬0 = (List.map (fun x ↦ |x|) arr).sum
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:126:6: Tactic `constructor` failed: no applicable constructor found
+
+case right.right
+arr : List ℤ
+h1 : ¬arr = []
+h2 : 0 ∈ arr
+⊢ 0 ∈ arr
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:133:6: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:137:4: Type mismatch
+  some (-magnitude_sum)
+has type
+  Option ℤ
+of sort `Type` but is expected to have type
+  -(List.map (fun x ↦ |x|) arr).sum < 0 ↔
+    ((List.filter (fun x ↦ decide (x < 0)) arr).length % 2 = 1 ∧ 0 ∉ arr) ∧
+      -(List.map (fun x ↦ |x|) arr).sum = -(List.map (fun x ↦ |x|) arr).sum
+of sort `Prop`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:141:8: Tactic `constructor` failed: target is not an inductive datatype
+
+case right.left.mp
+arr : List ℤ
+h1 : ¬arr = []
+h2 : 0 ∉ arr
+h3 : (List.filter (fun x ↦ decide (x < 0)) arr).length % 2 = 1
+magnitude_sum : ℤ := ⋯
+h_eq : magnitude_sum = (List.map (fun x ↦ |x|) arr).sum
+⊢ (List.map (fun x ↦ |x|) arr).sum < 0 →
+    ((List.filter (fun x ↦ decide (x < 0)) arr).length % 2 = 0 ∧ 0 ∉ arr) ∧
+      -(List.map (fun x ↦ |x|) arr).sum = (List.map (fun x ↦ |x|) arr).sum
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:151:8: Tactic `constructor` failed: target is not an inductive datatype
+
+case right.right.mp
+arr : List ℤ
+h1 : ¬arr = []
+h2 : 0 ∉ arr
+h3 : (List.filter (fun x ↦ decide (x < 0)) arr).length % 2 = 1
+magnitude_sum : ℤ := ⋯
+h_eq : magnitude_sum = (List.map (fun x ↦ |x|) arr).sum
+⊢ (List.map (fun x ↦ |x|) arr).sum = 0 → 0 ∈ arr
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:161:8: Tactic `constructor` failed: target is not an inductive datatype
+
+case right.right.mpr
+arr : List ℤ
+h1 : ¬arr = []
+h2 : 0 ∉ arr
+h3 : (List.filter (fun x ↦ decide (x < 0)) arr).length % 2 = 1
+magnitude_sum : ℤ := ⋯
+h_eq : magnitude_sum = (List.map (fun x ↦ |x|) arr).sum
+⊢ 0 ∈ arr → (List.map (fun x ↦ |x|) arr).sum = 0
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:170:6: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:174:4: Type mismatch
+  some magnitude_sum
+has type
+  Option ℤ
+of sort `Type` but is expected to have type
+  (List.map (fun x ↦ |x|) arr).sum < 0 ↔
+    ((List.filter (fun x ↦ decide (x < 0)) arr).length % 2 = 1 ∧ 0 ∉ arr) ∧
+      (List.map (fun x ↦ |x|) arr).sum = -(List.map (fun x ↦ |x|) arr).sum
+of sort `Prop`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:180:8: linarith failed to find a contradiction
+case right.left.mp
+arr : List ℤ
+h1 : ¬arr = []
+h2 : 0 ∉ arr
+h3 : ¬(List.filter (fun x ↦ decide (x < 0)) arr).length % 2 = 1
+magnitude_sum : ℤ := (List.map (fun x ↦ Int.ofNat x.natAbs) arr).sum
+h_eq : magnitude_sum = (List.map (fun x ↦ |x|) arr).sum
+h_lt : 0 < (List.map (fun x ↦ |x|) arr).sum
+h_pos : 0 < (List.map (fun x ↦ |x|) arr).sum
+⊢ False
+failed
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:181:15: Insufficient number of fields for `⟨...⟩` constructor: Constructor `Eq.refl` does not have explicit fields, but 2 were provided
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:182:8: No goals to be solved
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:191:8: Tactic `constructor` failed: target is not an inductive datatype
+
+case right.right.mp
+arr : List ℤ
+h1 : ¬arr = []
+h2 : 0 ∉ arr
+h3 : ¬(List.filter (fun x ↦ decide (x < 0)) arr).length % 2 = 1
+magnitude_sum : ℤ := ⋯
+h_eq : magnitude_sum = (List.map (fun x ↦ |x|) arr).sum
+⊢ (List.map (fun x ↦ |x|) arr).sum = 0 → 0 ∈ arr
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:205:8: Tactic `constructor` failed: target is not an inductive datatype
+
+case right.right.mpr
+arr : List ℤ
+h1 : ¬arr = []
+h2 : 0 ∉ arr
+h3 : ¬(List.filter (fun x ↦ decide (x < 0)) arr).length % 2 = 1
+magnitude_sum : ℤ := ⋯
+h_eq : magnitude_sum = (List.map (fun x ↦ |x|) arr).sum
+⊢ 0 ∈ arr → (List.map (fun x ↦ |x|) arr).sum = 0
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:138:10: This simp argument is unused:
+  h_eq
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵h̵_̵e̵q̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:175:10: This simp argument is unused:
+  h_eq
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵h̵_̵e̵q̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_128_impl
+error: build failed
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_128_impl (3.1s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_128_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_128_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:72:2: Type mismatch
+  Int.natAbs_abs x
+has type
+  |x|.natAbs = x.natAbs
+but is expected to have type
+  |x| = Int.ofNat x.natAbs
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:76:8: Unknown constant `Int.abs_pos.mpr`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:90:24: Function expected at
+  List.mem_cons_self
+but this term has type
+  ?m.96 ∈ ?m.96 :: ?m.97
+
+Note: Expected a function because this term is being applied to the argument
+  head
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:93:26: Function expected at
+  List.mem_cons_self
+but this term has type
+  ?m.112 ∈ ?m.112 :: ?m.113
+
+Note: Expected a function because this term is being applied to the argument
+  head
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:97:8: Tactic `apply` failed: could not unify the conclusion of `List.sum_pos ?m.147`
+  0 < List.sum ?m.147
+with the goal
+  0 < (List.map (fun x ↦ |x|) tail).sum
+
+Note: The full type of `List.sum_pos ?m.147` is
+  (∀ x ∈ ?m.147, 0 < x) → ?m.147 ≠ [] → 0 < List.sum ?m.147
+
+case neg
+head : ℤ
+tail : List ℤ
+h_nemp : head :: tail ≠ []
+h_nozero : 0 ∉ head :: tail
+h_pos : ∀ x ∈ head :: tail, 0 < |x|
+h : ¬tail = []
+h_pos_tail : ∀ x ∈ tail, 0 < |x|
+⊢ 0 < (List.map (fun x ↦ |x|) tail).sum
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:98:10: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:97:27: Application type mismatch: The argument
+  fun x hx ↦ ?m.143
+has type
+  (x : ?m.140) → (hx : ?m.144 x) → ?m.145 x hx
+but is expected to have type
+  List ?m.136
+in the application
+  List.sum_pos fun x hx ↦ ?m.143
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:112:4: Type mismatch
+  none
+has type
+  Option ?m.41
+of sort `Type ?u.12345` but is expected to have type
+  match none with
+  | none => arr = []
+  | some result =>
+    (result < 0 ↔
+        ((List.filter (fun x ↦ decide (x < 0)) arr).length % 2 = 1 ∧ 0 ∉ arr) ∧
+          result = -(List.map (fun x ↦ |x|) arr).sum) ∧
+      (0 < result ↔
+          ((List.filter (fun x ↦ decide (x < 0)) arr).length % 2 = 0 ∧ 0 ∉ arr) ∧
+            result = (List.map (fun x ↦ |x|) arr).sum) ∧
+        (result = 0 ↔ 0 ∈ arr)
+of sort `Prop`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:113:4: No goals to be solved
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:116:4: Type mismatch
+  some 0
+has type
+  Option ?m.49
+of sort `Type ?u.13250` but is expected to have type
+  0 < 0 ↔ ((List.filter (fun x ↦ decide (x < 0)) arr).length % 2 = 1 ∧ 0 ∉ arr) ∧ 0 = -(List.map (fun x ↦ |x|) arr).sum
+of sort `Prop`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:119:6: Tactic `constructor` failed: target is not an inductive datatype
+
+case right.left
+arr : List ℤ
+h1 : ¬arr = []
+h2 : 0 ∈ arr
+⊢ (List.filter (fun x ↦ decide (x < 0)) arr).length % 2 = 0 → 0 ∉ arr → ¬0 = (List.map (fun x ↦ |x|) arr).sum
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:126:6: Tactic `constructor` failed: no applicable constructor found
+
+case right.right
+arr : List ℤ
+h1 : ¬arr = []
+h2 : 0 ∈ arr
+⊢ 0 ∈ arr
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:133:6: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:137:4: Type mismatch
+  some (-magnitude_sum)
+has type
+  Option ℤ
+of sort `Type` but is expected to have type
+  -(List.map (fun x ↦ |x|) arr).sum < 0 ↔
+    ((List.filter (fun x ↦ decide (x < 0)) arr).length % 2 = 1 ∧ 0 ∉ arr) ∧
+      -(List.map (fun x ↦ |x|) arr).sum = -(List.map (fun x ↦ |x|) arr).sum
+of sort `Prop`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:141:8: Tactic `constructor` failed: target is not an inductive datatype
+
+case right.left.mp
+arr : List ℤ
+h1 : ¬arr = []
+h2 : 0 ∉ arr
+h3 : (List.filter (fun x ↦ decide (x < 0)) arr).length % 2 = 1
+magnitude_sum : ℤ := ⋯
+h_eq : magnitude_sum = (List.map (fun x ↦ |x|) arr).sum
+⊢ (List.map (fun x ↦ |x|) arr).sum < 0 →
+    ((List.filter (fun x ↦ decide (x < 0)) arr).length % 2 = 0 ∧ 0 ∉ arr) ∧
+      -(List.map (fun x ↦ |x|) arr).sum = (List.map (fun x ↦ |x|) arr).sum
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:151:8: Tactic `constructor` failed: target is not an inductive datatype
+
+case right.right.mp
+arr : List ℤ
+h1 : ¬arr = []
+h2 : 0 ∉ arr
+h3 : (List.filter (fun x ↦ decide (x < 0)) arr).length % 2 = 1
+magnitude_sum : ℤ := ⋯
+h_eq : magnitude_sum = (List.map (fun x ↦ |x|) arr).sum
+⊢ (List.map (fun x ↦ |x|) arr).sum = 0 → 0 ∈ arr
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:161:8: Tactic `constructor` failed: target is not an inductive datatype
+
+case right.right.mpr
+arr : List ℤ
+h1 : ¬arr = []
+h2 : 0 ∉ arr
+h3 : (List.filter (fun x ↦ decide (x < 0)) arr).length % 2 = 1
+magnitude_sum : ℤ := ⋯
+h_eq : magnitude_sum = (List.map (fun x ↦ |x|) arr).sum
+⊢ 0 ∈ arr → (List.map (fun x ↦ |x|) arr).sum = 0
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:170:6: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:174:4: Type mismatch
+  some magnitude_sum
+has type
+  Option ℤ
+of sort `Type` but is expected to have type
+  (List.map (fun x ↦ |x|) arr).sum < 0 ↔
+    ((List.filter (fun x ↦ decide (x < 0)) arr).length % 2 = 1 ∧ 0 ∉ arr) ∧
+      (List.map (fun x ↦ |x|) arr).sum = -(List.map (fun x ↦ |x|) arr).sum
+of sort `Prop`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:180:8: linarith failed to find a contradiction
+case right.left.mp
+arr : List ℤ
+h1 : ¬arr = []
+h2 : 0 ∉ arr
+h3 : ¬(List.filter (fun x ↦ decide (x < 0)) arr).length % 2 = 1
+magnitude_sum : ℤ := (List.map (fun x ↦ Int.ofNat x.natAbs) arr).sum
+h_eq : magnitude_sum = (List.map (fun x ↦ |x|) arr).sum
+h_lt : 0 < (List.map (fun x ↦ |x|) arr).sum
+h_pos : 0 < (List.map (fun x ↦ |x|) arr).sum
+⊢ False
+failed
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:181:15: Insufficient number of fields for `⟨...⟩` constructor: Constructor `Eq.refl` does not have explicit fields, but 2 were provided
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:182:8: No goals to be solved
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:191:8: Tactic `constructor` failed: target is not an inductive datatype
+
+case right.right.mp
+arr : List ℤ
+h1 : ¬arr = []
+h2 : 0 ∉ arr
+h3 : ¬(List.filter (fun x ↦ decide (x < 0)) arr).length % 2 = 1
+magnitude_sum : ℤ := ⋯
+h_eq : magnitude_sum = (List.map (fun x ↦ |x|) arr).sum
+⊢ (List.map (fun x ↦ |x|) arr).sum = 0 → 0 ∈ arr
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:205:8: Tactic `constructor` failed: target is not an inductive datatype
+
+case right.right.mpr
+arr : List ℤ
+h1 : ¬arr = []
+h2 : 0 ∉ arr
+h3 : ¬(List.filter (fun x ↦ decide (x < 0)) arr).length % 2 = 1
+magnitude_sum : ℤ := ⋯
+h_eq : magnitude_sum = (List.map (fun x ↦ |x|) arr).sum
+⊢ 0 ∈ arr → (List.map (fun x ↦ |x|) arr).sum = 0
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:138:10: This simp argument is unused:
+  h_eq
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵h̵_̵e̵q̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_128_impl.lean:175:10: This simp argument is unused:
+  h_eq
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵h̵_̵e̵q̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_128_impl
+error: build failed

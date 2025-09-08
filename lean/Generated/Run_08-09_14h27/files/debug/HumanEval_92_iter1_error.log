@@ -1,0 +1,510 @@
+=== Verification Error - Iteration 1 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/lean/humaneval/files/HumanEval_92.lean
+Time: 2025-09-08 16:07:28
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: ✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_92_impl (4.0s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_92_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_92_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:65:44: unsolved goals
+a b c : ℚ
+i j k : ℕ
+left✝ : {i, j, k} ⊆ {0, 1, 2}
+hij : i ≠ j
+hjk : j ≠ k
+hki : k ≠ i
+hsum : [a, b, c][i]! + [a, b, c][j]! = [a, b, c][k]!
+h1 : i = 0
+h2 : j = 1
+⊢ k = 0 ∨ k = 1 ∨ k = 2
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:66:31: Type mismatch
+  Ne.symm hki
+has type
+  i ≠ k
+but is expected to have type
+  k ≠ i
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:68:10: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 3
+where
+ d := ↑k
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:70:22: Type mismatch
+  hsum
+has type
+  a + b = c
+but is expected to have type
+  b + c = a
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:73:46: unsolved goals
+a b c : ℚ
+i j k : ℕ
+left✝ : {i, j, k} ⊆ {0, 1, 2}
+hij : i ≠ j
+hjk : j ≠ k
+hki : k ≠ i
+hsum : [a, b, c][i]! + [a, b, c][j]! = [a, b, c][k]!
+h1 : i = 0
+h2 : ¬j = 1
+h3 : j = 2
+⊢ k = 0 ∨ k = 1 ∨ k = 2
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:74:33: Type mismatch
+  Ne.symm hki
+has type
+  i ≠ k
+but is expected to have type
+  k ≠ i
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:76:12: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 3
+where
+ d := ↑k
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:79:45: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:82:27: Type mismatch
+  this
+has type
+  j = 0
+but is expected to have type
+  0 = j
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:86:46: unsolved goals
+a b c : ℚ
+i j k : ℕ
+left✝ : {i, j, k} ⊆ {0, 1, 2}
+hij : i ≠ j
+hjk : j ≠ k
+hki : k ≠ i
+hsum : [a, b, c][i]! + [a, b, c][j]! = [a, b, c][k]!
+h1 : ¬i = 0
+h2 : i = 1
+h3 : j = 0
+⊢ k = 0 ∨ k = 1 ∨ k = 2
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:87:33: Type mismatch
+  Ne.symm hki
+has type
+  i ≠ k
+but is expected to have type
+  k ≠ i
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:89:12: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 3
+where
+ d := ↑k
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:91:24: Type mismatch
+  hsum
+has type
+  b + a = c
+but is expected to have type
+  b + c = a
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:94:48: unsolved goals
+a b c : ℚ
+i j k : ℕ
+left✝ : {i, j, k} ⊆ {0, 1, 2}
+hij : i ≠ j
+hjk : j ≠ k
+hki : k ≠ i
+hsum : [a, b, c][i]! + [a, b, c][j]! = [a, b, c][k]!
+h1 : ¬i = 0
+h2 : i = 1
+h3 : ¬j = 0
+h4 : j = 2
+⊢ k = 0 ∨ k = 1 ∨ k = 2
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:95:35: Type mismatch
+  Ne.symm hki
+has type
+  i ≠ k
+but is expected to have type
+  k ≠ i
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:97:14: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 3
+where
+ d := ↑k
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:99:18: Type mismatch
+  hsum
+has type
+  b + c = a
+but is expected to have type
+  a + b = c
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:100:47: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:103:29: Type mismatch
+  this
+has type
+  j = 1
+but is expected to have type
+  1 = j
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:105:44: unsolved goals
+a b c : ℚ
+i j k : ℕ
+left✝ : {i, j, k} ⊆ {0, 1, 2}
+hij : i ≠ j
+hjk : j ≠ k
+hki : k ≠ i
+hsum : [a, b, c][i]! + [a, b, c][j]! = [a, b, c][k]!
+h1 : ¬i = 0
+h2 : ¬i = 1
+⊢ i = 0 ∨ i = 1 ∨ i = 2
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:106:10: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  f ≥ 0
+  e ≥ 0
+  e - f ≥ 1
+  d ≥ 3
+  d - e ≥ 1
+  d - f ≥ 1
+where
+ d := ↑i
+ e := ↑k
+ f := ↑j
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:109:46: unsolved goals
+a b c : ℚ
+i j k : ℕ
+left✝ : {i, j, k} ⊆ {0, 1, 2}
+hij : i ≠ j
+hjk : j ≠ k
+hki : k ≠ i
+hsum : [a, b, c][i]! + [a, b, c][j]! = [a, b, c][k]!
+h1 : ¬i = 0
+h2 : ¬i = 1
+this : i = 2
+h3 : j = 0
+⊢ k = 0 ∨ k = 1 ∨ k = 2
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:110:28: invalid `▸` notation, argument
+  this
+has type
+  k ∈ {0, 1, 2}
+equality expected
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:112:12: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 3
+where
+ d := ↑k
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:114:23: Type mismatch
+  hsum
+has type
+  c + a = b
+but is expected to have type
+  a + c = b
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:117:48: unsolved goals
+a b c : ℚ
+i j k : ℕ
+left✝ : {i, j, k} ⊆ {0, 1, 2}
+hij : i ≠ j
+hjk : j ≠ k
+hki : k ≠ i
+hsum : [a, b, c][i]! + [a, b, c][j]! = [a, b, c][k]!
+h1 : ¬i = 0
+h2 : ¬i = 1
+this : i = 2
+h3 : ¬j = 0
+h4 : j = 1
+⊢ k = 0 ∨ k = 1 ∨ k = 2
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:118:30: invalid `▸` notation, argument
+  this
+has type
+  k ∈ {0, 1, 2}
+equality expected
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:120:14: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 3
+where
+ d := ↑k
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:122:18: Type mismatch
+  hsum
+has type
+  c + b = a
+but is expected to have type
+  a + b = c
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:123:47: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:126:36: Type mismatch
+  this
+has type
+  j = 2
+but is expected to have type
+  i = 2
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:131:33: unsolved goals
+a b c : ℚ
+h : a + c = b
+⊢ {2, 1} ⊆ {1, 2}
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:132:36: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:138:2: Type mismatch
+  implementation a b c
+has type
+  Bool
+of sort `Type` but is expected to have type
+  implementation a b c = true →
+    ∃ i j k,
+      {i, j, k} ⊆ {0, 1, 2} ∧
+        ¬i = j ∧
+          ¬j = k ∧
+            ¬k = i ∧
+              [a, b, c][i]?.getD default + [a, b, c][j]?.getD default = [a, b, c][k]?.getD default ∧
+                a.den = 1 ∧ a.den = b.den ∧ a.den = c.den
+of sort `Prop`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:139:2: Tactic `constructor` failed: target is not an inductive datatype
+
+case mpr
+a b c : ℚ
+⊢ (∃ i j k,
+      {i, j, k} ⊆ {0, 1, 2} ∧
+        ¬i = j ∧
+          ¬j = k ∧
+            ¬k = i ∧
+              [a, b, c][i]?.getD default + [a, b, c][j]?.getD default = [a, b, c][k]?.getD default ∧
+                a.den = 1 ∧ a.den = b.den ∧ a.den = c.den) →
+    implementation a b c = true
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_92_impl
+error: build failed
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_92_impl (4.0s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_92_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_92_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:65:44: unsolved goals
+a b c : ℚ
+i j k : ℕ
+left✝ : {i, j, k} ⊆ {0, 1, 2}
+hij : i ≠ j
+hjk : j ≠ k
+hki : k ≠ i
+hsum : [a, b, c][i]! + [a, b, c][j]! = [a, b, c][k]!
+h1 : i = 0
+h2 : j = 1
+⊢ k = 0 ∨ k = 1 ∨ k = 2
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:66:31: Type mismatch
+  Ne.symm hki
+has type
+  i ≠ k
+but is expected to have type
+  k ≠ i
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:68:10: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 3
+where
+ d := ↑k
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:70:22: Type mismatch
+  hsum
+has type
+  a + b = c
+but is expected to have type
+  b + c = a
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:73:46: unsolved goals
+a b c : ℚ
+i j k : ℕ
+left✝ : {i, j, k} ⊆ {0, 1, 2}
+hij : i ≠ j
+hjk : j ≠ k
+hki : k ≠ i
+hsum : [a, b, c][i]! + [a, b, c][j]! = [a, b, c][k]!
+h1 : i = 0
+h2 : ¬j = 1
+h3 : j = 2
+⊢ k = 0 ∨ k = 1 ∨ k = 2
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:74:33: Type mismatch
+  Ne.symm hki
+has type
+  i ≠ k
+but is expected to have type
+  k ≠ i
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:76:12: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 3
+where
+ d := ↑k
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:79:45: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:82:27: Type mismatch
+  this
+has type
+  j = 0
+but is expected to have type
+  0 = j
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:86:46: unsolved goals
+a b c : ℚ
+i j k : ℕ
+left✝ : {i, j, k} ⊆ {0, 1, 2}
+hij : i ≠ j
+hjk : j ≠ k
+hki : k ≠ i
+hsum : [a, b, c][i]! + [a, b, c][j]! = [a, b, c][k]!
+h1 : ¬i = 0
+h2 : i = 1
+h3 : j = 0
+⊢ k = 0 ∨ k = 1 ∨ k = 2
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:87:33: Type mismatch
+  Ne.symm hki
+has type
+  i ≠ k
+but is expected to have type
+  k ≠ i
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:89:12: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 3
+where
+ d := ↑k
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:91:24: Type mismatch
+  hsum
+has type
+  b + a = c
+but is expected to have type
+  b + c = a
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:94:48: unsolved goals
+a b c : ℚ
+i j k : ℕ
+left✝ : {i, j, k} ⊆ {0, 1, 2}
+hij : i ≠ j
+hjk : j ≠ k
+hki : k ≠ i
+hsum : [a, b, c][i]! + [a, b, c][j]! = [a, b, c][k]!
+h1 : ¬i = 0
+h2 : i = 1
+h3 : ¬j = 0
+h4 : j = 2
+⊢ k = 0 ∨ k = 1 ∨ k = 2
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:95:35: Type mismatch
+  Ne.symm hki
+has type
+  i ≠ k
+but is expected to have type
+  k ≠ i
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:97:14: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 3
+where
+ d := ↑k
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:99:18: Type mismatch
+  hsum
+has type
+  b + c = a
+but is expected to have type
+  a + b = c
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:100:47: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:103:29: Type mismatch
+  this
+has type
+  j = 1
+but is expected to have type
+  1 = j
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:105:44: unsolved goals
+a b c : ℚ
+i j k : ℕ
+left✝ : {i, j, k} ⊆ {0, 1, 2}
+hij : i ≠ j
+hjk : j ≠ k
+hki : k ≠ i
+hsum : [a, b, c][i]! + [a, b, c][j]! = [a, b, c][k]!
+h1 : ¬i = 0
+h2 : ¬i = 1
+⊢ i = 0 ∨ i = 1 ∨ i = 2
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:106:10: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  f ≥ 0
+  e ≥ 0
+  e - f ≥ 1
+  d ≥ 3
+  d - e ≥ 1
+  d - f ≥ 1
+where
+ d := ↑i
+ e := ↑k
+ f := ↑j
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:109:46: unsolved goals
+a b c : ℚ
+i j k : ℕ
+left✝ : {i, j, k} ⊆ {0, 1, 2}
+hij : i ≠ j
+hjk : j ≠ k
+hki : k ≠ i
+hsum : [a, b, c][i]! + [a, b, c][j]! = [a, b, c][k]!
+h1 : ¬i = 0
+h2 : ¬i = 1
+this : i = 2
+h3 : j = 0
+⊢ k = 0 ∨ k = 1 ∨ k = 2
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:110:28: invalid `▸` notation, argument
+  this
+has type
+  k ∈ {0, 1, 2}
+equality expected
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:112:12: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 3
+where
+ d := ↑k
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:114:23: Type mismatch
+  hsum
+has type
+  c + a = b
+but is expected to have type
+  a + c = b
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:117:48: unsolved goals
+a b c : ℚ
+i j k : ℕ
+left✝ : {i, j, k} ⊆ {0, 1, 2}
+hij : i ≠ j
+hjk : j ≠ k
+hki : k ≠ i
+hsum : [a, b, c][i]! + [a, b, c][j]! = [a, b, c][k]!
+h1 : ¬i = 0
+h2 : ¬i = 1
+this : i = 2
+h3 : ¬j = 0
+h4 : j = 1
+⊢ k = 0 ∨ k = 1 ∨ k = 2
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:118:30: invalid `▸` notation, argument
+  this
+has type
+  k ∈ {0, 1, 2}
+equality expected
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:120:14: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 3
+where
+ d := ↑k
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:122:18: Type mismatch
+  hsum
+has type
+  c + b = a
+but is expected to have type
+  a + b = c
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:123:47: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:126:36: Type mismatch
+  this
+has type
+  j = 2
+but is expected to have type
+  i = 2
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:131:33: unsolved goals
+a b c : ℚ
+h : a + c = b
+⊢ {2, 1} ⊆ {1, 2}
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:132:36: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:138:2: Type mismatch
+  implementation a b c
+has type
+  Bool
+of sort `Type` but is expected to have type
+  implementation a b c = true →
+    ∃ i j k,
+      {i, j, k} ⊆ {0, 1, 2} ∧
+        ¬i = j ∧
+          ¬j = k ∧
+            ¬k = i ∧
+              [a, b, c][i]?.getD default + [a, b, c][j]?.getD default = [a, b, c][k]?.getD default ∧
+                a.den = 1 ∧ a.den = b.den ∧ a.den = c.den
+of sort `Prop`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_92_impl.lean:139:2: Tactic `constructor` failed: target is not an inductive datatype
+
+case mpr
+a b c : ℚ
+⊢ (∃ i j k,
+      {i, j, k} ⊆ {0, 1, 2} ∧
+        ¬i = j ∧
+          ¬j = k ∧
+            ¬k = i ∧
+              [a, b, c][i]?.getD default + [a, b, c][j]?.getD default = [a, b, c][k]?.getD default ∧
+                a.den = 1 ∧ a.den = b.den ∧ a.den = c.den) →
+    implementation a b c = true
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_92_impl
+error: build failed

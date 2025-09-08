@@ -1,0 +1,170 @@
+=== Verification Error - Iteration 1 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/lean/humaneval/files/HumanEval_111.lean
+Time: 2025-09-08 14:40:24
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: ✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_111_impl (2.8s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_111_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_111_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_111_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_111_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_111_impl.setup.json --json
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_111_impl.lean:48:4: `Std.HashMap.empty` has been deprecated: Use `Std.HashMap.emptyWithCapacity` instead
+
+Note: The updated constant has a different type:
+  {α : Type u} → {β : Type v} → [inst : BEq α] → [inst_1 : Hashable α] → optParam ℕ 8 → Std.HashMap α β
+instead of
+  {α : Type u_1} → {β : Type u_2} → [inst : BEq α] → [inst_1 : Hashable α] → optParam ℕ 8 → Std.HashMap α β
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_111_impl.lean:52:18: `Std.HashMap.empty` has been deprecated: Use `Std.HashMap.emptyWithCapacity` instead
+
+Note: The updated constant has a different type:
+  {α : Type u} → {β : Type v} → [inst : BEq α] → [inst_1 : Hashable α] → optParam ℕ 8 → Std.HashMap α β
+instead of
+  {α : Type u_1} → {β : Type u_2} → [inst : BEq α] → [inst_1 : Hashable α] → optParam ℕ 8 → Std.HashMap α β
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_111_impl.lean:80:2: `simp` made no progress
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_111_impl.lean:84:6: declaration uses 'sorry'
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_111_impl.lean:100:15: Unknown constant `Std.HashMap.keys_empty`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_111_impl.lean:101:30: Tactic `introN` failed: There are no additional binders or `let` bindings in the goal to introduce
+
+case h.right
+s : String
+spec_condition :
+  (s.splitOn.all fun c ↦ decide (c.length = 1)) = true ∧ (s.all fun c ↦ decide (c.isLower = true ∨ c = ' ')) = true
+char : Char
+h_char_in_data :
+  char ∈
+    (if (get_lowercase_chars s).isEmpty = true then Std.HashMap.empty
+      else
+        List.foldl (fun acc c ↦ acc.insert c (count_char (get_lowercase_chars s) c)) Std.HashMap.empty
+          (chars_with_max_count (get_lowercase_chars s).dedup (get_max_count (get_lowercase_chars s).dedup))).keys
+⊢ (char.isLower = true ∧
+      char ∈ s.data ∧
+        (if (get_lowercase_chars s).isEmpty = true then Std.HashMap.empty
+              else
+                List.foldl (fun acc c ↦ acc.insert c (count_char (get_lowercase_chars s) c)) Std.HashMap.empty
+                  (chars_with_max_count (get_lowercase_chars s).dedup
+                    (get_max_count (get_lowercase_chars s).dedup))).get!
+            char =
+          s.count char) ∧
+    ∀ char ∈ s.data,
+      char.isLower = true →
+        ((∃ char2 ∈ s.data, char2.isLower = true ∧ char2 ≠ char ∧ s.count char < s.count char2) ↔
+          char ∉
+            (if (get_lowercase_chars s).isEmpty = true then Std.HashMap.empty
+              else
+                List.foldl (fun acc c ↦ acc.insert c (count_char (get_lowercase_chars s) c)) Std.HashMap.empty
+                  (chars_with_max_count (get_lowercase_chars s).dedup
+                    (get_max_count (get_lowercase_chars s).dedup))).keys)
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_111_impl.lean:100:39: This simp argument is unused:
+  List.mem_nil_iff
+
+Hint: Omit it from the simp argument list.
+  simp only [Std.HashMap.keys_empty, L̵i̵s̵t̵.̵m̵e̵m̵_̵n̵i̵l̵_̵i̵f̵f̵,̵ ̵false_implies, true_and, forall_true_iff]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_111_impl.lean:100:57: This simp argument is unused:
+  false_implies
+
+Hint: Omit it from the simp argument list.
+  simp only [Std.HashMap.keys_empty, List.mem_nil_iff, f̵a̵l̵s̵e̵_̵i̵m̵p̵l̵i̵e̵s̵,̵ ̵true_and, forall_true_iff]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_111_impl.lean:100:72: This simp argument is unused:
+  true_and
+
+Hint: Omit it from the simp argument list.
+  simp only [Std.HashMap.keys_empty, List.mem_nil_iff, false_implies, t̵r̵u̵e̵_̵a̵n̵d̵,̵ ̵forall_true_iff]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_111_impl.lean:100:82: This simp argument is unused:
+  forall_true_iff
+
+Hint: Omit it from the simp argument list.
+  simp only [Std.HashMap.keys_empty, List.mem_nil_iff, false_implies, true_and,̵ ̵f̵o̵r̵a̵l̵l̵_̵t̵r̵u̵e̵_̵i̵f̵f̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_111_impl
+error: build failed
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_111_impl (2.8s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_111_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_111_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_111_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_111_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_111_impl.setup.json --json
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_111_impl.lean:48:4: `Std.HashMap.empty` has been deprecated: Use `Std.HashMap.emptyWithCapacity` instead
+
+Note: The updated constant has a different type:
+  {α : Type u} → {β : Type v} → [inst : BEq α] → [inst_1 : Hashable α] → optParam ℕ 8 → Std.HashMap α β
+instead of
+  {α : Type u_1} → {β : Type u_2} → [inst : BEq α] → [inst_1 : Hashable α] → optParam ℕ 8 → Std.HashMap α β
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_111_impl.lean:52:18: `Std.HashMap.empty` has been deprecated: Use `Std.HashMap.emptyWithCapacity` instead
+
+Note: The updated constant has a different type:
+  {α : Type u} → {β : Type v} → [inst : BEq α] → [inst_1 : Hashable α] → optParam ℕ 8 → Std.HashMap α β
+instead of
+  {α : Type u_1} → {β : Type u_2} → [inst : BEq α] → [inst_1 : Hashable α] → optParam ℕ 8 → Std.HashMap α β
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_111_impl.lean:80:2: `simp` made no progress
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_111_impl.lean:84:6: declaration uses 'sorry'
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_111_impl.lean:100:15: Unknown constant `Std.HashMap.keys_empty`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_111_impl.lean:101:30: Tactic `introN` failed: There are no additional binders or `let` bindings in the goal to introduce
+
+case h.right
+s : String
+spec_condition :
+  (s.splitOn.all fun c ↦ decide (c.length = 1)) = true ∧ (s.all fun c ↦ decide (c.isLower = true ∨ c = ' ')) = true
+char : Char
+h_char_in_data :
+  char ∈
+    (if (get_lowercase_chars s).isEmpty = true then Std.HashMap.empty
+      else
+        List.foldl (fun acc c ↦ acc.insert c (count_char (get_lowercase_chars s) c)) Std.HashMap.empty
+          (chars_with_max_count (get_lowercase_chars s).dedup (get_max_count (get_lowercase_chars s).dedup))).keys
+⊢ (char.isLower = true ∧
+      char ∈ s.data ∧
+        (if (get_lowercase_chars s).isEmpty = true then Std.HashMap.empty
+              else
+                List.foldl (fun acc c ↦ acc.insert c (count_char (get_lowercase_chars s) c)) Std.HashMap.empty
+                  (chars_with_max_count (get_lowercase_chars s).dedup
+                    (get_max_count (get_lowercase_chars s).dedup))).get!
+            char =
+          s.count char) ∧
+    ∀ char ∈ s.data,
+      char.isLower = true →
+        ((∃ char2 ∈ s.data, char2.isLower = true ∧ char2 ≠ char ∧ s.count char < s.count char2) ↔
+          char ∉
+            (if (get_lowercase_chars s).isEmpty = true then Std.HashMap.empty
+              else
+                List.foldl (fun acc c ↦ acc.insert c (count_char (get_lowercase_chars s) c)) Std.HashMap.empty
+                  (chars_with_max_count (get_lowercase_chars s).dedup
+                    (get_max_count (get_lowercase_chars s).dedup))).keys)
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_111_impl.lean:100:39: This simp argument is unused:
+  List.mem_nil_iff
+
+Hint: Omit it from the simp argument list.
+  simp only [Std.HashMap.keys_empty, L̵i̵s̵t̵.̵m̵e̵m̵_̵n̵i̵l̵_̵i̵f̵f̵,̵ ̵false_implies, true_and, forall_true_iff]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_111_impl.lean:100:57: This simp argument is unused:
+  false_implies
+
+Hint: Omit it from the simp argument list.
+  simp only [Std.HashMap.keys_empty, List.mem_nil_iff, f̵a̵l̵s̵e̵_̵i̵m̵p̵l̵i̵e̵s̵,̵ ̵true_and, forall_true_iff]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_111_impl.lean:100:72: This simp argument is unused:
+  true_and
+
+Hint: Omit it from the simp argument list.
+  simp only [Std.HashMap.keys_empty, List.mem_nil_iff, false_implies, t̵r̵u̵e̵_̵a̵n̵d̵,̵ ̵forall_true_iff]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_111_impl.lean:100:82: This simp argument is unused:
+  forall_true_iff
+
+Hint: Omit it from the simp argument list.
+  simp only [Std.HashMap.keys_empty, List.mem_nil_iff, false_implies, true_and,̵ ̵f̵o̵r̵a̵l̵l̵_̵t̵r̵u̵e̵_̵i̵f̵f̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_111_impl
+error: build failed

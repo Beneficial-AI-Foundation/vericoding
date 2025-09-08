@@ -1,0 +1,528 @@
+=== Verification Error - Iteration 2 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/lean/humaneval/files/HumanEval_64.lean
+Time: 2025-09-08 14:30:36
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: ✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_64_impl (3.3s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_64_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_64_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_64_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_64_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_64_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_64_impl.lean:74:8: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_64_impl.lean:70:4: unsolved goals
+case pos
+s : String
+h_alpha : (s.data.all fun c ↦ c.isAlpha) = true
+h : s.length = 1
+h1 : True
+h✝¹ : ¬False
+h✝ : "aeiouAEIOU".contains s.data[0]! = true ∨ s.data[0]! = 'y' ∨ s.data[0]! = 'Y'
+⊢ List.foldl
+      (fun acc c ↦
+        if isVowel c = true then acc + 1
+        else if isY c = true ∧ isY s.data[1 - 1]! = true ∧ c = s.data[1 - 1]! then acc + 1 else acc)
+      0 s.data =
+    1
+
+case neg
+s : String
+h_alpha : (s.data.all fun c ↦ c.isAlpha) = true
+h : s.length = 1
+h1 : True
+h✝¹ : ¬False
+h✝ : ¬("aeiouAEIOU".contains s.data[0]! = true ∨ s.data[0]! = 'y' ∨ s.data[0]! = 'Y')
+⊢ List.foldl
+      (fun acc c ↦
+        if isVowel c = true then acc + 1
+        else if isY c = true ∧ isY s.data[1 - 1]! = true ∧ c = s.data[1 - 1]! then acc + 1 else acc)
+      0 s.data =
+    0
+
+case pos
+s : String
+h_alpha : (s.data.all fun c ↦ c.isAlpha) = true
+h : s.length = 1
+h1 : ¬True
+h✝¹ : False
+h✝ : "aeiouAEIOU".contains s.data[0]! = true ∨ s.data[0]! = 'y' ∨ s.data[0]! = 'Y'
+⊢ False
+
+case neg
+s : String
+h_alpha : (s.data.all fun c ↦ c.isAlpha) = true
+h : s.length = 1
+h1 : ¬True
+h✝¹ : False
+h✝ : ¬("aeiouAEIOU".contains s.data[0]! = true ∨ s.data[0]! = 'y' ∨ s.data[0]! = 'Y')
+⊢ 0 = 0
+
+case pos
+s : String
+h_alpha : (s.data.all fun c ↦ c.isAlpha) = true
+h : s.length = 1
+h1 : ¬True
+h✝¹ : ¬False
+h✝ : "aeiouAEIOU".contains s.data[0]! = true ∨ s.data[0]! = 'y' ∨ s.data[0]! = 'Y'
+⊢ List.foldl
+      (fun acc c ↦
+        if isVowel c = true then acc + 1
+        else if isY c = true ∧ isY s.data[1 - 1]! = true ∧ c = s.data[1 - 1]! then acc + 1 else acc)
+      0 s.data =
+    1
+
+case neg
+s : String
+h_alpha : (s.data.all fun c ↦ c.isAlpha) = true
+h : s.length = 1
+h1 : ¬True
+h✝¹ : ¬False
+h✝ : ¬("aeiouAEIOU".contains s.data[0]! = true ∨ s.data[0]! = 'y' ∨ s.data[0]! = 'Y')
+⊢ List.foldl
+      (fun acc c ↦
+        if isVowel c = true then acc + 1
+        else if isY c = true ∧ isY s.data[1 - 1]! = true ∧ c = s.data[1 - 1]! then acc + 1 else acc)
+      0 s.data =
+    0
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_64_impl.lean:80:8: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_64_impl.lean:76:4: unsolved goals
+case pos
+s : String
+h_alpha : (s.data.all fun c ↦ c.isAlpha) = true
+h : ¬s.length = 1
+h1 : False
+h✝¹ : ¬s.length = 0
+h✝ : "aeiouAEIOU".contains s.data[0]! = true ∨ s.data[0]! = 'y' ∨ s.data[0]! = 'Y'
+⊢ List.foldl
+      (fun acc c ↦
+        if isVowel c = true then acc + 1
+        else if isY c = true ∧ isY s.data[s.length - 1]! = true ∧ c = s.data[s.length - 1]! then acc + 1 else acc)
+      0 s.data =
+    1
+
+case neg
+s : String
+h_alpha : (s.data.all fun c ↦ c.isAlpha) = true
+h : ¬s.length = 1
+h1 : False
+h✝¹ : ¬s.length = 0
+h✝ : ¬("aeiouAEIOU".contains s.data[0]! = true ∨ s.data[0]! = 'y' ∨ s.data[0]! = 'Y')
+⊢ List.foldl
+      (fun acc c ↦
+        if isVowel c = true then acc + 1
+        else if isY c = true ∧ isY s.data[s.length - 1]! = true ∧ c = s.data[s.length - 1]! then acc + 1 else acc)
+      0 s.data =
+    0
+
+case pos
+s : String
+h_alpha : (s.data.all fun c ↦ c.isAlpha) = true
+h : ¬s.length = 1
+h1 : ¬False
+h✝² : s.length = 0
+h✝¹ : "aeiouAEIOU".contains s.data[0]! = true
+h✝ : (s.drop 1).length = 0
+⊢ 0 = 1 + 0
+
+case neg
+s : String
+h_alpha : (s.data.all fun c ↦ c.isAlpha) = true
+h : ¬s.length = 1
+h1 : ¬False
+h✝² : s.length = 0
+h✝¹ : "aeiouAEIOU".contains s.data[0]! = true
+h✝ : ¬(s.drop 1).length = 0
+⊢ 0 =
+    1 +
+      List.foldl
+        (fun acc c ↦
+          if isVowel c = true then acc + 1
+          else
+            if
+                isY c = true ∧
+                  isY (s.drop 1).data[(s.drop 1).length - 1]! = true ∧ c = (s.drop 1).data[(s.drop 1).length - 1]! then
+              acc + 1
+            else acc)
+        0 (s.drop 1).data
+
+case pos
+s : String
+h_alpha : (s.data.all fun c ↦ c.isAlpha) = true
+h : ¬s.length = 1
+h1 : ¬False
+h✝² : s.length = 0
+h✝¹ : ¬"aeiouAEIOU".contains s.data[0]! = true
+h✝ : (s.drop 1).length = 0
+⊢ 0 = 0 + 0
+
+case neg
+s : String
+h_alpha : (s.data.all fun c ↦ c.isAlpha) = true
+h : ¬s.length = 1
+h1 : ¬False
+h✝² : s.length = 0
+h✝¹ : ¬"aeiouAEIOU".contains s.data[0]! = true
+h✝ : ¬(s.drop 1).length = 0
+⊢ 0 =
+    0 +
+      List.foldl
+        (fun acc c ↦
+          if isVowel c = true then acc + 1
+          else
+            if
+                isY c = true ∧
+                  isY (s.drop 1).data[(s.drop 1).length - 1]! = true ∧ c = (s.drop 1).data[(s.drop 1).length - 1]! then
+              acc + 1
+            else acc)
+        0 (s.drop 1).data
+
+case pos
+s : String
+h_alpha : (s.data.all fun c ↦ c.isAlpha) = true
+h : ¬s.length = 1
+h1 : ¬False
+h✝² : ¬s.length = 0
+h✝¹ : "aeiouAEIOU".contains s.data[0]! = true
+h✝ : (s.drop 1).length = 0
+⊢ List.foldl
+      (fun acc c ↦
+        if isVowel c = true then acc + 1
+        else if isY c = true ∧ isY s.data[s.length - 1]! = true ∧ c = s.data[s.length - 1]! then acc + 1 else acc)
+      0 s.data =
+    1 + 0
+
+case neg
+s : String
+h_alpha : (s.data.all fun c ↦ c.isAlpha) = true
+h : ¬s.length = 1
+h1 : ¬False
+h✝² : ¬s.length = 0
+h✝¹ : "aeiouAEIOU".contains s.data[0]! = true
+h✝ : ¬(s.drop 1).length = 0
+⊢ List.foldl
+      (fun acc c ↦
+        if isVowel c = true then acc + 1
+        else if isY c = true ∧ isY s.data[s.length - 1]! = true ∧ c = s.data[s.length - 1]! then acc + 1 else acc)
+      0 s.data =
+    1 +
+      List.foldl
+        (fun acc c ↦
+          if isVowel c = true then acc + 1
+          else
+            if
+                isY c = true ∧
+                  isY (s.drop 1).data[(s.drop 1).length - 1]! = true ∧ c = (s.drop 1).data[(s.drop 1).length - 1]! then
+              acc + 1
+            else acc)
+        0 (s.drop 1).data
+
+case pos
+s : String
+h_alpha : (s.data.all fun c ↦ c.isAlpha) = true
+h : ¬s.length = 1
+h1 : ¬False
+h✝² : ¬s.length = 0
+h✝¹ : ¬"aeiouAEIOU".contains s.data[0]! = true
+h✝ : (s.drop 1).length = 0
+⊢ List.foldl
+      (fun acc c ↦
+        if isVowel c = true then acc + 1
+        else if isY c = true ∧ isY s.data[s.length - 1]! = true ∧ c = s.data[s.length - 1]! then acc + 1 else acc)
+      0 s.data =
+    0 + 0
+
+case neg
+s : String
+h_alpha : (s.data.all fun c ↦ c.isAlpha) = true
+h : ¬s.length = 1
+h1 : ¬False
+h✝² : ¬s.length = 0
+h✝¹ : ¬"aeiouAEIOU".contains s.data[0]! = true
+h✝ : ¬(s.drop 1).length = 0
+⊢ List.foldl
+      (fun acc c ↦
+        if isVowel c = true then acc + 1
+        else if isY c = true ∧ isY s.data[s.length - 1]! = true ∧ c = s.data[s.length - 1]! then acc + 1 else acc)
+      0 s.data =
+    0 +
+      List.foldl
+        (fun acc c ↦
+          if isVowel c = true then acc + 1
+          else
+            if
+                isY c = true ∧
+                  isY (s.drop 1).data[(s.drop 1).length - 1]! = true ∧ c = (s.drop 1).data[(s.drop 1).length - 1]! then
+              acc + 1
+            else acc)
+        0 (s.drop 1).data
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_64_impl.lean:78:17: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  simp only ̵[̵h̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_64_impl
+error: build failed
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_64_impl (3.3s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_64_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_64_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_64_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_64_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_64_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_64_impl.lean:74:8: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_64_impl.lean:70:4: unsolved goals
+case pos
+s : String
+h_alpha : (s.data.all fun c ↦ c.isAlpha) = true
+h : s.length = 1
+h1 : True
+h✝¹ : ¬False
+h✝ : "aeiouAEIOU".contains s.data[0]! = true ∨ s.data[0]! = 'y' ∨ s.data[0]! = 'Y'
+⊢ List.foldl
+      (fun acc c ↦
+        if isVowel c = true then acc + 1
+        else if isY c = true ∧ isY s.data[1 - 1]! = true ∧ c = s.data[1 - 1]! then acc + 1 else acc)
+      0 s.data =
+    1
+
+case neg
+s : String
+h_alpha : (s.data.all fun c ↦ c.isAlpha) = true
+h : s.length = 1
+h1 : True
+h✝¹ : ¬False
+h✝ : ¬("aeiouAEIOU".contains s.data[0]! = true ∨ s.data[0]! = 'y' ∨ s.data[0]! = 'Y')
+⊢ List.foldl
+      (fun acc c ↦
+        if isVowel c = true then acc + 1
+        else if isY c = true ∧ isY s.data[1 - 1]! = true ∧ c = s.data[1 - 1]! then acc + 1 else acc)
+      0 s.data =
+    0
+
+case pos
+s : String
+h_alpha : (s.data.all fun c ↦ c.isAlpha) = true
+h : s.length = 1
+h1 : ¬True
+h✝¹ : False
+h✝ : "aeiouAEIOU".contains s.data[0]! = true ∨ s.data[0]! = 'y' ∨ s.data[0]! = 'Y'
+⊢ False
+
+case neg
+s : String
+h_alpha : (s.data.all fun c ↦ c.isAlpha) = true
+h : s.length = 1
+h1 : ¬True
+h✝¹ : False
+h✝ : ¬("aeiouAEIOU".contains s.data[0]! = true ∨ s.data[0]! = 'y' ∨ s.data[0]! = 'Y')
+⊢ 0 = 0
+
+case pos
+s : String
+h_alpha : (s.data.all fun c ↦ c.isAlpha) = true
+h : s.length = 1
+h1 : ¬True
+h✝¹ : ¬False
+h✝ : "aeiouAEIOU".contains s.data[0]! = true ∨ s.data[0]! = 'y' ∨ s.data[0]! = 'Y'
+⊢ List.foldl
+      (fun acc c ↦
+        if isVowel c = true then acc + 1
+        else if isY c = true ∧ isY s.data[1 - 1]! = true ∧ c = s.data[1 - 1]! then acc + 1 else acc)
+      0 s.data =
+    1
+
+case neg
+s : String
+h_alpha : (s.data.all fun c ↦ c.isAlpha) = true
+h : s.length = 1
+h1 : ¬True
+h✝¹ : ¬False
+h✝ : ¬("aeiouAEIOU".contains s.data[0]! = true ∨ s.data[0]! = 'y' ∨ s.data[0]! = 'Y')
+⊢ List.foldl
+      (fun acc c ↦
+        if isVowel c = true then acc + 1
+        else if isY c = true ∧ isY s.data[1 - 1]! = true ∧ c = s.data[1 - 1]! then acc + 1 else acc)
+      0 s.data =
+    0
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_64_impl.lean:80:8: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_64_impl.lean:76:4: unsolved goals
+case pos
+s : String
+h_alpha : (s.data.all fun c ↦ c.isAlpha) = true
+h : ¬s.length = 1
+h1 : False
+h✝¹ : ¬s.length = 0
+h✝ : "aeiouAEIOU".contains s.data[0]! = true ∨ s.data[0]! = 'y' ∨ s.data[0]! = 'Y'
+⊢ List.foldl
+      (fun acc c ↦
+        if isVowel c = true then acc + 1
+        else if isY c = true ∧ isY s.data[s.length - 1]! = true ∧ c = s.data[s.length - 1]! then acc + 1 else acc)
+      0 s.data =
+    1
+
+case neg
+s : String
+h_alpha : (s.data.all fun c ↦ c.isAlpha) = true
+h : ¬s.length = 1
+h1 : False
+h✝¹ : ¬s.length = 0
+h✝ : ¬("aeiouAEIOU".contains s.data[0]! = true ∨ s.data[0]! = 'y' ∨ s.data[0]! = 'Y')
+⊢ List.foldl
+      (fun acc c ↦
+        if isVowel c = true then acc + 1
+        else if isY c = true ∧ isY s.data[s.length - 1]! = true ∧ c = s.data[s.length - 1]! then acc + 1 else acc)
+      0 s.data =
+    0
+
+case pos
+s : String
+h_alpha : (s.data.all fun c ↦ c.isAlpha) = true
+h : ¬s.length = 1
+h1 : ¬False
+h✝² : s.length = 0
+h✝¹ : "aeiouAEIOU".contains s.data[0]! = true
+h✝ : (s.drop 1).length = 0
+⊢ 0 = 1 + 0
+
+case neg
+s : String
+h_alpha : (s.data.all fun c ↦ c.isAlpha) = true
+h : ¬s.length = 1
+h1 : ¬False
+h✝² : s.length = 0
+h✝¹ : "aeiouAEIOU".contains s.data[0]! = true
+h✝ : ¬(s.drop 1).length = 0
+⊢ 0 =
+    1 +
+      List.foldl
+        (fun acc c ↦
+          if isVowel c = true then acc + 1
+          else
+            if
+                isY c = true ∧
+                  isY (s.drop 1).data[(s.drop 1).length - 1]! = true ∧ c = (s.drop 1).data[(s.drop 1).length - 1]! then
+              acc + 1
+            else acc)
+        0 (s.drop 1).data
+
+case pos
+s : String
+h_alpha : (s.data.all fun c ↦ c.isAlpha) = true
+h : ¬s.length = 1
+h1 : ¬False
+h✝² : s.length = 0
+h✝¹ : ¬"aeiouAEIOU".contains s.data[0]! = true
+h✝ : (s.drop 1).length = 0
+⊢ 0 = 0 + 0
+
+case neg
+s : String
+h_alpha : (s.data.all fun c ↦ c.isAlpha) = true
+h : ¬s.length = 1
+h1 : ¬False
+h✝² : s.length = 0
+h✝¹ : ¬"aeiouAEIOU".contains s.data[0]! = true
+h✝ : ¬(s.drop 1).length = 0
+⊢ 0 =
+    0 +
+      List.foldl
+        (fun acc c ↦
+          if isVowel c = true then acc + 1
+          else
+            if
+                isY c = true ∧
+                  isY (s.drop 1).data[(s.drop 1).length - 1]! = true ∧ c = (s.drop 1).data[(s.drop 1).length - 1]! then
+              acc + 1
+            else acc)
+        0 (s.drop 1).data
+
+case pos
+s : String
+h_alpha : (s.data.all fun c ↦ c.isAlpha) = true
+h : ¬s.length = 1
+h1 : ¬False
+h✝² : ¬s.length = 0
+h✝¹ : "aeiouAEIOU".contains s.data[0]! = true
+h✝ : (s.drop 1).length = 0
+⊢ List.foldl
+      (fun acc c ↦
+        if isVowel c = true then acc + 1
+        else if isY c = true ∧ isY s.data[s.length - 1]! = true ∧ c = s.data[s.length - 1]! then acc + 1 else acc)
+      0 s.data =
+    1 + 0
+
+case neg
+s : String
+h_alpha : (s.data.all fun c ↦ c.isAlpha) = true
+h : ¬s.length = 1
+h1 : ¬False
+h✝² : ¬s.length = 0
+h✝¹ : "aeiouAEIOU".contains s.data[0]! = true
+h✝ : ¬(s.drop 1).length = 0
+⊢ List.foldl
+      (fun acc c ↦
+        if isVowel c = true then acc + 1
+        else if isY c = true ∧ isY s.data[s.length - 1]! = true ∧ c = s.data[s.length - 1]! then acc + 1 else acc)
+      0 s.data =
+    1 +
+      List.foldl
+        (fun acc c ↦
+          if isVowel c = true then acc + 1
+          else
+            if
+                isY c = true ∧
+                  isY (s.drop 1).data[(s.drop 1).length - 1]! = true ∧ c = (s.drop 1).data[(s.drop 1).length - 1]! then
+              acc + 1
+            else acc)
+        0 (s.drop 1).data
+
+case pos
+s : String
+h_alpha : (s.data.all fun c ↦ c.isAlpha) = true
+h : ¬s.length = 1
+h1 : ¬False
+h✝² : ¬s.length = 0
+h✝¹ : ¬"aeiouAEIOU".contains s.data[0]! = true
+h✝ : (s.drop 1).length = 0
+⊢ List.foldl
+      (fun acc c ↦
+        if isVowel c = true then acc + 1
+        else if isY c = true ∧ isY s.data[s.length - 1]! = true ∧ c = s.data[s.length - 1]! then acc + 1 else acc)
+      0 s.data =
+    0 + 0
+
+case neg
+s : String
+h_alpha : (s.data.all fun c ↦ c.isAlpha) = true
+h : ¬s.length = 1
+h1 : ¬False
+h✝² : ¬s.length = 0
+h✝¹ : ¬"aeiouAEIOU".contains s.data[0]! = true
+h✝ : ¬(s.drop 1).length = 0
+⊢ List.foldl
+      (fun acc c ↦
+        if isVowel c = true then acc + 1
+        else if isY c = true ∧ isY s.data[s.length - 1]! = true ∧ c = s.data[s.length - 1]! then acc + 1 else acc)
+      0 s.data =
+    0 +
+      List.foldl
+        (fun acc c ↦
+          if isVowel c = true then acc + 1
+          else
+            if
+                isY c = true ∧
+                  isY (s.drop 1).data[(s.drop 1).length - 1]! = true ∧ c = (s.drop 1).data[(s.drop 1).length - 1]! then
+              acc + 1
+            else acc)
+        0 (s.drop 1).data
+warning: lean/Generated/Run_08-09_14h27/files/HumanEval_64_impl.lean:78:17: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  simp only ̵[̵h̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_64_impl
+error: build failed

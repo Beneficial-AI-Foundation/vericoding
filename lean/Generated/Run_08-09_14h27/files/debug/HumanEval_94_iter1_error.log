@@ -1,0 +1,186 @@
+=== Verification Error - Iteration 1 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/lean/humaneval/files/HumanEval_94.lean
+Time: 2025-09-08 15:44:37
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: ✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_94_impl (30s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_94_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_94_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean:31:2: Invalid field `maximum?`: The environment does not contain `List.maximum?`
+  List.filter ?m.3 lst
+has type
+  List ℕ
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean:60:12: Invalid field `maximum?`: The environment does not contain `List.maximum?`
+  List.filter ?m.31 lst
+has type
+  List ℕ
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean:62:10: Unknown constant `List.maximum?_eq_none_iff`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean:63:4: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean:66:10: Unknown constant `List.maximum?_eq_some_iff`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean:68:12: Function expected at
+  List.mem_of_mem_filter ?m.80
+but this term has type
+  ?m.78 ∈ ?m.79
+
+Note: Expected a function because this term is being applied to the argument
+  h.1
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean:73:6: No goals to be solved
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean:77:43: unsolved goals
+case hn
+n : ℕ
+hn : n > 0
+⊢ n ≠ 0
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean:83:2: unsolved goals
+case nil
+n : ℕ
+hn : n > 0
+h : (Nat.digits 10 n).length > 0
+this : ¬Nat.digits 10 n = []
+⊢ [].sum > 0
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean:85:57: Application type mismatch: The argument
+  n
+has type
+  ℕ
+of sort `Type` but is expected to have type
+  ?m.86 ∈ Nat.digits ?m.84 ?m.85
+of sort `Prop` in the application
+  Nat.digits_lt_base ?m.87 n
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean:85:44: unsolved goals
+n : ℕ
+hn : n > 0
+h : (Nat.digits 10 n).length > 0
+this : Nat.digits 10 n ≠ []
+head : ℕ
+tail : List ℕ
+⊢ 1 < ?m.84
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean:89:32: Unknown constant `Nat.eq_zero_of_lt_one`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean:90:10: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  head
+in the target expression
+  False
+
+n : ℕ
+hn : n > 0
+h : (Nat.digits 10 n).length > 0
+this✝ : Nat.digits 10 n ≠ []
+head : ℕ
+tail : List ℕ
+this : head < 10
+h_not h_zero : head = 0
+⊢ False
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean:124:16: Unknown identifier `hi_lt`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean:126:15: Unknown identifier `hi_eq`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean:129:58: Application type mismatch: The argument
+  j
+has type
+  ℕ
+but is expected to have type
+  Fin lst.length
+in the application
+  List.get_mem lst j
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean:130:42: Application type mismatch: The argument
+  hj_prime
+has type
+  Prime (lst[j]?.getD 0)
+but is expected to have type
+  Nat.Prime lst[j]!
+in the application
+  hp_max lst[j]! hj_mem hj_prime
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean:131:14: Unknown identifier `hi_eq`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean:133:14: Unknown identifier `hi_eq`
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_94_impl
+error: build failed
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+✖ [7087/7087] Building Generated.«Run_08-09_14h27».files.HumanEval_94_impl (30s)
+trace: .> LEAN_PATH=/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Cli/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/batteries/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/Qq/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/aesop/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/plausible/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean /Users/sergiu.bursuc/.elan/toolchains/leanprover--lean4---v4.23.0-rc2/bin/lean /Users/sergiu.bursuc/baif/vericoding/lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean -o /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.olean -i /Users/sergiu.bursuc/baif/vericoding/.lake/build/lib/lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.ilean -c /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_94_impl.c --setup /Users/sergiu.bursuc/baif/vericoding/.lake/build/ir/Generated/Run_08-09_14h27/files/HumanEval_94_impl.setup.json --json
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean:31:2: Invalid field `maximum?`: The environment does not contain `List.maximum?`
+  List.filter ?m.3 lst
+has type
+  List ℕ
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean:60:12: Invalid field `maximum?`: The environment does not contain `List.maximum?`
+  List.filter ?m.31 lst
+has type
+  List ℕ
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean:62:10: Unknown constant `List.maximum?_eq_none_iff`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean:63:4: `simp` made no progress
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean:66:10: Unknown constant `List.maximum?_eq_some_iff`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean:68:12: Function expected at
+  List.mem_of_mem_filter ?m.80
+but this term has type
+  ?m.78 ∈ ?m.79
+
+Note: Expected a function because this term is being applied to the argument
+  h.1
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean:73:6: No goals to be solved
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean:77:43: unsolved goals
+case hn
+n : ℕ
+hn : n > 0
+⊢ n ≠ 0
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean:83:2: unsolved goals
+case nil
+n : ℕ
+hn : n > 0
+h : (Nat.digits 10 n).length > 0
+this : ¬Nat.digits 10 n = []
+⊢ [].sum > 0
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean:85:57: Application type mismatch: The argument
+  n
+has type
+  ℕ
+of sort `Type` but is expected to have type
+  ?m.86 ∈ Nat.digits ?m.84 ?m.85
+of sort `Prop` in the application
+  Nat.digits_lt_base ?m.87 n
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean:85:44: unsolved goals
+n : ℕ
+hn : n > 0
+h : (Nat.digits 10 n).length > 0
+this : Nat.digits 10 n ≠ []
+head : ℕ
+tail : List ℕ
+⊢ 1 < ?m.84
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean:89:32: Unknown constant `Nat.eq_zero_of_lt_one`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean:90:10: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  head
+in the target expression
+  False
+
+n : ℕ
+hn : n > 0
+h : (Nat.digits 10 n).length > 0
+this✝ : Nat.digits 10 n ≠ []
+head : ℕ
+tail : List ℕ
+this : head < 10
+h_not h_zero : head = 0
+⊢ False
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean:124:16: Unknown identifier `hi_lt`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean:126:15: Unknown identifier `hi_eq`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean:129:58: Application type mismatch: The argument
+  j
+has type
+  ℕ
+but is expected to have type
+  Fin lst.length
+in the application
+  List.get_mem lst j
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean:130:42: Application type mismatch: The argument
+  hj_prime
+has type
+  Prime (lst[j]?.getD 0)
+but is expected to have type
+  Nat.Prime lst[j]!
+in the application
+  hp_max lst[j]! hj_mem hj_prime
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean:131:14: Unknown identifier `hi_eq`
+error: lean/Generated/Run_08-09_14h27/files/HumanEval_94_impl.lean:133:14: Unknown identifier `hi_eq`
+error: Lean exited with code 1
+Some required targets logged failures:
+- Generated.«Run_08-09_14h27».files.HumanEval_94_impl
+error: build failed
