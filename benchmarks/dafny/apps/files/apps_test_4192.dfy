@@ -1,0 +1,24 @@
+Determine if Takahashi can travel D meters in T minutes at a speed of S meters per minute.
+Print "Yes" if he can travel the distance in the given time, otherwise print "No".
+
+predicate ValidInput(D: int, T: int, S: int)
+{
+    1 <= D <= 10000 && 1 <= T <= 10000 && 1 <= S <= 10000
+}
+
+predicate CanTravel(D: int, T: int, S: int)
+{
+    D <= T * S
+}
+
+method solve(D: int, T: int, S: int) returns (result: string)
+    requires ValidInput(D, T, S)
+    ensures CanTravel(D, T, S) ==> result == "Yes"
+    ensures !CanTravel(D, T, S) ==> result == "No"
+{
+    if D > T * S {
+        result := "No";
+    } else {
+        result := "Yes";
+    }
+}

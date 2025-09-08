@@ -1,0 +1,195 @@
+You start with r bourles and no shares. There are n buying opportunities and m selling opportunities for shares. 
+Find the maximum bourles you can have after trading. You can buy any number of shares at any buying price 
+and sell any number of shares (up to what you own) at any selling price.
+
+predicate ValidInput(input: string)
+{
+    |input| > 0 && '\n' in input &&
+    var lines := SplitLinesFunc(input);
+    |lines| >= 3 &&
+    ValidIntLine(lines[0], 3) &&
+    ValidIntLine(lines[1]) &&
+    ValidIntLine(lines[2]) &&
+    var firstLine := SplitIntsFunc(lines[0]);
+    var S := SplitIntsFunc(lines[1]);
+    var B := SplitIntsFunc(lines[2]);
+    |firstLine| == 3 && firstLine[0] >= 1 && firstLine[1] >= 1 && firstLine[2] >= 1 &&
+    |S| == firstLine[0] && |B| == firstLine[1]
+}
+
+function ParseInput(input: string): (int, int, int, seq<int>, seq<int>)
+    requires ValidInput(input)
+    ensures var result := ParseInput(input);
+        result.0 >= 1 && result.1 >= 1 && result.2 >= 1 &&
+        |result.3| == result.0 && |result.4| == result.1 &&
+        (forall i :: 0 <= i < |result.3| ==> result.3[i] >= 1) &&
+        (forall i :: 0 <= i < |result.4| ==> result.4[i] >= 1)
+{
+    var lines := SplitLinesFunc(input);
+    var firstLine := SplitIntsFunc(lines[0]);
+    var S := SplitIntsFunc(lines[1]);
+    var B := SplitIntsFunc(lines[2]);
+    (firstLine[0], firstLine[1], firstLine[2], S, B)
+}
+
+function ComputeMaxBourles(r: int, S: seq<int>, B: seq<int>): int
+    requires r >= 1
+    requires |S| >= 1 && |B| >= 1
+    requires forall i :: 0 <= i < |S| ==> S[i] >= 1
+    requires forall i :: 0 <= i < |B| ==> B[i] >= 1
+{
+    var x := MinSeqFunc(S);
+    var y := MaxSeqFunc(B);
+    var cnt := (r % x) + (r / x) * y;
+    if r > cnt then r else cnt
+}
+
+predicate ValidIntLine(line: string, expectedCount: int := -1)
+{
+    |line| >= 0 &&
+    var ints := SplitIntsFunc(line);
+    |ints| >= 1 &&
+    (expectedCount == -1 || |ints| == expectedCount) &&
+    forall i :: 0 <= i < |ints| ==> ints[i] >= 1
+}
+
+function MinSeqFunc(s: seq<int>): int
+    requires |s| > 0
+    requires forall i :: 0 <= i < |s| ==> s[i] >= 1
+    ensures MinSeqFunc(s) >= 1
+    ensures MinSeqFunc(s) in s
+    ensures forall i :: 0 <= i < |s| ==> MinSeqFunc(s) <= s[i]
+{
+    if |s| == 1 then s[0]
+    else if s[0] <= MinSeqFunc(s[1..]) then s[0]
+    else MinSeqFunc(s[1..])
+}
+
+function MaxSeqFunc(s: seq<int>): int
+    requires |s| > 0
+    requires forall i :: 0 <= i < |s| ==> s[i] >= 1
+    ensures MaxSeqFunc(s) >= 1
+    ensures MaxSeqFunc(s) in s
+    ensures forall i :: 0 <= i < |s| ==> MaxSeqFunc(s) >= s[i]
+{
+    if |s| == 1 then s[0]
+    else if s[0] >= MaxSeqFunc(s[1..]) then s[0]
+    else MaxSeqFunc(s[1..])
+}
+
+function SplitLinesFunc(input: string): seq<string>
+    requires |input| > 0
+    ensures |SplitLinesFunc(input)| >= 1
+{
+    SplitLinesHelper(input, 0, 0, [])
+}
+
+function SplitLinesHelper(input: string, i: int, start: int, acc: seq<string>): seq<string>
+    requires 0 <= i <= |input|
+    requires 0 <= start <= |input|
+    requires |input| > 0
+    decreases |input| - i
+    ensures |SplitLinesHelper(input, i, start, acc)| >= 1
+{
+    if i == |input| then
+        if start < |input| then acc + [input[start..]]
+        else if |acc| == 0 then [input] else acc
+    else if input[i] == '\n' then
+        var newAcc := if start < i then acc + [input[start..i]] else acc;
+        SplitLinesHelper(input, i + 1, i + 1, newAcc)
+    else
+        SplitLinesHelper(input, i + 1, start, acc)
+}
+
+function SplitIntsFunc(line: string): seq<int>
+    requires |line| >= 0
+{
+    if |line| == 0 then [] else
+    SplitIntsHelper(line, 0, 0, false, [])
+}
+
+function SplitIntsHelper(line: string, i: int, start: int, inNumber: bool, acc: seq<int>): seq<int>
+    requires 0 <= i <= |line|
+    requires 0 <= start <= |line|
+    requires |line| > 0
+    decreases |line| - i
+{
+    if i == |line| then
+        if inNumber && start < i && IsValidNumberString(line[start..i]) then 
+            acc + [StringToIntFunc(line[start..i])]
+        else acc
+    else if line[i] == ' ' then
+        var newAcc := if inNumber && start < i && IsValidNumberString(line[start..i]) then 
+            acc + [StringToIntFunc(line[start..i])] else acc;
+        SplitIntsHelper(line, i + 1, i + 1, false, newAcc)
+    else if !inNumber then
+        SplitIntsHelper(line, i + 1, i, true, acc)
+    else
+        SplitIntsHelper(line, i + 1, start, true, acc)
+}
+
+predicate IsValidNumberString(s: string)
+{
+    |s| > 0 && forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'
+}
+
+function StringToIntFunc(s: string): int
+    requires |s| > 0
+    requires forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'
+    ensures StringToIntFunc(s) >= 0
+{
+    StringToIntHelper(s, 0, 0)
+}
+
+function StringToIntHelper(s: string, i: int, acc: int): int
+    requires 0 <= i <= |s|
+    requires forall j :: 0 <= j < |s| ==> '0' <= s[j] <= '9'
+    requires acc >= 0
+    decreases |s| - i
+    ensures StringToIntHelper(s, i, acc) >= 0
+{
+    if i == |s| then acc
+    else StringToIntHelper(s, i + 1, acc * 10 + (s[i] as int - '0' as int))
+}
+
+function IntToStringFunc(n: int): string
+    requires n >= 0
+    ensures |IntToStringFunc(n)| > 0
+{
+    if n == 0 then "0"
+    else IntToStringHelper(n, "")
+}
+
+function IntToStringHelper(n: int, acc: string): string
+    requires n > 0
+    decreases n
+    ensures |IntToStringHelper(n, acc)| > 0
+{
+    if n < 10 then [('0' as int + n) as char] + acc
+    else IntToStringHelper(n / 10, [('0' as int + (n % 10)) as char] + acc)
+}
+
+method solve(input: string) returns (result: string)
+    requires |input| > 0
+    requires '\n' in input
+    requires ValidInput(input)
+    ensures |result| > 0
+    ensures exists n, m, r, S, B :: 
+        ParseInput(input) == (n, m, r, S, B) &&
+        n >= 1 && m >= 1 && r >= 1 &&
+        |S| == n && |B| == m &&
+        (forall i :: 0 <= i < |S| ==> S[i] >= 1) &&
+        (forall i :: 0 <= i < |B| ==> B[i] >= 1) &&
+        result == IntToStringFunc(ComputeMaxBourles(r, S, B)) + "\n"
+{
+    var parsed := ParseInput(input);
+    var n := parsed.0;
+    var m := parsed.1; 
+    var r := parsed.2;
+    var S := parsed.3;
+    var B := parsed.4;
+
+    var maxBourles := ComputeMaxBourles(r, S, B);
+    var resultStr := IntToStringFunc(maxBourles);
+    result := resultStr + "\n";
+}

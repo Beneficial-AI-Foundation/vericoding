@@ -1,0 +1,44 @@
+Given integers A and B, and a string S of length A+B+1, determine if S follows 
+the postal code format where the character at position A+1 (1-indexed) is a hyphen '-'
+and all other characters are digits 0-9.
+
+predicate ValidPostalCode(A: int, B: int, S: string)
+    requires A >= 1 && B >= 1 && A <= 5 && B <= 5
+    requires |S| == A + B + 1
+    requires forall i :: 0 <= i < |S| ==> (S[i] == '-' || ('0' <= S[i] <= '9'))
+{
+    S[A] == '-' && forall i :: 0 <= i < |S| && i != A ==> S[i] != '-'
+}
+
+method solve(A: int, B: int, S: string) returns (result: string)
+    requires A >= 1 && B >= 1
+    requires A <= 5 && B <= 5
+    requires |S| == A + B + 1
+    requires forall i :: 0 <= i < |S| ==> (S[i] == '-' || ('0' <= S[i] <= '9'))
+    ensures result == "Yes" || result == "No"
+    ensures result == "Yes" <==> ValidPostalCode(A, B, S)
+{
+    var ans := "Yes";
+    var i := 0;
+    while i < A + B + 1 
+        invariant 0 <= i <= A + B + 1
+        invariant ans == "Yes" || ans == "No"
+        invariant ans == "Yes" ==> (forall j :: 0 <= j < i && j != A ==> S[j] != '-')
+        invariant ans == "Yes" ==> (i > A ==> S[A] == '-')
+        invariant ans == "No" ==> (exists j :: 0 <= j < i && ((j == A && S[j] != '-') || (j != A && S[j] == '-')))
+    {
+        if i == A {
+            if S[i] != '-' {
+                ans := "No";
+                break;
+            }
+        } else {
+            if S[i] == '-' {
+                ans := "No";
+                break;
+            }
+        }
+        i := i + 1;
+    }
+    result := ans;
+}

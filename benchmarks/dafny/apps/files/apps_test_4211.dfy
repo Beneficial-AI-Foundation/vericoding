@@ -1,0 +1,43 @@
+Given an integer sequence B of length N-1, find the maximum possible sum of an integer sequence A of length N 
+that satisfies the constraint: B_i >= max(A_i, A_{i+1}) for all valid i.
+
+predicate ValidInput(n: int, b: seq<int>)
+{
+  n >= 2 && |b| == n - 1 && forall i :: 0 <= i < |b| ==> b[i] >= 0
+}
+
+predicate CorrectResult(n: int, b: seq<int>, result: int)
+  requires ValidInput(n, b)
+{
+  if n == 2 then
+    result == 2 * b[0]
+  else
+    result == b[0] + b[n-2] + sum_mins(b, n-2)
+}
+
+function sum_mins(b: seq<int>, count: int): int
+  requires 0 <= count <= |b| - 1
+{
+  if count == 0 then 0
+  else (if b[count-1] < b[count] then b[count-1] else b[count]) + sum_mins(b, count-1)
+}
+
+method solve(n: int, b: seq<int>) returns (result: int)
+  requires ValidInput(n, b)
+  ensures CorrectResult(n, b, result)
+{
+  if n == 2 {
+    result := b[0] + b[0];
+  } else {
+    result := b[0] + b[n-2];
+    var i := 0;
+    while i < n - 2
+      invariant 0 <= i <= n - 2
+      invariant result == b[0] + b[n-2] + sum_mins(b, i)
+    {
+      var minVal := if b[i] < b[i+1] then b[i] else b[i+1];
+      result := result + minVal;
+      i := i + 1;
+    }
+  }
+}

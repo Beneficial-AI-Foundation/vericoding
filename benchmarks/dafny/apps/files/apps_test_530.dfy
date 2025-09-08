@@ -1,0 +1,117 @@
+Two players play a game with binary strings. They alternate turns choosing positions
+from strings of length 2n, collecting characters to form the largest possible binary
+numbers. Determine the winner with optimal play.
+
+predicate ValidInput(n: int, a: string, b: string)
+{
+    n > 0 && |a| == 2 * n && |b| == 2 * n &&
+    (forall i :: 0 <= i < |a| ==> a[i] == '0' || a[i] == '1') &&
+    (forall i :: 0 <= i < |b| ==> b[i] == '0' || b[i] == '1')
+}
+
+function CountPositions(a: string, b: string, ac: char, bc: char, len: int): int
+    requires len >= 0 && len <= |a| && len <= |b|
+    requires ac == '0' || ac == '1'
+    requires bc == '0' || bc == '1'
+{
+    |set i | 0 <= i < len && a[i] == ac && b[i] == bc|
+}
+
+function ComputeGameOutcome(t00: int, t01: int, t10: int, t11: int): int
+{
+    t11 % 2 + (t10 - t01 + 1 - t11 % 2) / 2
+}
+
+predicate CorrectOutcome(result: string, d: int)
+{
+    (d > 0 ==> result == "First") &&
+    (d < 0 ==> result == "Second") &&
+    (d == 0 ==> result == "Draw")
+}
+
+method solve(n: int, a: string, b: string) returns (result: string)
+    requires ValidInput(n, a, b)
+    ensures result == "First" || result == "Second" || result == "Draw"
+    ensures (exists t00, t01, t10, t11: int ::
+        t00 >= 0 && t01 >= 0 && t10 >= 0 && t11 >= 0 &&
+        t00 + t01 + t10 + t11 == 2 * n &&
+        t00 == CountPositions(a, b, '0', '0', 2 * n) &&
+        t01 == CountPositions(a, b, '0', '1', 2 * n) &&
+        t10 == CountPositions(a, b, '1', '0', 2 * n) &&
+        t11 == CountPositions(a, b, '1', '1', 2 * n) &&
+        CorrectOutcome(result, ComputeGameOutcome(t00, t01, t10, t11)))
+{
+    var t00 := 0;
+    var t01 := 0;
+    var t10 := 0;
+    var t11 := 0;
+
+    var i := 0;
+    while i < 2 * n
+        invariant 0 <= i <= 2 * n
+        invariant t00 >= 0 && t01 >= 0 && t10 >= 0 && t11 >= 0
+        invariant t00 + t01 + t10 + t11 == i
+        invariant t00 == CountPositions(a, b, '0', '0', i)
+        invariant t01 == CountPositions(a, b, '0', '1', i)
+        invariant t10 == CountPositions(a, b, '1', '0', i)
+        invariant t11 == CountPositions(a, b, '1', '1', i)
+    {
+        if a[i] == '0' && b[i] == '0' {
+            assert i in set j | 0 <= j < i + 1 && a[j] == '0' && b[j] == '0';
+            assert i !in set j | 0 <= j < i && a[j] == '0' && b[j] == '0';
+            assert (set j | 0 <= j < i + 1 && a[j] == '0' && b[j] == '0') == (set j | 0 <= j < i && a[j] == '0' && b[j] == '0') + {i};
+            assert i !in set j | 0 <= j < i && a[j] == '0' && b[j] == '1';
+            assert i !in set j | 0 <= j < i && a[j] == '1' && b[j] == '0';
+            assert i !in set j | 0 <= j < i && a[j] == '1' && b[j] == '1';
+            assert (set j | 0 <= j < i + 1 && a[j] == '0' && b[j] == '1') == (set j | 0 <= j < i && a[j] == '0' && b[j] == '1');
+            assert (set j | 0 <= j < i + 1 && a[j] == '1' && b[j] == '0') == (set j | 0 <= j < i && a[j] == '1' && b[j] == '0');
+            assert (set j | 0 <= j < i + 1 && a[j] == '1' && b[j] == '1') == (set j | 0 <= j < i && a[j] == '1' && b[j] == '1');
+            t00 := t00 + 1;
+        } else if a[i] == '0' && b[i] == '1' {
+            assert i in set j | 0 <= j < i + 1 && a[j] == '0' && b[j] == '1';
+            assert i !in set j | 0 <= j < i && a[j] == '0' && b[j] == '1';
+            assert (set j | 0 <= j < i + 1 && a[j] == '0' && b[j] == '1') == (set j | 0 <= j < i && a[j] == '0' && b[j] == '1') + {i};
+            assert i !in set j | 0 <= j < i && a[j] == '0' && b[j] == '0';
+            assert i !in set j | 0 <= j < i && a[j] == '1' && b[j] == '0';
+            assert i !in set j | 0 <= j < i && a[j] == '1' && b[j] == '1';
+            assert (set j | 0 <= j < i + 1 && a[j] == '0' && b[j] == '0') == (set j | 0 <= j < i && a[j] == '0' && b[j] == '0');
+            assert (set j | 0 <= j < i + 1 && a[j] == '1' && b[j] == '0') == (set j | 0 <= j < i && a[j] == '1' && b[j] == '0');
+            assert (set j | 0 <= j < i + 1 && a[j] == '1' && b[j] == '1') == (set j | 0 <= j < i && a[j] == '1' && b[j] == '1');
+            t01 := t01 + 1;
+        } else if a[i] == '1' && b[i] == '0' {
+            assert i in set j | 0 <= j < i + 1 && a[j] == '1' && b[j] == '0';
+            assert i !in set j | 0 <= j < i && a[j] == '1' && b[j] == '0';
+            assert (set j | 0 <= j < i + 1 && a[j] == '1' && b[j] == '0') == (set j | 0 <= j < i && a[j] == '1' && b[j] == '0') + {i};
+            assert i !in set j | 0 <= j < i && a[j] == '0' && b[j] == '0';
+            assert i !in set j | 0 <= j < i && a[j] == '0' && b[j] == '1';
+            assert i !in set j | 0 <= j < i && a[j] == '1' && b[j] == '1';
+            assert (set j | 0 <= j < i + 1 && a[j] == '0' && b[j] == '0') == (set j | 0 <= j < i && a[j] == '0' && b[j] == '0');
+            assert (set j | 0 <= j < i + 1 && a[j] == '0' && b[j] == '1') == (set j | 0 <= j < i && a[j] == '0' && b[j] == '1');
+            assert (set j | 0 <= j < i + 1 && a[j] == '1' && b[j] == '1') == (set j | 0 <= j < i && a[j] == '1' && b[j] == '1');
+            t10 := t10 + 1;
+        } else {
+            assert a[i] == '1' && b[i] == '1';
+            assert i in set j | 0 <= j < i + 1 && a[j] == '1' && b[j] == '1';
+            assert i !in set j | 0 <= j < i && a[j] == '1' && b[j] == '1';
+            assert (set j | 0 <= j < i + 1 && a[j] == '1' && b[j] == '1') == (set j | 0 <= j < i && a[j] == '1' && b[j] == '1') + {i};
+            assert i !in set j | 0 <= j < i && a[j] == '0' && b[j] == '0';
+            assert i !in set j | 0 <= j < i && a[j] == '0' && b[j] == '1';
+            assert i !in set j | 0 <= j < i && a[j] == '1' && b[j] == '0';
+            assert (set j | 0 <= j < i + 1 && a[j] == '0' && b[j] == '0') == (set j | 0 <= j < i && a[j] == '0' && b[j] == '0');
+            assert (set j | 0 <= j < i + 1 && a[j] == '0' && b[j] == '1') == (set j | 0 <= j < i && a[j] == '0' && b[j] == '1');
+            assert (set j | 0 <= j < i + 1 && a[j] == '1' && b[j] == '0') == (set j | 0 <= j < i && a[j] == '1' && b[j] == '0');
+            t11 := t11 + 1;
+        }
+        i := i + 1;
+    }
+
+    var d := ComputeGameOutcome(t00, t01, t10, t11);
+
+    if d > 0 {
+        result := "First";
+    } else if d < 0 {
+        result := "Second";
+    } else {
+        result := "Draw";
+    }
+}

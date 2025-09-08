@@ -1,0 +1,59 @@
+Given a prime number p, find the count of primitive roots modulo p.
+A primitive root modulo prime p is an integer x where 1 ≤ x < p such that
+x^k ≢ 1 (mod p) for all positive integers k < p-1, but x^(p-1) ≡ 1 (mod p).
+
+predicate ValidInput(p: int) {
+    2 <= p < 2000
+}
+
+function CountPrimitiveRoots(p: int): int
+    requires ValidInput(p)
+{
+    if p == 2 then 1
+    else |set i | 1 <= i < p-1 && (forall j :: 2 <= j <= i ==> !((p-1) % j == 0 && i % j == 0))|
+}
+
+method solve(p: int) returns (result: int)
+    requires ValidInput(p)
+    ensures result >= 0
+    ensures result == CountPrimitiveRoots(p)
+{
+    if p == 2 {
+        result := 1;
+    } else {
+        var x := p - 1;
+        var cnt := 0;
+        var i := 1;
+
+        ghost var validSet := {};
+
+        while i < x
+            invariant 1 <= i <= x
+            invariant cnt >= 0
+            invariant validSet == set k | 1 <= k < i && (forall j :: 2 <= j <= k ==> !((p-1) % j == 0 && k % j == 0))
+            invariant cnt == |validSet|
+        {
+            var ok := false;
+            var j := 2;
+            while j <= i
+                invariant 2 <= j <= i + 1
+                invariant ok <==> exists k :: 2 <= k < j && ((p-1) % k == 0 && i % k == 0)
+            {
+                if x % j == 0 && i % j == 0 {
+                    ok := true;
+                    break;
+                }
+                j := j + 1;
+            }
+
+            if !ok {
+                cnt := cnt + 1;
+                validSet := validSet + {i};
+            }
+            i := i + 1;
+        }
+
+        assert validSet == set k | 1 <= k < p-1 && (forall j :: 2 <= j <= k ==> !((p-1) % j == 0 && k % j == 0));
+        result := cnt;
+    }
+}

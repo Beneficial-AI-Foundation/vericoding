@@ -1,0 +1,93 @@
+Given n segments on a coordinate line, where each segment i is defined by [l_i, r_i], 
+find a segment that covers all other segments. A segment [a, b] covers segment [c, d] 
+if a ≤ c ≤ d ≤ b. Return the 1-indexed number of such a segment, or -1 if none exists.
+
+predicate ValidInput(n: int, segments: seq<(int, int)>)
+{
+    n >= 1 && |segments| == n && 
+    forall i :: 0 <= i < n ==> segments[i].0 <= segments[i].1
+}
+
+predicate CoversAll(segments: seq<(int, int)>, idx: int)
+{
+    0 <= idx < |segments| &&
+    forall j :: 0 <= j < |segments| ==> 
+        segments[idx].0 <= segments[j].0 && segments[j].1 <= segments[idx].1
+}
+
+predicate HasMinLeftAndMaxRight(segments: seq<(int, int)>, idx: int)
+{
+    0 <= idx < |segments| &&
+    (forall j :: 0 <= j < |segments| ==> segments[idx].0 <= segments[j].0) &&
+    (forall j :: 0 <= j < |segments| ==> segments[idx].1 >= segments[j].1)
+}
+
+function MinLeft(segments: seq<(int, int)>): int
+    requires |segments| > 0
+{
+    if |segments| == 1 then segments[0].0
+    else if segments[0].0 <= MinLeft(segments[1..]) then segments[0].0
+    else MinLeft(segments[1..])
+}
+
+function MaxRight(segments: seq<(int, int)>): int
+    requires |segments| > 0
+{
+    if |segments| == 1 then segments[0].1
+    else if segments[0].1 >= MaxRight(segments[1..]) then segments[0].1
+    else MaxRight(segments[1..])
+}
+
+method solve(n: int, segments: seq<(int, int)>) returns (result: int)
+    requires ValidInput(n, segments)
+    ensures result == -1 || (1 <= result <= n)
+    ensures result != -1 ==> 
+        (var idx := result - 1;
+         HasMinLeftAndMaxRight(segments, idx) &&
+         CoversAll(segments, idx))
+    ensures result == -1 ==> 
+        !(exists i :: 0 <= i < n && HasMinLeftAndMaxRight(segments, i))
+{
+    if n == 0 {
+        return -1;
+    }
+
+    // Find minimum left endpoint and maximum right endpoint
+    var minL := segments[0].0;
+    var maxR := segments[0].1;
+
+    var i := 1;
+    while i < n
+        invariant 1 <= i <= n
+        invariant forall j :: 0 <= j < i ==> minL <= segments[j].0
+        invariant forall j :: 0 <= j < i ==> maxR >= segments[j].1
+        invariant exists j :: 0 <= j < i && segments[j].0 == minL
+        invariant exists j :: 0 <= j < i && segments[j].1 == maxR
+    {
+        if segments[i].0 < minL {
+            minL := segments[i].0;
+        }
+        if segments[i].1 > maxR {
+            maxR := segments[i].1;
+        }
+        i := i + 1;
+    }
+
+    // Look for a segment that has both minL and maxR as endpoints
+    i := 0;
+    while i < n
+        invariant 0 <= i <= n
+        invariant forall j :: 0 <= j < n ==> minL <= segments[j].0
+        invariant forall j :: 0 <= j < n ==> maxR >= segments[j].1
+        invariant exists j :: 0 <= j < n && segments[j].0 == minL
+        invariant exists j :: 0 <= j < n && segments[j].1 == maxR
+        invariant forall j :: 0 <= j < i ==> !(segments[j].0 == minL && segments[j].1 == maxR)
+    {
+        if segments[i].0 == minL && segments[i].1 == maxR {
+            return i + 1; // 1-indexed
+        }
+        i := i + 1;
+    }
+
+    return -1;
+}

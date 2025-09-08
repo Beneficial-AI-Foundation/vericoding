@@ -1,0 +1,139 @@
+vc-description: |-
+  Given n rectangles in a fixed order, each rectangle can be rotated 90 degrees (swapping its width and height). 
+  Determine if it's possible to rotate some rectangles such that the final heights form a non-ascending sequence 
+  (each height ≤ previous height).
+
+vc-preamble: |-
+  function canFormNonAscendingSequence(rectangles: seq<(int, int)>): bool
+  {
+      if |rectangles| <= 1 then true
+      else canFormNonAscendingSequenceHelper(rectangles, 1, max(rectangles[0].0, rectangles[0].1))
+  }
+  
+  function canFormNonAscendingSequenceHelper(rectangles: seq<(int, int)>, index: int, prevHeight: int): bool
+      requires 0 <= index <= |rectangles|
+      decreases |rectangles| - index
+  {
+      if index >= |rectangles| then true
+      else
+          var a := rectangles[index].0;
+          var b := rectangles[index].1;
+          var minDim := min(a, b);
+          var maxDim := max(a, b);
+  
+          if minDim > prevHeight then false
+          else if minDim <= prevHeight < maxDim then 
+              canFormNonAscendingSequenceHelper(rectangles, index + 1, minDim)
+          else 
+              canFormNonAscendingSequenceHelper(rectangles, index + 1, maxDim)
+  }
+  
+  function parseRectangles(input: string): seq<(int, int)>
+  {
+      var lines := split(input, '\n');
+      if |lines| == 0 then []
+      else
+          var n := parseInt(lines[0]);
+          if n <= 0 then []
+          else parseRectanglesFromLines(lines[1..], n)
+  }
+  
+  function min(a: int, b: int): int
+  {
+      if a <= b then a else b
+  }
+  
+  function max(a: int, b: int): int
+  {
+      if a >= b then a else b
+  }
+
+vc-helpers: |-
+  function parseRectanglesFromLines(lines: seq<string>, count: int): seq<(int, int)>
+      requires count >= 0
+      decreases count
+  {
+      if count == 0 || |lines| == 0 then []
+      else
+          var parts := split(lines[0], ' ');
+          if |parts| >= 2 then
+              var a := parseInt(parts[0]);
+              var b := parseInt(parts[1]);
+              [(a, b)] + parseRectanglesFromLines(lines[1..], count - 1)
+          else
+              parseRectanglesFromLines(lines[1..], count - 1)
+  }
+  
+  function split(s: string, delimiter: char): seq<string>
+  {
+      if |s| == 0 then [""]
+      else if s[0] == delimiter then [""] + split(s[1..], delimiter)
+      else 
+          var rest := split(s[1..], delimiter);
+          if |rest| == 0 then [s]
+          else [s[0..1] + rest[0]] + rest[1..]
+  }
+  
+  function parseInt(s: string): int
+  {
+      if |s| == 0 then 0
+      else if s[0] == '-' then -parsePositiveInt(s[1..])
+      else parsePositiveInt(s)
+  }
+  
+  function parsePositiveInt(s: string): int
+  {
+      if |s| == 0 then 0
+      else if |s| == 1 then charToDigit(s[0])
+      else parsePositiveInt(s[..|s|-1]) * 10 + charToDigit(s[|s|-1])
+  }
+  
+  function charToDigit(c: char): int
+  {
+      if c == '0' then 0 else if c == '1' then 1 else if c == '2' then 2 else if c == '3' then 3 else if c == '4' then 4
+      else if c == '5' then 5 else if c == '6' then 6 else if c == '7' then 7 else if c == '8' then 8 else if c == '9' then 9
+      else 0
+  }
+
+vc-spec: |-
+  method solve(input: string) returns (result: string)
+      requires |input| > 0
+      ensures result == "YES" || result == "NO"
+      ensures result == "YES" <==> canFormNonAscendingSequence(parseRectangles(input))
+
+vc-code: |-
+  {
+      var rectangles := parseRectangles(input);
+  
+      if |rectangles| == 0 {
+          result := "YES";
+          return;
+      }
+  
+      var prev := max(rectangles[0].0, rectangles[0].1);
+  
+      for i := 1 to |rectangles|
+          invariant 1 <= i <= |rectangles|
+          invariant canFormNonAscendingSequence(rectangles) <==> canFormNonAscendingSequenceHelper(rectangles, i, prev)
+      {
+          var a := rectangles[i].0;
+          var b := rectangles[i].1;
+          var minDim := min(a, b);
+          var maxDim := max(a, b);
+  
+          if minDim > prev {
+              result := "NO";
+              return;
+          }
+  
+          if minDim <= prev < maxDim {
+              prev := minDim;
+          } else if prev >= maxDim {
+              prev := maxDim;
+          }
+      }
+  
+      result := "YES";
+  }
+
+vc-postamble: |-

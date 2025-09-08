@@ -1,0 +1,44 @@
+Two participants compete in a typing race. Each participant has a ping delay and typing speed.
+The total time for participant i is 2*t_i + s*v_i where t_i is ping, v_i is typing speed per character, s is text length.
+Determine winner based on who completes first, or declare friendship if tied.
+
+predicate ValidInput(s: int, v1: int, v2: int, t1: int, t2: int)
+{
+    1 <= s <= 1000 && 1 <= v1 <= 1000 && 1 <= v2 <= 1000 && 1 <= t1 <= 1000 && 1 <= t2 <= 1000
+}
+
+function ParticipantTime(s: int, v: int, t: int): int
+{
+    2 * t + s * v
+}
+
+function CorrectResult(s: int, v1: int, v2: int, t1: int, t2: int): string
+{
+    var time1 := ParticipantTime(s, v1, t1);
+    var time2 := ParticipantTime(s, v2, t2);
+    if time1 < time2 then "First"
+    else if time1 > time2 then "Second"
+    else "Friendship"
+}
+
+predicate ValidResult(result: string)
+{
+    result == "First" || result == "Second" || result == "Friendship"
+}
+
+method solve(s: int, v1: int, v2: int, t1: int, t2: int) returns (result: string)
+    requires ValidInput(s, v1, v2, t1, t2)
+    ensures ValidResult(result)
+    ensures result == CorrectResult(s, v1, v2, t1, t2)
+{
+    var a1 := ParticipantTime(s, v1, t1);
+    var a2 := ParticipantTime(s, v2, t2);
+
+    if a1 < a2 {
+        result := "First";
+    } else if a1 > a2 {
+        result := "Second";
+    } else {
+        result := "Friendship";
+    }
+}

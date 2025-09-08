@@ -1,0 +1,207 @@
+Given N cards with integers written on them, count the number of ways to select
+one or more cards such that the average of the selected cards equals exactly A.
+
+
+predicate valid_input_format(stdin_input: string)
+{
+    var lines := split_lines_func(stdin_input);
+    |lines| >= 2 &&
+    var first_line := split_spaces_func(lines[0]);
+    var second_line := split_spaces_func(lines[1]);
+    |first_line| == 2 &&
+    is_valid_integer(first_line[0]) &&
+    is_valid_integer(first_line[1]) &&
+    var N := string_to_int_func(first_line[0]);
+    var A := string_to_int_func(first_line[1]);
+    1 <= N <= 50 &&
+    1 <= A <= 50 &&
+    |second_line| == N &&
+    (forall j | 0 <= j < |second_line| :: 
+        is_valid_integer(second_line[j]) &&
+        1 <= string_to_int_func(second_line[j]) <= 50)
+}
+
+predicate is_valid_output(output: string)
+{
+    |output| > 1 && 
+    output[|output|-1] == '\n' &&
+    var result_str := output[..|output|-1];
+    is_valid_integer(result_str) &&
+    string_to_int_func(result_str) >= 0
+}
+
+predicate output_represents_correct_count(stdin_input: string, output: string)
+    requires valid_input_format(stdin_input)
+    requires is_valid_output(output)
+{
+    var lines := split_lines_func(stdin_input);
+    var first_line := split_spaces_func(lines[0]);
+    var second_line := split_spaces_func(lines[1]);
+    var N := string_to_int_func(first_line[0]);
+    var A := string_to_int_func(first_line[1]);
+    var cards := seq(N, i requires 0 <= i < N => string_to_int_func(second_line[i]));
+    var result := string_to_int_func(output[..|output|-1]);
+    result == count_valid_selections(cards, A)
+}
+
+function count_valid_selections(cards: seq<int>, A: int): int
+{
+    var differences := seq(|cards|, i requires 0 <= i < |cards| => cards[i] - A);
+    var total := count_zero_sum_subsets(differences);
+    if total > 0 then total - 1 else 0
+}
+
+function count_zero_sum_subsets(differences: seq<int>): nat
+{
+    if |differences| == 0 then 1
+    else
+        var rest_count := count_zero_sum_subsets(differences[1..]);
+        rest_count + count_subsets_with_sum(differences[1..], -differences[0])
+}
+
+function count_subsets_with_sum(differences: seq<int>, target: int): nat
+{
+    if |differences| == 0 then if target == 0 then 1 else 0
+    else
+        count_subsets_with_sum(differences[1..], target) +
+        count_subsets_with_sum(differences[1..], target - differences[0])
+}
+
+
+predicate is_valid_integer(s: string)
+{
+    |s| > 0 && 
+    (s[0] != '-' ==> forall i | 0 <= i < |s| :: '0' <= s[i] <= '9') &&
+    (s[0] == '-' ==> |s| > 1 && forall i | 1 <= i < |s| :: '0' <= s[i] <= '9')
+}
+
+function split_lines_func(s: string): seq<string>
+{
+    if |s| == 0 then []
+    else split_lines_helper(s, 0, 0, [])
+}
+
+function split_lines_helper(s: string, start: nat, pos: nat, acc: seq<string>): seq<string>
+    requires start <= |s|
+    requires pos <= |s|
+    requires start <= pos
+    decreases |s| - pos
+{
+    if pos == |s| then
+        if start == pos then acc
+        else acc + [s[start..pos]]
+    else if s[pos] == '\n' then
+        split_lines_helper(s, pos + 1, pos + 1, acc + [s[start..pos]])
+    else
+        split_lines_helper(s, start, pos + 1, acc)
+}
+
+function split_spaces_func(s: string): seq<string>
+{
+    if |s| == 0 then []
+    else split_spaces_helper(s, 0, 0, [])
+}
+
+function split_spaces_helper(s: string, start: nat, pos: nat, acc: seq<string>): seq<string>
+    requires start <= |s|
+    requires pos <= |s|
+    requires start <= pos
+    decreases |s| - pos
+{
+    if pos == |s| then
+        if start == pos then acc
+        else acc + [s[start..pos]]
+    else if s[pos] == ' ' then
+        if start == pos then split_spaces_helper(s, pos + 1, pos + 1, acc)
+        else split_spaces_helper(s, pos + 1, pos + 1, acc + [s[start..pos]])
+    else
+        split_spaces_helper(s, start, pos + 1, acc)
+}
+
+function string_to_int_func(s: string): int
+    requires is_valid_integer(s)
+{
+    if |s| == 0 then 0
+    else if s[0] == '-' then -(string_to_nat_func(s[1..]) as int)
+    else string_to_nat_func(s) as int
+}
+
+function string_to_nat_func(s: string): nat
+    requires |s| > 0 && forall i | 0 <= i < |s| :: '0' <= s[i] <= '9'
+{
+    if |s| == 1 then (s[0] as int) - ('0' as int)
+    else string_to_nat_func(s[..|s|-1]) * 10 + (s[|s|-1] as int) - ('0' as int)
+}
+
+function int_to_string(n: int): string
+    ensures is_valid_integer(int_to_string(n))
+    ensures string_to_int_func(int_to_string(n)) == n
+{
+    if n == 0 then "0"
+    else if n < 0 then "-" + nat_to_string((-n) as nat)
+    else nat_to_string(n as nat)
+}
+
+function nat_to_string(n: nat): string
+    ensures |nat_to_string(n)| > 0
+    ensures forall i | 0 <= i < |nat_to_string(n)| :: '0' <= nat_to_string(n)[i] <= '9'
+    ensures string_to_nat_func(nat_to_string(n)) == n
+{
+    if n == 0 then "0"
+    else if n < 10 then [('0' as int + n) as char]
+    else nat_to_string(n / 10) + nat_to_string(n % 10)
+}
+
+method split_lines(s: string) returns (lines: seq<string>)
+    ensures lines == split_lines_func(s)
+{
+    lines := split_lines_func(s);
+}
+
+method split_spaces(s: string) returns (tokens: seq<string>)
+    ensures tokens == split_spaces_func(s)
+{
+    tokens := split_spaces_func(s);
+}
+
+method string_to_int(s: string) returns (n: int)
+    requires is_valid_integer(s)
+    ensures n == string_to_int_func(s)
+{
+    n := string_to_int_func(s);
+}
+
+method solve(stdin_input: string) returns (output: string)
+    requires |stdin_input| > 0
+    requires valid_input_format(stdin_input)
+    ensures |output| > 0
+    ensures output[|output|-1] == '\n'
+    ensures is_valid_output(output)
+    ensures output_represents_correct_count(stdin_input, output)
+{
+    var lines := split_lines(stdin_input);
+    var first_line := split_spaces(lines[0]);
+    var second_line := split_spaces(lines[1]);
+
+    var N := string_to_int(first_line[0]);
+    var A := string_to_int(first_line[1]);
+
+    var cards := new int[N];
+    var i := 0;
+    while i < N
+        invariant 0 <= i <= N
+        invariant forall j | 0 <= j < i :: cards[j] == string_to_int_func(second_line[j])
+    {
+        var card_value := string_to_int(second_line[i]);
+        cards[i] := card_value;
+        i := i + 1;
+    }
+
+    var cards_seq := cards[..];
+
+    var result := count_valid_selections(cards_seq, A);
+    var result_str := int_to_string(result);
+    output := result_str + "\n";
+
+    assert cards_seq == seq(N, i requires 0 <= i < N => string_to_int_func(second_line[i]));
+}

@@ -1,0 +1,50 @@
+Given a string of lowercase Latin letters and an integer k, find the minimum number of 
+character changes needed to make the string contain at least k different letters.
+Return "impossible" if the string length is less than k.
+
+predicate ValidInput(s: string, k: int)
+{
+    1 <= k <= 26 && 1 <= |s| <= 1000 && 
+    forall i :: 0 <= i < |s| ==> 'a' <= s[i] <= 'z'
+}
+
+function UniqueChars(s: string): set<char>
+{
+    set c | c in s
+}
+
+function MinChanges(s: string, k: int): int
+    requires ValidInput(s, k)
+    requires |s| >= k
+{
+    var unique := UniqueChars(s);
+    if k <= |unique| then 0 else k - |unique|
+}
+
+predicate IsImpossible(s: string, k: int)
+    requires ValidInput(s, k)
+{
+    |s| < k
+}
+
+function IntToString(n: int): string
+    requires n >= 0
+{
+    if n == 0 then "0"
+    else if n < 10 then [('0' as int + n) as char]
+    else IntToString(n / 10) + [('0' as int + (n % 10)) as char]
+}
+
+method solve(s: string, k: int) returns (result: string)
+    requires ValidInput(s, k)
+    ensures IsImpossible(s, k) ==> result == "impossible"
+    ensures !IsImpossible(s, k) ==> result == IntToString(MinChanges(s, k))
+{
+    if |s| < k {
+        result := "impossible";
+    } else {
+        var unique_chars := set c | c in s;
+        var changes := if k <= |unique_chars| then 0 else k - |unique_chars|;
+        result := IntToString(changes);
+    }
+}

@@ -1,0 +1,121 @@
+Given a text containing words separated by spaces, where some words contain hyphens
+that serve as valid line break points, format the text to fit within at most k lines
+while minimizing the maximum line width. Line breaks can occur at spaces (space stays
+on current line) or at hyphens (hyphen stays on current line, remainder goes to next line).
+
+predicate canFormatText(s: string, k: int, maxWidth: int)
+    requires k >= 1
+    requires |s| >= 1
+    requires maxWidth >= 1
+{
+    checkFormatting(s, k, maxWidth, 0, 1, 0)
+}
+
+predicate checkFormatting(s: string, k: int, maxWidth: int, pos: int, lines: int, currentLine: int)
+    requires k >= 1
+    requires |s| >= 1
+    requires maxWidth >= 1
+    requires 0 <= pos <= |s|
+    requires lines >= 1
+    requires currentLine >= 0
+    decreases |s| - pos
+{
+    if pos == |s| then
+        lines <= k && currentLine <= maxWidth
+    else
+        if s[pos] == ' ' || s[pos] == '-' then
+            // Potential break point
+            if currentLine + 1 > maxWidth then
+                // Must break line
+                if lines + 1 > k then
+                    false
+                else
+                    checkFormatting(s, k, maxWidth, pos + 1, lines + 1, 1)
+            else
+                // Can continue on current line or break
+                (checkFormatting(s, k, maxWidth, pos + 1, lines, currentLine + 1) ||
+                 (lines < k && checkFormatting(s, k, maxWidth, pos + 1, lines + 1, 1)))
+        else
+            // Regular character - must continue on current line
+            if currentLine + 1 > maxWidth then
+                false
+            else
+                checkFormatting(s, k, maxWidth, pos + 1, lines, currentLine + 1)
+}
+
+lemma lemma_canFormatWithMaxWidth(s: string, k: int, maxWidth: int)
+    requires k >= 1
+    requires |s| >= 1
+    requires maxWidth >= |s|
+    ensures canFormatText(s, k, maxWidth)
+{
+    lemma_checkFormattingWithMaxWidth(s, k, maxWidth, 0, 1, 0);
+}
+
+lemma lemma_checkFormattingWithMaxWidth(s: string, k: int, maxWidth: int, pos: int, lines: int, currentLine: int)
+    requires k >= 1
+    requires |s| >= 1
+    requires maxWidth >= |s|
+    requires 0 <= pos <= |s|
+    requires 1 <= lines <= k
+    requires currentLine >= 0
+    requires currentLine + (|s| - pos) <= maxWidth
+    ensures checkFormatting(s, k, maxWidth, pos, lines, currentLine)
+    decreases |s| - pos
+{
+    if pos == |s| {
+        // Base case: we've processed all characters
+        assert lines <= k && currentLine <= maxWidth;
+    } else {
+        // Inductive case
+        if s[pos] == ' ' || s[pos] == '-' {
+            if currentLine + 1 > maxWidth {
+                // This case won't happen due to our precondition
+                assert false;
+            } else {
+                // We can continue on the current line
+                lemma_checkFormattingWithMaxWidth(s, k, maxWidth, pos + 1, lines, currentLine + 1);
+                assert checkFormatting(s, k, maxWidth, pos + 1, lines, currentLine + 1);
+            }
+        } else {
+            // Regular character
+            if currentLine + 1 > maxWidth {
+                // This case won't happen due to our precondition
+                assert false;
+            } else {
+                lemma_checkFormattingWithMaxWidth(s, k, maxWidth, pos + 1, lines, currentLine + 1);
+                assert checkFormatting(s, k, maxWidth, pos + 1, lines, currentLine + 1);
+            }
+        }
+    }
+}
+
+method solve(k: int, s: string) returns (result: int)
+    requires k >= 1
+    requires |s| >= 1
+    ensures result >= 1
+    ensures result <= |s|
+    ensures canFormatText(s, k, result)
+    ensures result > 1 ==> !canFormatText(s, k, result - 1)
+{
+    var n := |s|;
+    var left, right := 1, n;
+
+    // Prove that formatting with width n is always possible
+    lemma_canFormatWithMaxWidth(s, k, n);
+    assert canFormatText(s, k, right);
+
+    while left < right
+        invariant 1 <= left <= right <= n
+        invariant canFormatText(s, k, right)
+        invariant left > 1 ==> !canFormatText(s, k, left - 1)
+    {
+        var mid := (left + right) / 2;
+        if canFormatText(s, k, mid) {
+            right := mid;
+        } else {
+            left := mid + 1;
+        }
+    }
+    result := left;
+}

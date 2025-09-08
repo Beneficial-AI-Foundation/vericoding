@@ -1,0 +1,165 @@
+Given n secretaries, each assigned either a positive session ID if on a call or 0 if not talking.
+When two people call each other, they share the same unique session ID. Each call connects exactly 
+two people (no conferences). Determine how many pairs of secretaries are talking to each other, 
+or return -1 if the situation is impossible (any session ID appears more than twice).
+
+function CountOccurrences(s: seq<int>, x: int): int
+  ensures CountOccurrences(s, x) >= 0
+{
+  if |s| == 0 then 0
+  else (if s[0] == x then 1 else 0) + CountOccurrences(s[1..], x)
+}
+
+function CountPairs(s: seq<int>): int
+  ensures CountPairs(s) >= 0
+{
+  var positive_sessions := FilterPositive(s);
+  CountPairsHelper(positive_sessions)
+}
+
+function FilterPositive(s: seq<int>): seq<int>
+  ensures forall i :: 0 <= i < |FilterPositive(s)| ==> FilterPositive(s)[i] > 0
+{
+  if |s| == 0 then []
+  else if s[0] > 0 then [s[0]] + FilterPositive(s[1..])
+  else FilterPositive(s[1..])
+}
+
+function CountPairsHelper(s: seq<int>): int
+  decreases |s|
+  ensures CountPairsHelper(s) >= 0
+{
+  if |s| <= 1 then 0
+  else 
+    var count := CountOccurrences(s, s[0]);
+    var remaining := RemoveAllOccurrences(s, s[0]);
+    (if count == 2 then 1 else 0) + CountPairsHelper(remaining)
+}
+
+function RemoveAllOccurrences(s: seq<int>, x: int): seq<int>
+  ensures |RemoveAllOccurrences(s, x)| <= |s|
+{
+  if |s| == 0 then []
+  else if s[0] == x then RemoveAllOccurrences(s[1..], x)
+  else [s[0]] + RemoveAllOccurrences(s[1..], x)
+}
+
+predicate ExistsIndex(s: seq<int>, x: int)
+{
+  exists i :: 0 <= i < |s| && s[i] == x
+}
+
+lemma ExistsIndexLemma(s: seq<int>, x: int)
+  ensures CountOccurrences(s, x) > 0 <==> ExistsIndex(s, x)
+{
+  if |s| == 0 {
+    assert CountOccurrences(s, x) == 0;
+    assert !ExistsIndex(s, x);
+  } else {
+    ExistsIndexLemma(s[1..], x);
+    if s[0] == x {
+      assert ExistsIndex(s, x);
+      assert CountOccurrences(s, x) > 0;
+    } else {
+      assert CountOccurrences(s, x) == CountOccurrences(s[1..], x);
+      assert ExistsIndex(s, x) <==> ExistsIndex(s[1..], x);
+    }
+  }
+}
+
+method FindIndex(s: seq<int>, x: int) returns (index: int)
+  requires ExistsIndex(s, x)
+  ensures 0 <= index < |s|
+  ensures s[index] == x
+{
+  index := 0;
+  while index < |s|
+    invariant 0 <= index <= |s|
+    invariant forall k :: 0 <= k < index ==> s[k] != x
+  {
+    if s[index] == x {
+      return;
+    }
+    index := index + 1;
+  }
+  assert false;
+}
+
+method SortSeq(s: seq<int>) returns (sorted: seq<int>)
+  requires |s| >= 0
+  ensures |sorted| == |s|
+  ensures multiset(sorted) == multiset(s)
+  ensures forall i, j :: 0 <= i < j < |sorted| ==> sorted[i] <= sorted[j]
+{
+  sorted := s;
+  var n := |s|;
+
+  if n <= 1 {
+    return;
+  }
+
+  for i := 0 to n
+    invariant |sorted| == |s|
+    invariant multiset(sorted) == multiset(s)
+    invariant forall k, l :: n - i <= k < l < |sorted| ==> sorted[k] <= sorted[l]
+    invariant forall k, l :: 0 <= k < n - i && n - i <= l < |sorted| ==> sorted[k] <= sorted[l]
+  {
+    for j := 0 to n - 1 - i
+      invariant |sorted| == |s|
+      invariant multiset(sorted) == multiset(s)
+      invariant forall k, l :: n - i <= k < l < |sorted| ==> sorted[k] <= sorted[l]
+      invariant forall k, l :: 0 <= k < n - i && n - i <= l < |sorted| ==> sorted[k] <= sorted[l]
+      invariant forall k :: 0 <= k <= j ==> sorted[k] <= sorted[j]
+    {
+      if j + 1 < |sorted| && sorted[j] > sorted[j + 1] {
+        var temp := sorted[j];
+        sorted := sorted[j := sorted[j + 1]];
+        sorted := sorted[j + 1 := temp];
+      }
+    }
+  }
+}
+
+method solve(n: int, sessions: seq<int>) returns (result: int)
+  requires n >= 1
+  requires |sessions| == n
+  requires forall i :: 0 <= i < |sessions| ==> sessions[i] >= 0
+  ensures result == -1 || result >= 0
+  ensures result == -1 ==> exists id :: id > 0 && CountOccurrences(sessions, id) > 2
+  ensures result >= 0 ==> forall id :: id > 0 ==> CountOccurrences(sessions, id) <= 2
+  ensures result >= 0 ==> result == CountPairs(sessions)
+{
+  var has_triple := false;
+  var witness_id := 0;
+  var i := 0;
+  while i < |sessions| && !has_triple
+    invariant 0 <= i <= |sessions|
+    invariant has_triple ==> witness_id > 0 && CountOccurrences(sessions, witness_id) > 2
+    invariant !has_triple ==> forall j :: 0 <= j < i ==> sessions[j] <= 0 || CountOccurrences(sessions, sessions[j]) <= 2
+  {
+    if sessions[i] > 0 && CountOccurrences(sessions, sessions[i]) > 2 {
+      has_triple := true;
+      witness_id := sessions[i];
+    }
+    i := i + 1;
+  }
+
+  if has_triple {
+    result := -1;
+  } else {
+    assert i == |sessions|;
+    assert forall j :: 0 <= j < |sessions| ==> sessions[j] <= 0 || CountOccurrences(sessions, sessions[j]) <= 2;
+
+    forall id | id > 0 
+      ensures CountOccurrences(sessions, id) <= 2
+    {
+      if CountOccurrences(sessions, id) > 0 {
+        ExistsIndexLemma(sessions, id);
+        assert ExistsIndex(sessions, id);
+        assert CountOccurrences(sessions, id) <= 2;
+      }
+    }
+
+    result := CountPairs(sessions);
+  }
+}

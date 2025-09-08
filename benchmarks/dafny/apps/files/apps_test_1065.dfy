@@ -1,0 +1,85 @@
+Given n candies and k people (numbered 1 to k), find the maximum number of candies person 1 can receive.
+Person 1 chooses an integer x and distributes candies cyclically: first x candies to person 1, next x to person 2, 
+..., next x to person k, then repeat the cycle. Remaining candies are discarded.
+Constraints: 1 ≤ x ≤ M, no person can receive candies more than D times.
+
+predicate ValidInput(n: int, k: int, M: int, D: int) {
+    2 <= n && 2 <= k <= n && 1 <= M <= n && 1 <= D <= n && M * D * k >= n
+}
+
+function CandiesUsed(x: int, d: int, k: int): int {
+    x * ((d - 1) * k + 1)
+}
+
+predicate ValidDistribution(x: int, d: int, n: int, k: int, M: int, D: int) {
+    1 <= x <= M && 1 <= d <= D && CandiesUsed(x, d, k) <= n
+}
+
+function Person1Candies(x: int, d: int): int {
+    x * d
+}
+
+lemma BasicValidDistribution(n: int, k: int, M: int, D: int)
+    requires ValidInput(n, k, M, D)
+    ensures ValidDistribution(1, 1, n, k, M, D)
+{
+    assert CandiesUsed(1, 1, k) == 1 * ((1 - 1) * k + 1) == 1;
+    assert 1 <= n;
+}
+
+method solve(n: int, k: int, M: int, D: int) returns (result: int)
+    requires ValidInput(n, k, M, D)
+    ensures result >= 0
+    ensures result <= M * D
+    ensures forall x: int, d: int :: ValidDistribution(x, d, n, k, M, D) ==> Person1Candies(x, d) <= result
+    ensures exists x: int, d: int :: ValidDistribution(x, d, n, k, M, D) && Person1Candies(x, d) == result
+{
+    BasicValidDistribution(n, k, M, D);
+    var ans := 0;
+    var d := 1;
+
+    while d <= D
+        invariant 1 <= d <= D + 1
+        invariant ans >= 0
+        invariant ans <= M * D
+        invariant forall x: int, d_prev: int :: 1 <= x <= M && 1 <= d_prev < d && CandiesUsed(x, d_prev, k) <= n ==> Person1Candies(x, d_prev) <= ans
+        invariant ans == 0 || (exists x: int, d_prev: int :: 1 <= x <= M && 1 <= d_prev < d && CandiesUsed(x, d_prev, k) <= n && Person1Candies(x, d_prev) == ans)
+    {
+        var bot := 0;
+        var top := M + 1;
+
+        while top > bot + 1
+            invariant 0 <= bot < top <= M + 1
+            invariant bot == 0 || CandiesUsed(bot, d, k) <= n
+            invariant top > M || CandiesUsed(top, d, k) > n
+        {
+            var mid := (bot + top) / 2;
+            var cur := (d - 1) * mid * k;
+            cur := cur + mid;
+
+            assert cur == CandiesUsed(mid, d, k);
+
+            if cur > n {
+                top := mid;
+            } else {
+                bot := mid;
+            }
+        }
+
+        assert bot <= M;
+        if bot > 0 {
+            assert CandiesUsed(bot, d, k) <= n;
+            if Person1Candies(bot, d) > ans {
+                ans := Person1Candies(bot, d);
+            }
+        }
+
+        d := d + 1;
+    }
+
+    if ans == 0 {
+        result := 1;
+    } else {
+        result := ans;
+    }
+}

@@ -1,0 +1,239 @@
+vc-description: |-
+  Given integers n and m, compute the sum of happiness values for all permutations of length n, 
+  modulo prime number m. A permutation's happiness is the count of its framed segments, where
+  a framed segment [l,r] satisfies max{elements} - min{elements} = r - l.
+
+vc-preamble: |-
+  predicate ValidInput(input: string)
+  {
+      |input| > 0 && 
+      (var nm := ParseTwoInts(input);
+       var n := nm.0; var m := nm.1;
+       n > 0 && m > 0)
+  }
+  
+  function ParseTwoInts(input: string): (int, int)
+      requires |input| > 0
+  {
+      var lines := SplitLinesFunc(input);
+      if |lines| == 0 then (0, 0)
+      else 
+          var parts := SplitSpacesFunc(lines[0]);
+          if |parts| < 2 then (0, 0)
+          else (StringToInt(parts[0]), StringToInt(parts[1]))
+  }
+  
+  function ComputeHappinessSum(n: int, m: int): int
+      requires n > 0 && m > 0
+  {
+      SumUpToSize(n, m, n)
+  }
+
+vc-helpers: |-
+  function SplitLinesFunc(s: string): seq<string>
+      requires |s| >= 0
+      ensures |SplitLinesFunc(s)| >= 0
+  {
+      SplitLinesHelper(s, 0, "", [])
+  }
+  
+  function SplitLinesHelper(s: string, i: int, current: string, acc: seq<string>): seq<string>
+      requires 0 <= i <= |s|
+      ensures |SplitLinesHelper(s, i, current, acc)| >= |acc|
+      decreases |s| - i
+  {
+      if i >= |s| then
+          if |current| > 0 then acc + [current] else acc
+      else if s[i] == '\n' then
+          if |current| > 0 then 
+              SplitLinesHelper(s, i + 1, "", acc + [current])
+          else
+              SplitLinesHelper(s, i + 1, "", acc)
+      else
+          SplitLinesHelper(s, i + 1, current + [s[i]], acc)
+  }
+  
+  function SplitSpacesFunc(s: string): seq<string>
+      requires |s| >= 0
+      ensures |SplitSpacesFunc(s)| >= 0
+  {
+      SplitSpacesHelper(s, 0, "", [])
+  }
+  
+  function SplitSpacesHelper(s: string, i: int, current: string, acc: seq<string>): seq<string>
+      requires 0 <= i <= |s|
+      ensures |SplitSpacesHelper(s, i, current, acc)| >= |acc|
+      decreases |s| - i
+  {
+      if i >= |s| then
+          if |current| > 0 then acc + [current] else acc
+      else if s[i] == ' ' then
+          if |current| > 0 then 
+              SplitSpacesHelper(s, i + 1, "", acc + [current])
+          else
+              SplitSpacesHelper(s, i + 1, "", acc)
+      else
+          SplitSpacesHelper(s, i + 1, current + [s[i]], acc)
+  }
+  
+  function SumUpToSize(n: int, m: int, maxSize: int): int
+      requires n > 0 && m > 0 && maxSize >= 0
+  {
+      if maxSize == 0 then 0
+      else if maxSize > n then SumUpToSize(n, m, n)
+      else 
+          var term := (Factorial(maxSize) * Power(n - maxSize + 1, 2, m) * Factorial(n - maxSize)) % m;
+          (SumUpToSize(n, m, maxSize - 1) + term) % m
+  }
+  
+  function Factorial(n: int): int
+      requires n >= 0
+      ensures Factorial(n) > 0
+  {
+      if n == 0 then 1
+      else n * Factorial(n - 1)
+  }
+  
+  function Power(base: int, exp: int, mod: int): int
+      requires mod > 0
+      requires exp >= 0
+      ensures Power(base, exp, mod) >= 0
+      ensures mod > 1 ==> Power(base, exp, mod) < mod
+  {
+      if exp == 0 then 1 % mod
+      else if exp == 1 then base % mod
+      else if exp % 2 == 0 then
+          var half := Power(base, exp / 2, mod);
+          (half * half) % mod
+      else
+          (base * Power(base, exp - 1, mod)) % mod
+  }
+  
+  method SplitLines(s: string) returns (lines: seq<string>)
+      requires |s| >= 0
+      ensures |lines| >= 0
+      ensures lines == SplitLinesFunc(s)
+  {
+      lines := SplitLinesFunc(s);
+  }
+  
+  method SplitSpaces(s: string) returns (parts: seq<string>)
+      requires |s| >= 0
+      ensures |parts| >= 0
+      ensures parts == SplitSpacesFunc(s)
+  {
+      parts := SplitSpacesFunc(s);
+  }
+  
+  function StringToInt(s: string): int
+      requires |s| >= 0
+      ensures StringToInt(s) >= 0
+  {
+      if |s| == 0 then 0
+      else StringToIntHelper(s, 0, 0)
+  }
+  
+  function StringToIntHelper(s: string, index: int, acc: int): int
+      requires 0 <= index <= |s|
+      requires acc >= 0
+      ensures StringToIntHelper(s, index, acc) >= 0
+      decreases |s| - index
+  {
+      if index >= |s| then acc
+      else if '0' <= s[index] <= '9' then
+          StringToIntHelper(s, index + 1, acc * 10 + (s[index] as int - '0' as int))
+      else
+          acc
+  }
+  
+  function IntToString(n: int): string
+      requires n >= 0
+      ensures |IntToString(n)| > 0
+      ensures forall c :: c in IntToString(n) ==> '0' <= c <= '9'
+  {
+      if n == 0 then "0"
+      else if n < 0 then "-" + IntToStringHelper(-n, "")
+      else IntToStringHelper(n, "")
+  }
+  
+  function IntToStringHelper(n: int, acc: string): string
+      requires n >= 0
+      ensures |IntToStringHelper(n, acc)| >= |acc|
+      ensures forall c :: c in IntToStringHelper(n, acc) ==> (c in acc || '0' <= c <= '9')
+  {
+      if n == 0 then acc
+      else IntToStringHelper(n / 10, [('0' as int + n % 10) as char] + acc)
+  }
+
+vc-spec: |-
+  method solve(input: string) returns (output: string)
+      requires |input| > 0
+      ensures |output| >= 0
+      ensures ValidInput(input) ==> 
+          (var nm := ParseTwoInts(input);
+           var n := nm.0; var m := nm.1;
+           output == IntToString(ComputeHappinessSum(n, m)) + "\n")
+      ensures ValidInput(input) ==> |output| > 0 && output[|output|-1] == '\n'
+      ensures ValidInput(input) ==> forall c :: c in output ==> (c == '\n' || ('0' <= c <= '9'))
+      ensures !ValidInput(input) ==> output == ""
+
+vc-code: |-
+  {
+      var lines := SplitLines(input);
+      if |lines| == 0 {
+          output := "";
+          return;
+      }
+  
+      var parts := SplitSpaces(lines[0]);
+      if |parts| < 2 {
+          output := "";
+          return;
+      }
+  
+      var n := StringToInt(parts[0]);
+      var m := StringToInt(parts[1]);
+  
+      if n <= 0 || m <= 0 {
+          output := "";
+          return;
+      }
+  
+      // Compute factorials modulo m
+      var fact := new int[n + 1];
+      fact[0] := 1 % m;
+  
+      var i := 1;
+      while i <= n
+          invariant 1 <= i <= n + 1
+          invariant fact.Length == n + 1
+          invariant fact[0] == 1 % m
+          invariant forall j :: 0 <= j < i ==> fact[j] == Factorial(j) % m
+      {
+          fact[i] := (fact[i-1] * i) % m;
+          i := i + 1;
+      }
+  
+      var out := 0;
+      var size := 1;
+  
+      while size <= n
+          invariant 1 <= size <= n + 1
+          invariant fact.Length == n + 1
+          invariant forall j :: 0 <= j <= n ==> fact[j] == Factorial(j) % m
+          invariant out == (SumUpToSize(n, m, size - 1)) % m
+      {
+          var term1 := fact[size] % m;
+          var tmpCall1 := Power(n - size + 1, 2, m);
+          var term2 := tmpCall1;
+          var term3 := fact[n - size] % m;
+  
+          var product := ((term1 * term2) % m * term3) % m;
+          out := (out + product) % m;
+          size := size + 1;
+      }
+  
+      output := IntToString(out) + "\n";
+  }
+
+vc-postamble: |-

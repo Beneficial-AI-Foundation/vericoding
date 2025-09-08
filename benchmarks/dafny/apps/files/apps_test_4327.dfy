@@ -1,0 +1,29 @@
+Given A whole apples and P apple pieces, determine the maximum number of apple pies that can be made.
+Each whole apple can be cut into 3 pieces, and each apple pie requires 2 pieces to make.
+
+predicate ValidInput(A: int, P: int)
+{
+    0 <= A <= 100 && 0 <= P <= 100
+}
+
+function TotalPieces(A: int, P: int): int
+    requires ValidInput(A, P)
+{
+    A * 3 + P
+}
+
+function MaxPies(A: int, P: int): int
+    requires ValidInput(A, P)
+{
+    TotalPieces(A, P) / 2
+}
+
+method CalculateMaxPies(A: int, P: int) returns (pies: int)
+    requires ValidInput(A, P)
+    ensures pies == MaxPies(A, P)
+    ensures pies >= 0
+    ensures pies == (A * 3 + P) / 2
+{
+    var totalPieces := A * 3 + P;
+    pies := totalPieces / 2;
+}

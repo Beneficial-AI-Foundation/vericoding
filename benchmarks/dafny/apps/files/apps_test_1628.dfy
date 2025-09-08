@@ -1,0 +1,103 @@
+Given a string containing only 'x' and 'y' characters, apply operations:
+1. Swap leftmost "yx" to "xy" 
+2. Remove leftmost "xy"
+Apply operation 1 if possible, otherwise operation 2, repeat until no operations possible.
+Return the final non-empty string.
+
+predicate ValidInput(s: string)
+{
+    |s| > 0 && forall i :: 0 <= i < |s| ==> s[i] == 'x' || s[i] == 'y'
+}
+
+function countChar(s: string, c: char): nat
+{
+    |set i | 0 <= i < |s| && s[i] == c|
+}
+
+predicate ValidOutput(s: string, result: string)
+    requires ValidInput(s)
+{
+    var countX := countChar(s, 'x');
+    var countY := countChar(s, 'y');
+    if countY > countX then
+        |result| == countY - countX && forall i :: 0 <= i < |result| ==> result[i] == 'y'
+    else
+        |result| == countX - countY && forall i :: 0 <= i < |result| ==> result[i] == 'x'
+}
+
+lemma countCharExtend(s: string, c: char, ch: char)
+    ensures countChar(s + [ch], c) == countChar(s, c) + (if ch == c then 1 else 0)
+{
+    var s' := s + [ch];
+    var setS := set i | 0 <= i < |s| && s[i] == c;
+    var setS' := set i | 0 <= i < |s'| && s'[i] == c;
+
+    if ch == c {
+        assert |s| in setS';
+        assert setS' == setS + {|s|};
+        assert |s| !in setS;
+    } else {
+        assert |s| !in setS';
+        assert setS' == setS;
+    }
+}
+
+method solve(s: string) returns (result: string)
+    requires ValidInput(s)
+    ensures ValidOutput(s, result)
+{
+    var countX := 0;
+    var countY := 0;
+
+    // Count occurrences of 'x' and 'y'
+    var i := 0;
+    while i < |s|
+        invariant 0 <= i <= |s|
+        invariant countX == countChar(s[..i], 'x')
+        invariant countY == countChar(s[..i], 'y')
+    {
+        if s[i] == 'x' {
+            countX := countX + 1;
+            countCharExtend(s[..i], 'x', s[i]);
+            assert s[..i+1] == s[..i] + [s[i]];
+        } else if s[i] == 'y' {
+            countY := countY + 1;
+            countCharExtend(s[..i], 'y', s[i]);
+            assert s[..i+1] == s[..i] + [s[i]];
+        }
+        countCharExtend(s[..i], 'x', s[i]);
+        countCharExtend(s[..i], 'y', s[i]);
+        i := i + 1;
+    }
+
+    assert s[..i] == s;
+    assert countX == countChar(s, 'x');
+    assert countY == countChar(s, 'y');
+
+    // Generate result string based on counts
+    if countY > countX {
+        var diff := countY - countX;
+        result := "";
+        var j := 0;
+        while j < diff
+            invariant 0 <= j <= diff
+            invariant |result| == j
+            invariant forall k :: 0 <= k < |result| ==> result[k] == 'y'
+        {
+            result := result + "y";
+            j := j + 1;
+        }
+    } else {
+        var diff := countX - countY;
+        result := "";
+        var j := 0;
+        while j < diff
+            invariant 0 <= j <= diff
+            invariant |result| == j
+            invariant forall k :: 0 <= k < |result| ==> result[k] == 'x'
+        {
+            result := result + "x";
+            j := j + 1;
+        }
+    }
+}

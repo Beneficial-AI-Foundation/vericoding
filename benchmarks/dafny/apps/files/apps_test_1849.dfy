@@ -1,0 +1,74 @@
+Given an integer n, consider all integers from 0 to 10^n - 1, each padded with leading zeros to exactly n digits.
+A "block" is a maximal consecutive sequence of identical digits.
+For each length i from 1 to n, count the total number of blocks of length i across all these padded numbers.
+Output n integers modulo 998244353, where the i-th integer is the number of blocks of length i.
+
+const MOD := 998244353
+
+predicate ValidInput(n: int)
+{
+  n >= 1
+}
+
+function BlockCountFormula(n: int, i: int): int
+  requires n >= 1 && 1 <= i <= n
+{
+  if i == n then 10
+  else 
+    ((2 * 9 * pow(10, n - i - 1, MOD) * 10) + 
+     (if i < n - 1 then ((n - 1 - i) * 9 * 9 * pow(10, n - i - 2, MOD) * 10) else 0)) % MOD
+}
+
+predicate ValidResult(result: seq<int>, n: int)
+  requires n >= 1
+{
+  |result| == n &&
+  (forall k :: 0 <= k < n ==> 0 <= result[k] < MOD) &&
+  (n >= 1 ==> result[n-1] == 10) &&
+  (forall i :: 0 <= i < n-1 ==> result[i] == BlockCountFormula(n, i+1))
+}
+
+function pow(base: int, exp: int, mod: int): int
+  requires mod > 0
+  requires exp >= 0
+  decreases exp
+{
+  if exp == 0 then 1 % mod
+  else if exp == 1 then base % mod
+  else if exp % 2 == 0 then 
+    var half := pow(base, exp / 2, mod);
+    (half * half) % mod
+  else
+    (base * pow(base, exp - 1, mod)) % mod
+}
+
+method solve(n: int) returns (result: seq<int>)
+  requires ValidInput(n)
+  ensures ValidResult(result, n)
+{
+  var out: seq<int> := [];
+
+  var i := 1;
+  while i <= n
+    invariant 1 <= i <= n + 1
+    invariant |out| == i - 1
+    invariant forall k :: 0 <= k < |out| ==> 0 <= out[k] < MOD
+    invariant i == n + 1 ==> |out| == n && out[n-1] == 10
+    invariant forall j :: 0 <= j < |out| && j < n-1 ==> 
+      out[j] == BlockCountFormula(n, j+1)
+  {
+    if i == n {
+      out := out + [10];
+    } else {
+      var nex := (2 * 9 * pow(10, n - i - 1, MOD) * 10) % MOD;
+      if i < n - 1 {
+        var additional := ((n - 1 - i) * 9 * 9 * pow(10, n - i - 2, MOD) * 10) % MOD;
+        nex := (nex + additional) % MOD;
+      }
+      out := out + [nex];
+    }
+    i := i + 1;
+  }
+
+  result := out;
+}

@@ -1,0 +1,109 @@
+Given positive integers n and k, find a strictly increasing sequence of k positive integers 
+that sum to n and have the maximum possible greatest common divisor (GCD). 
+If no such sequence exists, return -1.
+
+predicate ValidInput(n: int, k: int)
+{
+    n > 0 && k > 0
+}
+
+predicate IsStrictlyIncreasing(s: seq<int>)
+{
+    forall i :: 0 <= i < |s| - 1 ==> s[i] < s[i+1]
+}
+
+predicate AllPositive(s: seq<int>)
+{
+    forall i :: 0 <= i < |s| ==> s[i] > 0
+}
+
+function sum(s: seq<int>): int
+    decreases |s|
+{
+    if |s| == 0 then 0 else s[0] + sum(s[1..])
+}
+
+predicate ValidSequence(s: seq<int>, n: int, k: int)
+{
+    |s| == k && AllPositive(s) && IsStrictlyIncreasing(s) && sum(s) == n
+}
+
+predicate IsPossible(n: int, k: int)
+{
+    k * (k + 1) / 2 <= n
+}
+
+method solve(n: int, k: int) returns (result: seq<int>)
+    requires ValidInput(n, k)
+    ensures (|result| == 1 && result[0] == -1) || 
+            (ValidSequence(result, n, k))
+    ensures (|result| == 1 && result[0] == -1) <==> !IsPossible(n, k)
+{
+    if !IsPossible(n, k) {
+        result := [-1];
+        return;
+    }
+
+    // Find all divisors of n
+    var divisors: seq<int> := [];
+    var i := 1;
+    while i * i <= n
+        invariant 1 <= i
+        invariant forall d :: d in divisors ==> d > 0 && n % d == 0
+        decreases n - i * i + 1
+    {
+        if n % i == 0 {
+            divisors := divisors + [i];
+            if i != n / i {
+                divisors := divisors + [n / i];
+            }
+        }
+        i := i + 1;
+    }
+
+    // Find maximum valid divisor
+    var mx := 1;
+    var idx := 0;
+    while idx < |divisors|
+        invariant 0 <= idx <= |divisors|
+        invariant mx > 0 && n % mx == 0
+        invariant mx * k * (k + 1) / 2 <= n
+        decreases |divisors| - idx
+    {
+        var div := divisors[idx];
+        var checkSum := div * k * (k + 1) / 2;
+        if checkSum <= n && div > mx {
+            mx := div;
+        }
+        idx := idx + 1;
+    }
+
+    // Construct the sequence: mx*1, mx*2, ..., mx*(k-1), lastElement
+    result := [];
+    var j := 1;
+    while j < k
+        invariant 1 <= j <= k
+        invariant |result| == j - 1
+        invariant forall idx :: 0 <= idx < |result| ==> result[idx] == mx * (idx + 1)
+        invariant forall idx :: 0 <= idx < |result| ==> result[idx] > 0
+        invariant forall idx :: 0 <= idx < |result| - 1 ==> result[idx] < result[idx + 1]
+        decreases k - j
+    {
+        result := result + [mx * j];
+        j := j + 1;
+    }
+    var lastElement := n - mx * k * (k - 1) / 2;
+    
+    // Prove lastElement is valid
+    assert mx * k * (k + 1) / 2 <= n;
+    assert lastElement == n - mx * (k * (k - 1) / 2);
+    assert lastElement == n - mx * k * (k - 1) / 2;
+    assert lastElement >= n - n + mx * k * (k + 1) / 2 - mx * k * (k - 1) / 2;
+    assert lastElement >= mx * k * ((k + 1) - (k - 1)) / 2;
+    assert lastElement >= mx * k;
+    assert k > 0;
+    assert lastElement > mx * (k - 1);
+    assert lastElement > 0;
+    
+    result := result + [lastElement];
+}

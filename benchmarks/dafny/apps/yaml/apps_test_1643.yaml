@@ -1,0 +1,158 @@
+vc-description: |-
+  Given a binary string s, find a binary string t of the same length such that:
+  1. For every substring s[l..r], the longest non-decreasing subsequence length in s[l..r] 
+     equals the longest non-decreasing subsequence length in t[l..r]
+  2. The number of zeros in t is maximized
+
+vc-preamble: |-
+  predicate ValidBinaryString(s: string)
+  {
+      forall i :: 0 <= i < |s| ==> s[i] == '0' || s[i] == '1'
+  }
+  
+  function countZeros(s: string): int
+      ensures countZeros(s) >= 0
+      ensures countZeros(s) <= |s|
+  {
+      if |s| == 0 then 0
+      else if s[0] == '0' then 1 + countZeros(s[1..])
+      else countZeros(s[1..])
+  }
+  
+  function countOnes(s: string): int
+      ensures countOnes(s) >= 0
+      ensures countOnes(s) <= |s|
+  {
+      if |s| == 0 then 0
+      else if s[0] == '1' then 1 + countOnes(s[1..])
+      else countOnes(s[1..])
+  }
+  
+  function longestNonDecreasingSubseqLengthComplete(s: string): int
+      ensures longestNonDecreasingSubseqLengthComplete(s) >= (if |s| == 0 then 0 else 1)
+      ensures longestNonDecreasingSubseqLengthComplete(s) <= |s|
+  {
+      if |s| == 0 then 0
+      else if |s| == 1 then 1
+      else 
+          var countOnes := countOnes(s);
+          var countZeros := |s| - countOnes;
+          if countZeros == 0 then countOnes
+          else if countOnes == 0 then 1
+          else countZeros + countOnes
+  }
+  
+  function longestNonDecreasingSubseqLength(s: string, l: int, r: int): int
+      requires 0 <= l <= r < |s|
+      ensures longestNonDecreasingSubseqLength(s, l, r) >= 1
+      ensures longestNonDecreasingSubseqLength(s, l, r) <= r - l + 1
+  {
+      var sub := s[l..r+1];
+      longestNonDecreasingSubseqLengthComplete(sub)
+  }
+  
+  predicate BasicValidSolution(s: string, t: string)
+  {
+      && |s| == |t|
+      && ValidBinaryString(s)
+      && ValidBinaryString(t)
+      && (forall i :: 0 <= i < |s| ==> s[i] == '0' ==> t[i] == '0')
+      && (forall i :: 0 <= i < |s| ==> t[i] == '1' ==> s[i] == '1')
+  }
+
+vc-helpers: |-
+  
+
+vc-spec: |-
+  method solve(s: string) returns (result: string)
+      requires ValidBinaryString(s)
+      ensures BasicValidSolution(s, result)
+
+vc-code: |-
+  {
+      var n := |s|;
+      if n == 0 {
+          return "";
+      }
+  
+      var dp := new int[n + 2];
+      var ons := new int[n + 2];
+      var zs := new int[n + 2];
+  
+      // Initialize arrays
+      var i := 0;
+      while i < n + 2
+          invariant 0 <= i <= n + 2
+          invariant forall j :: 0 <= j < i ==> dp[j] == 0 && ons[j] == 0 && zs[j] == 0
+      {
+          dp[i] := 0;
+          ons[i] := 0;
+          zs[i] := 0;
+          i := i + 1;
+      }
+  
+      // Fill ons array (count of '1's from position i onwards)
+      i := n - 1;
+      while i >= 0
+          invariant -1 <= i <= n - 1
+          invariant forall j :: 0 <= j < n + 2 ==> ons[j] >= 0
+          invariant forall j :: 0 <= j < n + 2 ==> dp[j] >= 0
+      {
+          if s[i] == '1' {
+              ons[i] := ons[i] + 1;
+          }
+          if i != n - 1 {
+              ons[i] := ons[i] + ons[i + 1];
+          }
+          i := i - 1;
+      }
+  
+      // Fill dp array
+      var z := 0;
+      i := n - 1;
+      while i >= 0
+          invariant -1 <= i <= n - 1
+          invariant forall j :: 0 <= j < n + 2 ==> dp[j] >= 0
+          invariant forall j :: 0 <= j < n + 2 ==> ons[j] >= 0
+          invariant z >= 0
+      {
+          if s[i] == '1' {
+              dp[i] := if 1 + ons[i + 1] > z then 1 + ons[i + 1] else z;
+          } else {
+              var val1 := dp[i + 1] + 1;
+              var val2 := 1 + ons[i + 1];
+              dp[i] := if val1 > val2 then val1 else val2;
+              z := dp[i];
+          }
+          zs[i] := z;
+          i := i - 1;
+      }
+  
+      // Build answer
+      var ans := "";
+      i := 0;
+      while i < n
+          invariant 0 <= i <= n
+          invariant |ans| == i
+          invariant forall j :: 0 <= j < i ==> ans[j] == '0' || ans[j] == '1'
+          invariant forall j :: 0 <= j < i ==> s[j] == '0' ==> ans[j] == '0'
+          invariant forall j :: 0 <= j < i ==> ans[j] == '1' ==> s[j] == '1'
+      {
+          if s[i] == '1' {
+              var x := dp[i];
+              var y := 1 + dp[i + 1];
+              if x == y {
+                  ans := ans + "0";
+              } else {
+                  ans := ans + "1";
+              }
+          } else {
+              ans := ans + "0";
+          }
+          i := i + 1;
+      }
+  
+      return ans;
+  }
+
+vc-postamble: |-

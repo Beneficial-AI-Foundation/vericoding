@@ -1,0 +1,112 @@
+vc-description: |-
+  Given two sorted sequences A and B of length N, determine if B can be reordered 
+  so that A[i] ≠ B[i] for all positions i. If possible, output any valid reordering of B.
+
+vc-preamble: |-
+  predicate ValidInput(n: int, a: seq<int>, b: seq<int>)
+  {
+      |a| == n && |b| == n && n >= 1 &&
+      (forall i :: 0 <= i < n-1 ==> a[i] <= a[i+1]) &&
+      (forall i :: 0 <= i < n-1 ==> b[i] <= b[i+1])
+  }
+  
+  predicate ValidReordering(a: seq<int>, reordered_b: seq<int>)
+      requires |a| == |reordered_b|
+  {
+      forall i :: 0 <= i < |a| ==> a[i] != reordered_b[i]
+  }
+  
+  predicate IsReorderingOf(original: seq<int>, reordered: seq<int>)
+  {
+      |original| == |reordered| && multiset(original) == multiset(reordered)
+  }
+  
+  predicate IsRotation(original: seq<int>, rotated: seq<int>)
+  {
+      |original| == |rotated| && 
+      (exists k :: 0 <= k < |original| && rotated == original[k..] + original[..k])
+  }
+
+vc-helpers: |-
+  
+
+vc-spec: |-
+  method solve(n: int, a: seq<int>, b: seq<int>) returns (result: (bool, seq<int>))
+      requires ValidInput(n, a, b)
+      ensures result.0 ==> |result.1| == n
+      ensures result.0 ==> IsReorderingOf(b, result.1)
+      ensures result.0 ==> ValidReordering(a, result.1)
+      ensures !result.0 ==> result.1 == []
+      ensures result.0 ==> IsRotation(b, result.1)
+
+vc-code: |-
+  {
+      var ai, bi := 0, 0;
+      var stride := 0;
+  
+      while ai < n && bi < n {
+          var ax, bx := a[ai], b[bi];
+          if ax == bx {
+              var cnt := 2;
+  
+              ai := ai + 1;
+              while ai < n && a[ai] == ax {
+                  cnt := cnt + 1;
+                  ai := ai + 1;
+              }
+  
+              var bi_copy := bi;
+              bi := bi + 1;
+              while bi < n && b[bi] == bx {
+                  cnt := cnt + 1;
+                  bi := bi + 1;
+              }
+  
+              if cnt > n {
+                  result := (false, []);
+                  return;
+              }
+  
+              if stride < ai - bi_copy {
+                  stride := ai - bi_copy;
+              }
+          } else if ax < bx {
+              ai := ai + 1;
+          } else {
+              bi := bi + 1;
+          }
+      }
+  
+      stride := stride % n;
+      var rotated_b := b[stride..] + b[..stride];
+  
+      // Assert that rotation preserves multiset
+      assert multiset(rotated_b) == multiset(b[stride..]) + multiset(b[..stride]);
+  
+      // Help Dafny prove the multiset equality by showing that b == b[..stride] + b[stride..]
+      assert b == b[..stride] + b[stride..];
+      assert multiset(b) == multiset(b[..stride] + b[stride..]);
+      assert multiset(b[..stride] + b[stride..]) == multiset(b[..stride]) + multiset(b[stride..]);
+      assert multiset(b[stride..]) + multiset(b[..stride]) == multiset(b[..stride]) + multiset(b[stride..]);
+  
+      // Check if this rotation satisfies the constraint
+      var valid := true;
+      var i := 0;
+      while i < n && valid
+          invariant 0 <= i <= n
+          invariant valid ==> forall j :: 0 <= j < i ==> a[j] != rotated_b[j]
+      {
+          if a[i] == rotated_b[i] {
+              valid := false;
+          }
+          i := i + 1;
+      }
+  
+      if valid {
+          result := (true, rotated_b);
+      } else {
+          result := (false, []);
+      }
+  }
+
+vc-postamble: |-

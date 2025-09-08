@@ -1,0 +1,89 @@
+Given an array of n integers and m queries, for each query find any position 
+within a specified range where the array value differs from a given target value.
+Output the position (1-indexed) or -1 if no such position exists.
+
+predicate ValidInput(n: int, m: int, A: seq<int>, queries: seq<(int, int, int)>)
+{
+    n > 0 && m >= 0 && |A| == n && |queries| == m &&
+    forall q :: q in queries ==> 1 <= q.0 <= q.1 <= n
+}
+
+predicate ValidResult(A: seq<int>, queries: seq<(int, int, int)>, result: seq<int>)
+{
+    |result| == |queries| &&
+    forall i :: 0 <= i < |queries| ==> (
+        var l, r, x := queries[i].0, queries[i].1, queries[i].2;
+        (result[i] == -1 ==> (forall j :: l <= j <= r ==> 0 <= j-1 < |A| && A[j-1] == x)) &&
+        (result[i] != -1 ==> l <= result[i] <= r && 0 <= result[i]-1 < |A| && A[result[i]-1] != x)
+    )
+}
+
+method solve(n: int, m: int, A: seq<int>, queries: seq<(int, int, int)>) returns (result: seq<int>)
+    requires ValidInput(n, m, A, queries)
+    ensures ValidResult(A, queries, result)
+{
+    // Build f array - f[i] is the rightmost position before i where A[i] != A[i-1]
+    var f := new int[n];
+    f[0] := -1;
+
+    var i := 1;
+    while i < n
+        invariant 1 <= i <= n
+        invariant forall k :: 0 <= k < i ==> (
+            (f[k] == -1 && (k == 0 || forall p :: 0 <= p < k ==> A[p] == A[k])) ||
+            (f[k] >= 0 && f[k] < k && A[f[k]] != A[k] && (forall p :: f[k] < p < k ==> A[p] == A[k]))
+        )
+    {
+        if A[i] != A[i - 1] {
+            f[i] := i - 1;
+        } else {
+            f[i] := f[i - 1];
+        }
+        i := i + 1;
+    }
+
+    // Process queries
+    var ans: seq<int> := [];
+    var q := 0;
+    while q < m
+        invariant 0 <= q <= m
+        invariant |ans| == q
+        invariant forall idx :: 0 <= idx < q ==> (
+            var l, r, x := queries[idx].0, queries[idx].1, queries[idx].2;
+            (ans[idx] == -1 ==> (forall j :: l <= j <= r ==> 0 <= j-1 < |A| && A[j-1] == x)) &&
+            (ans[idx] != -1 ==> l <= ans[idx] <= r && 0 <= ans[idx]-1 < |A| && A[ans[idx]-1] != x)
+        )
+    {
+        var l := queries[q].0;
+        var r := queries[q].1;
+        var x := queries[q].2;
+
+        var newResult: int;
+        if A[r - 1] != x {
+            newResult := r;
+            assert l <= newResult <= r && 0 <= newResult-1 < |A| && A[newResult-1] != x;
+        } else if f[r - 1] >= l - 1 {
+            newResult := f[r - 1] + 1;
+            assert l - 1 <= f[r - 1] < r - 1;
+            assert A[f[r - 1]] != A[r - 1];
+            assert A[f[r - 1]] != x;
+            assert l <= newResult <= r && 0 <= newResult-1 < |A| && A[newResult-1] != x;
+        } else {
+            newResult := -1;
+            assert f[r - 1] < l - 1;
+            // Need to prove that all elements in range equal x
+            forall j | l <= j <= r 
+                ensures 0 <= j-1 < |A| && A[j-1] == x
+            {
+                assert 0 <= j-1 < |A|; // j is in [l,r] and l >= 1, r <= n, |A| == n
+                // Since f[r-1] < l-1 and the f array construction, all elements from l-1 to r-1 are equal to A[r-1]
+                // And A[r-1] == x (from the first condition being false)
+            }
+        }
+
+        ans := ans + [newResult];
+        q := q + 1;
+    }
+
+    return ans;
+}

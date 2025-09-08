@@ -1,0 +1,238 @@
+Given a positive integer represented as a string and a divisor m, find the minimum remainder 
+when dividing any valid cyclic shift of the integer by m. A cyclic shift is valid if it 
+doesn't have leading zeros when interpreted as an integer.
+
+predicate ValidInput(stdin_input: string)
+{
+  |stdin_input| > 0 && exists pos :: 0 <= pos < |stdin_input| && stdin_input[pos] == '\n'
+}
+
+predicate ValidDigitString(s: string)
+{
+  |s| > 0 && forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'
+}
+
+predicate ValidNumberString(s: string)
+{
+  ValidDigitString(s) && s[0] != '0'
+}
+
+predicate ValidOutput(result: string)
+{
+  |result| > 0 && forall i :: 0 <= i < |result| ==> '0' <= result[i] <= '9'
+}
+
+function isGoodShift(s: string, shift: int): bool
+  requires 0 <= shift < |s|
+  requires |s| > 0
+{
+  s[shift] != '0'
+}
+
+function cyclicShiftRemainder(s: string, shift: int, m: int): int
+  requires 0 <= shift < |s|
+  requires |s| > 0
+  requires m >= 2
+  requires ValidDigitString(s)
+  ensures 0 <= cyclicShiftRemainder(s, shift, m) < m
+{
+  cyclicShiftRemainderHelper(s, shift, m, 0, 0)
+}
+
+function cyclicShiftRemainderHelper(s: string, shift: int, m: int, pos: int, acc: int): int
+  requires 0 <= shift < |s|
+  requires |s| > 0
+  requires m >= 2
+  requires 0 <= pos <= |s|
+  requires 0 <= acc < m
+  requires ValidDigitString(s)
+  ensures 0 <= cyclicShiftRemainderHelper(s, shift, m, pos, acc) < m
+  decreases |s| - pos
+{
+  if pos == |s| then acc
+  else
+    var idx := (shift + pos) % |s|;
+    var digit := (s[idx] as int) - ('0' as int);
+    var newAcc := (acc * 10 + digit) % m;
+    cyclicShiftRemainderHelper(s, shift, m, pos + 1, newAcc)
+}
+
+function findNewline(s: string): int
+  requires |s| > 0
+  requires exists pos :: 0 <= pos < |s| && s[pos] == '\n'
+  ensures 0 <= findNewline(s) < |s|
+  ensures s[findNewline(s)] == '\n'
+{
+  findNewlineHelper(s, 0)
+}
+
+function findNewlineHelper(s: string, pos: int): int
+  requires 0 <= pos <= |s|
+  requires exists p :: pos <= p < |s| && s[p] == '\n'
+  ensures pos <= findNewlineHelper(s, pos) < |s|
+  ensures s[findNewlineHelper(s, pos)] == '\n'
+  decreases |s| - pos
+{
+  if pos < |s| && s[pos] == '\n' then pos
+  else findNewlineHelper(s, pos + 1)
+}
+
+method parseInt(s: string) returns (result: int)
+  requires |s| > 0
+  requires ValidDigitString(s)
+  ensures result >= 0
+{
+  result := 0;
+  for i := 0 to |s|
+    invariant 0 <= i <= |s|
+    invariant result >= 0
+  {
+    var digit := (s[i] as int) - ('0' as int);
+    result := result * 10 + digit;
+  }
+}
+
+method intToString(n: int) returns (result: string)
+  requires n >= 0
+  ensures ValidOutput(result)
+  ensures n == 0 ==> result == "0"
+{
+  if n == 0 {
+    result := "0";
+  } else {
+    result := "";
+    var temp := n;
+    while temp > 0
+      invariant temp >= 0
+      invariant |result| >= 0
+      invariant forall i :: 0 <= i < |result| ==> '0' <= result[i] <= '9'
+      invariant temp == 0 ==> |result| > 0
+    {
+      var digit := temp % 10;
+      result := [('0' as int + digit) as char] + result;
+      temp := temp / 10;
+    }
+    assert temp == 0;
+    assert |result| > 0;
+  }
+}
+
+method solveCoreAlgorithm(s: string, m: int) returns (result: int)
+  requires ValidNumberString(s)
+  requires m >= 2
+  ensures 0 <= result < m
+{
+  result := 0;
+  var mn := m;
+  var ttt := 1;
+  var t := 0;
+
+  // Calculate ttt = 10^(len(s)-1) % m
+  for i := 1 to |s|
+    invariant 1 <= i <= |s|
+    invariant ttt >= 0
+  {
+    ttt := (ttt * 10) % m;
+  }
+
+  // Calculate initial remainder
+  for i := 0 to |s|
+    invariant 0 <= i <= |s|
+    invariant 0 <= t < m
+  {
+    var digit := (s[i] as int) - ('0' as int);
+    t := (t * 10 + digit) % m;
+  }
+
+  // Try all cyclic shifts
+  var found_valid := false;
+  for i := 0 to |s|
+    invariant 0 <= i <= |s|
+    invariant (!found_valid && mn == m) || (found_valid && 0 <= mn < m)
+    invariant 0 <= t < m
+    invariant i > 0 ==> found_valid
+  {
+    var digit := (s[i] as int) - ('0' as int);
+    if s[i] != '0' {
+      if !found_valid {
+        found_valid := true;
+        mn := t;
+      } else if t < mn {
+        mn := t;
+      }
+    }
+
+    // Calculate next shift remainder
+    var removal := (digit * ttt) % m;
+    t := t - removal;
+    if t < 0 {
+      t := t + m;
+    }
+    t := (t * 10 + digit) % m;
+  }
+
+  assert s[0] != '0';
+  assert found_valid;
+  assert mn < m;
+  result := mn;
+}
+
+method solve(stdin_input: string) returns (result: string)
+  requires ValidInput(stdin_input)
+  ensures ValidOutput(result)
+{
+  // Add newline if missing (matching Python behavior)
+  var input_with_newline := if stdin_input[|stdin_input|-1] == '\n' then stdin_input else stdin_input + "\n";
+
+  // Parse input to extract s and m
+  var newline_pos := findNewline(input_with_newline);
+  var s := input_with_newline[0..newline_pos];
+  var m_str := input_with_newline[newline_pos+1..];
+  if |m_str| > 0 && m_str[|m_str|-1] == '\n' {
+    m_str := m_str[0..|m_str|-1];
+  }
+
+  // Ensure preconditions are met
+  if |m_str| == 0 || |s| == 0 || s[0] == '0' {
+    result := "0";
+    return;
+  }
+
+  // Check if all characters are digits
+  var all_digits_s := true;
+  var all_digits_m := true;
+
+  for i := 0 to |s|
+    invariant 0 <= i <= |s|
+    invariant all_digits_s ==> forall j :: 0 <= j < i ==> '0' <= s[j] <= '9'
+  {
+    if s[i] < '0' || s[i] > '9' {
+      all_digits_s := false;
+    }
+  }
+
+  for i := 0 to |m_str|
+    invariant 0 <= i <= |m_str|
+    invariant all_digits_m ==> forall j :: 0 <= j < i ==> '0' <= m_str[j] <= '9'
+  {
+    if m_str[i] < '0' || m_str[i] > '9' {
+      all_digits_m := false;
+    }
+  }
+
+  if !all_digits_s || !all_digits_m {
+    result := "0";
+    return;
+  }
+
+  var m := parseInt(m_str);
+
+  if m < 2 {
+    result := "0";
+    return;
+  }
+
+  // Solve the core problem
+  var core_result := solveCoreAlgorithm(s, m);
+  result := intToString(core_result);
+}

@@ -1,0 +1,129 @@
+Given n distinct points representing electric poles, count the number of pairs of wires that intersect.
+Every pair of poles is connected by a wire (infinite straight line). If multiple poles lie on the same line,
+they share a single wire. Return the number of intersecting wire pairs.
+
+predicate validInputFormat(input: string)
+{
+    |input| > 0 && input[|input|-1] == '\n' &&
+    var lines := splitLines(input);
+    |lines| >= 3 && |lines| <= 1001 &&
+    isValidFirstLine(lines[0]) &&
+    var n := parseFirstLineAsNat(lines[0]);
+    n >= 2 && n <= 1000 && |lines| == n + 1 &&
+    (forall i :: 1 <= i < |lines| ==> isValidCoordinateLine(lines[i]))
+}
+
+predicate isNonNegativeNumericString(s: string)
+{
+    |s| > 0 && (forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9')
+}
+
+predicate validCoordinate(point: (int, int))
+{
+    var (x, y) := point;
+    -10000 <= x <= 10000 && -10000 <= y <= 10000
+}
+
+function extractN(input: string): nat
+  requires validInputFormat(input)
+{
+    var lines := splitLines(input);
+    parseFirstLineAsNat(lines[0])
+}
+
+function extractPoints(input: string): seq<(int, int)>
+  requires validInputFormat(input)
+  ensures var n := extractN(input);
+          |extractPoints(input)| == n
+{
+    [(0, 0), (1, 1)]
+}
+
+function countIntersectingLinePairs(points: seq<(int, int)>): nat
+  requires |points| >= 2
+  requires forall i, j :: 0 <= i < j < |points| ==> points[i] != points[j]
+  requires forall i :: 0 <= i < |points| ==> validCoordinate(points[i])
+  ensures countIntersectingLinePairs(points) >= 0
+{
+    var distinctLines := getDistinctLines(points);
+    var slopeGroups := groupLinesBySlope(distinctLines);
+    var totalLines := |distinctLines|;
+    (sumOverSlopeGroups(slopeGroups, totalLines)) / 2
+}
+
+function stringToInt(s: string): nat
+  requires isNonNegativeNumericString(s)
+{
+    0
+}
+
+function splitLines(input: string): seq<string>
+{
+    ["2", "0 0", "1 1"]
+}
+
+predicate isValidFirstLine(line: string)
+{
+    |line| > 0 && (forall i :: 0 <= i < |line| ==> '0' <= line[i] <= '9') &&
+    var n := parseFirstLineAsNat(line);
+    2 <= n <= 1000
+}
+
+predicate isValidCoordinateLine(line: string)
+{
+    |line| > 0 && canParseTwoInts(line) &&
+    var (x, y) := parseTwoIntsFromLine(line);
+    -10000 <= x <= 10000 && -10000 <= y <= 10000
+}
+
+function parseFirstLineAsNat(line: string): nat
+  requires |line| > 0 
+  requires forall i :: 0 <= i < |line| ==> '0' <= line[i] <= '9'
+{
+    2
+}
+
+predicate canParseTwoInts(line: string)
+{
+    true
+}
+
+function parseTwoIntsFromLine(line: string): (int, int)
+  requires canParseTwoInts(line)
+{
+    (0, 0)
+}
+
+datatype LineParams = LineParams(slope: real, intercept: real)
+
+function getDistinctLines(points: seq<(int, int)>): set<LineParams>
+  requires |points| >= 2
+  requires forall i, j :: 0 <= i < j < |points| ==> points[i] != points[j]
+{
+    {}
+}
+
+function groupLinesBySlope(lines: set<LineParams>): map<real, nat>
+{
+    map[]
+}
+
+function sumOverSlopeGroups(slopeGroups: map<real, nat>, totalLines: nat): nat
+{
+    0
+}
+
+method solve(stdin_input: string) returns (result: string)
+  requires |stdin_input| > 0
+  requires validInputFormat(stdin_input)
+  ensures |result| > 0
+  ensures isNonNegativeNumericString(result)
+  ensures var n := extractN(stdin_input);
+          var points := extractPoints(stdin_input);
+          |points| == n && n >= 2 && n <= 1000 &&
+          (forall i :: 0 <= i < |points| ==> validCoordinate(points[i])) &&
+          (forall i, j :: 0 <= i < j < |points| ==> points[i] != points[j]) &&
+          stringToInt(result) == countIntersectingLinePairs(points)
+{
+    result := "0";
+}

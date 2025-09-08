@@ -1,0 +1,116 @@
+Find the minimum number of attacks needed to deal at least H total damage to a monster
+using N katanas. Each katana can be wielded (deals a_i damage, repeatable) or 
+thrown (deals b_i damage, once only). Constraints: a_i <= b_i, all values positive.
+
+predicate ValidInput(N: int, H: int, A: seq<int>, B: seq<int>)
+{
+    |A| == N && |B| == N && N > 0 && H > 0 &&
+    (forall i :: 0 <= i < N ==> A[i] > 0 && B[i] > 0) &&
+    (forall i :: 0 <= i < N ==> A[i] <= B[i])
+}
+
+function sumSeq(s: seq<int>): int
+{
+    if |s| == 0 then 0 else s[0] + sumSeq(s[1..])
+}
+
+predicate MaxWieldExists(A: seq<int>, maxA: int)
+{
+    maxA in A && (forall i :: 0 <= i < |A| ==> A[i] <= maxA)
+}
+
+method solve(N: int, H: int, A: seq<int>, B: seq<int>) returns (result: int)
+  requires ValidInput(N, H, A, B)
+  ensures result > 0
+{
+    // Find max of A
+    var a := A[0];
+    var i := 1;
+    while i < N
+      invariant 1 <= i <= N
+      invariant a in A
+      invariant forall k :: 0 <= k < i ==> A[k] <= a
+      invariant a > 0
+    {
+        if A[i] > a {
+            a := A[i];
+        }
+        i := i + 1;
+    }
+
+    // Sort B in descending order using simple selection sort
+    var sortedB := B;
+    i := 0;
+    while i < N
+      invariant 0 <= i <= N
+      invariant |sortedB| == N
+      invariant multiset(sortedB) == multiset(B)
+      invariant forall k, l :: 0 <= k < l < i ==> sortedB[k] >= sortedB[l]
+      invariant forall k, l :: 0 <= k < i && i <= l < N ==> sortedB[k] >= sortedB[l]
+    {
+        var maxIdx := i;
+        var j := i + 1;
+        while j < N
+          invariant i <= maxIdx < N
+          invariant i + 1 <= j <= N
+          invariant forall k :: i <= k < j ==> sortedB[k] <= sortedB[maxIdx]
+        {
+            if sortedB[j] > sortedB[maxIdx] {
+                maxIdx := j;
+            }
+            j := j + 1;
+        }
+        if maxIdx != i {
+            var temp := sortedB[i];
+            sortedB := sortedB[i := sortedB[maxIdx]][maxIdx := temp];
+        }
+        i := i + 1;
+    }
+
+    var ans := 0;
+    var remainingH := H;
+    var throwCount := 0;
+    var totalThrowDamage := 0;
+
+    i := 0;
+    while i < N && remainingH > 0
+      invariant 0 <= i <= N
+      invariant ans >= 0
+      invariant throwCount >= 0
+      invariant totalThrowDamage >= 0
+      invariant throwCount <= ans
+      invariant throwCount <= i
+      invariant ans == throwCount
+      invariant totalThrowDamage + remainingH == H
+      invariant remainingH <= H
+      invariant (remainingH < H) ==> (throwCount > 0)
+    {
+        if a < sortedB[i] {
+            remainingH := remainingH - sortedB[i];
+            totalThrowDamage := totalThrowDamage + sortedB[i];
+            ans := ans + 1;
+            throwCount := throwCount + 1;
+        }
+        i := i + 1;
+    }
+
+    if remainingH > 0 {
+        // Ceiling division: (remainingH + a - 1) / a
+        assert a > 0;
+        assert remainingH > 0;
+        var wieldAttacks := (remainingH + a - 1) / a;
+        assert wieldAttacks >= 1;
+        ans := ans + wieldAttacks;
+    } else {
+        // remainingH <= 0 means we dealt at least H damage with throws
+        // Since remainingH < H (because we subtracted positive values), throwCount > 0
+        assert remainingH <= 0;
+        assert totalThrowDamage >= H;
+        assert remainingH < H;  // We must have subtracted something positive
+        assert throwCount > 0;
+        assert ans > 0;
+    }
+
+    assert ans > 0;
+    result := ans;
+}

@@ -1,0 +1,209 @@
+vc-description: |-
+  Given two binary strings x and y representing integers f(x) and f(y), find the non-negative integer k 
+  that minimizes the lexicographic value of rev_k, where s_k = f(x) + f(y) × 2^k and rev_k is the 
+  binary representation of s_k written in reverse order.
+
+vc-preamble: |-
+  predicate ValidInput(input: string)
+  {
+      var lines := SplitLines(input);
+      |lines| >= 1 && 
+      IsValidNumber(lines[0]) &&
+      (var T := StringToInt(lines[0]);
+       T >= 0 && |lines| >= 2 * T + 1 &&
+       (forall i :: 1 <= i < 2 * T + 1 ==> i < |lines| && IsBinaryString(lines[i]) && ContainsOne(lines[i])))
+  }
+  
+  predicate ValidOutput(output: string, input: string)
+  {
+      var lines := SplitLines(input);
+      |lines| >= 1 ==>
+      var T := StringToInt(lines[0]);
+      var outputLines := if output == "" then [] else SplitLines(output);
+      |outputLines| == T &&
+      (forall i :: 0 <= i < T ==> IsValidNumber(outputLines[i]))
+  }
+  
+  predicate CorrectComputation(output: string, input: string)
+  {
+      var lines := SplitLines(input);
+      |lines| >= 1 ==>
+      var T := StringToInt(lines[0]);
+      var outputLines := if output == "" then [] else SplitLines(output);
+      |outputLines| == T &&
+      (forall i :: 0 <= i < T && 1 + 2*i < |lines| && 2 + 2*i < |lines| ==> 
+          var x := lines[1 + 2*i];
+          var y := lines[2 + 2*i];
+          var revX := Reverse(x);
+          var revY := Reverse(y);
+          var start := IndexOf(revY, '1');
+          start >= 0 &&
+          var offset := IndexOfFrom(revX, '1', start);
+          StringToInt(outputLines[i]) == offset)
+  }
+  
+  predicate IsBinaryString(s: string)
+  {
+      |s| > 0 && (forall i :: 0 <= i < |s| ==> s[i] == '0' || s[i] == '1')
+  }
+  
+  predicate ContainsOne(s: string)
+  {
+      exists i :: 0 <= i < |s| && s[i] == '1'
+  }
+  
+  predicate IsValidNumber(s: string)
+  {
+      |s| > 0 && (forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9')
+  }
+
+vc-helpers: |-
+  function Reverse(s: string): string
+  {
+      if |s| == 0 then "" else Reverse(s[1..]) + [s[0]]
+  }
+  
+  function IndexOf(s: string, c: char): int
+      ensures IndexOf(s, c) >= 0
+  {
+      IndexOfHelper(s, c, 0)
+  }
+  
+  function IndexOfHelper(s: string, c: char, index: int): int
+      requires 0 <= index
+      ensures IndexOfHelper(s, c, index) >= 0
+      decreases |s| - index
+  {
+      if index >= |s| then 0
+      else if s[index] == c then index
+      else IndexOfHelper(s, c, index + 1)
+  }
+  
+  function IndexOfFrom(s: string, c: char, start: int): int
+      requires 0 <= start
+  {
+      IndexOfFromHelper(s, c, start, 0)
+  }
+  
+  function IndexOfFromHelper(s: string, c: char, start: int, offset: int): int
+      requires 0 <= start
+      requires 0 <= offset
+      decreases |s| - start - offset
+  {
+      var pos := start + offset;
+      if pos >= |s| then 0
+      else if s[pos] == c then offset
+      else IndexOfFromHelper(s, c, start, offset + 1)
+  }
+  
+  function SplitLines(input: string): seq<string>
+  {
+      SplitByChar(input, '\n')
+  }
+  
+  function SplitByChar(s: string, delimiter: char): seq<string>
+  {
+      if |s| == 0 then [""]
+      else SplitByCharHelper(s, delimiter, "", [])
+  }
+  
+  function SplitByCharHelper(s: string, delimiter: char, current: string, acc: seq<string>): seq<string>
+      decreases |s|
+  {
+      if |s| == 0 then
+          acc + [current]
+      else if s[0] == delimiter then
+          SplitByCharHelper(s[1..], delimiter, "", acc + [current])
+      else
+          SplitByCharHelper(s[1..], delimiter, current + [s[0]], acc)
+  }
+  
+  function StringToInt(s: string): int
+  {
+      StringToIntHelper(s, 0, 0)
+  }
+  
+  function StringToIntHelper(s: string, index: int, acc: int): int
+      requires 0 <= index
+      decreases |s| - index
+  {
+      if index >= |s| then acc
+      else if '0' <= s[index] <= '9' then
+          StringToIntHelper(s, index + 1, acc * 10 + (s[index] as int - '0' as int))
+      else acc
+  }
+  
+  function IntToString(n: int): string
+  {
+      if n == 0 then "0"
+      else if n < 0 then "-" + IntToStringPos(-n)
+      else IntToStringPos(n)
+  }
+  
+  function IntToStringPos(n: int): string
+      requires n >= 0
+      decreases n
+  {
+      if n == 0 then ""
+      else IntToStringPos(n / 10) + [(n % 10 + '0' as int) as char]
+  }
+
+vc-spec: |-
+  method solve(input: string) returns (output: string)
+      requires |input| > 0
+      requires input[|input|-1] == '\n'
+      requires ValidInput(input)
+      ensures ValidOutput(output, input)
+      ensures |output| > 0 ==> output[|output|-1] != '\n'
+      ensures CorrectComputation(output, input)
+
+vc-code: |-
+  {
+      var lines := SplitLines(input);
+      var T := StringToInt(lines[0]);
+      var result := "";
+      var i := 1;
+  
+      while i < 2*T + 1 && i + 1 < |lines|
+          invariant 1 <= i <= 2*T + 1
+          invariant i % 2 == 1
+          invariant var processed := (i - 1) / 2;
+                    var outputLines := if result == "" then [] else SplitLines(result);
+                    |outputLines| == processed &&
+                    (forall j :: 0 <= j < processed ==> IsValidNumber(outputLines[j]))
+          invariant result == "" || result[|result|-1] != '\n'
+          invariant var processed := (i - 1) / 2;
+                    var outputLines := if result == "" then [] else SplitLines(result);
+                    forall testIndex :: 0 <= testIndex < processed ==>
+                      var k := 1 + 2 * testIndex;
+                      k + 1 < |lines| &&
+                      var x := lines[k];
+                      var y := lines[k + 1];
+                      var revX := Reverse(x);
+                      var revY := Reverse(y);
+                      var start := IndexOf(revY, '1');
+                      start >= 0 &&
+                      var offset := IndexOfFrom(revX, '1', start);
+                      StringToInt(outputLines[testIndex]) == offset
+      {
+          var x := Reverse(lines[i]);
+          var tmpCall1 := Reverse(lines[i + 1]);
+          var y := tmpCall1;
+  
+          var start := IndexOf(y, '1');
+          assert start >= 0;
+          var offset := IndexOfFrom(x, '1', start);
+  
+          if i > 1 {
+              result := result + "\n";
+          }
+          var tmpCall2 := IntToString(offset);
+          result := result + tmpCall2;
+  
+          i := i + 2;
+      }
+  
+      return result;
+  }
+
+vc-postamble: |-

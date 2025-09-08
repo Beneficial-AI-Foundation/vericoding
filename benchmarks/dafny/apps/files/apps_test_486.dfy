@@ -1,0 +1,48 @@
+Given a positive integer n, find the maximum product of digits among all integers from 1 to n inclusive.
+The product of digits is calculated by multiplying all individual digits together.
+
+function ProductOfDigits(x: int): int
+  requires x >= 0
+{
+  if x == 0 then 1
+  else if x < 10 then x
+  else (x % 10) * ProductOfDigits(x / 10)
+}
+
+function MaxProductOfDigitsInRange(n: int): int
+  requires n >= 1
+{
+  if n == 1 then 1
+  else
+    var current := ProductOfDigits(n);
+    var rest := MaxProductOfDigitsInRange(n - 1);
+    if current > rest then current else rest
+}
+
+method solve(n: int) returns (result: int)
+  requires n >= 1
+  ensures result == MaxProductOfDigitsInRange(n)
+  ensures result >= 1
+  ensures forall k :: 1 <= k <= n ==> ProductOfDigits(k) <= result
+  ensures exists k :: 1 <= k <= n && ProductOfDigits(k) == result
+{
+  result := ProductOfDigits(1);
+  var maxIndex := 1;
+  var i := 2;
+
+  while i <= n
+    invariant 2 <= i <= n + 1
+    invariant result >= 1
+    invariant 1 <= maxIndex <= i - 1
+    invariant ProductOfDigits(maxIndex) == result
+    invariant forall k :: 1 <= k <= i - 1 ==> ProductOfDigits(k) <= result
+    invariant result == MaxProductOfDigitsInRange(i - 1)
+  {
+    var current := ProductOfDigits(i);
+    if current > result {
+      result := current;
+      maxIndex := i;
+    }
+    i := i + 1;
+  }
+}
