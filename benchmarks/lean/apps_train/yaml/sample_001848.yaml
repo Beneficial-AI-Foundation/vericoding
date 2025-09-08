@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Implement the StreamChecker class as follows:
   
   StreamChecker(words): Constructor, init the data structure with the given words.
@@ -26,6 +27,7 @@ vc-description: |-
   Words will only consist of lowercase English letters.
   Queries will only consist of lowercase English letters.
   The number of queries is at most 40000.
+  -/
 
 vc-preamble: |-
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Fans of The Wire will appreciate this one. 
   For those that haven't seen the show, the Barksdale Organization has a simple method for encoding telephone numbers exchanged via pagers: "Jump to the other side of the 5 on the keypad, and swap 5's and 0's."
   
@@ -18,6 +19,7 @@ vc-description: |-
   Detective, we're hot on their trail! We have a big pile of encoded messages here to use as evidence, but it would take way too long to decode by hand. Could you write a program to do this for us?
   
   Write a funciton called decode(). Given an encoded string, return the actual phone number in string form. Don't worry about input validation, parenthesies, or hyphens.
+  -/
 
 vc-preamble: |-
 
@@ -51,23 +53,23 @@ vc-theorems: |-
       s.get i = s.get j → 
       (decode s).get i = (decode s).get j := sorry
   
-  /--
+  /-
   info: '6957678787'
   -/
-  #guard_msgs in
-  #eval decode "4103432323"
+  -- #guard_msgs in
+  -- #eval decode "4103432323"
   
-  /--
+  /-
   info: '6957672135'
   -/
-  #guard_msgs in
-  #eval decode "4103438970"
+  -- #guard_msgs in
+  -- #eval decode "4103438970"
   
-  /--
+  /-
   info: '6956750342'
   -/
-  #guard_msgs in
-  #eval decode "4104305768"
+  -- #guard_msgs in
+  -- #eval decode "4104305768"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

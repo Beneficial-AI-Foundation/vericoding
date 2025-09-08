@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   For a vector $\vec{v} = (x, y)$, define $|v| = \sqrt{x^2 + y^2}$.
   
   Allen had a bit too much to drink at the bar, which is at the origin. There are $n$ vectors $\vec{v_1}, \vec{v_2}, \cdots, \vec{v_n}$. Allen will make $n$ moves. As Allen's sense of direction is impaired, during the $i$-th move he will either move in the direction $\vec{v_i}$ or $-\vec{v_i}$. In other words, if his position is currently $p = (x, y)$, he will either move to $p + \vec{v_i}$ or $p - \vec{v_i}$.
@@ -47,6 +48,7 @@ vc-description: |-
   
   Output
   1 1 1 1 1 1 1 -1
+  -/
 
 vc-preamble: |-
   def find_path (n : Nat) (vectors : List (Int × Int)) : List Int :=

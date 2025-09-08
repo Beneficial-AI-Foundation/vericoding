@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Two players decided to play one interesting card game.
   
   There is a deck of $n$ cards, with values from $1$ to $n$. The values of cards are pairwise different (this means that no two different cards have equal values). At the beginning of the game, the deck is completely distributed between players such that each player has at least one card. 
@@ -52,6 +53,7 @@ vc-description: |-
   In the first test case of the example, there is only one possible move for every player: the first player will put $2$, the second player will put $1$. $2>1$, so the first player will get both cards and will win.
   
   In the second test case of the example, it can be shown that it is the second player who has a winning strategy. One possible flow of the game is illustrated in the statement.
+  -/
 
 vc-preamble: |-
   def maximum (l : List Int) : Int :=
@@ -89,23 +91,23 @@ vc-theorems: |-
     solve_card_game n arr1.length arr2.length arr1 arr2 = false :=
   sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval solve_card_game 2 1 1 [2] [1]
+  -- #guard_msgs in
+  -- #eval solve_card_game 2 1 1 [2] [1]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval solve_card_game 5 2 3 [2, 3] [1, 4, 5]
+  -- #guard_msgs in
+  -- #eval solve_card_game 5 2 3 [2, 3] [1, 4, 5]
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval solve_card_game 3 1 2 [3] [1, 2]
+  -- #guard_msgs in
+  -- #eval solve_card_game 3 1 2 [3] [1, 2]
 
 vc-postamble: |-
   -- Apps difficulty: interview

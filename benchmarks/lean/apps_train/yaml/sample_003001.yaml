@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Number of people in the bus
   There is a bus moving in the city, and it takes and drop some people in each bus stop.
   
@@ -11,6 +12,7 @@ vc-description: |-
   Please keep in mind that the test cases ensure that the number of people in the bus is always >= 0. So the return integer can't be negative.
   
   The second value in the first integer array is 0, since the bus is empty in the first bus stop.
+  -/
 
 vc-preamble: |-
   def List.sum : List Int → Int
@@ -41,23 +43,23 @@ vc-theorems: |-
     number stops = List.sum (stops.map (fun s => s.1 - s.2)) :=
     sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval number [[10, 0], [3, 5], [5, 8]]
+  -- #guard_msgs in
+  -- #eval number [[10, 0], [3, 5], [5, 8]]
   
-  /--
+  /-
   info: 17
   -/
-  #guard_msgs in
-  #eval number [[3, 0], [9, 1], [4, 10], [12, 2], [6, 1], [7, 10]]
+  -- #guard_msgs in
+  -- #eval number [[3, 0], [9, 1], [4, 10], [12, 2], [6, 1], [7, 10]]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval number [[0, 0]]
+  -- #guard_msgs in
+  -- #eval number [[0, 0]]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

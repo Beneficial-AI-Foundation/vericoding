@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There is a field with plants — a grid with $N$ rows (numbered $1$ through $N$) and $M$ columns (numbered $1$ through $M$); out of its $NM$ cells, $K$ cells contain plants, while the rest contain weeds. Two cells are adjacent if they have a common side.
   You want to build fences in the field in such a way that the following conditions hold for each cell that contains a plant:
   - it is possible to move from this cell to each adjacent cell containing a plant without crossing any fences
@@ -52,6 +53,7 @@ vc-description: |-
   xxx.
   
   An optimal solution is to build fences around the topmost plant (with length $4$), around the remaining eight plants (with length $12$) and around the hole between them (with length $4$). The total length is $4+12+4 = 20$.
+  -/
 
 vc-preamble: |-
 

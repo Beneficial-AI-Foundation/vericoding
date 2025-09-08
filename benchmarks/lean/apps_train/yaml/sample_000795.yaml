@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Johnny has some difficulty memorizing the small prime numbers. So, his computer science teacher has asked him to play with the following puzzle game frequently.
   The puzzle is a 3x3 board consisting of numbers from 1 to 9. The objective of the puzzle is to swap the tiles until the following final state is reached:
   1 2 3
@@ -33,6 +34,7 @@ vc-description: |-
   
   -----Output details-----
   The possible 6 steps in the first test case are described in the following figure:
+  -/
 
 vc-preamble: |-
 
@@ -65,23 +67,23 @@ vc-theorems: |-
     solve_prime_grid_puzzle grid = -1 :=
   sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval solve_prime_grid_puzzle [7, 3, 2, 4, 1, 5, 6, 8, 9]
+  -- #guard_msgs in
+  -- #eval solve_prime_grid_puzzle [7, 3, 2, 4, 1, 5, 6, 8, 9]
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval solve_prime_grid_puzzle [9, 8, 5, 2, 4, 1, 3, 7, 6]
+  -- #guard_msgs in
+  -- #eval solve_prime_grid_puzzle [9, 8, 5, 2, 4, 1, 3, 7, 6]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve_prime_grid_puzzle [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  -- #guard_msgs in
+  -- #eval solve_prime_grid_puzzle [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    You are given a decimal number `n` as a **string**. Transform it into an array of numbers (given as **strings** again), such that each number has only one nonzero digit and their sum equals n.
   
@@ -43,6 +44,7 @@ vc-description: |-
   ```
   
    For `n = "0"`, the output should be `[]`
+  -/
 
 vc-preamble: |-
 
@@ -80,23 +82,23 @@ vc-theorems: |-
     split_exp "0.0" = [] ∧
     split_exp "00.00" = [] := sorry
   
-  /--
+  /-
   info: ['7000000', '900000', '70000', '500', '20', '1', '.5', '.05', '.004', '.0004']
   -/
-  #guard_msgs in
-  #eval split_exp "7970521.5544"
+  -- #guard_msgs in
+  -- #eval split_exp "7970521.5544"
   
-  /--
+  /-
   info: ['7000000', '400000', '90000', '6000', '300', '10', '4']
   -/
-  #guard_msgs in
-  #eval split_exp "7496314"
+  -- #guard_msgs in
+  -- #eval split_exp "7496314"
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval split_exp "0"
+  -- #guard_msgs in
+  -- #eval split_exp "0"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

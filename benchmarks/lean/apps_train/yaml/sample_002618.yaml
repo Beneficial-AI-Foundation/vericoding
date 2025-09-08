@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a method that will search an array of strings for all strings that contain another string, ignoring capitalization. Then return an array of the found strings. 
   
   The method takes two parameters, the query string and the array of strings to search, and returns an array. 
@@ -7,6 +8,7 @@ vc-description: |-
   
   ### Examples
   If the string to search for is "me", and the array to search is ["home", "milk", "Mercury", "fish"], the method should return ["home", "Mercury"].
+  -/
 
 vc-preamble: |-
   def String.containsString (s₁ s₂ : String) : Bool :=
@@ -46,23 +48,23 @@ vc-theorems: |-
   theorem word_search_empty_seq (query : String) :
     word_search query [] = ["None"] := sorry
   
-  /--
+  /-
   info: ['ab', 'abc', 'zab']
   -/
-  #guard_msgs in
-  #eval word_search "ab" ["za", "ab", "abc", "zab", "zbc"]
+  -- #guard_msgs in
+  -- #eval word_search "ab" ["za", "ab", "abc", "zab", "zbc"]
   
-  /--
+  /-
   info: ['ab', 'abc', 'zab']
   -/
-  #guard_msgs in
-  #eval word_search "aB" ["za", "ab", "abc", "zab", "zbc"]
+  -- #guard_msgs in
+  -- #eval word_search "aB" ["za", "ab", "abc", "zab", "zbc"]
   
-  /--
+  /-
   info: ['None']
   -/
-  #guard_msgs in
-  #eval word_search "abcd" ["za", "aB", "Abc", "zAB", "zbc"]
+  -- #guard_msgs in
+  -- #eval word_search "abcd" ["za", "aB", "Abc", "zAB", "zbc"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Why would we want to stop to only 50 shades of grey? Let's see to how many we can go. 
   
   Write a function that takes a number n as a parameter and return an array containing n shades of grey in hexadecimal code (`#aaaaaa` for example). The array should be sorted in ascending order starting with `#010101`, `#020202`, etc. (using lower case letters).
@@ -14,6 +15,7 @@ vc-description: |-
   If n is higher than 254, just return an array of 254 elements.
   
   Have fun
+  -/
 
 vc-preamble: |-
 
@@ -57,23 +59,23 @@ vc-theorems: |-
       color.get! ⟨1⟩ = color.get! ⟨3⟩ ∧ 
       color.get! ⟨3⟩ = color.get! ⟨5⟩ := sorry
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval shades_of_grey -1
+  -- #guard_msgs in
+  -- #eval shades_of_grey -1
   
-  /--
+  /-
   info: ['#010101']
   -/
-  #guard_msgs in
-  #eval shades_of_grey 1
+  -- #guard_msgs in
+  -- #eval shades_of_grey 1
   
-  /--
+  /-
   info: ['#010101', '#020202', '#030303']
   -/
-  #guard_msgs in
-  #eval shades_of_grey 3
+  -- #guard_msgs in
+  -- #eval shades_of_grey 3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

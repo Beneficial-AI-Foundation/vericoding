@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    Given an array `arr` and a number `n`. Call a pair of numbers from the array a `Perfect Pair` if their sum is equal to `n`.
   
@@ -29,6 +30,7 @@ vc-description: |-
    - `[output]` integer
   
     sum of indices and 0 if no Perfect Pair exists.
+  -/
 
 vc-preamble: |-
   def pairwise_pairs : List Int → Int → List (Int × Int)

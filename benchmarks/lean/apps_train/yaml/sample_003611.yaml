@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task:
   
   We define the "self reversed power sequence" as one shown below:
@@ -51,6 +52,7 @@ vc-description: |-
   ___
   
   Enjoy it and happy coding!!
+  -/
 
 vc-preamble: |-
 
@@ -79,23 +81,23 @@ vc-theorems: |-
     (h1 : digits ≥ 1) (h2 : digits ≤ 100) (h3 : max_num ≤ 0) :
     min_length_num digits max_num = ⟨false, -1⟩ := sorry
   
-  /--
+  /-
   info: [True, 10]
   -/
-  #guard_msgs in
-  #eval min_length_num 5 10
+  -- #guard_msgs in
+  -- #eval min_length_num 5 10
   
-  /--
+  /-
   info: [False, -1]
   -/
-  #guard_msgs in
-  #eval min_length_num 7 11
+  -- #guard_msgs in
+  -- #eval min_length_num 7 11
   
-  /--
+  /-
   info: [True, 13]
   -/
-  #guard_msgs in
-  #eval min_length_num 7 14
+  -- #guard_msgs in
+  -- #eval min_length_num 7 14
 
 vc-postamble: |-
   -- Apps difficulty: introductory

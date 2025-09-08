@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Background
   
   My TV remote control has arrow buttons and an `OK` button.
@@ -70,6 +71,7 @@ vc-description: |-
   * TV Remote (shift and space)
   * TV Remote (wrap)
   * TV Remote (symbols)
+  -/
 
 vc-preamble: |-
   def isLower (c : Char) : Bool := sorry
@@ -90,23 +92,23 @@ vc-theorems: |-
   theorem tv_remote_case_sensitivity (s : String) :
     s ≠ "" → tv_remote (s.map Char.toUpper) ≥ tv_remote (s.map Char.toLower) := sorry
   
-  /--
+  /-
   info: 69
   -/
-  #guard_msgs in
-  #eval tv_remote "Code Wars"
+  -- #guard_msgs in
+  -- #eval tv_remote "Code Wars"
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval tv_remote "A"
+  -- #guard_msgs in
+  -- #eval tv_remote "A"
   
-  /--
+  /-
   info: 16
   -/
-  #guard_msgs in
-  #eval tv_remote "does"
+  -- #guard_msgs in
+  -- #eval tv_remote "does"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

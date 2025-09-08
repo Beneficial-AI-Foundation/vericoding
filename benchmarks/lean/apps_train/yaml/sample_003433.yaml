@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your task is to get Zodiac Sign using input ```day``` and ```month```.
   
   For exapmle: 
@@ -29,6 +30,7 @@ vc-description: |-
   * Capricorn (December 22-January 19)
   * Aquarius (January 20 to February 18)
   * Pisces (February 19 to March 20)
+  -/
 
 vc-preamble: |-
 
@@ -58,23 +60,23 @@ vc-theorems: |-
     (month ∉ [2,4,6,9,11] → day ≤ 31) → 
     ∃ sign : ZodiacSign, get_zodiac_sign day month = sign := sorry
   
-  /--
+  /-
   info: 'Libra'
   -/
-  #guard_msgs in
-  #eval get_zodiac_sign 10 10
+  -- #guard_msgs in
+  -- #eval get_zodiac_sign 10 10
   
-  /--
+  /-
   info: 'Taurus'
   -/
-  #guard_msgs in
-  #eval get_zodiac_sign 1 5
+  -- #guard_msgs in
+  -- #eval get_zodiac_sign 1 5
   
-  /--
+  /-
   info: 'Sagittarius'
   -/
-  #guard_msgs in
-  #eval get_zodiac_sign 25 11
+  -- #guard_msgs in
+  -- #eval get_zodiac_sign 25 11
 
 vc-postamble: |-
   -- Apps difficulty: introductory

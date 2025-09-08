@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string s of '(' , ')' and lowercase English characters. 
   Your task is to remove the minimum number of parentheses ( '(' or ')', in any positions ) so that the resulting parentheses string is valid and return any valid string.
   Formally, a parentheses string is valid if and only if:
@@ -29,6 +30,7 @@ vc-description: |-
   
   1 <= s.length <= 10^5
   s[i] is one of  '(' , ')' and lowercase English letters.
+  -/
 
 vc-preamble: |-
   def validParens (s : String) : Bool := sorry
@@ -83,23 +85,23 @@ vc-theorems: |-
   theorem only_close_brackets (n : Nat) :
     minRemoveToMakeValid (String.mk (List.replicate n ')')) = "" := sorry
   
-  /--
+  /-
   info: 'lee(t(c)o)de'
   -/
-  #guard_msgs in
-  #eval minRemoveToMakeValid "lee(t(c)o)de)"
+  -- #guard_msgs in
+  -- #eval minRemoveToMakeValid "lee(t(c)o)de)"
   
-  /--
+  /-
   info: 'ab(c)d'
   -/
-  #guard_msgs in
-  #eval minRemoveToMakeValid "a)b(c)d"
+  -- #guard_msgs in
+  -- #eval minRemoveToMakeValid "a)b(c)d"
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval minRemoveToMakeValid "))(("
+  -- #guard_msgs in
+  -- #eval minRemoveToMakeValid "))(("
 
 vc-postamble: |-
   -- Apps difficulty: interview

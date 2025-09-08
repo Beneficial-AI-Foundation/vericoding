@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Every email consists of a local name and a domain name, separated by the @ sign.
   For example, in alice@leetcode.com, alice is the local name, and leetcode.com is the domain name.
   Besides lowercase letters, these emails may contain '.'s or '+'s.
@@ -19,6 +20,7 @@ vc-description: |-
   Each emails[i] contains exactly one '@' character.
   All local and domain names are non-empty.
   Local names do not start with a '+' character.
+  -/
 
 vc-preamble: |-
   def isValidEmail (s : String) : Bool :=
@@ -55,23 +57,23 @@ vc-theorems: |-
     numUniqueEmails [email, plusAdded] = 1 :=
   sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval num_unique_emails ["test.email+alex@leetcode.com", "test.e.mail+bob.cathy@leetcode.com", "testemail+david@lee.tcode.com"]
+  -- #guard_msgs in
+  -- #eval num_unique_emails ["test.email+alex@leetcode.com", "test.e.mail+bob.cathy@leetcode.com", "testemail+david@lee.tcode.com"]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval num_unique_emails ["a@leetcode.com", "b@leetcode.com", "c@leetcode.com"]
+  -- #guard_msgs in
+  -- #eval num_unique_emails ["a@leetcode.com", "b@leetcode.com", "c@leetcode.com"]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval num_unique_emails ["test.email+alex@leetcode.com", "test.email@leetcode.com"]
+  -- #guard_msgs in
+  -- #eval num_unique_emails ["test.email+alex@leetcode.com", "test.email@leetcode.com"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

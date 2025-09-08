@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given three piles of casino chips: white, green and black chips:
   
   * the first pile contains only white chips
@@ -36,6 +37,7 @@ vc-description: |-
   More examples in the test cases. Good luck!
   
   Brute force is not the way to go here. Look for a simplifying mathematical approach.
+  -/
 
 vc-preamble: |-
   def solve (chips : List Nat) : Nat := sorry
@@ -67,23 +69,23 @@ vc-theorems: |-
     (h₂ : b > 0) :
     solve [a, a, b] ≤ (a + a + b) / 2 := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve [1, 1, 1]
+  -- #guard_msgs in
+  -- #eval solve [1, 1, 1]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve [1, 2, 1]
+  -- #guard_msgs in
+  -- #eval solve [1, 2, 1]
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval solve [8, 2, 8]
+  -- #guard_msgs in
+  -- #eval solve [8, 2, 8]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

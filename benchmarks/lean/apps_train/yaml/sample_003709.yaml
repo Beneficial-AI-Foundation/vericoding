@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We need you to implement a method of receiving commands over a network, processing the information and responding.
   
   Our device will send a single packet to you containing data and an instruction which you must perform before returning your reply.
@@ -39,6 +40,7 @@ vc-description: |-
   In the event that your calculation produces a negative result, the value returned should be "0000", similarily if the value is above 9999 you should return "9999".
   
   Goodluck, I look forward to reading your creative solutions!
+  -/
 
 vc-preamble: |-
   def String.substring (s : String) (start len : Nat) : String :=
@@ -87,23 +89,23 @@ vc-theorems: |-
     String.length (communication_module packet) = 20 :=
     sorry
   
-  /--
+  /-
   info: 'H1H1FFFF00200000F4F4'
   -/
-  #guard_msgs in
-  #eval communication_module "H1H10F1200120008F4F4"
+  -- #guard_msgs in
+  -- #eval communication_module "H1H10F1200120008F4F4"
   
-  /--
+  /-
   info: 'Y2Y2FFFF00980000N5N5'
   -/
-  #guard_msgs in
-  #eval communication_module "Y2Y2B7A210000902N5N5"
+  -- #guard_msgs in
+  -- #eval communication_module "Y2Y2B7A210000902N5N5"
   
-  /--
+  /-
   info: 'A6A6FFFF99990000M0M0'
   -/
-  #guard_msgs in
-  #eval communication_module "A6A6C3D911150015M0M0"
+  -- #guard_msgs in
+  -- #eval communication_module "A6A6C3D911150015M0M0"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Create a `Vector` class with `x` and a `y` attributes that represent component magnitudes in the x and y directions.
   
   Your vectors should handle vector additon with an `.add()` method that takes a second vector as an argument and returns a new vector equal to the sum of the vector you call `.add()` on and the vector you pass in.
@@ -20,6 +21,7 @@ vc-description: |-
   ```
   
   Adding vectors when you have their components is easy: just add the two x components together and the two y components together to get the x and y components for the vector sum.
+  -/
 
 vc-preamble: |-
 

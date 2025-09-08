@@ -1,9 +1,11 @@
 vc-description: |-
+  /-
   Move every letter in the provided string forward 10 letters through the alphabet.
   
   If it goes past 'z', start again at 'a'.
   
   Input will be a string with length > 0.
+  -/
 
 vc-preamble: |-
 
@@ -32,23 +34,23 @@ vc-theorems: |-
   theorem move_ten_homomorphic (s₁ s₂ : String) :
     move_ten (s₁ ++ s₂) = move_ten s₁ ++ move_ten s₂ := sorry
   
-  /--
+  /-
   info: 'docdmkco'
   -/
-  #guard_msgs in
-  #eval move_ten "testcase"
+  -- #guard_msgs in
+  -- #eval move_ten "testcase"
   
-  /--
+  /-
   info: 'mynogkbc'
   -/
-  #guard_msgs in
-  #eval move_ten "codewars"
+  -- #guard_msgs in
+  -- #eval move_ten "codewars"
   
-  /--
+  /-
   info: 'goxoonkxyppsmonyq'
   -/
-  #guard_msgs in
-  #eval move_ten "weneedanofficedog"
+  -- #guard_msgs in
+  -- #eval move_ten "weneedanofficedog"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

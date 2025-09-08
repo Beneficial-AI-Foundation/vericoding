@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a non-empty array of non-negative integers nums, the degree of this array is defined as the maximum frequency of any one of its elements.
   Your task is to find the smallest possible length of a (contiguous) subarray of nums, that has the same degree as nums.
   
@@ -20,6 +21,7 @@ vc-description: |-
   Note:
   nums.length will be between 1 and 50,000.
   nums[i] will be an integer between 0 and 49,999.
+  -/
 
 vc-preamble: |-
   def max_freq (l: List Int) : Nat :=
@@ -42,23 +44,23 @@ vc-theorems: |-
     find_shortest_subarray l = 1 :=
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_shortest_subarray [1, 2, 2, 3, 1]
+  -- #guard_msgs in
+  -- #eval find_shortest_subarray [1, 2, 2, 3, 1]
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval find_shortest_subarray [1, 2, 2, 3, 1, 4, 2]
+  -- #guard_msgs in
+  -- #eval find_shortest_subarray [1, 2, 2, 3, 1, 4, 2]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_shortest_subarray [1, 1, 2, 2, 2, 1]
+  -- #guard_msgs in
+  -- #eval find_shortest_subarray [1, 1, 2, 2, 2, 1]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

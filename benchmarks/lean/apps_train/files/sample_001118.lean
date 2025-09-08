@@ -1,0 +1,72 @@
+/-
+Write a program, which takes an integer N and if the number is less than 10 then display "Thanks for helping Chef!" otherwise print "-1".
+
+-----Input-----
+
+The first line contains an integer T, total number of testcases. Then follow T lines, each line contains an integer N. 
+
+-----Output-----
+For each test case, output the given string or -1 depending on conditions, in a new line.
+
+-----Constraints-----
+- 1 ≤ T ≤ 1000
+- -20 ≤ N ≤ 20
+
+-----Example-----
+Input
+3 
+1
+12
+-5
+Output
+Thanks for helping Chef!
+-1
+Thanks for helping Chef!
+-/
+
+def solve_helper_thanks (n : Int) : String := sorry
+
+theorem solve_helper_thanks_result_valid (n : Int) :
+  (solve_helper_thanks n = "-1") ∨ 
+  (solve_helper_thanks n = "Thanks for helping Chef!") := sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def solve_multiple_cases (nums : List Int) : List String := sorry 
+
+theorem solve_multiple_cases_length (nums : List Int) :
+  (solve_multiple_cases nums).length = nums.length := sorry
+
+theorem solve_helper_thanks_condition (n : Int) :
+  (n < 10) = (solve_helper_thanks n = "Thanks for helping Chef!") := sorry
+
+theorem solve_multiple_cases_valid_results (nums : List Int) :
+  ∀ x ∈ solve_multiple_cases nums, 
+    (x = "-1") ∨ (x = "Thanks for helping Chef!") := sorry
+
+theorem solve_multiple_cases_condition (nums : List Int) :
+  ∀ (i : Nat), i < nums.length →
+    ((nums[i]! < 10) = 
+     ((solve_multiple_cases nums)[i]! = "Thanks for helping Chef!")) := sorry
+
+/-
+info: test1_expected
+-/
+-- #guard_msgs in
+-- #eval solve_multiple_cases [1, 12, -5]
+
+/-
+info: test2_expected
+-/
+-- #guard_msgs in
+-- #eval solve_multiple_cases [-20, 0, 20]
+
+/-
+info: test3_expected
+-/
+-- #guard_msgs in
+-- #eval solve_multiple_cases [9, 10]
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

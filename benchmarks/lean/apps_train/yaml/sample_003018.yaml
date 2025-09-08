@@ -1,5 +1,7 @@
 vc-description: |-
+  /-
   Implement `String#to_cents`, which should parse prices expressed as `$1.23` and return number of cents, or in case of bad format return `nil`.
+  -/
 
 vc-preamble: |-
 
@@ -26,23 +28,23 @@ vc-theorems: |-
     to_cents "" = none :=
     sorry
   
-  /--
+  /-
   info: 123
   -/
-  #guard_msgs in
-  #eval to_cents "$1.23"
+  -- #guard_msgs in
+  -- #eval to_cents "$1.23"
   
-  /--
+  /-
   info: 9999
   -/
-  #guard_msgs in
-  #eval to_cents "$99.99"
+  -- #guard_msgs in
+  -- #eval to_cents "$99.99"
   
-  /--
+  /-
   info: 1234567890
   -/
-  #guard_msgs in
-  #eval to_cents "$12345678.90"
+  -- #guard_msgs in
+  -- #eval to_cents "$12345678.90"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

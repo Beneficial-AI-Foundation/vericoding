@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Pete and his mate Phil are out in the countryside shooting clay pigeons with a shotgun - amazing fun. 
   
   They decide to have a competition. 3 rounds, 2 shots each. Winner is the one with the most hits.
@@ -16,6 +17,7 @@ vc-description: |-
   Note that as there are three rounds, the actual input (x) will look something like this:
   
   [[{P1:'XX', P2:'XO'}, true], [{P1:'OX', P2:'OO'}, false], [{P1:'XX', P2:'OX'}, true]]
+  -/
 
 vc-preamble: |-
   def GameResults := List (RoundData × Bool)
@@ -51,23 +53,23 @@ vc-theorems: |-
       (fun (round, double) => ({P1 := round.P1, P2 := round.P1}, double))
     shoot symmetricalResults = "Draw!" := sorry
   
-  /--
+  /-
   info: 'Pete Wins!'
   -/
-  #guard_msgs in
-  #eval shoot [[{"P1": "XX", "P2": "XO"}, True], [{"P1": "OX", "P2": "OO"}, False], [{"P1": "XX", "P2": "OX"}, True]]
+  -- #guard_msgs in
+  -- #eval shoot [[{"P1": "XX", "P2": "XO"}, True], [{"P1": "OX", "P2": "OO"}, False], [{"P1": "XX", "P2": "OX"}, True]]
   
-  /--
+  /-
   info: 'Draw!'
   -/
-  #guard_msgs in
-  #eval shoot [[{"P1": "XX", "P2": "XX"}, True], [{"P1": "OO", "P2": "OO"}, False], [{"P1": "XX", "P2": "XX"}, True]]
+  -- #guard_msgs in
+  -- #eval shoot [[{"P1": "XX", "P2": "XX"}, True], [{"P1": "OO", "P2": "OO"}, False], [{"P1": "XX", "P2": "XX"}, True]]
   
-  /--
+  /-
   info: 'Phil Wins!'
   -/
-  #guard_msgs in
-  #eval shoot [[{"P1": "XX", "P2": "XO"}, False], [{"P1": "OX", "P2": "XX"}, False], [{"P1": "OO", "P2": "XX"}, True]]
+  -- #guard_msgs in
+  -- #eval shoot [[{"P1": "XX", "P2": "XO"}, False], [{"P1": "OX", "P2": "XX"}, False], [{"P1": "OO", "P2": "XX"}, True]]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

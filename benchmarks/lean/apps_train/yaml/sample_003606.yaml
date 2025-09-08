@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You've came to visit your grandma and she straight away found you a job - her Christmas tree needs decorating!
   
   She first shows you a tree with an identified number of branches, and then hands you a some baubles (or loads of them!).
@@ -17,6 +18,7 @@ vc-description: |-
   If there are 0 branches return: "Grandma, we will have to buy a Christmas tree first!".
   
   Good luck - I think your granny may have some minced pies for you if you do a good job!
+  -/
 
 vc-preamble: |-
   def List.sum : List Nat → Nat 
@@ -54,23 +56,23 @@ vc-theorems: |-
     list.length = branches ∧
     (∀ x, x ∈ list → x = 0) := sorry
   
-  /--
+  /-
   info: [1, 1, 1, 1, 1]
   -/
-  #guard_msgs in
-  #eval baubles_on_tree 5 5
+  -- #guard_msgs in
+  -- #eval baubles_on_tree 5 5
   
-  /--
+  /-
   info: 'Grandma, we will have to buy a Christmas tree first!'
   -/
-  #guard_msgs in
-  #eval baubles_on_tree 5 0
+  -- #guard_msgs in
+  -- #eval baubles_on_tree 5 0
   
-  /--
+  /-
   info: [2, 1, 1, 1, 1]
   -/
-  #guard_msgs in
-  #eval baubles_on_tree 6 5
+  -- #guard_msgs in
+  -- #eval baubles_on_tree 6 5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

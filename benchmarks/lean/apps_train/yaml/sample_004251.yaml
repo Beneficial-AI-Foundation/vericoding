@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You task is to implement an simple interpreter for the notorious esoteric language [HQ9+](https://esolangs.org/wiki/HQ9+) that will work for a single character input:
   
   - If the input is `'H'`, return `'Hello World!'`
@@ -30,6 +31,7 @@ vc-description: |-
   - For everything else, don't return anything (return `null` in C#, `None` in Rust).
   
   (`+` has no visible effects so we can safely ignore it.)
+  -/
 
 vc-preamble: |-
   def HQ9 (s : String) : Option String :=
@@ -73,23 +75,23 @@ vc-theorems: |-
     HQ9 s = none :=
     sorry
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval HQ9 "X"
+  -- #guard_msgs in
+  -- #eval HQ9 "X"
   
-  /--
+  /-
   info: 'Hello World!'
   -/
-  #guard_msgs in
-  #eval HQ9 "H"
+  -- #guard_msgs in
+  -- #eval HQ9 "H"
   
-  /--
+  /-
   info: 'Q'
   -/
-  #guard_msgs in
-  #eval HQ9 "Q"
+  -- #guard_msgs in
+  -- #eval HQ9 "Q"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

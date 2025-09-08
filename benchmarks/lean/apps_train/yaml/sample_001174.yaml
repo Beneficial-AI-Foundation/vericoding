@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Today Chef wants to evaluate the dishes of his $N$ students. He asks each one to cook a dish and present it to him.
   Chef loves his secret ingredient, and only likes dishes with at least $X$ grams of it.
   Given $N$, $X$ and the amount of secret ingredient used by each student $A_i$, find out whether Chef will like at least one dish. 
@@ -31,6 +32,7 @@ vc-description: |-
   NO
   YES
   YES
+  -/
 
 vc-preamble: |-
 
@@ -59,23 +61,23 @@ vc-theorems: |-
     check_ingredients n x [ingredient] = if ingredient ≥ x then "YES" else "NO" :=
     sorry
   
-  /--
+  /-
   info: 'NO'
   -/
-  #guard_msgs in
-  #eval check_ingredients 5 100 [11, 22, 33, 44, 55]
+  -- #guard_msgs in
+  -- #eval check_ingredients 5 100 [11, 22, 33, 44, 55]
   
-  /--
+  /-
   info: 'YES'
   -/
-  #guard_msgs in
-  #eval check_ingredients 5 50 [10, 20, 30, 40, 50]
+  -- #guard_msgs in
+  -- #eval check_ingredients 5 50 [10, 20, 30, 40, 50]
   
-  /--
+  /-
   info: 'YES'
   -/
-  #guard_msgs in
-  #eval check_ingredients 5 45 [12, 24, 36, 48, 60]
+  -- #guard_msgs in
+  -- #eval check_ingredients 5 45 [12, 24, 36, 48, 60]
 
 vc-postamble: |-
   -- Apps difficulty: interview

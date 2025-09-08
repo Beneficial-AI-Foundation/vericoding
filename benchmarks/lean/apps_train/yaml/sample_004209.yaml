@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ATM machines allow 4 or 6 digit PIN codes and PIN codes cannot contain anything but **exactly** 4 digits or exactly 6 digits. 
   
   If the function is passed a valid PIN string, return `true`, else return `false`.
@@ -9,6 +10,7 @@ vc-description: |-
   "12345"  -->  false
   "a234"   -->  false
   ```
+  -/
 
 vc-preamble: |-
 
@@ -42,35 +44,35 @@ vc-theorems: |-
   theorem validate_pin_non_numeric_chars (pin : String) :
     (∀ c ∈ pin.data, ¬c.isDigit) → validatePin pin = false := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval validate_pin "1234"
+  -- #guard_msgs in
+  -- #eval validate_pin "1234"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval validate_pin "12345"
+  -- #guard_msgs in
+  -- #eval validate_pin "12345"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval validate_pin "a234"
+  -- #guard_msgs in
+  -- #eval validate_pin "a234"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval validate_pin "123456"
+  -- #guard_msgs in
+  -- #eval validate_pin "123456"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval validate_pin "-1234"
+  -- #guard_msgs in
+  -- #eval validate_pin "-1234"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

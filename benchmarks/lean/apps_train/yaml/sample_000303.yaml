@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are N children standing in a line. Each child is assigned a rating value.
   
   You are giving candies to these children subjected to the following requirements:
@@ -20,6 +21,7 @@ vc-description: |-
   Output: 4
   Explanation: You can allocate to the first, second and third child with 1, 2, 1 candies respectively.
                The third child gets 1 candy because it satisfies the above two conditions.
+  -/
 
 vc-preamble: |-
 
@@ -37,23 +39,23 @@ vc-theorems: |-
   theorem candy_single (rating : Nat) :
     candy [rating] = 1 := sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval candy [1, 0, 2]
+  -- #guard_msgs in
+  -- #eval candy [1, 0, 2]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval candy [1, 2, 2]
+  -- #guard_msgs in
+  -- #eval candy [1, 2, 2]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval candy []
+  -- #guard_msgs in
+  -- #eval candy []
 
 vc-postamble: |-
   -- Apps difficulty: interview

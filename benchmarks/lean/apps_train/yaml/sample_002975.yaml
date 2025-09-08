@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A trick I learned in elementary school to determine whether or not a number was divisible by three is to add all of the integers in the number together and to divide the resulting sum by three. If there is no remainder from dividing the sum by three, then the original number is divisible by three as well.
   
   Given a series of numbers as a string, determine if the number represented by the string is divisible by three.
@@ -14,6 +15,7 @@ vc-description: |-
   "33333333" -> true
   "7"        -> false
   ```
+  -/
 
 vc-preamble: |-
   def divisible_by_three (s : String) : Bool :=
@@ -41,23 +43,23 @@ vc-theorems: |-
     divisible_by_three (toString n) :=
     sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval divisible_by_three "123"
+  -- #guard_msgs in
+  -- #eval divisible_by_three "123"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval divisible_by_three "88"
+  -- #guard_msgs in
+  -- #eval divisible_by_three "88"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval divisible_by_three "963210456"
+  -- #guard_msgs in
+  -- #eval divisible_by_three "963210456"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There were $N$ students (numbered $1$ through $N$) participating in the Indian Programming Camp (IPC) and they watched a total of $K$ lectures (numbered $1$ through $K$). For each student $i$ and each lecture $j$, the $i$-th student watched the $j$-th lecture for $T_{i, j}$ minutes.
   Additionally, for each student $i$, we know that this student asked the question, "What is the criteria for getting a certificate?" $Q_i$ times.
   The criteria for getting a certificate is that a student must have watched at least $M$ minutes of lectures in total and they must have asked the question no more than $10$ times.
@@ -33,6 +34,7 @@ vc-description: |-
   - Participant $3$ watched $1 + 2 + 4 + 5 = 12$ minutes of lectures and asked the question $11$ times. Since $12 \ge M$ but $11 > 10$, this participant does not receive a certificate.
   - Participant $4$ watched $1 + 1 + 1 + 3 = 6$ minutes of lectures and asked the question $12$ times. Since $6 < M$ and $12 > 10$, this participant does not receive a certificate.
   Only participant $2$ receives a certificate.
+  -/
 
 vc-preamble: |-
   def List.sum (xs : List Nat) : Nat :=
@@ -54,23 +56,23 @@ vc-theorems: |-
     count_eligible_students N M K [] = 0 :=
   sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_eligible_students 4 8 4 [[1, 2, 1, 2, 5], [3, 5, 1, 3, 4], [1, 2, 4, 5, 11], [1, 1, 1, 3, 12]]
+  -- #guard_msgs in
+  -- #eval count_eligible_students 4 8 4 [[1, 2, 1, 2, 5], [3, 5, 1, 3, 4], [1, 2, 4, 5, 11], [1, 1, 1, 3, 12]]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_eligible_students 2 10 2 [[1, 2, 11], [2, 3, 12]]
+  -- #guard_msgs in
+  -- #eval count_eligible_students 2 10 2 [[1, 2, 11], [2, 3, 12]]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_eligible_students 2 5 2 [[2, 4, 5], [3, 3, 2]]
+  -- #guard_msgs in
+  -- #eval count_eligible_students 2 5 2 [[2, 4, 5], [3, 3, 2]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

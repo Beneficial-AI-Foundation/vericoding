@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Cherry has a binary matrix $A$ consisting of $N$ rows and $M$ columns. The rows are numbered from $1$ to $N$, columns are numbered from $1$ to $M$. Element at row $i$ ($1$ ≤ $i$ ≤ $N$) and column $j$ ($1$ ≤ $j$ ≤ $M$) is denoted as $A_{ij}$. All elements of $A$ are either $0$ or $1$.
   He performs $Q$ queries on matrix. Each query is provided by four integers $x_{1}$, $y_{1}$, $x_{2}$, $y_{2}$ which define the rectangle, where ($x_{1}$, $y_{1}$) stands for the coordinates of the top left cell of the rectangle, while ($x_{2}$, $y_{2}$) stands for the coordinates of the bottom right cell. You need to flip all the bits i.e. ($0$ to $1$, $1$ to $0$) that are located fully inside the query rectangle.
   Finally, print the matrix after performing all the queries.
@@ -42,6 +43,7 @@ vc-description: |-
   After processing the 3rd query 1 1 2 2, matrix becomes:
   [0110][0110]\begin{bmatrix} 01 \\ 10  \end{bmatrix}
   We need to output the matrix after processing all queries.
+  -/
 
 vc-preamble: |-
   def String.replicate (n : Nat) (c : Char) : String :=

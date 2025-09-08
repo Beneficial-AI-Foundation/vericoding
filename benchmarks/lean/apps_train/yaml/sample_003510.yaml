@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A nested list (or *array* in JavaScript) is a list that apears as a value inside another list, 
   ```python
   [item, item, [item, item], item]
@@ -27,6 +28,7 @@ vc-description: |-
   list_depth([2.0, [2, 0], 3.7, [3, 7], 6.7, [6, 7]])
   return 2
   ```
+  -/
 
 vc-preamble: |-
 
@@ -50,23 +52,23 @@ vc-theorems: |-
     (h : inner ≠ outer) : 
     NestedList.depth outer > NestedList.depth inner := sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval list_depth [1, [2, [3, [4, [5, [6], 5], 4], 3], 2], 1]
+  -- #guard_msgs in
+  -- #eval list_depth [1, [2, [3, [4, [5, [6], 5], 4], 3], 2], 1]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval list_depth [2, "yes", [True, False]]
+  -- #guard_msgs in
+  -- #eval list_depth [2, "yes", [True, False]]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval list_depth [2.0, [2, 0], 3.7, [3, 7], 6.7, [6, 7]]
+  -- #guard_msgs in
+  -- #eval list_depth [2.0, [2, 0], 3.7, [3, 7], 6.7, [6, 7]]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   This is the first step to understanding FizzBuzz.  
   
   Your inputs:
@@ -8,6 +9,7 @@ vc-description: |-
   Your expected output is an array of positive integers from 1 to n (inclusive).
   
   Your job is to write an algorithm that gets you from the input to the output.
+  -/
 
 vc-preamble: |-
 
@@ -30,23 +32,23 @@ vc-theorems: |-
     ∀ i : Nat, i < (pre_fizz n).length - 1 → 
       (pre_fizz n)[i]! < (pre_fizz n)[i+1]! := sorry
   
-  /--
+  /-
   info: [1]
   -/
-  #guard_msgs in
-  #eval pre_fizz 1
+  -- #guard_msgs in
+  -- #eval pre_fizz 1
   
-  /--
+  /-
   info: [1, 2, 3]
   -/
-  #guard_msgs in
-  #eval pre_fizz 3
+  -- #guard_msgs in
+  -- #eval pre_fizz 3
   
-  /--
+  /-
   info: [1, 2, 3, 4, 5]
   -/
-  #guard_msgs in
-  #eval pre_fizz 5
+  -- #guard_msgs in
+  -- #eval pre_fizz 5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

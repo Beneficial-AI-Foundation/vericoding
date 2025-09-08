@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   `late_clock` function receive an array with 4 digits and should return the latest time that can be built with those digits.
   The time should be in `HH:MM` format.
   
@@ -9,6 +10,7 @@ vc-description: |-
   ```
   
   You can suppose the input is correct and you can build from it a correct 24-hour time.
+  -/
 
 vc-preamble: |-
   def isValidTime (t : Time) : Prop := 
@@ -74,23 +76,23 @@ vc-theorems: |-
       (∀ i : Fin 4, digits.get! i.val = result_digits.get! (σ i).val) :=
   sorry
   
-  /--
+  /-
   info: '21:59'
   -/
-  #guard_msgs in
-  #eval late_clock [9, 1, 2, 5]
+  -- #guard_msgs in
+  -- #eval late_clock [9, 1, 2, 5]
   
-  /--
+  /-
   info: '19:38'
   -/
-  #guard_msgs in
-  #eval late_clock [1, 9, 8, 3]
+  -- #guard_msgs in
+  -- #eval late_clock [1, 9, 8, 3]
   
-  /--
+  /-
   info: '22:20'
   -/
-  #guard_msgs in
-  #eval late_clock [0, 2, 2, 2]
+  -- #guard_msgs in
+  -- #eval late_clock [0, 2, 2, 2]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

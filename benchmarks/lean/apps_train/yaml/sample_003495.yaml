@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    You are given two string `a` an `s`. Starting with an empty string we can do the following two operations:
   ```
@@ -49,6 +50,7 @@ vc-description: |-
    - `[output]` an integer
   
     minimum number of operations
+  -/
 
 vc-preamble: |-
 

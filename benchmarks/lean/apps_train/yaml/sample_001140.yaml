@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a positive integer $N$. Consider the sequence $S = (1, 2, \ldots, N)$. You should choose two elements of this sequence and swap them.
   A swap is nice if there is an integer $M$ ($1 \le M < N$) such that the sum of the first $M$ elements of the resulting sequence is equal to the sum of its last $N-M$ elements. Find the number of nice swaps.
   
@@ -36,6 +37,7 @@ vc-description: |-
   2
   2
   3
+  -/
 
 vc-preamble: |-
   def canSplitEvenly (n : Nat) : Bool :=
@@ -63,23 +65,23 @@ vc-theorems: |-
     solveSwaps n = 0 :=
     sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve_swaps 1
+  -- #guard_msgs in
+  -- #eval solve_swaps 1
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve_swaps 2
+  -- #guard_msgs in
+  -- #eval solve_swaps 2
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval solve_swaps 7
+  -- #guard_msgs in
+  -- #eval solve_swaps 7
 
 vc-postamble: |-
   -- Apps difficulty: interview

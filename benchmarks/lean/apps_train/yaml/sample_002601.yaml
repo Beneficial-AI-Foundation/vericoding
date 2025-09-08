@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## The story you are about to hear is true
   Our cat, Balor, sadly died of cancer in 2015.
   
@@ -46,6 +47,7 @@ vc-description: |-
    "--M---------"], 4
   ```
   Have fun!
+  -/
 
 vc-preamble: |-
   def peaceful_yard (yard : List String) (distance : Float) : Bool :=
@@ -108,23 +110,23 @@ vc-theorems: |-
            minDist ≥ distance :=
   sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval peaceful_yard ["------------", "------------", "-L----------", "------------", "------------", "------------"] 10
+  -- #guard_msgs in
+  -- #eval peaceful_yard ["------------", "------------", "-L----------", "------------", "------------", "------------"] 10
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval peaceful_yard ["------------", "---M--------", "------------", "------------", "-------R----", "------------"] 6
+  -- #guard_msgs in
+  -- #eval peaceful_yard ["------------", "---M--------", "------------", "------------", "-------R----", "------------"] 6
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval peaceful_yard ["-----------L", "--R---------", "------------", "------------", "------------", "--M---------"] 4
+  -- #guard_msgs in
+  -- #eval peaceful_yard ["-----------L", "--R---------", "------------", "------------", "------------", "--M---------"] 4
 
 vc-postamble: |-
   -- Apps difficulty: introductory

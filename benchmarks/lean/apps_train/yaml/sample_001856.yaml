@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A kingdom consists of a king, his children, his grandchildren, and so on. Every once in a while, someone in the family dies or a child is born.
   The kingdom has a well-defined order of inheritance that consists of the king as the first member. Let's define the recursive function Successor(x, curOrder), which given a person x and the inheritance order so far, returns who should be the next person after x in the order of inheritance.
   Successor(x, curOrder):
@@ -51,6 +52,7 @@ vc-description: |-
   For each call to birth(parentName, childName), it is guaranteed that parentName is alive.
   At most 105 calls will be made to birth and death.
   At most 10 calls will be made to getInheritanceOrder.
+  -/
 
 vc-preamble: |-
   def birth (t : ThroneInheritance) (parent child : String) : ThroneInheritance := sorry

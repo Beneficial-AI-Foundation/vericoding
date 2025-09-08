@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a certain integer ```n```, we need a function ```big_primefac_div()```, that give an array with the highest prime factor and the highest divisor (not equal to n).
   
   Let's see some cases:
@@ -22,6 +23,7 @@ vc-description: |-
   ```
   Optimization and fast algorithms are a key factor to solve this kata.
   Happy coding and enjoy it!
+  -/
 
 vc-preamble: |-
   def isPrime (n : Nat) : Bool := sorry
@@ -61,23 +63,23 @@ vc-theorems: |-
     (h : -10^6 ≤ n) (h2 : n ≤ -2) :
     big_primefac_div n = big_primefac_div (abs n) := sorry
   
-  /--
+  /-
   info: [5, 50]
   -/
-  #guard_msgs in
-  #eval big_primefac_div 100
+  -- #guard_msgs in
+  -- #eval big_primefac_div 100
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval big_primefac_div 997
+  -- #guard_msgs in
+  -- #eval big_primefac_div 997
   
-  /--
+  /-
   info: [5, 900]
   -/
-  #guard_msgs in
-  #eval big_primefac_div -1800.0
+  -- #guard_msgs in
+  -- #eval big_primefac_div -1800.0
 
 vc-postamble: |-
   -- Apps difficulty: introductory

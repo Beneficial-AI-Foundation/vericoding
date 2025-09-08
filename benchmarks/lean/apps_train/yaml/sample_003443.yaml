@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given two numbers and an arithmetic operator (the name of it, as a string), return the result of the two numbers having that operator used on them. 
   
   ```a``` and ```b``` will both be positive integers, and ```a``` will always be the first number in the operation, and ```b``` always the second.
@@ -15,6 +16,7 @@ vc-description: |-
   ```
   
   Try to do it without using if statements!
+  -/
 
 vc-preamble: |-
 
@@ -39,23 +41,23 @@ vc-theorems: |-
   theorem arithmetic_divide (a b : Int) (h : b ≠ 0) :
     arithmetic a b Op.divide = a / b := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval arithmetic 1 2 "add"
+  -- #guard_msgs in
+  -- #eval arithmetic 1 2 "add"
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval arithmetic 8 2 "subtract"
+  -- #guard_msgs in
+  -- #eval arithmetic 8 2 "subtract"
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval arithmetic 5 2 "multiply"
+  -- #guard_msgs in
+  -- #eval arithmetic 5 2 "multiply"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

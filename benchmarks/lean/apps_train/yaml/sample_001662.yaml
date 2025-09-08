@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ### Please also check out other katas in [Domino Tiling series](https://www.codewars.com/collections/5d19554d13dba80026a74ff5)!
   
   ---
@@ -66,6 +67,7 @@ vc-description: |-
   `1 <= K <= 100`
   
   All inputs are valid integers.
+  -/
 
 vc-preamble: |-
 
@@ -98,23 +100,23 @@ vc-theorems: |-
   theorem two_by_n_monotonic (k : Nat) (hk : k ≥ 2) :
     two_by_n 1 k ≤ two_by_n 2 k := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval two_by_n 1 1
+  -- #guard_msgs in
+  -- #eval two_by_n 1 1
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval two_by_n 4 2
+  -- #guard_msgs in
+  -- #eval two_by_n 4 2
   
-  /--
+  /-
   info: 168
   -/
-  #guard_msgs in
-  #eval two_by_n 5 3
+  -- #guard_msgs in
+  -- #eval two_by_n 5 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

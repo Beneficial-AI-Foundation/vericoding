@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Lots of geeky customers visit our chef's restaurant everyday. So, when asked to fill the feedback form, these customers represent the feedback using a binary string (i.e a string that contains only characters '0' and '1'. 
   
   Now since chef is not that great in deciphering binary strings, he has decided the following criteria to classify the feedback as Good or Bad : 
@@ -37,6 +38,7 @@ vc-description: |-
   Example case 2.
   
   The string contains both 010 and 101 as substrings.
+  -/
 
 vc-preamble: |-
 
@@ -65,23 +67,23 @@ vc-theorems: |-
   theorem short_string_is_bad (s : String) (h : s.length < 3) :
     classify_feedback s = "Bad" := sorry
   
-  /--
+  /-
   info: 'Bad'
   -/
-  #guard_msgs in
-  #eval classify_feedback "11111110"
+  -- #guard_msgs in
+  -- #eval classify_feedback "11111110"
   
-  /--
+  /-
   info: 'Good'
   -/
-  #guard_msgs in
-  #eval classify_feedback "10101010101010"
+  -- #guard_msgs in
+  -- #eval classify_feedback "10101010101010"
   
-  /--
+  /-
   info: 'Good'
   -/
-  #guard_msgs in
-  #eval classify_feedback "00010"
+  -- #guard_msgs in
+  -- #eval classify_feedback "00010"
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A peak element is an element that is greater than its neighbors.
   
   Given an input array nums, where nums[i] ≠ nums[i+1], find a peak element and return its index.
@@ -23,6 +24,7 @@ vc-description: |-
   Note:
   
   Your solution should be in logarithmic complexity.
+  -/
 
 vc-preamble: |-
 
@@ -61,17 +63,17 @@ vc-theorems: |-
   theorem empty_array :
     find_peak_element [] = -1 := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_peak_element [1, 2, 3, 1]
+  -- #guard_msgs in
+  -- #eval find_peak_element [1, 2, 3, 1]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval find_peak_element [1]
+  -- #guard_msgs in
+  -- #eval find_peak_element [1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

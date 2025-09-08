@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The Government of Siruseri is no different from any other when it comes to being "capital-centric" in its policies. Recently the government decided to set up a nationwide fiber-optic network to take Siruseri into the digital age. And as usual, this decision was implemented in a capital centric manner --- from each city in the country, a fiber optic cable was laid to the capital! Thus, traffic between any two cities had to go through the capital.
   Soon, it became apparent that this was not quite a clever idea, since any breakdown at the capital resulted in the disconnection of services between other cities. So, in the second phase, the government plans to connect a few more pairs of cities directly by fiber-optic cables. The government has specified that this is to be done in such a way that the disruption of services at any one city will still leave the rest of the country connected.
   The government has data on the cost of laying fiber optic cables between every pair of cities. You task is to compute the minimum cost of additional cabling required to ensure the requirement described above is met.
@@ -28,6 +29,7 @@ vc-description: |-
   
   -----Sample Output-----
   9
+  -/
 
 vc-preamble: |-
 
@@ -54,17 +56,17 @@ vc-theorems: |-
       (costs.foldr (λ row acc => max acc (row.foldr max 0)) 0) :=
   sorry
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval min_cable_cost 4 [[0, 7, 8, 10], [7, 0, 4, 5], [8, 4, 0, 6], [10, 5, 6, 0]]
+  -- #guard_msgs in
+  -- #eval min_cable_cost 4 [[0, 7, 8, 10], [7, 0, 4, 5], [8, 4, 0, 6], [10, 5, 6, 0]]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval min_cable_cost 3 [[0, 1, 2], [1, 0, 3], [2, 3, 0]]
+  -- #guard_msgs in
+  -- #eval min_cable_cost 3 [[0, 1, 2], [1, 0, 3], [2, 3, 0]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

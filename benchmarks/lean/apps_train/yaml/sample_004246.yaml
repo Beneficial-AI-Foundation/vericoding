@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a simple parser that will parse and run Deadfish.  
   
   Deadfish has 4 commands, each 1 character long:
@@ -12,6 +13,7 @@ vc-description: |-
   ```python
   parse("iiisdoso")  ==>  [8, 64]
   ```
+  -/
 
 vc-preamble: |-
 
@@ -30,23 +32,23 @@ vc-theorems: |-
     ∀ x ∈ parse s, x ≥ -s.length
     := sorry
   
-  /--
+  /-
   info: [0, 0, 0]
   -/
-  #guard_msgs in
-  #eval parse "ooo"
+  -- #guard_msgs in
+  -- #eval parse "ooo"
   
-  /--
+  /-
   info: [1, 2, 3]
   -/
-  #guard_msgs in
-  #eval parse "ioioio"
+  -- #guard_msgs in
+  -- #eval parse "ioioio"
   
-  /--
+  /-
   info: [0, 1]
   -/
-  #guard_msgs in
-  #eval parse "idoiido"
+  -- #guard_msgs in
+  -- #eval parse "idoiido"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

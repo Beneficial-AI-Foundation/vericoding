@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Problem Statement=====
   There is a horizontal row of n cubes. The length of each cube is given. You need to create a new vertical pile of cubes. The new pile should follow these directions: if cube_i is on top of cube_j then sideLength_j ≥ sideLength_i.
   When stacking the cubes, you can only pick up either the leftmost or the rightmost cube each time. Print "Yes" if it is possible to stack the cubes. Otherwise, print "No". Do not print the quotation marks. 
@@ -16,6 +17,7 @@ vc-description: |-
   
   =====Output Format=====
   For each test case, output a single line containing either "Yes" or "No" without the quotes.
+  -/
 
 vc-preamble: |-
 
@@ -48,23 +50,23 @@ vc-theorems: |-
     can_stack_cubes [2, 1] = "Yes" ∧
     can_stack_cubes [1, 2, 1] = "No" := sorry
   
-  /--
+  /-
   info: 'Yes'
   -/
-  #guard_msgs in
-  #eval can_stack_cubes [4, 3, 2, 1, 3, 4]
+  -- #guard_msgs in
+  -- #eval can_stack_cubes [4, 3, 2, 1, 3, 4]
   
-  /--
+  /-
   info: 'No'
   -/
-  #guard_msgs in
-  #eval can_stack_cubes [1, 3, 2]
+  -- #guard_msgs in
+  -- #eval can_stack_cubes [1, 3, 2]
   
-  /--
+  /-
   info: 'Yes'
   -/
-  #guard_msgs in
-  #eval can_stack_cubes [5, 4, 3, 2, 1]
+  -- #guard_msgs in
+  -- #eval can_stack_cubes [5, 4, 3, 2, 1]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Allen dreams of one day owning a enormous fleet of electric cars, the car of the future! He knows that this will give him a big status boost. As Allen is planning out all of the different types of cars he will own and how he will arrange them, he realizes that he has a problem. 
   
   Allen's future parking lot can be represented as a rectangle with $4$ rows and $n$ ($n \le 50$) columns of rectangular spaces, each of which can contain at most one car at any time. He imagines having $k$ ($k \le 2n$) cars in the grid, and all the cars are initially in the second and third rows. Each of the cars also has a different designated parking space in the first or fourth row. Allen has to put the cars into corresponding parking places.
@@ -71,6 +72,7 @@ vc-description: |-
   In the first sample test case, all cars are in front of their spots except car $5$, which is in front of the parking spot adjacent. The example shows the shortest possible sequence of moves, but any sequence of length at most $20000$ will be accepted.
   
   In the second sample test case, there is only one column, and the cars are in the wrong order, so no cars can move and the task is impossible.
+  -/
 
 vc-preamble: |-
 

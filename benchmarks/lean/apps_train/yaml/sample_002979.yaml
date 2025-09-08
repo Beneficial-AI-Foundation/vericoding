@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ### Vaccinations for children under 5
   You have been put in charge of administrating vaccinations for children in your local area. Write a function that will generate a list of vaccines for each child presented for vaccination, based on the child's age and vaccination history, and the month of the year.
   #### The function takes three parameters: age, status and month
@@ -38,6 +39,7 @@ vc-description: |-
   preSchoolBooster : ['40 months']
   //Protects against: diphtheria, tetanus, whooping cough and polio
   ~~~~
+  -/
 
 vc-preamble: |-
   def TOME : List (String × List Vaccine) :=

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Create a function that transforms any positive number to a string representing the number in words.  The function should work for all numbers between 0 and 999999.
   
   ### Examples
@@ -28,6 +29,7 @@ vc-description: |-
   number2words(99999)  ==>  "ninety-nine thousand nine hundred ninety-nine"
   number2words(888888)  ==>  "eight hundred eighty-eight thousand eight hundred eighty-eight"
   ```
+  -/
 
 vc-preamble: |-
   def countChar (s : String) (c : Char) : Nat := 

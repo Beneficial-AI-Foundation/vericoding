@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Kabir wants to impress Tara by showing her his problem solving skills. He has decided to give the correct answer to the next question which will be asked by his Algorithms teacher.
   The question asked is:
   Find the sum of alternate consecutive d$d$ odd numbers from the range L$L$ to R$R$ inclusive.
@@ -30,6 +31,7 @@ vc-description: |-
   
   -----EXPLANATION:-----
   Sum of alternate odd numbers i.e, 11,13,15,23,25,27 is 114
+  -/
 
 vc-preamble: |-
   def MODULO := 1000000007
@@ -60,23 +62,23 @@ vc-theorems: |-
     solve_alternate_odd_sum d l r = 0 :=
     sorry
   
-  /--
+  /-
   info: 114
   -/
-  #guard_msgs in
-  #eval solve_alternate_odd_sum 3 10 33
+  -- #guard_msgs in
+  -- #eval solve_alternate_odd_sum 3 10 33
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval solve_alternate_odd_sum 2 1 7
+  -- #guard_msgs in
+  -- #eval solve_alternate_odd_sum 2 1 7
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval solve_alternate_odd_sum 3 1 9
+  -- #guard_msgs in
+  -- #eval solve_alternate_odd_sum 3 1 9
 
 vc-postamble: |-
   -- Apps difficulty: interview

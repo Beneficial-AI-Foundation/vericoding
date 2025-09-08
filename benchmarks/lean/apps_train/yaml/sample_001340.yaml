@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Our chef has recently opened a new restaurant with a unique style. The restaurant is divided into K compartments (numbered from 1 to K) and each compartment can be occupied by at most one customer. 
   Each customer that visits the restaurant has a strongly preferred compartment p (1 ≤ p ≤ K), and if that compartment is already occupied, then the customer simply leaves. Now obviously, the chef wants to maximize the total number of customers that dine at his restaurant and so he allows (or disallows) certain customers so as to achieve this task. You are to help him with this. 
   Given a list of N customers with their arrival time, departure time and the preferred compartment, you need to calculate the maximum number of customers that can dine at the restaurant. 
@@ -43,6 +44,7 @@ vc-description: |-
   Example case 2.
   
   If we serve the 1st, 2nd and 4th customers, then we can get a maximum of 3.
+  -/
 
 vc-preamble: |-
 
@@ -81,23 +83,23 @@ vc-theorems: |-
       results[i]! ≤ k * n :=
   sorry
   
-  /--
+  /-
   info: [3]
   -/
-  #guard_msgs in
-  #eval max_restaurant_customers [test1]
+  -- #guard_msgs in
+  -- #eval max_restaurant_customers [test1]
   
-  /--
+  /-
   info: [3]
   -/
-  #guard_msgs in
-  #eval max_restaurant_customers [test2]
+  -- #guard_msgs in
+  -- #eval max_restaurant_customers [test2]
   
-  /--
+  /-
   info: [3, 3]
   -/
-  #guard_msgs in
-  #eval max_restaurant_customers [test1, test2]
+  -- #guard_msgs in
+  -- #eval max_restaurant_customers [test1, test2]
 
 vc-postamble: |-
   -- Apps difficulty: interview

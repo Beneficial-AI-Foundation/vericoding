@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Bessie and the cows are playing with sequences and need your help. They start with a sequence, initially containing just the number 0, and perform n operations. Each operation is one of the following:  Add the integer x_{i} to the first a_{i} elements of the sequence.  Append an integer k_{i} to the end of the sequence. (And hence the size of the sequence increases by 1)  Remove the last element of the sequence. So, the size of the sequence decreases by one. Note, that this operation can only be done if there are at least two elements in the sequence. 
   
   After each operation, the cows would like to know the average of all the numbers in the sequence. Help them!
@@ -51,6 +52,7 @@ vc-description: |-
   -----Note-----
   
   In the second sample, the sequence becomes $\{0 \} \rightarrow \{0,1 \} \rightarrow \{20,21 \} \rightarrow \{20,21,2 \} \rightarrow \{17,18,2 \} \rightarrow \{17,18 \} \rightarrow \{17 \}$
+  -/
 
 vc-preamble: |-
   def Operation := List Int

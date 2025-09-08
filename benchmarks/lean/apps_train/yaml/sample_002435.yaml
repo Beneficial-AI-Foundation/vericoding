@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a list of strings words representing an English Dictionary, find the longest word in words that can be built one character at a time by other words in words.  If there is more than one possible answer, return the longest word with the smallest lexicographical order.  If there is no answer, return the empty string.
   
   Example 1:
@@ -21,6 +22,7 @@ vc-description: |-
   All the strings in the input will only contain lowercase letters.
   The length of words will be in the range [1, 1000].
   The length of words[i] will be in the range [1, 30].
+  -/
 
 vc-preamble: |-
 
@@ -53,23 +55,23 @@ vc-theorems: |-
         (∀ w ∈ words, word.take i ≠ w)) :=
   sorry
   
-  /--
+  /-
   info: 'world'
   -/
-  #guard_msgs in
-  #eval longest_word ["w", "wo", "wor", "worl", "world"]
+  -- #guard_msgs in
+  -- #eval longest_word ["w", "wo", "wor", "worl", "world"]
   
-  /--
+  /-
   info: 'apple'
   -/
-  #guard_msgs in
-  #eval longest_word ["a", "banana", "app", "appl", "ap", "apply", "apple"]
+  -- #guard_msgs in
+  -- #eval longest_word ["a", "banana", "app", "appl", "ap", "apply", "apple"]
   
-  /--
+  /-
   info: 'a'
   -/
-  #guard_msgs in
-  #eval longest_word ["a", "b", "c"]
+  -- #guard_msgs in
+  -- #eval longest_word ["a", "b", "c"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

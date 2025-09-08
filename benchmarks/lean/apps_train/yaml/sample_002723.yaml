@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   For a given 2D vector described by cartesian coordinates of its initial point and terminal point in the following format:
   
   ```python
@@ -10,6 +11,7 @@ vc-description: |-
   Error must be within 1e-7.
   
   Coordinates can be integers or floating point numbers.
+  -/
 
 vc-preamble: |-
 

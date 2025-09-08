@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Just to remind, girls in Arpa's land are really nice.
   
   Mehrdad wants to invite some Hoses to the palace for a dancing party. Each Hos has some weight w_{i} and some beauty b_{i}. Also each Hos may have some friends. Hoses are divided in some friendship groups. Two Hoses x and y are in the same friendship group if and only if there is a sequence of Hoses a_1, a_2, ..., a_{k} such that a_{i} and a_{i} + 1 are friends for each 1 ≤ i < k, and a_1 = x and a_{k} = y.
@@ -48,6 +49,7 @@ vc-description: |-
   In the first sample there are two friendship groups: Hoses {1, 2} and Hos {3}. The best way is to choose all of Hoses in the first group, sum of their weights is equal to 5 and sum of their beauty is 6.
   
   In the second sample there are two friendship groups: Hoses {1, 2, 3} and Hos {4}. Mehrdad can't invite all the Hoses from the first group because their total weight is 12 > 11, thus the best way is to choose the first Hos from the first group and the only one from the second group. The total weight will be 8, and the total beauty will be 7.
+  -/
 
 vc-preamble: |-
   def List.sum : List Nat → Nat
@@ -100,17 +102,17 @@ vc-theorems: |-
     solve_party_weights n m w weights beauties friend_pairs = -1 :=
     sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval solve_party_weights 3 1 5 [3, 2, 5] [2, 4, 2] [(1, 2)]
+  -- #guard_msgs in
+  -- #eval solve_party_weights 3 1 5 [3, 2, 5] [2, 4, 2] [(1, 2)]
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval solve_party_weights 4 2 11 [2, 4, 6, 6] [6, 4, 2, 1] [(1, 2), (2, 3)]
+  -- #guard_msgs in
+  -- #eval solve_party_weights 4 2 11 [2, 4, 6, 6] [6, 4, 2, 1] [(1, 2), (2, 3)]
 
 vc-postamble: |-
   -- Apps difficulty: competition

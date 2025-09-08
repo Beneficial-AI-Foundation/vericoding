@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A schoolboy named Vasya loves reading books on programming and mathematics. He has recently read an encyclopedia article that described the method of median smoothing (or median filter) and its many applications in science and engineering. Vasya liked the idea of the method very much, and he decided to try it in practice.
   
   Applying the simplest variant of median smoothing to the sequence of numbers a_1, a_2, ..., a_{n} will result a new sequence b_1, b_2, ..., b_{n} obtained by the following algorithm:  b_1 = a_1, b_{n} = a_{n}, that is, the first and the last number of the new sequence match the corresponding numbers of the original sequence.  For i = 2, ..., n - 1 value b_{i} is equal to the median of three values a_{i} - 1, a_{i} and a_{i} + 1. 
@@ -43,6 +44,7 @@ vc-description: |-
   -----Note-----
   
   In the second sample the stabilization occurs in two steps: $01010 \rightarrow 00100 \rightarrow 00000$, and the sequence 00000 is obviously stable.
+  -/
 
 vc-preamble: |-
   def solve_median_smoothing (n : Nat) (seq : List Nat) : Nat × Option (List Nat) :=

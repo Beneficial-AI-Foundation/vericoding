@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There is a new prodigy in town and he has challenged people to a game. They have to give him an integer N and he will immediately respond with a number which has more than N factors.
   What the prodigy really does is to do some complex calculations in his head to find out the smallest integer with more than N factors. However, he has a weakness - he knows to do those calculation only on numbers up to 1019, so if the answer to be reported is more than 1019, he will not be able to come up with his solution and will lose the game.
   Given the integer the people give to the prodigy, you need to report whether he wins the game or not. If he wins, also output his answer.
@@ -20,6 +21,7 @@ vc-description: |-
   win 6
   win 12
   lose
+  -/
 
 vc-preamble: |-
 
@@ -42,23 +44,23 @@ vc-theorems: |-
   theorem large_inputs_always_lose {n : Nat} (h : n ≥ 10^7) (h2 : n ≤ 10^8) :
     solve_prodigy n = "lose" := sorry
   
-  /--
+  /-
   info: 'win 6'
   -/
-  #guard_msgs in
-  #eval solve_prodigy 3
+  -- #guard_msgs in
+  -- #eval solve_prodigy 3
   
-  /--
+  /-
   info: 'win 12'
   -/
-  #guard_msgs in
-  #eval solve_prodigy 5
+  -- #guard_msgs in
+  -- #eval solve_prodigy 5
   
-  /--
+  /-
   info: 'lose'
   -/
-  #guard_msgs in
-  #eval solve_prodigy 12345678
+  -- #guard_msgs in
+  -- #eval solve_prodigy 12345678
 
 vc-postamble: |-
   -- Apps difficulty: interview

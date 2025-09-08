@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   
   You are given a `chessBoard`, a 2d integer array that contains only `0` or `1`. `0` represents a chess piece and `1` represents a empty grid. It's always square shape.
@@ -116,6 +117,7 @@ vc-description: |-
   ```
   
   the output should be `{}`.
+  -/
 
 vc-preamble: |-
 
@@ -143,23 +145,23 @@ vc-theorems: |-
     let board' := board
     count board = count board' ∧ board = board' := sorry
   
-  /--
+  /-
   info: {2: 1}
   -/
-  #guard_msgs in
-  #eval count [[1, 1], [1, 1]]
+  -- #guard_msgs in
+  -- #eval count [[1, 1], [1, 1]]
   
-  /--
+  /-
   info: {2: 4, 3: 1}
   -/
-  #guard_msgs in
-  #eval count [[1, 1, 1], [1, 1, 1], [1, 1, 1]]
+  -- #guard_msgs in
+  -- #eval count [[1, 1, 1], [1, 1, 1], [1, 1, 1]]
   
-  /--
+  /-
   info: {}
   -/
-  #guard_msgs in
-  #eval count [[1, 1, 1], [1, 0, 1], [1, 1, 1]]
+  -- #guard_msgs in
+  -- #eval count [[1, 1, 1], [1, 0, 1], [1, 1, 1]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

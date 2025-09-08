@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array (ints) of n integers, find three integers in arr such that the sum is closest to a given number (num), target.
   
   Return the sum of the three integers. 
@@ -7,6 +8,7 @@ vc-description: |-
   Example:
   
   Note: your solution should not modify the input array.
+  -/
 
 vc-preamble: |-
   def abs (x : Int) : Int :=
@@ -42,23 +44,23 @@ vc-theorems: |-
     ∃ n : Int, closest_sum nums target = n :=
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval closest_sum [-1, 2, 1, -4] 1
+  -- #guard_msgs in
+  -- #eval closest_sum [-1, 2, 1, -4] 1
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval closest_sum [5, 4, 0, 3] 3
+  -- #guard_msgs in
+  -- #eval closest_sum [5, 4, 0, 3] 3
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval closest_sum [-2, 2, -3, 1] 3
+  -- #guard_msgs in
+  -- #eval closest_sum [-2, 2, -3, 1] 3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

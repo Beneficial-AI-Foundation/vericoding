@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a permutation of 1,2,...,N: p_1,p_2,...,p_N. Determine if the state where p_i=i for every i can be reached by performing the following operation any number of times:
    - Choose three elements p_{i-1},p_{i},p_{i+1} (2\leq i\leq N-1) such that p_{i-1}>p_{i}>p_{i+1} and reverse the order of these three.
   
@@ -30,6 +31,7 @@ vc-description: |-
   The state where p_i=i for every i can be reached as follows:
    - Reverse the order of p_1,p_2,p_3. The sequence p becomes 1,2,5,4,3.
    - Reverse the order of p_3,p_4,p_5. The sequence p becomes 1,2,3,4,5.
+  -/
 
 vc-preamble: |-
 
@@ -52,23 +54,23 @@ vc-theorems: |-
     (h : perm = (List.range n).reverse) :
     solve_perm_sort perm = (n ≤ 3) := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval solve_perm_sort [5, 2, 1, 4, 3]
+  -- #guard_msgs in
+  -- #eval solve_perm_sort [5, 2, 1, 4, 3]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval solve_perm_sort [3, 2, 4, 1]
+  -- #guard_msgs in
+  -- #eval solve_perm_sort [3, 2, 4, 1]
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval solve_perm_sort [3, 2, 1, 6, 5, 4, 7]
+  -- #guard_msgs in
+  -- #eval solve_perm_sort [3, 2, 1, 6, 5, 4, 7]
 
 vc-postamble: |-
   -- Apps difficulty: competition

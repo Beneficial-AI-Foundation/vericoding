@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Suppose you have N integers from 1 to N. We define a beautiful arrangement as an array that is constructed by these N numbers successfully if one of the following is true for the ith position (1 
   The number at the ith position is divisible by i.
   i is divisible by the number at the ith position.
@@ -20,6 +21,7 @@ vc-description: |-
   Note:
   
   N is a positive integer and will not exceed 15.
+  -/
 
 vc-preamble: |-
 
@@ -45,23 +47,23 @@ vc-theorems: |-
       (h : n = 0 ∨ n > 15) :
       count_beautiful_arrangements n = 0 := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_beautiful_arrangements 2
+  -- #guard_msgs in
+  -- #eval count_beautiful_arrangements 2
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_beautiful_arrangements 3
+  -- #guard_msgs in
+  -- #eval count_beautiful_arrangements 3
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval count_beautiful_arrangements 4
+  -- #guard_msgs in
+  -- #eval count_beautiful_arrangements 4
 
 vc-postamble: |-
   -- Apps difficulty: interview

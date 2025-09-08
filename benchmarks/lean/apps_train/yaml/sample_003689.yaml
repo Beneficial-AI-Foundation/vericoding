@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The palindromic number `595` is interesting because it can be written as the sum of consecutive squares: `6^2 + 7^2 + 8^2 + 9^2 + 10^2 + 11^2 + 12^2 = 595`.
   
   There are exactly eleven palindromes below one-thousand that can be written as consecutive square sums. Note that `1 = 0^2 + 1^2` has not been included as this problem is concerned with the squares of positive integers.
@@ -16,6 +17,7 @@ vc-description: |-
   [Fixed length palindromes](https://www.codewars.com/kata/59f0ee47a5e12962cb0000bf)
   
   [Divisor harmony](https://www.codewars.com/kata/59bf97cd4f98a8b1cd00007e)
+  -/
 
 vc-preamble: |-
 
@@ -45,23 +47,23 @@ vc-theorems: |-
     n > 0 → n ≤ 1000 → values n ≥ 0 :=
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval values 100
+  -- #guard_msgs in
+  -- #eval values 100
   
-  /--
+  /-
   info: 11
   -/
-  #guard_msgs in
-  #eval values 1000
+  -- #guard_msgs in
+  -- #eval values 1000
   
-  /--
+  /-
   info: 30
   -/
-  #guard_msgs in
-  #eval values 100000
+  -- #guard_msgs in
+  -- #eval values 100000
 
 vc-postamble: |-
   -- Apps difficulty: introductory

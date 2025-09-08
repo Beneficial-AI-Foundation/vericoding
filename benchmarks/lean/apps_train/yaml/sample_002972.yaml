@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    Given a string `s`, find out if its characters can be rearranged to form a palindrome.
   
@@ -21,6 +22,7 @@ vc-description: |-
    - `[output]` a boolean value
   
       `true` if the characters of the inputString can be rearranged to form a palindrome, `false` otherwise.
+  -/
 
 vc-preamble: |-
   def palindrome_rearranging (s : String) : Bool :=
@@ -57,29 +59,29 @@ vc-theorems: |-
     palindrome_rearranging s = true :=
   sorry
   
-  /-- Count of chars with odd occurrences -/
+  /- Count of chars with odd occurrences -/
   
   theorem palindrome_rearranging_odd_counts (s : String) :
     palindrome_rearranging s = (odd_char_count s ≤ 1) :=
   sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval palindrome_rearranging "aabb"
+  -- #guard_msgs in
+  -- #eval palindrome_rearranging "aabb"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval palindrome_rearranging "abbcabb"
+  -- #guard_msgs in
+  -- #eval palindrome_rearranging "abbcabb"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval palindrome_rearranging "aaabbb"
+  -- #guard_msgs in
+  -- #eval palindrome_rearranging "aaabbb"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

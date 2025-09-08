@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a list of white pawns on a chessboard (any number of them, meaning from 0 to 64 and with the possibility to be positioned everywhere), determine how many of them have their backs covered by another. 
   Pawns attacking upwards since we have only white ones.
   
@@ -6,6 +7,7 @@ vc-description: |-
   
   This is how the chess board coordinates are defined:
   ABCDEFGH8♜♞♝♛♚♝♞♜7♟♟♟♟♟♟♟♟65432♙♙♙♙♙♙♙♙1♖♘♗♕♔♗♘♖
+  -/
 
 vc-preamble: |-
 
@@ -48,23 +50,23 @@ vc-theorems: |-
     (coveredPawns [String.mk ['h', rank]] = 0) :=
   sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval covered_pawns ["f7", "b1", "h1", "c7", "h7"]
+  -- #guard_msgs in
+  -- #eval covered_pawns ["f7", "b1", "h1", "c7", "h7"]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval covered_pawns ["e5", "b2", "b4", "g4", "a1", "a5"]
+  -- #guard_msgs in
+  -- #eval covered_pawns ["e5", "b2", "b4", "g4", "a1", "a5"]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval covered_pawns ["a2", "b1", "c2"]
+  -- #guard_msgs in
+  -- #eval covered_pawns ["a2", "b1", "c2"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

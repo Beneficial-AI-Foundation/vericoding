@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A sequence of number is called arithmetic if it consists of at least three elements and if the difference between any two consecutive elements is the same.
   
   For example, these are arithmetic sequence:
@@ -20,6 +21,7 @@ vc-description: |-
   A = [1, 2, 3, 4]
   
   return: 3, for 3 arithmetic slices in A: [1, 2, 3], [2, 3, 4] and [1, 2, 3, 4] itself.
+  -/
 
 vc-preamble: |-
 
@@ -60,23 +62,23 @@ vc-theorems: |-
     numberOfArithmeticSlices nums = (n - 2) * (n - 1) / 2 := by
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval number_of_arithmetic_slices [1, 2, 3, 4]
+  -- #guard_msgs in
+  -- #eval number_of_arithmetic_slices [1, 2, 3, 4]
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval number_of_arithmetic_slices [1, 2, 3, 4, 5]
+  -- #guard_msgs in
+  -- #eval number_of_arithmetic_slices [1, 2, 3, 4, 5]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval number_of_arithmetic_slices [1, 1, 2, 5, 7]
+  -- #guard_msgs in
+  -- #eval number_of_arithmetic_slices [1, 1, 2, 5, 7]
 
 vc-postamble: |-
   -- Apps difficulty: interview

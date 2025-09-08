@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   12:17 (UTC): The sample input 1 and 2 were swapped. The error is now fixed. We are very sorry for your inconvenience.
   There are N children in AtCoder Kindergarten, conveniently numbered 1 through N. Mr. Evi will distribute C indistinguishable candies to the children.
   If child i is given a candies, the child's happiness will become x_i^a, where x_i is the child's excitement level. The activity level of the kindergarten is the product of the happiness of all the N children.
@@ -37,6 +38,7 @@ vc-description: |-
    - If child 1 is given 2 candies, and child 2 is given 1 candy, the activity level of the kindergarten is 1^2*1^1=1.
    - If child 1 is given 3 candies, and child 2 is given 0 candy, the activity level of the kindergarten is 1^3*1^0=1.
   Thus, f(1,1)=1+1+1+1=4, and the sum over all f is also 4.
+  -/
 
 vc-preamble: |-
 
@@ -63,23 +65,23 @@ vc-theorems: |-
   theorem zero_candies_distribution :
     solve_candy_distribution 2 0 [1,1] [1,1] = 1 := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval solve_candy_distribution 2 3 [1, 1] [1, 1]
+  -- #guard_msgs in
+  -- #eval solve_candy_distribution 2 3 [1, 1] [1, 1]
   
-  /--
+  /-
   info: 14
   -/
-  #guard_msgs in
-  #eval solve_candy_distribution 1 2 [1] [3]
+  -- #guard_msgs in
+  -- #eval solve_candy_distribution 1 2 [1] [3]
   
-  /--
+  /-
   info: 66
   -/
-  #guard_msgs in
-  #eval solve_candy_distribution 2 3 [1, 1] [2, 2]
+  -- #guard_msgs in
+  -- #eval solve_candy_distribution 2 3 [1, 1] [2, 2]
 
 vc-postamble: |-
   -- Apps difficulty: competition

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Recently, Dima met with Sasha in a philatelic store, and since then they are collecting coins together. Their favorite occupation is to sort collections of coins. Sasha likes having things in order, that is why he wants his coins to be arranged in a row in such a way that firstly come coins out of circulation, and then come coins still in circulation. 
   
   For arranging coins Dima uses the following algorithm. One step of his algorithm looks like the following:
@@ -55,6 +56,7 @@ vc-description: |-
   XOXX  →  OXXX
   
   Finally, after replacement of the second coin, row becomes consisting of coins that are in circulation and Dima will look through coins from left to right without any exchanges.
+  -/
 
 vc-preamble: |-
 

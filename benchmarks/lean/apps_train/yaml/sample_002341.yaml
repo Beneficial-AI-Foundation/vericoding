@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given two strings S and T, return if they are equal when both are typed into empty text editors. # means a backspace character.
   Note that after backspacing an empty text, the text will continue empty.
   
@@ -31,6 +32,7 @@ vc-description: |-
   Follow up:
   
   Can you solve it in O(N) time and O(1) space?
+  -/
 
 vc-preamble: |-
   def backspace_compare (s1: String) (s2: String) : Bool :=
@@ -57,23 +59,23 @@ vc-theorems: |-
     backspace_compare s1 s2 = backspace_compare s2 s1 :=
   by sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval backspace_compare "ab#c" "ad#c"
+  -- #guard_msgs in
+  -- #eval backspace_compare "ab#c" "ad#c"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval backspace_compare "ab##" "c#d#"
+  -- #guard_msgs in
+  -- #eval backspace_compare "ab##" "c#d#"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval backspace_compare "a#c" "b"
+  -- #guard_msgs in
+  -- #eval backspace_compare "a#c" "b"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given: an array containing hashes of names
   
   Return: a string formatted as a list of names separated by commas except for the last two names, which should be separated by an ampersand.
@@ -59,6 +60,7 @@ vc-description: |-
   ```
   
   Note: all the hashes are pre-validated and will only contain A-Z, a-z, '-' and '.'.
+  -/
 
 vc-preamble: |-
   def namelist (names : List (String × String)) : String :=
@@ -99,23 +101,23 @@ vc-theorems: |-
     ∧ (result.splitOn " & ").get! 1 = names.getLast?.get!.1 :=
   sorry
   
-  /--
+  /-
   info: 'Bart, Lisa & Maggie'
   -/
-  #guard_msgs in
-  #eval namelist [{"name": "Bart"}, {"name": "Lisa"}, {"name": "Maggie"}]
+  -- #guard_msgs in
+  -- #eval namelist [{"name": "Bart"}, {"name": "Lisa"}, {"name": "Maggie"}]
   
-  /--
+  /-
   info: 'Bart & Lisa'
   -/
-  #guard_msgs in
-  #eval namelist [{"name": "Bart"}, {"name": "Lisa"}]
+  -- #guard_msgs in
+  -- #eval namelist [{"name": "Bart"}, {"name": "Lisa"}]
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval namelist []
+  -- #guard_msgs in
+  -- #eval namelist []
 
 vc-postamble: |-
   -- Apps difficulty: introductory

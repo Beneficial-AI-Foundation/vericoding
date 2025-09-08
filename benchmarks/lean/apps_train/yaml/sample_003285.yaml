@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Two samurai generals are discussing dinner plans after a battle, but they can't seem to agree.
   
   The discussion gets heated and you are cannot risk favoring either of them as this might damage your political standing with either of the two clans the samurai generals belong to. Thus, the only thing left to do is find what the common ground of what they are saying is.
@@ -13,6 +14,7 @@ vc-description: |-
   Each word in the resulting string shall occur once, and the order of the words need to follow the order of the first occurence of each word in ```s2```.
   
   If they are saying nothing in common, kill both samurai and blame a ninja. (output "death")
+  -/
 
 vc-preamble: |-
   def common_ground (s1 s2 : String) : String :=
@@ -49,23 +51,23 @@ vc-theorems: |-
     common_ground s1 s2 = "death" :=
   sorry
   
-  /--
+  /-
   info: 'eat chicken'
   -/
-  #guard_msgs in
-  #eval common_ground "eat chicken" "eat chicken and rice"
+  -- #guard_msgs in
+  -- #eval common_ground "eat chicken" "eat chicken and rice"
   
-  /--
+  /-
   info: 'drink a coke'
   -/
-  #guard_msgs in
-  #eval common_ground "eat a burger and drink a coke" "drink a coke"
+  -- #guard_msgs in
+  -- #eval common_ground "eat a burger and drink a coke" "drink a coke"
   
-  /--
+  /-
   info: 'death'
   -/
-  #guard_msgs in
-  #eval common_ground "i like turtles" "what are you talking about"
+  -- #guard_msgs in
+  -- #eval common_ground "i like turtles" "what are you talking about"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

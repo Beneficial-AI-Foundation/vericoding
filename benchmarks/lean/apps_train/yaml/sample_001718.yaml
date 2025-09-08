@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   This kata explores writing an AI for a two player, turn based game called *NIM*.
   
   The Board
@@ -41,6 +42,7 @@ vc-description: |-
   Which refers to an index of a pile on the board, and some none-zero number of straws to draw from that pile.
   
   The test suite is written so that your AI is expected to play 50 games and win every game it plays.
+  -/
 
 vc-preamble: |-
   def choose_move (gameState : List Nat) : Nat × Nat :=

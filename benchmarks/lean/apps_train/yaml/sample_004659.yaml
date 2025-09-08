@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The goal of this kata is to write a function that takes two inputs: a string and a character. The function will count the number of times that character appears in the string. The count is case insensitive.
   
   For example: 
@@ -11,6 +12,7 @@ vc-description: |-
   The character can be any alphanumeric character. 
   
   Good luck.
+  -/
 
 vc-preamble: |-
 
@@ -37,23 +39,23 @@ vc-theorems: |-
     count_char s c = count_char s.toLower c :=
   sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval count_char "fizzbuzz" "z"
+  -- #guard_msgs in
+  -- #eval count_char "fizzbuzz" "z"
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval count_char "Fancy fifth fly aloof" "f"
+  -- #guard_msgs in
+  -- #eval count_char "Fancy fifth fly aloof" "f"
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_char "Hello World" "l"
+  -- #guard_msgs in
+  -- #eval count_char "Hello World" "l"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

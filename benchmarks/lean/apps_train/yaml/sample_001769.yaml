@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Implement a data structure supporting the following operations:
   
   Inc(Key) - Inserts a new key  with value 1. Or increments an existing key by 1. Key is guaranteed to be a non-empty string.
@@ -7,6 +8,7 @@ vc-description: |-
   GetMinKey() - Returns one of the keys with minimal value. If no element exists, return an empty string "".
   
   Challenge: Perform all these in O(1) time complexity.
+  -/
 
 vc-preamble: |-
   def AllOne.inc (a : AllOne) (key : String) : Unit := sorry

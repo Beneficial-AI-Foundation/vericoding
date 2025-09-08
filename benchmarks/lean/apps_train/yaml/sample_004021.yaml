@@ -1,5 +1,7 @@
 vc-description: |-
+  /-
   Write function avg which calculates average of numbers in given list.
+  -/
 
 vc-preamble: |-
   def find_average (numbers : List Float) : Float := sorry
@@ -37,23 +39,23 @@ vc-theorems: |-
     | [] => find_average numbers = 0
     | _  => find_average numbers * (Float.ofNat numbers.length) = sum numbers := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_average [1, 2, 3]
+  -- #guard_msgs in
+  -- #eval find_average [1, 2, 3]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval find_average []
+  -- #guard_msgs in
+  -- #eval find_average []
   
-  /--
+  /-
   info: 2.5
   -/
-  #guard_msgs in
-  #eval find_average [1.5, 2.5, 3.5]
+  -- #guard_msgs in
+  -- #eval find_average [1.5, 2.5, 3.5]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

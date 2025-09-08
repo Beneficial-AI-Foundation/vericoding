@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Create a timebased key-value store class TimeMap, that supports two operations.
   1. set(string key, string value, int timestamp)
   
@@ -33,6 +34,7 @@ vc-description: |-
   The timestamps for all TimeMap.set operations are strictly increasing.
   1 <= timestamp <= 10^7
   TimeMap.set and TimeMap.get functions will be called a total of 120000 times (combined) per test case.
+  -/
 
 vc-preamble: |-
   def TimeMap.set (tm : TimeMap) (key : String) (value : String) (timestamp : Nat) : TimeMap :=

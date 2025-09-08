@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given an array nums of non-negative integers. nums is considered special if there exists a number x such that there are exactly x numbers in nums that are greater than or equal to x.
   Notice that x does not have to be an element in nums.
   Return x if the array is special, otherwise, return -1. It can be proven that if nums is special, the value for x is unique.
@@ -30,6 +31,7 @@ vc-description: |-
   
   1 <= nums.length <= 100
   0 <= nums[i] <= 1000
+  -/
 
 vc-preamble: |-
 
@@ -62,23 +64,23 @@ vc-theorems: |-
     nums.length > 0 →
     special_array nums = nums.length := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval special_array [3, 5]
+  -- #guard_msgs in
+  -- #eval special_array [3, 5]
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval special_array [0, 0]
+  -- #guard_msgs in
+  -- #eval special_array [0, 0]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval special_array [0, 4, 3, 0, 4]
+  -- #guard_msgs in
+  -- #eval special_array [0, 4, 3, 0, 4]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

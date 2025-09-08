@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given an initial 2-value array (x). You will use this to calculate a score.
   
   If both values in (x) are numbers, the score is the sum of the two. If only one is a number, the score is that number. If neither is a number, return 'Void!'.
@@ -8,6 +9,7 @@ vc-description: |-
   For example:
   
   if (x) == ['a', 3]  you should return [['a', 3], ['a', 3], ['a', 3]].
+  -/
 
 vc-preamble: |-
   def List.sum : List Nat → Nat 

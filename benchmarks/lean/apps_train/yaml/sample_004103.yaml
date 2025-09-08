@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   **Story**  
   On some island lives a chameleon population. Chameleons here can be of only one of three colors - red, green and blue. Whenever two chameleons of different colors meet, they can change their colors to a third one (i.e. when red and blue chameleons meet, they can both become green). There is no other way for chameleons to change their color (in particular, when red and blue chameleons meet, they can't become both red, only third color can be assumed).  
   Chameleons want to become of one certain color. They may plan they meetings to reach that goal. Chameleons want to know, how fast their goal can be achieved (if it can be achieved at all).
@@ -16,6 +17,7 @@ vc-description: |-
   
   **Credits**  
   Kata based on "Chameleons" puzzle from braingames.ru: http://www.braingames.ru/?path=comments&puzzle=226 (russian, not translated).
+  -/
 
 vc-preamble: |-
 
@@ -41,23 +43,23 @@ vc-definitions: |-
     := sorry
 
 vc-theorems: |-
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval chameleon [0, 0, 17] 1
+  -- #guard_msgs in
+  -- #eval chameleon [0, 0, 17] 1
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval chameleon [1, 1, 15] 2
+  -- #guard_msgs in
+  -- #eval chameleon [1, 1, 15] 2
   
-  /--
+  /-
   info: 35
   -/
-  #guard_msgs in
-  #eval chameleon [34, 32, 35] 0
+  -- #guard_msgs in
+  -- #eval chameleon [34, 32, 35] 0
 
 vc-postamble: |-
   -- Apps difficulty: introductory

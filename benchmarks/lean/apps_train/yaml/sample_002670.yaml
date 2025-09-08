@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Positive integers have so many gorgeous features. 
   Some of them could be expressed as a sum of two or more consecutive positive numbers.
   ___
@@ -40,6 +41,7 @@ vc-description: |-
   
   ## Enjoy Learning !!
   # Zizou
+  -/
 
 vc-preamble: |-
 
@@ -65,35 +67,35 @@ vc-theorems: |-
     n ≥ 1 → consecutive_ducks n = true ∨ consecutive_ducks n = false :=
   sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval consecutive_ducks 10
+  -- #guard_msgs in
+  -- #eval consecutive_ducks 10
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval consecutive_ducks 8
+  -- #guard_msgs in
+  -- #eval consecutive_ducks 8
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval consecutive_ducks 57
+  -- #guard_msgs in
+  -- #eval consecutive_ducks 57
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval consecutive_ducks 69
+  -- #guard_msgs in
+  -- #eval consecutive_ducks 69
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval consecutive_ducks 1024
+  -- #guard_msgs in
+  -- #eval consecutive_ducks 1024
 
 vc-postamble: |-
   -- Apps difficulty: introductory

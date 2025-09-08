@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   A masked number is a string that consists of digits and one asterisk (`*`) that should be replaced by exactly one digit. Given a masked number `s`, find all the possible options to replace the asterisk with a digit to produce an integer divisible by 6.
   
@@ -30,6 +31,7 @@ vc-description: |-
   "123456789012345678901234567860",
   "123456789012345678901234567890"]```
   As you can see, the masked number may be very large ;-)
+  -/
 
 vc-preamble: |-
 
@@ -54,23 +56,23 @@ vc-theorems: |-
   theorem is_divisible_by_6_no_leading_zeros {s : String} (h : s.length > 0) (h' : s.length ≤ 10000) :
     ∀ x ∈ is_divisible_by_6 s, ¬String.startsWith x "0" := sorry
   
-  /--
+  /-
   info: ['120', '150', '180']
   -/
-  #guard_msgs in
-  #eval is_divisible_by_6 "1*0"
+  -- #guard_msgs in
+  -- #eval is_divisible_by_6 "1*0"
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval is_divisible_by_6 "*1"
+  -- #guard_msgs in
+  -- #eval is_divisible_by_6 "*1"
   
-  /--
+  /-
   info: ['36', '66', '96']
   -/
-  #guard_msgs in
-  #eval is_divisible_by_6 "*6"
+  -- #guard_msgs in
+  -- #eval is_divisible_by_6 "*6"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

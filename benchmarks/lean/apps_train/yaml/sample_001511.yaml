@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A matrix B (consisting of integers) of dimension N × N is said to be good if there exists an array A (consisting of integers) such that B[i][j]  = |A[i] - A[j]|, where |x| denotes absolute value of integer x.
   You are given a partially filled matrix B of dimension N × N. Q of the entries of this matrix are filled by either 0 or 1. You have to identify whether it is possible to fill the remaining entries of matrix B (the entries can be filled by any integer, not necessarily by 0 or 1) such that the resulting fully filled matrix B is good.
   
@@ -54,6 +55,7 @@ vc-description: |-
   This matrix corresponds to the array A = [1, 2].
   
   Example 2. It is impossible to fill the remaining entries of matrix B such that the resulting matrix is good, as B[1][2] = 1 and B[2][1] = 0, which is impossible.
+  -/
 
 vc-preamble: |-
 
@@ -84,23 +86,23 @@ vc-theorems: |-
   theorem symmetric_entries_one_invalid (n : Nat) (h : n ≥ 2) :
     checkGoodMatrix n [(1, 2, 1), (2, 1, 0)] = "no" := sorry
   
-  /--
+  /-
   info: 'yes'
   -/
-  #guard_msgs in
-  #eval check_good_matrix 2 [[1, 1, 0], [1, 2, 1]]
+  -- #guard_msgs in
+  -- #eval check_good_matrix 2 [[1, 1, 0], [1, 2, 1]]
   
-  /--
+  /-
   info: 'no'
   -/
-  #guard_msgs in
-  #eval check_good_matrix 2 [[1, 1, 0], [1, 2, 1], [2, 1, 0]]
+  -- #guard_msgs in
+  -- #eval check_good_matrix 2 [[1, 1, 0], [1, 2, 1], [2, 1, 0]]
   
-  /--
+  /-
   info: 'yes'
   -/
-  #guard_msgs in
-  #eval check_good_matrix 3 [[2, 2, 0], [2, 3, 1]]
+  -- #guard_msgs in
+  -- #eval check_good_matrix 3 [[2, 2, 0], [2, 3, 1]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

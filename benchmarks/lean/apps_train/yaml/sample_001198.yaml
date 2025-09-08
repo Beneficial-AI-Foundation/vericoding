@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   "Don't Drink and Drive, but when you do, Better Call Saul."
   Once Jesse and Walter were fighting over extra cash, and Saul decided to settle it with a game of stone piles whose winner gets the extra money. The game is described as follows :
   There are N$N$ piles of stones with A$A$1$1$,$,$ A$A$2$2$,$,$ ...$...$ A$A$N$N$ stones in each pile. 
@@ -38,6 +39,7 @@ vc-description: |-
   For Test Case 1 : Playing optimally, Walter removes 4. Jesse removes 3 and then Walter removes 4. Jesse wins as 4+4=8$4 + 4 = 8$ is even.
   - 
   For Test Case 2 : Playing optimally, Walter removes 4, Jesse removes 3, Walter removes 2 and Jesse removes 1. Walter wins as  3+3+1=7$3 + 3 + 1 = 7$ is odd.
+  -/
 
 vc-preamble: |-
 
@@ -73,23 +75,23 @@ vc-theorems: |-
     (h₁ : stones = List.replicate n 1) :
     determine_winner n 1 stones = (if n % 2 = 1 then "Jesse" else "Walter") := sorry
   
-  /--
+  /-
   info: 'Jesse'
   -/
-  #guard_msgs in
-  #eval determine_winner 5 3 [4, 4, 4, 3, 4]
+  -- #guard_msgs in
+  -- #eval determine_winner 5 3 [4, 4, 4, 3, 4]
   
-  /--
+  /-
   info: 'Walter'
   -/
-  #guard_msgs in
-  #eval determine_winner 7 4 [3, 3, 1, 1, 1, 2, 4]
+  -- #guard_msgs in
+  -- #eval determine_winner 7 4 [3, 3, 1, 1, 1, 2, 4]
   
-  /--
+  /-
   info: 'Jesse'
   -/
-  #guard_msgs in
-  #eval determine_winner 4 2 [1, 2, 3, 4]
+  -- #guard_msgs in
+  -- #eval determine_winner 4 2 [1, 2, 3, 4]
 
 vc-postamble: |-
   -- Apps difficulty: interview

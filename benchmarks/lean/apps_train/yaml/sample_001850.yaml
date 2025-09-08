@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a binary tree root and a linked list with head as the first node. 
   Return True if all the elements in the linked list starting from the head correspond to some downward path connected in the binary tree otherwise return False.
   In this context downward path means a path that starts at some node and goes downwards.
@@ -24,6 +25,7 @@ vc-description: |-
   1 <= node.val <= 100 for each node in the linked list and binary tree.
   The given linked list will contain between 1 and 100 nodes.
   The given binary tree will contain between 1 and 2500 nodes.
+  -/
 
 vc-preamble: |-
 
@@ -55,23 +57,23 @@ vc-theorems: |-
     is_subpath (some head) (some root) = true := by
     sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_subpath ListNode(4) TreeNode(1)
+  -- #guard_msgs in
+  -- #eval is_subpath ListNode(4) TreeNode(1)
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_subpath ListNode(1) TreeNode(1)
+  -- #guard_msgs in
+  -- #eval is_subpath ListNode(1) TreeNode(1)
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_subpath ListNode(1) root2
+  -- #guard_msgs in
+  -- #eval is_subpath ListNode(1) root2
 
 vc-postamble: |-
   -- Apps difficulty: interview

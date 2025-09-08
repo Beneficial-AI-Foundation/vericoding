@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Print an ordered cross table of a round robin tournament that looks like this:
   
   ```
@@ -164,6 +165,7 @@ vc-description: |-
   19  Rudy Herrera       0  0  =  0  0  0  1  1  =  0  =  1  =  0  =  0  1  1     =   8.0   72.00
   20  Adriel Brock       0  1  0  =  =  0  0  1  1  =  0  =  0  0  1  =  0  =  =      7.5   71.00'''
   ```
+  -/
 
 vc-preamble: |-
 

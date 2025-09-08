@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a singly linked list L: L0→L1→…→Ln-1→Ln,
   reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…
   
@@ -11,6 +12,7 @@ vc-description: |-
   Example 2:
   
   Given 1->2->3->4->5, reorder it to 1->5->2->4->3.
+  -/
 
 vc-preamble: |-
   def reorder_list : ListNode → ListNode :=
@@ -66,17 +68,17 @@ vc-theorems: |-
       List.get! first_half (List.length first_half - 1) :=
     sorry
   
-  /--
+  /-
   info: [1, 4, 2, 3]
   -/
-  #guard_msgs in
-  #eval list_to_array reorder_list(head1)
+  -- #guard_msgs in
+  -- #eval list_to_array reorder_list(head1)
   
-  /--
+  /-
   info: [1, 5, 2, 4, 3]
   -/
-  #guard_msgs in
-  #eval list_to_array reorder_list(head2)
+  -- #guard_msgs in
+  -- #eval list_to_array reorder_list(head2)
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The `depth` of an integer `n` is defined to be how many multiples of `n` it is necessary to compute before all `10` digits have appeared at least once in some multiple. 
   
   example:
@@ -18,6 +19,7 @@ vc-description: |-
   
   ```
   Looking at the above table under `digits` column you can find all the digits from `0` to `9`, Hence it required `9` multiples of `42` to get all the digits. So the depth of `42` is `9`. Write a function named `computeDepth` which computes the depth of its integer argument.Only positive numbers greater than zero will be passed as an input.
+  -/
 
 vc-preamble: |-
   def compute_depth (n : Nat) : Nat := sorry
@@ -55,23 +57,23 @@ vc-theorems: |-
   theorem powers_of_ten_depth_positive :
     ∀ i : Nat, compute_depth (10^i) > 0 := sorry
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval compute_depth 42
+  -- #guard_msgs in
+  -- #eval compute_depth 42
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval compute_depth 13
+  -- #guard_msgs in
+  -- #eval compute_depth 13
   
-  /--
+  /-
   info: 36
   -/
-  #guard_msgs in
-  #eval compute_depth 25
+  -- #guard_msgs in
+  -- #eval compute_depth 25
 
 vc-postamble: |-
   -- Apps difficulty: introductory

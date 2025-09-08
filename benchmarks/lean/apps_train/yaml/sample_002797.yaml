@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Create a function
   
   ```python
@@ -14,6 +15,7 @@ vc-description: |-
   has_two_cube_sums(1729); // true
   has_two_cube_sums(42);   // false
   ```
+  -/
 
 vc-preamble: |-
 
@@ -44,23 +46,23 @@ vc-theorems: |-
     n > 0 → n < 100 → n ≠ 1729 → has_two_cube_sums n = false :=
   sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval has_two_cube_sums 1729
+  -- #guard_msgs in
+  -- #eval has_two_cube_sums 1729
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval has_two_cube_sums 42
+  -- #guard_msgs in
+  -- #eval has_two_cube_sums 42
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval has_two_cube_sums 4104
+  -- #guard_msgs in
+  -- #eval has_two_cube_sums 4104
 
 vc-postamble: |-
   -- Apps difficulty: introductory

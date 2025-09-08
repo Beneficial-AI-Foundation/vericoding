@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We have a collection of rocks, each rock has a positive integer weight.
   Each turn, we choose any two rocks and smash them together.  Suppose the stones have weights x and y with x <= y.  The result of this smash is:
   
@@ -20,6 +21,7 @@ vc-description: |-
   
   1 <= stones.length <= 30
   1 <= stones[i] <= 100
+  -/
 
 vc-preamble: |-
   def lastStoneWeightII (stones : List Nat) : Nat :=
@@ -55,23 +57,23 @@ vc-theorems: |-
     (∀ i, i < stones.length → stones[i]! = x) → lastStoneWeightII stones ≤ x :=
   sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval lastStoneWeightII [2, 7, 4, 1, 8, 1]
+  -- #guard_msgs in
+  -- #eval lastStoneWeightII [2, 7, 4, 1, 8, 1]
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval lastStoneWeightII [1, 1, 1]
+  -- #guard_msgs in
+  -- #eval lastStoneWeightII [1, 1, 1]
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval lastStoneWeightII [2, 2]
+  -- #guard_msgs in
+  -- #eval lastStoneWeightII [2, 2]
 
 vc-postamble: |-
   -- Apps difficulty: interview

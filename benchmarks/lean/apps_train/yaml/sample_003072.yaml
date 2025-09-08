@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   As part of this Kata, you need to find the length of the sequence in an array, between the first and the second occurrence of a specified number.
   
   For example, for a given array `arr`
@@ -14,6 +15,7 @@ vc-description: |-
   For sake of simplicity, there will only be numbers (positive or negative) in the supplied array.
   
   If there are less or more than two occurrences of the number to search for, return `0`, or in Haskell, `Nothing`.
+  -/
 
 vc-preamble: |-
 
@@ -59,29 +61,29 @@ vc-theorems: |-
     length_of_sequence arr n = 0 :=
     sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval length_of_sequence [1] 0
+  -- #guard_msgs in
+  -- #eval length_of_sequence [1] 0
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval length_of_sequence [1] 1
+  -- #guard_msgs in
+  -- #eval length_of_sequence [1] 1
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval length_of_sequence [-7, 3, -7, -7, 2, 1] -7
+  -- #guard_msgs in
+  -- #eval length_of_sequence [-7, 3, -7, -7, 2, 1] -7
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval length_of_sequence [0, -3, 7, 4, 0, 3, 7, 9] 7
+  -- #guard_msgs in
+  -- #eval length_of_sequence [0, -3, 7, 4, 0, 3, 7, 9] 7
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Suppose I have two vectors: `(a1, a2, a3, ..., aN)` and `(b1, b2, b3, ..., bN)`. The dot product between these two vectors is defined as:
   
   ```
@@ -14,6 +15,7 @@ vc-description: |-
   [1, 1, 1], [2, 5, 7]        --> false
   [1, 0, 0, 1], [0, 1, 1, 0]  --> true
   ```
+  -/
 
 vc-preamble: |-
 
@@ -39,23 +41,23 @@ vc-theorems: |-
     (h : v1.length = v2.length) :
     is_orthogonal v1 v2 = is_orthogonal v2 v1 := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_orthogonal [1, -2] [2, 1]
+  -- #guard_msgs in
+  -- #eval is_orthogonal [1, -2] [2, 1]
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_orthogonal [1, 2, 3] [0, -3, 2]
+  -- #guard_msgs in
+  -- #eval is_orthogonal [1, 2, 3] [0, -3, 2]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_orthogonal [1, 1, 1] [2, 5, 7]
+  -- #guard_msgs in
+  -- #eval is_orthogonal [1, 1, 1] [2, 5, 7]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Evlampiy has found one more cool application to process photos. However the application has certain limitations.
   
   Each photo i has a contrast v_{i}. In order for the processing to be truly of high quality, the application must receive at least k photos with contrasts which differ as little as possible.
@@ -39,6 +40,7 @@ vc-description: |-
   In the first example the photos should be split into 2 groups: [40, 50] and [110, 120, 130]. The processing time of the first group is 10, and the processing time of the second group is 20. Maximum among 10 and 20 is 20. It is impossible to split the photos into groups in a such way that the processing time of division is less than 20.
   
   In the second example the photos should be split into four groups, each containing one photo. So the minimal possible processing time of a division is 0.
+  -/
 
 vc-preamble: |-
 

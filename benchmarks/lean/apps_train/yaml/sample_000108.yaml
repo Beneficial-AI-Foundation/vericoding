@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   On February 14 Denis decided to give Valentine to Nastya and did not come up with anything better than to draw a huge red heart on the door of the length $k$ ($k \ge 3$). Nastya was very confused by this present, so she decided to break the door, throwing it on the mountains.
   
   Mountains are described by a sequence of heights $a_1, a_2, \dots, a_n$ in order from left to right ($k \le n$). It is guaranteed that neighboring heights are not equal to each other (that is, $a_i \ne a_{i+1}$ for all $i$ from $1$ to $n-1$).
@@ -53,6 +54,7 @@ vc-description: |-
   In the second example, you need to select a segment of mountains from $2$ to $4$. In this segment, the index $3$ is a peak, so the answer is $2$ (only $1$ peak, so the door will break into $2$ parts).
   
   In the third example, you need to select a segment of mountains from $1$ to $4$. In this segment, the index $3$ is a peak, so the answer is $2$ (only $1$ peak, so the door will break into $2$ parts). You can see that on the segments $[2, 5]$, $[4, 7]$ and $[5, 8]$ the number of peaks is also $1$, but these segments have a left border greater than the segment $[1, 4]$, so they are not the correct answer.
+  -/
 
 vc-preamble: |-
   def count_peaks (window : List Nat) : Nat :=
@@ -95,23 +97,23 @@ vc-theorems: |-
     count_peaks window = peaks - 1 :=
   sorry
   
-  /--
+  /-
   info: (3, 2)
   -/
-  #guard_msgs in
-  #eval solve_door_peaks 8 6 [1, 2, 4, 1, 2, 4, 1, 2]
+  -- #guard_msgs in
+  -- #eval solve_door_peaks 8 6 [1, 2, 4, 1, 2, 4, 1, 2]
   
-  /--
+  /-
   info: (2, 2)
   -/
-  #guard_msgs in
-  #eval solve_door_peaks 5 3 [3, 2, 3, 2, 1]
+  -- #guard_msgs in
+  -- #eval solve_door_peaks 5 3 [3, 2, 3, 2, 1]
   
-  /--
+  /-
   info: (2, 1)
   -/
-  #guard_msgs in
-  #eval solve_door_peaks 10 4 [4, 3, 4, 3, 2, 3, 2, 1, 0, 1]
+  -- #guard_msgs in
+  -- #eval solve_door_peaks 10 4 [4, 3, 4, 3, 2, 3, 2, 1, 0, 1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

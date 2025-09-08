@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Anna Hazare is a well known social activist in India.
   
   On 5th April, 2011 he started "Lokpal Bill movement".
@@ -57,6 +58,7 @@ vc-description: |-
   
   Output:
   4 1.166667
+  -/
 
 vc-preamble: |-
   def Graph := List (List Nat)

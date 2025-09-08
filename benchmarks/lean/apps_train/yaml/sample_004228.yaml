@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    You are given n rectangular boxes, the ith box has the length lengthi, the width widthi and the height heighti. 
   
@@ -51,6 +52,7 @@ vc-description: |-
    - `[output]` a boolean value
   
       `true` if it is possible to put all boxes into one, `false` otherwise.
+  -/
 
 vc-preamble: |-
 
@@ -79,23 +81,23 @@ vc-theorems: |-
       l[i]! < l[j]! ∧ w[i]! < w[j]! ∧ h[i]! < h[j]!) :
     boxes_packing l w h = true := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval boxes_packing [1, 3, 2] [1, 3, 2] [1, 3, 2]
+  -- #guard_msgs in
+  -- #eval boxes_packing [1, 3, 2] [1, 3, 2] [1, 3, 2]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval boxes_packing [1, 1] [1, 1] [1, 1]
+  -- #guard_msgs in
+  -- #eval boxes_packing [1, 1] [1, 1] [1, 1]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval boxes_packing [3, 1, 2] [3, 1, 2] [3, 2, 1]
+  -- #guard_msgs in
+  -- #eval boxes_packing [3, 1, 2] [3, 1, 2] [3, 2, 1]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

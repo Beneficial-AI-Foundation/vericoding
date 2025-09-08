@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   #Permutation  position
   In this kata you will have to permutate through a string of lowercase letters, each permutation will start at ```a``` and you must calculate how many iterations it takes to reach the current permutation.
   
@@ -23,6 +24,7 @@ vc-description: |-
   result: 28
   
   ```
+  -/
 
 vc-preamble: |-
 
@@ -39,23 +41,23 @@ vc-theorems: |-
   theorem permutation_position_positive (s : String) (h : s ≠ "") :
     permutation_position s > 0 := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval permutation_position "a"
+  -- #guard_msgs in
+  -- #eval permutation_position "a"
   
-  /--
+  /-
   info: 26
   -/
-  #guard_msgs in
-  #eval permutation_position "z"
+  -- #guard_msgs in
+  -- #eval permutation_position "z"
   
-  /--
+  /-
   info: 3759
   -/
-  #guard_msgs in
-  #eval permutation_position "foo"
+  -- #guard_msgs in
+  -- #eval permutation_position "foo"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

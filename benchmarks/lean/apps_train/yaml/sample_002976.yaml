@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this kata you need to build a function to return either `true/True` or `false/False` if a string can be seen as the repetition of a simpler/shorter subpattern or not.
   
   For example:
@@ -20,6 +21,7 @@ vc-description: |-
   Strings will never be empty and can be composed of any character (just consider upper- and lowercase letters as different entities) and can be pretty long (keep an eye on performances!).
   
   If you liked it, go for the [next kata](https://www.codewars.com/kata/string-subpattern-recognition-ii/) of the series!
+  -/
 
 vc-preamble: |-
 
@@ -45,23 +47,23 @@ vc-theorems: |-
     s.length > 0 → has_subpattern s → 
     ∃ i : Nat, i > 0 ∧ i ≤ s.length ∧ s.length % i = 0 := sorry
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval has_subpattern "a"
+  -- #guard_msgs in
+  -- #eval has_subpattern "a"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval has_subpattern "aaaa"
+  -- #guard_msgs in
+  -- #eval has_subpattern "aaaa"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval has_subpattern "abababab"
+  -- #guard_msgs in
+  -- #eval has_subpattern "abababab"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

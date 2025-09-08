@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   On a 2-dimensional grid, there are 4 types of squares:
   
   1 represents the starting square.  There is exactly one starting square.
@@ -34,6 +35,7 @@ vc-description: |-
   Note:
   
   1 <= grid.length * grid[0].length <= 20
+  -/
 
 vc-preamble: |-
 
@@ -68,23 +70,23 @@ vc-theorems: |-
     unique_paths_covering_all_squares [[1,2]] = 1 :=
   sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval unique_paths_covering_all_squares [[1, 0, 0, 0], [0, 0, 0, 0], [0, 0, 2, -1]]
+  -- #guard_msgs in
+  -- #eval unique_paths_covering_all_squares [[1, 0, 0, 0], [0, 0, 0, 0], [0, 0, 2, -1]]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval unique_paths_covering_all_squares [[1, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 2]]
+  -- #guard_msgs in
+  -- #eval unique_paths_covering_all_squares [[1, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 2]]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval unique_paths_covering_all_squares [[0, 1], [2, 0]]
+  -- #guard_msgs in
+  -- #eval unique_paths_covering_all_squares [[0, 1], [2, 0]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

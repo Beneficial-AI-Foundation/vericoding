@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Have you heard about the myth that [if you fold a paper enough times, you can reach the moon with it](http://scienceblogs.com/startswithabang/2009/08/31/paper-folding-to-the-moon/)? Sure you have, but exactly how many? Maybe it's time to write a program to figure it out.
   
   You know that a piece of paper has a thickness of `0.0001m`. Given `distance` in units of meters, calculate how many times you have to fold the paper to make the paper reach this distance.  
@@ -7,6 +8,7 @@ vc-description: |-
   Note: Of course you can't do half a fold. You should know what this means ;P
   
   Also, if somebody is giving you a negative distance, it's clearly bogus and you should yell at them by returning `null` (or whatever equivalent in your language. In Shell please return `None`).
+  -/
 
 vc-preamble: |-
 
@@ -46,23 +48,23 @@ vc-theorems: |-
   theorem fold_to_zero_custom_thickness :
     fold_to 0 0.1 = some 0 := sorry
   
-  /--
+  /-
   info: 42
   -/
-  #guard_msgs in
-  #eval fold_to 384000000
+  -- #guard_msgs in
+  -- #eval fold_to 384000000
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval fold_to 5e-05
+  -- #guard_msgs in
+  -- #eval fold_to 5e-05
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval fold_to -1
+  -- #guard_msgs in
+  -- #eval fold_to -1
 
 vc-postamble: |-
   -- Apps difficulty: introductory

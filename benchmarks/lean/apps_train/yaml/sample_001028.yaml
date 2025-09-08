@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef and Abhishek both are fighting for the post of Chairperson to be part of ACE committee and are trying their best. To select only one student their teacher gave them a binary string (string consisting of only 0's and 1's) and asked them to find number of sub-strings present in the given string that satisfy the following condition:
   The substring should start with 0 and end with 1 or the substring should start with 1 and end with 0 but not start with 0 and end with 0 and start with 1 and end with 1.
   More formally, strings such as 100,0101 are allowed since they start and end with different characters. But strings such as 0110,1101 are not allowed because they start and end with same characters.
@@ -28,6 +29,7 @@ vc-description: |-
   
   -----EXPLANATION:-----
   All possible substring are : { (1),(0),(1),(0),(10),(01),(10),(101),(010),(1010) }. Out of these only 4 substrings {(10),(01),(10),(1010)} start and end with different characters. Hence the answer 4.
+  -/
 
 vc-preamble: |-
 

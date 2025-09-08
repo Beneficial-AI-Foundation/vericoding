@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    Given array of integers, for each position i, search among the previous positions for the last (from the left) position that contains a smaller value. Store this value at position i in the answer. If no such value can be found, store `-1` instead.
   
@@ -17,6 +18,7 @@ vc-description: |-
    - `[output]` an integer array
   
      Array containing answer values computed as described above.
+  -/
 
 vc-preamble: |-
 
@@ -54,23 +56,23 @@ vc-theorems: |-
     array_previous_less arr = List.replicate arr.length (-1) :=
     sorry
   
-  /--
+  /-
   info: [-1, 3, -1, 2, 4]
   -/
-  #guard_msgs in
-  #eval array_previous_less [3, 5, 2, 4, 5]
+  -- #guard_msgs in
+  -- #eval array_previous_less [3, 5, 2, 4, 5]
   
-  /--
+  /-
   info: [-1, -1, -1, 1, 3, 4, 4, 1]
   -/
-  #guard_msgs in
-  #eval array_previous_less [2, 2, 1, 3, 4, 5, 5, 3]
+  -- #guard_msgs in
+  -- #eval array_previous_less [2, 2, 1, 3, 4, 5, 5, 3]
   
-  /--
+  /-
   info: [-1, -1, -1]
   -/
-  #guard_msgs in
-  #eval array_previous_less [3, 2, 1]
+  -- #guard_msgs in
+  -- #eval array_previous_less [3, 2, 1]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

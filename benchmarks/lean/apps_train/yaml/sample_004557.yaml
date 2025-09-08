@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You must create a function, `spread`, that takes a function and a list of arguments to be applied to that function. You must make this function return the result of calling the given function/lambda with the given arguments.
   
   eg:
@@ -7,6 +8,7 @@ vc-description: |-
   # is the same as...
   someFunction(1, true, "Foo", "bar")
   ```
+  -/
 
 vc-preamble: |-
   def spread {α β : Type u} (f : α → β) (args : List α) : β :=
@@ -47,23 +49,23 @@ vc-theorems: |-
     ¬(∃ (res:Nat), spread (fun x:Nat => x) [1, 2] = res) :=
   sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval spread lambda x, y: x + y [2, 3]
+  -- #guard_msgs in
+  -- #eval spread lambda x, y: x + y [2, 3]
   
-  /--
+  /-
   info: 'abc'
   -/
-  #guard_msgs in
-  #eval spread lambda x, y, z: x + y + z ["a", "b", "c"]
+  -- #guard_msgs in
+  -- #eval spread lambda x, y, z: x + y + z ["a", "b", "c"]
   
-  /--
+  /-
   info: 42
   -/
-  #guard_msgs in
-  #eval spread lambda: 42 []
+  -- #guard_msgs in
+  -- #eval spread lambda: 42 []
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given an undirected unweighted graph consisting of $n$ vertices and $m$ edges (which represents the map of Bertown) and the array of prices $p$ of length $m$. It is guaranteed that there is a path between each pair of vertices (districts).
   
   Mike has planned a trip from the vertex (district) $a$ to the vertex (district) $b$ and then from the vertex (district) $b$ to the vertex (district) $c$. He can visit the same district twice or more. But there is one issue: authorities of the city want to set a price for using the road so if someone goes along the road then he should pay the price corresponding to this road (he pays each time he goes along the road). The list of prices that will be used $p$ is ready and they just want to distribute it between all roads in the town in such a way that each price from the array corresponds to exactly one road.
@@ -56,6 +57,7 @@ vc-description: |-
   One of the possible solution to the second test case of the example:
   
   [Image]
+  -/
 
 vc-preamble: |-
   def List.sum : List Nat → Nat 
@@ -82,17 +84,17 @@ vc-theorems: |-
       (List.take m prices).sum :=
   sorry
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval solve_min_cost_trip 4 3 2 3 4 [1, 2, 3] [(1, 2), (1, 3), (1, 4)]
+  -- #guard_msgs in
+  -- #eval solve_min_cost_trip 4 3 2 3 4 [1, 2, 3] [(1, 2), (1, 3), (1, 4)]
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval solve_min_cost_trip 7 9 1 5 7 [2, 10, 4, 8, 5, 6, 7, 3, 3] [(1, 2), (1, 3), (1, 4), (3, 2), (3, 5), (4, 2), (5, 6), (1, 7), (6, 7)]
+  -- #guard_msgs in
+  -- #eval solve_min_cost_trip 7 9 1 5 7 [2, 10, 4, 8, 5, 6, 7, 3, 3] [(1, 2), (1, 3), (1, 4), (3, 2), (3, 5), (4, 2), (5, 6), (1, 7), (6, 7)]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

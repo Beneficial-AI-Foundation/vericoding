@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Alice and Bob have an undirected graph of n nodes and 3 types of edges:
   
   Type 1: Can be traversed by Alice only.
@@ -34,6 +35,7 @@ vc-description: |-
   1 <= edges[i][0] <= 3
   1 <= edges[i][1] < edges[i][2] <= n
   All tuples (typei, ui, vi) are distinct.
+  -/
 
 vc-preamble: |-
 
@@ -51,23 +53,23 @@ vc-theorems: |-
     max_removable_edges n [] = if n = 0 then 0 else -1 :=
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval max_removable_edges 4 [[3, 1, 2], [3, 2, 3], [1, 1, 3], [1, 2, 4], [1, 1, 2], [2, 3, 4]]
+  -- #guard_msgs in
+  -- #eval max_removable_edges 4 [[3, 1, 2], [3, 2, 3], [1, 1, 3], [1, 2, 4], [1, 1, 2], [2, 3, 4]]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval max_removable_edges 4 [[3, 1, 2], [3, 2, 3], [1, 1, 4], [2, 1, 4]]
+  -- #guard_msgs in
+  -- #eval max_removable_edges 4 [[3, 1, 2], [3, 2, 3], [1, 1, 4], [2, 1, 4]]
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval max_removable_edges 4 [[3, 2, 3], [1, 1, 2], [2, 3, 4]]
+  -- #guard_msgs in
+  -- #eval max_removable_edges 4 [[3, 2, 3], [1, 1, 2], [2, 3, 4]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,9 +1,11 @@
 vc-description: |-
+  /-
   Simple enough this one - you will be given an array. The values in the array will either be numbers or strings, or a mix of both. You will not get an empty array, nor a sparse one.
   
   Your job is to return a single array that has first the numbers sorted in ascending order, followed by the strings sorted in alphabetic order. The values must maintain their original type. 
   
   Note that numbers written as strings are strings and must be sorted with the other strings.
+  -/
 
 vc-preamble: |-
 
@@ -50,23 +52,23 @@ vc-theorems: |-
   theorem db_sort_preserves_elements (arr : List (Int ⊕ String)) :
     List.length (db_sort arr) = List.length arr := sorry
   
-  /--
+  /-
   info: [2, 3, 4, 5, 6]
   -/
-  #guard_msgs in
-  #eval db_sort [6, 2, 3, 4, 5]
+  -- #guard_msgs in
+  -- #eval db_sort [6, 2, 3, 4, 5]
   
-  /--
+  /-
   info: [0, 2, 2, 'Apple', 'Banana', 'Mango', 'Orange']
   -/
-  #guard_msgs in
-  #eval db_sort ["Banana", "Orange", "Apple", "Mango", 0, 2, 2]
+  -- #guard_msgs in
+  -- #eval db_sort ["Banana", "Orange", "Apple", "Mango", 0, 2, 2]
   
-  /--
+  /-
   info: [1, 1, 1, 1, 1, 1, 2, 2, 3, '1', '2', 'three']
   -/
-  #guard_msgs in
-  #eval db_sort [1, 1, 1, 1, 1, 2, "1", "2", "three", 1, 2, 3]
+  -- #guard_msgs in
+  -- #eval db_sort [1, 1, 1, 1, 1, 2, "1", "2", "three", 1, 2, 3]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

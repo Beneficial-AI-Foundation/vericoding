@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Function Descriptions=====
   poly
   
@@ -49,6 +50,7 @@ vc-description: |-
   
   =====Output Format=====
   Print the desired value.
+  -/
 
 vc-preamble: |-
   def evaluatePolynomial (coeffs : List Float) (x : Float) : Float :=

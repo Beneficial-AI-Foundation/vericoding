@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this kata you will have to change every letter in a given string to the next letter in the alphabet. You will write a function `nextLetter` to do this. The function will take a single parameter `s` (string).
   
   Examples:
@@ -14,6 +15,7 @@ vc-description: |-
   ```
   
   Note: spaces and special characters should remain the same. Capital letters should transfer in the same way but remain capitilized.
+  -/
 
 vc-preamble: |-
 
@@ -61,23 +63,23 @@ vc-theorems: |-
     s.get! pos = 'Z' →
     (nextLetter s).get! pos = 'A' := sorry
   
-  /--
+  /-
   info: 'Ifmmp'
   -/
-  #guard_msgs in
-  #eval next_letter "Hello"
+  -- #guard_msgs in
+  -- #eval next_letter "Hello"
   
-  /--
+  /-
   info: 'Xibu jt zpvs obnf?'
   -/
-  #guard_msgs in
-  #eval next_letter "What is your name?"
+  -- #guard_msgs in
+  -- #eval next_letter "What is your name?"
   
-  /--
+  /-
   info: 'aPp'
   -/
-  #guard_msgs in
-  #eval next_letter "zOo"
+  -- #guard_msgs in
+  -- #eval next_letter "zOo"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

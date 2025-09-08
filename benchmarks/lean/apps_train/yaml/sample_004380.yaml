@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The four bases found in DNA are adenine (A), cytosine (C), guanine (G) and thymine (T).
   
   In genetics, GC-content is the percentage of Guanine (G) and Cytosine (C) bases on a DNA molecule that are either guanine or cytosine. 
@@ -11,6 +12,7 @@ vc-description: |-
   "AAATTTCCCGGG".
   
   **Note**: You can take a look to my others bio-info kata [here](http://www.codewars.com/users/nbeck/authored)
+  -/
 
 vc-preamble: |-
   def gc_content (s : String) : Float := sorry

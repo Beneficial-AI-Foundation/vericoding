@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are the Dungeon Master for a public DnD game at your local comic shop and recently you've had some trouble keeping your players' info neat and organized so you've decided to write a bit of code to help keep them sorted!
   
   The goal of this code is to create an array of objects that stores a player's name and contact number from a given string.
@@ -24,6 +25,7 @@ vc-description: |-
   ```
   
   Have at thee!
+  -/
 
 vc-preamble: |-
 
@@ -60,23 +62,23 @@ vc-theorems: |-
     player_manager "\t" = [] := by
     sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval player_manager "John Doe, 8167238327, Jane Doe, 8163723827"
+  -- #guard_msgs in
+  -- #eval player_manager "John Doe, 8167238327, Jane Doe, 8163723827"
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval player_manager ""
+  -- #guard_msgs in
+  -- #eval player_manager ""
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval player_manager None
+  -- #guard_msgs in
+  -- #eval player_manager None
 
 vc-postamble: |-
   -- Apps difficulty: introductory

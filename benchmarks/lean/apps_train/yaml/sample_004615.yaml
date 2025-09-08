@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an integer as input, can you round it to the next (meaning, "higher") multiple of 5?
   
   Examples:
@@ -17,6 +18,7 @@ vc-description: |-
   Input may be any positive or negative integer (including 0).
   
   You can assume that all inputs are valid integers.
+  -/
 
 vc-preamble: |-
 
@@ -37,35 +39,35 @@ vc-theorems: |-
   theorem roundToNext5_is_minimum (n: Int) :
     ∀ x, x < roundToNext5 n → (x % 5 ≠ 0 ∨ x < n) := sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval round_to_next5 0
+  -- #guard_msgs in
+  -- #eval round_to_next5 0
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval round_to_next5 2
+  -- #guard_msgs in
+  -- #eval round_to_next5 2
   
-  /--
+  /-
   info: 15
   -/
-  #guard_msgs in
-  #eval round_to_next5 12
+  -- #guard_msgs in
+  -- #eval round_to_next5 12
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval round_to_next5 -2
+  -- #guard_msgs in
+  -- #eval round_to_next5 -2
   
-  /--
+  /-
   info: -5
   -/
-  #guard_msgs in
-  #eval round_to_next5 -5
+  -- #guard_msgs in
+  -- #eval round_to_next5 -5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   While discussing a proper problem A for a Codeforces Round, Kostya created a cyclic array of positive integers $a_1, a_2, \ldots, a_n$. Since the talk was long and not promising, Kostya created a new cyclic array $b_1, b_2, \ldots, b_{n}$ so that $b_i = (a_i \mod a_{i + 1})$, where we take $a_{n+1} = a_1$. Here $mod$ is the modulo operation. When the talk became interesting, Kostya completely forgot how array $a$ had looked like. Suddenly, he thought that restoring array $a$ from array $b$ would be an interesting problem (unfortunately, not A).
   
   -----Input-----
@@ -34,6 +35,7 @@ vc-description: |-
   -----Note-----
   
   In the first example:  $1 \mod 3 = 1$  $3 \mod 5 = 3$  $5 \mod 2 = 1$  $2 \mod 1 = 0$
+  -/
 
 vc-preamble: |-
 
@@ -65,11 +67,11 @@ vc-theorems: |-
     let (status, arr) := solve_cyclic_array n b
     status = "NO" ∧ arr = [] := sorry
   
-  /--
+  /-
   info: n
   -/
-  #guard_msgs in
-  #eval len arr
+  -- #guard_msgs in
+  -- #eval len arr
 
 vc-postamble: |-
   -- Apps difficulty: competition

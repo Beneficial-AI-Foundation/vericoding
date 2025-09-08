@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The median of a sequence is the element in the middle of the sequence after it is sorted. For a sequence with even size, the median is the average of the two middle elements of the sequence after sorting. For example, for a sequence $A = [1, 3, 3, 5, 4, 7, 11]$, the median is equal to $4$, and for $A = [2, 3, 4, 5]$, the median is equal to $(3+4)/2 = 3.5$.
   Fulu is a famous programmer in his country. He wrote the following program (given in pseudocode) for finding the median in a sequence $A$ with length $N$:
   read(N)
@@ -44,6 +45,7 @@ vc-description: |-
   -----Explanation-----
   Example case 1: For the sequence $A = [1, 1, 4]$, it is already sorted, so the program would just remove the first two elements ($K=1$, $N\%K=0$) and return the only remaining element $4$. Obviously, the median of the original sequence is $1$. It can be shown that there is no lexicographically smaller proper sequence.
   Example case 2: The only possible sequence is $A = [1, 1, 1, 1]$, which is not proper, since Fulu's program will give the correct answer $1$ for it.
+  -/
 
 vc-preamble: |-
 

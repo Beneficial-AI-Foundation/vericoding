@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Task
   
   You will receive a string consisting of lowercase letters, uppercase letters and digits as input. Your task is to return this string as blocks separated by dashes (`"-"`). The elements of a block should be sorted with respect to the hierarchy listed below, and each block cannot contain multiple instances of the same character. Elements should be put into the first suitable block.
@@ -16,6 +17,7 @@ vc-description: |-
   * `"hbh420sUUW222IWOxndjn93cdop69NICEep832" -> "bcdehjnopsxCEINOUW0234689-dhnpIUW239-2-2-2"` - a more sophisticated example
   
   Good luck!
+  -/
 
 vc-preamble: |-
 
@@ -53,23 +55,23 @@ vc-theorems: |-
       (!c₁.isDigit && c₁.isUpper && !c₂.isUpper) ||
       (!c₁.isDigit && !c₂.isDigit && !c₁.isUpper && !c₂.isUpper && c₁ ≤ c₂) := sorry
   
-  /--
+  /-
   info: 'aehiklmpsty-ekst-est'
   -/
-  #guard_msgs in
-  #eval blocks "heyitssampletestkk"
+  -- #guard_msgs in
+  -- #eval blocks "heyitssampletestkk"
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval blocks ""
+  -- #guard_msgs in
+  -- #eval blocks ""
   
-  /--
+  /-
   info: 'xzAB12'
   -/
-  #guard_msgs in
-  #eval blocks "21AxBz"
+  -- #guard_msgs in
+  -- #eval blocks "21AxBz"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

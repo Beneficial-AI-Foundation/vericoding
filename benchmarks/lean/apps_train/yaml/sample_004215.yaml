@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    Consider a string of lowercase Latin letters and space characters (" "). 
   
@@ -31,6 +32,7 @@ vc-description: |-
     A string of lowercase words. Each word is separated by exactly one space character.
   
    - `[output]` a string
+  -/
 
 vc-preamble: |-
   def revamp (s : String) : String := sorry

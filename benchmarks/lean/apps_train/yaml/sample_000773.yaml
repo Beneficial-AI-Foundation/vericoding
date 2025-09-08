@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   As lockdown is going on so no is allowed to go outside , so Chef has come with an innovative idea for food home delivery using drone.  But there is an issue with it , the drone can move forward or backward a fix number of steps $x$ . 
   All the houses and chef restaurant are all in a straight line . Homes which need delivery are located at $H[i]$ and chef is located at $y$ coordinate . 
   If Drone is at a location $R$, then it can move to $R-x$ or $R+x$ . 
@@ -26,6 +27,7 @@ vc-description: |-
   
   -----EXPLANATION:-----
   Chef's drone is at 1 initially and he needs to visit 3,5,11 , so optimal solution will be (maximum value of x ) equal to 2.
+  -/
 
 vc-preamble: |-
 
@@ -49,23 +51,23 @@ vc-theorems: |-
     ∀ h, h ∈ H → (h - R).natAbs % (max_drone_step n R H) = 0 :=
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval max_drone_step 3 1 [3, 5, 11]
+  -- #guard_msgs in
+  -- #eval max_drone_step 3 1 [3, 5, 11]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval max_drone_step 2 4 [2, 8]
+  -- #guard_msgs in
+  -- #eval max_drone_step 2 4 [2, 8]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval max_drone_step 4 5 [1, 3, 7, 9]
+  -- #guard_msgs in
+  -- #eval max_drone_step 4 5 [1, 3, 7, 9]
 
 vc-postamble: |-
   -- Apps difficulty: interview

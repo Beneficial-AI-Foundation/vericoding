@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chefina has two sequences $A_1, A_2, \ldots, A_N$ and $B_1, B_2, \ldots, B_N$. She views two sequences with length $N$ as identical if, after they are sorted in non-decreasing order, the $i$-th element of one sequence is equal to the $i$-th element of the other sequence for each $i$ ($1 \le i \le N$).
   To impress Chefina, Chef wants to make the sequences identical. He may perform the following operation zero or more times: choose two integers $i$ and $j$ $(1 \le i,j \le N)$ and swap $A_i$ with $B_j$. The cost of each such operation is $\mathrm{min}(A_i, B_j)$.
   You have to find the minimum total cost with which Chef can make the two sequences identical.
@@ -45,6 +46,7 @@ vc-description: |-
   Example case 1: There is no way to make the sequences identical, so the answer is $-1$.
   Example case 2: The sequence are identical initially, so the answer is $0$.
   Example case 3: We can swap $A_1$ with $B_2$, which makes the two sequences identical, so the answer is $1$.
+  -/
 
 vc-preamble: |-
 
@@ -84,23 +86,23 @@ vc-theorems: |-
     a = a_copy ∧ b = b_copy :=
   sorry
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval solve_sequence_swap 1 [1] [2]
+  -- #guard_msgs in
+  -- #eval solve_sequence_swap 1 [1] [2]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve_sequence_swap 2 [1, 2] [2, 1]
+  -- #guard_msgs in
+  -- #eval solve_sequence_swap 2 [1, 2] [2, 1]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve_sequence_swap 2 [1, 1] [2, 2]
+  -- #guard_msgs in
+  -- #eval solve_sequence_swap 2 [1, 1] [2, 2]
 
 vc-postamble: |-
   -- Apps difficulty: interview

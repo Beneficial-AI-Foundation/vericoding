@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Complete the solution so that it takes the object (JavaScript/CoffeeScript) or hash (ruby) passed in and generates a human readable string from its key/value pairs. 
   
   The format should be "KEY = VALUE". Each key/value pair should be separated by a comma except for the last pair.
@@ -7,6 +8,7 @@ vc-description: |-
   ```python
   solution({"a": 1, "b": '2'}) # should return "a = 1,b = 2"
   ```
+  -/
 
 vc-preamble: |-
   def Dict := List (String × (String ⊕ Int))
@@ -42,23 +44,23 @@ vc-theorems: |-
     solution d = "" := by
     sorry
   
-  /--
+  /-
   info: 'a = 1,b = 2'
   -/
-  #guard_msgs in
-  #eval solution {"a": 1, "b": 2}
+  -- #guard_msgs in
+  -- #eval solution {"a": 1, "b": 2}
   
-  /--
+  /-
   info: 'a = b,b = a'
   -/
-  #guard_msgs in
-  #eval solution {"a": "b", "b": "a"}
+  -- #guard_msgs in
+  -- #eval solution {"a": "b", "b": "a"}
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval solution {}
+  -- #guard_msgs in
+  -- #eval solution {}
 
 vc-postamble: |-
   -- Apps difficulty: introductory

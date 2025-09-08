@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    You are given a `moment` in time and space. What you must do is break it down into time and space, to determine if that moment is from the past, present or future.
   
@@ -37,6 +38,7 @@ vc-description: |-
    - `[output]` a boolean array
   
     Array of three elements, two of which are false, and one is true. The true value should be at the 1st, 2nd or 3rd place for past, present and future respectively.
+  -/
 
 vc-preamble: |-
   def moment_of_time_in_space (s : String) : List Bool :=
@@ -81,23 +83,23 @@ vc-theorems: |-
     moment_of_time_in_space s₁ = moment_of_time_in_space s₂ :=
     sorry
   
-  /--
+  /-
   info: [True, False, False]
   -/
-  #guard_msgs in
-  #eval moment_of_time_in_space "01:00 pm"
+  -- #guard_msgs in
+  -- #eval moment_of_time_in_space "01:00 pm"
   
-  /--
+  /-
   info: [False, True, False]
   -/
-  #guard_msgs in
-  #eval moment_of_time_in_space "12:02 pm"
+  -- #guard_msgs in
+  -- #eval moment_of_time_in_space "12:02 pm"
   
-  /--
+  /-
   info: [False, False, True]
   -/
-  #guard_msgs in
-  #eval moment_of_time_in_space "12:30 pm"
+  -- #guard_msgs in
+  -- #eval moment_of_time_in_space "12:30 pm"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Hi! Welcome to my first kata.
   
   In this kata the task is to take a list of integers (positive and negative) and split them according to a simple rule; those ints greater than or equal to the key, and those ints less than the key (the itself key will always be positive).
@@ -33,6 +34,7 @@ vc-description: |-
       --> [[1, 0, -1], [5]]
   
   Good luck guys/gals!
+  -/
 
 vc-preamble: |-
 
@@ -69,17 +71,17 @@ vc-theorems: |-
       let group2_head := (result.get! (i+1)).head!
       (group1_head < k) ≠ (group2_head < k) := sorry
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval group_ints [] 0
+  -- #guard_msgs in
+  -- #eval group_ints [] 0
   
-  /--
+  /-
   info: [[1]]
   -/
-  #guard_msgs in
-  #eval group_ints [1] 1
+  -- #guard_msgs in
+  -- #eval group_ints [1] 1
 
 vc-postamble: |-
   -- Apps difficulty: introductory

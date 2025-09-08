@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Problem Statement=====
   A valid postal code P have to fullfil both below requirements:
   
@@ -28,6 +29,7 @@ vc-description: |-
   
   =====Output Format=====
   You are not responsible for printing anything to stdout. Locked stub code in the editor does that.
+  -/
 
 vc-preamble: |-
 
@@ -54,23 +56,23 @@ vc-theorems: |-
   
   end PostalCode
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval validate_postal_code "110000"
+  -- #guard_msgs in
+  -- #eval validate_postal_code "110000"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval validate_postal_code "121426"
+  -- #guard_msgs in
+  -- #eval validate_postal_code "121426"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval validate_postal_code "552523"
+  -- #guard_msgs in
+  -- #eval validate_postal_code "552523"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

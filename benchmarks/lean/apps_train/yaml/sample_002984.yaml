@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   For every positive integer N, there exists a unique sequence starting with 1 and ending with N and such that every number in the sequence is either the double of the preceeding number or the double plus 1. 
   
   For example, given N = 13, the sequence is [1, 3, 6, 13], because . . . :
@@ -9,6 +10,7 @@ vc-description: |-
   ```
   
   Write a function that returns this sequence given a number N. Try generating the elements of the resulting list in ascending order, i.e., without resorting to a list reversal or prependig the elements to a list.
+  -/
 
 vc-preamble: |-
 
@@ -36,23 +38,23 @@ vc-theorems: |-
   theorem climb_invalid_input (n : Nat) :
     n = 0 → climb n = [] := sorry
   
-  /--
+  /-
   info: [1]
   -/
-  #guard_msgs in
-  #eval climb 1
+  -- #guard_msgs in
+  -- #eval climb 1
   
-  /--
+  /-
   info: [1, 3, 6, 12, 25, 50, 100]
   -/
-  #guard_msgs in
-  #eval climb 100
+  -- #guard_msgs in
+  -- #eval climb 100
   
-  /--
+  /-
   info: [1, 3, 6, 13, 26, 53, 106, 212, 424, 848, 1697, 3395, 6790, 13580, 27160, 54321]
   -/
-  #guard_msgs in
-  #eval climb 54321
+  -- #guard_msgs in
+  -- #eval climb 54321
 
 vc-postamble: |-
   -- Apps difficulty: introductory

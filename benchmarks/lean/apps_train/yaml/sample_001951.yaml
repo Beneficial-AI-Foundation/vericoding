@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You work in a big office. It is a 9 floor building with an elevator that can accommodate up to 4 people. It is your responsibility to manage this elevator.
   
   Today you are late, so there are queues on some floors already. For each person you know the floor where he currently is and the floor he wants to reach. Also, you know the order in which people came to the elevator.
@@ -56,6 +57,7 @@ vc-description: |-
   [Image] t = 9
   
   [Image] t = 10
+  -/
 
 vc-preamble: |-
   def List.maximum (l : List Nat) : Option Nat := 
@@ -108,23 +110,23 @@ vc-theorems: |-
     -- New payload size is bounded
     (newState.payload.length ≤ s.payload.length + 1) := sorry
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval solve 2 [(3, 5), (5, 3)]
+  -- #guard_msgs in
+  -- #eval solve 2 [(3, 5), (5, 3)]
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval solve 2 [(5, 3), (3, 5)]
+  -- #guard_msgs in
+  -- #eval solve 2 [(5, 3), (3, 5)]
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval solve 1 [(1, 9)]
+  -- #guard_msgs in
+  -- #eval solve 1 [(1, 9)]
 
 vc-postamble: |-
   -- Apps difficulty: competition

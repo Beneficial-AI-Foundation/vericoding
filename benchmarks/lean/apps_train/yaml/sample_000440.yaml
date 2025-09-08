@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A character in UTF8 can be from 1 to 4 bytes long, subjected to the following rules:
   
   For 1-byte character, the first bit is a 0, followed by its unicode code.
@@ -34,6 +35,7 @@ vc-description: |-
   The first 3 bits are all one's and the 4th bit is 0 means it is a 3-bytes character.
   The next byte is a continuation byte which starts with 10 and that's correct.
   But the second continuation byte does not start with 10, so it is invalid.
+  -/
 
 vc-preamble: |-
   def isContinuationByte (x : Nat) : Bool :=
@@ -81,23 +83,23 @@ vc-theorems: |-
     validUtf8 data = false :=
     sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval valid_utf8 [197, 130, 1]
+  -- #guard_msgs in
+  -- #eval valid_utf8 [197, 130, 1]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval valid_utf8 [235, 140, 4]
+  -- #guard_msgs in
+  -- #eval valid_utf8 [235, 140, 4]
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval valid_utf8 [240, 162, 138, 147]
+  -- #guard_msgs in
+  -- #eval valid_utf8 [240, 162, 138, 147]
 
 vc-postamble: |-
   -- Apps difficulty: interview

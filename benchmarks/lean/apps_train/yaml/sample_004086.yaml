@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   When provided with a String, capitalize all vowels
   
   For example:
@@ -8,6 +9,7 @@ vc-description: |-
   Output : "HEllO WOrld!"
   
   Note: Y is not a vowel in this kata.
+  -/
 
 vc-preamble: |-
   def String.swap : String → String
@@ -38,23 +40,23 @@ vc-theorems: |-
     ((String.swap s).get i).isUpper = true ∧
     ((String.swap s).get i).toLower = (s.get i).toLower := sorry
   
-  /--
+  /-
   info: 'HEllOWOrld!'
   -/
-  #guard_msgs in
-  #eval swap "HelloWorld!"
+  -- #guard_msgs in
+  -- #eval swap "HelloWorld!"
   
-  /--
+  /-
   info: 'SUndAy'
   -/
-  #guard_msgs in
-  #eval swap "Sunday"
+  -- #guard_msgs in
+  -- #eval swap "Sunday"
   
-  /--
+  /-
   info: 'AbrAcAdAbrA'
   -/
-  #guard_msgs in
-  #eval swap "abracadabra"
+  -- #guard_msgs in
+  -- #eval swap "abracadabra"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

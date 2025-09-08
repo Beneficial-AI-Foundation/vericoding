@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Abhiram needs to search for an antidote. He comes to know that clue for finding the antidote is carefully hidden by KrishnaMurthy in the form of a puzzle.
   
   The puzzle consists of a string S and a keywordK. Abhiram needs to find the string of position of anagrams R of the keyword in the string which is the clue. 
@@ -25,12 +26,13 @@ vc-description: |-
   
   Output:
   The antidote is found in 46.
+  -/
 
 vc-preamble: |-
   def find_anagram_positions (haystack : String) (needle : String) : String :=
     sorry
   
-  /-- Helper function that converts a string to a sorted char array for anagram comparison -/
+  /- Helper function that converts a string to a sorted char array for anagram comparison -/
 
 vc-helpers: |-
   -- <vc-helpers>

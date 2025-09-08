@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a non-empty array of unique positive integers A, consider the following graph:
   
   There are A.length nodes, labelled A[0] to A[A.length - 1];
@@ -22,6 +23,7 @@ vc-description: |-
   
   1 <= A.length <= 20000
   1 <= A[i] <= 100000
+  -/
 
 vc-preamble: |-
 
@@ -46,23 +48,23 @@ vc-theorems: |-
   theorem single_prime_component_one (p : Nat) :
     largest_component_size [p] = 1 := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval largest_component_size [4, 6, 15, 35]
+  -- #guard_msgs in
+  -- #eval largest_component_size [4, 6, 15, 35]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval largest_component_size [20, 50, 9, 63]
+  -- #guard_msgs in
+  -- #eval largest_component_size [20, 50, 9, 63]
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval largest_component_size [2, 3, 6, 7, 4, 12, 21, 39]
+  -- #guard_msgs in
+  -- #eval largest_component_size [2, 3, 6, 7, 4, 12, 21, 39]
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a positive number n > 1 find the prime factor decomposition of n.
   The result will be a string with the following form :
   ```
@@ -11,6 +12,7 @@ vc-description: |-
   ```
   Example: n = 86240 should return "(2**5)(5)(7**2)(11)"
   ```
+  -/
 
 vc-preamble: |-
   def is_prime (n : Nat) : Bool := sorry

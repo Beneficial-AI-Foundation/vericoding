@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Recall the definition of the Fibonacci numbers:
   
   f1 := 1
@@ -28,6 +29,7 @@ vc-description: |-
   
   5
   4
+  -/
 
 vc-preamble: |-
 
@@ -44,23 +46,23 @@ vc-theorems: |-
     count_fibonacci_in_range 0 0 = 0 :=
     sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval count_fibonacci_in_range 10 100
+  -- #guard_msgs in
+  -- #eval count_fibonacci_in_range 10 100
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval count_fibonacci_in_range 1234567890 9876543210
+  -- #guard_msgs in
+  -- #eval count_fibonacci_in_range 1234567890 9876543210
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_fibonacci_in_range 0 0
+  -- #guard_msgs in
+  -- #eval count_fibonacci_in_range 0 0
 
 vc-postamble: |-
   -- Apps difficulty: interview

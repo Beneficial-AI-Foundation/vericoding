@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given an array $a$ consisting of $n$ integers numbered from $1$ to $n$.
   
   Let's define the $k$-amazing number of the array as the minimum number that occurs in all of the subsegments of the array having length $k$ (recall that a subsegment of $a$ of length $k$ is a contiguous part of $a$ containing exactly $k$ elements). If there is no integer occuring in all subsegments of length $k$ for some value of $k$, then the $k$-amazing number is $-1$.
@@ -31,6 +32,7 @@ vc-description: |-
   -1 -1 3 2 1 
   -1 4 4 4 2 
   -1 -1 1 1 1 1
+  -/
 
 vc-preamble: |-
 
@@ -57,23 +59,23 @@ vc-theorems: |-
     (harr : arr = [1,3,1,5,3,1]) :
     find_amazing_numbers n arr = [-1,-1,1,1,1,1] := sorry
   
-  /--
+  /-
   info: [-1, -1, 3, 2, 1]
   -/
-  #guard_msgs in
-  #eval find_amazing_numbers 5 [1, 2, 3, 4, 5]
+  -- #guard_msgs in
+  -- #eval find_amazing_numbers 5 [1, 2, 3, 4, 5]
   
-  /--
+  /-
   info: [-1, 4, 4, 4, 2]
   -/
-  #guard_msgs in
-  #eval find_amazing_numbers 5 [4, 4, 4, 4, 2]
+  -- #guard_msgs in
+  -- #eval find_amazing_numbers 5 [4, 4, 4, 4, 2]
   
-  /--
+  /-
   info: [-1, -1, 1, 1, 1, 1]
   -/
-  #guard_msgs in
-  #eval find_amazing_numbers 6 [1, 3, 1, 5, 3, 1]
+  -- #guard_msgs in
+  -- #eval find_amazing_numbers 6 [1, 3, 1, 5, 3, 1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Implement a function/class, which should return an integer if the input string is in one of the formats specified below, or `null/nil/None` otherwise.
   
   Format:
@@ -11,6 +12,7 @@ vc-description: |-
   Digits are case insensitive, but base prefix must be lower case.
   
   See the test cases for examples.
+  -/
 
 vc-preamble: |-
 
@@ -51,41 +53,41 @@ vc-theorems: |-
     to_integer "0x" = none ∧ 
     to_integer "0o" = none := sorry
   
-  /--
+  /-
   info: 123
   -/
-  #guard_msgs in
-  #eval to_integer "123"
+  -- #guard_msgs in
+  -- #eval to_integer "123"
   
-  /--
+  /-
   info: -123
   -/
-  #guard_msgs in
-  #eval to_integer "-123"
+  -- #guard_msgs in
+  -- #eval to_integer "-123"
   
-  /--
+  /-
   info: 123
   -/
-  #guard_msgs in
-  #eval to_integer "+123"
+  -- #guard_msgs in
+  -- #eval to_integer "+123"
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval to_integer "0b1010"
+  -- #guard_msgs in
+  -- #eval to_integer "0b1010"
   
-  /--
+  /-
   info: 291
   -/
-  #guard_msgs in
-  #eval to_integer "0x123"
+  -- #guard_msgs in
+  -- #eval to_integer "0x123"
   
-  /--
+  /-
   info: 83
   -/
-  #guard_msgs in
-  #eval to_integer "0o123"
+  -- #guard_msgs in
+  -- #eval to_integer "0o123"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

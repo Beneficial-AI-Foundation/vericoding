@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Finish the solution so that it sorts the passed in array of numbers. If the function passes in an empty array or null/nil value then it should return an empty array.
   
   For example:
@@ -12,6 +13,7 @@ vc-description: |-
   sortNumbers [1, 2, 10, 50, 5] = Just [1, 2, 5, 10, 50]
   sortNumbers [] = Nothing
   ```
+  -/
 
 vc-preamble: |-
 
@@ -40,23 +42,23 @@ vc-theorems: |-
   
   theorem solution_empty : solution [] = [] := sorry
   
-  /--
+  /-
   info: [1, 2, 3, 5, 10]
   -/
-  #guard_msgs in
-  #eval solution [1, 2, 3, 10, 5]
+  -- #guard_msgs in
+  -- #eval solution [1, 2, 3, 10, 5]
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval solution []
+  -- #guard_msgs in
+  -- #eval solution []
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval solution None
+  -- #guard_msgs in
+  -- #eval solution None
 
 vc-postamble: |-
   -- Apps difficulty: introductory

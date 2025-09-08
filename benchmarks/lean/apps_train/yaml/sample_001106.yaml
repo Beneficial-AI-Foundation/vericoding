@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Devu loves to play with binary strings a lot. One day he borrowed a binary string s of size n from his friend Churu. Before starting to play with it, he wants to make sure that string does not contain more than  k consecutive equal characters. For achieving that, only kind of operation he is allowed to perform is to flip any ith character of the string. 
   
   As Devu is always in hurry to meet his girlfriend, he wants you to help him in finding out the minimum number of operations he will need. Also he wants you to print one of the possible modified string too.
@@ -47,6 +48,7 @@ vc-description: |-
   Example case 1: As 1 is occurring twice consecutively, we can convert 11 to 10 in a single operation.
   Example case 2: You don't need to modify the string as it does not have more than 2 equal consecutive character.
   Example case 3: As 0 is occurring twice consecutively, we can convert 1001 to 1010 in a two operations (Flip third and fourth character).
+  -/
 
 vc-preamble: |-
   def solve_binary_flips (n k : Nat) (s : String) : Nat × String := sorry

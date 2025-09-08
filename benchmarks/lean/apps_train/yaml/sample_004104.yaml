@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Pig Latin is an English language game where the goal is to hide the meaning of a word from people not aware of the rules.
   
   So, the goal of this kata is to wite a function that encodes a single word string to pig latin.
@@ -16,6 +17,7 @@ vc-description: |-
   5) The input string has no vowels -> return the original string plus "ay".
   
   For example, the word "spaghetti" becomes "aghettispay" because the first two letters ("sp") are consonants, so they are moved to the end of the string and "ay" is appended.
+  -/
 
 vc-preamble: |-
 
@@ -55,29 +57,29 @@ vc-theorems: |-
   theorem pigLatin_empty_input :
     pigLatin "" = none := sorry
   
-  /--
+  /-
   info: 'ellohay'
   -/
-  #guard_msgs in
-  #eval pig_latin "Hello"
+  -- #guard_msgs in
+  -- #eval pig_latin "Hello"
   
-  /--
+  /-
   info: 'ccccay'
   -/
-  #guard_msgs in
-  #eval pig_latin "CCCC"
+  -- #guard_msgs in
+  -- #eval pig_latin "CCCC"
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval pig_latin "tes3t5"
+  -- #guard_msgs in
+  -- #eval pig_latin "tes3t5"
   
-  /--
+  /-
   info: 'ayway'
   -/
-  #guard_msgs in
-  #eval pig_latin "ay"
+  -- #guard_msgs in
+  -- #eval pig_latin "ay"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

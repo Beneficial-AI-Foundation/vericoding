@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef received a permutation $P_1, P_2, \ldots, P_N$ and also an integer $D$ from his good friend Grux, because Grux was afraid he would forget them somewhere. However, since Grux was just playing with the permutation, it was all shuffled, and Chef only likes sorted permutations, so he decided to sort it by performing some swaps.
   Chef wants to use the integer $D$ he just received, so he is only willing to swap two elements of the permutation whenever their absolute difference is exactly $D$. He has limited time, so you should determine the minimum number of swaps he needs to perform to sort the permutation, or tell him that it is impossible to sort it his way.
   
@@ -41,6 +42,7 @@ vc-description: |-
   - swap the first and fifth element
   - swap the third and fifth element
   - swap the second and fourth element
+  -/
 
 vc-preamble: |-
 
@@ -61,17 +63,17 @@ vc-theorems: |-
   theorem solve_min_swaps_known_cases_3 :
     solve_min_swaps 3 3 [3, 2, 1] = -1 := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval solve_min_swaps 5 2 [3, 4, 5, 2, 1]
+  -- #guard_msgs in
+  -- #eval solve_min_swaps 5 2 [3, 4, 5, 2, 1]
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval solve_min_swaps 5 2 [4, 3, 2, 1, 5]
+  -- #guard_msgs in
+  -- #eval solve_min_swaps 5 2 [4, 3, 2, 1, 5]
 
 vc-postamble: |-
   -- Apps difficulty: interview

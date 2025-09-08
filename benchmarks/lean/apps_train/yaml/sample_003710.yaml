@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this Kata, you will sort elements in an array by decreasing frequency of elements. If two elements have the same frequency, sort them by increasing value. 
   
   More examples in test cases. 
@@ -6,6 +7,7 @@ vc-description: |-
   Good luck!
   
   Please also try [Simple time difference](https://www.codewars.com/kata/5b76a34ff71e5de9db0000f2)
+  -/
 
 vc-preamble: |-
   def solve (arr : List Int) : List Int :=
@@ -41,23 +43,23 @@ vc-theorems: |-
     solve (solve arr) = solve arr :=
   sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval solve [2, 3, 5, 3, 7, 9, 5, 3, 7]
+  -- #guard_msgs in
+  -- #eval solve [2, 3, 5, 3, 7, 9, 5, 3, 7]
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval solve [1, 2, 3, 0, 5, 0, 1, 6, 8, 8, 6, 9, 1]
+  -- #guard_msgs in
+  -- #eval solve [1, 2, 3, 0, 5, 0, 1, 6, 8, 8, 6, 9, 1]
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval solve [5, 9, 6, 9, 6, 5, 9, 9, 4, 4]
+  -- #guard_msgs in
+  -- #eval solve [5, 9, 6, 9, 6, 5, 9, 9, 4, 4]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

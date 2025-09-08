@@ -1,10 +1,12 @@
 vc-description: |-
+  /-
   Kate and Michael want to buy a pizza and share it. Depending on the price of the pizza, they are going to divide the costs:
   
   * If the pizza is less than €5,- Michael invites Kate, so Michael pays the full price.
   * Otherwise Kate will contribute 1/3 of the price, but no more than €10 (she's broke :-) and Michael pays the rest.
   
   How much is Michael going to pay? Calculate the amount with two decimals, if necessary.
+  -/
 
 vc-preamble: |-
 
@@ -31,23 +33,23 @@ vc-theorems: |-
     let kate_share := min (cost/3) 10
     Float.abs (michael_pays cost - (cost - kate_share)) < 0.0001 := sorry
   
-  /--
+  /-
   info: 4.99
   -/
-  #guard_msgs in
-  #eval michael_pays 4.99
+  -- #guard_msgs in
+  -- #eval michael_pays 4.99
   
-  /--
+  /-
   info: 10.0
   -/
-  #guard_msgs in
-  #eval michael_pays 15
+  -- #guard_msgs in
+  -- #eval michael_pays 15
   
-  /--
+  /-
   info: 70.0
   -/
-  #guard_msgs in
-  #eval michael_pays 80
+  -- #guard_msgs in
+  -- #eval michael_pays 80
 
 vc-postamble: |-
   -- Apps difficulty: introductory

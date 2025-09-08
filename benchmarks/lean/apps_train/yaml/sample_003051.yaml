@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You receive the name of a city as a string, and you need to return a string that shows how many times each letter shows up in the string by using an asterisk (`*`).
   
   For example:
@@ -20,6 +21,7 @@ vc-description: |-
   ```
   
   Have fun! ;)
+  -/
 
 vc-preamble: |-
   def get_strings (s : String) : String := sorry
@@ -67,23 +69,23 @@ vc-theorems: |-
   theorem get_strings_example :
     get_strings "Chicago" = "c:**,h:*,i:*,a:*,g:*,o:*" := sorry
   
-  /--
+  /-
   info: 'c:**,h:*,i:*,a:*,g:*,o:*'
   -/
-  #guard_msgs in
-  #eval get_strings "Chicago"
+  -- #guard_msgs in
+  -- #eval get_strings "Chicago"
   
-  /--
+  /-
   info: 'b:*,a:*,n:*,g:*,k:**,o:*'
   -/
-  #guard_msgs in
-  #eval get_strings "Bangkok"
+  -- #guard_msgs in
+  -- #eval get_strings "Bangkok"
   
-  /--
+  /-
   info: 'l:*,a:**,s:**,v:*,e:*,g:*'
   -/
-  #guard_msgs in
-  #eval get_strings "Las Vegas"
+  -- #guard_msgs in
+  -- #eval get_strings "Las Vegas"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

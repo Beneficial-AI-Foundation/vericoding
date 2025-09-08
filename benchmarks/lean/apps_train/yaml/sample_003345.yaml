@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Iahub got bored, so he invented a game to be played on paper.
    He writes n integers a1, a2, ..., an. Each of those integers can be either 0 or 1. He's allowed to do exactly one move: he chooses two indices i and j (1 ≤ i ≤ j ≤ n) and flips all values ak for which their positions are in range [i, j] (that is i ≤ k ≤ j). Flip the value of x means to apply operation x = 1 - x.
    The goal of the game is that after exactly one move to obtain the maximum number of ones. Write a program to solve the little game of Iahub.
@@ -17,6 +18,7 @@ vc-description: |-
    In the second case, flipping only the second and the third element (i = 2, j = 3) will turn all numbers into 1.
   
   (c)ll931110 & fchirica
+  -/
 
 vc-preamble: |-
 
@@ -50,23 +52,23 @@ vc-theorems: |-
     flipping_game [1,0,0] = 3 := by
     sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval flipping_game [1, 0, 0, 1, 0, 0]
+  -- #guard_msgs in
+  -- #eval flipping_game [1, 0, 0, 1, 0, 0]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval flipping_game [1, 0, 0, 1]
+  -- #guard_msgs in
+  -- #eval flipping_game [1, 0, 0, 1]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval flipping_game [1]
+  -- #guard_msgs in
+  -- #eval flipping_game [1]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

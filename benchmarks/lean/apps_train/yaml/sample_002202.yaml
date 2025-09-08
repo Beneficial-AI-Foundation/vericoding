@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Snuke's town has a subway system, consisting of N stations and M railway lines. The stations are numbered 1 through N. Each line is operated by a company. Each company has an identification number.
   The i-th ( 1 \leq i \leq M ) line connects station p_i and q_i bidirectionally. There is no intermediate station. This line is operated by company c_i.
   You can change trains at a station where multiple lines are available.
@@ -33,6 +34,7 @@ vc-description: |-
   1
   
   Use company 1's lines: 1 → 2 → 3. The fare is 1 yen.
+  -/
 
 vc-preamble: |-
 
@@ -69,23 +71,23 @@ vc-theorems: |-
   theorem subway_fare_single_edge :
       solve_subway_fare 2 1 [(1,2,1)] = 1 := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve_subway_fare 3 3 [(1, 2, 1), (2, 3, 1), (3, 1, 2)]
+  -- #guard_msgs in
+  -- #eval solve_subway_fare 3 3 [(1, 2, 1), (2, 3, 1), (3, 1, 2)]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve_subway_fare 8 11 [(1, 3, 1), (1, 4, 2), (2, 3, 1), (2, 5, 1), (3, 4, 3), (3, 6, 3), (3, 7, 3), (4, 8, 4), (5, 6, 1), (6, 7, 5), (7, 8, 5)]
+  -- #guard_msgs in
+  -- #eval solve_subway_fare 8 11 [(1, 3, 1), (1, 4, 2), (2, 3, 1), (2, 5, 1), (3, 4, 3), (3, 6, 3), (3, 7, 3), (4, 8, 4), (5, 6, 1), (6, 7, 5), (7, 8, 5)]
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval solve_subway_fare 2 0 []
+  -- #guard_msgs in
+  -- #eval solve_subway_fare 2 0 []
 
 vc-postamble: |-
   -- Apps difficulty: competition

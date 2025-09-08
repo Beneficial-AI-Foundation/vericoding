@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ##Task:
   
   You have to write a function **pattern** which creates the following pattern upto n number of rows. *If the Argument is 0 or a Negative Integer then it should return "" i.e. empty string.*
@@ -24,6 +25,7 @@ vc-description: |-
   ```Note: There are no blank spaces```
   
   ```Hint: Use \n in string to jump to next line```
+  -/
 
 vc-preamble: |-
 
@@ -54,23 +56,23 @@ vc-theorems: |-
     ¬result.endsWith "\n" ∧
     ∀ line ∈ lines, ¬(line.data.contains ' ' ∧ line.data.contains ' ') := sorry
   
-  /--
+  /-
   info: '12\n2'
   -/
-  #guard_msgs in
-  #eval pattern 2
+  -- #guard_msgs in
+  -- #eval pattern 2
   
-  /--
+  /-
   info: '1234\n234\n34\n4'
   -/
-  #guard_msgs in
-  #eval pattern 4
+  -- #guard_msgs in
+  -- #eval pattern 4
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval pattern 0
+  -- #guard_msgs in
+  -- #eval pattern 0
 
 vc-postamble: |-
   -- Apps difficulty: introductory

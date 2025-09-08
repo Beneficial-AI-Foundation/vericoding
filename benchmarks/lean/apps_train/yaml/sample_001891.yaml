@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a binary tree, return the postorder traversal of its nodes' values.
   
   Example:
@@ -13,6 +14,7 @@ vc-description: |-
   Output: [3,2,1]
   
   Follow up: Recursive solution is trivial, could you do it iteratively?
+  -/
 
 vc-preamble: |-
   def postorder_traversal {α : Type} (t : Tree α) : List α := sorry
@@ -44,23 +46,23 @@ vc-theorems: |-
   theorem two_nodes_right_postorder {α : Type} (v1 v2 : α) :
     postorder_traversal (Tree.node v1 Tree.leaf (Tree.node v2 Tree.leaf Tree.leaf)) = [v2, v1] := sorry
   
-  /--
+  /-
   info: [3, 2, 1]
   -/
-  #guard_msgs in
-  #eval postorder_traversal TreeNode(1)
+  -- #guard_msgs in
+  -- #eval postorder_traversal TreeNode(1)
   
-  /--
+  /-
   info: [2, 3, 1]
   -/
-  #guard_msgs in
-  #eval postorder_traversal TreeNode(1)
+  -- #guard_msgs in
+  -- #eval postorder_traversal TreeNode(1)
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval postorder_traversal None
+  -- #guard_msgs in
+  -- #eval postorder_traversal None
 
 vc-postamble: |-
   -- Apps difficulty: interview

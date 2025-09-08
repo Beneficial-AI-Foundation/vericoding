@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Mishka wants to buy some food in the nearby shop. Initially, he has $s$ burles on his card. 
   
   Mishka can perform the following operation any number of times (possibly, zero): choose some positive integer number $1 \le x \le s$, buy food that costs exactly $x$ burles and obtain $\lfloor\frac{x}{10}\rfloor$ burles as a cashback (in other words, Mishka spends $x$ burles and obtains $\lfloor\frac{x}{10}\rfloor$ back). The operation $\lfloor\frac{a}{b}\rfloor$ means $a$ divided by $b$ rounded down.
@@ -38,6 +39,7 @@ vc-description: |-
   10973
   13716
   1111111111
+  -/
 
 vc-preamble: |-
 
@@ -73,23 +75,23 @@ vc-theorems: |-
     max_spending initial_burles ≤ initial_burles * 10 / 9 + 10 := by
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval max_spending 1
+  -- #guard_msgs in
+  -- #eval max_spending 1
   
-  /--
+  /-
   info: 11
   -/
-  #guard_msgs in
-  #eval max_spending 10
+  -- #guard_msgs in
+  -- #eval max_spending 10
   
-  /--
+  /-
   info: 21
   -/
-  #guard_msgs in
-  #eval max_spending 19
+  -- #guard_msgs in
+  -- #eval max_spending 19
 
 vc-postamble: |-
   -- Apps difficulty: introductory

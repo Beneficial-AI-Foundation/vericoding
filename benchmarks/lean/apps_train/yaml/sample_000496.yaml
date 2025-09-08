@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a sorted array consisting of only integers where every element appears twice except for one element which appears once. Find this single element that appears only once. 
   
   Example 1:
@@ -13,6 +14,7 @@ vc-description: |-
   
   Note:
   Your solution should run in O(log n) time and O(1) space.
+  -/
 
 vc-preamble: |-
   def find_single_element (arr : List Int) : Int :=
@@ -54,23 +56,23 @@ vc-theorems: |-
     find_single_element result = nums[i]'h₅ :=
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_single_element [1, 1, 2, 3, 3, 4, 4, 8, 8]
+  -- #guard_msgs in
+  -- #eval find_single_element [1, 1, 2, 3, 3, 4, 4, 8, 8]
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval find_single_element [3, 3, 7, 7, 10, 11, 11]
+  -- #guard_msgs in
+  -- #eval find_single_element [3, 3, 7, 7, 10, 11, 11]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_single_element [1, 1, 2, 2, 3]
+  -- #guard_msgs in
+  -- #eval find_single_element [1, 1, 2, 2, 3]
 
 vc-postamble: |-
   -- Apps difficulty: interview

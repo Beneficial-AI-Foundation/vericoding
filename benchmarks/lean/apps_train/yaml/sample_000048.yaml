@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are playing a very popular game called Cubecraft. Initially, you have one stick and want to craft $k$ torches. One torch can be crafted using one stick and one coal.
   
   Hopefully, you've met a very handsome wandering trader who has two trade offers:  exchange $1$ stick for $x$ sticks (you lose $1$ stick and gain $x$ sticks).  exchange $y$ sticks for $1$ coal (you lose $y$ sticks and gain $1$ coal). 
@@ -34,6 +35,7 @@ vc-description: |-
   25
   2000000003
   1000000001999999999
+  -/
 
 vc-preamble: |-
 
@@ -66,23 +68,23 @@ vc-theorems: |-
   theorem min_trades_nat {x y k : Nat} (hx : x ≥ 2) (hy : y ≥ 1) (hk : k ≥ 1) :
     min_trades x y k = ↑(min_trades x y k) := sorry
   
-  /--
+  /-
   info: 14
   -/
-  #guard_msgs in
-  #eval min_trades 2 1 5
+  -- #guard_msgs in
+  -- #eval min_trades 2 1 5
   
-  /--
+  /-
   info: 33
   -/
-  #guard_msgs in
-  #eval min_trades 42 13 24
+  -- #guard_msgs in
+  -- #eval min_trades 42 13 24
   
-  /--
+  /-
   info: 25
   -/
-  #guard_msgs in
-  #eval min_trades 12 11 12
+  -- #guard_msgs in
+  -- #eval min_trades 12 11 12
 
 vc-postamble: |-
   -- Apps difficulty: interview

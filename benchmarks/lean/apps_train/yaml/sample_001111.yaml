@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef had an interesting dream last night. He dreamed of a new revolutionary chicken recipe. When he woke up today he tried very hard to reconstruct the ingredient list. But, he could only remember certain ingredients. To simplify the problem, the ingredient list can be represented by a string of lowercase characters 'a' - 'z'.
   Chef can recall some characters of the ingredient list, all the others, he has forgotten. However, he is quite sure that the ingredient list was a palindrome.
   You are given the ingredient list Chef dreamed last night. The forgotten characters are represented by a question mark ('?'). Count the number of ways Chef can replace the forgotten characters with characters 'a' - 'z' in such a way that resulting ingredient list is a palindrome.
@@ -32,6 +33,7 @@ vc-description: |-
   1 ≤ sum of length of all input strings ≤ 1,000,000
   
   Each input string contains only lowercase roman letters ('a' - 'z') or question marks.
+  -/
 
 vc-preamble: |-
   def isPalindrome (s : String) : Bool := sorry
@@ -74,23 +76,23 @@ vc-theorems: |-
   theorem countPalindromeCompletions_symmetry (s : String) :
     countPalindromeCompletions s = countPalindromeCompletions (reverseString s) := sorry
   
-  /--
+  /-
   info: 26
   -/
-  #guard_msgs in
-  #eval count_palindrome_completions "?"
+  -- #guard_msgs in
+  -- #eval count_palindrome_completions "?"
   
-  /--
+  /-
   info: 26
   -/
-  #guard_msgs in
-  #eval count_palindrome_completions "??"
+  -- #guard_msgs in
+  -- #eval count_palindrome_completions "??"
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_palindrome_completions "aba"
+  -- #guard_msgs in
+  -- #eval count_palindrome_completions "aba"
 
 vc-postamble: |-
   -- Apps difficulty: interview

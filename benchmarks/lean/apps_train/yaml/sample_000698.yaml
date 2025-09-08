@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Today is rose day, batch mates of Kabir and Tara decided to celebrate this day by exchanging roses with each other. 
   Note:$Note:$ exchanging means both the boy and the girl will give rose to each other. 
   In the class there are B$B$ boys and G$G$ girls. 
@@ -23,6 +24,7 @@ vc-description: |-
   
   -----Sample Output:-----
   8
+  -/
 
 vc-preamble: |-
 
@@ -55,23 +57,23 @@ vc-theorems: |-
     calculate_roses 1 1 = 2 :=
     sorry
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval calculate_roses 2 3
+  -- #guard_msgs in
+  -- #eval calculate_roses 2 3
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval calculate_roses 3 3
+  -- #guard_msgs in
+  -- #eval calculate_roses 3 3
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval calculate_roses 1 1
+  -- #guard_msgs in
+  -- #eval calculate_roses 1 1
 
 vc-postamble: |-
   -- Apps difficulty: interview

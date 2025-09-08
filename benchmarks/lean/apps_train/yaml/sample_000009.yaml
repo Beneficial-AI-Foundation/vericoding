@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Alice and Bob play a game. They have a binary string $s$ (a string such that each character in it is either $0$ or $1$). Alice moves first, then Bob, then Alice again, and so on.
   
   During their move, the player can choose any number (not less than one) of consecutive equal characters in $s$ and delete them.
@@ -40,6 +41,7 @@ vc-description: |-
   -----Note-----
   
   Questions about the optimal strategy will be ignored.
+  -/
 
 vc-preamble: |-
   def count_alice_score (s : String) : Nat :=
@@ -82,23 +84,23 @@ vc-theorems: |-
     count_alice_score s = s.length :=
     sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval count_alice_score "01111001"
+  -- #guard_msgs in
+  -- #eval count_alice_score "01111001"
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval count_alice_score "111111"
+  -- #guard_msgs in
+  -- #eval count_alice_score "111111"
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_alice_score "101010101"
+  -- #guard_msgs in
+  -- #eval count_alice_score "101010101"
 
 vc-postamble: |-
   -- Apps difficulty: interview

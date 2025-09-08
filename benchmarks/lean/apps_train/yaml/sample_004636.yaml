@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   This kata is part one of precise fractions series (see pt. 2: http://www.codewars.com/kata/precise-fractions-pt-2-conversion).
   
   When dealing with fractional values, there's always a problem with the precision of arithmetical operations. So lets fix it!
@@ -21,6 +22,7 @@ vc-description: |-
   * If one integer is passed into the initialiser, then the fraction should be assumed to represent an integer not a fraction.
   * You must implement the standard operator overrides `__add__`, `__sub__`, `__mul__`, `__div__`, in each case you should support `other` being an `int` or another instance of `Fraction`.
   * Implement `__str__` and `to_decimal` in place of `toString` and `toDecimal` as described above.
+  -/
 
 vc-preamble: |-
   def toString (n : Int) (d : Int) : String := sorry

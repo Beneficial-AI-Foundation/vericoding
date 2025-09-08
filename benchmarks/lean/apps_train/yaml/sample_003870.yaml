@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Baby is getting his frst tooth. This means more sleepless nights, but with the fun of feeling round his gums and trying to guess which will be first out! 
   
   Probably best have a sweepstake with your friends - because you have the best chance of knowing. You can feel the gums and see where the raised bits are - most raised, most likely tooth to come through first!
@@ -18,6 +19,7 @@ vc-description: |-
   ```
   
   If there is no distinct highest value (more than one occurence of the largest differential), return -1.
+  -/
 
 vc-preamble: |-
 
@@ -38,23 +40,23 @@ vc-theorems: |-
     let constant_list := List.replicate lst.length val
     first_tooth constant_list = -1 := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval first_tooth [1, 2, 3, 4]
+  -- #guard_msgs in
+  -- #eval first_tooth [1, 2, 3, 4]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval first_tooth [1, 2, 6, 4]
+  -- #guard_msgs in
+  -- #eval first_tooth [1, 2, 6, 4]
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval first_tooth [1, 1, 1, 1]
+  -- #guard_msgs in
+  -- #eval first_tooth [1, 1, 1, 1]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

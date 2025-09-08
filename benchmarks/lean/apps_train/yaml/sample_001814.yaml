@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a (singly) linked list with head node root, write a function to split the linked list into k consecutive linked list "parts".
   
   The length of each part should be as equal as possible: no two parts should have a size differing by more than 1.  This may lead to some parts being null.
@@ -38,6 +39,7 @@ vc-description: |-
   The length of root will be in the range [0, 1000].
   Each value of a node in the input will be an integer in the range [0, 999].
   k will be an integer in the range [1, 50].
+  -/
 
 vc-preamble: |-
   def create_linked_list {α} (values : List α) : Option (Node α) := sorry

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   
   In the field, two beggars A and B found some gold at the same time. They all wanted the gold, and they decided to use simple rules to distribute gold:
@@ -58,6 +59,7 @@ vc-description: |-
   A: 10 + 2 = 12
   B: 1000 + 1 = 1001
   ```
+  -/
 
 vc-preamble: |-
 
@@ -85,23 +87,23 @@ vc-theorems: |-
     golds = original := by
     sorry
   
-  /--
+  /-
   info: [14, 15]
   -/
-  #guard_msgs in
-  #eval distribution_of [4, 2, 9, 5, 2, 7]
+  -- #guard_msgs in
+  -- #eval distribution_of [4, 2, 9, 5, 2, 7]
   
-  /--
+  /-
   info: [12, 1001]
   -/
-  #guard_msgs in
-  #eval distribution_of [10, 1000, 2, 1]
+  -- #guard_msgs in
+  -- #eval distribution_of [10, 1000, 2, 1]
   
-  /--
+  /-
   info: [6, 3]
   -/
-  #guard_msgs in
-  #eval distribution_of [5, 3, 1]
+  -- #guard_msgs in
+  -- #eval distribution_of [5, 3, 1]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

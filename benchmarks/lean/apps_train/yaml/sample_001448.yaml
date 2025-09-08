@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your are given a string $S$ containing only lowercase letter and a array of character $arr$. Find whether the given string only contains characters from the given character array. 
   Print $1$ if the string contains characters from the given array only else print $0$.
   Note: string contains characters in lower case only.
@@ -33,6 +34,7 @@ vc-description: |-
   1
   1
   0
+  -/
 
 vc-preamble: |-
 
@@ -62,23 +64,23 @@ vc-theorems: |-
     check_string_chars s s.length "" = 0 :=
   sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval check_string_chars "abcd" 4 "a b c d"
+  -- #guard_msgs in
+  -- #eval check_string_chars "abcd" 4 "a b c d"
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval check_string_chars "aabbbcccdddd" 4 "a b c d"
+  -- #guard_msgs in
+  -- #eval check_string_chars "aabbbcccdddd" 4 "a b c d"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval check_string_chars "acd" 3 "a b d"
+  -- #guard_msgs in
+  -- #eval check_string_chars "acd" 3 "a b d"
 
 vc-postamble: |-
   -- Apps difficulty: interview

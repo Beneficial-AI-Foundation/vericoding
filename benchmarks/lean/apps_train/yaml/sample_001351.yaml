@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Recently, Chef studied the binary numeral system and noticed that it is extremely simple to perform bitwise operations like AND, XOR or bit shift on non-negative integers, while it is much more complicated to perform arithmetic operations (e.g. addition, multiplication or division).
   After playing with binary operations for a while, Chef invented an interesting algorithm for addition of two non-negative integers $A$ and $B$:
   function add(A, B):
@@ -55,6 +56,7 @@ vc-description: |-
   - $B$ changes to $2 \cdot 0 = 0$
   The while-loop terminates immediately afterwards, so it is executed only once.
   Example case 3: The initial values of $A$ and $B$ are $11100_2 = 28$ and $1010_2 = 10$ respectively. After the first iteration, their values change to $22$ and $16$ respectively. After the second iteration, they change to $6$ and $32$, and finally, after the third iteration, to $38$ and $0$.
+  -/
 
 vc-preamble: |-
 
@@ -75,23 +77,23 @@ vc-theorems: |-
   theorem zero_one_one_carry :
     count_binary_additions "0" "1" = 1 := sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_binary_additions "100010" "0"
+  -- #guard_msgs in
+  -- #eval count_binary_additions "100010" "0"
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_binary_additions "0" "100010"
+  -- #guard_msgs in
+  -- #eval count_binary_additions "0" "100010"
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_binary_additions "11100" "1010"
+  -- #guard_msgs in
+  -- #eval count_binary_additions "11100" "1010"
 
 vc-postamble: |-
   -- Apps difficulty: interview

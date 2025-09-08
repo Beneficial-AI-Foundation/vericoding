@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A string is called a happy prefix if is a non-empty prefix which is also a suffix (excluding itself).
   Given a string s. Return the longest happy prefix of s .
   Return an empty string if no such prefix exists.
@@ -25,6 +26,7 @@ vc-description: |-
   
   1 <= s.length <= 10^5
   s contains only lowercase English letters.
+  -/
 
 vc-preamble: |-
 
@@ -53,23 +55,23 @@ vc-theorems: |-
     ∀ c, c ∈ (longest_prefix s).data → c ∈ s.data := by
     sorry
   
-  /--
+  /-
   info: 'l'
   -/
-  #guard_msgs in
-  #eval longest_prefix "level"
+  -- #guard_msgs in
+  -- #eval longest_prefix "level"
   
-  /--
+  /-
   info: 'abab'
   -/
-  #guard_msgs in
-  #eval longest_prefix "ababab"
+  -- #guard_msgs in
+  -- #eval longest_prefix "ababab"
   
-  /--
+  /-
   info: 'leet'
   -/
-  #guard_msgs in
-  #eval longest_prefix "leetcodeleet"
+  -- #guard_msgs in
+  -- #eval longest_prefix "leetcodeleet"
 
 vc-postamble: |-
   -- Apps difficulty: interview

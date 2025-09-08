@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   How many licks does it take to get to the tootsie roll center of a tootsie pop?
   
   A group of engineering students from Purdue University reported that its licking machine, modeled after a human tongue, took an average of 364 licks to get to the center of a Tootsie Pop. Twenty of the group's volunteers assumed the licking challenge-unassisted by machinery-and averaged 252 licks each to the center.
@@ -33,6 +34,7 @@ vc-description: |-
   80's Kids #8: The Secret World of Alex Mack
   80's Kids #9: Down in Fraggle Rock 
   80's Kids #10: Captain Planet
+  -/
 
 vc-preamble: |-
   def String.containsSubstr (s : String) (sub : String) : Bool := sorry
@@ -88,23 +90,23 @@ vc-theorems: |-
     (total_licks env).containsSubstr "The toughest challenge was" :=
   sorry
   
-  /--
+  /-
   info: 'It took 260 licks to get to the tootsie roll center of a tootsie pop. The toughest challenge was freezing temps.'
   -/
-  #guard_msgs in
-  #eval total_licks {"freezing temps": 10, "clear skies": -2}
+  -- #guard_msgs in
+  -- #eval total_licks {"freezing temps": 10, "clear skies": -2}
   
-  /--
+  /-
   info: 'It took 245 licks to get to the tootsie roll center of a tootsie pop.'
   -/
-  #guard_msgs in
-  #eval total_licks {"happiness": -5, "clear skies": -2}
+  -- #guard_msgs in
+  -- #eval total_licks {"happiness": -5, "clear skies": -2}
   
-  /--
+  /-
   info: 'It took 512 licks to get to the tootsie roll center of a tootsie pop. The toughest challenge was evil wizards.'
   -/
-  #guard_msgs in
-  #eval total_licks {"dragons": 100, "evil wizards": 110, "trolls": 50}
+  -- #guard_msgs in
+  -- #eval total_licks {"dragons": 100, "evil wizards": 110, "trolls": 50}
 
 vc-postamble: |-
   -- Apps difficulty: introductory

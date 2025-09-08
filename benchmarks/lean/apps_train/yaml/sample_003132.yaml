@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Sometimes, I want to quickly be able to convert miles per imperial gallon into kilometers per liter.
   
   Create an application that will display the number of kilometers per liter (output) based on the number of miles per imperial gallon (input).
@@ -8,6 +9,7 @@ vc-description: |-
   Some useful associations relevant to this kata:
   1 Imperial Gallon = 4.54609188 litres
   1 Mile = 1.609344 kilometres
+  -/
 
 vc-preamble: |-
 
@@ -28,23 +30,23 @@ vc-theorems: |-
   
   end converter
   
-  /--
+  /-
   info: 3.54
   -/
-  #guard_msgs in
-  #eval converter 10
+  -- #guard_msgs in
+  -- #eval converter 10
   
-  /--
+  /-
   info: 8.5
   -/
-  #guard_msgs in
-  #eval converter 24
+  -- #guard_msgs in
+  -- #eval converter 24
   
-  /--
+  /-
   info: 12.74
   -/
-  #guard_msgs in
-  #eval converter 36
+  -- #guard_msgs in
+  -- #eval converter 36
 
 vc-postamble: |-
   -- Apps difficulty: introductory

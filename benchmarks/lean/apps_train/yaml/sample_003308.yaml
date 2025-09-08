@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Don't Drink the Water
   
   Given a two-dimensional array representation of a glass of mixed liquids, sort the array such that the liquids appear in the glass based on their density. (Lower density floats to the top) The width of the glass will not change from top to bottom.
@@ -22,6 +23,7 @@ vc-description: |-
    ```
   
    The glass representation may be larger or smaller. If a liquid doesn't fill a row, it floats to the top and to the left.
+  -/
 
 vc-preamble: |-
   def liquidDensity (l: Liquid) : Float :=
@@ -60,23 +62,23 @@ vc-theorems: |-
   theorem empty_glass :
     separate_liquids [] = [] := sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval separate_liquids [["H", "H", "W", "O"], ["W", "W", "O", "W"], ["H", "H", "O", "O"]]
+  -- #guard_msgs in
+  -- #eval separate_liquids [["H", "H", "W", "O"], ["W", "W", "O", "W"], ["H", "H", "O", "O"]]
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval separate_liquids [["A", "H", "W", "O"]]
+  -- #guard_msgs in
+  -- #eval separate_liquids [["A", "H", "W", "O"]]
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval separate_liquids []
+  -- #guard_msgs in
+  -- #eval separate_liquids []
 
 vc-postamble: |-
   -- Apps difficulty: introductory

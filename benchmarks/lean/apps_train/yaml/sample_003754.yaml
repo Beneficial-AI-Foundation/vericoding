@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   
   Your task is to sort the characters in a string according to the following rules:
@@ -35,6 +36,7 @@ vc-description: |-
   For `s = "-c--b--a-"`, the output should be `"-a--b--c-"`.
   
   For `s = "Codewars"`, the output should be `"aCdeorsw"`.
+  -/
 
 vc-preamble: |-
   def sortString (s : String) : String := sorry
@@ -71,23 +73,23 @@ vc-theorems: |-
   theorem sort_string_idempotent (s : String) :
     sortString (sortString s) = sortString s := sorry
   
-  /--
+  /-
   info: 'abc'
   -/
-  #guard_msgs in
-  #eval sort_string "cba"
+  -- #guard_msgs in
+  -- #eval sort_string "cba"
   
-  /--
+  /-
   info: 'abC'
   -/
-  #guard_msgs in
-  #eval sort_string "Cba"
+  -- #guard_msgs in
+  -- #eval sort_string "Cba"
   
-  /--
+  /-
   info: 'a b c'
   -/
-  #guard_msgs in
-  #eval sort_string "c b a"
+  -- #guard_msgs in
+  -- #eval sort_string "c b a"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

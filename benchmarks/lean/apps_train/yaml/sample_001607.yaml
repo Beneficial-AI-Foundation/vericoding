@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function that takes a positive integer and returns the next smaller positive integer containing the same digits.
   
   For example:
@@ -26,6 +27,7 @@ vc-description: |-
    * test data only employs positive integers.
   
   *The function you write for this challenge is the inverse of this kata: "[Next bigger number with the same digits](http://www.codewars.com/kata/next-bigger-number-with-the-same-digits)."*
+  -/
 
 vc-preamble: |-
   def next_smaller (n : Nat) : Int := sorry
@@ -52,23 +54,23 @@ vc-theorems: |-
     (String.length (toString (next_smaller n).natAbs) = String.length (toString n)) ∧
     next_smaller n < n := sorry
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval next_smaller 21
+  -- #guard_msgs in
+  -- #eval next_smaller 21
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval next_smaller 1027
+  -- #guard_msgs in
+  -- #eval next_smaller 1027
   
-  /--
+  /-
   info: 123456789
   -/
-  #guard_msgs in
-  #eval next_smaller 123456798
+  -- #guard_msgs in
+  -- #eval next_smaller 123456798
 
 vc-postamble: |-
   -- Apps difficulty: interview

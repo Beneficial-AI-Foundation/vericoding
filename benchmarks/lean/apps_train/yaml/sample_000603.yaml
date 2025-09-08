@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Find the length of the longest contiguous segment in an array, in which if a given element $K$ is inserted, $K$ becomes the second largest element of that subarray.
   
   -----Input:-----
@@ -29,6 +30,7 @@ vc-description: |-
   -----EXPLANATION:-----
   If 3 is inserted at anywhere in the array, it is the second largest element. Hence the maximum length is 5.
   If 5 is inserted anywhere between 1st and 4th element, it is the second largest element. The length of such subarray is 3.
+  -/
 
 vc-preamble: |-
 

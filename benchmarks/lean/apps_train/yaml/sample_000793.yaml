@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Harsh, like usual, started studying 6 months before for his end semester examinations. He was going to complete his 8th revision of the whole syllabus, when suddenly Pranav showed up in his room with the last year's question paper for their algorithms course. This paper contains a problem which both of them couldn't solve. Frustrated he asked you for help. But you declined him and instead try to do this problem instead:
   You are given an array $A_1,A_2,\dots,A_N$, a positive integer $K$, and a function $F(x)=\displaystyle\sum_{i=1}^{N}{\left|{\left({x-A_i}\right)^K}\right|}$. Find the smallest integer $x$ such that $F(x)$ is minimum.Input
   - The first line contains two space-seperated integers , $N$ and $K$
@@ -28,6 +29,7 @@ vc-description: |-
   Explanation 3
   $F(4) = \displaystyle\sum_{i=1}^{N}{\left|{\left({4-A_i}\right)^K}\right|} \\F(4) = \left|{\left({4-6}\right)^3}\right| + \left|{\left({4-1}\right)^3}\right| + \left|{\left({4-7}\right)^3}\right| \\F(4) = 8 + 27 + 27 \\F(4) = 62 $
   Here $62$ is the minumum value for $F(x)$ for any integer value of $x$.
+  -/
 
 vc-preamble: |-
   def find_min_x (n k : Nat) (arr : List Int) : Int := sorry
@@ -71,23 +73,23 @@ vc-theorems: |-
                         compute_cost (x+1) k arr, compute_cost (x+2) k arr]
     ∀ c ∈ nearby_costs, c ≥ cost * (9/10) := sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval find_min_x 3 1 [6, 1, 7]
+  -- #guard_msgs in
+  -- #eval find_min_x 3 1 [6, 1, 7]
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval find_min_x 3 2 [6, 1, 7]
+  -- #guard_msgs in
+  -- #eval find_min_x 3 2 [6, 1, 7]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval find_min_x 3 3 [6, 1, 7]
+  -- #guard_msgs in
+  -- #eval find_min_x 3 3 [6, 1, 7]
 
 vc-postamble: |-
   -- Apps difficulty: interview

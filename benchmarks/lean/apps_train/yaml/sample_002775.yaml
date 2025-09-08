@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # The Problem
   
   Dan, president of a Large company could use your help. He wants to implement a system that will switch all his devices into offline mode depending on his meeting schedule. When he's at a meeting and somebody texts him, he wants to send an automatic message informing that he's currently unavailable and the time when he's going to be back.
@@ -25,6 +26,7 @@ vc-description: |-
   should return `true`
   
   *You can expect valid input for this kata*
+  -/
 
 vc-preamble: |-
 
@@ -44,23 +46,23 @@ vc-theorems: |-
     check_availability [] time = true := by
     sorry
   
-  /--
+  /-
   info: '10:15'
   -/
-  #guard_msgs in
-  #eval check_availability [["09:30", "10:15"], ["12:20", "15:50"]] "10:00"
+  -- #guard_msgs in
+  -- #eval check_availability [["09:30", "10:15"], ["12:20", "15:50"]] "10:00"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval check_availability [["09:30", "10:15"], ["12:20", "15:50"]] "11:00"
+  -- #guard_msgs in
+  -- #eval check_availability [["09:30", "10:15"], ["12:20", "15:50"]] "11:00"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval check_availability [] "10:15"
+  -- #guard_msgs in
+  -- #eval check_availability [] "10:15"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

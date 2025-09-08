@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   On an infinite plane, a robot initially stands at (0, 0) and faces north.  The robot can receive one of three instructions:
   
   "G": go straight 1 unit;
@@ -31,6 +32,7 @@ vc-description: |-
   
   1 <= instructions.length <= 100
   instructions[i] is in {'G', 'L', 'R'}
+  -/
 
 vc-preamble: |-
 
@@ -66,23 +68,23 @@ vc-theorems: |-
   theorem full_rotation_bounded :
     is_robot_bounded "LLLL" = true ∧ is_robot_bounded "RRRR" = true := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_robot_bounded "GGLLGG"
+  -- #guard_msgs in
+  -- #eval is_robot_bounded "GGLLGG"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_robot_bounded "GG"
+  -- #guard_msgs in
+  -- #eval is_robot_bounded "GG"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_robot_bounded "GL"
+  -- #guard_msgs in
+  -- #eval is_robot_bounded "GL"
 
 vc-postamble: |-
   -- Apps difficulty: interview

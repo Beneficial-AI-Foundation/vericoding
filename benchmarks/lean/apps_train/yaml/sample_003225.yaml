@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Divisors of 42 are : 1, 2, 3, 6, 7, 14, 21, 42.
   These divisors squared are: 1, 4, 9, 36, 49, 196, 441, 1764.
   The sum of the squared divisors is 2500 which is 50 * 50, a square!
@@ -22,6 +23,7 @@ vc-description: |-
   **Note**
   
   In Fortran - as in any other language - the returned string is not permitted to contain any redundant trailing whitespace: you can use dynamically allocated character strings.
+  -/
 
 vc-preamble: |-
   def list_squared (m n : Nat) : List (Nat × Nat) := sorry
@@ -63,23 +65,23 @@ vc-theorems: |-
   theorem list_squared_empty (m n : Nat) :
     m > n → list_squared m n = [] := sorry
   
-  /--
+  /-
   info: [[1, 1], [42, 2500], [246, 84100]]
   -/
-  #guard_msgs in
-  #eval list_squared 1 250
+  -- #guard_msgs in
+  -- #eval list_squared 1 250
   
-  /--
+  /-
   info: [[42, 2500], [246, 84100]]
   -/
-  #guard_msgs in
-  #eval list_squared 42 250
+  -- #guard_msgs in
+  -- #eval list_squared 42 250
   
-  /--
+  /-
   info: [[287, 84100]]
   -/
-  #guard_msgs in
-  #eval list_squared 250 500
+  -- #guard_msgs in
+  -- #eval list_squared 250 500
 
 vc-postamble: |-
   -- Apps difficulty: introductory

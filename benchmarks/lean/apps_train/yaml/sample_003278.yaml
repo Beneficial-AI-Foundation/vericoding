@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Description overhauled by V
   
   ---
@@ -12,6 +13,7 @@ vc-description: |-
   What is the minimum amount of candies I have to buy, so that no matter how many kids come to the party in the end, I can still ensure that each kid can receive the same amount of candies, while leaving no candies left?
   
   It's ensured that at least one kid will participate in the party.
+  -/
 
 vc-preamble: |-
 
@@ -34,23 +36,23 @@ vc-definitions: |-
 vc-theorems: |-
   theorem candies_to_buy_minimum : candies_to_buy 1 = 1 := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval candies_to_buy 1
+  -- #guard_msgs in
+  -- #eval candies_to_buy 1
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval candies_to_buy 2
+  -- #guard_msgs in
+  -- #eval candies_to_buy 2
   
-  /--
+  /-
   info: 60
   -/
-  #guard_msgs in
-  #eval candies_to_buy 5
+  -- #guard_msgs in
+  -- #eval candies_to_buy 5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

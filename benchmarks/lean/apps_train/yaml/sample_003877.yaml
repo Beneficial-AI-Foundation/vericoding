@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Fun fact
   Tetris was the first video game played in outer space
   
@@ -103,6 +104,7 @@ vc-description: |-
   * 6 kyuTetris Series #3 — Adding Rotation (TBA)
   * 5 kyuTetris Series #4 — New Block Types (TBA)
   * 4 kyuTetris Series #5 — Complex Block Types (TBA?)
+  -/
 
 vc-preamble: |-
   def Position := String
@@ -137,23 +139,23 @@ vc-theorems: |-
     tetris commands = tetris (commands ++ emptyMoves) :=
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval tetris ["1R4", "2L3", "3L2", "4L1", "1L0", "2R1", "3R2", "4R3", "1L4"]
+  -- #guard_msgs in
+  -- #eval tetris ["1R4", "2L3", "3L2", "4L1", "1L0", "2R1", "3R2", "4R3", "1L4"]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval tetris ["1L2", "4R2", "3L3", "3L1", "1L4", "1R4"]
+  -- #guard_msgs in
+  -- #eval tetris ["1L2", "4R2", "3L3", "3L1", "1L4", "1R4"]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval tetris ["4R4", "4L3", "4L2", "4L1", "4L0", "4R1", "4R2", "4R3", "3L4"]
+  -- #guard_msgs in
+  -- #eval tetris ["4R4", "4L3", "4L2", "4L1", "4L0", "4R1", "4R2", "4R3", "3L4"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   
   Write a function that accepts `msg` string and returns local tops of string from the highest to the lowest.  
@@ -26,6 +27,7 @@ vc-description: |-
   # **Note** for C++
   
   Do not post an issue in my solution without checking if your returned string doesn't have some invisible characters. You read most probably outside of `msg` string.
+  -/
 
 vc-preamble: |-
 
@@ -69,23 +71,23 @@ vc-theorems: |-
   theorem tops_deterministic {s : String} :
     tops s = tops s := by sorry
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval tops ""
+  -- #guard_msgs in
+  -- #eval tops ""
   
-  /--
+  /-
   info: '2'
   -/
-  #guard_msgs in
-  #eval tops "12"
+  -- #guard_msgs in
+  -- #eval tops "12"
   
-  /--
+  /-
   info: '3pgb'
   -/
-  #guard_msgs in
-  #eval tops "abcdefghijklmnopqrstuvwxyz12345"
+  -- #guard_msgs in
+  -- #eval tops "abcdefghijklmnopqrstuvwxyz12345"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

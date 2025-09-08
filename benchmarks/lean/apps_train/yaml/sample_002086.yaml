@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Polycarp plans to conduct a load testing of its new project Fakebook. He already agreed with his friends that at certain points in time they will send requests to Fakebook. The load testing will last n minutes and in the i-th minute friends will send a_{i} requests.
   
   Polycarp plans to test Fakebook under a special kind of load. In case the information about Fakebook gets into the mass media, Polycarp hopes for a monotone increase of the load, followed by a monotone decrease of the interest to the service. Polycarp wants to test this form of load.
@@ -48,6 +49,7 @@ vc-description: |-
   In the second example it is enough to make one additional request in the third minute, so the answer is 1.
   
   In the third example the load already satisfies all conditions described in the statement, so the answer is 0.
+  -/
 
 vc-preamble: |-
 
@@ -87,23 +89,23 @@ vc-theorems: |-
     min_requests_to_add n arr = min_requests_to_add arr.length arr :=
   sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval min_requests_to_add 5 [1, 4, 3, 2, 5]
+  -- #guard_msgs in
+  -- #eval min_requests_to_add 5 [1, 4, 3, 2, 5]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval min_requests_to_add 5 [1, 2, 2, 2, 1]
+  -- #guard_msgs in
+  -- #eval min_requests_to_add 5 [1, 2, 2, 2, 1]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_requests_to_add 7 [10, 20, 40, 50, 70, 90, 30]
+  -- #guard_msgs in
+  -- #eval min_requests_to_add 7 [10, 20, 40, 50, 70, 90, 30]
 
 vc-postamble: |-
   -- Apps difficulty: competition

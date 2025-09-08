@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Problem Statement=====
   Given an integer, n, print the following values for each integer i from 1 to n:
   1. Decimal
@@ -16,6 +17,7 @@ vc-description: |-
   
   =====Output Format=====
   Print n lines wehere each line i (in the range 1 ≤ i ≤ n) contains the respective decimal, octal, capitalized hexadecimal, and binary values of i. Each printed value must be formatted to the width of the binary value of n.
+  -/
 
 vc-preamble: |-
 

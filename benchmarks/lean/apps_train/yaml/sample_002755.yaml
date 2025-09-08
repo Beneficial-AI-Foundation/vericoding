@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Introduction 
   
   Ka ka ka cypher is a cypher used by small children in some country. When a girl wants to pass something to the other girls and there are some boys nearby, she can use Ka cypher. So only the other girls are able to understand her. 
@@ -33,6 +34,7 @@ vc-description: |-
   # Remark
   
   Ka cypher's country residents, please don't hate me for simplifying the way how we divide the words into "syllables" in the Kata. I don't want to make it too hard for other nations ;-P
+  -/
 
 vc-preamble: |-
   def ka_co_ka_de_ka_me (s: String) : String := sorry
@@ -63,23 +65,23 @@ vc-theorems: |-
   theorem consonants_unchanged (word: String) :
     getConsonants word = getConsonants (removeKa (ka_co_ka_de_ka_me word)) := sorry
   
-  /--
+  /-
   info: 'kaa'
   -/
-  #guard_msgs in
-  #eval ka_co_ka_de_ka_me "a"
+  -- #guard_msgs in
+  -- #eval ka_co_ka_de_ka_me "a"
   
-  /--
+  /-
   info: 'kamaikantekanakance'
   -/
-  #guard_msgs in
-  #eval ka_co_ka_de_ka_me "maintenance"
+  -- #guard_msgs in
+  -- #eval ka_co_ka_de_ka_me "maintenance"
   
-  /--
+  /-
   info: 'kaIkancokamprekahekansikabikalikatiekas'
   -/
-  #guard_msgs in
-  #eval ka_co_ka_de_ka_me "Incomprehensibilities"
+  -- #guard_msgs in
+  -- #eval ka_co_ka_de_ka_me "Incomprehensibilities"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

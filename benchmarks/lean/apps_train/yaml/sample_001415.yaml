@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Vietnamese and Bengali as well.
   An $N$-bonacci sequence is an infinite sequence $F_1, F_2, \ldots$ such that for each integer $i > N$, $F_i$ is calculated as $f(F_{i-1}, F_{i-2}, \ldots, F_{i-N})$, where $f$ is some function. A XOR $N$-bonacci sequence is an $N$-bonacci sequence for which $f(F_{i-1}, F_{i-2}, \ldots, F_{i-N}) = F_{i-1} \oplus F_{i−2} \oplus \ldots \oplus F_{i−N}$, where $\oplus$ denotes the bitwise XOR operation.
   Recently, Chef has found an interesting sequence $S_1, S_2, \ldots$, which is obtained from prefix XORs of a XOR $N$-bonacci sequence $F_1, F_2, \ldots$. Formally, for each positive integer $i$, $S_i = F_1 \oplus F_2 \oplus \ldots \oplus F_i$. You are given the first $N$ elements of the sequence $F$, which uniquely determine the entire sequence $S$.
@@ -30,6 +31,7 @@ vc-description: |-
   1
   0
   0
+  -/
 
 vc-preamble: |-
 

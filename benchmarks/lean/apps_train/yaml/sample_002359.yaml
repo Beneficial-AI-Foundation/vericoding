@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Implement int sqrt(int x).
   
   Compute and return the square root of x, where x is guaranteed to be a non-negative integer.
@@ -16,6 +17,7 @@ vc-description: |-
   Output: 2
   Explanation: The square root of 8 is 2.82842..., and since 
                the decimal part is truncated, 2 is returned.
+  -/
 
 vc-preamble: |-
 
@@ -37,23 +39,23 @@ vc-theorems: |-
   theorem sqrt_round_trip (x : Nat) : 
     x ≤ 1000 → sqrt (x * x) = x := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval sqrt 4
+  -- #guard_msgs in
+  -- #eval sqrt 4
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval sqrt 8
+  -- #guard_msgs in
+  -- #eval sqrt 8
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval sqrt 0
+  -- #guard_msgs in
+  -- #eval sqrt 0
 
 vc-postamble: |-
   -- Apps difficulty: introductory

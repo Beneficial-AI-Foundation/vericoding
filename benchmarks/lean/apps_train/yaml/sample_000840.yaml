@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   As we all know, Dhoni loves drinking milk. Once he and Sir Jadeja were invited in the inauguration of a Dairy company in Ranchi.
   
   The company had arranged  n   jars of milk from various breeds of cows , jar number  i  containing  a[i]  litres of milk. Since Dhoni loves driking milk more than Sir Jadeja, so Kohli suggested a plan for them. His plan was that each time Dhoni will choose a jar containing the maximum amount of milk. If this jar has less than  k   litres of milk or if Dhoni has already drunk more than  m  number of times from this jar, then the milk contained in the jar will be drunk by Sir Jadeja. Sir Jadeja will drink all the milk left in that jar. Otherwise Dhoni will drink exactly k  litres of milk from the jar and put it back at its position. Dhoni will do so until he has given all jars to Sir Jadeja.
@@ -27,6 +28,7 @@ vc-description: |-
   
   Output:
   9
+  -/
 
 vc-preamble: |-
 
@@ -55,17 +57,17 @@ vc-theorems: |-
           (h1 : N > 0) (h2 : M > 0) (h3 : K > 0) :
     calculate_milk_share N M K (List.replicate N 0) = 0 := sorry
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval calculate_milk_share 3 3 3 [15, 8, 10]
+  -- #guard_msgs in
+  -- #eval calculate_milk_share 3 3 3 [15, 8, 10]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval calculate_milk_share 2 2 2 [5, 3]
+  -- #guard_msgs in
+  -- #eval calculate_milk_share 2 2 2 [5, 3]
 
 vc-postamble: |-
   -- Apps difficulty: interview

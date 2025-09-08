@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Who's interested in football?
   Rayne Wooney has been one of the top players for his football club for the last few years. But unfortunately, he got injured during a game a few months back and has been out of play ever since.
   He's got proper treatment and is eager to go out and play for his team again. Before doing that, he has to prove to his fitness to the coach and manager of the team. Rayne has been playing practice matches for the past few days. He's played N practice matches in all.
@@ -49,6 +50,7 @@ vc-description: |-
   In the first test case, Rayne can choose the first and second game. Thus he gets a difference of 7-3=4 goals. Any other pair would give him a lower improvement.
   In the second test case, Rayne has not been improving in any match. Thus he's declared UNFIT.
   Note: Large input data. Use faster I/O methods. Prefer scanf,printf over cin/cout.
+  -/
 
 vc-preamble: |-
 
@@ -88,23 +90,23 @@ vc-theorems: |-
         subresult = .inl subImp →
         subImp ≤ imp := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval find_max_improvement [3, 7, 1, 4, 2, 4]
+  -- #guard_msgs in
+  -- #eval find_max_improvement [3, 7, 1, 4, 2, 4]
   
-  /--
+  /-
   info: 'UNFIT'
   -/
-  #guard_msgs in
-  #eval find_max_improvement [5, 4, 3, 2, 1]
+  -- #guard_msgs in
+  -- #eval find_max_improvement [5, 4, 3, 2, 1]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval find_max_improvement [4, 3, 2, 2, 3]
+  -- #guard_msgs in
+  -- #eval find_max_improvement [4, 3, 2, 2, 3]
 
 vc-postamble: |-
   -- Apps difficulty: interview

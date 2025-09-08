@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Vasya claims that he had a paper square. He cut it into two rectangular parts using one vertical or horizontal cut. Then Vasya informed you the dimensions of these two rectangular parts. You need to check whether Vasya originally had a square. In other words, check if it is possible to make a square using two given rectangles.
   
   -----Input-----
@@ -29,6 +30,7 @@ vc-description: |-
   Yes
   Yes
   No
+  -/
 
 vc-preamble: |-
 
@@ -64,23 +66,23 @@ vc-theorems: |-
   theorem can_make_square_known_case3 :
     can_make_square 3 3 1 3 = false := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval can_make_square 2 3 3 1
+  -- #guard_msgs in
+  -- #eval can_make_square 2 3 3 1
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval can_make_square 3 2 1 3
+  -- #guard_msgs in
+  -- #eval can_make_square 3 2 1 3
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval can_make_square 3 3 1 3
+  -- #guard_msgs in
+  -- #eval can_make_square 3 3 1 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We need a function that may receive a list  of an unknown amount of points in the same plane, having each of them, cartesian coordinates of the form (x, y) and may find the biggest triangle (the one with the largest area) formed by all of the possible combinations of groups of three points of that given list.
   Of course, we will have some combinations of three points that does not form a triangle, because the three points are aligned.
   The function find_biggTriang(listOfPoints), will output a list with the following data in the order presented bellow:
@@ -63,6 +64,7 @@ vc-description: |-
   Your code will be tested with lists created randomly up to 70 points.
   
   Have a nice moment and enjoy it!!
+  -/
 
 vc-preamble: |-
   def Point := (Int × Int)
@@ -110,23 +112,23 @@ vc-theorems: |-
     let t3 := (p3, p1, p2)
     (area t1 - area t2).abs < 1e-10 ∧ (area t2 - area t3).abs < 1e-10 := sorry
   
-  /--
+  /-
   info: [19, 969, 953, [[0, 1], [7, 10], [10, 0]], 48.5]
   -/
-  #guard_msgs in
-  #eval find_biggTriang [(0, 1), (7, 3), (9, 0), (7, 10), (2, 9), (10, 7), (2, 8), (9, 8), (4, 4), (2, 10), (10, 1), (0, 4), (4, 3), (10, 0), (0, 3), (3, 4), (1, 1), (7, 2), (4, 0)]
+  -- #guard_msgs in
+  -- #eval find_biggTriang [(0, 1), (7, 3), (9, 0), (7, 10), (2, 9), (10, 7), (2, 8), (9, 8), (4, 4), (2, 10), (10, 1), (0, 4), (4, 3), (10, 0), (0, 3), (3, 4), (1, 1), (7, 2), (4, 0)]
   
-  /--
+  /-
   info: [15, 455, 446, [[[0, 0], [9, 10], [10, 0]], [[0, 0], [10, 0], [3, 10]]], 50.0]
   -/
-  #guard_msgs in
-  #eval find_biggTriang [(7, 4), (0, 0), (9, 10), (5, 0), (8, 1), (7, 6), (9, 3), (2, 4), (6, 3), (5, 6), (3, 6), (10, 0), (9, 7), (3, 10), (10, 2)]
+  -- #guard_msgs in
+  -- #eval find_biggTriang [(7, 4), (0, 0), (9, 10), (5, 0), (8, 1), (7, 6), (9, 3), (2, 4), (6, 3), (5, 6), (3, 6), (10, 0), (9, 7), (3, 10), (10, 2)]
   
-  /--
+  /-
   info: [3, 1, 1, [[0, 0], [3, 0], [0, 4]], 6.0]
   -/
-  #guard_msgs in
-  #eval find_biggTriang [(0, 0), (3, 0), (0, 4)]
+  -- #guard_msgs in
+  -- #eval find_biggTriang [(0, 0), (3, 0), (0, 4)]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

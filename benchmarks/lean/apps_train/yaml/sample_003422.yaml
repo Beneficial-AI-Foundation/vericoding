@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   *`This kata is a tribute/fanwork to the TV-show: Supernatural`*
   
   Balls!
@@ -40,6 +41,7 @@ vc-description: |-
   
   ...and you reply (return) with the info, and your signature saying of yours!
   ```Burn it alive, idjits!```
+  -/
 
 vc-preamble: |-
   def KnownMonsters := [
@@ -76,23 +78,23 @@ vc-theorems: |-
     werewolfResult.startsWith "Silver knife" ∧
     shapeshifterResult.startsWith "Silver knife" := by sorry
   
-  /--
+  /-
   info: 'Behead it with a machete, idjits!'
   -/
-  #guard_msgs in
-  #eval bob "vampire"
+  -- #guard_msgs in
+  -- #eval bob "vampire"
   
-  /--
+  /-
   info: 'It depends on which one it is, idjits!'
   -/
-  #guard_msgs in
-  #eval bob "pagan god"
+  -- #guard_msgs in
+  -- #eval bob "pagan god"
   
-  /--
+  /-
   info: 'I have friggin no idea yet, idjits!'
   -/
-  #guard_msgs in
-  #eval bob "werepuppy"
+  -- #guard_msgs in
+  -- #eval bob "werepuppy"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

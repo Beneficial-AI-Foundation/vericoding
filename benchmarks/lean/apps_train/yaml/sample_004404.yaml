@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   
   Christmas is coming. In the [previous kata](https://www.codewars.com/kata/5a405ba4e1ce0e1d7800012e), we build a custom Christmas tree with the specified characters and the specified height.
@@ -82,6 +83,7 @@ vc-description: |-
   ```
   center leaves sequence: "abaabaabaaba....."
   ```
+  -/
 
 vc-preamble: |-
 
@@ -115,23 +117,23 @@ vc-theorems: |-
     ∀ c, c ∈ center_of s → c = 'a' ∨ c = 'b' :=
   sorry
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval center_of ""
+  -- #guard_msgs in
+  -- #eval center_of ""
   
-  /--
+  /-
   info: 'aba'
   -/
-  #guard_msgs in
-  #eval center_of "abc"
+  -- #guard_msgs in
+  -- #eval center_of "abc"
   
-  /--
+  /-
   info: 'aecea'
   -/
-  #guard_msgs in
-  #eval center_of "abcde"
+  -- #guard_msgs in
+  -- #eval center_of "abcde"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

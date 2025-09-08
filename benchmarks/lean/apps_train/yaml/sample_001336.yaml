@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   -----Problem Statement-----
   Chef studies combinatorics. He tries to group objects by their rang (a positive integer associated with each object). He also gives the formula for calculating the number of different objects with rang N as following:
   
@@ -48,6 +49,7 @@ vc-description: |-
   
   In the third example function looks as follows F(N) = N. So, you have one distinct object of rang 1, two distinct objects of rang 2, three distinct objects of rang 3 and so on. To get
   multiset with sum of rangs equal to 2, you can pick: two objects of rang 1, one of objects of rang 2 (two ways).
+  -/
 
 vc-preamble: |-
 
@@ -83,23 +85,23 @@ vc-theorems: |-
     result > 0 ∧ result < MOD := by
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval calculate_multisets #[1, 0, 0, 0] 1
+  -- #guard_msgs in
+  -- #eval calculate_multisets #[1, 0, 0, 0] 1
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval calculate_multisets #[1, 0, 0, 0] 3
+  -- #guard_msgs in
+  -- #eval calculate_multisets #[1, 0, 0, 0] 3
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval calculate_multisets #[0, 1, 0, 0] 2
+  -- #guard_msgs in
+  -- #eval calculate_multisets #[0, 1, 0, 0] 2
 
 vc-postamble: |-
   -- Apps difficulty: interview

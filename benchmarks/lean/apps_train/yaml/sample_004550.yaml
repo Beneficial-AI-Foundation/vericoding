@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Idea
   
   In the world of graphs exists a structure called "spanning tree". It is unique because it's created not on its own, but based on other graphs. To make a spanning tree out of a given graph you should remove all the edges which create cycles, for example:
@@ -33,6 +34,7 @@ vc-description: |-
   * All vertices will be connected with each other
   * You may receive cycles, for example - `["AA", n]`
   * The subject of the test are these 3 values: number of vertices included, total weight, number of edges, but **you should not return them**, there's a special function which will analyze your output instead
+  -/
 
 vc-preamble: |-
 
@@ -79,23 +81,23 @@ vc-theorems: |-
     (result_weights.maximum?.get! : Nat) ≤ edge_weights.maximum?.get! := by
     sorry
   
-  /--
+  /-
   info: [('AC', 1), ('AB', 2)]
   -/
-  #guard_msgs in
-  #eval make_spanning_tree [("AB", 2), ("BC", 4), ("AC", 1)] "min"
+  -- #guard_msgs in
+  -- #eval make_spanning_tree [("AB", 2), ("BC", 4), ("AC", 1)] "min"
   
-  /--
+  /-
   info: [('BC', 4), ('AB', 2)]
   -/
-  #guard_msgs in
-  #eval make_spanning_tree [("AB", 2), ("BC", 4), ("AC", 1)] "max"
+  -- #guard_msgs in
+  -- #eval make_spanning_tree [("AB", 2), ("BC", 4), ("AC", 1)] "max"
   
-  /--
+  /-
   info: [('AB', 2), ('BC', 3)]
   -/
-  #guard_msgs in
-  #eval make_spanning_tree [("AA", 1), ("AB", 2), ("BC", 3)] "min"
+  -- #guard_msgs in
+  -- #eval make_spanning_tree [("AA", 1), ("AB", 2), ("BC", 3)] "min"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

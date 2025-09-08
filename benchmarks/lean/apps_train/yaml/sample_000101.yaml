@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Hooray! Polycarp turned $n$ years old! The Technocup Team sincerely congratulates Polycarp!
   
   Polycarp celebrated all of his $n$ birthdays: from the $1$-th to the $n$-th. At the moment, he is wondering: how many times he turned beautiful number of years?
@@ -40,6 +41,7 @@ vc-description: |-
   -----Note-----
   
   In the first test case of the example beautiful years are $1$, $2$, $3$, $4$, $5$, $6$, $7$, $8$, $9$ and $11$.
+  -/
 
 vc-preamble: |-
 
@@ -65,23 +67,23 @@ vc-theorems: |-
     count_beautiful_numbers 999 = 27 ∧
     count_beautiful_numbers 9999 = 36 := sorry
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval count_beautiful_numbers 18
+  -- #guard_msgs in
+  -- #eval count_beautiful_numbers 18
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval count_beautiful_numbers 9
+  -- #guard_msgs in
+  -- #eval count_beautiful_numbers 9
   
-  /--
+  /-
   info: 45
   -/
-  #guard_msgs in
-  #eval count_beautiful_numbers 100500
+  -- #guard_msgs in
+  -- #eval count_beautiful_numbers 100500
 
 vc-postamble: |-
   -- Apps difficulty: interview

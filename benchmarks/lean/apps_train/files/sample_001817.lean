@@ -1,0 +1,81 @@
+/-
+Given the array arr of positive integers and the array queries where queries[i] = [Li, Ri], for each query i compute the XOR of elements from Li to Ri (that is, arr[Li] xor arr[Li+1] xor ... xor arr[Ri] ). Return an array containing the result for the given queries.
+
+Example 1:
+Input: arr = [1,3,4,8], queries = [[0,1],[1,2],[0,3],[3,3]]
+Output: [2,7,14,8] 
+Explanation: 
+The binary representation of the elements in the array are:
+1 = 0001 
+3 = 0011 
+4 = 0100 
+8 = 1000 
+The XOR values for queries are:
+[0,1] = 1 xor 3 = 2 
+[1,2] = 3 xor 4 = 7 
+[0,3] = 1 xor 3 xor 4 xor 8 = 14 
+[3,3] = 8
+
+Example 2:
+Input: arr = [4,8,2,10], queries = [[2,3],[1,3],[0,0],[0,3]]
+Output: [8,0,4,4]
+
+Constraints:
+
+1 <= arr.length <= 3 * 10^4
+1 <= arr[i] <= 10^9
+1 <= queries.length <= 3 * 10^4
+queries[i].length == 2
+0 <= queries[i][0] <= queries[i][1] < arr.length
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def xorQueries (arr : List Nat) (queries : List (Nat × Nat)) : List Nat := sorry
+
+def manualRangeXor (arr : List Nat) (i j : Nat) : Nat := sorry
+
+theorem xorQueries_length_matches_queries {arr : List Nat} {queries : List (Nat × Nat)} 
+  (h : arr.length > 0) :
+  (xorQueries arr queries).length = queries.length := sorry
+
+theorem xorQueries_matches_manual {arr : List Nat} {queries : List (Nat × Nat)} 
+  (h : arr.length > 0)
+  (h_valid : ∀ q ∈ queries, q.1 < arr.length ∧ q.2 < arr.length ∧ q.1 ≤ q.2) :
+  ∀ (i : Fin queries.length),
+    (xorQueries arr queries).get ⟨i.val, by rw [xorQueries_length_matches_queries h]; exact i.isLt⟩ = 
+    manualRangeXor arr (queries.get i).1 (queries.get i).2 := sorry
+
+theorem xorQueries_single_element {arr : List Nat} {i : Nat}
+  (h : i < arr.length) :
+  (xorQueries arr [(i,i)]).head! = arr.get ⟨i, h⟩ := sorry
+
+theorem xorQueries_adjacent_ranges {arr : List Nat} {i : Nat}
+  (h : arr.length > 1)
+  (h_i : i < arr.length - 1) :
+  let r1 := (xorQueries arr [(i,i)]).head!
+  let r2 := (xorQueries arr [(i+1,i+1)]).head!
+  let combined := (xorQueries arr [(i,i+1)]).head!
+  Nat.xor r1 r2 = combined := sorry
+
+/-
+info: [2, 7, 14, 8]
+-/
+-- #guard_msgs in
+-- #eval xor_queries [1, 3, 4, 8] [[0, 1], [1, 2], [0, 3], [3, 3]]
+
+/-
+info: [8, 0, 4, 4]
+-/
+-- #guard_msgs in
+-- #eval xor_queries [4, 8, 2, 10] [[2, 3], [1, 3], [0, 0], [0, 3]]
+
+/-
+info: [1, 3, 1]
+-/
+-- #guard_msgs in
+-- #eval xor_queries [1, 2, 3] [[0, 0], [0, 1], [1, 2]]
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

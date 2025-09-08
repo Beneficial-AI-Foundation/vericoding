@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Limak is a little bear who loves to play. Today he is playing by destroying block towers. He built n towers in a row. The i-th tower is made of h_{i} identical blocks. For clarification see picture for the first sample.
   
   Limak will repeat the following operation till everything is destroyed.
@@ -35,6 +36,7 @@ vc-description: |-
   -----Note-----
   
   The picture below shows all three operations for the first sample test. Each time boundary blocks are marked with red color.  [Image]  After first operation there are four blocks left and only one remains after second operation. This last block is destroyed in third operation.
+  -/
 
 vc-preamble: |-
 
@@ -76,23 +78,23 @@ vc-theorems: |-
     operations_to_destroy_towers n (List.range' n 0) ≤ n :=
   sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval operations_to_destroy_towers 6 [2, 1, 4, 6, 2, 2]
+  -- #guard_msgs in
+  -- #eval operations_to_destroy_towers 6 [2, 1, 4, 6, 2, 2]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval operations_to_destroy_towers 7 [3, 3, 3, 1, 3, 3, 3]
+  -- #guard_msgs in
+  -- #eval operations_to_destroy_towers 7 [3, 3, 3, 1, 3, 3, 3]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval operations_to_destroy_towers 5 [1, 2, 3, 2, 1]
+  -- #guard_msgs in
+  -- #eval operations_to_destroy_towers 5 [1, 2, 3, 2, 1]
 
 vc-postamble: |-
   -- Apps difficulty: competition

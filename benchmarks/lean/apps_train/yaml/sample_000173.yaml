@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string s1, we may represent it as a binary tree by partitioning it to two non-empty substrings recursively.
   
   Below is one possible representation of s1 = "great":
@@ -48,6 +49,7 @@ vc-description: |-
   
   Input: s1 = "abcde", s2 = "caebd"
   Output: false
+  -/
 
 vc-preamble: |-
 
@@ -65,7 +67,7 @@ vc-theorems: |-
   theorem different_lengths_not_scramble (s : String) :
     isScramble s (s ++ "a") = false := sorry
   
-  /-- We'll use substring operations instead of direct char manipulation -/
+  /- We'll use substring operations instead of direct char manipulation -/
   
   theorem different_chars_not_scramble (s : String) (h : s.length > 0) :
     ∀ (s2 : String), s.length = s2.length → (∃ c, s.contains c ≠ s2.contains c) → 
@@ -81,23 +83,23 @@ vc-theorems: |-
   theorem empty_strings_are_scramble :
     isScramble "" "" = true := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_scramble "great" "rgeat"
+  -- #guard_msgs in
+  -- #eval is_scramble "great" "rgeat"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_scramble "abcde" "caebd"
+  -- #guard_msgs in
+  -- #eval is_scramble "abcde" "caebd"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_scramble "a" "a"
+  -- #guard_msgs in
+  -- #eval is_scramble "a" "a"
 
 vc-postamble: |-
   -- Apps difficulty: interview

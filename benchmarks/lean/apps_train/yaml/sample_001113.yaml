@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There is a city with $N$ numbered $0 - N-1$ shops. A market is a place where we can reach from one shop to another using some road. There are $M$ roads in this city connecting each connecting any two shops. 
   Find the number of markets in the city.
   NOTE:  A market having only one shop is also a valid market.
@@ -25,6 +26,7 @@ vc-description: |-
   
   -----Sample Output:-----
   2
+  -/
 
 vc-preamble: |-
 
@@ -55,23 +57,23 @@ vc-theorems: |-
   theorem cycle_one_market (n : Nat) (h : n ≥ 2) :
     count_markets n n (List.range n |>.map (λ i => (i, (i+1) % n))) = 1 := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_markets 5 3 [[0, 1], [2, 3], [3, 4]]
+  -- #guard_msgs in
+  -- #eval count_markets 5 3 [[0, 1], [2, 3], [3, 4]]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_markets 3 0 []
+  -- #guard_msgs in
+  -- #eval count_markets 3 0 []
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_markets 4 3 [[0, 1], [1, 2], [2, 3]]
+  -- #guard_msgs in
+  -- #eval count_markets 4 3 [[0, 1], [1, 2], [2, 3]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

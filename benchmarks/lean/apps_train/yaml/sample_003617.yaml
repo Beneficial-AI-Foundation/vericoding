@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Complete the `greatestProduct` method so that it'll find the greatest product of five consecutive digits in the given string of digits.
   
   For example:
@@ -6,6 +7,7 @@ vc-description: |-
   The input string always has more than five digits.
   
   Adapted from Project Euler.
+  -/
 
 vc-preamble: |-
 
@@ -25,23 +27,23 @@ vc-theorems: |-
       greatest_product with_zero = 0 ∨ ∃ d, d ∈ with_zero.data ∧ d.toNat > 0
     else True := sorry
   
-  /--
+  /-
   info: 3240
   -/
-  #guard_msgs in
-  #eval greatest_product "123834539327238239583"
+  -- #guard_msgs in
+  -- #eval greatest_product "123834539327238239583"
   
-  /--
+  /-
   info: 3240
   -/
-  #guard_msgs in
-  #eval greatest_product "395831238345393272382"
+  -- #guard_msgs in
+  -- #eval greatest_product "395831238345393272382"
   
-  /--
+  /-
   info: 5292
   -/
-  #guard_msgs in
-  #eval greatest_product "92494737828244222221111111532909999"
+  -- #guard_msgs in
+  -- #eval greatest_product "92494737828244222221111111532909999"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

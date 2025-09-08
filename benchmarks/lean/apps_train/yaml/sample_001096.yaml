@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Shivam is working on electric circuits. He requires some connecting wires. He needs to make a total of N connections and he has mentioned his wire length requirements for each connection in an integer sequence A. For buying wires, he need to decide the length of each wire piece, and he’ll get as many wire pieces of the chosen length each at unit cost (cost 1 per piece) but he can't get wires of different lengths. Also, he can't cut wire pieces to make new pieces of different (smaller) length(s).
   But he can connect any number of wires together to form a new single wire piece whose length is the sum of lengths of the wires connected. So, Shivam needs to choose an integer length for buying wires. Shivam hates to waste anything, and he hates it even more if that thing is money.
   Shivam is weak in mathematics and is asking you to help him in this situation. Help him decide the length of wires and total number of wires so as to minimize the total expenditure.
@@ -19,6 +20,7 @@ vc-description: |-
   2 4 8
   Sample Output:
   2 7
+  -/
 
 vc-preamble: |-
   def List.sum (xs : List Nat) : Nat :=

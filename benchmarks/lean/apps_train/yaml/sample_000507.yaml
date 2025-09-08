@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Finally, the pandemic is over in ChefLand, and the chef is visiting the school again. Chef likes to climb the stairs of his school's floor by skipping one step, sometimes chef climbs the stairs one by one. Simply, the chef can take one or 2 steps in one upward movement. There are N stairs between ground and next floor. The chef is on the ground floor and he wants to go to the next floor with Cheffina but, Cheffina asks chef in how many ways, the chef can reach the next floor normally or any combination of skipping one step, where order doesn't matter. 
   
   -----Input:-----
@@ -23,6 +24,7 @@ vc-description: |-
   ways: [1,1,1], here chef climb to the next floor, one by one stair.
   [1,2], here chef climb to the next floor, one step first and after that 2 stairs at once.
   Note, [2,1] consider the same as that of [1,2] hence ignored.
+  -/
 
 vc-preamble: |-
 
@@ -59,23 +61,23 @@ vc-theorems: |-
     count_ways_to_climb n = (n-1)/2 + 1 :=
   sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_ways_to_climb 3
+  -- #guard_msgs in
+  -- #eval count_ways_to_climb 3
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_ways_to_climb 4
+  -- #guard_msgs in
+  -- #eval count_ways_to_climb 4
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_ways_to_climb 5
+  -- #guard_msgs in
+  -- #eval count_ways_to_climb 5
 
 vc-postamble: |-
   -- Apps difficulty: interview

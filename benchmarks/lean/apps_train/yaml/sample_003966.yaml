@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The goal of this Kata is to return the greatest distance of index positions between matching number values in an array or 0 if there are no matching values.  
   
   Example:
@@ -10,6 +11,7 @@ vc-description: |-
   ```
   
   This is based on a Kata I had completed only to realize I has misread the instructions.  I enjoyed solving the problem I thought it was asking me to complete so I thought I'd add a new Kata for others to enjoy.  There are no tricks in this one, good luck!
+  -/
 
 vc-preamble: |-
 
@@ -41,23 +43,23 @@ vc-theorems: |-
     greatest_distance [x, x, x] = 2 :=
   sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval greatest_distance [9, 7, 1, 2, 3, 7, 0, -1, -2]
+  -- #guard_msgs in
+  -- #eval greatest_distance [9, 7, 1, 2, 3, 7, 0, -1, -2]
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval greatest_distance [0, 7, 0, 2, 3, 7, 0, -1, -2]
+  -- #guard_msgs in
+  -- #eval greatest_distance [0, 7, 0, 2, 3, 7, 0, -1, -2]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval greatest_distance [1, 2, 3, 4]
+  -- #guard_msgs in
+  -- #eval greatest_distance [1, 2, 3, 4]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

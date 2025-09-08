@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The thief has found himself a new place for his thievery again. There is only one entrance to this area, called the "root." Besides the root, each house has one and only one parent house. After a tour, the smart thief realized that "all houses in this place forms a binary tree". It will automatically contact the police if two directly-linked houses were broken into on the same night.
   
   Determine the maximum amount of money the thief can rob tonight without alerting the police.
@@ -24,6 +25,7 @@ vc-description: |-
   Maximum amount of money the thief can rob = 4 + 5 = 9.
   
   Credits:Special thanks to @dietpepsi for adding this problem and creating all test cases.
+  -/
 
 vc-preamble: |-
 
@@ -56,17 +58,17 @@ vc-theorems: |-
   theorem rob_house_with_children (v : Nat) (l r : TreeNode) :
     rob_house (TreeNode.node v l r) ≥ v := by sorry
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval rob_house TreeNode(3)
+  -- #guard_msgs in
+  -- #eval rob_house TreeNode(3)
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval rob_house TreeNode(3)
+  -- #guard_msgs in
+  -- #eval rob_house TreeNode(3)
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You've arrived at a carnival and head straight for the duck shooting tent. Why wouldn't you?
   
   You will be given a set amount of ammo, and an aim rating of between 1 and 0. No your aim is not always perfect - hey maybe someone fiddled with the sights on the gun...
@@ -14,6 +15,7 @@ vc-description: |-
   End  --->  |~~~~~XX~2~~~~~|
   
   All inputs will be correct type and never empty.
+  -/
 
 vc-preamble: |-
 
@@ -46,23 +48,23 @@ vc-theorems: |-
     ducks.data.countP (· = '2') - (duck_shoot ammo aim ducks).data.countP (· = '2') = 
     (duck_shoot ammo aim ducks).data.countP (· = 'X') := sorry
   
-  /--
+  /-
   info: '|~~~~~XX~2~~~~~|'
   -/
-  #guard_msgs in
-  #eval duck_shoot 6 0.41 "|~~~~~22~2~~~~~|"
+  -- #guard_msgs in
+  -- #eval duck_shoot 6 0.41 "|~~~~~22~2~~~~~|"
   
-  /--
+  /-
   info: '|~~X~~~X2~2~~22~2~~~~2~~~|'
   -/
-  #guard_msgs in
-  #eval duck_shoot 4 0.64 "|~~2~~~22~2~~22~2~~~~2~~~|"
+  -- #guard_msgs in
+  -- #eval duck_shoot 4 0.64 "|~~2~~~22~2~~22~2~~~~2~~~|"
   
-  /--
+  /-
   info: '|~~~~~~~X~2~~~|'
   -/
-  #guard_msgs in
-  #eval duck_shoot 9 0.22 "|~~~~~~~2~2~~~|"
+  -- #guard_msgs in
+  -- #eval duck_shoot 9 0.22 "|~~~~~~~2~2~~~|"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

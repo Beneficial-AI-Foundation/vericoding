@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The squarefree part of a positive integer is the largest divisor of that integer which itself has no square factors (other than 1). For example, the squareefree part of 12 is 6, since the only larger divisor is 12, and 12 has a square factor (namely, 4).
   
   Your challenge, should you choose to accept it, is to implement a `squareFreePart` function which accepts a number `n` and returns the squarefree part of `n`. 
@@ -16,6 +17,7 @@ vc-description: |-
   ```
   
   Good luck!
+  -/
 
 vc-preamble: |-
 
@@ -49,29 +51,29 @@ vc-theorems: |-
     | none => True
     := by sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval square_free_part 24
+  -- #guard_msgs in
+  -- #eval square_free_part 24
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval square_free_part 1
+  -- #guard_msgs in
+  -- #eval square_free_part 1
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval square_free_part 4
+  -- #guard_msgs in
+  -- #eval square_free_part 4
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval square_free_part 100
+  -- #guard_msgs in
+  -- #eval square_free_part 100
 
 vc-postamble: |-
   -- Apps difficulty: introductory

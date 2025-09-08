@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a certain array of integers, create a function that may give the minimum number that may be divisible for all the numbers of the array.
   
   ```python
@@ -35,6 +36,7 @@ vc-description: |-
   ```
   
   Enjoy it
+  -/
 
 vc-preamble: |-
   def min_special_mult (numbers : List Int) : Int ⊕ String := sorry
@@ -43,7 +45,7 @@ vc-preamble: |-
     (h : ∀ n ∈ numbers, n > 0)
     : ∃ result, (min_special_mult numbers = Sum.inl result ∧ result > 0) := sorry
   
-  /-- Helper function to convert strings to a list containing each character -/
+  /- Helper function to convert strings to a list containing each character -/
   
   def stringToList (s : String) : List Char := s.data
   
@@ -75,23 +77,23 @@ vc-theorems: |-
     : ∃ result, min_special_mult numbers = Sum.inl result
         ∧ ∀ n ∈ numbers, result % n = 0 := sorry
   
-  /--
+  /-
   info: 420
   -/
-  #guard_msgs in
-  #eval min_special_mult [2, 3, 4, 5, 6, 7]
+  -- #guard_msgs in
+  -- #eval min_special_mult [2, 3, 4, 5, 6, 7]
   
-  /--
+  /-
   info: "There are 2 invalid entries: ['a', '&']"
   -/
-  #guard_msgs in
-  #eval min_special_mult [16, 15, 23, "a", "&", "12"]
+  -- #guard_msgs in
+  -- #eval min_special_mult [16, 15, 23, "a", "&", "12"]
   
-  /--
+  /-
   info: 5520
   -/
-  #guard_msgs in
-  #eval min_special_mult [16, 15, 23, "-012"]
+  -- #guard_msgs in
+  -- #eval min_special_mult [16, 15, 23, "-012"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

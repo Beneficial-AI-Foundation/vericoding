@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You're in the casino, playing Roulette, going for the "1-18" bets only and desperate to beat the house and so you want to test how effective the [Martingale strategy](https://en.wikipedia.org/wiki/Martingale_(betting_system)) is. 
   
   You will be given a starting cash balance and an array of binary digits to represent a win (`1`) or a loss (`0`). Return your balance after playing all rounds.
@@ -19,6 +20,7 @@ vc-description: |-
   * double stake for 5th round and win: staked $400, won $400, balance = 1300
   
   **Note: Your balance is allowed to go below 0.**
+  -/
 
 vc-preamble: |-
 
@@ -53,23 +55,23 @@ vc-theorems: |-
     martingale 0 losses = -(List.range n).foldl (fun acc i => acc + 100 * (Float.pow 2 i.toFloat)) 0 := by
     sorry
   
-  /--
+  /-
   info: 1300
   -/
-  #guard_msgs in
-  #eval martingale 1000 [1, 1, 0, 0, 1]
+  -- #guard_msgs in
+  -- #eval martingale 1000 [1, 1, 0, 0, 1]
   
-  /--
+  /-
   info: 800
   -/
-  #guard_msgs in
-  #eval martingale 500 [1, 1, 1]
+  -- #guard_msgs in
+  -- #eval martingale 500 [1, 1, 1]
   
-  /--
+  /-
   info: -600
   -/
-  #guard_msgs in
-  #eval martingale 100 [0, 0, 0]
+  -- #guard_msgs in
+  -- #eval martingale 100 [0, 0, 0]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

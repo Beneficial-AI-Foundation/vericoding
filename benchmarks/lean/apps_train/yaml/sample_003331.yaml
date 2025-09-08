@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Two red beads are placed between every two blue beads. There are N blue beads. After looking at the arrangement below work out the number of red beads.
   
   @
@@ -15,6 +16,7 @@ vc-description: |-
   
   Implement count_red_beads(n) (in PHP count_red_beads($n); in Java, Javascript, TypeScript, C, C++ countRedBeads(n)) so that it returns the number of red beads.
   If there are less than 2 blue beads return 0.
+  -/
 
 vc-preamble: |-
 
@@ -38,23 +40,23 @@ vc-theorems: |-
   theorem count_red_beads_formula (n : Nat) (h : n ≥ 2) :
     count_red_beads n = 2 * (n - 1) := sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_red_beads 0
+  -- #guard_msgs in
+  -- #eval count_red_beads 0
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_red_beads 1
+  -- #guard_msgs in
+  -- #eval count_red_beads 1
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval count_red_beads 3
+  -- #guard_msgs in
+  -- #eval count_red_beads 3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We want to find the numbers higher or equal than 1000 that the sum of every four consecutives digits cannot be higher than a certain given value.
   If the number is ``` num = d1d2d3d4d5d6 ```, and the maximum sum of 4 contiguous digits is ```maxSum```, then:
   ```python
@@ -39,6 +40,7 @@ vc-description: |-
   ```
   
   Happy coding!!
+  -/
 
 vc-preamble: |-
   def digitsList (n : Nat) : List Nat := sorry
@@ -71,23 +73,23 @@ vc-theorems: |-
     check closest maxSum = true ∧
     sum ≥ 0 := sorry
   
-  /--
+  /-
   info: [11, 1110, 12555]
   -/
-  #guard_msgs in
-  #eval max_sumDig 2000 3
+  -- #guard_msgs in
+  -- #eval max_sumDig 2000 3
   
-  /--
+  /-
   info: [21, 1120, 23665]
   -/
-  #guard_msgs in
-  #eval max_sumDig 2000 4
+  -- #guard_msgs in
+  -- #eval max_sumDig 2000 4
   
-  /--
+  /-
   info: [85, 1200, 99986]
   -/
-  #guard_msgs in
-  #eval max_sumDig 2000 7
+  -- #guard_msgs in
+  -- #eval max_sumDig 2000 7
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We've got a message from the **Librarian**. As usual there're many `o` and `k` in it and, as all codewarriors don't know "Ook" language we need that you translate this message.
   
   **tip** : it seems traditional "Hello World!" would look like :
@@ -12,6 +13,7 @@ vc-description: |-
   okkOokOo('Ok, Ook, Ooo?  Okk, Ook, Ok?  Okk, Okk, Oo?  Okk, Okk, Oo?  Okk, Okkkk!')  # -> 'Hello'
   okkOokOo('Ok, Ok, Okkk?  Okk, Okkkk?  Okkk, Ook, O?  Okk, Okk, Oo?  Okk, Ook, Oo?  Ook, Ooook!')  # -> 'World!'
   ```
+  -/
 
 vc-preamble: |-
 
@@ -23,49 +25,49 @@ vc-definitions: |-
   def okkOokOo (s : String) : String :=
     sorry
   
-  /-- The function correctly encodes basic ASCII characters -/
+  /- The function correctly encodes basic ASCII characters -/
 
 vc-theorems: |-
   theorem basic_ascii_encoding (input : String) :
     okkOokOo "Ok, Ook, Ooo!" = "H" :=
   sorry
   
-  /-- The function handles multiple characters correctly -/
+  /- The function handles multiple characters correctly -/
   
   theorem multiple_char_encoding :
     okkOokOo "Ok, Ook, Ooo?Okk, Ook, Ok" = "He" :=
   sorry
   
-  /-- The length of output matches the number of separators plus one -/
+  /- The length of output matches the number of separators plus one -/
   
   theorem length_matches_separators :
     String.length (okkOokOo "Ok, Ook, Ooo?Okk, Ook, Ok") = 2 :=
   sorry
   
-  /-- The output only contains printable ASCII characters -/
+  /- The output only contains printable ASCII characters -/
   
   theorem output_is_printable_ascii (s : String) (c : Char) :
     c ∈ (okkOokOo s).data →
     32 ≤ c.toNat ∧ c.toNat ≤ 126 :=
   sorry
   
-  /--
+  /-
   info: 'H'
   -/
-  #guard_msgs in
-  #eval okkOokOo "Ok, Ook, Ooo!"
+  -- #guard_msgs in
+  -- #eval okkOokOo "Ok, Ook, Ooo!"
   
-  /--
+  /-
   info: 'Hello'
   -/
-  #guard_msgs in
-  #eval okkOokOo "Ok, Ook, Ooo?  Okk, Ook, Ok?  Okk, Okk, Oo?  Okk, Okk, Oo?  Okk, Okkkk!"
+  -- #guard_msgs in
+  -- #eval okkOokOo "Ok, Ook, Ooo?  Okk, Ook, Ok?  Okk, Okk, Oo?  Okk, Okk, Oo?  Okk, Okkkk!"
   
-  /--
+  /-
   info: 'World!'
   -/
-  #guard_msgs in
-  #eval okkOokOo "Ok, Ok, Okkk?  Okk, Okkkk?  Okkk, Ook, O?  Okk, Okk, Oo?  Okk, Ook, Oo?  Ook, Ooook!"
+  -- #guard_msgs in
+  -- #eval okkOokOo "Ok, Ok, Okkk?  Okk, Okkkk?  Okkk, Ook, O?  Okk, Okk, Oo?  Okk, Ook, Oo?  Ook, Ooook!"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

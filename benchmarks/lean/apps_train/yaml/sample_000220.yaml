@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string S and a string T, count the number of distinct subsequences of S which equals T.
   
   A subsequence of a string is a new string which is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (ie, "ACE" is a subsequence of "ABCDE" while "AEC" is not).
@@ -38,6 +39,7 @@ vc-description: |-
     ^  ^^
   babgbag
       ^^^
+  -/
 
 vc-preamble: |-
 
@@ -80,23 +82,23 @@ vc-theorems: |-
     count_distinct_subsequences t t = 1 :=
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_distinct_subsequences "rabbbit" "rabbit"
+  -- #guard_msgs in
+  -- #eval count_distinct_subsequences "rabbbit" "rabbit"
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval count_distinct_subsequences "babgbag" "bag"
+  -- #guard_msgs in
+  -- #eval count_distinct_subsequences "babgbag" "bag"
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_distinct_subsequences "abc" "abc"
+  -- #guard_msgs in
+  -- #eval count_distinct_subsequences "abc" "abc"
 
 vc-postamble: |-
   -- Apps difficulty: interview

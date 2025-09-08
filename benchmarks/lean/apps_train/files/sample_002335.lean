@@ -1,0 +1,75 @@
+/-
+Given an array of unique integers salary where salary[i] is the salary of the employee i.
+Return the average salary of employees excluding the minimum and maximum salary.
+
+Example 1:
+Input: salary = [4000,3000,1000,2000]
+Output: 2500.00000
+Explanation: Minimum salary and maximum salary are 1000 and 4000 respectively.
+Average salary excluding minimum and maximum salary is (2000+3000)/2= 2500
+
+Example 2:
+Input: salary = [1000,2000,3000]
+Output: 2000.00000
+Explanation: Minimum salary and maximum salary are 1000 and 3000 respectively.
+Average salary excluding minimum and maximum salary is (2000)/1= 2000
+
+Example 3:
+Input: salary = [6000,5000,4000,3000,2000,1000]
+Output: 3500.00000
+
+Example 4:
+Input: salary = [8000,9000,2000,3000,6000,1000]
+Output: 4750.00000
+
+Constraints:
+
+3 <= salary.length <= 100
+10^3 <= salary[i] <= 10^6
+salary[i] is unique.
+Answers within 10^-5 of the actual value will be accepted as correct.
+-/
+
+def calculate_average_salary (salaries : List Nat) : Float := sorry
+
+def isUnique (l : List Nat) : Bool := sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def list_to_float (n : Nat) : Float := sorry
+
+def insertSort (l : List Nat) : List Nat := sorry
+
+theorem average_salary_between_min_max 
+  (salaries : List Nat)
+  (h1 : salaries.length ≥ 3)
+  (h2 : isUnique salaries) : 
+  match salaries.minimum?, salaries.maximum? with
+  | some min, some max => 
+      let result := calculate_average_salary salaries
+      list_to_float min ≤ result ∧ result ≤ list_to_float max
+  | _, _ => True
+  := sorry
+
+theorem average_salary_matches_expected
+  (salaries : List Nat)
+  (h1 : salaries.length ≥ 3)
+  (h2 : isUnique salaries) :
+  let sorted := insertSort salaries
+  let expected := list_to_float (sorted.get? 1).get! + 
+                  list_to_float (sorted.get? (sorted.length - 2)).get! / 2
+  Float.abs (calculate_average_salary salaries - expected) < 1e-10 :=
+sorry
+
+theorem average_salary_order_invariant
+  (salaries shuffled : List Nat)
+  (h1 : salaries.length ≥ 3)
+  (h2 : isUnique salaries)
+  (h3 : shuffled.length = salaries.length)
+  (h4 : ∀ x, x ∈ salaries ↔ x ∈ shuffled) :
+  Float.abs (calculate_average_salary salaries - calculate_average_salary shuffled) < 1e-10 :=
+sorry
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded

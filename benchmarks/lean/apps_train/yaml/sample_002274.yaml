@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There is a rectangular grid of size $n \times m$. Each cell of the grid is colored black ('0') or white ('1'). The color of the cell $(i, j)$ is $c_{i, j}$. You are also given a map of directions: for each cell, there is a direction $s_{i, j}$ which is one of the four characters 'U', 'R', 'D' and 'L'.
   
     If $s_{i, j}$ is 'U' then there is a transition from the cell $(i, j)$ to the cell $(i - 1, j)$;  if $s_{i, j}$ is 'R' then there is a transition from the cell $(i, j)$ to the cell $(i, j + 1)$;  if $s_{i, j}$ is 'D' then there is a transition from the cell $(i, j)$ to the cell $(i + 1, j)$;  if $s_{i, j}$ is 'L' then there is a transition from the cell $(i, j)$ to the cell $(i, j - 1)$. 
@@ -56,6 +57,7 @@ vc-description: |-
   2 1
   4 3
   2 2
+  -/
 
 vc-preamble: |-
   def List.sum (xs : List Nat) : Nat :=
@@ -80,23 +82,23 @@ vc-definitions: |-
     black_cells ≤ (List.map (λ row => List.length (List.filter (λ x => x = '0') (String.toList row))) colors).sum := sorry
 
 vc-theorems: |-
-  /--
+  /-
   info: (2, 1)
   -/
-  #guard_msgs in
-  #eval find_max_robots_and_black_cells 1 2 ["01"] ["RL"]
+  -- #guard_msgs in
+  -- #eval find_max_robots_and_black_cells 1 2 ["01"] ["RL"]
   
-  /--
+  /-
   info: (4, 3)
   -/
-  #guard_msgs in
-  #eval find_max_robots_and_black_cells 3 3 ["001", "101", "110"] ["RLL", "DLD", "ULL"]
+  -- #guard_msgs in
+  -- #eval find_max_robots_and_black_cells 3 3 ["001", "101", "110"] ["RLL", "DLD", "ULL"]
   
-  /--
+  /-
   info: (2, 2)
   -/
-  #guard_msgs in
-  #eval find_max_robots_and_black_cells 3 3 ["000", "000", "000"] ["RRD", "RLD", "ULL"]
+  -- #guard_msgs in
+  -- #eval find_max_robots_and_black_cells 3 3 ["000", "000", "000"] ["RRD", "RLD", "ULL"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

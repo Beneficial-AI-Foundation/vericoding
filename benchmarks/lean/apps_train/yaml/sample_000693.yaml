@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef got into a fight with the evil Dr Doof. Dr Doof has decided to destroy all even numbers from the universe using his Evil-Destroy-inator. Chef has $N$ integers with him. To stop Doof, Chef has to find an odd number which is an integer multiple of all $N$ numbers that he has with him. Find if it is possible for Chef to prevent Dr Doof from destroying the even numbers.
   Formally, given $N$ positive integers, find if there exists an odd number which is an integer multiple of all the given $N$ numbers. If yes, print "YES", otherwise "NO". You can print any letter in any case.
   
@@ -29,6 +30,7 @@ vc-description: |-
   -----Explanation-----
   For test $1$: There exists no odd number.
   For test $2$: The possible odd numbers can be $7$, $21$, $49$, $315$, …
+  -/
 
 vc-preamble: |-
   def can_find_odd_multiple (n : Nat) (arr : List Int) : Bool :=

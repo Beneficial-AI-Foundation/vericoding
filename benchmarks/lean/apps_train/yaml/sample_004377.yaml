@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ---
   
   # Story
@@ -30,6 +31,7 @@ vc-description: |-
   # Series
   
   * [The deaf rats of Hamelin (2D)](https://www.codewars.com/kata/the-deaf-rats-of-hamelin-2d)
+  -/
 
 vc-preamble: |-
 
@@ -63,23 +65,23 @@ vc-theorems: |-
     countDeafRats "P" = 0 :=
     sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_deaf_rats "~O~O~O~O P"
+  -- #guard_msgs in
+  -- #eval count_deaf_rats "~O~O~O~O P"
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_deaf_rats "P O~ O~ ~O O~"
+  -- #guard_msgs in
+  -- #eval count_deaf_rats "P O~ O~ ~O O~"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_deaf_rats "~O~O~O~OP~O~OO~"
+  -- #guard_msgs in
+  -- #eval count_deaf_rats "~O~O~O~OP~O~OO~"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

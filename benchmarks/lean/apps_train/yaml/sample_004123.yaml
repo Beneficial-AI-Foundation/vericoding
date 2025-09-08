@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Just another day in the world of Minecraft, Steve is getting ready to start his next exciting project -- building a railway system!
   
   ![Alt text](http://static.planetminecraft.com/files/resource_media/screenshot/1506/2015-02-02_0156508603066.jpg)
@@ -36,6 +37,7 @@ vc-description: |-
   * [Minecraft Series #1: Steve wants to build a beacon pyramid](https://www.codewars.com/kata/minecraft-series-number-1-steve-wants-to-build-a-beacon-pyramid/ruby)
   * [Minecraft Series #3: Lava is amazing! ](https://www.codewars.com/kata/583a23d40cf946ec380002c2)
   * [Minecraft Series #4: Lava is amazing, however...](https://www.codewars.com/kata/583a6b0b171f3a3c3f0003e3)
+  -/
 
 vc-preamble: |-
 
@@ -67,23 +69,23 @@ vc-theorems: |-
     let result := calcFuel n
     result.stick < 15 := sorry
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval calc_fuel 37
+  -- #guard_msgs in
+  -- #eval calc_fuel 37
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval calc_fuel 21
+  -- #guard_msgs in
+  -- #eval calc_fuel 21
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval calc_fuel 123
+  -- #guard_msgs in
+  -- #eval calc_fuel 123
 
 vc-postamble: |-
   -- Apps difficulty: introductory

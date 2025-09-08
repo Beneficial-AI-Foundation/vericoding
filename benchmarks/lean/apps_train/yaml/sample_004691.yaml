@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Linked Lists - Length & Count
   
   Implement Length() to count the number of nodes in a linked list.
@@ -7,6 +8,7 @@ vc-description: |-
   I've decided to bundle these two functions within the same Kata since they are both very similar.
   
   The `push()`/`Push()` and `buildOneTwoThree()`/`BuildOneTwoThree()` functions do not need to be redefined.
+  -/
 
 vc-preamble: |-
   def length {α : Type} : Node α → Nat
@@ -41,59 +43,59 @@ vc-theorems: |-
     count node val ≤ length node :=
   sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval length None
+  -- #guard_msgs in
+  -- #eval length None
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count None 1
+  -- #guard_msgs in
+  -- #eval count None 1
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval length Node(1)
+  -- #guard_msgs in
+  -- #eval length Node(1)
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count node 1
+  -- #guard_msgs in
+  -- #eval count node 1
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count node 2
+  -- #guard_msgs in
+  -- #eval count node 2
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval length test_list_one_two_three()
+  -- #guard_msgs in
+  -- #eval length test_list_one_two_three()
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count list123 1
+  -- #guard_msgs in
+  -- #eval count list123 1
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count list123 2
+  -- #guard_msgs in
+  -- #eval count list123 2
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count list123 4
+  -- #guard_msgs in
+  -- #eval count list123 4
 
 vc-postamble: |-
   -- Apps difficulty: introductory

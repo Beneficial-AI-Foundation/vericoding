@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In India, every individual is charged with income tax on the total income each year. This tax is applied to specific ranges of income, which are called income tax slabs. The slabs of income tax keep changing from year to year. This fiscal year (2020-21), the tax slabs and their respective tax rates are as follows:Total income (in rupees)Tax rateup to Rs. 250,0000%from Rs. 250,001 to Rs. 500,0005%from Rs. 500,001 to Rs. 750,00010%from Rs. 750,001 to Rs. 1,000,00015%from Rs. 1,000,001 to Rs. 1,250,00020%from Rs. 1,250,001 to Rs. 1,500,00025%above Rs. 1,500,00030%
   See the sample explanation for details on how the income tax is calculated.
   You are given Chef's total income: $N$ rupees (Rs.). Find his net income. The net income is calculated by subtracting the total tax (also called tax reduction) from the total income. Note that you do not need to worry about any other kind of tax reductions, only the one described above.
@@ -31,6 +32,7 @@ vc-description: |-
   - From above Rs. $5$ lakh to Rs. $6$ lakh, the tax rate is $10$ percent. Therefore, this tax is $0.10 \cdot (600,000-500,000)$, which is Rs. $10,000$.
   - Summing them up, we get that the total tax on Chef's whole income is Rs. $22,500$. Since the net income is the total income minus the tax reduction, it is Rs. $600,000$ minus Rs. $22,500$, which is Rs. $577,500$.
   Example case 2: For income up to Rs. $2.5$ lakh, we have no tax, so the net income is the same as the total income: Rs. $2.5$ lakh.
+  -/
 
 vc-preamble: |-
 
@@ -71,23 +73,23 @@ vc-theorems: |-
       calculate_net_income income ≥ income - (income - 1500000) * 3 / 10 - 200000 - 1) :=
   sorry
   
-  /--
+  /-
   info: 577500
   -/
-  #guard_msgs in
-  #eval calculate_net_income 600000
+  -- #guard_msgs in
+  -- #eval calculate_net_income 600000
   
-  /--
+  /-
   info: 250000
   -/
-  #guard_msgs in
-  #eval calculate_net_income 250000
+  -- #guard_msgs in
+  -- #eval calculate_net_income 250000
   
-  /--
+  /-
   info: 925000
   -/
-  #guard_msgs in
-  #eval calculate_net_income 1000000
+  -- #guard_msgs in
+  -- #eval calculate_net_income 1000000
 
 vc-postamble: |-
   -- Apps difficulty: interview

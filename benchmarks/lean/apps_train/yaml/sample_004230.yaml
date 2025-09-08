@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Welcome.
   
   In this kata you are required to, given a string, replace every letter with its position in the alphabet.
@@ -13,6 +14,7 @@ vc-description: |-
   alphabet_position("The sunset sets at twelve o' clock.")
   ```
   Should return `"20 8 5 19 21 14 19 5 20 19 5 20 19 1 20 20 23 5 12 22 5 15 3 12 15 3 11"` (as a string)
+  -/
 
 vc-preamble: |-
 
@@ -41,23 +43,23 @@ vc-theorems: |-
     (h₂ : s.data.all Char.isAlpha) : 
     ((alphabetPosition s).split (· = ' ')).length = s.length := sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval alphabet_position "The sunset sets at twelve o" clock."
+  -- #guard_msgs in
+  -- #eval alphabet_position "The sunset sets at twelve o" clock."
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval alphabet_position "-.-""
+  -- #guard_msgs in
+  -- #eval alphabet_position "-.-""
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval alphabet_position "aBc"
+  -- #guard_msgs in
+  -- #eval alphabet_position "aBc"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You should have done Product Partitions I to do this second part.
   If you solved it, you should have notice that we try to obtain the multiplicative partitions with ```n ≤ 100 ```.
   
@@ -41,6 +42,7 @@ vc-description: |-
   Happy coding!!
   
   (Recursion is advisable)
+  -/
 
 vc-preamble: |-
 

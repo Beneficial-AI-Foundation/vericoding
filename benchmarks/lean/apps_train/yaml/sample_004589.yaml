@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   This kata is the first of a sequence of four about "Squared Strings".
   
   You are given a string of `n` lines, each substring being `n` characters long: For example:
@@ -52,6 +53,7 @@ vc-description: |-
   The input strings are separated by `,` instead of `\n`. The output strings should be separated by `\r` instead of `\n`. See "Sample Tests".
   
   Forthcoming katas will study other transformations.
+  -/
 
 vc-preamble: |-
   def split (s : String) (c : Char) : List String :=
@@ -100,29 +102,29 @@ vc-definitions: |-
     oper hor_mirror (oper hor_mirror s) = s
 
 vc-theorems: |-
-  /--
+  /-
   info: 'dcba\nhgfe\nlkji\nponm'
   -/
-  #guard_msgs in
-  #eval oper vert_mirror "abcd\nefgh\nijkl\nmnop"
+  -- #guard_msgs in
+  -- #eval oper vert_mirror "abcd\nefgh\nijkl\nmnop"
   
-  /--
+  /-
   info: 'mnop\nijkl\nefgh\nabcd'
   -/
-  #guard_msgs in
-  #eval oper hor_mirror s1
+  -- #guard_msgs in
+  -- #eval oper hor_mirror s1
   
-  /--
+  /-
   info: 'ba\ndc'
   -/
-  #guard_msgs in
-  #eval oper vert_mirror "ab\ncd"
+  -- #guard_msgs in
+  -- #eval oper vert_mirror "ab\ncd"
   
-  /--
+  /-
   info: 'cd\nab'
   -/
-  #guard_msgs in
-  #eval oper hor_mirror s2
+  -- #guard_msgs in
+  -- #eval oper hor_mirror s2
 
 vc-postamble: |-
   -- Apps difficulty: introductory

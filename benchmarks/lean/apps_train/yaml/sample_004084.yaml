@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Implement a function called makeAcronym that returns the first letters of each word in a passed in string.
   
   Make sure the letters returned are uppercase.
@@ -21,6 +22,7 @@ vc-description: |-
   
   {name: 'Abraham'} -> 'Not a string'
   ```
+  -/
 
 vc-preamble: |-
 
@@ -45,29 +47,29 @@ vc-theorems: |-
     make_acronym (" ".intercalate words) = 
       String.mk (words.map (λ w => w.data.head!.toUpper)) := sorry
   
-  /--
+  /-
   info: 'MAS'
   -/
-  #guard_msgs in
-  #eval make_acronym "My aunt sally"
+  -- #guard_msgs in
+  -- #eval make_acronym "My aunt sally"
   
-  /--
+  /-
   info: 'Not a string'
   -/
-  #guard_msgs in
-  #eval make_acronym [1, 2, 3]
+  -- #guard_msgs in
+  -- #eval make_acronym [1, 2, 3]
   
-  /--
+  /-
   info: 'Not letters'
   -/
-  #guard_msgs in
-  #eval make_acronym "a42"
+  -- #guard_msgs in
+  -- #eval make_acronym "a42"
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval make_acronym ""
+  -- #guard_msgs in
+  -- #eval make_acronym ""
 
 vc-postamble: |-
   -- Apps difficulty: introductory

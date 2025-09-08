@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The "Russian Peasant Method" is an old algorithm used by Russian peasants (and before them ancient Egyptians) to perform multiplication.  Consider that X and Y are two numbers.  X can be any number but Y must be a positive integer. To multiply X and Y:
   
   1. Let the product = 0
@@ -20,6 +21,7 @@ vc-description: |-
   product = 10 + 40 = 50
   
   Note: usage of multiplication is of course forbidden...
+  -/
 
 vc-preamble: |-
 
@@ -47,17 +49,17 @@ vc-theorems: |-
   theorem russian_peasant_small_nums_2 :
     russian_peasant_multiplication 5 4 = 20 := sorry
   
-  /--
+  /-
   info: 50
   -/
-  #guard_msgs in
-  #eval russian_peasant_multiplication 10 5
+  -- #guard_msgs in
+  -- #eval russian_peasant_multiplication 10 5
   
-  /--
+  /-
   info: 3150
   -/
-  #guard_msgs in
-  #eval russian_peasant_multiplication 175 18
+  -- #guard_msgs in
+  -- #eval russian_peasant_multiplication 175 18
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a non-empty array containing only positive integers, find if the array can be partitioned into two subsets such that the sum of elements in both subsets is equal.
   
   Note:
@@ -21,6 +22,7 @@ vc-description: |-
   Output: false
   
   Explanation: The array cannot be partitioned into equal sum subsets.
+  -/
 
 vc-preamble: |-
 
@@ -57,23 +59,23 @@ vc-theorems: |-
     canPartition [n, n] = true :=
   sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval can_partition [1, 5, 5, 11]
+  -- #guard_msgs in
+  -- #eval can_partition [1, 5, 5, 11]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval can_partition [1, 2, 3, 5]
+  -- #guard_msgs in
+  -- #eval can_partition [1, 2, 3, 5]
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval can_partition [2, 2, 2, 2]
+  -- #guard_msgs in
+  -- #eval can_partition [2, 2, 2, 2]
 
 vc-postamble: |-
   -- Apps difficulty: interview

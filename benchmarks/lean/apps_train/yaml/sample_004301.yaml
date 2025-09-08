@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are going to be given a string. Your job is to return that string in a certain order that I will explain below:
   
   Let's say you start with this: `012345`
@@ -15,6 +16,7 @@ vc-description: |-
   
   #Output:
   A correctly reordered string.
+  -/
 
 vc-preamble: |-
 
@@ -43,23 +45,23 @@ vc-theorems: |-
   theorem first_char_movement (s : String) (h : s.length > 1) :
     (reverse_fun s).get 0 ≠ s.get 0 := sorry
   
-  /--
+  /-
   info: '201'
   -/
-  #guard_msgs in
-  #eval reverse_fun "012"
+  -- #guard_msgs in
+  -- #eval reverse_fun "012"
   
-  /--
+  /-
   info: '504132'
   -/
-  #guard_msgs in
-  #eval reverse_fun "012345"
+  -- #guard_msgs in
+  -- #eval reverse_fun "012345"
   
-  /--
+  /-
   info: 'oHlel'
   -/
-  #guard_msgs in
-  #eval reverse_fun "Hello"
+  -- #guard_msgs in
+  -- #eval reverse_fun "Hello"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

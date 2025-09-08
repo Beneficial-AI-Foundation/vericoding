@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A variation of determining leap years, assuming only integers are used and years can be negative and positive.
   
   Write a function which will return the days in the year and the year entered in a string.  For example 2000, entered as an integer, will return as a string 2000 has 366 days
@@ -13,6 +14,7 @@ vc-description: |-
   
   So the years 0, -64 and 2016 will return 366 days.
   Whilst 1974, -10 and 666 will return 365 days.
+  -/
 
 vc-preamble: |-
 
@@ -38,23 +40,23 @@ vc-theorems: |-
   theorem divisible_by_4_not_100_is_leap {year : Int} (h1 : year % 4 = 0) (h2 : year % 100 ≠ 0) :
     yearDays year = s!"{year} has 366 days" := sorry
   
-  /--
+  /-
   info: '2000 has 366 days'
   -/
-  #guard_msgs in
-  #eval year_days 2000
+  -- #guard_msgs in
+  -- #eval year_days 2000
   
-  /--
+  /-
   info: '1974 has 365 days'
   -/
-  #guard_msgs in
-  #eval year_days 1974
+  -- #guard_msgs in
+  -- #eval year_days 1974
   
-  /--
+  /-
   info: '-64 has 366 days'
   -/
-  #guard_msgs in
-  #eval year_days -64
+  -- #guard_msgs in
+  -- #eval year_days -64
 
 vc-postamble: |-
   -- Apps difficulty: introductory

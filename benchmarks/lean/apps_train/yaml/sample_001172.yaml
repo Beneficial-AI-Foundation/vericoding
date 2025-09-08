@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Everybody is worried about Rakesh as the boy does not have much knowledge about the real world. He can not go from one place to another on his own. It's high time he learned to explore the city. He is going to a relative's house situated on the other side of the city on his own. As this is his first time, he is carrying a GPS tracker of a special kind. The tracker continuously sends information to the family of Rakesh about his movement. The information is sent using the following four letters: U, D, R, and L. Those letters indicate the moves taken by Rakesh. 
   
   The city can be considered as a grid. Rakesh starts his journey from (0, 0) position of the grid. His relative's house is situated at (Rx, Ry). Rakesh can move in four directions: up, down, right, or left indicated by U, D, R, and L respectively. 
@@ -52,6 +53,7 @@ vc-description: |-
   Output:
   Case 1: REACHED
   Case 2: DANGER
+  -/
 
 vc-preamble: |-
   def track_rakesh (m n rx ry : Nat) (moves : String) : String := sorry
@@ -100,23 +102,23 @@ vc-theorems: |-
     moves ≠ "" →
     track_rakesh m n 0 0 (moves ++ stringReverse moves) = "REACHED" := sorry
   
-  /--
+  /-
   info: 'REACHED'
   -/
-  #guard_msgs in
-  #eval track_rakesh 20 20 4 5 "LLUUUUURRRRRR"
+  -- #guard_msgs in
+  -- #eval track_rakesh 20 20 4 5 "LLUUUUURRRRRR"
   
-  /--
+  /-
   info: 'DANGER'
   -/
-  #guard_msgs in
-  #eval track_rakesh 10 10 3 4 "UDUDDRR"
+  -- #guard_msgs in
+  -- #eval track_rakesh 10 10 3 4 "UDUDDRR"
   
-  /--
+  /-
   info: 'SOMEWHERE'
   -/
-  #guard_msgs in
-  #eval track_rakesh 5 5 2 2 "RRU"
+  -- #guard_msgs in
+  -- #eval track_rakesh 5 5 2 2 "RRU"
 
 vc-postamble: |-
   -- Apps difficulty: interview

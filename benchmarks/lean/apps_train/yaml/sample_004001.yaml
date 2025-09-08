@@ -1,5 +1,7 @@
 vc-description: |-
+  /-
   A triangle is called an equable triangle if its area equals its perimeter. Return `true`, if it is an equable triangle, else return `false`. You will be provided with the length of sides of the triangle. Happy Coding!
+  -/
 
 vc-preamble: |-
   def isValidTriangle (a b c : Float) : Prop :=
@@ -31,23 +33,23 @@ vc-theorems: |-
     equableTriangle a b c = isClose (calculateArea a b c) (a + b + c) 0.0001 := by
     sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval equable_triangle 5 12 13
+  -- #guard_msgs in
+  -- #eval equable_triangle 5 12 13
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval equable_triangle 2 3 4
+  -- #guard_msgs in
+  -- #eval equable_triangle 2 3 4
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval equable_triangle 6 25 29
+  -- #guard_msgs in
+  -- #eval equable_triangle 6 25 29
 
 vc-postamble: |-
   -- Apps difficulty: introductory

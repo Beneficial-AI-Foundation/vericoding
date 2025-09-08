@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ##Overview
   
   Write a helper function that takes in a Time object and converts it to a more human-readable format. You need only go up to '_ weeks ago'.
@@ -12,6 +13,7 @@ vc-description: |-
    - You will have to handle the singular cases. That is, when t = 1, the phrasing will be one of "a second ago", "a minute ago", "an hour ago", "a day ago", "a week ago".
    - The amount of time is always rounded down to the nearest integer. For example, if the amount of time is actually 11.73 hours ago, the return value will be "11 hours ago".
    - Only times in the past will be given, with the range "just now" to "52 weeks ago"
+  -/
 
 vc-preamble: |-
 
@@ -54,59 +56,59 @@ vc-theorems: |-
   theorem multiple_hours (seconds : Nat) (h1 : seconds ≥ 7200) (h2 : seconds ≤ 86399) :
     to_pretty seconds = s!"{seconds / 3600} hours ago" := sorry
   
-  /--
+  /-
   info: 'just now'
   -/
-  #guard_msgs in
-  #eval to_pretty 0
+  -- #guard_msgs in
+  -- #eval to_pretty 0
   
-  /--
+  /-
   info: 'a second ago'
   -/
-  #guard_msgs in
-  #eval to_pretty 1
+  -- #guard_msgs in
+  -- #eval to_pretty 1
   
-  /--
+  /-
   info: 'an hour ago'
   -/
-  #guard_msgs in
-  #eval to_pretty 4000
+  -- #guard_msgs in
+  -- #eval to_pretty 4000
   
-  /--
+  /-
   info: 'a day ago'
   -/
-  #guard_msgs in
-  #eval to_pretty 140000
+  -- #guard_msgs in
+  -- #eval to_pretty 140000
   
-  /--
+  /-
   info: '30 seconds ago'
   -/
-  #guard_msgs in
-  #eval to_pretty 30
+  -- #guard_msgs in
+  -- #eval to_pretty 30
   
-  /--
+  /-
   info: '3 minutes ago'
   -/
-  #guard_msgs in
-  #eval to_pretty 180
+  -- #guard_msgs in
+  -- #eval to_pretty 180
   
-  /--
+  /-
   info: '11 hours ago'
   -/
-  #guard_msgs in
-  #eval to_pretty 40000
+  -- #guard_msgs in
+  -- #eval to_pretty 40000
   
-  /--
+  /-
   info: '4 days ago'
   -/
-  #guard_msgs in
-  #eval to_pretty 400000
+  -- #guard_msgs in
+  -- #eval to_pretty 400000
   
-  /--
+  /-
   info: '16 weeks ago'
   -/
-  #guard_msgs in
-  #eval to_pretty 10000000
+  -- #guard_msgs in
+  -- #eval to_pretty 10000000
 
 vc-postamble: |-
   -- Apps difficulty: introductory

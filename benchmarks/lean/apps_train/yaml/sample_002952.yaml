@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You have a set of four (4) balls labeled with different numbers: ball_1 (1), ball_2 (2), ball_3 (3) and ball(4) and we have 3 equal boxes for distribute them. The possible combinations of the balls, without having empty boxes, are:
   
   ```
@@ -53,6 +54,7 @@ vc-description: |-
   1 <= k <= n <= 800
   ```
   Ruby version will be published soon.
+  -/
 
 vc-preamble: |-
 
@@ -97,23 +99,23 @@ vc-theorems: |-
     1 < k → k ≤ n → combs_non_empty_boxes n k ≤ k^n :=
   sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval combs_non_empty_boxes 4 3
+  -- #guard_msgs in
+  -- #eval combs_non_empty_boxes 4 3
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval combs_non_empty_boxes 4 4
+  -- #guard_msgs in
+  -- #eval combs_non_empty_boxes 4 4
   
-  /--
+  /-
   info: 'It cannot be possible!'
   -/
-  #guard_msgs in
-  #eval combs_non_empty_boxes 4 5
+  -- #guard_msgs in
+  -- #eval combs_non_empty_boxes 4 5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

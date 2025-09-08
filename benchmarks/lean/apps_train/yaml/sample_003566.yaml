@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   German mathematician Christian Goldbach (1690-1764) [conjectured](https://en.wikipedia.org/wiki/Goldbach%27s_conjecture) that every even number greater than 2 can be represented by the sum of two prime numbers. For example, `10` can be represented as `3+7` or `5+5`.
   
   Your job is to make the function return a list containing all unique possible representations of `n` in an increasing order if `n` is an even integer; if `n` is odd, return an empty list. Hence, the first addend must always be less than or equal to the second to avoid duplicates.
@@ -13,6 +14,7 @@ vc-description: |-
   
   7   -->  [] 
   ```
+  -/
 
 vc-preamble: |-
   def goldbach_partitions : Nat → List String := sorry

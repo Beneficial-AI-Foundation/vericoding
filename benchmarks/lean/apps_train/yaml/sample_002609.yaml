@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string and an array of index numbers, return the characters of the string rearranged to be in the order specified by the accompanying array.
   
   Ex:
@@ -10,6 +11,7 @@ vc-description: |-
   In other words, put the first character in the string at the index described by the first element of the array
   
   You can assume that you will be given a string and array of equal length and both containing valid characters (A-Z, a-z, or 0-9).
+  -/
 
 vc-preamble: |-
 
@@ -33,23 +35,23 @@ vc-theorems: |-
     (h1 : text.length > 0) :
     String.toList (scramble text indices) = String.toList text := sorry
   
-  /--
+  /-
   info: 'acdb'
   -/
-  #guard_msgs in
-  #eval scramble "abcd" [0, 3, 1, 2]
+  -- #guard_msgs in
+  -- #eval scramble "abcd" [0, 3, 1, 2]
   
-  /--
+  /-
   info: 'c0s3s1'
   -/
-  #guard_msgs in
-  #eval scramble "sc301s" [4, 0, 3, 1, 5, 2]
+  -- #guard_msgs in
+  -- #eval scramble "sc301s" [4, 0, 3, 1, 5, 2]
   
-  /--
+  /-
   info: '5sblk'
   -/
-  #guard_msgs in
-  #eval scramble "bskl5" [2, 1, 4, 3, 0]
+  -- #guard_msgs in
+  -- #eval scramble "bskl5" [2, 1, 4, 3, 0]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

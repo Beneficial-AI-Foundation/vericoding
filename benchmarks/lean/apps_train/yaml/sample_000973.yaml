@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In the world of DragonBool there are fierce warriors called Soints. Also there are even fiercer warriors called Sofloats – the mortal enemies of Soints.
   
   The power of each warrior is determined by the amount of chakra he possesses which is some positive integer. Warriors with zero level of chakra are dead warriors :) When the fight between Soint with power CI and Sofloat with power CF occurs the warrior with lower power will die and the winner will lose the amount of chakra that his enemy have possessed before the fight. So three cases are possible:
@@ -67,6 +68,7 @@ vc-description: |-
   - I1 fights with F3, I1 dies, F3 becomes (F, 8, 1).
   
   So if SoChef will give 8 additional units of chakra to I1 the Soints will win the battle and even one Soint (I2) will left alive. Hence the answer is 8.
+  -/
 
 vc-preamble: |-
   def min_chakra_needed (n m : Nat) (soint_powers soint_levels sofloat_powers sofloat_levels : List Nat) : Nat := sorry
@@ -87,17 +89,17 @@ vc-definitions: |-
     | (x::xs) => x + list_sum xs
 
 vc-theorems: |-
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval min_chakra_needed 2 3 [10, 20] [1, 2] [5, 5, 18] [2, 2, 1]
+  -- #guard_msgs in
+  -- #eval min_chakra_needed 2 3 [10, 20] [1, 2] [5, 5, 18] [2, 2, 1]
   
-  /--
+  /-
   info: 89
   -/
-  #guard_msgs in
-  #eval min_chakra_needed 5 5 [73, 69, 36, 77, 43] [87, 13, 36, 46, 93] [49, 74, 78, 99, 59] [46, 93, 87, 13, 36]
+  -- #guard_msgs in
+  -- #eval min_chakra_needed 5 5 [73, 69, 36, 77, 43] [87, 13, 36, 46, 93] [49, 74, 78, 99, 59] [46, 93, 87, 13, 36]
 
 vc-postamble: |-
   -- Apps difficulty: interview

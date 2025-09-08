@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are several (or no) spiders, butterflies, and dragonflies. 
   
   In this kata, a spider has eight legs. A dragonfly or a butterfly has six legs. A __dragonfly__ has __two__ pairs of wings, while a __butterfly__ has __one__ pair of wings. __I am not sure whether they are biologically correct, but the values apply here. __
@@ -14,6 +15,7 @@ vc-description: |-
   
   cal\_n\_bug(3, 20, 3) = [1, 1, 1]
   One spider, one butterfly, one dragonfly in total have three heads, twenty legs (8 for the spider, 6 for the butterfly, and 6 for the dragonfly), and _three pairs_ of wings (1 for the butterfly and 2 for the dragonfly).
+  -/
 
 vc-preamble: |-
 

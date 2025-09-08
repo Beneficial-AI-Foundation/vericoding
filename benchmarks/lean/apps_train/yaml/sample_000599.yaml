@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are $M$ levels for a building numbered from $1$ to $M$ from top to bottom, each level having $N$ parking spots numbered from $1$ to $N$ from left to right. Some spots might have a car while other may be empty, the information of which is given in form of two dimensional character array $C$ ($C_{i, j}$ denote parking spot at $j$-th position on $i$-th level).
   There is a thief who wants to unlock all the cars. Now, he is skilled such that for the first time, he can directly reach in any parking spot in no time. Basically he can reach the first car to be stolen in 0 time.
   Now, he can move within the parking lot only in following manner, each taking 1 unit of time:
@@ -50,6 +51,7 @@ vc-description: |-
   So, he takes 10 steps to unlock all the cars.
   In the second case, He will select the spot $(1,2)$ and the path he takes will be $(1,2)→(1,3)→(2,3)→(2,2)→(2,1)→(3,1)→(3,2)$.
   So, he takes 6 steps.
+  -/
 
 vc-preamble: |-
   def solve_parking_thief (m n : Nat) (grid : List (List Char)) : Nat :=
@@ -84,23 +86,23 @@ vc-theorems: |-
     solve_parking_thief m n grid = 0 := by
     sorry
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval solve_parking_thief 4 5 [["N", "P", "N", "N", "P"], ["N", "N", "P", "N", "N"], ["N", "P", "N", "N", "N"], ["P", "N", "N", "N", "N"]]
+  -- #guard_msgs in
+  -- #eval solve_parking_thief 4 5 [["N", "P", "N", "N", "P"], ["N", "N", "P", "N", "N"], ["N", "P", "N", "N", "N"], ["P", "N", "N", "N", "N"]]
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval solve_parking_thief 3 3 [["N", "P", "P"], ["P", "P", "P"], ["P", "P", "N"]]
+  -- #guard_msgs in
+  -- #eval solve_parking_thief 3 3 [["N", "P", "P"], ["P", "P", "P"], ["P", "P", "N"]]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve_parking_thief 2 3 [["N", "N", "N"], ["N", "N", "N"]]
+  -- #guard_msgs in
+  -- #eval solve_parking_thief 2 3 [["N", "N", "N"], ["N", "N", "N"]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

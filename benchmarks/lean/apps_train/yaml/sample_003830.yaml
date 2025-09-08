@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   When a warrior wants to talk with another one about peace or war he uses a smartphone.  In one distinct  country warriors who spent all time in training kata not always have enough money. So if they call some number they want to know which operator serves  this number. 
   
   Write a function which **accepts number and return name of operator or string "no info"**, if operator can't be defined. number always looks like 8yyyxxxxxxx, where yyy corresponds to operator.
@@ -17,6 +18,7 @@ vc-description: |-
   * 097 xxx xx xx - Kyivstar
   * 098 xxx xx xx - Kyivstar
   * 099 xxx xx xx - MTS Test [Just return "MTS"]
+  -/
 
 vc-preamble: |-
 
@@ -59,23 +61,23 @@ vc-theorems: |-
     detect_operator n = detect_operator n_modified :=
   sorry
   
-  /--
+  /-
   info: 'MTS'
   -/
-  #guard_msgs in
-  #eval detect_operator "80661111841"
+  -- #guard_msgs in
+  -- #eval detect_operator "80661111841"
   
-  /--
+  /-
   info: 'Kyivstar'
   -/
-  #guard_msgs in
-  #eval detect_operator "80671991111"
+  -- #guard_msgs in
+  -- #eval detect_operator "80671991111"
   
-  /--
+  /-
   info: 'no info'
   -/
-  #guard_msgs in
-  #eval detect_operator "80111551111"
+  -- #guard_msgs in
+  -- #eval detect_operator "80111551111"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

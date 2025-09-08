@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We have a sequence A of N non-negative integers.
   Compute the sum of \prod _{i = 1} ^N \dbinom{B_i}{A_i} over all sequences B of N non-negative integers whose sum is at most M, and print it modulo (10^9 + 7).
   Here, \dbinom{B_i}{A_i}, the binomial coefficient, denotes the number of ways to choose A_i objects from B_i objects, and is 0 when B_i < A_i.
@@ -30,6 +31,7 @@ vc-description: |-
    - B = \{1, 3, 1\}, where \prod _{i = 1} ^N \dbinom{B_i}{A_i} = \dbinom{1}{1} \times \dbinom{3}{2} \times \dbinom{1}{1} = 3;
    - B = \{1, 2, 2\}, where \prod _{i = 1} ^N \dbinom{B_i}{A_i} = \dbinom{1}{1} \times \dbinom{2}{2} \times \dbinom{2}{1} = 2.
   The sum of these is 1 + 2 + 3 + 2 = 8.
+  -/
 
 vc-preamble: |-
   def solve_sequence_sum (n m : Nat) (sequence : List Nat) : Nat :=
@@ -55,17 +57,17 @@ vc-theorems: |-
     solve_sequence_sum 1 1 [0] = 2 :=
     sorry
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval solve_sequence_sum 3 5 [1, 2, 1]
+  -- #guard_msgs in
+  -- #eval solve_sequence_sum 3 5 [1, 2, 1]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve_sequence_sum 1 1 [0]
+  -- #guard_msgs in
+  -- #eval solve_sequence_sum 1 1 [0]
 
 vc-postamble: |-
   -- Apps difficulty: competition

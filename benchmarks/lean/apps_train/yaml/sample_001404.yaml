@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Leha is a usual student at 'The Usual University for Usual Students'. Sometimes he studies hard; at other times he plays truant and gets busy with other things besides academics. He has already studied at the university for N months. For the ith month (1 ≤ i ≤ N), he has received some non-negative integer grade A[i].
   Now he wants to analyse his progress for some periods of his university education. An arbitrary period, defined by two positive integers L and R, begins at Leha's Lth month at the university and ends at the Rth. The analysis is performed via the following steps.
   
@@ -48,6 +49,7 @@ vc-description: |-
   The second query: sorted array looks like (1, 2, 3, 4) and the answer is calculated as (2-1)2 + (3-2)2 + (4-3)2 = 3
   
   The last query: sorted array looks like (2, 4, 5) and the answer is calculated as (4-2)2 + (5-4)2 = 5
+  -/
 
 vc-preamble: |-
 

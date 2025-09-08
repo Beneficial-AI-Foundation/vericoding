@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Every great chef knows that lucky numbers are positive integers whose decimal representations contain only the lucky digits 4 and 7. For example, numbers 47, 744, 4 are lucky and 5, 17, 467 are not.  
   
   Our chef has recently returned from the Lucky country. He observed that every restaurant in the Lucky country had a lucky number as its name. 
@@ -46,6 +47,7 @@ vc-description: |-
   Explanation
   For the last test case, N = 15, the smallest lucky lucky number is
   444444477777777. The count of digit 4 is 7.
+  -/
 
 vc-preamble: |-
 
@@ -67,23 +69,23 @@ vc-theorems: |-
   theorem find_lucky_count_fourteen :
     find_lucky_count 14 = 14 := sorry
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval find_lucky_count 7
+  -- #guard_msgs in
+  -- #eval find_lucky_count 7
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval find_lucky_count 4
+  -- #guard_msgs in
+  -- #eval find_lucky_count 4
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval find_lucky_count 15
+  -- #guard_msgs in
+  -- #eval find_lucky_count 15
 
 vc-postamble: |-
   -- Apps difficulty: interview

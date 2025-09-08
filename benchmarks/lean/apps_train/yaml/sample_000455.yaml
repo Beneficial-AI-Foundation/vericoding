@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string s, partition s such that every substring of the partition is a palindrome.
   
   Return the minimum cuts needed for a palindrome partitioning of s.
@@ -8,6 +9,7 @@ vc-description: |-
   Input: "aab"
   Output: 1
   Explanation: The palindrome partitioning ["aa","b"] could be produced using 1 cut.
+  -/
 
 vc-preamble: |-
 
@@ -37,23 +39,23 @@ vc-theorems: |-
     min_palindrome_cuts "a" ≤ min_palindrome_cuts "ab" ∧ 
     min_palindrome_cuts "ab" ≤ min_palindrome_cuts "abc" := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval min_palindrome_cuts "aab"
+  -- #guard_msgs in
+  -- #eval min_palindrome_cuts "aab"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_palindrome_cuts "aba"
+  -- #guard_msgs in
+  -- #eval min_palindrome_cuts "aba"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_palindrome_cuts "abba"
+  -- #guard_msgs in
+  -- #eval min_palindrome_cuts "abba"
 
 vc-postamble: |-
   -- Apps difficulty: interview

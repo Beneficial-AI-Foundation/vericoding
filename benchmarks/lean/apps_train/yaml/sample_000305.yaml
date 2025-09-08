@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an integer array bloomDay, an integer m and an integer k.
   We need to make m bouquets. To make a bouquet, you need to use k adjacent flowers from the garden.
   The garden consists of n flowers, the ith flower will bloom in the bloomDay[i] and then can be used in exactly one bouquet.
@@ -44,6 +45,7 @@ vc-description: |-
   1 <= bloomDay[i] <= 10^9
   1 <= m <= 10^6
   1 <= k <= n
+  -/
 
 vc-preamble: |-
   def min_days (bloom_day : List Nat) (m k : Nat) : Int := sorry
@@ -85,23 +87,23 @@ vc-theorems: |-
     (∀ x ∈ bloom_day, x = 1) →
     (min_days bloom_day m k = if bloom_day.length ≥ m * k then 1 else -1) := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval min_days [1, 10, 3, 10, 2] 3 1
+  -- #guard_msgs in
+  -- #eval min_days [1, 10, 3, 10, 2] 3 1
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval min_days [1, 10, 3, 10, 2] 3 2
+  -- #guard_msgs in
+  -- #eval min_days [1, 10, 3, 10, 2] 3 2
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval min_days [7, 7, 7, 7, 12, 7, 7] 2 3
+  -- #guard_msgs in
+  -- #eval min_days [7, 7, 7, 7, 12, 7, 7] 2 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

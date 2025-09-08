@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function that takes two arguments, and returns a new array populated with the elements **that only appear once, in either one array or the other, taken only once**; display order should follow what appears in arr1 first, then arr2: 
   
   ```python
@@ -9,6 +10,7 @@ vc-description: |-
   ```
   
   SPECIAL THANKS: @JulianKolbe !
+  -/
 
 vc-preamble: |-
 

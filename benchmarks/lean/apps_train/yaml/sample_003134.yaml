@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Return the century of the input year. The input will always be a 4 digit string, so there is no need for validation. 
   
   ### Examples
@@ -10,6 +11,7 @@ vc-description: |-
   "1124" --> "12th"
   "2000" --> "20th"
   ```
+  -/
 
 vc-preamble: |-
 
@@ -53,23 +55,23 @@ vc-theorems: |-
       | _ => result.endsWith "th"
     ) := sorry
   
-  /--
+  /-
   info: '20th'
   -/
-  #guard_msgs in
-  #eval what_century "1999"
+  -- #guard_msgs in
+  -- #eval what_century "1999"
   
-  /--
+  /-
   info: '21st'
   -/
-  #guard_msgs in
-  #eval what_century "2011"
+  -- #guard_msgs in
+  -- #eval what_century "2011"
   
-  /--
+  /-
   info: '20th'
   -/
-  #guard_msgs in
-  #eval what_century "2000"
+  -- #guard_msgs in
+  -- #eval what_century "2000"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

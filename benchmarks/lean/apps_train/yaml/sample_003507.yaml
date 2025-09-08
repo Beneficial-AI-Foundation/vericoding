@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Much cooler than your run-of-the-mill Fibonacci numbers, the Triple Shiftian are so defined: `T[n] = 4 * T[n-1] - 5 * T[n-2] + 3 * T[n-3]`.
   
   You are asked to create a function which accept a base with the first 3 numbers and then returns the nth element.
@@ -12,6 +13,7 @@ vc-description: |-
   *Note: this is meant to be an interview quiz, so the description is scarce in detail on purpose*
   
   Special thanks to the [first person I met in person here in London just because of CW](http://www.codewars.com/users/webtechalex) and that assisted me during the creation of this kata ;)
+  -/
 
 vc-preamble: |-
 
@@ -43,23 +45,23 @@ vc-theorems: |-
         then T.get ⟨n, by sorry⟩  
         else sorry := sorry
   
-  /--
+  /-
   info: 1219856746
   -/
-  #guard_msgs in
-  #eval triple_shiftian #[1, 1, 1] 25
+  -- #guard_msgs in
+  -- #eval triple_shiftian #[1, 1, 1] 25
   
-  /--
+  /-
   info: 2052198929
   -/
-  #guard_msgs in
-  #eval triple_shiftian #[1, 2, 3] 25
+  -- #guard_msgs in
+  -- #eval triple_shiftian #[1, 2, 3] 25
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval triple_shiftian #[6, 7, 2] 2
+  -- #guard_msgs in
+  -- #eval triple_shiftian #[6, 7, 2] 2
 
 vc-postamble: |-
   -- Apps difficulty: introductory

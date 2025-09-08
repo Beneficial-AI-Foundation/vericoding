@@ -1,0 +1,75 @@
+/-
+(This problem is the same as Minimize Malware Spread, with the differences bolded.)
+In a network of nodes, each node i is directly connected to another node j if and only if graph[i][j] = 1.
+Some nodes initial are initially infected by malware.  Whenever two nodes are directly connected and at least one of those two nodes is infected by malware, both nodes will be infected by malware.  This spread of malware will continue until no more nodes can be infected in this manner.
+Suppose M(initial) is the final number of nodes infected with malware in the entire network, after the spread of malware stops.
+We will remove one node from the initial list, completely removing it and any connections from this node to any other node.  Return the node that if removed, would minimize M(initial).  If multiple nodes could be removed to minimize M(initial), return such a node with the smallest index.
+
+Example 1:
+Input: graph = [[1,1,0],[1,1,0],[0,0,1]], initial = [0,1]
+Output: 0
+
+Example 2:
+Input: graph = [[1,1,0],[1,1,1],[0,1,1]], initial = [0,1]
+Output: 1
+
+Example 3:
+Input: graph = [[1,1,0,0],[1,1,1,0],[0,1,1,1],[0,0,1,1]], initial = [0,1]
+Output: 1
+
+Note:
+
+1 < graph.length = graph[0].length <= 300
+0 <= graph[i][j] == graph[j][i] <= 1
+graph[i][i] = 1
+1 <= initial.length < graph.length
+0 <= initial[i] < graph.length
+-/
+
+def min_malware_spread (graph : List (List Int)) (initial : List Int) : Int := sorry 
+
+theorem result_in_initial {graph : List (List Int)} {initial : List Int} :
+  let result := min_malware_spread graph initial
+  initial.contains result = true := sorry
+
+/- Helper function to get spread after removing a node -/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def get_spread (graph : List (List Int)) (initial : List Int) (removed : Int) : Int := sorry
+
+theorem smallest_among_equal_spreads {graph : List (List Int)} {initial : List Int} :
+  let result := min_malware_spread graph initial 
+  ∀ node : Int, 
+    node ∈ initial →
+    node < result →
+    get_spread graph initial node ≥ get_spread graph initial result := sorry
+
+theorem valid_graph_properties {graph : List (List Int)} :
+  let n := graph.length
+  graph.length > 0 →
+  (∀ row ∈ graph, row.length = n) →
+  (∀ (i j : Nat), i < n → j < n → 
+    (graph.get! i).get! j = (graph.get! i).get! j) := sorry
+
+/-
+info: 0
+-/
+-- #guard_msgs in
+-- #eval min_malware_spread [[1, 1, 0], [1, 1, 0], [0, 0, 1]] [0, 1]
+
+/-
+info: 1
+-/
+-- #guard_msgs in
+-- #eval min_malware_spread [[1, 1, 0], [1, 1, 1], [0, 1, 1]] [0, 1]
+
+/-
+info: 1
+-/
+-- #guard_msgs in
+-- #eval min_malware_spread [[1, 1, 0, 0], [1, 1, 1, 0], [0, 1, 1, 1], [0, 0, 1, 1]] [0, 1]
+
+-- Apps difficulty: interview
+-- Assurance level: guarded

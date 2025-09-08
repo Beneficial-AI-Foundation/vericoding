@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are $N$ cells numbered 1,2,….., N, and every cell has some positive value. you will be given an array $A_1$,$A_2$,…,$A_N$ where $A_i$ is the value of $ith$ cell and an integer $K$.
   There is a monkey who wants to reach the $right$ side of the last ($Nth$) cell, initially, the monkey was left side of the first ($1st$) cell. 
   In the first step, he can jump into any cell numbered 1,2,….., K.Once he jumped into any cell $i$ next he can only jump to the cell $j$ such that-
@@ -34,6 +35,7 @@ vc-description: |-
   in the first step, you can jump into any cell 1 or 2 and then in the second step you will jump 
   out to the right side of 2nd cell
   remember we don't want to reach $Nth$ cell we want to reach the right side of the nth cell.
+  -/
 
 vc-preamble: |-
   def find_min_steps (i j : Nat) (nums : List Nat) : Nat := sorry
@@ -65,29 +67,29 @@ vc-theorems: |-
   theorem find_min_steps_monotonic {i j target : Nat} (hi : i > 1) (hj : j > 1) :
     find_min_steps i j [target] ≤ find_min_steps (i-1) (j-1) [target] := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_min_steps 1 2 [5]
+  -- #guard_msgs in
+  -- #eval find_min_steps 1 2 [5]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_min_steps 2 2 [3, 4]
+  -- #guard_msgs in
+  -- #eval find_min_steps 2 2 [3, 4]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval find_min_steps 1 1 [3, 4, 5]
+  -- #guard_msgs in
+  -- #eval find_min_steps 1 1 [3, 4, 5]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_min_steps 2 1 [5]
+  -- #guard_msgs in
+  -- #eval find_min_steps 2 1 [5]
 
 vc-postamble: |-
   -- Apps difficulty: interview

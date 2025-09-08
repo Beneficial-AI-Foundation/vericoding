@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   
   An IP address contains four numbers(0-255) and separated by dots. It can be converted to a number by this way:
@@ -37,6 +38,7 @@ vc-description: |-
   For `s = "10.0.3.193"`, the output should be `"167773121"`.
   
   For `s = "167969729"`, the output should be `"10.3.3.193"`.
+  -/
 
 vc-preamble: |-
 
@@ -74,23 +76,23 @@ vc-theorems: |-
     numberAndIPaddress "0.0.0.0" = "0" ∧
     numberAndIPaddress "0" = "0.0.0.0" := sorry
   
-  /--
+  /-
   info: '167773121'
   -/
-  #guard_msgs in
-  #eval numberAndIPaddress "10.0.3.193"
+  -- #guard_msgs in
+  -- #eval numberAndIPaddress "10.0.3.193"
   
-  /--
+  /-
   info: '10.3.3.193'
   -/
-  #guard_msgs in
-  #eval numberAndIPaddress "167969729"
+  -- #guard_msgs in
+  -- #eval numberAndIPaddress "167969729"
   
-  /--
+  /-
   info: '0'
   -/
-  #guard_msgs in
-  #eval numberAndIPaddress "0.0.0.0"
+  -- #guard_msgs in
+  -- #eval numberAndIPaddress "0.0.0.0"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

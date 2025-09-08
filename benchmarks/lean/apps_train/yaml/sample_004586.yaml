@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given the moleculer mass of two molecules ( __M1__ and __M2__ ), their masses present ( __m1__ and __m2__ ) in a vessel of volume ( __V__ ) at a specific temperature ( __T__ ). Find the total pressure exerted by the molecules ( __Ptotal__ ) .
   
   input
@@ -38,6 +39,7 @@ vc-description: |-
   0 Celsius = 273.15Kelvin
   
   The gas constant (_R_) has value of _0.082dm^(3).atm.K^(-1).mol^(-1)_
+  -/
 
 vc-preamble: |-
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Third day at your new cryptoanalyst job and you come across your toughest assignment yet. Your job is to implement a simple keyword cipher. A keyword cipher is a type of monoalphabetic substitution where two parameters are provided as such (string, keyword). The string is encrypted by taking the keyword, dropping any letters that appear more than once. The rest of the letters of the alphabet that aren't used are then appended to the end of the keyword.
   
   For example, if your string was "hello" and your keyword was "wednesday", your encryption key would be 'wednsaybcfghijklmopqrtuvxz'.
@@ -14,6 +15,7 @@ vc-description: |-
   hello encrypts into bshhk with the keyword wednesday. This cipher also uses lower case letters only.
   
   Good Luck.
+  -/
 
 vc-preamble: |-
 
@@ -38,23 +40,23 @@ vc-theorems: |-
     text.get i = ' ' →
     (keyword_cipher text keyword).get i = ' ' := sorry
   
-  /--
+  /-
   info: 'bshhk'
   -/
-  #guard_msgs in
-  #eval keyword_cipher "hello" "wednesday"
+  -- #guard_msgs in
+  -- #eval keyword_cipher "hello" "wednesday"
   
-  /--
+  /-
   info: 'wticljt dljt'
   -/
-  #guard_msgs in
-  #eval keyword_cipher "Welcome home" "secret"
+  -- #guard_msgs in
+  -- #eval keyword_cipher "Welcome home" "secret"
   
-  /--
+  /-
   info: 'bshhk'
   -/
-  #guard_msgs in
-  #eval keyword_cipher "HELLO" "wednesday"
+  -- #guard_msgs in
+  -- #eval keyword_cipher "HELLO" "wednesday"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

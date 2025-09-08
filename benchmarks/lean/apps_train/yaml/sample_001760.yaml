@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Return all non-negative integers of length n such that the absolute difference between every two consecutive digits is k.
   Note that every number in the answer must not have leading zeros except for the number 0 itself. For example, 01 has one leading zero and is invalid, but 0 is valid.
   You may return the answer in any order.
@@ -28,6 +29,7 @@ vc-description: |-
   
   2 <= n <= 9
   0 <= k <= 9
+  -/
 
 vc-preamble: |-
 
@@ -69,23 +71,23 @@ vc-theorems: |-
     ∀ x ∈ result, ∀ i < n-1,
       absDiff (digit_at x i) (digit_at x (i+1)) = 9 := sorry
   
-  /--
+  /-
   info: [181, 292, 707, 818, 929]
   -/
-  #guard_msgs in
-  #eval nums_same_consec_diff 3 7
+  -- #guard_msgs in
+  -- #eval nums_same_consec_diff 3 7
   
-  /--
+  /-
   info: [10, 12, 21, 23, 32, 34, 43, 45, 54, 56, 65, 67, 76, 78, 87, 89, 98]
   -/
-  #guard_msgs in
-  #eval nums_same_consec_diff 2 1
+  -- #guard_msgs in
+  -- #eval nums_same_consec_diff 2 1
   
-  /--
+  /-
   info: [11, 22, 33, 44, 55, 66, 77, 88, 99]
   -/
-  #guard_msgs in
-  #eval nums_same_consec_diff 2 0
+  -- #guard_msgs in
+  -- #eval nums_same_consec_diff 2 0
 
 vc-postamble: |-
   -- Apps difficulty: interview

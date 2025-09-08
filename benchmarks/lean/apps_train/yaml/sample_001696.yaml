@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   #SKRZAT
   
   Geek Challenge [SKRZAT] is an old, old game from Poland that uses a game console with two buttons plus a joy stick. As is true to its name, the game communicates in binary, so that one button represents a zero and the other a one. Even more true to its name, the game chooses to communicate so that the base of the number system is minus two, not plus two, so we'll call this representation "Weird Binary". Thus the bit positions label the powers of minus two, as seen in the following five-bit tables:
@@ -66,6 +67,7 @@ vc-description: |-
       'From decimal: 8191 is 110000000000011'
       'From decimal: -10000 is 10100100110000'
       'From decimal: 21000 is 101011000011000'
+  -/
 
 vc-preamble: |-
   def b (n : Int) : String := sorry
@@ -110,41 +112,41 @@ vc-theorems: |-
     let bin := b n
     d bin = n := sorry
   
-  /--
+  /-
   info: 'From binary: 1001101 is 61'
   -/
-  #guard_msgs in
-  #eval skrzat "b" "1001101"
+  -- #guard_msgs in
+  -- #eval skrzat "b" "1001101"
   
-  /--
+  /-
   info: 'From binary: 0111111 is -21'
   -/
-  #guard_msgs in
-  #eval skrzat "b" "0111111"
+  -- #guard_msgs in
+  -- #eval skrzat "b" "0111111"
   
-  /--
+  /-
   info: 'From binary: 101001000100001 is 19937'
   -/
-  #guard_msgs in
-  #eval skrzat "b" "101001000100001"
+  -- #guard_msgs in
+  -- #eval skrzat "b" "101001000100001"
   
-  /--
+  /-
   info: 'From decimal: -137 is 10001011'
   -/
-  #guard_msgs in
-  #eval skrzat "d" -137
+  -- #guard_msgs in
+  -- #eval skrzat "d" -137
   
-  /--
+  /-
   info: 'From decimal: 137 is 110011001'
   -/
-  #guard_msgs in
-  #eval skrzat "d" 137
+  -- #guard_msgs in
+  -- #eval skrzat "d" 137
   
-  /--
+  /-
   info: 'From decimal: 8191 is 110000000000011'
   -/
-  #guard_msgs in
-  #eval skrzat "d" 8191
+  -- #guard_msgs in
+  -- #eval skrzat "d" 8191
 
 vc-postamble: |-
   -- Apps difficulty: interview

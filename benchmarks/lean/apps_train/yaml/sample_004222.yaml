@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Consider integer coordinates x, y in the Cartesian plan and three functions f, g, h
   defined by:
   ```
@@ -47,6 +48,7 @@ vc-description: |-
   #Hint:
   1. Try to avoid nested loops
   2. Note that h = f + g
+  -/
 
 vc-preamble: |-
   def sumin (n : Nat) : Nat := sorry
@@ -90,59 +92,59 @@ vc-theorems: |-
     sumsum n > 0 :=
   sorry
   
-  /--
+  /-
   info: 55
   -/
-  #guard_msgs in
-  #eval sumin 5
+  -- #guard_msgs in
+  -- #eval sumin 5
   
-  /--
+  /-
   info: 91
   -/
-  #guard_msgs in
-  #eval sumin 6
+  -- #guard_msgs in
+  -- #eval sumin 6
   
-  /--
+  /-
   info: 1240
   -/
-  #guard_msgs in
-  #eval sumin 15
+  -- #guard_msgs in
+  -- #eval sumin 15
   
-  /--
+  /-
   info: 161
   -/
-  #guard_msgs in
-  #eval sumax 6
+  -- #guard_msgs in
+  -- #eval sumax 6
   
-  /--
+  /-
   info: 61755
   -/
-  #guard_msgs in
-  #eval sumax 45
+  -- #guard_msgs in
+  -- #eval sumax 45
   
-  /--
+  /-
   info: 671650
   -/
-  #guard_msgs in
-  #eval sumax 100
+  -- #guard_msgs in
+  -- #eval sumax 100
   
-  /--
+  /-
   info: 252
   -/
-  #guard_msgs in
-  #eval sumsum 6
+  -- #guard_msgs in
+  -- #eval sumsum 6
   
-  /--
+  /-
   info: 93150
   -/
-  #guard_msgs in
-  #eval sumsum 45
+  -- #guard_msgs in
+  -- #eval sumsum 45
   
-  /--
+  /-
   info: 1010000
   -/
-  #guard_msgs in
-  #eval sumsum 100
+  -- #guard_msgs in
+  -- #eval sumsum 100
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You've got array A, consisting of n integers and a positive integer k. Array A is indexed by integers from 1 to n.
   
   You need to permute the array elements so that value $\sum_{i = 1}^{n - k}|A [ i ] - A [ i + k ]|$ became minimal possible. In particular, it is allowed not to change order of elements at all.
@@ -42,6 +43,7 @@ vc-description: |-
   In the second test the initial order is optimal. 
   
   In the third test one of the optimal permutations is 2 3 4 4 3 5.
+  -/
 
 vc-preamble: |-
   def maximum (l : List Int) : Int :=
@@ -91,23 +93,23 @@ vc-theorems: |-
     min_difference_sum n k arr = maximum arr - minimum arr :=
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval min_difference_sum 3 2 [1, 2, 4]
+  -- #guard_msgs in
+  -- #eval min_difference_sum 3 2 [1, 2, 4]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_difference_sum 5 2 [3, -5, 3, -5, 3]
+  -- #guard_msgs in
+  -- #eval min_difference_sum 5 2 [3, -5, 3, -5, 3]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval min_difference_sum 6 3 [4, 3, 4, 3, 2, 5]
+  -- #guard_msgs in
+  -- #eval min_difference_sum 6 3 [4, 3, 4, 3, 2, 5]
 
 vc-postamble: |-
   -- Apps difficulty: competition

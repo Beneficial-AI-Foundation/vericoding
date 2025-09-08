@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Andre has very specific tastes. Recently he started falling in love with arrays.
   
   Andre calls an nonempty array $b$ good, if sum of its elements is divisible by the length of this array. For example, array $[2, 3, 1]$ is good, as sum of its elements — $6$ — is divisible by $3$, but array $[1, 1, 2, 3]$ isn't good, as $7$ isn't divisible by $4$. 
@@ -34,6 +35,7 @@ vc-description: |-
   -----Note-----
   
   Array $[19, 33]$ is perfect as all $3$ its subarrays: $[19]$, $[33]$, $[19, 33]$, have sums divisible by their lengths, and therefore are good.
+  -/
 
 vc-preamble: |-
 
@@ -54,23 +56,23 @@ vc-theorems: |-
     ∀ i j, i < n → j < n → 
       List.get! (generate_perfect_array n) i = List.get! (generate_perfect_array n) j := sorry
   
-  /--
+  /-
   info: [4]
   -/
-  #guard_msgs in
-  #eval generate_perfect_array 1
+  -- #guard_msgs in
+  -- #eval generate_perfect_array 1
   
-  /--
+  /-
   info: [4, 4]
   -/
-  #guard_msgs in
-  #eval generate_perfect_array 2
+  -- #guard_msgs in
+  -- #eval generate_perfect_array 2
   
-  /--
+  /-
   info: [4, 4, 4, 4]
   -/
-  #guard_msgs in
-  #eval generate_perfect_array 4
+  -- #guard_msgs in
+  -- #eval generate_perfect_array 4
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function, `persistence`, that takes in a positive parameter `num` and returns its multiplicative persistence, which is the number of times you must multiply the digits in `num` until you reach a single digit.
   
   For example:
@@ -21,6 +22,7 @@ vc-description: |-
   
    persistence(4) # returns 0, because 4 is already a one-digit number
   ```
+  -/
 
 vc-preamble: |-
 
@@ -38,23 +40,23 @@ vc-theorems: |-
   
   theorem persistence_single_digit (n : Nat) : n < 10 → persistence n = 0 := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval persistence 39
+  -- #guard_msgs in
+  -- #eval persistence 39
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval persistence 4
+  -- #guard_msgs in
+  -- #eval persistence 4
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval persistence 999
+  -- #guard_msgs in
+  -- #eval persistence 999
 
 vc-postamble: |-
   -- Apps difficulty: introductory

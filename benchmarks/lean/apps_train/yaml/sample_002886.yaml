@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    Consider the following algorithm for constructing 26 strings S(1) .. S(26):
   ```
@@ -24,6 +25,7 @@ vc-description: |-
    - `[output]` a string(char in C#)
   
     the `k`th symbol of S(26)
+  -/
 
 vc-preamble: |-
 
@@ -39,23 +41,23 @@ vc-definitions: |-
     97 ≤ result.toNat ∧ result.toNat ≤ 122 := sorry
 
 vc-theorems: |-
-  /--
+  /-
   info: 'a'
   -/
-  #guard_msgs in
-  #eval abacaba 1
+  -- #guard_msgs in
+  -- #eval abacaba 1
   
-  /--
+  /-
   info: 'c'
   -/
-  #guard_msgs in
-  #eval abacaba 4
+  -- #guard_msgs in
+  -- #eval abacaba 4
   
-  /--
+  /-
   info: 'e'
   -/
-  #guard_msgs in
-  #eval abacaba 16
+  -- #guard_msgs in
+  -- #eval abacaba 16
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given two non-negative integers low and high. Return the count of odd numbers between low and high (inclusive).
   
   Example 1:
@@ -13,6 +14,7 @@ vc-description: |-
   Constraints:
   
   0 <= low <= high <= 10^9
+  -/
 
 vc-preamble: |-
 
@@ -33,23 +35,23 @@ vc-theorems: |-
     count_odds n n = if n % 2 = 0 then 0 else 1 :=
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_odds 3 7
+  -- #guard_msgs in
+  -- #eval count_odds 3 7
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_odds 8 10
+  -- #guard_msgs in
+  -- #eval count_odds 8 10
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_odds 0 5
+  -- #guard_msgs in
+  -- #eval count_odds 0 5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

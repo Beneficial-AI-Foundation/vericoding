@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Every college has a stud−max$stud-max$ buoy. JGEC$JGEC$ has its own Atul$Atul$ who loves to impress everyone with his smile. A presentation is going on at the auditorium where there are N$N$ rows of M$M$ chairs with people sitting on it. Everyone votes for Atul's presentation skills, but Atul is interested in knowing the maximum$maximum$ amount of vote that he receives either taking K$K$ people vertically$vertically$ or horizontally$horizontally$. Atul$Atul$, however, wants to finish up the presentation party soon, hence asks for your help so that he can wrap up things faster.  
   
   -----Input:-----
@@ -28,6 +29,7 @@ vc-description: |-
   
   -----EXPLANATION:-----
   If Atul starts counting votes from (1,4), then he can take the 3 consecutive elements vertically downwards and those are 7,6 and 9 which is the maximum sum possible.
+  -/
 
 vc-preamble: |-
 
@@ -64,23 +66,23 @@ vc-theorems: |-
       find_max_votes 2 2 1 [[1,2],[3,4]] = 4 := by
     sorry
   
-  /--
+  /-
   info: 22
   -/
-  #guard_msgs in
-  #eval find_max_votes 4 4 3 [[1, 4, 5, 7], [2, 3, 8, 6], [1, 4, 8, 9], [5, 1, 5, 6]]
+  -- #guard_msgs in
+  -- #eval find_max_votes 4 4 3 [[1, 4, 5, 7], [2, 3, 8, 6], [1, 4, 8, 9], [5, 1, 5, 6]]
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval find_max_votes 2 2 2 [[1, 2], [3, 4]]
+  -- #guard_msgs in
+  -- #eval find_max_votes 2 2 2 [[1, 2], [3, 4]]
   
-  /--
+  /-
   info: 17
   -/
-  #guard_msgs in
-  #eval find_max_votes 3 3 2 [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+  -- #guard_msgs in
+  -- #eval find_max_votes 3 3 2 [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,0 +1,52 @@
+/-
+Write a function that takes one or more arrays and returns a new array of unique values in the order of the original provided arrays.
+
+In other words, all values present from all arrays should be included in their original order, but with no duplicates in the final array.
+
+The unique numbers should be sorted by their original order, but the final array should not be sorted in numerical order.
+
+Check the assertion tests for examples.
+
+*Courtesy of [FreeCodeCamp](https://www.freecodecamp.com/challenges/sorted-union), a great place to learn web-dev; plus, its founder Quincy Larson is pretty cool and amicable. I made the original one slightly more tricky ;)*
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def unite_unique [BEq α] : List (List α) → List α
+  | _ => sorry
+
+theorem unite_unique_maintains_order [BEq α] (arrays : List (List α)) :
+  let result := unite_unique arrays
+  -- Result has no duplicates
+  (∀ (i j : Fin result.length),
+    result.get i = result.get j → i = j) ∧
+  -- All input elements are present
+  (∀ arr ∈ arrays, ∀ val ∈ arr, val ∈ result) ∧
+  -- Order is preserved between arrays
+  (∀ (i j : Fin result.length), i.val < j.val →
+    let val := result.get j
+    let prior_val := result.get i
+    ∃ (array_idx₁ array_idx₂ : Nat), array_idx₁ ≤ array_idx₂ ∧ 
+      array_idx₂ < arrays.length ∧
+      prior_val ∈ arrays.get! array_idx₁ ∧
+      val ∈ arrays.get! array_idx₂) :=
+sorry
+
+theorem unite_unique_bound [BEq α] (arrays : List (List α)) :
+  let result := unite_unique arrays
+  result.length ≤ (arrays.map List.length).foldl Nat.add 0 :=
+sorry
+
+theorem unite_unique_empty_arrays [BEq α] (arrays : List (List α)) :
+  let result := unite_unique arrays
+  let flattened := arrays.join
+  -- Result has same elements as flattened arrays
+  (∀ x, x ∈ result ↔ x ∈ flattened) ∧
+  -- First occurrence property
+  (∀ (i j : Fin result.length),
+    result.get i = result.get j → i.val ≤ j.val) :=
+sorry
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded

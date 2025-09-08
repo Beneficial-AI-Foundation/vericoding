@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function that checks the braces status in a string, and return `True` if all braces are properly closed, or `False` otherwise. Available types of brackets: `()`, `[]`, `{}`.
   
   **Please note, you need to write this function without using regex!**
@@ -14,6 +15,7 @@ vc-description: |-
   ')12[x]34('                  =>  False
   ```
   Don't forget to rate this kata! Thanks :)
+  -/
 
 vc-preamble: |-
 
@@ -48,23 +50,23 @@ vc-theorems: |-
     (∀ c, c ∈ s.data → c ∉ ['(', ')', '[', ']', '{', '}']) →
     braces_status s = true := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval braces_status "[()]"
+  -- #guard_msgs in
+  -- #eval braces_status "[()]"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval braces_status "([)]"
+  -- #guard_msgs in
+  -- #eval braces_status "([)]"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval braces_status "()[]{}()"
+  -- #guard_msgs in
+  -- #eval braces_status "()[]{}()"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

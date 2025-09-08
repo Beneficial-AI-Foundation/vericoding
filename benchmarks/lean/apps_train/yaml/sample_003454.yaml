@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In genetic the reverse complement of a sequence is formed by **reversing** the sequence and then taking the complement of each symbol.
   
   The four nucleotides in DNA is Adenine (A), Cytosine (C), Guanine (G) and Thymine (Thymine). 
@@ -16,6 +17,7 @@ vc-description: |-
   **Note**: You need to take care of lower and upper case. And if a sequence conatains some invalid characters you need to return "Invalid sequence".
   
   This kata is based on the following [one](http://www.codewars.com/kata/complementary-dna/ruby) but with a little step in addition.
+  -/
 
 vc-preamble: |-
 
@@ -58,29 +60,29 @@ vc-theorems: |-
     (h : ∀ c ∈ dna.data, c.toLower = 'a' ∨ c.toLower = 't' ∨ c.toLower = 'c' ∨ c.toLower = 'g') :
     reverse_complement dna = reverse_complement dna.toUpper := sorry
   
-  /--
+  /-
   info: 'TTCCGGAA'
   -/
-  #guard_msgs in
-  #eval reverse_complement "TTCCGGAA"
+  -- #guard_msgs in
+  -- #eval reverse_complement "TTCCGGAA"
   
-  /--
+  /-
   info: 'TACAGTCAGTC'
   -/
-  #guard_msgs in
-  #eval reverse_complement "GACTGACTGTA"
+  -- #guard_msgs in
+  -- #eval reverse_complement "GACTGACTGTA"
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval reverse_complement ""
+  -- #guard_msgs in
+  -- #eval reverse_complement ""
   
-  /--
+  /-
   info: 'Invalid sequence'
   -/
-  #guard_msgs in
-  #eval reverse_complement "XYZ"
+  -- #guard_msgs in
+  -- #eval reverse_complement "XYZ"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

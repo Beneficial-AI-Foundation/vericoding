@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There is a row of m houses in a small city, each house must be painted with one of the n colors (labeled from 1 to n), some houses that has been painted last summer should not be painted again.
   A neighborhood is a maximal group of continuous houses that are painted with the same color. (For example: houses = [1,2,2,3,3,2,1,1] contains 5 neighborhoods  [{1}, {2,2}, {3,3}, {2}, {1,1}]).
   Given an array houses, an m * n matrix cost and an integer target where:
@@ -40,6 +41,7 @@ vc-description: |-
   1 <= target <= m
   0 <= houses[i] <= n
   1 <= cost[i][j] <= 10^4
+  -/
 
 vc-preamble: |-
 
@@ -78,23 +80,23 @@ vc-theorems: |-
   theorem min_cost_impossible_target :
     minCost [0,0] [[1,1], [1,1]] 2 2 3 = -1 := sorry
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval min_cost [0, 0, 0, 0, 0] [[1, 10], [10, 1], [10, 1], [1, 10], [5, 1]] 5 2 3
+  -- #guard_msgs in
+  -- #eval min_cost [0, 0, 0, 0, 0] [[1, 10], [10, 1], [10, 1], [1, 10], [5, 1]] 5 2 3
   
-  /--
+  /-
   info: 11
   -/
-  #guard_msgs in
-  #eval min_cost [0, 2, 1, 2, 0] [[1, 10], [10, 1], [10, 1], [1, 10], [5, 1]] 5 2 3
+  -- #guard_msgs in
+  -- #eval min_cost [0, 2, 1, 2, 0] [[1, 10], [10, 1], [10, 1], [1, 10], [5, 1]] 5 2 3
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval min_cost [3, 1, 2, 3] [[1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1]] 4 3 3
+  -- #guard_msgs in
+  -- #eval min_cost [3, 1, 2, 3] [[1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1]] 4 3 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

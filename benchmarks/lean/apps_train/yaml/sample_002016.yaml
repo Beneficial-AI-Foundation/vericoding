@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   As Will is stuck in the Upside Down, he can still communicate with his mom, Joyce, through the Christmas lights (he can turn them on and off with his mind). He can't directly tell his mom where he is, because the monster that took him to the Upside Down will know and relocate him.  [Image] 
   
   Thus, he came up with a puzzle to tell his mom his coordinates. His coordinates are the answer to the following problem.
@@ -37,6 +38,7 @@ vc-description: |-
   For the first sample testcase, the pretty substrings of s are:  "(?" which can be transformed to "()".  "?)" which can be transformed to "()".  "((?)" which can be transformed to "(())".  "(?))" which can be transformed to "(())".  
   
   For the second sample testcase, the pretty substrings of s are:  "??" which can be transformed to "()".  "()".  "??()" which can be transformed to "()()".  "?()?" which can be transformed to "(())".  "??" which can be transformed to "()".  "()??" which can be transformed to "()()".  "??()??" which can be transformed to "()()()".
+  -/
 
 vc-preamble: |-
 
@@ -64,23 +66,23 @@ vc-theorems: |-
     count_pretty_substrings s ≥ 1 := 
     sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval count_pretty_substrings "((?))"
+  -- #guard_msgs in
+  -- #eval count_pretty_substrings "((?))"
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval count_pretty_substrings "??()??"
+  -- #guard_msgs in
+  -- #eval count_pretty_substrings "??()??"
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_pretty_substrings "??"
+  -- #guard_msgs in
+  -- #eval count_pretty_substrings "??"
 
 vc-postamble: |-
   -- Apps difficulty: competition

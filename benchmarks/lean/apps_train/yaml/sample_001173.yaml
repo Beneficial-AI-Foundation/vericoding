@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Two friends David and Rojer were preparing for their weekly class-test.
   The are preparing for the math test, but because of continuously adding big integers and solving equations they got exhausted. They decided to take break and play a game. They play a game which will help them in both(for having fun and will also help to prepare for math test).
   There are N words and they have to find RESULT with the help of these words (just like they have N integers and they have to find integer RESULT=sum of N integers) . Since they are playing this game for the first time! They are not too good in this. Help them in finding weather their RESULT is correct or not.   
@@ -31,6 +32,7 @@ vc-description: |-
   - $2 \leq N \leq 10$
   - $1 \leq Length of The word \leq 10$
   - $1 \leq Length of The Result \leq 11$
+  -/
 
 vc-preamble: |-
 
@@ -71,23 +73,23 @@ vc-theorems: |-
       (∀ c ∈ firstChars, mapping c ≠ 0) :=
   sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval isSolvable ["THIS", "IS", "TOO"] "FUNNY"
+  -- #guard_msgs in
+  -- #eval isSolvable ["THIS", "IS", "TOO"] "FUNNY"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval isSolvable ["SEND", "MORE"] "MONEY"
+  -- #guard_msgs in
+  -- #eval isSolvable ["SEND", "MORE"] "MONEY"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval isSolvable ["AB", "CD"] "EF"
+  -- #guard_msgs in
+  -- #eval isSolvable ["AB", "CD"] "EF"
 
 vc-postamble: |-
   -- Apps difficulty: interview

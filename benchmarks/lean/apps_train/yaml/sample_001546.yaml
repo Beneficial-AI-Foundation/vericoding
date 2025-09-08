@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are at the top left cell $(1, 1)$ of an $n \times m$ labyrinth. Your goal is to get to the bottom right cell $(n, m)$. You can only move right or down, one cell per step. Moving right from a cell $(x, y)$ takes you to the cell $(x, y + 1)$, while moving down takes you to the cell $(x + 1, y)$.
   
   Some cells of the labyrinth contain rocks. When you move to a cell with rock, the rock is pushed to the next cell in the direction you're moving. If the next cell contains a rock, it gets pushed further, and so on.
@@ -52,6 +53,7 @@ vc-description: |-
   In the second sample case the goal is blocked and is unreachable.
   
   Illustrations for the third sample case can be found here: https://assets.codeforces.com/rounds/1225/index.html
+  -/
 
 vc-preamble: |-
 
@@ -101,23 +103,23 @@ vc-theorems: |-
     0 ≤ result ∧ result < 10^9+7 :=
   sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_paths 1 1 ["."]
+  -- #guard_msgs in
+  -- #eval count_paths 1 1 ["."]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_paths 2 3 ["...", "..R"]
+  -- #guard_msgs in
+  -- #eval count_paths 2 3 ["...", "..R"]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval count_paths 4 4 ["...R", ".RR.", ".RR.", "R..."]
+  -- #guard_msgs in
+  -- #eval count_paths 4 4 ["...R", ".RR.", ".RR.", "R..."]
 
 vc-postamble: |-
   -- Apps difficulty: interview

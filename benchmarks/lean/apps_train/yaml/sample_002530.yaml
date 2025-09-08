@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A marine themed rival site to Codewars has started. Codwars is advertising their website all over the internet using subdomains to hide or obfuscate their domain to trick people into clicking on their site.
   
   Your task is to write a function that accepts a URL as a string and determines if it would result in an http request to codwars.com.
@@ -19,6 +20,7 @@ vc-description: |-
   findCodwars("codewars.com"); // false
   findCodwars("https://subdomain.codwars.codewars.com/a/sub/directory/codwars.com?a=querystring"); // false
   ```
+  -/
 
 vc-preamble: |-
 
@@ -60,23 +62,23 @@ vc-theorems: |-
     (h2 : text.data.all (λ c => 'A' ≤ c ∧ c ≤ 'Z')) :
     find_codwars ("CODWARS.com/" ++ text) = false := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval find_codwars "codwars.com"
+  -- #guard_msgs in
+  -- #eval find_codwars "codwars.com"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval find_codwars "https://www.codwars.com/kata"
+  -- #guard_msgs in
+  -- #eval find_codwars "https://www.codwars.com/kata"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval find_codwars "codwars.comp"
+  -- #guard_msgs in
+  -- #eval find_codwars "codwars.comp"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

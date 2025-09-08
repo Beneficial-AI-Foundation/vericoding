@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a 2D grid of 0s and 1s, return the number of elements in the largest square subgrid that has all 1s on its border, or 0 if such a subgrid doesn't exist in the grid.
   
   Example 1:
@@ -14,6 +15,7 @@ vc-description: |-
   1 <= grid.length <= 100
   1 <= grid[0].length <= 100
   grid[i][j] is 0 or 1
+  -/
 
 vc-preamble: |-
 
@@ -48,23 +50,23 @@ vc-theorems: |-
     let maxPossible := (min grid.length (grid.head?.getD []).length) ^ 2
     0 ≤ result ∧ result ≤ maxPossible := sorry
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval largest1BorderedSquare [[1, 1, 1], [1, 0, 1], [1, 1, 1]]
+  -- #guard_msgs in
+  -- #eval largest1BorderedSquare [[1, 1, 1], [1, 0, 1], [1, 1, 1]]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval largest1BorderedSquare [[1, 1, 0, 0]]
+  -- #guard_msgs in
+  -- #eval largest1BorderedSquare [[1, 1, 0, 0]]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval largest1BorderedSquare [[0, 0], [0, 0]]
+  -- #guard_msgs in
+  -- #eval largest1BorderedSquare [[0, 0], [0, 0]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

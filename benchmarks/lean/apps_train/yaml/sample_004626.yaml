@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   [XKCD 1609]( http://xkcd.com/1609/) provides us with the following fun fact:
   
   ![If anyone tries this on you, the best reply is a deadpan "Oh yeah, that's a common potato chip flavor in Canada."](http://imgs.xkcd.com/comics/food_combinations.png)
@@ -32,6 +33,7 @@ vc-description: |-
   
   ### Bonus:
   If you thought this kata was easy, try this one: [Testing 'Food combinations'](http://www.codewars.com/kata/testing-food-combinations) in which you get to write a method similar to the one the tests here use to check that a result is valid and returns any errors it has.
+  -/
 
 vc-preamble: |-
 
@@ -54,23 +56,23 @@ vc-theorems: |-
   theorem actually_really_good_handles_duplicates (food : String) :
     actually_really_good [food, food] = actually_really_good [food] := sorry
   
-  /--
+  /-
   info: "You know what's actually really good? Nothing!"
   -/
-  #guard_msgs in
-  #eval actually_really_good []
+  -- #guard_msgs in
+  -- #eval actually_really_good []
   
-  /--
+  /-
   info: "You know what's actually really good? Peanut butter and more peanut butter."
   -/
-  #guard_msgs in
-  #eval actually_really_good ["Peanut butter"]
+  -- #guard_msgs in
+  -- #eval actually_really_good ["Peanut butter"]
   
-  /--
+  /-
   info: "You know what's actually really good? Ice cream and ham."
   -/
-  #guard_msgs in
-  #eval actually_really_good ["Ice cream", "Ham"]
+  -- #guard_msgs in
+  -- #eval actually_really_good ["Ice cream", "Ham"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

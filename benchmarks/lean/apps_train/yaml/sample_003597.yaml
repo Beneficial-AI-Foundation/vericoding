@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this Kata, you will be given an array of arrays and your task will be to return the number of unique arrays that can be formed by picking exactly one element from each subarray. 
   
   For example: `solve([[1,2],[4],[5,6]]) = 4`, because it results in only `4` possiblites. They are `[1,4,5],[1,4,6],[2,4,5],[2,4,6]`. 
@@ -23,6 +24,7 @@ vc-description: |-
   [Sum of integer combinations](https://www.codewars.com/kata/59f3178e3640cef6d90000d5)
   
   [Sum of array singles](https://www.codewars.com/kata/59f11118a5e129e591000134)
+  -/
 
 vc-preamble: |-
 
@@ -51,23 +53,23 @@ vc-theorems: |-
     solve [lst] = (lst.eraseDups).length := by
     sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval solve [[1, 2], [4], [5, 6]]
+  -- #guard_msgs in
+  -- #eval solve [[1, 2], [4], [5, 6]]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval solve [[1, 2], [4, 4], [5, 6, 6]]
+  -- #guard_msgs in
+  -- #eval solve [[1, 2], [4, 4], [5, 6, 6]]
   
-  /--
+  /-
   info: 72
   -/
-  #guard_msgs in
-  #eval solve [[1, 2, 3], [3, 4, 6, 6, 7], [8, 9, 10, 12, 5, 6]]
+  -- #guard_msgs in
+  -- #eval solve [[1, 2, 3], [3, 4, 6, 6, 7], [8, 9, 10, 12, 5, 6]]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

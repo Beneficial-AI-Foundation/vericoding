@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The idea for this Kata came from 9gag today.[here](http://9gag.com/gag/amrb4r9)
   
   [screen]:("http://img-9gag-fun.9cache.com/photo/amrb4r9_700b.jpg")
@@ -26,6 +27,7 @@ vc-description: |-
   ~~~if:php
   Although the proper alphabet for j is `Juliett` you have to use `Juliet` here
   ~~~
+  -/
 
 vc-preamble: |-
 
@@ -59,23 +61,23 @@ vc-theorems: |-
   theorem case_insensitive (s : String) :
     to_nato s.toLower = to_nato s.toUpper := sorry
   
-  /--
+  /-
   info: 'India Foxtrot Yankee Oscar Uniform Charlie Alfa November Romeo Echo Alfa Delta'
   -/
-  #guard_msgs in
-  #eval to_nato "If you can read"
+  -- #guard_msgs in
+  -- #eval to_nato "If you can read"
   
-  /--
+  /-
   info: 'Delta India Delta November Oscar Tango Sierra Echo Echo Tango Hotel Alfa Tango Charlie Oscar Mike India November Golf'
   -/
-  #guard_msgs in
-  #eval to_nato "Did not see that coming"
+  -- #guard_msgs in
+  -- #eval to_nato "Did not see that coming"
   
-  /--
+  /-
   info: 'India Foxtrot , Yankee Oscar Uniform Charlie Alfa November Romeo Echo Alfa Delta ?'
   -/
-  #guard_msgs in
-  #eval to_nato "If, you can read?"
+  -- #guard_msgs in
+  -- #eval to_nato "If, you can read?"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

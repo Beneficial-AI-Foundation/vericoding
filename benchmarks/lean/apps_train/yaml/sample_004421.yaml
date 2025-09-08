@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Convert a hash into an array. Nothing more, Nothing less.
   
   ```
@@ -15,6 +16,7 @@ vc-description: |-
   ```
   
   Good Luck!
+  -/
 
 vc-preamble: |-
   def convert_hash_to_array (d: List (String × (String ⊕ Int))) : List (String × (String ⊕ Int)) :=
@@ -40,23 +42,23 @@ vc-theorems: |-
     convert_hash_to_array [] = [] :=
   sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval convert_hash_to_array {"name": "Jeremy"}
+  -- #guard_msgs in
+  -- #eval convert_hash_to_array {"name": "Jeremy"}
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval convert_hash_to_array {"name": "Jeremy", "age": 24, "role": "Software Engineer"}
+  -- #guard_msgs in
+  -- #eval convert_hash_to_array {"name": "Jeremy", "age": 24, "role": "Software Engineer"}
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval convert_hash_to_array {}
+  -- #guard_msgs in
+  -- #eval convert_hash_to_array {}
 
 vc-postamble: |-
   -- Apps difficulty: introductory

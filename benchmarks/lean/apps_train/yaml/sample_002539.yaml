@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You're playing a game with a friend involving a bag of marbles. In the bag are ten marbles:
   
   * 1 smooth red marble
@@ -19,6 +20,7 @@ vc-description: |-
   The probability should be a string and should discard any digits after the 100ths place. For example, `2 / 3` or `0.6666666666666666` would become the string `'0.66'`. Note this is different from rounding.
   
   As a complete example, `color_probability('red', 'bumpy')` should return the string `'0.57'`.
+  -/
 
 vc-preamble: |-
   def validColors := ["red", "yellow", "green"]

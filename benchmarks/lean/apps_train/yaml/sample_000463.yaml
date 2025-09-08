@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array of integers arr.
   We want to select three indices i, j and k where (0 <= i < j <= k < arr.length).
   Let's define a and b as follows:
@@ -34,6 +35,7 @@ vc-description: |-
   
   1 <= arr.length <= 300
   1 <= arr[i] <= 10^8
+  -/
 
 vc-preamble: |-
 
@@ -58,23 +60,23 @@ vc-theorems: |-
     count_triplets (arr ++ [0]) ≥ count_triplets arr :=
   sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval count_triplets [2, 3, 1, 6, 7]
+  -- #guard_msgs in
+  -- #eval count_triplets [2, 3, 1, 6, 7]
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval count_triplets [1, 1, 1, 1, 1]
+  -- #guard_msgs in
+  -- #eval count_triplets [1, 1, 1, 1, 1]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_triplets [1, 3, 5, 7, 9]
+  -- #guard_msgs in
+  -- #eval count_triplets [1, 3, 5, 7, 9]
 
 vc-postamble: |-
   -- Apps difficulty: interview

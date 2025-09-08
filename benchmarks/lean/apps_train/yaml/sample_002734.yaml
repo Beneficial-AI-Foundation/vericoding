@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this kata you will be given an **integer n**, which is the number of times that is thown a coin. You will have to return an array of string for all the possibilities (heads[H] and tails[T]). Examples:
   ```coin(1) should return {"H", "T"}```
   ```coin(2) should return {"HH", "HT", "TH", "TT"}```
@@ -10,6 +11,7 @@ vc-description: |-
   INPUT:
   ```0 < n < 18```
   Careful with performance!! You'll have to pass 3 basic test (n = 1, n = 2, n = 3), many medium tests (3 < n <= 10) and many large tests (10 < n < 18)
+  -/
 
 vc-preamble: |-
 
@@ -43,23 +45,23 @@ vc-theorems: |-
   theorem coin_negative (n : Int) :
     n < 0 → coin (Int.toNat n) = [] := sorry
   
-  /--
+  /-
   info: ['H', 'T']
   -/
-  #guard_msgs in
-  #eval coin 1
+  -- #guard_msgs in
+  -- #eval coin 1
   
-  /--
+  /-
   info: ['HH', 'HT', 'TH', 'TT']
   -/
-  #guard_msgs in
-  #eval coin 2
+  -- #guard_msgs in
+  -- #eval coin 2
   
-  /--
+  /-
   info: ['HHH', 'HHT', 'HTH', 'HTT', 'THH', 'THT', 'TTH', 'TTT']
   -/
-  #guard_msgs in
-  #eval coin 3
+  -- #guard_msgs in
+  -- #eval coin 3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

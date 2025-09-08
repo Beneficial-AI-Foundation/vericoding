@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   -----Problem Statement-----
   Write a program that accepts a number, n, and outputs the same.
   
@@ -16,6 +17,7 @@ vc-description: |-
   
   -----Sample Output-----
   123
+  -/
 
 vc-preamble: |-
 
@@ -36,23 +38,23 @@ vc-theorems: |-
   theorem return_number_nonpos (n : Int) (h : n ≤ 0) :
     return_number n ≤ 0 ∧ return_number n = n := sorry
   
-  /--
+  /-
   info: 123
   -/
-  #guard_msgs in
-  #eval return_number 123
+  -- #guard_msgs in
+  -- #eval return_number 123
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval return_number 0
+  -- #guard_msgs in
+  -- #eval return_number 0
   
-  /--
+  /-
   info: 99999
   -/
-  #guard_msgs in
-  #eval return_number 99999
+  -- #guard_msgs in
+  -- #eval return_number 99999
 
 vc-postamble: |-
   -- Apps difficulty: interview

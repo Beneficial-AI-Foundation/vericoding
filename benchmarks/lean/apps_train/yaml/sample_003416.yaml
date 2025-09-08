@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   > [Run-length encoding](https://en.wikipedia.org/w/index.php?title=Run-length_encoding) (RLE) is a very simple form of data compression in which runs of data (that is, sequences in which the same data value occurs in many consecutive data elements) are stored as a single data value and count, rather than as the original run. Wikipedia
   
   ## Task
@@ -25,6 +26,7 @@ vc-description: |-
   run_length_encoding("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbb")
   # => [[34,'a'], [3,'b']]
   ```
+  -/
 
 vc-preamble: |-
 
@@ -57,23 +59,23 @@ vc-theorems: |-
   theorem rle_empty_string :
     run_length_encoding "" = [] := sorry
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval run_length_encoding ""
+  -- #guard_msgs in
+  -- #eval run_length_encoding ""
   
-  /--
+  /-
   info: [[1, 'a'], [1, 'b'], [1, 'c']]
   -/
-  #guard_msgs in
-  #eval run_length_encoding "abc"
+  -- #guard_msgs in
+  -- #eval run_length_encoding "abc"
   
-  /--
+  /-
   info: [[34, 'a'], [3, 'b']]
   -/
-  #guard_msgs in
-  #eval run_length_encoding "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbb"
+  -- #guard_msgs in
+  -- #eval run_length_encoding "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbb"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

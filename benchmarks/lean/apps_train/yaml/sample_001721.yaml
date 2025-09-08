@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ### Please also check out other katas in [Domino Tiling series](https://www.codewars.com/collections/5d19554d13dba80026a74ff5)!
   
   ---
@@ -63,6 +64,7 @@ vc-description: |-
   `1 <= N <= 10000`
   
   All inputs are valid integers.
+  -/
 
 vc-preamble: |-
 
@@ -87,23 +89,23 @@ vc-theorems: |-
   theorem three_by_n_mod (n : Nat) (h : n > 0) :
     three_by_n n = three_by_n n % 12345787 := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval three_by_n 2
+  -- #guard_msgs in
+  -- #eval three_by_n 2
   
-  /--
+  /-
   info: 11
   -/
-  #guard_msgs in
-  #eval three_by_n 4
+  -- #guard_msgs in
+  -- #eval three_by_n 4
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval three_by_n 1
+  -- #guard_msgs in
+  -- #eval three_by_n 1
 
 vc-postamble: |-
   -- Apps difficulty: interview

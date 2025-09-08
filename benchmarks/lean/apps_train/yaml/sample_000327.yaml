@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given two equal-size strings s and t. In one step you can choose any character of t and replace it with another character.
   Return the minimum number of steps to make t an anagram of s.
   An Anagram of a string is a string that contains the same characters with a different (or the same) ordering.
@@ -31,6 +32,7 @@ vc-description: |-
   1 <= s.length <= 50000
   s.length == t.length
   s and t contain lower-case English letters only.
+  -/
 
 vc-preamble: |-
 
@@ -69,23 +71,23 @@ vc-theorems: |-
     min_steps_to_anagram "" "a" = 1 :=
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval min_steps_to_anagram "bab" "aba"
+  -- #guard_msgs in
+  -- #eval min_steps_to_anagram "bab" "aba"
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval min_steps_to_anagram "leetcode" "practice"
+  -- #guard_msgs in
+  -- #eval min_steps_to_anagram "leetcode" "practice"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_steps_to_anagram "anagram" "mangaar"
+  -- #guard_msgs in
+  -- #eval min_steps_to_anagram "anagram" "mangaar"
 
 vc-postamble: |-
   -- Apps difficulty: interview

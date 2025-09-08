@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a string s containing lowercase letters and an integer k. You need to :
   
   First, change some characters of s to other lowercase English letters.
@@ -23,6 +24,7 @@ vc-description: |-
   
   1 <= k <= s.length <= 100.
   s only contains lowercase English letters.
+  -/
 
 vc-preamble: |-
 
@@ -54,23 +56,23 @@ vc-theorems: |-
     (s : String) (h: s.length > 0) :
     palindrome_partition s s.length = 0 := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval palindrome_partition "abc" 2
+  -- #guard_msgs in
+  -- #eval palindrome_partition "abc" 2
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval palindrome_partition "aabbc" 3
+  -- #guard_msgs in
+  -- #eval palindrome_partition "aabbc" 3
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval palindrome_partition "leetcode" 8
+  -- #guard_msgs in
+  -- #eval palindrome_partition "leetcode" 8
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Debug celsius converter
   
   Your friend is traveling abroad to the United States so he wrote a program to convert fahrenheit to celsius. Unfortunately his code has some bugs.
@@ -20,6 +21,7 @@ vc-description: |-
   ```if:typescript
   Please round to 5dp (use `Math.round()`)
   ```
+  -/
 
 vc-preamble: |-
 
@@ -56,23 +58,23 @@ vc-theorems: |-
   theorem weather_info_freezing {temp : Float} (h : temp < 32) :
     ∃ s₁ s₂ : String, weather_info temp = s₁ ++ "freezing temperature" ++ s₂ := sorry
   
-  /--
+  /-
   info: '10.0 is above freezing temperature'
   -/
-  #guard_msgs in
-  #eval weather_info 50
+  -- #guard_msgs in
+  -- #eval weather_info 50
   
-  /--
+  /-
   info: '-5.0 is freezing temperature'
   -/
-  #guard_msgs in
-  #eval weather_info 23
+  -- #guard_msgs in
+  -- #eval weather_info 23
   
-  /--
+  /-
   info: '0.0 is freezing temperature'
   -/
-  #guard_msgs in
-  #eval weather_info 32
+  -- #guard_msgs in
+  -- #eval weather_info 32
 
 vc-postamble: |-
   -- Apps difficulty: introductory

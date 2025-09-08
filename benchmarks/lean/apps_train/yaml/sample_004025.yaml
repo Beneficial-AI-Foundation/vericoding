@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    Mr.Odd is my friend. Some of his common dialogues are “Am I looking odd?” , “It’s looking very odd” etc. Actually “odd” is his favorite word.
   
@@ -23,6 +24,7 @@ vc-description: |-
    - `[output]` an integer
   
     the maximum number of "odd".
+  -/
 
 vc-preamble: |-
 
@@ -52,23 +54,23 @@ vc-theorems: |-
     s.data.all (fun c => c = 'x') →
     odd s = 0 := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval odd "oudddbo"
+  -- #guard_msgs in
+  -- #eval odd "oudddbo"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval odd "ooudddbd"
+  -- #guard_msgs in
+  -- #eval odd "ooudddbd"
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval odd "qoddoldfoodgodnooofostorodrnvdmddddeidfoi"
+  -- #guard_msgs in
+  -- #eval odd "qoddoldfoodgodnooofostorodrnvdmddddeidfoi"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

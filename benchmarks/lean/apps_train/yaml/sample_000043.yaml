@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Petya is preparing for his birthday. He decided that there would be $n$ different dishes on the dinner table, numbered from $1$ to $n$. Since Petya doesn't like to cook, he wants to order these dishes in restaurants.
   
   Unfortunately, all dishes are prepared in different restaurants and therefore Petya needs to pick up his orders from $n$ different places. To speed up this process, he wants to order courier delivery at some restaurants. Thus, for each dish, there are two options for Petya how he can get it:  the dish will be delivered by a courier from the restaurant $i$, in this case the courier will arrive in $a_i$ minutes,  Petya goes to the restaurant $i$ on his own and picks up the dish, he will spend $b_i$ minutes on this. 
@@ -46,6 +47,7 @@ vc-description: |-
   3
   2
   3
+  -/
 
 vc-preamble: |-
   def solve_dishes (n : Nat) (a : List Nat) (b : List Nat) : Nat :=
@@ -83,23 +85,23 @@ vc-theorems: |-
       solve_dishes n times times ≤ list_maximum times :=
     sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval solve_dishes 4 [3, 7, 4, 5] [2, 1, 2, 4]
+  -- #guard_msgs in
+  -- #eval solve_dishes 4 [3, 7, 4, 5] [2, 1, 2, 4]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval solve_dishes 4 [1, 2, 3, 4] [3, 3, 3, 3]
+  -- #guard_msgs in
+  -- #eval solve_dishes 4 [1, 2, 3, 4] [3, 3, 3, 3]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve_dishes 2 [1, 2] [10, 10]
+  -- #guard_msgs in
+  -- #eval solve_dishes 2 [1, 2] [10, 10]
 
 vc-postamble: |-
   -- Apps difficulty: interview

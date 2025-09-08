@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The accounts of the "Fat to Fit Club (FFC)" association are supervised by John as a volunteered accountant.
   The association is funded through financial donations from generous benefactors. John has a list of
   the first `n` donations: `[14, 30, 5, 7, 9, 11, 15]`
@@ -33,6 +34,7 @@ vc-description: |-
   should raise an error (ValueError or invalid_argument or argument-error or DomainError) 
   or return `-1` or ERROR or Nothing or None depending on the language.
   ```
+  -/
 
 vc-preamble: |-
   def new_avg (donations : List Int) (targetAvg : Int) : Option Int :=
@@ -69,17 +71,17 @@ vc-theorems: |-
     ∀ r : Int, new_avg donations targetAvg = some r →
     r > 0 := sorry
   
-  /--
+  /-
   info: 149
   -/
-  #guard_msgs in
-  #eval new_avg [14, 30, 5, 7, 9, 11, 15] 30
+  -- #guard_msgs in
+  -- #eval new_avg [14, 30, 5, 7, 9, 11, 15] 30
   
-  /--
+  /-
   info: 645
   -/
-  #guard_msgs in
-  #eval new_avg [14, 30, 5, 7, 9, 11, 15] 92
+  -- #guard_msgs in
+  -- #eval new_avg [14, 30, 5, 7, 9, 11, 15] 92
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You will be given a string (x) featuring a cat 'C', a dog 'D' and a mouse 'm'. The rest of the string will be made up of '.'. 
   
   You need to find out if the cat can catch the mouse from it's current position. The cat can jump (j) characters. 
@@ -20,6 +21,7 @@ vc-description: |-
   ```...m....D....C.......``` returns 'Protected!' <-- Cat can jump far enough, but dog is in the way, protecting the mouse
   
   Finally, if all three animals are not present, return 'boring without all three'
+  -/
 
 vc-preamble: |-
 
@@ -76,23 +78,23 @@ vc-theorems: |-
     ¬(s.contains 'C' ∧ s.contains 'D' ∧ s.contains 'm') →
     cat_mouse s 5 = "boring without all three" := sorry
   
-  /--
+  /-
   info: 'Caught!'
   -/
-  #guard_msgs in
-  #eval cat_mouse "..D.....C.m" 2
+  -- #guard_msgs in
+  -- #eval cat_mouse "..D.....C.m" 2
   
-  /--
+  /-
   info: 'Escaped!'
   -/
-  #guard_msgs in
-  #eval cat_mouse "............C.............D..m..." 8
+  -- #guard_msgs in
+  -- #eval cat_mouse "............C.............D..m..." 8
   
-  /--
+  /-
   info: 'Protected!'
   -/
-  #guard_msgs in
-  #eval cat_mouse ".CD......m." 10
+  -- #guard_msgs in
+  -- #eval cat_mouse ".CD......m." 10
 
 vc-postamble: |-
   -- Apps difficulty: introductory

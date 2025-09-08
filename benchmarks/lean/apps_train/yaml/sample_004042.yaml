@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given two positive integers ```a``` and ```b```.
   
   You can perform the following operations on ```a``` so as to obtain ```b``` :
@@ -23,6 +24,7 @@ vc-description: |-
   
   operation(1024,1024) -> 0
   ```
+  -/
 
 vc-preamble: |-
 
@@ -59,41 +61,41 @@ vc-theorems: |-
     n ≠ 0 → isPowerOf2 pow2 →
     operation n n ≤ 2 * operation n pow2 := sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval operation 1 1
+  -- #guard_msgs in
+  -- #eval operation 1 1
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval operation 2 4
+  -- #guard_msgs in
+  -- #eval operation 2 4
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval operation 3 8
+  -- #guard_msgs in
+  -- #eval operation 3 8
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval operation 4 16
+  -- #guard_msgs in
+  -- #eval operation 4 16
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval operation 4 1
+  -- #guard_msgs in
+  -- #eval operation 4 1
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval operation 1 4
+  -- #guard_msgs in
+  -- #eval operation 1 4
 
 vc-postamble: |-
   -- Apps difficulty: introductory

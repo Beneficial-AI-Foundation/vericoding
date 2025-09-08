@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this problem the input will consist of a number of lines of English text consisting of the letters of the English alphabet, the punctuation marks ' (apostrophe), . (full stop), , (comma), ; (semicolon), :(colon) and white space characters (blank, newline).
   Your task is print the words in the text in lexicographic order (that is, dictionary order). Each word should appear exactly once in your list. You can ignore the case (for instance, "The" and "the" are to be treated as the same word). There should be no uppercase letters in the output.
   For example, consider the following candidate for the input text: 
@@ -47,6 +48,7 @@ vc-description: |-
   text
   this
   to
+  -/
 
 vc-preamble: |-
   def process_text (lines : List String) : List String :=
@@ -100,17 +102,17 @@ vc-theorems: |-
     result.tail.length = original_words.length :=
     sorry
   
-  /--
+  /-
   info: ['0']
   -/
-  #guard_msgs in
-  #eval process_text [""]
+  -- #guard_msgs in
+  -- #eval process_text [""]
   
-  /--
+  /-
   info: ['1', 'the']
   -/
-  #guard_msgs in
-  #eval process_text ["The THE the", "THE"]
+  -- #guard_msgs in
+  -- #eval process_text ["The THE the", "THE"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a sorted array of numbers, return the summary of its ranges.
   
   ## Examples
@@ -10,6 +11,7 @@ vc-description: |-
   summary_ranges([0, 1, 2, 3, 3, 3, 4, 4, 5, 6, 7, 7, 9, 9, 10]) == ["0->7", "9->10"]
   summary_ranges([-2, 0, 1, 2, 3, 3, 3, 4, 4, 5, 6, 7, 7, 9, 9, 10, 12]) == ["-2", "0->7", "9->10", "12"]
   ```
+  -/
 
 vc-preamble: |-
   def summary_ranges (nums : List Int) : List String := sorry
@@ -55,23 +57,23 @@ vc-theorems: |-
     (∀ i, i + 1 < nums.length → nums[i+1]! = nums[i]! + 1) →
     summary_ranges nums = [s!"{nums.get! 0}->{nums.get! (nums.length - 1)}"] := sorry
   
-  /--
+  /-
   info: ['1->4']
   -/
-  #guard_msgs in
-  #eval summary_ranges [1, 2, 3, 4]
+  -- #guard_msgs in
+  -- #eval summary_ranges [1, 2, 3, 4]
   
-  /--
+  /-
   info: ['0->2', '5->6', '9']
   -/
-  #guard_msgs in
-  #eval summary_ranges [0, 1, 2, 5, 6, 9]
+  -- #guard_msgs in
+  -- #eval summary_ranges [0, 1, 2, 5, 6, 9]
   
-  /--
+  /-
   info: ['-2', '0->7', '9->10', '12']
   -/
-  #guard_msgs in
-  #eval summary_ranges [-2, 0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 12]
+  -- #guard_msgs in
+  -- #eval summary_ranges [-2, 0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 12]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

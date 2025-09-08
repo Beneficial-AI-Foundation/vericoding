@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Complete the function that accepts a valid string and returns an integer.
   
   Wait, that would be too easy! Every character of the string should be converted to the hex value of its ascii code, then the result should be the sum of the numbers in the hex strings (ignore letters).
@@ -9,6 +10,7 @@ vc-description: |-
   "Hello, World!"  ==> 91
   "Forty4Three"    ==> 113
   ```
+  -/
 
 vc-preamble: |-
 
@@ -33,23 +35,23 @@ vc-theorems: |-
     hex_hash "" = 0 :=
   sorry
   
-  /--
+  /-
   info: 20
   -/
-  #guard_msgs in
-  #eval hex_hash "Yo"
+  -- #guard_msgs in
+  -- #eval hex_hash "Yo"
   
-  /--
+  /-
   info: 91
   -/
-  #guard_msgs in
-  #eval hex_hash "Hello, World!"
+  -- #guard_msgs in
+  -- #eval hex_hash "Hello, World!"
   
-  /--
+  /-
   info: 113
   -/
-  #guard_msgs in
-  #eval hex_hash "Forty4Three"
+  -- #guard_msgs in
+  -- #eval hex_hash "Forty4Three"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

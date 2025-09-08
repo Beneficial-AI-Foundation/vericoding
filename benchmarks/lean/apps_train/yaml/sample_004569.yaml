@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Part 2/3 of my kata series. [Part 1](http://www.codewars.com/kata/riemann-sums-i-left-side-rule)
   
   The description changes little in this second part. Here we simply want to improve our approximation of the integral by using trapezoids instead of rectangles. The left/right side rules have a serious bias and the trapezoidal rules averages those approximations! The same assumptions exist but are pasted here for convenience.
@@ -9,6 +10,7 @@ vc-description: |-
   - b > a 
   - and n will be chosen appropriately given the length of [a, b] (as in I will not have step sizes smaller than machine epsilon)
   - *!!! round answers to the nearest hundredth!!!*
+  -/
 
 vc-preamble: |-
 
@@ -34,23 +36,23 @@ vc-theorems: |-
       (riemann_trapezoidal f n 0 1 - 0.5).abs < 0.1 :=
     sorry
   
-  /--
+  /-
   info: 0.5
   -/
-  #guard_msgs in
-  #eval riemann_trapezoidal lambda x: x 1 0 1
+  -- #guard_msgs in
+  -- #eval riemann_trapezoidal lambda x: x 1 0 1
   
-  /--
+  /-
   info: 2.0
   -/
-  #guard_msgs in
-  #eval riemann_trapezoidal lambda x: 1 1 0 2
+  -- #guard_msgs in
+  -- #eval riemann_trapezoidal lambda x: 1 1 0 2
   
-  /--
+  /-
   info: 2.0
   -/
-  #guard_msgs in
-  #eval riemann_trapezoidal lambda x: x 2 0 2
+  -- #guard_msgs in
+  -- #eval riemann_trapezoidal lambda x: x 2 0 2
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Remember the game 2048?
   
   The main part of this game is merging identical tiles in a row. 
@@ -22,6 +23,7 @@ vc-description: |-
   merge([8,8,16,0])  -->  [16,16,0,0]
   merge([16,16,0,0]) -->  [32,0,0,0]
   ```
+  -/
 
 vc-preamble: |-
 
@@ -54,23 +56,23 @@ vc-theorems: |-
     let output_sum := (merge line).foldl (·+·) 0
     output_sum ≥ input_sum ∧ (output_sum - input_sum) % 2 = 0 := sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval merge [2, 0, 2, 2]
+  -- #guard_msgs in
+  -- #eval merge [2, 0, 2, 2]
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval merge [2, 2, 2, 2, 2]
+  -- #guard_msgs in
+  -- #eval merge [2, 2, 2, 2, 2]
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval merge [8, 16, 16, 8]
+  -- #guard_msgs in
+  -- #eval merge [8, 16, 16, 8]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

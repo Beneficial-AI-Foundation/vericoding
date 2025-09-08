@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Imagine that you have an array of 3 integers each representing a different person. Each number can be 0, 1, or 2 which represents the number of hands that person holds up.
   
   Now imagine there is a sequence which follows these rules:
@@ -24,6 +25,7 @@ vc-description: |-
   ```
   
   Given a number, return an array with the number of hands raised by each person at that step.
+  -/
 
 vc-preamble: |-
 

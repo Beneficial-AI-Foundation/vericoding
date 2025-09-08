@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ### Background
   In classical cryptography, the Hill cipher is a polygraphic substitution cipher based on linear algebra. It was invented by Lester S. Hill in 1929.
   
@@ -35,6 +36,7 @@ vc-description: |-
   - The text to encrypt will contain characters other than the alphabets, its your job to clean them before converting text to matrices. Spaces also need to be removed
   - The text may contain both uppercase and lowercase alphabets. Its your job to standardize them, the encrypted text however should be returned in uppercase letters.
   - The key will always contain 4 lowercase alphabet.
+  -/
 
 vc-preamble: |-
 
@@ -85,23 +87,23 @@ vc-theorems: |-
     (∀ c ∈ text.data, c.isDigit ∨ c = ' ' ∨ c = '.' ∨ c = ',' ∨ c = '!' ∨ c = '?') →
     encrypt text key = "" := sorry
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval encrypt "" "azyb"
+  -- #guard_msgs in
+  -- #eval encrypt "" "azyb"
   
-  /--
+  /-
   info: 'DRJIMN'
   -/
-  #guard_msgs in
-  #eval encrypt "hello" "hill"
+  -- #guard_msgs in
+  -- #eval encrypt "hello" "hill"
   
-  /--
+  /-
   info: 'AAAAAAGACAGAYA'
   -/
-  #guard_msgs in
-  #eval encrypt "This is a good day" "bbaa"
+  -- #guard_msgs in
+  -- #eval encrypt "This is a good day" "bbaa"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

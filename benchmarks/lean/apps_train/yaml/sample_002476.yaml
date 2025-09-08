@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Function Descriptions=====
   sum
   
@@ -36,6 +37,7 @@ vc-description: |-
   
   =====Output Format=====
   Compute the sum along axis 0. Then, print the product of that sum.
+  -/
 
 vc-preamble: |-
 
@@ -57,23 +59,23 @@ vc-theorems: |-
     array_sum_product matrix = rows ^ cols :=
   sorry
   
-  /--
+  /-
   info: 24
   -/
-  #guard_msgs in
-  #eval array_sum_product [[1, 2], [3, 4]]
+  -- #guard_msgs in
+  -- #eval array_sum_product [[1, 2], [3, 4]]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval array_sum_product [[1, 1], [1, 1]]
+  -- #guard_msgs in
+  -- #eval array_sum_product [[1, 1], [1, 1]]
   
-  /--
+  /-
   info: 15
   -/
-  #guard_msgs in
-  #eval array_sum_product [[1, 2], [2, 3]]
+  -- #guard_msgs in
+  -- #eval array_sum_product [[1, 2], [2, 3]]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

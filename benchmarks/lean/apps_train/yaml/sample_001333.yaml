@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Due to COVID19 all employees of chemical factory are quarantined in home. So, company is organized by automated robots. There are $N$ Containers in company, which are labelled with $1$ to $N$ numbers. There are Total $N$ robots in Company, which are labelled $1$ to $N$. 
   Each Robot adds $1$ litter Chemical in containers whose labels are multiple of robots’ label. (E.g. robot labelled 2 will add Chemical in containers labelled 2, 4, 6, ….). 
   Robots follow few rules mentioned below:
@@ -66,6 +67,7 @@ vc-description: |-
   [P2, P3, P3, P1]
   Now, calculate total cost,
   Cost = P2+P3+P3+P1 = 2+2+2+2 = 8
+  -/
 
 vc-preamble: |-
 
@@ -83,11 +85,11 @@ vc-theorems: |-
     (calculate_packing_cost N K1 K2 cost cost cost cost) % cost = 0 :=
     sorry
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval calculate_packing_cost 4 1 4 2 2 2 2
+  -- #guard_msgs in
+  -- #eval calculate_packing_cost 4 1 4 2 2 2 2
 
 vc-postamble: |-
   -- Apps difficulty: interview

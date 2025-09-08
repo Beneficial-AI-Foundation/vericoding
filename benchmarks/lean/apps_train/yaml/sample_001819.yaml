@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In a given 2D binary array A, there are two islands.  (An island is a 4-directionally connected group of 1s not connected to any other 1s.)
   Now, we may change 0s to 1s so as to connect the two islands together to form 1 island.
   Return the smallest number of 0s that must be flipped.  (It is guaranteed that the answer is at least 1.)
@@ -17,6 +18,7 @@ vc-description: |-
   
   2 <= A.length == A[0].length <= 100
   A[i][j] == 0 or A[i][j] == 1
+  -/
 
 vc-preamble: |-
   def Grid := List (List Nat)
@@ -57,23 +59,23 @@ vc-theorems: |-
     0 ≤ shortest_bridge grid ∧ shortest_bridge grid < grid.length * (grid.head!).length :=
   sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval shortest_bridge [[0, 1], [1, 0]]
+  -- #guard_msgs in
+  -- #eval shortest_bridge [[0, 1], [1, 0]]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval shortest_bridge [[0, 1, 0], [0, 0, 0], [0, 0, 1]]
+  -- #guard_msgs in
+  -- #eval shortest_bridge [[0, 1, 0], [0, 0, 0], [0, 0, 1]]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval shortest_bridge [[1, 1, 1, 1, 1], [1, 0, 0, 0, 1], [1, 0, 1, 0, 1], [1, 0, 0, 0, 1], [1, 1, 1, 1, 1]]
+  -- #guard_msgs in
+  -- #eval shortest_bridge [[1, 1, 1, 1, 1], [1, 0, 0, 0, 1], [1, 0, 1, 0, 1], [1, 0, 0, 0, 1], [1, 1, 1, 1, 1]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

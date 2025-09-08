@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ### Context and Definitions
   
   You are in charge of developing a new cool JavaScript library that provides functionality similar to that of [Underscore.js](http://underscorejs.org/).
@@ -68,6 +69,7 @@ vc-description: |-
    - The static method `Cons.fromArray` (or `from_array`, `from_iter`) produces `Cons(1, Cons(2, Cons(3, Cons 4, Cons 5, null)))))`.
     - Above filter creates a new list: `Cons(2, Cons(4, null))`.
    -  So does above map:  `Cons(1, Cos(4, Cons(9, Cons(16, Cons(25, null)))))`.
+  -/
 
 vc-preamble: |-
   def ConsList.fromArray {α : Type} (arr : Array α) : ConsList α :=

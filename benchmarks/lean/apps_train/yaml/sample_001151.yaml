@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Sandy is a professor at a very reputed institute. The institute mandates that all the lectures be communicated in English. As Sandy is not very good at English(or anything actually) the presentations he displays in class have a lot of spelling mistakes in them.
   As you have a dictionary on you containing $N$ words in it, the responsibility of correctly deducing the misspelt word falls upon your shoulders. Sandy's presentation contains in them, $Q$ words which you $think$ are wrongly spelt. A word is misspelt if a $single$ letter in it is missing or is different from the corresponding correctly spelled word in your dictionary.
   For each of the misspelt word in the presentation find out the corresponding correct word from your dictionary.
@@ -51,6 +52,7 @@ vc-description: |-
   -----EXPLANATION:-----
   - In the first misspelt word $szhbdvcngk$, a single letter $c$ is different from the original word $szhbdvrngk$.
   - The second misspelt word $qzhxbnuec$ is missing the letter $i$ that  was in the original word $qzhxibnuec$.
+  -/
 
 vc-preamble: |-
 

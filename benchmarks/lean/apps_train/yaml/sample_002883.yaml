@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The objective of this Kata is to write a function that creates a dictionary of factors for a range of numbers.
   
   The key for each list in the dictionary should be the number. The list associated with each key should possess the factors for the number.
@@ -12,6 +13,7 @@ vc-description: |-
   ```python
   {2: ['None'], 3: ['None'], 4: [2], 5: ['None'], 6: [2, 3]}
   ```
+  -/
 
 vc-preamble: |-
 

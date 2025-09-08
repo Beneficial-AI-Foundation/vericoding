@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ![alt text](https://2.bp.blogspot.com/-DNNiOXduuvQ/Vh-FR-qbKXI/AAAAAAAAEOA/HT0IzJ36zW4/s1600/voz.jpg)
   
   Create a class called `Warrior` which calculates and keeps track of their level and skills, and ranks them as the warrior they've proven to be.
@@ -56,6 +57,7 @@ vc-description: |-
   bruce_lee.experience    # => 9105
   bruce_lee.achievements  # => ["Defeated Chuck Norris"]
   ```
+  -/
 
 vc-preamble: |-
   def Warrior.level (self : Warrior) : Nat := sorry

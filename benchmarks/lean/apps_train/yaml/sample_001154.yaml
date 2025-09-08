@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Toby has found a game to entertain himself.The game is like this:
   
   You are in a coordinate system initially at (0,0) and you are given a sequence of steps which lead to your destination.The steps are given in the form of directions: ’U’ ,’D’ , ’L’ and ‘R’ for up, down, left and right respectively.If you are at position (x,y) then:
@@ -56,6 +57,7 @@ vc-description: |-
   One way is to remove characters at positions 3,4 and the resulting string will be ULLLU and destination still remains (-3,2).
   - 
   test case 2: No character can be removed in this case.
+  -/
 
 vc-preamble: |-
   def count_char (s : String) (c : Char) : Nat := sorry
@@ -77,23 +79,23 @@ vc-theorems: |-
   theorem max_removable_steps_empty {n : Nat} :
     n > 0 → max_removable_steps n "" = n := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval max_removable_steps 7 "ULUDLLU"
+  -- #guard_msgs in
+  -- #eval max_removable_steps 7 "ULUDLLU"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval max_removable_steps 4 "RUUR"
+  -- #guard_msgs in
+  -- #eval max_removable_steps 4 "RUUR"
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval max_removable_steps 4 "LRLR"
+  -- #guard_msgs in
+  -- #eval max_removable_steps 4 "LRLR"
 
 vc-postamble: |-
   -- Apps difficulty: interview

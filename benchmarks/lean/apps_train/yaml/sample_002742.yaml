@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this Kata, you will implement the [Luhn Algorithm](http://en.wikipedia.org/wiki/Luhn_algorithm), which is used to help validate credit card numbers.
   
   Given a positive integer of up to 16 digits, return ```true``` if it is a valid credit card number, and ```false``` if it is not.
@@ -44,6 +45,7 @@ vc-description: |-
   The input will be a string of spaces and digits `0..9`
   
   ```
+  -/
 
 vc-preamble: |-
 

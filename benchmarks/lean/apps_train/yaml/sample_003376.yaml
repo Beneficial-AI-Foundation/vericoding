@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are a skier (marked below by the `X`). You have made it to the Olympics! Well done.
   
   ```
@@ -31,6 +32,7 @@ vc-description: |-
   Not as much fun, eh?
   
   *p.s. if you think "metre" is incorrect, please [read this](https://en.wikipedia.org/wiki/Metre#Spelling)*
+  -/
 
 vc-preamble: |-
   def ski_jump (mountain: List String) : String := sorry
@@ -72,23 +74,23 @@ vc-theorems: |-
     (length ≥ 50 → message = "Gold!!") :=
   sorry
   
-  /--
+  /-
   info: "1.35 metres: He's crap!"
   -/
-  #guard_msgs in
-  #eval ski_jump ["*"]
+  -- #guard_msgs in
+  -- #eval ski_jump ["*"]
   
-  /--
+  /-
   info: "12.15 metres: He's ok!"
   -/
-  #guard_msgs in
-  #eval ski_jump ["*", "**", "***"]
+  -- #guard_msgs in
+  -- #eval ski_jump ["*", "**", "***"]
   
-  /--
+  /-
   info: "48.60 metres: He's flying!"
   -/
-  #guard_msgs in
-  #eval ski_jump ["*", "**", "***", "****", "*****", "******"]
+  -- #guard_msgs in
+  -- #eval ski_jump ["*", "**", "***", "****", "*****", "******"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

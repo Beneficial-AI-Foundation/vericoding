@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Rohit collects coins: he has exactly one coin for every year from 1 to n. Naturally, Rohit keeps all the coins in his collection in the order in which they were released. Once Rohit's younger brother made a change — he took all the coins whose release year dated from l to r inclusively and put them in the reverse order. That is, he took a certain segment [l, r] and reversed it. At that, the segment's endpoints did not coincide. For example, if n = 8, then initially Rohit's coins were kept in the order 1 2 3 4 5 6 7 8. If Rohit's younger brother chose the segment [2, 6], then after the reversal the coin order will change to 1 6 5 4 3 2 7 8. Rohit suspects that someone else could have spoilt the permutation after his brother. Help him to find that out. Check if the given permutation can be obtained from the permutation 1 2 … n using exactly one segment reversal. If it is possible, find the segment itself.
   
   -----Input:-----
@@ -18,6 +19,7 @@ vc-description: |-
   
   -----Sample Output:-----
   2 6
+  -/
 
 vc-preamble: |-
 
@@ -39,23 +41,23 @@ vc-theorems: |-
     let seq := List.reverse (List.range' 1 n) 
     solve n seq = (1, n) := sorry
   
-  /--
+  /-
   info: (2, 6)
   -/
-  #guard_msgs in
-  #eval solve 8 [1, 6, 5, 4, 3, 2, 7, 8]
+  -- #guard_msgs in
+  -- #eval solve 8 [1, 6, 5, 4, 3, 2, 7, 8]
   
-  /--
+  /-
   info: (0, 0)
   -/
-  #guard_msgs in
-  #eval solve 4 [1, 2, 3, 4]
+  -- #guard_msgs in
+  -- #eval solve 4 [1, 2, 3, 4]
   
-  /--
+  /-
   info: (1, 3)
   -/
-  #guard_msgs in
-  #eval solve 3 [3, 2, 1]
+  -- #guard_msgs in
+  -- #eval solve 3 [3, 2, 1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

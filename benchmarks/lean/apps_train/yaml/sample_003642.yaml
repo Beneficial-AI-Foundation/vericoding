@@ -1,10 +1,12 @@
 vc-description: |-
+  /-
   Create a function that takes a number and finds the factors of it, listing them in **descending** order in an **array**.
   
   If the parameter is not an integer or less than 1, return `-1`. In C# return an empty array.
   
   For Example:
   `factors(54)` should return `[54, 27, 18, 9, 6, 3, 2, 1]`
+  -/
 
 vc-preamble: |-
 
@@ -38,35 +40,35 @@ vc-theorems: |-
     factors 0 = [-1] :=
     sorry
   
-  /--
+  /-
   info: [54, 27, 18, 9, 6, 3, 2, 1]
   -/
-  #guard_msgs in
-  #eval factors 54
+  -- #guard_msgs in
+  -- #eval factors 54
   
-  /--
+  /-
   info: [49, 7, 1]
   -/
-  #guard_msgs in
-  #eval factors 49
+  -- #guard_msgs in
+  -- #eval factors 49
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval factors -4
+  -- #guard_msgs in
+  -- #eval factors -4
   
-  /--
+  /-
   info: [1]
   -/
-  #guard_msgs in
-  #eval factors 1
+  -- #guard_msgs in
+  -- #eval factors 1
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval factors 4.5
+  -- #guard_msgs in
+  -- #eval factors 4.5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

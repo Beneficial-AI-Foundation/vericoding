@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this Kata, you will be given a string that has lowercase letters and numbers. Your task is to compare the number groupings and return the largest number. Numbers will not have leading zeros. 
   
   For example, `solve("gh12cdy695m1") = 695`, because this is the largest of all number groupings. 
@@ -6,6 +7,7 @@ vc-description: |-
   Good luck!
   
   Please also try [Simple remove duplicates](https://www.codewars.com/kata/5ba38ba180824a86850000f7)
+  -/
 
 vc-preamble: |-
 
@@ -33,23 +35,23 @@ vc-theorems: |-
     solve s = numbers.maximum?.getD 0
     := by sorry
   
-  /--
+  /-
   info: 695
   -/
-  #guard_msgs in
-  #eval solve "gh12cdy695m1"
+  -- #guard_msgs in
+  -- #eval solve "gh12cdy695m1"
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval solve "2ti9iei7qhr5"
+  -- #guard_msgs in
+  -- #eval solve "2ti9iei7qhr5"
   
-  /--
+  /-
   info: 61
   -/
-  #guard_msgs in
-  #eval solve "vih61w8oohj5"
+  -- #guard_msgs in
+  -- #eval solve "vih61w8oohj5"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

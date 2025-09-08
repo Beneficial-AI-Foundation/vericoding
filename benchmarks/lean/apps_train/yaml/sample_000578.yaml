@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a sequence of integers $A_1,A_2,…,A_N$ and a magical non-zero integer $x$
   You have to select a subsegment of sequence A (possibly empty), and replace the elements in that subsegment after dividing them by x.
   Formally, replace any one subsegment $A_l, A_{l+1}, ..., A_r$ with $A_l/x, A_{l+1}/x, ..., A_r/x$ where $l \leq r$
@@ -27,6 +28,7 @@ vc-description: |-
   
   -----Explanation-----
   Array 1 -2 3, selecting subsegment {3}, you get 1 -2 1.5, which gives $sum=0.5$
+  -/
 
 vc-preamble: |-
   def List.sum (l : List Int) : Int := 

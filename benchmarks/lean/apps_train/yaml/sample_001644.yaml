@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   -----
   __CLEAR CUTTER'S NEEDS YOUR HELP!__
   -----
@@ -39,6 +40,7 @@ vc-description: |-
   Using the power of Stack Overflow and Google, he wants you to create a solution that runs in Θ(n^2) time so that it doesn't take 5 hours to calculate the optimal price for a log of size 50. (He also suggests to research the problem using the keywords in the tags)
   
   __(Be aware that if your algorithm is not efficient, it will attempt to look at 2^49 = 562949953421312 nodes instead of 49^2 = 2401... The solution will automatically fail if it takes longer than 6 seconds... which occurs at right around Log 23)__
+  -/
 
 vc-preamble: |-
 
@@ -62,23 +64,23 @@ vc-theorems: |-
   theorem cut_log_single_unit (prices : List Nat) :
     prices ≠ [] → prices.length > 1 → cut_log prices 1 = prices[1]! := sorry
   
-  /--
+  /-
   info: 13
   -/
-  #guard_msgs in
-  #eval cut_log [0, 1, 5, 8, 9, 10] 5
+  -- #guard_msgs in
+  -- #eval cut_log [0, 1, 5, 8, 9, 10] 5
   
-  /--
+  /-
   info: 22
   -/
-  #guard_msgs in
-  #eval cut_log [0, 1, 5, 8, 9, 10, 17, 17, 20] 8
+  -- #guard_msgs in
+  -- #eval cut_log [0, 1, 5, 8, 9, 10, 17, 17, 20] 8
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval cut_log [0, 3, 5, 8, 9, 10, 17, 17, 20] 4
+  -- #guard_msgs in
+  -- #eval cut_log [0, 3, 5, 8, 9, 10, 17, 17, 20] 4
 
 vc-postamble: |-
   -- Apps difficulty: interview

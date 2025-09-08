@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Function Descriptions=====
   mean
   
@@ -60,6 +61,7 @@ vc-description: |-
   First, print the mean.
   Second, print the var.
   Third, print the std.
+  -/
 
 vc-preamble: |-
   def Matrix := Array (Array Float)

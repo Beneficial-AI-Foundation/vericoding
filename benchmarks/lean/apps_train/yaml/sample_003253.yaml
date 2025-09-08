@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A [Word Square](https://en.wikipedia.org/wiki/Word_square) is a set of words written out in a square grid, such that the same words can be read both horizontally and vertically. The number of words, equal to the number of letters in each word, is known as the *order* of the square.
   
   For example, this is an *order* `5` square found in the ruins of Herculaneum:
@@ -34,6 +35,7 @@ vc-description: |-
     `true`, if a Word Square can be formed;
   
     `false`, if a Word Square cannot be formed.
+  -/
 
 vc-preamble: |-
   def word_square (s : String) : Bool := sorry
@@ -70,23 +72,23 @@ vc-theorems: |-
     else 
       word_square s = (count_odd_occurrences s ≤ n) := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval word_square "SATORAREPOTENETOPERAROTAS"
+  -- #guard_msgs in
+  -- #eval word_square "SATORAREPOTENETOPERAROTAS"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval word_square "NOTSQUARE"
+  -- #guard_msgs in
+  -- #eval word_square "NOTSQUARE"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval word_square "CARDAREAREARDART"
+  -- #guard_msgs in
+  -- #eval word_square "CARDAREAREARDART"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

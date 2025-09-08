@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   Let's define a `parameter` of number `n` as the least common multiple (LCM) of the sum of its digits and their product.
   
@@ -23,6 +24,7 @@ vc-description: |-
   For `n = 1234`, the output should be `120`.
   
   `1+2+3+4=10` and `1*2*3*4=24`, LCM(10,24)=120
+  -/
 
 vc-preamble: |-
   def parameter (n : Nat) : Nat := sorry
@@ -52,23 +54,23 @@ vc-theorems: |-
     (h2 : d ≤ 9) :
     parameter d = d := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval parameter 22
+  -- #guard_msgs in
+  -- #eval parameter 22
   
-  /--
+  /-
   info: 120
   -/
-  #guard_msgs in
-  #eval parameter 1234
+  -- #guard_msgs in
+  -- #eval parameter 1234
   
-  /--
+  /-
   info: 378
   -/
-  #guard_msgs in
-  #eval parameter 239
+  -- #guard_msgs in
+  -- #eval parameter 239
 
 vc-postamble: |-
   -- Apps difficulty: introductory

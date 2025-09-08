@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A reversed arabic no is one whose digits have been written in the reversed order. However in this any trailing zeroes are omitted. The task at hand here is a simple one. You need to add two numbers which have been written in reversed arabic and return the output back in reversed arabic form, assuming no zeroes were lost while reversing.
   
   -----Input-----
@@ -14,6 +15,7 @@ vc-description: |-
   
   Output:
   34
+  -/
 
 vc-preamble: |-
 
@@ -38,23 +40,23 @@ vc-theorems: |-
   theorem reversed_sum_symmetric (s1 s2 : StringNum) :
     reversed_sum s1 s2 = reversed_sum s2 s1 := sorry
   
-  /--
+  /-
   info: 34
   -/
-  #guard_msgs in
-  #eval reversed_sum "24" "1"
+  -- #guard_msgs in
+  -- #eval reversed_sum "24" "1"
   
-  /--
+  /-
   info: 33
   -/
-  #guard_msgs in
-  #eval reversed_sum "11" "22"
+  -- #guard_msgs in
+  -- #eval reversed_sum "11" "22"
   
-  /--
+  /-
   info: 579
   -/
-  #guard_msgs in
-  #eval reversed_sum "123" "456"
+  -- #guard_msgs in
+  -- #eval reversed_sum "123" "456"
 
 vc-postamble: |-
   -- Apps difficulty: interview

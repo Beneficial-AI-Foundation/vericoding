@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A robot is initially at $(0,0)$ on the cartesian plane. It can move in 4 directions - up, down, left, right denoted by letter u, d, l, r respectively. More formally:
   - if the position of robot is $(x,y)$ then u makes it $(x,y+1)$
   - if the position of robot is $(x,y)$ then l makes it $(x-1,y)$
@@ -33,6 +34,7 @@ vc-description: |-
   -1 0
   2 4
   -1749 812
+  -/
 
 vc-preamble: |-
   def find_robot_position (t : Nat) : Int × Int :=
@@ -60,23 +62,23 @@ vc-theorems: |-
     find_robot_position 1 = (0, 1) :=
   sorry
   
-  /--
+  /-
   info: (0, 1)
   -/
-  #guard_msgs in
-  #eval find_robot_position 1
+  -- #guard_msgs in
+  -- #eval find_robot_position 1
   
-  /--
+  /-
   info: (-1, 1)
   -/
-  #guard_msgs in
-  #eval find_robot_position 2
+  -- #guard_msgs in
+  -- #eval find_robot_position 2
   
-  /--
+  /-
   info: (2, 4)
   -/
-  #guard_msgs in
-  #eval find_robot_position 50
+  -- #guard_msgs in
+  -- #eval find_robot_position 50
 
 vc-postamble: |-
   -- Apps difficulty: interview

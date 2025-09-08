@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You have a string S consisting of N uppercase English letters. You are allowed to perform at most one operation of following kind: Choose any position in the string, remove the character at that position and insert it back to any other place in the string.
   
   Find the  lexicographically smallest  string you can achieve.
@@ -31,6 +32,7 @@ vc-description: |-
   -----Explanation-----
   Example case 1. The optimal solution here is to choose the last character and put it in the beginning of the string. So the answer will be ADCB
   Example case 2. The optimal solution here is to choose the 5-th character (1-based index) and put it between the 2-nd and the 3-rd characters. So the answer will be XYYZZZZ
+  -/
 
 vc-preamble: |-
 
@@ -69,23 +71,23 @@ vc-theorems: |-
     find_smallest_string sorted_s = sorted_s :=
   sorry
   
-  /--
+  /-
   info: 'ADCB'
   -/
-  #guard_msgs in
-  #eval find_smallest_string "DCBA"
+  -- #guard_msgs in
+  -- #eval find_smallest_string "DCBA"
   
-  /--
+  /-
   info: 'XYYZZZZ'
   -/
-  #guard_msgs in
-  #eval find_smallest_string "XYZZYZZ"
+  -- #guard_msgs in
+  -- #eval find_smallest_string "XYZZYZZ"
   
-  /--
+  /-
   info: 'ABC'
   -/
-  #guard_msgs in
-  #eval find_smallest_string "ABC"
+  -- #guard_msgs in
+  -- #eval find_smallest_string "ABC"
 
 vc-postamble: |-
   -- Apps difficulty: interview

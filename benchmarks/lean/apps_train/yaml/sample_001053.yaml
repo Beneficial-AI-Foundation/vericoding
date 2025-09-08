@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given an unweighted, undirected graph. Write a program to check if it's a tree topology.
   
   -----Input-----
@@ -17,6 +18,7 @@ vc-description: |-
   
   Output:
   YES
+  -/
 
 vc-preamble: |-
 
@@ -51,23 +53,23 @@ vc-theorems: |-
       else [])
     is_tree n edges = "NO" := sorry
   
-  /--
+  /-
   info: 'YES'
   -/
-  #guard_msgs in
-  #eval is_tree 3 [(1, 2), (2, 3)]
+  -- #guard_msgs in
+  -- #eval is_tree 3 [(1, 2), (2, 3)]
   
-  /--
+  /-
   info: 'NO'
   -/
-  #guard_msgs in
-  #eval is_tree 3 [(1, 2), (2, 3), (1, 3)]
+  -- #guard_msgs in
+  -- #eval is_tree 3 [(1, 2), (2, 3), (1, 3)]
   
-  /--
+  /-
   info: 'NO'
   -/
-  #guard_msgs in
-  #eval is_tree 4 [(1, 2), (3, 4)]
+  -- #guard_msgs in
+  -- #eval is_tree 4 [(1, 2), (3, 4)]
 
 vc-postamble: |-
   -- Apps difficulty: interview

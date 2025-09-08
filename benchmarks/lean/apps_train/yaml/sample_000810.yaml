@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Vivek was quite bored with the lockdown, so he came up with an interesting task. He successfully completed this task and now, he would like you to solve it.
   You are given two strings $A$ and $B$, each with length $N$. Let's index the characters in each string from $0$ ― for each $i$ ($0 \le i < N$), the $i+1$-th characters of $A$ and $B$ are denoted by $A_i$ and $B_i$ respectively. You should convert $A$ to $B$ by performing operations of the following type:
   - Choose a subset $S$ of the set $\{0, 1, \ldots, N-1\}$.
@@ -54,6 +55,7 @@ vc-description: |-
   - There is no way to convert $A$ to $B$ in only one operation.
   Example case 2: We can see that it is impossible to convert $A$ to $B$ since $c$ is always 'a'.
   Example case 3: We can see again that it is impossible to convert $A$ to $B$ since $c$ cannot be 'c'.
+  -/
 
 vc-preamble: |-
 

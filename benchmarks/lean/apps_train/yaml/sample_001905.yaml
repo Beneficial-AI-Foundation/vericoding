@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string s. An awesome substring is a non-empty substring of s such that we can make any number of swaps in order to make it palindrome.
   Return the length of the maximum length awesome substring of s.
   
@@ -24,6 +25,7 @@ vc-description: |-
   
   1 <= s.length <= 10^5
   s consists only of digits.
+  -/
 
 vc-preamble: |-
   def longest_awesome_substring (s : String) : Nat := sorry
@@ -58,23 +60,23 @@ vc-theorems: |-
   theorem reversal_invariant (s : String) (h : s.length > 0) (h2 : ∀ c ∈ s.data, is_digit c) :
     longest_awesome_substring s = longest_awesome_substring (string_reversal s) := sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval longest_awesome_substring "3242415"
+  -- #guard_msgs in
+  -- #eval longest_awesome_substring "3242415"
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval longest_awesome_substring "12345678"
+  -- #guard_msgs in
+  -- #eval longest_awesome_substring "12345678"
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval longest_awesome_substring "213123"
+  -- #guard_msgs in
+  -- #eval longest_awesome_substring "213123"
 
 vc-postamble: |-
   -- Apps difficulty: interview

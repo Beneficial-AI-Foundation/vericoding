@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function called "filterEvenLengthWords".
   
   Given an array of strings, "filterEvenLengthWords" returns an array containing only the elements of the given array whose length is an even number.
@@ -6,6 +7,7 @@ vc-description: |-
   var output = filterEvenLengthWords(['word', 'words', 'word', 'words']);
   
   console.log(output); // --> ['word', 'word']
+  -/
 
 vc-preamble: |-
   def evenLength (s : String) : Bool :=
@@ -36,23 +38,23 @@ vc-theorems: |-
     filterEvenLengthWords words = words.filter evenLength :=
   sorry
   
-  /--
+  /-
   info: ['word', 'word']
   -/
-  #guard_msgs in
-  #eval filter_even_length_words ["word", "words", "word", "words"]
+  -- #guard_msgs in
+  -- #eval filter_even_length_words ["word", "words", "word", "words"]
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval filter_even_length_words ["Hello", "World"]
+  -- #guard_msgs in
+  -- #eval filter_even_length_words ["Hello", "World"]
   
-  /--
+  /-
   info: ['Four']
   -/
-  #guard_msgs in
-  #eval filter_even_length_words ["One", "Two", "Three", "Four"]
+  -- #guard_msgs in
+  -- #eval filter_even_length_words ["One", "Two", "Three", "Four"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

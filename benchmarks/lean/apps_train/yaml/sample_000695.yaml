@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   It's John's birthday; he has brought some candies in distribute among N of his friends. Being a good friend, he decided to distribute all of his candies equally among his friend and he don't want to keep any for himself. He left the task of distributing candies up to his friends, but his friends haven't done a great job in distributing them and now they all have unequal amount of candies.
   He asked all of his friends to keep all the candies in their hands (A[1] to A[N]) so that he can redistribute the candies. Taking a candy away from someone makes them sad and makes the person who gets it happy. Thus, you do not want to do many operations on the number of candies.
   Here each operation stands for, taking away 1 candy from someone and giving it to somebody else.
@@ -40,6 +41,7 @@ vc-description: |-
   10
   
   0
+  -/
 
 vc-preamble: |-
   def List.sum : List Nat → Nat
@@ -69,23 +71,23 @@ vc-theorems: |-
     calc_min_operations n candies ≥ 0 :=
   sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval calc_min_operations 4 [7, 8, 6, 4]
+  -- #guard_msgs in
+  -- #eval calc_min_operations 4 [7, 8, 6, 4]
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval calc_min_operations 6 [7, 3, 10, 2, 3, 8]
+  -- #guard_msgs in
+  -- #eval calc_min_operations 6 [7, 3, 10, 2, 3, 8]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval calc_min_operations 1 [10]
+  -- #guard_msgs in
+  -- #eval calc_min_operations 1 [10]
 
 vc-postamble: |-
   -- Apps difficulty: interview

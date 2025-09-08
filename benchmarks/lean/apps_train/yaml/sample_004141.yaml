@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Fast & Furious Driving School's (F&F) charges for lessons are as below: 
   
   Time
@@ -17,6 +18,7 @@ vc-description: |-
   Out of the kindness of its heart, F&F also provides a 5 minutes grace period. So, if student X were to have a lesson for 65 minutes or 1 hr 35 mins, he will only have to pay for an hour or 1hr 30 minutes respectively. 
   
   For a given lesson time in minutes (min) , write a function price to calculate how much the lesson costs.
+  -/
 
 vc-preamble: |-
 
@@ -42,23 +44,23 @@ vc-theorems: |-
   theorem cost_stepwise_increase (mins: Nat) (h: 66 ≤ mins) :
     cost (mins - 1) ≤ cost mins ∧ cost mins - cost (mins - 1) ≤ 10 := sorry
   
-  /--
+  /-
   info: 30
   -/
-  #guard_msgs in
-  #eval cost 45
+  -- #guard_msgs in
+  -- #eval cost 45
   
-  /--
+  /-
   info: 30
   -/
-  #guard_msgs in
-  #eval cost 63
+  -- #guard_msgs in
+  -- #eval cost 63
   
-  /--
+  /-
   info: 40
   -/
-  #guard_msgs in
-  #eval cost 84
+  -- #guard_msgs in
+  -- #eval cost 84
 
 vc-postamble: |-
   -- Apps difficulty: introductory

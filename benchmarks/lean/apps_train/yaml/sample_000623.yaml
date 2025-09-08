@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef is the leader of Chef's Earth Defense Organization, and his mission is to counter aliens which are threatening the earth. According to information gathered by the organization, there are $N$ alien spaceships (numbered $1$ through $N$) planning to invade the earth. The $i$-th spaceship will appear on the radar at time $C_i$. Each spaceship needs $D$ time to reach earth once it appears on the radar. 
   Chef's organization owns a huge laser cannon which can destroy one spaceship in one shot. However, once the cannon is used once it needs some amount of cool-down time in order to be used again (first shot doesn't require cool-down time before it is used). This cool-down time, however, is configurable. It has to be set before the first shot, and cannot be changed after that. If Chef sets a lower cool-down time, that would increase the energy consumed by the cannon, and vice-versa - the higher the cool-down time, the lower the energy consumed.
   This might be a long battle, and Chef wants to use as little energy as possible. So Chef wants to maximize the cool-down time while still being able to destroy all spaceships before any of them arrive on earth. In particular, the $i$-th spaceship should be shot between the times $C_i$ and $C_i + D$ (both end points inclusive).
@@ -34,6 +35,7 @@ vc-description: |-
   -----Sample Output:-----
   1.5000000000
   2.0000000000
+  -/
 
 vc-preamble: |-
   def solve_spaceship_cooldown (n d : Nat) (arrivals : List Nat) : Float :=

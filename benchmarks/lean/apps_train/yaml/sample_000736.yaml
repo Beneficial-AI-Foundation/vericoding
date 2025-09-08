@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Akshay is interested in mathematics, one day he came across a problem of modulus operator.He has  a list of M integers say arr[M] and has to find all integers K such that :
   - K > 1
   - arr[1]%K = arr[2]%K = arr[3]%K = … = arr[M]%K where '%' is a modulus operator.
@@ -23,6 +24,7 @@ vc-description: |-
   
   -----Sample Output:-----
   2 4
+  -/
 
 vc-preamble: |-
   def List.minimum (l : List Nat) : Nat := 
@@ -67,23 +69,23 @@ vc-theorems: |-
     ∀ x ∈ find_common_divisors nums, x ≤ List.minimum nums :=
   sorry
   
-  /--
+  /-
   info: [2, 4]
   -/
-  #guard_msgs in
-  #eval find_common_divisors [38, 6, 34]
+  -- #guard_msgs in
+  -- #eval find_common_divisors [38, 6, 34]
   
-  /--
+  /-
   info: [2, 3, 6]
   -/
-  #guard_msgs in
-  #eval find_common_divisors [12, 18, 24]
+  -- #guard_msgs in
+  -- #eval find_common_divisors [12, 18, 24]
   
-  /--
+  /-
   info: [5]
   -/
-  #guard_msgs in
-  #eval find_common_divisors [10, 15, 20]
+  -- #guard_msgs in
+  -- #eval find_common_divisors [10, 15, 20]
 
 vc-postamble: |-
   -- Apps difficulty: interview

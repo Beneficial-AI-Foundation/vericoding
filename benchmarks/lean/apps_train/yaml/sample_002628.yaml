@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Find the length between 2 co-ordinates.  The co-ordinates are made of integers between -20 and 20 and will be given in the form of a 2D array:
   
   (0,0) and (5,-7) would be [ [ 0 , 0 ] , [ 5, -7 ] ]
@@ -10,6 +11,7 @@ vc-description: |-
   ```
   
   If the 2 given co-ordinates are the same, the returned length should be "0.00"
+  -/
 
 vc-preamble: |-
   def length_of_line (coords : List (List Int)) : String := sorry
@@ -69,23 +71,23 @@ vc-theorems: |-
                    string_to_float (length_of_line [midpoint, coords[1]!])
     result ≤ via_mid + 0.01 := sorry
   
-  /--
+  /-
   info: '1.41'
   -/
-  #guard_msgs in
-  #eval length_of_line [[0, 0], [1, 1]]
+  -- #guard_msgs in
+  -- #eval length_of_line [[0, 0], [1, 1]]
   
-  /--
+  /-
   info: '0.00'
   -/
-  #guard_msgs in
-  #eval length_of_line [[0, 0], [0, 0]]
+  -- #guard_msgs in
+  -- #eval length_of_line [[0, 0], [0, 0]]
   
-  /--
+  /-
   info: '13.04'
   -/
-  #guard_msgs in
-  #eval length_of_line [[-3, 4], [10, 5]]
+  -- #guard_msgs in
+  -- #eval length_of_line [[-3, 4], [10, 5]]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

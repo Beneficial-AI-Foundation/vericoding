@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Create a function which accepts one arbitrary string as an argument, and return a string of length 26.
   
   The objective is to set each of the 26 characters of the output string to either `'1'` or `'0'` based on the fact whether the Nth letter of the alphabet is present in the input (independent of its case).
@@ -10,6 +11,7 @@ vc-description: |-
   ```
   "a   **&  cZ"  =>  "10100000000000000000000001"
   ```
+  -/
 
 vc-preamble: |-
 
@@ -42,23 +44,23 @@ vc-theorems: |-
       then (result.data.get! i) = '1'
       else True := sorry
   
-  /--
+  /-
   info: '11000000000000000000000001'
   -/
-  #guard_msgs in
-  #eval change "a **&  bZ"
+  -- #guard_msgs in
+  -- #eval change "a **&  bZ"
   
-  /--
+  /-
   info: '11101000000000000000000001'
   -/
-  #guard_msgs in
-  #eval change "Abc e  $$  z"
+  -- #guard_msgs in
+  -- #eval change "Abc e  $$  z"
   
-  /--
+  /-
   info: '00000000000000000000000000'
   -/
-  #guard_msgs in
-  #eval change ""
+  -- #guard_msgs in
+  -- #eval change ""
 
 vc-postamble: |-
   -- Apps difficulty: introductory

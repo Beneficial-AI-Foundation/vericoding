@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Goldbach's conjecture is one of the oldest and best-known unsolved problems in number theory and all of mathematics. It states:
   
   Every even integer greater than 2 can be expressed as the sum of two primes.
@@ -29,6 +30,7 @@ vc-description: |-
   ```python
   [[3, 31], [5, 29], [11, 23], [17, 17]] # even_number = 34
   ```
+  -/
 
 vc-preamble: |-
   def isPrime (n : Nat) : Bool :=
@@ -58,23 +60,23 @@ vc-theorems: |-
     goldbach 4 = [[2, 2]] :=
   sorry
   
-  /--
+  /-
   info: [[3, 7], [5, 5]]
   -/
-  #guard_msgs in
-  #eval goldbach 10
+  -- #guard_msgs in
+  -- #eval goldbach 10
   
-  /--
+  /-
   info: [[5, 47], [11, 41], [23, 29]]
   -/
-  #guard_msgs in
-  #eval goldbach 52
+  -- #guard_msgs in
+  -- #eval goldbach 52
   
-  /--
+  /-
   info: [[5, 53], [11, 47], [17, 41], [29, 29]]
   -/
-  #guard_msgs in
-  #eval goldbach 58
+  -- #guard_msgs in
+  -- #eval goldbach 58
 
 vc-postamble: |-
   -- Apps difficulty: introductory

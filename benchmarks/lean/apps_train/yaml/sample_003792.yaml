@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write the following function:
   
   ```python
@@ -16,6 +17,7 @@ vc-description: |-
   
   area_of_polygon_inside_circle(4, 5) # returns 38.042
   ```
+  -/
 
 vc-preamble: |-
 
@@ -42,23 +44,23 @@ vc-theorems: |-
     (h2 : n ≥ 3) :
     area_of_polygon_inside_circle r n ≥ area_of_polygon_inside_circle r 3 := sorry
   
-  /--
+  /-
   info: 11.691
   -/
-  #guard_msgs in
-  #eval area_of_polygon_inside_circle 3 3
+  -- #guard_msgs in
+  -- #eval area_of_polygon_inside_circle 3 3
   
-  /--
+  /-
   info: 8.0
   -/
-  #guard_msgs in
-  #eval area_of_polygon_inside_circle 2 4
+  -- #guard_msgs in
+  -- #eval area_of_polygon_inside_circle 2 4
   
-  /--
+  /-
   info: 14.86
   -/
-  #guard_msgs in
-  #eval area_of_polygon_inside_circle 2.5 5
+  -- #guard_msgs in
+  -- #eval area_of_polygon_inside_circle 2.5 5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

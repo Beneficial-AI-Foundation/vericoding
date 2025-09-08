@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an integer array arr, you should partition the array into (contiguous) subarrays of length at most k. After partitioning, each subarray has their values changed to become the maximum value of that subarray.
   Return the largest sum of the given array after partitioning.
   
@@ -20,6 +21,7 @@ vc-description: |-
   1 <= arr.length <= 500
   0 <= arr[i] <= 109
   1 <= k <= arr.length
+  -/
 
 vc-preamble: |-
   def max_sum_after_partitioning (arr : List Int) (k : Nat) : Int :=
@@ -67,23 +69,23 @@ vc-theorems: |-
     max_sum_after_partitioning arr k = arr[0] :=
   sorry
   
-  /--
+  /-
   info: 84
   -/
-  #guard_msgs in
-  #eval max_sum_after_partitioning [1, 15, 7, 9, 2, 5, 10] 3
+  -- #guard_msgs in
+  -- #eval max_sum_after_partitioning [1, 15, 7, 9, 2, 5, 10] 3
   
-  /--
+  /-
   info: 83
   -/
-  #guard_msgs in
-  #eval max_sum_after_partitioning [1, 4, 1, 5, 7, 3, 6, 1, 9, 9, 3] 4
+  -- #guard_msgs in
+  -- #eval max_sum_after_partitioning [1, 4, 1, 5, 7, 3, 6, 1, 9, 9, 3] 4
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval max_sum_after_partitioning [1] 1
+  -- #guard_msgs in
+  -- #eval max_sum_after_partitioning [1] 1
 
 vc-postamble: |-
   -- Apps difficulty: interview

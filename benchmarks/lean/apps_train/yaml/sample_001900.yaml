@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given preorder and inorder traversal of a tree, construct the binary tree.
   
   Note:
@@ -16,6 +17,7 @@ vc-description: |-
     9  20
       /  \
      15   7
+  -/
 
 vc-preamble: |-
   def buildTree (preorder : List Int) (inorder : List Int) : Option TreeNode :=
@@ -54,41 +56,41 @@ vc-theorems: |-
   :=
   sorry
   
-  /--
+  /-
   info: inorder1
   -/
-  #guard_msgs in
-  #eval inorder_traversal buildTree(preorder1, inorder1)
+  -- #guard_msgs in
+  -- #eval inorder_traversal buildTree(preorder1, inorder1)
   
-  /--
+  /-
   info: preorder1
   -/
-  #guard_msgs in
-  #eval preorder_traversal result1
+  -- #guard_msgs in
+  -- #eval preorder_traversal result1
   
-  /--
+  /-
   info: inorder2
   -/
-  #guard_msgs in
-  #eval inorder_traversal buildTree(preorder2, inorder2)
+  -- #guard_msgs in
+  -- #eval inorder_traversal buildTree(preorder2, inorder2)
   
-  /--
+  /-
   info: preorder2
   -/
-  #guard_msgs in
-  #eval preorder_traversal result2
+  -- #guard_msgs in
+  -- #eval preorder_traversal result2
   
-  /--
+  /-
   info: inorder3
   -/
-  #guard_msgs in
-  #eval inorder_traversal buildTree(preorder3, inorder3)
+  -- #guard_msgs in
+  -- #eval inorder_traversal buildTree(preorder3, inorder3)
   
-  /--
+  /-
   info: preorder3
   -/
-  #guard_msgs in
-  #eval preorder_traversal result3
+  -- #guard_msgs in
+  -- #eval preorder_traversal result3
 
 vc-postamble: |-
   -- Apps difficulty: interview

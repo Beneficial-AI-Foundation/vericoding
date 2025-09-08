@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Arya and Aryan live in a country called Nadaca. Nadaca consists of $N$ cities numbered $1$ through $N$, which are connected by some bidirectional roads. Each road has a positive (not necessarily integer) length. Arya lives in city $1$ and Aryan lives in city $N$.
   Arya claims that for each city $v$, the shortest path from city $1$ to city $v$ has length $a_v$. Aryan does not disagree, but claims that for each city $v$, the shortest path from city $N$ to city $v$ has length $b_v$. You are the wisest person they know, so they asked you to tell them if it is possible for their claims to be true, i.e. if a road network which fully satisfies their claims exists. Help them!
   
@@ -33,6 +34,7 @@ vc-description: |-
   -----Example Output-----
   Yes
   No
+  -/
 
 vc-preamble: |-
 
@@ -78,23 +80,23 @@ vc-theorems: |-
     (h6 : b = val :: List.replicate (n-2) val ++ [0]) :
     solve_test_case n a b = if is_valid_path n a b then "Yes" else "No" := sorry
   
-  /--
+  /-
   info: 'Yes'
   -/
-  #guard_msgs in
-  #eval solve_test_case 3 [0, 1, 1] [1, 1, 0]
+  -- #guard_msgs in
+  -- #eval solve_test_case 3 [0, 1, 1] [1, 1, 0]
   
-  /--
+  /-
   info: 'No'
   -/
-  #guard_msgs in
-  #eval solve_test_case 3 [0, 1, 5] [5, 1, 0]
+  -- #guard_msgs in
+  -- #eval solve_test_case 3 [0, 1, 5] [5, 1, 0]
   
-  /--
+  /-
   info: 'Yes'
   -/
-  #guard_msgs in
-  #eval solve_test_case 4 [0, 2, 2, 3] [3, 2, 2, 0]
+  -- #guard_msgs in
+  -- #eval solve_test_case 4 [0, 2, 2, 3] [3, 2, 2, 0]
 
 vc-postamble: |-
   -- Apps difficulty: interview

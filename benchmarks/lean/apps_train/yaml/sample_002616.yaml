@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this Kata, you will be given an array and your task will be to determine if an array is in ascending or descending order and if it is rotated or not. 
   
   Consider the array `[1,2,3,4,5,7,12]`. This array is sorted in `Ascending` order. If we rotate this array once to the left, we get `[12,1,2,3,4,5,7]` and twice-rotated we get `[7,12,1,2,3,4,5]`. These two rotated arrays are in `Rotated Ascending` order.
@@ -18,6 +19,7 @@ vc-description: |-
   More examples in the test cases. 
   
   Good luck!
+  -/
 
 vc-preamble: |-
 
@@ -40,23 +42,23 @@ vc-theorems: |-
     (original_result = "A" ∨ original_result = "D") →
     (rotated_result = "RA" ∨ rotated_result = "RD") := sorry
   
-  /--
+  /-
   info: 'A'
   -/
-  #guard_msgs in
-  #eval solve [1, 2, 3, 4, 5, 7]
+  -- #guard_msgs in
+  -- #eval solve [1, 2, 3, 4, 5, 7]
   
-  /--
+  /-
   info: 'RA'
   -/
-  #guard_msgs in
-  #eval solve [7, 1, 2, 3, 4, 5]
+  -- #guard_msgs in
+  -- #eval solve [7, 1, 2, 3, 4, 5]
   
-  /--
+  /-
   info: 'RD'
   -/
-  #guard_msgs in
-  #eval solve [5, 9, 8, 7, 6]
+  -- #guard_msgs in
+  -- #eval solve [5, 9, 8, 7, 6]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

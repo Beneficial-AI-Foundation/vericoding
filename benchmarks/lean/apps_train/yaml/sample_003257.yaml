@@ -1,5 +1,7 @@
 vc-description: |-
+  /-
   You were given a string of integer temperature values. Create a function `lowest_temp(t)` and return the lowest value or `None/null/Nothing` if the string is empty.
+  -/
 
 vc-preamble: |-
 
@@ -26,23 +28,23 @@ vc-theorems: |-
         nums ≠ []
     := sorry
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval lowest_temp ""
+  -- #guard_msgs in
+  -- #eval lowest_temp ""
   
-  /--
+  /-
   info: -8
   -/
-  #guard_msgs in
-  #eval lowest_temp "-1 50 -4 20 22 -7 0 10 -8"
+  -- #guard_msgs in
+  -- #eval lowest_temp "-1 50 -4 20 22 -7 0 10 -8"
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval lowest_temp "5"
+  -- #guard_msgs in
+  -- #eval lowest_temp "5"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

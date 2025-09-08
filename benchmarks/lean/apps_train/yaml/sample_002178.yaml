@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Recently Vasya learned that, given two points with different $x$ coordinates, you can draw through them exactly one parabola with equation of type $y = x^2 + bx + c$, where $b$ and $c$ are reals. Let's call such a parabola an $U$-shaped one.
   
   Vasya drew several distinct points with integer coordinates on a plane and then drew an $U$-shaped parabola through each pair of the points that have different $x$ coordinates. The picture became somewhat messy, but Vasya still wants to count how many of the parabolas drawn don't have any drawn point inside their internal area. Help Vasya.
@@ -41,6 +42,7 @@ vc-description: |-
   On the pictures below all $U$-shaped parabolas that pass through at least two given points are drawn for each of the examples. The $U$-shaped parabolas that do not have any given point inside their internal area are drawn in red.  [Image] The first example. 
   
    [Image] The second example.
+  -/
 
 vc-preamble: |-
   def countEmptyParabolas (points : List (Int × Int)) : Nat :=
@@ -80,23 +82,23 @@ vc-theorems: |-
     countEmptyParabolas points = countEmptyParabolas deduped := by
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_empty_parabolas [(-1, 0), (0, 2), (1, 0)]
+  -- #guard_msgs in
+  -- #eval count_empty_parabolas [(-1, 0), (0, 2), (1, 0)]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_empty_parabolas [(1, 0), (1, -1), (0, -1), (-1, 0), (-1, -1)]
+  -- #guard_msgs in
+  -- #eval count_empty_parabolas [(1, 0), (1, -1), (0, -1), (-1, 0), (-1, -1)]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_empty_parabolas [(-751115, -925948)]
+  -- #guard_msgs in
+  -- #eval count_empty_parabolas [(-751115, -925948)]
 
 vc-postamble: |-
   -- Apps difficulty: competition

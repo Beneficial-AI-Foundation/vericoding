@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Debug the functions
   Should be easy, begin by looking at the code. Debug the code and the functions should work.
   There are three functions: ```Multiplication (x)``` ```Addition (+)``` and ```Reverse (!esreveR)```
@@ -14,6 +15,7 @@ vc-description: |-
     width: 100%;
     height: 5em;
   }
+  -/
 
 vc-preamble: |-
   def multi (l : List Int) : Int := sorry
@@ -53,23 +55,23 @@ vc-theorems: |-
     let rs := reverse s
     rs.front = s.back ∧ rs.back = s.front := sorry
   
-  /--
+  /-
   info: 80
   -/
-  #guard_msgs in
-  #eval multi [8, 2, 5]
+  -- #guard_msgs in
+  -- #eval multi [8, 2, 5]
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval add [1, 2, 3]
+  -- #guard_msgs in
+  -- #eval add [1, 2, 3]
   
-  /--
+  /-
   info: 'olleh'
   -/
-  #guard_msgs in
-  #eval reverse "hello"
+  -- #guard_msgs in
+  -- #eval reverse "hello"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

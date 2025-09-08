@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array arr that represents a permutation of numbers from 1 to n. You have a binary string of size n that initially has all its bits set to zero.
   At each step i (assuming both the binary string and arr are 1-indexed) from 1 to n, the bit at position arr[i] is set to 1. You are given an integer m and you need to find the latest step at which there exists a group of ones of length m. A group of ones is a contiguous substring of 1s such that it cannot be extended in either direction.
   Return the latest step at which there exists a group of ones of length exactly m. If no such group exists, return -1.
@@ -39,6 +40,7 @@ vc-description: |-
   1 <= arr[i] <= n
   All integers in arr are distinct.
   1 <= m <= arr.length
+  -/
 
 vc-preamble: |-
 
@@ -66,23 +68,23 @@ vc-theorems: |-
     find_latest_step [2,1] 2 = 2 :=
   sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval find_latest_step [3, 5, 1, 2, 4] 1
+  -- #guard_msgs in
+  -- #eval find_latest_step [3, 5, 1, 2, 4] 1
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval find_latest_step [3, 1, 5, 4, 2] 2
+  -- #guard_msgs in
+  -- #eval find_latest_step [3, 1, 5, 4, 2] 2
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval find_latest_step [1] 1
+  -- #guard_msgs in
+  -- #eval find_latest_step [1] 1
 
 vc-postamble: |-
   -- Apps difficulty: interview

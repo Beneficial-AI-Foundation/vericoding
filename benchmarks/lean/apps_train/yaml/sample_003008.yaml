@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Introduction
   
   It's been more than 20 minutes since the negligent waiter has taken your order for the house special prime tofu steak with a side of chili fries.
@@ -28,6 +29,7 @@ vc-description: |-
   
   Hint
   You can attempt this brute force or get some inspiration from the math department.
+  -/
 
 vc-preamble: |-
 
@@ -56,23 +58,23 @@ vc-theorems: |-
     toothpick 0 = 0 :=
     sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval toothpick 0
+  -- #guard_msgs in
+  -- #eval toothpick 0
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval toothpick 3
+  -- #guard_msgs in
+  -- #eval toothpick 3
   
-  /--
+  /-
   info: 171
   -/
-  #guard_msgs in
-  #eval toothpick 16
+  -- #guard_msgs in
+  -- #eval toothpick 16
 
 vc-postamble: |-
   -- Apps difficulty: introductory

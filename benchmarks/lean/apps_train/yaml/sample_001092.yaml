@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef’s girlfriend is angry with him because he forgot her birthday. Chef decided to please her by gifting her a Love Graph. 
   Chef has $N$ vertices: $V_1, V_2, \dots, V_N$. Love Graph is an undirected multigraph with no self-loops and can be constructed by performing the following operations:-
   - Choose an integer $i$ ($1 \leq i \leq N$)
@@ -41,6 +42,7 @@ vc-description: |-
   In first way, we pick Vertex 1 and then join with Vertex 2.
   
   In second way, we pick Vertex 2 and then join with Vertex 1.
+  -/
 
 vc-preamble: |-
 
@@ -69,23 +71,23 @@ vc-theorems: |-
     count_love_graphs 3 1 = 6 ∧ 
     count_love_graphs 2 2 = 2 := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_love_graphs 2 1
+  -- #guard_msgs in
+  -- #eval count_love_graphs 2 1
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval count_love_graphs 3 2
+  -- #guard_msgs in
+  -- #eval count_love_graphs 3 2
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval count_love_graphs 4 1
+  -- #guard_msgs in
+  -- #eval count_love_graphs 4 1
 
 vc-postamble: |-
   -- Apps difficulty: interview

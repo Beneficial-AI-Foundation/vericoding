@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef has an array A consisting of N elements. He wants to find number of pairs of non-intersecting segments [a, b] and [c, d] (1 ≤ a ≤ b < c ≤ d ≤ N) such there is no number that occurs in the subarray {Aa, Aa+1, ... , Ab} and   {Ac, Ac+1, ... , Ad} simultaneously. 
   Help Chef to find this number.
   
@@ -38,6 +39,7 @@ vc-description: |-
   
   Example case 2.
   Correct segments: {[1, 1], [2, 2]}, {[1, 1], [4, 4]}, {[2, 2], [3, 3]}, {[3, 3], [4, 4]}.
+  -/
 
 vc-preamble: |-
   def Segment := List Int
@@ -76,17 +78,17 @@ vc-theorems: |-
     count_non_intersecting_segments segments = count_non_intersecting_segments segments :=
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_non_intersecting_segments [[1, 5], [2, 3], [3, 6], [4, 6], [5, 6], [5, 7], [7, 9], [8, 10]]
+  -- #guard_msgs in
+  -- #eval count_non_intersecting_segments [[1, 5], [2, 3], [3, 6], [4, 6], [5, 6], [5, 7], [7, 9], [8, 10]]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_non_intersecting_segments arr2
+  -- #guard_msgs in
+  -- #eval count_non_intersecting_segments arr2
 
 vc-postamble: |-
   -- Apps difficulty: interview

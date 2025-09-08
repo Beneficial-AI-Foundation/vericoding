@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   
   **_Given_** a **_Divisor and a Bound_** , *Find the largest integer N* , Such That , 
@@ -65,6 +66,7 @@ vc-description: |-
   
   The function declaration is `int max_multiple(int divisor, int bound)` where the first argument is the divisor and the second one is the bound.
   ~~~
+  -/
 
 vc-preamble: |-
 

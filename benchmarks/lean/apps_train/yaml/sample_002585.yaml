@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    Timed Reading is an educational tool used in many schools to improve and advance reading skills. A young elementary student has just finished his very first timed reading exercise. Unfortunately he's not a very good reader yet, so whenever he encountered a word longer than maxLength, he simply skipped it and read on.
   
@@ -27,6 +28,7 @@ vc-description: |-
    - `[output]` an integer
   
       The number of words the boy has read.
+  -/
 
 vc-preamble: |-
 
@@ -65,23 +67,23 @@ vc-theorems: |-
     timed_reading (-1) "hello" = 0 :=
   sorry
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval timed_reading 4 "The Fox asked the stork, "How is the soup?""
+  -- #guard_msgs in
+  -- #eval timed_reading 4 "The Fox asked the stork, "How is the soup?""
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval timed_reading 3 "This play was good for us."
+  -- #guard_msgs in
+  -- #eval timed_reading 3 "This play was good for us."
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval timed_reading 1 "Oh!"
+  -- #guard_msgs in
+  -- #eval timed_reading 1 "Oh!"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

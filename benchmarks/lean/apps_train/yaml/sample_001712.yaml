@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The Challenge
   -------------
   You'll need to implement a simple lexer type. It should take in an input string through the constructor (or the parameter, for Javascript), and break it up into typed-tokens (in python, C# and Java, you'll have to manage `null/None` input too, resulting in the same behavior than an empty string). You'll need to implement the necessary methods (aaccording to your language) to make the Simplexer object behave like an iterator, Meaning that it returns a token (assuming one is available) object each time it a `next` (`Current` field in C#) method would be called. If no tokens are available, an exception should be thrown (idealy: `StopIteration` in python, `InvalidOperationException` in C# and `NoSuchElementException` in Java).
@@ -32,6 +33,7 @@ vc-description: |-
   identifier : Any sequence of alphanumber characters, as well as underscore and dollar sign,
   and which doesn't start with a digit. Make sure that keywords aren't matched as identifiers!
   ```
+  -/
 
 vc-preamble: |-
   def Simplexer : Type := String → List Token
@@ -66,11 +68,11 @@ vc-theorems: |-
   theorem boolean_token :
     scan "true" = ⟨"true", "boolean"⟩ := sorry
   
-  /--
+  /-
   info: len(expected_tokens)
   -/
-  #guard_msgs in
-  #eval len list(lexer)
+  -- #guard_msgs in
+  -- #eval len list(lexer)
 
 vc-postamble: |-
   -- Apps difficulty: interview

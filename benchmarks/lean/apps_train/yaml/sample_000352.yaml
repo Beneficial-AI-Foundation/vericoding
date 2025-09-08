@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a rectangle of size n x m, find the minimum number of integer-sided squares that tile the rectangle.
   
   Example 1:
@@ -22,6 +23,7 @@ vc-description: |-
   
   1 <= n <= 13
   1 <= m <= 13
+  -/
 
 vc-preamble: |-
 
@@ -45,23 +47,23 @@ vc-theorems: |-
   theorem upper_bound {n m : Nat} (hn : n > 0) (hm : m > 0) :
     tileRectangle n m ≤ n * m := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval tile_rectangle 2 3
+  -- #guard_msgs in
+  -- #eval tile_rectangle 2 3
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval tile_rectangle 5 8
+  -- #guard_msgs in
+  -- #eval tile_rectangle 5 8
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval tile_rectangle 11 13
+  -- #guard_msgs in
+  -- #eval tile_rectangle 11 13
 
 vc-postamble: |-
   -- Apps difficulty: interview

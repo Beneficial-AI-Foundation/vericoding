@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string s. Can you make it a palindrome by deleting exactly one character? Note that size of the string after deletion would be one less than it was before. 
   
   -----Input-----
@@ -38,6 +39,7 @@ vc-description: |-
   Example case 2. It is not possible to delete exactly one character and having a palindrome.
   Example case 3. Delete 'c', resulting string is "abdba" which is a palindrome. 
   Example case 4. Delete 'b', resulting string is "aba" which is a palindrome.
+  -/
 
 vc-preamble: |-
   def can_make_palindrome (s : String) : Bool := sorry
@@ -72,23 +74,23 @@ vc-theorems: |-
     can_make_palindrome "aa" ∧
     can_make_palindrome "aba" := sorry
   
-  /--
+  /-
   info: 'YES'
   -/
-  #guard_msgs in
-  #eval process_test_case "aaa"
+  -- #guard_msgs in
+  -- #eval process_test_case "aaa"
   
-  /--
+  /-
   info: 'NO'
   -/
-  #guard_msgs in
-  #eval process_test_case "abc"
+  -- #guard_msgs in
+  -- #eval process_test_case "abc"
   
-  /--
+  /-
   info: 'YES'
   -/
-  #guard_msgs in
-  #eval process_test_case "abdbca"
+  -- #guard_msgs in
+  -- #eval process_test_case "abdbca"
 
 vc-postamble: |-
   -- Apps difficulty: interview

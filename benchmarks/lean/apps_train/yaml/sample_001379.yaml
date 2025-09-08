@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef wants you to distribute candies among $N$ kids who are sitting in a circle. However, he wants to make some kids jealous of others. Thus, he wants you to distribute candies in such a way that there is a difference of at least $K$ candies between two adjacent kids. 
   Given the value of $N$ and $K$, you need to find the minimum number of candies you need to satisfy the given conditions, such that, each kid gets at least one candy.
   
@@ -23,6 +24,7 @@ vc-description: |-
   
   -----EXPLANATION:-----
   The minimum number of candies required is $3$. One kid needs to have $1$ candy and the other needs to have $2$ candy to have a difference of $1$ candy between them.
+  -/
 
 vc-preamble: |-
 
@@ -59,23 +61,23 @@ vc-theorems: |-
     min_candies_required n k > min_candies_required (n-1) k :=
   sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval min_candies_required 2 1
+  -- #guard_msgs in
+  -- #eval min_candies_required 2 1
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval min_candies_required 3 2
+  -- #guard_msgs in
+  -- #eval min_candies_required 3 2
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval min_candies_required 4 0
+  -- #guard_msgs in
+  -- #eval min_candies_required 4 0
 
 vc-postamble: |-
   -- Apps difficulty: interview

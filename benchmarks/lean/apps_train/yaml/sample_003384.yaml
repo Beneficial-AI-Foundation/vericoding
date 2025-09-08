@@ -1,7 +1,9 @@
 vc-description: |-
+  /-
   Your car is old, it breaks easily. The shock absorbers are gone and you think it can handle about 15 more bumps before it dies totally.
   
   Unfortunately for you, your drive is very bumpy! Given a string showing either flat road ("\_") or bumps ("n"), work out if you make it home safely. 15 bumps or under, return "Woohoo!", over 15 bumps return "Car Dead".
+  -/
 
 vc-preamble: |-
   def countChar (s : String) (c : Char) : Nat := 
@@ -43,23 +45,23 @@ vc-theorems: |-
     bumps nStr16 = "Car Dead" :=
   sorry
   
-  /--
+  /-
   info: 'Woohoo!'
   -/
-  #guard_msgs in
-  #eval bumps "n"
+  -- #guard_msgs in
+  -- #eval bumps "n"
   
-  /--
+  /-
   info: 'Car Dead'
   -/
-  #guard_msgs in
-  #eval bumps "_nnnnnnn_n__n______nn__nn_nnn"
+  -- #guard_msgs in
+  -- #eval bumps "_nnnnnnn_n__n______nn__nn_nnn"
   
-  /--
+  /-
   info: 'Woohoo!'
   -/
-  #guard_msgs in
-  #eval bumps "______n___n_"
+  -- #guard_msgs in
+  -- #eval bumps "______n___n_"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

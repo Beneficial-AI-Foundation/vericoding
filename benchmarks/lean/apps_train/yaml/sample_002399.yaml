@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A sentence S is given, composed of words separated by spaces. Each word consists of lowercase and uppercase letters only.
   We would like to convert the sentence to "Goat Latin" (a made-up language similar to Pig Latin.)
   The rules of Goat Latin are as follows:
@@ -26,6 +27,7 @@ vc-description: |-
   
   S contains only uppercase, lowercase and spaces. Exactly one space between each word.
   1 <= S.length <= 150.
+  -/
 
 vc-preamble: |-
   def to_goat_latin (s : String) : String := sorry
@@ -71,23 +73,23 @@ vc-theorems: |-
     let suffix := "ma" ++ String.mk (List.replicate (i+1) 'a')
     endsWith (getStringAt result i) suffix := sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval to_goat_latin "I speak Goat Latin"
+  -- #guard_msgs in
+  -- #eval to_goat_latin "I speak Goat Latin"
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval to_goat_latin "The quick brown fox"
+  -- #guard_msgs in
+  -- #eval to_goat_latin "The quick brown fox"
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval to_goat_latin "Each word"
+  -- #guard_msgs in
+  -- #eval to_goat_latin "Each word"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

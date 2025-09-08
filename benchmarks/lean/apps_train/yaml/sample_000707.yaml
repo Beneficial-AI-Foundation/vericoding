@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Today, Chef decided to cook some delicious meals from the ingredients in his kitchen. There are $N$ ingredients, represented by strings $S_1, S_2, \ldots, S_N$. Chef took all the ingredients, put them into a cauldron and mixed them up.
   In the cauldron, the letters of the strings representing the ingredients completely mixed, so each letter appears in the cauldron as many times as it appeared in all the strings in total; now, any number of times, Chef can take one letter out of the cauldron (if this letter appears in the cauldron multiple times, it can be taken out that many times) and use it in a meal. A complete meal is the string "codechef". Help Chef find the maximum number of complete meals he can make!
   
@@ -46,6 +47,7 @@ vc-description: |-
   -----Explanation-----
   Example case 1: After mixing, the cauldron contains the letter 'c' 3 times, the letter 'e' 4 times, and each of the letters 'o', 'd', 'h' and 'f' once. Clearly, this is only enough for one "codechef" meal.
   Example case 2: After mixing, the cauldron contains the letter 'c' 4 times, 'o' 2 times, 'd' 2 times, 'e' 4 times, 'h' 3 times and 'f' 2 times, which is enough to make 2 meals.
+  -/
 
 vc-preamble: |-
   def max_meals (ingredients : List (List Char)) : Nat :=
@@ -95,23 +97,23 @@ vc-theorems: |-
   theorem max_meals_with_invalid_chars (ingredients : List (List Char)) :
     max_meals ingredients ≥ 0 := by sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval max_meals ["cplusplus", "oscar", "deck", "fee", "hat", "near"]
+  -- #guard_msgs in
+  -- #eval max_meals ["cplusplus", "oscar", "deck", "fee", "hat", "near"]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval max_meals ["code", "hacker", "chef", "chaby", "dumbofe"]
+  -- #guard_msgs in
+  -- #eval max_meals ["code", "hacker", "chef", "chaby", "dumbofe"]
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval max_meals ["codechef", "chefcode", "fehcedoc", "cceeohfd", "codechef"]
+  -- #guard_msgs in
+  -- #eval max_meals ["codechef", "chefcode", "fehcedoc", "cceeohfd", "codechef"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

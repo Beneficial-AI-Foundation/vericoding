@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Task
   You need to implement two functions, `xor` and `or`, that replicate the behaviour of their respective operators:
   
@@ -16,6 +17,7 @@ vc-description: |-
   - `xor(false, true)` should return `true`
   - `or(true, false)` should return `true`
   - `or(false, false)` should return `false`
+  -/
 
 vc-preamble: |-
 
@@ -52,65 +54,65 @@ vc-theorems: |-
   theorem xor_double (a b : Bool) :
     func_xor (func_xor a b) b = a := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval func_or True True
+  -- #guard_msgs in
+  -- #eval func_or True True
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval func_or True False
+  -- #guard_msgs in
+  -- #eval func_or True False
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval func_or False False
+  -- #guard_msgs in
+  -- #eval func_or False False
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval func_or 0 11
+  -- #guard_msgs in
+  -- #eval func_or 0 11
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval func_or None []
+  -- #guard_msgs in
+  -- #eval func_or None []
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval func_xor True True
+  -- #guard_msgs in
+  -- #eval func_xor True True
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval func_xor True False
+  -- #guard_msgs in
+  -- #eval func_xor True False
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval func_xor False False
+  -- #guard_msgs in
+  -- #eval func_xor False False
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval func_xor 1 ""
+  -- #guard_msgs in
+  -- #eval func_xor 1 ""
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval func_xor [] None
+  -- #guard_msgs in
+  -- #eval func_xor [] None
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are N pinholes on the xy-plane. The i-th pinhole is located at (x_i,y_i).
   We will denote the Manhattan distance between the i-th and j-th pinholes as d(i,j)(=|x_i-x_j|+|y_i-y_j|).
   You have a peculiar pair of compasses, called Manhattan Compass.
@@ -41,6 +42,7 @@ vc-description: |-
   Since d(1,3) = d(3,4), the compass can also point at the third and fourth pinholes.
   Since d(1,2) = d(2,5), the compass can also point at the second and fifth pinholes.
   No other pairs of pinholes can be pointed by the compass, thus the answer is 4.
+  -/
 
 vc-preamble: |-
 
@@ -80,23 +82,23 @@ vc-theorems: |-
     count_manhattan_compass_pairs n a b points = count_manhattan_compass_pairs n b a points :=
   sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval count_manhattan_compass_pairs *test1
+  -- #guard_msgs in
+  -- #eval count_manhattan_compass_pairs *test1
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval count_manhattan_compass_pairs *test2
+  -- #guard_msgs in
+  -- #eval count_manhattan_compass_pairs *test2
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval count_manhattan_compass_pairs *test3
+  -- #guard_msgs in
+  -- #eval count_manhattan_compass_pairs *test3
 
 vc-postamble: |-
   -- Apps difficulty: competition

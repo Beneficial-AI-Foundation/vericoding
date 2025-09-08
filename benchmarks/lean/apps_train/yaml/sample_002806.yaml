@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   For an integer ```k``` rearrange all the elements of the given array in such way, that:
   
   all elements that are less than ```k``` are placed before elements that are not less than ```k```;
@@ -12,6 +13,7 @@ vc-description: |-
   ```splitByValue(k, elements) = [1, 3, 4, 2, 5, 7, 6]```.
   
   S: codefights.com
+  -/
 
 vc-preamble: |-
 
@@ -43,23 +45,23 @@ vc-theorems: |-
     List.filter (· ≥ k) result = List.filter (· ≥ k) elements :=
     sorry
   
-  /--
+  /-
   info: [4, 6, 10, 10, 6]
   -/
-  #guard_msgs in
-  #eval split_by_value 6 [6, 4, 10, 10, 6]
+  -- #guard_msgs in
+  -- #eval split_by_value 6 [6, 4, 10, 10, 6]
   
-  /--
+  /-
   info: [1, 3, 4, 2, 5, 7, 6]
   -/
-  #guard_msgs in
-  #eval split_by_value 5 [1, 3, 5, 7, 6, 4, 2]
+  -- #guard_msgs in
+  -- #eval split_by_value 5 [1, 3, 5, 7, 6, 4, 2]
   
-  /--
+  /-
   info: [3, 2, 8, 3, 2, 1]
   -/
-  #guard_msgs in
-  #eval split_by_value 1 [3, 2, 8, 3, 2, 1]
+  -- #guard_msgs in
+  -- #eval split_by_value 1 [3, 2, 8, 3, 2, 1]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

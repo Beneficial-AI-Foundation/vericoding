@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Task
   
   You have to write three functions namely - `PNum, GPNum and SPNum` (JS, Coffee), `p_num, g_p_num and s_p_num` (Python and Ruby), `pNum, gpNum and spNum` (Java, C#), `p-num, gp-num and sp-num` (Clojure) - to check whether a given argument `n` is a Pentagonal, Generalized Pentagonal, or Square Pentagonal Number, and return `true` if it is and `false` otherwise.
@@ -27,6 +28,7 @@ vc-description: |-
       P1=1     P2=5      P3=12         P4=22             P5=35   //Total number of distinct dots used in the Pattern
       Gp2=1    Gp4=5     Gp6=12        Gp8=22                    //All the Pentagonal Numbers are Generalised
                Gp1=0     Gp3=2         Gp5=7             Gp7=15  //Total Number of dots inside the outermost Pentagon
+  -/
 
 vc-preamble: |-
   def p_num (n : Int) : Bool := sorry
@@ -34,11 +36,11 @@ vc-preamble: |-
   
   def s_p_num (n : Int) : Bool := sorry
   
-  /-- Helper function for pentagonal numbers -/
+  /- Helper function for pentagonal numbers -/
   
   def pen (n : Int) : Int := (3*n*n - n) / 2
   
-  /-- Helper function for generalized pentagonal numbers -/
+  /- Helper function for generalized pentagonal numbers -/
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -60,71 +62,71 @@ vc-theorems: |-
   theorem non_square_not_s_p_num {n : Int} (h : ¬∃ k : Int, k * k = n) : 
     s_p_num n = false := sorry
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval p_num 0
+  -- #guard_msgs in
+  -- #eval p_num 0
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval p_num 1
+  -- #guard_msgs in
+  -- #eval p_num 1
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval p_num 5
+  -- #guard_msgs in
+  -- #eval p_num 5
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval p_num 100
+  -- #guard_msgs in
+  -- #eval p_num 100
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval g_p_num 0
+  -- #guard_msgs in
+  -- #eval g_p_num 0
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval g_p_num 1
+  -- #guard_msgs in
+  -- #eval g_p_num 1
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval g_p_num 2
+  -- #guard_msgs in
+  -- #eval g_p_num 2
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval g_p_num 5
+  -- #guard_msgs in
+  -- #eval g_p_num 5
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval s_p_num 1
+  -- #guard_msgs in
+  -- #eval s_p_num 1
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval s_p_num 9801
+  -- #guard_msgs in
+  -- #eval s_p_num 9801
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval s_p_num 100
+  -- #guard_msgs in
+  -- #eval s_p_num 100
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There is enough money available on ATM in nominal value 10, 20, 50, 100, 200 and 500 dollars.
   
   You are given money in nominal value of `n` with `1<=n<=1500`.
@@ -6,6 +7,7 @@ vc-description: |-
   Try to find minimal number of notes that must be used to repay in dollars, or output -1 if it is impossible.
   
   Good Luck!!!
+  -/
 
 vc-preamble: |-
 
@@ -46,23 +48,23 @@ vc-theorems: |-
           count = result) →
       result ≤ count := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval solve 770
+  -- #guard_msgs in
+  -- #eval solve 770
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve 550
+  -- #guard_msgs in
+  -- #eval solve 550
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval solve 125
+  -- #guard_msgs in
+  -- #eval solve 125
 
 vc-postamble: |-
   -- Apps difficulty: introductory

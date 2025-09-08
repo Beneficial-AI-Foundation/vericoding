@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Create a class Vector that has simple (3D) vector operators.
   
   In your class, you should support the following operations, given Vector ```a``` and Vector ```b```:
@@ -19,6 +20,7 @@ vc-description: |-
   Vector(a,b,c) # same as above
   ```
   The test cases will not mutate the produced Vector objects, so don't worry about that.
+  -/
 
 vc-preamble: |-
   def Vector.toTuple (v : Vector) : Int × Int × Int := sorry

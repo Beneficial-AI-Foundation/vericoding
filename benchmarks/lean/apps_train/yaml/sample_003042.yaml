@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a regex to validate a 24 hours time string.
   See examples to figure out what you should check for:
   
@@ -10,6 +11,7 @@ vc-description: |-
   24:00
   
   You should check for correct length and no spaces.
+  -/
 
 vc-preamble: |-
 
@@ -50,59 +52,59 @@ vc-theorems: |-
     (h : ¬(∃ (h m : Nat), h ≤ 23 ∧ m ≤ 59 ∧ s = toString h ++ ":" ++ toString m)) :
     validate_time s = false := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval validate_time "1:00"
+  -- #guard_msgs in
+  -- #eval validate_time "1:00"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval validate_time "00:00"
+  -- #guard_msgs in
+  -- #eval validate_time "00:00"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval validate_time "09:00"
+  -- #guard_msgs in
+  -- #eval validate_time "09:00"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval validate_time "24:00"
+  -- #guard_msgs in
+  -- #eval validate_time "24:00"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval validate_time "12:60"
+  -- #guard_msgs in
+  -- #eval validate_time "12:60"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval validate_time "foo12:00bar"
+  -- #guard_msgs in
+  -- #eval validate_time "foo12:00bar"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval validate_time "12: 60"
+  -- #guard_msgs in
+  -- #eval validate_time "12: 60"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval validate_time "24o:00"
+  -- #guard_msgs in
+  -- #eval validate_time "24o:00"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval validate_time ""
+  -- #guard_msgs in
+  -- #eval validate_time ""
 
 vc-postamble: |-
   -- Apps difficulty: introductory

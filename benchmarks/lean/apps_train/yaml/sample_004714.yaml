@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The principal of a school likes to put challenges to the students related with finding words of certain features.
   One day she said: "Dear students, the challenge for today is to find a word that has only one vowel and seven consonants but cannot have the letters "y" and "m". I'll give a special award for the first student that finds it." One of the students used his dictionary and spent all the night without sleeping, trying in vain to find the word. The next day, the word had not been found yet.
   This student observed that the principal has a pattern in the features for the wanted words: 
@@ -27,6 +28,7 @@ vc-description: |-
   Help our student to win this and the next challenges of the school. He needs to sure about a suspect that he has. That many times there are no solutions for what the principal is asking for.
   All words have its letters in lowercase format.
   Enjoy it!
+  -/
 
 vc-preamble: |-
   def wanted_words (vowel_count : Nat) (consonant_count : Nat) (forbidden : List Char) : List String :=

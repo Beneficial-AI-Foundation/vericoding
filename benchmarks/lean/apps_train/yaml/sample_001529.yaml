@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Indian National Olympiad in Informatics 2012
   You are given a table with 2 rows and N columns. Each cell has an integer in it. The score of such a table is defined as follows: for each column, consider the sum of the two numbers in the column; the maximum of the N numbers so obtained is the score. For example, for the table
   7162
@@ -48,6 +49,7 @@ vc-description: |-
   9 10 10 11
   
   Note: Your program should not print anything other than what is specified in the output format. Please remove all diagnostic print statements before making your final submission. A program with extraneous output will be treated as incorrect!
+  -/
 
 vc-preamble: |-
   def max_list (l: List Int) : Int :=

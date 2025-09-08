@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a graph with $3 \cdot n$ vertices and $m$ edges. You are to find a matching of $n$ edges, or an independent set of $n$ vertices.
   
   A set of edges is called a matching if no two edges share an endpoint.
@@ -80,6 +81,7 @@ vc-description: |-
   The third graph does not have a matching of size 2, however, there is an independent set of size 2. Moreover, there is an independent set of size 5: 2 3 4 5 6. However such answer is not correct, because you are asked to find an independent set (or matching) of size exactly $n$.
   
   The fourth graph does not have an independent set of size 2, but there is a matching of size 2.
+  -/
 
 vc-preamble: |-
 

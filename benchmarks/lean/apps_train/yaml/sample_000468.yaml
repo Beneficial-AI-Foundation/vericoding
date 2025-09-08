@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a non-empty array of integers, every element appears three times except for one, which appears exactly once. Find that single one.
   
   Note:
@@ -14,6 +15,7 @@ vc-description: |-
   
   Input: [0,1,0,1,0,1,99]
   Output: 99
+  -/
 
 vc-preamble: |-
 
@@ -44,23 +46,23 @@ vc-theorems: |-
     (∀ x, x ∈ nums → x ≠ single_number nums → nums.count x = 3) :=
   sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval single_number [2, 2, 3, 2]
+  -- #guard_msgs in
+  -- #eval single_number [2, 2, 3, 2]
   
-  /--
+  /-
   info: 99
   -/
-  #guard_msgs in
-  #eval single_number [0, 1, 0, 1, 0, 1, 99]
+  -- #guard_msgs in
+  -- #eval single_number [0, 1, 0, 1, 0, 1, 99]
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval single_number [1, 1, 1, 5]
+  -- #guard_msgs in
+  -- #eval single_number [1, 1, 1, 5]
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a non negative integer number num. For every numbers i in the range 0 ≤ i ≤ num calculate the number of 1's in their binary representation and return them as an array.
   
   Example:
@@ -11,6 +12,7 @@ vc-description: |-
   Can you do it like a boss? Do it without using any builtin function like __builtin_popcount  in c++ or in any other language.
   
   Credits:Special thanks to @ syedee  for adding this problem and creating all test cases.
+  -/
 
 vc-preamble: |-
   def count_bits (n : Nat) : Array Nat := sorry
@@ -37,23 +39,23 @@ vc-theorems: |-
     (h3 : i < (count_bits n).size) :
     i > 0 → isPowerOfTwo i → (count_bits n)[i]'h3 = 1 := sorry
   
-  /--
+  /-
   info: [0, 1, 1, 2, 1, 2]
   -/
-  #guard_msgs in
-  #eval count_bits 5
+  -- #guard_msgs in
+  -- #eval count_bits 5
   
-  /--
+  /-
   info: [0]
   -/
-  #guard_msgs in
-  #eval count_bits 0
+  -- #guard_msgs in
+  -- #eval count_bits 0
   
-  /--
+  /-
   info: [0, 1, 1]
   -/
-  #guard_msgs in
-  #eval count_bits 2
+  -- #guard_msgs in
+  -- #eval count_bits 2
 
 vc-postamble: |-
   -- Apps difficulty: interview

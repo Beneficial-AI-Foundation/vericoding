@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   “Jesse, you asked me if I was in the meth business, or the money business… Neither. I’m in the empire business.”
   Walter’s sold his stack in Gray Matter Technologies, a company which he deserved half a credit, for peanuts. Now this company is worth a billion dollar company. Walter wants to get it's shares to have his Empire Business back and he founds an opportunity.  
   There are $N$ persons having shares $A_1, A_2, A_3, … A_N$ in this company. Walter can buy these shares with their minimum Sold Values. 
@@ -38,6 +39,7 @@ vc-description: |-
   - Sold value for index $4$:  $9,7,6,5,3$
   - Sold value for index $5$:  $10,8,7,6,2$
   Minimum sold value for each index will be $6,5,4,3,2$.
+  -/
 
 vc-preamble: |-
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function that checks if all the letters in the second string are present in the first one at least once, regardless of how many times they appear:
   
   ```
@@ -9,6 +10,7 @@ vc-description: |-
   ```
   
   Function should not be case sensitive, as indicated in example #2. Note: both strings are presented as a **single argument** in the form of an array.
+  -/
 
 vc-preamble: |-
 
@@ -41,23 +43,23 @@ vc-theorems: |-
     (s : String) :
     letter_check [s, s] = true := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval letter_check ["ab", "aaa"]
+  -- #guard_msgs in
+  -- #eval letter_check ["ab", "aaa"]
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval letter_check ["trances", "nectar"]
+  -- #guard_msgs in
+  -- #eval letter_check ["trances", "nectar"]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval letter_check ["parses", "parsecs"]
+  -- #guard_msgs in
+  -- #eval letter_check ["parses", "parsecs"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

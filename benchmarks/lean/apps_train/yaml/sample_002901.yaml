@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Create a function `close_compare` that accepts 3 parameters: `a`, `b`, and an optional `margin`. The function should return whether `a` is lower than, close to, or higher than `b`. `a` is "close to" `b` if `margin` is higher than or equal to the difference between `a` and `b`.
   
   When `a` is lower than `b`, return `-1`.
@@ -14,6 +15,7 @@ vc-description: |-
   Assume: `margin >= 0`
   
   Tip: Some languages have a way to make arguments optional.
+  -/
 
 vc-preamble: |-
 
@@ -43,47 +45,47 @@ vc-theorems: |-
   theorem close_compare_symmetry (a b : Float) :
     close_compare a b = -(close_compare b a) := sorry
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval close_compare 4 5
+  -- #guard_msgs in
+  -- #eval close_compare 4 5
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval close_compare 5 5
+  -- #guard_msgs in
+  -- #eval close_compare 5 5
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval close_compare 6 5
+  -- #guard_msgs in
+  -- #eval close_compare 6 5
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval close_compare 2 5 3
+  -- #guard_msgs in
+  -- #eval close_compare 2 5 3
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval close_compare 8 5 3
+  -- #guard_msgs in
+  -- #eval close_compare 8 5 3
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval close_compare 8.1 5 3
+  -- #guard_msgs in
+  -- #eval close_compare 8.1 5 3
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval close_compare 1.99 5 3
+  -- #guard_msgs in
+  -- #eval close_compare 1.99 5 3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

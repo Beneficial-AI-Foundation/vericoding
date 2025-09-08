@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Zonal Computing Olympiad 2015, 29 Nov 2014
   
   We say that two integers x and y have a variation of at least K, if |x − y| ≥ K (the absolute value of their difference is at least K). Given a sequence of N integers a1,a2,...,aN and K, the total variation count is the number of pairs of elements in the sequence with variation at least K, i.e. it is the size of the set of pairs
@@ -30,6 +31,7 @@ vc-description: |-
   
   -----Sample Output-----
   2
+  -/
 
 vc-preamble: |-
 

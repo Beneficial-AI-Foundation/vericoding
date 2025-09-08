@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a sequence $A_1, A_2, \ldots, A_N$. You may perform the following operation an arbitrary number of times (including zero): choose two adjacent elements of this sequence, i.e. $A_i$, $A_{i+1}$ for some valid $i$, and swap them. However, for each valid $i$, it is not allowed to choose $A_i$ (the element with the index $i$, regardless of its value at any point in time) more than once in total during this process.
   Find the maximum of the sum $S = \sum_{i=1}^N A_i \cdot i$.
   
@@ -36,6 +37,7 @@ vc-description: |-
   -----Explanation-----
   Example case 1: Swap the first and second element of the initial sequence. Then, swap the third and fourth element of the resulting sequence. The final sequence $A$ is $(1, 2, 3, 4)$.
   Example case 2: Swap the second and third element to make the sequence $(7, 3, 6, 2)$.
+  -/
 
 vc-preamble: |-
 
@@ -56,23 +58,23 @@ vc-theorems: |-
   theorem monotonicity (arr : List Nat) (n : Nat) (h : n = arr.length) (h2 : n > 1) :
     maximize_weighted_sum n arr ≥ maximize_weighted_sum (n-1) (arr.take (n-1)) := sorry
   
-  /--
+  /-
   info: 30
   -/
-  #guard_msgs in
-  #eval maximize_weighted_sum 4 [2, 1, 4, 3]
+  -- #guard_msgs in
+  -- #eval maximize_weighted_sum 4 [2, 1, 4, 3]
   
-  /--
+  /-
   info: 39
   -/
-  #guard_msgs in
-  #eval maximize_weighted_sum 4 [7, 6, 3, 2]
+  -- #guard_msgs in
+  -- #eval maximize_weighted_sum 4 [7, 6, 3, 2]
   
-  /--
+  /-
   info: 11
   -/
-  #guard_msgs in
-  #eval maximize_weighted_sum 3 [3, 2, 1]
+  -- #guard_msgs in
+  -- #eval maximize_weighted_sum 3 [3, 2, 1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

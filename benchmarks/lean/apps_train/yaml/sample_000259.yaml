@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a string s, a split is called good if you can split s into 2 non-empty strings p and q where its concatenation is equal to s and the number of distinct letters in p and q are the same.
   Return the number of good splits you can make in s.
   
@@ -29,6 +30,7 @@ vc-description: |-
   
   s contains only lowercase English letters.
   1 <= s.length <= 10^5
+  -/
 
 vc-preamble: |-
   def num_good_splits (s : String) : Nat :=
@@ -50,23 +52,23 @@ vc-theorems: |-
     num_good_splits s ≤ s.length - 1 ∧ num_good_splits s ≥ 0 :=
   sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval num_good_splits "aacaba"
+  -- #guard_msgs in
+  -- #eval num_good_splits "aacaba"
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval num_good_splits "abcd"
+  -- #guard_msgs in
+  -- #eval num_good_splits "abcd"
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval num_good_splits "aaaaa"
+  -- #guard_msgs in
+  -- #eval num_good_splits "aaaaa"
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ### Task
   
   Yes, your eyes are no problem, this is toLoverCase (), not toLowerCase (), we want to make the world full of love.
@@ -38,6 +39,7 @@ vc-description: |-
    - [Collatz Array(Split or merge)](http://www.codewars.com/kata/56fe9d579b7bb6b027000001)
    - [Tidy up the room](http://www.codewars.com/kata/5703ace6e55d30d3e0001029)
    - [Waiting for a Bus](http://www.codewars.com/kata/57070eff924f343280000015)
+  -/
 
 vc-preamble: |-
 
@@ -68,23 +70,23 @@ vc-theorems: |-
     s.get i = s.get j →
     (toLoverCase s).get i = (toLoverCase s).get j := sorry
   
-  /--
+  /-
   info: 'EVOL'
   -/
-  #guard_msgs in
-  #eval to_lover_case "LOVE"
+  -- #guard_msgs in
+  -- #eval to_lover_case "LOVE"
   
-  /--
+  /-
   info: 'ELEEV VVOEE!'
   -/
-  #guard_msgs in
-  #eval to_lover_case "Hello World!"
+  -- #guard_msgs in
+  -- #eval to_lover_case "Hello World!"
   
-  /--
+  /-
   info: 'OOOO,'
   -/
-  #guard_msgs in
-  #eval to_lover_case "jrvz,"
+  -- #guard_msgs in
+  -- #eval to_lover_case "jrvz,"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

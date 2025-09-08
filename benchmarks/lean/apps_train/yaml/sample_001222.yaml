@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The Head Chef is receiving a lot of orders for cooking the best of the problems lately. For this, he organized an hiring event to hire some talented Chefs. He gave the following problem to test the skills of the participating Chefs. Can you solve this problem and be eligible for getting hired by Head Chef.
   
   A non-negative number n is said to be magical if it satisfies the following property. Let S denote the multi-set of numbers corresponding to the non-empty subsequences of the digits of the number n in decimal representation. Please note that the numbers in the set S can have leading zeros. Let us take an element s of the multi-set S, prod(s) denotes the product of all the digits of number s in decimal representation. 
@@ -44,6 +45,7 @@ vc-description: |-
   -----Explanation-----
   Example case 1.
   2 is the 2nd magical number, since it satisfies the property of the magical number. The first magical number will be of course 0.
+  -/
 
 vc-preamble: |-
   def base5 (n : Nat) : List Nat := sorry
@@ -72,23 +74,23 @@ vc-theorems: |-
     k > 1 →
     get_kth_magical_number (k-1) < get_kth_magical_number k := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval get_kth_magical_number 2
+  -- #guard_msgs in
+  -- #eval get_kth_magical_number 2
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval get_kth_magical_number 5
+  -- #guard_msgs in
+  -- #eval get_kth_magical_number 5
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval get_kth_magical_number 1
+  -- #guard_msgs in
+  -- #eval get_kth_magical_number 1
 
 vc-postamble: |-
   -- Apps difficulty: interview

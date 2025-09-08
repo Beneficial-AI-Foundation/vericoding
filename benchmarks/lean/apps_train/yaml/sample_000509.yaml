@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a program that takes in a letterclass ID of a ship and display the equivalent string class description of the given ID. Use the table below.
   
   Class ID Ship ClassB or bBattleShipC or cCruiserD or dDestroyerF or fFrigate
@@ -25,6 +26,7 @@ vc-description: |-
   BattleShip
   Cruiser
   Destroyer
+  -/
 
 vc-preamble: |-
 
@@ -60,17 +62,17 @@ vc-theorems: |-
     get_ship_class c = ShipClass.Frigate :=
   sorry
   
-  /--
+  /-
   info: 'BattleShip'
   -/
-  #guard_msgs in
-  #eval get_ship_class "b"
+  -- #guard_msgs in
+  -- #eval get_ship_class "b"
   
-  /--
+  /-
   info: 'Frigate'
   -/
-  #guard_msgs in
-  #eval get_ship_class "F"
+  -- #guard_msgs in
+  -- #eval get_ship_class "F"
 
 vc-postamble: |-
   -- Apps difficulty: interview

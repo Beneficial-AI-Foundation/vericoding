@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are just some things you can't do on television. In this case, you've just come back from having a "delicious" Barth burger and you're set to give an interview. The Barth burger has made you queezy, and you've forgotten some of the import rules of the "You Can't Do That on Television" set.
   
   If you say any of the following words a large bucket of "water" will be dumped on you:
@@ -26,6 +27,7 @@ vc-description: |-
   80's Kids #8: The Secret World of Alex Mack
   80's Kids #9: Down in Fraggle Rock 
   80's Kids #10: Captain Planet
+  -/
 
 vc-preamble: |-
 
@@ -61,23 +63,23 @@ vc-theorems: |-
     s ≠ "I don't know" →
     bucket_of s = "air" := sorry
   
-  /--
+  /-
   info: 'water'
   -/
-  #guard_msgs in
-  #eval bucket_of "water"
+  -- #guard_msgs in
+  -- #eval bucket_of "water"
   
-  /--
+  /-
   info: 'sludge'
   -/
-  #guard_msgs in
-  #eval bucket_of "slime water"
+  -- #guard_msgs in
+  -- #eval bucket_of "slime water"
   
-  /--
+  /-
   info: 'air'
   -/
-  #guard_msgs in
-  #eval bucket_of "just saying something"
+  -- #guard_msgs in
+  -- #eval bucket_of "just saying something"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

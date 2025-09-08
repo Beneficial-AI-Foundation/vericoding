@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Messi goals function
   
   [Messi](https://en.wikipedia.org/wiki/Lionel_Messi) is a soccer player with goals in three leagues: 
@@ -16,6 +17,7 @@ vc-description: |-
   ```
   5, 10, 2  -->  17
   ```
+  -/
 
 vc-preamble: |-
 
@@ -53,23 +55,23 @@ vc-theorems: |-
     goals laliga copa champions ≥ champions :=
     sorry
   
-  /--
+  /-
   info: 17
   -/
-  #guard_msgs in
-  #eval goals 5 10 2
+  -- #guard_msgs in
+  -- #eval goals 5 10 2
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval goals 0 0 0
+  -- #guard_msgs in
+  -- #eval goals 0 0 0
   
-  /--
+  /-
   info: 58
   -/
-  #guard_msgs in
-  #eval goals 43 10 5
+  -- #guard_msgs in
+  -- #eval goals 43 10 5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

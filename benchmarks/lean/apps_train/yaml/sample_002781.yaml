@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You have stumbled across the divine pleasure that is owning a dog and a garden. Now time to pick up all the cr@p! :D
   
   Given a 2D array to represent your garden, you must find and collect all of the dog cr@p - represented by '@'.
@@ -21,6 +22,7 @@ vc-description: |-
   bags = 2, cap = 2
   
   return  --> 'Clean'
+  -/
 
 vc-preamble: |-
   def crap (garden : List (List Cell)) (bags : Nat) (cap : Nat) : GardenResult :=
@@ -63,23 +65,23 @@ vc-theorems: |-
     (crap garden 0 0 = GardenResult.Crap ↔ countCrap garden > 0) :=
     sorry
   
-  /--
+  /-
   info: 'Clean'
   -/
-  #guard_msgs in
-  #eval crap [["_", "_", "_", "_"], ["_", "_", "_", "@"], ["_", "_", "@", "_"]] 2 2
+  -- #guard_msgs in
+  -- #eval crap [["_", "_", "_", "_"], ["_", "_", "_", "@"], ["_", "_", "@", "_"]] 2 2
   
-  /--
+  /-
   info: 'Dog!!'
   -/
-  #guard_msgs in
-  #eval crap [["_", "_"], ["_", "@"], ["D", "_"]] 2 2
+  -- #guard_msgs in
+  -- #eval crap [["_", "_"], ["_", "@"], ["D", "_"]] 2 2
   
-  /--
+  /-
   info: 'Clean'
   -/
-  #guard_msgs in
-  #eval crap [["@", "@"], ["@", "@"], ["@", "@"]] 3 2
+  -- #guard_msgs in
+  -- #eval crap [["@", "@"], ["@", "@"], ["@", "@"]] 3 2
 
 vc-postamble: |-
   -- Apps difficulty: introductory

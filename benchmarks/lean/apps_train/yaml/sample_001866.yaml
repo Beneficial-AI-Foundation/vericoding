@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In a gold mine grid of size m * n, each cell in this mine has an integer representing the amount of gold in that cell, 0 if it is empty.
   Return the maximum amount of gold you can collect under the conditions:
   
@@ -33,6 +34,7 @@ vc-description: |-
   1 <= grid.length, grid[i].length <= 15
   0 <= grid[i][j] <= 100
   There are at most 25 cells containing gold.
+  -/
 
 vc-preamble: |-
   def sum (xs : List Nat) : Nat := 
@@ -77,23 +79,23 @@ vc-theorems: |-
   theorem max_path_viable (grid : List (List Nat)) :
     get_maximum_gold grid ≤ sumOfLists grid := sorry
   
-  /--
+  /-
   info: 24
   -/
-  #guard_msgs in
-  #eval get_maximum_gold [[0, 6, 0], [5, 8, 7], [0, 9, 0]]
+  -- #guard_msgs in
+  -- #eval get_maximum_gold [[0, 6, 0], [5, 8, 7], [0, 9, 0]]
   
-  /--
+  /-
   info: 28
   -/
-  #guard_msgs in
-  #eval get_maximum_gold [[1, 0, 7], [2, 0, 6], [3, 4, 5], [0, 3, 0], [9, 0, 20]]
+  -- #guard_msgs in
+  -- #eval get_maximum_gold [[1, 0, 7], [2, 0, 6], [3, 4, 5], [0, 3, 0], [9, 0, 20]]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval get_maximum_gold [[1, 1], [1, 1]]
+  -- #guard_msgs in
+  -- #eval get_maximum_gold [[1, 1], [1, 1]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given two integers $N$ and $M$. Find the number of sequences $A_1, A_2, \ldots, A_N$, where each element is an integer between $1$ and $M$ (inclusive) and no three consecutive elements are equal. Since this number could be very large, compute it modulo $10^9+7$.
   
   -----Input-----
@@ -26,6 +27,7 @@ vc-description: |-
   -----Example Output-----
   4
   60
+  -/
 
 vc-preamble: |-
 
@@ -60,23 +62,23 @@ vc-theorems: |-
     calc_valid_sequences n m > m :=
   sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval calc_valid_sequences 2 2
+  -- #guard_msgs in
+  -- #eval calc_valid_sequences 2 2
   
-  /--
+  /-
   info: 60
   -/
-  #guard_msgs in
-  #eval calc_valid_sequences 3 4
+  -- #guard_msgs in
+  -- #eval calc_valid_sequences 3 4
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval calc_valid_sequences 1 5
+  -- #guard_msgs in
+  -- #eval calc_valid_sequences 1 5
 
 vc-postamble: |-
   -- Apps difficulty: interview

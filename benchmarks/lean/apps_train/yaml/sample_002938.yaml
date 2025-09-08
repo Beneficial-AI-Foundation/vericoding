@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The local transport authority is organizing an online picture contest.
   Participants must take pictures of transport means in an original way, and then post the picture on Instagram using a specific ```hashtag```.
   
@@ -24,6 +25,7 @@ vc-description: |-
   * There can be erroneous messages where the hashtag isn't present. The message should in this case stay untouched.
   
   * The hashtag only consists of alphanumeric characters.
+  -/
 
 vc-preamble: |-
   def omit_hashtag (message : String) (hashtag : String) : String := sorry 
@@ -58,23 +60,23 @@ vc-theorems: |-
     (h1 : message ≠ "") (h2 : hashtag ≠ "") :
     ¬(String.containsSubstring message hashtag) → omit_hashtag message hashtag = message := sorry
   
-  /--
+  /-
   info: 'Sunny day!  #vvv'
   -/
-  #guard_msgs in
-  #eval omit_hashtag "Sunny day! #lta #vvv" "#lta"
+  -- #guard_msgs in
+  -- #eval omit_hashtag "Sunny day! #lta #vvv" "#lta"
   
-  /--
+  /-
   info: ' #picture_contest'
   -/
-  #guard_msgs in
-  #eval omit_hashtag "#lta #picture_contest" "#lta"
+  -- #guard_msgs in
+  -- #eval omit_hashtag "#lta #picture_contest" "#lta"
   
-  /--
+  /-
   info: ' #picture_contest #lta'
   -/
-  #guard_msgs in
-  #eval omit_hashtag "#lta #picture_contest #lta" "#lta"
+  -- #guard_msgs in
+  -- #eval omit_hashtag "#lta #picture_contest #lta" "#lta"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

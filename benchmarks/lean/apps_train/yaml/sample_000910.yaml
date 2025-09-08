@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef Ada has a matrix with $N$ rows (numbered $1$ through $N$ from top to bottom) and $N$ columns (numbered $1$ through $N$ from left to right) containing all integers between $1$ and $N^2$ inclusive. For each valid $i$ and $j$, let's denote the cell in the $i$-th row and $j$-th column by $(i,j)$.
   Ada wants to sort the matrix in row-major order ― for each valid $i$ and $j$, she wants the cell $(i, j)$ to contain the value $(i-1) \cdot N + j$.
   In one operation, Ada should choose an integer $L$ and transpose the submatrix between rows $1$ and $L$ and columns $1$ and $L$ (inclusive). Formally, for each $i$ and $j$ ($1 \le i, j \le L$), the value in the cell $(i, j)$ after this operation is equal to the value in $(j, i)$ before it.
@@ -45,6 +46,7 @@ vc-description: |-
   5 6 7 8
   9 10 11 12
   13 14 15 16
+  -/
 
 vc-preamble: |-
   def Array2D (α : Type) := Array (Array α)
@@ -73,23 +75,23 @@ vc-theorems: |-
     let grid := sorry -- construction of transposed sorted grid
     minTransposeOps grid ≤ n := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_transpose_ops #[[1, 2, 9, 13], [5, 6, 10, 14], [3, 7, 11, 15], [4, 8, 12, 16]]
+  -- #guard_msgs in
+  -- #eval min_transpose_ops #[[1, 2, 9, 13], [5, 6, 10, 14], [3, 7, 11, 15], [4, 8, 12, 16]]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_transpose_ops #[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]]
+  -- #guard_msgs in
+  -- #eval min_transpose_ops #[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval min_transpose_ops #[[1, 5, 9, 13], [2, 6, 10, 14], [3, 7, 11, 15], [4, 8, 12, 16]]
+  -- #guard_msgs in
+  -- #eval min_transpose_ops #[[1, 5, 9, 13], [2, 6, 10, 14], [3, 7, 11, 15], [4, 8, 12, 16]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

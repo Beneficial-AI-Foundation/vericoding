@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a positive integer, check whether it has alternating bits: namely, if two adjacent bits will always have different values.
   
   Example 1:
@@ -28,6 +29,7 @@ vc-description: |-
   Output: True
   Explanation:
   The binary representation of 10 is: 1010.
+  -/
 
 vc-preamble: |-
 
@@ -63,23 +65,23 @@ vc-theorems: |-
     let result := has_alternating_bits n
     has_alternating_bits n = result := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval has_alternating_bits 5
+  -- #guard_msgs in
+  -- #eval has_alternating_bits 5
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval has_alternating_bits 7
+  -- #guard_msgs in
+  -- #eval has_alternating_bits 7
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval has_alternating_bits 10
+  -- #guard_msgs in
+  -- #eval has_alternating_bits 10
 
 vc-postamble: |-
   -- Apps difficulty: introductory

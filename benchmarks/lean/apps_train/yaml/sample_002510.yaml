@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Function Descriptions=====
   The eval() expression is a very powerful built-in function of Python. It helps in evaluating an expression. The expression can be a Python statement, or a code object.
   
@@ -25,6 +26,7 @@ vc-description: |-
   
   =====Constraints=====
   Input string is less than 100 characters.
+  -/
 
 vc-preamble: |-
 
@@ -68,23 +70,23 @@ vc-theorems: |-
     evaluate_expression "undefined_var" = 0 :=
   sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval evaluate_expression "2 + 3"
+  -- #guard_msgs in
+  -- #eval evaluate_expression "2 + 3"
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval evaluate_expression "len("hello")"
+  -- #guard_msgs in
+  -- #eval evaluate_expression "len("hello")"
   
-  /--
+  /-
   info: 20
   -/
-  #guard_msgs in
-  #eval evaluate_expression "x * 2" {"x": 10}
+  -- #guard_msgs in
+  -- #eval evaluate_expression "x * 2" {"x": 10}
 
 vc-postamble: |-
   -- Apps difficulty: introductory

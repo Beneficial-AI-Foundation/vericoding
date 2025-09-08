@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Problem Statement=====
   An extra day is added to the calendar almost every four years as February 29, and the day is called a leap day. It corrects the calendar for the fact that our planet takes approximately 365.25 days to orbit the sun. A leap year contains a leap day.
   
@@ -21,6 +22,7 @@ vc-description: |-
   
   =====Output Format=====
   The function must return a Boolean value (True/False). Output is handled by the provided code stub.
+  -/
 
 vc-preamble: |-
 
@@ -47,23 +49,23 @@ vc-theorems: |-
   theorem nonpositive_years (year : Int) (h : year ≤ 0) :
     isLeap year = true ∨ isLeap year = false := sorry
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_leap 1990
+  -- #guard_msgs in
+  -- #eval is_leap 1990
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_leap 2000
+  -- #guard_msgs in
+  -- #eval is_leap 2000
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_leap 1900
+  -- #guard_msgs in
+  -- #eval is_leap 1900
 
 vc-postamble: |-
   -- Apps difficulty: introductory

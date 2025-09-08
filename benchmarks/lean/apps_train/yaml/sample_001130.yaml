@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   This is a simple game you must have played around with during your school days, calculating FLAMES of you and your crush! Given the names of two people, cancel out the common letters (repeated occurrence of a letter is treated separately, so 2A's in one name and one A in the other would cancel one A in each name), count the total number of remaining letters (n) and repeatedly cut the letter in the word FLAMES which hits at the nth number when we count from F in cyclic manner.
   
   For example:
@@ -39,6 +40,7 @@ vc-description: |-
   
   By:
   Chintan, Asad, Ashayam, Akanksha
+  -/
 
 vc-preamble: |-
 

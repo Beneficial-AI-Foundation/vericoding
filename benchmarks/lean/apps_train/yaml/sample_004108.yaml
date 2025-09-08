@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   **Introduction**
    Little Petya very much likes sequences. However, recently he received a sequence as a gift from his mother.
    Petya didn't like it at all! He decided to make a single replacement. After this replacement, Petya would like to the sequence in increasing order.
@@ -24,6 +25,7 @@ vc-description: |-
   ([2,2,2])      =>  [1,2,2]
   ([42])         =>  [1]
   ```
+  -/
 
 vc-preamble: |-
   def sort_number (l : List Int) : List Int := sorry
@@ -46,23 +48,23 @@ vc-theorems: |-
   theorem sort_number_deterministic {l : List Int} (h : l ≠ []) :
     sort_number l = sort_number l := sorry
   
-  /--
+  /-
   info: [1, 1, 2, 3, 4]
   -/
-  #guard_msgs in
-  #eval sort_number [1, 2, 3, 4, 5]
+  -- #guard_msgs in
+  -- #eval sort_number [1, 2, 3, 4, 5]
   
-  /--
+  /-
   info: [1, 2, 2]
   -/
-  #guard_msgs in
-  #eval sort_number [2, 2, 2]
+  -- #guard_msgs in
+  -- #eval sort_number [2, 2, 2]
   
-  /--
+  /-
   info: [1]
   -/
-  #guard_msgs in
-  #eval sort_number [42]
+  -- #guard_msgs in
+  -- #eval sort_number [42]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

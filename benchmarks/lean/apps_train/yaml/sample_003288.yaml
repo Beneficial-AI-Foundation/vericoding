@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this kata you should simply determine, whether a given year is a leap year or not. In case you don't know the rules, here they are:
   
   * years divisible by 4 are leap years
@@ -10,6 +11,7 @@ vc-description: |-
   * Only valid years (positive integers) will be tested, so you don't have to validate them
   
   Examples can be found in the test fixture.
+  -/
 
 vc-preamble: |-
 
@@ -40,23 +42,23 @@ vc-theorems: |-
     let next_leap := year + (4 - year % 4)
     is_leap_year next_leap = true ∧ next_leap % 4 = 0 := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_leap_year 1984
+  -- #guard_msgs in
+  -- #eval is_leap_year 1984
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_leap_year 2000
+  -- #guard_msgs in
+  -- #eval is_leap_year 2000
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_leap_year 1234
+  -- #guard_msgs in
+  -- #eval is_leap_year 1234
 
 vc-postamble: |-
   -- Apps difficulty: introductory

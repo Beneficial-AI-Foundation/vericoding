@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Recently, Chef found a new formula for computing powers of a sequence:
   - You are given two sequences $A_1, A_2, \ldots, A_N$ and $(l_1, r_1), (l_2, r_2), \ldots, (l_N, r_N)$.
   - The $1$-st power of the sequence $A$ is $A^1 = A$.
@@ -43,6 +44,7 @@ vc-description: |-
   - $(A^2)_1 = A_1 \oplus A_2 = 1 \oplus 2 = 3$
   - $(A^2)_2 = A_2 \oplus A_3 = 2 \oplus 3 = 1$
   - $(A^2)_3 = A_1 \oplus A_2 \oplus A_3 =1 \oplus 2 \oplus 3 = 0$
+  -/
 
 vc-preamble: |-
 

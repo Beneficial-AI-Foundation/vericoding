@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Preface
   
   A collatz sequence, starting with a positive integern, is found by repeatedly applying the following function to n until n == 1 :
@@ -28,6 +29,7 @@ vc-description: |-
   ```
   
   Don't worry about invalid input. Arguments passed into the function are guaranteed to be valid integers >= 1.
+  -/
 
 vc-preamble: |-
 
@@ -61,23 +63,23 @@ vc-theorems: |-
     then next = cur / 2
     else next = 3 * cur + 1 := sorry
   
-  /--
+  /-
   info: '4->2->1'
   -/
-  #guard_msgs in
-  #eval collatz 4
+  -- #guard_msgs in
+  -- #eval collatz 4
   
-  /--
+  /-
   info: '3->10->5->16->8->4->2->1'
   -/
-  #guard_msgs in
-  #eval collatz 3
+  -- #guard_msgs in
+  -- #eval collatz 3
   
-  /--
+  /-
   info: '6->3->10->5->16->8->4->2->1'
   -/
-  #guard_msgs in
-  #eval collatz 6
+  -- #guard_msgs in
+  -- #eval collatz 6
 
 vc-postamble: |-
   -- Apps difficulty: introductory

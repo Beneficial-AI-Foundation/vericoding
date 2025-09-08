@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a binary string S (a string consisting only of '0' and '1's) and a positive integer N, return true if and only if for every integer X from 1 to N, the binary representation of X is a substring of S.
   
   Example 1:
@@ -13,6 +14,7 @@ vc-description: |-
   
   1 <= S.length <= 1000
   1 <= N <= 10^9
+  -/
 
 vc-preamble: |-
   def bin (n : Nat) : String := sorry
@@ -36,23 +38,23 @@ vc-theorems: |-
       ∀ i : Nat, 1 ≤ i ∧ i ≤ n → containsSubstring s (bin i)
     := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval query_string "0110" 3
+  -- #guard_msgs in
+  -- #eval query_string "0110" 3
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval query_string "0110" 4
+  -- #guard_msgs in
+  -- #eval query_string "0110" 4
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval query_string "11011" 2
+  -- #guard_msgs in
+  -- #eval query_string "11011" 2
 
 vc-postamble: |-
   -- Apps difficulty: interview

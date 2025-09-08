@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   An even sequence has the following property: each maximal contiguous subsequence which contains only equal integers (i.e. the same integer repeated a number of times) has an even length. In particular, the empty sequence is even. A subsequence is maximal if it is not contained in a larger contiguous subsequence which contains only equal integers.
   Chef was given an integer sequence $A_1, A_2, \ldots, A_N$ by his friend Mr. Z. He may perform the following operation any number of times: either delete an element of the current sequence (if it is non-empty) or insert an integer anywhere in the current sequence (possibly at the beginning or at the end).
   Find the minimum number of operations needed to make the sequence even.
@@ -40,6 +41,7 @@ vc-description: |-
   - Delete the first element $1$ and the only element $2$, resulting in a sequence $(1, 1)$, which is even.
   - Delete the last element $1$ and insert $2$ at the end, resulting in a sequence $(1,1,2,2)$, which is even.
   It can be proved that one operation is not enough to make the initial sequence even.
+  -/
 
 vc-preamble: |-
 
@@ -74,17 +76,17 @@ vc-theorems: |-
   theorem min_operations_case_11 :
     min_operations 11 [2, 2, 2, 10, 2, 10, 1, 1, 5, 3, 5] = 3 := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_operations 4 [1, 1, 2, 1]
+  -- #guard_msgs in
+  -- #eval min_operations 4 [1, 1, 2, 1]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval min_operations 11 [2, 2, 2, 10, 2, 10, 1, 1, 5, 3, 5]
+  -- #guard_msgs in
+  -- #eval min_operations 11 [2, 2, 2, 10, 2, 10, 1, 1, 5, 3, 5]
 
 vc-postamble: |-
   -- Apps difficulty: interview

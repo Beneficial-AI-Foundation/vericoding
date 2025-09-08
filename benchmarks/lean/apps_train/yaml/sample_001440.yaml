@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Devu is a disastrous oracle: his predictions about various events of your life are horrifying. Instead of providing good luck, he "blesses" you with bad luck. The secret behind his wickedness is a hidden omen which is a string of length m. On your visit to him, you can ask a lot of questions about your future, each of which should be a string of length m. In total you asked him n such questions, denoted by strings s1, s2, ... , sn of length m each. Each of the question strings is composed of the characters 'a' and 'b' only.
   
   Amount of bad luck this visit will bring you is equal to the length of longest common subsequence (LCS) of all the question strings and the hidden omen string. Of course, as the omen string is hidden, you are wondering what could be the least value of bad luck you can get.
@@ -45,6 +46,7 @@ vc-description: |-
   In the first example, the minimum value of LCS of all the strings is 1, the string by oracle can be one of these {aa, ab, ba, bb}. 
   
   In the second example, whatever string oracle has does not matter, LCS will always be zero.
+  -/
 
 vc-preamble: |-
   def find_min_bad_luck (strings : List String) : Nat := sorry
@@ -63,23 +65,23 @@ vc-theorems: |-
   theorem find_min_bad_luck_leq_min_len (strings : List String) : 
     strings ≠ [] → find_min_bad_luck strings ≤ List.foldr (fun s acc => min s.length acc) (strings[0]!.length) strings.tail := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval find_min_bad_luck ["ab", "ba"]
+  -- #guard_msgs in
+  -- #eval find_min_bad_luck ["ab", "ba"]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval find_min_bad_luck ["aa", "bb"]
+  -- #guard_msgs in
+  -- #eval find_min_bad_luck ["aa", "bb"]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_min_bad_luck ["aabb", "abab", "baab"]
+  -- #guard_msgs in
+  -- #eval find_min_bad_luck ["aabb", "abab", "baab"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

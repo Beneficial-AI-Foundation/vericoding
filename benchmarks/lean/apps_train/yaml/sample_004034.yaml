@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You have to create a function,named `insertMissingLetters`, that takes in a `string` and outputs the same string processed in a particular way.
   
   The function should insert **only after the first occurrence** of each character of the input string, all the **alphabet letters** that:
@@ -17,6 +18,7 @@ vc-description: |-
   `output`: "hIJKMNPQRSTUVWXZoPQRSTUVWXZlMNPQRSTUVWXZlyZ"  
   
   You don't need to validate input, the input string will always contain a certain amount of lowercase letters  (min 1 / max 50).
+  -/
 
 vc-preamble: |-
 
@@ -55,23 +57,23 @@ vc-theorems: |-
     insert_missing_letters "a" = "aBCDEFGHIJKLMNOPQRSTUVWXYZ" :=
     sorry
   
-  /--
+  /-
   info: 'hIJKMNPQRSTUVWXYZeFGIJKMNPQRSTUVWXYZlMNPQRSTUVWXYZloPQRSTUVWXYZ'
   -/
-  #guard_msgs in
-  #eval insert_missing_letters "hello"
+  -- #guard_msgs in
+  -- #eval insert_missing_letters "hello"
   
-  /--
+  /-
   info: 'pQRSTUVWYZiJKLMNOQRSTUVWYZxYZxaBCDEFGHJKLMNOQRSTUVWYZ'
   -/
-  #guard_msgs in
-  #eval insert_missing_letters "pixxa"
+  -- #guard_msgs in
+  -- #eval insert_missing_letters "pixxa"
   
-  /--
+  /-
   info: 'z'
   -/
-  #guard_msgs in
-  #eval insert_missing_letters "z"
+  -- #guard_msgs in
+  -- #eval insert_missing_letters "z"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   With respect to a given puzzle string, a word is valid if both the following conditions are satisfied:
   
   word contains the first letter of puzzle.
@@ -28,6 +29,7 @@ vc-description: |-
   puzzles[i].length == 7
   words[i][j], puzzles[i][j] are English lowercase letters.
   Each puzzles[i] doesn't contain repeated characters.
+  -/
 
 vc-preamble: |-
 
@@ -65,23 +67,23 @@ vc-theorems: |-
     : ∀ x ∈ (find_num_valid_words [] puzzles), x = 0 := by
     sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval find_num_valid_words ["aaaa", "asas", "able", "ability", "actt", "actor", "access"] ["aboveyz", "abrodyz", "abslute", "absoryz", "actresz", "gaswxyz"]
+  -- #guard_msgs in
+  -- #eval find_num_valid_words ["aaaa", "asas", "able", "ability", "actt", "actor", "access"] ["aboveyz", "abrodyz", "abslute", "absoryz", "actresz", "gaswxyz"]
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval find_num_valid_words ["apple", "pleas", "please"] ["aelwxyz", "aelpxyz", "aelpsxy", "saelpxy"]
+  -- #guard_msgs in
+  -- #eval find_num_valid_words ["apple", "pleas", "please"] ["aelwxyz", "aelpxyz", "aelpsxy", "saelpxy"]
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval find_num_valid_words ["a"] ["abcdefg"]
+  -- #guard_msgs in
+  -- #eval find_num_valid_words ["a"] ["abcdefg"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

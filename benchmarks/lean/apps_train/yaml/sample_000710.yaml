@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a matrix of integers $A$ with $N$ rows (numbered $1$ through $N$) and $M$ columns (numbered $1$ through $M$). Each element of this matrix is either $0$ or $1$.
   A move consists of the following steps:
   - Choose two different rows $r_1$ and $r_2$ or two different columns $c_1$ and $c_2$.
@@ -30,6 +31,7 @@ vc-description: |-
   1 0 1
   2 1 1
   1 1 0
+  -/
 
 vc-preamble: |-
   def Matrix := List (List Int)

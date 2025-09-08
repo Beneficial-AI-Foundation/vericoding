@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a set of size $m$ with integer elements between $0$ and $2^{n}-1$ inclusive. Let's build an undirected graph on these integers in the following way: connect two integers $x$ and $y$ with an edge if and only if $x \& y = 0$. Here $\&$ is the bitwise AND operation. Count the number of connected components in that graph.
   
   -----Input-----
@@ -35,6 +36,7 @@ vc-description: |-
   Graph from second sample:
   
   [Image]
+  -/
 
 vc-preamble: |-
 

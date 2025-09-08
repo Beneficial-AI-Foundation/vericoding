@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given two strings $S$ and $R$. Each of these strings has length $N$. We want to make $S$ equal to $R$ by performing the following operation some number of times (possibly zero):
   - Choose two integers $a$ and $b$ such that $1 \le a \le b \le N$.
   - For each $i$ such that $a \le i \le b$, replace the $i$-th character of $S$ by the $i$-th character of $R$.
@@ -30,6 +31,7 @@ vc-description: |-
   
   -----Explanation-----
   Example case 1: $S$ can be made equal to $R$ in two moves. First, we replace $S_1$ by $R_1$ and then replace $S_5$ by $R_5$. We have $k = l = 2$, so the cost is $2 \cdot 2 = 4$. If we wanted to perform only one operation, the cost would be $5$.
+  -/
 
 vc-preamble: |-
 
@@ -49,23 +51,23 @@ vc-theorems: |-
   theorem cost_symmetric (s r : String) :
     min_cost_to_transform s r = min_cost_to_transform r s := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval min_cost_to_transform "adefb" "bdefa"
+  -- #guard_msgs in
+  -- #eval min_cost_to_transform "adefb" "bdefa"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_cost_to_transform "abc" "abc"
+  -- #guard_msgs in
+  -- #eval min_cost_to_transform "abc" "abc"
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval min_cost_to_transform "abc" "def"
+  -- #guard_msgs in
+  -- #eval min_cost_to_transform "abc" "def"
 
 vc-postamble: |-
   -- Apps difficulty: interview

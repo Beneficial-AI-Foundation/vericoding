@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    Define crossover operation over two equal-length strings A and B as follows:
   
@@ -31,6 +32,7 @@ vc-description: |-
      Constraints: `result.length = arr[i].length.`
   
    - `[output]` an integer
+  -/
 
 vc-preamble: |-
 
@@ -56,23 +58,23 @@ vc-theorems: |-
     strings_crossover arr result = 0 :=
   sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval strings_crossover ["abc", "aaa", "aba", "bab"] "bbb"
+  -- #guard_msgs in
+  -- #eval strings_crossover ["abc", "aaa", "aba", "bab"] "bbb"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval strings_crossover ["aacccc", "bbcccc"] "abdddd"
+  -- #guard_msgs in
+  -- #eval strings_crossover ["aacccc", "bbcccc"] "abdddd"
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval strings_crossover ["a", "b", "c", "d", "e"] "c"
+  -- #guard_msgs in
+  -- #eval strings_crossover ["a", "b", "c", "d", "e"] "c"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

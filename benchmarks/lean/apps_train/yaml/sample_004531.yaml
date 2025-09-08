@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The mean and standard deviation of a sample of data can be thrown off if the sample contains one or many outlier(s) :
   
   (image source)
@@ -22,6 +23,7 @@ vc-description: |-
   (where N is the sample size, xi is observation i and x̄ is the sample mean)
   
   Note : since we are not computing the sample standard deviation for inferential purposes, the denominator is n, not n - 1.
+  -/
 
 vc-preamble: |-
 
@@ -51,23 +53,23 @@ vc-theorems: |-
   theorem clean_mean_basic_test3 :
     clean_mean [1, 1, 2, 2, 3, 3] 2.0 = 2.0 := sorry
   
-  /--
+  /-
   info: 5.5
   -/
-  #guard_msgs in
-  #eval clean_mean [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 100] 3
+  -- #guard_msgs in
+  -- #eval clean_mean [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 100] 3
   
-  /--
+  /-
   info: 3.0
   -/
-  #guard_msgs in
-  #eval clean_mean [1, 2, 3, 4, 5] 3
+  -- #guard_msgs in
+  -- #eval clean_mean [1, 2, 3, 4, 5] 3
   
-  /--
+  /-
   info: 2.0
   -/
-  #guard_msgs in
-  #eval clean_mean [1, 2, 3] 2
+  -- #guard_msgs in
+  -- #eval clean_mean [1, 2, 3] 2
 
 vc-postamble: |-
   -- Apps difficulty: introductory

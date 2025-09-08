@@ -1,0 +1,64 @@
+/-
+# Task
+ Given a position of a knight on the standard chessboard, find the number of different moves the knight can perform.
+
+ The knight can move to a square that is two squares horizontally and one square vertically, or two squares vertically and one square horizontally away from it. The complete move therefore looks like the letter L. Check out the image below to see all valid moves for a knight piece that is placed on one of the central squares.
+
+ ![](https://codefightsuserpics.s3.amazonaws.com/tasks/chessKnight/img/knight.jpg?_tm=1473533979951)
+
+# Example
+
+ For `cell = "a1"`, the output should be `2`.
+
+ ![](https://codefightsuserpics.s3.amazonaws.com/tasks/chessKnight/img/ex_1.jpg?_tm=1473533980197)
+
+ For `cell = "c2"`, the output should be `6`.
+
+ ![](https://codefightsuserpics.s3.amazonaws.com/tasks/chessKnight/img/ex_2.jpg?_tm=1473533980368)
+
+# Input/Output
+
+ - `[input]` string `cell`
+
+    String consisting of letter+number - coordinates of the knight on an 8 × 8 chessboard in chess notation.
+
+ - `[output]` an integer
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def chess_knight (pos : String) : Nat := sorry
+
+theorem corner_positions (pos : String) :
+  (pos = "a1" ∨ pos = "a8" ∨ pos = "h1" ∨ pos = "h8") → chess_knight pos = 2 := sorry
+
+theorem edge_positions (pos : String) :
+  ((pos.front = 'a' ∨ pos.front = 'h' ∨ 
+    pos.back = '1' ∨ pos.back = '8') ∧
+   ¬(pos = "a1" ∨ pos = "a8" ∨ pos = "h1" ∨ pos = "h8")) →
+  chess_knight pos ≤ 4 := sorry
+
+theorem center_max_moves :
+  chess_knight "d4" = 8 ∧ chess_knight "e4" = 8 := sorry
+
+/-
+info: 2
+-/
+-- #guard_msgs in
+-- #eval chess_knight "a1"
+
+/-
+info: 6
+-/
+-- #guard_msgs in
+-- #eval chess_knight "c2"
+
+/-
+info: 8
+-/
+-- #guard_msgs in
+-- #eval chess_knight "d4"
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded_and_plausible

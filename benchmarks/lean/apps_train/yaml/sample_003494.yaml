@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Poor Cade has got his number conversions mixed up again!
   
   Fix his ```convert_num()``` function so it correctly converts a base-10 ```int```eger, 
@@ -24,6 +25,7 @@ vc-description: |-
   For each respectively.
   
   Good luck coding! :D
+  -/
 
 vc-preamble: |-
 
@@ -49,29 +51,29 @@ vc-theorems: |-
   theorem invalid_number_type (s : String) (b : Base) :
     convert_num 0 b = "Invalid number input" := sorry
   
-  /--
+  /-
   info: '0b1111010'
   -/
-  #guard_msgs in
-  #eval convert_num 122 "bin"
+  -- #guard_msgs in
+  -- #eval convert_num 122 "bin"
   
-  /--
+  /-
   info: 'Invalid number input'
   -/
-  #guard_msgs in
-  #eval convert_num "dog" "bin"
+  -- #guard_msgs in
+  -- #eval convert_num "dog" "bin"
   
-  /--
+  /-
   info: '0x0'
   -/
-  #guard_msgs in
-  #eval convert_num 0 "hex"
+  -- #guard_msgs in
+  -- #eval convert_num 0 "hex"
   
-  /--
+  /-
   info: 'Invalid base input'
   -/
-  #guard_msgs in
-  #eval convert_num 123 "lol"
+  -- #guard_msgs in
+  -- #eval convert_num 123 "lol"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

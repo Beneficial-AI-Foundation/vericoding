@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Yash likes playing with numbers. He has a challenge for you. Yash gives
   you a number that he made by multiplying two numbers. He claims that the
   possible sum of the two numbers he multiplied is as minimum as possible. He
@@ -25,6 +26,7 @@ vc-description: |-
   
   -----Sample Output:-----
   1929
+  -/
 
 vc-preamble: |-
 
@@ -50,23 +52,23 @@ vc-theorems: |-
   theorem one_returns_two :
     find_minimum_sum_pair 1 = 2 := sorry
   
-  /--
+  /-
   info: 1929
   -/
-  #guard_msgs in
-  #eval find_minimum_sum_pair 852140
+  -- #guard_msgs in
+  -- #eval find_minimum_sum_pair 852140
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval find_minimum_sum_pair 12
+  -- #guard_msgs in
+  -- #eval find_minimum_sum_pair 12
   
-  /--
+  /-
   info: 18
   -/
-  #guard_msgs in
-  #eval find_minimum_sum_pair 17
+  -- #guard_msgs in
+  -- #eval find_minimum_sum_pair 17
 
 vc-postamble: |-
   -- Apps difficulty: interview

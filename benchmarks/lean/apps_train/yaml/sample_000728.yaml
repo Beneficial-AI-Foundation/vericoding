@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef received a new sequence $A_1, A_2, \ldots, A_N$. He does not like arbitrarily ordered sequences, so he wants to permute the elements of $A$ in such a way that it would satisfy the following condition: there is an integer $p$ ($1 \le p \le N$) such that the first $p$ elements of the new (permuted) sequence are strictly increasing and the last $N-p+1$ elements are strictly decreasing.
   Help Chef and find a permutation of the given sequence which satisfies this condition or determine that no such permutation exists. If there are multiple solutions, you may find any one.
   
@@ -49,6 +50,7 @@ vc-description: |-
   YES
   1 2 3 2 1
   NO
+  -/
 
 vc-preamble: |-
   def List.countElem (x : α) (xs : List α) [BEq α] : Nat :=

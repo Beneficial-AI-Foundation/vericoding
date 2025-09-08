@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef has an old machine if the chef enters any natural number, the machine will display 1, 2, …n, n-1, n-2, n-3,…1 series and in next line prints sum of cubes of each number in the series. Chef wants to create a computer program which can replicate the functionality of the machine. Help the chef to code.
   
   -----Input:-----
@@ -23,6 +24,7 @@ vc-description: |-
   
   -----EXPLANATION:-----
   For 2) series will be 1, 2, 3, 2, 1 and the sum will be = 1 + 8 + 27 + 8+ 1
+  -/
 
 vc-preamble: |-
 

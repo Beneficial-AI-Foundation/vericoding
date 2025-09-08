@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Take a sentence (string) and reverse each word in the sentence. Do not reverse the order of the words, just the letters in each word.
   
   If there is punctuation, it should be interpreted as a regular character; no special rules.
@@ -13,6 +14,7 @@ vc-description: |-
   "Hi mom" => "iH mom"
   " A fun little challenge! " => " A nuf elttil !egnellahc "
   ```
+  -/
 
 vc-preamble: |-
 
@@ -44,23 +46,23 @@ vc-theorems: |-
       orig_words[i]! = String.mk (List.reverse (result_words[i]!).data) :=
   sorry
   
-  /--
+  /-
   info: 'iH mom'
   -/
-  #guard_msgs in
-  #eval reverse_words "Hi mom"
+  -- #guard_msgs in
+  -- #eval reverse_words "Hi mom"
   
-  /--
+  /-
   info: ' A nuf elttil !egnellahc '
   -/
-  #guard_msgs in
-  #eval reverse_words " A fun little challenge! "
+  -- #guard_msgs in
+  -- #eval reverse_words " A fun little challenge! "
   
-  /--
+  /-
   info: 'woH won nworb woc'
   -/
-  #guard_msgs in
-  #eval reverse_words "How now brown cow"
+  -- #guard_msgs in
+  -- #eval reverse_words "How now brown cow"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Koa the Koala has a binary string $s$ of length $n$. Koa can perform no more than $n-1$ (possibly zero) operations of the following form:
   
   In one operation Koa selects positions $i$ and $i+1$ for some $i$ with $1 \le i < |s|$ and sets $s_i$ to $max(s_i, s_{i+1})$. Then Koa deletes position $i+1$ from $s$ (after the removal, the remaining parts are concatenated).
@@ -47,6 +48,7 @@ vc-description: |-
   In the second sample Koa can obtain binary strings: $1$, $01$, $11$, $011$, $101$ and $0101$. For example:  to obtain $01$ from $0101$ Koa can operate as follows: $0101 \rightarrow 0(10)1 \rightarrow 011 \rightarrow 0(11) \rightarrow 01$.  to obtain $11$ from $0101$ Koa can operate as follows: $0101 \rightarrow (01)01 \rightarrow 101 \rightarrow 1(01) \rightarrow 11$. 
   
   Parentheses denote the two positions Koa selected in each operation.
+  -/
 
 vc-preamble: |-
   def solve_binary_string (s : String) : Nat := sorry
@@ -75,23 +77,23 @@ vc-theorems: |-
     (h2 : s.data.filter (· = '1') = []) :
     solve_binary_string s = String.length s := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval solve_binary_string "000"
+  -- #guard_msgs in
+  -- #eval solve_binary_string "000"
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval solve_binary_string "0101"
+  -- #guard_msgs in
+  -- #eval solve_binary_string "0101"
   
-  /--
+  /-
   info: 16
   -/
-  #guard_msgs in
-  #eval solve_binary_string "0001111"
+  -- #guard_msgs in
+  -- #eval solve_binary_string "0001111"
 
 vc-postamble: |-
   -- Apps difficulty: competition

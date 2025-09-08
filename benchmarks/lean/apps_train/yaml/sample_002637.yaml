@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   One suggestion to build a satisfactory password is to start with a memorable phrase or sentence and make a password by extracting the first letter of each word. 
   
   Even better is to replace some of those letters with numbers (e.g., the letter `O` can be replaced with the number `0`):
@@ -12,6 +13,7 @@ vc-description: |-
   "Give me liberty or give me death"  --> "Gml0gmd"
   "Keep Calm and Carry On"            --> "KCaC0"
   ```
+  -/
 
 vc-preamble: |-
   def SWAP : Char → Char
@@ -53,23 +55,23 @@ vc-theorems: |-
       pass.data[i]! = SWAP firstChar :=
     sorry
   
-  /--
+  /-
   info: 'Gml0gmd'
   -/
-  #guard_msgs in
-  #eval make_password "Give me liberty or give me death"
+  -- #guard_msgs in
+  -- #eval make_password "Give me liberty or give me death"
   
-  /--
+  /-
   info: 'KCaC0'
   -/
-  #guard_msgs in
-  #eval make_password "Keep Calm and Carry On"
+  -- #guard_msgs in
+  -- #eval make_password "Keep Calm and Carry On"
   
-  /--
+  /-
   info: '505'
   -/
-  #guard_msgs in
-  #eval make_password "Save Our Souls"
+  -- #guard_msgs in
+  -- #eval make_password "Save Our Souls"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

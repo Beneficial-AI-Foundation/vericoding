@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Integral numbers can be even or odd.
   
   Even numbers satisfy `n = 2m` ( with `m` also integral ) and we will ( completely arbitrarily ) think of odd numbers as `n = 2m + 1`.  
@@ -21,6 +22,7 @@ vc-description: |-
   # Hint
   
   Do you _really_ want one? Point or tap here.
+  -/
 
 vc-preamble: |-
   def get_oddity (n : Int) : Int :=
@@ -58,23 +60,23 @@ vc-theorems: |-
     oddest nums = none ∨ (∃ x, oddest nums = some x) :=
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval oddest [1, 2]
+  -- #guard_msgs in
+  -- #eval oddest [1, 2]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval oddest [1, 3]
+  -- #guard_msgs in
+  -- #eval oddest [1, 3]
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval oddest [1, 3, 5, 7]
+  -- #guard_msgs in
+  -- #eval oddest [1, 3, 5, 7]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

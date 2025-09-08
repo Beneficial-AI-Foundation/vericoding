@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Mr. Pr and Ms. Ad are at $a$ and $b$ respectively on an infinite number line. Mr. Pr wants to meet Ms. Ad.
   Mr. Pr can choose to move  $c$ or $d$ units in 1 second. If Mr. Pr moves $c$ units then Ms. Ad will move $d$ units and vice versa. (Both of them always moved in positive x-direction)
   You have to determine if Mr. Pr can meet with Ms. Ad after some integral amount of time, given that Mr. Pr chooses optimally. Note that meeting after a fractional amount of time does not count.
@@ -26,6 +27,7 @@ vc-description: |-
   -----Explanation:-----
   In the first test case, Mr. Pr will move 2 units in the first second and Ms. Ad moves 1 unit simultaneously and they meet. 
   In the second test case, it is impossible to meet (fractional time is not allowed).
+  -/
 
 vc-preamble: |-
 
@@ -56,23 +58,23 @@ vc-theorems: |-
     (h2 : (pos1 - pos2).natAbs % (speed1 - speed2).natAbs ≠ 0) :
     can_meet pos1 pos2 speed1 speed2 = "NO" := by sorry
   
-  /--
+  /-
   info: 'YES'
   -/
-  #guard_msgs in
-  #eval can_meet 3 4 1 2
+  -- #guard_msgs in
+  -- #eval can_meet 3 4 1 2
   
-  /--
+  /-
   info: 'NO'
   -/
-  #guard_msgs in
-  #eval can_meet 10 20 3 7
+  -- #guard_msgs in
+  -- #eval can_meet 10 20 3 7
   
-  /--
+  /-
   info: 'YES'
   -/
-  #guard_msgs in
-  #eval can_meet 5 5 2 3
+  -- #guard_msgs in
+  -- #eval can_meet 5 5 2 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

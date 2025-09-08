@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   If we multiply the integer      `717 (n)` by `7 (k)`, the result will be equal to `5019`.
   
   Consider all the possible ways that this last number may be split as a string and calculate their corresponding sum obtained by adding the substrings as integers. When we add all of them up,... surprise, we got the original number `717`:
@@ -53,6 +54,7 @@ vc-description: |-
   - The sequences have like "mountains" of abundance of integers but also have very wide ranges like "valleys" of scarceness. Potential solutions, even the fastest ones, may time out searching the next integer due to an input in one of these valleys. So it was intended to avoid these ranges.
   
   Javascript and Ruby versions will be released soon.
+  -/
 
 vc-preamble: |-
   def next_higher (start_value k : Nat) : Nat := sorry 

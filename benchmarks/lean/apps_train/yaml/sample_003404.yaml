@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Make a function that receives a value, ```val``` and outputs the smallest higher number than the given value, and this number belong to a set of positive integers that have the following properties:
   
   - their digits occur only once
@@ -21,6 +22,7 @@ vc-description: |-
   ```
   
   Enjoy the kata!!
+  -/
 
 vc-preamble: |-
 
@@ -59,23 +61,23 @@ vc-theorems: |-
     (h : n ≥ 9876543210) :
     ∃ msg : String, nextNumb n = Sum.inr msg := sorry
   
-  /--
+  /-
   info: 15
   -/
-  #guard_msgs in
-  #eval next_numb 12
+  -- #guard_msgs in
+  -- #eval next_numb 12
   
-  /--
+  /-
   info: 105
   -/
-  #guard_msgs in
-  #eval next_numb 99
+  -- #guard_msgs in
+  -- #eval next_numb 99
   
-  /--
+  /-
   info: 1023459
   -/
-  #guard_msgs in
-  #eval next_numb 999999
+  -- #guard_msgs in
+  -- #eval next_numb 999999
 
 vc-postamble: |-
   -- Apps difficulty: introductory

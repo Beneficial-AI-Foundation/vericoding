@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Create a function that takes a positive integer and returns the next bigger number that can be formed by rearranging its digits. For example:
   
   ```
@@ -14,6 +15,7 @@ vc-description: |-
   111 ==> -1
   531 ==> -1
   ```
+  -/
 
 vc-preamble: |-
   def digits (n : Nat) : List Nat := sorry
@@ -52,29 +54,29 @@ vc-theorems: |-
   theorem next_bigger_output_type (n : Nat) :
     ∃ i : Int, next_bigger n = i := sorry
   
-  /--
+  /-
   info: 21
   -/
-  #guard_msgs in
-  #eval next_bigger 12
+  -- #guard_msgs in
+  -- #eval next_bigger 12
   
-  /--
+  /-
   info: 531
   -/
-  #guard_msgs in
-  #eval next_bigger 513
+  -- #guard_msgs in
+  -- #eval next_bigger 513
   
-  /--
+  /-
   info: 2071
   -/
-  #guard_msgs in
-  #eval next_bigger 2017
+  -- #guard_msgs in
+  -- #eval next_bigger 2017
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval next_bigger 9876543210
+  -- #guard_msgs in
+  -- #eval next_bigger 9876543210
 
 vc-postamble: |-
   -- Apps difficulty: interview

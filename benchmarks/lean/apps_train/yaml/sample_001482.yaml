@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Prime numbers are arranged in a ordered list U$U$, in increasing order. Let S$S$ be a sublist of U$U$ with a unique property that for every element A$A$ belonging to list S$S$, if i$i$ denotes the index of A$A$ in list U$U$, than i$i$ also belongs to list U$U$.
   Given N$N$, find sum of first N$N$ elements of list S$S$, assuming 1-based indexing.
   As the sum can be very large, print the sum modulo 109+7$10^{9}+7$.
@@ -45,6 +46,7 @@ vc-description: |-
   First few elements of set S$S$ are  {3,5,11…}  , so sum is 3.
   Example case 2: 
   Sum is 3+5=8.
+  -/
 
 vc-preamble: |-
 
@@ -77,23 +79,23 @@ vc-theorems: |-
     solve_prime_sum 1 < solve_prime_sum 2 :=
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval solve_prime_sum 1
+  -- #guard_msgs in
+  -- #eval solve_prime_sum 1
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval solve_prime_sum 2
+  -- #guard_msgs in
+  -- #eval solve_prime_sum 2
   
-  /--
+  /-
   info: 19
   -/
-  #guard_msgs in
-  #eval solve_prime_sum 3
+  -- #guard_msgs in
+  -- #eval solve_prime_sum 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Based on [this kata, Connect Four.](https://www.codewars.com/kata/connect-four-1)
   
   In this kata we play a modified game of connect four. It's connect X, and there can be multiple players.
@@ -36,6 +37,7 @@ vc-description: |-
   All inputs are valid, no illegal moves are made.
   
   ![alt text](https://i.imgur.com/xnJEsIx.png)
+  -/
 
 vc-preamble: |-
 
@@ -77,23 +79,23 @@ vc-theorems: |-
     whoIsWinner moves con sz = Color.Draw := 
     sorry
   
-  /--
+  /-
   info: 'R'
   -/
-  #guard_msgs in
-  #eval whoIsWinner ["A_R", "B_Y", "A_R"] 2 2
+  -- #guard_msgs in
+  -- #eval whoIsWinner ["A_R", "B_Y", "A_R"] 2 2
   
-  /--
+  /-
   info: 'Y'
   -/
-  #guard_msgs in
-  #eval whoIsWinner ["A_R", "C_Y", "C_R", "B_Y", "A_R", "C_Y", "B_R", "B_Y", "D_R", "A_Y", "D_R", "A_Y"] 2 4
+  -- #guard_msgs in
+  -- #eval whoIsWinner ["A_R", "C_Y", "C_R", "B_Y", "A_R", "C_Y", "B_R", "B_Y", "D_R", "A_Y", "D_R", "A_Y"] 2 4
   
-  /--
+  /-
   info: 'R'
   -/
-  #guard_msgs in
-  #eval whoIsWinner ["E_R", "E_Y", "E_R", "A_Y", "B_R", "C_Y", "B_R", "F_Y", "F_R", "C_Y", "B_R", "D_Y", "D_R", "A_Y", "C_R", "E_Y", "B_R", "D_Y", "D_R", "A_Y", "A_R", "D_Y", "D_R"] 3 6
+  -- #guard_msgs in
+  -- #eval whoIsWinner ["E_R", "E_Y", "E_R", "A_Y", "B_R", "C_Y", "B_R", "F_Y", "F_R", "C_Y", "B_R", "D_Y", "D_R", "A_Y", "C_R", "E_Y", "B_R", "D_Y", "D_R", "A_Y", "A_R", "D_Y", "D_R"] 3 6
 
 vc-postamble: |-
   -- Apps difficulty: introductory

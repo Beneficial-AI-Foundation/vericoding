@@ -1,7 +1,9 @@
 vc-description: |-
+  /-
   Given a non-negative number, return the next bigger polydivisible number, or an empty value like `null` or `Nothing`.
   
   A number is polydivisible if its first digit is cleanly divisible by `1`, its first two digits by `2`, its first three by `3`, and so on. There are finitely many polydivisible numbers.
+  -/
 
 vc-preamble: |-
 
@@ -36,23 +38,23 @@ vc-theorems: |-
   theorem next_num_small_numbers (i : Nat) (h : i > 0) (h2 : i < 10) :
     next_num (i-1) = some i := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval next_num 0
+  -- #guard_msgs in
+  -- #eval next_num 0
   
-  /--
+  /-
   info: 1236
   -/
-  #guard_msgs in
-  #eval next_num 1234
+  -- #guard_msgs in
+  -- #eval next_num 1234
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval next_num 3608528850368400786036725
+  -- #guard_msgs in
+  -- #eval next_num 3608528850368400786036725
 
 vc-postamble: |-
   -- Apps difficulty: introductory

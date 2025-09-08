@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You drop a ball from a given height. After each bounce, the ball returns to some fixed proportion of its previous height. If the ball bounces to height 1 or less, we consider it to have stopped bouncing. Return the number of bounces it takes for the ball to stop moving.
   
   ```
@@ -20,6 +21,7 @@ vc-description: |-
   Initial height is an integer in range [2,1000]
   
   Bouncing Proportion is a decimal in range [0, 1)
+  -/
 
 vc-preamble: |-
 
@@ -64,23 +66,23 @@ vc-theorems: |-
     previous_height > 1 :=
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval bouncing_ball 4 0.5
+  -- #guard_msgs in
+  -- #eval bouncing_ball 4 0.5
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval bouncing_ball 30 0.3
+  -- #guard_msgs in
+  -- #eval bouncing_ball 30 0.3
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval bouncing_ball 10 0.1
+  -- #guard_msgs in
+  -- #eval bouncing_ball 10 0.1
 
 vc-postamble: |-
   -- Apps difficulty: introductory

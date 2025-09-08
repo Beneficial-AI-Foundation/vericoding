@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef recently printed directions from his home to a hot new restaurant across the town, but forgot to print the directions to get back home. Help Chef to transform the directions to get home from the restaurant.
   A set of directions consists of several instructions. The first instruction is of the form "Begin on XXX", indicating the street that the route begins on. Each subsequent instruction is of the form "Left on XXX" or "Right on XXX", indicating a turn onto the specified road.
   When reversing directions, all left turns become right turns and vice versa, and the order of roads and turns is reversed. See the sample input for examples.
@@ -44,6 +45,7 @@ vc-description: |-
   
   -----Explanation-----
   In the first test case, the destination lies on Road D, hence the reversed route begins on Road D. The final turn in the original route is turning left from Road C onto Road D. The reverse of this, turning right from Road D onto Road C, is the first turn in the reversed route.
+  -/
 
 vc-preamble: |-
   def Road : Type := String
@@ -89,17 +91,17 @@ vc-theorems: |-
     reverse_directions ["Begin on Road A"] = ["Begin on Road A"]
     := sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval reverse_directions ["Begin on Road A", "Right on Road B", "Right on Road C", "Left on Road D"]
+  -- #guard_msgs in
+  -- #eval reverse_directions ["Begin on Road A", "Right on Road B", "Right on Road C", "Left on Road D"]
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval reverse_directions ["Begin on Old Madras Road", "Left on Domlur Flyover", "Left on 100 Feet Road", "Right on Sarjapur Road", "Right on Hosur Road", "Right on Ganapathi Temple Road"]
+  -- #guard_msgs in
+  -- #eval reverse_directions ["Begin on Old Madras Road", "Left on Domlur Flyover", "Left on 100 Feet Road", "Right on Sarjapur Road", "Right on Hosur Road", "Right on Ganapathi Temple Road"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

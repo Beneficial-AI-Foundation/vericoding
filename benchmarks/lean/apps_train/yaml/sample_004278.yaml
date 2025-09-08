@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You will be given an array of numbers.
   
   For each number in the array you will need to create an object. 
@@ -8,6 +9,7 @@ vc-description: |-
   Return an array of the resulting objects.
   
   All inputs will be arrays of numbers. All character codes are valid lower case letters. The input array will not be empty.
+  -/
 
 vc-preamble: |-
 
@@ -40,23 +42,23 @@ vc-theorems: |-
     nums_copy = nums →
     nums_copy = nums := sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval num_obj [118, 117, 120]
+  -- #guard_msgs in
+  -- #eval num_obj [118, 117, 120]
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval num_obj [101, 121, 110]
+  -- #guard_msgs in
+  -- #eval num_obj [101, 121, 110]
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval num_obj [100, 100, 116]
+  -- #guard_msgs in
+  -- #eval num_obj [100, 100, 116]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

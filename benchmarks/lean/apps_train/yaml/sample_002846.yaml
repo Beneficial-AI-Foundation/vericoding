@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Complete the function that takes two numbers as input, ```num``` and ```nth``` and return the `nth` digit of `num` (counting from right to left).
   
   ## Note
@@ -17,6 +18,7 @@ vc-description: |-
   findDigit(65, 0)       returns -1
   findDigit(24, -8)      returns -1
   ```
+  -/
 
 vc-preamble: |-
 
@@ -52,35 +54,35 @@ vc-theorems: |-
   theorem zero_number :
     find_digit 0 1 = 0 ∧ find_digit 0 5 = 0 := sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval find_digit 5673 4
+  -- #guard_msgs in
+  -- #eval find_digit 5673 4
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval find_digit -2825 3
+  -- #guard_msgs in
+  -- #eval find_digit -2825 3
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval find_digit 0 20
+  -- #guard_msgs in
+  -- #eval find_digit 0 20
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval find_digit 65 0
+  -- #guard_msgs in
+  -- #eval find_digit 65 0
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval find_digit -456 5
+  -- #guard_msgs in
+  -- #eval find_digit -456 5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The chef is having one string of English lower case alphabets only. The chef wants to remove all "abc" special pairs where a,b,c are occurring consecutively. After removing the pair, create a new string and again remove "abc" special pair from a newly formed string. Repeate the process until no such pair remains in a string.
   
   -----Input:-----
@@ -26,6 +27,7 @@ vc-description: |-
   For 2) string = bababccc
   newString1 = babcc  // After removing middle "abc"
   newString2 = bc   //After removing "abc"
+  -/
 
 vc-preamble: |-
 
@@ -62,23 +64,23 @@ vc-theorems: |-
           else s'
       remove_all s n := sorry
   
-  /--
+  /-
   info: 'ac'
   -/
-  #guard_msgs in
-  #eval remove_abc_pairs "aabcc"
+  -- #guard_msgs in
+  -- #eval remove_abc_pairs "aabcc"
   
-  /--
+  /-
   info: 'bc'
   -/
-  #guard_msgs in
-  #eval remove_abc_pairs "bababccc"
+  -- #guard_msgs in
+  -- #eval remove_abc_pairs "bababccc"
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval remove_abc_pairs "abcabcabc"
+  -- #guard_msgs in
+  -- #eval remove_abc_pairs "abcabcabc"
 
 vc-postamble: |-
   -- Apps difficulty: interview

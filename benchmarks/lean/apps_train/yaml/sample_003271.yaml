@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   #### Task:
   
   Your job here is to implement a method, `approx_root` in Ruby/Python/Crystal and `approxRoot` in JavaScript/CoffeeScript, that takes one argument, `n`, and returns the approximate square root of that number, rounded to the nearest hundredth and computed in the following manner.
@@ -42,6 +43,7 @@ vc-description: |-
   [Random Integers](https://www.codewars.com/kata/random-integers), [Implement String#transpose](https://www.codewars.com/kata/implement-string-number-transpose), [Implement Array#transpose!](https://www.codewars.com/kata/implement-array-number-transpose), [Arrays and Procs #1](https://www.codewars.com/kata/arrays-and-procs-number-1), and [Arrays and Procs #2](https://www.codewars.com/kata/arrays-and-procs-number-2).
   
   If you notice any issues or have any suggestions/comments whatsoever, please don't hesitate to mark an issue or just comment. Thanks!
+  -/
 
 vc-preamble: |-
 
@@ -66,23 +68,23 @@ vc-theorems: |-
   theorem approx_root_precision (n : Nat) (h : n ≤ 1000000) :
     (approx_root n - approx_root n).abs < 0.00001 := sorry
   
-  /--
+  /-
   info: 20
   -/
-  #guard_msgs in
-  #eval approx_root 400
+  -- #guard_msgs in
+  -- #eval approx_root 400
   
-  /--
+  /-
   info: 20.02
   -/
-  #guard_msgs in
-  #eval approx_root 401
+  -- #guard_msgs in
+  -- #eval approx_root 401
   
-  /--
+  /-
   info: 1.33
   -/
-  #guard_msgs in
-  #eval approx_root 2
+  -- #guard_msgs in
+  -- #eval approx_root 2
 
 vc-postamble: |-
   -- Apps difficulty: introductory

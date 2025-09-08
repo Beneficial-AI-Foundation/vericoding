@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given two integer arrays startTime and endTime and given an integer queryTime.
   The ith student started doing their homework at the time startTime[i] and finished it at time endTime[i].
   Return the number of students doing their homework at time queryTime. More formally, return the number of students where queryTime lays in the interval [startTime[i], endTime[i]] inclusive.
@@ -34,6 +35,7 @@ vc-description: |-
   1 <= startTime.length <= 100
   1 <= startTime[i] <= endTime[i] <= 1000
   1 <= queryTime <= 1000
+  -/
 
 vc-preamble: |-
 
@@ -50,23 +52,23 @@ vc-theorems: |-
     busy_student [] [] 5 = 0 :=
   sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval busy_student [1, 2, 3] [3, 2, 7] 4
+  -- #guard_msgs in
+  -- #eval busy_student [1, 2, 3] [3, 2, 7] 4
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval busy_student [4] [4] 4
+  -- #guard_msgs in
+  -- #eval busy_student [4] [4] 4
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval busy_student [1, 1, 1, 1] [1, 3, 2, 4] 7
+  -- #guard_msgs in
+  -- #eval busy_student [1, 1, 1, 1] [1, 3, 2, 4] 7
 
 vc-postamble: |-
   -- Apps difficulty: introductory

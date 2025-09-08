@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef and Roma are playing a game. Rules of the game are quite simple.
   Initially there are N piles of stones on the table.
   In each turn, a player can choose one pile and remove it from the table.
@@ -31,6 +32,7 @@ vc-description: |-
   Output:
   4
   3
+  -/
 
 vc-preamble: |-
   def max_stones_removed (n : Nat) (piles : List Nat) : Nat := sorry
@@ -56,23 +58,23 @@ vc-theorems: |-
   theorem max_stones_removed_n_independent (n₁ n₂ : Nat) (piles : List Nat) (h : piles.length > 0) :
     max_stones_removed n₁ piles = max_stones_removed n₂ piles := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval max_stones_removed 3 [1, 2, 3]
+  -- #guard_msgs in
+  -- #eval max_stones_removed 3 [1, 2, 3]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval max_stones_removed 3 [1, 2, 1]
+  -- #guard_msgs in
+  -- #eval max_stones_removed 3 [1, 2, 1]
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval max_stones_removed 4 [4, 3, 2, 1]
+  -- #guard_msgs in
+  -- #eval max_stones_removed 4 [4, 3, 2, 1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

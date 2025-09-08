@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   DNA is a biomolecule that carries genetic information. It is composed of four different building blocks, called nucleotides: adenine (A), thymine (T), cytosine (C) and guanine (G). Two DNA strands join to form a double helix, whereby the nucleotides of one strand bond to the nucleotides of the other strand at the corresponding positions. The bonding is only possible if the nucleotides are complementary: A always pairs with T, and C always pairs with G.
   
   Due to the asymmetry of the DNA, every DNA strand has a direction associated with it. The two strands of the double helix run in opposite directions to each other, which we refer to as the 'up-down' and the 'down-up' directions.
@@ -20,6 +21,7 @@ vc-description: |-
   
   ---
   #### If you enjoyed this kata, check out also my other DNA kata: [**Longest Repeated DNA Motif**](http://www.codewars.com/kata/longest-repeated-dna-motif)
+  -/
 
 vc-preamble: |-
 
@@ -30,39 +32,39 @@ vc-helpers: |-
 vc-definitions: |-
   def check_DNA (s1 s2 : String) : Bool := sorry
   
-  /-- The function check_DNA is symmetric: gives same result regardless of argument order -/
+  /- The function check_DNA is symmetric: gives same result regardless of argument order -/
 
 vc-theorems: |-
   theorem check_DNA_symmetric (s1 s2 : String) :
     check_DNA s1 s2 = check_DNA s2 s1 := sorry
   
-  /-- Empty sequence matches any sequence -/
+  /- Empty sequence matches any sequence -/
   
   theorem check_DNA_empty (s : String) :
     check_DNA s "" = true ∧ check_DNA "" s = true := sorry
   
-  /-- Known complementary sequences match -/
+  /- Known complementary sequences match -/
   
   theorem check_DNA_basic_complement :
     check_DNA "ATGCTACG" "CGTAGCAT" = true := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval check_DNA "ATGCTACG" "CGTAGCAT"
+  -- #guard_msgs in
+  -- #eval check_DNA "ATGCTACG" "CGTAGCAT"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval check_DNA "GCTAGCACCCATTAGGAGATAC" "CTCCTAATGGGTG"
+  -- #guard_msgs in
+  -- #eval check_DNA "GCTAGCACCCATTAGGAGATAC" "CTCCTAATGGGTG"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval check_DNA "ATGCTACG" "CGTAGCAA"
+  -- #guard_msgs in
+  -- #eval check_DNA "ATGCTACG" "CGTAGCAA"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The notorious hacker group "Sed" managed to obtain a string $S$ from their secret sources. The string contains only lowercase English letters along with the character '?'.
   A substring of $S$ is a contiguous subsequence of that string. For example, the string "chef" is a substring of the string "codechef", but the string "codeh" is not a substring of "codechef".
   A substring of $S$ is good if it is possible to choose a lowercase English letter $C$ such that the following process succeeds:
@@ -47,6 +48,7 @@ vc-description: |-
   - "aa?" is not a good substring. For any replacement letter $C$, we find that $C$ occurs an odd number of times in $R$.
   Example case 2: We especially note that "a???" is not a good substring. Since all '?' have to be replaced by the same character, we can only get strings of the form "aaaa", "abbb", "accc", etc., but none of them match the criteria for a good substring.
   Example case 3: Any substring with even length is good.
+  -/
 
 vc-preamble: |-
 

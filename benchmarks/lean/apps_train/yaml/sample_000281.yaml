@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There is a room with n lights which are turned on initially and 4 buttons on the wall. After performing exactly m unknown operations towards buttons, you need to return how many different kinds of status of the n lights could be.
   
   Suppose n lights are labeled as number [1, 2, 3 ..., n], function of these 4 buttons are given below:
@@ -28,6 +29,7 @@ vc-description: |-
   
   Note:
   n and m both fit in range [0, 1000].
+  -/
 
 vc-preamble: |-
 
@@ -69,23 +71,23 @@ vc-theorems: |-
     flipLights (n-1) m ≤ flipLights n m :=
   sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval flipLights 1 1
+  -- #guard_msgs in
+  -- #eval flipLights 1 1
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval flipLights 2 1
+  -- #guard_msgs in
+  -- #eval flipLights 2 1
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval flipLights 3 1
+  -- #guard_msgs in
+  -- #eval flipLights 3 1
 
 vc-postamble: |-
   -- Apps difficulty: interview

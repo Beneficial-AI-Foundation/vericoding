@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Kabir Singh is playing a game on the non-negative side of  x-axis. It takes him $1 second$ to reach from Pth position to (P−1)th position or (P+1)th position. 
   Kabir never goes to the negative side and also doesn't stop at any moment of time.
   The movement can be defined as  : 
@@ -48,6 +49,7 @@ vc-description: |-
   The path followed by Kabir to reach 1 for the third time is given below.
   $0−1−0−1−2−1$
   He reaches $1$ for the third time at $ t=5$.
+  -/
 
 vc-preamble: |-
 
@@ -79,29 +81,29 @@ vc-theorems: |-
     solve_kabir_game n k ≤ (n + k)^2 + k :=
     sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve_kabir_game 0 1
+  -- #guard_msgs in
+  -- #eval solve_kabir_game 0 1
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve_kabir_game 1 1
+  -- #guard_msgs in
+  -- #eval solve_kabir_game 1 1
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval solve_kabir_game 1 3
+  -- #guard_msgs in
+  -- #eval solve_kabir_game 1 3
   
-  /--
+  /-
   info: 46
   -/
-  #guard_msgs in
-  #eval solve_kabir_game 4 6
+  -- #guard_msgs in
+  -- #eval solve_kabir_game 4 6
 
 vc-postamble: |-
   -- Apps difficulty: interview

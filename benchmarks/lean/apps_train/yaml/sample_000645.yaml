@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   This year $p$ footballers and $q$ cricketers have been invited to participate in IPL (Indian Programming League) as guests. You have to accommodate them in $r$ rooms such that-
   - No room may remain empty.
   - A room may contain either only footballers or only cricketers, not both.
@@ -36,6 +37,7 @@ vc-description: |-
   - {Footballer 1}, {Footballer 2}, {Cricketer 1, Cricketer 3}, {Cricketer 2, Cricketer 4}
   - {Footballer 1}, {Footballer 2}, {Cricketer 1, Cricketer 4}, {Cricketer 2, Cricketer 3}    
   Please note that the rooms are identical.
+  -/
 
 vc-preamble: |-
 
@@ -63,23 +65,23 @@ vc-theorems: |-
     solve_ipl_rooms n n 1 = solve_ipl_rooms n n 1 :=
   sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve_ipl_rooms 2 1 4
+  -- #guard_msgs in
+  -- #eval solve_ipl_rooms 2 1 4
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval solve_ipl_rooms 2 4 4
+  -- #guard_msgs in
+  -- #eval solve_ipl_rooms 2 4 4
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval solve_ipl_rooms 2 5 4
+  -- #guard_msgs in
+  -- #eval solve_ipl_rooms 2 5 4
 
 vc-postamble: |-
   -- Apps difficulty: interview

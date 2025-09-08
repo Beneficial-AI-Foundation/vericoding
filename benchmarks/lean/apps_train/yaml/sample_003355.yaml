@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Kata Task
   
   You are given a list of cogs in a gear train
@@ -24,11 +25,12 @@ vc-description: |-
   Series:
   * Cogs
   * Cogs 2
+  -/
 
 vc-preamble: |-
   def cog_RPM (cogs: List Nat) (n: Nat) : List Int := sorry
   
-  /-- For accessing array elements safely -/
+  /- For accessing array elements safely -/
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -64,23 +66,23 @@ vc-theorems: |-
     ∃ x y : Int, cog_RPM cogs n = [x, y] ∧
     x.natAbs = 1 ∧ y.natAbs = 1 := sorry
   
-  /--
+  /-
   info: [1, 1]
   -/
-  #guard_msgs in
-  #eval cog_RPM [100] 0
+  -- #guard_msgs in
+  -- #eval cog_RPM [100] 0
   
-  /--
+  /-
   info: [1, -1]
   -/
-  #guard_msgs in
-  #eval cog_RPM [100, 100, 100, 100] 0
+  -- #guard_msgs in
+  -- #eval cog_RPM [100, 100, 100, 100] 0
   
-  /--
+  /-
   info: [-1, 1]
   -/
-  #guard_msgs in
-  #eval cog_RPM [100, 100, 100, 100] 1
+  -- #guard_msgs in
+  -- #eval cog_RPM [100, 100, 100, 100] 1
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    A boy is walking a long way from school to his home. To make the walk more fun he decides to add up all the numbers of the houses that he passes by during his walk. Unfortunately, not all of the houses have numbers written on them, and on top of that the boy is regularly taking turns to change streets, so the numbers don't appear to him in any particular order.
   
@@ -19,6 +20,7 @@ vc-description: |-
       Constraints: `5 ≤ inputArray.length ≤ 50, 0 ≤ inputArray[i] ≤ 10.`
   
    - `[output]` an integer
+  -/
 
 vc-preamble: |-
   def List.sum : List Nat → Nat 
@@ -50,23 +52,23 @@ vc-theorems: |-
   theorem house_numbers_sum_zero_prefix :
     house_numbers_sum [0, 1, 2, 3] = 0 := sorry
   
-  /--
+  /-
   info: 11
   -/
-  #guard_msgs in
-  #eval house_numbers_sum [5, 1, 2, 3, 0, 1, 5, 0, 2]
+  -- #guard_msgs in
+  -- #eval house_numbers_sum [5, 1, 2, 3, 0, 1, 5, 0, 2]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval house_numbers_sum [0, 1, 2, 3]
+  -- #guard_msgs in
+  -- #eval house_numbers_sum [0, 1, 2, 3]
   
-  /--
+  /-
   info: 13
   -/
-  #guard_msgs in
-  #eval house_numbers_sum [4, 2, 1, 6, 0, 3, 2]
+  -- #guard_msgs in
+  -- #eval house_numbers_sum [4, 2, 1, 6, 0, 3, 2]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

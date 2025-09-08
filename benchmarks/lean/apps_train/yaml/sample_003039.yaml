@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The first input array is the key to the correct answers to an exam, like ["a", "a", "b", "d"]. The second one contains a student's submitted answers. 
   
   The two arrays are not empty and are the same length. Return the score for this array of answers, giving +4 for each correct answer, -1 for each incorrect answer, and +0 for each blank answer, represented as an empty string (in C the space character is used).
@@ -12,6 +13,7 @@ vc-description: |-
   checkExam(["a", "a", "b", "c"], ["a", "a", "b", "c"]) → 16
   checkExam(["b", "c", "b", "a"], ["",  "a", "a", "c"]) → 0
   ```
+  -/
 
 vc-preamble: |-
 
@@ -42,23 +44,23 @@ vc-theorems: |-
     check_exam arr1 arr2 < 4 * arr1.length :=
     sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval check_exam ["a", "a", "b", "b"] ["a", "c", "b", "d"]
+  -- #guard_msgs in
+  -- #eval check_exam ["a", "a", "b", "b"] ["a", "c", "b", "d"]
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval check_exam ["a", "a", "c", "b"] ["a", "a", "b", ""]
+  -- #guard_msgs in
+  -- #eval check_exam ["a", "a", "c", "b"] ["a", "a", "b", ""]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval check_exam ["b", "c", "b", "a"] ["", "a", "a", "c"]
+  -- #guard_msgs in
+  -- #eval check_exam ["b", "c", "b", "a"] ["", "a", "a", "c"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

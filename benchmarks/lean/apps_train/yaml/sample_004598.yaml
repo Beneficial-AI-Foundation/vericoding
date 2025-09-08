@@ -1,5 +1,7 @@
 vc-description: |-
+  /-
   Implement a function which multiplies two numbers.
+  -/
 
 vc-preamble: |-
 
@@ -26,23 +28,23 @@ vc-theorems: |-
   
   theorem multiply_zero_left (x : Int) : multiply 0 x = 0 := sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval multiply 2 3
+  -- #guard_msgs in
+  -- #eval multiply 2 3
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval multiply 0 5
+  -- #guard_msgs in
+  -- #eval multiply 0 5
   
-  /--
+  /-
   info: -8
   -/
-  #guard_msgs in
-  #eval multiply -2 4
+  -- #guard_msgs in
+  -- #eval multiply -2 4
 
 vc-postamble: |-
   -- Apps difficulty: introductory

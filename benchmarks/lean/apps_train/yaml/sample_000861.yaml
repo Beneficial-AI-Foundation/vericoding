@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef is playing a game with his childhood friend. He gave his friend a list of N numbers named $a_1, a_2 ....  a_N$ (Note: All numbers are unique). Adjust the numbers in the following order:
   $(i)$ swap every alternate number with it's succeeding number (If N is odd, do not swap the last number i.e. $a_N$ ).
   $(ii)$ add %3 of every number to itself.
@@ -36,6 +37,7 @@ vc-description: |-
   Step 2: 15 7 66 2 34 56 23 41 13 35
   Step 3: 35  13 41 23 56 34 2 66 7 15
   35 is the number lesser than 38 and 41 is the number greater than 38 in the given set of numbers.
+  -/
 
 vc-preamble: |-
 
@@ -70,23 +72,23 @@ vc-theorems: |-
     (greater ≠ -1 → greater > target) :=
   sorry
   
-  /--
+  /-
   info: (35, 41)
   -/
-  #guard_msgs in
-  #eval find_nearest_numbers 10 arr1.copy() 38
+  -- #guard_msgs in
+  -- #eval find_nearest_numbers 10 arr1.copy() 38
   
-  /--
+  /-
   info: (41, 56)
   -/
-  #guard_msgs in
-  #eval find_nearest_numbers 10 arr2.copy() 50
+  -- #guard_msgs in
+  -- #eval find_nearest_numbers 10 arr2.copy() 50
   
-  /--
+  /-
   info: (13, 23)
   -/
-  #guard_msgs in
-  #eval find_nearest_numbers 10 arr3.copy() 15
+  -- #guard_msgs in
+  -- #eval find_nearest_numbers 10 arr3.copy() 15
 
 vc-postamble: |-
   -- Apps difficulty: interview

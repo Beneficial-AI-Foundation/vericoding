@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Define n!! as
   
   n!! = 1 \* 3 \* 5 \* ... \* n  if n is odd, 
@@ -14,6 +15,7 @@ vc-description: |-
   Example: 
   
   count\_zeros\_n\_double\_fact(30) should return 3
+  -/
 
 vc-preamble: |-
 
@@ -38,23 +40,23 @@ vc-theorems: |-
   theorem small_numbers_have_zero_count (n : Int) :
     n ≤ 8 → count_zeros_n_double_fact n = 0 := sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_zeros_n_double_fact 8
+  -- #guard_msgs in
+  -- #eval count_zeros_n_double_fact 8
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_zeros_n_double_fact 30
+  -- #guard_msgs in
+  -- #eval count_zeros_n_double_fact 30
   
-  /--
+  /-
   info: 62
   -/
-  #guard_msgs in
-  #eval count_zeros_n_double_fact 500
+  -- #guard_msgs in
+  -- #eval count_zeros_n_double_fact 500
 
 vc-postamble: |-
   -- Apps difficulty: introductory

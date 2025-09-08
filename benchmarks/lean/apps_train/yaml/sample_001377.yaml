@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Pied Piper is a startup company trying to build a new Internet called Pipernet. Currently, they have $A$ users and they gain $X$ users everyday. There is also another company called Hooli, which has currently $B$ users and gains $Y$ users everyday.
   Whichever company reaches $Z$ users first takes over Pipernet. In case both companies reach $Z$ users on the same day, Hooli takes over.
   Hooli is a very evil company (like E-Corp in Mr. Robot or Innovative Online Industries in Ready Player One). Therefore, many people are trying to help Pied Piper gain some users.
@@ -37,6 +38,7 @@ vc-description: |-
   -----Explanation-----
   Example case 1: After $8$ days, Pied Piper will have $50$ users and Hooli will have $95$ users. Then, if each supporter contributes once, Pied Piper will also have $95$ users. After that, they still need $5$ more users, so supporter $3$ can contribute again, with $18/2 = 9$ more users. So the answer will be $4$.
   Example case 2: There is no way to beat Hooli.
+  -/
 
 vc-preamble: |-
 
@@ -73,23 +75,23 @@ vc-theorems: |-
     (h1 : 0 < n ∧ n ≤ 100) :
     solve_pipernet n 10 15 5 10 100 (List.replicate n 0) = Sum.inr "RIP" := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval solve_pipernet 3 10 15 5 10 100 [12, 15, 18]
+  -- #guard_msgs in
+  -- #eval solve_pipernet 3 10 15 5 10 100 [12, 15, 18]
   
-  /--
+  /-
   info: 'RIP'
   -/
-  #guard_msgs in
-  #eval solve_pipernet 3 10 15 5 10 100 [5, 5, 10]
+  -- #guard_msgs in
+  -- #eval solve_pipernet 3 10 15 5 10 100 [5, 5, 10]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve_pipernet 4 40 80 30 30 100 [100, 100, 100, 100]
+  -- #guard_msgs in
+  -- #eval solve_pipernet 4 40 80 30 30 100 [100, 100, 100, 100]
 
 vc-postamble: |-
   -- Apps difficulty: interview

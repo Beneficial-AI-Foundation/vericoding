@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Each New Year Timofey and his friends cut down a tree of n vertices and bring it home. After that they paint all the n its vertices, so that the i-th vertex gets color c_{i}.
   
   Now it's time for Timofey birthday, and his mother asked him to remove the tree. Timofey removes the tree in the following way: he takes some vertex in hands, while all the other vertices move down so that the tree becomes rooted at the chosen vertex. After that Timofey brings the tree to a trash can.
@@ -52,6 +53,7 @@ vc-description: |-
   
   Output
   NO
+  -/
 
 vc-preamble: |-
 

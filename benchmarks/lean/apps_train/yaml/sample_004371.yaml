@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Our AAA company is in need of some software to help with logistics: you will be given the width and height of a map, a list of x coordinates and a list of y coordinates of the supply points, starting to count from the top left corner of the map as 0.
   
   Your goal is to return a two dimensional array/list with every item having the value of the distance of the square itself from the closest supply point expressed as a simple integer.
@@ -27,6 +28,7 @@ vc-description: |-
   ```
   
   **Note:** this one is taken (and a bit complicated) from a problem a real world AAA company [whose name I won't tell here] used in their interview. It was done by a friend of mine. It is nothing that difficult and I assume it is their own version of the FizzBuzz problem, but consider candidates were given about 30 mins to solve it.
+  -/
 
 vc-preamble: |-
 
@@ -69,23 +71,23 @@ vc-theorems: |-
     ∀ y < height, ∀ x < width,
       result.get? y >>= (·.get? x) = some (some (x + y)) := sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval logistic_map 3 3 [0] [0]
+  -- #guard_msgs in
+  -- #eval logistic_map 3 3 [0] [0]
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval logistic_map 5 2 [0, 4] [0, 0]
+  -- #guard_msgs in
+  -- #eval logistic_map 5 2 [0, 4] [0, 0]
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval logistic_map 2 2 [] []
+  -- #guard_msgs in
+  -- #eval logistic_map 2 2 [] []
 
 vc-postamble: |-
   -- Apps difficulty: introductory

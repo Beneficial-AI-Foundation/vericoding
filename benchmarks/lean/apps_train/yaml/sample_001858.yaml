@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a wordlist, we want to implement a spellchecker that converts a query word into a correct word.
   For a given query word, the spell checker handles two categories of spelling mistakes:
   
@@ -34,6 +35,7 @@ vc-description: |-
   1 <= wordlist[i].length <= 7
   1 <= queries[i].length <= 7
   All strings in wordlist and queries consist only of english letters.
+  -/
 
 vc-preamble: |-
 

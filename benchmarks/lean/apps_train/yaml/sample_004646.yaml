@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Linked lists are data structures composed of nested or chained objects, each containing a single value and a reference to the next object. 
   
   Here's an example of a list:
@@ -20,6 +21,7 @@ vc-description: |-
   ```
   
   Assume all inputs are valid lists with at least one value. For the purpose of simplicity, all values will be either numbers, strings, or Booleans.
+  -/
 
 vc-preamble: |-
 
@@ -45,23 +47,23 @@ vc-theorems: |-
     list_to_array (@LinkedList.nil α) = @List.nil α :=
   sorry
   
-  /--
+  /-
   info: [1, 2, 3]
   -/
-  #guard_msgs in
-  #eval list_to_array LinkedList(1, LinkedList(2, LinkedList(3)))
+  -- #guard_msgs in
+  -- #eval list_to_array LinkedList(1, LinkedList(2, LinkedList(3)))
   
-  /--
+  /-
   info: ['hello', True, 42]
   -/
-  #guard_msgs in
-  #eval list_to_array LinkedList("hello", LinkedList(True, LinkedList(42)))
+  -- #guard_msgs in
+  -- #eval list_to_array LinkedList("hello", LinkedList(True, LinkedList(42)))
   
-  /--
+  /-
   info: ['solo']
   -/
-  #guard_msgs in
-  #eval list_to_array LinkedList("solo")
+  -- #guard_msgs in
+  -- #eval list_to_array LinkedList("solo")
 
 vc-postamble: |-
   -- Apps difficulty: introductory

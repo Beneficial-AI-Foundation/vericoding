@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   Given an initial string `s`, switch case of the minimal possible number of letters to make the whole string written in the upper case or in the lower case.
   
@@ -19,6 +20,7 @@ vc-description: |-
   For `s = "Aba"`, the output should be `"aba"`
   
   For `s = "ABa"`, the output should be `"ABA"`
+  -/
 
 vc-preamble: |-
 
@@ -44,23 +46,23 @@ vc-theorems: |-
     (h2 : ∀ c ∈ s.data, c.isLower) :
     case_unification s = s.toLower := sorry
   
-  /--
+  /-
   info: 'aba'
   -/
-  #guard_msgs in
-  #eval case_unification "Aba"
+  -- #guard_msgs in
+  -- #eval case_unification "Aba"
   
-  /--
+  /-
   info: 'ABA'
   -/
-  #guard_msgs in
-  #eval case_unification "ABa"
+  -- #guard_msgs in
+  -- #eval case_unification "ABa"
   
-  /--
+  /-
   info: 'asdervt'
   -/
-  #guard_msgs in
-  #eval case_unification "asdERvT"
+  -- #guard_msgs in
+  -- #eval case_unification "asdERvT"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You came across this story while reading a book. Long a ago when the modern entertainment systems did not exist people used to go to watch plays in theaters, where people would perform live in front of an audience. There was a beautiful actress who had a disability she could not pronounce the character $'r'$. To win her favours which many have been denied in past, you decide to write a whole play without the character $'r'$. Now you have to get the script reviewed by the editor before presenting it to her.
   The editor was flattered by the script and agreed to you to proceed. The editor will edit the script in this way to suit her style. For each word replace it with a sub-sequence of itself such that it contains the character 'a'. 
   A subsequence is a sequence that can be derived from another sequence by deleting some or no elements without changing the order of the remaining elements Wikipedia 
@@ -39,6 +40,7 @@ vc-description: |-
   16
   48
   0
+  -/
 
 vc-preamble: |-
 

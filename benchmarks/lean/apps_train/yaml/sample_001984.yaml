@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Bike loves looking for the second maximum element in the sequence. The second maximum element in the sequence of distinct numbers x_1, x_2, ..., x_{k} (k > 1) is such maximum element x_{j}, that the following inequality holds: $x_{j} \neq \operatorname{max}_{i = 1}^{k} x_{i}$.
   
   The lucky number of the sequence of distinct positive integers x_1, x_2, ..., x_{k} (k > 1) is the number that is equal to the bitwise excluding OR of the maximum element of the sequence and the second maximum element of the sequence.
@@ -35,6 +36,7 @@ vc-description: |-
   For the first sample you can choose s[4..5] = {4, 3} and its lucky number is (4 xor 3) = 7. You can also choose s[1..2].
   
   For the second sample you must choose s[2..5] = {8, 3, 5, 7}.
+  -/
 
 vc-preamble: |-
   def find_max_lucky_number (nums : List Nat) : Nat := sorry
@@ -80,23 +82,23 @@ vc-theorems: |-
     ∃ i j, i < sorted.length ∧ j < sorted.length ∧ i < j ∧
       result = (sorted[i]'sorry) ^^^ (sorted[j]'sorry) := sorry
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval find_max_lucky_number [5, 2, 1, 4, 3]
+  -- #guard_msgs in
+  -- #eval find_max_lucky_number [5, 2, 1, 4, 3]
   
-  /--
+  /-
   info: 15
   -/
-  #guard_msgs in
-  #eval find_max_lucky_number [9, 8, 3, 5, 7]
+  -- #guard_msgs in
+  -- #eval find_max_lucky_number [9, 8, 3, 5, 7]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_max_lucky_number [11, 10, 8]
+  -- #guard_msgs in
+  -- #eval find_max_lucky_number [11, 10, 8]
 
 vc-postamble: |-
   -- Apps difficulty: competition

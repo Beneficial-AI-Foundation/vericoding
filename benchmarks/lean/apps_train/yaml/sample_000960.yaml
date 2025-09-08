@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef and Paja are bored, so they are playing an infinite game of ping pong. The rules of the game are as follows:
   - The players play an infinite number of games. At the end of each game, the player who won it scores a point.
   - In each game, one of the players serves. Chef serves in the first game.
@@ -33,6 +34,7 @@ vc-description: |-
   
   -----Explanation-----
   Example case 1: Chef served for the first three games, after that Paja started serving. He only served in one game, so he is supposed to serve next.
+  -/
 
 vc-preamble: |-
 
@@ -56,23 +58,23 @@ vc-theorems: |-
   theorem get_next_server_symmetrical (score k : Nat) (h : k > 0) :
     get_next_server score 0 k = get_next_server 0 score k := sorry
   
-  /--
+  /-
   info: 'Paja'
   -/
-  #guard_msgs in
-  #eval get_next_server 1 3 3
+  -- #guard_msgs in
+  -- #eval get_next_server 1 3 3
   
-  /--
+  /-
   info: 'Chef'
   -/
-  #guard_msgs in
-  #eval get_next_server 5 7 2
+  -- #guard_msgs in
+  -- #eval get_next_server 5 7 2
   
-  /--
+  /-
   info: 'Paja'
   -/
-  #guard_msgs in
-  #eval get_next_server 38657 76322 564
+  -- #guard_msgs in
+  -- #eval get_next_server 38657 76322 564
 
 vc-postamble: |-
   -- Apps difficulty: interview

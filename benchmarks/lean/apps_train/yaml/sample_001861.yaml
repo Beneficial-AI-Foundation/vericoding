@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given the array favoriteCompanies where favoriteCompanies[i] is the list of favorites companies for the ith person (indexed from 0).
   Return the indices of people whose list of favorite companies is not a subset of any other list of favorites companies. You must return the indices in increasing order.
   
@@ -27,6 +28,7 @@ vc-description: |-
   All strings in favoriteCompanies[i] are distinct.
   All lists of favorite companies are distinct, that is, If we sort alphabetically each list then favoriteCompanies[i] != favoriteCompanies[j].
   All strings consist of lowercase English letters only.
+  -/
 
 vc-preamble: |-
   def List.isSubsetOf (l1 l2 : List α) [BEq α] : Bool :=
@@ -51,23 +53,23 @@ vc-theorems: |-
     people_indexes [] = [] :=
   sorry
   
-  /--
+  /-
   info: [0, 1, 4]
   -/
-  #guard_msgs in
-  #eval people_indexes [["leetcode", "google", "facebook"], ["google", "microsoft"], ["google", "facebook"], ["google"], ["amazon"]]
+  -- #guard_msgs in
+  -- #eval people_indexes [["leetcode", "google", "facebook"], ["google", "microsoft"], ["google", "facebook"], ["google"], ["amazon"]]
   
-  /--
+  /-
   info: [0, 1]
   -/
-  #guard_msgs in
-  #eval people_indexes [["leetcode", "google", "facebook"], ["leetcode", "amazon"], ["facebook", "google"]]
+  -- #guard_msgs in
+  -- #eval people_indexes [["leetcode", "google", "facebook"], ["leetcode", "amazon"], ["facebook", "google"]]
   
-  /--
+  /-
   info: [0, 1, 2, 3]
   -/
-  #guard_msgs in
-  #eval people_indexes [["leetcode"], ["google"], ["facebook"], ["amazon"]]
+  -- #guard_msgs in
+  -- #eval people_indexes [["leetcode"], ["google"], ["facebook"], ["amazon"]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

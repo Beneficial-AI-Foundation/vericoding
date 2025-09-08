@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Bob has a permutation of integers from 1 to n. Denote this permutation as p. The i-th element of p will be denoted as p_{i}. For all pairs of distinct integers i, j between 1 and n, he wrote the number a_{i}, j = min(p_{i}, p_{j}). He writes a_{i}, i = 0 for all integer i from 1 to n.
   
   Bob gave you all the values of a_{i}, j that he wrote down. Your job is to reconstruct any permutation that could have generated these values. The input will be formed so that it is guaranteed that there is at least one solution that is consistent with the information given.
@@ -38,6 +39,7 @@ vc-description: |-
   In the first case, the answer can be {1, 2} or {2, 1}.
   
   In the second case, another possible answer is {2, 4, 5, 1, 3}.
+  -/
 
 vc-preamble: |-
 
@@ -73,23 +75,23 @@ vc-theorems: |-
   theorem solve_permutation_edge_case_3 :
     (solve_permutation 3 [[0, 2, 2], [1, 0, 1], [1, 1, 0]]).sort = [1, 2, 3] := sorry
   
-  /--
+  /-
   info: [1, 2]
   -/
-  #guard_msgs in
-  #eval sorted solve_permutation(n1, a1)
+  -- #guard_msgs in
+  -- #eval sorted solve_permutation(n1, a1)
   
-  /--
+  /-
   info: list(range(1, n2 + 1))
   -/
-  #guard_msgs in
-  #eval sorted solve_permutation(n2, a2)
+  -- #guard_msgs in
+  -- #eval sorted solve_permutation(n2, a2)
   
-  /--
+  /-
   info: list(range(1, n3 + 1))
   -/
-  #guard_msgs in
-  #eval sorted solve_permutation(n3, a3)
+  -- #guard_msgs in
+  -- #eval sorted solve_permutation(n3, a3)
 
 vc-postamble: |-
   -- Apps difficulty: competition

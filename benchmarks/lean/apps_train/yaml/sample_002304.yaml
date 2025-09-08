@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a positive integer num, write a function which returns True if num is a perfect square else False.
   
   Note: Do not use any built-in library function such as sqrt.
@@ -14,6 +15,7 @@ vc-description: |-
   Returns: False
   
   Credits:Special thanks to @elmirap for adding this problem and creating all test cases.
+  -/
 
 vc-preamble: |-
 
@@ -35,23 +37,23 @@ vc-theorems: |-
     is_perfect_square n = 
     (∃ m : Nat, m * m = n) := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_perfect_square 16
+  -- #guard_msgs in
+  -- #eval is_perfect_square 16
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_perfect_square 14
+  -- #guard_msgs in
+  -- #eval is_perfect_square 14
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_perfect_square 25
+  -- #guard_msgs in
+  -- #eval is_perfect_square 25
 
 vc-postamble: |-
   -- Apps difficulty: introductory

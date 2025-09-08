@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Well met with Fibonacci bigger brother, AKA Tribonacci.
   
   As the name may already reveal, it works basically like a Fibonacci, but summing the last 3 (instead of 2) numbers of the sequence to generate the next. And, worse part of it, regrettably I won't get to hear non-native Italian speakers trying to pronounce it :(
@@ -22,6 +23,7 @@ vc-description: |-
   If you enjoyed this kata more advanced and generalized version of it can be found in the Xbonacci kata
   
   *[Personal thanks to Professor Jim Fowler on Coursera for his awesome classes that I really recommend to any math enthusiast and for showing me this mathematical curiosity too with his usual contagious passion :)]*
+  -/
 
 vc-preamble: |-
 

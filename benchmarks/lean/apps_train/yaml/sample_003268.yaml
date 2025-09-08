@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In genetics 2 differents DNAs sequences can code for the same protein. 
   
   This is due to the redundancy of the genetic code, in fact 2 different tri-nucleotide can code for the same amino-acid.
@@ -13,6 +14,7 @@ vc-description: |-
   The translation hash is available for you under a translation hash `$codons` [Ruby] or `codons` [Python and JavaScript].
   
   To better understand this kata you can take a look at this [one](https://www.codewars.com/kata/5708ef48fe2d018413000776), it can help you to start.
+  -/
 
 vc-preamble: |-
   def code_for_same_protein (seq1 : String) (seq2 : String) : Bool := sorry
@@ -50,23 +52,23 @@ vc-theorems: |-
     code_for_same_protein seq1 seq2 = true →
     code_for_same_protein seq2 seq1 = true := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval code_for_same_protein "ATGTCGTCAATTTAA" "ATGTCGTCAATTTAA"
+  -- #guard_msgs in
+  -- #eval code_for_same_protein "ATGTCGTCAATTTAA" "ATGTCGTCAATTTAA"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval code_for_same_protein "ATGTTTTAA" "ATGTTCTAA"
+  -- #guard_msgs in
+  -- #eval code_for_same_protein "ATGTTTTAA" "ATGTTCTAA"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval code_for_same_protein "ATGTTTTAA" "ATGATATAA"
+  -- #guard_msgs in
+  -- #eval code_for_same_protein "ATGTTTTAA" "ATGATATAA"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

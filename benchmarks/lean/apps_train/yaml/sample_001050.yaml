@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a binary string S. You need to transform this string into another string of equal length consisting only of zeros, with the minimum number of operations.
   A single operation consists of taking some prefix of the string S and flipping all its values. That is, change all the 0s in this prefix to 1s, and all the 1s in the prefix to 0s. You can use this operation as many number of times as you want over any prefix of the string.
   
@@ -31,6 +32,7 @@ vc-description: |-
   Operation 4: You flip values in the prefix of length 4 and transform the string into 01000000 
   Operation 5: You flip values in the prefix of length 2 and transform the string into 10000000 
   Operation 6: You flip values in the prefix of length 1 and finally, transform the string into 00000000
+  -/
 
 vc-preamble: |-
 
@@ -49,23 +51,23 @@ vc-theorems: |-
   theorem empty_string :
     min_ops_to_zeros "" = 0 := sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval min_ops_to_zeros "01001001"
+  -- #guard_msgs in
+  -- #eval min_ops_to_zeros "01001001"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_ops_to_zeros "0"
+  -- #guard_msgs in
+  -- #eval min_ops_to_zeros "0"
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval min_ops_to_zeros "11"
+  -- #guard_msgs in
+  -- #eval min_ops_to_zeros "11"
 
 vc-postamble: |-
   -- Apps difficulty: interview

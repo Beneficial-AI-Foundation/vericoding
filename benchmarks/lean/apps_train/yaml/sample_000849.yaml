@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   	The following graph G is called a Petersen graph and its vertices have been numbered from 0 to 9. Some letters have also been assigned to vertices of G, as can be seen from the following picture:
   
   	Let's consider a walk W in graph G, which consists of L vertices W1, W2, ..., WL, such that Wi is connected with Wi + 1 for 1 ≤ i < L. A string S of L letters 'A'-'E' is realized by walk W if the sequence of letters written along W is equal to S. Vertices can be visited multiple times while walking along W.
@@ -29,6 +30,7 @@ vc-description: |-
   Output:
   501
   -1
+  -/
 
 vc-preamble: |-
   def find_petersen_walk : List Letter → Option (List Nat) :=

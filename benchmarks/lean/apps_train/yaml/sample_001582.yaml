@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given two strings s1 and s2, we want to visualize how different the two strings are.
   We will only take into account the *lowercase* letters (a to z).
   First let us count the frequency of each *lowercase* letters in s1 and s2.
@@ -49,6 +50,7 @@ vc-description: |-
   s2 = "my frie n d Joh n has ma n y ma n y frie n ds n&"
   mix(s1, s2) --> "1:mmmmmm/E:nnnnnn/1:aaaa/1:hhh/2:yyy/2:dd/2:ff/2:ii/2:rr/E:ee/E:ss"
   ```
+  -/
 
 vc-preamble: |-
 
@@ -75,23 +77,23 @@ vc-theorems: |-
   theorem mix_no_lowercase (s : String) (h : ∀ c ∈ s.data, ¬c.isLower) :
     mix s s = "" := sorry
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval mix "Are they here" "yes, they are here"
+  -- #guard_msgs in
+  -- #eval mix "Are they here" "yes, they are here"
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval mix "looping is fun but dangerous" "less dangerous than coding"
+  -- #guard_msgs in
+  -- #eval mix "looping is fun but dangerous" "less dangerous than coding"
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval mix "codewars" "codewars"
+  -- #guard_msgs in
+  -- #eval mix "codewars" "codewars"
 
 vc-postamble: |-
   -- Apps difficulty: interview

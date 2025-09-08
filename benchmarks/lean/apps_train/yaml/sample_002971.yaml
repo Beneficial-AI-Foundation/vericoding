@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this Kata, you will be given a number `n` (`n > 0`) and your task will be to return the smallest square number `N` (`N > 0`) such that `n + N` is also a perfect square. If there is no answer, return `-1` (`nil` in Clojure, `Nothing` in Haskell, `None` in Rust). 
   
   ```clojure 
@@ -44,6 +45,7 @@ vc-description: |-
   More examples in test cases. 
   
   Good luck!
+  -/
 
 vc-preamble: |-
 
@@ -61,23 +63,23 @@ vc-theorems: |-
     let result := solve n
     result ≥ -1 := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve 3
+  -- #guard_msgs in
+  -- #eval solve 3
   
-  /--
+  /-
   info: 36
   -/
-  #guard_msgs in
-  #eval solve 13
+  -- #guard_msgs in
+  -- #eval solve 13
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval solve 4
+  -- #guard_msgs in
+  -- #eval solve 4
 
 vc-postamble: |-
   -- Apps difficulty: introductory

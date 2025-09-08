@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Oh no!  You have stumbled upon a mysterious signal consisting of beeps of various lengths, and it is of utmost importance that you find out the secret message hidden in the beeps.  There are long and short beeps, the longer ones roughly three times as long as the shorter ones.  Hmm... that sounds familiar.
   
   That's right: your job is to implement a decoder for the Morse alphabet.  Rather than dealing with actual beeps, we will use a common string encoding of Morse.  A long beep is represened by a dash (`-`) and a short beep by a dot (`.`).  A series of long and short beeps make up a letter, and letters are separated by spaces (` `).  Words are separated by double spaces.
@@ -27,6 +28,7 @@ vc-description: |-
   ```if:ruby
   A Hashmap `$dict` is preloaded for you, with the information above to convert morse code to letters.
   ```
+  -/
 
 vc-preamble: |-
   def MORSE_CHARS := [
@@ -63,23 +65,23 @@ vc-theorems: |-
   theorem decode_singleton_space :
     decode " " = " " := sorry
   
-  /--
+  /-
   info: 'hello world'
   -/
-  #guard_msgs in
-  #eval decode ".... . .-.. .-.. ---  .-- --- .-. .-.. -.."
+  -- #guard_msgs in
+  -- #eval decode ".... . .-.. .-.. ---  .-- --- .-. .-.. -.."
   
-  /--
+  /-
   info: '1st and 2nd'
   -/
-  #guard_msgs in
-  #eval decode ".---- ... -  .- -. -..  ..--- -. -.."
+  -- #guard_msgs in
+  -- #eval decode ".---- ... -  .- -. -..  ..--- -. -.."
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval decode ""
+  -- #guard_msgs in
+  -- #eval decode ""
 
 vc-postamble: |-
   -- Apps difficulty: introductory

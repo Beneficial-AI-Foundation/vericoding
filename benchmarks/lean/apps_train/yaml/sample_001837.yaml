@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a list of airline tickets represented by pairs of departure and arrival airports [from, to], reconstruct the itinerary in order. All of the tickets belong to a man who departs from JFK. Thus, the itinerary must begin with JFK.
   
   Note:
@@ -20,6 +21,7 @@ vc-description: |-
   
   Credits:
   Special thanks to @dietpepsi for adding this problem and creating all test cases.
+  -/
 
 vc-preamble: |-
 
@@ -50,17 +52,17 @@ vc-theorems: |-
     let pairs := List.zip (result.take (result.length - 1)) (result.drop 1)
     pairs = tickets := sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval findItinerary [["MUC", "LHR"], ["JFK", "MUC"], ["SFO", "SJC"], ["LHR", "SFO"]]
+  -- #guard_msgs in
+  -- #eval findItinerary [["MUC", "LHR"], ["JFK", "MUC"], ["SFO", "SJC"], ["LHR", "SFO"]]
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval findItinerary [["JFK", "SFO"], ["JFK", "ATL"], ["SFO", "ATL"], ["ATL", "JFK"], ["ATL", "SFO"]]
+  -- #guard_msgs in
+  -- #eval findItinerary [["JFK", "SFO"], ["JFK", "ATL"], ["SFO", "ATL"], ["ATL", "JFK"], ["ATL", "SFO"]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

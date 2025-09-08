@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Invalid Login - Bug Fixing #11
   
   Oh NO! Timmy has moved divisions... but now he's in the field of security. Timmy, being the top coder he is, has allowed some bad code through. You must help Timmy and filter out any injected code!
@@ -17,6 +18,7 @@ vc-description: |-
   database = Database()
   database.login('Timmy', 'password')
   ```
+  -/
 
 vc-preamble: |-
   def validate (username password : String) : String :=
@@ -59,35 +61,35 @@ vc-theorems: |-
     validate username password = "Wrong username or password!" :=
   sorry
   
-  /--
+  /-
   info: 'Successfully Logged in!'
   -/
-  #guard_msgs in
-  #eval validate "Timmy" "password"
+  -- #guard_msgs in
+  -- #eval validate "Timmy" "password"
   
-  /--
+  /-
   info: 'Wrong username or password!'
   -/
-  #guard_msgs in
-  #eval validate "Timmy" "h4x0r"
+  -- #guard_msgs in
+  -- #eval validate "Timmy" "h4x0r"
   
-  /--
+  /-
   info: 'Successfully Logged in!'
   -/
-  #guard_msgs in
-  #eval validate "Alice" "alice"
+  -- #guard_msgs in
+  -- #eval validate "Alice" "alice"
   
-  /--
+  /-
   info: 'Wrong username or password!'
   -/
-  #guard_msgs in
-  #eval validate "Timmy" "password"||""==""
+  -- #guard_msgs in
+  -- #eval validate "Timmy" "password"||""==""
   
-  /--
+  /-
   info: 'Wrong username or password!'
   -/
-  #guard_msgs in
-  #eval validate "Admin" "gs5bw"||1==1//"
+  -- #guard_msgs in
+  -- #eval validate "Admin" "gs5bw"||1==1//"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

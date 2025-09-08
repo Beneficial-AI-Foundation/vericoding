@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Wet Shark once had 2 sequences: 
   {a_n}= {a_1, a_2, a_3, ... , a_(109)}  
   {b_n} = {b_1, b_2, b_3, ... , b_(109)}  
@@ -41,6 +42,7 @@ vc-description: |-
   
   -----Explanation-----
   Example case 1. In this case, a_1 = 4, b_1 = 5, and s = 5. Cthulhu's code in this case is (a_1 + b_1) / (2s) = 9/32 = 0.28125.
+  -/
 
 vc-preamble: |-
 

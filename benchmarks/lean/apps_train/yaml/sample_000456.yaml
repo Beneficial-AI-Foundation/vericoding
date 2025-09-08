@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We are given a personal information string S, which may represent either an email address or a phone number.
   We would like to mask this personal information according to the following rules:
   
@@ -45,6 +46,7 @@ vc-description: |-
   S.length <= 40.
   Emails have length at least 8.
   Phone numbers have length at least 10.
+  -/
 
 vc-preamble: |-
 
@@ -82,23 +84,23 @@ vc-theorems: |-
     (h : email = "LeetCode@LeetCode.com") :
     mask_pii email = "l*****e@leetcode.com" := sorry
   
-  /--
+  /-
   info: 'l*****e@leetcode.com'
   -/
-  #guard_msgs in
-  #eval mask_pii "LeetCode@LeetCode.com"
+  -- #guard_msgs in
+  -- #eval mask_pii "LeetCode@LeetCode.com"
   
-  /--
+  /-
   info: '***-***-7890'
   -/
-  #guard_msgs in
-  #eval mask_pii "1(234)567-890"
+  -- #guard_msgs in
+  -- #eval mask_pii "1(234)567-890"
   
-  /--
+  /-
   info: '+**-***-***-5678'
   -/
-  #guard_msgs in
-  #eval mask_pii "86-(10)12345678"
+  -- #guard_msgs in
+  -- #eval mask_pii "86-(10)12345678"
 
 vc-postamble: |-
   -- Apps difficulty: interview

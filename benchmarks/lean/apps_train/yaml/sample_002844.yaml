@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    You are a magician. You're going to perform a trick.
   
@@ -29,6 +30,7 @@ vc-description: |-
    - `[output]` a string
   
     `"Black"` or `"White"` if you can safely predict the color of the last marble. If not, return `"Unsure"`.
+  -/
 
 vc-preamble: |-
 
@@ -57,23 +59,23 @@ vc-theorems: |-
     not_so_random b w₁ = not_so_random b w₂ :=
     sorry
   
-  /--
+  /-
   info: 'Black'
   -/
-  #guard_msgs in
-  #eval not_so_random 1 1
+  -- #guard_msgs in
+  -- #eval not_so_random 1 1
   
-  /--
+  /-
   info: 'White'
   -/
-  #guard_msgs in
-  #eval not_so_random 2 1
+  -- #guard_msgs in
+  -- #eval not_so_random 2 1
   
-  /--
+  /-
   info: 'Black'
   -/
-  #guard_msgs in
-  #eval not_so_random 11111 22222
+  -- #guard_msgs in
+  -- #eval not_so_random 11111 22222
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A checksum is an algorithm that scans a packet of data and returns a single number. The idea is that if the packet is changed, the checksum will also change, so checksums are often used for detecting
   transmission errors, validating document contents, and in many other situations where it is necessary to detect undesirable changes in data.
   
@@ -19,6 +20,7 @@ vc-description: |-
   When the packet doesn't have only uppercase letters and spaces or just spaces the result to quicksum have to be zero (0).
   
     AbqTH #5 = 0
+  -/
 
 vc-preamble: |-
 
@@ -36,23 +38,23 @@ vc-theorems: |-
     quicksum s = 0 :=
     sorry
   
-  /--
+  /-
   info: 46
   -/
-  #guard_msgs in
-  #eval quicksum "ACM"
+  -- #guard_msgs in
+  -- #eval quicksum "ACM"
   
-  /--
+  /-
   info: 75
   -/
-  #guard_msgs in
-  #eval quicksum "A C M"
+  -- #guard_msgs in
+  -- #eval quicksum "A C M"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval quicksum "As "
+  -- #guard_msgs in
+  -- #eval quicksum "As "
 
 vc-postamble: |-
   -- Apps difficulty: introductory

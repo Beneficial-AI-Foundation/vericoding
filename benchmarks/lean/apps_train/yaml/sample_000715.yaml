@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef has $N$ markers. There is a cap on each marker. For each valid $i$, the $i$-th marker has colour $a_i$. Initially, for each valid $i$, the colour of the cap on the $i$-th marker is also $a_i$.
   Chef wants to rearrange the caps in such a way that no marker has the same colour as its cap. (Obviously, each marker must have exactly one cap.) Can he do that? If he can, find one such way to rearrange the caps. If there are multiple solutions, you may find any one.
   
@@ -28,6 +29,7 @@ vc-description: |-
   Yes
   2 2 2 3 3 3 1 1 1
   No
+  -/
 
 vc-preamble: |-
 

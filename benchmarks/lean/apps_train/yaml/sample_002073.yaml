@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Greg has a weighed directed graph, consisting of n vertices. In this graph any pair of distinct vertices has an edge between them in both directions. Greg loves playing with the graph and now he has invented a new game:  The game consists of n steps.  On the i-th step Greg removes vertex number x_{i} from the graph. As Greg removes a vertex, he also removes all the edges that go in and out of this vertex.  Before executing each step, Greg wants to know the sum of lengths of the shortest paths between all pairs of the remaining vertices. The shortest path can go through any remaining vertex. In other words, if we assume that d(i, v, u) is the shortest path between vertices v and u in the graph that formed before deleting vertex x_{i}, then Greg wants to know the value of the following sum: $\sum_{v, u, v \neq u} d(i, v, u)$. 
   
   Help Greg, print the value of the required sum before each step.
@@ -43,6 +44,7 @@ vc-description: |-
   
   Output
   17 23 404 0
+  -/
 
 vc-preamble: |-
 
@@ -86,23 +88,23 @@ vc-theorems: |-
     values.getLast! = 0 :=
   sorry
   
-  /--
+  /-
   info: '0'
   -/
-  #guard_msgs in
-  #eval solve_graph_paths 1 [[0]] [1]
+  -- #guard_msgs in
+  -- #eval solve_graph_paths 1 [[0]] [1]
   
-  /--
+  /-
   info: '9 0'
   -/
-  #guard_msgs in
-  #eval solve_graph_paths 2 [[0, 5], [4, 0]] [1, 2]
+  -- #guard_msgs in
+  -- #eval solve_graph_paths 2 [[0, 5], [4, 0]] [1, 2]
   
-  /--
+  /-
   info: '17 23 404 0'
   -/
-  #guard_msgs in
-  #eval solve_graph_paths 4 [[0, 3, 1, 1], [6, 0, 400, 1], [2, 4, 0, 1], [1, 1, 1, 0]] [4, 1, 2, 3]
+  -- #guard_msgs in
+  -- #eval solve_graph_paths 4 [[0, 3, 1, 1], [6, 0, 400, 1], [2, 4, 0, 1], [1, 1, 1, 0]] [4, 1, 2, 3]
 
 vc-postamble: |-
   -- Apps difficulty: competition

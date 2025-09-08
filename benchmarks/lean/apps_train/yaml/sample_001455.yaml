@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are playing a game where you have been sent in a town to collect 10 types of coin and their symbol are defined with $A, B, C, D, E, F, G, H , I, J$. In that town every enemy have a coin. By killing one you will get a coin from that enemy. Each enemy have only a unique coin.
   The challange of the game is You have to collect all the coin and only then you will get the victory. You are a brave gamer so you took this hard challange and successfully finished it. After finishing, you are thinking of the game. You know the order off collecting coin. Now you are thinking how many enemy did you have killed?
   Can you solve that out?
@@ -18,6 +19,7 @@ vc-description: |-
   
   -----Sample Output:-----
   10
+  -/
 
 vc-preamble: |-
 

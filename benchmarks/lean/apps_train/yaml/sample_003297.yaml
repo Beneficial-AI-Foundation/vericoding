@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this Kata, you will write a function `doubles` that will remove double string characters that are adjacent to each other.
   
   For example:
@@ -17,6 +18,7 @@ vc-description: |-
   The strings will contain lowercase letters only. More examples in the test cases. 
   
   Good luck!
+  -/
 
 vc-preamble: |-
 
@@ -47,23 +49,23 @@ vc-theorems: |-
   theorem doubles_length_parity (s : String) :
     (s.length - (doubles s).length) % 2 = 0 := sorry
   
-  /--
+  /-
   info: 'ab'
   -/
-  #guard_msgs in
-  #eval doubles "abbbzz"
+  -- #guard_msgs in
+  -- #eval doubles "abbbzz"
   
-  /--
+  /-
   info: 'aca'
   -/
-  #guard_msgs in
-  #eval doubles "abbcccdddda"
+  -- #guard_msgs in
+  -- #eval doubles "abbcccdddda"
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval doubles "abba"
+  -- #guard_msgs in
+  -- #eval doubles "abba"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

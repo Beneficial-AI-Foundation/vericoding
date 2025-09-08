@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Two integers A and B are the inputs. Write a program to find GCD and LCM of A and B.
   
   -----Input-----
@@ -24,6 +25,7 @@ vc-description: |-
   20 840
   1 3186456
   10 30
+  -/
 
 vc-preamble: |-
   def gcd (a b : Nat) : Nat :=

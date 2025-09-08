@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Appleman has a tree with n vertices. Some of the vertices (at least one) are colored black and other vertices are colored white.
   
   Consider a set consisting of k (0 ≤ k < n) edges of Appleman's tree. If Appleman deletes these edges from the tree, then it will split into (k + 1) parts. Note, that each part will be a tree with colored vertices.
@@ -41,6 +42,7 @@ vc-description: |-
   
   Output
   27
+  -/
 
 vc-preamble: |-
 
@@ -79,23 +81,23 @@ vc-theorems: |-
     (solve_tree_splitting 3 [0,0] [1,1,1] ≥ 0) ∧
     (solve_tree_splitting 3 [0,0] [0,0,0] ≥ 0) := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve_tree_splitting 3 [0, 0] [0, 1, 1]
+  -- #guard_msgs in
+  -- #eval solve_tree_splitting 3 [0, 0] [0, 1, 1]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve_tree_splitting 6 [0, 1, 1, 0, 4] [1, 1, 0, 0, 1, 0]
+  -- #guard_msgs in
+  -- #eval solve_tree_splitting 6 [0, 1, 1, 0, 4] [1, 1, 0, 0, 1, 0]
   
-  /--
+  /-
   info: 27
   -/
-  #guard_msgs in
-  #eval solve_tree_splitting 10 [0, 1, 2, 1, 4, 4, 4, 0, 8] [0, 0, 0, 1, 0, 1, 1, 0, 0, 1]
+  -- #guard_msgs in
+  -- #eval solve_tree_splitting 10 [0, 1, 2, 1, 4, 4, 4, 0, 8] [0, 0, 0, 1, 0, 1, 1, 0, 0, 1]
 
 vc-postamble: |-
   -- Apps difficulty: competition

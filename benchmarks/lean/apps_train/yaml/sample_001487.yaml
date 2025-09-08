@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Every character in the string “IITMANDI” is given a certain number of points. You are given a scrabble board with only one row. The input contains the positions of score modifiers such as: Double Letter, Triple Letter, Double Word and Triple Word. You need to find the best position to place the string “IITMANDI” such that your score is maximized. 
   Double Letter - Doubles the number of points you get for the letter placed on the double letter.
   Triple Letter - Triples the number of points you get for the letter placed on the triple letter.
@@ -53,6 +54,7 @@ vc-description: |-
   270
   
   35629632
+  -/
 
 vc-preamble: |-
 
@@ -107,17 +109,17 @@ vc-theorems: |-
     all_doubles = (2 ^ 8) * points_sum ∧
     all_triples = (3 ^ 8) * points_sum := sorry
   
-  /--
+  /-
   info: 270
   -/
-  #guard_msgs in
-  #eval calculate_max_points 10 "..d.t.D..d" [10, 11, 12, 9, 8, 10, 11, 15]
+  -- #guard_msgs in
+  -- #eval calculate_max_points 10 "..d.t.D..d" [10, 11, 12, 9, 8, 10, 11, 15]
   
-  /--
+  /-
   info: 35629632
   -/
-  #guard_msgs in
-  #eval calculate_max_points 22 "dtDtTD..ddT.TtTdDT..TD" [12297, 5077, 28888, 17998, 12125, 27400, 31219, 21536]
+  -- #guard_msgs in
+  -- #eval calculate_max_points 22 "dtDtTD..ddT.TtTdDT..TD" [12297, 5077, 28888, 17998, 12125, 27400, 31219, 21536]
 
 vc-postamble: |-
   -- Apps difficulty: interview

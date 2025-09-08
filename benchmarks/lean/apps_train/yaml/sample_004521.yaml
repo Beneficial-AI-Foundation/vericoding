@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   [comment]: # (Hello Contributors, the following guidelines in order of importance should help you write new translations and squash any pesky unintended bugs.)
   [//]: # (The epsilon of all floating point test case comparisons is 0.01.)
   [//]: # (Each test case shall pass if the statement "a^2 + b^2 = c^2" is true of the returned object.)
@@ -46,6 +47,7 @@ vc-description: |-
   Something on the edge of my peripheral vision moved. I looked up, to be greeted with hundreds of right triangles, like angels from the heavens, coming down right at me.
   
   I might need a better solution to turn them all shining white...
+  -/
 
 vc-preamble: |-
 

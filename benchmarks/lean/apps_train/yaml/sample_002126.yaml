@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Rudolf is on his way to the castle. Before getting into the castle, the security staff asked him a question:
   
   Given two binary numbers $a$ and $b$ of length $n$. How many different ways of swapping two digits in $a$ (only in $a$, not $b$) so that bitwise OR of these two numbers will be changed? In other words, let $c$ be the bitwise OR of $a$ and $b$, you need to find the number of ways of swapping two bits in $a$ so that bitwise OR will not be equal to $c$.
@@ -43,6 +44,7 @@ vc-description: |-
   In the first sample, you can swap bits that have indexes $(1, 4)$, $(2, 3)$, $(3, 4)$, and $(3, 5)$.
   
   In the second example, you can swap bits that have indexes $(1, 2)$, $(1, 3)$, $(2, 4)$, $(3, 4)$, $(3, 5)$, and $(3, 6)$.
+  -/
 
 vc-preamble: |-
   def countValidBitSwaps (n : Nat) (a : String) (b : String) : Nat :=
@@ -79,23 +81,23 @@ vc-theorems: |-
     let alt2 := makeAlternatingString n "1"
     ∃ (m : Nat), countValidBitSwaps n alt1 alt2 = m := by sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval count_valid_bit_swaps 5 "01011" "11001"
+  -- #guard_msgs in
+  -- #eval count_valid_bit_swaps 5 "01011" "11001"
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval count_valid_bit_swaps 6 "011000" "010011"
+  -- #guard_msgs in
+  -- #eval count_valid_bit_swaps 6 "011000" "010011"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_valid_bit_swaps 2 "00" "00"
+  -- #guard_msgs in
+  -- #eval count_valid_bit_swaps 2 "00" "00"
 
 vc-postamble: |-
   -- Apps difficulty: competition

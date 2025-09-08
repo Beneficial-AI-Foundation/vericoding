@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a sequence of $n$ digits $d_1d_2 \dots d_{n}$. You need to paint all the digits in two colors so that:  each digit is painted either in the color $1$ or in the color $2$;  if you write in a row from left to right all the digits painted in the color $1$, and then after them all the digits painted in the color $2$, then the resulting sequence of $n$ digits will be non-decreasing (that is, each next digit will be greater than or equal to the previous digit). 
   
   For example, for the sequence $d=914$ the only valid coloring is $211$ (paint in the color $1$ two last digits, paint in the color $2$ the first digit). But $122$ is not a valid coloring ($9$ concatenated with $14$ is not a non-decreasing sequence).
@@ -49,6 +50,7 @@ vc-description: |-
   -----Note-----
   
   In the first test case, $d=040425524644$. The output $t=121212211211$ is correct because $0022444$ (painted in $1$) concatenated with $44556$ (painted in $2$) is $002244444556$ which is a sorted sequence of $n$ given digits.
+  -/
 
 vc-preamble: |-
 
@@ -74,23 +76,23 @@ vc-theorems: |-
     ∀ i j, i < j → j < nums.length →
     colors[i]! = colors[j]! → nums[i]! ≤ nums[j]! := sorry
   
-  /--
+  /-
   info: '121212211211'
   -/
-  #guard_msgs in
-  #eval solve_digit_coloring 12 "040425524644"
+  -- #guard_msgs in
+  -- #eval solve_digit_coloring 12 "040425524644"
   
-  /--
+  /-
   info: '1'
   -/
-  #guard_msgs in
-  #eval solve_digit_coloring 1 "0"
+  -- #guard_msgs in
+  -- #eval solve_digit_coloring 1 "0"
   
-  /--
+  /-
   info: '-'
   -/
-  #guard_msgs in
-  #eval solve_digit_coloring 3 "987"
+  -- #guard_msgs in
+  -- #eval solve_digit_coloring 3 "987"
 
 vc-postamble: |-
   -- Apps difficulty: competition

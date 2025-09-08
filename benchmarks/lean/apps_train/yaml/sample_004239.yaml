@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this Kata you are a game developer and have programmed the #1 MMORPG(Massively Multiplayer Online Role Playing Game) worldwide!!! Many suggestions came across you to make the game better, one of which you are interested in and will start working on at once.
   
   Players in the game have levels from 1 to 170, XP(short for experience) is required to increase the player's level and is obtained by doing all sorts of things in the game, a new player starts at level 1 with 0 XP. You want to add a feature that would enable the player to input a target level and the output would be how much XP the player must obtain in order for him/her to reach the target level...simple huh.
@@ -42,6 +43,7 @@ vc-description: |-
   ```
   
   Make sure you round down the XP required for each level up, rounding up will result in the output being slightly wrong.
+  -/
 
 vc-preamble: |-
 
@@ -84,23 +86,23 @@ vc-theorems: |-
       y > x :=
     sorry
   
-  /--
+  /-
   info: 1808
   -/
-  #guard_msgs in
-  #eval xp_to_target_lvl 0 5
+  -- #guard_msgs in
+  -- #eval xp_to_target_lvl 0 5
   
-  /--
+  /-
   info: 'Input is invalid.'
   -/
-  #guard_msgs in
-  #eval xp_to_target_lvl 31428 "47"
+  -- #guard_msgs in
+  -- #eval xp_to_target_lvl 31428 "47"
   
-  /--
+  /-
   info: 'You have already reached level 4.'
   -/
-  #guard_msgs in
-  #eval xp_to_target_lvl 2017 4
+  -- #guard_msgs in
+  -- #eval xp_to_target_lvl 2017 4
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You and your friend are playing the game Mortal Kombat XI. You are trying to pass a challenge tower. There are $n$ bosses in this tower, numbered from $1$ to $n$. The type of the $i$-th boss is $a_i$. If the $i$-th boss is easy then its type is $a_i = 0$, otherwise this boss is hard and its type is $a_i = 1$.
   
   During one session, either you or your friend can kill one or two bosses (neither you nor your friend can skip the session, so the minimum number of bosses killed during one session is at least one). After your friend session, your session begins, then again your friend session begins, your session begins, and so on. The first session is your friend's session.
@@ -48,6 +49,7 @@ vc-description: |-
   2
   1
   0
+  -/
 
 vc-preamble: |-
 
@@ -82,23 +84,23 @@ vc-theorems: |-
   theorem min_skip_points_edge_case_all_zeros :
     min_skip_points 5 [0, 0, 0, 0, 0] = 0 := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_skip_points 8 [1, 0, 1, 1, 0, 1, 1, 1]
+  -- #guard_msgs in
+  -- #eval min_skip_points 8 [1, 0, 1, 1, 0, 1, 1, 1]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_skip_points 5 [1, 1, 1, 1, 0]
+  -- #guard_msgs in
+  -- #eval min_skip_points 5 [1, 1, 1, 1, 0]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_skip_points 1 [0]
+  -- #guard_msgs in
+  -- #eval min_skip_points 1 [0]
 
 vc-postamble: |-
   -- Apps difficulty: interview

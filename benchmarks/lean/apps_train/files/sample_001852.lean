@@ -1,0 +1,64 @@
+/-
+Given two strings representing two complex numbers.
+
+You need to return a string representing their multiplication. Note i2 = -1 according to the definition.
+
+Example 1:
+
+Input: "1+1i", "1+1i"
+Output: "0+2i"
+Explanation: (1 + i) * (1 + i) = 1 + i2 + 2 * i = 2i, and you need convert it to the form of 0+2i.
+
+Example 2:
+
+Input: "1+-1i", "1+-1i"
+Output: "0+-2i"
+Explanation: (1 - i) * (1 - i) = 1 + i2 - 2 * i = -2i, and you need convert it to the form of 0+-2i.
+
+Note:
+
+The input strings will not have extra blank.
+The input strings will be given in the form of a+bi, where the integer a and b will both belong to the range of [-100, 100]. And the output should be also in this form.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def complex_number_multiply : Complex → Complex → Complex
+| c1, c2 => sorry
+
+theorem complex_multiplication_correct (a b : Complex) :
+  let result := complex_number_multiply a b
+  let expected_real := a.real * b.real - a.imag * b.imag 
+  let expected_imag := a.real * b.imag + a.imag * b.real
+  result.real = expected_real ∧ result.imag = expected_imag :=
+sorry
+
+theorem multiply_by_identity (c : Complex) :
+  complex_number_multiply c ⟨1, 0⟩ = c :=
+sorry
+
+theorem multiply_by_zero (c : Complex) :
+  complex_number_multiply c ⟨0, 0⟩ = ⟨0, 0⟩ :=
+sorry
+
+/-
+info: '0+2i'
+-/
+-- #guard_msgs in
+-- #eval complex_number_multiply "1+1i" "1+1i"
+
+/-
+info: '0+-2i'
+-/
+-- #guard_msgs in
+-- #eval complex_number_multiply "1+-1i" "1+-1i"
+
+/-
+info: '23+2i'
+-/
+-- #guard_msgs in
+-- #eval complex_number_multiply "2+3i" "4+-5i"
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

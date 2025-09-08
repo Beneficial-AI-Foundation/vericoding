@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    `N` candles are placed in a row, some of them are initially lit. For each candle from the 1st to the Nth the following algorithm is applied: if the observed candle is lit then states of this candle and all candles before it are changed to the opposite. Which candles will remain lit after applying the algorithm to all candles in the order they are placed in the line?
   
@@ -25,6 +26,7 @@ vc-description: |-
    - `[output]` an integer array
   
       Situation after applying the algorithm - array in the same format as input with the same length.
+  -/
 
 vc-preamble: |-
 
@@ -48,23 +50,23 @@ vc-theorems: |-
   theorem switch_lights_empty :
     switch_lights [] = [] := sorry
   
-  /--
+  /-
   info: [0, 1, 0, 1, 0]
   -/
-  #guard_msgs in
-  #eval switch_lights [1, 1, 1, 1, 1]
+  -- #guard_msgs in
+  -- #eval switch_lights [1, 1, 1, 1, 1]
   
-  /--
+  /-
   info: [0, 0]
   -/
-  #guard_msgs in
-  #eval switch_lights [0, 0]
+  -- #guard_msgs in
+  -- #eval switch_lights [0, 0]
   
-  /--
+  /-
   info: [1, 1, 1, 0, 0, 1, 1, 0]
   -/
-  #guard_msgs in
-  #eval switch_lights [1, 0, 0, 1, 0, 1, 0, 1]
+  -- #guard_msgs in
+  -- #eval switch_lights [1, 0, 0, 1, 0, 1, 0, 1]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

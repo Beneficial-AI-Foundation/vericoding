@@ -1,7 +1,9 @@
 vc-description: |-
+  /-
   Implement function which will return sum of roots of a quadratic equation rounded to 2 decimal places, if there are any possible roots, else return **None/null/nil/nothing**. If you use discriminant,when discriminant = 0, x1 = x2 = root => return sum of both roots. There will always be valid arguments. 
   
   Quadratic equation - https://en.wikipedia.org/wiki/Quadratic_equation
+  -/
 
 vc-preamble: |-
 
@@ -24,23 +26,23 @@ vc-theorems: |-
     (ha: a > 0) :
     roots a b 0 = some (-b/a) := sorry
   
-  /--
+  /-
   info: 35
   -/
-  #guard_msgs in
-  #eval roots 1 -35 -23
+  -- #guard_msgs in
+  -- #eval roots 1 -35 -23
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval roots 6 0 -24
+  -- #guard_msgs in
+  -- #eval roots 6 0 -24
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval roots 1 6 10
+  -- #guard_msgs in
+  -- #eval roots 1 6 10
 
 vc-postamble: |-
   -- Apps difficulty: introductory

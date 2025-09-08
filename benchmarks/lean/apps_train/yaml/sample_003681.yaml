@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The T9 typing predictor helps with suggestions for possible word combinations on an old-style numeric keypad phone. Each digit in the keypad (2-9) represents a group of 3-4 letters. To type a letter, press once the key which corresponds to the letter group that contains the required letter. Typing words is done by typing letters of the word in sequence.
   
   The letter groups and corresponding digits are as follows:
@@ -39,6 +40,7 @@ vc-description: |-
   T9([], '43556') returns ['gdjjm']
   T9(['gold', 'word'], '4663') returns ['gmmd']
   ```
+  -/
 
 vc-preamble: |-
   def translateTableNum (s : String) : String :=
@@ -73,23 +75,23 @@ vc-theorems: |-
     ∃ result, t9_predict [] seq = [result] ∧ result.length = seq.length :=
     sorry
   
-  /--
+  /-
   info: ['hello']
   -/
-  #guard_msgs in
-  #eval t9_predict ["hello", "world"] "43556"
+  -- #guard_msgs in
+  -- #eval t9_predict ["hello", "world"] "43556"
   
-  /--
+  /-
   info: ['good', 'home']
   -/
-  #guard_msgs in
-  #eval t9_predict ["good", "home", "new"] "4663"
+  -- #guard_msgs in
+  -- #eval t9_predict ["good", "home", "new"] "4663"
   
-  /--
+  /-
   info: ['gdjjm']
   -/
-  #guard_msgs in
-  #eval t9_predict [] "43556"
+  -- #guard_msgs in
+  -- #eval t9_predict [] "43556"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

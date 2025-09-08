@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef has N subordinates. In order to complete a very important order he will choose exactly K of them. He can't choose less than K since it will be not enough to complete the order in time. On the other hand if he chooses more than K subordinates he can't control them during the operation. Help him to find the number of ways he can choose the team to complete this very important order.
   
   -----Input-----
@@ -18,6 +19,7 @@ vc-description: |-
   2
   1
   252
+  -/
 
 vc-preamble: |-
 
@@ -44,23 +46,23 @@ vc-theorems: |-
   theorem ones_property (n : Nat) : 
     n > 0 → choose_team n 0 = 1 ∧ choose_team n n = 1 := by sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval choose_team 2 1
+  -- #guard_msgs in
+  -- #eval choose_team 2 1
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval choose_team 3 3
+  -- #guard_msgs in
+  -- #eval choose_team 3 3
   
-  /--
+  /-
   info: 252
   -/
-  #guard_msgs in
-  #eval choose_team 10 5
+  -- #guard_msgs in
+  -- #eval choose_team 10 5
 
 vc-postamble: |-
   -- Apps difficulty: interview

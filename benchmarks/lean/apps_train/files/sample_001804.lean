@@ -1,0 +1,75 @@
+/-
+We are given a list schedule of employees, which represents the working time for each employee.
+
+Each employee has a list of non-overlapping Intervals, and these intervals are in sorted order.
+
+Return the list of finite intervals representing common, positive-length free time for all employees, also in sorted order.
+
+Example 1:
+
+Input: schedule = [[[1,2],[5,6]],[[1,3]],[[4,10]]]
+Output: [[3,4]]
+Explanation:
+There are a total of three employees, and all common
+free time intervals would be [-inf, 1], [3, 4], [10, inf].
+We discard any intervals that contain inf as they aren't finite.
+
+Example 2:
+
+Input: schedule = [[[1,3],[6,7]],[[2,4]],[[2,5],[9,12]]]
+Output: [[5,6],[7,9]]
+
+(Even though we are representing Intervals in the form [x, y], the objects inside are Intervals, not lists or arrays.  For example, schedule[0][0].start = 1, schedule[0][0].end = 2, and schedule[0][0][0] is not defined.)
+
+Also, we wouldn't include intervals like [5, 5] in our answer, as they have zero length.
+
+Note:
+schedule and schedule[i] are lists with lengths in range [1, 50].
+0 .
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def employeeFreeTime (schedule : List (List Interval)) : List Interval :=
+  sorry
+
+variable (schedule : List (List Interval))
+variable (result : List Interval := employeeFreeTime schedule)
+variable (allIntervals : List Interval := schedule.join)
+
+theorem free_time_sorted : 
+  ∀ i : Nat, i + 1 < result.length → 
+  (result[i]!).finish < (result[i+1]!).start :=
+  sorry
+
+theorem no_overlap_with_work :
+  ∀ free work : Interval, 
+  free ∈ result → work ∈ allIntervals → 
+  ¬(free.start < work.finish ∧ work.start < free.finish) :=
+  sorry
+
+theorem valid_interval_bounds :
+  ∀ i : Interval, i ∈ result → i.start < i.finish :=
+  sorry
+
+theorem continuous_work_valid_bounds (raw_times : List (List Int)) :
+  let schedule := raw_times.map (λ times => times.map (λ t => { start := t, finish := t+1 }))
+  let result := employeeFreeTime schedule
+  ∀ i : Interval, i ∈ result → i.start < i.finish :=
+  sorry
+
+/-
+info: 1
+-/
+-- #guard_msgs in
+-- #eval len employeeFreeTime(schedule1)
+
+/-
+info: 2
+-/
+-- #guard_msgs in
+-- #eval len employeeFreeTime(schedule2)
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

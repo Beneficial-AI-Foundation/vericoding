@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef likes to travel very much. He plans some travel routes and wants to know their lengths. He hired you to make these calculations. But be careful, some of the routes are incorrect. There may be some misspelling in city names or there will be no road between some two consecutive cities in the route. Also note that Chef hates to visit the same city twice during his travel. Even the last city should differ from the first. Two consecutive cities in the route should also be different. So you need to check these conditions for the given routes too.
   
   You will be given the list of all cities and all roads between them with their lengths. All roads are one-way. Also you will be given the list of all travel routes that Chef plans. For each route you should check whether it is correct and find its length in this case.
@@ -92,6 +93,7 @@ vc-description: |-
   The 12th route is incorrect since city New-York is visited twice. 
   
   Finally the 13th route is incorrect since we have equal consecutive cities.
+  -/
 
 vc-preamble: |-
 

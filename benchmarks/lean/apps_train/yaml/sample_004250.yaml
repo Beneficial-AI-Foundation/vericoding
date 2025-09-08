@@ -1,7 +1,9 @@
 vc-description: |-
+  /-
   Write a function called calculate that takes 3 values. The first and third values are numbers. The second value is a character. If the character is "+" , "-", "*", or "/", the function will return the result of the corresponding mathematical function on the two numbers. If the string is not one of the specified characters, the function should return null (throw an `ArgumentException` in C#).
   
   Keep in mind, you cannot divide by zero. If an attempt to divide by zero is made, return null (throw an `ArgumentException` in C#)/(None in Python).
+  -/
 
 vc-preamble: |-
 
@@ -29,23 +31,23 @@ vc-theorems: |-
   theorem calculator_outputs_valid {x y : Float} {op : Operation} :
     ∃ (r: Float), calculate x op y = some r ∨ calculate x op y = none := sorry
   
-  /--
+  /-
   info: 11.2
   -/
-  #guard_msgs in
-  #eval calculate 3.2 "+" 8
+  -- #guard_msgs in
+  -- #eval calculate 3.2 "+" 8
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval calculate -3 "/" 0
+  -- #guard_msgs in
+  -- #eval calculate -3 "/" 0
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval calculate -3 "w" 1
+  -- #guard_msgs in
+  -- #eval calculate -3 "w" 1
 
 vc-postamble: |-
   -- Apps difficulty: introductory

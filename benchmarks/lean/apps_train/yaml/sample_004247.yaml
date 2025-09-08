@@ -1,7 +1,9 @@
 vc-description: |-
+  /-
   Imagine there's a big cube consisting of n^3 small cubes. Calculate, how many small cubes are not visible from outside.
   
   For example, if we have a cube which has 4 cubes in a row, then the function should return 8, because there are 8 cubes inside our cube (2 cubes in each dimension)
+  -/
 
 vc-preamble: |-
 
@@ -22,23 +24,23 @@ vc-theorems: |-
   theorem not_visible_cubes_large_cases (n : Int) (h : n ≥ 3) :
     not_visible_cubes n = (n - 2) ^ 3 := sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval not_visible_cubes 0
+  -- #guard_msgs in
+  -- #eval not_visible_cubes 0
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval not_visible_cubes 4
+  -- #guard_msgs in
+  -- #eval not_visible_cubes 4
   
-  /--
+  /-
   info: 27
   -/
-  #guard_msgs in
-  #eval not_visible_cubes 5
+  -- #guard_msgs in
+  -- #eval not_visible_cubes 5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

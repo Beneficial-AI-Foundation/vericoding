@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A plot of land can be described by $M x N$ dots such that horizontal and vertical distance between any two dots is 10m.
   Mr. Wolf would like to build a house in the land such that all four sides of the house are equal. Help Mr. Wolf to find the total number of unique positions where houses can be built. Two positions are different if and only if their sets of four dots are different.
   
@@ -39,6 +40,7 @@ vc-description: |-
   Map 2
   
   Map 3
+  -/
 
 vc-preamble: |-
 
@@ -68,23 +70,23 @@ vc-theorems: |-
   theorem square_grid_monotone (n : Nat) (h : n ≥ 2) :
     count_house_positions (n+1) (n+1) > count_house_positions n n := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_house_positions 2 4
+  -- #guard_msgs in
+  -- #eval count_house_positions 2 4
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval count_house_positions 3 4
+  -- #guard_msgs in
+  -- #eval count_house_positions 3 4
   
-  /--
+  /-
   info: 20
   -/
-  #guard_msgs in
-  #eval count_house_positions 4 4
+  -- #guard_msgs in
+  -- #eval count_house_positions 4 4
 
 vc-postamble: |-
   -- Apps difficulty: interview

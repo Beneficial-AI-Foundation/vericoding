@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Since due to COVID 19, India has undergone a complete 21 day lockdown. So Amol was attending an online lecture where his professor asked him to solve a question. Amol was unable to solve the question so he asked you to solve the question and give him the correct answer. 
   
   The question was asked a such that his professor gave him a number M and a list of integers of length N (i.e. A1, A2,..... AN) and you have to find out all the subsets that add up to M and the total number of subsets will be the final answer. 
@@ -48,6 +49,7 @@ vc-description: |-
   
   Explanation:
   In the 1st example there are two subsets {2,4,10} and {6,10} that adds upto 16 so the output is 2.
+  -/
 
 vc-preamble: |-
 
@@ -72,17 +74,17 @@ vc-theorems: |-
   theorem results_non_negative {target : Nat} {arr : List Nat} :
     countsubsetsum target arr ≥ 0 := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve_test_case 4 16 [2, 4, 6, 10]
+  -- #guard_msgs in
+  -- #eval solve_test_case 4 16 [2, 4, 6, 10]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve_test_case 4 20 [2, 8, 12, 10]
+  -- #guard_msgs in
+  -- #eval solve_test_case 4 20 [2, 8, 12, 10]
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a program that reads numbers until -1 is not given.
   The program finds how many of the given numbers are more than 30, $N$.
   It also finds the average weighted sum of even numbers, $A$.
@@ -26,6 +27,7 @@ vc-description: |-
   In the series of numbers 33 100 77 42 12 -1, the count of numbers greater than 30 is 4
   The average weighted sum of the even numbers is given by:
   ((2 * 100) + (4 * 42) + (5 * 12)) / (2 + 4 + 5)
+  -/
 
 vc-preamble: |-
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    You are given a string consisting of `"D", "P" and "C"`. A positive integer N is called DPC of this string if it satisfies the following properties: 
   
@@ -26,6 +27,7 @@ vc-description: |-
    - `[output]` an integer
   
     The smallest DPC of `s` or `-1` if it doesn't exist.
+  -/
 
 vc-preamble: |-
   def gcd (a b : Nat) : Nat :=
@@ -64,23 +66,23 @@ vc-theorems: |-
     dpcSequence s ≠ -1 :=
     sorry
   
-  /--
+  /-
   info: 20
   -/
-  #guard_msgs in
-  #eval dpc_sequence "DDPDD"
+  -- #guard_msgs in
+  -- #eval dpc_sequence "DDPDD"
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval dpc_sequence "DPCPDPPPDCPDPDPC"
+  -- #guard_msgs in
+  -- #eval dpc_sequence "DPCPDPPPDCPDPDPC"
   
-  /--
+  /-
   info: 15782844
   -/
-  #guard_msgs in
-  #eval dpc_sequence "DDDDPDDCCCDDPDCCPCDCDDPCPCCDDCD"
+  -- #guard_msgs in
+  -- #eval dpc_sequence "DDDDPDDCCCDDPDCCPCDCDDPCPCCDDCD"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

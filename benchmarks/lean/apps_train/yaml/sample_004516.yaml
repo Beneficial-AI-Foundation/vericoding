@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a list of prime factors, ```primesL```, and an integer, ```limit```, try to generate in order, all the numbers less than the value of ```limit```, that have **all and only** the prime factors of ```primesL```
   
   ## Example
@@ -50,6 +51,7 @@ vc-description: |-
   ```
   
   Enjoy!
+  -/
 
 vc-preamble: |-
   def List.prod : List Nat → Nat 

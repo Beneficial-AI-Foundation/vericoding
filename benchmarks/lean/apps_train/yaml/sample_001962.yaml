@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We all know the impressive story of Robin Hood. Robin Hood uses his archery skills and his wits to steal the money from rich, and return it to the poor.
   
   There are n citizens in Kekoland, each person has c_{i} coins. Each day, Robin Hood will take exactly 1 coin from the richest person in the city and he will give it to the poorest person (poorest person right after taking richest's 1 coin). In case the choice is not unique, he will select one among them at random. Sadly, Robin Hood is old and want to retire in k days. He decided to spend these last days with helping poor people. 
@@ -39,6 +40,7 @@ vc-description: |-
   So the answer is 3 - 1 = 2
   
   In second sample wealth will remain the same for each person.
+  -/
 
 vc-preamble: |-
 
@@ -79,23 +81,23 @@ vc-theorems: |-
     solve_robin_hood n k2 coins ≤ solve_robin_hood n k1 coins :=
   sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve_robin_hood 4 1 [1, 1, 4, 2]
+  -- #guard_msgs in
+  -- #eval solve_robin_hood 4 1 [1, 1, 4, 2]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve_robin_hood 3 1 [2, 2, 2]
+  -- #guard_msgs in
+  -- #eval solve_robin_hood 3 1 [2, 2, 2]
   
-  /--
+  /-
   info: 999999943
   -/
-  #guard_msgs in
-  #eval solve_robin_hood 4 42 [1, 1, 1, 1000000000]
+  -- #guard_msgs in
+  -- #eval solve_robin_hood 4 42 [1, 1, 1, 1000000000]
 
 vc-postamble: |-
   -- Apps difficulty: competition

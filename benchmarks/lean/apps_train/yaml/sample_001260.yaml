@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   It is an interesting exercise to write a program to print out all permutations of $1, 2, …, n$. However, since there are $6227020800$ permutations of $1, 2, …, 13$, it is unlikely that we would ever run this program on an input of size more than $10$.
   However, here is another interesting problem whose solution can also be used to generate permutations. We can order the permutations of $1, 2, …, n$ under the lexicographic (or dictionary) order. Here are the permutations of $1,2,3$ in lexicographic order:
   123132213231312321123132213231312321 1 \, 2 \, 3 \quad    1 \, 3 \, 2 \quad     2 \, 1 \, 3 \quad     2 \, 3 \, 1 \quad     3 \, 1 \, 2 \quad     3 \, 2 \, 1 
@@ -22,6 +23,7 @@ vc-description: |-
   -----Sample output-----
   3 2 1
   3 1 2
+  -/
 
 vc-preamble: |-
   def nextPermutation (arr : List Int) : List Int := sorry

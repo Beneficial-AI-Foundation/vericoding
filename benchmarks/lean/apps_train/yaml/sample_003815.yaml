@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   
   Elections are in progress!
@@ -44,6 +45,7 @@ vc-description: |-
   ```
   
   * There're no additional votes to cast, and there's already a tie.
+  -/
 
 vc-preamble: |-
   def elections_winners (votes: List Nat) (k: Nat) : Nat :=
@@ -73,23 +75,23 @@ vc-theorems: |-
     result = 0 ∨ result = 1 :=
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval elections_winners [2, 3, 5, 2] 3
+  -- #guard_msgs in
+  -- #eval elections_winners [2, 3, 5, 2] 3
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval elections_winners [1, 3, 3, 1, 1] 0
+  -- #guard_msgs in
+  -- #eval elections_winners [1, 3, 3, 1, 1] 0
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval elections_winners [3, 1, 1, 3, 1] 2
+  -- #guard_msgs in
+  -- #eval elections_winners [3, 1, 1, 3, 1] 2
 
 vc-postamble: |-
   -- Apps difficulty: introductory

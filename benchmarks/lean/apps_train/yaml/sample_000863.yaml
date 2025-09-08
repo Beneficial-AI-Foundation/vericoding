@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Cherry has a string S$S$ consisting of lowercase English letters. Using this string, he formed a pyramid of infinite length with certain rules:
   - N$N$-th row of pyramid contains N$N$ characters.
   - Each row of pyramid begins with the first character of the string.
@@ -50,6 +51,7 @@ vc-description: |-
   Pyramid will be formed as explained in the statement.
   Query 1: Row number 4 of the pyramid is code. The number of occurrences of chefcode in code is 0.
   Query 2: Row number 12 of the pyramid is codechefcode. The number of occurrences of chefcode in codechefcode is 1.
+  -/
 
 vc-preamble: |-
 

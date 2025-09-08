@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ```if-not:swift
   Write simple .camelCase method (`camel_case` function in PHP, `CamelCase` in C# or `camelCase` in Java) for strings. All words must have their first letter capitalized without spaces.
   ```
@@ -19,6 +20,7 @@ vc-description: |-
   ```
   
   Don't forget to rate this kata! Thanks :)
+  -/
 
 vc-preamble: |-
 
@@ -46,23 +48,23 @@ vc-theorems: |-
     (h : ∀ (i : String.Pos), s.get i = ' ') :
     camel_case s = "" := sorry
   
-  /--
+  /-
   info: 'TestCase'
   -/
-  #guard_msgs in
-  #eval camel_case "test case"
+  -- #guard_msgs in
+  -- #eval camel_case "test case"
   
-  /--
+  /-
   info: 'CamelCaseMethod'
   -/
-  #guard_msgs in
-  #eval camel_case "camel case method"
+  -- #guard_msgs in
+  -- #eval camel_case "camel case method"
   
-  /--
+  /-
   info: 'SayHello'
   -/
-  #guard_msgs in
-  #eval camel_case "say hello "
+  -- #guard_msgs in
+  -- #eval camel_case "say hello "
 
 vc-postamble: |-
   -- Apps difficulty: introductory

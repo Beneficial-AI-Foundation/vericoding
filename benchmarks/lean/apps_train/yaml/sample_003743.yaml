@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your task is to return the sum of Triangular Numbers up-to-and-including the `nth` Triangular Number.
   
   Triangular Number: "any of the series of numbers (1, 3, 6, 10, 15, etc.) obtained by continued summation of the natural numbers 1, 2, 3, 4, 5, etc."
@@ -15,6 +16,7 @@ vc-description: |-
   e.g. If `4` is given: `1 + 3 + 6 + 10 = 20`.
   
   Triangular Numbers cannot be negative so return 0 if a negative number is given.
+  -/
 
 vc-preamble: |-
 
@@ -38,23 +40,23 @@ vc-theorems: |-
   theorem sum_triangular_increasing {n : Int}
     (h : n > 1) : sumTriangularNumbers n > sumTriangularNumbers (n-1) := sorry
   
-  /--
+  /-
   info: 20
   -/
-  #guard_msgs in
-  #eval sum_triangular_numbers 4
+  -- #guard_msgs in
+  -- #eval sum_triangular_numbers 4
   
-  /--
+  /-
   info: 56
   -/
-  #guard_msgs in
-  #eval sum_triangular_numbers 6
+  -- #guard_msgs in
+  -- #eval sum_triangular_numbers 6
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval sum_triangular_numbers -3
+  -- #guard_msgs in
+  -- #eval sum_triangular_numbers -3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

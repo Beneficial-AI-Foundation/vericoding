@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Iroha has a sequence of N strings S_1, S_2, ..., S_N. The length of each string is L.
   She will concatenate all of the strings in some order, to produce a long string.
   Among all strings that she can produce in this way, find the lexicographically smallest one.
@@ -33,6 +34,7 @@ vc-description: |-
   axxcxxdxx
   
   The following order should be used: axx, cxx, dxx.
+  -/
 
 vc-preamble: |-
 
@@ -74,23 +76,23 @@ vc-theorems: |-
     (hn : 1 ≤ n ∧ n ≤ 10)
     : smallest_lexicographic_string n 1 (List.replicate n "z") = strRepeat "z" n := sorry
   
-  /--
+  /-
   info: 'axxcxxdxx'
   -/
-  #guard_msgs in
-  #eval smallest_lexicographic_string 3 3 ["dxx", "axx", "cxx"]
+  -- #guard_msgs in
+  -- #eval smallest_lexicographic_string 3 3 ["dxx", "axx", "cxx"]
   
-  /--
+  /-
   info: 'aaab'
   -/
-  #guard_msgs in
-  #eval smallest_lexicographic_string 2 2 ["ab", "aa"]
+  -- #guard_msgs in
+  -- #eval smallest_lexicographic_string 2 2 ["ab", "aa"]
   
-  /--
+  /-
   info: 'abcd'
   -/
-  #guard_msgs in
-  #eval smallest_lexicographic_string 4 1 ["d", "b", "c", "a"]
+  -- #guard_msgs in
+  -- #eval smallest_lexicographic_string 4 1 ["d", "b", "c", "a"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

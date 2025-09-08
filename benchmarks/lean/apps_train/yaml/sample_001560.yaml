@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Create a function that differentiates a polynomial for a given value of `x`.
   
   Your function will receive 2 arguments: a polynomial as a string, and a point to evaluate the equation as an integer.
@@ -15,6 +16,7 @@ vc-description: |-
   differenatiate("12x+2", 3)      ==>   returns 12
   differenatiate("x^2+3x+2", 3)   ==>   returns 9
   ```
+  -/
 
 vc-preamble: |-
 
@@ -58,23 +60,23 @@ vc-theorems: |-
     differentiate (Polynomial.const n) x = 0 :=
     sorry
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval differentiate "12x+2" 3
+  -- #guard_msgs in
+  -- #eval differentiate "12x+2" 3
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval differentiate "x^2+3x+2" 3
+  -- #guard_msgs in
+  -- #eval differentiate "x^2+3x+2" 3
   
-  /--
+  /-
   info: -20
   -/
-  #guard_msgs in
-  #eval differentiate "-5x^2+10x+4" 3
+  -- #guard_msgs in
+  -- #eval differentiate "-5x^2+10x+4" 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

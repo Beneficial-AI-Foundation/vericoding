@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this Kata, you will be given directions and your task will be to find your way back. 
   ```Perl
   solve(["Begin on Road A","Right on Road B","Right on Road C","Left on Road D"]) = ['Begin on Road D', 'Right on Road C', 'Left on Road B', 'Left on Road A']
@@ -10,6 +11,7 @@ vc-description: |-
   Good luck!
   
   Please also try [Simple remove duplicates](https://www.codewars.com/kata/5ba38ba180824a86850000f7)
+  -/
 
 vc-preamble: |-
   def solve : List String → List String := sorry
@@ -49,23 +51,23 @@ vc-theorems: |-
     List.length commands > 1 →
     allLeftOrRight (List.tail! (extractDirections (solve commands))) := sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval solve ["Begin on 3rd Blvd", "Right on First Road", "Left on 9th Dr"]
+  -- #guard_msgs in
+  -- #eval solve ["Begin on 3rd Blvd", "Right on First Road", "Left on 9th Dr"]
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval solve ["Begin on Road A", "Right on Road B", "Right on Road C", "Left on Road D"]
+  -- #guard_msgs in
+  -- #eval solve ["Begin on Road A", "Right on Road B", "Right on Road C", "Left on Road D"]
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval solve ["Begin on Road A"]
+  -- #guard_msgs in
+  -- #eval solve ["Begin on Road A"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   On each of the following $N$ days (numbered $1$ through $N$), Chef is planning to cook either pizza or broccoli. He wrote down a string $A$ with length $N$, where for each valid $i$, if the character $A_i$ is '1', then he will cook pizza on the $i$-th day, while if $A_i$ is '0', he will cook broccoli on this day.
   Chefu, his son, loves pizza but hates broccoli ― just like most kids. He wants to select a substring of $A$ with length $K$ and change each character '0' in this substring to '1'. Afterwards, let's define pizza time as the maximum number of consecutive days where Chef will cook pizza. Find the maximum pizza time Chefu can achieve.
   
@@ -36,6 +37,7 @@ vc-description: |-
   -----Explanation-----
   Example case 1: Chefu can choose the substring $A[2, 3]$ = "10", and change the third character of $A$ to '1'. Then, the pizza time is $5$ days: from day $2$ to day $6$.
   Example case 2: Chefu can choose the substring $A[2, 4]$ = "000". Then, the pizza time is $4$ days: from day $1$ to day $4$.
+  -/
 
 vc-preamble: |-
   def max_pizza_time (n : Nat) (k : Nat) (s : String) : Nat :=
@@ -74,23 +76,23 @@ vc-theorems: |-
     max_pizza_time n k s = k :=
   sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval max_pizza_time 13 2 "0101110000101"
+  -- #guard_msgs in
+  -- #eval max_pizza_time 13 2 "0101110000101"
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval max_pizza_time 6 3 "100001"
+  -- #guard_msgs in
+  -- #eval max_pizza_time 6 3 "100001"
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval max_pizza_time 5 2 "10001"
+  -- #guard_msgs in
+  -- #eval max_pizza_time 5 2 "10001"
 
 vc-postamble: |-
   -- Apps difficulty: interview

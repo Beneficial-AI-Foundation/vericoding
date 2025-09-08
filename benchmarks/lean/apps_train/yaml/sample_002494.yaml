@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Problem Statement=====
   The provided code stub reads two integers, a and b, from STDIN.
   Add logic to print two lines. The first line should contain the result of integer division,
@@ -21,6 +22,7 @@ vc-description: |-
   
   =====Output Format=====
   Print the two lines as described above.
+  -/
 
 vc-preamble: |-
 

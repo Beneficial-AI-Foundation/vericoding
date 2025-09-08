@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this Kata, you will be given two integers `n` and `k` and your task is to remove `k-digits` from `n` and return the lowest number possible, without changing the order of the digits in `n`. Return the result as a string.
   
   Let's take an example of `solve(123056,4)`. We need to remove `4` digits from `123056` and return the lowest possible number. The best digits to remove are `(1,2,3,6)` so that the remaining digits are `'05'`. Therefore, `solve(123056,4) = '05'`. 
@@ -8,6 +9,7 @@ vc-description: |-
   More examples in the test cases.
   
   Good luck!
+  -/
 
 vc-preamble: |-
   def isSubsequence (smaller larger : String) : Bool :=
@@ -41,23 +43,23 @@ vc-theorems: |-
       result.toNat! ≤ s.toNat! :=
   sorry
   
-  /--
+  /-
   info: '05'
   -/
-  #guard_msgs in
-  #eval solve 123056 4
+  -- #guard_msgs in
+  -- #eval solve 123056 4
   
-  /--
+  /-
   info: '12456'
   -/
-  #guard_msgs in
-  #eval solve 1284569 2
+  -- #guard_msgs in
+  -- #eval solve 1284569 2
   
-  /--
+  /-
   info: '12056'
   -/
-  #guard_msgs in
-  #eval solve 123056 1
+  -- #guard_msgs in
+  -- #eval solve 123056 1
 
 vc-postamble: |-
   -- Apps difficulty: introductory

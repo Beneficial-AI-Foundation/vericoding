@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   One of Timofey's birthday presents is a colourbook in a shape of an infinite plane. On the plane n rectangles with sides parallel to coordinate axes are situated. All sides of the rectangles have odd length. Rectangles cannot intersect, but they can touch each other.
   
   Help Timofey to color his rectangles in 4 different colors in such a way that every two rectangles touching each other by side would have different color, or determine that it is impossible.
@@ -41,6 +42,7 @@ vc-description: |-
   2
   4
   1
+  -/
 
 vc-preamble: |-
   def colorRectangles (rectangles : List (Int × Int × Int × Int)) : String :=

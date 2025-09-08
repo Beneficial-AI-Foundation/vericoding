@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The [Linear Congruential Generator (LCG)](https://en.wikipedia.org/wiki/Linear_congruential_generator) is one of the oldest pseudo random number generator functions.
   
   The algorithm is as follows:
@@ -35,6 +36,7 @@ vc-description: |-
   # next random number (seed = 1)
   LCG.random() = 0.5
   ```
+  -/
 
 vc-preamble: |-
 

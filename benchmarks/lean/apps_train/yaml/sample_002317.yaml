@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A boomerang is a set of 3 points that are all distinct and not in a straight line.
   Given a list of three points in the plane, return whether these points are a boomerang.
   
@@ -15,6 +16,7 @@ vc-description: |-
   points.length == 3
   points[i].length == 2
   0 <= points[i][j] <= 100
+  -/
 
 vc-preamble: |-
 
@@ -57,23 +59,23 @@ vc-theorems: |-
     (h3: points.get! 0 = points.get! 1) :
     isBoomerang points = false := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval isBoomerang [[1, 1], [2, 3], [3, 2]]
+  -- #guard_msgs in
+  -- #eval isBoomerang [[1, 1], [2, 3], [3, 2]]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval isBoomerang [[1, 1], [2, 2], [3, 3]]
+  -- #guard_msgs in
+  -- #eval isBoomerang [[1, 1], [2, 2], [3, 3]]
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval isBoomerang [[0, 0], [1, 1], [1, 0]]
+  -- #guard_msgs in
+  -- #eval isBoomerang [[0, 0], [1, 1], [1, 0]]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef Tobby asked Bhuvan to brush up his knowledge of statistics for a test. While studying some distributions, Bhuvan learns the fact that for symmetric distributions, the mean and the median are always the same.
   Chef Tobby asks Bhuvan out for a game and tells him that it will utilize his new found knowledge. He lays out a total of 109 small tiles in front of Bhuvan. Each tile has a distinct number written on it from 1 to 109.
   Chef Tobby gives Bhuvan an integer N and asks him to choose N distinct tiles and arrange them in a line such that the mean of median of all subarrays lies between [N-1, N+1], both inclusive. The median of subarray of even length is the mean of the two numbers in the middle after the subarray is sorted
@@ -37,6 +38,7 @@ vc-description: |-
   - {2, 3}, median = 2.5
   - {1, 2, 3}, median = 2
   The mean of the medians is 2 which lies in the range [2, 4]
+  -/
 
 vc-preamble: |-
 
@@ -72,23 +74,23 @@ vc-theorems: |-
     let numbers := (arrange_tiles n).split (· = ' ') |>.map String.toInt!
     numbers.eraseDups = numbers := sorry
   
-  /--
+  /-
   info: '1'
   -/
-  #guard_msgs in
-  #eval arrange_tiles 1
+  -- #guard_msgs in
+  -- #eval arrange_tiles 1
   
-  /--
+  /-
   info: '2 3'
   -/
-  #guard_msgs in
-  #eval arrange_tiles 2
+  -- #guard_msgs in
+  -- #eval arrange_tiles 2
   
-  /--
+  /-
   info: '3 4 2'
   -/
-  #guard_msgs in
-  #eval arrange_tiles 3
+  -- #guard_msgs in
+  -- #eval arrange_tiles 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

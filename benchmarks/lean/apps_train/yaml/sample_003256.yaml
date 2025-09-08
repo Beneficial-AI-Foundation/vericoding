@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Complete the function ```circleArea``` so that it will return the area of a circle with the given ```radius```. Round the returned number to two decimal places (except for Haskell). If the radius is not positive or not a number, return ```false```.
   
   Example:
@@ -10,6 +11,7 @@ vc-description: |-
   circleArea(68)           #returns 14526.72
   circleArea("number")     #returns false
   ```
+  -/
 
 vc-preamble: |-
   def circle_area (radius : Float) : Option Float :=
@@ -38,23 +40,23 @@ vc-theorems: |-
     circle_area 0 = none :=
     sorry
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval circle_area 0
+  -- #guard_msgs in
+  -- #eval circle_area 0
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval circle_area "An integer"
+  -- #guard_msgs in
+  -- #eval circle_area "An integer"
   
-  /--
+  /-
   info: 12.57
   -/
-  #guard_msgs in
-  #eval circle_area 2
+  -- #guard_msgs in
+  -- #eval circle_area 2
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are n kangaroos with pockets. Each kangaroo has a size (integer number). A kangaroo can go into another kangaroo's pocket if and only if the size of kangaroo who hold the kangaroo is at least twice as large as the size of kangaroo who is held.
   
   Each kangaroo can hold at most one kangaroo, and the kangaroo who is held by another kangaroo cannot hold any kangaroos.
@@ -41,6 +42,7 @@ vc-description: |-
   
   Output
   5
+  -/
 
 vc-preamble: |-
 
@@ -57,23 +59,23 @@ vc-definitions: |-
     min_visible_kangaroos 3 [1, 2, 4] = 2 := sorry
 
 vc-theorems: |-
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval min_visible_kangaroos 8 [2, 5, 7, 6, 9, 8, 4, 2]
+  -- #guard_msgs in
+  -- #eval min_visible_kangaroos 8 [2, 5, 7, 6, 9, 8, 4, 2]
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval min_visible_kangaroos 8 [9, 1, 6, 2, 6, 5, 8, 3]
+  -- #guard_msgs in
+  -- #eval min_visible_kangaroos 8 [9, 1, 6, 2, 6, 5, 8, 3]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval min_visible_kangaroos 5 [1, 2, 4, 8, 16]
+  -- #guard_msgs in
+  -- #eval min_visible_kangaroos 5 [1, 2, 4, 8, 16]
 
 vc-postamble: |-
   -- Apps difficulty: competition

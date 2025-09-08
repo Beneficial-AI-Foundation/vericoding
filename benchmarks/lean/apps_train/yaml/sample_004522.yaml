@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Everybody loves **pi**, but what if **pi** were a square? Given a number of digits ```digits```, find the smallest integer whose square is greater or equal to the sum of the squares of the first ```digits``` digits of pi, including the ```3``` before the decimal point.
   
   **Note:** Test cases will not extend beyond 100 digits; the first 100 digits of pi are pasted here for your convenience:
@@ -15,6 +16,7 @@ vc-description: |-
   digits   = 3   #  [3, 1, 4]
   expected = 6   #  sqrt(3^2 + 1^2 + 4^2) = 5.099 --> 6
   ```
+  -/
 
 vc-preamble: |-
   def maxLen : Nat :=
@@ -36,23 +38,23 @@ vc-theorems: |-
     square_pi n₁ ≤ square_pi n₂ :=
   sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval square_pi 1
+  -- #guard_msgs in
+  -- #eval square_pi 1
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval square_pi 3
+  -- #guard_msgs in
+  -- #eval square_pi 3
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval square_pi 5
+  -- #guard_msgs in
+  -- #eval square_pi 5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

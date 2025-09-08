@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Create a function `isAlt()` that accepts a string as an argument and validates whether the vowels (a, e, i, o, u) and consonants are in alternate order.
   
   ```python
@@ -11,6 +12,7 @@ vc-description: |-
   ```
   
   Arguments consist of only lowercase letters.
+  -/
 
 vc-preamble: |-
   def VOWELS : List Char := ['a', 'e', 'i', 'o', 'u']
@@ -46,23 +48,23 @@ vc-theorems: |-
     is_alt (String.mk result) :=
     sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_alt "amazon"
+  -- #guard_msgs in
+  -- #eval is_alt "amazon"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_alt "apple"
+  -- #guard_msgs in
+  -- #eval is_alt "apple"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_alt "banana"
+  -- #guard_msgs in
+  -- #eval is_alt "banana"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

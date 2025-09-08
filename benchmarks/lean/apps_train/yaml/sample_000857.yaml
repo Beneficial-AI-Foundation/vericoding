@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   As we all know, Chef is cooking string for long days, his new discovery on string is the longest common pattern length. The longest common pattern length between two strings is the maximum number of characters that both strings have in common. Characters are case sensitive, that is, lower case and upper case characters are considered as different. Note that characters can repeat in a string and a character might have one or more occurrence in common between two strings. For example, if Chef has two strings A = "Codechef" and B = "elfedcc", then the longest common pattern length of A and B is 5 (common characters are c, d, e, e, f).
   Chef wants to test you with the problem described above. He will give you two strings of Latin alphabets and digits, return him the longest common pattern length.
   
@@ -37,6 +38,7 @@ vc-description: |-
   Example case 2. All the characters are same.
   Example case 3. Three characters (a, a and c) are same.
   Example case 4. This sample is mentioned by the statement.
+  -/
 
 vc-preamble: |-
 
@@ -80,23 +82,23 @@ vc-theorems: |-
     find_longest_common_pattern s s * n := by
     sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval find_longest_common_pattern "abcd" "xyz"
+  -- #guard_msgs in
+  -- #eval find_longest_common_pattern "abcd" "xyz"
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval find_longest_common_pattern "abcd" "bcda"
+  -- #guard_msgs in
+  -- #eval find_longest_common_pattern "abcd" "bcda"
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval find_longest_common_pattern "Codechef" "elfedcc"
+  -- #guard_msgs in
+  -- #eval find_longest_common_pattern "Codechef" "elfedcc"
 
 vc-postamble: |-
   -- Apps difficulty: interview

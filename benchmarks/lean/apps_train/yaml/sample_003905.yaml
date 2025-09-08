@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The characters of Chima need your help. Their weapons got mixed up! They need you to write a program that accepts the name of a character in Chima then tells which weapon he/she owns.
   
   For example: for the character `"Laval"` your program should return the solution `"Laval-Shado Valious"`
@@ -13,6 +14,7 @@ vc-description: |-
   * LiElla-Roarburn. 
   
   Return `"Not a character"` for invalid inputs.
+  -/
 
 vc-preamble: |-
 
@@ -49,23 +51,23 @@ vc-theorems: |-
          character ≠ "LiElla") :
     identify_weapon character = "Not a character" := sorry
   
-  /--
+  /-
   info: 'Laval-Shado Valious'
   -/
-  #guard_msgs in
-  #eval identify_weapon "Laval"
+  -- #guard_msgs in
+  -- #eval identify_weapon "Laval"
   
-  /--
+  /-
   info: 'Crominus-Grandorius'
   -/
-  #guard_msgs in
-  #eval identify_weapon "Crominus"
+  -- #guard_msgs in
+  -- #eval identify_weapon "Crominus"
   
-  /--
+  /-
   info: 'Not a character'
   -/
-  #guard_msgs in
-  #eval identify_weapon "G"loona"
+  -- #guard_msgs in
+  -- #eval identify_weapon "G"loona"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

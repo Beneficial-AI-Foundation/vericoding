@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In some countries of former Soviet Union there was a belief about lucky tickets. A transport ticket of any sort was believed to posess luck if sum of digits on the left half of its number was equal to the sum of digits on the right half. Here are examples of such numbers:
   ```
   003111    #             3 = 1 + 1 + 1
@@ -9,6 +10,7 @@ vc-description: |-
   Such tickets were either eaten after being used or collected for bragging rights.
   
   Your task is to write a funtion ```luck_check(str)```, which returns ```true/True``` if argument is string decimal representation of a lucky ticket number, or ```false/False``` for all other numbers. It should throw errors for empty strings or strings which don't represent a decimal number.
+  -/
 
 vc-preamble: |-
   def List.sum (xs : List Nat) : Nat :=
@@ -43,23 +45,23 @@ vc-theorems: |-
   theorem empty_string_none :
     luck_check "" = none := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval luck_check "003111"
+  -- #guard_msgs in
+  -- #eval luck_check "003111"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval luck_check "17935"
+  -- #guard_msgs in
+  -- #eval luck_check "17935"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval luck_check "543970707"
+  -- #guard_msgs in
+  -- #eval luck_check "543970707"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,7 +1,9 @@
 vc-description: |-
+  /-
   An acrostic is a text in which the first letter of each line spells out a word. It is also a quick and cheap way of writing a poem for somebody, as exemplified below :
   
   Write a program that reads an acrostic to identify the "hidden" word. Specifically, your program will receive a list of words (reprensenting an acrostic) and will need to return a string corresponding to the word that is spelled out by taking the first letter of each word in the acrostic.
+  -/
 
 vc-preamble: |-
 
@@ -36,17 +38,17 @@ vc-theorems: |-
   theorem read_out_empty_list :
     read_out [] = "" := sorry
   
-  /--
+  /-
   info: 'JACK'
   -/
-  #guard_msgs in
-  #eval read_out ["Jolly", "Amazing", "Courteous", "Keen"]
+  -- #guard_msgs in
+  -- #eval read_out ["Jolly", "Amazing", "Courteous", "Keen"]
   
-  /--
+  /-
   info: 'MEG'
   -/
-  #guard_msgs in
-  #eval read_out ["Marvelous", "Excellent", "Gifted"]
+  -- #guard_msgs in
+  -- #eval read_out ["Marvelous", "Excellent", "Gifted"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

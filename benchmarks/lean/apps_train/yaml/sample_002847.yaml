@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Your Job
   
     Find the sum of all multiples of `n` below `m` 
@@ -9,6 +10,7 @@ vc-description: |-
     * `m` is **excluded** from the multiples
   
   ## Examples
+  -/
 
 vc-preamble: |-
 
@@ -50,41 +52,41 @@ vc-theorems: |-
     sumMul n m = Sum.inr "INVALID"
     := sorry
   
-  /--
+  /-
   info: 1860
   -/
-  #guard_msgs in
-  #eval sum_mul 4 123
+  -- #guard_msgs in
+  -- #eval sum_mul 4 123
   
-  /--
+  /-
   info: 20
   -/
-  #guard_msgs in
-  #eval sum_mul 2 10
+  -- #guard_msgs in
+  -- #eval sum_mul 2 10
   
-  /--
+  /-
   info: 86469
   -/
-  #guard_msgs in
-  #eval sum_mul 123 4567
+  -- #guard_msgs in
+  -- #eval sum_mul 123 4567
   
-  /--
+  /-
   info: 'INVALID'
   -/
-  #guard_msgs in
-  #eval sum_mul 0 2
+  -- #guard_msgs in
+  -- #eval sum_mul 0 2
   
-  /--
+  /-
   info: 'INVALID'
   -/
-  #guard_msgs in
-  #eval sum_mul 2 0
+  -- #guard_msgs in
+  -- #eval sum_mul 2 0
   
-  /--
+  /-
   info: 'INVALID'
   -/
-  #guard_msgs in
-  #eval sum_mul -7 4
+  -- #guard_msgs in
+  -- #eval sum_mul -7 4
 
 vc-postamble: |-
   -- Apps difficulty: introductory

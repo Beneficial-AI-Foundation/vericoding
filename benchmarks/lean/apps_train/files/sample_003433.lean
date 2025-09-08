@@ -1,0 +1,76 @@
+/-
+Your task is to get Zodiac Sign using input ```day``` and ```month```.
+
+For exapmle: 
+
+```python
+get_zodiac_sign(1,5) => 'Taurus'
+get_zodiac_sign(10,10) => 'Libra'
+```
+
+Correct answers are (preloaded): 
+```python
+SIGNS = ['Capricorn', 'Aquarius', 'Pisces', 'Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius']
+```
+
+P.S. Each argument is correct integer number.
+
+WESTERN ASTROLOGY STAR SIGN DATES
+
+* Aries (March 21-April 19)
+* Taurus (April 20-May 20)
+* Gemini (May 21-June 20)
+* Cancer (June 21-July 22)
+* Leo (July 23-August 22)
+* Virgo (August 23-September 22)
+* Libra (September 23-October 22)
+* Scorpio (October 23-November 21)
+* Sagittarius (November 22-December 21)
+* Capricorn (December 22-January 19)
+* Aquarius (January 20 to February 18)
+* Pisces (February 19 to March 20)
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def get_zodiac_sign (day : Nat) (month : Nat) : ZodiacSign := sorry
+
+theorem zodiac_sign_january_ranges (day : Nat) (h1 : 1 ≤ day) (h2 : day ≤ 31) :
+  day ≤ 19 → get_zodiac_sign day 1 = ZodiacSign.Capricorn ∧
+  day ≥ 20 → get_zodiac_sign day 1 = ZodiacSign.Aquarius := sorry
+
+theorem zodiac_sign_year_boundaries :
+  get_zodiac_sign 1 1 = ZodiacSign.Capricorn ∧ 
+  get_zodiac_sign 31 12 = ZodiacSign.Capricorn := sorry
+
+theorem zodiac_sign_february_special :
+  get_zodiac_sign 19 2 = ZodiacSign.Pisces := sorry
+
+theorem zodiac_sign_valid_days (month : Nat) (day : Nat)
+  (h1 : 1 ≤ month) (h2 : month ≤ 12) (h3 : 1 ≤ day) :
+  (month ∈ [4,6,9,11] → day ≤ 30) →
+  (month = 2 → day ≤ 29) →
+  (month ∉ [2,4,6,9,11] → day ≤ 31) → 
+  ∃ sign : ZodiacSign, get_zodiac_sign day month = sign := sorry
+
+/-
+info: 'Libra'
+-/
+-- #guard_msgs in
+-- #eval get_zodiac_sign 10 10
+
+/-
+info: 'Taurus'
+-/
+-- #guard_msgs in
+-- #eval get_zodiac_sign 1 5
+
+/-
+info: 'Sagittarius'
+-/
+-- #guard_msgs in
+-- #eval get_zodiac_sign 25 11
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

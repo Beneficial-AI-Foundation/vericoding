@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A key feature of the Siruseri railway network is that it has exactly one route between any pair of stations.
   The government has chosen three contractors to run the canteens at the stations on the railway network. To ensure that there are no disputes between the contractors it has been decided that if two stations, say $A$ and $B$, are assigned to a particular contractor then all the stations that lie on the route from $A$ to $B$ will also be awarded to the same contractor.
   The government would like the assignment of stations to the contractors to be as equitable as possible. The government has data on the number of passengers who pass through each station each year. They would like to assign stations so that the maximum number of passengers passing through any contractor's collection of stations is minimized.
@@ -31,6 +32,7 @@ vc-description: |-
   
   -----Sample Output-----
   70
+  -/
 
 vc-preamble: |-
   def List.sum (xs : List Nat) : Nat :=

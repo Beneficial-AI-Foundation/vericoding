@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are n cities numbered from 0 to n-1. Given the array edges where edges[i] = [fromi, toi, weighti] represents a bidirectional and weighted edge between cities fromi and toi, and given the integer distanceThreshold.
   Return the city with the smallest number of cities that are reachable through some path and whose distance is at most distanceThreshold, If there are multiple such cities, return the city with the greatest number.
   Notice that the distance of a path connecting cities i and j is equal to the sum of the edges' weights along that path.
@@ -36,6 +37,7 @@ vc-description: |-
   0 <= fromi < toi < n
   1 <= weighti, distanceThreshold <= 10^4
   All pairs (fromi, toi) are distinct.
+  -/
 
 vc-preamble: |-
 
@@ -71,17 +73,17 @@ vc-theorems: |-
     findCityWithSmallestReachable 1 [] 1 = 0 :=
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_city_with_smallest_reachable 4 [[0, 1, 3], [1, 2, 1], [1, 3, 4], [2, 3, 1]] 4
+  -- #guard_msgs in
+  -- #eval find_city_with_smallest_reachable 4 [[0, 1, 3], [1, 2, 1], [1, 3, 4], [2, 3, 1]] 4
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval find_city_with_smallest_reachable 5 [[0, 1, 2], [0, 4, 8], [1, 2, 3], [1, 4, 2], [2, 3, 1], [3, 4, 1]] 2
+  -- #guard_msgs in
+  -- #eval find_city_with_smallest_reachable 5 [[0, 1, 2], [0, 4, 8], [1, 2, 3], [1, 4, 2], [2, 3, 1], [3, 4, 1]] 2
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   See the following triangle:
   ```
   ____________________________________
@@ -28,6 +29,7 @@ vc-description: |-
   ```
   Enjoy it!
   This kata will be translated in another languages soon
+  -/
 
 vc-preamble: |-
 
@@ -50,23 +52,23 @@ vc-theorems: |-
     result[2]! = ((n + 1) / 2) ^ 4
   := sorry
   
-  /--
+  /-
   info: [1, 0, 1]
   -/
-  #guard_msgs in
-  #eval mult_triangle 1
+  -- #guard_msgs in
+  -- #eval mult_triangle 1
   
-  /--
+  /-
   info: [225, 144, 81]
   -/
-  #guard_msgs in
-  #eval mult_triangle 5
+  -- #guard_msgs in
+  -- #eval mult_triangle 5
   
-  /--
+  /-
   info: [3025, 2400, 625]
   -/
-  #guard_msgs in
-  #eval mult_triangle 10
+  -- #guard_msgs in
+  -- #eval mult_triangle 10
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   When working with color values it can sometimes be useful to extract the individual red, green, and blue (RGB) component values for a color. Implement a function that meets these requirements:
   
   + Accepts a case-insensitive hexadecimal color string as its parameter (ex. `"#FF9933"` or `"#ff9933"`)
@@ -11,6 +12,7 @@ vc-description: |-
   ```
   "#FF9933" --> {r: 255, g: 153, b: 51}
   ```
+  -/
 
 vc-preamble: |-
 
@@ -42,23 +44,23 @@ vc-theorems: |-
       rgb.g = g ∧
       rgb.b = b := sorry
   
-  /--
+  /-
   info: {'r': 255, 'g': 153, 'b': 51}
   -/
-  #guard_msgs in
-  #eval hex_string_to_RGB "#FF9933"
+  -- #guard_msgs in
+  -- #eval hex_string_to_RGB "#FF9933"
   
-  /--
+  /-
   info: {'r': 190, 'g': 173, 'b': 237}
   -/
-  #guard_msgs in
-  #eval hex_string_to_RGB "#beaded"
+  -- #guard_msgs in
+  -- #eval hex_string_to_RGB "#beaded"
   
-  /--
+  /-
   info: {'r': 0, 'g': 0, 'b': 0}
   -/
-  #guard_msgs in
-  #eval hex_string_to_RGB "#000000"
+  -- #guard_msgs in
+  -- #eval hex_string_to_RGB "#000000"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

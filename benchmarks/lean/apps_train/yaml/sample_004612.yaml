@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   When we have a 2x2 square matrix we may have up to 24 different ones changing the positions of the elements.
   
   We show some of them
@@ -45,6 +46,7 @@ vc-description: |-
   Enjoy it!
   
   Available only in Python 2, Javascript and Ruby by the moment.
+  -/
 
 vc-preamble: |-
   def count_perms (matrix: List (List Nat)) : Nat :=
@@ -85,23 +87,23 @@ vc-theorems: |-
     ) (List.range m)
     count_perms matrix = factorial (m * n) := by sorry
   
-  /--
+  /-
   info: 360
   -/
-  #guard_msgs in
-  #eval count_perms [[1, 2, 3], [3, 4, 5]]
+  -- #guard_msgs in
+  -- #eval count_perms [[1, 2, 3], [3, 4, 5]]
   
-  /--
+  /-
   info: 1260
   -/
-  #guard_msgs in
-  #eval count_perms [[1, 1, 1], [2, 2, 3], [3, 3, 3]]
+  -- #guard_msgs in
+  -- #eval count_perms [[1, 1, 1], [2, 2, 3], [3, 3, 3]]
   
-  /--
+  /-
   info: 362880
   -/
-  #guard_msgs in
-  #eval count_perms [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+  -- #guard_msgs in
+  -- #eval count_perms [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

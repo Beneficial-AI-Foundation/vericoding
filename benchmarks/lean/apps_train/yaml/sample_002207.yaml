@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Masha and Grisha like studying sets of positive integers.
   
   One day Grisha has written a set A containing n different integers a_{i} on a blackboard. Now he asks Masha to create a set B containing n different integers b_{j} such that all n^2 integers that can be obtained by summing up a_{i} and b_{j} for all possible pairs of i and j are different.
@@ -36,6 +37,7 @@ vc-description: |-
   1 
   YES
   1 2
+  -/
 
 vc-preamble: |-
   def solve (n : Nat) (arr : List Nat) : List Nat × List Nat := sorry
@@ -85,23 +87,23 @@ vc-theorems: |-
     (∀ i, i < nums.length - 1 → nums[i]! < nums[i + 1]!) :=
   sorry
   
-  /--
+  /-
   info: ('YES', [1, 2, 3])
   -/
-  #guard_msgs in
-  #eval solve 3 [1, 10, 100]
+  -- #guard_msgs in
+  -- #eval solve 3 [1, 10, 100]
   
-  /--
+  /-
   info: ('YES', [1])
   -/
-  #guard_msgs in
-  #eval solve 1 [1]
+  -- #guard_msgs in
+  -- #eval solve 1 [1]
   
-  /--
+  /-
   info: ('YES', [1, 2])
   -/
-  #guard_msgs in
-  #eval solve 2 [2, 4]
+  -- #guard_msgs in
+  -- #eval solve 2 [2, 4]
 
 vc-postamble: |-
   -- Apps difficulty: competition

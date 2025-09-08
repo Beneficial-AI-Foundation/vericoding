@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Consider the infinite x$x$ axis. There are N$N$ impacts on this X-axis at integral points (X1$X_1$,X2$X_2$,....XN$X_N$)  (all distinct) . An impact at a point X$X$i propagates such that at a point X$X$0, the effect of the impact is K|Xi−X0|$K^{|X_i - X_0|}$. Given the point X0$X_0$, N$N$ and K$K$. Assume the total impact on X0$X_0$ is M$M$, find if it is possible to do so.Note: You are not required to find the set X
   
   Formally print "yes" if this is possible and "no" if not possible.
@@ -28,6 +29,7 @@ vc-description: |-
   	no
   
   yes
+  -/
 
 vc-preamble: |-
 
@@ -81,23 +83,23 @@ vc-theorems: |-
     (hX0_2 : 0 ≤ X0_2 ∧ X0_2 ≤ 100) :
     solve_impact_points N K M X0_1 = solve_impact_points N K M X0_2 := sorry
   
-  /--
+  /-
   info: 'no'
   -/
-  #guard_msgs in
-  #eval solve_impact_points 4 3 10 10
+  -- #guard_msgs in
+  -- #eval solve_impact_points 4 3 10 10
   
-  /--
+  /-
   info: 'yes'
   -/
-  #guard_msgs in
-  #eval solve_impact_points 2 3 10 10
+  -- #guard_msgs in
+  -- #eval solve_impact_points 2 3 10 10
   
-  /--
+  /-
   info: 'yes'
   -/
-  #guard_msgs in
-  #eval solve_impact_points 1 3 3 0
+  -- #guard_msgs in
+  -- #eval solve_impact_points 1 3 3 0
 
 vc-postamble: |-
   -- Apps difficulty: interview

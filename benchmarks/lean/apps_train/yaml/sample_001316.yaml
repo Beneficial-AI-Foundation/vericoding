@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef has $N$ points (numbered $1$ through $N$) in a 2D Cartesian coordinate system. For each valid $i$, the $i$-th point is $(x_i, y_i)$. He also has a fixed integer $c$ and he may perform operations of the following type: choose a point $(x_i, y_i)$ and move it to $(x_i + c, y_i + c)$ or $(x_i - c, y_i - c)$.
   Now, Chef wants to set up one or more checkpoints (points in the same coordinate system) and perform zero or more operations in such a way that after they are performed, each of his (moved) $N$ points is located at one of the checkpoints.
   Chef's primary objective is to minimise the number of checkpoints. Among all options with this minimum number of checkpoints, he wants to choose one which minimises the number of operations he needs to perform.
@@ -31,6 +32,7 @@ vc-description: |-
   
   -----Explanation-----
   Example case 1: One optimal solution is to set up checkpoints at coordinates $(1, 1)$ and $(1, 0)$. Since the points $(1, 1)$ and $(1, 0)$ are already located at checkpoints, Chef can just move the point $(3, 2)$ to the checkpoint $(1, 0)$ in two moves: $(3, 2) \rightarrow (2, 1) \rightarrow (1, 0)$.
+  -/
 
 vc-preamble: |-
 
@@ -65,17 +67,17 @@ vc-theorems: |-
     (hn : n > 0) (hc : c > 0) :
     solve_checkpoints n c [] = (0, 0) := sorry
   
-  /--
+  /-
   info: (2, 2)
   -/
-  #guard_msgs in
-  #eval solve_checkpoints 3 1 [(1, 1), (1, 0), (3, 2)]
+  -- #guard_msgs in
+  -- #eval solve_checkpoints 3 1 [(1, 1), (1, 0), (3, 2)]
   
-  /--
+  /-
   info: (1, 2)
   -/
-  #guard_msgs in
-  #eval solve_checkpoints 2 1 [(0, 0), (2, 2)]
+  -- #guard_msgs in
+  -- #eval solve_checkpoints 2 1 [(0, 0), (2, 2)]
 
 vc-postamble: |-
   -- Apps difficulty: interview

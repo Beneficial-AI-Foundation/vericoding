@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an alphanumeric string made up of digits and lower case Latin characters only, find the sum of all the digit characters in the string.
   
   -----Input-----
@@ -22,6 +23,7 @@ vc-description: |-
   
   -----Explanation-----
   The digits in this string are 1, 2, 3 and 1. Hence, the sum of all of them is 7.
+  -/
 
 vc-preamble: |-
   def sum_of_digits (s : String) : Nat :=
@@ -53,23 +55,23 @@ vc-theorems: |-
     sum_of_digits (letters ++ digits) = sum_of_digits digits :=
     sorry
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval sum_of_digits "ab1231da"
+  -- #guard_msgs in
+  -- #eval sum_of_digits "ab1231da"
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval sum_of_digits "a1b2c3"
+  -- #guard_msgs in
+  -- #eval sum_of_digits "a1b2c3"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval sum_of_digits "nodigits"
+  -- #guard_msgs in
+  -- #eval sum_of_digits "nodigits"
 
 vc-postamble: |-
   -- Apps difficulty: interview

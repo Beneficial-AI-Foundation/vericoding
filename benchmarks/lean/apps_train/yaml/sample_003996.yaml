@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    Let's consider a table consisting of `n` rows and `n` columns. The cell located at the intersection of the i-th row and the j-th column contains number i × j. The rows and columns are numbered starting from 1.
   
@@ -42,6 +43,7 @@ vc-description: |-
    - `[output]` an integer
   
     The number of times `x` occurs in the table.
+  -/
 
 vc-preamble: |-
 
@@ -66,23 +68,23 @@ vc-theorems: |-
     count_number n (n*n + 1) = 0 :=
   sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_number 5 5
+  -- #guard_msgs in
+  -- #eval count_number 5 5
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_number 10 5
+  -- #guard_msgs in
+  -- #eval count_number 10 5
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval count_number 6 12
+  -- #guard_msgs in
+  -- #eval count_number 6 12
 
 vc-postamble: |-
   -- Apps difficulty: introductory

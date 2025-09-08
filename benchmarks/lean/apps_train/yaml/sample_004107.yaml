@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   *This kata is based on [Project Euler Problem #349](https://projecteuler.net/problem=349). You may want to start with solving [this kata](https://www.codewars.com/kata/langtons-ant) first.*
   
   ---
@@ -19,6 +20,7 @@ vc-description: |-
   If you enjoyed this kata then please try [my other katas](https://www.codewars.com/collections/katas-created-by-anter69)! :-)
   
   #### *Translations are welcome!*
+  -/
 
 vc-preamble: |-
   def langtons_ant (n : Nat) : Nat :=
@@ -54,35 +56,35 @@ vc-theorems: |-
             else (n2 - 9977) / 104 - (n1 - 9977) / 104) :=
   sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval langtons_ant 0
+  -- #guard_msgs in
+  -- #eval langtons_ant 0
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval langtons_ant 1
+  -- #guard_msgs in
+  -- #eval langtons_ant 1
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval langtons_ant 2
+  -- #guard_msgs in
+  -- #eval langtons_ant 2
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval langtons_ant 10
+  -- #guard_msgs in
+  -- #eval langtons_ant 10
   
-  /--
+  /-
   info: 20
   -/
-  #guard_msgs in
-  #eval langtons_ant 100
+  -- #guard_msgs in
+  -- #eval langtons_ant 100
 
 vc-postamble: |-
   -- Apps difficulty: introductory

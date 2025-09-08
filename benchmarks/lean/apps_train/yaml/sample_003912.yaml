@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You would like to get the 'weight' of a name by getting the sum of the ascii values. However you believe that capital letters should be worth more than mere lowercase letters. Spaces, numbers, or any other character are worth 0.
   
   Normally in ascii
@@ -17,6 +18,7 @@ vc-description: |-
       etc...
   
   For example Joe will have a weight of 254, instead of 286 using normal ascii values.
+  -/
 
 vc-preamble: |-
   def get_weight (s : String) : Nat :=
@@ -35,23 +37,23 @@ vc-theorems: |-
     get_weight s ≥ 0 :=
     sorry
   
-  /--
+  /-
   info: 254
   -/
-  #guard_msgs in
-  #eval get_weight "Joe"
+  -- #guard_msgs in
+  -- #eval get_weight "Joe"
   
-  /--
+  /-
   info: 1275
   -/
-  #guard_msgs in
-  #eval get_weight "George Washington"
+  -- #guard_msgs in
+  -- #eval get_weight "George Washington"
   
-  /--
+  /-
   info: 214
   -/
-  #guard_msgs in
-  #eval get_weight "R2D2"
+  -- #guard_msgs in
+  -- #eval get_weight "R2D2"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

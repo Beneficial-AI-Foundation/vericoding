@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   On a N * N grid, we place some 1 * 1 * 1 cubes that are axis-aligned with the x, y, and z axes.
   Each value v = grid[i][j] represents a tower of v cubes placed on top of grid cell (i, j).
   Now we view the projection of these cubes onto the xy, yz, and zx planes.
@@ -32,6 +33,7 @@ vc-description: |-
   
   1 <= grid.length = grid[0].length <= 50
   0 <= grid[i][j] <= 50
+  -/
 
 vc-preamble: |-
 
@@ -65,23 +67,23 @@ vc-theorems: |-
   theorem projection_area_single_cube (h : Nat) :
     projectionArea [[h]] = 2 * h + 1 := sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval projection_area [[2]]
+  -- #guard_msgs in
+  -- #eval projection_area [[2]]
   
-  /--
+  /-
   info: 17
   -/
-  #guard_msgs in
-  #eval projection_area [[1, 2], [3, 4]]
+  -- #guard_msgs in
+  -- #eval projection_area [[1, 2], [3, 4]]
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval projection_area [[1, 0], [0, 2]]
+  -- #guard_msgs in
+  -- #eval projection_area [[1, 0], [0, 2]]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

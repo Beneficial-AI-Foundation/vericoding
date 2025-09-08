@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are $n$ positive integers $a_1, a_2, \dots, a_n$. For the one move you can choose any even value $c$ and divide by two all elements that equal $c$.
   
   For example, if $a=[6,8,12,6,3,12]$ and you choose $c=6$, and $a$ is transformed into $a=[3,8,12,3,3,12]$ after the move.
@@ -42,6 +43,7 @@ vc-description: |-
     before making moves $a=[40, 6, 40, 3, 20, 1]$;  choose $c=6$;  now $a=[40, 3, 40, 3, 20, 1]$;  choose $c=40$;  now $a=[20, 3, 20, 3, 20, 1]$;  choose $c=20$;  now $a=[10, 3, 10, 3, 10, 1]$;  choose $c=10$;  now $a=[5, 3, 5, 3, 5, 1]$ — all numbers are odd. 
   
   Thus, all numbers became odd after $4$ moves. In $3$ or fewer moves, you cannot make them all odd.
+  -/
 
 vc-preamble: |-
 
@@ -63,29 +65,29 @@ vc-theorems: |-
     ∀ x ∈ min_moves_to_odd arrays, x ≥ 0 :=
     sorry
   
-  /--
+  /-
   info: [4]
   -/
-  #guard_msgs in
-  #eval min_moves_to_odd [[40, 6, 40, 3, 20, 1]]
+  -- #guard_msgs in
+  -- #eval min_moves_to_odd [[40, 6, 40, 3, 20, 1]]
   
-  /--
+  /-
   info: [10]
   -/
-  #guard_msgs in
-  #eval min_moves_to_odd [[1024]]
+  -- #guard_msgs in
+  -- #eval min_moves_to_odd [[1024]]
   
-  /--
+  /-
   info: [4]
   -/
-  #guard_msgs in
-  #eval min_moves_to_odd [[2, 4, 8, 16]]
+  -- #guard_msgs in
+  -- #eval min_moves_to_odd [[2, 4, 8, 16]]
   
-  /--
+  /-
   info: [0]
   -/
-  #guard_msgs in
-  #eval min_moves_to_odd [[3, 1, 7]]
+  -- #guard_msgs in
+  -- #eval min_moves_to_odd [[3, 1, 7]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

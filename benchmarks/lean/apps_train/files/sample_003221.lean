@@ -1,0 +1,46 @@
+/-
+Write a function that when given a URL as a string, parses out just the domain name and returns it as a string. For example:
+```python
+domain_name("http://github.com/carbonfive/raygun") == "github" 
+domain_name("http://www.zombie-bites.com") == "zombie-bites"
+domain_name("https://www.cnet.com") == "cnet"
+```
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def domain_name (url : String) : String := sorry
+
+theorem basic_domain_extraction :
+  domain_name "http://google.com" = "google" ∧
+  domain_name "http://www.zombie-bites.com" = "zombie-bites" ∧
+  domain_name "icann.org" = "icann" := sorry
+
+theorem domain_name_no_protocols (domain tld : String) :
+  let url := s!"http://www.{domain}.{tld}"
+  domain_name url ≠ "www" ∧
+  domain_name url ≠ "http" ∧
+  domain_name url ≠ "https" ∧
+  ¬(domain_name url).contains '.' := sorry
+
+/-
+info: 'google'
+-/
+-- #guard_msgs in
+-- #eval domain_name "http://google.com"
+
+/-
+info: 'zombie-bites'
+-/
+-- #guard_msgs in
+-- #eval domain_name "http://www.zombie-bites.com"
+
+/-
+info: 'icann'
+-/
+-- #guard_msgs in
+-- #eval domain_name "icann.org"
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

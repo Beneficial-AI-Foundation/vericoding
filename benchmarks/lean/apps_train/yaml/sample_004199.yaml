@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function 
   
   ```python
@@ -13,6 +14,7 @@ vc-description: |-
   vowel_2_index('') == ''
   ```
    Your function should be case insensitive to the vowels.
+  -/
 
 vc-preamble: |-
 
@@ -45,23 +47,23 @@ vc-theorems: |-
     (∀ c ∈ s.data, c = ' ' ∨ c = '.' ∨ c = ',' ∨ c = '!' ∨ c = '?') →
     vowel_2_index s = s := sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval vowel_2_index "this is my string"
+  -- #guard_msgs in
+  -- #eval vowel_2_index "this is my string"
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval vowel_2_index "Codewars is the best site in the world"
+  -- #guard_msgs in
+  -- #eval vowel_2_index "Codewars is the best site in the world"
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval vowel_2_index ""
+  -- #guard_msgs in
+  -- #eval vowel_2_index ""
 
 vc-postamble: |-
   -- Apps difficulty: introductory

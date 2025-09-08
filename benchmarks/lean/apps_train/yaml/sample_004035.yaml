@@ -1,5 +1,7 @@
 vc-description: |-
+  /-
   Given n number of people in a room, calculate the probability that any two people in that room have the same birthday (assume 365 days every year = ignore leap year). Answers should be two decimals unless whole (0 or 1) eg 0.05
+  -/
 
 vc-preamble: |-
 
@@ -26,23 +28,23 @@ vc-theorems: |-
   theorem decimal_places_bound (n : Int) (h1 : 2 ≤ n) (h2 : n ≤ 365) :
     ∃ k : Float, k = calculate_probability n ∧ k * 100 = Float.round (k * 100) := sorry
   
-  /--
+  /-
   info: 0.03
   -/
-  #guard_msgs in
-  #eval calculate_probability 5
+  -- #guard_msgs in
+  -- #eval calculate_probability 5
   
-  /--
+  /-
   info: 0.25
   -/
-  #guard_msgs in
-  #eval calculate_probability 15
+  -- #guard_msgs in
+  -- #eval calculate_probability 15
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval calculate_probability 1
+  -- #guard_msgs in
+  -- #eval calculate_probability 1
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Problem Statement=====
   Given a list of rational numbers,find their product.
   
@@ -27,6 +28,7 @@ vc-description: |-
   
   =====Output Format=====
   Print only one line containing the numerator and denominator of the product of the numbers in the list in its simplest form, i.e. numerator and denominator have no common divisor other than 1.
+  -/
 
 vc-preamble: |-
 
@@ -55,23 +57,23 @@ vc-theorems: |-
     (h: ¬∃ (x: Int × Nat), product [] = x):
     True := sorry
   
-  /--
+  /-
   info: (5, 8)
   -/
-  #guard_msgs in
-  #eval product [(1, 2), (3, 4), (10, 6)]
+  -- #guard_msgs in
+  -- #eval product [(1, 2), (3, 4), (10, 6)]
   
-  /--
+  /-
   info: (1, 1)
   -/
-  #guard_msgs in
-  #eval product [(1, 1)]
+  -- #guard_msgs in
+  -- #eval product [(1, 1)]
   
-  /--
+  /-
   info: (1, 1)
   -/
-  #guard_msgs in
-  #eval product [(2, 3), (3, 2)]
+  -- #guard_msgs in
+  -- #eval product [(2, 3), (3, 2)]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

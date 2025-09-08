@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You should write a function that takes a string and a positive integer `n`, splits the string into parts of length `n` and returns them in an array. It is ok for the last element to have less than `n` characters.
   
   If `n` is not a valid size (`> 0`) (or is absent), you should return an empty array.
@@ -13,6 +14,7 @@ vc-description: |-
   string_chunk('hello world', 3) # ['hel', 'lo ', 'wor', 'ld']
   string_chunk('sunny day', 0) # []
   ```
+  -/
 
 vc-preamble: |-
 
@@ -39,23 +41,23 @@ vc-theorems: |-
   theorem string_chunk_reconstructs_original (s : String) (n : Nat) (h : n > 0) :
     String.join (string_chunk s n) = s := sorry
   
-  /--
+  /-
   info: ['co', 'de', 'wa', 'rs']
   -/
-  #guard_msgs in
-  #eval string_chunk "codewars" 2
+  -- #guard_msgs in
+  -- #eval string_chunk "codewars" 2
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval string_chunk "hello" 0
+  -- #guard_msgs in
+  -- #eval string_chunk "hello" 0
   
-  /--
+  /-
   info: ['hi']
   -/
-  #guard_msgs in
-  #eval string_chunk "hi" 5
+  -- #guard_msgs in
+  -- #eval string_chunk "hi" 5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

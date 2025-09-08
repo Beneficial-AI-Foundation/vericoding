@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your task is to create function```isDivideBy``` (or ```is_divide_by```) to check if an integer number is divisible by each out of two arguments.
   
   A few cases:
@@ -15,6 +16,7 @@ vc-description: |-
   (15, -5, 3)   ->  true
   
   ```
+  -/
 
 vc-preamble: |-
 
@@ -38,23 +40,23 @@ vc-theorems: |-
   theorem divide_by_zero_error (n : Int) :
     is_divide_by n 0 1 = false ∧ is_divide_by n 1 0 = false := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_divide_by -12 2 -6
+  -- #guard_msgs in
+  -- #eval is_divide_by -12 2 -6
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_divide_by 45 1 6
+  -- #guard_msgs in
+  -- #eval is_divide_by 45 1 6
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_divide_by 15 -5 3
+  -- #guard_msgs in
+  -- #eval is_divide_by 15 -5 3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

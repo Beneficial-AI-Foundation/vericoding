@@ -1,5 +1,7 @@
 vc-description: |-
+  /-
   Complete the code which should return `true` if the given object is a single ASCII letter (lower or upper case), `false` otherwise.
+  -/
 
 vc-preamble: |-
 
@@ -20,35 +22,35 @@ vc-theorems: |-
   theorem letters_are_letters :
     ∀ c : Char, c.isAlpha → is_letter c.toString := sorry
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_letter ""
+  -- #guard_msgs in
+  -- #eval is_letter ""
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_letter "a"
+  -- #guard_msgs in
+  -- #eval is_letter "a"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_letter "X"
+  -- #guard_msgs in
+  -- #eval is_letter "X"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_letter "7"
+  -- #guard_msgs in
+  -- #eval is_letter "7"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_letter "ab"
+  -- #guard_msgs in
+  -- #eval is_letter "ab"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Karan's company makes software that provides different features based on the version of operating system of the user.
   
   For finding which version is more recent, Karan uses the following method:
@@ -34,6 +35,7 @@ vc-description: |-
   ```
   
   It can be assumed that version strings are non empty and only contain numeric literals and the character `'.'`.
+  -/
 
 vc-preamble: |-
 
@@ -66,23 +68,23 @@ vc-theorems: |-
     compareVersions v (v ++ ".0") = true ∧ compareVersions (v ++ ".0") v = true := by
     sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval compare_versions "11" "10"
+  -- #guard_msgs in
+  -- #eval compare_versions "11" "10"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval compare_versions "10.4.6" "10.4"
+  -- #guard_msgs in
+  -- #eval compare_versions "10.4.6" "10.4"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval compare_versions "10.4" "10.10"
+  -- #guard_msgs in
+  -- #eval compare_versions "10.4" "10.10"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

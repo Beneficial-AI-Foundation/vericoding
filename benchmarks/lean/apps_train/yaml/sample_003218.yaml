@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Hi there! 
   You have to implement the 
   
@@ -68,6 +69,7 @@ vc-description: |-
   
   #Also
   The task is really sapid and hard. If you're stuck - write to the discussion board, there are many smart people willing to help.
+  -/
 
 vc-preamble: |-
 
@@ -109,23 +111,23 @@ vc-theorems: |-
     ∀ n : Int, n > 0 →
     get_column_title n < get_column_title (n + 1) := sorry
   
-  /--
+  /-
   info: 'A'
   -/
-  #guard_msgs in
-  #eval get_column_title 1
+  -- #guard_msgs in
+  -- #eval get_column_title 1
   
-  /--
+  /-
   info: 'AZ'
   -/
-  #guard_msgs in
-  #eval get_column_title 52
+  -- #guard_msgs in
+  -- #eval get_column_title 52
   
-  /--
+  /-
   info: 'ZZ'
   -/
-  #guard_msgs in
-  #eval get_column_title 702
+  -- #guard_msgs in
+  -- #eval get_column_title 702
 
 vc-postamble: |-
   -- Apps difficulty: introductory

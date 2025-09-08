@@ -1,0 +1,77 @@
+/-
+Given a binary tree, return the vertical order traversal of its nodes values.
+For each node at position (X, Y), its left and right children respectively will be at positions (X-1, Y-1) and (X+1, Y-1).
+Running a vertical line from X = -infinity to X = +infinity, whenever the vertical line touches some nodes, we report the values of the nodes in order from top to bottom (decreasing Y coordinates).
+If two nodes have the same position, then the value of the node that is reported first is the value that is smaller.
+Return an list of non-empty reports in order of X coordinate.  Every report will have a list of values of nodes.
+
+Example 1:
+
+Input: [3,9,20,null,null,15,7]
+Output: [[9],[3,15],[20],[7]]
+Explanation: 
+Without loss of generality, we can assume the root node is at position (0, 0):
+Then, the node with value 9 occurs at position (-1, -1);
+The nodes with values 3 and 15 occur at positions (0, 0) and (0, -2);
+The node with value 20 occurs at position (1, -1);
+The node with value 7 occurs at position (2, -2).
+
+Example 2:
+
+Input: [1,2,3,4,5,6,7]
+Output: [[4],[2],[1,5,6],[3],[7]]
+Explanation: 
+The node with value 5 and the node with value 6 have the same position according to the given scheme.
+However, in the report "[1,5,6]", the node value of 5 comes first since 5 is smaller than 6.
+
+Note:
+
+The tree will have between 1 and 1000 nodes.
+Each node's value will be between 0 and 1000.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def vertical_traverse : Option TreeNode → List (List Int)
+  | none => []
+  | some _ => sorry
+
+theorem vertical_traverse_type_preservation (t : Option TreeNode) :
+  ∀ l ∈ vertical_traverse t, l.all (λ x => True) := by sorry
+
+theorem vertical_traverse_elements_integers (t : Option TreeNode) :
+  ∀ l ∈ vertical_traverse t, ∀ x ∈ l, True := by sorry
+
+theorem vertical_traverse_empty (t : Option TreeNode) :
+  t = none → vertical_traverse t = [] := by sorry
+
+theorem vertical_traverse_single_node (v : Int) :
+  vertical_traverse (some (TreeNode.mk v none none)) = [[v]] := by sorry
+
+theorem vertical_traverse_left_linear (v1 v2 v3 : Int) :
+  let t3 := TreeNode.mk v3 none none
+  let t2 := TreeNode.mk v2 (some t3) none
+  let t1 := TreeNode.mk v1 (some t2) none
+  vertical_traverse (some t1) = [[v3], [v2], [v1]] := by sorry
+
+theorem vertical_traverse_right_linear (v1 v2 v3 : Int) :
+  let t3 := TreeNode.mk v3 none none
+  let t2 := TreeNode.mk v2 none (some t3)
+  let t1 := TreeNode.mk v1 none (some t2)
+  vertical_traverse (some t1) = [[v1], [v2], [v3]] := by sorry
+
+/-
+info: [[9], [3, 15], [20], [7]]
+-/
+-- #guard_msgs in
+-- #eval vertical_traverse TreeNode(3)
+
+/-
+info: [[4], [2], [1, 5, 6], [3], [7]]
+-/
+-- #guard_msgs in
+-- #eval vertical_traverse TreeNode(1)
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

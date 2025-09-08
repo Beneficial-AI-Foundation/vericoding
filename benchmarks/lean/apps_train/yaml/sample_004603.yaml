@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The year is 2088 and the Radical Marxist Socialist People's Party (RMSPP) has just seized power in Brazil.
   
   Their first act in power is absolute wealth equality through coercive redistribution.
@@ -29,6 +30,7 @@ vc-description: |-
   - Wealth of citizen will an integer with minimum 0 (negative wealth not possible)
   
   - Handling of floating point error will not be tested
+  -/
 
 vc-preamble: |-
   def List.sum [Add α] : List α → α 

@@ -1,5 +1,7 @@
 vc-description: |-
+  /-
   Write function RemoveExclamationMarks which removes all exclamation marks from a given string.
+  -/
 
 vc-preamble: |-
   def countChars (s : String) (c : Char) : Nat := 
@@ -30,23 +32,23 @@ vc-theorems: |-
     remove_exclamation_marks s₁ ++ remove_exclamation_marks s₂ = 
     remove_exclamation_marks (s₁ ++ s₂) := by sorry
   
-  /--
+  /-
   info: 'Hello World'
   -/
-  #guard_msgs in
-  #eval remove_exclamation_marks "Hello World!"
+  -- #guard_msgs in
+  -- #eval remove_exclamation_marks "Hello World!"
   
-  /--
+  /-
   info: 'Hi Hello'
   -/
-  #guard_msgs in
-  #eval remove_exclamation_marks "Hi! Hello!"
+  -- #guard_msgs in
+  -- #eval remove_exclamation_marks "Hi! Hello!"
   
-  /--
+  /-
   info: 'Oh, no'
   -/
-  #guard_msgs in
-  #eval remove_exclamation_marks "Oh, no!!!"
+  -- #guard_msgs in
+  -- #eval remove_exclamation_marks "Oh, no!!!"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

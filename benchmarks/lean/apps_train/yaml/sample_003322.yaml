@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You have a grid with `$m$` rows and `$n$` columns. Return the number of unique ways that start from the top-left corner and go to the bottom-right corner. You are only allowed to move right and down.
   
   For example, in the below grid of `$2$` rows and `$3$` columns, there are `$10$` unique paths:
@@ -15,6 +16,7 @@ vc-description: |-
   
   ---
   *Hint: use mathematical permutation and combination*
+  -/
 
 vc-preamble: |-
 
@@ -41,23 +43,23 @@ vc-theorems: |-
   theorem numberOfRoutes_minimal :
     numberOfRoutes 1 1 = 2 := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval number_of_routes 1 1
+  -- #guard_msgs in
+  -- #eval number_of_routes 1 1
   
-  /--
+  /-
   info: 35
   -/
-  #guard_msgs in
-  #eval number_of_routes 3 4
+  -- #guard_msgs in
+  -- #eval number_of_routes 3 4
   
-  /--
+  /-
   info: 462
   -/
-  #guard_msgs in
-  #eval number_of_routes 5 6
+  -- #guard_msgs in
+  -- #eval number_of_routes 5 6
 
 vc-postamble: |-
   -- Apps difficulty: introductory

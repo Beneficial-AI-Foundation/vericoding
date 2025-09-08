@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In Chefland, there is a monthly robots competition. In the competition, a grid table of N rows and M columns will be used to place robots. A cell at row i and column j in the table is called cell (i, j). To join this competition, each player will bring two robots to compete and each robot will be placed at a cell in the grid table. Both robots will move at the same time from one cell to another until they meet at the same cell in the table. Of course they can not move outside the table. Each robot has a movable range. If a robot has movable range K, then in a single move, it can move from cell (x, y) to cell (i, j) provided (|i-x| + |j-y| <= K). However, there are some cells in the table that the robots can not stand at, and because of that, they can not move to these cells. The two robots with the minimum number of moves to be at the same cell will win the competition.
   
   Chef plans to join the competition and has two robots with the movable range K1 and K2, respectively. Chef does not know which cells in the table will be used to placed his 2 robots, but he knows that there are 2 cells (1, 1) and (1, M) that robots always can stand at. Therefore, he assumes that the first robot is at cell (1, 1) and the other is at cell (1, M). Chef wants you to help him to find the minimum number of moves that his two robots needed to be at the same cell and promises to give you a gift if he wins the competition. 
@@ -44,6 +45,7 @@ vc-description: |-
   -----Explanation-----
   Example case 1. Robot 1 can move (1, 1) -> (2, 1) -> (3, 1) -> (4, 1) -> (4, 2) -> (4, 3), and robot 2 can move (1, 4) -> (2, 4) -> (3, 4) -> (4, 4) -> (4, 3) -> (4, 3), they meet at cell (4, 3) after 5 moves.
   Example case 2. Because the movable range of both robots is 1, robot 1 can not move from (3, 1) to (4, 2), and robot 2 can not move from (3, 4) to (4, 3. Hence, they can not meet each other.
+  -/
 
 vc-preamble: |-
 
@@ -55,7 +57,7 @@ vc-definitions: |-
   def solve_robots_meeting (n m k1 k2 : Nat) (grid : Array (Array Nat)) : Int :=
     sorry
   
-  /-- Any valid result should be either -1 or non-negative -/
+  /- Any valid result should be either -1 or non-negative -/
 
 vc-theorems: |-
   theorem result_valid_range {n m k1 k2 : Nat} {grid : Array (Array Nat)} :
@@ -63,31 +65,31 @@ vc-theorems: |-
     result = -1 ∨ result ≥ 0 := by 
     sorry
   
-  /-- Trivial 1x1 grid case should return 0 -/
+  /- Trivial 1x1 grid case should return 0 -/
   
   theorem trivial_case : 
     let grid := #[#[0]]
     solve_robots_meeting 1 1 1 1 grid = 0 := by
     sorry
   
-  /-- Any valid result should not exceed grid dimensions -/
+  /- Any valid result should not exceed grid dimensions -/
   
   theorem result_bounds {n m k1 k2 : Nat} {grid : Array (Array Nat)} :
     let result := solve_robots_meeting n m k1 k2 grid
     result = -1 ∨ result ≤ n * m := by
     sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval solve_robots_meeting 4 4 1 1 #[[0, 1, 1, 0], [0, 1, 1, 0], [0, 1, 1, 0], [0, 0, 0, 0]]
+  -- #guard_msgs in
+  -- #eval solve_robots_meeting 4 4 1 1 #[[0, 1, 1, 0], [0, 1, 1, 0], [0, 1, 1, 0], [0, 0, 0, 0]]
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval solve_robots_meeting 4 4 1 1 #[[0, 1, 1, 0], [0, 1, 1, 0], [0, 1, 1, 0], [1, 0, 0, 1]]
+  -- #guard_msgs in
+  -- #eval solve_robots_meeting 4 4 1 1 #[[0, 1, 1, 0], [0, 1, 1, 0], [0, 1, 1, 0], [1, 0, 0, 1]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

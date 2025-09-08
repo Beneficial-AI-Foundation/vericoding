@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A simple string contains a large repetition of letters within it. This problem is related to string handling and manipulation.  An original message is sent from planet Earth to planet Cybertron in form of a string. However, the letter position and string size is not important. The number of time each letter has occurred in the string is important. So the original string which is sent to Cybertron is encrypted in the new string which comprises the letters followed by each time it has occurred in the original string. Eg- original message is- abcdabf. Then the encrypted string is- a2b2c1d1f1
   
   -----Input-----
@@ -13,6 +14,7 @@ vc-description: |-
   
   Output:
   i2n2f1o2r1m1a1t1
+  -/
 
 vc-preamble: |-
 
@@ -60,23 +62,23 @@ vc-theorems: |-
     encrypt_message "" = ""
     := sorry
   
-  /--
+  /-
   info: 'i2n2f1o2r1m1a1t1'
   -/
-  #guard_msgs in
-  #eval encrypt_message "information"
+  -- #guard_msgs in
+  -- #eval encrypt_message "information"
   
-  /--
+  /-
   info: 'a2b2c1d1f1'
   -/
-  #guard_msgs in
-  #eval encrypt_message "abcdabf"
+  -- #guard_msgs in
+  -- #eval encrypt_message "abcdabf"
   
-  /--
+  /-
   info: 'a3'
   -/
-  #guard_msgs in
-  #eval encrypt_message "aaa"
+  -- #guard_msgs in
+  -- #eval encrypt_message "aaa"
 
 vc-postamble: |-
   -- Apps difficulty: interview

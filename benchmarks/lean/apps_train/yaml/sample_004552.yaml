@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The [Floyd's triangle](https://en.wikipedia.org/wiki/Floyd%27s_triangle) is a right-angled triangular array of natural numbers listing them in order, in lines of increasing length, so a Floyds triangle of size 6 looks like:
   
   ```
@@ -28,6 +29,7 @@ vc-description: |-
   ## Constraints
   
   ### 1 <= n <= 10^(9)
+  -/
 
 vc-preamble: |-
 
@@ -63,23 +65,23 @@ vc-theorems: |-
     nth_floyd 4 = 3 :=
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval nth_floyd 3
+  -- #guard_msgs in
+  -- #eval nth_floyd 3
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval nth_floyd 17
+  -- #guard_msgs in
+  -- #eval nth_floyd 17
   
-  /--
+  /-
   info: 1000
   -/
-  #guard_msgs in
-  #eval nth_floyd 499502
+  -- #guard_msgs in
+  -- #eval nth_floyd 499502
 
 vc-postamble: |-
   -- Apps difficulty: introductory

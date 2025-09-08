@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a grid of size N x M consisting of '.' (empty), 'W' (white) or 'B' (black) cells. We follow the convention that the top left corner is the position (1,1) and bottom right corner is (N,M). 
   From every '.' cell (i, j), a ray is shot towards the right. If the ray reaches a 'B' cell, it loses it's strength fully and stops there. When a ray
   reaches a 'W' cell, it's strength drops drastically so that the  ray stops when it reaches a second 'W' cell. That is, if there is no 'B'
@@ -51,6 +52,7 @@ vc-description: |-
   
   -----Note:-----
   As the answer might be large, please use 64 bit integers (long long int in C/C++ and long in Java) instead of 32 bit int.
+  -/
 
 vc-preamble: |-
 
@@ -75,23 +77,23 @@ vc-theorems: |-
     solve_ray_grid 4 4 5 2 [1,3,2,1,3,2,3,3,4,3] [1,4,2,3] = 22 :=
   sorry
   
-  /--
+  /-
   info: 22
   -/
-  #guard_msgs in
-  #eval solve_ray_grid 4 4 5 2 [1, 3, 2, 1, 3, 2, 3, 3, 4, 3] [1, 4, 2, 3]
+  -- #guard_msgs in
+  -- #eval solve_ray_grid 4 4 5 2 [1, 3, 2, 1, 3, 2, 3, 3, 4, 3] [1, 4, 2, 3]
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval solve_ray_grid 2 2 0 0 [] []
+  -- #guard_msgs in
+  -- #eval solve_ray_grid 2 2 0 0 [] []
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval solve_ray_grid 2 3 0 1 [] [1, 2]
+  -- #guard_msgs in
+  -- #eval solve_ray_grid 2 3 0 1 [] [1, 2]
 
 vc-postamble: |-
   -- Apps difficulty: interview

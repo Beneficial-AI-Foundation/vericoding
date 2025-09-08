@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   
   Write a function named `sumEvenNumbers`, taking a sequence of numbers as single parameter. Your function must return the sum of **the even values** of this sequence.
@@ -9,6 +10,7 @@ vc-description: |-
   * sequence of numbers: those numbers could be integers and/or floats. 
   
   For example, considering this input value : `[4,3,1,2,5,10,6,7,9,8]`, then your function should return `30` (because `4 + 2 + 10 + 6 + 8 = 30`).
+  -/
 
 vc-preamble: |-
   def sumEvenNumbers (l : List Int) : Int :=
@@ -40,23 +42,23 @@ vc-theorems: |-
     sumEvenNumbers [] = 0 := by
     sorry
   
-  /--
+  /-
   info: 30
   -/
-  #guard_msgs in
-  #eval sum_even_numbers [4, 3, 1, 2, 5, 10, 6, 7, 9, 8]
+  -- #guard_msgs in
+  -- #eval sum_even_numbers [4, 3, 1, 2, 5, 10, 6, 7, 9, 8]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval sum_even_numbers []
+  -- #guard_msgs in
+  -- #eval sum_even_numbers []
   
-  /--
+  /-
   info: 14
   -/
-  #guard_msgs in
-  #eval sum_even_numbers [-16, -32, 20, 21, 41, 42]
+  -- #guard_msgs in
+  -- #eval sum_even_numbers [-16, -32, 20, 21, 41, 42]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

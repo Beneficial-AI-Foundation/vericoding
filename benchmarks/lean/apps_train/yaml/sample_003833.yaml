@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Complete the function that takes an array of words.
   
   You must concatenate the `n`th letter from each word to construct a new word which should be returned as a string, where `n` is the position of the word in the list.
@@ -12,6 +13,7 @@ vc-description: |-
   ```
   
   **Note:** Test cases contain valid input only - i.e. a string array or an empty array; and each word will have enough letters.
+  -/
 
 vc-preamble: |-
 
@@ -35,23 +37,23 @@ vc-theorems: |-
   theorem nth_char_empty_list :
     nth_char [] = "" := sorry
   
-  /--
+  /-
   info: 'yes'
   -/
-  #guard_msgs in
-  #eval nth_char ["yoda", "best", "has"]
+  -- #guard_msgs in
+  -- #eval nth_char ["yoda", "best", "has"]
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval nth_char []
+  -- #guard_msgs in
+  -- #eval nth_char []
   
-  /--
+  /-
   info: 'Codewars'
   -/
-  #guard_msgs in
-  #eval nth_char ["Chad", "Morocco", "India", "Algeria", "Botswana", "Bahamas", "Ecuador", "Micronesia"]
+  -- #guard_msgs in
+  -- #eval nth_char ["Chad", "Morocco", "India", "Algeria", "Botswana", "Bahamas", "Ecuador", "Micronesia"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

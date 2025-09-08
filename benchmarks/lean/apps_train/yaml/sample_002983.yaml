@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   From this lesson, we learn about JS static object: ```Math```. It mainly helps us to carry out mathematical calculations. It has a lot of properties and methods. Some of the properties and methods we rarely used. So we only learn some common methods.
   
   The properties of the Math object are some constants, such as PI, on behalf of the approximate value of pi. The usage is ```Math.PI```. I will no longer introduce one by one, please refer to the manual:
@@ -88,6 +89,7 @@ vc-description: |-
    - [#40: Regular Expression--"|", "[]" and "()"](http://www.codewars.com/kata/573d11c48b97c0ad970002d4)
    - [#41: Regular Expression--"\"](http://www.codewars.com/kata/573e6831e3201f6a9b000971)
    - [#42: Regular Expression--(?:), (?=) and (?!)](http://www.codewars.com/kata/573fb9223f9793e485000453)
+  -/
 
 vc-preamble: |-
   def roundIt (x : Float) : Int := sorry
@@ -125,23 +127,23 @@ vc-theorems: |-
   theorem round_it_integers (n : Int) :
     roundIt (Float.ofInt n) = n := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval round_it 3.45
+  -- #guard_msgs in
+  -- #eval round_it 3.45
   
-  /--
+  /-
   info: 34
   -/
-  #guard_msgs in
-  #eval round_it 34.5
+  -- #guard_msgs in
+  -- #eval round_it 34.5
   
-  /--
+  /-
   info: 35
   -/
-  #guard_msgs in
-  #eval round_it 34.56
+  -- #guard_msgs in
+  -- #eval round_it 34.56
 
 vc-postamble: |-
   -- Apps difficulty: introductory

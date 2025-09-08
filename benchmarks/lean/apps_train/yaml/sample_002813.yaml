@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function `getDrinkByProfession`/`get_drink_by_profession()` that receives as input parameter a string, and produces outputs according to the following table:
   
   Input
@@ -28,6 +29,7 @@ vc-description: |-
   Note: *anything else* is the default case: if the input to the function is not any of the values in the table, then the return value should be "Beer."
   
   Make sure you cover the cases where certain words do not show up with correct capitalization. For example, getDrinkByProfession("pOLitiCIaN") should still return "Your tax dollars".
+  -/
 
 vc-preamble: |-
 
@@ -68,23 +70,23 @@ vc-theorems: |-
              (profession, drink) ∈ known_professions) :=
   sorry
   
-  /--
+  /-
   info: 'Patron Tequila'
   -/
-  #guard_msgs in
-  #eval get_drink_by_profession "jabrOni"
+  -- #guard_msgs in
+  -- #eval get_drink_by_profession "jabrOni"
   
-  /--
+  /-
   info: 'Your tax dollars'
   -/
-  #guard_msgs in
-  #eval get_drink_by_profession "pOLiTiCIaN"
+  -- #guard_msgs in
+  -- #eval get_drink_by_profession "pOLiTiCIaN"
   
-  /--
+  /-
   info: 'Beer'
   -/
-  #guard_msgs in
-  #eval get_drink_by_profession "pundit"
+  -- #guard_msgs in
+  -- #eval get_drink_by_profession "pundit"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

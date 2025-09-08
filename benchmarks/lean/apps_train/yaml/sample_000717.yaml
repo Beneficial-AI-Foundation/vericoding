@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Gargi is thinking of a solution to a problem. Meanwhile, her friend asks her to solve another problem. Since Gargi is busy in her own problem, she seeks your help to solve the new problem.
   
   You are given a string S containing characters a-z (lower case letters) only. You need to change the string to a new string consisting of only one letter from a-z.
@@ -31,6 +32,7 @@ vc-description: |-
   
   -----Explanation-----
   Example case 1. The new string can be aaaa where you have +2 points at the end of string conversion or it can be bbbb where you have -2 points at the end of string conversion. Hence the output is 2.
+  -/
 
 vc-preamble: |-
   def minPointsForStringConversion (s : String) : Nat := sorry
@@ -68,23 +70,23 @@ vc-theorems: |-
   theorem minPoints_naive_bound (s : String) (h : s.length > 0) :
     minPointsForStringConversion s ≤ naiveLowerBound s := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_points_for_string_conversion "abba"
+  -- #guard_msgs in
+  -- #eval min_points_for_string_conversion "abba"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_points_for_string_conversion "a"
+  -- #guard_msgs in
+  -- #eval min_points_for_string_conversion "a"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_points_for_string_conversion "zzz"
+  -- #guard_msgs in
+  -- #eval min_points_for_string_conversion "zzz"
 
 vc-postamble: |-
   -- Apps difficulty: interview

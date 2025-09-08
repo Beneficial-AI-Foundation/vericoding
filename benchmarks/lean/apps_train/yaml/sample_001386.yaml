@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A prime number is number x which has only divisors as 1 and x itself.
   Harsh is playing a game with his friends, where his friends give him a few numbers claiming that they are divisors of some number x but divisor 1 and the number x itself are not being given as divisors.
   You need to help harsh find which number's divisors are given here.
@@ -39,6 +40,7 @@ vc-description: |-
   Query 1 : Divisors of 6 are ( 1,2,3,6) Therefore, Divisors except 1 and the number 6 itself are ( 2 , 3). Thus, ans = 6.
   Query 2 : Divisors of 8 are ( 1,2,4,8) Therefore, Divisors except 1 and the number 8 itself are ( 2 , 4). Thus, ans = 8.
   Query 3 : There is no such number x with only ( 1,2,3,12,x ) as the divisors.
+  -/
 
 vc-preamble: |-
 
@@ -56,23 +58,23 @@ vc-theorems: |-
     (h : original = divisors) :
     original = divisors := sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval find_number [2, 3]
+  -- #guard_msgs in
+  -- #eval find_number [2, 3]
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval find_number [4, 2]
+  -- #guard_msgs in
+  -- #eval find_number [4, 2]
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval find_number [12, 3, 2]
+  -- #guard_msgs in
+  -- #eval find_number [12, 3, 2]
 
 vc-postamble: |-
   -- Apps difficulty: interview

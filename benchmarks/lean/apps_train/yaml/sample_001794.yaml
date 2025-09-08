@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given the root of a binary tree, find the maximum value V for which there exists different nodes A and B where V = |A.val - B.val| and A is an ancestor of B.
   (A node A is an ancestor of B if either: any child of A is equal to B, or any child of A is an ancestor of B.)
   
@@ -18,6 +19,7 @@ vc-description: |-
   
   The number of nodes in the tree is between 2 and 5000.
   Each node will have value between 0 and 100000.
+  -/
 
 vc-preamble: |-
   def maxAncestorDiff : Option TreeNode → Int
@@ -57,23 +59,23 @@ vc-theorems: |-
     tree ≠ none →
     maxAncestorDiff tree ≤ (listMaximum (getAllValues tree) - listMinimum (getAllValues tree)) := sorry
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval maxAncestorDiff TreeNode(8)
+  -- #guard_msgs in
+  -- #eval maxAncestorDiff TreeNode(8)
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval maxAncestorDiff TreeNode(1)
+  -- #guard_msgs in
+  -- #eval maxAncestorDiff TreeNode(1)
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval maxAncestorDiff TreeNode(2)
+  -- #guard_msgs in
+  -- #eval maxAncestorDiff TreeNode(2)
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Task:
   This kata requires you to write an object that receives a file path 
   and does operations on it.
@@ -16,6 +17,7 @@ vc-description: |-
   >>> master.dirpath()
   '/Users/person1/Pictures/'
   ```
+  -/
 
 vc-preamble: |-
   def FileMaster.extension (fm: FileMaster) : String :=

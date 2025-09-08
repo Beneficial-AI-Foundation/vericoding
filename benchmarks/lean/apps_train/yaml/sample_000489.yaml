@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Implement a basic calculator to evaluate a simple expression string.
   
   The expression string contains only non-negative integers, +, -, *, / operators and empty spaces  . The integer division should truncate toward zero.
@@ -22,6 +23,7 @@ vc-description: |-
   
          You may assume that the given expression is always valid.
          Do not use the eval built-in library function.
+  -/
 
 vc-preamble: |-
 
@@ -49,23 +51,23 @@ vc-theorems: |-
     (h₁ : 1 ≤ a ∧ a ≤ 50) (h₂ : 1 ≤ b ∧ b ≤ 50) :
     calculate (toString a ++ "/" ++ toString b) = some (a / b) := sorry
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval calculate "3+2*2"
+  -- #guard_msgs in
+  -- #eval calculate "3+2*2"
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval calculate " 3/2 "
+  -- #guard_msgs in
+  -- #eval calculate " 3/2 "
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval calculate " 3+5 / 2 "
+  -- #guard_msgs in
+  -- #eval calculate " 3+5 / 2 "
 
 vc-postamble: |-
   -- Apps difficulty: interview

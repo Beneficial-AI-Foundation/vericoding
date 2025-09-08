@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   It is known that there are k fish species in the polar ocean, numbered from 1 to k. They are sorted by non-decreasing order of their weight, which is a positive number. Let the weight of the i-th type of fish be w_{i}, then 0 < w_1 ≤ w_2 ≤ ... ≤ w_{k} holds.
   
   Polar bears Alice and Bob each have caught some fish, and they are guessing who has the larger sum of weight of the fish he/she's caught. Given the type of the fish they've caught, determine whether it is possible that the fish caught by Alice has a strictly larger total weight than Bob's. In other words, does there exist a sequence of weights w_{i} (not necessary integers), such that the fish caught by Alice has a strictly larger total weight?
@@ -37,6 +38,7 @@ vc-description: |-
   In the first sample, if w_1 = 1, w_2 = 2, w_3 = 2.5,  then Alice has a total of 2 + 2 + 2 = 6 weight units, while Bob only has 1 + 1 + 2.5 = 4.5.
   
   In the second sample, the fish that Alice caught is a subset of Bob's. Therefore, the total weight of Bob’s fish is always not less than the total weight of Alice’s fish.
+  -/
 
 vc-preamble: |-
 
@@ -83,23 +85,23 @@ vc-theorems: |-
     solve_fish_weights 1 1 k [2] [1] = "YES" ∧
     solve_fish_weights 1 1 k [1] [2] = "NO" := sorry
   
-  /--
+  /-
   info: 'YES'
   -/
-  #guard_msgs in
-  #eval solve_fish_weights 3 3 3 [2, 2, 2] [1, 1, 3]
+  -- #guard_msgs in
+  -- #eval solve_fish_weights 3 3 3 [2, 2, 2] [1, 1, 3]
   
-  /--
+  /-
   info: 'NO'
   -/
-  #guard_msgs in
-  #eval solve_fish_weights 4 7 9 [5, 2, 7, 3] [3, 5, 2, 7, 3, 8, 7]
+  -- #guard_msgs in
+  -- #eval solve_fish_weights 4 7 9 [5, 2, 7, 3] [3, 5, 2, 7, 3, 8, 7]
   
-  /--
+  /-
   info: 'YES'
   -/
-  #guard_msgs in
-  #eval solve_fish_weights 1 1 1000000000 [502700350] [502700349]
+  -- #guard_msgs in
+  -- #eval solve_fish_weights 1 1 1000000000 [502700350] [502700349]
 
 vc-postamble: |-
   -- Apps difficulty: competition

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ### Background
   
   We **all** know about "balancing parentheses" (plus brackets, braces and chevrons) and even balancing characters that are identical.  
@@ -28,6 +29,7 @@ vc-description: |-
   is_balanced("Sensei says 'yes'!", "''")       # => True
   is_balanced("Sensei say's no!", "''")         # => False
   ```
+  -/
 
 vc-preamble: |-
   def count_char (s : String) (c : Char) : Nat := sorry
@@ -58,23 +60,23 @@ vc-theorems: |-
     ∀ (p : Nat), p ≤ s.length → 
       count_char (take_prefix s p) '(' ≥ count_char (take_prefix s p) ')' := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_balanced "(Sensei says yes!)" "()"
+  -- #guard_msgs in
+  -- #eval is_balanced "(Sensei says yes!)" "()"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_balanced "(Sensei says no!" "()"
+  -- #guard_msgs in
+  -- #eval is_balanced "(Sensei says no!" "()"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_balanced "-Hello Mother can you hear me?-" "--"
+  -- #guard_msgs in
+  -- #eval is_balanced "-Hello Mother can you hear me?-" "--"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

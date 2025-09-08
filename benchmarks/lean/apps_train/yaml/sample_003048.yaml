@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Complete the solution so that it reverses all of the words within the string passed in. 
   
   Example:
@@ -7,6 +8,7 @@ vc-description: |-
   reverseWords("The greatest victory is that which requires no battle")
   // should return "battle no requires which that is victory greatest The"
   ```
+  -/
 
 vc-preamble: |-
 
@@ -34,23 +36,23 @@ vc-theorems: |-
   theorem reverseWords_multiple_spaces :
     reverseWords "a  b  c" = "c  b  a" := sorry
   
-  /--
+  /-
   info: 'world! hello'
   -/
-  #guard_msgs in
-  #eval reverseWords "hello world!"
+  -- #guard_msgs in
+  -- #eval reverseWords "hello world!"
   
-  /--
+  /-
   info: 'battle no requires which that is victory greatest The'
   -/
-  #guard_msgs in
-  #eval reverseWords "The greatest victory is that which requires no battle"
+  -- #guard_msgs in
+  -- #eval reverseWords "The greatest victory is that which requires no battle"
   
-  /--
+  /-
   info: 'abc'
   -/
-  #guard_msgs in
-  #eval reverseWords "abc"
+  -- #guard_msgs in
+  -- #eval reverseWords "abc"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ###BACKGROUND:
   Jacob recently decided to get healthy and lose some weight. He did a lot of reading and research and after focusing on steady exercise and a healthy diet for several months, was able to shed over 50 pounds! Now he wants to share his success, and has decided to tell his friends and family how much weight they could expect to lose if they used the same plan he followed.
   
@@ -20,6 +21,7 @@ vc-description: |-
   Weights (both input and output) should be decimals, rounded to the nearest tenth.
   Duration (input) should be a whole number (integer). If it is not, the function should round to the nearest whole number.
   When doing input parameter validity checks, evaluate them in order or your code will not pass final tests.
+  -/
 
 vc-preamble: |-
   def lose_weight (gender : Gender) (weight : Float) (duration : Nat) : String ⊕ Float := sorry
@@ -77,35 +79,35 @@ vc-theorems: |-
   
   end LoseWeight
   
-  /--
+  /-
   info: 231.8
   -/
-  #guard_msgs in
-  #eval lose_weight "M" 250 5
+  -- #guard_msgs in
+  -- #eval lose_weight "M" 250 5
   
-  /--
+  /-
   info: 172.5
   -/
-  #guard_msgs in
-  #eval lose_weight "F" 190 8
+  -- #guard_msgs in
+  -- #eval lose_weight "F" 190 8
   
-  /--
+  /-
   info: 'Invalid gender'
   -/
-  #guard_msgs in
-  #eval lose_weight "X" 200 10
+  -- #guard_msgs in
+  -- #eval lose_weight "X" 200 10
   
-  /--
+  /-
   info: 'Invalid weight'
   -/
-  #guard_msgs in
-  #eval lose_weight "M" -5 10
+  -- #guard_msgs in
+  -- #eval lose_weight "M" -5 10
   
-  /--
+  /-
   info: 'Invalid duration'
   -/
-  #guard_msgs in
-  #eval lose_weight "F" 160 0
+  -- #guard_msgs in
+  -- #eval lose_weight "F" 160 0
 
 vc-postamble: |-
   -- Apps difficulty: introductory

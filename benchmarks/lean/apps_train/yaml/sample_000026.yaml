@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a special jigsaw puzzle consisting of $n\cdot m$ identical pieces. Every piece has three tabs and one blank, as pictured below. $\{3$ 
   
   The jigsaw puzzle is considered solved if the following conditions hold:  The pieces are arranged into a grid with $n$ rows and $m$ columns.  For any two pieces that share an edge in the grid, a tab of one piece fits perfectly into a blank of the other piece. 
@@ -34,6 +35,7 @@ vc-description: |-
   For the second test case, we can show that no solution exists.
   
   For the third test case, this is an example solution: $\left\{\begin{array}{l}{3} \\{3} \end{array} \right\}$
+  -/
 
 vc-preamble: |-
 
@@ -57,23 +59,23 @@ vc-theorems: |-
   theorem solve_jigsaw_large_grids (n m : Nat) :
     n ≥ 3 → m ≥ 3 → solve_jigsaw n m = false := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval solve_jigsaw 1 3
+  -- #guard_msgs in
+  -- #eval solve_jigsaw 1 3
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval solve_jigsaw 100000 100000
+  -- #guard_msgs in
+  -- #eval solve_jigsaw 100000 100000
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval solve_jigsaw 2 2
+  -- #guard_msgs in
+  -- #eval solve_jigsaw 2 2
 
 vc-postamble: |-
   -- Apps difficulty: interview

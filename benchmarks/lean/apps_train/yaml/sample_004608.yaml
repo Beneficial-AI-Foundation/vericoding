@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You need to create a function that will validate if given parameters are valid geographical coordinates.
   
   Valid coordinates look like the following: __"23.32353342, -32.543534534"__.
@@ -28,6 +29,7 @@ vc-description: |-
   * 6.325624, 43.34345.345
   * 0, 1,2
   * 0.342q0832, 1.2324
+  -/
 
 vc-preamble: |-
 
@@ -70,41 +72,41 @@ vc-theorems: |-
     is_valid_coordinates "23e4, 45" = false :=
   sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_valid_coordinates "4, -3"
+  -- #guard_msgs in
+  -- #eval is_valid_coordinates "4, -3"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_valid_coordinates "-23, 25"
+  -- #guard_msgs in
+  -- #eval is_valid_coordinates "-23, 25"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_valid_coordinates "24.53525235, 23.45235"
+  -- #guard_msgs in
+  -- #eval is_valid_coordinates "24.53525235, 23.45235"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_valid_coordinates "23.234, - 23.4234"
+  -- #guard_msgs in
+  -- #eval is_valid_coordinates "23.234, - 23.4234"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_valid_coordinates "99.234, 12.324"
+  -- #guard_msgs in
+  -- #eval is_valid_coordinates "99.234, 12.324"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_valid_coordinates "0.342q0832, 1.2324"
+  -- #guard_msgs in
+  -- #eval is_valid_coordinates "0.342q0832, 1.2324"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

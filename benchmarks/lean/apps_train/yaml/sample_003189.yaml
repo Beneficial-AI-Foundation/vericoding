@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Kata Task
   
   Given a list of random integers, return the Three Amigos.
@@ -26,6 +27,7 @@ vc-description: |-
   * ex3
    * Input = ```[2, 4, 5, 3, 6, 3, 1, 56, 7, 6, 3, 12]```
    * Result = ```[]```
+  -/
 
 vc-preamble: |-
   def threeAmigos (nums : List Int) : List Int := sorry
@@ -59,23 +61,23 @@ vc-theorems: |-
       (∀ j, j ∈ [nums[i]!, nums[i+1]!, nums[i+2]!] → j % 2 = nums[i]! % 2) →
       (list_max result - list_min result) ≤ (nums[i+2]! - nums[i]!)) := sorry
   
-  /--
+  /-
   info: [5, 3, 5]
   -/
-  #guard_msgs in
-  #eval three_amigos [1, 2, 34, 2, 1, 5, 3, 5, 7, 234, 2, 1]
+  -- #guard_msgs in
+  -- #eval three_amigos [1, 2, 34, 2, 1, 5, 3, 5, 7, 234, 2, 1]
   
-  /--
+  /-
   info: [2, 2, 2]
   -/
-  #guard_msgs in
-  #eval three_amigos [2, 4, 6, 8, 10, 2, 2, 2, 1, 1, 1, 5, 3]
+  -- #guard_msgs in
+  -- #eval three_amigos [2, 4, 6, 8, 10, 2, 2, 2, 1, 1, 1, 5, 3]
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval three_amigos [2, 4, 5, 3, 6, 3, 1, 56, 7, 6, 3, 12]
+  -- #guard_msgs in
+  -- #eval three_amigos [2, 4, 5, 3, 6, 3, 1, 56, 7, 6, 3, 12]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

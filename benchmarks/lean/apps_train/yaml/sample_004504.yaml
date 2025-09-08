@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write function toAcronym which takes a string and make an acronym of it.
   
   Rule of making acronym in this kata:
@@ -11,6 +12,7 @@ vc-description: |-
   Eg:
   
   Code wars -> C, w -> C W -> CW
+  -/
 
 vc-preamble: |-
 
@@ -37,23 +39,23 @@ vc-theorems: |-
     to_acronym s = ""
   := sorry
   
-  /--
+  /-
   info: 'CW'
   -/
-  #guard_msgs in
-  #eval to_acronym "Code wars"
+  -- #guard_msgs in
+  -- #eval to_acronym "Code wars"
   
-  /--
+  /-
   info: 'HW'
   -/
-  #guard_msgs in
-  #eval to_acronym "Hello world"
+  -- #guard_msgs in
+  -- #eval to_acronym "Hello world"
   
-  /--
+  /-
   info: 'PIA'
   -/
-  #guard_msgs in
-  #eval to_acronym "Python is awesome"
+  -- #guard_msgs in
+  -- #eval to_acronym "Python is awesome"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

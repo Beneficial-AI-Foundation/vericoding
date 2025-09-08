@@ -1,9 +1,11 @@
 vc-description: |-
+  /-
   Sort the given strings in alphabetical order, case **insensitive**. For example:
   ```
   ["Hello", "there", "I'm", "fine"]  -->  ["fine", "Hello", "I'm", "there"]
   ["C", "d", "a", "B"])              -->  ["a", "B", "C", "d"]
   ```
+  -/
 
 vc-preamble: |-
 
@@ -37,23 +39,23 @@ vc-theorems: |-
   theorem sortme_idempotent (words : List String) :
     sortme (sortme words) = sortme words := sorry
   
-  /--
+  /-
   info: ['fine', 'Hello', "I'm", 'there']
   -/
-  #guard_msgs in
-  #eval sortme ["Hello", "there", "I"m", "fine"]
+  -- #guard_msgs in
+  -- #eval sortme ["Hello", "there", "I"m", "fine"]
   
-  /--
+  /-
   info: ['a', 'B', 'C', 'd']
   -/
-  #guard_msgs in
-  #eval sortme ["C", "d", "a", "B"]
+  -- #guard_msgs in
+  -- #eval sortme ["C", "d", "a", "B"]
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval sortme []
+  -- #guard_msgs in
+  -- #eval sortme []
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array nums containing n + 1 integers where each integer is between 1 and n (inclusive), prove that at least one duplicate number must exist. Assume that there is only one duplicate number, find the duplicate one.
   
   Example 1:
@@ -17,6 +18,7 @@ vc-description: |-
          You must use only constant, O(1) extra space.
          Your runtime complexity should be less than O(n2).
          There is only one duplicate number in the array, but it could be repeated more than once.
+  -/
 
 vc-preamble: |-
 
@@ -50,23 +52,23 @@ vc-theorems: |-
   theorem findsInLargerList :
     findDuplicate [1, 2, 3, 4, 5, 6, 7, 8, 9, 5] = some 5 := by sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_duplicate [1, 3, 4, 2, 2]
+  -- #guard_msgs in
+  -- #eval find_duplicate [1, 3, 4, 2, 2]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_duplicate [3, 1, 3, 4, 2]
+  -- #guard_msgs in
+  -- #eval find_duplicate [3, 1, 3, 4, 2]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_duplicate [2, 2, 2, 2, 2]
+  -- #guard_msgs in
+  -- #eval find_duplicate [2, 2, 2, 2, 2]
 
 vc-postamble: |-
   -- Apps difficulty: interview

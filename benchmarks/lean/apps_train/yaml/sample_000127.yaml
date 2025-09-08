@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array A of positive integers, A[i] represents the value of the i-th sightseeing spot, and two sightseeing spots i and j have distance j - i between them.
   The score of a pair (i < j) of sightseeing spots is (A[i] + A[j] + i - j) : the sum of the values of the sightseeing spots, minus the distance between them.
   Return the maximum score of a pair of sightseeing spots.
@@ -12,6 +13,7 @@ vc-description: |-
   
   2 <= A.length <= 50000
   1 <= A[i] <= 1000
+  -/
 
 vc-preamble: |-
 
@@ -40,23 +42,23 @@ vc-theorems: |-
     values = [1,1] → max_score_sightseeing_pair values = 1 :=
     sorry
   
-  /--
+  /-
   info: 11
   -/
-  #guard_msgs in
-  #eval max_score_sightseeing_pair [8, 1, 5, 2, 6]
+  -- #guard_msgs in
+  -- #eval max_score_sightseeing_pair [8, 1, 5, 2, 6]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval max_score_sightseeing_pair [1, 2]
+  -- #guard_msgs in
+  -- #eval max_score_sightseeing_pair [1, 2]
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval max_score_sightseeing_pair [5, 5, 5, 5]
+  -- #guard_msgs in
+  -- #eval max_score_sightseeing_pair [5, 5, 5, 5]
 
 vc-postamble: |-
   -- Apps difficulty: interview

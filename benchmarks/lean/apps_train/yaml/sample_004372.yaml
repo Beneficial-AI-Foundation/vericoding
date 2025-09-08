@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The goal of this Kata is to reduce the passed integer to a single digit (if not already) by converting the number to binary, taking the sum of the binary digits, and if that sum is not a single digit then repeat the process.
   
   - n will be an integer such that 0 < n < 10^20
@@ -19,6 +20,7 @@ vc-description: |-
   16 --> (binary) 10000
   10000 --> (sum of binary digits) 1
   ```
+  -/
 
 vc-preamble: |-
 
@@ -43,23 +45,23 @@ vc-theorems: |-
     single_digit n = n :=
     sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval single_digit 5
+  -- #guard_msgs in
+  -- #eval single_digit 5
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval single_digit 999
+  -- #guard_msgs in
+  -- #eval single_digit 999
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval single_digit 1234444123
+  -- #guard_msgs in
+  -- #eval single_digit 1234444123
 
 vc-postamble: |-
   -- Apps difficulty: introductory

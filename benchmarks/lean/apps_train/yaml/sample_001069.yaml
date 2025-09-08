@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef Ada is preparing $N$ dishes (numbered $1$ through $N$). For each valid $i$, it takes $C_i$ minutes to prepare the $i$-th dish. The dishes can be prepared in any order.
   Ada has a kitchen with two identical burners. For each valid $i$, to prepare the $i$-th dish, she puts it on one of the burners and after $C_i$ minutes, removes it from this burner; the dish may not be removed from the burner before those $C_i$ minutes pass, because otherwise it cools down and gets spoiled. Any two dishes may be prepared simultaneously, however, no two dishes may be on the same burner at the same time. Ada may remove a dish from a burner and put another dish on the same burner at the same time.
   What is the minimum time needed to prepare all dishes, i.e. reach the state where all dishes are prepared?
@@ -38,6 +39,7 @@ vc-description: |-
   Example case 1: Place the first two dishes on the burners, wait for two minutes, remove both dishes and prepare the last one on one burner.
   Example case 2: Place the first and third dish on the burners. When the first dish is prepared, remove it and put the second dish on the same burner.
   Example case 3: Place the third and fourth dish on the burners. When the third dish is prepared, remove it and put the second dish on the same burner. Similarly, replace the fourth dish (when it is prepared) by the first dish on the other burner.
+  -/
 
 vc-preamble: |-
   def min_cooking_time (n: Nat) (times: List Nat) : Nat :=
@@ -84,23 +86,23 @@ vc-theorems: |-
     min_cooking_time 1 times = list_maximum times := by
     sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval min_cooking_time 3 [2, 2, 2]
+  -- #guard_msgs in
+  -- #eval min_cooking_time 3 [2, 2, 2]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval min_cooking_time 3 [1, 2, 3]
+  -- #guard_msgs in
+  -- #eval min_cooking_time 3 [1, 2, 3]
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval min_cooking_time 4 [2, 3, 4, 5]
+  -- #guard_msgs in
+  -- #eval min_cooking_time 4 [2, 3, 4, 5]
 
 vc-postamble: |-
   -- Apps difficulty: interview

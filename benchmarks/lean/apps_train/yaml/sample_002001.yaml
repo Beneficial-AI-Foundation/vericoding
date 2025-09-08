@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Sereja has a bracket sequence s_1, s_2, ..., s_{n}, or, in other words, a string s of length n, consisting of characters "(" and ")".
   
   Sereja needs to answer m queries, each of them is described by two integers l_{i}, r_{i} (1 ≤ l_{i} ≤ r_{i} ≤ n). The answer to the i-th query is the length of the maximum correct bracket subsequence of sequence s_{l}_{i}, s_{l}_{i} + 1, ..., s_{r}_{i}. Help Sereja answer all queries.
@@ -43,6 +44,7 @@ vc-description: |-
   For the third query required sequence will be «()».
   
   For the fourth query required sequence will be «()(())(())».
+  -/
 
 vc-preamble: |-
   def next_pow_2 (n: Nat) : Nat := sorry

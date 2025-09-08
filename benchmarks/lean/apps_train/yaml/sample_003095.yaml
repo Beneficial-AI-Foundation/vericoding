@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Let's take an integer number, ``` start``` and let's do the iterative process described below:
   
   - we take its digits and raise each of them to a certain power, ```n```, and add all those values up. (result = ```r1```)
@@ -44,6 +45,7 @@ vc-description: |-
   100 * n ≤ k ≤ 200 * n
   ```
   Do your best!
+  -/
 
 vc-preamble: |-
 

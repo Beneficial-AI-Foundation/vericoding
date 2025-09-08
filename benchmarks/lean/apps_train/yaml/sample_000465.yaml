@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given the array nums consisting of n positive integers. You computed the sum of all non-empty continous subarrays from the array and then sort them in non-decreasing order, creating a new array of n * (n + 1) / 2 numbers.
   Return the sum of the numbers from index left to index right (indexed from 1), inclusive, in the new array. Since the answer can be a huge number return it modulo 10^9 + 7.
   
@@ -22,6 +23,7 @@ vc-description: |-
   nums.length == n
   1 <= nums[i] <= 100
   1 <= left <= right <= n * (n + 1) / 2
+  -/
 
 vc-preamble: |-
   def range_sum (nums : List Nat) (n : Nat) (left right : Nat) : Nat :=
@@ -80,23 +82,23 @@ vc-theorems: |-
     range_sum nums n 1 1 = listMin nums :=
   sorry
   
-  /--
+  /-
   info: 13
   -/
-  #guard_msgs in
-  #eval range_sum [1, 2, 3, 4] 4 1 5
+  -- #guard_msgs in
+  -- #eval range_sum [1, 2, 3, 4] 4 1 5
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval range_sum [1, 2, 3, 4] 4 3 4
+  -- #guard_msgs in
+  -- #eval range_sum [1, 2, 3, 4] 4 3 4
   
-  /--
+  /-
   info: 50
   -/
-  #guard_msgs in
-  #eval range_sum [1, 2, 3, 4] 4 1 10
+  -- #guard_msgs in
+  -- #eval range_sum [1, 2, 3, 4] 4 1 10
 
 vc-postamble: |-
   -- Apps difficulty: interview

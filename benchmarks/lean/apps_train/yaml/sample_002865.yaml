@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    Given an integer `n`, find the maximal number you can obtain by deleting exactly one digit of the given number.
   
@@ -15,6 +16,7 @@ vc-description: |-
       Constraints: `10 ≤ n ≤ 1000000.`
   
    - `[output]` an integer
+  -/
 
 vc-preamble: |-
   def delete_digit (n : Nat) : Nat :=
@@ -41,23 +43,23 @@ vc-theorems: |-
     delete_digit n ≥ 0 :=
     sorry
   
-  /--
+  /-
   info: 52
   -/
-  #guard_msgs in
-  #eval delete_digit 152
+  -- #guard_msgs in
+  -- #eval delete_digit 152
   
-  /--
+  /-
   info: 101
   -/
-  #guard_msgs in
-  #eval delete_digit 1001
+  -- #guard_msgs in
+  -- #eval delete_digit 1001
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval delete_digit 10
+  -- #guard_msgs in
+  -- #eval delete_digit 10
 
 vc-postamble: |-
   -- Apps difficulty: introductory

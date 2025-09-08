@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are k sensors located in the rectangular room of size n × m meters. The i-th sensor is located at point (x_{i}, y_{i}). All sensors are located at distinct points strictly inside the rectangle. 
   
   Opposite corners of the room are located at points (0, 0) and (n, m). Walls of the room are parallel to coordinate axes.
@@ -70,6 +71,7 @@ vc-description: |-
   In the first sample, the ray will consequently pass through the points (0, 0), (1, 1), (2, 2), (3, 3). Thus, it will stop at the point (3, 3) after 3 seconds. [Image] 
   
   In the second sample, the ray will consequently pass through the following points: (0, 0), (1, 1), (2, 2), (3, 3), (2, 4), (1, 3), (0, 2), (1, 1), (2, 0), (3, 1), (2, 2), (1, 3), (0, 4). The ray will stop at the point (0, 4) after 12 seconds. It will reflect at the points (3, 3), (2, 4), (0, 2), (2, 0) and (3, 1). [Image]
+  -/
 
 vc-preamble: |-
 

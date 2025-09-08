@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Function Descriptions=====
   One of the built-in functions of Python is divmod, which takes two arguments a and b and returns a tuple containing the quotient of first and then the remainder.
   
@@ -20,6 +21,7 @@ vc-description: |-
   
   =====Output Format=====
   Print the result as described above.
+  -/
 
 vc-preamble: |-
 

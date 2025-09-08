@@ -1,5 +1,7 @@
 vc-description: |-
+  /-
   You're given a mystery `puzzlebox` object. Examine it to make the tests pass and solve this kata.
+  -/
 
 vc-preamble: |-
 
@@ -16,11 +18,11 @@ vc-theorems: |-
     answer d = 42 :=
     sorry
   
-  /--
+  /-
   info: 42
   -/
-  #guard_msgs in
-  #eval answer {}
+  -- #guard_msgs in
+  -- #eval answer {}
 
 vc-postamble: |-
   -- Apps difficulty: introductory

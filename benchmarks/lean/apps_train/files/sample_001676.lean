@@ -1,0 +1,109 @@
+/-
+This calculator takes values that could be written in a browsers route path as a single string. It then returns the result as a number (or an error message).
+
+Route paths use the '/' symbol so this can't be in our calculator. Instead we are using the '$' symbol as our divide operator.
+
+You will be passed a string of any length containing numbers and operators:
+
+* '+' = add        
+* '-' = subtract  
+* '*' = multiply 
+* '$' = divide   
+
+Your task is to break the string down and calculate the expression using this order of operations. (division => multiplication => subtraction => addition)
+
+If you are given an invalid input (i.e. any character except `.0123456789+-*$`) you should return the error message:`'400: Bad request'`
+
+### Remember:
+
+1. Operations are infinite
+2. Order of operations is imperitive
+3. No `eval` or equivalent functions
+
+**Examples:**
+```python
+calculate('1+1')     => '2'
+calculate('10$2')    => '5'
+calculate('1.5*3')   => '4.5'
+
+calculate('5+5+5+5') => '20'
+
+calculate('1000$2.5$5+5-5+6$6') =>'81'
+
+calculate('10-9p')   =>  '400: Bad request'
+```
+
+### Further Notes - Parameters outside of this challenge:
+
+- Brackets e.g. 10*(1+2)
+- Square root, log, % or any other operators
+- Unary minus (10*-1)
+- Bad mathematical input (10**$10 or 5+5$)
+- You may have to deal with floats
+
+If enjoy this and want something harder please see http://www.codewars.com/kata/evaluate-mathematical-expression/ for making a much more complicated calculator. This is a good kata leading up to that.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def calculate (expr : String) : String := sorry
+
+theorem basic_operations 
+  (x y : Float) (op : Char) 
+  (h1 : 0.1 ≤ x ∧ x ≤ 100)
+  (h2 : 0.1 ≤ y ∧ y ≤ 100) 
+  (h3 : op = '+' ∨ op = '-' ∨ op = '*' ∨ op = '$') :
+  let expr := toString x ++ toString op ++ toString y
+  let result := calculate expr
+  match op with
+  | '+' => result = toString (x + y)
+  | '-' => result = toString (x - y) 
+  | '*' => result = toString (x * y)
+  | '$' => result = toString (x / y)
+  | _ => False
+  := sorry
+
+theorem invalid_chars
+  (s : String)
+  (h : ∀ c ∈ s.data, c ∉ ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '-', '*', '$', '.']) :
+  calculate (String.append "1" (String.append s "1")) = "400: Bad request" := sorry
+
+theorem simple_cases :
+  calculate "0" = "0.0" ∧
+  calculate "1.5*2" = "3.0" ∧
+  calculate "10+5" = "15.0" ∧
+  calculate "10-5" = "5.0" := sorry
+
+/-
+info: '2.0'
+-/
+-- #guard_msgs in
+-- #eval calculate "1+1"
+
+/-
+info: '5.0'
+-/
+-- #guard_msgs in
+-- #eval calculate "10$2"
+
+/-
+info: '4.5'
+-/
+-- #guard_msgs in
+-- #eval calculate "1.5*3"
+
+/-
+info: '81.0'
+-/
+-- #guard_msgs in
+-- #eval calculate "1000$2.5$5+5-5+6$6"
+
+/-
+info: '400: Bad request'
+-/
+-- #guard_msgs in
+-- #eval calculate "10-9p"
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

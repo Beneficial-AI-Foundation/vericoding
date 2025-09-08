@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Lesha plays the recently published new version of the legendary game hacknet. In this version character skill mechanism was introduced. Now, each player character has exactly n skills. Each skill is represented by a non-negative integer a_{i} — the current skill level. All skills have the same maximum level A.
   
   Along with the skills, global ranking of all players was added. Players are ranked according to the so-called Force. The Force of a player is the sum of the following values:  The number of skills that a character has perfected (i.e., such that a_{i} = A), multiplied by coefficient c_{f}. The minimum skill level among all skills (min a_{i}), multiplied by coefficient c_{m}. 
@@ -39,6 +40,7 @@ vc-description: |-
   In the first test the optimal strategy is to increase the second skill to its maximum, and increase the two others by 1.
   
   In the second test one should increase all skills to maximum.
+  -/
 
 vc-preamble: |-
   def solve_hacknet (n A cf cm m : Nat) (skills : List Nat) : Nat × List Nat :=

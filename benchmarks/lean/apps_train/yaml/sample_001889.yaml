@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   S and T are strings composed of lowercase letters. In S, no letter occurs more than once.
   
   S was sorted in some custom order previously. We want to permute the characters of T so that they match the order that S was sorted. More specifically, if x occurs before y in S, then x should occur before y in the returned string.
@@ -19,6 +20,7 @@ vc-description: |-
          S has length at most 26, and no character is repeated in S.
          T has length at most 200.
          S and T consist of lowercase letters only.
+  -/
 
 vc-preamble: |-
   def List.sort (l : List α) (f : α → α → Bool) : List α :=
@@ -50,17 +52,17 @@ vc-theorems: |-
     custom_sort_string s (custom_sort_string s t) = custom_sort_string s t :=
   sorry
   
-  /--
+  /-
   info: 'kqeep'
   -/
-  #guard_msgs in
-  #eval custom_sort_string "kqep" "pekeq"
+  -- #guard_msgs in
+  -- #eval custom_sort_string "kqep" "pekeq"
   
-  /--
+  /-
   info: 'zyxw'
   -/
-  #guard_msgs in
-  #eval custom_sort_string "abc" "zyxw"
+  -- #guard_msgs in
+  -- #eval custom_sort_string "abc" "zyxw"
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Just like in the ["father" kata](http://www.codewars.com/kata/find-fibonacci-last-digit/), you will have to return the last digit of the nth element in the Fibonacci sequence (starting with 1,1, to be extra clear, not with 0,1 or other numbers).
   
   You will just get much bigger numbers, so good luck bruteforcing your way through it ;)
@@ -16,6 +17,7 @@ vc-description: |-
   lastFibDigit    1000 == 5
   lastFibDigit 1000000 == 5
   ```
+  -/
 
 vc-preamble: |-
   def fibNaive (n : Nat) : Nat := 
@@ -54,23 +56,23 @@ vc-theorems: |-
     lastFibDigit n = lastFibDigit (n % 60) :=
   sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval last_fib_digit 1
+  -- #guard_msgs in
+  -- #eval last_fib_digit 1
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval last_fib_digit 21
+  -- #guard_msgs in
+  -- #eval last_fib_digit 21
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval last_fib_digit 1000
+  -- #guard_msgs in
+  -- #eval last_fib_digit 1000
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Alice likes prime numbers. According to Alice, only those strings are nice whose sum of character values at a prime position is prime. She has a string $S$. Now, she has to count the number of nice strings which come before string $S$( including $S$) in the dictionary and are of the same length as $S$. 
   Strings are zero-indexed from left to right.
   To find the character value she uses the mapping {'a': 0, 'b':1, 'c':2 ……. 'y': 24, 'z':25} .
@@ -23,6 +24,7 @@ vc-description: |-
   
   -----Sample Output:-----
   10
+  -/
 
 vc-preamble: |-
   def is_nice (s: List Char) : Bool :=
@@ -81,23 +83,23 @@ vc-theorems: |-
       0 (List.range s.length)) :=
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_nice_strings "aaa"
+  -- #guard_msgs in
+  -- #eval count_nice_strings "aaa"
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_nice_strings "abc"
+  -- #guard_msgs in
+  -- #eval count_nice_strings "abc"
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_nice_strings "abbc"
+  -- #guard_msgs in
+  -- #eval count_nice_strings "abbc"
 
 vc-postamble: |-
   -- Apps difficulty: interview

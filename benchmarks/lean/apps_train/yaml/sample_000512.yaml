@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given three numbers $a$, $b$, $c$ . Write a program to determine the largest number that is less than or equal to $c$ and leaves a remainder $b$ when divided by $a$.
   
   -----Input:-----
@@ -18,6 +19,7 @@ vc-description: |-
   
   -----Sample Output:-----
   9
+  -/
 
 vc-preamble: |-
 
@@ -55,23 +57,23 @@ vc-theorems: |-
     next > c ∨ next % a ≠ b :=
   sorry
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval solve_remainder 7 2 10
+  -- #guard_msgs in
+  -- #eval solve_remainder 7 2 10
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval solve_remainder 5 3 12
+  -- #guard_msgs in
+  -- #eval solve_remainder 5 3 12
   
-  /--
+  /-
   info: 95
   -/
-  #guard_msgs in
-  #eval solve_remainder 10 5 100
+  -- #guard_msgs in
+  -- #eval solve_remainder 10 5 100
 
 vc-postamble: |-
   -- Apps difficulty: interview

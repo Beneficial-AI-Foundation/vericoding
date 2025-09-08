@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Like all minions Dave also like to eat bananas. So as to his obsession, he is eating banana, but this time in different way. There are N bananas in dish. Dave wants to eat all of them. He starts eating at speed 1 banana/second. He can increase or decrease speed of eating by one only. The condition is that he must end eating at speed 1 banana/second. So, your task is to find minimum time required to finish all bananas in a dish.
   
   -----Input-----
@@ -24,6 +25,7 @@ vc-description: |-
   -----Explanation-----
   Example case 1.Dave will start to eat with rate of 1 banana/second. Then only one banana will remain. He will eat that banana in 1 second. Thus, Total time is 2 seconds.
   Example case 2.Dave starts with rate of 1 banana/second, and then increase it to 2 bananas/second and again decrease it to 1 banana/second. So total time is 3 seconds.
+  -/
 
 vc-preamble: |-
 
@@ -50,23 +52,23 @@ vc-theorems: |-
   theorem min_time_small_inputs_2 :
     min_time_to_eat_bananas 2 = 2 := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_time_to_eat_bananas 2
+  -- #guard_msgs in
+  -- #eval min_time_to_eat_bananas 2
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval min_time_to_eat_bananas 4
+  -- #guard_msgs in
+  -- #eval min_time_to_eat_bananas 4
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval min_time_to_eat_bananas 7
+  -- #guard_msgs in
+  -- #eval min_time_to_eat_bananas 7
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ### Problem Context
   
   The [Fibonacci](http://en.wikipedia.org/wiki/Fibonacci_number) sequence is traditionally used to explain tree recursion.  
@@ -19,6 +20,7 @@ vc-description: |-
   The trick of the memoized version is that we will keep a cache data structure (most likely an associative array) where we will store the Fibonacci numbers as we calculate them. When a Fibonacci number is calculated, we first look it up in the cache, if it's not there, we calculate it and put it in the cache, otherwise we returned the cached number.
   
   Refactor the function into a recursive Fibonacci function that using  a memoized data structure avoids the deficiencies of tree recursion Can you make it so the memoization cache is private to this function?
+  -/
 
 vc-preamble: |-
 
@@ -52,23 +54,23 @@ vc-theorems: |-
   theorem fibonacci_monotonic (n : Nat) :
     n > 1 → fibonacci n ≥ fibonacci (n-1) := sorry
   
-  /--
+  /-
   info: 190392490709135
   -/
-  #guard_msgs in
-  #eval fibonacci 70
+  -- #guard_msgs in
+  -- #eval fibonacci 70
   
-  /--
+  /-
   info: 1548008755920
   -/
-  #guard_msgs in
-  #eval fibonacci 60
+  -- #guard_msgs in
+  -- #eval fibonacci 60
   
-  /--
+  /-
   info: 12586269025
   -/
-  #guard_msgs in
-  #eval fibonacci 50
+  -- #guard_msgs in
+  -- #eval fibonacci 50
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Task:
   
   You have to write a function `pattern` which returns the following Pattern(See Examples) upto desired number of rows. 
@@ -120,6 +121,7 @@ vc-description: |-
           1                                               1
   
   [List of all my katas]("http://www.codewars.com/users/curious_db97/authored")
+  -/
 
 vc-preamble: |-
   def pattern (n : Int) : String := sorry
@@ -157,23 +159,23 @@ vc-theorems: |-
     let lines := String.splitOn (pattern n) "\n"
     ∀ line ∈ lines, line = line.reverse := sorry
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval pattern 3
+  -- #guard_msgs in
+  -- #eval pattern 3
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval pattern 4 2
+  -- #guard_msgs in
+  -- #eval pattern 4 2
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval pattern -5 3
+  -- #guard_msgs in
+  -- #eval pattern -5 3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

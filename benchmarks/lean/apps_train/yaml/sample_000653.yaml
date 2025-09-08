@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In my town ,there live a coder named Chef . He is a cool programmer . One day , he participate in a programming contest ,the contest give him only one problem . If he can’t solve the problem ,the problem setter will kill him . But the round allow you to help Chef. Can you save the life of Chef from problem setter ? :p
   You are given two point of a straightline in X and Y axis and they are A(x1 , y1) and B(x2 ,y2) . Problem setter will give you another point C(x3 , y3) . If C exist in AB straightline ,then print “YES” . Otherwise ,print “NO” in first line and print the minimum distance from C to AB straightline in second line .
   Please , save the life of Chef .
@@ -33,6 +34,7 @@ vc-description: |-
   Test case : 2
   NO
   3.328201
+  -/
 
 vc-preamble: |-
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your colleagues have been good enough(?) to buy you a birthday gift. Even though it is your birthday and not theirs, they have decided to play pass the parcel with it so that everyone has an even chance of winning. There are multiple presents, and you will receive one, but not all are nice... One even explodes and covers you in soil... strange office. To make up for this one present is a dog! Happy days! (do not buy dogs as presents, and if you do, never wrap them).
   
   Depending on the number of passes in the game (y), and the present you unwrap (x), return as follows:
@@ -8,6 +9,7 @@ vc-description: |-
   x == bang --> return string turned to char codes, each code reduced by number of passes and summed to a single figure
   x == badpresent --> return 'Take this back!'
   x == dog, return 'pass out from excitement y times' (where y is the value given for y).
+  -/
 
 vc-preamble: |-
   def present (x : String) (y : Int) : String := sorry
@@ -39,23 +41,23 @@ vc-theorems: |-
   theorem present_invalid_input (x : String) (h : ¬isValidInput x) :
     ∃ err, present x 0 = err := sorry
   
-  /--
+  /-
   info: 'Take this back!'
   -/
-  #guard_msgs in
-  #eval present "badpresent" 3
+  -- #guard_msgs in
+  -- #eval present "badpresent" 3
   
-  /--
+  /-
   info: 'pxxmy{n|nw}'
   -/
-  #guard_msgs in
-  #eval present "goodpresent" 9
+  -- #guard_msgs in
+  -- #eval present "goodpresent" 9
   
-  /--
+  /-
   info: 'pass out from excitement 23 times'
   -/
-  #guard_msgs in
-  #eval present "dog" 23
+  -- #guard_msgs in
+  -- #eval present "dog" 23
 
 vc-postamble: |-
   -- Apps difficulty: introductory

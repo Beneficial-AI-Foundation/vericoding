@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a list of intervals, remove all intervals that are covered by another interval in the list.
   Interval [a,b) is covered by interval [c,d) if and only if c <= a and b <= d.
   After doing so, return the number of remaining intervals.
@@ -30,6 +31,7 @@ vc-description: |-
   intervals[i].length == 2
   0 <= intervals[i][0] < intervals[i][1] <= 10^5
   All the intervals are unique.
+  -/
 
 vc-preamble: |-
 
@@ -46,23 +48,23 @@ vc-theorems: |-
     remove_covered_intervals [] = 0 :=
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval remove_covered_intervals [[1, 4], [3, 6], [2, 8]]
+  -- #guard_msgs in
+  -- #eval remove_covered_intervals [[1, 4], [3, 6], [2, 8]]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval remove_covered_intervals [[1, 4], [2, 3]]
+  -- #guard_msgs in
+  -- #eval remove_covered_intervals [[1, 4], [2, 3]]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval remove_covered_intervals [[3, 10], [4, 10], [5, 11]]
+  -- #guard_msgs in
+  -- #eval remove_covered_intervals [[3, 10], [4, 10], [5, 11]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

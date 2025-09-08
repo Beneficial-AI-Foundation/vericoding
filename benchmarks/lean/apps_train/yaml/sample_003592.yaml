@@ -1,9 +1,11 @@
 vc-description: |-
+  /-
   Create a function that returns an array containing the first `l` digits from the `n`th diagonal of [Pascal's triangle](https://en.wikipedia.org/wiki/Pascal's_triangle).
   
   `n = 0` should generate the first diagonal of the triangle (the 'ones'). The first number in each diagonal should be 1.
   
   If `l = 0`, return an empty array. Assume that both `n` and `l` will be non-negative integers in all test cases.
+  -/
 
 vc-preamble: |-
 
@@ -45,23 +47,23 @@ vc-theorems: |-
     generate_diagonal d 0 = [] :=
     sorry
   
-  /--
+  /-
   info: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
   -/
-  #guard_msgs in
-  #eval generate_diagonal 0 10
+  -- #guard_msgs in
+  -- #eval generate_diagonal 0 10
   
-  /--
+  /-
   info: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   -/
-  #guard_msgs in
-  #eval generate_diagonal 1 10
+  -- #guard_msgs in
+  -- #eval generate_diagonal 1 10
   
-  /--
+  /-
   info: [1, 101, 5151, 176851, 4598126, 96560646]
   -/
-  #guard_msgs in
-  #eval generate_diagonal 100 6
+  -- #guard_msgs in
+  -- #eval generate_diagonal 100 6
 
 vc-postamble: |-
   -- Apps difficulty: introductory

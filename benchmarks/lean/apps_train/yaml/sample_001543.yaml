@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef is playing a game with two of his friends. In this game, each player chooses an integer between $1$ and $P$ inclusive. Let's denote the integers chosen by Chef, friend 1 and friend 2 by $i$, $j$ and $k$ respectively; then,  Chef's score is
   (((Nmodi)modj)modk)modN.(((Nmodi)modj)modk)modN.(((N\,\mathrm{mod}\,i)\,\mathrm{mod}\,j)\,\mathrm{mod}\,k)\,\mathrm{mod}\,N\,.
   
@@ -41,6 +42,7 @@ vc-description: |-
   $(3, 4, 2)$,
   $(3, 4, 3)$,
   $(3, 4, 4)$.
+  -/
 
 vc-preamble: |-
 
@@ -66,23 +68,23 @@ vc-theorems: |-
       solveMaxScore n n = (n-d)*(n-d) + (n-d)*(n-n) + (n-n)*(n-n) := by
     sorry
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval solve_max_score 4 4
+  -- #guard_msgs in
+  -- #eval solve_max_score 4 4
   
-  /--
+  /-
   info: 13
   -/
-  #guard_msgs in
-  #eval solve_max_score 3 4
+  -- #guard_msgs in
+  -- #eval solve_max_score 3 4
   
-  /--
+  /-
   info: 27
   -/
-  #guard_msgs in
-  #eval solve_max_score 2 3
+  -- #guard_msgs in
+  -- #eval solve_max_score 2 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

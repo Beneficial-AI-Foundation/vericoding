@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Situation
   You have been hired by a company making electric garage doors. Accidents with the present product line have resulted in numerous damaged cars, broken limbs and several killed pets. Your mission is to write a safer version of their controller software.
   
@@ -26,6 +27,7 @@ vc-description: |-
   # Example
   ```..P...O.....``` as input should yield
   ```001234321000``` as output
+  -/
 
 vc-preamble: |-
 
@@ -58,23 +60,23 @@ vc-theorems: |-
       (nums[i]! = 0 ∧ nums[i+1]! ≠ nums[i]! → nums[i+1]! > nums[i]!) ∧
       (nums[i]! = 5 ∧ nums[i+1]! ≠ nums[i]! → nums[i+1]! < nums[i]!) := sorry
   
-  /--
+  /-
   info: '12345'
   -/
-  #guard_msgs in
-  #eval controller "P...."
+  -- #guard_msgs in
+  -- #eval controller "P...."
   
-  /--
+  /-
   info: '1222234555'
   -/
-  #guard_msgs in
-  #eval controller "P.P..P...."
+  -- #guard_msgs in
+  -- #eval controller "P.P..P...."
   
-  /--
+  /-
   info: '001234321000'
   -/
-  #guard_msgs in
-  #eval controller "..P...O....."
+  -- #guard_msgs in
+  -- #eval controller "..P...O....."
 
 vc-postamble: |-
   -- Apps difficulty: introductory

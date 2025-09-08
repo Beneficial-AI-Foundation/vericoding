@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an integer array of digits, return the largest multiple of three that can be formed by concatenating some of the given digits in any order.
   Since the answer may not fit in an integer data type, return the answer as a string.
   If there is no answer return an empty string.
@@ -24,6 +25,7 @@ vc-description: |-
   1 <= digits.length <= 10^4
   0 <= digits[i] <= 9
   The returning answer must not contain unnecessary leading zeros.
+  -/
 
 vc-preamble: |-
 
@@ -53,23 +55,23 @@ vc-theorems: |-
     largestMultipleOfThree digits = some result →
     (result = "0" ∨ result.data.get! 0 ≠ '0') := sorry
   
-  /--
+  /-
   info: '981'
   -/
-  #guard_msgs in
-  #eval largest_multiple_of_three [9, 8, 1]
+  -- #guard_msgs in
+  -- #eval largest_multiple_of_three [9, 8, 1]
   
-  /--
+  /-
   info: '8760'
   -/
-  #guard_msgs in
-  #eval largest_multiple_of_three [8, 6, 7, 1, 0]
+  -- #guard_msgs in
+  -- #eval largest_multiple_of_three [8, 6, 7, 1, 0]
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval largest_multiple_of_three [1]
+  -- #guard_msgs in
+  -- #eval largest_multiple_of_three [1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

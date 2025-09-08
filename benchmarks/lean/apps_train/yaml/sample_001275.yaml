@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef has many friends, but his best friend is Hemant. They both love to watch anime.
   In fact, their weekends are meant for that only. Also, Hemant is highly into games, of which Chef is unaware. Hemant once gave a game to Chef and asked him to determine the winner of the game. Since the Chef is busy, and you are also his friend, he asked you to help him.
   The Game is played between two players, $A$ and $B$. There are $N$ marbles. $A$ and $B$ plays alternately, and $A$ goes first. Each player can choose $1$ marble or $even$ number of marbles in his turn. The player who is not able to choose any marbles loses the game.
@@ -24,6 +25,7 @@ vc-description: |-
   B
   A
   B
+  -/
 
 vc-preamble: |-
 
@@ -47,23 +49,23 @@ vc-theorems: |-
   theorem three_marbles_returns_a :
     solve_marbles_game 3 = "A" := sorry
   
-  /--
+  /-
   info: 'B'
   -/
-  #guard_msgs in
-  #eval solve_marbles_game 1
+  -- #guard_msgs in
+  -- #eval solve_marbles_game 1
   
-  /--
+  /-
   info: 'A'
   -/
-  #guard_msgs in
-  #eval solve_marbles_game 3
+  -- #guard_msgs in
+  -- #eval solve_marbles_game 3
   
-  /--
+  /-
   info: 'B'
   -/
-  #guard_msgs in
-  #eval solve_marbles_game 7
+  -- #guard_msgs in
+  -- #eval solve_marbles_game 7
 
 vc-postamble: |-
   -- Apps difficulty: interview

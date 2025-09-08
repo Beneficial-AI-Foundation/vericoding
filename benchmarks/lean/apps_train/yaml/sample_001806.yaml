@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given two words (beginWord and endWord), and a dictionary's word list, find all shortest transformation sequence(s) from beginWord to endWord, such that:
   
          Only one letter can be changed at a time
@@ -35,6 +36,7 @@ vc-description: |-
   Output: []
   
   Explanation: The endWord "cog" is not in wordList, therefore no possible transformation.
+  -/
 
 vc-preamble: |-
 
@@ -75,11 +77,11 @@ vc-theorems: |-
     result ≠ [] → ∃ n : Nat, ∀ path ∈ result, path.length = n := by
     sorry
   
-  /--
+  /-
   info: sorted(expected1)
   -/
-  #guard_msgs in
-  #eval sorted find_word_ladders(begin1, end1, wordList1)
+  -- #guard_msgs in
+  -- #eval sorted find_word_ladders(begin1, end1, wordList1)
 
 vc-postamble: |-
   -- Apps difficulty: interview

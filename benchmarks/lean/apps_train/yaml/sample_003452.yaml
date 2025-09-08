@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Ever the learned traveller, Alan Partridge has pretty strong views on London:
   
   ```
@@ -16,6 +17,7 @@ vc-description: |-
   Other katas in this series:
   Alan Partridge I - Partridge Watch
   Alan Partridge II - Apple Turnover
+  -/
 
 vc-preamble: |-
   def REQUIRED_STATIONS : List String := 
@@ -48,23 +50,23 @@ vc-theorems: |-
     (h2 : ∀ x ∈ subset, x ∈ REQUIRED_STATIONS) :
     alan subset = "No, seriously, run. You will miss it." := sorry
   
-  /--
+  /-
   info: 'Smell my cheese you mother!'
   -/
-  #guard_msgs in
-  #eval alan ["Norwich", "Rejection", "Disappointment", "Backstabbing Central", "Shattered Dreams Parkway", "London"]
+  -- #guard_msgs in
+  -- #eval alan ["Norwich", "Rejection", "Disappointment", "Backstabbing Central", "Shattered Dreams Parkway", "London"]
   
-  /--
+  /-
   info: 'No, seriously, run. You will miss it.'
   -/
-  #guard_msgs in
-  #eval alan ["London", "Norwich"]
+  -- #guard_msgs in
+  -- #eval alan ["London", "Norwich"]
   
-  /--
+  /-
   info: 'Smell my cheese you mother!'
   -/
-  #guard_msgs in
-  #eval alan ["Norwich", "Rejection", "Disappointment", "Backstabbing Central", "Shattered Dreams Parkway"]
+  -- #guard_msgs in
+  -- #eval alan ["Norwich", "Rejection", "Disappointment", "Backstabbing Central", "Shattered Dreams Parkway"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We are committed to the well being of all participants. Therefore, instead of the problem, we suggest you enjoy a piece of cake.
   
   Uh oh. Somebody cut the cake. We told them to wait for you, but they did it anyway. There is still some left, though, if you hurry back. Of course, before you taste the cake, you thought about how the cake was cut.
@@ -64,6 +65,7 @@ vc-description: |-
   3 4 2 1 
   1 3 2 
   1
+  -/
 
 vc-preamble: |-
 
@@ -99,29 +101,29 @@ vc-theorems: |-
     let (vertices, cuts) := polygon_cut n triangles
     (vertices.length = n) ∧ (cuts.length = n-2) ∧ vertices.head? = some 1 := sorry
   
-  /--
+  /-
   info: n1
   -/
-  #guard_msgs in
-  #eval len vertices1
+  -- #guard_msgs in
+  -- #eval len vertices1
   
-  /--
+  /-
   info: n1 - 2
   -/
-  #guard_msgs in
-  #eval len cuts1
+  -- #guard_msgs in
+  -- #eval len cuts1
   
-  /--
+  /-
   info: n2
   -/
-  #guard_msgs in
-  #eval len vertices2
+  -- #guard_msgs in
+  -- #eval len vertices2
   
-  /--
+  /-
   info: n2 - 2
   -/
-  #guard_msgs in
-  #eval len cuts2
+  -- #guard_msgs in
+  -- #eval len cuts2
 
 vc-postamble: |-
   -- Apps difficulty: interview

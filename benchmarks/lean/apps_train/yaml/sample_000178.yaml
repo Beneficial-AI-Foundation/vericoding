@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Say you have an array for which the ith element is the price of a given stock on day i.
   
   Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one and sell one share of the stock multiple times) with the following restrictions:
@@ -11,6 +12,7 @@ vc-description: |-
   Input: [1,2,3,0,2]
   Output: 3 
   Explanation: transactions = [buy, sell, cooldown, buy, sell]
+  -/
 
 vc-preamble: |-
 
@@ -52,23 +54,23 @@ vc-theorems: |-
     max_stock_profit_with_cooldown prices :=
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval max_stock_profit_with_cooldown [1, 2, 3, 0, 2]
+  -- #guard_msgs in
+  -- #eval max_stock_profit_with_cooldown [1, 2, 3, 0, 2]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval max_stock_profit_with_cooldown [1]
+  -- #guard_msgs in
+  -- #eval max_stock_profit_with_cooldown [1]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval max_stock_profit_with_cooldown [2, 1, 4]
+  -- #guard_msgs in
+  -- #eval max_stock_profit_with_cooldown [2, 1, 4]
 
 vc-postamble: |-
   -- Apps difficulty: interview

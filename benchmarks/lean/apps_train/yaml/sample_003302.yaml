@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We need a function (for commercial purposes) that may perform integer partitions with some constraints.
   The function should select how many elements each partition should have.
   The function should discard some "forbidden" values in each partition.
@@ -36,6 +37,7 @@ vc-description: |-
   ```
   
   Enjoy it and happy coding!!
+  -/
 
 vc-preamble: |-
 
@@ -65,23 +67,23 @@ vc-theorems: |-
   theorem single_partition_forbidden (t : Nat) (h : t > 1) :
     part_const t 1 t = 0 := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval part_const 10 3 2
+  -- #guard_msgs in
+  -- #eval part_const 10 3 2
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval part_const 10 3 0
+  -- #guard_msgs in
+  -- #eval part_const 10 3 0
   
-  /--
+  /-
   info: 15
   -/
-  #guard_msgs in
-  #eval part_const 15 5 3
+  -- #guard_msgs in
+  -- #eval part_const 15 5 3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

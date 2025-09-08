@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # A History Lesson
   
   Tetris is a puzzle video game originally designed and programmed by Soviet Russian software engineer Alexey Pajitnov. The first playable version was completed on June 6, 1984. Pajitnov derived its name from combining the Greek numerical prefix tetra- (the falling pieces contain 4 segments) and tennis, Pajitnov's favorite sport.
@@ -104,6 +105,7 @@ vc-description: |-
   * 6 kyuTetris Series #3 — Adding Rotation (TBA)
   * 5 kyuTetris Series #4 — New Block Types (TBA)
   * 4 kyuTetris Series #5 — Complex Block Types (TBA?)
+  -/
 
 vc-preamble: |-
 
@@ -137,23 +139,23 @@ vc-theorems: |-
     (h : ∀ x ∈ arr, x ≤ 4) :
     get_score arr = get_score arr := sorry
   
-  /--
+  /-
   info: 1640
   -/
-  #guard_msgs in
-  #eval get_score [0, 1, 2, 3, 4]
+  -- #guard_msgs in
+  -- #eval get_score [0, 1, 2, 3, 4]
   
-  /--
+  /-
   info: 620
   -/
-  #guard_msgs in
-  #eval get_score [0, 1, 1, 3, 0, 2, 1, 2]
+  -- #guard_msgs in
+  -- #eval get_score [0, 1, 1, 3, 0, 2, 1, 2]
   
-  /--
+  /-
   info: 3300
   -/
-  #guard_msgs in
-  #eval get_score [2, 0, 4, 2, 2, 3, 0, 0, 3, 3]
+  -- #guard_msgs in
+  -- #eval get_score [2, 0, 4, 2, 2, 3, 0, 0, 3, 3]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

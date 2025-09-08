@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this exercise, you will have to create a function named tiyFizzBuzz. This function will take on a string parameter and will return that string with some characters replaced, depending on the value:
   
   - If a letter is a upper case consonants, replace that character with "Iron".
@@ -7,6 +8,7 @@ vc-description: |-
   - If a letter is a lower case vowel, replace that character with "Yard".
   
   Ready?
+  -/
 
 vc-preamble: |-
 
@@ -33,29 +35,29 @@ vc-theorems: |-
     c ∈ s.data → c.toLower ∈ ['a', 'e', 'i', 'o', 'u'] → 
     isSubstringOf "Yard" (tiy_fizz_buzz s) = true := sorry
   
-  /--
+  /-
   info: ' '
   -/
-  #guard_msgs in
-  #eval tiy_fizz_buzz " "
+  -- #guard_msgs in
+  -- #eval tiy_fizz_buzz " "
   
-  /--
+  /-
   info: 'Iron'
   -/
-  #guard_msgs in
-  #eval tiy_fizz_buzz "H"
+  -- #guard_msgs in
+  -- #eval tiy_fizz_buzz "H"
   
-  /--
+  /-
   info: 'Iron Yard'
   -/
-  #guard_msgs in
-  #eval tiy_fizz_buzz "A"
+  -- #guard_msgs in
+  -- #eval tiy_fizz_buzz "A"
   
-  /--
+  /-
   info: 'IronYardllYard IronIron YardIronIronIron!'
   -/
-  #guard_msgs in
-  #eval tiy_fizz_buzz "Hello WORLD!"
+  -- #guard_msgs in
+  -- #eval tiy_fizz_buzz "Hello WORLD!"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

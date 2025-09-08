@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Find the longest substring within a string that contains at most 2 unique characters.
   
   ```
@@ -16,6 +17,7 @@ vc-description: |-
   Although there are O(N^2) solutions to this problem, you should try to solve this problem in O(N) time. Tests may pass for O(N^2) solutions but, this is not guaranteed.
   
   This question is much harder than some of the other substring questions. It's easy to think that you have a solution and then get hung up on the implementation.
+  -/
 
 vc-preamble: |-
 
@@ -55,23 +57,23 @@ vc-theorems: |-
     (∀ c ∈ s.data, c = 'a' ∨ c = 'b') →
     substring s = s := sorry
   
-  /--
+  /-
   info: 'aba'
   -/
-  #guard_msgs in
-  #eval substring "abacd"
+  -- #guard_msgs in
+  -- #eval substring "abacd"
   
-  /--
+  /-
   info: 'aaa'
   -/
-  #guard_msgs in
-  #eval substring "aaa"
+  -- #guard_msgs in
+  -- #eval substring "aaa"
   
-  /--
+  /-
   info: 'cddcd'
   -/
-  #guard_msgs in
-  #eval substring "abacddcd"
+  -- #guard_msgs in
+  -- #eval substring "abacddcd"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

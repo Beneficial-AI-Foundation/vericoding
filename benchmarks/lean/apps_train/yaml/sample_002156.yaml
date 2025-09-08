@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   This morning Tolik has understood that while he was sleeping he had invented an incredible problem which will be a perfect fit for Codeforces! But, as a "Discuss tasks" project hasn't been born yet (in English, well), he decides to test a problem and asks his uncle.
   
   After a long time thinking, Tolik's uncle hasn't any ideas on how to solve it. But, he doesn't want to tell Tolik about his inability to solve it, so he hasn't found anything better than asking you how to solve this task.
@@ -39,6 +40,7 @@ vc-description: |-
   -----Note-----
   
   The vectors from the first example in the order of making jumps are $(0, 2), (0, -1), (1, 0), (0, 1), (0, -2)$.
+  -/
 
 vc-preamble: |-
 
@@ -78,23 +80,23 @@ vc-theorems: |-
     visit_cells 2 1 = [(1, 1), (2, 1)] ∨ 
     visit_cells 2 1 = [(2, 1), (1, 1)] := sorry
   
-  /--
+  /-
   info: [(1, 1), (2, 3), (1, 2), (2, 2), (1, 3), (2, 1)]
   -/
-  #guard_msgs in
-  #eval visit_cells 2 3
+  -- #guard_msgs in
+  -- #eval visit_cells 2 3
   
-  /--
+  /-
   info: [(1, 1)]
   -/
-  #guard_msgs in
-  #eval visit_cells 1 1
+  -- #guard_msgs in
+  -- #eval visit_cells 1 1
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval visit_cells 3 3
+  -- #guard_msgs in
+  -- #eval visit_cells 3 3
 
 vc-postamble: |-
   -- Apps difficulty: competition

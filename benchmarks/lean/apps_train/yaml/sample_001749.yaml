@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a non-empty list of words, return the k most frequent elements.
   Your answer should be sorted by frequency from highest to lowest. If two words have the same frequency, then the word with the lower alphabetical order comes first.
   
@@ -24,6 +25,7 @@ vc-description: |-
   Follow up:
   
   Try to solve it in O(n log k) time and O(n) extra space.
+  -/
 
 vc-preamble: |-
 
@@ -68,23 +70,23 @@ vc-theorems: |-
       counts (result.get ⟨i, sorry⟩) = counts (result.get ⟨i+1, sorry⟩) →
       result.get ⟨i, sorry⟩ ≤ result.get ⟨i+1, sorry⟩ := sorry
   
-  /--
+  /-
   info: ['i', 'love']
   -/
-  #guard_msgs in
-  #eval top_k_frequent ["i", "love", "leetcode", "i", "love", "coding"] 2
+  -- #guard_msgs in
+  -- #eval top_k_frequent ["i", "love", "leetcode", "i", "love", "coding"] 2
   
-  /--
+  /-
   info: ['the', 'is', 'sunny', 'day']
   -/
-  #guard_msgs in
-  #eval top_k_frequent ["the", "day", "is", "sunny", "the", "the", "the", "sunny", "is", "is"] 4
+  -- #guard_msgs in
+  -- #eval top_k_frequent ["the", "day", "is", "sunny", "the", "the", "the", "sunny", "is", "is"] 4
   
-  /--
+  /-
   info: ['a']
   -/
-  #guard_msgs in
-  #eval top_k_frequent ["a", "a", "b"] 1
+  -- #guard_msgs in
+  -- #eval top_k_frequent ["a", "a", "b"] 1
 
 vc-postamble: |-
   -- Apps difficulty: interview

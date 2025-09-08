@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There is a rectangular grid of cells consisting of n rows and m columns.
   You will place a robot on one of the grid cells and provide it with a command string s, consisting of characters ‘L’, ‘R’, ‘U’, ‘D’.
   After being placed, the robot will follow the instructions of the command string, where 'L' corresponds moving to the left, 'R' towards the right, 'U' for moving up, and 'D' means down.
@@ -51,6 +52,7 @@ vc-description: |-
   For the first case, there is only one grid square, so we must place our robot there. When the robot follows the command, it'll fall off, so it is unsafe.
   
   For the second case, we can place the robot on the bottom right grid square. Here is an image denoting the moves that the robot will make.
+  -/
 
 vc-preamble: |-
 
@@ -102,23 +104,23 @@ vc-theorems: |-
           ((countChar commands 'U') - (countChar commands 'D')) ≥ n) :
     solve_robot_safety n m commands = "unsafe" := sorry
   
-  /--
+  /-
   info: 'unsafe'
   -/
-  #guard_msgs in
-  #eval solve_robot_safety 1 1 "R"
+  -- #guard_msgs in
+  -- #eval solve_robot_safety 1 1 "R"
   
-  /--
+  /-
   info: 'safe'
   -/
-  #guard_msgs in
-  #eval solve_robot_safety 2 3 "LLRU"
+  -- #guard_msgs in
+  -- #eval solve_robot_safety 2 3 "LLRU"
   
-  /--
+  /-
   info: 'unsafe'
   -/
-  #guard_msgs in
-  #eval solve_robot_safety 3 2 "LLRU"
+  -- #guard_msgs in
+  -- #eval solve_robot_safety 3 2 "LLRU"
 
 vc-postamble: |-
   -- Apps difficulty: interview

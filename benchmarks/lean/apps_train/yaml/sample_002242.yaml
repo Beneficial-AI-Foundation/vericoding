@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   N hotels are located on a straight line. The coordinate of the i-th hotel (1 \leq i \leq N) is x_i.
   Tak the traveler has the following two personal principles:
    - He never travels a distance of more than L in a single day.
@@ -56,6 +57,7 @@ vc-description: |-
    - Day 2: Travel from the 2-nd hotel to the 4-th hotel. The distance traveled is 10.
    - Day 3: Travel from the 4-th hotel to the 7-th hotel. The distance traveled is 6.
    - Day 4: Travel from the 7-th hotel to the 8-th hotel. The distance traveled is 10.
+  -/
 
 vc-preamble: |-
 

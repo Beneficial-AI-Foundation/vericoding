@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are two lists of different length. The first one consists of keys, the second one consists of values. Write a function ```createDict(keys, values)``` that returns a dictionary created from keys and values. If there are not enough values, the rest of keys should have a ```None``` value. If there not enough keys, just ignore the rest of values.
   
   Example 1:
@@ -14,6 +15,7 @@ vc-description: |-
   values = [1, 2, 3, 4]
   createDict(keys, values) # returns {'a': 1, 'b': 2, 'c': 3}
   ```
+  -/
 
 vc-preamble: |-
 
@@ -47,23 +49,23 @@ vc-theorems: |-
     (h₁: keys.length ≤ 3) (h₂: 4 ≤ values.length) :
     ∀ x ∈ (createDict keys values).map Prod.snd, ∃ (n : Int), x = some n := sorry
   
-  /--
+  /-
   info: {}
   -/
-  #guard_msgs in
-  #eval createDict [] []
+  -- #guard_msgs in
+  -- #eval createDict [] []
   
-  /--
+  /-
   info: {'a': 1, 'b': None, 'c': None}
   -/
-  #guard_msgs in
-  #eval createDict ["a", "b", "c"] [1]
+  -- #guard_msgs in
+  -- #eval createDict ["a", "b", "c"] [1]
   
-  /--
+  /-
   info: {'a': 1, 'b': 2}
   -/
-  #guard_msgs in
-  #eval createDict ["a", "b"] [1, 2, 3, 4]
+  -- #guard_msgs in
+  -- #eval createDict ["a", "b"] [1, 2, 3, 4]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

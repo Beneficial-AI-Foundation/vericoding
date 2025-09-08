@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Return the `n`th term of the Recamán's sequence.
   
   ```
@@ -14,6 +15,7 @@ vc-description: |-
   ___
   
   A video about Recamán's sequence by Numberphile: https://www.youtube.com/watch?v=FGC5TdIiT9U
+  -/
 
 vc-preamble: |-
 
@@ -44,23 +46,23 @@ vc-theorems: |-
     recaman 1 = 1 :=
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval recaman 2
+  -- #guard_msgs in
+  -- #eval recaman 2
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval recaman 3
+  -- #guard_msgs in
+  -- #eval recaman 3
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval recaman 4
+  -- #guard_msgs in
+  -- #eval recaman 4
 
 vc-postamble: |-
   -- Apps difficulty: introductory

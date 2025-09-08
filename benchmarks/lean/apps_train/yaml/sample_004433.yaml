@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The aim of the kata is to decompose `n!` (factorial n) into its prime factors.
   
   Examples:
@@ -18,6 +19,7 @@ vc-description: |-
   - the function is `decomp(n)` and should return the decomposition of `n!` into its prime factors in increasing order of the primes, as a string.
   - factorial can be a very big number (`4000! has 12674 digits`, n will go from 300 to 4000).
   - In Fortran - as in any other language - the returned string is not permitted to contain any redundant trailing whitespace: you can use `dynamically allocated character strings`.
+  -/
 
 vc-preamble: |-
   def dec (n : Nat) : List PrimeFactor := sorry

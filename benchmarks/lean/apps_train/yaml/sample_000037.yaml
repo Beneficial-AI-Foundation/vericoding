@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Yeah, we failed to make up a New Year legend for this problem.
   
   A permutation of length $n$ is an array of $n$ integers such that every integer from $1$ to $n$ appears in it exactly once. 
@@ -40,6 +41,7 @@ vc-description: |-
   -1
   1 2 6 3 4 5 
   1 2 4 3
+  -/
 
 vc-preamble: |-
 

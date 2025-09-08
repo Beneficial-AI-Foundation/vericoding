@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Implement a function that normalizes out of range sequence indexes (converts them to 'in range' indexes) by making them repeatedly 'loop' around the array. The function should then return the value at that index. Indexes that are not out of range should be handled normally and indexes to empty sequences should return undefined/None depending on the language.
   
   For positive numbers that are out of range, they loop around starting at the beginning, so 
@@ -20,6 +21,7 @@ vc-description: |-
   # And so on...
   norm_index_test(seq, -len(seq)) # Returns first element
   ```
+  -/
 
 vc-preamble: |-
 
@@ -51,47 +53,47 @@ vc-theorems: |-
     ∀ i : Nat, i < s.length → 
     @norm_index_test α _ s (-i-1) = some (s.get! (s.length - i - 1)) := sorry
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval norm_index_test [] 10
+  -- #guard_msgs in
+  -- #eval norm_index_test [] 10
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval norm_index_test [1, 2, 3] 3
+  -- #guard_msgs in
+  -- #eval norm_index_test [1, 2, 3] 3
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval norm_index_test test_seq 4
+  -- #guard_msgs in
+  -- #eval norm_index_test test_seq 4
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval norm_index_test test_seq 6
+  -- #guard_msgs in
+  -- #eval norm_index_test test_seq 6
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval norm_index_test test_seq -1
+  -- #guard_msgs in
+  -- #eval norm_index_test test_seq -1
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval norm_index_test test_seq -4
+  -- #guard_msgs in
+  -- #eval norm_index_test test_seq -4
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval norm_index_test test_seq -6
+  -- #guard_msgs in
+  -- #eval norm_index_test test_seq -6
 
 vc-postamble: |-
   -- Apps difficulty: introductory

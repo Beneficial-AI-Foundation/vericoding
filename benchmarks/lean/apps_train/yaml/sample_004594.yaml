@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Amidakuji is a method of lottery designed to create random pairings between two sets comprised of an equal number of elements.
   Your task is to write a function amidakuji that returns the final positions of each element. Note that the elements are an ascending sequence of consecutive integers starting with 0 (from left to right).
   Input
@@ -38,6 +39,7 @@ vc-description: |-
   Inputs will always be valid
   
   If you enjoyed this kata, be sure to check out my other katas
+  -/
 
 vc-preamble: |-
 
@@ -79,23 +81,23 @@ vc-theorems: |-
     amidakuji ladder = List.range ((ladder.head!).length + 1) :=
     sorry
   
-  /--
+  /-
   info: [4, 2, 0, 5, 3, 6, 1]
   -/
-  #guard_msgs in
-  #eval amidakuji ["001001", "010000", "100100", "001000", "100101", "010010", "101001", "010100"]
+  -- #guard_msgs in
+  -- #eval amidakuji ["001001", "010000", "100100", "001000", "100101", "010010", "101001", "010100"]
   
-  /--
+  /-
   info: [1, 0, 2]
   -/
-  #guard_msgs in
-  #eval amidakuji ["10"]
+  -- #guard_msgs in
+  -- #eval amidakuji ["10"]
   
-  /--
+  /-
   info: [0, 1, 2, 3]
   -/
-  #guard_msgs in
-  #eval amidakuji ["000"]
+  -- #guard_msgs in
+  -- #eval amidakuji ["000"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

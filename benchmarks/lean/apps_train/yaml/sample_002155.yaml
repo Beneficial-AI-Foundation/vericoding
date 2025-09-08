@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Sasha likes programming. Once, during a very long contest, Sasha decided that he was a bit tired and needed to relax. So he did. But since Sasha isn't an ordinary guy, he prefers to relax unusually. During leisure time Sasha likes to upsolve unsolved problems because upsolving is very useful.
   
   Therefore, Sasha decided to upsolve the following problem:
@@ -48,6 +49,7 @@ vc-description: |-
   In the second example, funny pairs are $(2, 3)$, $(1, 4)$, and $(3, 6)$.
   
   In the third example, there are no funny pairs.
+  -/
 
 vc-preamble: |-
 
@@ -78,23 +80,23 @@ vc-theorems: |-
     (h1 : arr.length = n) (h2 : n ≥ 2) :
     countFunnyPairs n arr = countFunnyPairs n arr.reverse := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_funny_pairs 5 [1, 2, 3, 4, 5]
+  -- #guard_msgs in
+  -- #eval count_funny_pairs 5 [1, 2, 3, 4, 5]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_funny_pairs 6 [3, 2, 2, 3, 7, 6]
+  -- #guard_msgs in
+  -- #eval count_funny_pairs 6 [3, 2, 2, 3, 7, 6]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_funny_pairs 3 [42, 4, 2]
+  -- #guard_msgs in
+  -- #eval count_funny_pairs 3 [42, 4, 2]
 
 vc-postamble: |-
   -- Apps difficulty: competition

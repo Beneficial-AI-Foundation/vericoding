@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   **Background**   
   You most probably know, that the *kilo* used by IT-People differs from the
   *kilo* used by the rest of the world. Whereas *kilo* in kB is (mostly) intrepreted as 1024 Bytes (especially by operating systems) the non-IT *kilo* denotes the factor 1000 (as in "1 kg is 1000g"). The same goes for the prefixes mega, giga, tera, peta and so on.
@@ -28,6 +29,7 @@ vc-description: |-
   **Resources**
   If you want to read more on ...ibi-Units:  
   https://en.wikipedia.org/wiki/Kibibyte
+  -/
 
 vc-preamble: |-
   def memorysize_conversion (s : String) : String := sorry
@@ -62,23 +64,23 @@ vc-theorems: |-
     let result := memorysize_conversion input
     result.endsWith binary_units[unit_idx] := sorry
   
-  /--
+  /-
   info: '1.024 kB'
   -/
-  #guard_msgs in
-  #eval memorysize_conversion "1 KiB"
+  -- #guard_msgs in
+  -- #eval memorysize_conversion "1 KiB"
   
-  /--
+  /-
   info: '9.095 TiB'
   -/
-  #guard_msgs in
-  #eval memorysize_conversion "10 TB"
+  -- #guard_msgs in
+  -- #eval memorysize_conversion "10 TB"
   
-  /--
+  /-
   info: '4.402 GB'
   -/
-  #guard_msgs in
-  #eval memorysize_conversion "4.1 GiB"
+  -- #guard_msgs in
+  -- #eval memorysize_conversion "4.1 GiB"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

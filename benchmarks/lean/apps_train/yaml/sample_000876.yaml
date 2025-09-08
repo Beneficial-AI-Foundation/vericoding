@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Sereja have array A' that contain N integers. Now Sereja want to permute elements of the array, he want to use some permutation p, such that A[i] = A'[p[i]], where A - new array. 
   
   Lets function f(A,i) = S - A[i] - A[i +1] - ... - A[j], where j is the maximum possible index, such that A[i] + A[i + 1] + ... + A[j] <= S, if A[i] > S, f(A, i) = S.
@@ -38,6 +39,7 @@ vc-description: |-
   Lets B will be the smallest such sum. Your score will be equal to B/Sum. Lower scores will earn more points.
   
   We have 20 official test files. You must correctly solve all test files to receive OK. During the contest, your overall score is the sum of the scores on the first 4 test files. After the contest, all solutions will be rescored by the sum of the scores on the rest 16 test files. Note, that public part of the tests may not contain some border cases.
+  -/
 
 vc-preamble: |-
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Create a function that takes a string and an integer (`n`).
   
   The function should return a string that repeats the input string `n` number of times.
@@ -11,6 +12,7 @@ vc-description: |-
   "Hi", 2 --> "HiHi"
   1234, 5 --> "Not a string"
   ```
+  -/
 
 vc-preamble: |-
 
@@ -40,23 +42,23 @@ vc-theorems: |-
   theorem repeat_it_non_string_list {α : Type} [ToString α] (xs : List α) (n : Nat) :
     repeat_it (toString xs) n = "Not a string" := sorry
   
-  /--
+  /-
   info: '***'
   -/
-  #guard_msgs in
-  #eval repeat_it "*" 3
+  -- #guard_msgs in
+  -- #eval repeat_it "*" 3
   
-  /--
+  /-
   info: 'Not a string'
   -/
-  #guard_msgs in
-  #eval repeat_it 24 3
+  -- #guard_msgs in
+  -- #eval repeat_it 24 3
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval repeat_it "Hello" 0
+  -- #guard_msgs in
+  -- #eval repeat_it "Hello" 0
 
 vc-postamble: |-
   -- Apps difficulty: introductory

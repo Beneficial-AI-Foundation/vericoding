@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Zombies zombies everywhere!! 
   In a parallel world of zombies, there are N zombies. There are infinite number of unused cars, each of same model only differentiated by the their colors. The cars are of K colors.
   
@@ -68,6 +69,7 @@ vc-description: |-
   A hierarchy to maximize the number of possibilities is Z1 is the parent of Z2, Z2 is the parent of Z3.
   
   Zombie Z1 can choose one of red, blue or green cars. Z2 can choose one of the remaining two colors (as its car's color can not be same as its parent car.). Z3 can also choose his car in two colors, (one of them could be color same as Z1, and other being the color which is not same as cars of both Z1 and Z2.). This way, there can be 12 different ways of selecting the cars.
+  -/
 
 vc-preamble: |-
   def solve_zombie_cars (n k : Nat) : Nat :=

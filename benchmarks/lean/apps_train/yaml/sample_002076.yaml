@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Iahub is very proud of his recent discovery, propagating trees. Right now, he invented a new tree, called xor-tree. After this new revolutionary discovery, he invented a game for kids which uses xor-trees.
   
   The game is played on a tree having n nodes, numbered from 1 to n. Each node i has an initial value init_{i}, which is either 0 or 1. The root of the tree is node 1.
@@ -36,6 +37,7 @@ vc-description: |-
   2
   4
   7
+  -/
 
 vc-preamble: |-
   def solve_xor_tree (n : Nat) (edges : List (Nat × Nat)) (init : List Nat) (goal : List Nat) : List Nat :=
@@ -66,11 +68,11 @@ vc-theorems: |-
     solve_xor_tree 1 [] init goal = [] :=
     sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval len solve_xor_tree(n, edges, init, goal)
+  -- #guard_msgs in
+  -- #eval len solve_xor_tree(n, edges, init, goal)
 
 vc-postamble: |-
   -- Apps difficulty: competition

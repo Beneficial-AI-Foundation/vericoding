@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Problem description.
   
   This problem is simple and will introduce you to the Dynamic Programming.
@@ -98,6 +99,7 @@ vc-description: |-
   As it was calculated while solving the first query, it won’t solve it again and will directly give the answer. 
   
   Total 1 function calls.
+  -/
 
 vc-preamble: |-
 

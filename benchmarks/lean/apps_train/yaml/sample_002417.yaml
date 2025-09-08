@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a non-empty string s, you may delete at most one character.  Judge whether you can make it a palindrome.
   
   Example 1:
@@ -16,6 +17,7 @@ vc-description: |-
   
   The string will only contain lowercase characters a-z.
   The maximum length of the string is 50000.
+  -/
 
 vc-preamble: |-
   def valid_palindrome (s : String) : Bool := sorry
@@ -59,23 +61,23 @@ vc-theorems: |-
     ¬(valid_palindrome s) :=
     sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval valid_palindrome "aba"
+  -- #guard_msgs in
+  -- #eval valid_palindrome "aba"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval valid_palindrome "abca"
+  -- #guard_msgs in
+  -- #eval valid_palindrome "abca"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval valid_palindrome "abc"
+  -- #guard_msgs in
+  -- #eval valid_palindrome "abc"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

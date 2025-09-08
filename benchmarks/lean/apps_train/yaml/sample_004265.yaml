@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Convergents of e
   The square root of 2 can be written as an infinite continued fraction.
   ![img](http://img0.ph.126.net/x1Hyc4iHQg0Jz2EInmT3ag==/6597639313681841979.png)  
@@ -22,6 +23,7 @@ vc-description: |-
   Find the sum of digits in the numerator of the mth convergent of the continued fraction for e.
   
   - Powered by [Project Euler](https://projecteuler.net/problem=65)
+  -/
 
 vc-preamble: |-
 
@@ -50,29 +52,29 @@ vc-theorems: |-
     ∃ k, convergents_of_e n < 10^k :=
     sorry
   
-  /--
+  /-
   info: 17
   -/
-  #guard_msgs in
-  #eval convergents_of_e 10
+  -- #guard_msgs in
+  -- #eval convergents_of_e 10
   
-  /--
+  /-
   info: 125
   -/
-  #guard_msgs in
-  #eval convergents_of_e 57
+  -- #guard_msgs in
+  -- #eval convergents_of_e 57
   
-  /--
+  /-
   info: 298
   -/
-  #guard_msgs in
-  #eval convergents_of_e 125
+  -- #guard_msgs in
+  -- #eval convergents_of_e 125
   
-  /--
+  /-
   info: 938
   -/
-  #guard_msgs in
-  #eval convergents_of_e 298
+  -- #guard_msgs in
+  -- #eval convergents_of_e 298
 
 vc-postamble: |-
   -- Apps difficulty: introductory

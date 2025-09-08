@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Above: An overhead view of the house in one of the tests. The green outline indicates the path taken by K
   A mouse named K has found a new home on Ash Tree Lane. K wants to know the size of the interior of the house (which consists of just one room). K is able to measure precise distances in any direction he runs. But K is wary of open spaces and will only run alongside walls, as mice tend to do. In this house the walls always connect at right angles.
   K's plan is to run alongside the walls, traversing the entire perimeter of the room, starting and ending at K's mousehole. K memorizes the path as an alternating sequence of distance traveled and directional turn. Your task is to write a function that will find the area of the house interior when given K's path.
@@ -43,6 +44,7 @@ vc-description: |-
   - This kata was inspired by [Kafka](https://en.wikipedia.org/wiki/A_Little_Fable) and [Danielewski](https://en.wikipedia.org/wiki/House_of_Leaves)
   
   If you enjoyed this kata, be sure to check out my other katas
+  -/
 
 vc-preamble: |-
   def mouse_path (s : String) : Option Nat := sorry
@@ -82,23 +84,23 @@ vc-theorems: |-
       (newPoints.get! 0).2 = (newPoints.get! 1).2
     := sorry
   
-  /--
+  /-
   info: 49
   -/
-  #guard_msgs in
-  #eval mouse_path "4R2L1R5R9R4R4L3"
+  -- #guard_msgs in
+  -- #eval mouse_path "4R2L1R5R9R4R4L3"
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval mouse_path "4R2L1R5"
+  -- #guard_msgs in
+  -- #eval mouse_path "4R2L1R5"
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval mouse_path "2R2R2L2L"
+  -- #guard_msgs in
+  -- #eval mouse_path "2R2R2L2L"
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   Given an integer array `arr`. Your task is to remove one element, maximize the product of elements. 
   
@@ -27,6 +28,7 @@ vc-description: |-
   For `arr = [-1, -2, -3]`, the output should be `-1`.
   
   For `arr = [-1, -2, -3, -4]`, the output should be `-4`.
+  -/
 
 vc-preamble: |-
   def minimum (l : List Int) : Option Int := sorry
@@ -63,23 +65,23 @@ vc-theorems: |-
   theorem maximum_product_single_element (x : Int) :
     maximum_product [x] = x := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval maximum_product [1, 2, 3]
+  -- #guard_msgs in
+  -- #eval maximum_product [1, 2, 3]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval maximum_product [-1, 2, -3]
+  -- #guard_msgs in
+  -- #eval maximum_product [-1, 2, -3]
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval maximum_product [-1, -2, -3]
+  -- #guard_msgs in
+  -- #eval maximum_product [-1, -2, -3]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

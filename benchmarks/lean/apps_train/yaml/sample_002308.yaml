@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given two strings s and t , write a function to determine if t is an anagram of s.
   
   Example 1:
@@ -16,6 +17,7 @@ vc-description: |-
   
   Follow up:
   What if the inputs contain unicode characters? How would you adapt your solution to such case?
+  -/
 
 vc-preamble: |-
   def is_anagram (s t : String) : Bool :=
@@ -51,23 +53,23 @@ vc-theorems: |-
     is_anagram s t = true :=
     sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_anagram "anagram" "nagaram"
+  -- #guard_msgs in
+  -- #eval is_anagram "anagram" "nagaram"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_anagram "rat" "car"
+  -- #guard_msgs in
+  -- #eval is_anagram "rat" "car"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_anagram "hello" "hello"
+  -- #guard_msgs in
+  -- #eval is_anagram "hello" "hello"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

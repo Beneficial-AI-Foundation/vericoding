@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We are given the head node root of a binary tree, where additionally every node's value is either a 0 or a 1.
   Return the same tree where every subtree (of the given tree) not containing a 1 has been removed.
   (Recall that the subtree of a node X is X, plus every node that is a descendant of X.)
@@ -22,6 +23,7 @@ vc-description: |-
   
   The binary tree will have at most 200 nodes.
   The value of each node will only be 0 or 1.
+  -/
 
 vc-preamble: |-
   def pruneTree : BTree → Option BTree 
@@ -67,23 +69,23 @@ vc-theorems: |-
   theorem prune_tree_one :
     pruneTree (BTree.node 1 BTree.nil BTree.nil) = some (BTree.node 1 BTree.nil BTree.nil) := sorry
   
-  /--
+  /-
   info: [1, None, 0, None, 1]
   -/
-  #guard_msgs in
-  #eval tree_to_list prune_tree(test1)
+  -- #guard_msgs in
+  -- #eval tree_to_list prune_tree(test1)
   
-  /--
+  /-
   info: [1, None, 1, None, 1]
   -/
-  #guard_msgs in
-  #eval tree_to_list prune_tree(test2)
+  -- #guard_msgs in
+  -- #eval tree_to_list prune_tree(test2)
   
-  /--
+  /-
   info: [1, 1, 0, 1, 1, None, 1]
   -/
-  #guard_msgs in
-  #eval tree_to_list prune_tree(test3)
+  -- #guard_msgs in
+  -- #eval tree_to_list prune_tree(test3)
 
 vc-postamble: |-
   -- Apps difficulty: interview

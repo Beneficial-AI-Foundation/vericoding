@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   > When no more interesting kata can be resolved, I just choose to create the new kata, to solve their own, to enjoy the process  --myjinxin2015 said
   
   # Description:
@@ -61,6 +62,7 @@ vc-description: |-
   
        o
   ```
+  -/
 
 vc-preamble: |-
 
@@ -105,23 +107,23 @@ vc-theorems: |-
   theorem idempotent {m n : Nat} (h₁ : 0 < m) (h₂ : 0 < n) :
     mysterious_pattern m n = mysterious_pattern m n := sorry
   
-  /--
+  /-
   info: '    o\noo\n  o\n   o'
   -/
-  #guard_msgs in
-  #eval mysterious_pattern 5 5
+  -- #guard_msgs in
+  -- #eval mysterious_pattern 5 5
   
-  /--
+  /-
   info: '     o     o\noo  o oo  o\n  o     o\n   o     o'
   -/
-  #guard_msgs in
-  #eval mysterious_pattern 12 4
+  -- #guard_msgs in
+  -- #eval mysterious_pattern 12 4
   
-  /--
+  /-
   info: 'o'
   -/
-  #guard_msgs in
-  #eval mysterious_pattern 1 1
+  -- #guard_msgs in
+  -- #eval mysterious_pattern 1 1
 
 vc-postamble: |-
   -- Apps difficulty: introductory

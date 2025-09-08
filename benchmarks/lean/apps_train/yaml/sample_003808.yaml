@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function that takes an arbitrary number of strings and interlaces them (combines them by alternating characters from each string).
   
   For example `combineStrings('abc', '123')` should return `'a1b2c3'`.
@@ -12,6 +13,7 @@ vc-description: |-
   For example `combineStrings('abc', '123', '£$%')` should return `'a1£b2$c3%'`.
   
   **Note: if only one argument is passed return only that string. If no arguments are passed return an empty string.**
+  -/
 
 vc-preamble: |-
   def combine_strings : List String → String
@@ -44,23 +46,23 @@ vc-theorems: |-
     combine_strings [s] = s :=
   sorry
   
-  /--
+  /-
   info: 'abc'
   -/
-  #guard_msgs in
-  #eval combine_strings "abc"
+  -- #guard_msgs in
+  -- #eval combine_strings "abc"
   
-  /--
+  /-
   info: 'a1b2c3'
   -/
-  #guard_msgs in
-  #eval combine_strings "abc" "123"
+  -- #guard_msgs in
+  -- #eval combine_strings "abc" "123"
   
-  /--
+  /-
   info: 'a1$b2%c3^d&'
   -/
-  #guard_msgs in
-  #eval combine_strings "abcd" "123" "$%^&"
+  -- #guard_msgs in
+  -- #eval combine_strings "abcd" "123" "$%^&"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

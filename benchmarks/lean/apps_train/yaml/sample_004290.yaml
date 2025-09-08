@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given the number pledged for a year, current value and name of the month, return string that gives information about the challenge status:
   
   - ahead of schedule
@@ -20,6 +21,7 @@ vc-description: |-
   - you do not need to do any prechecks (input will always be a natural number and correct name of the month)
   - months should be as even as possible (i.e. for 100 items: January, February, March and April - 9, other months 8)
   - count only the item for completed months (i.e. for March check the values from January and February) and it means that for January you should always return `"You are on track."`.
+  -/
 
 vc-preamble: |-
 
@@ -80,23 +82,23 @@ vc-theorems: |-
       else
         s!"{pledged} behind schedule." := sorry
   
-  /--
+  /-
   info: 'You are on track.'
   -/
-  #guard_msgs in
-  #eval check_challenge 12 1 "February"
+  -- #guard_msgs in
+  -- #eval check_challenge 12 1 "February"
   
-  /--
+  /-
   info: 'You are 1 behind schedule.'
   -/
-  #guard_msgs in
-  #eval check_challenge 12 1 "March"
+  -- #guard_msgs in
+  -- #eval check_challenge 12 1 "March"
   
-  /--
+  /-
   info: 'Challenge is completed.'
   -/
-  #guard_msgs in
-  #eval check_challenge 12 12 "September"
+  -- #guard_msgs in
+  -- #eval check_challenge 12 12 "September"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

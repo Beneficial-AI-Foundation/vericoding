@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Description:
   
   Remove the minimum number of exclamation marks from the start/end of each word in the sentence to make their amount equal on both sides.
@@ -18,6 +19,7 @@ vc-description: |-
   remove("!!Hi! !Hi!!") === "!Hi! !Hi!"
   remove("!!!!Hi!! !!!!Hi !Hi!!!") === "!!Hi!! Hi !Hi!"
   ```
+  -/
 
 vc-preamble: |-
 
@@ -39,23 +41,23 @@ vc-theorems: |-
   theorem preserves_no_exclamation_text (s : String) (h : ∀ c ∈ s.data, c ≠ '!') : 
     removeEqualExclamations s = s := by sorry
   
-  /--
+  /-
   info: 'Hi'
   -/
-  #guard_msgs in
-  #eval remove_equal_exclamations "Hi!"
+  -- #guard_msgs in
+  -- #eval remove_equal_exclamations "Hi!"
   
-  /--
+  /-
   info: '!Hi! Hi'
   -/
-  #guard_msgs in
-  #eval remove_equal_exclamations "!Hi! Hi!"
+  -- #guard_msgs in
+  -- #eval remove_equal_exclamations "!Hi! Hi!"
   
-  /--
+  /-
   info: '!Hi! !Hi!'
   -/
-  #guard_msgs in
-  #eval remove_equal_exclamations "!!Hi! !Hi!!"
+  -- #guard_msgs in
+  -- #eval remove_equal_exclamations "!!Hi! !Hi!!"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

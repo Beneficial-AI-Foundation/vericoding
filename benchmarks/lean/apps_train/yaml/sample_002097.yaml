@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   John Smith knows that his son, Thomas Smith, is among the best students in his class and even in his school. After the students of the school took the exams in English, German, Math, and History, a table of results was formed.
   
   There are $n$ students, each of them has a unique id (from $1$ to $n$). Thomas's id is $1$. Every student has four scores correspond to his or her English, German, Math, and History scores. The students are given in order of increasing of their ids.
@@ -46,6 +47,7 @@ vc-description: |-
   In the first sample, the students got total scores: $398$, $400$, $398$, $379$, and $357$. Among the $5$ students, Thomas and the third student have the second highest score, but Thomas has a smaller id, so his rank is $2$.
   
   In the second sample, the students got total scores: $369$, $240$, $310$, $300$, $300$, and $0$. Among the $6$ students, Thomas got the highest score, so his rank is $1$.
+  -/
 
 vc-preamble: |-
   def sumList (xs : List Nat) : Nat :=
@@ -97,23 +99,23 @@ vc-theorems: |-
     find_thomas_rank 3 [[0,0,0,0], [100,100,100,100], [100,100,100,100]] = 3 :=
   sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_thomas_rank 5 [[100, 98, 100, 100], [100, 100, 100, 100], [100, 100, 99, 99], [90, 99, 90, 100], [100, 98, 60, 99]]
+  -- #guard_msgs in
+  -- #eval find_thomas_rank 5 [[100, 98, 100, 100], [100, 100, 100, 100], [100, 100, 99, 99], [90, 99, 90, 100], [100, 98, 60, 99]]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval find_thomas_rank 6 [[100, 80, 90, 99], [60, 60, 60, 60], [90, 60, 100, 60], [60, 100, 60, 80], [100, 100, 0, 100], [0, 0, 0, 0]]
+  -- #guard_msgs in
+  -- #eval find_thomas_rank 6 [[100, 80, 90, 99], [60, 60, 60, 60], [90, 60, 100, 60], [60, 100, 60, 80], [100, 100, 0, 100], [0, 0, 0, 0]]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval find_thomas_rank 1 [[0, 0, 0, 0]]
+  -- #guard_msgs in
+  -- #eval find_thomas_rank 1 [[0, 0, 0, 0]]
 
 vc-postamble: |-
   -- Apps difficulty: competition

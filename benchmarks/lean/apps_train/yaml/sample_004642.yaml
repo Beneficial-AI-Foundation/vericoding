@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function generator that will generate the first `n` primes grouped in tuples of size `m`. If there are not enough primes for the last tuple it will have the remaining values as `None`.
   
   ## Examples
@@ -18,6 +19,7 @@ vc-description: |-
   ```
   
   Note: large numbers of `n` will be tested, up to 50000
+  -/
 
 vc-preamble: |-
   def get_primes (n : Nat) (m : Nat := 2) : List (List Nat) :=

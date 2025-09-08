@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Rodriguez is a happy and content farmer. He has got a square field of side length $x$. Miguel, his son has himself grown into a man and his father wants to gift him something out of which he can make a living. So he gift's his son a square piece of land cut out from a corner of his field of side length $ y (y < x) $ leaving him with a L-shaped land.
   But in Spanish tradition, it is considered inauspicious to own something which is prime in number. This worries Rodriguez as he doesn't want his left out area to be a prime number leading to bad luck. Find whether the spilt will be in terms with the tradition leaving Rodriguez happy.
   
@@ -27,6 +28,7 @@ vc-description: |-
   Left out area is 24, which is not prime.
   In case 2:
   Left out area is 11, which is prime.
+  -/
 
 vc-preamble: |-
   def is_prime (n : Nat) : Bool :=
@@ -60,23 +62,23 @@ vc-theorems: |-
     check_land_split x 0 = "NO" ↔ is_prime (x*x) :=
     sorry
   
-  /--
+  /-
   info: 'YES'
   -/
-  #guard_msgs in
-  #eval check_land_split 7 5
+  -- #guard_msgs in
+  -- #eval check_land_split 7 5
   
-  /--
+  /-
   info: 'NO'
   -/
-  #guard_msgs in
-  #eval check_land_split 6 5
+  -- #guard_msgs in
+  -- #eval check_land_split 6 5
   
-  /--
+  /-
   info: 'YES'
   -/
-  #guard_msgs in
-  #eval check_land_split 10 8
+  -- #guard_msgs in
+  -- #eval check_land_split 10 8
 
 vc-postamble: |-
   -- Apps difficulty: interview

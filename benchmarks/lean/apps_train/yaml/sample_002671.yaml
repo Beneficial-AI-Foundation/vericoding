@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Implement the [Polybius square cipher](http://en.wikipedia.org/wiki/Polybius_square).
   
   Replace every letter with a two digit number. The first digit is the row number, and the second digit is the column number of following square. Letters `'I'` and `'J'` are both 24 in this cipher:
@@ -24,6 +25,7 @@ vc-description: |-
   polybius('CODEWARS') # "1334141552114243"
   polybius('POLYBIUS SQUARE CIPHER') # "3534315412244543 434145114215 132435231542"
   ```
+  -/
 
 vc-preamble: |-
 
@@ -58,23 +60,23 @@ vc-theorems: |-
     polybius (text1 ++ text2) = polybius text1 ++ polybius text2 :=
     sorry
   
-  /--
+  /-
   info: '3534315412244543'
   -/
-  #guard_msgs in
-  #eval polybius "POLYBIUS"
+  -- #guard_msgs in
+  -- #eval polybius "POLYBIUS"
   
-  /--
+  /-
   info: '1334141552114243'
   -/
-  #guard_msgs in
-  #eval polybius "CODEWARS"
+  -- #guard_msgs in
+  -- #eval polybius "CODEWARS"
   
-  /--
+  /-
   info: '3534315412244543 434145114215 132435231542'
   -/
-  #guard_msgs in
-  #eval polybius "POLYBIUS SQUARE CIPHER"
+  -- #guard_msgs in
+  -- #eval polybius "POLYBIUS SQUARE CIPHER"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

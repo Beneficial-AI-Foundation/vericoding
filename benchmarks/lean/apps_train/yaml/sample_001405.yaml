@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The XOR pair representation (XPR) of a positive integer $N$ is defined as a pair of integers $(A, B)$ such that:
   - $1 \le A \le B \le N$
   - $A \oplus B = N$
@@ -32,6 +33,7 @@ vc-description: |-
   28
   79
   7485
+  -/
 
 vc-preamble: |-
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Find the minimum area of a square land on which you can place two identical rectangular $a \times b$ houses. The sides of the houses should be parallel to the sides of the desired square land.
   
   Formally,   You are given two identical rectangles with side lengths $a$ and $b$ ($1 \le a, b \le 100$) — positive integers (you are given just the sizes, but not their positions).  Find the square of the minimum area that contains both given rectangles. Rectangles can be rotated (both or just one), moved, but the sides of the rectangles should be parallel to the sides of the desired square. 
@@ -42,6 +43,7 @@ vc-description: |-
   -----Note-----
   
   Below are the answers for the first two test cases:  [Image]   [Image]
+  -/
 
 vc-preamble: |-
 
@@ -58,23 +60,23 @@ vc-theorems: |-
   theorem min_square_area_commutative (a b : Nat) (h : a > 0 ∧ b > 0) :
     min_square_area a b = min_square_area b a := sorry
   
-  /--
+  /-
   info: 16
   -/
-  #guard_msgs in
-  #eval min_square_area 3 2
+  -- #guard_msgs in
+  -- #eval min_square_area 3 2
   
-  /--
+  /-
   info: 16
   -/
-  #guard_msgs in
-  #eval min_square_area 4 2
+  -- #guard_msgs in
+  -- #eval min_square_area 4 2
   
-  /--
+  /-
   info: 40000
   -/
-  #guard_msgs in
-  #eval min_square_area 100 100
+  -- #guard_msgs in
+  -- #eval min_square_area 100 100
 
 vc-postamble: |-
   -- Apps difficulty: introductory

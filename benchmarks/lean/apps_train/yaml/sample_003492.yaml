@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Here you have to do some mathematical operations on a "dirty string". This kata checks some basics, it's not too difficult.
   
   __So what to do?__
@@ -15,6 +16,7 @@ vc-description: |-
   First there are some static tests, later on random tests too...
   
   ### Hope you have fun! :-)
+  -/
 
 vc-preamble: |-
   def calculate_string (s : String) : String := sorry
@@ -54,23 +56,23 @@ vc-theorems: |-
     (n : Int) (h : -1000000 ≤ n ∧ n ≤ 1000000)
     : toString (String.toInt! (calculate_string (toString n))) = toString n := sorry
   
-  /--
+  /-
   info: '47'
   -/
-  #guard_msgs in
-  #eval calculate_string ";$%§fsdfsd235??df/sdfgf5gh.000kk0000"
+  -- #guard_msgs in
+  -- #eval calculate_string ";$%§fsdfsd235??df/sdfgf5gh.000kk0000"
   
-  /--
+  /-
   info: '54929268'
   -/
-  #guard_msgs in
-  #eval calculate_string "sdfsd23454sdf*2342"
+  -- #guard_msgs in
+  -- #eval calculate_string "sdfsd23454sdf*2342"
   
-  /--
+  /-
   info: '234676'
   -/
-  #guard_msgs in
-  #eval calculate_string "fsdfsd234.4554s4234df+sf234442"
+  -- #guard_msgs in
+  -- #eval calculate_string "fsdfsd234.4554s4234df+sf234442"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

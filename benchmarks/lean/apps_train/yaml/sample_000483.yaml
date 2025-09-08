@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Return the largest possible k such that there exists a_1, a_2, ..., a_k such that:
   
   Each a_i is a non-empty string;
@@ -29,6 +30,7 @@ vc-description: |-
   
   text consists only of lowercase English characters.
   1 <= text.length <= 1000
+  -/
 
 vc-preamble: |-
   def longestDecomposition (s : String) : Nat :=
@@ -54,23 +56,23 @@ vc-theorems: |-
     longestDecomposition (s ++ s) ≥ 2 * longestDecomposition s :=
     sorry
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval longestDecomposition "ghiabcdefhelloadamhelloabcdefghi"
+  -- #guard_msgs in
+  -- #eval longestDecomposition "ghiabcdefhelloadamhelloabcdefghi"
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval longestDecomposition "merchant"
+  -- #guard_msgs in
+  -- #eval longestDecomposition "merchant"
   
-  /--
+  /-
   info: 11
   -/
-  #guard_msgs in
-  #eval longestDecomposition "antaprezatepzapreanta"
+  -- #guard_msgs in
+  -- #eval longestDecomposition "antaprezatepzapreanta"
 
 vc-postamble: |-
   -- Apps difficulty: interview

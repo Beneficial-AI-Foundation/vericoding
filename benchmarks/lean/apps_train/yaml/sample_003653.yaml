@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In computer science, cycle detection is the algorithmic problem of finding a cycle in a sequence of iterated function values.
   
   For any function ƒ, and any initial value x0 in S, the sequence of iterated function values
@@ -23,6 +24,7 @@ vc-description: |-
   This kata is followed by two other cycle detection algorithms: 
   Loyd's: http://www.codewars.com/kata/cycle-detection-floyds-tortoise-and-the-hare
   Bret's: http://www.codewars.com/kata/cycle-detection-brents-tortoise-and-hare
+  -/
 
 vc-preamble: |-
 
@@ -38,41 +40,41 @@ vc-definitions: |-
     cycle s = [] := sorry
 
 vc-theorems: |-
-  /--
+  /-
   info: [0, 3]
   -/
-  #guard_msgs in
-  #eval cycle [2, 3, 4, 2, 3, 4]
+  -- #guard_msgs in
+  -- #eval cycle [2, 3, 4, 2, 3, 4]
   
-  /--
+  /-
   info: [1, 3]
   -/
-  #guard_msgs in
-  #eval cycle [1, 2, 3, 4, 2, 3, 4]
+  -- #guard_msgs in
+  -- #eval cycle [1, 2, 3, 4, 2, 3, 4]
   
-  /--
+  /-
   info: [0, 1]
   -/
-  #guard_msgs in
-  #eval cycle [1, 1, 1, 1, 1]
+  -- #guard_msgs in
+  -- #eval cycle [1, 1, 1, 1, 1]
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval cycle []
+  -- #guard_msgs in
+  -- #eval cycle []
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval cycle [7]
+  -- #guard_msgs in
+  -- #eval cycle [7]
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval cycle [1, 2, 3, 4]
+  -- #guard_msgs in
+  -- #eval cycle [1, 2, 3, 4]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

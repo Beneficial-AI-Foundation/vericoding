@@ -1,7 +1,9 @@
 vc-description: |-
+  /-
   Your task in this kata is to implement a function that calculates the sum of the integers inside a string. For example, in the string "The30quick20brown10f0x1203jumps914ov3r1349the102l4zy dog", the sum of the integers is 3635.
   
   *Note: only positive integers will be tested.*
+  -/
 
 vc-preamble: |-
   def sumOfIntegersInString (s : String) : Nat :=
@@ -36,23 +38,23 @@ vc-theorems: |-
     sumOfIntegersInString s ≥ 0 := by
     sorry
   
-  /--
+  /-
   info: 3635
   -/
-  #guard_msgs in
-  #eval sum_of_integers_in_string "The30quick20brown10f0x1203jumps914ov3r1349the102l4zy dog"
+  -- #guard_msgs in
+  -- #eval sum_of_integers_in_string "The30quick20brown10f0x1203jumps914ov3r1349the102l4zy dog"
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval sum_of_integers_in_string "12"
+  -- #guard_msgs in
+  -- #eval sum_of_integers_in_string "12"
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval sum_of_integers_in_string "h3llo w0rld"
+  -- #guard_msgs in
+  -- #eval sum_of_integers_in_string "h3llo w0rld"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

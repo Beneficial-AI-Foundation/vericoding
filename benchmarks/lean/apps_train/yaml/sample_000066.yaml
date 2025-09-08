@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   This problem is different from the easy version. In this version Ujan makes at most $2n$ swaps. In addition, $k \le 1000, n \le 50$ and it is necessary to print swaps themselves. You can hack this problem if you solve it. But you can hack the previous problem only if you solve both problems.
   
   After struggling and failing many times, Ujan decided to try to clean up his house again. He decided to get his strings in order first.
@@ -48,6 +49,7 @@ vc-description: |-
   1 2
   3 1
   2 3
+  -/
 
 vc-preamble: |-
   def solve_string_swaps (n: Nat) (s t: String) : String × List (Nat × Nat) :=

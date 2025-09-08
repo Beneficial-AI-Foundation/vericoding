@@ -1,5 +1,7 @@
 vc-description: |-
+  /-
   Write a method named `getExponent(n,p)` that returns the largest integer exponent `x` such that p^(x) evenly divides `n`. if `p<=1` the method should return `null`/`None` (throw an `ArgumentOutOfRange` exception in C#).
+  -/
 
 vc-preamble: |-
   def get_exponent (n p : Int) : Option Int :=
@@ -34,23 +36,23 @@ vc-theorems: |-
   theorem get_exponent_prime_power {n p : Int} (h1 : n ≥ 2) (h2 : p = 2) :
     get_exponent (n * (pow p 5)) p = Option.some ((get_exponent n p).getD 0 + 5) := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval get_exponent 27 3
+  -- #guard_msgs in
+  -- #eval get_exponent 27 3
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval get_exponent 28 2
+  -- #guard_msgs in
+  -- #eval get_exponent 28 2
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval get_exponent 10 0
+  -- #guard_msgs in
+  -- #eval get_exponent 10 0
 
 vc-postamble: |-
   -- Apps difficulty: introductory

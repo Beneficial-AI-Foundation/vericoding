@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A [perfect power](https://en.wikipedia.org/wiki/Perfect_power) is a classification of positive integers:
   
   > In mathematics, a **perfect power** is a positive integer that can be expressed as an integer power of another positive integer. More formally, n is a perfect power if there exist natural numbers m > 1, and k > 1 such that m^(k) = n.
@@ -13,6 +14,7 @@ vc-description: |-
   isPP(9) => [3,2]
   isPP(5) => None
   ```
+  -/
 
 vc-preamble: |-
 
@@ -40,23 +42,23 @@ vc-theorems: |-
       b ^ e = base ^ exp
     := sorry
   
-  /--
+  /-
   info: [2, 2]
   -/
-  #guard_msgs in
-  #eval isPP 4
+  -- #guard_msgs in
+  -- #eval isPP 4
   
-  /--
+  /-
   info: [3, 2]
   -/
-  #guard_msgs in
-  #eval isPP 9
+  -- #guard_msgs in
+  -- #eval isPP 9
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval isPP 5
+  -- #guard_msgs in
+  -- #eval isPP 5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

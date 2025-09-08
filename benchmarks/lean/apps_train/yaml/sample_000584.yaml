@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The bustling town of Siruseri has just one sports stadium. There are a number of schools, colleges, sports associations, etc. that use this stadium as the venue for their sports events.
   Anyone interested in using the stadium has to apply to the Manager of the stadium indicating both the starting date (a positive integer $S$) and the length of the sporting event in days (a positive integer $D$) they plan to organise. Since these requests could overlap it may not be possible to satisfy everyone. Also, there should be at least one gap day between any two approved events, so that the stadium can be cleaned.
   It is the job of the Manager to decide who gets to use the stadium and who does not. The Manager, being a genial man, would like to keep as many organisations happy as possible and hence would like to allocate the stadium so that maximum number of events are held.
@@ -36,6 +37,7 @@ vc-description: |-
   
   -----Sample output:-----
   3
+  -/
 
 vc-preamble: |-
 
@@ -68,23 +70,23 @@ vc-theorems: |-
   theorem maxStadiumEvents_all_overlapping (events : List (Nat × Nat)) (h : events.length ≥ 2) :
     maxStadiumEvents (List.map (fun e => (0, e.2)) events) = 1 := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval max_stadium_events [(2, 5), (9, 7), (15, 6), (9, 3)]
+  -- #guard_msgs in
+  -- #eval max_stadium_events [(2, 5), (9, 7), (15, 6), (9, 3)]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval max_stadium_events [(1, 5)]
+  -- #guard_msgs in
+  -- #eval max_stadium_events [(1, 5)]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval max_stadium_events [(1, 2), (4, 2), (7, 2)]
+  -- #guard_msgs in
+  -- #eval max_stadium_events [(1, 2), (4, 2), (7, 2)]
 
 vc-postamble: |-
   -- Apps difficulty: interview

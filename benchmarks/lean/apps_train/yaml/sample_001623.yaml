@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Indian National Olympiad in Informatics 2014
   Due to resurfacing work, all north-south traffic on the highway is being diverted through the town of Siruseri. Siruseri is a modern, planned town and the section of roads used for the diversion forms a rectangular grid where all cars enter at the top-left intersection (north- west) and leave at the bottom-right intersection (south-east). All roads within the grid are one-way, allowing traffic to move north to south (up-down) and west to east (left-right) only.
   The town authorities are concerned about highway drivers overspeeding through the town. To slow them down, they have made a rule that no car may travel more than d consecutive road segments in the same direction without turning. (Closed-circuit TV cameras have been installed to enforce this rule.)
@@ -35,6 +36,7 @@ vc-description: |-
   5
   
   Note: Your program should not print anything other than what is specified in the output format. Please remove all diagnostic print statements before making your final submission. A program with extraneous output will be treated as incorrect!
+  -/
 
 vc-preamble: |-
 
@@ -64,23 +66,23 @@ vc-theorems: |-
     0 < result ∧ result < 20011 := by
     sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval find_paths 3 4 2 [[1, 1, 1, 1], [0, 1, 1, 1], [1, 1, 1, 1]]
+  -- #guard_msgs in
+  -- #eval find_paths 3 4 2 [[1, 1, 1, 1], [0, 1, 1, 1], [1, 1, 1, 1]]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_paths 2 2 1 [[1, 1], [1, 1]]
+  -- #guard_msgs in
+  -- #eval find_paths 2 2 1 [[1, 1], [1, 1]]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_paths 3 3 2 [[1, 1, 1], [1, 0, 1], [1, 1, 1]]
+  -- #guard_msgs in
+  -- #eval find_paths 3 3 2 [[1, 1, 1], [1, 0, 1], [1, 1, 1]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

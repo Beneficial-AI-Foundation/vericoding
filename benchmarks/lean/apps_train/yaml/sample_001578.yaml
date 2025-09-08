@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A product-sum number is a natural number N which can be expressed as both the product and the sum of the same set of numbers.
   
   N = a1 × a2 × ... × ak = a1 + a2 + ... + ak
@@ -19,6 +20,7 @@ vc-description: |-
   Your task is to write an algorithm to compute the sum of all minimal product-sum numbers where 2 ≤ k ≤ n.
   
   Courtesy of ProjectEuler.net
+  -/
 
 vc-preamble: |-
 
@@ -43,23 +45,23 @@ vc-theorems: |-
     productsum (n + 1) > productsum n :=
     sorry
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval productsum 3
+  -- #guard_msgs in
+  -- #eval productsum 3
   
-  /--
+  /-
   info: 30
   -/
-  #guard_msgs in
-  #eval productsum 6
+  -- #guard_msgs in
+  -- #eval productsum 6
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval productsum 2
+  -- #guard_msgs in
+  -- #eval productsum 2
 
 vc-postamble: |-
   -- Apps difficulty: interview

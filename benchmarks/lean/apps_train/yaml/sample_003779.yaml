@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   If you like Taco Bell, you will be familiar with their signature doritos locos taco. They're very good.
   
   Why can't everything be a taco? We're going to attempt that here, turning every word we find into the taco bell recipe with each ingredient.
@@ -25,6 +26,7 @@ vc-description: |-
   Ignore all other letters; we don't want our taco uneccesarily clustered or else it will be too difficult to eat.
   
   Note that no matter what ingredients are passed, our taco will always have a shell.
+  -/
 
 vc-preamble: |-
 
@@ -49,23 +51,23 @@ vc-theorems: |-
     let middle := result.drop 1 |>.dropLast
     ∀ ing ∈ middle, ing ∈ VALID_INGREDIENTS := sorry
   
-  /--
+  /-
   info: ['shell', 'shell']
   -/
-  #guard_msgs in
-  #eval tacofy ""
+  -- #guard_msgs in
+  -- #eval tacofy ""
   
-  /--
+  /-
   info: ['shell', 'beef', 'guacamole', 'lettuce', 'shell']
   -/
-  #guard_msgs in
-  #eval tacofy "ogl"
+  -- #guard_msgs in
+  -- #eval tacofy "ogl"
   
-  /--
+  /-
   info: ['shell', 'beef', 'tomato', 'lettuce', 'cheese', 'guacamole', 'salsa', 'shell']
   -/
-  #guard_msgs in
-  #eval tacofy "abtlcgs"
+  -- #guard_msgs in
+  -- #eval tacofy "abtlcgs"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

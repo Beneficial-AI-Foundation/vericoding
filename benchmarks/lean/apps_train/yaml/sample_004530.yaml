@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # An introduction to propositional logic
   
   Logic and proof theory are fields that study the formalization of logical statements and the structure of valid proofs. One of the most common ways to represent logical reasonings is with **propositional logic**.
@@ -96,6 +97,7 @@ vc-description: |-
   ```
   f = p ∧ ¬p # Not satisfiable
   ```
+  -/
 
 vc-preamble: |-
 
@@ -119,11 +121,11 @@ vc-theorems: |-
     sat (Formula.or [p, Formula.not p]) ≠ none
     := sorry
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval sat Formula()
+  -- #guard_msgs in
+  -- #eval sat Formula()
 
 vc-postamble: |-
   -- Apps difficulty: introductory

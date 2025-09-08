@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Personalized greeting
   
   Create a function that gives a personalized greeting. This function takes two parameters: `name` and `owner`.
@@ -9,6 +10,7 @@ vc-description: |-
   --- | ---
   name equals owner | 'Hello boss'
   otherwise         | 'Hello guest'
+  -/
 
 vc-preamble: |-
 
@@ -30,17 +32,17 @@ vc-theorems: |-
   theorem greet_returns_hello_guest_when_name_differs (name owner : String) :
     name ≠ owner → greet name owner = "Hello guest" := sorry
   
-  /--
+  /-
   info: 'Hello boss'
   -/
-  #guard_msgs in
-  #eval greet "Daniel" "Daniel"
+  -- #guard_msgs in
+  -- #eval greet "Daniel" "Daniel"
   
-  /--
+  /-
   info: 'Hello guest'
   -/
-  #guard_msgs in
-  #eval greet "Greg" "Daniel"
+  -- #guard_msgs in
+  -- #eval greet "Greg" "Daniel"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef has just learned a new data structure - Fenwick tree. This data structure holds information about array of N elements and can process two types of operations:
   
   - Add some value to ith element of the array
@@ -40,6 +41,7 @@ vc-description: |-
   12
   8
   10
+  -/
 
 vc-preamble: |-
 
@@ -68,23 +70,23 @@ vc-theorems: |-
   theorem count_fenwick_all_zeros (n: Nat) :
     count_fenwick_accesses "0" "0" "0" n = 0 := sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval count_fenwick_accesses "001" "100" "011" 4
+  -- #guard_msgs in
+  -- #eval count_fenwick_accesses "001" "100" "011" 4
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval count_fenwick_accesses "1000" "1101" "100" 3
+  -- #guard_msgs in
+  -- #eval count_fenwick_accesses "1000" "1101" "100" 3
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval count_fenwick_accesses "1010" "001" "101" 4
+  -- #guard_msgs in
+  -- #eval count_fenwick_accesses "1010" "001" "101" 4
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   How much bigger is a 16-inch pizza compared to an 8-inch pizza? A more pragmatic question is: How many 8-inch pizzas "fit" in a 16-incher?
   
   The answer, as it turns out, is exactly four 8-inch pizzas. For sizes that don't correspond to a round number of 8-inchers, you must round the number of slices (one 8-inch pizza = 8 slices), e.g.:
@@ -11,6 +12,7 @@ vc-description: |-
   how_many_pizzas(0) -> "pizzas: 0, slices: 0"
   ```
   Get coding quick, so you can choose the ideal size for your next meal!
+  -/
 
 vc-preamble: |-
 
@@ -43,23 +45,23 @@ vc-theorems: |-
     let actual_slices := (result.splitOn ": ").get! 2 |>.toNat!
     actual_pizzas = expected_pizzas ∧ actual_slices = expected_slices := sorry
   
-  /--
+  /-
   info: 'pizzas: 4, slices: 0'
   -/
-  #guard_msgs in
-  #eval how_many_pizzas 16
+  -- #guard_msgs in
+  -- #eval how_many_pizzas 16
   
-  /--
+  /-
   info: 'pizzas: 2, slices: 2'
   -/
-  #guard_msgs in
-  #eval how_many_pizzas 12
+  -- #guard_msgs in
+  -- #eval how_many_pizzas 12
   
-  /--
+  /-
   info: 'pizzas: 0, slices: 0'
   -/
-  #guard_msgs in
-  #eval how_many_pizzas 0
+  -- #guard_msgs in
+  -- #eval how_many_pizzas 0
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chefland has all the cities on a straight line. There are $N$ cities in Chefland numbered $1$ to $N$. City $i$ is located at coordinate $x_i$ on the x-axis. Guru wants to travel from city $A$ to city $B$. He starts at time t=0. He has following choices to travel.
   - He can walk $1$ metre in $P$ secs.
   - There is a train that travels from city $C$ to city $D$ which travels $1$ metre in $Q$ secs which starts at time t=$Y$ secs. Guru can take the train only at city $C$ and leave the train only at city $D$.
@@ -34,6 +35,7 @@ vc-description: |-
   -----EXPLANATION:-----
   Guru can walk directly in 6 secs.
   If Guru takes train, then he will need  atleast 11 secs.
+  -/
 
 vc-preamble: |-
   def abs (x : Int) : Int :=
@@ -82,17 +84,17 @@ vc-theorems: |-
     (h15 : cities[a-1] = cities[b-1]) :
     min_travel_time n a b c d p q y cities = 0 := sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval min_travel_time 4 1 3 2 4 3 2 4 [1, 2, 3, 4]
+  -- #guard_msgs in
+  -- #eval min_travel_time 4 1 3 2 4 3 2 4 [1, 2, 3, 4]
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval min_travel_time 4 1 4 2 3 2 1 10 [0, 1, 2, 3]
+  -- #guard_msgs in
+  -- #eval min_travel_time 4 1 4 2 3 2 1 10 [0, 1, 2, 3]
 
 vc-postamble: |-
   -- Apps difficulty: interview

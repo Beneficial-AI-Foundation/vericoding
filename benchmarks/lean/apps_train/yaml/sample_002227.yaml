@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are $n$ cities in Berland and some pairs of them are connected by two-way roads. It is guaranteed that you can pass from any city to any other, moving along the roads. Cities are numerated from $1$ to $n$.
   
   Two fairs are currently taking place in Berland — they are held in two different cities $a$ and $b$ ($1 \le a, b \le n$; $a \ne b$).
@@ -49,6 +50,7 @@ vc-description: |-
   4
   0
   1
+  -/
 
 vc-preamble: |-
 
@@ -94,23 +96,23 @@ vc-theorems: |-
     let m := (n * (n-1)) / 2
     countSeparatedCityPairs n m a b edges = 0 := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval count_separated_city_pairs 7 7 3 5 [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 5)]
+  -- #guard_msgs in
+  -- #eval count_separated_city_pairs 7 7 3 5 [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 5)]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_separated_city_pairs 4 5 2 3 [(1, 2), (2, 3), (3, 4), (4, 1), (4, 2)]
+  -- #guard_msgs in
+  -- #eval count_separated_city_pairs 4 5 2 3 [(1, 2), (2, 3), (3, 4), (4, 1), (4, 2)]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_separated_city_pairs 4 3 2 1 [(1, 2), (2, 3), (4, 1)]
+  -- #guard_msgs in
+  -- #eval count_separated_city_pairs 4 3 2 1 [(1, 2), (2, 3), (4, 1)]
 
 vc-postamble: |-
   -- Apps difficulty: competition

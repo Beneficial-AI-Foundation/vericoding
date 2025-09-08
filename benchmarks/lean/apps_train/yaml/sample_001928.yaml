@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a non-empty string s consisting of lowercase English letters. You have to pick exactly one non-empty substring of s and shift all its letters 'z' $\rightarrow$ 'y' $\rightarrow$ 'x' $\rightarrow \ldots \rightarrow$ 'b' $\rightarrow$ 'a' $\rightarrow$ 'z'. In other words, each character is replaced with the previous character of English alphabet and 'a' is replaced with 'z'.
   
   What is the lexicographically minimum string that can be obtained from s by performing this shift exactly once?
@@ -27,6 +28,7 @@ vc-description: |-
   -----Note-----
   
   String s is lexicographically smaller than some other string t of the same length if there exists some 1 ≤ i ≤ |s|, such that s_1 = t_1, s_2 = t_2, ..., s_{i} - 1 = t_{i} - 1, and s_{i} < t_{i}.
+  -/
 
 vc-preamble: |-
   def isLower (c : Char) : Bool :=
@@ -79,23 +81,23 @@ vc-theorems: |-
       (s.get! i ≠ 'a' → (result.get! i).toNat = (s.get! i).toNat - 1) :=
   sorry
   
-  /--
+  /-
   info: 'bncdenqbdr'
   -/
-  #guard_msgs in
-  #eval get_min_string_after_shift "codeforces"
+  -- #guard_msgs in
+  -- #eval get_min_string_after_shift "codeforces"
   
-  /--
+  /-
   info: 'aaacaba'
   -/
-  #guard_msgs in
-  #eval get_min_string_after_shift "abacaba"
+  -- #guard_msgs in
+  -- #eval get_min_string_after_shift "abacaba"
   
-  /--
+  /-
   info: 'z'
   -/
-  #guard_msgs in
-  #eval get_min_string_after_shift "a"
+  -- #guard_msgs in
+  -- #eval get_min_string_after_shift "a"
 
 vc-postamble: |-
   -- Apps difficulty: competition

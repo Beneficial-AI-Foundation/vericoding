@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    Given some points(array `A`) on the same line, determine the minimum number of line segments with length `L` needed to cover all of the given points. A point is covered if it is located inside some segment or on its bounds.
   
@@ -49,6 +50,7 @@ vc-description: |-
    - `[output]` an integer
   
      The minimum number of line segments that can cover all of the given points.
+  -/
 
 vc-preamble: |-
 
@@ -73,23 +75,23 @@ vc-theorems: |-
     let max_dist := (List.maximum? A).getD 0 - (List.minimum? A).getD 0
     segment_cover A ((max_dist : Int).toNat) = 1 := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval segment_cover [1, 3, 4, 5, 8] 3
+  -- #guard_msgs in
+  -- #eval segment_cover [1, 3, 4, 5, 8] 3
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval segment_cover [1, 5, 2, 4, 3] 1
+  -- #guard_msgs in
+  -- #eval segment_cover [1, 5, 2, 4, 3] 1
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval segment_cover [1, 10, 100, 1000] 1
+  -- #guard_msgs in
+  -- #eval segment_cover [1, 10, 100, 1000] 1
 
 vc-postamble: |-
   -- Apps difficulty: introductory

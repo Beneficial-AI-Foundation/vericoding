@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Meanwhile, the kingdom of K is getting ready for the marriage of the King's daughter. However, in order not to lose face in front of the relatives, the King should first finish reforms in his kingdom. As the King can not wait for his daughter's marriage, reforms must be finished as soon as possible.
   
   The kingdom currently consists of n cities. Cities are connected by n - 1 bidirectional road, such that one can get from any city to any other city. As the King had to save a lot, there is only one path between any two cities.
@@ -62,6 +63,7 @@ vc-description: |-
   In the first sample, in the first and the third King's plan barbarians can capture the city 3, and that will be enough. In the second and the fourth plans all their attempts will not be effective.
   
   In the second sample the cities to capture are 3 and 5.
+  -/
 
 vc-preamble: |-
 
@@ -86,17 +88,17 @@ vc-theorems: |-
     ∀ r ∈ solve_kingdom n roads plans, r = -1 ∨ r ≤ n :=
   sorry
   
-  /--
+  /-
   info: [1, -1, 1, -1]
   -/
-  #guard_msgs in
-  #eval solve_kingdom 4 [(1, 3), (2, 3), (4, 3)] [(2, [1, 2]), (3, [2, 3, 4]), (3, [1, 2, 4]), (4, [1, 2, 3, 4])]
+  -- #guard_msgs in
+  -- #eval solve_kingdom 4 [(1, 3), (2, 3), (4, 3)] [(2, [1, 2]), (3, [2, 3, 4]), (3, [1, 2, 4]), (4, [1, 2, 3, 4])]
   
-  /--
+  /-
   info: [2]
   -/
-  #guard_msgs in
-  #eval solve_kingdom 7 [(1, 2), (2, 3), (3, 4), (1, 5), (5, 6), (5, 7)] [(4, [2, 4, 6, 7])]
+  -- #guard_msgs in
+  -- #eval solve_kingdom 7 [(1, 2), (2, 3), (3, 4), (1, 5), (5, 6), (5, 7)] [(4, [2, 4, 6, 7])]
 
 vc-postamble: |-
   -- Apps difficulty: competition

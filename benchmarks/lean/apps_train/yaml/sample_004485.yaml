@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We have the numbers with different colours with the sequence: ['red', 'yellow', 'blue'].
   
   That sequence colours the numbers in the following way:
@@ -55,6 +56,7 @@ vc-description: |-
   * Nmber of tests: `100`
   * `100 < val < 1000000`
   * `3 < k < 20`
+  -/
 
 vc-preamble: |-
 

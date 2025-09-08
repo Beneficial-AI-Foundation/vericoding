@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # It's too hot, and they can't even…
   
   One hot summer day Pete and his friend Billy decided to buy watermelons. They chose the biggest crate. They rushed home, dying of thirst, and decided to divide their loot, however they faced a hard problem.
@@ -13,6 +14,7 @@ vc-description: |-
   Given an integral number of watermelons `w` (`1 ≤ w ≤ 100`; `1 ≤ w` in Haskell), check whether Pete and Billy can divide the melons so that each of them gets an even amount.
   
   ## Examples
+  -/
 
 vc-preamble: |-
 
@@ -39,23 +41,23 @@ vc-theorems: |-
   theorem divide_negative_cases (weight : Int) (h : weight ≤ 2 ∨ weight % 2 ≠ 0) :
     divide weight = false := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval divide 4
+  -- #guard_msgs in
+  -- #eval divide 4
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval divide 2
+  -- #guard_msgs in
+  -- #eval divide 2
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval divide 5
+  -- #guard_msgs in
+  -- #eval divide 5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

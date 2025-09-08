@@ -1,0 +1,82 @@
+/-
+In genetic the reverse complement of a sequence is formed by **reversing** the sequence and then taking the complement of each symbol.
+
+The four nucleotides in DNA is Adenine (A), Cytosine (C), Guanine (G) and Thymine (Thymine). 
+
+- A is the complement of T 
+- C is the complement of G.
+
+This is a bi-directional relation so:
+
+- T is the complement of A
+- G is the complement of C.
+
+For this kata you need to complete the reverse complement function that take a DNA string and return the reverse complement string.
+
+**Note**: You need to take care of lower and upper case. And if a sequence conatains some invalid characters you need to return "Invalid sequence".
+
+This kata is based on the following [one](http://www.codewars.com/kata/complementary-dna/ruby) but with a little step in addition.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def reverse_complement (s : String) : String := sorry
+
+theorem valid_dna_properties {dna : String}
+  (h : ∀ c ∈ dna.data, c = 'A' ∨ c = 'T' ∨ c = 'C' ∨ c = 'G') :
+  let result := reverse_complement dna
+  -- Result only contains valid nucleotides
+  (∀ c ∈ result.data, c = 'A' ∨ c = 'T' ∨ c = 'C' ∨ c = 'G') ∧
+  -- Length preserved 
+  result.length = dna.length ∧
+  -- Complement relations hold (stated more abstractly without indexed access)
+  (∀ c ∈ dna.data, 
+    match c with
+    | 'A' => 'T' ∈ result.data
+    | 'T' => 'A' ∈ result.data
+    | 'C' => 'G' ∈ result.data
+    | 'G' => 'C' ∈ result.data
+    | _ => True) := sorry
+
+theorem invalid_dna_result {dna : String}
+  (h : ∃ c ∈ dna.data, c ≠ 'A' ∧ c ≠ 'T' ∧ c ≠ 'C' ∧ c ≠ 'G') :
+  reverse_complement dna = "Invalid sequence" := sorry
+
+theorem empty_sequence :
+  reverse_complement "" = "" := sorry
+
+theorem reverse_twice_identity {dna : String}
+  (h : ∀ c ∈ dna.data, c = 'A' ∨ c = 'T' ∨ c = 'C' ∨ c = 'G') :
+  reverse_complement (reverse_complement dna) = dna.toUpper := sorry
+
+theorem case_insensitive {dna : String}
+  (h : ∀ c ∈ dna.data, c.toLower = 'a' ∨ c.toLower = 't' ∨ c.toLower = 'c' ∨ c.toLower = 'g') :
+  reverse_complement dna = reverse_complement dna.toUpper := sorry
+
+/-
+info: 'TTCCGGAA'
+-/
+-- #guard_msgs in
+-- #eval reverse_complement "TTCCGGAA"
+
+/-
+info: 'TACAGTCAGTC'
+-/
+-- #guard_msgs in
+-- #eval reverse_complement "GACTGACTGTA"
+
+/-
+info: ''
+-/
+-- #guard_msgs in
+-- #eval reverse_complement ""
+
+/-
+info: 'Invalid sequence'
+-/
+-- #guard_msgs in
+-- #eval reverse_complement "XYZ"
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

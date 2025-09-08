@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   `Triangular numbers` are defined by the formula `n * (n + 1) / 2` with `n` starting from 1. They count the number of objects that can form an equilateral triangle as shown in the picture below:
   
@@ -33,6 +34,7 @@ vc-description: |-
   For `n = 45`, the output should be `true`.
   
   `3 * 3 + 6 * 6 = 9 + 36 = 45`
+  -/
 
 vc-preamble: |-
 
@@ -68,23 +70,23 @@ vc-theorems: |-
     triangular_sum 36 = true ∧
     triangular_sum 45 = true := sorry
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval triangular_sum 6
+  -- #guard_msgs in
+  -- #eval triangular_sum 6
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval triangular_sum 45
+  -- #guard_msgs in
+  -- #eval triangular_sum 45
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval triangular_sum 136
+  -- #guard_msgs in
+  -- #eval triangular_sum 136
 
 vc-postamble: |-
   -- Apps difficulty: introductory

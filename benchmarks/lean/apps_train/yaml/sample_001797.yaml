@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a directed, acyclic graph of N nodes.  Find all possible paths from node 0 to node N-1, and return them in any order.
   
   The graph is given as follows:  the nodes are 0, 1, ..., graph.length - 1.  graph[i] is a list of all nodes j for which the edge (i, j) exists.
@@ -17,6 +18,7 @@ vc-description: |-
   
          The number of nodes in the graph will be in the range [2, 15].
          You can print different paths in any order, but you should keep the order of nodes inside one path.
+  -/
 
 vc-preamble: |-
   def Graph := List (List Nat)
@@ -57,17 +59,17 @@ vc-theorems: |-
     let paths := find_all_paths g
     verify_paths g paths = true := sorry
   
-  /--
+  /-
   info: sorted(expected1)
   -/
-  #guard_msgs in
-  #eval sorted find_all_paths(graph1)
+  -- #guard_msgs in
+  -- #eval sorted find_all_paths(graph1)
   
-  /--
+  /-
   info: sorted(expected3)
   -/
-  #guard_msgs in
-  #eval sorted find_all_paths(graph3)
+  -- #guard_msgs in
+  -- #eval sorted find_all_paths(graph3)
 
 vc-postamble: |-
   -- Apps difficulty: interview

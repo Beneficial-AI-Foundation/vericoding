@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array arr of integers, check if there exists two integers N and M such that N is the double of M ( i.e. N = 2 * M).
   More formally check if there exists two indices i and j such that :
   
@@ -25,6 +26,7 @@ vc-description: |-
   
   2 <= arr.length <= 500
   -10^3 <= arr[i] <= 10^3
+  -/
 
 vc-preamble: |-
 
@@ -56,23 +58,23 @@ vc-theorems: |-
     check_if_exist ([] : List Int) = false :=
   sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval check_if_exist [10, 2, 5, 3]
+  -- #guard_msgs in
+  -- #eval check_if_exist [10, 2, 5, 3]
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval check_if_exist [7, 1, 14, 11]
+  -- #guard_msgs in
+  -- #eval check_if_exist [7, 1, 14, 11]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval check_if_exist [3, 1, 7, 11]
+  -- #guard_msgs in
+  -- #eval check_if_exist [3, 1, 7, 11]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

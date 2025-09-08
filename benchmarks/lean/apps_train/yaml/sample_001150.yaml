@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Tomya is a girl. She loves Chef Ciel very much.
   
   Tomya like a positive integer p, and now she wants to get a receipt of Ciel's restaurant whose total price is exactly p.
@@ -60,6 +61,7 @@ vc-description: |-
   
   In the last sample, the optimal way is 2048+2048=4096 (2 menus).
   Note that there is no menu whose price is 4096.
+  -/
 
 vc-preamble: |-
 
@@ -100,23 +102,23 @@ vc-theorems: |-
   
   theorem edge_case_2047 : min_menus_for_price 2047 = 11 := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_menus_for_price 10
+  -- #guard_msgs in
+  -- #eval min_menus_for_price 10
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval min_menus_for_price 256
+  -- #guard_msgs in
+  -- #eval min_menus_for_price 256
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_menus_for_price 4096
+  -- #guard_msgs in
+  -- #eval min_menus_for_price 4096
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A [binary search tree](https://en.wikipedia.org/wiki/Binary_search_tree) is a binary tree that is ordered. This means that if you were to convert the tree to an array using an in-order traversal, the array would be in sorted order. The benefit gained by this ordering is that when the tree is balanced, searching is a logarithmic time operation, since each node you look at that isn't the one you're searching for lets you discard half of the tree.
   
   If you haven't worked with binary trees before or don't understand what a traversal is, you can learn more about that here: https://www.codewars.com/kata/binary-tree-traversal.
@@ -32,6 +33,7 @@ vc-description: |-
   There are several different approaches you can take to solve this kata. If you're not as comfortable with recursion I'd recommend practicing that.
   
   Note: no test case tree will contain duplicate numbers.
+  -/
 
 vc-preamble: |-
 
@@ -58,23 +60,23 @@ vc-theorems: |-
     let t := Tree.node 2 (Tree.node 1 Tree.leaf Tree.leaf) (Tree.node 3 Tree.leaf Tree.leaf)
     is_bst t = true := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_bst T(5, T(2, T(1), T(3)), T(7, None, T(9)))
+  -- #guard_msgs in
+  -- #eval is_bst T(5, T(2, T(1), T(3)), T(7, None, T(9)))
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_bst T(1, T(2), T(3))
+  -- #guard_msgs in
+  -- #eval is_bst T(1, T(2), T(3))
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_bst T(7, T(9), T(2))
+  -- #guard_msgs in
+  -- #eval is_bst T(7, T(9), T(2))
 
 vc-postamble: |-
   -- Apps difficulty: introductory

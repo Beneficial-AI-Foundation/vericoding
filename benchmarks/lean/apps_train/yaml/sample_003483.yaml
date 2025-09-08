@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You're given a string of dominos. For each slot, there are 3 options:
   
     * "|" represents a standing domino
@@ -20,6 +21,7 @@ vc-description: |-
   "/// ||||//| |/"
   
   since the reaction would stop as soon as it gets to a space.
+  -/
 
 vc-preamble: |-
 

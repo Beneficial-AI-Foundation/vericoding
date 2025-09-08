@@ -1,8 +1,10 @@
 vc-description: |-
+  /-
   Write function heron which calculates the area of a triangle with sides a, b, and c.
   
   Heron's formula: sqrt (s \* (s - a) \* (s - b) \* (s - c)), where s = (a + b + c) / 2.
   Output should have 2 digits precision.
+  -/
 
 vc-preamble: |-
 
@@ -35,23 +37,23 @@ vc-theorems: |-
     (h : side > 0) :
     heron side side side = (side * side * Float.sqrt 3) / 4 := sorry
   
-  /--
+  /-
   info: 6.0
   -/
-  #guard_msgs in
-  #eval heron 3 4 5
+  -- #guard_msgs in
+  -- #eval heron 3 4 5
   
-  /--
+  /-
   info: 24.0
   -/
-  #guard_msgs in
-  #eval heron 6 8 10
+  -- #guard_msgs in
+  -- #eval heron 6 8 10
   
-  /--
+  /-
   info: 10.83
   -/
-  #guard_msgs in
-  #eval heron 5 5 5
+  -- #guard_msgs in
+  -- #eval heron 5 5 5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Humpy, the little elephant, has his birthday coming up. He invited all his cousins but doesn’t know how many of them are really coming as some of them are having exams coming up. He will only get to know how many of them are coming on the day of his birthday.
   
   He ordered sugarcane for his party, of length L.
@@ -37,6 +38,7 @@ vc-description: |-
   Output:
   YES 
   NO
+  -/
 
 vc-preamble: |-
 
@@ -64,17 +66,17 @@ vc-theorems: |-
     can_serve_sugarcane k (total * multiplier) e ages = true :=
     sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval can_serve_sugarcane 4 10 2 [2, 2, 3, 1]
+  -- #guard_msgs in
+  -- #eval can_serve_sugarcane 4 10 2 [2, 2, 3, 1]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval can_serve_sugarcane 4 12 3 [6, 5, 7, 3]
+  -- #guard_msgs in
+  -- #eval can_serve_sugarcane 4 12 3 [6, 5, 7, 3]
 
 vc-postamble: |-
   -- Apps difficulty: interview

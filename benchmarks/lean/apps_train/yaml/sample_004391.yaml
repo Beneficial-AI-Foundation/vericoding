@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Your story
   You've always loved both Fizz Buzz katas and cuckoo clocks, and when you walked by a garage sale and saw an ornate cuckoo clock with a missing pendulum, and a "Beyond-Ultimate Raspberry Pi Starter Kit" filled with all sorts of sensors and motors and other components, it's like you were suddenly hit by a beam of light and knew that it was your mission to combine the two to create a computerized Fizz Buzz cuckoo clock!
   
@@ -28,6 +29,7 @@ vc-description: |-
   "12:00"       "Cuckoo Cuckoo Cuckoo Cuckoo Cuckoo Cuckoo Cuckoo Cuckoo Cuckoo Cuckoo Cuckoo Cuckoo"
   ```
   Have fun!
+  -/
 
 vc-preamble: |-
   def fizz_buzz_cuckoo_clock (time : String) : String :=

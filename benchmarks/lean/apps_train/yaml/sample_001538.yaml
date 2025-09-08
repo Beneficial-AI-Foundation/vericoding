@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Nobody outside the cooking community knows that Chef is a big fan of Chefgram™ — a social network where chefs and cooks upload their secret kitchen photos.
   Recently Chef clicked a beautiful photo, which is represented using 10 pixels in a single row. Respecting Chefgram™'s boolean roots, every pixel is either white or black.
   
@@ -67,6 +68,7 @@ vc-description: |-
   Example case 1. There is no filter or combination of filters transforming the picture to whole black. 
   Example case 2. Chef can either apply the first filter (and invert all whites) or apply the second and third filters in any order.
   Example case 3. Picture is already fully black, and we have two different identity filters. Chef can either apply the empty subset of filters, the first filter only, the second filter only, or both.
+  -/
 
 vc-preamble: |-
   def valid_filter_pattern : String → Bool := sorry
@@ -89,23 +91,23 @@ vc-definitions: |-
     0 ≤ result ∧ result < 10^9 + 7 := sorry
 
 vc-theorems: |-
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval process_chefgram_filters "wwwwwwwwww" ["+-+-+-+-+-", "----------", "+---------"]
+  -- #guard_msgs in
+  -- #eval process_chefgram_filters "wwwwwwwwww" ["+-+-+-+-+-", "----------", "+---------"]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval process_chefgram_filters "wbwbwbwbwb" ["+-+-+-+-+-", "+-+-------", "----+-+-+-"]
+  -- #guard_msgs in
+  -- #eval process_chefgram_filters "wbwbwbwbwb" ["+-+-+-+-+-", "+-+-------", "----+-+-+-"]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval process_chefgram_filters "bbbbbbbbbb" ["----------", "----------"]
+  -- #guard_msgs in
+  -- #eval process_chefgram_filters "bbbbbbbbbb" ["----------", "----------"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

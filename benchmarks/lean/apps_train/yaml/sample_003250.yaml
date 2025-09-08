@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Jamie is a programmer, and James' girlfriend. She likes diamonds, and wants a diamond string from James. Since James doesn't know how to make this happen, he needs your help.
   
   ## Task
@@ -30,6 +31,7 @@ vc-description: |-
   ```
   
   ...that is: `"  *\n ***\n*****\n ***\n  *\n"`
+  -/
 
 vc-preamble: |-
 
@@ -68,23 +70,23 @@ vc-theorems: |-
     diamond 3 = some " *\n***\n *\n" :=
   sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval diamond 3
+  -- #guard_msgs in
+  -- #eval diamond 3
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval diamond 0
+  -- #guard_msgs in
+  -- #eval diamond 0
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval diamond -1
+  -- #guard_msgs in
+  -- #eval diamond -1
 
 vc-postamble: |-
   -- Apps difficulty: introductory

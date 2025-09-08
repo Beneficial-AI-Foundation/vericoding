@@ -1,7 +1,9 @@
 vc-description: |-
+  /-
   Create a function that will return ```true``` if the input is in the following date time format ```01-09-2016 01:20``` and ```false``` if it is not.
   
   This Kata has been inspired by the Regular Expressions chapter from the book Eloquent JavaScript.
+  -/
 
 vc-preamble: |-
 
@@ -34,23 +36,23 @@ vc-theorems: |-
       s = format_date d m y h min)) :
     date_checker s = false := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval date_checker "01-09-2016 01:20"
+  -- #guard_msgs in
+  -- #eval date_checker "01-09-2016 01:20"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval date_checker "01-09-2016 01;20"
+  -- #guard_msgs in
+  -- #eval date_checker "01-09-2016 01;20"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval date_checker "14-10-1066 12:00"
+  -- #guard_msgs in
+  -- #eval date_checker "14-10-1066 12:00"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

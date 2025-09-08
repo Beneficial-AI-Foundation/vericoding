@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Kajaria has an empty bag and 2 types of tiles - 
   tiles of type $1$ have the number $X$ written and those of type $2$ have the number $Y$ written on them. He has an infinite supply of both type of tiles.
   In one move, Kajaria adds exactly $1$ tile to the bag. He adds a tile of type $1$ with probability $p$ and a tile of type $2$ with probability $(1 - p)$.
@@ -33,6 +34,7 @@ vc-description: |-
   
   -----Sample Output-----
   48
+  -/
 
 vc-preamble: |-
 
@@ -55,23 +57,23 @@ vc-theorems: |-
       0 ≤ result ∧ result < 1000000007 :=
     sorry
   
-  /--
+  /-
   info: 48
   -/
-  #guard_msgs in
-  #eval solve_tile_expectation 5 3 96 1 3
+  -- #guard_msgs in
+  -- #eval solve_tile_expectation 5 3 96 1 3
   
-  /--
+  /-
   info: 24
   -/
-  #guard_msgs in
-  #eval solve_tile_expectation 5 3 48 1 3
+  -- #guard_msgs in
+  -- #eval solve_tile_expectation 5 3 48 1 3
   
-  /--
+  /-
   info: 96
   -/
-  #guard_msgs in
-  #eval solve_tile_expectation 5 3 192 1 3
+  -- #guard_msgs in
+  -- #eval solve_tile_expectation 5 3 192 1 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

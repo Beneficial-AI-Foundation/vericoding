@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You may have helped Chef and prevented Doof from destroying the even numbers. But, it has only angered Dr Doof even further. However, for his next plan, he needs some time. Therefore, Doof has built $N$ walls to prevent Chef from interrupting him. You have to help Chef by telling him the number of walls he needs to destroy in order to reach Dr Doof.
   Formally, the whole area can be represented as the first quadrant with the origin at the bottom-left corner. Dr. Doof is located at the origin $(0, 0)$. There are $N$ walls, the i-th wall is a straight line segment joining the points $(a_i, 0)$ and $(0, a_i)$. For every initial position of Chef $(x_j, y_j)$, find the number of walls he needs to break before reaching Doof. Obviously, chef can't start from a point on the wall. Therefore, if $(x_j, y_j)$ lies on any of the given walls, print $-1$ in a new line.
   
@@ -50,6 +51,7 @@ vc-description: |-
   If Chef starts from $(1, 1)$, he has to destroy the $1st$ wall.
   
   As $(1, 2)$ lies on the second wall, the answer is $-1$ for the last query.
+  -/
 
 vc-preamble: |-
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Welcome young Jedi! In this Kata you must create a function that takes an amount of US currency in `cents`, and returns a dictionary/hash which shows the least amount of coins used to make up that amount. The only coin denominations considered in this exercise are: `Pennies (1¢), Nickels (5¢), Dimes (10¢) and Quarters (25¢)`.
   Therefor the dictionary returned should contain exactly 4 key/value pairs.
   
@@ -13,6 +14,7 @@ vc-description: |-
   loose_change(-435)  ==>  {'Nickels': 0, 'Pennies': 0, 'Dimes': 0, 'Quarters': 0}
   loose_change(4.935) ==>  {'Nickels': 0, 'Pennies': 4, 'Dimes': 0, 'Quarters': 0}
   ```
+  -/
 
 vc-preamble: |-
 
@@ -38,23 +40,23 @@ vc-theorems: |-
     result.dimes < 3 ∧
     result.quarters * 25 + result.dimes * 10 + result.nickels * 5 + result.pennies = cents := sorry
   
-  /--
+  /-
   info: {'Nickels': 1, 'Pennies': 1, 'Dimes': 0, 'Quarters': 2}
   -/
-  #guard_msgs in
-  #eval loose_change 56
+  -- #guard_msgs in
+  -- #eval loose_change 56
   
-  /--
+  /-
   info: {'Nickels': 0, 'Pennies': 0, 'Dimes': 0, 'Quarters': 4}
   -/
-  #guard_msgs in
-  #eval loose_change 100
+  -- #guard_msgs in
+  -- #eval loose_change 100
   
-  /--
+  /-
   info: {'Nickels': 1, 'Pennies': 2, 'Dimes': 0, 'Quarters': 0}
   -/
-  #guard_msgs in
-  #eval loose_change 7.9
+  -- #guard_msgs in
+  -- #eval loose_change 7.9
 
 vc-postamble: |-
   -- Apps difficulty: introductory

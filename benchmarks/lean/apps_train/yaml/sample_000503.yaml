@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a program to take two numbers as input and print their difference if the first number is greater than the second number otherwise$otherwise$ print their sum.
   
   -----Input:-----
@@ -18,6 +19,7 @@ vc-description: |-
   
   -----Sample Output:-----
   54
+  -/
 
 vc-preamble: |-
 
@@ -35,23 +37,23 @@ vc-theorems: |-
   theorem compare_and_calc_same (n : Int) : 
     compare_and_calc n n = n + n := sorry
   
-  /--
+  /-
   info: 54
   -/
-  #guard_msgs in
-  #eval compare_and_calc 82 28
+  -- #guard_msgs in
+  -- #eval compare_and_calc 82 28
   
-  /--
+  /-
   info: 30
   -/
-  #guard_msgs in
-  #eval compare_and_calc 10 20
+  -- #guard_msgs in
+  -- #eval compare_and_calc 10 20
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval compare_and_calc 0 0
+  -- #guard_msgs in
+  -- #eval compare_and_calc 0 0
 
 vc-postamble: |-
   -- Apps difficulty: interview

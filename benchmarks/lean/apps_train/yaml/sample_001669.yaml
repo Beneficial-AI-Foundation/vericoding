@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   For a new 3D game that will be released, a team of programmers needs an easy function. (Then it will be processed as a method in a Class, forget this concept for Ruby)
   
   We have an sphere with center O, having in the space the coordinates `[α, β, γ]` and radius `r`  and a list of points, `points_list`, each one with coordinates `[x, y, z]`. Select the biggest triangle (or triangles) that has (have) all its (their) 3 vertice(s) as interior points of the sphere (not even in the sphere contour). You should consider that a point P is interior if its distance to center O, d, is such that:
@@ -79,6 +80,7 @@ vc-description: |-
   Remember that if three points are collinear do not form a triangle. For practical purposes you may consider that if the area of a triangle is lower than 10^(-8), the points are aligned.
   
   Enjoy it!
+  -/
 
 vc-preamble: |-
   def Points := List Point

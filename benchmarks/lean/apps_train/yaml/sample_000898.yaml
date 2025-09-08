@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an empty array A of infinite length and a positive integer K you have to process 
   Q queries of type:    
   - ! l r x: Fill the value x in all the empty places in the array from index l to r  (both inclusive).
@@ -47,6 +48,7 @@ vc-description: |-
   After the second update the array looks like: 15 15 4 4 4
   
   In the range [1, 5] the prime factors of 20 i.e. 5 is a prime factor of 15, 15 and 2 is the prime factor of 4, 4, 4.
+  -/
 
 vc-preamble: |-
 

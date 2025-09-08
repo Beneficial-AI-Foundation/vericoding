@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Word $s$ of length $n$ is called $k$-complete if   $s$ is a palindrome, i.e. $s_i=s_{n+1-i}$ for all $1 \le i \le n$;  $s$ has a period of $k$, i.e. $s_i=s_{k+i}$ for all $1 \le i \le n-k$. 
   
   For example, "abaaba" is a $3$-complete word, while "abccba" is not.
@@ -50,6 +51,7 @@ vc-description: |-
   In the first test case, one optimal solution is aaaaaa.
   
   In the second test case, the given word itself is $k$-complete.
+  -/
 
 vc-preamble: |-
   def min_replacements (n k : Nat) (s : String) : Nat :=
@@ -84,23 +86,23 @@ vc-theorems: |-
     min_replacements n k s ≥ 0 :=
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_replacements 6 2 "abaaba"
+  -- #guard_msgs in
+  -- #eval min_replacements 6 2 "abaaba"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_replacements 6 3 "abaaba"
+  -- #guard_msgs in
+  -- #eval min_replacements 6 3 "abaaba"
   
-  /--
+  /-
   info: 23
   -/
-  #guard_msgs in
-  #eval min_replacements 36 9 "hippopotomonstrosesquippedaliophobia"
+  -- #guard_msgs in
+  -- #eval min_replacements 36 9 "hippopotomonstrosesquippedaliophobia"
 
 vc-postamble: |-
   -- Apps difficulty: interview

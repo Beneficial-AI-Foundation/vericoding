@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Dio Brando has set  a goal for himself of becoming the richest and the most powerful being on earth.To achieve his goals he will do anything using either manipulation,seduction or plain violence.
   Only one guy stands between his goal of conquering earth ,named Jotaro Kujo aka JoJo .Now Dio has a stand (visual manifestation of life energy  i.e, special power )  “Za Warudo” ,which can stop time itself but needs to chant few words to activate the time stopping ability of the stand.There is a code hidden inside the words and if you can decipher the code then Dio loses his power.
   In order to stop Dio ,Jotaro asks your help to decipher the code since he can’t do so while fighting Dio at the same time.
@@ -55,6 +56,7 @@ vc-description: |-
   
   -----Explanation:-----
   Test case 1: abcdfgh is the shortest substring containing all char of itself and the number is 1234678
+  -/
 
 vc-preamble: |-
   def isSubstring (sub : String) (orig : String) : Bool := sorry

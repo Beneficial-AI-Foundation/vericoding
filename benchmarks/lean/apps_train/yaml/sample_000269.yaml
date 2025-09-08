@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Think about Zuma Game. You have a row of balls on the table, colored red(R), yellow(Y), blue(B), green(G), and white(W). You also have several balls in your hand.
   
   Each time, you may choose a ball in your hand, and insert it into the row (including the leftmost place and rightmost place). Then, if there is a group of 3 or more balls in the same color touching, remove these balls. Keep doing this until no more balls can be removed.
@@ -28,6 +29,7 @@ vc-description: |-
   The number of balls on the table won't exceed 20, and the string represents these balls is called "board" in the input.
   The number of balls in your hand won't exceed 5, and the string represents these balls is called "hand" in the input.
   Both input strings will be non-empty and only contain characters 'R','Y','B','G','W'.
+  -/
 
 vc-preamble: |-
 
@@ -54,23 +56,23 @@ vc-theorems: |-
   theorem find_min_step_empty_empty : 
     find_min_step "" "" = 0 := sorry
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval find_min_step "WRRBBW" "RB"
+  -- #guard_msgs in
+  -- #eval find_min_step "WRRBBW" "RB"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_min_step "WWRRBBWW" "WRBRW"
+  -- #guard_msgs in
+  -- #eval find_min_step "WWRRBBWW" "WRBRW"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_min_step "G" "GGGGG"
+  -- #guard_msgs in
+  -- #eval find_min_step "G" "GGGGG"
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Introduction
   
   Mastermind or Master Mind is a code-breaking game for two players. The modern game with pegs was invented in 1970 by Mordecai Meirowitz, an Israeli postmaster and telecommunications expert. It resembles an earlier pencil and paper game called Bulls and Cows that may date back a century or more. (Source Wikipedia)
@@ -74,6 +75,7 @@ vc-description: |-
    Plenty of Fish in the Pond
    Fruit Machine
    Car Park Escape
+  -/
 
 vc-preamble: |-
   def VALID_COLORS := ["Red", "Blue", "Green", "Orange", "Purple", "Yellow"]

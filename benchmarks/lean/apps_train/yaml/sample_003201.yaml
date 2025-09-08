@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Terminal game move function
   
   In this game, the hero moves from left to right. The player rolls the dice and moves the number of spaces indicated by the dice **two times**.
@@ -24,6 +25,7 @@ vc-description: |-
   
   Oh, and you won't have to worry about overflow, the correct answer will never be higher than 255. :)
   ```
+  -/
 
 vc-preamble: |-
 
@@ -47,23 +49,23 @@ vc-theorems: |-
     move position 1 < move position 6 :=
     sorry
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval move 0 4
+  -- #guard_msgs in
+  -- #eval move 0 4
   
-  /--
+  /-
   info: 15
   -/
-  #guard_msgs in
-  #eval move 3 6
+  -- #guard_msgs in
+  -- #eval move 3 6
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval move 2 5
+  -- #guard_msgs in
+  -- #eval move 2 5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

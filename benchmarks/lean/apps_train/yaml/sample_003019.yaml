@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A palindrome is a word, phrase, number, or other sequence of characters which reads the same backward as forward. Examples of numerical palindromes are: `2332, 110011, 54322345`
   
   For a given number ```num```, write a function which returns an array of all the numerical palindromes contained within each number. The array should be sorted in ascending order and any duplicates should be removed.
@@ -29,6 +30,7 @@ vc-description: |-
   Numerical Palindrome #3.5
   Numerical Palindrome #4
   Numerical Palindrome #5
+  -/
 
 vc-preamble: |-
   def palindrome (n : Int) : String := sorry 
@@ -83,23 +85,23 @@ vc-theorems: |-
     palindrome 0 = "Not valid"
     := sorry
   
-  /--
+  /-
   info: [22, 212, 343, 22122]
   -/
-  #guard_msgs in
-  #eval palindrome 34322122
+  -- #guard_msgs in
+  -- #eval palindrome 34322122
   
-  /--
+  /-
   info: 'No palindromes found'
   -/
-  #guard_msgs in
-  #eval palindrome 1294
+  -- #guard_msgs in
+  -- #eval palindrome 1294
   
-  /--
+  /-
   info: 'Not valid'
   -/
-  #guard_msgs in
-  #eval palindrome -123
+  -- #guard_msgs in
+  -- #eval palindrome -123
 
 vc-postamble: |-
   -- Apps difficulty: introductory

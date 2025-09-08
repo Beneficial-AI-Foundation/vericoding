@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write
   ```python
   remove(text, what)
@@ -13,6 +14,7 @@ vc-description: |-
   remove('apples and bananas',{'a':50, 'n':1}) == 'pples d bnns'
   # we don't have 50 a's, so just remove it till we hit end of string.
   ```
+  -/
 
 vc-preamble: |-
 
@@ -42,23 +44,23 @@ vc-theorems: |-
     remove (String.mk (List.replicate n 'a')) what = 
       String.mk (List.replicate (max 0 (n - what 'a')) 'a') := sorry
   
-  /--
+  /-
   info: 'hs s a string'
   -/
-  #guard_msgs in
-  #eval remove "this is a string" {"t": 1, "i": 2}
+  -- #guard_msgs in
+  -- #eval remove "this is a string" {"t": 1, "i": 2}
   
-  /--
+  /-
   info: 'hello world'
   -/
-  #guard_msgs in
-  #eval remove "hello world" {"x": 5, "i": 2}
+  -- #guard_msgs in
+  -- #eval remove "hello world" {"x": 5, "i": 2}
   
-  /--
+  /-
   info: 'pples d bnns'
   -/
-  #guard_msgs in
-  #eval remove "apples and bananas" {"a": 50, "n": 1}
+  -- #guard_msgs in
+  -- #eval remove "apples and bananas" {"a": 50, "n": 1}
 
 vc-postamble: |-
   -- Apps difficulty: introductory

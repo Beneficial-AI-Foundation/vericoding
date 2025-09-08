@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Complete the method which accepts an array of integers, and returns one of the following:
   
   * `"yes, ascending"` - if the numbers in the array are sorted in an ascending order
@@ -6,6 +7,7 @@ vc-description: |-
   * `"no"` - otherwise
   
   You can assume the array will always be valid, and there will always be one correct answer.
+  -/
 
 vc-preamble: |-
   def is_sorted_and_how (arr : List Int) : String := sorry
@@ -37,23 +39,23 @@ vc-theorems: |-
     is_sorted_and_how arr = "yes, ascending"
     := sorry
   
-  /--
+  /-
   info: 'yes, ascending'
   -/
-  #guard_msgs in
-  #eval is_sorted_and_how [1, 2]
+  -- #guard_msgs in
+  -- #eval is_sorted_and_how [1, 2]
   
-  /--
+  /-
   info: 'yes, descending'
   -/
-  #guard_msgs in
-  #eval is_sorted_and_how [15, 7, 3, -8]
+  -- #guard_msgs in
+  -- #eval is_sorted_and_how [15, 7, 3, -8]
   
-  /--
+  /-
   info: 'no'
   -/
-  #guard_msgs in
-  #eval is_sorted_and_how [4, 2, 30]
+  -- #guard_msgs in
+  -- #eval is_sorted_and_how [4, 2, 30]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

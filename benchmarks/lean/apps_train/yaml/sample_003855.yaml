@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function to split a string and convert it into an array of words. For example:
   
   ```python
@@ -6,6 +7,7 @@ vc-description: |-
   
   "I love arrays they are my favorite" ==> ["I", "love", "arrays", "they", "are", "my", "favorite"]
   ```
+  -/
 
 vc-preamble: |-
 
@@ -34,23 +36,23 @@ vc-theorems: |-
     ∃ h₃ : i < (string_to_array s).size, 
       (string_to_array s).get ⟨i, h₃⟩ ≠ "" := sorry
   
-  /--
+  /-
   info: ['Robin', 'Singh']
   -/
-  #guard_msgs in
-  #eval string_to_array "Robin Singh"
+  -- #guard_msgs in
+  -- #eval string_to_array "Robin Singh"
   
-  /--
+  /-
   info: ['I', 'love', 'arrays', 'they', 'are', 'my', 'favorite']
   -/
-  #guard_msgs in
-  #eval string_to_array "I love arrays they are my favorite"
+  -- #guard_msgs in
+  -- #eval string_to_array "I love arrays they are my favorite"
   
-  /--
+  /-
   info: ['']
   -/
-  #guard_msgs in
-  #eval string_to_array ""
+  -- #guard_msgs in
+  -- #eval string_to_array ""
 
 vc-postamble: |-
   -- Apps difficulty: introductory

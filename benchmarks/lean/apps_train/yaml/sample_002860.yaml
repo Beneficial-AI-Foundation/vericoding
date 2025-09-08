@@ -1,6 +1,8 @@
 vc-description: |-
+  /-
   Failed Sort - Bug Fixing #4
   Oh no, Timmy's Sort doesn't seem to be working? Your task is to fix the sortArray function to sort all numbers in ascending order
+  -/
 
 vc-preamble: |-
 
@@ -31,23 +33,23 @@ vc-theorems: |-
   theorem sort_array_empty :
     sort_array "" = "" := sorry
   
-  /--
+  /-
   info: '12345'
   -/
-  #guard_msgs in
-  #eval sort_array "54321"
+  -- #guard_msgs in
+  -- #eval sort_array "54321"
   
-  /--
+  /-
   info: '12345'
   -/
-  #guard_msgs in
-  #eval sort_array "34251"
+  -- #guard_msgs in
+  -- #eval sort_array "34251"
   
-  /--
+  /-
   info: '11111'
   -/
-  #guard_msgs in
-  #eval sort_array "11111"
+  -- #guard_msgs in
+  -- #eval sort_array "11111"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

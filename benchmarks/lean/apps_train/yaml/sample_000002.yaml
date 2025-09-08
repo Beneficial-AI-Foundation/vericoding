@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given three sequences: $a_1, a_2, \ldots, a_n$; $b_1, b_2, \ldots, b_n$; $c_1, c_2, \ldots, c_n$.
   
   For each $i$, $a_i \neq b_i$, $a_i \neq c_i$, $b_i \neq c_i$.
@@ -81,6 +82,7 @@ vc-description: |-
   In the third test case $p = [1, 3, 4, 3, 2, 4, 2]$.
   
   In this sequence $p_1 = a_1$, $p_2 = a_2$, $p_3 = b_3$, $p_4 = b_4$, $p_5 = b_5$, $p_6 = c_6$, $p_7 = c_7$. Also we can see, that no two adjacent elements of the sequence are equal.
+  -/
 
 vc-preamble: |-
 
@@ -113,11 +115,11 @@ vc-theorems: |-
     (h7 : ∀ i, i < n → c[i]! = 3) :
     ∀ i, i < n → (solve_sequence n a b c)[i]! ∈ [1, 2, 3] := sorry
   
-  /--
+  /-
   info: n3
   -/
-  #guard_msgs in
-  #eval len solve_sequence(n3, a3, b3, c3)
+  -- #guard_msgs in
+  -- #eval len solve_sequence(n3, a3, b3, c3)
 
 vc-postamble: |-
   -- Apps difficulty: interview

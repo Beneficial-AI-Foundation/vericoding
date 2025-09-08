@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Roger is a robot. He has an arm that is a series of n segments connected to each other. The endpoints of the i-th segment are initially located at points (i - 1, 0) and (i, 0). The endpoint at (i - 1, 0) is colored red and the endpoint at (i, 0) is colored blue for all segments. Thus, the blue endpoint of the i-th segment is touching the red endpoint of the (i + 1)-th segment for all valid i.
   
   Roger can move his arm in two different ways:   He can choose some segment and some value. This is denoted as choosing the segment number i and picking some positive l. This change happens as follows: the red endpoint of segment number i and segments from 1 to i - 1 are all fixed in place. Imagine a ray from the red endpoint to the blue endpoint. The blue endpoint and segments i + 1 through n are translated l units in the direction of this ray.
@@ -46,15 +47,16 @@ vc-description: |-
   The following pictures shows the state of the arm after each operation. The coordinates of point F are printed after applying each operation. For simplicity, we only show the blue endpoints of a segment (with the exception for the red endpoint of the first segment). For instance, the point labeled B is the blue endpoint for segment 1 and also the red endpoint for segment 2.
   
   Initial state:  [Image]  Extend segment 1 by 3.  [Image]  Rotate segment 3 by 90 degrees clockwise.  [Image]  Rotate segment 5 by 48 degrees clockwise.  [Image]  Extend segment 4 by 1.  [Image]
+  -/
 
 vc-preamble: |-
   def robot_arm (n : Nat) (moves : List (Nat × Nat × Float)) : List (Float × Float) := sorry
   
-  /-- Vector sum of two complex numbers represented as coordinate pairs -/
+  /- Vector sum of two complex numbers represented as coordinate pairs -/
   
   def vsum (v1 v2 : Float × Float) : Float × Float := sorry
   
-  /-- Converts polar coordinates to rectangular coordinates -/
+  /- Converts polar coordinates to rectangular coordinates -/
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -63,7 +65,7 @@ vc-helpers: |-
 vc-definitions: |-
   def degrect (r : Float) (phi : Int) : Float × Float := sorry
   
-  /-- Properties of robot_arm:
+  /- Properties of robot_arm:
       1. Output list length equals input moves list length
       2. Each output element is coordinate pair of reals -/
 
@@ -73,7 +75,7 @@ vc-theorems: |-
     (List.length results = List.length moves) ∧ 
     (∀ res ∈ results, ∃ x y : Float, res = (x,y)) := sorry
   
-  /-- Properties of SegmentTree with vector sum:
+  /- Properties of SegmentTree with vector sum:
       The sum over full range equals manual calculation of vector sum -/
   
   theorem segment_tree_vsum_properties {segments : List (Float × Int)} :

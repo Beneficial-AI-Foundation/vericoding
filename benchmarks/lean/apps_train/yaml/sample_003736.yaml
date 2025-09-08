@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # History
   
   This kata is a sequel of my [Mixbonacci](https://www.codewars.com/kata/mixbonacci/python) kata. Zozonacci is a special integer sequence named after [**ZozoFouchtra**](https://www.codewars.com/users/ZozoFouchtra), who came up with this kata idea in the [Mixbonacci discussion](https://www.codewars.com/kata/mixbonacci/discuss/python). 
@@ -58,6 +59,7 @@ vc-description: |-
   * [pell](https://oeis.org/A000129): 0, 1, 2, 5, 12 ...
   * [tribonacci](https://oeis.org/A000073): 0, 0, 1, 1, 2 ...
   * [tetranacci](https://oeis.org/A000078): 0, 0, 0, 1, 1 ...
+  -/
 
 vc-preamble: |-
   def zozonacci (pattern : List String) (n : Nat) : List Nat := sorry
@@ -77,23 +79,23 @@ vc-theorems: |-
   theorem empty_pattern_returns_empty (n : Nat) :
     zozonacci [] n = [] := sorry
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval zozonacci [] 10
+  -- #guard_msgs in
+  -- #eval zozonacci [] 10
   
-  /--
+  /-
   info: [0, 0, 0, 1, 1, 2, 3, 5, 8, 13]
   -/
-  #guard_msgs in
-  #eval zozonacci ["fib"] 10
+  -- #guard_msgs in
+  -- #eval zozonacci ["fib"] 10
   
-  /--
+  /-
   info: [0, 0, 0, 1, 1, 2, 3]
   -/
-  #guard_msgs in
-  #eval zozonacci ["fib", "tri"] 7
+  -- #guard_msgs in
+  -- #eval zozonacci ["fib", "tri"] 7
 
 vc-postamble: |-
   -- Apps difficulty: introductory

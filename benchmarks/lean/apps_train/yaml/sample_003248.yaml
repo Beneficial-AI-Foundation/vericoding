@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function that will encrypt a given sentence into International Morse Code, both the input and out puts will be strings.
   
   Characters should be separated by a single space.
@@ -9,6 +10,7 @@ vc-description: |-
   To find out more about Morse Code follow this link: https://en.wikipedia.org/wiki/Morse_code
   
   A preloaded object/dictionary/hash called CHAR_TO_MORSE will be provided to help convert characters to Morse Code.
+  -/
 
 vc-preamble: |-
   def validMorseChar (c : Char) : Bool :=
@@ -50,23 +52,23 @@ vc-theorems: |-
       encryption s = encryption s.toUpper :=
     sorry
   
-  /--
+  /-
   info: '.... . .-.. .-.. ---   .-- --- .-. .-.. -..'
   -/
-  #guard_msgs in
-  #eval encryption "HELLO WORLD"
+  -- #guard_msgs in
+  -- #eval encryption "HELLO WORLD"
   
-  /--
+  /-
   info: '... --- ...'
   -/
-  #guard_msgs in
-  #eval encryption "SOS"
+  -- #guard_msgs in
+  -- #eval encryption "SOS"
   
-  /--
+  /-
   info: '- .... .   --.- ..- .. -.-. -.-   -... .-. --- .-- -.   ..-. --- -..-'
   -/
-  #guard_msgs in
-  #eval encryption "THE QUICK BROWN FOX"
+  -- #guard_msgs in
+  -- #eval encryption "THE QUICK BROWN FOX"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

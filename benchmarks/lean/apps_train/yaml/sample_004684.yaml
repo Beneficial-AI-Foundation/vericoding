@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Is the string uppercase?
   
   ## Task
@@ -47,6 +48,7 @@ vc-description: |-
   ```
   
   In this Kata, a string is said to be in ALL CAPS whenever it does not contain any lowercase letter so any string containing no letters at all is trivially considered to be in ALL CAPS.
+  -/
 
 vc-preamble: |-
 
@@ -70,47 +72,47 @@ vc-theorems: |-
   theorem mixed_case_rule (s : String) :
     is_uppercase s = ¬(∃ c ∈ s.data, c.isLower) := sorry
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_uppercase "c"
+  -- #guard_msgs in
+  -- #eval is_uppercase "c"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_uppercase "C"
+  -- #guard_msgs in
+  -- #eval is_uppercase "C"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_uppercase "hello I AM DONALD"
+  -- #guard_msgs in
+  -- #eval is_uppercase "hello I AM DONALD"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_uppercase "HELLO I AM DONALD"
+  -- #guard_msgs in
+  -- #eval is_uppercase "HELLO I AM DONALD"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_uppercase "ACSKLDFJSgSKLDFJSKLDFJ"
+  -- #guard_msgs in
+  -- #eval is_uppercase "ACSKLDFJSgSKLDFJSKLDFJ"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_uppercase "ACSKLDFJSGSKLDFJSKLDFJ"
+  -- #guard_msgs in
+  -- #eval is_uppercase "ACSKLDFJSGSKLDFJSKLDFJ"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_uppercase "123 !@#"
+  -- #guard_msgs in
+  -- #eval is_uppercase "123 !@#"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,7 +1,9 @@
 vc-description: |-
+  /-
   Your dad doesn't really *get* punctuation, and he's always putting extra commas in when he posts. You can tolerate the run-on sentences, as he does actually talk like that, but those extra commas have to go!
   
   Write a function called ```dadFilter``` that takes a string as argument and returns a string with the extraneous commas removed. The returned string should not end with a comma or any trailing whitespace.
+  -/
 
 vc-preamble: |-
 
@@ -39,23 +41,23 @@ vc-theorems: |-
   theorem dad_filter_idempotent {s : String} :
     dad_filter (dad_filter s) = dad_filter s := sorry
   
-  /--
+  /-
   info: 'all this, used to be trees'
   -/
-  #guard_msgs in
-  #eval dad_filter "all this,,,, used to be trees,,,,,,"
+  -- #guard_msgs in
+  -- #eval dad_filter "all this,,,, used to be trees,,,,,,"
   
-  /--
+  /-
   info: 'Luke, I am your father'
   -/
-  #guard_msgs in
-  #eval dad_filter "Luke,,,,,,,,, I am your father,,,,,,,,,  "
+  -- #guard_msgs in
+  -- #eval dad_filter "Luke,,,,,,,,, I am your father,,,,,,,,,  "
   
-  /--
+  /-
   info: "Dead or alive, you're coming with me"
   -/
-  #guard_msgs in
-  #eval dad_filter "Dead or alive,,,, you"re coming with me,,,   "
+  -- #guard_msgs in
+  -- #eval dad_filter "Dead or alive,,,, you"re coming with me,,,   "
 
 vc-postamble: |-
   -- Apps difficulty: introductory

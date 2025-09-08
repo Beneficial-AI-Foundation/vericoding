@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Problem Statement=====
   You are given a string and your task is to swap cases. In other words, convert all lowercase letters to uppercase letters and vice versa.
   
@@ -12,6 +13,7 @@ vc-description: |-
   
   =====Output Format=====
   Print the modified string S.
+  -/
 
 vc-preamble: |-
 
@@ -43,23 +45,23 @@ vc-theorems: |-
     (h : ∀ c ∈ s.data, c.isWhitespace) :
     swapCase s = s := sorry
   
-  /--
+  /-
   info: 'wWW.hACKERrANK.COM'
   -/
-  #guard_msgs in
-  #eval swap_case "Www.HackerRank.com"
+  -- #guard_msgs in
+  -- #eval swap_case "Www.HackerRank.com"
   
-  /--
+  /-
   info: 'pYTHONIST 2'
   -/
-  #guard_msgs in
-  #eval swap_case "Pythonist 2"
+  -- #guard_msgs in
+  -- #eval swap_case "Pythonist 2"
   
-  /--
+  /-
   info: 'hACKERrANK.COM PRESENTS "pYTHONIST 2".'
   -/
-  #guard_msgs in
-  #eval swap_case "HackerRank.com presents "Pythonist 2"."
+  -- #guard_msgs in
+  -- #eval swap_case "HackerRank.com presents "Pythonist 2"."
 
 vc-postamble: |-
   -- Apps difficulty: introductory

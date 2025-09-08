@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Harrenhal is the largest castle in the Seven Kingdoms and is the seat of House Whent in the Riverlands, on the north shore of the Gods Eye lake. Since the War of Conquest, however, it has become a dark and ruinous place.
   (c) A Wiki of Ice and Fire
   
@@ -39,6 +40,7 @@ vc-description: |-
   There're multiple ways to ruin Harrenhal in the example test. Let's consider one of them.
   The first troop can delete S = 'ababa'('abbabaab'). After that, H = 'bab'.
   The second troop can delete S = 'bab'('bab'). After that, H is empty and that's it.
+  -/
 
 vc-preamble: |-
   def find_min_troops_to_ruin (s: String) : Nat :=
@@ -70,23 +72,23 @@ vc-theorems: |-
     s ≠ "" ∧ ¬isPalindrome s → find_min_troops_to_ruin s = 2 :=
   sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_min_troops_to_ruin "abbabaab"
+  -- #guard_msgs in
+  -- #eval find_min_troops_to_ruin "abbabaab"
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval find_min_troops_to_ruin "abba"
+  -- #guard_msgs in
+  -- #eval find_min_troops_to_ruin "abba"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_min_troops_to_ruin "ab"
+  -- #guard_msgs in
+  -- #eval find_min_troops_to_ruin "ab"
 
 vc-postamble: |-
   -- Apps difficulty: interview

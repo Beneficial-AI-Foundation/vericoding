@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Vasya and Petya are playing a simple game. Vasya thought of number x between 1 and n, and Petya tries to guess the number.
   
   Petya can ask questions like: "Is the unknown number divisible by number y?".
@@ -43,6 +44,7 @@ vc-description: |-
   If the unknown number is divisible by 3, then the unknown number is 3.
   
   Otherwise, it is equal to 2. Therefore, the sequence of questions allows you to guess the unknown number. It can be shown that there is no correct sequence of questions of length 2 or shorter.
+  -/
 
 vc-preamble: |-
   def find_min_questions (n : Nat) : List Nat :=
@@ -85,23 +87,23 @@ vc-theorems: |-
     ∀ x ∈ find_min_questions n, isPrimePower x := by
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval len find_min_questions(4)
+  -- #guard_msgs in
+  -- #eval len find_min_questions(4)
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval len find_min_questions(6)
+  -- #guard_msgs in
+  -- #eval len find_min_questions(6)
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval len find_min_questions(1)
+  -- #guard_msgs in
+  -- #eval len find_min_questions(1)
 
 vc-postamble: |-
   -- Apps difficulty: competition

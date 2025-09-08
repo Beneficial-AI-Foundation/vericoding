@@ -1,9 +1,11 @@
 vc-description: |-
+  /-
   You will be given two ASCII strings, `a` and `b`. Your task is write a function to determine which one of these strings is "worth" more, and return it.
   
   A string's worth is determined by the sum of its ASCII codepoint indexes. So, for example, the string `HELLO` has a value of 372: H is codepoint 72, E 69, L 76, and O is 79. The sum of these values is 372.
   
   In the event of a tie, you should return the first string, i.e. `a`.
+  -/
 
 vc-preamble: |-
   def String.sumAscii (s : String) : Nat :=
@@ -38,23 +40,23 @@ vc-theorems: |-
     b.length > 0 →
     (highest_value a b).length > 0 := sorry
   
-  /--
+  /-
   info: 'KkLlMmNnOoPp4567'
   -/
-  #guard_msgs in
-  #eval highest_value "AaBbCcXxYyZz0189" "KkLlMmNnOoPp4567"
+  -- #guard_msgs in
+  -- #eval highest_value "AaBbCcXxYyZz0189" "KkLlMmNnOoPp4567"
   
-  /--
+  /-
   info: 'ABcd'
   -/
-  #guard_msgs in
-  #eval highest_value "ABcd" "0123"
+  -- #guard_msgs in
+  -- #eval highest_value "ABcd" "0123"
   
-  /--
+  /-
   info: "{}[]@~'#:;"
   -/
-  #guard_msgs in
-  #eval highest_value "!"?$%^&*()" "{}[]@~"#:;"
+  -- #guard_msgs in
+  -- #eval highest_value "!"?$%^&*()" "{}[]@~"#:;"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

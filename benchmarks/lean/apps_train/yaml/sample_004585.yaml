@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Quite recently it happened to me to join some recruitment interview, where my first task was to write own implementation of built-in split function. It's quite simple, is it not?
   
   However, there were the following conditions:
@@ -10,6 +11,7 @@ vc-description: |-
   *This Kata will control if the new function is a generator and if it's not using the built-in split method, so you may try to hack it, but let me know if with success, or if something would go wrong!*
   
   Enjoy!
+  -/
 
 vc-preamble: |-
 

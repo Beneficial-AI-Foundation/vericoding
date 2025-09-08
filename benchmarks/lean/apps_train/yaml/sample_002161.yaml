@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A festival will be held in a town's main street. There are n sections in the main street. The sections are numbered 1 through n from left to right. The distance between each adjacent sections is 1.
   
   In the festival m fireworks will be launched. The i-th (1 ≤ i ≤ m) launching is on time t_{i} at section a_{i}. If you are at section x (1 ≤ x ≤ n) at the time of i-th launching, you'll gain happiness value b_{i} - |a_{i} - x| (note that the happiness value might be a negative value).
@@ -38,6 +39,7 @@ vc-description: |-
   
   Output
   1992
+  -/
 
 vc-preamble: |-
   def solve_fireworks (n m d : Nat) (fireworks : List (Nat × Nat × Nat)) : Nat :=
@@ -74,23 +76,23 @@ vc-theorems: |-
       balls - (List.range n).foldl (fun m i => min m (abs pos (i + 1))) (abs pos 1) :=
   sorry
   
-  /--
+  /-
   info: -31
   -/
-  #guard_msgs in
-  #eval solve_fireworks 50 3 1 [(49, 1, 1), (26, 1, 4), (6, 1, 10)]
+  -- #guard_msgs in
+  -- #eval solve_fireworks 50 3 1 [(49, 1, 1), (26, 1, 4), (6, 1, 10)]
   
-  /--
+  /-
   info: 1992
   -/
-  #guard_msgs in
-  #eval solve_fireworks 10 2 1 [(1, 1000, 4), (9, 1000, 4)]
+  -- #guard_msgs in
+  -- #eval solve_fireworks 10 2 1 [(1, 1000, 4), (9, 1000, 4)]
   
-  /--
+  /-
   info: 418
   -/
-  #guard_msgs in
-  #eval solve_fireworks 30 8 2 [(15, 97, 3), (18, 64, 10), (20, 14, 20), (16, 18, 36), (10, 23, 45), (12, 60, 53), (17, 93, 71), (11, 49, 85)]
+  -- #guard_msgs in
+  -- #eval solve_fireworks 30 8 2 [(15, 97, 3), (18, 64, 10), (20, 14, 20), (16, 18, 36), (10, 23, 45), (12, 60, 53), (17, 93, 71), (11, 49, 85)]
 
 vc-postamble: |-
   -- Apps difficulty: competition

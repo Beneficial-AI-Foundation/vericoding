@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The land of Programmers Army is surrounded by many islands. A unique number is associated with each island. The king of the islands is a very generous person, he donates a certain amount of gold coins to travelers for visiting each island that they visited to.
   Now, you are appointed as a traveler, who will travel to all these(or some) islands as many times as the Army wants, and you will collect gold coins from the king of the island.
   In each trip, you will be asked to give the total sum of gold coins you have collected.
@@ -38,6 +39,7 @@ vc-description: |-
   In 1st Trip, traveler will go from 1st Island to 3rd Island, hence the total number of coins traveler can collect is 10+2+5 = 17
   - 
   In 2 d Trip, traveler will go from 2nd Island to 4th Island, hence the total number of coins traveler can collect is 2+5+50 = 57
+  -/
 
 vc-preamble: |-
 

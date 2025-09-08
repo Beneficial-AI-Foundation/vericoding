@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Problem Statement=====
   You are given a positive integer N.
   Your task is to print a palindromic triangle of size N.
@@ -25,6 +26,7 @@ vc-description: |-
   
   =====Output Format=====
   Print the palindromic triangle of size N as explained above.
+  -/
 
 vc-preamble: |-
   def make_palindrome_triangle (n: Nat) : String :=
@@ -72,23 +74,23 @@ vc-theorems: |-
       ∀ j, j < mid → line.data[j]! = Char.ofNat ((j + 1) + '0'.toNat) :=
   sorry
   
-  /--
+  /-
   info: '1\n121\n12321'
   -/
-  #guard_msgs in
-  #eval make_palindrome_triangle 3
+  -- #guard_msgs in
+  -- #eval make_palindrome_triangle 3
   
-  /--
+  /-
   info: '1\n121\n12321\n1234321\n123454321'
   -/
-  #guard_msgs in
-  #eval make_palindrome_triangle 5
+  -- #guard_msgs in
+  -- #eval make_palindrome_triangle 5
   
-  /--
+  /-
   info: '1'
   -/
-  #guard_msgs in
-  #eval make_palindrome_triangle 1
+  -- #guard_msgs in
+  -- #eval make_palindrome_triangle 1
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,0 +1,63 @@
+/-
+Given an integer array, you need to find one continuous subarray that if you only sort this subarray in ascending order, then the whole array will be sorted in ascending order, too.  
+
+You need to find the shortest such subarray and output its length.
+
+Example 1:
+
+Input: [2, 6, 4, 8, 10, 9, 15]
+Output: 5
+Explanation: You need to sort [6, 4, 8, 10, 9] in ascending order to make the whole array sorted in ascending order.
+
+Note:
+
+Then length of the input array is in range [1, 10,000].
+The input array may contain duplicates, so ascending order here means .
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def find_unsorted_subarray (nums : List Int) : Nat := sorry
+
+theorem empty_or_single_element_list 
+  (nums : List Int) (h : nums.length ≤ 1) : 
+  find_unsorted_subarray nums = 0 := sorry
+
+theorem sorted_list_returns_zero 
+  (nums : List Int) 
+  (h : ∀ (i j : Fin nums.length), i.val < j.val → nums[i] ≤ nums[j]) :
+  find_unsorted_subarray nums = 0 := sorry
+
+theorem reverse_sorted_list 
+  (nums : List Int) 
+  (h1 : nums.length ≥ 2)
+  (h2 : ∀ (i j : Fin nums.length), i.val < j.val → nums[i] ≥ nums[j])
+  (h3 : ∃ (i j : Fin nums.length), nums[i] > nums[j]) :
+  find_unsorted_subarray nums = nums.length := sorry
+
+theorem result_length_bounds
+  (nums : List Int) 
+  (h : nums.length ≥ 3) :
+  0 ≤ find_unsorted_subarray nums ∧ find_unsorted_subarray nums ≤ nums.length := sorry
+
+/-
+info: 5
+-/
+-- #guard_msgs in
+-- #eval find_unsorted_subarray [2, 6, 4, 8, 10, 9, 15]
+
+/-
+info: 0
+-/
+-- #guard_msgs in
+-- #eval find_unsorted_subarray [1, 2, 3, 4, 5]
+
+/-
+info: 5
+-/
+-- #guard_msgs in
+-- #eval find_unsorted_subarray [5, 4, 3, 2, 1]
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

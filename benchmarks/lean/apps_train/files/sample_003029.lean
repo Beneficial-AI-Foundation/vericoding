@@ -1,0 +1,59 @@
+/-
+Implement a function to calculate the sum of the numerical values in a nested list. For example :
+
+```python
+sum_nested([1, [2, [3, [4]]]]) -> 10
+```
+-/
+
+def sumNested : List (List Int) → Int
+  | _ => sorry
+
+def flatten : List (List Int) → List Int
+  | _ => sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def listSum : List Int → Int
+  | [] => 0
+  | h :: t => h + listSum t
+
+/- Sum of nested lists equals the sum of flattened list -/
+
+theorem sum_nested_equals_flatten_sum (l : List (List Int)) :
+  sumNested l = listSum (flatten l) := by
+  sorry
+
+/- Sum of empty nested lists is zero -/
+
+theorem sum_nested_empty_lists (l : List (List Int)) (h : ∀ x ∈ l, x = []) :
+  sumNested l = 0 := by
+  sorry
+
+/- Sum of singleton list equals its element -/
+
+theorem sum_nested_singleton (n : Int) :
+  sumNested [[n]] = n := by
+  sorry
+
+/-
+info: 10
+-/
+-- #guard_msgs in
+-- #eval sum_nested [1, [2, [3, [4]]]]
+
+/-
+info: 0
+-/
+-- #guard_msgs in
+-- #eval sum_nested [[[], []]]
+
+/-
+info: 8
+-/
+-- #guard_msgs in
+-- #eval sum_nested [1, [1], [1, [1]], [1, [1], [1, [1]]]]
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In a fictitious city of CODASLAM there were many skyscrapers. The mayor of the city decided to make the city beautiful and for this he decided to arrange the skyscrapers in descending order of their height, and the order must be strictly decreasing but he also didn’t want to waste much money so he decided to get the minimum cuts possible. Your job is to output the minimum value of cut that is possible to arrange the skyscrapers in descending order.
   
   -----Input-----
@@ -20,6 +21,7 @@ vc-description: |-
   
   By:
   Chintan,Asad,Ashayam,Akanksha
+  -/
 
 vc-preamble: |-
 
@@ -40,17 +42,17 @@ vc-theorems: |-
   theorem cuts_non_negative_multi (n : Nat) (heights : List Nat) :
     n ≥ 2 → min_cuts_for_skyscrapers n heights ≥ 0 := sorry
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval min_cuts_for_skyscrapers 5 [1, 2, 3, 4, 5]
+  -- #guard_msgs in
+  -- #eval min_cuts_for_skyscrapers 5 [1, 2, 3, 4, 5]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_cuts_for_skyscrapers 5 [5, 4, 3, 2, 1]
+  -- #guard_msgs in
+  -- #eval min_cuts_for_skyscrapers 5 [5, 4, 3, 2, 1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

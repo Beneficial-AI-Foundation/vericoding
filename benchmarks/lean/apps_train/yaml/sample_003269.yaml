@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A system is transmitting messages in binary, however it is not a perfect transmission, and sometimes errors will occur which result in a single bit flipping from 0 to 1, or from 1 to 0.
   
   To resolve this, A 2-dimensional Parity Bit Code is used: https://en.wikipedia.org/wiki/Multidimensional_parity-check_code
@@ -33,6 +34,7 @@ vc-description: |-
   Create a function correct, which takes in integers M and N, and a string of bits where the first M\*N represent the content of the message, the next M represent the parity bits for the rows, and the final N represent the parity bits for the columns. A single-bit error may or may not have appeared in the bit array.
   
   The function should check to see if there is a single-bit error in the coded message, correct it if it exists, and return the corrected string of bits.
+  -/
 
 vc-preamble: |-
 
@@ -62,23 +64,23 @@ vc-theorems: |-
     let diffs := (List.zip bits.data result.data).filter (fun p => p.1 ≠ p.2)
     diffs.length ≤ 1 := sorry
   
-  /--
+  /-
   info: '111'
   -/
-  #guard_msgs in
-  #eval correct 1 1 "111"
+  -- #guard_msgs in
+  -- #eval correct 1 1 "111"
   
-  /--
+  /-
   info: '11111010001'
   -/
-  #guard_msgs in
-  #eval correct 2 3 "11011010001"
+  -- #guard_msgs in
+  -- #eval correct 2 3 "11011010001"
   
-  /--
+  /-
   info: '111'
   -/
-  #guard_msgs in
-  #eval correct 1 1 "110"
+  -- #guard_msgs in
+  -- #eval correct 1 1 "110"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

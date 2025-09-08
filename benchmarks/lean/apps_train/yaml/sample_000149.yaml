@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A password is considered strong if below conditions are all met:
   
    It has at least 6 characters and at most 20 characters. 
@@ -8,6 +9,7 @@ vc-description: |-
   Write a function strongPasswordChecker(s), that takes a string s as input, and return the MINIMUM change required to make s a strong password. If s is already strong, return 0.
   
   Insertion, deletion or replace of any one character are all considered as one change.
+  -/
 
 vc-preamble: |-
   def isLower (c : Char) : Bool :=
@@ -67,23 +69,23 @@ vc-theorems: |-
     strongPasswordChecker s ≥ s.length / 3 :=
     sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval strongPasswordChecker "a"
+  -- #guard_msgs in
+  -- #eval strongPasswordChecker "a"
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval strongPasswordChecker "aA1"
+  -- #guard_msgs in
+  -- #eval strongPasswordChecker "aA1"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval strongPasswordChecker "1337C0d3"
+  -- #guard_msgs in
+  -- #eval strongPasswordChecker "1337C0d3"
 
 vc-postamble: |-
   -- Apps difficulty: interview

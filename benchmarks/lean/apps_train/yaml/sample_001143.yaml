@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Gorodetskiy is a university student. He is really good at math and really likes solving engaging math problems. In the last exam, his professor gave him really hard math problems to solve, but Gorodetskiy could not solve them and failed the exam, so the professor told him: "These problems are a piece of cake, you should know them from school!" Here is one of the problems from the exam - you can decide if it really was an easy problem or not.
   You are given a positive integer $M$. Let's call a positive integer $A$ an interesting number if there is at least one integer $B$ ($A \le B$) such that $A \cdot B$ is divisible by $M$ and $\frac{A \cdot B}{M} = A+B$.
   Find all interesting numbers. Let's denote the number of such integers by $K$; it is guaranteed that $K \le 3*10^5$.
@@ -39,6 +40,7 @@ vc-description: |-
   
   -----Explanation-----
   Example case 1: There are two interesting numbers, $4$ and $6$. For $A = 4$, we can choose $B = 12$ and for $A = 6$, we can choose $B = 6$.
+  -/
 
 vc-preamble: |-
 

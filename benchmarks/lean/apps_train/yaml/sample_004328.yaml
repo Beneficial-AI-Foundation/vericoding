@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   *This is the advanced version of the 
   [Minimum and Maximum Product of k Elements](https://www.codewars.com/kata/minimum-and-maximum-product-of-k-elements/) kata.*
   
@@ -28,6 +29,7 @@ vc-description: |-
   If you enjoyed this kata then please try [my other katas](https://www.codewars.com/collections/katas-created-by-anter69)! :-)
   
   #### *Translations are welcome!*
+  -/
 
 vc-preamble: |-
 
@@ -64,23 +66,23 @@ vc-theorems: |-
       (h : k > arr.length) :
       find_min_max_product arr k = none := sorry
   
-  /--
+  /-
   info: (-21, 42)
   -/
-  #guard_msgs in
-  #eval find_min_max_product [1, -2, -3, 4, 6, 7] 2
+  -- #guard_msgs in
+  -- #eval find_min_max_product [1, -2, -3, 4, 6, 7] 2
   
-  /--
+  /-
   info: (0, 12)
   -/
-  #guard_msgs in
-  #eval find_min_max_product [0, -1, -2, -3, -4] 2
+  -- #guard_msgs in
+  -- #eval find_min_max_product [0, -1, -2, -3, -4] 2
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval find_min_max_product [] 2
+  -- #guard_msgs in
+  -- #eval find_min_max_product [] 2
 
 vc-postamble: |-
   -- Apps difficulty: introductory

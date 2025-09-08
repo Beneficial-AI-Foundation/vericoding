@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string s, the power of the string is the maximum length of a non-empty substring that contains only one unique character.
   Return the power of the string.
   
@@ -28,6 +29,7 @@ vc-description: |-
   
   1 <= s.length <= 500
   s contains only lowercase English letters.
+  -/
 
 vc-preamble: |-
   def max_power (s : List Char) : Nat :=
@@ -67,23 +69,23 @@ vc-theorems: |-
     max_power s = 1 :=
   sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval max_power "leetcode"
+  -- #guard_msgs in
+  -- #eval max_power "leetcode"
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval max_power "abbcccddddeeeeedcba"
+  -- #guard_msgs in
+  -- #eval max_power "abbcccddddeeeeedcba"
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval max_power "tourist"
+  -- #guard_msgs in
+  -- #eval max_power "tourist"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

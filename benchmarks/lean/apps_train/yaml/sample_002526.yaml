@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this exercise, a string is passed to a method and a new string has to be returned with the first character of each word in the string.
   
   For example:
@@ -6,6 +7,7 @@ vc-description: |-
   ```
   "This Is A Test" ==> "TIAT"
   ```
+  -/
 
 vc-preamble: |-
 
@@ -30,23 +32,23 @@ vc-theorems: |-
   theorem make_string_only_spaces (h : ∀ c ∈ spaces.data, c = ' ') :
     make_string spaces = [] := sorry
   
-  /--
+  /-
   info: 'sexy'
   -/
-  #guard_msgs in
-  #eval make_string "sees eyes xray yoat"
+  -- #guard_msgs in
+  -- #eval make_string "sees eyes xray yoat"
   
-  /--
+  /-
   info: 'bean'
   -/
-  #guard_msgs in
-  #eval make_string "brown eyes are nice"
+  -- #guard_msgs in
+  -- #eval make_string "brown eyes are nice"
   
-  /--
+  /-
   info: 'cavn'
   -/
-  #guard_msgs in
-  #eval make_string "cars are very nice"
+  -- #guard_msgs in
+  -- #eval make_string "cars are very nice"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

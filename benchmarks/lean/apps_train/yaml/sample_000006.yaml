@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Arthur owns a ski resort on a mountain. There are $n$ landing spots on the mountain numbered from $1$ to $n$ from the top to the foot of the mountain. The spots are connected with one-directional ski tracks. All tracks go towards the foot of the mountain, so there are no directed cycles formed by the tracks. There are at most two tracks leaving each spot, but many tracks may enter the same spot.
   
   A skier can start skiing from one spot and stop in another spot if there is a sequence of tracks that lead from the starting spot and end in the ending spot. Unfortunately, recently there were many accidents, because the structure of the resort allows a skier to go through dangerous paths, by reaching high speed and endangering himself and the other customers. Here, a path is called dangerous, if it consists of at least two tracks.
@@ -54,6 +55,7 @@ vc-description: |-
   In the first sample case, closing any two spots is suitable.
   
   In the second sample case, closing only the spot $1$ is also suitable.
+  -/
 
 vc-preamble: |-
   def valid_track (n : Nat) (track : Nat × Nat) : Prop :=
@@ -100,17 +102,17 @@ vc-theorems: |-
     -- all tracks are valid
     (∀ t ∈ tracks, valid_track n t) := by sorry
   
-  /--
+  /-
   info: [3, 4]
   -/
-  #guard_msgs in
-  #eval sorted res1[0][1]
+  -- #guard_msgs in
+  -- #eval sorted res1[0][1]
   
-  /--
+  /-
   info: [4, 5, 6, 7]
   -/
-  #guard_msgs in
-  #eval sorted res2[0][1]
+  -- #guard_msgs in
+  -- #eval sorted res2[0][1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

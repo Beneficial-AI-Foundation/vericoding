@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   *Recreation of [Project Euler problem #6](https://projecteuler.net/problem=6)*
   
   Find the difference between the sum of the squares of the first `n` natural numbers `(1 <= n <= 100)` and the square of their sum.
@@ -15,6 +16,7 @@ vc-description: |-
    1^(2) + 2^(2) + 3^(2) + 4^(2) + 5^(2) + 6^(2) + 7^(2) + 8^(2) + 9^(2) + 10^(2) = 385
   
   Hence the difference between square of the sum of the first ten natural numbers and the sum of the squares of those numbes is: 3025 - 385 = 2640
+  -/
 
 vc-preamble: |-
   def difference_of_squares (n : Nat) : Nat :=
@@ -44,23 +46,23 @@ vc-theorems: |-
     difference_of_squares n > difference_of_squares (n-1) :=
     sorry
   
-  /--
+  /-
   info: 170
   -/
-  #guard_msgs in
-  #eval difference_of_squares 5
+  -- #guard_msgs in
+  -- #eval difference_of_squares 5
   
-  /--
+  /-
   info: 2640
   -/
-  #guard_msgs in
-  #eval difference_of_squares 10
+  -- #guard_msgs in
+  -- #eval difference_of_squares 10
   
-  /--
+  /-
   info: 25164150
   -/
-  #guard_msgs in
-  #eval difference_of_squares 100
+  -- #guard_msgs in
+  -- #eval difference_of_squares 100
 
 vc-postamble: |-
   -- Apps difficulty: introductory

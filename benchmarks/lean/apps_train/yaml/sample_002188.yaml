@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A subsequence of a string S is a string that can be obtained by deleting zero or more characters from S without changing the order of the remaining characters.
   For example, arc, artistic and (an empty string) are all subsequences of artistic; abc and ci are not.
   You are given a string A consisting of lowercase English letters.
@@ -23,6 +24,7 @@ vc-description: |-
   b
   
   The string atcoderregularcontest contains a as a subsequence, but not b.
+  -/
 
 vc-preamble: |-
   def find_shortest_non_subsequence (s : String) : String :=
@@ -64,23 +66,23 @@ vc-theorems: |-
     find_shortest_non_subsequence s = "aa" := by
     sorry
   
-  /--
+  /-
   info: 'b'
   -/
-  #guard_msgs in
-  #eval find_shortest_non_subsequence "atcoderregularcontest"
+  -- #guard_msgs in
+  -- #eval find_shortest_non_subsequence "atcoderregularcontest"
   
-  /--
+  /-
   info: 'aa'
   -/
-  #guard_msgs in
-  #eval find_shortest_non_subsequence "abcdefghijklmnopqrstuvwxyz"
+  -- #guard_msgs in
+  -- #eval find_shortest_non_subsequence "abcdefghijklmnopqrstuvwxyz"
   
-  /--
+  /-
   info: 'aca'
   -/
-  #guard_msgs in
-  #eval find_shortest_non_subsequence "frqnvhydscshfcgdemurlfrutcpzhopfotpifgepnqjxupnskapziurswqazdwnwbgdhyktfyhqqxpoidfhjdakoxraiedxskywuepzfniuyskxiyjpjlxuqnfgmnjcvtlpnclfkpervxmdbvrbrdn"
+  -- #guard_msgs in
+  -- #eval find_shortest_non_subsequence "frqnvhydscshfcgdemurlfrutcpzhopfotpifgepnqjxupnskapziurswqazdwnwbgdhyktfyhqqxpoidfhjdakoxraiedxskywuepzfniuyskxiyjpjlxuqnfgmnjcvtlpnclfkpervxmdbvrbrdn"
 
 vc-postamble: |-
   -- Apps difficulty: competition

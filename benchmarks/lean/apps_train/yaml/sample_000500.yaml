@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are N Snuke Cats numbered 1, 2, \ldots, N, where N is even.
   Each Snuke Cat wears a red scarf, on which his favorite non-negative integer is written.
   Recently, they learned the operation called xor (exclusive OR).What is xor?
@@ -41,6 +42,7 @@ vc-description: |-
    - 26~\textrm{xor}~5~\textrm{xor}~22 = 9
    - 26~\textrm{xor}~5~\textrm{xor}~7 = 24
   Thus, this output is consistent with the given information.
+  -/
 
 vc-preamble: |-
 

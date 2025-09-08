@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given sequences A and B consisting of non-negative integers.
   The lengths of both A and B are N, and the sums of the elements in A and B are equal.
   The i-th element in A is A_i, and the i-th element in B is B_i.
@@ -42,6 +43,7 @@ vc-description: |-
    - Gezan decreases B_1 by 1.
    - One candy is given to Takahashi.
    - As A and B are equal, the process is terminated.
+  -/
 
 vc-preamble: |-
 
@@ -71,23 +73,23 @@ vc-theorems: |-
     let pairs := List.replicate n (val, val)
     solve n pairs = 0 := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve 2 [(1, 2), (3, 2)]
+  -- #guard_msgs in
+  -- #eval solve 2 [(1, 2), (3, 2)]
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval solve 3 [(8, 3), (0, 1), (4, 8)]
+  -- #guard_msgs in
+  -- #eval solve 3 [(8, 3), (0, 1), (4, 8)]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve 1 [(1, 1)]
+  -- #guard_msgs in
+  -- #eval solve 1 [(1, 1)]
 
 vc-postamble: |-
   -- Apps difficulty: competition

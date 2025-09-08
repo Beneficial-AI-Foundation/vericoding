@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your task is to ___find the next higher number (int) with same '1'- Bits___.
   
   I.e. as much `1` bits as before and output next higher than input. Input is always an int in between 1 and 1<<30 (inclusive). No bad cases or special tricks... 
@@ -15,6 +16,7 @@ vc-description: |-
   First some static tests, later on many random tests too;-)!
   
   ### Hope you have fun! :-)
+  -/
 
 vc-preamble: |-
   def next_higher (n : Nat) : Nat :=
@@ -41,23 +43,23 @@ vc-theorems: |-
     next_higher (2^i) = 2^(i+1) :=
     sorry
   
-  /--
+  /-
   info: 256
   -/
-  #guard_msgs in
-  #eval next_higher 128
+  -- #guard_msgs in
+  -- #eval next_higher 128
   
-  /--
+  /-
   info: 191
   -/
-  #guard_msgs in
-  #eval next_higher 127
+  -- #guard_msgs in
+  -- #eval next_higher 127
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval next_higher 1
+  -- #guard_msgs in
+  -- #eval next_higher 1
 
 vc-postamble: |-
   -- Apps difficulty: introductory

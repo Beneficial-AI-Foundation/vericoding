@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Ada is playing pawn chess with Suzumo.
   Pawn chess is played on a long board with N$N$ squares in one row. Initially, some of the squares contain pawns.
   Note that the colours of the squares and pawns do not matter in this game, but otherwise, the standard chess rules apply:
@@ -35,6 +36,7 @@ vc-description: |-
   PP...
   
   and Suzumo cannot make any move here.
+  -/
 
 vc-preamble: |-
 
@@ -62,23 +64,23 @@ vc-theorems: |-
   theorem empty_board_loses (n : Nat) (h : n > 0) :
     can_ada_win (String.mk (List.replicate n '.')) = "No" := sorry
   
-  /--
+  /-
   info: 'Yes'
   -/
-  #guard_msgs in
-  #eval can_ada_win "..P.P"
+  -- #guard_msgs in
+  -- #eval can_ada_win "..P.P"
   
-  /--
+  /-
   info: 'No'
   -/
-  #guard_msgs in
-  #eval can_ada_win ".PP"
+  -- #guard_msgs in
+  -- #eval can_ada_win ".PP"
   
-  /--
+  /-
   info: 'Yes'
   -/
-  #guard_msgs in
-  #eval can_ada_win ".P.P"
+  -- #guard_msgs in
+  -- #eval can_ada_win ".P.P"
 
 vc-postamble: |-
   -- Apps difficulty: interview

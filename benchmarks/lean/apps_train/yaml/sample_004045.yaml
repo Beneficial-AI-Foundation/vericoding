@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In Dark Souls, players level up trading souls for stats. 8 stats are upgradable this way: vitality, attunement, endurance, strength, dexterity, resistance, intelligence, and faith. Each level corresponds to adding one point to a stat of the player's choice. Also, there are 10 possible classes each having their own starting level and stats:
   
   ```
@@ -17,6 +18,7 @@ vc-description: |-
   From level 1, the necessary souls to level up each time up to 11 are `673`, `690`, `707`, `724`, `741`, `758`, `775`, `793`, `811`, and `829`. Then from 11 to 12 and onwards the amount is defined by the expression `round(pow(x, 3) * 0.02 + pow(x, 2) * 3.06 + 105.6 * x - 895)` where `x` is the number corresponding to the next level.
   
   Your function will receive a string with the character class and a list of stats. It should calculate which level is required to get the desired character build and the amount of souls needed to do so. The result should be a string in the format: `'Starting as a [CLASS], level [N] will require [M] souls.'` where `[CLASS]` is your starting class, `[N]` is the required level, and `[M]` is the amount of souls needed respectively.
+  -/
 
 vc-preamble: |-
   def souls (character : String) (build : List Nat) : String :=
@@ -78,23 +80,23 @@ vc-theorems: |-
       result.endsWith "will require 0 souls." :=
     sorry
   
-  /--
+  /-
   info: 'Starting as a deprived, level 6 will require 0 souls.'
   -/
-  #guard_msgs in
-  #eval souls "deprived" [11, 11, 11, 11, 11, 11, 11, 11]
+  -- #guard_msgs in
+  -- #eval souls "deprived" [11, 11, 11, 11, 11, 11, 11, 11]
   
-  /--
+  /-
   info: 'Starting as a pyromancer, level 2 will require 673 souls.'
   -/
-  #guard_msgs in
-  #eval souls "pyromancer" [10, 12, 11, 12, 9, 12, 11, 8]
+  -- #guard_msgs in
+  -- #eval souls "pyromancer" [10, 12, 11, 12, 9, 12, 11, 8]
   
-  /--
+  /-
   info: 'Starting as a pyromancer, level 12 will require 8348 souls.'
   -/
-  #guard_msgs in
-  #eval souls "pyromancer" [16, 12, 11, 12, 9, 12, 13, 10]
+  -- #guard_msgs in
+  -- #eval souls "pyromancer" [16, 12, 11, 12, 9, 12, 13, 10]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

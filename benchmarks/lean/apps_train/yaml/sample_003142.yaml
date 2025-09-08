@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## TL;DR
   
   Given a number of vertices `N` and a list of weighted directed edges in a directed acyclic graph (each edge is written as `[start, end, weight]` where `from < to`), compute the weight of the shortest path from vertex `0` to vertex `N - 1`.  If there is no such path, return `-1`.
@@ -58,6 +59,7 @@ vc-description: |-
   **Warning:** You will probably need to use a dynamic programming solution if you want your solution to run fast enough not to time out--that's the whole point of this kata!
   
   However, a well-written general shortest-path algorithm such as Dijkstra's Algorithm may also be fast enough to past the soak tests.  (The reason is that the dividing line between linear and linearithmic time is hard to define and depends on a variety of external factors, so the kata's tests err on the safe side.)
+  -/
 
 vc-preamble: |-
 
@@ -91,23 +93,23 @@ vc-theorems: |-
     shortest n [{ src := 0, dst := n-1, weight := w }] = w :=
   sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval shortest 4 [[0, 1, 1], [0, 2, 5], [0, 3, 5], [1, 3, 3], [2, 3, 1]]
+  -- #guard_msgs in
+  -- #eval shortest 4 [[0, 1, 1], [0, 2, 5], [0, 3, 5], [1, 3, 3], [2, 3, 1]]
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval shortest 3 [[0, 1, 7], [1, 2, 5], [0, 2, 12]]
+  -- #guard_msgs in
+  -- #eval shortest 3 [[0, 1, 7], [1, 2, 5], [0, 2, 12]]
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval shortest 5 [[0, 2, 1], [1, 2, 1], [0, 3, 1], [1, 4, 1]]
+  -- #guard_msgs in
+  -- #eval shortest 5 [[0, 2, 1], [1, 2, 1], [0, 3, 1], [1, 4, 1]]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

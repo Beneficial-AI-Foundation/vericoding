@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Lumpy is a bus driver. Today, the conductor is absent so Lumpy has to do the conductor's job as well. There are N creatures in the bus. Sometimes the creatures don't carry change and can't pay the exact amount of the fare. Each creature in the bus today has paid an amount
   greater than his/her fare. You are given information about the extra amount paid by each creature, by an array A of size N, where Ai denotes the extra amount paid by the i-th creature, in rupees.
   After the end of the trip, Lumpy noticed that he had P one rupee coins and Q two rupee coins. He wants to pay back the creatures using this money. Being a kind hearted moose, Lumpy wants to pay back as many creatures as he can. Note that Lumpy will 
@@ -45,6 +46,7 @@ vc-description: |-
   Example 2. Lumpy has 2 one rupee coins and 1 two rupee coin. 
   
   In the optimal solution, Lumpy can give the two rupee coin to creature 2 and the one rupee coins to creatures 1 and 3. Thus, answer is 3.
+  -/
 
 vc-preamble: |-
   def List.sum : List Nat → Nat 

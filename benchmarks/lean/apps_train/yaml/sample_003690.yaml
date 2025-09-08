@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this Kata, you will be given an integer array and your task is to return the sum of elements occupying prime-numbered indices. 
   
   ~~~if-not:fortran
@@ -16,6 +17,7 @@ vc-description: |-
   [Dominant primes](https://www.codewars.com/kata/59ce11ea9f0cbc8a390000ed). It takes this idea a step further.
   
   [Consonant value](https://www.codewars.com/kata/59c633e7dcc4053512000073)
+  -/
 
 vc-preamble: |-
   def is_prime (n : Nat) : Bool :=
@@ -45,23 +47,23 @@ vc-theorems: |-
     total arr ≥ 0 ∨ ∃ x ∈ arr, x < 0 :=
   sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval total []
+  -- #guard_msgs in
+  -- #eval total []
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval total [1, 2, 3, 4]
+  -- #guard_msgs in
+  -- #eval total [1, 2, 3, 4]
   
-  /--
+  /-
   info: 21
   -/
-  #guard_msgs in
-  #eval total [1, 2, 3, 4, 5, 6, 7, 8]
+  -- #guard_msgs in
+  -- #eval total [1, 2, 3, 4, 5, 6, 7, 8]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

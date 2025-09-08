@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array of integers arr and an integer k. Find the least number of unique integers after removing exactly k elements.
   
   Example 1:
@@ -16,6 +17,7 @@ vc-description: |-
   1 <= arr.length <= 10^5
   1 <= arr[i] <= 10^9
   0 <= k <= arr.length
+  -/
 
 vc-preamble: |-
 
@@ -50,23 +52,23 @@ vc-theorems: |-
     find_least_num_unique_ints arr (k + 1) ≤ find_least_num_unique_ints arr k := by
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval find_least_num_unique_ints [5, 5, 4] 1
+  -- #guard_msgs in
+  -- #eval find_least_num_unique_ints [5, 5, 4] 1
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_least_num_unique_ints [4, 3, 1, 1, 3, 3, 2] 3
+  -- #guard_msgs in
+  -- #eval find_least_num_unique_ints [4, 3, 1, 1, 3, 3, 2] 3
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_least_num_unique_ints [2, 4, 1, 8, 3, 5, 1, 3] 3
+  -- #guard_msgs in
+  -- #eval find_least_num_unique_ints [2, 4, 1, 8, 3, 5, 1, 3] 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

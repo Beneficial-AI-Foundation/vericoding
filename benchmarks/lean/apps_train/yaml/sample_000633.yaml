@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Shubham recently learned the lexicographical order in strings.
   
   Now, he has two strings s1  and  s2  of the equal size and Shubham wants to compare those two strings lexicographically.
@@ -41,6 +42,7 @@ vc-description: |-
   Output:
   first
   first
+  -/
 
 vc-preamble: |-
 

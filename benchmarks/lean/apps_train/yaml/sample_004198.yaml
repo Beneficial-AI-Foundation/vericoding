@@ -1,9 +1,11 @@
 vc-description: |-
+  /-
   A palindrome is a series of characters that read the same forwards as backwards such as "hannah", "racecar" and "lol".
   
   For this Kata you need to write a function that takes a string of characters and returns the length, as an integer value, of longest alphanumeric palindrome that could be made by combining the characters in any order but using each character only once. The function should not be case sensitive.
   
   For example if passed "Hannah" it should return 6 and if passed "aabbcc_yYx_" it should return 9 because one possible palindrome would be "abcyxycba".
+  -/
 
 vc-preamble: |-
 
@@ -39,23 +41,23 @@ vc-theorems: |-
     longestPalindrome s > 0 →
     longestPalindrome s % 2 = 0 := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval longest_palindrome "A"
+  -- #guard_msgs in
+  -- #eval longest_palindrome "A"
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval longest_palindrome "Hannah"
+  -- #guard_msgs in
+  -- #eval longest_palindrome "Hannah"
   
-  /--
+  /-
   info: 13
   -/
-  #guard_msgs in
-  #eval longest_palindrome "xyz__a_/b0110//a_zyx"
+  -- #guard_msgs in
+  -- #eval longest_palindrome "xyz__a_/b0110//a_zyx"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

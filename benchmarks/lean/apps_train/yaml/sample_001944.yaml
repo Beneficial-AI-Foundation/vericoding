@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given integer $n$. You have to arrange numbers from $1$ to $2n$, using each of them exactly once, on the circle, so that the following condition would be satisfied:
   
   For every $n$ consecutive numbers on the circle write their sum on the blackboard. Then any two of written on the blackboard $2n$ numbers differ not more than by $1$.
@@ -35,6 +36,7 @@ vc-description: |-
   Example from the statement is shown for the first example. 
   
   It can be proved that there is no solution in the second example.
+  -/
 
 vc-preamble: |-
   def solve_circle_arrangement (n : Nat) : String :=
@@ -85,23 +87,23 @@ vc-theorems: |-
           maxSum - minSum ≤ 1
     := sorry
   
-  /--
+  /-
   info: 'YES\n2 3 6 1 4 5'
   -/
-  #guard_msgs in
-  #eval solve_circle_arrangement 3
+  -- #guard_msgs in
+  -- #eval solve_circle_arrangement 3
   
-  /--
+  /-
   info: 'NO'
   -/
-  #guard_msgs in
-  #eval solve_circle_arrangement 4
+  -- #guard_msgs in
+  -- #eval solve_circle_arrangement 4
   
-  /--
+  /-
   info: 'YES\n2 1'
   -/
-  #guard_msgs in
-  #eval solve_circle_arrangement 1
+  -- #guard_msgs in
+  -- #eval solve_circle_arrangement 1
 
 vc-postamble: |-
   -- Apps difficulty: competition

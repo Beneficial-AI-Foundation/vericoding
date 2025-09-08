@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ### Task:
   
   You have to write a function `pattern` which returns the following Pattern(See Examples) upto (2n-1) rows, where n is parameter.
@@ -90,6 +91,7 @@ vc-description: |-
           1                           1
   
   [List of all my katas]("http://www.codewars.com/users/curious_db97/authored")
+  -/
 
 vc-preamble: |-
 
@@ -122,23 +124,23 @@ vc-theorems: |-
     (lines.take n.toNat = (lines.drop (n-1).toNat).reverse)
     := sorry
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval pattern 3
+  -- #guard_msgs in
+  -- #eval pattern 3
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval pattern 0
+  -- #guard_msgs in
+  -- #eval pattern 0
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval pattern 2
+  -- #guard_msgs in
+  -- #eval pattern 2
 
 vc-postamble: |-
   -- Apps difficulty: introductory

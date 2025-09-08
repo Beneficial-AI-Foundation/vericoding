@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array `A` and an integer `x`, map each element in the array to `F(A[i],x)` then return the xor sum of the resulting array.
   
   where F(n,x) is defined as follows:
@@ -28,6 +29,7 @@ vc-description: |-
   **x <= A[i] <= 10^(4)**
   
   **5 <= |A| <= 10^(3)**
+  -/
 
 vc-preamble: |-
   def Nat.choose (n k : Nat) : Nat := sorry
@@ -54,23 +56,23 @@ vc-theorems: |-
     transform arr 0 = List.foldl (fun acc n => acc + (n + 1)) 0 arr :=
   sorry
   
-  /--
+  /-
   info: 384
   -/
-  #guard_msgs in
-  #eval transform [7, 4, 11, 6, 5] 3
+  -- #guard_msgs in
+  -- #eval transform [7, 4, 11, 6, 5] 3
   
-  /--
+  /-
   info: 15
   -/
-  #guard_msgs in
-  #eval transform [5, 6, 7] 2
+  -- #guard_msgs in
+  -- #eval transform [5, 6, 7] 2
   
-  /--
+  /-
   info: 462
   -/
-  #guard_msgs in
-  #eval transform [10] 5
+  -- #guard_msgs in
+  -- #eval transform [10] 5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

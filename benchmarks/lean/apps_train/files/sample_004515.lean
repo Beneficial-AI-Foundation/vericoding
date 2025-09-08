@@ -1,0 +1,65 @@
+/-
+The 26 letters of the English alphabets are randomly divided into 5 groups of 5 letters with the remaining letter being ignored.  Each of the group is assigned a score of more than 0.  The ignored letter always has a score of 0.
+
+With this kata, write a function ```nameScore(name)``` to work out the score of a name that is passed to the function.
+
+The output should be returned as an object:
+
+Only letters have a score. Spaces do not.
+
+You can safely assume that ```name``` does not contain any punctuations or symbols.  There will also be no ```empty string``` or ```null``` value.
+
+A static ```alpha``` object for testing has been preloaded  for your convenience in the following format:
+
+Note that the ```alpha``` object will be randomly generated each time you run the test.
+
+#Example
+
+In accordance to the above ```alpha``` object, the name ```Mary Jane``` will have a name score of ```20``` => M=3 + a=1 + r=4 + y=5 + J=2 + a=1 + n=3 + e=1
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def name_score (name : String) (alpha : Option (Lean.HashMap String Int) := none) : 
+  Lean.HashMap String Int := sorry
+
+theorem name_score_returns_dict_with_name (name : String) :
+  let result := name_score name
+  result.size = 1 ∧ result.contains name := sorry
+
+theorem name_score_with_custom_alpha (name : String) (alpha : Lean.HashMap String Int) :
+  let result := name_score name (some alpha)
+  result.size = 1 ∧ result.contains name := sorry
+
+theorem name_score_case_insensitive (name : String) : 
+  (name_score name.toLower).find! name.toLower = 
+  (name_score name.toUpper).find! name.toUpper := sorry
+
+theorem name_score_nonnegative (name : String) :
+  (name_score name).find! name ≥ 0 := sorry
+
+theorem name_score_additive (name1 name2 : String) :
+  (name_score (name1 ++ name2)).find! (name1 ++ name2) = 
+  (name_score name1).find! name1 + (name_score name2).find! name2 := sorry
+
+/-
+info: {'MARY': 13}
+-/
+-- #guard_msgs in
+-- #eval name_score "MARY"
+
+/-
+info: {'Mary Jane': 20}
+-/
+-- #guard_msgs in
+-- #eval name_score "Mary Jane"
+
+/-
+info: {'CAB': 3}
+-/
+-- #guard_msgs in
+-- #eval name_score "CAB" {"ABC": 1, "DEF": 2, "GHIJKLMNOPQRSTUVWXYZ": 0}
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given three integers in the range [0-99]. You must determine if any ordering of the numbers forms a date from the 20th century.
   
   - If no ordering forms a date, return the string `"invalid"`.
@@ -22,6 +23,7 @@ vc-description: |-
   
   ## Note
   This kata was inspired by my encounter with [google.com/foobar](http://www.google.com/foobar)
+  -/
 
 vc-preamble: |-
 
@@ -66,23 +68,23 @@ vc-theorems: |-
     (h3 : 32 ≤ c ∧ c ≤ 99) :
     unique_date a b c = "invalid" := sorry
   
-  /--
+  /-
   info: '77/12/13'
   -/
-  #guard_msgs in
-  #eval unique_date 13 12 77
+  -- #guard_msgs in
+  -- #eval unique_date 13 12 77
   
-  /--
+  /-
   info: 'ambiguous'
   -/
-  #guard_msgs in
-  #eval unique_date 1 2 3
+  -- #guard_msgs in
+  -- #eval unique_date 1 2 3
   
-  /--
+  /-
   info: 'invalid'
   -/
-  #guard_msgs in
-  #eval unique_date 50 40 60
+  -- #guard_msgs in
+  -- #eval unique_date 50 40 60
 
 vc-postamble: |-
   -- Apps difficulty: introductory

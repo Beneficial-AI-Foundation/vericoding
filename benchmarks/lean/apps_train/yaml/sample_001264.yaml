@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Raj is suffering from shot term memory loss so  he is unable to remember his laptop password  but he has a list of some string and the only thing that he remember about his password is alphanumeric and also that all the characters are unique.
   Given a list of strings, your task is to find a valid password.
   
@@ -23,6 +24,7 @@ vc-description: |-
   Invalid
   Invalid
   Valid
+  -/
 
 vc-preamble: |-
 
@@ -63,23 +65,23 @@ vc-theorems: |-
     (check_valid_password s = PasswordResult.Invalid) := by
     sorry
   
-  /--
+  /-
   info: expected[i]
   -/
-  #guard_msgs in
-  #eval check_valid_password passwords[i]
+  -- #guard_msgs in
+  -- #eval check_valid_password passwords[i]
   
-  /--
+  /-
   info: 'Valid'
   -/
-  #guard_msgs in
-  #eval check_valid_password "abc123"
+  -- #guard_msgs in
+  -- #eval check_valid_password "abc123"
   
-  /--
+  /-
   info: 'Invalid'
   -/
-  #guard_msgs in
-  #eval check_valid_password "abcc123"
+  -- #guard_msgs in
+  -- #eval check_valid_password "abcc123"
 
 vc-postamble: |-
   -- Apps difficulty: interview

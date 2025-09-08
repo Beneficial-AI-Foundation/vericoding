@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are fed up with your messy room, so you decided to clean it up.
   
   Your room is a bracket sequence $s=s_{1}s_{2}\dots s_{n}$ of length $n$. Each character of this string is either an opening bracket '(' or a closing bracket ')'.
@@ -74,6 +75,7 @@ vc-description: |-
   -----Note-----
   
   In the first example, the final sequence is "()(()())", where two prefixes are regular, "()" and "()(()())". Note, that all the operations except "5 8" in the example output are useless (they do not change $s$).
+  -/
 
 vc-preamble: |-
 
@@ -97,17 +99,17 @@ vc-theorems: |-
     n = 2 → k = 1 → s = "()" →
     solve_bracket_sequence n k s = [] := sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval len solve_bracket_sequence(n, k, s)
+  -- #guard_msgs in
+  -- #eval len solve_bracket_sequence(n, k, s)
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval len solve_bracket_sequence(n, k, s)
+  -- #guard_msgs in
+  -- #eval len solve_bracket_sequence(n, k, s)
 
 vc-postamble: |-
   -- Apps difficulty: interview

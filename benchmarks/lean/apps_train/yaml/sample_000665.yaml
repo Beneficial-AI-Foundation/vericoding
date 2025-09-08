@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Congratulations !!! You have successfully completed the heist by looting all the gifts in Santa's locker. Now it's time to decide who gets to take all the gifts, you or the Grinch, there will be no splitting. So you and Grinch decide to play a game.
   To start the game, an Integer N will be given. The game is played in turns and for each turn, the player can make any one of the following moves:
   - Divide N by any of it's odd divisors greater than 1.
@@ -32,6 +33,7 @@ vc-description: |-
   Me
   Grinch
   Me
+  -/
 
 vc-preamble: |-
 
@@ -70,11 +72,11 @@ vc-theorems: |-
   theorem find_winner_known_cases_sixteen :
     find_winner 16 = "Grinch" := sorry
   
-  /--
+  /-
   info: expected1[i]
   -/
-  #guard_msgs in
-  #eval find_winner test1[i]
+  -- #guard_msgs in
+  -- #eval find_winner test1[i]
 
 vc-postamble: |-
   -- Apps difficulty: interview

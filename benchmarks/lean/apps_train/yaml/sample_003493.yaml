@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In mathematics, the factorial of integer 'n' is written as 'n!'.
   It is equal to the product of n and every integer preceding it.
   For example: **5! = 1 x 2 x 3 x 4 x 5 = 120**
@@ -10,6 +11,7 @@ vc-description: |-
   **Note:** 0! is always equal to 1. Negative values should return null; 
   
   For more on Factorials : http://en.wikipedia.org/wiki/Factorial
+  -/
 
 vc-preamble: |-
 
@@ -42,23 +44,23 @@ vc-theorems: |-
     factorial 0 = some 1 :=
     sorry
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval factorial -1
+  -- #guard_msgs in
+  -- #eval factorial -1
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval factorial 0
+  -- #guard_msgs in
+  -- #eval factorial 0
   
-  /--
+  /-
   info: 120
   -/
-  #guard_msgs in
-  #eval factorial 5
+  -- #guard_msgs in
+  -- #eval factorial 5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

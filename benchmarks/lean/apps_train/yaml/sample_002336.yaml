@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an arbitrary ransom note string and another string containing letters from all the magazines, write a function that will return true if the ransom 
   note can be constructed from the magazines ; otherwise, it will return false. 
   
@@ -10,6 +11,7 @@ vc-description: |-
   canConstruct("a", "b") -> false
   canConstruct("aa", "ab") -> false
   canConstruct("aa", "aab") -> true
+  -/
 
 vc-preamble: |-
 
@@ -43,23 +45,23 @@ vc-theorems: |-
     can_construct note magazine = true →
     can_construct note (magazine ++ extension) = true := sorry
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval can_construct "a" "b"
+  -- #guard_msgs in
+  -- #eval can_construct "a" "b"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval can_construct "aa" "ab"
+  -- #guard_msgs in
+  -- #eval can_construct "aa" "ab"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval can_construct "aa" "aab"
+  -- #guard_msgs in
+  -- #eval can_construct "aa" "aab"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

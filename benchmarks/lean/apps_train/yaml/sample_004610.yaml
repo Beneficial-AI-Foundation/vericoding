@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   According to Gary Chapman, marriage counselor and the author of ["The Five Love Languages"](https://en.wikipedia.org/wiki/The_Five_Love_Languages) books, there are five major ways to express our love towards someone: *words of affirmation, quality time, gifts, acts of service,* and *physical touch*. These are called the love languages. Usually, everyone has a main language: the one that he/she "speaks" and understands best. In a relationship, it's import to find your partner's main love language, so that you get along better with each other.
   
   ## Your task
@@ -49,6 +50,7 @@ vc-description: |-
   If you enjoyed this kata then please try [my other katas](https://www.codewars.com/collections/katas-created-by-anter69)! :-)
   
   #### *Translations are welcome!*
+  -/
 
 vc-preamble: |-
   def Response := String
@@ -74,23 +76,23 @@ vc-theorems: |-
     love_language p 4 = main_language :=
   sorry
   
-  /--
+  /-
   info: 'words'
   -/
-  #guard_msgs in
-  #eval love_language MockPartner("words") 4
+  -- #guard_msgs in
+  -- #eval love_language MockPartner("words") 4
   
-  /--
+  /-
   info: 'acts'
   -/
-  #guard_msgs in
-  #eval love_language MockPartner("acts") 4
+  -- #guard_msgs in
+  -- #eval love_language MockPartner("acts") 4
   
-  /--
+  /-
   info: 'gifts'
   -/
-  #guard_msgs in
-  #eval love_language MockPartner("gifts") 4
+  -- #guard_msgs in
+  -- #eval love_language MockPartner("gifts") 4
 
 vc-postamble: |-
   -- Apps difficulty: introductory

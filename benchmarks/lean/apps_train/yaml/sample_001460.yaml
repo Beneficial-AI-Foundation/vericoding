@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chefina  is  always interested to play with string. But due to exam pressure she has no time to solve a string problem. She wants your help. Can you help her to solve that problem?
   You are given a string. You have to find out the $Wonder$ $Sum$ of the string. $Wonder$ $Sum$ of a string is defined as the sum of the value of each character of the string. 
   The value of each character means:
@@ -29,6 +30,7 @@ vc-description: |-
   -----EXPLANATION:-----
   i) For the first test case, since the string is started with "$c$", so output is ($302$+$300$+$301$)=$903$
   ii)For the second test case, since the string is started with "$s$", so output is ($1918$+$1903$+$1904$+$1905$)=$7630$
+  -/
 
 vc-preamble: |-
 
@@ -48,23 +50,23 @@ vc-theorems: |-
     List.length (calculate_wonder_sum strings) = List.length strings :=
     sorry
   
-  /--
+  /-
   info: [903, 7630]
   -/
-  #guard_msgs in
-  #eval calculate_wonder_sum ["cab", "sdef"]
+  -- #guard_msgs in
+  -- #eval calculate_wonder_sum ["cab", "sdef"]
   
-  /--
+  /-
   info: [100]
   -/
-  #guard_msgs in
-  #eval calculate_wonder_sum ["a"]
+  -- #guard_msgs in
+  -- #eval calculate_wonder_sum ["a"]
   
-  /--
+  /-
   info: [2625]
   -/
-  #guard_msgs in
-  #eval calculate_wonder_sum ["z"]
+  -- #guard_msgs in
+  -- #eval calculate_wonder_sum ["z"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

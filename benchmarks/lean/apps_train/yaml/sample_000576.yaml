@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Teddy and Tracy like to play a game based on strings. The game is as follows. Initially, Tracy writes a long random string on a whiteboard. Then, each player starting with Teddy makes turn alternately. Each turn, the player must erase a contiguous substring that exists in the dictionary. The dictionary consists of N words.
   Of course, the player that can't erase any substring in his turn loses the game, and the other player is declared the winner.
   Note that after a substring R is erased, the remaining substring becomes separated, i.e. they cannot erase a word that occurs partially to the left of R and partially to the right of R.
@@ -39,6 +40,7 @@ vc-description: |-
   - 1 <= |S| <= 30
   - 1 <= |wi| <= 30
   - S and wi contain only characters 'a'-'z'
+  -/
 
 vc-preamble: |-
 
@@ -74,23 +76,23 @@ vc-theorems: |-
     solve_string_game "abcd" ["ab", "cd"] = solve_string_game "abcd" ["cd", "ab"] :=
   sorry
   
-  /--
+  /-
   info: 'Tracy'
   -/
-  #guard_msgs in
-  #eval solve_string_game "codechef" ["code", "chef"]
+  -- #guard_msgs in
+  -- #eval solve_string_game "codechef" ["code", "chef"]
   
-  /--
+  /-
   info: 'Tracy'
   -/
-  #guard_msgs in
-  #eval solve_string_game "foo" ["bar"]
+  -- #guard_msgs in
+  -- #eval solve_string_game "foo" ["bar"]
   
-  /--
+  /-
   info: 'Teddy'
   -/
-  #guard_msgs in
-  #eval solve_string_game "mississippi" ["ssissi", "mippi", "mi", "ppi"]
+  -- #guard_msgs in
+  -- #eval solve_string_game "mississippi" ["ssissi", "mippi", "mi", "ppi"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

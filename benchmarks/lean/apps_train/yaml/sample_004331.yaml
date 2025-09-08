@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Decompose a number `num` into an array (tuple in Haskell, array of arrays `long[][]` in C# or Java) of the form `[[k1,k2,k3...], r]`,  `([k1,k2,k3...], r)` in Haskell, `[[k1,k2,k3...], [r]]` in C# or Java) such that:
   
   1. each kn is more than one
@@ -41,6 +42,7 @@ vc-description: |-
   ```
   
   As allways any feedback would be much appreciated
+  -/
 
 vc-preamble: |-
 
@@ -51,20 +53,20 @@ vc-helpers: |-
 vc-definitions: |-
   def decompose : Int → List Nat × Int := sorry
   
-  /-- Decompose function's list result contains only numbers greater than 1 -/
+  /- Decompose function's list result contains only numbers greater than 1 -/
 
 vc-theorems: |-
   theorem decompose_result_gt_one (n : Int) :
     let (result, _) := decompose n
     ∀ k ∈ result, k > 1 := sorry
   
-  /-- Decompose function's remainder is non-negative -/
+  /- Decompose function's remainder is non-negative -/
   
   theorem decompose_remainder_nonneg (n : Int) :
     let (_, remainder) := decompose n
     remainder ≥ 0 := sorry
   
-  /-- The decomposition recomposes back to the original number -/
+  /- The decomposition recomposes back to the original number -/
   
   theorem decompose_recompose (n : Int) :
     let (result, remainder) := decompose n
@@ -72,35 +74,35 @@ vc-theorems: |-
       (List.zip (List.range result.length) result))
     recomposed = n := sorry
   
-  /-- Negative inputs return empty list and same number as remainder -/
+  /- Negative inputs return empty list and same number as remainder -/
   
   theorem decompose_negative (n : Int) :
     n < 0 →
     decompose n = ([], n) := sorry
   
-  /-- Small inputs (0,1) return empty list and same number -/
+  /- Small inputs (0,1) return empty list and same number -/
   
   theorem decompose_small_inputs (n : Int) :
     n = 0 ∨ n = 1 →
     decompose n = ([], n) := sorry
   
-  /--
+  /-
   info: [[], 3]
   -/
-  #guard_msgs in
-  #eval decompose 3
+  -- #guard_msgs in
+  -- #eval decompose 3
   
-  /--
+  /-
   info: [[4, 2], 1]
   -/
-  #guard_msgs in
-  #eval decompose 26
+  -- #guard_msgs in
+  -- #eval decompose 26
   
-  /--
+  /-
   info: [[], 0]
   -/
-  #guard_msgs in
-  #eval decompose 0
+  -- #guard_msgs in
+  -- #eval decompose 0
 
 vc-postamble: |-
   -- Apps difficulty: introductory

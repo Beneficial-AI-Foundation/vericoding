@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    Two integer numbers are added using the column addition method. When using this method, some additions of digits produce non-zero carries to the next positions. Your task is to calculate the number of non-zero carries that will occur while adding the given numbers.
   
@@ -27,6 +28,7 @@ vc-description: |-
     Constraints: `1 ≤ b ≤ 10^7`
   
    - `[output]` an integer
+  -/
 
 vc-preamble: |-
 
@@ -54,23 +56,23 @@ vc-theorems: |-
   theorem identical_numbers (x : Nat) :
     number_of_carries x x = number_of_carries x x := sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval number_of_carries 543 3456
+  -- #guard_msgs in
+  -- #eval number_of_carries 543 3456
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval number_of_carries 1927 6426
+  -- #guard_msgs in
+  -- #eval number_of_carries 1927 6426
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval number_of_carries 9999 1
+  -- #guard_msgs in
+  -- #eval number_of_carries 9999 1
 
 vc-postamble: |-
   -- Apps difficulty: introductory

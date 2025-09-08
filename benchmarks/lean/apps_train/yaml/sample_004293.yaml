@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Your task
   
   You are given a dictionary/hash/object containing some languages and your test results in the given languages. Return the list of languages where your test score is at least `60`, in descending order of the results.
@@ -19,6 +20,7 @@ vc-description: |-
   If you enjoyed this kata then please try [my other katas](https://www.codewars.com/collections/katas-created-by-anter69)! :-)
   
   ### _Translations are welcome!_
+  -/
 
 vc-preamble: |-
   def List.find (p : α → Bool) : List α → Option α
@@ -65,23 +67,23 @@ vc-theorems: |-
       (h : ∀ p ∈ results.toList, p.2 ≥ 60) :
     (my_languages results).length = results.toList.length := sorry
   
-  /--
+  /-
   info: ['Ruby', 'Python']
   -/
-  #guard_msgs in
-  #eval my_languages {"Java": 10, "Ruby": 80, "Python": 65}
+  -- #guard_msgs in
+  -- #eval my_languages {"Java": 10, "Ruby": 80, "Python": 65}
   
-  /--
+  /-
   info: ['Dutch', 'Greek', 'Hindi']
   -/
-  #guard_msgs in
-  #eval my_languages {"Hindi": 60, "Greek": 71, "Dutch": 93}
+  -- #guard_msgs in
+  -- #eval my_languages {"Hindi": 60, "Greek": 71, "Dutch": 93}
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval my_languages {"C++": 50, "ASM": 10, "Haskell": 20}
+  -- #guard_msgs in
+  -- #eval my_languages {"C++": 50, "ASM": 10, "Haskell": 20}
 
 vc-postamble: |-
   -- Apps difficulty: introductory

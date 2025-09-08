@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef is playing a game with his brother Chefu. He asked Chefu to choose a positive integer $N$, multiply it by a given integer $A$, then choose a divisor of $N$ (possibly $N$ itself) and add it to the product. Let's denote the resulting integer by $M$; more formally, $M = A \cdot N + d$, where $d$ is some divisor of $N$.
   Chefu told Chef the value of $M$ and now, Chef should guess $N$. Help him find all values of $N$ which Chefu could have chosen.
   
@@ -33,6 +34,7 @@ vc-description: |-
   
   3
   13 15 16
+  -/
 
 vc-preamble: |-
 
@@ -59,23 +61,23 @@ vc-theorems: |-
     -- Product of divisor pairs equals n
     ∧ ∀ d ∈ divs, d * d ≤ n → d * (n / d) = n := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval len find_possible_n(a, m)
+  -- #guard_msgs in
+  -- #eval len find_possible_n(a, m)
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval len find_possible_n(a, m)
+  -- #guard_msgs in
+  -- #eval len find_possible_n(a, m)
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval len find_possible_n(a, m)
+  -- #guard_msgs in
+  -- #eval len find_possible_n(a, m)
 
 vc-postamble: |-
   -- Apps difficulty: interview

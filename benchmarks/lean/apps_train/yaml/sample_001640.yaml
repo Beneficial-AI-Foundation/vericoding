@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Introduction
   Brainfuck is one of the most well-known esoteric programming languages. But it can be hard to understand any code longer that 5 characters. In this kata you have to solve that problem.
   
@@ -70,6 +71,7 @@ vc-description: |-
     p -= 1;
     *p -= 1;
   } while (*p);
+  -/
 
 vc-preamble: |-
 
@@ -112,23 +114,23 @@ vc-theorems: |-
        line.trimRight.endsWith "}") ∧
       (line.length - (line.trim).length) % 2 = 0 := sorry
   
-  /--
+  /-
   info: test1_output
   -/
-  #guard_msgs in
-  #eval brainfuck_to_c "+++++[>++++.<-]"
+  -- #guard_msgs in
+  -- #eval brainfuck_to_c "+++++[>++++.<-]"
   
-  /--
+  /-
   info: 'Error!'
   -/
-  #guard_msgs in
-  #eval brainfuck_to_c "[[]"
+  -- #guard_msgs in
+  -- #eval brainfuck_to_c "[[]"
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval brainfuck_to_c "+-><[]"
+  -- #guard_msgs in
+  -- #eval brainfuck_to_c "+-><[]"
 
 vc-postamble: |-
   -- Apps difficulty: interview

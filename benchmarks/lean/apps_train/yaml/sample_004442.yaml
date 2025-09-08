@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    John loves encryption. He can encrypt any string by the following algorithm:
   ```
@@ -33,6 +34,7 @@ vc-description: |-
    - `[output]` a boolean value
   
    `true` if encryption is the same, `false` otherwise.
+  -/
 
 vc-preamble: |-
 
@@ -76,23 +78,23 @@ vc-theorems: |-
     (h : same_encryption "" "" = true ∨ same_encryption "" "" = false) :
     False := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval same_encryption "abc" "abc"
+  -- #guard_msgs in
+  -- #eval same_encryption "abc" "abc"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval same_encryption "abc" "abd"
+  -- #guard_msgs in
+  -- #eval same_encryption "abc" "abd"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval same_encryption "fKhjuytrdfcdc" "flJc"
+  -- #guard_msgs in
+  -- #eval same_encryption "fKhjuytrdfcdc" "flJc"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

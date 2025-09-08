@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Have you heard about Megamind? Megamind and Metro Man are two aliens who came to earth. Megamind wanted to destroy the earth, while Metro Man wanted to stop him and protect mankind. After a lot of fighting, Megamind finally threw Metro Man up into the sky. Metro Man was defeated and was never seen again. Megamind wanted to be a super villain. He believed that the difference between a villain and a super villain is nothing but presentation. Megamind became bored, as he had nobody or nothing to fight against since Metro Man was gone. So, he wanted to create another hero against whom he would fight for recreation. But accidentally, another villain named Hal Stewart was created in the process, who also wanted to destroy the earth. Also, at some point Megamind had fallen in love with a pretty girl named Roxanne Ritchi. This changed him into a new man. Now he wants to stop Hal Stewart for the sake of his love. So, the ultimate fight starts now.
   
   * Megamind has unlimited supply of guns named Magic-48. Each of these guns has `shots` rounds of magic spells.
@@ -11,6 +12,7 @@ vc-description: |-
   
   # Example
   Suppose, `hp` = 13, `dps` = 4, `shots` = 3 and `regen` = 1. There are 3 rounds of spells in the gun. Megamind shoots all of them. Hal Stewart’s energy level decreases by 12 units, and thus his energy level becomes 1. Since Megamind’s gun is now empty, he will get a new gun and thus it’s a swapping period. At this time, Hal Stewart’s energy level will increase by 1 unit and will become 2. However, when Megamind shoots the next spell, Hal’s energy level will drop by 4 units and will become −2, thus defeating him. So it takes 4 shoots in total to defeat Hal Stewart. However, in this same example if Hal’s regeneration power was 50 instead of 1, it would have been impossible to defeat Hal.
+  -/
 
 vc-preamble: |-
 
@@ -47,23 +49,23 @@ vc-theorems: |-
     True :=
     sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval mega_mind 13 4 3 1
+  -- #guard_msgs in
+  -- #eval mega_mind 13 4 3 1
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval mega_mind 13 4 3 50
+  -- #guard_msgs in
+  -- #eval mega_mind 13 4 3 50
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval mega_mind 12 4 3 2
+  -- #guard_msgs in
+  -- #eval mega_mind 12 4 3 2
 
 vc-postamble: |-
   -- Apps difficulty: introductory

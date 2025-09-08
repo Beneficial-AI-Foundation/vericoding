@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   *** Nova polynomial from roots*** 
   
   This kata is from a series on polynomial handling. ( [#1](http://www.codewars.com/kata/nova-polynomial-1-add-1)   [#2](http://www.codewars.com/kata/570eb07e127ad107270005fe)  [#3](http://www.codewars.com/kata/5714041e8807940ff3001140 )   [#4](http://www.codewars.com/kata/571a2e2df24bdfd4e20001f5))
@@ -21,6 +22,7 @@ vc-description: |-
   poly_from_roots([]) = [1]
   ```
   The first katas of this series is preloaded in the code and can be used: [poly_add](http://www.codewars.com/kata/570eb07e127ad107270005fe) [poly_multiply](http://www.codewars.com/kata/570eb07e127ad107270005fe)
+  -/
 
 vc-preamble: |-
 
@@ -55,23 +57,23 @@ vc-theorems: |-
   theorem zero_roots {n : Nat} (h : n > 0 ∧ n ≤ 10) :
     poly_from_roots (List.replicate n float.zero) = List.replicate n float.zero ++ [float.one] := sorry
   
-  /--
+  /-
   info: [-4, 1]
   -/
-  #guard_msgs in
-  #eval poly_from_roots [4]
+  -- #guard_msgs in
+  -- #eval poly_from_roots [4]
   
-  /--
+  /-
   info: [0, 0, 0, 0, 1]
   -/
-  #guard_msgs in
-  #eval poly_from_roots [0, 0, 0, 0]
+  -- #guard_msgs in
+  -- #eval poly_from_roots [0, 0, 0, 0]
   
-  /--
+  /-
   info: [1]
   -/
-  #guard_msgs in
-  #eval poly_from_roots []
+  -- #guard_msgs in
+  -- #eval poly_from_roots []
 
 vc-postamble: |-
   -- Apps difficulty: introductory

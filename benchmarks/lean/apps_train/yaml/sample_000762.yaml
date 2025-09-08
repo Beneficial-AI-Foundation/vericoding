@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Xorgon is an extremely delicious treat formed by the sequence $S$ of binary integers $s_1, s_2,..,s_N$. A really interesting property found in a Xorgon is that the xor of all elements in any contiguous subsequence of length $K$ in $S$ will result in $1$.   
   Chef has been asked to prepare a Xorgon. However, he has at his disposal a binary sequence $X$ containing the binary integers $x_1, x_2, ...x_N$. To prepare a Xorgon, the chef may flip the value of as many binary digits in $X$ as required.(i.e. turn a $1$ to a $0$ and $0$ to a $1$). Unfortunately, flipping a digit takes a lot of time and the chef has to serve many orders. Can you help the chef calculate the minimum number of flips required to cook a Xorgon from the given $X$?
   
@@ -22,6 +23,7 @@ vc-description: |-
   
   -----EXPLANATION:-----
   Flip the last bit from 1 to 0 to obtain a Xorgon.
+  -/
 
 vc-preamble: |-
 
@@ -46,23 +48,23 @@ vc-theorems: |-
     (h : arr.length > 0) :
     solve_xorgon n k arr ≤ arr.length := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve_xorgon 7 5 [1, 0, 0, 1, 1, 1, 1]
+  -- #guard_msgs in
+  -- #eval solve_xorgon 7 5 [1, 0, 0, 1, 1, 1, 1]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve_xorgon 4 3 [1, 1, 0, 0]
+  -- #guard_msgs in
+  -- #eval solve_xorgon 4 3 [1, 1, 0, 0]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve_xorgon 3 3 [0, 0, 0]
+  -- #guard_msgs in
+  -- #eval solve_xorgon 3 3 [0, 0, 0]
 
 vc-postamble: |-
   -- Apps difficulty: interview

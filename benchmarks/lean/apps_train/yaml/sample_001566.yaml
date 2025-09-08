@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The number ```89``` is the first positive integer that has a particular, curious property:
   
   The square of ```89``` is ```7921```; ```89² = 7921```
@@ -34,6 +35,7 @@ vc-description: |-
   Memoize your results to pass the tests.
   
   Enjoy it!
+  -/
 
 vc-preamble: |-
   def is_prime (n : Int) : Bool := sorry
@@ -60,23 +62,23 @@ vc-theorems: |-
     sq_cub_rev_prime n > 0 ∧ 
     sq_cub_rev_prime n = sq_cub_rev_prime n := sorry
   
-  /--
+  /-
   info: 89
   -/
-  #guard_msgs in
-  #eval sq_cub_rev_prime 1
+  -- #guard_msgs in
+  -- #eval sq_cub_rev_prime 1
   
-  /--
+  /-
   info: 271
   -/
-  #guard_msgs in
-  #eval sq_cub_rev_prime 2
+  -- #guard_msgs in
+  -- #eval sq_cub_rev_prime 2
   
-  /--
+  /-
   info: 325
   -/
-  #guard_msgs in
-  #eval sq_cub_rev_prime 3
+  -- #guard_msgs in
+  -- #eval sq_cub_rev_prime 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

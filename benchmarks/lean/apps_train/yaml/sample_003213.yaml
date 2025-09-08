@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Americans are odd people: in their buildings, the first floor is actually the ground floor and there is no 13th floor (due to superstition).
   
   Write a function that given a floor in the american system returns the floor in the european system.
@@ -18,6 +19,7 @@ vc-description: |-
   15  =>  13
   -3  =>  -3
   ```
+  -/
 
 vc-preamble: |-
 
@@ -48,23 +50,23 @@ vc-theorems: |-
   theorem floor_13_maps_to_11 :
     get_real_floor 13 = 11 := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval get_real_floor 5
+  -- #guard_msgs in
+  -- #eval get_real_floor 5
   
-  /--
+  /-
   info: 13
   -/
-  #guard_msgs in
-  #eval get_real_floor 15
+  -- #guard_msgs in
+  -- #eval get_real_floor 15
   
-  /--
+  /-
   info: -3
   -/
-  #guard_msgs in
-  #eval get_real_floor -3
+  -- #guard_msgs in
+  -- #eval get_real_floor -3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

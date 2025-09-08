@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string (`str`) containing a base-10 integer between `0` and `10000`, convert the integer to its binary representation. At that point, obtain a count of the maximum amount of consecutive 0s. From there, return the count in written form with a capital letter.
   
   In the very first example, we have an argument of `"9"` which is being passed to the method. The binary representation of `9` is `1001` which can be read as: one, zero, zero, one. There are, at most, two consecutive 0s, resulting in the integer `2` as the value of the count. The output in the block of code above reflects the final step of taking `2` from standard form to the written form `"Two"` as prompted.
@@ -16,6 +17,7 @@ vc-description: |-
   max_consec_zeros("777") => "Four"
   ```
   Happy coding!
+  -/
 
 vc-preamble: |-
   def max_consec_zeros (n: String) : String :=
@@ -50,23 +52,23 @@ vc-theorems: |-
     max_consec_zeros (toString n) = max_consec_zeros (toString (n : Nat)) :=
   sorry
   
-  /--
+  /-
   info: 'Two'
   -/
-  #guard_msgs in
-  #eval max_consec_zeros "9"
+  -- #guard_msgs in
+  -- #eval max_consec_zeros "9"
   
-  /--
+  /-
   info: 'Three'
   -/
-  #guard_msgs in
-  #eval max_consec_zeros "550"
+  -- #guard_msgs in
+  -- #eval max_consec_zeros "550"
   
-  /--
+  /-
   info: 'Eight'
   -/
-  #guard_msgs in
-  #eval max_consec_zeros "256"
+  -- #guard_msgs in
+  -- #eval max_consec_zeros "256"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

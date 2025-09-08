@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your country has an infinite number of lakes. Initially, all the lakes are empty, but when it rains over the nth lake, the nth lake becomes full of water. If it rains over a lake which is full of water, there will be a flood. Your goal is to avoid the flood in any lake.
   Given an integer array rains where:
   
@@ -54,6 +55,7 @@ vc-description: |-
   
   1 <= rains.length <= 10^5
   0 <= rains[i] <= 10^9
+  -/
 
 vc-preamble: |-
 
@@ -100,17 +102,17 @@ vc-theorems: |-
     (∃ i j : Fin rains.length, i.val ≠ j.val ∧ rains[i] = rains[j] → 
       avoid_flood rains = []) := sorry
   
-  /--
+  /-
   info: [-1, -1, -1, -1]
   -/
-  #guard_msgs in
-  #eval avoid_flood [1, 2, 3, 4]
+  -- #guard_msgs in
+  -- #eval avoid_flood [1, 2, 3, 4]
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval avoid_flood [1, 2, 0, 1, 2]
+  -- #guard_msgs in
+  -- #eval avoid_flood [1, 2, 0, 1, 2]
 
 vc-postamble: |-
   -- Apps difficulty: interview

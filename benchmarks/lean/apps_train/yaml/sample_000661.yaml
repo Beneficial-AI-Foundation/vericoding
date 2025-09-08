@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given two integer sequences $A_1, A_2, \ldots, A_N$ and $B_1, B_2, \ldots, B_M$. For any two sequences $U_1, U_2, \ldots, U_p$ and $V_1, V_2, \ldots, V_q$, we define
   Score(U,V)=∑i=1p∑j=1qUi⋅Vj.Score(U,V)=∑i=1p∑j=1qUi⋅Vj.Score(U, V) = \sum_{i=1}^p \sum_{j=1}^q  U_i \cdot V_j \,.
   You should process $Q$ queries of three types:
@@ -47,6 +48,7 @@ vc-description: |-
   $Score(A,\ B) = 2*3 + 2*3 + 2*2 + 2*4$ $+ (-1)*3$ $+ (-1)*3$ $+ (-1)*2$ $+$ $(-1)*4$ $+  5*3$ $+ 5*3$ $+ 5*2$ $+ 5*4$ $= 72.$
   After the second query $A = [2, -3, 3]$, $B = [3, 3, 2, 4]$
   So, for the third query, $Score(A, B) = 2*3 + 2*3 + 2*2$ $+ 2*4$ $+ (-3)*3$ $+ (-3)*3$ $+ (-3)*2$ $+ (-3)*4$ $+  3*3$ $+ 3*3$ $+ 3*2$ $+ 3*4$ $= 24$.
+  -/
 
 vc-preamble: |-
 

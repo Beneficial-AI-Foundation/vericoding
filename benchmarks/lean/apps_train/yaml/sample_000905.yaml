@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   One day, Delta, the dog, got very angry. He has $N$ items with different values, and he decided to destroy a few of them. However, Delta loves his hooman as well. So he only destroyed those items whose Least Significant Bit in binary representation is 0. 
   Can you help Delta to find the total damage he did so he could make an equally sorry face?
   
@@ -26,6 +27,7 @@ vc-description: |-
   
   -----EXPLANATION:-----
   Total Damage: $2  + 4 = 6$.
+  -/
 
 vc-preamble: |-
   def sum_list : List Nat → Nat 
@@ -44,23 +46,23 @@ vc-definitions: |-
     calculate_damage n items ≥ 0 := sorry
 
 vc-theorems: |-
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval calculate_damage 5 [1, 2, 3, 4, 5]
+  -- #guard_msgs in
+  -- #eval calculate_damage 5 [1, 2, 3, 4, 5]
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval calculate_damage 3 [2, 4, 6]
+  -- #guard_msgs in
+  -- #eval calculate_damage 3 [2, 4, 6]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval calculate_damage 4 [1, 3, 5, 7]
+  -- #guard_msgs in
+  -- #eval calculate_damage 4 [1, 3, 5, 7]
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You probably know the 42 number as "The answer to life, the universe and everything" according to Douglas Adams' "The Hitchhiker's Guide to the Galaxy". For Freud, the answer was quite different.
   
   In the society he lived in, people-women in particular- had to repress their sexual needs and desires. This was simply how the society was at the time. 
@@ -7,6 +8,7 @@ vc-description: |-
   Now, basically, when a person hears about Freud, s/he hears "sex" because for Freud, everything was basically related to, and explained by sex. 
   
   In this kata, the toFreud() function will take a string as its argument, and return a string with every word replaced by the explanation to everything, according to Freud. Note that an empty string, or no arguments, should result in the ouput being ""(empty string).
+  -/
 
 vc-preamble: |-
   def split (s : String) (sep : Char → Bool) : List String := sorry
@@ -34,23 +36,23 @@ vc-theorems: |-
     trim s ≠ "" →
     (split (to_freud s) (· = ' ')).length = (split (trim s) (· = ' ')).length := sorry
   
-  /--
+  /-
   info: 'sex'
   -/
-  #guard_msgs in
-  #eval to_freud "test"
+  -- #guard_msgs in
+  -- #eval to_freud "test"
   
-  /--
+  /-
   info: 'sex sex sex sex'
   -/
-  #guard_msgs in
-  #eval to_freud "This is a test"
+  -- #guard_msgs in
+  -- #eval to_freud "This is a test"
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval to_freud ""
+  -- #guard_msgs in
+  -- #eval to_freud ""
 
 vc-postamble: |-
   -- Apps difficulty: introductory

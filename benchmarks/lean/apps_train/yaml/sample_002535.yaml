@@ -1,6 +1,8 @@
 vc-description: |-
+  /-
   Kevin is noticing his space run out! Write a function that removes the spaces from the values and returns an array showing the space decreasing.
   For example, running this function on the array ['i', 'have','no','space'] would produce ['i','ihave','ihaveno','ihavenospace'].
+  -/
 
 vc-preamble: |-
 
@@ -40,23 +42,23 @@ vc-theorems: |-
     (h1 : spacey words ≠ []) :
     (spacey words).getLast h1 = String.join words := sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval spacey ["kevin", "has", "no", "space"]
+  -- #guard_msgs in
+  -- #eval spacey ["kevin", "has", "no", "space"]
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval spacey ["this", "cheese", "has", "no", "holes"]
+  -- #guard_msgs in
+  -- #eval spacey ["this", "cheese", "has", "no", "holes"]
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval spacey ["i", "have", "no", "space"]
+  -- #guard_msgs in
+  -- #eval spacey ["i", "have", "no", "space"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The objective is to disambiguate two given names: the original with another
   
   This kata is slightly more evolved than the previous one: [Author Disambiguation: to the point!](https://www.codewars.com/kata/580a429e1cb4028481000019).
@@ -53,6 +54,7 @@ vc-description: |-
   ```
   
   Too easy ? Try the next step: [Author Disambiguation: Signatures worth it](https://www.codewars.com/kata/author-disambiguation-signatures-worth-it)
+  -/
 
 vc-preamble: |-
 
@@ -82,23 +84,23 @@ vc-theorems: |-
   theorem basic_case_hyphen_mismatch :
     could_be "John-Smith" "John Smith" = false := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval could_be "Carlos Ray Norris" "Carlos Ray Norris"
+  -- #guard_msgs in
+  -- #eval could_be "Carlos Ray Norris" "Carlos Ray Norris"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval could_be "Carlos Ray Norris" "Carlos. Ray; Norris,"
+  -- #guard_msgs in
+  -- #eval could_be "Carlos Ray Norris" "Carlos. Ray; Norris,"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval could_be "Carlos-Ray Norris" "Carlos Ray Norris"
+  -- #guard_msgs in
+  -- #eval could_be "Carlos-Ray Norris" "Carlos Ray Norris"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

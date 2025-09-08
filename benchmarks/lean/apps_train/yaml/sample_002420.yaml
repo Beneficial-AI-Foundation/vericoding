@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an integer n. Each number from 1 to n is grouped according to the sum of its digits. 
   Return how many groups have the largest size.
   
@@ -24,6 +25,7 @@ vc-description: |-
   Constraints:
   
   1 <= n <= 10^4
+  -/
 
 vc-preamble: |-
 
@@ -48,23 +50,23 @@ vc-theorems: |-
   theorem count_largest_group_edge_cases :
     (count_largest_group 1 = 1) ∧ (count_largest_group 9 = 9) := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval count_largest_group 13
+  -- #guard_msgs in
+  -- #eval count_largest_group 13
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_largest_group 2
+  -- #guard_msgs in
+  -- #eval count_largest_group 2
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval count_largest_group 15
+  -- #guard_msgs in
+  -- #eval count_largest_group 15
 
 vc-postamble: |-
   -- Apps difficulty: introductory

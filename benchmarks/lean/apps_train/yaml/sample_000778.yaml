@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Zonal Computing Olympiad 2013, 10 Nov 2012
   
   Little Red Riding Hood is carrying a basket with berries through the forest to her grandmother's house.  The forest is arranged in the form of a square N × N grid of cells.  The top left corner cell, where Little Red Riding Hood starts her journey, is numbered (1,1) and the bottom right corner cell, where her grandmother lives, is numbered (N,N).  In each step, she can move either one position right or one position down.
@@ -79,6 +80,7 @@ vc-description: |-
   -----Live evaluation data-----
   - Subtask 1: Testcases 0,1,2,3,4.
   - Subtask 2: Testcases 5,6,7,8.
+  -/
 
 vc-preamble: |-
   def Matrix := List (List Int)

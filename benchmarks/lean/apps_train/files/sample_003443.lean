@@ -1,0 +1,57 @@
+/-
+Given two numbers and an arithmetic operator (the name of it, as a string), return the result of the two numbers having that operator used on them. 
+
+```a``` and ```b``` will both be positive integers, and ```a``` will always be the first number in the operation, and ```b``` always the second.
+
+The four operators are "add", "subtract", "divide", "multiply". 
+
+A few examples: 
+
+``` javascript
+ArithmeticFunction.arithmetic(5, 2, "add")      => returns 7
+ArithmeticFunction.arithmetic(5, 2, "subtract") => returns 3
+ArithmeticFunction.arithmetic(5, 2, "multiply") => returns 10
+ArithmeticFunction.arithmetic(5, 2, "divide")   => returns 2
+```
+
+Try to do it without using if statements!
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def arithmetic (a b : Int) (op : Op) : Int :=
+  sorry
+
+theorem arithmetic_add (a b : Int) : 
+  arithmetic a b Op.add = a + b := sorry
+
+theorem arithmetic_subtract (a b : Int) :
+  arithmetic a b Op.subtract = a - b := sorry
+
+theorem arithmetic_multiply (a b : Int) :
+  arithmetic a b Op.multiply = a * b := sorry
+
+theorem arithmetic_divide (a b : Int) (h : b ≠ 0) :
+  arithmetic a b Op.divide = a / b := sorry
+
+/-
+info: 3
+-/
+-- #guard_msgs in
+-- #eval arithmetic 1 2 "add"
+
+/-
+info: 6
+-/
+-- #guard_msgs in
+-- #eval arithmetic 8 2 "subtract"
+
+/-
+info: 10
+-/
+-- #guard_msgs in
+-- #eval arithmetic 5 2 "multiply"
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Description
   
   Beggar Thy Neighbour is a card game taught to me by my parents when I was a small child, and is a game I like to play with my young kids today.
@@ -73,6 +74,7 @@ vc-description: |-
   And so on... with player 2 eventually winning.
   
   Good luck!
+  -/
 
 vc-preamble: |-
   def Suit := Char
@@ -123,17 +125,17 @@ vc-theorems: |-
     | some n => n ≥ 0 ∧ n < hands.length
     := by sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval who_wins_beggar_thy_neighbour ["9C", "JC", "2H", "QC"] ["TD", "JH", "6H", "9S"]
+  -- #guard_msgs in
+  -- #eval who_wins_beggar_thy_neighbour ["9C", "JC", "2H", "QC"] ["TD", "JH", "6H", "9S"]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval who_wins_beggar_thy_neighbour ["KC", "2H"] ["AC", "3H"]
+  -- #guard_msgs in
+  -- #eval who_wins_beggar_thy_neighbour ["KC", "2H"] ["AC", "3H"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

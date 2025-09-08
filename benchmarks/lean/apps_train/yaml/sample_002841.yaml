@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your task is to ___Reverse and Combine Words___. It's not too difficult, but there are some things you have to consider...
   
   ### So what to do?
@@ -27,6 +28,7 @@ vc-description: |-
   I think it's clear?! First there are some static tests, later on random tests too...
   
   ### Hope you have fun! :-)
+  -/
 
 vc-preamble: |-
   def reverseAndCombineText (text : String) : String := sorry 
@@ -62,23 +64,23 @@ vc-theorems: |-
     (result.split (· = ' ')).length ≤ 
       if wordCount ≤ 1 then 1 else wordCount / (2 ^ maxIterations) := sorry
   
-  /--
+  /-
   info: 'cbafed'
   -/
-  #guard_msgs in
-  #eval reverse_and_combine_text "abc def"
+  -- #guard_msgs in
+  -- #eval reverse_and_combine_text "abc def"
   
-  /--
+  /-
   info: 'defabcjklghi'
   -/
-  #guard_msgs in
-  #eval reverse_and_combine_text "abc def ghi jkl"
+  -- #guard_msgs in
+  -- #eval reverse_and_combine_text "abc def ghi jkl"
   
-  /--
+  /-
   info: 'trzwqfdstrteettr45hh4325543544hjhjh21lllll'
   -/
-  #guard_msgs in
-  #eval reverse_and_combine_text "234hh54 53455 sdfqwzrt rtteetrt hjhjh lllll12  44"
+  -- #guard_msgs in
+  -- #eval reverse_and_combine_text "234hh54 53455 sdfqwzrt rtteetrt hjhjh lllll12  44"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

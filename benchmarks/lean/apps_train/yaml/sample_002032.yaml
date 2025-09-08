@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Oleg the bank client and Igor the analyst are arguing again. This time, they want to pick a gift as a present for their friend, ZS the coder. After a long thought, they decided that their friend loves to eat carrots the most and thus they want to pick the best carrot as their present.
   
   There are n carrots arranged in a line. The i-th carrot from the left has juiciness a_{i}. Oleg thinks ZS loves juicy carrots whereas Igor thinks that he hates juicy carrots. Thus, Oleg would like to maximize the juiciness of the carrot they choose while Igor would like to minimize the juiciness of the carrot they choose.
@@ -49,6 +50,7 @@ vc-description: |-
   Thus, the answer is 3, 3, 5, 5.
   
   For the second sample, Oleg can always eat the carrot with juiciness 1 since he always moves first. So, the remaining carrot will always have juiciness 1000000000.
+  -/
 
 vc-preamble: |-
   def solve_carrot_game (n : Nat) (A : List Nat) : List Nat := sorry
@@ -89,23 +91,23 @@ vc-theorems: |-
     (h : A.length > 0) (h2 : A.length = n) :
     List.getLast! (solve_carrot_game n A) = list_maximum A := sorry
   
-  /--
+  /-
   info: [3, 3, 5, 5]
   -/
-  #guard_msgs in
-  #eval solve_carrot_game 4 [1, 2, 3, 5]
+  -- #guard_msgs in
+  -- #eval solve_carrot_game 4 [1, 2, 3, 5]
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval solve_carrot_game 5 [1000000000, 1000000000, 1000000000, 1000000000, 1]
+  -- #guard_msgs in
+  -- #eval solve_carrot_game 5 [1000000000, 1000000000, 1000000000, 1000000000, 1]
   
-  /--
+  /-
   info: [2, 8, 8]
   -/
-  #guard_msgs in
-  #eval solve_carrot_game 3 [2, 8, 2]
+  -- #guard_msgs in
+  -- #eval solve_carrot_game 3 [2, 8, 2]
 
 vc-postamble: |-
   -- Apps difficulty: competition

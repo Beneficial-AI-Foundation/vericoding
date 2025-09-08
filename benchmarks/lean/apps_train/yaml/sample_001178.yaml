@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Lets wish Horsbug98 on his birthday and jump right into the question.
   In Chefland, $6$ new mobile brands have appeared each providing a range of smartphones. For simplicity let the brands be represented by numbers $1$ to $6$. All phones are sold at the superstore. 
   There are total $N$ smartphones. Let $P_i$ & $B_i$ be the price and the brand of the $i^{th}$ smartphone. The superstore knows all the price and brand details beforehand. 
@@ -41,6 +42,7 @@ vc-description: |-
   Query 1: The preference subset is {1, 2, 3}, The prices of phones available of these brands are {4, 5, 6}. The third costliest phone is 4.
   Query 2: The preference subset is {4, 5, 6}, The prices of phones available of these brands are {7}.
   Fouth costliest phone is required, which is not available. Hence, answer is $-1$.
+  -/
 
 vc-preamble: |-
 

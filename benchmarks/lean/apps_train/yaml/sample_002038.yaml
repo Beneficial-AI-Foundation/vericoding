@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Kyoya Ootori has a bag with n colored balls that are colored with k different colors. The colors are labeled from 1 to k. Balls of the same color are indistinguishable. He draws balls from the bag one by one until the bag is empty. He noticed that he drew the last ball of color i before drawing the last ball of color i + 1 for all i from 1 to k - 1. Now he wonders how many different ways this can happen. 
   
   -----Input-----
@@ -42,6 +43,7 @@ vc-description: |-
   1 1 2 2 3
   
   2 1 1 2 3
+  -/
 
 vc-preamble: |-
 
@@ -65,23 +67,23 @@ vc-theorems: |-
     calculate_arrangements k colors = 1 :=
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval calculate_arrangements 3 [2, 2, 1]
+  -- #guard_msgs in
+  -- #eval calculate_arrangements 3 [2, 2, 1]
   
-  /--
+  /-
   info: 1680
   -/
-  #guard_msgs in
-  #eval calculate_arrangements 4 [1, 2, 3, 4]
+  -- #guard_msgs in
+  -- #eval calculate_arrangements 4 [1, 2, 3, 4]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval calculate_arrangements 1 [5]
+  -- #guard_msgs in
+  -- #eval calculate_arrangements 1 [5]
 
 vc-postamble: |-
   -- Apps difficulty: competition

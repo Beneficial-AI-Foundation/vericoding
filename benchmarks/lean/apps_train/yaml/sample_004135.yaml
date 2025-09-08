@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Have a look at the following numbers.
   
   ```
@@ -20,6 +21,7 @@ vc-description: |-
   int getScore(4) = return 500;
   int getScore(5) = return 750;
   ```
+  -/
 
 vc-preamble: |-
 
@@ -43,23 +45,23 @@ vc-theorems: |-
   theorem get_score_formula (n : Int) :
     get_score n = n * (n + 1) * 25 := by sorry
   
-  /--
+  /-
   info: 50
   -/
-  #guard_msgs in
-  #eval get_score 1
+  -- #guard_msgs in
+  -- #eval get_score 1
   
-  /--
+  /-
   info: 150
   -/
-  #guard_msgs in
-  #eval get_score 2
+  -- #guard_msgs in
+  -- #eval get_score 2
   
-  /--
+  /-
   info: 750
   -/
-  #guard_msgs in
-  #eval get_score 5
+  -- #guard_msgs in
+  -- #eval get_score 5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given two strings str1 and str2, return the shortest string that has both str1 and str2 as subsequences.  If multiple answers exist, you may return any of them.
   (A string S is a subsequence of string T if deleting some number of characters from T (possibly 0, and the characters are chosen anywhere from T) results in the string S.)
   
@@ -14,6 +15,7 @@ vc-description: |-
   
   1 <= str1.length, str2.length <= 1000
   str1 and str2 consist of lowercase English letters.
+  -/
 
 vc-preamble: |-
   def isSubsequence (s₁ s₂ : String) : Bool :=
@@ -48,23 +50,23 @@ vc-theorems: |-
     shortestCommonSupersequence s "" = s :=
   sorry
   
-  /--
+  /-
   info: 'cabac'
   -/
-  #guard_msgs in
-  #eval shortest_common_supersequence "abac" "cab"
+  -- #guard_msgs in
+  -- #eval shortest_common_supersequence "abac" "cab"
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval len shortest_common_supersequence("abc", "def")
+  -- #guard_msgs in
+  -- #eval len shortest_common_supersequence("abc", "def")
   
-  /--
+  /-
   info: 'aaaaa'
   -/
-  #guard_msgs in
-  #eval shortest_common_supersequence "aaaaa" "aa"
+  -- #guard_msgs in
+  -- #eval shortest_common_supersequence "aaaaa" "aa"
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The Binomial Form of a polynomial has many uses, just as the standard form does.  For comparison, if p(x) is in Binomial Form and q(x) is in standard form, we might write
   
   p(x) := a0 \* xC0 + a1 \* xC1 + a2 \* xC2 + ... + aN \* xCN
@@ -30,6 +31,7 @@ vc-description: |-
   More information can be found by reading about [Binomial Coefficients](https://en.wikipedia.org/wiki/Binomial_coefficient) or about [Finite Differences](https://en.wikipedia.org/wiki/Finite_difference).
   
   Note that while a solution should be able to handle non-integer inputs and get a correct result, any solution should make use of rounding to two significant digits (as the official solution does) since high precision for non-integers is not the point here.
+  -/
 
 vc-preamble: |-
   def value_at (poly: List Int) (x: Float) : Float := sorry
@@ -56,23 +58,23 @@ vc-theorems: |-
   theorem value_at_constant (c: Int) (h1: -10 ≤ c ∧ c ≤ 10) :
     (value_at [c] 123 - intToFloat c) < 0.01 ∧ (intToFloat c - value_at [c] 123) < 0.01 := sorry
   
-  /--
+  /-
   info: 16
   -/
-  #guard_msgs in
-  #eval value_at [1, 2, 7] 3
+  -- #guard_msgs in
+  -- #eval value_at [1, 2, 7] 3
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval value_at [1, 2, 7, 0, 5] 2
+  -- #guard_msgs in
+  -- #eval value_at [1, 2, 7, 0, 5] 2
   
-  /--
+  /-
   info: 4.24
   -/
-  #guard_msgs in
-  #eval value_at [1, 2, 7, 0, 5] 0.6
+  -- #guard_msgs in
+  -- #eval value_at [1, 2, 7, 0, 5] 0.6
 
 vc-postamble: |-
   -- Apps difficulty: introductory

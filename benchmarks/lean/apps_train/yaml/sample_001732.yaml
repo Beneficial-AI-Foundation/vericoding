@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There is a secret string which is unknown to you. Given a collection of random triplets from the string, recover the original string. 
   
   A triplet here is defined as a sequence of three letters such that each letter occurs somewhere before the next in the given string. "whi" is a triplet for the string "whatisup".
@@ -6,6 +7,7 @@ vc-description: |-
   As a simplification, you may assume that no letter occurs more than once in the secret string.
   
   You can assume nothing about the triplets given to you other than that they are valid triplets and that they contain sufficient information to deduce the original string. In particular, this means that the secret string will never contain letters that do not occur in one of the triplets given to you.
+  -/
 
 vc-preamble: |-
   def recoverSecret (triplets : List (List Char)) : String := sorry
@@ -43,23 +45,23 @@ vc-theorems: |-
       ['w','h','s']
     ] = "whatisup" := sorry
   
-  /--
+  /-
   info: 'whatisup'
   -/
-  #guard_msgs in
-  #eval recoverSecret [["t", "u", "p"], ["w", "h", "i"], ["t", "s", "u"], ["a", "t", "s"], ["h", "a", "p"], ["t", "i", "s"], ["w", "h", "s"]]
+  -- #guard_msgs in
+  -- #eval recoverSecret [["t", "u", "p"], ["w", "h", "i"], ["t", "s", "u"], ["a", "t", "s"], ["h", "a", "p"], ["t", "i", "s"], ["w", "h", "s"]]
   
-  /--
+  /-
   info: 'abcd'
   -/
-  #guard_msgs in
-  #eval recoverSecret [["a", "b", "c"], ["a", "c", "d"]]
+  -- #guard_msgs in
+  -- #eval recoverSecret [["a", "b", "c"], ["a", "c", "d"]]
   
-  /--
+  /-
   info: 'great'
   -/
-  #guard_msgs in
-  #eval recoverSecret [["g", "r", "t"], ["e", "a", "t"]]
+  -- #guard_msgs in
+  -- #eval recoverSecret [["g", "r", "t"], ["e", "a", "t"]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

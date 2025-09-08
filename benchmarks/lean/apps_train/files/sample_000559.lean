@@ -1,0 +1,57 @@
+/-
+Find out the maximum sub-array of non negative numbers from an array. 
+
+The sub-array should be continuous. That is, a sub-array created by choosing the second and fourth element and skipping the third element is invalid.
+
+Maximum sub-array is defined in terms of the sum of the elements in the sub-array. Sub-array A is greater than sub-array B if sum(A) > sum(B).
+
+NOTE 1 :If there is a tie, then compare with segment's length and return segment which has maximum length 
+
+NOTE 2: If there is still a tie, then return the segment with minimum starting index.
+
+-----Input-----
+
+The first line contains the number of test cases. Each test cases contains an integer N. next line consists of N integers, the elements of the array.
+
+-----Output-----
+
+Print out the maximum sub-array as stated above.
+
+-----Constraints-----
+-  1  ≤  T  ≤  100 
+-  1  ≤  N  ≤  105 
+-  1  ≤  Ai  ≤  105 
+
+-----Example-----
+Input:
+
+1
+6
+1 2 5 -7 2 3
+
+Output:
+
+1 2 5
+-/
+
+def find_max_subarray (arr : List Int) : List Int := sorry
+
+theorem all_positive_returns_full_array {arr : List Int}
+  (h : ∀ x ∈ arr, x ≥ 0) (nonempty : arr ≠ []) :
+  find_max_subarray arr = arr := sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def sum_list (l : List Int) : Int := sorry
+
+def all_subarrays_bounded_by_negatives (arr : List Int) : List (List Int) := sorry
+
+theorem sum_is_maximal {arr : List Int} (nonempty : arr ≠ []) :
+  let result := find_max_subarray arr
+  let result_sum := sum_list result
+  ∀ subarray ∈ all_subarrays_bounded_by_negatives arr,
+    sum_list subarray ≤ result_sum := sorry
+
+-- Apps difficulty: interview
+-- Assurance level: guarded

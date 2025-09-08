@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef made $N$ pieces of cakes, numbered them $1$ through $N$ and arranged them in a row in this order. There are $K$ possible types of flavours (numbered $1$ through $K$); for each valid $i$, the $i$-th piece of cake has a flavour $A_i$.
   Chef wants to select a contiguous subsegment of the pieces of cake such that there is at least one flavour which does not occur in that subsegment. Find the maximum possible length of such a subsegment of cakes.
   
@@ -34,6 +35,7 @@ vc-description: |-
   -----Example Output-----
   3
   5
+  -/
 
 vc-preamble: |-
 

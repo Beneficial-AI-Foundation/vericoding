@@ -1,7 +1,9 @@
 vc-description: |-
+  /-
   Write a function `insertDash(num)`/`InsertDash(int num)` that will insert dashes ('-') between each two odd numbers in num. For example: if num is 454793 the output should be 4547-9-3. Don't count zero as an odd number.
   
   Note that the number will always be non-negative (>= 0).
+  -/
 
 vc-preamble: |-
 
@@ -39,23 +41,23 @@ vc-theorems: |-
     (String.toNat! ((insert_dash n).replace "-" "")) = n :=
   sorry
   
-  /--
+  /-
   info: '4547-9-3'
   -/
-  #guard_msgs in
-  #eval insert_dash 454793
+  -- #guard_msgs in
+  -- #eval insert_dash 454793
   
-  /--
+  /-
   info: '123456'
   -/
-  #guard_msgs in
-  #eval insert_dash 123456
+  -- #guard_msgs in
+  -- #eval insert_dash 123456
   
-  /--
+  /-
   info: '1-3-5-7-9'
   -/
-  #guard_msgs in
-  #eval insert_dash 13579
+  -- #guard_msgs in
+  -- #eval insert_dash 13579
 
 vc-postamble: |-
   -- Apps difficulty: introductory

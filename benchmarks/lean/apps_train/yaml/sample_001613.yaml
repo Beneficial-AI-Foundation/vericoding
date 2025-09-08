@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Alex and Lee continue their games with piles of stones.  There are a number of piles arranged in a row, and each pile has a positive integer number of stones piles[i].  The objective of the game is to end with the most stones. 
   Alex and Lee take turns, with Alex starting first.  Initially, M = 1.
   On each player's turn, that player can take all the stones in the first X remaining piles, where 1 <= X <= 2M.  Then, we set M = max(M, X).
@@ -14,6 +15,7 @@ vc-description: |-
   
   1 <= piles.length <= 100
   1 <= piles[i] <= 10 ^ 4
+  -/
 
 vc-preamble: |-
   def List.sum : List Nat → Nat 
@@ -48,23 +50,23 @@ vc-theorems: |-
     stone_game_ii [x, x, x] ≤ 3 * x :=
   sorry
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval stone_game_ii [2, 7, 9, 4, 4]
+  -- #guard_msgs in
+  -- #eval stone_game_ii [2, 7, 9, 4, 4]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval stone_game_ii [1]
+  -- #guard_msgs in
+  -- #eval stone_game_ii [1]
   
-  /--
+  /-
   info: 15
   -/
-  #guard_msgs in
-  #eval stone_game_ii [8, 7, 1, 2]
+  -- #guard_msgs in
+  -- #eval stone_game_ii [8, 7, 1, 2]
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef has two piles of stones with him, one has n1 stones and the other has n2 stones. Fired up by boredom, he invented a game with the two piles.
   
   Before the start of the game Chef chooses an integer m.
@@ -47,6 +48,7 @@ vc-description: |-
   Example case 1. : Remove 1 stone from each of the piles. Now 0 stones are remaining, so chef cannot remove any more stones from the piles. Hence, answer is 0+0 = 0
   Example case 2. : Again, remove 1 stone from both the piles to get (0,1) stones. Now chef cannot remove any more stones from pile 1, so he stops. Hence, answer is 0+1 = 1.
   Example case 3. : First remove 1 stone from both the piles to get (3,4) stones. Now, remove 2 stones from both the piles so that (1,2) stones are remaining. Now chef cannot remove any more stones owing to the condition that he cannot remove the same number of stones twice. So, the answer is 1+2 = 3.
+  -/
 
 vc-preamble: |-
 
@@ -79,23 +81,23 @@ vc-theorems: |-
     min_remaining_stones n n m % 2 = 0 :=
     sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_remaining_stones 1 1 1
+  -- #guard_msgs in
+  -- #eval min_remaining_stones 1 1 1
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval min_remaining_stones 1 2 1
+  -- #guard_msgs in
+  -- #eval min_remaining_stones 1 2 1
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval min_remaining_stones 4 5 2
+  -- #guard_msgs in
+  -- #eval min_remaining_stones 4 5 2
 
 vc-postamble: |-
   -- Apps difficulty: interview

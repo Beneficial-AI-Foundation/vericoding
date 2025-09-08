@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   If you have not ever heard the term **Arithmetic Progrossion**, refer to: 
   http://www.codewars.com/kata/find-the-missing-term-in-an-arithmetic-progression/python
   
@@ -11,6 +12,7 @@ vc-description: |-
   ```python
   find([3, 9, 1, 11, 13, 5]) # => 7
   ```
+  -/
 
 vc-preamble: |-
 
@@ -30,23 +32,23 @@ vc-theorems: |-
       (center : Int) :
       find [center - 4, center - 2, center + 2, center + 4] = center := sorry
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval find [3, 9, 1, 11, 13, 5]
+  -- #guard_msgs in
+  -- #eval find [3, 9, 1, 11, 13, 5]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval find [5, -1, 0, 3, 4, -3, 2, -2]
+  -- #guard_msgs in
+  -- #eval find [5, -1, 0, 3, 4, -3, 2, -2]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval find [2, -2, 8, -8, 4, -4, 6, -6]
+  -- #guard_msgs in
+  -- #eval find [2, -2, 8, -8, 4, -4, 6, -6]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

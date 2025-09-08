@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string S of digits, such as S = "123456579", we can split it into a Fibonacci-like sequence [123, 456, 579].
   Formally, a Fibonacci-like sequence is a list F of non-negative integers such that:
   
@@ -35,6 +36,7 @@ vc-description: |-
   
   1 <= S.length <= 200
   S contains only digits.
+  -/
 
 vc-preamble: |-
 
@@ -79,23 +81,23 @@ vc-theorems: |-
     splitFibonacci (toString d) = [] :=
     sorry
   
-  /--
+  /-
   info: [123, 456, 579]
   -/
-  #guard_msgs in
-  #eval split_fibonacci "123456579"
+  -- #guard_msgs in
+  -- #eval split_fibonacci "123456579"
   
-  /--
+  /-
   info: [1, 1, 2, 3, 5, 8, 13]
   -/
-  #guard_msgs in
-  #eval split_fibonacci "11235813"
+  -- #guard_msgs in
+  -- #eval split_fibonacci "11235813"
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval split_fibonacci "112358130"
+  -- #guard_msgs in
+  -- #eval split_fibonacci "112358130"
 
 vc-postamble: |-
   -- Apps difficulty: interview

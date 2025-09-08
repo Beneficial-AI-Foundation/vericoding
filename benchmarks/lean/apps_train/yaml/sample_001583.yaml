@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # The Kata
   Your task is to transform an input nested list into an hypercube list, which is a special kind of nested list where each level must have the very same size,
   This Kata is an exercise on recursion and algorithms. You will need to visualize many aspects of this question to be able to solve it efficiently, as such there is a section on definitions of the terms that will be used in the Kata, make sure to fully understand them before attempting. A naive brute-force-ish answer will most likely fail the tests. There will be tests on  nested lists of dimension and size up to 10. Good luck.
@@ -116,6 +117,7 @@ vc-description: |-
       ]
   
   Good luck!
+  -/
 
 vc-preamble: |-
 

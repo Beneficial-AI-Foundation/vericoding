@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ```if:csharp
   ## Terminal Game - Create Hero Class
   
@@ -26,6 +27,7 @@ vc-description: |-
   damage | 5
   experience | 0
   ```
+  -/
 
 vc-preamble: |-
 

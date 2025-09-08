@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given n words w[1..n], which originate from the same stem (e.g. grace, graceful, disgraceful, gracefully), we are interested in the original stem. To simplify the problem, we define the stem as the longest consecutive substring that occurs in all the n words. If there are ties, we will choose the smallest one in the alphabetical (lexicographic) order.
   
   -----Input-----
@@ -23,6 +24,7 @@ vc-description: |-
   
   -----Explanation-----
   The stem is grace.
+  -/
 
 vc-preamble: |-
   def isInfixOf (sub str : String) : Bool := sorry 
@@ -53,23 +55,23 @@ vc-theorems: |-
       substring.length ≤ stem.length ∨ 
       (substring.length = stem.length ∧ stem ≤ substring) := sorry
   
-  /--
+  /-
   info: 'grace'
   -/
-  #guard_msgs in
-  #eval find_stem ["grace", "graceful", "disgraceful", "gracefully"]
+  -- #guard_msgs in
+  -- #eval find_stem ["grace", "graceful", "disgraceful", "gracefully"]
   
-  /--
+  /-
   info: 'cat'
   -/
-  #guard_msgs in
-  #eval find_stem ["cat", "catch", "cathedral"]
+  -- #guard_msgs in
+  -- #eval find_stem ["cat", "catch", "cathedral"]
   
-  /--
+  /-
   info: 'python'
   -/
-  #guard_msgs in
-  #eval find_stem ["python", "pythonic", "pythoness"]
+  -- #guard_msgs in
+  -- #eval find_stem ["python", "pythonic", "pythoness"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

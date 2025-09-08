@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In an infinite array with two rows, the numbers in the top row are denoted
   
   `. . . , A[−2], A[−1], A[0], A[1], A[2], . . .`
@@ -21,6 +22,7 @@ vc-description: |-
   
   Adapted from 2018 Euclid Mathematics Contest.
   https://www.cemc.uwaterloo.ca/contests/past_contests/2018/2018EuclidContest.pdf
+  -/
 
 vc-preamble: |-
 
@@ -49,23 +51,23 @@ vc-theorems: |-
       6 * find_a lst (n-3) - 
       find_a lst (n-4) := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_a [1, 2, 3, 4] 2
+  -- #guard_msgs in
+  -- #eval find_a [1, 2, 3, 4] 2
   
-  /--
+  /-
   info: 200
   -/
-  #guard_msgs in
-  #eval find_a [38, 200, -18, 45] 1
+  -- #guard_msgs in
+  -- #eval find_a [38, 200, -18, 45] 1
   
-  /--
+  /-
   info: 20
   -/
-  #guard_msgs in
-  #eval find_a [1, 0, 0, 1] 5
+  -- #guard_msgs in
+  -- #eval find_a [1, 0, 0, 1] 5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

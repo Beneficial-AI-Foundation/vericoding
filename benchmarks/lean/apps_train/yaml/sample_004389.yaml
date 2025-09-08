@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # YOUR MISSION
   
   An [octahedron](https://en.wikipedia.org/wiki/Octahedron) is an 8-sided polyhedron whose faces are triangles. 
@@ -78,6 +79,7 @@ vc-description: |-
     - if the input size is 0 or less
     - if input size is 1 (that's called a cube).
    - If there's any problems with this kata (*COUGH* [my last Kata](https://www.codewars.com/kata/5bf76f953efcee37e2000061) *COUGH*), I'll try to get them fixed in the evenings before 10pm.
+  -/
 
 vc-preamble: |-
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Robinson Crusoe decides to explore his isle. On a sheet of paper he plans the following process.
   
   His hut has coordinates `origin = [0, 0]`. From that origin he walks a given distance `d` on a line
@@ -46,6 +47,7 @@ vc-description: |-
   
   ### Note
   Please could you ask before translating: some translations are already written and published when/if the kata is approved.
+  -/
 
 vc-preamble: |-
 
@@ -84,29 +86,29 @@ vc-theorems: |-
     x1 = -x2 ∧ y1 = -y2 := 
   sorry
   
-  /--
+  /-
   info: round(0.8306737544381833, 7)
   -/
-  #guard_msgs in
-  #eval round 0 7
+  -- #guard_msgs in
+  -- #eval round 0 7
   
-  /--
+  /-
   info: round(0.620694691344071, 7)
   -/
-  #guard_msgs in
-  #eval round y 7
+  -- #guard_msgs in
+  -- #eval round y 7
   
-  /--
+  /-
   info: 0.7071068
   -/
-  #guard_msgs in
-  #eval round x 7
+  -- #guard_msgs in
+  -- #eval round x 7
   
-  /--
+  /-
   info: 0.7071068
   -/
-  #guard_msgs in
-  #eval round y 7
+  -- #guard_msgs in
+  -- #eval round y 7
 
 vc-postamble: |-
   -- Apps difficulty: introductory

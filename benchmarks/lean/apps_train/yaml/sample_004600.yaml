@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    Given two cells on the standard chess board, determine whether they have the same color or not.
   
@@ -16,6 +17,7 @@ vc-description: |-
    - `[output]` a boolean value
   
       `true` if both cells have the same color, `false` otherwise.
+  -/
 
 vc-preamble: |-
   def chess_board_cell_color : Cell → Cell → Bool := sorry
@@ -48,23 +50,23 @@ vc-theorems: |-
     let right := Cell.mk (nextChar c.1) c.2
     chess_board_cell_color c right = false := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval chess_board_cell_color "A1" "C3"
+  -- #guard_msgs in
+  -- #eval chess_board_cell_color "A1" "C3"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval chess_board_cell_color "A1" "H3"
+  -- #guard_msgs in
+  -- #eval chess_board_cell_color "A1" "H3"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval chess_board_cell_color "A1" "A2"
+  -- #guard_msgs in
+  -- #eval chess_board_cell_color "A1" "A2"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

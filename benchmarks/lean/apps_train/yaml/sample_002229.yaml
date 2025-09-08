@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Zookeeper is playing a game. In this game, Zookeeper must use bombs to bomb a string that consists of letters 'A' and 'B'. He can use bombs to bomb a substring which is either "AB" or "BB". When he bombs such a substring, the substring gets deleted from the string and the remaining parts of the string get concatenated.
   
   For example, Zookeeper can use two such operations: AABABBA $\to$ AABBA $\to$ AAA.
@@ -36,6 +37,7 @@ vc-description: |-
   For the second test case, one optimal sequence of moves is BABA $\to$ BA. So, the answer is $2$.
   
   For the third test case, one optimal sequence of moves is AABBBABBBB $\to$ AABBBABB $\to$ AABBBB $\to$ ABBB $\to$ AB $\to$ (empty string). So, the answer is $0$.
+  -/
 
 vc-preamble: |-
 
@@ -73,23 +75,23 @@ vc-theorems: |-
     let s := String.mk (List.replicate n 'B')
     get_shortest_string_length s = 0 ∨ get_shortest_string_length s = 1 := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval get_shortest_string_length "AAA"
+  -- #guard_msgs in
+  -- #eval get_shortest_string_length "AAA"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval get_shortest_string_length "BABA"
+  -- #guard_msgs in
+  -- #eval get_shortest_string_length "BABA"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval get_shortest_string_length "AABBBABBBB"
+  -- #guard_msgs in
+  -- #eval get_shortest_string_length "AABBBABBBB"
 
 vc-postamble: |-
   -- Apps difficulty: competition

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Do you have in mind the good old TicTacToe?
   
   Assuming that you get all the data in one array, you put a space around each value, `|` as a columns separator and multiple `-` as rows separator, with something like `["O", "X", " ", " ", "X", " ", "X", "O", " "]` you should be returning this structure (inclusive of new lines):
@@ -22,6 +23,7 @@ vc-description: |-
   ```
   
   And worry not about missing elements, as the array/list/vector length is always going to be a multiple of the width.
+  -/
 
 vc-preamble: |-
   def display_board (board : List String) (width : Nat) : String := sorry

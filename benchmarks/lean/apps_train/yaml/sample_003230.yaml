@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this kata you will be given a random string of letters and tasked with returning them as a string of comma-separated sequences sorted alphabetically, with each sequence starting with an uppercase character followed by `n-1` lowercase characters, where `n` is the letter's alphabet position `1-26`.
   
   ## Example
@@ -13,6 +14,7 @@ vc-description: |-
   - The first letter of each sequence is uppercase followed by `n-1` lowercase.
   - Each sequence is separated with a comma.
   - Return value needs to be a string.
+  -/
 
 vc-preamble: |-
   def isLower (c : Char) : Bool :=
@@ -60,23 +62,23 @@ vc-theorems: |-
       (part.data[i]?.getD ' ').toLower = (part.data[0]?.getD ' ').toLower := by
     sorry
   
-  /--
+  /-
   info: 'A,Bb,Ccc,Ffffff,Ffffff'
   -/
-  #guard_msgs in
-  #eval alpha_seq "BfcFA"
+  -- #guard_msgs in
+  -- #eval alpha_seq "BfcFA"
   
-  /--
+  /-
   info: 'Ggggggg,Llllllllllll,Nnnnnnnnnnnnnn,Pppppppppppppppp,Rrrrrrrrrrrrrrrrrr,Zzzzzzzzzzzzzzzzzzzzzzzzzz'
   -/
-  #guard_msgs in
-  #eval alpha_seq "ZpglnR"
+  -- #guard_msgs in
+  -- #eval alpha_seq "ZpglnR"
   
-  /--
+  /-
   info: 'A,Bb,Ccc'
   -/
-  #guard_msgs in
-  #eval alpha_seq "Abc"
+  -- #guard_msgs in
+  -- #eval alpha_seq "Abc"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

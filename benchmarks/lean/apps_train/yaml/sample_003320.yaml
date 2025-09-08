@@ -1,9 +1,11 @@
 vc-description: |-
+  /-
   Converting a normal (12-hour) time like "8:30 am" or "8:30 pm" to 24-hour time (like "0830" or "2030") sounds easy enough, right?  Well, let's see if you can do it!
   
   You will have to define a function named "to24hourtime", and you will be given an hour (always in the range of 1 to 12, inclusive), a minute (always in the range of 0 to 59, inclusive), and a period (either "am" or "pm") as input.
   
   Your task is to return a four-digit string that encodes that time in 24-hour time.
+  -/
 
 vc-preamble: |-
 
@@ -50,23 +52,23 @@ vc-theorems: |-
     then pm_time - am_time = 1200
     else pm_time - am_time = 1200 ∨ am_time - pm_time = 1200 := sorry
   
-  /--
+  /-
   info: '0000'
   -/
-  #guard_msgs in
-  #eval to24hourtime 12 0 "am"
+  -- #guard_msgs in
+  -- #eval to24hourtime 12 0 "am"
   
-  /--
+  /-
   info: '0830'
   -/
-  #guard_msgs in
-  #eval to24hourtime 8 30 "am"
+  -- #guard_msgs in
+  -- #eval to24hourtime 8 30 "am"
   
-  /--
+  /-
   info: '2030'
   -/
-  #guard_msgs in
-  #eval to24hourtime 8 30 "pm"
+  -- #guard_msgs in
+  -- #eval to24hourtime 8 30 "pm"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

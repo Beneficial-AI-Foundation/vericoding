@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Meliodas and Ban are fighting over chocolates. Meliodas has $X$ chocolates, while Ban has $Y$. Whoever has lesser number of chocolates eats as many chocolates as he has from the other's collection. This eatfest war continues till either they have the same number of chocolates, or atleast one of them is left with no chocolates.
   
   Can you help Elizabeth predict the total no of chocolates they'll be left with at the end of their war?
@@ -62,6 +63,7 @@ vc-description: |-
   Since they have the same no of candies, they stop quarreling.
   
   Total candies left: 8
+  -/
 
 vc-preamble: |-
 
@@ -93,23 +95,23 @@ vc-theorems: |-
   theorem equal_inputs (x : Nat) (h : x > 0) :
       calculate_remaining_chocolates x x = 2 * x := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval calculate_remaining_chocolates 5 3
+  -- #guard_msgs in
+  -- #eval calculate_remaining_chocolates 5 3
   
-  /--
+  /-
   info: 20
   -/
-  #guard_msgs in
-  #eval calculate_remaining_chocolates 10 10
+  -- #guard_msgs in
+  -- #eval calculate_remaining_chocolates 10 10
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval calculate_remaining_chocolates 4 8
+  -- #guard_msgs in
+  -- #eval calculate_remaining_chocolates 4 8
 
 vc-postamble: |-
   -- Apps difficulty: interview

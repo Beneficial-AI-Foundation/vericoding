@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Lets play some Pong! 
   
   ![pong](http://gifimage.net/wp-content/uploads/2017/08/pong-gif-3.gif)
@@ -34,6 +35,7 @@ vc-description: |-
   ___
   
   ## Example
+  -/
 
 vc-preamble: |-
   def Pong.play (game : Pong) (ballPos playerPos : Int) : String := sorry

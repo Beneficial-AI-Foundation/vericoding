@@ -1,7 +1,9 @@
 vc-description: |-
+  /-
   Create a function that returns the total of a meal including tip and tax. You should not tip on the tax.
   
   You will be given the subtotal, the tax as a percentage and the tip as a percentage. Please round your result to two decimal places.
+  -/
 
 vc-preamble: |-
 
@@ -37,23 +39,23 @@ vc-theorems: |-
     (h5 : 0 ≤ tip) (h6 : tip ≤ 100) :
     (calculate_total subtotal tax tip - (calculate_total subtotal tax 0 + (subtotal * tip/100))).abs < 0.01 := sorry
   
-  /--
+  /-
   info: 60.0
   -/
-  #guard_msgs in
-  #eval calculate_total 50 10 10
+  -- #guard_msgs in
+  -- #eval calculate_total 50 10 10
   
-  /--
+  /-
   info: 110.0
   -/
-  #guard_msgs in
-  #eval calculate_total 100 5 5
+  -- #guard_msgs in
+  -- #eval calculate_total 100 5 5
   
-  /--
+  /-
   info: 24.0
   -/
-  #guard_msgs in
-  #eval calculate_total 20 8 12
+  -- #guard_msgs in
+  -- #eval calculate_total 20 8 12
 
 vc-postamble: |-
   -- Apps difficulty: introductory

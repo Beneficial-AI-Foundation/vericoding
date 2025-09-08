@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Story
   
   Due to lack of maintenance the minute-hand has fallen off Town Hall clock face.
@@ -30,6 +31,7 @@ vc-description: |-
   # Notes
   
   * 0 <= ```angle``` <= 360
+  -/
 
 vc-preamble: |-
   def what_time_is_it (angle : Float) : String := sorry
@@ -69,23 +71,23 @@ vc-theorems: |-
     (str_to_hours_mins (what_time_is_it 30)).1 = 1 ∧
     (str_to_hours_mins (what_time_is_it 330)).1 = 11 := sorry
   
-  /--
+  /-
   info: '12:00'
   -/
-  #guard_msgs in
-  #eval what_time_is_it 0
+  -- #guard_msgs in
+  -- #eval what_time_is_it 0
   
-  /--
+  /-
   info: '03:00'
   -/
-  #guard_msgs in
-  #eval what_time_is_it 90
+  -- #guard_msgs in
+  -- #eval what_time_is_it 90
   
-  /--
+  /-
   info: '01:30'
   -/
-  #guard_msgs in
-  #eval what_time_is_it 45
+  -- #guard_msgs in
+  -- #eval what_time_is_it 45
 
 vc-postamble: |-
   -- Apps difficulty: introductory

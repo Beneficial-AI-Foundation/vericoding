@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   `This kata is the first of the ADFGX Ciphers, the harder version can be found `here.
   
   The ADFGX Cipher is a pretty well-known Cryptographic tool, and is essentially a modified Polybius Square.
@@ -75,6 +76,7 @@ vc-description: |-
   Go create `adfgx_encrypt() and adfgx_decrypt()`!
   
   Good Luck!
+  -/
 
 vc-preamble: |-
   def adfgx_encrypt (plaintext : String) (square : String) : String :=

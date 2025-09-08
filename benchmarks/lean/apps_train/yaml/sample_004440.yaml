@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task:
   Write a function that accepts an integer `n` and returns **the sum of the factorials of the first **`n`** Fibonacci numbers**
   
@@ -25,6 +26,7 @@ vc-description: |-
   
   # Notes:
   * I use `test.expect` to make tests secret. If I use `test.assert_equals`, the output will be unreadable because the numbers are huge.
+  -/
 
 vc-preamble: |-
 
@@ -46,23 +48,23 @@ vc-theorems: |-
   theorem sum_fib_base_case_2 : sum_fib 2 = 2 :=
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval sum_fib 2
+  -- #guard_msgs in
+  -- #eval sum_fib 2
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval sum_fib 3
+  -- #guard_msgs in
+  -- #eval sum_fib 3
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval sum_fib 4
+  -- #guard_msgs in
+  -- #eval sum_fib 4
 
 vc-postamble: |-
   -- Apps difficulty: introductory

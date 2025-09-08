@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A common problem in number theory is to find x given a such that:
   
   a * x = 1 mod [n] 
@@ -16,6 +17,7 @@ vc-description: |-
   a and n should be co-prime to have a solution, if it is not the case, you should return None (Python), nil (Ruby) or null (Javascript). 
   
   a and n will be positive integers. The problem can easily be generalised to negative integer with some sign changes so we won't deal with them.
+  -/
 
 vc-preamble: |-
 
@@ -36,23 +38,23 @@ vc-theorems: |-
     (a ≠ 0 → Int.natAbs a % g = 0) ∧
     (b ≠ 0 → Int.natAbs b % g = 0) := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval inverseMod 2 5
+  -- #guard_msgs in
+  -- #eval inverseMod 2 5
   
-  /--
+  /-
   info: 40
   -/
-  #guard_msgs in
-  #eval inverseMod 48 101
+  -- #guard_msgs in
+  -- #eval inverseMod 48 101
   
-  /--
+  /-
   info: 419
   -/
-  #guard_msgs in
-  #eval inverseMod 7 733
+  -- #guard_msgs in
+  -- #eval inverseMod 7 733
 
 vc-postamble: |-
   -- Apps difficulty: introductory

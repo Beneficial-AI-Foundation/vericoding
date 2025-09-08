@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are an all-powerful being and you have created a rectangular world. In fact, your world is so bland that it could be represented by a $r \times c$ grid. Each cell on the grid represents a country. Each country has a dominant religion. There are only two religions in your world. One of the religions is called Beingawesomeism, who do good for the sake of being good. The other religion is called Pushingittoofarism, who do murders for the sake of being bad.
   
   Oh, and you are actually not really all-powerful. You just have one power, which you can use infinitely many times! Your power involves missionary groups. When a missionary group of a certain country, say $a$, passes by another country $b$, they change the dominant religion of country $b$ to the dominant religion of country $a$.
@@ -70,6 +71,7 @@ vc-description: |-
   In the second test case, it can be done with just one usage of the power. 
   
   In the third test case, it is impossible to convert everyone to Beingawesomeism, so the answer is "MORTAL".
+  -/
 
 vc-preamble: |-
   def solve_religion_grid (r c : Nat) (grid : Grid) : Answer := sorry
@@ -119,23 +121,23 @@ vc-theorems: |-
     (grid.head!.head! = GridChar.P → result = "MORTAL") :=
   sorry
   
-  /--
+  /-
   info: '2'
   -/
-  #guard_msgs in
-  #eval solve_religion_grid 7 8 ["AAPAAAAA", "PPPPAAAA", "PPPPAAAA", "APAAPPPP", "APAPPAPP", "AAAAPPAP", "AAAAPPAA"]
+  -- #guard_msgs in
+  -- #eval solve_religion_grid 7 8 ["AAPAAAAA", "PPPPAAAA", "PPPPAAAA", "APAAPPPP", "APAPPAPP", "AAAAPPAP", "AAAAPPAA"]
   
-  /--
+  /-
   info: 'MORTAL'
   -/
-  #guard_msgs in
-  #eval solve_religion_grid 4 4 ["PPPP", "PPPP", "PPPP", "PPPP"]
+  -- #guard_msgs in
+  -- #eval solve_religion_grid 4 4 ["PPPP", "PPPP", "PPPP", "PPPP"]
   
-  /--
+  /-
   info: '0'
   -/
-  #guard_msgs in
-  #eval solve_religion_grid 1 1 ["A"]
+  -- #guard_msgs in
+  -- #eval solve_religion_grid 1 1 ["A"]
 
 vc-postamble: |-
   -- Apps difficulty: competition

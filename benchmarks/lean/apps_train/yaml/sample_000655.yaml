@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef bought an electronic board and pen. He wants to use them to record his clients' signatures.
   The board is a grid with $N$ rows (numbered $1$ through $N$) and $M$ columns (numbered $1$ through $M$) of pixels. Initially, all pixels are white. A client uses the electronic pen to sign on the board; whenever the pen touches a pixel, this pixel becomes black. Note that a signature may be non-continuous (a client may lift the pen while signing).
   Chef stores a typical signature of his current client as a matrix of characters $A_{i, j}$, where for each valid $i$ and $j$, $A_{i, j}$ is either '1' (if the cell in the $i$-th row and $j$-th column is black) or '0' (if this cell is white). The client just signed on the board; this signature is stored in the same form as a matrix $B_{i, j}$. Chef wants to know how close this signature is to this client's typical signature.
@@ -64,6 +65,7 @@ vc-description: |-
   1
   0
   2
+  -/
 
 vc-preamble: |-
 
@@ -95,23 +97,23 @@ vc-theorems: |-
     compare_signatures n m emptySignature emptySignature = 0 :=
   sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval compare_signatures 3 3 ["100", "010", "000"] ["000", "010", "001"]
+  -- #guard_msgs in
+  -- #eval compare_signatures 3 3 ["100", "010", "000"] ["000", "010", "001"]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval compare_signatures 4 4 ["0000", "0110", "0000", "0011"] ["1100", "0000", "1100", "0000"]
+  -- #guard_msgs in
+  -- #eval compare_signatures 4 4 ["0000", "0110", "0000", "0011"] ["1100", "0000", "1100", "0000"]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval compare_signatures 3 3 ["100", "000", "001"] ["000", "010", "000"]
+  -- #guard_msgs in
+  -- #eval compare_signatures 3 3 ["100", "000", "001"] ["000", "010", "000"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

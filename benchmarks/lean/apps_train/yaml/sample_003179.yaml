@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The prime numbers are not regularly spaced. For example from `2` to `3` the gap is `1`.
   From `3` to `5` the gap is `2`. From `7` to `11` it is `4`.
   Between 2 and 50 we have the following pairs of 2-gaps primes:
@@ -39,6 +40,7 @@ vc-description: |-
   
   #Ref
   https://en.wikipedia.org/wiki/Prime_gap
+  -/
 
 vc-preamble: |-
   def sqrt (n : Nat) : Nat := sorry
@@ -73,23 +75,23 @@ vc-theorems: |-
     ∀ x : Nat, p₁ < x → x < p₂ → isPrime x = false :=
   sorry
   
-  /--
+  /-
   info: [3, 5]
   -/
-  #guard_msgs in
-  #eval gap 2 3 10
+  -- #guard_msgs in
+  -- #eval gap 2 3 10
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval gap 6 100 110
+  -- #guard_msgs in
+  -- #eval gap 6 100 110
   
-  /--
+  /-
   info: [163, 167]
   -/
-  #guard_msgs in
-  #eval gap 4 130 200
+  -- #guard_msgs in
+  -- #eval gap 4 130 200
 
 vc-postamble: |-
   -- Apps difficulty: introductory

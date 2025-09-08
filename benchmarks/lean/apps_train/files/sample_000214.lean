@@ -1,0 +1,72 @@
+/-
+A string S of lowercase letters is given.  Then, we may make any number of moves.
+In each move, we choose one of the first K letters (starting from the left), remove it, and place it at the end of the string.
+Return the lexicographically smallest string we could have after any number of moves.
+
+Example 1:
+Input: S = "cba", K = 1
+Output: "acb"
+Explanation: 
+In the first move, we move the 1st character ("c") to the end, obtaining the string "bac".
+In the second move, we move the 1st character ("b") to the end, obtaining the final result "acb".
+
+Example 2:
+Input: S = "baaca", K = 3
+Output: "aaabc"
+Explanation: 
+In the first move, we move the 1st character ("b") to the end, obtaining the string "aacab".
+In the second move, we move the 3rd character ("c") to the end, obtaining the final result "aaabc".
+
+Note:
+
+1 <= K <= S.length <= 1000
+S consists of lowercase letters only.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def orderlyQueue (s : String) (k : Nat) : String := sorry
+
+private def stringToSortedString (s : String) : String :=
+  String.mk (s.data.reverse.reverse) -- placeholder since we can't sort without importing
+
+theorem orderlyQueue_k_gt_one_sorted {s : String} {k : Nat} (h1 : s.length > 0) (h2 : k > 1) :
+  orderlyQueue s k = stringToSortedString s := sorry 
+
+theorem orderlyQueue_k_one_length {s : String} (h : s.length > 0) : 
+  (orderlyQueue s 1).length = s.length := sorry
+
+theorem orderlyQueue_k_one_chars {s : String} (h : s.length > 0) :
+  stringToSortedString (orderlyQueue s 1) = stringToSortedString s := sorry
+
+theorem orderlyQueue_rotation {s : String} {k : Nat} (h1 : s.length > 0) (h2 : k > 0) :
+  stringToSortedString (orderlyQueue s k) = stringToSortedString s := sorry
+
+theorem orderlyQueue_k_one_rotation {s : String} (h : s.length > 0) :
+  ∃ i, i < s.length ∧ orderlyQueue s 1 = String.mk ((s.data.drop i) ++ (s.data.take i)) := sorry
+
+theorem orderlyQueue_k_one_minimal {s : String} (h : s.length > 0) :
+  ∀ i, i < s.length → 
+    orderlyQueue s 1 ≤ String.mk ((s.data.drop i) ++ (s.data.take i)) := sorry
+
+/-
+info: 'acb'
+-/
+-- #guard_msgs in
+-- #eval orderlyQueue "cba" 1
+
+/-
+info: 'aaabc'
+-/
+-- #guard_msgs in
+-- #eval orderlyQueue "baaca" 3
+
+/-
+info: 'abcd'
+-/
+-- #guard_msgs in
+-- #eval orderlyQueue "abcd" 2
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

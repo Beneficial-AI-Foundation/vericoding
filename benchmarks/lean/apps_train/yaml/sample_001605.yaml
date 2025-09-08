@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Description
   
   Given an array X of positive integers, its elements are to be transformed by running the following operation on them as many times as required:
@@ -24,6 +25,7 @@ vc-description: |-
   ## Additional notes:
   
   There are performance tests consisted of very big numbers and arrays of size at least 30000. Please write an efficient algorithm to prevent timeout.
+  -/
 
 vc-preamble: |-
   def List.sum : List Nat → Nat 
@@ -55,23 +57,23 @@ vc-theorems: |-
     solution [n] = n :=
   sorry
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval solution [6, 9, 21]
+  -- #guard_msgs in
+  -- #eval solution [6, 9, 21]
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval solution [30, 12]
+  -- #guard_msgs in
+  -- #eval solution [30, 12]
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval solution [4, 16, 24]
+  -- #guard_msgs in
+  -- #eval solution [4, 16, 24]
 
 vc-postamble: |-
   -- Apps difficulty: interview

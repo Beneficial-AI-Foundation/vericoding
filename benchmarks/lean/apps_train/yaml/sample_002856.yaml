@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   It's Friday night, and Chuck is bored. He's already run 1,000 miles, stopping only to eat a family sized bag of Heatwave Doritos and a large fistful of M&Ms. He just can't stop thinking about kicking something! 
   
   There is only one thing for it, Chuck heads down to his local MMA gym and immediately challenges every fighter there to get in the cage and try and take him down... AT THE SAME TIME! 
@@ -10,6 +11,7 @@ vc-description: |-
   FIGHT!!
   
   *Original design of this kata was a much more beautiful thing - the test cases illustrate the idea, and the intended output. I am unable to make the actual output go over multiple lines so for now at least you will have to imagine the beauty!*
+  -/
 
 vc-preamble: |-
 
@@ -41,23 +43,23 @@ vc-theorems: |-
     | Sum.inr _ => False
     := sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval head_smash ["*****************************************", "**  _O_   *   _O_   *   _O_   *   _O_  **", "** /(.)J  *  C(.)J  *  /(.)J  *  C(.)J **", "** _| |_  *  _| |_  *  _( )_  *  _( )_ *"]
+  -- #guard_msgs in
+  -- #eval head_smash ["*****************************************", "**  _O_   *   _O_   *   _O_   *   _O_  **", "** /(.)J  *  C(.)J  *  /(.)J  *  C(.)J **", "** _| |_  *  _| |_  *  _( )_  *  _( )_ *"]
   
-  /--
+  /-
   info: 'Gym is empty'
   -/
-  #guard_msgs in
-  #eval head_smash []
+  -- #guard_msgs in
+  -- #eval head_smash []
   
-  /--
+  /-
   info: "This isn't the gym!!"
   -/
-  #guard_msgs in
-  #eval head_smash 876
+  -- #guard_msgs in
+  -- #eval head_smash 876
 
 vc-postamble: |-
   -- Apps difficulty: introductory

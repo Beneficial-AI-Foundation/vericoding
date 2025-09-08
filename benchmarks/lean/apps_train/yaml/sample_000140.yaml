@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a list of strings, you need to find the longest uncommon subsequence among them. The longest uncommon subsequence is defined as the longest subsequence of one of these strings and this subsequence should not be any subsequence of the other strings.
   
   A subsequence is a sequence that can be derived from one sequence by deleting some characters without changing the order of the remaining elements. Trivially, any string is a subsequence of itself and an empty string is a subsequence of any string.
@@ -14,6 +15,7 @@ vc-description: |-
   
   All the given strings' lengths will not exceed 10.
   The length of the given list will be in the range of [2, 50].
+  -/
 
 vc-preamble: |-
 
@@ -42,23 +44,23 @@ vc-theorems: |-
     (h : strs = [s]) :
     find_longest_uncommon_subseq strs = s.length := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_longest_uncommon_subseq ["aba", "cdc", "eae"]
+  -- #guard_msgs in
+  -- #eval find_longest_uncommon_subseq ["aba", "cdc", "eae"]
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval find_longest_uncommon_subseq ["aaa", "aaa", "aa"]
+  -- #guard_msgs in
+  -- #eval find_longest_uncommon_subseq ["aaa", "aaa", "aa"]
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval find_longest_uncommon_subseq ["aabb", "aabb", "ab"]
+  -- #guard_msgs in
+  -- #eval find_longest_uncommon_subseq ["aabb", "aabb", "ab"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array of numbers, calculate the largest sum of all possible blocks of consecutive elements within the array. The numbers will be a mix of positive and negative values. If all numbers of the sequence are nonnegative, the answer will be the sum of the entire array. If all numbers in the array are negative, your algorithm should return zero. Similarly, an empty array should result in a zero return from your algorithm.
   
   ```
@@ -17,6 +18,7 @@ vc-description: |-
   ```59+26+(-53)+58+97 == 187```
   
   Once your algorithm works with these, the test-cases will try your submission with increasingly larger random problem sizes.
+  -/
 
 vc-preamble: |-
   def largest_sum (arr : List Int) : Int := sorry
@@ -46,29 +48,29 @@ vc-definitions: |-
         subseqSum = target
 
 vc-theorems: |-
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval largest_sum [-1, -2, -3]
+  -- #guard_msgs in
+  -- #eval largest_sum [-1, -2, -3]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval largest_sum []
+  -- #guard_msgs in
+  -- #eval largest_sum []
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval largest_sum [1, 2, 3]
+  -- #guard_msgs in
+  -- #eval largest_sum [1, 2, 3]
   
-  /--
+  /-
   info: 187
   -/
-  #guard_msgs in
-  #eval largest_sum [31, -41, 59, 26, -53, 58, 97, -93, -23, 84]
+  -- #guard_msgs in
+  -- #eval largest_sum [31, -41, 59, 26, -53, 58, 97, -93, -23, 84]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

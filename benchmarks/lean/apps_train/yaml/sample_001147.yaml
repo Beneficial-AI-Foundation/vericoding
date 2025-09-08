@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef wants to select a subset $S$ of the set $\{1, 2, \ldots, N\}$ such that there are no two integers $x, y \in S$ which satisfy $\frac{x}{y} = M$.
   Help Chef find the maximum size of a subset $S$ he can choose and the number of ways in which he can choose a subset $S$ with this maximum size. Since the number of ways to choose $S$ can be very large, calculate it modulo $998,244,353$.
   
@@ -26,6 +27,7 @@ vc-description: |-
   
   -----Explanation-----
   Example case 1: The only subset $S$ with the maximum size which Chef can choose is $\{1, 3, 4, 5\}$.
+  -/
 
 vc-preamble: |-
 
@@ -43,23 +45,23 @@ vc-definitions: |-
     count ≤ N*(N+1)/2 ∧ count ≥ 0 ∧ perm < 998244353 ∧ perm ≥ 0 := sorry
 
 vc-theorems: |-
-  /--
+  /-
   info: (4, 1)
   -/
-  #guard_msgs in
-  #eval solve_subset_problem 5 2
+  -- #guard_msgs in
+  -- #eval solve_subset_problem 5 2
   
-  /--
+  /-
   info: (6, 12)
   -/
-  #guard_msgs in
-  #eval solve_subset_problem 10 2
+  -- #guard_msgs in
+  -- #eval solve_subset_problem 10 2
   
-  /--
+  /-
   info: (76, 49152)
   -/
-  #guard_msgs in
-  #eval solve_subset_problem 100 3
+  -- #guard_msgs in
+  -- #eval solve_subset_problem 100 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   __Function composition__ is a mathematical operation that mainly presents itself in lambda calculus and computability. It is explained well [here](http://www.mathsisfun.com/sets/functions-composition.html), but this is my explanation, in simple mathematical notation:
   
   ```
@@ -15,6 +16,7 @@ vc-description: |-
   ```
   
   This kata is not available in haskell; that would be too easy!
+  -/
 
 vc-preamble: |-
 
@@ -59,23 +61,23 @@ vc-theorems: |-
     let h := (fun x => x - 3)
     compose (compose f g) h x = f (g (h x)) := sorry
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval fn 3
+  -- #guard_msgs in
+  -- #eval fn 3
   
-  /--
+  /-
   info: 'HELLO!'
   -/
-  #guard_msgs in
-  #eval fn "hello"
+  -- #guard_msgs in
+  -- #eval fn "hello"
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval fn 1 2 3
+  -- #guard_msgs in
+  -- #eval fn 1 2 3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

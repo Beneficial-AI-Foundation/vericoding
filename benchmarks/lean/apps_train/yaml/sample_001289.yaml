@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Dinesh is very fond of sweets recently his aunt Riya gifted him an array $a$ of sweets of size $N$. The ith sweet is of the type $a[i]$. His mother told him that he can choose one type of sweet in a day and eat at most 2 sweets of that type. Since he has to eat all the sweets as quickly as possible because his cousins are arriving. Find out the minimum number of days in which he can eat all the sweets gifted by his aunt Riya. 
   
   -----Input:-----
@@ -18,6 +19,7 @@ vc-description: |-
   
   -----Sample Output:-----
   2
+  -/
 
 vc-preamble: |-
 
@@ -48,23 +50,23 @@ vc-theorems: |-
     (∀ i j, i < sweets.length → j < sweets.length → i ≠ j → sweets[i]! ≠ sweets[j]!) →
     min_days_to_eat_sweets n sweets = n := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_days_to_eat_sweets 3 [1, 2, 2]
+  -- #guard_msgs in
+  -- #eval min_days_to_eat_sweets 3 [1, 2, 2]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval min_days_to_eat_sweets 5 [1, 1, 2, 2, 3]
+  -- #guard_msgs in
+  -- #eval min_days_to_eat_sweets 5 [1, 1, 2, 2, 3]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_days_to_eat_sweets 4 [1, 1, 1, 1]
+  -- #guard_msgs in
+  -- #eval min_days_to_eat_sweets 4 [1, 1, 1, 1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There is an infinitely long street that runs west to east, which we consider as a number line.
   There are N roadworks scheduled on this street.
   The i-th roadwork blocks the point at coordinate X_i from time S_i - 0.5 to time T_i - 0.5.
@@ -50,6 +51,7 @@ vc-description: |-
   The first person starts coordinate 0 at time 0 and stops walking at coordinate 2 when reaching a point blocked by the first roadwork at time 2.
   The second person starts coordinate 0 at time 1 and reaches coordinate 2 at time 3. The first roadwork has ended, but the fourth roadwork has begun, so this person also stops walking at coordinate 2.
   The fourth and sixth persons encounter no roadworks while walking, so they walk forever. The output for these cases is -1.
+  -/
 
 vc-preamble: |-
   def get_intersection (arr1 arr2 : List Int) : List Int := sorry

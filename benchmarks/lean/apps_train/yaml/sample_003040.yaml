@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Say hello!
   
   Write a function to greet a person. Function will take name as input and greet the person by saying hello.
@@ -11,6 +12,7 @@ vc-description: |-
   greet("")    --> None # Return None if input is empty string
   greet(None)  --> None # Return None if input is None
   ```
+  -/
 
 vc-preamble: |-
 
@@ -28,23 +30,23 @@ vc-theorems: |-
   theorem greet_with_none :
     greet none = none := sorry
   
-  /--
+  /-
   info: 'hello Niks!'
   -/
-  #guard_msgs in
-  #eval greet "Niks"
+  -- #guard_msgs in
+  -- #eval greet "Niks"
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval greet ""
+  -- #guard_msgs in
+  -- #eval greet ""
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval greet None
+  -- #guard_msgs in
+  -- #eval greet None
 
 vc-postamble: |-
   -- Apps difficulty: introductory

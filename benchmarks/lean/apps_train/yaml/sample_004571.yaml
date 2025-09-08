@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your task is to find all the elements of an array that are non consecutive.
   
   A number is non consecutive if it is not exactly one larger than the previous element in the array. The first element gets a pass and is never considered non consecutive.
@@ -32,6 +33,7 @@ vc-description: |-
   The array elements will all be numbers. The numbers will also all be unique and in ascending order. The numbers could be positive and/or negetive and the gap could be larger than one.
   
   If you like this kata, maybe try this one next: https://www.codewars.com/kata/represent-array-of-numbers-as-ranges
+  -/
 
 vc-preamble: |-
   def List.Sorted {α : Type} (r : α → α → Prop) (l : List α) : Prop :=
@@ -73,23 +75,23 @@ vc-theorems: |-
     1 ≤ r.i ∧ r.i < arr.length :=
   sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval all_non_consecutive [1, 2, 3, 4, 6, 7, 8, 15, 16]
+  -- #guard_msgs in
+  -- #eval all_non_consecutive [1, 2, 3, 4, 6, 7, 8, 15, 16]
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval all_non_consecutive [1, 2, 3, 4, 5]
+  -- #guard_msgs in
+  -- #eval all_non_consecutive [1, 2, 3, 4, 5]
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval all_non_consecutive [-3, -2, -1, 1, 2, 4, 5]
+  -- #guard_msgs in
+  -- #eval all_non_consecutive [-3, -2, -1, 1, 2, 4, 5]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

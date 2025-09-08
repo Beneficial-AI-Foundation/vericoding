@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an integer $x$, find two non-negative integers $a$ and $b$ such that $(a \wedge b) + (a \vee b) = x$, where $\wedge$ is the bitwise AND operation and $\vee$ is the bitwise OR operation.
   
   -----Input-----
@@ -27,6 +28,7 @@ vc-description: |-
   -----Example Output-----
   0 1
   5 3
+  -/
 
 vc-preamble: |-
 

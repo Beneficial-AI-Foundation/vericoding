@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Fix the Bugs (Syntax) - My First Kata
   
   ## Overview
@@ -23,6 +24,7 @@ vc-description: |-
   Once you think all the bugs are fixed run the code to see if it works.  A correct solution should return the values specified in the overview.
   
   **Extension: Once you have fixed all the syntax errors present in the code (basic requirement), you may attempt to optimise the code or try a different approach by coding it from scratch.**
+  -/
 
 vc-preamble: |-
 
@@ -42,23 +44,23 @@ vc-theorems: |-
   theorem invalid_string_input {a : String} {b : Int} :
     string_kata a b = .inr false := sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval my_first_kata 3 5
+  -- #guard_msgs in
+  -- #eval my_first_kata 3 5
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval my_first_kata "hello" 3
+  -- #guard_msgs in
+  -- #eval my_first_kata "hello" 3
   
-  /--
+  /-
   info: 207
   -/
-  #guard_msgs in
-  #eval my_first_kata 314 107
+  -- #guard_msgs in
+  -- #eval my_first_kata 314 107
 
 vc-postamble: |-
   -- Apps difficulty: introductory

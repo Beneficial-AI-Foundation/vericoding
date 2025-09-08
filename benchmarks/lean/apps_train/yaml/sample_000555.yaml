@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Ayu loves distinct letter sequences ,a distinct letter sequence is defined by a sequence of small case english alphabets such that no character appears more then once.
   But however there are two phrases that she doesn't like these phrases are "kar" and "shi" and she is given a sequence of distinct characters and she wonders how many such sequences she can form using all the characters such that these phrases don't occur.
   Help her finding the number of such sequences.
@@ -23,6 +24,7 @@ vc-description: |-
   -----Sample Output:-----
   22
   24
+  -/
 
 vc-preamble: |-
   def factorial (n : Nat) : Nat :=
@@ -78,17 +80,17 @@ vc-theorems: |-
       result = factorial s.length - 2 * factorial (s.length - 2) + factorial (s.length - 4))
     := sorry
   
-  /--
+  /-
   info: 22
   -/
-  #guard_msgs in
-  #eval count_distinct_sequences "karp"
+  -- #guard_msgs in
+  -- #eval count_distinct_sequences "karp"
   
-  /--
+  /-
   info: 24
   -/
-  #guard_msgs in
-  #eval count_distinct_sequences "abcd"
+  -- #guard_msgs in
+  -- #eval count_distinct_sequences "abcd"
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Our beloved detective, Sherlock is currently trying to catch a serial killer who kills a person each day. Using his powers of deduction, he came to know that the killer has a strategy for selecting his next victim.
   
   The killer starts with two potential victims on his first day, selects one of these two, kills selected victim and replaces him with a new person. He repeats this procedure each day. This way, each day he has two potential victims to choose from. Sherlock knows the initial two potential victims. Also, he knows the murder that happened on a particular day and the new person who replaced this victim.
@@ -45,6 +46,7 @@ vc-description: |-
   -----Note-----
   
   In first example, the killer starts with ross and rachel.   After day 1, ross is killed and joey appears.  After day 2, rachel is killed and phoebe appears.  After day 3, phoebe is killed and monica appears.  After day 4, monica is killed and chandler appears.
+  -/
 
 vc-preamble: |-
 
@@ -95,23 +97,23 @@ vc-theorems: |-
     (solve_killer_pairs initial murders)[i+1]! = s!"{current.1} {current.2}" :=
     sorry
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval solve_killer_pairs ["ross", "rachel"] [["ross", "joey"], ["rachel", "phoebe"], ["phoebe", "monica"], ["monica", "chandler"]]
+  -- #guard_msgs in
+  -- #eval solve_killer_pairs ["ross", "rachel"] [["ross", "joey"], ["rachel", "phoebe"], ["phoebe", "monica"], ["monica", "chandler"]]
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval solve_killer_pairs ["icm", "codeforces"] [["codeforces", "technex"]]
+  -- #guard_msgs in
+  -- #eval solve_killer_pairs ["icm", "codeforces"] [["codeforces", "technex"]]
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval solve_killer_pairs ["a", "b"] [["a", "c"], ["b", "d"], ["d", "e"]]
+  -- #guard_msgs in
+  -- #eval solve_killer_pairs ["a", "b"] [["a", "c"], ["b", "d"], ["d", "e"]]
 
 vc-postamble: |-
   -- Apps difficulty: competition

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your company was appointed to lay new asphalt on the highway of length $n$. You know that every day you can either repair one unit of the highway (lay new asphalt over one unit of the highway) or skip repairing.
   
   Skipping the repair is necessary because of the climate. The climate in your region is periodical: there are $g$ days when the weather is good and if you lay new asphalt these days it becomes high-quality pavement; after that, the weather during the next $b$ days is bad, and if you lay new asphalt these days it becomes low-quality pavement; again $g$ good days, $b$ bad days and so on.
@@ -36,6 +37,7 @@ vc-description: |-
   In the first test case, you can just lay new asphalt each day, since days $1, 3, 5$ are good.
   
   In the second test case, you can also lay new asphalt each day, since days $1$-$8$ are good.
+  -/
 
 vc-preamble: |-
 
@@ -64,23 +66,23 @@ vc-theorems: |-
     calc_min_days 1 n n = 1 :=
     sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval calc_min_days 5 1 1
+  -- #guard_msgs in
+  -- #eval calc_min_days 5 1 1
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval calc_min_days 8 10 10
+  -- #guard_msgs in
+  -- #eval calc_min_days 8 10 10
   
-  /--
+  /-
   info: 499999500000
   -/
-  #guard_msgs in
-  #eval calc_min_days 1000000 1 1000000
+  -- #guard_msgs in
+  -- #eval calc_min_days 1000000 1 1000000
 
 vc-postamble: |-
   -- Apps difficulty: interview

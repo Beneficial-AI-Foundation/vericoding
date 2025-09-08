@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   An array is **circularly sorted** if the elements are sorted in ascending order, but displaced, or rotated, by any number of steps. 
   
   Complete the function/method that determines if the given array of integers is circularly sorted.
@@ -22,6 +23,7 @@ vc-description: |-
   [6, 7, 4, 8]
   [7, 6, 5, 4, 3, 2, 1]
   ```
+  -/
 
 vc-preamble: |-
   def circularly_sorted (xs : List Int) : Bool :=
@@ -57,23 +59,23 @@ vc-theorems: |-
     circularly_sorted xs = false :=
   sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval circularly_sorted [2, 3, 4, 5, 0, 1]
+  -- #guard_msgs in
+  -- #eval circularly_sorted [2, 3, 4, 5, 0, 1]
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval circularly_sorted [1, 2, 3, 4, 5]
+  -- #guard_msgs in
+  -- #eval circularly_sorted [1, 2, 3, 4, 5]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval circularly_sorted [4, 1, 2, 5]
+  -- #guard_msgs in
+  -- #eval circularly_sorted [4, 1, 2, 5]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

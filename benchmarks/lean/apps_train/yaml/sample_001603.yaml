@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    An `amazon` (also known as a queen+knight compound) is an imaginary chess piece that can move like a `queen` or a `knight` (or, equivalently, like a `rook`, `bishop`, or `knight`). The diagram below shows all squares which the amazon attacks from e4 (circles represent knight-like moves while crosses correspond to queen-like moves).
   
@@ -54,6 +55,7 @@ vc-description: |-
   # Output
   
   An array of four integers, each equal to the number of black's king positions corresponding to a specific situation. The integers should be presented in the same order as the situations were described, `i.e. 0 for checkmates, 1 for checks, etc`.
+  -/
 
 vc-preamble: |-
   def ChessPos := String
@@ -97,23 +99,23 @@ vc-theorems: |-
       result.get ⟨i, h2⟩ ≤ 64 :=
     sorry
   
-  /--
+  /-
   info: [5, 21, 0, 29]
   -/
-  #guard_msgs in
-  #eval amazon_check_mate "d3" "e4"
+  -- #guard_msgs in
+  -- #eval amazon_check_mate "d3" "e4"
   
-  /--
+  /-
   info: [0, 29, 1, 29]
   -/
-  #guard_msgs in
-  #eval amazon_check_mate "a1" "g5"
+  -- #guard_msgs in
+  -- #eval amazon_check_mate "a1" "g5"
   
-  /--
+  /-
   info: [1, 32, 1, 23]
   -/
-  #guard_msgs in
-  #eval amazon_check_mate "a3" "e4"
+  -- #guard_msgs in
+  -- #eval amazon_check_mate "a3" "e4"
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a credit card number we can determine who the issuer/vendor is with a few basic knowns.
   
   ```if:python
@@ -59,6 +60,7 @@ vc-description: |-
   get_issuer(9111111111111111) == "Unknown"
   ~~~
   ```
+  -/
 
 vc-preamble: |-
   def get_issuer (number : Nat) : String := sorry
@@ -111,41 +113,41 @@ vc-theorems: |-
     digits.startsWith "6011" ∧ digits.length = 16 → 
       get_issuer n = "Discover" := sorry
   
-  /--
+  /-
   info: 'VISA'
   -/
-  #guard_msgs in
-  #eval get_issuer 4111111111111111
+  -- #guard_msgs in
+  -- #eval get_issuer 4111111111111111
   
-  /--
+  /-
   info: 'VISA'
   -/
-  #guard_msgs in
-  #eval get_issuer 4111111111111
+  -- #guard_msgs in
+  -- #eval get_issuer 4111111111111
   
-  /--
+  /-
   info: 'AMEX'
   -/
-  #guard_msgs in
-  #eval get_issuer 378282246310005
+  -- #guard_msgs in
+  -- #eval get_issuer 378282246310005
   
-  /--
+  /-
   info: 'Mastercard'
   -/
-  #guard_msgs in
-  #eval get_issuer 5105105105105100
+  -- #guard_msgs in
+  -- #eval get_issuer 5105105105105100
   
-  /--
+  /-
   info: 'Discover'
   -/
-  #guard_msgs in
-  #eval get_issuer 6011111111111117
+  -- #guard_msgs in
+  -- #eval get_issuer 6011111111111117
   
-  /--
+  /-
   info: 'Unknown'
   -/
-  #guard_msgs in
-  #eval get_issuer 9111111111111111
+  -- #guard_msgs in
+  -- #eval get_issuer 9111111111111111
 
 vc-postamble: |-
   -- Apps difficulty: introductory

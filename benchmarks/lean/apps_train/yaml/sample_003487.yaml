@@ -1,7 +1,9 @@
 vc-description: |-
+  /-
   Implement a function that adds two numbers together and returns their sum in binary. The conversion can be done before, or after the addition.
   
   The binary number returned should be a string.
+  -/
 
 vc-preamble: |-
 
@@ -30,23 +32,23 @@ vc-theorems: |-
     add_binary 0 n = toString (Nat.toDigits 2 n) :=
     sorry
   
-  /--
+  /-
   info: '10'
   -/
-  #guard_msgs in
-  #eval add_binary 1 1
+  -- #guard_msgs in
+  -- #eval add_binary 1 1
   
-  /--
+  /-
   info: '111111'
   -/
-  #guard_msgs in
-  #eval add_binary 51 12
+  -- #guard_msgs in
+  -- #eval add_binary 51 12
   
-  /--
+  /-
   info: '1000000000001'
   -/
-  #guard_msgs in
-  #eval add_binary 4096 1
+  -- #guard_msgs in
+  -- #eval add_binary 4096 1
 
 vc-postamble: |-
   -- Apps difficulty: introductory

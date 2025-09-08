@@ -1,7 +1,9 @@
 vc-description: |-
+  /-
   Write a function `reverse` which reverses a list (or in clojure's case, any list-like data structure)
   
   (the dedicated builtin(s) functionalities are deactivated)
+  -/
 
 vc-preamble: |-
 
@@ -26,23 +28,23 @@ vc-theorems: |-
     ∃ manual_reverse : List α → List α, 
       reverse lst = manual_reverse lst := sorry
   
-  /--
+  /-
   info: [5, 4, 3, 2, 1]
   -/
-  #guard_msgs in
-  #eval reverse [1, 2, 3, 4, 5]
+  -- #guard_msgs in
+  -- #eval reverse [1, 2, 3, 4, 5]
   
-  /--
+  /-
   info: ['c', 'b', 'a']
   -/
-  #guard_msgs in
-  #eval reverse ["a", "b", "c"]
+  -- #guard_msgs in
+  -- #eval reverse ["a", "b", "c"]
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval reverse []
+  -- #guard_msgs in
+  -- #eval reverse []
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   and Bengali as well.
   There are N$N$ cats (numbered 1$1$ through N$N$) and M$M$ rats (numbered 1$1$ through M$M$) on a line. Each cat and each rat wants to move from some point to some (possibly the same) point on this line. Naturally, the cats also want to eat the rats when they get a chance. Both the cats and the rats can only move with constant speed 1$1$.
   For each valid i$i$, the i$i$-th cat is initially sleeping at a point a_i$a_i$. At a time s_i$s_i$, this cat wakes up and starts moving to a final point b_i$b_i$ with constant velocity and without any detours (so it arrives at this point at the time e_i = s_i + |a_i-b_i|$e_i = s_i + |a_i-b_i|$). After it arrives at the point b_i$b_i$, it falls asleep again.
@@ -75,6 +76,7 @@ vc-description: |-
   6
   7
   8
+  -/
 
 vc-preamble: |-
   def absInt (n : Int) : Int :=

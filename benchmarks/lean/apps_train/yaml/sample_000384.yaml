@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a non-empty integer array, find the minimum number of moves required to make all array elements equal, where a move is incrementing a selected element by 1 or decrementing a selected element by 1.
   
   You may assume the array's length is at most 10,000.
@@ -15,6 +16,7 @@ vc-description: |-
   Only two moves are needed (remember each move increments or decrements one element):
   
   [1,2,3]  =>  [2,2,3]  =>  [2,2,2]
+  -/
 
 vc-preamble: |-
   def min_moves_to_equal (nums : List Int) : Nat :=
@@ -47,23 +49,23 @@ vc-theorems: |-
   theorem order_invariant (nums : List Int) :
     min_moves_to_equal nums = min_moves_to_equal (sort nums) := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_moves_to_equal [1, 2, 3]
+  -- #guard_msgs in
+  -- #eval min_moves_to_equal [1, 2, 3]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_moves_to_equal [1, 1, 1]
+  -- #guard_msgs in
+  -- #eval min_moves_to_equal [1, 1, 1]
   
-  /--
+  /-
   info: 16
   -/
-  #guard_msgs in
-  #eval min_moves_to_equal [1, 10, 2, 9]
+  -- #guard_msgs in
+  -- #eval min_moves_to_equal [1, 10, 2, 9]
 
 vc-postamble: |-
   -- Apps difficulty: interview

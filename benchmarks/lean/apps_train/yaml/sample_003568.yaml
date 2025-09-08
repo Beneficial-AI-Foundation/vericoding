@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You will be given an array of strings. The words in the array should mesh together where one or more letters at the end of one word will have the same letters (in the same order) as the next word in the array. But, there are times when all the words won't mesh. 
   
   Examples of meshed words:
@@ -46,6 +47,7 @@ vc-description: |-
   ```
   
   Although the words `"dominator"` and `"notorious"` share letters in the same order, the last letters of the first word don't mesh with the first letters of the second word.
+  -/
 
 vc-preamble: |-
   def word_mesh (words : List String) : String := sorry
@@ -82,23 +84,23 @@ vc-theorems: |-
     ∀ i, i < words.length - 1 → 
       hasOverlap (words.get ⟨i, by sorry⟩) (words.get ⟨i+1, by sorry⟩) := sorry
   
-  /--
+  /-
   info: 'lowringter'
   -/
-  #guard_msgs in
-  #eval word_mesh ["allow", "lowering", "ringmaster", "terror"]
+  -- #guard_msgs in
+  -- #eval word_mesh ["allow", "lowering", "ringmaster", "terror"]
   
-  /--
+  /-
   info: 'failed to mesh'
   -/
-  #guard_msgs in
-  #eval word_mesh ["kingdom", "dominator", "notorious", "usual", "allegory"]
+  -- #guard_msgs in
+  -- #eval word_mesh ["kingdom", "dominator", "notorious", "usual", "allegory"]
   
-  /--
+  /-
   info: 'conumcal'
   -/
-  #guard_msgs in
-  #eval word_mesh ["beacon", "condominium", "umbilical", "california"]
+  -- #guard_msgs in
+  -- #eval word_mesh ["beacon", "condominium", "umbilical", "california"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

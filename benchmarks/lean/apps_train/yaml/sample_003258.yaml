@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # A wolf in sheep's clothing
   
   Wolves have been reintroduced to Great Britain. You are a sheep farmer, and are now plagued by wolves which pretend to be sheep. Fortunately, you are good at spotting them. 
@@ -21,6 +22,7 @@ vc-description: |-
   
   warn_the_sheep(['sheep', 'sheep', 'wolf']) == 'Pls go away and stop eating my sheep'
   ```
+  -/
 
 vc-preamble: |-
 

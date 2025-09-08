@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   DNA sequencing data can be stored in many different formats. In this Kata, we will be looking at SAM formatting. It is a plain text file where every line (excluding the first header lines) contains data about a "read" from whatever sample the file comes from. Rather than focusing on the whole read, we will take two pieces of information: the cigar string and the nucleotide sequence.
   
   The cigar string is composed of numbers and flags. It represents how the read aligns to what is known as a reference genome. A reference genome is an accepted standard for mapping the DNA. 
@@ -16,6 +17,7 @@ vc-description: |-
   Your job for this kata is to create a function that determines whether a cigar string fully matches the reference and accounts for all bases. If it does fully match, return True. If the numbers in the string do not match the full length of the string, return 'Invalid cigar'. If it does not fully match, return False.
   
   *Note for C++: Return True, False, or Invalid cigar as strings*
+  -/
 
 vc-preamble: |-
 
@@ -50,23 +52,23 @@ vc-theorems: |-
     is_matched [s!"{seq.length}M", seq] = Sum.inr true
     := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_matched ["36M", "CATAATACTTTACCTACTCTCAACAAATGCGGGAGA"]
+  -- #guard_msgs in
+  -- #eval is_matched ["36M", "CATAATACTTTACCTACTCTCAACAAATGCGGGAGA"]
   
-  /--
+  /-
   info: 'Invalid cigar'
   -/
-  #guard_msgs in
-  #eval is_matched ["10M6H", "GAGCGAGTGCGCCTTAC"]
+  -- #guard_msgs in
+  -- #eval is_matched ["10M6H", "GAGCGAGTGCGCCTTAC"]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_matched ["12S", "TGTTTCTCCAAG"]
+  -- #guard_msgs in
+  -- #eval is_matched ["12S", "TGTTTCTCCAAG"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

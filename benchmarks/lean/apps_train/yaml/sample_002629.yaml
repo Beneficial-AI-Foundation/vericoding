@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are working at a lower league football stadium and you've been tasked with automating the scoreboard.
   
   The referee will shout out the score, you have already set up the voice recognition module which turns the ref's voice into a string, but the spoken score needs to be converted into a pair for the scoreboard!
@@ -19,6 +20,7 @@ vc-description: |-
   ```
   
   Please rate and enjoy!
+  -/
 
 vc-preamble: |-
   def ValidWords := ["nil", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
@@ -50,23 +52,23 @@ vc-theorems: |-
     ∀ x ∈ result, 0 ≤ x ∧ x ≤ 9 :=
     sorry
   
-  /--
+  /-
   info: [4, 0]
   -/
-  #guard_msgs in
-  #eval scoreboard "The score is four nil"
+  -- #guard_msgs in
+  -- #eval scoreboard "The score is four nil"
   
-  /--
+  /-
   info: [2, 3]
   -/
-  #guard_msgs in
-  #eval scoreboard "new score: two three"
+  -- #guard_msgs in
+  -- #eval scoreboard "new score: two three"
   
-  /--
+  /-
   info: [2, 0]
   -/
-  #guard_msgs in
-  #eval scoreboard "Arsenal just conceded another goal, two nil"
+  -- #guard_msgs in
+  -- #eval scoreboard "Arsenal just conceded another goal, two nil"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

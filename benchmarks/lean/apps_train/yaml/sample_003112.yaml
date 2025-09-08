@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this Kata, two players, Alice and Bob, are playing a palindrome game. Alice starts with `string1`, Bob starts with `string2`, and the board starts out as an empty string. Alice and Bob take turns; during a turn, a player selects a letter from his or her string, removes it from the string, and appends it to the board; if the board becomes a palindrome (of length >= 2), the player wins. Alice makes the first move. Since Bob has the disadvantage of playing second, then he wins automatically if letters run out or the board is never a palindrome. Note also that each player can see the other player's letters.
   
   The problem will be presented as `solve(string1,string2)`. Return 1 if Alice wins and 2 it Bob wins.
@@ -14,6 +15,7 @@ vc-description: |-
   Palindrome lengths should be at least `2` characters. More examples in the test cases. 
   
   Good luck!
+  -/
 
 vc-preamble: |-
   def solve (s1 s2 : String) : Nat :=
@@ -46,23 +48,23 @@ vc-theorems: |-
     (∀ (c : Char), s.data.contains c → countChar s c < 2) → solve s "" = 2 :=
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve "abc" "xyz"
+  -- #guard_msgs in
+  -- #eval solve "abc" "xyz"
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve "eyfjy" "ooigv"
+  -- #guard_msgs in
+  -- #eval solve "eyfjy" "ooigv"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve "qtkxttl" "utvohqk"
+  -- #guard_msgs in
+  -- #eval solve "qtkxttl" "utvohqk"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

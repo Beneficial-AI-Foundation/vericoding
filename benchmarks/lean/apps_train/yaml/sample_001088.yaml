@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are the principal of the Cake school in chefland and today is your birthday. You want to treat each of the children with a small cupcake which is made by you. But there is a problem, You don't know how many students are present today.
   The students have gathered of the morning assembly in $R$ rows and $C$ columns. Now you have to calculate how many cakes you have to make such that each child gets a cupcake. 
   
@@ -19,6 +20,7 @@ vc-description: |-
   
   -----Sample Output:-----
   50
+  -/
 
 vc-preamble: |-
 

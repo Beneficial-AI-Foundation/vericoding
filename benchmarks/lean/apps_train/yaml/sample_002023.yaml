@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   DZY loves Physics, and he enjoys calculating density.
   
   Almost everything has density, even a graph. We define the density of a non-directed graph (nodes and edges of the graph have some values) as follows: $\left\{\begin{array}{ll}{\frac{v}{e}} & {(e > 0)} \\{0} & {(e = 0)} \end{array} \right.$ where v is the sum of the values of the nodes, e is the sum of the values of the edges.
@@ -55,6 +56,7 @@ vc-description: |-
   In the first sample, you can only choose an empty subgraph, or the subgraph containing only node 1.
   
   In the second sample, choosing the whole graph is optimal.
+  -/
 
 vc-preamble: |-
 

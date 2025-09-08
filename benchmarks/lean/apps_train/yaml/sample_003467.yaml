@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Complete the function that takes 3 numbers `x, y and k` (where `x ≤ y`), and returns the number of integers within the range `[x..y]` (both ends included) that are divisible by `k`.
   
   More scientifically:  `{ i : x ≤ i ≤ y, i mod k = 0 }`
@@ -8,6 +9,7 @@ vc-description: |-
   Given ```x = 6, y = 11, k = 2``` the function should return `3`, because there are three numbers divisible by `2` between `6` and `11`: `6, 8, 10`
   
   - **Note**: The test cases are very large. You will need a O(log n) solution or better to pass. (A constant time solution is possible.)
+  -/
 
 vc-preamble: |-
 
@@ -32,23 +34,23 @@ vc-theorems: |-
     divisible_count x (x + k - 1) k = divisible_count (x + k) (x + 2*k - 1) k :=
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval divisible_count 6 11 2
+  -- #guard_msgs in
+  -- #eval divisible_count 6 11 2
   
-  /--
+  /-
   info: 20
   -/
-  #guard_msgs in
-  #eval divisible_count 11 345 17
+  -- #guard_msgs in
+  -- #eval divisible_count 11 345 17
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval divisible_count 0 1 7
+  -- #guard_msgs in
+  -- #eval divisible_count 0 1 7
 
 vc-postamble: |-
   -- Apps difficulty: introductory

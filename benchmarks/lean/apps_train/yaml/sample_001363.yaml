@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The auditorium of Stanford University is made up of L*R matrix (assume each coordinate has a chair). On the occasion of an event Chef was called as a chief guest. The auditorium was filled with males (M) and females (F), occupying one chair each. Our Chef is very curious guy, so he asks the gatekeeper some queries. The queries were as follows: Is there any K*K sub-matrix in the auditorium which contains all Males or Females.
   
   -----Input-----
@@ -32,6 +33,7 @@ vc-description: |-
   yes
   no
   yes
+  -/
 
 vc-preamble: |-
   def Matrix := List String

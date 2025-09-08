@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ### Background
   
   I was reading a [book](http://www.amazon.co.uk/Things-Make-Do-Fourth-Dimension/dp/1846147646/) recently, "Things to Make and Do in the Fourth Dimension" by comedian and mathematician Matt Parker, and in the first chapter of the book Matt talks about problems he likes to solve in his head to take his mind off the fact that he is in his dentist's chair, we've all been there!
@@ -88,6 +89,7 @@ vc-description: |-
   ```if-not:haskell
   A constant CHARS has been declared with this sequence for you.
   ```
+  -/
 
 vc-preamble: |-
   def CHARS := ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']
@@ -118,23 +120,23 @@ vc-theorems: |-
     is_polydivisible "0" base = true :=
   sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_polydivisible "123" 10
+  -- #guard_msgs in
+  -- #eval is_polydivisible "123" 10
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_polydivisible "1234" 10
+  -- #guard_msgs in
+  -- #eval is_polydivisible "1234" 10
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_polydivisible "123220" 6
+  -- #guard_msgs in
+  -- #eval is_polydivisible "123220" 6
 
 vc-postamble: |-
   -- Apps difficulty: interview

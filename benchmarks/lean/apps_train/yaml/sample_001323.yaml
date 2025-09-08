@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Gru has not been in the limelight for a long time and is, therefore, planning something particularly nefarious. Frustrated by his minions' incapability which has kept him away from the limelight, he has built a transmogrifier — a machine which mutates minions.
   
   Each minion has an intrinsic characteristic value (similar to our DNA), which is an integer. The transmogrifier adds an integer K to each of the minions' characteristic value. 
@@ -32,6 +33,7 @@ vc-description: |-
   
   -----Explanation:-----
   After transmogrification, the characteristic values become {12,14,11,45,11}, out of which only 14 is divisible by 7. So only the second minion becomes Wolverine-like.
+  -/
 
 vc-preamble: |-
 
@@ -49,23 +51,23 @@ vc-theorems: |-
     count_wolverine_mutations n k [] = 0 :=
   sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_wolverine_mutations 5 10 [2, 4, 1, 35, 1]
+  -- #guard_msgs in
+  -- #eval count_wolverine_mutations 5 10 [2, 4, 1, 35, 1]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_wolverine_mutations 3 5 [1, 2, 3]
+  -- #guard_msgs in
+  -- #eval count_wolverine_mutations 3 5 [1, 2, 3]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval count_wolverine_mutations 4 7 [7, 14, 21, 28]
+  -- #guard_msgs in
+  -- #eval count_wolverine_mutations 4 7 [7, 14, 21, 28]
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There is a road with length $l$ meters. The start of the road has coordinate $0$, the end of the road has coordinate $l$.
   
   There are two cars, the first standing at the start of the road and the second standing at the end of the road. They will start driving simultaneously. The first car will drive from the start to the end and the second car will drive from the end to the start.
@@ -53,6 +54,7 @@ vc-description: |-
   The second car will be in the coordinate $9$ in $1$ second and after that its speed will increase by $1$ and will be equal to $2$ meters per second. After $2$ more seconds it will be in the coordinate $5$. So, it will be in the coordinate $5$ in $3$ seconds.
   
   In the second test case after $1$ second the first car will be in the coordinate $1$ and will have the speed equal to $2$ meters per second, the second car will be in the coordinate $9$ and will have the speed equal to $1$ meter per second. So, they will meet after $\frac{9-1}{2+1} = \frac{8}{3}$ seconds. So, the answer is equal to $1 + \frac{8}{3} = \frac{11}{3}$.
+  -/
 
 vc-preamble: |-
 

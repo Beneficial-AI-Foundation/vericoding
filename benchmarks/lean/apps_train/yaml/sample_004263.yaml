@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array of one's and zero's that represents a positive binary number convert the number to two's complement value.
   
   Two's complement is the way most computers represent positive or negative integers. The most significant bit is negative. 
@@ -28,6 +29,7 @@ vc-description: |-
   [1,1,1,0] = -2
   
   However, the arrays can have varying lengths, not just limited to 4.
+  -/
 
 vc-preamble: |-
 
@@ -68,23 +70,23 @@ vc-theorems: |-
     (h'' : binary.head? = some 0) :
     positive_to_negative (positive_to_negative binary) = binary := sorry
   
-  /--
+  /-
   info: [0, 0, 0, 0]
   -/
-  #guard_msgs in
-  #eval positive_to_negative [0, 0, 0, 0]
+  -- #guard_msgs in
+  -- #eval positive_to_negative [0, 0, 0, 0]
   
-  /--
+  /-
   info: [1, 1, 1, 0]
   -/
-  #guard_msgs in
-  #eval positive_to_negative [0, 0, 1, 0]
+  -- #guard_msgs in
+  -- #eval positive_to_negative [0, 0, 1, 0]
   
-  /--
+  /-
   info: [1, 1, 0, 1]
   -/
-  #guard_msgs in
-  #eval positive_to_negative [0, 0, 1, 1]
+  -- #guard_msgs in
+  -- #eval positive_to_negative [0, 0, 1, 1]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

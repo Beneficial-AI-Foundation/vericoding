@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A wildlife study involving ducks is taking place in North America. Researchers are visiting some wetlands in a certain area taking a survey of what they see. The researchers will submit reports that need to be processed by your function.
   
   ## Input
@@ -35,6 +36,7 @@ vc-description: |-
   * If a name has two words, take the first three letters of each word.
   * If a name has three words, take the first two letters of each word.
   * If a name has four words, take the first letters from the first two words, and the first two letters from the last two words.
+  -/
 
 vc-preamble: |-
 
@@ -71,23 +73,23 @@ vc-theorems: |-
     createReport names = [Sum.inl "Disqualified data"] :=
   sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval create_report ["Redhead 3", "Gadwall 1", "Smew 4", "Greater Scaup 10", "Redhead 3", "Gadwall 9", "Greater Scaup 15", "Common Eider 6"]
+  -- #guard_msgs in
+  -- #eval create_report ["Redhead 3", "Gadwall 1", "Smew 4", "Greater Scaup 10", "Redhead 3", "Gadwall 9", "Greater Scaup 15", "Common Eider 6"]
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval create_report ["Redhead 5", "Labrador Duck 9", "Blue-Winged Teal 25"]
+  -- #guard_msgs in
+  -- #eval create_report ["Redhead 5", "Labrador Duck 9", "Blue-Winged Teal 25"]
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval create_report ["Canvasback 10", "Mallard 150", "American Wigeon 45"]
+  -- #guard_msgs in
+  -- #eval create_report ["Canvasback 10", "Mallard 150", "American Wigeon 45"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

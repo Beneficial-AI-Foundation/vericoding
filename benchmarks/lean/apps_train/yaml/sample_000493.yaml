@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a string s that consists of lower case English letters and brackets. 
   Reverse the strings in each pair of matching parentheses, starting from the innermost one.
   Your result should not contain any brackets.
@@ -26,6 +27,7 @@ vc-description: |-
   0 <= s.length <= 2000
   s only contains lower case English characters and parentheses.
   It's guaranteed that all parentheses are balanced.
+  -/
 
 vc-preamble: |-
 
@@ -61,23 +63,23 @@ vc-theorems: |-
     reverse_parentheses "" = "" :=
     sorry
   
-  /--
+  /-
   info: 'dcba'
   -/
-  #guard_msgs in
-  #eval reverse_parentheses "(abcd)"
+  -- #guard_msgs in
+  -- #eval reverse_parentheses "(abcd)"
   
-  /--
+  /-
   info: 'iloveu'
   -/
-  #guard_msgs in
-  #eval reverse_parentheses "(u(love)i)"
+  -- #guard_msgs in
+  -- #eval reverse_parentheses "(u(love)i)"
   
-  /--
+  /-
   info: 'apmnolkjihgfedcbq'
   -/
-  #guard_msgs in
-  #eval reverse_parentheses "a(bcdefghijkl(mno)p)q"
+  -- #guard_msgs in
+  -- #eval reverse_parentheses "a(bcdefghijkl(mno)p)q"
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Suppose we abstract our file system by a string in the following manner:
   
   The string "dir\n\tsubdir1\n\tsubdir2\n\t\tfile.ext" represents:
@@ -34,6 +35,7 @@ vc-description: |-
   Time complexity required: O(n) where n is the size of the input string.
   
   Notice that a/aa/aaa/file1.txt is not the longest file path, if there is another path aaaaaaaaaaaaaaaaaaaaa/sth.png.
+  -/
 
 vc-preamble: |-
 
@@ -55,23 +57,23 @@ vc-theorems: |-
       lengthLongestPath name = 0 :=
   sorry
   
-  /--
+  /-
   info: 20
   -/
-  #guard_msgs in
-  #eval lengthLongestPath "dir\n\tsubdir1\n\tsubdir2\n\t\tfile.ext"
+  -- #guard_msgs in
+  -- #eval lengthLongestPath "dir\n\tsubdir1\n\tsubdir2\n\t\tfile.ext"
   
-  /--
+  /-
   info: 32
   -/
-  #guard_msgs in
-  #eval lengthLongestPath "dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\n\t\t\tfile2.ext"
+  -- #guard_msgs in
+  -- #eval lengthLongestPath "dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\n\t\t\tfile2.ext"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval lengthLongestPath ""
+  -- #guard_msgs in
+  -- #eval lengthLongestPath ""
 
 vc-postamble: |-
   -- Apps difficulty: interview

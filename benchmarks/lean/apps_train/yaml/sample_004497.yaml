@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Similar to the [previous kata](https://www.codewars.com/kata/string-subpattern-recognition-ii/), but this time you need to operate with shuffled strings to identify if they are composed repeating a subpattern
   
   Since there is no deterministic way to tell which pattern was really the original one among all the possible permutations of a fitting subpattern, return a subpattern with sorted characters, otherwise return the base string with sorted characters (you might consider this case as an edge case, with the subpattern being repeated only once and thus equalling the original input string).
@@ -14,6 +15,7 @@ vc-description: |-
   ```
   
   If you liked it, go for either the [previous kata](https://www.codewars.com/kata/string-subpattern-recognition-ii/) or the [next kata](https://www.codewars.com/kata/string-subpattern-recognition-iv/) of the series!
+  -/
 
 vc-preamble: |-
   def String.count (s : String) (c : Char) : Nat := sorry

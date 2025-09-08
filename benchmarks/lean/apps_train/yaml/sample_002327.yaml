@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Implement strStr().
   
   Return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
@@ -18,6 +19,7 @@ vc-description: |-
   What should we return when needle is an empty string? This is a great question to ask during an interview.
   
   For the purpose of this problem, we will return 0 when needle is an empty string. This is consistent to C's strstr() and Java's indexOf().
+  -/
 
 vc-preamble: |-
   def find_str (haystack : String) (needle : String) : Int :=
@@ -67,23 +69,23 @@ vc-theorems: |-
     (h1 : s ≠ "") (h2 : n > 0) :
     find_str (stringRepeat s n) s = 0 := by sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_str "hello" "ll"
+  -- #guard_msgs in
+  -- #eval find_str "hello" "ll"
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval find_str "aaaaa" "bba"
+  -- #guard_msgs in
+  -- #eval find_str "aaaaa" "bba"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval find_str "" ""
+  -- #guard_msgs in
+  -- #eval find_str "" ""
 
 vc-postamble: |-
   -- Apps difficulty: introductory

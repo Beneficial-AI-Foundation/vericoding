@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a long number, return all the possible sum of two digits of it.
   
   For example, `12345`: all possible sum of two digits from that number are:
@@ -8,6 +9,7 @@ vc-description: |-
   Therefore the result must be:
   
       [ 3, 4, 5, 6, 5, 6, 7, 7, 8, 9 ]
+  -/
 
 vc-preamble: |-
 
@@ -29,23 +31,23 @@ vc-theorems: |-
     result.length = 1 ∧ 
     result.head! = ((toString n).toList.map (fun c => c.toNat - '0'.toNat)).foldl (·+·) 0 := sorry
   
-  /--
+  /-
   info: [6, 7, 11]
   -/
-  #guard_msgs in
-  #eval digits 156
+  -- #guard_msgs in
+  -- #eval digits 156
   
-  /--
+  /-
   info: [9, 13, 17, 14, 6, 10, 7, 14, 11, 15]
   -/
-  #guard_msgs in
-  #eval digits 81596
+  -- #guard_msgs in
+  -- #eval digits 81596
   
-  /--
+  /-
   info: [11, 8, 5, 13, 10, 7]
   -/
-  #guard_msgs in
-  #eval digits 3852
+  -- #guard_msgs in
+  -- #eval digits 3852
 
 vc-postamble: |-
   -- Apps difficulty: introductory

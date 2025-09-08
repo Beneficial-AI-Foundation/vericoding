@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Function Descriptions=====
   floor
   The tool floor returns the floor of the input element-wise.
@@ -36,6 +37,7 @@ vc-description: |-
   On the first line, print the floor of A.
   On the second line, print the ceil of A.
   On the third line, print the rint of A.
+  -/
 
 vc-preamble: |-
   def array_transforms (input : String) : Array Float × Array Float × Array Float := sorry

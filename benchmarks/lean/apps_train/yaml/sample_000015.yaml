@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Screen resolution of Polycarp's monitor is $a \times b$ pixels. Unfortunately, there is one dead pixel at his screen. It has coordinates $(x, y)$ ($0 \le x < a, 0 \le y < b$). You can consider columns of pixels to be numbered from $0$ to $a-1$, and rows — from $0$ to $b-1$.
   
   Polycarp wants to open a rectangular window of maximal size, which doesn't contain the dead pixel. The boundaries of the window should be parallel to the sides of the screen.
@@ -36,6 +37,7 @@ vc-description: |-
   -----Note-----
   
   In the first test case, the screen resolution is $8 \times 8$, and the upper left pixel is a dead pixel. Here you can see one of two possible layouts of the maximal window. [Image]
+  -/
 
 vc-preamble: |-
 
@@ -62,23 +64,23 @@ vc-theorems: |-
       max_window_size n n (n/2) (n/2) = max_window_size n n (n/2) (n/2) :=
     sorry
   
-  /--
+  /-
   info: 56
   -/
-  #guard_msgs in
-  #eval max_window_size 8 8 0 0
+  -- #guard_msgs in
+  -- #eval max_window_size 8 8 0 0
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval max_window_size 1 10 0 3
+  -- #guard_msgs in
+  -- #eval max_window_size 1 10 0 3
   
-  /--
+  /-
   info: 442
   -/
-  #guard_msgs in
-  #eval max_window_size 17 31 10 4
+  -- #guard_msgs in
+  -- #eval max_window_size 17 31 10 4
 
 vc-postamble: |-
   -- Apps difficulty: interview

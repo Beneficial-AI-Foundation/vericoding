@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Motu wants to learn Cricket from a coach, but firstly coach wants to test his IQ level, so he gave Motu $1$ $Red$ $ball$ and $1$ $Black$ $ball$ , and asked him to buy other $x – 1$ red balls and other $y – 1$ black balls from the market. But he put some conditions on buying balls, that if he has $R$ red and $B$ black balls then he can either buy $B$ red balls or $R$ black balls in one operation. He can perform this operation as many times as he want. But as Motu is not so good in solving problems so he needs your help. So you have to tell him whether his coach’s task possible or not.
   
   -----Input:-----
@@ -20,6 +21,7 @@ vc-description: |-
   -----Sample Output:-----
   YES
   YES
+  -/
 
 vc-preamble: |-
 
@@ -49,23 +51,23 @@ vc-theorems: |-
   theorem can_complete_task_same_number (n : Nat) (h : n > 0) :
       can_complete_task n n = (if n = 1 then "YES" else "NO") := sorry
   
-  /--
+  /-
   info: 'YES'
   -/
-  #guard_msgs in
-  #eval can_complete_task 1 2
+  -- #guard_msgs in
+  -- #eval can_complete_task 1 2
   
-  /--
+  /-
   info: 'YES'
   -/
-  #guard_msgs in
-  #eval can_complete_task 2 3
+  -- #guard_msgs in
+  -- #eval can_complete_task 2 3
   
-  /--
+  /-
   info: 'NO'
   -/
-  #guard_msgs in
-  #eval can_complete_task 4 6
+  -- #guard_msgs in
+  -- #eval can_complete_task 4 6
 
 vc-postamble: |-
   -- Apps difficulty: interview

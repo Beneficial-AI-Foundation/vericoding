@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    Mr.Nam has `n` candies, he wants to put one candy in each cell of a table-box. The table-box has `r` rows and `c` columns.
   
@@ -83,6 +84,7 @@ vc-description: |-
    - `[output]` an integer array
   
     Array of 3 elements: a label, a row and a column.
+  -/
 
 vc-preamble: |-
 
@@ -121,23 +123,23 @@ vc-theorems: |-
     n ≤ r * c →
     (get_candy_position n r c n)[0]! = 1 := by sorry
   
-  /--
+  /-
   info: [1, 0, 1]
   -/
-  #guard_msgs in
-  #eval get_candy_position 6 2 2 3
+  -- #guard_msgs in
+  -- #eval get_candy_position 6 2 2 3
   
-  /--
+  /-
   info: [2, 1, 1]
   -/
-  #guard_msgs in
-  #eval get_candy_position 6 2 2 5
+  -- #guard_msgs in
+  -- #eval get_candy_position 6 2 2 5
   
-  /--
+  /-
   info: [-1, -1, -1]
   -/
-  #guard_msgs in
-  #eval get_candy_position 6 2 2 7
+  -- #guard_msgs in
+  -- #eval get_candy_position 6 2 2 7
 
 vc-postamble: |-
   -- Apps difficulty: introductory

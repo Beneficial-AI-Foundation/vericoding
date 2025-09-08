@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Task
   ======
   
@@ -45,6 +46,7 @@ vc-description: |-
   * Please be wordy and post your likes/dislikes in the discourse area.
   * If this kata is a duplicate or uses incorrect style, this is not an issue, this is a suggestion.
   * Please don't edit this kata just to change the estimated rank. Thank you!
+  -/
 
 vc-preamble: |-
 
@@ -68,23 +70,23 @@ vc-theorems: |-
     interpreter tape = "\u0000" :=
   sorry
   
-  /--
+  /-
   info: '\x00'
   -/
-  #guard_msgs in
-  #eval interpreter "\\h*&"
+  -- #guard_msgs in
+  -- #eval interpreter "\\h*&"
   
-  /--
+  /-
   info: '\x00'
   -/
-  #guard_msgs in
-  #eval interpreter "+-*&"
+  -- #guard_msgs in
+  -- #eval interpreter "+-*&"
   
-  /--
+  /-
   info: '\x01'
   -/
-  #guard_msgs in
-  #eval interpreter "+*&"
+  -- #guard_msgs in
+  -- #eval interpreter "+*&"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

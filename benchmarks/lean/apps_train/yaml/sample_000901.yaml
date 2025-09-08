@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Mohit(Ex GenSec ) is the most active member of the roasting club who loves giving tasks to other members. One day he observed that none of the members were paying attention to the online classes, so he decided to have some fun and overcome the boring lectures. He wrote N numbers on the virtual board (where the first number is 1, the last one is N and the ith number being i).
   Then he asked M questions to every other member of the club. In each question, a number K was given by Mohit and the members had to give a single integer as an answer which will be the sum of all numbers present on the whiteboard.
   There are some conditions that every member has to follow while answering.
@@ -28,6 +29,7 @@ vc-description: |-
   22  
   20
   20
+  -/
 
 vc-preamble: |-
 
@@ -76,17 +78,17 @@ vc-theorems: |-
     (∀ x ∈ result, x > 0) :=
   sorry
   
-  /--
+  /-
   info: [17, 22, 20, 20]
   -/
-  #guard_msgs in
-  #eval solve_roasting_club 5 4 [7, 12, 10, 1]
+  -- #guard_msgs in
+  -- #eval solve_roasting_club 5 4 [7, 12, 10, 1]
   
-  /--
+  /-
   info: [7, 7]
   -/
-  #guard_msgs in
-  #eval solve_roasting_club 3 2 [4, 2]
+  -- #guard_msgs in
+  -- #eval solve_roasting_club 3 2 [4, 2]
 
 vc-postamble: |-
   -- Apps difficulty: interview

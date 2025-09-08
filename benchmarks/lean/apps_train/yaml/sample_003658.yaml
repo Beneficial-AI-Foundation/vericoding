@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ```if-not:sql
   Implement a function that receives two IPv4 addresses, and returns the number of addresses between them (including the first one, excluding the last one).
   ```
@@ -41,6 +42,7 @@ vc-description: |-
   ips_between("10.0.0.0", "10.0.1.0")   ==  256 
   ips_between("20.0.0.10", "20.0.1.0")  ==  246
   ```
+  -/
 
 vc-preamble: |-
 
@@ -64,23 +66,23 @@ vc-theorems: |-
     (h : ipsBetween ip1 ip2 > 0) : 
     ipsBetween ip2 ip1 = -(ipsBetween ip1 ip2) := by sorry
   
-  /--
+  /-
   info: 50
   -/
-  #guard_msgs in
-  #eval ips_between "10.0.0.0" "10.0.0.50"
+  -- #guard_msgs in
+  -- #eval ips_between "10.0.0.0" "10.0.0.50"
   
-  /--
+  /-
   info: 246
   -/
-  #guard_msgs in
-  #eval ips_between "20.0.0.10" "20.0.1.0"
+  -- #guard_msgs in
+  -- #eval ips_between "20.0.0.10" "20.0.1.0"
   
-  /--
+  /-
   info: 256
   -/
-  #guard_msgs in
-  #eval ips_between "160.0.0.0" "160.0.1.0"
+  -- #guard_msgs in
+  -- #eval ips_between "160.0.0.0" "160.0.1.0"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You will receive an uncertain amount of integers in a certain order ```k1, k2, ..., kn```.
   
   You form a new number of n digits in the following way:
@@ -39,6 +40,7 @@ vc-description: |-
   Enjoy it!!
   
   You will never receive the number 0 and all the numbers will be in valid format.
+  -/
 
 vc-preamble: |-
   def proc_seq : List Nat → List Nat 
@@ -74,23 +76,23 @@ vc-theorems: |-
     (result.length = 4 → 
       result[1]! ≤ result[2]! ∧ result[1]! ≤ result[3]!) := sorry
   
-  /--
+  /-
   info: [8, 218, 379, 2388]
   -/
-  #guard_msgs in
-  #eval proc_seq 23 17 89
+  -- #guard_msgs in
+  -- #eval proc_seq 23 17 89
   
-  /--
+  /-
   info: [1, 2222]
   -/
-  #guard_msgs in
-  #eval proc_seq 22 22 22 22
+  -- #guard_msgs in
+  -- #eval proc_seq 22 22 22 22
   
-  /--
+  /-
   info: [4, 218, 358, 1152]
   -/
-  #guard_msgs in
-  #eval proc_seq 230 15 8
+  -- #guard_msgs in
+  -- #eval proc_seq 230 15 8
 
 vc-postamble: |-
   -- Apps difficulty: introductory

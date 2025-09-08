@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The country of Siruseri has A∗B$A*B$ districts. You want to create A$A$ states from these districts, such that each state has exactly B$B$ districts, and each district is part of exactly one state. You don't care about the geographical location of the districts. You can pick any B$B$ districts and make it into a state.
   There are only two parties contesting in the coming elections: P1$P_1$ and P2$P_2$. You know the number of votes that each party receives in each district. In the i-th district, P1$P_1$ gets ci$c_i$ votes and P2$P_2$ gets di$d_i$ votes. You are guaranteed that all these 2∗A∗B$2*A*B$ integers (the number of votes received by each party in the districts) are distinct. Also, both A$A$ and B$B$ are odd. 
   Suppose you have chosen which districts belong to which states, then, to find out who wins any particular state, they follow a weird rule: Suppose the number of votes that P1$P_1$ gets in the B$B$ districts of a particular state are x1,x2,…,xB$x_1, x_2, \ldots, x_B$, and the number of votes that P2$P_2$ gets in the B$B$ districts of this state are y1,y2,…,yB$y_1, y_2, \ldots, y_B$. Then among all these 2∗B$2*B$ numbers, the largest number is chosen (note that we are guaranteed of an unique largest number). If that number is some xi$x_i$, then P1$P_1$ wins this state. If the largest number is some yj$y_j$, then P2$P_2$ wins this state.
@@ -46,6 +47,7 @@ vc-description: |-
   Similarly, suppose we make the second state with the 2nd, 4th and 8th districts, the votes in them would be {14, 13, 4, 9, 1, 8}. The max among these is 14, and that belongs to P1$P_1$. Hence P1$P_1$ would win this state. 
   The remaining three districts: 1st, 6th and 9th districts form the third state. The votes in them would be {7, 2, 5, 6, 17, 10}. The max among these is 17, and that belongs to P1$P_1$. Hence P1$P_1$ would win this state. 
   In this situation, P1$P_1$ wins three states. You obviously cannot do any better. Hence the answer is 3.
+  -/
 
 vc-preamble: |-
 
@@ -83,23 +85,23 @@ vc-theorems: |-
     max_states_won A B (List.replicate (A*B) 0) (List.replicate (A*B) 0) = 0 :=
   sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval max_states_won 1 3 [4, 2, 9] [5, 6, 7]
+  -- #guard_msgs in
+  -- #eval max_states_won 1 3 [4, 2, 9] [5, 6, 7]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval max_states_won 1 3 [4, 2, 9] [5, 10, 7]
+  -- #guard_msgs in
+  -- #eval max_states_won 1 3 [4, 2, 9] [5, 10, 7]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval max_states_won 3 3 [7, 14, 11, 4, 15, 5, 20, 1, 17] [2, 13, 16, 9, 19, 6, 12, 8, 10]
+  -- #guard_msgs in
+  -- #eval max_states_won 3 3 [7, 14, 11, 4, 15, 5, 20, 1, 17] [2, 13, 16, 9, 19, 6, 12, 8, 10]
 
 vc-postamble: |-
   -- Apps difficulty: interview

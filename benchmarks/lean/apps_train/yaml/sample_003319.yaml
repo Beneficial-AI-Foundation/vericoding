@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Overview
   Resistors are electrical components marked with colorful stripes/bands to indicate both their resistance value in ohms and how tight a tolerance that value has. While you could always get a tattoo like Jimmie Rodgers to help you remember the resistor color codes, in the meantime, you can write a function that will take a string containing a resistor's band colors and return a string identifying the resistor's ohms and tolerance values.
   
@@ -39,6 +40,7 @@ vc-description: |-
   "red black green gold"             "2M ohms, 5%"
   ```
   Have fun! And if you enjoy this kata, check out the sequel: Resistor Color Codes, Part 2
+  -/
 
 vc-preamble: |-
   def COLOR_MAP : List (String × Nat) := [
@@ -85,23 +87,23 @@ vc-theorems: |-
     value = expected :=
   sorry
   
-  /--
+  /-
   info: '47 ohms, 20%'
   -/
-  #guard_msgs in
-  #eval decode_resistor_colors "yellow violet black"
+  -- #guard_msgs in
+  -- #eval decode_resistor_colors "yellow violet black"
   
-  /--
+  /-
   info: '4.7k ohms, 5%'
   -/
-  #guard_msgs in
-  #eval decode_resistor_colors "yellow violet red gold"
+  -- #guard_msgs in
+  -- #eval decode_resistor_colors "yellow violet red gold"
   
-  /--
+  /-
   info: '1M ohms, 10%'
   -/
-  #guard_msgs in
-  #eval decode_resistor_colors "brown black green silver"
+  -- #guard_msgs in
+  -- #eval decode_resistor_colors "brown black green silver"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

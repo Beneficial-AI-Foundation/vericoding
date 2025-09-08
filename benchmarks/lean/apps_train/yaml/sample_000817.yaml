@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef and his girlfriend are going to have a promenade. They are walking along the straight road which consists of segments placed one by one. Before walking Chef and his girlfriend stay at the beginning of the first segment, they want to achieve the end of the last segment. 
   There are few problems: 
   
@@ -39,6 +40,7 @@ vc-description: |-
   If we choose velocity 6, on the first step we have 6 >= 6 everything is OK, then we should decrease the velocity to 5 and on the 2nd segment we'll receive 5 >= 5, again OK, and so on. 
   Example case 2. 
   If we choose velocity 4, the promanade will be ruined on the 2nd step (we sould decrease our velocity, so the maximal possible will be 3 which is less than 4).
+  -/
 
 vc-preamble: |-
   def find_min_velocity (n : Nat) (shops : List Nat) : Nat := sorry
@@ -72,23 +74,23 @@ vc-theorems: |-
     (h : shops.length > 0) :
     find_min_velocity n shops = max_list (enumerate_add shops) := sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval find_min_velocity 5 [6, 5, 4, 3, 2]
+  -- #guard_msgs in
+  -- #eval find_min_velocity 5 [6, 5, 4, 3, 2]
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval find_min_velocity 5 [3, 4, 3, 1, 1]
+  -- #guard_msgs in
+  -- #eval find_min_velocity 5 [3, 4, 3, 1, 1]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval find_min_velocity 3 [4, 2, 1]
+  -- #guard_msgs in
+  -- #eval find_min_velocity 3 [4, 2, 1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

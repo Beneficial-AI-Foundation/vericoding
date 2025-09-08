@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a graph consisting of $n$ vertices and $m$ edges. It is not guaranteed that the given graph is connected. Some edges are already directed and you can't change their direction. Other edges are undirected and you have to choose some direction for all these edges.
   
   You have to direct undirected edges in such a way that the resulting graph is directed and acyclic (i.e. the graph with all edges directed and having no directed cycles). Note that you have to direct all undirected edges.
@@ -69,6 +70,7 @@ vc-description: |-
   Explanation of the third test case of the example:
   
   [Image]
+  -/
 
 vc-preamble: |-
 
@@ -103,17 +105,17 @@ vc-theorems: |-
     lines.head! = "YES" →
     lines.length = m + 1 := sorry
   
-  /--
+  /-
   info: 'YES\n1 3'
   -/
-  #guard_msgs in
-  #eval solve_graph_direction 3 1 [[0, 1, 3]]
+  -- #guard_msgs in
+  -- #eval solve_graph_direction 3 1 [[0, 1, 3]]
   
-  /--
+  /-
   info: 'NO'
   -/
-  #guard_msgs in
-  #eval solve_graph_direction 4 5 [[1, 4, 1], [1, 1, 3], [0, 1, 2], [1, 2, 4], [1, 3, 2]]
+  -- #guard_msgs in
+  -- #eval solve_graph_direction 4 5 [[1, 4, 1], [1, 1, 3], [0, 1, 2], [1, 2, 4], [1, 3, 2]]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

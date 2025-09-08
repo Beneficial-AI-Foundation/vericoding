@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    Initially a number `1` is written on a board. It is possible to do the following operations with it:
   ```
@@ -49,6 +50,7 @@ vc-description: |-
    - `[output]` a boolean value
   
     `true` if N can be obtained using given operations, `false` otherwise.
+  -/
 
 vc-preamble: |-
   def number_increasing (n : Nat) : Bool := sorry
@@ -82,35 +84,35 @@ vc-theorems: |-
     (h₂ : n = 3^(bitLength (bitLength (n - 1)))) :
     number_increasing n = true := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval number_increasing 1
+  -- #guard_msgs in
+  -- #eval number_increasing 1
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval number_increasing 2
+  -- #guard_msgs in
+  -- #eval number_increasing 2
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval number_increasing 6
+  -- #guard_msgs in
+  -- #eval number_increasing 6
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval number_increasing 18
+  -- #guard_msgs in
+  -- #eval number_increasing 18
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval number_increasing 32
+  -- #guard_msgs in
+  -- #eval number_increasing 32
 
 vc-postamble: |-
   -- Apps difficulty: introductory

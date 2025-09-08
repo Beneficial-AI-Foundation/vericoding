@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given two numbers (m and n) :
   
   - convert all numbers from m to n to binary
@@ -18,6 +19,7 @@ vc-description: |-
   So BinaryPyramid ( 1 , 4 ) should return "1111010" 
   
   range should be ascending in order
+  -/
 
 vc-preamble: |-
 
@@ -50,23 +52,23 @@ vc-theorems: |-
   
   theorem binary_pyramid_one : binary_pyramid 1 1 = "1" := sorry
   
-  /--
+  /-
   info: '1111010'
   -/
-  #guard_msgs in
-  #eval binary_pyramid 1 4
+  -- #guard_msgs in
+  -- #eval binary_pyramid 1 4
   
-  /--
+  /-
   info: '101001101'
   -/
-  #guard_msgs in
-  #eval binary_pyramid 1 6
+  -- #guard_msgs in
+  -- #eval binary_pyramid 1 6
   
-  /--
+  /-
   info: '0'
   -/
-  #guard_msgs in
-  #eval binary_pyramid 0 0
+  -- #guard_msgs in
+  -- #eval binary_pyramid 0 0
 
 vc-postamble: |-
   -- Apps difficulty: introductory

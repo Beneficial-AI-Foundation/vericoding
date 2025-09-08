@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function 
   ```javascript 
   tripledouble(num1,num2)
@@ -23,6 +24,7 @@ vc-description: |-
   
   triple_double(666789, 12345667) == 1
   ```
+  -/
 
 vc-preamble: |-
 
@@ -52,23 +54,23 @@ vc-theorems: |-
     triple_double n1 n2 = 0 :=
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval triple_double 451999277 41177722899
+  -- #guard_msgs in
+  -- #eval triple_double 451999277 41177722899
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval triple_double 1222345 12345
+  -- #guard_msgs in
+  -- #eval triple_double 1222345 12345
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval triple_double 666789 12345667
+  -- #guard_msgs in
+  -- #eval triple_double 666789 12345667
 
 vc-postamble: |-
   -- Apps difficulty: introductory

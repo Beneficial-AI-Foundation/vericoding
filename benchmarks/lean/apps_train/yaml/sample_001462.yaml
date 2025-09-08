@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Consider a number X on which K Mag-Inc operations are to be performed. In a Mag-Inc operation, the number X undergoes an increment of A/B times of X where A and B are two integers.
   
   There is a numerator and a denominator array of size K which contain the ith values of A and B. After K Mag-Inc operations, the number X turns to M.
@@ -52,6 +53,7 @@ vc-description: |-
   of 100 and we know that 100 is 50% of 200.
   
   Hence, we print 50.
+  -/
 
 vc-preamble: |-
 

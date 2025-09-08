@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given two numbers: 'left' and 'right' (1 <= 'left' <= 'right' <= 200000000000000)
   return sum of all '1' occurencies in binary representations of numbers between 'left' and 'right' (including both)
   
@@ -12,6 +13,7 @@ vc-description: |-
   So finally result equals 8.
   ```
   WARNING: Segment may contain billion elements, to pass this kata, your solution cannot iterate through all numbers in the segment!
+  -/
 
 vc-preamble: |-
   def countOnes (a b : Nat) : Nat := sorry
@@ -33,23 +35,23 @@ vc-definitions: |-
   sorry
 
 vc-theorems: |-
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval countOnes 4 7
+  -- #guard_msgs in
+  -- #eval countOnes 4 7
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval countOnes 5 5
+  -- #guard_msgs in
+  -- #eval countOnes 5 5
   
-  /--
+  /-
   info: 14846928141
   -/
-  #guard_msgs in
-  #eval countOnes 1 1000000000
+  -- #guard_msgs in
+  -- #eval countOnes 1 1000000000
 
 vc-postamble: |-
   -- Apps difficulty: interview

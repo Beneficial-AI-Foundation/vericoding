@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a sentence that consists of some words separated by a single space, and a searchWord.
   You have to check if searchWord is a prefix of any word in sentence.
   Return the index of the word in sentence where searchWord is a prefix of this word (1-indexed).
@@ -34,6 +35,7 @@ vc-description: |-
   1 <= searchWord.length <= 10
   sentence consists of lowercase English letters and spaces.
   searchWord consists of lowercase English letters.
+  -/
 
 vc-preamble: |-
   def is_prefix_of_word (sentence search : String) : Int :=
@@ -55,23 +57,23 @@ vc-theorems: |-
     is_prefix_of_word sentence "" = 1 :=
     sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval is_prefix_of_word "i love eating burger" "burg"
+  -- #guard_msgs in
+  -- #eval is_prefix_of_word "i love eating burger" "burg"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval is_prefix_of_word "this problem is an easy problem" "pro"
+  -- #guard_msgs in
+  -- #eval is_prefix_of_word "this problem is an easy problem" "pro"
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval is_prefix_of_word "i am tired" "you"
+  -- #guard_msgs in
+  -- #eval is_prefix_of_word "i am tired" "you"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

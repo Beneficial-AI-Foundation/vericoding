@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef likes all arrays equally. But he likes some arrays more equally than others. In particular, he loves Rainbow Arrays. 
   An array is Rainbow if it has the following structure:
   - First a1 elements equal 1. 
@@ -54,6 +55,7 @@ vc-description: |-
   The first example satisfies all the conditions. 
   The second example has 1 element of value 1 at the beginning and 2 elements of value 1 at the end. 
   The third one has no elements with value 7 after elements with value 6.
+  -/
 
 vc-preamble: |-
 
@@ -88,23 +90,23 @@ vc-theorems: |-
     let new_val := if first < 7 then first + 1 else first - 1
     is_rainbow_array (arr ++ [new_val]) = "no" := sorry
   
-  /--
+  /-
   info: 'yes'
   -/
-  #guard_msgs in
-  #eval is_rainbow_array [1, 2, 3, 4, 4, 5, 6, 6, 6, 7, 6, 6, 6, 5, 4, 4, 3, 2, 1]
+  -- #guard_msgs in
+  -- #eval is_rainbow_array [1, 2, 3, 4, 4, 5, 6, 6, 6, 7, 6, 6, 6, 5, 4, 4, 3, 2, 1]
   
-  /--
+  /-
   info: 'no'
   -/
-  #guard_msgs in
-  #eval is_rainbow_array [1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 3, 2, 1, 1]
+  -- #guard_msgs in
+  -- #eval is_rainbow_array [1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 3, 2, 1, 1]
   
-  /--
+  /-
   info: 'no'
   -/
-  #guard_msgs in
-  #eval is_rainbow_array [1, 2, 3, 4, 5, 6, 8, 6, 5, 4, 3, 2, 1]
+  -- #guard_msgs in
+  -- #eval is_rainbow_array [1, 2, 3, 4, 5, 6, 8, 6, 5, 4, 3, 2, 1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The Collatz conjecture (also known as 3n+1 conjecture) is a conjecture that applying the following algorithm to any number we will always eventually reach one:
   
   ```
@@ -29,6 +30,7 @@ vc-description: |-
   
   #References
   - Collatz conjecture wikipedia page: https://en.wikipedia.org/wiki/Collatz_conjecture
+  -/
 
 vc-preamble: |-
 
@@ -52,29 +54,29 @@ vc-theorems: |-
   theorem hotpo_even_numbers (n : Nat) (h : n > 0) (heven : n % 2 = 0) :
     hotpo n = hotpo (n / 2) + 1 := sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval hotpo 1
+  -- #guard_msgs in
+  -- #eval hotpo 1
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval hotpo 5
+  -- #guard_msgs in
+  -- #eval hotpo 5
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval hotpo 6
+  -- #guard_msgs in
+  -- #eval hotpo 6
   
-  /--
+  /-
   info: 15
   -/
-  #guard_msgs in
-  #eval hotpo 23
+  -- #guard_msgs in
+  -- #eval hotpo 23
 
 vc-postamble: |-
   -- Apps difficulty: introductory

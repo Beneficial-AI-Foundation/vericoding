@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Edo has got a collection of n refrigerator magnets!
   
   He decided to buy a refrigerator and hang the magnets on the door. The shop can make the refrigerator with any size of the door that meets the following restrictions: the refrigerator door must be rectangle, and both the length and the width of the door must be positive integers.
@@ -57,6 +58,7 @@ vc-description: |-
   In the second test sample it doesn't matter which magnet to remove, the answer will not change — we need a fridge with door width 8 and door height 8.
   
   In the third sample you cannot remove anything as k = 0.
+  -/
 
 vc-preamble: |-
 
@@ -112,23 +114,23 @@ vc-theorems: |-
     solve_magnets n k magnets = 64 :=
   sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve_magnets 3 1 [(1, 1, 2, 2), (2, 2, 3, 3), (3, 3, 4, 4)]
+  -- #guard_msgs in
+  -- #eval solve_magnets 3 1 [(1, 1, 2, 2), (2, 2, 3, 3), (3, 3, 4, 4)]
   
-  /--
+  /-
   info: 64
   -/
-  #guard_msgs in
-  #eval solve_magnets 4 1 [(1, 1, 2, 2), (1, 9, 2, 10), (9, 9, 10, 10), (9, 1, 10, 2)]
+  -- #guard_msgs in
+  -- #eval solve_magnets 4 1 [(1, 1, 2, 2), (1, 9, 2, 10), (9, 9, 10, 10), (9, 1, 10, 2)]
   
-  /--
+  /-
   info: 249999999000000001
   -/
-  #guard_msgs in
-  #eval solve_magnets 3 0 [(1, 1, 2, 2), (1, 1, 1000000000, 1000000000), (1, 3, 8, 12)]
+  -- #guard_msgs in
+  -- #eval solve_magnets 3 0 [(1, 1, 2, 2), (1, 1, 1000000000, 1000000000), (1, 3, 8, 12)]
 
 vc-postamble: |-
   -- Apps difficulty: competition

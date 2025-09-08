@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Perhaps it would be convenient to solve first ```Probabilities for Sums in Rolling Cubic Dice``` see at: http://www.codewars.com/kata/probabilities-for-sums-in-rolling-cubic-dice
   
   Suppose that we roll dice that we never used, a tetrahedral die that has only 4 sides(values 1 to 4), or perhaps better the dodecahedral one with 12 sides and 12 values (from 1 to 12), or look! an icosahedral die with 20 sides and 20 values (from 1 to 20).
@@ -40,6 +41,7 @@ vc-description: |-
   You will find more examples in the Example Test Cases.
   
   Assumption: If the die has n sides, the values of it are from ```1``` to ```n```
+  -/
 
 vc-preamble: |-
 
@@ -78,23 +80,23 @@ vc-theorems: |-
     (∀ x, x ∈ result → Prod.snd x = 1) ∧
     (List.map Prod.fst result = List.map (· + 1) (List.range sides)) := sorry
   
-  /--
+  /-
   info: [[3, 1], [4, 3], [5, 6], [6, 10], [7, 12], [8, 12], [9, 10], [10, 6], [11, 3], [12, 1]]
   -/
-  #guard_msgs in
-  #eval reg_sum_hits 3 4
+  -- #guard_msgs in
+  -- #eval reg_sum_hits 3 4
   
-  /--
+  /-
   info: [[3, 1], [4, 3], [5, 6], [6, 10], [7, 15], [8, 21], [9, 25], [10, 27], [11, 27], [12, 25], [13, 21], [14, 15], [15, 10], [16, 6], [17, 3], [18, 1]]
   -/
-  #guard_msgs in
-  #eval reg_sum_hits 3 6
+  -- #guard_msgs in
+  -- #eval reg_sum_hits 3 6
   
-  /--
+  /-
   info: [[4, 1], [5, 4], [6, 10], [7, 20], [8, 31], [9, 40], [10, 44], [11, 40], [12, 31], [13, 20], [14, 10], [15, 4], [16, 1]]
   -/
-  #guard_msgs in
-  #eval reg_sum_hits 4 4
+  -- #guard_msgs in
+  -- #eval reg_sum_hits 4 4
 
 vc-postamble: |-
   -- Apps difficulty: introductory

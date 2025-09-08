@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your task is to write function which takes string and list of delimiters as an input and returns list of strings/characters after splitting given string.
   
   Example:
@@ -10,6 +11,7 @@ vc-description: |-
   List of delimiters is optional and can be empty, so take that into account.
   
   Important note: Result cannot contain empty string.
+  -/
 
 vc-preamble: |-
   def multiple_split (s : String) (delims : List String) : List String :=
@@ -53,23 +55,23 @@ vc-theorems: |-
     : multiple_split s [delim] = (s.split (· == '.')).filter (fun x => x ≠ "") -- placeholder split
     := by sorry
   
-  /--
+  /-
   info: ['Hi', 'everybody']
   -/
-  #guard_msgs in
-  #eval multiple_split "Hi everybody!" [" ", "!"]
+  -- #guard_msgs in
+  -- #eval multiple_split "Hi everybody!" [" ", "!"]
   
-  /--
+  /-
   info: ['1', '2', '3']
   -/
-  #guard_msgs in
-  #eval multiple_split "1+2-3" ["+", "-"]
+  -- #guard_msgs in
+  -- #eval multiple_split "1+2-3" ["+", "-"]
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval multiple_split "" []
+  -- #guard_msgs in
+  -- #eval multiple_split "" []
 
 vc-postamble: |-
   -- Apps difficulty: introductory

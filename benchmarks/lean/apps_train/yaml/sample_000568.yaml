@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a binary string $S$ consisting of only 1’s and 0’s where 1 represents a Square and 0 represents a Circle. The diameter of the circle and the side of the square must be any integer (obviously > 0) . You will have to perfectly inscribe (as shown in the example below) the respective geometric figure at $S$$i+1$ inside of $S$$i$ where $i$ $\epsilon$ $[0,N-2]$, if it is possible. Note that, it will not be possible to inscribe if the dimension of the geometric figure you are perfectly inscribing is not an integer and you will discard the rest of the string. Find the maximum number of circles we can inscribe in a square according to the given string.  
   For a given binary string there can be only one geometric figure and this figure is concentric.  
   For example : the string 1100 can be represented as the figure below, the first two squares have the same side length and the next two circles have the same diameter.  
@@ -43,6 +44,7 @@ vc-description: |-
   So, the answer is 0.
   
   In the third case 1001000, we can take the first square of size 10, then inscribe two circles of diameter 5, then we cannot inscribe another square in this since, it will not be of any possible integer dimension and we discard the rest of the string.
+  -/
 
 vc-preamble: |-
 
@@ -84,23 +86,23 @@ vc-theorems: |-
     count_inscribed_circles (String.mk ((List.replicate n '1') ++ (List.replicate n '0'))) = n :=
   sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_inscribed_circles "1110"
+  -- #guard_msgs in
+  -- #eval count_inscribed_circles "1110"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_inscribed_circles "0010"
+  -- #guard_msgs in
+  -- #eval count_inscribed_circles "0010"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_inscribed_circles "1001000"
+  -- #guard_msgs in
+  -- #eval count_inscribed_circles "1001000"
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Problem Description
   
   Let's imagine a function `F(n)`, which is defined over the integers
@@ -51,6 +52,7 @@ vc-description: |-
   This problem was designed as a hybrid of [Project Euler #209: Circular Logic](https://projecteuler.net/problem=209) and [Project Euler #164: Numbers for which no three consecutive digits have a sum greater than a given value](https://projecteuler.net/problem=164).
   
   If you enjoyed this Kata, please also have a look at [my other Katas](https://www.codewars.com/users/Bubbler/authored)!
+  -/
 
 vc-preamble: |-
 
@@ -79,53 +81,53 @@ vc-theorems: |-
     circular_limited_sums n1 max_fn < circular_limited_sums n2 max_fn :=
   sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval circular_limited_sums 1 1
+  -- #guard_msgs in
+  -- #eval circular_limited_sums 1 1
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval circular_limited_sums 2 1
+  -- #guard_msgs in
+  -- #eval circular_limited_sums 2 1
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval circular_limited_sums 3 1
+  -- #guard_msgs in
+  -- #eval circular_limited_sums 3 1
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval circular_limited_sums 4 1
+  -- #guard_msgs in
+  -- #eval circular_limited_sums 4 1
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval circular_limited_sums 1 2
+  -- #guard_msgs in
+  -- #eval circular_limited_sums 1 2
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval circular_limited_sums 2 2
+  -- #guard_msgs in
+  -- #eval circular_limited_sums 2 2
   
-  /--
+  /-
   info: 11
   -/
-  #guard_msgs in
-  #eval circular_limited_sums 3 2
+  -- #guard_msgs in
+  -- #eval circular_limited_sums 3 2
   
-  /--
+  /-
   info: 26
   -/
-  #guard_msgs in
-  #eval circular_limited_sums 4 2
+  -- #guard_msgs in
+  -- #eval circular_limited_sums 4 2
 
 vc-postamble: |-
   -- Apps difficulty: interview

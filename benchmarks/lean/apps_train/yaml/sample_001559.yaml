@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   I started this as a joke among friends, telling that converting numbers to other integer bases is for n00bs, while an actual coder at least converts numbers to more complex bases like [pi (or π or however you wish to spell it in your language)](http://en.wikipedia.org/wiki/Pi), so they dared me proving I was better.
   
   And I did it in few hours, discovering that what I started as a joke actually has [some math ground and application (particularly the conversion to base pi, it seems)](http://en.wikipedia.org/wiki/Non-integer_representation).
@@ -19,6 +20,7 @@ vc-description: |-
   Finally, you may assume that decimals if provided will always be >= 0 and that no test base will be smaller than 2 (because, you know, converting to base 1 is pretty lame) or greater than 36; as usual, for digits greater than 9 you can use uppercase alphabet letter, so your base of numeration is going to be: '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'.
   
   That is my first 3-languages-kata, so I count on you all to give me extensive feedback, no matter how harsh it may sound, so to improve myself even further :)
+  -/
 
 vc-preamble: |-
 
@@ -60,23 +62,23 @@ vc-theorems: |-
     (h : n ≤ 1000) :
     ∀ c ∈ (converter (intToFloat n) 0 2).data, c = '0' ∨ c = '1' := sorry
   
-  /--
+  /-
   info: '103'
   -/
-  #guard_msgs in
-  #eval converter 13
+  -- #guard_msgs in
+  -- #eval converter 13
   
-  /--
+  /-
   info: '103.010'
   -/
-  #guard_msgs in
-  #eval converter 13 3
+  -- #guard_msgs in
+  -- #eval converter 13 3
   
-  /--
+  /-
   info: '-1101'
   -/
-  #guard_msgs in
-  #eval converter -13 0 2
+  -- #guard_msgs in
+  -- #eval converter -13 0 2
 
 vc-postamble: |-
   -- Apps difficulty: interview

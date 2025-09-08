@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Ahoy Matey!
   
   Welcome to the seven seas.
@@ -24,6 +25,7 @@ vc-description: |-
   
   Also, check out the new Pirates!! Kata:
   https://www.codewars.com/kata/57e2d5f473aa6a476b0000fe
+  -/
 
 vc-preamble: |-
   def HashMap.toArray {α β : Type} : HashMap α β → Array (α × β) :=
@@ -58,23 +60,23 @@ vc-theorems: |-
     cannons_ready gunners = "Shiver me timbers!"
     := sorry
   
-  /--
+  /-
   info: 'Shiver me timbers!'
   -/
-  #guard_msgs in
-  #eval cannons_ready {"Joe": "nay", "Johnson": "nay", "Peter": "aye"}
+  -- #guard_msgs in
+  -- #eval cannons_ready {"Joe": "nay", "Johnson": "nay", "Peter": "aye"}
   
-  /--
+  /-
   info: 'Fire!'
   -/
-  #guard_msgs in
-  #eval cannons_ready {"Mike": "aye", "Joe": "aye", "Johnson": "aye", "Peter": "aye"}
+  -- #guard_msgs in
+  -- #eval cannons_ready {"Mike": "aye", "Joe": "aye", "Johnson": "aye", "Peter": "aye"}
   
-  /--
+  /-
   info: 'Shiver me timbers!'
   -/
-  #guard_msgs in
-  #eval cannons_ready {"Joe": "aye", "Steve": "nay"}
+  -- #guard_msgs in
+  -- #eval cannons_ready {"Joe": "aye", "Steve": "nay"}
 
 vc-postamble: |-
   -- Apps difficulty: introductory

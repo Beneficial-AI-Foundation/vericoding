@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given the current exchange rate between the USD and the EUR is 1.1363636 write a function that will accept the Curency type to be returned and a list of the amounts that need to be converted.
   
   Don't forget this is a currency so the result will need to be rounded to the second decimal. 
@@ -21,6 +22,7 @@ vc-description: |-
   = ['96.32€', '563.47€', '1,153.67€', '589.17€', '365.68€']
   
   ```
+  -/
 
 vc-preamble: |-
 
@@ -70,23 +72,23 @@ vc-theorems: |-
     let originalValue := stringToFloat ((originalAmount.replace "$" "").replace "€" "")
     (finalValue - originalValue) < 0.01 := sorry
   
-  /--
+  /-
   info: ['$1.15', '$94.65']
   -/
-  #guard_msgs in
-  #eval solution "USD" [1.01, 83.29]
+  -- #guard_msgs in
+  -- #eval solution "USD" [1.01, 83.29]
   
-  /--
+  /-
   info: ['96.32€', '563.47€']
   -/
-  #guard_msgs in
-  #eval solution "EUR" [109.45, 640.31]
+  -- #guard_msgs in
+  -- #eval solution "EUR" [109.45, 640.31]
   
-  /--
+  /-
   info: ['$0.00', '$0.00', '$0.00']
   -/
-  #guard_msgs in
-  #eval solution "USD" [0, 0, 0]
+  -- #guard_msgs in
+  -- #eval solution "USD" [0, 0, 0]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

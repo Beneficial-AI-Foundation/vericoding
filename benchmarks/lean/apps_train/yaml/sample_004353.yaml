@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    In the Land Of Chess, bishops don't really like each other. In fact, when two bishops happen to stand on the same diagonal, they immediately rush towards the opposite ends of that same diagonal.
   
@@ -29,6 +30,7 @@ vc-description: |-
    - `[output]` a string array
   
       Coordinates of the bishops in lexicographical order after they check the diagonals they stand on.
+  -/
 
 vc-preamble: |-
   def chars := ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
@@ -77,23 +79,23 @@ vc-theorems: |-
       0 ≤ (Char.toNat sq.rank - Char.toNat '1') ∧
       (Char.toNat sq.rank - Char.toNat '1') ≤ 7 := sorry
   
-  /--
+  /-
   info: ['c8', 'h3']
   -/
-  #guard_msgs in
-  #eval bishop_diagonal "d7" "f5"
+  -- #guard_msgs in
+  -- #eval bishop_diagonal "d7" "f5"
   
-  /--
+  /-
   info: ['b5', 'd8']
   -/
-  #guard_msgs in
-  #eval bishop_diagonal "d8" "b5"
+  -- #guard_msgs in
+  -- #eval bishop_diagonal "d8" "b5"
   
-  /--
+  /-
   info: ['a1', 'h8']
   -/
-  #guard_msgs in
-  #eval bishop_diagonal "a1" "h8"
+  -- #guard_msgs in
+  -- #eval bishop_diagonal "a1" "h8"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

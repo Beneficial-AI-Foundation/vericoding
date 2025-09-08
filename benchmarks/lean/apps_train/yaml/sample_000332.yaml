@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a program to find the n-th ugly number.
   
   Ugly numbers are positive numbers whose prime factors only include 2, 3, 5. 
@@ -13,6 +14,7 @@ vc-description: |-
   
          1 is typically treated as an ugly number.
          n does not exceed 1690.
+  -/
 
 vc-preamble: |-
 
@@ -40,23 +42,23 @@ vc-theorems: |-
   
   theorem nth_ugly_one : nth_ugly_number 1 = some 1 := sorry
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval nth_ugly_number 10
+  -- #guard_msgs in
+  -- #eval nth_ugly_number 10
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval nth_ugly_number 1
+  -- #guard_msgs in
+  -- #eval nth_ugly_number 1
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval nth_ugly_number 7
+  -- #guard_msgs in
+  -- #eval nth_ugly_number 7
 
 vc-postamble: |-
   -- Apps difficulty: interview

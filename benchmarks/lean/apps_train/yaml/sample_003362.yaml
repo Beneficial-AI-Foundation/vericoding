@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   For every good kata idea there seem to be quite a few bad ones!
   
   In this kata you need to check the provided 2 dimensional array (x) for good ideas 'good' and bad ideas 'bad'. If there are one or two good ideas, return 'Publish!', if there are more than 2 return 'I smell a series!'. If there are no good ideas, as is often the case, return 'Fail!'.
@@ -6,6 +7,7 @@ vc-description: |-
   The sub arrays may not be the same length.
   
   The solution should be case insensitive (ie good, GOOD and gOOd all count as a good idea). All inputs may not be strings.
+  -/
 
 vc-preamble: |-
 
@@ -35,23 +37,23 @@ vc-theorems: |-
     let totalGood := arr.join.length
     well arr = (if totalGood > 2 then "I smell a series!" else "Publish!") := sorry
   
-  /--
+  /-
   info: 'Fail!'
   -/
-  #guard_msgs in
-  #eval well [["bad", "bAd", "bad"], ["bad", "bAd", "bad"], ["bad", "bAd", "bad"]]
+  -- #guard_msgs in
+  -- #eval well [["bad", "bAd", "bad"], ["bad", "bAd", "bad"], ["bad", "bAd", "bad"]]
   
-  /--
+  /-
   info: 'Publish!'
   -/
-  #guard_msgs in
-  #eval well [["gOOd", "bad", "BAD", "bad", "bad"], ["bad", "bAd", "bad"], ["GOOD", "bad", "bad", "bAd"]]
+  -- #guard_msgs in
+  -- #eval well [["gOOd", "bad", "BAD", "bad", "bad"], ["bad", "bAd", "bad"], ["GOOD", "bad", "bad", "bAd"]]
   
-  /--
+  /-
   info: 'I smell a series!'
   -/
-  #guard_msgs in
-  #eval well [["gOOd", "bAd", "BAD", "bad", "bad", "GOOD"], ["bad"], ["gOOd", "BAD"]]
+  -- #guard_msgs in
+  -- #eval well [["gOOd", "bAd", "BAD", "bad", "bad", "GOOD"], ["bad"], ["gOOd", "BAD"]]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

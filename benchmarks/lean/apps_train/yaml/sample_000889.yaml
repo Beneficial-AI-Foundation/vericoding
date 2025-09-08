@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Devu has n weird friends. Its his birthday today, so they thought that this is the best occasion for testing their friendship with him. They put up conditions before Devu that they will break the friendship unless he gives them a grand party on their chosen day. Formally, ith friend will break his friendship if he does not receive a grand party on dith day.
   
   Devu despite being as rich as Gatsby, is quite frugal and can give at most one grand party daily. Also, he wants to invite only one person in a party. So he just wonders what is the maximum number of friendships he can save. Please help Devu in this tough task !!
@@ -31,6 +32,7 @@ vc-description: |-
   -----Explanation-----
   Example case 1. Devu can give party to second friend on day 2 and first friend on day 3, so he can save both his friendships.
   Example case 2. Both the friends want a party on day 1, and as the Devu can not afford more than one party a day, so he can save only one of the friendships, so answer is 1.
+  -/
 
 vc-preamble: |-
 
@@ -63,23 +65,23 @@ vc-theorems: |-
     max_friendships (friend_days ++ [new_day]) ≤ max_friendships friend_days + 1 :=
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval max_friendships [3, 2]
+  -- #guard_msgs in
+  -- #eval max_friendships [3, 2]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval max_friendships [1, 1]
+  -- #guard_msgs in
+  -- #eval max_friendships [1, 1]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval max_friendships [4, 4, 5, 5, 5]
+  -- #guard_msgs in
+  -- #eval max_friendships [4, 4, 5, 5, 5]
 
 vc-postamble: |-
   -- Apps difficulty: interview

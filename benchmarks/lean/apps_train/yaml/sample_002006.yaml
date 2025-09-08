@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a sequence a_1, a_2, ..., a_{n} consisting of different integers. It is required to split this sequence into the maximum number of subsequences such that after sorting integers in each of them in increasing order, the total sequence also will be sorted in increasing order.
   
   Sorting integers in a subsequence is a process such that the numbers included in a subsequence are ordered in increasing order, and the numbers which are not included in a subsequence don't change their places.
@@ -52,6 +53,7 @@ vc-description: |-
   After sorting the third subsequence we will get sequence 1 2 3 4 5 6.
   
   Sorting the last subsequence changes nothing.
+  -/
 
 vc-preamble: |-
   def List.sum (xs : List Nat) : Nat := 
@@ -104,29 +106,29 @@ vc-theorems: |-
     ∀ subseq ∈ result.tail, subseq.head! ≥ 1 := by
     sorry
   
-  /--
+  /-
   info: list(range(1, n1 + 1))
   -/
-  #guard_msgs in
-  #eval sorted sum([x[1:] for x in result1[1:]], [])
+  -- #guard_msgs in
+  -- #eval sorted sum([x[1:] for x in result1[1:]], [])
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval len result2[1]
+  -- #guard_msgs in
+  -- #eval len result2[1]
   
-  /--
+  /-
   info: list(range(1, n2 + 1))
   -/
-  #guard_msgs in
-  #eval sorted result2[1][1:]
+  -- #guard_msgs in
+  -- #eval sorted result2[1][1:]
   
-  /--
+  /-
   info: list(range(1, n3 + 1))
   -/
-  #guard_msgs in
-  #eval sorted sum([x[1:] for x in result3[1:]], [])
+  -- #guard_msgs in
+  -- #eval sorted sum([x[1:] for x in result3[1:]], [])
 
 vc-postamble: |-
   -- Apps difficulty: competition

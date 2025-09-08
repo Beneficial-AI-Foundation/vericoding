@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You need count how many valleys you will pass.
   
   Start is always from zero level.
@@ -21,6 +22,7 @@ vc-description: |-
   (level-2)       \/\_/
   ```
   So here we passed one valley
+  -/
 
 vc-preamble: |-
 
@@ -50,23 +52,23 @@ vc-theorems: |-
     (h: ∀ s ∈ path, s = Step.Up) :
     countValleys path = 0 := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval counting_valleys "UFFDDFDUDFUFU"
+  -- #guard_msgs in
+  -- #eval counting_valleys "UFFDDFDUDFUFU"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval counting_valleys "UFFDDFDUDFUFUUFFDDFDUDFUFU"
+  -- #guard_msgs in
+  -- #eval counting_valleys "UFFDDFDUDFUFUUFFDDFDUDFUFU"
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval counting_valleys "DFFFU"
+  -- #guard_msgs in
+  -- #eval counting_valleys "DFFFU"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

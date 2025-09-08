@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your job is to write a function that takes a string and a maximum number of characters per line and then inserts line breaks as necessary so that no line in the resulting string is longer than the specified limit.
   
   If possible, line breaks should not split words. However, if a single word is longer than the limit, it obviously has to be split. In this case, the line break should be placed after the first part of the word (see examples below).
@@ -25,6 +26,7 @@ vc-description: |-
   6. ("areallylongword", 6) -> "areall--ylongw--ord"
   
   **Note:** Sometimes spaces are hard to see in the test results window.
+  -/
 
 vc-preamble: |-
 
@@ -70,23 +72,23 @@ vc-theorems: |-
     let result := word_wrap text limit
     (result.replace "\n" " ").splitOn " " = words := sorry
   
-  /--
+  /-
   info: 'test'
   -/
-  #guard_msgs in
-  #eval word_wrap "test" 7
+  -- #guard_msgs in
+  -- #eval word_wrap "test" 7
   
-  /--
+  /-
   info: 'hello\nworld'
   -/
-  #guard_msgs in
-  #eval word_wrap "hello world" 7
+  -- #guard_msgs in
+  -- #eval word_wrap "hello world" 7
   
-  /--
+  /-
   info: 'areall\nylongw\nord'
   -/
-  #guard_msgs in
-  #eval word_wrap "areallylongword" 6
+  -- #guard_msgs in
+  -- #eval word_wrap "areallylongword" 6
 
 vc-postamble: |-
   -- Apps difficulty: introductory

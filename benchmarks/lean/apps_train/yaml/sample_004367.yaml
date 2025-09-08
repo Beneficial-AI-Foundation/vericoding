@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   #Description
   
   Everybody has probably heard of the animal heads and legs problem from the earlier years at school. It goes:
@@ -32,6 +33,7 @@ vc-description: |-
   You will only be given integers types - however negative values (edge cases) will be given. 
   
   Happy coding!
+  -/
 
 vc-preamble: |-
 
@@ -73,23 +75,23 @@ vc-theorems: |-
     animals heads (2*heads - 1) = none :=
   sorry
   
-  /--
+  /-
   info: (44, 28)
   -/
-  #guard_msgs in
-  #eval animals 72 200
+  -- #guard_msgs in
+  -- #eval animals 72 200
   
-  /--
+  /-
   info: (0, 0)
   -/
-  #guard_msgs in
-  #eval animals 0 0
+  -- #guard_msgs in
+  -- #eval animals 0 0
   
-  /--
+  /-
   info: 'No solutions'
   -/
-  #guard_msgs in
-  #eval animals 25 555
+  -- #guard_msgs in
+  -- #eval animals 25 555
 
 vc-postamble: |-
   -- Apps difficulty: introductory

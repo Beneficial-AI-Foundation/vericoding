@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a simple regex to validate a username. Allowed characters are:
   
   - lowercase letters,
@@ -6,6 +7,7 @@ vc-description: |-
   - underscore
   
   Length should be between 4 and 16 characters (both included).
+  -/
 
 vc-preamble: |-
 
@@ -41,23 +43,23 @@ vc-theorems: |-
     validate_usr "abc" = false ∧
     validate_usr "aaaaaaaaaaaaaaaaa" = false := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval validate_usr "asddsa"
+  -- #guard_msgs in
+  -- #eval validate_usr "asddsa"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval validate_usr "____"
+  -- #guard_msgs in
+  -- #eval validate_usr "____"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval validate_usr "Hass"
+  -- #guard_msgs in
+  -- #eval validate_usr "Hass"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

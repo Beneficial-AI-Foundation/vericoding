@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The Chef has a huge square napkin of size 2n X 2n. He folds the napkin n-3 times. Each time he folds its bottom side over its top side, and then its right side over its left side. After each fold, the side length of the napkin is reduced by half. The Chef continues folding until there remains a 8x8 sheet, lying flat on a table.
   Oh, did I forget to mention that the Chef was cooking a new brown colored curry while folding the napkin. He drops some brown colored gravy onto some cells in the folded 8x8 napkin. When he drops the gravy, it soaks through all the cells below it.
   Now the Chef unfolds the napkin to its original size. There are now many curry stained brown colored cells in the napkin. They form several separate regions, each of which is connected. Could you help the Chef count how many regions of brown cells are there in the napkin?
@@ -53,6 +54,7 @@ vc-description: |-
   
   Case 1 and 2: There are 6 brown regions in the 8x8 napkin. If we unfold it once, it has 22 brown regions: 11 regions in the top half and 11 regions in the bottom half (as shown in the figure above).
   Case 3: All cells of the napkin are stained, so there is always one brown region, no matter how many times the Chef unfolds the napkin.
+  -/
 
 vc-preamble: |-
 
@@ -88,23 +90,23 @@ vc-theorems: |-
     (h1 : n ≥ 3) :
     count_brown_regions n grid = count_brown_regions n grid := sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval count_brown_regions 3 ["01000010", "11000001", "00000000", "00011000", "00011000", "00010100", "00001000", "00000000"]
+  -- #guard_msgs in
+  -- #eval count_brown_regions 3 ["01000010", "11000001", "00000000", "00011000", "00011000", "00010100", "00001000", "00000000"]
   
-  /--
+  /-
   info: 22
   -/
-  #guard_msgs in
-  #eval count_brown_regions 4 ["01000010", "11000001", "00000000", "00011000", "00011000", "00010100", "00001000", "00000000"]
+  -- #guard_msgs in
+  -- #eval count_brown_regions 4 ["01000010", "11000001", "00000000", "00011000", "00011000", "00010100", "00001000", "00000000"]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_brown_regions 1000000000 ["11111111", "11111111", "11111111", "11111111", "11111111", "11111111", "11111111", "11111111"]
+  -- #guard_msgs in
+  -- #eval count_brown_regions 1000000000 ["11111111", "11111111", "11111111", "11111111", "11111111", "11111111", "11111111", "11111111"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a string $s$. And you have a function $f(x)$ defined as:
   f(x) = 1, if $x$ is a vowel
   f(x) = 0, if $x$ is a constant
@@ -28,6 +29,7 @@ vc-description: |-
   
   -----Sample Output:-----
   9
+  -/
 
 vc-preamble: |-
   def binaryStringToDecimal (s : String) : Nat := sorry
@@ -57,23 +59,23 @@ vc-theorems: |-
     (h3 : ∀ (i : String.Pos), isVowel (s1.get i) = isVowel (s2.get i)) :
     binaryStringToDecimal s1 = binaryStringToDecimal s2 := sorry
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval binary_string_to_decimal "hello"
+  -- #guard_msgs in
+  -- #eval binary_string_to_decimal "hello"
   
-  /--
+  /-
   info: 31
   -/
-  #guard_msgs in
-  #eval binary_string_to_decimal "aeiou"
+  -- #guard_msgs in
+  -- #eval binary_string_to_decimal "aeiou"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval binary_string_to_decimal "xyz"
+  -- #guard_msgs in
+  -- #eval binary_string_to_decimal "xyz"
 
 vc-postamble: |-
   -- Apps difficulty: interview

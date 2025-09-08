@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are Dastan, the great Prince of Persia!
   After searching long for the mysterious 'Sands of Time', you have finally arrived at the gates of the city that hosts the ancient temple of the gods. However, the gate is locked and it can only be opened with a secret code, which you need to obtain by solving the following puzzle:
   There is a table in front of you, with $N$ coins placed in a row and numbered $1$ through $N$ from left to right. For each coin, you know whether it is initially showing heads or tails. You have to perform exactly $K$ operations. In one operation, you should remove the rightmost coin present on the table, and if this coin was showing heads right before it was removed, then you should also flip all the remaining coins. (If a coin was showing heads, then after it is flipped, it is showing tails, and vice versa.)
@@ -32,6 +33,7 @@ vc-description: |-
   1
   2
   2
+  -/
 
 vc-preamble: |-
 
@@ -73,23 +75,23 @@ vc-theorems: |-
     0 ≤ result ∧ result ≤ n - 1 :=
   sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_heads_after_operations 5 3 "H T T H T"
+  -- #guard_msgs in
+  -- #eval count_heads_after_operations 5 3 "H T T H T"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_heads_after_operations 7 4 "H H T T T H H"
+  -- #guard_msgs in
+  -- #eval count_heads_after_operations 7 4 "H H T T T H H"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_heads_after_operations 6 1 "T H T H T T"
+  -- #guard_msgs in
+  -- #eval count_heads_after_operations 6 1 "T H T H T T"
 
 vc-postamble: |-
   -- Apps difficulty: interview

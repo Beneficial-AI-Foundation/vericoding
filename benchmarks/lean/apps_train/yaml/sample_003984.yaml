@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Complete the function ```caffeineBuzz```, which takes a non-zero integer as it's one argument.
   
   If the integer is divisible by 3, return the string ```"Java"```.
@@ -15,6 +16,7 @@ vc-description: |-
   caffeineBuzz(6)   => "JavaScript"
   caffeineBuzz(12)  => "CoffeeScript"
   ```
+  -/
 
 vc-preamble: |-
 
@@ -44,29 +46,29 @@ vc-theorems: |-
     (caffeineBuzz n = "Java" → n % 3 = 0 ∧ n % 6 ≠ 0) ∧
     (caffeineBuzz n = "mocha_missing!" → n % 3 ≠ 0) := sorry
   
-  /--
+  /-
   info: 'mocha_missing!'
   -/
-  #guard_msgs in
-  #eval caffeineBuzz 1
+  -- #guard_msgs in
+  -- #eval caffeineBuzz 1
   
-  /--
+  /-
   info: 'Java'
   -/
-  #guard_msgs in
-  #eval caffeineBuzz 3
+  -- #guard_msgs in
+  -- #eval caffeineBuzz 3
   
-  /--
+  /-
   info: 'JavaScript'
   -/
-  #guard_msgs in
-  #eval caffeineBuzz 6
+  -- #guard_msgs in
+  -- #eval caffeineBuzz 6
   
-  /--
+  /-
   info: 'CoffeeScript'
   -/
-  #guard_msgs in
-  #eval caffeineBuzz 12
+  -- #guard_msgs in
+  -- #eval caffeineBuzz 12
 
 vc-postamble: |-
   -- Apps difficulty: introductory

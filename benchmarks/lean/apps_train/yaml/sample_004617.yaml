@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Find the gatecrashers on CocoBongo parties
   
   CocoBongo is a club with very nice parties. However, you only can get inside if you know at least one other guest. Unfortunately, some gatecrashers can appear at those parties. The gatecrashers do not know any other party member and should not be at our amazing party!
@@ -20,6 +21,7 @@ vc-description: |-
   We have `invitations = [ (0, [1,2]), (2, [3]) ]`.  
   Guest `0` has invited guests `1` and `2`; also, guest `2` has invited guest `3`.
   However, noone has invited guest `4`, so he is a gatecrasher.
+  -/
 
 vc-preamble: |-
   def find_gatecrashers (party_members: List Int) (invitations: List (Int × List Int)) : List Int :=
@@ -67,23 +69,23 @@ vc-theorems: |-
     find_gatecrashers [] invitations = [] :=
     sorry
   
-  /--
+  /-
   info: [4]
   -/
-  #guard_msgs in
-  #eval find_gatecrashers [0, 1, 2, 3, 4] [(0, [1, 2]), (2, [3])]
+  -- #guard_msgs in
+  -- #eval find_gatecrashers [0, 1, 2, 3, 4] [(0, [1, 2]), (2, [3])]
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval find_gatecrashers [0, 1, 2] [(0, [1]), (1, [2])]
+  -- #guard_msgs in
+  -- #eval find_gatecrashers [0, 1, 2] [(0, [1]), (1, [2])]
   
-  /--
+  /-
   info: [0, 1, 2, 3]
   -/
-  #guard_msgs in
-  #eval find_gatecrashers [0, 1, 2, 3] []
+  -- #guard_msgs in
+  -- #eval find_gatecrashers [0, 1, 2, 3] []
 
 vc-postamble: |-
   -- Apps difficulty: introductory

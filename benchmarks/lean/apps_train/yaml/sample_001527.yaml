@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   -----Problem Statement-----
   You all must have played the game candy crush. So here is a bomb which works much the fruit bomb in candy crush. A designer, Anton, designed a very powerful bomb. The bomb, when placed on a location $(x, y)$ in a $R \times C$ grid, wipes out the row $x$ and column $y$ completely.
   You are given a $R\times C$ grid with $N$ targets. You have only one bomb. Your aim is to maximize the damage and hence destroy most number of targets. Given the location of targets on the grid, find out the number of targets that can destroyed.
@@ -34,6 +35,7 @@ vc-description: |-
   
   -----EXPLANATION-----
   It is possible to destroy all the targets if we place the bomb at $(0, 1)$. Hence, total number of targets destroyed is $3$, which is our answer.
+  -/
 
 vc-preamble: |-
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this kata, you will do addition and subtraction on a given string. The return value must be also a string.
   
   **Note:** the input will not be empty.
@@ -9,6 +10,7 @@ vc-description: |-
   "1plus2plus3plus4"  --> "10"
   "1plus2plus3minus4" -->  "2"
   ```
+  -/
 
 vc-preamble: |-
 
@@ -25,23 +27,23 @@ vc-definitions: |-
   sorry
 
 vc-theorems: |-
-  /--
+  /-
   info: '10'
   -/
-  #guard_msgs in
-  #eval calculate "1plus2plus3plus4"
+  -- #guard_msgs in
+  -- #eval calculate "1plus2plus3plus4"
   
-  /--
+  /-
   info: '-8'
   -/
-  #guard_msgs in
-  #eval calculate "1minus2minus3minus4"
+  -- #guard_msgs in
+  -- #eval calculate "1minus2minus3minus4"
   
-  /--
+  /-
   info: '-1'
   -/
-  #guard_msgs in
-  #eval calculate "1plus2minus3plus4minus5"
+  -- #guard_msgs in
+  -- #eval calculate "1plus2minus3plus4minus5"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    A media access control address (MAC address) is a unique identifier assigned to network interfaces for communications on the physical network segment.
   
@@ -19,6 +20,7 @@ vc-description: |-
    - `[output]` a boolean value
   
       `true` if inputString corresponds to MAC-48 address naming rules, `false` otherwise.
+  -/
 
 vc-preamble: |-
 
@@ -67,23 +69,23 @@ vc-theorems: |-
                       h7, h8, '-', h9, h10, '-', h11, h12]) :
     ¬is_mac_48_address (mac.replace "-" (String.mk [sep])) := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_mac_48_address "00-1B-63-84-45-E6"
+  -- #guard_msgs in
+  -- #eval is_mac_48_address "00-1B-63-84-45-E6"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_mac_48_address "Z1-1B-63-84-45-E6"
+  -- #guard_msgs in
+  -- #eval is_mac_48_address "Z1-1B-63-84-45-E6"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_mac_48_address "not a MAC-48 address"
+  -- #guard_msgs in
+  -- #eval is_mac_48_address "not a MAC-48 address"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

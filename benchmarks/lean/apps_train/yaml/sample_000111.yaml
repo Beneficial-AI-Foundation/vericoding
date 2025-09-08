@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Bob watches TV every day. He always sets the volume of his TV to $b$. However, today he is angry to find out someone has changed the volume to $a$. Of course, Bob has a remote control that can change the volume.
   
   There are six buttons ($-5, -2, -1, +1, +2, +5$) on the control, which in one press can either increase or decrease the current volume by $1$, $2$, or $5$. The volume can be arbitrarily large, but can never be negative. In other words, Bob cannot press the button if it causes the volume to be lower than $0$.
@@ -34,6 +35,7 @@ vc-description: |-
   In the second example, one of the optimal ways for Bob is to press the $+5$ twice, then press $-1$ once.
   
   In the last example, Bob can press the $+5$ once, then press $+1$.
+  -/
 
 vc-preamble: |-
 
@@ -57,23 +59,23 @@ vc-theorems: |-
   theorem min_button_presses_sufficient (a b : Int) :
     min_button_presses a b * 5 ≥ (if a ≥ b then a - b else b - a) := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_button_presses 4 0
+  -- #guard_msgs in
+  -- #eval min_button_presses 4 0
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval min_button_presses 5 14
+  -- #guard_msgs in
+  -- #eval min_button_presses 5 14
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_button_presses 3 9
+  -- #guard_msgs in
+  -- #eval min_button_presses 3 9
 
 vc-postamble: |-
   -- Apps difficulty: interview

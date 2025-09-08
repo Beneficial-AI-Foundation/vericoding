@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef has decided to start home delivery from his restaurant. He hopes that he will get a lot of orders for delivery, however there is a concern. He doesn't have enough work forces for all the deliveries.  For this he has came up with an idea - he will group together all those orders which have to be delivered in nearby areas. 
   
   In particular, he has identified certain bidirectional roads which he calls as fast roads. They are short and usually traffic free, so the fast travel is possible along these roads. His plan is that he will send orders to locations A and B together if and only if it is possible to travel between A and B using only fast roads. Your task is, given the configuration of fast roads, identify which orders are to be sent together.
@@ -39,6 +40,7 @@ vc-description: |-
   
   -----Warning!-----
   There are large input and output files in this problem. Make sure you use fast enough I/O methods.
+  -/
 
 vc-preamble: |-
 
@@ -70,17 +72,17 @@ vc-theorems: |-
     (solve_delivery_problem n m roads [(x,y)]).head! = "NO" :=
     sorry
   
-  /--
+  /-
   info: ['YO', 'NO', 'YO']
   -/
-  #guard_msgs in
-  #eval solve_delivery_problem 4 2 [(0, 1), (1, 2)] [(0, 2), (0, 3), (2, 1)]
+  -- #guard_msgs in
+  -- #eval solve_delivery_problem 4 2 [(0, 1), (1, 2)] [(0, 2), (0, 3), (2, 1)]
   
-  /--
+  /-
   info: ['YO']
   -/
-  #guard_msgs in
-  #eval solve_delivery_problem 3 2 [(0, 1), (1, 2)] [(0, 2)]
+  -- #guard_msgs in
+  -- #eval solve_delivery_problem 3 2 [(0, 1), (1, 2)] [(0, 2)]
 
 vc-postamble: |-
   -- Apps difficulty: interview

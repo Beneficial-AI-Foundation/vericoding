@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   An ordered sequence of numbers from 1 to N is given. One number might have deleted from it, then the remaining numbers were mixed. Find the number that was deleted.
   
   Example: 
@@ -9,6 +10,7 @@ vc-description: |-
   If no number was deleted from the array and no difference with it, your function should return the int `0`.
   
   Note that N may be 1 or less (in the latter case, the first array will be `[]`).
+  -/
 
 vc-preamble: |-
 
@@ -25,23 +27,23 @@ vc-theorems: |-
     find_deleted_number [] [] = 0 :=
   sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval find_deleted_number [1, 2, 3, 4, 5, 6, 7, 8, 9] [5, 7, 9, 4, 8, 1, 2, 3]
+  -- #guard_msgs in
+  -- #eval find_deleted_number [1, 2, 3, 4, 5, 6, 7, 8, 9] [5, 7, 9, 4, 8, 1, 2, 3]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval find_deleted_number [1, 2, 3, 4, 5, 6, 7] [2, 3, 6, 1, 5, 4, 7]
+  -- #guard_msgs in
+  -- #eval find_deleted_number [1, 2, 3, 4, 5, 6, 7] [2, 3, 6, 1, 5, 4, 7]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval find_deleted_number [1] []
+  -- #guard_msgs in
+  -- #eval find_deleted_number [1] []
 
 vc-postamble: |-
   -- Apps difficulty: introductory

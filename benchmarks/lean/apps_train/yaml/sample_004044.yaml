@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ### Task
   The __dot product__ is usually encountered in linear algebra or scientific computing. It's also called __scalar product__ or __inner product__ sometimes:
   
@@ -20,6 +21,7 @@ vc-description: |-
   If the list or array is empty, `minDot` should return 0. All arrays or lists will have the same length. Also, for the dynamically typed languages, all inputs will be valid lists or arrays, you don't need to check for `undefined`, `null` etc.
   
   Note: This kata is inspired by [GCJ 2008](https://code.google.com/codejam/contest/32016/dashboard#s=p0).
+  -/
 
 vc-preamble: |-
 
@@ -49,23 +51,23 @@ vc-theorems: |-
     min_dot perm_a perm_b = min_dot a b :=
   sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_dot [] []
+  -- #guard_msgs in
+  -- #eval min_dot [] []
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval min_dot [1, 2, 3, 4, 5] [0, 1, 1, 1, 0]
+  -- #guard_msgs in
+  -- #eval min_dot [1, 2, 3, 4, 5] [0, 1, 1, 1, 0]
   
-  /--
+  /-
   info: -17
   -/
-  #guard_msgs in
-  #eval min_dot [1, 2, 3, 4, 5] [0, 0, 1, 1, -4]
+  -- #guard_msgs in
+  -- #eval min_dot [1, 2, 3, 4, 5] [0, 0, 1, 1, -4]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

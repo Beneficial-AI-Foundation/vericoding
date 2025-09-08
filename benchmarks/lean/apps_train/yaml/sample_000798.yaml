@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We all know Gru loves Agnes very much. One day Agnes asked Gru to answer some of her queries. She lined up $N$ minions in a straight line from $1$ to $N$. 
   You are given an array $A$ which contains the height of minions. Agnes will ask him several queries. In each query, Gru has to tell whether the bitwise AND of  $A[L \ldots R]$ is EVEN or ODD. Since Gru is busy planning the biggest heist on Earth, he asks for your help.
   
@@ -36,6 +37,7 @@ vc-description: |-
   -----Explanation-----
   - For the first query, the bitwise AND of 1 and 3 is 1, which is Odd. Hence the first output is ODD.
   - For the third query, the bitwise AND of 2 and 4 is 0, which is Even. Hence the third output is EVEN.
+  -/
 
 vc-preamble: |-
 
@@ -70,23 +72,23 @@ vc-theorems: |-
   theorem solve_minion_queries_adjacent_pairs :
     solve_minion_queries 4 [1,2,3,4] [(1,2), (2,3), (3,4)] = ["EVEN", "EVEN", "EVEN"] := sorry
   
-  /--
+  /-
   info: ['ODD', 'EVEN', 'EVEN']
   -/
-  #guard_msgs in
-  #eval solve_minion_queries 5 [1, 3, 2, 4, 5] [(1, 2), (1, 5), (3, 4)]
+  -- #guard_msgs in
+  -- #eval solve_minion_queries 5 [1, 3, 2, 4, 5] [(1, 2), (1, 5), (3, 4)]
   
-  /--
+  /-
   info: ['ODD']
   -/
-  #guard_msgs in
-  #eval solve_minion_queries 3 [1, 3, 5] [(1, 3)]
+  -- #guard_msgs in
+  -- #eval solve_minion_queries 3 [1, 3, 5] [(1, 3)]
   
-  /--
+  /-
   info: ['EVEN', 'EVEN']
   -/
-  #guard_msgs in
-  #eval solve_minion_queries 4 [2, 4, 6, 8] [(1, 2), (2, 4)]
+  -- #guard_msgs in
+  -- #eval solve_minion_queries 4 [2, 4, 6, 8] [(1, 2), (2, 4)]
 
 vc-postamble: |-
   -- Apps difficulty: interview

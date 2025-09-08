@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   An undirected, connected tree with N nodes labelled 0...N-1 and N-1 edges are given.
   The ith edge connects nodes edges[i][0] and edges[i][1] together.
   Return a list ans, where ans[i] is the sum of the distances between node i and all other nodes.
@@ -16,6 +17,7 @@ vc-description: |-
   equals 1 + 1 + 2 + 2 + 2 = 8.  Hence, answer[0] = 8, and so on.
   
   Note: 1 <= N <= 10000
+  -/
 
 vc-preamble: |-
   def Tree (n : Nat) (edges : List (Nat × Nat)) : Prop := sorry 
@@ -55,23 +57,23 @@ vc-theorems: |-
       List.foldr max 0 (sumOfDistancesInTree n edges) :=
   sorry
   
-  /--
+  /-
   info: [8, 12, 6, 10, 10, 10]
   -/
-  #guard_msgs in
-  #eval sum_of_distances_in_tree 6 [[0, 1], [0, 2], [2, 3], [2, 4], [2, 5]]
+  -- #guard_msgs in
+  -- #eval sum_of_distances_in_tree 6 [[0, 1], [0, 2], [2, 3], [2, 4], [2, 5]]
   
-  /--
+  /-
   info: [2, 3, 3]
   -/
-  #guard_msgs in
-  #eval sum_of_distances_in_tree 3 [[0, 1], [0, 2]]
+  -- #guard_msgs in
+  -- #eval sum_of_distances_in_tree 3 [[0, 1], [0, 2]]
   
-  /--
+  /-
   info: [6, 4, 4, 6]
   -/
-  #guard_msgs in
-  #eval sum_of_distances_in_tree 4 [[0, 1], [1, 2], [2, 3]]
+  -- #guard_msgs in
+  -- #eval sum_of_distances_in_tree 4 [[0, 1], [1, 2], [2, 3]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

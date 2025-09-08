@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Problem Statement=====
   Here is a sample line of code that can be executed in Python:
   print("Hello, World!")
@@ -14,6 +15,7 @@ vc-description: |-
   
   =====Output Format=====
   Print Hello, World! to stdout.
+  -/
 
 vc-preamble: |-
 
@@ -34,11 +36,11 @@ vc-theorems: |-
   theorem hello_world_non_empty :
     hello_world.length > 0 := by sorry
   
-  /--
+  /-
   info: 'Hello, World!'
   -/
-  #guard_msgs in
-  #eval hello_world
+  -- #guard_msgs in
+  -- #eval hello_world
 
 vc-postamble: |-
   -- Apps difficulty: introductory

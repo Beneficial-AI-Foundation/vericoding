@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The Chef has been kidnapped by aliens ( they want to utilize his excellent cooking skills :P ) and has been transported to the alien planet "ZX532". Interestingly, "ZX532" uses a different time scale which has Y AlienHours on the face of a clock (instead of the 12 hours that we have).  They also have 'X*Y' AlienMinutes (instead of the 60 that we have).  X is defined as the number of minute divisions between each hour (the earth clock has X=5).
   The Chef has been forced to cook a lot of dishes by the aliens. He is short of ingredients and hence needs to go out to the market to get them. However when he returns, he makes an interesting observation. The hands of AlienClock have exactly swapped position from the time he left (the big hand and the little hand have switched)!
   Given the times between which The Chef might have left and the times between which The Chef may have returned, you are supposed to find out the actual time when he left.  If there is more than one possibility, print the one that maximizes the amount of time that The Chef is out.Details of the Clock
@@ -28,6 +29,7 @@ vc-description: |-
   3:26.43
   
   Note: Be careful with precision.
+  -/
 
 vc-preamble: |-
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a string $s$ of even length $n$. String $s$ is binary, in other words, consists only of 0's and 1's.
   
   String $s$ has exactly $\frac{n}{2}$ zeroes and $\frac{n}{2}$ ones ($n$ is even).
@@ -43,6 +44,7 @@ vc-description: |-
   In the second test case, we can, for example, reverse the last two elements of $s$ and get: 0110 $\rightarrow$ 0101.
   
   In the third test case, we can, for example, make the following two operations:   11101000 $\rightarrow$ 10101100;  10101100 $\rightarrow$ 10101010.
+  -/
 
 vc-preamble: |-
 
@@ -53,7 +55,7 @@ vc-helpers: |-
 vc-definitions: |-
   def solve_string_alternation (n : Nat) (s : String) : Nat := sorry
   
-  /-- Main theorem combining several properties of solve_string_alternation:
+  /- Main theorem combining several properties of solve_string_alternation:
     1. Output is non-negative
     2. Output is less than string length 
     3. Output relates to number of adjacent duplicates
@@ -68,35 +70,35 @@ vc-theorems: |-
     (result < n) ∧
     (result = (adjacent_same + adjacent_same % 2) / 2) := sorry
   
-  /-- Perfectly alternating strings require no operations -/
+  /- Perfectly alternating strings require no operations -/
   
   theorem solve_string_alternation_perfect_alt (n : Nat) (h : n ≥ 2) :  
     let s := String.mk (List.map (fun i => if i % 2 = 0 then '0' else '1') (List.range n))
     solve_string_alternation n s = 0 := sorry
   
-  /-- For strings of all same characters, result depends on length -/
+  /- For strings of all same characters, result depends on length -/
   
   theorem solve_string_alternation_all_same (n : Nat) (h : n > 0) :
     let s := String.mk (List.replicate n '0')
     solve_string_alternation n s = ((n-1) + (n-1) % 2) / 2 := sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve_string_alternation 2 "10"
+  -- #guard_msgs in
+  -- #eval solve_string_alternation 2 "10"
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve_string_alternation 4 "0110"
+  -- #guard_msgs in
+  -- #eval solve_string_alternation 4 "0110"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve_string_alternation 8 "11101000"
+  -- #guard_msgs in
+  -- #eval solve_string_alternation 8 "11101000"
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Complete the function `power_of_two`/`powerOfTwo` (or equivalent, depending on your language) that determines if a given non-negative integer is a [power of two](https://en.wikipedia.org/wiki/Power_of_two).  From the corresponding Wikipedia entry:
   
   > *a power of two is a number of the form 2^(n) where **n** is an integer, i.e. the result of exponentiation with number two as the base and integer **n** as the exponent.*
@@ -30,6 +31,7 @@ vc-description: |-
   ~~~
   
   Beware of certain edge cases - for example, `1` is a power of `2` since `2^0 = 1` and `0` is not a power of `2`.
+  -/
 
 vc-preamble: |-
 
@@ -59,23 +61,23 @@ vc-theorems: |-
   theorem power_of_two_zero :
     power_of_two 0 = false := sorry
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval power_of_two 0
+  -- #guard_msgs in
+  -- #eval power_of_two 0
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval power_of_two 1
+  -- #guard_msgs in
+  -- #eval power_of_two 1
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval power_of_two 536870912
+  -- #guard_msgs in
+  -- #eval power_of_two 536870912
 
 vc-postamble: |-
   -- Apps difficulty: introductory

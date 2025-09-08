@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef has recently been playing a lot of chess in preparation for the ICCT (International Chef Chess Tournament).
   Since putting in long hours is not an easy task, Chef's mind wanders elsewhere. He starts counting the number of squares with odd side length on his chessboard..
   However, Chef is not satisfied. He wants to know the number of squares of odd side length on a generic $N*N$ chessboard.
@@ -22,6 +23,7 @@ vc-description: |-
   -----Sample Output:-----
   10
   120
+  -/
 
 vc-preamble: |-
 
@@ -45,23 +47,23 @@ vc-theorems: |-
   theorem count_odd_squares_nonpositive (n : Int) :
     n ≤ 0 → count_odd_squares n = 0 := sorry
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval count_odd_squares 3
+  -- #guard_msgs in
+  -- #eval count_odd_squares 3
   
-  /--
+  /-
   info: 120
   -/
-  #guard_msgs in
-  #eval count_odd_squares 8
+  -- #guard_msgs in
+  -- #eval count_odd_squares 8
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_odd_squares 1
+  -- #guard_msgs in
+  -- #eval count_odd_squares 1
 
 vc-postamble: |-
   -- Apps difficulty: interview

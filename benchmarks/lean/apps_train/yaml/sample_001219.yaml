@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   An area named Renus, is divided into $(N \times M)$ cells. According to archaeological survey the area contains huge amount of treasure. Some cells out of $(N \times M)$ cells contain treasure. But problem is, you can't go to every cell as some of the cells are blocked.  
   For every $a_{ij}$ cell($1 \leq i \leq N$,$1 \leq j \leq M$), your task is to find the distance of the nearest cell having treasure. 
   Note:
@@ -43,6 +44,7 @@ vc-description: |-
   - Coordinates  (1,1) and (1,3)  shows "0" because they contain treasure and nearest distance is 0.
   - Coordinates (2,1) and (2,2) shows "X" as they are blocked.
   - Rest shows distance of nearest cell having treasure.
+  -/
 
 vc-preamble: |-
 

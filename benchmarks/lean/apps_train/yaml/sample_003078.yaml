@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    Four men, `a, b, c and d` are standing in a line, one behind another. 
   
@@ -35,6 +36,7 @@ vc-description: |-
    - `[output]` an integer
   
    The person to guess his hat's color first, `1 for a, 2 for b, 3 for c and 4 for d`.
+  -/
 
 vc-preamble: |-
 
@@ -66,17 +68,17 @@ vc-theorems: |-
     (d = Color.black ∨ d = Color.white) :=
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval guess_hat_color "white" "black" "white" "black"
+  -- #guard_msgs in
+  -- #eval guess_hat_color "white" "black" "white" "black"
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval guess_hat_color "white" "black" "black" "white"
+  -- #guard_msgs in
+  -- #eval guess_hat_color "white" "black" "black" "white"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

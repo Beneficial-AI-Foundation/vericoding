@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given two arrays nums1 and nums2.
   Return the maximum dot product between non-empty subsequences of nums1 and nums2 with the same length.
   A subsequence of a array is a new array which is formed from the original array by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (ie, [2,3,5] is a subsequence of [1,2,3,4,5] while [1,5,3] is not).
@@ -23,6 +24,7 @@ vc-description: |-
   
   1 <= nums1.length, nums2.length <= 500
   -1000 <= nums1[i], nums2[i] <= 1000
+  -/
 
 vc-preamble: |-
 
@@ -59,23 +61,23 @@ vc-theorems: |-
     max_dot_product (nums1 ++ [big_num]) (nums2 ++ [big_num]) ≥ 
       max_dot_product nums1 nums2 := sorry
   
-  /--
+  /-
   info: 18
   -/
-  #guard_msgs in
-  #eval max_dot_product [2, 1, -2, 5] [3, 0, -6]
+  -- #guard_msgs in
+  -- #eval max_dot_product [2, 1, -2, 5] [3, 0, -6]
   
-  /--
+  /-
   info: 21
   -/
-  #guard_msgs in
-  #eval max_dot_product [3, -2] [2, -6, 7]
+  -- #guard_msgs in
+  -- #eval max_dot_product [3, -2] [2, -6, 7]
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval max_dot_product [-1, -1] [1, 1]
+  -- #guard_msgs in
+  -- #eval max_dot_product [-1, -1] [1, 1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

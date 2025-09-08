@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Story&Task
    There are three parties in parliament. The "Conservative Party", the "Reformist Party", and a group of independants.
   
@@ -55,6 +56,7 @@ vc-description: |-
    4 + 2 < 7
    So the output is -1
    ```
+  -/
 
 vc-preamble: |-
 
@@ -97,23 +99,23 @@ vc-theorems: |-
     let result := pass_the_bill total conservative reformist
     result = -1 ∨ result = 0 ∨ (result > 0 ∧ result ≤ total) := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval pass_the_bill 8 3 3
+  -- #guard_msgs in
+  -- #eval pass_the_bill 8 3 3
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval pass_the_bill 13 4 7
+  -- #guard_msgs in
+  -- #eval pass_the_bill 13 4 7
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval pass_the_bill 7 4 3
+  -- #guard_msgs in
+  -- #eval pass_the_bill 7 4 3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

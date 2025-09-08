@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The alphabetized kata
   ---------------------
   
@@ -13,6 +14,7 @@ vc-description: |-
   ```
   
   _Inspired by [Tauba Auerbach](http://www.taubaauerbach.com/view.php?id=73)_
+  -/
 
 vc-preamble: |-
   def alphabetized (s : String) : String := sorry
@@ -48,23 +50,23 @@ vc-theorems: |-
     (∀ c ∈ s.data, ¬isAlpha c) →
     alphabetized s = "" := sorry
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval alphabetized ""
+  -- #guard_msgs in
+  -- #eval alphabetized ""
   
-  /--
+  /-
   info: 'BbeehHilloTy'
   -/
-  #guard_msgs in
-  #eval alphabetized "The Holy Bible"
+  -- #guard_msgs in
+  -- #eval alphabetized "The Holy Bible"
   
-  /--
+  /-
   info: 'aaaaCcdddeLnooorstTWy'
   -/
-  #guard_msgs in
-  #eval alphabetized "CodeWars can"t Load Today"
+  -- #guard_msgs in
+  -- #eval alphabetized "CodeWars can"t Load Today"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

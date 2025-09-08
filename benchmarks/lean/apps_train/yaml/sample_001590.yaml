@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   This is the performance version of [this kata](https://www.codewars.com/kata/59afff65f1c8274f270020f5).
   
   ---
@@ -31,6 +32,7 @@ vc-description: |-
   
   - `100` tests with `1 <= innerMax, outerMax <= 10000`
   - `400` tests with `1 <= innerMax, outerMax <= 2^48`
+  -/
 
 vc-preamble: |-
 
@@ -48,23 +50,23 @@ vc-theorems: |-
     spinning_rings inner_max outer_max > 0 :=
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval spinning_rings 5 5
+  -- #guard_msgs in
+  -- #eval spinning_rings 5 5
   
-  /--
+  /-
   info: 13
   -/
-  #guard_msgs in
-  #eval spinning_rings 2 10
+  -- #guard_msgs in
+  -- #eval spinning_rings 2 10
   
-  /--
+  /-
   info: 23951671
   -/
-  #guard_msgs in
-  #eval spinning_rings 16777216 14348907
+  -- #guard_msgs in
+  -- #eval spinning_rings 16777216 14348907
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The Collatz conjecture is one of the most famous one. Take any positive integer n, if it is even divide it by 2, if it is odd multiply it by 3 and add 1 and continue indefinitely.The conjecture is that whatever is n the sequence will reach 1. There is many ways to approach this problem, each one of them had given beautifull graphs and impressive display of calculation power. The simplest approach can be found in this kata: http://www.codewars.com/kata/5286b2e162056fd0cb000c20
   You look at the Collatz sequence of a number and see when it reaches 1.
   
@@ -13,6 +14,7 @@ vc-description: |-
   * Optimisation 1: when calculating the length of a sequence, if n is odd, what 3n+1 will be ?
   
   * Optimisation 2: when looping through 1 to n, take i such that i<n/2, what will be the lenght of the sequence for 2i ?
+  -/
 
 vc-preamble: |-
 
@@ -44,29 +46,29 @@ vc-theorems: |-
     let result := max_collatz_length n
     result[0]! > 0 ∧ result[0]! ≤ n := sorry
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval max_collatz_length 0
+  -- #guard_msgs in
+  -- #eval max_collatz_length 0
   
-  /--
+  /-
   info: [1, 1]
   -/
-  #guard_msgs in
-  #eval max_collatz_length 1
+  -- #guard_msgs in
+  -- #eval max_collatz_length 1
   
-  /--
+  /-
   info: [3, 8]
   -/
-  #guard_msgs in
-  #eval max_collatz_length 4
+  -- #guard_msgs in
+  -- #eval max_collatz_length 4
   
-  /--
+  /-
   info: [27, 112]
   -/
-  #guard_msgs in
-  #eval max_collatz_length 30
+  -- #guard_msgs in
+  -- #eval max_collatz_length 30
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef wants to teach a lesson of sharing to the students.
   There are $N$ students (numbered from $1$ to $N$ from left to right) who are asked to stand in a row. Initially Chef gave $A$$i$ candies to the $i$$th$ child. In one operation any child can give any number of candies to the child standing to his immediate left (i.e. $i$$th$ child can give any amount of candies to the $(i-1)$$th$ child. In particular 1st child cannot give his candies to anyone).  
   He asked them to minimize the maximum value of candies a student can possess after performing any number of operations (possibly zero). 
@@ -37,6 +38,7 @@ vc-description: |-
   - 
   For Second Test Case:
   Sharing to the left student will not change the maximum value as $1$$st$ cannot share to anyone. So the maximum value will remain $5$.
+  -/
 
 vc-preamble: |-
   def List.sum : List Nat → Nat 
@@ -81,23 +83,23 @@ vc-theorems: |-
     : solve_candy_sharing n arr > 0 :=
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval solve_candy_sharing 5 arr1.copy()
+  -- #guard_msgs in
+  -- #eval solve_candy_sharing 5 arr1.copy()
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval solve_candy_sharing 5 arr2.copy()
+  -- #guard_msgs in
+  -- #eval solve_candy_sharing 5 arr2.copy()
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve_candy_sharing 3 arr3.copy()
+  -- #guard_msgs in
+  -- #eval solve_candy_sharing 3 arr3.copy()
 
 vc-postamble: |-
   -- Apps difficulty: interview

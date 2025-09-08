@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this Kata, we are going to reverse a string while maintaining the spaces (if any) in their original place.
   
   For example:
@@ -19,6 +20,7 @@ vc-description: |-
   [Simple time difference](https://www.codewars.com/kata/5b76a34ff71e5de9db0000f2)
   
   [Simple remove duplicates](https://www.codewars.com/kata/5ba38ba180824a86850000f7)
+  -/
 
 vc-preamble: |-
 
@@ -36,23 +38,23 @@ vc-theorems: |-
   theorem solve_preserves_spaces (s : String) (i : String.Pos) :
     (s.get i = ' ') = ((solve s).get i = ' ') := sorry
   
-  /--
+  /-
   info: 'srawedoc'
   -/
-  #guard_msgs in
-  #eval solve "codewars"
+  -- #guard_msgs in
+  -- #eval solve "codewars"
   
-  /--
+  /-
   info: 'edoc ruoy'
   -/
-  #guard_msgs in
-  #eval solve "your code"
+  -- #guard_msgs in
+  -- #eval solve "your code"
   
-  /--
+  /-
   info: 'skco redo cruoy'
   -/
-  #guard_msgs in
-  #eval solve "your code rocks"
+  -- #guard_msgs in
+  -- #eval solve "your code rocks"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

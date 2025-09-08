@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    A common way for prisoners to communicate secret messages with each other is to encrypt them. One such encryption algorithm goes as follows.
   
@@ -29,6 +30,7 @@ vc-description: |-
    - `[output]` a string
   
     encrypted message
+  -/
 
 vc-preamble: |-
   def String.splitColumns (s : String) : List String := sorry

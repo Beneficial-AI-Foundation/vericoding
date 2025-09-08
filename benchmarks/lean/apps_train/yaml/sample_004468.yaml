@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Challenge : 
   
   Write a function that takes a single argument `n` that is a string representation of a simple mathematical expression and evaluates it as a floating point value. 
@@ -42,6 +43,7 @@ vc-description: |-
       e("1-2*2/2*2-1*7+3")          ---> -18
   
   ---
+  -/
 
 vc-preamble: |-
 
@@ -86,23 +88,23 @@ vc-theorems: |-
     ∀ (result : Int), evaluate "1/0" ≠ result :=
     sorry
   
-  /--
+  /-
   info: 219
   -/
-  #guard_msgs in
-  #eval evaluate "2*3*4*5+99"
+  -- #guard_msgs in
+  -- #eval evaluate "2*3*4*5+99"
   
-  /--
+  /-
   info: -12242013
   -/
-  #guard_msgs in
-  #eval evaluate "2*3*4*5+99*321-12312312"
+  -- #guard_msgs in
+  -- #eval evaluate "2*3*4*5+99*321-12312312"
   
-  /--
+  /-
   info: -18
   -/
-  #guard_msgs in
-  #eval evaluate "1-2*2/2*2-1*7+3"
+  -- #guard_msgs in
+  -- #eval evaluate "1-2*2/2*2-1*7+3"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

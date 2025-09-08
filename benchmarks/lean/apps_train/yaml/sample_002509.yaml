@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Problem Statement=====
   ABC is a right triangle, 90°, at B. Therefore, ANGLE{ABC} = 90°.
   Point M is the midpoint of hypotenuse AC.
@@ -21,6 +22,7 @@ vc-description: |-
   If angle is 56.5000001°, then output 57°.
   If angle is 56.5000000°, then output 57°.
   If angle is 56.4999999°, then output 56°.
+  -/
 
 vc-preamble: |-
 
@@ -47,23 +49,23 @@ vc-theorems: |-
     (h1 : x > 0) :
     find_angle_mbc x x = 45 := sorry
   
-  /--
+  /-
   info: '45°'
   -/
-  #guard_msgs in
-  #eval find_angle_mbc 10 10
+  -- #guard_msgs in
+  -- #eval find_angle_mbc 10 10
   
-  /--
+  /-
   info: '63°'
   -/
-  #guard_msgs in
-  #eval find_angle_mbc 20 10
+  -- #guard_msgs in
+  -- #eval find_angle_mbc 20 10
   
-  /--
+  /-
   info: '27°'
   -/
-  #guard_msgs in
-  #eval find_angle_mbc 10 20
+  -- #guard_msgs in
+  -- #eval find_angle_mbc 10 20
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   *Are you a file extension master? Let's find out by checking if Bill's files are images or audio files. Please use regex if available natively for your language.*
   
   You will create 2 string methods:
@@ -16,6 +17,7 @@ vc-description: |-
   3. File names should consist of letters only (uppercase, lowercase, or both)
   
   Good luck!
+  -/
 
 vc-preamble: |-
 
@@ -71,41 +73,41 @@ vc-theorems: |-
     (is_audio s = false) ∧ (is_image s = false) :=
   sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_audio "NothingElseMatters.mp3"
+  -- #guard_msgs in
+  -- #eval is_audio "NothingElseMatters.mp3"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_audio "DaftPunk.FLAC"
+  -- #guard_msgs in
+  -- #eval is_audio "DaftPunk.FLAC"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_audio " Amon Tobin.alac"
+  -- #guard_msgs in
+  -- #eval is_audio " Amon Tobin.alac"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_image "sample.jpg"
+  -- #guard_msgs in
+  -- #eval is_image "sample.jpg"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_image "MyPhoto123.png"
+  -- #guard_msgs in
+  -- #eval is_image "MyPhoto123.png"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_image "Photo Space.gif"
+  -- #guard_msgs in
+  -- #eval is_image "Photo Space.gif"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

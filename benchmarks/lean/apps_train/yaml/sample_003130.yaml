@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string, turn each letter into its ASCII character code and join them together to create a number - let's call this number `total1`:
   
   ```
@@ -21,6 +22,7 @@ vc-description: |-
   -------------------------
                          6
   ```
+  -/
 
 vc-preamble: |-
 
@@ -52,23 +54,23 @@ vc-theorems: |-
   
   end Example
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval calc "ABC"
+  -- #guard_msgs in
+  -- #eval calc "ABC"
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval calc "jaam"
+  -- #guard_msgs in
+  -- #eval calc "jaam"
   
-  /--
+  /-
   info: 30
   -/
-  #guard_msgs in
-  #eval calc "aaaaaddddr"
+  -- #guard_msgs in
+  -- #eval calc "aaaaaddddr"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

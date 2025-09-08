@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Devu and Churu love to play games a lot. Today, they have an array A consisting of N positive integers. First they listed all N × (N+1) / 2 non-empty continuous subarrays of the array A on a piece of paper and then replaced all the subarrays on the paper with the maximum element present in the respective subarray.
   Devu and Churu decided to play a game with numbers on the paper. They both have decided to make moves turn by turn. In one turn, the player picks some number from the list and discards that number. The one who is not able to make a valid move will be the loser. To make the game more interesting, they decided to put some constraints on their moves.
   A constraint on a game can be any of following three types :
@@ -72,6 +73,7 @@ vc-description: |-
   Game 3 : There are only 3 numbers = 3 in the list.
   Game 4 : There are no numbers > 4 in the list. So the first player cannot make his move.
   Game 5 : There are 6 numbers < 5 in the list.
+  -/
 
 vc-preamble: |-
 
@@ -132,17 +134,17 @@ vc-theorems: |-
     (solve_game n arr edge_queries).length = 6 :=
     sorry
   
-  /--
+  /-
   info: 'DCDDC'
   -/
-  #guard_msgs in
-  #eval solve_game 3 [1, 2, 3] [(">", 1, "D"), ("<", 2, "C"), ("=", 3, "D"), (">", 4, "C"), ("<", 5, "D")]
+  -- #guard_msgs in
+  -- #eval solve_game 3 [1, 2, 3] [(">", 1, "D"), ("<", 2, "C"), ("=", 3, "D"), (">", 4, "C"), ("<", 5, "D")]
   
-  /--
+  /-
   info: 'DD'
   -/
-  #guard_msgs in
-  #eval solve_game 2 [1, 2] [("=", 1, "D"), ("=", 2, "C")]
+  -- #guard_msgs in
+  -- #eval solve_game 2 [1, 2] [("=", 1, "D"), ("=", 2, "C")]
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   If you like cryptography and playing cards, have also a look at the kata [Card-Chameleon, a Cipher with Playing cards](http://www.codewars.com/kata/card-chameleon-a-cipher-with-playing-cards).
   
   As a secret agent, you need a method to transmit a message to another secret agent. But an encrypted text written on a notebook will be suspicious if you get caught. A simple deck of playing cards, however, is everything but suspicious...
@@ -138,6 +139,7 @@ vc-description: |-
   ## Logarithm
   
   With the logarithm function, we can know how many digits, in a numeral system of a certain base, are needed to represent a number. For example, `log base 2 of 52! = 225.58`, so we can store 225 bits of information in a deck of cards (and 226 bits are needed to represent the value of `52!`). Also, `log base 27 of 52! = 47.44`, so we can store [47](https://www.wolframalpha.com/input/?i=log+base+27+of+52!) characters of our alphabet in a deck of cards (and some message with 48 characters, but not all of them).
+  -/
 
 vc-preamble: |-
   def validCharSet : String → Bool := 

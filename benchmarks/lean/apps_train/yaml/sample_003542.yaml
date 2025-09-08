@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   This is simple version of harder [Square Sums](/kata/square-sums).
   
   # Square sums
@@ -40,6 +41,7 @@ vc-description: |-
   # Have fun!
   
   Harder version of this Kata is [here](/kata/square-sums).
+  -/
 
 vc-preamble: |-
   def is_perfect_square (n : Nat) : Bool :=
@@ -76,29 +78,29 @@ vc-theorems: |-
     (square_sums_row 24 = none) :=
     sorry
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval square_sums_row 5
+  -- #guard_msgs in
+  -- #eval square_sums_row 5
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval square_sums_row 24
+  -- #guard_msgs in
+  -- #eval square_sums_row 24
   
-  /--
+  /-
   info: 15
   -/
-  #guard_msgs in
-  #eval len square_sums_row(15)
+  -- #guard_msgs in
+  -- #eval len square_sums_row(15)
   
-  /--
+  /-
   info: list(range(1, 16))
   -/
-  #guard_msgs in
-  #eval sorted result
+  -- #guard_msgs in
+  -- #eval sorted result
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There is a strange printer with the following two special requirements:
   
   On each turn, the printer will print a solid rectangular pattern of a single color on the grid. This will cover up the existing colors in the rectangle.
@@ -31,6 +32,7 @@ vc-description: |-
   n == targetGrid[i].length
   1 <= m, n <= 60
   1 <= targetGrid[row][col] <= 60
+  -/
 
 vc-preamble: |-
   def Grid := List (List Nat)
@@ -82,23 +84,23 @@ vc-theorems: |-
     (isPrintable [[1,2], [2,1]] = false) :=
   sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval isPrintable [[1, 1, 1, 1], [1, 2, 2, 1], [1, 2, 2, 1], [1, 1, 1, 1]]
+  -- #guard_msgs in
+  -- #eval isPrintable [[1, 1, 1, 1], [1, 2, 2, 1], [1, 2, 2, 1], [1, 1, 1, 1]]
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval isPrintable [[1, 1, 1, 1], [1, 1, 3, 3], [1, 1, 3, 4], [5, 5, 1, 4]]
+  -- #guard_msgs in
+  -- #eval isPrintable [[1, 1, 1, 1], [1, 1, 3, 3], [1, 1, 3, 4], [5, 5, 1, 4]]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval isPrintable [[1, 2, 1], [2, 1, 2], [1, 2, 1]]
+  -- #guard_msgs in
+  -- #eval isPrintable [[1, 2, 1], [2, 1, 2], [1, 2, 1]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

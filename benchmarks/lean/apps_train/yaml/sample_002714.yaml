@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   >When no more interesting kata can be resolved, I just choose to create the new kata, to solve their own, to enjoy the process  --myjinxin2015 said
   
   # Description:
@@ -29,6 +30,7 @@ vc-description: |-
    findLongest("))((") === 0
    findLongest("") === 0
    ```
+  -/
 
 vc-preamble: |-
   def findLongest (s : String) : Nat :=
@@ -80,23 +82,23 @@ vc-theorems: |-
     findLongest s = 2 * n :=
   sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_longest ")()"
+  -- #guard_msgs in
+  -- #eval find_longest ")()"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_longest "((()"
+  -- #guard_msgs in
+  -- #eval find_longest "((()"
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval find_longest "())(()))"
+  -- #guard_msgs in
+  -- #eval find_longest "())(()))"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

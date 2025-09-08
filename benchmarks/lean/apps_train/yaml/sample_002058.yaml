@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this problem, we will deal with binary strings. Each character of a binary string is either a 0 or a 1. We will also deal with substrings; recall that a substring is a contiguous subsequence of a string. We denote the substring of string $s$ starting from the $l$-th character and ending with the $r$-th character as $s[l \dots r]$. The characters of each string are numbered from $1$.
   
   We can perform several operations on the strings we consider. Each operation is to choose a substring of our string and replace it with another string. There are two possible types of operations: replace 011 with 110, or replace 110 with 011. For example, if we apply exactly one operation to the string 110011110, it can be transformed into 011011110, 110110110, or 110011011.
@@ -34,6 +35,7 @@ vc-description: |-
   Yes
   Yes
   No
+  -/
 
 vc-preamble: |-
 
@@ -72,23 +74,23 @@ vc-theorems: |-
     check_reachable t [(1, 1, 1)] = ["Yes"] :=
   sorry
   
-  /--
+  /-
   info: ['Yes', 'Yes', 'No']
   -/
-  #guard_msgs in
-  #eval check_reachable "11011" [(1, 3, 3), (1, 4, 2), (1, 2, 3)]
+  -- #guard_msgs in
+  -- #eval check_reachable "11011" [(1, 3, 3), (1, 4, 2), (1, 2, 3)]
   
-  /--
+  /-
   info: ['Yes']
   -/
-  #guard_msgs in
-  #eval check_reachable "0" [(1, 1, 1)]
+  -- #guard_msgs in
+  -- #eval check_reachable "0" [(1, 1, 1)]
   
-  /--
+  /-
   info: ['Yes', 'Yes', 'No']
   -/
-  #guard_msgs in
-  #eval check_reachable "010" [(1, 3, 1), (1, 3, 1), (3, 2, 1)]
+  -- #guard_msgs in
+  -- #eval check_reachable "010" [(1, 3, 1), (1, 3, 1), (3, 2, 1)]
 
 vc-postamble: |-
   -- Apps difficulty: competition

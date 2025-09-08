@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function called `sumIntervals`/`sum_intervals()` that accepts an array of intervals, and returns the sum of all the interval lengths. Overlapping intervals should only be counted once.
   
   ### Intervals
@@ -36,6 +37,7 @@ vc-description: |-
     (1, 4), (3, 6), (2, 8)
   });  // (1,8) => 7
   ```
+  -/
 
 vc-preamble: |-
   def sumOfIntervals (intervals: List (Int × Int)) : Int :=
@@ -89,23 +91,23 @@ vc-theorems: |-
       let normalized := normalizeIntervals intervals
       sumOfIntervals normalized ≤ sumLengths normalized := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval sum_of_intervals [[1, 5]]
+  -- #guard_msgs in
+  -- #eval sum_of_intervals [[1, 5]]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval sum_of_intervals [[1, 2], [3, 5]]
+  -- #guard_msgs in
+  -- #eval sum_of_intervals [[1, 2], [3, 5]]
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval sum_of_intervals [[1, 4], [3, 6], [2, 8]]
+  -- #guard_msgs in
+  -- #eval sum_of_intervals [[1, 4], [3, 6], [2, 8]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

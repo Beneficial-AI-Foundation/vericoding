@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In your class, you have started lessons about "arithmetic progression". Because you are also a programmer, you have decided to write a function.
   
   This function, arithmetic_sequence_sum(a, r, n), should return the sum of the first (n) elements of a sequence in which each element is the sum of the given integer (a), and a number of occurences of the given integer (r), based on the element's position within the sequence.
@@ -12,6 +13,7 @@ vc-description: |-
   a + (a+r) + (a+r+r) + (a+r+r+r) + (a+r+r+r+r) 
   2 + (2+3) + (2+3+3) + (2+3+3+3) + (2+3+3+3+3) = 40
   ```
+  -/
 
 vc-preamble: |-
   def sum_ints (xs : List Int) : Int :=
@@ -46,23 +48,23 @@ vc-theorems: |-
     arithmetic_sequence_sum a r n = arithmetic_sequence_sum last (-r) n :=
     sorry
   
-  /--
+  /-
   info: 440
   -/
-  #guard_msgs in
-  #eval arithmetic_sequence_sum 3 2 20
+  -- #guard_msgs in
+  -- #eval arithmetic_sequence_sum 3 2 20
   
-  /--
+  /-
   info: 110
   -/
-  #guard_msgs in
-  #eval arithmetic_sequence_sum 2 2 10
+  -- #guard_msgs in
+  -- #eval arithmetic_sequence_sum 2 2 10
   
-  /--
+  /-
   info: -80
   -/
-  #guard_msgs in
-  #eval arithmetic_sequence_sum 1 -2 10
+  -- #guard_msgs in
+  -- #eval arithmetic_sequence_sum 1 -2 10
 
 vc-postamble: |-
   -- Apps difficulty: introductory

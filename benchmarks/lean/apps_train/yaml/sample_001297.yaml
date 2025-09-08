@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a sequence a1, a2, ..., aN. Find the smallest possible value of ai + aj, where 1 ≤ i < j ≤ N.
   
   -----Input-----
@@ -28,6 +29,7 @@ vc-description: |-
   
   -----Explanation-----
   Here we pick a2 and a3. Their sum equals to 1 + 3 = 4.
+  -/
 
 vc-preamble: |-
 
@@ -58,23 +60,23 @@ vc-theorems: |-
     find_min_pair_sum 1 [x] = find_min_pair_sum 1 [x] → False :=
     sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval find_min_pair_sum 4 [5, 1, 3, 4]
+  -- #guard_msgs in
+  -- #eval find_min_pair_sum 4 [5, 1, 3, 4]
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval find_min_pair_sum 5 [10, 2, 3, 8, 5]
+  -- #guard_msgs in
+  -- #eval find_min_pair_sum 5 [10, 2, 3, 8, 5]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_min_pair_sum 3 [1000000, 1, 2]
+  -- #guard_msgs in
+  -- #eval find_min_pair_sum 3 [1000000, 1, 2]
 
 vc-postamble: |-
   -- Apps difficulty: interview

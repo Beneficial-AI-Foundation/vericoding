@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Background
   
   My pet bridge-maker ants are marching across a terrain from left to right.
@@ -71,6 +72,7 @@ vc-description: |-
   ...until all ants get to the other side                
                      EDCBAGF
   ------------...-----------
+  -/
 
 vc-preamble: |-
 
@@ -105,23 +107,23 @@ vc-theorems: |-
       ant_bridge ants (String.mk (List.replicate n '-')) = ants :=
     sorry
   
-  /--
+  /-
   info: 'GFEDCBA'
   -/
-  #guard_msgs in
-  #eval ant_bridge "GFEDCBA" "-----------------------"
+  -- #guard_msgs in
+  -- #eval ant_bridge "GFEDCBA" "-----------------------"
   
-  /--
+  /-
   info: 'EDCBAGF'
   -/
-  #guard_msgs in
-  #eval ant_bridge "GFEDCBA" "------------...-----------"
+  -- #guard_msgs in
+  -- #eval ant_bridge "GFEDCBA" "------------...-----------"
   
-  /--
+  /-
   info: 'CBA'
   -/
-  #guard_msgs in
-  #eval ant_bridge "CBA" "--.--.---"
+  -- #guard_msgs in
+  -- #eval ant_bridge "CBA" "--.--.---"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

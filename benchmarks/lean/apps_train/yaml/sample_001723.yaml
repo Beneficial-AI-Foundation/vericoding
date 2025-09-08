@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Alice, Samantha, and Patricia are relaxing on the porch, when Alice suddenly says: _"I'm thinking of two numbers, both greater than or equal to 2. I shall tell Samantha the sum of the two numbers and Patricia the product of the two numbers."_ 
   
   She takes Samantha aside and whispers in her ear the sum so that Patricia cannot hear it. Then she takes Patricia aside and whispers in her ear the product so that Samantha cannot hear it.
@@ -24,6 +25,7 @@ vc-description: |-
   Finally, it is to you to figure out what two numbers Alice was thinking of. Since there are multiple solutions, you must write a function `is_solution(a, b)` that returns `True` if and only if `a` and `b` could have been two numbers that Alice was thinking of.
   
   Hint: To get you started, think of what Samantha's first statement implies. Samantha knows that Patricia was not given the product of two primes. That means that the sum that Samantha was given cannot be written as the sum of two primes. Goldbach's conjecture stipulates that every even number greater than 3 can be written as the sum of two primes. Although Goldbach's conjecture has not yet been proven, you may assume that it has been verified for all numbers involved in the test cases here. So we know that the sum that Samantha was given must be odd. The only way to write an odd number as the sum of two primes is when one of the primes is 2, the only even prime. This means that the number given to Samantha is not the sum of 2 and a prime.
+  -/
 
 vc-preamble: |-
   def is_prime (n : Nat) : Bool :=
@@ -77,23 +79,23 @@ vc-theorems: |-
   theorem is_solution_constraints {a b : Nat} (h₁ : (a + b) % 2 = 0 ∨ is_prime (a * b)) :
     is_solution a b = false := sorry
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval statement1 6
+  -- #guard_msgs in
+  -- #eval statement1 6
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval statement2 15
+  -- #guard_msgs in
+  -- #eval statement2 15
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_solution 5 4
+  -- #guard_msgs in
+  -- #eval is_solution 5 4
 
 vc-postamble: |-
   -- Apps difficulty: interview

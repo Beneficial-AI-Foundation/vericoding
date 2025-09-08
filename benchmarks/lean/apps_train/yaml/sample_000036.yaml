@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   It is lunch time for Mole. His friend, Marmot, prepared him a nice game for lunch.
   
   Marmot brought Mole n ordered piles of worms such that i-th pile contains a_{i} worms. He labeled all these worms with consecutive integers: worms in first pile are labeled with numbers 1 to a_1, worms in second pile are labeled with numbers a_1 + 1 to a_1 + a_2 and so on. See the example for a better understanding.
@@ -38,6 +39,7 @@ vc-description: |-
   For the sample input:
   
     The worms with labels from [1, 2] are in the first pile.  The worms with labels from [3, 9] are in the second pile.  The worms with labels from [10, 12] are in the third pile.  The worms with labels from [13, 16] are in the fourth pile.  The worms with labels from [17, 25] are in the fifth pile.
+  -/
 
 vc-preamble: |-
   def List.sum (xs : List Nat) : Nat :=
@@ -111,17 +113,17 @@ vc-theorems: |-
       find_pile_numbers 1 [pile_size] 1 [1] = [1] :=
     sorry
   
-  /--
+  /-
   info: [1, 5, 3]
   -/
-  #guard_msgs in
-  #eval find_pile_numbers 5 [2, 7, 3, 4, 9] 3 [1, 25, 11]
+  -- #guard_msgs in
+  -- #eval find_pile_numbers 5 [2, 7, 3, 4, 9] 3 [1, 25, 11]
   
-  /--
+  /-
   info: [2, 3]
   -/
-  #guard_msgs in
-  #eval find_pile_numbers 3 [1, 2, 3] 2 [2, 6]
+  -- #guard_msgs in
+  -- #eval find_pile_numbers 3 [1, 2, 3] 2 [2, 6]
 
 vc-postamble: |-
   -- Apps difficulty: interview

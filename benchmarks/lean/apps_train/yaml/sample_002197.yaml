@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are N towns located in a line, conveniently numbered 1 through N. Takahashi the merchant is going on a travel from town 1 to town N, buying and selling apples.
   Takahashi will begin the travel at town 1, with no apple in his possession. The actions that can be performed during the travel are as follows:
    - Move: When at town i (i < N), move to town i + 1.
@@ -37,6 +38,7 @@ vc-description: |-
    - Sell one apple for 200 yen at town 3.
   If, for example, Aoki changes the price of an apple at town 2 from 50 yen to 51 yen, Takahashi will not be able to achieve the profit of 150 yen. The cost of performing this operation is 1, thus the answer is 1.
   There are other ways to decrease Takahashi's expected profit, such as changing the price of an apple at town 3 from 200 yen to 199 yen.
+  -/
 
 vc-preamble: |-
   def List.maximum' (l : List Nat) : Nat := 
@@ -77,23 +79,23 @@ vc-theorems: |-
     (h4 : 2 ≤ N ∧ N ≤ 100) :
     solve N T A ≤ N := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve 3 2 [100, 50, 200]
+  -- #guard_msgs in
+  -- #eval solve 3 2 [100, 50, 200]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve 5 8 [50, 30, 40, 10, 20]
+  -- #guard_msgs in
+  -- #eval solve 5 8 [50, 30, 40, 10, 20]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve 10 100 [7, 10, 4, 5, 9, 3, 6, 8, 2, 1]
+  -- #guard_msgs in
+  -- #eval solve 10 100 [7, 10, 4, 5, 9, 3, 6, 8, 2, 1]
 
 vc-postamble: |-
   -- Apps difficulty: competition

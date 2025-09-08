@@ -1,0 +1,53 @@
+/-
+At the start of each season, every player in a football team is assigned their own unique squad number. Due to superstition or their history certain numbers are more desirable than others.
+
+Write a function generateNumber() that takes two arguments, an array of the current squad numbers (squad) and the new player's desired number (n). If the new player's desired number is not already taken, return n, else if the desired number can be formed by adding two digits between 1 and 9, return the number formed by joining these two digits together. E.g. If 2 is taken, return 11 because 1 + 1 = 2. Otherwise return null. 
+
+Note: Often there will be several different ways to form a replacement number. In these cases the number with lowest first digit should be given priority. E.g. If n = 15, but squad already contains 15, return 69, not 78.
+-/
+
+def sumOfDigits (n : Nat) : Nat :=
+  sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def generate_number (squad : List Nat) (target : Nat) : Option Nat := 
+  sorry
+
+theorem generate_number_bounds {squad : List Nat} {n : Nat} :
+  1 ≤ n → n ≤ 99 → 
+  ∀ result, generate_number squad n = some result → 
+  1 ≤ result ∧ result ≤ 99 := 
+  sorry
+
+theorem generate_number_not_in_squad {squad : List Nat} {n : Nat} :
+  ∀ result, generate_number squad n = some result →
+  result ∉ squad :=
+  sorry
+
+theorem generate_number_digits_sum {squad : List Nat} {n : Nat} :
+  ∀ result, generate_number squad n = some result → 
+  result ≠ n → sumOfDigits result = n :=
+  sorry
+
+/-
+info: 34
+-/
+-- #guard_msgs in
+-- #eval generate_number [1, 2, 3, 4, 6, 9, 10, 15, 69] 34
+
+/-
+info: 29
+-/
+-- #guard_msgs in
+-- #eval generate_number [1, 2, 3, 4, 6, 9, 10, 11, 15, 69] 11
+
+/-
+info: None
+-/
+-- #guard_msgs in
+-- #eval generate_number [1, 2, 3, 4, 6, 9, 10, 11, 15, 29, 38, 47, 56, 65, 69, 74, 83, 92] 11
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a binary string s and an integer k.
   Return True if every binary code of length k is a substring of s. Otherwise, return False.
   
@@ -30,6 +31,7 @@ vc-description: |-
   1 <= s.length <= 5 * 10^5
   s consists of 0's and 1's only.
   1 <= k <= 20
+  -/
 
 vc-preamble: |-
 
@@ -58,23 +60,23 @@ vc-theorems: |-
     has_all_codes s k = true →
     (has_all_codes (s ++ "0") k = true ∧ has_all_codes ("0" ++ s) k = true) := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval has_all_codes "00110110" 2
+  -- #guard_msgs in
+  -- #eval has_all_codes "00110110" 2
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval has_all_codes "0110" 2
+  -- #guard_msgs in
+  -- #eval has_all_codes "0110" 2
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval has_all_codes "0110" 1
+  -- #guard_msgs in
+  -- #eval has_all_codes "0110" 1
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,7 +1,9 @@
 vc-description: |-
+  /-
   Please write a function that sums a list, but ignores any duplicate items in the list.
   
   For instance, for the list [3, 4, 3, 6] , the function should return 10.
+  -/
 
 vc-preamble: |-
 
@@ -43,23 +45,23 @@ vc-theorems: |-
     sum_no_duplicates (nums ++ nums) = 0 :=
   sorry
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval sum_no_duplicates [3, 4, 3, 6]
+  -- #guard_msgs in
+  -- #eval sum_no_duplicates [3, 4, 3, 6]
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval sum_no_duplicates [1, 1, 2, 3]
+  -- #guard_msgs in
+  -- #eval sum_no_duplicates [1, 1, 2, 3]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval sum_no_duplicates []
+  -- #guard_msgs in
+  -- #eval sum_no_duplicates []
 
 vc-postamble: |-
   -- Apps difficulty: introductory

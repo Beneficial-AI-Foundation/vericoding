@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The rgb function is incomplete. Complete it so that passing in RGB decimal values will result in a hexadecimal representation being returned. Valid decimal values for RGB are 0 - 255. Any values that fall out of that range must be rounded to the closest valid value.
   
   Note: Your answer should always be 6 characters long, the shorthand with 3 will not work here.
@@ -15,6 +16,7 @@ vc-description: |-
   char \*rgb(int r, int g, int b, char \*outp)
   
   ```
+  -/
 
 vc-preamble: |-
   def isHexDigit (c : Char) : Bool := sorry
@@ -62,23 +64,23 @@ vc-theorems: |-
     rgb r g b = "FFFFFF"
     := sorry
   
-  /--
+  /-
   info: '000000'
   -/
-  #guard_msgs in
-  #eval rgb 0 0 0
+  -- #guard_msgs in
+  -- #eval rgb 0 0 0
   
-  /--
+  /-
   info: '010203'
   -/
-  #guard_msgs in
-  #eval rgb 1 2 3
+  -- #guard_msgs in
+  -- #eval rgb 1 2 3
   
-  /--
+  /-
   info: '00FF7D'
   -/
-  #guard_msgs in
-  #eval rgb -20 275 125
+  -- #guard_msgs in
+  -- #eval rgb -20 275 125
 
 vc-postamble: |-
   -- Apps difficulty: introductory

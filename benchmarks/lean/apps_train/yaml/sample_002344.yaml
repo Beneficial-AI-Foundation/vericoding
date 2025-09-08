@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an integer, write an algorithm to convert it to hexadecimal. For negative integer, two’s complement method is used.
   
   Note:
@@ -23,11 +24,12 @@ vc-description: |-
   
   Output:
   "ffffffff"
+  -/
 
 vc-preamble: |-
   def to_hex (n : Int) : String := sorry
   
-  /-- Helper function to convert hex string to number (just for theorem statements) -/
+  /- Helper function to convert hex string to number (just for theorem statements) -/
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -62,23 +64,23 @@ vc-theorems: |-
     let result := to_hex n
     1 ≤ result.length ∧ result.length ≤ 8 := sorry
   
-  /--
+  /-
   info: '1a'
   -/
-  #guard_msgs in
-  #eval to_hex 26
+  -- #guard_msgs in
+  -- #eval to_hex 26
   
-  /--
+  /-
   info: 'ffffffff'
   -/
-  #guard_msgs in
-  #eval to_hex -1
+  -- #guard_msgs in
+  -- #eval to_hex -1
   
-  /--
+  /-
   info: '0'
   -/
-  #guard_msgs in
-  #eval to_hex 0
+  -- #guard_msgs in
+  -- #eval to_hex 0
 
 vc-postamble: |-
   -- Apps difficulty: introductory

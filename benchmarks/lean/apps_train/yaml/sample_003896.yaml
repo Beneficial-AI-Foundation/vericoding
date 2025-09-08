@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this kata you will create a function that takes a list of non-negative integers and strings and returns a new list with the strings filtered out.
   
   ### Example
@@ -8,6 +9,7 @@ vc-description: |-
   filter_list([1,'a','b',0,15]) == [1,0,15]
   filter_list([1,2,'aasf','1','123',123]) == [1,2,123]
   ```
+  -/
 
 vc-preamble: |-
 
@@ -36,23 +38,23 @@ vc-theorems: |-
   theorem filter_list_maintains_order (lst : List Int) :
     filter_list lst = lst := sorry
   
-  /--
+  /-
   info: [1, 2]
   -/
-  #guard_msgs in
-  #eval filter_list [1, 2, "a", "b"]
+  -- #guard_msgs in
+  -- #eval filter_list [1, 2, "a", "b"]
   
-  /--
+  /-
   info: [1, 0, 15]
   -/
-  #guard_msgs in
-  #eval filter_list [1, "a", "b", 0, 15]
+  -- #guard_msgs in
+  -- #eval filter_list [1, "a", "b", 0, 15]
   
-  /--
+  /-
   info: [1, 2, 123]
   -/
-  #guard_msgs in
-  #eval filter_list [1, 2, "aasf", "1", "123", 123]
+  -- #guard_msgs in
+  -- #eval filter_list [1, 2, "aasf", "1", "123", 123]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

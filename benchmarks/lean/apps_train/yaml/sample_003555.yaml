@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Introduction
   
   The Condi (Consecutive Digraphs) cipher was introduced by G4EGG (Wilfred Higginson) in 2011. The cipher preserves word divisions, and is simple to describe and encode, but it's surprisingly difficult to crack. 
@@ -38,6 +39,7 @@ vc-description: |-
   - Don't forget to remove the duplicated letters from the `key` except for the first occurrence 
   - Characters which do not exist in the `key alphabet` should be coppied to the output string exactly like they appear in the `message` string
   - Check the test cases for samples
+  -/
 
 vc-preamble: |-
   def encode (message : String) (key : String) (shift : Int) : String :=
@@ -72,29 +74,29 @@ vc-theorems: |-
       (encode message key shift).data.get ⟨i, sorry⟩ = message.data.get ⟨i, h3⟩ :=
   sorry
   
-  /--
+  /-
   info: 'jx'
   -/
-  #guard_msgs in
-  #eval encode "on" "cryptogram" 10
+  -- #guard_msgs in
+  -- #eval encode "on" "cryptogram" 10
   
-  /--
+  /-
   info: msg
   -/
-  #guard_msgs in
-  #eval decode "jx" key shift
+  -- #guard_msgs in
+  -- #eval decode "jx" key shift
   
-  /--
+  /-
   info: msg
   -/
-  #guard_msgs in
-  #eval decode encode(msg, key, shift) "keyword" 5
+  -- #guard_msgs in
+  -- #eval decode encode(msg, key, shift) "keyword" 5
   
-  /--
+  /-
   info: msg
   -/
-  #guard_msgs in
-  #eval decode encode(msg, key, shift) "secret" 7
+  -- #guard_msgs in
+  -- #eval decode encode(msg, key, shift) "secret" 7
 
 vc-postamble: |-
   -- Apps difficulty: introductory

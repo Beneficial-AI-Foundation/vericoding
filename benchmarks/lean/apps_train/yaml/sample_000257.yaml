@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an equation, represented by words on left side and the result on right side.
   You need to check if the equation is solvable under the following rules:
   
@@ -33,6 +34,7 @@ vc-description: |-
   1 <= words[i].length, result.length <= 7
   words[i], result contains only upper case English letters.
   Number of different characters used on the expression is at most 10.
+  -/
 
 vc-preamble: |-
   def Solution := String

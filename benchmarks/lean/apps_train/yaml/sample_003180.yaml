@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given two integers `a` and `x`, return the minimum non-negative number to **add to** / **subtract from** `a` to make it a multiple of `x`.
   
   ```python
@@ -15,6 +16,7 @@ vc-description: |-
   **1 <= a <= 10^(6)**
   
   **1 <= x <= 10^(5)**
+  -/
 
 vc-preamble: |-
   def abs (x : Int) : Int :=
@@ -33,23 +35,23 @@ vc-theorems: |-
     (a + minimum a x) % x = 0 ∨ (a - minimum a x) % x = 0 :=
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval minimum 9 4
+  -- #guard_msgs in
+  -- #eval minimum 9 4
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval minimum 10 6
+  -- #guard_msgs in
+  -- #eval minimum 10 6
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval minimum 15 5
+  -- #guard_msgs in
+  -- #eval minimum 15 5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

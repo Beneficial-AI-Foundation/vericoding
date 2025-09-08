@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Watchmen are in a danger and Doctor Manhattan together with his friend Daniel Dreiberg should warn them as soon as possible. There are n watchmen on a plane, the i-th watchman is located at point (x_{i}, y_{i}).
   
   They need to arrange a plan, but there are some difficulties on their way. As you know, Doctor Manhattan considers the distance between watchmen i and j to be |x_{i} - x_{j}| + |y_{i} - y_{j}|. Daniel, as an ordinary person, calculates the distance using the formula $\sqrt{(x_{i} - x_{j})^{2} +(y_{i} - y_{j})^{2}}$.
@@ -42,6 +43,7 @@ vc-description: |-
   -----Note-----
   
   In the first sample, the distance between watchman 1 and watchman 2 is equal to |1 - 7| + |1 - 5| = 10 for Doctor Manhattan and $\sqrt{(1 - 7)^{2} +(1 - 5)^{2}} = 2 \cdot \sqrt{13}$ for Daniel. For pairs (1, 1), (1, 5) and (7, 5), (1, 5) Doctor Manhattan and Daniel will calculate the same distances.
+  -/
 
 vc-preamble: |-
   def Point := List Int
@@ -75,23 +77,23 @@ vc-theorems: |-
     (∀ p, List.elem p points ↔ List.elem p points') →
     countEqualDistances points = countEqualDistances points' := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_equal_distances [[1, 1], [7, 5], [1, 5]]
+  -- #guard_msgs in
+  -- #eval count_equal_distances [[1, 1], [7, 5], [1, 5]]
   
-  /--
+  /-
   info: 11
   -/
-  #guard_msgs in
-  #eval count_equal_distances [[0, 0], [0, 1], [0, 2], [-1, 1], [0, 1], [1, 1]]
+  -- #guard_msgs in
+  -- #eval count_equal_distances [[0, 0], [0, 1], [0, 2], [-1, 1], [0, 1], [1, 1]]
   
-  /--
+  /-
   info: 33
   -/
-  #guard_msgs in
-  #eval count_equal_distances [[46, -55], [46, 45], [46, 45], [83, -55], [46, 45], [83, -55], [46, 45], [83, 45], [83, 45], [46, -55]]
+  -- #guard_msgs in
+  -- #eval count_equal_distances [[46, -55], [46, 45], [46, 45], [83, -55], [46, 45], [83, -55], [46, 45], [83, 45], [83, 45], [46, -55]]
 
 vc-postamble: |-
   -- Apps difficulty: competition

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Cheffina challanges chef to rearrange the given array as arr[i] > arr[i+1] < arr[i+2] > arr[i+3].. and so on…, i.e. also arr[i] < arr[i+2] and arr[i+1] < arr[i+3] and arr[i] < arr[i+3] so on.. Chef accepts the challenge, chef starts coding but his code is not compiling help him to write new code.
   
   -----Input:-----
@@ -24,6 +25,7 @@ vc-description: |-
   -----Sample Output:-----
   3 1 6 4
   3 1 5 4 6
+  -/
 
 vc-preamble: |-
 

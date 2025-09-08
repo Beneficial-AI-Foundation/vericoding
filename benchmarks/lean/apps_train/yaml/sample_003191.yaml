@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function 
   
   `titleToNumber(title) or title_to_number(title) or titleToNb title ...`
@@ -13,6 +14,7 @@ vc-description: |-
   titleTonumber('Z') === 26
   titleTonumber('AA') === 27
   ```
+  -/
 
 vc-preamble: |-
 
@@ -35,23 +37,23 @@ vc-theorems: |-
     (h2 : 'A' ≤ c ∧ c ≤ 'Z') :
     titleToNumber (s.push c) = titleToNumber s * 26 + (c.toNat - 'A'.toNat + 1) := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval title_to_number "A"
+  -- #guard_msgs in
+  -- #eval title_to_number "A"
   
-  /--
+  /-
   info: 26
   -/
-  #guard_msgs in
-  #eval title_to_number "Z"
+  -- #guard_msgs in
+  -- #eval title_to_number "Z"
   
-  /--
+  /-
   info: 27
   -/
-  #guard_msgs in
-  #eval title_to_number "AA"
+  -- #guard_msgs in
+  -- #eval title_to_number "AA"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

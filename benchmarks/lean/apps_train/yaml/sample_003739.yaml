@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Rock Paper Scissors
   
   Let's play! You have to return which player won! In case of a draw return `Draw!`.
@@ -6,6 +7,7 @@ vc-description: |-
   Examples:
   
   ![rockpaperscissors](http://i.imgur.com/aimOQVX.png)
+  -/
 
 vc-preamble: |-
 
@@ -34,23 +36,23 @@ vc-theorems: |-
     | Outcome.player2Wins => True
     | Outcome.draw => True := sorry
   
-  /--
+  /-
   info: 'Player 1 won!'
   -/
-  #guard_msgs in
-  #eval rps "rock" "scissors"
+  -- #guard_msgs in
+  -- #eval rps "rock" "scissors"
   
-  /--
+  /-
   info: 'Player 2 won!'
   -/
-  #guard_msgs in
-  #eval rps "scissors" "rock"
+  -- #guard_msgs in
+  -- #eval rps "scissors" "rock"
   
-  /--
+  /-
   info: 'Draw!'
   -/
-  #guard_msgs in
-  #eval rps "rock" "rock"
+  -- #guard_msgs in
+  -- #eval rps "rock" "rock"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

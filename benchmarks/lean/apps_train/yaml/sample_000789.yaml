@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Zaikia has $N$ sticks of distinct positive lengths $A_1,A_2,\dots,A_N$. For no good reason at all, he wants to know if there is a triplet of sticks which when connected end-to-end will form a non-trivial triangle. Here non-trivial refers to a triangle with positive area.
   Help Zaikia know if such a triplet exists or not. If such a triplet exists, help him find the lexicographically largest applicable triplet.Input
   - The first line contains an integer $N$.
@@ -28,6 +29,7 @@ vc-description: |-
   NO
   Explanation 2
   There are no triplets of sticks here that can be used to create a triangle.
+  -/
 
 vc-preamble: |-
   def find_largest_triangle (n : Nat) (nums : List Nat) : String × List Nat := sorry

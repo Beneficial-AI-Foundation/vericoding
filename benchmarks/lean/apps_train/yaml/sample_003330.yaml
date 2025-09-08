@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Scientists working internationally use metric units almost exclusively. Unless that is, they wish to crash multimillion dollars worth of equipment on Mars.
   
   Your task is to write a simple function that takes a number of meters, and outputs it using metric prefixes.
@@ -22,6 +23,7 @@ vc-description: |-
   ```
   
   See http://en.wikipedia.org/wiki/SI_prefix for a full list of prefixes
+  -/
 
 vc-preamble: |-
 
@@ -62,23 +64,23 @@ vc-theorems: |-
     meters 1000000 = "1Mm" :=
   sorry
   
-  /--
+  /-
   info: '5m'
   -/
-  #guard_msgs in
-  #eval meters 5
+  -- #guard_msgs in
+  -- #eval meters 5
   
-  /--
+  /-
   info: '51.5km'
   -/
-  #guard_msgs in
-  #eval meters 51500
+  -- #guard_msgs in
+  -- #eval meters 51500
   
-  /--
+  /-
   info: '5Mm'
   -/
-  #guard_msgs in
-  #eval meters 5000000
+  -- #guard_msgs in
+  -- #eval meters 5000000
 
 vc-postamble: |-
   -- Apps difficulty: introductory

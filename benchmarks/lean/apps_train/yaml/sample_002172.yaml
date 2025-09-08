@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given two integer sequences, each of length N: a_1, ..., a_N and b_1, ..., b_N.
   There are N^2 ways to choose two integers i and j such that 1 \leq i, j \leq N. For each of these N^2 pairs, we will compute a_i + b_j and write it on a sheet of paper.
   That is, we will write N^2 integers in total.
@@ -31,6 +32,7 @@ vc-description: |-
   2
   
   On the sheet, the following four integers will be written: 4(1+3), 5(1+4), 5(2+3) and 6(2+4).
+  -/
 
 vc-preamble: |-
 
@@ -42,48 +44,48 @@ vc-definitions: |-
   def compute_xor_sum (N : Nat) (A B : List Nat) : Nat :=
     sorry
   
-  /-- For any valid input arrays A and B of length N, the output is non-negative and less than 2^30 -/
+  /- For any valid input arrays A and B of length N, the output is non-negative and less than 2^30 -/
 
 vc-theorems: |-
   theorem output_bounds (N : Nat) (A B : List Nat) (h1 : A.length = N) (h2 : B.length = N) (h3 : ∀ x ∈ A, x ≤ 1000000) (h4 : ∀ x ∈ B, x ≤ 1000000) :
     compute_xor_sum N A B ≥ 0 ∧ compute_xor_sum N A B < 2^30 :=
     sorry
   
-  /-- The result is symmetric with respect to input arrays -/
+  /- The result is symmetric with respect to input arrays -/
   
   theorem symmetry (N : Nat) (A B : List Nat) (h1 : A.length = N) (h2 : B.length = N) :
     compute_xor_sum N A B = compute_xor_sum N B A :=
     sorry
   
-  /-- When both input arrays are identical, the result is even -/
+  /- When both input arrays are identical, the result is even -/
   
   theorem identical_arrays (N : Nat) (A : List Nat) (h : A.length = N) :
     2 ∣ compute_xor_sum N A A :=
     sorry
   
-  /-- When both input arrays contain only zeros, the result is zero -/
+  /- When both input arrays contain only zeros, the result is zero -/
   
   theorem zero_arrays (N : Nat) :
     compute_xor_sum N (List.replicate N 0) (List.replicate N 0) = 0 :=
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval compute_xor_sum 2 [1, 2] [3, 4]
+  -- #guard_msgs in
+  -- #eval compute_xor_sum 2 [1, 2] [3, 4]
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval compute_xor_sum 6 [4, 6, 0, 0, 3, 3] [0, 5, 6, 5, 0, 3]
+  -- #guard_msgs in
+  -- #eval compute_xor_sum 6 [4, 6, 0, 0, 3, 3] [0, 5, 6, 5, 0, 3]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval compute_xor_sum 5 [1, 2, 3, 4, 5] [1, 2, 3, 4, 5]
+  -- #guard_msgs in
+  -- #eval compute_xor_sum 5 [1, 2, 3, 4, 5] [1, 2, 3, 4, 5]
 
 vc-postamble: |-
   -- Apps difficulty: competition

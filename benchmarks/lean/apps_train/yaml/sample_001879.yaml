@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Find the minimum length word from a given dictionary words, which has all the letters from the string licensePlate.  Such a word is said to complete the given string licensePlate
   
   Here, for letters we ignore case.  For example, "P" on the licensePlate still matches "p" on the word.
@@ -28,6 +29,7 @@ vc-description: |-
   licensePlate will contain digits, spaces, or letters (uppercase or lowercase).
   words will have a length in the range [10, 1000].
   Every words[i] will consist of lowercase letters, and have length in range [1, 15].
+  -/
 
 vc-preamble: |-
   def shortestCompletingWord (licensePlate : String) (words : List String) : Option String := sorry
@@ -61,23 +63,23 @@ vc-theorems: |-
   theorem ignore_non_alpha (words : List String) :
     shortestCompletingWord "A1B2C3" words = shortestCompletingWord "ABC" words := sorry
   
-  /--
+  /-
   info: 'steps'
   -/
-  #guard_msgs in
-  #eval shortestCompletingWord "1s3 PSt" ["step", "steps", "stripe", "stepple"]
+  -- #guard_msgs in
+  -- #eval shortestCompletingWord "1s3 PSt" ["step", "steps", "stripe", "stepple"]
   
-  /--
+  /-
   info: 'pest'
   -/
-  #guard_msgs in
-  #eval shortestCompletingWord "1s3 456" ["looks", "pest", "stew", "show"]
+  -- #guard_msgs in
+  -- #eval shortestCompletingWord "1s3 456" ["looks", "pest", "stew", "show"]
   
-  /--
+  /-
   info: 'supper'
   -/
-  #guard_msgs in
-  #eval shortestCompletingWord "PP" ["pair", "supper"]
+  -- #guard_msgs in
+  -- #eval shortestCompletingWord "PP" ["pair", "supper"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A group of friends (n >= 2) have reunited for a get-together after 
   a very long time. 
   
@@ -33,6 +34,7 @@ vc-description: |-
          {'person': 'Damu', 'dest': ['Paris']}]
   
   ```
+  -/
 
 vc-preamble: |-
 
@@ -83,23 +85,23 @@ vc-theorems: |-
     presentation_agenda friend_list = [] :=
     sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval presentation_agenda [{"person": "Abe", "dest": ["London", "Dubai"]}, {"person": "Bond", "dest": ["Melbourne", "Dubai"]}]
+  -- #guard_msgs in
+  -- #eval presentation_agenda [{"person": "Abe", "dest": ["London", "Dubai"]}, {"person": "Bond", "dest": ["Melbourne", "Dubai"]}]
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval presentation_agenda [{"person": "Abe", "dest": ["Dubai"]}, {"person": "Brad", "dest": ["Dubai"]}]
+  -- #guard_msgs in
+  -- #eval presentation_agenda [{"person": "Abe", "dest": ["Dubai"]}, {"person": "Brad", "dest": ["Dubai"]}]
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval presentation_agenda [{"person": "Abe", "dest": ["London", "Dubai"]}, {"person": "Bond", "dest": ["Melbourne", "Dubai"]}, {"person": "Carrie", "dest": ["Melbourne"]}, {"person": "Damu", "dest": ["Melbourne", "Dubai", "Paris"]}]
+  -- #guard_msgs in
+  -- #eval presentation_agenda [{"person": "Abe", "dest": ["London", "Dubai"]}, {"person": "Bond", "dest": ["Melbourne", "Dubai"]}, {"person": "Carrie", "dest": ["Melbourne"]}, {"person": "Damu", "dest": ["Melbourne", "Dubai", "Paris"]}]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

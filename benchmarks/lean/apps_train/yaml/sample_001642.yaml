@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Spider-Man ("Spidey") needs to get across town for a date with Mary Jane and his web-shooter is low on web fluid. He travels by slinging his web rope to latch onto a building rooftop, allowing him to swing to the opposite end of the latch point.
   Write a function that, when given a list of buildings, returns a list of optimal rooftop latch points for minimal web expenditure.
   Input
@@ -26,6 +27,7 @@ vc-description: |-
   buildings = [[162,76], [205,96], [244,86], [212,68], [174,57], [180,89], [208,70], [214,82], [181,69], [203,67]]
   
   spidey_swings(buildings)# [76,258,457,643,748]
+  -/
 
 vc-preamble: |-
   def spidey_swings (buildings : BuildingParams) : List Int :=
@@ -72,11 +74,11 @@ vc-theorems: |-
     (spidey_swings buildings).getLast! < sum_widths buildings :=
   sorry
   
-  /--
+  /-
   info: [76, 258, 457, 643, 748]
   -/
-  #guard_msgs in
-  #eval spidey_swings [[162, 76], [205, 96], [244, 86], [212, 68], [174, 57], [180, 89], [208, 70], [214, 82], [181, 69], [203, 67]]
+  -- #guard_msgs in
+  -- #eval spidey_swings [[162, 76], [205, 96], [244, 86], [212, 68], [174, 57], [180, 89], [208, 70], [214, 82], [181, 69], [203, 67]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

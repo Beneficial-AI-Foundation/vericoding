@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You have a laser with P amount of energy in it. You are playing a game where you have to use the laser to destroy some crystals, each with some health of their own. Initially, you have 0 points.
   Each crystal has an associated health. The health of the ith crystal is given by health[i]. You can perform one of the two actions:
   - 
@@ -46,6 +47,7 @@ vc-description: |-
   
   -----Explanation:-----
   The laser has 150 energy. We can consume 100 energy and destroy the first crystal and gain 1 point. The remaining energy is 50, which is not enough to destroy the other crystal. We end the game here as we have the maximum possible points attainable.
+  -/
 
 vc-preamble: |-
   def game (n : Nat) (health : List Nat) (laser_energy : Nat) : Nat :=

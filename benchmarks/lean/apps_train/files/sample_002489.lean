@@ -1,0 +1,61 @@
+/-
+=====Problem Statement=====
+Integers in Python can be as big as the bytes in your machine's memory. There is no limit in size as there is: 2^31 - 1 (c++ int) or 2^63 - 1 (C++ long long int).
+As we know, a^b the result of grows really fast with increasing b.
+Let's do some calculations on very large integers.
+Task
+Read four numbers, a, b, c, and d, and print the result of a^b + c^d.
+
+=====Input Format=====
+Integers a, b, c, and d are given on four separate lines, respectively.
+
+=====Constraints=====
+1≤a≤1000
+1≤b≤1000
+1≤c≤1000
+1≤d≤1000
+
+=====Output Format=====
+Print the result of a^b + c^d on one line.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def calculate_power_sum (a b c d : Nat) : Nat := sorry
+
+theorem power_sum_nonneg (a b c d : Nat) : 
+  calculate_power_sum a b c d ≥ 0 := sorry
+
+theorem power_sum_is_powers (a b c d : Nat) :
+  calculate_power_sum a b c d = a^b + c^d := sorry
+
+theorem power_sum_symmetry (x n : Nat) :
+  calculate_power_sum x n x n = 2 * x^n := sorry  
+
+theorem power_sum_with_zero_right (a b c : Nat) :
+  calculate_power_sum a b c 0 = a^b + 1 := sorry
+
+theorem power_sum_with_zero_mid (a b c : Nat) :
+  calculate_power_sum a 0 c b = 1 + c^b := sorry
+
+/-
+info: 4710194409608608369201743232
+-/
+-- #guard_msgs in
+-- #eval calculate_power_sum 9 29 7 27
+
+/-
+info: 17
+-/
+-- #guard_msgs in
+-- #eval calculate_power_sum 2 3 3 2
+
+/-
+info: 50
+-/
+-- #guard_msgs in
+-- #eval calculate_power_sum 5 2 5 2
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded_and_plausible

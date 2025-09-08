@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a binary tree, find the leftmost value in the last row of the tree. 
   
   Example 1:
@@ -29,6 +30,7 @@ vc-description: |-
   
   Note:
   You may assume the tree (i.e., the given root node) is not NULL.
+  -/
 
 vc-preamble: |-
 
@@ -78,17 +80,17 @@ vc-theorems: |-
     find_bottom_left_value t = some 4 :=
   sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval find_bottom_left_value TreeNode(2)
+  -- #guard_msgs in
+  -- #eval find_bottom_left_value TreeNode(2)
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval find_bottom_left_value TreeNode(1)
+  -- #guard_msgs in
+  -- #eval find_bottom_left_value TreeNode(1)
 
 vc-postamble: |-
   -- Apps difficulty: interview

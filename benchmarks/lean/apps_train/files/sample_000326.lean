@@ -1,0 +1,93 @@
+/-
+You are installing a billboard and want it to have the largest height.  The billboard will have two steel supports, one on each side.  Each steel support must be an equal height.
+You have a collection of rods which can be welded together.  For example, if you have rods of lengths 1, 2, and 3, you can weld them together to make a support of length 6.
+Return the largest possible height of your billboard installation.  If you cannot support the billboard, return 0.
+
+Example 1:
+Input: [1,2,3,6]
+Output: 6
+Explanation: We have two disjoint subsets {1,2,3} and {6}, which have the same sum = 6.
+
+Example 2:
+Input: [1,2,3,4,5,6]
+Output: 10
+Explanation: We have two disjoint subsets {2,3,5} and {4,6}, which have the same sum = 10.
+
+Example 3:
+Input: [1,2]
+Output: 0
+Explanation: The billboard cannot be supported, so we return 0.
+
+Note:
+
+0 <= rods.length <= 20
+1 <= rods[i] <= 1000
+The sum of rods is at most 5000.
+-/
+
+def List.sum : List Int → Int 
+  | [] => 0
+  | x::xs => x + sum xs
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def List.sort (xs : List Int) : List Int := sorry
+
+def tallestBillboard (rods: List Int) : Int := sorry
+
+/- The result of tallestBillboard is non-negative -/
+
+theorem tallestBillboard_nonneg {rods: List Int}
+  (h: ∀ x ∈ rods, x > 0) : 
+  tallestBillboard rods ≥ 0 := sorry
+
+/- The result cannot exceed half the sum of all rods -/
+
+theorem tallestBillboard_upper_bound {rods: List Int}
+  (h: ∀ x ∈ rods, x > 0) :
+  2 * tallestBillboard rods ≤ List.sum rods := sorry
+
+/- The result is invariant under sorting -/
+
+theorem tallestBillboard_sort_invariant {rods: List Int}
+  (h: ∀ x ∈ rods, x > 0) :
+  tallestBillboard rods = tallestBillboard (List.sort rods) := sorry
+
+/- Empty input results in 0 -/
+
+theorem tallestBillboard_empty :
+  tallestBillboard [] = 0 := sorry
+
+/- Single input results in 0 -/
+
+theorem tallestBillboard_singleton (x: Int)
+  (h: x > 0) :
+  tallestBillboard [x] = 0 := sorry
+
+/- For input of length 2, result is input value if equal, 0 otherwise -/
+
+theorem tallestBillboard_pair (x y: Int)
+  (hx: x > 0) (hy: y > 0) :
+  tallestBillboard [x, y] = (if x = y then x else 0) := sorry
+
+/-
+info: 6
+-/
+-- #guard_msgs in
+-- #eval tallestBillboard [1, 2, 3, 6]
+
+/-
+info: 10
+-/
+-- #guard_msgs in
+-- #eval tallestBillboard [1, 2, 3, 4, 5, 6]
+
+/-
+info: 0
+-/
+-- #guard_msgs in
+-- #eval tallestBillboard [1, 2]
+
+-- Apps difficulty: interview
+-- Assurance level: guarded

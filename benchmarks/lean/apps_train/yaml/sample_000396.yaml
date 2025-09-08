@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given two words (beginWord and endWord), and a dictionary's word list, find the length of shortest transformation sequence from beginWord to endWord, such that:
   
          Only one letter can be changed at a time.
@@ -34,6 +35,7 @@ vc-description: |-
   Output: 0
   
   Explanation: The endWord "cog" is not in wordList, therefore no possible transformation.
+  -/
 
 vc-preamble: |-
 
@@ -73,23 +75,23 @@ vc-theorems: |-
     begin_word.length ≠ end_word.length →
     ladder_length begin_word end_word word_list = 0 := sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval ladder_length "hit" "cog" ["hot", "dot", "dog", "lot", "log", "cog"]
+  -- #guard_msgs in
+  -- #eval ladder_length "hit" "cog" ["hot", "dot", "dog", "lot", "log", "cog"]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval ladder_length "hit" "cog" ["hot", "dot", "dog", "lot", "log"]
+  -- #guard_msgs in
+  -- #eval ladder_length "hit" "cog" ["hot", "dot", "dog", "lot", "log"]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval ladder_length "dog" "cog" ["cog"]
+  -- #guard_msgs in
+  -- #eval ladder_length "dog" "cog" ["cog"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Sereja has a string A consisting of n lower case English letters. 
   
   Sereja calls two strings X and Y each of length n similar if they can be made equal by applying the following operation at most once in each of them.
@@ -41,6 +42,7 @@ vc-description: |-
   Output:
   0
   144
+  -/
 
 vc-preamble: |-
 
@@ -78,23 +80,23 @@ vc-theorems: |-
     let s := String.mk (List.map (fun i => Char.ofNat (Char.toNat 'a' + i)) (List.range n))
     0 ≤ solve_string_similarity s ∧ solve_string_similarity s < 10^9 + 7 := by sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve_string_similarity "z"
+  -- #guard_msgs in
+  -- #eval solve_string_similarity "z"
   
-  /--
+  /-
   info: 144
   -/
-  #guard_msgs in
-  #eval solve_string_similarity "abcd"
+  -- #guard_msgs in
+  -- #eval solve_string_similarity "abcd"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve_string_similarity "aaaa"
+  -- #guard_msgs in
+  -- #eval solve_string_similarity "aaaa"
 
 vc-postamble: |-
   -- Apps difficulty: interview

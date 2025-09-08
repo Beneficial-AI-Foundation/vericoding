@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   An **anagram** is the result of rearranging the letters of a word to produce a new word.
   
   **Note:** anagrams are case insensitive
@@ -10,6 +11,7 @@ vc-description: |-
   * `"foefet"` is an anagram of `"toffee"`
   
   * `"Buckethead"` is an anagram of `"DeathCubeK"`
+  -/
 
 vc-preamble: |-
 
@@ -34,23 +36,23 @@ vc-theorems: |-
     s1.length ≠ s2.length → is_anagram s1 s2 = false := by
     sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_anagram "foefet" "toffee"
+  -- #guard_msgs in
+  -- #eval is_anagram "foefet" "toffee"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_anagram "Buckethead" "DeathCubeK"
+  -- #guard_msgs in
+  -- #eval is_anagram "Buckethead" "DeathCubeK"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_anagram "dumble" "bumble"
+  -- #guard_msgs in
+  -- #eval is_anagram "dumble" "bumble"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

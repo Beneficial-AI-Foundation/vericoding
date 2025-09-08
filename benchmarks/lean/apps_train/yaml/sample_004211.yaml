@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your task is very simple. Given an input string s, case\_sensitive(s), check whether all letters are lowercase or not. Return True/False and a list of all the entries that are not lowercase in order of their appearance in s.
   
   For example, case\_sensitive('codewars') returns [True, []], but case\_sensitive('codeWaRs') returns [False, ['W', 'R']].
@@ -10,6 +11,7 @@ vc-description: |-
   Alphabetically ordered 
   Find Nearest square number 
   Not prime numbers
+  -/
 
 vc-preamble: |-
 
@@ -38,23 +40,23 @@ vc-theorems: |-
     (∀ c ∈ s.data, (c.toString) ∈ res.2) ∧
     (∀ x ∈ res.2, ∃ c ∈ s.data, x = c.toString) := sorry
   
-  /--
+  /-
   info: [True, []]
   -/
-  #guard_msgs in
-  #eval case_sensitive "codewars"
+  -- #guard_msgs in
+  -- #eval case_sensitive "codewars"
   
-  /--
+  /-
   info: [False, ['W', 'R']]
   -/
-  #guard_msgs in
-  #eval case_sensitive "codeWaRs"
+  -- #guard_msgs in
+  -- #eval case_sensitive "codeWaRs"
   
-  /--
+  /-
   info: [True, []]
   -/
-  #guard_msgs in
-  #eval case_sensitive ""
+  -- #guard_msgs in
+  -- #eval case_sensitive ""
 
 vc-postamble: |-
   -- Apps difficulty: introductory

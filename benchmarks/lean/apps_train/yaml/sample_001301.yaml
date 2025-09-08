@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are a lot of problems related to the shortest paths. Nevertheless, there are not much problems, related to the shortest paths in average.
   Consider a directed graph G, consisting of N nodes and M edges. Consider a walk from the node A to the node B in this graph. The average length of this walk will be total sum of weight of its' edges divided by number of edges. Every edge counts as many times as it appears in this path.
   Now, your problem is quite simple. For the given graph and two given nodes, find out the shortest average length of the walk between these nodes. Please note, that the length of the walk need not to be finite, but average walk length will be.
@@ -45,6 +46,7 @@ vc-description: |-
   
   -----Explanation-----
   Example case 1. The walk 1 -> 2 and 2 -> 3 has average length of 3/2 = 1.5. Any other walks in the graph will have more or equal average length than this.
+  -/
 
 vc-preamble: |-
 

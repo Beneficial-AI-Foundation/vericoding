@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef has provided with a sequence of integers of length $N$ arranged in an unsorted fashion.
   The elements of the sequence are ordered as ${A1,A2,A3.....A'N}$
   The task of the chef is to identify the highest and lowest value among the given sequence. It is assured that the sequence given contains the highest and the lowest value always
@@ -25,6 +26,7 @@ vc-description: |-
   -----EXPLANATION:-----
   This list is :
   [3,2,7,9,4]  so the highest value is 9 and lowest is 2 respectively.
+  -/
 
 vc-preamble: |-
   def find_max_min (n : Nat) (seq : String) : Int × Int := sorry
@@ -53,23 +55,23 @@ vc-theorems: |-
     (h2 : seq = toString x) :
     find_max_min n seq = (x, x) := sorry
   
-  /--
+  /-
   info: (9, 2)
   -/
-  #guard_msgs in
-  #eval find_max_min 5 "3 2 7 9 4"
+  -- #guard_msgs in
+  -- #eval find_max_min 5 "3 2 7 9 4"
   
-  /--
+  /-
   info: (10, 5)
   -/
-  #guard_msgs in
-  #eval find_max_min 3 "10 5 8"
+  -- #guard_msgs in
+  -- #eval find_max_min 3 "10 5 8"
   
-  /--
+  /-
   info: (1000, 250)
   -/
-  #guard_msgs in
-  #eval find_max_min 4 "1000 250 750 500"
+  -- #guard_msgs in
+  -- #eval find_max_min 4 "1000 250 750 500"
 
 vc-postamble: |-
   -- Apps difficulty: interview

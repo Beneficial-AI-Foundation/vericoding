@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   This question is similar to the $"Operation$ $on$ $a$ $Tuple"$ problem in this month's Long Challenge but with a slight variation.
   
   Consider the following operations on a triple of integers. In one operation, you should:
@@ -29,6 +30,7 @@ vc-description: |-
   
   Sample Output:
   	3
+  -/
 
 vc-preamble: |-
 
@@ -49,23 +51,23 @@ vc-theorems: |-
     (result ≠ -1) →
     result = (max 0 (a - p) + max 0 (b - q) + max 0 (c - r)) := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval transform_triple 2 2 1 3 3 2
+  -- #guard_msgs in
+  -- #eval transform_triple 2 2 1 3 3 2
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval transform_triple 2 2 2 2 2 2
+  -- #guard_msgs in
+  -- #eval transform_triple 2 2 2 2 2 2
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval transform_triple 5 5 5 4 4 4
+  -- #guard_msgs in
+  -- #eval transform_triple 5 5 5 4 4 4
 
 vc-postamble: |-
   -- Apps difficulty: interview

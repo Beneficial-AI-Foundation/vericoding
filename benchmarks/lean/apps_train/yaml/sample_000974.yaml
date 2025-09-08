@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A group of rebels travelling on a square hoverboard is ambushed by Imperial Stormtroopers.Their big hoverboard is an easy target, so they decide to split the board into smaller square hoverboards so that they can bolt away easily.But they should also make sure they don't get too spread out.Help the rebels split the craft into minimum number of smaller crafts possible.
   
   -----Input-----
@@ -22,6 +23,7 @@ vc-description: |-
   
   -----Explanation-----
   A square of side length 3 can be split into smaller squares in two ways: Either into 9 squares of side1 or 5 squares of side 1 and 1 square of size 2.The second case is the favourable one.
+  -/
 
 vc-preamble: |-
 

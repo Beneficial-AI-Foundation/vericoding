@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are the operator of a Centennial Wheel that has four gondolas, and each gondola has room for up to four people. You have the ability to rotate the gondolas counterclockwise, which costs you runningCost dollars.
   You are given an array customers of length n where customers[i] is the number of new customers arriving just before the ith rotation (0-indexed). This means you must rotate the wheel i times before the customers[i] customers arrive. You cannot make customers wait if there is room in the gondola. Each customer pays boardingCost dollars when they board on the gondola closest to the ground and will exit once that gondola reaches the ground again.
   You can stop the wheel at any time, including before serving all customers. If you decide to stop serving customers, all subsequent rotations are free in order to get all the customers down safely. Note that if there are currently more than four customers waiting at the wheel, only four will board the gondola, and the rest will wait for the next rotation.
@@ -59,6 +60,7 @@ vc-description: |-
   1 <= n <= 105
   0 <= customers[i] <= 50
   1 <= boardingCost, runningCost <= 100
+  -/
 
 vc-preamble: |-
   def min_operations_max_profit (customers: List Nat) (boarding_cost: Nat) (running_cost: Nat) : Int :=
@@ -130,23 +132,23 @@ vc-theorems: |-
     : min_operations_max_profit customers boarding_cost running_cost = -1 :=
   sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval min_operations_max_profit [8, 3] 5 6
+  -- #guard_msgs in
+  -- #eval min_operations_max_profit [8, 3] 5 6
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval min_operations_max_profit [10, 9, 6] 6 4
+  -- #guard_msgs in
+  -- #eval min_operations_max_profit [10, 9, 6] 6 4
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval min_operations_max_profit [3, 4, 0, 5, 1] 1 92
+  -- #guard_msgs in
+  -- #eval min_operations_max_profit [3, 4, 0, 5, 1] 1 92
 
 vc-postamble: |-
   -- Apps difficulty: interview

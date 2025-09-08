@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a class called User that is used to calculate the amount that a user will progress through a ranking system similar to the one Codewars uses.  
   
   ##### Business Rules:
@@ -47,6 +48,7 @@ vc-description: |-
   ~~~
   
   **Note**: Codewars no longer uses this algorithm for its own ranking system. It uses a pure Math based solution that gives consistent results no matter what order a set of ranked activities are completed at.
+  -/
 
 vc-preamble: |-
   def User.incProgress (self : User) (rank : Rank) : User :=

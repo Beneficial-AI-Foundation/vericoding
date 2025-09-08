@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Takaki Tono is a Computer Programmer in Tokyo. His boss at work shows him an online puzzle, which if solved would earn the solver a full expense paid trip to Los Angeles, California. Takaki really wants to solve this, as the love of his life, Akari, lives in Los Angeles and he hasn't met her since four years. Upon reading the puzzle he realizes that it is a query based problem. The problem is as follows :-
   
   You are given a Tree T with N nodes numbered from 1 to N, with each node numbered z having a positive integer Az written on it. This integer denotes the value of the node. You have to process Q queries, of the following forms :- 
@@ -63,6 +64,7 @@ vc-description: |-
   -----Explanation-----
   Given below is the tree corresponding to the sample input. Each node has two numbers written in it. 
   The first number represents the node index and the second number indicates node value.
+  -/
 
 vc-preamble: |-
 

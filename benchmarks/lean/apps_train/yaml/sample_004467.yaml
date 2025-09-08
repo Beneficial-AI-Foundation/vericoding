@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function ```convert_temp(temp, from_scale, to_scale)``` converting temperature from one scale to another. 
   Return converted temp value. 
   
@@ -27,6 +28,7 @@ vc-description: |-
   convert_temp(373.15, "K",  "N") # => 33
   convert_temp(   666, "K",  "K") # => 666
   ```
+  -/
 
 vc-preamble: |-
   def convert_temp (temp : Float) (from_scale : String) (to_scale : String) : Int :=
@@ -61,35 +63,35 @@ vc-theorems: |-
     (back - round temp) ≤ 2 ∧ (round temp - back) ≤ 2 := by
     sorry
   
-  /--
+  /-
   info: 212
   -/
-  #guard_msgs in
-  #eval convert_temp 100 "C" "F"
+  -- #guard_msgs in
+  -- #eval convert_temp 100 "C" "F"
   
-  /--
+  /-
   info: 50
   -/
-  #guard_msgs in
-  #eval convert_temp 40 "Re" "C"
+  -- #guard_msgs in
+  -- #eval convert_temp 40 "Re" "C"
   
-  /--
+  /-
   info: 140
   -/
-  #guard_msgs in
-  #eval convert_temp 60 "De" "F"
+  -- #guard_msgs in
+  -- #eval convert_temp 60 "De" "F"
   
-  /--
+  /-
   info: 33
   -/
-  #guard_msgs in
-  #eval convert_temp 373.15 "K" "N"
+  -- #guard_msgs in
+  -- #eval convert_temp 373.15 "K" "N"
   
-  /--
+  /-
   info: 666
   -/
-  #guard_msgs in
-  #eval convert_temp 666 "K" "K"
+  -- #guard_msgs in
+  -- #eval convert_temp 666 "K" "K"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

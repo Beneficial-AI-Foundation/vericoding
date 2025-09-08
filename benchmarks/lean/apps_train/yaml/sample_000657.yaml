@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There is an event in DUCS where boys get a chance to show off their skills to impress girls. The boy who impresses the maximum number of girls will be honoured with the title “Charming Boy of the year”.
   There are $N$ girls in the department. Each girl gives the name of a boy who impressed her the most. You need to find the name of a boy who will be honoured with the title. 
   If there are more than one possible winners, then the one with the lexicographically smallest name is given the title. 
@@ -39,6 +40,7 @@ vc-description: |-
   john
   
   ramesh
+  -/
 
 vc-preamble: |-
 
@@ -82,23 +84,23 @@ vc-theorems: |-
     find_charming_boy n votes = find_charming_boy (2*n) (votes ++ votes) :=
     sorry
   
-  /--
+  /-
   info: 'john'
   -/
-  #guard_msgs in
-  #eval find_charming_boy 10 "john berry berry thomas thomas john john berry thomas john".split()
+  -- #guard_msgs in
+  -- #eval find_charming_boy 10 "john berry berry thomas thomas john john berry thomas john".split()
   
-  /--
+  /-
   info: 'ramesh'
   -/
-  #guard_msgs in
-  #eval find_charming_boy 4 "ramesh suresh suresh ramesh".split()
+  -- #guard_msgs in
+  -- #eval find_charming_boy 4 "ramesh suresh suresh ramesh".split()
   
-  /--
+  /-
   info: 'andy'
   -/
-  #guard_msgs in
-  #eval find_charming_boy 5 "andy bob bob andy charlie".split()
+  -- #guard_msgs in
+  -- #eval find_charming_boy 5 "andy bob bob andy charlie".split()
 
 vc-postamble: |-
   -- Apps difficulty: interview

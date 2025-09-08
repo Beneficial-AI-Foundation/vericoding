@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef loves lucky numbers. Everybody knows that lucky numbers are positive integers whose decimal representation contains only the lucky digits 4 and 7. For example, numbers 47, 744, 4 are lucky and 5, 17, 467 are not.
   
   Let F(X) equals to the number of lucky digits in decimal representation of X. Chef wants to know the number of such integers X, that L ≤ X ≤ R and F(X) is a lucky number. Help him and calculate that number modulo 109+7.
@@ -37,6 +38,7 @@ vc-description: |-
   Third test case: there are 640 required lucky numbers. Some of them are 4474, 14747, 41474, 77277, 44407, 74749.
   
   Fourth test case: the only two required numbers are 4444 and 4447.
+  -/
 
 vc-preamble: |-
 
@@ -76,23 +78,23 @@ vc-theorems: |-
     (h2 : ∃ c ∈ n.data, !c.isDigit)
     : solve_lucky_numbers left n = 0 := sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve_lucky_numbers "1" "100"
+  -- #guard_msgs in
+  -- #eval solve_lucky_numbers "1" "100"
   
-  /--
+  /-
   info: 16
   -/
-  #guard_msgs in
-  #eval solve_lucky_numbers "1" "10000"
+  -- #guard_msgs in
+  -- #eval solve_lucky_numbers "1" "10000"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve_lucky_numbers "4444" "4447"
+  -- #guard_msgs in
+  -- #eval solve_lucky_numbers "4444" "4447"
 
 vc-postamble: |-
   -- Apps difficulty: interview

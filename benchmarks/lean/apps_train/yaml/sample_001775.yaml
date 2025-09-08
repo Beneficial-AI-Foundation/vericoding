@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a series of video clips from a sporting event that lasted T seconds.  These video clips can be overlapping with each other and have varied lengths.
   Each video clip clips[i] is an interval: it starts at time clips[i][0] and ends at time clips[i][1].  We can cut these clips into segments freely: for example, a clip [0, 7] can be cut into segments [0, 1] + [1, 3] + [3, 7].
   Return the minimum number of clips needed so that we can cut the clips into segments that cover the entire sporting event ([0, T]).  If the task is impossible, return -1.
@@ -35,6 +36,7 @@ vc-description: |-
   1 <= clips.length <= 100
   0 <= clips[i][0] <= clips[i][1] <= 100
   0 <= T <= 100
+  -/
 
 vc-preamble: |-
 
@@ -72,23 +74,23 @@ vc-theorems: |-
     videoStitching clips T > 0 → videoStitching clips T ≤ clips.length :=
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval video_stitching [[0, 2], [4, 6], [8, 10], [1, 9], [1, 5], [5, 9]] 10
+  -- #guard_msgs in
+  -- #eval video_stitching [[0, 2], [4, 6], [8, 10], [1, 9], [1, 5], [5, 9]] 10
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval video_stitching [[0, 1], [1, 2]] 5
+  -- #guard_msgs in
+  -- #eval video_stitching [[0, 1], [1, 2]] 5
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval video_stitching [[0, 4], [2, 8]] 5
+  -- #guard_msgs in
+  -- #eval video_stitching [[0, 4], [2, 8]] 5
 
 vc-postamble: |-
   -- Apps difficulty: interview

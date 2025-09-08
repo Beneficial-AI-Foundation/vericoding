@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Task
   
   Create a top-down movement system that would feel highly responsive to the player. In your Update method you have to check for the keys that are currently being pressed, the keys correspond to the enum Direction shown below, based on which key is pressed or released your method should behave this way:
@@ -47,6 +48,7 @@ vc-description: |-
       def get_state(direction): # 2, 4, 6, 8
           return Input.STATES[direction] # pressed = true, released = false
   ```
+  -/
 
 vc-preamble: |-
   def PlayerMovement.PREC : List Nat := [2, 4, 6, 8]
@@ -95,23 +97,23 @@ vc-theorems: |-
         PlayerMovement.PREC.get? j = some k.1 ∧
         i ≤ j := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval len player.stack
+  -- #guard_msgs in
+  -- #eval len player.stack
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval len player.stack
+  -- #guard_msgs in
+  -- #eval len player.stack
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval len player.stack
+  -- #guard_msgs in
+  -- #eval len player.stack
 
 vc-postamble: |-
   -- Apps difficulty: interview

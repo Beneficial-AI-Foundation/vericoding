@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Function Descriptions=====
   We have seen the applications of union, intersection, difference and symmetric difference operations, but these operations do not make any changes or mutations to the set.
   
@@ -60,6 +61,7 @@ vc-description: |-
   
   =====Output Format=====
   Output the sum of elements in set A.
+  -/
 
 vc-preamble: |-
   def Operation := String

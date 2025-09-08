@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   An eviternity number is a number which:
   * contains only digits 8, 5 and 3, and 
   * the count of the digit `8` >= count of digit `5` >= count of digit `3`. 
@@ -16,6 +17,7 @@ vc-description: |-
   The upper bound will not exceed `500,000`.
   
   More examples in test cases. Good luck!
+  -/
 
 vc-preamble: |-
 
@@ -36,23 +38,23 @@ vc-theorems: |-
     solve 388885 388886 = 1 ∧
     solve 388885 388885 = 0 := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval solve 0 100
+  -- #guard_msgs in
+  -- #eval solve 0 100
   
-  /--
+  /-
   info: 14
   -/
-  #guard_msgs in
-  #eval solve 0 1000
+  -- #guard_msgs in
+  -- #eval solve 0 1000
   
-  /--
+  /-
   info: 99
   -/
-  #guard_msgs in
-  #eval solve 90 139701
+  -- #guard_msgs in
+  -- #eval solve 90 139701
 
 vc-postamble: |-
   -- Apps difficulty: introductory

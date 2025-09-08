@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a list of integers, return the nth smallest integer in the list. **Only distinct elements should be considered** when calculating the answer. `n` will always be positive (`n > 0`)
   
   If the nth small integer doesn't exist, return `-1` (C++) / `None` (Python) / `nil` (Ruby) / `null` (JavaScript).
@@ -16,6 +17,7 @@ vc-description: |-
   ```
   
   If you get a timeout, just try to resubmit your solution. However, if you ***always*** get a timeout, review your code.
+  -/
 
 vc-preamble: |-
   def nth_smallest (arr : List Int) (n : Nat) : Option Int := sorry
@@ -63,23 +65,23 @@ vc-theorems: |-
   theorem nth_smallest_empty :
     nth_smallest [] 1 = none := sorry
   
-  /--
+  /-
   info: 34
   -/
-  #guard_msgs in
-  #eval nth_smallest [14, 12, 46, 34, 334] 3
+  -- #guard_msgs in
+  -- #eval nth_smallest [14, 12, 46, 34, 334] 3
   
-  /--
+  /-
   info: 4000
   -/
-  #guard_msgs in
-  #eval nth_smallest [4000] 1
+  -- #guard_msgs in
+  -- #eval nth_smallest [4000] 1
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval nth_smallest [14, 12, 46, 0, 334] 1
+  -- #guard_msgs in
+  -- #eval nth_smallest [14, 12, 46, 0, 334] 1
 
 vc-postamble: |-
   -- Apps difficulty: introductory

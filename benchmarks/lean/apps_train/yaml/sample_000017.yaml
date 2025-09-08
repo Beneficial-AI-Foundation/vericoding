@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given an array $a_1, a_2 \dots a_n$. Calculate the number of tuples $(i, j, k, l)$ such that:   $1 \le i < j < k < l \le n$;  $a_i = a_k$ and $a_j = a_l$; 
   
   -----Input-----
@@ -32,6 +33,7 @@ vc-description: |-
   In the first test case, for any four indices $i < j < k < l$ are valid, so the answer is the number of tuples.
   
   In the second test case, there are $2$ valid tuples:   $(1, 2, 4, 6)$: $a_1 = a_4$ and $a_2 = a_6$;  $(1, 3, 4, 6)$: $a_1 = a_4$ and $a_3 = a_6$.
+  -/
 
 vc-preamble: |-
 
@@ -62,23 +64,23 @@ vc-theorems: |-
     count_equal_tuples n arr ≥ 0 :=
   sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval count_equal_tuples 5 [2, 2, 2, 2, 2]
+  -- #guard_msgs in
+  -- #eval count_equal_tuples 5 [2, 2, 2, 2, 2]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_equal_tuples 6 [1, 3, 3, 1, 2, 3]
+  -- #guard_msgs in
+  -- #eval count_equal_tuples 6 [1, 3, 3, 1, 2, 3]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_equal_tuples 4 [1, 1, 1, 1]
+  -- #guard_msgs in
+  -- #eval count_equal_tuples 4 [1, 1, 1, 1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

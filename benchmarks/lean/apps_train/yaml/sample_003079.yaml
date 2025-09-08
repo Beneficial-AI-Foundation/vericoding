@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Normally, we decompose a number into binary digits by assigning it with powers of 2, with a coefficient of `0` or `1` for each term:
   
   `25 = 1*16 + 1*8 + 0*4 + 0*2 + 1*1`
@@ -23,6 +24,7 @@ vc-description: |-
   Hence, `n` will always be an odd number, and you should return the *least* true binary expansion for any `n`.
   
   Also, note that `n` can be very, very large, so your code should be very efficient.
+  -/
 
 vc-preamble: |-
 
@@ -46,23 +48,23 @@ vc-theorems: |-
   theorem true_binary_length {n : Nat} (h : n % 2 = 1) :
     List.length (true_binary n) = Nat.log2 n := sorry
   
-  /--
+  /-
   info: [1, 1, 1, -1, -1]
   -/
-  #guard_msgs in
-  #eval true_binary 25
+  -- #guard_msgs in
+  -- #eval true_binary 25
   
-  /--
+  /-
   info: [1, 1, -1, 1, 1, 1]
   -/
-  #guard_msgs in
-  #eval true_binary 47
+  -- #guard_msgs in
+  -- #eval true_binary 47
   
-  /--
+  /-
   info: [1]
   -/
-  #guard_msgs in
-  #eval true_binary 1
+  -- #guard_msgs in
+  -- #eval true_binary 1
 
 vc-postamble: |-
   -- Apps difficulty: introductory

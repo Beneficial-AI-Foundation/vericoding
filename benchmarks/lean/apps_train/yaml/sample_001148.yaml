@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef is a private detective. He was asked to investigate a case of murder in the city of Frangton.
   Chef arrived in Frangton to find out that the mafia was involved in the case. Chef spent some time watching for people that belong to the clan and was able to build a map of relationships between them. He knows that a mafia's organizational structure consists of a single Don, heading a hierarchical criminal organization. Each member reports exactly to one other member of the clan. It's obvious that there are no cycles in the reporting system of the mafia.
   There are N people in the clan, for simplicity indexed from 1 to N, and Chef knows who each of them report to. Member i reports to member Ri.
@@ -30,6 +31,7 @@ vc-description: |-
   
   -----Explanation-----
   The reporting structure:
+  -/
 
 vc-preamble: |-
 
@@ -54,23 +56,23 @@ vc-theorems: |-
     n ∈ result :=
   sorry
   
-  /--
+  /-
   info: '4 5 6'
   -/
-  #guard_msgs in
-  #eval find_killers 6 [0, 1, 1, 2, 2, 3]
+  -- #guard_msgs in
+  -- #eval find_killers 6 [0, 1, 1, 2, 2, 3]
   
-  /--
+  /-
   info: '2 3'
   -/
-  #guard_msgs in
-  #eval find_killers 3 [0, 1, 1]
+  -- #guard_msgs in
+  -- #eval find_killers 3 [0, 1, 1]
   
-  /--
+  /-
   info: '3 4 5'
   -/
-  #guard_msgs in
-  #eval find_killers 5 [0, 1, 2, 1, 2]
+  -- #guard_msgs in
+  -- #eval find_killers 5 [0, 1, 2, 1, 2]
 
 vc-postamble: |-
   -- Apps difficulty: interview

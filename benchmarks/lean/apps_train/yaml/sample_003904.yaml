@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a random string consisting of numbers, letters, symbols, you need to sum up the numbers in the string. 
   
   Note:
@@ -16,6 +17,7 @@ vc-description: |-
    The numbers are `2015`, `6`
   
   Sum is `2021`.
+  -/
 
 vc-preamble: |-
   def List.sum : List Nat → Nat 
@@ -39,23 +41,23 @@ vc-theorems: |-
     sum_from_string "" = 0 :=
     sorry
   
-  /--
+  /-
   info: 2021
   -/
-  #guard_msgs in
-  #eval sum_from_string "In 2015, I want to know how much does iPhone 6+ cost?"
+  -- #guard_msgs in
+  -- #eval sum_from_string "In 2015, I want to know how much does iPhone 6+ cost?"
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval sum_from_string "1+1=2"
+  -- #guard_msgs in
+  -- #eval sum_from_string "1+1=2"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval sum_from_string "Hello World"
+  -- #guard_msgs in
+  -- #eval sum_from_string "Hello World"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

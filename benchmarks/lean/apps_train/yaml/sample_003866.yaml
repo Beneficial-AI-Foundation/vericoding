@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The new football league season is coming and the Football Association need some help resetting the league standings. Normally the initial league standing is done in alphabetical order (from A to Z) but this year the FA have decided to freshen it up. 
   
   It has been decided that team who finished first last season will begin the next season in first place. Regardless of what letter their club begins with. e.g. if Manchester City were in first place last year, they will begin the season in position one. All other teams should be in alphabetical order. 
@@ -22,6 +23,7 @@ vc-description: |-
   3:'Coventry' (alphabetical) 
   4:'Liverpool' (alphabetical) 
   5:'Manchester City' (alphabetical)
+  -/
 
 vc-preamble: |-
 
@@ -66,23 +68,23 @@ vc-theorems: |-
     let result := premier_league_standings teams
     (result.teams.map Prod.snd).Nodup := sorry
   
-  /--
+  /-
   info: {'1': 'Arsenal'}
   -/
-  #guard_msgs in
-  #eval premier_league_standings {"1": "Arsenal"}
+  -- #guard_msgs in
+  -- #eval premier_league_standings {"1": "Arsenal"}
   
-  /--
+  /-
   info: {'1': 'Leeds United', '2': 'Accrington Stanley', '3': 'Arsenal'}
   -/
-  #guard_msgs in
-  #eval premier_league_standings {"2": "Arsenal", "3": "Accrington Stanley", "1": "Leeds United"}
+  -- #guard_msgs in
+  -- #eval premier_league_standings {"2": "Arsenal", "3": "Accrington Stanley", "1": "Leeds United"}
   
-  /--
+  /-
   info: {'1': 'Leeds United', '2': 'Arsenal', '3': 'Coventry', '4': 'Liverpool', '5': 'Manchester City'}
   -/
-  #guard_msgs in
-  #eval premier_league_standings {"1": "Leeds United", "2": "Liverpool", "3": "Manchester City", "4": "Coventry", "5": "Arsenal"}
+  -- #guard_msgs in
+  -- #eval premier_league_standings {"1": "Leeds United", "2": "Liverpool", "3": "Manchester City", "4": "Coventry", "5": "Arsenal"}
 
 vc-postamble: |-
   -- Apps difficulty: introductory

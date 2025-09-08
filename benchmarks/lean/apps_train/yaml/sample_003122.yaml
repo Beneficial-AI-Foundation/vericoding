@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Each floating-point number should be formatted that only the first two decimal places are returned. You don't need to check whether the input is a valid number because only valid numbers are used in the tests.  
   
   Don't round the numbers! Just cut them after two decimal places!
@@ -11,6 +12,7 @@ vc-description: |-
   32.8493 is 32.85  
   14.3286 is 14.33
   ```
+  -/
 
 vc-preamble: |-
 
@@ -38,23 +40,23 @@ vc-theorems: |-
     0.01 ≤ abs x →
     (0 < two_decimal_places x) = (0 < x) := sorry
   
-  /--
+  /-
   info: 10.12
   -/
-  #guard_msgs in
-  #eval two_decimal_places 10.1289767789
+  -- #guard_msgs in
+  -- #eval two_decimal_places 10.1289767789
   
-  /--
+  /-
   info: -7488.83
   -/
-  #guard_msgs in
-  #eval two_decimal_places -7488.83485834983
+  -- #guard_msgs in
+  -- #eval two_decimal_places -7488.83485834983
   
-  /--
+  /-
   info: 4.65
   -/
-  #guard_msgs in
-  #eval two_decimal_places 4.653725356
+  -- #guard_msgs in
+  -- #eval two_decimal_places 4.653725356
 
 vc-postamble: |-
   -- Apps difficulty: introductory

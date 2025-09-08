@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Shaun was given $N$ pairs of parenthesis ( )  by his teacher who gave him a difficult task.The task consists of two steps. First,Shaun should colour all $N$ pairs of parenthesis each with different color but opening and closing bracket of a particular pair should be of same colour. Then,Shaun should report to his teacher the number of ways he can arrange all $2*N$ brackets such that sequence form is valid. Teacher defined valid sequence by these rules:
   - Any left parenthesis '(' must have a corresponding right parenthesis ')'.
   - Any right parenthesis ')' must have a corresponding left parenthesis '('.
@@ -38,6 +39,7 @@ vc-description: |-
   2 2 1 1
   2 1 1 2
   2 1 2 1
+  -/
 
 vc-preamble: |-
 
@@ -66,23 +68,23 @@ vc-theorems: |-
     solve_colored_parentheses 2 = 6 ∧
     solve_colored_parentheses 3 = 90 := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve_colored_parentheses 1
+  -- #guard_msgs in
+  -- #eval solve_colored_parentheses 1
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval solve_colored_parentheses 2
+  -- #guard_msgs in
+  -- #eval solve_colored_parentheses 2
   
-  /--
+  /-
   info: 90
   -/
-  #guard_msgs in
-  #eval solve_colored_parentheses 3
+  -- #guard_msgs in
+  -- #eval solve_colored_parentheses 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

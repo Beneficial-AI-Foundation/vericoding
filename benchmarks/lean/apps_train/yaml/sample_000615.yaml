@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Lyra Belacqua is a very gifted girl. She is one of a very small set of people capable of reading an alethiometer, more commonly known as The Golden Compass. It has one specific use: to tell the truth. The name in fact, is derived from "Aletheia" meaning truth, and "-ometer", meaning "measuring device".
   
   The alethiometer had four needles, out of which the user would direct three of them to lie over symbols on the face of the device to ask a question. The fourth needle then swung into action and pointed to various symbols one after another, thus telling the answer.
@@ -41,6 +42,7 @@ vc-description: |-
   In the first example, there is no choice as to what the number can be. It has to be 6,454.
   
   In the second example, there are a total of 41 possible strings (one for the original, and 10 for changing each letter). You can verify that the maximum number as a substring is got by making the string "C0D3943F".
+  -/
 
 vc-preamble: |-
 

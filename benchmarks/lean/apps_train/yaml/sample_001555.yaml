@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Complete the solution so that it strips all text that follows any of a set of comment markers passed in. Any whitespace at the end of the line should also be stripped out. 
   
   **Example:**
@@ -24,6 +25,7 @@ vc-description: |-
   # result should == "apples, pears\ngrapes\nbananas"
   
   ```
+  -/
 
 vc-preamble: |-
 
@@ -62,23 +64,23 @@ vc-theorems: |-
       | none, _ => true
       | _, none => true) := sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval strip_comments "apples, pears # and bananas\ngrapes\nbananas !apples" ["#", "!"]
+  -- #guard_msgs in
+  -- #eval strip_comments "apples, pears # and bananas\ngrapes\nbananas !apples" ["#", "!"]
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval strip_comments "a #b\nc\nd $e f g" ["#", "$"]
+  -- #guard_msgs in
+  -- #eval strip_comments "a #b\nc\nd $e f g" ["#", "$"]
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval strip_comments "" ["#", "!"]
+  -- #guard_msgs in
+  -- #eval strip_comments "" ["#", "!"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

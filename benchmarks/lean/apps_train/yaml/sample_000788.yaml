@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   One day Chef was playing with numbers. He loves Lowest Common Multiple (LCM) too much and he is a very curious guy. He always try to do new things. Now he want to make a large number with it. But he doesn't want to take too many numbers.
   
   He is willing to take only three numbers less than or equal to N (not necessarily distinct ) and from those three number he want get the maximum number by taking LCM of the numbers.
@@ -28,6 +29,7 @@ vc-description: |-
   
   -----Explanation-----
   Example case 2. For the last example, we can chose numbers 7, 6, 5 and the LCM of them is 7•6•5 = 210. It is the maximum value we can get.
+  -/
 
 vc-preamble: |-
 
@@ -46,23 +48,23 @@ vc-theorems: |-
     max_lcm_three_nums 2 = 2 ∧
     max_lcm_three_nums 3 = 6 := sorry
   
-  /--
+  /-
   info: 504
   -/
-  #guard_msgs in
-  #eval max_lcm_three_nums 9
+  -- #guard_msgs in
+  -- #eval max_lcm_three_nums 9
   
-  /--
+  /-
   info: 210
   -/
-  #guard_msgs in
-  #eval max_lcm_three_nums 7
+  -- #guard_msgs in
+  -- #eval max_lcm_three_nums 7
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval max_lcm_three_nums 3
+  -- #guard_msgs in
+  -- #eval max_lcm_three_nums 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

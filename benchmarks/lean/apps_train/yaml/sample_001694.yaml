@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this kata you must determine the lowest floor in a building from which you cannot drop an egg without it breaking. You may assume that all eggs are the same; if one egg breaks when dropped from floor `n`, all eggs will. If an egg survives a drop from some floor, it will survive a drop from any floor below too. 
   
   You are given `num_eggs` eggs and are allowed to make a maximum of `num_drops` drops. If an egg does not break when dropped, it may be reused. You may assume that it is feasible to determine the floor with the given number of eggs and drops.
@@ -17,6 +18,7 @@ vc-description: |-
   You are not allowed to access any other method or state attribute of the `emulator` object, even if you can. This is considered cheating and is a very dishonorable thing to do! Note that `emulator.__dict__` has been disabled. 
   
   Note: [This kata](http://www.codewars.com/kata/faberge-easter-eggs-crush-test) is similar although not the same.
+  -/
 
 vc-preamble: |-
   def height (n m : Nat) : Nat := sorry
@@ -58,23 +60,23 @@ vc-theorems: |-
     eggs > 0 → drops > 1 → break_floor > 0 →
     solve (eggs - 1, drops - 2, break_floor) > 0 := sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval solve TestEmulator(1, 10, 5)
+  -- #guard_msgs in
+  -- #eval solve TestEmulator(1, 10, 5)
   
-  /--
+  /-
   info: 20
   -/
-  #guard_msgs in
-  #eval solve TestEmulator(2, 10, 20)
+  -- #guard_msgs in
+  -- #eval solve TestEmulator(2, 10, 20)
   
-  /--
+  /-
   info: 55
   -/
-  #guard_msgs in
-  #eval solve TestEmulator(3, 14, 55)
+  -- #guard_msgs in
+  -- #eval solve TestEmulator(3, 14, 55)
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an input string (s) and a pattern (p), implement regular expression matching with support for '.' and '*'.
   
   '.' Matches any single character.
@@ -49,6 +50,7 @@ vc-description: |-
   s = "mississippi"
   p = "mis*is*p*."
   Output: false
+  -/
 
 vc-preamble: |-
 
@@ -101,23 +103,23 @@ vc-theorems: |-
   
   theorem empty_string_cases_3 : isMatch "a" "" = false := by sorry
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_match "aa" "a"
+  -- #guard_msgs in
+  -- #eval is_match "aa" "a"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_match "aa" "a*"
+  -- #guard_msgs in
+  -- #eval is_match "aa" "a*"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_match "ab" ".*"
+  -- #guard_msgs in
+  -- #eval is_match "ab" ".*"
 
 vc-postamble: |-
   -- Apps difficulty: interview

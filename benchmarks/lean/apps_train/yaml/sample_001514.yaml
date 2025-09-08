@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The chef is placing the laddus on the large square plat. The plat has the side of length N. Each laddu takes unit sq.unit area. Cheffina comes and asks the chef one puzzle to the chef as, how many squares can be formed in this pattern with all sides of new square are parallel to the original edges of the plate.
   
   -----Input:-----
@@ -25,6 +26,7 @@ vc-description: |-
   For 1) Only 1 Square
   For 2) 4 squares with area 1 sq.unit
   1 square with area 4 sq.unit
+  -/
 
 vc-preamble: |-
 
@@ -53,23 +55,23 @@ vc-theorems: |-
     count_squares n ≥ n * n :=
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_squares 1
+  -- #guard_msgs in
+  -- #eval count_squares 1
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval count_squares 2
+  -- #guard_msgs in
+  -- #eval count_squares 2
   
-  /--
+  /-
   info: 14
   -/
-  #guard_msgs in
-  #eval count_squares 3
+  -- #guard_msgs in
+  -- #eval count_squares 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

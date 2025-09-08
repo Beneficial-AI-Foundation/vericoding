@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an unsorted array of integers, find the number of longest increasing subsequence.
   
   Example 1:
@@ -15,6 +16,7 @@ vc-description: |-
   
   Note:
   Length of the given array will be not exceed 2000 and the answer is guaranteed to be fit in 32-bit signed int.
+  -/
 
 vc-preamble: |-
   def find_number_of_lis (nums : List Int) : Nat :=
@@ -44,23 +46,23 @@ vc-theorems: |-
     find_number_of_lis nums = 1
   := by sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_number_of_lis [1, 3, 5, 4, 7]
+  -- #guard_msgs in
+  -- #eval find_number_of_lis [1, 3, 5, 4, 7]
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval find_number_of_lis [2, 2, 2, 2, 2]
+  -- #guard_msgs in
+  -- #eval find_number_of_lis [2, 2, 2, 2, 2]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_number_of_lis [1, 2, 4, 3, 5, 4, 7, 2]
+  -- #guard_msgs in
+  -- #eval find_number_of_lis [1, 2, 4, 3, 5, 4, 7, 2]
 
 vc-postamble: |-
   -- Apps difficulty: interview

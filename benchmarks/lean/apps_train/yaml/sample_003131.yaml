@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Rule 30 is a one-dimensional binary cellular automaton. You can have some information here:  
   
   * [https://en.wikipedia.org/wiki/Rule_30](https://en.wikipedia.org/wiki/Rule_30)
@@ -52,6 +53,7 @@ vc-description: |-
   ▓▓░░▓ -> step 3 
   
   **Note:** the function can print only the current list that you pass to it, so you have to use it in the proper way during the interactions of the rule 30.
+  -/
 
 vc-preamble: |-
 
@@ -76,23 +78,23 @@ vc-theorems: |-
     n > 0 → List.length (rule30 initial n) = List.length initial + 2*n :=
     sorry
   
-  /--
+  /-
   info: [1, 1, 1]
   -/
-  #guard_msgs in
-  #eval rule30 [1] 1
+  -- #guard_msgs in
+  -- #eval rule30 [1] 1
   
-  /--
+  /-
   info: [1, 1, 0, 0, 1]
   -/
-  #guard_msgs in
-  #eval rule30 [1] 2
+  -- #guard_msgs in
+  -- #eval rule30 [1] 2
   
-  /--
+  /-
   info: [1, 1, 1]
   -/
-  #guard_msgs in
-  #eval rule30 [1, 1, 1] 0
+  -- #guard_msgs in
+  -- #eval rule30 [1, 1, 1] 0
 
 vc-postamble: |-
   -- Apps difficulty: introductory

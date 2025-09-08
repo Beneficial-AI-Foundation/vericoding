@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Function Descriptions=====
   Transpose
   
@@ -39,6 +40,7 @@ vc-description: |-
   
   =====Output Format=====
   First, print the transpose array and then print the flatten.
+  -/
 
 vc-preamble: |-
   def process_matrix (n m : Nat) (matrix : List (List Nat)) : 

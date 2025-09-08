@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an `x` and `y` find the smallest and greatest numbers **above** and **below** a given `n` that are divisible by both `x` and `y`.
   
   ### Examples
@@ -22,6 +23,7 @@ vc-description: |-
   ### Note for Haskell users
   
   >Please take a look at [bkaes comment](http://www.codewars.com/kata/when-greatest-is-less-than-smallest/discuss#56418f0fbf1f44834d000050) and give us your opinion
+  -/
 
 vc-preamble: |-
   def greatest (x y n : Nat) : Nat :=
@@ -48,41 +50,41 @@ vc-theorems: |-
     g < n ∧ s > n ∧ s > g :=
     sorry
   
-  /--
+  /-
   info: 18
   -/
-  #guard_msgs in
-  #eval greatest 2 3 20
+  -- #guard_msgs in
+  -- #eval greatest 2 3 20
   
-  /--
+  /-
   info: 24
   -/
-  #guard_msgs in
-  #eval smallest 2 3 20
+  -- #guard_msgs in
+  -- #eval smallest 2 3 20
   
-  /--
+  /-
   info: 90
   -/
-  #guard_msgs in
-  #eval greatest 5 15 100
+  -- #guard_msgs in
+  -- #eval greatest 5 15 100
   
-  /--
+  /-
   info: 105
   -/
-  #guard_msgs in
-  #eval smallest 5 15 100
+  -- #guard_msgs in
+  -- #eval smallest 5 15 100
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval greatest 123 456 789
+  -- #guard_msgs in
+  -- #eval greatest 123 456 789
   
-  /--
+  /-
   info: 18696
   -/
-  #guard_msgs in
-  #eval smallest 123 456 789
+  -- #guard_msgs in
+  -- #eval smallest 123 456 789
 
 vc-postamble: |-
   -- Apps difficulty: introductory

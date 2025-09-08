@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this kata, we will check is an array is (hyper)rectangular.  
   A rectangular array is an N-dimensional array with fixed sized within one dimension. Its sizes can be repsented like A1xA2xA3...xAN. That means a N-dimensional array has N sizes. The 'As' are the hyperrectangular properties of an array.
   
@@ -70,6 +71,7 @@ vc-description: |-
   
   ## Expected Ouput
   ##### An N-tuple with the hyperrectangularity properties
+  -/
 
 vc-preamble: |-
 
@@ -112,17 +114,17 @@ vc-theorems: |-
     (h : arr = [[1,2], [1]])
     : hyperrectangularity_properties arr = none := sorry
   
-  /--
+  /-
   info: (0,)
   -/
-  #guard_msgs in
-  #eval hyperrectangularity_properties []
+  -- #guard_msgs in
+  -- #eval hyperrectangularity_properties []
   
-  /--
+  /-
   info: (3, 3)
   -/
-  #guard_msgs in
-  #eval hyperrectangularity_properties [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
+  -- #guard_msgs in
+  -- #eval hyperrectangularity_properties [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

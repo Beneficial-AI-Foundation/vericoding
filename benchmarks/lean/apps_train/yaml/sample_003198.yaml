@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Lexicographic permutations are ordered combinations of a set of items ordered in a specific way.
   
   For instance, the first 8 permutations of the digits 0123, in lexicographic order, are:
@@ -30,6 +31,7 @@ vc-description: |-
   • A value of 1 for `n` means the 1st permutation, so `n = 0` is not a valid input.
   
   • Oh, and no itertools ;)
+  -/
 
 vc-preamble: |-
 
@@ -61,23 +63,23 @@ vc-theorems: |-
     L n d = L n d :=
   sorry
   
-  /--
+  /-
   info: '0'
   -/
-  #guard_msgs in
-  #eval L 1 1
+  -- #guard_msgs in
+  -- #eval L 1 1
   
-  /--
+  /-
   info: '02431'
   -/
-  #guard_msgs in
-  #eval L 12 5
+  -- #guard_msgs in
+  -- #eval L 12 5
   
-  /--
+  /-
   info: '1325460'
   -/
-  #guard_msgs in
-  #eval L 1000 7
+  -- #guard_msgs in
+  -- #eval L 1000 7
 
 vc-postamble: |-
   -- Apps difficulty: introductory

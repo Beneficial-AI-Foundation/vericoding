@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The integers 14 and 15, are contiguous (1 the difference between them, obvious) and have the same number of divisors.
   ```python
   14 ----> 1, 2, 7, 14 (4 divisors)
@@ -28,6 +29,7 @@ vc-description: |-
   ```
   
   Happy coding!!!
+  -/
 
 vc-preamble: |-
 
@@ -51,23 +53,23 @@ vc-theorems: |-
   theorem count_pairs_int_small_m (d : Nat) (h : d > 0) :
     count_pairs_int d (d+1) = 0 ∧ count_pairs_int d d = 0 := sorry
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval count_pairs_int 1 50
+  -- #guard_msgs in
+  -- #eval count_pairs_int 1 50
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval count_pairs_int 3 100
+  -- #guard_msgs in
+  -- #eval count_pairs_int 3 100
   
-  /--
+  /-
   info: 86
   -/
-  #guard_msgs in
-  #eval count_pairs_int 6 350
+  -- #guard_msgs in
+  -- #eval count_pairs_int 6 350
 
 vc-postamble: |-
   -- Apps difficulty: introductory

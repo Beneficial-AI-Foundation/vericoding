@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Firdavs is living on planet F. There are $N$ cities (numbered $1$ through $N$) on this planet; let's denote the value of city $i$ by $v_i$. Firdavs can travel directly from each city to any other city. When he travels directly from city $x$ to city $y$, he needs to pay $f(x, y) = |v_y-v_x|+y-x$ coins (this number can be negative, in which case he receives $-f(x, y)$ coins).
   Let's define a simple path from city $x$ to city $y$ with length $k \ge 1$ as a sequence of cities $a_1, a_2, \ldots, a_k$ such that all cities in this sequence are different, $a_1 = x$ and $a_k = y$. The cost of such a path is $\sum_{i=1}^{k-1} f(a_i, a_{i+1})$.
   You need to answer some queries for Firdavs. In each query, you are given two cities $x$ and $y$, and you need to find the minimum cost of a simple path from city $x$ to city $y$. Then, you need to find the length of the longest simple path from $x$ to $y$ with this cost.
@@ -48,6 +49,7 @@ vc-description: |-
   - $2 \rightarrow 1 \rightarrow 3$: cost $(|4-2|+1-2)+(|5-4|+3-1) = 4$, length $3$
   - $2 \rightarrow 3$: cost $|5-2|+3-2 = 4$, length $2$
   All other paths have greater costs, so the minimum cost is $4$. Among these two paths, we want the one with greater length, which is $3$.
+  -/
 
 vc-preamble: |-
 

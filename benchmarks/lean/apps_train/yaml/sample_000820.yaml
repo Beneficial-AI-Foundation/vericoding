@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The Petrozavodsk camp takes place in about one month. Jafar wants to participate in the camp, but guess what? His coach is Yalalovichik.
   Yalalovichik is a legendary coach, famous in the history of competitive programming. However, he is only willing to send to the camp students who solve really hard problems on Timus. The deadline that Yalalovichik set before has passed and he refuses to send Jafar to the camp.
   Jafar decided to make Yalalovichik happy in hopes of changing his decision, so he invented a new sequence of numbers and named them Yalalovichik numbers. Jafar is writing a research paper about their properties and wants to publish it in the Science Eagle yearly journal.
@@ -28,6 +29,7 @@ vc-description: |-
   
   -----Example Output-----
   123231312
+  -/
 
 vc-preamble: |-
 
@@ -44,23 +46,23 @@ vc-theorems: |-
   theorem single_digit_identity (c : Char) (h : c.isDigit) :
     solve_yalalovichik (String.mk [c]) = c.toNat - '0'.toNat := sorry
   
-  /--
+  /-
   info: 123231312
   -/
-  #guard_msgs in
-  #eval solve_yalalovichik "123"
+  -- #guard_msgs in
+  -- #eval solve_yalalovichik "123"
   
-  /--
+  /-
   info: 3443
   -/
-  #guard_msgs in
-  #eval solve_yalalovichik "34"
+  -- #guard_msgs in
+  -- #eval solve_yalalovichik "34"
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval solve_yalalovichik "9"
+  -- #guard_msgs in
+  -- #eval solve_yalalovichik "9"
 
 vc-postamble: |-
   -- Apps difficulty: interview

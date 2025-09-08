@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times.
   
   You may assume that the array is non-empty and the majority element always exist in the array.
@@ -12,6 +13,7 @@ vc-description: |-
   
   Input: [2,2,1,1,1,2,2]
   Output: 2
+  -/
 
 vc-preamble: |-
 
@@ -32,23 +34,23 @@ vc-theorems: |-
     majorityElement (List.replicate (lst.length + 1) x) = x :=
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval majority_element [3, 2, 3]
+  -- #guard_msgs in
+  -- #eval majority_element [3, 2, 3]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval majority_element [2, 2, 1, 1, 1, 2, 2]
+  -- #guard_msgs in
+  -- #eval majority_element [2, 2, 1, 1, 1, 2, 2]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval majority_element [1]
+  -- #guard_msgs in
+  -- #eval majority_element [1]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ### Count the number of Duplicates
   
   Write a function that will return the count of **distinct case-insensitive** alphabetic characters and numeric digits that occur more than 
@@ -13,6 +14,7 @@ vc-description: |-
   "Indivisibilities" -> 2  `# 'i' occurs seven times and 's' occurs twice`  
   "aA11" -> 2              `# 'a' and '1'`  
   "ABBA" -> 2              `# 'A' and 'B' each occur twice`
+  -/
 
 vc-preamble: |-
 
@@ -44,35 +46,35 @@ vc-theorems: |-
     duplicateCount (String.mk [c, c]) = 1 := by
     sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval duplicate_count ""
+  -- #guard_msgs in
+  -- #eval duplicate_count ""
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval duplicate_count "abcde"
+  -- #guard_msgs in
+  -- #eval duplicate_count "abcde"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval duplicate_count "aabbcde"
+  -- #guard_msgs in
+  -- #eval duplicate_count "aabbcde"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval duplicate_count "aabBcde"
+  -- #guard_msgs in
+  -- #eval duplicate_count "aabBcde"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval duplicate_count "Indivisibilities"
+  -- #guard_msgs in
+  -- #eval duplicate_count "Indivisibilities"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Create a function with two arguments that will return an array of the first (n) multiples of (x). 
   
   Assume both the given number and the number of times to count will be positive numbers greater than 0. 
@@ -11,6 +12,7 @@ vc-description: |-
   count_by(1,10) #should return [1,2,3,4,5,6,7,8,9,10]
   count_by(2,5) #should return [2,4,6,8,10]
   ```
+  -/
 
 vc-preamble: |-
 
@@ -41,23 +43,23 @@ vc-theorems: |-
       (countBy x n)[i + 1]! - (countBy x n)[i]! = x :=
     sorry
   
-  /--
+  /-
   info: [1, 2, 3, 4, 5]
   -/
-  #guard_msgs in
-  #eval count_by 1 5
+  -- #guard_msgs in
+  -- #eval count_by 1 5
   
-  /--
+  /-
   info: [2, 4, 6, 8, 10]
   -/
-  #guard_msgs in
-  #eval count_by 2 5
+  -- #guard_msgs in
+  -- #eval count_by 2 5
   
-  /--
+  /-
   info: [100, 200, 300, 400, 500]
   -/
-  #guard_msgs in
-  #eval count_by 100 5
+  -- #guard_msgs in
+  -- #eval count_by 100 5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

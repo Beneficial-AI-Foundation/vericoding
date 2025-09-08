@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your task is to sort a given string. Each word in the string will contain a single number. This number is the position the word should have in the result.
   
   Note: Numbers can be from 1 to 9. So 1 will be the first word (not 0).
@@ -13,6 +14,7 @@ vc-description: |-
   "4of Fo1r pe6ople g3ood th5e the2"  -->  "Fo1r the2 g3ood 4of th5e pe6ople"
   ""  -->  ""
   ```
+  -/
 
 vc-preamble: |-
   def order (sentence : String) : String :=
@@ -61,23 +63,23 @@ vc-theorems: |-
     words.length = resultWords.length :=
   sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval order "is2 Thi1s T4est 3a"
+  -- #guard_msgs in
+  -- #eval order "is2 Thi1s T4est 3a"
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval order "4of Fo1r pe6ople g3ood th5e the2"
+  -- #guard_msgs in
+  -- #eval order "4of Fo1r pe6ople g3ood th5e the2"
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval order ""
+  -- #guard_msgs in
+  -- #eval order ""
 
 vc-postamble: |-
   -- Apps difficulty: introductory

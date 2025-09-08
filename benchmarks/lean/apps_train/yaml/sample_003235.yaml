@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this Kata, you will be given a string and two indexes (`a` and `b`). Your task is to reverse the portion of that string between those two indices inclusive. 
   
   ~~~if-not:fortran
@@ -27,6 +28,7 @@ vc-description: |-
   ~~~if:fortran
   *NOTE: You may assume that all input strings will* **not** *contain any (redundant) trailing whitespace.  In return, your returned string is* **not** *permitted to contain any (redundant) trailing whitespace.*
   ~~~
+  -/
 
 vc-preamble: |-
   def solve (s : String) (a b : Nat) : String := sorry

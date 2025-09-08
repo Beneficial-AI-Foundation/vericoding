@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Three candidates take part in a TV show.
   
   In order to decide who will take part in the final game and probably become rich, they have to roll the Wheel of Fortune!
@@ -29,6 +30,7 @@ vc-description: |-
   - A candidate did not roll the wheel or rolled it more than twice.
   - Scores are not valid.
   - Invalid user entry (no name or no score).
+  -/
 
 vc-preamble: |-
 
@@ -50,29 +52,29 @@ vc-theorems: |-
     (h_invalid : ∃ c, c ∈ cs ∧ ∃ s, s ∈ c.scores ∧ ¬(s % 5 = 0 ∧ 5 ≤ s ∧ s ≤ 100)) :
     winner cs = none := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval len candidates
+  -- #guard_msgs in
+  -- #eval len candidates
   
-  /--
+  /-
   info: 'Bill'
   -/
-  #guard_msgs in
-  #eval winner [c1, c2, c3]
+  -- #guard_msgs in
+  -- #eval winner [c1, c2, c3]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval winner []
+  -- #guard_msgs in
+  -- #eval winner []
   
-  /--
+  /-
   info: 'Bill'
   -/
-  #guard_msgs in
-  #eval winner [c1, c2, c3]
+  -- #guard_msgs in
+  -- #eval winner [c1, c2, c3]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Jem is famous for his laziness at school. He always leaves things to last minute. Now Jem has N problems in the assignment of "Advanced topics in algorithm" class to solved. The assignment is due tomorrow and as you may guess he hasn't touch any of the problems. Fortunately he got a plan as always.
   
   The first step will be buying a pack of Red Bull and then to work as hard as he can. Here is how he is going to spend the remaining time:
@@ -44,6 +45,7 @@ vc-description: |-
   - he solves the last problem in 16 minutes.
   
   So, Jem will need time = 5 × 2 + 1 + 2 × 4 + 1 + 8 + 1 + 16  = 45
+  -/
 
 vc-preamble: |-
 
@@ -89,23 +91,23 @@ vc-theorems: |-
     solve_jem_laziness 2 5 1 = 8 :=
     sorry
   
-  /--
+  /-
   info: 45
   -/
-  #guard_msgs in
-  #eval solve_jem_laziness 9 1 2
+  -- #guard_msgs in
+  -- #eval solve_jem_laziness 9 1 2
   
-  /--
+  /-
   info: 131351258112
   -/
-  #guard_msgs in
-  #eval solve_jem_laziness 123456 123456 123456
+  -- #guard_msgs in
+  -- #eval solve_jem_laziness 123456 123456 123456
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval solve_jem_laziness 4 1 1
+  -- #guard_msgs in
+  -- #eval solve_jem_laziness 4 1 1
 
 vc-postamble: |-
   -- Apps difficulty: interview

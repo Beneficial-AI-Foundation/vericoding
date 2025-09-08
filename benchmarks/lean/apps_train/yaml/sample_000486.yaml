@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We have n jobs, where every job is scheduled to be done from startTime[i] to endTime[i], obtaining a profit of profit[i].
   You're given the startTime , endTime and profit arrays, you need to output the maximum profit you can take such that there are no 2 jobs in the subset with overlapping time range.
   If you choose a job that ends at time X you will be able to start another job that starts at time X.
@@ -27,6 +28,7 @@ vc-description: |-
   1 <= startTime.length == endTime.length == profit.length <= 5 * 10^4
   1 <= startTime[i] < endTime[i] <= 10^9
   1 <= profit[i] <= 10^4
+  -/
 
 vc-preamble: |-
   def List.sum (xs: List Int) : Int :=
@@ -65,23 +67,23 @@ vc-theorems: |-
     jobScheduling [startTime] [endTime] [profit] = profit :=
     sorry
   
-  /--
+  /-
   info: 120
   -/
-  #guard_msgs in
-  #eval jobScheduling [1, 2, 3, 3] [3, 4, 5, 6] [50, 10, 40, 70]
+  -- #guard_msgs in
+  -- #eval jobScheduling [1, 2, 3, 3] [3, 4, 5, 6] [50, 10, 40, 70]
   
-  /--
+  /-
   info: 150
   -/
-  #guard_msgs in
-  #eval jobScheduling [1, 2, 3, 4, 6] [3, 5, 10, 6, 9] [20, 20, 100, 70, 60]
+  -- #guard_msgs in
+  -- #eval jobScheduling [1, 2, 3, 4, 6] [3, 5, 10, 6, 9] [20, 20, 100, 70, 60]
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval jobScheduling [1, 1, 1] [2, 3, 4] [5, 6, 4]
+  -- #guard_msgs in
+  -- #eval jobScheduling [1, 1, 1] [2, 3, 4] [5, 6, 4]
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Complete the function which returns the weekday according to the input number:
   
   * `1` returns `"Sunday"`
@@ -9,6 +10,7 @@ vc-description: |-
   * `6` returns `"Friday"`
   * `7` returns `"Saturday"`
   * Otherwise returns `"Wrong, please enter a number between 1 and 7"`
+  -/
 
 vc-preamble: |-
   def WEEKDAY : Nat → String := sorry
@@ -32,23 +34,23 @@ vc-theorems: |-
   theorem invalid_weekday (n : Int) (h : ¬(1 ≤ n ∧ n ≤ 7)) :
     whatday n = ERROR := sorry
   
-  /--
+  /-
   info: 'Sunday'
   -/
-  #guard_msgs in
-  #eval whatday 1
+  -- #guard_msgs in
+  -- #eval whatday 1
   
-  /--
+  /-
   info: 'Saturday'
   -/
-  #guard_msgs in
-  #eval whatday 7
+  -- #guard_msgs in
+  -- #eval whatday 7
   
-  /--
+  /-
   info: ERROR
   -/
-  #guard_msgs in
-  #eval whatday 0
+  -- #guard_msgs in
+  -- #eval whatday 0
 
 vc-postamble: |-
   -- Apps difficulty: introductory

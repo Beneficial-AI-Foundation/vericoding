@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   It's autumn now, the time of the leaf fall.
   Sergey likes to collect fallen leaves in autumn. In his city, he can find fallen leaves of maple, oak and poplar. These leaves can be of three different colors: green, yellow or red.
   Sergey has collected some leaves of each type and color. Now he wants to create the biggest nice bouquet from them. He considers the bouquet nice iff all the leaves in it are either from the same type of tree or of the same color (or both). Moreover, he doesn't want to create a bouquet with even number of leaves in it, since this kind of bouquets are considered to attract bad luck. However, if it's impossible to make any nice bouquet, he won't do anything, thus, obtaining a bouquet with zero leaves.
@@ -30,6 +31,7 @@ vc-description: |-
   
   -----Explanation-----
   Example case 1. We can create a bouquet with 7 leaves, for example, by collecting all yellow leaves. This is not the only way to create the nice bouquet with 7 leaves (for example, Sergey can use all but one red leaves), but it is impossible to create a nice bouquet with more than 7 leaves.
+  -/
 
 vc-preamble: |-
 
@@ -52,23 +54,23 @@ vc-theorems: |-
     find_max_bouquet 0 0 0 0 0 0 0 0 0 = 0 :=
   sorry
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval find_max_bouquet 1 2 3 3 2 1 1 3 4
+  -- #guard_msgs in
+  -- #eval find_max_bouquet 1 2 3 3 2 1 1 3 4
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval find_max_bouquet 0 0 0 0 0 0 0 0 0
+  -- #guard_msgs in
+  -- #eval find_max_bouquet 0 0 0 0 0 0 0 0 0
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_max_bouquet 1 1 1 1 1 1 1 1 1
+  -- #guard_msgs in
+  -- #eval find_max_bouquet 1 1 1 1 1 1 1 1 1
 
 vc-postamble: |-
   -- Apps difficulty: interview

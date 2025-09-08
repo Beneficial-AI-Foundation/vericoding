@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   KISS stands for Keep It Simple Stupid.
   It is a design principle for keeping things simple rather than complex.
   
@@ -29,6 +30,7 @@ vc-description: |-
   ```python
   "jump always mostly is touchy dancing choice is pineapples mostly"
   ```
+  -/
 
 vc-preamble: |-
 
@@ -57,23 +59,23 @@ vc-theorems: |-
     is_kiss text = "Keep It Simple Stupid" ∨ 
     is_kiss text = "Good work Joe!" := sorry
   
-  /--
+  /-
   info: 'Good work Joe!'
   -/
-  #guard_msgs in
-  #eval is_kiss "Joe had a bad day"
+  -- #guard_msgs in
+  -- #eval is_kiss "Joe had a bad day"
   
-  /--
+  /-
   info: 'Keep It Simple Stupid'
   -/
-  #guard_msgs in
-  #eval is_kiss "Joe is having no fun"
+  -- #guard_msgs in
+  -- #eval is_kiss "Joe is having no fun"
   
-  /--
+  /-
   info: 'Good work Joe!'
   -/
-  #guard_msgs in
-  #eval is_kiss "Joe listened to the noise and it was an onamonapia"
+  -- #guard_msgs in
+  -- #eval is_kiss "Joe listened to the noise and it was an onamonapia"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

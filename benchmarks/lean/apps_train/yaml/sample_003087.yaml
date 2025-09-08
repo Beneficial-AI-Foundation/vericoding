@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In music, if you double (or halve) the pitch of any note you will get to the same note again.
   
   "Concert A" is fixed at 440 Hz, and every other note is defined based on that. 880 Hz is also an A, as is 1760 Hz, as is 220 Hz.
@@ -27,6 +28,7 @@ vc-description: |-
   ```
   
   Musicians: all pitches based on equal tempermanent, taken from [here](http://pages.mtu.edu/~suits/notefreqs.html).
+  -/
 
 vc-preamble: |-
 
@@ -61,41 +63,41 @@ vc-theorems: |-
     (mult = 0.5 ∨ mult = 2 ∨ mult = 4) →
     get_note (freq * mult) = note := sorry
   
-  /--
+  /-
   info: 'A'
   -/
-  #guard_msgs in
-  #eval get_note 440
+  -- #guard_msgs in
+  -- #eval get_note 440
   
-  /--
+  /-
   info: 'A'
   -/
-  #guard_msgs in
-  #eval get_note 220
+  -- #guard_msgs in
+  -- #eval get_note 220
   
-  /--
+  /-
   info: 'A'
   -/
-  #guard_msgs in
-  #eval get_note 880
+  -- #guard_msgs in
+  -- #eval get_note 880
   
-  /--
+  /-
   info: 'C'
   -/
-  #guard_msgs in
-  #eval get_note 523.25
+  -- #guard_msgs in
+  -- #eval get_note 523.25
   
-  /--
+  /-
   info: 'C'
   -/
-  #guard_msgs in
-  #eval get_note 261.625
+  -- #guard_msgs in
+  -- #eval get_note 261.625
   
-  /--
+  /-
   info: 'C'
   -/
-  #guard_msgs in
-  #eval get_note 1046.5
+  -- #guard_msgs in
+  -- #eval get_note 1046.5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

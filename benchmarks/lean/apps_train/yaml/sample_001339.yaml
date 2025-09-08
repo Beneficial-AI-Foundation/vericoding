@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Our Chef who was a renouned mathematician has recently got into diamonds' business. 
   She has accidentally misplaced $Q$ diamonds into a jar which already had $N$ chocolates. She then started wondering about an interesting question as following. 
   If we pick items one by one at random without replacement, what would be the expected number of picks required to get all diamonds out. 
@@ -33,6 +34,7 @@ vc-description: |-
   "DCDC" => 3
   "DCCD" => 4
   Hence the expected number of picks would be (3+4+4+2+3+4)/6 = 3.333333
+  -/
 
 vc-preamble: |-
 

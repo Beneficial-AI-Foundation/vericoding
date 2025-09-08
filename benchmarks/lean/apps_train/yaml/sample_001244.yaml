@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef Shifu wanted to celebrate the success of his new restaurant with all his employees. He was willing to host a party and he had decided the location of the party as well. However, Chef Shifu was a shy person and wanted to communicate with the least possible employees to inform them about the party, and that these employees could inform their friends.
   
   Note that an employee could only inform his/her immediate friends about the party, not his/her friends’ friends.
@@ -68,6 +69,7 @@ vc-description: |-
   Similarly, selecting employees 1 and 3 would also ensure that all 4 employees are selected.
   
   In both cases, we must select 2 employees in the best case.
+  -/
 
 vc-preamble: |-
 
@@ -96,23 +98,23 @@ vc-theorems: |-
       (List.range' 1 n))) :
     min_employees_to_inform n pairs = 1 := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval min_employees_to_inform 3 [(1, 2), (2, 3), (1, 3)]
+  -- #guard_msgs in
+  -- #eval min_employees_to_inform 3 [(1, 2), (2, 3), (1, 3)]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_employees_to_inform 4 [(1, 2), (2, 3), (3, 4)]
+  -- #guard_msgs in
+  -- #eval min_employees_to_inform 4 [(1, 2), (2, 3), (3, 4)]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval min_employees_to_inform 4 [(1, 2), (1, 3), (1, 4)]
+  -- #guard_msgs in
+  -- #eval min_employees_to_inform 4 [(1, 2), (1, 3), (1, 4)]
 
 vc-postamble: |-
   -- Apps difficulty: interview

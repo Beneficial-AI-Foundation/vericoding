@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a m x n matrix mat and an integer threshold. Return the maximum side-length of a square with a sum less than or equal to threshold or return 0 if there is no such square.
   
   Example 1:
@@ -26,6 +27,7 @@ vc-description: |-
   n == mat[i].length
   0 <= mat[i][j] <= 10000
   0 <= threshold <= 10^5
+  -/
 
 vc-preamble: |-
   def maxSideLength (mat: List (List Int)) (threshold: Int) : Int :=
@@ -75,23 +77,23 @@ vc-theorems: |-
     (h2 : ∀ row ∈ mat, ∀ x ∈ row, x = 1) :
     maxSideLength mat threshold ≤ floorSqrt threshold := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval maxSideLength [[1, 1, 3, 2, 4, 3, 2], [1, 1, 3, 2, 4, 3, 2], [1, 1, 3, 2, 4, 3, 2]] 4
+  -- #guard_msgs in
+  -- #eval maxSideLength [[1, 1, 3, 2, 4, 3, 2], [1, 1, 3, 2, 4, 3, 2], [1, 1, 3, 2, 4, 3, 2]] 4
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval maxSideLength [[2, 2, 2, 2, 2], [2, 2, 2, 2, 2], [2, 2, 2, 2, 2], [2, 2, 2, 2, 2], [2, 2, 2, 2, 2]] 1
+  -- #guard_msgs in
+  -- #eval maxSideLength [[2, 2, 2, 2, 2], [2, 2, 2, 2, 2], [2, 2, 2, 2, 2], [2, 2, 2, 2, 2], [2, 2, 2, 2, 2]] 1
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval maxSideLength [[1, 1, 1, 1], [1, 0, 0, 0], [1, 0, 0, 0], [1, 0, 0, 0]] 6
+  -- #guard_msgs in
+  -- #eval maxSideLength [[1, 1, 1, 1], [1, 0, 0, 0], [1, 0, 0, 0], [1, 0, 0, 0]] 6
 
 vc-postamble: |-
   -- Apps difficulty: interview

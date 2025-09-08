@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Most of this problem is by the original author of [the harder kata](https://www.codewars.com/kata/556206664efbe6376700005c), I just made it simpler.
   
   I read a book recently, titled "Things to Make and Do in the Fourth Dimension" by comedian and mathematician Matt Parker ( [Youtube](https://www.youtube.com/user/standupmaths) ), and in the first chapter of the book Matt talks about problems he likes to solve in his head to take his mind off the fact that he is in his dentist's chair, we've all been there!
@@ -40,6 +41,7 @@ vc-description: |-
   Note: All inputs will be valid numbers between `0` and `2^53-1 (9,007,199,254,740,991)` (inclusive).   
   Note: All single digit numbers (including `0`) are trivially polydivisible.
   Note: Except for `0`, no numbers will start with `0`.
+  -/
 
 vc-preamble: |-
   def polydivisible (n : Nat) : Bool := sorry
@@ -65,23 +67,23 @@ vc-theorems: |-
   theorem polydivisible_positive {n : Int} :
     n ≤ 0 → polydivisible n.toNat = false := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval polydivisible 1232
+  -- #guard_msgs in
+  -- #eval polydivisible 1232
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval polydivisible 123220
+  -- #guard_msgs in
+  -- #eval polydivisible 123220
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval polydivisible 987654
+  -- #guard_msgs in
+  -- #eval polydivisible 987654
 
 vc-postamble: |-
   -- Apps difficulty: introductory

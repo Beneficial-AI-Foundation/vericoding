@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given an image, that can be represented with a 2-d n by m grid of pixels. Each pixel of the image is either on or off, denoted by the characters "0" or "1", respectively. You would like to compress this image. You want to choose an integer k > 1 and split the image into k by k blocks. If n and m are not divisible by k, the image is padded with only zeros on the right and bottom so that they are divisible by k. Each pixel in each individual block must have the same value. The given image may not be compressible in its current state. Find the minimum number of pixels you need to toggle (after padding) in order for the image to be compressible for some k. More specifically, the steps are to first choose k, then the image is padded with zeros, then, we can toggle the pixels so it is compressible for this k. The image must be compressible in that state.
   
   -----Input-----
@@ -46,6 +47,7 @@ vc-description: |-
   000000
   
   We can see that this image is compressible for k = 2.
+  -/
 
 vc-preamble: |-
 

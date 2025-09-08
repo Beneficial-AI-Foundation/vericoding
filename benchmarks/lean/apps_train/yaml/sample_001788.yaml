@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Under a grammar given below, strings can represent a set of lowercase words.  Let's use R(expr) to denote the set of words the expression represents.
   Grammar can best be understood through simple examples:
   
@@ -39,6 +40,7 @@ vc-description: |-
   1 <= expression.length <= 60
   expression[i] consists of '{', '}', ','or lowercase English letters.
   The given expression represents a set of words based on the grammar given in the description.
+  -/
 
 vc-preamble: |-
 
@@ -74,23 +76,23 @@ vc-theorems: |-
   theorem brace_expansion_empty_braces :
     braceExpansionII "{}" = [""] := sorry
   
-  /--
+  /-
   info: ['ac', 'ad', 'ae', 'bc', 'bd', 'be']
   -/
-  #guard_msgs in
-  #eval braceExpansionII "{a,b}{c,{d,e}}"
+  -- #guard_msgs in
+  -- #eval braceExpansionII "{a,b}{c,{d,e}}"
   
-  /--
+  /-
   info: ['a', 'ab', 'ac', 'z']
   -/
-  #guard_msgs in
-  #eval braceExpansionII "{{a,z},a{b,c},{ab,z}}"
+  -- #guard_msgs in
+  -- #eval braceExpansionII "{{a,z},a{b,c},{ab,z}}"
   
-  /--
+  /-
   info: ['abdfg', 'abdfh', 'abefg', 'abefh', 'acdfg', 'acdfh', 'acefg', 'acefh']
   -/
-  #guard_msgs in
-  #eval braceExpansionII "a{b,c}{d,e}f{g,h}"
+  -- #guard_msgs in
+  -- #eval braceExpansionII "a{b,c}{d,e}f{g,h}"
 
 vc-postamble: |-
   -- Apps difficulty: interview

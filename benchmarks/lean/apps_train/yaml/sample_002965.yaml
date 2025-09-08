@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   < PREVIOUS KATA
   NEXT KATA >
   
@@ -154,6 +155,7 @@ vc-description: |-
           1                                               1
   
   >>>LIST OF ALL MY KATAS<<<
+  -/
 
 vc-preamble: |-
 
@@ -187,23 +189,23 @@ vc-theorems: |-
     (lines.get! 0).contains '1' ∧
     matchingLines.length ≥ y := sorry
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval pattern 0
+  -- #guard_msgs in
+  -- #eval pattern 0
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval pattern 3
+  -- #guard_msgs in
+  -- #eval pattern 3
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval pattern 2 2
+  -- #guard_msgs in
+  -- #eval pattern 2 2
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    John is new to spreadsheets. He is well aware of rows and columns, but he is not comfortable with spreadsheets numbering system.
   ```
@@ -28,6 +29,7 @@ vc-description: |-
    - `[output]` a string
   
     The position (in the opposite format; if input was in spreadsheet system, the output should be int row-column system, and vise versa).
+  -/
 
 vc-preamble: |-
   def spreadsheet (s : String) : String := sorry
@@ -56,23 +58,23 @@ vc-theorems: |-
   theorem conversion_idempotent_r1c1 {s : String} (h : is_valid_r1c1 s = true) :
     spreadsheet (spreadsheet s) = s := sorry
   
-  /--
+  /-
   info: 'R1C1'
   -/
-  #guard_msgs in
-  #eval spreadsheet "A1"
+  -- #guard_msgs in
+  -- #eval spreadsheet "A1"
   
-  /--
+  /-
   info: 'AA48'
   -/
-  #guard_msgs in
-  #eval spreadsheet "R48C27"
+  -- #guard_msgs in
+  -- #eval spreadsheet "R48C27"
   
-  /--
+  /-
   info: 'R12C63'
   -/
-  #guard_msgs in
-  #eval spreadsheet "BK12"
+  -- #guard_msgs in
+  -- #eval spreadsheet "BK12"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

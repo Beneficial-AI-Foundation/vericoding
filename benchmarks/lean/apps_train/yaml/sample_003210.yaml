@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   For building the encrypted string:Take every 2nd char from the string, then the other chars, that are not every 2nd char, and concat them as new String.
   Do this n times!
   
@@ -30,6 +31,7 @@ vc-description: |-
   Simple Encryption #4 - Qwerty
   
   Have fun coding it and please don't forget to vote and rank this kata! :-)
+  -/
 
 vc-preamble: |-
   def encrypt (text : Option String) (n : Int) : Option String :=
@@ -64,41 +66,41 @@ vc-theorems: |-
     (encrypt (some text) n).map (fun s => s.data.toArray.qsort (· ≤ ·)) = some (text.data.toArray.qsort (· ≤ ·)) :=
     sorry
   
-  /--
+  /-
   info: 'hsi  etTi sats!'
   -/
-  #guard_msgs in
-  #eval encrypt "This is a test!" 1
+  -- #guard_msgs in
+  -- #eval encrypt "This is a test!" 1
   
-  /--
+  /-
   info: 'This is a test!'
   -/
-  #guard_msgs in
-  #eval decrypt "hsi  etTi sats!" 1
+  -- #guard_msgs in
+  -- #eval decrypt "hsi  etTi sats!" 1
   
-  /--
+  /-
   info: 's eT ashi tist!'
   -/
-  #guard_msgs in
-  #eval encrypt "This is a test!" 2
+  -- #guard_msgs in
+  -- #eval encrypt "This is a test!" 2
   
-  /--
+  /-
   info: 'This is a test!'
   -/
-  #guard_msgs in
-  #eval decrypt "s eT ashi tist!" 2
+  -- #guard_msgs in
+  -- #eval decrypt "s eT ashi tist!" 2
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval encrypt "" 1
+  -- #guard_msgs in
+  -- #eval encrypt "" 1
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval decrypt None 1
+  -- #guard_msgs in
+  -- #eval decrypt None 1
 
 vc-postamble: |-
   -- Apps difficulty: introductory

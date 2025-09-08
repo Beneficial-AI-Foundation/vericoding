@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Your Task
   The city of Darkishland has a strange hotel with infinite rooms. The groups that come to this hotel follow the following rules:
   
@@ -16,6 +17,7 @@ vc-description: |-
   # Input
   S denotes the initial size of the group and D denotes that you will have to find the group size staying in the hotel on D-th day (starting from 1). A group size S
   means that on the first day a group of S members comes to the hotel and stays for S days. Then comes a group of S + 1 members according to the previously described rules and so on.
+  -/
 
 vc-preamble: |-
 
@@ -36,23 +38,23 @@ vc-theorems: |-
     (group_size 3 10 = 5) ∧ 
     (group_size 5 7 = 6) := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval group_size 1 6
+  -- #guard_msgs in
+  -- #eval group_size 1 6
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval group_size 3 10
+  -- #guard_msgs in
+  -- #eval group_size 3 10
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval group_size 5 7
+  -- #guard_msgs in
+  -- #eval group_size 5 7
 
 vc-postamble: |-
   -- Apps difficulty: introductory

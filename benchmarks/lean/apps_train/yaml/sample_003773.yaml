@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Find the last element of the given argument(s).
   
   ## Examples
@@ -11,6 +12,7 @@ vc-description: |-
   In **javascript** and **CoffeeScript** a **list** will be an `array`, a `string` or the list of `arguments`.
   
   (courtesy of [haskell.org](http://www.haskell.org/haskellwiki/99_questions/1_to_10))
+  -/
 
 vc-preamble: |-
 
@@ -38,23 +40,23 @@ vc-theorems: |-
   theorem last_single_property {α : Type} (x : α) :
     last x = x := sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval last [1, 2, 3, 4, 5]
+  -- #guard_msgs in
+  -- #eval last [1, 2, 3, 4, 5]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval last 1 2 3 4
+  -- #guard_msgs in
+  -- #eval last 1 2 3 4
   
-  /--
+  /-
   info: 'z'
   -/
-  #guard_msgs in
-  #eval last "xyz"
+  -- #guard_msgs in
+  -- #eval last "xyz"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

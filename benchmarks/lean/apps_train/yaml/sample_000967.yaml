@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The game of billiards involves two players knocking 3 balls around
   on a green baize table. Well, there is more to it, but for our
   purposes this is sufficient.
@@ -48,6 +49,7 @@ vc-description: |-
   
   Output:
   1 58
+  -/
 
 vc-preamble: |-
   def find_winner_and_max_lead (rounds : List (Nat × Nat)) : Nat × Nat :=
@@ -78,23 +80,23 @@ vc-theorems: |-
     maxLead ≥ 0 :=
   sorry
   
-  /--
+  /-
   info: (1, 58)
   -/
-  #guard_msgs in
-  #eval find_winner_and_max_lead [(140, 82), (89, 134), (90, 110), (112, 106), (88, 90)]
+  -- #guard_msgs in
+  -- #eval find_winner_and_max_lead [(140, 82), (89, 134), (90, 110), (112, 106), (88, 90)]
   
-  /--
+  /-
   info: (1, 15)
   -/
-  #guard_msgs in
-  #eval find_winner_and_max_lead [(10, 5), (20, 15), (30, 25)]
+  -- #guard_msgs in
+  -- #eval find_winner_and_max_lead [(10, 5), (20, 15), (30, 25)]
   
-  /--
+  /-
   info: (2, 15)
   -/
-  #guard_msgs in
-  #eval find_winner_and_max_lead [(5, 10), (15, 20), (25, 30)]
+  -- #guard_msgs in
+  -- #eval find_winner_and_max_lead [(5, 10), (15, 20), (25, 30)]
 
 vc-postamble: |-
   -- Apps difficulty: interview

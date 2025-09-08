@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function to calculate compound tax using the following table:
   
   For $10 and under, the tax rate should be 10%.
@@ -13,6 +14,7 @@ vc-description: |-
   An input of 21, should return 1.75 (10% of 10 + 7% of 10 + 5% of 1)
   
   * Note that the returned value should be rounded to the nearest penny.
+  -/
 
 vc-preamble: |-
 
@@ -42,41 +44,41 @@ vc-theorems: |-
   theorem tax_fourth_bracket {x : Float} (h1 : 30 < x) (h2 : x ≤ 100) :
     tax_calculator x = 2.2 + (x-30) * 0.03 := sorry
   
-  /--
+  /-
   info: 1.0
   -/
-  #guard_msgs in
-  #eval tax_calculator 10
+  -- #guard_msgs in
+  -- #eval tax_calculator 10
   
-  /--
+  /-
   info: 1.75
   -/
-  #guard_msgs in
-  #eval tax_calculator 21
+  -- #guard_msgs in
+  -- #eval tax_calculator 21
   
-  /--
+  /-
   info: 2.35
   -/
-  #guard_msgs in
-  #eval tax_calculator 35
+  -- #guard_msgs in
+  -- #eval tax_calculator 35
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval tax_calculator 0
+  -- #guard_msgs in
+  -- #eval tax_calculator 0
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval tax_calculator -1
+  -- #guard_msgs in
+  -- #eval tax_calculator -1
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval tax_calculator "invalid"
+  -- #guard_msgs in
+  -- #eval tax_calculator "invalid"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

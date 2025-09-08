@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We are still with squared integers.
   
   Given 4 integers `a, b, c, d` we form the sum of the squares of `a` and `b`
@@ -34,6 +35,7 @@ vc-description: |-
   
   ##Hint
   Take a sheet of paper and with a bit of algebra try to write the product of squared numbers in another way.
+  -/
 
 vc-preamble: |-
 
@@ -69,23 +71,23 @@ vc-theorems: |-
   theorem prod2sum_reversible (a b c d : Int) :
     (prod2sum a b c d).length = (prod2sum c d a b).length := sorry
   
-  /--
+  /-
   info: [[1, 7], [5, 5]]
   -/
-  #guard_msgs in
-  #eval prod2sum 1 2 1 3
+  -- #guard_msgs in
+  -- #eval prod2sum 1 2 1 3
   
-  /--
+  /-
   info: [[2, 23], [7, 22]]
   -/
-  #guard_msgs in
-  #eval prod2sum 2 3 4 5
+  -- #guard_msgs in
+  -- #eval prod2sum 2 3 4 5
   
-  /--
+  /-
   info: [[2, 8]]
   -/
-  #guard_msgs in
-  #eval prod2sum 1 1 3 5
+  -- #guard_msgs in
+  -- #eval prod2sum 1 1 3 5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

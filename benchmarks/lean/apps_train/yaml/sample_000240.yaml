@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a number s in their binary representation. Return the number of steps to reduce it to 1 under the following rules:
   
   If the current number is even, you have to divide it by 2.
@@ -33,6 +34,7 @@ vc-description: |-
   1 <= s.length <= 500
   s consists of characters '0' or '1'
   s[0] == '1'
+  -/
 
 vc-preamble: |-
 
@@ -60,23 +62,23 @@ vc-theorems: |-
     let s := "1" ++ String.mk (List.join (List.replicate n ['0', '1']));
     num_steps s ≥ s.length := sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval num_steps "1101"
+  -- #guard_msgs in
+  -- #eval num_steps "1101"
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval num_steps "10"
+  -- #guard_msgs in
+  -- #eval num_steps "10"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval num_steps "1"
+  -- #guard_msgs in
+  -- #eval num_steps "1"
 
 vc-postamble: |-
   -- Apps difficulty: interview

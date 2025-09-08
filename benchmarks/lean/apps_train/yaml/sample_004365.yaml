@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Ronald's uncle left him 3 fertile chickens in his will. When life gives you chickens, you start a business selling chicken eggs which is exactly what Ronald decided to do. 
   
   A chicken lays 300 eggs in its first year. However, each chicken's egg production decreases by 20% every following year (rounded down) until when it dies (after laying its quota of eggs). 
@@ -15,6 +16,7 @@ vc-description: |-
   1. All chickens have the same life span regardless of when they are bought. 
   2. Let's assume all calculations are made at the end of the year so don't bother taking eggs laid per month into consideration. 
   3. Each chicken's egg production goes down by 20% each year, NOT the total number of eggs produced by each 'batch' of chickens. While this might appear to be the same thing, it doesn't once non-integers come into play so take care that this is reflected in your kata!
+  -/
 
 vc-preamble: |-
 
@@ -47,23 +49,23 @@ vc-theorems: |-
     year > 0 → egged year 1 = Sum.inr 900 :=
   sorry
   
-  /--
+  /-
   info: 'No chickens yet!'
   -/
-  #guard_msgs in
-  #eval egged 0 5
+  -- #guard_msgs in
+  -- #eval egged 0 5
   
-  /--
+  /-
   info: 900
   -/
-  #guard_msgs in
-  #eval egged 2 1
+  -- #guard_msgs in
+  -- #eval egged 2 1
   
-  /--
+  /-
   info: 900
   -/
-  #guard_msgs in
-  #eval egged 1 15
+  -- #guard_msgs in
+  -- #eval egged 1 15
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You're looking through different hex codes, and having trouble telling the difference between  #000001  and  #100000 
   
   We need a way to tell which is red, and which is blue!
@@ -28,6 +29,7 @@ vc-description: |-
   hex_color('000 000 000') == 'black'
   hex_color('001 001 001') == 'white'
   ```
+  -/
 
 vc-preamble: |-
 
@@ -58,23 +60,23 @@ vc-theorems: |-
     ∧ (r > 0 ∧ g = 0 ∧ b > 0 ∧ r = b) → hex_color s!"${r} ${g} ${b}" = "magenta"
     ∧ (r = 0 ∧ g > 0 ∧ b > 0 ∧ g = b) → hex_color s!"${r} ${g} ${b}" = "cyan" := sorry
   
-  /--
+  /-
   info: 'black'
   -/
-  #guard_msgs in
-  #eval hex_color ""
+  -- #guard_msgs in
+  -- #eval hex_color ""
   
-  /--
+  /-
   info: 'red'
   -/
-  #guard_msgs in
-  #eval hex_color "255 000 000"
+  -- #guard_msgs in
+  -- #eval hex_color "255 000 000"
   
-  /--
+  /-
   info: 'yellow'
   -/
-  #guard_msgs in
-  #eval hex_color "100 100 050"
+  -- #guard_msgs in
+  -- #eval hex_color "100 100 050"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

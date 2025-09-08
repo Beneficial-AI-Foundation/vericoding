@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   My friend John likes to go to the cinema. He can choose between system A and system B.
   ```
   System A : he buys a ticket (15 dollars) every time
@@ -25,6 +26,7 @@ vc-description: |-
   movie(100, 10, 0.95) should return 24 
       (with card the total price is 235, with tickets 240)
   ```
+  -/
 
 vc-preamble: |-
 
@@ -54,23 +56,23 @@ vc-theorems: |-
     movie card1 ticket perc ≤ movie card2 ticket perc
     := by sorry
   
-  /--
+  /-
   info: 43
   -/
-  #guard_msgs in
-  #eval movie 500 15 0.9
+  -- #guard_msgs in
+  -- #eval movie 500 15 0.9
   
-  /--
+  /-
   info: 24
   -/
-  #guard_msgs in
-  #eval movie 100 10 0.95
+  -- #guard_msgs in
+  -- #eval movie 100 10 0.95
   
-  /--
+  /-
   info: 21
   -/
-  #guard_msgs in
-  #eval movie 250 20 0.9
+  -- #guard_msgs in
+  -- #eval movie 250 20 0.9
 
 vc-postamble: |-
   -- Apps difficulty: introductory

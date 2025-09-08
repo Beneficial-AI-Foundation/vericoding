@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Raavan gave a problem to his son, Indrajeet, and asked him to solve the problem to prove his intelligence and power. The Problem was like: Given 3 integers, $N$, $K$, and $X$, produce an array $A$ of length $N$, in which the XOR of all elements of each contiguous sub-array, of length $K$, is exactly equal to $X$. Indrajeet found this problem very tricky and difficult, so, help him to solve this problem.
   
   -----Note:-----
@@ -36,6 +37,7 @@ vc-description: |-
   [3,3]: {4} - XOR([3,3]) = $4$
   [4,4]: {4} - XOR([4,4]) = $4$
   [5,5]: {4} - XOR([5,5]) = $4$
+  -/
 
 vc-preamble: |-
 
@@ -63,23 +65,23 @@ vc-theorems: |-
     (List.length result = n) ∧ 
     (arrayXor result = x) := sorry
   
-  /--
+  /-
   info: [4, 4, 4, 4, 4]
   -/
-  #guard_msgs in
-  #eval solve_xor_array 5 1 4
+  -- #guard_msgs in
+  -- #eval solve_xor_array 5 1 4
   
-  /--
+  /-
   info: [3, 7, 3, 7, 3]
   -/
-  #guard_msgs in
-  #eval solve_xor_array 5 2 4
+  -- #guard_msgs in
+  -- #eval solve_xor_array 5 2 4
   
-  /--
+  /-
   info: [11, 6, 9, 11, 6]
   -/
-  #guard_msgs in
-  #eval solve_xor_array 5 3 4
+  -- #guard_msgs in
+  -- #eval solve_xor_array 5 3 4
 
 vc-postamble: |-
   -- Apps difficulty: interview

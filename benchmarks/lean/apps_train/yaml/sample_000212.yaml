@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given the string croakOfFrogs, which represents a combination of the string "croak" from different frogs, that is, multiple frogs can croak at the same time, so multiple “croak” are mixed. Return the minimum number of different frogs to finish all the croak in the given string.
   A valid "croak" means a frog is printing 5 letters ‘c’, ’r’, ’o’, ’a’, ’k’ sequentially. The frogs have to print all five letters to finish a croak. If the given string is not a combination of valid "croak" return -1.
   
@@ -27,6 +28,7 @@ vc-description: |-
   
   1 <= croakOfFrogs.length <= 10^5
   All characters in the string are: 'c', 'r', 'o', 'a' or 'k'.
+  -/
 
 vc-preamble: |-
 
@@ -50,23 +52,23 @@ vc-theorems: |-
     min_number_of_frogs s ≤ n_frogs
     := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval min_number_of_frogs "croakcroak"
+  -- #guard_msgs in
+  -- #eval min_number_of_frogs "croakcroak"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_number_of_frogs "crcoakroak"
+  -- #guard_msgs in
+  -- #eval min_number_of_frogs "crcoakroak"
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval min_number_of_frogs "croakcrook"
+  -- #guard_msgs in
+  -- #eval min_number_of_frogs "croakcrook"
 
 vc-postamble: |-
   -- Apps difficulty: interview

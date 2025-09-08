@@ -1,9 +1,11 @@
 vc-description: |-
+  /-
   Given a string of words (x), you need to return an array of the words, sorted alphabetically by the final character in each.
   
   If two words have the same last letter, they returned array should show them in the order they appeared in the given string.
   
   All inputs will be valid.
+  -/
 
 vc-preamble: |-
 
@@ -42,23 +44,23 @@ vc-theorems: |-
     ∀ w ∈ s.split (· = ' '),
       (s.split (· = ' ')).count w = (last s).count w := sorry
   
-  /--
+  /-
   info: ['a', 'need', 'ubud', 'i', 'taxi', 'man', 'to', 'up']
   -/
-  #guard_msgs in
-  #eval last "man i need a taxi up to ubud"
+  -- #guard_msgs in
+  -- #eval last "man i need a taxi up to ubud"
   
-  /--
+  /-
   info: ['take', 'me', 'semynak', 'to']
   -/
-  #guard_msgs in
-  #eval last "take me to semynak"
+  -- #guard_msgs in
+  -- #eval last "take me to semynak"
   
-  /--
+  /-
   info: ['massage', 'massage', 'massage', 'yes', 'yes']
   -/
-  #guard_msgs in
-  #eval last "massage yes massage yes massage"
+  -- #guard_msgs in
+  -- #eval last "massage yes massage yes massage"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

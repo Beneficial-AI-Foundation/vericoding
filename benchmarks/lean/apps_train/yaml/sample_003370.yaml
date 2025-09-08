@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There's a new security company in Paris, and they decided to give their employees an algorithm to make first name recognition faster. In the blink of an eye, they can now detect if a string is a first name, no matter if it is a one-word name or an hyphenated name. They're given this documentation with the algorithm: 
   
   *In France, you'll often find people with hyphenated first names. They're called "prénoms composés".
@@ -16,6 +17,7 @@ vc-description: |-
   - Words can only start with an uppercase letter, and then lowercase letters (from a to z)
   
   Now is your time to help the guards !
+  -/
 
 vc-preamble: |-
 
@@ -42,23 +44,23 @@ vc-theorems: |-
     (∃ c ∈ s.data, ¬(c.isUpper ∨ c.isLower)) →
     show_me s = false := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval show_me "Francis"
+  -- #guard_msgs in
+  -- #eval show_me "Francis"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval show_me "Jean-Eluard"
+  -- #guard_msgs in
+  -- #eval show_me "Jean-Eluard"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval show_me "Le Mec"
+  -- #guard_msgs in
+  -- #eval show_me "Le Mec"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

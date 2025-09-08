@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your task is to make function, which returns the sum of a sequence of integers.
   
   The sequence is defined by 3 non-negative values: **begin**, **end**, **step**.
@@ -15,6 +16,7 @@ vc-description: |-
   
   1) Sum of a sequence (this kata)  
   2) [Sum of a Sequence [Hard-Core Version]](https://www.codewars.com/kata/sum-of-a-sequence-hard-core-version/javascript)
+  -/
 
 vc-preamble: |-
 
@@ -55,23 +57,23 @@ vc-theorems: |-
     sequenceSum s s p = s :=
   sorry
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval sequence_sum 2 6 2
+  -- #guard_msgs in
+  -- #eval sequence_sum 2 6 2
   
-  /--
+  /-
   info: 15
   -/
-  #guard_msgs in
-  #eval sequence_sum 1 5 1
+  -- #guard_msgs in
+  -- #eval sequence_sum 1 5 1
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval sequence_sum 16 15 3
+  -- #guard_msgs in
+  -- #eval sequence_sum 16 15 3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

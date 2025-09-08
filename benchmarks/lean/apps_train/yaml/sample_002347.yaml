@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a column title as appear in an Excel sheet, return its corresponding column number.
   
   For example:
@@ -26,6 +27,7 @@ vc-description: |-
   
   Input: "ZY"
   Output: 701
+  -/
 
 vc-preamble: |-
   def title_to_number (s : String) : Nat :=
@@ -54,23 +56,23 @@ vc-theorems: |-
     title_to_number (number_to_title n) = n := by
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval title_to_number "A"
+  -- #guard_msgs in
+  -- #eval title_to_number "A"
   
-  /--
+  /-
   info: 28
   -/
-  #guard_msgs in
-  #eval title_to_number "AB"
+  -- #guard_msgs in
+  -- #eval title_to_number "AB"
   
-  /--
+  /-
   info: 701
   -/
-  #guard_msgs in
-  #eval title_to_number "ZY"
+  -- #guard_msgs in
+  -- #eval title_to_number "ZY"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   After a long party Petya decided to return home, but he turned out to be at the opposite end of the town from his home. There are $n$ crossroads in the line in the town, and there is either the bus or the tram station at each crossroad.
   
   The crossroads are represented as a string $s$ of length $n$, where $s_i = \texttt{A}$, if there is a bus station at $i$-th crossroad, and $s_i = \texttt{B}$, if there is a tram station at $i$-th crossroad. Currently Petya is at the first crossroad (which corresponds to $s_1$) and his goal is to get to the last crossroad (which corresponds to $s_n$).
@@ -49,6 +50,7 @@ vc-description: |-
   3
   1
   6
+  -/
 
 vc-preamble: |-
 
@@ -79,23 +81,23 @@ vc-theorems: |-
   theorem long_string_start_point :
     find_min_start_point (3 : Nat) (2 : Nat) (8 : Nat) "AABBBBAABB" = (3 : Nat) := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_min_start_point 2 2 1 "BB"
+  -- #guard_msgs in
+  -- #eval find_min_start_point 2 2 1 "BB"
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval find_min_start_point 1 1 1 "AB"
+  -- #guard_msgs in
+  -- #eval find_min_start_point 1 1 1 "AB"
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_min_start_point 3 2 8 "AABBBBAABB"
+  -- #guard_msgs in
+  -- #eval find_min_start_point 3 2 8 "AABBBBAABB"
 
 vc-postamble: |-
   -- Apps difficulty: interview

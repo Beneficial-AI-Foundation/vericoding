@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   < PREVIOUS KATA
   NEXT KATA >
   
@@ -68,6 +69,7 @@ vc-description: |-
                     11111111111          
   
   >>>LIST OF ALL MY KATAS<<<
+  -/
 
 vc-preamble: |-
   def pattern (n : Nat) : String := sorry 
@@ -100,23 +102,23 @@ vc-theorems: |-
     let middle := lines.get! (n-1)
     ∀ c ∈ middle.data, isSingleDigit c := sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval pattern 3
+  -- #guard_msgs in
+  -- #eval pattern 3
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval pattern 5
+  -- #guard_msgs in
+  -- #eval pattern 5
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval pattern -3
+  -- #guard_msgs in
+  -- #eval pattern -3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

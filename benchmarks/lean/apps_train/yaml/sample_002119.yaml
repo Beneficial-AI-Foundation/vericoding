@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Sereja loves all sorts of algorithms. He has recently come up with a new algorithm, which receives a string as an input. Let's represent the input string of the algorithm as q = q_1q_2... q_{k}. The algorithm consists of two steps:
   
     Find any continuous subsequence (substring) of three characters of string q, which doesn't equal to either string "zyx", "xzy", "yxz". If q doesn't contain any such subsequence, terminate the algorithm, otherwise go to step 2.  Rearrange the letters of the found subsequence randomly and go to step 1. 
@@ -37,6 +38,7 @@ vc-description: |-
   -----Note-----
   
   In the first example, in test one and two the algorithm will always be terminated in one step. In the fourth test you can get string "xzyx" on which the algorithm will terminate. In all other tests the algorithm doesn't work correctly.
+  -/
 
 vc-preamble: |-
 
@@ -47,7 +49,7 @@ vc-helpers: |-
 vc-definitions: |-
   def checkAlgorithmTermination (s : String) (ranges : List (Nat × Nat)) : List Answer := sorry
   
-  /-- For ranges of length 1 or 2, the algorithm always terminates -/
+  /- For ranges of length 1 or 2, the algorithm always terminates -/
 
 vc-theorems: |-
   theorem singleOrPairTerminates {s : String} {start finish : Nat} :
@@ -55,7 +57,7 @@ vc-theorems: |-
     checkAlgorithmTermination s [(start, finish)] = [Answer.YES] :=
     sorry
   
-  /-- For any range, termination depends on character count distribution -/
+  /- For any range, termination depends on character count distribution -/
   
   theorem terminationCondition {s : String} {start finish : Nat} {x y z : Nat} :
     (x = y ∧ y = z) ∨
@@ -64,37 +66,37 @@ vc-theorems: |-
     checkAlgorithmTermination s [(start, finish)] = [Answer.YES] :=
     sorry
   
-  /-- Single character ranges always terminate -/
+  /- Single character ranges always terminate -/
   
   theorem singleCharTerminates {s : String} {i : Nat} :
     i < s.length →
     checkAlgorithmTermination s [(i+1, i+1)] = [Answer.YES] :=
     sorry
   
-  /-- Equal character counts lead to termination -/
+  /- Equal character counts lead to termination -/
   
   theorem equalCountsTerminate {s : String} {x y z : Nat} :
     x = y ∧ y = z →
     checkAlgorithmTermination s [(1, s.length)] = [Answer.YES] :=
     sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval check_algorithm_termination "zyxxxxxxyyz" [(5, 5), (1, 3), (1, 11), (1, 4), (3, 6)]
+  -- #guard_msgs in
+  -- #eval check_algorithm_termination "zyxxxxxxyyz" [(5, 5), (1, 3), (1, 11), (1, 4), (3, 6)]
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval check_algorithm_termination "x" [(1, 1)]
+  -- #guard_msgs in
+  -- #eval check_algorithm_termination "x" [(1, 1)]
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval check_algorithm_termination "xyz" [(1, 3)]
+  -- #guard_msgs in
+  -- #eval check_algorithm_termination "xyz" [(1, 3)]
 
 vc-postamble: |-
   -- Apps difficulty: competition

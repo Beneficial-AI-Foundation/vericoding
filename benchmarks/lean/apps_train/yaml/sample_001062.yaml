@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Zonal Computing Olympiad 2012, 26 Nov 2011
   
   The year is 2102 and today is the day of ZCO. This year there are N contests and the starting and ending times of each contest is known to you. You have to participate in exactly one of these contests. Different contests may overlap. The duration of different contests might be different. 
@@ -44,6 +45,7 @@ vc-description: |-
   
   -----Sample Output-----
   8
+  -/
 
 vc-preamble: |-
   def find_min_contest_time (n x y : Nat) (contests : List (Nat × Nat)) 
@@ -103,11 +105,11 @@ vc-theorems: |-
       find_min_contest_time 1 1 1 contests v_times w_times = 
       find_min_contest_time 1 1 1 contests sorted_v sorted_w := sorry
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval find_min_contest_time 3 4 2 [(15, 21), (5, 10), (7, 25)] [4, 14, 25, 2] [13, 21]
+  -- #guard_msgs in
+  -- #eval find_min_contest_time 3 4 2 [(15, 21), (5, 10), (7, 25)] [4, 14, 25, 2] [13, 21]
 
 vc-postamble: |-
   -- Apps difficulty: interview

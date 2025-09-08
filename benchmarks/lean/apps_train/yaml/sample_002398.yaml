@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given two integer arrays arr1 and arr2, and the integer d, return the distance value between the two arrays.
   The distance value is defined as the number of elements arr1[i] such that there is not any element arr2[j] where |arr1[i]-arr2[j]| <= d.
   
@@ -35,6 +36,7 @@ vc-description: |-
   1 <= arr1.length, arr2.length <= 500
   -10^3 <= arr1[i], arr2[j] <= 10^3
   0 <= d <= 100
+  -/
 
 vc-preamble: |-
   def find_distance_value (arr1 arr2 : List Int) (d : Nat) : Nat := sorry
@@ -69,23 +71,23 @@ vc-theorems: |-
     find_distance_value arr1 arr2 0 = 
       (arr1.filter (fun x => x ∉ arr2)).length := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_distance_value [4, 5, 8] [10, 9, 1, 8] 2
+  -- #guard_msgs in
+  -- #eval find_distance_value [4, 5, 8] [10, 9, 1, 8] 2
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_distance_value [1, 4, 2, 3] [-4, -3, 6, 10, 20, 30] 3
+  -- #guard_msgs in
+  -- #eval find_distance_value [1, 4, 2, 3] [-4, -3, 6, 10, 20, 30] 3
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval find_distance_value [2, 1, 100, 3] [-5, -2, 10, -3, 7] 6
+  -- #guard_msgs in
+  -- #eval find_distance_value [2, 1, 100, 3] [-5, -2, 10, -3, 7] 6
 
 vc-postamble: |-
   -- Apps difficulty: introductory

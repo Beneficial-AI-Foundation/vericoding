@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   T is playing a game with his friend, HL.
   
   There are $n$ piles of stones, the $i$-th pile initially has $a_i$ stones. 
@@ -34,6 +35,7 @@ vc-description: |-
   -----Note-----
   
   In the first game, T removes a single stone from the only pile in his first turn. After that, although the pile still contains $1$ stone, HL cannot choose from this pile because it has been chosen by T in the previous turn. Therefore, T is the winner.
+  -/
 
 vc-preamble: |-
   def sum (l: List Nat) : Nat := 
@@ -81,29 +83,29 @@ vc-theorems: |-
     n % 2 ≠ 0 →
     solve_stone_game n (List.replicate n 1) = "T" := sorry
   
-  /--
+  /-
   info: 'T'
   -/
-  #guard_msgs in
-  #eval solve_stone_game 1 [2]
+  -- #guard_msgs in
+  -- #eval solve_stone_game 1 [2]
   
-  /--
+  /-
   info: 'HL'
   -/
-  #guard_msgs in
-  #eval solve_stone_game 2 [1, 1]
+  -- #guard_msgs in
+  -- #eval solve_stone_game 2 [1, 1]
   
-  /--
+  /-
   info: 'HL'
   -/
-  #guard_msgs in
-  #eval solve_stone_game 4 [2, 3, 1, 2]
+  -- #guard_msgs in
+  -- #eval solve_stone_game 4 [2, 3, 1, 2]
   
-  /--
+  /-
   info: 'HL'
   -/
-  #guard_msgs in
-  #eval solve_stone_game 3 [2, 1, 1]
+  -- #guard_msgs in
+  -- #eval solve_stone_game 3 [2, 1, 1]
 
 vc-postamble: |-
   -- Apps difficulty: competition

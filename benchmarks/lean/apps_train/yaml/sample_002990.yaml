@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Pair of gloves
   =============
   
@@ -20,6 +21,7 @@ vc-description: |-
   red_gloves = ["red","red","red","red","red","red"];
   number_of_pairs(red_gloves) == 3; // 3 red pairs
   ```
+  -/
 
 vc-preamble: |-
 
@@ -48,23 +50,23 @@ vc-theorems: |-
     number_of_pairs (gloves ++ gloves) = gloves.length :=
   sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval number_of_pairs ["red", "red"]
+  -- #guard_msgs in
+  -- #eval number_of_pairs ["red", "red"]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval number_of_pairs ["red", "green", "blue"]
+  -- #guard_msgs in
+  -- #eval number_of_pairs ["red", "green", "blue"]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval number_of_pairs ["gray", "black", "purple", "purple", "gray", "black"]
+  -- #guard_msgs in
+  -- #eval number_of_pairs ["gray", "black", "purple", "purple", "gray", "black"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

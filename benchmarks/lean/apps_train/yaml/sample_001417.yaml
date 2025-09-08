@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Ms. E.T. came from planet Hex. She has 8 fingers in each hand which makes her count in hexadecimal way. When she meets you, she tells you that she came from 7E light years from the planet Earth. You see she means that it is 126 light years far away and she is telling you the numbers in hexadecimal. Now, you are in trouble to understand what those numbers really mean. Therefore, you have to convert the hexadecimal numbers to decimals.
   
   Input:
@@ -28,6 +29,7 @@ vc-description: |-
   6691
   
   11306
+  -/
 
 vc-preamble: |-
   def Nat.toHexString (n: Nat) : String :=
@@ -66,23 +68,23 @@ vc-theorems: |-
     (hexToDecimal l).get ⟨i, h₂⟩ > 0 := by
     sorry
   
-  /--
+  /-
   info: [10]
   -/
-  #guard_msgs in
-  #eval hex_to_decimal ["A"]
+  -- #guard_msgs in
+  -- #eval hex_to_decimal ["A"]
   
-  /--
+  /-
   info: [6691]
   -/
-  #guard_msgs in
-  #eval hex_to_decimal ["1A23"]
+  -- #guard_msgs in
+  -- #eval hex_to_decimal ["1A23"]
   
-  /--
+  /-
   info: [10, 6691, 11306]
   -/
-  #guard_msgs in
-  #eval hex_to_decimal ["A", "1A23", "2C2A"]
+  -- #guard_msgs in
+  -- #eval hex_to_decimal ["A", "1A23", "2C2A"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

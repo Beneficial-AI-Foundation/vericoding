@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given any number of boolean flags function should return true if and only if one of them is true while others are false. If function is called without arguments it should return false.
   
   ```python
@@ -7,6 +8,7 @@ vc-description: |-
     only_one(True, False, False, True) == False
     only_one(False, False, False, False) == False  
   ```
+  -/
 
 vc-preamble: |-
 
@@ -39,23 +41,23 @@ vc-theorems: |-
     only_one bs = (count_true bs = 1) :=
   sorry
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval only_one 
+  -- #guard_msgs in
+  -- #eval only_one 
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval only_one True False False
+  -- #guard_msgs in
+  -- #eval only_one True False False
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval only_one True False False True
+  -- #guard_msgs in
+  -- #eval only_one True False False True
 
 vc-postamble: |-
   -- Apps difficulty: introductory

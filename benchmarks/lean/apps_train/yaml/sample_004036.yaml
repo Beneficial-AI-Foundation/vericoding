@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Task:
   
   Your task is to write a function which returns the sum of following series upto nth term(parameter).
@@ -20,6 +21,7 @@ vc-description: |-
       SeriesSum(5) => 1 + 1/4 + 1/7 + 1/10 + 1/13 = "1.57"
   
   **NOTE**: In PHP the function is called `series_sum()`.
+  -/
 
 vc-preamble: |-
 
@@ -48,29 +50,29 @@ vc-theorems: |-
   theorem series_sum_negative (n : Int) :
     n < 0 → series_sum n = "0.00" := sorry
   
-  /--
+  /-
   info: '1.00'
   -/
-  #guard_msgs in
-  #eval series_sum 1
+  -- #guard_msgs in
+  -- #eval series_sum 1
   
-  /--
+  /-
   info: '1.25'
   -/
-  #guard_msgs in
-  #eval series_sum 2
+  -- #guard_msgs in
+  -- #eval series_sum 2
   
-  /--
+  /-
   info: '1.57'
   -/
-  #guard_msgs in
-  #eval series_sum 5
+  -- #guard_msgs in
+  -- #eval series_sum 5
   
-  /--
+  /-
   info: '0.00'
   -/
-  #guard_msgs in
-  #eval series_sum 0
+  -- #guard_msgs in
+  -- #eval series_sum 0
 
 vc-postamble: |-
   -- Apps difficulty: introductory

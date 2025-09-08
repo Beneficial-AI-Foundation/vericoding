@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # A History Lesson
   
   Soundex is an interesting phonetic algorithm developed nearly 100 years ago for indexing names as they are pronounced in English. The goal is for homophones to be encoded to the same representation so that they can be matched despite minor differences in spelling.
@@ -39,6 +40,7 @@ vc-description: |-
   Space separated string of equivalent Soundex codes (the first character of each code must be uppercase). E.g.
   
   ```S600 C560```
+  -/
 
 vc-preamble: |-
 
@@ -57,23 +59,23 @@ vc-definitions: |-
     (∀ (w c : String), w ∈ words → c ∈ codes → w.toUpper.front = c.front) := sorry
 
 vc-theorems: |-
-  /--
+  /-
   info: 'S600 C560'
   -/
-  #guard_msgs in
-  #eval soundex "Sarah Connor"
+  -- #guard_msgs in
+  -- #eval soundex "Sarah Connor"
   
-  /--
+  /-
   info: 'A261'
   -/
-  #guard_msgs in
-  #eval soundex "Ashcraft"
+  -- #guard_msgs in
+  -- #eval soundex "Ashcraft"
   
-  /--
+  /-
   info: 'T522'
   -/
-  #guard_msgs in
-  #eval soundex "Tymczak"
+  -- #guard_msgs in
+  -- #eval soundex "Tymczak"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   As we all know, Max is the best video game player among her friends. Her friends were so jealous of hers, that they created an actual game just to prove that she's not the best at games. The game is played on a directed acyclic graph (a DAG) with n vertices and m edges. There's a character written on each edge, a lowercase English letter.
   
    [Image] 
@@ -60,6 +61,7 @@ vc-description: |-
   Here's the graph in the second sample test case:
   
    [Image]
+  -/
 
 vc-preamble: |-
 

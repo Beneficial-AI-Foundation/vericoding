@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Dustin, is the head of an Intelligence agency. He wants to send a secret message S$S$ to his colleague.The message is a single word consisting of only lowercase english letters but he decides to encrypt the message for security reasons. He makes a string M$M$ of length N$N$, such that after deleting a substring of non-zero length from M$M$, the remaining string is S$S$.
   Calculate the number of all such possible strings he can form.
   
@@ -26,6 +27,7 @@ vc-description: |-
   1326
   
   76
+  -/
 
 vc-preamble: |-
   def count_possible_strings (n : Nat) (s : String) : Nat :=
@@ -52,17 +54,17 @@ vc-theorems: |-
     count_possible_strings n s > count_possible_strings n (s.append "a") :=
   sorry
   
-  /--
+  /-
   info: 1326
   -/
-  #guard_msgs in
-  #eval count_possible_strings 3 "a"
+  -- #guard_msgs in
+  -- #eval count_possible_strings 3 "a"
   
-  /--
+  /-
   info: 76
   -/
-  #guard_msgs in
-  #eval count_possible_strings 3 "ab"
+  -- #guard_msgs in
+  -- #eval count_possible_strings 3 "ab"
 
 vc-postamble: |-
   -- Apps difficulty: interview

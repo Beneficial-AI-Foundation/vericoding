@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A number is simply made up of digits.  
   The number 1256 is made up of the digits 1, 2, 5, and 6.  
   For 1256 there are 24 distinct permutations of the digits:  
@@ -38,6 +39,7 @@ vc-description: |-
   ~~~if-not:python
   \* ignore these marks, they're for Python only
   ~~~
+  -/
 
 vc-preamble: |-
   def permutation_average (n : Int) : Int := 
@@ -72,23 +74,23 @@ vc-theorems: |-
     permutation_average n ≥ 0 ∧ permutation_average n ≤ n := by
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval permutation_average 2
+  -- #guard_msgs in
+  -- #eval permutation_average 2
   
-  /--
+  /-
   info: 38
   -/
-  #guard_msgs in
-  #eval permutation_average 25
+  -- #guard_msgs in
+  -- #eval permutation_average 25
   
-  /--
+  /-
   info: 629
   -/
-  #guard_msgs in
-  #eval permutation_average 737
+  -- #guard_msgs in
+  -- #eval permutation_average 737
 
 vc-postamble: |-
   -- Apps difficulty: introductory

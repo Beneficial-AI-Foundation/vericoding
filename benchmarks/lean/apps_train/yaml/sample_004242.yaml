@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Find the closest prime number under a certain integer ```n``` that has the maximum possible amount of even digits.
   
   For ```n = 1000```, the highest prime under ```1000``` is ```887```, having two even digits (8 twice)
@@ -22,6 +23,7 @@ vc-description: |-
   ```
   
   Enjoy it!!
+  -/
 
 vc-preamble: |-
   def f (n : Int) : Int :=
@@ -63,23 +65,23 @@ vc-theorems: |-
     f n = 0 :=
     sorry
   
-  /--
+  /-
   info: 887
   -/
-  #guard_msgs in
-  #eval f 1000
+  -- #guard_msgs in
+  -- #eval f 1000
   
-  /--
+  /-
   info: 8887
   -/
-  #guard_msgs in
-  #eval f 10000
+  -- #guard_msgs in
+  -- #eval f 10000
   
-  /--
+  /-
   info: 487
   -/
-  #guard_msgs in
-  #eval f 500
+  -- #guard_msgs in
+  -- #eval f 500
 
 vc-postamble: |-
   -- Apps difficulty: introductory

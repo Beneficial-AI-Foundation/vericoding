@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   >When no more interesting kata can be resolved, I just choose to create the new kata, to solve their own, to enjoy the process  --myjinxin2015 said
   
   # Description:
@@ -26,6 +27,7 @@ vc-description: |-
    - This is a simple version, if you want some challenge, please [try the challenge version](https://www.codewars.com/kata/the-maximum-sum-value-of-ranges-challenge-version/).
   
   # Some Examples
+  -/
 
 vc-preamble: |-
 
@@ -67,23 +69,23 @@ vc-theorems: |-
     maxSum arr ranges = arr.maximum?.getD 0
     := sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval max_sum [1, -2, 3, 4, -5, -4, 3, 2, 1] [[1, 3], [0, 4], [6, 8]]
+  -- #guard_msgs in
+  -- #eval max_sum [1, -2, 3, 4, -5, -4, 3, 2, 1] [[1, 3], [0, 4], [6, 8]]
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval max_sum [1, -2, 3, 4, -5, -4, 3, 2, 1] [[1, 3]]
+  -- #guard_msgs in
+  -- #eval max_sum [1, -2, 3, 4, -5, -4, 3, 2, 1] [[1, 3]]
   
-  /--
+  /-
   info: 88
   -/
-  #guard_msgs in
-  #eval max_sum [11, -22, 31, 34, -45, -46, 35, 32, 21] [[1, 4], [0, 3], [6, 8], [0, 8]]
+  -- #guard_msgs in
+  -- #eval max_sum [11, -22, 31, 34, -45, -46, 35, 32, 21] [[1, 4], [0, 3], [6, 8], [0, 8]]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

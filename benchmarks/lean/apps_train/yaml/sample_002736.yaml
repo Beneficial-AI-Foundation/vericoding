@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   JavaScript provides a built-in parseInt method.
   
   It can be used like this:
@@ -13,6 +14,7 @@ vc-description: |-
   - It should make the conversion if the given string only contains a single integer value (and possibly spaces - including tabs, line feeds... - at both ends)
   - For all other strings (including the ones representing float values), it should return NaN
   - It should assume that all numbers are not signed and written in base 10
+  -/
 
 vc-preamble: |-
 
@@ -39,23 +41,23 @@ vc-theorems: |-
     (my_parse_int s = Sum.inl "NaN") ∨ 
     (my_parse_int s = Sum.inr (String.toInt! (String.trim s))) := sorry
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval my_parse_int "9"
+  -- #guard_msgs in
+  -- #eval my_parse_int "9"
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval my_parse_int "  9  "
+  -- #guard_msgs in
+  -- #eval my_parse_int "  9  "
   
-  /--
+  /-
   info: 'NaN'
   -/
-  #guard_msgs in
-  #eval my_parse_int "5 friends"
+  -- #guard_msgs in
+  -- #eval my_parse_int "5 friends"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

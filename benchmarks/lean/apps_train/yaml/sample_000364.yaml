@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Say you have an array for which the ith element is the price of a given stock on day i.
   
   Design an algorithm to find the maximum profit. You may complete at most k transactions.
@@ -18,6 +19,7 @@ vc-description: |-
   Output: 7
   Explanation: Buy on day 2 (price = 2) and sell on day 3 (price = 6), profit = 6-2 = 4.
                Then buy on day 5 (price = 0) and sell on day 6 (price = 3), profit = 3-0 = 3.
+  -/
 
 vc-preamble: |-
   def max_profit (k : Nat) (prices : List Nat) : Nat :=
@@ -44,23 +46,23 @@ vc-theorems: |-
   private def isSorted (l : List Nat) : Prop :=
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval max_profit 2 [2, 4, 1]
+  -- #guard_msgs in
+  -- #eval max_profit 2 [2, 4, 1]
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval max_profit 2 [3, 2, 6, 5, 0, 3]
+  -- #guard_msgs in
+  -- #eval max_profit 2 [3, 2, 6, 5, 0, 3]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval max_profit 1 [1, 2, 3, 4]
+  -- #guard_msgs in
+  -- #eval max_profit 1 [1, 2, 3, 4]
 
 vc-postamble: |-
   -- Apps difficulty: interview

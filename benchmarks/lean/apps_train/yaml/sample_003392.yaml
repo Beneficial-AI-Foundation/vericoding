@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Complete the function that takes one argument, a list of words, and returns the length of the longest word in the list.
   
   For example: 
@@ -8,6 +9,7 @@ vc-description: |-
   ```
   
   Do not modify the input list.
+  -/
 
 vc-preamble: |-
 
@@ -40,23 +42,23 @@ vc-theorems: |-
     longest [] = 0 ∧ longest [] ≠ longest ["a"]
     := by sorry
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval longest ["simple", "is", "better", "than", "complex"]
+  -- #guard_msgs in
+  -- #eval longest ["simple", "is", "better", "than", "complex"]
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval longest ["explicit", "is", "better", "than", "implicit"]
+  -- #guard_msgs in
+  -- #eval longest ["explicit", "is", "better", "than", "implicit"]
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval longest ["beautiful", "is", "better", "than", "ugly"]
+  -- #guard_msgs in
+  -- #eval longest ["beautiful", "is", "better", "than", "ugly"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

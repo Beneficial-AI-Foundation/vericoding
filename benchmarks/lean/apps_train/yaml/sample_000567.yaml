@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Let's call a sequence good if the sum of all its elements is $0$.
   You have a sequence of integers $A_1, A_2, \ldots, A_N$. You may perform any number of operations on this sequence (including zero). In one operation, you should choose a valid index $i$ and decrease $A_i$ by $i$. Can you make the sequence good using these operations?
   
@@ -33,6 +34,7 @@ vc-description: |-
   
   -----Explanation-----
   Example case 2: We can perform two operations ― subtract $1$ from $A_1$ and $2$ from $A_2$.
+  -/
 
 vc-preamble: |-
   def can_make_sequence_good (n : Nat) (sequence : List Int) : String := sorry
@@ -67,23 +69,23 @@ vc-theorems: |-
     let result := can_make_sequence_good n sequence
     result = "YES" ∨ result = "NO" := sorry
   
-  /--
+  /-
   info: 'NO'
   -/
-  #guard_msgs in
-  #eval can_make_sequence_good 1 [-1]
+  -- #guard_msgs in
+  -- #eval can_make_sequence_good 1 [-1]
   
-  /--
+  /-
   info: 'YES'
   -/
-  #guard_msgs in
-  #eval can_make_sequence_good 2 [1, 2]
+  -- #guard_msgs in
+  -- #eval can_make_sequence_good 2 [1, 2]
   
-  /--
+  /-
   info: 'YES'
   -/
-  #guard_msgs in
-  #eval can_make_sequence_good 3 [1, -2, 3]
+  -- #guard_msgs in
+  -- #eval can_make_sequence_good 3 [1, -2, 3]
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In the previous Kata we discussed the OR case.
   
   We will now discuss the AND case, where rather than calculating the probablility for either of two (or more) possible results, we will calculate the probability of receiving all of the viewed outcomes.
@@ -46,6 +47,7 @@ vc-description: |-
   
   Other Kata in this series:
   Statistics in Kata 1: OR case - Unfair dice
+  -/
 
 vc-preamble: |-
 
@@ -75,23 +77,23 @@ vc-theorems: |-
     (h3 : target[0]! = target[1]!) :
     ball_probability bag target true ≥ ball_probability bag target false := sorry
   
-  /--
+  /-
   info: 0.09
   -/
-  #guard_msgs in
-  #eval ball_probability *test1
+  -- #guard_msgs in
+  -- #eval ball_probability *test1
   
-  /--
+  /-
   info: 0.1
   -/
-  #guard_msgs in
-  #eval ball_probability *test2
+  -- #guard_msgs in
+  -- #eval ball_probability *test2
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval ball_probability *test3
+  -- #guard_msgs in
+  -- #eval ball_probability *test3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

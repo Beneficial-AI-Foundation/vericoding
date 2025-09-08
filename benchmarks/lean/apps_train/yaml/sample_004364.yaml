@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   I need to save some money to buy a gift. I think I can do something like that:
   
   First week (W0) I save nothing on Sunday, 1 on Monday, 2 on Tuesday... 6 on Saturday,
@@ -30,6 +31,7 @@ vc-description: |-
   ```
   #Hint: 
   try to avoid nested loops
+  -/
 
 vc-preamble: |-
 
@@ -48,23 +50,23 @@ vc-theorems: |-
   theorem finance_strictly_increasing {n : Nat} (h : n > 0) :
     finance n > finance (n - 1) := sorry
   
-  /--
+  /-
   info: 105
   -/
-  #guard_msgs in
-  #eval finance 5
+  -- #guard_msgs in
+  -- #eval finance 5
   
-  /--
+  /-
   info: 168
   -/
-  #guard_msgs in
-  #eval finance 6
+  -- #guard_msgs in
+  -- #eval finance 6
   
-  /--
+  /-
   info: 360
   -/
-  #guard_msgs in
-  #eval finance 8
+  -- #guard_msgs in
+  -- #eval finance 8
 
 vc-postamble: |-
   -- Apps difficulty: introductory

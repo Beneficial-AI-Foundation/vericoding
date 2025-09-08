@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Bears love candies and games involving eating them. Limak and Bob play the following game. Limak eats 1 candy, then Bob eats 2 candies, then Limak eats 3 candies, then Bob eats 4 candies, and so on. Once someone can't eat what he is supposed to eat, he loses.
   Limak can eat at most A candies in total (otherwise he would become sick), while Bob can eat at most B candies in total.
   Who will win the game?
@@ -52,6 +53,7 @@ vc-description: |-
   - Limak eats 5 candies (9 in total).
   - Bob eats 6 candies (12 in total).
   - Limak is supposed to eat 7 candies but he can't — that would exceed A. Bob wins.
+  -/
 
 vc-preamble: |-
 
@@ -75,23 +77,23 @@ vc-theorems: |-
     determine_candy_game_winner (n * 10) n = "Bob" :=
     sorry
   
-  /--
+  /-
   info: 'Bob'
   -/
-  #guard_msgs in
-  #eval determine_candy_game_winner 3 2
+  -- #guard_msgs in
+  -- #eval determine_candy_game_winner 3 2
   
-  /--
+  /-
   info: 'Limak'
   -/
-  #guard_msgs in
-  #eval determine_candy_game_winner 4 2
+  -- #guard_msgs in
+  -- #eval determine_candy_game_winner 4 2
   
-  /--
+  /-
   info: 'Bob'
   -/
-  #guard_msgs in
-  #eval determine_candy_game_winner 9 12
+  -- #guard_msgs in
+  -- #eval determine_candy_game_winner 9 12
 
 vc-postamble: |-
   -- Apps difficulty: interview

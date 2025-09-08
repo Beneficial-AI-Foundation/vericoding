@@ -1,9 +1,11 @@
 vc-description: |-
+  /-
   You are given a string of numbers between 0-9. Find the average of these numbers and return it as a floored whole number (ie: no decimal places) written out as a string. Eg:
   
   "zero nine five two" -> "four"
   
   If the string is empty or includes a number greater than 9, return "n/a"
+  -/
 
 vc-preamble: |-
   def numToWord (n : Nat) : String := sorry 
@@ -34,23 +36,23 @@ vc-theorems: |-
     (h : ∃ w ∈ s.split (· = ' '), w ∉ numWordsList) :
     average_string s = "n/a" := sorry
   
-  /--
+  /-
   info: 'four'
   -/
-  #guard_msgs in
-  #eval average_string "zero nine five two"
+  -- #guard_msgs in
+  -- #eval average_string "zero nine five two"
   
-  /--
+  /-
   info: 'three'
   -/
-  #guard_msgs in
-  #eval average_string "four six two three"
+  -- #guard_msgs in
+  -- #eval average_string "four six two three"
   
-  /--
+  /-
   info: 'n/a'
   -/
-  #guard_msgs in
-  #eval average_string ""
+  -- #guard_msgs in
+  -- #eval average_string ""
 
 vc-postamble: |-
   -- Apps difficulty: introductory

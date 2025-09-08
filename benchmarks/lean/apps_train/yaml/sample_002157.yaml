@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Note that the only difference between String Transformation 1 and String Transformation 2 is in the move Koa does. In this version the letter $y$ Koa selects must be strictly greater alphabetically than $x$ (read statement for better understanding). You can make hacks in these problems independently.
   
   Koa the Koala has two strings $A$ and $B$ of the same length $n$ ($|A|=|B|=n$) consisting of the first $20$ lowercase English alphabet letters (ie. from a to t).
@@ -66,6 +67,7 @@ vc-description: |-
     In the $2$-nd test case Koa has no way to make string $A$ equal $B$.
   
     In the $3$-rd test case Koa:   selects position $1$ and sets $A_1 = $ t ($\color{red}{a}bc \rightarrow \color{blue}{t}bc$).  selects position $2$ and sets $A_2 = $ s ($t\color{red}{b}c \rightarrow t\color{blue}{s}c$).  selects position $3$ and sets $A_3 = $ r ($ts\color{red}{c} \rightarrow ts\color{blue}{r}$).
+  -/
 
 vc-preamble: |-
 
@@ -86,23 +88,23 @@ vc-theorems: |-
     0 ≤ solve_string_transformation s1 s2 ∧ 
     solve_string_transformation s1 s2 ≤ s1.length := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve_string_transformation "aab" "bcc"
+  -- #guard_msgs in
+  -- #eval solve_string_transformation "aab" "bcc"
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval solve_string_transformation "cabc" "abcb"
+  -- #guard_msgs in
+  -- #eval solve_string_transformation "cabc" "abcb"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve_string_transformation "aabd" "cccd"
+  -- #guard_msgs in
+  -- #eval solve_string_transformation "aabd" "cccd"
 
 vc-postamble: |-
   -- Apps difficulty: competition

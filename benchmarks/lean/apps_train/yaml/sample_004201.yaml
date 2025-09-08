@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Jump is a simple one-player game:
   
   You are initially at the first cell of an array of cells containing non-negative integers;
@@ -38,6 +39,7 @@ vc-description: |-
   canJump([5, 0, 0, 0]) //=> true
   canJump([1, 1]) //=> false
   ```
+  -/
 
 vc-preamble: |-
 
@@ -59,23 +61,23 @@ vc-theorems: |-
     (h2 : arr.get? 0 = some (arr.length + 1)) :
     can_jump arr := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval can_jump [2, 5]
+  -- #guard_msgs in
+  -- #eval can_jump [2, 5]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval can_jump [5]
+  -- #guard_msgs in
+  -- #eval can_jump [5]
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval can_jump [3, 0, 2, 3]
+  -- #guard_msgs in
+  -- #eval can_jump [3, 0, 2, 3]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

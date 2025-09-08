@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an integer n, return a string with n characters such that each character in such string occurs an odd number of times.
   The returned string must contain only lowercase English letters. If there are multiples valid strings, return any of them.  
   
@@ -19,6 +20,7 @@ vc-description: |-
   Constraints:
   
   1 <= n <= 500
+  -/
 
 vc-preamble: |-
 
@@ -51,23 +53,23 @@ vc-theorems: |-
     (n % 2 = 0 → generate_odd_char_string n = String.mk (List.replicate (n-1) 'a' ++ ['b'])) ∧
     (n ≠ 1 ∧ n % 2 = 1 → generate_odd_char_string n = String.mk (List.replicate (n-2) 'a' ++ ['b', 'c'])) := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval len generate_odd_char_string(4)
+  -- #guard_msgs in
+  -- #eval len generate_odd_char_string(4)
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval len generate_odd_char_string(2)
+  -- #guard_msgs in
+  -- #eval len generate_odd_char_string(2)
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval len generate_odd_char_string(7)
+  -- #guard_msgs in
+  -- #eval len generate_odd_char_string(7)
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Take 2 strings `s1` and `s2` including only letters from `a`to `z`.
   Return a new **sorted** string, the longest possible, containing distinct letters,
   - each taken only once - coming from s1 or s2.
@@ -12,6 +13,7 @@ vc-description: |-
   a = "abcdefghijklmnopqrstuvwxyz"
   longest(a, a) -> "abcdefghijklmnopqrstuvwxyz"
   ```
+  -/
 
 vc-preamble: |-
 
@@ -52,23 +54,23 @@ vc-theorems: |-
     longest s1 s2 = longest s2 s1 :=
     sorry
   
-  /--
+  /-
   info: 'abcdefklmopqwxy'
   -/
-  #guard_msgs in
-  #eval longest "xyaabbbccccdefww" "xxxxyyyyabklmopq"
+  -- #guard_msgs in
+  -- #eval longest "xyaabbbccccdefww" "xxxxyyyyabklmopq"
   
-  /--
+  /-
   info: 'aehrsty'
   -/
-  #guard_msgs in
-  #eval longest "aretheyhere" "yestheyarehere"
+  -- #guard_msgs in
+  -- #eval longest "aretheyhere" "yestheyarehere"
   
-  /--
+  /-
   info: 'adefghklmnorstu'
   -/
-  #guard_msgs in
-  #eval longest "lordsofthefallen" "gamekult"
+  -- #guard_msgs in
+  -- #eval longest "lordsofthefallen" "gamekult"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Function Descriptions=====
   inner
   
@@ -34,6 +35,7 @@ vc-description: |-
   =====Output Format=====
   First, print the inner product.
   Second, print the outer product.
+  -/
 
 vc-preamble: |-
   def inner_product (v1 v2 : Vec Int) : Int := sorry 

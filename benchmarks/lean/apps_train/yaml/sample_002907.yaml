@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In the board game Talisman, when two players enter combat the outcome is decided by a combat score, equal to the players power plus any modifiers plus the roll of a standard 1-6 dice. The player with the highest combat score wins and the opposing player loses a life. In the case of a tie combat ends with neither player losing a life.
   
   For example:
@@ -64,6 +65,7 @@ vc-description: |-
   ```python
   get_required([7, 2], [6, 8]) # returns "Pray for a tie!"
   ```
+  -/
 
 vc-preamble: |-
   def List.sum : List Nat → Nat
@@ -102,23 +104,23 @@ vc-theorems: |-
     (get_required xs ys = "Auto-lose" → get_required ys xs = "Auto-win") :=
     sorry
   
-  /--
+  /-
   info: 'Auto-win'
   -/
-  #guard_msgs in
-  #eval get_required [8, 1] [3, 0]
+  -- #guard_msgs in
+  -- #eval get_required [8, 1] [3, 0]
   
-  /--
+  /-
   info: 'Random'
   -/
-  #guard_msgs in
-  #eval get_required [4, 0] [4, 0]
+  -- #guard_msgs in
+  -- #eval get_required [4, 0] [4, 0]
   
-  /--
+  /-
   info: 'Pray for a tie!'
   -/
-  #guard_msgs in
-  #eval get_required [7, 2] [6, 8]
+  -- #guard_msgs in
+  -- #eval get_required [7, 2] [6, 8]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

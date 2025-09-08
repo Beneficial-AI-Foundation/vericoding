@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a string $S$ and an integer $L$. A operation is described as :- "You are allowed to pick any substring from first $L$ charcaters of $S$, and place it at the end of the string $S$. 
   A string $A$ is a substring of an string $B$ if $A$ can be obtained from $B$ by deletion of several (possibly, zero or all) characters from the beginning and several (possibly, zero or all) elements from the end.
   Find the lexographically smallest string after performing this opertaion any number of times (possibly zero).
@@ -29,6 +30,7 @@ vc-description: |-
   In the first testcase:
   substring 'r' is picked and placed at the end of the string. rga -> gar
   Then performing same operation gives :- gar -> arg
+  -/
 
 vc-preamble: |-
 
@@ -65,23 +67,23 @@ vc-theorems: |-
     solve 1 (String.mk [c]) = String.mk [c] ∧ 
     solve 2 (String.mk [c]) = String.mk [c] := sorry
   
-  /--
+  /-
   info: 'arg'
   -/
-  #guard_msgs in
-  #eval solve 1 "rga"
+  -- #guard_msgs in
+  -- #eval solve 1 "rga"
   
-  /--
+  /-
   info: 'abc'
   -/
-  #guard_msgs in
-  #eval solve 2 "cab"
+  -- #guard_msgs in
+  -- #eval solve 2 "cab"
   
-  /--
+  /-
   info: 'cchefode'
   -/
-  #guard_msgs in
-  #eval solve 4 "codechef"
+  -- #guard_msgs in
+  -- #eval solve 4 "codechef"
 
 vc-postamble: |-
   -- Apps difficulty: interview

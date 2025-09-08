@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In poker, you have 5 cards. There are 10 kinds of poker hands (from highest to lowest):
   
   -  royal flush - ace, king, queen, jack and ten, all in the same suit
@@ -44,6 +45,7 @@ vc-description: |-
   royal flush
   pair
   full house
+  -/
 
 vc-preamble: |-
   def Rank.toNat : Rank → Nat 
@@ -140,23 +142,23 @@ vc-theorems: |-
     (h.filter (fun c ↦ c.rank == r2)).length = 2 :=
   sorry
   
-  /--
+  /-
   info: 'royal flush'
   -/
-  #guard_msgs in
-  #eval evaluate_poker_hand ["AH", "KH", "QH", "TH", "JH"]
+  -- #guard_msgs in
+  -- #eval evaluate_poker_hand ["AH", "KH", "QH", "TH", "JH"]
   
-  /--
+  /-
   info: 'pair'
   -/
-  #guard_msgs in
-  #eval evaluate_poker_hand ["KH", "5S", "3C", "5C", "7D"]
+  -- #guard_msgs in
+  -- #eval evaluate_poker_hand ["KH", "5S", "3C", "5C", "7D"]
   
-  /--
+  /-
   info: 'full house'
   -/
-  #guard_msgs in
-  #eval evaluate_poker_hand ["QH", "QD", "2S", "QC", "2C"]
+  -- #guard_msgs in
+  -- #eval evaluate_poker_hand ["QH", "QD", "2S", "QC", "2C"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

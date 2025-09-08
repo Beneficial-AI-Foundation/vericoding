@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   This function takes two numbers as parameters, the first number being the coefficient, and the second number being the exponent.
   
   Your function should multiply the two numbers, and then subtract 1 from the exponent. Then, it has to print out an expression (like 28x^7). `"^1"` should not be truncated when exponent = 2.
@@ -17,6 +18,7 @@ vc-description: |-
   **Notes:**
   * The output of this function should be a string
   * The exponent will never be 1, and neither number will ever be 0
+  -/
 
 vc-preamble: |-
 
@@ -48,23 +50,23 @@ vc-theorems: |-
     (h : e > 0) :
     derive c e = toString (c * e) ++ "x^" ++ toString (e - 1) := sorry
   
-  /--
+  /-
   info: '56x^7'
   -/
-  #guard_msgs in
-  #eval derive 7 8
+  -- #guard_msgs in
+  -- #eval derive 7 8
   
-  /--
+  /-
   info: '45x^8'
   -/
-  #guard_msgs in
-  #eval derive 5 9
+  -- #guard_msgs in
+  -- #eval derive 5 9
   
-  /--
+  /-
   info: '20x^1'
   -/
-  #guard_msgs in
-  #eval derive 10 2
+  -- #guard_msgs in
+  -- #eval derive 10 2
 
 vc-postamble: |-
   -- Apps difficulty: introductory

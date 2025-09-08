@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a comparator for a list of phonetic words for the letters of the [greek alphabet](https://en.wikipedia.org/wiki/Greek_alphabet).
   
   A comparator is:
@@ -23,6 +24,7 @@ vc-description: |-
   greek_comparator('psi', 'psi')      == 0
   greek_comparator('upsilon', 'rho')  >  0
   ```
+  -/
 
 vc-preamble: |-
   def greek_index (l : GreekLetter) : Nat :=
@@ -67,11 +69,11 @@ vc-theorems: |-
     greek_index a > greek_index b → greek_comparator a b > 0 :=
   sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval greek_comparator "chi" "chi"
+  -- #guard_msgs in
+  -- #eval greek_comparator "chi" "chi"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a binary tree, we install cameras on the nodes of the tree. 
   Each camera at a node can monitor its parent, itself, and its immediate children.
   Calculate the minimum number of cameras needed to monitor all nodes of the tree.
@@ -19,6 +20,7 @@ vc-description: |-
   
   The number of nodes in the given tree will be in the range [1, 1000].
   Every node has value 0.
+  -/
 
 vc-preamble: |-
 
@@ -50,23 +52,23 @@ vc-theorems: |-
     root = TreeNode.mk v l (some t) →
     minCameraCover (some root) ≥ n := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval minCameraCover TreeNode(0)
+  -- #guard_msgs in
+  -- #eval minCameraCover TreeNode(0)
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval minCameraCover TreeNode(0)
+  -- #guard_msgs in
+  -- #eval minCameraCover TreeNode(0)
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval minCameraCover TreeNode(0)
+  -- #guard_msgs in
+  -- #eval minCameraCover TreeNode(0)
 
 vc-postamble: |-
   -- Apps difficulty: interview

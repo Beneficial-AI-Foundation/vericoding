@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Let's assume that   v(n) is the largest prime number, that does not exceed n;
   
    u(n) is the smallest prime number strictly greater than n. 
@@ -24,6 +25,7 @@ vc-description: |-
   Output
   1/6
   7/30
+  -/
 
 vc-preamble: |-
   def gcd (a b : Int) : Int := sorry
@@ -57,23 +59,23 @@ vc-theorems: |-
   theorem calc_fraction_two :
     calc_fraction 2 = (1, 6) := sorry
   
-  /--
+  /-
   info: '1/6'
   -/
-  #guard_msgs in
-  #eval fraction_to_str calc_fraction(2)
+  -- #guard_msgs in
+  -- #eval fraction_to_str calc_fraction(2)
   
-  /--
+  /-
   info: '7/30'
   -/
-  #guard_msgs in
-  #eval fraction_to_str calc_fraction(3)
+  -- #guard_msgs in
+  -- #eval fraction_to_str calc_fraction(3)
   
-  /--
+  /-
   info: '5/14'
   -/
-  #guard_msgs in
-  #eval fraction_to_str calc_fraction(6)
+  -- #guard_msgs in
+  -- #eval fraction_to_str calc_fraction(6)
 
 vc-postamble: |-
   -- Apps difficulty: competition

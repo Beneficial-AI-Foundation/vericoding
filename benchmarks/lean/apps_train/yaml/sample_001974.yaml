@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are N people, conveniently numbered 1 through N.
   We want to divide them into some number of groups, under the following two conditions:
    - Every group contains between A and B people, inclusive.
@@ -31,6 +32,7 @@ vc-description: |-
    - (2,3),(1)
    - (1,2,3)
   The following way to divide the people does not count: (1),(2),(3). This is because it only satisfies the first condition and not the second.
+  -/
 
 vc-preamble: |-
 

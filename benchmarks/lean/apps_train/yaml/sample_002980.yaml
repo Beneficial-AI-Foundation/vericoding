@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string, determine if it's a valid identifier.
   
   ## Here is the syntax for valid identifiers:
@@ -15,6 +16,7 @@ vc-description: |-
   * 1i
   * wo rd 
   * !b2h
+  -/
 
 vc-preamble: |-
 
@@ -47,23 +49,23 @@ vc-theorems: |-
   
   theorem whitespace_invalid : isValid "abc def" = false := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_valid "okay_ok1"
+  -- #guard_msgs in
+  -- #eval is_valid "okay_ok1"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_valid ""
+  -- #guard_msgs in
+  -- #eval is_valid ""
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_valid "no no"
+  -- #guard_msgs in
+  -- #eval is_valid "no no"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

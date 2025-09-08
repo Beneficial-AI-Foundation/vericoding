@@ -1,0 +1,56 @@
+/-
+In this kata, your task is to write a function `to_bytes(n)` (or `toBytes(n)` depending on language) that produces a list of bytes that represent a given non-negative integer `n`. Each byte in the list is represented by a string of `'0'` and `'1'` of length 8. The most significant byte is first in the list. The example test cases should provide you with all the details. You may assume that the argument `n` is valid.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def to_bytes (n : Nat) : List String := sorry
+
+theorem to_bytes_length_correct : ∀ (n : Nat),
+  ∀ byte ∈ to_bytes n, String.length byte = 8
+  := sorry
+
+theorem to_bytes_valid_bits : ∀ (n : Nat),
+  ∀ byte ∈ to_bytes n,
+  ∀ c ∈ byte.data,
+  c = '0' ∨ c = '1'
+  := sorry
+
+theorem to_bytes_roundtrip : ∀ (n : Nat),
+  let bytes := to_bytes n
+  let recovered := bytes.enum.foldl
+    (fun acc (i, byte) => acc + (String.toNat! byte) * (256 ^ (bytes.length - 1 - i)))
+    0
+  recovered = n
+  := sorry
+
+theorem to_bytes_single_byte : ∀ (n : Nat),
+  n ≤ 255 →
+  (to_bytes n).length = 1
+  := sorry
+
+theorem to_bytes_zero :
+  to_bytes 0 = ["00000000"]
+  := sorry
+
+/-
+info: ['00000000']
+-/
+-- #guard_msgs in
+-- #eval to_bytes 0
+
+/-
+info: ['00000001']
+-/
+-- #guard_msgs in
+-- #eval to_bytes 1
+
+/-
+info: ['00000001', '00000001']
+-/
+-- #guard_msgs in
+-- #eval to_bytes 257
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

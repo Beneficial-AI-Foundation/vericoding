@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The date is March 24, 2437 and the the Earth has been nearly completely destroyed by the actions of its inhabitants. Our last hope in this disaster lies in a shabby time machine built from old toasters and used microwave parts.  
   
   The World Time Agency requires you to travel back in time to prevent disaster.  You are ordered to "remove" certain babies from the timeline.  
@@ -25,6 +26,7 @@ vc-description: |-
   Please observe that much of September 1752 is missing here: https://www.timeanddate.com/calendar/?year=1752&country=1
   
   Please observe that 1700 is a leap year here: https://www.timeanddate.com/calendar/?year=1700&country=1
+  -/
 
 vc-preamble: |-
   def days_until (date month year : Int) : Int :=
@@ -76,23 +78,23 @@ vc-theorems: |-
     days_until date month year = dateDiffDays year month date 2437 3 24 :=
   sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval days_until 21 3 2437
+  -- #guard_msgs in
+  -- #eval days_until 21 3 2437
   
-  /--
+  /-
   info: 365
   -/
-  #guard_msgs in
-  #eval days_until 24 3 2436
+  -- #guard_msgs in
+  -- #eval days_until 24 3 2436
   
-  /--
+  /-
   info: 28
   -/
-  #guard_msgs in
-  #eval days_until 24 2 2437
+  -- #guard_msgs in
+  -- #eval days_until 24 2 2437
 
 vc-postamble: |-
   -- Apps difficulty: introductory

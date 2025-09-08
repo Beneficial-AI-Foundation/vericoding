@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In Math, an improper fraction is a fraction where the numerator (the top number) is greater than or equal to the denominator (the bottom number) For example: ```5/3``` (five third).
   
   A mixed numeral is a whole number and a fraction combined into one "mixed" number. For example: ```1 1/2``` (one and a half) is a mixed numeral.
@@ -18,6 +19,7 @@ vc-description: |-
   - a fraction that can be converted into a whole number
   
   ## Example
+  -/
 
 vc-preamble: |-
 
@@ -54,23 +56,23 @@ vc-theorems: |-
     (h2 : result = convert_to_mixed_numeral ("{n}/{d}")) : 
     n / d = result.whole + result.numer / result.denom * (if result.whole ≥ 0 then 1 else -1) := sorry
   
-  /--
+  /-
   info: '1 2/3'
   -/
-  #guard_msgs in
-  #eval convert_to_mixed_numeral "5/3"
+  -- #guard_msgs in
+  -- #eval convert_to_mixed_numeral "5/3"
   
-  /--
+  /-
   info: '24 2/3'
   -/
-  #guard_msgs in
-  #eval convert_to_mixed_numeral "74/3"
+  -- #guard_msgs in
+  -- #eval convert_to_mixed_numeral "74/3"
   
-  /--
+  /-
   info: '-23 1/2'
   -/
-  #guard_msgs in
-  #eval convert_to_mixed_numeral "-47/2"
+  -- #guard_msgs in
+  -- #eval convert_to_mixed_numeral "-47/2"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

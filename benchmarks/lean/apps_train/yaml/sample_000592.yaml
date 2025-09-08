@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef published a blog post, and is now receiving many queries about it. On day $i$, he receives $Q_i$ queries. But Chef can answer at most $k$ queries in a single day. 
   Chef always answers the maximum number of questions that he can on any given day (note however that this cannot be more than $k$). The remaining questions (if any) will be carried over to the next day.
   Fortunately, after $n$ days, the queries have stopped. Chef would like to know the first day during which he has some free time, i.e. the first day when he answered less than $k$ questions. 
@@ -42,6 +43,7 @@ vc-description: |-
   On the sixth day, chef has 1 question, which he answers. This is the first day he answers less than 5 questions, and so the answer is 6.
   Test Case 2
   Chef answers 1 question a day for the first 100 days. On day 101, he is free.
+  -/
 
 vc-preamble: |-
 
@@ -97,23 +99,23 @@ vc-theorems: |-
     solve_free_time 2 3 [3,3] = 2 :=
   sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval solve_free_time 6 5 [10, 5, 5, 3, 2, 1]
+  -- #guard_msgs in
+  -- #eval solve_free_time 6 5 [10, 5, 5, 3, 2, 1]
   
-  /--
+  /-
   info: 101
   -/
-  #guard_msgs in
-  #eval solve_free_time 1 1 [100]
+  -- #guard_msgs in
+  -- #eval solve_free_time 1 1 [100]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve_free_time 3 2 [1, 1, 1]
+  -- #guard_msgs in
+  -- #eval solve_free_time 3 2 [1, 1, 1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

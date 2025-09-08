@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In a forest, each rabbit has some color. Some subset of rabbits (possibly all of them) tell you how many other rabbits have the same color as them. Those answers are placed in an array.
   
   Return the minimum number of rabbits that could be in the forest.
@@ -23,6 +24,7 @@ vc-description: |-
   
          answers will have length at most 1000.
          Each answers[i] will be an integer in the range [0, 999].
+  -/
 
 vc-preamble: |-
 
@@ -57,23 +59,23 @@ vc-theorems: |-
   theorem numRabbits_min_bound {answers : List Nat} (h : answers ≠ []) :
     numRabbits answers ≥ (List.maximum? answers).getD 0 + 1 := sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval numRabbits [1, 1, 2]
+  -- #guard_msgs in
+  -- #eval numRabbits [1, 1, 2]
   
-  /--
+  /-
   info: 11
   -/
-  #guard_msgs in
-  #eval numRabbits [10, 10, 10]
+  -- #guard_msgs in
+  -- #eval numRabbits [10, 10, 10]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval numRabbits []
+  -- #guard_msgs in
+  -- #eval numRabbits []
 
 vc-postamble: |-
   -- Apps difficulty: interview

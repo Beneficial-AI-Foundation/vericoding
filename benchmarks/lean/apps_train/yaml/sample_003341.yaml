@@ -1,10 +1,12 @@
 vc-description: |-
+  /-
   Given some points (cartesian coordinates), return true if all of them lie on a line.  Treat both an empty set and a single point as a line.
   
   ```python
   on_line(((1,2), (7,4), (22,9)) == True
   on_line(((1,2), (-3,-14), (22,9))) == False
   ```
+  -/
 
 vc-preamble: |-
 
@@ -42,29 +44,29 @@ vc-theorems: |-
     on_line pts = true :=
     sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval on_line []
+  -- #guard_msgs in
+  -- #eval on_line []
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval on_line [(1, 1)]
+  -- #guard_msgs in
+  -- #eval on_line [(1, 1)]
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval on_line [(1, 2), (7, 4), (22, 9)]
+  -- #guard_msgs in
+  -- #eval on_line [(1, 2), (7, 4), (22, 9)]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval on_line [(1, 2), (-3, -14), (22, 9)]
+  -- #guard_msgs in
+  -- #eval on_line [(1, 2), (-3, -14), (22, 9)]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

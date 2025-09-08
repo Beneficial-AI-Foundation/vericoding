@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a program to check whether a given number is an ugly number.
   
   Ugly numbers are positive numbers whose prime factors only include 2, 3, 5.
@@ -25,6 +26,7 @@ vc-description: |-
   
          1 is typically treated as an ugly number.
          Input is within the 32-bit signed integer range: [−231,  231 − 1].
+  -/
 
 vc-preamble: |-
 
@@ -54,23 +56,23 @@ vc-theorems: |-
     is_ugly p = false :=
     sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_ugly 6
+  -- #guard_msgs in
+  -- #eval is_ugly 6
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_ugly 8
+  -- #guard_msgs in
+  -- #eval is_ugly 8
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_ugly 14
+  -- #guard_msgs in
+  -- #eval is_ugly 14
 
 vc-postamble: |-
   -- Apps difficulty: introductory

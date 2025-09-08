@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given the array of integers nums, you will choose two different indices i and j of that array. Return the maximum value of (nums[i]-1)*(nums[j]-1).
   
   Example 1:
@@ -19,6 +20,7 @@ vc-description: |-
   
   2 <= nums.length <= 500
   1 <= nums[i] <= 10^3
+  -/
 
 vc-preamble: |-
 
@@ -36,23 +38,23 @@ vc-theorems: |-
     (h2 : 2 ≤ b ∧ b ≤ 1000) :
     max_product [a, b] = (a-1) * (b-1) := sorry
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval max_product [3, 4, 5, 2]
+  -- #guard_msgs in
+  -- #eval max_product [3, 4, 5, 2]
   
-  /--
+  /-
   info: 16
   -/
-  #guard_msgs in
-  #eval max_product [1, 5, 4, 5]
+  -- #guard_msgs in
+  -- #eval max_product [1, 5, 4, 5]
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval max_product [3, 7]
+  -- #guard_msgs in
+  -- #eval max_product [3, 7]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

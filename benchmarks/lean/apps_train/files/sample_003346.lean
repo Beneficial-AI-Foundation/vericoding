@@ -1,0 +1,59 @@
+/-
+Check your arrows
+You have a quiver of arrows, but some have been damaged. The quiver contains arrows with an optional range information (different types of targets are positioned at different ranges), so each item is an arrow.
+
+You need to verify that you have some good ones left, in order to prepare for battle:
+```python
+anyArrows([{'range': 5}, {'range': 10, 'damaged': True}, {'damaged': True}])
+```
+
+If an arrow in the quiver does not have a damaged status, it means it's new.
+
+The expected result is a boolean, indicating whether you have any good arrows left.
+
+Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def any_arrows (arrows : List Arrow) : Bool := sorry
+
+theorem any_arrows_all_damaged 
+  (arrows : List Arrow)
+  (h : ∀ a ∈ arrows, (a.damaged = some true)) :
+  any_arrows arrows = false := sorry
+
+theorem any_arrows_exists_undamaged
+  (arrows : List Arrow)
+  (h : ∃ a ∈ arrows, (a.damaged = some false) ∨ (a.damaged = none)) :
+  any_arrows arrows = true := sorry
+
+theorem any_arrows_empty :
+  any_arrows [] = false := sorry
+
+theorem any_arrows_undamaged_only
+  (arrows : List Arrow)
+  (h : ∀ a ∈ arrows, a.damaged = none) :
+  any_arrows arrows = (arrows ≠ []) := sorry
+
+/-
+info: False
+-/
+-- #guard_msgs in
+-- #eval any_arrows []
+
+/-
+info: True
+-/
+-- #guard_msgs in
+-- #eval any_arrows [{"range": 5}]
+
+/-
+info: True
+-/
+-- #guard_msgs in
+-- #eval any_arrows [{"range": 5}, {"range": 10, "damaged": True}, {"damaged": True}]
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

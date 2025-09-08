@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Find Mean
   
   Find the mean (average) of a list of numbers in an array.
@@ -22,6 +23,7 @@ vc-description: |-
   ```
   
   3. The mean (or average) of this list is 4
+  -/
 
 vc-preamble: |-
   def find_average [Add α] [Div α] [OfNat α 0] : List α → α 
@@ -69,23 +71,23 @@ vc-theorems: |-
   theorem find_average_float_sum (nums : List Float) :
     abs (find_average nums * toFloat nums.length - list_sum nums) < 1e-6 := by sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval find_average [1]
+  -- #guard_msgs in
+  -- #eval find_average [1]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval find_average [1, 3, 5, 7]
+  -- #guard_msgs in
+  -- #eval find_average [1, 3, 5, 7]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval find_average []
+  -- #guard_msgs in
+  -- #eval find_average []
 
 vc-postamble: |-
   -- Apps difficulty: introductory

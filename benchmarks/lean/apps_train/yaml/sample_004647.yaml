@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You have two arguments: ```string``` - a string of random letters(only lowercase) and ```array``` - an array of strings(feelings). Your task is to return how many specific feelings are in the ```array```. 
   
   For example: 
@@ -22,6 +23,7 @@ vc-description: |-
   If the feeling can be formed several times from different letters - plus one to the answer.
   
   Eeach letter in ```string``` participates in the formation of all feelings. 'angerw' -> 2 feelings: 'anger' and 'awe'.
+  -/
 
 vc-preamble: |-
 

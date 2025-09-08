@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   This calculator takes values that could be written in a browsers route path as a single string. It then returns the result as a number (or an error message).
   
   Route paths use the '/' symbol so this can't be in our calculator. Instead we are using the '$' symbol as our divide operator.
@@ -42,6 +43,7 @@ vc-description: |-
   - You may have to deal with floats
   
   If enjoy this and want something harder please see http://www.codewars.com/kata/evaluate-mathematical-expression/ for making a much more complicated calculator. This is a good kata leading up to that.
+  -/
 
 vc-preamble: |-
 
@@ -79,35 +81,35 @@ vc-theorems: |-
     calculate "10+5" = "15.0" ∧
     calculate "10-5" = "5.0" := sorry
   
-  /--
+  /-
   info: '2.0'
   -/
-  #guard_msgs in
-  #eval calculate "1+1"
+  -- #guard_msgs in
+  -- #eval calculate "1+1"
   
-  /--
+  /-
   info: '5.0'
   -/
-  #guard_msgs in
-  #eval calculate "10$2"
+  -- #guard_msgs in
+  -- #eval calculate "10$2"
   
-  /--
+  /-
   info: '4.5'
   -/
-  #guard_msgs in
-  #eval calculate "1.5*3"
+  -- #guard_msgs in
+  -- #eval calculate "1.5*3"
   
-  /--
+  /-
   info: '81.0'
   -/
-  #guard_msgs in
-  #eval calculate "1000$2.5$5+5-5+6$6"
+  -- #guard_msgs in
+  -- #eval calculate "1000$2.5$5+5-5+6$6"
   
-  /--
+  /-
   info: '400: Bad request'
   -/
-  #guard_msgs in
-  #eval calculate "10-9p"
+  -- #guard_msgs in
+  -- #eval calculate "10-9p"
 
 vc-postamble: |-
   -- Apps difficulty: interview

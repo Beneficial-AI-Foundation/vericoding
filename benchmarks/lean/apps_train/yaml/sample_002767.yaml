@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   This kata is an extension of "Combinations in a Set Using Boxes":https://www.codewars.com/kata/5b5f7f7607a266914200007c
   
   The goal for this kata is to get all the possible combinations (or distributions) (with no empty boxes) of a certain number of balls, but now, **with different amount of boxes.** In the previous kata, the number of boxes was always the same
@@ -36,6 +37,7 @@ vc-description: |-
   You may see the example tests for more cases.
   Enjoy it!
   Ruby version will be published soon.
+  -/
 
 vc-preamble: |-
 
@@ -79,23 +81,23 @@ vc-theorems: |-
   theorem monotonic_first_value (n : Nat) (h : n > 1) (h2 : n ≤ 20) :
     (combs_non_empty_boxesII (n-1)).get! 0 < (combs_non_empty_boxesII n).get! 0 := sorry
   
-  /--
+  /-
   info: [15, 7, 2]
   -/
-  #guard_msgs in
-  #eval combs_non_empty_boxesII 4
+  -- #guard_msgs in
+  -- #eval combs_non_empty_boxesII 4
   
-  /--
+  /-
   info: [5, 3, 2]
   -/
-  #guard_msgs in
-  #eval combs_non_empty_boxesII 3
+  -- #guard_msgs in
+  -- #eval combs_non_empty_boxesII 3
   
-  /--
+  /-
   info: [2, 1, 2]
   -/
-  #guard_msgs in
-  #eval combs_non_empty_boxesII 2
+  -- #guard_msgs in
+  -- #eval combs_non_empty_boxesII 2
 
 vc-postamble: |-
   -- Apps difficulty: introductory

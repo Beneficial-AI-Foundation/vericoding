@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We have the first value of a certain sequence, we will name it ```initVal```.
   We define  pattern list, ```patternL```, an array that has the differences between contiguous terms of the sequence.
   ``` E.g: patternL = [k1, k2, k3, k4]``` 
@@ -47,6 +48,7 @@ vc-description: |-
   sumDig_nthTerm(10, [1, 2, 3], 15) ----> 10 # 37 is the 15-th term, and 3 + 7 = 10
   ```
   Enjoy it and happy coding!!
+  -/
 
 vc-preamble: |-
   def sumDig_nthTerm (initVal : Nat) (patternL : List Nat) (nthTerm : Nat) : Nat := sorry

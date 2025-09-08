@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Colour plays an important role in our lifes. Most of us like this colour better then another. User experience specialists believe that certain colours have certain psychological meanings for us.
   
   You are given a 2D array, composed of a colour and its 'common' association in each array element. The function you will write needs to return the colour as 'key' and association as its 'value'.
@@ -7,6 +8,7 @@ vc-description: |-
   ```python
   var array = [["white", "goodness"], ...] returns [{'white': 'goodness'}, ...]
   ```
+  -/
 
 vc-preamble: |-
 
@@ -55,23 +57,23 @@ vc-theorems: |-
     (result[i]'hi').keys[0]! = (pairs[i]'hi).1 :=
   sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval colour_association [["white", "goodness"], ["blue", "tranquility"]]
+  -- #guard_msgs in
+  -- #eval colour_association [["white", "goodness"], ["blue", "tranquility"]]
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval colour_association [["red", "energy"], ["yellow", "creativity"]]
+  -- #guard_msgs in
+  -- #eval colour_association [["red", "energy"], ["yellow", "creativity"]]
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval colour_association [["gray", "intelligence"], ["black", "classy"]]
+  -- #guard_msgs in
+  -- #eval colour_association [["gray", "intelligence"], ["black", "classy"]]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

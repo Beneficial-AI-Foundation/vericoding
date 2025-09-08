@@ -1,9 +1,11 @@
 vc-description: |-
+  /-
   The __Hamming weight__ of a string is the number of symbols that are different from the zero-symbol of the alphabet used. There are several algorithms for efficient computing of the Hamming weight for numbers. In this Kata, speaking technically, you have to find out the number of '1' bits in a binary representation of a number. Thus,
   
   The interesting part of this task is that you have to do it *without* string operation (hey, it's not really interesting otherwise)
   
    ;)
+  -/
 
 vc-preamble: |-
   def hammingWeight (n: Nat) : Nat := sorry
@@ -27,41 +29,41 @@ vc-theorems: |-
   theorem hamming_weight_zero_and_nonzero (x: Nat) :
     hammingWeight 0 = 0 ∧ (x > 0 → hammingWeight x > 0) := sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval hamming_weight 0
+  -- #guard_msgs in
+  -- #eval hamming_weight 0
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval hamming_weight 1
+  -- #guard_msgs in
+  -- #eval hamming_weight 1
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval hamming_weight 2
+  -- #guard_msgs in
+  -- #eval hamming_weight 2
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval hamming_weight 10
+  -- #guard_msgs in
+  -- #eval hamming_weight 10
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval hamming_weight 21
+  -- #guard_msgs in
+  -- #eval hamming_weight 21
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval hamming_weight 2048
+  -- #guard_msgs in
+  -- #eval hamming_weight 2048
 
 vc-postamble: |-
   -- Apps difficulty: introductory

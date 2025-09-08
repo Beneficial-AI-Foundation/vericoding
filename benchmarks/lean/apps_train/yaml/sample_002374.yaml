@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an integer n and an integer start.
   Define an array nums where nums[i] = start + 2*i (0-indexed) and n == nums.length.
   Return the bitwise XOR of all elements of nums.
@@ -26,6 +27,7 @@ vc-description: |-
   1 <= n <= 1000
   0 <= start <= 1000
   n == nums.length
+  -/
 
 vc-preamble: |-
 
@@ -62,23 +64,23 @@ vc-theorems: |-
     xorOperation 1 5 = 5 :=
     sorry
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval xor_operation 5 0
+  -- #guard_msgs in
+  -- #eval xor_operation 5 0
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval xor_operation 4 3
+  -- #guard_msgs in
+  -- #eval xor_operation 4 3
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval xor_operation 1 7
+  -- #guard_msgs in
+  -- #eval xor_operation 1 7
 
 vc-postamble: |-
   -- Apps difficulty: introductory

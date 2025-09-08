@@ -1,0 +1,80 @@
+/-
+# Task
+ You are given a binary string (a string consisting of only '1' and '0'). The only operation that can be performed on it is a Flip operation. 
+
+ It flips any binary character ( '0' to '1' and vice versa) and all characters to the `right` of it.
+
+ For example, applying the Flip operation to the 4th character of string "1001010" produces the "1000101" string, since all characters from the 4th to the 7th are flipped.
+
+ Your task is to find the minimum number of flips required to convert the binary string to string consisting of all '0'.
+
+# Example
+
+ For `s = "0101"`, the output should be `3`.
+
+ It's possible to convert the string in three steps:
+
+ ```
+ "0101" -> "0010"
+    ^^^
+ "0010" -> "0001"
+     ^^
+ "0001" -> "0000"
+      ^
+ ```
+
+# Input/Output
+
+ - `[input]` string `s`
+
+  A binary string.
+
+ - `[output]` an integer
+
+  The minimum number of flips required.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def bin_str (s : String) : Nat :=
+  sorry
+
+theorem bin_str_nonnegative (s : String) (h : s.length > 0) :
+  bin_str s ≥ 0 := sorry
+
+theorem bin_str_ends_zero (s : String) (h : s.length > 0) (h2 : s.data.getLast! = '0') :
+  bin_str s % 2 = 0 := sorry
+
+theorem bin_str_ends_one (s : String) (h : s.length > 0) (h2 : s.data.getLast! = '1') :
+  bin_str s % 2 = 1 := sorry
+
+theorem bin_str_upper_bound (s : String) (h : s.length > 0) :
+  bin_str s ≤ 2 * s.length - 1 := sorry
+
+theorem bin_str_n_zeros (n : Nat) (h : n > 0) :
+  bin_str (String.mk (List.replicate n '0')) = 0 := sorry
+
+theorem bin_str_alternating (n : Nat) (h : n > 0) :
+  bin_str (String.mk (List.join (List.replicate n ['1', '0']))) = 2 * n := sorry
+
+/-
+info: 3
+-/
+-- #guard_msgs in
+-- #eval bin_str "0101"
+
+/-
+info: 2
+-/
+-- #guard_msgs in
+-- #eval bin_str "10000"
+
+/-
+info: 0
+-/
+-- #guard_msgs in
+-- #eval bin_str "0000000000"
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded_and_plausible

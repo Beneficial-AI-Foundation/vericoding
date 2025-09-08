@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You have a tree consisting of n vertices. You want to color each vertex of the tree in one of the k colors such that for any pair of vertices having same color, all the vertices belonging to the path joining them should also have same color. In other words, for any two vertices u, v with same color, all the vertices in the path joining them should also have color same as that of the u (or same as v, as u and v have same color). 
   
   Find out possible number of ways in which you can color the tree satisfying the above property. As the answer could be large, print your answer modulo 109 + 7.
@@ -39,6 +40,7 @@ vc-description: |-
   -----Explanation-----
   In the first example, You can color the vertices in the following 6 ways - {1, 1, 1}, {2, 2, 2}, {1, 2, 2}, {1, 1, 2}, {2, 1, 1}, {2, 2, 1}. Note that you can't color the tree in {1, 2, 1} as the vertices in the path connecting vertex 1 and 3, (i.e. 1, 2, 3) don't have same color. You can see that the color of 2nd vertex is not same as that of 1st and 3rd.
   In the second example, Only possible coloring you can do is to color all the vertices with color 1.
+  -/
 
 vc-preamble: |-
 
@@ -68,23 +70,23 @@ vc-theorems: |-
     solve n k edges > 0 :=
   sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval solve 3 2 [[1, 2], [2, 3]]
+  -- #guard_msgs in
+  -- #eval solve 3 2 [[1, 2], [2, 3]]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve 3 1 [[1, 2], [2, 3]]
+  -- #guard_msgs in
+  -- #eval solve 3 1 [[1, 2], [2, 3]]
   
-  /--
+  /-
   info: 39
   -/
-  #guard_msgs in
-  #eval solve 4 3 [[1, 2], [2, 3], [2, 4]]
+  -- #guard_msgs in
+  -- #eval solve 4 3 [[1, 2], [2, 3], [2, 4]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

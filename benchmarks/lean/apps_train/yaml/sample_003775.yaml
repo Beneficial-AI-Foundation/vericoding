@@ -1,5 +1,7 @@
 vc-description: |-
+  /-
   You have two arrays in this kata, every array contain only unique elements. Your task is to calculate number of elements in first array which also are in second array.
+  -/
 
 vc-preamble: |-
 
@@ -36,23 +38,23 @@ vc-theorems: |-
     match_arrays arr arr = arr.length :=
   sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval match_arrays ["Perl", "Closure", "JavaScript"] ["Go", "C++", "Erlang"]
+  -- #guard_msgs in
+  -- #eval match_arrays ["Perl", "Closure", "JavaScript"] ["Go", "C++", "Erlang"]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval match_arrays ["Erlang", "JavaScript"] ["Go", "C++", "Python"]
+  -- #guard_msgs in
+  -- #eval match_arrays ["Erlang", "JavaScript"] ["Go", "C++", "Python"]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval match_arrays [True, 3, 9, 11, 15] [True, 3, 11]
+  -- #guard_msgs in
+  -- #eval match_arrays [True, 3, 9, 11, 15] [True, 3, 11]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this kata, you need to make a (simplified) LZ78 encoder and decoder.
   [LZ78](https://en.wikipedia.org/wiki/LZ77_and_LZ78#LZ78) is a dictionary-based compression method created in 1978. You will find a  detailed explanation about how it works below.
   
@@ -126,6 +127,7 @@ vc-description: |-
   ```
   
   Good luck :)
+  -/
 
 vc-preamble: |-
   def encoder (s : String) : String := sorry

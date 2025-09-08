@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array nums of positive integers, return the longest possible length of an array prefix of nums, such that it is possible to remove exactly one element from this prefix so that every number that has appeared in it will have the same number of occurrences.
   If after removing one element there are no remaining elements, it's still considered that every appeared number has the same number of ocurrences (0).
   
@@ -23,6 +24,7 @@ vc-description: |-
   
   2 <= nums.length <= 10^5
   1 <= nums[i] <= 10^5
+  -/
 
 vc-preamble: |-
 
@@ -56,23 +58,23 @@ vc-theorems: |-
     max_equal_freq nums = nums.length :=
     sorry
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval max_equal_freq [2, 2, 1, 1, 5, 3, 3, 5]
+  -- #guard_msgs in
+  -- #eval max_equal_freq [2, 2, 1, 1, 5, 3, 3, 5]
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval max_equal_freq [1, 1, 1, 2, 2, 2]
+  -- #guard_msgs in
+  -- #eval max_equal_freq [1, 1, 1, 2, 2, 2]
   
-  /--
+  /-
   info: 13
   -/
-  #guard_msgs in
-  #eval max_equal_freq [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5]
+  -- #guard_msgs in
+  -- #eval max_equal_freq [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5]
 
 vc-postamble: |-
   -- Apps difficulty: interview

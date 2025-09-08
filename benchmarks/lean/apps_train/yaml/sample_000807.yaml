@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Limak has a string S, that consists of N lowercase English letters.
   Limak then created a new string by repeating S exactly K times.
   For example, for S = "abcb" and K = 2, he would get "abcbabcb".
@@ -44,6 +45,7 @@ vc-description: |-
   - abcbABcb
   - abcbAbcB
   Test case 2. Since K = 1, the new string is equal to the given S ("aayzbaa"). There are 2 occurrences of the subsequence "ab" in this string: AayzBaa and aAyzBaa.
+  -/
 
 vc-preamble: |-
 
@@ -74,23 +76,23 @@ vc-theorems: |-
   theorem empty_string_gives_zero (n k : Nat) :
     count_subsequences n k [] = 0 := sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval count_subsequences 4 2 "abcb"
+  -- #guard_msgs in
+  -- #eval count_subsequences 4 2 "abcb"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_subsequences 7 1 "aayzbaa"
+  -- #guard_msgs in
+  -- #eval count_subsequences 7 1 "aayzbaa"
   
-  /--
+  /-
   info: 64197148392731290
   -/
-  #guard_msgs in
-  #eval count_subsequences 12 80123123 "abzbabzbazab"
+  -- #guard_msgs in
+  -- #eval count_subsequences 12 80123123 "abzbabzbazab"
 
 vc-postamble: |-
   -- Apps difficulty: interview

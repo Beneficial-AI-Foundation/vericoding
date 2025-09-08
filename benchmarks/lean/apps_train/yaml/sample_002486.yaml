@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Function Descriptions=====
   .intersection()
   
@@ -41,6 +42,7 @@ vc-description: |-
   
   =====Output Format=====
   Output the total number of students who have subscriptions to both English and French newspapers.
+  -/
 
 vc-preamble: |-
   def List.toFinset {α : Type} (l : List α) : Finset α :=
@@ -87,23 +89,23 @@ vc-theorems: |-
     count_dual_subscribers xs xs = uniqueCount xs :=
   sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval count_dual_subscribers [1, 2, 3, 4, 5, 6, 7, 8, 9] [10, 1, 2, 3, 11, 21, 55, 6, 8]
+  -- #guard_msgs in
+  -- #eval count_dual_subscribers [1, 2, 3, 4, 5, 6, 7, 8, 9] [10, 1, 2, 3, 11, 21, 55, 6, 8]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_dual_subscribers [1, 2, 3] [4, 5, 6]
+  -- #guard_msgs in
+  -- #eval count_dual_subscribers [1, 2, 3] [4, 5, 6]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_dual_subscribers [1, 2, 3] [1, 2, 3]
+  -- #guard_msgs in
+  -- #eval count_dual_subscribers [1, 2, 3] [1, 2, 3]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

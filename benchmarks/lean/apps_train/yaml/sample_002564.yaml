@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Complete the solution so that the function will break up camel casing, using a space between words.
   
   ### Example 
@@ -6,6 +7,7 @@ vc-description: |-
   ```
   solution("camelCasing")  ==  "camel Casing"
   ```
+  -/
 
 vc-preamble: |-
 
@@ -34,23 +36,23 @@ vc-theorems: |-
     s.data.all (fun c => !c.isUpper) →
     solution s = s := sorry
   
-  /--
+  /-
   info: 'hello World'
   -/
-  #guard_msgs in
-  #eval solution "helloWorld"
+  -- #guard_msgs in
+  -- #eval solution "helloWorld"
   
-  /--
+  /-
   info: 'camel Case'
   -/
-  #guard_msgs in
-  #eval solution "camelCase"
+  -- #guard_msgs in
+  -- #eval solution "camelCase"
   
-  /--
+  /-
   info: 'break Camel Case'
   -/
-  #guard_msgs in
-  #eval solution "breakCamelCase"
+  -- #guard_msgs in
+  -- #eval solution "breakCamelCase"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

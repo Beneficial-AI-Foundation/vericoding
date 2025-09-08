@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Koko loves to eat bananas.  There are N piles of bananas, the i-th pile has piles[i] bananas.  The guards have gone and will come back in H hours.
   Koko can decide her bananas-per-hour eating speed of K.  Each hour, she chooses some pile of bananas, and eats K bananas from that pile.  If the pile has less than K bananas, she eats all of them instead, and won't eat any more bananas during this hour.
   Koko likes to eat slowly, but still wants to finish eating all the bananas before the guards come back.
@@ -19,6 +20,7 @@ vc-description: |-
   1 <= piles.length <= 10^4
   piles.length <= H <= 10^9
   1 <= piles[i] <= 10^9
+  -/
 
 vc-preamble: |-
   def List.maximum (l: List Nat) : Nat :=
@@ -72,23 +74,23 @@ vc-theorems: |-
     hours > h :=
   sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval min_eating_speed [3, 6, 7, 11] 8
+  -- #guard_msgs in
+  -- #eval min_eating_speed [3, 6, 7, 11] 8
   
-  /--
+  /-
   info: 30
   -/
-  #guard_msgs in
-  #eval min_eating_speed [30, 11, 23, 4, 20] 5
+  -- #guard_msgs in
+  -- #eval min_eating_speed [30, 11, 23, 4, 20] 5
   
-  /--
+  /-
   info: 23
   -/
-  #guard_msgs in
-  #eval min_eating_speed [30, 11, 23, 4, 20] 6
+  -- #guard_msgs in
+  -- #eval min_eating_speed [30, 11, 23, 4, 20] 6
 
 vc-postamble: |-
   -- Apps difficulty: interview

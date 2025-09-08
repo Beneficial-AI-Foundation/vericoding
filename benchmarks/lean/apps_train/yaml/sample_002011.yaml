@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   John Doe started thinking about graphs. After some thought he decided that he wants to paint an undirected graph, containing exactly k cycles of length 3. 
   
   A cycle of length 3 is an unordered group of three distinct graph vertices a, b and c, such that each pair of them is connected by a graph edge. 
@@ -33,6 +34,7 @@ vc-description: |-
   11011
   11101
   11110
+  -/
 
 vc-preamble: |-
 

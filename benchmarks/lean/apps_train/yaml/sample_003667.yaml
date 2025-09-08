@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your back at your newly acquired decrypting job for the secret organization when a new assignment comes in.   Apparently the enemy has been communicating using a device they call "The Mirror".  
   It is a rudimentary device with encrypts the message by switching its letter with its mirror opposite (A => Z), (B => Y), (C => X) etc.  
   
@@ -13,6 +14,7 @@ vc-description: |-
   mirror("Welcome home"), "dvoxlnv slnv" #whole alphabet mirrored here
   mirror("hello", "abcdefgh"), "adllo" #notice only "h" and "e" get reversed
   ```
+  -/
 
 vc-preamble: |-
 
@@ -39,23 +41,23 @@ vc-theorems: |-
   theorem basic_mirror :
     mirror "abcxyz" = "zyxcba" := sorry
   
-  /--
+  /-
   info: 'dvoxlnv slnv'
   -/
-  #guard_msgs in
-  #eval mirror "Welcome home"
+  -- #guard_msgs in
+  -- #eval mirror "Welcome home"
   
-  /--
+  /-
   info: 'adllo'
   -/
-  #guard_msgs in
-  #eval mirror "hello" "abcdefgh"
+  -- #guard_msgs in
+  -- #eval mirror "hello" "abcdefgh"
   
-  /--
+  /-
   info: 'this is a secret'
   -/
-  #guard_msgs in
-  #eval mirror "gsrh rh z hvxivg"
+  -- #guard_msgs in
+  -- #eval mirror "gsrh rh z hvxivg"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

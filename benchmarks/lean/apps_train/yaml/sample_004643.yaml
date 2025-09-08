@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given an n by n ( square ) grid of characters, for example:
   
   ```python
@@ -30,6 +31,7 @@ vc-description: |-
   ```
   
   All inputs will be valid.
+  -/
 
 vc-preamble: |-
 
@@ -75,23 +77,23 @@ vc-theorems: |-
     (h3 : indexes.all (λ i => i > 0 ∧ i ≤ size * size)) :
     (grid_index grid indexes).all (· = c) := sorry
   
-  /--
+  /-
   info: 'meal'
   -/
-  #guard_msgs in
-  #eval grid_index [["m", "y", "e"], ["x", "a", "m"], ["p", "l", "e"]] [1, 3, 5, 8]
+  -- #guard_msgs in
+  -- #eval grid_index [["m", "y", "e"], ["x", "a", "m"], ["p", "l", "e"]] [1, 3, 5, 8]
   
-  /--
+  /-
   info: 'hello'
   -/
-  #guard_msgs in
-  #eval grid_index [["h", "e", "l"], ["l", "o", "!"], ["?", "?", "?"]] [1, 2, 3, 4, 5]
+  -- #guard_msgs in
+  -- #eval grid_index [["h", "e", "l"], ["l", "o", "!"], ["?", "?", "?"]] [1, 2, 3, 4, 5]
   
-  /--
+  /-
   info: 'ad'
   -/
-  #guard_msgs in
-  #eval grid_index [["a", "b"], ["c", "d"]] [1, 4]
+  -- #guard_msgs in
+  -- #eval grid_index [["a", "b"], ["c", "d"]] [1, 4]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

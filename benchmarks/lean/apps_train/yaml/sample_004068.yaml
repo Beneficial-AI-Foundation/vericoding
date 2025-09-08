@@ -1,10 +1,12 @@
 vc-description: |-
+  /-
   # Introduction
   
   The first century spans from the **year 1** *up to* and **including the year 100**, **The second** - *from the year 101 up to and including the year 200*, etc.
   
   # Task : 
   Given a year, return the century it is in.
+  -/
 
 vc-preamble: |-
 
@@ -49,23 +51,23 @@ vc-theorems: |-
     century 201 = 3 :=
   sorry
   
-  /--
+  /-
   info: 18
   -/
-  #guard_msgs in
-  #eval century 1705
+  -- #guard_msgs in
+  -- #eval century 1705
   
-  /--
+  /-
   info: 19
   -/
-  #guard_msgs in
-  #eval century 1900
+  -- #guard_msgs in
+  -- #eval century 1900
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval century 89
+  -- #guard_msgs in
+  -- #eval century 89
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your job is to figure out the index of which vowel is missing from a given string:
   
   * `A` has an index of 0,
@@ -15,6 +16,7 @@ vc-description: |-
   "John Doe hs seven red pples under his bsket"          =>  0  ; missing: "a"
   "Bb Smith sent us six neatly arranged range bicycles"  =>  3  ; missing: "o"
   ```
+  -/
 
 vc-preamble: |-
   def absent_vowel (s : String) : VowelIndex := 
@@ -50,17 +52,17 @@ vc-theorems: |-
     ¬ s.contains (getVowel (absent_vowel s).val) :=
     sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval absent_vowel "John Doe hs seven red pples under his bsket"
+  -- #guard_msgs in
+  -- #eval absent_vowel "John Doe hs seven red pples under his bsket"
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval absent_vowel "Bb Smith sent us six neatly arranged range bicycles"
+  -- #guard_msgs in
+  -- #eval absent_vowel "Bb Smith sent us six neatly arranged range bicycles"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

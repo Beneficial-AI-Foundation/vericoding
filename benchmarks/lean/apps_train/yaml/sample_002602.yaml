@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Definition
   
   **_Jumping number_** is the number that *All adjacent digits in it differ by 1*.
@@ -103,6 +104,7 @@ vc-description: |-
   
   ## Enjoy Learning !!
   # Zizou
+  -/
 
 vc-preamble: |-
 
@@ -129,23 +131,23 @@ vc-theorems: |-
   theorem two_digit_consecutive_jumping :
     jumping_number 12 = "Jumping!!" := sorry
   
-  /--
+  /-
   info: 'Jumping!!'
   -/
-  #guard_msgs in
-  #eval jumping_number 9
+  -- #guard_msgs in
+  -- #eval jumping_number 9
   
-  /--
+  /-
   info: 'Jumping!!'
   -/
-  #guard_msgs in
-  #eval jumping_number 23
+  -- #guard_msgs in
+  -- #eval jumping_number 23
   
-  /--
+  /-
   info: 'Not!!'
   -/
-  #guard_msgs in
-  #eval jumping_number 79
+  -- #guard_msgs in
+  -- #eval jumping_number 79
 
 vc-postamble: |-
   -- Apps difficulty: introductory

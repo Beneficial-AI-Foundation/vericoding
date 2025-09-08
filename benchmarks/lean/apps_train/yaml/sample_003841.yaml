@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Task:
   Make a function that converts a word to pig latin. The rules of pig latin are:
   
@@ -10,6 +11,7 @@ vc-description: |-
   ```
   
   Example: `hello` = `ellohay`
+  -/
 
 vc-preamble: |-
 
@@ -35,23 +37,23 @@ vc-theorems: |-
   theorem pig_latin_empty 
     : pig_latin "" = "" := sorry
   
-  /--
+  /-
   info: 'ellohay'
   -/
-  #guard_msgs in
-  #eval pig_latin "hello"
+  -- #guard_msgs in
+  -- #eval pig_latin "hello"
   
-  /--
+  /-
   info: 'hi'
   -/
-  #guard_msgs in
-  #eval pig_latin "hi"
+  -- #guard_msgs in
+  -- #eval pig_latin "hi"
   
-  /--
+  /-
   info: 'orldway'
   -/
-  #guard_msgs in
-  #eval pig_latin "world"
+  -- #guard_msgs in
+  -- #eval pig_latin "world"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

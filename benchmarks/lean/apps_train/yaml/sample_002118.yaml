@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The country has n cities and n - 1 bidirectional roads, it is possible to get from every city to any other one if you move only along the roads. The cities are numbered with integers from 1 to n inclusive.
   
   All the roads are initially bad, but the government wants to improve the state of some roads. We will assume that the citizens are happy about road improvement if the path from the capital located in city x to any other city contains at most one bad road.
@@ -26,6 +27,7 @@ vc-description: |-
   
   Output
   5 8 9 8 5
+  -/
 
 vc-preamble: |-
 
@@ -57,23 +59,23 @@ vc-theorems: |-
       -- All elements are natural numbers
       ∀ x ∈ result, x ≥ 0 := sorry
   
-  /--
+  /-
   info: [4, 3, 3]
   -/
-  #guard_msgs in
-  #eval solve 3 [1, 1]
+  -- #guard_msgs in
+  -- #eval solve 3 [1, 1]
   
-  /--
+  /-
   info: [5, 8, 9, 8, 5]
   -/
-  #guard_msgs in
-  #eval solve 5 [1, 2, 3, 4]
+  -- #guard_msgs in
+  -- #eval solve 5 [1, 2, 3, 4]
   
-  /--
+  /-
   info: [2, 2]
   -/
-  #guard_msgs in
-  #eval solve 2 [1]
+  -- #guard_msgs in
+  -- #eval solve 2 [1]
 
 vc-postamble: |-
   -- Apps difficulty: competition

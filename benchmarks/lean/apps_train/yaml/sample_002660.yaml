@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The cockroach is one of the fastest insects. Write a function which takes its speed in km per hour and returns it in cm per second, rounded down to the integer (= floored).
   
   For example:
@@ -8,6 +9,7 @@ vc-description: |-
   ```
   
   Note! The input is a Real number (actual type is language dependent) and is >= 0. The result should be an Integer.
+  -/
 
 vc-preamble: |-
 
@@ -24,23 +26,23 @@ vc-theorems: |-
     cockroach_speed 0 = 0 :=
     sorry
   
-  /--
+  /-
   info: 30
   -/
-  #guard_msgs in
-  #eval cockroach_speed 1.08
+  -- #guard_msgs in
+  -- #eval cockroach_speed 1.08
   
-  /--
+  /-
   info: 30
   -/
-  #guard_msgs in
-  #eval cockroach_speed 1.09
+  -- #guard_msgs in
+  -- #eval cockroach_speed 1.09
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval cockroach_speed 0
+  -- #guard_msgs in
+  -- #eval cockroach_speed 0
 
 vc-postamble: |-
   -- Apps difficulty: introductory

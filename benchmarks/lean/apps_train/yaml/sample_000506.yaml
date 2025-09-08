@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Indian National Olympiad in Informatics 2015
   A string is any nonempty sequence of 0s and 1s. Examples of strings are 00, 101, 111000, 1, 0, 01. The length of a string is the number of symbols in it. For example, the length of 111000 is 6. If u and v are strings, then uv is the string obtained by concatenating u and v. For example if u = 110 and v = 0010 then uv = 1100010.
   A string w is periodic if there exists a string v such that w = vn = vv · · · v (n times), for some n ≥ 2. Note that in this case the length of v is strictly less than that of w. For example, 110110 is periodic, because it is vv for v = 110.
@@ -27,6 +28,7 @@ vc-description: |-
   6
   
   Note: Your program should not print anything other than what is specified in the output format. Please remove all diagnostic print statements before making your final submission. A program with extraneous output will be treated as incorrect!
+  -/
 
 vc-preamble: |-
 
@@ -55,23 +57,23 @@ vc-theorems: |-
     solve_non_periodic_strings 1 m = 1 :=
     sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval solve_non_periodic_strings 3 176
+  -- #guard_msgs in
+  -- #eval solve_non_periodic_strings 3 176
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval solve_non_periodic_strings 4 100
+  -- #guard_msgs in
+  -- #eval solve_non_periodic_strings 4 100
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve_non_periodic_strings 2 50
+  -- #guard_msgs in
+  -- #eval solve_non_periodic_strings 2 50
 
 vc-postamble: |-
   -- Apps difficulty: interview

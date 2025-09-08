@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Assume you are creating a webshop and you would like to help the user in the search. You have products with brands, prices and name. You have the history of opened products (the most recently opened being the first item).
   
   Your task is to create a list of brands ordered by popularity, if two brands have the same popularity level then choose the one which was opened last from the two and second the other one.
@@ -13,6 +14,7 @@ vc-description: |-
     price: 25,
     brand: "Fake brand"
   }
+  -/
 
 vc-preamble: |-
 
@@ -57,23 +59,23 @@ vc-theorems: |-
       first_index (result[i]) < first_index (result[j]) := by
     sorry
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval sorted_brands []
+  -- #guard_msgs in
+  -- #eval sorted_brands []
   
-  /--
+  /-
   info: ['Fake brand']
   -/
-  #guard_msgs in
-  #eval sorted_brands [product1]
+  -- #guard_msgs in
+  -- #eval sorted_brands [product1]
   
-  /--
+  /-
   info: ['Fake brand', 'Other brand']
   -/
-  #guard_msgs in
-  #eval sorted_brands [product1, product2, product3, product1]
+  -- #guard_msgs in
+  -- #eval sorted_brands [product1, product2, product3, product1]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

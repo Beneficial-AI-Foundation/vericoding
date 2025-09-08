@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You're familiar with [list slicing](https://docs.python.org/3/library/functions.html#slice) in Python and know, for example, that:
   
   ```python
@@ -19,6 +20,7 @@ vc-description: |-
   ```
   
   The input will always be a valid list, `a` and `b` will always be different integers equal to or greater than zero, but they _may_ be zero or be larger than the length of the list.
+  -/
 
 vc-preamble: |-
 

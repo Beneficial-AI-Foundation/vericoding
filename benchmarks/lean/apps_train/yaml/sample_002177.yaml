@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Recently Lynyrd and Skynyrd went to a shop where Lynyrd bought a permutation $p$ of length $n$, and Skynyrd bought an array $a$ of length $m$, consisting of integers from $1$ to $n$. 
   
   Lynyrd and Skynyrd became bored, so they asked you $q$ queries, each of which has the following form: "does the subsegment of $a$ from the $l$-th to the $r$-th positions, inclusive, have a subsequence that is a cyclic shift of $p$?" Please answer the queries.
@@ -51,6 +52,7 @@ vc-description: |-
   In the first example the segment from the $1$-st to the $5$-th positions is $1, 2, 3, 1, 2$. There is a subsequence $1, 3, 2$ that is a cyclic shift of the permutation. The subsegment from the $2$-nd to the $6$-th positions also contains a subsequence $2, 1, 3$ that is equal to the permutation. The subsegment from the $3$-rd to the $5$-th positions is $3, 1, 2$, there is only one subsequence of length $3$ ($3, 1, 2$), but it is not a cyclic shift of the permutation.
   
   In the second example the possible cyclic shifts are $1, 2$ and $2, 1$. The subsegment from the $1$-st to the $2$-nd positions is $1, 1$, its subsequences are not cyclic shifts of the permutation. The subsegment from the $2$-nd to the $3$-rd positions is $1, 2$, it coincides with the permutation. The subsegment from the $3$ to the $4$ positions is $2, 2$, its subsequences are not cyclic shifts of the permutation.
+  -/
 
 vc-preamble: |-
   def solve_cyclic_permutation (n m q : Nat) (p : List Nat) (a : List Nat) (queries : List (Nat × Nat)) : String :=
@@ -86,23 +88,23 @@ vc-theorems: |-
     String.reverse (solve_cyclic_permutation n m q p a (List.reverse queries)) :=
   sorry
   
-  /--
+  /-
   info: '110'
   -/
-  #guard_msgs in
-  #eval solve_cyclic_permutation 3 6 3 [2, 1, 3] [1, 2, 3, 1, 2, 3] [[1, 5], [2, 6], [3, 5]]
+  -- #guard_msgs in
+  -- #eval solve_cyclic_permutation 3 6 3 [2, 1, 3] [1, 2, 3, 1, 2, 3] [[1, 5], [2, 6], [3, 5]]
   
-  /--
+  /-
   info: '010'
   -/
-  #guard_msgs in
-  #eval solve_cyclic_permutation 2 4 3 [2, 1] [1, 1, 2, 2] [[1, 2], [2, 3], [3, 4]]
+  -- #guard_msgs in
+  -- #eval solve_cyclic_permutation 2 4 3 [2, 1] [1, 1, 2, 2] [[1, 2], [2, 3], [3, 4]]
   
-  /--
+  /-
   info: '1'
   -/
-  #guard_msgs in
-  #eval solve_cyclic_permutation 1 1 1 [1] [1] [[1, 1]]
+  -- #guard_msgs in
+  -- #eval solve_cyclic_permutation 1 1 1 [1] [1] [[1, 1]]
 
 vc-postamble: |-
   -- Apps difficulty: competition

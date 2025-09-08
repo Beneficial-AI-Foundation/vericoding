@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In elementary arithmetic a "carry" is a digit that is transferred from one column of digits to another column of more significant digits during a calculation algorithm.
   
   This Kata is about determining the number of carries performed during the addition of multi-digit numbers.
@@ -26,6 +27,7 @@ vc-description: |-
   - Although not all the numbers in the set need to be of the same length.
   - If a number is shorter, it will be zero-padded.
   - The input may contain any arbitrary number of pairs.
+  -/
 
 vc-preamble: |-
   def countCarries (input : String) : String := sorry
@@ -68,23 +70,23 @@ vc-theorems: |-
       if a + b > 9 then "1 carry operations"
       else "No carry operation" := sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval count_carries "123 456\n555 555\n123 594"
+  -- #guard_msgs in
+  -- #eval count_carries "123 456\n555 555\n123 594"
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval count_carries "99 99"
+  -- #guard_msgs in
+  -- #eval count_carries "99 99"
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval count_carries "1 9\n123456789 111111101"
+  -- #guard_msgs in
+  -- #eval count_carries "1 9\n123456789 111111101"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

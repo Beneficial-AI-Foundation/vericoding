@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In a directed graph, we start at some node and every turn, walk along a directed edge of the graph.  If we reach a node that is terminal (that is, it has no outgoing directed edges), we stop.
   Now, say our starting node is eventually safe if and only if we must eventually walk to a terminal node.  More specifically, there exists a natural number K so that for any choice of where to walk, we must have stopped at a terminal node in less than K steps.
   Which nodes are eventually safe?  Return them as an array in sorted order.
@@ -13,6 +14,7 @@ vc-description: |-
   graph will have length at most 10000.
   The number of edges in the graph will not exceed 32000.
   Each graph[i] will be a sorted list of different integers, chosen within the range [0, graph.length - 1].
+  -/
 
 vc-preamble: |-
 
@@ -54,23 +56,23 @@ vc-theorems: |-
   theorem eventual_safe_nodes_singleton_self_loop :
     eventual_safe_nodes [[0]] = [] := sorry
   
-  /--
+  /-
   info: [2, 4, 5, 6]
   -/
-  #guard_msgs in
-  #eval eventual_safe_nodes [[1, 2], [2, 3], [5], [0], [5], [], []]
+  -- #guard_msgs in
+  -- #eval eventual_safe_nodes [[1, 2], [2, 3], [5], [0], [5], [], []]
   
-  /--
+  /-
   info: [0, 1, 2, 3, 4]
   -/
-  #guard_msgs in
-  #eval eventual_safe_nodes [[], [0, 2, 3, 4], [3], [4], []]
+  -- #guard_msgs in
+  -- #eval eventual_safe_nodes [[], [0, 2, 3, 4], [3], [4], []]
   
-  /--
+  /-
   info: [4]
   -/
-  #guard_msgs in
-  #eval eventual_safe_nodes [[1, 2, 3, 4], [1, 2], [3, 4], [0, 4], []]
+  -- #guard_msgs in
+  -- #eval eventual_safe_nodes [[1, 2, 3, 4], [1, 2], [3, 4], [0, 4], []]
 
 vc-postamble: |-
   -- Apps difficulty: interview

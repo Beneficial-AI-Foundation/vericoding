@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string s containing only lower case English letters and the '?' character, convert all the '?' characters into lower case letters such that the final string does not contain any consecutive repeating characters. You cannot modify the non '?' characters.
   It is guaranteed that there are no consecutive repeating characters in the given string except for '?'.
   Return the final string after all the conversions (possibly zero) have been made. If there is more than one solution, return any of them. It can be shown that an answer is always possible with the given constraints.
@@ -24,6 +25,7 @@ vc-description: |-
   
   1 <= s.length <= 100
   s contains only lower case English letters and '?'.
+  -/
 
 vc-preamble: |-
 
@@ -58,17 +60,17 @@ vc-theorems: |-
     s.data[i]! ≠ '?' → 
     (modify_string s).data[i]! = s.data[i]! := sorry
   
-  /--
+  /-
   info: 'azs'
   -/
-  #guard_msgs in
-  #eval modify_string "?zs"
+  -- #guard_msgs in
+  -- #eval modify_string "?zs"
   
-  /--
+  /-
   info: len('j?qg??b')
   -/
-  #guard_msgs in
-  #eval len modify_string("j?qg??b")
+  -- #guard_msgs in
+  -- #eval len modify_string("j?qg??b")
 
 vc-postamble: |-
   -- Apps difficulty: introductory

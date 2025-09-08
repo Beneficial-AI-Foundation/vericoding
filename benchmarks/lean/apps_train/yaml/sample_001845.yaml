@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an integer num, find the closest two integers in absolute difference whose product equals num + 1 or num + 2.
   Return the two integers in any order.
   
@@ -18,6 +19,7 @@ vc-description: |-
   Constraints:
   
   1 <= num <= 10^9
+  -/
 
 vc-preamble: |-
 
@@ -43,23 +45,23 @@ vc-theorems: |-
       pair ∈ find_divisors (n + 1) ∨ pair ∈ find_divisors (n + 2) →
       diff ≤ pair.2 - pair.1 := sorry
   
-  /--
+  /-
   info: [3, 3]
   -/
-  #guard_msgs in
-  #eval closestDivisors 8
+  -- #guard_msgs in
+  -- #eval closestDivisors 8
   
-  /--
+  /-
   info: [5, 25]
   -/
-  #guard_msgs in
-  #eval closestDivisors 123
+  -- #guard_msgs in
+  -- #eval closestDivisors 123
   
-  /--
+  /-
   info: sorted([25, 40])
   -/
-  #guard_msgs in
-  #eval sorted closestDivisors(999)
+  -- #guard_msgs in
+  -- #eval sorted closestDivisors(999)
 
 vc-postamble: |-
   -- Apps difficulty: interview

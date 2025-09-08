@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   My washing machine uses ```water``` amount of water to wash ```clothes``` amount of clothes. You are given a ```load``` amount of clothes to wash.  For each single item of load above the standard amount of clothes, the washing machine will use 10% more water (multiplicative) to clean.
   For example, if the amount of clothes is ```10```, the amount of water it requires is ```5``` and the load is  ```14```, then you need ```5 * 1.1 ^ (14 - 10)``` amount of water.
   
@@ -7,6 +8,7 @@ vc-description: |-
   My washing machine is an old model that can only handle double the amount of ```load```.  If the amount of ```clothes``` is more than 2 times the standard amount of ```load```, return ```'Too much clothes'```.  The washing machine also cannot handle any amount of clothes less than ```load```.  If that is the case, return ```'Not enough clothes'```.
   
   The answer should be rounded to the nearest 2 decimal places.
+  -/
 
 vc-preamble: |-
 
@@ -51,23 +53,23 @@ vc-theorems: |-
   theorem known_value_test :
     how_much_water 50 15 29 = Sum.inl 189.87 := sorry
   
-  /--
+  /-
   info: 'Too much clothes'
   -/
-  #guard_msgs in
-  #eval how_much_water 10 10 21
+  -- #guard_msgs in
+  -- #eval how_much_water 10 10 21
   
-  /--
+  /-
   info: 'Not enough clothes'
   -/
-  #guard_msgs in
-  #eval how_much_water 10 10 2
+  -- #guard_msgs in
+  -- #eval how_much_water 10 10 2
   
-  /--
+  /-
   info: 189.87
   -/
-  #guard_msgs in
-  #eval how_much_water 50 15 29
+  -- #guard_msgs in
+  -- #eval how_much_water 50 15 29
 
 vc-postamble: |-
   -- Apps difficulty: introductory

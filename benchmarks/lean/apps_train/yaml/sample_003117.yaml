@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string that includes alphanumeric characters ('3a4B2d') return the expansion of that string: The numeric values represent the occurrence of each letter preceding that numeric value. There should be no numeric characters in the final string. Empty strings should return an empty string. 
   
   The first occurrence of a numeric value should be the number of times each character behind it is repeated, until the next numeric value appears.
@@ -25,6 +26,7 @@ vc-description: |-
   ```python
   string_expansion('') == ''
   ```
+  -/
 
 vc-preamble: |-
 
@@ -50,23 +52,23 @@ vc-theorems: |-
     (string_expansion "0d0a" = "") ∧
     (string_expansion "" = "") := sorry
   
-  /--
+  /-
   info: 'DDDaadddddff'
   -/
-  #guard_msgs in
-  #eval string_expansion "3D2a5d2f"
+  -- #guard_msgs in
+  -- #eval string_expansion "3D2a5d2f"
   
-  /--
+  /-
   info: 'aaabbbccc'
   -/
-  #guard_msgs in
-  #eval string_expansion "3abc"
+  -- #guard_msgs in
+  -- #eval string_expansion "3abc"
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval string_expansion ""
+  -- #guard_msgs in
+  -- #eval string_expansion ""
 
 vc-postamble: |-
   -- Apps difficulty: introductory

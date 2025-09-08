@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are 3n piles of coins of varying size, you and your friends will take piles of coins as follows:
   
   In each step, you will choose any 3 piles of coins (not necessarily consecutive).
@@ -31,6 +32,7 @@ vc-description: |-
   3 <= piles.length <= 10^5
   piles.length % 3 == 0
   1 <= piles[i] <= 10^4
+  -/
 
 vc-preamble: |-
   def List.sum (l : List Nat) : Nat :=
@@ -58,23 +60,23 @@ vc-theorems: |-
     maxCoins [1,1,1] = 1 :=
   sorry
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval maxCoins [2, 4, 1, 2, 7, 8]
+  -- #guard_msgs in
+  -- #eval maxCoins [2, 4, 1, 2, 7, 8]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval maxCoins [2, 4, 5]
+  -- #guard_msgs in
+  -- #eval maxCoins [2, 4, 5]
   
-  /--
+  /-
   info: 18
   -/
-  #guard_msgs in
-  #eval maxCoins [9, 8, 7, 6, 5, 1, 2, 3, 4]
+  -- #guard_msgs in
+  -- #eval maxCoins [9, 8, 7, 6, 5, 1, 2, 3, 4]
 
 vc-postamble: |-
   -- Apps difficulty: interview

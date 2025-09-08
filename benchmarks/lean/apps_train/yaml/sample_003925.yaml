@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Consider a game, wherein the player has to guess a target word. All the player knows is the length of the target word.
   
   To help them in their goal, the game will accept guesses, and return the number of letters that are in the correct position.
@@ -34,6 +35,7 @@ vc-description: |-
   ```
   
   You may assume, however, that the two parameters will always be in the same case.
+  -/
 
 vc-preamble: |-
 
@@ -66,23 +68,23 @@ vc-theorems: |-
     s1.length = s2.length → count_correct_characters s1 s2 ≥ 0 := 
     sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_correct_characters "dog" "car"
+  -- #guard_msgs in
+  -- #eval count_correct_characters "dog" "car"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_correct_characters "dog" "cog"
+  -- #guard_msgs in
+  -- #eval count_correct_characters "dog" "cog"
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_correct_characters "dog" "dog"
+  -- #guard_msgs in
+  -- #eval count_correct_characters "dog" "dog"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

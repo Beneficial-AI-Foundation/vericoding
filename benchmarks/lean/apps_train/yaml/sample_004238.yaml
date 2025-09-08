@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A population of bears consists of black bears, brown bears, and white bears.
   
   The input is an array of two elements. 
@@ -22,6 +23,7 @@ vc-description: |-
       bear_fur(['brown', 'white'])  returns 'light brown'
   
       bear_fur(['yellow', 'magenta'])  returns 'unknown'
+  -/
 
 vc-preamble: |-
 
@@ -54,47 +56,47 @@ vc-theorems: |-
     (bear_fur [Color.black, Color.white] = Color.black)     -- grey
     := by sorry
   
-  /--
+  /-
   info: 'black'
   -/
-  #guard_msgs in
-  #eval bear_fur ["black", "black"]
+  -- #guard_msgs in
+  -- #eval bear_fur ["black", "black"]
   
-  /--
+  /-
   info: 'white'
   -/
-  #guard_msgs in
-  #eval bear_fur ["white", "white"]
+  -- #guard_msgs in
+  -- #eval bear_fur ["white", "white"]
   
-  /--
+  /-
   info: 'brown'
   -/
-  #guard_msgs in
-  #eval bear_fur ["brown", "brown"]
+  -- #guard_msgs in
+  -- #eval bear_fur ["brown", "brown"]
   
-  /--
+  /-
   info: 'dark brown'
   -/
-  #guard_msgs in
-  #eval bear_fur ["black", "brown"]
+  -- #guard_msgs in
+  -- #eval bear_fur ["black", "brown"]
   
-  /--
+  /-
   info: 'grey'
   -/
-  #guard_msgs in
-  #eval bear_fur ["black", "white"]
+  -- #guard_msgs in
+  -- #eval bear_fur ["black", "white"]
   
-  /--
+  /-
   info: 'light brown'
   -/
-  #guard_msgs in
-  #eval bear_fur ["brown", "white"]
+  -- #guard_msgs in
+  -- #eval bear_fur ["brown", "white"]
   
-  /--
+  /-
   info: 'unknown'
   -/
-  #guard_msgs in
-  #eval bear_fur ["pink", "black"]
+  -- #guard_msgs in
+  -- #eval bear_fur ["pink", "black"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

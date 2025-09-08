@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We are given a list schedule of employees, which represents the working time for each employee.
   
   Each employee has a list of non-overlapping Intervals, and these intervals are in sorted order.
@@ -26,6 +27,7 @@ vc-description: |-
   Note:
   schedule and schedule[i] are lists with lengths in range [1, 50].
   0 .
+  -/
 
 vc-preamble: |-
 
@@ -63,17 +65,17 @@ vc-theorems: |-
     ∀ i : Interval, i ∈ result → i.start < i.finish :=
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval len employeeFreeTime(schedule1)
+  -- #guard_msgs in
+  -- #eval len employeeFreeTime(schedule1)
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval len employeeFreeTime(schedule2)
+  -- #guard_msgs in
+  -- #eval len employeeFreeTime(schedule2)
 
 vc-postamble: |-
   -- Apps difficulty: interview

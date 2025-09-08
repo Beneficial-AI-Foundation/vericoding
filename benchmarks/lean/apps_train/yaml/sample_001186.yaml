@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef has $N$ axis-parallel rectangles in a 2D Cartesian coordinate system. These rectangles may intersect, but it is guaranteed that all their $4N$ vertices are pairwise distinct.
   Unfortunately, Chef lost one vertex, and up until now, none of his fixes have worked (although putting an image of a point on a milk carton might not have been the greatest idea after all…). Therefore, he gave you the task of finding it! You are given the remaining $4N-1$ points and you should find the missing one.
   
@@ -41,6 +42,7 @@ vc-description: |-
   The original set of points are:
   
   Upon adding the missing point $(2, 2)$, $N = 2$ rectangles can be formed:
+  -/
 
 vc-preamble: |-
 
@@ -61,23 +63,23 @@ vc-theorems: |-
     let result := find_missing_vertex n points
     ∃ x y : Int, result = (x, y) := by sorry
   
-  /--
+  /-
   info: (2, 2)
   -/
-  #guard_msgs in
-  #eval find_missing_vertex 2 [(1, 1), (1, 2), (4, 6), (2, 1), (9, 6), (9, 3), (4, 3)]
+  -- #guard_msgs in
+  -- #eval find_missing_vertex 2 [(1, 1), (1, 2), (4, 6), (2, 1), (9, 6), (9, 3), (4, 3)]
   
-  /--
+  /-
   info: (1, 0)
   -/
-  #guard_msgs in
-  #eval find_missing_vertex 1 [(0, 0), (0, 1), (1, 1)]
+  -- #guard_msgs in
+  -- #eval find_missing_vertex 1 [(0, 0), (0, 1), (1, 1)]
   
-  /--
+  /-
   info: (10, 5)
   -/
-  #guard_msgs in
-  #eval find_missing_vertex 1 [(5, 5), (5, 10), (10, 10)]
+  -- #guard_msgs in
+  -- #eval find_missing_vertex 1 [(5, 5), (5, 10), (10, 10)]
 
 vc-postamble: |-
   -- Apps difficulty: interview

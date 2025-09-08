@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this problem the input will consist of a number of lines of English text consisting of the letters of the English alphabet, the punctuation marks ' (apostrophe), . (full stop), , (comma), ; (semicolon), :(colon) and white space characters (blank, newline). Your task is print the words in the text in reverse order without any punctuation marks.
   For example consider the following candidate for the input text:
   $ $
@@ -32,6 +33,7 @@ vc-description: |-
   -----Sample output-----
   right this solve will you smart are you If problem
   this illustrate to text of piece sample a is This
+  -/
 
 vc-preamble: |-
 
@@ -70,23 +72,23 @@ vc-theorems: |-
     let input_lines := lines.filter (fun l => ∃ c ∈ l.data, c.isAlpha)
     List.length result_lines = List.length input_lines := sorry
   
-  /--
+  /-
   info: test1_expected
   -/
-  #guard_msgs in
-  #eval reverse_text ["This is a sample piece of text to illustrate this", "problem.  If you are smart you will solve this right."]
+  -- #guard_msgs in
+  -- #eval reverse_text ["This is a sample piece of text to illustrate this", "problem.  If you are smart you will solve this right."]
   
-  /--
+  /-
   info: test2_expected
   -/
-  #guard_msgs in
-  #eval reverse_text ["Hello, world!"]
+  -- #guard_msgs in
+  -- #eval reverse_text ["Hello, world!"]
   
-  /--
+  /-
   info: test3_expected
   -/
-  #guard_msgs in
-  #eval reverse_text ["The quick brown", "fox jumps over", "the lazy dog."]
+  -- #guard_msgs in
+  -- #eval reverse_text ["The quick brown", "fox jumps over", "the lazy dog."]
 
 vc-postamble: |-
   -- Apps difficulty: interview

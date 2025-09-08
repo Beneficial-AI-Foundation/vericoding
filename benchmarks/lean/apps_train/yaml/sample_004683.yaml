@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a number return the closest number to it that is divisible by 10.
   
   Example input:
@@ -16,6 +17,7 @@ vc-description: |-
   30
   40
   ```
+  -/
 
 vc-preamble: |-
   def abs (x : Int) : Int := 
@@ -42,23 +44,23 @@ vc-theorems: |-
   theorem result_within_5 (x : Int) :
     abs (x - closestMultiple10 x) ≤ 5 := sorry
   
-  /--
+  /-
   info: 20
   -/
-  #guard_msgs in
-  #eval closest_multiple_10 22
+  -- #guard_msgs in
+  -- #eval closest_multiple_10 22
   
-  /--
+  /-
   info: 30
   -/
-  #guard_msgs in
-  #eval closest_multiple_10 25
+  -- #guard_msgs in
+  -- #eval closest_multiple_10 25
   
-  /--
+  /-
   info: 40
   -/
-  #guard_msgs in
-  #eval closest_multiple_10 37
+  -- #guard_msgs in
+  -- #eval closest_multiple_10 37
 
 vc-postamble: |-
   -- Apps difficulty: introductory

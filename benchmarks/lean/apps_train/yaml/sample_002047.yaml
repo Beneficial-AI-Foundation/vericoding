@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given an array $a$ of length $2n$. Consider a partition of array $a$ into two subsequences $p$ and $q$ of length $n$ each (each element of array $a$ should be in exactly one subsequence: either in $p$ or in $q$).
   
   Let's sort $p$ in non-decreasing order, and $q$ in non-increasing order, we can denote the sorted versions by $x$ and $y$, respectively. Then the cost of a partition is defined as $f(p, q) = \sum_{i = 1}^n |x_i - y_i|$.
@@ -48,6 +49,7 @@ vc-description: |-
   In the first example, there are two correct partitions of the array $a$:  $p = [1]$, $q = [4]$, then $x = [1]$, $y = [4]$, $f(p, q) = |1 - 4| = 3$;  $p = [4]$, $q = [1]$, then $x = [4]$, $y = [1]$, $f(p, q) = |4 - 1| = 3$. 
   
   In the second example, there are six valid partitions of the array $a$:   $p = [2, 1]$, $q = [2, 1]$ (elements with indices $1$ and $2$ in the original array are selected in the subsequence $p$);  $p = [2, 2]$, $q = [1, 1]$;  $p = [2, 1]$, $q = [1, 2]$ (elements with indices $1$ and $4$ are selected in the subsequence $p$);  $p = [1, 2]$, $q = [2, 1]$;  $p = [1, 1]$, $q = [2, 2]$;  $p = [2, 1]$, $q = [2, 1]$ (elements with indices $3$ and $4$ are selected in the subsequence $p$).
+  -/
 
 vc-preamble: |-
 
@@ -76,23 +78,23 @@ vc-theorems: |-
   
   theorem specific_case_3 : solve_array_partition 3 [2, 2, 2, 2, 2, 2] = 0 := sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval solve_array_partition 1 [1, 4]
+  -- #guard_msgs in
+  -- #eval solve_array_partition 1 [1, 4]
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval solve_array_partition 2 [2, 1, 2, 1]
+  -- #guard_msgs in
+  -- #eval solve_array_partition 2 [2, 1, 2, 1]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve_array_partition 3 [2, 2, 2, 2, 2, 2]
+  -- #guard_msgs in
+  -- #eval solve_array_partition 3 [2, 2, 2, 2, 2, 2]
 
 vc-postamble: |-
   -- Apps difficulty: competition

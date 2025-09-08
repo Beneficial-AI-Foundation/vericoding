@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Doctor Kunj installed new software on cyborg Shresth.
   This software introduced Shresth to range minimum queries.
   Cyborg Shresth thought of T$T$ different problems in each of which you will be given
@@ -37,6 +38,7 @@ vc-description: |-
   -----Explanation:-----
   For the given array A$A$, we have to calculate rangeMin(1,1)+rangeMin(1,4)+rangeMin(1,6)+rangeMin(4,4)+rangeMin(4,6)+rangeMin(6,6)$rangeMin(1,1) + rangeMin(1,4) + rangeMin(1,6) + rangeMin(4,4) + rangeMin(4,6) + rangeMin(6,6) $.
   This is equal to 10+3+1+9+1+19=43$10 + 3 + 1 + 9 + 1 +19 = 43$.
+  -/
 
 vc-preamble: |-
 

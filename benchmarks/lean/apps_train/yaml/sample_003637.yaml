@@ -1,5 +1,7 @@
 vc-description: |-
+  /-
   Find the total sum of internal angles (in degrees) in an n-sided simple polygon. N will be greater than 2.
+  -/
 
 vc-preamble: |-
 
@@ -17,23 +19,23 @@ vc-theorems: |-
   theorem angle_properties {n : Nat} (h : n ≥ 3) :
     angle n % 180 = 0 ∧ angle n ≥ 180 := sorry
   
-  /--
+  /-
   info: 180
   -/
-  #guard_msgs in
-  #eval angle 3
+  -- #guard_msgs in
+  -- #eval angle 3
   
-  /--
+  /-
   info: 360
   -/
-  #guard_msgs in
-  #eval angle 4
+  -- #guard_msgs in
+  -- #eval angle 4
   
-  /--
+  /-
   info: 540
   -/
-  #guard_msgs in
-  #eval angle 5
+  -- #guard_msgs in
+  -- #eval angle 5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

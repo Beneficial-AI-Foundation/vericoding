@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   One Big Software Company has n employees numbered from 1 to n. The director is assigned number 1. Every employee of the company except the director has exactly one immediate superior. The director, of course, doesn't have a superior.
   
   We will call person a a subordinates of another person b, if either b is an immediate supervisor of a, or the immediate supervisor of a is a subordinate to person b. In particular, subordinates of the head are all other employees of the company.
@@ -36,6 +37,7 @@ vc-description: |-
   -----Note-----
   
   In the sample test the most effective way is to make a workgroup from employees number 1, 2, 4, 5, 6.
+  -/
 
 vc-preamble: |-
 
@@ -52,23 +54,23 @@ vc-theorems: |-
     max_efficiency_workgroup 1 [-1] [efficiency] = efficiency :=
   sorry
   
-  /--
+  /-
   info: 17
   -/
-  #guard_msgs in
-  #eval max_efficiency_workgroup 7 [-1, 1, 1, 1, 4, 4, 5] [3, 2, 1, 4, 5, 3, 2]
+  -- #guard_msgs in
+  -- #eval max_efficiency_workgroup 7 [-1, 1, 1, 1, 4, 4, 5] [3, 2, 1, 4, 5, 3, 2]
   
-  /--
+  /-
   info: 42
   -/
-  #guard_msgs in
-  #eval max_efficiency_workgroup 1 [-1] [42]
+  -- #guard_msgs in
+  -- #eval max_efficiency_workgroup 1 [-1] [42]
   
-  /--
+  /-
   info: 85
   -/
-  #guard_msgs in
-  #eval max_efficiency_workgroup 3 [-1, 1, 1] [1, 42, 42]
+  -- #guard_msgs in
+  -- #eval max_efficiency_workgroup 3 [-1, 1, 1] [1, 42, 42]
 
 vc-postamble: |-
   -- Apps difficulty: competition

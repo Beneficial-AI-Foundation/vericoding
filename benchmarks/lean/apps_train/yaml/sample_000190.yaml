@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array of integers nums and a positive integer k, find whether it's possible to divide this array into k non-empty subsets whose sums are all equal.
   
   Example 1:
@@ -10,6 +11,7 @@ vc-description: |-
   Note:
   1 .
   0 < nums[i] < 10000.
+  -/
 
 vc-preamble: |-
   def List.sum : List Nat → Nat 
@@ -64,23 +66,23 @@ vc-theorems: |-
     can_partition_k_subsets [1] 2 = false :=
     sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval can_partition_k_subsets [4, 3, 2, 3, 5, 2, 1] 4
+  -- #guard_msgs in
+  -- #eval can_partition_k_subsets [4, 3, 2, 3, 5, 2, 1] 4
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval can_partition_k_subsets [1, 2, 3, 4] 3
+  -- #guard_msgs in
+  -- #eval can_partition_k_subsets [1, 2, 3, 4] 3
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval can_partition_k_subsets [2, 2, 2, 2] 2
+  -- #guard_msgs in
+  -- #eval can_partition_k_subsets [2, 2, 2, 2] 2
 
 vc-postamble: |-
   -- Apps difficulty: interview

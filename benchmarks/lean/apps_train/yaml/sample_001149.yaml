@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a sequence $A_1, A_2, \ldots, A_N$. For each $k$ ($1 \le k \le N$), let's define a function $f(k)$ in the following way:
   - Consider a sequence $B_1, B_2, \ldots, B_N$, which is created by setting $A_k = 0$. Formally, $B_k = 0$ and $B_i = A_i$ for each valid $i \neq k$.
   - $f(k)$ is the number of ways to split the sequence $B$ into two non-empty contiguous subsequences with equal sums.
@@ -27,6 +28,7 @@ vc-description: |-
   -----Example Output-----
   6
   2
+  -/
 
 vc-preamble: |-
 
@@ -64,17 +66,17 @@ vc-theorems: |-
     solve_sequence_split N seq = solve_sequence_split N seq.reverse :=
   sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval solve_sequence_split 6 [1, 2, 1, 1, 3, 1]
+  -- #guard_msgs in
+  -- #eval solve_sequence_split 6 [1, 2, 1, 1, 3, 1]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve_sequence_split 3 [4, 1, 4]
+  -- #guard_msgs in
+  -- #eval solve_sequence_split 3 [4, 1, 4]
 
 vc-postamble: |-
   -- Apps difficulty: interview

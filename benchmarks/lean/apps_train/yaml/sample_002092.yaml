@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Jzzhu has picked n apples from his big apple tree. All the apples are numbered from 1 to n. Now he wants to sell them to an apple store. 
   
   Jzzhu will pack his apples into groups and then sell them. Each group must contain two apples, and the greatest common divisor of numbers of the apples in each group must be greater than 1. Of course, each apple can be part of at most one group.
@@ -38,6 +39,7 @@ vc-description: |-
   
   Output
   0
+  -/
 
 vc-preamble: |-
 
@@ -62,17 +64,17 @@ vc-theorems: |-
       flat_nums.indexOf x ≠ flat_nums.indexOf y :=
   sorry
   
-  /--
+  /-
   info: expected_groups
   -/
-  #guard_msgs in
-  #eval len find_max_pairs(n)
+  -- #guard_msgs in
+  -- #eval len find_max_pairs(n)
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval len pair
+  -- #guard_msgs in
+  -- #eval len pair
 
 vc-postamble: |-
   -- Apps difficulty: competition

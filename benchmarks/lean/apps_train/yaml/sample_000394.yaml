@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We partition a row of numbers A into at most K adjacent (non-empty) groups, then our score is the sum of the average of each group. What is the largest score we can achieve?
   Note that our partition must use every number in A, and that scores are not necessarily integers.
   Example:
@@ -17,6 +18,7 @@ vc-description: |-
   1 <= A[i] <= 10000.
   1 <= K <= A.length.
   Answers within 10^-6 of the correct answer will be accepted as correct.
+  -/
 
 vc-preamble: |-
   def array_stats (numbers: List Int) : Float × Float × Float × Float :=

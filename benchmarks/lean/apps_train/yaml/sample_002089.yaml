@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   This is an easier version of the next problem. In this version, $q = 0$.
   
   A sequence of integers is called nice if its elements are arranged in blocks like in $[3, 3, 3, 4, 1, 1]$. Formally, if two elements are equal, everything in between must also be equal.
@@ -51,6 +52,7 @@ vc-description: |-
   
   Output
   4
+  -/
 
 vc-preamble: |-
 
@@ -76,23 +78,23 @@ vc-theorems: |-
     find_min_changes sorted_unique ≤ sorted_unique.length - 1 :=
   sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_min_changes [3, 7, 3, 7, 3]
+  -- #guard_msgs in
+  -- #eval find_min_changes [3, 7, 3, 7, 3]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval find_min_changes [1, 2, 1, 2, 3, 1, 1, 1, 50, 1]
+  -- #guard_msgs in
+  -- #eval find_min_changes [1, 2, 1, 2, 3, 1, 1, 1, 50, 1]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval find_min_changes [6, 6, 3, 3, 4, 4]
+  -- #guard_msgs in
+  -- #eval find_min_changes [6, 6, 3, 3, 4, 4]
 
 vc-postamble: |-
   -- Apps difficulty: competition

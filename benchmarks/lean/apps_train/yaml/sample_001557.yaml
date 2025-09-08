@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ### Lyrics...
   
   Pyramids are amazing! Both in architectural and mathematical sense. If you have a computer, you can mess with pyramids even if you are not in Egypt at the time. For example, let's consider the following problem. Imagine that you have a pyramid built of numbers, like this one here:
@@ -25,6 +26,7 @@ vc-description: |-
   My tests include some extraordinarily high pyramids so as you can guess, brute-force method is a bad idea unless you have a few centuries to waste. You must come up with something more clever than that.
   
   (c) This task is a lyrical version of the __Problem 18__ and/or __Problem 67__ on [ProjectEuler](https://projecteuler.net).
+  -/
 
 vc-preamble: |-
 
@@ -61,23 +63,23 @@ vc-theorems: |-
     longest_slide_down [[a], [b, b], [c, c, c]] ≤ a + b + c
     := sorry
   
-  /--
+  /-
   info: 23
   -/
-  #guard_msgs in
-  #eval longest_slide_down [[3], [7, 4], [2, 4, 6], [8, 5, 9, 3]]
+  -- #guard_msgs in
+  -- #eval longest_slide_down [[3], [7, 4], [2, 4, 6], [8, 5, 9, 3]]
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval longest_slide_down [[1], [2, 3], [4, 5, 6]]
+  -- #guard_msgs in
+  -- #eval longest_slide_down [[1], [2, 3], [4, 5, 6]]
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval longest_slide_down [[5]]
+  -- #guard_msgs in
+  -- #eval longest_slide_down [[5]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

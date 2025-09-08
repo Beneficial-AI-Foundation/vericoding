@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    You have some people who are betting money, and they all start with the same amount of money (this number>0). 
   
@@ -33,6 +34,7 @@ vc-description: |-
   - For `arr = [100, 100, 100, 90, 1, 0, 0]`, the output should be `false`.
   
   These players can not start with the same amount of money.
+  -/
 
 vc-preamble: |-
   def List.sum (xs : List Int) : Int := 
@@ -60,23 +62,23 @@ vc-theorems: |-
     (h₂ : ∀ x ∈ arr, x = 0) :
     learn_charitable_game arr = false := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval learn_charitable_game [0, 56, 100]
+  -- #guard_msgs in
+  -- #eval learn_charitable_game [0, 56, 100]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval learn_charitable_game [0, 0, 0]
+  -- #guard_msgs in
+  -- #eval learn_charitable_game [0, 0, 0]
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval learn_charitable_game [11]
+  -- #guard_msgs in
+  -- #eval learn_charitable_game [11]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

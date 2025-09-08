@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   This kata is the second part of a series: [Neighbourhood kata collection](https://www.codewars.com/collections/5b2f4db591c746349d0000ce). If this one is to easy you can try out the harder Katas.;)
   
   ___
@@ -44,6 +45,7 @@ vc-description: |-
   If you like chess take a look at [Chess Aesthetics](https://www.codewars.com/kata/5b574980578c6a6bac0000dc)
   
   If you like puzzles and take a look at [Rubik's cube](https://www.codewars.com/kata/5b3bec086be5d8893000002e)
+  -/
 
 vc-preamble: |-
 
@@ -102,17 +104,17 @@ vc-theorems: |-
     get_neighbourhood typ arr (x,y) = [] :=
   sorry
   
-  /--
+  /-
   info: sorted([0, 1, 2, 5, 7, 10, 11, 12])
   -/
-  #guard_msgs in
-  #eval sorted get_neighbourhood("moore", matrix1, (1, 1))
+  -- #guard_msgs in
+  -- #eval sorted get_neighbourhood("moore", matrix1, (1, 1))
   
-  /--
+  /-
   info: sorted([1, 5])
   -/
-  #guard_msgs in
-  #eval sorted get_neighbourhood("von_neumann", matrix2, (0, 0))
+  -- #guard_msgs in
+  -- #eval sorted get_neighbourhood("von_neumann", matrix2, (0, 0))
 
 vc-postamble: |-
   -- Apps difficulty: introductory

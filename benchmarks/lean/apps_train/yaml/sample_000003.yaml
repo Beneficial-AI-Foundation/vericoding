@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You have $n$ barrels lined up in a row, numbered from left to right from one. Initially, the $i$-th barrel contains $a_i$ liters of water.
   
   You can pour water from one barrel to another. In one act of pouring, you can choose two different barrels $x$ and $y$ (the $x$-th barrel shouldn't be empty) and pour any possible amount of water from barrel $x$ to barrel $y$ (possibly, all water). You may assume that barrels have infinite capacity, so you can pour any amount of water in each of them. 
@@ -32,30 +33,31 @@ vc-description: |-
   Output
   10
   0
+  -/
 
 vc-preamble: |-
   def max_water_difference (n : Nat) (k : Nat) (barrels : List Nat) : Nat :=
     sorry
   
-  /-- Helper function to sum a list -/
+  /- Helper function to sum a list -/
   
   def listSum : List Nat → Nat
     | [] => 0
     | x :: xs => x + listSum xs
   
-  /-- Helper function to sort list descending -/
+  /- Helper function to sort list descending -/
   
   def sortDescending (l : List Nat) : List Nat :=
     sorry
   
-  /-- Helper function to get maximum of non-empty list -/
+  /- Helper function to get maximum of non-empty list -/
   
   def listMaximum : List Nat → Nat
     | [] => 0
     | [x] => x
     | x :: xs => if x > listMaximum xs then x else listMaximum xs
   
-  /-- Helper function to take first n elements -/
+  /- Helper function to take first n elements -/
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -67,7 +69,7 @@ vc-definitions: |-
     | _, [] => []
     | n+1, x :: xs => x :: takeFront n xs
   
-  /-- max_water_difference returns sum of k+1 largest values -/
+  /- max_water_difference returns sum of k+1 largest values -/
 
 vc-theorems: |-
   theorem max_water_diff_equals_k_plus_one_largest
@@ -78,7 +80,7 @@ vc-theorems: |-
       listSum (takeFront (k+1) (sortDescending barrels)) :=
     sorry
   
-  /-- max_water_difference result is greater than or equal to max barrel -/
+  /- max_water_difference result is greater than or equal to max barrel -/
   
   theorem max_water_diff_ge_max_barrel
     {n k : Nat} {barrels : List Nat}
@@ -88,7 +90,7 @@ vc-theorems: |-
     max_water_difference n k barrels ≥ listMaximum barrels :=
     sorry
   
-  /-- max_water_difference result is less than or equal to sum of all barrels -/
+  /- max_water_difference result is less than or equal to sum of all barrels -/
   
   theorem max_water_diff_le_total_sum
     {n k : Nat} {barrels : List Nat}
@@ -97,7 +99,7 @@ vc-theorems: |-
     max_water_difference n k barrels ≤ listSum barrels :=
     sorry
   
-  /-- max_water_difference does not modify input list -/
+  /- max_water_difference does not modify input list -/
   
   theorem max_water_diff_preserves_input
     {n k : Nat} {barrels : List Nat}
@@ -108,23 +110,23 @@ vc-theorems: |-
     barrels = original :=
     sorry
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval max_water_difference 4 1 [5, 5, 5, 5]
+  -- #guard_msgs in
+  -- #eval max_water_difference 4 1 [5, 5, 5, 5]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval max_water_difference 3 2 [0, 0, 0]
+  -- #guard_msgs in
+  -- #eval max_water_difference 3 2 [0, 0, 0]
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval max_water_difference 5 2 [1, 2, 3, 4, 5]
+  -- #guard_msgs in
+  -- #eval max_water_difference 5 2 [1, 2, 3, 4, 5]
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    The number is considered to be `unlucky` if it does not have digits `4` and `7` and is divisible by `13`. Please count all unlucky numbers not greater than `n`.
   
@@ -15,6 +16,7 @@ vc-description: |-
    `1 ≤ n ≤ 10^8(10^6 in Python)`
   
    - `[output]` an integer
+  -/
 
 vc-preamble: |-
   def unlucky_number (n : Nat) : Nat :=
@@ -50,23 +52,23 @@ vc-theorems: |-
     unlucky_number 13 = 2 :=
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval unlucky_number 20
+  -- #guard_msgs in
+  -- #eval unlucky_number 20
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval unlucky_number 100
+  -- #guard_msgs in
+  -- #eval unlucky_number 100
   
-  /--
+  /-
   info: 40
   -/
-  #guard_msgs in
-  #eval unlucky_number 1000
+  -- #guard_msgs in
+  -- #eval unlucky_number 1000
 
 vc-postamble: |-
   -- Apps difficulty: introductory

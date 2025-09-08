@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Two cheeky thieves (Chef being one of them, the more talented one of course) have came across each other in the underground vault of the State Bank of Churuland. They are shocked! Indeed, neither expect to meet a colleague in such a place with the same intentions to carry away all the money collected during Churufest 2015.
   
   They have carefully counted a total of exactly 1 billion (109) dollars in the bank vault. Now they must decide how to divide the booty. But there is one problem: the thieves have only M minutes to leave the bank before the police arrives. Also, the more time they spend in the vault, the less amount could carry away from the bank. Formally speaking, they can get away with all of the billion dollars right now, but after t minutes they can carry away only  1 billion * pt dollars, where p is some non-negative constant less than or equal to unity, and at t = M, they get arrested and lose all the money.
@@ -36,6 +37,7 @@ vc-description: |-
   
   -----Explanation-----
   Example case 1. In the second case, if decision isn't made at t = 0, total amount of money decreases to 5*108 at t = 1 which leads to a situation worse than the given solution.
+  -/
 
 vc-preamble: |-
 

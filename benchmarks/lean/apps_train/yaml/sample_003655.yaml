@@ -1,9 +1,11 @@
 vc-description: |-
+  /-
   Modify the spacify function so that it returns the given string with spaces inserted between each character.
   
   ```python
   spacify("hello world") # returns "h e l l o   w o r l d"
   ```
+  -/
 
 vc-preamble: |-
 
@@ -30,23 +32,23 @@ vc-theorems: |-
     ∀ i, i < (spacify s).length → 
     i % 2 = 1 → ((spacify s).data.get ⟨i, by sorry⟩) = ' ' := sorry
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval spacify ""
+  -- #guard_msgs in
+  -- #eval spacify ""
   
-  /--
+  /-
   info: 'a'
   -/
-  #guard_msgs in
-  #eval spacify "a"
+  -- #guard_msgs in
+  -- #eval spacify "a"
   
-  /--
+  /-
   info: 'P i p p i'
   -/
-  #guard_msgs in
-  #eval spacify "Pippi"
+  -- #guard_msgs in
+  -- #eval spacify "Pippi"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

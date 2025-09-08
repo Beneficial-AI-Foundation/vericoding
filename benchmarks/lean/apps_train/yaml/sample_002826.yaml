@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a natural number n, we want to know in how many ways we may express these numbers as product of other numbers.
   
   For example the number
@@ -35,6 +36,7 @@ vc-description: |-
   prod_int_part(61) == [0, []]
   ```
   Enjoy it!!
+  -/
 
 vc-preamble: |-
   def prod_int_part (n: Nat) (min: Nat := 2) : Nat × List Nat := sorry
@@ -68,35 +70,35 @@ vc-theorems: |-
     let result := prod_int_part n min
     result.2.all (λ x => x ≥ min) := sorry
   
-  /--
+  /-
   info: [3, [2, 3, 3]]
   -/
-  #guard_msgs in
-  #eval prod_int_part 18
+  -- #guard_msgs in
+  -- #eval prod_int_part 18
   
-  /--
+  /-
   info: [10, [2, 2, 3, 5]]
   -/
-  #guard_msgs in
-  #eval prod_int_part 60
+  -- #guard_msgs in
+  -- #eval prod_int_part 60
   
-  /--
+  /-
   info: [6, [2, 3, 3, 3]]
   -/
-  #guard_msgs in
-  #eval prod_int_part 54
+  -- #guard_msgs in
+  -- #eval prod_int_part 54
   
-  /--
+  /-
   info: [0, []]
   -/
-  #guard_msgs in
-  #eval prod_int_part 37
+  -- #guard_msgs in
+  -- #eval prod_int_part 37
   
-  /--
+  /-
   info: [0, []]
   -/
-  #guard_msgs in
-  #eval prod_int_part 61
+  -- #guard_msgs in
+  -- #eval prod_int_part 61
 
 vc-postamble: |-
   -- Apps difficulty: introductory

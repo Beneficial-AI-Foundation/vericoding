@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    Given string `s`, which contains only letters from `a to z` in lowercase.
   
@@ -37,6 +38,7 @@ vc-description: |-
    - `[output]` a string
   
     Find the letters contained in each alphabet but not in the string(s). Output them by the order `a-z`. If missing alphabet is repeated, please repeat them like `"bbccdd"`, not `"bcdbcd"`
+  -/
 
 vc-preamble: |-
 
@@ -67,23 +69,23 @@ vc-theorems: |-
       (∀ c, c.isLower → counts_for_char s c ≤ max_input_count) ∧
       (∀ c ∈ result.data, counts_for_char s c < max_input_count) := sorry
   
-  /--
+  /-
   info: 'z'
   -/
-  #guard_msgs in
-  #eval missing_alphabets "abcdefghijklmnopqrstuvwxy"
+  -- #guard_msgs in
+  -- #eval missing_alphabets "abcdefghijklmnopqrstuvwxy"
   
-  /--
+  /-
   info: 'zz'
   -/
-  #guard_msgs in
-  #eval missing_alphabets "aabbccddeeffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxyy"
+  -- #guard_msgs in
+  -- #eval missing_alphabets "aabbccddeeffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxyy"
   
-  /--
+  /-
   info: 'bfghijklmnpqtuvxyz'
   -/
-  #guard_msgs in
-  #eval missing_alphabets "codewars"
+  -- #guard_msgs in
+  -- #eval missing_alphabets "codewars"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

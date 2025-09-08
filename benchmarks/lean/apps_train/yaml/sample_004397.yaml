@@ -1,8 +1,10 @@
 vc-description: |-
+  /-
   Take a string and return a hash with all the ascii values of the characters in the string.
   Returns nil if the string is empty.
   The key is the character, and the value is the ascii value of the character.
   Repeated characters are to be ignored and non-alphebetic characters as well.
+  -/
 
 vc-preamble: |-
 
@@ -47,23 +49,23 @@ vc-theorems: |-
     charToAscii s = some d →
     d.chars.length = s.data.eraseDups.length := sorry
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval char_to_ascii ""
+  -- #guard_msgs in
+  -- #eval char_to_ascii ""
   
-  /--
+  /-
   info: {'a': 97}
   -/
-  #guard_msgs in
-  #eval char_to_ascii "a"
+  -- #guard_msgs in
+  -- #eval char_to_ascii "a"
   
-  /--
+  /-
   info: {'h': 104, 'e': 101, 'l': 108, 'o': 111, 'w': 119, 'r': 114, 'd': 100}
   -/
-  #guard_msgs in
-  #eval char_to_ascii "hello world"
+  -- #guard_msgs in
+  -- #eval char_to_ascii "hello world"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

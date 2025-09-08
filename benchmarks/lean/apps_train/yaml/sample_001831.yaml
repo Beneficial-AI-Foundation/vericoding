@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given many words, words[i] has weight i.
   
   Design a class WordFilter that supports one function, WordFilter.f(String prefix, String suffix).
@@ -18,6 +19,7 @@ vc-description: |-
   words[i] has length in range [1, 10].
   prefix, suffix have lengths in range [0, 10].
   words[i] and prefix, suffix queries consist of lowercase letters only.
+  -/
 
 vc-preamble: |-
 

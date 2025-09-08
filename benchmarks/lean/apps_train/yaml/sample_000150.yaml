@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In universe Earth C-137, Rick discovered a special form of magnetic force between two balls if they are put in his new invented basket. Rick has n empty baskets, the ith basket is at position[i], Morty has m balls and needs to distribute the balls into the baskets such that the minimum magnetic force between any two balls is maximum.
   Rick stated that magnetic force between two different balls at positions x and y is |x - y|.
   Given the integer array position and the integer m. Return the required force.
@@ -21,6 +22,7 @@ vc-description: |-
   1 <= position[i] <= 10^9
   All integers in position are distinct.
   2 <= m <= position.length
+  -/
 
 vc-preamble: |-
   def max_distance (positions : List Nat) (m : Nat) : Nat :=
@@ -76,23 +78,23 @@ vc-theorems: |-
     max_distance [1,2,3] 3 = 1 :=
   sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval max_distance [1, 2, 3, 4, 7] 3
+  -- #guard_msgs in
+  -- #eval max_distance [1, 2, 3, 4, 7] 3
   
-  /--
+  /-
   info: 999999999
   -/
-  #guard_msgs in
-  #eval max_distance [5, 4, 3, 2, 1, 1000000000] 2
+  -- #guard_msgs in
+  -- #eval max_distance [5, 4, 3, 2, 1, 1000000000] 2
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval max_distance [1, 2, 3, 4, 5, 6] 4
+  -- #guard_msgs in
+  -- #eval max_distance [1, 2, 3, 4, 5, 6] 4
 
 vc-postamble: |-
   -- Apps difficulty: interview

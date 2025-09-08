@@ -1,10 +1,12 @@
 vc-description: |-
+  /-
   Ask a small girl - "How old are you?". She always says strange things... Lets help her!
   
   For correct answer program should return int from 0 to 9.
   
   Assume test input string always valid and may look like 
   "1 year old" or "5 years old", etc.. The first char is number only.
+  -/
 
 vc-preamble: |-
 
@@ -25,23 +27,23 @@ vc-theorems: |-
     ∃ e, get_age s = .error e :=
     sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval get_age "5 years old"
+  -- #guard_msgs in
+  -- #eval get_age "5 years old"
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval get_age "1 year old"
+  -- #guard_msgs in
+  -- #eval get_age "1 year old"
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval get_age "9 years old"
+  -- #guard_msgs in
+  -- #eval get_age "9 years old"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

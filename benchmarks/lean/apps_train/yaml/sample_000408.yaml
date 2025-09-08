@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a positive integer n and you can do operations as follow:
   
   If n is even, replace n with n/2.
@@ -29,6 +30,7 @@ vc-description: |-
   7 -> 8 -> 4 -> 2 -> 1
   or
   7 -> 6 -> 3 -> 2 -> 1
+  -/
 
 vc-preamble: |-
 
@@ -55,23 +57,23 @@ vc-theorems: |-
   theorem integer_replacement_power_of_two (n : Nat) (h : n > 0) :
     integer_replacement (2^n) = n := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval integer_replacement 8
+  -- #guard_msgs in
+  -- #eval integer_replacement 8
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval integer_replacement 7
+  -- #guard_msgs in
+  -- #eval integer_replacement 7
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval integer_replacement 3
+  -- #guard_msgs in
+  -- #eval integer_replacement 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

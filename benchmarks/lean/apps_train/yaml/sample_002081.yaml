@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Let's consider a simplified version of order book of some stock. The order book is a list of orders (offers) from people that want to buy or sell one unit of the stock, each order is described by direction (BUY or SELL) and price.
   
   At every moment of time, every SELL offer has higher price than every BUY offer. 
@@ -68,6 +69,7 @@ vc-description: |-
   In the first example each of orders may be BUY or SELL.
   
   In the second example the order with price $1$ has to be BUY order, the order with the price $3$ has to be SELL order.
+  -/
 
 vc-preamble: |-
   def Action : Type := (String × Nat)
@@ -85,23 +87,23 @@ vc-definitions: |-
     solve_order_book test_actions = 2 := sorry
 
 vc-theorems: |-
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval solve_order_book [("ADD", 1), ("ACCEPT", 1), ("ADD", 2), ("ACCEPT", 2), ("ADD", 3), ("ACCEPT", 3)]
+  -- #guard_msgs in
+  -- #eval solve_order_book [("ADD", 1), ("ACCEPT", 1), ("ADD", 2), ("ACCEPT", 2), ("ADD", 3), ("ACCEPT", 3)]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve_order_book [("ADD", 1), ("ADD", 2), ("ADD", 3), ("ACCEPT", 2)]
+  -- #guard_msgs in
+  -- #eval solve_order_book [("ADD", 1), ("ADD", 2), ("ADD", 3), ("ACCEPT", 2)]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve_order_book [("ADD", 1), ("ADD", 2), ("ADD", 3), ("ADD", 4), ("ADD", 5), ("ACCEPT", 3), ("ACCEPT", 5)]
+  -- #guard_msgs in
+  -- #eval solve_order_book [("ADD", 1), ("ADD", 2), ("ADD", 3), ("ADD", 4), ("ADD", 5), ("ACCEPT", 3), ("ACCEPT", 5)]
 
 vc-postamble: |-
   -- Apps difficulty: competition

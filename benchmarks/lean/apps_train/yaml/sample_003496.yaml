@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this kata, you've to count lowercase letters in a given string and return the letter count in a hash with 'letter' as key and count as 'value'. The key must be 'symbol' instead of string in Ruby and 'char' instead of string in Crystal.
   
   Example: 
@@ -6,6 +7,7 @@ vc-description: |-
   ```python
   letter_count('arithmetics') #=> {"a": 1, "c": 1, "e": 1, "h": 1, "i": 2, "m": 1, "r": 1, "s": 1, "t": 2}
   ```
+  -/
 
 vc-preamble: |-
 
@@ -37,23 +39,23 @@ vc-theorems: |-
   theorem letterCount_valid_chars {s : String} {c : Char} :
     letterCount s c > 0 → Char.isValidUnicode c := by sorry
   
-  /--
+  /-
   info: {'a': 1, 'c': 1, 'd': 1, 'e': 1, 'o': 1, 'r': 1, 's': 1, 'w': 1}
   -/
-  #guard_msgs in
-  #eval letter_count "codewars"
+  -- #guard_msgs in
+  -- #eval letter_count "codewars"
   
-  /--
+  /-
   info: {'a': 1, 'c': 1, 'i': 2, 't': 2, 'v': 1, 'y': 1}
   -/
-  #guard_msgs in
-  #eval letter_count "activity"
+  -- #guard_msgs in
+  -- #eval letter_count "activity"
   
-  /--
+  /-
   info: {'a': 1, 'c': 1, 'e': 1, 'h': 1, 'i': 2, 'm': 1, 'r': 1, 's': 1, 't': 2}
   -/
-  #guard_msgs in
-  #eval letter_count "arithmetics"
+  -- #guard_msgs in
+  -- #eval letter_count "arithmetics"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

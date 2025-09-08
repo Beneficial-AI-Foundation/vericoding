@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given an unweighted tree with N$N$ nodes (numbered 1$1$ through N$N$). Let's denote the distance between any two nodes p$p$ and q$q$ by d(p,q)$d(p, q)$.
   You should answer Q$Q$ queries. In each query, you are given parameters a$a$, da$d_a$, b$b$, db$d_b$, and you should find a node x$x$ such that d(x,a)=da$d(x, a) = d_a$ and d(x,b)=db$d(x, b) = d_b$, or determine that there is no such node.
   
@@ -44,6 +45,7 @@ vc-description: |-
   3
   5
   -1
+  -/
 
 vc-preamble: |-
   def find_nodes_with_distance (t : Tree) (node : Nat) (dist : Nat) : List Nat :=

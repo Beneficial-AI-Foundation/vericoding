@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef loves to play with iron (Fe) and magnets (Ma). He took a row of $N$ cells (numbered $1$ through $N$) and placed some objects in some of these cells. You are given a string $S$ with length $N$ describing them; for each valid $i$, the $i$-th character of $S$ is one of the following:
   - 'I' if the $i$-th cell contains a piece of iron
   - 'M' if the $i$-th cell contains a magnet
@@ -43,6 +44,7 @@ vc-description: |-
   Example case 2:
   The magnets in cells $1$ and $3$ can attract the piece of iron in cell $2$, since the attraction power is $10$ in both cases. They cannot attract iron in cells $6$ or $7$ because there is a wall between them.
   The magnet in cell $9$ can attract the pieces of iron in cells $7$ and $6$; the attraction power is $8$ and $7$ respectively.
+  -/
 
 vc-preamble: |-
   def max_magnet_attract (n k : Nat) (s : String) : Nat := sorry
@@ -74,23 +76,23 @@ vc-theorems: |-
   theorem max_magnet_output_bounded {n k : Nat} {s : String} :
     max_magnet_attract n k s ≤ min (countChar s 'M') (countChar s 'I') := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval max_magnet_attract 4 5 "I::M"
+  -- #guard_msgs in
+  -- #eval max_magnet_attract 4 5 "I::M"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval max_magnet_attract 9 10 "MIM_XII:M"
+  -- #guard_msgs in
+  -- #eval max_magnet_attract 9 10 "MIM_XII:M"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval max_magnet_attract 5 3 "MI:IM"
+  -- #guard_msgs in
+  -- #eval max_magnet_attract 5 3 "MI:IM"
 
 vc-postamble: |-
   -- Apps difficulty: interview

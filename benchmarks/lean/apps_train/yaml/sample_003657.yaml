@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Simple interest on a loan is calculated by simply taking the initial amount (the principal, p) and multiplying it by a rate of interest (r) and the number of time periods (n). 
   
   Compound interest is calculated by adding the interest after each time period to the amount owed, then calculating the next interest payment based on the principal PLUS the interest from all previous periods.
@@ -18,6 +19,7 @@ vc-description: |-
   ---
   
   More on [Simple interest, compound interest and continuous interest](https://betterexplained.com/articles/a-visual-guide-to-simple-compound-and-continuous-interest-rates/)
+  -/
 
 vc-preamble: |-
 

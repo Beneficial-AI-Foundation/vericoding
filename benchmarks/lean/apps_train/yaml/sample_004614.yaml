@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You must create a method that can convert a string from any format into CamelCase. This must support symbols too.
   
   *Don't presume the separators too much or you could be surprised.*
@@ -9,6 +10,7 @@ vc-description: |-
   camelize("your-NaMe-here") # => YourNameHere
   camelize("testing ABC")    # => TestingAbc
   ```
+  -/
 
 vc-preamble: |-
 
@@ -43,23 +45,23 @@ vc-theorems: |-
         Char.toLower ((camelize s).data.get! j) = 
         Char.toLower (s.data.get! i) := sorry
   
-  /--
+  /-
   info: 'ExampleName'
   -/
-  #guard_msgs in
-  #eval camelize "example name"
+  -- #guard_msgs in
+  -- #eval camelize "example name"
   
-  /--
+  /-
   info: 'YourNameHere'
   -/
-  #guard_msgs in
-  #eval camelize "your-NaMe-here"
+  -- #guard_msgs in
+  -- #eval camelize "your-NaMe-here"
   
-  /--
+  /-
   info: 'TestingAbc'
   -/
-  #guard_msgs in
-  #eval camelize "testing ABC"
+  -- #guard_msgs in
+  -- #eval camelize "testing ABC"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

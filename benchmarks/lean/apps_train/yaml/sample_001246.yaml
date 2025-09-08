@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a program to obtain a number $(N)$ from the user and display whether the number is a one digit number, 2 digit number, 3 digit number or more than 3 digit number
   
   -----Input:-----
@@ -18,6 +19,7 @@ vc-description: |-
   
   -----Sample Output:-----
   1
+  -/
 
 vc-preamble: |-
 
@@ -52,23 +54,23 @@ vc-theorems: |-
     (100 ≤ n ∧ n < 1000 → count_digits n = "3") ∧
     (1000 ≤ n → count_digits n = "More than 3 digits") := sorry
   
-  /--
+  /-
   info: '1'
   -/
-  #guard_msgs in
-  #eval count_digits 9
+  -- #guard_msgs in
+  -- #eval count_digits 9
   
-  /--
+  /-
   info: '2'
   -/
-  #guard_msgs in
-  #eval count_digits 42
+  -- #guard_msgs in
+  -- #eval count_digits 42
   
-  /--
+  /-
   info: 'More than 3 digits'
   -/
-  #guard_msgs in
-  #eval count_digits 12345
+  -- #guard_msgs in
+  -- #eval count_digits 12345
 
 vc-postamble: |-
   -- Apps difficulty: interview

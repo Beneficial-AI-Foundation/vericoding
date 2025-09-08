@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Toggling Grid
   You are given a grid (2d array) of 0/1's. All 1's represents a solved puzzle. Your job is to come up with a sequence of toggle moves that will solve a scrambled grid.
   
@@ -98,6 +99,7 @@ vc-description: |-
   ```
   
   There are randomized tests with puzzles of up to 100x100 in size. Have fun!
+  -/
 
 vc-preamble: |-
 

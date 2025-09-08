@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The aim of this kata is to split a given string into different strings of equal size (note size of strings is passed to the method)
   
   Example:
@@ -15,6 +16,7 @@ vc-description: |-
       String length is always greater than 0
       String has no spaces
       Size is always positive
+  -/
 
 vc-preamble: |-
 
@@ -39,23 +41,23 @@ vc-theorems: |-
     split_in_parts s (s.length + 1) = s :=
     sorry
   
-  /--
+  /-
   info: 'sup erc ali fra gil ist ice xpi ali doc iou s'
   -/
-  #guard_msgs in
-  #eval split_in_parts "supercalifragilisticexpialidocious" 3
+  -- #guard_msgs in
+  -- #eval split_in_parts "supercalifragilisticexpialidocious" 3
   
-  /--
+  /-
   info: 'H e l l o K a t a'
   -/
-  #guard_msgs in
-  #eval split_in_parts "HelloKata" 1
+  -- #guard_msgs in
+  -- #eval split_in_parts "HelloKata" 1
   
-  /--
+  /-
   info: 'HelloKata'
   -/
-  #guard_msgs in
-  #eval split_in_parts "HelloKata" 9
+  -- #guard_msgs in
+  -- #eval split_in_parts "HelloKata" 9
 
 vc-postamble: |-
   -- Apps difficulty: introductory

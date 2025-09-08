@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A *Vampire number* is a positive integer `z` with a factorization `x * y = z` such that
   
   - `x` and `y` have the same number of digits and
@@ -18,6 +19,7 @@ vc-description: |-
   PS: In the OEIS, the Vampire numbers are sequence [A014575](https://oeis.org/A014575).
   
   PPS: So called *Pseudo-Vampire Numbers* are treated in [this kata](http://www.codewars.com/kata/vampire-numbers-1).
+  -/
 
 vc-preamble: |-
 
@@ -59,23 +61,23 @@ vc-theorems: |-
     ¬∃ m: Nat, vampire_number n = m :=
     sorry
   
-  /--
+  /-
   info: 105210
   -/
-  #guard_msgs in
-  #eval vampire_number 10
+  -- #guard_msgs in
+  -- #eval vampire_number 10
   
-  /--
+  /-
   info: 336960
   -/
-  #guard_msgs in
-  #eval vampire_number 100
+  -- #guard_msgs in
+  -- #eval vampire_number 100
   
-  /--
+  /-
   info: 939658
   -/
-  #guard_msgs in
-  #eval vampire_number 155
+  -- #guard_msgs in
+  -- #eval vampire_number 155
 
 vc-postamble: |-
   -- Apps difficulty: introductory

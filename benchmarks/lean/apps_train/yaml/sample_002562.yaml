@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    Yesterday you found some shoes in your room. Each shoe is described by two values:
   ```
@@ -38,6 +39,7 @@ vc-description: |-
    - `[output]` a boolean value
   
      `true` if it is possible to pair the shoes, `false` otherwise.
+  -/
 
 vc-preamble: |-
 
@@ -68,23 +70,23 @@ vc-theorems: |-
     pair_of_shoes shoes = pair_of_shoes swapped
     := by sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval pair_of_shoes [[0, 21], [1, 23], [1, 21], [0, 23]]
+  -- #guard_msgs in
+  -- #eval pair_of_shoes [[0, 21], [1, 23], [1, 21], [0, 23]]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval pair_of_shoes [[0, 21], [1, 23], [1, 21], [1, 23]]
+  -- #guard_msgs in
+  -- #eval pair_of_shoes [[0, 21], [1, 23], [1, 21], [1, 23]]
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval pair_of_shoes [[0, 23], [1, 21], [1, 23], [0, 21], [1, 22], [0, 22]]
+  -- #guard_msgs in
+  -- #eval pair_of_shoes [[0, 23], [1, 21], [1, 23], [0, 21], [1, 22], [0, 22]]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

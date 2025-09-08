@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Implement `String#parse_mana_cost`, which parses [Magic: the Gathering mana costs](http://mtgsalvation.gamepedia.com/Mana_cost) expressed as a string and returns a `Hash` with keys being kinds of mana, and values being the numbers.
   
   Don't include any mana types equal to zero.
@@ -9,6 +10,7 @@ vc-description: |-
   * optionally followed by any combination of `w`, `u`, `b`, `r`, `g` (case insensitive in input, return lower case in output), each representing one mana of specific color.
   
   If case of Strings not following specified format, return `nil/null/None`.
+  -/
 
 vc-preamble: |-
 
@@ -58,23 +60,23 @@ vc-theorems: |-
       (colors.countP (· = 'g') > 0 → m.green = colors.countP (· = 'g'))
     | none => True := sorry
   
-  /--
+  /-
   info: {'*': 2, 'r': 2}
   -/
-  #guard_msgs in
-  #eval parse_mana_cost "2rr"
+  -- #guard_msgs in
+  -- #eval parse_mana_cost "2rr"
   
-  /--
+  /-
   info: {'*': 1, 'w': 2, 'u': 1}
   -/
-  #guard_msgs in
-  #eval parse_mana_cost "1wwu"
+  -- #guard_msgs in
+  -- #eval parse_mana_cost "1wwu"
   
-  /--
+  /-
   info: {'w': 1, 'u': 1, 'b': 1, 'r': 1, 'g': 1}
   -/
-  #guard_msgs in
-  #eval parse_mana_cost "wubrg"
+  -- #guard_msgs in
+  -- #eval parse_mana_cost "wubrg"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

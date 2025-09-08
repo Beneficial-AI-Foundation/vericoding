@@ -1,10 +1,12 @@
 vc-description: |-
+  /-
   Bob needs a fast way to calculate the volume of a cuboid with three values: `length`, `width` and the `height` of the cuboid. Write a function to help Bob with this calculation.
   
   ```if:shell
   In bash the script is ran with the following 3 arguments:
   `length` `width` `height`
   ```
+  -/
 
 vc-preamble: |-
 
@@ -26,17 +28,17 @@ vc-theorems: |-
     get_volume_of_cuboid (scale * length) (scale * width) (scale * height) = 
     get_volume_of_cuboid length width height * (scale * scale * scale) := sorry
   
-  /--
+  /-
   info: 60
   -/
-  #guard_msgs in
-  #eval get_volume_of_cuboid 2 5 6
+  -- #guard_msgs in
+  -- #eval get_volume_of_cuboid 2 5 6
   
-  /--
+  /-
   info: 94.5
   -/
-  #guard_msgs in
-  #eval get_volume_of_cuboid 6.3 3 5
+  -- #guard_msgs in
+  -- #eval get_volume_of_cuboid 6.3 3 5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

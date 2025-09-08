@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Let's call an array arr a mountain if the following properties hold:
   
   arr.length >= 3
@@ -30,6 +31,7 @@ vc-description: |-
   3 <= arr.length <= 104
   0 <= arr[i] <= 106
   arr is guaranteed to be a mountain array.
+  -/
 
 vc-preamble: |-
 
@@ -66,23 +68,23 @@ vc-theorems: |-
     arr[peak]! > arr[peak+1]! :=
   sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval peak_index_in_mountain_array [0, 1, 0]
+  -- #guard_msgs in
+  -- #eval peak_index_in_mountain_array [0, 1, 0]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval peak_index_in_mountain_array [0, 2, 1, 0]
+  -- #guard_msgs in
+  -- #eval peak_index_in_mountain_array [0, 2, 1, 0]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval peak_index_in_mountain_array [24, 69, 100, 99, 79, 78, 67, 36, 26, 19]
+  -- #guard_msgs in
+  -- #eval peak_index_in_mountain_array [24, 69, 100, 99, 79, 78, 67, 36, 26, 19]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

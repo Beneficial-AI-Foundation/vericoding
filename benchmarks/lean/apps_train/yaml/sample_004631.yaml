@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A sequence is usually a set or an array of numbers that has a strict way for moving from the nth term to the (n+1)th term.
   If ``f(n) = f(n-1) + c`` where ``c`` is a constant value, then ``f`` is an arithmetic sequence.
   An example would be (where the first term is 0 and the constant is 1) is [0, 1, 2, 3, 4, 5, ... and so on] )
@@ -16,6 +17,7 @@ vc-description: |-
     - ``c`` is the constant added between the terms.
   
   Remember that `first` is in the index ``0`` .. just saying ...
+  -/
 
 vc-preamble: |-
 
@@ -42,23 +44,23 @@ vc-theorems: |-
     (first n1 n2 c : Int) (h1 : n1 ≥ 0) (h2 : n2 ≥ 0) :
     nthterm first (n1 + n2) c = nthterm (nthterm first n1 c) n2 c := sorry
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval nthterm 1 2 3
+  -- #guard_msgs in
+  -- #eval nthterm 1 2 3
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval nthterm 2 3 2
+  -- #guard_msgs in
+  -- #eval nthterm 2 3 2
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval nthterm 0 4 1
+  -- #guard_msgs in
+  -- #eval nthterm 0 4 1
 
 vc-postamble: |-
   -- Apps difficulty: introductory

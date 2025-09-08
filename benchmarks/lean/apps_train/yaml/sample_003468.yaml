@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Task
   
   Given `n` representing the number of floors build a beautiful multi-million dollar mansions like the ones in the example below:
@@ -28,6 +29,7 @@ vc-description: |-
   If you manage to complete it, you can try a harder version [here](https://www.codewars.com/kata/58360d112fb0ba255300008b).
   
   Good luck!
+  -/
 
 vc-preamble: |-
 
@@ -101,23 +103,23 @@ vc-theorems: |-
         else if c = '/' then '\\'
         else c)) := sorry
   
-  /--
+  /-
   info: test1
   -/
-  #guard_msgs in
-  #eval my_crib 1
+  -- #guard_msgs in
+  -- #eval my_crib 1
   
-  /--
+  /-
   info: test2
   -/
-  #guard_msgs in
-  #eval my_crib 2
+  -- #guard_msgs in
+  -- #eval my_crib 2
   
-  /--
+  /-
   info: test3
   -/
-  #guard_msgs in
-  #eval my_crib 3
+  -- #guard_msgs in
+  -- #eval my_crib 3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

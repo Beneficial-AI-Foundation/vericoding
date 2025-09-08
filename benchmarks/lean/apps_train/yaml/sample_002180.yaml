@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Iahub likes trees very much. Recently he discovered an interesting tree named propagating tree. The tree consists of n nodes numbered from 1 to n, each node i having an initial value a_{i}. The root of the tree is node 1.
   
   This tree has a special property: when a value val is added to a value of node i, the value -val is added to values of all the children of node i. Note that when you add value -val to a child of node i, you also add -(-val) to all children of the child of node i and so on. Look an example explanation to understand better how it works.
@@ -47,6 +48,7 @@ vc-description: |-
   Then value 2 is added to node 1. It propagates and value -2 is added to it's sons, node 2 and node 3. From node 2 it propagates again, adding value 2 to it's sons, node 4 and node 5. Node 3 has no sons, so it cannot propagate from there. The values of the nodes are [3, 3,  - 1, 0, 1].
   
   You can see all the definitions about the tree at the following link: http://en.wikipedia.org/wiki/Tree_(graph_theory)
+  -/
 
 vc-preamble: |-
   def BIT (n : Nat) : Type := Unit

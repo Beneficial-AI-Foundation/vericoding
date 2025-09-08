@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef has some numbers. His girlfriend Chefina feels good when chef gives her a particular pattern number also called as Armstrong number.
   Armstrong number is a number whose sum of its all individual digit raise to the power of the number of digit in that number is equal to that number itself
   eg.. 153 = 1^3 + 5^3 + 3^3 (153 is an Armstrong number)
@@ -29,6 +30,7 @@ vc-description: |-
   
   -----EXPLANATION:-----
   For test case 1 --> 153 = 1^3 + 5^3 + 3^3 (153 is an armstrong number)
+  -/
 
 vc-preamble: |-
   def power (x y : Nat) : Nat :=
@@ -72,23 +74,23 @@ vc-theorems: |-
     (∀ x ∈ check_numbers numbers, x = "FEELS GOOD" ∨ x = "FEELS BAD") :=
     sorry
   
-  /--
+  /-
   info: ['FEELS GOOD', 'FEELS BAD', 'FEELS GOOD']
   -/
-  #guard_msgs in
-  #eval check_numbers [153, 11, 1634]
+  -- #guard_msgs in
+  -- #eval check_numbers [153, 11, 1634]
   
-  /--
+  /-
   info: ['FEELS GOOD', 'FEELS GOOD', 'FEELS GOOD']
   -/
-  #guard_msgs in
-  #eval check_numbers [370, 371, 407]
+  -- #guard_msgs in
+  -- #eval check_numbers [370, 371, 407]
   
-  /--
+  /-
   info: ['FEELS BAD', 'FEELS BAD', 'FEELS BAD']
   -/
-  #guard_msgs in
-  #eval check_numbers [123, 555, 999]
+  -- #guard_msgs in
+  -- #eval check_numbers [123, 555, 999]
 
 vc-postamble: |-
   -- Apps difficulty: interview

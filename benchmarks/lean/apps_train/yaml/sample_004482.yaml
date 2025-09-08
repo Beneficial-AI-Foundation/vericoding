@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   How many bees are in the beehive?
   
   * bees can be facing UP, DOWN, LEFT, or RIGHT 
@@ -26,6 +27,7 @@ vc-description: |-
   
   * The hive may be empty or null/None/nil/...
   * Python: the hive is passed as a list of lists (not a list of strings)
+  -/
 
 vc-preamble: |-
 
@@ -66,23 +68,23 @@ vc-theorems: |-
     how_many_bees hive ≥ 0 :=
   sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval how_many_bees [["b", "e", "e", ".", "b", "e", "e"], [".", "e", ".", ".", "e", ".", ".", " "], [".", "b", ".", ".", "e", "e", "b"]]
+  -- #guard_msgs in
+  -- #eval how_many_bees [["b", "e", "e", ".", "b", "e", "e"], [".", "e", ".", ".", "e", ".", ".", " "], [".", "b", ".", ".", "e", "e", "b"]]
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval how_many_bees [["b", "e", "e", ".", "b", "e", "e"], ["e", ".", "e", ".", "e", ".", "e"], ["e", "e", "b", ".", "e", "e", "b"]]
+  -- #guard_msgs in
+  -- #eval how_many_bees [["b", "e", "e", ".", "b", "e", "e"], ["e", ".", "e", ".", "e", ".", "e"], ["e", "e", "b", ".", "e", "e", "b"]]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval how_many_bees None
+  -- #guard_msgs in
+  -- #eval how_many_bees None
 
 vc-postamble: |-
   -- Apps difficulty: introductory

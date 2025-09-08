@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given the strings s1 and s2 of size n, and the string evil. Return the number of good strings.
   A good string has size n, it is alphabetically greater than or equal to s1, it is alphabetically smaller than or equal to s2, and it does not contain the string evil as a substring. Since the answer can be a huge number, return this modulo 10^9 + 7.
   
@@ -24,6 +25,7 @@ vc-description: |-
   1 <= n <= 500
   1 <= evil.length <= 50
   All strings consist of lowercase English letters.
+  -/
 
 vc-preamble: |-
 
@@ -46,23 +48,23 @@ vc-theorems: |-
   theorem findGoodStrings_full_range :
     findGoodStrings 1 "a" "z" "zz" = 26 := sorry
   
-  /--
+  /-
   info: 51
   -/
-  #guard_msgs in
-  #eval findGoodStrings 2 "aa" "da" "b"
+  -- #guard_msgs in
+  -- #eval findGoodStrings 2 "aa" "da" "b"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval findGoodStrings 8 "leetcode" "leetgoes" "leet"
+  -- #guard_msgs in
+  -- #eval findGoodStrings 8 "leetcode" "leetgoes" "leet"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval findGoodStrings 2 "gx" "gz" "x"
+  -- #guard_msgs in
+  -- #eval findGoodStrings 2 "gx" "gz" "x"
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We have the following sequence:
   ```python
   f(0) = 0
@@ -26,6 +27,7 @@ vc-description: |-
   Good luck !!
   
   (Your code should be fast. Many moderate high values will be waiting to test it.)
+  -/
 
 vc-preamble: |-
 
@@ -54,23 +56,23 @@ vc-theorems: |-
     :=
     sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_odd_pentaFib 0
+  -- #guard_msgs in
+  -- #eval count_odd_pentaFib 0
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_odd_pentaFib 1
+  -- #guard_msgs in
+  -- #eval count_odd_pentaFib 1
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_odd_pentaFib 2
+  -- #guard_msgs in
+  -- #eval count_odd_pentaFib 2
 
 vc-postamble: |-
   -- Apps difficulty: introductory

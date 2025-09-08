@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Reverse and invert all integer values in a given list. 
   
   Python:
@@ -6,6 +7,7 @@ vc-description: |-
       reverse_invert([1,12,'a',3.4,87,99.9,-42,50,5.6]) = [-1,-21,-78,24,-5]
   
   Ignore all other types than integer.
+  -/
 
 vc-preamble: |-
   def reverseInvert (lst : List Int) : List Int := sorry
@@ -35,23 +37,23 @@ vc-theorems: |-
   theorem reverseInvert_length_preservation {lst : List Int} :
     (reverseInvert lst).length = lst.length := by sorry
   
-  /--
+  /-
   info: [-1, -2, -3, -4, -5]
   -/
-  #guard_msgs in
-  #eval reverse_invert [1, 2, 3, 4, 5]
+  -- #guard_msgs in
+  -- #eval reverse_invert [1, 2, 3, 4, 5]
   
-  /--
+  /-
   info: [-1, -21, -78, 24, -5]
   -/
-  #guard_msgs in
-  #eval reverse_invert [1, 12, "a", 3.4, 87, 99.9, -42, 50, 5.6]
+  -- #guard_msgs in
+  -- #eval reverse_invert [1, 12, "a", 3.4, 87, 99.9, -42, 50, 5.6]
   
-  /--
+  /-
   info: [9, 81, -99]
   -/
-  #guard_msgs in
-  #eval reverse_invert [-9, -18, 99]
+  -- #guard_msgs in
+  -- #eval reverse_invert [-9, -18, 99]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

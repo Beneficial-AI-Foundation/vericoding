@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There is a frog staying to the left of the string $s = s_1 s_2 \ldots s_n$ consisting of $n$ characters (to be more precise, the frog initially stays at the cell $0$). Each character of $s$ is either 'L' or 'R'. It means that if the frog is staying at the $i$-th cell and the $i$-th character is 'L', the frog can jump only to the left. If the frog is staying at the $i$-th cell and the $i$-th character is 'R', the frog can jump only to the right. The frog can jump only to the right from the cell $0$.
   
   Note that the frog can jump into the same cell twice and can perform as many jumps as it needs.
@@ -54,6 +55,7 @@ vc-description: |-
   In the fifth test case of the example, the frog can only jump directly from $0$ to $n+1$.
   
   In the sixth test case of the example, the frog can choose $d=1$ and jump $2$ times to the right.
+  -/
 
 vc-preamble: |-
   def solve_frog_jumps (s : String) : Nat :=
@@ -80,23 +82,23 @@ vc-theorems: |-
     solve_frog_jumps s = solve_frog_jumps (s.replace "R" "RR") :=
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval solve_frog_jumps "LRLRRLL"
+  -- #guard_msgs in
+  -- #eval solve_frog_jumps "LRLRRLL"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve_frog_jumps "L"
+  -- #guard_msgs in
+  -- #eval solve_frog_jumps "L"
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval solve_frog_jumps "LLR"
+  -- #guard_msgs in
+  -- #eval solve_frog_jumps "LLR"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

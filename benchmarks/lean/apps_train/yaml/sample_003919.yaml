@@ -1,9 +1,11 @@
 vc-description: |-
+  /-
   Some new animals have arrived at the zoo. The zoo keeper is concerned that perhaps the animals do not have the right tails. To help her, you must correct the broken function to make sure that the second argument (tail), is the same as the last letter of the first argument (body) - otherwise the tail wouldn't fit!
   
   If the tail is right return true, else return false.
   
   The arguments will always be strings, and normal letters.
+  -/
 
 vc-preamble: |-
 
@@ -39,23 +41,23 @@ vc-theorems: |-
   theorem correct_tail_empty_body (x : String) :
     correctTail "" x = false := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval correct_tail "Fox" "x"
+  -- #guard_msgs in
+  -- #eval correct_tail "Fox" "x"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval correct_tail "Rhino" "o"
+  -- #guard_msgs in
+  -- #eval correct_tail "Rhino" "o"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval correct_tail "Badger" "s"
+  -- #guard_msgs in
+  -- #eval correct_tail "Badger" "s"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # The Invitation
   
   Most of us played with toy blocks growing up. It was fun and you learned stuff. So what else can you do but rise to the challenge when a 3-year old exclaims, "Look, I made a square!", then pointing to a pile of blocks, "Can _you_ do it?"
@@ -58,6 +59,7 @@ vc-description: |-
   # Enjoy!
   
   If interested, I also have [this kata](https://www.codewars.com/kata/5cb7baa989b1c50014a53333) as well as [this other kata](https://www.codewars.com/kata/5cb5eb1f03c3ff4778402099) to consider solving.
+  -/
 
 vc-preamble: |-
   def build_square (blocks: List Nat) : Bool :=
@@ -88,23 +90,23 @@ vc-theorems: |-
     build_square blocks = false :=
   sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval build_square [1, 1, 1, 1, 1, 1, 1, 2, 3, 4]
+  -- #guard_msgs in
+  -- #eval build_square [1, 1, 1, 1, 1, 1, 1, 2, 3, 4]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval build_square [1, 3, 2, 4, 3, 3, 2]
+  -- #guard_msgs in
+  -- #eval build_square [1, 3, 2, 4, 3, 3, 2]
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval build_square [4, 2, 2, 1, 1, 1, 1, 3, 3, 3, 1]
+  -- #guard_msgs in
+  -- #eval build_square [4, 2, 2, 1, 1, 1, 1, 3, 3, 3, 1]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

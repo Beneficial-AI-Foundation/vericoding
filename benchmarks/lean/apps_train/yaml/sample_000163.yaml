@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given 3 positives numbers a, b and c. Return the minimum flips required in some bits of a and b to make ( a OR b == c ). (bitwise OR operation).
   Flip operation consists of change any single bit 1 to 0 or change the bit 0 to 1 in their binary representation.
   
@@ -20,6 +21,7 @@ vc-description: |-
   1 <= a <= 10^9
   1 <= b <= 10^9
   1 <= c <= 10^9
+  -/
 
 vc-preamble: |-
   def min_flips (a b c : Nat) : Nat := sorry
@@ -43,23 +45,23 @@ vc-theorems: |-
   theorem min_flips_identity_right (c : Nat) :
     min_flips 0 c c = 0 := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval min_flips 2 6 5
+  -- #guard_msgs in
+  -- #eval min_flips 2 6 5
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval min_flips 4 2 7
+  -- #guard_msgs in
+  -- #eval min_flips 4 2 7
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_flips 1 2 3
+  -- #guard_msgs in
+  -- #eval min_flips 1 2 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

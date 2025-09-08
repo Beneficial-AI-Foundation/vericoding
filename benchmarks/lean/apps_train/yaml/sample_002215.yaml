@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You have an array $a$ of length $n$. For every positive integer $x$ you are going to perform the following operation during the $x$-th second:
   
     Select some distinct indices $i_{1}, i_{2}, \ldots, i_{k}$ which are between $1$ and $n$ inclusive, and add $2^{x-1}$ to each corresponding position of $a$. Formally, $a_{i_{j}} := a_{i_{j}} + 2^{x-1}$ for $j = 1, 2, \ldots, k$. Note that you are allowed to not select any indices at all. 
@@ -43,6 +44,7 @@ vc-description: |-
   In the second test case, $a$ is already nondecreasing, so answer is $0$.
   
   In the third test case, if you do nothing at first $2$ seconds and select index $2$ at the $3$-rd second, $a$ will become $[0, 0]$.
+  -/
 
 vc-preamble: |-
 
@@ -69,23 +71,23 @@ vc-theorems: |-
     : let result := min_seconds_to_nondecreasing n arr
       result ≥ 0 ∧ ∀ i j, i < j → j < n → arr[i]! ≤ arr[j]! := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_seconds_to_nondecreasing 4 #[1, 7, 6, 5]
+  -- #guard_msgs in
+  -- #eval min_seconds_to_nondecreasing 4 #[1, 7, 6, 5]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_seconds_to_nondecreasing 5 #[1, 2, 3, 4, 5]
+  -- #guard_msgs in
+  -- #eval min_seconds_to_nondecreasing 5 #[1, 2, 3, 4, 5]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval min_seconds_to_nondecreasing 2 #[0, -4]
+  -- #guard_msgs in
+  -- #eval min_seconds_to_nondecreasing 2 #[0, -4]
 
 vc-postamble: |-
   -- Apps difficulty: competition

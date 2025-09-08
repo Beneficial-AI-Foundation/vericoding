@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The sequence of $m$ integers is called the permutation if it contains all integers from $1$ to $m$ exactly once. The number $m$ is called the length of the permutation.
   
   Dreamoon has two permutations $p_1$ and $p_2$ of non-zero lengths $l_1$ and $l_2$.
@@ -56,6 +57,7 @@ vc-description: |-
   In the second example, the only way to divide $a$ into permutations is $\{2,4,1,3\} + \{2,1\}$.
   
   In the third example, there are no possible ways.
+  -/
 
 vc-preamble: |-
 
@@ -101,23 +103,23 @@ vc-theorems: |-
       (∀ x ∈ right, 1 ≤ x ∧ x ≤ pair.2) :=
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval len find_permutations(test1)
+  -- #guard_msgs in
+  -- #eval len find_permutations(test1)
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval len find_permutations(test2)
+  -- #guard_msgs in
+  -- #eval len find_permutations(test2)
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval len find_permutations(test3)
+  -- #guard_msgs in
+  -- #eval len find_permutations(test3)
 
 vc-postamble: |-
   -- Apps difficulty: interview

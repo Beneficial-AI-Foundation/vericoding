@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We will use the Flesch–Kincaid Grade Level to evaluate the readability of a piece of text. This grade level is an approximation for what schoolchildren are able to understand a piece of text. For example, a piece of text with a grade level of 7 can be read by seventh-graders and beyond.
   
   The way to calculate the grade level is as follows:
@@ -20,6 +21,7 @@ vc-description: |-
   ```
   
   The average number of words per sentence is `4` and the average number of syllables per word is `1.5`. The score is then `(0.39 * 4) +  (11.8 * 1.5) - 15.59` = `3.67`
+  -/
 
 vc-preamble: |-
   def count (s : String) (pattern : String) : Nat :=
@@ -71,23 +73,23 @@ vc-theorems: |-
     ∃ (result : Float), flesch_kincaid sentence = result :=
     sorry
   
-  /--
+  /-
   info: 3.67
   -/
-  #guard_msgs in
-  #eval flesch_kincaid "The turtle is leaving."
+  -- #guard_msgs in
+  -- #eval flesch_kincaid "The turtle is leaving."
   
-  /--
+  /-
   info: 2.89
   -/
-  #guard_msgs in
-  #eval flesch_kincaid "Hi there."
+  -- #guard_msgs in
+  -- #eval flesch_kincaid "Hi there."
   
-  /--
+  /-
   info: 2.89
   -/
-  #guard_msgs in
-  #eval flesch_kincaid "Go home."
+  -- #guard_msgs in
+  -- #eval flesch_kincaid "Go home."
 
 vc-postamble: |-
   -- Apps difficulty: introductory

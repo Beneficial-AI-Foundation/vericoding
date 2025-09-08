@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a non-negative integer num, return the number of steps to reduce it to zero. If the current number is even, you have to divide it by 2, otherwise, you have to subtract 1 from it.
   
   Example 1:
@@ -28,6 +29,7 @@ vc-description: |-
   Constraints:
   
   0 <= num <= 10^6
+  -/
 
 vc-preamble: |-
   def number_of_steps (n: Nat) : Nat := sorry
@@ -53,23 +55,23 @@ vc-theorems: |-
   theorem zero_steps :
     number_of_steps 0 = 0 := sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval number_of_steps 14
+  -- #guard_msgs in
+  -- #eval number_of_steps 14
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval number_of_steps 8
+  -- #guard_msgs in
+  -- #eval number_of_steps 8
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval number_of_steps 123
+  -- #guard_msgs in
+  -- #eval number_of_steps 123
 
 vc-postamble: |-
   -- Apps difficulty: introductory

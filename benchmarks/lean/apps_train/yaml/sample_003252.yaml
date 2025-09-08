@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a non-negative integer, return an array / a list of the individual digits in order.
   
   Examples:
@@ -10,6 +11,7 @@ vc-description: |-
   
   8675309 => [8,6,7,5,3,0,9]
   ```
+  -/
 
 vc-preamble: |-
 
@@ -33,23 +35,23 @@ vc-theorems: |-
   
   theorem digitize_zero : digitize 0 = [0] := sorry
   
-  /--
+  /-
   info: [1, 2, 3]
   -/
-  #guard_msgs in
-  #eval digitize 123
+  -- #guard_msgs in
+  -- #eval digitize 123
   
-  /--
+  /-
   info: [1]
   -/
-  #guard_msgs in
-  #eval digitize 1
+  -- #guard_msgs in
+  -- #eval digitize 1
   
-  /--
+  /-
   info: [8, 6, 7, 5, 3, 0, 9]
   -/
-  #guard_msgs in
-  #eval digitize 8675309
+  -- #guard_msgs in
+  -- #eval digitize 8675309
 
 vc-postamble: |-
   -- Apps difficulty: introductory

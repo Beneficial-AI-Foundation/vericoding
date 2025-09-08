@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a non-empty string check if it can be constructed by taking a substring of it and appending multiple copies of the substring together.  You may assume the given string consists of lowercase English letters only and its length  will not exceed 10000. 
   
   Example 1:
@@ -22,6 +23,7 @@ vc-description: |-
   Output: True
   
   Explanation: It's the substring "abc" four times. (And the substring "abcabc" twice.)
+  -/
 
 vc-preamble: |-
   def repeatedSubstringPattern (s: String) : Bool := sorry
@@ -57,23 +59,23 @@ vc-theorems: |-
     ¬allCharsSame s →
     ¬repeatedSubstringPattern s := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval repeatedSubstringPattern "abab"
+  -- #guard_msgs in
+  -- #eval repeatedSubstringPattern "abab"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval repeatedSubstringPattern "aba"
+  -- #guard_msgs in
+  -- #eval repeatedSubstringPattern "aba"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval repeatedSubstringPattern "abcabcabcabc"
+  -- #guard_msgs in
+  -- #eval repeatedSubstringPattern "abcabcabcabc"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

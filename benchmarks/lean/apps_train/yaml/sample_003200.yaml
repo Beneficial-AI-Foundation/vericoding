@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   _Based on [Project Euler problem 35](https://projecteuler.net/problem=35)_
   
   A circular prime is a prime in which every circular permutation of that number is also prime. Circular permutations are created by rotating the digits of the number, for example: `197, 971, 719`. One-digit primes are circular primes by definition.
@@ -6,6 +7,7 @@ vc-description: |-
   Complete the function that dertermines if a number is a circular prime.
   
   There are 100 random tests for numbers up to 10000.
+  -/
 
 vc-preamble: |-
   def sqrt (n : Nat) : Nat :=
@@ -51,23 +53,23 @@ vc-theorems: |-
       ∀ p ∈ circular_permutations n, circular_prime p = true :=
     sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval circular_prime 197
+  -- #guard_msgs in
+  -- #eval circular_prime 197
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval circular_prime 179
+  -- #guard_msgs in
+  -- #eval circular_prime 179
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval circular_prime 7
+  -- #guard_msgs in
+  -- #eval circular_prime 7
 
 vc-postamble: |-
   -- Apps difficulty: introductory

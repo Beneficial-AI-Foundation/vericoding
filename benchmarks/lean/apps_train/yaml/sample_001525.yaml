@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are n cards of different colours placed in a line, each of them can be either red, green or blue cards. Count the minimum number of cards to withdraw from the line so that no two adjacent cards have the same colour.
   
   -----Input-----
@@ -31,6 +32,7 @@ vc-description: |-
   
   -----Sample Output 3:-----
   1
+  -/
 
 vc-preamble: |-
   def count_min_cards_to_remove (n : Nat) (colors : List Color) : Nat :=
@@ -72,23 +74,23 @@ vc-theorems: |-
     count_min_cards_to_remove n colors = 0 :=
   sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_min_cards_to_remove 5 "RGGBG"
+  -- #guard_msgs in
+  -- #eval count_min_cards_to_remove 5 "RGGBG"
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval count_min_cards_to_remove 5 "RRRRR"
+  -- #guard_msgs in
+  -- #eval count_min_cards_to_remove 5 "RRRRR"
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_min_cards_to_remove 2 "BB"
+  -- #guard_msgs in
+  -- #eval count_min_cards_to_remove 2 "BB"
 
 vc-postamble: |-
   -- Apps difficulty: interview

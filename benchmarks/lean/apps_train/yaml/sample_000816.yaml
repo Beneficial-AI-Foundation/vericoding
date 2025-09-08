@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Find sum of all the numbers that are multiples of 10 and are less than or equal to a given number "N". (quotes for clarity and be careful of integer overflow)
   
   -----Input-----
@@ -21,6 +22,7 @@ vc-description: |-
   
   -----Explanation-----
   Example case 1. Only integer that is multiple 10 that is less than or equal to 10 is 10
+  -/
 
 vc-preamble: |-
 
@@ -50,23 +52,23 @@ vc-theorems: |-
   theorem sum_multiples_edge_cases :
     sum_multiples_of_ten 0 = 0 ∧ sum_multiples_of_ten 9 = 0 := sorry
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval sum_multiples_of_ten 10
+  -- #guard_msgs in
+  -- #eval sum_multiples_of_ten 10
   
-  /--
+  /-
   info: 30
   -/
-  #guard_msgs in
-  #eval sum_multiples_of_ten 20
+  -- #guard_msgs in
+  -- #eval sum_multiples_of_ten 20
   
-  /--
+  /-
   info: 550
   -/
-  #guard_msgs in
-  #eval sum_multiples_of_ten 100
+  -- #guard_msgs in
+  -- #eval sum_multiples_of_ten 100
 
 vc-postamble: |-
   -- Apps difficulty: interview

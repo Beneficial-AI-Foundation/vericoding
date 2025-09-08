@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Rachel has some candies and she decided to distribute them among $N$ kids. The ith kid receives $A_i$ candies. The kids are happy iff the difference between the highest and lowest number of candies received is less than $X$.
   Find out if the children are happy or not.
   
@@ -33,6 +34,7 @@ vc-description: |-
   
   -----EXPLANATION:-----
   - Example 1: Difference between maximum and minimum candies received is 8-1=7. 7 is greater than 6, therefore, the kids are not happy.
+  -/
 
 vc-preamble: |-
 
@@ -67,23 +69,23 @@ vc-theorems: |-
     (h6 : n = candies.length) :
     areKidsHappy n x candies = "YES" := sorry
   
-  /--
+  /-
   info: 'NO'
   -/
-  #guard_msgs in
-  #eval are_kids_happy 5 6 [3, 5, 6, 8, 1]
+  -- #guard_msgs in
+  -- #eval are_kids_happy 5 6 [3, 5, 6, 8, 1]
   
-  /--
+  /-
   info: 'YES'
   -/
-  #guard_msgs in
-  #eval are_kids_happy 3 10 [5, 2, 9]
+  -- #guard_msgs in
+  -- #eval are_kids_happy 3 10 [5, 2, 9]
   
-  /--
+  /-
   info: 'YES'
   -/
-  #guard_msgs in
-  #eval are_kids_happy 4 5 [1, 2, 3, 4]
+  -- #guard_msgs in
+  -- #eval are_kids_happy 4 5 [1, 2, 3, 4]
 
 vc-postamble: |-
   -- Apps difficulty: interview

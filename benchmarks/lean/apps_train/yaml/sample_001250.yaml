@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   "Say my Name".
   Todd Alquist is being taught the process of cooking methamphetamine, but to see whether he's really capable of learning it, Walt gives him a problem to solve. Since he can't solve it, he asks you for help.
   You are given a tree with $N$ vertices (numbered $1$ through $N$), rooted at the vertex $1$. There is an integer written at each vertex; for each valid $i$, the value of vertex $i$ is $A$$i$.There also exists a special integer $K$. 
@@ -51,6 +52,7 @@ vc-description: |-
   1->2->4->5
   we can select the values
   5,26,75,1 and perform operation 1 that is XOR of all numbers to get 85
+  -/
 
 vc-preamble: |-
   def can_obtain_k (n : Nat) (k : Nat) (edges : List (Nat × Nat)) (values : List Nat) : String :=
@@ -81,23 +83,23 @@ vc-theorems: |-
     edges.length = n - 1 :=
   sorry
   
-  /--
+  /-
   info: 'YES'
   -/
-  #guard_msgs in
-  #eval can_obtain_k 6 85 [(1, 2), (2, 3), (2, 4), (4, 5), (3, 6)] [3, 5, 4, 7, 1, 9]
+  -- #guard_msgs in
+  -- #eval can_obtain_k 6 85 [(1, 2), (2, 3), (2, 4), (4, 5), (3, 6)] [3, 5, 4, 7, 1, 9]
   
-  /--
+  /-
   info: 'YES'
   -/
-  #guard_msgs in
-  #eval can_obtain_k 3 4 [(1, 2), (1, 3)] [2, 3, 1]
+  -- #guard_msgs in
+  -- #eval can_obtain_k 3 4 [(1, 2), (1, 3)] [2, 3, 1]
   
-  /--
+  /-
   info: 'NO'
   -/
-  #guard_msgs in
-  #eval can_obtain_k 4 100 [(1, 2), (2, 3), (2, 4)] [3, 4, 2, 5]
+  -- #guard_msgs in
+  -- #eval can_obtain_k 4 100 [(1, 2), (2, 3), (2, 4)] [3, 4, 2, 5]
 
 vc-postamble: |-
   -- Apps difficulty: interview

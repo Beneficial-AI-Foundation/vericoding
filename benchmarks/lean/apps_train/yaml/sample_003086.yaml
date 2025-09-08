@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    Some people are standing in a row in a park. There are trees between them which cannot be moved. 
   
@@ -25,6 +26,7 @@ vc-description: |-
    - `[output]` an integer array
   
       `Sorted` array a with all the trees untouched.
+  -/
 
 vc-preamble: |-
 
@@ -66,23 +68,23 @@ vc-theorems: |-
       (sort_by_height a).get ⟨i, sorry⟩ ≤ (sort_by_height a).get ⟨j, sorry⟩ :=
     sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval sort_by_height [-1, 150, 190, 170, -1, -1, 160, 180]
+  -- #guard_msgs in
+  -- #eval sort_by_height [-1, 150, 190, 170, -1, -1, 160, 180]
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval sort_by_height [-1, -1, -1, -1, -1]
+  -- #guard_msgs in
+  -- #eval sort_by_height [-1, -1, -1, -1, -1]
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval sort_by_height [4, 2, 9, 11, 2, 16]
+  -- #guard_msgs in
+  -- #eval sort_by_height [4, 2, 9, 11, 2, 16]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

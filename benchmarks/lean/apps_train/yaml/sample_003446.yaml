@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   OK, my warriors! Now that you beat the big BOSS, you can unlock three new skills. (Does it sound like we're playing an RPG? ;-)
   
   ## The Arrow Function (JS only)
@@ -168,6 +169,7 @@ vc-description: |-
    - [#40: Regular Expression--"|", "[]" and "()"](http://www.codewars.com/kata/573d11c48b97c0ad970002d4)
    - [#41: Regular Expression--"\"](http://www.codewars.com/kata/573e6831e3201f6a9b000971)
    - [#42: Regular Expression--(?:), (?=) and (?!)](http://www.codewars.com/kata/573fb9223f9793e485000453)
+  -/
 
 vc-preamble: |-
   def shuffleIt {α : Type} : List α → List (Nat × Nat) → List α
@@ -197,23 +199,23 @@ vc-theorems: |-
     (h₁ : i < xs.length) (h₂ : j < xs.length) :
     shuffleIt xs [(i,j)] = swapAt xs i j h₁ h₂ := sorry
   
-  /--
+  /-
   info: [1, 3, 2, 4, 5]
   -/
-  #guard_msgs in
-  #eval shuffle_it [1, 2, 3, 4, 5] [1, 2]
+  -- #guard_msgs in
+  -- #eval shuffle_it [1, 2, 3, 4, 5] [1, 2]
   
-  /--
+  /-
   info: [1, 3, 2, 5, 4]
   -/
-  #guard_msgs in
-  #eval shuffle_it [1, 2, 3, 4, 5] [1, 2] [3, 4]
+  -- #guard_msgs in
+  -- #eval shuffle_it [1, 2, 3, 4, 5] [1, 2] [3, 4]
   
-  /--
+  /-
   info: [1, 3, 5, 2, 4]
   -/
-  #guard_msgs in
-  #eval shuffle_it [1, 2, 3, 4, 5] [1, 2] [3, 4] [2, 3]
+  -- #guard_msgs in
+  -- #eval shuffle_it [1, 2, 3, 4, 5] [1, 2] [3, 4] [2, 3]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

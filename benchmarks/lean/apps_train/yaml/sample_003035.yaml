@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In case you might be unlucky enough not to know the best dark fantasy franchise ever, Berserk tells the story of a man that, hating gratuitous violence, decided to become a mercenary (thus one who sells violence, no gratuity anymore!) and starts an epic struggle against apparently unsormountable odds, unsure if he really wants to pursue a path of vengeance or to try to focus on his remaining and new loved ones.
   
   *The main character, Gatsu,ready to start yet another Tuesday*
@@ -36,6 +37,7 @@ vc-description: |-
   Extra cookies if you manage to solve it all using a `reduce/inject` approach.
   
   Oh, and in case you might want a taste of clang to fully understand it, [click](https://www.youtube.com/watch?v=IZgxH8MJFno) (one of the least gory samples I managed to find).
+  -/
 
 vc-preamble: |-
   def berserk_rater (synopsis : List String) : String :=
@@ -75,23 +77,23 @@ vc-theorems: |-
   theorem score_precedence_clang_over_cg :
     score "CLANGCG" = 5 ∧ score "CGCLANG" = 5 := sorry
   
-  /--
+  /-
   info: 'worstest episode ever'
   -/
-  #guard_msgs in
-  #eval berserk_rater ["is this the CG from a P2 game?", "Hell, no! Even the CG in the Dreamcast game was more fluid than this!", "Well, at least Gatsu does his clang even against a mere rabbit", "Hey, Cosette was not in this part of the story!", "Ops, everybody dead again! Well, how boring..."]
+  -- #guard_msgs in
+  -- #eval berserk_rater ["is this the CG from a P2 game?", "Hell, no! Even the CG in the Dreamcast game was more fluid than this!", "Well, at least Gatsu does his clang even against a mere rabbit", "Hey, Cosette was not in this part of the story!", "Ops, everybody dead again! Well, how boring..."]
   
-  /--
+  /-
   info: '2'
   -/
-  #guard_msgs in
-  #eval berserk_rater ["Farnese unable to shut the fuck up", "awful CG dogs assaulting everybody", "Gatsu clanging the pig apostle!"]
+  -- #guard_msgs in
+  -- #eval berserk_rater ["Farnese unable to shut the fuck up", "awful CG dogs assaulting everybody", "Gatsu clanging the pig apostle!"]
   
-  /--
+  /-
   info: 'bestest episode ever'
   -/
-  #guard_msgs in
-  #eval berserk_rater ["Holy chain knights being dicks", "Serpico almost getting clanged by Gatsu, but without losing his composure", "lame CG", "Luka getting kicked", "Gatsu going clang against the angels", "Gatsu clanging vs Mozgus, big time!"]
+  -- #guard_msgs in
+  -- #eval berserk_rater ["Holy chain knights being dicks", "Serpico almost getting clanged by Gatsu, but without losing his composure", "lame CG", "Luka getting kicked", "Gatsu going clang against the angels", "Gatsu clanging vs Mozgus, big time!"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Introduction
   
   Dots and Boxes is a pencil-and-paper game for two players (sometimes more). It was first published in the 19th century by Édouard Lucas, who called it la pipopipette. It has gone by many other names, including the game of dots, boxes, dot to dot grid, and pigs in a pen.
@@ -77,6 +78,7 @@ vc-description: |-
    Plenty of Fish in the Pond
    Fruit Machine
    Car Park Escape
+  -/
 
 vc-preamble: |-
   def Game.board (g : Game) : List (List Nat) :=

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function that determines whether a string is a valid guess in a Boggle board, as per the rules of Boggle. A Boggle board is a 2D array of individual characters, e.g.:
   ```python
   [ ["I","L","A","W"],
@@ -13,6 +14,7 @@ vc-description: |-
   Your function should take two arguments (a 2D array and a string) and return true or false depending on whether the string is found in the array as per Boggle rules.
   
   Test cases will provide various array and string sizes (squared arrays up to 150x150 and strings up to 150 uppercase letters). You do not have to check whether the string is a real word or not, only if it's a valid guess.
+  -/
 
 vc-preamble: |-
 
@@ -49,23 +51,23 @@ vc-theorems: |-
     find_word [['A'], ['B']] "AB" ∧
     find_word [['A'], ['B']] "BA" := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval find_word [["I", "L", "A", "W"], ["B", "N", "G", "E"], ["I", "U", "A", "O"], ["A", "S", "R", "L"]] "BINGO"
+  -- #guard_msgs in
+  -- #eval find_word [["I", "L", "A", "W"], ["B", "N", "G", "E"], ["I", "U", "A", "O"], ["A", "S", "R", "L"]] "BINGO"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval find_word board1 "BUNGIE"
+  -- #guard_msgs in
+  -- #eval find_word board1 "BUNGIE"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval find_word board1 "ILNBIA"
+  -- #guard_msgs in
+  -- #eval find_word board1 "ILNBIA"
 
 vc-postamble: |-
   -- Apps difficulty: interview

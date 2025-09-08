@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array A of length N, your task is to find the element which repeats in A maximum number of times as well as the corresponding count. In case of ties, choose the smaller element first.
   
   -----Input-----
@@ -22,6 +23,7 @@ vc-description: |-
   Description:
   In first case 2 occurs twice whereas all other elements occur only once. 
   In second case, both 1 and 2 occur 3 times but 1 is smaller than 2.
+  -/
 
 vc-preamble: |-
 

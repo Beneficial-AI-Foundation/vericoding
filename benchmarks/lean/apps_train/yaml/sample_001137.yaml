@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are $5$ cities in the country.
   The map of the country is given below.
   The tour starts from the red city.
@@ -32,6 +33,7 @@ vc-description: |-
   NO
   
   -----EXPLANATION:-----
+  -/
 
 vc-preamble: |-
 
@@ -60,23 +62,23 @@ vc-theorems: |-
       (h2: ¬ s.endsWith "1000") :
       solve_string_tour s = "NO" := sorry
   
-  /--
+  /-
   info: 'NO'
   -/
-  #guard_msgs in
-  #eval solve_string_tour "100"
+  -- #guard_msgs in
+  -- #eval solve_string_tour "100"
   
-  /--
+  /-
   info: 'YES'
   -/
-  #guard_msgs in
-  #eval solve_string_tour "1000"
+  -- #guard_msgs in
+  -- #eval solve_string_tour "1000"
   
-  /--
+  /-
   info: 'YES'
   -/
-  #guard_msgs in
-  #eval solve_string_tour "11000"
+  -- #guard_msgs in
+  -- #eval solve_string_tour "11000"
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a binary tree and a sum, find all root-to-leaf paths where each path's sum equals the given sum.
   
   Note: A leaf is a node with no children.
@@ -21,6 +22,7 @@ vc-description: |-
      [5,4,11,2],
      [5,8,4,5]
   ]
+  -/
 
 vc-preamble: |-
 
@@ -47,23 +49,23 @@ vc-theorems: |-
       if val = target then [[val]] else [] :=
     sorry
   
-  /--
+  /-
   info: [[5, 4, 11, 2], [5, 8, 4, 5]]
   -/
-  #guard_msgs in
-  #eval find_path_sum TreeNode(5) 22
+  -- #guard_msgs in
+  -- #eval find_path_sum TreeNode(5) 22
   
-  /--
+  /-
   info: [[1, 2]]
   -/
-  #guard_msgs in
-  #eval find_path_sum TreeNode(1) 3
+  -- #guard_msgs in
+  -- #eval find_path_sum TreeNode(1) 3
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval find_path_sum None 0
+  -- #guard_msgs in
+  -- #eval find_path_sum None 0
 
 vc-postamble: |-
   -- Apps difficulty: interview

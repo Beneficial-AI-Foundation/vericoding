@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function that returns the number of '2's in the factorization of a number.  
   For example,
   ```python
@@ -10,6 +11,7 @@ vc-description: |-
   ```
   should return 7, since the factorization of 17280 is 2^7 x 5 x 3^3  
   The number passed to two_count (twoCount)  will always be a positive integer greater than or equal to 1.
+  -/
 
 vc-preamble: |-
   def two_count (n : Nat) : Nat := sorry 
@@ -37,23 +39,23 @@ vc-theorems: |-
   theorem two_count_multiplication (n k : Nat) (h : n > 0) :
     two_count (n * 2^k) = two_count n + k := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval two_count 24
+  -- #guard_msgs in
+  -- #eval two_count 24
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval two_count 17280
+  -- #guard_msgs in
+  -- #eval two_count 17280
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval two_count 256
+  -- #guard_msgs in
+  -- #eval two_count 256
 
 vc-postamble: |-
   -- Apps difficulty: introductory

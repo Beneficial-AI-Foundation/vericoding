@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your task is to write a function named `do_math` that receives a single argument. 
   This argument is a string that contains multiple whitespace delimited numbers. Each number has a single alphabet letter somewhere within it.
   ```
@@ -22,6 +23,7 @@ vc-description: |-
   "10a 90x 14b 78u 45a 7b 34y" = 10 + 45 - 14 * 7 / 78 + 90 - 34 = 60
   ``` 
   Good luck and may the CODE be with you!
+  -/
 
 vc-preamble: |-
   def do_math (input : String) : Int :=
@@ -50,23 +52,23 @@ vc-theorems: |-
     do_math (letter ++ "123 " ++ letter ++ "456") :=
     sorry
   
-  /--
+  /-
   info: 1414
   -/
-  #guard_msgs in
-  #eval do_math "24z6 1z23 y369 89z 900b"
+  -- #guard_msgs in
+  -- #eval do_math "24z6 1z23 y369 89z 900b"
   
-  /--
+  /-
   info: 1299
   -/
-  #guard_msgs in
-  #eval do_math "24z6 1x23 y369 89a 900b"
+  -- #guard_msgs in
+  -- #eval do_math "24z6 1x23 y369 89a 900b"
   
-  /--
+  /-
   info: 60
   -/
-  #guard_msgs in
-  #eval do_math "10a 90x 14b 78u 45a 7b 34y"
+  -- #guard_msgs in
+  -- #eval do_math "10a 90x 14b 78u 45a 7b 34y"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

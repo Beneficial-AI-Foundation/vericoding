@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Create a function that takes a number as an argument and returns a grade based on that number.
   
   Score                                    | Grade
@@ -18,6 +19,7 @@ vc-description: |-
   grader(0.7) should be "C"
   grader(0.6) should be "D"
   ```
+  -/
 
 vc-preamble: |-
 
@@ -47,71 +49,71 @@ vc-theorems: |-
   theorem grader_returns_valid_grade (score : Float) :
     grader score ∈ ["A", "B", "C", "D", "F"] := sorry
   
-  /--
+  /-
   info: 'A'
   -/
-  #guard_msgs in
-  #eval grader 0.95
+  -- #guard_msgs in
+  -- #eval grader 0.95
   
-  /--
+  /-
   info: 'B'
   -/
-  #guard_msgs in
-  #eval grader 0.85
+  -- #guard_msgs in
+  -- #eval grader 0.85
   
-  /--
+  /-
   info: 'C'
   -/
-  #guard_msgs in
-  #eval grader 0.75
+  -- #guard_msgs in
+  -- #eval grader 0.75
   
-  /--
+  /-
   info: 'D'
   -/
-  #guard_msgs in
-  #eval grader 0.65
+  -- #guard_msgs in
+  -- #eval grader 0.65
   
-  /--
+  /-
   info: 'A'
   -/
-  #guard_msgs in
-  #eval grader 1.0
+  -- #guard_msgs in
+  -- #eval grader 1.0
   
-  /--
+  /-
   info: 'F'
   -/
-  #guard_msgs in
-  #eval grader 0.0
+  -- #guard_msgs in
+  -- #eval grader 0.0
   
-  /--
+  /-
   info: 'F'
   -/
-  #guard_msgs in
-  #eval grader 1.1
+  -- #guard_msgs in
+  -- #eval grader 1.1
   
-  /--
+  /-
   info: 'A'
   -/
-  #guard_msgs in
-  #eval grader 0.9
+  -- #guard_msgs in
+  -- #eval grader 0.9
   
-  /--
+  /-
   info: 'B'
   -/
-  #guard_msgs in
-  #eval grader 0.8
+  -- #guard_msgs in
+  -- #eval grader 0.8
   
-  /--
+  /-
   info: 'C'
   -/
-  #guard_msgs in
-  #eval grader 0.7
+  -- #guard_msgs in
+  -- #eval grader 0.7
   
-  /--
+  /-
   info: 'D'
   -/
-  #guard_msgs in
-  #eval grader 0.6
+  -- #guard_msgs in
+  -- #eval grader 0.6
 
 vc-postamble: |-
   -- Apps difficulty: introductory

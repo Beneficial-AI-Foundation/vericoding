@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   "QAQ" is a word to denote an expression of crying. Imagine "Q" as eyes with tears and "A" as a mouth.
   
   Now Diamond has given Bort a string consisting of only uppercase English letters of length n. There is a great number of "QAQ" in the string (Diamond is so cute!). $8$ illustration by 猫屋 https://twitter.com/nekoyaliu 
@@ -29,6 +30,7 @@ vc-description: |-
   -----Note-----
   
   In the first example there are 4 subsequences "QAQ": "QAQAQYSYIOIWIN", "QAQAQYSYIOIWIN", "QAQAQYSYIOIWIN", "QAQAQYSYIOIWIN".
+  -/
 
 vc-preamble: |-
 
@@ -50,23 +52,23 @@ vc-theorems: |-
     count_qaq_subsequences s = 0 :=
     sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval count_qaq_subsequences "QAQAQYSYIOIWIN"
+  -- #guard_msgs in
+  -- #eval count_qaq_subsequences "QAQAQYSYIOIWIN"
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_qaq_subsequences "QAQQQZZYNOIWIN"
+  -- #guard_msgs in
+  -- #eval count_qaq_subsequences "QAQQQZZYNOIWIN"
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_qaq_subsequences "QORZOYAQ"
+  -- #guard_msgs in
+  -- #eval count_qaq_subsequences "QORZOYAQ"
 
 vc-postamble: |-
   -- Apps difficulty: interview

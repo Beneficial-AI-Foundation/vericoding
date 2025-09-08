@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Bertown is a city with $n$ buildings in a straight line.
   
   The city's security service discovered that some buildings were mined. A map was compiled, which is a string of length $n$, where the $i$-th character is "1" if there is a mine under the building number $i$ and "0" otherwise.
@@ -40,6 +41,7 @@ vc-description: |-
   -----Note-----
   
   In the second test case, if we place a mine under the fourth building and then activate it, then all mines on the field are activated. The cost of such operations is six, $b=1$ coin for placing a mine and $a=5$ coins for activating.
+  -/
 
 vc-preamble: |-
 
@@ -70,23 +72,23 @@ vc-theorems: |-
   theorem new_activation_cheaper :
     min_cost_clear_mines 2 3 "101" = 4 := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_cost_clear_mines 1 1 "01000010"
+  -- #guard_msgs in
+  -- #eval min_cost_clear_mines 1 1 "01000010"
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval min_cost_clear_mines 5 1 "01101110"
+  -- #guard_msgs in
+  -- #eval min_cost_clear_mines 5 1 "01101110"
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval min_cost_clear_mines 3 2 "1011"
+  -- #guard_msgs in
+  -- #eval min_cost_clear_mines 3 2 "1011"
 
 vc-postamble: |-
   -- Apps difficulty: interview

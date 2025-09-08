@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Function Descriptions=====
   .remove(x)
   
@@ -70,6 +71,7 @@ vc-description: |-
   
   =====Output Format====
   Print the sum of the elements of set s on a single line.
+  -/
 
 vc-preamble: |-
   def sumSet (s : SetInt) : Int := sorry

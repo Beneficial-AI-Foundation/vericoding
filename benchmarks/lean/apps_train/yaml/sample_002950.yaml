@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Santa puts all the presents into the huge sack. In order to let his reindeers rest a bit, he only takes as many reindeers with him as he is required to do. The others may take a nap.
   
   Two reindeers are always required for the sleigh and Santa himself. Additionally he needs 1 reindeer per 30 presents. As you know, Santa has 8 reindeers in total, so he can deliver up to 180 presents at once (2 reindeers for Santa and the sleigh + 6 reindeers with 30 presents each).
@@ -13,6 +14,7 @@ vc-description: |-
   reindeer(30) # must return 3
   reindeer(200) # must throw an error
   ```
+  -/
 
 vc-preamble: |-
 
@@ -45,23 +47,23 @@ vc-theorems: |-
     reindeer presents ≤ 8 :=
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval reindeer 0
+  -- #guard_msgs in
+  -- #eval reindeer 0
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval reindeer 31
+  -- #guard_msgs in
+  -- #eval reindeer 31
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval reindeer 180
+  -- #guard_msgs in
+  -- #eval reindeer 180
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a permutation $p_1, p_2, \dots, p_n$. Recall that sequence of $n$ integers is called a permutation if it contains all integers from $1$ to $n$ exactly once.
   
   Find three indices $i$, $j$ and $k$ such that:   $1 \le i < j < k \le n$;  $p_i < p_j$ and $p_j > p_k$.  Or say that there are no such indices.
@@ -33,6 +34,7 @@ vc-description: |-
   YES
   3 5 6
   NO
+  -/
 
 vc-preamble: |-
   def find_mountain_indices (n : Nat) (perm : List Int) : Answer :=

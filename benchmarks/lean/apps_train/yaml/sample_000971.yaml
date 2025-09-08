@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The activity of a panipuri seller is "making a panipuri and putting it on the palte of his customer".    
   $N$ customers are eating panipuri, Given an array $A$ of length $N$, $i^{th}$ customer takes $A_i$ seconds to eat a panipuri.     
   The Speed of Panipuri seller refers to the number of customers served per second. Determine the minimum speed of panipuri seller so that no customer has to wait for panipuri after getting his/her first panipuri.    
@@ -43,6 +44,7 @@ vc-description: |-
   Starting from $0^{th}$ second, at half second seller make a panipuri and put it into the plate of first customer,  first customer completely eat it on $2.5$ second as he takes $2$ second to eat a panipuri. In $0.5$ to $1$ second, seller serve the second customer. similarly in $1$ to $2$ second $3^{rd}$ and $4^{th}$ customer will be serve, in $2$ to $2.5$ second, seller will again serve the first customer so at $2.5$ sec $1^{st}$ customer will have a panipuri to eat.
   
   Similarly proceeding further we will find that no customer have to wait when speed is $2$.
+  -/
 
 vc-preamble: |-
 
@@ -86,23 +88,23 @@ vc-theorems: |-
   theorem solve_panipuri_speed_equal_times :
       solve_panipuri_speed 3 [2, 2, 2] = 2 := by sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve_panipuri_speed 4 [2, 4, 6, 3]
+  -- #guard_msgs in
+  -- #eval solve_panipuri_speed 4 [2, 4, 6, 3]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval solve_panipuri_speed 5 [2, 3, 4, 6, 5]
+  -- #guard_msgs in
+  -- #eval solve_panipuri_speed 5 [2, 3, 4, 6, 5]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval solve_panipuri_speed 3 [1, 2, 1]
+  -- #guard_msgs in
+  -- #eval solve_panipuri_speed 3 [1, 2, 1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

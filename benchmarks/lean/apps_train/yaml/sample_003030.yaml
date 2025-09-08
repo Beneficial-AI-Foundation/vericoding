@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Base reduction
   
   ## Input
@@ -40,6 +41,7 @@ vc-description: |-
   11 base 2 = 3 base 10
   ```
   The output would be 3.
+  -/
 
 vc-preamble: |-
 
@@ -61,23 +63,23 @@ vc-theorems: |-
   theorem basereduct_two_digits {n : Nat} (h1 : n ≥ 10) (h2 : n ≤ 100) :
     basereduct n > -1 := by sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval basereduct 10
+  -- #guard_msgs in
+  -- #eval basereduct 10
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval basereduct 15
+  -- #guard_msgs in
+  -- #eval basereduct 15
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval basereduct 5312
+  -- #guard_msgs in
+  -- #eval basereduct 5312
 
 vc-postamble: |-
   -- Apps difficulty: introductory

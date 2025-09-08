@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   Follow the instructions in each failing test case to write logic that calculates the total price when ringing items up at a cash register.
   
@@ -24,6 +25,7 @@ vc-description: |-
   
   # Acknowledgement
   Inspired by http://codekata.com/kata/kata01-supermarket-pricing/. To get the most benefit from this kata, I would recommend visiting that page only after completing, not before.
+  -/
 
 vc-preamble: |-
   def get_price : Item → Float 
@@ -69,23 +71,23 @@ vc-theorems: |-
     ring_up [(Item.banana, 2)] ["buy 1 get 1"] = 0.50 :=
   sorry
   
-  /--
+  /-
   info: 0.8
   -/
-  #guard_msgs in
-  #eval ring_up {"apple": 2}
+  -- #guard_msgs in
+  -- #eval ring_up {"apple": 2}
   
-  /--
+  /-
   info: 1.0
   -/
-  #guard_msgs in
-  #eval ring_up {"apple": 3} {"apple": "3 for 1.00"}
+  -- #guard_msgs in
+  -- #eval ring_up {"apple": 3} {"apple": "3 for 1.00"}
   
-  /--
+  /-
   info: 0.5
   -/
-  #guard_msgs in
-  #eval ring_up {"banana": 2} {"banana": "buy 1 get 1"}
+  -- #guard_msgs in
+  -- #eval ring_up {"banana": 2} {"banana": "buy 1 get 1"}
 
 vc-postamble: |-
   -- Apps difficulty: introductory

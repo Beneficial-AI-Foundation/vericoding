@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string, return a new string that has transformed based on the input:
   
   * Change case of every character, ie. lower case to upper case, upper case to lower case.
@@ -13,6 +14,7 @@ vc-description: |-
   ```
   
   You may assume the input only contain English alphabet and spaces.
+  -/
 
 vc-preamble: |-
   def string_transformer (s : String) : String := sorry
@@ -42,23 +44,23 @@ vc-theorems: |-
       swapcase (original_words[i]!) = result_words[result_words.length - 1 - i]! :=
   sorry
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval string_transformer "Example string"
+  -- #guard_msgs in
+  -- #eval string_transformer "Example string"
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval string_transformer "To be OR not to be That is the Question"
+  -- #guard_msgs in
+  -- #eval string_transformer "To be OR not to be That is the Question"
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval string_transformer " A b C d E f G "
+  -- #guard_msgs in
+  -- #eval string_transformer " A b C d E f G "
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   	A valid parentheses sequence is a non-empty string where each character is either '(' or ')', which satisfies the following constraint:
   
   You can find a way to repeat erasing adjacent pairs of parentheses '()' until it becomes empty.
@@ -47,6 +48,7 @@ vc-description: |-
   
   Output:
   ((()))
+  -/
 
 vc-preamble: |-
 
@@ -75,23 +77,23 @@ vc-theorems: |-
     (∀ (i: Nat), i < n/2 → ∃ (p: String.Pos), result.get p = '(') ∧
     (∀ (i: Nat), n/2 ≤ i ∧ i < n → ∃ (p: String.Pos), result.get p = ')') := sorry
   
-  /--
+  /-
   info: '((()))'
   -/
-  #guard_msgs in
-  #eval find_minimal_parentheses "()((()()))"
+  -- #guard_msgs in
+  -- #eval find_minimal_parentheses "()((()()))"
   
-  /--
+  /-
   info: '(())'
   -/
-  #guard_msgs in
-  #eval find_minimal_parentheses "(())"
+  -- #guard_msgs in
+  -- #eval find_minimal_parentheses "(())"
   
-  /--
+  /-
   info: '(((())))'
   -/
-  #guard_msgs in
-  #eval find_minimal_parentheses "(((())))"
+  -- #guard_msgs in
+  -- #eval find_minimal_parentheses "(((())))"
 
 vc-postamble: |-
   -- Apps difficulty: interview

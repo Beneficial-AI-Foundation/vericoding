@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array of ones and zeroes, convert the equivalent binary value to an integer.
   
   Eg: `[0, 0, 0, 1]` is treated as `0001` which is the binary representation of `1`.
@@ -16,6 +17,7 @@ vc-description: |-
   ```
   
   However, the arrays can have varying lengths, not just limited to `4`.
+  -/
 
 vc-preamble: |-
 
@@ -36,23 +38,23 @@ vc-theorems: |-
     binary_array_to_number [1] = 1 :=
   sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval binary_array_to_number [0, 0, 0, 1]
+  -- #guard_msgs in
+  -- #eval binary_array_to_number [0, 0, 0, 1]
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval binary_array_to_number [0, 1, 1, 0]
+  -- #guard_msgs in
+  -- #eval binary_array_to_number [0, 1, 1, 0]
   
-  /--
+  /-
   info: 15
   -/
-  #guard_msgs in
-  #eval binary_array_to_number [1, 1, 1, 1]
+  -- #guard_msgs in
+  -- #eval binary_array_to_number [1, 1, 1, 1]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

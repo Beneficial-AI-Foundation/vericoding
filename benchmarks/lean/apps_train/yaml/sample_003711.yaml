@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In recreational mathematics, a [Keith number](https://en.wikipedia.org/wiki/Keith_number) or repfigit number (short for repetitive Fibonacci-like digit) is a number in the following integer sequence:
   
   `14, 19, 28, 47, 61, 75, 197, 742, 1104, 1537, 2208, 2580, 3684, 4788, 7385, 7647, 7909, ...` (sequence A007629 in the OEIS)
@@ -33,6 +34,7 @@ vc-description: |-
   ```
   
   `196` is not a Keith number, so return `false`
+  -/
 
 vc-preamble: |-
 
@@ -71,23 +73,23 @@ vc-theorems: |-
     (n : Int) (h : 0 ≤ n) :
     is_keith_number n = is_keith_number n := sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval is_keith_number 197
+  -- #guard_msgs in
+  -- #eval is_keith_number 197
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_keith_number 196
+  -- #guard_msgs in
+  -- #eval is_keith_number 196
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval is_keith_number 742
+  -- #guard_msgs in
+  -- #eval is_keith_number 742
 
 vc-postamble: |-
   -- Apps difficulty: introductory

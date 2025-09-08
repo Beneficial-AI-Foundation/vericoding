@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef has an array A consisting of N integers. He also has an intger K.
   Chef wants you to find out number of different arrays he can obtain from array A by applying the following operation exactly K times.
   
@@ -55,6 +56,7 @@ vc-description: |-
   [-1, -2, 1]
   [-1, 2, -1]
   [1, -2, -1]
+  -/
 
 vc-preamble: |-
 

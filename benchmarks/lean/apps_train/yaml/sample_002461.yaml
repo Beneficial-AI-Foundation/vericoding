@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Function Descriptions=====
   itertools.combinations(iterable, r)
   This tool returns the r length subsequences of elements from the input iterable.
@@ -28,6 +29,7 @@ vc-description: |-
   
   =====Output Format=====
   Print the different combinations of string S on separate lines.
+  -/
 
 vc-preamble: |-
 
@@ -50,23 +52,23 @@ vc-theorems: |-
     let deduped := dedupe_sort_string s
     deduped.data = deduped.data.eraseDups := sorry
   
-  /--
+  /-
   info: 'A\nC\nH\nK\nAC\nAH\nAK\nCH\nCK\nHK'
   -/
-  #guard_msgs in
-  #eval print_string_combinations "HACK" 2
+  -- #guard_msgs in
+  -- #eval print_string_combinations "HACK" 2
   
-  /--
+  /-
   info: 'X\nY\nZ'
   -/
-  #guard_msgs in
-  #eval print_string_combinations "XYZ" 1
+  -- #guard_msgs in
+  -- #eval print_string_combinations "XYZ" 1
   
-  /--
+  /-
   info: 'A\nB\nC\nAB\nAC\nBC\nABC'
   -/
-  #guard_msgs in
-  #eval print_string_combinations "ABC" 3
+  -- #guard_msgs in
+  -- #eval print_string_combinations "ABC" 3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

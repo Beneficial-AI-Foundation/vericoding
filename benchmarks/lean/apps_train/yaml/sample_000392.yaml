@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In a 1 million by 1 million grid, the coordinates of each grid square are (x, y) with 0 <= x, y < 10^6.
   We start at the source square and want to reach the target square.  Each move, we can walk to a 4-directionally adjacent square in the grid that isn't in the given list of blocked squares.
   Return true if and only if it is possible to reach the target square through a sequence of moves.
@@ -23,6 +24,7 @@ vc-description: |-
   source.length == target.length == 2
   0 <= source[i][j], target[i][j] < 10^6
   source != target
+  -/
 
 vc-preamble: |-
 
@@ -57,23 +59,23 @@ vc-theorems: |-
       (target := (x+2, y+2)) :
     is_escape_possible blocked source target = false := sorry
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_escape_possible [[0, 1], [1, 0]] [0, 0] [0, 2]
+  -- #guard_msgs in
+  -- #eval is_escape_possible [[0, 1], [1, 0]] [0, 0] [0, 2]
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_escape_possible [] [0, 0] [999999, 999999]
+  -- #guard_msgs in
+  -- #eval is_escape_possible [] [0, 0] [999999, 999999]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_escape_possible [[10, 9], [9, 10], [10, 11], [11, 10]] [0, 0] [10, 10]
+  -- #guard_msgs in
+  -- #eval is_escape_possible [[10, 9], [9, 10], [10, 11], [11, 10]] [0, 0] [10, 10]
 
 vc-postamble: |-
   -- Apps difficulty: interview

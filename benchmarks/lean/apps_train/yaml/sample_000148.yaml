@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array A, partition it into two (contiguous) subarrays left and right so that:
   
   Every element in left is less than or equal to every element in right.
@@ -22,6 +23,7 @@ vc-description: |-
   2 <= A.length <= 30000
   0 <= A[i] <= 10^6
   It is guaranteed there is at least one way to partition A as described.
+  -/
 
 vc-preamble: |-
   def partition_disjoint (nums : List Int) : Nat :=
@@ -76,23 +78,23 @@ vc-theorems: |-
     ¬∃ x ∈ right, x < left_max :=
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval partition_disjoint [5, 0, 3, 8, 6]
+  -- #guard_msgs in
+  -- #eval partition_disjoint [5, 0, 3, 8, 6]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval partition_disjoint [1, 1, 1, 0, 6, 12]
+  -- #guard_msgs in
+  -- #eval partition_disjoint [1, 1, 1, 0, 6, 12]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval partition_disjoint [3, 1, 2, 4, 5]
+  -- #guard_msgs in
+  -- #eval partition_disjoint [3, 1, 2, 4, 5]
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef recently developed an affinity for undirected graphs.
   He likes pairs of graphs that are similar in structure.
   However, Chef discovered that when the vertices of a graph are reorganized, it's often the case that the resulting graph,
@@ -78,6 +79,7 @@ vc-description: |-
   If no edge exists between them, one is added with probability D.
   Then, a random permutation is applied to the vertices of the graph, and it is output as the second graph.
   You may safely assume there will be no test cases where TOTAL is 0.
+  -/
 
 vc-preamble: |-
   def Matrix (α : Type) := List (List α)
@@ -108,53 +110,53 @@ vc-theorems: |-
     r1 = List.range n :=
     sorry
   
-  /--
+  /-
   info: n1
   -/
-  #guard_msgs in
-  #eval len r1
+  -- #guard_msgs in
+  -- #eval len r1
   
-  /--
+  /-
   info: n1
   -/
-  #guard_msgs in
-  #eval len r2
+  -- #guard_msgs in
+  -- #eval len r2
   
-  /--
+  /-
   info: list(range(1, n1 + 1))
   -/
-  #guard_msgs in
-  #eval sorted r1
+  -- #guard_msgs in
+  -- #eval sorted r1
   
-  /--
+  /-
   info: list(range(1, n1 + 1))
   -/
-  #guard_msgs in
-  #eval sorted r2
+  -- #guard_msgs in
+  -- #eval sorted r2
   
-  /--
+  /-
   info: n2
   -/
-  #guard_msgs in
-  #eval len r3
+  -- #guard_msgs in
+  -- #eval len r3
   
-  /--
+  /-
   info: n2
   -/
-  #guard_msgs in
-  #eval len r4
+  -- #guard_msgs in
+  -- #eval len r4
   
-  /--
+  /-
   info: list(range(1, n2 + 1))
   -/
-  #guard_msgs in
-  #eval sorted r3
+  -- #guard_msgs in
+  -- #eval sorted r3
   
-  /--
+  /-
   info: list(range(1, n2 + 1))
   -/
-  #guard_msgs in
-  #eval sorted r4
+  -- #guard_msgs in
+  -- #eval sorted r4
 
 vc-postamble: |-
   -- Apps difficulty: interview

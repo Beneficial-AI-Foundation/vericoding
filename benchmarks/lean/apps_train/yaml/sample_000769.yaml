@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Rani is teaching Raju maths via a game called N-Cube, which involves three sections involving N.
   
   Rani gives Raju a number N, and Raju makes a list of Nth powers of integers in increasing order (1^N, 2^N, 3^N.. so on). This teaches him exponentiation. 
@@ -37,6 +38,7 @@ vc-description: |-
   Output:
   
   1
+  -/
 
 vc-preamble: |-
 

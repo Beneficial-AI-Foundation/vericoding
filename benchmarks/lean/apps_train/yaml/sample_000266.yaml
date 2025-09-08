@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your car starts at position 0 and speed +1 on an infinite number line.  (Your car can go into negative positions.)
   Your car drives automatically according to a sequence of instructions A (accelerate) and R (reverse).
   When you get an instruction "A", your car does the following: position += speed, speed *= 2.
@@ -24,6 +25,7 @@ vc-description: |-
   Note: 
   
   1 <= target <= 10000.
+  -/
 
 vc-preamble: |-
 
@@ -50,23 +52,23 @@ vc-theorems: |-
     target > 0 →
     racecar target = racecar target := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval racecar 3
+  -- #guard_msgs in
+  -- #eval racecar 3
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval racecar 6
+  -- #guard_msgs in
+  -- #eval racecar 6
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval racecar 4
+  -- #guard_msgs in
+  -- #eval racecar 4
 
 vc-postamble: |-
   -- Apps difficulty: interview

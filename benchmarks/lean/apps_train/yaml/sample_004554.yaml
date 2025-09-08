@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write function isPalindrome that checks if a given string (case insensitive) is a palindrome.
   
   ```racket
@@ -7,6 +8,7 @@ vc-description: |-
   (palindrome? "nope") ; returns #f
   (palindrome? "Yay")  ; returns #t
   ```
+  -/
 
 vc-preamble: |-
 
@@ -30,23 +32,23 @@ vc-theorems: |-
   theorem palindrome_reverse_property (s : String) :
     is_palindrome s = (s.toLower = (s.toLower).reverse) := sorry
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_palindrome "nope"
+  -- #guard_msgs in
+  -- #eval is_palindrome "nope"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_palindrome "Yay"
+  -- #guard_msgs in
+  -- #eval is_palindrome "Yay"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_palindrome "racecar"
+  -- #guard_msgs in
+  -- #eval is_palindrome "racecar"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

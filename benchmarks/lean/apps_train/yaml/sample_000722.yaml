@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a positive integer K > 2, with prime
   factorization:
   
@@ -23,6 +24,7 @@ vc-description: |-
   Output:
   5
   7
+  -/
 
 vc-preamble: |-
   def compute_super_factor_sum (n : Nat) : Nat := sorry
@@ -57,23 +59,23 @@ vc-theorems: |-
     compute_super_factor_sum (list_product factors) ≥ 
     list_sum (List.map compute_super_factor_sum (List.filter (fun x => x > 1) factors)) := sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval compute_super_factor_sum 6
+  -- #guard_msgs in
+  -- #eval compute_super_factor_sum 6
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval compute_super_factor_sum 7
+  -- #guard_msgs in
+  -- #eval compute_super_factor_sum 7
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval compute_super_factor_sum 12
+  -- #guard_msgs in
+  -- #eval compute_super_factor_sum 12
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Some programming contest problems are really tricky: not only do they
   require a different output format from what you might have expected, but
   also the sample output does not show the difference. For an example,
@@ -53,6 +54,7 @@ vc-description: |-
   ambiguous
   not ambiguous
   ambiguous
+  -/
 
 vc-preamble: |-
 
@@ -80,23 +82,23 @@ vc-theorems: |-
     let xs := List.range n
     is_ambiguous_permutation xs = true := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_ambiguous_permutation [1, 4, 3, 2]
+  -- #guard_msgs in
+  -- #eval is_ambiguous_permutation [1, 4, 3, 2]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_ambiguous_permutation [2, 3, 4, 5, 1]
+  -- #guard_msgs in
+  -- #eval is_ambiguous_permutation [2, 3, 4, 5, 1]
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_ambiguous_permutation [1]
+  -- #guard_msgs in
+  -- #eval is_ambiguous_permutation [1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

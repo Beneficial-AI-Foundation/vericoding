@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Sereja is hosting his birthday dinner. He invited his N close friends. Let us number the people from 1 to N according to the order in which they arrive at the event. The dinner is being held in long straight corridor in which people sit in a way such that they won't leave any empty space in between two consecutive persons at any given time. 
   
   When a person number i arrives at the corridor, he must go and stand to the immediate right of the person numbered A[i] (if A[i] = 0, then this person just stands at the leftmost end of the line). 
@@ -43,6 +44,7 @@ vc-description: |-
   - When person #5 arrives, he will need to move 2 persons in either case. The final arrangement will be [1, 4, 5, 2, 3]. 
   
   So total number of steps people moved during the entire process is 1 + 2 = 3. So the answer is 3.
+  -/
 
 vc-preamble: |-
 
@@ -75,23 +77,23 @@ vc-theorems: |-
     ∀ i, i < n → (positions.get ⟨i, sorry⟩ = 0 ∨ positions.get ⟨i, sorry⟩ ≤ i) :=
   sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_steps_to_arrange 1 [0]
+  -- #guard_msgs in
+  -- #eval min_steps_to_arrange 1 [0]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_steps_to_arrange 3 [0, 0, 0]
+  -- #guard_msgs in
+  -- #eval min_steps_to_arrange 3 [0, 0, 0]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval min_steps_to_arrange 5 [0, 1, 2, 1, 4]
+  -- #guard_msgs in
+  -- #eval min_steps_to_arrange 5 [0, 1, 2, 1, 4]
 
 vc-postamble: |-
   -- Apps difficulty: interview

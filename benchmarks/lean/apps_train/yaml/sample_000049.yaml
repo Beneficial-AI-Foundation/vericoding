@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Let's call some positive integer classy if its decimal representation contains no more than $3$ non-zero digits. For example, numbers $4$, $200000$, $10203$ are classy and numbers $4231$, $102306$, $7277420000$ are not.
   
   You are given a segment $[L; R]$. Count the number of classy integers $x$ such that $L \le x \le R$.
@@ -28,6 +29,7 @@ vc-description: |-
   1
   0
   2
+  -/
 
 vc-preamble: |-
 
@@ -53,23 +55,23 @@ vc-theorems: |-
   theorem singleton_range_classy (n : Nat) :
     countClassyIntegers n n = (if isClassyNumber n then 1 else 0) := sorry
   
-  /--
+  /-
   info: 1000
   -/
-  #guard_msgs in
-  #eval count_classy_integers 1 1000
+  -- #guard_msgs in
+  -- #eval count_classy_integers 1 1000
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_classy_integers 1024 1024
+  -- #guard_msgs in
+  -- #eval count_classy_integers 1024 1024
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_classy_integers 999999 1000001
+  -- #guard_msgs in
+  -- #eval count_classy_integers 999999 1000001
 
 vc-postamble: |-
   -- Apps difficulty: interview

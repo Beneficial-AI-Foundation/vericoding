@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a class Random that does the following:
   
   1. Accepts a seed
@@ -26,6 +27,7 @@ vc-description: |-
   
   Modules `random` and `os` are forbidden.
   Dont forget to give feedback and your opinion on this kata even if you didn't solve it!
+  -/
 
 vc-preamble: |-
 

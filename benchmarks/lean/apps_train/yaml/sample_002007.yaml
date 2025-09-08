@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   DZY loves planting, and he enjoys solving tree problems.
   
   DZY has a weighted tree (connected undirected graph without cycles) containing n nodes (they are numbered from 1 to n). He defines the function g(x, y) (1 ≤ x, y ≤ n) as the longest edge in the shortest path between nodes x and y. Specially g(z, z) = 0 for every z.
@@ -51,6 +52,7 @@ vc-description: |-
   -----Note-----
   
   In the first sample, one of the optimal p is [4, 3, 2, 1].
+  -/
 
 vc-preamble: |-
 
@@ -93,23 +95,23 @@ vc-theorems: |-
     find_max_tree_weight 3 edges use_counts = 1 :=
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_max_tree_weight 4 [[1, 2, 1], [2, 3, 2], [3, 4, 3]] [0, 1, 1, 1, 1]
+  -- #guard_msgs in
+  -- #eval find_max_tree_weight 4 [[1, 2, 1], [2, 3, 2], [3, 4, 3]] [0, 1, 1, 1, 1]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_max_tree_weight 4 [[1, 2, 1], [2, 3, 2], [3, 4, 3]] [0, 4, 4, 4, 4]
+  -- #guard_msgs in
+  -- #eval find_max_tree_weight 4 [[1, 2, 1], [2, 3, 2], [3, 4, 3]] [0, 4, 4, 4, 4]
   
-  /--
+  /-
   info: 10000
   -/
-  #guard_msgs in
-  #eval find_max_tree_weight 2 [[1, 2, 10000]] [0, 1, 1]
+  -- #guard_msgs in
+  -- #eval find_max_tree_weight 2 [[1, 2, 10000]] [0, 1, 1]
 
 vc-postamble: |-
   -- Apps difficulty: competition

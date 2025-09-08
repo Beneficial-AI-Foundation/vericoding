@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Kuroni has $n$ daughters. As gifts for them, he bought $n$ necklaces and $n$ bracelets:  the $i$-th necklace has a brightness $a_i$, where all the $a_i$ are pairwise distinct (i.e. all $a_i$ are different),  the $i$-th bracelet has a brightness $b_i$, where all the $b_i$ are pairwise distinct (i.e. all $b_i$ are different). 
   
   Kuroni wants to give exactly one necklace and exactly one bracelet to each of his daughters. To make sure that all of them look unique, the total brightnesses of the gifts given to each daughter should be pairwise distinct. Formally, if the $i$-th daughter receives a necklace with brightness $x_i$ and a bracelet with brightness $y_i$, then the sums $x_i + y_i$ should be pairwise distinct. Help Kuroni to distribute the gifts.
@@ -48,6 +49,7 @@ vc-description: |-
   In the first test case, it is enough to give the $i$-th necklace and the $i$-th bracelet to the $i$-th daughter. The corresponding sums are $1 + 8 = 9$, $8 + 4 = 12$, and $5 + 5 = 10$.
   
   The second test case is described in the statement.
+  -/
 
 vc-preamble: |-
   def List.sorted (l : List Int) : Bool :=

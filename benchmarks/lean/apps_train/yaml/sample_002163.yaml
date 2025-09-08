@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a string S consisting of a,b and c. Find the number of strings that can be possibly obtained by repeatedly performing the following operation zero or more times, modulo 998244353:
    - Choose an integer i such that 1\leq i\leq |S|-1 and the i-th and (i+1)-th characters in S are different. Replace each of the i-th and (i+1)-th characters in S with the character that differs from both of them (among a, b and c).
   
@@ -20,6 +21,7 @@ vc-description: |-
   3
   
   abc, aaa and ccc can be obtained.
+  -/
 
 vc-preamble: |-
 
@@ -59,23 +61,23 @@ vc-theorems: |-
   theorem valid_chars (s : String) :
     ∀ c ∈ s.data, c = 'a' ∨ c = 'b' ∨ c = 'c' := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval solve_abc_strings "abc"
+  -- #guard_msgs in
+  -- #eval solve_abc_strings "abc"
   
-  /--
+  /-
   info: 65
   -/
-  #guard_msgs in
-  #eval solve_abc_strings "abbac"
+  -- #guard_msgs in
+  -- #eval solve_abc_strings "abbac"
   
-  /--
+  /-
   info: 6310
   -/
-  #guard_msgs in
-  #eval solve_abc_strings "babacabac"
+  -- #guard_msgs in
+  -- #eval solve_abc_strings "babacabac"
 
 vc-postamble: |-
   -- Apps difficulty: competition

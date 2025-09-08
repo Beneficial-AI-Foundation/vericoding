@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Complete the function to find the count of the most frequent item of an array. You can assume that input is an array of integers. For an empty array return `0`
   
   ## Example
@@ -7,6 +8,7 @@ vc-description: |-
   ouptut: 5 
   ```
   The most frequent number in the array is `-1` and it occurs `5` times.
+  -/
 
 vc-preamble: |-
 
@@ -37,23 +39,23 @@ vc-theorems: |-
   theorem most_frequent_item_count_empty :
     most_frequent_item_count [] = 0 := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval most_frequent_item_count [3, -1, -1]
+  -- #guard_msgs in
+  -- #eval most_frequent_item_count [3, -1, -1]
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval most_frequent_item_count [3, -1, -1, -1, 2, 3, -1, 3, -1, 2, 4, 9, 3]
+  -- #guard_msgs in
+  -- #eval most_frequent_item_count [3, -1, -1, -1, 2, 3, -1, 3, -1, 2, 4, 9, 3]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval most_frequent_item_count []
+  -- #guard_msgs in
+  -- #eval most_frequent_item_count []
 
 vc-postamble: |-
   -- Apps difficulty: introductory

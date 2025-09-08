@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Define a function that takes one integer argument and returns logical value `true` or `false` depending on if the integer is a prime.
   
   Per Wikipedia, a prime number (or a prime) is a natural number greater than 1 that has no positive divisors other than 1 and itself.
@@ -20,6 +21,7 @@ vc-description: |-
   mov edi, -1
   call is_prime    ; EAX <- 0 (false)
   ```
+  -/
 
 vc-preamble: |-
 
@@ -51,29 +53,29 @@ vc-theorems: |-
   theorem is_prime_deterministic (n : Int) :
     is_prime n = is_prime n := sorry
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_prime 0
+  -- #guard_msgs in
+  -- #eval is_prime 0
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_prime 2
+  -- #guard_msgs in
+  -- #eval is_prime 2
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_prime 73
+  -- #guard_msgs in
+  -- #eval is_prime 73
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_prime -1
+  -- #guard_msgs in
+  -- #eval is_prime -1
 
 vc-postamble: |-
   -- Apps difficulty: introductory

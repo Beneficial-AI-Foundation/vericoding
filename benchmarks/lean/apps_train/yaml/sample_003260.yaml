@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array containing only zeros and ones, find the index of the zero that, if converted to one, will make the longest sequence of ones.
   
   For instance, given the array:
@@ -24,6 +25,7 @@ vc-description: |-
   - The array will always contain only zeros and ones.
   
   Can you do this in one pass?
+  -/
 
 vc-preamble: |-
 
@@ -61,23 +63,23 @@ vc-theorems: |-
       replace_zero padded = 0 ∨
       replace_zero padded = arr.length + 1 := sorry
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval replace_zero [1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 1]
+  -- #guard_msgs in
+  -- #eval replace_zero [1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 1]
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval replace_zero [1, 1, 0, 1, 1, 0, 1, 1]
+  -- #guard_msgs in
+  -- #eval replace_zero [1, 1, 0, 1, 1, 0, 1, 1]
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval replace_zero [1, 1, 1, 0, 1, 1, 0, 1, 1, 1]
+  -- #guard_msgs in
+  -- #eval replace_zero [1, 1, 1, 0, 1, 1, 0, 1, 1, 1]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

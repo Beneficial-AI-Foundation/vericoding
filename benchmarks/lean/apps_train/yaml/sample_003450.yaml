@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Definition (Primorial Of a Number)
   
   *Is similar to factorial of a number*, **_In primorial_**, not all the natural numbers get multiplied, **_only prime numbers are multiplied to calculate the primorial of a number_**. It's denoted with **_P_****_#_** and it is the product of the first n prime numbers.
@@ -54,6 +55,7 @@ vc-description: |-
   
   ## Enjoy Learning !!
   # Zizou
+  -/
 
 vc-preamble: |-
   def isPrime (n : Nat) : Bool :=
@@ -86,23 +88,23 @@ vc-theorems: |-
     numPrimorial n % numPrimorial (n-1) = 0 :=
   sorry
   
-  /--
+  /-
   info: 30
   -/
-  #guard_msgs in
-  #eval num_primorial 3
+  -- #guard_msgs in
+  -- #eval num_primorial 3
   
-  /--
+  /-
   info: 2310
   -/
-  #guard_msgs in
-  #eval num_primorial 5
+  -- #guard_msgs in
+  -- #eval num_primorial 5
   
-  /--
+  /-
   info: 9699690
   -/
-  #guard_msgs in
-  #eval num_primorial 8
+  -- #guard_msgs in
+  -- #eval num_primorial 8
 
 vc-postamble: |-
   -- Apps difficulty: introductory

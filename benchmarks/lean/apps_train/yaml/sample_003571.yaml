@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    Mirko has been moving up in the world of basketball. He started as a mere spectator, but has already reached the coveted position of the national team coach!
   
@@ -29,6 +30,7 @@ vc-description: |-
                 "kovacic","prijestolonasljednikovic"]
   ```
   the output should be "bk".
+  -/
 
 vc-preamble: |-
 
@@ -87,23 +89,23 @@ vc-theorems: |-
     strange_coach players = "forfeit" ∨
     (∀ c ∈ (strange_coach players).toList, c.isAlpha) := sorry
   
-  /--
+  /-
   info: 'forfeit'
   -/
-  #guard_msgs in
-  #eval strange_coach ["michael", "jordan", "lebron", "james", "kobe", "bryant"]
+  -- #guard_msgs in
+  -- #eval strange_coach ["michael", "jordan", "lebron", "james", "kobe", "bryant"]
   
-  /--
+  /-
   info: 'bk'
   -/
-  #guard_msgs in
-  #eval strange_coach ["babic", "keksic", "boric", "bukic", "sarmic", "balic", "kruzic", "hrenovkic", "beslic", "boksic", "krafnic", "pecivic", "klavirkovic", "kukumaric", "sunkic", "kolacic", "kovacic", "prijestolonasljednikovic"]
+  -- #guard_msgs in
+  -- #eval strange_coach ["babic", "keksic", "boric", "bukic", "sarmic", "balic", "kruzic", "hrenovkic", "beslic", "boksic", "krafnic", "pecivic", "klavirkovic", "kukumaric", "sunkic", "kolacic", "kovacic", "prijestolonasljednikovic"]
   
-  /--
+  /-
   info: 'b'
   -/
-  #guard_msgs in
-  #eval strange_coach ["jgztazpytubijfsmjz", "bokvgratzzdibku", "qineboilzoqdqivc", "bfctyltibtkbxq", "vioxcuhqhikxeqwekqkjo", "nrvsdhttr", "eiaoajuwxpwmyliqikzcchid", "bxrwawgor", "gbsqaxotzmblxttj", "kwchrcaconuwaivhvnyf", "neiemapiica", "bppao", "bxujiwivsjfbqrzygpdgkyz", "jnzrhhmcgcpffflpzwmqib", "jhozlevckrrwimdmyzc", "bomojotkqqditelsk", "ywmbheywzfyqjjs", "snwrclyjkbspysjftcmyak", "eelrsgkuhu", "dnyzsvqjjuqoc"]
+  -- #guard_msgs in
+  -- #eval strange_coach ["jgztazpytubijfsmjz", "bokvgratzzdibku", "qineboilzoqdqivc", "bfctyltibtkbxq", "vioxcuhqhikxeqwekqkjo", "nrvsdhttr", "eiaoajuwxpwmyliqikzcchid", "bxrwawgor", "gbsqaxotzmblxttj", "kwchrcaconuwaivhvnyf", "neiemapiica", "bppao", "bxujiwivsjfbqrzygpdgkyz", "jnzrhhmcgcpffflpzwmqib", "jhozlevckrrwimdmyzc", "bomojotkqqditelsk", "ywmbheywzfyqjjs", "snwrclyjkbspysjftcmyak", "eelrsgkuhu", "dnyzsvqjjuqoc"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

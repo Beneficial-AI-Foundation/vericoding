@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The Little Elephant loves lucky strings. Everybody knows that the lucky string is a string of digits that contains only the lucky digits 4 and 7. For example, strings "47", "744", "4" are lucky while "5", "17", "467" are not.
   
   The Little Elephant has the strings A and B of digits. These strings are of equal lengths, that is |A| = |B|. He wants to get some lucky string from them. For this he performs the following operations. At first he arbitrary reorders digits of A. Then he arbitrary reorders digits of B. After that he creates the string C such that its i-th digit is the maximum between the i-th digit of A and the i-th digit of B. In other words, C[i] = max{A[i], B[i]} for i from 1 to |A|. After that he removes from C all non-lucky digits saving the order of the remaining (lucky) digits. So C now becomes a lucky string. For example, if after reordering A = "754" and B = "873", then C is at first "874" and then it becomes "74".
@@ -53,6 +54,7 @@ vc-description: |-
   Case 3. In this case the only possible string C we can get is "8" and it becomes and empty string after removing of non-lucky digits.
   
   Case 4. If we reorder A and B as A = "7765541" and B = "5697714" the string C will be at first "7797744" and then becomes "777744". Note that we can construct any lexicographically greater string for the given A and B since we have only four "sevens" and two "fours" among digits of both strings A and B as well the constructed string "777744".
+  -/
 
 vc-preamble: |-
   def get_lucky_string (a b : String) : String := sorry
@@ -111,23 +113,23 @@ vc-theorems: |-
     (result.data.filter (· = '4')).length ≤ 2 * count_4s ∧
     (result.data.filter (· = '7')).length ≤ 2 * count_7s := sorry
   
-  /--
+  /-
   info: '7'
   -/
-  #guard_msgs in
-  #eval get_lucky_string "4" "7"
+  -- #guard_msgs in
+  -- #eval get_lucky_string "4" "7"
   
-  /--
+  /-
   info: '74'
   -/
-  #guard_msgs in
-  #eval get_lucky_string "435" "479"
+  -- #guard_msgs in
+  -- #eval get_lucky_string "435" "479"
   
-  /--
+  /-
   info: '777744'
   -/
-  #guard_msgs in
-  #eval get_lucky_string "1675475" "9756417"
+  -- #guard_msgs in
+  -- #eval get_lucky_string "1675475" "9756417"
 
 vc-postamble: |-
   -- Apps difficulty: interview

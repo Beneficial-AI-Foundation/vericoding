@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a number, write a function to output its reverse digits.  (e.g. given 123 the answer is 321)
   
   Numbers should preserve their sign; i.e. a negative number should still be negative when reversed.
@@ -9,6 +10,7 @@ vc-description: |-
   -456 -> -654
   1000 ->    1
   ```
+  -/
 
 vc-preamble: |-
 
@@ -34,23 +36,23 @@ vc-theorems: |-
       reverse_number x :=
     sorry
   
-  /--
+  /-
   info: 321
   -/
-  #guard_msgs in
-  #eval reverse_number 123
+  -- #guard_msgs in
+  -- #eval reverse_number 123
   
-  /--
+  /-
   info: -654
   -/
-  #guard_msgs in
-  #eval reverse_number -456
+  -- #guard_msgs in
+  -- #eval reverse_number -456
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval reverse_number 1000
+  -- #guard_msgs in
+  -- #eval reverse_number 1000
 
 vc-postamble: |-
   -- Apps difficulty: introductory

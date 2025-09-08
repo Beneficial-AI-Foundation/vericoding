@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   An integer has sequential digits if and only if each digit in the number is one more than the previous digit.
   Return a sorted list of all the integers in the range [low, high] inclusive that have sequential digits.
   
@@ -12,6 +13,7 @@ vc-description: |-
   Constraints:
   
   10 <= low <= high <= 10^9
+  -/
 
 vc-preamble: |-
 
@@ -48,23 +50,23 @@ vc-theorems: |-
   theorem edge_case_same_number_10 :
     sequentialDigits 10 10 = [] := sorry
   
-  /--
+  /-
   info: [123, 234]
   -/
-  #guard_msgs in
-  #eval sequential_digits 100 300
+  -- #guard_msgs in
+  -- #eval sequential_digits 100 300
   
-  /--
+  /-
   info: [1234, 2345, 3456, 4567, 5678, 6789, 12345]
   -/
-  #guard_msgs in
-  #eval sequential_digits 1000 13000
+  -- #guard_msgs in
+  -- #eval sequential_digits 1000 13000
   
-  /--
+  /-
   info: [12, 23, 34, 45, 56, 67, 78, 89]
   -/
-  #guard_msgs in
-  #eval sequential_digits 10 100
+  -- #guard_msgs in
+  -- #eval sequential_digits 10 100
 
 vc-postamble: |-
   -- Apps difficulty: interview

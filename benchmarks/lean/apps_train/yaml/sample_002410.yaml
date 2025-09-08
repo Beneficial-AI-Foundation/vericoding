@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an integer n, return the number of trailing zeroes in n!.
   
   Example 1:
@@ -14,6 +15,7 @@ vc-description: |-
   Explanation: 5! = 120, one trailing zero.
   
   Note: Your solution should be in logarithmic time complexity.
+  -/
 
 vc-preamble: |-
   def factorial (n : Nat) : Nat :=
@@ -51,23 +53,23 @@ vc-theorems: |-
     countTrailingZeroes 1 = 0 := by
     sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_trailing_zeroes 3
+  -- #guard_msgs in
+  -- #eval count_trailing_zeroes 3
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_trailing_zeroes 5
+  -- #guard_msgs in
+  -- #eval count_trailing_zeroes 5
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_trailing_zeroes 10
+  -- #guard_msgs in
+  -- #eval count_trailing_zeroes 10
 
 vc-postamble: |-
   -- Apps difficulty: introductory

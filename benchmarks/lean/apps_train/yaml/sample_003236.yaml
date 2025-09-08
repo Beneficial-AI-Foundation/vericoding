@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A **pandigital number** is one that has its digits from ```1``` to ```9``` occuring only once (they do not have the digit 0).
   
   The number ```169```, is the first pandigital square, higher than ```100```, having its square root, ```13```, pandigital too.
@@ -52,6 +53,7 @@ vc-description: |-
   You may suposse that the input ```val```, ```n``` will be always:  ```val > 10``` and ```n > 2```.
   
   Enjoy it!!
+  -/
 
 vc-preamble: |-
 

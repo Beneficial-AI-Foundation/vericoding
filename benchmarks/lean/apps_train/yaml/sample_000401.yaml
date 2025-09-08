@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a non-empty string s and a dictionary wordDict containing a list of non-empty words, determine if s can be segmented into a space-separated sequence of one or more dictionary words.
   
   Note:
@@ -23,6 +24,7 @@ vc-description: |-
   
   Input: s = "catsandog", wordDict = ["cats", "dog", "sand", "and", "cat"]
   Output: false
+  -/
 
 vc-preamble: |-
 
@@ -58,23 +60,23 @@ vc-theorems: |-
     word_break s word_dict = true →
     ∀ w ∈ word_dict, s.startsWith w → word_break w word_dict = true := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval word_break "leetcode" ["leet", "code"]
+  -- #guard_msgs in
+  -- #eval word_break "leetcode" ["leet", "code"]
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval word_break "applepenapple" ["apple", "pen"]
+  -- #guard_msgs in
+  -- #eval word_break "applepenapple" ["apple", "pen"]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval word_break "catsandog" ["cats", "dog", "sand", "and", "cat"]
+  -- #guard_msgs in
+  -- #eval word_break "catsandog" ["cats", "dog", "sand", "and", "cat"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

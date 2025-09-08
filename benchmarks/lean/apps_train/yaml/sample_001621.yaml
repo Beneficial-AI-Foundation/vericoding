@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Laxman, a great Mathematician and Thinker, gives Sugreev an integer, $N$, and asks him to make an array $A$ of length $N$, such that  $\sum A$i$^3 = X^2$, to prove the purity of the bond of his friendship with Ram. Sugreev is facing difficulty in forming the array. So, help Sugreev to form this array.
   
   -----Note:-----
@@ -25,6 +26,7 @@ vc-description: |-
   -----Sample Output:-----
   4
   5 10 5 10 5 5
+  -/
 
 vc-preamble: |-
   def calculate_cube_sum (n : Nat) : Nat :=

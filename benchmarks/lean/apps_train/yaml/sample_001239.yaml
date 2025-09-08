@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef likes prime numbers. However, there is one thing he loves even more. Of course, it's semi-primes! A semi-prime number is an integer which can be expressed as a product of two distinct primes. For example, $15 = 3 \cdot 5$ is a semi-prime number, but $1$, $9 = 3 \cdot 3$ and $5$ are not.
   Chef is wondering how to check if an integer can be expressed as a sum of two (not necessarily distinct) semi-primes. Help Chef with this tough task!
   
@@ -28,6 +29,7 @@ vc-description: |-
   Example case 1: $N=30$ can be expressed as $15 + 15 = (3 \cdot 5) + (3 \cdot 5)$.
   Example case 2: $45$ can be expressed as $35 + 10 = (5 \cdot 7) + (2 \cdot 5)$.
   Example case 3: $62$ cannot be expressed as a sum of two semi-primes.
+  -/
 
 vc-preamble: |-
 
@@ -59,23 +61,23 @@ vc-theorems: |-
   theorem can_sum_two_semiprimes_prev (n : Nat) :
     n > 4 → n ≤ 200 → can_sum_two_semiprimes n → can_sum_two_semiprimes (n-1) = true ∨ can_sum_two_semiprimes (n-1) = false := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval can_sum_two_semiprimes 30
+  -- #guard_msgs in
+  -- #eval can_sum_two_semiprimes 30
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval can_sum_two_semiprimes 45
+  -- #guard_msgs in
+  -- #eval can_sum_two_semiprimes 45
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval can_sum_two_semiprimes 62
+  -- #guard_msgs in
+  -- #eval can_sum_two_semiprimes 62
 
 vc-postamble: |-
   -- Apps difficulty: interview

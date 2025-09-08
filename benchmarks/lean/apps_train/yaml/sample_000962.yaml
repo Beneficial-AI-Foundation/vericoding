@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The Chef once decided to prepare some nice dishes on his birthday. There are N items kept on his shelf linearly from position 1 to N. Taste of the i-th item is denoted by a integer Ai.
   
   He wants to make Q dishes. A dish will be made using some ingredients in the continuous range AL, AL + 1, , , AR (1-base indexing). Quality of the dish will be determined by the ingredient with minimum taste.
@@ -66,6 +67,7 @@ vc-description: |-
   
   -----Note-----
   Multiplier for C# and Java have been reduced to 1.5 instead of 2.
+  -/
 
 vc-preamble: |-
 

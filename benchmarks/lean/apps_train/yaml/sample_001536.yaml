@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Consider a currency system in which there are notes of six denominations, namely, Rs. 1, Rs. 2, Rs. 5, Rs. 10, Rs. 50, Rs. 100.
   If the sum of Rs. N is input, write a program to computer smallest number of notes that will combine to give Rs. N.
   
@@ -24,6 +25,7 @@ vc-description: |-
   12
   5
   7
+  -/
 
 vc-preamble: |-
 
@@ -53,23 +55,23 @@ vc-theorems: |-
     count = remainingAndCount.2 ∧ remainingAndCount.1 = 0 :=
     sorry
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval min_notes_needed 1200
+  -- #guard_msgs in
+  -- #eval min_notes_needed 1200
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval min_notes_needed 500
+  -- #guard_msgs in
+  -- #eval min_notes_needed 500
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval min_notes_needed 242
+  -- #guard_msgs in
+  -- #eval min_notes_needed 242
 
 vc-postamble: |-
   -- Apps difficulty: interview

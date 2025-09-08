@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Get the next prime number!
   
   You will get a number`n` (>= 0) and your task is to find the next prime number. 
@@ -11,6 +12,7 @@ vc-description: |-
   5   =>  7
   12  =>  13
   ```
+  -/
 
 vc-preamble: |-
 
@@ -35,23 +37,23 @@ vc-theorems: |-
   theorem prime_returns_self {n : Int} (h : n ≥ 2) (h2 : is_prime n = true) : 
     next_prime (n - 1) = n := sorry
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval next_prime 5
+  -- #guard_msgs in
+  -- #eval next_prime 5
   
-  /--
+  /-
   info: 13
   -/
-  #guard_msgs in
-  #eval next_prime 12
+  -- #guard_msgs in
+  -- #eval next_prime 12
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval next_prime 0
+  -- #guard_msgs in
+  -- #eval next_prime 0
 
 vc-postamble: |-
   -- Apps difficulty: introductory

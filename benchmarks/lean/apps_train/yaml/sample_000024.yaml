@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Try guessing the statement from this picture:  $3$ 
   
   You are given a non-negative integer $d$. You have to find two non-negative real numbers $a$ and $b$ such that $a + b = d$ and $a \cdot b = d$.
@@ -38,6 +39,7 @@ vc-description: |-
   Y 3.618033989 1.381966011
   Y 997.998996990 1.001003010
   Y 998.998997995 1.001002005
+  -/
 
 vc-preamble: |-
 

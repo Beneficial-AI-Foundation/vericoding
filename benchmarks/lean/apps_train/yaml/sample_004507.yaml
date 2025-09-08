@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The business has been suffering for years under the watch of Homie the Clown. Every time there is a push to production it requires 500 hands-on deck, a massive manual process, and the fire department is on stand-by along with Fire Marshall Bill the king of manual configuration management. He is called a Fire Marshall because production pushes often burst into flames and rollbacks are a hazard.
   
   The business demands change and as such has hired a new leader who wants to convert it all to DevOps…..there is a new Sheriff in town.
@@ -69,6 +70,7 @@ vc-description: |-
   Fire Marshall Bill on Vacation!
   
   https://www.youtube.com/watch?v=IIIsCB4Y8sw#t=202.002651
+  -/
 
 vc-preamble: |-
   def List.sumLength (l: List (List α)) : Nat :=
@@ -117,11 +119,11 @@ vc-theorems: |-
     (h1: empty_reqs = [[], [], [], [], []])
     : nkotb_vs_homie empty_reqs = ["0 monitoring objections, 0 automation, 0 deployment pipeline, 0 cloud, and 0 microservices."] := sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval nkotb_vs_homie [["We need Monitoring now!"], ["We need Automation now!"], ["We need Deployment now!"], ["We need Cloud now!"], ["We need Microservices now!"]]
+  -- #guard_msgs in
+  -- #eval nkotb_vs_homie [["We need Monitoring now!"], ["We need Automation now!"], ["We need Deployment now!"], ["We need Cloud now!"], ["We need Microservices now!"]]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

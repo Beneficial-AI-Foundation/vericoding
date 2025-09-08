@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Task:
   
   You have to write a function `pattern` which returns the following Pattern(See Examples) upto n number of rows. 
@@ -47,6 +48,7 @@ vc-description: |-
          76543210987654321
   
   [List of all my katas]("http://www.codewars.com/users/curious_db97/authored")
+  -/
 
 vc-preamble: |-
 
@@ -86,23 +88,23 @@ vc-theorems: |-
     let first := ((pattern n).split fun c ↦ c = '\n').get! 0
     ∀ c ∈ first.data, c.toString.toNat! = n := sorry
   
-  /--
+  /-
   info: '333\n322\n321'
   -/
-  #guard_msgs in
-  #eval pattern 3
+  -- #guard_msgs in
+  -- #eval pattern 3
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval pattern 0
+  -- #guard_msgs in
+  -- #eval pattern 0
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval pattern 7
+  -- #guard_msgs in
+  -- #eval pattern 7
 
 vc-postamble: |-
   -- Apps difficulty: introductory

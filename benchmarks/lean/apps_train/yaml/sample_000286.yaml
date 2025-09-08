@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a char array representing tasks CPU need to do. It contains capital letters A to Z where different letters represent different tasks.Tasks could be done without original order. Each task could be done in one interval. For each interval, CPU could finish one task or just be idle.
   
   However, there is a non-negative cooling interval n that means between two same tasks, there must be at least n intervals that CPU are doing different tasks or just be idle. 
@@ -15,6 +16,7 @@ vc-description: |-
   
   The number of tasks is in the range [1, 10000].
   The integer n is in the range [0, 100].
+  -/
 
 vc-preamble: |-
   def least_interval (tasks : List Char) (n : Nat) : Nat :=
@@ -51,23 +53,23 @@ vc-theorems: |-
     least_interval tasks n ≤ tasks.length * (n + 1) :=
   sorry
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval least_interval ["A", "A", "A", "B", "B", "B"] 2
+  -- #guard_msgs in
+  -- #eval least_interval ["A", "A", "A", "B", "B", "B"] 2
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval least_interval ["A", "A", "A"] 1
+  -- #guard_msgs in
+  -- #eval least_interval ["A", "A", "A"] 1
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval least_interval ["A", "B", "C", "D"] 0
+  -- #guard_msgs in
+  -- #eval least_interval ["A", "B", "C", "D"] 0
 
 vc-postamble: |-
   -- Apps difficulty: interview

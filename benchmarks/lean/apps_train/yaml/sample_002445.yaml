@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Function Descriptions=====
   In Python, a string of text can be aligned left, right and center.
   
@@ -39,6 +40,7 @@ vc-description: |-
   
   =====Output Format=====
   Output the desired logo.
+  -/
 
 vc-preamble: |-
   def generateLogo (thickness : Nat) : String := sorry

@@ -1,0 +1,54 @@
+/-
+Given an array (or list) of scores, return the array of _ranks_ for each value in the array.  The largest value has rank 1, the second largest value has rank 2, and so on. Ties should be handled by assigning the same rank to all tied values. For example:
+
+    ranks([9,3,6,10]) = [2,4,3,1]
+
+and
+
+    ranks([3,3,3,3,3,5,1]) = [2,2,2,2,2,1,7]
+
+because there is one 1st place value, a five-way tie for 2nd place, and one in 7th place.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def ranks (scores : List Int) : List Nat := sorry
+
+theorem ranks_length_preserved (scores : List Int) :
+  (ranks scores).length = scores.length := sorry
+
+theorem ranks_are_valid (scores : List Int) (h : scores ≠ []) :
+  ∀ r ∈ ranks scores, 1 ≤ r ∧ r ≤ scores.length := sorry
+
+theorem ranks_order (scores : List Int) (i j : Nat) 
+  (h1 : i < scores.length) (h2 : j < scores.length) :
+  scores[i]! > scores[j]! → (ranks scores)[i]! < (ranks scores)[j]! := sorry
+
+theorem ranks_equal (scores : List Int) (i j : Nat)
+  (h1 : i < scores.length) (h2 : j < scores.length) :
+  scores[i]! = scores[j]! → (ranks scores)[i]! = (ranks scores)[j]! := sorry
+
+theorem ranks_empty :
+  ranks [] = [] := sorry
+
+/-
+info: []
+-/
+-- #guard_msgs in
+-- #eval ranks []
+
+/-
+info: [2, 2, 2, 2, 2, 1, 7]
+-/
+-- #guard_msgs in
+-- #eval ranks [3, 3, 3, 3, 3, 5, 1]
+
+/-
+info: [2, 4, 3, 1]
+-/
+-- #guard_msgs in
+-- #eval ranks [9, 3, 6, 10]
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded_and_plausible

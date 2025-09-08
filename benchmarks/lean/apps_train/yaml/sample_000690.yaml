@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   $Gogi$, $Tapu$ and $Sonu$ are the elite members of $Tapu$ $Sena$. $Gogi$ is always stoned and asks absurd questions, But this time he asked a question which seems to be very serious and interesting. $Tapu$ wants to solve this question to impress $Sonu$. He  gave an array of length N to $Tapu$, $Tapu$ can perform the following operations exactly once:
   - Remove any subarray from the given array given the resulting array formed after the removal is non-empty.    
   - Reverse the whole array.
@@ -28,6 +29,7 @@ vc-description: |-
   
   -----Sample Output 1:-----
   2
+  -/
 
 vc-preamble: |-
   def solve (n : Nat) (arr : List Nat) : Nat := 
@@ -55,23 +57,23 @@ vc-theorems: |-
     (arr.length > 1 → solve n arr ≥ arr.head! ∧ solve n arr ≥ arr.getLast!) :=
   sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve 1 [2]
+  -- #guard_msgs in
+  -- #eval solve 1 [2]
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval solve 3 [6, 9, 3]
+  -- #guard_msgs in
+  -- #eval solve 3 [6, 9, 3]
   
-  /--
+  /-
   info: 36
   -/
-  #guard_msgs in
-  #eval solve 4 [12, 18, 24, 36]
+  -- #guard_msgs in
+  -- #eval solve 4 [12, 18, 24, 36]
 
 vc-postamble: |-
   -- Apps difficulty: interview

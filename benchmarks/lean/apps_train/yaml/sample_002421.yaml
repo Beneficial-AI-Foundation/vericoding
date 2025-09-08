@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array A of positive lengths, return the largest perimeter of a triangle with non-zero area, formed from 3 of these lengths.
   If it is impossible to form any triangle of non-zero area, return 0.
   
@@ -22,6 +23,7 @@ vc-description: |-
   
   3 <= A.length <= 10000
   1 <= A[i] <= 10^6
+  -/
 
 vc-preamble: |-
   def largest_triangle_perimeter (xs: List Nat) : Nat := sorry 
@@ -68,23 +70,23 @@ vc-theorems: |-
   theorem minimal_cases_invalid :
     largest_triangle_perimeter [1,1,2] = 0 := sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval largest_triangle_perimeter [2, 1, 2]
+  -- #guard_msgs in
+  -- #eval largest_triangle_perimeter [2, 1, 2]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval largest_triangle_perimeter [1, 2, 1]
+  -- #guard_msgs in
+  -- #eval largest_triangle_perimeter [1, 2, 1]
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval largest_triangle_perimeter [3, 2, 3, 4]
+  -- #guard_msgs in
+  -- #eval largest_triangle_perimeter [3, 2, 3, 4]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

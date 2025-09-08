@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string S and a string T, find the minimum window in S which will contain all the characters in T in complexity O(n).
   
   Example:
@@ -10,6 +11,7 @@ vc-description: |-
   
          If there is no such window in S that covers all characters in T, return the empty string "".
          If there is such window, you are guaranteed that there will always be only one unique minimum window in S.
+  -/
 
 vc-preamble: |-
 
@@ -45,23 +47,23 @@ vc-theorems: |-
     (min_window s t).length ≤ s.length ∧ 
     (min_window s t ≠ "" → (min_window s t).length ≥ t.data.eraseDups.length) := sorry
   
-  /--
+  /-
   info: 'BANC'
   -/
-  #guard_msgs in
-  #eval min_window "ADOBECODEBANC" "ABC"
+  -- #guard_msgs in
+  -- #eval min_window "ADOBECODEBANC" "ABC"
   
-  /--
+  /-
   info: 'A'
   -/
-  #guard_msgs in
-  #eval min_window "AAAA" "A"
+  -- #guard_msgs in
+  -- #eval min_window "AAAA" "A"
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval min_window "ABCD" "XY"
+  -- #guard_msgs in
+  -- #eval min_window "ABCD" "XY"
 
 vc-postamble: |-
   -- Apps difficulty: interview

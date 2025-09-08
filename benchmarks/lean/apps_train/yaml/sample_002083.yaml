@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The Little Elephant loves permutations of integers from 1 to n very much. But most of all he loves sorting them. To sort a permutation, the Little Elephant repeatedly swaps some elements. As a result, he must receive a permutation 1, 2, 3, ..., n.
   
   This time the Little Elephant has permutation p_1, p_2, ..., p_{n}. Its sorting program needs to make exactly m moves, during the i-th move it swaps elements that are at that moment located at the a_{i}-th and the b_{i}-th positions. But the Little Elephant's sorting program happened to break down and now on every step it can equiprobably either do nothing or swap the required elements.
@@ -33,6 +34,7 @@ vc-description: |-
   
   Output
   3.000000000
+  -/
 
 vc-preamble: |-
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Wherever the destination is, whoever we meet, let's render this song together.
   
   On a Cartesian coordinate plane lies a rectangular stage of size w × h, represented by a rectangle with corners (0, 0), (w, 0), (w, h) and (0, h). It can be seen that no collisions will happen before one enters the stage.
@@ -59,6 +60,7 @@ vc-description: |-
   The first example corresponds to the initial setup in the legend, and the tracks of dancers are marked with different colours in the following figure. [Image] 
   
   In the second example, no dancers collide.
+  -/
 
 vc-preamble: |-
 

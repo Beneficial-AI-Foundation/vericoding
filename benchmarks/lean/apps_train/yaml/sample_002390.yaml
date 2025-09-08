@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given two strings s and t, determine if they are isomorphic.
   
   Two strings are isomorphic if the characters in s can be replaced to get t.
@@ -22,6 +23,7 @@ vc-description: |-
   
   Note:
   You may assume both s and t have the same length.
+  -/
 
 vc-preamble: |-
   def is_isomorphic (s1 s2 : List Char) : Bool :=
@@ -57,23 +59,23 @@ vc-theorems: |-
     unique_chars s1 = 1 →
     (is_isomorphic s1 s2 ↔ unique_chars s2 = 1) := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_isomorphic "egg" "add"
+  -- #guard_msgs in
+  -- #eval is_isomorphic "egg" "add"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_isomorphic "foo" "bar"
+  -- #guard_msgs in
+  -- #eval is_isomorphic "foo" "bar"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_isomorphic "paper" "title"
+  -- #guard_msgs in
+  -- #eval is_isomorphic "paper" "title"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

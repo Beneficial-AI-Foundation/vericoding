@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given two numbers, hour and minutes. Return the smaller angle (in degrees) formed between the hour and the minute hand.
   
   Example 1:
@@ -29,6 +30,7 @@ vc-description: |-
   1 <= hour <= 12
   0 <= minutes <= 59
   Answers within 10^-5 of the actual value will be accepted as correct.
+  -/
 
 vc-preamble: |-
 

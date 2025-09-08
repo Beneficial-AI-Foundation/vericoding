@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Mr. X stays in a mansion whose door opens in the North. He travels every morning to meet his friend Ms. Y walking a predefined path.
   
   To cut the distance short, one day he decides to construct a skywalk from his place to his friend’s place. Help him to find the shortest distance between the two residences.
@@ -22,6 +23,7 @@ vc-description: |-
   Explanation
   Mr. X travels 2units and then takes a Left, and then he travels 2units and takes a Right, then after travelling 2units he takes a Left and finally travels 1unit to reach Y’s residence.
   (Unlike Input, Output does not have spaces between the distance and direction)
+  -/
 
 vc-preamble: |-
   def Point := Nat × Nat -- Position representation

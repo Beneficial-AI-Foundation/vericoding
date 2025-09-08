@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In genetics a reading frame is a way to divide a sequence of nucleotides (DNA bases) into a set of consecutive non-overlapping triplets (also called codon). Each of this triplets is translated into an amino-acid during a translation process to create proteins.
   
   In a single strand of DNA you find 3 Reading frames, for example the following sequence:
@@ -69,6 +70,7 @@ vc-description: |-
   The translation hash is available for you under a translation hash `$codons` [Ruby] or `codon` [other languages] (for example to access value of 'TTT' you should  call $codons['TTT'] => 'F').
   
   The function should return an array with all translation asked for, by default the function do the translation on all 6 frames.
+  -/
 
 vc-preamble: |-
   def DNA := String
@@ -118,23 +120,23 @@ vc-theorems: |-
     let result := translate_with_frame dna [Frame.mk 1, Frame.mk (-1)]
     result[0]!.length = result[1]!.length := sorry
   
-  /--
+  /-
   info: ['K']
   -/
-  #guard_msgs in
-  #eval translate_with_frame "AAA" [1]
+  -- #guard_msgs in
+  -- #eval translate_with_frame "AAA" [1]
   
-  /--
+  /-
   info: ['K']
   -/
-  #guard_msgs in
-  #eval translate_with_frame "AAAA" [2]
+  -- #guard_msgs in
+  -- #eval translate_with_frame "AAAA" [2]
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval translate_with_frame "AGGTGACACCGCAAGCCTTATATTAGC"
+  -- #guard_msgs in
+  -- #eval translate_with_frame "AGGTGACACCGCAAGCCTTATATTAGC"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

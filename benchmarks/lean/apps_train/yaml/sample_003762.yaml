@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    Given an array `arr`, find the rank of the element at the ith position.
   
@@ -35,6 +36,7 @@ vc-description: |-
    - `[output]` an integer
   
     Rank of the element at the ith position.
+  -/
 
 vc-preamble: |-
 
@@ -59,23 +61,23 @@ vc-theorems: |-
     rank ≥ strictly_less :=
   sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval rank_of_element [2, 1, 2, 1, 2] 2
+  -- #guard_msgs in
+  -- #eval rank_of_element [2, 1, 2, 1, 2] 2
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval rank_of_element [2, 1, 2, 2, 2] 2
+  -- #guard_msgs in
+  -- #eval rank_of_element [2, 1, 2, 2, 2] 2
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval rank_of_element [3, 2, 3, 4, 1] 1
+  -- #guard_msgs in
+  -- #eval rank_of_element [3, 2, 3, 4, 1] 1
 
 vc-postamble: |-
   -- Apps difficulty: introductory

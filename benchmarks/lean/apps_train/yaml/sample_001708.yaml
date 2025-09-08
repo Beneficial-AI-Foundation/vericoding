@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   [The Vigenère cipher](https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher) is a classic cipher that was thought to be "unbreakable" for three centuries. We now know that this is not so and it can actually be broken pretty easily.
   
   **How the Vigenère cipher works**:
@@ -20,6 +21,7 @@ vc-description: |-
   Any feedback (and suggestions) would be much appreciated
   
   *This kata is based on one of the programming assignments in [Prof. Jonathan Katz's course on cryptography](https://www.coursera.org/course/cryptography) given on Coursera*
+  -/
 
 vc-preamble: |-
 
@@ -55,23 +57,23 @@ vc-theorems: |-
     1 ≤ result ∧ result ≤ min key_length text.length :=
   sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval get_key_length "ABCABCABCABC" 5
+  -- #guard_msgs in
+  -- #eval get_key_length "ABCABCABCABC" 5
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval get_key_length "AAAAA" 3
+  -- #guard_msgs in
+  -- #eval get_key_length "AAAAA" 3
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval get_key_length "XYXYXYXY" 4
+  -- #guard_msgs in
+  -- #eval get_key_length "XYXYXYXY" 4
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Imagine if there were no order of operations. Instead, you would do the problem from left to right. For example, the equation `$a +b  *c /d$` would become `$(((a+b)*c)//d)$` (`Math.floor(((a+b)*c)/d)` in JS). Return `None`/`null` (depending on your language) if the equation is `""`.
   
   ### Task:
@@ -35,6 +36,7 @@ vc-description: |-
   = 1 ^ 3
   = 1
   ```
+  -/
 
 vc-preamble: |-
 
@@ -69,23 +71,23 @@ vc-theorems: |-
     no_order "abc" = none ∧
     no_order "" = none := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval no_order "2 + 3- 4*1   ^  3"
+  -- #guard_msgs in
+  -- #eval no_order "2 + 3- 4*1   ^  3"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval no_order "7 *  3 - 3/  10  0"
+  -- #guard_msgs in
+  -- #eval no_order "7 *  3 - 3/  10  0"
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval no_order "6 9* 2+6 /  0"
+  -- #guard_msgs in
+  -- #eval no_order "6 9* 2+6 /  0"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

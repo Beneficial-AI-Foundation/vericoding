@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Polycarp took $n$ videos, the duration of the $i$-th video is $a_i$ seconds. The videos are listed in the chronological order, i.e. the $1$-st video is the earliest, the $2$-nd video is the next, ..., the $n$-th video is the last.
   
   Now Polycarp wants to publish exactly $k$ ($1 \le k \le n$) posts in Instabram. Each video should be a part of a single post. The posts should preserve the chronological order, it means that the first post should contain one or more of the earliest videos, the second post should contain a block (one or more videos) going next and so on. In other words, if the number of videos in the $j$-th post is $s_j$ then:
@@ -47,6 +48,7 @@ vc-description: |-
   Output
   Yes
   3
+  -/
 
 vc-preamble: |-
   def check_possible_partition (n k : Nat) (arr : List Nat) : Option (List Nat) := sorry

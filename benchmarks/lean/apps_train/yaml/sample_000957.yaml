@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Problem Statement:Captain America and Iron Man are at WAR and the rage inside Iron Man is rising.
   
   But Iron Man faces a problem to identify the location of Captain America.
@@ -67,6 +68,7 @@ vc-description: |-
   N=3 and K=0
   
   Therefore arrangement is [1,2,3].
+  -/
 
 vc-preamble: |-
   def find_building_arrangement (n k : Nat) : String := sorry
@@ -105,23 +107,23 @@ vc-theorems: |-
        (if nums[i]! ≥ nums[j]! then nums[i]! - nums[j]! else nums[j]! - nums[i]!) = 1))
     := sorry
   
-  /--
+  /-
   info: '2 1'
   -/
-  #guard_msgs in
-  #eval find_building_arrangement 2 1
+  -- #guard_msgs in
+  -- #eval find_building_arrangement 2 1
   
-  /--
+  /-
   info: '1 2 3'
   -/
-  #guard_msgs in
-  #eval find_building_arrangement 3 0
+  -- #guard_msgs in
+  -- #eval find_building_arrangement 3 0
   
-  /--
+  /-
   info: 'CAPTAIN AMERICA EVADES'
   -/
-  #guard_msgs in
-  #eval find_building_arrangement 3 2
+  -- #guard_msgs in
+  -- #eval find_building_arrangement 3 2
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Lot of junior developer can be stuck when they need to change the access permission to a file or a directory in an Unix-like operating systems.
   
   To do that they can use the `chmod` command and with some magic trick they can change the permissionof a file or a directory. For more information about the `chmod` command you can take a look at the [wikipedia page](https://en.wikipedia.org/wiki/Chmod).
@@ -25,6 +26,7 @@ vc-description: |-
   If a key is missing set the permission to `---`
   
   **Note**: `chmod` allow you to set some special flags too (`setuid`, `setgid`, `sticky bit`) but to keep some simplicity for this kata we will ignore this one.
+  -/
 
 vc-preamble: |-
 
@@ -51,23 +53,23 @@ vc-theorems: |-
   theorem user_rw_other_r :
     chmod_calculator { user := some "rw-", other := some "r--" } = "604" := sorry
   
-  /--
+  /-
   info: '755'
   -/
-  #guard_msgs in
-  #eval chmod_calculator {"user": "rwx", "group": "r-x", "other": "r-x"}
+  -- #guard_msgs in
+  -- #eval chmod_calculator {"user": "rwx", "group": "r-x", "other": "r-x"}
   
-  /--
+  /-
   info: '744'
   -/
-  #guard_msgs in
-  #eval chmod_calculator {"user": "rwx", "group": "r--", "other": "r--"}
+  -- #guard_msgs in
+  -- #eval chmod_calculator {"user": "rwx", "group": "r--", "other": "r--"}
   
-  /--
+  /-
   info: '070'
   -/
-  #guard_msgs in
-  #eval chmod_calculator {"group": "rwx"}
+  -- #guard_msgs in
+  -- #eval chmod_calculator {"group": "rwx"}
 
 vc-postamble: |-
   -- Apps difficulty: introductory

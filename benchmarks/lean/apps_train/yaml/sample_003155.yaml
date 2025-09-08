@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Complete the method/function so that it converts dash/underscore delimited words into camel casing. The first word within the output should be capitalized **only** if the original word was capitalized (known as Upper Camel Case, also often referred to as Pascal case). 
   
   ## Examples
@@ -8,6 +9,7 @@ vc-description: |-
   
   to_camel_case("The_Stealth_Warrior") # returns "TheStealthWarrior"
   ```
+  -/
 
 vc-preamble: |-
 
@@ -36,23 +38,23 @@ vc-theorems: |-
   theorem to_camel_case_empty_input :
     toCamelCase (some "") = "" ∧ toCamelCase none = "" := sorry
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval to_camel_case ""
+  -- #guard_msgs in
+  -- #eval to_camel_case ""
   
-  /--
+  /-
   info: 'theStealthWarrior'
   -/
-  #guard_msgs in
-  #eval to_camel_case "the_stealth_warrior"
+  -- #guard_msgs in
+  -- #eval to_camel_case "the_stealth_warrior"
   
-  /--
+  /-
   info: 'TheStealthWarrior'
   -/
-  #guard_msgs in
-  #eval to_camel_case "The-Stealth-Warrior"
+  -- #guard_msgs in
+  -- #eval to_camel_case "The-Stealth-Warrior"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Linear Kingdom has exactly one tram line. It has `n` stops, numbered from 1 to n in the order of tram's movement. At the i-th stop ai passengers exit the tram, while bi passengers enter it. The tram is empty before it arrives at the first stop.
   
   ## Your task
@@ -19,6 +20,7 @@ vc-description: |-
   * Finally, all the remaining passengers inside the tram exit the tram at the last stop. There are no passenger inside the tram now, which is in line with the constraints.
   
   Since the number of passengers inside the tram never exceeds 6, a capacity of 6 is sufficient. Furthermore it is not possible for the tram to have a capacity less than 6. Hence, 6 is the correct answer.
+  -/
 
 vc-preamble: |-
 
@@ -41,23 +43,23 @@ vc-theorems: |-
     tram stops descending onboarding = tram (stops + 1) descending onboarding :=
   sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval tram 4 [0, 2, 4, 4] [3, 5, 2, 0]
+  -- #guard_msgs in
+  -- #eval tram 4 [0, 2, 4, 4] [3, 5, 2, 0]
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval tram 2 [0, 2, 4, 4] [3, 5, 2, 0]
+  -- #guard_msgs in
+  -- #eval tram 2 [0, 2, 4, 4] [3, 5, 2, 0]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval tram 1 [0, 2, 4, 4] [3, 5, 2, 0]
+  -- #guard_msgs in
+  -- #eval tram 1 [0, 2, 4, 4] [3, 5, 2, 0]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

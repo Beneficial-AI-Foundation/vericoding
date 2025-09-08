@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef just come up with a very good idea for his business. He needs to hire two group of software engineers. Each group of engineers will work on completely different things and people from different groups don't want to disturb (and even hear) each other. Chef has just rented a whole floor for his purposes in business center "Cooking Plaza". The floor is a rectangle with dimensions N over M meters. For simplicity of description the floor's structure, let's imagine that it is split into imaginary squares of size 1x1 called "cells".
   The whole floor is split into rooms (not necessarily rectangular). There are some not noise-resistant walls between some of the cells. Two adjacent cells belong to the same room if they don't have the wall between them. Cells are considered adjacent if and only if they share an edge. Also, we say that relation "belong to the same room" is transitive. In other words we say that if cells A and B belong to the same room and B and C belong to the same room then A and C belong to the same room.
   So we end up having a partition of the floor into rooms. It also means, that each point on the floor belongs to some room.
@@ -51,6 +52,7 @@ vc-description: |-
   - The red color denotes assignment to the second team. Total cost for renting the only room for the team is 12.
   - There are 3 meters of walls between them, resulting in isolating cost of 15.
   The grand total is 21 + 12 + 15 = 48
+  -/
 
 vc-preamble: |-
 
@@ -91,11 +93,11 @@ vc-theorems: |-
     solve_engineer_groups N M W K R walls rooms ≥ 0 :=
   sorry
   
-  /--
+  /-
   info: 48
   -/
-  #guard_msgs in
-  #eval solve_engineer_groups 2 4 5 5 3 [[1, 2, 1, 3], [1, 2, 2, 2], [1, 3, 2, 3], [1, 4, 2, 4], [2, 1, 2, 2]] [[1, 1, 30, 12], [1, 3, 10, 15], [2, 3, 11, 22]]
+  -- #guard_msgs in
+  -- #eval solve_engineer_groups 2 4 5 5 3 [[1, 2, 1, 3], [1, 2, 2, 2], [1, 3, 2, 3], [1, 4, 2, 4], [2, 1, 2, 2]] [[1, 1, 30, 12], [1, 3, 10, 15], [2, 3, 11, 22]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

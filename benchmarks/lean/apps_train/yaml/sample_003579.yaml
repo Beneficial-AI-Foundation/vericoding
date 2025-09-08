@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Hello! Your are given x and y and 2D array size tuple (width, height) and you have to:
   Calculate the according index in 1D space (zero-based). 
   Do reverse operation.
@@ -24,6 +25,7 @@ vc-description: |-
   
   1 < width  < 500; 
   1 < height < 500
+  -/
 
 vc-preamble: |-
   def to_1D (x y : Nat) (size : Nat × Nat) : Nat :=
@@ -61,41 +63,41 @@ vc-theorems: |-
     0 ≤ idx ∧ idx < width * height :=
     sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval to_1D 0 0 (3, 3)
+  -- #guard_msgs in
+  -- #eval to_1D 0 0 (3, 3)
   
-  /--
+  /-
   info: (0, 0)
   -/
-  #guard_msgs in
-  #eval to_2D 0 (3, 3)
+  -- #guard_msgs in
+  -- #eval to_2D 0 (3, 3)
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval to_1D 1 1 (3, 3)
+  -- #guard_msgs in
+  -- #eval to_1D 1 1 (3, 3)
   
-  /--
+  /-
   info: (1, 1)
   -/
-  #guard_msgs in
-  #eval to_2D 4 (3, 3)
+  -- #guard_msgs in
+  -- #eval to_2D 4 (3, 3)
   
-  /--
+  /-
   info: 14
   -/
-  #guard_msgs in
-  #eval to_1D 2 3 (4, 6)
+  -- #guard_msgs in
+  -- #eval to_1D 2 3 (4, 6)
   
-  /--
+  /-
   info: (2, 3)
   -/
-  #guard_msgs in
-  #eval to_2D 14 (4, 6)
+  -- #guard_msgs in
+  -- #eval to_2D 14 (4, 6)
 
 vc-postamble: |-
   -- Apps difficulty: introductory

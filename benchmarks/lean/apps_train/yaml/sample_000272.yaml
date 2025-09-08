@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The set [1,2,3,...,n] contains a total of n! unique permutations.
   
   By listing and labeling all of the permutations in order, we get the following sequence for n = 3:
@@ -26,6 +27,7 @@ vc-description: |-
   
   Input: n = 4, k = 9
   Output: "2314"
+  -/
 
 vc-preamble: |-
   def factorial (n : Nat) : Nat :=
@@ -61,23 +63,23 @@ vc-theorems: |-
     get_permutation n (factorial n) = 
       String.mk (List.range n |>.map (fun i => Char.ofNat (n - i + 48))) := sorry
   
-  /--
+  /-
   info: '213'
   -/
-  #guard_msgs in
-  #eval get_permutation 3 3
+  -- #guard_msgs in
+  -- #eval get_permutation 3 3
   
-  /--
+  /-
   info: '2314'
   -/
-  #guard_msgs in
-  #eval get_permutation 4 9
+  -- #guard_msgs in
+  -- #eval get_permutation 4 9
   
-  /--
+  /-
   info: '21'
   -/
-  #guard_msgs in
-  #eval get_permutation 2 2
+  -- #guard_msgs in
+  -- #eval get_permutation 2 2
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Today, puppy Tuzik is going to a new dog cinema. He has already left his home and just realised that he forgot his dog-collar! This is a real problem because the city is filled with catchers looking for stray dogs.
   A city where Tuzik lives in can be considered as an infinite grid, where each cell has exactly four neighbouring cells: those sharing a common side with the cell. Such a property of the city leads to the fact, that the distance between cells (xA, yA) and (xB, yB) equals |xA - xB| + |yA - yB|.
   Initially, the puppy started at the cell with coordinates (0, 0). There are N dog-catchers located at the cells with the coordinates (xi, yi), where 1 ≤ i ≤ N. Tuzik's path can be described as a string S of M characters, each of which belongs to the set {'D', 'U', 'L', 'R'} (corresponding to it moving down, up, left, and right, respectively). To estimate his level of safety, Tuzik wants to know the sum of the distances from each cell on his path to all the dog-catchers. You don't need to output this sum for the staring cell of the path (i.e. the cell with the coordinates (0, 0)).
@@ -39,6 +40,7 @@ vc-description: |-
   - Move 'R' to the cell (1, 0). Distance to the catcher (1, 2) equals 2, distance to the catcher (0, 1) equals 2, so the total distance equals 4
   - Move 'D' to the cell (1, -1). Distance to the catcher (1, 2) equals 3, distance to the catcher (0, 1) equals 3, so the total distance equals 6
   - Move 'L' to the cell (0, -1). Distance to the catcher (1, 2) equals 4, distance to the catcher (0, 1) equals 2, so the total distance equals 6
+  -/
 
 vc-preamble: |-
   def abs (n : Int) : Int :=
@@ -67,17 +69,17 @@ vc-theorems: |-
     solve_puppy_path N M [(0,0)] [] = [] := by
     sorry
   
-  /--
+  /-
   info: [4, 6, 6]
   -/
-  #guard_msgs in
-  #eval solve_puppy_path 2 3 [(1, 2), (0, 1)] "RDL"
+  -- #guard_msgs in
+  -- #eval solve_puppy_path 2 3 [(1, 2), (0, 1)] "RDL"
   
-  /--
+  /-
   info: [1, 2]
   -/
-  #guard_msgs in
-  #eval solve_puppy_path 1 2 [(1, 1)] "RD"
+  -- #guard_msgs in
+  -- #eval solve_puppy_path 1 2 [(1, 1)] "RD"
 
 vc-postamble: |-
   -- Apps difficulty: interview

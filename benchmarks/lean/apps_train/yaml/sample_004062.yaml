@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array of 4 integers  
   ```[a,b,c,d]``` representing two points ```(a, b)``` and ```(c, d)```, return a string representation of the slope of the line joining these two points. 
   
@@ -13,6 +14,7 @@ vc-description: |-
   Assume that ```[a,b,c,d]``` and the answer are all integers 
   (no floating numbers!).
   Slope:
+  -/
 
 vc-preamble: |-
 
@@ -51,23 +53,23 @@ vc-theorems: |-
     find_slope [x1, y, x1 + 10, y] = "0" :=
   sorry
   
-  /--
+  /-
   info: '4'
   -/
-  #guard_msgs in
-  #eval find_slope [3, 6, 4, 10]
+  -- #guard_msgs in
+  -- #eval find_slope [3, 6, 4, 10]
   
-  /--
+  /-
   info: '0'
   -/
-  #guard_msgs in
-  #eval find_slope [12, -18, -15, -18]
+  -- #guard_msgs in
+  -- #eval find_slope [12, -18, -15, -18]
   
-  /--
+  /-
   info: 'undefined'
   -/
-  #guard_msgs in
-  #eval find_slope [17, -3, 17, 8]
+  -- #guard_msgs in
+  -- #eval find_slope [17, -3, 17, 8]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

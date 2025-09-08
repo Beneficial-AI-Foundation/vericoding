@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Amit is going on a date and he wants to gift his date an array of positive numbers. But he is running short on money. He already has an array of numbers in design. Cost of an array of numbers is the sum of elements in it. But he wants to minimize the cost of making it. 
   So he does the following number of operations one by one for any number of times:
   He chooses two adjacent elements ,replace them by one element with value = XOR of the two numbers. This operation reduces length of array (and elements are re-numerated accordingly)
@@ -34,6 +35,7 @@ vc-description: |-
   For first case,
   This array is :
   $[8,4,1,5,0] -> [8,4,4,0] -> [8,0,0]$. Sum=$8$ So the answer is 8.
+  -/
 
 vc-preamble: |-
 
@@ -63,23 +65,23 @@ vc-theorems: |-
   theorem odd_duplicates_self (x : Nat) :
     solve_array_xor 3 [x, x, x] = x := sorry
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval solve_array_xor 5 [8, 4, 1, 5, 0]
+  -- #guard_msgs in
+  -- #eval solve_array_xor 5 [8, 4, 1, 5, 0]
   
-  /--
+  /-
   info: 15
   -/
-  #guard_msgs in
-  #eval solve_array_xor 5 [1, 2, 4, 0, 8]
+  -- #guard_msgs in
+  -- #eval solve_array_xor 5 [1, 2, 4, 0, 8]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve_array_xor 2 [10, 10]
+  -- #guard_msgs in
+  -- #eval solve_array_xor 2 [10, 10]
 
 vc-postamble: |-
   -- Apps difficulty: interview

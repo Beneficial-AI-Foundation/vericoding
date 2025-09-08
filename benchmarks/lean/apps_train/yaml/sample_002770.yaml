@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   *** No Loops Allowed ***
   
   You will be given an array (a) and a limit value (limit). You must check that all values in the array are below or equal to the limit value. If they are, return true. Else, return false.
@@ -11,6 +12,7 @@ vc-description: |-
   
    https://www.codewars.com/kata/no-loops-2-you-only-need-one
    https://www.codewars.com/kata/no-loops-3-copy-within
+  -/
 
 vc-preamble: |-
   def small_enough (numbers : List Int) (limit : Int) : Bool :=
@@ -45,23 +47,23 @@ vc-theorems: |-
     small_enough scaled_numbers (max_val * factor) = small_enough numbers max_val :=
     sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval small_enough [66, 101] 200
+  -- #guard_msgs in
+  -- #eval small_enough [66, 101] 200
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval small_enough [78, 117, 110, 99, 104, 117, 107, 115] 100
+  -- #guard_msgs in
+  -- #eval small_enough [78, 117, 110, 99, 104, 117, 107, 115] 100
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval small_enough [101, 45, 75, 105, 99, 107] 107
+  -- #guard_msgs in
+  -- #eval small_enough [101, 45, 75, 105, 99, 107] 107
 
 vc-postamble: |-
   -- Apps difficulty: introductory

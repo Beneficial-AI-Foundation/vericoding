@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A binary gap within a positive number ```num``` is any sequence of consecutive zeros that is surrounded by ones at both ends in the binary representation of  ```num```. 
       For example:
       ```9``` has binary representation ```1001``` and contains a binary gap of length ```2```.
@@ -7,6 +8,7 @@ vc-description: |-
       ```15``` has binary representation ```1111``` and has ```0``` binary gaps.
       Write ```function gap(num)```
   that,  given a positive ```num```,  returns the length of its longest binary gap. The function should return ```0``` if ```num``` doesn't contain a binary gap.
+  -/
 
 vc-preamble: |-
 
@@ -34,23 +36,23 @@ vc-theorems: |-
     gap (1 <<< n) = 0 :=
   sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval gap 9
+  -- #guard_msgs in
+  -- #eval gap 9
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval gap 529
+  -- #guard_msgs in
+  -- #eval gap 529
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval gap 15
+  -- #guard_msgs in
+  -- #eval gap 15
 
 vc-postamble: |-
   -- Apps difficulty: introductory

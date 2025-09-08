@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Introduction
   
   There is a war and nobody knows - the alphabet war!  
@@ -38,6 +39,7 @@ vc-description: |-
   Alphabet wars - nuclear strike
   
   Alphabet war - Wo lo loooooo priests join the war
+  -/
 
 vc-preamble: |-
   def Result := String
@@ -80,23 +82,23 @@ vc-definitions: |-
     alphabet_war s = alphabet_war (s ++ s) := sorry
 
 vc-theorems: |-
-  /--
+  /-
   info: 'Right side wins!'
   -/
-  #guard_msgs in
-  #eval alphabet_war "z"
+  -- #guard_msgs in
+  -- #eval alphabet_war "z"
   
-  /--
+  /-
   info: "Let's fight again!"
   -/
-  #guard_msgs in
-  #eval alphabet_war "z*dq*mw*pb*s"
+  -- #guard_msgs in
+  -- #eval alphabet_war "z*dq*mw*pb*s"
   
-  /--
+  /-
   info: 'Left side wins!'
   -/
-  #guard_msgs in
-  #eval alphabet_war "sz**z**zs"
+  -- #guard_msgs in
+  -- #eval alphabet_war "sz**z**zs"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

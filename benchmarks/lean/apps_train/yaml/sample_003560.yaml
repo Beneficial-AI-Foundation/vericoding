@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Bob is a lazy man. 
   
   He needs you to create a method that can determine how many ```letters``` and ```digits``` are in a given string.
@@ -10,6 +11,7 @@ vc-description: |-
   "wicked .. !" --> 6
   
   "!?..A" --> 1
+  -/
 
 vc-preamble: |-
 
@@ -43,23 +45,23 @@ vc-theorems: |-
     (h : ∀ c ∈ s.data, String.isAlphaNum c = false) :
     countLettersAndDigits s = 0 := sorry
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval count_letters_and_digits "n!!ice!!123"
+  -- #guard_msgs in
+  -- #eval count_letters_and_digits "n!!ice!!123"
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval count_letters_and_digits "de?=?=tttes!!t"
+  -- #guard_msgs in
+  -- #eval count_letters_and_digits "de?=?=tttes!!t"
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval count_letters_and_digits "u_n_d_e_r__S_C_O_R_E"
+  -- #guard_msgs in
+  -- #eval count_letters_and_digits "u_n_d_e_r__S_C_O_R_E"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

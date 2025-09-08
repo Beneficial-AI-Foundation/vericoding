@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Unicode Transformation Format – 8-bit
   As the name suggests UTF-8 was designed to encode data in a stream of bytes.
   
@@ -32,6 +33,7 @@ vc-description: |-
   ```
   * Spaces and hyphens just for clarity
   - https://en.wikipedia.org/wiki/UTF-8#Encoding
+  -/
 
 vc-preamble: |-
 
@@ -64,23 +66,23 @@ vc-theorems: |-
     to_utf8_binary "" = "" ∧
     from_utf8_binary "" = "" := sorry
   
-  /--
+  /-
   info: test1_input
   -/
-  #guard_msgs in
-  #eval from_utf8_binary test1_result
+  -- #guard_msgs in
+  -- #eval from_utf8_binary test1_result
   
-  /--
+  /-
   info: test2_input
   -/
-  #guard_msgs in
-  #eval from_utf8_binary test2_result
+  -- #guard_msgs in
+  -- #eval from_utf8_binary test2_result
   
-  /--
+  /-
   info: test3_input
   -/
-  #guard_msgs in
-  #eval from_utf8_binary test3_result
+  -- #guard_msgs in
+  -- #eval from_utf8_binary test3_result
 
 vc-postamble: |-
   -- Apps difficulty: introductory

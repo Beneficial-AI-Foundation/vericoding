@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A robber has attempted to rob a bank but failed to complete his task. However, he had managed to open all the safes.
   
   Oleg the bank client loves money (who doesn't), and decides to take advantage of this failed robbery and steal some money from the safes. There are many safes arranged in a line, where the i-th safe from the left is called safe i. There are n banknotes left in all the safes in total. The i-th banknote is in safe x_{i}. Oleg is now at safe a. There are two security guards, one of which guards the safe b such that b < a, i.e. the first guard is to the left of Oleg. The other guard guards the safe c so that c > a, i.e. he is to the right of Oleg.
@@ -39,6 +40,7 @@ vc-description: |-
   In the first example Oleg can take the banknotes in positions 4, 5, 6 (note that there are 2 banknotes at position 5). Oleg can't take the banknotes in safes 7 and 8 because he can't run into the second security guard. Similarly, Oleg cannot take the banknotes at positions 3 and 2 because he can't run into the first security guard. Thus, he can take a maximum of 4 banknotes.
   
   For the second sample, Oleg can't take any banknotes without bumping into any of the security guards.
+  -/
 
 vc-preamble: |-
 
@@ -77,23 +79,23 @@ vc-theorems: |-
     count_max_banknotes (start + 1) g1 g2 notes :=
   sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval count_max_banknotes 5 3 7 [4, 7, 5, 5, 3, 6, 2, 8]
+  -- #guard_msgs in
+  -- #eval count_max_banknotes 5 3 7 [4, 7, 5, 5, 3, 6, 2, 8]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_max_banknotes 6 5 7 [1, 5, 7, 92, 3]
+  -- #guard_msgs in
+  -- #eval count_max_banknotes 6 5 7 [1, 5, 7, 92, 3]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_max_banknotes 3 2 4 [3]
+  -- #guard_msgs in
+  -- #eval count_max_banknotes 3 2 4 [3]
 
 vc-postamble: |-
   -- Apps difficulty: competition

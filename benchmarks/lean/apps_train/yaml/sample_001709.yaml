@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function which makes a list of strings representing all of the ways you can balance `n` pairs of parentheses
   
   ### Examples
@@ -9,6 +10,7 @@ vc-description: |-
   balanced_parens(2) => ["()()","(())"]
   balanced_parens(3) => ["()()()","(())()","()(())","(()())","((()))"]
   ```
+  -/
 
 vc-preamble: |-
   def isBalanced (s : String) : Bool := sorry
@@ -40,29 +42,29 @@ vc-theorems: |-
   theorem balanced_parens_non_negative (n : Int) :
     n ≥ 0 → ∃ (l : List String), l = balancedParens n.toNat := sorry
   
-  /--
+  /-
   info: ['']
   -/
-  #guard_msgs in
-  #eval balanced_parens 0
+  -- #guard_msgs in
+  -- #eval balanced_parens 0
   
-  /--
+  /-
   info: ['()']
   -/
-  #guard_msgs in
-  #eval balanced_parens 1
+  -- #guard_msgs in
+  -- #eval balanced_parens 1
   
-  /--
+  /-
   info: ['(())', '()()']
   -/
-  #guard_msgs in
-  #eval balanced_parens 2
+  -- #guard_msgs in
+  -- #eval balanced_parens 2
   
-  /--
+  /-
   info: ['((()))', '(()())', '(())()', '()(())', '()()()']
   -/
-  #guard_msgs in
-  #eval balanced_parens 3
+  -- #guard_msgs in
+  -- #eval balanced_parens 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

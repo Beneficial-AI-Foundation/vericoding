@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Adding tip to a restaurant bill in a graceful way can be tricky, thats why you need make a function for it.
   
   The function will receive the restaurant bill (always a positive number) as an argument. You need to 1) **add at least 15%** in tip, 2) round that number up to an *elegant* value and 3) return it.
@@ -22,6 +23,7 @@ vc-description: |-
   12  -->   15
   86  -->  100
   ```
+  -/
 
 vc-preamble: |-
 
@@ -47,29 +49,29 @@ vc-theorems: |-
       let magnitude := UInt64.ofNat (10 ^ (String.length (toString intResult) - 1))
       intResult % (magnitude / 2) = 0) := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval graceful_tipping 1
+  -- #guard_msgs in
+  -- #eval graceful_tipping 1
   
-  /--
+  /-
   info: 15
   -/
-  #guard_msgs in
-  #eval graceful_tipping 12
+  -- #guard_msgs in
+  -- #eval graceful_tipping 12
   
-  /--
+  /-
   info: 100
   -/
-  #guard_msgs in
-  #eval graceful_tipping 86
+  -- #guard_msgs in
+  -- #eval graceful_tipping 86
   
-  /--
+  /-
   info: 1500
   -/
-  #guard_msgs in
-  #eval graceful_tipping 1149
+  -- #guard_msgs in
+  -- #eval graceful_tipping 1149
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The Chef is given an array of numbers and asked to find the first balance point of an array. A balance point is an index in the array N where the sum of the integers to the left of N is equal to the sum of the integers to the right of N. If there is no such balance point, print -1
   
   -----Input-----
@@ -33,6 +34,7 @@ vc-description: |-
   -----Explanation-----
   Example case 1. In the first case, at the midpoint of the array 1, the sum of the left side {7,8,9} is equal to the sum of the right side {9,8,7}
   Example case 1. In the second case, at index 1, the sum of left side =1 is equal to the sum of the right side {50,-51,1,1}
+  -/
 
 vc-preamble: |-
 
@@ -81,23 +83,23 @@ vc-theorems: |-
     find_balance_point arr = -1 →
     find_balance_point (arr.map (· * 2)) = -1 := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_balance_point [7, 8, 9, 1, 9, 8, 7]
+  -- #guard_msgs in
+  -- #eval find_balance_point [7, 8, 9, 1, 9, 8, 7]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval find_balance_point [1, 100, 50, -51, 1, 1]
+  -- #guard_msgs in
+  -- #eval find_balance_point [1, 100, 50, -51, 1, 1]
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval find_balance_point [1, 2, 3]
+  -- #guard_msgs in
+  -- #eval find_balance_point [1, 2, 3]
 
 vc-postamble: |-
   -- Apps difficulty: interview

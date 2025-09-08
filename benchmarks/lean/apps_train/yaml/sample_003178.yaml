@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There is an array of strings. All strings contains similar _letters_ except one. Try to find it!
   
   ```python
@@ -15,6 +16,7 @@ vc-description: |-
   1. [Find the unique number](https://www.codewars.com/kata/585d7d5adb20cf33cb000235)
   2. Find the unique string (this kata)
   3. [Find The Unique](https://www.codewars.com/kata/5862e0db4f7ab47bed0000e5)
+  -/
 
 vc-preamble: |-
 
@@ -53,23 +55,23 @@ vc-theorems: |-
     : let test_arr := [s!" {base_str} ", base_str, s!"{base_str} ", "unique"]
       find_uniq test_arr = "unique" := sorry
   
-  /--
+  /-
   info: 'BbBb'
   -/
-  #guard_msgs in
-  #eval find_uniq ["Aa", "aaa", "aaaaa", "BbBb", "Aaaa", "AaAaAa", "a"]
+  -- #guard_msgs in
+  -- #eval find_uniq ["Aa", "aaa", "aaaaa", "BbBb", "Aaaa", "AaAaAa", "a"]
   
-  /--
+  /-
   info: 'foo'
   -/
-  #guard_msgs in
-  #eval find_uniq ["abc", "acb", "bac", "foo", "bca", "cab", "cba"]
+  -- #guard_msgs in
+  -- #eval find_uniq ["abc", "acb", "bac", "foo", "bca", "cab", "cba"]
   
-  /--
+  /-
   info: 'victor'
   -/
-  #guard_msgs in
-  #eval find_uniq ["silvia", "vasili", "victor"]
+  -- #guard_msgs in
+  -- #eval find_uniq ["silvia", "vasili", "victor"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

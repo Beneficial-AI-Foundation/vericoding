@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The integer ```64``` is the first integer that has all of its digits even and furthermore, is a perfect square.
   
   The second one is ```400``` and the third one ```484```.
@@ -20,6 +21,7 @@ vc-description: |-
   You do not have to check the entries, ```a``` and ```b``` always positive integers and ```a < b``` 
   
   Happy coding!!
+  -/
 
 vc-preamble: |-
   def Nat.toString (n : Nat) : String :=

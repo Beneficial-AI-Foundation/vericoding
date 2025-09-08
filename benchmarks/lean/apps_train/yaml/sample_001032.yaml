@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chefland is a grid with N$N$ rows and M$M$ columns. Each cell of this grid is either empty or contains a house. The distance between a pair of houses is the Manhattan distance between the cells containing them.
   For each d$d$ between 1$1$ and N+M−2$N+M-2$ inclusive, Chef wants to calculate the number of unordered pairs of distinct houses with distance equal to d$d$. Please help him!
   
@@ -27,6 +28,7 @@ vc-description: |-
   
   -----Example Output-----
   1 0 1 1 0
+  -/
 
 vc-preamble: |-
   def make_grid (n m : Nat) (house_coords : List (Nat × Nat)) : List String := sorry

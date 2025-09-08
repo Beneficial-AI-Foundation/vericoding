@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this Kata, we will calculate the **minumum positive number that is not a possible sum** from a list of positive integers. 
   
   ```
@@ -9,6 +10,7 @@ vc-description: |-
   More examples in test cases. 
   
   Good luck!
+  -/
 
 vc-preamble: |-
   def solve (nums : List Nat) : Nat := sorry

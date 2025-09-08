@@ -1,0 +1,114 @@
+/-
+# Task
+John is an orchard worker. 
+
+There are `n` piles of fruits waiting to be transported. Each pile of fruit has a corresponding weight. John's job is to combine the fruits into a pile and wait for the truck to take them away.
+
+Every time, John can combine any two piles(`may be adjacent piles, or not`), and the energy he costs is equal to the weight of the two piles of fruit.
+
+For example, if there are two piles, pile1's weight is `1` and pile2's weight is `2`. After merging, the new pile's weight is `3`, and he consumed 3 units of energy.
+
+John wants to combine all the fruits into 1 pile with the least energy.
+
+Your task is to help John, calculate the minimum energy he costs.
+
+# Input
+
+- `fruits`: An array of positive integers. Each element represents the weight of a pile of fruit.
+
+  Javascript:
+  - 1 <= fruits.length <= 10000
+  - 1 <= fruits[i] <= 10000
+
+  Python:
+  - 1 <= len(fruits) <= 5000
+  - 1 <= fruits[i] <= 10000
+
+# Output
+
+An integer. the minimum energy John costs.
+
+# Examples
+
+For `fruits = [1,2,9]`, the output should be `15`.
+
+```
+3 piles:  1  2  9
+combine 1 and 2 to 3, cost 3 units of energy.
+2 piles:  3  9
+combine 3 and 9 to 12, cost 12 units of energy.
+1 pile:  12
+
+The total units of energy is 3 + 12 = 15 units
+```
+
+For `fruits = [100]`, the output should be `0`.
+
+There's only 1 pile. So no need combine it.
+-/
+
+def List.minimum (l : List Nat) : Option Nat :=
+  sorry
+
+def List.maximum (l : List Nat) : Option Nat :=
+  sorry
+
+def List.sum (l : List Nat) : Nat :=
+  sorry
+
+def List.log2 (n : Nat) : Nat :=
+  sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def combine_fruits (fruits : List Nat) : Nat :=
+  sorry
+
+theorem combine_fruits_empty_singleton {fruits : List Nat} 
+  (h : fruits.length ≤ 1) : combine_fruits fruits = 0 := by
+  sorry
+
+theorem combine_fruits_nonneg {fruits : List Nat} :
+  combine_fruits fruits ≥ 0 := by
+  sorry
+
+theorem combine_fruits_lower_bound {fruits : List Nat} {min1 min2 : Nat}
+  (h : fruits.length ≥ 2)
+  (h1 : fruits.minimum = some min1)
+  (h2 : (fruits.tail).minimum = some min2) :
+  combine_fruits fruits ≥ min1 + min2 := by
+  sorry
+
+theorem combine_fruits_upper_bound {fruits : List Nat} 
+  (h : fruits ≠ []) :
+  combine_fruits fruits ≤ fruits.sum * (fruits.length.log2) := by
+  sorry
+
+theorem combine_fruits_monotone {fruits : List Nat} {x maxVal : Nat}
+  (h : fruits.length ≥ 2)
+  (h2 : fruits.maximum = some maxVal)
+  (h3 : x > maxVal) :
+  combine_fruits (fruits ++ [x]) ≥ combine_fruits fruits := by
+  sorry
+
+/-
+info: 15
+-/
+-- #guard_msgs in
+-- #eval combine_fruits [1, 2, 9]
+
+/-
+info: 0
+-/
+-- #guard_msgs in
+-- #eval combine_fruits [100]
+
+/-
+info: 111
+-/
+-- #guard_msgs in
+-- #eval combine_fruits [4, 3, 5, 6, 10, 20]
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded

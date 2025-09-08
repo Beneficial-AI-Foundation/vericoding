@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Student A and student B are giving each other test answers during a test.  
   They don't want to be caught so they are sending each other coded messages.
   
@@ -30,6 +31,7 @@ vc-description: |-
   Hint: You should probably decipher the example message first before you start coding
   
   Have fun !!!
+  -/
 
 vc-preamble: |-
 
@@ -59,23 +61,23 @@ vc-theorems: |-
     (decipher_message s).length = n*n ∧
     (decipher_message s).data.all (· = 'x') := sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval decipher_message "ArNran u rstm5twob  e ePb"
+  -- #guard_msgs in
+  -- #eval decipher_message "ArNran u rstm5twob  e ePb"
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval decipher_message "92287a76 585a2y0"
+  -- #guard_msgs in
+  -- #eval decipher_message "92287a76 585a2y0"
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval decipher_message "796820 2 "
+  -- #guard_msgs in
+  -- #eval decipher_message "796820 2 "
 
 vc-postamble: |-
   -- Apps difficulty: introductory

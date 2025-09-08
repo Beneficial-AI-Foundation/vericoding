@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # The learning game - Machine Learning #1
   Growing up you would have learnt a lot of things like not to stand in fire, to drink food and eat water and not to jump off very tall things But Machines have it difficult they cannot learn for themselves we have to tell them what to do, why don't we give them a chance to learn it for themselves?
   
@@ -11,6 +12,7 @@ vc-description: |-
   - In C++, the actions can be accessed by ```get_action(i)(unsigned int num)``` where i chooses the function (and therefore can range from 0 to 4) and num is its argument.
   - In python ```ACTIONS()``` returns a list of lambdas.
   - In Golang ```Actions()``` retruns a function slice ```[]func(int) int```
+  -/
 
 vc-preamble: |-
   def Machine.command (m : Machine) (cmd : String) (n : Int) : Int := sorry

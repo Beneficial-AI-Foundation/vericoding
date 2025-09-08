@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this Kata you are to implement a function that parses a string which is composed from tokens of the form 'n1-n2,n3,n4-n5:n6' where 'nX' is a positive integer. Each token represent a different range:
   
   'n1-n2' represents the range n1 to n2 (inclusive in both ends).
@@ -19,6 +20,7 @@ vc-description: |-
   '2' -> [2]
   
   The output should be a list of integers.
+  -/
 
 vc-preamble: |-
 
@@ -50,23 +52,23 @@ vc-theorems: |-
     ¬∃ (lst : List Nat), range_parser s = lst :=
     sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval range_parser "1-10,14, 20-25:2"
+  -- #guard_msgs in
+  -- #eval range_parser "1-10,14, 20-25:2"
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval range_parser "5-10"
+  -- #guard_msgs in
+  -- #eval range_parser "5-10"
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval range_parser "2"
+  -- #guard_msgs in
+  -- #eval range_parser "2"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

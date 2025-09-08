@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array of integers, return the maximum sum for a non-empty subarray (contiguous elements) with at most one element deletion. In other words, you want to choose a subarray and optionally delete one element from it so that there is still at least one element left and the sum of the remaining elements is maximum possible.
   Note that the subarray needs to be non-empty after deleting one element.
   
@@ -20,6 +21,7 @@ vc-description: |-
   
   1 <= arr.length <= 10^5
   -10^4 <= arr[i] <= 10^4
+  -/
 
 vc-preamble: |-
   def maximum_sum_with_deletion (arr : List Int) : Int :=
@@ -43,23 +45,23 @@ vc-theorems: |-
     maximum_sum_with_deletion arr * scale :=
   sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval maximum_sum_with_deletion [1, -2, 0, 3]
+  -- #guard_msgs in
+  -- #eval maximum_sum_with_deletion [1, -2, 0, 3]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval maximum_sum_with_deletion [1, -2, -2, 3]
+  -- #guard_msgs in
+  -- #eval maximum_sum_with_deletion [1, -2, -2, 3]
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval maximum_sum_with_deletion [-1, -1, -1, -1]
+  -- #guard_msgs in
+  -- #eval maximum_sum_with_deletion [-1, -1, -1, -1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

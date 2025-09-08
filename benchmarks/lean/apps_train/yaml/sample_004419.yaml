@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In graph theory, a graph is a collection of nodes with connections between them.
   Any node can be connected to any other node exactly once, and can be connected to no nodes, to some nodes, or to every other node.
   Nodes cannot be connected to themselves
@@ -39,6 +40,7 @@ vc-description: |-
   The order in which each connection is listed for each node also does not matter.
   
   Good luck!
+  -/
 
 vc-preamble: |-
   def isTree (graph : List (List Nat)) : Bool := sorry 
@@ -72,23 +74,23 @@ vc-theorems: |-
     isValidAdjacencyMatrix graph →
     ∀ row ∈ graph, ∀ x ∈ row, x < graph.length := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval isTree [[1], [0]]
+  -- #guard_msgs in
+  -- #eval isTree [[1], [0]]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval isTree [[1, 2], [0, 2], [0, 1]]
+  -- #guard_msgs in
+  -- #eval isTree [[1, 2], [0, 2], [0, 1]]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval isTree [[1, 2], [0, 2], [0, 1], []]
+  -- #guard_msgs in
+  -- #eval isTree [[1, 2], [0, 2], [0, 1], []]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

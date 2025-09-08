@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are a **n** balls numbered from 0 to **n-1** (0,1,2,3,etc). Most of them have the same weight, but one is heavier. Your task is to find it.
   
   Your function will receive two arguments - a `scales` object, and a ball count. The `scales` object has only one method:
@@ -32,6 +33,7 @@ vc-description: |-
   * [novice](http://www.codewars.com/kata/544047f0cf362503e000036e)
   * [conqueror](http://www.codewars.com/kata/54404a06cf36258b08000364)
   * [master](http://www.codewars.com/kata/find-heavy-ball-level-master)
+  -/
 
 vc-preamble: |-
 
@@ -65,23 +67,23 @@ vc-theorems: |-
     find_ball (MockScales.mk 0) n = 0 ∧ 
     find_ball (MockScales.mk (n-1)) n = n-1 := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_ball MockScales(3) 8
+  -- #guard_msgs in
+  -- #eval find_ball MockScales(3) 8
   
-  /--
+  /-
   info: 15
   -/
-  #guard_msgs in
-  #eval find_ball MockScales(15) 27
+  -- #guard_msgs in
+  -- #eval find_ball MockScales(15) 27
   
-  /--
+  /-
   info: 80
   -/
-  #guard_msgs in
-  #eval find_ball MockScales(80) 81
+  -- #guard_msgs in
+  -- #eval find_ball MockScales(80) 81
 
 vc-postamble: |-
   -- Apps difficulty: introductory

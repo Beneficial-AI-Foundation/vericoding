@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a list of non negative integers, arrange them such that they form the largest number.
   
   Example 1:
@@ -12,6 +13,7 @@ vc-description: |-
   Output: "9534330"
   
   Note: The result may be very large, so you need to return a string instead of an integer.
+  -/
 
 vc-preamble: |-
 
@@ -38,23 +40,23 @@ vc-theorems: |-
   theorem multiple_numbers_returns_largest_possible :
     largest_number [3, 30, 34, 5, 9] = "9534330" := sorry
   
-  /--
+  /-
   info: '210'
   -/
-  #guard_msgs in
-  #eval largest_number [10, 2]
+  -- #guard_msgs in
+  -- #eval largest_number [10, 2]
   
-  /--
+  /-
   info: '9534330'
   -/
-  #guard_msgs in
-  #eval largest_number [3, 30, 34, 5, 9]
+  -- #guard_msgs in
+  -- #eval largest_number [3, 30, 34, 5, 9]
   
-  /--
+  /-
   info: '0'
   -/
-  #guard_msgs in
-  #eval largest_number [0, 0]
+  -- #guard_msgs in
+  -- #eval largest_number [0, 0]
 
 vc-postamble: |-
   -- Apps difficulty: interview

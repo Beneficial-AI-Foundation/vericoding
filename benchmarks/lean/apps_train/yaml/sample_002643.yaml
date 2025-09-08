@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your task is to convert a given number into a string with commas added for easier readability.  The number should be rounded to 3 decimal places and the commas should be added at intervals of three digits before the decimal point. There does not need to be a comma at the end of the number.
   
   You will receive both positive and negative numbers.
@@ -13,6 +14,7 @@ vc-description: |-
   commas(-1) == "-1"
   commas(-1000000.123) == "-1,000,000.123"
   ```
+  -/
 
 vc-preamble: |-
   def commas (n : Float) : String := sorry
@@ -46,23 +48,23 @@ vc-theorems: |-
   theorem zero_cases :
     commas 0 = "0" ∧ commas (-0.0) = "0" := sorry
   
-  /--
+  /-
   info: '1,000'
   -/
-  #guard_msgs in
-  #eval commas 1000
+  -- #guard_msgs in
+  -- #eval commas 1000
   
-  /--
+  /-
   info: '100.235'
   -/
-  #guard_msgs in
-  #eval commas 100.2346
+  -- #guard_msgs in
+  -- #eval commas 100.2346
   
-  /--
+  /-
   info: '-1,000,000.123'
   -/
-  #guard_msgs in
-  #eval commas -1000000.123
+  -- #guard_msgs in
+  -- #eval commas -1000000.123
 
 vc-postamble: |-
   -- Apps difficulty: introductory

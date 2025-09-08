@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are teaching students to generate strings consisting of unique lowercase latin characters (a-z). You give an example reference string $s$ to the students.
   You notice that your students just copy paste the reference string instead of creating their own string. So, you tweak the requirements for strings submitted by the students.
   Let us define a function F(s, t) where s and t are strings as the number of characters that are same in both the strings. Note that the position doesn't matter. Here are a few examples of F(s, t):
@@ -33,6 +34,7 @@ vc-description: |-
   efhijlmpqs
   NOPE
   a
+  -/
 
 vc-preamble: |-
 
@@ -60,23 +62,23 @@ vc-theorems: |-
     (h₁ : result ≠ []) :
     ∀ c ∈ result, c ∉ s := sorry
   
-  /--
+  /-
   info: 'abcfgij'
   -/
-  #guard_msgs in
-  #eval solve_unique_string "helowrd" 0
+  -- #guard_msgs in
+  -- #eval solve_unique_string "helowrd" 0
   
-  /--
+  /-
   info: 'efhijlmpqs'
   -/
-  #guard_msgs in
-  #eval solve_unique_string "background" 0
+  -- #guard_msgs in
+  -- #eval solve_unique_string "background" 0
   
-  /--
+  /-
   info: 'a'
   -/
-  #guard_msgs in
-  #eval solve_unique_string "b" 1
+  -- #guard_msgs in
+  -- #eval solve_unique_string "b" 1
 
 vc-postamble: |-
   -- Apps difficulty: interview

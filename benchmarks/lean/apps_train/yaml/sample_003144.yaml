@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In telecomunications we use information coding to detect and prevent errors while sending data. 
   
   A parity bit is a bit added to a string of binary code that indicates whether the number of 1-bits in the string is even or odd. Parity bits are used as the simplest form of error detecting code, and can detect a 1 bit error.
@@ -28,6 +29,7 @@ vc-description: |-
   ```
   "0101100 error 0110000 0101011 error 0110001"
   ```
+  -/
 
 vc-preamble: |-
 
@@ -55,23 +57,23 @@ vc-theorems: |-
       out_byte = "error")) :=
     sorry
   
-  /--
+  /-
   info: '0101100'
   -/
-  #guard_msgs in
-  #eval parity_bit "01011001"
+  -- #guard_msgs in
+  -- #eval parity_bit "01011001"
   
-  /--
+  /-
   info: '0011110 error'
   -/
-  #guard_msgs in
-  #eval parity_bit "00111100 00111101"
+  -- #guard_msgs in
+  -- #eval parity_bit "00111100 00111101"
   
-  /--
+  /-
   info: 'error 0110000 0101011 error 0110001'
   -/
-  #guard_msgs in
-  #eval parity_bit "01101110 01100000 01010110 10001111 01100011"
+  -- #guard_msgs in
+  -- #eval parity_bit "01101110 01100000 01010110 10001111 01100011"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

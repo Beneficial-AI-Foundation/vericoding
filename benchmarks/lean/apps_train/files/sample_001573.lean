@@ -1,0 +1,72 @@
+/-
+## Snail Sort
+
+Given an `n x n` array, return the array elements arranged from outermost elements to the middle element, traveling clockwise.
+
+```
+array = [[1,2,3],
+         [4,5,6],
+         [7,8,9]]
+snail(array) #=> [1,2,3,6,9,8,7,4,5]
+```
+
+For better understanding, please follow the numbers of the next array consecutively:
+
+```
+array = [[1,2,3],
+         [8,9,4],
+         [7,6,5]]
+snail(array) #=> [1,2,3,4,5,6,7,8,9]
+```
+
+This image will illustrate things more clearly:
+
+NOTE: The idea is not sort the elements from the lowest value to the highest; the idea is to traverse the 2-d array in a clockwise snailshell pattern.
+
+NOTE 2: The 0x0 (empty matrix) is represented as en empty array inside an array `[[]]`.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def snail {α : Type} (arr : List (List α)) : List α := sorry
+
+def verify_snail_pattern {α : Type} (arr : List (List α)) (result : List α) : Bool := sorry
+
+theorem snail_empty_array {α : Type} : snail ([] : List (List α)) = [] := sorry
+
+theorem snail_empty_nested {α : Type} : snail [[]] = ([] : List α) := sorry
+
+theorem snail_single_element {α : Type} (x : α) : snail [[x]] = [x] := sorry 
+
+theorem snail_length {α : Type} (arr : List (List α)) :
+  arr ≠ [] → arr.head! ≠ [] → 
+  (snail arr).length = arr.length * (arr.head!).length := sorry
+
+theorem snail_pattern_correct {α : Type} (arr : List (List α)) :
+  arr ≠ [] → arr.head! ≠ [] →
+  verify_snail_pattern arr (snail arr) = true := sorry
+
+theorem snail_empty_list {α : Type} (arr : List (List α)) :
+  arr = [] ∨ arr.head! = [] → snail arr = [] := sorry
+
+/-
+info: []
+-/
+-- #guard_msgs in
+-- #eval snail [[]]
+
+/-
+info: [1]
+-/
+-- #guard_msgs in
+-- #eval snail [[1]]
+
+/-
+info: [1, 2, 3, 6, 9, 8, 7, 4, 5]
+-/
+-- #guard_msgs in
+-- #eval snail [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

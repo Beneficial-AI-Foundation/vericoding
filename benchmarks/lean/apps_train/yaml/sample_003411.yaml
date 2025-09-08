@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Create a method `sayHello`/`say_hello`/`SayHello` that takes as input a name, city, and state to welcome a person. Note that `name` will be an array consisting of one or more values that should be joined together with one space between each, and the length of the `name` array in test cases will vary.
   
   Example:
@@ -8,6 +9,7 @@ vc-description: |-
   ```
   
   This example will return the string `Hello, John Smith! Welcome to Phoenix, Arizona!`
+  -/
 
 vc-preamble: |-
 
@@ -49,23 +51,23 @@ vc-theorems: |-
      result.endsWith (", " ++ state ++ "!")) :=
     sorry
   
-  /--
+  /-
   info: 'Hello, John Smith! Welcome to Phoenix, Arizona!'
   -/
-  #guard_msgs in
-  #eval say_hello ["John", "Smith"] "Phoenix" "Arizona"
+  -- #guard_msgs in
+  -- #eval say_hello ["John", "Smith"] "Phoenix" "Arizona"
   
-  /--
+  /-
   info: 'Hello, Franklin Delano Roosevelt! Welcome to Chicago, Illinois!'
   -/
-  #guard_msgs in
-  #eval say_hello ["Franklin", "Delano", "Roosevelt"] "Chicago" "Illinois"
+  -- #guard_msgs in
+  -- #eval say_hello ["Franklin", "Delano", "Roosevelt"] "Chicago" "Illinois"
   
-  /--
+  /-
   info: 'Hello, Marlo Stanfield! Welcome to Baltimore, Maryland!'
   -/
-  #guard_msgs in
-  #eval say_hello ["Marlo", "Stanfield"] "Baltimore" "Maryland"
+  -- #guard_msgs in
+  -- #eval say_hello ["Marlo", "Stanfield"] "Baltimore" "Maryland"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

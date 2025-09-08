@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this kata, we're going to create the function `nato` that takes a `word` and returns a string that spells the word using the [NATO phonetic alphabet](https://en.wikipedia.org/wiki/NATO_phonetic_alphabet).
   
   There should be a space between each word in the returned string, and the first letter of each word should be capitalized.
@@ -11,6 +12,7 @@ vc-description: |-
   ``` ruby
   nato("Banana") # == "Bravo Alpha November Alpha November Alpha"
   ```
+  -/
 
 vc-preamble: |-
   def isAlpha (s : String) : Bool := 
@@ -50,23 +52,23 @@ vc-theorems: |-
     ∀ w ∈ result.split (· = ' '), w ∈ natoWords :=
   sorry
   
-  /--
+  /-
   info: 'Bravo Alpha November Alpha November Alpha'
   -/
-  #guard_msgs in
-  #eval nato "Banana"
+  -- #guard_msgs in
+  -- #eval nato "Banana"
   
-  /--
+  /-
   info: 'Hotel India'
   -/
-  #guard_msgs in
-  #eval nato "Hi"
+  -- #guard_msgs in
+  -- #eval nato "Hi"
   
-  /--
+  /-
   info: 'Alpha Bravo Charlie'
   -/
-  #guard_msgs in
-  #eval nato "ABC"
+  -- #guard_msgs in
+  -- #eval nato "ABC"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

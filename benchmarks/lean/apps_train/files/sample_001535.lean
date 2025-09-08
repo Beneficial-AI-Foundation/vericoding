@@ -1,0 +1,68 @@
+/-
+Chef is in need of money, so he decided to play a game with Ramsay. In this game, there are $N$ rows of coins (numbered $1$ through $N$). For each valid $i$, the $i$-th row contains $C_i$ coins with values $A_{i, 1}, A_{i, 2}, \ldots, A_{i, C_i}$.
+Chef and Ramsay alternate turns; Chef plays first. In each turns, the current player can choose one row that still contains coins and take one of the coins remaining in this row. Chef may only take the the first (leftmost) remaining coin in the chosen row, while Ramsay may only take the last (rightmost) remaining coin in the chosen row. The game ends when there are no coins left.
+Each player wants to maximise the sum of values of the coins he took. Assuming that both Chef and Ramsay play optimally, what is the maximum amount of money (sum of values of coins) Chef can earn through this game?
+
+-----Input-----
+- The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+- The first line of each test case contains a single integer $N$.
+- $N$ lines follow. For each valid $i$, the $i$-th of these lines contains an integer $C_i$, followed by a space and $C_i$ space-separated integers $A_{i, 1}, A_{i, 2}, \ldots, A_{i, C_i}$.
+
+-----Output-----
+For each test case, print a single line containing one integer ― the maximum amount of money Chef can earn.
+
+-----Constraints-----
+- $1 \le T \le 10$
+- $1 \le N \le 10^4$
+- $1 \le C_i \le 10$ for each valid $i$
+- $1 \le A_{i, j} \le 10^5$ for each valid $i$ and $j$
+
+-----Subtasks-----
+Subtask #1 (20 points): $N = 1$
+Subtask #2 (80 points): original constraints
+
+-----Example Input-----
+1
+2
+4 5 2 3 4
+2 1 6
+
+-----Example Output-----
+8
+
+-----Explanation-----
+Example case 1: One optimal sequence of moves is: Chef takes the coin with value $5$, Ramsay takes $4$, Chef takes $2$, Ramsay takes $3$, Chef takes $1$ and Ramsay takes $6$. At the end, Chef has $5+2+1 = 8$ units of money.
+-/
+
+def sum_list : List Nat → Nat 
+  | [] => 0
+  | x :: xs => x + sum_list xs
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def calculate_chef_money (rows: List (List Nat)) : Nat := sorry
+
+theorem chef_money_nonnegative (rows: List (List Nat)) :
+  calculate_chef_money rows ≥ 0 := sorry
+
+/-
+info: 8
+-/
+-- #guard_msgs in
+-- #eval calculate_chef_money [[4, 5, 2, 3, 4], [2, 1, 6]]
+
+/-
+info: 1
+-/
+-- #guard_msgs in
+-- #eval calculate_chef_money [[2, 1, 2]]
+
+/-
+info: 12
+-/
+-- #guard_msgs in
+-- #eval calculate_chef_money [[3, 5, 2, 3], [4, 1, 6, 4, 2]]
+
+-- Apps difficulty: interview
+-- Assurance level: guarded_and_plausible

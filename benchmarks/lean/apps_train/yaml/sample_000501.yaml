@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There is a tree with N vertices numbered 1 to N.
   The i-th edge in this tree connects Vertex a_i and Vertex b_i, and the color and length of that edge are c_i and d_i, respectively.
   Here the color of each edge is represented by an integer between 1 and N-1 (inclusive). The same integer corresponds to the same color, and different integers correspond to different colors.
@@ -51,6 +52,7 @@ vc-description: |-
    - Query 1: Assuming that the length of every edge whose color is 1 is changed to 100, the distance between Vertex 1 and Vertex 4 is 100 + 30 = 130.
    - Query 2: Assuming that the length of every edge whose color is 1 is changed to 100, the distance between Vertex 1 and Vertex 5 is 100 + 100 = 200.
    - Query 3: Assuming that the length of every edge whose color is 3 is changed to 1000 (there is no such edge), the distance between Vertex 3 and Vertex 4 is 20 + 10 + 30 = 60. Note that the edges of Color 1 now have their original lengths.
+  -/
 
 vc-preamble: |-
 

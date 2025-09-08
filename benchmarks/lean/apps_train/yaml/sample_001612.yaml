@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a square grid of integers arr, a falling path with non-zero shifts is a choice of exactly one element from each row of arr, such that no two elements chosen in adjacent rows are in the same column.
   Return the minimum sum of a falling path with non-zero shifts.
   
@@ -16,6 +17,7 @@ vc-description: |-
   
   1 <= arr.length == arr[i].length <= 200
   -99 <= arr[i][j] <= 99
+  -/
 
 vc-preamble: |-
 
@@ -52,23 +54,23 @@ vc-theorems: |-
     let matrix := List.replicate n (List.replicate n 0)
     min_falling_path_sum matrix = 0 := sorry
   
-  /--
+  /-
   info: 13
   -/
-  #guard_msgs in
-  #eval min_falling_path_sum [[2, 1, 3], [6, 5, 4], [7, 8, 9]]
+  -- #guard_msgs in
+  -- #eval min_falling_path_sum [[2, 1, 3], [6, 5, 4], [7, 8, 9]]
   
-  /--
+  /-
   info: -59
   -/
-  #guard_msgs in
-  #eval min_falling_path_sum arr2
+  -- #guard_msgs in
+  -- #eval min_falling_path_sum arr2
   
-  /--
+  /-
   info: -36
   -/
-  #guard_msgs in
-  #eval min_falling_path_sum arr3
+  -- #guard_msgs in
+  -- #eval min_falling_path_sum arr3
 
 vc-postamble: |-
   -- Apps difficulty: interview

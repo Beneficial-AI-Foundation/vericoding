@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Esolang Interpreters #3 - Custom Paintfuck Interpreter
   
   ## About this Kata Series
@@ -66,6 +67,7 @@ vc-description: |-
   2. [Esolang Interpreters #2 - Custom Smallfuck Interpreter](http://codewars.com/kata/esolang-interpreters-number-2-custom-smallfuck-interpreter)
   3. **Esolang Interpreters #3 - Custom Paintfuck Interpreter**
   4. [Esolang Interpreters #4 - Boolfuck Interpreter](http://codewars.com/kata/esolang-interpreters-number-4-boolfuck-interpreter)
+  -/
 
 vc-preamble: |-
   def interpreter (code: String) (iterations width height: Nat) : String := sorry
@@ -113,23 +115,23 @@ vc-theorems: |-
     ∃ x, x = interpreter code iterations width height
     := sorry
   
-  /--
+  /-
   info: '000000\r\n000000\r\n000000\r\n000000\r\n000000\r\n000000\r\n000000\r\n000000\r\n000000'
   -/
-  #guard_msgs in
-  #eval interpreter "*e*e*e*es*es*ws*ws*w*w*w*n*n*n*ssss*s*s*s*" 0 6 9
+  -- #guard_msgs in
+  -- #eval interpreter "*e*e*e*es*es*ws*ws*w*w*w*n*n*n*ssss*s*s*s*" 0 6 9
   
-  /--
+  /-
   info: '100\r\n100\r\n100'
   -/
-  #guard_msgs in
-  #eval interpreter "*[s*]" 10 3 3
+  -- #guard_msgs in
+  -- #eval interpreter "*[s*]" 10 3 3
   
-  /--
+  /-
   info: '00\r\n00'
   -/
-  #guard_msgs in
-  #eval interpreter "" 0 2 2
+  -- #guard_msgs in
+  -- #eval interpreter "" 0 2 2
 
 vc-postamble: |-
   -- Apps difficulty: interview

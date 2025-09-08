@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Nickname Generator
   
   Write a function, `nicknameGenerator` that takes a string name as an argument and returns the first 3 or 4 letters as a nickname.
@@ -15,6 +16,7 @@ vc-description: |-
   - Input will always be a string.
   - Input will always have the first letter capitalised and the rest lowercase (e.g. Sam).
   - The input can be modified
+  -/
 
 vc-preamble: |-
 
@@ -48,23 +50,23 @@ vc-theorems: |-
     (h : name.length ≤ 3) :
     nicknameGenerator name = "Error: Name too short" := sorry
   
-  /--
+  /-
   info: 'Jim'
   -/
-  #guard_msgs in
-  #eval nickname_generator "Jimmy"
+  -- #guard_msgs in
+  -- #eval nickname_generator "Jimmy"
   
-  /--
+  /-
   info: 'Saam'
   -/
-  #guard_msgs in
-  #eval nickname_generator "Saamy"
+  -- #guard_msgs in
+  -- #eval nickname_generator "Saamy"
   
-  /--
+  /-
   info: 'Error: Name too short'
   -/
-  #guard_msgs in
-  #eval nickname_generator "Sam"
+  -- #guard_msgs in
+  -- #eval nickname_generator "Sam"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

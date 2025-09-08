@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Snuke has a rooted tree with N+1 vertices.
   The vertices are numbered 0 through N, and Vertex 0 is the root of the tree.
   The parent of Vertex i (1 \leq i \leq N) is Vertex p_i.
@@ -34,6 +35,7 @@ vc-description: |-
   8
   
   When we place a marble on both Vertex 1 and 2, there will be multiple marbles on Vertex 0 by step 2. In such a case, these marbles will be removed instead of being moved to the box.
+  -/
 
 vc-preamble: |-
 
@@ -71,23 +73,23 @@ vc-theorems: |-
     let result := solve_marble_game N parents
     0 ≤ result ∧ result < 10^9 + 7 := sorry
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval solve_marble_game 2 [0, 0]
+  -- #guard_msgs in
+  -- #eval solve_marble_game 2 [0, 0]
   
-  /--
+  /-
   info: 96
   -/
-  #guard_msgs in
-  #eval solve_marble_game 5 [0, 1, 1, 0, 4]
+  -- #guard_msgs in
+  -- #eval solve_marble_game 5 [0, 1, 1, 0, 4]
   
-  /--
+  /-
   info: 730395550
   -/
-  #guard_msgs in
-  #eval solve_marble_game 31 [0, 1, 0, 2, 4, 0, 4, 1, 6, 4, 3, 9, 7, 3, 7, 2, 15, 6, 12, 10, 12, 16, 5, 3, 20, 1, 25, 20, 23, 24, 23]
+  -- #guard_msgs in
+  -- #eval solve_marble_game 31 [0, 1, 0, 2, 4, 0, 4, 1, 6, 4, 3, 9, 7, 3, 7, 2, 15, 6, 12, 10, 12, 16, 5, 3, 20, 1, 25, 20, 23, 24, 23]
 
 vc-postamble: |-
   -- Apps difficulty: competition

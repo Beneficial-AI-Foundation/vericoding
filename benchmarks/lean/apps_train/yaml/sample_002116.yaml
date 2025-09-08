@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Dima is a beginner programmer. During his working process, he regularly has to repeat the following operation again and again: to remove every second element from the array. One day he has been bored with easy solutions of this problem, and he has come up with the following extravagant algorithm.
   
   Let's consider that initially array contains n numbers from 1 to n and the number i is located in the cell with the index 2i - 1 (Indices are numbered starting from one) and other cells of the array are empty. Each step Dima selects a non-empty array cell with the maximum index and moves the number written in it to the nearest empty cell to the left of the selected one. The process continues until all n numbers will appear in the first n cells of the array. For example if n = 4, the array is changing as follows: [Image] 
@@ -45,6 +46,7 @@ vc-description: |-
   The first example is shown in the picture.
   
   In the second example the final array is [1, 12, 2, 8, 3, 11, 4, 9, 5, 13, 6, 10, 7].
+  -/
 
 vc-preamble: |-
 
@@ -69,23 +71,23 @@ vc-theorems: |-
     ∀ y : Nat, 1 ≤ y ∧ y ≤ n → ∃ x : Nat, 1 ≤ x ∧ x ≤ n ∧ find_array_element n x = y :=
   sorry
   
-  /--
+  /-
   info: expected[i]
   -/
-  #guard_msgs in
-  #eval find_array_element 4 queries[i]
+  -- #guard_msgs in
+  -- #eval find_array_element 4 queries[i]
   
-  /--
+  /-
   info: expected[i]
   -/
-  #guard_msgs in
-  #eval find_array_element 13 queries[i]
+  -- #guard_msgs in
+  -- #eval find_array_element 13 queries[i]
   
-  /--
+  /-
   info: expected[i]
   -/
-  #guard_msgs in
-  #eval find_array_element 3 queries[i]
+  -- #guard_msgs in
+  -- #eval find_array_element 3 queries[i]
 
 vc-postamble: |-
   -- Apps difficulty: competition

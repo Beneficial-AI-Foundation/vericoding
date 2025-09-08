@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You and your friends have been battling it out with your Rock 'Em, Sock 'Em robots, but things have gotten a little boring. You've each decided to add some amazing new features to your robot and automate them to battle to the death.
   
   Each robot will be represented by an object. You will be given two robot objects, and an object of battle tactics and how much damage they produce. Each robot will have a name, hit points, speed, and then a list of battle tacitcs they are to perform in order. Whichever robot has the best speed, will attack first with one battle tactic. 
@@ -55,6 +56,7 @@ vc-description: |-
   80's Kids #8: The Secret World of Alex Mack
   80's Kids #9: Down in Fraggle Rock 
   80's Kids #10: Captain Planet
+  -/
 
 vc-preamble: |-
 
@@ -96,17 +98,17 @@ vc-theorems: |-
     fight r1 r2 t = "The fight was a draw." :=
   sorry
   
-  /--
+  /-
   info: 'Missile Bob has won the fight.'
   -/
-  #guard_msgs in
-  #eval fight {"name": "Rocky", "health": 100, "speed": 20, "tactics": ["punch", "punch", "laser", "missile"]} {"name": "Missile Bob", "health": 100, "speed": 21, "tactics": ["missile", "missile", "missile", "missile"]} {"punch": 20, "laser": 30, "missile": 35}
+  -- #guard_msgs in
+  -- #eval fight {"name": "Rocky", "health": 100, "speed": 20, "tactics": ["punch", "punch", "laser", "missile"]} {"name": "Missile Bob", "health": 100, "speed": 21, "tactics": ["missile", "missile", "missile", "missile"]} {"punch": 20, "laser": 30, "missile": 35}
   
-  /--
+  /-
   info: 'The fight was a draw.'
   -/
-  #guard_msgs in
-  #eval fight {"name": "Bot1", "health": 100, "speed": 20, "tactics": ["punch"]} {"name": "Bot2", "health": 100, "speed": 20, "tactics": ["punch"]} tactics
+  -- #guard_msgs in
+  -- #eval fight {"name": "Bot1", "health": 100, "speed": 20, "tactics": ["punch"]} {"name": "Bot2", "health": 100, "speed": 20, "tactics": ["punch"]} tactics
 
 vc-postamble: |-
   -- Apps difficulty: introductory

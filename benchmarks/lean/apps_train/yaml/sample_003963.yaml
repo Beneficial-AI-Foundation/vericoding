@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   With a friend we used to play the following game on a chessboard
   (8, rows, 8 columns).
   On the first row at the *bottom* we put numbers:
@@ -50,6 +51,7 @@ vc-description: |-
   to contain any redundant trailing whitespace: you can use dynamically allocated character strings.
   
   #### See Example Test Cases for each language
+  -/
 
 vc-preamble: |-
 
@@ -83,29 +85,29 @@ vc-theorems: |-
                     else result[0]!
     0 ≤ fraction ∧ fraction ≤ n * n := sorry
   
-  /--
+  /-
   info: [0]
   -/
-  #guard_msgs in
-  #eval game 0
+  -- #guard_msgs in
+  -- #eval game 0
   
-  /--
+  /-
   info: [1, 2]
   -/
-  #guard_msgs in
-  #eval game 1
+  -- #guard_msgs in
+  -- #eval game 1
   
-  /--
+  /-
   info: [32]
   -/
-  #guard_msgs in
-  #eval game 8
+  -- #guard_msgs in
+  -- #eval game 8
   
-  /--
+  /-
   info: [10201, 2]
   -/
-  #guard_msgs in
-  #eval game 101
+  -- #guard_msgs in
+  -- #eval game 101
 
 vc-postamble: |-
   -- Apps difficulty: introductory

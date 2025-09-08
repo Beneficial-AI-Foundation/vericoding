@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Problem description.
   Dominic Toretto has taken his crew to compete in this years' Race Wars, a crew-on-crew tournament in which each member of one crew competes with a member of the other crew in a quarter mile drag race. Each win counts as one point for the winning crew. Draws and loses are awarded zero points. In the end the crew with more points is declared the winner of that round and can advance while the losing crew is knocked out. One member can compete in only one race per round and all crews have the same number of members.
   Dom and his crew have a reputation of being the best and naturally everyone expects them to win this year as well.
@@ -40,6 +41,7 @@ vc-description: |-
   
   -----Explanation-----
   If Dom selects Racer 1 of his team to go against Racer 2 of the other team, Racer 2 of his team against Racer 3 of the other team and Racer 3 of his team against Racer 1 of the other team then he ends up with two wins and a loss which gives him 2 points. ...
+  -/
 
 vc-preamble: |-
   def max_race_wins (n : Nat) (my_times : List Nat) (opp_times: List Nat) : Nat :=
@@ -78,23 +80,23 @@ vc-theorems: |-
     (h3 : isDescending opp_times_out) : True :=
   sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval max_race_wins 3 [5, 4, 1] [5, 4, 1]
+  -- #guard_msgs in
+  -- #eval max_race_wins 3 [5, 4, 1] [5, 4, 1]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval max_race_wins 2 [3, 1] [2, 2]
+  -- #guard_msgs in
+  -- #eval max_race_wins 2 [3, 1] [2, 2]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval max_race_wins 4 [5, 4, 3, 2] [6, 5, 4, 1]
+  -- #guard_msgs in
+  -- #eval max_race_wins 4 [5, 4, 3, 2] [6, 5, 4, 1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given is an undirected connected graph with N vertices numbered 1 to N, and M edges numbered 1 to M.
   The given graph may contain multi-edges but not self loops.
   Each edge has an integer label between 1 and N (inclusive).
@@ -47,6 +48,7 @@ vc-description: |-
    - Edge 4 connects Vertex 1 and 3, and its label is 1.
    - Both integers written on the vertices equal the label, so this edge will be removed.
    - After Edge 3 and 4 are removed, the graph will still be connected, so this is a good way of writing integers.
+  -/
 
 vc-preamble: |-
 

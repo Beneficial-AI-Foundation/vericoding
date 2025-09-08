@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   It's your Birthday. Your colleagues buy you a cake. The numbers of candles on the cake is provided (x). Please note this is not reality, and your age can be anywhere up to 1,000. Yes, you would look a mess.
   
   As a surprise, your colleagues have arranged for your friend to hide inside the cake and burst out. They pretend this is for your benefit, but likely it is just because they want to see you fall over covered in cake. Sounds fun!
@@ -10,6 +11,7 @@ vc-description: |-
   example: 'abc' --> a=97, b=2, c=99 --> y total = 198. 
   
   If the carpet catches fire, return 'Fire!', if not, return 'That was close!'.
+  -/
 
 vc-preamble: |-
 
@@ -38,23 +40,23 @@ vc-theorems: |-
     cake 56 "ifkhchlhfd" = "Fire!" := 
   sorry
   
-  /--
+  /-
   info: 'That was close!'
   -/
-  #guard_msgs in
-  #eval cake 900 "abcdef"
+  -- #guard_msgs in
+  -- #eval cake 900 "abcdef"
   
-  /--
+  /-
   info: 'Fire!'
   -/
-  #guard_msgs in
-  #eval cake 56 "ifkhchlhfd"
+  -- #guard_msgs in
+  -- #eval cake 56 "ifkhchlhfd"
   
-  /--
+  /-
   info: 'That was close!'
   -/
-  #guard_msgs in
-  #eval cake 0 "jpipe"
+  -- #guard_msgs in
+  -- #eval cake 0 "jpipe"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

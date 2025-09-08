@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Today Sonya learned about long integers and invited all her friends to share the fun. Sonya has an initially empty multiset with integers. Friends give her t queries, each of one of the following type:   +  a_{i} — add non-negative integer a_{i} to the multiset. Note, that she has a multiset, thus there may be many occurrences of the same integer.   -  a_{i} — delete a single occurrence of non-negative integer a_{i} from the multiset. It's guaranteed, that there is at least one a_{i} in the multiset.  ? s — count the number of integers in the multiset (with repetitions) that match some pattern s consisting of 0 and 1. In the pattern, 0 stands for the even digits, while 1 stands for the odd. Integer x matches the pattern s, if the parity of the i-th from the right digit in decimal notation matches the i-th from the right digit of the pattern. If the pattern is shorter than this integer, it's supplemented with 0-s from the left. Similarly, if the integer is shorter than the pattern its decimal notation is supplemented with the 0-s from the left. 
   
   For example, if the pattern is s = 010, than integers 92, 2212, 50 and 414 match the pattern, while integers 3, 110, 25 and 1030 do not.
@@ -53,6 +54,7 @@ vc-description: |-
   -----Note-----
   
   Consider the integers matching the patterns from the queries of the third type. Queries are numbered in the order they appear in the input.   1 and 241.  361.  101 and 361.  361.  4000.
+  -/
 
 vc-preamble: |-
 

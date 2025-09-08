@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Define two functions: `hex_to_bin` and `bin_to_hex` (or `hexToBin` and `binToHex`)
   
   # hex_to_bin
@@ -39,6 +40,7 @@ vc-description: |-
   Oh, and I've disabled a few things.
   
   Any feedback would be much appreciated
+  -/
 
 vc-preamble: |-
   def bin_to_hex (b : String) : String := sorry 
@@ -72,41 +74,41 @@ vc-theorems: |-
     hex_to_bin "" = "0" ∧
     hex_to_bin "0" = "0" := sorry
   
-  /--
+  /-
   info: '5'
   -/
-  #guard_msgs in
-  #eval bin_to_hex "000101"
+  -- #guard_msgs in
+  -- #eval bin_to_hex "000101"
   
-  /--
+  /-
   info: '4d2'
   -/
-  #guard_msgs in
-  #eval bin_to_hex "10011010010"
+  -- #guard_msgs in
+  -- #eval bin_to_hex "10011010010"
   
-  /--
+  /-
   info: '0'
   -/
-  #guard_msgs in
-  #eval bin_to_hex "000"
+  -- #guard_msgs in
+  -- #eval bin_to_hex "000"
   
-  /--
+  /-
   info: '1111'
   -/
-  #guard_msgs in
-  #eval hex_to_bin "00F"
+  -- #guard_msgs in
+  -- #eval hex_to_bin "00F"
   
-  /--
+  /-
   info: '101'
   -/
-  #guard_msgs in
-  #eval hex_to_bin "5"
+  -- #guard_msgs in
+  -- #eval hex_to_bin "5"
   
-  /--
+  /-
   info: '10011010010'
   -/
-  #guard_msgs in
-  #eval hex_to_bin "04D2"
+  -- #guard_msgs in
+  -- #eval hex_to_bin "04D2"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

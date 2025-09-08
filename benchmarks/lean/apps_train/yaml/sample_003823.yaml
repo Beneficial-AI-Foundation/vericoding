@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Implement a function which 
   creates a **[radix tree](https://en.wikipedia.org/wiki/Radix_tree)** (a space-optimized trie [prefix tree]) 
   in which each node that is the only child is merged with its parent [unless a word from the input ends there]) 
@@ -39,6 +40,7 @@ vc-description: |-
   >>> radix_tree("appleabcd", "apple")
   {"apple": {"abcd": {}}}
   ```
+  -/
 
 vc-preamble: |-
   def radix_tree (words: List String) : NodeMap :=
@@ -86,23 +88,23 @@ vc-theorems: |-
     ∃ w₁ w₂, w₁ ∈ words ∧ w₂ ∈ words ∧ w₁ ≠ w₂ :=
   sorry
   
-  /--
+  /-
   info: {}
   -/
-  #guard_msgs in
-  #eval radix_tree ""
+  -- #guard_msgs in
+  -- #eval radix_tree ""
   
-  /--
+  /-
   info: {'ap': {'e': {}, 'ple': {}}}
   -/
-  #guard_msgs in
-  #eval radix_tree "ape" "apple"
+  -- #guard_msgs in
+  -- #eval radix_tree "ape" "apple"
   
-  /--
+  /-
   info: {'rom': {'an': {'e': {}, 'us': {}}, 'ulus': {}}}
   -/
-  #guard_msgs in
-  #eval radix_tree "romane" "romanus" "romulus"
+  -- #guard_msgs in
+  -- #eval radix_tree "romane" "romanus" "romulus"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

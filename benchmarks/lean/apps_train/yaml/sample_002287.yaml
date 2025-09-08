@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a table $a$ of size $2 \times n$ (i.e. two rows and $n$ columns) consisting of integers from $1$ to $n$.
   
   In one move, you can choose some column $j$ ($1 \le j \le n$) and swap values $a_{1, j}$ and $a_{2, j}$ in it. Each column can be chosen no more than once.
@@ -55,6 +56,7 @@ vc-description: |-
   2
   3 4 
   -1
+  -/
 
 vc-preamble: |-
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    You're given a two-dimensional array of integers `matrix`. Your task is to determine the smallest non-negative integer that is not present in this array.
   
@@ -27,6 +28,7 @@ vc-description: |-
    the result should be `3`
   
    0,1,2,`(3)`...5
+  -/
 
 vc-preamble: |-
 
@@ -49,23 +51,23 @@ vc-theorems: |-
     smallest_integer matrix = 
     smallest_integer (List.map (λ row => List.map (λ x => if x ≥ 0 then x else -1) row) matrix) := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval smallest_integer [[0, 2], [5, 1]]
+  -- #guard_msgs in
+  -- #eval smallest_integer [[0, 2], [5, 1]]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval smallest_integer [[1, 2], [3, 4]]
+  -- #guard_msgs in
+  -- #eval smallest_integer [[1, 2], [3, 4]]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval smallest_integer [[-1, -1], [-1, -1]]
+  -- #guard_msgs in
+  -- #eval smallest_integer [[-1, -1], [-1, -1]]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

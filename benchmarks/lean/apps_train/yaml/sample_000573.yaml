@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Digory Kirke and Polly Plummer are two kids living next door to each other. The attics of the two houses are connected to each other through a passage. Digory's Uncle Andrew has been secretly doing strange things in the attic of his house, and he always ensures that the room is locked. Being curious, Digory suspects that there is another route into the attic through Polly's house, and being curious as kids always are, they wish to find out what it is that Uncle Andrew is secretly up to.
   
   So they start from Polly's house, and walk along the passageway to Digory's. Unfortunately, along the way, they suddenly find that some of the floorboards are missing, and that taking a step forward would have them plummet to their deaths below.
@@ -58,6 +59,7 @@ vc-description: |-
   -----Appendix-----
   
   Irrelevant to the problem description, if you're curious about what Uncle Andrew was up to, he was experimenting on Magic Rings that could facilitate travel between worlds. One such world, as some of you might have heard of, was Narnia.
+  -/
 
 vc-preamble: |-
 
@@ -91,29 +93,29 @@ vc-theorems: |-
     solve_jumps passage = 1 :=
     sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve_jumps "####"
+  -- #guard_msgs in
+  -- #eval solve_jumps "####"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve_jumps "##.#..#"
+  -- #guard_msgs in
+  -- #eval solve_jumps "##.#..#"
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve_jumps "##..#.#"
+  -- #guard_msgs in
+  -- #eval solve_jumps "##..#.#"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve_jumps "##.#....#"
+  -- #guard_msgs in
+  -- #eval solve_jumps "##.#....#"
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There's a waiting room with N chairs set in single row. Chairs are consecutively numbered from 1 to N. First is closest to the entrance (which is exit as well).
   
   For some reason people choose a chair in the following way
@@ -40,6 +41,7 @@ vc-description: |-
   Output should positive integer too - last patient's chair's number
   
   Have fun :)
+  -/
 
 vc-preamble: |-
 
@@ -60,23 +62,23 @@ vc-theorems: |-
     last_chair n = n - 1 := by
     sorry
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval last_chair 10
+  -- #guard_msgs in
+  -- #eval last_chair 10
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval last_chair 5
+  -- #guard_msgs in
+  -- #eval last_chair 5
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval last_chair 3
+  -- #guard_msgs in
+  -- #eval last_chair 3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

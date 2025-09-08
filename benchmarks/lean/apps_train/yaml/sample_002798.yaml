@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this Kata, you will be given an array of numbers in which two numbers occur once and the rest occur only twice. Your task will be to return the sum of the numbers that occur only once. 
   
   For example, `repeats([4,5,7,5,4,8]) = 15` because only the numbers `7` and `8` occur once, and their sum is `15`.
@@ -40,6 +41,7 @@ vc-description: |-
   [Sum of prime-indexed elements](https://www.codewars.com/kata/59f38b033640ce9fc700015b)
   
   [Sum of integer combinations](https://www.codewars.com/kata/59f3178e3640cef6d90000d5)
+  -/
 
 vc-preamble: |-
   def repeats (arr : List Int) : Int := sorry
@@ -73,23 +75,23 @@ vc-theorems: |-
     (h₂ : Perm arr₁ arr₂) :
     repeats arr₁ = repeats arr₂ := sorry
   
-  /--
+  /-
   info: 15
   -/
-  #guard_msgs in
-  #eval repeats [4, 5, 7, 5, 4, 8]
+  -- #guard_msgs in
+  -- #eval repeats [4, 5, 7, 5, 4, 8]
   
-  /--
+  /-
   info: 19
   -/
-  #guard_msgs in
-  #eval repeats [9, 10, 19, 13, 19, 13]
+  -- #guard_msgs in
+  -- #eval repeats [9, 10, 19, 13, 19, 13]
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval repeats [16, 0, 11, 4, 8, 16, 0, 11]
+  -- #guard_msgs in
+  -- #eval repeats [16, 0, 11, 4, 8, 16, 0, 11]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

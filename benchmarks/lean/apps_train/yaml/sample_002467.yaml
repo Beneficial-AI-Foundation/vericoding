@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Function Descriptions=====
   Exceptions
   Errors detected during execution are called exceptions.
@@ -44,6 +45,7 @@ vc-description: |-
   =====Output Format=====
   Print the value of a/b.
   In the case of ZeroDivisionError or ValueError, print the error code.
+  -/
 
 vc-preamble: |-
 
@@ -89,23 +91,23 @@ vc-theorems: |-
     results.length = test_cases.length ∧
     ∀ r ∈ results, (r.startsWith "Error Code:") := sorry
   
-  /--
+  /-
   info: ['Error Code: integer division or modulo by zero']
   -/
-  #guard_msgs in
-  #eval process_divisions ["1 0"]
+  -- #guard_msgs in
+  -- #eval process_divisions ["1 0"]
   
-  /--
+  /-
   info: ["Error Code: invalid literal for int() with base 10: '$'"]
   -/
-  #guard_msgs in
-  #eval process_divisions ["2 $"]
+  -- #guard_msgs in
+  -- #eval process_divisions ["2 $"]
   
-  /--
+  /-
   info: ['3']
   -/
-  #guard_msgs in
-  #eval process_divisions ["3 1"]
+  -- #guard_msgs in
+  -- #eval process_divisions ["3 1"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Definition
   
   **_Disarium number_** is the number that *The sum of its digits powered with their respective positions is equal to the number itself*.
@@ -53,6 +54,7 @@ vc-description: |-
   
   ## Enjoy Learning !!
   # Zizou
+  -/
 
 vc-preamble: |-
 
@@ -88,23 +90,23 @@ vc-theorems: |-
     disarium_number 518 = "Disarium !!" ∧
     disarium_number 598 = "Disarium !!" := sorry
   
-  /--
+  /-
   info: 'Not !!'
   -/
-  #guard_msgs in
-  #eval disarium_number 1024
+  -- #guard_msgs in
+  -- #eval disarium_number 1024
   
-  /--
+  /-
   info: 'Disarium !!'
   -/
-  #guard_msgs in
-  #eval disarium_number 1306
+  -- #guard_msgs in
+  -- #eval disarium_number 1306
   
-  /--
+  /-
   info: 'Not !!'
   -/
-  #guard_msgs in
-  #eval disarium_number 1999
+  -- #guard_msgs in
+  -- #eval disarium_number 1999
 
 vc-postamble: |-
   -- Apps difficulty: introductory

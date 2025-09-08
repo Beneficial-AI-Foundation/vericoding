@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a set of points in the xy-plane, determine the minimum area of a rectangle formed from these points, with sides parallel to the x and y axes.
   If there isn't any rectangle, return 0.
   
@@ -16,6 +17,7 @@ vc-description: |-
   0 <= points[i][0] <= 40000
   0 <= points[i][1] <= 40000
   All points are distinct.
+  -/
 
 vc-preamble: |-
 
@@ -55,23 +57,23 @@ vc-theorems: |-
     min_area_rectangle points = 
     min_area_rectangle (points.map fun p => (p.1 + shift, p.2 + shift)) := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval min_area_rectangle [[1, 1], [1, 3], [3, 1], [3, 3], [2, 2]]
+  -- #guard_msgs in
+  -- #eval min_area_rectangle [[1, 1], [1, 3], [3, 1], [3, 3], [2, 2]]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_area_rectangle [[1, 1], [1, 3], [3, 1], [3, 3], [4, 1], [4, 3]]
+  -- #guard_msgs in
+  -- #eval min_area_rectangle [[1, 1], [1, 3], [3, 1], [3, 3], [4, 1], [4, 3]]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval min_area_rectangle [[1, 1], [1, 2], [2, 1], [2, 2]]
+  -- #guard_msgs in
+  -- #eval min_area_rectangle [[1, 1], [1, 2], [2, 1], [2, 2]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

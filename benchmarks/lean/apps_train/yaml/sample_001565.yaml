@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Story
   
   Before we dive into the exercise, I would like to show you why these numbers are so important in computer programming today.
@@ -47,6 +48,7 @@ vc-description: |-
   
   PS: be careful some numbers might exceed `1000`.
   If this kata is too hard for you try to solve pascal triangle and something similar to this and then come back :).
+  -/
 
 vc-preamble: |-
 
@@ -77,23 +79,23 @@ vc-theorems: |-
     bernoulli_number 1 = -1/2 :=
   sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval bernoulli_number 0
+  -- #guard_msgs in
+  -- #eval bernoulli_number 0
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval bernoulli_number 3
+  -- #guard_msgs in
+  -- #eval bernoulli_number 3
   
-  /--
+  /-
   info: Fraction(1, 42)
   -/
-  #guard_msgs in
-  #eval bernoulli_number 6
+  -- #guard_msgs in
+  -- #eval bernoulli_number 6
 
 vc-postamble: |-
   -- Apps difficulty: interview

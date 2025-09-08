@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef is multi-talented. He has developed a cure for coronavirus called COVAC-19. Now that everyone in the world is infected, it is time to distribute it throughout the world efficiently to wipe out coronavirus from the Earth. Chef just cooks the cure, you are his distribution manager.
   In the world, there are $N$ countries (numbered $1$ through $N$) with populations $a_1, a_2, \ldots, a_N$. Each cure can be used to cure one infected person once. Due to lockdown rules, you may only deliver cures to one country per day, but you may choose that country arbitrarily and independently on each day. Days are numbered by positive integers. On day $1$, Chef has $x$ cures ready. On each subsequent day, Chef can supply twice the number of cures that were delivered (i.e. people that were cured) on the previous day. Chef cannot supply leftovers from the previous or any earlier day, as the cures expire in a day. The number of cures delivered to some country on some day cannot exceed the number of infected people it currently has, either.
   However, coronavirus is not giving up so easily. It can infect a cured person that comes in contact with an infected person again ― formally, it means that the number of infected people in a country doubles at the end of each day, i.e. after the cures for this day are used (obviously up to the population of that country).
@@ -36,6 +37,7 @@ vc-description: |-
   5
   9
   6
+  -/
 
 vc-preamble: |-
 
@@ -77,23 +79,23 @@ vc-theorems: |-
     solve_covac 1 x [x] = 1 :=
     sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval solve_covac 5 5 [1, 2, 3, 4, 5]
+  -- #guard_msgs in
+  -- #eval solve_covac 5 5 [1, 2, 3, 4, 5]
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval solve_covac 5 1 [40, 30, 20, 10, 50]
+  -- #guard_msgs in
+  -- #eval solve_covac 5 1 [40, 30, 20, 10, 50]
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval solve_covac 3 10 [20, 1, 110]
+  -- #guard_msgs in
+  -- #eval solve_covac 3 10 [20, 1, 110]
 
 vc-postamble: |-
   -- Apps difficulty: interview

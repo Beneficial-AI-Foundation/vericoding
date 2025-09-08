@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   Given array of integers `sequence` and some integer `fixedElement`, output the number of `even` values in sequence before the first occurrence of `fixedElement` or `-1` if and only if `fixedElement` is not contained in sequence.
   
@@ -33,6 +34,7 @@ vc-description: |-
   For `sequence = [1, 3, 4, 3] and fixedElement = 3`, the output should be `0`.
   
   `3` appears in `sequence`, but there is no even number before `3`.
+  -/
 
 vc-preamble: |-
 
@@ -60,23 +62,23 @@ vc-theorems: |-
     even_numbers_before_fixed sequence fixed ≥ 0 :=
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval even_numbers_before_fixed [1, 4, 2, 6, 3, 1] 6
+  -- #guard_msgs in
+  -- #eval even_numbers_before_fixed [1, 4, 2, 6, 3, 1] 6
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval even_numbers_before_fixed [2, 2, 2, 1] 3
+  -- #guard_msgs in
+  -- #eval even_numbers_before_fixed [2, 2, 2, 1] 3
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval even_numbers_before_fixed [1, 3, 4, 3] 3
+  -- #guard_msgs in
+  -- #eval even_numbers_before_fixed [1, 3, 4, 3] 3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

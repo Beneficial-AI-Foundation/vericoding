@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Description:
   
    Remove all exclamation marks from the end of words. Words are separated by spaces in the sentence.
@@ -13,6 +14,7 @@ vc-description: |-
   remove("Hi! Hi!") === "Hi Hi"
   remove("!!!Hi !!hi!!! !hi") === "!!!Hi !!hi !hi"
   ```
+  -/
 
 vc-preamble: |-
 
@@ -24,7 +26,7 @@ vc-definitions: |-
   def remove (s : String) : String :=
     sorry
   
-  /-- If a word in the input string doesn't contain exclamation marks,
+  /- If a word in the input string doesn't contain exclamation marks,
       it remains unchanged in the output -/
 
 vc-theorems: |-
@@ -34,14 +36,14 @@ vc-theorems: |-
     w ∈ (remove s).split (· = ' ') :=
   sorry
   
-  /-- No word in the output string ends with an exclamation mark -/
+  /- No word in the output string ends with an exclamation mark -/
   
   theorem no_trailing_exclamations (s : String) :
     ∀ w, w ∈ (remove s).split (· = ' ') →
     ¬ w.endsWith "!" :=
   sorry
   
-  /-- If a word starts with exclamation marks in the input,
+  /- If a word starts with exclamation marks in the input,
       it starts with the same exclamation marks in the output -/
   
   theorem leading_exclamations_preserved (s : String) :
@@ -50,35 +52,35 @@ vc-theorems: |-
     w.startsWith "!" → w' = w ∨ w'.startsWith "!" :=
   sorry
   
-  /--
+  /-
   info: 'Hi'
   -/
-  #guard_msgs in
-  #eval remove "Hi!"
+  -- #guard_msgs in
+  -- #eval remove "Hi!"
   
-  /--
+  /-
   info: 'Hi'
   -/
-  #guard_msgs in
-  #eval remove "Hi!!!"
+  -- #guard_msgs in
+  -- #eval remove "Hi!!!"
   
-  /--
+  /-
   info: '!Hi'
   -/
-  #guard_msgs in
-  #eval remove "!Hi!"
+  -- #guard_msgs in
+  -- #eval remove "!Hi!"
   
-  /--
+  /-
   info: 'Hi Hi'
   -/
-  #guard_msgs in
-  #eval remove "Hi! Hi!"
+  -- #guard_msgs in
+  -- #eval remove "Hi! Hi!"
   
-  /--
+  /-
   info: '!!!Hi !!hi !hi'
   -/
-  #guard_msgs in
-  #eval remove "!!!Hi !!hi!!! !hi"
+  -- #guard_msgs in
+  -- #eval remove "!!!Hi !!hi!!! !hi"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

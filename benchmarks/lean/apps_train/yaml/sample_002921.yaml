@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ### Task
    Each day a plant is growing by `upSpeed` meters. Each night that plant's height decreases by `downSpeed` meters due to the lack of sun heat. Initially, plant is 0 meters tall. We plant the seed at the beginning of a day. We want to know when the height of the plant will reach a certain level.
   
@@ -92,6 +93,7 @@ vc-description: |-
   
   `num_days` is the number of days that it will take for the plant to reach/pass desiredHeight (including the last day in the total count).
   ```
+  -/
 
 vc-preamble: |-
 
@@ -123,23 +125,23 @@ vc-theorems: |-
     up_speed * result - down_speed * (result - 1) ≥ desired_height :=
   sorry
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval growing_plant 100 10 910
+  -- #guard_msgs in
+  -- #eval growing_plant 100 10 910
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval growing_plant 10 9 4
+  -- #guard_msgs in
+  -- #eval growing_plant 10 9 4
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval growing_plant 5 2 6
+  -- #guard_msgs in
+  -- #eval growing_plant 5 2 6
 
 vc-postamble: |-
   -- Apps difficulty: introductory

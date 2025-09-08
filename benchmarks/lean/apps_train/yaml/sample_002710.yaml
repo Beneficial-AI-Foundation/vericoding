@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Consider the array `[3,6,9,12]`. If we generate all the combinations with repetition that sum to `12`, we get `5` combinations: `[12], [6,6], [3,9], [3,3,6], [3,3,3,3]`. The length of the sub-arrays (such as `[3,3,3,3]` should be less than or equal to the length of the initial array (`[3,6,9,12]`).  
   
   Given an array of positive integers and a number `n`, count all combinations with repetition of integers that sum to `n`. For example: 
@@ -15,6 +16,7 @@ vc-description: |-
   [Array combinations](https://www.codewars.com/kata/59e66e48fc3c499ec5000103)
   
   [Sum of prime-indexed elements](https://www.codewars.com/kata/59f38b033640ce9fc700015b)
+  -/
 
 vc-preamble: |-
 
@@ -50,23 +52,23 @@ vc-theorems: |-
     find arr₁ target = find arr₂ target :=
   sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find [1, 2, 3] 5
+  -- #guard_msgs in
+  -- #eval find [1, 2, 3] 5
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval find [3, 6, 9, 12] 12
+  -- #guard_msgs in
+  -- #eval find [3, 6, 9, 12] 12
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find [1, 4, 5, 8] 8
+  -- #guard_msgs in
+  -- #eval find [1, 4, 5, 8] 8
 
 vc-postamble: |-
   -- Apps difficulty: introductory

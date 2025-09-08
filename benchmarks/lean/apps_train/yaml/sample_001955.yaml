@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The life goes up and down, just like nice sequences. Sequence t_1, t_2, ..., t_{n} is called nice if the following two conditions are satisfied:   t_{i} < t_{i} + 1 for each odd i < n;  t_{i} > t_{i} + 1 for each even i < n. 
   
   For example, sequences (2, 8), (1, 5, 1) and (2, 5, 1, 100, 99, 120) are nice, while (1, 1), (1, 2, 3) and (2, 5, 3, 2) are not.
@@ -49,6 +50,7 @@ vc-description: |-
   In the first sample, there are two ways to get a nice sequence with one swap:   Swap t_2 = 8 with t_4 = 7.  Swap t_1 = 2 with t_5 = 7. 
   
   In the second sample, there is only one way — Limak should swap t_1 = 200 with t_4 = 50.
+  -/
 
 vc-preamble: |-
 
@@ -87,23 +89,23 @@ vc-theorems: |-
     ∃ (result : Nat), count_nice_sequence_swaps n sequence = result ∧ result ≥ 0 :=
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_nice_sequence_swaps 5 [2, 8, 4, 7, 7]
+  -- #guard_msgs in
+  -- #eval count_nice_sequence_swaps 5 [2, 8, 4, 7, 7]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_nice_sequence_swaps 4 [200, 150, 100, 50]
+  -- #guard_msgs in
+  -- #eval count_nice_sequence_swaps 4 [200, 150, 100, 50]
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval count_nice_sequence_swaps 10 [3, 2, 1, 4, 1, 4, 1, 4, 1, 4]
+  -- #guard_msgs in
+  -- #eval count_nice_sequence_swaps 10 [3, 2, 1, 4, 1, 4, 1, 4, 1, 4]
 
 vc-postamble: |-
   -- Apps difficulty: competition

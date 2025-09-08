@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   **Steps**
   1. Square the numbers that are greater than zero.
   2. Multiply by 3 every third number.
@@ -15,6 +16,7 @@ vc-description: |-
   ```
   
   P.S.: The sequence consists only of integers. And try not to use "for", "while" or "loop" statements.
+  -/
 
 vc-preamble: |-
 
@@ -52,23 +54,23 @@ vc-theorems: |-
     ∃ (result : Int), operation sequence = result :=
     sorry
   
-  /--
+  /-
   info: -6
   -/
-  #guard_msgs in
-  #eval calc [-2, -1, 0, 1, 2]
+  -- #guard_msgs in
+  -- #eval calc [-2, -1, 0, 1, 2]
   
-  /--
+  /-
   info: 31
   -/
-  #guard_msgs in
-  #eval calc [0, 2, 1, -6, -3, 3]
+  -- #guard_msgs in
+  -- #eval calc [0, 2, 1, -6, -3, 3]
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval calc [1, 1, 1, 1, 1]
+  -- #guard_msgs in
+  -- #eval calc [1, 1, 1, 1, 1]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

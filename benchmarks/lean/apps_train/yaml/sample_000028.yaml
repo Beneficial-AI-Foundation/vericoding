@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Acacius is studying strings theory. Today he came with the following problem.
   
   You are given a string $s$ of length $n$ consisting of lowercase English letters and question marks. It is possible to replace question marks with lowercase English letters in such a way that a string "abacaba" occurs as a substring in a resulting string exactly once?
@@ -62,6 +63,7 @@ vc-description: |-
   In second example seven question marks can be replaced with any seven lowercase English letters and with "abacaba" in particular.
   
   In sixth example there are two occurrences of a string "abacaba" as a substring.
+  -/
 
 vc-preamble: |-
 
@@ -97,17 +99,17 @@ vc-theorems: |-
         let test_s := s.replace "?" (String.mk [c])
         check_abacaba_substring test_s ≠ 1) := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval check_abacaba_substring result
+  -- #guard_msgs in
+  -- #eval check_abacaba_substring result
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval check_abacaba_substring result
+  -- #guard_msgs in
+  -- #eval check_abacaba_substring result
 
 vc-postamble: |-
   -- Apps difficulty: interview

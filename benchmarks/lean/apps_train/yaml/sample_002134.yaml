@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The Bubble Cup hypothesis stood unsolved for $130$ years. Who ever proves the hypothesis will be regarded as one of the greatest mathematicians of our time! A famous mathematician Jerry Mao managed to reduce the hypothesis to this problem:
   
   Given a number $m$, how many polynomials $P$ with coefficients in set ${\{0,1,2,3,4,5,6,7\}}$ have: $P(2)=m$?
@@ -29,6 +30,7 @@ vc-description: |-
   In first case, for $m=2$, polynomials that satisfy the constraint are $x$ and $2$.
   
   In second case, for $m=4$, polynomials that satisfy the constraint are $x^2$, $x + 2$, $2x$ and $4$.
+  -/
 
 vc-preamble: |-
 
@@ -56,23 +58,23 @@ vc-theorems: |-
     (solve_polynomial_counts [n]).head! = (solve_polynomial_counts [n]).head! :=
     sorry
   
-  /--
+  /-
   info: [2, 4]
   -/
-  #guard_msgs in
-  #eval solve_polynomial_counts [2, 4]
+  -- #guard_msgs in
+  -- #eval solve_polynomial_counts [2, 4]
   
-  /--
+  /-
   info: [9]
   -/
-  #guard_msgs in
-  #eval solve_polynomial_counts [9]
+  -- #guard_msgs in
+  -- #eval solve_polynomial_counts [9]
   
-  /--
+  /-
   info: [4, 1, 9, 2, 9]
   -/
-  #guard_msgs in
-  #eval solve_polynomial_counts [4, 1, 8, 3, 9]
+  -- #guard_msgs in
+  -- #eval solve_polynomial_counts [4, 1, 8, 3, 9]
 
 vc-postamble: |-
   -- Apps difficulty: competition

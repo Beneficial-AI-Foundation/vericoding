@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   *Debug*   function `getSumOfDigits` that takes positive integer to calculate sum of it's digits. Assume that argument is an integer.
   
   ### Example
@@ -7,6 +8,7 @@ vc-description: |-
   223  => 7
   1337 => 15
   ```
+  -/
 
 vc-preamble: |-
 

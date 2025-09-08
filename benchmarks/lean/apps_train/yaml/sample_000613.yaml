@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Sheldon is a little geek living in Texas. While his friends like to play outside, little Sheldon likes to play around with ICs and lasers in his house. He decides to build N clap activated toggle machines each with one power inlet and one outlet. Each machine works when its power source inlet is receiving power. When the machine is in 'ON' state and is receiving power at its inlet, it makes power available at its power outlet to which a bulb or another ToGgLe machine could be attached.
   
   Suppose Sheldon attached 2 such machines to one another with the power inlet of the first machine attached to a power source at his house and the outlet of the second machine to a bulb. Initially both machines are in 'OFF' state and power source to first machine is off too. Now the power source is switched on. The first machine receives power but being in the 'OFF' state it does not transmit any power. Now on clapping the first ToGgLe machine toggles to 'ON' and the second machine receives power. On clapping once more the first toggles to 'OFF' and the second toggles to 'ON'. But since the second ToGgLe machine receives no power the bulb does not light up yet. On clapping once more, the first machine which is still receiving power from the source toggles to 'ON' and the second which was already 'ON' does not toggle since it was not receiving power. So both the machine are in 'ON' state and the bulb lights up and little Sheldon is happy.
@@ -30,6 +31,7 @@ vc-description: |-
   ON
   OFF
   ON
+  -/
 
 vc-preamble: |-
 
@@ -66,29 +68,29 @@ vc-theorems: |-
     (k + 1) % (2^N) ≠ 0 → solve_toggle_machines N k = State.OFF :=
     sorry
   
-  /--
+  /-
   info: 'OFF'
   -/
-  #guard_msgs in
-  #eval solve_toggle_machines 4 0
+  -- #guard_msgs in
+  -- #eval solve_toggle_machines 4 0
   
-  /--
+  /-
   info: 'ON'
   -/
-  #guard_msgs in
-  #eval solve_toggle_machines 4 47
+  -- #guard_msgs in
+  -- #eval solve_toggle_machines 4 47
   
-  /--
+  /-
   info: 'OFF'
   -/
-  #guard_msgs in
-  #eval solve_toggle_machines 1 0
+  -- #guard_msgs in
+  -- #eval solve_toggle_machines 1 0
   
-  /--
+  /-
   info: 'ON'
   -/
-  #guard_msgs in
-  #eval solve_toggle_machines 1 1
+  -- #guard_msgs in
+  -- #eval solve_toggle_machines 1 1
 
 vc-postamble: |-
   -- Apps difficulty: interview

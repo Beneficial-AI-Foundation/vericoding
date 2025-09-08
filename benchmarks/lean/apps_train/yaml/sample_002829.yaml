@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    Given an array of 2^(k) integers (for some integer `k`), perform the following operations until the array contains only one element:
   ```
@@ -22,6 +23,7 @@ vc-description: |-
      Constraints: 2^(1) ≤ arr.length ≤ 2^(5), -9 ≤ arr[i] ≤ 99.
   
    - `[output]` an integer
+  -/
 
 vc-preamble: |-
   def isPowerOfTwo (n : Nat) : Bool :=
@@ -58,23 +60,23 @@ vc-theorems: |-
     arrayConversion arr' ≥ arrayConversion arr :=
   sorry
   
-  /--
+  /-
   info: 186
   -/
-  #guard_msgs in
-  #eval array_conversion [1, 2, 3, 4, 5, 6, 7, 8]
+  -- #guard_msgs in
+  -- #eval array_conversion [1, 2, 3, 4, 5, 6, 7, 8]
   
-  /--
+  /-
   info: 64
   -/
-  #guard_msgs in
-  #eval array_conversion [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+  -- #guard_msgs in
+  -- #eval array_conversion [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
   
-  /--
+  /-
   info: 60
   -/
-  #guard_msgs in
-  #eval array_conversion [3, 3, 5, 5]
+  -- #guard_msgs in
+  -- #eval array_conversion [3, 3, 5, 5]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

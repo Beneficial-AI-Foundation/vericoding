@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given the sum and gcd of two numbers, return those two numbers in ascending order. If the numbers do not exist, return `-1`, (or `NULL` in C, `tuple (-1,-1)` in C#, `pair (-1,-1)` in C++,`None` in Rust, `array {-1,-1} ` in Java and Golang).
   
   ```
@@ -15,6 +16,7 @@ vc-description: |-
   More examples in test cases. 
   
   Good luck!
+  -/
 
 vc-preamble: |-
   def solve (sum gcd : Nat) : Option (Nat × Nat) :=
@@ -48,23 +50,23 @@ vc-theorems: |-
   theorem solve_same_number (x : Nat) (h: x > 0) :
     solve (2*x) x = some (x, x) := sorry
   
-  /--
+  /-
   info: [3, 3]
   -/
-  #guard_msgs in
-  #eval solve 6 3
+  -- #guard_msgs in
+  -- #eval solve 6 3
   
-  /--
+  /-
   info: [2, 6]
   -/
-  #guard_msgs in
-  #eval solve 8 2
+  -- #guard_msgs in
+  -- #eval solve 8 2
   
-  /--
+  /-
   info: [4, 8]
   -/
-  #guard_msgs in
-  #eval solve 12 4
+  -- #guard_msgs in
+  -- #eval solve 12 4
 
 vc-postamble: |-
   -- Apps difficulty: introductory

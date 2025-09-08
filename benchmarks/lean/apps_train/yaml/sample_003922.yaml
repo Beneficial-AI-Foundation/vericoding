@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this Kata, we are going to determine if the count of each of the characters in a string can be equal if we remove a single character from that string.
   
   For example:
@@ -11,6 +12,7 @@ vc-description: |-
   More examples in the test cases. Empty string is not tested.
   
   Good luck!
+  -/
 
 vc-preamble: |-
   def solve (s : String) : Bool := sorry
@@ -41,23 +43,23 @@ vc-theorems: |-
     (∀ c₁ c₂, c₁ ∈ s'.data → c₂ ∈ s'.data → 
       countOccurrences c₁ s' = countOccurrences c₂ s') := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval solve "aaaa"
+  -- #guard_msgs in
+  -- #eval solve "aaaa"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval solve "abba"
+  -- #guard_msgs in
+  -- #eval solve "abba"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval solve "abbba"
+  -- #guard_msgs in
+  -- #eval solve "abbba"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

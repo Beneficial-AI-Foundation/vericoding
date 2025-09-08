@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   This problem is a version of problem D from the same contest with some additional constraints and tasks.
   
   There are $n$ candies in a candy box. The type of the $i$-th candy is $a_i$ ($1 \le a_i \le n$). 
@@ -67,6 +68,7 @@ vc-description: |-
   -----Note-----
   
   In the first query, you can include two candies of type $4$ and one candy of type $5$. All of them have $f_i = 1$ and you don't mind giving them away as part of the gift.
+  -/
 
 vc-preamble: |-
   def List.sum : List Nat → Nat 
@@ -103,23 +105,23 @@ vc-theorems: |-
     let (candies, given) := solveCandyBox n types flags
     given ≤ candies ∧ candies ≤ n ∧ given ≤ flags.sum := sorry
   
-  /--
+  /-
   info: (3, 3)
   -/
-  #guard_msgs in
-  #eval solve_candy_box 8 [(1, 0), (4, 1), (2, 0), (4, 1), (5, 1), (6, 1), (3, 0), (2, 0)] [0, 1, 0, 1, 1, 1, 0, 0]
+  -- #guard_msgs in
+  -- #eval solve_candy_box 8 [(1, 0), (4, 1), (2, 0), (4, 1), (5, 1), (6, 1), (3, 0), (2, 0)] [0, 1, 0, 1, 1, 1, 0, 0]
   
-  /--
+  /-
   info: (3, 3)
   -/
-  #guard_msgs in
-  #eval solve_candy_box 4 [(1, 1), (1, 1), (2, 1), (2, 1)] [1, 1, 1, 1]
+  -- #guard_msgs in
+  -- #eval solve_candy_box 4 [(1, 1), (1, 1), (2, 1), (2, 1)] [1, 1, 1, 1]
   
-  /--
+  /-
   info: (9, 5)
   -/
-  #guard_msgs in
-  #eval solve_candy_box 9 [(2, 0), (2, 0), (4, 1), (4, 1), (4, 1), (7, 0), (7, 1), (7, 0), (7, 1)] [0, 0, 1, 1, 1, 0, 1, 0, 1]
+  -- #guard_msgs in
+  -- #eval solve_candy_box 9 [(2, 0), (2, 0), (4, 1), (4, 1), (4, 1), (7, 0), (7, 1), (7, 0), (7, 1)] [0, 0, 1, 1, 1, 0, 1, 0, 1]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are n student groups at the university. During the study day, each group can take no more than 7 classes. Seven time slots numbered from 1 to 7 are allocated for the classes.
   
   The schedule on Monday is known for each group, i. e. time slots when group will have classes are known.
@@ -38,6 +39,7 @@ vc-description: |-
   In the first example one room is enough. It will be occupied in each of the seven time slot by the first group or by the second group.
   
   In the second example three rooms is enough, because in the seventh time slot all three groups have classes.
+  -/
 
 vc-preamble: |-
 
@@ -63,23 +65,23 @@ vc-theorems: |-
     (schedules.all (fun sch => sch.data[day]? = some '1')) →
     minRoomsNeeded n schedules = n := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval min_rooms_needed 2 ["0101010", "1010101"]
+  -- #guard_msgs in
+  -- #eval min_rooms_needed 2 ["0101010", "1010101"]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval min_rooms_needed 3 ["0101011", "0011001", "0110111"]
+  -- #guard_msgs in
+  -- #eval min_rooms_needed 3 ["0101011", "0011001", "0110111"]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval min_rooms_needed 1 ["1111111"]
+  -- #guard_msgs in
+  -- #eval min_rooms_needed 1 ["1111111"]
 
 vc-postamble: |-
   -- Apps difficulty: competition

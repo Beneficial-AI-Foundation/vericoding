@@ -1,7 +1,9 @@
 vc-description: |-
+  /-
   Make a function that returns the value multiplied by 50 and increased by 6. If the value entered is a string it should return "Error".
   
   Note: in `C#`, you'll always get the input as a string, so the above applies if the string isn't representing a double value.
+  -/
 
 vc-preamble: |-
 
@@ -22,23 +24,23 @@ vc-theorems: |-
   theorem non_numeric_error (x : String ⊕ ByteArray ⊕ List Int) : 
     problem x = Sum.inr "Error" := sorry
   
-  /--
+  /-
   info: 'Error'
   -/
-  #guard_msgs in
-  #eval problem "hello"
+  -- #guard_msgs in
+  -- #eval problem "hello"
   
-  /--
+  /-
   info: 56
   -/
-  #guard_msgs in
-  #eval problem 1
+  -- #guard_msgs in
+  -- #eval problem 1
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval problem 0
+  -- #guard_msgs in
+  -- #eval problem 0
 
 vc-postamble: |-
   -- Apps difficulty: introductory

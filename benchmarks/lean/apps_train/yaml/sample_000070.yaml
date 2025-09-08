@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You're given an array $a$ of $n$ integers, such that $a_1 + a_2 + \cdots + a_n = 0$.
   
   In one operation, you can choose two different indices $i$ and $j$ ($1 \le i, j \le n$), decrement $a_i$ by one and increment $a_j$ by one. If $i < j$ this operation is free, otherwise it costs one coin.
@@ -49,6 +50,7 @@ vc-description: |-
   -----Note-----
   
   Possible strategy for the first test case:   Do $(i=2, j=3)$ three times (free), $a = [-3, 2, 0, 1]$.  Do $(i=2, j=1)$ two times (pay two coins), $a = [-1, 0, 0, 1]$.  Do $(i=4, j=1)$ one time (pay one coin), $a = [0, 0, 0, 0]$.
+  -/
 
 vc-preamble: |-
   def solve_array_zeroes (n : Nat) (arr : List Int) : Nat :=
@@ -73,23 +75,23 @@ vc-theorems: |-
     (List.all arr (fun x => x ≥ 0)) → solve_array_zeroes n arr = 0 :=
   sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval solve_array_zeroes 4 [-3, 5, -3, 1]
+  -- #guard_msgs in
+  -- #eval solve_array_zeroes 4 [-3, 5, -3, 1]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve_array_zeroes 2 [1, -1]
+  -- #guard_msgs in
+  -- #eval solve_array_zeroes 2 [1, -1]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval solve_array_zeroes 4 [-3, 2, -3, 4]
+  -- #guard_msgs in
+  -- #eval solve_array_zeroes 4 [-3, 2, -3, 4]
 
 vc-postamble: |-
   -- Apps difficulty: interview

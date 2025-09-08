@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   *Shamelessly stolen from Here :)*
   
   Your server has sixteen memory banks; each memory bank can hold any number of blocks. You must write a routine to balance the blocks between the memory banks.
@@ -26,6 +27,7 @@ vc-description: |-
   **Hint for those who are timing out:** Look at the number of cycles happening even in the sample tests. That's a _lot_ of different configurations, and a lot of different times you're going to be searching for a matching sequence. Think of ways to cut down on the time this searching process takes.
   
   Please upvote if you enjoyed! :)
+  -/
 
 vc-preamble: |-
   def mem_alloc (banks : List Nat) : Nat := sorry
@@ -48,23 +50,23 @@ vc-theorems: |-
   theorem mem_alloc_deterministic (banks : List Nat) (h : banks.length = 16) :
     mem_alloc banks = mem_alloc banks := sorry
   
-  /--
+  /-
   info: 70
   -/
-  #guard_msgs in
-  #eval mem_alloc [5, 1, 10, 0, 1, 7, 13, 14, 3, 12, 8, 10, 7, 12, 0, 600]
+  -- #guard_msgs in
+  -- #eval mem_alloc [5, 1, 10, 0, 1, 7, 13, 14, 3, 12, 8, 10, 7, 12, 0, 600]
   
-  /--
+  /-
   info: 316
   -/
-  #guard_msgs in
-  #eval mem_alloc [53, 21, 10, 0, 1, 7, 13, 14, 3, 12, 8, 10, 7, 12, 0, 60]
+  -- #guard_msgs in
+  -- #eval mem_alloc [53, 21, 10, 0, 1, 7, 13, 14, 3, 12, 8, 10, 7, 12, 0, 60]
   
-  /--
+  /-
   info: 826
   -/
-  #guard_msgs in
-  #eval mem_alloc [14, 21, 10, 0, 1, 7, 0, 14, 3, 12, 8, 10, 17, 12, 0, 19]
+  -- #guard_msgs in
+  -- #eval mem_alloc [14, 21, 10, 0, 1, 7, 0, 14, 3, 12, 8, 10, 17, 12, 0, 19]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

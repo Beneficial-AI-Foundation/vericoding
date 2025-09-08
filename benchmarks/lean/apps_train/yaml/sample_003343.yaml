@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Description
   Your job is to create a simple password validation function, as seen on many websites. 
   
@@ -16,6 +17,7 @@ vc-description: |-
   - You will only be passed strings.
   - The string can contain any standard keyboard character.
   - Accepted strings can be any length, as long as they are 8 characters or more.
+  -/
 
 vc-preamble: |-
   def isLower (c : Char) : Bool :=
@@ -79,23 +81,23 @@ vc-theorems: |-
     is_valid_password "aaaaA111" = true :=
     sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_valid_password "Abcd1234"
+  -- #guard_msgs in
+  -- #eval is_valid_password "Abcd1234"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_valid_password "Abcd123"
+  -- #guard_msgs in
+  -- #eval is_valid_password "Abcd123"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_valid_password "abcd1234"
+  -- #guard_msgs in
+  -- #eval is_valid_password "abcd1234"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

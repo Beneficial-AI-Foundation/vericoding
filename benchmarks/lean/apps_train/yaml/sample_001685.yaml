@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A group of N golfers wants to play in groups of G players for D days in such a way that no golfer plays more than once with any other golfer. For example, for N=20, G=4, D=5, the solution at Wolfram MathWorld is
   
   ```
@@ -26,6 +27,7 @@ vc-description: |-
   So although each player must play every day, there can be particular pairs of players that never play together.
   
   It is not necessary to consider the case where the number of golfers is zero; no tests will check for that. If you do wish to consider that case, note that you should accept as valid all possible solutions for zero golfers, who (vacuously) can indeed play in an unlimited number of groups of zero.
+  -/
 
 vc-preamble: |-
 
@@ -75,23 +77,23 @@ vc-theorems: |-
      ¬(group2.contains g1 ∧ group2.contains g2)) :=
     sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval valid [["ABCD", "EFGH", "IJKL", "MNOP", "QRST"], ["AEIM", "BJOQ", "CHNT", "DGLS", "FKPR"], ["AGKO", "BIPT", "CFMS", "DHJR", "ELNQ"], ["AHLP", "BKNS", "CEOR", "DFIQ", "GJMT"], ["AFJN", "BLMR", "CGPQ", "DEKT", "HIOS"]]
+  -- #guard_msgs in
+  -- #eval valid [["ABCD", "EFGH", "IJKL", "MNOP", "QRST"], ["AEIM", "BJOQ", "CHNT", "DGLS", "FKPR"], ["AGKO", "BIPT", "CFMS", "DHJR", "ELNQ"], ["AHLP", "BKNS", "CEOR", "DFIQ", "GJMT"], ["AFJN", "BLMR", "CGPQ", "DEKT", "HIOS"]]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval valid [["AB", "AC"]]
+  -- #guard_msgs in
+  -- #eval valid [["AB", "AC"]]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval valid [["AB", "CD"], ["AB", "CD"]]
+  -- #guard_msgs in
+  -- #eval valid [["AB", "CD"], ["AB", "CD"]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

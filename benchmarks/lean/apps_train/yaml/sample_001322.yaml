@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You were strolling outside the restaurant at the end of the universe. On a metaspiral path you stumble upon a weird device which takes a three-digit number as input and processes it. The Hitchhiker's guide to the galaxy explains that it processes the input in the following manner: 
   - Multiplies it with 13, followed by 11 and then 7          
   - Outputs all the distinct three-digit numbers possible from the digits of the new number (each digit can only be used once)          
@@ -27,6 +28,7 @@ vc-description: |-
   
   -----Sample Output:-----
   27
+  -/
 
 vc-preamble: |-
 
@@ -69,23 +71,23 @@ vc-theorems: |-
     (h2 : ∀ c ∈ k.data, '0' <= c ∧ c <= '9') :
     solve_restaurant_device k n = solve_restaurant_device k n := sorry
   
-  /--
+  /-
   info: 27
   -/
-  #guard_msgs in
-  #eval solve_restaurant_device "123" 5
+  -- #guard_msgs in
+  -- #eval solve_restaurant_device "123" 5
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve_restaurant_device "111" 5
+  -- #guard_msgs in
+  -- #eval solve_restaurant_device "111" 5
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve_restaurant_device "123" 4
+  -- #guard_msgs in
+  -- #eval solve_restaurant_device "123" 4
 
 vc-postamble: |-
   -- Apps difficulty: interview

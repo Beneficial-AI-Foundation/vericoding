@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Polycarp analyzes the prices of the new berPhone. At his disposal are the prices for $n$ last days: $a_1, a_2, \dots, a_n$, where $a_i$ is the price of berPhone on the day $i$.
   
   Polycarp considers the price on the day $i$ to be bad if later (that is, a day with a greater number) berPhone was sold at a lower price. For example, if $n=6$ and $a=[3, 9, 4, 6, 7, 5]$, then the number of days with a bad price is $3$ — these are days $2$ ($a_2=9$), $4$ ($a_4=6$) and $5$ ($a_5=7$).
@@ -39,6 +40,7 @@ vc-description: |-
   1
   8
   2
+  -/
 
 vc-preamble: |-
 
@@ -65,23 +67,23 @@ vc-theorems: |-
   theorem count_bad_prices_all_same (n : Nat) (x : Int) :
     count_bad_prices (List.replicate n x) = 0 := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_bad_prices [3, 9, 4, 6, 7, 5]
+  -- #guard_msgs in
+  -- #eval count_bad_prices [3, 9, 4, 6, 7, 5]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_bad_prices [1000000]
+  -- #guard_msgs in
+  -- #eval count_bad_prices [1000000]
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval count_bad_prices [31, 41, 59, 26, 53, 58, 97, 93, 23, 84]
+  -- #guard_msgs in
+  -- #eval count_bad_prices [31, 41, 59, 26, 53, 58, 97, 93, 23, 84]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

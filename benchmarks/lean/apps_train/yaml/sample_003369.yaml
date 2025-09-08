@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are playing euchre and you want to know the new score after finishing a hand. There are two teams and each hand consists of 5 tricks. The team who wins the majority of the tricks will win points but the number of points varies. To determine the number of points, you must know which team called trump, how many tricks each team won, and if anyone went alone. Scoring is as follows:
   
   For the team that called trump:
@@ -14,6 +15,7 @@ vc-description: |-
   Only the team who called trump can go alone and you will notice that it only increases your points if you win all 5 tricks.
   
   Your job is to create a method to calculate the new score. When reading the arguments, team 1 is represented by 1 and team 2 is represented by 2. All scores will be stored with this order: { team1, team2 }.
+  -/
 
 vc-preamble: |-
 
@@ -91,23 +93,23 @@ vc-theorems: |-
       rw [h]
       exact i.2⟩ > score.get i := sorry
   
-  /--
+  /-
   info: [2, 8]
   -/
-  #guard_msgs in
-  #eval update_score [0, 8] 1 False [1, 1, 1, 1, 1]
+  -- #guard_msgs in
+  -- #eval update_score [0, 8] 1 False [1, 1, 1, 1, 1]
   
-  /--
+  /-
   info: [6, 8]
   -/
-  #guard_msgs in
-  #eval update_score [2, 8] 1 True [1, 1, 1, 1, 1]
+  -- #guard_msgs in
+  -- #eval update_score [2, 8] 1 True [1, 1, 1, 1, 1]
   
-  /--
+  /-
   info: [9, 2]
   -/
-  #guard_msgs in
-  #eval update_score [7, 2] 2 False [1, 2, 2, 1, 1]
+  -- #guard_msgs in
+  -- #eval update_score [7, 2] 2 False [1, 2, 2, 1, 1]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

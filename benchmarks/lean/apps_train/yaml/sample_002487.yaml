@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Function Descriptions=====
   zeros
   
@@ -35,6 +36,7 @@ vc-description: |-
   
   =====Output Format=====
   First, print the array using the numpy.zeros tool and then print the array with the numpy.ones tool.
+  -/
 
 vc-preamble: |-
 

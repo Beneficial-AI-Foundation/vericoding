@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Mutation is a genetic operator used to maintain genetic diversity from one generation of a population of genetic algorithm chromosomes to the next.
   
   ![Mutation](http://i.imgur.com/HngmxNN.gif)
@@ -16,6 +17,7 @@ vc-description: |-
     - [Genetic Algorithm Series - #3 Crossover](http://www.codewars.com/kata/genetic-algorithm-series-number-3-crossover)
     - [Genetic Algorithm Series - #4 Get population and fitnesses](http://www.codewars.com/kata/genetic-algorithm-series-number-4-get-population-and-fitnesses)
     - [Genetic Algorithm Series - #5 Roulette wheel selection](http://www.codewars.com/kata/genetic-algorithm-series-number-5-roulette-wheel-selection)
+  -/
 
 vc-preamble: |-
 
@@ -50,23 +52,23 @@ vc-theorems: |-
     (h1 : 0 ≤ p) (h2 : p ≤ 1) :
     mutate chromosome p = mutate chromosome p := sorry
   
-  /--
+  /-
   info: '0'
   -/
-  #guard_msgs in
-  #eval mutate "0" 0
+  -- #guard_msgs in
+  -- #eval mutate "0" 0
   
-  /--
+  /-
   info: '1'
   -/
-  #guard_msgs in
-  #eval mutate "0" 1
+  -- #guard_msgs in
+  -- #eval mutate "0" 1
   
-  /--
+  /-
   info: len(test)
   -/
-  #guard_msgs in
-  #eval len mutate(test, 0.3)
+  -- #guard_msgs in
+  -- #eval len mutate(test, 0.3)
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function ```unpack()``` that unpacks a ```list``` of elements that can contain objects(`int`, `str`, `list`, `tuple`, `dict`, `set`) within each other without any predefined depth, meaning that there can be many levels of elements contained in one another.
   
   Example:
@@ -8,6 +9,7 @@ vc-description: |-
   ```
   
   Note: you don't have to bother about the order of the elements, especially when unpacking a `dict` or a `set`. Just unpack all the elements.
+  -/
 
 vc-preamble: |-
 
@@ -36,11 +38,11 @@ vc-theorems: |-
     result.length = lst.length ∧
     ∀ (x : Int), x ∈ lst → Sum.inr x ∈ result := sorry
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval sorted unpack(test2)
+  -- #guard_msgs in
+  -- #eval sorted unpack(test2)
 
 vc-postamble: |-
   -- Apps difficulty: introductory

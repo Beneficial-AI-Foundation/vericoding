@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a string representing an attendance record for a student. The record only contains the following three characters:
   
   'A' : Absent. 
@@ -18,6 +19,7 @@ vc-description: |-
   
   Input: "PPALLL"
   Output: False
+  -/
 
 vc-preamble: |-
 
@@ -54,23 +56,23 @@ vc-theorems: |-
     (¬(s.data = [] ++ ['L', 'L', 'L'] ++ (List.drop 3 s.data))) ↔
     check_student_record s = true := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval check_student_record "PPALLP"
+  -- #guard_msgs in
+  -- #eval check_student_record "PPALLP"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval check_student_record "PPALLL"
+  -- #guard_msgs in
+  -- #eval check_student_record "PPALLL"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval check_student_record "PPALLP"
+  -- #guard_msgs in
+  -- #eval check_student_record "PPALLP"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

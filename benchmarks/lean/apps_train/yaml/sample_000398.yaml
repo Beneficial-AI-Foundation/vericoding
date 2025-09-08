@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an integer array arr and a target value target, return the integer value such that when we change all the integers larger than value in the given array to be equal to value, the sum of the array gets as close as possible (in absolute difference) to target.
   In case of a tie, return the minimum such integer.
   Notice that the answer is not neccesarilly a number from arr.
@@ -20,6 +21,7 @@ vc-description: |-
   
   1 <= arr.length <= 10^4
   1 <= arr[i], target <= 10^5
+  -/
 
 vc-preamble: |-
   def find_best_value (arr : List Nat) (target : Nat) : Nat :=
@@ -59,23 +61,23 @@ vc-theorems: |-
     result = 0 ∨ result = 1 :=
   sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_best_value [4, 9, 3] 10
+  -- #guard_msgs in
+  -- #eval find_best_value [4, 9, 3] 10
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval find_best_value [2, 3, 5] 10
+  -- #guard_msgs in
+  -- #eval find_best_value [2, 3, 5] 10
   
-  /--
+  /-
   info: 11361
   -/
-  #guard_msgs in
-  #eval find_best_value [60864, 25176, 27249, 21296, 20204] 56803
+  -- #guard_msgs in
+  -- #eval find_best_value [60864, 25176, 27249, 21296, 20204] 56803
 
 vc-postamble: |-
   -- Apps difficulty: interview

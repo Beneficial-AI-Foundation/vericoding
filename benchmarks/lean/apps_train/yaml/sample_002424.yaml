@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string S, return the "reversed" string where all characters that are not a letter stay in the same place, and all letters reverse their positions.
   
   Example 1:
@@ -18,6 +19,7 @@ vc-description: |-
   S.length <= 100
   33 <= S[i].ASCIIcode <= 122 
   S doesn't contain \ or "
+  -/
 
 vc-preamble: |-
 
@@ -48,23 +50,23 @@ vc-theorems: |-
   theorem no_letters_unchanged (s : String) :
     (∀ c ∈ s.data, ¬(isAlpha c)) → reverseOnlyLetters s = s := sorry
   
-  /--
+  /-
   info: 'dc-ba'
   -/
-  #guard_msgs in
-  #eval reverse_only_letters "ab-cd"
+  -- #guard_msgs in
+  -- #eval reverse_only_letters "ab-cd"
   
-  /--
+  /-
   info: 'j-Ih-gfE-dCba'
   -/
-  #guard_msgs in
-  #eval reverse_only_letters "a-bC-dEf-ghIj"
+  -- #guard_msgs in
+  -- #eval reverse_only_letters "a-bC-dEf-ghIj"
   
-  /--
+  /-
   info: 'Qedo1ct-eeLg=ntse-T!'
   -/
-  #guard_msgs in
-  #eval reverse_only_letters "Test1ng-Leet=code-Q!"
+  -- #guard_msgs in
+  -- #eval reverse_only_letters "Test1ng-Leet=code-Q!"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

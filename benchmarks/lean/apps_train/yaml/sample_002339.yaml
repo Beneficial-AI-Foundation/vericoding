@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a positive integer, return its corresponding column title as appear in an Excel sheet.
   
   For example:
@@ -26,6 +27,7 @@ vc-description: |-
   
   Input: 701
   Output: "ZY"
+  -/
 
 vc-preamble: |-
 
@@ -60,23 +62,23 @@ vc-theorems: |-
     convertToExcelTitle 27 = "AA" :=
   sorry
   
-  /--
+  /-
   info: 'A'
   -/
-  #guard_msgs in
-  #eval convert_to_excel_title 1
+  -- #guard_msgs in
+  -- #eval convert_to_excel_title 1
   
-  /--
+  /-
   info: 'AB'
   -/
-  #guard_msgs in
-  #eval convert_to_excel_title 28
+  -- #guard_msgs in
+  -- #eval convert_to_excel_title 28
   
-  /--
+  /-
   info: 'ZY'
   -/
-  #guard_msgs in
-  #eval convert_to_excel_title 701
+  -- #guard_msgs in
+  -- #eval convert_to_excel_title 701
 
 vc-postamble: |-
   -- Apps difficulty: introductory

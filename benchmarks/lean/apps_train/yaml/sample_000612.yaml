@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Cersei wants to be the queen of seven kingdoms.
   
   For this to happen, she needs to address the soldiers in her army. There are n$n$ soldiers in her army (numbered 1$1$ through n$n$). Cersei passes on the message to the first soldier (soldier 1).   
@@ -55,6 +56,7 @@ vc-description: |-
   
   -----EXPLANATION:-----
   Classes 4 and 5 are not present. So, there is no way possible.
+  -/
 
 vc-preamble: |-
 
@@ -97,17 +99,17 @@ vc-theorems: |-
     let result := solveSparrowProblem n k classes links
     result ≥ 0 ∧ result ≤ n := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval solve_sparrow_problem 5 3 [1, 1, 2, 2, 3] [(1, 2), (1, 3), (2, 4), (2, 5)]
+  -- #guard_msgs in
+  -- #eval solve_sparrow_problem 5 3 [1, 1, 2, 2, 3] [(1, 2), (1, 3), (2, 4), (2, 5)]
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval solve_sparrow_problem 5 5 [1, 1, 2, 2, 3] [(1, 2), (1, 3), (2, 4), (2, 5)]
+  -- #guard_msgs in
+  -- #eval solve_sparrow_problem 5 5 [1, 1, 2, 2, 3] [(1, 2), (1, 3), (2, 4), (2, 5)]
 
 vc-postamble: |-
   -- Apps difficulty: interview

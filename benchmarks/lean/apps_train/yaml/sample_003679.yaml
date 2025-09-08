@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   #Sorting on planet Twisted-3-7
   
   There is a planet... in a galaxy far far away. It is exactly like our planet, but it has one difference:
@@ -21,6 +22,7 @@ vc-description: |-
   Have fun coding it and please don't forget to vote and rank this kata! :-) 
   
   I have also created other katas. Take a look if you enjoyed this kata!
+  -/
 
 vc-preamble: |-
 
@@ -53,23 +55,23 @@ vc-theorems: |-
     sort_twisted37 (sort_twisted37 arr) = sort_twisted37 arr :=
   sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval sort_twisted37 [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  -- #guard_msgs in
+  -- #eval sort_twisted37 [1, 2, 3, 4, 5, 6, 7, 8, 9]
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval sort_twisted37 [12, 13, 14]
+  -- #guard_msgs in
+  -- #eval sort_twisted37 [12, 13, 14]
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval sort_twisted37 [9, 2, 4, 7, 3]
+  -- #guard_msgs in
+  -- #eval sort_twisted37 [9, 2, 4, 7, 3]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

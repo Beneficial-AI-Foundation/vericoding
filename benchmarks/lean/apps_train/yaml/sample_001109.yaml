@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a string S containing only lowercase characters. 
   You can rearrange the string and you have to print minimum number of characters needed(can be 0) to make it palindrome.
   
@@ -32,6 +33,7 @@ vc-description: |-
   - Example case 1: a is already a palindrome.
   - Example case 2: abbddcddbba is palindrome by adding 2 more characters.
   - Example case 3: abdefcfedba is palindrome by adding 5 more characters.
+  -/
 
 vc-preamble: |-
 
@@ -61,23 +63,23 @@ vc-theorems: |-
   theorem repeated_chars_palindrome (c : Char) (n : Nat) :
     min_chars_to_palindrome (String.mk (List.replicate n c)) = 0 := sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_chars_to_palindrome "a"
+  -- #guard_msgs in
+  -- #eval min_chars_to_palindrome "a"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_chars_to_palindrome "abbbcbddd"
+  -- #guard_msgs in
+  -- #eval min_chars_to_palindrome "abbbcbddd"
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval min_chars_to_palindrome "abcdef"
+  -- #guard_msgs in
+  -- #eval min_chars_to_palindrome "abcdef"
 
 vc-postamble: |-
   -- Apps difficulty: interview

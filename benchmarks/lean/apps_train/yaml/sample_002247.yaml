@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   As technologies develop, manufacturers are making the process of unlocking a phone as user-friendly as possible. To unlock its new phone, Arkady's pet dog Mu-mu has to bark the password once. The phone represents a password as a string of two lowercase English letters.
   
   Mu-mu's enemy Kashtanka wants to unlock Mu-mu's phone to steal some sensible information, but it can only bark n distinct words, each of which can be represented as a string of two lowercase English letters. Kashtanka wants to bark several words (not necessarily distinct) one after another to pronounce a string containing the password as a substring. Tell if it's possible to unlock the phone in this way, or not.
@@ -53,6 +54,7 @@ vc-description: |-
   In the second example Kashtanka can't produce a string containing password as a substring. Note that it can bark "ht" and then "tp" producing "http", but it doesn't contain the password "hp" as a substring.
   
   In the third example the string "hahahaha" contains "ah" as a substring.
+  -/
 
 vc-preamble: |-
 
@@ -96,23 +98,23 @@ vc-theorems: |-
       String.mk [words[i]!.data[1]!, words[j]!.data[0]!] = password) :=
   sorry
   
-  /--
+  /-
   info: 'YES'
   -/
-  #guard_msgs in
-  #eval can_unlock_phone "ya" ["ah", "oy", "to", "ha"]
+  -- #guard_msgs in
+  -- #eval can_unlock_phone "ya" ["ah", "oy", "to", "ha"]
   
-  /--
+  /-
   info: 'NO'
   -/
-  #guard_msgs in
-  #eval can_unlock_phone "hp" ["ht", "tp"]
+  -- #guard_msgs in
+  -- #eval can_unlock_phone "hp" ["ht", "tp"]
   
-  /--
+  /-
   info: 'YES'
   -/
-  #guard_msgs in
-  #eval can_unlock_phone "ah" ["ha"]
+  -- #guard_msgs in
+  -- #eval can_unlock_phone "ah" ["ha"]
 
 vc-postamble: |-
   -- Apps difficulty: competition

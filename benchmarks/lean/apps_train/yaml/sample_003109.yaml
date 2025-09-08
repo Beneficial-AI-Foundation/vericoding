@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The pair of integer numbers `(m, n)`, such that `10 > m > n > 0`,  (below 10), that its sum, `(m + n)`, and rest, `(m - n)`, are perfect squares, is (5, 4).
   
   Let's see what we have explained with numbers.
@@ -32,6 +33,7 @@ vc-description: |-
   
   Happy coding and enjoy it!!
   (We will be having a second part of a similar exercise (in some days) that will need a faster algorithm for values of `upper_limit` < 1000)
+  -/
 
 vc-preamble: |-
 
@@ -56,23 +58,23 @@ vc-theorems: |-
     ∃ a b : Nat, x + y = a * a ∧ x - y = b * b :=
   sorry
   
-  /--
+  /-
   info: (5, 4)
   -/
-  #guard_msgs in
-  #eval closest_pair_tonum 10
+  -- #guard_msgs in
+  -- #eval closest_pair_tonum 10
   
-  /--
+  /-
   info: (29, 20)
   -/
-  #guard_msgs in
-  #eval closest_pair_tonum 30
+  -- #guard_msgs in
+  -- #eval closest_pair_tonum 30
   
-  /--
+  /-
   info: (45, 36)
   -/
-  #guard_msgs in
-  #eval closest_pair_tonum 50
+  -- #guard_msgs in
+  -- #eval closest_pair_tonum 50
 
 vc-postamble: |-
   -- Apps difficulty: introductory

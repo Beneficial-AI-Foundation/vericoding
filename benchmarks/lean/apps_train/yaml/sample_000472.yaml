@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array arr of positive integers, consider all binary trees such that:
   
   Each node has either 0 or 2 children;
@@ -24,6 +25,7 @@ vc-description: |-
   2 <= arr.length <= 40
   1 <= arr[i] <= 15
   It is guaranteed that the answer fits into a 32-bit signed integer (ie. it is less than 2^31).
+  -/
 
 vc-preamble: |-
 
@@ -42,23 +44,23 @@ vc-theorems: |-
     mct_from_leaf_values [4, 11] = 44 :=
     sorry
   
-  /--
+  /-
   info: 32
   -/
-  #guard_msgs in
-  #eval mct_from_leaf_values [6, 2, 4]
+  -- #guard_msgs in
+  -- #eval mct_from_leaf_values [6, 2, 4]
   
-  /--
+  /-
   info: 44
   -/
-  #guard_msgs in
-  #eval mct_from_leaf_values [4, 11]
+  -- #guard_msgs in
+  -- #eval mct_from_leaf_values [4, 11]
   
-  /--
+  /-
   info: 500
   -/
-  #guard_msgs in
-  #eval mct_from_leaf_values [15, 13, 5, 3, 15]
+  -- #guard_msgs in
+  -- #eval mct_from_leaf_values [15, 13, 5, 3, 15]
 
 vc-postamble: |-
   -- Apps difficulty: interview

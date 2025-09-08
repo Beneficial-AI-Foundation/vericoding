@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this kata, your task is to create a function that takes a single list as an argument and returns a flattened list. The input list will have a maximum of one level of nesting (list(s) inside of a list).
   
   ```python
@@ -27,6 +28,7 @@ vc-description: |-
   ```
   
   Good luck!
+  -/
 
 vc-preamble: |-
 
@@ -63,23 +65,23 @@ vc-theorems: |-
     flattened.length = atomic_elements.length + nested_lengths.foldl (·+·) 0 :=
     sorry
   
-  /--
+  /-
   info: [1, 2, 3, 4]
   -/
-  #guard_msgs in
-  #eval flatten_me [1, [2, 3], 4]
+  -- #guard_msgs in
+  -- #eval flatten_me [1, [2, 3], 4]
   
-  /--
+  /-
   info: ['a', 'b', 'c', 'd']
   -/
-  #guard_msgs in
-  #eval flatten_me [["a", "b"], "c", ["d"]]
+  -- #guard_msgs in
+  -- #eval flatten_me [["a", "b"], "c", ["d"]]
   
-  /--
+  /-
   info: ['!', '?']
   -/
-  #guard_msgs in
-  #eval flatten_me ["!", "?"]
+  -- #guard_msgs in
+  -- #eval flatten_me ["!", "?"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

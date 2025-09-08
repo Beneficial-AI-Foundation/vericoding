@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # RoboScript #1 - Implement Syntax Highlighting
   
   ## Disclaimer
@@ -36,6 +37,7 @@ vc-description: |-
   3. [RoboScript #3 - Implement the RS2 Specification](https://www.codewars.com/kata/58738d518ec3b4bf95000192)
   4. [RoboScript #4 - RS3 Patterns to the Rescue](https://www.codewars.com/kata/594b898169c1d644f900002e)
   5. [RoboScript #5 - The Final Obstacle (Implement RSU)](https://www.codewars.com/kata/5a12755832b8b956a9000133)
+  -/
 
 vc-preamble: |-
   def highlight (s : String) : String := sorry 
@@ -72,23 +74,23 @@ vc-theorems: |-
                      |>.replace "style=\"color: orange\"" ""
     stripped = s := sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval highlight "F3RF5LF7"
+  -- #guard_msgs in
+  -- #eval highlight "F3RF5LF7"
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval highlight "FFFR345F2LL"
+  -- #guard_msgs in
+  -- #eval highlight "FFFR345F2LL"
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval highlight "FF(LF6(RF3)2)3"
+  -- #guard_msgs in
+  -- #eval highlight "FF(LF6(RF3)2)3"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

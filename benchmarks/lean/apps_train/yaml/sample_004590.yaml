@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Inspired by [Round to the next 5](/kata/55d1d6d5955ec6365400006d).
   Warning! This kata contains spoilers on the mentioned one. Solve that one first!
   
@@ -22,6 +23,7 @@ vc-description: |-
   ```
   
   Translator notice: Make sure that you provide about the same random tests, so that a user can get feedback during "Run tests", and not only during "Submit".
+  -/
 
 vc-preamble: |-
 
@@ -45,47 +47,47 @@ vc-theorems: |-
   theorem adjust_idempotent (coin price : Int) (h : coin > 0) :
     adjust coin (adjust coin price) = adjust coin price := sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval adjust 3 0
+  -- #guard_msgs in
+  -- #eval adjust 3 0
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval adjust 3 1
+  -- #guard_msgs in
+  -- #eval adjust 3 1
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval adjust 3 -2
+  -- #guard_msgs in
+  -- #eval adjust 3 -2
   
-  /--
+  /-
   info: -3
   -/
-  #guard_msgs in
-  #eval adjust 3 -4
+  -- #guard_msgs in
+  -- #eval adjust 3 -4
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval adjust 3 3
+  -- #guard_msgs in
+  -- #eval adjust 3 3
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval adjust 3 6
+  -- #guard_msgs in
+  -- #eval adjust 3 6
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval adjust 3 7
+  -- #guard_msgs in
+  -- #eval adjust 3 7
 
 vc-postamble: |-
   -- Apps difficulty: introductory

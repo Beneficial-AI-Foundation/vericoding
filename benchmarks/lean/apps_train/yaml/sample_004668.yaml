@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Create a function ```sel_number()```, that will select numbers that fulfill the following constraints:
   
   1) The numbers should have 2 digits at least.
@@ -42,6 +43,7 @@ vc-description: |-
   (because the instructions says the value of may be included if it fulfills the above constraints of course)
   
   Happy coding!!
+  -/
 
 vc-preamble: |-
   def sel_number (n : Nat) (d : Nat) : Nat :=
@@ -50,7 +52,7 @@ vc-preamble: |-
   def hasAscendingUniqueDigits (n : Nat) : Bool :=
     sorry
   
-  /-- Helper function to count numbers with ascending unique digits -/
+  /- Helper function to count numbers with ascending unique digits -/
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -73,7 +75,7 @@ vc-theorems: |-
     sel_number n 0 ≤ String.length (toString n) :=
     sorry
   
-  /-- Helper function to check if digits are ascending and unique -/
+  /- Helper function to check if digits are ascending and unique -/
   
   theorem sel_number_monotonic_d (n : Nat) :
     ∀ d₁ d₂ : Nat, d₁ ≤ d₂ → d₂ < 10 → n ≥ 12 → 
@@ -85,23 +87,23 @@ vc-theorems: |-
       sel_number n₁ d ≤ sel_number n₂ d :=
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval sel_number 20 2
+  -- #guard_msgs in
+  -- #eval sel_number 20 2
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval sel_number 0 1
+  -- #guard_msgs in
+  -- #eval sel_number 0 1
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval sel_number 50 3
+  -- #guard_msgs in
+  -- #eval sel_number 50 3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

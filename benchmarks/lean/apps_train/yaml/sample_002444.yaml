@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Problem Statement=====
   A valid email address meets the following criteria:
   
@@ -33,6 +34,7 @@ vc-description: |-
   name <user@email.com>
   
   You must print each valid email address in the same order as it was received as input.
+  -/
 
 vc-preamble: |-
   def Email := String
@@ -45,7 +47,7 @@ vc-helpers: |-
 vc-definitions: |-
   def isValidEmailFormat (e : Email) : Bool := sorry
   
-  /-- For a list of valid email addresses, all should be returned unchanged -/
+  /- For a list of valid email addresses, all should be returned unchanged -/
 
 vc-theorems: |-
   theorem validate_valid_emails (emails : List Email) 
@@ -53,43 +55,43 @@ vc-theorems: |-
     validate_emails emails = emails :=
   sorry
   
-  /-- For a list of invalid email addresses, an empty list should be returned -/
+  /- For a list of invalid email addresses, an empty list should be returned -/
   
   theorem validate_invalid_emails (emails : List Email)
     (h : ∀ e ∈ emails, ¬ isValidEmailFormat e) :
     validate_emails emails = [] := 
   sorry
   
-  /-- For a mixed list of valid and invalid emails, only valid ones should be returned -/
+  /- For a mixed list of valid and invalid emails, only valid ones should be returned -/
   
   theorem validate_mixed_emails (emails : List Email)
     (valid : List Email := emails.filter isValidEmailFormat) :
     validate_emails emails = valid :=
   sorry
   
-  /-- Function should not crash on arbitrary string input -/
+  /- Function should not crash on arbitrary string input -/
   
   theorem validate_arbitrary_input (inputs : List String) :
     ∃ result, validate_emails inputs = result :=
   sorry
   
-  /--
+  /-
   info: ['DEXTER <dexter@hotmail.com>']
   -/
-  #guard_msgs in
-  #eval validate_emails ["DEXTER <dexter@hotmail.com>", "VIRUS <virus!@variable.:p>"]
+  -- #guard_msgs in
+  -- #eval validate_emails ["DEXTER <dexter@hotmail.com>", "VIRUS <virus!@variable.:p>"]
   
-  /--
+  /-
   info: ['ALICE <alice123@gmail.com>']
   -/
-  #guard_msgs in
-  #eval validate_emails ["ALICE <alice123@gmail.com>"]
+  -- #guard_msgs in
+  -- #eval validate_emails ["ALICE <alice123@gmail.com>"]
   
-  /--
+  /-
   info: ['CAROL <carol@xyz.com>']
   -/
-  #guard_msgs in
-  #eval validate_emails ["INVALID <inv@k.>", "CAROL <carol@xyz.com>"]
+  -- #guard_msgs in
+  -- #eval validate_emails ["INVALID <inv@k.>", "CAROL <carol@xyz.com>"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this Kata, we will check if a string contains consecutive letters as they appear in the English alphabet and if each letter occurs only once. 
   
   ```Haskell
@@ -14,6 +15,7 @@ vc-description: |-
   All inputs will be lowercase letters. 
   
   More examples in test cases. Good luck!
+  -/
 
 vc-preamble: |-
   def solve (s : String) : Bool :=
@@ -51,23 +53,23 @@ vc-theorems: |-
     ¬(solve "") := by
     sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval solve "abc"
+  -- #guard_msgs in
+  -- #eval solve "abc"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval solve "abd"
+  -- #guard_msgs in
+  -- #eval solve "abd"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval solve "dabc"
+  -- #guard_msgs in
+  -- #eval solve "dabc"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

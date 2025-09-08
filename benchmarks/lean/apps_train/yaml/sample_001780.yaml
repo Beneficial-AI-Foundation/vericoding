@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In an n*n grid, there is a snake that spans 2 cells and starts moving from the top left corner at (0, 0) and (0, 1). The grid has empty cells represented by zeros and blocked cells represented by ones. The snake wants to reach the lower right corner at (n-1, n-2) and (n-1, n-1).
   In one move the snake can:
   
@@ -37,6 +38,7 @@ vc-description: |-
   2 <= n <= 100
   0 <= grid[i][j] <= 1
   It is guaranteed that the snake starts at empty cells.
+  -/
 
 vc-preamble: |-
 
@@ -47,37 +49,37 @@ vc-helpers: |-
 vc-definitions: |-
   def minimum_moves (grid : Array (Array Nat)) : Int := sorry
   
-  /-- For any non-empty n×n grid with all zeros, there exists a valid path to reach bottom right -/
+  /- For any non-empty n×n grid with all zeros, there exists a valid path to reach bottom right -/
 
 vc-theorems: |-
   theorem min_moves_empty_grid_reaches {n : Nat} (h : n ≥ 3) :
     let grid := Array.mk (List.replicate n (Array.mk (List.replicate n (0:Nat))))
     minimum_moves grid > 0 := sorry
   
-  /-- For any n×n grid that is blocked except start position, no valid path exists -/
+  /- For any n×n grid that is blocked except start position, no valid path exists -/
   
   theorem min_moves_blocked_grid_unreachable {n : Nat} (h : n ≥ 3) :
     let blockedGrid := Array.mk (List.replicate n (Array.mk (List.replicate n (1:Nat))))
     let grid := blockedGrid.set! 0 (blockedGrid[0]!.set! 0 0) |>.set! 0 (blockedGrid[0]!.set! 1 0)
     minimum_moves grid = -1 := sorry
   
-  /-- For minimal 3×3 grid of all zeros, there exists a valid path -/
+  /- For minimal 3×3 grid of all zeros, there exists a valid path -/
   
   theorem min_moves_minimal_grid_reaches :
     let grid := Array.mk [Array.mk [(0:Nat),(0:Nat),(0:Nat)], Array.mk [(0:Nat),(0:Nat),(0:Nat)], Array.mk [(0:Nat),(0:Nat),(0:Nat)]]
     minimum_moves grid > 0 := sorry
   
-  /--
+  /-
   info: 11
   -/
-  #guard_msgs in
-  #eval minimum_moves #[[0, 0, 0, 0, 0, 1], [1, 1, 0, 0, 1, 0], [0, 0, 0, 0, 1, 1], [0, 0, 1, 0, 1, 0], [0, 1, 1, 0, 0, 0], [0, 1, 1, 0, 0, 0]]
+  -- #guard_msgs in
+  -- #eval minimum_moves #[[0, 0, 0, 0, 0, 1], [1, 1, 0, 0, 1, 0], [0, 0, 0, 0, 1, 1], [0, 0, 1, 0, 1, 0], [0, 1, 1, 0, 0, 0], [0, 1, 1, 0, 0, 0]]
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval minimum_moves #[[0, 0, 1, 1, 1, 1], [0, 0, 0, 0, 1, 1], [1, 1, 0, 0, 0, 1], [1, 1, 1, 0, 0, 1], [1, 1, 1, 0, 0, 1], [1, 1, 1, 0, 0, 0]]
+  -- #guard_msgs in
+  -- #eval minimum_moves #[[0, 0, 1, 1, 1, 1], [0, 0, 0, 0, 1, 1], [1, 1, 0, 0, 0, 1], [1, 1, 1, 0, 0, 1], [1, 1, 1, 0, 0, 1], [1, 1, 1, 0, 0, 0]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

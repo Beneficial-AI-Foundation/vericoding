@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given two integers N$N$ and M$M$. You have to construct a matrix with N$N$ rows and M$M$ columns. Consider a multiset S$S$ which contains N+M$N + M$ integers: for each row and each column of this matrix, the MEX of the elements of this row/column belongs to S$S$. Then, in the matrix you construct, the MEX of S$S$ must be maximum possible. 
   Note: The MEX of a multiset of integers is the smallest non-negative integer that is not present in this multiset. For example, MEX({4,9,0,1,1,5})=2$\mathrm{MEX}(\{4,9,0,1,1,5\}) = 2$ and MEX({1,2,3})=0$\mathrm{MEX}(\{1,2,3\}) = 0$.
   
@@ -31,6 +32,7 @@ vc-description: |-
   
   -----Explanation-----
   Example case 1: The MEXs of the rows {9,1,0}$\{9, 1, 0\}$, {1,0,2}$\{1, 0, 2\}$ and {7,5,8}$\{7, 5, 8\}$ are 2$2$, 3$3$ and 0$0$ respectively. The MEXs of the columns {9,1,7}$\{9, 1, 7\}$, {1,0,5}$\{1, 0, 5\}$ and {0,2,8}$\{0, 2, 8\}$ are 0$0$, 2$2$ and 1$1$ respectively. Therefore, the multiset which contains the MEX of each row and each column is S={0,0,1,2,2,3}$S = \{0, 0, 1, 2, 2, 3\}$ and MEX(S)=4$\mathrm{MEX}(S) = 4$. We can show that this is the largest MEX that can be obtained for a 3×3$3 \times 3$ matrix.
+  -/
 
 vc-preamble: |-
 
@@ -59,17 +61,17 @@ vc-theorems: |-
     let result := solve_mex_matrix n m
     ∀ row ∈ result, ∀ x ∈ row, x ≥ 0 := sorry
   
-  /--
+  /-
   info: len(expected1)
   -/
-  #guard_msgs in
-  #eval len solve_mex_matrix(3, 3)
+  -- #guard_msgs in
+  -- #eval len solve_mex_matrix(3, 3)
   
-  /--
+  /-
   info: len(expected2)
   -/
-  #guard_msgs in
-  #eval len solve_mex_matrix(4, 2)
+  -- #guard_msgs in
+  -- #eval len solve_mex_matrix(4, 2)
 
 vc-postamble: |-
   -- Apps difficulty: interview

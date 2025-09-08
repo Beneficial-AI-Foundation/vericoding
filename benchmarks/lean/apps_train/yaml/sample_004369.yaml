@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ##Task:
   You have to write a function `add` which takes two binary numbers as strings and returns their sum as a string.
   
@@ -12,6 +13,7 @@ vc-description: |-
   add('1101','101'); => '10010'
   add('1101','10111') => '100100'
   ```
+  -/
 
 vc-preamble: |-
   def add (a b : String) : String := sorry
@@ -48,23 +50,23 @@ vc-theorems: |-
   theorem empty_string_one :
     add "" "1" = "1" ∧ add "1" "" = "1" := sorry
   
-  /--
+  /-
   info: '1001'
   -/
-  #guard_msgs in
-  #eval add "111" "10"
+  -- #guard_msgs in
+  -- #eval add "111" "10"
   
-  /--
+  /-
   info: '10010'
   -/
-  #guard_msgs in
-  #eval add "1101" "101"
+  -- #guard_msgs in
+  -- #eval add "1101" "101"
   
-  /--
+  /-
   info: '100100'
   -/
-  #guard_msgs in
-  #eval add "1101" "10111"
+  -- #guard_msgs in
+  -- #eval add "1101" "10111"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef Zidane likes the number 9. He has a number N, and he wants to turn it into a multiple of 9. He cannot add or remove digits, and he can only change one digit at a time. The only allowed operation is to increment or decrement a digit by one, and doing this takes exactly one second. Note that he cannot increase a digit 9 or decrease a digit 0, and the resulting number must not contain any leading zeroes unless N has a single digit.
   
   Chef Zidane wants to know the minimum amount of time (in seconds) needed to accomplish this. Please help him, before his kitchen gets overwhelmed with mist!
@@ -32,6 +33,7 @@ vc-description: |-
   Example case 1. 1989 is already divisible by 9, so no operations are needed to be performed.
   Example case 2. 86236 can be turned into a multiple of 9 by incrementing the first and third digit (from the left), to get 96336. This takes 2 seconds.
   Example case 3. 90210 can be turned into a multiple of 9 by decrementing the third digit twice and the fourth digit once, to get 90000. This takes 3 seconds.
+  -/
 
 vc-preamble: |-
   def min_time_for_multiple_of_nine (n : Nat) : Nat :=
@@ -51,23 +53,23 @@ vc-theorems: |-
     result ≥ 0 ∧ result ≤ 8 :=
     sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_time_for_multiple_of_nine 1989
+  -- #guard_msgs in
+  -- #eval min_time_for_multiple_of_nine 1989
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_time_for_multiple_of_nine 86236
+  -- #guard_msgs in
+  -- #eval min_time_for_multiple_of_nine 86236
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval min_time_for_multiple_of_nine 90210
+  -- #guard_msgs in
+  -- #eval min_time_for_multiple_of_nine 90210
 
 vc-postamble: |-
   -- Apps difficulty: interview

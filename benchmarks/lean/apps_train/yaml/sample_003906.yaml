@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Emotional Sort ( ︶︿︶)
   
   You'll have a function called "**sortEmotions**" that will return an array of **emotions** sorted. It has two parameters, the first parameter called "**arr**" will expect an array of **emotions** where an **emotion** will be one of the following:
@@ -36,6 +37,7 @@ vc-description: |-
   - All **emotions** will be valid
   
   ## Enjoy! (づ｡◕‿‿◕｡)づ
+  -/
 
 vc-preamble: |-
 
@@ -92,23 +94,23 @@ vc-theorems: |-
     sort_emotions [emotion] ascending = [emotion] :=
     sorry
   
-  /--
+  /-
   info: [':D', ':D', ':(', 'T_T']
   -/
-  #guard_msgs in
-  #eval sort_emotions [":D", "T_T", ":D", ":("] True
+  -- #guard_msgs in
+  -- #eval sort_emotions [":D", "T_T", ":D", ":("] True
   
-  /--
+  /-
   info: ['T_T', ':(', ':(', ':D']
   -/
-  #guard_msgs in
-  #eval sort_emotions ["T_T", ":D", ":(", ":("] False
+  -- #guard_msgs in
+  -- #eval sort_emotions ["T_T", ":D", ":(", ":("] False
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval sort_emotions [] True
+  -- #guard_msgs in
+  -- #eval sort_emotions [] True
 
 vc-postamble: |-
   -- Apps difficulty: introductory

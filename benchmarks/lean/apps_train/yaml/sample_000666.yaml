@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given an axis-aligned rectangle in a 2D Cartesian plane. The bottom left corner of this rectangle has coordinates (0,0)$(0, 0)$ and the top right corner has coordinates (N−1,N−1)$(N-1, N-1)$. You are also given K$K$ light sources; each light source is a point inside or on the perimeter of the rectangle.
   For each light source, let's divide the plane into four quadrants by a horizontal and a vertical line passing through this light source. The light source can only illuminate one of these quadrants (including its border, i.e. the point containing the light source and two half-lines), but the quadrants illuminated by different light sources may be different.
   You want to assign a quadrant to each light source in such a way that when they illuminate their respective quadrants, the entire rectangle (including its perimeter) is illuminated. Find out whether it is possible to assign quadrants to light sources in such a way.
@@ -30,6 +31,7 @@ vc-description: |-
   -----Example Output-----
   yes
   no
+  -/
 
 vc-preamble: |-
 
@@ -64,23 +66,23 @@ vc-theorems: |-
     (assess_lights 3 n [(0,0), (x % n, y % n), (n-1,n-1)] = "yes") ∨
     (assess_lights 3 n [(0,0), (x % n, y % n), (n-1,n-1)] = "no") := sorry
   
-  /--
+  /-
   info: 'yes'
   -/
-  #guard_msgs in
-  #eval assess_lights 2 10 [(0, 0), (1, 0)]
+  -- #guard_msgs in
+  -- #eval assess_lights 2 10 [(0, 0), (1, 0)]
   
-  /--
+  /-
   info: 'no'
   -/
-  #guard_msgs in
-  #eval assess_lights 2 10 [(1, 2), (1, 1)]
+  -- #guard_msgs in
+  -- #eval assess_lights 2 10 [(1, 2), (1, 1)]
   
-  /--
+  /-
   info: 'yes'
   -/
-  #guard_msgs in
-  #eval assess_lights 3 5 [(0, 0), (4, 2), (2, 4)]
+  -- #guard_msgs in
+  -- #eval assess_lights 3 5 [(0, 0), (4, 2), (2, 4)]
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   An encoded string S is given.  To find and write the decoded string to a tape, the encoded string is read one character at a time and the following steps are taken:
   
   If the character read is a letter, that letter is written onto the tape.
@@ -33,6 +34,7 @@ vc-description: |-
   1 <= K <= 10^9
   It's guaranteed that K is less than or equal to the length of the decoded string.
   The decoded string is guaranteed to have less than 2^63 letters.
+  -/
 
 vc-preamble: |-
 
@@ -66,23 +68,23 @@ vc-theorems: |-
     : decode_at_index s 1 = String.mk [(s.data.filter Char.isAlpha).head!] :=
     sorry
   
-  /--
+  /-
   info: 'o'
   -/
-  #guard_msgs in
-  #eval decode_at_index "leet2code3" 10
+  -- #guard_msgs in
+  -- #eval decode_at_index "leet2code3" 10
   
-  /--
+  /-
   info: 'h'
   -/
-  #guard_msgs in
-  #eval decode_at_index "ha22" 5
+  -- #guard_msgs in
+  -- #eval decode_at_index "ha22" 5
   
-  /--
+  /-
   info: 'a'
   -/
-  #guard_msgs in
-  #eval decode_at_index "a2345678999999999999999" 1
+  -- #guard_msgs in
+  -- #eval decode_at_index "a2345678999999999999999" 1
 
 vc-postamble: |-
   -- Apps difficulty: interview

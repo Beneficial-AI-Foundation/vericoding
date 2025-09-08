@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Summation
   
   Write a program that finds the summation of every number from 1 to num. The number will always be a positive integer greater than 0.
@@ -19,6 +20,7 @@ vc-description: |-
   (summation 8) ; 36 (+ 1 2 3 4 5 6 7 8)
   ~~~
   ```
+  -/
 
 vc-preamble: |-
 
@@ -39,23 +41,23 @@ vc-theorems: |-
     summation (a + b) > summation a :=
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval summation 1
+  -- #guard_msgs in
+  -- #eval summation 1
   
-  /--
+  /-
   info: 36
   -/
-  #guard_msgs in
-  #eval summation 8
+  -- #guard_msgs in
+  -- #eval summation 8
   
-  /--
+  /-
   info: 253
   -/
-  #guard_msgs in
-  #eval summation 22
+  -- #guard_msgs in
+  -- #eval summation 22
 
 vc-postamble: |-
   -- Apps difficulty: introductory

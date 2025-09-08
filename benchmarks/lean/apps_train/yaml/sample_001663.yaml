@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   To almost all of us solving sets of linear equations is quite obviously the most exciting bit of linear algebra. Benny does not agree though and wants to write a quick program to solve his homework problems for him. Unfortunately Benny's lack of interest in linear algebra means he has no real clue on how to go about this. Fortunately, you can help him!
   
   Write a method ```solve``` that accepts a list of linear equations that your method will have to solve. The output should be a map (a `Map` object in JavaScript) with a value for each variable in the equations. If the system does not have a unique solution (has infinitely many solutions or is unsolvable), return ```null``` (`None` in python).
@@ -35,6 +36,7 @@ vc-description: |-
   
   `numpy` module has been disabled, so that the task matches the one of the other languages. There is an anti-cheat measure about that, so you won't be able to import some other modules too (either way, you shouldn't need any module to solve this kata...)
   ```
+  -/
 
 vc-preamble: |-
   def Term := String
@@ -76,23 +78,23 @@ vc-theorems: |-
     verify_solution equations (some s) = true :=
   sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval solve_equations ["2x + 4y + 6z = 18", "3y + 3z = 6", "x + 2y = z - 3"]
+  -- #guard_msgs in
+  -- #eval solve_equations ["2x + 4y + 6z = 18", "3y + 3z = 6", "x + 2y = z - 3"]
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval solve_equations ["x + y = 2", "x + y = 3"]
+  -- #guard_msgs in
+  -- #eval solve_equations ["x + y = 2", "x + y = 3"]
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval solve_equations ["x = 1"]
+  -- #guard_msgs in
+  -- #eval solve_equations ["x = 1"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

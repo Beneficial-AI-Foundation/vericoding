@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The central dogma of molecular biology is that DNA is transcribed into RNA, which is then tranlsated into protein. RNA, like DNA, is a long strand of nucleic acids held together by a sugar backbone (ribose in this case). Each segment of three bases is called a codon. Molecular machines called ribosomes translate the RNA codons into amino acid chains, called polypeptides which are then folded into a protein. 
   
   Protein sequences are easily visualized in much the same way that DNA and RNA are, as large strings of letters. An important thing to note is that the 'Stop' codons do not encode for a specific amino acid. Their only function is to stop translation of the protein, as such they are not incorporated into the polypeptide chain. 'Stop' codons should not be in the final protein sequence. To save a you a lot of unnecessary (and boring) typing the keys and values for your amino acid dictionary are provided.
@@ -58,6 +59,7 @@ vc-description: |-
       # Stop codon
       'UAA':'Stop', 'UGA':'Stop', 'UAG':'Stop'
   ```
+  -/
 
 vc-preamble: |-
   def validCodon (c : String) : Bool := sorry
@@ -102,23 +104,23 @@ vc-theorems: |-
   theorem protein_returns_string_length {rna : String} (h : ∀ c, c ∈ rna.data → c ∈ ['A', 'U', 'G', 'C']) :
     protein rna ≠ "" → (protein rna).length ≤ rna.length / 3 := sorry
   
-  /--
+  /-
   info: 'M'
   -/
-  #guard_msgs in
-  #eval protein "AUGUGA"
+  -- #guard_msgs in
+  -- #eval protein "AUGUGA"
   
-  /--
+  /-
   info: 'CDEWARS'
   -/
-  #guard_msgs in
-  #eval protein "UGCGAUGAAUGGGCUCGCUCC"
+  -- #guard_msgs in
+  -- #eval protein "UGCGAUGAAUGGGCUCGCUCC"
   
-  /--
+  /-
   info: 'MLQVHWKRRGKTS'
   -/
-  #guard_msgs in
-  #eval protein "AUGCUUCAAGUGCACUGGAAAAGGAGAGGGAAAACCAGUUGA"
+  -- #guard_msgs in
+  -- #eval protein "AUGCUUCAAGUGCACUGGAAAAGGAGAGGGAAAACCAGUUGA"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Mark loves eating chocolates and also likes to be fit. Given the calorie count for every chocolate he eats, find what he has to do to burn the calories. 
   The name of the chocolates along with its calorie count are given as follows:
   Calories per one whole bar:
@@ -44,6 +45,7 @@ vc-description: |-
   -----EXPLANATION:-----
   Calorie intake = 238 + 238 + 244 + 138 = 858
   ( 17km x 50 ) + ( 1km x 5 ) + ( 6km x 0.5 ) = 858.
+  -/
 
 vc-preamble: |-
   def isUpper (c : Char) : Bool := sorry

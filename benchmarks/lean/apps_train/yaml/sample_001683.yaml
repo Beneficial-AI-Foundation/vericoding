@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Alright, detective, one of our colleagues successfully observed our target person, Robby the robber. We followed him to a secret warehouse, where we assume to find all the stolen stuff. The door to this warehouse is secured by an electronic combination lock. Unfortunately our spy isn't sure about the PIN he saw, when Robby entered it.
   
   The keypad has the following layout:
@@ -24,6 +25,7 @@ vc-description: |-
   Detective, we are counting on you!
   
   For C# user: Do not use Mono. Mono is too slower when run your code.
+  -/
 
 vc-preamble: |-
 
@@ -51,23 +53,23 @@ vc-theorems: |-
     let results := get_pins pin
     ∀ x ∈ results, ∀ y ∈ results, x = y → x.data = y.data := sorry
   
-  /--
+  /-
   info: set(['2', '4', '5', '6', '8'])
   -/
-  #guard_msgs in
-  #eval set get_pins("5")
+  -- #guard_msgs in
+  -- #eval set get_pins("5")
   
-  /--
+  /-
   info: set(['11', '12', '14', '21', '22', '24', '41', '42', '44'])
   -/
-  #guard_msgs in
-  #eval set get_pins("11")
+  -- #guard_msgs in
+  -- #eval set get_pins("11")
   
-  /--
+  /-
   info: set(['0', '8'])
   -/
-  #guard_msgs in
-  #eval set get_pins("0")
+  -- #guard_msgs in
+  -- #eval set get_pins("0")
 
 vc-postamble: |-
   -- Apps difficulty: interview

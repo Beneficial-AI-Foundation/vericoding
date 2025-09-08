@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Definition
   
   A **_Tidy number_**  *is a number whose*  **_digits are in non-decreasing order_**.
@@ -86,6 +87,7 @@ vc-description: |-
   
   ## Enjoy Learning !!
   # Zizou
+  -/
 
 vc-preamble: |-
   def digits (n : Nat) : List Nat := 
@@ -126,23 +128,23 @@ vc-theorems: |-
     tidyNumber n = false :=
     sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval tidyNumber 12
+  -- #guard_msgs in
+  -- #eval tidyNumber 12
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval tidyNumber 32
+  -- #guard_msgs in
+  -- #eval tidyNumber 32
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval tidyNumber 1024
+  -- #guard_msgs in
+  -- #eval tidyNumber 1024
 
 vc-postamble: |-
   -- Apps difficulty: introductory

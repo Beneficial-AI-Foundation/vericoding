@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Function Descriptions=====
   any()
   This expression returns True if any element of the iterable is true. If the iterable is empty, it will return False.
@@ -29,6 +30,7 @@ vc-description: |-
   
   =====Output Format=====
   Print True if all the conditions of the problem statement are satisfied. Otherwise, print False.
+  -/
 
 vc-preamble: |-
   def isPalindrome (n : Nat) : Bool :=
@@ -70,23 +72,23 @@ vc-theorems: |-
     check_palindromic_positives nums = false :=
     sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval check_palindromic_positives [12, 9, 61, 5, 14]
+  -- #guard_msgs in
+  -- #eval check_palindromic_positives [12, 9, 61, 5, 14]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval check_palindromic_positives [-1, 9, 61, 5, 14]
+  -- #guard_msgs in
+  -- #eval check_palindromic_positives [-1, 9, 61, 5, 14]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval check_palindromic_positives [12, 34, 56, 78]
+  -- #guard_msgs in
+  -- #eval check_palindromic_positives [12, 34, 56, 78]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

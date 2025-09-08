@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function that removes every lone 9 that is inbetween 7s.
   
   ```python
@@ -8,6 +9,7 @@ vc-description: |-
   
   Input: String
   Output: String
+  -/
 
 vc-preamble: |-
   def seven_ate9 (s : String) : String :=
@@ -53,23 +55,23 @@ vc-theorems: |-
     seven_ate9 s = iterativeReplace s s.length :=
   sorry
   
-  /--
+  /-
   info: '7712312'
   -/
-  #guard_msgs in
-  #eval seven_ate9 "79712312"
+  -- #guard_msgs in
+  -- #eval seven_ate9 "79712312"
   
-  /--
+  /-
   info: '777'
   -/
-  #guard_msgs in
-  #eval seven_ate9 "79797"
+  -- #guard_msgs in
+  -- #eval seven_ate9 "79797"
   
-  /--
+  /-
   info: '7777'
   -/
-  #guard_msgs in
-  #eval seven_ate9 "7979797"
+  -- #guard_msgs in
+  -- #eval seven_ate9 "7979797"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

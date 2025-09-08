@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this Kata, you will be given a lower case string and your task will be to remove `k` characters from that string using the following rule:
   ```Python
   - first remove all letter 'a', followed by letter 'b', then 'c', etc...
@@ -21,6 +22,7 @@ vc-description: |-
   [Simple time difference](https://www.codewars.com/kata/5b76a34ff71e5de9db0000f2)
   
   [Simple remove duplicates](https://www.codewars.com/kata/5ba38ba180824a86850000f7)
+  -/
 
 vc-preamble: |-
   def solve (text : String) (k : Nat) : String := sorry
@@ -57,23 +59,23 @@ vc-theorems: |-
   theorem solve_k_length (text : String) (h : text.length > 0) :
     solve text text.length = "" := sorry
   
-  /--
+  /-
   info: 'bracadabra'
   -/
-  #guard_msgs in
-  #eval solve "abracadabra" 1
+  -- #guard_msgs in
+  -- #eval solve "abracadabra" 1
   
-  /--
+  /-
   info: 'rcdbr'
   -/
-  #guard_msgs in
-  #eval solve "abracadabra" 6
+  -- #guard_msgs in
+  -- #eval solve "abracadabra" 6
   
-  /--
+  /-
   info: 'cccbbabaccbc'
   -/
-  #guard_msgs in
-  #eval solve "cccaabababaccbc" 3
+  -- #guard_msgs in
+  -- #eval solve "cccaabababaccbc" 3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a certain integer, ```n, n > 0```. You have to search the partition or partitions, of n, with maximum product value.
   
   Let'see the case for ```n = 8```.
@@ -45,6 +46,7 @@ vc-description: |-
   findPartMaxProd(10) --> [[4, 3, 3], [3, 3, 2, 2], 36]
   ```
   Enjoy it!
+  -/
 
 vc-preamble: |-
 

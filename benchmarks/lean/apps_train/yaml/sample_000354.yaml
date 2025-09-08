@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a 2D array A, each cell is 0 (representing sea) or 1 (representing land)
   A move consists of walking from one land square 4-directionally to another land square, or off the boundary of the grid.
   Return the number of land squares in the grid for which we cannot walk off the boundary of the grid in any number of moves.
@@ -20,6 +21,7 @@ vc-description: |-
   1 <= A[i].length <= 500
   0 <= A[i][j] <= 1
   All rows have the same size.
+  -/
 
 vc-preamble: |-
 
@@ -54,23 +56,23 @@ vc-theorems: |-
     (h3: ∀ x ∈ grid, ∀ y ∈ x, y ≤ 1) :
     num_enclaves grid ≥ 0 := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval num_enclaves [[0, 0, 0, 0], [1, 0, 1, 0], [0, 1, 1, 0], [0, 0, 0, 0]]
+  -- #guard_msgs in
+  -- #eval num_enclaves [[0, 0, 0, 0], [1, 0, 1, 0], [0, 1, 1, 0], [0, 0, 0, 0]]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval num_enclaves [[0, 1, 1, 0], [0, 0, 1, 0], [0, 0, 1, 0], [0, 0, 0, 0]]
+  -- #guard_msgs in
+  -- #eval num_enclaves [[0, 1, 1, 0], [0, 0, 1, 0], [0, 0, 1, 0], [0, 0, 0, 0]]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval num_enclaves [[0, 0, 0, 1], [0, 1, 1, 0], [0, 1, 0, 0]]
+  -- #guard_msgs in
+  -- #eval num_enclaves [[0, 0, 0, 1], [0, 1, 1, 0], [0, 1, 0, 0]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

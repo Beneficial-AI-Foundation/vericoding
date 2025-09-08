@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Alice and Johnny are playing a simple guessing game. Johnny picks an arbitrary positive integer n (1<=n<=109) and gives Alice exactly k hints about the value of n. It is Alice's task to guess n, based on the received hints. 
   
   Alice often has a serious problem guessing the value of n, and she's beginning to suspect that Johnny occasionally cheats, that is, gives her incorrect hints. 
@@ -46,6 +47,7 @@ vc-description: |-
   2
   
   Explanation: for the respective test cases, the number picked by Johnny could have been e.g. n=100, n=5, and n=1.
+  -/
 
 vc-preamble: |-
 
@@ -83,23 +85,23 @@ vc-theorems: |-
     guessing_game hints = 0 := by
     sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval guessing_game [["<", "100", "No"], [">", "100", "No"]]
+  -- #guard_msgs in
+  -- #eval guessing_game [["<", "100", "No"], [">", "100", "No"]]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval guessing_game [["<", "2", "Yes"], [">", "4", "Yes"], ["=", "3", "No"]]
+  -- #guard_msgs in
+  -- #eval guessing_game [["<", "2", "Yes"], [">", "4", "Yes"], ["=", "3", "No"]]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval guessing_game [["<", "2", "Yes"], [">", "1", "Yes"], ["=", "1", "Yes"], ["=", "1", "Yes"], [">", "1", "Yes"], ["=", "1", "Yes"]]
+  -- #guard_msgs in
+  -- #eval guessing_game [["<", "2", "Yes"], [">", "1", "Yes"], ["=", "1", "Yes"], ["=", "1", "Yes"], [">", "1", "Yes"], ["=", "1", "Yes"]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

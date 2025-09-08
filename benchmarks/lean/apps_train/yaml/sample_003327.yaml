@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We want to know the index of the vowels in a given word, for example, there are two vowels in the word super (the second and fourth letters). 
   
   So given a string "super", we should return a list of [2, 4].
@@ -13,6 +14,7 @@ vc-description: |-
   
   * Vowels in this context refers to: a e i o u y (including upper case)
   * This is indexed from `[1..n]` (not zero indexed!)
+  -/
 
 vc-preamble: |-
   def isVowel (c : Char) : Bool := 
@@ -56,23 +58,23 @@ vc-theorems: |-
     i = j ∨ i ≠ j :=
   sorry
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval vowel_indices "mmm"
+  -- #guard_msgs in
+  -- #eval vowel_indices "mmm"
   
-  /--
+  /-
   info: [2, 4]
   -/
-  #guard_msgs in
-  #eval vowel_indices "super"
+  -- #guard_msgs in
+  -- #eval vowel_indices "super"
   
-  /--
+  /-
   info: [1, 2, 4, 6]
   -/
-  #guard_msgs in
-  #eval vowel_indices "YoMama"
+  -- #guard_msgs in
+  -- #eval vowel_indices "YoMama"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

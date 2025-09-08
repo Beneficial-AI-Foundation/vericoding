@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Coffee Vending Machine Problems [Part 1]
   
   You have a vending machine, but it can not give the change back. You decide to implement this functionality. First of all, you need to know the minimum number of coins for this operation (i'm sure you don't want to return 100 pennys instead of 1$ coin).
@@ -25,6 +26,7 @@ vc-description: |-
   etc..
   
   Have fun =)
+  -/
 
 vc-preamble: |-
 

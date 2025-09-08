@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Overview
   Resistors are electrical components marked with colorful stripes/bands to indicate both their resistance value in ohms and how tight a tolerance that value has. If you did my Resistor Color Codes kata, you wrote a function which took a string containing a resistor's band colors, and returned a string identifying the resistor's ohms and tolerance values.
   
@@ -42,6 +43,7 @@ vc-description: |-
   ```
   
   Have fun!
+  -/
 
 vc-preamble: |-
   def encode_resistor_colors (ohm_str : String) : String :=

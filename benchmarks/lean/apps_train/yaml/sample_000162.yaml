@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string and a string dictionary, find the longest string in the dictionary that can be formed by deleting some characters of the given string. If there are more than one possible results, return the longest word with the smallest lexicographical order. If there is no possible result, return the empty string.
   
   Example 1:
@@ -22,6 +23,7 @@ vc-description: |-
   All the strings in the input will only contain lower-case letters.
   The size of the dictionary won't exceed 1,000.
   The length of all the strings in the input won't exceed 1,000.
+  -/
 
 vc-preamble: |-
 
@@ -57,23 +59,23 @@ vc-theorems: |-
     let result := find_longest_word s dict
     ∀ w ∈ dict, w.length = result.length ∧ w < result → isSubsequence w s = false := sorry
   
-  /--
+  /-
   info: 'apple'
   -/
-  #guard_msgs in
-  #eval find_longest_word "abpcplea" ["ale", "apple", "monkey", "plea"]
+  -- #guard_msgs in
+  -- #eval find_longest_word "abpcplea" ["ale", "apple", "monkey", "plea"]
   
-  /--
+  /-
   info: 'a'
   -/
-  #guard_msgs in
-  #eval find_longest_word "abpcplea" ["a", "b", "c"]
+  -- #guard_msgs in
+  -- #eval find_longest_word "abpcplea" ["a", "b", "c"]
   
-  /--
+  /-
   info: 'aaa'
   -/
-  #guard_msgs in
-  #eval find_longest_word "aaa" ["aaa", "aa", "a"]
+  -- #guard_msgs in
+  -- #eval find_longest_word "aaa" ["aaa", "aa", "a"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Automatons, or Finite State Machines (FSM), are extremely useful to programmers when it comes to software design. You will be given a simplistic version of an FSM to code for a basic TCP session.
   
   The outcome of this exercise will be to return the correct state of the TCP FSM based on the array of events given.
@@ -69,6 +70,7 @@ vc-description: |-
   for further details.
   
   See http://www.medianet.kent.edu/techreports/TR2005-07-22-tcp-EFSM.pdf page 4, for the FSM diagram used for this kata.
+  -/
 
 vc-preamble: |-
 
@@ -99,23 +101,23 @@ vc-theorems: |-
     traverse_TCP_states (invalid::events) = TCPState.ERROR :=
   sorry
   
-  /--
+  /-
   info: 'ESTABLISHED'
   -/
-  #guard_msgs in
-  #eval traverse_TCP_states ["APP_PASSIVE_OPEN", "APP_SEND", "RCV_SYN_ACK"]
+  -- #guard_msgs in
+  -- #eval traverse_TCP_states ["APP_PASSIVE_OPEN", "APP_SEND", "RCV_SYN_ACK"]
   
-  /--
+  /-
   info: 'SYN_SENT'
   -/
-  #guard_msgs in
-  #eval traverse_TCP_states ["APP_ACTIVE_OPEN"]
+  -- #guard_msgs in
+  -- #eval traverse_TCP_states ["APP_ACTIVE_OPEN"]
   
-  /--
+  /-
   info: 'ERROR'
   -/
-  #guard_msgs in
-  #eval traverse_TCP_states ["APP_ACTIVE_OPEN", "RCV_SYN_ACK", "APP_CLOSE", "RCV_FIN_ACK", "RCV_ACK"]
+  -- #guard_msgs in
+  -- #eval traverse_TCP_states ["APP_ACTIVE_OPEN", "RCV_SYN_ACK", "APP_CLOSE", "RCV_FIN_ACK", "RCV_ACK"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

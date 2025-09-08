@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   It's the most hotly anticipated game of the school year - Gryffindor vs Slytherin! Write a function which returns the winning team. 
   
   You will be given two arrays with two values. 
@@ -10,6 +11,7 @@ vc-description: |-
   If the score is a tie return "It's a draw!""
   
   ** The game only ends when someone catches the golden snitch, so one array will always include 'yes' or 'no.' Points scored by Chasers can be any positive integer.
+  -/
 
 vc-preamble: |-
   def calculateScore (initialScore: Nat) (snitch: SnitchResult) : Nat :=
@@ -48,23 +50,23 @@ vc-theorems: |-
     gameWinners (score, SnitchResult.Yes) (score, SnitchResult.Yes) = "It's a draw!" := by
     sorry
   
-  /--
+  /-
   info: 'Gryffindor wins!'
   -/
-  #guard_msgs in
-  #eval game_winners [100, "yes"] [100, "no"]
+  -- #guard_msgs in
+  -- #eval game_winners [100, "yes"] [100, "no"]
   
-  /--
+  /-
   info: 'Slytherin wins!'
   -/
-  #guard_msgs in
-  #eval game_winners [350, "no"] [250, "yes"]
+  -- #guard_msgs in
+  -- #eval game_winners [350, "no"] [250, "yes"]
   
-  /--
+  /-
   info: "It's a draw!"
   -/
-  #guard_msgs in
-  #eval game_winners [100, "yes"] [250, "no"]
+  -- #guard_msgs in
+  -- #eval game_winners [100, "yes"] [250, "no"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   As we all know, F.C. Barcelona is the best soccer team of our era! Their entangling and mesmerizing game style usually translates into very high ball possession, consecutive counter-attack plays and goals. Lots of goals, thanks to the natural talent of their attacker and best player in history, Lionel Andres Messi.
   However, at the most prestigious tournament of individual teams, the UEFA Champions League, there are no guarantees and believe it or not, Barcelona is in trouble.... They are tied versus Chelsea, which is a very defending team that usually relies on counter-strike to catch opposing teams off guard and we are in the last minute of the match. So Messi decided to settle things down for good and now he is conducting the ball on his teams' midfield and he will start a lethal counter-attack :D
   After dribbling the 2 strikers from Chelsea, he now finds himself near the center of the field and he won't be able to dribble the entire team on his own, so he will need to pass the ball to one of his teammates, run forward and receive the ball once again to score the final goal.
@@ -43,6 +44,7 @@ vc-description: |-
   4) Messi - Iniesta - Messi - Iniesta - Messi
   5) Messi - Iniesta - Messi - Xavi - Messi
   6) Messi - Iniesta - Xavi - Iniesta - Messi
+  -/
 
 vc-preamble: |-
   def solve_messi_passing (n_passes: Nat) (k_teammates: Nat) : Nat :=
@@ -65,23 +67,23 @@ vc-theorems: |-
     solve_messi_passing n k ≤ k^(n-1) :=
   sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval solve_messi_passing 2 4
+  -- #guard_msgs in
+  -- #eval solve_messi_passing 2 4
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval solve_messi_passing 4 2
+  -- #guard_msgs in
+  -- #eval solve_messi_passing 4 2
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval solve_messi_passing 3 3
+  -- #guard_msgs in
+  -- #eval solve_messi_passing 3 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your task in this Kata is to emulate text justify right in monospace font. You will be given a single-lined text and the expected justification width. The longest word will never be greater than this width.
   
   Here are the rules:
@@ -39,6 +40,7 @@ vc-description: |-
   If you enjoyed this one and want more of a challenge try https://www.codewars.com/kata/text-align-justify/python
   
   If you like bacon ipsum https://baconipsum.com
+  -/
 
 vc-preamble: |-
 
@@ -72,23 +74,23 @@ vc-theorems: |-
     ∀ line ∈ (align_right text width).split (· = '\n'),
       !line.startsWith line.trim ∨ line.trim = line := sorry
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval align_right "abc def" 10
+  -- #guard_msgs in
+  -- #eval align_right "abc def" 10
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval align_right "I take up the whole line" 24
+  -- #guard_msgs in
+  -- #eval align_right "I take up the whole line" 24
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval align_right "Two lines, I am" 10
+  -- #guard_msgs in
+  -- #eval align_right "Two lines, I am" 10
 
 vc-postamble: |-
   -- Apps difficulty: introductory

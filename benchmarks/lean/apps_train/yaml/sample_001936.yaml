@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Recently, Pari and Arya did some research about NP-Hard problems and they found the minimum vertex cover problem very interesting.
   
   Suppose the graph G is given. Subset A of its vertices is called a vertex cover of this graph, if for each edge uv there is at least one endpoint of it in this set, i.e. $u \in A$ or $v \in A$ (or both).
@@ -45,6 +46,7 @@ vc-description: |-
   In the first sample, you can give the vertex number 2 to Arya and vertices numbered 1 and 3 to Pari and keep vertex number 4 for yourself (or give it someone, if you wish).
   
   In the second sample, there is no way to satisfy both Pari and Arya.
+  -/
 
 vc-preamble: |-
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A generalization of Bézier surfaces, called the S-patch, uses an interesting scheme for indexing its control points.
   
   In the case of an n-sided surface of degree d, each index has n non-negative integers that sum to d, and all possible configurations are used.
@@ -13,6 +14,7 @@ vc-description: |-
   > [[1,1,0],[2,0,0],[0,0,2],[0,2,0],[0,1,1],[1,0,1]]
   
   is also a good solution.
+  -/
 
 vc-preamble: |-
   def indices (n d : Nat) : List (List (List Nat)) := sorry
@@ -46,23 +48,23 @@ vc-theorems: |-
   theorem indices_count (n d : Nat) (h1: 0 < n) (h2: n ≤ 5) (h3: d ≤ 5) :
     (indices n d).length = starsAndBars n d := sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval len indices(3, 2)
+  -- #guard_msgs in
+  -- #eval len indices(3, 2)
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval len idx[0]
+  -- #guard_msgs in
+  -- #eval len idx[0]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval sum idx[0]
+  -- #guard_msgs in
+  -- #eval sum idx[0]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

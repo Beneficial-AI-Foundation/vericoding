@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Polycarp, Arkady's friend, prepares to the programming competition and decides to write a contest. The contest consists of $n$ problems and lasts for $T$ minutes. Each of the problems is defined by two positive integers $a_i$ and $p_i$ — its difficulty and the score awarded by its solution.
   
   Polycarp's experience suggests that his skill level is defined with positive real value $s$, and initially $s=1.0$. To solve the $i$-th problem Polycarp needs $a_i/s$ minutes.
@@ -55,6 +56,7 @@ vc-description: |-
   In the second example, Polycarp can get $20$ points as follows:  Firstly he trains for $4$ minutes, increasing $s$ to the value of $5$;  Then he decides to solve $1$-st problem: he watches one episode in $10$ minutes, his skill decreases to $s=5*0.9=4.5$ and then he solves problem in $1/s=1/4.5$, which is roughly $0.222$ minutes.  Finally, he decides to solve $2$-nd problem: he watches one episode in $10$ minutes, his skill decreases to $s=4.5*0.9=4.05$ and then he solves the problem in $10/s=10/4.05$, which is roughly $2.469$ minutes. 
   
   This way, Polycarp gets score of $20$ in $4+10+0.222+10+2.469=26.691$ minutes. It is not possible to achieve larger score in $30$ minutes.
+  -/
 
 vc-preamble: |-
   def List.sum : List Nat → Nat 
@@ -107,17 +109,17 @@ vc-theorems: |-
       (sorted.get! i).difficulty ≥ (sorted.get! (i + 1)).difficulty := 
   sorry
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval solve_contest 4 1.0 31.0 #[Problem(12, 3), Problem(20, 6), Problem(30, 1), Problem(5, 1)]
+  -- #guard_msgs in
+  -- #eval solve_contest 4 1.0 31.0 #[Problem(12, 3), Problem(20, 6), Problem(30, 1), Problem(5, 1)]
   
-  /--
+  /-
   info: 20
   -/
-  #guard_msgs in
-  #eval solve_contest 3 1.0 30.0 #[Problem(1, 10), Problem(10, 10), Problem(20, 8)]
+  -- #guard_msgs in
+  -- #eval solve_contest 3 1.0 30.0 #[Problem(1, 10), Problem(10, 10), Problem(20, 8)]
 
 vc-postamble: |-
   -- Apps difficulty: interview

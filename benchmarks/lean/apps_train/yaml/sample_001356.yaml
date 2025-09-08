@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given an empty grid with $N$ rows (numbered $1$ through $N$) and $M$ columns (numbered $1$ through $M$). You should fill this grid with integers in a way that satisfies the following rules:
   - For any three cells $c_1$, $c_2$ and $c_3$ such that $c_1$ shares a side with $c_2$ and another side with $c_3$, the integers written in cells $c_2$ and $c_3$ are distinct.
   - Let's denote the number of different integers in the grid by $K$; then, each of these integers should lie between $1$ and $K$ inclusive.
@@ -37,6 +38,7 @@ vc-description: |-
   -----Explanation-----
   Example case 1: There is only one cell in the grid, so the only valid way to fill it is to write $1$ in this cell. Note that we cannot use any other integer than $1$.
   Example case 2: For example, the integers written in the neighbours of cell $(2, 2)$ are $1$, $2$ and $3$; all these numbers are pairwise distinct and the integer written inside the cell $(2, 2)$ does not matter. Note that there are pairs of neighbouring cells with the same integer written in them, but this is OK.
+  -/
 
 vc-preamble: |-
 

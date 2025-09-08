@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a program, which takes an integer N and if the number is less than 10 then display "Thanks for helping Chef!" otherwise print "-1".
   
   -----Input-----
@@ -22,6 +23,7 @@ vc-description: |-
   Thanks for helping Chef!
   -1
   Thanks for helping Chef!
+  -/
 
 vc-preamble: |-
   def solve_helper_thanks (n : Int) : String := sorry
@@ -53,23 +55,23 @@ vc-theorems: |-
       ((nums[i]! < 10) = 
        ((solve_multiple_cases nums)[i]! = "Thanks for helping Chef!")) := sorry
   
-  /--
+  /-
   info: test1_expected
   -/
-  #guard_msgs in
-  #eval solve_multiple_cases [1, 12, -5]
+  -- #guard_msgs in
+  -- #eval solve_multiple_cases [1, 12, -5]
   
-  /--
+  /-
   info: test2_expected
   -/
-  #guard_msgs in
-  #eval solve_multiple_cases [-20, 0, 20]
+  -- #guard_msgs in
+  -- #eval solve_multiple_cases [-20, 0, 20]
   
-  /--
+  /-
   info: test3_expected
   -/
-  #guard_msgs in
-  #eval solve_multiple_cases [9, 10]
+  -- #guard_msgs in
+  -- #eval solve_multiple_cases [9, 10]
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Stuart is obsessed to numbers. He like all type of numbers in fact he is having a great collection of numbers in his room. His collection includes N different large numbers. But today he is searching for a number which is having maximum frequency of digit X. Numbers are large so he can’t do the task on his own. Help him to find a number having maximum frequency of digit X.
   
   -----Input-----
@@ -30,6 +31,7 @@ vc-description: |-
   -----Explanation-----
   Example case 1. 1323 number is having maximum occurrence of digit 3.
   Example case 2. 335 & 1323 are having maximum occurrence of digit 3 so output must be first occurred number in the array i.e. 335.
+  -/
 
 vc-preamble: |-
   def countDigit (n : Nat) (d : Nat) : Nat :=
@@ -68,17 +70,17 @@ vc-theorems: |-
     nums.findIdx (. = n) > nums.findIdx (. = find_max_digit_frequency nums target) :=
   sorry
   
-  /--
+  /-
   info: '1323'
   -/
-  #guard_msgs in
-  #eval find_max_digit_frequency ["345", "1323", "165", "98", "456"] "3"
+  -- #guard_msgs in
+  -- #eval find_max_digit_frequency ["345", "1323", "165", "98", "456"] "3"
   
-  /--
+  /-
   info: '335'
   -/
-  #guard_msgs in
-  #eval find_max_digit_frequency ["335", "876", "98", "1323", "349"] "3"
+  -- #guard_msgs in
+  -- #eval find_max_digit_frequency ["335", "876", "98", "1323", "349"] "3"
 
 vc-postamble: |-
   -- Apps difficulty: interview

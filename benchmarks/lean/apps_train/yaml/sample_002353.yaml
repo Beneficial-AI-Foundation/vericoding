@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Tic-tac-toe is played by two players A and B on a 3 x 3 grid.
   Here are the rules of Tic-Tac-Toe:
   
@@ -52,6 +53,7 @@ vc-description: |-
   0 <= moves[i][j] <= 2
   There are no repeated elements on moves.
   moves follow the rules of tic tac toe.
+  -/
 
 vc-preamble: |-
 
@@ -93,23 +95,23 @@ vc-theorems: |-
     tictactoe moves = "Draw" → moves.length = 9 := by
     sorry
   
-  /--
+  /-
   info: 'A'
   -/
-  #guard_msgs in
-  #eval tictactoe [[0, 0], [2, 0], [1, 1], [2, 1], [2, 2]]
+  -- #guard_msgs in
+  -- #eval tictactoe [[0, 0], [2, 0], [1, 1], [2, 1], [2, 2]]
   
-  /--
+  /-
   info: 'B'
   -/
-  #guard_msgs in
-  #eval tictactoe [[0, 0], [1, 1], [0, 1], [0, 2], [1, 0], [2, 0]]
+  -- #guard_msgs in
+  -- #eval tictactoe [[0, 0], [1, 1], [0, 1], [0, 2], [1, 0], [2, 0]]
   
-  /--
+  /-
   info: 'Draw'
   -/
-  #guard_msgs in
-  #eval tictactoe [[0, 0], [1, 1], [2, 0], [1, 0], [1, 2], [2, 1], [0, 1], [0, 2], [2, 2]]
+  -- #guard_msgs in
+  -- #eval tictactoe [[0, 0], [1, 1], [2, 0], [1, 0], [1, 2], [2, 1], [0, 1], [0, 2], [2, 2]]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

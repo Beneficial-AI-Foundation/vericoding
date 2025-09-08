@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array $A_1, A_2, ..., A_N$, count the number of subarrays of array $A$ which are non-decreasing.
   
   A subarray $A[i, j]$, where $1 ≤ i ≤ j ≤ N$ is a sequence of integers $A_i, A_i+1, ..., A_j$.
@@ -45,6 +46,7 @@ vc-description: |-
   Example case 2.
   
   Only single subarray $A[1, 1]$ is non-decreasing.
+  -/
 
 vc-preamble: |-
 
@@ -69,23 +71,23 @@ vc-theorems: |-
     count_nondecreasing_subarrays arr ≥ arr.length :=
   sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval count_nondecreasing_subarrays [1, 4, 2, 3]
+  -- #guard_msgs in
+  -- #eval count_nondecreasing_subarrays [1, 4, 2, 3]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_nondecreasing_subarrays [5]
+  -- #guard_msgs in
+  -- #eval count_nondecreasing_subarrays [5]
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval count_nondecreasing_subarrays [1, 2, 3, 4]
+  -- #guard_msgs in
+  -- #eval count_nondecreasing_subarrays [1, 2, 3, 4]
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a prime number $p$, $n$ integers $a_1, a_2, \ldots, a_n$, and an integer $k$. 
   
   Find the number of pairs of indexes $(i, j)$ ($1 \le i < j \le n$) for which $(a_i + a_j)(a_i^2 + a_j^2) \equiv k \bmod p$.
@@ -40,6 +41,7 @@ vc-description: |-
   So only $1$ pair satisfies the condition.
   
   In the second example, there are $3$ such pairs: $(1, 5)$, $(2, 3)$, $(4, 6)$.
+  -/
 
 vc-preamble: |-
 
@@ -56,23 +58,23 @@ vc-theorems: |-
     count_pairs_with_mod 0 p 0 [] = 0 :=
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_pairs_with_mod 3 3 0 [0, 1, 2]
+  -- #guard_msgs in
+  -- #eval count_pairs_with_mod 3 3 0 [0, 1, 2]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_pairs_with_mod 6 7 2 [1, 2, 3, 4, 5, 6]
+  -- #guard_msgs in
+  -- #eval count_pairs_with_mod 6 7 2 [1, 2, 3, 4, 5, 6]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_pairs_with_mod 5 5 3 [3, 0, 4, 1, 2]
+  -- #guard_msgs in
+  -- #eval count_pairs_with_mod 5 5 3 [3, 0, 4, 1, 2]
 
 vc-postamble: |-
   -- Apps difficulty: competition

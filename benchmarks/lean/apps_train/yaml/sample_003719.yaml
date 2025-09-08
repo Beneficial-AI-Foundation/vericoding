@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Back-Story
   
   Every day I travel on the freeway.
@@ -36,6 +37,7 @@ vc-description: |-
   There may be a temptation to try to beat your previous best score.
   
   Please don't do that...
+  -/
 
 vc-preamble: |-
 
@@ -68,23 +70,23 @@ vc-theorems: |-
     cars ≠ [] → result_slow ≤ result_fast
     := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval freeway_game 50.0 130.0 [[-1.0, 120.0], [-1.5, 120.0]]
+  -- #guard_msgs in
+  -- #eval freeway_game 50.0 130.0 [[-1.0, 120.0], [-1.5, 120.0]]
   
-  /--
+  /-
   info: -2
   -/
-  #guard_msgs in
-  #eval freeway_game 50.0 110.0 [[1.0, 120.0], [1.5, 125.0]]
+  -- #guard_msgs in
+  -- #eval freeway_game 50.0 110.0 [[1.0, 120.0], [1.5, 125.0]]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval freeway_game 50.0 120.0 [[-1.0, 115.0], [-1.5, 110.0], [1.0, 130.0], [1.5, 130.0]]
+  -- #guard_msgs in
+  -- #eval freeway_game 50.0 120.0 [[-1.0, 115.0], [-1.5, 110.0], [1.0, 130.0], [1.5, 130.0]]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

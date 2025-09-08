@@ -1,5 +1,7 @@
 vc-description: |-
+  /-
   Write a function that takes a list of at least four elements as an argument and returns a list of the middle two or three elements in reverse order.
+  -/
 
 vc-preamble: |-
 
@@ -30,17 +32,17 @@ vc-theorems: |-
     reverseMiddle xs = middle.reverse :=
   sorry
   
-  /--
+  /-
   info: [100, 3]
   -/
-  #guard_msgs in
-  #eval reverse_middle [4, 3, 100, 1]
+  -- #guard_msgs in
+  -- #eval reverse_middle [4, 3, 100, 1]
   
-  /--
+  /-
   info: [{}, 'string', False]
   -/
-  #guard_msgs in
-  #eval reverse_middle [1, False, "string", {}, 7.43]
+  -- #guard_msgs in
+  -- #eval reverse_middle [1, False, "string", {}, 7.43]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Count the number of prime numbers less than a non-negative number, n.
   
   Example:
@@ -6,6 +7,7 @@ vc-description: |-
   Input: 10
   Output: 4
   Explanation: There are 4 prime numbers less than 10, they are 2, 3, 5, 7.
+  -/
 
 vc-preamble: |-
 
@@ -26,23 +28,23 @@ vc-theorems: |-
   theorem countPrimes_less_than_input (x : Int) :
     x ≥ 2 → countPrimes x < x := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval countPrimes 10
+  -- #guard_msgs in
+  -- #eval countPrimes 10
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval countPrimes 20
+  -- #guard_msgs in
+  -- #eval countPrimes 20
   
-  /--
+  /-
   info: 25
   -/
-  #guard_msgs in
-  #eval countPrimes 100
+  -- #guard_msgs in
+  -- #eval countPrimes 100
 
 vc-postamble: |-
   -- Apps difficulty: introductory

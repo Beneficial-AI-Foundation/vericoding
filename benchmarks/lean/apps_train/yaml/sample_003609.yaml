@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Alex just got a new hula hoop, he loves it but feels discouraged because his little brother is better than him
   
   Write a program where Alex can input (n) how many times the hoop goes round and it will return him an encouraging message :) 
@@ -6,6 +7,7 @@ vc-description: |-
   -If Alex gets 10 or more hoops, return the string "Great, now move on to tricks".
   
   -If he doesn't get 10 hoops, return the string "Keep at it until you get it".
+  -/
 
 vc-preamble: |-
 
@@ -27,23 +29,23 @@ vc-theorems: |-
   theorem hoop_count_ten_or_more (n : Int) :
     n ≥ 10 → hoop_count n = "Great, now move on to tricks" := sorry
   
-  /--
+  /-
   info: 'Keep at it until you get it'
   -/
-  #guard_msgs in
-  #eval hoop_count 6
+  -- #guard_msgs in
+  -- #eval hoop_count 6
   
-  /--
+  /-
   info: 'Great, now move on to tricks'
   -/
-  #guard_msgs in
-  #eval hoop_count 10
+  -- #guard_msgs in
+  -- #eval hoop_count 10
   
-  /--
+  /-
   info: 'Great, now move on to tricks'
   -/
-  #guard_msgs in
-  #eval hoop_count 22
+  -- #guard_msgs in
+  -- #eval hoop_count 22
 
 vc-postamble: |-
   -- Apps difficulty: introductory

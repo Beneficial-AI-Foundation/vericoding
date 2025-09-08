@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Ashish and Vivek play a game on a matrix consisting of $n$ rows and $m$ columns, where they take turns claiming cells. Unclaimed cells are represented by $0$, while claimed cells are represented by $1$. The initial state of the matrix is given. There can be some claimed cells in the initial state.
   
   In each turn, a player must claim a cell. A cell may be claimed if it is unclaimed and does not share a row or column with any other already claimed cells. When a player is unable to make a move, he loses and the game ends.
@@ -51,6 +52,7 @@ vc-description: |-
   For the third case: Ashish cannot make a move, so Vivek wins.
   
   For the fourth case: If Ashish claims cell $(2, 3)$, Vivek will have no moves left.
+  -/
 
 vc-preamble: |-
   def solve_game (n m : Nat) (grid : List (List Nat)) : String :=
@@ -101,23 +103,23 @@ vc-theorems: |-
     solve_game n m grid = "Vivek" :=
   sorry
   
-  /--
+  /-
   info: 'Vivek'
   -/
-  #guard_msgs in
-  #eval solve_game 2 2 [[0, 0], [0, 0]]
+  -- #guard_msgs in
+  -- #eval solve_game 2 2 [[0, 0], [0, 0]]
   
-  /--
+  /-
   info: 'Ashish'
   -/
-  #guard_msgs in
-  #eval solve_game 2 2 [[0, 0], [0, 1]]
+  -- #guard_msgs in
+  -- #eval solve_game 2 2 [[0, 0], [0, 1]]
   
-  /--
+  /-
   info: 'Vivek'
   -/
-  #guard_msgs in
-  #eval solve_game 2 3 [[1, 0, 1], [1, 1, 0]]
+  -- #guard_msgs in
+  -- #eval solve_game 2 3 [[1, 0, 1], [1, 1, 0]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

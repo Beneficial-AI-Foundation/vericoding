@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You're given an array of $n$ integers between $0$ and $n$ inclusive.
   
   In one operation, you can choose any element of the array and replace it by the MEX of the elements of the array (which may change after the operation).
@@ -70,6 +71,7 @@ vc-description: |-
   Explanation of the second test case (the element modified by each operation is colored in red):   $a = [2, 1, 0]$ ; the initial MEX is $3$.  $a = [2, 1, \color{red}{3}]$ ; the new MEX is $0$.  $a = [\color{red}{0}, 1, 3]$ ; the new MEX is $2$.  The final array is non-decreasing: $0 \le 1 \le 3$. 
   
   Explanation of the third test case:   $a = [0, 7, 3, 1, 3, 7, 7]$ ; the initial MEX is $2$.  $a = [0, \color{red}{2}, 3, 1, 3, 7, 7]$ ; the new MEX is $4$.  $a = [0, 2, 3, 1, \color{red}{4}, 7, 7]$ ; the new MEX is $5$.  $a = [0, 2, 3, 1, \color{red}{5}, 7, 7]$ ; the new MEX is $4$.  $a = [0, 2, 3, \color{red}{4}, 5, 7, 7]$ ; the new MEX is $1$.  The final array is non-decreasing: $0 \le 2 \le 3 \le 4 \le 5 \le 7 \le 7$.
+  -/
 
 vc-preamble: |-
 

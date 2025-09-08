@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ###Introduction
   
   The [I Ching](https://en.wikipedia.org/wiki/I_Ching) (Yijing, or Book of Changes) is an ancient Chinese book of sixty-four hexagrams. 
@@ -52,6 +53,7 @@ vc-description: |-
   throws represents the querent's current situation,
   and the hexagram that results from changing its
   moving lines represents their upcoming situation.*
+  -/
 
 vc-preamble: |-
   def oracle (input : List (LineName × CoinFlip × CoinFlip × CoinFlip)) : List LineOutput :=
@@ -100,23 +102,23 @@ vc-theorems: |-
       True :=
     sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval oracle [["two", "h", "h", "t"], ["six", "t", "h", "t"], ["four", "t", "t", "t"], ["one", "h", "t", "h"], ["three", "h", "h", "h"], ["five", "t", "t", "h"]]
+  -- #guard_msgs in
+  -- #eval oracle [["two", "h", "h", "t"], ["six", "t", "h", "t"], ["four", "t", "t", "t"], ["one", "h", "t", "h"], ["three", "h", "h", "h"], ["five", "t", "t", "h"]]
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval oracle [["six", "t", "t", "h"], ["one", "h", "h", "t"], ["three", "t", "h", "h"], ["two", "t", "t", "t"], ["five", "h", "h", "t"], ["four", "t", "t", "h"]]
+  -- #guard_msgs in
+  -- #eval oracle [["six", "t", "t", "h"], ["one", "h", "h", "t"], ["three", "t", "h", "h"], ["two", "t", "t", "t"], ["five", "h", "h", "t"], ["four", "t", "t", "h"]]
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval oracle [["five", "h", "h", "h"], ["four", "t", "t", "h"], ["two", "h", "t", "h"], ["one", "h", "h", "t"], ["six", "t", "h", "t"], ["three", "h", "h", "h"]]
+  -- #guard_msgs in
+  -- #eval oracle [["five", "h", "h", "h"], ["four", "t", "t", "h"], ["two", "h", "t", "h"], ["one", "h", "h", "t"], ["six", "t", "h", "t"], ["three", "h", "h", "h"]]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

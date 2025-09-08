@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We say that a binary string (a string containing only characters '0' and '1') is pure if it does not contain either of the strings "0101" or "1010" as a subsequence.
   Recall that string T is a subsequence of string S if we can delete some of the letters of S (possibly none) such that the resulting string will become T.
   You are given a binary string $S$ with length $N$. We want to make this string pure by deleting some (possibly zero) characters from it. What is the minimum number of characters we have to delete?
@@ -31,6 +32,7 @@ vc-description: |-
   -----Explanation-----
   Example case 1: We can delete the first and third character of our string. There is no way to make the string pure by deleting only one character.
   Example case 3: The given string is already pure, so the answer is zero.
+  -/
 
 vc-preamble: |-
 

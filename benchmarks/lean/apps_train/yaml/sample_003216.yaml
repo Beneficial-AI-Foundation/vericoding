@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   General primality test are often computationally expensive, so in the biggest prime number race the idea is to study special sub-families of prime number and develop more effective tests for them. 
   
   [Mersenne Primes](https://en.wikipedia.org/wiki/Mersenne_prime) are prime numbers of the form: Mn = 2^(n) - 1. So far, 49 of them was found between M2 (3) and M74,207,281 which contains 22,338,618 digits and is (by September 2015) the biggest known prime. It has been found by GIMPS (Great Internet Mersenne Prime Search), wich use the test srudied here. (plus heuristics mentionned below)
@@ -20,6 +21,7 @@ vc-description: |-
   This test can be improved using the fact that if `n` is not prime, `2^n-1` will not be prime. So in theory you can test for the primality of `n` beforehand. But in practice the test for the primality of `n` will rapidly outgrow in difficulty the Lucas-Lehmer test. So we can only use heuristics to rule out `n` with small factors but not complete factorization algorithm. You don't need to implement such heuristics here. 
   
   The rapid growth of `s^2` makes javascript reach its integer limit quickly (coherent result for `n = 13`, but not `17`). Whereas python seems to be only limited by the execution time limit and let us see that M11,213 is prime (contains 3376 digits).
+  -/
 
 vc-preamble: |-
 
@@ -55,23 +57,23 @@ vc-theorems: |-
   theorem lucas_lehmer_non_positive (n : Int) :
     n ≤ 0 → lucas_lehmer n.natAbs = false := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval lucas_lehmer 2
+  -- #guard_msgs in
+  -- #eval lucas_lehmer 2
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval lucas_lehmer 4
+  -- #guard_msgs in
+  -- #eval lucas_lehmer 4
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval lucas_lehmer 7
+  -- #guard_msgs in
+  -- #eval lucas_lehmer 7
 
 vc-postamble: |-
   -- Apps difficulty: introductory

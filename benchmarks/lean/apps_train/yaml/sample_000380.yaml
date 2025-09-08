@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Alice and Bob take turns playing a game, with Alice starting first.
   Initially, there are n stones in a pile.  On each player's turn, that player makes a move consisting of removing any non-zero square number of stones in the pile.
   Also, if a player cannot make a move, he/she loses the game.
@@ -31,6 +32,7 @@ vc-description: |-
   Constraints:
   
   1 <= n <= 10^5
+  -/
 
 vc-preamble: |-
 
@@ -62,23 +64,23 @@ vc-theorems: |-
     ∃ b : Bool, can_alice_win_stones n = b :=
   sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval can_alice_win_stones 1
+  -- #guard_msgs in
+  -- #eval can_alice_win_stones 1
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval can_alice_win_stones 2
+  -- #guard_msgs in
+  -- #eval can_alice_win_stones 2
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval can_alice_win_stones 4
+  -- #guard_msgs in
+  -- #eval can_alice_win_stones 4
 
 vc-postamble: |-
   -- Apps difficulty: interview

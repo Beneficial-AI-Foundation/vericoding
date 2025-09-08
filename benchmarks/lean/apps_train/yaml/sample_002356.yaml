@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security system connected and it will automatically contact the police if two adjacent houses were broken into on the same night.
   Given a list of non-negative integers representing the amount of money of each house, determine the maximum amount of money you can rob tonight without alerting the police.
   
@@ -18,6 +19,7 @@ vc-description: |-
   
   0 <= nums.length <= 100
   0 <= nums[i] <= 400
+  -/
 
 vc-preamble: |-
   def rob (nums : List Nat) : Nat :=
@@ -70,23 +72,23 @@ vc-theorems: |-
     rob [n, m] = Nat.max n m :=
     sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval rob [1, 2, 3, 1]
+  -- #guard_msgs in
+  -- #eval rob [1, 2, 3, 1]
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval rob [2, 7, 9, 3, 1]
+  -- #guard_msgs in
+  -- #eval rob [2, 7, 9, 3, 1]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval rob [2, 1]
+  -- #guard_msgs in
+  -- #eval rob [2, 1]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

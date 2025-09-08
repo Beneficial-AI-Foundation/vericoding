@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Roma is programmer and he likes memes about IT,  
   Maxim is chemist and he likes memes about chemistry,  
   Danik is designer and he likes memes about design,  
@@ -30,6 +31,7 @@ vc-description: |-
       instead of
   this could {b}e chemistry meme but {o}ur gey w{o}rd 'boo{m}' is too late
   ```
+  -/
 
 vc-preamble: |-
 
@@ -77,23 +79,23 @@ vc-theorems: |-
   theorem case_insensitive (s1 s2 : String) (h : s1.toLower = s2.toLower) :
     meme_sorting s1 = meme_sorting s2 := sorry
   
-  /--
+  /-
   info: 'Roma'
   -/
-  #guard_msgs in
-  #eval meme_sorting "This is programmer meme ecause it has bug"
+  -- #guard_msgs in
+  -- #eval meme_sorting "This is programmer meme ecause it has bug"
   
-  /--
+  /-
   info: 'Danik'
   -/
-  #guard_msgs in
-  #eval meme_sorting "This is edsigner meme cause it has key word"
+  -- #guard_msgs in
+  -- #eval meme_sorting "This is edsigner meme cause it has key word"
   
-  /--
+  /-
   info: 'Vlad'
   -/
-  #guard_msgs in
-  #eval meme_sorting "This is meme"
+  -- #guard_msgs in
+  -- #eval meme_sorting "This is meme"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

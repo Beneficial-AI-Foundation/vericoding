@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string num representing the digits of a very large integer and an integer k.
   You are allowed to swap any two adjacent digits of the integer at most k times.
   Return the minimum integer you can obtain also as a string.
@@ -32,6 +33,7 @@ vc-description: |-
   1 <= num.length <= 30000
   num contains digits only and doesn't have leading zeros.
   1 <= k <= 10^9
+  -/
 
 vc-preamble: |-
   def minInteger (num : String) (k : Nat) : String :=
@@ -73,23 +75,23 @@ vc-theorems: |-
   theorem minInteger_char_count (num : String) (k : Nat) (c : Char) :
     countChar c (minInteger num k) = countChar c num := sorry
   
-  /--
+  /-
   info: '1342'
   -/
-  #guard_msgs in
-  #eval minInteger "4321" 4
+  -- #guard_msgs in
+  -- #eval minInteger "4321" 4
   
-  /--
+  /-
   info: '010'
   -/
-  #guard_msgs in
-  #eval minInteger "100" 1
+  -- #guard_msgs in
+  -- #eval minInteger "100" 1
   
-  /--
+  /-
   info: '36789'
   -/
-  #guard_msgs in
-  #eval minInteger "36789" 1000
+  -- #guard_msgs in
+  -- #eval minInteger "36789" 1000
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this Kata, you will be given two numbers, n and k and your task will be to return the k-digit array that sums to n and has the maximum possible GCD.
   
   For example, given `n = 12, k = 3`, there are a number of possible `3-digit` arrays that sum to `12`, such as `[1,2,9], [2,3,7], [2,4,6], ...` and so on. Of all the possibilities, the one with the highest GCD is `[2,4,6]`. Therefore, `solve(12,3) = [2,4,6]`.
@@ -8,6 +9,7 @@ vc-description: |-
   More examples in the test cases.
   
   Good luck!
+  -/
 
 vc-preamble: |-
   def solve (n k : Nat) : List Nat := sorry
@@ -29,23 +31,23 @@ vc-theorems: |-
     let result := solve n 1
     result.length > 0 → result = [n] := sorry
   
-  /--
+  /-
   info: [2, 4, 6]
   -/
-  #guard_msgs in
-  #eval solve 12 3
+  -- #guard_msgs in
+  -- #eval solve 12 3
   
-  /--
+  /-
   info: [3, 6, 9]
   -/
-  #guard_msgs in
-  #eval solve 18 3
+  -- #guard_msgs in
+  -- #eval solve 18 3
   
-  /--
+  /-
   info: [2, 4, 6, 12]
   -/
-  #guard_msgs in
-  #eval solve 24 4
+  -- #guard_msgs in
+  -- #eval solve 24 4
 
 vc-postamble: |-
   -- Apps difficulty: introductory

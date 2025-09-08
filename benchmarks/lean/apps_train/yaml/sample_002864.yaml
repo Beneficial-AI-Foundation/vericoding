@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this Kata you need to write the method SharedBits that returns true if 2 integers share at least two '1' bits. For simplicity assume that all numbers are positive
   
   For example
@@ -14,6 +15,7 @@ vc-description: |-
   - ten and fifteen  share 2 bits (at indexes 0 and 2)
   
   Hint: you can do this with just string manipulation, but binary operators will make your life much easier.
+  -/
 
 vc-preamble: |-
   def countOnes (n : Nat) : Nat :=
@@ -49,23 +51,23 @@ vc-theorems: |-
     shared_bits p1 p2 = false := by
     sorry
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval shared_bits 1 2
+  -- #guard_msgs in
+  -- #eval shared_bits 1 2
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval shared_bits 7 10
+  -- #guard_msgs in
+  -- #eval shared_bits 7 10
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval shared_bits 7 15
+  -- #guard_msgs in
+  -- #eval shared_bits 7 15
 
 vc-postamble: |-
   -- Apps difficulty: introductory

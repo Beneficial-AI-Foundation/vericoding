@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A mad scientist Dr.Jubal has made a competitive programming task. Try to solve it!
   
   You are given integers $n,k$. Construct a grid $A$ with size $n \times n$ consisting of integers $0$ and $1$. The very important condition should be satisfied: the sum of all elements in the grid is exactly $k$. In other words, the number of $1$ in the grid is equal to $k$.
@@ -52,6 +53,7 @@ vc-description: |-
   In the first test case, the sum of all elements in the grid is equal to $2$, so the condition is satisfied. $R_1 = 1, R_2 = 1$ and $C_1 = 1, C_2 = 1$. Then, $f(A) = (1-1)^2 + (1-1)^2 = 0$, which is the minimum possible value of $f(A)$.
   
   In the second test case, the sum of all elements in the grid is equal to $8$, so the condition is satisfied. $R_1 = 3, R_2 = 3, R_3 = 2$ and $C_1 = 3, C_2 = 2, C_3 = 3$. Then, $f(A) = (3-2)^2 + (3-2)^2 = 2$. It can be proven, that it is the minimum possible value of $f(A)$.
+  -/
 
 vc-preamble: |-
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You probably know the "like" system from Facebook and other pages. People can "like" blog posts, pictures or other items. We want to create the text that should be displayed next to such an item.
   
   Implement a function `likes :: [String] -> String`, which must take in input array, containing the names of people who like an item. It must return the display text as shown in the examples:
@@ -12,6 +13,7 @@ vc-description: |-
   ```
   
   For 4 or more names, the number in `and 2 others` simply increases.
+  -/
 
 vc-preamble: |-
 
@@ -47,35 +49,35 @@ vc-theorems: |-
   theorem likes_others_count_correct (names : List String) (h : names.length ≥ 4) :
     ∃ pre post : String, likes names = pre ++ toString (names.length - 2) ++ post := by sorry
   
-  /--
+  /-
   info: 'no one likes this'
   -/
-  #guard_msgs in
-  #eval likes []
+  -- #guard_msgs in
+  -- #eval likes []
   
-  /--
+  /-
   info: 'Peter likes this'
   -/
-  #guard_msgs in
-  #eval likes ["Peter"]
+  -- #guard_msgs in
+  -- #eval likes ["Peter"]
   
-  /--
+  /-
   info: 'Jacob and Alex like this'
   -/
-  #guard_msgs in
-  #eval likes ["Jacob", "Alex"]
+  -- #guard_msgs in
+  -- #eval likes ["Jacob", "Alex"]
   
-  /--
+  /-
   info: 'Max, John and Mark like this'
   -/
-  #guard_msgs in
-  #eval likes ["Max", "John", "Mark"]
+  -- #guard_msgs in
+  -- #eval likes ["Max", "John", "Mark"]
   
-  /--
+  /-
   info: 'Alex, Jacob and 2 others like this'
   -/
-  #guard_msgs in
-  #eval likes ["Alex", "Jacob", "Mark", "Max"]
+  -- #guard_msgs in
+  -- #eval likes ["Alex", "Jacob", "Mark", "Max"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

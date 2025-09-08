@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Bob has a server farm crunching numbers. He has `nodes` servers in his farm. His company has a lot of work to do. 
   
   The work comes as a number `workload` which indicates how many jobs there are. Bob wants his servers to get an equal number of jobs each. If that is impossible, he wants the first servers to receive more jobs. He also wants the jobs sorted, so that the first server receives the first jobs.
@@ -32,6 +33,7 @@ vc-description: |-
   -----
   
   Don't worry about invalid inputs. That is, `nodes > 0` and `workload > 0` and both will always be integers.
+  -/
 
 vc-preamble: |-
   def distribute (nodes : Nat) (workload : Nat) : List (List Nat) :=
@@ -57,23 +59,23 @@ vc-theorems: |-
     (distribute nodes workload).length = nodes :=
     sorry
   
-  /--
+  /-
   info: [[0, 1], [2, 3]]
   -/
-  #guard_msgs in
-  #eval distribute 2 4
+  -- #guard_msgs in
+  -- #eval distribute 2 4
   
-  /--
+  /-
   info: [[0], [1], [2]]
   -/
-  #guard_msgs in
-  #eval distribute 3 3
+  -- #guard_msgs in
+  -- #eval distribute 3 3
   
-  /--
+  /-
   info: [[0, 1, 2], [3, 4, 5], [6, 7], [8, 9]]
   -/
-  #guard_msgs in
-  #eval distribute 4 10
+  -- #guard_msgs in
+  -- #eval distribute 4 10
 
 vc-postamble: |-
   -- Apps difficulty: introductory

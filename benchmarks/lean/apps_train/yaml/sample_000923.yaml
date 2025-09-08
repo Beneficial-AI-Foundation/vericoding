@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   IIST is thinking of acquiring some land nearby to build its new state of the art labs. The land it has chosen incidentaly has some abandoned college buildings which IIST wants to use. The administration decide the value of the building based on the amount of work that has to be done to get it in shape (lower amount of work, higher value). The security experts want to tear down some of the buildings and use the bricks to build a boundary wall. 
   
   The director has chosen you to write a program which determines the buildings which needs to be demolished to maximise the value while fulfilling the above criterion. 
@@ -52,6 +53,7 @@ vc-description: |-
   2
   
   15.00
+  -/
 
 vc-preamble: |-
   def Building := Int × Int × Int × Int

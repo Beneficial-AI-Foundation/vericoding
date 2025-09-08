@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   If you have completed the Tribonacci sequence kata, you would know by now that mister Fibonacci has at least a bigger brother. If not, give it a quick look to get how things work.
   
   Well, time to expand the family a little more: think of a Quadribonacci starting with a signature of 4 elements and each following element is the sum of the 4 previous, a Pentabonacci (well *Cinquebonacci* would probably sound a bit more italian, but it would also sound really awful) with a signature of 5 elements and each following element is the sum of the 5 previous, and so on.
@@ -11,6 +12,7 @@ vc-description: |-
   xbonacci {1,0,0,0,0,0,1} 10 = {1,0,0,0,0,0,1,2,3,6}
   xbonacci {1,1} produces the Fibonacci sequence
   ```
+  -/
 
 vc-preamble: |-
 
@@ -51,23 +53,23 @@ vc-theorems: |-
     (xbonacci signature n).all (· ≥ 0) :=
     sorry
   
-  /--
+  /-
   info: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
   -/
-  #guard_msgs in
-  #eval xbonacci [0, 1] 10
+  -- #guard_msgs in
+  -- #eval xbonacci [0, 1] 10
   
-  /--
+  /-
   info: [0, 0, 0, 0, 1, 1, 2, 4, 8, 16]
   -/
-  #guard_msgs in
-  #eval xbonacci [0, 0, 0, 0, 1] 10
+  -- #guard_msgs in
+  -- #eval xbonacci [0, 0, 0, 0, 1] 10
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval xbonacci [1, 2, 3] 0
+  -- #guard_msgs in
+  -- #eval xbonacci [1, 2, 3] 0
 
 vc-postamble: |-
   -- Apps difficulty: introductory

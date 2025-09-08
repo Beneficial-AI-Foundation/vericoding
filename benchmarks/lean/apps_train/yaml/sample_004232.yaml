@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function that rearranges an integer into its largest possible value. 
   
   ```python
@@ -13,6 +14,7 @@ vc-description: |-
   ```
   
   If the argument passed through is single digit or is already the maximum possible integer, your function should simply return it.
+  -/
 
 vc-preamble: |-
 
@@ -36,23 +38,23 @@ vc-theorems: |-
   theorem super_size_same_length {n : Nat} :
     (toString n).length = (toString (super_size n)).length := sorry
   
-  /--
+  /-
   info: 654321
   -/
-  #guard_msgs in
-  #eval super_size 123456
+  -- #guard_msgs in
+  -- #eval super_size 123456
   
-  /--
+  /-
   info: 510
   -/
-  #guard_msgs in
-  #eval super_size 105
+  -- #guard_msgs in
+  -- #eval super_size 105
   
-  /--
+  /-
   info: 21
   -/
-  #guard_msgs in
-  #eval super_size 12
+  -- #guard_msgs in
+  -- #eval super_size 12
 
 vc-postamble: |-
   -- Apps difficulty: introductory

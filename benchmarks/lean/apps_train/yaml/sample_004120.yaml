@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You will be given a fruit which a farmer has harvested, your job is to see if you should buy or sell.
   
   You will be given 3 pairs of fruit. Your task is to trade your harvested fruit back into your harvested fruit via the intermediate pair, you should return a string of 3 actions.
@@ -17,6 +18,7 @@ vc-description: |-
   So your function would return a list: [“buy”,”buy”,”sell”]
   
   If any invalid input is given, "ERROR" should be returned
+  -/
 
 vc-preamble: |-
   def is_valid_path (pairs : List (List String)) (start : String) (actions : Result String) : Bool :=

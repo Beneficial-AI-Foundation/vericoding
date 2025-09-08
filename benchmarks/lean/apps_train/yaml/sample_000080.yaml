@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given three strings $a$, $b$ and $c$ of the same length $n$. The strings consist of lowercase English letters only. The $i$-th letter of $a$ is $a_i$, the $i$-th letter of $b$ is $b_i$, the $i$-th letter of $c$ is $c_i$.
   
   For every $i$ ($1 \leq i \leq n$) you must swap (i.e. exchange) $c_i$ with either $a_i$ or $b_i$. So in total you'll perform exactly $n$ swap operations, each of them either $c_i \leftrightarrow a_i$ or $c_i \leftrightarrow b_i$ ($i$ iterates over all integers between $1$ and $n$, inclusive).
@@ -58,6 +59,7 @@ vc-description: |-
   In the third test case, you should swap $c_1$ with $a_1$, $c_2$ with $b_2$, $c_3$ with $b_3$ and $c_4$ with $a_4$. Then string $a$ becomes "baba", string $b$ becomes "baba" and string $c$ becomes "abab". Here the strings $a$ and $b$ are equal.
   
   In the fourth test case, it is impossible to do the swaps so that string $a$ becomes exactly the same as string $b$.
+  -/
 
 vc-preamble: |-
 
@@ -82,29 +84,29 @@ vc-theorems: |-
     (h3 : s1.length = s2.length) :
     can_strings_equal s1 s2 s1 = can_strings_equal s2 s1 s1 := sorry
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval can_strings_equal "aaa" "bbb" "ccc"
+  -- #guard_msgs in
+  -- #eval can_strings_equal "aaa" "bbb" "ccc"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval can_strings_equal "abc" "bca" "bca"
+  -- #guard_msgs in
+  -- #eval can_strings_equal "abc" "bca" "bca"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval can_strings_equal "aabb" "bbaa" "baba"
+  -- #guard_msgs in
+  -- #eval can_strings_equal "aabb" "bbaa" "baba"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval can_strings_equal "imi" "mii" "iim"
+  -- #guard_msgs in
+  -- #eval can_strings_equal "imi" "mii" "iim"
 
 vc-postamble: |-
   -- Apps difficulty: interview

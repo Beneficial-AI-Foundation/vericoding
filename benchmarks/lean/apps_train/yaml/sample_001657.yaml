@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   This kata is inspired by Space Invaders (Japanese: スペースインベーダー), an arcade video game created by Tomohiro Nishikado and released in 1978.
   Alien invaders are attacking Earth and you've been conscripted to defend.
   The Bad News: You performed poorly in the manual training. As a result, you're ranked low priority and you're piloting a space jalopy.
@@ -56,6 +57,7 @@ vc-description: |-
   Inputs will always be valid
   
   If you enjoyed this kata, be sure to check out [my other katas](https://www.codewars.com/users/docgunthrop/authored).
+  -/
 
 vc-preamble: |-
 

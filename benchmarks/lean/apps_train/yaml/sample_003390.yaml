@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The dragon's curve is a self-similar fractal which can be obtained by a recursive method. 
   
   Starting with the string `D0 = 'Fa'`, at each step simultaneously perform the following operations:
@@ -26,6 +27,7 @@ vc-description: |-
   ```
   
   `n` should be a number and non-negative integer. All other case should return the empty string: `''`.
+  -/
 
 vc-preamble: |-
 
@@ -63,41 +65,41 @@ vc-theorems: |-
     ∀ (n : Nat), (dragon_curve n).all (fun c => c = 'F' ∨ c = 'R' ∨ c = 'L') :=
   sorry
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval dragon_curve "a"
+  -- #guard_msgs in
+  -- #eval dragon_curve "a"
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval dragon_curve 1.1
+  -- #guard_msgs in
+  -- #eval dragon_curve 1.1
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval dragon_curve -1
+  -- #guard_msgs in
+  -- #eval dragon_curve -1
   
-  /--
+  /-
   info: 'F'
   -/
-  #guard_msgs in
-  #eval dragon_curve 0
+  -- #guard_msgs in
+  -- #eval dragon_curve 0
   
-  /--
+  /-
   info: 'FRFR'
   -/
-  #guard_msgs in
-  #eval dragon_curve 1
+  -- #guard_msgs in
+  -- #eval dragon_curve 1
   
-  /--
+  /-
   info: 'FRFRRLFLFR'
   -/
-  #guard_msgs in
-  #eval dragon_curve 2
+  -- #guard_msgs in
+  -- #eval dragon_curve 2
 
 vc-postamble: |-
   -- Apps difficulty: introductory

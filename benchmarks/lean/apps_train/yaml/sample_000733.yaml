@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Many internet protocols these days include the option of associating a
   media type with the content being sent.
   The type is usually inferred from the file extension.
@@ -52,6 +53,7 @@ vc-description: |-
   unknown
   unknown
   unknown
+  -/
 
 vc-preamble: |-
 

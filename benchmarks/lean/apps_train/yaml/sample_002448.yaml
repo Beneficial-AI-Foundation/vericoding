@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Function Descriptions=====
   If we want to add a single element to an existing set, we can use the .add() operation.
   It adds the element to the set and returns 'None'.
@@ -27,6 +28,7 @@ vc-description: |-
   
   =====Output Format=====
   Output the total number of distinct country stamps on a single line.
+  -/
 
 vc-preamble: |-
   def count_distinct_stamps (stamps : List String) : Nat := sorry
@@ -54,23 +56,23 @@ vc-theorems: |-
   theorem count_distinct_stamps_empty :
     count_distinct_stamps [] = 0 := sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval count_distinct_stamps ["UK", "China", "USA", "France", "New Zealand", "UK", "France"]
+  -- #guard_msgs in
+  -- #eval count_distinct_stamps ["UK", "China", "USA", "France", "New Zealand", "UK", "France"]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_distinct_stamps ["India", "India", "India"]
+  -- #guard_msgs in
+  -- #eval count_distinct_stamps ["India", "India", "India"]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_distinct_stamps ["Japan", "Korea", "China"]
+  -- #guard_msgs in
+  -- #eval count_distinct_stamps ["Japan", "Korea", "China"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

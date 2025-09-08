@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Most languages have a `split` function that lets you turn a string like `“hello world”` into an array like`[“hello”, “world”]`. But what if we don't want to lose the separator? Something like `[“hello”, “ world”]`.
   
   #### Task:
@@ -33,6 +34,7 @@ vc-description: |-
   [Random Integers](https://www.codewars.com/kata/random-integers), [Implement String#transpose](https://www.codewars.com/kata/implement-string-number-transpose), [Implement Array#transpose!](https://www.codewars.com/kata/implement-array-number-transpose), [Arrays and Procs #1](https://www.codewars.com/kata/arrays-and-procs-number-1), and [Arrays and Procs #2](https://www.codewars.com/kata/arrays-and-procs-number-2)
   
   If you notice any issues/bugs/missing test cases whatsoever, do not hesitate to report an issue or suggestion. Enjoy!
+  -/
 
 vc-preamble: |-
 

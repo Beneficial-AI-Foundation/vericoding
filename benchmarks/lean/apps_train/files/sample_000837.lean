@@ -1,0 +1,52 @@
+/-
+Voritex a big data scientist collected huge amount of big data having structure of two rows and n columns.
+Voritex is storing all the valid data for manipulations and pressing invalid command when data not satisfying the constraints.
+Voritex likes brute force method and he calls it as BT, he decided to run newly created BT engine for getting good result.
+At each instance when BT engine is outputting a newly created number Voritex calls it as BT number.
+Voritex is daydreaming and thinking that his engine is extremely optimised and will get an interview call in which he will be explaining the structure of BT engine and which will be staring from 1 and simultaneously performing $i$-th xor operation with $i$ and previously(one step before) obtained BT number.
+BT engine is outputting the $K$-th highest BT number in the first $N$ natural numbers.
+Chef : (thinking) I also want to create BT engine……..
+
+-----Input:-----
+- The first line of the input contains a single integer $T$ denoting the number of test cases. The description of T test cases follows.
+- The line of each test case contains a two integers $N$ and $K$.
+
+-----Output:-----
+For each test case, print a single line containing integer $K$-th highest number else print -$1$ when invalid command pressed.
+
+-----Constraints-----
+- $1 \leq T \leq 100000$
+- $1 \leq N \leq 100000$
+- $1 \leq K \leq N$
+
+-----Sample Input:-----
+2
+4 2
+5 5
+
+-----Sample Output:-----
+2
+0
+
+-----EXPLANATION:-----
+For first valid constraints generating output as 0 2 1 5 
+1^1 first BT number is 0
+2^0 second BT number is 2
+3^2 third BT number is 1
+4^1 fourth BT number is 5
+Hence the answer is 2.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def find_kth_highest_bt_number (n k : Nat) : Int :=
+sorry
+
+theorem find_kth_highest_non_negative (n k : Nat) :
+  find_kth_highest_bt_number n k ≠ -1 →
+  find_kth_highest_bt_number n k ≥ 0 :=
+sorry
+
+-- Apps difficulty: interview
+-- Assurance level: guarded_and_plausible

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   This problem is about sequences of positive integers $a_1,a_2,...,a_N$. A subsequence of a sequence is anything obtained by dropping some of the elements. For example, $3,7,11,3$ is a subsequence of $6,3,11,5,7,4,3,11,5,3$ , but $3,3,7$ is not a subsequence of $6,3,11,5,7,4,3,11,5,3$ .
   A fully dividing sequence is a sequence $a_1,a_2,...,a_N$ where $a_i$ divides $a_j$ whenever $i < j$. For example, $3,15,60,720$ is a fully dividing sequence.
   Given a sequence of integers your aim is to find the length of the longest fully dividing subsequence of this sequence.
@@ -54,6 +55,7 @@ vc-description: |-
   
   -----Sample output 2:-----
   5
+  -/
 
 vc-preamble: |-
   def find_longest_dividing_subsequence (nums: List Nat) : Nat :=
@@ -96,23 +98,23 @@ vc-theorems: |-
     find_longest_dividing_subsequence [1] = 1 :=
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_longest_dividing_subsequence [2, 3, 7, 8, 14, 39, 145, 76, 320]
+  -- #guard_msgs in
+  -- #eval find_longest_dividing_subsequence [2, 3, 7, 8, 14, 39, 145, 76, 320]
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval find_longest_dividing_subsequence [2, 11, 16, 12, 36, 60, 71, 17, 29, 144, 288, 129, 432, 993]
+  -- #guard_msgs in
+  -- #eval find_longest_dividing_subsequence [2, 11, 16, 12, 36, 60, 71, 17, 29, 144, 288, 129, 432, 993]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval find_longest_dividing_subsequence [1, 2, 4, 8]
+  -- #guard_msgs in
+  -- #eval find_longest_dividing_subsequence [1, 2, 4, 8]
 
 vc-postamble: |-
   -- Apps difficulty: interview

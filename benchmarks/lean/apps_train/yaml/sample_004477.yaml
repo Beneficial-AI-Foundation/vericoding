@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   It is 2050 and romance has long gone, relationships exist solely for practicality.
   
   MatchMyHusband is a website that matches busy working women with perfect house husbands. You have been employed by MatchMyHusband to write a function that determines who matches!!
@@ -12,6 +13,7 @@ vc-description: |-
   Every woman that signs up, begins with a "needs" rating of 100. However, it's realised that the longer women wait for their husbands, the more dissatisfied they become with our service. They also become less picky, therefore their needs are subject to exponential decay of 15% per month. https://en.wikipedia.org/wiki/Exponential_decay
   
   Given the number of months since sign up, write a function that returns "Match!" if the husband is useful enough, or "No match!" if he's not.
+  -/
 
 vc-preamble: |-
 
@@ -40,23 +42,23 @@ vc-theorems: |-
   theorem match_max_usefulness (usefulness : List Nat) :
     matchFn (List.replicate usefulness.length 100) 0 = "Match!" := sorry
   
-  /--
+  /-
   info: 'Match!'
   -/
-  #guard_msgs in
-  #eval match [26, 23, 19] 3
+  -- #guard_msgs in
+  -- #eval match [26, 23, 19] 3
   
-  /--
+  /-
   info: 'No match!'
   -/
-  #guard_msgs in
-  #eval match [15, 24, 12] 4
+  -- #guard_msgs in
+  -- #eval match [15, 24, 12] 4
   
-  /--
+  /-
   info: 'Match!'
   -/
-  #guard_msgs in
-  #eval match [8, 11, 4] 10
+  -- #guard_msgs in
+  -- #eval match [8, 11, 4] 10
 
 vc-postamble: |-
   -- Apps difficulty: introductory

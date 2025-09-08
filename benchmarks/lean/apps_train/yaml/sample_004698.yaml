@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Many websites use weighted averages of various polls to make projections for elections. They’re weighted based on a variety of factors, such as historical accuracy of the polling firm, sample size, as well as date(s). The weights, in this kata, are already calculated for you. All you need to do is convert a set of polls with weights, into a fixed projection for the result.
   
   #### Task:
@@ -78,6 +79,7 @@ vc-description: |-
   [Random Integers](https://www.codewars.com/kata/random-integers), [Implement String#transpose](https://www.codewars.com/kata/implement-string-number-transpose), [Implement Array#transpose!](https://www.codewars.com/kata/implement-array-number-transpose), [Arrays and Procs #1](https://www.codewars.com/kata/arrays-and-procs-number-1), and [Arrays and Procs #2](https://www.codewars.com/kata/arrays-and-procs-number-2).
   
   If you notice any issues or have any suggestions/comments whatsoever, please don't hesitate to mark an issue or just comment. Thanks!
+  -/
 
 vc-preamble: |-
 
@@ -112,23 +114,23 @@ vc-theorems: |-
     p ∈ predict candidates polls →
     Float.abs (p.2 * 10 - Float.round (p.2 * 10)) < 1e-10 := sorry
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval predict ["A", "B", "C"] [[[20, 30, 50], 1.0], [[40, 40, 20], 0.5], [[50, 40, 10], 2.0]]
+  -- #guard_msgs in
+  -- #eval predict ["A", "B", "C"] [[[20, 30, 50], 1.0], [[40, 40, 20], 0.5], [[50, 40, 10], 2.0]]
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval predict candidates [[[30, 30, 40], 1.0], [[20, 40, 40], 1.0]]
+  -- #guard_msgs in
+  -- #eval predict candidates [[[30, 30, 40], 1.0], [[20, 40, 40], 1.0]]
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval predict candidates [[[45, 35, 20], 1.0]]
+  -- #guard_msgs in
+  -- #eval predict candidates [[[45, 35, 20], 1.0]]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

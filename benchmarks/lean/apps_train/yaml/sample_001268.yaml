@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The Little Elephant from the Zoo of Lviv has an array A that consists of N positive integers. Let A[i] be the i-th number in this array (i = 1, 2, ..., N).
   
   Find the minimal number x > 1 such that x is a divisor of all integers from array A. More formally, this x should satisfy the following relations:
@@ -44,6 +45,7 @@ vc-description: |-
   x4 mod x7 mod x5 mod x20113112403154206415740584759475
   
   As we see each number up to 9 does not divide all of the numbers in the array. Clearly all larger numbers also will fail to do this. So there is no such number x > 1 and the answer is -1.
+  -/
 
 vc-preamble: |-
   def find_min_divisor (nums: List Nat) : Int :=
@@ -86,23 +88,23 @@ vc-theorems: |-
     result = -1 ∨ result ≥ 2 := by
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_min_divisor [2, 4, 8]
+  -- #guard_msgs in
+  -- #eval find_min_divisor [2, 4, 8]
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval find_min_divisor [4, 7, 5]
+  -- #guard_msgs in
+  -- #eval find_min_divisor [4, 7, 5]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_min_divisor [12, 18, 24]
+  -- #guard_msgs in
+  -- #eval find_min_divisor [12, 18, 24]
 
 vc-postamble: |-
   -- Apps difficulty: interview

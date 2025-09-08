@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A policeman wants to catch a thief. Both the policeman and the thief can only move on a line on integer coordinates between $0$ and $N$ (inclusive).
   Initially, the policeman is at a coordinate $x$ and the thief is at a coordinate $y$. During each second, each of them must move to the left or right (not necessarily both in the same direction) by distance $\textbf{exactly}$ equal to $K$. No one may go to the left of the coordinate $0$ or to the right of $N$. Both the policeman and the thief move simultaneously and they cannot meet while moving, only at the end of each second.
   Will the policeman be able to catch the thief if they both move optimally? The thief is caught as soon as the policeman and thief meet at the same position at the same time.
@@ -34,6 +35,7 @@ vc-description: |-
   
   -----Explanation-----
   Example case 1: The policeman is at $0$ and the thief is at $1$. After the $1$-st second, the policeman is at $1$ and the thief is at $0$. After the next second, the policeman is again at $0$ and the thief at $1$. They cannot end up at the same coordinate.
+  -/
 
 vc-preamble: |-
   def abs (n : Nat) : Nat := 
@@ -63,23 +65,23 @@ vc-theorems: |-
   theorem catch_thief_same_position (x k n : Nat) (h : k > 0) (h' : n > 0) :
     can_catch_thief x x k n = "Yes" := sorry
   
-  /--
+  /-
   info: 'No'
   -/
-  #guard_msgs in
-  #eval can_catch_thief 0 1 1 1
+  -- #guard_msgs in
+  -- #eval can_catch_thief 0 1 1 1
   
-  /--
+  /-
   info: 'No'
   -/
-  #guard_msgs in
-  #eval can_catch_thief 1 4 1 5
+  -- #guard_msgs in
+  -- #eval can_catch_thief 1 4 1 5
   
-  /--
+  /-
   info: 'Yes'
   -/
-  #guard_msgs in
-  #eval can_catch_thief 4 2 1 7
+  -- #guard_msgs in
+  -- #eval can_catch_thief 4 2 1 7
 
 vc-postamble: |-
   -- Apps difficulty: interview

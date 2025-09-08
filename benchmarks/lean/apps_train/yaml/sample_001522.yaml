@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given an integer sequence $A_1, A_2, \ldots, A_N$. For any pair of integers $(l, r)$ such that $1 \le l \le r \le N$, let's define $\mathrm{OR}(l, r)$ as $A_l \lor A_{l+1} \lor \ldots \lor A_r$. Here, $\lor$ is the bitwise OR operator.
   In total, there are $\frac{N(N+1)}{2}$ possible pairs $(l, r)$, i.e. $\frac{N(N+1)}{2}$ possible values of $\mathrm{OR}(l, r)$. Determine if all these values are pairwise distinct.
   
@@ -36,6 +37,7 @@ vc-description: |-
   -----Explanation-----
   Example case 1: The values of $\mathrm{OR}(l, r)$ are $1, 2, 7, 3, 7, 7$ (corresponding to the contiguous subsequences $[1], [2], [7], [1,2], [2,7], [1,2,7]$ respectively). We can see that these values are not pairwise distinct.
   Example case 2: The values of $\mathrm{OR}(l, r)$ are $1, 2, 3$ (corresponding to the contiguous subsequences $[1], [2], [1, 2]$ respectively) and they are pairwise distinct.
+  -/
 
 vc-preamble: |-
 
@@ -68,23 +70,23 @@ vc-theorems: |-
   theorem check_unique_or_pairs_order_invariant {arr : List Nat} :
     check_unique_or_pairs arr = check_unique_or_pairs arr.reverse := sorry
   
-  /--
+  /-
   info: 'NO'
   -/
-  #guard_msgs in
-  #eval check_unique_or_pairs [1, 2, 7]
+  -- #guard_msgs in
+  -- #eval check_unique_or_pairs [1, 2, 7]
   
-  /--
+  /-
   info: 'YES'
   -/
-  #guard_msgs in
-  #eval check_unique_or_pairs [1, 2]
+  -- #guard_msgs in
+  -- #eval check_unique_or_pairs [1, 2]
   
-  /--
+  /-
   info: 'YES'
   -/
-  #guard_msgs in
-  #eval check_unique_or_pairs [6, 5, 8]
+  -- #guard_msgs in
+  -- #eval check_unique_or_pairs [6, 5, 8]
 
 vc-postamble: |-
   -- Apps difficulty: interview

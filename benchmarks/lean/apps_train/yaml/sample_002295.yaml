@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an integer number n, return the difference between the product of its digits and the sum of its digits.
   
   Example 1:
@@ -20,6 +21,7 @@ vc-description: |-
   Constraints:
   
   1 <= n <= 10^5
+  -/
 
 vc-preamble: |-
   def subtract_product_and_sum (n : Nat) : Int := sorry
@@ -42,23 +44,23 @@ vc-theorems: |-
   theorem three_digit_bounds (n : Nat) (h : n ≥ 100 ∧ n ≤ 999) :
     subtract_product_and_sum n ≤ 729 ∧ subtract_product_and_sum n ≥ -27 := sorry
   
-  /--
+  /-
   info: 15
   -/
-  #guard_msgs in
-  #eval subtract_product_and_sum 234
+  -- #guard_msgs in
+  -- #eval subtract_product_and_sum 234
   
-  /--
+  /-
   info: 21
   -/
-  #guard_msgs in
-  #eval subtract_product_and_sum 4421
+  -- #guard_msgs in
+  -- #eval subtract_product_and_sum 4421
   
-  /--
+  /-
   info: -2
   -/
-  #guard_msgs in
-  #eval subtract_product_and_sum 111
+  -- #guard_msgs in
+  -- #eval subtract_product_and_sum 111
 
 vc-postamble: |-
   -- Apps difficulty: introductory

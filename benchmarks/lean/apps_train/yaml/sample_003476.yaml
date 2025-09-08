@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Problem
   
   There are `n` apples that need to be divided into four piles. We need two mysterious number `x` and `y`. Let The number of first pile equals to `x+y`, the number of second pile equals to `x-y`, the number of third pile equals to `x*y`, the number of fourth pile equals to `x/y`. We need to calculate how many apples are there in each pile.
@@ -33,6 +34,7 @@ vc-description: |-
   
   fourPiles 24 4  -- []  -- can not divide
   ```
+  -/
 
 vc-preamble: |-
   def four_piles (n : Nat) (y : Nat) : Option (List Nat) := sorry
@@ -86,23 +88,23 @@ vc-theorems: |-
     | none => True
     := sorry
   
-  /--
+  /-
   info: [12, 6, 27, 3]
   -/
-  #guard_msgs in
-  #eval four_piles 48 3
+  -- #guard_msgs in
+  -- #eval four_piles 48 3
   
-  /--
+  /-
   info: [20, 12, 64, 4]
   -/
-  #guard_msgs in
-  #eval four_piles 100 4
+  -- #guard_msgs in
+  -- #eval four_piles 100 4
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval four_piles 25 4
+  -- #guard_msgs in
+  -- #eval four_piles 25 4
 
 vc-postamble: |-
   -- Apps difficulty: introductory

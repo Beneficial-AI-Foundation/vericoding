@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You have 4 cards each containing a number from 1 to 9.  You need to judge whether they could operated through *, /, +, -, (, ) to get the value of 24.
   
   Example 1:
@@ -17,6 +18,7 @@ vc-description: |-
   The division operator / represents real division, not integer division.  For example, 4 / (1 - 2/3) = 12.
   Every operation done is between two numbers.  In particular, we cannot use - as a unary operator.  For example, with [1, 1, 1, 1] as input, the expression -1 - 1 - 1 - 1 is not allowed.
   You cannot concatenate numbers together.  For example, if the input is [1, 2, 1, 2], we cannot write this as 12 + 12.
+  -/
 
 vc-preamble: |-
 
@@ -47,23 +49,23 @@ vc-theorems: |-
     (h₃ : (nums.filter (· = 1)).length = 3) :
     judge_point24 nums = true := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval judge_point24 [4, 1, 8, 7]
+  -- #guard_msgs in
+  -- #eval judge_point24 [4, 1, 8, 7]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval judge_point24 [1, 2, 1, 2]
+  -- #guard_msgs in
+  -- #eval judge_point24 [1, 2, 1, 2]
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval judge_point24 [3, 3, 8, 8]
+  -- #guard_msgs in
+  -- #eval judge_point24 [3, 3, 8, 8]
 
 vc-postamble: |-
   -- Apps difficulty: interview

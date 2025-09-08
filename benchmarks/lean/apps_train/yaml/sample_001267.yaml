@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given two positive integers $N$ and $K$, where $K \le N$. Find a sequence $A_1, A_2, \ldots, A_N$ such that:
   - for each valid $i$, $A_i$ is either $i$ or $-i$
   - there are exactly $K$ values of $i$ such that $1 \le i \le N$ and $A_1 + A_2 + \ldots + A_i > 0$
@@ -25,6 +26,7 @@ vc-description: |-
   
   -----Example Output-----
   1 2 3
+  -/
 
 vc-preamble: |-
   def List.size {α} : List α → Nat
@@ -74,11 +76,11 @@ vc-theorems: |-
     seq = List.map (fun i => -Int.ofNat (i + 1)) (List.range n) :=
     sorry
   
-  /--
+  /-
   info: [1, 2, 3]
   -/
-  #guard_msgs in
-  #eval sequence_generator 3 3
+  -- #guard_msgs in
+  -- #eval sequence_generator 3 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

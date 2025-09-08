@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Your Story
   "A *piano* in the home meant something." - *Fried Green Tomatoes at the Whistle Stop Cafe*
   
@@ -20,6 +21,7 @@ vc-description: |-
   2017  "white"
   ```
   Have fun! And if you enjoy this kata, check out the sequel: Piano Kata, Part 2
+  -/
 
 vc-preamble: |-
 
@@ -46,41 +48,41 @@ vc-theorems: |-
       ↔ black_or_white_key key = Color.black :=
   sorry
   
-  /--
+  /-
   info: 'white'
   -/
-  #guard_msgs in
-  #eval black_or_white_key 1
+  -- #guard_msgs in
+  -- #eval black_or_white_key 1
   
-  /--
+  /-
   info: 'black'
   -/
-  #guard_msgs in
-  #eval black_or_white_key 5
+  -- #guard_msgs in
+  -- #eval black_or_white_key 5
   
-  /--
+  /-
   info: 'black'
   -/
-  #guard_msgs in
-  #eval black_or_white_key 12
+  -- #guard_msgs in
+  -- #eval black_or_white_key 12
   
-  /--
+  /-
   info: 'white'
   -/
-  #guard_msgs in
-  #eval black_or_white_key 89
+  -- #guard_msgs in
+  -- #eval black_or_white_key 89
   
-  /--
+  /-
   info: 'black'
   -/
-  #guard_msgs in
-  #eval black_or_white_key 100
+  -- #guard_msgs in
+  -- #eval black_or_white_key 100
   
-  /--
+  /-
   info: 'white'
   -/
-  #guard_msgs in
-  #eval black_or_white_key 2017
+  -- #guard_msgs in
+  -- #eval black_or_white_key 2017
 
 vc-postamble: |-
   -- Apps difficulty: introductory

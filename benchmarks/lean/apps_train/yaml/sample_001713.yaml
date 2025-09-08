@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A famous casino is suddenly faced with a sharp decline of their revenues. They decide to offer Texas hold'em also online. Can you help them by writing an algorithm that can rank poker hands? 
   
   Task:
@@ -33,6 +34,7 @@ vc-description: |-
   `"5C 4D 3C 2S AS"`
   
   Note:  there are around 25000 random tests, so keep an eye on performances.
+  -/
 
 vc-preamble: |-
   def VALID_VALUES := ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A']

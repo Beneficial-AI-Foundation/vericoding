@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Happy traveller [Part 1]
   
   There is a play grid NxN; Always square! 
@@ -63,6 +64,7 @@ vc-description: |-
   
   You can continue adventures:
   Happy traveller [Part 2]
+  -/
 
 vc-preamble: |-
   def choose (n m : Nat) : Nat :=
@@ -97,29 +99,29 @@ vc-theorems: |-
     count_paths n (0, n-1) = 1 :=
     sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_paths 1 (0, 0)
+  -- #guard_msgs in
+  -- #eval count_paths 1 (0, 0)
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_paths 2 (1, 0)
+  -- #guard_msgs in
+  -- #eval count_paths 2 (1, 0)
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_paths 3 (1, 0)
+  -- #guard_msgs in
+  -- #eval count_paths 3 (1, 0)
   
-  /--
+  /-
   info: 70
   -/
-  #guard_msgs in
-  #eval count_paths 5 (4, 0)
+  -- #guard_msgs in
+  -- #eval count_paths 5 (4, 0)
 
 vc-postamble: |-
   -- Apps difficulty: introductory

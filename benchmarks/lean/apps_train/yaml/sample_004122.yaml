@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    Call two arms equally strong if the heaviest weights they each are able to lift are equal.
   
@@ -33,6 +34,7 @@ vc-description: |-
       A non-negative integer representing the heaviest weight your friend can lift with his or her right arm.
   
    - `[output]` a boolean value
+  -/
 
 vc-preamble: |-
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef and his competitor Kefa own two restaurants located at a straight road. The position of Chef's restaurant is $X_1$, the position of Kefa's restaurant is $X_2$.
   Chef and Kefa found out at the same time that a bottle with a secret recipe is located on the road between their restaurants. The position of the bottle is $X_3$.
   The cooks immediately started to run to the bottle. Chef runs with speed $V_1$, Kefa with speed $V_2$.
@@ -31,6 +32,7 @@ vc-description: |-
   
   -----Explanation-----
   Example case 1. Chef and Kefa are on the same distance from the bottle, but Kefa has speed $2$, while Chef has speed $1$.
+  -/
 
 vc-preamble: |-
 
@@ -70,23 +72,23 @@ vc-theorems: |-
     solve_race x1 x1 x3 v1 v1 = "Draw" :=
     sorry
   
-  /--
+  /-
   info: 'Kefa'
   -/
-  #guard_msgs in
-  #eval solve_race 1 3 2 1 2
+  -- #guard_msgs in
+  -- #eval solve_race 1 3 2 1 2
   
-  /--
+  /-
   info: 'Chef'
   -/
-  #guard_msgs in
-  #eval solve_race 1 5 2 1 2
+  -- #guard_msgs in
+  -- #eval solve_race 1 5 2 1 2
   
-  /--
+  /-
   info: 'Draw'
   -/
-  #guard_msgs in
-  #eval solve_race 1 5 3 2 2
+  -- #guard_msgs in
+  -- #eval solve_race 1 5 3 2 2
 
 vc-postamble: |-
   -- Apps difficulty: interview

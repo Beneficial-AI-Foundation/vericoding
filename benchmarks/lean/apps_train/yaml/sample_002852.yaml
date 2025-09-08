@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Task
   
   Let's say we have a positive integer, `$n$`. You have to find the smallest possible positive integer that when multiplied by `$n$`, becomes a perfect power of integer `$k$`. A perfect power of `$k$` is any positive integer that can be represented as `$a^k$`. For example if `$k = 2$`, then `$36$` is a perfect power of `$k$`, but `$27$` isn't.
@@ -18,6 +19,7 @@ vc-description: |-
   If you have trouble seeing the numbers, refresh your page ;-) Please rate this kata. All translations are welcome.
   
   ABOVE: [If you see this:](https://imgur.com/TKY59S4), refresh your page.
+  -/
 
 vc-preamble: |-
 
@@ -50,23 +52,23 @@ vc-theorems: |-
     mul_power 8 3 = 1 ∧ mul_power 27 3 = 1
     := by sorry
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval mul_power 100 3
+  -- #guard_msgs in
+  -- #eval mul_power 100 3
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval mul_power 36 2
+  -- #guard_msgs in
+  -- #eval mul_power 36 2
   
-  /--
+  /-
   info: 18
   -/
-  #guard_msgs in
-  #eval mul_power 72 4
+  -- #guard_msgs in
+  -- #eval mul_power 72 4
 
 vc-postamble: |-
   -- Apps difficulty: introductory

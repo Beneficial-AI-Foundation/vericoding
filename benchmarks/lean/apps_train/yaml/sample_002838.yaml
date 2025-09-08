@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this kata, the number 0 is infected. You are given a list. Every turn, any item in the list that is adjacent to a 0 becomes infected and transforms into a 0. How many turns will it take for the whole list to become infected?
   
   ```
@@ -13,6 +14,7 @@ vc-description: |-
   ```
   
   All lists will contain at least one item, and at least one zero, and the only items will be 0s and 1s. Lists may be very very long, so pure brute force approach will not work.
+  -/
 
 vc-preamble: |-
 
@@ -32,23 +34,23 @@ vc-theorems: |-
     (h : arr = [1]) :
     infected_zeroes arr = 1 := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval infected_zeroes [0, 1, 1, 0]
+  -- #guard_msgs in
+  -- #eval infected_zeroes [0, 1, 1, 0]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval infected_zeroes [1, 1, 0, 1, 1]
+  -- #guard_msgs in
+  -- #eval infected_zeroes [1, 1, 0, 1, 1]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval infected_zeroes [0, 1, 1, 1]
+  -- #guard_msgs in
+  -- #eval infected_zeroes [0, 1, 1, 1]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

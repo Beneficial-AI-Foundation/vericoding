@@ -1,9 +1,11 @@
 vc-description: |-
+  /-
   You get an array of numbers, return the sum of all of the positives ones.
   
   Example `[1,-4,7,12]` => `1 + 7 + 12 = 20`
   
   Note: if there is nothing to sum, the sum is default to `0`.
+  -/
 
 vc-preamble: |-
 
@@ -24,23 +26,23 @@ vc-theorems: |-
   theorem positive_sum_unchanged_remove_negative (xs : List Int) :
     positive_sum xs = positive_sum (xs.filter (fun x => x ≥ 0)) := sorry
   
-  /--
+  /-
   info: 15
   -/
-  #guard_msgs in
-  #eval positive_sum [1, 2, 3, 4, 5]
+  -- #guard_msgs in
+  -- #eval positive_sum [1, 2, 3, 4, 5]
   
-  /--
+  /-
   info: 13
   -/
-  #guard_msgs in
-  #eval positive_sum [1, -2, 3, 4, 5]
+  -- #guard_msgs in
+  -- #eval positive_sum [1, -2, 3, 4, 5]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval positive_sum []
+  -- #guard_msgs in
+  -- #eval positive_sum []
 
 vc-postamble: |-
   -- Apps difficulty: introductory

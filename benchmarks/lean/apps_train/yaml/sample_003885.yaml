@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function called that takes a string of parentheses, and determines if the order of the parentheses is valid. The function should return `true` if the string is valid, and `false` if it's invalid.
   
   ## Examples
@@ -17,6 +18,7 @@ vc-description: |-
   ~~~if-not:javascript,go
   Along with opening (`(`) and closing (`)`) parenthesis, input may contain any valid ASCII characters.  Furthermore, the input string may be empty and/or not contain any parentheses at all.  Do **not** treat other forms of brackets as parentheses (e.g. `[]`, `{}`, `<>`).
   ~~~
+  -/
 
 vc-preamble: |-
 
@@ -58,23 +60,23 @@ vc-theorems: |-
   theorem empty_string_valid :
     valid_parentheses "" = true := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval valid_parentheses "hi(hi)"
+  -- #guard_msgs in
+  -- #eval valid_parentheses "hi(hi)"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval valid_parentheses "((())()())"
+  -- #guard_msgs in
+  -- #eval valid_parentheses "((())()())"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval valid_parentheses "hi(hi))("
+  -- #guard_msgs in
+  -- #eval valid_parentheses "hi(hi))("
 
 vc-postamble: |-
   -- Apps difficulty: introductory

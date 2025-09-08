@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given two strings $s$ and $t$ both of length $n$ and both consisting of lowercase Latin letters.
   
   In one move, you can choose any length $len$ from $1$ to $n$ and perform the following operation:   Choose any contiguous substring of the string $s$ of length $len$ and reverse it;  at the same time choose any contiguous substring of the string $t$ of length $len$ and reverse it as well. 
@@ -48,6 +49,7 @@ vc-description: |-
   YES
   NO
   YES
+  -/
 
 vc-preamble: |-
 
@@ -79,23 +81,23 @@ vc-theorems: |-
     can_make_equal s t = can_make_equal t s :=
   sorry
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval can_make_equal "abcd" "abdc"
+  -- #guard_msgs in
+  -- #eval can_make_equal "abcd" "abdc"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval can_make_equal "ababa" "baaba"
+  -- #guard_msgs in
+  -- #eval can_make_equal "ababa" "baaba"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval can_make_equal "abcd" "badc"
+  -- #guard_msgs in
+  -- #eval can_make_equal "abcd" "badc"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

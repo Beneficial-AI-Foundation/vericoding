@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a tree (connected graph without cycles) consisting of $n$ vertices. The tree is unrooted — it is just a connected undirected graph without cycles.
   
   In one move, you can choose exactly $k$ leaves (leaf is such a vertex that is connected to only one another vertex) connected to the same vertex and remove them with edges incident to them. I.e. you choose such leaves $u_1, u_2, \dots, u_k$ that there are edges $(u_1, v)$, $(u_2, v)$, $\dots$, $(u_k, v)$ and remove these leaves and these edges.
@@ -78,6 +79,7 @@ vc-description: |-
   $\text{of}$
   
   There you can remove vertices $5$ and $7$ during the first move, then vertices $2$ and $4$ during the second move and vertices $1$ and $6$ during the third move.
+  -/
 
 vc-preamble: |-
   def solve_leaf_removal (n k : Nat) (edges : List (Nat × Nat)) : Nat :=
@@ -106,23 +108,23 @@ vc-theorems: |-
       solve_leaf_removal 1 k [] = 0 := 
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve_leaf_removal 8 3 [(1, 2), (1, 5), (7, 6), (6, 8), (3, 1), (6, 4), (6, 1)]
+  -- #guard_msgs in
+  -- #eval solve_leaf_removal 8 3 [(1, 2), (1, 5), (7, 6), (6, 8), (3, 1), (6, 4), (6, 1)]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval solve_leaf_removal 10 3 [(1, 2), (1, 10), (2, 3), (1, 5), (1, 6), (2, 4), (7, 10), (10, 9), (8, 10)]
+  -- #guard_msgs in
+  -- #eval solve_leaf_removal 10 3 [(1, 2), (1, 10), (2, 3), (1, 5), (1, 6), (2, 4), (7, 10), (10, 9), (8, 10)]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval solve_leaf_removal 5 1 [(1, 2), (2, 3), (4, 3), (5, 3)]
+  -- #guard_msgs in
+  -- #eval solve_leaf_removal 5 1 [(1, 2), (2, 3), (4, 3), (5, 3)]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

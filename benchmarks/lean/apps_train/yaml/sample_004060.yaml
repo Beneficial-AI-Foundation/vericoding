@@ -1,8 +1,10 @@
 vc-description: |-
+  /-
   Help Johnny!
   He can't make his code work!
   Easy Code
   Johnny is trying to make a function that adds the sum of two encoded strings, but he can't find the error in his code! Help him!
+  -/
 
 vc-preamble: |-
 
@@ -26,11 +28,11 @@ vc-theorems: |-
   theorem add_positive (s1 s2 : String) :
     add s1 s2 ≥ 0 := sorry
   
-  /--
+  /-
   info: 195
   -/
-  #guard_msgs in
-  #eval add "a" "b"
+  -- #guard_msgs in
+  -- #eval add "a" "b"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

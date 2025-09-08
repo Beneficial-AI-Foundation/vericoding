@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a binary string S of N bits. The bits in the string are indexed starting from 1. S[i] denotes the ith bit of S.
   
   Let's say that a sequence i1, i2, …, iK(1 ≤ K; 1 ≤ i1 < i2 < … < iK ≤ N) produces a palindrome when applied to S, if the string S[i1] S[i2] … S[ik] is a palindrome (that is, reads the same backward or forward).
@@ -43,6 +44,7 @@ vc-description: |-
   -----Explanation of the first case in the example test-----
   
   The following sequences are counted in the answer: {1}, {2}, {3}, {4}, {5}, {1, 2}, {1, 4}, {2, 4}, {1, 2, 4}.
+  -/
 
 vc-preamble: |-
 
@@ -71,23 +73,23 @@ vc-theorems: |-
     count_exponential_palindromes (String.singleton c) = 1 :=
   sorry
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval count_exponential_palindromes "11010"
+  -- #guard_msgs in
+  -- #eval count_exponential_palindromes "11010"
   
-  /--
+  /-
   info: 18
   -/
-  #guard_msgs in
-  #eval count_exponential_palindromes "101001011"
+  -- #guard_msgs in
+  -- #eval count_exponential_palindromes "101001011"
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval count_exponential_palindromes "110"
+  -- #guard_msgs in
+  -- #eval count_exponential_palindromes "110"
 
 vc-postamble: |-
   -- Apps difficulty: interview

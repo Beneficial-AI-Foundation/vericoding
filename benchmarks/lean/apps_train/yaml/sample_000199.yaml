@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A robot is located at the top-left corner of a m x n grid (marked 'Start' in the diagram below).
   
   The robot can only move either down or right at any point in time. The robot is trying to reach the bottom-right corner of the grid (marked 'Finish' in the diagram below).
@@ -23,6 +24,7 @@ vc-description: |-
   
   Input: m = 7, n = 3
   Output: 28
+  -/
 
 vc-preamble: |-
 
@@ -46,23 +48,23 @@ vc-theorems: |-
   theorem unique_paths_single_col (n : Nat) (h : n > 0) :
     unique_paths n 1 = 1 := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval unique_paths 3 2
+  -- #guard_msgs in
+  -- #eval unique_paths 3 2
   
-  /--
+  /-
   info: 28
   -/
-  #guard_msgs in
-  #eval unique_paths 7 3
+  -- #guard_msgs in
+  -- #eval unique_paths 7 3
   
-  /--
+  /-
   info: 28
   -/
-  #guard_msgs in
-  #eval unique_paths 3 7
+  -- #guard_msgs in
+  -- #eval unique_paths 3 7
 
 vc-postamble: |-
   -- Apps difficulty: interview

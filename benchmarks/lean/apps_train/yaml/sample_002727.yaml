@@ -1,9 +1,11 @@
 vc-description: |-
+  /-
   Complete the solution so that it reverses the string passed into it. 
   
   ```
   'world'  =>  'dlrow'
   ```
+  -/
 
 vc-preamble: |-
 
@@ -30,23 +32,23 @@ vc-theorems: |-
   theorem solution_empty : 
     solution "" = "" := sorry
   
-  /--
+  /-
   info: 'dlrow'
   -/
-  #guard_msgs in
-  #eval solution "world"
+  -- #guard_msgs in
+  -- #eval solution "world"
   
-  /--
+  /-
   info: 'olleh'
   -/
-  #guard_msgs in
-  #eval solution "hello"
+  -- #guard_msgs in
+  -- #eval solution "hello"
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval solution ""
+  -- #guard_msgs in
+  -- #eval solution ""
 
 vc-postamble: |-
   -- Apps difficulty: introductory

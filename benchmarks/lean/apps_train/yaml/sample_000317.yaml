@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
   
   P   A   H   N
@@ -26,6 +27,7 @@ vc-description: |-
   A   L S  I G
   Y A   H R
   P     I
+  -/
 
 vc-preamble: |-
 
@@ -64,23 +66,23 @@ vc-theorems: |-
     convert_zigzag s n = s := 
   sorry
   
-  /--
+  /-
   info: 'PAHNAPLSIIGYIR'
   -/
-  #guard_msgs in
-  #eval convert_zigzag "PAYPALISHIRING" 3
+  -- #guard_msgs in
+  -- #eval convert_zigzag "PAYPALISHIRING" 3
   
-  /--
+  /-
   info: 'PINALSIGYAHRPI'
   -/
-  #guard_msgs in
-  #eval convert_zigzag s1 4
+  -- #guard_msgs in
+  -- #eval convert_zigzag s1 4
   
-  /--
+  /-
   info: 'AB'
   -/
-  #guard_msgs in
-  #eval convert_zigzag "AB" 1
+  -- #guard_msgs in
+  -- #eval convert_zigzag "AB" 1
 
 vc-postamble: |-
   -- Apps difficulty: interview

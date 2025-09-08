@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Imagine a funnel filled with letters. The bottom letter drops out of the funnel and onto a conveyor belt:
   
   ```
@@ -73,6 +74,7 @@ vc-description: |-
   ```
   
   **For a bigger funneling challenge, check out [this kata](https://www.codewars.com/kata/create-a-funnel) by @myjinxin2015.**
+  -/
 
 vc-preamble: |-
 
@@ -102,23 +104,23 @@ vc-theorems: |-
     funnel_out [['a']] = ['a'] ∧  
     funnel_out [['a', 'b'], ['c']] = ['c', 'a', 'b'] := sorry
   
-  /--
+  /-
   info: 'q'
   -/
-  #guard_msgs in
-  #eval funnel_out [["q"]]
+  -- #guard_msgs in
+  -- #eval funnel_out [["q"]]
   
-  /--
+  /-
   info: 'abc'
   -/
-  #guard_msgs in
-  #eval funnel_out [["b", "c"], ["a"]]
+  -- #guard_msgs in
+  -- #eval funnel_out [["b", "c"], ["a"]]
   
-  /--
+  /-
   info: 'fbadec'
   -/
-  #guard_msgs in
-  #eval funnel_out [["d", "a", "c"], ["b", "e"], ["f"]]
+  -- #guard_msgs in
+  -- #eval funnel_out [["d", "a", "c"], ["b", "e"], ["f"]]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

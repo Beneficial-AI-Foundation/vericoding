@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Saket loves to play with strings. One day , while he was having fun with Cyclic Permutations of available strings to him, he observed that despite being scarce in numbers Vowels were really clingy.Being clingy means for almost every given string, there was a Cyclic Permutation in which atleast two vowels were together.
   So he decided to check this property for all the available strings to him. As the number of strings can be very large, help Saket determine whether the given string is clingy or not.
   
@@ -34,6 +35,7 @@ vc-description: |-
   -----EXPLANATION:-----
   Example$Example$ case1:$ case 1: $ One of the cyclic permutation is the original string itself, which has "A" and "U" together.
   Example$Example$ case2:$ case 2: $     None of the cyclic permutation will have 2 vowels together.
+  -/
 
 vc-preamble: |-
 
@@ -66,23 +68,23 @@ vc-theorems: |-
     (h : c.isUpper) :
     is_clingy c.toString = false := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_clingy "AUXFC"
+  -- #guard_msgs in
+  -- #eval is_clingy "AUXFC"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_clingy "XBCDEF"
+  -- #guard_msgs in
+  -- #eval is_clingy "XBCDEF"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_clingy "AEIOU"
+  -- #guard_msgs in
+  -- #eval is_clingy "AEIOU"
 
 vc-postamble: |-
   -- Apps difficulty: interview

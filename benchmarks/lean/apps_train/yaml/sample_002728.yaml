@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    Mobius function - an important function in number theory. For each given n, it only has 3 values:
   ```
@@ -15,6 +16,7 @@ vc-description: |-
    `2 <= n <= 1e12`
   
    - `[output]` an integer
+  -/
 
 vc-preamble: |-
 
@@ -35,23 +37,23 @@ vc-theorems: |-
     mobius (n * n) = 0 :=
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval mobius 10
+  -- #guard_msgs in
+  -- #eval mobius 10
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval mobius 9
+  -- #guard_msgs in
+  -- #eval mobius 9
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval mobius 7
+  -- #guard_msgs in
+  -- #eval mobius 7
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   It's Diwali time and you are on a tour of Codepur, a city consisting of buildings of equal length and breadth because they were designed by a computer architect with a bit of OCD.
   The ruling party of Codepur wants to have a blockbuster Diwali celebration but lack enough funds and decided to open a donation channel called Codepur Cares Fund (CCF). So they decided to run a survey.
   Each building eihter has permanent donors, whose impact value is represented as a positive integer, or potential donors, whose impact value is represented by negative integers.
@@ -30,6 +31,7 @@ vc-description: |-
   9    2
   -4    1
   -1    8
+  -/
 
 vc-preamble: |-
   def find_max_sum_submatrix (matrix : Array (Array Int)) : Array (Array Int) := sorry

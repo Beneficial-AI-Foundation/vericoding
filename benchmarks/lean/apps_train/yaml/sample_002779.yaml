@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ##Task:
   
   You have to write a function **pattern** which creates the following pattern upto n number of rows. *If the Argument is 0 or a Negative Integer then it should return "" i.e. empty string.*
@@ -36,6 +37,7 @@ vc-description: |-
   ```Note: There are no blank spaces```
   
   ```Hint: Use \n in string to jump to next line```
+  -/
 
 vc-preamble: |-
 
@@ -68,35 +70,35 @@ vc-theorems: |-
     ∀ i : Nat, i + 1 < lines.length → 
       lines[i]!.get! 0 = lines[i + 1]!.get! 0 := sorry
   
-  /--
+  /-
   info: '1'
   -/
-  #guard_msgs in
-  #eval pattern 1
+  -- #guard_msgs in
+  -- #eval pattern 1
   
-  /--
+  /-
   info: '2\n21'
   -/
-  #guard_msgs in
-  #eval pattern 2
+  -- #guard_msgs in
+  -- #eval pattern 2
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval pattern 4
+  -- #guard_msgs in
+  -- #eval pattern 4
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval pattern 0
+  -- #guard_msgs in
+  -- #eval pattern 0
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval pattern -1
+  -- #guard_msgs in
+  -- #eval pattern -1
 
 vc-postamble: |-
   -- Apps difficulty: introductory

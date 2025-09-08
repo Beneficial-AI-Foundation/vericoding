@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You have a large electronic screen which can display up to $998244353$ decimal digits. The digits are displayed in the same way as on different electronic alarm clocks: each place for a digit consists of $7$ segments which can be turned on and off to compose different digits. The following picture describes how you can display all $10$ decimal digits:
   
   [Image]
@@ -30,6 +31,7 @@ vc-description: |-
   Output
   7
   11
+  -/
 
 vc-preamble: |-
 
@@ -53,23 +55,23 @@ vc-theorems: |-
   theorem result_is_positive {n : Nat} (h : n ≥ 3) (h₂ : n ≤ 100) :
     find_max_display n > 0 := sorry
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval find_max_display 3
+  -- #guard_msgs in
+  -- #eval find_max_display 3
   
-  /--
+  /-
   info: 11
   -/
-  #guard_msgs in
-  #eval find_max_display 4
+  -- #guard_msgs in
+  -- #eval find_max_display 4
   
-  /--
+  /-
   info: 71
   -/
-  #guard_msgs in
-  #eval find_max_display 5
+  -- #guard_msgs in
+  -- #eval find_max_display 5
 
 vc-postamble: |-
   -- Apps difficulty: interview

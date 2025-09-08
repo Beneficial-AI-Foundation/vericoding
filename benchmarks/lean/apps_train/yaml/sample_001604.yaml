@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Complete the function/method (depending on the language) to return `true`/`True` when its argument is an array that has the same nesting structures and same corresponding length of nested arrays as the first array.
   
   For example:
@@ -26,6 +27,7 @@ vc-description: |-
   ~~~if:php
   You may assume that all arrays passed in will be non-associative.
   ~~~
+  -/
 
 vc-preamble: |-
 
@@ -55,23 +57,23 @@ vc-theorems: |-
     same_structure_as (NestedList.node l) (NestedList.leaf b) = false :=
     sorry
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval same_structure_as [1, [1, 1]] [[2, 2], 2]
+  -- #guard_msgs in
+  -- #eval same_structure_as [1, [1, 1]] [[2, 2], 2]
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval same_structure_as [1, [1, 1]] [2, [2, 2]]
+  -- #guard_msgs in
+  -- #eval same_structure_as [1, [1, 1]] [2, [2, 2]]
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval same_structure_as [[[], []]] [[[], []]]
+  -- #guard_msgs in
+  -- #eval same_structure_as [[[], []]] [[[], []]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

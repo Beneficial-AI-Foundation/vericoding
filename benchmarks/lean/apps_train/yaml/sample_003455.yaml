@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Every now and then people in the office moves teams or departments. Depending what people are doing with their time they can become more or less boring. Time to assess the current team.
   
   ```if-not:java
@@ -38,6 +39,7 @@ vc-description: |-
   The Office III - Broken Photocopier
   The Office IV - Find a Meeting Room
   The Office V - Find a Chair
+  -/
 
 vc-preamble: |-
   def VALID_DEPTS := ["accounts", "finance", "canteen", "regulation", "trading", 
@@ -89,23 +91,23 @@ vc-theorems: |-
     total ≥ 100 → boredom staff = "party time!!" :=
     sorry
   
-  /--
+  /-
   info: 'kill me now'
   -/
-  #guard_msgs in
-  #eval boredom {"tim": "change", "jim": "accounts", "randy": "canteen", "sandy": "change", "andy": "change", "katie": "IS", "laura": "change", "saajid": "IS", "alex": "trading", "john": "accounts", "mr": "finance"}
+  -- #guard_msgs in
+  -- #eval boredom {"tim": "change", "jim": "accounts", "randy": "canteen", "sandy": "change", "andy": "change", "katie": "IS", "laura": "change", "saajid": "IS", "alex": "trading", "john": "accounts", "mr": "finance"}
   
-  /--
+  /-
   info: 'i can handle this'
   -/
-  #guard_msgs in
-  #eval boredom {"tim": "IS", "jim": "finance", "randy": "pissing about", "sandy": "cleaning", "andy": "cleaning", "katie": "cleaning", "laura": "pissing about", "saajid": "regulation", "alex": "regulation", "john": "accounts", "mr": "canteen"}
+  -- #guard_msgs in
+  -- #eval boredom {"tim": "IS", "jim": "finance", "randy": "pissing about", "sandy": "cleaning", "andy": "cleaning", "katie": "cleaning", "laura": "pissing about", "saajid": "regulation", "alex": "regulation", "john": "accounts", "mr": "canteen"}
   
-  /--
+  /-
   info: 'party time!!'
   -/
-  #guard_msgs in
-  #eval boredom {"tim": "accounts", "jim": "accounts", "randy": "pissing about", "sandy": "finance", "andy": "change", "katie": "IS", "laura": "IS", "saajid": "canteen", "alex": "pissing about", "john": "retail", "mr": "pissing about"}
+  -- #guard_msgs in
+  -- #eval boredom {"tim": "accounts", "jim": "accounts", "randy": "pissing about", "sandy": "finance", "andy": "change", "katie": "IS", "laura": "IS", "saajid": "canteen", "alex": "pissing about", "john": "retail", "mr": "pissing about"}
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There is a country with $n$ citizens. The $i$-th of them initially has $a_{i}$ money. The government strictly controls the wealth of its citizens. Whenever a citizen makes a purchase or earns some money, they must send a receipt to the social services mentioning the amount of money they currently have.
   
   Sometimes the government makes payouts to the poor: all citizens who have strictly less money than $x$ are paid accordingly so that after the payout they have exactly $x$ money. In this case the citizens don't send a receipt.
@@ -49,6 +50,7 @@ vc-description: |-
   In the first example the balances change as follows: 1 2 3 4 $\rightarrow$ 3 3 3 4 $\rightarrow$ 3 2 3 4 $\rightarrow$ 3 2 3 4
   
   In the second example the balances change as follows: 3 50 2 1 10 $\rightarrow$ 3 0 2 1 10 $\rightarrow$ 8 8 8 8 10 $\rightarrow$ 8 8 20 8 10
+  -/
 
 vc-preamble: |-
 

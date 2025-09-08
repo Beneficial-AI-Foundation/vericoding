@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   **Debug** a function called calculate that takes 3 values. The first and third values are numbers. The second value is a character. If the character is "+" , "-", "\*", or "/", the function will return the result of the corresponding mathematical function on the two numbers. If the string is not one of the specified characters, the function should return null.
   
   ```
@@ -14,6 +15,7 @@ vc-description: |-
   
   [1]: http://www.codewars.com/kata/basic-calculator/javascript
   [2]: http://www.codewars.com/users/528c45adbd9daa384300068d
+  -/
 
 vc-preamble: |-
 
@@ -45,23 +47,23 @@ vc-theorems: |-
   theorem calculate_invalid_ops {a b : Float} {op : String} (h : ¬IsValidOp op) :
     calculate a op b = none := sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval calculate 2 "+" 4
+  -- #guard_msgs in
+  -- #eval calculate 2 "+" 4
   
-  /--
+  /-
   info: -7
   -/
-  #guard_msgs in
-  #eval calculate 49 "/" -7
+  -- #guard_msgs in
+  -- #eval calculate 49 "/" -7
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval calculate 8 "m" 2
+  -- #guard_msgs in
+  -- #eval calculate 8 "m" 2
 
 vc-postamble: |-
   -- Apps difficulty: introductory

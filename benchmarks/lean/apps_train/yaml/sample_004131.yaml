@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Problem
   
   Determine whether a positive integer number is **colorful** or not.
@@ -12,6 +13,7 @@ vc-description: |-
   263  -->  true
   236  -->  false
   ```
+  -/
 
 vc-preamble: |-
 
@@ -38,23 +40,23 @@ vc-theorems: |-
     (h3 : (toString n).data.length > ((toString n).data.eraseDups).length) :
     colorful n = false := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval colorful 5
+  -- #guard_msgs in
+  -- #eval colorful 5
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval colorful 263
+  -- #guard_msgs in
+  -- #eval colorful 263
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval colorful 236
+  -- #guard_msgs in
+  -- #eval colorful 236
 
 vc-postamble: |-
   -- Apps difficulty: introductory

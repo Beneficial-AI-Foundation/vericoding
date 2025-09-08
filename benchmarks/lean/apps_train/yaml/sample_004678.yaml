@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Complete the solution so that it returns a formatted string. The return value should equal "Value is VALUE"  where value is a 5 digit padded number. 
   
   Example:
@@ -6,6 +7,7 @@ vc-description: |-
   ```python
   solution(5)  # should return "Value is 00005"
   ```
+  -/
 
 vc-preamble: |-
 
@@ -29,23 +31,23 @@ vc-theorems: |-
     padded.length = 5 ∧
     padded.toNat? = some n := sorry
   
-  /--
+  /-
   info: 'Value is 00005'
   -/
-  #guard_msgs in
-  #eval solution 5
+  -- #guard_msgs in
+  -- #eval solution 5
   
-  /--
+  /-
   info: 'Value is 01234'
   -/
-  #guard_msgs in
-  #eval solution 1234
+  -- #guard_msgs in
+  -- #eval solution 1234
   
-  /--
+  /-
   info: 'Value is 00089'
   -/
-  #guard_msgs in
-  #eval solution 89
+  -- #guard_msgs in
+  -- #eval solution 89
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Patlu has recently got a new problem based on Pallindromes. A Pallindrome is a number that is same from front and back, example $121$ is pallindrome but $123$ is not . He wants to calculate sum of all $N$ digit number which are Pallindromic in nature and divisible by $9$ and does not contain any zero in their decimal representation. As the answer can be very large so print the sum modulo $10^9 + 7$.
   
   -----Input:-----
@@ -20,6 +21,7 @@ vc-description: |-
   -----Sample Output:-----
   9
   99
+  -/
 
 vc-preamble: |-
 
@@ -46,17 +48,17 @@ vc-theorems: |-
     n = 0 → getsum n = 0 :=
     sorry
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval getsum 1
+  -- #guard_msgs in
+  -- #eval getsum 1
   
-  /--
+  /-
   info: 99
   -/
-  #guard_msgs in
-  #eval getsum 2
+  -- #guard_msgs in
+  -- #eval getsum 2
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Related to MrZizoScream's Product Array kata. You might want to solve that one first :)
   
   ```if:javascript
@@ -21,6 +22,7 @@ vc-description: |-
   **Note**: All inputs will be valid arrays of nonzero length.
   
   Have fun! Please upvote if you enjoyed :)
+  -/
 
 vc-preamble: |-
   def List.product (l : List Int) : Int := sorry 
@@ -39,23 +41,23 @@ vc-theorems: |-
   theorem product_sans_n_length {nums : List Int} (h : nums ≠ []) : 
     (product_sans_n nums).length = nums.length := sorry
   
-  /--
+  /-
   info: [24, 12, 8, 6]
   -/
-  #guard_msgs in
-  #eval product_sans_n [1, 2, 3, 4]
+  -- #guard_msgs in
+  -- #eval product_sans_n [1, 2, 3, 4]
   
-  /--
+  /-
   info: [0, -18, 0]
   -/
-  #guard_msgs in
-  #eval product_sans_n [9, 0, -2]
+  -- #guard_msgs in
+  -- #eval product_sans_n [9, 0, -2]
   
-  /--
+  /-
   info: [0, 0, 0]
   -/
-  #guard_msgs in
-  #eval product_sans_n [0, -99, 0]
+  -- #guard_msgs in
+  -- #eval product_sans_n [0, -99, 0]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

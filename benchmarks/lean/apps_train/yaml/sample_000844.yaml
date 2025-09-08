@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   "It does not matter how slowly you go as long as you do not stop." - Confucius
   You are given an array $A_1, A_2, \ldots, A_N$ and an integer $K$. For each subarray $S = [A_l, A_{l+1}, \ldots, A_r]$ ($1 \le l \le r \le N$):
   - Let's define an array $B$ as $S$ concatenated with itself $m$ times, where $m$ is the smallest integer such that $m(r-l+1) \ge K$.
@@ -36,6 +37,7 @@ vc-description: |-
   -----Explanation-----
   Example case 1: There are six subarrays of $A$: $[1]$, $[2]$, $[3]$, $[1, 2]$, $[2, 3]$, $[1, 2, 3]$. The corresponding arrays $B$ are $[1, 1, 1]$, $[2, 2, 2]$, $[3, 3, 3]$, $[1, 2, 1, 2]$, $[2, 3, 2, 3]$, $[1, 2, 3]$.
   Three of the subarrays are beautiful: $[1]$, $[1, 2]$ and $[1, 2, 3]$. For these subarrays, $X$ is $1$, $2$ and $3$ respectively (for example, for $S = [1, 2]$, $B = [1, 2, 1, 2]$ is sorted to $[1, 1, 2, 2]$ and $X = 2$ is the $3$-rd element). Then, $F = 1$ for each of these subarrays, and each of these subarrays contains $1$.
+  -/
 
 vc-preamble: |-
   def count_beautiful_subarrays (n k : Nat) (arr : List Nat) : Nat :=
@@ -79,23 +81,23 @@ vc-theorems: |-
     count_beautiful_subarrays 1 k [1] = 1 :=
   sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_beautiful_subarrays 3 3 [1, 2, 3]
+  -- #guard_msgs in
+  -- #eval count_beautiful_subarrays 3 3 [1, 2, 3]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_beautiful_subarrays 1 1 [1]
+  -- #guard_msgs in
+  -- #eval count_beautiful_subarrays 1 1 [1]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_beautiful_subarrays 2 2 [2, 1]
+  -- #guard_msgs in
+  -- #eval count_beautiful_subarrays 2 2 [2, 1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

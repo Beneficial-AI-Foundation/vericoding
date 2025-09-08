@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are two friends Alice and Bob. They have a packet of $n$ candies. They want to split the candies between them, and to do so, they kept them all in a single line. The $i^{\text{th}}$ candy in the line has a sweetness value of $a_i$. They decided to take turns in picking the candies. Alice has the first turn. In a person's turn, they either eat the leftmost candy or the rightmost candy with equal probability.
   Can you find the expected value of sum of sweetness of the candies eaten by Alice?
   Your answer is considered correct if its absolute or relative error doesn't exceed $10^{-6}$ .
@@ -31,6 +32,7 @@ vc-description: |-
   -----EXPLANATION:-----
   In the first sample, Alice eats either the first or the second candy with equal probability. Hence, expected value is $(1+2)/2 = 1.5$
   For the second sample, expected value is $4$.
+  -/
 
 vc-preamble: |-
 

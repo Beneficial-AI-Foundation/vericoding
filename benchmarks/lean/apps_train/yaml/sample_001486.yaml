@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Tennis is a popular game. Consider a simplified view of a tennis game from directly above. The game will appear to be played on a 2 dimensional rectangle, where each player has his own court, a half of the rectangle. Consider the players and the ball to be points moving on this 2D plane. The ball can be assumed to always move with fixed velocity (speed and direction) when it is hit by a player. The ball changes its velocity when hit by the other player. And so on, the game continues.
   Chef also enjoys playing tennis, but in n+1$n + 1$ dimensions instead of just 3. From the perspective of the previously discussed overhead view, Chef's court is an n$n$-dimensional hyperrectangle which is axis-aligned with one corner at (0,0,0,…,0)$(0, 0, 0, \dots, 0)$ and the opposite corner at (l1,l2,l3,…,ln$(l_1, l_2, l_3, \dots, l_n$). The court of his opponent is the reflection of Chef's court across the n−1$n - 1$ dimensional surface with equation x1=0$x_1 = 0$.
   At time t=0$t=0$, Chef notices that the ball is at position (0,b2,…,bn)$(0, b_2, \dots, b_n)$ after being hit by his opponent. The velocity components of the ball in each of the n$n$ dimensions are also immediately known to Chef, the component in the ith$i^{th}$ dimension being vi$v_i$. The ball will continue to move with fixed velocity until it leaves Chef's court. The ball is said to leave Chef's court when it reaches a position strictly outside the bounds of Chef's court. Chef is currently at position (c1,c2,…,cn)$(c_1, c_2, \dots, c_n)$. To hit the ball back, Chef must intercept the ball before it leaves his court, which means at a certain time the ball's position and Chef's position must coincide.
@@ -47,6 +48,7 @@ vc-description: |-
   
   The ball's trajectory is marked in red. For Chef it is optimal to move along the blue line at a constant speed of 2 until he meets the ball at the boundary.
   Case 2: The court is 3-dimensional and the ball is coming straight at Chef. So it is best for Chef to not move at all, thus smin=0$s_{min} = 0$.
+  -/
 
 vc-preamble: |-
 

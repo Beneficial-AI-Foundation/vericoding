@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   An array of size N x M represents pixels of an image.
   Each cell of this array contains an array of size 3 with the pixel's color information: `[R,G,B]`
   
@@ -37,6 +38,7 @@ vc-description: |-
   Find Matching Parenthesis
   Hard (Kyu 3-2)
   Ascii Art Generator
+  -/
 
 vc-preamble: |-
 

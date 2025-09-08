@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string `s` of uppercase letters, your task is to determine how many strings `t` (also uppercase) with length equal to that of `s` satisfy the followng conditions:
   
   * `t` is lexicographical larger than `s`, and
@@ -11,6 +12,7 @@ vc-description: |-
   String lengths are less than `5000`. Return you answer `modulo 10^9+7 (= 1000000007)`.
   
   More examples in test cases. Good luck!
+  -/
 
 vc-preamble: |-
 
@@ -35,23 +37,23 @@ vc-theorems: |-
     solve s = (Char.toNat 'Z' - Char.toNat c) :=
   sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval solve "XYZ"
+  -- #guard_msgs in
+  -- #eval solve "XYZ"
   
-  /--
+  /-
   info: 16174
   -/
-  #guard_msgs in
-  #eval solve "ABC"
+  -- #guard_msgs in
+  -- #eval solve "ABC"
   
-  /--
+  /-
   info: 25
   -/
-  #guard_msgs in
-  #eval solve "ZAZ"
+  -- #guard_msgs in
+  -- #eval solve "ZAZ"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

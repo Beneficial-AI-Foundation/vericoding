@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a lowercase string that has alphabetic characters only and no spaces, return the highest value of consonant substrings. Consonants are any letters of the alphabet except `"aeiou"`. 
   
   We shall assign the following values: `a = 1, b = 2, c = 3, .... z = 26`.
@@ -14,6 +15,7 @@ vc-description: |-
   [Word values](https://www.codewars.com/kata/598d91785d4ce3ec4f000018)
   
   [Vowel-consonant lexicon](https://www.codewars.com/kata/59cf8bed1a68b75ffb000026)
+  -/
 
 vc-preamble: |-
   def solve (s : String) : Int := sorry
@@ -31,23 +33,23 @@ vc-definitions: |-
     solve s ≥ 0 := sorry
 
 vc-theorems: |-
-  /--
+  /-
   info: 26
   -/
-  #guard_msgs in
-  #eval solve "zodiac"
+  -- #guard_msgs in
+  -- #eval solve "zodiac"
   
-  /--
+  /-
   info: 57
   -/
-  #guard_msgs in
-  #eval solve "strength"
+  -- #guard_msgs in
+  -- #eval solve "strength"
   
-  /--
+  /-
   info: 73
   -/
-  #guard_msgs in
-  #eval solve "catchphrase"
+  -- #guard_msgs in
+  -- #eval solve "catchphrase"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The Fibonacci sequence is defined as F(n) = F(n-1) + F(n-2). You have developed two sequences of numbers. The first sequence that uses the bitwise XOR operation instead of the addition method is called the Xoronacci number. It is described as follows:
   X(n) = X(n-1) XOR X(n-2)
   The second sequence that uses the bitwise XNOR operation instead of the addition method is called the XNoronacci number. It is described as follows:
@@ -30,6 +31,7 @@ vc-description: |-
   Xoronacci Sequence : 3 4 7 …….
   XNoronacci Sequence : 3 4 0 …….
   Here n = 2. Hence max(X(2),E(2)) = 4
+  -/
 
 vc-preamble: |-
   def solve_sequence (a b n : Nat) : Nat := sorry
@@ -58,23 +60,23 @@ vc-theorems: |-
   theorem solve_sequence_symmetric (a b : Nat) :
     solve_sequence a b 3 = solve_sequence b a 3 := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval solve_sequence 3 4 2
+  -- #guard_msgs in
+  -- #eval solve_sequence 3 4 2
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval solve_sequence 3 4 3
+  -- #guard_msgs in
+  -- #eval solve_sequence 3 4 3
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval solve_sequence 10 12 2
+  -- #guard_msgs in
+  -- #eval solve_sequence 10 12 2
 
 vc-postamble: |-
   -- Apps difficulty: interview

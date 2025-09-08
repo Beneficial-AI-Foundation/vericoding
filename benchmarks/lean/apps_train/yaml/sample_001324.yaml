@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The Jones Trucking Company tracks the location of each of its trucks on a grid similar to an (x, y) plane. The home office is at the location (0, 0). Read the coordinates of truck A and the coordinates of truck B and determine which is closer to the office.
   
   -----Input:-----
@@ -27,6 +28,7 @@ vc-description: |-
   B IS CLOSER
   B IS CLOSER
   B IS CLOSER
+  -/
 
 vc-preamble: |-
 
@@ -55,23 +57,23 @@ vc-theorems: |-
     findCloserTruck coords2 = findCloserTruck coords3 ∧
     findCloserTruck coords3 = findCloserTruck coords4 := sorry
   
-  /--
+  /-
   info: 'A IS CLOSER'
   -/
-  #guard_msgs in
-  #eval find_closer_truck [3, -2, -5, -3]
+  -- #guard_msgs in
+  -- #eval find_closer_truck [3, -2, -5, -3]
   
-  /--
+  /-
   info: 'B IS CLOSER'
   -/
-  #guard_msgs in
-  #eval find_closer_truck [0, 6, 1, 2]
+  -- #guard_msgs in
+  -- #eval find_closer_truck [0, 6, 1, 2]
   
-  /--
+  /-
   info: 'B IS CLOSER'
   -/
-  #guard_msgs in
-  #eval find_closer_truck [-7, 8, 4, -1]
+  -- #guard_msgs in
+  -- #eval find_closer_truck [-7, 8, 4, -1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

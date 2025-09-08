@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Consider the string `"adfa"` and the following rules: 
   ```Pearl
   a) each character MUST be changed either to the one before or the one after in alphabet. 
@@ -21,6 +22,7 @@ vc-description: |-
   You will be given a lowercase string and your task is to return `True` if at least one of the possiblities is a palindrome or `False` otherwise. You can use your own code or fix mine. 
   
   More examples in test cases. Good luck!
+  -/
 
 vc-preamble: |-
 
@@ -67,23 +69,23 @@ vc-theorems: |-
     s.data.get ⟨s.length - 1, sorry⟩ = 'a' →
     solve s = false := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval solve "adfa"
+  -- #guard_msgs in
+  -- #eval solve "adfa"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval solve "bd"
+  -- #guard_msgs in
+  -- #eval solve "bd"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval solve "abzy"
+  -- #guard_msgs in
+  -- #eval solve "abzy"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

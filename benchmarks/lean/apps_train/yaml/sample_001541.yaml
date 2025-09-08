@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Mr. Das is a teacher teaching for several years in a school. He is not computer savvy. Due to lockdown, now he has to take classes online. Recently he took an online exam for students of different classes. Now, he will call parents of all the students who scored lower than average marks for the class. He has requested you to give the name $X$, parent's phone number $P$, and marks obtained $M$ to him.
   
   -----Input:-----
@@ -34,6 +35,7 @@ vc-description: |-
   -----EXPLANATION:-----
   In #1, Priya and Rahul's number was lower than average.
   In #2, Akash's number was lower than average
+  -/
 
 vc-preamble: |-
 

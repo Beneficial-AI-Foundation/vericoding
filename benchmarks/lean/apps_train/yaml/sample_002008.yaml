@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   As you know, majority of students and teachers of Summer Informatics School live in Berland for the most part of the year. Since corruption there is quite widespread, the following story is not uncommon.
   
   Elections are coming. You know the number of voters and the number of parties — $n$ and $m$ respectively. For each voter you know the party he is going to vote for. However, he can easily change his vote given a certain amount of money. In particular, if you give $i$-th voter $c_i$ bytecoins you can ask him to vote for any other party you choose.
@@ -54,6 +55,7 @@ vc-description: |-
   In the second sample, The United Party can buy the votes of the first and the fourth voter. This way The Party gets two votes, while parties $3$, $4$ and $5$ get one vote and party number $2$ gets no votes.
   
   In the third sample, The United Party can buy the votes of the first three voters and win, getting three votes against two votes of the fifth party.
+  -/
 
 vc-preamble: |-
   def calculate_min_bytecoins (n : Nat) (m : Nat) (votes : List (Nat × Nat)) : Nat :=
@@ -105,23 +107,23 @@ vc-theorems: |-
     calculate_min_bytecoins n m increased_votes ≥ calculate_min_bytecoins n m votes :=
     sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval calculate_min_bytecoins 1 2 [[1, 100]]
+  -- #guard_msgs in
+  -- #eval calculate_min_bytecoins 1 2 [[1, 100]]
   
-  /--
+  /-
   info: 500
   -/
-  #guard_msgs in
-  #eval calculate_min_bytecoins 5 5 [[2, 100], [3, 200], [4, 300], [5, 400], [5, 900]]
+  -- #guard_msgs in
+  -- #eval calculate_min_bytecoins 5 5 [[2, 100], [3, 200], [4, 300], [5, 400], [5, 900]]
   
-  /--
+  /-
   info: 600
   -/
-  #guard_msgs in
-  #eval calculate_min_bytecoins 5 5 [[2, 100], [3, 200], [4, 300], [5, 800], [5, 900]]
+  -- #guard_msgs in
+  -- #eval calculate_min_bytecoins 5 5 [[2, 100], [3, 200], [4, 300], [5, 800], [5, 900]]
 
 vc-postamble: |-
   -- Apps difficulty: competition

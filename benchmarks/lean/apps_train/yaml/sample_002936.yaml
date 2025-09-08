@@ -1,7 +1,9 @@
 vc-description: |-
+  /-
   Given a number, return a string with dash``` '-' ```marks before and after each odd integer,  but do not begin or end the string with a dash mark.
   
   Ex:
+  -/
 
 vc-preamble: |-
 
@@ -32,23 +34,23 @@ vc-theorems: |-
   theorem dashatize_none :
     dashatize none = "None" := sorry
   
-  /--
+  /-
   info: '2-7-4'
   -/
-  #guard_msgs in
-  #eval dashatize 274
+  -- #guard_msgs in
+  -- #eval dashatize 274
   
-  /--
+  /-
   info: '5-3-1-1'
   -/
-  #guard_msgs in
-  #eval dashatize 5311
+  -- #guard_msgs in
+  -- #eval dashatize 5311
   
-  /--
+  /-
   info: '86-3-20'
   -/
-  #guard_msgs in
-  #eval dashatize 86320
+  -- #guard_msgs in
+  -- #eval dashatize 86320
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Jenny is 9 years old. She is the youngest detective in North America. Jenny is a 3rd grader student, so when a new mission comes up, she gets a code to decipher in a form of a sticker (with numbers) in her math notebook and a comment (a sentence) in her writing notebook. All she needs to do is to figure out one word, from there she already knows what to do. 
   And here comes your role - you can help Jenny find out what the word is! 
   
@@ -13,6 +14,7 @@ vc-description: |-
   input: [5, 0, 3], "I Love You"
   output: "ivy"
   (0 = "i", 3 = "v", 5 = "y")
+  -/
 
 vc-preamble: |-
 
@@ -41,23 +43,23 @@ vc-theorems: |-
     missing [0] s = missing [0] (s.replace " " "") :=
     sorry
   
-  /--
+  /-
   info: 'ivy'
   -/
-  #guard_msgs in
-  #eval missing [5, 0, 3] "I Love You"
+  -- #guard_msgs in
+  -- #eval missing [5, 0, 3] "I Love You"
   
-  /--
+  /-
   info: 'ear'
   -/
-  #guard_msgs in
-  #eval missing [7, 10, 1] "see you later"
+  -- #guard_msgs in
+  -- #eval missing [7, 10, 1] "see you later"
   
-  /--
+  /-
   info: 'No mission today'
   -/
-  #guard_msgs in
-  #eval missing [12, 4, 6] "Good Morning"
+  -- #guard_msgs in
+  -- #eval missing [12, 4, 6] "Good Morning"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a program that, given a word, computes the scrabble score for that word.
   
   ## Letter Values
@@ -51,6 +52,7 @@ vc-description: |-
   "st re et"    --> 6
   "ca bba g  e" --> 14
   ```
+  -/
 
 vc-preamble: |-
 
@@ -73,41 +75,41 @@ vc-theorems: |-
     word ≠ "" →
     scrabble_score word = word.data.foldl (fun acc c => acc + scrabble_score s!"{c}") 0 := sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval scrabble_score ""
+  -- #guard_msgs in
+  -- #eval scrabble_score ""
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval scrabble_score "street"
+  -- #guard_msgs in
+  -- #eval scrabble_score "street"
   
-  /--
+  /-
   info: 14
   -/
-  #guard_msgs in
-  #eval scrabble_score "cabbage"
+  -- #guard_msgs in
+  -- #eval scrabble_score "cabbage"
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval scrabble_score "STREET"
+  -- #guard_msgs in
+  -- #eval scrabble_score "STREET"
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval scrabble_score "st re et"
+  -- #guard_msgs in
+  -- #eval scrabble_score "st re et"
   
-  /--
+  /-
   info: 22
   -/
-  #guard_msgs in
-  #eval scrabble_score "quirky"
+  -- #guard_msgs in
+  -- #eval scrabble_score "quirky"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

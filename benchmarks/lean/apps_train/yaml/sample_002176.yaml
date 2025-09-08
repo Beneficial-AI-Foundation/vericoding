@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   This is an easier version of the next problem. The difference is only in constraints.
   
   You are given a rectangular $n \times m$ matrix $a$. In one move you can choose any column and cyclically shift elements in this column. You can perform this operation as many times as you want (possibly zero). You can perform this operation to a column multiple times.
@@ -37,6 +38,7 @@ vc-description: |-
   In the first test case, you can shift the third column down by one, this way there will be $r_1 = 5$ and $r_2 = 7$.
   
   In the second case you can don't rotate anything at all, this way there will be $r_1 = r_2 = 10$ and $r_3 = 9$.
+  -/
 
 vc-preamble: |-
 
@@ -60,23 +62,23 @@ vc-theorems: |-
     let matrix := List.replicate n (List.replicate 4 0)
     solve_matrix_shifts n 4 matrix = 0 := sorry
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval solve_matrix_shifts 2 3 [[2, 5, 7], [4, 2, 4]]
+  -- #guard_msgs in
+  -- #eval solve_matrix_shifts 2 3 [[2, 5, 7], [4, 2, 4]]
   
-  /--
+  /-
   info: 29
   -/
-  #guard_msgs in
-  #eval solve_matrix_shifts 3 6 [[4, 1, 5, 2, 10, 4], [8, 6, 6, 4, 9, 10], [5, 4, 9, 5, 8, 7]]
+  -- #guard_msgs in
+  -- #eval solve_matrix_shifts 3 6 [[4, 1, 5, 2, 10, 4], [8, 6, 6, 4, 9, 10], [5, 4, 9, 5, 8, 7]]
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval solve_matrix_shifts 4 2 [[1, 1], [2, 1], [1, 2], [2, 2]]
+  -- #guard_msgs in
+  -- #eval solve_matrix_shifts 4 2 [[1, 1], [2, 1], [1, 2], [2, 2]]
 
 vc-postamble: |-
   -- Apps difficulty: competition

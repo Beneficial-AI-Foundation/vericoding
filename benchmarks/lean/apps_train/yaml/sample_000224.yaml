@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string s and an integer k.
   Return the maximum number of vowel letters in any substring of s with length k.
   Vowel letters in English are (a, e, i, o, u).
@@ -32,6 +33,7 @@ vc-description: |-
   1 <= s.length <= 10^5
   s consists of lowercase English letters.
   1 <= k <= s.length
+  -/
 
 vc-preamble: |-
   def max_vowels (s : String) (k : Nat) : Nat := sorry
@@ -54,23 +56,23 @@ vc-theorems: |-
     (h1 : k > 0) :
     max_vowels "" k = 0 := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval max_vowels "abciiidef" 3
+  -- #guard_msgs in
+  -- #eval max_vowels "abciiidef" 3
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval max_vowels "leetcode" 3
+  -- #guard_msgs in
+  -- #eval max_vowels "leetcode" 3
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval max_vowels "rhythms" 4
+  -- #guard_msgs in
+  -- #eval max_vowels "rhythms" 4
 
 vc-postamble: |-
   -- Apps difficulty: interview

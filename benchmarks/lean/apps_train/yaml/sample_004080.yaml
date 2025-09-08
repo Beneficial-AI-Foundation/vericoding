@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Introduction 
   
   Mr. Safety loves numeric locks and his Nokia 3310. He locked almost everything in his house. He is so smart and he doesn't need to remember the combinations. He has an algorithm to generate new passcodes on his Nokia cell phone. 
@@ -20,6 +21,7 @@ vc-description: |-
   unlock("Valut")  // => 82588
   unlock("toilet") // => 864538
   ```
+  -/
 
 vc-preamble: |-
 
@@ -120,23 +122,23 @@ vc-theorems: |-
   theorem unlock_uppercase_y : unlock "Y" = "9" := sorry
   theorem unlock_uppercase_z : unlock "Z" = "9" := sorry
   
-  /--
+  /-
   info: '66542'
   -/
-  #guard_msgs in
-  #eval unlock "Nokia"
+  -- #guard_msgs in
+  -- #eval unlock "Nokia"
   
-  /--
+  /-
   info: '82588'
   -/
-  #guard_msgs in
-  #eval unlock "Valut"
+  -- #guard_msgs in
+  -- #eval unlock "Valut"
   
-  /--
+  /-
   info: '864538'
   -/
-  #guard_msgs in
-  #eval unlock "toilet"
+  -- #guard_msgs in
+  -- #eval unlock "toilet"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

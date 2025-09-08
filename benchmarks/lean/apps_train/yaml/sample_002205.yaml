@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are N towns on a line running east-west.
   The towns are numbered 1 through N, in order from west to east.
   Each point on the line has a one-dimensional coordinate, and a point that is farther east has a greater coordinate value.
@@ -36,6 +37,7 @@ vc-description: |-
   
   From town 1, walk a distance of 1 to town 2, then teleport to town 3, then walk a distance of 2 to town 4.
   The total increase of your fatigue level in this case is 2×1+5+2×2=11, which is the minimum possible value.
+  -/
 
 vc-preamble: |-
 
@@ -90,23 +92,23 @@ vc-theorems: |-
     min_fatigue n (a * s) (b * s) x = s * min_fatigue n a b x :=
   sorry
   
-  /--
+  /-
   info: 11
   -/
-  #guard_msgs in
-  #eval min_fatigue 4 2 5 [1, 2, 5, 7]
+  -- #guard_msgs in
+  -- #eval min_fatigue 4 2 5 [1, 2, 5, 7]
   
-  /--
+  /-
   info: 84
   -/
-  #guard_msgs in
-  #eval min_fatigue 7 1 100 [40, 43, 45, 105, 108, 115, 124]
+  -- #guard_msgs in
+  -- #eval min_fatigue 7 1 100 [40, 43, 45, 105, 108, 115, 124]
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval min_fatigue 7 1 2 [24, 35, 40, 68, 72, 99, 103]
+  -- #guard_msgs in
+  -- #eval min_fatigue 7 1 2 [24, 35, 40, 68, 72, 99, 103]
 
 vc-postamble: |-
   -- Apps difficulty: competition

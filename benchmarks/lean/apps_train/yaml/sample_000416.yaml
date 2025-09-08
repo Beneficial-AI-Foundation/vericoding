@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Starting with a positive integer N, we reorder the digits in any order (including the original order) such that the leading digit is not zero.
   Return true if and only if we can do this in a way such that the resulting number is a power of 2.
   
@@ -25,6 +26,7 @@ vc-description: |-
   Note:
   
   1 <= N <= 10^9
+  -/
 
 vc-preamble: |-
   def reordered_power_of_2 (n : Nat) : Bool := sorry
@@ -50,23 +52,23 @@ vc-theorems: |-
   theorem leading_zeros_property {n : Nat} (h : n < 10) :
     reordered_power_of_2 n = reordered_power_of_2 (10 * n) := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval reordered_power_of_2 1
+  -- #guard_msgs in
+  -- #eval reordered_power_of_2 1
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval reordered_power_of_2 10
+  -- #guard_msgs in
+  -- #eval reordered_power_of_2 10
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval reordered_power_of_2 16
+  -- #guard_msgs in
+  -- #eval reordered_power_of_2 16
 
 vc-postamble: |-
   -- Apps difficulty: interview

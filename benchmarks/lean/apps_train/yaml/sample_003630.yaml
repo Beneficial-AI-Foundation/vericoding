@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a certain integer  ```n, n > 0```and a number of partitions,  ```k, k > 0```; we want to know the partition which has the maximum or minimum product of its terms.
   
   The function ```find_spec_partition() ```, will receive three arguments,  ```n```,  ```k```, and a command:  ```'max' or 'min'```
@@ -28,6 +29,7 @@ vc-description: |-
   (5, 3, 1, 1): 15
   ```
   Enjoy it!
+  -/
 
 vc-preamble: |-
   def List.sum : List Nat → Nat 
@@ -59,23 +61,23 @@ vc-theorems: |-
     let result := find_spec_partition n k "max"
     ∀ x y, x ∈ result → y ∈ result → x - y ≤ 1 := sorry
   
-  /--
+  /-
   info: [3, 3, 2, 2]
   -/
-  #guard_msgs in
-  #eval find_spec_partition 10 4 "max"
+  -- #guard_msgs in
+  -- #eval find_spec_partition 10 4 "max"
   
-  /--
+  /-
   info: [7, 1, 1, 1]
   -/
-  #guard_msgs in
-  #eval find_spec_partition 10 4 "min"
+  -- #guard_msgs in
+  -- #eval find_spec_partition 10 4 "min"
   
-  /--
+  /-
   info: [3, 3, 2]
   -/
-  #guard_msgs in
-  #eval find_spec_partition 8 3 "max"
+  -- #guard_msgs in
+  -- #eval find_spec_partition 8 3 "max"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Oliver and Nova are true lovers. Inspite of knowing that Nova will die Oliver married her at the lake where they met. But they had a conflict about even and odd numbers. Nova likes the odd numbers and Oliver prefers even. One day they went to a fair where Oliver bought some square shaped marshmallows and Nova bought some round shaped. Then they decided to play a game. They will pick a natural number N . Nova will sum up the odd numbers from 1 to N and and she will notedown LCM of R(R is defined in the picture) and the sum she calculated before. And Oliver will sum up the even numbers from 1 to N and and he will notedown LCM of S(S is defined in the picture) and the sum he calculated before. You must use the ceil value of R and S.
   
   Now  whose LCM is strictly greater than the other will win.If both of their LCM is equal Nova will win because Oliver is afraid of Nova.
@@ -25,6 +26,7 @@ vc-description: |-
   
   -----Sample Output:-----
   YESS(sunglass emo)
+  -/
 
 vc-preamble: |-
   def lcm (a b : Nat) : Nat := sorry
@@ -67,23 +69,23 @@ vc-theorems: |-
   theorem solve_lovers_deterministic (n : Nat) :
     solve_lovers_lcm n = solve_lovers_lcm n := sorry
   
-  /--
+  /-
   info: 'YESS(sunglass emo)'
   -/
-  #guard_msgs in
-  #eval solve_lovers_lcm 111
+  -- #guard_msgs in
+  -- #eval solve_lovers_lcm 111
   
-  /--
+  /-
   info: 'YESS(sunglass emo)'
   -/
-  #guard_msgs in
-  #eval solve_lovers_lcm 10
+  -- #guard_msgs in
+  -- #eval solve_lovers_lcm 10
   
-  /--
+  /-
   info: 'YESS(sunglass emo)'
   -/
-  #guard_msgs in
-  #eval solve_lovers_lcm 100
+  -- #guard_msgs in
+  -- #eval solve_lovers_lcm 100
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   N lamps are placed in a line, some are switched on and some are off. What is the smallest number of lamps that need to be switched so that on and off lamps will alternate with each other? 
   
@@ -25,6 +26,7 @@ vc-description: |-
   - `[output]` an integer
   
   minimum number of switches.
+  -/
 
 vc-preamble: |-
 
@@ -42,23 +44,23 @@ vc-theorems: |-
   theorem lamps_alternating_sequence (a: List Nat) (h: a.length > 0) :
     lamps ((List.range a.length).map (fun i => i % 2)) = 0 := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval lamps [1, 0, 0, 1, 1, 1, 0]
+  -- #guard_msgs in
+  -- #eval lamps [1, 0, 0, 1, 1, 1, 0]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval lamps [1, 0, 1]
+  -- #guard_msgs in
+  -- #eval lamps [1, 0, 1]
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval lamps [1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0]
+  -- #guard_msgs in
+  -- #eval lamps [1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

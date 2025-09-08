@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Today is Chef's birthday. His mom decided to surprise him with a truly fantastic gift: his favourite binary string B. But, unfortunately, all the stocks of binary string B have been sold out, and only a binary string A (A ≠ B) is available in the market.
   She purchases the string A and tries to convert it to string B by applying any of following three operations zero or more times.
   AND Operation:
@@ -64,6 +65,7 @@ vc-description: |-
   
   Example case 2.
   - It is impossible to convert string A to string B.
+  -/
 
 vc-preamble: |-
 

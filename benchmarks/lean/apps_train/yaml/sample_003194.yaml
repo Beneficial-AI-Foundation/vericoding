@@ -1,7 +1,9 @@
 vc-description: |-
+  /-
   Given an array of integers as strings and numbers, return the sum of the array values as if all were numbers.
   
   Return your answer as a number.
+  -/
 
 vc-preamble: |-
   def sum_mix (arr : List (String ⊕ Int)) : Int :=
@@ -37,23 +39,23 @@ vc-theorems: |-
     sum_mix (arr.map Sum.inl) = List.sum (arr.map String.toInt!) := by
     sorry
   
-  /--
+  /-
   info: 22
   -/
-  #guard_msgs in
-  #eval sum_mix [9, 3, "7", "3"]
+  -- #guard_msgs in
+  -- #eval sum_mix [9, 3, "7", "3"]
   
-  /--
+  /-
   info: 42
   -/
-  #guard_msgs in
-  #eval sum_mix ["5", "0", 9, 3, 2, 1, "9", 6, 7]
+  -- #guard_msgs in
+  -- #eval sum_mix ["5", "0", 9, 3, 2, 1, "9", 6, 7]
   
-  /--
+  /-
   info: 41
   -/
-  #guard_msgs in
-  #eval sum_mix ["3", 6, 6, 0, "5", 8, 5, "6", 2, "0"]
+  -- #guard_msgs in
+  -- #eval sum_mix ["3", 6, 6, 0, "5", 8, 5, "6", 2, "0"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

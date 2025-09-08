@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The Ulam sequence `U` is defined by `u0 = u`, `u1 = v`, with the general term `uN` for `N > 2` given by the least integer expressible uniquely as the sum of two distinct earlier terms. In other words, the next number is always the smallest, unique sum of any two previous terms.
   
   Complete the function that creates an Ulam Sequence starting with the given `u0` and `u1`, and contains `n` terms.
@@ -19,6 +20,7 @@ vc-description: |-
   ---
   
   Performance version: https://www.codewars.com/kata/ulam-sequences-performance-edition
+  -/
 
 vc-preamble: |-
 

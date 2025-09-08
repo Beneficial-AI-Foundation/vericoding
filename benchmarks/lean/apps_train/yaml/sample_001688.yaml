@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## A Knight's Tour
   
   A knight's tour is a sequence of moves of a knight on a chessboard such that the knight visits every square only once.
@@ -16,6 +17,7 @@ vc-description: |-
   All test cases will have a passing solution.
   
   -dg
+  -/
 
 vc-preamble: |-
   def knights_tour (start : Pos) (size : Nat) : List Pos :=
@@ -55,23 +57,23 @@ vc-theorems: |-
       path = expected := by
     sorry
   
-  /--
+  /-
   info: 25
   -/
-  #guard_msgs in
-  #eval len knights_tour((0, 0), 5)
+  -- #guard_msgs in
+  -- #eval len knights_tour((0, 0), 5)
   
-  /--
+  /-
   info: 36
   -/
-  #guard_msgs in
-  #eval len knights_tour((2, 2), 6)
+  -- #guard_msgs in
+  -- #eval len knights_tour((2, 2), 6)
   
-  /--
+  /-
   info: 64
   -/
-  #guard_msgs in
-  #eval len knights_tour((0, 0), 8)
+  -- #guard_msgs in
+  -- #eval len knights_tour((0, 0), 8)
 
 vc-postamble: |-
   -- Apps difficulty: interview

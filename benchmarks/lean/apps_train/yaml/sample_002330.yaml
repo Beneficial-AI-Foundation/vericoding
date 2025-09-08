@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a word, you need to judge whether the usage of capitals in it is right or not.
   
   We define the usage of capitals in a word to be right when one of the following cases holds:
@@ -21,6 +22,7 @@ vc-description: |-
   
   Note:
   The input will be a non-empty word consisting of uppercase and lowercase latin letters.
+  -/
 
 vc-preamble: |-
   def isLowercase (c : Char) : Bool := 'a' ≤ c ∧ c ≤ 'z'
@@ -54,23 +56,23 @@ vc-theorems: |-
     ¬(isTitle s) →
     detect_capital_use s = false := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval detect_capital_use "USA"
+  -- #guard_msgs in
+  -- #eval detect_capital_use "USA"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval detect_capital_use "FlaG"
+  -- #guard_msgs in
+  -- #eval detect_capital_use "FlaG"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval detect_capital_use "Google"
+  -- #guard_msgs in
+  -- #eval detect_capital_use "Google"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

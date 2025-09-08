@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   People in Karunanagar are infected with Coronavirus. To understand the spread of disease and help contain it as early as possible, Chef wants to analyze the situation in the town. Therefore, he does the following:
   - Chef represents the population of Karunanagar as a binary string of length $N$ standing in a line numbered from $1$ to $N$ from left to right, where an infected person is represented as $1$ and an uninfected person as $0$.
   - Every day, an infected person in this binary string can infect an adjacent (the immediate left and right) uninfected person.
@@ -56,6 +57,7 @@ vc-description: |-
   For the second testcase:
   Before Day $1$, the population is: $0000|1$
   Therefore, there is one infected person.
+  -/
 
 vc-preamble: |-
   def solve_virus_spread (N : Nat) (init_pop : String) (D : Nat) (isolations : List Nat) : Nat :=
@@ -89,17 +91,17 @@ vc-theorems: |-
     Nat.le (countOnes init_pop) (solve_virus_spread N init_pop D isolations) :=
   sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval solve_virus_spread 9 "000010000" 3 [2, 5, 8]
+  -- #guard_msgs in
+  -- #eval solve_virus_spread 9 "000010000" 3 [2, 5, 8]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve_virus_spread 5 "00001" 1 [5]
+  -- #guard_msgs in
+  -- #eval solve_virus_spread 5 "00001" 1 [5]
 
 vc-postamble: |-
   -- Apps difficulty: interview

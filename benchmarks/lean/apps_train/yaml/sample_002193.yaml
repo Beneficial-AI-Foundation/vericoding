@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are N bags, each containing two white balls. The i-th box contains two balls with integers x_i and y_i written on them, respectively.
   For each of these bags, you will paint one of the balls red, and paint the other blue.
   Afterwards, the 2N balls will be classified according to color.
@@ -34,6 +35,7 @@ vc-description: |-
   15
   
   The optimal solution is to paint the balls with x_1, x_2, y_3 red, and paint the balls with y_1, y_2, x_3 blue.
+  -/
 
 vc-preamble: |-
 
@@ -63,23 +65,23 @@ vc-theorems: |-
     solve_colored_balls 2 [[1,1], [1000000000,1000000000]] = 
     (1000000000-1) * (1000000000-1) := sorry
   
-  /--
+  /-
   info: 15
   -/
-  #guard_msgs in
-  #eval solve_colored_balls 3 [[1, 2], [3, 4], [5, 6]]
+  -- #guard_msgs in
+  -- #eval solve_colored_balls 3 [[1, 2], [3, 4], [5, 6]]
   
-  /--
+  /-
   info: 380
   -/
-  #guard_msgs in
-  #eval solve_colored_balls 3 [[1010, 10], [1000, 1], [20, 1020]]
+  -- #guard_msgs in
+  -- #eval solve_colored_balls 3 [[1010, 10], [1000, 1], [20, 1020]]
   
-  /--
+  /-
   info: 999999998000000001
   -/
-  #guard_msgs in
-  #eval solve_colored_balls 2 [[1, 1], [1000000000, 1000000000]]
+  -- #guard_msgs in
+  -- #eval solve_colored_balls 2 [[1, 1], [1000000000, 1000000000]]
 
 vc-postamble: |-
   -- Apps difficulty: competition

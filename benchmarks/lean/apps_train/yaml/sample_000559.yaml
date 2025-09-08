@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Find out the maximum sub-array of non negative numbers from an array. 
   
   The sub-array should be continuous. That is, a sub-array created by choosing the second and fourth element and skipping the third element is invalid.
@@ -32,6 +33,7 @@ vc-description: |-
   Output:
   
   1 2 5
+  -/
 
 vc-preamble: |-
   def find_max_subarray (arr : List Int) : List Int := sorry

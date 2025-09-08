@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a sequence of n integers a_1, a_2, ..., a_{n}. 
   
   Determine a real number x such that the weakness of the sequence a_1 - x, a_2 - x, ..., a_{n} - x is as small as possible.
@@ -44,6 +45,7 @@ vc-description: |-
   For the first case, the optimal value of x is 2 so the sequence becomes  - 1, 0, 1 and the max poorness occurs at the segment "-1" or segment "1". The poorness value (answer) equals to 1 in this case. 
   
   For the second sample the optimal value of x is 2.5 so the sequence becomes  - 1.5,  - 0.5, 0.5, 1.5 and the max poorness occurs on segment "-1.5 -0.5" or "0.5 1.5". The poorness value (answer) equals to 2 in this case.
+  -/
 
 vc-preamble: |-
 

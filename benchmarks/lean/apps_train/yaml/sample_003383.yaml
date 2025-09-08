@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You have to write a function that describe Leo:
   ```python
   def leo(oscar):
@@ -9,6 +10,7 @@ vc-description: |-
   if oscar was 86, you have to return "Not even for Wolf of wallstreet?!"
   if it was not 88 or 86 (and below 88) you should return "When will you give Leo an Oscar?"
   if it was over 88 you should return "Leo got one already!"
+  -/
 
 vc-preamble: |-
 
@@ -33,23 +35,23 @@ vc-theorems: |-
     leo 86 = "Not even for Wolf of wallstreet?!" ∧
     leo 88 = "Leo finally won the oscar! Leo is happy" := sorry
   
-  /--
+  /-
   info: 'Leo finally won the oscar! Leo is happy'
   -/
-  #guard_msgs in
-  #eval leo 88
+  -- #guard_msgs in
+  -- #eval leo 88
   
-  /--
+  /-
   info: 'When will you give Leo an Oscar?'
   -/
-  #guard_msgs in
-  #eval leo 87
+  -- #guard_msgs in
+  -- #eval leo 87
   
-  /--
+  /-
   info: 'Not even for Wolf of wallstreet?!'
   -/
-  #guard_msgs in
-  #eval leo 86
+  -- #guard_msgs in
+  -- #eval leo 86
 
 vc-postamble: |-
   -- Apps difficulty: introductory

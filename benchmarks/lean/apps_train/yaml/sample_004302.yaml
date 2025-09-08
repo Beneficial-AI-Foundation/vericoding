@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are trying to cross a river by jumping along stones. Every time you land on a stone, you hop forwards by the value of that stone. If you skip *over* a stone then its value doesn't affect you in any way. Eg:
   
   ```
@@ -33,6 +34,7 @@ vc-description: |-
   therefore hop_across([2,2,3,1,1,2,1]) = 3 + 4 = 7
   
   ```
+  -/
 
 vc-preamble: |-
 
@@ -61,23 +63,23 @@ vc-theorems: |-
     (h_sorted : ∀ i j, i < j → j < lst.length → lst.get ⟨i, sorry⟩ ≤ lst.get ⟨j, sorry⟩) :
     hop_across (lst.map (· * 2)) ≤ hop_across lst := sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval hop_across [1, 2, 1, 2]
+  -- #guard_msgs in
+  -- #eval hop_across [1, 2, 1, 2]
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval hop_across [2, 2, 3, 1, 1, 2, 1]
+  -- #guard_msgs in
+  -- #eval hop_across [2, 2, 3, 1, 1, 2, 1]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval hop_across [1]
+  -- #guard_msgs in
+  -- #eval hop_across [1]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

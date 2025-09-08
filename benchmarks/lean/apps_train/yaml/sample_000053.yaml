@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Gildong recently learned how to find the longest increasing subsequence (LIS) in $O(n\log{n})$ time for a sequence of length $n$. He wants to test himself if he can implement it correctly, but he couldn't find any online judges that would do it (even though there are actually many of them). So instead he's going to make a quiz for you about making permutations of $n$ distinct integers between $1$ and $n$, inclusive, to test his code with your output.
   
   The quiz is as follows.
@@ -41,6 +42,7 @@ vc-description: |-
   In the first case, $1$ $2$ $3$ is the only possible answer.
   
   In the second case, the shortest length of the LIS is $2$, and the longest length of the LIS is $3$. In the example of the maximum LIS sequence, $4$ '$3$' $1$ $7$ '$5$' $2$ '$6$' can be one of the possible LIS.
+  -/
 
 vc-preamble: |-
   def solve_sequence (n : Nat) (comp_str : String) : (List Nat × List Nat) :=
@@ -84,17 +86,17 @@ vc-theorems: |-
     solve_sequence n "" = ([1], [1]) :=
   sorry
   
-  /--
+  /-
   info: set(range(1, 6))
   -/
-  #guard_msgs in
-  #eval set min3
+  -- #guard_msgs in
+  -- #eval set min3
   
-  /--
+  /-
   info: set(range(1, 6))
   -/
-  #guard_msgs in
-  #eval set max3
+  -- #guard_msgs in
+  -- #eval set max3
 
 vc-postamble: |-
   -- Apps difficulty: interview

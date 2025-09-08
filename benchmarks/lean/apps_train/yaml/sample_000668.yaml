@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The Little Elephant likes permutations. This time he has a permutation A[1], A[2], ..., A[N] of numbers 1, 2, ..., N.
   
   He calls a permutation A good, if the number of its inversions is equal to the number of its local inversions. The number of inversions is equal to the number of pairs of integers (i; j) such that 1 ≤ i < j ≤ N and A[i] > A[j], and the number of local inversions is the number of integers i such that 1 ≤ i < N and A[i] > A[i+1].
@@ -46,6 +47,7 @@ vc-description: |-
   Case 3. Here N = 3, and we have three pairs (i; j) with 1 ≤ i < j ≤ N. We have A[1] = 3, A[2] = 2, A[3] = 1. Hence A[1] > A[2], A[1] > A[3] and A[2] > A[3]. So the number of inversions is equal to 3. To count the number of local inversion we should examine inequalities A[1] > A[2] and A[2] > A[3]. They both are satisfied in our case, so we have 2 local inversions. Since 2 ≠ 3 this permutations is not good.
   
   Case 4. Here we have only one inversion and it comes from the pair (2; 3) since A[2] = 3 > 2 = A[3]. This pair gives also the only local inversion in this permutation. Hence the number of inversions equals to the number of local inversions and equals to one. So this permutation is good.
+  -/
 
 vc-preamble: |-
 
@@ -71,29 +73,29 @@ vc-theorems: |-
     let arr := List.reverse (List.range' 1 n)
     is_good_permutation n arr = false := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_good_permutation 1 [1]
+  -- #guard_msgs in
+  -- #eval is_good_permutation 1 [1]
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_good_permutation 2 [2, 1]
+  -- #guard_msgs in
+  -- #eval is_good_permutation 2 [2, 1]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_good_permutation 3 [3, 2, 1]
+  -- #guard_msgs in
+  -- #eval is_good_permutation 3 [3, 2, 1]
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_good_permutation 4 [1, 3, 2, 4]
+  -- #guard_msgs in
+  -- #eval is_good_permutation 4 [1, 3, 2, 4]
 
 vc-postamble: |-
   -- Apps difficulty: interview

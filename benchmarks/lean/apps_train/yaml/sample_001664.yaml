@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given two different positions on a chess board, find the least number of moves it would take a knight to get from one to the other.
   The positions will be passed as two arguments in algebraic notation.
   For example, `knight("a3", "b5")` should return 1.
@@ -12,6 +13,7 @@ vc-description: |-
   https://en.wikipedia.org/wiki/Algebraic_notation_%28chess%29
   
   (Warning: many of the tests were generated randomly. If any do not work, the test cases will return the input, output, and expected output; please post them.)
+  -/
 
 vc-preamble: |-
   def abs (n : Nat) : Nat :=
@@ -52,23 +54,23 @@ vc-theorems: |-
     knight p t = knight t p :=
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval knight "a3" "b5"
+  -- #guard_msgs in
+  -- #eval knight "a3" "b5"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval knight "a1" "c5"
+  -- #guard_msgs in
+  -- #eval knight "a1" "c5"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval knight "d5" "d5"
+  -- #guard_msgs in
+  -- #eval knight "d5" "d5"
 
 vc-postamble: |-
   -- Apps difficulty: interview

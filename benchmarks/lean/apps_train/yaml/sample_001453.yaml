@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a grid with dimension $n$ x $m$ and two points with coordinates $X(x1,y1)$ and $Y(x2,y2)$ . Your task is to find the number of ways in which one can go from point $A(0, 0)$ to point $B (n, m)$ using the $shortest$ possible path such that the shortest path neither passes through $X$ nor through $Y$. 
   
   Consider the above 4 x 4 grid . Our shortest path can't pass through points (1,3) and (3,3) (marked by yellow dots). One of the possible shortest path is from $A$ to $C$ and then from $C$ to $B$.
@@ -25,6 +26,7 @@ vc-description: |-
   
   -----Sample Output:-----
   5
+  -/
 
 vc-preamble: |-
 
@@ -63,11 +65,11 @@ vc-theorems: |-
     count_shortest_paths 3 3 1 1 1 2 = 5 :=
   sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval count_shortest_paths 3 3 1 1 1 2
+  -- #guard_msgs in
+  -- #eval count_shortest_paths 3 3 1 1 1 2
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Little chef has just been introduced to the world of numbers! While experimenting with addition and multiplication operations, the little chef came up with the following problem:
   
   Given an array A of non-negative integers, how many pairs of indices i and j exist such that  A[i]*A[j] > A[i]+A[j]  where  i < j .
@@ -38,6 +39,7 @@ vc-description: |-
   Example case 2.
   
   No pair of numbers satisfy the criteria.
+  -/
 
 vc-preamble: |-
 

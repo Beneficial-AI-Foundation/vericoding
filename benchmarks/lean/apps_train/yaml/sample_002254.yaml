@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are $n$ athletes in front of you. Athletes are numbered from $1$ to $n$ from left to right. You know the strength of each athlete — the athlete number $i$ has the strength $s_i$.
   
   You want to split all athletes into two teams. Each team must have at least one athlete, and each athlete must be exactly in one team.
@@ -49,6 +50,7 @@ vc-description: |-
   -----Note-----
   
   The first test case was explained in the statement. In the second test case, one of the optimal splits is $A=[2, 1]$, $B=[3, 2, 4, 3]$, so the answer is $|2-2|=0$.
+  -/
 
 vc-preamble: |-
 
@@ -92,23 +94,23 @@ vc-theorems: |-
     solve_min_team_diff n lst = 0 :=
   sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve_min_team_diff 5 [3, 1, 2, 6, 4]
+  -- #guard_msgs in
+  -- #eval solve_min_team_diff 5 [3, 1, 2, 6, 4]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve_min_team_diff 6 [2, 1, 3, 2, 4, 3]
+  -- #guard_msgs in
+  -- #eval solve_min_team_diff 6 [2, 1, 3, 2, 4, 3]
   
-  /--
+  /-
   info: 999
   -/
-  #guard_msgs in
-  #eval solve_min_team_diff 2 [1, 1000]
+  -- #guard_msgs in
+  -- #eval solve_min_team_diff 2 [1, 1000]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

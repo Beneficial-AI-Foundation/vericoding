@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are the judge at a competitive eating competition and you need to choose a winner!
   
   There are three foods at the competition and each type of food is worth a different amount of points.
@@ -27,6 +28,7 @@ vc-description: |-
   ]
   ```
   Happy judging!
+  -/
 
 vc-preamble: |-
   def contestant_score (c : Contestant) : Nat :=
@@ -61,23 +63,23 @@ vc-theorems: |-
     scoreboard [] = [] :=
     sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval scoreboard [{"name": "Billy The Beast", "chickenwings": 17, "hamburgers": 7, "hotdogs": 8}, {"name": "Habanero Hillary", "chickenwings": 5, "hamburgers": 17, "hotdogs": 11}, {"name": "Joey Jaws", "chickenwings": 8, "hamburgers": 8, "hotdogs": 15}, {"name": "Big Bob", "chickenwings": 20, "hamburgers": 4, "hotdogs": 11}]
+  -- #guard_msgs in
+  -- #eval scoreboard [{"name": "Billy The Beast", "chickenwings": 17, "hamburgers": 7, "hotdogs": 8}, {"name": "Habanero Hillary", "chickenwings": 5, "hamburgers": 17, "hotdogs": 11}, {"name": "Joey Jaws", "chickenwings": 8, "hamburgers": 8, "hotdogs": 15}, {"name": "Big Bob", "chickenwings": 20, "hamburgers": 4, "hotdogs": 11}]
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval scoreboard [{"name": "Joey Jaws", "chickenwings": 0, "hamburgers": 1, "hotdogs": 1}, {"name": "Big Bob", "chickenwings": 1, "hamburgers": 0, "hotdogs": 0}]
+  -- #guard_msgs in
+  -- #eval scoreboard [{"name": "Joey Jaws", "chickenwings": 0, "hamburgers": 1, "hotdogs": 1}, {"name": "Big Bob", "chickenwings": 1, "hamburgers": 0, "hotdogs": 0}]
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval scoreboard []
+  -- #guard_msgs in
+  -- #eval scoreboard []
 
 vc-postamble: |-
   -- Apps difficulty: introductory

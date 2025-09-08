@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   After a wonderful evening in the restaurant the time to go home came. Leha as a true gentlemen suggested Noora to give her a lift. Certainly the girl agreed with pleasure. Suddenly one problem appeared: Leha cannot find his car on a huge parking near the restaurant. So he decided to turn to the watchman for help.
   
   Formally the parking can be represented as a matrix 10^9 × 10^9. There is exactly one car in every cell of the matrix. All cars have their own machine numbers represented as a positive integer. Let's index the columns of the matrix by integers from 1 to 10^9 from left to right and the rows by integers from 1 to 10^9 from top to bottom. By coincidence it turned out, that for every cell (x, y) the number of the car, which stands in this cell, is equal to the minimum positive integer, which can't be found in the cells (i, y) and (x, j), 1 ≤ i < x, 1 ≤ j < y. $\left. \begin{array}{|l|l|l|l|l|} \hline 1 & {2} & {3} & {4} & {5} \\ \hline 2 & {1} & {4} & {3} & {6} \\ \hline 3 & {4} & {1} & {2} & {7} \\ \hline 4 & {3} & {2} & {1} & {8} \\ \hline 5 & {6} & {7} & {8} & {1} \\ \hline \end{array} \right.$ The upper left fragment 5 × 5 of the parking 
@@ -50,6 +51,7 @@ vc-description: |-
   In the last request (k = 2) none of the cur's numbers are suitable, so the answer is 0.
   
   $\left. \begin{array}{|l|l|l|l|l|} \hline 1 & {2} & {3} & {4} & {5} \\ \hline 2 & {1} & {4} & {3} & {6} \\ \hline 3 & {4} & {1} & {2} & {7} \\ \hline 4 & {3} & {2} & {1} & {8} \\ \hline 5 & {6} & {7} & {8} & {1} \\ \hline \end{array} \right.$
+  -/
 
 vc-preamble: |-
 

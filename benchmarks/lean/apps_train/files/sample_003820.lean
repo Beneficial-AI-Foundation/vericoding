@@ -1,0 +1,50 @@
+/-
+Build a function `sumNestedNumbers`/`sum_nested_numbers` that finds the sum of all numbers in a series of nested arrays raised to the power of their respective nesting levels.  Numbers in the outer most array should be raised to the power of 1.
+
+For example,
+
+should return `1 + 2*2 + 3 + 4*4 + 5*5*5 === 149`
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def sumNestedNumbers : NestedList Int → Int := sorry
+
+def List.sum : List Int → Int 
+  | [] => 0
+  | x :: xs => x + List.sum xs
+
+theorem flat_list_sum (lst : List Int) : 
+  sumNestedNumbers (NestedList.list (lst.map NestedList.atom)) = lst.sum := sorry
+
+theorem single_element (x : Int) : 
+  sumNestedNumbers (NestedList.list [NestedList.atom x]) = x := sorry
+
+theorem single_nested_element (x : Int) :
+  sumNestedNumbers (NestedList.list [NestedList.list [NestedList.atom x]]) = x * x := sorry
+
+theorem double_nested_element (x : Int) :
+  sumNestedNumbers (NestedList.list [NestedList.list [NestedList.list [NestedList.atom x]]]) = 
+    x * x * x := sorry
+
+/-
+info: 0
+-/
+-- #guard_msgs in
+-- #eval sum_nested_numbers [[0]]
+
+/-
+info: 15
+-/
+-- #guard_msgs in
+-- #eval sum_nested_numbers [1, 2, 3, 4, 5]
+
+/-
+info: 149
+-/
+-- #guard_msgs in
+-- #eval sum_nested_numbers [1, [2], 3, [4, [5]]]
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

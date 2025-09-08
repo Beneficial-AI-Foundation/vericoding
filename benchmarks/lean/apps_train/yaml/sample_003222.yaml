@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A [Narcissistic Number](https://en.wikipedia.org/wiki/Narcissistic_number) is a positive number which is the sum of its own digits, each raised to the power of the number of digits in a given base. In this Kata, we will restrict ourselves to decimal (base 10).
   
   For example, take 153 (3 digits):
@@ -15,6 +16,7 @@ vc-description: |-
   Your code must return **true or false** depending upon whether the given number is a Narcissistic number in base 10.
   
   Error checking for text strings or other invalid inputs is not required, only valid positive non-zero integers will be passed into the function.
+  -/
 
 vc-preamble: |-
   def narcissistic (n : Nat) : Bool :=
@@ -61,23 +63,23 @@ vc-theorems: |-
     narcissistic 407 = true :=
     sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval narcissistic 153
+  -- #guard_msgs in
+  -- #eval narcissistic 153
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval narcissistic 1634
+  -- #guard_msgs in
+  -- #eval narcissistic 1634
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval narcissistic 123
+  -- #guard_msgs in
+  -- #eval narcissistic 123
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,7 +1,9 @@
 vc-description: |-
+  /-
   Your task is simply to count the total number of lowercase letters in a string.
   
   ## Examples
+  -/
 
 vc-preamble: |-
 
@@ -22,23 +24,23 @@ vc-theorems: |-
   theorem all_lowercase_matches_length (s : String) :
     (s.data.all Char.isLower) → lowercase_count s = s.length := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval lowercase_count "abc"
+  -- #guard_msgs in
+  -- #eval lowercase_count "abc"
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval lowercase_count "abcABC123"
+  -- #guard_msgs in
+  -- #eval lowercase_count "abcABC123"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval lowercase_count ""
+  -- #guard_msgs in
+  -- #eval lowercase_count ""
 
 vc-postamble: |-
   -- Apps difficulty: introductory

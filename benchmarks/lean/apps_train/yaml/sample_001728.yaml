@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The prime `149` has 3 permutations which are also primes: `419`, `491` and `941`.
   
   There are 3 primes below `1000` with three prime permutations:
@@ -60,6 +61,7 @@ vc-description: |-
   ```
   
   Happy coding!!
+  -/
 
 vc-preamble: |-
 
@@ -102,23 +104,23 @@ vc-theorems: |-
      ∧ result.get! 1 < n_max
      ∧ result.get! 2 < n_max) := sorry
   
-  /--
+  /-
   info: [3, 149, 379]
   -/
-  #guard_msgs in
-  #eval permutational_primes 1000 3
+  -- #guard_msgs in
+  -- #eval permutational_primes 1000 3
   
-  /--
+  /-
   info: [9, 113, 389]
   -/
-  #guard_msgs in
-  #eval permutational_primes 1000 2
+  -- #guard_msgs in
+  -- #eval permutational_primes 1000 2
   
-  /--
+  /-
   info: [34, 13, 797]
   -/
-  #guard_msgs in
-  #eval permutational_primes 1000 1
+  -- #guard_msgs in
+  -- #eval permutational_primes 1000 1
 
 vc-postamble: |-
   -- Apps difficulty: interview

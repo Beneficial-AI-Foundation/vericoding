@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef's love for Fibonacci numbers helps him to design following interesting problem.
   He defines a function F for an array S as follows:
   
@@ -58,6 +59,7 @@ vc-description: |-
   - For 1 ≤ K ≤ 2, FibonacciK = 1
   - Otherwise, FibonacciK = FibonacciK-1 + FibonacciK-2
   Please check this link for more details about Fibonacci numbers.
+  -/
 
 vc-preamble: |-
 

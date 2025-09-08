@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Our chef has been assigned a task to make a necklace of length N, from gold, diamond and platinum.There is single kind of gold, two types of diamond and three types of platinum available.
   A necklace can be represented as strings of the form (G)∗(D1|D2)∗(P1|P2|P3)∗$ (G)*(D1|D2)*(P1|P2|P3)* $ where (x|y) means we can use x or y and ∗$ * $ means we can repeat the previous parenthesized expression 0 or more times.
   Instead of making necklace he choose to count all such distinct necklaces possible for a given length N.
@@ -27,6 +28,7 @@ vc-description: |-
   -----Sample Output:-----
   6
   25
+  -/
 
 vc-preamble: |-
 
@@ -43,23 +45,23 @@ vc-theorems: |-
     n ≥ 1 → count_necklace_combinations n ≥ 0 ∧ count_necklace_combinations n < 1000000007 := by
     sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval count_necklace_combinations 1
+  -- #guard_msgs in
+  -- #eval count_necklace_combinations 1
   
-  /--
+  /-
   info: 25
   -/
-  #guard_msgs in
-  #eval count_necklace_combinations 2
+  -- #guard_msgs in
+  -- #eval count_necklace_combinations 2
   
-  /--
+  /-
   info: 90
   -/
-  #guard_msgs in
-  #eval count_necklace_combinations 3
+  -- #guard_msgs in
+  -- #eval count_necklace_combinations 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

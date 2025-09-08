@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Naman owns a very famous Ice Cream parlour in Pune. He has a wide range of flavours with different pricing. 
   
   Every flavour costs ₹ X per gram and quantity of each flavour in the parlour is indefinite. Now, Naman has 
@@ -51,6 +52,7 @@ vc-description: |-
   of flavour costing ₹1, 1 gram of flavour costing ₹4 and 1 gram of flavour costing ₹6.
   
   In the second test case it is not possible to make an ice-cream weighing 1 gram using 2 flavours.
+  -/
 
 vc-preamble: |-
 

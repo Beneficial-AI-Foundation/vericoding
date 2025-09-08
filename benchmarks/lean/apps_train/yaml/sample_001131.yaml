@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In order to establish dominance amongst his friends, Chef has decided that he will only walk in large steps of length exactly $K$ feet. However, this has presented many problems in Chef’s life because there are certain distances that he cannot traverse. Eg. If his step length is $5$ feet, he cannot travel a distance of $12$ feet. Chef has a strict travel plan that he follows on most days, but now he is worried that some of those distances may become impossible to travel. Given $N$ distances, tell Chef which ones he cannot travel.
   
   -----Input:-----
@@ -36,6 +37,7 @@ vc-description: |-
   The fourth distance cannot be traversed.
   
   The fifth distance can be traversed in $9072$ steps.
+  -/
 
 vc-preamble: |-
 
@@ -65,23 +67,23 @@ vc-theorems: |-
     let distances := List.map (fun i => k * i + 1) (List.range n)
     ∀ c : Char, c ∈ (can_traverse_distances n k distances).data → c = '0' := sorry
   
-  /--
+  /-
   info: '10101'
   -/
-  #guard_msgs in
-  #eval can_traverse_distances 5 3 [12, 13, 18, 20, 27216]
+  -- #guard_msgs in
+  -- #eval can_traverse_distances 5 3 [12, 13, 18, 20, 27216]
   
-  /--
+  /-
   info: '110'
   -/
-  #guard_msgs in
-  #eval can_traverse_distances 3 2 [4, 6, 9]
+  -- #guard_msgs in
+  -- #eval can_traverse_distances 3 2 [4, 6, 9]
   
-  /--
+  /-
   info: '1101'
   -/
-  #guard_msgs in
-  #eval can_traverse_distances 4 5 [5, 10, 12, 15]
+  -- #guard_msgs in
+  -- #eval can_traverse_distances 4 5 [5, 10, 12, 15]
 
 vc-postamble: |-
   -- Apps difficulty: interview

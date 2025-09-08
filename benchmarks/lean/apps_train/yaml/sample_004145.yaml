@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Every Friday and Saturday night, farmer counts amount of sheep returned back to his farm (sheep returned on Friday stay and don't leave for a weekend).
   
   Sheep return in groups each of the days -> you will be given two arrays with these numbers (one for Friday and one for Saturday night). Entries are always positive ints, higher than zero.
@@ -10,6 +11,7 @@ vc-description: |-
   Example 2: Input: {3, 1, 2}, {4, 5}, 21 --> Output: 6
   
   Good luck! :-)
+  -/
 
 vc-preamble: |-
   def sum_list : List Nat → Nat
@@ -33,23 +35,23 @@ vc-theorems: |-
     lost_sheep [] [] total = total :=
   sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval lost_sheep [1, 2] [3, 4] 15
+  -- #guard_msgs in
+  -- #eval lost_sheep [1, 2] [3, 4] 15
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval lost_sheep [3, 1, 2] [4, 5] 21
+  -- #guard_msgs in
+  -- #eval lost_sheep [3, 1, 2] [4, 5] 21
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval lost_sheep [5, 1, 4] [5, 4] 29
+  -- #guard_msgs in
+  -- #eval lost_sheep [5, 1, 4] [5, 4] 29
 
 vc-postamble: |-
   -- Apps difficulty: introductory

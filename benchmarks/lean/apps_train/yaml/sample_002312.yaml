@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given two non-negative integers num1 and num2 represented as string, return the sum of num1 and num2.
   
   Note:
@@ -7,6 +8,7 @@ vc-description: |-
   Both num1 and num2 contains only digits 0-9.
   Both num1 and num2 does not contain any leading zero.
   You must not use any built-in BigInteger library or convert the inputs to integer directly.
+  -/
 
 vc-preamble: |-
   def add_strings (a b : String) : String :=
@@ -39,23 +41,23 @@ vc-theorems: |-
     add_strings (int_to_str 42) (int_to_str n) :=  
     sorry
   
-  /--
+  /-
   info: '172'
   -/
-  #guard_msgs in
-  #eval add_strings "123" "49"
+  -- #guard_msgs in
+  -- #eval add_strings "123" "49"
   
-  /--
+  /-
   info: '0'
   -/
-  #guard_msgs in
-  #eval add_strings "0" "0"
+  -- #guard_msgs in
+  -- #eval add_strings "0" "0"
   
-  /--
+  /-
   info: '1000'
   -/
-  #guard_msgs in
-  #eval add_strings "999" "1"
+  -- #guard_msgs in
+  -- #eval add_strings "999" "1"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

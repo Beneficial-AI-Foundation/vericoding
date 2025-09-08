@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A family of kookaburras are in my backyard.
   
   I can't see them all, but I can hear them!
@@ -16,6 +17,7 @@ vc-description: |-
   * And they always alternate male/female
   
   ^ Kata Note : No validation is necessary; only valid input will be passed :-)
+  -/
 
 vc-preamble: |-
 
@@ -47,23 +49,23 @@ vc-theorems: |-
     kooka_counter (lowerLaugh ++ upperLaugh) = 2 :=
   sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval kooka_counter ""
+  -- #guard_msgs in
+  -- #eval kooka_counter ""
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval kooka_counter "hahahahaha"
+  -- #guard_msgs in
+  -- #eval kooka_counter "hahahahaha"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval kooka_counter "hahahahahaHaHaHa"
+  -- #guard_msgs in
+  -- #eval kooka_counter "hahahahahaHaHaHa"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   write me a function `stringy` that takes a `size` and returns a `string` of alternating `'1s'` and `'0s'`.
   
   the string should start with a `1`.
@@ -10,6 +11,7 @@ vc-description: |-
   with `size` 12 should return : `'101010101010'`.
   
   The size will always be positive and will only use whole numbers.
+  -/
 
 vc-preamble: |-
 
@@ -41,23 +43,23 @@ vc-theorems: |-
   
   theorem stringy_negative {n : Int} (h : n < 0) : stringy n = "" := sorry
   
-  /--
+  /-
   info: '101'
   -/
-  #guard_msgs in
-  #eval stringy 3
+  -- #guard_msgs in
+  -- #eval stringy 3
   
-  /--
+  /-
   info: '10101'
   -/
-  #guard_msgs in
-  #eval stringy 5
+  -- #guard_msgs in
+  -- #eval stringy 5
   
-  /--
+  /-
   info: '101010101010'
   -/
-  #guard_msgs in
-  #eval stringy 12
+  -- #guard_msgs in
+  -- #eval stringy 12
 
 vc-postamble: |-
   -- Apps difficulty: introductory

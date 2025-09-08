@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Just another day in the world of Minecraft, Steve is working on his new project -- building a beacon pyramid in front of his house.
   
   ![Beacon pyramid](http://www.minecraft101.net/reference/images/beacon_pyramid_thb.jpg)
@@ -24,6 +25,7 @@ vc-description: |-
   * [Minecraft Series #2: Minimum amount of fuel needed to get some iron ingots](https://www.codewars.com/kata/minecraft-series-number-2-minimum-amount-of-fuel-needed-to-get-some-iron-ingots/ruby)
   * [Minecraft Series #3: Lava is amazing! ](https://www.codewars.com/kata/583a23d40cf946ec380002c2)
   * [Minecraft Series #4: Lava is amazing, however...](https://www.codewars.com/kata/583a6b0b171f3a3c3f0003e3)
+  -/
 
 vc-preamble: |-
   def blocks_to_collect (level : Nat) : BlockCount :=
@@ -61,23 +63,23 @@ vc-theorems: |-
     result.gold = goldCalc level :=
   sorry
   
-  /--
+  /-
   info: {'total': 9, 'gold': 9, 'diamond': 0, 'emerald': 0, 'iron': 0}
   -/
-  #guard_msgs in
-  #eval blocks_to_collect 1
+  -- #guard_msgs in
+  -- #eval blocks_to_collect 1
   
-  /--
+  /-
   info: {'total': 34, 'gold': 9, 'diamond': 25, 'emerald': 0, 'iron': 0}
   -/
-  #guard_msgs in
-  #eval blocks_to_collect 2
+  -- #guard_msgs in
+  -- #eval blocks_to_collect 2
   
-  /--
+  /-
   info: {'total': 83, 'gold': 9, 'diamond': 25, 'emerald': 49, 'iron': 0}
   -/
-  #guard_msgs in
-  #eval blocks_to_collect 3
+  -- #guard_msgs in
+  -- #eval blocks_to_collect 3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

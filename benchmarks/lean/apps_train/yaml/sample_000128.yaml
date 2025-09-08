@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A program was supposed to print an array of integers. The program forgot to print whitespaces and the array is printed as a string of digits and all we know is that all integers in the array were in the range [1, k] and there are no leading zeros in the array.
   Given the string s and the integer k. There can be multiple ways to restore the array.
   Return the number of possible array that can be printed as a string s using the mentioned program.
@@ -33,6 +34,7 @@ vc-description: |-
   1 <= s.length <= 10^5.
   s consists of only digits and doesn't contain leading zeros.
   1 <= k <= 10^9.
+  -/
 
 vc-preamble: |-
   def String.repeat (s : String) (n : Nat) : String :=
@@ -57,23 +59,23 @@ vc-theorems: |-
     : number_of_arrays "0" k = 0 :=
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval number_of_arrays "1000" 10000
+  -- #guard_msgs in
+  -- #eval number_of_arrays "1000" 10000
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval number_of_arrays "1000" 10
+  -- #guard_msgs in
+  -- #eval number_of_arrays "1000" 10
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval number_of_arrays "1317" 2000
+  -- #guard_msgs in
+  -- #eval number_of_arrays "1317" 2000
 
 vc-postamble: |-
   -- Apps difficulty: interview

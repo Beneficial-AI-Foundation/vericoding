@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Once, a genius guy Cristo visited NASA where he met many scientists. A young intern Mark at NASA asked Cristo to observe the strange behaviour of two
   
   independent particles (say Alpha and Beta) moving in the free space.Cristo was astonished to see the movement of Alpha and Beta. However, he formulated a procedure
@@ -45,6 +46,7 @@ vc-description: |-
   Sample Output:
   0 1
   2 1
+  -/
 
 vc-preamble: |-
   def cristo_sutra (input : List Nat) : List String := sorry

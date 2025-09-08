@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Martha — as a professional problemsetter — proposed a problem for a world-class contest. This is the problem statement:
   
   Tomorrow is Nadia's birthday, and Bardia (her brother) is assigned to make the balloons ready!
@@ -36,6 +37,7 @@ vc-description: |-
   12 7
   
   17 1
+  -/
 
 vc-preamble: |-
 
@@ -54,17 +56,17 @@ vc-definitions: |-
       List.Pairwise (fun p1 p2 => p1.1 < p2.1) balloons := sorry
 
 vc-theorems: |-
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval len b1
+  -- #guard_msgs in
+  -- #eval len b1
   
-  /--
+  /-
   info: 302
   -/
-  #guard_msgs in
-  #eval len b2
+  -- #guard_msgs in
+  -- #eval len b2
 
 vc-postamble: |-
   -- Apps difficulty: interview

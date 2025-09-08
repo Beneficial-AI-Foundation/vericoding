@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Binod is a youtuber and he is busy in the fame of social media so he asked you to help him solve a problem.
   You have been given an array of $positive$ $integers$ $a_{1},a_{2},a_{3},...,a_{i},...,a_{n}$ of size n.You have to find the smallest length of the subarray such that the length of the subarray must be $strictly$ greater than k and it's sum also must be $strictly$ greater than s. 
   
@@ -42,6 +43,7 @@ vc-description: |-
   
   -----Explanation :-----
   - Each value in array index satisfies the condition sum greater than 1 but to satisfy the condition of length greater than 2 choose the subarray of length 3
+  -/
 
 vc-preamble: |-
   def List.sum : List Int → Int 
@@ -97,23 +99,23 @@ vc-theorems: |-
     find_subarray_length n k s arr = -1 :=
   sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_subarray_length 5 1 5 [1, 2, 3, 4, 5]
+  -- #guard_msgs in
+  -- #eval find_subarray_length 5 1 5 [1, 2, 3, 4, 5]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_subarray_length 3 2 1 [9, 9, 1]
+  -- #guard_msgs in
+  -- #eval find_subarray_length 3 2 1 [9, 9, 1]
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval find_subarray_length 4 3 100 [1, 2, 3, 4]
+  -- #guard_msgs in
+  -- #eval find_subarray_length 4 3 100 [1, 2, 3, 4]
 
 vc-postamble: |-
   -- Apps difficulty: interview

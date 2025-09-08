@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ### Task
   
   Your main goal is to find two numbers(` >= 0 `), greatest common divisor of wich will be `divisor` and number of iterations, taken by Euclids algorithm will be `iterations`.
@@ -33,6 +34,7 @@ vc-description: |-
   `0 < divisor < 1000`
   
   `0 <= iterations <= 50'000`
+  -/
 
 vc-preamble: |-
 

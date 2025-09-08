@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef has $N$ dishes of different types arranged in a row: $A_1, A_2, \ldots, A_N$, where $A_i$ denotes the type of the $i^{th}$ dish. He wants to choose as many dishes as possible from the given list but while satisfying two conditions: 
   - He can choose only one type of dish.   
   - No two chosen dishes should be adjacent to each other. 
@@ -51,6 +52,7 @@ vc-description: |-
   Test case 3:
   
   For type 1, Chef can choose at most two dishes. For type 2, he can choose three dishes. For type 3 and type 4, Chef can choose the only dish available. Hence the maximum is in type 2 and so the answer is $2$.
+  -/
 
 vc-preamble: |-
 
@@ -74,23 +76,23 @@ vc-theorems: |-
       dishes = original :=
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval find_max_dish_type 5 [1, 2, 2, 1, 2]
+  -- #guard_msgs in
+  -- #eval find_max_dish_type 5 [1, 2, 2, 1, 2]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval find_max_dish_type 6 [1, 1, 1, 1, 1, 1]
+  -- #guard_msgs in
+  -- #eval find_max_dish_type 6 [1, 1, 1, 1, 1, 1]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_max_dish_type 8 [1, 2, 2, 2, 3, 4, 2, 1]
+  -- #guard_msgs in
+  -- #eval find_max_dish_type 8 [1, 2, 2, 2, 3, 4, 2, 1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

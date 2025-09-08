@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You have found $M$ different types of jewels in a mine and each type of jewel is present in an infinite number.
   There are $N$ different boxes located at position $(1 ,2 ,3 ,...N)$.
   Each box can collect jewels up to a certain number ( box at position $i$ have $i$ different partitions and each partition can collect at most one jewel of any type).
@@ -26,6 +27,7 @@ vc-description: |-
   -----Sample Output:-----
   1
   64
+  -/
 
 vc-preamble: |-
 
@@ -60,23 +62,23 @@ vc-theorems: |-
     calculate_arrangements n m ≥ 0 :=
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval calculate_arrangements 1 10
+  -- #guard_msgs in
+  -- #eval calculate_arrangements 1 10
   
-  /--
+  /-
   info: 64
   -/
-  #guard_msgs in
-  #eval calculate_arrangements 5 2
+  -- #guard_msgs in
+  -- #eval calculate_arrangements 5 2
   
-  /--
+  /-
   info: 729
   -/
-  #guard_msgs in
-  #eval calculate_arrangements 4 3
+  -- #guard_msgs in
+  -- #eval calculate_arrangements 4 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

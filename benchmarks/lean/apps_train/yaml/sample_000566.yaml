@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You may have tried your level best to help Chef but Dr Doof has managed to come up with his masterplan in the meantime. Sadly, you have to help Chef once again. Dr Doof has designed a parenthesis-inator. It throws a stream of $N$ brackets at the target, $1$ bracket per second. The brackets can either be opening or closing. Chef appears in front of the stream at time $t$. If Chef faces an opening bracket, he gets hit. However, if he faces a closing bracket, he may choose to let it pass through him (Chef is immune to closing brackets). Chef gets a chance to counter attack Doof as soon as he finds a balanced non-empty bracket sequence. Help Chef by providing him the minimum time $x$ at which he will be able to launch his counter attack. If Chef is unable to counter attack, answer $-1$.
   Formally, you are given a string $S$ of length $N$ consisting only of opening brackets $($ and closing brackets $)$. The substring of $S$ starting at index $L$ and ending at index $R$, i.e. $S_L S_{L+1} \ldots S_{R}$ is denoted by $S[L, R]$ . Consider $Q$ cases. In the $i^{\text{th}}$ case, Chef appears at time $t_i$ $(1 \leq t_i \leq N)$ and faces all characters from index $t_i$ to $N$. Find the minimum index $x$ $(t_i \leq x \leq N)$ such that the substring $S[t_i, x]$ contains a non-empty balanced bracket subsequence containing the same number of opening brackets as $S[t_i, x]$ (i.e., you cannot remove any opening bracket from the substring). If such an $x$ does not exist, print $-1$.
   A string $X$ is called a subsequence of a string $Y$ if it is possible to obtain $X$ by erasing some (possibly zero) characters from $Y$ without changing the order of the remaining characters.
@@ -38,6 +39,7 @@ vc-description: |-
   
   -----Explanation-----
   For the first query, Chef chooses to let $S_1$ pass through him, gets hit by $S_2$ and finally completes a balanced bracket sequence by adding $S_3$ to $S_2$ at time $x$ = $3$.
+  -/
 
 vc-preamble: |-
 

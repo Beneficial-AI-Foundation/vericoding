@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef belongs to a very rich family which owns many gold mines. Today, he brought N gold coins and decided to form a triangle using these coins. Isn't it strange?
   Chef has a unusual way of forming a triangle using gold coins, which is described as follows:
   - He puts 1 coin in the 1st row.
@@ -36,6 +37,7 @@ vc-description: |-
   - Test 1: Chef can't form a triangle with height > 2 as it requires atleast 6 gold coins.
   - Test 2: Chef can't form a triangle with height > 2 as it requires atleast 6 gold coins.
   - Test 3: Chef can't form a triangle with height > 3 as it requires atleast 10 gold coins.
+  -/
 
 vc-preamble: |-
 
@@ -57,23 +59,23 @@ vc-theorems: |-
     let h := max_triangle_height n
     ((h + 1) * (h + 2)) / 2 > n ∨ h = n := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval max_triangle_height 3
+  -- #guard_msgs in
+  -- #eval max_triangle_height 3
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval max_triangle_height 5
+  -- #guard_msgs in
+  -- #eval max_triangle_height 5
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval max_triangle_height 7
+  -- #guard_msgs in
+  -- #eval max_triangle_height 7
 
 vc-postamble: |-
   -- Apps difficulty: interview

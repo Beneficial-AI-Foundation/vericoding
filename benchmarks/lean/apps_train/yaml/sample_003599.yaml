@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    You know the slogan `p`, which the agitators have been chanting for quite a while now. Roka has heard this slogan a few times, but he missed almost all of them and grasped only their endings. You know the string `r` that Roka has heard. 
   
@@ -27,6 +28,7 @@ vc-description: |-
    - `[output]` an integer
   
     The `minimum number` of times the agitators chanted.
+  -/
 
 vc-preamble: |-
 
@@ -61,23 +63,23 @@ vc-theorems: |-
     slogans pattern (String.join (List.replicate 0 pattern)) ≥ 0 :=
   sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval slogans "glorytoukraine" "ukraineaineaine"
+  -- #guard_msgs in
+  -- #eval slogans "glorytoukraine" "ukraineaineaine"
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval slogans "programming" "ingmingmming"
+  -- #guard_msgs in
+  -- #eval slogans "programming" "ingmingmming"
   
-  /--
+  /-
   info: 13
   -/
-  #guard_msgs in
-  #eval slogans "dhgusdlifons" "lifonsssdlifonsgusdlifonssnsdlifonsslifonsifonsdlifonsfonsifons"
+  -- #guard_msgs in
+  -- #eval slogans "dhgusdlifons" "lifonsssdlifonsgusdlifonssnsdlifonsslifonsifonsdlifonsfonsifons"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

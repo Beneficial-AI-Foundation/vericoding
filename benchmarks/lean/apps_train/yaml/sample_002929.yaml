@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this kata you will create a function to check a non-negative input to see if it is a prime number.
   
   The function will take in a number and will return True if it is a prime number and False if it is not.
@@ -6,6 +7,7 @@ vc-description: |-
   A prime number is a natural number greater than 1 that has no positive divisors other than 1 and itself.
   
   ### Examples
+  -/
 
 vc-preamble: |-
 
@@ -34,59 +36,59 @@ vc-theorems: |-
   theorem perfect_squares_not_prime {n : Nat} (h1 : n > 4) 
     (h2 : ∃ k, n = k * k) : is_prime n = false := sorry
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_prime 0
+  -- #guard_msgs in
+  -- #eval is_prime 0
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_prime 1
+  -- #guard_msgs in
+  -- #eval is_prime 1
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_prime 2
+  -- #guard_msgs in
+  -- #eval is_prime 2
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_prime 11
+  -- #guard_msgs in
+  -- #eval is_prime 11
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_prime 61
+  -- #guard_msgs in
+  -- #eval is_prime 61
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_prime 571
+  -- #guard_msgs in
+  -- #eval is_prime 571
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_prime 12
+  -- #guard_msgs in
+  -- #eval is_prime 12
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_prime 573
+  -- #guard_msgs in
+  -- #eval is_prime 573
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_prime 25
+  -- #guard_msgs in
+  -- #eval is_prime 25
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
   
   (i.e.,  [0,1,2,4,5,6,7] might become  [4,5,6,7,0,1,2]).
@@ -16,6 +17,7 @@ vc-description: |-
   
   Input: [4,5,6,7,0,1,2]
   Output: 0
+  -/
 
 vc-preamble: |-
   def findMin (arr : List Int) : Int :=
@@ -50,23 +52,23 @@ vc-theorems: |-
     findMin (rotateList nums (nums.length / 2)) = listMin nums :=
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval findMin [3, 4, 5, 1, 2]
+  -- #guard_msgs in
+  -- #eval findMin [3, 4, 5, 1, 2]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval findMin [4, 5, 6, 7, 0, 1, 2]
+  -- #guard_msgs in
+  -- #eval findMin [4, 5, 6, 7, 0, 1, 2]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval findMin [1, 2, 3, 4, 5]
+  -- #guard_msgs in
+  -- #eval findMin [1, 2, 3, 4, 5]
 
 vc-postamble: |-
   -- Apps difficulty: interview

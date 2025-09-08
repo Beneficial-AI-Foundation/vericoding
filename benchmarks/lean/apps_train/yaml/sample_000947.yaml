@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Zonal Computing Olympiad 2012, 26 Nov 2011
   
   We consider sequences of opening and closing brackets with two types of brackets, () and [].  A bracket sequence is well-bracketed if we can pair up each opening bracket with a matching closing bracket in the usual sense.  For instance, the sequences (), [] ([]) and []([]) are well-bracketed, while (, ()], (], )( and [(]) are not well-bracketed.  In the last case, each opening bracket has a matching closing bracket and vice versa, but the intervals spanned by the different types of brackets intersect each other instead of being contained one within the other.
@@ -30,6 +31,7 @@ vc-description: |-
   
   -----Sample Output-----
   2 6 8
+  -/
 
 vc-preamble: |-
 
@@ -72,23 +74,23 @@ vc-theorems: |-
     depth3 > 0 :=
   sorry
   
-  /--
+  /-
   info: (2, 6, 8)
   -/
-  #guard_msgs in
-  #eval solve_brackets *test1
+  -- #guard_msgs in
+  -- #eval solve_brackets *test1
   
-  /--
+  /-
   info: (2, 4, 2)
   -/
-  #guard_msgs in
-  #eval solve_brackets *test2
+  -- #guard_msgs in
+  -- #eval solve_brackets *test2
   
-  /--
+  /-
   info: (1, 2, 2)
   -/
-  #guard_msgs in
-  #eval solve_brackets *test3
+  -- #guard_msgs in
+  -- #eval solve_brackets *test3
 
 vc-postamble: |-
   -- Apps difficulty: interview

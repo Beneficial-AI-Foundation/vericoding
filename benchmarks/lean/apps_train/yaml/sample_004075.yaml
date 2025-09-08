@@ -1,5 +1,7 @@
 vc-description: |-
+  /-
   A number `n` is called `prime happy` if there is at least one prime less than `n` and the `sum of all primes less than n` is evenly divisible by `n`. Write `isPrimeHappy(n)` which returns `true` if `n` is `prime happy` else `false`.
+  -/
 
 vc-preamble: |-
 
@@ -21,23 +23,23 @@ vc-theorems: |-
   theorem output_is_deterministic (n : Int) :
     is_prime_happy n = is_prime_happy n := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_prime_happy 5
+  -- #guard_msgs in
+  -- #eval is_prime_happy 5
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_prime_happy 8
+  -- #guard_msgs in
+  -- #eval is_prime_happy 8
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_prime_happy 25
+  -- #guard_msgs in
+  -- #eval is_prime_happy 25
 
 vc-postamble: |-
   -- Apps difficulty: introductory

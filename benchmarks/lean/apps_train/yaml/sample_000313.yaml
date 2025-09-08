@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given two strings: s1 and s2 with the same size, check if some permutation of string s1 can break some permutation of string s2 or vice-versa (in other words s2 can break s1).
   A string x can break string y (both of size n) if x[i] >= y[i] (in alphabetical order) for all i between 0 and n-1.
   
@@ -22,6 +23,7 @@ vc-description: |-
   s2.length == n
   1 <= n <= 10^5
   All strings consist of lowercase English letters.
+  -/
 
 vc-preamble: |-
 
@@ -33,26 +35,26 @@ vc-definitions: |-
   def checkIfCanBreak (s1 s2 : String) : Bool :=
     sorry
   
-  /-- If two strings are compared with checkIfCanBreak, they must have same length -/
+  /- If two strings are compared with checkIfCanBreak, they must have same length -/
 
 vc-theorems: |-
   theorem check_if_can_break_same_length (s1 s2 : String) :
     checkIfCanBreak s1 s2 → String.length s1 = String.length s2 :=
     sorry
   
-  /-- A string can always break itself -/
+  /- A string can always break itself -/
   
   theorem check_if_can_break_reflexive (s : String) :
     checkIfCanBreak s s = true :=
     sorry
   
-  /-- The break relationship is symmetric -/
+  /- The break relationship is symmetric -/
   
   theorem check_if_can_break_symmetric (s1 s2 : String) :
     checkIfCanBreak s1 s2 = checkIfCanBreak s2 s1 :=
     sorry
   
-  /-- A sorted string can always break its unsorted version -/ 
+  /- A sorted string can always break its unsorted version -/ 
   
   theorem sorted_string_breaks_unsorted (s sorted : String) 
     (h : ∀ i j : String.Pos, i < j → sorted.get i ≤ sorted.get j)
@@ -61,23 +63,23 @@ vc-theorems: |-
     checkIfCanBreak sorted s = true :=
     sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval check_if_can_break "abc" "xya"
+  -- #guard_msgs in
+  -- #eval check_if_can_break "abc" "xya"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval check_if_can_break "abe" "acd"
+  -- #guard_msgs in
+  -- #eval check_if_can_break "abe" "acd"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval check_if_can_break "leetcodee" "interview"
+  -- #guard_msgs in
+  -- #eval check_if_can_break "leetcodee" "interview"
 
 vc-postamble: |-
   -- Apps difficulty: interview

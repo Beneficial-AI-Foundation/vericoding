@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   We know that some numbers can be split into two primes. ie. `5 = 2 + 3, 10 = 3 + 7`. But some numbers are not. ie. `17, 27, 35`, etc.. 
   
@@ -29,6 +30,7 @@ vc-description: |-
   For `n = 20`, the output should be `91`.
   
   `20` can split into two primes `7 and 13` or `3 and 17`. The maximum product is `7 x 13 = 91`
+  -/
 
 vc-preamble: |-
 
@@ -48,23 +50,23 @@ vc-theorems: |-
   theorem nonpositive_not_prime (n : Nat) :
     n ≤ 1 → is_prime n = false := sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval prime_product 5
+  -- #guard_msgs in
+  -- #eval prime_product 5
   
-  /--
+  /-
   info: 91
   -/
-  #guard_msgs in
-  #eval prime_product 20
+  -- #guard_msgs in
+  -- #eval prime_product 20
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval prime_product 11
+  -- #guard_msgs in
+  -- #eval prime_product 11
 
 vc-postamble: |-
   -- Apps difficulty: introductory

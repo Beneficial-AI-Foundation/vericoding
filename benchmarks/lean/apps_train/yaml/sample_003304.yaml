@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a method that takes a string as an argument and groups the number of time each character appears in the string as a hash sorted by the highest number of occurrences.
   
   The characters should be sorted alphabetically e.g:
@@ -17,6 +18,7 @@ vc-description: |-
   get_char_count("abc123")                ==  {1: ["1", "2", "3", "a", "b", "c"]}
   get_char_count("aaabbbccc")             ==  {3: ["a", "b", "c"]}
   ```
+  -/
 
 vc-preamble: |-
 

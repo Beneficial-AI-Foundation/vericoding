@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Task
   
   Given a positive integer, `n`, return the number of possible ways such that `k` positive integers multiply to `n`. Order matters.
@@ -22,6 +23,7 @@ vc-description: |-
   **Constraints**
   `1 <= n <= 500_000_000`
   and `1 <= k <= 1000`
+  -/
 
 vc-preamble: |-
   def multiply (n k: Nat) : Nat := sorry
@@ -51,23 +53,23 @@ vc-theorems: |-
     multiply n k ≥ multiply n (k-1) :=
   sorry
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval multiply 24 2
+  -- #guard_msgs in
+  -- #eval multiply 24 2
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval multiply 100 1
+  -- #guard_msgs in
+  -- #eval multiply 100 1
   
-  /--
+  /-
   info: 18
   -/
-  #guard_msgs in
-  #eval multiply 20 3
+  -- #guard_msgs in
+  -- #eval multiply 20 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

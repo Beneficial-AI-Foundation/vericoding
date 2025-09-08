@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There is a sale in a supermarket, there will be a discount every n customer.
   There are some products in the supermarket where the id of the i-th product is products[i] and the price per unit of this product is prices[i].
   The system will count the number of customers and when the n-th customer arrive he/she will have a discount on the bill. (i.e if the cost is x the new cost is x - (discount * x) / 100). Then the system will start counting customers again.
@@ -39,6 +40,7 @@ vc-description: |-
   1 <= amount[i] <= 1000
   At most 1000 calls will be made to getBill.
   Answers within 10^-5 of the actual value will be accepted as correct.
+  -/
 
 vc-preamble: |-
 

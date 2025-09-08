@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Consider a sequence made up of the consecutive prime numbers. This infinite sequence would start with: 
   ```python
   "2357111317192329313741434753596167717379..."
@@ -15,6 +16,7 @@ vc-description: |-
   More examples in test cases. Good luck!
   
   Please also try [Simple time difference](https://www.codewars.com/kata/5b76a34ff71e5de9db0000f2)
+  -/
 
 vc-preamble: |-
 
@@ -43,23 +45,23 @@ vc-theorems: |-
       let result := solve start offset
       (∀ c ∈ result.data, '0' ≤ c ∧ c ≤ '9') ∧ (result.length > 0) := sorry
   
-  /--
+  /-
   info: '57'
   -/
-  #guard_msgs in
-  #eval solve 2 2
+  -- #guard_msgs in
+  -- #eval solve 2 2
   
-  /--
+  /-
   info: '19232'
   -/
-  #guard_msgs in
-  #eval solve 10 5
+  -- #guard_msgs in
+  -- #eval solve 10 5
   
-  /--
+  /-
   info: '192'
   -/
-  #guard_msgs in
-  #eval solve 10 3
+  -- #guard_msgs in
+  -- #eval solve 10 3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

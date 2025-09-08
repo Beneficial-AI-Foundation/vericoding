@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a 1×1×2$1 \times 1 \times 2$ bar (a cuboid) and a grid A$A$ with N$N$ rows (numbered 1$1$ through N$N$) and M$M$ columns (numbered 1$1$ through M$M$). Let's denote the cell in row r$r$ and column c$c$ by (r,c)$(r, c)$. Some cells of the grid are blocked, the remaining cells are free.
   Each cell has dimensions 1×1$1 \times 1$, the same as two opposite faces of the cuboid. When the bar is placed on the grid in such a way that one of its two 1×1$1 \times 1$ faces fully covers a cell (r,c)$(r, c)$, we say that the bar is standing on the cell (r,c)$(r, c)$. Initially, the bar is standing on a cell (x,y)$(x, y)$.
   When the bar is placed on the grid, one of its faces is touching the grid; this face is called the base. In one move, you must roll the bar over one of its base edges (sides of the base); this base edge does not move and the bar is rotated 90∘$90^\circ$ around it in such a way that it is still lying on the grid, but with a different base. In different moves, the bar may be rotated around different edges in different directions. After each move, the base of the bar must lie fully inside the grid and it must not cover any blocked cells.
@@ -50,6 +51,7 @@ vc-description: |-
   -----Explanation-----
   Example case 1: Initially, the base of the bar occupies the cell (1,1)$(1, 1)$. After the first move, it occupies the cells (1,2)$(1, 2)$ and (1,3)$(1, 3)$. After the second move, it can occupy the cell (1,4)$(1, 4)$.
   Alternatively, after the second move, it can occupy the cells (2,2)$(2, 2)$ and (2,3)$(2, 3)$, and after the third move, it can occupy the cell (2,4)$(2, 4)$.
+  -/
 
 vc-preamble: |-
 

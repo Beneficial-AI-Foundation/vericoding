@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Introduction
   
   Fish are an integral part of any ecosystem. Unfortunately, fish are often seen as high maintenance. Contrary to popular belief, fish actually reduce pond maintenance as they graze on string algae and bottom feed from the pond floor. They also make very enjoyable pets, providing hours of natural entertainment.
@@ -111,6 +112,7 @@ vc-description: |-
    Plenty of Fish in the Pond
    Fruit Machine
    Car Park Escape
+  -/
 
 vc-preamble: |-
 
@@ -143,23 +145,23 @@ vc-theorems: |-
     fish "" = 1 := by
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval fish ""
+  -- #guard_msgs in
+  -- #eval fish ""
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval fish "1111"
+  -- #guard_msgs in
+  -- #eval fish "1111"
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval fish "111122223333"
+  -- #guard_msgs in
+  -- #eval fish "111122223333"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

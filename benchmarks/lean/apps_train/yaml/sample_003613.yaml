@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    In a black and white image we can use `1` instead of black pixels and `0` instead of white pixels. 
   
@@ -43,6 +44,7 @@ vc-description: |-
   - `[output]` 2D integer array
   
    The black and white pixels in each row.
+  -/
 
 vc-preamble: |-
 

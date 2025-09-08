@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   After learning a lot about space exploration, a little girl named Ana wants to change the subject.
   
   Ana is a girl who loves palindromes (string that can be read the same backwards as forward). She has learned how to check for a given string whether it's a palindrome or not, but soon she grew tired of this problem, so she came up with a more interesting one and she needs your help to solve it:
@@ -46,6 +47,7 @@ vc-description: |-
   The first example:  aa $+$ bb $\to$ abba. 
   
   The second example:  aab $+$ abcac $=$ aababcac $\to$ aabccbaa aab $+$ aa $=$ aabaa abcac $+$ aa $=$ abcacaa $\to$ aacbcaa dffe $+$ ed $=$ dffeed $\to$ fdeedf dffe $+$ aade $=$ dffeaade $\to$ adfaafde ed $+$ aade $=$ edaade $\to$ aeddea
+  -/
 
 vc-preamble: |-
 
@@ -85,23 +87,23 @@ vc-theorems: |-
     count_palindrome_pairs a_strings = n * (n - 1) / 2 :=
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_palindrome_pairs ["aa", "bb", "cd"]
+  -- #guard_msgs in
+  -- #eval count_palindrome_pairs ["aa", "bb", "cd"]
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval count_palindrome_pairs ["aab", "abcac", "dffe", "ed", "aa", "aade"]
+  -- #guard_msgs in
+  -- #eval count_palindrome_pairs ["aab", "abcac", "dffe", "ed", "aa", "aade"]
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval count_palindrome_pairs ["iw", "ix", "udb", "bg", "oi", "uo", "jsm", "um", "s", "quy", "qo", "bxct", "ng", "rmr", "nu", "ps", "io", "kh", "w", "k"]
+  -- #guard_msgs in
+  -- #eval count_palindrome_pairs ["iw", "ix", "udb", "bg", "oi", "uo", "jsm", "um", "s", "quy", "qo", "bxct", "ng", "rmr", "nu", "ps", "io", "kh", "w", "k"]
 
 vc-postamble: |-
   -- Apps difficulty: competition

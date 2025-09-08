@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an integer, return its base 7 string representation.
   
   Example 1:
@@ -13,6 +14,7 @@ vc-description: |-
   
   Note:
   The input will be in range of [-1e7, 1e7].
+  -/
 
 vc-preamble: |-
 
@@ -47,23 +49,23 @@ vc-theorems: |-
     0 ≤ x → x ≤ 6 → convert_to_base7 x = toString x :=
   sorry
   
-  /--
+  /-
   info: '202'
   -/
-  #guard_msgs in
-  #eval convert_to_base7 100
+  -- #guard_msgs in
+  -- #eval convert_to_base7 100
   
-  /--
+  /-
   info: '-10'
   -/
-  #guard_msgs in
-  #eval convert_to_base7 -7
+  -- #guard_msgs in
+  -- #eval convert_to_base7 -7
   
-  /--
+  /-
   info: '16'
   -/
-  #guard_msgs in
-  #eval convert_to_base7 13
+  -- #guard_msgs in
+  -- #eval convert_to_base7 13
 
 vc-postamble: |-
   -- Apps difficulty: introductory

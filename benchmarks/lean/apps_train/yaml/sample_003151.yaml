@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A strongness of an even number is the number of times we can successively divide by 2 until we reach an odd number starting with an even number n.
   
   For example, if n = 12, then
@@ -34,6 +35,7 @@ vc-description: |-
   [1, 2]    -->   2  # 1 has strongness 0, 2 has strongness 1
   [5, 10]   -->   8  # 5, 7, 9 have strongness 0; 6, 10 have strongness 1; 8 has strongness 3
   [48, 56]  -->  48
+  -/
 
 vc-preamble: |-
 
@@ -56,23 +58,23 @@ vc-theorems: |-
   theorem small_range_properties (p : Nat) (h : p > 0 ∧ p ≤ 16) :
     strongest_even (2^p) (2^(p+1)) = 2^(p+1) := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval strongest_even 1 2
+  -- #guard_msgs in
+  -- #eval strongest_even 1 2
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval strongest_even 5 10
+  -- #guard_msgs in
+  -- #eval strongest_even 5 10
   
-  /--
+  /-
   info: 48
   -/
-  #guard_msgs in
-  #eval strongest_even 48 56
+  -- #guard_msgs in
+  -- #eval strongest_even 48 56
 
 vc-postamble: |-
   -- Apps difficulty: introductory

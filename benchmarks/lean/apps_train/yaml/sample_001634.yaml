@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Once you complete this kata, there is a [15x15 Version](http://www.codewars.com/kata/15x15-nonogram-solver) that you can try.
   And once you complete that, you can do the [Multisize Version](https://www.codewars.com/kata/5a5519858803853691000069) which goes up to 50x50.
   
@@ -117,6 +118,7 @@ vc-description: |-
   Good Luck!!
   
   If there is anything that is unclear or confusing, just let me know :)
+  -/
 
 vc-preamble: |-
   def find_min_index (lst : List Int) : Int := sorry
@@ -193,23 +195,23 @@ vc-theorems: |-
     (max_idx ≠ -1 → (∃ x, lst.get ⟨max_idx.toNat, sorry⟩ = x ∧ x ∈ lst)) ∧
     (second.isSome → (Option.get! second) ∈ lst) := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval find_second_max [4, 1, 2, 3, 5]
+  -- #guard_msgs in
+  -- #eval find_second_max [4, 1, 2, 3, 5]
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval find_second_max [1, 1, 1, 1, 1]
+  -- #guard_msgs in
+  -- #eval find_second_max [1, 1, 1, 1, 1]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_second_max [1, 2, 3, 3]
+  -- #guard_msgs in
+  -- #eval find_second_max [1, 2, 3, 3]
 
 vc-postamble: |-
   -- Apps difficulty: interview

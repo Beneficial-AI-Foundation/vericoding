@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Taxis of Kharagpur are famous for making sharp turns. You are given the coordinates where a particular taxi was on a 2-D planes at N different moments: (x1, y1), (x2, y2), ..., (xN, yN). In between these coordinates, the taxi moves on a straight line. A turn at the i-th (2 ≤ i ≤ N-1) coordinate is said to be a sharp turn if the angle by which it turns at Point B = (xi, yi) when going from coordinates A = (xi-1, yi-1) to C = (xi+1, yi+1) via (xi, yi) is greater than 45 degrees. ie. suppose you extend the line segment AB further till a point D, then the angle DBC would be greater than 45 degrees.
   You have to identify whether the taxi made a sharp turn somewhere or not (Please look at Output section for details). If it made a sharp turn, also identify whether it is possible to change the coordinates at one of the N moments to make sure that the taxi doesn't make any sharp turn. Note that all the N pairs of coordinates (including the new coordinates) should be integers and distinct and should have their x and y coordinates at least 0 and at most 50.
   
@@ -59,6 +60,7 @@ vc-description: |-
   Example 3
   
   You can see that taxi is making a sharp turn of 90 degrees, an angle greater than 45'. However, you can change the coordinates of the third points to (2, 1) to ensure that the angle remains <= 45'.
+  -/
 
 vc-preamble: |-
 
@@ -103,23 +105,23 @@ vc-theorems: |-
     solveTaxiTurns coords ≠ none →
     ∀ point ∈ coords, ∀ coord ∈ point, 0 ≤ coord ∧ coord ≤ 50 := sorry
   
-  /--
+  /-
   info: 'yes yes'
   -/
-  #guard_msgs in
-  #eval solve_taxi_turns [[0, 0], [1, 1], [2, 1]]
+  -- #guard_msgs in
+  -- #eval solve_taxi_turns [[0, 0], [1, 1], [2, 1]]
   
-  /--
+  /-
   info: 'no yes'
   -/
-  #guard_msgs in
-  #eval solve_taxi_turns [[0, 0], [1, 0], [1, 1]]
+  -- #guard_msgs in
+  -- #eval solve_taxi_turns [[0, 0], [1, 0], [1, 1]]
   
-  /--
+  /-
   info: 'no no'
   -/
-  #guard_msgs in
-  #eval solve_taxi_turns [[0, 0], [1, 0], [1, 1], [2, 1], [2, 2], [3, 2]]
+  -- #guard_msgs in
+  -- #eval solve_taxi_turns [[0, 0], [1, 0], [1, 1], [2, 1], [2, 2], [3, 2]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

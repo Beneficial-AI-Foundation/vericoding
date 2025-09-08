@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   I've got a crazy mental illness.
   I dislike numbers a lot. But it's a little complicated:
   The number I'm afraid of depends on which day of the week it is...
@@ -19,6 +20,7 @@ vc-description: |-
   Sunday     --> 666 or -666
   
   Write a function which takes a string (day of the week) and an integer (number to be tested) so it tells the doctor if I'm afraid or not. (return a boolean)
+  -/
 
 vc-preamble: |-
 
@@ -79,47 +81,47 @@ vc-theorems: |-
     am_I_afraid "Friday" 1 = false :=
     sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval am_I_afraid "Monday" 12
+  -- #guard_msgs in
+  -- #eval am_I_afraid "Monday" 12
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval am_I_afraid "Monday" 13
+  -- #guard_msgs in
+  -- #eval am_I_afraid "Monday" 13
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval am_I_afraid "Friday" 4
+  -- #guard_msgs in
+  -- #eval am_I_afraid "Friday" 4
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval am_I_afraid "Friday" 5
+  -- #guard_msgs in
+  -- #eval am_I_afraid "Friday" 5
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval am_I_afraid "Sunday" 666
+  -- #guard_msgs in
+  -- #eval am_I_afraid "Sunday" 666
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval am_I_afraid "Sunday" -666
+  -- #guard_msgs in
+  -- #eval am_I_afraid "Sunday" -666
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval am_I_afraid "Sunday" 55
+  -- #guard_msgs in
+  -- #eval am_I_afraid "Sunday" 55
 
 vc-postamble: |-
   -- Apps difficulty: introductory

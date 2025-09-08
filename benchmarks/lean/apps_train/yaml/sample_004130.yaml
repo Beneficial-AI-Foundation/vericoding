@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Euler's Method
   
   We want to calculate the shape of an unknown curve which starts at a given point 
@@ -65,6 +66,7 @@ vc-description: |-
   
   Below comparison between approximation (red curve) and exact solution(blue curve) for n=100:
   ![alternative text](http://i.imgur.com/KufSkYEm.png)
+  -/
 
 vc-preamble: |-
 

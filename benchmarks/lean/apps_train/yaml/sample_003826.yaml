@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   An AI has infected a text with a character!! 
   
   This text is now **fully mutated** to this character.
@@ -14,6 +15,7 @@ vc-description: |-
   character   = "z"
   text after  = "zzz"
   ```
+  -/
 
 vc-preamble: |-
 
@@ -51,35 +53,35 @@ vc-theorems: |-
     contamination "" char = "" :=
   sorry
   
-  /--
+  /-
   info: 'zzz'
   -/
-  #guard_msgs in
-  #eval contamination "abc" "z"
+  -- #guard_msgs in
+  -- #eval contamination "abc" "z"
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval contamination "" "z"
+  -- #guard_msgs in
+  -- #eval contamination "" "z"
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval contamination "abc" ""
+  -- #guard_msgs in
+  -- #eval contamination "abc" ""
   
-  /--
+  /-
   info: '&&&&&&&&'
   -/
-  #guard_msgs in
-  #eval contamination "_3ebzgh4" "&"
+  -- #guard_msgs in
+  -- #eval contamination "_3ebzgh4" "&"
   
-  /--
+  /-
   info: '      '
   -/
-  #guard_msgs in
-  #eval contamination "//case" " "
+  -- #guard_msgs in
+  -- #eval contamination "//case" " "
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You get some nested lists. Keeping the original structures, sort only elements (integers) inside of the lists. In other words, sorting the intergers only by swapping their positions. 
   
   ```
@@ -9,6 +10,7 @@ vc-description: |-
   
   Note:
   The structures of the lists are regular (symmetrical) and their depths are 3.
+  -/
 
 vc-preamble: |-
   def List.isSameStructure : List α → List α → Bool

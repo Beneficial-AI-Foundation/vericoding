@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array of unique integers, each integer is strictly greater than 1.
   We make a binary tree using these integers and each number may be used for any number of times.
   Each non-leaf node's value should be equal to the product of the values of it's children.
@@ -16,6 +17,7 @@ vc-description: |-
   
   1 <= A.length <= 1000.
   2 <= A[i] <= 10 ^ 9.
+  -/
 
 vc-preamble: |-
 
@@ -38,23 +40,23 @@ vc-theorems: |-
   theorem numFactoredBinaryTrees_perfect_squares :
     numFactoredBinaryTrees #[2, 4] > 2 := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval numFactoredBinaryTrees #[2, 4]
+  -- #guard_msgs in
+  -- #eval numFactoredBinaryTrees #[2, 4]
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval numFactoredBinaryTrees #[2, 4, 5, 10]
+  -- #guard_msgs in
+  -- #eval numFactoredBinaryTrees #[2, 4, 5, 10]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval numFactoredBinaryTrees #[2, 3]
+  -- #guard_msgs in
+  -- #eval numFactoredBinaryTrees #[2, 3]
 
 vc-postamble: |-
   -- Apps difficulty: interview

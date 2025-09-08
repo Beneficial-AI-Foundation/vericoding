@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Due to another of his misbehaved, 
   the primary school's teacher of the young Gauß,  Herr J.G. Büttner, to keep the bored and unruly young schoolboy Karl Friedrich Gauss busy for a good long time, while he teaching arithmetic to his mates,
   assigned him the problem of adding up all the whole numbers from 1 through a given number `n`.
@@ -20,6 +21,7 @@ vc-description: |-
   -----
   
   **Credits:** this kata was inspired by the farzher's kata 'Sum of large ints' . In fact, it can be seen as a sort of prep kata for that one.
+  -/
 
 vc-preamble: |-
 
@@ -56,23 +58,23 @@ vc-theorems: |-
   theorem handles_large_inputs (n : Nat) :
     f n ≠ none → ∃ m : Nat, f n = some m ∧ m > 0 := sorry
   
-  /--
+  /-
   info: 5050
   -/
-  #guard_msgs in
-  #eval f 100
+  -- #guard_msgs in
+  -- #eval f 100
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval f 0
+  -- #guard_msgs in
+  -- #eval f 0
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval f 3.14
+  -- #guard_msgs in
+  -- #eval f 3.14
 
 vc-postamble: |-
   -- Apps difficulty: introductory

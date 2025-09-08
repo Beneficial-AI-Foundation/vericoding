@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef Tobby is playing a rapid fire with Bhuvan. He gives Bhuvan a string S and each time, Bhuvan has to guess whether there exists 2 equal subsequences in the string or not.
   Bhuvan got a perfect score in the game with Chef Tobby. However, Chef Tobby has now asked Bhuvan to write a program that will do this automatically given a string S. Bhuvan is an intelligent man but he does not know how to write a code. Can you help him?
   Find two different subsequences such that they are equal in their value, more formally, find two sequences of indices (a1, a2, ..., ak-1, ak) and (b1, b2, ..., bk-1, bk) such that:
@@ -37,6 +38,7 @@ vc-description: |-
   -----Explanation-----
   In test case 2, one of the possible equal subsequence is "vi" and "vi". (one at position {0, 3} and other at {4, 7}, assuming 0-based indexing).
   In test case 4, one of the possible equal subsequence is "ce" and "ce". (one at position {0, 3} and other at {4, 6}, assuming 0-based indexing).
+  -/
 
 vc-preamble: |-
 
@@ -61,29 +63,29 @@ vc-theorems: |-
   theorem has_equal_subsequences_empty_or_single_no (s: String) :
     s.length ≤ 1 → has_equal_subsequences s = "no" := sorry
   
-  /--
+  /-
   info: 'no'
   -/
-  #guard_msgs in
-  #eval has_equal_subsequences "likecs"
+  -- #guard_msgs in
+  -- #eval has_equal_subsequences "likecs"
   
-  /--
+  /-
   info: 'yes'
   -/
-  #guard_msgs in
-  #eval has_equal_subsequences "venivedivici"
+  -- #guard_msgs in
+  -- #eval has_equal_subsequences "venivedivici"
   
-  /--
+  /-
   info: 'no'
   -/
-  #guard_msgs in
-  #eval has_equal_subsequences "bhuvan"
+  -- #guard_msgs in
+  -- #eval has_equal_subsequences "bhuvan"
   
-  /--
+  /-
   info: 'yes'
   -/
-  #guard_msgs in
-  #eval has_equal_subsequences "codechef"
+  -- #guard_msgs in
+  -- #eval has_equal_subsequences "codechef"
 
 vc-postamble: |-
   -- Apps difficulty: interview

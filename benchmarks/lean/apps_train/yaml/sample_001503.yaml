@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Anas is playing an amazing game on a grid with $N$ rows and $M$ columns. The rows are numbered $1$ through $N$ from top to bottom and the columns are numbered $1$ through $M$ from left to right.
   Anas wants to destroy this grid. To do that, he wants to send two heroes from the top left cell to the bottom right cell:
   - The first hero visits cells in row-major order: $(1,1) \rightarrow (1,2) \rightarrow \ldots \rightarrow (1,M) \rightarrow (2,1) \rightarrow (2,2) \rightarrow \ldots \rightarrow (2,M) \rightarrow \ldots \rightarrow (N,M)$.
@@ -39,6 +40,7 @@ vc-description: |-
   - $K = 3$: The first hero will destroy the cells $[(1,1), (2,2)]$, while the second one will destroy the cells $[(1,1), (1,3)]$.
   - $K = 4$: The first hero will destroy the cells $[(1,1), (2,3)]$ and the second one will also destroy the cells $[(1,1), (2,3)]$.
   - $K = 5$ : The first hero will destroy the cell $(1,1)$ and the second one will also destroy the cell $(1,1)$.
+  -/
 
 vc-preamble: |-
   def solve (n m : Nat) : List Nat := sorry

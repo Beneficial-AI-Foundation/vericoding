@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    You are implementing your own HTML editor. To make it more comfortable for developers you would like to add an auto-completion feature to it.
   
@@ -15,6 +16,7 @@ vc-description: |-
    - `[input]` string `startTag`/`start_tag`
   
    - `[output]` a string
+  -/
 
 vc-preamble: |-
   def html_end_tag_by_start_tag (start_tag: String) : String :=
@@ -56,23 +58,23 @@ vc-theorems: |-
     ¬(html_end_tag_by_start_tag start_tag).contains ' ' :=
     sorry
   
-  /--
+  /-
   info: '</i>'
   -/
-  #guard_msgs in
-  #eval html_end_tag_by_start_tag "<i>"
+  -- #guard_msgs in
+  -- #eval html_end_tag_by_start_tag "<i>"
   
-  /--
+  /-
   info: '</button>'
   -/
-  #guard_msgs in
-  #eval html_end_tag_by_start_tag "<button type="button" disabled>"
+  -- #guard_msgs in
+  -- #eval html_end_tag_by_start_tag "<button type="button" disabled>"
   
-  /--
+  /-
   info: '</div>'
   -/
-  #guard_msgs in
-  #eval html_end_tag_by_start_tag "<div class="main" id="content" style="width:100px">"
+  -- #guard_msgs in
+  -- #eval html_end_tag_by_start_tag "<div class="main" id="content" style="width:100px">"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

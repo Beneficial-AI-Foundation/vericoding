@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Our Setup
   
   Alice and Bob work in an office. When the workload is light and the boss isn't looking, they often play simple word games for fun. This is one of those days!
@@ -98,6 +99,7 @@ vc-description: |-
   # Enjoy!
   
   If interested, I also have [this kata](https://www.codewars.com/kata/5cb7baa989b1c50014a53333) as well as [this other kata](https://www.codewars.com/kata/5cab471da732b30018968071) to consider solving.
+  -/
 
 vc-preamble: |-
 
@@ -134,23 +136,23 @@ vc-theorems: |-
     mutations (List.replicate 5 "test") (List.replicate 5 "test") "test" 0 = 0 ∨ 
     mutations (List.replicate 5 "test") (List.replicate 5 "test") "test" 0 = 1 := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval mutations ["plat", "rend", "bear", "soar", "mare", "pare", "flap", "neat", "clan", "pore"] ["boar", "clap", "farm", "lend", "near", "peat", "pure", "more", "plan", "soap"] "send" 0
+  -- #guard_msgs in
+  -- #eval mutations ["plat", "rend", "bear", "soar", "mare", "pare", "flap", "neat", "clan", "pore"] ["boar", "clap", "farm", "lend", "near", "peat", "pure", "more", "plan", "soap"] "send" 0
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval mutations alice bob "flip" 1
+  -- #guard_msgs in
+  -- #eval mutations alice bob "flip" 1
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval mutations alice bob "maze" 0
+  -- #guard_msgs in
+  -- #eval mutations alice bob "maze" 0
 
 vc-postamble: |-
   -- Apps difficulty: introductory

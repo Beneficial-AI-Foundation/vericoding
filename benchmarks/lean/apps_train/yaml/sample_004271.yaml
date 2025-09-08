@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Create an identity matrix of the specified size( >= 0).
   
   Some examples:
@@ -16,6 +17,7 @@ vc-description: |-
            [0,0,0,0,1] ]   
   
   ```
+  -/
 
 vc-preamble: |-
 
@@ -44,29 +46,29 @@ vc-theorems: |-
   theorem empty_matrix :
     get_matrix 0 = [] := sorry
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval get_matrix 0
+  -- #guard_msgs in
+  -- #eval get_matrix 0
   
-  /--
+  /-
   info: [[1]]
   -/
-  #guard_msgs in
-  #eval get_matrix 1
+  -- #guard_msgs in
+  -- #eval get_matrix 1
   
-  /--
+  /-
   info: [[1, 0], [0, 1]]
   -/
-  #guard_msgs in
-  #eval get_matrix 2
+  -- #guard_msgs in
+  -- #eval get_matrix 2
   
-  /--
+  /-
   info: [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
   -/
-  #guard_msgs in
-  #eval get_matrix 3
+  -- #guard_msgs in
+  -- #eval get_matrix 3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

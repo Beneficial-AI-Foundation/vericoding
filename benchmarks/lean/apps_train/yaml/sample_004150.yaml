@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Late last night in the Tanner household, ALF was repairing his spaceship so he might get back to Melmac. Unfortunately for him, he forgot to put on the parking brake, and the spaceship took off during repair. Now it's hovering in space.
   
   ALF has the technology to bring the spaceship home if he can lock on to its location.
@@ -38,6 +39,7 @@ vc-description: |-
   80's Kids #8: The Secret World of Alex Mack
   80's Kids #9: Down in Fraggle Rock 
   80's Kids #10: Captain Planet
+  -/
 
 vc-preamble: |-
 
@@ -78,23 +80,23 @@ vc-theorems: |-
   theorem find_spaceship_single_x :
     find_spaceship "X" = Sum.inr (0, 0) := sorry
   
-  /--
+  /-
   info: [7, 2]
   -/
-  #guard_msgs in
-  #eval find_spaceship "..........\n..........\n.......X..\n..........\n.........."
+  -- #guard_msgs in
+  -- #eval find_spaceship "..........\n..........\n.......X..\n..........\n.........."
   
-  /--
+  /-
   info: [0, 0]
   -/
-  #guard_msgs in
-  #eval find_spaceship ".......\nX......."
+  -- #guard_msgs in
+  -- #eval find_spaceship ".......\nX......."
   
-  /--
+  /-
   info: 'Spaceship lost forever.'
   -/
-  #guard_msgs in
-  #eval find_spaceship "........................"
+  -- #guard_msgs in
+  -- #eval find_spaceship "........................"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

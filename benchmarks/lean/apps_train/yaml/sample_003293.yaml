@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Complete the function that counts the number of unique consonants in a string (made up of printable ascii characters).
   
   Consonants are letters used in English other than `"a", "e", "i", "o", "u"`. We will count `"y"` as a consonant.
@@ -17,6 +18,7 @@ vc-description: |-
   "abcdefghijklmnopqrstuvwxyz" ==> 21
   "Count my unique consonants!!" ==> 7
   ```
+  -/
 
 vc-preamble: |-
   def count_consonants (s : List Char) : Nat :=
@@ -64,23 +66,23 @@ vc-theorems: |-
     count_consonants s = n :=
     sorry
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval count_consonants "sillystring"
+  -- #guard_msgs in
+  -- #eval count_consonants "sillystring"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_consonants "aeiou"
+  -- #guard_msgs in
+  -- #eval count_consonants "aeiou"
   
-  /--
+  /-
   info: 21
   -/
-  #guard_msgs in
-  #eval count_consonants "abcdefghijklmnopqrstuvwxyz"
+  -- #guard_msgs in
+  -- #eval count_consonants "abcdefghijklmnopqrstuvwxyz"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

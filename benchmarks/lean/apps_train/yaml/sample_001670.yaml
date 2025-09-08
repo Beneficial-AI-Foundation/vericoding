@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Part of Series 2/3
   
   This kata is part of a series on the Morse code. Make sure you solve the [previous part](/kata/decode-the-morse-code) before you try this one. After you solve this kata, you may move to the [next one](/kata/decode-the-morse-code-for-real).
@@ -39,6 +40,7 @@ vc-description: |-
   Good luck!
   
   After you master this kata, you may try to Decode the Morse code, for real.
+  -/
 
 vc-preamble: |-
   def decodeBits (s : String) : String := sorry
@@ -75,23 +77,23 @@ vc-theorems: |-
     (decodeBits "0" = "") ∧
     (decodeBits "000" = "") := sorry
   
-  /--
+  /-
   info: 'E'
   -/
-  #guard_msgs in
-  #eval decodeMorse decodeBits("1")
+  -- #guard_msgs in
+  -- #eval decodeMorse decodeBits("1")
   
-  /--
+  /-
   info: 'E'
   -/
-  #guard_msgs in
-  #eval decodeMorse decodeBits("111")
+  -- #guard_msgs in
+  -- #eval decodeMorse decodeBits("111")
   
-  /--
+  /-
   info: 'E'
   -/
-  #guard_msgs in
-  #eval decodeMorse decodeBits("111111")
+  -- #guard_msgs in
+  -- #eval decodeMorse decodeBits("111111")
 
 vc-postamble: |-
   -- Apps difficulty: interview

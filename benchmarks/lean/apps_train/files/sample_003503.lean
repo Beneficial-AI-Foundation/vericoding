@@ -1,0 +1,79 @@
+/-
+In this Kata, you will be given a string with brackets and an index of an opening bracket and your task will be to return the index of the matching closing bracket.  Both the input and returned index are 0-based **except in Fortran where it is 1-based**. An opening brace will always have a closing brace. Return `-1` if there is no answer (in Haskell, return `Nothing`; in Fortran, return `0`; in Go, return an error)
+
+### Examples
+
+```python
+solve("((1)23(45))(aB)", 0) = 10 -- the opening brace at index 0 matches the closing brace at index 10
+solve("((1)23(45))(aB)", 1) = 3 
+solve("((1)23(45))(aB)", 2) = -1 -- there is no opening bracket at index 2, so return -1
+solve("((1)23(45))(aB)", 6) = 9
+solve("((1)23(45))(aB)", 11) = 14
+solve("((>)|?(*'))(yZ)", 11) = 14
+```
+
+Input will consist of letters, numbers and special characters, but no spaces. The only brackets will be `(` and `)`. 
+
+More examples in the test cases. 
+
+Good luck!
+
+~~~if:fortran
+*NOTE: In Fortran, you may assume that the input string will not contain any leading/trailing whitespace.*
+~~~
+-/
+
+def solve (s : String) (idx : Nat) : Int := sorry
+
+def has_matching_parens (s : String) : Bool := sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def is_valid_idx (s : String) (idx : Nat) : Bool := sorry
+
+theorem solve_invalid_index {s : String} {idx : Nat} :
+  ¬(is_valid_idx s idx) → solve s idx = -1 := sorry
+
+theorem solve_unmatched_parens {s : String} {idx : Nat} :
+  ¬(has_matching_parens s) → solve s idx = -1 := sorry
+
+theorem solve_valid_result {s : String} {idx : Nat} :
+  (solve s idx ≠ -1) →
+  is_valid_idx s idx ∧
+  (∃ result : Nat, solve s idx = result ∧
+    idx < s.length ∧ result < s.length ∧
+    s.data[idx]! = '(' ∧
+    s.data[result]! = ')' ∧
+    has_matching_parens (String.mk (List.take (result + 1 - idx) (List.drop idx s.data)))) := sorry
+
+theorem solve_all_open_parens {s : String} :
+  (∀ c ∈ s.data, c = '(') →
+  ∀ i : Nat, i < s.length →
+  solve s i = -1 := sorry
+
+theorem solve_all_close_parens {s : String} :
+  (∀ c ∈ s.data, c = ')') →
+  ∀ i : Nat, i < s.length →
+  solve s i = -1 := sorry
+
+/-
+info: 10
+-/
+-- #guard_msgs in
+-- #eval solve "((1)23(45))(aB)" 0
+
+/-
+info: 3
+-/
+-- #guard_msgs in
+-- #eval solve "((1)23(45))(aB)" 1
+
+/-
+info: 28
+-/
+-- #guard_msgs in
+-- #eval solve "(g(At)IO(f)(tM(qk)YF(n)Nr(E)))" 11
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded

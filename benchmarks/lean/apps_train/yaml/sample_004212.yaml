@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You throw a ball vertically upwards with an initial speed `v (in km per hour)`. The height `h` of the ball at each time `t`
   is given by `h = v*t - 0.5*g*t*t` where `g` is Earth's gravity `(g ~ 9.81 m/s**2)`. A device is recording at every **tenth
   of second** the height of the ball.
@@ -15,6 +16,7 @@ vc-description: |-
   # Notes
   - Remember to convert the velocity from km/h to m/s or from m/s in km/h when necessary.
   - The maximum height recorded by the device is not necessarily the maximum height reached by the ball.
+  -/
 
 vc-preamble: |-
 
@@ -40,23 +42,23 @@ vc-theorems: |-
     v₁ > v₂ → v₂ > 0 → max_ball v₁ ≥ max_ball v₂ :=
     sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval max_ball 15
+  -- #guard_msgs in
+  -- #eval max_ball 15
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval max_ball 25
+  -- #guard_msgs in
+  -- #eval max_ball 25
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval max_ball 37
+  -- #guard_msgs in
+  -- #eval max_ball 37
 
 vc-postamble: |-
   -- Apps difficulty: introductory

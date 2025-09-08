@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an integer, if the length of it's digits is a perfect square, return a square block of sqroot(length) * sqroot(length). If not, simply return "Not a perfect square!".
   
   Examples:
@@ -13,6 +14,7 @@ vc-description: |-
   >123123123
   
   Note: 9 digits so 3 squared (3x3 perfect square). 3 digits on each line.
+  -/
 
 vc-preamble: |-
   def squareIt (n : Nat) : String := sorry
@@ -59,23 +61,23 @@ vc-theorems: |-
                   | some first => row = first
     := sorry
   
-  /--
+  /-
   info: '12\n12'
   -/
-  #guard_msgs in
-  #eval square_it 1212
+  -- #guard_msgs in
+  -- #eval square_it 1212
   
-  /--
+  /-
   info: '123\n123\n123'
   -/
-  #guard_msgs in
-  #eval square_it 123123123
+  -- #guard_msgs in
+  -- #eval square_it 123123123
   
-  /--
+  /-
   info: 'Not a perfect square!'
   -/
-  #guard_msgs in
-  #eval square_it 12345
+  -- #guard_msgs in
+  -- #eval square_it 12345
 
 vc-postamble: |-
   -- Apps difficulty: introductory

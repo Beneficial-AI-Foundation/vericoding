@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Now that Chef has finished baking and frosting his cupcakes, it's time to package them. Chef has N cupcakes, and needs to decide how many cupcakes to place in each package. Each package must contain the same number of cupcakes. Chef will choose an integer A between 1 and N, inclusive, and place exactly A cupcakes into each package.  Chef makes as many packages as possible. Chef then gets to eat the remaining cupcakes. Chef enjoys eating cupcakes very much. Help Chef choose the package size A that will let him eat as many cupcakes as possible.
   
   -----Input-----
@@ -25,6 +26,7 @@ vc-description: |-
   -----Explanation-----
   
   In the first test case, there will be no leftover cupcakes regardless of the size Chef chooses, so he chooses the largest possible size.  In the second test case, there will be 2 leftover cupcakes.
+  -/
 
 vc-preamble: |-
 
@@ -49,23 +51,23 @@ vc-theorems: |-
     ∀ k : Nat, k > 0 → k < solve_packaging n → 
       n % k ≤ n % (solve_packaging n) := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve_packaging 2
+  -- #guard_msgs in
+  -- #eval solve_packaging 2
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval solve_packaging 5
+  -- #guard_msgs in
+  -- #eval solve_packaging 5
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval solve_packaging 7
+  -- #guard_msgs in
+  -- #eval solve_packaging 7
 
 vc-postamble: |-
   -- Apps difficulty: interview

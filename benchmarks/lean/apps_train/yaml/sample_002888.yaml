@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this Kata, you will be given a string and your task is to return the most valuable character. The value of a character is the difference between the index of its last occurrence and the index of its first occurrence. Return the character that has the highest value. If there is a tie, return the alphabetically lowest character. `[For Golang return rune]`
   
   All inputs will be lower case. 
@@ -11,6 +12,7 @@ vc-description: |-
   ```
   
   More examples in test cases. Good luck!
+  -/
 
 vc-preamble: |-
   def firstIndex (s: String) (c: Char) : Nat :=
@@ -44,23 +46,23 @@ vc-theorems: |-
     → solve s ≤ c :=
     sorry
   
-  /--
+  /-
   info: 'a'
   -/
-  #guard_msgs in
-  #eval solve "a"
+  -- #guard_msgs in
+  -- #eval solve "a"
   
-  /--
+  /-
   info: 'x'
   -/
-  #guard_msgs in
-  #eval solve "axyzxyz"
+  -- #guard_msgs in
+  -- #eval solve "axyzxyz"
   
-  /--
+  /-
   info: 'a'
   -/
-  #guard_msgs in
-  #eval solve "dcbadcba"
+  -- #guard_msgs in
+  -- #eval solve "dcbadcba"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

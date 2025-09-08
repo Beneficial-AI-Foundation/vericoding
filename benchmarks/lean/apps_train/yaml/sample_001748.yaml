@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array of integers nums, sort the array in ascending order.
   
   Example 1:
@@ -12,6 +13,7 @@ vc-description: |-
   
   1 <= nums.length <= 50000
   -50000 <= nums[i] <= 50000
+  -/
 
 vc-preamble: |-
 
@@ -40,23 +42,23 @@ vc-theorems: |-
     sort_array [] = [] :=
   sorry
   
-  /--
+  /-
   info: [1, 2, 3, 5]
   -/
-  #guard_msgs in
-  #eval sort_array [5, 2, 3, 1]
+  -- #guard_msgs in
+  -- #eval sort_array [5, 2, 3, 1]
   
-  /--
+  /-
   info: [0, 0, 1, 1, 2, 5]
   -/
-  #guard_msgs in
-  #eval sort_array [5, 1, 1, 2, 0, 0]
+  -- #guard_msgs in
+  -- #eval sort_array [5, 1, 1, 2, 0, 0]
   
-  /--
+  /-
   info: [1]
   -/
-  #guard_msgs in
-  #eval sort_array [1]
+  -- #guard_msgs in
+  -- #eval sort_array [1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

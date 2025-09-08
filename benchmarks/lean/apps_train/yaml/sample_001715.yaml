@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A pixmap shall be turned from black to white, turning all pixels to white in the process.  But for optical reasons this shall *not* happen linearly, starting at the top and continuing line by line to the bottom:
   
   ```python
@@ -70,6 +71,7 @@ vc-description: |-
   (2, 0)
   (2, 4)
   ```
+  -/
 
 vc-preamble: |-
 

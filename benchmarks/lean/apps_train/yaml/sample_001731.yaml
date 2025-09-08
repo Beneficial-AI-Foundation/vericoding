@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Create a function that finds the largest palindromic number made from the product of **at least 2** of the given arguments.
   
   ### Notes
@@ -37,6 +38,7 @@ vc-description: |-
   125 * 8      = 1000   -->  1
   15 * 125 * 8 = 15000  -->  5
   ```
+  -/
 
 vc-preamble: |-
   def largest_palindrom_from (n : Nat) : Nat := sorry

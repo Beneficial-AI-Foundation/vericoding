@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Little kids, Jack and Evan like playing their favorite game Glass-and-Stone. Today they want to play something new and came across Twitter on their father's laptop.
   
   They saw it for the first time but were already getting bored to see a bunch of sentences having at most 140 characters each. The only thing they liked to play with it is, closing and opening tweets.
@@ -49,6 +50,7 @@ vc-description: |-
   CLOSEALL : { 0, 0, 0 }, open count = 0
   
   CLICK 1 : { 1, 0, 0 }, open count = 1
+  -/
 
 vc-preamble: |-
   def solve_tweet_clicks (n : Nat) (clicks : List String) : List Nat := sorry
@@ -77,23 +79,23 @@ vc-theorems: |-
     clicks.get ⟨i, h⟩ = "CLOSEALL" → 
     (solve_tweet_clicks n clicks).get ⟨i, by rw [output_length_matches_input h1 h2 h3]; exact h⟩ = 0 := sorry
   
-  /--
+  /-
   info: [1, 2, 3, 2, 0, 1]
   -/
-  #guard_msgs in
-  #eval solve_tweet_clicks 3 ["CLICK 1", "CLICK 2", "CLICK 3", "CLICK 2", "CLOSEALL", "CLICK 1"]
+  -- #guard_msgs in
+  -- #eval solve_tweet_clicks 3 ["CLICK 1", "CLICK 2", "CLICK 3", "CLICK 2", "CLOSEALL", "CLICK 1"]
   
-  /--
+  /-
   info: [1, 2, 0]
   -/
-  #guard_msgs in
-  #eval solve_tweet_clicks 2 ["CLICK 1", "CLICK 2", "CLOSEALL"]
+  -- #guard_msgs in
+  -- #eval solve_tweet_clicks 2 ["CLICK 1", "CLICK 2", "CLOSEALL"]
   
-  /--
+  /-
   info: [1, 0, 1]
   -/
-  #guard_msgs in
-  #eval solve_tweet_clicks 4 ["CLICK 1", "CLICK 1", "CLICK 2"]
+  -- #guard_msgs in
+  -- #eval solve_tweet_clicks 4 ["CLICK 1", "CLICK 1", "CLICK 2"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

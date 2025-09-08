@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a weighted graph with $N$ nodes and $M$ edges. Some of the nodes are marked as special nodes. Your task is to find the shortest pairwise distance between any two different special nodes.
   
   -----Input-----
@@ -44,6 +45,7 @@ vc-description: |-
   
   -----Explanation-----
   Nodes $1$, $3$, and $5$ are special nodes. Shortest distance between nodes $1$ and $3$ is $7$, and that between nodes $3$ and $5$ is $9$. Shortest distance between nodes $1$ and $5$ is $16$. Minimum of these distances is $7$. Hence answer is $7$.
+  -/
 
 vc-preamble: |-
 

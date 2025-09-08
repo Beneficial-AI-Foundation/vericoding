@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   I found this interesting interview question just today:
   
   > *8 coins are given where all the coins have equal weight, except one. The odd one weights less than the others, not being of pure gold. In the worst case, how many iterations are actually needed to find the odd one out on a two plates scale*.
@@ -10,6 +11,7 @@ vc-description: |-
   ***Tip:*** being able to think *recursively* might help here :p
   
   ***Note:*** albeit this is more clearly a logical than a coding problem, do not underestimate (or under-rank) the kata for requiring not necessarily wizard-class coding skills: a good coder is a master of pattern recognition and subsequent optimization ;)
+  -/
 
 vc-preamble: |-
   def how_many_measurements (n : Nat) : Nat :=
@@ -44,35 +46,35 @@ vc-theorems: |-
     how_many_measurements 3 = 1 :=
     sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval how_many_measurements 1
+  -- #guard_msgs in
+  -- #eval how_many_measurements 1
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval how_many_measurements 2
+  -- #guard_msgs in
+  -- #eval how_many_measurements 2
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval how_many_measurements 3
+  -- #guard_msgs in
+  -- #eval how_many_measurements 3
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval how_many_measurements 8
+  -- #guard_msgs in
+  -- #eval how_many_measurements 8
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval how_many_measurements 100
+  -- #guard_msgs in
+  -- #eval how_many_measurements 100
 
 vc-postamble: |-
   -- Apps difficulty: introductory

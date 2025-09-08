@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Scheduling is how the processor decides which jobs (processes) get to use the processor and for how long. This can cause a lot of problems. Like a really long process taking the entire CPU and freezing all the other processes. One solution is Round-Robin, which today you will be implementing.
   
   Round-Robin works by queuing jobs in a First In First Out fashion, but the processes are only given a short slice of time. If a processes is not finished in that time slice, it yields the proccessor and goes to the back of the queue.
@@ -36,6 +37,7 @@ vc-description: |-
   ```
   
   **You can assume that the processor can switch jobs between cc so it does not add to the total time.
+  -/
 
 vc-preamble: |-
 
@@ -60,23 +62,23 @@ vc-theorems: |-
   theorem roundRobin_single_job {job : Nat} {slice : Nat} :
     roundRobin [job] slice 0 = job := by sorry
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval roundRobin [10] 4 0
+  -- #guard_msgs in
+  -- #eval roundRobin [10] 4 0
   
-  /--
+  /-
   info: 15
   -/
-  #guard_msgs in
-  #eval roundRobin [10, 20] 5 0
+  -- #guard_msgs in
+  -- #eval roundRobin [10, 20] 5 0
   
-  /--
+  /-
   info: 11
   -/
-  #guard_msgs in
-  #eval roundRobin [10, 20, 1, 2, 3] 5 2
+  -- #guard_msgs in
+  -- #eval roundRobin [10, 20, 1, 2, 3] 5 2
 
 vc-postamble: |-
   -- Apps difficulty: introductory

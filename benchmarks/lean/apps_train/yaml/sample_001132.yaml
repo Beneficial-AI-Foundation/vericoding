@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Roger recently built a circular race track with length K$K$. After hosting a few races, he realised that people do not come there to see the race itself, they come to see racers crash into each other (what's wrong with our generation…). After this realisation, Roger decided to hold a different kind of "races": he hired N$N$ racers (numbered 1$1$ through N$N$) whose task is to crash into each other.
   At the beginning, for each valid i$i$, the i$i$-th racer is Xi$X_i$ metres away from the starting point of the track (measured in the clockwise direction) and driving in the direction Di$D_i$ (clockwise or counterclockwise). All racers move with the constant speed 1$1$ metre per second. The lengths of cars are negligible, but the track is only wide enough for one car, so whenever two cars have the same position along the track, they crash into each other and the direction of movement of each of these cars changes (from clockwise to counterclockwise and vice versa). The cars do not change the directions of their movement otherwise.
   Since crashes reduce the lifetime of the racing cars, Roger sometimes wonders how many crashes happen. You should answer Q$Q$ queries. In each query, you are given an integer T$T$ and you should find the number of crashes that happen until T$T$ seconds have passed (inclusive).
@@ -35,6 +36,7 @@ vc-description: |-
   4
   10
   110
+  -/
 
 vc-preamble: |-
 

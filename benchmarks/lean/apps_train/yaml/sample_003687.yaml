@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   If we alternate the vowels and consonants in the string `"have"`, we get the following list, arranged alphabetically:
   `['ahev', 'aveh', 'ehav', 'evah', 'vahe', 'veha']`. These are the only possibilities in which vowels and consonants are alternated. The first element, `ahev`, is alphabetically lowest. 
   
@@ -28,6 +29,7 @@ vc-description: |-
   [Consonant value](https://www.codewars.com/kata/59c633e7dcc4053512000073)
   
   [Alternate capitalization](https://www.codewars.com/kata/59cfc000aeb2844d16000075)
+  -/
 
 vc-preamble: |-
   def isVowel (c : Char) : Bool :=
@@ -57,23 +59,23 @@ vc-theorems: |-
         isVowel (result.get pos) ≠ isVowel (result.get pos') :=
     sorry
   
-  /--
+  /-
   info: 'ajav'
   -/
-  #guard_msgs in
-  #eval solve "java"
+  -- #guard_msgs in
+  -- #eval solve "java"
   
-  /--
+  /-
   info: 'edorur'
   -/
-  #guard_msgs in
-  #eval solve "oruder"
+  -- #guard_msgs in
+  -- #eval solve "oruder"
   
-  /--
+  /-
   info: 'failed'
   -/
-  #guard_msgs in
-  #eval solve "codewars"
+  -- #guard_msgs in
+  -- #eval solve "codewars"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a method that returns true if a given parameter is a power of 4, and false if it's not. If parameter is not an Integer (eg String, Array) method should return false as well.
   
   (In C# Integer means all integer Types like Int16,Int32,.....)
@@ -10,6 +11,7 @@ vc-description: |-
   isPowerOf4  102 #should return False
   isPowerOf4   64 #should return True
   ```
+  -/
 
 vc-preamble: |-
 
@@ -39,23 +41,23 @@ vc-theorems: |-
   theorem powerof4_other_types_false (x : Unit ⊕ List Nat ⊕ Array Nat) :
     powerof4 x = false := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval powerof4 4
+  -- #guard_msgs in
+  -- #eval powerof4 4
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval powerof4 40
+  -- #guard_msgs in
+  -- #eval powerof4 40
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval powerof4 "pippi"
+  -- #guard_msgs in
+  -- #eval powerof4 "pippi"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

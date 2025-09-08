@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Lee was cleaning his house for the party when he found a messy string under the carpets. Now he'd like to make it clean accurately and in a stylish way...
   
   The string $s$ he found is a binary string of length $n$ (i. e. string consists only of 0-s and 1-s).
@@ -57,6 +58,7 @@ vc-description: |-
   In the second test case, Lee should erase $s_2$.
   
   In the third test case, Lee can make moves, for example, in the following order: 11001101 $\rightarrow$ 1100101 $\rightarrow$ 110101 $\rightarrow$ 10101 $\rightarrow$ 1101 $\rightarrow$ 101 $\rightarrow$ 01.
+  -/
 
 vc-preamble: |-
   def clean_binary_string (n : Nat) (s : String) : String := sorry
@@ -89,23 +91,23 @@ vc-theorems: |-
   theorem clean_reduces_to_minimal (n : Nat) :
     clean_binary_string 6 "100110" = "0" := sorry
   
-  /--
+  /-
   info: '0001111111'
   -/
-  #guard_msgs in
-  #eval clean_binary_string 10 "0001111111"
+  -- #guard_msgs in
+  -- #eval clean_binary_string 10 "0001111111"
   
-  /--
+  /-
   info: '001'
   -/
-  #guard_msgs in
-  #eval clean_binary_string 4 "0101"
+  -- #guard_msgs in
+  -- #eval clean_binary_string 4 "0101"
   
-  /--
+  /-
   info: '01'
   -/
-  #guard_msgs in
-  #eval clean_binary_string 8 "11001101"
+  -- #guard_msgs in
+  -- #eval clean_binary_string 8 "11001101"
 
 vc-postamble: |-
   -- Apps difficulty: interview

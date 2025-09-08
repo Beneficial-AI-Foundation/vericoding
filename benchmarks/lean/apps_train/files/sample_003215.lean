@@ -1,0 +1,46 @@
+/-
+Is the number even?
+
+If the numbers is even return `true`. If it's odd, return `false`. 
+
+Oh yeah... the following symbols/commands have been disabled!
+
+ use of ```%```
+ use of ```.even?``` in Ruby
+ use of ```mod``` in Python
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def is_even (n : Int) : Bool := sorry
+
+theorem is_even_divisible_by_2 (n : Int) :
+  is_even n = (n % 2 = 0) := sorry
+
+theorem is_even_plus_2 (n : Int) :
+  is_even n = is_even (n + 2) := sorry
+
+theorem is_even_neighbor (n : Int) :
+  is_even n ≠ is_even (n + 1) := sorry
+
+/-
+info: True
+-/
+-- #guard_msgs in
+-- #eval is_even 2
+
+/-
+info: False
+-/
+-- #guard_msgs in
+-- #eval is_even 3
+
+/-
+info: True
+-/
+-- #guard_msgs in
+-- #eval is_even 14
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

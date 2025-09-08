@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There is a universal library, where there is a big waiting room with seating capacity for maximum $m$ people, each of whom completes reading $n$ books sequentially. Reading each book requires one unit of time. 
   Unfortunately, reading service is provided sequentially. After all of the $m$ people enter the library, the entrance gate is closed. There is only one reading table. So when someone reads, others have to wait in the waiting room. 
   At first everybody chooses $n$ books they want to read. It takes $x$ amount of time. People can choose books simultaneously. Then they enter the waiting room. After reading $n$ books the person leaves the library immediately. 
@@ -31,6 +32,7 @@ vc-description: |-
   For 2nd person,
   $t=32$ and he/she gives $\left \lfloor \frac{32-11}{2} \right \rfloor= 10$ units of money.
   So, total units of money $= 5+10 = 15$
+  -/
 
 vc-preamble: |-
 
@@ -81,41 +83,41 @@ vc-theorems: |-
       min (days_late * fee_per_day) max_fee :=
     sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval calculate_library_fees 0 0 0
+  -- #guard_msgs in
+  -- #eval calculate_library_fees 0 0 0
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval calculate_library_fees 1 10 9
+  -- #guard_msgs in
+  -- #eval calculate_library_fees 1 10 9
   
-  /--
+  /-
   info: 40
   -/
-  #guard_msgs in
-  #eval calculate_library_fees 2 100 20
+  -- #guard_msgs in
+  -- #eval calculate_library_fees 2 100 20
   
-  /--
+  /-
   info: 30
   -/
-  #guard_msgs in
-  #eval calculate_library_fees 5 30 10
+  -- #guard_msgs in
+  -- #eval calculate_library_fees 5 30 10
   
-  /--
+  /-
   info: 20
   -/
-  #guard_msgs in
-  #eval calculate_library_fees 10 50 2
+  -- #guard_msgs in
+  -- #eval calculate_library_fees 10 50 2
   
-  /--
+  /-
   info: 15
   -/
-  #guard_msgs in
-  #eval calculate_library_fees 3 15 7
+  -- #guard_msgs in
+  -- #eval calculate_library_fees 3 15 7
 
 vc-postamble: |-
   -- Apps difficulty: interview

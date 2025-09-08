@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   This kata aims to show the vulnerabilities of hashing functions for short messages.
   
   When provided with a SHA-256 hash, return the value that was hashed. You are also given the characters that make the expected value, but in alphabetical order.
@@ -13,6 +14,7 @@ vc-description: |-
   Example arguments: '5694d08a2e53ffcae0c3103e5ad6f6076abd960eb1f8a56577040bc1028f702b', 'cdeo'
   Correct output: 'code'
   ```
+  -/
 
 vc-preamble: |-
   def sha256_cracker (h: String) (chars: String) : Option String :=
@@ -50,17 +52,17 @@ vc-theorems: |-
     sha256_cracker h "" = none :=
   sorry
   
-  /--
+  /-
   info: 'GoOutside'
   -/
-  #guard_msgs in
-  #eval sha256_cracker "b8c49d81cb795985c007d78379e98613a4dfc824381be472238dbd2f974e37ae" "deGioOstu"
+  -- #guard_msgs in
+  -- #eval sha256_cracker "b8c49d81cb795985c007d78379e98613a4dfc824381be472238dbd2f974e37ae" "deGioOstu"
   
-  /--
+  /-
   info: 'code'
   -/
-  #guard_msgs in
-  #eval sha256_cracker "5694d08a2e53ffcae0c3103e5ad6f6076abd960eb1f8a56577040bc1028f702b" "cdeo"
+  -- #guard_msgs in
+  -- #eval sha256_cracker "5694d08a2e53ffcae0c3103e5ad6f6076abd960eb1f8a56577040bc1028f702b" "cdeo"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

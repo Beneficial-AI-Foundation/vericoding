@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The n-queens puzzle is the problem of placing n queens on an n×n chessboard such that no two queens attack each other.
   
   Given an integer n, return all distinct solutions to the n-queens puzzle.
@@ -20,6 +21,7 @@ vc-description: |-
     ".Q.."]
   ]
   Explanation: There exist two distinct solutions to the 4-queens puzzle as shown above.
+  -/
 
 vc-preamble: |-
   def check (p1 p2: (Nat × Nat)) : Bool := sorry
@@ -64,23 +66,23 @@ vc-theorems: |-
   theorem handle_nonpositive_size :
     solveNQueens 0 = [] := sorry
   
-  /--
+  /-
   info: [['Q']]
   -/
-  #guard_msgs in
-  #eval solveNQueens 1
+  -- #guard_msgs in
+  -- #eval solveNQueens 1
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval solveNQueens 4
+  -- #guard_msgs in
+  -- #eval solveNQueens 4
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval solveNQueens 2
+  -- #guard_msgs in
+  -- #eval solveNQueens 2
 
 vc-postamble: |-
   -- Apps difficulty: interview

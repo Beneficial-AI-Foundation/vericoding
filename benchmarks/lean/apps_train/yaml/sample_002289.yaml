@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The round carousel consists of $n$ figures of animals. Figures are numbered from $1$ to $n$ in order of the carousel moving. Thus, after the $n$-th figure the figure with the number $1$ follows. Each figure has its own type — the type of the animal corresponding to this figure (the horse, the tiger and so on). The type of animal of the $i$-th figure equals $t_i$. [Image] The example of the carousel for $n=9$ and $t=[5, 5, 1, 15, 1, 5, 5, 1, 1]$. 
   
   You want to color each figure in one of the colors. You think that it's boring if the carousel contains two different figures (with the distinct types of animals) going one right after another and colored in the same color.
@@ -46,6 +47,7 @@ vc-description: |-
   2 3 2 3 1
   1
   1 1 1
+  -/
 
 vc-preamble: |-
 
@@ -85,17 +87,17 @@ vc-theorems: |-
     result.colorCount = 2 ∧ result.colors.length = n :=
     sorry
   
-  /--
+  /-
   info: n1
   -/
-  #guard_msgs in
-  #eval len colors1
+  -- #guard_msgs in
+  -- #eval len colors1
   
-  /--
+  /-
   info: n2
   -/
-  #guard_msgs in
-  #eval len colors2
+  -- #guard_msgs in
+  -- #eval len colors2
 
 vc-postamble: |-
   -- Apps difficulty: introductory

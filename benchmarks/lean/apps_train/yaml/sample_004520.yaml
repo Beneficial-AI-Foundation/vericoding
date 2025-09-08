@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You're going on a trip with some students and it's up to you to keep track of how much money each Student has. A student is defined like this:
   
   ```python
@@ -16,6 +17,7 @@ vc-description: |-
   * Each student will have a unique name
   * There will always be a clear winner: either one person has the most, or everyone has the same amount
   * If there is only one student, then that student has the most money
+  -/
 
 vc-preamble: |-
   def total_money (s : Student) : Nat :=
@@ -50,23 +52,23 @@ vc-theorems: |-
     result ≠ "all" → result = max_student.name :=
   sorry
   
-  /--
+  /-
   info: 'Phil'
   -/
-  #guard_msgs in
-  #eval most_money [phil]
+  -- #guard_msgs in
+  -- #eval most_money [phil]
   
-  /--
+  /-
   info: 'Phil'
   -/
-  #guard_msgs in
-  #eval most_money [cameron, geoff, phil]
+  -- #guard_msgs in
+  -- #eval most_money [cameron, geoff, phil]
   
-  /--
+  /-
   info: 'all'
   -/
-  #guard_msgs in
-  #eval most_money [andy, stephen, eric]
+  -- #guard_msgs in
+  -- #eval most_money [andy, stephen, eric]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

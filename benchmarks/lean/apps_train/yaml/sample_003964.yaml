@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your task is to write an update for a lottery machine. Its current version produces a sequence of random letters and integers (passed as a string to the function). Your code must filter out all letters and return **unique** integers as a string, in their order of first appearance. If there are no integers in the string return `"One more run!"`
   
   ## Examples
@@ -8,6 +9,7 @@ vc-description: |-
   "ynMAisVpHEqpqHBqTrwH"  -->  "One more run!"
   "555"                   -->  "5"
   ```
+  -/
 
 vc-preamble: |-
 
@@ -42,23 +44,23 @@ vc-theorems: |-
       result.all Char.isDigit ∧ 
       result.toList.length = (dedup result.toList).length := by sorry
   
-  /--
+  /-
   info: '805'
   -/
-  #guard_msgs in
-  #eval lottery "wQ8Hy0y5m5oshQPeRCkG"
+  -- #guard_msgs in
+  -- #eval lottery "wQ8Hy0y5m5oshQPeRCkG"
   
-  /--
+  /-
   info: 'One more run!'
   -/
-  #guard_msgs in
-  #eval lottery "ffaQtaRFKeGIIBIcSJtg"
+  -- #guard_msgs in
+  -- #eval lottery "ffaQtaRFKeGIIBIcSJtg"
   
-  /--
+  /-
   info: '5'
   -/
-  #guard_msgs in
-  #eval lottery "555"
+  -- #guard_msgs in
+  -- #eval lottery "555"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

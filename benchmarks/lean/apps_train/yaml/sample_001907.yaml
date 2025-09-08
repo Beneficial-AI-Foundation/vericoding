@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given an array of distinct positive integers locations where locations[i] represents the position of city i. You are also given integers start, finish and fuel representing the starting city, ending city, and the initial amount of fuel you have, respectively.
   At each step, if you are at city i, you can pick any city j such that j != i and 0 <= j < locations.length and move to city j. Moving from city i to city j reduces the amount of fuel you have by |locations[i] - locations[j]|. Please notice that |x| denotes the absolute value of x.
   Notice that fuel cannot become negative at any point in time, and that you are allowed to visit any city more than once (including start and finish).
@@ -44,6 +45,7 @@ vc-description: |-
   All integers in locations are distinct.
   0 <= start, finish < locations.length
   1 <= fuel <= 200
+  -/
 
 vc-preamble: |-
 
@@ -103,23 +105,23 @@ vc-theorems: |-
     count_routes locations start finish fuel1 ≤ 
     count_routes locations start finish fuel2 := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval count_routes [2, 3, 6, 8, 4] 1 3 5
+  -- #guard_msgs in
+  -- #eval count_routes [2, 3, 6, 8, 4] 1 3 5
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval count_routes [4, 3, 1] 1 0 6
+  -- #guard_msgs in
+  -- #eval count_routes [4, 3, 1] 1 0 6
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_routes [5, 2, 1] 0 2 3
+  -- #guard_msgs in
+  -- #eval count_routes [5, 2, 1] 0 2 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

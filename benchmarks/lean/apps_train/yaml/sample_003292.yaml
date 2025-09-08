@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Complete the  function `scramble(str1, str2)` that returns `true` if a portion of ```str1``` characters can be rearranged to match ```str2```, otherwise returns ```false```.
   
   **Notes:**
@@ -12,6 +13,7 @@ vc-description: |-
   scramble('cedewaraaossoqqyt', 'codewars') ==> True
   scramble('katas', 'steak') ==> False
   ```
+  -/
 
 vc-preamble: |-
   def scramble (s1 s2 : String) : Bool :=
@@ -67,23 +69,23 @@ vc-theorems: |-
     scramble s1 s2 = false :=
     sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval scramble "rkqodlw" "world"
+  -- #guard_msgs in
+  -- #eval scramble "rkqodlw" "world"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval scramble "cedewaraaossoqqyt" "codewars"
+  -- #guard_msgs in
+  -- #eval scramble "cedewaraaossoqqyt" "codewars"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval scramble "katas" "steak"
+  -- #guard_msgs in
+  -- #eval scramble "katas" "steak"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

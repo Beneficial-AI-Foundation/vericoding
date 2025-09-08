@@ -1,0 +1,75 @@
+/-
+For an integer n, we call k>=2 a good base of n, if all digits of n base k are 1.
+Now given a string representing n, you should return the smallest good base of n in string format. 
+
+Example 1:
+
+Input: "13"
+Output: "3"
+Explanation: 13 base 3 is 111.
+
+Example 2:
+
+Input: "4681"
+Output: "8"
+Explanation: 4681 base 8 is 11111.
+
+Example 3:
+
+Input: "1000000000000000000"
+Output: "999999999999999999"
+Explanation: 1000000000000000000 base 999999999999999999 is 11.
+
+Note:
+
+The range of n is [3, 10^18].
+The string representing n is always valid and will not have leading zeros.
+-/
+
+def log (base n : Nat) : Nat := sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def smallest_good_base (n : String) : String :=
+sorry
+
+theorem smallest_good_base_result_bounds {n : Nat} (h1 : n ≥ (3 : Nat)) (h2 : n ≤ Nat.pow 10 18) :
+  let result := String.toNat! (smallest_good_base (toString n))
+  result ≥ (2 : Nat) ∧ result < n :=
+sorry
+
+theorem smallest_good_base_all_ones {n : Nat} (h1 : n ≥ (3 : Nat)) (h2 : n ≤ Nat.pow 10 18) :
+  let result := String.toNat! (smallest_good_base (toString n))
+  let m := Nat.log result n
+  (Nat.pow result (m+1) - 1)/(result - 1) = n :=
+sorry
+
+theorem smallest_good_base_min_input :
+  smallest_good_base "3" = "2" :=
+sorry
+
+theorem smallest_good_base_power_two_minus_one :
+  smallest_good_base "15" = "2" :=
+sorry
+
+/-
+info: '3'
+-/
+-- #guard_msgs in
+-- #eval smallest_good_base "13"
+
+/-
+info: '8'
+-/
+-- #guard_msgs in
+-- #eval smallest_good_base "4681"
+
+/-
+info: '999999999999999999'
+-/
+-- #guard_msgs in
+-- #eval smallest_good_base "1000000000000000000"
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

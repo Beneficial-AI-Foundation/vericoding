@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## The Story
   Green Lantern's long hours of study and practice with his ring have really paid off -- his skills, focus, and control have improved so much that now he can even use his ring to update and redesign his web site. Earlier today he was focusing his will and a beam from his ring upon the Justice League web server, while intensely brainstorming and visualizing in minute detail different looks and ideas for his web site, and when he finished and reloaded his home page, he was absolutely thrilled to see that among other things it now displayed
   
@@ -57,6 +58,7 @@ vc-description: |-
   "#8FBC8F"   "#8FBC8F"
   "#C71585"   "#C71585"
   ```
+  -/
 
 vc-preamble: |-
 
@@ -93,35 +95,35 @@ vc-theorems: |-
     let result := yellow_be_gone hex
     result.startsWith "#" ∧ result.length = 7 := sorry
   
-  /--
+  /-
   info: 'PaleGreen'
   -/
-  #guard_msgs in
-  #eval yellow_be_gone "lemonchiffon"
+  -- #guard_msgs in
+  -- #eval yellow_be_gone "lemonchiffon"
   
-  /--
+  /-
   info: 'ForestGreen'
   -/
-  #guard_msgs in
-  #eval yellow_be_gone "GOLD"
+  -- #guard_msgs in
+  -- #eval yellow_be_gone "GOLD"
   
-  /--
+  /-
   info: 'LightGreen'
   -/
-  #guard_msgs in
-  #eval yellow_be_gone "pAlEgOlDeNrOd"
+  -- #guard_msgs in
+  -- #eval yellow_be_gone "pAlEgOlDeNrOd"
   
-  /--
+  /-
   info: '#0bb886'
   -/
-  #guard_msgs in
-  #eval yellow_be_gone "#b8860b"
+  -- #guard_msgs in
+  -- #eval yellow_be_gone "#b8860b"
   
-  /--
+  /-
   info: '#C71585'
   -/
-  #guard_msgs in
-  #eval yellow_be_gone "#C71585"
+  -- #guard_msgs in
+  -- #eval yellow_be_gone "#C71585"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

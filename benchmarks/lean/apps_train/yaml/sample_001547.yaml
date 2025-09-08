@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Dreamoon loves summing up something for no reason. One day he obtains two integers a and b occasionally. He wants to calculate the sum of all nice integers. Positive integer x is called nice if $\operatorname{mod}(x, b) \neq 0$ and $\frac{\operatorname{div}(x, b)}{\operatorname{mod}(x, b)} = k$, where k is some integer number in range [1, a].
   
   By $\operatorname{div}(x, y)$ we denote the quotient of integer division of x and y. By $\operatorname{mod}(x, y)$ we denote the remainder of integer division of x and y. You can read more about these operations here: http://goo.gl/AcsXhT.
@@ -31,6 +32,7 @@ vc-description: |-
   For the first sample, there are no nice integers because $\operatorname{mod}(x, 1)$ is always zero.
   
   For the second sample, the set of nice integers is {3, 5}.
+  -/
 
 vc-preamble: |-
 
@@ -54,23 +56,23 @@ vc-theorems: |-
     solve_nice_integers 1 1 = 0 :=
     sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve_nice_integers 1 1
+  -- #guard_msgs in
+  -- #eval solve_nice_integers 1 1
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval solve_nice_integers 2 2
+  -- #guard_msgs in
+  -- #eval solve_nice_integers 2 2
   
-  /--
+  /-
   info: 247750000
   -/
-  #guard_msgs in
-  #eval solve_nice_integers 1000 1000
+  -- #guard_msgs in
+  -- #eval solve_nice_integers 1000 1000
 
 vc-postamble: |-
   -- Apps difficulty: interview

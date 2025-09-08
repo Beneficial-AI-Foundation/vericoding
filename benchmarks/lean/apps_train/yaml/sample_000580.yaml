@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef Ada is building a new restaurant in the following way:
   - First, $N$ points $X_1, X_2, \ldots, X_N$ are chosen on the $x$-axis.
   - Then, $N$ columns (numbered $1$ through $N$) are made. For simplicity, the columns are represented as vertical segments; for each valid $i$, the height of the $i$-th segment is $H_i$.
@@ -34,6 +35,7 @@ vc-description: |-
   27
   
   -----Explanation-----
+  -/
 
 vc-preamble: |-
 
@@ -64,11 +66,11 @@ vc-theorems: |-
     calculate_restaurant_area ((points.map (fun p => (p.1, 0)))) = 0 :=
   sorry
   
-  /--
+  /-
   info: 27
   -/
-  #guard_msgs in
-  #eval calculate_restaurant_area [(1, 1), (2, 2), (3, 3), (4, 4), (5, 5)]
+  -- #guard_msgs in
+  -- #eval calculate_restaurant_area [(1, 1), (2, 2), (3, 3), (4, 4), (5, 5)]
 
 vc-postamble: |-
   -- Apps difficulty: interview

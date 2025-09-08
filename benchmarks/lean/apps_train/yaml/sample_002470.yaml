@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Problem Statement=====
   Kevin and Stuart want to play the 'The Minion Game'.
   
@@ -30,6 +31,7 @@ vc-description: |-
   =====Output Format=====
   Print one line: the name of the winner and their score separated by a space.
   If the game is a draw, print Draw.
+  -/
 
 vc-preamble: |-
   def minion_game (s : String) : String := sorry 
@@ -73,23 +75,23 @@ vc-theorems: |-
     (h₂ : s.all (fun c => c.isUpper ∧ !is_vowel c)) :
     (minion_game s).startsWith "Stuart " := sorry
   
-  /--
+  /-
   info: 'Stuart 12'
   -/
-  #guard_msgs in
-  #eval minion_game "BANANA"
+  -- #guard_msgs in
+  -- #eval minion_game "BANANA"
   
-  /--
+  /-
   info: 'Stuart 6'
   -/
-  #guard_msgs in
-  #eval minion_game "MINE"
+  -- #guard_msgs in
+  -- #eval minion_game "MINE"
   
-  /--
+  /-
   info: 'Kevin 3'
   -/
-  #guard_msgs in
-  #eval minion_game "AE"
+  -- #guard_msgs in
+  -- #eval minion_game "AE"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

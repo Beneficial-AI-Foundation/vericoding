@@ -1,5 +1,7 @@
 vc-description: |-
+  /-
   Complete the function which converts hex number (given as a string) to a decimal number.
+  -/
 
 vc-preamble: |-
 
@@ -21,23 +23,23 @@ vc-theorems: |-
     hex_to_dec s = 0 :=
   sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval hex_to_dec "1"
+  -- #guard_msgs in
+  -- #eval hex_to_dec "1"
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval hex_to_dec "a"
+  -- #guard_msgs in
+  -- #eval hex_to_dec "a"
   
-  /--
+  /-
   info: 16
   -/
-  #guard_msgs in
-  #eval hex_to_dec "10"
+  -- #guard_msgs in
+  -- #eval hex_to_dec "10"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

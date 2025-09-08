@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Esolang Interpreters #2 - Custom Smallfuck Interpreter
   
   ## About this Kata Series
@@ -51,6 +52,7 @@ vc-description: |-
   2. **Esolang Interpreters #2 - Custom Smallfuck Interpreter**
   3. [Esolang Interpreters #3 - Custom Paintfuck Interpreter](http://codewars.com/kata/esolang-interpreters-number-3-custom-paintf-star-star-k-interpreter)
   4. [Esolang Interpreters #4 - Boolfuck Interpreter](http://codewars.com/kata/esolang-interpreters-number-4-boolfuck-interpreter)
+  -/
 
 vc-preamble: |-
 
@@ -89,23 +91,23 @@ vc-theorems: |-
     (interpreter code tape).length = tape.length :=
     sorry
   
-  /--
+  /-
   info: '10101100'
   -/
-  #guard_msgs in
-  #eval interpreter "*" "00101100"
+  -- #guard_msgs in
+  -- #eval interpreter "*" "00101100"
   
-  /--
+  /-
   info: '01001100'
   -/
-  #guard_msgs in
-  #eval interpreter ">*>*" "00101100"
+  -- #guard_msgs in
+  -- #eval interpreter ">*>*" "00101100"
   
-  /--
+  /-
   info: '10101'
   -/
-  #guard_msgs in
-  #eval interpreter "[>[*>*>*>]>]" "10110"
+  -- #guard_msgs in
+  -- #eval interpreter "[>[*>*>*>]>]" "10110"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

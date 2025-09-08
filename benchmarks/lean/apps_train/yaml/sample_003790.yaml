@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a method `alternate_sq_sum()` (JS: `alternateSqSum` ) that takes an array of integers as input and finds the sum of squares of the elements at even positions (*i.e.,* 2nd, 4th, *etc.*) plus the sum of the rest of the elements at odd position.
   
   NOTE:
@@ -21,6 +22,7 @@ vc-description: |-
     = 379
   
   For empty arrays, result should be 0 (zero) (except for Haskell).
+  -/
 
 vc-preamble: |-
 
@@ -42,23 +44,23 @@ vc-theorems: |-
   theorem alternate_sq_sum_singleton (x : Int) :
     alternate_sq_sum [x] = x := sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval alternate_sq_sum []
+  -- #guard_msgs in
+  -- #eval alternate_sq_sum []
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval alternate_sq_sum [-1, 0, -3, 0, -5, 3]
+  -- #guard_msgs in
+  -- #eval alternate_sq_sum [-1, 0, -3, 0, -5, 3]
   
-  /--
+  /-
   info: 379
   -/
-  #guard_msgs in
-  #eval alternate_sq_sum [11, 12, 13, 14, 15]
+  -- #guard_msgs in
+  -- #eval alternate_sq_sum [11, 12, 13, 14, 15]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

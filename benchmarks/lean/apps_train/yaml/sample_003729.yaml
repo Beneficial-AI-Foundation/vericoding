@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You need to write a function that reverses the words in a given string. A word can also fit an empty string. If this is not clear enough, here are some examples:
   
   As the input may have trailing spaces, you will also need to ignore unneccesary whitespace.
@@ -9,6 +10,7 @@ vc-description: |-
   ```
   
   Happy coding!
+  -/
 
 vc-preamble: |-
 
@@ -41,23 +43,23 @@ vc-theorems: |-
   theorem reverse_empty_stays_empty (s : String) :
     s.trim = "" → reverse s = "" := sorry
   
-  /--
+  /-
   info: 'this at expert an am I'
   -/
-  #guard_msgs in
-  #eval reverse "I am an expert at this"
+  -- #guard_msgs in
+  -- #eval reverse "I am an expert at this"
   
-  /--
+  /-
   info: 'easy so is This'
   -/
-  #guard_msgs in
-  #eval reverse "This is so easy"
+  -- #guard_msgs in
+  -- #eval reverse "This is so easy"
   
-  /--
+  /-
   info: 'cares one no'
   -/
-  #guard_msgs in
-  #eval reverse "no one cares"
+  -- #guard_msgs in
+  -- #eval reverse "no one cares"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

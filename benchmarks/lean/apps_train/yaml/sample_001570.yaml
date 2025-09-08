@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   If n is the numerator and d the denominator of a fraction, that fraction is defined a (reduced) proper fraction if and only if GCD(n,d)==1.
   
   For example `5/16` is a proper fraction, while `6/16` is not, as both 6 and 16 are divisible by 2, thus the fraction can be reduced to `3/8`.
@@ -19,6 +20,7 @@ vc-description: |-
   Be ready to handle big numbers.
   
   Edit: to be extra precise, the term should be "reduced" fractions, thanks to [girianshiido](http://www.codewars.com/users/girianshiido) for pointing this out and sorry for the use of an improper word :)
+  -/
 
 vc-preamble: |-
 
@@ -41,23 +43,23 @@ vc-theorems: |-
   theorem proper_fractions_one :
     proper_fractions 1 = 0 := sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval proper_fractions 1
+  -- #guard_msgs in
+  -- #eval proper_fractions 1
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval proper_fractions 15
+  -- #guard_msgs in
+  -- #eval proper_fractions 15
   
-  /--
+  /-
   info: 20
   -/
-  #guard_msgs in
-  #eval proper_fractions 25
+  -- #guard_msgs in
+  -- #eval proper_fractions 25
 
 vc-postamble: |-
   -- Apps difficulty: interview

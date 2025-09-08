@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The factorial of a number, `n!`, is defined for whole numbers as the product of all integers from `1` to `n`. 
   
   For example, `5!` is `5 * 4 * 3 * 2 * 1 = 120`
@@ -16,6 +17,7 @@ vc-description: |-
   # Note
   
   Codewars limits the amount of data it will send back and forth, which may introduce a false ceiling for how high of a value of `n` it will accept. All tests use values less than this limit.
+  -/
 
 vc-preamble: |-
 
@@ -52,23 +54,23 @@ vc-theorems: |-
   theorem factorial_increasing {n : Int} :
     n > 1 → (factorial n).get! > (factorial (n-1)).get! := sorry
   
-  /--
+  /-
   info: 120
   -/
-  #guard_msgs in
-  #eval factorial 5
+  -- #guard_msgs in
+  -- #eval factorial 5
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval factorial 0
+  -- #guard_msgs in
+  -- #eval factorial 0
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval factorial -5
+  -- #guard_msgs in
+  -- #eval factorial -5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

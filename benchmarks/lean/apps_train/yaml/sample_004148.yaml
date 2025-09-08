@@ -1,9 +1,11 @@
 vc-description: |-
+  /-
   The function is not returning the correct values. Can you figure out why?
   
   ```python
   get_planet_name(3) # should return 'Earth'
   ```
+  -/
 
 vc-preamble: |-
   def validPlanets : Int → Option String
@@ -37,23 +39,23 @@ vc-theorems: |-
   theorem valid_ids_match_planets : ∀ (id : Int),
     (1 ≤ id ∧ id ≤ 8) → getPlanetName id = validPlanets id := by sorry
   
-  /--
+  /-
   info: 'Venus'
   -/
-  #guard_msgs in
-  #eval get_planet_name 2
+  -- #guard_msgs in
+  -- #eval get_planet_name 2
   
-  /--
+  /-
   info: 'Jupiter'
   -/
-  #guard_msgs in
-  #eval get_planet_name 5
+  -- #guard_msgs in
+  -- #eval get_planet_name 5
   
-  /--
+  /-
   info: 'Earth'
   -/
-  #guard_msgs in
-  #eval get_planet_name 3
+  -- #guard_msgs in
+  -- #eval get_planet_name 3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

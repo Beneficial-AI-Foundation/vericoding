@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string S.
   You have to return another string such that even-indexed and odd-indexed characters of S are grouped and groups are space-separated (see sample below)
   
@@ -26,6 +27,7 @@ vc-description: |-
   And the final string to return is 'Cdwr oeas'
   
   Enjoy.
+  -/
 
 vc-preamble: |-
 
@@ -54,23 +56,23 @@ vc-theorems: |-
     parts.length > 1 → 
     (parts.get? 1).isSome := sorry
   
-  /--
+  /-
   info: 'CdWr oeas'
   -/
-  #guard_msgs in
-  #eval sort_my_string "CodeWars"
+  -- #guard_msgs in
+  -- #eval sort_my_string "CodeWars"
   
-  /--
+  /-
   info: 'ACE BDF'
   -/
-  #guard_msgs in
-  #eval sort_my_string "ABCDEF"
+  -- #guard_msgs in
+  -- #eval sort_my_string "ABCDEF"
   
-  /--
+  /-
   info: 'Wleclgltihuebredrf ofsheesenasnegrof'
   -/
-  #guard_msgs in
-  #eval sort_my_string "Wolfeschlegelsteinhausenbergerdorff"
+  -- #guard_msgs in
+  -- #eval sort_my_string "Wolfeschlegelsteinhausenbergerdorff"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

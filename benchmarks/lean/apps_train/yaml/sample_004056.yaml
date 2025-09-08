@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function groupIn10s which takes any number of arguments, and groups them into sets of 10s and sorts each group in ascending order.
   
   The return value should be an array of arrays, so that numbers between 0-9 inclusive are in position 0 and numbers 10-19 are in position 1, etc. 
@@ -18,6 +19,7 @@ vc-description: |-
   ``` haskell
   groupIn10s [8, 12, 3, 17, 19, 24, 35, 50] `shouldBe`  [[3,8],[12,17,19],[24],[35],[],[50]]
   ```
+  -/
 
 vc-preamble: |-
   def group_in_10s (nums : List Nat) : List (Option (List Nat)) := sorry
@@ -62,11 +64,11 @@ vc-theorems: |-
     (∀ n ∈ nums, n ≤ 99) →
     (group_in_10s nums).length = (listMax nums) / 10 + 1 := sorry
   
-  /--
+  /-
   info: 11
   -/
-  #guard_msgs in
-  #eval len group_in_10s(100)
+  -- #guard_msgs in
+  -- #eval len group_in_10s(100)
 
 vc-postamble: |-
   -- Apps difficulty: introductory

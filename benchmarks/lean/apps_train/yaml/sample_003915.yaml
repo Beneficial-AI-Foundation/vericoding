@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In order to prove it's success and gain funding, the wilderness zoo needs to prove to environmentalists that it has x number of mating pairs of bears. 
   
   You must check within string (s) to find all of the mating pairs, and return a string containing only them. Line them up for inspection.
@@ -17,6 +18,7 @@ vc-description: |-
   (6, 'EvHB8KN8ik8BiyxfeyKBmiCMj') ---> ['B88B', false];
   
   x will always be a positive integer, and s will never be empty
+  -/
 
 vc-preamble: |-
 
@@ -52,23 +54,23 @@ vc-theorems: |-
       |>.length
     numPairs = countValidPairs := sorry
   
-  /--
+  /-
   info: ['B8B8B8', False]
   -/
-  #guard_msgs in
-  #eval bears 7 "8j8mBliB8gimjB8B8jlB"
+  -- #guard_msgs in
+  -- #eval bears 7 "8j8mBliB8gimjB8B8jlB"
   
-  /--
+  /-
   info: ['8BB8B8B88B', True]
   -/
-  #guard_msgs in
-  #eval bears 3 "88Bifk8hB8BB8BBBB888chl8BhBfd"
+  -- #guard_msgs in
+  -- #eval bears 3 "88Bifk8hB8BB8BBBB888chl8BhBfd"
   
-  /--
+  /-
   info: ['8BB88B', True]
   -/
-  #guard_msgs in
-  #eval bears 1 "j8BmB88B88gkBBlf8hg8888lbe88"
+  -- #guard_msgs in
+  -- #eval bears 1 "j8BmB88B88gkBBlf8hg8888lbe88"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your task is to find the first element of an array that is not consecutive.
   
   By not consecutive we mean not exactly 1 larger than the previous element of the array.
@@ -30,6 +31,7 @@ vc-description: |-
   Julia: `nothing`  
   Nim: `none(int)` (See [options](https://nim-lang.org/docs/options.html))
   ```
+  -/
 
 vc-preamble: |-
   def firstNonConsecutive (arr : List Int) : Option Int :=
@@ -73,23 +75,23 @@ vc-theorems: |-
     | some x => x ∈ arr :=
   sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval first_non_consecutive [1, 2, 3, 4, 6, 7, 8]
+  -- #guard_msgs in
+  -- #eval first_non_consecutive [1, 2, 3, 4, 6, 7, 8]
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval first_non_consecutive [1, 2, 3, 4, 5, 6, 7, 8]
+  -- #guard_msgs in
+  -- #eval first_non_consecutive [1, 2, 3, 4, 5, 6, 7, 8]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval first_non_consecutive [-3, -2, 0, 1]
+  -- #guard_msgs in
+  -- #eval first_non_consecutive [-3, -2, 0, 1]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

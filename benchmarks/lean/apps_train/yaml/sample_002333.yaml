@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string which consists of lowercase or uppercase letters, find the length of the longest palindromes that can be built with those letters.
   
   This is case sensitive, for example "Aa" is not considered a palindrome here.
@@ -16,6 +17,7 @@ vc-description: |-
   
   Explanation:
   One longest palindrome that can be built is "dccaccd", whose length is 7.
+  -/
 
 vc-preamble: |-
   def String.freq (s : String) (c : Char) : Nat :=
@@ -49,23 +51,23 @@ vc-theorems: |-
   theorem longest_palindrome_single_space :
     longest_palindrome " " = 1 := sorry
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval longest_palindrome "abccccdd"
+  -- #guard_msgs in
+  -- #eval longest_palindrome "abccccdd"
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval longest_palindrome "ccc"
+  -- #guard_msgs in
+  -- #eval longest_palindrome "ccc"
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval longest_palindrome "Aa"
+  -- #guard_msgs in
+  -- #eval longest_palindrome "Aa"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

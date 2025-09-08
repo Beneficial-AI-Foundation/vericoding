@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string S of lowercase letters, a duplicate removal consists of choosing two adjacent and equal letters, and removing them.
   We repeatedly make duplicate removals on S until we no longer can.
   Return the final string after all such duplicate removals have been made.  It is guaranteed the answer is unique.
@@ -13,6 +14,7 @@ vc-description: |-
   
   1 <= S.length <= 20000
   S consists only of English lowercase letters.
+  -/
 
 vc-preamble: |-
 
@@ -44,23 +46,23 @@ vc-theorems: |-
     (∀ c ∈ s.data, ¬ c.isAlpha) →
     remove_duplicates s = s := sorry
   
-  /--
+  /-
   info: 'ca'
   -/
-  #guard_msgs in
-  #eval remove_duplicates "abbaca"
+  -- #guard_msgs in
+  -- #eval remove_duplicates "abbaca"
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval remove_duplicates "aaaaaa"
+  -- #guard_msgs in
+  -- #eval remove_duplicates "aaaaaa"
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval remove_duplicates "abba"
+  -- #guard_msgs in
+  -- #eval remove_duplicates "abba"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Let's just place tokens on a connect four board.
   
   ** INPUT **
@@ -46,6 +47,7 @@ vc-description: |-
   ```
   
   See test cases for better details.
+  -/
 
 vc-preamble: |-
   def Board := List (List Cell)

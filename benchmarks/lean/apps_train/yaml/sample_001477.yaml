@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   As you know America’s Presidential Elections are about to take place and the most popular leader of the Republican party Donald Trump is famous for throwing allegations against anyone he meets.
   
   He goes to a rally and meets n people which he wants to offend. For each person i he can choose an integer between 1 to max[i].
@@ -38,6 +39,7 @@ vc-description: |-
   In case 1, He can choose any number from 1 to 4
   
   In case 2,Out of the total 50 combination he can not take (1,1) ,(2,2) , (3,3) ,(4,4) or (5,5).
+  -/
 
 vc-preamble: |-
   def MOD := 1000000007
@@ -72,23 +74,23 @@ vc-theorems: |-
     calculate_offense_ways 3 [2, 2, 2] = 0 :=
   sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval calculate_offense_ways 1 [4]
+  -- #guard_msgs in
+  -- #eval calculate_offense_ways 1 [4]
   
-  /--
+  /-
   info: 45
   -/
-  #guard_msgs in
-  #eval calculate_offense_ways 2 [10, 5]
+  -- #guard_msgs in
+  -- #eval calculate_offense_ways 2 [10, 5]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval calculate_offense_ways 4 [2, 3, 1, 3]
+  -- #guard_msgs in
+  -- #eval calculate_offense_ways 4 [2, 3, 1, 3]
 
 vc-postamble: |-
   -- Apps difficulty: interview

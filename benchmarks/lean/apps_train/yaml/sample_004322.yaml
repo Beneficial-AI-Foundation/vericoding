@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Mr. Khalkhoul, an amazing teacher, likes to answer questions sent by his students via e-mail, but he often doesn't have the time to answer all of them. In this kata you will help him by making a program that finds
   some of the answers.
   
@@ -14,6 +15,7 @@ vc-description: |-
   You must also consider the case in which you get no matching words (again, ignoring the case): in such a case return `None/nil/null`.
   
   Mr. Khalkhoul is countin' on you :)
+  -/
 
 vc-preamble: |-
 
@@ -62,23 +64,23 @@ vc-theorems: |-
     answer q [info] = if shares_words then some info else none
     := by sorry
   
-  /--
+  /-
   info: 'no he is NOT'
   -/
-  #guard_msgs in
-  #eval answer "is khalkhoul dumb" ["no he is NOT", "i guess so"]
+  -- #guard_msgs in
+  -- #eval answer "is khalkhoul dumb" ["no he is NOT", "i guess so"]
   
-  /--
+  /-
   info: 'my name is bob'
   -/
-  #guard_msgs in
-  #eval answer "what is your name" ["my name is bob", "i am 20 years old"]
+  -- #guard_msgs in
+  -- #eval answer "what is your name" ["my name is bob", "i am 20 years old"]
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval answer "abc def ghi" ["xyz 123", "foo bar"]
+  -- #guard_msgs in
+  -- #eval answer "abc def ghi" ["xyz 123", "foo bar"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

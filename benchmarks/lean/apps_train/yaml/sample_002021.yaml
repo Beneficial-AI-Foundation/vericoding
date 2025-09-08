@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given an array $a$ consisting of $n$ non-negative integers. You have to choose a non-negative integer $x$ and form a new array $b$ of size $n$ according to the following rule: for all $i$ from $1$ to $n$, $b_i = a_i \oplus x$ ($\oplus$ denotes the operation bitwise XOR).
   
   An inversion in the $b$ array is a pair of integers $i$ and $j$ such that $1 \le i < j \le n$ and $b_i > b_j$.
@@ -46,6 +47,7 @@ vc-description: |-
     $i = 2$, $j = 3$;  $i = 2$, $j = 4$;  $i = 3$, $j = 4$;  $i = 8$, $j = 9$. 
   
   In the third sample the selection of $x = 8$ results in $b$: $[0, 2, 11]$. It has no inversions.
+  -/
 
 vc-preamble: |-
 
@@ -82,23 +84,23 @@ vc-theorems: |-
     inv = 0 :=
     sorry
   
-  /--
+  /-
   info: (1, 0)
   -/
-  #guard_msgs in
-  #eval solve_inversions 4 arr1.copy()
+  -- #guard_msgs in
+  -- #eval solve_inversions 4 arr1.copy()
   
-  /--
+  /-
   info: (4, 14)
   -/
-  #guard_msgs in
-  #eval solve_inversions 9 arr2.copy()
+  -- #guard_msgs in
+  -- #eval solve_inversions 9 arr2.copy()
   
-  /--
+  /-
   info: (0, 8)
   -/
-  #guard_msgs in
-  #eval solve_inversions 3 arr3.copy()
+  -- #guard_msgs in
+  -- #eval solve_inversions 3 arr3.copy()
 
 vc-postamble: |-
   -- Apps difficulty: competition

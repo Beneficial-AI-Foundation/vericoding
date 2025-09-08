@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ### Task:
   
   You have to write a function `pattern` which creates the following pattern (See Examples) upto desired number of rows.
@@ -30,6 +31,7 @@ vc-description: |-
   Note: There are no spaces in the pattern
   
   Hint: Use `\n` in string to jump to next line
+  -/
 
 vc-preamble: |-
 

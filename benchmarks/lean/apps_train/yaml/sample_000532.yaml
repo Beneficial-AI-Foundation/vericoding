@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Motu and Patlu are playing with a Magical Ball. Patlu find some interesting pattern in the motion of the ball that ball always bounce back from the ground after travelling a linear distance whose value is some power of $2$. Patlu gave Motu total distance $D$ travelled by the ball and ask him to calculate the minimum number of bounces that the ball makes before coming to rest.
   
   -----Input:-----
@@ -21,6 +22,7 @@ vc-description: |-
   2
   
   -----EXPLANATION:-----
+  -/
 
 vc-preamble: |-
   def count_ball_bounces (n: Nat) : Nat := sorry
@@ -40,23 +42,23 @@ vc-theorems: |-
   theorem non_negative_result (distance : Nat) :
     count_ball_bounces distance ≥ 0 := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_ball_bounces 13
+  -- #guard_msgs in
+  -- #eval count_ball_bounces 13
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_ball_bounces 7
+  -- #guard_msgs in
+  -- #eval count_ball_bounces 7
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_ball_bounces 16
+  -- #guard_msgs in
+  -- #eval count_ball_bounces 16
 
 vc-postamble: |-
   -- Apps difficulty: interview

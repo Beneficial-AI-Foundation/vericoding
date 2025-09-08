@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your job is to write function last_digits(n,d) which return the last `d` digits of an integer `n` as a list.
   `n` will be from 0 to 10^10
   
@@ -17,6 +18,7 @@ vc-description: |-
   If `d` <= 0, then return an empty list.
   
   This is the first kata I have made, so please report any issues.
+  -/
 
 vc-preamble: |-
   def last_digits (n : Nat) (d : Int) : List Nat := sorry
@@ -46,23 +48,23 @@ vc-theorems: |-
   theorem last_digits_full_number (n : Nat) :
     list_to_string (last_digits n ((nat_to_string n).length + 1)) = nat_to_string n := sorry
   
-  /--
+  /-
   info: [1]
   -/
-  #guard_msgs in
-  #eval last_digits 1 1
+  -- #guard_msgs in
+  -- #eval last_digits 1 1
   
-  /--
+  /-
   info: [3, 7, 6, 7]
   -/
-  #guard_msgs in
-  #eval last_digits 123767 4
+  -- #guard_msgs in
+  -- #eval last_digits 123767 4
   
-  /--
+  /-
   info: [1, 3, 4, 3]
   -/
-  #guard_msgs in
-  #eval last_digits 1343 5
+  -- #guard_msgs in
+  -- #eval last_digits 1343 5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

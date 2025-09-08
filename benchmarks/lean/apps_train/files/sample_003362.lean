@@ -1,0 +1,53 @@
+/-
+For every good kata idea there seem to be quite a few bad ones!
+
+In this kata you need to check the provided 2 dimensional array (x) for good ideas 'good' and bad ideas 'bad'. If there are one or two good ideas, return 'Publish!', if there are more than 2 return 'I smell a series!'. If there are no good ideas, as is often the case, return 'Fail!'.
+
+The sub arrays may not be the same length.
+
+The solution should be case insensitive (ie good, GOOD and gOOd all count as a good idea). All inputs may not be strings.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def well (arr: List (List String)) : String := sorry
+
+theorem well_output_is_valid (arr: List (List String)) : 
+  well arr = "Fail!" ∨ well arr = "Publish!" ∨ well arr = "I smell a series!" := sorry
+
+theorem well_count_good_matches (arr: List (List String)) :
+  let goodCount := (arr.join.filter (fun x => x.toLower = "good")).length
+  well arr = (if goodCount > 2 then "I smell a series!"
+             else if goodCount > 0 then "Publish!"
+             else "Fail!") := sorry
+
+theorem well_all_bad (arr: List (List String))
+  (h: ∀ l ∈ arr, ∀ s ∈ l, s = "bad") : 
+  well arr = "Fail!" := sorry
+
+theorem well_all_good (arr: List (List String))
+  (h: ∀ l ∈ arr, ∀ s ∈ l, s = "good") :
+  let totalGood := arr.join.length
+  well arr = (if totalGood > 2 then "I smell a series!" else "Publish!") := sorry
+
+/-
+info: 'Fail!'
+-/
+-- #guard_msgs in
+-- #eval well [["bad", "bAd", "bad"], ["bad", "bAd", "bad"], ["bad", "bAd", "bad"]]
+
+/-
+info: 'Publish!'
+-/
+-- #guard_msgs in
+-- #eval well [["gOOd", "bad", "BAD", "bad", "bad"], ["bad", "bAd", "bad"], ["GOOD", "bad", "bad", "bAd"]]
+
+/-
+info: 'I smell a series!'
+-/
+-- #guard_msgs in
+-- #eval well [["gOOd", "bAd", "BAD", "bad", "bad", "GOOD"], ["bad"], ["gOOd", "BAD"]]
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

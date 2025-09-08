@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    The year of `2013` is the first year after the old `1987` with only distinct digits.
   
@@ -13,6 +14,7 @@ vc-description: |-
    - `[output]` an integer
   
     the minimum year number that is strictly larger than the input number `year` and all its digits are distinct.
+  -/
 
 vc-preamble: |-
   def toString (n : Nat) : List Nat := sorry
@@ -44,17 +46,17 @@ vc-theorems: |-
     ∀ y, year < y → y < distinctDigitYear year →
       hasDistinctDigits y = false := sorry
   
-  /--
+  /-
   info: 2013
   -/
-  #guard_msgs in
-  #eval distinct_digit_year 1987
+  -- #guard_msgs in
+  -- #eval distinct_digit_year 1987
   
-  /--
+  /-
   info: 2014
   -/
-  #guard_msgs in
-  #eval distinct_digit_year 2013
+  -- #guard_msgs in
+  -- #eval distinct_digit_year 2013
 
 vc-postamble: |-
   -- Apps difficulty: introductory

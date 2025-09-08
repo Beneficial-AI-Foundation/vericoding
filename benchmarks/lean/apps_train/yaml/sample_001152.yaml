@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a sequence of integers $A_1, A_2, \ldots, A_N$. This sequence is circular ― for each valid $i$, the element $A_{i+1}$ follows after $A_i$, and the element $A_1$ follows after $A_N$.
   You may insert any positive integers at any positions you choose in this sequence; let's denote the resulting sequence by $B$. This sequence is also circular. For each pair of its elements $B_s$ and $B_f$, let's denote the (non-circular) sequence created by starting at $B_s$ and moving from each element to the one that follows after it, until we reach $B_f$, by $B(s, f)$. This sequence includes the elements $B_s$ and $B_f$.
   For each $K$ from $2$ to $N$ inclusive, find the smallest possible number of elements that need to be inserted into $A$ to form a sequence $B$ for which there is no subsequence $B(p, q)$ such that:
@@ -26,6 +27,7 @@ vc-description: |-
   
   -----Example Output-----
   3 1 1 0
+  -/
 
 vc-preamble: |-
 
@@ -66,11 +68,11 @@ vc-theorems: |-
     (solve N A).length = N - 1 := by
     sorry
   
-  /--
+  /-
   info: [3, 1, 1, 0]
   -/
-  #guard_msgs in
-  #eval solve 5 [3, 6, 4, 5, 9]
+  -- #guard_msgs in
+  -- #eval solve 5 [3, 6, 4, 5, 9]
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A penguin Rocher has $n$ sticks. He has exactly one stick with length $i$ for all $1 \le i \le n$.
   
   He can connect some sticks. If he connects two sticks that have lengths $a$ and $b$, he gets one stick with length $a + b$. Two sticks, that were used in the operation disappear from his set and the new connected stick appears in his set and can be used for the next connections.
@@ -34,6 +35,7 @@ vc-description: |-
   In the third case, he can connect two sticks with lengths $1$ and $2$ and he will get one stick with length $3$. So, he will have two sticks with lengths $3$.
   
   In the fourth case, he can connect two sticks with lengths $1$ and $3$ and he will get one stick with length $4$. After that, he will have three sticks with lengths $\{2, 4, 4\}$, so two sticks have the same length, and one stick has the other length.
+  -/
 
 vc-preamble: |-
 
@@ -52,23 +54,23 @@ vc-theorems: |-
   theorem max_equal_sticks_monotonic (n : Nat) (h : n ≥ 1) :
     max_equal_sticks n ≤ max_equal_sticks (n + 1) := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval max_equal_sticks 1
+  -- #guard_msgs in
+  -- #eval max_equal_sticks 1
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval max_equal_sticks 3
+  -- #guard_msgs in
+  -- #eval max_equal_sticks 3
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval max_equal_sticks 4
+  -- #guard_msgs in
+  -- #eval max_equal_sticks 4
 
 vc-postamble: |-
   -- Apps difficulty: interview

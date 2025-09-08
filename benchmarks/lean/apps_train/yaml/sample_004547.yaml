@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   While developing a website, you detect that some of the members have troubles logging in. Searching through the code you find that all logins ending with a "\_" make problems. So you want to write a function that takes an array of pairs of login-names and e-mails, and outputs an array of all login-name, e-mails-pairs from the login-names that end with "\_".
   
   If you have the input-array:
@@ -18,6 +19,7 @@ vc-description: |-
   ```python
   https://docs.python.org/3/library/functions.html#filter
   ```
+  -/
 
 vc-preamble: |-
 
@@ -56,23 +58,23 @@ vc-theorems: |-
     search_names logins = [] :=
     sorry
   
-  /--
+  /-
   info: [['bar_', 'bar@bar.com']]
   -/
-  #guard_msgs in
-  #eval search_names [["foo", "foo@foo.com"], ["bar_", "bar@bar.com"]]
+  -- #guard_msgs in
+  -- #eval search_names [["foo", "foo@foo.com"], ["bar_", "bar@bar.com"]]
   
-  /--
+  /-
   info: [['foo_', 'foo@foo.com'], ['bar_', 'bar@bar.com']]
   -/
-  #guard_msgs in
-  #eval search_names [["foo_", "foo@foo.com"], ["bar_", "bar@bar.com"], ["baz", "baz@baz.com"]]
+  -- #guard_msgs in
+  -- #eval search_names [["foo_", "foo@foo.com"], ["bar_", "bar@bar.com"], ["baz", "baz@baz.com"]]
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval search_names [["foo", "foo@foo.com"], ["bar", "bar@bar.com"]]
+  -- #guard_msgs in
+  -- #eval search_names [["foo", "foo@foo.com"], ["bar", "bar@bar.com"]]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

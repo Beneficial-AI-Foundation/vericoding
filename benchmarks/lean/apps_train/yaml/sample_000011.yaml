@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You have a string $s$ — a sequence of commands for your toy robot. The robot is placed in some cell of a rectangular grid. He can perform four commands:  'W' — move one cell up;  'S' — move one cell down;  'A' — move one cell left;  'D' — move one cell right. 
   
   Let $Grid(s)$ be the grid of minimum possible area such that there is a position in the grid where you can place the robot in such a way that it will not fall from the grid while running the sequence of commands $s$. For example, if $s = \text{DSAWWAW}$ then $Grid(s)$ is the $4 \times 3$ grid:  you can place the robot in the cell $(3, 2)$;  the robot performs the command 'D' and moves to $(3, 3)$;  the robot performs the command 'S' and moves to $(4, 3)$;  the robot performs the command 'A' and moves to $(4, 2)$;  the robot performs the command 'W' and moves to $(3, 2)$;  the robot performs the command 'W' and moves to $(2, 2)$;  the robot performs the command 'A' and moves to $(2, 1)$;  the robot performs the command 'W' and moves to $(1, 1)$.  [Image] 
@@ -36,6 +37,7 @@ vc-description: |-
   In the first query you have to get string $\text{DSAWW}\underline{D}\text{AW}$.
   
   In second and third queries you can not decrease the area of $Grid(s)$.
+  -/
 
 vc-preamble: |-
   def min_grid_area (s : String) : Nat :=
@@ -71,23 +73,23 @@ vc-theorems: |-
     min_grid_area s ≥ min (w * h) 2 := by
     sorry
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval min_grid_area "DSAWWAW"
+  -- #guard_msgs in
+  -- #eval min_grid_area "DSAWWAW"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_grid_area "D"
+  -- #guard_msgs in
+  -- #eval min_grid_area "D"
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval min_grid_area "WA"
+  -- #guard_msgs in
+  -- #eval min_grid_area "WA"
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You're given an array $a_1, \ldots, a_n$ of $n$ non-negative integers.
   
   Let's call it sharpened if and only if there exists an integer $1 \le k \le n$ such that $a_1 < a_2 < \ldots < a_k$ and $a_k > a_{k+1} > \ldots > a_n$. In particular, any strictly increasing or strictly decreasing array is sharpened. For example:  The arrays $[4]$, $[0, 1]$, $[12, 10, 8]$ and $[3, 11, 15, 9, 7, 4]$ are sharpened;  The arrays $[2, 8, 2, 8, 6, 5]$, $[0, 1, 1, 0]$ and $[2, 5, 6, 9, 8, 8]$ are not sharpened. 
@@ -64,6 +65,7 @@ vc-description: |-
   In the third test case of the first test, we can transform the array into $[3, 11, 15, 9, 7, 4]$ (decrease the first element $97$ times and decrease the last element $4$ times). It is sharpened because $3 < 11 < 15$ and $15 > 9 > 7 > 4$.
   
   In the fourth test case of the first test, it's impossible to make the given array sharpened.
+  -/
 
 vc-preamble: |-
 
@@ -100,23 +102,23 @@ vc-theorems: |-
     is_array_sharpenable n arr = false :=
   sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_array_sharpenable 1 [248618]
+  -- #guard_msgs in
+  -- #eval is_array_sharpenable 1 [248618]
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_array_sharpenable 3 [12, 10, 8]
+  -- #guard_msgs in
+  -- #eval is_array_sharpenable 3 [12, 10, 8]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_array_sharpenable 4 [0, 1, 1, 0]
+  -- #guard_msgs in
+  -- #eval is_array_sharpenable 4 [0, 1, 1, 0]
 
 vc-postamble: |-
   -- Apps difficulty: interview

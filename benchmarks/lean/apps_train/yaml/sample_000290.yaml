@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You have n  tiles, where each tile has one letter tiles[i] printed on it.
   Return the number of possible non-empty sequences of letters you can make using the letters printed on those tiles.
   
@@ -19,6 +20,7 @@ vc-description: |-
   
   1 <= tiles.length <= 7
   tiles consists of uppercase English letters.
+  -/
 
 vc-preamble: |-
 
@@ -46,23 +48,23 @@ vc-theorems: |-
     numTilePossibilities s ≥ s.data.eraseDups.length :=
     sorry
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval numTilePossibilities "AAB"
+  -- #guard_msgs in
+  -- #eval numTilePossibilities "AAB"
   
-  /--
+  /-
   info: 188
   -/
-  #guard_msgs in
-  #eval numTilePossibilities "AAABBC"
+  -- #guard_msgs in
+  -- #eval numTilePossibilities "AAABBC"
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval numTilePossibilities "V"
+  -- #guard_msgs in
+  -- #eval numTilePossibilities "V"
 
 vc-postamble: |-
   -- Apps difficulty: interview

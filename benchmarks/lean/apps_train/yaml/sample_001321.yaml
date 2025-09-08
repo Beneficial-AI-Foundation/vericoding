@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef Vivek is good in mathematics and likes solving problems on prime numbers. One day his friend Jatin told him about Victory numbers. Victory number can be defined as a number formed after summing up all the prime numbers till given number n. Now, chef Vivek who is very fond of solving questions on prime numbers got busy in some other tasks. Your task is to help him finding victory number.
   
   -----Input:-----
@@ -22,6 +23,7 @@ vc-description: |-
   77
   41
   17
+  -/
 
 vc-preamble: |-
 
@@ -54,23 +56,23 @@ vc-theorems: |-
     n > 2 → find_victory_number n ≥ 2 :=
     sorry
   
-  /--
+  /-
   info: 77
   -/
-  #guard_msgs in
-  #eval find_victory_number 22
+  -- #guard_msgs in
+  -- #eval find_victory_number 22
   
-  /--
+  /-
   info: 41
   -/
-  #guard_msgs in
-  #eval find_victory_number 13
+  -- #guard_msgs in
+  -- #eval find_victory_number 13
   
-  /--
+  /-
   info: 17
   -/
-  #guard_msgs in
-  #eval find_victory_number 10
+  -- #guard_msgs in
+  -- #eval find_victory_number 10
 
 vc-postamble: |-
   -- Apps difficulty: interview

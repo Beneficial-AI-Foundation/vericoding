@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Introduction 
   
   Digital Cypher assigns to each letter of the alphabet unique number. For example:
@@ -52,6 +53,7 @@ vc-description: |-
   - [Digital cypher vol 1](https://www.codewars.com/kata/592e830e043b99888600002d)
   - [Digital cypher vol 2](https://www.codewars.com/kata/592edfda5be407b9640000b2)
   - [Digital cypher vol 3 - missing key](https://www.codewars.com/kata/5930d8a4b8c2d9e11500002a)
+  -/
 
 vc-preamble: |-
 
@@ -81,17 +83,17 @@ vc-theorems: |-
     (h2 : code.length > 0) :
     decode code 0 = decode code 10000 := sorry
   
-  /--
+  /-
   info: 'scout'
   -/
-  #guard_msgs in
-  #eval decode [20, 12, 18, 30, 21] 1939
+  -- #guard_msgs in
+  -- #eval decode [20, 12, 18, 30, 21] 1939
   
-  /--
+  /-
   info: 'masterpiece'
   -/
-  #guard_msgs in
-  #eval decode [14, 10, 22, 29, 6, 27, 19, 18, 6, 12, 8] 1939
+  -- #guard_msgs in
+  -- #eval decode [14, 10, 22, 29, 6, 27, 19, 18, 6, 12, 8] 1939
 
 vc-postamble: |-
   -- Apps difficulty: introductory

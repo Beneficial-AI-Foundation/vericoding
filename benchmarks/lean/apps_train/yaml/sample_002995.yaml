@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Task
   
   Implement a function which finds the numbers less than `2`, and the indices of numbers greater than `1` in the given sequence, and returns them as a pair of sequences. 
@@ -15,6 +16,7 @@ vc-description: |-
   ```
   
   Please upvote and enjoy!
+  -/
 
 vc-preamble: |-
 
@@ -33,23 +35,23 @@ vc-definitions: |-
     result.1.length + result.2.length = seq.length := sorry
 
 vc-theorems: |-
-  /--
+  /-
   info: ([0, 1, 1, 0, 1, 1], [2, 5])
   -/
-  #guard_msgs in
-  #eval binary_cleaner [0, 1, 2, 1, 0, 2, 1, 1]
+  -- #guard_msgs in
+  -- #eval binary_cleaner [0, 1, 2, 1, 0, 2, 1, 1]
   
-  /--
+  /-
   info: ([0, 1, 1, 0], [3])
   -/
-  #guard_msgs in
-  #eval binary_cleaner [0, 1, 1, 2, 0]
+  -- #guard_msgs in
+  -- #eval binary_cleaner [0, 1, 1, 2, 0]
   
-  /--
+  /-
   info: ([1], [])
   -/
-  #guard_msgs in
-  #eval binary_cleaner [1]
+  -- #guard_msgs in
+  -- #eval binary_cleaner [1]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

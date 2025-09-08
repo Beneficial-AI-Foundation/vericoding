@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an integer k, return the minimum number of Fibonacci numbers whose sum is equal to k. The same Fibonacci number can be used multiple times.
   The Fibonacci numbers are defined as:
   
@@ -26,6 +27,7 @@ vc-description: |-
   Constraints:
   
   1 <= k <= 10^9
+  -/
 
 vc-preamble: |-
 

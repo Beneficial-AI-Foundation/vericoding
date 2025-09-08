@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this Kata, you're to complete the function `sum_square_even_root_odd`.
   
   You will be given a list of numbers, `nums`, as the only argument to the function. Take each number in the list and *square* it if it is even, or *square root* the number if it is odd. Take this new list and find the *sum*, rounding to two decimal places.
@@ -6,6 +7,7 @@ vc-description: |-
   The list will never be empty and will only contain values that are greater than or equal to zero.
   
   Good luck!
+  -/
 
 vc-preamble: |-
 
@@ -32,17 +34,17 @@ vc-theorems: |-
     max_even > 10 → 
     sum_square_even_root_odd nums ≥ Float.ofNat max_even := sorry
   
-  /--
+  /-
   info: 91.61
   -/
-  #guard_msgs in
-  #eval sum_square_even_root_odd [4, 5, 7, 8, 1, 2, 3, 0]
+  -- #guard_msgs in
+  -- #eval sum_square_even_root_odd [4, 5, 7, 8, 1, 2, 3, 0]
   
-  /--
+  /-
   info: 272.71
   -/
-  #guard_msgs in
-  #eval sum_square_even_root_odd [1, 14, 9, 8, 17, 21]
+  -- #guard_msgs in
+  -- #eval sum_square_even_root_odd [1, 14, 9, 8, 17, 21]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

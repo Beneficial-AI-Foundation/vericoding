@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string text, you want to use the characters of text to form as many instances of the word "balloon" as possible.
   You can use each character in text at most once. Return the maximum number of instances that can be formed.
   
@@ -20,6 +21,7 @@ vc-description: |-
   
   1 <= text.length <= 10^4
   text consists of lower case English letters only.
+  -/
 
 vc-preamble: |-
   def max_balloons (s : String) : Nat :=
@@ -58,23 +60,23 @@ vc-theorems: |-
     (h : ∀ c ∈ text.toList, c ∉ ['b', 'a', 'l', 'o', 'n']) :
     max_balloons text = 0 := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval max_balloons "nlaebolko"
+  -- #guard_msgs in
+  -- #eval max_balloons "nlaebolko"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval max_balloons "loonbalxballpoon"
+  -- #guard_msgs in
+  -- #eval max_balloons "loonbalxballpoon"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval max_balloons "leetcode"
+  -- #guard_msgs in
+  -- #eval max_balloons "leetcode"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

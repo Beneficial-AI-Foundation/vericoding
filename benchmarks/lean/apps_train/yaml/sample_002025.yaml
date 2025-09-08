@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a string s, consisting of lowercase English letters, and the integer m.
   
   One should choose some symbols from the given string so that any contiguous subsegment of length m has at least one selected symbol. Note that here we choose positions of symbols, not the symbols themselves.
@@ -48,6 +49,7 @@ vc-description: |-
   In the first sample, one can choose the subsequence {3} and form a string "a".
   
   In the second sample, one can choose the subsequence {1, 2, 4} (symbols on this positions are 'a', 'b' and 'a') and rearrange the chosen symbols to form a string "aab".
+  -/
 
 vc-preamble: |-
   def findSmallestSubstring (m : Nat) (s : String) : String := sorry
@@ -82,23 +84,23 @@ vc-theorems: |-
     let r := findSmallestSubstring m s
     ∀ c ∈ r.data, c = 'a' ∨ c = 'b' := sorry
   
-  /--
+  /-
   info: 'a'
   -/
-  #guard_msgs in
-  #eval find_smallest_substring 3 "cbabc"
+  -- #guard_msgs in
+  -- #eval find_smallest_substring 3 "cbabc"
   
-  /--
+  /-
   info: 'aab'
   -/
-  #guard_msgs in
-  #eval find_smallest_substring 2 "abcab"
+  -- #guard_msgs in
+  -- #eval find_smallest_substring 2 "abcab"
   
-  /--
+  /-
   info: 'aaabb'
   -/
-  #guard_msgs in
-  #eval find_smallest_substring 3 "bcabcbaccba"
+  -- #guard_msgs in
+  -- #eval find_smallest_substring 3 "bcabcbaccba"
 
 vc-postamble: |-
   -- Apps difficulty: competition

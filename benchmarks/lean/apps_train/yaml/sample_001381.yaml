@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Bandwidth of a matrix A is defined as the smallest non-negative integer K such that A(i, j) = 0 for |i - j| > K.
   For example, a matrix with all zeros will have its bandwith equal to zero. Similarly bandwith of diagonal matrix will also be zero.
   
@@ -80,6 +81,7 @@ vc-description: |-
   The bandwidth of this matrix is 1.
   
   Example case 6. The swap operations won't have any effect on the matrix. Its bandwidth is equal to 3.
+  -/
 
 vc-preamble: |-
 
@@ -120,29 +122,29 @@ vc-theorems: |-
     min_bandwidth n matrix₁ ≤ min_bandwidth n matrix₂ :=
     sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_bandwidth 2 [[0, 0], [0, 0]]
+  -- #guard_msgs in
+  -- #eval min_bandwidth 2 [[0, 0], [0, 0]]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_bandwidth 2 [[1, 0], [0, 1]]
+  -- #guard_msgs in
+  -- #eval min_bandwidth 2 [[1, 0], [0, 1]]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval min_bandwidth 3 [[1, 0, 0], [0, 1, 1], [1, 1, 0]]
+  -- #guard_msgs in
+  -- #eval min_bandwidth 3 [[1, 0, 0], [0, 1, 1], [1, 1, 0]]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval min_bandwidth 4 [[1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1]]
+  -- #guard_msgs in
+  -- #eval min_bandwidth 4 [[1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

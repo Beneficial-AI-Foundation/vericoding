@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   — Hey folks, how do you like this problem?
   
   — That'll do it. 
@@ -37,6 +38,7 @@ vc-description: |-
   -----Note-----
   
   In the first test case we get either $a = [1, 2]$ or $a = [2, 1]$ after casting the spell for the first time, and it is impossible to cast it again.
+  -/
 
 vc-preamble: |-
   def solve_magic_candies (n : Nat) (k : Nat) (candies : List Nat) : Nat :=
@@ -56,23 +58,23 @@ vc-theorems: |-
     (h1 : k ≥ 1) (h2 : k ≤ 1000) :
     solve_magic_candies 2 k [1, 1] = k - 1 := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve_magic_candies 2 2 [1, 1]
+  -- #guard_msgs in
+  -- #eval solve_magic_candies 2 2 [1, 1]
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval solve_magic_candies 3 5 [1, 2, 3]
+  -- #guard_msgs in
+  -- #eval solve_magic_candies 3 5 [1, 2, 3]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval solve_magic_candies 3 7 [3, 2, 2]
+  -- #guard_msgs in
+  -- #eval solve_magic_candies 3 7 [3, 2, 2]
 
 vc-postamble: |-
   -- Apps difficulty: interview

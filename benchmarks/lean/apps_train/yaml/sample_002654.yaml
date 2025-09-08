@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write function bmi that calculates body mass index (bmi = weight / height ^ 2).
   
   if bmi <= 18.5 return "Underweight"
@@ -8,6 +9,7 @@ vc-description: |-
   if bmi <= 30.0 return "Overweight"
   
   if bmi > 30 return "Obese"
+  -/
 
 vc-preamble: |-
 
@@ -44,23 +46,23 @@ vc-theorems: |-
     ¬∃(result : Category), bmi weight 0 = result :=
     sorry
   
-  /--
+  /-
   info: 'Underweight'
   -/
-  #guard_msgs in
-  #eval bmi 50 1.8
+  -- #guard_msgs in
+  -- #eval bmi 50 1.8
   
-  /--
+  /-
   info: 'Normal'
   -/
-  #guard_msgs in
-  #eval bmi 80 1.8
+  -- #guard_msgs in
+  -- #eval bmi 80 1.8
   
-  /--
+  /-
   info: 'Obese'
   -/
-  #guard_msgs in
-  #eval bmi 110 1.8
+  -- #guard_msgs in
+  -- #eval bmi 110 1.8
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given an $array$ of size $N$ and an integer $K$ ( $N > 1 , K > 0$ ).
   Each element in the array can be incremented by $K$ or decremented by $K$ $at$ $most$ $once$.
   So there will be  $3^n$ possible combinations of final array. (As there are 3 options for every element).
@@ -36,6 +37,7 @@ vc-description: |-
   10
   
   13
+  -/
 
 vc-preamble: |-
   def find_max_diff (N : Nat) (K : Nat) (arr : List Int) : Int :=
@@ -71,23 +73,23 @@ vc-theorems: |-
     find_max_diff N K arr = 2 * K :=
   sorry
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval find_max_diff 4 3 [4, 2, 5, 1]
+  -- #guard_msgs in
+  -- #eval find_max_diff 4 3 [4, 2, 5, 1]
   
-  /--
+  /-
   info: 13
   -/
-  #guard_msgs in
-  #eval find_max_diff 3 5 [2, 5, 3]
+  -- #guard_msgs in
+  -- #eval find_max_diff 3 5 [2, 5, 3]
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval find_max_diff 2 2 [1, 3]
+  -- #guard_msgs in
+  -- #eval find_max_diff 2 2 [1, 3]
 
 vc-postamble: |-
   -- Apps difficulty: interview

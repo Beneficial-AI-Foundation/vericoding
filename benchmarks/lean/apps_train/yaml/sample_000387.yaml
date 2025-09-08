@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an integer n, count the total number of digit 1 appearing in all non-negative integers less than or equal to n.
   
   Example:
@@ -6,6 +7,7 @@ vc-description: |-
   Input: 13
   Output: 6 
   Explanation: Digit 1 occurred in the following numbers: 1, 10, 11, 12, 13.
+  -/
 
 vc-preamble: |-
 
@@ -34,23 +36,23 @@ vc-theorems: |-
   theorem count_digit_one_zero :
     count_digit_one 0 = 0 := sorry
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval count_digit_one 13
+  -- #guard_msgs in
+  -- #eval count_digit_one 13
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval count_digit_one 20
+  -- #guard_msgs in
+  -- #eval count_digit_one 20
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval count_digit_one 100
+  -- #guard_msgs in
+  -- #eval count_digit_one 100
 
 vc-postamble: |-
   -- Apps difficulty: interview

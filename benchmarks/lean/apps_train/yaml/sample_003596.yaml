@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You've just recently been hired to calculate scores for a  Dart Board game!
   
   Scoring specifications:
@@ -14,6 +15,7 @@ vc-description: |-
   An empty array should return 0.
   
   ## Examples:
+  -/
 
 vc-preamble: |-
   def score_throws (radiuses : List Float) : Nat := sorry
@@ -37,23 +39,23 @@ vc-definitions: |-
     | xs => if (∀ r ∈ xs, r < 5) then 100 else 0
 
 vc-theorems: |-
-  /--
+  /-
   info: 15
   -/
-  #guard_msgs in
-  #eval score_throws [1, 5, 11]
+  -- #guard_msgs in
+  -- #eval score_throws [1, 5, 11]
   
-  /--
+  /-
   info: 140
   -/
-  #guard_msgs in
-  #eval score_throws [1, 2, 3, 4]
+  -- #guard_msgs in
+  -- #eval score_throws [1, 2, 3, 4]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval score_throws []
+  -- #guard_msgs in
+  -- #eval score_throws []
 
 vc-postamble: |-
   -- Apps difficulty: introductory

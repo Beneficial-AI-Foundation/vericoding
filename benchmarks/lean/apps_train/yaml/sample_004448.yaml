@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    Given an integer `product`, find the smallest positive integer the product of whose digits is equal to product. If there is no such integer, return -1 instead.
   
@@ -35,6 +36,7 @@ vc-description: |-
       Constraints: `0 ≤ product ≤ 600`.
   
    - `[output]` a positive integer
+  -/
 
 vc-preamble: |-
 
@@ -62,23 +64,23 @@ vc-theorems: |-
     result ≠ -1 →
     stringToDigitProduct (toString result.toNat) = n := by sorry
   
-  /--
+  /-
   info: 26
   -/
-  #guard_msgs in
-  #eval digits_product 12
+  -- #guard_msgs in
+  -- #eval digits_product 12
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval digits_product 19
+  -- #guard_msgs in
+  -- #eval digits_product 19
   
-  /--
+  /-
   info: 2559
   -/
-  #guard_msgs in
-  #eval digits_product 450
+  -- #guard_msgs in
+  -- #eval digits_product 450
 
 vc-postamble: |-
   -- Apps difficulty: introductory

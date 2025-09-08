@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A permutation of length $n$ is a sequence of integers from $1$ to $n$ of length $n$ containing each number exactly once. For example, $[1]$, $[4, 3, 5, 1, 2]$, $[3, 2, 1]$ are permutations, and $[1, 1]$, $[0, 1]$, $[2, 2, 1, 4]$ are not.
   
   There was a permutation $p[1 \dots n]$. It was merged with itself. In other words, let's take two instances of $p$ and insert elements of the second $p$ into the first maintaining relative order of elements. The result is a sequence of the length $2n$.
@@ -41,6 +42,7 @@ vc-description: |-
   1 2 3 4 5 
   1 2 3 
   2 3 4 1
+  -/
 
 vc-preamble: |-
 
@@ -69,23 +71,23 @@ vc-theorems: |-
     result.length ≤ seq.length :=
   sorry
   
-  /--
+  /-
   info: [1, 2]
   -/
-  #guard_msgs in
-  #eval solve 2 [1, 1, 2, 2]
+  -- #guard_msgs in
+  -- #eval solve 2 [1, 1, 2, 2]
   
-  /--
+  /-
   info: [1, 3, 4, 2]
   -/
-  #guard_msgs in
-  #eval solve 4 [1, 3, 1, 4, 3, 4, 2, 2]
+  -- #guard_msgs in
+  -- #eval solve 4 [1, 3, 1, 4, 3, 4, 2, 2]
   
-  /--
+  /-
   info: [1, 2, 3]
   -/
-  #guard_msgs in
-  #eval solve 3 [1, 2, 3, 1, 2, 3]
+  -- #guard_msgs in
+  -- #eval solve 3 [1, 2, 3, 1, 2, 3]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

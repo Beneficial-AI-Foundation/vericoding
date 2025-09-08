@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You're fed up about changing the version of your software manually. Instead, you will create a little script that will make it for you.
   
   # Exercice
@@ -12,6 +13,7 @@ vc-description: |-
   All numbers, except the first one, must be lower than 10: if there are, you have to set them to 0 and increment the next number in sequence.
   
   You can assume all tests inputs to be valid.
+  -/
 
 vc-preamble: |-
   def splitVersion (v : String) : Version := sorry
@@ -40,23 +42,23 @@ vc-theorems: |-
     (splitVersion (nextVersion v)).nums.dropLast = (splitVersion v).nums.dropLast ∧ 
     ((splitVersion (nextVersion v)).nums.getLast h2 = (splitVersion v).nums.getLast h2 + 1) := sorry
   
-  /--
+  /-
   info: '1.2.4'
   -/
-  #guard_msgs in
-  #eval next_version "1.2.3"
+  -- #guard_msgs in
+  -- #eval next_version "1.2.3"
   
-  /--
+  /-
   info: '1.0.0'
   -/
-  #guard_msgs in
-  #eval next_version "0.9.9"
+  -- #guard_msgs in
+  -- #eval next_version "0.9.9"
   
-  /--
+  /-
   info: '2'
   -/
-  #guard_msgs in
-  #eval next_version "1"
+  -- #guard_msgs in
+  -- #eval next_version "1"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

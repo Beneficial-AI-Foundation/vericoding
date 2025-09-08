@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Give me Biscuit
   
   Sunny wants to make slices of biscuit of size c * d into identical pieces.
@@ -45,6 +46,7 @@ vc-description: |-
   The 2nd testcase has a biscuit of size 6 X 9 . We can cut it into 54 squares of size 1 X 1 , 6 of size 3 X 3 . For other sizes we will have leftovers.
   
   Hence, the number of squares of maximum size that can be cut is 6.
+  -/
 
 vc-preamble: |-
 
@@ -68,23 +70,23 @@ vc-theorems: |-
   theorem scaling (l factor : Nat) (h₁ : l > 0) (h₂ : factor > 0) :
     number_of_squares (l * factor) (l * factor) = number_of_squares l l := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval number_of_squares 2 2
+  -- #guard_msgs in
+  -- #eval number_of_squares 2 2
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval number_of_squares 6 9
+  -- #guard_msgs in
+  -- #eval number_of_squares 6 9
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval number_of_squares 4 6
+  -- #guard_msgs in
+  -- #eval number_of_squares 4 6
 
 vc-postamble: |-
   -- Apps difficulty: interview

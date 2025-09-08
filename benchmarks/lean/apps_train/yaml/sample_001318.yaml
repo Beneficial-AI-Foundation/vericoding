@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Master Shifu is training Po to become The Dragon Warrior and as a final assignment he must obtain maximum deliciousness from dumplings. There are  $N$ plates of dumplings in front of him with deliciousness $A_1, A_2, \ldots, A_N$, Po can choose any number of continuous plates of  dumplings. The total deliciousness is the sum of deliciousness of all the  chosen dumplings.
   What is the minimum number of plates he must choose so that total deliciousness is maximum possible?
   Note: Po must choose atleast one plate.
@@ -26,6 +27,7 @@ vc-description: |-
   -----Sample Output:-----
   4
   4
+  -/
 
 vc-preamble: |-
   def min_plates_max_deliciousness (n : Nat) (arr : List Nat) : Nat :=
@@ -49,23 +51,23 @@ vc-theorems: |-
     1 ≤ result ∧ result ≤ n :=
   sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval min_plates_max_deliciousness 4 [1, 2, 3, 4]
+  -- #guard_msgs in
+  -- #eval min_plates_max_deliciousness 4 [1, 2, 3, 4]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval min_plates_max_deliciousness 5 [3, 2, 0, 3, 0]
+  -- #guard_msgs in
+  -- #eval min_plates_max_deliciousness 5 [3, 2, 0, 3, 0]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval min_plates_max_deliciousness 3 [0, 0, 0]
+  -- #guard_msgs in
+  -- #eval min_plates_max_deliciousness 3 [0, 0, 0]
 
 vc-postamble: |-
   -- Apps difficulty: interview

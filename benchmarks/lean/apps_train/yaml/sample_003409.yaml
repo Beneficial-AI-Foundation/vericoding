@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your task is to Combine two Strings. But consider the rule...
   
   By the way you don't have to check errors or incorrect input values, everything is ok without bad tricks, only two input strings and as result one output string;-)...
@@ -31,6 +32,7 @@ vc-description: |-
   There are some static tests at the beginning and many random tests if you submit your solution.
   
   Hope you have fun:-)!
+  -/
 
 vc-preamble: |-
   def String.lower : String → String :=
@@ -89,23 +91,23 @@ vc-theorems: |-
     work_on_strings s s = result :=
   sorry
   
-  /--
+  /-
   info: 'abCCde'
   -/
-  #guard_msgs in
-  #eval work_on_strings "abc" "cde"
+  -- #guard_msgs in
+  -- #eval work_on_strings "abc" "cde"
   
-  /--
+  /-
   info: 'ABABbababa'
   -/
-  #guard_msgs in
-  #eval work_on_strings "abab" "bababa"
+  -- #guard_msgs in
+  -- #eval work_on_strings "abab" "bababa"
   
-  /--
+  /-
   info: 'abcDEfgDEFGg'
   -/
-  #guard_msgs in
-  #eval work_on_strings "abcdeFg" "defgG"
+  -- #guard_msgs in
+  -- #eval work_on_strings "abcdeFg" "defgG"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

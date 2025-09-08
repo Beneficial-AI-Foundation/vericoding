@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Final kata of the series (highly recommended to compute [layers](https://www.codewars.com/kata/progressive-spiral-number-position/) and [branch](https://www.codewars.com/kata/progressive-spiral-number-branch/) first to get a good idea), this is a blatant ripoff of [the one offered on AoC](http://adventofcode.com/2017/day/3).
   
   Given a number, return the Manhattan distance considering the core of the spiral (the `1` cell) as 0 and counting each step up, right, down or left to reach a given cell.
@@ -26,6 +27,7 @@ vc-description: |-
   Just be ready for larger numbers, as usual always positive.
   
   *[Dedicated to [swiftest learner I met in a long while](https://www.codewars.com/users/irbekrm/)]*
+  -/
 
 vc-preamble: |-
 
@@ -52,23 +54,23 @@ vc-theorems: |-
   theorem distance_triangle_inequality (n : Nat) :
     n > 1 → distance n ≤ distance (n-1) + 1 ∧ distance n ≤ distance (n+1) + 1 := sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval distance 1
+  -- #guard_msgs in
+  -- #eval distance 1
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval distance 5
+  -- #guard_msgs in
+  -- #eval distance 5
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval distance 25
+  -- #guard_msgs in
+  -- #eval distance 25
 
 vc-postamble: |-
   -- Apps difficulty: introductory

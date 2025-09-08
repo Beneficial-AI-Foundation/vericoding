@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   "If you didn't copy assignments during your engineering course, did you even do engineering?"
   There are $Q$ students in Chef's class. Chef's teacher has given the students a simple assignment:
   Write a function that takes as arguments an array $A$ containing only unique elements and a number $X$ guaranteed to be present in the array and returns the ($1$-based) index of the element that is equal to $X$.
@@ -78,6 +79,7 @@ vc-description: |-
   - Query 5: One solution is to swap $A_2$ and $A_4$.
   - Query 6: The algorithm works without any swaps.
   - Query 7: The algorithm works without any swaps.
+  -/
 
 vc-preamble: |-
 

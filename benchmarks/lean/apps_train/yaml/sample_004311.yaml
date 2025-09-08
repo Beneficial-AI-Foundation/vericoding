@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Sum Even Fibonacci Numbers
   
   * Write a func named SumEvenFibonacci that takes a parameter of type int and returns a value of type int
@@ -18,6 +19,7 @@ vc-description: |-
   ```
   sumEvenFibonacci(8) // returns 10 by adding the even values 2 and 8
   ```
+  -/
 
 vc-preamble: |-
 
@@ -56,23 +58,23 @@ vc-theorems: |-
     n < 0 → SumEvenFibonacci n = 0 :=
     sorry
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval SumEvenFibonacci 8
+  -- #guard_msgs in
+  -- #eval SumEvenFibonacci 8
   
-  /--
+  /-
   info: 60696
   -/
-  #guard_msgs in
-  #eval SumEvenFibonacci 111111
+  -- #guard_msgs in
+  -- #eval SumEvenFibonacci 111111
   
-  /--
+  /-
   info: 82790070
   -/
-  #guard_msgs in
-  #eval SumEvenFibonacci 144100000
+  -- #guard_msgs in
+  -- #eval SumEvenFibonacci 144100000
 
 vc-postamble: |-
   -- Apps difficulty: introductory

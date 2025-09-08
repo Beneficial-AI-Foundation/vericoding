@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   An isogram is a word that has no repeating letters, consecutive or non-consecutive. Implement a function that determines whether a string that contains only letters is an isogram. Assume the empty string is an isogram. Ignore letter case.
   
   ```python
@@ -11,6 +12,7 @@ vc-description: |-
   is_isogram("aba" ) == false;
   is_isogram("moOse" ) == false; // -- ignore letter case
   ```
+  -/
 
 vc-preamble: |-
 
@@ -32,23 +34,23 @@ vc-theorems: |-
     let unique_chars := String.mk (List.eraseDups s.data)
     is_isogram unique_chars := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_isogram "Dermatoglyphics"
+  -- #guard_msgs in
+  -- #eval is_isogram "Dermatoglyphics"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_isogram "moOse"
+  -- #guard_msgs in
+  -- #eval is_isogram "moOse"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_isogram ""
+  -- #guard_msgs in
+  -- #eval is_isogram ""
 
 vc-postamble: |-
   -- Apps difficulty: introductory

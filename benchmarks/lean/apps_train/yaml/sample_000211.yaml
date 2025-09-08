@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array nums of positive integers. Your task is to select some subset of nums, multiply each element by an integer and add all these numbers. The array is said to be good if you can obtain a sum of 1 from the array by any possible subset and multiplicand.
   Return True if the array is good otherwise return False.
   
@@ -22,6 +23,7 @@ vc-description: |-
   
   1 <= nums.length <= 10^5
   1 <= nums[i] <= 10^9
+  -/
 
 vc-preamble: |-
   def isGoodArray (nums : List Nat) : Bool := sorry
@@ -48,23 +50,23 @@ vc-theorems: |-
     isGoodArray (nums.map (· * 2)) = false
     := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval isGoodArray #[12, 5, 7, 23]
+  -- #guard_msgs in
+  -- #eval isGoodArray #[12, 5, 7, 23]
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval isGoodArray #[29, 6, 10]
+  -- #guard_msgs in
+  -- #eval isGoodArray #[29, 6, 10]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval isGoodArray #[3, 6]
+  -- #guard_msgs in
+  -- #eval isGoodArray #[3, 6]
 
 vc-postamble: |-
   -- Apps difficulty: interview

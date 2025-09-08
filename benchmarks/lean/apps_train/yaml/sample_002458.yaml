@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Function Descriptions=====
   The NumPy (Numeric Python) package helps us manipulate large arrays and matrices of numeric data.
   
@@ -29,6 +30,7 @@ vc-description: |-
   
   =====Output Format=====
   Print the reverse NumPy array with type float.
+  -/
 
 vc-preamble: |-
 

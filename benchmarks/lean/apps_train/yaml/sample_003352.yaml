@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   
   Write a function `deNico`/`de_nico()` that accepts two parameters:
@@ -43,6 +44,7 @@ vc-description: |-
   # Related Kata
   
   [Basic Nico - encode](https://www.codewars.com/kata/5968bb83c307f0bb86000015)
+  -/
 
 vc-preamble: |-
 
@@ -75,23 +77,23 @@ vc-theorems: |-
     String.trimRight (de_nico key msg) = de_nico key msg := by
     sorry
   
-  /--
+  /-
   info: 'secretinformation'
   -/
-  #guard_msgs in
-  #eval de_nico "crazy" "cseerntiofarmit on  "
+  -- #guard_msgs in
+  -- #eval de_nico "crazy" "cseerntiofarmit on  "
   
-  /--
+  /-
   info: '1234567890'
   -/
-  #guard_msgs in
-  #eval de_nico "ba" "2143658709"
+  -- #guard_msgs in
+  -- #eval de_nico "ba" "2143658709"
   
-  /--
+  /-
   info: 'key'
   -/
-  #guard_msgs in
-  #eval de_nico "key" "eky"
+  -- #guard_msgs in
+  -- #eval de_nico "key" "eky"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Polly is 8 years old. She is eagerly awaiting Christmas as she has a bone to pick with Santa Claus. Last year she asked for a horse, and he brought her a dolls house. Understandably she is livid.
   
   The days seem to drag and drag so Polly asks her friend to help her keep count of how long it is until Christmas, in days. She will start counting from the first of December.
@@ -6,6 +7,7 @@ vc-description: |-
   Your function should take 1 argument (a Date object) which will be the day of the year it is currently. The function should then work out how many days it is until Christmas.
   
   Watch out for leap years!
+  -/
 
 vc-preamble: |-
   def isLeapYear (year : Int) : Bool := sorry
@@ -38,23 +40,23 @@ vc-theorems: |-
     daysUntilChristmas d = 
       daysUntilChristmas (Date.mk (d.year + 1) 12 25) := sorry
   
-  /--
+  /-
   info: 163
   -/
-  #guard_msgs in
-  #eval days_until_christmas date(2023, 7, 15)
+  -- #guard_msgs in
+  -- #eval days_until_christmas date(2023, 7, 15)
   
-  /--
+  /-
   info: 365
   -/
-  #guard_msgs in
-  #eval days_until_christmas date(2023, 12, 26)
+  -- #guard_msgs in
+  -- #eval days_until_christmas date(2023, 12, 26)
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval days_until_christmas date(2023, 12, 24)
+  -- #guard_msgs in
+  -- #eval days_until_christmas date(2023, 12, 24)
 
 vc-postamble: |-
   -- Apps difficulty: introductory

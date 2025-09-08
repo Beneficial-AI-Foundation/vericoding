@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Andrewid the Android is a galaxy-famous detective. He is now chasing a criminal hiding on the planet Oxa-5, the planet almost fully covered with water.
   
   The only dry land there is an archipelago of n narrow islands located in a row. For more comfort let's represent them as non-intersecting segments on a straight line: island i has coordinates [l_{i}, r_{i}], besides, r_{i} < l_{i} + 1 for 1 ≤ i ≤ n - 1.
@@ -58,6 +59,7 @@ vc-description: |-
   In the first sample test you can, for example, place the second bridge between points 3 and 8, place the third bridge between points 7 and 10 and place the first bridge between points 10 and 14.
   
   In the second sample test the first bridge is too short and the second bridge is too long, so the solution doesn't exist.
+  -/
 
 vc-preamble: |-
   def solve_bridge_problem (n m : Nat) (islands : List (List Int)) (bridges : List Int) : String := sorry
@@ -98,23 +100,23 @@ vc-theorems: |-
     result = "No" ∨ 
     (∀ i ∈ indices, 1 ≤ i ∧ i ≤ m) := sorry
   
-  /--
+  /-
   info: 'Yes\n2 3 1'
   -/
-  #guard_msgs in
-  #eval solve_bridge_problem 4 4 [[1, 4], [7, 8], [9, 10], [12, 14]] [4, 5, 3, 8]
+  -- #guard_msgs in
+  -- #eval solve_bridge_problem 4 4 [[1, 4], [7, 8], [9, 10], [12, 14]] [4, 5, 3, 8]
   
-  /--
+  /-
   info: 'No'
   -/
-  #guard_msgs in
-  #eval solve_bridge_problem 2 2 [[11, 14], [17, 18]] [2, 9]
+  -- #guard_msgs in
+  -- #eval solve_bridge_problem 2 2 [[11, 14], [17, 18]] [2, 9]
   
-  /--
+  /-
   info: 'Yes\n1'
   -/
-  #guard_msgs in
-  #eval solve_bridge_problem 2 1 [[1, 1], [1000000000000000000, 1000000000000000000]] [999999999999999999]
+  -- #guard_msgs in
+  -- #eval solve_bridge_problem 2 1 [[1, 1], [1000000000000000000, 1000000000000000000]] [999999999999999999]
 
 vc-postamble: |-
   -- Apps difficulty: competition

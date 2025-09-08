@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef solved so many hard questions, now he wants to solve some easy problems for refreshment. Chef asks Cheffina for the new question. Cheffina challanges the chef to print the total number of 1's in the binary representation of N(natural number).
   
   -----Input:-----
@@ -24,6 +25,7 @@ vc-description: |-
   -----EXPLANATION:-----
   For 1) Binary representation of 2 is 10. i.e. only one 1 present in it.
   For 2) Binary representation of 5 is 101, i.e. two 1's present in it.
+  -/
 
 vc-preamble: |-
   def count_ones_in_binary (n : Int) : Nat :=
@@ -55,23 +57,23 @@ vc-theorems: |-
     count_ones_in_binary x = count_bits x :=
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_ones_in_binary test_input[0]
+  -- #guard_msgs in
+  -- #eval count_ones_in_binary test_input[0]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_ones_in_binary test_input[0]
+  -- #guard_msgs in
+  -- #eval count_ones_in_binary test_input[0]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_ones_in_binary test_input[0]
+  -- #guard_msgs in
+  -- #eval count_ones_in_binary test_input[0]
 
 vc-postamble: |-
   -- Apps difficulty: interview

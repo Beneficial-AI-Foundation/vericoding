@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given n non-negative integers representing the histogram's bar height where the width of each bar is 1, find the area of largest rectangle in the histogram.
   
   Above is a histogram where width of each bar is 1, given height = [2,1,5,6,2,3].
@@ -9,6 +10,7 @@ vc-description: |-
   
   Input: [2,1,5,6,2,3]
   Output: 10
+  -/
 
 vc-preamble: |-
   def largest_rectangle_area (heights : List Nat) : Nat :=
@@ -52,23 +54,23 @@ vc-theorems: |-
     let increased := listModify heights i (· + 1)
     largest_rectangle_area increased ≥ largest_rectangle_area heights := sorry
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval largest_rectangle_area [2, 1, 5, 6, 2, 3]
+  -- #guard_msgs in
+  -- #eval largest_rectangle_area [2, 1, 5, 6, 2, 3]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval largest_rectangle_area [2, 1, 2]
+  -- #guard_msgs in
+  -- #eval largest_rectangle_area [2, 1, 2]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval largest_rectangle_area []
+  -- #guard_msgs in
+  -- #eval largest_rectangle_area []
 
 vc-postamble: |-
   -- Apps difficulty: interview

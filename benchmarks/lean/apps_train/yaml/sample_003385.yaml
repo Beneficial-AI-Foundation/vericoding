@@ -1,5 +1,7 @@
 vc-description: |-
+  /-
   In Russia regular bus tickets usually consist of 6 digits. The ticket is called lucky when the sum of the first three digits equals to the sum of the last three digits. Write a function to find out whether the ticket is lucky or not. Return true if so, otherwise return false. Consider that input is always a string. Watch examples below.
+  -/
 
 vc-preamble: |-
 
@@ -33,23 +35,23 @@ vc-theorems: |-
     isLucky "1234567" = false ∧
     isLucky "abcdef" = false := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_lucky "123321"
+  -- #guard_msgs in
+  -- #eval is_lucky "123321"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_lucky "12341234"
+  -- #guard_msgs in
+  -- #eval is_lucky "12341234"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_lucky "000000"
+  -- #guard_msgs in
+  -- #eval is_lucky "000000"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

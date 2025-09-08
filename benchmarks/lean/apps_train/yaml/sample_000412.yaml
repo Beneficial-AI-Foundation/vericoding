@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
   
   Example 1:
@@ -11,6 +12,7 @@ vc-description: |-
   
   Input: "cbbd"
   Output: "bb"
+  -/
 
 vc-preamble: |-
   def String.isPalindrome (s : String) : Bool := sorry
@@ -46,17 +48,17 @@ vc-theorems: |-
   theorem palindrome_input_returns_itself (s : String) (h : s.isPalindrome = true) :
     find_longest_palindrome s = s := sorry
   
-  /--
+  /-
   info: 'bb'
   -/
-  #guard_msgs in
-  #eval find_longest_palindrome "cbbd"
+  -- #guard_msgs in
+  -- #eval find_longest_palindrome "cbbd"
   
-  /--
+  /-
   info: 'a'
   -/
-  #guard_msgs in
-  #eval find_longest_palindrome "a"
+  -- #guard_msgs in
+  -- #eval find_longest_palindrome "a"
 
 vc-postamble: |-
   -- Apps difficulty: interview

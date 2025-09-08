@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The Dynamic Connectivity Problem
   
   Given a set of of N objects, is there a path connecting the two objects?
@@ -55,6 +56,7 @@ vc-description: |-
   Implementation must be able to handle initializing 1 million nodes, and creating connections between those nodes.
   
   Full Tests before submission generate random connections to make sure you can't hard code the connections into your class.
+  -/
 
 vc-preamble: |-
   def DynamicConnectivity.connected (dc : DynamicConnectivity) (p q : Nat) : Bool := sorry

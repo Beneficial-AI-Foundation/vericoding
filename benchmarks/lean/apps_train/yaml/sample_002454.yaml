@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Problem Statement=====
   You are given an HTML code snippet of N lines.
   Your task is to detect and print all the HTML tags, attributes and attribute values.
@@ -32,6 +33,7 @@ vc-description: |-
   Print the HTML tags, attributes and attribute values in order of their occurrence from top to bottom in the snippet.
   
   Format your answers as explained in the problem statement.
+  -/
 
 vc-preamble: |-
   def parse_html (s : String) : String :=

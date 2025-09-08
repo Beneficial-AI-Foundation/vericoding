@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   *** No Loops Allowed ***
   
   You will be given an array (a) and a value (x). All you need to do is check whether the provided array contains the value, without using a loop.
@@ -9,6 +10,7 @@ vc-description: |-
   
    https://www.codewars.com/kata/no-loops-1-small-enough
    https://www.codewars.com/kata/no-loops-3-copy-within
+  -/
 
 vc-preamble: |-
 

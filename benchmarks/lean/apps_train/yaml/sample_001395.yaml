@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an integer N, Chef wants to find the smallest positive integer M such that the bitwise XOR of M and M+1 is N. If no such M exists output -1.
   
   -----Input-----
@@ -20,6 +21,7 @@ vc-description: |-
   1
   
   -----Explanation-----First Example :  M desired in the problem would be 1. As bitwise XOR of 1 and 2 is equal to 3.
+  -/
 
 vc-preamble: |-
 
@@ -41,23 +43,23 @@ vc-theorems: |-
     n ≤ 0 → find_smallest_xor_m n.toNat = -1 :=
   sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval find_smallest_xor_m 3
+  -- #guard_msgs in
+  -- #eval find_smallest_xor_m 3
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_smallest_xor_m 1
+  -- #guard_msgs in
+  -- #eval find_smallest_xor_m 1
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval find_smallest_xor_m 4
+  -- #guard_msgs in
+  -- #eval find_smallest_xor_m 4
 
 vc-postamble: |-
   -- Apps difficulty: interview

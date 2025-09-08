@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Move the first letter of each word to the end of it, then add "ay" to the end of the word. Leave punctuation marks untouched.
   
   ## Examples
@@ -15,6 +16,7 @@ vc-description: |-
   PigLatin.pigIt('Pig latin is cool'); // igPay atinlay siay oolcay
   PigLatin.pigIt('Hello world !');     // elloHay orldway !
   ```
+  -/
 
 vc-preamble: |-
 
@@ -46,23 +48,23 @@ vc-theorems: |-
     (String.join words).splitOn " " = 
       words.map (λ w => (w.drop 1) ++ (w.take 1) ++ "ay") := sorry
   
-  /--
+  /-
   info: 'igPay atinlay siay oolcay'
   -/
-  #guard_msgs in
-  #eval pig_it "Pig latin is cool"
+  -- #guard_msgs in
+  -- #eval pig_it "Pig latin is cool"
   
-  /--
+  /-
   info: 'hisTay siay ymay tringsay'
   -/
-  #guard_msgs in
-  #eval pig_it "This is my string"
+  -- #guard_msgs in
+  -- #eval pig_it "This is my string"
   
-  /--
+  /-
   info: 'elloHay orldway !'
   -/
-  #guard_msgs in
-  #eval pig_it "Hello world !"
+  -- #guard_msgs in
+  -- #eval pig_it "Hello world !"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

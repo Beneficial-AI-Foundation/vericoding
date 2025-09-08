@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The Leetcode file system keeps a log each time some user performs a change folder operation.
   The operations are described below:
   
@@ -32,6 +33,7 @@ vc-description: |-
   logs[i] contains lowercase English letters, digits, '.', and '/'.
   logs[i] follows the format described in the statement.
   Folder names consist of lowercase English letters and digits.
+  -/
 
 vc-preamble: |-
 
@@ -52,23 +54,23 @@ vc-theorems: |-
   theorem current_directory_neutral (logs : List String) :
     min_operations logs = min_operations (logs ++ ["./"])  := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_operations ["d1/", "d2/", "../", "d21/", "./"]
+  -- #guard_msgs in
+  -- #eval min_operations ["d1/", "d2/", "../", "d21/", "./"]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval min_operations ["d1/", "d2/", "./", "d3/", "../", "d31/"]
+  -- #guard_msgs in
+  -- #eval min_operations ["d1/", "d2/", "./", "d3/", "../", "d31/"]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_operations ["d1/", "../", "../", "../"]
+  -- #guard_msgs in
+  -- #eval min_operations ["d1/", "../", "../", "../"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

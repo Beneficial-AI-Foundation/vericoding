@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Codefortia is a small island country located somewhere in the West Pacific. It consists of $n$ settlements connected by $m$ bidirectional gravel roads. Curiously enough, the beliefs of the inhabitants require the time needed to pass each road to be equal either to $a$ or $b$ seconds. It's guaranteed that one can go between any pair of settlements by following a sequence of roads.
   
   Codefortia was recently struck by the financial crisis. Therefore, the king decided to abandon some of the roads so that:
@@ -45,6 +46,7 @@ vc-description: |-
   -----Note-----
   
   The minimum possible sum of times required to pass each road in the first example is $85$ — exactly one of the roads with passing time $25$ must be abandoned. Note that after one of these roads is abandoned, it's now impossible to travel between settlements $1$ and $3$ in time $50$.
+  -/
 
 vc-preamble: |-
 
@@ -77,23 +79,23 @@ vc-theorems: |-
     ∀ x ∈ result, x ≥ 0 :=
   sorry
   
-  /--
+  /-
   info: [0, 25, 60, 40, 20]
   -/
-  #guard_msgs in
-  #eval solve_codefortia 5 5 20 25 [(1, 2, 25), (2, 3, 25), (3, 4, 20), (4, 5, 20), (5, 1, 20)]
+  -- #guard_msgs in
+  -- #eval solve_codefortia 5 5 20 25 [(1, 2, 25), (2, 3, 25), (3, 4, 20), (4, 5, 20), (5, 1, 20)]
   
-  /--
+  /-
   info: [0, 13, 26, 39, 26, 13]
   -/
-  #guard_msgs in
-  #eval solve_codefortia 6 7 13 22 [(1, 2, 13), (2, 3, 13), (1, 4, 22), (3, 4, 13), (4, 5, 13), (5, 6, 13), (6, 1, 13)]
+  -- #guard_msgs in
+  -- #eval solve_codefortia 6 7 13 22 [(1, 2, 13), (2, 3, 13), (1, 4, 22), (3, 4, 13), (4, 5, 13), (5, 6, 13), (6, 1, 13)]
   
-  /--
+  /-
   info: [0, 1]
   -/
-  #guard_msgs in
-  #eval solve_codefortia 2 1 1 2 [(2, 1, 1)]
+  -- #guard_msgs in
+  -- #eval solve_codefortia 2 1 1 2 [(2, 1, 1)]
 
 vc-postamble: |-
   -- Apps difficulty: competition

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ###Story
   Sometimes we are faced with problems when we have a big nested dictionary with which it's hard to work. Now, we need to solve this problem by writing a function that will flatten a given dictionary.
   
@@ -44,6 +45,7 @@ vc-description: |-
   flatten({"key": {"deeper": {"more": {"enough": "value"}}}}) == {"key/deeper/more/enough": "value"}
   flatten({"empty": {}}) == {"empty": ""}
   ```
+  -/
 
 vc-preamble: |-
   def flatten {α : Type} [ToString α] (d : Dict α (Dict α String)) : Dict α String :=
@@ -82,29 +84,29 @@ vc-theorems: |-
     Dict.mk (λ s => if s = "key" then some "" else none) :=
     sorry
   
-  /--
+  /-
   info: {'key': 'value'}
   -/
-  #guard_msgs in
-  #eval flatten {"key": "value"}
+  -- #guard_msgs in
+  -- #eval flatten {"key": "value"}
   
-  /--
+  /-
   info: {'key/deeper/more/enough': 'value'}
   -/
-  #guard_msgs in
-  #eval flatten {"key": {"deeper": {"more": {"enough": "value"}}}}
+  -- #guard_msgs in
+  -- #eval flatten {"key": {"deeper": {"more": {"enough": "value"}}}}
   
-  /--
+  /-
   info: {'empty': ''}
   -/
-  #guard_msgs in
-  #eval flatten {"empty": {}}
+  -- #guard_msgs in
+  -- #eval flatten {"empty": {}}
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval flatten {"name": {"first": "One", "last": "Drone"}, "job": "scout", "recent": {}, "additional": {"place": {"zone": "1", "cell": "2"}}}
+  -- #guard_msgs in
+  -- #eval flatten {"name": {"first": "One", "last": "Drone"}, "job": "scout", "recent": {}, "additional": {"place": {"zone": "1", "cell": "2"}}}
 
 vc-postamble: |-
   -- Apps difficulty: introductory

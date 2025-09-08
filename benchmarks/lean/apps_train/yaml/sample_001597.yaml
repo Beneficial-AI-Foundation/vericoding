@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   With your birthday coming up soon, your eccentric friend sent you a message to say "happy birthday":
   
       hhhappyyyy biirrrrrthddaaaayyyyyyy to youuuu
@@ -15,6 +16,7 @@ vc-description: |-
   Write a function called `countSubsequences` that takes two arguments: `needle`, the string to be search for and `haystack`, the string to search in. In our example, `"happy birthday"` is the needle and the birthday message is the haystack. The function should return the number of times `needle` occurs as a sub-sequence of `haystack`.  Spaces are also considered part of the needle.
   
   Since the answers can be very large, return only the last 8 digits of the answer in case it exceeds 8 digits. The answers to the test cases will all be shorter than 8 digits.
+  -/
 
 vc-preamble: |-
 
@@ -50,23 +52,23 @@ vc-theorems: |-
     count_subsequences s repeated ≥ 1 :=
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_subsequences "happy birthday" "appyh appy birth day"
+  -- #guard_msgs in
+  -- #eval count_subsequences "happy birthday" "appyh appy birth day"
   
-  /--
+  /-
   info: 2048
   -/
-  #guard_msgs in
-  #eval count_subsequences "happy birthday" "hhaappyy bbiirrtthhddaayy"
+  -- #guard_msgs in
+  -- #eval count_subsequences "happy birthday" "hhaappyy bbiirrtthhddaayy"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_subsequences "happy birthday" "happy holidays"
+  -- #guard_msgs in
+  -- #eval count_subsequences "happy birthday" "happy holidays"
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Overview
   
   The goal here is to solve a puzzle (the "pieces of paper" kind of puzzle). You will receive different pieces of that puzzle as input, and you will have to find in what order you have to rearrange them so that the "picture" of the puzzle is complete.
@@ -82,6 +83,7 @@ vc-description: |-
   * Be careful about performances, you'll have to handle rather big puzzles.
   * Width and height will be between 2 and 100 (inclusive)
   * The puzzle may be rectangular too
+  -/
 
 vc-preamble: |-
   def getMatchingPieces (pieces: List Piece) : Piece → Bool := sorry

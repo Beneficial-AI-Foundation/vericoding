@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A rectangle with sides $A$ and $B$ is cut into rectangles with cuts parallel to its sides. For example, if $p$ horizontal and $q$ vertical cuts were made, $(p + 1) \cdot (q + 1)$ rectangles were left after the cutting. After the cutting, rectangles were of $n$ different types. Two rectangles are different if at least one side of one rectangle isn't equal to the corresponding side of the other. Note that the rectangle can't be rotated, this means that rectangles $a \times b$ and $b \times a$ are considered different if $a \neq b$.
   
   For each type of rectangles, lengths of the sides of rectangles are given along with the amount of the rectangles of this type that were left after cutting the initial rectangle.
@@ -52,6 +53,7 @@ vc-description: |-
    [Image] 
   
   The third sample has no suitable pairs.
+  -/
 
 vc-preamble: |-
   def count_rectangle_pairs (n : Nat) (rectangles : List (Nat × Nat × Nat)) : Nat :=
@@ -85,23 +87,23 @@ vc-theorems: |-
         (List.tail! rectangles |>.map (fun r => r.2.2)) :=
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_rectangle_pairs 1 [(1, 1, 9)]
+  -- #guard_msgs in
+  -- #eval count_rectangle_pairs 1 [(1, 1, 9)]
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval count_rectangle_pairs 2 [(2, 3, 20), (2, 4, 40)]
+  -- #guard_msgs in
+  -- #eval count_rectangle_pairs 2 [(2, 3, 20), (2, 4, 40)]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_rectangle_pairs 2 [(1, 2, 5), (2, 3, 5)]
+  -- #guard_msgs in
+  -- #eval count_rectangle_pairs 2 [(1, 2, 5), (2, 3, 5)]
 
 vc-postamble: |-
   -- Apps difficulty: competition

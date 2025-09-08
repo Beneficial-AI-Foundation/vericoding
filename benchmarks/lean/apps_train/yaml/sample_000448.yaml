@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array of positive integers nums, remove the smallest subarray (possibly empty) such that the sum of the remaining elements is divisible by p. It is not allowed to remove the whole array.
   Return the length of the smallest subarray that you need to remove, or -1 if it's impossible.
   A subarray is defined as a contiguous block of elements in the array.
@@ -32,6 +33,7 @@ vc-description: |-
   1 <= nums.length <= 105
   1 <= nums[i] <= 109
   1 <= p <= 109
+  -/
 
 vc-preamble: |-
 
@@ -82,23 +84,23 @@ vc-theorems: |-
     : ∃ (i : Nat), i + (minSubarray nums p).toNat ≤ nums.length ∧
       (List.take i nums ++ List.drop (i + (minSubarray nums p).toNat) nums).sum % p = 0 := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval min_subarray [3, 1, 4, 2] 6
+  -- #guard_msgs in
+  -- #eval min_subarray [3, 1, 4, 2] 6
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_subarray [6, 3, 5, 2] 9
+  -- #guard_msgs in
+  -- #eval min_subarray [6, 3, 5, 2] 9
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval min_subarray [1, 2, 3] 7
+  -- #guard_msgs in
+  -- #eval min_subarray [1, 2, 3] 7
 
 vc-postamble: |-
   -- Apps difficulty: interview

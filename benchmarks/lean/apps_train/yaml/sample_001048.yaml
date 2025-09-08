@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   $Jaggu$ monkey a friend of $Choota$ $Bheem$ a great warrior of $Dholakpur$. He gets everything he wants. Being a friend of $Choota$ $Bheem$ he never has to struggle for anything, because of this he is in a great debt of $Choota$ $Bheem$, he really wants to pay his debt off.
   Finally the time has come to pay his debt off, $Jaggu$ is on a magical tree. He wants to collect apples from different branches but he is in a hurry. $Botakpur$ has attacked on $Dholakpur$ and $Bheem$ is severely injured, as been instructed by the village witch, $Bheem$ can only be saved by the apples of the magical tree. Each apple is placed in Tree Node structure and each apple has some sweetness. Now there's a problem as $Jaggu$ is also injured so he can only slide downwards and alse is collecting apples in his hand so he can't climb. You would be given $Q$ queries. Queries are of 2 type :-
   - 
@@ -59,6 +60,7 @@ vc-description: |-
   /        /    \     
   
   9         7        6
+  -/
 
 vc-preamble: |-
   def solve_tree_queries (n : Nat) (sweetness : List Int) (edges : List (Nat × Nat))

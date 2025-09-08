@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Congratulations! That Special Someone has given you their phone number.
   
   But WAIT, is it a valid number? 
@@ -18,6 +19,7 @@ vc-description: |-
   And sometimes you will find numbers with dashes in-between digits or on either side, e.g. '+44--745---487-6120' or '-074-54-87-61-20-'. As you can see, dashes may be consecutive. 
   
   Good Luck Romeo/Juliette!
+  -/
 
 vc-preamble: |-
   def validateNumber (phone : String) : String := sorry
@@ -59,35 +61,35 @@ vc-theorems: |-
     validateNumber phone = YES :=
   sorry
   
-  /--
+  /-
   info: 'In with a chance'
   -/
-  #guard_msgs in
-  #eval validate_number "07454876120"
+  -- #guard_msgs in
+  -- #eval validate_number "07454876120"
   
-  /--
+  /-
   info: 'In with a chance'
   -/
-  #guard_msgs in
-  #eval validate_number "0745--487-61-20"
+  -- #guard_msgs in
+  -- #eval validate_number "0745--487-61-20"
   
-  /--
+  /-
   info: 'In with a chance'
   -/
-  #guard_msgs in
-  #eval validate_number "+447535514555"
+  -- #guard_msgs in
+  -- #eval validate_number "+447535514555"
   
-  /--
+  /-
   info: 'Plenty more fish in the sea'
   -/
-  #guard_msgs in
-  #eval validate_number "0754876120"
+  -- #guard_msgs in
+  -- #eval validate_number "0754876120"
   
-  /--
+  /-
   info: 'Plenty more fish in the sea'
   -/
-  #guard_msgs in
-  #eval validate_number "+337535512555"
+  -- #guard_msgs in
+  -- #eval validate_number "+337535512555"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

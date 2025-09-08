@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ##Background - the Collatz Conjecture:
   
   Imagine you are given a positive integer, `n`, then:
@@ -32,6 +33,7 @@ vc-description: |-
   Given an array: `[2, 5, 32]`, both `5` and `32` have Collatz sequences of length 5. These are also the longest sequences from our array.
   
   In this case, our function returns `5`, because `5` comes before `32` in our array.
+  -/
 
 vc-preamble: |-
   def collatzLength (n : Nat) : Nat :=
@@ -60,23 +62,23 @@ vc-theorems: |-
     longestCollatz l = n :=
     sorry
   
-  /--
+  /-
   info: 27
   -/
-  #guard_msgs in
-  #eval longest_collatz [1, 5, 27, 4]
+  -- #guard_msgs in
+  -- #eval longest_collatz [1, 5, 27, 4]
   
-  /--
+  /-
   info: 27
   -/
-  #guard_msgs in
-  #eval longest_collatz [64, 64, 27, 64]
+  -- #guard_msgs in
+  -- #eval longest_collatz [64, 64, 27, 64]
   
-  /--
+  /-
   info: 75
   -/
-  #guard_msgs in
-  #eval longest_collatz [75, 226, 113, 340]
+  -- #guard_msgs in
+  -- #eval longest_collatz [75, 226, 113, 340]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Introduction to Disjunctions
   In logic and mathematics, a disjunction is an operation on 2 or more propositions.  A disjunction is true if and only if 1 or more of its operands is true.  In programming, we typically denote a disjunction using "||", but in logic we typically use "v".
   Example of disjunction:
@@ -24,6 +25,7 @@ vc-description: |-
   
   Should take a boolean array as its first parameter and a single boolean as its second parameter, which, if true, should indicate that the disjunction should be exclusive as opposed to inclusive.
   Should return true or false.
+  -/
 
 vc-preamble: |-
 
@@ -48,23 +50,23 @@ vc-theorems: |-
   theorem disjunction_empty_error
     : ¬∃ (b: Bool), ∃ (res: Bool), disjunction [] b = res := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval disjunction [False, True, False] False
+  -- #guard_msgs in
+  -- #eval disjunction [False, True, False] False
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval disjunction [False, True, True, True] True
+  -- #guard_msgs in
+  -- #eval disjunction [False, True, True, True] True
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval disjunction [True, True, True, True] True
+  -- #guard_msgs in
+  -- #eval disjunction [True, True, True, True] True
 
 vc-postamble: |-
   -- Apps difficulty: introductory

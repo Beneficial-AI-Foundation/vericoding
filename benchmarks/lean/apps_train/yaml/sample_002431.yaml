@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   At a lemonade stand, each lemonade costs $5. 
   Customers are standing in a queue to buy from you, and order one at a time (in the order specified by bills).
   Each customer will only buy one lemonade and pay with either a $5, $10, or $20 bill.  You must provide the correct change to each customer, so that the net transaction is that the customer pays $5.
@@ -35,6 +36,7 @@ vc-description: |-
   
   0 <= bills.length <= 10000
   bills[i] will be either 5, 10, or 20.
+  -/
 
 vc-preamble: |-
 
@@ -74,23 +76,23 @@ vc-theorems: |-
   theorem lemonade_change_all_fives (n : Nat) :
     lemonade_change (List.replicate n 5) = true := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval lemonade_change [5, 5, 5, 10, 20]
+  -- #guard_msgs in
+  -- #eval lemonade_change [5, 5, 5, 10, 20]
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval lemonade_change [5, 5, 10]
+  -- #guard_msgs in
+  -- #eval lemonade_change [5, 5, 10]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval lemonade_change [5, 5, 10, 10, 20]
+  -- #guard_msgs in
+  -- #eval lemonade_change [5, 5, 10, 10, 20]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

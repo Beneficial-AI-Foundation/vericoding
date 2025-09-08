@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Salmon is playing a game!
   He is given two integers $N$ and $K$. His goal is to output $K$ pairs $(x_i,y_i)$. He creates a function $f$ such that $f(x_i) = y_i$ and $f$ is undefined for all other values of $x$. His pairs must then meet the following conditions:
   - All $x_i$ are distinct.
@@ -51,6 +52,7 @@ vc-description: |-
   
   -----Explanation-----
   In the answer to the first testcase, there are 7 pairs. $x_i$ and $y_i$ are all in the range $[0,2^3 - 1]$, which is the range $[0,7]$. All values of $x_i$ are distinct, and all values of $y_i$ are distinct. However, note that some integers appear in both lists. For example, 5 appears both as $x_1$ and as $y_4$. This is allowed. For all $x_i$, $f(f(x_i))$ is defined and $H(f(f(x_i))) \neq H(x_i)$. For example, $f(f(7)) = 4$. $H(7) = 3$, but $H(4) = 1$. Therefore, $H(f(f(7))) \neq H(7)$, as desired.
+  -/
 
 vc-preamble: |-
 
@@ -101,23 +103,23 @@ vc-theorems: |-
         vertices.get? i = some v1 ∧ 
         vertices.get? (i+1) = some v2 := sorry
   
-  /--
+  /-
   info: k
   -/
-  #guard_msgs in
-  #eval len solve_salmon_game(n, k)
+  -- #guard_msgs in
+  -- #eval len solve_salmon_game(n, k)
   
-  /--
+  /-
   info: k
   -/
-  #guard_msgs in
-  #eval len solve_salmon_game(n, k)
+  -- #guard_msgs in
+  -- #eval len solve_salmon_game(n, k)
   
-  /--
+  /-
   info: k
   -/
-  #guard_msgs in
-  #eval len solve_salmon_game(n, k)
+  -- #guard_msgs in
+  -- #eval len solve_salmon_game(n, k)
 
 vc-postamble: |-
   -- Apps difficulty: interview

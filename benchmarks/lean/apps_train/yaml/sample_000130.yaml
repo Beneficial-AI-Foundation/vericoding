@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In a country popular for train travel, you have planned some train travelling one year in advance.  The days of the year that you will travel is given as an array days.  Each day is an integer from 1 to 365.
   Train tickets are sold in 3 different ways:
   
@@ -35,6 +36,7 @@ vc-description: |-
   days is in strictly increasing order.
   costs.length == 3
   1 <= costs[i] <= 1000
+  -/
 
 vc-preamble: |-
 
@@ -79,17 +81,17 @@ vc-theorems: |-
     minCostTickets days costs = min (costs[0]! * 7) (min costs[1]! costs[2]!) :=
     sorry
   
-  /--
+  /-
   info: 11
   -/
-  #guard_msgs in
-  #eval min_cost_tickets [1, 4, 6, 7, 8, 20] [2, 7, 15]
+  -- #guard_msgs in
+  -- #eval min_cost_tickets [1, 4, 6, 7, 8, 20] [2, 7, 15]
   
-  /--
+  /-
   info: 17
   -/
-  #guard_msgs in
-  #eval min_cost_tickets [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 30, 31] [2, 7, 15]
+  -- #guard_msgs in
+  -- #eval min_cost_tickets [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 30, 31] [2, 7, 15]
 
 vc-postamble: |-
   -- Apps difficulty: interview

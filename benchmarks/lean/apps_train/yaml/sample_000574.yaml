@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef has an array A consisting of N integers (1-based indexing). He asks you to perform the following operation M times:
   
   	for i = 2 to N:
@@ -43,6 +44,7 @@ vc-description: |-
   - After the third operation: [1, 5, 15]
   
   Since input file can be fairly large (about 8 MB), it's recommended to use fast I/O (for example, in C++, use scanf/printf instead of cin/cout).
+  -/
 
 vc-preamble: |-
 
@@ -77,23 +79,23 @@ vc-theorems: |-
     solve_array_ops n x m arr = solve_array_ops n x (m + 0) arr :=
   sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval solve_array_ops 3 2 3 [1, 2, 3]
+  -- #guard_msgs in
+  -- #eval solve_array_ops 3 2 3 [1, 2, 3]
   
-  /--
+  /-
   info: 15
   -/
-  #guard_msgs in
-  #eval solve_array_ops 3 3 3 [1, 2, 3]
+  -- #guard_msgs in
+  -- #eval solve_array_ops 3 3 3 [1, 2, 3]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval solve_array_ops 2 2 2 [1, 1]
+  -- #guard_msgs in
+  -- #eval solve_array_ops 2 2 2 [1, 1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A transaction is possibly invalid if:
   
   the amount exceeds $1000, or;
@@ -26,6 +27,7 @@ vc-description: |-
   Each {name} and {city} consist of lowercase English letters, and have lengths between 1 and 10.
   Each {time} consist of digits, and represent an integer between 0 and 1000.
   Each {amount} consist of digits, and represent an integer between 0 and 2000.
+  -/
 
 vc-preamble: |-
   def Transaction.array (t : Transaction) : String := sorry

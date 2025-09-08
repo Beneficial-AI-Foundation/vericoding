@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We define the function `f1(n,k)`, as the least multiple of `n` that has all its digits less than `k`. 
   
   We define the function `f2(n,k)`, as the least multiple of `n` that has all the digits that are less than `k`.
@@ -47,6 +48,7 @@ vc-description: |-
   * A total of 150 random tests in the ranges for `n` and `k` given above.
   
   I'll be waiting your awesome solution. :)
+  -/
 
 vc-preamble: |-
   def find_f1_eq_f2 (n : Nat) (k : Nat) : Nat := sorry
@@ -71,23 +73,23 @@ vc-theorems: |-
   theorem find_f1_eq_f2_greater_than_input (n k : Nat) :
     find_f1_eq_f2 n k ≥ n := sorry
   
-  /--
+  /-
   info: 547
   -/
-  #guard_msgs in
-  #eval find_f1_eq_f2 542 5
+  -- #guard_msgs in
+  -- #eval find_f1_eq_f2 542 5
   
-  /--
+  /-
   info: 1799
   -/
-  #guard_msgs in
-  #eval find_f1_eq_f2 1750 6
+  -- #guard_msgs in
+  -- #eval find_f1_eq_f2 1750 6
   
-  /--
+  /-
   info: 14996
   -/
-  #guard_msgs in
-  #eval find_f1_eq_f2 14990 7
+  -- #guard_msgs in
+  -- #eval find_f1_eq_f2 14990 7
 
 vc-postamble: |-
   -- Apps difficulty: introductory

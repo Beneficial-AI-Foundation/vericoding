@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Sereja has an array A of N positive integers : A[1], A[2], A[3], ... , A[N]. 
   
   In a single operation on the array, he performs the following two steps :  
@@ -44,6 +45,7 @@ vc-description: |-
   -  Pick i = 3, j = 2. A[3] -= A[2]. Now the resulting array would be [2, 2, 2]. 
   
   As the resulting array is [2 2 2], so the sum is 6.
+  -/
 
 vc-preamble: |-
 
@@ -63,23 +65,23 @@ vc-theorems: |-
   theorem same_number {n : Nat} {x : Nat} (h : n ≥ 2) (h₁ : x > 0) :
     find_minimum_array_sum (List.replicate n x) = n * x := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval find_minimum_array_sum [1]
+  -- #guard_msgs in
+  -- #eval find_minimum_array_sum [1]
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval find_minimum_array_sum [2, 4, 6]
+  -- #guard_msgs in
+  -- #eval find_minimum_array_sum [2, 4, 6]
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval find_minimum_array_sum [3, 6, 9, 12]
+  -- #guard_msgs in
+  -- #eval find_minimum_array_sum [3, 6, 9, 12]
 
 vc-postamble: |-
   -- Apps difficulty: interview

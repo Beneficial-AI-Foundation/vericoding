@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a sequence of numbers, find the largest pair sum in the sequence.
   
   For example
@@ -8,6 +9,7 @@ vc-description: |-
   ```
   
   Input sequence contains minimum two elements and every element is an integer.
+  -/
 
 vc-preamble: |-
   def largest_pair_sum (l : List Int) : Int :=
@@ -47,23 +49,23 @@ vc-theorems: |-
     largest_pair_sum l ≥ 0 :=
   sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval largest_pair_sum [10, 14, 2, 23, 19]
+  -- #guard_msgs in
+  -- #eval largest_pair_sum [10, 14, 2, 23, 19]
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval largest_pair_sum [-100, -29, -24, -19, 19]
+  -- #guard_msgs in
+  -- #eval largest_pair_sum [-100, -29, -24, -19, 19]
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval largest_pair_sum [-10, -8, -16, -18, -19]
+  -- #guard_msgs in
+  -- #eval largest_pair_sum [-10, -8, -16, -18, -19]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef has come to a 2 dimensional garden in which there are N points. Each point has coordinates (x, y), where x can either be 1 or 2 or 3. Chef will now choose every triplet of these N points and make a triangle from it. You need to tell the sum of areas of all the triangles the Chef makes.
   Note that some of the triplets might not form proper triangles, and would end up as a line or a point (ie. degenerate), but that is fine because their area will be zero.
   
@@ -42,6 +43,7 @@ vc-description: |-
   -  area BCD = 0.5
   -  area ACD = 1
   Total area = 2
+  -/
 
 vc-preamble: |-
 

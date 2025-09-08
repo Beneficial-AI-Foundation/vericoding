@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Following on from [Part 1](http://www.codewars.com/kata/filling-an-array-part-1/), part 2 looks at some more complicated array contents.
   
   So let's try filling an array with...
@@ -16,6 +17,7 @@ vc-description: |-
   All primes starting from `2` (obviously)...
   
   HOTE: All the above functions should take as their first parameter a number that determines the length of the returned array.
+  -/
 
 vc-preamble: |-
   def squares : Nat → List Nat
@@ -73,35 +75,35 @@ vc-theorems: |-
     (primes n).get ⟨i, sorry⟩ < (primes n).get ⟨i + 1, sorry⟩ := by
     sorry
   
-  /--
+  /-
   info: [1, 4, 9, 16, 25]
   -/
-  #guard_msgs in
-  #eval squares 5
+  -- #guard_msgs in
+  -- #eval squares 5
   
-  /--
+  /-
   info: [1, 4, 9]
   -/
-  #guard_msgs in
-  #eval squares 3
+  -- #guard_msgs in
+  -- #eval squares 3
   
-  /--
+  /-
   info: [0, 1, 2, 3, 4]
   -/
-  #guard_msgs in
-  #eval num_range 5 0 1
+  -- #guard_msgs in
+  -- #eval num_range 5 0 1
   
-  /--
+  /-
   info: [2, 4, 6]
   -/
-  #guard_msgs in
-  #eval num_range 3 2 2
+  -- #guard_msgs in
+  -- #eval num_range 3 2 2
   
-  /--
+  /-
   info: [2, 3, 5, 7, 11]
   -/
-  #guard_msgs in
-  #eval primes 5
+  -- #guard_msgs in
+  -- #eval primes 5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

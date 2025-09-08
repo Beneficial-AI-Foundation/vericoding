@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    You are given a binary string (a string consisting of only '1' and '0'). The only operation that can be performed on it is a Flip operation. 
   
@@ -32,6 +33,7 @@ vc-description: |-
    - `[output]` an integer
   
     The minimum number of flips required.
+  -/
 
 vc-preamble: |-
 
@@ -62,23 +64,23 @@ vc-theorems: |-
   theorem bin_str_alternating (n : Nat) (h : n > 0) :
     bin_str (String.mk (List.join (List.replicate n ['1', '0']))) = 2 * n := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval bin_str "0101"
+  -- #guard_msgs in
+  -- #eval bin_str "0101"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval bin_str "10000"
+  -- #guard_msgs in
+  -- #eval bin_str "10000"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval bin_str "0000000000"
+  -- #guard_msgs in
+  -- #eval bin_str "0000000000"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Ujan has a lot of useless stuff in his drawers, a considerable part of which are his math notebooks: it is time to sort them out. This time he found an old dusty graph theory notebook with a description of a graph.
   
   It is an undirected weighted graph on $n$ vertices. It is a complete graph: each pair of vertices is connected by an edge. The weight of each edge is either $0$ or $1$; exactly $m$ edges have weight $1$, and all others have weight $0$.
@@ -46,6 +47,7 @@ vc-description: |-
   The graph from the first sample is shown below. Dashed edges have weight $0$, other edges have weight $1$. One of the minimum spanning trees is highlighted in orange and has total weight $2$. [Image] 
   
   In the second sample, all edges have weight $0$ so any spanning tree has total weight $0$.
+  -/
 
 vc-preamble: |-
 
@@ -79,23 +81,23 @@ vc-theorems: |-
     (min_spanning_tree 3 [(1,2), (2,3)] = 1) :=
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_spanning_tree 6 [(1, 3), (1, 4), (1, 5), (1, 6), (2, 3), (2, 4), (2, 5), (2, 6), (3, 4), (3, 5), (3, 6)]
+  -- #guard_msgs in
+  -- #eval min_spanning_tree 6 [(1, 3), (1, 4), (1, 5), (1, 6), (2, 3), (2, 4), (2, 5), (2, 6), (3, 4), (3, 5), (3, 6)]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_spanning_tree 3 []
+  -- #guard_msgs in
+  -- #eval min_spanning_tree 3 []
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval min_spanning_tree 5 [(1, 2), (2, 3), (3, 4), (4, 5), (5, 1), (1, 3), (2, 4), (3, 5), (4, 1), (5, 2)]
+  -- #guard_msgs in
+  -- #eval min_spanning_tree 5 [(1, 2), (2, 3), (3, 4), (4, 5), (5, 1), (1, 3), (2, 4), (3, 5), (4, 1), (5, 2)]
 
 vc-postamble: |-
   -- Apps difficulty: competition

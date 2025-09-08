@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   When you were little, your mother used to make the most delicious cookies, which you could not resist. So, every now and then, when your mother didn't see you, you sneaked into the kitchen, climbed onto a stool to reach the cookie jar, and stole a cookie or two. However, sometimes while doing this, you would hear foot steps approaching, so you quickly jumped down from the stool and, when your mother entered the kitchen, you pretended as if nothing had happened (whistle, whistle innocently). However, your mother knew. How did she know? You forgot to put the lid back on the cookie jar! Oh, no!
   
   Growing older (and still not able to resist your mother's cookies), you deviced a contraption that would automatically put the lid back on the cookie jar, _no matter what would happen_.
@@ -35,6 +36,7 @@ vc-description: |-
   Do not alter the provided code. (Tests will be performed with a code that differs slightly from the one provided, so modifying it is to no avail.)
   
   Enjoy!
+  -/
 
 vc-preamble: |-
   def CookieJar.is_open : CookieJar → Bool 

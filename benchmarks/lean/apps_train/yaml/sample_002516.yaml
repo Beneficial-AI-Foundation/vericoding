@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Function Descriptions=====
   itertools.combinations_with_replacement(iterable, r)
   This tool returns
@@ -31,6 +32,7 @@ vc-description: |-
   
   =====Output Format=====
   Print the combinations with their replacements of string S on separate lines.
+  -/
 
 vc-preamble: |-
   def get_combinations_with_replacement (s : String) (k : Nat) : String := sorry

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Share price
   ===========
   
@@ -19,6 +20,7 @@ vc-description: |-
   Have fun!
   
   >**Hint:** Try to write the function in a functional manner!
+  -/
 
 vc-preamble: |-
   def share_price (invested : Float) (changes : List Float) : String :=
@@ -46,23 +48,23 @@ vc-theorems: |-
     (h : invested > 0) :
     share_price invested [] = toString invested ++ "." ++ "00" := sorry
   
-  /--
+  /-
   info: '100.00'
   -/
-  #guard_msgs in
-  #eval share_price 100 []
+  -- #guard_msgs in
+  -- #eval share_price 100 []
   
-  /--
+  /-
   info: '75.00'
   -/
-  #guard_msgs in
-  #eval share_price 100 [-50, 50]
+  -- #guard_msgs in
+  -- #eval share_price 100 [-50, 50]
   
-  /--
+  /-
   info: '1113.64'
   -/
-  #guard_msgs in
-  #eval share_price 1000 [0, 2, 3, 6]
+  -- #guard_msgs in
+  -- #eval share_price 1000 [0, 2, 3, 6]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

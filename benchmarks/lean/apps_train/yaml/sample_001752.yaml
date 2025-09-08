@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a rooted binary tree, return the lowest common ancestor of its deepest leaves.
   Recall that:
   
@@ -26,6 +27,7 @@ vc-description: |-
   
   The given tree will have between 1 and 1000 nodes.
   Each node of the tree will have a distinct value between 1 and 1000.
+  -/
 
 vc-preamble: |-
   def build_tree (values : List Int) : Option TreeNode := sorry

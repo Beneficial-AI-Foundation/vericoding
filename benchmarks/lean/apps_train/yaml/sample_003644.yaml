@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There is a house with 4 levels.
   In that house there is an elevator.
   You can program this elevator to go up or down,
@@ -35,6 +36,7 @@ vc-description: |-
   - `goto(undefined,'2')` must return 0.
   - `goto([],'2')` must return 0 because the type of the input level is array instead of a number.
   - `goto(3,{})` must return 0 because the type of the input button is object instead of a string.
+  -/
 
 vc-preamble: |-
 
@@ -69,29 +71,29 @@ vc-theorems: |-
     (h : 0 ≤ level ∧ level ≤ 3) :
     goto level "" = 0 := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval goto 0 "2"
+  -- #guard_msgs in
+  -- #eval goto 0 "2"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval goto 2 "4"
+  -- #guard_msgs in
+  -- #eval goto 2 "4"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval goto 4 "2"
+  -- #guard_msgs in
+  -- #eval goto 4 "2"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval goto [] "2"
+  -- #guard_msgs in
+  -- #eval goto [] "2"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Mikhail walks on a Cartesian plane. He starts at the point $(0, 0)$, and in one move he can go to any of eight adjacent points. For example, if Mikhail is currently at the point $(0, 0)$, he can go to any of the following points in one move:   $(1, 0)$;  $(1, 1)$;  $(0, 1)$;  $(-1, 1)$;  $(-1, 0)$;  $(-1, -1)$;  $(0, -1)$;  $(1, -1)$. 
   
   If Mikhail goes from the point $(x1, y1)$ to the point $(x2, y2)$ in one move, and $x1 \ne x2$ and $y1 \ne y2$, then such a move is called a diagonal move.
@@ -36,6 +37,7 @@ vc-description: |-
   One of the possible answers to the second test case: $(0, 0) \to (0, 1) \to (1, 2) \to (0, 3) \to (1, 4) \to (2, 3) \to (3, 2) \to (4, 3)$.
   
   In the third test case Mikhail cannot reach the point $(10, 1)$ in 9 moves.
+  -/
 
 vc-preamble: |-
   def solve_max_diagonal_moves (n m k : Int) : Int :=
@@ -71,23 +73,23 @@ vc-theorems: |-
     let r4 := solve_max_diagonal_moves (-n) (-m) k
     r1 = r2 ∧ r2 = r3 ∧ r3 = r4 := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve_max_diagonal_moves 2 2 3
+  -- #guard_msgs in
+  -- #eval solve_max_diagonal_moves 2 2 3
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval solve_max_diagonal_moves 4 3 7
+  -- #guard_msgs in
+  -- #eval solve_max_diagonal_moves 4 3 7
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval solve_max_diagonal_moves 10 1 9
+  -- #guard_msgs in
+  -- #eval solve_max_diagonal_moves 10 1 9
 
 vc-postamble: |-
   -- Apps difficulty: interview

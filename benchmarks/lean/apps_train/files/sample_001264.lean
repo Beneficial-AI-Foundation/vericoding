@@ -1,0 +1,81 @@
+/-
+Raj is suffering from shot term memory loss so  he is unable to remember his laptop password  but he has a list of some string and the only thing that he remember about his password is alphanumeric and also that all the characters are unique.
+Given a list of strings, your task is to find a valid password.
+
+-----Input-----
+Each String contains lower case alphabets and 0-9.
+
+-----Output-----
+print "Invalid"(without quotes) if password is not valid else print "Valid"(without quotes) and stop processing input after it.
+
+-----Constraints-----
+1<=length of string <=100
+
+-----Example-----
+Input:
+absdbads
+asdjenfef
+tyerbet
+abc564
+
+Output:
+Invalid
+Invalid
+Invalid
+Valid
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def check_valid_password (s : String) : PasswordResult :=
+  sorry
+
+theorem empty_string_invalid :
+  check_valid_password "" = PasswordResult.Invalid := by
+  sorry
+
+theorem duplicate_chars_invalid (s : String) (h: s.length ≥ 2) 
+  (h2: ∃ c, c ∈ s.data) : 
+  let s' := s ++ (String.mk [s.data[0]!]) 
+  check_valid_password s' = PasswordResult.Invalid := by
+  sorry
+
+theorem unique_alphanumeric_valid (s : String) 
+  (h1: s.length > 0)
+  (h2: ∀ c ∈ s.data, c.isAlphanum)
+  (h3: ∀ i j, i < s.length → j < s.length → i ≠ j → s.data[i]! ≠ s.data[j]!) :
+  check_valid_password s = PasswordResult.Valid := by
+  sorry
+
+theorem non_alphanumeric_invalid (s : String)
+  (h1: s.length > 0) 
+  (h2: ∃ c ∈ s.data, !c.isAlphanum) :
+  check_valid_password s = PasswordResult.Invalid := by
+  sorry
+
+theorem result_is_valid_or_invalid (s : String) :
+  (check_valid_password s = PasswordResult.Valid) ∨ 
+  (check_valid_password s = PasswordResult.Invalid) := by
+  sorry
+
+/-
+info: expected[i]
+-/
+-- #guard_msgs in
+-- #eval check_valid_password passwords[i]
+
+/-
+info: 'Valid'
+-/
+-- #guard_msgs in
+-- #eval check_valid_password "abc123"
+
+/-
+info: 'Invalid'
+-/
+-- #guard_msgs in
+-- #eval check_valid_password "abcc123"
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

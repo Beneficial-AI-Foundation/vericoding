@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You have a string $s$ consisting of $n$ characters. Each character is either 0 or 1.
   
   You can perform operations on the string. Each operation consists of two steps:  select an integer $i$ from $1$ to the length of the string $s$, then delete the character $s_i$ (the string length gets reduced by $1$, the indices of characters to the right of the deleted one also get reduced by $1$);  if the string $s$ is not empty, delete the maximum length prefix consisting of the same characters (the indices of the remaining characters and the string length get reduced by the length of the deleted prefix). 
@@ -47,6 +48,7 @@ vc-description: |-
   -----Note-----
   
   In the first test case, you can, for example, select $i = 2$ and get string 010 after the first operation. After that, you can select $i = 3$ and get string 1. Finally, you can only select $i = 1$ and get empty string.
+  -/
 
 vc-preamble: |-
 
@@ -75,23 +77,23 @@ vc-theorems: |-
     (solve_string_operations (s ++ "1") - solve_string_operations s) ≤ 1 ∧
     (solve_string_operations s - solve_string_operations (s ++ "1")) ≤ 1 := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval solve_string_operations "111010"
+  -- #guard_msgs in
+  -- #eval solve_string_operations "111010"
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve_string_operations "0"
+  -- #guard_msgs in
+  -- #eval solve_string_operations "0"
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval solve_string_operations "101010"
+  -- #guard_msgs in
+  -- #eval solve_string_operations "101010"
 
 vc-postamble: |-
   -- Apps difficulty: interview

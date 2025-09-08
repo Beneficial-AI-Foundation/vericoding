@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef has an array of N integers. He wants to play a special game. In this game he needs to make all the integers in the array greater than or equal to 0. 
   Chef can use two types of operations. The first type is to  increase all the integers of the given array by 1, but it costs X coins. The operation of the second type is to add 1 to only one integer of the given array and to use this operation you need to pay 1 coin. You need to calculate the minimal cost to win this game (to make all integers greater than or equal to 0)  
   
@@ -26,6 +27,7 @@ vc-description: |-
   
   -----Explanation-----
   Example case 1: Use the first type operation twice and the second type once.
+  -/
 
 vc-preamble: |-
 
@@ -42,23 +44,23 @@ vc-theorems: |-
     find_min_cost n arr x ≥ 0 :=
     sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval find_min_cost 3 [-1, -2, -3] 2
+  -- #guard_msgs in
+  -- #eval find_min_cost 3 [-1, -2, -3] 2
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_min_cost 4 [-1, 0, 2, -3] 1
+  -- #guard_msgs in
+  -- #eval find_min_cost 4 [-1, 0, 2, -3] 1
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval find_min_cost 2 [1, 2] 5
+  -- #guard_msgs in
+  -- #eval find_min_cost 2 [1, 2] 5
 
 vc-postamble: |-
   -- Apps difficulty: interview

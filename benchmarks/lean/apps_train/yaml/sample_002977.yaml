@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    Let's call `product(x)` the product of x's digits. Given an array of integers a, calculate `product(x)` for each x in a, and return the number of distinct results you get.
   
@@ -29,6 +30,7 @@ vc-description: |-
    - `[output]` an integer
   
       The number of different digit products in `a`.
+  -/
 
 vc-preamble: |-
   def uniqueDigitProducts (nums : List Nat) : Nat :=
@@ -73,23 +75,23 @@ vc-theorems: |-
     uniqueDigitProducts nums_with_perm ≥ uniqueDigitProducts nums :=
   sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval unique_digit_products [2, 8, 121, 42, 222, 23]
+  -- #guard_msgs in
+  -- #eval unique_digit_products [2, 8, 121, 42, 222, 23]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval unique_digit_products [239]
+  -- #guard_msgs in
+  -- #eval unique_digit_products [239]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval unique_digit_products [100, 101, 111]
+  -- #guard_msgs in
+  -- #eval unique_digit_products [100, 101, 111]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

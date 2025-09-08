@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your friend has been out shopping for puppies (what a time to be alive!)... He arrives back with multiple dogs, and you simply do not know how to respond!
   
   By repairing the function provided, you will find out exactly how you should respond, depending on the number of dogs he has.
@@ -14,6 +15,7 @@ vc-description: |-
   
   Your friend will always have between 1 and 101 dogs, inclusive.
   ```
+  -/
 
 vc-preamble: |-
 
@@ -44,23 +46,23 @@ vc-theorems: |-
   theorem exactly_101 :
     how_many_dalmatians 101 = "101 DALMATIONS!!!" := sorry
   
-  /--
+  /-
   info: 'Hardly any'
   -/
-  #guard_msgs in
-  #eval how_many_dalmatians 8
+  -- #guard_msgs in
+  -- #eval how_many_dalmatians 8
   
-  /--
+  /-
   info: 'More than a handful!'
   -/
-  #guard_msgs in
-  #eval how_many_dalmatians 26
+  -- #guard_msgs in
+  -- #eval how_many_dalmatians 26
   
-  /--
+  /-
   info: '101 DALMATIONS!!!'
   -/
-  #guard_msgs in
-  #eval how_many_dalmatians 101
+  -- #guard_msgs in
+  -- #eval how_many_dalmatians 101
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   To some string S, we will perform some replacement operations that replace groups of letters with new ones (not necessarily the same size).
   Each replacement operation has 3 parameters: a starting index i, a source word x and a target word y.  The rule is that if x starts at position i in the original string S, then we will replace that occurrence of x with y.  If not, we do nothing.
   For example, if we have S = "abcd" and we have some replacement operation i = 2, x = "cd", y = "ffff", then because "cd" starts at position 2 in the original string S, we will replace it with "ffff".
@@ -21,6 +22,7 @@ vc-description: |-
   0 <= indexes.length = sources.length = targets.length <= 100
   0 < indexes[i] < S.length <= 1000
   All characters in given inputs are lowercase letters.
+  -/
 
 vc-preamble: |-
 
@@ -47,23 +49,23 @@ vc-theorems: |-
     (find_replace_string s indexes sources targets).all (fun c => ¬tgt.contains c) := by
     sorry
   
-  /--
+  /-
   info: 'eeebffff'
   -/
-  #guard_msgs in
-  #eval find_replace_string "abcd" [0, 2] ["a", "cd"] ["eee", "ffff"]
+  -- #guard_msgs in
+  -- #eval find_replace_string "abcd" [0, 2] ["a", "cd"] ["eee", "ffff"]
   
-  /--
+  /-
   info: 'eeecd'
   -/
-  #guard_msgs in
-  #eval find_replace_string "abcd" [0, 2] ["ab", "ec"] ["eee", "ffff"]
+  -- #guard_msgs in
+  -- #eval find_replace_string "abcd" [0, 2] ["ab", "ec"] ["eee", "ffff"]
   
-  /--
+  /-
   info: 'baa'
   -/
-  #guard_msgs in
-  #eval find_replace_string "aaa" [0] ["a"] ["b"]
+  -- #guard_msgs in
+  -- #eval find_replace_string "aaa" [0] ["a"] ["b"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given 2 strings, `a` and `b`, return a string of the form short+long+short, with the shorter string on the outside
   and the longer string on the inside. The strings will not be the same length, but they may be empty ( length `0` ).
   
@@ -8,6 +9,7 @@ vc-description: |-
   solution("1", "22") # returns "1221"
   solution("22", "1") # returns "1221"
   ```
+  -/
 
 vc-preamble: |-
 
@@ -31,23 +33,23 @@ vc-theorems: |-
   theorem solution_empty_string (s : String) :
     solution "" s = s ∧ solution s "" = s := sorry
   
-  /--
+  /-
   info: '1221'
   -/
-  #guard_msgs in
-  #eval solution "1" "22"
+  -- #guard_msgs in
+  -- #eval solution "1" "22"
   
-  /--
+  /-
   info: '1221'
   -/
-  #guard_msgs in
-  #eval solution "22" "1"
+  -- #guard_msgs in
+  -- #eval solution "22" "1"
   
-  /--
+  /-
   info: 'xyz'
   -/
-  #guard_msgs in
-  #eval solution "" "xyz"
+  -- #guard_msgs in
+  -- #eval solution "" "xyz"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

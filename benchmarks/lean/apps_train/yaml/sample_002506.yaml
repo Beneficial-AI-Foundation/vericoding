@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Function Descriptions=====
   The NumPy module also comes with a number of built-in routines for linear algebra calculations. These can be found in the sub-module linalg.
   
@@ -33,6 +34,7 @@ vc-description: |-
   
   =====Output Format=====
   Print the determinant of A.
+  -/
 
 vc-preamble: |-
   def identityMatrix (n : Nat) : Matrix n Float := sorry
@@ -64,23 +66,23 @@ vc-theorems: |-
     calculateMatrixDeterminant (transpose matrix) = 
       calculateMatrixDeterminant matrix := sorry
   
-  /--
+  /-
   info: 0.0
   -/
-  #guard_msgs in
-  #eval calculate_matrix_determinant [[1.1, 1.1], [1.1, 1.1]]
+  -- #guard_msgs in
+  -- #eval calculate_matrix_determinant [[1.1, 1.1], [1.1, 1.1]]
   
-  /--
+  /-
   info: -3.0
   -/
-  #guard_msgs in
-  #eval calculate_matrix_determinant [[1, 2], [2, 1]]
+  -- #guard_msgs in
+  -- #eval calculate_matrix_determinant [[1, 2], [2, 1]]
   
-  /--
+  /-
   info: 0.0
   -/
-  #guard_msgs in
-  #eval calculate_matrix_determinant [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+  -- #guard_msgs in
+  -- #eval calculate_matrix_determinant [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

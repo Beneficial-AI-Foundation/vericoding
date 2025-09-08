@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We are given an elevation map, heights[i] representing the height of the terrain at that index.  The width at each index is 1.  After V units of water fall at index K, how much water is at each index?
   
   Water first drops at index K and rests on top of the highest terrain or water at that index.  Then, it flows according to the following rules:
@@ -37,6 +38,7 @@ vc-description: |-
   heights will have length in [1, 100] and contain integers in [0, 99].
   V will be in range [0, 2000].
   K will be in range [0, heights.length - 1].
+  -/
 
 vc-preamble: |-
 
@@ -74,23 +76,23 @@ vc-theorems: |-
     ((pour_water heights V K).get ⟨i+1, sorry⟩ ≥ (pour_water heights V K).get ⟨i, sorry⟩) :=
     sorry
   
-  /--
+  /-
   info: [2, 2, 2, 3, 2, 2, 2]
   -/
-  #guard_msgs in
-  #eval pour_water [2, 1, 1, 2, 1, 2, 2] 4 3
+  -- #guard_msgs in
+  -- #eval pour_water [2, 1, 1, 2, 1, 2, 2] 4 3
   
-  /--
+  /-
   info: [2, 3, 3, 4]
   -/
-  #guard_msgs in
-  #eval pour_water [1, 2, 3, 4] 2 2
+  -- #guard_msgs in
+  -- #eval pour_water [1, 2, 3, 4] 2 2
   
-  /--
+  /-
   info: [4, 4, 4]
   -/
-  #guard_msgs in
-  #eval pour_water [3, 1, 3] 5 1
+  -- #guard_msgs in
+  -- #eval pour_water [3, 1, 3] 5 1
 
 vc-postamble: |-
   -- Apps difficulty: interview

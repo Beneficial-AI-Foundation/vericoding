@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In an alien language, surprisingly they also use english lowercase letters, but possibly in a different order. The order of the alphabet is some permutation of lowercase letters.
   Given a sequence of words written in the alien language, and the order of the alphabet, return true if and only if the given words are sorted lexicographicaly in this alien language.
   
@@ -23,6 +24,7 @@ vc-description: |-
   1 <= words[i].length <= 20
   order.length == 26
   All characters in words[i] and order are English lowercase letters.
+  -/
 
 vc-preamble: |-
 
@@ -49,23 +51,23 @@ vc-theorems: |-
     (¬ isAlienSorted [longer, w] order) ∧ 
     isAlienSorted [w, longer] order := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_alien_sorted ["hello", "leetcode"] "hlabcdefgijkmnopqrstuvwxyz"
+  -- #guard_msgs in
+  -- #eval is_alien_sorted ["hello", "leetcode"] "hlabcdefgijkmnopqrstuvwxyz"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_alien_sorted ["word", "world", "row"] "worldabcefghijkmnpqstuvxyz"
+  -- #guard_msgs in
+  -- #eval is_alien_sorted ["word", "world", "row"] "worldabcefghijkmnpqstuvxyz"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_alien_sorted ["apple", "app"] "abcdefghijklmnopqrstuvwxyz"
+  -- #guard_msgs in
+  -- #eval is_alien_sorted ["apple", "app"] "abcdefghijklmnopqrstuvwxyz"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

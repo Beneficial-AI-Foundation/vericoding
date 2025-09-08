@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given the string s, return the size of the longest substring containing each vowel an even number of times. That is, 'a', 'e', 'i', 'o', and 'u' must appear an even number of times.
   
   Example 1:
@@ -20,6 +21,7 @@ vc-description: |-
   
   1 <= s.length <= 5 x 10^5
   s contains only lowercase English letters.
+  -/
 
 vc-preamble: |-
   def countVowels (s : String) : List Char → Bool :=
@@ -63,23 +65,23 @@ vc-theorems: |-
     findLongestEvenVowelSubstring (String.mk [c]) = 1 :=
     sorry
   
-  /--
+  /-
   info: 13
   -/
-  #guard_msgs in
-  #eval find_longest_even_vowel_substring "eleetminicoworoep"
+  -- #guard_msgs in
+  -- #eval find_longest_even_vowel_substring "eleetminicoworoep"
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval find_longest_even_vowel_substring "leetcodeisgreat"
+  -- #guard_msgs in
+  -- #eval find_longest_even_vowel_substring "leetcodeisgreat"
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval find_longest_even_vowel_substring "bcbcbc"
+  -- #guard_msgs in
+  -- #eval find_longest_even_vowel_substring "bcbcbc"
 
 vc-postamble: |-
   -- Apps difficulty: interview

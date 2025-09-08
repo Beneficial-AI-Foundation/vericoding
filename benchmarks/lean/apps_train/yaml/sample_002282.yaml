@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Polygon is not only the best platform for developing problems but also a square matrix with side $n$, initially filled with the character 0.
   
   On the polygon, military training was held. The soldiers placed a cannon above each cell in the first row and a cannon to the left of each cell in the first column. Thus, exactly $2n$ cannons were placed. [Image] Initial polygon for $n=4$. 
@@ -68,6 +69,7 @@ vc-description: |-
   The first test case was explained in the statement.
   
   The answer to the second test case is NO, since a 1 in a cell ($1, 1$) flying out of any cannon would continue its flight further.
+  -/
 
 vc-preamble: |-
 
@@ -104,23 +106,23 @@ vc-theorems: |-
       can_create_pattern n mat = false := by
     sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval can_create_pattern 4 ["0010", "0011", "0000", "0000"]
+  -- #guard_msgs in
+  -- #eval can_create_pattern 4 ["0010", "0011", "0000", "0000"]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval can_create_pattern 2 ["10", "01"]
+  -- #guard_msgs in
+  -- #eval can_create_pattern 2 ["10", "01"]
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval can_create_pattern 2 ["00", "00"]
+  -- #guard_msgs in
+  -- #eval can_create_pattern 2 ["00", "00"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

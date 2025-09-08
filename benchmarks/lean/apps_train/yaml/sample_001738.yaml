@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array of strings names of size n. You will create n folders in your file system such that, at the ith minute, you will create a folder with the name names[i].
   Since two files cannot have the same name, if you enter a folder name which is previously used, the system will have a suffix addition to its name in the form of (k), where, k is the smallest positive integer such that the obtained name remains unique.
   Return an array of strings of length n where ans[i] is the actual name the system will assign to the ith folder when you create it.
@@ -41,6 +42,7 @@ vc-description: |-
   1 <= names.length <= 5 * 10^4
   1 <= names[i].length <= 20
   names[i] consists of lower case English letters, digits and/or round brackets.
+  -/
 
 vc-preamble: |-
 
@@ -73,23 +75,23 @@ vc-theorems: |-
       (∀ (j : Nat) (hj : j < i), names[j]'(Nat.lt_trans hj h) ≠ orig) →
       (orig = gen ∨ ∃ n : Nat, gen = orig ++ "(" ++ n.repr ++ ")") := sorry
   
-  /--
+  /-
   info: ['pes', 'fifa', 'gta', 'pes(2019)']
   -/
-  #guard_msgs in
-  #eval get_folder_names ["pes", "fifa", "gta", "pes(2019)"]
+  -- #guard_msgs in
+  -- #eval get_folder_names ["pes", "fifa", "gta", "pes(2019)"]
   
-  /--
+  /-
   info: ['gta', 'gta(1)', 'gta(2)', 'avalon']
   -/
-  #guard_msgs in
-  #eval get_folder_names ["gta", "gta(1)", "gta", "avalon"]
+  -- #guard_msgs in
+  -- #eval get_folder_names ["gta", "gta(1)", "gta", "avalon"]
   
-  /--
+  /-
   info: ['kaido', 'kaido(1)', 'kaido(2)', 'kaido(1)(1)']
   -/
-  #guard_msgs in
-  #eval get_folder_names ["kaido", "kaido(1)", "kaido", "kaido(1)"]
+  -- #guard_msgs in
+  -- #eval get_folder_names ["kaido", "kaido(1)", "kaido", "kaido(1)"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

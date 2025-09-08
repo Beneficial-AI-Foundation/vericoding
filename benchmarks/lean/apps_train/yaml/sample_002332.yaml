@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function that takes a string as input and reverse only the vowels of a string.
   
   Example 1:
@@ -9,6 +10,7 @@ vc-description: |-
   
   Note:
   The vowels does not include the letter "y".
+  -/
 
 vc-preamble: |-
   def reverse_vowels (s : String) : String := sorry
@@ -41,23 +43,23 @@ vc-theorems: |-
   theorem reverse_vowels_no_vowels (s : String) :
     (∀ i : String.Pos, ¬isVowel (s.get i)) → reverse_vowels s = s := sorry
   
-  /--
+  /-
   info: 'holle'
   -/
-  #guard_msgs in
-  #eval reverse_vowels "hello"
+  -- #guard_msgs in
+  -- #eval reverse_vowels "hello"
   
-  /--
+  /-
   info: 'leotcede'
   -/
-  #guard_msgs in
-  #eval reverse_vowels "leetcode"
+  -- #guard_msgs in
+  -- #eval reverse_vowels "leetcode"
   
-  /--
+  /-
   info: 'Aa'
   -/
-  #guard_msgs in
-  #eval reverse_vowels "aA"
+  -- #guard_msgs in
+  -- #eval reverse_vowels "aA"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

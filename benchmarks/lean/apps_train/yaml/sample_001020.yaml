@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The chef is trying to solve some pattern problems, Chef wants your help to code it. Chef has one number K to form a new pattern. Help the chef to code this pattern problem.
   
   -----Input:-----
@@ -34,6 +35,7 @@ vc-description: |-
   
   -----EXPLANATION:-----
   No need, else pattern can be decode easily.
+  -/
 
 vc-preamble: |-
 
@@ -63,23 +65,23 @@ vc-theorems: |-
   theorem generate_pattern_empty :
     generatePattern 0 = ["0"] := sorry
   
-  /--
+  /-
   info: ['0', '*1', '**2']
   -/
-  #guard_msgs in
-  #eval generate_pattern 2
+  -- #guard_msgs in
+  -- #eval generate_pattern 2
   
-  /--
+  /-
   info: ['0', '*1', '**2', '***3']
   -/
-  #guard_msgs in
-  #eval generate_pattern 3
+  -- #guard_msgs in
+  -- #eval generate_pattern 3
   
-  /--
+  /-
   info: ['0', '*1', '**2', '***3', '****4']
   -/
-  #guard_msgs in
-  #eval generate_pattern 4
+  -- #guard_msgs in
+  -- #eval generate_pattern 4
 
 vc-postamble: |-
   -- Apps difficulty: interview

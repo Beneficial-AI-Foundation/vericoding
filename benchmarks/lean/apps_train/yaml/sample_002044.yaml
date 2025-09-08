@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a Young diagram. 
   
   Given diagram is a histogram with $n$ columns of lengths $a_1, a_2, \ldots, a_n$ ($a_1 \geq a_2 \geq \ldots \geq a_n \geq 1$). [Image] Young diagram for $a=[3,2,2,2,1]$. 
@@ -28,6 +29,7 @@ vc-description: |-
   Some of the possible solutions for the example:
   
   [Image] $\square$
+  -/
 
 vc-preamble: |-
   def solve_dominos (n : Nat) (arr : List Nat) : Nat :=
@@ -60,23 +62,23 @@ vc-theorems: |-
     solve_dominos n arr = arr.length / 2 := by
     sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval solve_dominos 5 [3, 2, 2, 2, 1]
+  -- #guard_msgs in
+  -- #eval solve_dominos 5 [3, 2, 2, 2, 1]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve_dominos 5 [1, 1, 1, 1, 1]
+  -- #guard_msgs in
+  -- #eval solve_dominos 5 [1, 1, 1, 1, 1]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval solve_dominos 3 [3, 3, 3]
+  -- #guard_msgs in
+  -- #eval solve_dominos 3 [3, 3, 3]
 
 vc-postamble: |-
   -- Apps difficulty: competition

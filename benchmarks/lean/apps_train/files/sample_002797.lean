@@ -1,0 +1,62 @@
+/-
+Create a function
+
+```python
+has_two_cube_sums(n)
+```
+
+which checks if a given number `n` can be written as the sum of two cubes in two different ways: `n = a³+b³ = c³+d³`.
+All the numbers `a`, `b`, `c` and `d` should be different and greater than `0`.
+
+E.g. 1729 = 9³+10³ = 1³+12³.
+
+```python
+has_two_cube_sums(1729); // true
+has_two_cube_sums(42);   // false
+```
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def has_two_cube_sums (n : Nat) : Bool :=
+sorry
+
+-- Every positive number returns a boolean result
+
+theorem has_two_cube_sums_returns_bool (n : Nat) :
+  n > 0 → has_two_cube_sums n = true ∨ has_two_cube_sums n = false :=
+sorry
+
+-- 1729 and 4104 are Ramanujan numbers
+
+theorem known_ramanujan_numbers_have_two_cube_sums :
+  (has_two_cube_sums 1729 = true) ∧ (has_two_cube_sums 4104 = true) :=
+sorry
+
+-- Small numbers except 1729 are not Ramanujan numbers
+
+theorem small_numbers_not_ramanujan (n : Nat) :
+  n > 0 → n < 100 → n ≠ 1729 → has_two_cube_sums n = false :=
+sorry
+
+/-
+info: True
+-/
+-- #guard_msgs in
+-- #eval has_two_cube_sums 1729
+
+/-
+info: False
+-/
+-- #guard_msgs in
+-- #eval has_two_cube_sums 42
+
+/-
+info: True
+-/
+-- #guard_msgs in
+-- #eval has_two_cube_sums 4104
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

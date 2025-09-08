@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function that receives two strings as parameter. This strings are in the following format of date: `YYYY/MM/DD`.
   Your job is: Take the `years` and calculate the difference between them.
   
@@ -8,6 +9,7 @@ vc-description: |-
   '2015/10/10' and '1997/10/10' -> 2015 - 1997 = returns 18
   ```
   At this level, you don't need validate months and days to calculate the difference.
+  -/
 
 vc-preamble: |-
 
@@ -28,23 +30,23 @@ vc-theorems: |-
   theorem how_many_years_nonnegative (date1 date2 : String) :
     how_many_years date1 date2 ≥ 0 := sorry
   
-  /--
+  /-
   info: 18
   -/
-  #guard_msgs in
-  #eval how_many_years "1997/10/10" "2015/10/10"
+  -- #guard_msgs in
+  -- #eval how_many_years "1997/10/10" "2015/10/10"
   
-  /--
+  /-
   info: 18
   -/
-  #guard_msgs in
-  #eval how_many_years "2015/10/10" "1997/10/10"
+  -- #guard_msgs in
+  -- #eval how_many_years "2015/10/10" "1997/10/10"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval how_many_years "2000/01/01" "2000/01/01"
+  -- #guard_msgs in
+  -- #eval how_many_years "2000/01/01" "2000/01/01"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

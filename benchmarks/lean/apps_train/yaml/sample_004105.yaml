@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Mrs Jefferson is a great teacher. One of her strategies that helped her to reach astonishing results in the learning process is to have some fun with her students. At school, she wants to make an arrangement of her class to play a certain game with her pupils. For that, she needs to create the arrangement with **the minimum amount of groups that have consecutive sizes**.
   
   Let's see. She has      ```14``` students. After trying a bit she could do the needed arrangement:
@@ -21,6 +22,7 @@ vc-description: |-
   The value of n is unknown and may be pretty high because some classes joined to to have fun with the game.
   
   You may see more example tests in the Example Tests Cases Box.
+  -/
 
 vc-preamble: |-
 
@@ -52,23 +54,23 @@ vc-theorems: |-
   theorem powers_of_two_give_empty (n : Nat) :
     (∃ k, n = 2^k) → shortest_arrang n = List.nil := sorry
   
-  /--
+  /-
   info: [5, 4, 3, 2]
   -/
-  #guard_msgs in
-  #eval shortest_arrang 14
+  -- #guard_msgs in
+  -- #eval shortest_arrang 14
   
-  /--
+  /-
   info: [-1]
   -/
-  #guard_msgs in
-  #eval shortest_arrang 16
+  -- #guard_msgs in
+  -- #eval shortest_arrang 16
   
-  /--
+  /-
   info: [33, 32]
   -/
-  #guard_msgs in
-  #eval shortest_arrang 65
+  -- #guard_msgs in
+  -- #eval shortest_arrang 65
 
 vc-postamble: |-
   -- Apps difficulty: introductory

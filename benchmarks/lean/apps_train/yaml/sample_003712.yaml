@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   An expression is formed by taking the digits 1 to 9 in numerical order and then inserting into each gap between the numbers either a plus sign or a minus sign or neither.
   
   Your task is to write a method which takes one parameter and returns the **smallest possible number** of plus and minus signs necessary to form such an expression which equals the input.
@@ -26,6 +27,7 @@ vc-description: |-
   ```
   
   Inspired by a [puzzle on BBC Radio 4](https://www.bbc.co.uk/programmes/p057wxwl) (which is unfortunately not available anymore)
+  -/
 
 vc-preamble: |-
   def operator_insertor (n : Int) : Option Int := sorry
@@ -38,7 +40,7 @@ vc-preamble: |-
   
   def expr_evaluates_to : Int → String → Prop := sorry
   
-  /-- Helper function to check if expression uses given operators -/
+  /- Helper function to check if expression uses given operators -/
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -62,25 +64,25 @@ vc-theorems: |-
   theorem operator_insertor_impossible_small (n : Int) :
     n ≤ -(10^10) → operator_insertor n = none := sorry
   
-  /-- Helper function to check if a string expression evaluates to a number -/
+  /- Helper function to check if a string expression evaluates to a number -/
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval operator_insertor 11
+  -- #guard_msgs in
+  -- #eval operator_insertor 11
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval operator_insertor 100
+  -- #guard_msgs in
+  -- #eval operator_insertor 100
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval operator_insertor 160
+  -- #guard_msgs in
+  -- #eval operator_insertor 160
 
 vc-postamble: |-
   -- Apps difficulty: introductory

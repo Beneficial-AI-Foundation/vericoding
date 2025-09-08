@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef has gone shopping with his 5-year old son. They have bought N items so far. The items are numbered from 1 to N, and the item i weighs Wi grams.
   
   Chef's son insists on helping his father in carrying the items. He wants his dad to give him a few items. Chef does not want to burden his son. But he won't stop bothering him unless he is given a few items to carry. So Chef decides to give him some items. Obviously, Chef wants to give the kid less weight to carry.
@@ -34,6 +35,7 @@ vc-description: |-
   Case #1: The optimal way is that Chef gives his son K=2 items with weights 2 and 4. Chef carries the rest of the items himself. Thus the difference is: (8+5+10) − (4+2) = 23 − 6 = 17.
   
   Case #2: Chef gives his son 3 items and he carries 5 items himself.
+  -/
 
 vc-preamble: |-
   def List.sum : List Nat → Nat 
@@ -79,23 +81,23 @@ vc-theorems: |-
       else Int.ofNat ((N - 2*K)*w) :=
   sorry
   
-  /--
+  /-
   info: 17
   -/
-  #guard_msgs in
-  #eval get_max_weight_difference 5 2 [8, 4, 5, 2, 10]
+  -- #guard_msgs in
+  -- #eval get_max_weight_difference 5 2 [8, 4, 5, 2, 10]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval get_max_weight_difference 8 3 [1, 1, 1, 1, 1, 1, 1, 1]
+  -- #guard_msgs in
+  -- #eval get_max_weight_difference 8 3 [1, 1, 1, 1, 1, 1, 1, 1]
   
-  /--
+  /-
   info: 13
   -/
-  #guard_msgs in
-  #eval get_max_weight_difference 4 1 [5, 2, 7, 3]
+  -- #guard_msgs in
+  -- #eval get_max_weight_difference 4 1 [5, 2, 7, 3]
 
 vc-postamble: |-
   -- Apps difficulty: interview

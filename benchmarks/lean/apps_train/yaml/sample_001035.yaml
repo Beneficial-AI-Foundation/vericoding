@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Ada's classroom contains $N \cdot M$ tables distributed in a grid with $N$ rows and $M$ columns. Each table is occupied by exactly one student.
   Before starting the class, the teacher decided to shuffle the students a bit. After the shuffling, each table should be occupied by exactly one student again. In addition, each student should occupy a table that is adjacent to that student's original table, i.e. immediately to the left, right, top or bottom of that table.
   Is it possible for the students to shuffle while satisfying all conditions of the teacher?
@@ -25,6 +26,7 @@ vc-description: |-
   
   -----Explanation-----
   Example case 2: The arrows in the following image depict how the students moved.
+  -/
 
 vc-preamble: |-
 
@@ -58,23 +60,23 @@ vc-theorems: |-
     solve_classroom_shuffle 2 1 = "YES" :=
   sorry
   
-  /--
+  /-
   info: 'NO'
   -/
-  #guard_msgs in
-  #eval solve_classroom_shuffle 3 3
+  -- #guard_msgs in
+  -- #eval solve_classroom_shuffle 3 3
   
-  /--
+  /-
   info: 'YES'
   -/
-  #guard_msgs in
-  #eval solve_classroom_shuffle 4 4
+  -- #guard_msgs in
+  -- #eval solve_classroom_shuffle 4 4
   
-  /--
+  /-
   info: 'YES'
   -/
-  #guard_msgs in
-  #eval solve_classroom_shuffle 5 4
+  -- #guard_msgs in
+  -- #eval solve_classroom_shuffle 5 4
 
 vc-postamble: |-
   -- Apps difficulty: interview

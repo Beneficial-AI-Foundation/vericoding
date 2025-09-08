@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Lira is now very keen on compiler development. :) 
   She knows that one of the most important components of a compiler, is its parser.
   A parser is, in simple terms, a software component that processes text, and checks it's semantic correctness, or, if you prefer, if the text is properly built.
@@ -40,6 +41,7 @@ vc-description: |-
   4
   0
   2
+  -/
 
 vc-preamble: |-
   def longestValidPrefix (s : String) : Nat :=
@@ -81,23 +83,23 @@ vc-theorems: |-
   theorem single_left_zero :
     longestValidPrefix "<" = 0 := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval longest_valid_prefix "<<>>"
+  -- #guard_msgs in
+  -- #eval longest_valid_prefix "<<>>"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval longest_valid_prefix "><"
+  -- #guard_msgs in
+  -- #eval longest_valid_prefix "><"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval longest_valid_prefix "<>>>"
+  -- #guard_msgs in
+  -- #eval longest_valid_prefix "<>>>"
 
 vc-postamble: |-
   -- Apps difficulty: interview

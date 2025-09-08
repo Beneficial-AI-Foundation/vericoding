@@ -1,0 +1,70 @@
+/-
+Given a nested list of integers represented as a string, implement a parser to deserialize it.
+
+Each element is either an integer, or a list -- whose elements may also be integers or other lists.
+
+Note:
+You may assume that the string is well-formed:
+
+String is non-empty.
+String does not contain white spaces.
+String contains only digits 0-9, [, - ,, ].
+
+Example 1:
+
+Given s = "324",
+
+You should return a NestedInteger object which contains a single integer 324.
+
+Example 2:
+
+Given s = "[123,[456,[789]]]",
+
+Return a NestedInteger object containing a nested list with 2 elements:
+
+1. An integer containing value 123.
+2. A nested list containing two elements:
+    i.  An integer containing value 456.
+    ii. A nested list with one element:
+         a. An integer containing value 789.
+-/
+
+def deserialize (s : String) : NestedInteger :=
+  sorry
+
+def nestedIntToPython (ni : NestedInteger) : NestedInteger :=
+  sorry
+
+def pythonToStr (val : NestedInteger) : String :=
+  sorry
+
+def isInteger (ni : NestedInteger) : Bool :=
+  match ni with
+  | NestedInteger.Integer _ => true
+  | _ => false
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def getInteger (ni : NestedInteger) : Int :=
+  match ni with
+  | NestedInteger.Integer n => n
+  | _ => 0 -- undefined behavior in this case
+
+theorem nested_integer_roundtrip (val : NestedInteger) :
+  nestedIntToPython (deserialize (pythonToStr val)) = val :=
+  sorry
+
+theorem simple_integers_preserve_value (n : Int) (h : -1000 ≤ n ∧ n ≤ 1000) :
+  isInteger (deserialize (toString n)) = true ∧
+  getInteger (deserialize (toString n)) = n :=
+  sorry
+
+theorem flat_lists_preserve_structure (lst : List Int) 
+  (h : ∀ x ∈ lst, -1000 ≤ x ∧ x ≤ 1000) :
+  nestedIntToPython (deserialize (toString lst)) = 
+  NestedInteger.List (lst.map NestedInteger.Integer) :=
+  sorry
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

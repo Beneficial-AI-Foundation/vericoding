@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array of integers arr and two integers k and threshold.
   Return the number of sub-arrays of size k and average greater than or equal to threshold.
   
@@ -30,6 +31,7 @@ vc-description: |-
   1 <= arr[i] <= 10^4
   1 <= k <= arr.length
   0 <= threshold <= 10^4
+  -/
 
 vc-preamble: |-
 
@@ -58,23 +60,23 @@ vc-theorems: |-
     num_of_subarrays arr 1 threshold = (arr.filter (fun x => x ≥ threshold)).length :=
   sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval num_of_subarrays [2, 2, 2, 2, 5, 5, 5, 8] 3 4
+  -- #guard_msgs in
+  -- #eval num_of_subarrays [2, 2, 2, 2, 5, 5, 5, 8] 3 4
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval num_of_subarrays [1, 1, 1, 1, 1] 1 0
+  -- #guard_msgs in
+  -- #eval num_of_subarrays [1, 1, 1, 1, 1] 1 0
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval num_of_subarrays [11, 13, 17, 23, 29, 31, 7, 5, 2, 3] 3 5
+  -- #guard_msgs in
+  -- #eval num_of_subarrays [11, 13, 17, 23, 29, 31, 7, 5, 2, 3] 3 5
 
 vc-postamble: |-
   -- Apps difficulty: interview

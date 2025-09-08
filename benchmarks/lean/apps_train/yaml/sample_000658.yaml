@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Computation of the date either previous or forthcoming dates is quiet easy. But it is quiet difficult to calculate the day from a particular given date. 
   You are required to find a day from a particular date given to you.
   
@@ -16,6 +17,7 @@ vc-description: |-
   
   Output:
   Wednesday
+  -/
 
 vc-preamble: |-
 
@@ -48,23 +50,23 @@ vc-theorems: |-
     get_day_for_date day month year = none :=
   sorry
   
-  /--
+  /-
   info: 'Wednesday'
   -/
-  #guard_msgs in
-  #eval get_day_for_date 14 3 2012
+  -- #guard_msgs in
+  -- #eval get_day_for_date 14 3 2012
   
-  /--
+  /-
   info: 'Saturday'
   -/
-  #guard_msgs in
-  #eval get_day_for_date 1 1 2000
+  -- #guard_msgs in
+  -- #eval get_day_for_date 1 1 2000
   
-  /--
+  /-
   info: 'Monday'
   -/
-  #guard_msgs in
-  #eval get_day_for_date 25 12 2023
+  -- #guard_msgs in
+  -- #eval get_day_for_date 25 12 2023
 
 vc-postamble: |-
   -- Apps difficulty: interview

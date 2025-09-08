@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array of size N$N$ and two integers K$K$ and S$S$, the special sum of a subarray is defined as follows:
   
   (Sum of all elements of the subarray) * (K$K$ - p$p$ * S$S$)
@@ -35,6 +36,7 @@ vc-description: |-
   Therefore, value of special sum is (14 + 2 + 7) * (10 - 2 * 2) = 138.
   
   This is the subarray with the maximum special sum.
+  -/
 
 vc-preamble: |-
 
@@ -74,23 +76,23 @@ vc-theorems: |-
     let arr := [2]
     max_special_sum 1 k s arr = 2 * (k - (fac 2).eraseDups.length * s) := sorry
   
-  /--
+  /-
   info: 138
   -/
-  #guard_msgs in
-  #eval max_special_sum 4 10 2 [14, 2, 7, 15]
+  -- #guard_msgs in
+  -- #eval max_special_sum 4 10 2 [14, 2, 7, 15]
   
-  /--
+  /-
   info: 27
   -/
-  #guard_msgs in
-  #eval max_special_sum 3 5 1 [2, 3, 4]
+  -- #guard_msgs in
+  -- #eval max_special_sum 3 5 1 [2, 3, 4]
   
-  /--
+  /-
   info: 45
   -/
-  #guard_msgs in
-  #eval max_special_sum 2 8 3 [6, 9]
+  -- #guard_msgs in
+  -- #eval max_special_sum 2 8 3 [6, 9]
 
 vc-postamble: |-
   -- Apps difficulty: interview

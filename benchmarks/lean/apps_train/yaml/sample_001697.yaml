@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ### **[Mahjong Series](/collections/mahjong)**
   
   **Mahjong** is based on draw-and-discard card games that were popular in 18th and 19th century China and some are still popular today.
@@ -69,6 +70,7 @@ vc-description: |-
      "5" => "123 234 345 55 678",
      "8" => "123 234 345 678 88")
   ```
+  -/
 
 vc-preamble: |-
 
@@ -102,23 +104,23 @@ vc-theorems: |-
     ∀ t, t ∈ (solution s).data → 
     ((s.data.filter (· = t)).length + 1 ≤ 4) := sorry
   
-  /--
+  /-
   info: '89'
   -/
-  #guard_msgs in
-  #eval solution "1113335557779"
+  -- #guard_msgs in
+  -- #eval solution "1113335557779"
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval solution "1335556789999"
+  -- #guard_msgs in
+  -- #eval solution "1335556789999"
   
-  /--
+  /-
   info: '258'
   -/
-  #guard_msgs in
-  #eval solution "1223334455678"
+  -- #guard_msgs in
+  -- #eval solution "1223334455678"
 
 vc-postamble: |-
   -- Apps difficulty: interview

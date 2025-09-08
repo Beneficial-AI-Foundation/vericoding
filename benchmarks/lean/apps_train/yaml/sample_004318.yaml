@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Do names have colors?
   
   *Now they do.*
@@ -19,6 +20,7 @@ vc-description: |-
   ```
   
   NOTE: The function should return `None/nil` when the input is less than two chars.
+  -/
 
 vc-preamble: |-
   def string_color (s : String) : Option String := sorry
@@ -53,23 +55,23 @@ vc-theorems: |-
   theorem string_color_deterministic {s : String} :
     string_color s = string_color s := sorry
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval string_color "A"
+  -- #guard_msgs in
+  -- #eval string_color "A"
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval string_color ""
+  -- #guard_msgs in
+  -- #eval string_color ""
   
-  /--
+  /-
   info: '79CAE5'
   -/
-  #guard_msgs in
-  #eval string_color "Jack"
+  -- #guard_msgs in
+  -- #eval string_color "Jack"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

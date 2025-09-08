@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In a far away country called AlgoLandia, there are `N` islands numbered `1` to `N`. Each island is denoted by `k[i]`. King Algolas, king of AlgoLandia, built `N - 1` bridges in the country. A bridge is built between islands `k[i]` and `k[i+1]`. Bridges are two-ways and are expensive to build.
   
   The problem is that there are gangs who wants to destroy the bridges. In order to protect the bridges, the king wants to assign elite guards to the bridges. A bridge between islands `k[i]` and `k[i+1]` is safe when there is an elite guard in island `k[i]` or `k[i+1]`. There are already elite guards assigned in some islands.
@@ -27,6 +28,7 @@ vc-description: |-
   ```
   2
   ```
+  -/
 
 vc-preamble: |-
 
@@ -52,23 +54,23 @@ vc-theorems: |-
     islands.length = 1 → find_needed_guards islands = 0 :=
   sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval find_needed_guards [True, True, False, True, False]
+  -- #guard_msgs in
+  -- #eval find_needed_guards [True, True, False, True, False]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_needed_guards [False, False, True, False, False]
+  -- #guard_msgs in
+  -- #eval find_needed_guards [False, False, True, False, False]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_needed_guards [False, False, False, False, False]
+  -- #guard_msgs in
+  -- #eval find_needed_guards [False, False, False, False, False]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

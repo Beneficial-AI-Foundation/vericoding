@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this kata, you'll be given an integer of range `0 <= x <= 99` and have to return that number spelt out in English. A few examples:
   
   ```python
@@ -8,6 +9,7 @@ vc-description: |-
   ```
   
   Words should be separated by only spaces and not hyphens. No need to validate parameters, they will always be in the range [0, 99]. Make sure that the returned String has no leading of trailing spaces. Good luck!
+  -/
 
 vc-preamble: |-
 
@@ -50,23 +52,23 @@ vc-theorems: |-
     else
       (result.split (· = ' ')).length = 2 := sorry
   
-  /--
+  /-
   info: 'four'
   -/
-  #guard_msgs in
-  #eval name_that_number 4
+  -- #guard_msgs in
+  -- #eval name_that_number 4
   
-  /--
+  /-
   info: 'nineteen'
   -/
-  #guard_msgs in
-  #eval name_that_number 19
+  -- #guard_msgs in
+  -- #eval name_that_number 19
   
-  /--
+  /-
   info: 'ninety nine'
   -/
-  #guard_msgs in
-  #eval name_that_number 99
+  -- #guard_msgs in
+  -- #eval name_that_number 99
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The number `1035` is the smallest integer that exhibits a non frequent property: one its multiples, `3105 = 1035 * 3`, has its same digits but in different order, in other words, `3105`, is one of the permutations of `1035`.
   
   The number `125874` is the first integer that has this property when the multiplier is `2`, thus: `125874 * 2 = 251748`
@@ -22,6 +23,7 @@ vc-description: |-
   3 <= k <= 7
   ```
   Enjoy it and happy coding!!
+  -/
 
 vc-preamble: |-
 
@@ -50,23 +52,23 @@ vc-theorems: |-
     search_permMult nMax k = 0 :=
   sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval search_permMult 10000 7
+  -- #guard_msgs in
+  -- #eval search_permMult 10000 7
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval search_permMult 5000 7
+  -- #guard_msgs in
+  -- #eval search_permMult 5000 7
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval search_permMult 10000 4
+  -- #guard_msgs in
+  -- #eval search_permMult 10000 4
 
 vc-postamble: |-
   -- Apps difficulty: introductory

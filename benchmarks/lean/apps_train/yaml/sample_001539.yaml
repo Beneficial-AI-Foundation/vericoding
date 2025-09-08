@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   During quarantine chef’s friend invented a game. In this game there are two players, player 1 and Player 2. In center of garden there is one finish circle and both players are at different distances respectively $X$ and $Y$ from finish circle.
   Between finish circle and Player 1 there are $X$ number of circles and between finish circle and Player 2 there are $Y$ number of circles. Both player wants to reach finish circle with minimum number of jumps. Player can jump one circle to another circle.
   Both players can skip $2^0-1$ or $2^1- 1$ or …. or $2^N-1$ circles per jump. A player cannot skip same number of circles in a match more than once. If both players uses optimal way to reach finish circle what will be the difference of minimum jumps needed to reach finish circle by both players. 
@@ -29,6 +30,7 @@ vc-description: |-
   Test Case 1:
   
   Test Case 2:
+  -/
 
 vc-preamble: |-
 
@@ -64,17 +66,17 @@ vc-theorems: |-
     let (result, diff) := solve_jumping_game x x
     result = 0 ∧ diff = 0 := sorry
   
-  /--
+  /-
   info: (0, 0)
   -/
-  #guard_msgs in
-  #eval solve_jumping_game 4 5
+  -- #guard_msgs in
+  -- #eval solve_jumping_game 4 5
   
-  /--
+  /-
   info: (1, 1)
   -/
-  #guard_msgs in
-  #eval solve_jumping_game 3 5
+  -- #guard_msgs in
+  -- #eval solve_jumping_game 3 5
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    let F(N) be the sum square of digits of N. So:
   
@@ -48,6 +49,7 @@ vc-description: |-
    - `[output]` an integer
   
     the length of the repeat sequence
+  -/
 
 vc-preamble: |-
 
@@ -73,23 +75,23 @@ vc-theorems: |-
     let final := repeat_sequence_len n
     final = 1 ∨ final = 89 := by sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval repeat_sequence_len 1
+  -- #guard_msgs in
+  -- #eval repeat_sequence_len 1
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval repeat_sequence_len 85
+  -- #guard_msgs in
+  -- #eval repeat_sequence_len 85
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval repeat_sequence_len 810
+  -- #guard_msgs in
+  -- #eval repeat_sequence_len 810
 
 vc-postamble: |-
   -- Apps difficulty: introductory

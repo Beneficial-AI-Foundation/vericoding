@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   _Friday 13th or Black Friday is considered as unlucky day. Calculate how many unlucky days are in the given year._
   
   Find the number of Friday 13th in the given year.
@@ -13,6 +14,7 @@ vc-description: |-
           unluckyDays(1986) == 1
   
   ***Note:*** In Ruby years will start from 1593.
+  -/
 
 vc-preamble: |-
 
@@ -35,23 +37,23 @@ vc-theorems: |-
   theorem unlucky_days_400_year_cycle (year: Nat) (h: year ≥ 1583) (i: Nat):
     unlucky_days (year + i) = unlucky_days (year + i + 400) := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval unlucky_days 2015
+  -- #guard_msgs in
+  -- #eval unlucky_days 2015
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval unlucky_days 1986
+  -- #guard_msgs in
+  -- #eval unlucky_days 1986
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval unlucky_days 1634
+  -- #guard_msgs in
+  -- #eval unlucky_days 1634
 
 vc-postamble: |-
   -- Apps difficulty: introductory

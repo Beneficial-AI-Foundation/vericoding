@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this Kata, you will be given a string of numbers in sequence and your task will be to return the missing number. If there is no number
   missing or there is an error in the sequence, return `-1`.
   
@@ -15,6 +16,7 @@ vc-description: |-
   More examples in the test cases. 
   
   Good luck!
+  -/
 
 vc-preamble: |-
   def String.isDigit : String → Bool :=
@@ -31,7 +33,7 @@ vc-definitions: |-
   def isSequence : String → Bool :=
     sorry
   
-  /-- For a sequence with one number removed, missing finds the removed number -/
+  /- For a sequence with one number removed, missing finds the removed number -/
 
 vc-theorems: |-
   theorem missing_finds_gap {start : Nat} (h : start ≥ 1 ∧ start ≤ 99) :
@@ -43,7 +45,7 @@ vc-theorems: |-
     missing (seq.replace (toString target) "") = target :=
   sorry
   
-  /-- For a complete sequence with no gaps, missing returns -1 -/
+  /- For a complete sequence with no gaps, missing returns -1 -/
   
   theorem missing_complete_sequence {start : Nat} (h : start ≥ 1 ∧ start ≤ 999) :
     ∀ seq,
@@ -53,23 +55,23 @@ vc-theorems: |-
     missing seq = -1 :=
   sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval missing "123567"
+  -- #guard_msgs in
+  -- #eval missing "123567"
   
-  /--
+  /-
   info: 92
   -/
-  #guard_msgs in
-  #eval missing "899091939495"
+  -- #guard_msgs in
+  -- #eval missing "899091939495"
   
-  /--
+  /-
   info: 100
   -/
-  #guard_msgs in
-  #eval missing "9899101102"
+  -- #guard_msgs in
+  -- #eval missing "9899101102"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

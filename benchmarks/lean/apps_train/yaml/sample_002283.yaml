@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a bracket sequence $s$ of length $n$, where $n$ is even (divisible by two). The string $s$ consists of $\frac{n}{2}$ opening brackets '(' and $\frac{n}{2}$ closing brackets ')'.
   
   In one move, you can choose exactly one bracket and move it to the beginning of the string or to the end of the string (i.e. you choose some index $i$, remove the $i$-th character of $s$ and insert it before or after all remaining characters of $s$).
@@ -48,6 +49,7 @@ vc-description: |-
   In the third test case of the example, it is sufficient to move the last bracket to the beginning of the string.
   
   In the fourth test case of the example, we can choose last three openning brackets, move them to the beginning of the string and obtain "((()))(())".
+  -/
 
 vc-preamble: |-
 
@@ -75,29 +77,29 @@ vc-theorems: |-
   def repeat_char (c : Char) (n : Nat) : String :=
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve_brackets ")("
+  -- #guard_msgs in
+  -- #eval solve_brackets ")("
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve_brackets "()()"
+  -- #guard_msgs in
+  -- #eval solve_brackets "()()"
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve_brackets "())()()("
+  -- #guard_msgs in
+  -- #eval solve_brackets "())()()("
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval solve_brackets ")))((((())"
+  -- #guard_msgs in
+  -- #eval solve_brackets ")))((((())"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

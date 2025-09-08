@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   As a treat, I'll let you read part of the script from a classic 'I'm Alan Partridge episode:
   ```
   Lynn: Alan, there’s that teacher chap.
@@ -20,6 +21,7 @@ vc-description: |-
   Other katas in this series:
   Alan Partridge I - Partridge Watch
   Alan Partridge III - London
+  -/
 
 vc-preamble: |-
 
@@ -40,23 +42,23 @@ vc-theorems: |-
     (x * x > 1000) = (apple x = "It's hotter than the sun!!") := 
   sorry
   
-  /--
+  /-
   info: "It's hotter than the sun!!"
   -/
-  #guard_msgs in
-  #eval apple "50"
+  -- #guard_msgs in
+  -- #eval apple "50"
   
-  /--
+  /-
   info: 'Help yourself to a honeycomb Yorkie for the glovebox.'
   -/
-  #guard_msgs in
-  #eval apple 4
+  -- #guard_msgs in
+  -- #eval apple 4
   
-  /--
+  /-
   info: "It's hotter than the sun!!"
   -/
-  #guard_msgs in
-  #eval apple 60
+  -- #guard_msgs in
+  -- #eval apple 60
 
 vc-postamble: |-
   -- Apps difficulty: introductory

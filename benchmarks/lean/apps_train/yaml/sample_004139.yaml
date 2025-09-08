@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   #It's show time!
   Archers have gathered from all around the world to participate in the Arrow Function Faire. But the faire will only start if there are archers signed and if they all have enough arrows in their quivers - at least 5 is the requirement! Are all the archers ready?
   
@@ -15,6 +16,7 @@ vc-description: |-
   `archersReady([1, 2, 3, 4, 5, 6, 7, 8])` returns `false` because there are archers with not enough arrows.
   
   `archersReady([5, 6, 7, 8])` returns `true`.
+  -/
 
 vc-preamble: |-
 
@@ -46,23 +48,23 @@ vc-theorems: |-
       (∃ x ∈ archers, x < 5) →
       archers_ready archers = false := sorry
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval archers_ready []
+  -- #guard_msgs in
+  -- #eval archers_ready []
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval archers_ready [5, 6, 7, 8]
+  -- #guard_msgs in
+  -- #eval archers_ready [5, 6, 7, 8]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval archers_ready [1, 2, 3, 4, 5, 6, 7, 8]
+  -- #guard_msgs in
+  -- #eval archers_ready [1, 2, 3, 4, 5, 6, 7, 8]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

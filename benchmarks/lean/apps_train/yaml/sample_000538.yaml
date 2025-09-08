@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Consider the following operations on a triple of integers. In one operation, you should:
   - Choose an integer $d$ and an arithmetic operation ― either addition or multiplication.
   - Choose a subset of elements of the triple.
@@ -36,6 +37,7 @@ vc-description: |-
   -----Explanation-----
   Example case 1: We add $3$ to the first and third element of $(3, 5, 7)$ to form $(6, 5, 10)$.
   Example case 2: We can add $1$ to each element to form $(9, 7, 4)$ and then multiply the third element by $2$.
+  -/
 
 vc-preamble: |-
 
@@ -64,17 +66,17 @@ vc-theorems: |-
   theorem min_operations_symmetry (p q r a b c : Int) :
     min_operations p q r a b c = min_operations r q p c b a := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval min_operations 3 5 7 6 5 10
+  -- #guard_msgs in
+  -- #eval min_operations 3 5 7 6 5 10
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_operations 8 6 3 9 7 8
+  -- #guard_msgs in
+  -- #eval min_operations 8 6 3 9 7 8
 
 vc-postamble: |-
   -- Apps difficulty: interview

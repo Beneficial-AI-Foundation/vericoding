@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a string expression representing a Lisp-like expression to return the integer value of.
   
   The syntax for these expressions is given as follows.
@@ -56,6 +57,7 @@ vc-description: |-
   The given string expression is well formatted: There are no leading or trailing spaces, there is only a single space separating different components of the string, and no space between adjacent parentheses.  The expression is guaranteed to be legal and evaluate to an integer.
   The length of expression is at most 2000.  (It is also non-empty, as that would not be a legal expression.)
   The answer and all intermediate calculations of that answer are guaranteed to fit in a 32-bit integer.
+  -/
 
 vc-preamble: |-
 
@@ -97,23 +99,23 @@ vc-theorems: |-
     evaluate_lisp s!"(add 0 {x})" = x := by
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval evaluate_lisp "(add 1 2)"
+  -- #guard_msgs in
+  -- #eval evaluate_lisp "(add 1 2)"
   
-  /--
+  /-
   info: 15
   -/
-  #guard_msgs in
-  #eval evaluate_lisp "(mult 3 (add 2 3))"
+  -- #guard_msgs in
+  -- #eval evaluate_lisp "(mult 3 (add 2 3))"
   
-  /--
+  /-
   info: 14
   -/
-  #guard_msgs in
-  #eval evaluate_lisp "(let x 2 (mult x (let x 3 y 4 (add x y))))"
+  -- #guard_msgs in
+  -- #eval evaluate_lisp "(let x 2 (mult x (let x 3 y 4 (add x y))))"
 
 vc-postamble: |-
   -- Apps difficulty: interview

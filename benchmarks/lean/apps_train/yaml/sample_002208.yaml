@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Important: All possible tests are in the pretest, so you shouldn't hack on this problem. So, if you passed pretests, you will also pass the system test.
   
   You are an adventurer currently journeying inside an evil temple. After defeating a couple of weak monsters, you arrived at a square room consisting of tiles forming an n × n grid, surrounded entirely by walls. At the end of the room lies a door locked with evil magical forces. The following inscriptions are written on the door:
@@ -115,6 +116,7 @@ vc-description: |-
    [Image] 
   
   In total, it produced exactly 2 sounds, so the solution is correct.
+  -/
 
 vc-preamble: |-
   def Grid := List (List Char)

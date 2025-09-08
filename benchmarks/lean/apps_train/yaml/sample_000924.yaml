@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef has a string of size $N$ which consists only lowercase English alphabet. The chef doesn't like the consonant alphabet at all. So he is thinking of changing every single consonant alphabet to any vowel alphabet. There is some cost for performing this operation.
   - Number all alphabet [a,b,c,……,z] as [1,2,3,…..,26]
   - So if you want to change c to e then cost will be |e-c| = |5-3| = 2
@@ -32,6 +33,7 @@ vc-description: |-
   |a-c|=|1-3|=2
   |a-c|=|1-3|=2
   1+1+2+2=6
+  -/
 
 vc-preamble: |-
   def isVowel (c : Char) : Bool := 
@@ -72,23 +74,23 @@ vc-theorems: |-
     minCostVowelTransform s > 0 :=
   sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_cost_vowel_transform "aeiou"
+  -- #guard_msgs in
+  -- #eval min_cost_vowel_transform "aeiou"
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval min_cost_vowel_transform "dbcc"
+  -- #guard_msgs in
+  -- #eval min_cost_vowel_transform "dbcc"
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval min_cost_vowel_transform "bc"
+  -- #guard_msgs in
+  -- #eval min_cost_vowel_transform "bc"
 
 vc-postamble: |-
   -- Apps difficulty: interview

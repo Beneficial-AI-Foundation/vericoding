@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ### Combine strings function
   ```if:coffeescript,haskell,javascript
   Create a function named `combineNames` that accepts two parameters (first and last name). The function should return the full name.
@@ -18,6 +19,7 @@ vc-description: |-
   ```python
   'James Stevens'
   ```
+  -/
 
 vc-preamble: |-
 
@@ -51,23 +53,23 @@ vc-theorems: |-
     String.length (combine_names first last) = String.length first + String.length last + 1 :=
   sorry
   
-  /--
+  /-
   info: 'James Stevens'
   -/
-  #guard_msgs in
-  #eval combine_names "James" "Stevens"
+  -- #guard_msgs in
+  -- #eval combine_names "James" "Stevens"
   
-  /--
+  /-
   info: 'Davy Back'
   -/
-  #guard_msgs in
-  #eval combine_names "Davy" "Back"
+  -- #guard_msgs in
+  -- #eval combine_names "Davy" "Back"
   
-  /--
+  /-
   info: 'Arthur Dent'
   -/
-  #guard_msgs in
-  #eval combine_names "Arthur" "Dent"
+  -- #guard_msgs in
+  -- #eval combine_names "Arthur" "Dent"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

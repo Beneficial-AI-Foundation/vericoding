@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   n passengers board an airplane with exactly n seats. The first passenger has lost the ticket and picks a seat randomly. But after that, the rest of passengers will:
   
   Take their own seat if it is still available, 
@@ -18,6 +19,7 @@ vc-description: |-
   Constraints:
   
   1 <= n <= 10^5
+  -/
 
 vc-preamble: |-
 
@@ -38,23 +40,23 @@ vc-theorems: |-
   theorem first_person_prob :
     nth_person_gets_nth_seat 1 = 1.0 := sorry
   
-  /--
+  /-
   info: 1.0
   -/
-  #guard_msgs in
-  #eval nth_person_gets_nth_seat 1
+  -- #guard_msgs in
+  -- #eval nth_person_gets_nth_seat 1
   
-  /--
+  /-
   info: 0.5
   -/
-  #guard_msgs in
-  #eval nth_person_gets_nth_seat 2
+  -- #guard_msgs in
+  -- #eval nth_person_gets_nth_seat 2
   
-  /--
+  /-
   info: 0.5
   -/
-  #guard_msgs in
-  #eval nth_person_gets_nth_seat 100
+  -- #guard_msgs in
+  -- #eval nth_person_gets_nth_seat 100
 
 vc-postamble: |-
   -- Apps difficulty: interview

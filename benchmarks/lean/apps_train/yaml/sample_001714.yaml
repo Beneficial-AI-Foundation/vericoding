@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   [Currying and partial application](http://www.2ality.com/2011/09/currying-vs-part-eval.html) are two ways of transforming a function into another function with a generally smaller arity. While they are often confused with each other, they work differently. The goal is to learn to differentiate them.
   
   ## Currying
@@ -117,6 +118,7 @@ vc-description: |-
   curryPartial(curryPartial(add, 1)(2), 3) # =>6
   curryPartial(curryPartial(curryPartial(add, 1)), 2, 3) # =>6
   ```
+  -/
 
 vc-preamble: |-
   def add2 (x y : Int) : Int :=

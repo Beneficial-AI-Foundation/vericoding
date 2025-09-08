@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are going to be given a word. Your job will be to make sure that each character in that word has the exact same number of occurrences. You will return `true` if it is valid, or `false` if it is not.
   
   For example:
@@ -14,6 +15,7 @@ vc-description: |-
   
   #Output
   `true` if the word is a valid word, or `false` if the word is not valid.
+  -/
 
 vc-preamble: |-
 
@@ -34,23 +36,23 @@ vc-theorems: |-
   theorem single_char_string_valid (c : Char) (n : Nat) :
     n > 0 → validate_word (String.mk (List.replicate n c)) = true := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval validate_word "abcabc"
+  -- #guard_msgs in
+  -- #eval validate_word "abcabc"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval validate_word "AbcCBa"
+  -- #guard_msgs in
+  -- #eval validate_word "AbcCBa"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval validate_word "abcabcd"
+  -- #guard_msgs in
+  -- #eval validate_word "abcabcd"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

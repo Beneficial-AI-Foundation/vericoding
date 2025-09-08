@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Ted$Ted$ loves prime numbers. One day he is playing a game called legendary$legendary$ with his girlfriend Robin$Robin$. Ted$Ted$ writes a number N$N$ on a table and the number is in the form of :
   N = P1A1 *  P2A2 * ……….. * PnAn
   Ted$Ted$ asks Robin$Robin$ to find the sum of all the numbers which are less than or equal to N$N$ and also contains all the primes whose minimum power in the number is given by an array B$B$.  
@@ -37,6 +38,7 @@ vc-description: |-
   
   30 = 21 * 31 * 51 , 60 =  22 * 31 * 51, 150 =  21 * 31 * 52 and 300 =  22 * 31 * 52. 
   In the 4 numbers, the minimum powers for 2, 3 and 5 are 1, 1 and 1 or more than them in every case.
+  -/
 
 vc-preamble: |-
   def solve_legendary_prime_game (n: Nat) (p a b: List Nat) : Nat := sorry
@@ -56,11 +58,11 @@ vc-definitions: |-
   def is_prime (n: Nat) : Bool := sorry
 
 vc-theorems: |-
-  /--
+  /-
   info: 540
   -/
-  #guard_msgs in
-  #eval solve_legendary_prime_game 3 [2, 3, 5] [2, 1, 2] [1, 1, 1]
+  -- #guard_msgs in
+  -- #eval solve_legendary_prime_game 3 [2, 3, 5] [2, 1, 2] [1, 1, 1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

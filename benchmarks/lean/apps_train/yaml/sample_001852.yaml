@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given two strings representing two complex numbers.
   
   You need to return a string representing their multiplication. Note i2 = -1 according to the definition.
@@ -19,6 +20,7 @@ vc-description: |-
   
   The input strings will not have extra blank.
   The input strings will be given in the form of a+bi, where the integer a and b will both belong to the range of [-100, 100]. And the output should be also in this form.
+  -/
 
 vc-preamble: |-
 
@@ -46,23 +48,23 @@ vc-theorems: |-
     complex_number_multiply c ⟨0, 0⟩ = ⟨0, 0⟩ :=
   sorry
   
-  /--
+  /-
   info: '0+2i'
   -/
-  #guard_msgs in
-  #eval complex_number_multiply "1+1i" "1+1i"
+  -- #guard_msgs in
+  -- #eval complex_number_multiply "1+1i" "1+1i"
   
-  /--
+  /-
   info: '0+-2i'
   -/
-  #guard_msgs in
-  #eval complex_number_multiply "1+-1i" "1+-1i"
+  -- #guard_msgs in
+  -- #eval complex_number_multiply "1+-1i" "1+-1i"
   
-  /--
+  /-
   info: '23+2i'
   -/
-  #guard_msgs in
-  #eval complex_number_multiply "2+3i" "4+-5i"
+  -- #guard_msgs in
+  -- #eval complex_number_multiply "2+3i" "4+-5i"
 
 vc-postamble: |-
   -- Apps difficulty: interview

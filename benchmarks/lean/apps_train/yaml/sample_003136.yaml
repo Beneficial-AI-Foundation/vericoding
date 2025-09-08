@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   
   John won the championship of a TV show. He can get some bonuses.
@@ -39,12 +40,13 @@ vc-description: |-
   5->2->1   bonus:5*2+2*4+1*8=26
   The maximum amount of bonus is 50.
   ```
+  -/
 
 vc-preamble: |-
   def calculate : List Nat → Nat 
   | xs => sorry
   
-  /-- Helper function to sum a list of naturals -/
+  /- Helper function to sum a list of naturals -/
 
 vc-helpers: |-
   -- <vc-helpers>

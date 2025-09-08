@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    The string is called `prime` if it cannot be constructed by concatenating some (more than one) equal strings together.
   
@@ -15,6 +16,7 @@ vc-description: |-
    - `[output]` a boolean value
   
     `true` if the string is prime, `false` otherwise
+  -/
 
 vc-preamble: |-
 
@@ -43,23 +45,23 @@ vc-theorems: |-
       s.data[i]! = s.data[s.length - 1 - i]!) :
     prime_string (s ++ s) = false := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval prime_string "abac"
+  -- #guard_msgs in
+  -- #eval prime_string "abac"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval prime_string "abab"
+  -- #guard_msgs in
+  -- #eval prime_string "abab"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval prime_string "aaaa"
+  -- #guard_msgs in
+  -- #eval prime_string "aaaa"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

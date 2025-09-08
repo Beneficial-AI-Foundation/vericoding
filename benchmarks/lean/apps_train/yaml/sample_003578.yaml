@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # RoboScript #2 - Implement the RS1 Specification
   
   ## Disclaimer
@@ -93,6 +94,7 @@ vc-description: |-
   3. [RoboScript #3 - Implement the RS2 Specification](https://www.codewars.com/kata/58738d518ec3b4bf95000192)
   4. [RoboScript #4 - RS3 Patterns to the Rescue](https://www.codewars.com/kata/594b898169c1d644f900002e)
   5. [RoboScript #5 - The Final Obstacle (Implement RSU)](https://www.codewars.com/kata/5a12755832b8b956a9000133)
+  -/
 
 vc-preamble: |-
   def execute (cmd : String) : String :=
@@ -132,23 +134,23 @@ vc-theorems: |-
     (result.data.filter (· = '*')).length = cmd.length + 1 := by
     sorry
   
-  /--
+  /-
   info: '*'
   -/
-  #guard_msgs in
-  #eval execute ""
+  -- #guard_msgs in
+  -- #eval execute ""
   
-  /--
+  /-
   info: '******'
   -/
-  #guard_msgs in
-  #eval execute "FFFFF"
+  -- #guard_msgs in
+  -- #eval execute "FFFFF"
   
-  /--
+  /-
   info: '    ****\r\n    *  *\r\n    *  *\r\n********\r\n    *   \r\n    *   '
   -/
-  #guard_msgs in
-  #eval execute "LFFFFFRFFFRFFFRFFFFFFF"
+  -- #guard_msgs in
+  -- #eval execute "LFFFFFRFFFRFFFRFFFFFFF"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

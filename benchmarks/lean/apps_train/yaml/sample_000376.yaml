@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an integer n, your task is to count how many strings of length n can be formed under the following rules:
   
   Each character is a lower case vowel ('a', 'e', 'i', 'o', 'u')
@@ -27,6 +28,7 @@ vc-description: |-
   Constraints:
   
   1 <= n <= 2 * 10^4
+  -/
 
 vc-preamble: |-
 
@@ -50,23 +52,23 @@ vc-theorems: |-
   theorem count_vowel_permutation_base_two :
     count_vowel_permutation 2 = 10 := sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval count_vowel_permutation 1
+  -- #guard_msgs in
+  -- #eval count_vowel_permutation 1
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval count_vowel_permutation 2
+  -- #guard_msgs in
+  -- #eval count_vowel_permutation 2
   
-  /--
+  /-
   info: 68
   -/
-  #guard_msgs in
-  #eval count_vowel_permutation 5
+  -- #guard_msgs in
+  -- #eval count_vowel_permutation 5
 
 vc-postamble: |-
   -- Apps difficulty: interview

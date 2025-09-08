@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array containing only integers, add all the elements and return the binary equivalent of that sum.
   
   If the array contains any non-integer element (e.g. an object, a float, a string and so on), return false.
@@ -9,6 +10,7 @@ vc-description: |-
   arr2bin([1,2]) == '11'
   arr2bin([1,2,'a']) == False
   ```
+  -/
 
 vc-preamble: |-
   def arr2bin (arr : List α) : String := sorry
@@ -44,23 +46,23 @@ vc-theorems: |-
     (¬isAllInts arr → arr2bin arr = "") ∧
     (isAllInts arr → arr2bin arr = toBinaryString (sumList (listToInts arr))) := sorry
   
-  /--
+  /-
   info: '11'
   -/
-  #guard_msgs in
-  #eval arr2bin [1, 2]
+  -- #guard_msgs in
+  -- #eval arr2bin [1, 2]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval arr2bin [1, 2, "a"]
+  -- #guard_msgs in
+  -- #eval arr2bin [1, 2, "a"]
   
-  /--
+  /-
   info: '0'
   -/
-  #guard_msgs in
-  #eval arr2bin []
+  -- #guard_msgs in
+  -- #eval arr2bin []
 
 vc-postamble: |-
   -- Apps difficulty: introductory

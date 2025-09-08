@@ -1,10 +1,12 @@
 vc-description: |-
+  /-
   Write a function that takes in a string of one or more words, and returns the same string, but with all five or more letter words reversed (Just like the name of this Kata). Strings passed in will consist of only letters and spaces. Spaces will be included only when more than one word is present.
   
   Examples:
   spinWords( "Hey fellow warriors" ) => returns "Hey wollef sroirraw" 
   spinWords( "This is a test") => returns "This is a test" 
   spinWords( "This is another test" )=> returns "This is rehtona test"
+  -/
 
 vc-preamble: |-
 
@@ -32,23 +34,23 @@ vc-theorems: |-
   theorem spin_words_empty : 
     spinWords "" = "" := sorry
   
-  /--
+  /-
   info: 'emocleW'
   -/
-  #guard_msgs in
-  #eval spin_words "Welcome"
+  -- #guard_msgs in
+  -- #eval spin_words "Welcome"
   
-  /--
+  /-
   info: 'Hey wollef sroirraw'
   -/
-  #guard_msgs in
-  #eval spin_words "Hey fellow warriors"
+  -- #guard_msgs in
+  -- #eval spin_words "Hey fellow warriors"
   
-  /--
+  /-
   info: 'This ecnetnes is a ecnetnes'
   -/
-  #guard_msgs in
-  #eval spin_words "This sentence is a sentence"
+  -- #guard_msgs in
+  -- #eval spin_words "This sentence is a sentence"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array nums of integers, return how many of them contain an even number of digits.
   
   Example 1:
@@ -22,6 +23,7 @@ vc-description: |-
   
   1 <= nums.length <= 500
   1 <= nums[i] <= 10^5
+  -/
 
 vc-preamble: |-
 
@@ -45,23 +47,23 @@ vc-theorems: |-
     find_numbers_with_even_digits (nums₁ ++ nums₂) = 
     find_numbers_with_even_digits nums₁ + find_numbers_with_even_digits nums₂ := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_numbers_with_even_digits [12, 345, 2, 6, 7896]
+  -- #guard_msgs in
+  -- #eval find_numbers_with_even_digits [12, 345, 2, 6, 7896]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval find_numbers_with_even_digits [555, 901, 482, 1771]
+  -- #guard_msgs in
+  -- #eval find_numbers_with_even_digits [555, 901, 482, 1771]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_numbers_with_even_digits [1, 22, 333, 4444]
+  -- #guard_msgs in
+  -- #eval find_numbers_with_even_digits [1, 22, 333, 4444]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

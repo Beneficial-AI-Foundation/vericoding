@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given an array $A$ of $N$ positive and pairwise distinct integers. 
   You can permute the elements in any way you want. 
   The cost of an ordering $(A_1, A_2, \ldots, A_N)$ is defined as $ (((A_1 \bmod A_2) \bmod A_3)......) \bmod A_N$ where $X \bmod Y$ means the remainder when $X$ is divided by $Y$. 
@@ -32,6 +33,7 @@ vc-description: |-
   
   -----Explanation:-----
   The two possible ways to order the elements are [7, 12] and [12, 7]. In the first case, the cost is $7 \bmod 12 = 7$ and in the second case the cost is $12 \bmod 7 = 5$. Clearly the answer is 7.
+  -/
 
 vc-preamble: |-
 
@@ -67,23 +69,23 @@ vc-theorems: |-
     find_max_cost n arr₁ = find_max_cost n arr₂ ∧ 
     find_max_cost n arr₂ = find_max_cost n arr₃ := sorry
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval find_max_cost 2 #[7, 12]
+  -- #guard_msgs in
+  -- #eval find_max_cost 2 #[7, 12]
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval find_max_cost 3 #[5, 8, 10]
+  -- #guard_msgs in
+  -- #eval find_max_cost 3 #[5, 8, 10]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_max_cost 4 #[3, 7, 11, 15]
+  -- #guard_msgs in
+  -- #eval find_max_cost 4 #[3, 7, 11, 15]
 
 vc-postamble: |-
   -- Apps difficulty: interview

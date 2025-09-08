@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You have a bag of size $n$. Also you have $m$ boxes. The size of $i$-th box is $a_i$, where each $a_i$ is an integer non-negative power of two.
   
   You can divide boxes into two parts of equal size. Your goal is to fill the bag completely.
@@ -35,6 +36,7 @@ vc-description: |-
   2
   -1
   0
+  -/
 
 vc-preamble: |-
   def isPowerOfTwo (n : Nat) : Bool :=
@@ -69,23 +71,23 @@ vc-theorems: |-
     result = 0 ∨ result = -1 := by
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_divisions *test1
+  -- #guard_msgs in
+  -- #eval min_divisions *test1
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval min_divisions *test2
+  -- #guard_msgs in
+  -- #eval min_divisions *test2
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_divisions *test3
+  -- #guard_msgs in
+  -- #eval min_divisions *test3
 
 vc-postamble: |-
   -- Apps difficulty: interview

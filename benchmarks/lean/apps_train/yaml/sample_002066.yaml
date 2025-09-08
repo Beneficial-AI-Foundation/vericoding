@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Polycarp is making a quest for his friends. He has already made n tasks, for each task the boy evaluated how interesting it is as an integer q_{i}, and the time t_{i} in minutes needed to complete the task. 
   
   An interesting feature of his quest is: each participant should get the task that is best suited for him, depending on his preferences. The task is chosen based on an interactive quiz that consists of some questions. The player should answer these questions with "yes" or "no". Depending on the answer to the question, the participant either moves to another question or goes to one of the tasks that are in the quest. In other words, the quest is a binary tree, its nodes contain questions and its leaves contain tasks. 
@@ -57,6 +58,7 @@ vc-description: |-
   In the third sample test the optimal strategy is to include only the second task into the quest.
   
   Here is the picture that illustrates the answers to the sample tests. The blue circles represent the questions, the two arrows that go from every circle represent where a person goes depending on his answer to that question. The tasks are the red ovals. [Image]
+  -/
 
 vc-preamble: |-
   def List.sum (l : List Nat) : Nat :=
@@ -102,23 +104,23 @@ vc-theorems: |-
     let max_interests := sorted_interests.take max_quests
     max_quest_interest n T tasks ≤ max_interests.sum := sorry
   
-  /--
+  /-
   info: 11
   -/
-  #guard_msgs in
-  #eval max_quest_interest 5 5 [(1, 1), (1, 1), (2, 2), (3, 3), (4, 4)]
+  -- #guard_msgs in
+  -- #eval max_quest_interest 5 5 [(1, 1), (1, 1), (2, 2), (3, 3), (4, 4)]
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval max_quest_interest 5 5 [(4, 1), (4, 2), (4, 3), (4, 4), (4, 5)]
+  -- #guard_msgs in
+  -- #eval max_quest_interest 5 5 [(4, 1), (4, 2), (4, 3), (4, 4), (4, 5)]
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval max_quest_interest 2 2 [(1, 1), (2, 10)]
+  -- #guard_msgs in
+  -- #eval max_quest_interest 2 2 [(1, 1), (2, 10)]
 
 vc-postamble: |-
   -- Apps difficulty: competition

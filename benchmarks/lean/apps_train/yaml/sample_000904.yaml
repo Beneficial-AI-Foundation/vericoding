@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Consider the following $4 \times 4$ pattern:
   1  2  4  7
   3  5  8 11
@@ -32,6 +33,7 @@ vc-description: |-
   10 13 15 16
   
   -----Explanation-----
+  -/
 
 vc-preamble: |-
   def generate_pattern (n : Nat) : List (List Nat) :=

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   -----Problem-----
   
   			Nikki's latest work is writing a story of letters. However, she finds writing story so boring that, after working for three hours, she realized that all she has written are M long words consisting entirely of letters A and B. Having accepted that she will never finish the story in time, Nikki has decided to at least have some fun with it by counting bubbly words.
@@ -45,6 +46,7 @@ vc-description: |-
   - 
   ABBA -It is also bubbly as lines will not intersect. We can draw line b/w A and A above the line b/w B and B.
   				 p { text-align:justify }
+  -/
 
 vc-preamble: |-
 
@@ -73,23 +75,23 @@ vc-theorems: |-
     then countBubblyWords [word] = 1
     else countBubblyWords [word] = 0 := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_bubbly_words ["ABAB", "AABB", "ABBA"]
+  -- #guard_msgs in
+  -- #eval count_bubbly_words ["ABAB", "AABB", "ABBA"]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_bubbly_words ["AABB"]
+  -- #guard_msgs in
+  -- #eval count_bubbly_words ["AABB"]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_bubbly_words ["ABAB", "ABBA"]
+  -- #guard_msgs in
+  -- #eval count_bubbly_words ["ABAB", "ABBA"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

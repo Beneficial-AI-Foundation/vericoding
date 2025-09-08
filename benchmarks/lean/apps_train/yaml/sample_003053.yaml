@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The marketing team is spending way too much time typing in hashtags.   
   Let's help them with our own Hashtag Generator!
   
@@ -16,6 +17,7 @@ vc-description: |-
   "    Hello     World   "                  =>  "#HelloWorld"
   ""                                        =>  false
   ```
+  -/
 
 vc-preamble: |-
 
@@ -41,29 +43,29 @@ vc-theorems: |-
     generate_hashtag "HELLO WORLD" = some "#HelloWorld" ∧
     generate_hashtag "hELLo wORLd" = some "#HelloWorld" := sorry
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval generate_hashtag ""
+  -- #guard_msgs in
+  -- #eval generate_hashtag ""
   
-  /--
+  /-
   info: '#HelloWorld'
   -/
-  #guard_msgs in
-  #eval generate_hashtag "hello world"
+  -- #guard_msgs in
+  -- #eval generate_hashtag "hello world"
   
-  /--
+  /-
   info: '#HelloWorld'
   -/
-  #guard_msgs in
-  #eval generate_hashtag "   hello     world   "
+  -- #guard_msgs in
+  -- #eval generate_hashtag "   hello     world   "
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval generate_hashtag "x" * 140
+  -- #guard_msgs in
+  -- #eval generate_hashtag "x" * 140
 
 vc-postamble: |-
   -- Apps difficulty: introductory

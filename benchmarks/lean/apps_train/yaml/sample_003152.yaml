@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Inspired by the development team at Vooza, write the function `howManyLightsabersDoYouOwn`/`how_many_light_sabers_do_you_own` that 
   
   * accepts the name of a programmer, and
@@ -19,6 +20,7 @@ vc-description: |-
   how_many_light_sabers_do_you_own('Adam') == 0
   how_many_light_sabers_do_you_own()       == 0
   ```
+  -/
 
 vc-preamble: |-
 
@@ -41,23 +43,23 @@ vc-theorems: |-
   theorem empty_name_zero :
     how_many_light_sabers_do_you_own none = 0 := by sorry
   
-  /--
+  /-
   info: 18
   -/
-  #guard_msgs in
-  #eval how_many_light_sabers_do_you_own "Zach"
+  -- #guard_msgs in
+  -- #eval how_many_light_sabers_do_you_own "Zach"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval how_many_light_sabers_do_you_own 
+  -- #guard_msgs in
+  -- #eval how_many_light_sabers_do_you_own 
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval how_many_light_sabers_do_you_own "Adam"
+  -- #guard_msgs in
+  -- #eval how_many_light_sabers_do_you_own "Adam"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

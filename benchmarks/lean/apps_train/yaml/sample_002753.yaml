@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    Lonerz got some crazy growing plants and he wants to grow them nice and well.
   
@@ -35,6 +36,7 @@ vc-description: |-
    - `[output]` an integer
   
    The number of plants Lonerz needs to plant.
+  -/
 
 vc-preamble: |-
 
@@ -54,23 +56,23 @@ vc-theorems: |-
     plant_doubling 2 = 1 ∧  
     plant_doubling 3 = 2 := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval plant_doubling 5
+  -- #guard_msgs in
+  -- #eval plant_doubling 5
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval plant_doubling 8
+  -- #guard_msgs in
+  -- #eval plant_doubling 8
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval plant_doubling 1
+  -- #guard_msgs in
+  -- #eval plant_doubling 1
 
 vc-postamble: |-
   -- Apps difficulty: introductory

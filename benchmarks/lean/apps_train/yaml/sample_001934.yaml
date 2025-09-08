@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   One day n friends gathered together to play "Mafia". During each round of the game some player must be the supervisor and other n - 1 people take part in the game. For each person we know in how many rounds he wants to be a player, not the supervisor: the i-th person wants to play a_{i} rounds. What is the minimum number of rounds of the "Mafia" game they need to play to let each person play at least as many rounds as they want?
   
   -----Input-----
@@ -29,6 +30,7 @@ vc-description: |-
   -----Note-----
   
   You don't need to know the rules of "Mafia" to solve this problem. If you're curious, it's a game Russia got from the Soviet times: http://en.wikipedia.org/wiki/Mafia_(party_game).
+  -/
 
 vc-preamble: |-
   def min_rounds_needed (n : Nat) (rounds : List Nat) : Nat := sorry
@@ -60,23 +62,23 @@ vc-theorems: |-
     let rounds := List.replicate n x
     min_rounds_needed n rounds = max x ((n*x + n-2) / (n-1)) := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval min_rounds_needed 3 [3, 2, 2]
+  -- #guard_msgs in
+  -- #eval min_rounds_needed 3 [3, 2, 2]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval min_rounds_needed 4 [2, 2, 2, 2]
+  -- #guard_msgs in
+  -- #eval min_rounds_needed 4 [2, 2, 2, 2]
   
-  /--
+  /-
   info: 1005000000
   -/
-  #guard_msgs in
-  #eval min_rounds_needed 3 [1000000000, 1000000000, 10000000]
+  -- #guard_msgs in
+  -- #eval min_rounds_needed 3 [1000000000, 1000000000, 10000000]
 
 vc-postamble: |-
   -- Apps difficulty: competition

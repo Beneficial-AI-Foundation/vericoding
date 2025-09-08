@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string S, count the number of distinct, non-empty subsequences of S .
   Since the result may be large, return the answer modulo 10^9 + 7.
   
@@ -21,6 +22,7 @@ vc-description: |-
   
   S contains only lowercase letters.
   1 <= S.length <= 2000
+  -/
 
 vc-preamble: |-
 
@@ -47,23 +49,23 @@ vc-theorems: |-
     distinctSubseqCount s ≥ s.length :=
     sorry
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval distinct_subseq_count "abc"
+  -- #guard_msgs in
+  -- #eval distinct_subseq_count "abc"
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval distinct_subseq_count "aba"
+  -- #guard_msgs in
+  -- #eval distinct_subseq_count "aba"
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval distinct_subseq_count "aaa"
+  -- #guard_msgs in
+  -- #eval distinct_subseq_count "aaa"
 
 vc-postamble: |-
   -- Apps difficulty: interview

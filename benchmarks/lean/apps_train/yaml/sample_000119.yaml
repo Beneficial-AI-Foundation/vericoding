@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Reminder: the median of the array $[a_1, a_2, \dots, a_{2k+1}]$ of odd number of elements is defined as follows: let $[b_1, b_2, \dots, b_{2k+1}]$ be the elements of the array in the sorted order. Then median of this array is equal to $b_{k+1}$.
   
   There are $2n$ students, the $i$-th student has skill level $a_i$. It's not guaranteed that all skill levels are distinct.
@@ -49,6 +50,7 @@ vc-description: |-
   $[2]$, $[1, 3, 4]$ is also not possible because students with skills $5$ and $6$ aren't assigned to a class.
   
   In the third test you can assign the students in the following way: $[3, 4, 13, 13, 20], [2, 5, 8, 16, 17]$ or $[3, 8, 17], [2, 4, 5, 13, 13, 16, 20]$. Both divisions give minimal possible absolute difference.
+  -/
 
 vc-preamble: |-
   def solve_min_skill_diff (n: Nat) (arr: List Nat) : Nat :=
@@ -96,23 +98,23 @@ vc-theorems: |-
     result ∈ diffs :=
   sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve_min_skill_diff 1 [1, 1]
+  -- #guard_msgs in
+  -- #eval solve_min_skill_diff 1 [1, 1]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve_min_skill_diff 3 [6, 5, 4, 1, 2, 3]
+  -- #guard_msgs in
+  -- #eval solve_min_skill_diff 3 [6, 5, 4, 1, 2, 3]
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval solve_min_skill_diff 5 [13, 4, 20, 13, 2, 5, 8, 3, 17, 16]
+  -- #guard_msgs in
+  -- #eval solve_min_skill_diff 5 [13, 4, 20, 13, 2, 5, 8, 3, 17, 16]
 
 vc-postamble: |-
   -- Apps difficulty: interview

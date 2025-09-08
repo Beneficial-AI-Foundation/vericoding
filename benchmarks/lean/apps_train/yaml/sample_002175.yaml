@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Johnny has just found the new, great tutorial: "How to become a grandmaster?". The tutorial tells many strange and unexpected for Johnny things, such as you have to be patient or that very important is solving many harder and harder problems. 
   
   The boy has found an online judge with tasks divided by topics they cover. He has picked $p^{k_i}$ problems from $i$-th category ($p$ is his favorite number). He wants to solve them in two weeks (the patience condition is too hard for Johnny, so for simplicity, he looks only at easy tasks, which can be solved in such a period). Now our future grandmaster has to decide which topics to cover first and which the second week. Help him assign topics in such a way, that workload is balanced.
@@ -40,6 +41,7 @@ vc-description: |-
   You have to minimize the difference, not it's remainder. For example, if the minimum difference is equal to $2$, but there is also a distribution where the difference is $10^9 + 8$, then the answer is $2$, not $1$.
   
   In the first test case of the example, there're the following numbers: $4$, $8$, $16$, $16$, and $8$. We can divide them into such two sets: ${4, 8, 16}$ and ${8, 16}$. Then the difference between the sums of numbers in sets would be $4$.
+  -/
 
 vc-preamble: |-
   def MOD := 1000000007
@@ -89,23 +91,23 @@ vc-theorems: |-
     0 ≤ result ∧ result < MOD :=
   sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval solve_minimized_workload 5 2 [2, 3, 4, 4, 3]
+  -- #guard_msgs in
+  -- #eval solve_minimized_workload 5 2 [2, 3, 4, 4, 3]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve_minimized_workload 3 1 [2, 10, 1000]
+  -- #guard_msgs in
+  -- #eval solve_minimized_workload 3 1 [2, 10, 1000]
   
-  /--
+  /-
   info: 146981438
   -/
-  #guard_msgs in
-  #eval solve_minimized_workload 4 5 [0, 1, 1, 100]
+  -- #guard_msgs in
+  -- #eval solve_minimized_workload 4 5 [0, 1, 1, 100]
 
 vc-postamble: |-
   -- Apps difficulty: competition

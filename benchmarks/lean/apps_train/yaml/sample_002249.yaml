@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given two positive integers N and K. How many multisets of rational numbers satisfy all of the following conditions?
    - The multiset has exactly N elements and the sum of them is equal to K.
    - Each element of the multiset is one of 1, \frac{1}{2}, \frac{1}{4}, \frac{1}{8}, \dots. In other words, each element can be represented as \frac{1}{2^i}\ (i = 0,1,\dots).
@@ -24,6 +25,7 @@ vc-description: |-
   The following two multisets satisfy all of the given conditions:
    - {1, \frac{1}{2}, \frac{1}{4}, \frac{1}{4}}
    - {\frac{1}{2}, \frac{1}{2}, \frac{1}{2}, \frac{1}{2}}
+  -/
 
 vc-preamble: |-
 
@@ -58,23 +60,23 @@ vc-theorems: |-
     count_multisets 3000 1 = 815951975 :=
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_multisets 4 2
+  -- #guard_msgs in
+  -- #eval count_multisets 4 2
   
-  /--
+  /-
   info: 687232272
   -/
-  #guard_msgs in
-  #eval count_multisets 2525 425
+  -- #guard_msgs in
+  -- #eval count_multisets 2525 425
   
-  /--
+  /-
   info: 815951975
   -/
-  #guard_msgs in
-  #eval count_multisets 3000 1
+  -- #guard_msgs in
+  -- #eval count_multisets 3000 1
 
 vc-postamble: |-
   -- Apps difficulty: competition

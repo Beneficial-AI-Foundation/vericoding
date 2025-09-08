@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The students of Codechef Middle School are visiting an amusement park. The children want to go on a ride, however, there is a minimum height requirement of $X$ cm. Determine if the children are eligible to go on the ride. 
   Print "Yes" if they are eligible, "No" otherwise.
   
@@ -25,6 +26,7 @@ vc-description: |-
   
   -----EXPLANATION:-----
   The first child has height more than minimum permissible height, so he can go on the ride while the other person cannot!
+  -/
 
 vc-preamble: |-
 
@@ -54,23 +56,23 @@ vc-theorems: |-
     let case := cases[i]'h
     result = (if case.1 ≥ case.2 then "Yes" else "No") := sorry
   
-  /--
+  /-
   info: ['Yes', 'No']
   -/
-  #guard_msgs in
-  #eval process_test_cases [(120, 100), (90, 100)]
+  -- #guard_msgs in
+  -- #eval process_test_cases [(120, 100), (90, 100)]
   
-  /--
+  /-
   info: ['Yes']
   -/
-  #guard_msgs in
-  #eval process_test_cases [(100, 100)]
+  -- #guard_msgs in
+  -- #eval process_test_cases [(100, 100)]
   
-  /--
+  /-
   info: ['Yes', 'No', 'Yes']
   -/
-  #guard_msgs in
-  #eval process_test_cases [(150, 120), (80, 90), (200, 200)]
+  -- #guard_msgs in
+  -- #eval process_test_cases [(150, 120), (80, 90), (200, 200)]
 
 vc-postamble: |-
   -- Apps difficulty: interview

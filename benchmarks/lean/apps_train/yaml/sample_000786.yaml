@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   John was learning mathematics and was very bored. Jane his best friend gave him a problem to solve. 
   The description of the problem was as follows:- 
   You are given a decimal number $N$(1<=$N$<=$10^9$) and three integers $A$, $B$, $C$. 
@@ -70,6 +71,7 @@ vc-description: |-
   We have to keep repeating this process. If any of the numbers got by $N$ dividing by either $A$, $B$, $C$ have 0 after the decimal point then we have to take the first digit of the number. 
   for example: if we got 12.005 then here we take 1 and add it to the list and then assign N = 1 
   Now the queries ask for the elements at index 0, 1, 2, 3 of the $LIST$ which is 56,6, 2, 2
+  -/
 
 vc-preamble: |-
 
@@ -81,7 +83,7 @@ vc-definitions: |-
   def solve_list_pattern (n : Nat) (a b c : Nat) (queries : List Nat) : List Nat :=
   sorry
   
-  /-- Output list length matches query list length -/
+  /- Output list length matches query list length -/
 
 vc-theorems: |-
   theorem solve_list_pattern_length {n a b c : Nat} {queries : List Nat} 
@@ -94,7 +96,7 @@ vc-theorems: |-
     (solve_list_pattern n a b c queries).length = queries.length :=
   sorry
   
-  /-- All output values are single digits except possibly first -/
+  /- All output values are single digits except possibly first -/
   
   theorem solve_list_pattern_range {n a b c : Nat} {queries : List Nat}
     (h1 : n ≥ 1) (h2 : n ≤ 10^9)
@@ -106,7 +108,7 @@ vc-theorems: |-
     ∀ i ∈ (solve_list_pattern n a b c queries).tail, i ≤ 9 :=
   sorry
   
-  /-- First query at index 0 returns initial n -/
+  /- First query at index 0 returns initial n -/
   
   theorem solve_list_pattern_init {n a b c : Nat} {queries : List Nat}
     (h1 : n ≥ 1) (h2 : n ≤ 10^9)
@@ -119,7 +121,7 @@ vc-theorems: |-
     (solve_list_pattern n a b c queries)[queries.indexOf 0]? = some n :=
   sorry
   
-  /-- Function is idempotent (same inputs produce same outputs) -/
+  /- Function is idempotent (same inputs produce same outputs) -/
   
   theorem solve_list_pattern_idempotent {n a b c : Nat} {queries : List Nat}
     (h1 : n ≥ 1) (h2 : n ≤ 10^9)
@@ -131,11 +133,11 @@ vc-theorems: |-
     solve_list_pattern n a b c queries = solve_list_pattern n a b c queries :=
   sorry
   
-  /--
+  /-
   info: [56, 6, 2, 2]
   -/
-  #guard_msgs in
-  #eval solve_list_pattern 56 3 5 7 [0, 1, 2, 3]
+  -- #guard_msgs in
+  -- #eval solve_list_pattern 56 3 5 7 [0, 1, 2, 3]
 
 vc-postamble: |-
   -- Apps difficulty: interview

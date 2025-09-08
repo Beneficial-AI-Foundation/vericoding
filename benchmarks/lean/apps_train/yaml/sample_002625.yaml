@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Welcome to my (amazing) kata!
   
   You are given a gigantic number to decode.  Each number is a code that alternates in a pattern between encoded text and a smaller, encoded number.  The pattern's length varies with every test, but the alternation between encoded text and an encoded number will always be there.  Following this rule, each number tested begins with encoded text and ends with an encoded number.
@@ -23,6 +24,7 @@ vc-description: |-
   Here is a visualisation of the example:
   
   Good luck!
+  -/
 
 vc-preamble: |-
 

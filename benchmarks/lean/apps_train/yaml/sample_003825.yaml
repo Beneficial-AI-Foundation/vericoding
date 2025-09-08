@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Consider the number triangle below, in which each number is equal to the number above plus the number to the left. If there is no number above, assume it's a `0`.
   
   The triangle has `5` rows and the sum of the last row is `sum([1,4,9,14,14]) = 42`.
@@ -17,6 +18,7 @@ vc-description: |-
   
   We apologise for the inconvenience.
   ```
+  -/
 
 vc-preamble: |-
 
@@ -35,23 +37,23 @@ vc-theorems: |-
   
   theorem solve_monotonic (n : Nat) (h : n > 1) : solve n > solve (n-1) := sorry
   
-  /--
+  /-
   info: 14
   -/
-  #guard_msgs in
-  #eval solve 4
+  -- #guard_msgs in
+  -- #eval solve 4
   
-  /--
+  /-
   info: 42
   -/
-  #guard_msgs in
-  #eval solve 5
+  -- #guard_msgs in
+  -- #eval solve 5
   
-  /--
+  /-
   info: 132
   -/
-  #guard_msgs in
-  #eval solve 6
+  -- #guard_msgs in
+  -- #eval solve 6
 
 vc-postamble: |-
   -- Apps difficulty: introductory

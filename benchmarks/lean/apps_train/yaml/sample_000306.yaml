@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a binary string s (a string consisting only of '0' and '1's).
   Return the number of substrings with all characters 1's.
   Since the answer may be too large, return it modulo 10^9 + 7.
@@ -28,6 +29,7 @@ vc-description: |-
   
   s[i] == '0' or s[i] == '1'
   1 <= s.length <= 10^5
+  -/
 
 vc-preamble: |-
 
@@ -65,23 +67,23 @@ vc-theorems: |-
     count_substrings_ones s = (n * (n + 1) / 2) % 1000000007 :=
   sorry
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval count_substrings_ones "0110111"
+  -- #guard_msgs in
+  -- #eval count_substrings_ones "0110111"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_substrings_ones "101"
+  -- #guard_msgs in
+  -- #eval count_substrings_ones "101"
   
-  /--
+  /-
   info: 21
   -/
-  #guard_msgs in
-  #eval count_substrings_ones "111111"
+  -- #guard_msgs in
+  -- #eval count_substrings_ones "111111"
 
 vc-postamble: |-
   -- Apps difficulty: interview

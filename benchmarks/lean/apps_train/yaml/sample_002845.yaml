@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Nova polynomial add
   
   This kata is from a series on polynomial handling. ( [#1](http://www.codewars.com/kata/nova-polynomial-1-add-1) [#2](http://www.codewars.com/kata/570eb07e127ad107270005fe) [#3](http://www.codewars.com/kata/5714041e8807940ff3001140 ) [#4](http://www.codewars.com/kata/571a2e2df24bdfd4e20001f5) )
@@ -12,6 +13,7 @@ vc-description: |-
   ```python
   poly_add ( [1, 2], [1] ) = [2, 2]
   ```
+  -/
 
 vc-preamble: |-
 
@@ -42,23 +44,23 @@ vc-theorems: |-
   theorem poly_add_zeros (p : List Int) :
     poly_add p (List.replicate p.length 0) = p := sorry
   
-  /--
+  /-
   info: [2]
   -/
-  #guard_msgs in
-  #eval poly_add [1] [1]
+  -- #guard_msgs in
+  -- #eval poly_add [1] [1]
   
-  /--
+  /-
   info: [2, 2]
   -/
-  #guard_msgs in
-  #eval poly_add [1, 2] [1]
+  -- #guard_msgs in
+  -- #eval poly_add [1, 2] [1]
   
-  /--
+  /-
   info: [5, 5, 5, 5]
   -/
-  #guard_msgs in
-  #eval poly_add [1, 2, 3, 4] [4, 3, 2, 1]
+  -- #guard_msgs in
+  -- #eval poly_add [1, 2, 3, 4] [4, 3, 2, 1]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

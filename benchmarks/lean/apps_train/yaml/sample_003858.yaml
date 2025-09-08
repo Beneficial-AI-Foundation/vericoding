@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   I love Fibonacci numbers in general, but I must admit I love some more than others. 
   
   I would like for you to write me a function that when given a number (n)  returns the n-th number in the Fibonacci Sequence.
@@ -12,6 +13,7 @@ vc-description: |-
   Because 2 is the 4th number in the Fibonacci Sequence.
   
   For reference, the first two numbers in the Fibonacci sequence are 0 and 1, and each subsequent number is the sum of the previous two.
+  -/
 
 vc-preamble: |-
 
@@ -40,23 +42,23 @@ vc-theorems: |-
     nth_fib n > nth_fib (n-1) :=
     sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval nth_fib 1
+  -- #guard_msgs in
+  -- #eval nth_fib 1
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval nth_fib 4
+  -- #guard_msgs in
+  -- #eval nth_fib 4
   
-  /--
+  /-
   info: 34
   -/
-  #guard_msgs in
-  #eval nth_fib 10
+  -- #guard_msgs in
+  -- #eval nth_fib 10
 
 vc-postamble: |-
   -- Apps difficulty: introductory

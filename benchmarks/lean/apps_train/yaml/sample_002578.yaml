@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You have n dices each one having s sides numbered from 1 to s.
   How many outcomes add up to a specified number k?
   
@@ -9,6 +10,7 @@ vc-description: |-
   (1, 1, 2, 1)
   (1, 2, 1, 1)
   (2, 1, 1, 1)
+  -/
 
 vc-preamble: |-
 
@@ -26,23 +28,23 @@ vc-theorems: |-
   theorem dice_sum_outcomes_invalid_inputs₂ (n k : Nat) :
     dice_sum_outcomes n 0 k = 0 := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval dice_sum_outcomes 4 6 5
+  -- #guard_msgs in
+  -- #eval dice_sum_outcomes 4 6 5
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval dice_sum_outcomes 3 6 6
+  -- #guard_msgs in
+  -- #eval dice_sum_outcomes 3 6 6
   
-  /--
+  /-
   info: 27
   -/
-  #guard_msgs in
-  #eval dice_sum_outcomes 3 6 10
+  -- #guard_msgs in
+  -- #eval dice_sum_outcomes 3 6 10
 
 vc-postamble: |-
   -- Apps difficulty: introductory

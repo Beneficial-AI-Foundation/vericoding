@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given 2 strings, your job is to find out if there is a substring that appears in both strings. You will return true if you find a substring that appears in both strings, or false if you do not. We only care about substrings that are longer than one letter long.
   
   #Examples:
@@ -21,6 +22,7 @@ vc-description: |-
   Two strings with both lower and upper cases.
   #Output:
   A boolean value determining if there is a common substring between the two inputs.
+  -/
 
 vc-preamble: |-
 
@@ -48,23 +50,23 @@ vc-theorems: |-
     s2.length > 1 →
     substring_test s1 s2 = substring_test s2 s1 := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval substring_test "Something" "Home"
+  -- #guard_msgs in
+  -- #eval substring_test "Something" "Home"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval substring_test "Something" "Fun"
+  -- #guard_msgs in
+  -- #eval substring_test "Something" "Fun"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval substring_test "BANANA" "banana"
+  -- #guard_msgs in
+  -- #eval substring_test "BANANA" "banana"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

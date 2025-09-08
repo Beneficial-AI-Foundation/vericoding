@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There's a tree and every one of its nodes has a cost associated with it. Some of these nodes are labelled special nodes. You are supposed to answer a few queries on this tree. In each query, a source and destination node (SNODE$SNODE$ and DNODE$DNODE$) is given along with a value W$W$. For a walk between SNODE$SNODE$ and DNODE$DNODE$ to be valid you have to choose a special node and call it the pivot P$P$. Now the path will be SNODE$SNODE$ ->P$ P$ -> DNODE$DNODE$. For any valid path, there is a path value (PV$PV$) attached to it. It is defined as follows:
   Select a subset of nodes(can be empty)  in the path from SNODE$SNODE$ to P$P$ (both inclusive) such that sum of their costs (CTOT1$CTOT_{1}$) doesn't exceed W$W$.
   Select a subset of nodes(can be empty) in the path from P$P$ to DNODE$DNODE$ (both inclusive) such that sum of their costs (CTOT2$CTOT_{2}$) doesn't exceed W$W$.
@@ -55,6 +56,7 @@ vc-description: |-
   
   -----Explanation:-----
   Consider query 4$4$. The only path is 4−>2−>1−>2−>5$4->2->1->2->5$. The two sets defined for this path are {3,2,5${3,2,5}$} and {3,5,7${3,5,7}$}. Pick subsets {3,2,5${3,2,5}$} and {3,7${3,7}$} from each set which minimizes PV$PV$. Note that node 2$2$ can repeat as it is in different paths (both to and from the pivot).
+  -/
 
 vc-preamble: |-
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string and an integer k, you need to reverse the first k characters for every 2k characters counting from the start of the string. If there are less than k characters left, reverse all of them. If there are less than 2k but greater than or equal to k characters, then reverse the first k characters and left the other as original.
   
   Example:
@@ -10,6 +11,7 @@ vc-description: |-
   
    The string consists of lower English letters only.
    Length of the given string and k will in the range [1, 10000]
+  -/
 
 vc-preamble: |-
 
@@ -23,7 +25,7 @@ vc-definitions: |-
   theorem length_preservation (s : String) (k : Nat) (h : k > 0):
     (reverse_str s k).length = s.length := sorry
   
-  /-- For substrings of length k starting at indices divisible by 2k, 
+  /- For substrings of length k starting at indices divisible by 2k, 
       they are reversed in the result -/
 
 vc-theorems: |-
@@ -31,7 +33,7 @@ vc-theorems: |-
     (h2 : i + k ≤ s.length) (h3 : i % (2*k) = 0) :
     (reverse_str s k) = s := sorry
   
-  /-- For substrings of length k starting at indices k after those divisible by 2k,
+  /- For substrings of length k starting at indices k after those divisible by 2k,
       they remain unchanged in the result -/
   
   theorem non_reverse_pattern_second_k (s : String) (k : Nat) (h : k > 0) (i : Nat)

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Round any given number to the closest 0.5 step
   
   I.E.
@@ -14,6 +15,7 @@ vc-description: |-
   ```
   solution(4.75) == 5
   ```
+  -/
 
 vc-preamble: |-
   def solution (x : Float) : Float := sorry
@@ -44,23 +46,23 @@ vc-theorems: |-
     (x - floorX ≥ 0.75 → solution x = ceil x)
     := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval solution 4.2
+  -- #guard_msgs in
+  -- #eval solution 4.2
   
-  /--
+  /-
   info: 4.5
   -/
-  #guard_msgs in
-  #eval solution 4.6
+  -- #guard_msgs in
+  -- #eval solution 4.6
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval solution 4.75
+  -- #guard_msgs in
+  -- #eval solution 4.75
 
 vc-postamble: |-
   -- Apps difficulty: introductory

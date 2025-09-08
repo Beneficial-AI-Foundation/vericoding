@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a name, turn that name into a perfect square matrix (nested array with the amount of arrays equivalent to the length of each array). 
   
   You will need to add periods (`.`) to the end of the name if necessary, to turn it into a matrix. 
@@ -13,6 +14,7 @@ vc-description: |-
   "Frank" ==> [ ["F", "r", "a"],
                 ["n", "k", "."],
                 [".", ".", "."] ]
+  -/
 
 vc-preamble: |-
   def matrixfy (s : String) : String ⊕ (List (List Char)) := sorry 
@@ -62,23 +64,23 @@ vc-theorems: |-
     | _ => False
     := sorry
   
-  /--
+  /-
   info: 'name must be at least one letter'
   -/
-  #guard_msgs in
-  #eval matrixfy ""
+  -- #guard_msgs in
+  -- #eval matrixfy ""
   
-  /--
+  /-
   info: [['G']]
   -/
-  #guard_msgs in
-  #eval matrixfy "G"
+  -- #guard_msgs in
+  -- #eval matrixfy "G"
   
-  /--
+  /-
   info: [['F', 'r', 'a'], ['n', 'k', '.'], ['.', '.', '.']]
   -/
-  #guard_msgs in
-  #eval matrixfy "Frank"
+  -- #guard_msgs in
+  -- #eval matrixfy "Frank"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Consider the infinite sequence $s$ of positive integers, created by repeating the following steps:
   
     Find the lexicographically smallest triple of positive integers $(a, b, c)$ such that   $a \oplus b \oplus c = 0$, where $\oplus$ denotes the bitwise XOR operation.  $a$, $b$, $c$ are not in $s$.  Here triple of integers $(a_1, b_1, c_1)$ is considered to be lexicographically smaller than triple $(a_2, b_2, c_2)$ if sequence $[a_1, b_1, c_1]$ is lexicographically smaller than sequence $[a_2, b_2, c_2]$.  Append $a$, $b$, $c$ to $s$ in this order.  Go back to the first step. 
@@ -46,6 +47,7 @@ vc-description: |-
   -----Note-----
   
   The first elements of $s$ are $1, 2, 3, 4, 8, 12, 5, 10, 15, \dots $
+  -/
 
 vc-preamble: |-
 

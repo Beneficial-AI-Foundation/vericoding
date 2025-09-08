@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given two arrays of integers nums1 and nums2, return the number of triplets formed (type 1 and type 2) under the following rules:
   
   Type 1: Triplet (i, j, k) if nums1[i]2 == nums2[j] * nums2[k] where 0 <= i < nums1.length and 0 <= j < k < nums2.length.
@@ -32,6 +33,7 @@ vc-description: |-
   
   1 <= nums1.length, nums2.length <= 1000
   1 <= nums1[i], nums2[i] <= 10^5
+  -/
 
 vc-preamble: |-
 
@@ -60,23 +62,23 @@ vc-theorems: |-
     num_triplets nums1 [] = 0 :=
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval num_triplets [7, 4] [5, 2, 8, 9]
+  -- #guard_msgs in
+  -- #eval num_triplets [7, 4] [5, 2, 8, 9]
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval num_triplets [1, 1] [1, 1, 1]
+  -- #guard_msgs in
+  -- #eval num_triplets [1, 1] [1, 1, 1]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval num_triplets [7, 7, 8, 3] [1, 2, 9, 7]
+  -- #guard_msgs in
+  -- #eval num_triplets [7, 7, 8, 3] [1, 2, 9, 7]
 
 vc-postamble: |-
   -- Apps difficulty: interview

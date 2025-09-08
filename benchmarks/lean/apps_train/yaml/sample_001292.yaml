@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   -----General Statement:-----
   Read a number in scientific notation and output its equivalent decimal value.
   
@@ -22,6 +23,7 @@ vc-description: |-
   0.04
   180.00
   28.68
+  -/
 
 vc-preamble: |-
 
@@ -33,7 +35,7 @@ vc-definitions: |-
   def scientific_to_decimal (input : String) : List String :=
     sorry
   
-  /-- For any valid scientific notation input string:
+  /- For any valid scientific notation input string:
       1. The length of the result matches n (first number in input)
       2. Each result string contains exactly one decimal point
       3. Each result string has exactly 2 decimal places
@@ -51,7 +53,7 @@ vc-theorems: |-
           ∧ ((r.splitOn ".").get! 1).length = 2) := by
     sorry
   
-  /-- Invalid inputs (strings containing non-numeric characters except '.' and '-')
+  /- Invalid inputs (strings containing non-numeric characters except '.' and '-')
       result in errors -/
   
   theorem invalid_input_errors

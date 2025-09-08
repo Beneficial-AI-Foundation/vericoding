@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   January and February are usually very cold in ChefLand. The temperature may reach -20 and even -30 degrees Celsius. Because of that, many people seal up windows in their houses.
   Sergey also lives in ChefLand. He wants to seal the window in his house. The window has the shape of a   simple convex polygon with N vertices.
   For the sealing, there are M kinds of sticky stripes, which are sold in the shops. The stripe of the ith type has the length of Li millimeters and the cost of Ci rubles.
@@ -42,11 +43,12 @@ vc-description: |-
   
   -----Explanation-----
   Example case 1. In this case, Sergey's window is a rectangle with the side lengths of 1000 and 2000. There are two types of the sticky stripes in the shop - the one of the length 1000 with the cost of 10 rubles and with the length of 2000 and the cost of 15 rubles. The optimal solution would be to buy 2 stripes of the first type 2 stripes of the second type. The cost will be 2 × 15 + 2 × 10 = 50 rubles.
+  -/
 
 vc-preamble: |-
   def isValidPolygon (vertices: List (Int × Int)) : Bool := sorry
   
-  /-- Signature for the main function -/
+  /- Signature for the main function -/
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -70,17 +72,17 @@ vc-theorems: |-
     (h1: isValidPolygon vertices = true) :
     ∀ result, calculateMinCost vertices [] ≠ result := sorry
   
-  /--
+  /-
   info: 50
   -/
-  #guard_msgs in
-  #eval calculate_min_cost [(0, 0), (1000, 0), (1000, 2000), (0, 2000)] [(1000, 10), (2000, 15)]
+  -- #guard_msgs in
+  -- #eval calculate_min_cost [(0, 0), (1000, 0), (1000, 2000), (0, 2000)] [(1000, 10), (2000, 15)]
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval calculate_min_cost [(0, 0), (4, 0), (2, 3)] [(5, 2)]
+  -- #guard_msgs in
+  -- #eval calculate_min_cost [(0, 0), (4, 0), (2, 3)] [(5, 2)]
 
 vc-postamble: |-
   -- Apps difficulty: interview

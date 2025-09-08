@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given an integer array nums. The value of this array is defined as the sum of |nums[i]-nums[i+1]| for all 0 <= i < nums.length-1.
   You are allowed to select any subarray of the given array and reverse it. You can perform this operation only once.
   Find maximum possible value of the final array.
@@ -16,6 +17,7 @@ vc-description: |-
   
   1 <= nums.length <= 3*10^4
   -10^5 <= nums[i] <= 10^5
+  -/
 
 vc-preamble: |-
   def abs (n : Int) : Int := 
@@ -57,23 +59,23 @@ vc-theorems: |-
     ∃ (n n' : Int), maxValueAfterReverse nums = n :=
     sorry
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval maxValueAfterReverse [2, 3, 1, 5, 4]
+  -- #guard_msgs in
+  -- #eval maxValueAfterReverse [2, 3, 1, 5, 4]
   
-  /--
+  /-
   info: 68
   -/
-  #guard_msgs in
-  #eval maxValueAfterReverse [2, 4, 9, 24, 2, 1, 10]
+  -- #guard_msgs in
+  -- #eval maxValueAfterReverse [2, 4, 9, 24, 2, 1, 10]
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval maxValueAfterReverse [1, 2, 3, 4, 5]
+  -- #guard_msgs in
+  -- #eval maxValueAfterReverse [1, 2, 3, 4, 5]
 
 vc-postamble: |-
   -- Apps difficulty: interview

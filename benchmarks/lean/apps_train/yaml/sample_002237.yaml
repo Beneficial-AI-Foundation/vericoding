@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Dreamoon likes sequences very much. So he created a problem about the sequence that you can't find in OEIS: 
   
   You are given two integers $d, m$, find the number of arrays $a$, satisfying the following constraints:  The length of $a$ is $n$, $n \ge 1$  $1 \le a_1 < a_2 < \dots < a_n \le d$  Define an array $b$ of length $n$ as follows: $b_1 = a_1$, $\forall i > 1, b_i = b_{i - 1} \oplus a_i$, where $\oplus$ is the bitwise exclusive-or (xor). After constructing an array $b$, the constraint $b_1 < b_2 < \dots < b_{n - 1} < b_n$ should hold. 
@@ -42,6 +43,7 @@ vc-description: |-
   59
   89
   0
+  -/
 
 vc-preamble: |-
 
@@ -73,23 +75,23 @@ vc-theorems: |-
   theorem count_arrays_small_known_2 :
     count_arrays 2 1000000000 = 3 := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_arrays 1 1000000000
+  -- #guard_msgs in
+  -- #eval count_arrays 1 1000000000
   
-  /--
+  /-
   info: 11
   -/
-  #guard_msgs in
-  #eval count_arrays 4 9999997
+  -- #guard_msgs in
+  -- #eval count_arrays 4 9999997
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_arrays 10 1
+  -- #guard_msgs in
+  -- #eval count_arrays 10 1
 
 vc-postamble: |-
   -- Apps difficulty: competition

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Math geeks and computer nerds love to anthropomorphize numbers and assign emotions and personalities to them. Thus there is defined the concept of a "happy" number. A happy number is defined as an integer in which the following sequence ends with the number 1.
   
   * Start with the number itself.
@@ -29,6 +30,7 @@ vc-description: |-
   ___
   
   If you're up for a challenge, you may want to try a [performance version of this kata](https://www.codewars.com/kata/happy-numbers-performance-edition) by FArekkusu.
+  -/
 
 vc-preamble: |-
 
@@ -54,23 +56,23 @@ vc-theorems: |-
     19 ∈ happy_numbers 100 ∧
     4 ∉ happy_numbers 100 := sorry
   
-  /--
+  /-
   info: [1, 7, 10]
   -/
-  #guard_msgs in
-  #eval happy_numbers 10
+  -- #guard_msgs in
+  -- #eval happy_numbers 10
   
-  /--
+  /-
   info: [1, 7, 10, 13, 19, 23, 28, 31, 32, 44, 49]
   -/
-  #guard_msgs in
-  #eval happy_numbers 50
+  -- #guard_msgs in
+  -- #eval happy_numbers 50
   
-  /--
+  /-
   info: [1, 7, 10, 13, 19, 23, 28, 31, 32, 44, 49, 68, 70, 79, 82, 86, 91, 94, 97, 100]
   -/
-  #guard_msgs in
-  #eval happy_numbers 100
+  -- #guard_msgs in
+  -- #eval happy_numbers 100
 
 vc-postamble: |-
   -- Apps difficulty: introductory

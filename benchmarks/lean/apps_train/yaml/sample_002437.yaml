@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Function Descriptions=====
   group()
   
@@ -49,6 +50,7 @@ vc-description: |-
   
   =====Output Format=====
   Print the first occurrence of the repeating character. If there are no repeating characters, print -1.
+  -/
 
 vc-preamble: |-
 
@@ -88,23 +90,23 @@ vc-theorems: |-
     (∃ (i : Fin s.length), i.val + 1 < s.length ∧ s.data[i.val]? = s.data[i.val + 1]?) →
     find_first_repeated_char s ≠ "-1" := sorry
   
-  /--
+  /-
   info: '1'
   -/
-  #guard_msgs in
-  #eval find_first_repeated_char "12345678910111213141516171820212223"
+  -- #guard_msgs in
+  -- #eval find_first_repeated_char "12345678910111213141516171820212223"
   
-  /--
+  /-
   info: '-1'
   -/
-  #guard_msgs in
-  #eval find_first_repeated_char "abcde"
+  -- #guard_msgs in
+  -- #eval find_first_repeated_char "abcde"
   
-  /--
+  /-
   info: 'a'
   -/
-  #guard_msgs in
-  #eval find_first_repeated_char "aabbccdd"
+  -- #guard_msgs in
+  -- #eval find_first_repeated_char "aabbccdd"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Omy and Ish were learning the pattern printing. In order to learn they give themselves a task. In this task they are given a string and they have to form a pyramid with the pattern as follows:
   RowNumber are one based indexed.
   - 
@@ -39,6 +40,7 @@ vc-description: |-
   -----Sample Output:-----
   1
   1
+  -/
 
 vc-preamble: |-
 

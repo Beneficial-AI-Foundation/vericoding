@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Note : This question carries $150$ $points$
   There is an outcry in Middle Earth, as the greatest war between Orgs of Dark Lord Sauron and Frodo Baggins is about to begin. To end the war, Frodo decides to destroy the ring in the volcano of Mordor. There are many ships that lead Frodo to Mordor, and he is confused about which one he should board.  Given two-ship numbers $M$ and $N$, Frodo has to solve a problem to find the ship which he should board.
   Find the number of pairs (x, y), such that $1<=x<=M$ and $1<=y<=N$, for which $x*y + x+ y = string(x)+string(y)$ is true. 
@@ -24,6 +25,7 @@ vc-description: |-
   
   -----Explanation :-----
   For test case two M=1 and N=9  Pair (1,9) satisfies the above condition 1*9+1+9= “19” and only x=1 satisfies the equation.
+  -/
 
 vc-preamble: |-
 
@@ -45,23 +47,23 @@ vc-theorems: |-
     solve_frodo_ship m (10^exp - 2) = (m*(exp-1), m) :=
   sorry
   
-  /--
+  /-
   info: (1, 1)
   -/
-  #guard_msgs in
-  #eval solve_frodo_ship 1 9
+  -- #guard_msgs in
+  -- #eval solve_frodo_ship 1 9
   
-  /--
+  /-
   info: (4, 2)
   -/
-  #guard_msgs in
-  #eval solve_frodo_ship 2 99
+  -- #guard_msgs in
+  -- #eval solve_frodo_ship 2 99
   
-  /--
+  /-
   info: (9, 3)
   -/
-  #guard_msgs in
-  #eval solve_frodo_ship 3 999
+  -- #guard_msgs in
+  -- #eval solve_frodo_ship 3 999
 
 vc-postamble: |-
   -- Apps difficulty: interview

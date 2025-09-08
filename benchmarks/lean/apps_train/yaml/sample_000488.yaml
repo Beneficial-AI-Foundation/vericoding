@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array of positive integers target and an array initial of same size with all zeros.
   Return the minimum number of operations to form a target array from initial if you are allowed to do the following operation:
   
@@ -34,6 +35,7 @@ vc-description: |-
   
   1 <= target.length <= 10^5
   1 <= target[i] <= 10^5
+  -/
 
 vc-preamble: |-
 
@@ -74,23 +76,23 @@ vc-theorems: |-
         (fun i acc => acc + max (nums[i+1]! - nums[i]!) 0) 0 := by
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval min_number_operations [1, 2, 3, 2, 1]
+  -- #guard_msgs in
+  -- #eval min_number_operations [1, 2, 3, 2, 1]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval min_number_operations [3, 1, 1, 2]
+  -- #guard_msgs in
+  -- #eval min_number_operations [3, 1, 1, 2]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval min_number_operations [1, 1, 1, 1]
+  -- #guard_msgs in
+  -- #eval min_number_operations [1, 1, 1, 1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The Tribonacci sequence Tn is defined as follows: 
   T0 = 0, T1 = 1, T2 = 1, and Tn+3 = Tn + Tn+1 + Tn+2 for n >= 0.
   Given n, return the value of Tn.
@@ -18,6 +19,7 @@ vc-description: |-
   
   0 <= n <= 37
   The answer is guaranteed to fit within a 32-bit integer, ie. answer <= 2^31 - 1.
+  -/
 
 vc-preamble: |-
 
@@ -42,23 +44,23 @@ vc-theorems: |-
     tribonacci 2 = 1 :=
     sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval tribonacci 4
+  -- #guard_msgs in
+  -- #eval tribonacci 4
   
-  /--
+  /-
   info: 1389537
   -/
-  #guard_msgs in
-  #eval tribonacci 25
+  -- #guard_msgs in
+  -- #eval tribonacci 25
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval tribonacci 0
+  -- #guard_msgs in
+  -- #eval tribonacci 0
 
 vc-postamble: |-
   -- Apps difficulty: introductory

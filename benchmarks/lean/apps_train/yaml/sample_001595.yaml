@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   To give credit where credit is due: This problem was taken from the ACMICPC-Northwest Regional Programming Contest. Thank you problem writers.
   
   You are helping an archaeologist decipher some runes. He knows that this ancient society used a Base 10 system, and that they never start a number with a leading zero. He's figured out most of the digits as well as a few operators, but he needs your help to figure out the rest.
@@ -18,6 +19,7 @@ vc-description: |-
   ~~~if:php
   **Most of the time, the professor will be able to figure out most of the runes himself, but sometimes, there may be exactly 1 rune present in the expression that the professor cannot figure out (resulting in all question marks where the digits are in the expression) so be careful ;)**
   ~~~
+  -/
 
 vc-preamble: |-
 
@@ -54,23 +56,23 @@ vc-theorems: |-
   theorem basic_negative :
     solve_runes "-?=-?" = 0 := sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve_runes "123?45*?=?"
+  -- #guard_msgs in
+  -- #eval solve_runes "123?45*?=?"
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval solve_runes "??+??=??"
+  -- #guard_msgs in
+  -- #eval solve_runes "??+??=??"
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval solve_runes "-?56373--9216=-?47157"
+  -- #guard_msgs in
+  -- #eval solve_runes "-?56373--9216=-?47157"
 
 vc-postamble: |-
   -- Apps difficulty: interview

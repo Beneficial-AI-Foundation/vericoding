@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are $X$ people participating in a quiz competition and their IDs have been numbered from $1$ to $X$ (both inclusive). Beth needs to form a team among these $X$ participants. She has been given an integer $Y$. She can choose participants whose ID numbers are divisible by $Y$. 
   Now that the team is formed, Beth wants to know the strength of her team. The strength of a team is the sum of all the last digits of the team members’ ID numbers.
   Can you help Beth in finding the strength of her team?
@@ -27,6 +28,7 @@ vc-description: |-
   
   -----EXPLANATION:-----
   - Example case 1: ID numbers divisible by 3 are 3,6,9 and the sum of the last digits are 3+6+9=18
+  -/
 
 vc-preamble: |-
 

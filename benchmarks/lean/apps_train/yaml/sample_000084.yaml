@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Consider the following process. You have a binary string (a string where each character is either 0 or 1) $w$ of length $n$ and an integer $x$. You build a new binary string $s$ consisting of $n$ characters. The $i$-th character of $s$ is chosen as follows:
   
     if the character $w_{i-x}$ exists and is equal to 1, then $s_i$ is 1 (formally, if $i > x$ and $w_{i-x} = $ 1, then $s_i = $ 1);  if the character $w_{i+x}$ exists and is equal to 1, then $s_i$ is 1 (formally, if $i + x \le n$ and $w_{i+x} = $ 1, then $s_i = $ 1);  if both of the aforementioned conditions are false, then $s_i$ is 0. 
@@ -33,6 +34,7 @@ vc-description: |-
   111011
   10
   -1
+  -/
 
 vc-preamble: |-
   def length_eq (s₁ s₂ : BinaryString) : Prop := sorry
@@ -48,7 +50,7 @@ vc-definitions: |-
   def solve_binary_string (s : BinaryString) (x : Nat) : Option BinaryString :=
   sorry
   
-  /-- Result is either None or has same structure/length as input -/
+  /- Result is either None or has same structure/length as input -/
 
 vc-theorems: |-
   theorem length_preservation (s : BinaryString) (x : Nat) : 
@@ -57,7 +59,7 @@ vc-theorems: |-
     | some result => length_eq s result
   := sorry
   
-  /-- Result only contains valid binary digits -/
+  /- Result only contains valid binary digits -/
   
   theorem output_chars_valid (s : BinaryString) (x : Nat) :
     match solve_binary_string s x with
@@ -65,7 +67,7 @@ vc-theorems: |-
     | some result => is_binary result
   := sorry
   
-  /-- Main correctness theorem capturing all validity conditions -/
+  /- Main correctness theorem capturing all validity conditions -/
   
   theorem valid_solution (s : BinaryString) (x : Nat) :
     match solve_binary_string s x with
@@ -76,23 +78,23 @@ vc-theorems: |-
         (∀ i, matches_at_index s result x i)
   := sorry
   
-  /--
+  /-
   info: '111011'
   -/
-  #guard_msgs in
-  #eval solve_binary_string "101110" 2
+  -- #guard_msgs in
+  -- #eval solve_binary_string "101110" 2
   
-  /--
+  /-
   info: '10'
   -/
-  #guard_msgs in
-  #eval solve_binary_string "01" 1
+  -- #guard_msgs in
+  -- #eval solve_binary_string "01" 1
   
-  /--
+  /-
   info: '-1'
   -/
-  #guard_msgs in
-  #eval solve_binary_string "110" 1
+  -- #guard_msgs in
+  -- #eval solve_binary_string "110" 1
 
 vc-postamble: |-
   -- Apps difficulty: interview

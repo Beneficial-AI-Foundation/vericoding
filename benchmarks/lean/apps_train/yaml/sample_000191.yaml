@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array of integers A, find the number of triples of indices (i, j, k) such that:
   
   0 <= i < A.length
@@ -27,6 +28,7 @@ vc-description: |-
   
   1 <= A.length <= 1000
   0 <= A[i] < 2^16
+  -/
 
 vc-preamble: |-
   def sum_of_prime_factors (n : Int) : Int :=

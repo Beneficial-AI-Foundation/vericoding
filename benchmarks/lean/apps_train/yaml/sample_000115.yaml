@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   All techniques in the ninja world consist of hand seals. At the moment Naruto is learning a new technique, which consists of $n\cdot m$ different seals, denoted by distinct numbers. All of them were written in an $n\times m$ table.
   
   The table is lost now. Naruto managed to remember elements of each row from left to right, and elements of each column from top to bottom, but he doesn't remember the order of rows and columns. Please restore the table consistent with this data so that Naruto will be able to learn the new technique.
@@ -50,6 +51,7 @@ vc-description: |-
   One of the columns is $[1, 6]$. One of the columns is $[2, 5]$. One of the columns is $[3, 4]$.
   
   You are to reconstruct the matrix. The answer is given in the output.
+  -/
 
 vc-preamble: |-
   def solve_naruto_seals (n m : Nat) (rows cols : List (List Nat)) : List (List Nat) := sorry

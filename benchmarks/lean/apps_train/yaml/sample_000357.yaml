@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Find the length of the longest substring T of a given string (consists of lowercase letters only) such that every character in T appears no less than k times.
   
   Example 1:
@@ -20,6 +21,7 @@ vc-description: |-
   5
   
   The longest substring is "ababb", as 'a' is repeated 2 times and 'b' is repeated 3 times.
+  -/
 
 vc-preamble: |-
 
@@ -48,23 +50,23 @@ vc-theorems: |-
     longest_substring_with_k_occurrences s k = 0 :=
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval longest_substring_with_k_occurrences "aaabb" 3
+  -- #guard_msgs in
+  -- #eval longest_substring_with_k_occurrences "aaabb" 3
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval longest_substring_with_k_occurrences "ababbc" 2
+  -- #guard_msgs in
+  -- #eval longest_substring_with_k_occurrences "ababbc" 2
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval longest_substring_with_k_occurrences "abcdef" 2
+  -- #guard_msgs in
+  -- #eval longest_substring_with_k_occurrences "abcdef" 2
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function that counts how many different ways you can make change for an amount of money, given an array of coin denominations. For example, there are 3 ways to give change for 4 if you have coins with denomination 1 and 2: 
   ```
   1+1+1+1, 1+1+2, 2+2.
@@ -16,6 +17,7 @@ vc-description: |-
     count_change(10, [5,2,3]) # => 4
     count_change(11, [5,7]) # => 0
   ```
+  -/
 
 vc-preamble: |-
 
@@ -32,23 +34,23 @@ vc-theorems: |-
     count_change money [] = (if money = 0 then 1 else 0) :=
   sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_change 4 [1, 2]
+  -- #guard_msgs in
+  -- #eval count_change 4 [1, 2]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval count_change 10 [5, 2, 3]
+  -- #guard_msgs in
+  -- #eval count_change 10 [5, 2, 3]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_change 11 [5, 7]
+  -- #guard_msgs in
+  -- #eval count_change 11 [5, 7]
 
 vc-postamble: |-
   -- Apps difficulty: interview

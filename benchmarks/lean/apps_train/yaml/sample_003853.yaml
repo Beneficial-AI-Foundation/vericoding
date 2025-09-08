@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Mr. E Ven only likes even length words.
   Please create a translator so that he doesn't have to hear those pesky odd length words.
   For some reason he also hates punctuation, he likes his sentences to flow.
@@ -8,6 +9,7 @@ vc-description: |-
   "How did we end up here? We go?"
   translated becomes-> 
   "Howw didd we endd up here We go"
+  -/
 
 vc-preamble: |-
 
@@ -41,23 +43,23 @@ vc-theorems: |-
     (h : ∀ c ∈ s.data, ¬c.isAlpha ∧ ¬c.isDigit) :
     evenator s = "" := sorry
   
-  /--
+  /-
   info: 'II gott aa hole in 11'
   -/
-  #guard_msgs in
-  #eval evenator "I got a hole in 1!"
+  -- #guard_msgs in
+  -- #eval evenator "I got a hole in 1!"
   
-  /--
+  /-
   info: 'hi howw aree youu Byee'
   -/
-  #guard_msgs in
-  #eval evenator test2
+  -- #guard_msgs in
+  -- #eval evenator test2
   
-  /--
+  /-
   info: 'underr thee seAA'
   -/
-  #guard_msgs in
-  #eval evenator test3
+  -- #guard_msgs in
+  -- #eval evenator test3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

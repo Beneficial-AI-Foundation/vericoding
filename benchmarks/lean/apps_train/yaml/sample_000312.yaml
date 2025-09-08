@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your task is to form an integer array nums from an initial array of zeros arr that is the same size as nums.
   Return the minimum number of function calls to make nums from arr.
   The answer is guaranteed to fit in a 32-bit signed integer.
@@ -35,6 +36,7 @@ vc-description: |-
   
   1 <= nums.length <= 10^5
   0 <= nums[i] <= 10^9
+  -/
 
 vc-preamble: |-
   def minOperations (nums : List Nat) : Nat := sorry
@@ -71,23 +73,23 @@ vc-theorems: |-
     max = maxList nums →
     minOperations nums ≤ (String.length (toString max)) + nums.length := sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval minOperations [1, 5]
+  -- #guard_msgs in
+  -- #eval minOperations [1, 5]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval minOperations [2, 2]
+  -- #guard_msgs in
+  -- #eval minOperations [2, 2]
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval minOperations [4, 2, 5]
+  -- #guard_msgs in
+  -- #eval minOperations [4, 2, 5]
 
 vc-postamble: |-
   -- Apps difficulty: interview

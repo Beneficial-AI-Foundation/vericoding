@@ -1,7 +1,9 @@
 vc-description: |-
+  /-
   Write function `makeParts` or `make_parts` (depending on your language) that will take an array as argument and the size of the chunk.
   
   Example: if an array of size 123 is given and chunk size is 10 there will be 13 parts, 12 of size 10 and 1 of size 3.
+  -/
 
 vc-preamble: |-
 
@@ -48,23 +50,23 @@ vc-theorems: |-
     makeParts ([] : List α) n = [] :=
     sorry
   
-  /--
+  /-
   info: [[1, 2], [3, 4], [5, 6]]
   -/
-  #guard_msgs in
-  #eval make_parts [1, 2, 3, 4, 5, 6] 2
+  -- #guard_msgs in
+  -- #eval make_parts [1, 2, 3, 4, 5, 6] 2
   
-  /--
+  /-
   info: [[1, 2], [3, 4], [5]]
   -/
-  #guard_msgs in
-  #eval make_parts [1, 2, 3, 4, 5] 2
+  -- #guard_msgs in
+  -- #eval make_parts [1, 2, 3, 4, 5] 2
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval make_parts [] 3
+  -- #guard_msgs in
+  -- #eval make_parts [] 3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

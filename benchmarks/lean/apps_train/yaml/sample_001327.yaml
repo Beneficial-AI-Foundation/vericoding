@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Salmon loves to be a tidy person. One day, when he looked at the mess that he made after playing with his rubber ducks, he felt awful. Now he wants to clean up his mess, by placing his ducks into boxes.
   Each rubber duck has a color. There are a total of $N+1$ colors, numbered from $0$ to $N$. Salmon wants to place his $N*K$ ducks into $N$ boxes, each of which can fit $K$ ducks. Each duck should be placed inside a box.
   Salmon is very particular when it comes to how many colors he can place in each box. Since Salmon doesn't like lots of colors mixing together he only wants to have a maximum of $2$ distinct colors per box.
@@ -44,6 +45,7 @@ vc-description: |-
   - In the given testcase, Salmon has $N=2$ boxes, each of size $K=4$ and there are total $N*K=8$ ducks.   
   - The first box is filled with $1$ duck of color-$2$ and $3$ ducks of color-$1$ and the second box is filled with $1$ duck of color-$1$ and $3$ ducks of color-$0$.   
   - Each duck is inside a box and each box has at most two distinct colors. Also each box contains exactly $K=4$ ducks.
+  -/
 
 vc-preamble: |-
 
@@ -99,11 +101,11 @@ vc-theorems: |-
     let colors := N*K :: List.replicate N 0
     validate_solution N K colors (solve_duck_boxes N K colors) := sorry
   
-  /--
+  /-
   info: N2
   -/
-  #guard_msgs in
-  #eval len solve_duck_boxes(N2, K2, colors2)
+  -- #guard_msgs in
+  -- #eval len solve_duck_boxes(N2, K2, colors2)
 
 vc-postamble: |-
   -- Apps difficulty: interview

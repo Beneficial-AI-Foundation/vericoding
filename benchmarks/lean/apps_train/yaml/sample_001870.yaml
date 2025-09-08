@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a linked list, remove the n-th node from the end of list and return its head.
   
   Example:
@@ -14,6 +15,7 @@ vc-description: |-
   Follow up:
   
   Could you do this in one pass?
+  -/
 
 vc-preamble: |-
   def removeNthFromEnd (head : Node) (n : Nat) : Option Node :=
@@ -54,23 +56,23 @@ vc-theorems: |-
     linked_list_to_array result = arr.dropLast :=
   sorry
   
-  /--
+  /-
   info: [1, 2, 3, 5]
   -/
-  #guard_msgs in
-  #eval linked_list_to_array removeNthFromEnd(head1, 2)
+  -- #guard_msgs in
+  -- #eval linked_list_to_array removeNthFromEnd(head1, 2)
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval linked_list_to_array removeNthFromEnd(head2, 1)
+  -- #guard_msgs in
+  -- #eval linked_list_to_array removeNthFromEnd(head2, 1)
   
-  /--
+  /-
   info: [1]
   -/
-  #guard_msgs in
-  #eval linked_list_to_array removeNthFromEnd(head3, 1)
+  -- #guard_msgs in
+  -- #eval linked_list_to_array removeNthFromEnd(head3, 1)
 
 vc-postamble: |-
   -- Apps difficulty: interview

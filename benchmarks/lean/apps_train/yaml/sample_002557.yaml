@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Remove the parentheses
   =
   In this kata you are given a string for example:
@@ -16,6 +17,7 @@ vc-description: |-
   ```
   
   Other than parentheses only letters and spaces can occur in the string. Don't worry about other brackets like ```"[]"``` and ```"{}"``` as these will never appear.
+  -/
 
 vc-preamble: |-
 
@@ -47,23 +49,23 @@ vc-theorems: |-
     remove_parentheses "((()))" = "" :=
   sorry
   
-  /--
+  /-
   info: 'exampleexample'
   -/
-  #guard_msgs in
-  #eval remove_parentheses "example(unwanted thing)example"
+  -- #guard_msgs in
+  -- #eval remove_parentheses "example(unwanted thing)example"
   
-  /--
+  /-
   info: 'a'
   -/
-  #guard_msgs in
-  #eval remove_parentheses "a(b(c))"
+  -- #guard_msgs in
+  -- #eval remove_parentheses "a(b(c))"
   
-  /--
+  /-
   info: '  '
   -/
-  #guard_msgs in
-  #eval remove_parentheses "(first group) (second group) (third group)"
+  -- #guard_msgs in
+  -- #eval remove_parentheses "(first group) (second group) (third group)"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

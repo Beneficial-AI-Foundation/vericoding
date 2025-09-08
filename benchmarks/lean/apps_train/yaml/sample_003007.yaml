@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Finish the solution so that it takes an input `n` (integer) and returns a string that is the decimal representation of the number grouped by commas after every 3 digits.
   
   Assume: `0 <= n < 2147483647`
@@ -15,6 +16,7 @@ vc-description: |-
    1000000  ->   "1,000,000"
   35235235  ->  "35,235,235"
   ```
+  -/
 
 vc-preamble: |-
 
@@ -40,23 +42,23 @@ vc-theorems: |-
     1 ≤ s.head!.length ∧ 
     s.head!.length ≤ 3 := sorry
   
-  /--
+  /-
   info: '1,234'
   -/
-  #guard_msgs in
-  #eval group_by_commas 1234
+  -- #guard_msgs in
+  -- #eval group_by_commas 1234
   
-  /--
+  /-
   info: '1,234,567'
   -/
-  #guard_msgs in
-  #eval group_by_commas 1234567
+  -- #guard_msgs in
+  -- #eval group_by_commas 1234567
   
-  /--
+  /-
   info: '123,456,789'
   -/
-  #guard_msgs in
-  #eval group_by_commas 123456789
+  -- #guard_msgs in
+  -- #eval group_by_commas 123456789
 
 vc-postamble: |-
   -- Apps difficulty: introductory

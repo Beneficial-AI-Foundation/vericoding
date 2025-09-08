@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You've got a list of program warning logs. Each record of a log stream is a string in this format:  "2012-MM-DD HH:MM:SS:MESSAGE" (without the quotes). 
   
   String "MESSAGE" consists of spaces, uppercase and lowercase English letters and characters "!", ".", ",", "?". String "2012-MM-DD" determines a correct date in the year of 2012. String "HH:MM:SS" determines a correct time in the 24 hour format.
@@ -49,15 +50,16 @@ vc-description: |-
   
   Output
   2012-03-17 00:00:00
+  -/
 
 vc-preamble: |-
   def parseDateTime (s : String) : Option DateTime := sorry
   
-  /-- Convert timestamp to datetime string -/
+  /- Convert timestamp to datetime string -/
   
   def formatDateTime (dt : DateTime) : String := sorry
   
-  /-- Find first warning threshold function signature -/
+  /- Find first warning threshold function signature -/
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -110,23 +112,23 @@ vc-theorems: |-
     (h1 : logs.length > 0) (h2 : logs.length ≤ 20) :
     findFirstWarningThreshold n (logs.length + 1) logs = "-1" := sorry
   
-  /--
+  /-
   info: '2012-03-16 16:16:43'
   -/
-  #guard_msgs in
-  #eval find_first_warning_threshold 60 3 ["2012-03-16 16:15:25: Disk size is", "2012-03-16 16:15:25: Network failute", "2012-03-16 16:16:29: Cant write varlog", "2012-03-16 16:16:42: Unable to start process", "2012-03-16 16:16:43: Disk size is too small", "2012-03-16 16:16:53: Timeout detected"]
+  -- #guard_msgs in
+  -- #eval find_first_warning_threshold 60 3 ["2012-03-16 16:15:25: Disk size is", "2012-03-16 16:15:25: Network failute", "2012-03-16 16:16:29: Cant write varlog", "2012-03-16 16:16:42: Unable to start process", "2012-03-16 16:16:43: Disk size is too small", "2012-03-16 16:16:53: Timeout detected"]
   
-  /--
+  /-
   info: '-1'
   -/
-  #guard_msgs in
-  #eval find_first_warning_threshold 1 2 ["2012-03-16 23:59:59:Disk size", "2012-03-17 00:00:00: Network", "2012-03-17 00:00:01:Cant write varlog"]
+  -- #guard_msgs in
+  -- #eval find_first_warning_threshold 1 2 ["2012-03-16 23:59:59:Disk size", "2012-03-17 00:00:00: Network", "2012-03-17 00:00:01:Cant write varlog"]
   
-  /--
+  /-
   info: '2012-03-17 00:00:00'
   -/
-  #guard_msgs in
-  #eval find_first_warning_threshold 2 2 ["2012-03-16 23:59:59:Disk size is too sm", "2012-03-17 00:00:00:Network failute dete", "2012-03-17 00:00:01:Cant write varlogmysq"]
+  -- #guard_msgs in
+  -- #eval find_first_warning_threshold 2 2 ["2012-03-16 23:59:59:Disk size is too sm", "2012-03-17 00:00:00:Network failute dete", "2012-03-17 00:00:01:Cant write varlogmysq"]
 
 vc-postamble: |-
   -- Apps difficulty: competition

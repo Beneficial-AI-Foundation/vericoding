@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your work is to write a method that takes a value and an index, and returns the value with the bit at given index flipped.
   
   The bits are numbered from the least significant bit (index 1).
@@ -13,6 +14,7 @@ vc-description: |-
   See more examples in test classes
   
   Good luck!
+  -/
 
 vc-preamble: |-
   def flip_bit (value : Int) (bit_index : Nat) : Int := sorry
@@ -44,23 +46,23 @@ vc-theorems: |-
       band value bit_mask ≠ band (flip_bit value bit_index) bit_mask ∧
       band value (bit_mask - 1) = band (flip_bit value bit_index) (bit_mask - 1) := sorry
   
-  /--
+  /-
   info: 32768
   -/
-  #guard_msgs in
-  #eval flip_bit 0 16
+  -- #guard_msgs in
+  -- #eval flip_bit 0 16
   
-  /--
+  /-
   info: 1073741823
   -/
-  #guard_msgs in
-  #eval flip_bit 2147483647 31
+  -- #guard_msgs in
+  -- #eval flip_bit 2147483647 31
   
-  /--
+  /-
   info: 255
   -/
-  #guard_msgs in
-  #eval flip_bit 127 8
+  -- #guard_msgs in
+  -- #eval flip_bit 127 8
 
 vc-postamble: |-
   -- Apps difficulty: introductory

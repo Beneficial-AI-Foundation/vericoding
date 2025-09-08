@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The task is very simple.
   
   You must to return pyramids. Given a number ```n```  you print a pyramid with ```n``` floors
@@ -42,6 +43,7 @@ vc-description: |-
   ```
   
   Note: an extra line feed character is needed at the end of the string. Case `n=0` should so return `"\n"`.
+  -/
 
 vc-preamble: |-
 

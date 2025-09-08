@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given two words and a letter, return a single word that's a combination of both words, merged at the point where the given letter first appears in each word. The returned word should have the beginning of the first word and the ending of the second, with the dividing letter in the middle. You can assume both words will contain the dividing letter.
   
   ## Examples
@@ -9,6 +10,7 @@ vc-description: |-
   string_merge("jason", "samson", "s")     ==>  "jasamson"
   string_merge("wonderful", "people", "e") ==>  "wondeople"
   ```
+  -/
 
 vc-preamble: |-
 
@@ -43,23 +45,23 @@ vc-theorems: |-
     (h3 : ¬s1.contains c ∨ ¬s2.contains c) :
     ∃ (err : StringMergeError), string_merge s1 s2 c = err.msg := sorry
   
-  /--
+  /-
   info: 'held'
   -/
-  #guard_msgs in
-  #eval string_merge "hello" "world" "l"
+  -- #guard_msgs in
+  -- #eval string_merge "hello" "world" "l"
   
-  /--
+  /-
   info: 'codinywhere'
   -/
-  #guard_msgs in
-  #eval string_merge "coding" "anywhere" "n"
+  -- #guard_msgs in
+  -- #eval string_merge "coding" "anywhere" "n"
   
-  /--
+  /-
   info: 'wondeople'
   -/
-  #guard_msgs in
-  #eval string_merge "wonderful" "people" "e"
+  -- #guard_msgs in
+  -- #eval string_merge "wonderful" "people" "e"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

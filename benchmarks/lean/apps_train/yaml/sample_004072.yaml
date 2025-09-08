@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Definition
   
   **_Balanced number_** is the number that * **_The sum of_** all digits to the **_left of the middle_** digit(s) and the sum of all digits to the **_right of the middle_** digit(s) are **_equal_***.
@@ -93,6 +94,7 @@ vc-description: |-
   
   ## Enjoy Learning !!
   # Zizou
+  -/
 
 vc-preamble: |-
 
@@ -125,23 +127,23 @@ vc-theorems: |-
     balanced_num (d1 * 100 + d2 * 10 + d1) = "Balanced" ∧ 
     balanced_num (d1 * 1000 + d2 * 100 + d2 * 10 + d1) = "Balanced" := sorry
   
-  /--
+  /-
   info: 'Balanced'
   -/
-  #guard_msgs in
-  #eval balanced_num 56239814
+  -- #guard_msgs in
+  -- #eval balanced_num 56239814
   
-  /--
+  /-
   info: 'Not Balanced'
   -/
-  #guard_msgs in
-  #eval balanced_num 295591
+  -- #guard_msgs in
+  -- #eval balanced_num 295591
   
-  /--
+  /-
   info: 'Balanced'
   -/
-  #guard_msgs in
-  #eval balanced_num 959
+  -- #guard_msgs in
+  -- #eval balanced_num 959
 
 vc-postamble: |-
   -- Apps difficulty: introductory

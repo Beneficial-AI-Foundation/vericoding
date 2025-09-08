@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this kata, you will make a function that converts between `camelCase`, `snake_case`, and `kebab-case`.
   
   You must write a function that changes to a given case. It must be able to handle all three case types:
@@ -23,6 +24,7 @@ vc-description: |-
   Your function must deal with invalid input as shown, though it will only be passed strings. Furthermore, all valid identifiers will be lowercase except when necessary, in other words on word boundaries in `camelCase`.
   
   _**(Any translations would be greatly appreciated!)**_
+  -/
 
 vc-preamble: |-
 
@@ -61,29 +63,29 @@ vc-theorems: |-
     change_case "" target = some "" :=
     sorry
   
-  /--
+  /-
   info: 'snake_case'
   -/
-  #guard_msgs in
-  #eval change_case "snakeCase" "snake"
+  -- #guard_msgs in
+  -- #eval change_case "snakeCase" "snake"
   
-  /--
+  /-
   info: 'someLispName'
   -/
-  #guard_msgs in
-  #eval change_case "some-lisp-name" "camel"
+  -- #guard_msgs in
+  -- #eval change_case "some-lisp-name" "camel"
   
-  /--
+  /-
   info: 'map-to-all'
   -/
-  #guard_msgs in
-  #eval change_case "map_to_all" "kebab"
+  -- #guard_msgs in
+  -- #eval change_case "map_to_all" "kebab"
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval change_case "" "camel"
+  -- #guard_msgs in
+  -- #eval change_case "" "camel"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

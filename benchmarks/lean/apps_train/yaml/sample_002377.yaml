@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an integer array, find three numbers whose product is maximum and output the maximum product.
   
   Example 1:
@@ -15,6 +16,7 @@ vc-description: |-
   
   The length of the given array will be in range [3,104] and all elements are in the range [-1000, 1000].
   Multiplication of any three numbers in the input won't exceed the range of 32-bit signed integer.
+  -/
 
 vc-preamble: |-
 
@@ -29,23 +31,23 @@ vc-definitions: |-
     maximum_product (nums.map (· * scale)) = maximum_product nums * (scale * scale * scale) := sorry
 
 vc-theorems: |-
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval maximum_product [1, 2, 3]
+  -- #guard_msgs in
+  -- #eval maximum_product [1, 2, 3]
   
-  /--
+  /-
   info: 24
   -/
-  #guard_msgs in
-  #eval maximum_product [1, 2, 3, 4]
+  -- #guard_msgs in
+  -- #eval maximum_product [1, 2, 3, 4]
   
-  /--
+  /-
   info: 720
   -/
-  #guard_msgs in
-  #eval maximum_product [-4, -3, -2, -1, 60]
+  -- #guard_msgs in
+  -- #eval maximum_product [-4, -3, -2, -1, 60]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

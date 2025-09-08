@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Consider the fraction, $a/b$, where $a$ and $b$ are positive integers. If $a < b$ and $GCD(a,b) = 1$, it is called a reduced proper fraction.
   If we list the set of a reduced proper fraction for $d \leq 8$, (where $d$ is the denominator) in ascending order of size, we get:
   $1/8$, $1/7$, $1/6$, $1/5$, $1/4$, $2/7$, $1/3$, $3/8$, $2/5$ , $3/7$, $1/2$, $4/7$, $3/5$, $5/8$, $2/3$, $5/7$, $3/4$, $4/5$,  $5/6$, $6/7$, $7/8$
@@ -37,6 +38,7 @@ vc-description: |-
   3 4
   5 6
   1 6
+  -/
 
 vc-preamble: |-
 

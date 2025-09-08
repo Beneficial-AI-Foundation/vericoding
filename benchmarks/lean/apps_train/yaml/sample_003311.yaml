@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your task is to determine how many files of the copy queue you will be able to save into your Hard Disk Drive. The files must be saved in the order they appear in the queue. 
   
   ### Input:
@@ -23,6 +24,7 @@ vc-description: |-
   ```
   
   Do not expect any negative or invalid inputs.
+  -/
 
 vc-preamble: |-
   def sum (l : List Nat) : Nat :=
@@ -44,23 +46,23 @@ vc-theorems: |-
     0 ≤ result ∧ result ≤ sizes.length :=
   sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval save [4, 4, 4, 3, 3] 12
+  -- #guard_msgs in
+  -- #eval save [4, 4, 4, 3, 3] 12
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval save [4, 4, 4, 3, 3] 11
+  -- #guard_msgs in
+  -- #eval save [4, 4, 4, 3, 3] 11
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval save [4, 8, 15, 16, 23, 42] 108
+  -- #guard_msgs in
+  -- #eval save [4, 8, 15, 16, 23, 42] 108
 
 vc-postamble: |-
   -- Apps difficulty: introductory

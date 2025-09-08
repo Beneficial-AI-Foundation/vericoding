@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   It is the end of 2019 — the 17th of November, the Cooking Challenge day.
   There are N$N$ players participating in this competition, numbered 1$1$ through N$N$. Initially, the skill level of each player is zero. There are also M$M$ challenges (numbered 1$1$ through M$M$). For each valid i$i$, the i$i$-th challenge has three parameters Li$L_i$, Ri$R_i$ and Xi$X_i$ with the following meaning: for each player between the Li$L_i$-th and Ri$R_i$-th inclusive, if this player participates in this challenge, their skill level increases by Xi$X_i$ (Xi$X_i$ does not have to be positive).
   The organizers of the Cooking Challenge decided that the contest would be boring if they let the participants participate in the challenges directly, so they decided to use the compos.
@@ -47,6 +48,7 @@ vc-description: |-
   - The second and third players will not select any compo.
   - The fourth player will select the 1$1$-st, 2$2$-nd and 4$4$-th compos.
   - The fifth player will select all the compos.
+  -/
 
 vc-preamble: |-
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Storekeeper is a game in which the player pushes boxes around in a warehouse trying to get them to target locations.
   The game is represented by a grid of size m x n, where each element is a wall, floor, or a box.
   Your task is move the box 'B' to the target position 'T' under the following rules:
@@ -55,6 +56,7 @@ vc-description: |-
   1 <= n <= 20
   grid contains only characters '.', '#',  'S' , 'T', or 'B'.
   There is only one character 'S', 'B' and 'T' in the grid.
+  -/
 
 vc-preamble: |-
   def min_push_box (grid: Grid) : Int := sorry
@@ -104,23 +106,23 @@ vc-theorems: |-
   theorem valid_grid_chars (grid: Grid) (h: isValidGrid grid) :
     ∀ row ∈ grid.cells, ∀ c ∈ row, isValidCharProp c := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval min_push_box [["#", "#", "#", "#", "#", "#"], ["#", "T", "#", "#", "#", "#"], ["#", ".", ".", "B", ".", "#"], ["#", ".", "#", "#", ".", "#"], ["#", ".", ".", ".", "S", "#"], ["#", "#", "#", "#", "#", "#"]]
+  -- #guard_msgs in
+  -- #eval min_push_box [["#", "#", "#", "#", "#", "#"], ["#", "T", "#", "#", "#", "#"], ["#", ".", ".", "B", ".", "#"], ["#", ".", "#", "#", ".", "#"], ["#", ".", ".", ".", "S", "#"], ["#", "#", "#", "#", "#", "#"]]
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval min_push_box [["#", "#", "#", "#", "#", "#"], ["#", "T", "#", "#", "#", "#"], ["#", ".", ".", "B", ".", "#"], ["#", "#", "#", "#", ".", "#"], ["#", ".", ".", ".", "S", "#"], ["#", "#", "#", "#", "#", "#"]]
+  -- #guard_msgs in
+  -- #eval min_push_box [["#", "#", "#", "#", "#", "#"], ["#", "T", "#", "#", "#", "#"], ["#", ".", ".", "B", ".", "#"], ["#", "#", "#", "#", ".", "#"], ["#", ".", ".", ".", "S", "#"], ["#", "#", "#", "#", "#", "#"]]
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval min_push_box [["#", "#", "#", "#", "#", "#", "#"], ["#", "S", "#", ".", "B", "T", "#"], ["#", "#", "#", "#", "#", "#", "#"]]
+  -- #guard_msgs in
+  -- #eval min_push_box [["#", "#", "#", "#", "#", "#", "#"], ["#", "S", "#", ".", "B", "T", "#"], ["#", "#", "#", "#", "#", "#", "#"]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

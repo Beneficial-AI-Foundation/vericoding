@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A manufacturing project consists of exactly $K$ tasks. The board overviewing the project wants to hire $K$ teams of workers — one for each task. All teams begin working simultaneously.
   Obviously, there must be at least one person in each team. For a team of $A$ workers, it takes exactly $A$ days to complete the task they are hired for. Each team acts independently, unaware of the status of other teams (whether they have completed their tasks or not), and submits their result for approval on the $A$-th day.
   However, the board approves the project only if all $K$ teams complete their tasks on the same day — it rejects everything submitted on any other day. The day after a team finds out that its result was rejected, it resumes work on the same task afresh. Therefore, as long as a team of $A$ workers keeps getting rejected, it submits a new result of their task for approval on the $A$-th, $2A$-th, $3A$-th day etc.
@@ -27,6 +28,7 @@ vc-description: |-
   -----Explanation-----
   Example case 1: We can hire a team of $3$ workers for task $1$ and $1$ worker for task $2$. The one-man team working on task $2$ completes it and submits the result for approval on each day, but it is rejected on the first and second day. On the third day, the team working on task $1$ also completes their task, so the project gets approved after exactly $3$ days.
   Example case 2: We can hire a team of $3$ workers for task $1$ and a team of $2$ workers for task $2$.
+  -/
 
 vc-preamble: |-
 

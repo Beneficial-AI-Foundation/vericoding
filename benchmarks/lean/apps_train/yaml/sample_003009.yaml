@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    Suppose there are `n` people standing in a circle and they are numbered 1 through n in order. 
   
@@ -26,6 +27,7 @@ vc-description: |-
    - `[output]` an integer
   
     The index of the last person standing.
+  -/
 
 vc-preamble: |-
 
@@ -68,23 +70,23 @@ vc-theorems: |-
     circle_slash 1 = 1 :=
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval circle_slash 5
+  -- #guard_msgs in
+  -- #eval circle_slash 5
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval circle_slash 11
+  -- #guard_msgs in
+  -- #eval circle_slash 11
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval circle_slash 16
+  -- #guard_msgs in
+  -- #eval circle_slash 16
 
 vc-postamble: |-
   -- Apps difficulty: introductory

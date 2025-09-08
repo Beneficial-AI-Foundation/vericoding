@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Vanja and Miksi really like games. After playing one game for a long time, they decided to invent another game!
   In this game, they have a sequence $A_1, A_2, \dots, A_N$ and two numbers $Z_1$ and $Z_2$. The rules of the game are as follows:
   - The players take turns alternately, starting with Vanja.
@@ -47,6 +48,7 @@ vc-description: |-
   -----Explanation-----
   Example case 1: The first player can choose the value $A_1 = -4$, subtract it from $S = 0$ and obtain $S = - (-4) = 4 = Z_2$. The winner is the first player.  
   Example case 2: It can be proven that neither player is able to reach $S = Z_1$ or $S = Z_2$. The result is a tie.
+  -/
 
 vc-preamble: |-
 
@@ -100,23 +102,23 @@ vc-theorems: |-
     (Int.natAbs num = Int.natAbs Z1 ∨ Int.natAbs num = Int.natAbs Z2) → result = 1 ∧
     ¬(Int.natAbs num = Int.natAbs Z1 ∨ Int.natAbs num = Int.natAbs Z2) → (result = 0 ∨ result = 2) := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve_game 2 6 4 [-4, 10]
+  -- #guard_msgs in
+  -- #eval solve_game 2 6 4 [-4, 10]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve_game 1 1 -1 [2]
+  -- #guard_msgs in
+  -- #eval solve_game 1 1 -1 [2]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve_game 2 0 7 [3, 4]
+  -- #guard_msgs in
+  -- #eval solve_game 2 0 7 [3, 4]
 
 vc-postamble: |-
   -- Apps difficulty: interview

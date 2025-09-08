@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You just got done with your set at the gym, and you are wondering how much weight you could lift if you did a single repetition. Thankfully, a few scholars have devised formulas for this purpose (from [Wikipedia](https://en.wikipedia.org/wiki/One-repetition_maximum)) :
   
   ### Epley
@@ -8,6 +9,7 @@ vc-description: |-
   ### Lombardi
   
   Your function will receive a weight `w` and a number of repetitions `r` and must return your projected one repetition maximum. Since you are not sure which formula to use and you are feeling confident, your function will return the largest value from the three formulas shown above, rounded to the nearest integer. However, if the number of repetitions passed in is `1` (i.e., it is already a one rep max), your function must return `w`. Also, if the number of repetitions passed in is `0` (i.e., no repetitions were completed), your function must return `0`.
+  -/
 
 vc-preamble: |-
 
@@ -49,35 +51,35 @@ vc-theorems: |-
     (hw : weight ≥ 0) (hr : reps ≥ 0) :
     calculate_1RM weight reps = (calculate_1RM weight reps) := sorry
   
-  /--
+  /-
   info: 282
   -/
-  #guard_msgs in
-  #eval calculate_1RM 135 20
+  -- #guard_msgs in
+  -- #eval calculate_1RM 135 20
   
-  /--
+  /-
   info: 253
   -/
-  #guard_msgs in
-  #eval calculate_1RM 200 8
+  -- #guard_msgs in
+  -- #eval calculate_1RM 200 8
   
-  /--
+  /-
   info: 289
   -/
-  #guard_msgs in
-  #eval calculate_1RM 270 2
+  -- #guard_msgs in
+  -- #eval calculate_1RM 270 2
   
-  /--
+  /-
   info: 360
   -/
-  #guard_msgs in
-  #eval calculate_1RM 360 1
+  -- #guard_msgs in
+  -- #eval calculate_1RM 360 1
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval calculate_1RM 400 0
+  -- #guard_msgs in
+  -- #eval calculate_1RM 400 0
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   On a planet called RUIZ LAND, which is ruled by the queen, Erika Ruiz. Each person on that planet has a strength value (strength value >0).
   That planet has a special rule made by the queen that a boy and a girl will form a couple if their Hate value is a prime number where $Hate$ is given by the formula:-
   Hate = (boy's strength value)  XOR (girl's strength value )
@@ -23,6 +24,7 @@ vc-description: |-
   
   -----Sample Output:-----
   8 18
+  -/
 
 vc-preamble: |-
 

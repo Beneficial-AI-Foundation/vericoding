@@ -1,10 +1,12 @@
 vc-description: |-
+  /-
   In some ranking people collects points. The challenge is sort by points and calulate position for every person. But remember if two or more persons have same number of points, they should have same position number and sorted by name (name is unique).
   
   For example:
   Input structure:
   
   Output should be:
+  -/
 
 vc-preamble: |-
 
@@ -54,11 +56,11 @@ vc-theorems: |-
       result[i]!.name ≤ result[i+1]!.name :=
     sorry
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval ranking []
+  -- #guard_msgs in
+  -- #eval ranking []
 
 vc-postamble: |-
   -- Apps difficulty: introductory

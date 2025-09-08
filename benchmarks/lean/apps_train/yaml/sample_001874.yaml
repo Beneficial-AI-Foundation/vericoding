@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a m * n grid, where each cell is either 0 (empty) or 1 (obstacle). In one step, you can move up, down, left or right from and to an empty cell.
   Return the minimum number of steps to walk from the upper left corner (0, 0) to the lower right corner (m-1, n-1) given that you can eliminate at most k obstacles. If it is not possible to find such walk return -1.
   
@@ -35,6 +36,7 @@ vc-description: |-
   1 <= k <= m*n
   grid[i][j] == 0 or 1
   grid[0][0] == grid[m-1][n-1] == 0
+  -/
 
 vc-preamble: |-
 
@@ -77,23 +79,23 @@ vc-theorems: |-
     let empty_grid := List.replicate rows (List.replicate cols 0);
     shortest_path empty_grid 0 = rows + cols - 2 := sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval shortest_path [[0, 0, 0], [1, 1, 0], [0, 0, 0], [0, 1, 1], [0, 0, 0]] 1
+  -- #guard_msgs in
+  -- #eval shortest_path [[0, 0, 0], [1, 1, 0], [0, 0, 0], [0, 1, 1], [0, 0, 0]] 1
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval shortest_path [[0, 1, 1], [1, 1, 1], [1, 0, 0]] 1
+  -- #guard_msgs in
+  -- #eval shortest_path [[0, 1, 1], [1, 1, 1], [1, 0, 0]] 1
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval shortest_path [[0, 0], [0, 0]] 1
+  -- #guard_msgs in
+  -- #eval shortest_path [[0, 0], [0, 0]] 1
 
 vc-postamble: |-
   -- Apps difficulty: interview

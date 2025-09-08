@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array of integers `a` and integers `t` and `x`, count how many elements in the array you can make equal to `t` by **increasing** / **decreasing** it by `x` (or doing nothing).
   *EASY!*
   
@@ -29,6 +30,7 @@ vc-description: |-
   **-10^(18) <= a[i],t,x <= 10^(18)**
   
   **3 <= |a| <= 10^(4)**
+  -/
 
 vc-preamble: |-
 

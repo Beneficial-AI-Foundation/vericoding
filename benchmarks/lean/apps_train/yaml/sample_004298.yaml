@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We have the number ```12385```. We want to know the value of the closest cube but higher than 12385. The answer will be ```13824```.
   
   Now, another case. We have the number ```1245678```. We want to know the 5th power, closest and higher than that number. The value will be ```1419857```.
@@ -16,6 +17,7 @@ vc-description: |-
   The power, ```pow_```, always higher than ```1```.
   
   Happy coding!!
+  -/
 
 vc-preamble: |-
 
@@ -32,23 +34,23 @@ vc-definitions: |-
     find_next_power val pow > val := sorry
 
 vc-theorems: |-
-  /--
+  /-
   info: 13824
   -/
-  #guard_msgs in
-  #eval find_next_power 12385 3
+  -- #guard_msgs in
+  -- #eval find_next_power 12385 3
   
-  /--
+  /-
   info: 1419857
   -/
-  #guard_msgs in
-  #eval find_next_power 1245678 5
+  -- #guard_msgs in
+  -- #eval find_next_power 1245678 5
   
-  /--
+  /-
   info: 1771561
   -/
-  #guard_msgs in
-  #eval find_next_power 1245678 6
+  -- #guard_msgs in
+  -- #eval find_next_power 1245678 6
 
 vc-postamble: |-
   -- Apps difficulty: introductory

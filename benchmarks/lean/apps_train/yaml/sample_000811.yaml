@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Bear Limak has a sequence of N non-negative integers A1, A2, ..., AN. He defines the score of a segment (consecutive subsequence) as its sum of elements modulo P (not necessarily prime). Find the maximum score of a non-empty segment, and also find the number of segments with this maximum score.
   
   -----Input-----
@@ -45,6 +46,7 @@ vc-description: |-
   -----Explanation-----
   Example case 1. There are three segments - [1], [2] and [1, 2]. Sum of these segments are 1, 2 and 3 respectively. Sum of these segments modulo 3 will be 1, 2 and 0. Maximum score among these is 2. There is also only one segment with this score.
   Example case 2. There are six segments - [2], [4], [3], [2, 4], [4, 3] and [2, 4, 3]. Sum of these segments are 2, 4, 3, 6, 7, 9 respectively. Sum of these segments modulo 5 will be 2, 4, 3, 1, 2, 4. Maximum score among these is 4. And there are two segments with this score.
+  -/
 
 vc-preamble: |-
 
@@ -64,23 +66,23 @@ vc-theorems: |-
     (h3 : arr = [n]) :
     find_max_segment_scores 1 (n+1) arr = (n % (n+1), 1) := sorry
   
-  /--
+  /-
   info: (2, 1)
   -/
-  #guard_msgs in
-  #eval find_max_segment_scores 2 3 [1, 2]
+  -- #guard_msgs in
+  -- #eval find_max_segment_scores 2 3 [1, 2]
   
-  /--
+  /-
   info: (4, 2)
   -/
-  #guard_msgs in
-  #eval find_max_segment_scores 3 5 [2, 4, 3]
+  -- #guard_msgs in
+  -- #eval find_max_segment_scores 3 5 [2, 4, 3]
   
-  /--
+  /-
   info: (2, 2)
   -/
-  #guard_msgs in
-  #eval find_max_segment_scores 4 3 [1, 2, 3, 4]
+  -- #guard_msgs in
+  -- #eval find_max_segment_scores 4 3 [1, 2, 3, 4]
 
 vc-postamble: |-
   -- Apps difficulty: interview

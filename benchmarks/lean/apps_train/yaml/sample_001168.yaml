@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   It's winter and taking a bath is a delicate matter. Chef has two buckets of water. The first bucket has $v_1$ volume of cold water at temperature $t_1$. The second has $v_2$ volume of hot water at temperature $t_2$. Chef wants to take a bath with at least $v_3$ volume of water which is at exactly $t_3$ temperature. To get the required amount of water, Chef can mix some water obtained from the first and second buckets.
   Mixing $v_x$ volume of water at temperature $t_x$ with $v_y$ volume of water at temperature $t_y$ yields $v_x + v_y$ volume of water at temperature calculated as
   vxtx+vytyvx+vyvxtx+vytyvx+vy\frac{v_x t_x + v_y t_y}{v_x + v_y}
@@ -33,6 +34,7 @@ vc-description: |-
   - Case 1: Mixing all the water in both buckets yields 10 volume of water at temperature 15, which is more than the required 8.
   - Case 2: It is not possible to get water at 30 temperature.
   - Case 3: Chef can take a bath using only the water in the second bucket.
+  -/
 
 vc-preamble: |-
 
@@ -68,23 +70,23 @@ vc-theorems: |-
       can_take_bath v t1 v t2 v t3 = true :=
   sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval can_take_bath 5 10 5 20 8 15
+  -- #guard_msgs in
+  -- #eval can_take_bath 5 10 5 20 8 15
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval can_take_bath 5 10 5 20 1 30
+  -- #guard_msgs in
+  -- #eval can_take_bath 5 10 5 20 1 30
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval can_take_bath 5 10 5 20 5 20
+  -- #guard_msgs in
+  -- #eval can_take_bath 5 10 5 20 5 20
 
 vc-postamble: |-
   -- Apps difficulty: interview

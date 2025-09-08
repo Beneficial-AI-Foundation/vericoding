@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given an array of integers [A1,A2,…,AN]$[A_1, A_2, \ldots, A_N]$. Let's call adding an element to this array at any position (including the beginning and the end) or removing an arbitrary element from it a modification. It is not allowed to remove an element from the array if it is empty.
   Find the minimum number of modifications which must be performed so that the resulting array can be partitioned into permutations. Formally, it must be possible to partition elements of the resulting array into zero or more groups (multisets; not necessarily identical) in such a way that each element belongs to exactly one group and for each group, if it contains L$L$ elements, then it must contain only integers 1$1$ through L$L$, each of them exactly once.
   
@@ -32,6 +33,7 @@ vc-description: |-
   -----Example Output-----
   1
   2
+  -/
 
 vc-preamble: |-
 
@@ -52,17 +54,17 @@ vc-theorems: |-
   theorem min_modifications_empty :
     min_modifications [] = 0 := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval min_modifications [1, 4, 1, 2, 2]
+  -- #guard_msgs in
+  -- #eval min_modifications [1, 4, 1, 2, 2]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_modifications [2, 3, 2, 3]
+  -- #guard_msgs in
+  -- #eval min_modifications [2, 3, 2, 3]
 
 vc-postamble: |-
   -- Apps difficulty: interview

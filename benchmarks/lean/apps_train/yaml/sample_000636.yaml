@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef had a sequence of positive integers with length $N + K$. He managed to calculate the arithmetic average of all elements of this sequence (let's denote it by $V$), but then, his little brother deleted $K$ elements from it. All deleted elements had the same value.
   Chef still knows the remaining $N$ elements — a sequence $A_1, A_2, \ldots, A_N$. Help him with restoring the original sequence by finding the value of the deleted elements or deciding that there is some mistake and the described scenario is impossible.
   Note that the if it is possible for the deleted elements to have the same value, then it can be proven that it is unique. Also note that this value must be a positive integer.
@@ -33,6 +34,7 @@ vc-description: |-
   4
   -1
   -1
+  -/
 
 vc-preamble: |-
   def List.sum : List Nat → Nat 
@@ -53,23 +55,23 @@ vc-theorems: |-
     result = -1 ∨ result > 0 :=
   sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval find_deleted_value 3 3 4 [2, 7, 3]
+  -- #guard_msgs in
+  -- #eval find_deleted_value 3 3 4 [2, 7, 3]
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval find_deleted_value 3 1 4 [7, 6, 5]
+  -- #guard_msgs in
+  -- #eval find_deleted_value 3 1 4 [7, 6, 5]
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval find_deleted_value 3 3 4 [2, 8, 3]
+  -- #guard_msgs in
+  -- #eval find_deleted_value 3 3 4 [2, 8, 3]
 
 vc-postamble: |-
   -- Apps difficulty: interview

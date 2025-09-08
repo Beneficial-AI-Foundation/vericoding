@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array of integers A, a move consists of choosing any A[i], and incrementing it by 1.
   Return the least number of moves to make every value in A unique.
   
@@ -17,6 +18,7 @@ vc-description: |-
   
   0 <= A.length <= 40000
   0 <= A[i] < 40000
+  -/
 
 vc-preamble: |-
   def min_increment_for_unique (nums : List Int) : Nat :=
@@ -59,23 +61,23 @@ vc-theorems: |-
     min_increment_for_unique nums = (sumList incremented - sumList result) :=
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval min_increment_for_unique [1, 2, 2]
+  -- #guard_msgs in
+  -- #eval min_increment_for_unique [1, 2, 2]
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval min_increment_for_unique [3, 2, 1, 2, 1, 7]
+  -- #guard_msgs in
+  -- #eval min_increment_for_unique [3, 2, 1, 2, 1, 7]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_increment_for_unique []
+  -- #guard_msgs in
+  -- #eval min_increment_for_unique []
 
 vc-postamble: |-
   -- Apps difficulty: interview

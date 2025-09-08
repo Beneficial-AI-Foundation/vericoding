@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   I always thought that my old friend John was rather richer than he looked, but I never knew exactly how much money he actually had. One day (as I was plying him with questions) he said:
   
   * "Imagine I have between `m` and `n` Zloty..." (or did he say Quetzal? I can't remember!)
@@ -36,6 +37,7 @@ vc-description: |-
   
   # Note
   See "Sample Tests" to know the format of the return.
+  -/
 
 vc-preamble: |-
 
@@ -73,23 +75,23 @@ vc-theorems: |-
     ∀ item ∈ result,
       ((item.get! 0).drop 3 |>.toInt!) = x := sorry
   
-  /--
+  /-
   info: [['M: 37', 'B: 5', 'C: 4'], ['M: 100', 'B: 14', 'C: 11']]
   -/
-  #guard_msgs in
-  #eval howmuch 1 100
+  -- #guard_msgs in
+  -- #eval howmuch 1 100
   
-  /--
+  /-
   info: [['M: 1045', 'B: 149', 'C: 116']]
   -/
-  #guard_msgs in
-  #eval howmuch 1000 1100
+  -- #guard_msgs in
+  -- #eval howmuch 1000 1100
   
-  /--
+  /-
   info: [['M: 37', 'B: 5', 'C: 4'], ['M: 100', 'B: 14', 'C: 11'], ['M: 163', 'B: 23', 'C: 18']]
   -/
-  #guard_msgs in
-  #eval howmuch 0 200
+  -- #guard_msgs in
+  -- #eval howmuch 0 200
 
 vc-postamble: |-
   -- Apps difficulty: introductory

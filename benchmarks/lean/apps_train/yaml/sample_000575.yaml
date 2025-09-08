@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Ganesh lives in Gopalmath. He is looking for Jojo. So he decides to collect Aadhar Card Information of all the citizens of India from UIDAI.
   Someone told Ganesh that the sum of all the digits of Jojo’s Aadhar number is divisible by 10 and it is greater than zero. After finding all Aadhar numbers which are divisible by 10, Jojo’s Aadhar number is $N$th smallest Aadhar number. Hence, Ganesh wants to find Jojo’s  Aadhar number which satisfies all of the above conditions. (In this chaotic world, Aadhar numbers can be any natural number.)
   However, Guruji refused Ganesh to carry out this task, because he is weak in Maths. Therefore, Ganesh assigns this task to Paritoshbhai who possesses excellent Mathematical skills. Since Paritoshbhai is busy in his jewellery business, help him in this task.
@@ -20,6 +21,7 @@ vc-description: |-
   
   -----Sample Output:-----
   37
+  -/
 
 vc-preamble: |-
 
@@ -42,23 +44,23 @@ vc-theorems: |-
   theorem last_digit_in_range (n : Nat) :
     0 ≤ find_jojo_aadhar n % 10 ∧ find_jojo_aadhar n % 10 ≤ 9 := sorry
   
-  /--
+  /-
   info: 37
   -/
-  #guard_msgs in
-  #eval find_jojo_aadhar 3
+  -- #guard_msgs in
+  -- #eval find_jojo_aadhar 3
   
-  /--
+  /-
   info: 109
   -/
-  #guard_msgs in
-  #eval find_jojo_aadhar 10
+  -- #guard_msgs in
+  -- #eval find_jojo_aadhar 10
   
-  /--
+  /-
   info: 424
   -/
-  #guard_msgs in
-  #eval find_jojo_aadhar 42
+  -- #guard_msgs in
+  -- #eval find_jojo_aadhar 42
 
 vc-postamble: |-
   -- Apps difficulty: interview

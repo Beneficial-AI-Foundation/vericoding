@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You have a rectangular chocolate bar consisting of n × m single squares. You want to eat exactly k squares, so you may need to break the chocolate bar. 
   
   In one move you can break any single rectangular piece of chocolate in two rectangular pieces. You can break only by lines between squares: horizontally or vertically. The cost of breaking is equal to square of the break length.
@@ -36,6 +37,7 @@ vc-description: |-
   In the first query of the sample one needs to perform two breaks:  to split 2 × 2 bar into two pieces of 2 × 1 (cost is 2^2 = 4),  to split the resulting 2 × 1 into two 1 × 1 pieces (cost is 1^2 = 1). 
   
   In the second query of the sample one wants to eat 3 unit squares. One can use exactly the same strategy as in the first query of the sample.
+  -/
 
 vc-preamble: |-
 
@@ -60,23 +62,23 @@ vc-theorems: |-
     find_min_chocolate_break_cost n m k = 0 :=
   sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval find_min_chocolate_break_cost 2 2 1
+  -- #guard_msgs in
+  -- #eval find_min_chocolate_break_cost 2 2 1
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval find_min_chocolate_break_cost 2 2 3
+  -- #guard_msgs in
+  -- #eval find_min_chocolate_break_cost 2 2 3
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval find_min_chocolate_break_cost 2 2 4
+  -- #guard_msgs in
+  -- #eval find_min_chocolate_break_cost 2 2 4
 
 vc-postamble: |-
   -- Apps difficulty: interview

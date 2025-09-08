@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Let us define a function `f`such as:
   
   - (1) for k positive odd integer > 2 : 
@@ -49,6 +50,7 @@ vc-description: |-
   
   - For Java, C#, C++: `k` should be such as `-27 <= k <= 20`; otherwise `-30 <= k <= 30` and be careful of 32-bit integer overflow.
   - Translators are welcome.
+  -/
 
 vc-preamble: |-
 

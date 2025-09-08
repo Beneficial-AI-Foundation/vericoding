@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Catherine received an array of integers as a gift for March 8. Eventually she grew bored with it, and she started calculated various useless characteristics for it. She succeeded to do it for each one she came up with. But when she came up with another one — xor of all pairwise sums of elements in the array, she realized that she couldn't compute it for a very large array, thus she asked for your help. Can you do it? Formally, you need to compute
   
   $$ (a_1 + a_2) \oplus (a_1 + a_3) \oplus \ldots \oplus (a_1 + a_n) \\ \oplus (a_2 + a_3) \oplus \ldots \oplus (a_2 + a_n) \\ \ldots \\ \oplus (a_{n-1} + a_n) \\ $$
@@ -36,6 +37,7 @@ vc-description: |-
   In the second sample case there are three sums: $1 + 2 = 3$, $1 + 3 = 4$, $2 + 3 = 5$. In binary they are represented as $011_2 \oplus 100_2 \oplus 101_2 = 010_2$, thus the answer is 2.
   
   $\oplus$ is the bitwise xor operation. To define $x \oplus y$, consider binary representations of integers $x$ and $y$. We put the $i$-th bit of the result to be 1 when exactly one of the $i$-th bits of $x$ and $y$ is 1. Otherwise, the $i$-th bit of the result is put to be 0. For example, $0101_2 \, \oplus \, 0011_2 = 0110_2$.
+  -/
 
 vc-preamble: |-
 
@@ -65,23 +67,23 @@ vc-theorems: |-
   theorem identical_pair_sum (x : Nat) :
     xor_of_pairwise_sums 2 [x, x] = 2 * x := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval xor_of_pairwise_sums 2 [1, 2]
+  -- #guard_msgs in
+  -- #eval xor_of_pairwise_sums 2 [1, 2]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval xor_of_pairwise_sums 3 [1, 2, 3]
+  -- #guard_msgs in
+  -- #eval xor_of_pairwise_sums 3 [1, 2, 3]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval xor_of_pairwise_sums 2 [1, 1]
+  -- #guard_msgs in
+  -- #eval xor_of_pairwise_sums 2 [1, 1]
 
 vc-postamble: |-
   -- Apps difficulty: competition

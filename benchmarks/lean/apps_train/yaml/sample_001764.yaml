@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A Tic-Tac-Toe board is given as a string array board. Return True if and only if it is possible to reach this board position during the course of a valid tic-tac-toe game.
   
   The board is a 3 x 3 array, and consists of characters " ", "X", and "O".  The " " character represents an empty square.
@@ -34,6 +35,7 @@ vc-description: |-
   
          board is a length-3 array of strings, where each string board[i] has length 3.
          Each board[i][j] is a character in the set {" ", "X", "O"}.
+  -/
 
 vc-preamble: |-
   def validTicTacToe (board : List String) : Bool := sorry
@@ -67,23 +69,23 @@ vc-theorems: |-
     ¬(x_wins ∧ x_count ≤ o_count) ∧ 
     ¬(o_wins ∧ x_count ≠ o_count) := sorry
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval validTicTacToe ["O  ", "   ", "   "]
+  -- #guard_msgs in
+  -- #eval validTicTacToe ["O  ", "   ", "   "]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval validTicTacToe ["XOX", " X ", "   "]
+  -- #guard_msgs in
+  -- #eval validTicTacToe ["XOX", " X ", "   "]
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval validTicTacToe ["XOX", "O O", "XOX"]
+  -- #guard_msgs in
+  -- #eval validTicTacToe ["XOX", "O O", "XOX"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

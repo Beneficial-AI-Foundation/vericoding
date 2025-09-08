@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    You're standing at the top left corner of an `n × m` grid and facing towards the `right`. 
   
@@ -39,6 +40,7 @@ vc-description: |-
    - `[output]` a string
   
    The final direction.
+  -/
 
 vc-preamble: |-
 
@@ -69,23 +71,23 @@ vc-theorems: |-
     (m < n → direction_in_grid n m = "U" ∨ direction_in_grid n m = "D") :=
     sorry
   
-  /--
+  /-
   info: 'R'
   -/
-  #guard_msgs in
-  #eval direction_in_grid 3 3
+  -- #guard_msgs in
+  -- #eval direction_in_grid 3 3
   
-  /--
+  /-
   info: 'L'
   -/
-  #guard_msgs in
-  #eval direction_in_grid 2 4
+  -- #guard_msgs in
+  -- #eval direction_in_grid 2 4
   
-  /--
+  /-
   info: 'U'
   -/
-  #guard_msgs in
-  #eval direction_in_grid 4 2
+  -- #guard_msgs in
+  -- #eval direction_in_grid 4 2
 
 vc-postamble: |-
   -- Apps difficulty: introductory

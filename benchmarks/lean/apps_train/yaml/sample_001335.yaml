@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   -----Problem description-----
   As a holiday gift, Tojo received a probability problem. The problem read as follows
   Consider an N by M grid. Rows are numbered 1 to N, from top to bottom. Columns are numbered 1 to M, from left to right. You are initially at cell (1, 1) and want to go to cell (N, M). From any cell you can move to the cell below it or to the cell right to it. You should never go out of the grid. At any point you should consider all the possibilities of movement with equal probability
@@ -41,6 +42,7 @@ vc-description: |-
   1.0 1.0 1.0 1.0 1.0 1.0
   
   Because at any position there is only one possible next position.
+  -/
 
 vc-preamble: |-
 

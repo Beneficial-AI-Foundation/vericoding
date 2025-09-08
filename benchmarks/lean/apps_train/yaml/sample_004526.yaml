@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   #Task:
   Write a function `get_member_since` which accepts a username from someone at Codewars and returns an string containing the month and year separated by a space that they joined CodeWars.
   
@@ -26,6 +27,7 @@ vc-description: |-
   
   * Time out / server errors often happen with the test cases depending on the status of the codewars website. Try submitting your code a few times or at different hours of the day if needed.
   * Feel free to voice your comments and concerns in the discourse area.
+  -/
 
 vc-preamble: |-
 
@@ -49,17 +51,17 @@ vc-theorems: |-
     get_member_since "dpleshkov" = "Jul 2016" ∧
     get_member_since "jhoffner" = "Oct 2012" := sorry
   
-  /--
+  /-
   info: 'Jul 2016'
   -/
-  #guard_msgs in
-  #eval get_member_since "dpleshkov"
+  -- #guard_msgs in
+  -- #eval get_member_since "dpleshkov"
   
-  /--
+  /-
   info: 'Oct 2012'
   -/
-  #guard_msgs in
-  #eval get_member_since "jhoffner"
+  -- #guard_msgs in
+  -- #eval get_member_since "jhoffner"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

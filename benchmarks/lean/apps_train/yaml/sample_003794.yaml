@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Definition
   
   **_Strong number_** is the number that *the sum of the factorial of its digits is equal to number itself*.
@@ -77,6 +78,7 @@ vc-description: |-
   
   ## Enjoy Learning !!
   # Zizou
+  -/
 
 vc-preamble: |-
   def strong_num (n : Nat) : String := sorry
@@ -108,23 +110,23 @@ vc-theorems: |-
     let n := sorry -- conversion of digits to number
     (strong_num n = "STRONG!!!!" ↔ (sumDigitFactorials n = n)) := sorry
   
-  /--
+  /-
   info: 'STRONG!!!!'
   -/
-  #guard_msgs in
-  #eval strong_num 145
+  -- #guard_msgs in
+  -- #eval strong_num 145
   
-  /--
+  /-
   info: 'Not Strong !!'
   -/
-  #guard_msgs in
-  #eval strong_num 123
+  -- #guard_msgs in
+  -- #eval strong_num 123
   
-  /--
+  /-
   info: 'STRONG!!!!'
   -/
-  #guard_msgs in
-  #eval strong_num 40585
+  -- #guard_msgs in
+  -- #eval strong_num 40585
 
 vc-postamble: |-
   -- Apps difficulty: introductory

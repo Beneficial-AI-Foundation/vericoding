@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are 32 letters in the Polish alphabet: 9 vowels and 23 consonants. 
   
   Your task is to change the letters with diacritics:
@@ -20,6 +21,7 @@ vc-description: |-
   ```
   "Jędrzej Błądziński"  -->  "Jedrzej Bladzinski"
   ```
+  -/
 
 vc-preamble: |-
 
@@ -54,23 +56,23 @@ vc-theorems: |-
   theorem idempotent (s : String) :
     correct_polish_letters (correct_polish_letters s) = correct_polish_letters s := sorry
   
-  /--
+  /-
   info: 'Jedrzej Bladzinski'
   -/
-  #guard_msgs in
-  #eval correct_polish_letters "Jędrzej Błądziński"
+  -- #guard_msgs in
+  -- #eval correct_polish_letters "Jędrzej Błądziński"
   
-  /--
+  /-
   info: 'Lech Walesa'
   -/
-  #guard_msgs in
-  #eval correct_polish_letters "Lech Wałęsa"
+  -- #guard_msgs in
+  -- #eval correct_polish_letters "Lech Wałęsa"
   
-  /--
+  /-
   info: 'Zazolc gesla jazn'
   -/
-  #guard_msgs in
-  #eval correct_polish_letters "Zażółć gęślą jaźń"
+  -- #guard_msgs in
+  -- #eval correct_polish_letters "Zażółć gęślą jaźń"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

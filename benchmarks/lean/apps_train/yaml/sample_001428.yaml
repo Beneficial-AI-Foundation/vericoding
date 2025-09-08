@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are n cabs in a city numbered from 1 to n. The city has a rule that only one cab can run in the city at a time. Cab picks up the customer and drops him to his destination. Then the cab gets ready to pick next customer. There are m customers in search of cab. First customer will get the taxi first. You have to find the nearest cab for each customer. If two cabs have same distance then the cab with lower number is preferred.
   
   Your task is to find out minimum distant cab for each customer.
@@ -68,6 +69,7 @@ vc-description: |-
   The distance of cab3 from customer2 = sqrt(8)
   
   So output for customer2 is 1
+  -/
 
 vc-preamble: |-
 
@@ -103,23 +105,23 @@ vc-theorems: |-
     List.head! result = 1 :=
   sorry
   
-  /--
+  /-
   info: [1, 1]
   -/
-  #guard_msgs in
-  #eval find_nearest_cabs 3 2 [[1, 3], [3, 2], [3, 5]] [[2, 3, 3, 4], [5, 3, 4, 1]]
+  -- #guard_msgs in
+  -- #eval find_nearest_cabs 3 2 [[1, 3], [3, 2], [3, 5]] [[2, 3, 3, 4], [5, 3, 4, 1]]
   
-  /--
+  /-
   info: [1]
   -/
-  #guard_msgs in
-  #eval find_nearest_cabs 1 1 [[0, 0]] [[1, 1, 2, 2]]
+  -- #guard_msgs in
+  -- #eval find_nearest_cabs 1 1 [[0, 0]] [[1, 1, 2, 2]]
   
-  /--
+  /-
   info: [1]
   -/
-  #guard_msgs in
-  #eval find_nearest_cabs 2 1 [[1, 1], [1, 1]] [[2, 2, 3, 3]]
+  -- #guard_msgs in
+  -- #eval find_nearest_cabs 2 1 [[1, 1], [1, 1]] [[2, 2, 3, 3]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

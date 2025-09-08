@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You certainly can tell which is the larger number between 2^(10) and 2^(15).
   
   But what about, say, 2^(10) and 3^(10)? You know this one too.
@@ -17,6 +18,7 @@ vc-description: |-
   int compare_powers(const int n1[2], const int n2[2])
   ```
   Only positive integers will be tested, incluing bigger numbers - you are warned now, so be diligent try to implement an efficient solution not to drain too much on CW resources ;)!
+  -/
 
 vc-preamble: |-
 
@@ -52,23 +54,23 @@ vc-theorems: |-
     compare_powers x y = -1 → compare_powers y z = -1 → compare_powers x z = -1 :=
   sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval compare_powers [2, 10] [2, 15]
+  -- #guard_msgs in
+  -- #eval compare_powers [2, 10] [2, 15]
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval compare_powers [3, 9] [5, 6]
+  -- #guard_msgs in
+  -- #eval compare_powers [3, 9] [5, 6]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval compare_powers [2, 10] [2, 10]
+  -- #guard_msgs in
+  -- #eval compare_powers [2, 10] [2, 10]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

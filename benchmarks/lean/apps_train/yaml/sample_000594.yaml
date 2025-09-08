@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   "What do you know about happiness?" — Yoda 
   Chef is happy only if three conditions hold:
   - Chef finished cooking a delicious meal
@@ -45,6 +46,7 @@ vc-description: |-
   -----Explanation-----
   Example case 1: Chef is truly happy because $A_{A_3} = A_{A_1}$ and $A_3 \neq A_1$.
   Example case 2: There is no pair of indices which would make Chef truly happy. For instance, $A_{A_3} = A_{A_4}$, but $A_3 = A_4$,
+  -/
 
 vc-preamble: |-
 
@@ -69,23 +71,23 @@ vc-theorems: |-
     (arr = List.range' 1 n) →
     solve_happiness n arr = "Poor Chef" := sorry
   
-  /--
+  /-
   info: 'Truly Happy'
   -/
-  #guard_msgs in
-  #eval solve_happiness 4 [1, 1, 2, 3]
+  -- #guard_msgs in
+  -- #eval solve_happiness 4 [1, 1, 2, 3]
   
-  /--
+  /-
   info: 'Poor Chef'
   -/
-  #guard_msgs in
-  #eval solve_happiness 4 [2, 1, 3, 3]
+  -- #guard_msgs in
+  -- #eval solve_happiness 4 [2, 1, 3, 3]
   
-  /--
+  /-
   info: 'Truly Happy'
   -/
-  #guard_msgs in
-  #eval solve_happiness 5 [3, 2, 1, 1, 4]
+  -- #guard_msgs in
+  -- #eval solve_happiness 5 [3, 2, 1, 1, 4]
 
 vc-postamble: |-
   -- Apps difficulty: interview

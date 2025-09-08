@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We define the "unfairness" of a list/array as the *minimal* difference between max(x1,x2,...xk) and min(x1,x2,...xk), for all possible combinations of k elements you can take from the list/array; both minimum and maximum of an empty list/array are considered to be 0.
   
   **More info and constraints:**
@@ -19,6 +20,7 @@ vc-description: |-
   ```
   
   **Note:** shamelessly taken from [here](https://www.hackerrank.com/challenges/angry-children), where it was created and debatably categorized and ranked.
+  -/
 
 vc-preamble: |-
   def min_unfairness (arr : List Int) (k : Nat) : Int :=
@@ -59,23 +61,23 @@ vc-theorems: |-
     min_unfairness arr k = min_unfairness (sortList arr) k :=
   sorry
   
-  /--
+  /-
   info: 20
   -/
-  #guard_msgs in
-  #eval min_unfairness [30, 100, 1000, 150, 60, 250, 10, 120, 20] 3
+  -- #guard_msgs in
+  -- #eval min_unfairness [30, 100, 1000, 150, 60, 250, 10, 120, 20] 3
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval min_unfairness [1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2] 10
+  -- #guard_msgs in
+  -- #eval min_unfairness [1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2] 10
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_unfairness [] 0
+  -- #guard_msgs in
+  -- #eval min_unfairness [] 0
 
 vc-postamble: |-
   -- Apps difficulty: introductory

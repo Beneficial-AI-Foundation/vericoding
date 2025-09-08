@@ -1,7 +1,9 @@
 vc-description: |-
+  /-
   Determine the total number of digits in the integer (`n>=0`) given as input to the function. For example, 9 is a single digit, 66 has 2 digits and 128685 has 6 digits. Be careful to avoid overflows/underflows.
   
   All inputs will be valid.
+  -/
 
 vc-preamble: |-
 
@@ -26,23 +28,23 @@ vc-theorems: |-
     digits (Int.natAbs n) = String.length (toString (Int.natAbs n)) :=
   sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval digits 5
+  -- #guard_msgs in
+  -- #eval digits 5
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval digits 12345
+  -- #guard_msgs in
+  -- #eval digits 12345
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval digits 9876543210
+  -- #guard_msgs in
+  -- #eval digits 9876543210
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Flash has invited his nemesis The Turtle (He actually was a real villain! ) to play his favourite card game, SNAP. In this game a 52 card deck is dealt out so both Flash and the Turtle get 26 random cards. 
   
   Each players cards will be represented by an array like below
@@ -28,6 +29,7 @@ vc-description: |-
   How many times does Flash get to call Snap before Turtle runs out of cards?
   
   If both the player put down all their cards into the middle without any matches then the game ends a draw and Flash calls SNAP 0 times.
+  -/
 
 vc-preamble: |-
 
@@ -53,23 +55,23 @@ vc-theorems: |-
     (∀ c, isCard c → snap [c] [] = 0) ∧
     (∀ c, isCard c → snap [] [c] = 0) := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval snap flash_pile[:] turtle_pile[:]
+  -- #guard_msgs in
+  -- #eval snap flash_pile[:] turtle_pile[:]
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval snap flash_pile[:] turtle_pile[:]
+  -- #guard_msgs in
+  -- #eval snap flash_pile[:] turtle_pile[:]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval snap flash_pile[:] turtle_pile[:]
+  -- #guard_msgs in
+  -- #eval snap flash_pile[:] turtle_pile[:]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

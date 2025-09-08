@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Recently, Chef got obsessed with piano. He is a just a rookie in this stuff and can not move his fingers from one key to other fast enough. He discovered that the best way to train finger speed is to play scales.
   
   There are different kinds of scales which are divided on the basis of their interval patterns. For instance, major scale is defined by pattern T-T-S-T-T-T-S, where ‘T’ stands for a whole tone whereas ‘S’ stands for a semitone. Two semitones make one tone. To understand how they are being played, please refer to the below image of piano’s octave – two consecutive keys differ by one semitone.
@@ -50,6 +51,7 @@ vc-description: |-
   
   -----Explanation-----
   Example case 1. In the first case there is only one octave and Chef can play scale (not in cycle each time) starting with notes C, C#, D, D# - four together.
+  -/
 
 vc-preamble: |-
   def Scale := String
@@ -96,17 +98,17 @@ vc-theorems: |-
     ¬∃ (result : Nat), calculate_scale_plays scale_type octaves = result :=
   sorry
   
-  /--
+  /-
   info: 13
   -/
-  #guard_msgs in
-  #eval calculate_scale_plays "C" 2
+  -- #guard_msgs in
+  -- #eval calculate_scale_plays "C" 2
   
-  /--
+  /-
   info: 21
   -/
-  #guard_msgs in
-  #eval calculate_scale_plays "TS" 2
+  -- #guard_msgs in
+  -- #eval calculate_scale_plays "TS" 2
 
 vc-postamble: |-
   -- Apps difficulty: interview

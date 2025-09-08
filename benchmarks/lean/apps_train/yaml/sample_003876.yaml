@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function which takes a number and returns the corresponding ASCII char for that value.
   
   Example: 
@@ -14,6 +15,7 @@ vc-description: |-
   ~~~
   
   For ASCII table, you can refer to http://www.asciitable.com/
+  -/
 
 vc-preamble: |-
 
@@ -38,23 +40,23 @@ vc-theorems: |-
     ¬(∃ c : Char, get_char i = c) := 
     sorry
   
-  /--
+  /-
   info: 'A'
   -/
-  #guard_msgs in
-  #eval get_char 65
+  -- #guard_msgs in
+  -- #eval get_char 65
   
-  /--
+  /-
   info: '!'
   -/
-  #guard_msgs in
-  #eval get_char 33
+  -- #guard_msgs in
+  -- #eval get_char 33
   
-  /--
+  /-
   info: '%'
   -/
-  #guard_msgs in
-  #eval get_char 37
+  -- #guard_msgs in
+  -- #eval get_char 37
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef has a natural number N. Cheffina challenges chef to check whether the given number is divisible by the sum of its digits or not. If the given number is divisible then print "Yes" else "No".
   
   -----Input:-----
@@ -20,6 +21,7 @@ vc-description: |-
   -----Sample Output:-----
   No
   Yes
+  -/
 
 vc-preamble: |-
   def digitSum (n : Nat) : Nat :=
@@ -43,23 +45,23 @@ vc-theorems: |-
     isDivisibleByDigitSum n = "Yes" ∨ isDivisibleByDigitSum n = "No"
     := sorry
   
-  /--
+  /-
   info: 'No'
   -/
-  #guard_msgs in
-  #eval is_divisible_by_digit_sum 16
+  -- #guard_msgs in
+  -- #eval is_divisible_by_digit_sum 16
   
-  /--
+  /-
   info: 'Yes'
   -/
-  #guard_msgs in
-  #eval is_divisible_by_digit_sum 27
+  -- #guard_msgs in
+  -- #eval is_divisible_by_digit_sum 27
   
-  /--
+  /-
   info: 'Yes'
   -/
-  #guard_msgs in
-  #eval is_divisible_by_digit_sum 45
+  -- #guard_msgs in
+  -- #eval is_divisible_by_digit_sum 45
 
 vc-postamble: |-
   -- Apps difficulty: interview

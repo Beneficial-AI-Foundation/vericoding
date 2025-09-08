@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The ZCO scholarship contest offers scholarships to first time ZCO participants. You are participating in it for the first time. So you want to know the number of participants who'll get the scholarship.
   You know that the maximum number of scholarships offered is $R$ and there are a total of $N$ participants numbered from $1$ to $N$. Out of these, you know the set of people (denoted by $X$) who you know, had participated in previous year ZCOs and hence, they shall not get the scholarship.
   Further, as the world isn't free from plagiarism, so is the case with the scholarship contest. And from your secret sources, you also know the set of people (denoted by set $Y$) who were involved in plagiarism and therefore aren't eligible for scholarship either.
@@ -51,6 +52,7 @@ vc-description: |-
   - Both second and third testcases are the same, except for $R$. In both samples, only participants $2$, $8$ and $10$ are eligible for scholarships.
   - In the second testcase, since the maximum number of scholarships is $2$, only $2$ participants get scholarships.
   - In the third testcase, all three eligible participants get scholarships.
+  -/
 
 vc-preamble: |-
 

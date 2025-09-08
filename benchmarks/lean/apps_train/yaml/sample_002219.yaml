@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are working for the Gryzzl company, headquartered in Pawnee, Indiana.
   
   The new national park has been opened near Pawnee recently and you are to implement a geolocation system, so people won't get lost. The concept you developed is innovative and minimalistic. There will be $n$ antennas located somewhere in the park. When someone would like to know their current location, their Gryzzl hologram phone will communicate with antennas and obtain distances from a user's current location to all antennas.
@@ -52,6 +53,7 @@ vc-description: |-
   -----Note-----
   
   As you see in the second example, although initially a user's location is picked to have non-negative coordinates, you have to output all possible integer locations.
+  -/
 
 vc-preamble: |-
   def solve_gryzzl_location (coords : List (Int × Int)) (queries : List (List Int)) : List String :=

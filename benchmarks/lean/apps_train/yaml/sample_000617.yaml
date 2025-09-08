@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this problem you are given a sequence of $N$ positive integers $S[1],S[2],\dots,S[N]$. In addition you are given an integer $T$, and your aim  is to find the number of quadruples $(i,j,k,l)$, such that $1 \le i < j < k < l \le N$, and $S[i] + S[j] + S[k] + S[l] = T$.  That is, the number of ways of picking four numbers from the sequence summing up to $T$.
   
   -----Constraints:-----
@@ -40,6 +41,7 @@ vc-description: |-
   -----Note:-----
   As the answer might be large, please use 64 bit integers (long long int in
   C/C++ and long in Java) instead of 32 bit int.
+  -/
 
 vc-preamble: |-
   def count_quadruples (n : Nat) (target : Int) (nums : List Int) : Nat :=
@@ -75,17 +77,17 @@ vc-theorems: |-
     count_quadruples nums.length target nums = 0 :=
   sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_quadruples 6 20 [3, 1, 1, 2, 5, 10]
+  -- #guard_msgs in
+  -- #eval count_quadruples 6 20 [3, 1, 1, 2, 5, 10]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_quadruples 6 13 [1, 2, 3, 4, 5, 4]
+  -- #guard_msgs in
+  -- #eval count_quadruples 6 13 [1, 2, 3, 4, 5, 4]
 
 vc-postamble: |-
   -- Apps difficulty: interview

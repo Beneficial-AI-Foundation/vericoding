@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are currently in the United States of America. The main currency here is known as the United States Dollar (USD). You are planning to travel to another country for vacation, so you make it today's goal to convert your USD (all bills, no cents) into the appropriate currency. This will help you be more prepared for when you arrive in the country you will be vacationing in.
   
   Given an integer (`usd`) representing the amount of dollars you have and a string (`currency`) representing the name of the currency used in another country, it is your task to determine the amount of foreign currency you will receive when you exchange your United States Dollars.
@@ -24,6 +25,7 @@ vc-description: |-
   ```if:javascript,ruby
   Note: `CONVERSION_RATES` is frozen.
   ```
+  -/
 
 vc-preamble: |-
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   If Give an integer N . Write a program to obtain the sum of the first and last digits of this number.
   
   -----Input-----
@@ -23,6 +24,7 @@ vc-description: |-
   5
   5
   5
+  -/
 
 vc-preamble: |-
 
@@ -44,23 +46,23 @@ vc-theorems: |-
     sumFirstLastDigit n = n + n
     := sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval sum_first_last_digit 1234
+  -- #guard_msgs in
+  -- #eval sum_first_last_digit 1234
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval sum_first_last_digit 124894
+  -- #guard_msgs in
+  -- #eval sum_first_last_digit 124894
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval sum_first_last_digit 242323
+  -- #guard_msgs in
+  -- #eval sum_first_last_digit 242323
 
 vc-postamble: |-
   -- Apps difficulty: interview

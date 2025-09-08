@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Koa the Koala and her best friend want to play a game.
   
   The game starts with an array $a$ of length $n$ consisting of non-negative integers. Koa and her best friend move in turns and each have initially a score equal to $0$. Koa starts.
@@ -66,6 +67,7 @@ vc-description: |-
   In testcase $1$ of the first sample we have:
   
   $a = [1, 2, 2]$. Here Koa chooses $1$, other player has to choose $2$, Koa chooses another $2$. Score for Koa is $1 \oplus 2 = 3$ and score for other player is $2$ so Koa wins.
+  -/
 
 vc-preamble: |-
   def solve (n : Nat) (a : List Nat) : GameResult :=
@@ -101,23 +103,23 @@ vc-theorems: |-
     isValidResult (solve n (List.replicate n val)) = true := by
     sorry
   
-  /--
+  /-
   info: 'WIN'
   -/
-  #guard_msgs in
-  #eval solve 3 [1, 2, 2]
+  -- #guard_msgs in
+  -- #eval solve 3 [1, 2, 2]
   
-  /--
+  /-
   info: 'LOSE'
   -/
-  #guard_msgs in
-  #eval solve 3 [2, 2, 3]
+  -- #guard_msgs in
+  -- #eval solve 3 [2, 2, 3]
   
-  /--
+  /-
   info: 'DRAW'
   -/
-  #guard_msgs in
-  #eval solve 5 [0, 0, 0, 2, 2]
+  -- #guard_msgs in
+  -- #eval solve 5 [0, 0, 0, 2, 2]
 
 vc-postamble: |-
   -- Apps difficulty: competition

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your users passwords were all stole in the Yahoo! hack, and it turns out they have been lax in creating secure passwords.  Create a function that checks their new password (passed as a string) to make sure it meets the following requirements:
   
   Between 8 - 20 characters
@@ -6,6 +7,7 @@ vc-description: |-
   Contains only the following characters: (and at least one character from each category): uppercase letters, lowercase letters, digits, and the special characters !@#$%^&*?
   
   Return "valid" if passed or else "not valid"
+  -/
 
 vc-preamble: |-
   def check_password (s : String) : String :=
@@ -53,23 +55,23 @@ vc-theorems: |-
     check_password s = "not valid" :=
   sorry
   
-  /--
+  /-
   info: 'not valid'
   -/
-  #guard_msgs in
-  #eval check_password ""
+  -- #guard_msgs in
+  -- #eval check_password ""
   
-  /--
+  /-
   info: 'not valid'
   -/
-  #guard_msgs in
-  #eval check_password "Password123"
+  -- #guard_msgs in
+  -- #eval check_password "Password123"
   
-  /--
+  /-
   info: 'valid'
   -/
-  #guard_msgs in
-  #eval check_password "P@ssw0rd123"
+  -- #guard_msgs in
+  -- #eval check_password "P@ssw0rd123"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

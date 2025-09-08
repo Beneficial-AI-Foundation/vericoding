@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Complete the solution. It should try to retrieve the value of the array at the index provided. If the index is out of the array's max bounds then it should return the default value instead. 
   
   Example:
@@ -22,6 +23,7 @@ vc-description: |-
   solution(data, -1, 'd') # should == 'c'
   solution(data, -5, 'd') # should == 'd'
   ```
+  -/
 
 vc-preamble: |-
 
@@ -55,29 +57,29 @@ vc-theorems: |-
     solution items (items.length - 1) default = items.getLast h ∧
     solution items (-items.length) default = items.head! := sorry
   
-  /--
+  /-
   info: 'b'
   -/
-  #guard_msgs in
-  #eval solution ["a", "b", "c"] 1 "d"
+  -- #guard_msgs in
+  -- #eval solution ["a", "b", "c"] 1 "d"
   
-  /--
+  /-
   info: 'd'
   -/
-  #guard_msgs in
-  #eval solution ["a", "b", "c"] 5 "d"
+  -- #guard_msgs in
+  -- #eval solution ["a", "b", "c"] 5 "d"
   
-  /--
+  /-
   info: 'c'
   -/
-  #guard_msgs in
-  #eval solution ["a", "b", "c"] -1 "d"
+  -- #guard_msgs in
+  -- #eval solution ["a", "b", "c"] -1 "d"
   
-  /--
+  /-
   info: 'd'
   -/
-  #guard_msgs in
-  #eval solution ["a", "b", "c"] -5 "d"
+  -- #guard_msgs in
+  -- #eval solution ["a", "b", "c"] -5 "d"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

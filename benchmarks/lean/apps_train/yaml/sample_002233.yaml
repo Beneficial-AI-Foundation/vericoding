@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   This is the easy version of the problem. The difference between the versions is the constraint on $n$ and the required number of operations. You can make hacks only if all versions of the problem are solved.
   
   There are two binary strings $a$ and $b$ of length $n$ (a binary string is a string consisting of symbols $0$ and $1$). In an operation, you select a prefix of $a$, and simultaneously invert the bits in the prefix ($0$ changes to $1$ and $1$ changes to $0$) and reverse the order of the bits in the prefix.
@@ -54,6 +55,7 @@ vc-description: |-
   In the second test case, we have $01011\to 00101\to 11101\to 01000\to 10100\to 00100\to 11100$.
   
   In the third test case, the strings are already the same. Another solution is to flip the prefix of length $2$, which will leave $a$ unchanged.
+  -/
 
 vc-preamble: |-
 

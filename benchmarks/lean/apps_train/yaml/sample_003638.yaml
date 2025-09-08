@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We have an array of unique elements. A special kind of permutation is the one that has all of its elements in a different position than the original.
   
   Let's see how many of these permutations may be generated from an array of four elements. We put the original array with square brackets and the wanted permutations with parentheses. 
@@ -28,6 +29,7 @@ vc-description: |-
   See the example tests.
   
   Enjoy it!
+  -/
 
 vc-preamble: |-
 
@@ -51,23 +53,23 @@ vc-theorems: |-
     n > 2 → all_permuted n > all_permuted (n-1) :=
   sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval all_permuted 1
+  -- #guard_msgs in
+  -- #eval all_permuted 1
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval all_permuted 4
+  -- #guard_msgs in
+  -- #eval all_permuted 4
   
-  /--
+  /-
   info: 97581073836835777732377428235481
   -/
-  #guard_msgs in
-  #eval all_permuted 30
+  -- #guard_msgs in
+  -- #eval all_permuted 30
 
 vc-postamble: |-
   -- Apps difficulty: introductory

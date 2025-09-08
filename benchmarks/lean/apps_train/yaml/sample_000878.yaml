@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Kabir likes Tara's smile and wants to look at her smile. They are sitting in the class and you are friends with Kabir. You have to place a mirror (point size)  in the front wall of the class so that Kabir can have a glimpse of Tara's smile.
   Consider the front wall as x-axis . You are given the  coordinates of position of Kabir (x1,y1)$(x1,y1)$ and Tara  (x2,y2)$(x2,y2)$. Find the position where the mirror should be placed. 
   
@@ -22,6 +23,7 @@ vc-description: |-
   
   -----Sample Output:-----
   1.60
+  -/
 
 vc-preamble: |-
   def abs (x : Float) : Float := sorry

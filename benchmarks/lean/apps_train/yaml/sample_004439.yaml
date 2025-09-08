@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Every Turkish citizen has an identity number whose validity can be checked by these set of rules:
   
   - It is an 11 digit number
@@ -27,6 +28,7 @@ vc-description: |-
   Return `true` or `false` accordingly.
   
   Note: The input can be a string in some cases.
+  -/
 
 vc-preamble: |-
   def calculate_tenth_digit (digits : List Nat) : Nat := sorry
@@ -60,23 +62,23 @@ vc-theorems: |-
     ¬(∀ c : Char, c ∈ n.data → c.isDigit) →
     check_valid_tr_number n = false := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval check_valid_tr_number 36637640050
+  -- #guard_msgs in
+  -- #eval check_valid_tr_number 36637640050
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval check_valid_tr_number 12762438338
+  -- #guard_msgs in
+  -- #eval check_valid_tr_number 12762438338
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval check_valid_tr_number 10167994524
+  -- #guard_msgs in
+  -- #eval check_valid_tr_number 10167994524
 
 vc-postamble: |-
   -- Apps difficulty: introductory

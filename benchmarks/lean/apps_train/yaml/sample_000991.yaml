@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are $N$ cities on a circle, numbered $1$ through $N$. For each $i$ ($1 \le i \le N-1$), cities $i$ and $i+1$ are directly connected by a bidirectional road with length $A_i$, and cities $N$ and $1$ are also directly connected by a bidirectional road with length $A_N$. However, we do not know the lengths of some roads.
   For each city $i$, we do know that it has an opposite city — formally, there is a city $j \neq i$ such that the clockwise distance between cities $i$ and $j$ is equal to the counterclockwise distance between these cities.
   Please find the lengths of all roads in such a way that the above condition is satisfied and the sum of lengths of all roads is minimised.
@@ -40,6 +41,7 @@ vc-description: |-
   YES
   1 4 1 4
   NO
+  -/
 
 vc-preamble: |-
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given the array orders, which represents the orders that customers have done in a restaurant. More specifically orders[i]=[customerNamei,tableNumberi,foodItemi] where customerNamei is the name of the customer, tableNumberi is the table customer sit at, and foodItemi is the item customer orders.
   Return the restaurant's “display table”. The “display table” is a table whose row entries denote how many of each food item each table ordered. The first column is the table number and the remaining columns correspond to each food item in alphabetical order. The first row should be a header whose first column is “Table”, followed by the names of the food items. Note that the customer names are not part of the table. Additionally, the rows should be sorted in numerically increasing order.
   
@@ -33,6 +34,7 @@ vc-description: |-
   1 <= customerNamei.length, foodItemi.length <= 20
   customerNamei and foodItemi consist of lowercase and uppercase English letters and the space character.
   tableNumberi is a valid integer between 1 and 500.
+  -/
 
 vc-preamble: |-
 
@@ -100,17 +102,17 @@ vc-theorems: |-
     ∀ row ∈ display_table orders, row.length ≥ 2 :=
     sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval display_table [["David", "3", "Ceviche"], ["Corina", "10", "Beef Burrito"], ["David", "3", "Fried Chicken"], ["Carla", "5", "Water"], ["Carla", "5", "Ceviche"], ["Rous", "3", "Ceviche"]]
+  -- #guard_msgs in
+  -- #eval display_table [["David", "3", "Ceviche"], ["Corina", "10", "Beef Burrito"], ["David", "3", "Fried Chicken"], ["Carla", "5", "Water"], ["Carla", "5", "Ceviche"], ["Rous", "3", "Ceviche"]]
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval display_table [["Laura", "2", "Bean Burrito"], ["Jhon", "2", "Beef Burrito"], ["Melissa", "2", "Soda"]]
+  -- #guard_msgs in
+  -- #eval display_table [["Laura", "2", "Bean Burrito"], ["Jhon", "2", "Beef Burrito"], ["Melissa", "2", "Soda"]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

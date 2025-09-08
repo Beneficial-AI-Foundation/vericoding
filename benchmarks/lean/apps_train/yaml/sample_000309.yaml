@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We are given S, a length n string of characters from the set {'D', 'I'}. (These letters stand for "decreasing" and "increasing".)
   A valid permutation is a permutation P[0], P[1], ..., P[n] of integers {0, 1, ..., n}, such that for all i:
   
@@ -22,6 +23,7 @@ vc-description: |-
   
   1 <= S.length <= 200
   S consists only of characters from the set {'D', 'I'}.
+  -/
 
 vc-preamble: |-
 
@@ -49,23 +51,23 @@ vc-theorems: |-
     (∀ c ∈ s.data, c = 'I') → 
     num_perms_di_sequence s = 1 := sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval num_perms_di_sequence "DID"
+  -- #guard_msgs in
+  -- #eval num_perms_di_sequence "DID"
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval num_perms_di_sequence "D"
+  -- #guard_msgs in
+  -- #eval num_perms_di_sequence "D"
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval num_perms_di_sequence "III"
+  -- #guard_msgs in
+  -- #eval num_perms_di_sequence "III"
 
 vc-postamble: |-
   -- Apps difficulty: interview

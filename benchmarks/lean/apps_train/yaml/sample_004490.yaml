@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   My friend wants a new band name for her band. She like bands that use the formula: "The" + a noun with the first letter capitalized, for example:
   
   `"dolphin" -> "The Dolphin"`
@@ -8,6 +9,7 @@ vc-description: |-
   `"alaska" -> "Alaskalaska"`
   
   Complete the function that takes a noun as a string, and returns her preferred band name written as a string.
+  -/
 
 vc-preamble: |-
 
@@ -34,23 +36,23 @@ vc-theorems: |-
     (h2 : s.front ≠ s.back) :
     band_name_generator s = "The " ++ s.capitalize := sorry
   
-  /--
+  /-
   info: 'The Knife'
   -/
-  #guard_msgs in
-  #eval band_name_generator "knife"
+  -- #guard_msgs in
+  -- #eval band_name_generator "knife"
   
-  /--
+  /-
   info: 'Tartart'
   -/
-  #guard_msgs in
-  #eval band_name_generator "tart"
+  -- #guard_msgs in
+  -- #eval band_name_generator "tart"
   
-  /--
+  /-
   info: 'The Bed'
   -/
-  #guard_msgs in
-  #eval band_name_generator "bed"
+  -- #guard_msgs in
+  -- #eval band_name_generator "bed"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

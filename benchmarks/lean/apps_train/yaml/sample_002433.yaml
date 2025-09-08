@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an integer array sorted in non-decreasing order, there is exactly one integer in the array that occurs more than 25% of the time.
   Return that integer.
   
@@ -10,6 +11,7 @@ vc-description: |-
   
   1 <= arr.length <= 10^4
   0 <= arr[i] <= 10^5
+  -/
 
 vc-preamble: |-
 
@@ -44,23 +46,23 @@ vc-theorems: |-
     result = 0 ∨ result = 1 := by
   sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval find_special_integer [1, 2, 2, 6, 6, 6, 6, 7, 10]
+  -- #guard_msgs in
+  -- #eval find_special_integer [1, 2, 2, 6, 6, 6, 6, 7, 10]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval find_special_integer [1, 1, 1, 2, 3]
+  -- #guard_msgs in
+  -- #eval find_special_integer [1, 1, 1, 2, 3]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval find_special_integer [1, 1]
+  -- #guard_msgs in
+  -- #eval find_special_integer [1, 1]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

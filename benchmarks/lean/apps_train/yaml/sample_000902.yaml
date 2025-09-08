@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Being a crewmate in the Among Us game, you will have to solve a task to win against the imposter. 
   The task : You are given a certain number of bulbs(Say n) which are initially in OFF position. 
   The bulbs are numbered from 1 to n. There will be n current fluctuations in such a way that in the 1st fluctuation all bulbs are toggled, in the 2nd fluctuation every 2nd bulb is toggled, in the 3rd fluctuation every 3rd bulb is toggled and so on.
@@ -25,6 +26,7 @@ vc-description: |-
   1
   
   3
+  -/
 
 vc-preamble: |-
   def solve_bulb_fluctuations (n: Nat) : Nat :=
@@ -70,23 +72,23 @@ vc-theorems: |-
     solve_bulb_fluctuations 9 = 2 :=
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve_bulb_fluctuations 2
+  -- #guard_msgs in
+  -- #eval solve_bulb_fluctuations 2
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval solve_bulb_fluctuations 20
+  -- #guard_msgs in
+  -- #eval solve_bulb_fluctuations 20
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval solve_bulb_fluctuations 100
+  -- #guard_msgs in
+  -- #eval solve_bulb_fluctuations 100
 
 vc-postamble: |-
   -- Apps difficulty: interview

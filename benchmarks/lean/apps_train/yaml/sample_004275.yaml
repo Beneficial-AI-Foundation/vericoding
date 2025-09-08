@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your task is to validate rhythm with a meter.
   
   _________________________________________________
@@ -34,6 +35,7 @@ vc-description: |-
   
   Output:
   string message: 'Valid rhythm', 'Valid rhythm with anacrusis' or 'Invalid rhythm'
+  -/
 
 vc-preamble: |-
   def IsPowerOfTwo (n : Nat) : Bool :=
@@ -53,7 +55,7 @@ vc-theorems: |-
     result = "Valid rhythm" ∨ result = "Valid rhythm with anacrusis" ∨ result = "Invalid rhythm" :=
     sorry
   
-  /-- For valid rhythms, internal bars should sum to the correct total -/
+  /- For valid rhythms, internal bars should sum to the correct total -/
   
   theorem validate_rhythm_valid_bars_sum (meter : List Nat) (score : String)
     (h1 : meter.length = 2) (h2 : meter[0]! > 0) (h3 : meter[1]! > 0)
@@ -65,7 +67,7 @@ vc-theorems: |-
       barSum = target ∧ target = meter[0]! / meter[1]! :=
     sorry
   
-  /-- Invalid meter denominators result in invalid rhythms -/
+  /- Invalid meter denominators result in invalid rhythms -/
   
   theorem validate_rhythm_invalid_meter_denom (meter : List Nat)
     (h1 : meter.length = 2)
@@ -74,23 +76,23 @@ vc-theorems: |-
     validateRhythm meter "4|4" = "Invalid rhythm" :=
     sorry
   
-  /--
+  /-
   info: 'Invalid rhythm'
   -/
-  #guard_msgs in
-  #eval validate_rhythm [4, 4] "4444|8484842|888"
+  -- #guard_msgs in
+  -- #eval validate_rhythm [4, 4] "4444|8484842|888"
   
-  /--
+  /-
   info: 'Valid rhythm with anacrusis'
   -/
-  #guard_msgs in
-  #eval validate_rhythm [2, 4] "4|44|88"
+  -- #guard_msgs in
+  -- #eval validate_rhythm [2, 4] "4|44|88"
   
-  /--
+  /-
   info: 'Valid rhythm'
   -/
-  #guard_msgs in
-  #eval validate_rhythm [2, 2] "22|22|22"
+  -- #guard_msgs in
+  -- #eval validate_rhythm [2, 2] "22|22|22"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

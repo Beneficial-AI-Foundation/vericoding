@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Task:
   You have to write a function `pattern` which returns the following Pattern(See Pattern & Examples) upto `n` number of rows. 
   
@@ -48,6 +49,7 @@ vc-description: |-
   * Hint: Use Chr(10) in string to jump to next line
   ```
   [List of all my katas]('http://www.codewars.com/users/curious_db97/authored')
+  -/
 
 vc-preamble: |-
 
@@ -79,35 +81,35 @@ vc-theorems: |-
       let line := lines[i]!
       String.toNat! (toString (line.get! 0)) = line.length) := sorry
   
-  /--
+  /-
   info: '1'
   -/
-  #guard_msgs in
-  #eval pattern 1
+  -- #guard_msgs in
+  -- #eval pattern 1
   
-  /--
+  /-
   info: '1\n22'
   -/
-  #guard_msgs in
-  #eval pattern 2
+  -- #guard_msgs in
+  -- #eval pattern 2
   
-  /--
+  /-
   info: '1\n22\n333\n4444\n55555'
   -/
-  #guard_msgs in
-  #eval pattern 5
+  -- #guard_msgs in
+  -- #eval pattern 5
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval pattern 0
+  -- #guard_msgs in
+  -- #eval pattern 0
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval pattern -1
+  -- #guard_msgs in
+  -- #eval pattern -1
 
 vc-postamble: |-
   -- Apps difficulty: introductory

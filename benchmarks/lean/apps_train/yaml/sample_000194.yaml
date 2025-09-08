@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given two strings s and t of the same length. You want to change s to t. Changing the i-th character of s to i-th character of t costs |s[i] - t[i]| that is, the absolute difference between the ASCII values of the characters.
   You are also given an integer maxCost.
   Return the maximum length of a substring of s that can be changed to be the same as the corresponding substring of twith a cost less than or equal to maxCost.
@@ -23,6 +24,7 @@ vc-description: |-
   1 <= s.length, t.length <= 10^5
   0 <= maxCost <= 10^6
   s and t only contain lower case English letters.
+  -/
 
 vc-preamble: |-
 
@@ -44,23 +46,23 @@ vc-theorems: |-
     equal_substring s t (max_cost - 1) ≤ equal_substring s t max_cost :=
   sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval equal_substring "abcd" "bcdf" 3
+  -- #guard_msgs in
+  -- #eval equal_substring "abcd" "bcdf" 3
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval equal_substring "abcd" "cdef" 3
+  -- #guard_msgs in
+  -- #eval equal_substring "abcd" "cdef" 3
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval equal_substring "abcd" "acde" 0
+  -- #guard_msgs in
+  -- #eval equal_substring "abcd" "acde" 0
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function taking in a string like `WOW this is REALLY          amazing` and returning `Wow this is really amazing`. String should be capitalized and properly spaced. Using `re` and `string` is not allowed.
   
   Examples:
@@ -8,6 +9,7 @@ vc-description: |-
   filter_words('now THIS is REALLY interesting') #=> Now this is really interesting
   filter_words('THAT was EXTRAORDINARY!') #=> That was extraordinary!
   ```
+  -/
 
 vc-preamble: |-
 
@@ -37,23 +39,23 @@ vc-theorems: |-
   theorem filter_words_empty_produces_empty (s : String) 
     (h : s = "" ∨ s = " " ∨ s = "  ") : filter_words s = "" := sorry
   
-  /--
+  /-
   info: 'Hello world!'
   -/
-  #guard_msgs in
-  #eval filter_words "HELLO world!"
+  -- #guard_msgs in
+  -- #eval filter_words "HELLO world!"
   
-  /--
+  /-
   info: 'This will not pass'
   -/
-  #guard_msgs in
-  #eval filter_words "This    will    not    pass "
+  -- #guard_msgs in
+  -- #eval filter_words "This    will    not    pass "
   
-  /--
+  /-
   info: 'Now this is a very exciting test!'
   -/
-  #guard_msgs in
-  #eval filter_words "NOW THIS is a VERY EXCITING test!"
+  -- #guard_msgs in
+  -- #eval filter_words "NOW THIS is a VERY EXCITING test!"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

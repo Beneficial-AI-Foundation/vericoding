@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You and your $n - 1$ friends have found an array of integers $a_1, a_2, \dots, a_n$. You have decided to share it in the following way: All $n$ of you stand in a line in a particular order. Each minute, the person at the front of the line chooses either the first or the last element of the array, removes it, and keeps it for himself. He then gets out of line, and the next person in line continues the process.
   
   You are standing in the $m$-th position in the line. Before the process starts, you may choose up to $k$ different people in the line, and persuade them to always take either the first or the last element in the array on their turn (for each person his own choice, not necessarily equal for all people), no matter what the elements themselves are. Once the process starts, you cannot persuade any more people, and you cannot change the choices for the people you already persuaded.
@@ -46,6 +47,7 @@ vc-description: |-
   Thus, this strategy guarantees to end up with at least $8$. We can prove that there is no strategy that guarantees to end up with at least $9$. Hence, the answer is $8$.
   
   In the second test case, an optimal strategy is to force the first person to take the first element. Then, in the worst case, both the second and the third person will take the first element: you will end up with $4$.
+  -/
 
 vc-preamble: |-
   def solve (n m k : Nat) (arr : List Nat) : Nat := sorry
@@ -96,23 +98,23 @@ vc-theorems: |-
     (h1 : arr.length ≥ m) (h2 : m ≤ n) (h3 : k ≥ m-1) :
     solve n m k arr = solve n m (m-1) arr := sorry
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval solve 6 4 2 [2, 9, 2, 3, 8, 5]
+  -- #guard_msgs in
+  -- #eval solve 6 4 2 [2, 9, 2, 3, 8, 5]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval solve 4 4 1 [2, 13, 60, 4]
+  -- #guard_msgs in
+  -- #eval solve 4 4 1 [2, 13, 60, 4]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve 4 1 3 [1, 2, 2, 1]
+  -- #guard_msgs in
+  -- #eval solve 4 1 3 [1, 2, 2, 1]
 
 vc-postamble: |-
   -- Apps difficulty: competition

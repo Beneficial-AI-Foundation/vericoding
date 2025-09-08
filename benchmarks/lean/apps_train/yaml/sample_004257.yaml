@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this Kata, you will be given two strings `a` and `b` and your task will be to return the characters that are not common in the two strings. 
   
   For example:
@@ -14,6 +15,7 @@ vc-description: |-
   Good luck!
   
   Please also try [Simple remove duplicates](https://www.codewars.com/kata/5ba38ba180824a86850000f7)
+  -/
 
 vc-preamble: |-
 
@@ -57,23 +59,23 @@ vc-theorems: |-
     solve "" s = s
     := sorry
   
-  /--
+  /-
   info: 'ybzc'
   -/
-  #guard_msgs in
-  #eval solve "xyab" "xzca"
+  -- #guard_msgs in
+  -- #eval solve "xyab" "xzca"
   
-  /--
+  /-
   info: 'ybbzc'
   -/
-  #guard_msgs in
-  #eval solve "xyabb" "xzca"
+  -- #guard_msgs in
+  -- #eval solve "xyabb" "xzca"
   
-  /--
+  /-
   info: 'abcdxyz'
   -/
-  #guard_msgs in
-  #eval solve "abcd" "xyz"
+  -- #guard_msgs in
+  -- #eval solve "abcd" "xyz"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

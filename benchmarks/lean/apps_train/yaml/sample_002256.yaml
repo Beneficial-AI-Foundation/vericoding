@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We guessed a permutation $p$ consisting of $n$ integers. The permutation of length $n$ is the array of length $n$ where each element from $1$ to $n$ appears exactly once. This permutation is a secret for you.
   
   For each position $r$ from $2$ to $n$ we chose some other index $l$ ($l < r$) and gave you the segment $p_l, p_{l + 1}, \dots, p_r$ in sorted order (i.e. we rearranged the elements of this segment in a way that the elements of this segment are sorted). Thus, you are given exactly $n-1$ segments of the initial permutation but elements inside each segment are sorted. The segments are given to you in random order.
@@ -62,6 +63,7 @@ vc-description: |-
   2 1 6 3 5 4 7 
   1 2 
   2 5 3 4 1
+  -/
 
 vc-preamble: |-
 

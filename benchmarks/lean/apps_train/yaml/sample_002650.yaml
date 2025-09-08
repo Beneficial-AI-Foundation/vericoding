@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Grade book
   
   Complete the function so that it finds the mean of the three scores passed to it and returns the letter value associated with that grade.
@@ -12,6 +13,7 @@ vc-description: |-
    0 <= score < 60   | 'F'
   
   Tested values are all between 0 and 100. Theres is no need to check for negative values or values greater than 100.
+  -/
 
 vc-preamble: |-
 
@@ -60,23 +62,23 @@ vc-theorems: |-
     get_grade s1 s2 s3 = 'F' :=
     sorry
   
-  /--
+  /-
   info: 'A'
   -/
-  #guard_msgs in
-  #eval get_grade 95 90 93
+  -- #guard_msgs in
+  -- #eval get_grade 95 90 93
   
-  /--
+  /-
   info: 'C'
   -/
-  #guard_msgs in
-  #eval get_grade 70 70 70
+  -- #guard_msgs in
+  -- #eval get_grade 70 70 70
   
-  /--
+  /-
   info: 'F'
   -/
-  #guard_msgs in
-  #eval get_grade 44 55 52
+  -- #guard_msgs in
+  -- #eval get_grade 44 55 52
 
 vc-postamble: |-
   -- Apps difficulty: introductory

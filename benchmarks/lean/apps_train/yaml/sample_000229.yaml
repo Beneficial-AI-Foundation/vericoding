@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In a N x N grid composed of 1 x 1 squares, each 1 x 1 square consists of a /, \, or blank space.  These characters divide the square into contiguous regions.
   (Note that backslash characters are escaped, so a \ is represented as "\\".)
   Return the number of regions.
@@ -54,6 +55,7 @@ vc-description: |-
   
   1 <= grid.length == grid[0].length <= 30
   grid[i][j] is either '/', '\', or ' '.
+  -/
 
 vc-preamble: |-
 
@@ -91,23 +93,23 @@ vc-theorems: |-
     : regions_by_slashes grid = regions_by_slashes quoted :=
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval regions_by_slashes [" /", "/ "]
+  -- #guard_msgs in
+  -- #eval regions_by_slashes [" /", "/ "]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval regions_by_slashes ["\\/", "/\\"]
+  -- #guard_msgs in
+  -- #eval regions_by_slashes ["\\/", "/\\"]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval regions_by_slashes ["//", "/ "]
+  -- #guard_msgs in
+  -- #eval regions_by_slashes ["//", "/ "]
 
 vc-postamble: |-
   -- Apps difficulty: interview

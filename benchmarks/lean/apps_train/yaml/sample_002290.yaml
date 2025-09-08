@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a pattern and a string str, find if str follows the same pattern.
   
   Here follow means a full match, such that there is a bijection between a letter in pattern and a non-empty word in str.
@@ -25,6 +26,7 @@ vc-description: |-
   
   Notes:
   You may assume pattern contains only lowercase letters, and str contains lowercase letters separated by a single space.
+  -/
 
 vc-preamble: |-
 
@@ -66,23 +68,23 @@ vc-theorems: |-
     (uniquePatternChars.length = uniqueMappedWords.length) :=
     sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval word_pattern "abba" "dog cat cat dog"
+  -- #guard_msgs in
+  -- #eval word_pattern "abba" "dog cat cat dog"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval word_pattern "abba" "dog cat cat fish"
+  -- #guard_msgs in
+  -- #eval word_pattern "abba" "dog cat cat fish"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval word_pattern "aaaa" "dog cat cat dog"
+  -- #guard_msgs in
+  -- #eval word_pattern "aaaa" "dog cat cat dog"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

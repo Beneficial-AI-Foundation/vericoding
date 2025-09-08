@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   For a given two numbers your mission is to derive a function that evaluates whether two given numbers are **abundant**, **deficient** or **perfect** and whether together they are **amicable**.
   
   ### Abundant Numbers
@@ -30,6 +31,7 @@ vc-description: |-
   See Part 1 - [Excessively Abundant Numbers](http://www.codewars.com/kata/56a75b91688b49ad94000015)
   
   See Part 2 - [The Most Amicable of Numbers](http://www.codewars.com/kata/56b5ebaa26fd54188b000018)
+  -/
 
 vc-preamble: |-
   def sumOfDivs (n : Nat) : Nat := sorry
@@ -43,7 +45,7 @@ vc-helpers: |-
 vc-definitions: |-
   def deficientlyAbundantAmicableNumbers (n1 n2 : Nat) : String := sorry
   
-  /-- The kind function only outputs "abundant", "deficient", or "perfect" -/
+  /- The kind function only outputs "abundant", "deficient", or "perfect" -/
 
 vc-theorems: |-
   theorem kind_outputs {n : Nat} (h : n > 0) : 
@@ -51,7 +53,7 @@ vc-theorems: |-
     let k := kind n sum
     (k = "abundant" ∨ k = "deficient" ∨ k = "perfect") := sorry
   
-  /-- Properties of deficiently abundant amicable numbers output -/
+  /- Properties of deficiently abundant amicable numbers output -/
   
   theorem deficientlyabundant_properties {n1 n2 : Nat} (h1 : n1 > 0) (h2 : n2 > 0) :
     let result := deficientlyAbundantAmicableNumbers n1 n2 
@@ -60,7 +62,7 @@ vc-theorems: |-
     let is_amicable := sum1 = n2 ∧ sum2 = n1 ∧ n1 ≠ n2
     result.contains 'n' = !is_amicable := sorry
   
-  /-- Symmetric property of amicable numbers -/
+  /- Symmetric property of amicable numbers -/
   
   theorem symmetric_property {n1 n2 : Nat} (h1 : n1 > 0) (h2 : n2 > 0) :
     let result1 := deficientlyAbundantAmicableNumbers n1 n2

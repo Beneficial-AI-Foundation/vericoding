@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ### Please also check out other katas in [Domino Tiling series](https://www.codewars.com/collections/5d19554d13dba80026a74ff5)!
   
   ---
@@ -53,6 +54,7 @@ vc-description: |-
   # Hint
   
   The reference solution uses eleven mutual recurrence equations.
+  -/
 
 vc-preamble: |-
 
@@ -81,23 +83,23 @@ vc-theorems: |-
     n > 0 → True :=
     sorry
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval five_by_2n 1
+  -- #guard_msgs in
+  -- #eval five_by_2n 1
   
-  /--
+  /-
   info: 95
   -/
-  #guard_msgs in
-  #eval five_by_2n 2
+  -- #guard_msgs in
+  -- #eval five_by_2n 2
   
-  /--
+  /-
   info: 1183
   -/
-  #guard_msgs in
-  #eval five_by_2n 3
+  -- #guard_msgs in
+  -- #eval five_by_2n 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

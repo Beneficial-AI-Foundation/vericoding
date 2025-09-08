@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   After a long night (work, play, study) you find yourself sleeping on a bench in a park. As you wake up and try to figure out what happened you start counting trees.
   
@@ -29,6 +30,7 @@ vc-description: |-
   - `[output]` an integer
   
   The size of the missing tree.
+  -/
 
 vc-preamble: |-
 
@@ -55,23 +57,23 @@ vc-theorems: |-
     ∀ n ∈ input_list, (input_list.count result) ≤ (input_list.count n) :=
   sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval find_the_missing_tree [1, 2, 2, 3, 3]
+  -- #guard_msgs in
+  -- #eval find_the_missing_tree [1, 2, 2, 3, 3]
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval find_the_missing_tree [2, 2, 2, 56, 56, 56, 8, 8]
+  -- #guard_msgs in
+  -- #eval find_the_missing_tree [2, 2, 2, 56, 56, 56, 8, 8]
   
-  /--
+  /-
   info: 64
   -/
-  #guard_msgs in
-  #eval find_the_missing_tree [34, 76, 12, 99, 64, 99, 76, 12, 34]
+  -- #guard_msgs in
+  -- #eval find_the_missing_tree [34, 76, 12, 99, 64, 99, 76, 12, 34]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

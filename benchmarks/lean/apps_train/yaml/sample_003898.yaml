@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Learning to code around your full time job is taking over your life. You realise that in order to make significant steps quickly, it would help to go to a coding bootcamp in London.
   
   Problem is, many of them cost a fortune, and those that don't still involve a significant amount of time off work - who will pay your mortgage?!
@@ -18,6 +19,7 @@ vc-description: |-
   ~~~if:c
   NOTE: For the C translation you should return a string literal.
   ~~~
+  -/
 
 vc-preamble: |-
 

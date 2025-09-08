@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Recently Rocky had participated in coding competition and he is sharing one of the problem with you which he was unable to solve. Help Rocky in solving the problem.
   Suppose the alphabets are arranged in a row starting with index 0$0$ from AtoZ$A to Z$.
   If in a coded language  A=27$A=27$ and AND=65$AND=65$.
@@ -23,6 +24,7 @@ vc-description: |-
   27
   
   65
+  -/
 
 vc-preamble: |-
   def calculate_string_weight (s : String) : Nat :=
@@ -65,17 +67,17 @@ vc-theorems: |-
     calculate_string_weight "Z" = 2 :=
   sorry
   
-  /--
+  /-
   info: 27
   -/
-  #guard_msgs in
-  #eval calculate_string_weight "A"
+  -- #guard_msgs in
+  -- #eval calculate_string_weight "A"
   
-  /--
+  /-
   info: 65
   -/
-  #guard_msgs in
-  #eval calculate_string_weight "AND"
+  -- #guard_msgs in
+  -- #eval calculate_string_weight "AND"
 
 vc-postamble: |-
   -- Apps difficulty: interview

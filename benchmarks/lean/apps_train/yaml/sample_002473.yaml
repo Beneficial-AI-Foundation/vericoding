@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Function Descriptions=====
   A set is an unordered collection of elements without duplicate entries.
   When printed, iterated or converted into a sequence, its elements will appear in an arbitrary order.
@@ -44,6 +45,7 @@ vc-description: |-
   
   =====Output Format=====
   Output the average height value on a single line.
+  -/
 
 vc-preamble: |-
 

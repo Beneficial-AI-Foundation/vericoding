@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef's loves his dog so much! Once his dog created two strings a and b each of length n consisting of digits 1 and 2, and even a problem about them!
   Chef's Dog will tell by barking if a string x (also containing only digits 1 and 2 and with length N) is good or not by performing the following actions.
   
@@ -45,6 +46,7 @@ vc-description: |-
   {}, {1, 2}, {1, 2, 3}, {1, 2, 4}, {1, 2, 3, 4}, {3}, {4}, {3, 4}.
   
   Test case 2. There are no possible sets S which can make both the strings good.
+  -/
 
 vc-preamble: |-
 
@@ -77,23 +79,23 @@ vc-theorems: |-
   theorem known_cases_2 : 
     solveDogStrings "222" "111" = 0 := sorry
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval solve_dog_strings "1111" "2211"
+  -- #guard_msgs in
+  -- #eval solve_dog_strings "1111" "2211"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve_dog_strings "222" "111"
+  -- #guard_msgs in
+  -- #eval solve_dog_strings "222" "111"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve_dog_strings "1" "2"
+  -- #guard_msgs in
+  -- #eval solve_dog_strings "1" "2"
 
 vc-postamble: |-
   -- Apps difficulty: interview

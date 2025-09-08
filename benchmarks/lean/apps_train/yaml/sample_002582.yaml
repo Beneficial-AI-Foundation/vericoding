@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Introduction
   
   You are the developer working on a website which features a large counter on its homepage, proudly displaying the number of happy customers who have downloaded your companies software.
@@ -18,6 +19,7 @@ vc-description: |-
   * Values returned in the array must be of the type `number`
   
   **Examples**
+  -/
 
 vc-preamble: |-
 

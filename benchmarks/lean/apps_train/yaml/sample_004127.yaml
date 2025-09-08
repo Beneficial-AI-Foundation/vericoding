@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The most basic encryption method is to map a char to another char by a certain math rule.
   Because every char has an ASCII value, we can manipulate this value with a simple math expression. 
   For example 'a' + 1 would give us 'b', because 'a' value is 97 and 'b' value is 98.
@@ -13,6 +14,7 @@ vc-description: |-
    *Full ascii table is used on our question (256 chars) - so 0-255 are the valid values.*
   
   Good luck.
+  -/
 
 vc-preamble: |-
 
@@ -41,23 +43,23 @@ vc-theorems: |-
     encrypt (encrypt text rule) (-rule) = text :=
   sorry
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval encrypt "" 1
+  -- #guard_msgs in
+  -- #eval encrypt "" 1
   
-  /--
+  /-
   info: 'b'
   -/
-  #guard_msgs in
-  #eval encrypt "a" 1
+  -- #guard_msgs in
+  -- #eval encrypt "a" 1
   
-  /--
+  /-
   info: 'rngcug"gpet{rv"og'
   -/
-  #guard_msgs in
-  #eval encrypt "please encrypt me" 2
+  -- #guard_msgs in
+  -- #eval encrypt "please encrypt me" 2
 
 vc-postamble: |-
   -- Apps difficulty: introductory

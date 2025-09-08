@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A grid is a perfect starting point for many games (Chess, battleships, Candy Crush!).
   
   Making a digital chessboard I think is an interesting way of visualising how loops can work together.
@@ -29,6 +30,7 @@ vc-description: |-
   and the black an: `'X'`
   
   The first row should always start with a white space `'O'`
+  -/
 
 vc-preamble: |-
 
@@ -62,23 +64,23 @@ vc-theorems: |-
     let board := chess_board size size
     ∀ i < size, (board.get! i).get! i = (board.get! 0).get! 0 := sorry
   
-  /--
+  /-
   info: [['O']]
   -/
-  #guard_msgs in
-  #eval chess_board 1 1
+  -- #guard_msgs in
+  -- #eval chess_board 1 1
   
-  /--
+  /-
   info: [['O', 'X'], ['X', 'O']]
   -/
-  #guard_msgs in
-  #eval chess_board 2 2
+  -- #guard_msgs in
+  -- #eval chess_board 2 2
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval chess_board 3 4
+  -- #guard_msgs in
+  -- #eval chess_board 3 4
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   
    Your task is to create a `Funnel` data structure. It consists of three basic methods: `fill()`, `drip()` and `toString()/to_s/__str__`. Its maximum capacity is 15 data.
@@ -173,6 +174,7 @@ vc-description: |-
    Another edge case is: When funnel is full, fill() will not change the funnel.
   
    A bit complex...
+  -/
 
 vc-preamble: |-
   def solve_single_digit_addition (n : Nat) : Nat := sorry

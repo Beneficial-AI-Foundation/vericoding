@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   What is an anagram? Well, two words are anagrams of each other if they both contain the same letters. For example:
   
   ```
@@ -18,6 +19,7 @@ vc-description: |-
   anagrams('racer', ['crazer', 'carer', 'racar', 'caers', 'racer']) => ['carer', 'racer']
   
   anagrams('laser', ['lazing', 'lazy',  'lacer']) => []
+  -/
 
 vc-preamble: |-
   def anagrams (word : String) (words : List String) : List String := sorry
@@ -53,23 +55,23 @@ vc-theorems: |-
     let reversed := reverseString word
     anagrams word [reversed] = [reversed] := sorry
   
-  /--
+  /-
   info: ['aabb', 'bbaa']
   -/
-  #guard_msgs in
-  #eval anagrams "abba" ["aabb", "abcd", "bbaa", "dada"]
+  -- #guard_msgs in
+  -- #eval anagrams "abba" ["aabb", "abcd", "bbaa", "dada"]
   
-  /--
+  /-
   info: ['carer', 'racer']
   -/
-  #guard_msgs in
-  #eval anagrams "racer" ["crazer", "carer", "racar", "caers", "racer"]
+  -- #guard_msgs in
+  -- #eval anagrams "racer" ["crazer", "carer", "racar", "caers", "racer"]
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval anagrams "laser" ["lazing", "lazy", "lacer"]
+  -- #guard_msgs in
+  -- #eval anagrams "laser" ["lazing", "lazy", "lacer"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

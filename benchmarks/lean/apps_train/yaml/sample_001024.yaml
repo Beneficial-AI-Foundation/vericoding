@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a program to check whether a triangle is valid or not, when the three angles of the triangle are the inputs. A triangle is valid if the sum of all the three angles is equal to 180 degrees.
   
   -----Input-----
@@ -24,6 +25,7 @@ vc-description: |-
   YES
   YES
   NO
+  -/
 
 vc-preamble: |-
 
@@ -60,23 +62,23 @@ vc-theorems: |-
     is_valid_triangle 90 90 x = "NO" :=
     sorry
   
-  /--
+  /-
   info: 'YES'
   -/
-  #guard_msgs in
-  #eval is_valid_triangle 40 40 100
+  -- #guard_msgs in
+  -- #eval is_valid_triangle 40 40 100
   
-  /--
+  /-
   info: 'YES'
   -/
-  #guard_msgs in
-  #eval is_valid_triangle 45 45 90
+  -- #guard_msgs in
+  -- #eval is_valid_triangle 45 45 90
   
-  /--
+  /-
   info: 'NO'
   -/
-  #guard_msgs in
-  #eval is_valid_triangle 180 1 1
+  -- #guard_msgs in
+  -- #eval is_valid_triangle 180 1 1
 
 vc-postamble: |-
   -- Apps difficulty: interview

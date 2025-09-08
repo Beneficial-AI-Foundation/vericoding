@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Function Descriptions=====
   Concatenate
   
@@ -38,6 +39,7 @@ vc-description: |-
   
   =====Output Format=====
   Print the concatenated array of size (N + M)XP.
+  -/
 
 vc-preamble: |-
   def Array.shape (a : Array (Array α)) : Nat × Nat :=

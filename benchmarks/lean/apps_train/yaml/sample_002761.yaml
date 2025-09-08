@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Following from the previous kata and taking into account how cool psionic powers are compare to the Vance spell system (really, the idea of slots to dumb down the game sucks, not to mention that D&D became a smash hit among geeks, so...), your task in this kata is to create a function that returns how many power points you get as a psion [because psions are the coolest, they allow for a lot of indepth tactic playing and adjusting for psychic warriors or wilders or other non-core classes would be just an obnoxious core].
   
   Consider both [the psion power points/days table](http://www.dandwiki.com/wiki/SRD:Psion#Making_a_Psion) and [bonus power points](http://www.d20pfsrd.com/psionics-unleashed/classes/#Table_Ability_Modifiers_and_Bonus_Power_Points) to figure out the correct reply, returned as an integer; the usual interpretation is that bonus power points stop increasing after level 20, but for the scope of this kata, we will pretend they keep increasing as they did before.
@@ -25,6 +26,7 @@ vc-description: |-
   * [D&D Character generator #1: attribute modifiers and spells](https://www.codewars.com/kata/d-and-d-character-generator-number-1-attribute-modifiers-and-spells/)
   * [D&D Character generator #2: psion power points](https://www.codewars.com/kata/d-and-d-character-generator-number-2-psion-power-points/)
   * [D&D Character generator #3: carrying capacity](https://www.codewars.com/kata/d-and-d-character-generator-number-3-carrying-capacity/)
+  -/
 
 vc-preamble: |-
 
@@ -59,35 +61,35 @@ vc-theorems: |-
     psion_power_points (level + 1) intel ≥ psion_power_points level intel :=
     sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval psion_power_points 1 0
+  -- #guard_msgs in
+  -- #eval psion_power_points 1 0
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval psion_power_points 1 10
+  -- #guard_msgs in
+  -- #eval psion_power_points 1 10
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval psion_power_points 1 11
+  -- #guard_msgs in
+  -- #eval psion_power_points 1 11
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval psion_power_points 1 20
+  -- #guard_msgs in
+  -- #eval psion_power_points 1 20
   
-  /--
+  /-
   info: 448
   -/
-  #guard_msgs in
-  #eval psion_power_points 21 30
+  -- #guard_msgs in
+  -- #eval psion_power_points 21 30
 
 vc-postamble: |-
   -- Apps difficulty: introductory

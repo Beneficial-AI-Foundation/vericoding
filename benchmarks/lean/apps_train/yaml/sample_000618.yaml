@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A balanced parenthesis string is defined as follows:
   - The empty string is balanced
   - If P is balanced, (P) is also 
@@ -30,6 +31,7 @@ vc-description: |-
   -----Explanation-----
   In the first testcase, the only balanced strings of length 4$4$ are (()) and ()(), both of which contain () as a substring.
   In the second testcase, (())(()) is a balanced string that doesn't contain any balanced substring of length 6$6$.
+  -/
 
 vc-preamble: |-
   def is_valid_parens (s : String) : Bool := sorry
@@ -61,17 +63,17 @@ vc-theorems: |-
       result = String.mk (List.replicate (n/2) '(' ++ List.replicate (n/2) ')') else True :=
     sorry
   
-  /--
+  /-
   info: '-1'
   -/
-  #guard_msgs in
-  #eval solve_balanced_parens 4 2
+  -- #guard_msgs in
+  -- #eval solve_balanced_parens 4 2
   
-  /--
+  /-
   info: '(())(())'
   -/
-  #guard_msgs in
-  #eval solve_balanced_parens 8 6
+  -- #guard_msgs in
+  -- #eval solve_balanced_parens 8 6
 
 vc-postamble: |-
   -- Apps difficulty: interview

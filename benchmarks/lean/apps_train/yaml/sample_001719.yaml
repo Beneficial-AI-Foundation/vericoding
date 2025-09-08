@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   As [breadcrumb menùs](https://en.wikipedia.org/wiki/Breadcrumb_%28navigation%29) are quite popular today, I won't digress much on explaining them, leaving the wiki link to do all the dirty work in my place.
   
   What might not be so trivial is instead to get a decent breadcrumb from your current url. For this kata, your purpose is to create a function that takes a url, strips the first part (labelling it always `HOME`) and then builds it making each element but the last a `` element linking to the relevant path; last has to be a `` element getting the `active` `class`.
@@ -28,6 +29,7 @@ vc-description: |-
   If you like to test yourself with actual work/interview related kata, please also consider this one about building [a string filter for Angular.js](http://www.codewars.com/kata/number-shortening-filter).
   
   _Special thanks to [the colleague](http://www.codewars.com/users/jury89) that, seeing my code and commenting that I worked on that as if it was I was on CodeWars, made me realize that it could be indeed a good idea for a kata_ :)
+  -/
 
 vc-preamble: |-
   def generate_bc (url : String) (separator : String) : String :=
@@ -84,23 +86,23 @@ vc-theorems: |-
       (findStr s "\">").isSome :=
   sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval generate_bc "mysite.com/pictures/holidays.html" " : "
+  -- #guard_msgs in
+  -- #eval generate_bc "mysite.com/pictures/holidays.html" " : "
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval generate_bc "www.microsoft.com/docs/index.htm" " * "
+  -- #guard_msgs in
+  -- #eval generate_bc "www.microsoft.com/docs/index.htm" " * "
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval generate_bc "mysite.com/very-long-url-to-make-a-silly-yet-meaningful-example/example.htm" " > "
+  -- #guard_msgs in
+  -- #eval generate_bc "mysite.com/very-long-url-to-make-a-silly-yet-meaningful-example/example.htm" " > "
 
 vc-postamble: |-
   -- Apps difficulty: interview

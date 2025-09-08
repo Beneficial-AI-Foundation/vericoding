@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ~~~if-not:ruby,python
   Return `1` when *any* odd bit of `x` equals 1; `0` otherwise.
   ~~~
@@ -17,6 +18,7 @@ vc-description: |-
     5  -->  0 (false) because none of the odd bits are 1 (5 = 0b101)
   170  -->  1 (true) because all of the odd bits are 1 (170 = 0b10101010)
   ```
+  -/
 
 vc-preamble: |-
 
@@ -42,23 +44,23 @@ vc-theorems: |-
   theorem any_odd_agreement {x : Nat} :
     any_odd x = (x &&& pattern ≠ 0) := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval any_odd 2
+  -- #guard_msgs in
+  -- #eval any_odd 2
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval any_odd 5
+  -- #guard_msgs in
+  -- #eval any_odd 5
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval any_odd 170
+  -- #guard_msgs in
+  -- #eval any_odd 170
 
 vc-postamble: |-
   -- Apps difficulty: introductory

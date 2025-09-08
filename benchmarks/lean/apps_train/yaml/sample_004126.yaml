@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string of characters, I want the function `findMiddle()`/`find_middle()` to return the middle number in the product of each digit in the string.
   
   Example: 's7d8jd9' -> 7, 8, 9 -> 7\*8\*9=504, thus 0 should be returned as an integer.
@@ -11,6 +12,7 @@ vc-description: |-
   
   NOTE: Remove leading zeros if product is even and the first digit of the two is a zero.
   Example 2016 -> 1
+  -/
 
 vc-preamble: |-
 
@@ -28,23 +30,23 @@ vc-theorems: |-
   theorem find_middle_two_digits (d1 d2 : Nat) (h1 : d1 > 0) (h2 : d1 < 10) (h3 : d2 > 0) (h4 : d2 < 10) :
     find_middle s!"a{d1}b{d2}c" = d1 * d2 := sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval find_middle "s7d8jd9"
+  -- #guard_msgs in
+  -- #eval find_middle "s7d8jd9"
   
-  /--
+  /-
   info: 56
   -/
-  #guard_msgs in
-  #eval find_middle "s7d8j"
+  -- #guard_msgs in
+  -- #eval find_middle "s7d8j"
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval find_middle "abc"
+  -- #guard_msgs in
+  -- #eval find_middle "abc"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

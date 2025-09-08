@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Once upon a time, a CodeWarrior, after reading a [discussion on what can be the plural](http://www.codewars.com/kata/plural/discuss/javascript), took a look at [this page](http://en.wikipedia.org/wiki/Grammatical_number#Types_of_number
   ) and discovered that **more than 1** "kind of plural" may exist. 
   
@@ -36,6 +37,7 @@ vc-description: |-
   **Beware** `s` of english plural should be removed, not ending `s` of some singular words ( *eg* "kiss" )
   
   Good luck!
+  -/
 
 vc-preamble: |-
   def sursurungal (s : String) : String := sorry
@@ -74,41 +76,41 @@ vc-theorems: |-
     sursurungal s = s :=
   sorry
   
-  /--
+  /-
   info: '1 tomato'
   -/
-  #guard_msgs in
-  #eval sursurungal "1 tomato"
+  -- #guard_msgs in
+  -- #eval sursurungal "1 tomato"
   
-  /--
+  /-
   info: '2 bubanana'
   -/
-  #guard_msgs in
-  #eval sursurungal "2 bananas"
+  -- #guard_msgs in
+  -- #eval sursurungal "2 bananas"
   
-  /--
+  /-
   info: '3 bananazo'
   -/
-  #guard_msgs in
-  #eval sursurungal "3 bananas"
+  -- #guard_msgs in
+  -- #eval sursurungal "3 bananas"
   
-  /--
+  /-
   info: '10 gabananaga'
   -/
-  #guard_msgs in
-  #eval sursurungal "10 bananas"
+  -- #guard_msgs in
+  -- #eval sursurungal "10 bananas"
   
-  /--
+  /-
   info: '6 birdzo with 2 buwing each'
   -/
-  #guard_msgs in
-  #eval sursurungal "6 birds with 2 wings each"
+  -- #guard_msgs in
+  -- #eval sursurungal "6 birds with 2 wings each"
   
-  /--
+  /-
   info: '\n3 pigzo\nmet 1 wolf\n2 buday ago'
   -/
-  #guard_msgs in
-  #eval sursurungal "\n3 pigs\nmet 1 wolf\n2 days ago"
+  -- #guard_msgs in
+  -- #eval sursurungal "\n3 pigs\nmet 1 wolf\n2 days ago"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We all know that Share market is place where drastic change occurs within moments. So we have one Stockholder, Isabella, who wants to maximize her profit by selling her shares. She has $N$ shares of a Doofenshmirtz Corporation which is represented by $N$ different lines where each line contains two space separated integers $a_i$ , $b_i$ corresponding to initial and final values of the share prize. Isabella can sell any number of shares. But, she will sell those shares only if the following condition is satisfied - 
   - for any pair $(i,j)$ of shares that she choses to sell, $a_i \leq a_j$  and $b_i < b_j$ must be satisfied. 
   You need to tell Isabella the maximum number of Shares she can sell.
@@ -31,6 +32,7 @@ vc-description: |-
   -----Explanation:-----
   Here, Isabella decided to sell share 1, share 3 and share 4 as any two pair of 
   chosen share hold the given condition.
+  -/
 
 vc-preamble: |-
   def find_max_shares_to_sell (shares: List Share) : Nat :=
@@ -78,23 +80,23 @@ vc-theorems: |-
     find_max_shares_to_sell (sorted_shares shares) = 1 :=
   sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_max_shares_to_sell [[1, 2], [4, 3], [3, 5], [2, 4]]
+  -- #guard_msgs in
+  -- #eval find_max_shares_to_sell [[1, 2], [4, 3], [3, 5], [2, 4]]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_max_shares_to_sell [[1, 2], [2, 3], [3, 4]]
+  -- #guard_msgs in
+  -- #eval find_max_shares_to_sell [[1, 2], [2, 3], [3, 4]]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval find_max_shares_to_sell [[5, 1], [4, 2], [3, 3], [2, 4], [1, 5]]
+  -- #guard_msgs in
+  -- #eval find_max_shares_to_sell [[5, 1], [4, 2], [3, 3], [2, 4], [1, 5]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

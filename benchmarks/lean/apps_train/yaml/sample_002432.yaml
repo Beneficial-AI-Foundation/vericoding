@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
   
   An input string is valid if:
@@ -32,6 +33,7 @@ vc-description: |-
   
   Input: "{[]}"
   Output: true
+  -/
 
 vc-preamble: |-
 
@@ -76,23 +78,23 @@ vc-theorems: |-
     is_valid_parentheses s = false :=
     sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_valid_parentheses "()"
+  -- #guard_msgs in
+  -- #eval is_valid_parentheses "()"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_valid_parentheses "()[]{}"
+  -- #guard_msgs in
+  -- #eval is_valid_parentheses "()[]{}"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_valid_parentheses "(]"
+  -- #guard_msgs in
+  -- #eval is_valid_parentheses "(]"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

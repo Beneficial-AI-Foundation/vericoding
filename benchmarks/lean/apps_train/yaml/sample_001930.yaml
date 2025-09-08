@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Gennady is one of the best child dentists in Berland. Today n children got an appointment with him, they lined up in front of his office.
   
   All children love to cry loudly at the reception at the dentist. We enumerate the children with integers from 1 to n in the order they go in the line. Every child is associated with the value of his cofidence p_{i}. The children take turns one after another to come into the office; each time the child that is the first in the line goes to the doctor.
@@ -52,6 +53,7 @@ vc-description: |-
   In the first example, Gennady first treats the teeth of the first child who will cry with volume 4. The confidences of the remaining children will get equal to  - 2, 1, 3, 1, respectively. Thus, the second child also cries at the volume of 1 and run to the exit. The confidence of the remaining children will be equal to 0, 2, 0. Then the third child will go to the office, and cry with volume 5. The other children won't bear this, and with a loud cry they will run to the exit.
   
   In the second sample, first the first child goes into the office, he will cry with volume 4. The confidence of the remaining children will be equal to 5,  - 1, 6, 8. Thus, the third child will cry with the volume of 1 and run to the exit. The confidence of the remaining children will be equal to 5, 5, 7. After that, the second child goes to the office and cry with the volume of 5. The confidences of the remaining children will be equal to 0, 3. Then the fourth child will go into the office and cry with the volume of 2. Because of this the confidence of the fifth child will be 1, and he will go into the office last.
+  -/
 
 vc-preamble: |-
 

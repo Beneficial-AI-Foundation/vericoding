@@ -1,0 +1,100 @@
+/-
+Given an array of positive integers nums, remove the smallest subarray (possibly empty) such that the sum of the remaining elements is divisible by p. It is not allowed to remove the whole array.
+Return the length of the smallest subarray that you need to remove, or -1 if it's impossible.
+A subarray is defined as a contiguous block of elements in the array.
+
+Example 1:
+Input: nums = [3,1,4,2], p = 6
+Output: 1
+Explanation: The sum of the elements in nums is 10, which is not divisible by 6. We can remove the subarray [4], and the sum of the remaining elements is 6, which is divisible by 6.
+
+Example 2:
+Input: nums = [6,3,5,2], p = 9
+Output: 2
+Explanation: We cannot remove a single element to get a sum divisible by 9. The best way is to remove the subarray [5,2], leaving us with [6,3] with sum 9.
+
+Example 3:
+Input: nums = [1,2,3], p = 3
+Output: 0
+Explanation: Here the sum is 6. which is already divisible by 3. Thus we do not need to remove anything.
+
+Example 4:
+Input: nums = [1,2,3], p = 7
+Output: -1
+Explanation: There is no way to remove a subarray in order to get a sum divisible by 7.
+
+Example 5:
+Input: nums = [1000000000,1000000000,1000000000], p = 3
+Output: 0
+
+Constraints:
+
+1 <= nums.length <= 105
+1 <= nums[i] <= 109
+1 <= p <= 109
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def List.sum [Add α] (l : List α) : α := sorry 
+
+def minSubarray (nums : List Nat) (p : Nat) : Int := sorry
+
+theorem minSubarray_bounds
+  (nums : List Nat)
+  (p : Nat)
+  (h1 : ∀ n ∈ nums, 1 ≤ n ∧ n ≤ 1000)
+  (h2 : 1 ≤ p ∧ p ≤ 1000)
+  : -1 ≤ minSubarray nums p ∧ minSubarray nums p ≤ nums.length := sorry 
+
+theorem minSubarray_neg_one_valid
+  (nums : List Nat)
+  (p : Nat)
+  (h : minSubarray nums p = -1)
+  : ∀ (i j : Nat), i ≤ nums.length → j ≤ nums.length - i →
+    (List.take i nums ++ List.drop (i + j) nums).sum % p ≠ 0 := sorry
+
+theorem minSubarray_zero_valid
+  (nums : List Nat) 
+  (p : Nat)
+  (h : minSubarray nums p = 0)
+  : nums.sum % p = 0 := sorry
+
+theorem minSubarray_positive_valid
+  (nums : List Nat)
+  (p : Nat)
+  (h1 : 0 < minSubarray nums p)
+  (h2 : minSubarray nums p < nums.length)
+  : ∃ (i : Nat), i + (minSubarray nums p).toNat ≤ nums.length ∧ 
+    (List.take i nums ++ List.drop (i + (minSubarray nums p).toNat) nums).sum % p = 0 := sorry
+
+theorem minSubarray_small_values
+  (nums : List Nat)
+  (p : Nat)
+  (h1 : ∀ n ∈ nums, 0 ≤ n ∧ n ≤ 10)
+  (h2 : 1 ≤ p ∧ p ≤ 10)
+  (h3 : minSubarray nums p ≥ 0)
+  : ∃ (i : Nat), i + (minSubarray nums p).toNat ≤ nums.length ∧
+    (List.take i nums ++ List.drop (i + (minSubarray nums p).toNat) nums).sum % p = 0 := sorry
+
+/-
+info: 1
+-/
+-- #guard_msgs in
+-- #eval min_subarray [3, 1, 4, 2] 6
+
+/-
+info: 2
+-/
+-- #guard_msgs in
+-- #eval min_subarray [6, 3, 5, 2] 9
+
+/-
+info: -1
+-/
+-- #guard_msgs in
+-- #eval min_subarray [1, 2, 3] 7
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

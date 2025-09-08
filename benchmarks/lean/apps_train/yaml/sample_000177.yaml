@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A car travels from a starting position to a destination which is target miles east of the starting position.
   Along the way, there are gas stations.  Each station[i] represents a gas station that is station[i][0] miles east of the starting position, and has station[i][1] liters of gas.
   The car starts with an infinite tank of gas, which initially has startFuel liters of fuel in it.  It uses 1 liter of gas per 1 mile that it drives.
@@ -31,6 +32,7 @@ vc-description: |-
   1 <= target, startFuel, stations[i][1] <= 10^9
   0 <= stations.length <= 500
   0 < stations[0][0] < stations[1][0] < ... < stations[stations.length-1][0] < target
+  -/
 
 vc-preamble: |-
   def min_refuel_stops (target : Nat) (start_fuel : Nat) (stations : List (Nat × Nat)) : Int :=
@@ -86,23 +88,23 @@ vc-theorems: |-
   theorem min_refuel_stops_zero_start_fuel (target : Nat) (stations : List (Nat × Nat)) :
     min_refuel_stops target 0 stations = -1 := sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_refuel_stops 1 1 []
+  -- #guard_msgs in
+  -- #eval min_refuel_stops 1 1 []
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval min_refuel_stops 100 1 [[10, 100]]
+  -- #guard_msgs in
+  -- #eval min_refuel_stops 100 1 [[10, 100]]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_refuel_stops 100 10 [[10, 60], [20, 30], [30, 30], [60, 40]]
+  -- #guard_msgs in
+  -- #eval min_refuel_stops 100 10 [[10, 60], [20, 30], [30, 30], [60, 40]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

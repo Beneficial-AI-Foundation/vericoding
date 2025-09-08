@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Tonight, Chef would like to hold a party for his $N$ friends.
   All friends are invited and they arrive at the party one by one in an arbitrary order. However, they have certain conditions — for each valid $i$, when the $i$-th friend arrives at the party and sees that at that point, strictly less than $A_i$ other people (excluding Chef) have joined the party, this friend leaves the party; otherwise, this friend joins the party.
   Help Chef estimate how successful the party can be — find the maximum number of his friends who could join the party (for an optimal choice of the order of arrivals).
@@ -34,6 +35,7 @@ vc-description: |-
   Example case 1: Chef has two friends. Both of them do not require anyone else to be at the party before they join, so they will both definitely join the party.
   Example case 2: At the beginning, friends $3$ and $4$ can arrive and join the party, since they do not require anyone else to be at the party before they join. After that, friend $2$ can arrive; this friend would see that there are two people at the party and therefore also join. Then, friend $1$ will also join, so in the end, there would be $4$ people attending the party.
   Example case 3: No one will attend the party because each of Chef's friends will find zero people at the party and leave, regardless of the order in which they arrive.
+  -/
 
 vc-preamble: |-
 
@@ -51,23 +53,23 @@ vc-theorems: |-
   theorem solve_party_guests_monotonic (n : Nat) (friends : List Nat) (a : Nat) :
     n > 0 → solve_party_guests (n + 1) (friends ++ [a]) ≥ solve_party_guests n friends := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve_party_guests 2 [0, 0]
+  -- #guard_msgs in
+  -- #eval solve_party_guests 2 [0, 0]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval solve_party_guests 6 [3, 1, 0, 0, 5, 5]
+  -- #guard_msgs in
+  -- #eval solve_party_guests 6 [3, 1, 0, 0, 5, 5]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve_party_guests 3 [1, 2, 3]
+  -- #guard_msgs in
+  -- #eval solve_party_guests 3 [1, 2, 3]
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given is a md5 hash of a five digits long PIN. It is given as string.
   Md5 is a function to hash your password:
   "password123" ===> "482c811da5d5b4bc6d497ffa98491e38"
@@ -24,6 +25,7 @@ vc-description: |-
   
   If you liked this kata, here is an extension with short passwords:
   https://www.codewars.com/kata/59146f7b4670ba520900000a
+  -/
 
 vc-preamble: |-
   def isDigit (c : Char) : Bool := sorry
@@ -57,17 +59,17 @@ vc-theorems: |-
      allDigits result = true ∧
      md5hash result = hash) := sorry
   
-  /--
+  /-
   info: '12345'
   -/
-  #guard_msgs in
-  #eval crack "827ccb0eea8a706c4c34a16891f84e7b"
+  -- #guard_msgs in
+  -- #eval crack "827ccb0eea8a706c4c34a16891f84e7b"
   
-  /--
+  /-
   info: '00078'
   -/
-  #guard_msgs in
-  #eval crack "86aa400b65433b608a9db30070ec60cd"
+  -- #guard_msgs in
+  -- #eval crack "86aa400b65433b608a9db30070ec60cd"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

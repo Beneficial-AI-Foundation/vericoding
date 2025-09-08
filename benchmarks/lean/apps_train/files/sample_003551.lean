@@ -1,0 +1,50 @@
+/-
+Calculate the number of items in a vector that appear at the same index in each vector, with the same value. 
+
+```python
+   vector_affinity([1, 2, 3, 4, 5], [1, 2, 2, 4, 3]) # => 0.6
+   vector_affinity([1, 2, 3], [1, 2, 3]) # => 1.0
+```
+
+Affinity value should be realized on a scale of 0.0 to 1.0, with 1.0 being absolutely identical. Two identical sets should always be evaulated as having an affinity or 1.0.
+
+Hint: The last example test case holds a significant clue to calculating the affinity correctly.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def abs (x : Float) : Float := if x < 0 then -x else x
+
+def vector_affinity (xs ys : List Int) : Float := sorry
+
+theorem self_affinity (xs : List Int) :
+  vector_affinity xs xs = 1.0 := sorry
+
+theorem affinity_bounds (xs ys : List Int) : 
+  0 ≤ vector_affinity xs ys ∧ vector_affinity xs ys ≤ 1.0 := sorry
+
+theorem affinity_symmetric (xs ys : List Int) :
+  abs (vector_affinity xs ys - vector_affinity ys xs) < 1e-10 := sorry
+
+theorem empty_lists :
+  vector_affinity [] [] = 1.0 := sorry
+
+theorem empty_with_nonempty (xs : List Int) :
+  (xs = [] → vector_affinity xs xs = 1.0) ∧
+  (xs ≠ [] → vector_affinity xs [] = 0.0 ∧ vector_affinity [] xs = 0.0) := sorry
+
+/-
+info: 1.0
+-/
+-- #guard_msgs in
+-- #eval vector_affinity [1, 2, 3] [1, 2, 3]
+
+/-
+info: 1.0
+-/
+-- #guard_msgs in
+-- #eval vector_affinity [] []
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

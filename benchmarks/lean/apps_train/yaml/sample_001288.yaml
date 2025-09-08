@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Zonal Computing Olympiad 2014, 30 Nov 2013
   
   In ICO School, all students have to participate regularly in SUPW.  There is a different SUPW activity each day, and each activity has its own duration.  The SUPW schedule for the next term has been announced, including information about the number of minutes taken by each activity.
@@ -41,6 +42,7 @@ vc-description: |-
   
   -----Live evaluation data-----
   There are 12 test inputs on the server during the exam.
+  -/
 
 vc-preamble: |-
   def min_supw_time (n : Nat) (days : List Nat) : Nat := sorry
@@ -72,17 +74,17 @@ vc-theorems: |-
     let days' := List.set days i (days[i] + x)
     min_supw_time n days' ≥ min_supw_time n days := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval min_supw_time 10 [3, 2, 1, 1, 2, 3, 1, 3, 2, 1]
+  -- #guard_msgs in
+  -- #eval min_supw_time 10 [3, 2, 1, 1, 2, 3, 1, 3, 2, 1]
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval min_supw_time 8 [3, 2, 3, 2, 3, 5, 1, 3]
+  -- #guard_msgs in
+  -- #eval min_supw_time 8 [3, 2, 3, 2, 3, 5, 1, 3]
 
 vc-postamble: |-
   -- Apps difficulty: interview

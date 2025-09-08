@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   **This Kata is intended as a small challenge for my students**
   
   All Star Code Challenge #19
@@ -36,6 +37,7 @@ vc-description: |-
   1. Generate the permutations in lexicographic order of the original array.
   2. keep only the first occurence of a permutation, when duplicates are found.
   ```
+  -/
 
 vc-preamble: |-
   def List.factorial : Nat → Nat
@@ -73,23 +75,23 @@ vc-theorems: |-
     ∀ s₁ s₂, s₁ ∈ slogan_maker words → s₂ ∈ slogan_maker words →
     s₁ = s₂ ∨ s₁ ≠ s₂ := sorry
   
-  /--
+  /-
   info: ['super']
   -/
-  #guard_msgs in
-  #eval slogan_maker ["super"]
+  -- #guard_msgs in
+  -- #eval slogan_maker ["super"]
   
-  /--
+  /-
   info: set(['super hot', 'hot super'])
   -/
-  #guard_msgs in
-  #eval set slogan_maker(["super", "hot"])
+  -- #guard_msgs in
+  -- #eval set slogan_maker(["super", "hot"])
   
-  /--
+  /-
   info: set(['super hot guacamole', 'super guacamole hot', 'hot super guacamole', 'hot guacamole super', 'guacamole super hot', 'guacamole hot super'])
   -/
-  #guard_msgs in
-  #eval set slogan_maker(["super", "hot", "guacamole"])
+  -- #guard_msgs in
+  -- #eval set slogan_maker(["super", "hot", "guacamole"])
 
 vc-postamble: |-
   -- Apps difficulty: introductory

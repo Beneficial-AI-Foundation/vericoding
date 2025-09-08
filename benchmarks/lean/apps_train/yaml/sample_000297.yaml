@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Some people will make friend requests. The list of their ages is given and ages[i] is the age of the ith person. 
   Person A will NOT friend request person B (B != A) if any of the following conditions are true:
   
@@ -27,6 +28,7 @@ vc-description: |-
   
   1 <= ages.length <= 20000.
   1 <= ages[i] <= 120.
+  -/
 
 vc-preamble: |-
 
@@ -74,23 +76,23 @@ vc-theorems: |-
     numFriendRequests ages = numFriendRequests ages.reverse :=
   sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval numFriendRequests [16, 16]
+  -- #guard_msgs in
+  -- #eval numFriendRequests [16, 16]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval numFriendRequests [16, 17, 18]
+  -- #guard_msgs in
+  -- #eval numFriendRequests [16, 17, 18]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval numFriendRequests [20, 30, 100, 110, 120]
+  -- #guard_msgs in
+  -- #eval numFriendRequests [20, 30, 100, 110, 120]
 
 vc-postamble: |-
   -- Apps difficulty: interview

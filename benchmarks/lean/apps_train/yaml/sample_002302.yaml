@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array of integers arr, and three integers a, b and c. You need to find the number of good triplets.
   A triplet (arr[i], arr[j], arr[k]) is good if the following conditions are true:
   
@@ -25,6 +26,7 @@ vc-description: |-
   3 <= arr.length <= 100
   0 <= arr[i] <= 1000
   0 <= a, b, c <= 1000
+  -/
 
 vc-preamble: |-
   def isValidTriplet (arr : List Int) (i j k a b c : Nat) : Bool :=
@@ -58,23 +60,23 @@ vc-theorems: |-
       0 ≤ countGoodTriplets arr a b c :=
     sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval count_good_triplets [3, 0, 1, 1, 9, 7] 7 2 3
+  -- #guard_msgs in
+  -- #eval count_good_triplets [3, 0, 1, 1, 9, 7] 7 2 3
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_good_triplets [1, 1, 2, 2, 3] 0 0 1
+  -- #guard_msgs in
+  -- #eval count_good_triplets [1, 1, 2, 2, 3] 0 0 1
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_good_triplets [1, 2, 3, 4, 5] 1 1 1
+  -- #guard_msgs in
+  -- #eval count_good_triplets [1, 2, 3, 4, 5] 1 1 1
 
 vc-postamble: |-
   -- Apps difficulty: introductory

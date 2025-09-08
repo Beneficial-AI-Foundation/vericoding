@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   What adds up
   ===========
   
@@ -25,6 +26,7 @@ vc-description: |-
   
   ### Greater goal
   For extra honor try and make it as effective as possible. Discuss whats the most effective way of doing this. The fastest way i can do this is in *O(n^2)*. Can you do it quicker?
+  -/
 
 vc-preamble: |-
   def addsup (a1 a2 a3 : List Int) : List (Int × Int × Int) :=

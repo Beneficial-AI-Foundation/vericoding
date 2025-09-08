@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Heidi is a statistician to the core, and she likes to study the evolution of marmot populations in each of V (1 ≤ V ≤ 100) villages! So it comes that every spring, when Heidi sees the first snowdrops sprout in the meadows around her barn, she impatiently dons her snowshoes and sets out to the Alps, to welcome her friends the marmots to a new season of thrilling adventures.
   
   Arriving in a village, Heidi asks each and every marmot she comes across for the number of inhabitants of that village. This year, the marmots decide to play an April Fools' joke on Heidi. Instead of consistently providing the exact number of inhabitants P (10 ≤ P ≤ 1000) of the village, they respond with a random non-negative integer k, drawn from one of two types of probability distributions:
@@ -31,6 +32,7 @@ vc-description: |-
   The full example input is visually represented below, along with the probability distribution function it was drawn from (the y-axis is labeled by its values multiplied by 250).
   
   [Image]
+  -/
 
 vc-preamble: |-
 
@@ -62,23 +64,23 @@ vc-theorems: |-
     classify_distributions villages ≠ [] :=
   sorry
   
-  /--
+  /-
   info: ['poisson']
   -/
-  #guard_msgs in
-  #eval classify_distributions [[92, 100, 99, 109, 93, 105, 103, 106, 101, 99] * 25]
+  -- #guard_msgs in
+  -- #eval classify_distributions [[92, 100, 99, 109, 93, 105, 103, 106, 101, 99] * 25]
   
-  /--
+  /-
   info: ['uniform']
   -/
-  #guard_msgs in
-  #eval classify_distributions [[28, 180, 147, 53, 84, 80, 180, 85, 8, 16] * 25]
+  -- #guard_msgs in
+  -- #eval classify_distributions [[28, 180, 147, 53, 84, 80, 180, 85, 8, 16] * 25]
   
-  /--
+  /-
   info: ['poisson', 'uniform']
   -/
-  #guard_msgs in
-  #eval classify_distributions [[92, 100, 99, 109, 93, 105, 103, 106, 101, 99] * 25, [28, 180, 147, 53, 84, 80, 180, 85, 8, 16] * 25]
+  -- #guard_msgs in
+  -- #eval classify_distributions [[92, 100, 99, 109, 93, 105, 103, 106, 101, 99] * 25, [28, 180, 147, 53, 84, 80, 180, 85, 8, 16] * 25]
 
 vc-postamble: |-
   -- Apps difficulty: interview

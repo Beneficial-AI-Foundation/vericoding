@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You have an array A of size N containing only positive numbers. You have to output the maximum possible value of A[i]%A[j] where 1<=i,j<=N. 
   
   -----Input-----
@@ -26,6 +27,7 @@ vc-description: |-
   
   -----Explanation-----
   There will be four values, A[0]%A[0] = 0, A[0]%A[1]=1, A[1]%A[0]=0, A[1]%A[1]=0, and hence the output will be the maximum among them all, that is 1.
+  -/
 
 vc-preamble: |-
 
@@ -66,23 +68,23 @@ vc-theorems: |-
   theorem find_max_modulo_zero_error (arr : List Nat) :
     arr = [0] → find_max_modulo arr = 0 := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval find_max_modulo [1, 2]
+  -- #guard_msgs in
+  -- #eval find_max_modulo [1, 2]
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval find_max_modulo [5, 2, 7, 3]
+  -- #guard_msgs in
+  -- #eval find_max_modulo [5, 2, 7, 3]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval find_max_modulo [100]
+  -- #guard_msgs in
+  -- #eval find_max_modulo [100]
 
 vc-postamble: |-
   -- Apps difficulty: interview

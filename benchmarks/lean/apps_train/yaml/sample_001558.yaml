@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this kata we want to convert a string into an integer. The strings simply represent the numbers in words.
   
   Examples:
@@ -14,6 +15,7 @@ vc-description: |-
   * The maximum number, which must be supported is 1 million (inclusively)
   * The "and" in e.g. "one hundred and twenty-four" is optional, in some cases it's present and in others it's not
   * All tested numbers are valid, you don't need to validate them
+  -/
 
 vc-preamble: |-
   def parse_int (s : String) : Nat :=
@@ -41,23 +43,23 @@ vc-theorems: |-
     parse_int "one hundred twenty three" = 123 :=
   sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval parse_int "zero"
+  -- #guard_msgs in
+  -- #eval parse_int "zero"
   
-  /--
+  /-
   info: 123
   -/
-  #guard_msgs in
-  #eval parse_int "one hundred twenty-three"
+  -- #guard_msgs in
+  -- #eval parse_int "one hundred twenty-three"
   
-  /--
+  /-
   info: 200003
   -/
-  #guard_msgs in
-  #eval parse_int "two hundred thousand three"
+  -- #guard_msgs in
+  -- #eval parse_int "two hundred thousand three"
 
 vc-postamble: |-
   -- Apps difficulty: interview

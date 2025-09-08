@@ -1,0 +1,62 @@
+/-
+This function should take two string parameters: a person's name (`name`) and a quote of theirs (`quote`), and return a string attributing the quote to the person in the following format:
+
+```python
+'[name] said: "[quote]"'
+```
+
+For example, if `name` is `'Grae'` and `'quote'` is `'Practice makes perfect'` then your function should return the string
+```python
+'Grae said: "Practice makes perfect"'
+```
+Unfortunately, something is wrong with the instructions in the function body. Your job is to fix it so the function returns correctly formatted quotes.
+
+Click the "Train" button to get started, and be careful with your quotation marks.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def quotable (name : String) (quote : String) : String := sorry
+
+/- Property: Output contains both inputs and format is consistent -/
+
+theorem quotable_format (name quote : String)
+  (h1 : ¬ String.contains name '"')
+  (h2 : ¬ String.contains quote '"') :
+  (quotable name quote).startsWith name ∧ 
+  (quotable name quote).endsWith ('"'.toString ++ quote ++ '"'.toString) ∧
+  String.contains (quotable name quote) ' ' := sorry
+
+/- Property: Quotes appear in correct places only -/
+
+theorem quotable_quotes_placement (name quote : String)
+  (h1 : ¬ String.contains name '"')
+  (h2 : ¬ String.contains quote '"') :
+  ((quotable name quote).data.filter (· = '"')).length = 2 := sorry
+
+/- Property: Function is deterministic -/
+
+theorem quotable_deterministic (name quote : String) :
+  quotable name quote = quotable name quote := sorry
+
+/-
+info: 'Grae said: "Practice makes perfect"'
+-/
+-- #guard_msgs in
+-- #eval quotable "Grae" "Practice makes perfect"
+
+/-
+info: 'Alex said: "Python is great fun"'
+-/
+-- #guard_msgs in
+-- #eval quotable "Alex" "Python is great fun"
+
+/-
+info: 'Bethany said: "Yes, way more fun than R"'
+-/
+-- #guard_msgs in
+-- #eval quotable "Bethany" "Yes, way more fun than R"
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

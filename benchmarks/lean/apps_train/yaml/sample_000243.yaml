@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array of integers arr and an integer target.
   You have to find two non-overlapping sub-arrays of arr each with sum equal target. There can be multiple answers so you have to find an answer where the sum of the lengths of the two sub-arrays is minimum.
   Return the minimum sum of the lengths of the two required sub-arrays, or return -1 if you cannot find such two sub-arrays.
@@ -33,6 +34,7 @@ vc-description: |-
   1 <= arr.length <= 10^5
   1 <= arr[i] <= 1000
   1 <= target <= 10^8
+  -/
 
 vc-preamble: |-
   def minSumOfLengths (arr : List Int) (target : Int) : Int :=
@@ -80,23 +82,23 @@ vc-theorems: |-
       sumOfSubarray arr k l = target :=
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_sum_of_lengths [3, 2, 2, 4, 3] 3
+  -- #guard_msgs in
+  -- #eval min_sum_of_lengths [3, 2, 2, 4, 3] 3
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_sum_of_lengths [7, 3, 4, 7] 7
+  -- #guard_msgs in
+  -- #eval min_sum_of_lengths [7, 3, 4, 7] 7
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval min_sum_of_lengths [4, 3, 2, 6, 2, 3, 4] 6
+  -- #guard_msgs in
+  -- #eval min_sum_of_lengths [4, 3, 2, 6, 2, 3, 4] 6
 
 vc-postamble: |-
   -- Apps difficulty: interview

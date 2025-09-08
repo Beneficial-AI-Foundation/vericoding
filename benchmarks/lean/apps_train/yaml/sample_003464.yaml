@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Grains
   
   Write a program that calculates the number of grains of wheat on a chessboard given that the number on each square is double the previous one.
@@ -13,6 +14,7 @@ vc-description: |-
   etc...
   
   Write a program that shows how many grains were on each square
+  -/
 
 vc-preamble: |-
 
@@ -33,23 +35,23 @@ vc-theorems: |-
     ¬∃ (result : Int), square n = result :=
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval square 1
+  -- #guard_msgs in
+  -- #eval square 1
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval square 3
+  -- #guard_msgs in
+  -- #eval square 3
   
-  /--
+  /-
   info: 32768
   -/
-  #guard_msgs in
-  #eval square 16
+  -- #guard_msgs in
+  -- #eval square 16
 
 vc-postamble: |-
   -- Apps difficulty: introductory

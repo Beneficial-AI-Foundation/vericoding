@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef has a calculator which has two screens and two buttons. Initially, each screen shows the number zero. Pressing the first button increments the number on the first screen by 1, and each click of the first button consumes 1 unit of energy.
   Pressing the second button increases the number on the second screen by the number which is currently appearing on the first screen. Each click of the second button consumes B units of energy.
   Initially the calculator has N units of energy.
@@ -41,6 +42,7 @@ vc-description: |-
   - Press second button to get scores (4, 4). 4 units of energy remaining.
   - Press second button to get scores (4, 8). 2 units of energy remaining.
   - Press second button to get scores (4, 12). 0 units of energy remaining.
+  -/
 
 vc-preamble: |-
 
@@ -65,23 +67,23 @@ vc-theorems: |-
     energy_left ≥ 0 :=
     sorry
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval calc_max_second_screen 10 2
+  -- #guard_msgs in
+  -- #eval calc_max_second_screen 10 2
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval calc_max_second_screen 8 5
+  -- #guard_msgs in
+  -- #eval calc_max_second_screen 8 5
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval calc_max_second_screen 6 1
+  -- #guard_msgs in
+  -- #eval calc_max_second_screen 6 1
 
 vc-postamble: |-
   -- Apps difficulty: interview

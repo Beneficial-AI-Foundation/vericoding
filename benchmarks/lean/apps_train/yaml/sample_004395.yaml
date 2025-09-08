@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   It's a Pokemon battle! Your task is to calculate the damage that a particular move would do using the following formula (not the actual one from the game):
   
   Where:
@@ -33,6 +34,7 @@ vc-description: |-
   2. the opponent's type
   3. your attack power
   4. the opponent's defense
+  -/
 
 vc-preamble: |-
 
@@ -62,23 +64,23 @@ vc-theorems: |-
     calculate_damage your_type opponent_type attack2 defense :=
   sorry
   
-  /--
+  /-
   info: 25
   -/
-  #guard_msgs in
-  #eval calculate_damage "fire" "water" 100 100
+  -- #guard_msgs in
+  -- #eval calculate_damage "fire" "water" 100 100
   
-  /--
+  /-
   info: 100
   -/
-  #guard_msgs in
-  #eval calculate_damage "grass" "water" 100 100
+  -- #guard_msgs in
+  -- #eval calculate_damage "grass" "water" 100 100
   
-  /--
+  /-
   info: 50
   -/
-  #guard_msgs in
-  #eval calculate_damage "electric" "fire" 100 100
+  -- #guard_msgs in
+  -- #eval calculate_damage "electric" "fire" 100 100
 
 vc-postamble: |-
   -- Apps difficulty: introductory

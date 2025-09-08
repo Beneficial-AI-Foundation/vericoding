@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are N piles of stones arranged in a row.  The i-th pile has stones[i] stones.
   A move consists of merging exactly K consecutive piles into one pile, and the cost of this move is equal to the total number of stones in these K piles.
   Find the minimum cost to merge all piles of stones into one pile.  If it is impossible, return -1.
@@ -32,6 +33,7 @@ vc-description: |-
   1 <= stones.length <= 30
   2 <= K <= 30
   1 <= stones[i] <= 100
+  -/
 
 vc-preamble: |-
   def List.sum (xs : List Nat) : Nat :=
@@ -71,23 +73,23 @@ vc-theorems: |-
     merge_stones [1,1] 2 = 2 :=
     sorry
   
-  /--
+  /-
   info: 20
   -/
-  #guard_msgs in
-  #eval merge_stones [3, 2, 4, 1] 2
+  -- #guard_msgs in
+  -- #eval merge_stones [3, 2, 4, 1] 2
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval merge_stones [3, 2, 4, 1] 3
+  -- #guard_msgs in
+  -- #eval merge_stones [3, 2, 4, 1] 3
   
-  /--
+  /-
   info: 25
   -/
-  #guard_msgs in
-  #eval merge_stones [3, 5, 1, 2, 6] 3
+  -- #guard_msgs in
+  -- #eval merge_stones [3, 5, 1, 2, 6] 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

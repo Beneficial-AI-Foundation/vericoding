@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are N hills in a row numbered 1 through N from left to right. Each hill has a height; for each valid i, the height of the i-th hill is Hi. Chef is initially on the leftmost hill (hill number 1). He can make an arbitrary number of jumps (including zero) as long as the following conditions are satisfied:
   
   - Chef can only jump from each hill to the next hill, i.e. from the i-th hill, he can jump to the i+1-th hill (if it exists).
@@ -48,6 +49,7 @@ vc-description: |-
   because it's lower than second hill by 3 which is more than D=2, Chef can't jump to fourth hill because it's higher than third hill by 4 which is more than U=3
   Example case 2: All hills are of the same height, so chef can reach the last hill with no problems.
   Example case 3: Chef can't jump to second hill because it's too high for him
+  -/
 
 vc-preamble: |-
 
@@ -82,23 +84,23 @@ vc-theorems: |-
     findRightmostHill n u d [n] = 1 :=
   sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_rightmost_hill 5 3 2 [2, 5, 2, 6, 3]
+  -- #guard_msgs in
+  -- #eval find_rightmost_hill 5 3 2 [2, 5, 2, 6, 3]
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval find_rightmost_hill 5 2 3 [4, 4, 4, 4, 4]
+  -- #guard_msgs in
+  -- #eval find_rightmost_hill 5 2 3 [4, 4, 4, 4, 4]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval find_rightmost_hill 5 2 7 [1, 4, 3, 2, 1]
+  -- #guard_msgs in
+  -- #eval find_rightmost_hill 5 2 7 [1, 4, 3, 2, 1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

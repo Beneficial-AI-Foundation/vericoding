@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The MEX of a set of integers is defined as the smallest non-negative integer that does not belong to this set. For example, $\mathrm{MEX}(\{0,2,3\}) = 1$ and $\mathrm{MEX}(\{1,3\}) = 0$.
   Chef has a tree with $N$ nodes (numbered $1$ through $N$). The tree is rooted at node $1$. Chef wants to assign a non-negative integer to each node in such a way that each integer between $0$ and $N-1$ (inclusive) is assigned to exactly one node.
   For each node $u$, consider the integers assigned to the nodes in the subtree of $u$ (including $u$); let $a_u$ denote the MEX of these integers. Chef wants $a_1 + a_2 + \ldots + a_N$ to be as large as possible. Find the maximum possible value of this sum.
@@ -29,6 +30,7 @@ vc-description: |-
   -----Example Output-----
   4
   9
+  -/
 
 vc-preamble: |-
   def solve_tree_mex (n : Nat) (parents : List Nat) : Nat := 
@@ -62,17 +64,17 @@ vc-theorems: |-
     solve_tree_mex n (List.map (fun i => i) (List.range (n-1))) = n * (n+1) / 2 :=
     sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval solve_tree_mex 3 [1, 1]
+  -- #guard_msgs in
+  -- #eval solve_tree_mex 3 [1, 1]
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval solve_tree_mex 5 [1, 1, 2, 2]
+  -- #guard_msgs in
+  -- #eval solve_tree_mex 5 [1, 1, 2, 2]
 
 vc-postamble: |-
   -- Apps difficulty: interview

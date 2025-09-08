@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Oleg the client and Igor the analyst are good friends. However, sometimes they argue over little things. Recently, they started a new company, but they are having trouble finding a name for the company.
   
   To settle this problem, they've decided to play a game. The company name will consist of n letters. Oleg and Igor each have a set of n letters (which might contain multiple copies of the same letter, the sets can be different). Initially, the company name is denoted by n question marks. Oleg and Igor takes turns to play the game, Oleg moves first. In each turn, a player can choose one of the letters c in his set and replace any of the question marks with c. Then, a copy of the letter c is removed from his set. The game ends when all the question marks has been replaced by some letter.
@@ -56,6 +57,7 @@ vc-description: |-
   One way to play optimally in the first sample is as follows : Initially, the company name is ???????. Oleg replaces the first question mark with 'f'. The company name becomes f??????. Igor replaces the second question mark with 'z'. The company name becomes fz?????. Oleg replaces the third question mark with 'f'. The company name becomes fzf????. Igor replaces the fourth question mark with 's'. The company name becomes fzfs???. Oleg replaces the fifth question mark with 'i'. The company name becomes fzfsi??. Igor replaces the sixth question mark with 'r'. The company name becomes fzfsir?. Oleg replaces the seventh question mark with 'k'. The company name becomes fzfsirk.
   
   For the second sample, no matter how they play, the company name will always be xxxxxx.
+  -/
 
 vc-preamble: |-
 
@@ -93,23 +95,23 @@ vc-theorems: |-
     let igor_result := (result.data.filter (· ∈ igor.data)).length
     oleg_result ≥ oleg_turns ∧ igor_result ≥ igor_turns := sorry
   
-  /--
+  /-
   info: 'fzfsirk'
   -/
-  #guard_msgs in
-  #eval find_company_name "tinkoff" "zscoder"
+  -- #guard_msgs in
+  -- #eval find_company_name "tinkoff" "zscoder"
   
-  /--
+  /-
   info: 'xxxxxx'
   -/
-  #guard_msgs in
-  #eval find_company_name "xxxxxx" "xxxxxx"
+  -- #guard_msgs in
+  -- #eval find_company_name "xxxxxx" "xxxxxx"
   
-  /--
+  /-
   info: 'ioi'
   -/
-  #guard_msgs in
-  #eval find_company_name "ioi" "imo"
+  -- #guard_msgs in
+  -- #eval find_company_name "ioi" "imo"
 
 vc-postamble: |-
   -- Apps difficulty: competition

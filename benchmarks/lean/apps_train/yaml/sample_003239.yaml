@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Check Digits
   
   Some numbers are more important to get right during data entry than others: a common example is product codes.
@@ -43,6 +44,7 @@ vc-description: |-
   
   output: "0365327"
   ```
+  -/
 
 vc-preamble: |-
   def add_check_digit (num : String) : String := sorry
@@ -91,23 +93,23 @@ vc-theorems: |-
      (remainder = 1 → result.back = 'X') ∧
      (remainder > 1 → result.back = (Char.ofNat ('0'.toNat + (11 - remainder))))) := sorry
   
-  /--
+  /-
   info: '0365327'
   -/
-  #guard_msgs in
-  #eval add_check_digit "036532"
+  -- #guard_msgs in
+  -- #eval add_check_digit "036532"
   
-  /--
+  /-
   info: '123888782'
   -/
-  #guard_msgs in
-  #eval add_check_digit "12388878"
+  -- #guard_msgs in
+  -- #eval add_check_digit "12388878"
   
-  /--
+  /-
   info: '6789X'
   -/
-  #guard_msgs in
-  #eval add_check_digit "6789"
+  -- #guard_msgs in
+  -- #eval add_check_digit "6789"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

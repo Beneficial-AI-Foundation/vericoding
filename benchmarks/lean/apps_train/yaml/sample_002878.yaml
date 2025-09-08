@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a board of `NxN`, distributed with tiles labeled `0` to `N² - 1`(inclusive):
   
   A solved grid will have the tiles in order of label, left to right, top to bottom.
@@ -18,6 +19,7 @@ vc-description: |-
   [ [2, 1],
     [0, 3] ]
   ```
+  -/
 
 vc-preamble: |-
   def isSolved (board : List (List Nat)) : Bool :=
@@ -59,23 +61,23 @@ vc-theorems: |-
     ¬(isSolved swapped_board) :=
     sorry
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_solved [[1, 0], [3, 2]]
+  -- #guard_msgs in
+  -- #eval is_solved [[1, 0], [3, 2]]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_solved [[1, 0, 4], [3, 2, 7], [8, 5, 6]]
+  -- #guard_msgs in
+  -- #eval is_solved [[1, 0, 4], [3, 2, 7], [8, 5, 6]]
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_solved [[0, 1], [2, 3]]
+  -- #guard_msgs in
+  -- #eval is_solved [[0, 1], [2, 3]]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

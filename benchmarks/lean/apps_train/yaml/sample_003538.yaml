@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Pythagorean Triples
   
   A Pythagorean triplet is a set of three numbers a, b, and c where `a^2 + b^2 = c^2`. In this Kata, you will be tasked with finding the Pythagorean triplets whose product is equal to `n`, the given argument to the function `pythagorean_triplet`.
@@ -18,6 +19,7 @@ vc-description: |-
   | 60       | [3, 4, 5] |
   | 780      | [5, 12, 13] |
   | 2040     | [8, 15, 17] |
+  -/
 
 vc-preamble: |-
 
@@ -51,23 +53,23 @@ vc-theorems: |-
       pythagoreanTriplet 60 = some (3, 4, 5) :=
     sorry
   
-  /--
+  /-
   info: [3, 4, 5]
   -/
-  #guard_msgs in
-  #eval pythagorean_triplet 60
+  -- #guard_msgs in
+  -- #eval pythagorean_triplet 60
   
-  /--
+  /-
   info: [5, 12, 13]
   -/
-  #guard_msgs in
-  #eval pythagorean_triplet 780
+  -- #guard_msgs in
+  -- #eval pythagorean_triplet 780
   
-  /--
+  /-
   info: [8, 15, 17]
   -/
-  #guard_msgs in
-  #eval pythagorean_triplet 2040
+  -- #guard_msgs in
+  -- #eval pythagorean_triplet 2040
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   This kata is about singly 
   linked list.  A linked list is an ordered set of data elements, each containing a link to its successor (and sometimes its predecessor, known as a double linked list).  You are you to implement an algorithm to find the kth to last element.
   
@@ -13,6 +14,7 @@ vc-description: |-
   
   Special Note --> Node classes contain two fields; data and next.
   And to access the head of the list, use head. e.g. linked_list.head
+  -/
 
 vc-preamble: |-
 
@@ -46,53 +48,53 @@ vc-theorems: |-
     search_k_from_end (@LinkedList.mk α [x]) 2 = none :=
     sorry
   
-  /--
+  /-
   info: 'd'
   -/
-  #guard_msgs in
-  #eval search_k_from_end LinkedList() 1
+  -- #guard_msgs in
+  -- #eval search_k_from_end LinkedList() 1
   
-  /--
+  /-
   info: 'c'
   -/
-  #guard_msgs in
-  #eval search_k_from_end ll 2
+  -- #guard_msgs in
+  -- #eval search_k_from_end ll 2
   
-  /--
+  /-
   info: 'b'
   -/
-  #guard_msgs in
-  #eval search_k_from_end ll 3
+  -- #guard_msgs in
+  -- #eval search_k_from_end ll 3
   
-  /--
+  /-
   info: 'a'
   -/
-  #guard_msgs in
-  #eval search_k_from_end ll 4
+  -- #guard_msgs in
+  -- #eval search_k_from_end ll 4
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval search_k_from_end ll 5
+  -- #guard_msgs in
+  -- #eval search_k_from_end ll 5
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval search_k_from_end LinkedList() 1
+  -- #guard_msgs in
+  -- #eval search_k_from_end LinkedList() 1
   
-  /--
+  /-
   info: 'x'
   -/
-  #guard_msgs in
-  #eval search_k_from_end LinkedList() 1
+  -- #guard_msgs in
+  -- #eval search_k_from_end LinkedList() 1
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval search_k_from_end ll3 2
+  -- #guard_msgs in
+  -- #eval search_k_from_end ll3 2
 
 vc-postamble: |-
   -- Apps difficulty: introductory

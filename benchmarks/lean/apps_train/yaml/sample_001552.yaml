@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    You are given integer `n` determining set S = {1, 2, ..., n}. Determine if the number of k-element subsets of S is `ODD` or `EVEN` for given integer k.
   
@@ -31,6 +32,7 @@ vc-description: |-
    - `[output]` a string
   
       `"EVEN"` or `"ODD"` depending if the number of k-element subsets of S = {1, 2, ..., n} is ODD or EVEN.
+  -/
 
 vc-preamble: |-
 
@@ -57,23 +59,23 @@ vc-theorems: |-
   theorem valid_subset_result (n k : Nat) (h1 : n > 0) (h2 : k ≤ n) :
     subsets_parity n k = "ODD" ∨ subsets_parity n k = "EVEN" := sorry
   
-  /--
+  /-
   info: 'ODD'
   -/
-  #guard_msgs in
-  #eval subsets_parity 3 2
+  -- #guard_msgs in
+  -- #eval subsets_parity 3 2
   
-  /--
+  /-
   info: 'EVEN'
   -/
-  #guard_msgs in
-  #eval subsets_parity 2 1
+  -- #guard_msgs in
+  -- #eval subsets_parity 2 1
   
-  /--
+  /-
   info: 'EVEN'
   -/
-  #guard_msgs in
-  #eval subsets_parity 20 10
+  -- #guard_msgs in
+  -- #eval subsets_parity 20 10
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given an array of N integers a1, a2, ..., aN and an integer K. Find the number of such unordered pairs {i, j} that 
   
   - i ≠ j
@@ -34,6 +35,7 @@ vc-description: |-
   
   -----Explanation:-----
   The minimal possible absolute difference of 1 can be obtained by taking the pairs of a1 and a2, a1 and a4, a2 and a4, a3 and a4.
+  -/
 
 vc-preamble: |-
   def solve_min_pairs (n : Nat) (k : Int) (arr : List Int) : Int × Nat :=
@@ -80,23 +82,23 @@ vc-theorems: |-
     solve_min_pairs n k arr1 = solve_min_pairs n k arr2 := by
     sorry
   
-  /--
+  /-
   info: (1, 4)
   -/
-  #guard_msgs in
-  #eval solve_min_pairs 4 9 [4, 4, 2, 6]
+  -- #guard_msgs in
+  -- #eval solve_min_pairs 4 9 [4, 4, 2, 6]
   
-  /--
+  /-
   info: (2, 1)
   -/
-  #guard_msgs in
-  #eval solve_min_pairs 2 10 [3, 5]
+  -- #guard_msgs in
+  -- #eval solve_min_pairs 2 10 [3, 5]
   
-  /--
+  /-
   info: (4, 3)
   -/
-  #guard_msgs in
-  #eval solve_min_pairs 3 12 [4, 4, 4]
+  -- #guard_msgs in
+  -- #eval solve_min_pairs 3 12 [4, 4, 4]
 
 vc-postamble: |-
   -- Apps difficulty: interview

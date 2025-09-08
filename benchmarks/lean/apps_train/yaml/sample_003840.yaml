@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ```if-not:rust
   Your task is to write a function `toLeetSpeak` that converts a regular english sentence to Leetspeak.
   ```
@@ -55,6 +56,7 @@ vc-description: |-
     Z : '2'
   }
   ```
+  -/
 
 vc-preamble: |-
 
@@ -92,23 +94,23 @@ vc-theorems: |-
     toLeetSpeak "S" = "$" ∧
     toLeetSpeak "T" = "7" := sorry
   
-  /--
+  /-
   info: '1337'
   -/
-  #guard_msgs in
-  #eval to_leet_speak "LEET"
+  -- #guard_msgs in
+  -- #eval to_leet_speak "LEET"
   
-  /--
+  /-
   info: '(0D3W@R$'
   -/
-  #guard_msgs in
-  #eval to_leet_speak "CODEWARS"
+  -- #guard_msgs in
+  -- #eval to_leet_speak "CODEWARS"
   
-  /--
+  /-
   info: '#3110 W0R1D'
   -/
-  #guard_msgs in
-  #eval to_leet_speak "HELLO WORLD"
+  -- #guard_msgs in
+  -- #eval to_leet_speak "HELLO WORLD"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Sandu, a teacher in Chefland introduced his students to a new sequence i.e.
   0,1,0,1,2,0,1,2,3,0,1,2,3,4........
   The Sequence starts from 0 and increases by one till $i$(initially i equals to 1), then repeat itself with $i$ changed to $i+1$
@@ -29,6 +30,7 @@ vc-description: |-
   5
   4
   4
+  -/
 
 vc-preamble: |-
 
@@ -45,23 +47,23 @@ vc-theorems: |-
   theorem output_less_than_input {n : Nat} (h : n > 0) : 
     find_nth_sequence_element n < n := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_nth_sequence_element 8
+  -- #guard_msgs in
+  -- #eval find_nth_sequence_element 8
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_nth_sequence_element 9
+  -- #guard_msgs in
+  -- #eval find_nth_sequence_element 9
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval find_nth_sequence_element 20
+  -- #guard_msgs in
+  -- #eval find_nth_sequence_element 20
 
 vc-postamble: |-
   -- Apps difficulty: interview

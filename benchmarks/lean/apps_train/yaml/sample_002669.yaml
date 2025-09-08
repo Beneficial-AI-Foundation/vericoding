@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    Imagine a standard chess board with only two white and two black knights placed in their standard starting positions: the white knights on b1 and g1; the black knights on b8 and g8.
   
@@ -21,6 +22,7 @@ vc-description: |-
    - `[output]` a boolean value
   
       `true` if white is to move, `false` otherwise.
+  -/
 
 vc-preamble: |-
 
@@ -45,23 +47,23 @@ vc-theorems: |-
     let ascii_sum := (pos_str.replace ";" "").data.foldl (fun acc c => acc + c.toNat) 0
     whose_turn pos_str = (ascii_sum % 2 = 0) := by sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval whose_turn "b1;g1;b8;g8"
+  -- #guard_msgs in
+  -- #eval whose_turn "b1;g1;b8;g8"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval whose_turn "c3;g1;b8;g8"
+  -- #guard_msgs in
+  -- #eval whose_turn "c3;g1;b8;g8"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval whose_turn "f8;h1;f3;c2"
+  -- #guard_msgs in
+  -- #eval whose_turn "f8;h1;f3;c2"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

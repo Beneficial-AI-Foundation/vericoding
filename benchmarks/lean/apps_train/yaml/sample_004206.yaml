@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   For this problem you must create a program that says who ate the last cookie. If the input is a string then "Zach" ate the cookie. If the input is a float or an int then "Monica" ate the cookie. If the input is anything else "the dog" ate the cookie. The way to return the statement is:
   "Who ate the last cookie? It was (name)!"
   
@@ -9,6 +10,7 @@ vc-description: |-
   
   Please leave feedback for this kata.
   Cheers!
+  -/
 
 vc-preamble: |-
 
@@ -33,23 +35,23 @@ vc-theorems: |-
     (h1 : α ≠ String) (h2 : α ≠ Float) (h3 : α ≠ Int) :
     cookie x = "Who ate the last cookie? It was the dog!" := sorry
   
-  /--
+  /-
   info: 'Who ate the last cookie? It was Zach!'
   -/
-  #guard_msgs in
-  #eval cookie "Ryan"
+  -- #guard_msgs in
+  -- #eval cookie "Ryan"
   
-  /--
+  /-
   info: 'Who ate the last cookie? It was Monica!'
   -/
-  #guard_msgs in
-  #eval cookie 2.3
+  -- #guard_msgs in
+  -- #eval cookie 2.3
   
-  /--
+  /-
   info: 'Who ate the last cookie? It was Monica!'
   -/
-  #guard_msgs in
-  #eval cookie 26
+  -- #guard_msgs in
+  -- #eval cookie 26
 
 vc-postamble: |-
   -- Apps difficulty: introductory

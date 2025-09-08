@@ -1,9 +1,11 @@
 vc-description: |-
+  /-
   You will be given a vector of strings. You must sort it alphabetically (case-sensitive, and based on the ASCII values of the chars) and then return the first value.
   
   The returned value must be a string, and have `"***"` between each of its letters.
   
   You should not remove or add elements from/to the array.
+  -/
 
 vc-preamble: |-
   def two_sort (strings : List String) : String := sorry
@@ -32,23 +34,23 @@ vc-theorems: |-
     (String.join parts) = minimum strings :=
     sorry
   
-  /--
+  /-
   info: 'b***i***t***c***o***i***n'
   -/
-  #guard_msgs in
-  #eval two_sort ["bitcoin", "take", "over", "the", "world", "maybe", "who", "knows", "perhaps"]
+  -- #guard_msgs in
+  -- #eval two_sort ["bitcoin", "take", "over", "the", "world", "maybe", "who", "knows", "perhaps"]
   
-  /--
+  /-
   info: 'a***r***e'
   -/
-  #guard_msgs in
-  #eval two_sort ["turns", "out", "random", "test", "cases", "are", "easier", "than", "writing", "out", "basic", "ones"]
+  -- #guard_msgs in
+  -- #eval two_sort ["turns", "out", "random", "test", "cases", "are", "easier", "than", "writing", "out", "basic", "ones"]
   
-  /--
+  /-
   info: 'L***e***t***s'
   -/
-  #guard_msgs in
-  #eval two_sort ["Lets", "all", "go", "on", "holiday", "somewhere", "very", "cold"]
+  -- #guard_msgs in
+  -- #eval two_sort ["Lets", "all", "go", "on", "holiday", "somewhere", "very", "cold"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

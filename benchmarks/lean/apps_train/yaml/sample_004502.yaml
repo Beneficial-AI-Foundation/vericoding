@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given four positive integers $n$, $m$, $a$, $b$ ($1 \le b \le n \le 50$; $1 \le a \le m \le 50$). Find any such rectangular matrix of size $n \times m$ that satisfies all of the following conditions:
   
     each row of the matrix contains exactly $a$ ones;  each column of the matrix contains exactly $b$ ones;  all other elements are zeros. 
@@ -49,6 +50,7 @@ vc-description: |-
   YES
   1
   1
+  -/
 
 vc-preamble: |-
   def Matrix := List (List Bool)
@@ -94,17 +96,17 @@ vc-theorems: |-
       (∀ a b : Nat, (a > m ∨ b > n) → 
         solveMatrix m n a b = none)) := sorry
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval matrix_to_str result
+  -- #guard_msgs in
+  -- #eval matrix_to_str result
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval matrix_to_str result
+  -- #guard_msgs in
+  -- #eval matrix_to_str result
 
 vc-postamble: |-
   -- Apps difficulty: introductory

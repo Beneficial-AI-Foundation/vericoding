@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Divya's watch of worth Rs10 cr is abducted by N thieves(1,2....i...N). The fight over the watch leads to a final decision that it should belong to the thief who wins a simple game. The rules of the game state that every thief  registers a time in the format HH:MM:SS . Accordingly the average A of three clockwise angles  between the hours , minutes and seconds hands is calculated . Thus the ith thief  with the maximum A wins the game and gets to keep the watch.
   
   The thieves are poor in mathematics and will need your help . Given the number of thieves and their registered time resolves the conflict and help them in choosing the winner 
@@ -37,6 +38,7 @@ vc-description: |-
   Output:
   3
   1
+  -/
 
 vc-preamble: |-
 
@@ -78,23 +80,23 @@ vc-theorems: |-
     let result := find_thief_with_watch times
     1 ≤ result ∧ result ≤ times.length := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_thief_with_watch ["12:28:26", "07:26:04", "11:23:17"]
+  -- #guard_msgs in
+  -- #eval find_thief_with_watch ["12:28:26", "07:26:04", "11:23:17"]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval find_thief_with_watch ["07:43:25", "06:23:34"]
+  -- #guard_msgs in
+  -- #eval find_thief_with_watch ["07:43:25", "06:23:34"]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval find_thief_with_watch ["12:00:00"]
+  -- #guard_msgs in
+  -- #eval find_thief_with_watch ["12:00:00"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

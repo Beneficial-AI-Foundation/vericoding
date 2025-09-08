@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Indraneel's student has given him data from two sets of experiments that the student has performed. Indraneel wants to establish a correlation between the two sets of data. Each data set is a sequence of $N$ numbers. The two data sets do not match number for number, but Indraneel believes that this is because data has been shifted due to inexact tuning of the equipment.
   For example, consider the following two sequences:
   $ $
@@ -27,6 +28,7 @@ vc-description: |-
   4
   3 4 23 9
   2 3 22 8
+  -/
 
 vc-preamble: |-
   def Point := Int × Int

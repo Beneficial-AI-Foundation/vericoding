@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given an input string.
   
   For each symbol in the string if it's the first character occurrence, replace it with a '1', else replace it with the amount of times you've already seen it...
@@ -25,6 +26,7 @@ vc-description: |-
   ~~~if:c
   (this does not apply to the C language translation)
   ~~~
+  -/
 
 vc-preamble: |-
 
@@ -50,23 +52,23 @@ vc-theorems: |-
   theorem numericals_starts_with_one {s : String} (h : s ≠ "") :
     ∃ p : String.Pos, (numericals s).get p = '1' := sorry
   
-  /--
+  /-
   info: '1112111121311'
   -/
-  #guard_msgs in
-  #eval numericals "Hello, World!"
+  -- #guard_msgs in
+  -- #eval numericals "Hello, World!"
   
-  /--
+  /-
   info: '123456789101112'
   -/
-  #guard_msgs in
-  #eval numericals "aaaaaaaaaaaa"
+  -- #guard_msgs in
+  -- #eval numericals "aaaaaaaaaaaa"
   
-  /--
+  /-
   info: '11121122342'
   -/
-  #guard_msgs in
-  #eval numericals "hello hello"
+  -- #guard_msgs in
+  -- #eval numericals "hello hello"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

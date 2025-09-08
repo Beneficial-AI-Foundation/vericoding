@@ -1,9 +1,11 @@
 vc-description: |-
+  /-
   Define a method ```hello``` that ```returns``` "Hello, Name!" to a given ```name```, or says Hello, World! if name is not given (or passed as an empty String).
   
   Assuming that ```name``` is a ```String``` and it checks for user typos to return a name with a first capital letter (Xxxx).
   
   Examples:
+  -/
 
 vc-preamble: |-
 
@@ -27,29 +29,29 @@ vc-theorems: |-
   theorem hello_empty_string:
     hello (some "") = "Hello, World!" := sorry
   
-  /--
+  /-
   info: 'Hello, World!'
   -/
-  #guard_msgs in
-  #eval hello 
+  -- #guard_msgs in
+  -- #eval hello 
   
-  /--
+  /-
   info: 'Hello, World!'
   -/
-  #guard_msgs in
-  #eval hello ""
+  -- #guard_msgs in
+  -- #eval hello ""
   
-  /--
+  /-
   info: 'Hello, Alice!'
   -/
-  #guard_msgs in
-  #eval hello "alice"
+  -- #guard_msgs in
+  -- #eval hello "alice"
   
-  /--
+  /-
   info: 'Hello, John!'
   -/
-  #guard_msgs in
-  #eval hello "jOHN"
+  -- #guard_msgs in
+  -- #eval hello "jOHN"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

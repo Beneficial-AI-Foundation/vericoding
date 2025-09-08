@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Phoenix loves beautiful arrays. An array is beautiful if all its subarrays of length $k$ have the same sum. A subarray of an array is any sequence of consecutive elements.
   
   Phoenix currently has an array $a$ of length $n$. He wants to insert some number of integers, possibly zero, into his array such that it becomes beautiful. The inserted integers must be between $1$ and $n$ inclusive. Integers may be inserted anywhere (even before the first or after the last element), and he is not trying to minimize the number of inserted integers.
@@ -51,6 +52,7 @@ vc-description: |-
   In the third test case, it can be shown that we cannot insert numbers to make array $a$ beautiful.
   
   In the fourth test case, the array $b$ shown is beautiful and all subarrays of length $k=4$ have the same sum $10$. There exist other solutions also.
+  -/
 
 vc-preamble: |-
 
@@ -106,17 +108,17 @@ vc-theorems: |-
     :=
   sorry
   
-  /--
+  /-
   info: n1 * k1
   -/
-  #guard_msgs in
-  #eval len result1
+  -- #guard_msgs in
+  -- #eval len result1
   
-  /--
+  /-
   info: n3 * k3
   -/
-  #guard_msgs in
-  #eval len result3
+  -- #guard_msgs in
+  -- #eval len result3
 
 vc-postamble: |-
   -- Apps difficulty: interview

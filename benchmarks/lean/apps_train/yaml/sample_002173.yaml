@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Hilbert's Hotel is a very unusual hotel since the number of rooms is infinite! In fact, there is exactly one room for every integer, including zero and negative integers. Even stranger, the hotel is currently at full capacity, meaning there is exactly one guest in every room. The hotel's manager, David Hilbert himself, decides he wants to shuffle the guests around because he thinks this will create a vacancy (a room without a guest).
   
   For any integer $k$ and positive integer $n$, let $k\bmod n$ denote the remainder when $k$ is divided by $n$. More formally, $r=k\bmod n$ is the smallest non-negative integer such that $k-r$ is divisible by $n$. It always holds that $0\le k\bmod n\le n-1$. For example, $100\bmod 12=4$ and $(-1337)\bmod 3=1$.
@@ -56,6 +57,7 @@ vc-description: |-
   In the fourth test case, guests $0$ and $1$ are both assigned to room $3$.
   
   In the fifth test case, guests $1$ and $2$ are both assigned to room $2$.
+  -/
 
 vc-preamble: |-
 
@@ -86,23 +88,23 @@ vc-theorems: |-
       (moves[i]! + i) % n ≠ (moves[j]! + j) % n :=
   sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval check_guest_assignment 1 [14]
+  -- #guard_msgs in
+  -- #eval check_guest_assignment 1 [14]
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval check_guest_assignment 2 [1, -1]
+  -- #guard_msgs in
+  -- #eval check_guest_assignment 2 [1, -1]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval check_guest_assignment 3 [3, 2, 1]
+  -- #guard_msgs in
+  -- #eval check_guest_assignment 3 [3, 2, 1]
 
 vc-postamble: |-
   -- Apps difficulty: competition

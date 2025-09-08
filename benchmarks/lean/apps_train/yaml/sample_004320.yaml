@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   You are a lifelong fan of your local football club, and proud to say you rarely miss a game. Even though you're a superfan, you still hate boring games. Luckily, boring games often end in a draw, at which point the winner is determined by a penalty shoot-out, which brings some excitement to the viewing experience. Once, in the middle of a penalty shoot-out, you decided to count the lowest total number of shots required to determine the winner. So, given the number of shots each team has already made and the current score, `how soon` can the game end?
   
@@ -43,6 +44,7 @@ vc-description: |-
   For `shots = 10 and score = [10, 10]`, the output should be `2`.
   
   If one of the teams misses the penalty and the other one scores, the game ends.
+  -/
 
 vc-preamble: |-
   def penaltyShots (shots: Nat) (scores: List Nat) : Nat :=
@@ -79,23 +81,23 @@ vc-theorems: |-
     0 ≤ result ∧ result ≤ (5 - shots + 1) :=
   sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval penaltyShots 2 [1, 2]
+  -- #guard_msgs in
+  -- #eval penaltyShots 2 [1, 2]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval penaltyShots 10 [10, 10]
+  -- #guard_msgs in
+  -- #eval penaltyShots 10 [10, 10]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval penaltyShots 5 [5, 5]
+  -- #guard_msgs in
+  -- #eval penaltyShots 5 [5, 5]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

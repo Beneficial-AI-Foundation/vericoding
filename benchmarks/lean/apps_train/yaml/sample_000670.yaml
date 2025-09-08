@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In africa jungle , there were zebra's who liked to spit.
   There owner watched them for whole day and noted in his sheet where each zebra spitted.
   Now he's in a confusion and wants to know if in the jungle there are two zebra's which spitted at each other.
@@ -21,6 +22,7 @@ vc-description: |-
   
   -----Sample Output:-----
   YES
+  -/
 
 vc-preamble: |-
 
@@ -47,23 +49,23 @@ vc-theorems: |-
     (h4 : pos2 + dist2 = pos1) :
     canZebrasSpatAtEachOther positions = true := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval can_zebras_spit_at_each_other [[0, 1], [1, -1]]
+  -- #guard_msgs in
+  -- #eval can_zebras_spit_at_each_other [[0, 1], [1, -1]]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval can_zebras_spit_at_each_other [[0, 1], [2, -1]]
+  -- #guard_msgs in
+  -- #eval can_zebras_spit_at_each_other [[0, 1], [2, -1]]
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval can_zebras_spit_at_each_other [[0, 2], [1, 1], [2, -2]]
+  -- #guard_msgs in
+  -- #eval can_zebras_spit_at_each_other [[0, 2], [1, 1], [2, -2]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

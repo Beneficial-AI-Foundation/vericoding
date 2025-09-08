@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ### Task
    King Arthur and his knights are having a New Years party. Last year Lancelot was jealous of Arthur, because Arthur had a date and Lancelot did not, and they started a duel.
   
@@ -17,6 +18,7 @@ vc-description: |-
   - `[output]` a boolean value
   
     `true` if Arthur need to invite more women, `false` otherwise.
+  -/
 
 vc-preamble: |-
   def List.sum : List Int → Int 
@@ -42,23 +44,23 @@ vc-theorems: |-
     invite_more_women (arr ++ [-1]) ≤ invite_more_women arr ∧ 
     invite_more_women arr ≤ invite_more_women (arr ++ [1]) := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval invite_more_women [1, -1, 1]
+  -- #guard_msgs in
+  -- #eval invite_more_women [1, -1, 1]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval invite_more_women [-1, -1, -1]
+  -- #guard_msgs in
+  -- #eval invite_more_women [-1, -1, -1]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval invite_more_women [1, -1]
+  -- #guard_msgs in
+  -- #eval invite_more_women [1, -1]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

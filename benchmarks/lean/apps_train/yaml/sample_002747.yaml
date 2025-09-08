@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Description:
   
    Find the longest successive exclamation marks and question marks combination in the string. A successive exclamation marks and question marks combination must contains two part: a substring of "!" and a substring "?", they are adjacent. 
@@ -20,6 +21,7 @@ vc-description: |-
   # Note
   Please don't post issue about difficulty or duplicate. Because:
   >[That's unfair on the kata creator. This is a valid kata and introduces new people to javascript some regex or loops, depending on how they tackle this problem.  --matt c](https://www.codewars.com/kata/remove-exclamation-marks/discuss#57fabb625c9910c73000024e)
+  -/
 
 vc-preamble: |-
 
@@ -42,23 +44,23 @@ vc-theorems: |-
   theorem result_only_valid_chars (s : String) :
     ∀ c ∈ (find s).data, c = '!' ∨ c = '?' := sorry
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval find "!!"
+  -- #guard_msgs in
+  -- #eval find "!!"
   
-  /--
+  /-
   info: '!??'
   -/
-  #guard_msgs in
-  #eval find "!??"
+  -- #guard_msgs in
+  -- #eval find "!??"
   
-  /--
+  /-
   info: '!!???'
   -/
-  #guard_msgs in
-  #eval find "!!???!????"
+  -- #guard_msgs in
+  -- #eval find "!!???!????"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

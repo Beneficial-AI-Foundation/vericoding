@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Sinchan and his friends loves to eat. They have a 2D rectangular cake which they want to share. Sinchan is very kind and offers his friends to eat the cake first, all friends goes one by one to eat the cake. Each friend will cut cake into two parts. First part of the cake will be largest possible square from the cake, that the friend will eat, and will leave the second part for others, it continues untill cake is over or every friend gets to eat the cake.
   Now Sinchan wonder how much cake would he be able to get.
   
@@ -30,6 +31,7 @@ vc-description: |-
   
   -----Explanation-----
   Example case 1. First friend divides 5x3 cake in 3x3 and 2x3 since 3x3 is largest possible square, second Friend divides 2x3 cake in 2x2 and 1x2 and eat 2x2 piece. Finaly Sinchan gets to eat and area of cake is 1*2 hence Output is (without quotes) "Yes 2"
+  -/
 
 vc-preamble: |-
 

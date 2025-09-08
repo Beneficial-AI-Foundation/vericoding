@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an integer n, return a list of all simplified fractions between 0 and 1 (exclusive) such that the denominator is less-than-or-equal-to n. The fractions can be in any order.
   
   Example 1:
@@ -20,6 +21,7 @@ vc-description: |-
   Constraints:
   
   1 <= n <= 100
+  -/
 
 vc-preamble: |-
   def gcd (a b : Nat) : Nat := sorry
@@ -54,23 +56,23 @@ vc-theorems: |-
   theorem empty_for_n_less_than_2 :
     simplifiedFractions 1 = [] := sorry
   
-  /--
+  /-
   info: ['1/2']
   -/
-  #guard_msgs in
-  #eval simplifiedFractions 2
+  -- #guard_msgs in
+  -- #eval simplifiedFractions 2
   
-  /--
+  /-
   info: ['1/2', '1/3', '2/3']
   -/
-  #guard_msgs in
-  #eval sorted simplifiedFractions(3)
+  -- #guard_msgs in
+  -- #eval sorted simplifiedFractions(3)
   
-  /--
+  /-
   info: ['1/2', '1/3', '1/4', '2/3', '3/4']
   -/
-  #guard_msgs in
-  #eval sorted simplifiedFractions(4)
+  -- #guard_msgs in
+  -- #eval sorted simplifiedFractions(4)
 
 vc-postamble: |-
   -- Apps difficulty: interview

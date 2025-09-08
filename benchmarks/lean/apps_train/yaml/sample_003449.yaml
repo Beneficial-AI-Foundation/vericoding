@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Working from left-to-right if no digit is exceeded by the digit to its left it is called an increasing number; for example, 134468.
   
   Similarly if no digit is exceeded by the digit to its right it is called a decreasing number; for example, 66420.
@@ -26,6 +27,7 @@ vc-description: |-
   **Updates**
   
     - 26/10/2015: Added a higher precision test case.
+  -/
 
 vc-preamble: |-
   def isDigit (c : Char) : Bool := sorry
@@ -61,23 +63,23 @@ vc-theorems: |-
     n > 1 →
     ¬ ∃ x : Float, x = bouncyRatio n := sorry
   
-  /--
+  /-
   info: 538
   -/
-  #guard_msgs in
-  #eval bouncy_ratio 0.5
+  -- #guard_msgs in
+  -- #eval bouncy_ratio 0.5
   
-  /--
+  /-
   info: 21780
   -/
-  #guard_msgs in
-  #eval bouncy_ratio 0.9
+  -- #guard_msgs in
+  -- #eval bouncy_ratio 0.9
   
-  /--
+  /-
   info: 3088
   -/
-  #guard_msgs in
-  #eval bouncy_ratio 0.75
+  -- #guard_msgs in
+  -- #eval bouncy_ratio 0.75
 
 vc-postamble: |-
   -- Apps difficulty: introductory

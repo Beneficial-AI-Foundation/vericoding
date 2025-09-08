@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Run-length encoding is a string compression method that works by replacing consecutive identical characters (repeated 2 or more times) with the concatenation of the character and the number marking the count of the characters (length of the run). For example, to compress the string "aabccc" we replace "aa" by "a2" and replace "ccc" by "c3". Thus the compressed string becomes "a2bc3".
   Notice that in this problem, we are not adding '1' after single characters.
   Given a string s and an integer k. You need to delete at most k characters from s such that the run-length encoded version of s has minimum length.
@@ -23,6 +24,7 @@ vc-description: |-
   1 <= s.length <= 100
   0 <= k <= s.length
   s contains only lowercase English letters.
+  -/
 
 vc-preamble: |-
 
@@ -51,23 +53,23 @@ vc-theorems: |-
     (h3 : ∀ c ∈ s.data, c = 'a' ∨ c = 'b') :
     getLengthOfOptimalCompression s k ≥ 1 := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval getLengthOfOptimalCompression "aaabcccd" 2
+  -- #guard_msgs in
+  -- #eval getLengthOfOptimalCompression "aaabcccd" 2
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval getLengthOfOptimalCompression "aabbaa" 2
+  -- #guard_msgs in
+  -- #eval getLengthOfOptimalCompression "aabbaa" 2
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval getLengthOfOptimalCompression "aaaaaaaaaaa" 0
+  -- #guard_msgs in
+  -- #eval getLengthOfOptimalCompression "aaaaaaaaaaa" 0
 
 vc-postamble: |-
   -- Apps difficulty: interview

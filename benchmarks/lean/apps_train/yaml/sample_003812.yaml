@@ -1,9 +1,11 @@
 vc-description: |-
+  /-
   Given a string s, write a method (function) that will return true if its a valid single integer or floating number or false if its not.
   
   Valid examples, should return true:
   
   should return false:
+  -/
 
 vc-preamble: |-
   def isDigit (s : String) : Bool :=
@@ -42,23 +44,23 @@ vc-theorems: |-
     isDigit "+.1" = true :=
     sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval isDigit "-234.4"
+  -- #guard_msgs in
+  -- #eval isDigit "-234.4"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval isDigit "3 4"
+  -- #guard_msgs in
+  -- #eval isDigit "3 4"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval isDigit "0.0"
+  -- #guard_msgs in
+  -- #eval isDigit "0.0"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

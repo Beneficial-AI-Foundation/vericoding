@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function named sumDigits which takes a number as input and returns the sum of the absolute value of each of the number's decimal digits.  For example:
   
   ```python
@@ -8,6 +9,7 @@ vc-description: |-
   ```
   
   Let's assume that all numbers in the input will be integer values.
+  -/
 
 vc-preamble: |-
   def sum_digits (n : Int) : Int :=
@@ -43,23 +45,23 @@ vc-theorems: |-
     x ≥ 0 → sum_digits x = sum_of_digits_string x :=
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval sum_digits 10
+  -- #guard_msgs in
+  -- #eval sum_digits 10
   
-  /--
+  /-
   info: 18
   -/
-  #guard_msgs in
-  #eval sum_digits 99
+  -- #guard_msgs in
+  -- #eval sum_digits 99
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval sum_digits -32
+  -- #guard_msgs in
+  -- #eval sum_digits -32
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You might have heard about our new goodie distribution program aka the "Laddu Accrual System". This problem is designed to give you a glimpse of its rules. You can read the page once before attempting the problem if you wish, nonetheless we will be providing all the information needed here itself. 
   
   Laddu Accrual System is our new goodie distribution program. In this program, we will be distributing Laddus in place of goodies for your winnings and various other activities (described below), that you perform on our system. Once you collect enough number of Laddus, you can then redeem them to get yourself anything from a wide range of CodeChef goodies.  
@@ -73,6 +74,7 @@ vc-description: |-
   In the second example, user is a non-Indian user, he can redeem 400 laddues per month. So, in the first month, he will redeem 400 laddus. The remaining 369 laddus, he can not redeem as he requires at least 400 laddues in a month to redeem. 
   
   So, answer is 1.
+  -/
 
 vc-preamble: |-
 
@@ -107,23 +109,23 @@ vc-theorems: |-
     result[0]! ≥ worse_result[0]! :=
   sorry
   
-  /--
+  /-
   info: [3, 1]
   -/
-  #guard_msgs in
-  #eval calculate_max_months ["2", "4 INDIAN", "CONTEST_WON 1", "TOP_CONTRIBUTOR", "BUG_FOUND 100", "CONTEST_HOSTED", "4 NON_INDIAN", "CONTEST_WON 1", "TOP_CONTRIBUTOR", "BUG_FOUND 100", "CONTEST_HOSTED"]
+  -- #guard_msgs in
+  -- #eval calculate_max_months ["2", "4 INDIAN", "CONTEST_WON 1", "TOP_CONTRIBUTOR", "BUG_FOUND 100", "CONTEST_HOSTED", "4 NON_INDIAN", "CONTEST_WON 1", "TOP_CONTRIBUTOR", "BUG_FOUND 100", "CONTEST_HOSTED"]
   
-  /--
+  /-
   info: [3]
   -/
-  #guard_msgs in
-  #eval calculate_max_months ["1", "2 INDIAN", "CONTEST_WON 5", "TOP_CONTRIBUTOR"]
+  -- #guard_msgs in
+  -- #eval calculate_max_months ["1", "2 INDIAN", "CONTEST_WON 5", "TOP_CONTRIBUTOR"]
   
-  /--
+  /-
   info: [2]
   -/
-  #guard_msgs in
-  #eval calculate_max_months ["1", "1 NON_INDIAN", "BUG_FOUND 1000"]
+  -- #guard_msgs in
+  -- #eval calculate_max_months ["1", "1 NON_INDIAN", "BUG_FOUND 1000"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

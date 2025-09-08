@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given alphanumeric string s. (Alphanumeric string is a string consisting of lowercase English letters and digits).
   You have to find a permutation of the string where no letter is followed by another letter and no digit is followed by another digit. That is, no two adjacent characters have the same type.
   Return the reformatted string or return an empty string if it is impossible to reformat the string.
@@ -30,6 +31,7 @@ vc-description: |-
   
   1 <= s.length <= 500
   s consists of only lowercase English letters and/or digits.
+  -/
 
 vc-preamble: |-
   def isAlpha (c : Char) : Bool := sorry
@@ -76,11 +78,11 @@ vc-theorems: |-
     reformat s ≠ "" →
     countDigits (reformat s) = countDigits s := sorry
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval reformat "leetcode"
+  -- #guard_msgs in
+  -- #eval reformat "leetcode"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef's friend Alex runs a movie theatre. Due to the increasing number of platforms for watching movies online, his business is not running well. As a friend, Alex asked Chef to help him maximise his profits. Since Chef is a busy person, he needs your help to support his friend Alex.  
   Alex's theatre has four showtimes: 12 PM, 3 PM, 6 PM and 9 PM. He has four movies which he would like to play ― let's call them A, B, C and D. Each of these movies must be played exactly once and all four must be played at different showtimes. For each showtime, the price of a ticket must be one of the following: Rs 25, Rs 50, Rs 75 or Rs 100. The prices of tickets for different showtimes must also be different.
   Through his app, Alex receives various requests from his customers. Each request has the form "I want to watch this movie at this showtime". Let's assume that the number of people who come to watch a movie at a given showtime is the same as the number of requests for that movie at that showtime.
@@ -72,6 +73,7 @@ vc-description: |-
   Example case 4: The optimal solution is to play movie D at 12 PM; the other three movies go unattended. We have to deduct Rs 300, so the profit is $1 \cdot 100 - 300 = -200$.
   Example case 5: Since there are no requests for any movie at any time, all movies go unattended and Alex just suffers a loss of Rs 400.
   The total profit for all 5 days is $575+525-25-200-400 = 475$.
+  -/
 
 vc-preamble: |-
 
@@ -103,23 +105,23 @@ vc-theorems: |-
     let reqs := [⟨'A', t⟩, ⟨'B', t⟩, ⟨'C', t⟩, ⟨'D', t⟩] 
     maximize_profit 4 reqs > -400 := sorry
   
-  /--
+  /-
   info: 575
   -/
-  #guard_msgs in
-  #eval maximize_profit 12 [("A", "3"), ("B", "12"), ("C", "6"), ("A", "9"), ("B", "12"), ("C", "12"), ("D", "3"), ("B", "9"), ("D", "3"), ("B", "12"), ("B", "9"), ("C", "6")]
+  -- #guard_msgs in
+  -- #eval maximize_profit 12 [("A", "3"), ("B", "12"), ("C", "6"), ("A", "9"), ("B", "12"), ("C", "12"), ("D", "3"), ("B", "9"), ("D", "3"), ("B", "12"), ("B", "9"), ("C", "6")]
   
-  /--
+  /-
   info: 525
   -/
-  #guard_msgs in
-  #eval maximize_profit 7 [("A", "9"), ("A", "9"), ("B", "6"), ("C", "3"), ("D", "12"), ("A", "9"), ("B", "6")]
+  -- #guard_msgs in
+  -- #eval maximize_profit 7 [("A", "9"), ("A", "9"), ("B", "6"), ("C", "3"), ("D", "12"), ("A", "9"), ("B", "6")]
   
-  /--
+  /-
   info: -400
   -/
-  #guard_msgs in
-  #eval maximize_profit 0 []
+  -- #guard_msgs in
+  -- #eval maximize_profit 0 []
 
 vc-postamble: |-
   -- Apps difficulty: interview

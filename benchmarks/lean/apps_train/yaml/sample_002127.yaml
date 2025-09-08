@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   For strings s and t, we will say that s and t are prefix-free when neither is a prefix of the other.
   Let L be a positive integer. A set of strings S is a good string set when the following conditions hold true:
    - Each string in S has a length between 1 and L (inclusive) and consists of the characters 0 and 1.
@@ -34,6 +35,7 @@ vc-description: |-
   Alice
   
   If Alice adds 1, Bob will be unable to add a new string.
+  -/
 
 vc-preamble: |-
   def solve_prefix_free_game (g : PrefixFreeGame) : Result :=

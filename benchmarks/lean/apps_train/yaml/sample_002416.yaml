@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string s of zeros and ones, return the maximum score after splitting the string into two non-empty substrings (i.e. left substring and right substring).
   The score after splitting a string is the number of zeros in the left substring plus the number of ones in the right substring.
   
@@ -26,6 +27,7 @@ vc-description: |-
   
   2 <= s.length <= 500
   The string s consists of characters '0' and '1' only.
+  -/
 
 vc-preamble: |-
 
@@ -67,23 +69,23 @@ vc-theorems: |-
     (h₂: ∀ c ∈ s.data, c = '0' ∨ c = '1') :
     0 ≤ maxScore s ∧ maxScore s ≤ 2 := sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval max_score "011101"
+  -- #guard_msgs in
+  -- #eval max_score "011101"
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval max_score "00111"
+  -- #guard_msgs in
+  -- #eval max_score "00111"
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval max_score "1111"
+  -- #guard_msgs in
+  -- #eval max_score "1111"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

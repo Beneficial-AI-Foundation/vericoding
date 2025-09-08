@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Kate constantly finds herself in some kind of a maze. Help her to find a way out!.
   
   For a given maze and Kate's position find if there is a way out. Your function should return True or False.
@@ -32,6 +33,7 @@ vc-description: |-
   Example output
   ==============
   False
+  -/
 
 vc-preamble: |-
   def isValidMaze (maze : List String) : Bool := sorry
@@ -66,17 +68,17 @@ vc-theorems: |-
       isKateAt maze i j = true) :
     hasExit maze = true := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval has_exit ["# ##", "# k#", "####"]
+  -- #guard_msgs in
+  -- #eval has_exit ["# ##", "# k#", "####"]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval has_exit ["####", "# k#", "####"]
+  -- #guard_msgs in
+  -- #eval has_exit ["####", "# k#", "####"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

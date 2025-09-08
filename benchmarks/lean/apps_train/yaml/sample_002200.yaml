@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are in charge of controlling a dam. The dam can store at most L liters of water. Initially, the dam is empty. Some amount of water flows into the dam every morning, and any amount of water may be discharged every night, but this amount needs to be set so that no water overflows the dam the next morning.
   It is known that v_i liters of water at t_i degrees Celsius will flow into the dam on the morning of the i-th day.
   You are wondering about the maximum possible temperature of water in the dam at noon of each day, under the condition that there needs to be exactly L liters of water in the dam at that time. For each i, find the maximum possible temperature of water in the dam at noon of the i-th day. Here, consider each maximization separately, that is, the amount of water discharged for the maximization of the temperature on the i-th day, may be different from the amount of water discharged for the maximization of the temperature on the j-th day (j≠i).
@@ -38,6 +39,7 @@ vc-description: |-
    - On the first day, the temperature of water in the dam is always 10 degrees: the temperature of the only water that flows into the dam on the first day.
    - 10 liters of water at 15 degrees of Celsius can be stored on the second day, by discharging 5 liters of water on the night of the first day, and mix the remaining water with the water that flows into the dam on the second day.
    - 10 liters of water at 13.2 degrees of Celsius can be stored on the third day, by discharging 8 liters of water on the night of the first day, and mix the remaining water with the water that flows into the dam on the second and third days.
+  -/
 
 vc-preamble: |-
   def Water.subtract (w : Water) (v : Float) : Water :=

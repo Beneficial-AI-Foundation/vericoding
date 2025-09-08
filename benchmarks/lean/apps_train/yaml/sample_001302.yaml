@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef has a number N, Cheffina challenges the chef to check the divisibility of all the permutation of N by 3. If any of the permutations is divisible by 3 then print 1 else print 0.
   
   -----Input:-----
@@ -20,6 +21,7 @@ vc-description: |-
   -----Sample Output:-----
   1
   0
+  -/
 
 vc-preamble: |-
   def check_permutation_divisible_by_3 (n : Nat) : Nat := sorry
@@ -39,23 +41,23 @@ vc-theorems: |-
   theorem check_permutation_returns_binary (n : Nat) :
     check_permutation_divisible_by_3 n = 0 ∨ check_permutation_divisible_by_3 n = 1 := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval check_permutation_divisible_by_3 18
+  -- #guard_msgs in
+  -- #eval check_permutation_divisible_by_3 18
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval check_permutation_divisible_by_3 308
+  -- #guard_msgs in
+  -- #eval check_permutation_divisible_by_3 308
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval check_permutation_divisible_by_3 123
+  -- #guard_msgs in
+  -- #eval check_permutation_divisible_by_3 123
 
 vc-postamble: |-
   -- Apps difficulty: interview

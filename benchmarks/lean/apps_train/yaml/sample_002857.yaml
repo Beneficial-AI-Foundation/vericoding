@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We have a set of consecutive numbers from ```1``` to ```n```.
   We want to count all the subsets that do not contain consecutive numbers.
   E.g.
@@ -21,6 +22,7 @@ vc-description: |-
   number of tests = 100 
   10 <= n <= 120
   ```
+  -/
 
 vc-preamble: |-
 
@@ -45,23 +47,23 @@ vc-theorems: |-
     count_nonconsecutive_subsets 0 = 0 ∧ count_nonconsecutive_subsets 1 = 1 :=
     sorry
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval count_nonconsecutive_subsets 5
+  -- #guard_msgs in
+  -- #eval count_nonconsecutive_subsets 5
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval count_nonconsecutive_subsets 3
+  -- #guard_msgs in
+  -- #eval count_nonconsecutive_subsets 3
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_nonconsecutive_subsets 2
+  -- #guard_msgs in
+  -- #eval count_nonconsecutive_subsets 2
 
 vc-postamble: |-
   -- Apps difficulty: introductory

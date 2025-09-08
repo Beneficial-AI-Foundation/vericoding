@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Hey CodeWarrior,
   
   we've got a lot to code today!
@@ -32,6 +33,7 @@ vc-description: |-
   - [Microsoft MSDN: ToLower](https://msdn.microsoft.com/en-us/library/system.string.tolower%28v=vs.110%29.aspx)
   - [Microsoft MSDN: Replace](https://msdn.microsoft.com/de-de/library/fk49wtc1%28v=vs.110%29.aspx)
   - [Microsoft MSDN: Substring](https://msdn.microsoft.com/de-de/library/aka44szs%28v=vs.110%29.aspx)
+  -/
 
 vc-preamble: |-
 
@@ -71,23 +73,23 @@ vc-theorems: |-
     x ∈ get_users_ids s → ∀ i, x.get? i ≠ some '#' :=
   sorry
   
-  /--
+  /-
   info: ['12345']
   -/
-  #guard_msgs in
-  #eval get_users_ids "uid12345"
+  -- #guard_msgs in
+  -- #eval get_users_ids "uid12345"
   
-  /--
+  /-
   info: ['doublehashtag']
   -/
-  #guard_msgs in
-  #eval get_users_ids "uid##doublehashtag"
+  -- #guard_msgs in
+  -- #eval get_users_ids "uid##doublehashtag"
   
-  /--
+  /-
   info: ['12 ab', '', 'mixedchars']
   -/
-  #guard_msgs in
-  #eval get_users_ids "uid12 ab, uid#, uidMiXeDcHaRs"
+  -- #guard_msgs in
+  -- #eval get_users_ids "uid12 ab, uid#, uidMiXeDcHaRs"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

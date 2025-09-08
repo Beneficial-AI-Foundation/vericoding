@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   *This kata is inspired by [Project Euler Problem #387](https://projecteuler.net/problem=387)*
   
   ---
@@ -37,6 +38,7 @@ vc-description: |-
   If you enjoyed this kata then please try [my other katas](https://www.codewars.com/collections/katas-created-by-anter69)! :-)
   
   #### *Translations are welcome!*
+  -/
 
 vc-preamble: |-
   def sumOfDigits (n : Nat) : Nat :=
@@ -79,23 +81,23 @@ vc-theorems: |-
     (rthn_between (-1) 10 = [10]) :=
     sorry
   
-  /--
+  /-
   info: [10, 12, 18, 20]
   -/
-  #guard_msgs in
-  #eval rthn_between 0 20
+  -- #guard_msgs in
+  -- #eval rthn_between 0 20
   
-  /--
+  /-
   info: [200, 201, 204, 207, 209, 210]
   -/
-  #guard_msgs in
-  #eval rthn_between 200 210
+  -- #guard_msgs in
+  -- #eval rthn_between 200 210
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval rthn_between 2200 2300
+  -- #guard_msgs in
+  -- #eval rthn_between 2200 2300
 
 vc-postamble: |-
   -- Apps difficulty: introductory

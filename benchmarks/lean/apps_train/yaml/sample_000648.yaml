@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Diana is planning to make a very long journey. Her journey consists of $N$ bus routes, numbered from $1 to N$ in the order she must take them. The buses themselves are very fast but do not run often. The $i-th$ bus route only runs every $Xi$ days.
   
   More specifically, she can only take the $i-th$ bus on day $Xi, 2Xi, 3Xi$, and so on. Since the buses are very fast, she can take multiple buses on the same day.
@@ -52,6 +53,7 @@ vc-description: |-
   - Take the 4th bus on day 100 $(X4 = 50)$,  
   In Sample Case 3, there is $N = 1$ bus route, and Bucket must arrive by day $D = 1$. She could:
   - Take the 1st bus on day 1 $(X1 = 1)$.
+  -/
 
 vc-preamble: |-
 
@@ -76,23 +78,23 @@ vc-theorems: |-
       result ≤ d ∧ result % bus = 0 :=
   sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval solve_latest_bus 3 10 [3, 7, 2]
+  -- #guard_msgs in
+  -- #eval solve_latest_bus 3 10 [3, 7, 2]
   
-  /--
+  /-
   info: 99
   -/
-  #guard_msgs in
-  #eval solve_latest_bus 4 100 [11, 10, 5, 50]
+  -- #guard_msgs in
+  -- #eval solve_latest_bus 4 100 [11, 10, 5, 50]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve_latest_bus 1 1 [1]
+  -- #guard_msgs in
+  -- #eval solve_latest_bus 1 1 [1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

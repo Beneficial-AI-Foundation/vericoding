@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   This is the easy version of the problem. The difference between the versions is that the easy version has no swap operations. You can make hacks only if all versions of the problem are solved.
   
   Pikachu is a cute and friendly pokémon living in the wild pikachu herd.
@@ -55,6 +56,7 @@ vc-description: |-
   -----Note-----
   
   In third test case we can build an army in such way: [1 2 5 4 3 6 7], its strength will be $5−3+7=9$.
+  -/
 
 vc-preamble: |-
   def List.maximum (xs : List Nat) : Nat :=
@@ -92,23 +94,23 @@ vc-theorems: |-
     find_max_army_strength arr.length arr.reverse := by
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_max_army_strength 3 [1, 3, 2]
+  -- #guard_msgs in
+  -- #eval find_max_army_strength 3 [1, 3, 2]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_max_army_strength 2 [1, 2]
+  -- #guard_msgs in
+  -- #eval find_max_army_strength 2 [1, 2]
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval find_max_army_strength 7 [1, 2, 5, 4, 3, 6, 7]
+  -- #guard_msgs in
+  -- #eval find_max_army_strength 7 [1, 2, 5, 4, 3, 6, 7]
 
 vc-postamble: |-
   -- Apps difficulty: interview

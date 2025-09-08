@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   *SCHEDULE YOUR DA(RRA)Y*
   
   The best way to have a productive day is to plan out your work schedule. Given the following three inputs, please create an an array of time alloted to work, broken up with time alloted with breaks:
@@ -16,6 +17,7 @@ vc-description: |-
   day_plan(8, 5, 30) == [ 30, 82, 30, 82, 30, 82, 30, 82, 30 ]
   day_plan(3, 5, 60) == "You're not sleeping tonight!"
   ```
+  -/
 
 vc-preamble: |-
   def day_plan (hours tasks duration : Int) : List Int ⊕ String := sorry
@@ -64,23 +66,23 @@ vc-theorems: |-
         validTotalDuration schedule hours) := 
   sorry
   
-  /--
+  /-
   info: [30, 82, 30, 82, 30, 82, 30, 82, 30]
   -/
-  #guard_msgs in
-  #eval day_plan 8 5 30
+  -- #guard_msgs in
+  -- #eval day_plan 8 5 30
   
-  /--
+  /-
   info: "You're not sleeping tonight!"
   -/
-  #guard_msgs in
-  #eval day_plan 3 5 60
+  -- #guard_msgs in
+  -- #eval day_plan 3 5 60
   
-  /--
+  /-
   info: [60]
   -/
-  #guard_msgs in
-  #eval day_plan 2 1 60
+  -- #guard_msgs in
+  -- #eval day_plan 2 1 60
 
 vc-postamble: |-
   -- Apps difficulty: introductory

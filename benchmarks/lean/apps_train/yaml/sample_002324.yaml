@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
   
   Note: For the purpose of this problem, we define empty string as valid palindrome.
@@ -12,6 +13,7 @@ vc-description: |-
   
   Input: "race a car"
   Output: false
+  -/
 
 vc-preamble: |-
   def is_palindrome (s : String) : Bool :=
@@ -47,23 +49,23 @@ vc-theorems: |-
     is_palindrome (String.mk [c]) = true :=
   sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_palindrome "A man, a plan, a canal: Panama"
+  -- #guard_msgs in
+  -- #eval is_palindrome "A man, a plan, a canal: Panama"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_palindrome "race a car"
+  -- #guard_msgs in
+  -- #eval is_palindrome "race a car"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_palindrome ""
+  -- #guard_msgs in
+  -- #eval is_palindrome ""
 
 vc-postamble: |-
   -- Apps difficulty: introductory

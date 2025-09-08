@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The number ```1331``` is the first positive perfect cube,  higher than ```1```, having all its digits odd (its cubic root is ```11```).
   
   The next one is ```3375```.
@@ -25,6 +26,7 @@ vc-description: |-
   
   Working well in Python 2 and Python 3.
   Translation into Ruby is coming soon.
+  -/
 
 vc-preamble: |-
   def odd_dig_cubic (a b : Int) : List Int :=
@@ -80,23 +82,23 @@ vc-theorems: |-
     result ≠ [] → result.length = 1 ∧ result[0]! = n :=
   sorry
   
-  /--
+  /-
   info: [-3375, -1331, -1, 1, 1331, 3375]
   -/
-  #guard_msgs in
-  #eval odd_dig_cubic -5000 5000
+  -- #guard_msgs in
+  -- #eval odd_dig_cubic -5000 5000
   
-  /--
+  /-
   info: [1, 1331, 3375]
   -/
-  #guard_msgs in
-  #eval odd_dig_cubic 0 5000
+  -- #guard_msgs in
+  -- #eval odd_dig_cubic 0 5000
   
-  /--
+  /-
   info: [-3375, -1331]
   -/
-  #guard_msgs in
-  #eval odd_dig_cubic -5000 -2
+  -- #guard_msgs in
+  -- #eval odd_dig_cubic -5000 -2
 
 vc-postamble: |-
   -- Apps difficulty: introductory

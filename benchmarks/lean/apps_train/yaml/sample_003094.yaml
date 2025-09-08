@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string, remove any characters that are unique from the string.
   
   Example: 
@@ -6,6 +7,7 @@ vc-description: |-
   input: "abccdefee"
   
   output: "cceee"
+  -/
 
 vc-preamble: |-
   def countChar (s : String) (c : Char) : Nat :=
@@ -47,23 +49,23 @@ vc-theorems: |-
     only_duplicates s = "" :=
   sorry
   
-  /--
+  /-
   info: 'cceee'
   -/
-  #guard_msgs in
-  #eval only_duplicates "abccdefee"
+  -- #guard_msgs in
+  -- #eval only_duplicates "abccdefee"
   
-  /--
+  /-
   info: 'll'
   -/
-  #guard_msgs in
-  #eval only_duplicates "hello"
+  -- #guard_msgs in
+  -- #eval only_duplicates "hello"
   
-  /--
+  /-
   info: 'ondersndoders'
   -/
-  #guard_msgs in
-  #eval only_duplicates "foundersandcoders"
+  -- #guard_msgs in
+  -- #eval only_duplicates "foundersandcoders"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

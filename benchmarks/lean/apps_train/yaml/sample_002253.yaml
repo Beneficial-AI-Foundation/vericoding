@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   $n$ robots have escaped from your laboratory! You have to find them as soon as possible, because these robots are experimental, and their behavior is not tested yet, so they may be really dangerous!
   
   Fortunately, even though your robots have escaped, you still have some control over them. First of all, you know the location of each robot: the world you live in can be modeled as an infinite coordinate plane, and the $i$-th robot is currently located at the point having coordinates ($x_i$, $y_i$). Furthermore, you may send exactly one command to all of the robots. The command should contain two integer numbers $X$ and $Y$, and when each robot receives this command, it starts moving towards the point having coordinates ($X$, $Y$). The robot stops its movement in two cases:  either it reaches ($X$, $Y$);  or it cannot get any closer to ($X$, $Y$). 
@@ -44,6 +45,7 @@ vc-description: |-
   1 2 5
   0
   1 -100000 -100000
+  -/
 
 vc-preamble: |-
   def Position := Int × Int × Bool × Bool × Bool × Bool
@@ -77,23 +79,23 @@ vc-theorems: |-
      (¬can_down → y ≥ ry)) :=
   sorry
   
-  /--
+  /-
   info: [1, -1, -2]
   -/
-  #guard_msgs in
-  #eval find_robot_gather_point [[-1, -2, 0, 0, 0, 0], [-1, -2, 0, 0, 0, 0]]
+  -- #guard_msgs in
+  -- #eval find_robot_gather_point [[-1, -2, 0, 0, 0, 0], [-1, -2, 0, 0, 0, 0]]
   
-  /--
+  /-
   info: [1, 2, 5]
   -/
-  #guard_msgs in
-  #eval find_robot_gather_point [[1, 5, 1, 1, 1, 1], [2, 5, 0, 1, 0, 1], [3, 5, 1, 0, 0, 0]]
+  -- #guard_msgs in
+  -- #eval find_robot_gather_point [[1, 5, 1, 1, 1, 1], [2, 5, 0, 1, 0, 1], [3, 5, 1, 0, 0, 0]]
   
-  /--
+  /-
   info: [0]
   -/
-  #guard_msgs in
-  #eval find_robot_gather_point [[1337, 1337, 0, 1, 1, 1], [1336, 1337, 1, 1, 0, 1]]
+  -- #guard_msgs in
+  -- #eval find_robot_gather_point [[1337, 1337, 0, 1, 1, 1], [1336, 1337, 1, 1, 0, 1]]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

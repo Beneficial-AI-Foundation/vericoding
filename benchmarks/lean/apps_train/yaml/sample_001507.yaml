@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   "I'm a fan of anything that tries to replace actual human contact." - Sheldon.
   After years of hard work, Sheldon was finally able to develop a formula which would diminish the real human contact.  
   He found k$k$ integers n1,n2...nk$n_1,n_2...n_k$ . Also he found that if he could minimize the value of m$m$ such that  ∑ki=1$\sum_{i=1}^k$n$n$i$i$C$C$m$m$i$i$ is even, where m$m$ = ∑ki=1$\sum_{i=1}^k$mi$m_i$, he would finish the real human contact.  
@@ -28,6 +29,7 @@ vc-description: |-
   
   -----EXPLANATION:-----
   5$5$C$C$2$2$ = 10 which is even and m is minimum.
+  -/
 
 vc-preamble: |-
   def find_min_m (n : Nat) (nums : List Nat) : Int :=
@@ -62,23 +64,23 @@ vc-theorems: |-
     ∃ k, result = 2^k :=
   sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_min_m 1 [5]
+  -- #guard_msgs in
+  -- #eval find_min_m 1 [5]
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval find_min_m 1 [7]
+  -- #guard_msgs in
+  -- #eval find_min_m 1 [7]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval find_min_m 1 [10]
+  -- #guard_msgs in
+  -- #eval find_min_m 1 [10]
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The "BerCorp" company has got n employees. These employees can use m approved official languages for the formal correspondence. The languages are numbered with integers from 1 to m. For each employee we have the list of languages, which he knows. This list could be empty, i. e. an employee may know no official languages. But the employees are willing to learn any number of official languages, as long as the company pays their lessons. A study course in one language for one employee costs 1 berdollar.
   
   Find the minimum sum of money the company needs to spend so as any employee could correspond to any other one (their correspondence can be indirect, i. e. other employees can help out translating).
@@ -54,6 +55,7 @@ vc-description: |-
   In the second sample the employee 1 can learn language 2, and employee 8 can learn language 4.
   
   In the third sample employee 2 must learn language 2.
+  -/
 
 vc-preamble: |-
 
@@ -76,23 +78,23 @@ vc-theorems: |-
     (h2 : lang_lists = [[1], [1], [2], [2]]) :
     min_cost_for_communication n m lang_lists = 1 := sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_cost_for_communication 5 5 [[2], [2, 3], [3, 4], [4, 5], [5]]
+  -- #guard_msgs in
+  -- #eval min_cost_for_communication 5 5 [[2], [2, 3], [3, 4], [4, 5], [5]]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_cost_for_communication 8 7 [[], [1, 2, 3], [1], [5, 4], [6, 7], [3], [7, 4], [1]]
+  -- #guard_msgs in
+  -- #eval min_cost_for_communication 8 7 [[], [1, 2, 3], [1], [5, 4], [6, 7], [3], [7, 4], [1]]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval min_cost_for_communication 2 2 [[2], []]
+  -- #guard_msgs in
+  -- #eval min_cost_for_communication 2 2 [[2], []]
 
 vc-postamble: |-
   -- Apps difficulty: competition

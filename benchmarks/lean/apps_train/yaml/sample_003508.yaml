@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    You are given a string `s`. Let's call its substring a group, if all letters in it are adjacent and the same(such as `"aa","bbb","cccc"`..). Let's call the substiring with 2 or more adjacent group a big group(such as `"aabb","bbccc"`...).
   
@@ -32,6 +33,7 @@ vc-description: |-
    - `[output]` an integer
   
     The number of big groups.
+  -/
 
 vc-preamble: |-
 
@@ -60,23 +62,23 @@ vc-theorems: |-
     s.length ≤ 3 → count_big_groups s = 0 :=
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_big_groups "ccccoodeffffiiighhhhhhhhhhttttttts"
+  -- #guard_msgs in
+  -- #eval count_big_groups "ccccoodeffffiiighhhhhhhhhhttttttts"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_big_groups "soooooldieeeeeer"
+  -- #guard_msgs in
+  -- #eval count_big_groups "soooooldieeeeeer"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_big_groups "gztxxxxxggggggggggggsssssssbbbbbeeeeeeehhhmmmmmmmitttttttlllllhkppppp"
+  -- #guard_msgs in
+  -- #eval count_big_groups "gztxxxxxggggggggggggsssssssbbbbbeeeeeeehhhmmmmmmmitttttttlllllhkppppp"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

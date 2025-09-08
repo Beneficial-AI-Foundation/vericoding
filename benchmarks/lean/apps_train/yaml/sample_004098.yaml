@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chuck has lost count of how many asses he has kicked...
   
   Chuck stopped counting at 100,000 because he prefers to kick things in the face instead of counting. That's just who he is.
@@ -22,6 +23,7 @@ vc-description: |-
   The pattern only needs to appear within the text. The full input can be longer, i.e. the pattern can be surrounded by other characters... Chuck loves to be surrounded!
   
   Ready, steady, VERIFY!!
+  -/
 
 vc-preamble: |-
 
@@ -32,7 +34,7 @@ vc-helpers: |-
 vc-definitions: |-
   def body_count (s : String) : Bool := sorry
   
-  /-- Any string matching the pattern [A-Z][0-9] repeated 5 times, followed by
+  /- Any string matching the pattern [A-Z][0-9] repeated 5 times, followed by
       .-[A-Z]%[0-9].[0-9][0-9]. should return true -/
 
 vc-theorems: |-
@@ -58,7 +60,7 @@ vc-theorems: |-
                        Char.ofNat (dec₁ + 48), Char.ofNat (dec₂ + 48), '.']) :
     body_count code = true := sorry
   
-  /-- Any string not matching the pattern should return false -/
+  /- Any string not matching the pattern should return false -/
   
   theorem invalid_code_returns_false {s : String}
     (h : ¬∃ (a₁ a₂ a₃ a₄ a₅ : Char) (n₁ n₂ n₃ n₄ n₅ : Nat) (last_letter : Char)
@@ -82,23 +84,23 @@ vc-theorems: |-
                     Char.ofNat (dec₁ + 48), Char.ofNat (dec₂ + 48), '.']) :
     body_count s = false := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval body_count "A6C2E5Z9A4.-F%8.08."
+  -- #guard_msgs in
+  -- #eval body_count "A6C2E5Z9A4.-F%8.08."
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval body_count "PP P6A6T5F5S3.-Z%1.11.hgr"
+  -- #guard_msgs in
+  -- #eval body_count "PP P6A6T5F5S3.-Z%1.11.hgr"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval body_count "b4A1D1I8B4.-E%8.76."
+  -- #guard_msgs in
+  -- #eval body_count "b4A1D1I8B4.-E%8.76."
 
 vc-postamble: |-
   -- Apps difficulty: introductory

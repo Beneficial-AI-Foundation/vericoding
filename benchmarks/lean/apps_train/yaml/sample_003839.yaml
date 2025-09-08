@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Explanation
   
   It's your first day in the robot factory and your supervisor thinks that you should start with an easy task. So you are responsible for purchasing raw materials needed to produce the robots.
@@ -27,6 +28,7 @@ vc-description: |-
   * Except for scrap there is no material lost during manufacturing.
   * The number of produced robots is always a positive number.
   * You can only buy full kilograms of iron.
+  -/
 
 vc-preamble: |-
 
@@ -54,23 +56,23 @@ vc-theorems: |-
     calculate_scrap [] n = n * 50 :=
     sorry
   
-  /--
+  /-
   info: 5000
   -/
-  #guard_msgs in
-  #eval calculate_scrap [10] 90
+  -- #guard_msgs in
+  -- #eval calculate_scrap [10] 90
   
-  /--
+  /-
   info: 3820
   -/
-  #guard_msgs in
-  #eval calculate_scrap [20, 10] 55
+  -- #guard_msgs in
+  -- #eval calculate_scrap [20, 10] 55
   
-  /--
+  /-
   info: 4500
   -/
-  #guard_msgs in
-  #eval calculate_scrap [0, 0, 0] 90
+  -- #guard_msgs in
+  -- #eval calculate_scrap [0, 0, 0] 90
 
 vc-postamble: |-
   -- Apps difficulty: introductory

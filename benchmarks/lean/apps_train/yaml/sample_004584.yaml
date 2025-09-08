@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Description
   
   Welcome, Warrior! In this kata, you will get a message and you will need to get the frequency of each and every character!
@@ -12,6 +13,7 @@ vc-description: |-
   ```python
   char_freq("I like cats") // Returns {'a': 1, ' ': 2, 'c': 1, 'e': 1, 'I': 1, 'k': 1, 'l': 1, 'i': 1, 's': 1, 't': 1}
   ```
+  -/
 
 vc-preamble: |-
   def List.sum : List Nat → Nat
@@ -52,23 +54,23 @@ vc-theorems: |-
     let result_combined := char_freq (s₁ ++ s₂)
     ∀ c, result_combined.count c = result₁.count c + result₂.count c := sorry
   
-  /--
+  /-
   info: {'a': 1, ' ': 2, 'c': 1, 'e': 1, 'I': 1, 'k': 1, 'l': 1, 'i': 1, 's': 1, 't': 1}
   -/
-  #guard_msgs in
-  #eval char_freq "I like cats"
+  -- #guard_msgs in
+  -- #eval char_freq "I like cats"
   
-  /--
+  /-
   info: {'H': 1, 'e': 1, 'l': 2, 'o': 1}
   -/
-  #guard_msgs in
-  #eval char_freq "Hello"
+  -- #guard_msgs in
+  -- #eval char_freq "Hello"
   
-  /--
+  /-
   info: {'a': 3}
   -/
-  #guard_msgs in
-  #eval char_freq "aaa"
+  -- #guard_msgs in
+  -- #eval char_freq "aaa"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

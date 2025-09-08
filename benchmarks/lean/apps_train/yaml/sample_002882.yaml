@@ -1,9 +1,11 @@
 vc-description: |-
+  /-
   Your task is very simple. Just write a function `isAlphabetic(s)`, which takes an input string `s` in lowercase and returns `true`/`false` depending on whether the string is in alphabetical order or not.
   
   For example, `isAlphabetic('kata')` is False as 'a' comes after 'k', but `isAlphabetic('ant')` is True.
   
   Good luck :)
+  -/
 
 vc-preamble: |-
   def alphabetic (s : String) : Bool := sorry 
@@ -35,23 +37,23 @@ vc-theorems: |-
     (∀ s ∈ ss, alphabetic s = false) →
     alphabetic (String.join ss) = true ↔ isSorted (String.join ss).data := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval alphabetic "door"
+  -- #guard_msgs in
+  -- #eval alphabetic "door"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval alphabetic "cell"
+  -- #guard_msgs in
+  -- #eval alphabetic "cell"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval alphabetic "kata"
+  -- #guard_msgs in
+  -- #eval alphabetic "kata"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

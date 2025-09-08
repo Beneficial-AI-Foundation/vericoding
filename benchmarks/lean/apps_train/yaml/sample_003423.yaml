@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   An onion array is an array that satisfies the following condition for all values of `j` and `k`:
   
   If all of the following are `true`:
@@ -24,6 +25,7 @@ vc-description: |-
   ~~~if:php
   Your solution should at least be moderately efficient.  Make sure you don't do any unnecessary looping ;)
   ~~~
+  -/
 
 vc-preamble: |-
 
@@ -51,23 +53,23 @@ vc-theorems: |-
   theorem onion_symmetric {arr : List Int} :
     is_onion_array arr = is_onion_array arr.reverse := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_onion_array [6, 0, 4]
+  -- #guard_msgs in
+  -- #eval is_onion_array [6, 0, 4]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_onion_array [1, 1, 15, 10, -1]
+  -- #guard_msgs in
+  -- #eval is_onion_array [1, 1, 15, 10, -1]
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_onion_array [1, 2, 19, 4, 5]
+  -- #guard_msgs in
+  -- #eval is_onion_array [1, 2, 19, 4, 5]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

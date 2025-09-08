@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Bob just learned about bitwise operators. Since Alice is an expert, she decided to play a game, she will give a number $x$ to Bob and will ask some questions:
   There will be 4 different kinds of queries:-
   - 
@@ -45,6 +46,7 @@ vc-description: |-
   the binary representation of 2 is 10
   for query 1, we just have to update x to 11 (or 3 in decimal).
   for the next query, x is now 3 or 11 in binary so the answer is ON.
+  -/
 
 vc-preamble: |-
   def process_bit_queries (x : Nat) (queries : List (List Nat)) : List String := sorry

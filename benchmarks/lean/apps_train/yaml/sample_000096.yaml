@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your friend Jeff Zebos has been trying to run his new online company, but it's not going very well. He's not getting a lot of sales on his website which he decided to call Azamon. His big problem, you think, is that he's not ranking high enough on the search engines. If only he could rename his products to have better names than his competitors, then he'll be at the top of the search results and will be a millionaire.
   
   After doing some research, you find out that search engines only sort their results lexicographically. If your friend could rename his products to lexicographically smaller strings than his competitor's, then he'll be at the top of the rankings!
@@ -42,6 +43,7 @@ vc-description: |-
   It is impossible to improve the product's name in the second test case and satisfy all conditions.
   
   In the third test case, it is possible not to swap a pair of characters. The name "APPLE" is lexicographically smaller than "BANANA". Note that there are other valid answers, e.g., "APPEL".
+  -/
 
 vc-preamble: |-
 
@@ -72,23 +74,23 @@ vc-theorems: |-
   theorem improve_all_same_returns_self (s : String) (h : ∀ c ∈ s.data, c = 'A') :
     improve_product_name s (s ++ "Z") = s := sorry
   
-  /--
+  /-
   info: 'AAZMON'
   -/
-  #guard_msgs in
-  #eval improve_product_name "AZAMON" "APPLE"
+  -- #guard_msgs in
+  -- #eval improve_product_name "AZAMON" "APPLE"
   
-  /--
+  /-
   info: '---'
   -/
-  #guard_msgs in
-  #eval improve_product_name "AZAMON" "AAAAAAAAAAALIBABA"
+  -- #guard_msgs in
+  -- #eval improve_product_name "AZAMON" "AAAAAAAAAAALIBABA"
   
-  /--
+  /-
   info: 'APPLE'
   -/
-  #guard_msgs in
-  #eval improve_product_name "APPLE" "BANANA"
+  -- #guard_msgs in
+  -- #eval improve_product_name "APPLE" "BANANA"
 
 vc-postamble: |-
   -- Apps difficulty: interview

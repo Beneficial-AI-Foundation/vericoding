@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The entire network is under the inspection and direct control of the Decepticons. They have learned our language through the World Wide Web and can easily understand the messages which are being sent. Sam is trying to send the information to Autobots to locate “ALL SPARK” which is the only source of energy that can be used to create universe. He is bit cautious in sending the message. He is sending the messages in a form of special pattern of string that contains important message in form of substrings. But Decepticons have learnt to recognize the Data Mining and string comparison patterns. He is sending a big message in form of a string (say M) and let there are N smaller substrings. Decepticons have to find whether each of these N substrings is a sub-string of M. All strings consist of only alphanumeric characters.
   
   -----Input-----
@@ -13,6 +14,7 @@ vc-description: |-
   onlin
   Output:
   Y
+  -/
 
 vc-preamble: |-
 
@@ -42,23 +44,23 @@ vc-theorems: |-
   theorem substring_of_concatenation_right (s1 s2 : String) :
     is_substring (s1 ++ s2) s2 = "Y" := sorry
   
-  /--
+  /-
   info: 'Y'
   -/
-  #guard_msgs in
-  #eval is_substring "techtrishna online event" "onlin"
+  -- #guard_msgs in
+  -- #eval is_substring "techtrishna online event" "onlin"
   
-  /--
+  /-
   info: 'N'
   -/
-  #guard_msgs in
-  #eval is_substring "hello world" "xyz"
+  -- #guard_msgs in
+  -- #eval is_substring "hello world" "xyz"
   
-  /--
+  /-
   info: 'Y'
   -/
-  #guard_msgs in
-  #eval is_substring "python3" "thon"
+  -- #guard_msgs in
+  -- #eval is_substring "python3" "thon"
 
 vc-postamble: |-
   -- Apps difficulty: interview

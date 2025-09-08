@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   This Kata is the first in the [Rubiks Cube collection](https://www.codewars.com/collections/rubiks-party).
   
   [This](https://ruwix.com/the-rubiks-cube/notation/) or [this](https://ruwix.com/the-rubiks-cube/notation/advanced/) websites will be very usefull for this kata, if there will be some lack of understanding after the description. There are plenty of examples and a 3D model that can perform all needed rotations.
@@ -146,6 +147,7 @@ vc-description: |-
   ```
   
   Enjoy ^_^
+  -/
 
 vc-preamble: |-
   def f : List (List Int) → List (List Int) := sorry
@@ -177,23 +179,23 @@ vc-theorems: |-
   theorem perform_F_prime_move :
     perform "F'" = "yyyyyooobbwbbwbbwrrrrrrrrrwggwggwggooooooooobbbrwwwww" := sorry
   
-  /--
+  /-
   info: 'yyyyybbbbbbrbbrbbrrrrrrrrrrgggggggggooooooooowwwwwwwww'
   -/
-  #guard_msgs in
-  #eval perform "F"
+  -- #guard_msgs in
+  -- #eval perform "F"
   
-  /--
+  /-
   info: 'yyyyyywwwbbgbbgbbgrrrrrrrrrbggbggbggoooooooooyyywwwwww'
   -/
-  #guard_msgs in
-  #eval perform "F2"
+  -- #guard_msgs in
+  -- #eval perform "F2"
   
-  /--
+  /-
   info: 'yyyyyooobbwbbwbbwrrrrrrrrrwggwggwggooooooooobbbrwwwww'
   -/
-  #guard_msgs in
-  #eval perform "F""
+  -- #guard_msgs in
+  -- #eval perform "F""
 
 vc-postamble: |-
   -- Apps difficulty: introductory

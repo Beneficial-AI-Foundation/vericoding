@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Lucy loves to travel. Luckily she is a renowned computer scientist and gets to travel to international conferences using her department's budget.
   
   Each year, Society for Exciting Computer Science Research (SECSR) organizes several conferences around the world. Lucy always picks one conference from that list that is hosted in a city she hasn't been to before, and if that leaves her with more than one option, she picks the conference that she thinks would be most relevant for her field of research.
@@ -17,6 +18,7 @@ vc-description: |-
   - If all of the offered conferences are hosted in cities that Lucy has visited before, the function should return `'No worthwhile conferences this year!'` (`Nothing` in Haskell)
   
   Example:
+  -/
 
 vc-preamble: |-
 
@@ -52,23 +54,23 @@ vc-theorems: |-
     (h : new_city ∉ visited) :
     conference_picker visited [new_city] = new_city := sorry
   
-  /--
+  /-
   info: 'Philadelphia'
   -/
-  #guard_msgs in
-  #eval conference_picker [] ["Philadelphia", "Osaka", "Tokyo", "Melbourne"]
+  -- #guard_msgs in
+  -- #eval conference_picker [] ["Philadelphia", "Osaka", "Tokyo", "Melbourne"]
   
-  /--
+  /-
   info: 'No worthwhile conferences this year!'
   -/
-  #guard_msgs in
-  #eval conference_picker ["Rome"] ["Rome"]
+  -- #guard_msgs in
+  -- #eval conference_picker ["Rome"] ["Rome"]
   
-  /--
+  /-
   info: 'London'
   -/
-  #guard_msgs in
-  #eval conference_picker ["Milan"] ["London"]
+  -- #guard_msgs in
+  -- #eval conference_picker ["Milan"] ["London"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

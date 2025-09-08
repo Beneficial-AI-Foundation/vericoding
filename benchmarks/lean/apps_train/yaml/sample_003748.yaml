@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We are interested in obtaining two scores from a given integer:
   
   **First score**: The sum of all the integers obtained from the power set of the digits of the given integer that have the same order 
@@ -38,6 +39,7 @@ vc-description: |-
   ```
   100 < a < b < 55000 
   ```
+  -/
 
 vc-preamble: |-
 
@@ -72,23 +74,23 @@ vc-theorems: |-
       ∀ x ∈ result.tail, start ≤ x ∧ x ≤ start + width) :=
   sorry
   
-  /--
+  /-
   info: [7, 294]
   -/
-  #guard_msgs in
-  #eval find_int_inrange 100 300
+  -- #guard_msgs in
+  -- #eval find_int_inrange 100 300
   
-  /--
+  /-
   info: [7, 294, 468]
   -/
-  #guard_msgs in
-  #eval find_int_inrange 100 500
+  -- #guard_msgs in
+  -- #eval find_int_inrange 100 500
   
-  /--
+  /-
   info: [7, 468, 834]
   -/
-  #guard_msgs in
-  #eval find_int_inrange 300 900
+  -- #guard_msgs in
+  -- #eval find_int_inrange 300 900
 
 vc-postamble: |-
   -- Apps difficulty: introductory

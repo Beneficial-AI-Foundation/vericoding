@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    Given a string `str`, reverse it omitting all non-alphabetic characters.
   
@@ -15,6 +16,7 @@ vc-description: |-
     A string consists of lowercase latin letters, digits and symbols.
   
    - `[output]` a string
+  -/
 
 vc-preamble: |-
   def isAlpha (c : Char) : Bool :=

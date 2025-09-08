@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Kira likes to play with strings very much. Moreover he likes the shape of 'W' very much. He takes a string and try to make a 'W' shape out of it such that each angular point is a '#' character and each sides has same characters. He calls them W strings.
   For example, the W string can be formed from "aaaaa#bb#cc#dddd" such as:
   a
@@ -47,6 +48,7 @@ vc-description: |-
   In the first case: the whole string forms a W String.
   In the second case: acb#aab#bab#accba, the longest W string is acb#aab#bab#accba
   In the third case: abc#dda#bb#bb#aca, note that even though abc#dda#bb#bb#aca (boldened characters form the subsequence) is a W string of length 12, it violates Ryuk's condition that there should not be any #'s inbetween the 3 chosen # positions. One correct string of length 11 is abc#dda#bb#bb#aca
+  -/
 
 vc-preamble: |-
 
@@ -85,23 +87,23 @@ vc-theorems: |-
     solve_w_string (s ++ "###") ≤ (s ++ "###").length :=
   sorry
   
-  /--
+  /-
   info: 16
   -/
-  #guard_msgs in
-  #eval solve_w_string "aaaaa#bb#cc#dddd"
+  -- #guard_msgs in
+  -- #eval solve_w_string "aaaaa#bb#cc#dddd"
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval solve_w_string test2
+  -- #guard_msgs in
+  -- #eval solve_w_string test2
   
-  /--
+  /-
   info: 11
   -/
-  #guard_msgs in
-  #eval solve_w_string test3
+  -- #guard_msgs in
+  -- #eval solve_w_string test3
 
 vc-postamble: |-
   -- Apps difficulty: interview

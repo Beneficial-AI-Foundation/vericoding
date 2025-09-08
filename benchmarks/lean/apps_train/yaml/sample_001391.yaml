@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef is baking a cake.
   
   While baking, in each minute the size of cake doubles as compared to its previous size.
@@ -30,6 +31,7 @@ vc-description: |-
   
   -----Explaination-----
   Time was 1 min when cake was half baked by chef so answer is 1+2=3
+  -/
 
 vc-preamble: |-
 
@@ -55,23 +57,23 @@ vc-theorems: |-
     solve_cake_baking 4 = 4 ∧ 
     solve_cake_baking 10 = 7 := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval solve_cake_baking 2
+  -- #guard_msgs in
+  -- #eval solve_cake_baking 2
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval solve_cake_baking 4
+  -- #guard_msgs in
+  -- #eval solve_cake_baking 4
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval solve_cake_baking 10
+  -- #guard_msgs in
+  -- #eval solve_cake_baking 10
 
 vc-postamble: |-
   -- Apps difficulty: interview

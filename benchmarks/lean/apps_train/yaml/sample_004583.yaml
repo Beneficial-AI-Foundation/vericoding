@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    Imagine a white rectangular grid of `n` rows and `m` columns divided into two parts by a diagonal line running from the upper left to the lower right corner. Now let's paint the grid in two colors according to the following rules:
   ```
@@ -34,6 +35,7 @@ vc-description: |-
    - `[output]` an integer
   
      The number of black cells.
+  -/
 
 vc-preamble: |-
 
@@ -60,23 +62,23 @@ vc-theorems: |-
   theorem count_black_cells_symmetry (n m : Nat) (hn : n > 0) (hm : m > 0) :
     count_black_cells n m = count_black_cells m n := sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval count_black_cells 3 4
+  -- #guard_msgs in
+  -- #eval count_black_cells 3 4
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval count_black_cells 3 3
+  -- #guard_msgs in
+  -- #eval count_black_cells 3 3
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_black_cells 1 1
+  -- #guard_msgs in
+  -- #eval count_black_cells 1 1
 
 vc-postamble: |-
   -- Apps difficulty: introductory

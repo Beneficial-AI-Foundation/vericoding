@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Sunita has lots of tasks pending and she has no time to complete.  She needs your help and wants you complete the task.
   You are given a list of integers and two values $N$ and $K$ $-$ the size of array of integers and the numbers of partitions to be made respectively.
   You have to partition the list of integers without changing the order of elements ,into exactly $K$ parts. 
@@ -30,6 +31,7 @@ vc-description: |-
   
   -----EXPLANATION:-----
   [5] [6 3 2] is the best partition [5 + GCD(6,3,2)] = 6
+  -/
 
 vc-preamble: |-
   def List.sum : List Nat → Nat 
@@ -82,11 +84,11 @@ vc-theorems: |-
     max_gcd_partition_sum n k arr = 10 * k := by
     sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval max_gcd_partition_sum 4 2 [5, 6, 3, 2]
+  -- #guard_msgs in
+  -- #eval max_gcd_partition_sum 4 2 [5, 6, 3, 2]
 
 vc-postamble: |-
   -- Apps difficulty: interview

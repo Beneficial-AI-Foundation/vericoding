@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Berland year consists of $m$ months with $d$ days each. Months are numbered from $1$ to $m$. Berland week consists of $w$ days. The first day of the year is also the first day of the week. Note that the last week of the year might be shorter than $w$ days.
   
   A pair $(x, y)$ such that $x < y$ is ambiguous if day $x$ of month $y$ is the same day of the week as day $y$ of month $x$.
@@ -34,6 +35,7 @@ vc-description: |-
   -----Note-----
   
   Here are the pairs for the first test case:  $$
+  -/
 
 vc-preamble: |-
 
@@ -55,23 +57,23 @@ vc-theorems: |-
   theorem count_ambiguous_pairs_week_one (m d : Nat) (h1: m ≥ 1) (h2: d ≥ 1) :
       count_ambiguous_pairs m d 1 ≤ min m d * (min m d - 1) / 2 := sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval count_ambiguous_pairs 6 7 4
+  -- #guard_msgs in
+  -- #eval count_ambiguous_pairs 6 7 4
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval count_ambiguous_pairs 10 7 12
+  -- #guard_msgs in
+  -- #eval count_ambiguous_pairs 10 7 12
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval count_ambiguous_pairs 12 30 7
+  -- #guard_msgs in
+  -- #eval count_ambiguous_pairs 12 30 7
 
 vc-postamble: |-
   -- Apps difficulty: interview

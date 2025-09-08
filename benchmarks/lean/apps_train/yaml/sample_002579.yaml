@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # One is the loneliest number
   
   ## Task
@@ -24,6 +25,7 @@ vc-description: |-
   5 | 3431 | - | 3 + 4 + 3 + 1 = 11
   
   Is there a `1` for which the loneliness is minimal? Yes.
+  -/
 
 vc-preamble: |-
   def digits (n: Nat) : List Nat := sorry
@@ -60,23 +62,23 @@ vc-theorems: |-
     (∃ i: Nat, (digits n).get? i = some 1 ∧
      visible_sum n i = min_visible_sum n) := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval loneliest 34315
+  -- #guard_msgs in
+  -- #eval loneliest 34315
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval loneliest 8854778
+  -- #guard_msgs in
+  -- #eval loneliest 8854778
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval loneliest 11111
+  -- #guard_msgs in
+  -- #eval loneliest 11111
 
 vc-postamble: |-
   -- Apps difficulty: introductory

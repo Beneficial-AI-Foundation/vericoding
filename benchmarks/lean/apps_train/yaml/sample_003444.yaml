@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Time to win the lottery!
   
   Given a lottery ticket (ticket), represented by an array of 2-value arrays, you must find out if you've won the jackpot.  Example ticket:
@@ -8,6 +9,7 @@ vc-description: |-
   Once you have counted all of your mini wins, compare that number to the other input provided (win). If your total is more than or equal to (win), return 'Winner!'. Else return 'Loser!'.
   
   All inputs will be in the correct format. Strings on tickets are not always the same length.
+  -/
 
 vc-preamble: |-
 
@@ -36,23 +38,23 @@ vc-theorems: |-
     ticket.length > 0 → ticket.length ≤ 10 →
     isWinner ticket (ticket.length + 1) = "Loser!" := sorry
   
-  /--
+  /-
   info: 'Loser!'
   -/
-  #guard_msgs in
-  #eval bingo [["ABC", 65], ["HGR", 74], ["BYHT", 74]] 2
+  -- #guard_msgs in
+  -- #eval bingo [["ABC", 65], ["HGR", 74], ["BYHT", 74]] 2
   
-  /--
+  /-
   info: 'Winner!'
   -/
-  #guard_msgs in
-  #eval bingo [["ABC", 65], ["HGR", 74], ["BYHT", 74]] 1
+  -- #guard_msgs in
+  -- #eval bingo [["ABC", 65], ["HGR", 74], ["BYHT", 74]] 1
   
-  /--
+  /-
   info: 'Loser!'
   -/
-  #guard_msgs in
-  #eval bingo [["HGTYRE", 74], ["BE", 66], ["JKTY", 74]] 3
+  -- #guard_msgs in
+  -- #eval bingo [["HGTYRE", 74], ["BE", 66], ["JKTY", 74]] 3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

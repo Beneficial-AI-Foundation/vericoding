@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Everyone loves short problem statements.
   Given a function $ f(x) $ find its minimum value over the range $ 0 < x < π/2$
   $
@@ -22,6 +23,7 @@ vc-description: |-
   
   -----Sample Output:-----
   5.8831725615
+  -/
 
 vc-preamble: |-
 

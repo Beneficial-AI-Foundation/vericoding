@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Indian National Olympiad in Informatics 2016
   	Boing Inc, has N employees, numbered 1 ... N. Every employee other than Mr. Hojo (the head of the company) has a manager (P[i] denotes the manager of employee i). Thus an employee may manage any number of other employees but he reports only to one manager, so that the organization forms a tree with Mr. Hojo at the root. We say that employee B is a subordinate of employee A if B appears in the subtree rooted at A.
   
@@ -30,6 +31,7 @@ vc-description: |-
   
   -----Sample Output-----
   6
+  -/
 
 vc-preamble: |-
 
@@ -68,23 +70,23 @@ vc-theorems: |-
     -200 ≤ find_max_wealth_disparity n wealth managers ∧ 
     find_max_wealth_disparity n wealth managers ≤ 200 := sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval find_max_wealth_disparity 4 [5, 10, 6, 12] [2, -1, 4, 2]
+  -- #guard_msgs in
+  -- #eval find_max_wealth_disparity 4 [5, 10, 6, 12] [2, -1, 4, 2]
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval find_max_wealth_disparity 3 [5, 10, 2] [2, -1, 2]
+  -- #guard_msgs in
+  -- #eval find_max_wealth_disparity 3 [5, 10, 2] [2, -1, 2]
   
-  /--
+  /-
   info: 25
   -/
-  #guard_msgs in
-  #eval find_max_wealth_disparity 3 [-5, 10, -15] [2, -1, 2]
+  -- #guard_msgs in
+  -- #eval find_max_wealth_disparity 3 [-5, 10, -15] [2, -1, 2]
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Sherlock Holmes has decided to start a new academy to some of the young lads. He has conducted several tests and finally selected N equally brilliant
   
   students.Now he don't know whether to train all the N students or not. Now since Holmes was in a confusion, Watson came up with an idea. He wanted to
@@ -51,6 +52,7 @@ vc-description: |-
   Example case 1. Here the first kid has 2 chocolates, second has 3 chocolates, third kid has 5 chocolates, which is the sum of first kid's total chocolates 
   and second kid's chocolate. Forth student has only 1 chocolate where he did not follow the rule. So the maximum number of kids who arranged themselves in the order was 
   3. That is students at index 1 to index 3.
+  -/
 
 vc-preamble: |-
   def find_max_sequence_length (n : Nat) (arr : List Int) : Nat :=
@@ -79,23 +81,23 @@ vc-theorems: |-
     find_max_sequence_length 0 [] = 0 :=
   sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_max_sequence_length 5 [2, 3, 5, 1, 2]
+  -- #guard_msgs in
+  -- #eval find_max_sequence_length 5 [2, 3, 5, 1, 2]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_max_sequence_length 3 [1, 2, 3]
+  -- #guard_msgs in
+  -- #eval find_max_sequence_length 3 [1, 2, 3]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_max_sequence_length 2 [1, 2]
+  -- #guard_msgs in
+  -- #eval find_max_sequence_length 2 [1, 2]
 
 vc-postamble: |-
   -- Apps difficulty: interview

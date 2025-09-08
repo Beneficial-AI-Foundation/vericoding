@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given an equilateral triangle ΔABC with the side BC being the base. Each side of the triangle is of length L. There are L-1 additional points on each of the sides dividing the sides into equal parts of unit lengths. Points on the sides of the triangle are called major points. Joining these points with lines parallel to the sides of ΔABC will produce some more equilateral triangles. The intersection points of these parallel lines are called minor points. 
   
   Look at the picture below. It contains 
@@ -43,6 +44,7 @@ vc-description: |-
   In testcase 1, the valid triangles are ΔAR1R4, ΔP1BS3, ΔP2S1C
   
   In testcase 2, the only valid triangle is ΔABC
+  -/
 
 vc-preamble: |-
 
@@ -70,23 +72,23 @@ vc-theorems: |-
     L ≥ 1 → k1 ≤ k2 → k2 ≤ L →
     count_valid_triangles L k1 ≥ count_valid_triangles L k2 := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_valid_triangles 4 3
+  -- #guard_msgs in
+  -- #eval count_valid_triangles 4 3
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_valid_triangles 4 4
+  -- #guard_msgs in
+  -- #eval count_valid_triangles 4 4
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval count_valid_triangles 5 2
+  -- #guard_msgs in
+  -- #eval count_valid_triangles 5 2
 
 vc-postamble: |-
   -- Apps difficulty: interview

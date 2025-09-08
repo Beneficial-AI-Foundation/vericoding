@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   What is the answer to life the universe and everything
   
   Create a function that will make anything true
@@ -13,6 +14,7 @@ vc-description: |-
   ```
   
   Source: [CheckIO](https://checkio.org/mission/solution-for-anything/)
+  -/
 
 vc-preamble: |-
 
@@ -38,7 +40,7 @@ vc-theorems: |-
   theorem anything_greater_equal_everything {α β : Type} [a : Anything α] (x : β) :
     Anything.ge α β x = true := sorry
   
-  /-- All comparison operators return true for Anything type -/
+  /- All comparison operators return true for Anything type -/
   
   theorem anything_all_comparisons {α β : Type} [a : Anything α] (x : β) :
     Anything.lt α β x = true ∧ 
@@ -47,16 +49,16 @@ vc-theorems: |-
     Anything.ge α β x = true ∧ 
     Anything.eq α β x = true := sorry
   
-  /-- Anything compares with functions -/
+  /- Anything compares with functions -/
   
   theorem anything_with_functions {α β γ : Type} [a : Anything γ] (f : α → β) :
     Anything.eq γ (α → β) f = true := sorry
   
-  /--
+  /-
   info: ord
   -/
-  #guard_msgs in
-  #eval Anything 5
+  -- #guard_msgs in
+  -- #eval Anything 5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

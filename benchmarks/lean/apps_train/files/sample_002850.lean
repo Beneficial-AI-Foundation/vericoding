@@ -1,0 +1,56 @@
+/-
+You are a *khm*mad*khm* scientist and you decided to play with electron distribution among atom's shells.
+You know that basic idea of electron distribution is that electrons should fill a shell untill it's holding the maximum number of electrons.
+
+  ---
+Rules:  
+  - Maximum number of electrons in a shell is distributed with a rule of 2n^2 (n being position of a shell). 
+  - For example, maximum number of electrons in 3rd shield is 2*3^2 = 18.
+  - Electrons should fill the lowest level shell first.
+  - If the electrons have completely filled the lowest level shell, the other unoccupied electrons will fill the higher level shell and so on.  
+  ---
+
+```
+Ex.:    atomicNumber(1); should return [1]
+        atomicNumber(10); should return [2, 8]
+        atomicNumber(11); should return [2, 8, 1]
+        atomicNumber(47); should return [2, 8, 18, 19]
+```
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def atomic_number (n: Nat) : List Nat := sorry
+
+theorem atomic_number_sum_equals_input (n: Nat) :
+  n > 0 → (atomic_number n).foldr (· + ·) 0 = n := by sorry
+
+theorem atomic_number_shell_capacity (n: Nat) (i: Nat) :
+  n > 0 → i > 0 → i ≤ (atomic_number n).length → 
+  (atomic_number n).get ⟨i-1, sorry⟩ ≤ 2 * i * i := by sorry 
+
+theorem atomic_number_shells_filled_in_order (n: Nat) (i: Nat) :
+  n > 0 → i + 1 < (atomic_number n).length →
+  (atomic_number n).get ⟨i, sorry⟩ = 2 * (i + 1) * (i + 1) := by sorry
+
+/-
+info: [1]
+-/
+-- #guard_msgs in
+-- #eval atomic_number 1
+
+/-
+info: [2, 8, 1]
+-/
+-- #guard_msgs in
+-- #eval atomic_number 11
+
+/-
+info: [2, 8, 18, 19]
+-/
+-- #guard_msgs in
+-- #eval atomic_number 47
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded

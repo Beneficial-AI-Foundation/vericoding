@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array of integers arr, sort the array by performing a series of pancake flips.
   In one pancake flip we do the following steps:
   
@@ -31,6 +32,7 @@ vc-description: |-
   1 <= arr.length <= 100
   1 <= arr[i] <= arr.length
   All integers in arr are unique (i.e. arr is a permutation of the integers from 1 to arr.length).
+  -/
 
 vc-preamble: |-
   def List.sorted : List Nat → Bool
@@ -68,11 +70,11 @@ vc-theorems: |-
     (applyFlips arr (pancakeSort arr)).sorted :=
   sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval len pancake_sort(arr2)
+  -- #guard_msgs in
+  -- #eval len pancake_sort(arr2)
 
 vc-postamble: |-
   -- Apps difficulty: interview

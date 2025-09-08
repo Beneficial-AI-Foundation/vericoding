@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Implement a function, `multiples(m, n)`, which returns an array of the first `m` multiples of the real number `n`. Assume that `m` is a positive integer.
   
   Ex.
@@ -9,6 +10,7 @@ vc-description: |-
   ```
   [5.0, 10.0, 15.0]
   ```
+  -/
 
 vc-preamble: |-
 
@@ -35,17 +37,17 @@ vc-theorems: |-
     (n > 0 → ∀ x ∈ multiples m n, x > 0) ∧
     (n = 0 → ∀ x ∈ multiples m n, x = 0) := sorry
   
-  /--
+  /-
   info: [5, 10, 15]
   -/
-  #guard_msgs in
-  #eval multiples 3 5
+  -- #guard_msgs in
+  -- #eval multiples 3 5
   
-  /--
+  /-
   info: [-1, -2, -3, -4, -5]
   -/
-  #guard_msgs in
-  #eval multiples 5 -1
+  -- #guard_msgs in
+  -- #eval multiples 5 -1
 
 vc-postamble: |-
   -- Apps difficulty: introductory

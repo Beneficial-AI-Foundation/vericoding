@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef has found a new game and now he wants you to help him to get as much points as possible. 
   Rules of the game: There are different types of game pieces -  geometric shapes composed of some amount of square blocks. In the picture below you can see all the types of figures and enumeration. 
   The playing field is 10 cells width and 10 cells height. On each step of the game you are given exactly three game pieces. After that you need to put each of them to the game field such that after your move no two figures on the field are overlapped(you cannot rotate figures). If your move results in one or more horizontal or/and vertical lines of 10 units without gaps, those lines disappear. Notice that you put these three figures one by one and if you place the first figure and there are some lines ready to disappear, then they will disappear and only after that you place other figures.  
@@ -46,6 +47,7 @@ vc-description: |-
   -----Explanation-----
   In this test case your score will be 74 = 66 (for areas of figures) + 8 (bonus score).
   On the fifth move the player decided to finish the game and output three "-1"s as the describing of placing the last figure on this move.
+  -/
 
 vc-preamble: |-
 
@@ -69,11 +71,11 @@ vc-theorems: |-
     result = "-1 -1 -1 -1 -1 -1 -1 -1 -1" := 
     sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval solve_game ["8 3 11", "6 14 12", "5 10 11", "5 7 11", "16 19 1", "-1 -1 -1"]
+  -- #guard_msgs in
+  -- #eval solve_game ["8 3 11", "6 14 12", "5 10 11", "5 7 11", "16 19 1", "-1 -1 -1"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

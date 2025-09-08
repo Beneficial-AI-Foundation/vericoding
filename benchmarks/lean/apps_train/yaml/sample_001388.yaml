@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef has arrived in Dagobah to meet with Yoda to study cooking. Yoda is a very busy cook and he doesn't want to spend time with losers. So he challenges the Chef to a series of games, and agrees to teach the Chef if Chef can win at least P of the games. The total number of games is K. The games will be played on a chessboard of size N*M. That is, it has N rows, each of which has M squares. At the beginning of the game, a coin is on square (1, 1), which corresponds to the top-left corner, and every other square is empty. At every step, Yoda and Chef have to move the coin on the chessboard. The player who cannot make a move loses. Chef makes the first move. They can't move the coin to a square where it had been placed sometime before in the game, and they can't move outside chessboard.
   
   In this game, there are two different sets of rules according to which the game can be played:
@@ -48,6 +49,7 @@ vc-description: |-
   Output:
   0.500000
   1.000000
+  -/
 
 vc-preamble: |-
 

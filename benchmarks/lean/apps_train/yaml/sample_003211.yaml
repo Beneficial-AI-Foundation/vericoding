@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You have been recruited by an unknown organization for your cipher encrypting/decrypting skills.  
   Being new to the organization they decide to test your skills.  
   Your first test is to write an algorithm that encrypts the given string in the following steps.
@@ -14,6 +15,7 @@ vc-description: |-
   As an example, the string `"welcome to our organization"` should return `"qibkyai ty ysv yvgmzenmteyz"`.
   
   Good luck, and congratulations on the new position.
+  -/
 
 vc-preamble: |-
 
@@ -42,23 +44,23 @@ vc-theorems: |-
     (h : ∀ c ∈ s.data, 65 ≤ c.val ∧ c.val ≤ 122) :
     encrypter s.toLower = encrypter s.toUpper := sorry
   
-  /--
+  /-
   info: 'man'
   -/
-  #guard_msgs in
-  #eval encrypter "amz"
+  -- #guard_msgs in
+  -- #eval encrypter "amz"
   
-  /--
+  /-
   info: 'fibby'
   -/
-  #guard_msgs in
-  #eval encrypter "hello"
+  -- #guard_msgs in
+  -- #eval encrypter "hello"
   
-  /--
+  /-
   info: 'qibkyai ty tfi yvgmzenmteyz'
   -/
-  #guard_msgs in
-  #eval encrypter "welcome to the organization"
+  -- #guard_msgs in
+  -- #eval encrypter "welcome to the organization"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

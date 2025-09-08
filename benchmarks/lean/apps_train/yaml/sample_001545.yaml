@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are some websites that are accessible through several different addresses. For example, for a long time Codeforces was accessible with two hostnames codeforces.com and codeforces.ru.
   
   You are given a list of page addresses being queried. For simplicity we consider all addresses to have the form http://<hostname>[/<path>], where:
@@ -64,6 +65,7 @@ vc-description: |-
   2
   http://cba.com http://ccc.bbbb 
   http://a.a.a http://a.c http://abc
+  -/
 
 vc-preamble: |-
 
@@ -95,41 +97,41 @@ vc-theorems: |-
       if group.contains h then group.count h = 1 
       else true) := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval len find_website_groups(test1)
+  -- #guard_msgs in
+  -- #eval len find_website_groups(test1)
   
-  /--
+  /-
   info: {'abacaba.ru', 'abacaba.de'}
   -/
-  #guard_msgs in
-  #eval set result1[0]
+  -- #guard_msgs in
+  -- #eval set result1[0]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval len find_website_groups(test2)
+  -- #guard_msgs in
+  -- #eval len find_website_groups(test2)
   
-  /--
+  /-
   info: {'cba.com', 'ccc.bbbb'}
   -/
-  #guard_msgs in
-  #eval set result2[0]
+  -- #guard_msgs in
+  -- #eval set result2[0]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval len find_website_groups(test3)
+  -- #guard_msgs in
+  -- #eval len find_website_groups(test3)
   
-  /--
+  /-
   info: {'abacaba.com', 'abacaba.de'}
   -/
-  #guard_msgs in
-  #eval set result3[0]
+  -- #guard_msgs in
+  -- #eval set result3[0]
 
 vc-postamble: |-
   -- Apps difficulty: interview

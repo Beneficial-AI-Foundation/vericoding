@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We are given two arrays A and B of words.  Each word is a string of lowercase letters.
   Now, say that word b is a subset of word a if every letter in b occurs in a, including multiplicity.  For example, "wrr" is a subset of "warrior", but is not a subset of "world".
   Now say a word a from A is universal if for every b in B, b is a subset of a. 
@@ -30,6 +31,7 @@ vc-description: |-
   1 <= A[i].length, B[i].length <= 10
   A[i] and B[i] consist only of lowercase letters.
   All words in A[i] are unique: there isn't i != j with A[i] == A[j].
+  -/
 
 vc-preamble: |-
 
@@ -63,23 +65,23 @@ vc-theorems: |-
     (count_char (w.get! 0) w ≥ 1) →
     result = [w] := sorry
   
-  /--
+  /-
   info: sorted(['facebook', 'google', 'leetcode'])
   -/
-  #guard_msgs in
-  #eval sorted word_subsets(A1, B1)
+  -- #guard_msgs in
+  -- #eval sorted word_subsets(A1, B1)
   
-  /--
+  /-
   info: sorted(['apple', 'google', 'leetcode'])
   -/
-  #guard_msgs in
-  #eval sorted word_subsets(A2, B2)
+  -- #guard_msgs in
+  -- #eval sorted word_subsets(A2, B2)
   
-  /--
+  /-
   info: sorted(['facebook', 'leetcode'])
   -/
-  #guard_msgs in
-  #eval sorted word_subsets(A3, B3)
+  -- #guard_msgs in
+  -- #eval sorted word_subsets(A3, B3)
 
 vc-postamble: |-
   -- Apps difficulty: interview

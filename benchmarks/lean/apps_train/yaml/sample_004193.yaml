@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   
   * **_Given_** *three integers* `a` ,`b` ,`c`, **_return_** *the **_largest number_** obtained after inserting the following operators and brackets*: `+`, `*`, `()`
@@ -64,6 +65,7 @@ vc-description: |-
   
   ## Enjoy Learning !!
   # Zizou
+  -/
 
 vc-preamble: |-
 
@@ -103,23 +105,23 @@ vc-theorems: |-
     (h : 1 ≤ x ∧ x ≤ 10) :
     expression_matter x x x = max (x*x*x) (max (3*x) (2*x*x)) := sorry
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval expression_matter 1 2 3
+  -- #guard_msgs in
+  -- #eval expression_matter 1 2 3
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval expression_matter 1 1 1
+  -- #guard_msgs in
+  -- #eval expression_matter 1 1 1
   
-  /--
+  /-
   info: 18
   -/
-  #guard_msgs in
-  #eval expression_matter 9 1 1
+  -- #guard_msgs in
+  -- #eval expression_matter 9 1 1
 
 vc-postamble: |-
   -- Apps difficulty: introductory

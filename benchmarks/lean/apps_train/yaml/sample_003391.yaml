@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   For the given set `S` its powerset is the set of all possible subsets of `S`.
   
@@ -36,6 +37,7 @@ vc-description: |-
   [output] 2D integer array
   
   The powerset of nums.
+  -/
 
 vc-preamble: |-
 
@@ -68,23 +70,23 @@ vc-theorems: |-
     ∀ subset ∈ powerset l, ∀ x ∈ subset, x ∈ l := by
     sorry
   
-  /--
+  /-
   info: [[], [2], [1], [1, 2]]
   -/
-  #guard_msgs in
-  #eval powerset [1, 2]
+  -- #guard_msgs in
+  -- #eval powerset [1, 2]
   
-  /--
+  /-
   info: [[], [3], [2], [2, 3], [1], [1, 3], [1, 2], [1, 2, 3]]
   -/
-  #guard_msgs in
-  #eval powerset [1, 2, 3]
+  -- #guard_msgs in
+  -- #eval powerset [1, 2, 3]
   
-  /--
+  /-
   info: [[], [1]]
   -/
-  #guard_msgs in
-  #eval powerset [1]
+  -- #guard_msgs in
+  -- #eval powerset [1]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

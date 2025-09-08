@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your task is to determine the top 3 place finishes in a pole vault competition involving several different competitors. This is isn't always so simple, and it is often a source of confusion for people who don't know the actual rules.
   
   Here's what you need to know:
@@ -60,6 +61,7 @@ vc-description: |-
   I have tried to create test cases that have every concievable tie situation.
   
   Have fun with this version, as well!
+  -/
 
 vc-preamble: |-
 
@@ -117,23 +119,23 @@ vc-theorems: |-
         (result[i]!.1.front.toNat) ≤ (result[j]!.1.front.toNat) :=
   sorry
   
-  /--
+  /-
   info: {'1st': 'Linda', '2nd': 'Debbie', '3rd': 'Michelle'}
   -/
-  #guard_msgs in
-  #eval score_pole_vault [{"name": "Linda", "results": ["XXO", "O", "XXO", "O"]}, {"name": "Vickie", "results": ["O", "X", "", ""]}, {"name": "Debbie", "results": ["XXO", "O", "XO", "XXX"]}, {"name": "Michelle", "results": ["XO", "XO", "XXX", ""]}, {"name": "Carol", "results": ["XXX", "", "", ""]}]
+  -- #guard_msgs in
+  -- #eval score_pole_vault [{"name": "Linda", "results": ["XXO", "O", "XXO", "O"]}, {"name": "Vickie", "results": ["O", "X", "", ""]}, {"name": "Debbie", "results": ["XXO", "O", "XO", "XXX"]}, {"name": "Michelle", "results": ["XO", "XO", "XXX", ""]}, {"name": "Carol", "results": ["XXX", "", "", ""]}]
   
-  /--
+  /-
   info: {'1st': 'Onyx', '2nd': 'Lana', '3rd': 'Alexandria, Molly, Rebecca (tie)'}
   -/
-  #guard_msgs in
-  #eval score_pole_vault [{"name": "Lana", "results": ["XO", "O", "O", "XXO", "XXX"]}, {"name": "Onyx", "results": ["XXO", "XXO", "XO", "O", "XXX"]}, {"name": "Molly", "results": ["XO", "XO", "O", "XXX", ""]}, {"name": "Alexandria", "results": ["XO", "XO", "O", "XXX", ""]}, {"name": "Rebecca", "results": ["XXO", "O", "O", "XXX", ""]}]
+  -- #guard_msgs in
+  -- #eval score_pole_vault [{"name": "Lana", "results": ["XO", "O", "O", "XXO", "XXX"]}, {"name": "Onyx", "results": ["XXO", "XXO", "XO", "O", "XXX"]}, {"name": "Molly", "results": ["XO", "XO", "O", "XXX", ""]}, {"name": "Alexandria", "results": ["XO", "XO", "O", "XXX", ""]}, {"name": "Rebecca", "results": ["XXO", "O", "O", "XXX", ""]}]
   
-  /--
+  /-
   info: {'1st': 'Brett, Laura (jump-off)', '3rd': 'Sarah, Sharon (tie)'}
   -/
-  #guard_msgs in
-  #eval score_pole_vault [{"name": "Sarah", "results": ["O", "X", "", ""]}, {"name": "Brett", "results": ["XO", "O", "XO", "XXO"]}, {"name": "Sharon", "results": ["O", "X", "", ""]}, {"name": "Laura", "results": ["O", "XO", "XO", "XXO"]}]
+  -- #guard_msgs in
+  -- #eval score_pole_vault [{"name": "Sarah", "results": ["O", "X", "", ""]}, {"name": "Brett", "results": ["XO", "O", "XO", "XXO"]}, {"name": "Sharon", "results": ["O", "X", "", ""]}, {"name": "Laura", "results": ["O", "XO", "XO", "XXO"]}]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

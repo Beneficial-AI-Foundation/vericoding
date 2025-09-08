@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are $N$ cars (numbered $1$ through $N$) on a circular track with length $N$. For each $i$ ($2 \le i \le N$), the $i$-th of them is at a distance $i-1$ clockwise from car $1$, i.e. car $1$ needs to travel a distance $i-1$ clockwise to reach car $i$. Also, for each valid $i$, the $i$-th car has $f_i$ litres of gasoline in it initially.
   You are driving car $1$ in the clockwise direction. To move one unit of distance in this direction, you need to spend $1$ litre of gasoline. When you pass another car (even if you'd run out of gasoline exactly at that point), you steal all its gasoline. Once you do not have any gasoline left, you stop.
   What is the total clockwise distance travelled by your car? 
@@ -32,6 +33,7 @@ vc-description: |-
   3
   5
   15
+  -/
 
 vc-preamble: |-
   def List.sum : List Nat → Nat 
@@ -59,23 +61,23 @@ vc-theorems: |-
     find_distance n (val :: List.replicate (n-1) 0) = val :=
   sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_distance 5 [3, 0, 0, 0, 0]
+  -- #guard_msgs in
+  -- #eval find_distance 5 [3, 0, 0, 0, 0]
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval find_distance 5 [1, 1, 1, 1, 1]
+  -- #guard_msgs in
+  -- #eval find_distance 5 [1, 1, 1, 1, 1]
   
-  /--
+  /-
   info: 15
   -/
-  #guard_msgs in
-  #eval find_distance 5 [5, 4, 3, 2, 1]
+  -- #guard_msgs in
+  -- #eval find_distance 5 [5, 4, 3, 2, 1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

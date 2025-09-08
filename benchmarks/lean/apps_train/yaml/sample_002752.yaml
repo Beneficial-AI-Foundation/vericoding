@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We’ve all seen katas that ask for conversion from snake-case to camel-case, from camel-case to snake-case, or from camel-case to kebab-case — the possibilities are endless.
   
   But if we don’t know the case our inputs are in, these are not very helpful.
@@ -32,6 +33,7 @@ vc-description: |-
   
   Also check out my other creations — [Split Without Loss](https://www.codewars.com/kata/split-without-loss), [Adding Fractions](https://www.codewars.com/kata/adding-fractions),
   [Random Integers](https://www.codewars.com/kata/random-integers), [Implement String#transpose](https://www.codewars.com/kata/implement-string-number-transpose), [Implement Array#transpose!](https://www.codewars.com/kata/implement-array-number-transpose), [Arrays and Procs #1](https://www.codewars.com/kata/arrays-and-procs-number-1), and [Arrays and Procs #2](https://www.codewars.com/kata/arrays-and-procs-number-2)
+  -/
 
 vc-preamble: |-
 
@@ -66,59 +68,59 @@ vc-theorems: |-
   theorem basic_camel_case :
     case_id "helloWorld" = "camel" := sorry
   
-  /--
+  /-
   info: 'snake'
   -/
-  #guard_msgs in
-  #eval case_id "hello_world"
+  -- #guard_msgs in
+  -- #eval case_id "hello_world"
   
-  /--
+  /-
   info: 'snake'
   -/
-  #guard_msgs in
-  #eval case_id "hello_to_the_world"
+  -- #guard_msgs in
+  -- #eval case_id "hello_to_the_world"
   
-  /--
+  /-
   info: 'kebab'
   -/
-  #guard_msgs in
-  #eval case_id "hello-world"
+  -- #guard_msgs in
+  -- #eval case_id "hello-world"
   
-  /--
+  /-
   info: 'kebab'
   -/
-  #guard_msgs in
-  #eval case_id "hello-to-the-world"
+  -- #guard_msgs in
+  -- #eval case_id "hello-to-the-world"
   
-  /--
+  /-
   info: 'camel'
   -/
-  #guard_msgs in
-  #eval case_id "helloWorld"
+  -- #guard_msgs in
+  -- #eval case_id "helloWorld"
   
-  /--
+  /-
   info: 'camel'
   -/
-  #guard_msgs in
-  #eval case_id "helloToTheWorld"
+  -- #guard_msgs in
+  -- #eval case_id "helloToTheWorld"
   
-  /--
+  /-
   info: 'none'
   -/
-  #guard_msgs in
-  #eval case_id "hello_World"
+  -- #guard_msgs in
+  -- #eval case_id "hello_World"
   
-  /--
+  /-
   info: 'none'
   -/
-  #guard_msgs in
-  #eval case_id "hello-World"
+  -- #guard_msgs in
+  -- #eval case_id "hello-World"
   
-  /--
+  /-
   info: 'none'
   -/
-  #guard_msgs in
-  #eval case_id "helloworld"
+  -- #guard_msgs in
+  -- #eval case_id "helloworld"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

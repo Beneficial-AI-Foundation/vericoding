@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an integer array arr, remove a subarray (can be empty) from arr such that the remaining elements in arr are non-decreasing.
   A subarray is a contiguous subsequence of the array.
   Return the length of the shortest subarray to remove.
@@ -26,6 +27,7 @@ vc-description: |-
   
   1 <= arr.length <= 10^5
   0 <= arr[i] <= 10^9
+  -/
 
 vc-preamble: |-
   def find_length_of_shortest_subarray (arr : List Int) : Nat :=
@@ -84,23 +86,23 @@ vc-theorems: |-
         if arr.get! 0 ≤ arr.get! 1 then 0 else 1) :=
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_length_of_shortest_subarray [1, 2, 3, 10, 4, 2, 3, 5]
+  -- #guard_msgs in
+  -- #eval find_length_of_shortest_subarray [1, 2, 3, 10, 4, 2, 3, 5]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval find_length_of_shortest_subarray [5, 4, 3, 2, 1]
+  -- #guard_msgs in
+  -- #eval find_length_of_shortest_subarray [5, 4, 3, 2, 1]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval find_length_of_shortest_subarray [1, 2, 3]
+  -- #guard_msgs in
+  -- #eval find_length_of_shortest_subarray [1, 2, 3]
 
 vc-postamble: |-
   -- Apps difficulty: interview

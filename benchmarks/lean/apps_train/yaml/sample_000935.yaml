@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   -----Problem-----
   
   There is an infinite one dimensional array ranging from (-infinity, infinity).A Zombie is currently at cell number 0. The zombie wants to reach cell number H. The Zombie moves in only two ways. The Zombie either
@@ -54,6 +55,7 @@ vc-description: |-
   Because both U and D are even, you will always be in an even cell.Thus there is no way to reach cell      number 3.
   
   p { text-align:justify }
+  -/
 
 vc-preamble: |-
 
@@ -80,17 +82,17 @@ vc-theorems: |-
     let result := find_min_zombie_moves h u d
     result = -1 → h % Nat.gcd u d ≠ 0 := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_min_zombie_moves 3 2 1
+  -- #guard_msgs in
+  -- #eval find_min_zombie_moves 3 2 1
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval find_min_zombie_moves 3 2 2
+  -- #guard_msgs in
+  -- #eval find_min_zombie_moves 3 2 2
 
 vc-postamble: |-
   -- Apps difficulty: interview

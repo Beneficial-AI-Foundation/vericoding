@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A palindrome is a word, phrase, number, or other sequence of characters which reads the same backward as forward. Examples of numerical palindromes are: 
   
   2332
@@ -31,6 +32,7 @@ vc-description: |-
   Numerical Palindrome #3.5
   Numerical Palindrome #4
   Numerical Palindrome #5
+  -/
 
 vc-preamble: |-
 
@@ -62,35 +64,35 @@ vc-theorems: |-
     (h2 : isPalindrome (toString n)) :
     findNearestPalindrome n = toString n := sorry
   
-  /--
+  /-
   info: 11
   -/
-  #guard_msgs in
-  #eval find_nearest_palindrome 8
+  -- #guard_msgs in
+  -- #eval find_nearest_palindrome 8
   
-  /--
+  /-
   info: 282
   -/
-  #guard_msgs in
-  #eval find_nearest_palindrome 281
+  -- #guard_msgs in
+  -- #eval find_nearest_palindrome 281
   
-  /--
+  /-
   info: 1001
   -/
-  #guard_msgs in
-  #eval find_nearest_palindrome 1029
+  -- #guard_msgs in
+  -- #eval find_nearest_palindrome 1029
   
-  /--
+  /-
   info: 1221
   -/
-  #guard_msgs in
-  #eval find_nearest_palindrome 1221
+  -- #guard_msgs in
+  -- #eval find_nearest_palindrome 1221
   
-  /--
+  /-
   info: 'Not valid'
   -/
-  #guard_msgs in
-  #eval find_nearest_palindrome "1221"
+  -- #guard_msgs in
+  -- #eval find_nearest_palindrome "1221"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

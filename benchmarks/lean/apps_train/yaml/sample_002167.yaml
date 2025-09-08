@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There is a tree with N vertices numbered 1 through N.
   The i-th edge connects Vertex x_i and y_i.
   Each vertex is painted white or black.
@@ -46,6 +47,7 @@ vc-description: |-
    - Change the color of Vertex 2 to black.
    - Move to Vertex 4, then change the color of Vertex 4 to black.
    - Move to Vertex 5, then change the color of Vertex 5 to black.
+  -/
 
 vc-preamble: |-
 
@@ -76,23 +78,23 @@ vc-theorems: |-
   theorem four_nodes_alternating_nonneg :
     solve_cat_coloring 4 [(1,2), (2,3), (3,4)] "WBWB" ≥ 0 := by sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval solve_cat_coloring 5 [(1, 2), (2, 3), (2, 4), (4, 5)] "WBBWW"
+  -- #guard_msgs in
+  -- #eval solve_cat_coloring 5 [(1, 2), (2, 3), (2, 4), (4, 5)] "WBBWW"
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval solve_cat_coloring 6 [(3, 1), (4, 5), (2, 6), (6, 1), (3, 4)] "WWBWBB"
+  -- #guard_msgs in
+  -- #eval solve_cat_coloring 6 [(3, 1), (4, 5), (2, 6), (6, 1), (3, 4)] "WWBWBB"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve_cat_coloring 1 [] "B"
+  -- #guard_msgs in
+  -- #eval solve_cat_coloring 1 [] "B"
 
 vc-postamble: |-
   -- Apps difficulty: competition

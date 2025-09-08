@@ -1,0 +1,62 @@
+/-
+We are given a 2-dimensional grid. "." is an empty cell, "#" is a wall, "@" is the starting point, ("a", "b", ...) are keys, and ("A", "B", ...) are locks.
+We start at the starting point, and one move consists of walking one space in one of the 4 cardinal directions.  We cannot walk outside the grid, or walk into a wall.  If we walk over a key, we pick it up.  We can't walk over a lock unless we have the corresponding key.
+For some 1 <= K <= 6, there is exactly one lowercase and one uppercase letter of the first K letters of the English alphabet in the grid.  This means that there is exactly one key for each lock, and one lock for each key; and also that the letters used to represent the keys and locks were chosen in the same order as the English alphabet.
+Return the lowest number of moves to acquire all keys.  If it's impossible, return -1.
+
+Example 1:
+Input: ["@.a.#","###.#","b.A.B"]
+Output: 8
+
+Example 2:
+Input: ["@..aA","..B#.","....b"]
+Output: 6
+
+Note:
+
+1 <= grid.length <= 30
+1 <= grid[0].length <= 30
+grid[i][j] contains only '.', '#', '@', 'a'-'f' and 'A'-'F'
+The number of keys is in [1, 6].  Each key has a different letter and opens exactly one lock.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def isValidGrid (grid : List String) : Bool := sorry
+
+def shortestPathAllKeys (grid : List String) : Int := sorry
+
+theorem shortestPathAllKeys_non_negative_or_neg1 (grid : List String) 
+  (h: isValidGrid grid = true) :
+  let res := shortestPathAllKeys grid
+  res = -1 ∨ res ≥ 0 := sorry
+
+theorem shortestPathAllKeys_geq_keycount (grid : List String) 
+  (h: isValidGrid grid = true) :
+  let res := shortestPathAllKeys grid
+  let keyCount := (grid.map (λ row => row.toList.filter Char.isLower)).join.length
+  res = -1 ∨ res ≥ keyCount := sorry
+
+theorem shortestPathAllKeys_empty_grid (grid : List String)
+  (h1: grid = ["@"]) :
+  shortestPathAllKeys grid = 0 := sorry
+
+theorem shortestPathAllKeys_simple_grid (grid : List String)
+  (h1: grid = ["@.", ".."]) :
+  shortestPathAllKeys grid = 0 := sorry
+
+/-
+info: 8
+-/
+-- #guard_msgs in
+-- #eval shortest_path_all_keys ["@.a.#", "###.#", "b.A.B"]
+
+/-
+info: 6
+-/
+-- #guard_msgs in
+-- #eval shortest_path_all_keys ["@..aA", "..B#.", "....b"]
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

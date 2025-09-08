@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string that consists of only uppercase English letters, you can replace any letter in the string with another letter at most k times. Find the length of a longest substring containing all repeating letters you can get after performing the above operations.
   
   Note:
@@ -26,6 +27,7 @@ vc-description: |-
   Explanation:
   Replace the one 'A' in the middle with 'B' and form "AABBBBA".
   The substring "BBBB" has the longest repeating letters, which is 4.
+  -/
 
 vc-preamble: |-
 
@@ -62,23 +64,23 @@ vc-theorems: |-
     character_replacement s k ≤ character_replacement s (k + 1) :=
     sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval character_replacement "ABAB" 2
+  -- #guard_msgs in
+  -- #eval character_replacement "ABAB" 2
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval character_replacement "AABABBA" 1
+  -- #guard_msgs in
+  -- #eval character_replacement "AABABBA" 1
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval character_replacement "" 2
+  -- #guard_msgs in
+  -- #eval character_replacement "" 2
 
 vc-postamble: |-
   -- Apps difficulty: interview

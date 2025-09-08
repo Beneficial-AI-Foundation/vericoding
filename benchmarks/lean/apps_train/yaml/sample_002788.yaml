@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   #### Task:
   
   Your job here is to implement a function `factors`, which takes a number `n`, and outputs an array of arrays comprised of two
@@ -23,6 +24,7 @@ vc-description: |-
   [Random Integers](https://www.codewars.com/kata/random-integers), [Implement String#transpose](https://www.codewars.com/kata/implement-string-number-transpose), [Implement Array#transpose!](https://www.codewars.com/kata/implement-array-number-transpose), [Arrays and Procs #1](https://www.codewars.com/kata/arrays-and-procs-number-1), and [Arrays and Procs #2](https://www.codewars.com/kata/arrays-and-procs-number-2).
   
   If you notice any issues or have any suggestions/comments whatsoever, please don't hesitate to mark an issue or just comment. Thanks!
+  -/
 
 vc-preamble: |-
 
@@ -55,23 +57,23 @@ vc-theorems: |-
     let (sq, cb) := factors n
     ∀ x ∈ cb, x ∈ sq := sorry
   
-  /--
+  /-
   info: [[2, 4], [2]]
   -/
-  #guard_msgs in
-  #eval factors 16
+  -- #guard_msgs in
+  -- #eval factors 16
   
-  /--
+  /-
   info: [[3, 9], [3]]
   -/
-  #guard_msgs in
-  #eval factors 81
+  -- #guard_msgs in
+  -- #eval factors 81
   
-  /--
+  /-
   info: [[2, 5, 10], []]
   -/
-  #guard_msgs in
-  #eval factors 100
+  -- #guard_msgs in
+  -- #eval factors 100
 
 vc-postamble: |-
   -- Apps difficulty: introductory

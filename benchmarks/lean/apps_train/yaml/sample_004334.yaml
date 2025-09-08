@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this Kata you are a builder and you are assigned a job of building a wall with a specific size (God knows why...).
   
   Create a function called `build_a_wall` (or `buildAWall` in JavaScript) that takes `x` and `y` as integer arguments (which represent the number of rows of bricks for the wall and the number of bricks in each row respectively) and outputs the wall as a string with the following symbols:
@@ -28,6 +29,7 @@ vc-description: |-
   build_a_wall(123,987) => "Naah, too much...here's my resignation."
   123 * 987 = 121401 > 10000
   ```
+  -/
 
 vc-preamble: |-
 

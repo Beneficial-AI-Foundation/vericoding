@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The biggest event of the year – Cota 2 world championship "The Innernational" is right around the corner. $2^n$ teams will compete in a double-elimination format (please, carefully read problem statement even if you know what is it) to identify the champion. 
   
   Teams are numbered from $1$ to $2^n$ and will play games one-on-one. All teams start in the upper bracket.
@@ -52,6 +53,7 @@ vc-description: |-
   In the second example, teams $7$ and $8$ have to play with each other in the first game of upper bracket (game $d$). Team $8$ can win all remaining games in upper bracket, when teams $1$ and $7$ will compete in the lower bracket. [Image]
   
   In the third example, your favourite teams can play in all games of the championship. [Image]
+  -/
 
 vc-preamble: |-
 
@@ -72,23 +74,23 @@ vc-theorems: |-
   theorem empty_tournament_zero_games (n: Nat) :
     solve_tournament_max_games n 0 [] = 0 := sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval solve_tournament_max_games 3 1 [6]
+  -- #guard_msgs in
+  -- #eval solve_tournament_max_games 3 1 [6]
   
-  /--
+  /-
   info: 11
   -/
-  #guard_msgs in
-  #eval solve_tournament_max_games 3 3 [1, 7, 8]
+  -- #guard_msgs in
+  -- #eval solve_tournament_max_games 3 3 [1, 7, 8]
   
-  /--
+  /-
   info: 14
   -/
-  #guard_msgs in
-  #eval solve_tournament_max_games 3 4 [1, 3, 5, 7]
+  -- #guard_msgs in
+  -- #eval solve_tournament_max_games 3 4 [1, 3, 5, 7]
 
 vc-postamble: |-
   -- Apps difficulty: competition

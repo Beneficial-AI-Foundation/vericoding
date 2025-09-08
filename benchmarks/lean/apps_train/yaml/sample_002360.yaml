@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We are given an array A of N lowercase letter strings, all of the same length.
   Now, we may choose any set of deletion indices, and for each string, we delete all the characters in those indices.
   For example, if we have an array A = ["abcdef","uvwxyz"] and deletion indices {0, 2, 3}, then the final array after deletions is ["bef", "vyz"], and the remaining columns of A are ["b","v"], ["e","y"], and ["f","z"].  (Formally, the c-th column is [A[0][c], A[1][c], ..., A[A.length-1][c]]).
@@ -26,6 +27,7 @@ vc-description: |-
   
   1 <= A.length <= 100
   1 <= A[i].length <= 1000
+  -/
 
 vc-preamble: |-
 
@@ -64,23 +66,23 @@ vc-theorems: |-
       0 ≤ n ∧ n ≤ strings[0]!.length :=
     sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval min_deletion_size ["cba", "daf", "ghi"]
+  -- #guard_msgs in
+  -- #eval min_deletion_size ["cba", "daf", "ghi"]
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval min_deletion_size ["a", "b"]
+  -- #guard_msgs in
+  -- #eval min_deletion_size ["a", "b"]
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval min_deletion_size ["zyx", "wvu", "tsr"]
+  -- #guard_msgs in
+  -- #eval min_deletion_size ["zyx", "wvu", "tsr"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

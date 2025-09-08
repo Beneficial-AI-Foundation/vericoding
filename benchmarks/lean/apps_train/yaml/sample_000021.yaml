@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Among Johnny's numerous hobbies, there are two seemingly harmless ones: applying bitwise operations and sneaking into his dad's office. As it is usually the case with small children, Johnny is unaware that combining these two activities can get him in a lot of trouble.
   
   There is a set $S$ containing very important numbers on his dad's desk. The minute Johnny heard about it, he decided that it's a good idea to choose a positive integer $k$ and replace each element $s$ of the set $S$ with $s \oplus k$ ($\oplus$ denotes the exclusive or operation). 
@@ -48,6 +49,7 @@ vc-description: |-
   -----Note-----
   
   In the first test case, the answer is $1$ because it is a minimum positive integer and it satisfies all the conditions.
+  -/
 
 vc-preamble: |-
 
@@ -73,23 +75,23 @@ vc-theorems: |-
     s.length ≥ 2 → 
     find_smallest_k n s = find_smallest_k n s.reverse := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval find_smallest_k 4 [1, 0, 2, 3]
+  -- #guard_msgs in
+  -- #eval find_smallest_k 4 [1, 0, 2, 3]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval find_smallest_k 6 [10, 7, 14, 8, 3, 12]
+  -- #guard_msgs in
+  -- #eval find_smallest_k 6 [10, 7, 14, 8, 3, 12]
   
-  /--
+  /-
   info: 1023
   -/
-  #guard_msgs in
-  #eval find_smallest_k 2 [0, 1023]
+  -- #guard_msgs in
+  -- #eval find_smallest_k 2 [0, 1023]
 
 vc-postamble: |-
   -- Apps difficulty: interview

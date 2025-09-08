@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Dhiraj loves Chocolates.He loves chocolates so much that he can eat up to $1000$ chocolates a day. But his mom is fed up by this habit of him and decides to take things in her hand.
   Its diwali Season and Dhiraj has got a lot of boxes of chocolates and Dhiraj's mom is afraid that dhiraj might eat all boxes of chocolates.
   So she told Dhiraj that he can eat only exactly $k$ number of chocolates and dhiraj has to finish all the chocolates in box selected by him and then move on to next box of chocolate.Now Dhiraj is confused that whether he will be able to eat $k$ number of chocolates or not. Since dhiraj is weak at maths,he asks for your help to tell him whether he can eat $k$ number of chocolates or not. 
@@ -32,6 +33,7 @@ vc-description: |-
   -----Sample Output:-----
   1
   0
+  -/
 
 vc-preamble: |-
   def sumList (list : List Int) : Int :=
@@ -87,23 +89,23 @@ vc-theorems: |-
     can_eat_chocolates k arr.length arr = 1 :=
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval can_eat_chocolates 20 5 [8, 7, 2, 10, 5]
+  -- #guard_msgs in
+  -- #eval can_eat_chocolates 20 5 [8, 7, 2, 10, 5]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval can_eat_chocolates 11 4 [6, 8, 2, 10]
+  -- #guard_msgs in
+  -- #eval can_eat_chocolates 11 4 [6, 8, 2, 10]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval can_eat_chocolates 15 3 [5, 5, 5]
+  -- #guard_msgs in
+  -- #eval can_eat_chocolates 15 3 [5, 5, 5]
 
 vc-postamble: |-
   -- Apps difficulty: interview

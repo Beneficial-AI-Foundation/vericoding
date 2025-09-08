@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Denis was very sad after Nastya rejected him. So he decided to walk through the gateways to have some fun. And luck smiled at him! When he entered the first courtyard, he met a strange man who was selling something. 
   
   Denis bought a mysterious item and it was... Random permutation generator! Denis could not believed his luck.
@@ -71,6 +72,7 @@ vc-description: |-
   At the $5$ step, $r = [4, 4, 4, 4, \times], count = [0, 0, 0, 4, 0]$. The maximum value is $4$ and is reached only at the $4$ position, so the generator will choose this position.
   
   In total, we got a permutation of $2, 3, 4, 5, 1$, that is, a generator could generate it.
+  -/
 
 vc-preamble: |-
 
@@ -102,23 +104,23 @@ vc-theorems: |-
   theorem input_length_matches {n : Nat} {perm : List Nat} :
     can_generate_permutation n perm → perm.length = n := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval can_generate_permutation 5 [2, 3, 4, 5, 1]
+  -- #guard_msgs in
+  -- #eval can_generate_permutation 5 [2, 3, 4, 5, 1]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval can_generate_permutation 3 [1, 3, 2]
+  -- #guard_msgs in
+  -- #eval can_generate_permutation 3 [1, 3, 2]
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval can_generate_permutation 4 [4, 2, 3, 1]
+  -- #guard_msgs in
+  -- #eval can_generate_permutation 4 [4, 2, 3, 1]
 
 vc-postamble: |-
   -- Apps difficulty: competition

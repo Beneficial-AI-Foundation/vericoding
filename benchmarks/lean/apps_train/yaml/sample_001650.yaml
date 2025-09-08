@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your task in this Kata is to emulate text justification in monospace font. You will be given a single-lined text and the expected justification width. The longest word will never be greater than this width.
   
   Here are the rules:
@@ -50,6 +51,7 @@ vc-description: |-
   Also you can always take a look at how justification works in your text editor or directly in HTML (css: text-align: justify).
   
   Have fun :)
+  -/
 
 vc-preamble: |-
 
@@ -82,23 +84,23 @@ vc-theorems: |-
     (justify "a" 1 = "a") ∧ 
     (justify "a b" 3 = "a b") := sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval justify "123 45 6" 7
+  -- #guard_msgs in
+  -- #eval justify "123 45 6" 7
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval justify "test" 10
+  -- #guard_msgs in
+  -- #eval justify "test" 10
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval justify "123 456" 10
+  -- #guard_msgs in
+  -- #eval justify "123 456" 10
 
 vc-postamble: |-
   -- Apps difficulty: interview

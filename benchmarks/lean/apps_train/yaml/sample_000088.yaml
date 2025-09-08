@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Monocarp had a tree which consisted of $n$ vertices and was rooted at vertex $1$. He decided to study BFS (Breadth-first search), so he ran BFS on his tree, starting from the root. BFS can be described by the following pseudocode:a = [] # the order in which vertices were processed
   
   q = Queue()
@@ -59,6 +60,7 @@ vc-description: |-
   In the second test case, there is only one tree with the given visiting order as well:  [Image] 
   
   In the third test case, an optimal tree with the given visiting order is shown below:  [Image]
+  -/
 
 vc-preamble: |-
 
@@ -79,23 +81,23 @@ vc-theorems: |-
     let result := solve_minimum_tree_height n xs
     0 ≤ result ∧ result ≤ xs.length - 1 := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval solve_minimum_tree_height 4 [1, 4, 3, 2]
+  -- #guard_msgs in
+  -- #eval solve_minimum_tree_height 4 [1, 4, 3, 2]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve_minimum_tree_height 2 [1, 2]
+  -- #guard_msgs in
+  -- #eval solve_minimum_tree_height 2 [1, 2]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve_minimum_tree_height 3 [1, 2, 3]
+  -- #guard_msgs in
+  -- #eval solve_minimum_tree_height 3 [1, 2, 3]
 
 vc-postamble: |-
   -- Apps difficulty: interview

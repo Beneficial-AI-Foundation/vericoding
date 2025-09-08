@@ -1,0 +1,64 @@
+/-
+You are asked to write a simple cypher that rotates every character (in range [a-zA-Z], special chars will be ignored by the cipher) by 13 chars. As an addition to the original ROT13 cipher, this cypher will also cypher numerical digits ([0-9]) with 5 chars.
+
+Example:
+
+    "The quick brown fox jumps over the 2 lazy dogs"
+
+will be cyphered to:
+
+    "Gur dhvpx oebja sbk whzcf bire gur 7 ynml qbtf"
+
+Your task is to write a ROT13.5 (ROT135) method that accepts a string and encrypts it.
+Decrypting is performed by using the same method, but by passing the encrypted string again.
+
+Note: when an empty string is passed, the result is also empty.
+
+When passing your succesful algorithm, some random tests will also be applied. Have fun!
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def ROT135 (s : String) : String := sorry
+
+theorem length_preserved (s : String) :
+  (ROT135 s).length = s.length := by sorry
+
+theorem reversible (s : String) :
+  ROT135 (ROT135 s) = s := by sorry
+
+theorem letter_shifted_13 (c : Char) (h : c.isAlpha) :
+  let result := ROT135 c.toString
+  (result.get! 0).isUpper = c.isUpper ∧
+  result.get! 0 ≠ c ∧
+  (result.get! 0).isAlpha := by sorry
+
+theorem digit_shifted_5 (d : Char) (h : d.isDigit) :
+  let result := ROT135 d.toString
+  (result.get! 0).isDigit ∧
+  result.get! 0 ≠ d := by sorry
+
+theorem other_chars_unchanged (c : Char) (h₁ : ¬c.isAlpha) (h₂ : ¬c.isDigit) :
+  ROT135 c.toString = c.toString := by sorry
+
+/-
+info: expected1
+-/
+-- #guard_msgs in
+-- #eval ROT135 "The quick brown fox jumps over the 2 lazy dogs"
+
+/-
+info: test1
+-/
+-- #guard_msgs in
+-- #eval ROT135 expected1
+
+/-
+info: expected3
+-/
+-- #guard_msgs in
+-- #eval ROT135 "1234567890"
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

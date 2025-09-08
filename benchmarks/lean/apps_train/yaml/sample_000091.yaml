@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given two strings of equal length $s$ and $t$ consisting of lowercase Latin letters. You may perform any number (possibly, zero) operations on these strings.
   
   During each operation you choose two adjacent characters in any string and assign the value of the first character to the value of the second or vice versa.
@@ -47,6 +48,7 @@ vc-description: |-
   In the second query, the strings are equal initially, so the answer is "YES".
   
   In the third query, you can not make strings $s$ and $t$ equal. Therefore, the answer is "NO".
+  -/
 
 vc-preamble: |-
 
@@ -76,23 +78,23 @@ vc-theorems: |-
     (h2 : ∃ c, c ∈ s.data ∧ c ∈ t.data) :
     are_strings_transformable s t = true := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval are_strings_transformable "xabb" "aabx"
+  -- #guard_msgs in
+  -- #eval are_strings_transformable "xabb" "aabx"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval are_strings_transformable "technocup" "technocup"
+  -- #guard_msgs in
+  -- #eval are_strings_transformable "technocup" "technocup"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval are_strings_transformable "a" "z"
+  -- #guard_msgs in
+  -- #eval are_strings_transformable "a" "z"
 
 vc-postamble: |-
   -- Apps difficulty: interview

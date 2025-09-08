@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Not everyone probably knows that Chef has younder brother Jeff. Currently Jeff learns to read.
   He knows some subset of the letter of Latin alphabet. In order to help Jeff to study, Chef gave him a book with the text consisting of N words. Jeff can read a word iff it consists only of the letters he knows.
   Now Chef is curious about which words his brother will be able to read, and which are not. Please help him!
@@ -34,6 +35,7 @@ vc-description: |-
   -----Explanation-----
   The first word can be read.
   The second word contains the letters d, o and g that aren't known by Jeff.
+  -/
 
 vc-preamble: |-
 
@@ -94,23 +96,23 @@ vc-theorems: |-
     (∃ c ∈ word.data, c ∉ known_letters.data) →
     can_read_words known_letters [word] = ["No"] := sorry
   
-  /--
+  /-
   info: ['Yes', 'No']
   -/
-  #guard_msgs in
-  #eval can_read_words "act" ["cat", "dog"]
+  -- #guard_msgs in
+  -- #eval can_read_words "act" ["cat", "dog"]
   
-  /--
+  /-
   info: ['Yes', 'No', 'Yes']
   -/
-  #guard_msgs in
-  #eval can_read_words "a" ["a", "b", "aa"]
+  -- #guard_msgs in
+  -- #eval can_read_words "a" ["a", "b", "aa"]
   
-  /--
+  /-
   info: ['Yes', 'Yes', 'Yes', 'No']
   -/
-  #guard_msgs in
-  #eval can_read_words "xyz" ["x", "xy", "xyz", "abc"]
+  -- #guard_msgs in
+  -- #eval can_read_words "xyz" ["x", "xy", "xyz", "abc"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

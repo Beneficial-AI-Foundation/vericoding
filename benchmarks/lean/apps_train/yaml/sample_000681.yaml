@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Now-a-days, Manish is becoming  famous for bank robbery in the country because of his cleverness, he never robs own his own.He has four workers A , B, C, and D , all working under him.All of the four take some amount for that. There are total N banks in the country and Manish wants to rob all the banks with minimum
   
   amount spent on workers.Only one worker is allowed to rob the ith bank but following a condition that if one worker robs ith bank, then he can't rob (i+1) th bank.
@@ -40,6 +41,7 @@ vc-description: |-
   
   Sample Output
   10
+  -/
 
 vc-preamble: |-
   def minRobberyCost (n : Nat) (costs : List (List Nat)) : Nat :=
@@ -91,23 +93,23 @@ vc-theorems: |-
     (h3 : ∀ lst ∈ costs, ∀ x ∈ lst, x > 0) :
     minRobberyCost 2 costs = findMinValidPath costs := by sorry
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval min_robbery_cost 3 [[4, 7, 2, 9], [5, 6, 4, 7], [2, 6, 4, 3]]
+  -- #guard_msgs in
+  -- #eval min_robbery_cost 3 [[4, 7, 2, 9], [5, 6, 4, 7], [2, 6, 4, 3]]
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval min_robbery_cost 2 [[1, 2, 3, 4], [5, 6, 7, 8]]
+  -- #guard_msgs in
+  -- #eval min_robbery_cost 2 [[1, 2, 3, 4], [5, 6, 7, 8]]
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval min_robbery_cost 1 [[10, 20, 30, 40]]
+  -- #guard_msgs in
+  -- #eval min_robbery_cost 1 [[10, 20, 30, 40]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

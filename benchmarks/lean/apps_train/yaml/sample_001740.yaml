@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Implementing the class MajorityChecker, which has the following API:
   
   MajorityChecker(int[] arr) constructs an instance of MajorityChecker with the given array arr;
@@ -22,6 +23,7 @@ vc-description: |-
   For each query, 0 <= left <= right < len(arr)
   For each query, 2 * threshold > right - left + 1
   The number of queries is at most 10000
+  -/
 
 vc-preamble: |-
 

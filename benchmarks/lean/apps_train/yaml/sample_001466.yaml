@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The Siruseri Singing Championship is going to start, and Lavanya wants to figure out the outcome before the tournament even begins! Looking at past tournaments, she realizes that the judges care only about the pitches that the singers can sing in, and so she devises a method through which she can accurately predict the outcome of a match between any two singers. 
   She represents various pitches as integers and has assigned a lower limit and an upper limit for each singer, which corresponds to their vocal range. For any singer, the lower limit will always be less than the upper limit. If a singer has lower limit $L$ and upper limit $U$ ($L < U$), it means that this particular singer can sing in all the pitches between $L$ and $U$, that is they can sing in the pitches {$L, L+1, L+2, \ldots, U$}. 
   The lower bounds and upper bounds of all the singers are distinct. When two singers $S_i$ and $S_j$ with bounds ($L_i$, $U_i)$ and ($L_j$, $U_j$) compete against each other, $S_i$ wins if they can sing in every pitch that $S_j$ can sing in, and some more pitches. Similarly, $S_j$ wins if they can sing in every pitch that $S_i$ can sing in, and some more pitches. If neither of those two conditions are met, the match ends up as a draw. 
@@ -52,6 +53,7 @@ vc-description: |-
   Hence the output is 4 1 1
   Testcase 2: There are three singers, with the lower bounds and upper bounds as (10, 22), (13, 21) and (15, 20).
   We see that the first singer wins against both second and third singers. And the second singer wins against the third singer. So the final total scores are (2 + 2), (0 + 2), (0 + 0), which is 4 2 0. Note that this would be a valid testcase in Subtask 2, because no match ends in a draw.
+  -/
 
 vc-preamble: |-
 
@@ -68,17 +70,17 @@ vc-theorems: |-
   theorem single_singer :
     solve_singing_championship [(1,2)] = [0] := sorry
   
-  /--
+  /-
   info: [4, 1, 1]
   -/
-  #guard_msgs in
-  #eval solve_singing_championship [(10, 20), (13, 18), (15, 19)]
+  -- #guard_msgs in
+  -- #eval solve_singing_championship [(10, 20), (13, 18), (15, 19)]
   
-  /--
+  /-
   info: [4, 2, 0]
   -/
-  #guard_msgs in
-  #eval solve_singing_championship [(10, 22), (13, 21), (15, 20)]
+  -- #guard_msgs in
+  -- #eval solve_singing_championship [(10, 22), (13, 21), (15, 20)]
 
 vc-postamble: |-
   -- Apps difficulty: interview

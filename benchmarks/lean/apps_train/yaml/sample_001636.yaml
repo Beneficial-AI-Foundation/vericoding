@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Professor Chambouliard hast just discovered a new type of magnet material. He put particles of this material in a box made of small boxes arranged 
   in K rows and N columns as a kind of **2D matrix** `K x N` where `K` and `N` are postive integers.
   He thinks that his calculations show that the force exerted by the particle in the small box `(k, n)` is:
@@ -24,6 +25,7 @@ vc-description: |-
   Have a look in "RUN EXAMPLES" at "assertFuzzyEquals".
   
   - [link to symbol Sigma](https://en.wikipedia.org/wiki/Summation)
+  -/
 
 vc-preamble: |-
 

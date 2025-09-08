@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given the root of a binary tree, consider all root to leaf paths: paths from the root to any leaf.  (A leaf is a node with no children.)
   A node is insufficient if every such root to leaf path intersecting this node has sum strictly less than limit.
   Delete all insufficient nodes simultaneously, and return the root of the resulting binary tree.
@@ -26,6 +27,7 @@ vc-description: |-
   The given tree will have between 1 and 5000 nodes.
   -10^5 <= node.val <= 10^5
   -10^9 <= limit <= 10^9
+  -/
 
 vc-preamble: |-
   def arrayToTree : List (Option Int) → Option TreeNode := sorry
@@ -65,23 +67,23 @@ vc-theorems: |-
     | none => True
     | some node => is_leaf node → path_sum node ≥ limit := sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval treeToArray sufficientSubset(root1, 1)
+  -- #guard_msgs in
+  -- #eval treeToArray sufficientSubset(root1, 1)
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval treeToArray sufficientSubset(root2, 22)
+  -- #guard_msgs in
+  -- #eval treeToArray sufficientSubset(root2, 22)
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval treeToArray sufficientSubset(root3, -1)
+  -- #guard_msgs in
+  -- #eval treeToArray sufficientSubset(root3, -1)
 
 vc-postamble: |-
   -- Apps difficulty: interview

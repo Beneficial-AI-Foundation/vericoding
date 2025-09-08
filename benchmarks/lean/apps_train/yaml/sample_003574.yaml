@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   When multiple master devices are connected to a single bus (https://en.wikipedia.org/wiki/System_bus), there needs to be an arbitration in order to choose which of them can have access to the bus (and 'talk' with a slave).
   
   We implement here a very simple model of bus mastering. Given `n`, a number representing the number of **masters** connected to the bus, and a fixed priority order (the first master has more access priority than the second and so on...), the task is to choose the selected master.
@@ -17,6 +18,7 @@ vc-description: |-
   * The resulting string (`char* `) should be allocated in the `arbitrate` function, and will be free'ed in the tests.
   
   * `n` is always greater or equal to 1.
+  -/
 
 vc-preamble: |-
 
@@ -42,23 +44,23 @@ vc-theorems: |-
     arbitrate (String.mk (List.replicate n '1')) n = 
     String.mk ('1' :: List.replicate (n - 1) '0') := sorry
   
-  /--
+  /-
   info: '001000000'
   -/
-  #guard_msgs in
-  #eval arbitrate "001000101" 9
+  -- #guard_msgs in
+  -- #eval arbitrate "001000101" 9
   
-  /--
+  /-
   info: '000000100'
   -/
-  #guard_msgs in
-  #eval arbitrate "000000101" 9
+  -- #guard_msgs in
+  -- #eval arbitrate "000000101" 9
   
-  /--
+  /-
   info: '0000'
   -/
-  #guard_msgs in
-  #eval arbitrate "0000" 4
+  -- #guard_msgs in
+  -- #eval arbitrate "0000" 4
 
 vc-postamble: |-
   -- Apps difficulty: introductory

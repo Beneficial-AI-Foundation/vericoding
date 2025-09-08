@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given two strings A and B, find the minimum number of times A has to be repeated such that B is a substring of it. If no such solution, return -1.
   
   For example, with A = "abcd" and B = "cdabcdab". 
@@ -7,6 +8,7 @@ vc-description: |-
   
   Note:
   The length of A and B will be between 1 and 10000.
+  -/
 
 vc-preamble: |-
 
@@ -55,23 +57,23 @@ vc-theorems: |-
     repeatedStringMatch s b ≤ n :=
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval repeatedStringMatch "abcd" "cdabcdab"
+  -- #guard_msgs in
+  -- #eval repeatedStringMatch "abcd" "cdabcdab"
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval repeatedStringMatch "abc" "xyz"
+  -- #guard_msgs in
+  -- #eval repeatedStringMatch "abc" "xyz"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval repeatedStringMatch "abc" "abcabc"
+  -- #guard_msgs in
+  -- #eval repeatedStringMatch "abc" "abcabc"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

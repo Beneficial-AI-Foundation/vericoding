@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ```if:python
   Create a function `args_count`, that returns the count of passed arguments
   ```
@@ -15,6 +16,7 @@ vc-description: |-
   args_count(1, 2, 3) -> 3
   args_count(1, 2, 3, 10) -> 4
   ```
+  -/
 
 vc-preamble: |-
 
@@ -38,29 +40,29 @@ vc-theorems: |-
   theorem argsCount_mixed_total {α : Type} (args : List α) (kwargs : List (String × α)) :
     argsCount args + argsCount kwargs = args.length + kwargs.length := by sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval args_count 1
+  -- #guard_msgs in
+  -- #eval args_count 1
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval args_count 1 2 3
+  -- #guard_msgs in
+  -- #eval args_count 1 2 3
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval args_count 
+  -- #guard_msgs in
+  -- #eval args_count 
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval args_count 1 2
+  -- #guard_msgs in
+  -- #eval args_count 1 2
 
 vc-postamble: |-
   -- Apps difficulty: introductory

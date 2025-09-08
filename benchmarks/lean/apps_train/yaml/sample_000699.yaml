@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The chef is trying to decode some pattern problems, Chef wants your help to code it. Chef has one number K to form a new pattern. Help the chef to code this pattern problem.
   
   -----Input:-----
@@ -33,6 +34,7 @@ vc-description: |-
   
   -----EXPLANATION:-----
   No need, else pattern can be decode easily.
+  -/
 
 vc-preamble: |-
 
@@ -67,23 +69,23 @@ vc-theorems: |-
     ∀ i, i ≥ 2 → i < nums.length →
       nums[i]! = nums[i-1]! + nums[i-2]! := sorry
   
-  /--
+  /-
   info: '0'
   -/
-  #guard_msgs in
-  #eval pattern_sequence 1
+  -- #guard_msgs in
+  -- #eval pattern_sequence 1
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval pattern_sequence 2
+  -- #guard_msgs in
+  -- #eval pattern_sequence 2
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval pattern_sequence 3
+  -- #guard_msgs in
+  -- #eval pattern_sequence 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

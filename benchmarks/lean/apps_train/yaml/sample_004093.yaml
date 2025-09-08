@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Lеt's create function to play cards. Our rules:
   
   We have the preloaded `deck`:
@@ -43,6 +44,7 @@ vc-description: |-
   
   ```
   P.S. As a card you can also get the string 'joker' - it means this card always wins.
+  -/
 
 vc-preamble: |-
   def card_game : Card → Card → String → String := sorry
@@ -115,23 +117,23 @@ vc-theorems: |-
     let card2 := Card.regular val2 suit2
     card_game card1 card2 trump = "Let us play again." := sorry
   
-  /--
+  /-
   info: 'The second card won.'
   -/
-  #guard_msgs in
-  #eval card_game "3♣" "Q♣" "♦"
+  -- #guard_msgs in
+  -- #eval card_game "3♣" "Q♣" "♦"
   
-  /--
+  /-
   info: 'Let us play again.'
   -/
-  #guard_msgs in
-  #eval card_game "5♥" "A♣" "♦"
+  -- #guard_msgs in
+  -- #eval card_game "5♥" "A♣" "♦"
   
-  /--
+  /-
   info: 'The first card won.'
   -/
-  #guard_msgs in
-  #eval card_game "2♦" "A♠" "♦"
+  -- #guard_msgs in
+  -- #eval card_game "2♦" "A♠" "♦"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

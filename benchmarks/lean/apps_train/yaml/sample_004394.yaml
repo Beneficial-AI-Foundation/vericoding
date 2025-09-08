@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Implement the function unique_in_order which takes as argument a sequence and returns a list of items without any elements with the same value next to each other and preserving the original order of elements.
   
   For example:
@@ -8,6 +9,7 @@ vc-description: |-
   unique_in_order('ABBCcAD')         == ['A', 'B', 'C', 'c', 'A', 'D']
   unique_in_order([1,2,2,3,3])       == [1,2,3]
   ```
+  -/
 
 vc-preamble: |-
 
@@ -39,23 +41,23 @@ vc-theorems: |-
   theorem empty_input_empty_output {α} [BEq α] :
     unique_in_order ([] : List α) = [] := sorry
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval unique_in_order ""
+  -- #guard_msgs in
+  -- #eval unique_in_order ""
   
-  /--
+  /-
   info: ['A', 'B', 'C', 'D', 'A', 'B']
   -/
-  #guard_msgs in
-  #eval unique_in_order "AAAABBBCCDAABBB"
+  -- #guard_msgs in
+  -- #eval unique_in_order "AAAABBBCCDAABBB"
   
-  /--
+  /-
   info: [1, 2, 3]
   -/
-  #guard_msgs in
-  #eval unique_in_order [1, 2, 2, 3, 3]
+  -- #guard_msgs in
+  -- #eval unique_in_order [1, 2, 2, 3, 3]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

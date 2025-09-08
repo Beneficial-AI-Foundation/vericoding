@@ -1,9 +1,11 @@
 vc-description: |-
+  /-
   A few years ago, Aaron left his old school and registered at another due to security reasons. Now he wishes to find Jane, one of his schoolmates and good friends.
   
   There are `n` schools numbered from 1 to `n`. One can travel between each pair of schools by buying a ticket. The ticket between schools `i` and `j` costs `(i + j) modulo (n + 1)` and can be used multiple times. Help Aaron find the minimum total cost to visit all schools. He can start and finish at any school.
   
   Range : 1 ≤ n ≤ 10^(6)
+  -/
 
 vc-preamble: |-
 
@@ -33,23 +35,23 @@ vc-theorems: |-
     findJane 4 = 1 ∧
     findJane 5 = 2 := sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval find_jane 2
+  -- #guard_msgs in
+  -- #eval find_jane 2
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval find_jane 10
+  -- #guard_msgs in
+  -- #eval find_jane 10
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_jane 5
+  -- #guard_msgs in
+  -- #eval find_jane 5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

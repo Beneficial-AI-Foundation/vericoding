@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   During Quarantine Time Chef is at home and he was quite confused about what to cook so, he went to his son and asked about what would he prefer to have? He replied, cakes.
   Now, chef cook $N$ number of cake and number of layers for every cake is different. After cakes are baked, Chef arranged them in a particular order and then generates a number by putting number of layers of cakes as digit in sequence (e.g., if chef arranges cakes with layers in sequence $2$, $3$ and $5$ then generated number is $235$).
   Chef has to make his son powerful in mathematics, so he called his son and ask him to arrange the cakes in all the possible ways and every time when different sequence is generated he has to note down the number. At the end he has to find sum of all the generated numbers. So, help him to complete this task.
@@ -26,6 +27,7 @@ vc-description: |-
   -----Explanation:-----
   Sum of all possibilities :
   $235 + 532 + 253 + 352 + 523 + 325 = 2220 $
+  -/
 
 vc-preamble: |-
 
@@ -58,23 +60,23 @@ vc-theorems: |-
     calc_layer_sum 2 [1, 2] = calc_layer_sum 2 [2, 1] :=
     sorry
   
-  /--
+  /-
   info: 2220
   -/
-  #guard_msgs in
-  #eval calc_layer_sum 3 [2, 3, 5]
+  -- #guard_msgs in
+  -- #eval calc_layer_sum 3 [2, 3, 5]
   
-  /--
+  /-
   info: 33
   -/
-  #guard_msgs in
-  #eval calc_layer_sum 2 [1, 2]
+  -- #guard_msgs in
+  -- #eval calc_layer_sum 2 [1, 2]
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval calc_layer_sum 1 [5]
+  -- #guard_msgs in
+  -- #eval calc_layer_sum 1 [5]
 
 vc-postamble: |-
   -- Apps difficulty: interview

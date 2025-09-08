@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given two integer arrays nums1 and nums2 sorted in ascending order and an integer k. 
   
   Define a pair (u,v) which consists of one element from the first array and one element from the second array.
@@ -33,6 +34,7 @@ vc-description: |-
   [1,3],[2,3]
   
   Credits:Special thanks to @elmirap and @StefanPochmann for adding this problem and creating all test cases.
+  -/
 
 vc-preamble: |-
   def isSorted (l : List Int) : Bool :=

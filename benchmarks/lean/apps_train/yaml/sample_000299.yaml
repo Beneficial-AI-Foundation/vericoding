@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an integer array with all positive numbers and no duplicates, find the number of possible combinations that add up to a positive integer target.
   
   Example:
@@ -25,6 +26,7 @@ vc-description: |-
   What limitation we need to add to the question to allow negative numbers? 
   
   Credits:Special thanks to @pbrother for adding this problem and creating all test cases.
+  -/
 
 vc-preamble: |-
 
@@ -64,23 +66,23 @@ vc-theorems: |-
       (h3 : ∀ n, n ∈ nums₁ ↔ n ∈ nums₂) :
     combination_sum4 nums₁ target = combination_sum4 nums₂ target := sorry
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval combination_sum4 [1, 2, 3] 4
+  -- #guard_msgs in
+  -- #eval combination_sum4 [1, 2, 3] 4
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval combination_sum4 [1, 2] 3
+  -- #guard_msgs in
+  -- #eval combination_sum4 [1, 2] 3
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval combination_sum4 [2] 2
+  -- #guard_msgs in
+  -- #eval combination_sum4 [2] 2
 
 vc-postamble: |-
   -- Apps difficulty: interview

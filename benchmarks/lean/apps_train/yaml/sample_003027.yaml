@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this kata your mission is to rotate matrix counter - clockwise N-times.
   
   So, you will have 2 inputs:
@@ -27,6 +28,7 @@ vc-description: |-
   Note: all matrixes will be square. Also random tests will have big numbers in input (times to turn)
   
   Happy coding!
+  -/
 
 vc-preamble: |-
   def Matrix (α : Type) [BEq α] := List (List α)
@@ -63,23 +65,23 @@ vc-theorems: |-
     List.length rotated = List.length (List.head! m) ∧ 
     ∀ (row : List α), List.elem row rotated → List.length row = List.length m := sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval rotate_against_clockwise [[1, 2], [3, 4]] 1
+  -- #guard_msgs in
+  -- #eval rotate_against_clockwise [[1, 2], [3, 4]] 1
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval rotate_against_clockwise [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]] 1
+  -- #guard_msgs in
+  -- #eval rotate_against_clockwise [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]] 1
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval rotate_against_clockwise matrix2 2
+  -- #guard_msgs in
+  -- #eval rotate_against_clockwise matrix2 2
 
 vc-postamble: |-
   -- Apps difficulty: introductory

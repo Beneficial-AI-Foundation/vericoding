@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Background
   
   The famous Collatz Sequence is generated with the following rules:
@@ -84,6 +85,7 @@ vc-description: |-
   This problem was inspired by [Project Euler #277: A Modified Collatz sequence](https://projecteuler.net/problem=277).
   
   If you enjoyed this Kata, please also have a look at [my other Katas](https://www.codewars.com/users/Bubbler/authored)!
+  -/
 
 vc-preamble: |-
   def collatz_steps (n : Nat) (s : String) : Nat :=

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    You are given an array of integers `a` and a non-negative number of operations `k`, applied to the array. Each operation consists of two parts:
   ```
@@ -54,6 +55,7 @@ vc-description: |-
    - [output] an integer array
   
       The array after `k` operations.
+  -/
 
 vc-preamble: |-
   def List.maximum' (l : List Int) (h : l ≠ []) : Int :=

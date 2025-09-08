@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A number is self-descriptive when the n'th digit describes the amount n appears in the number.
   
   E.g. 21200:
@@ -14,6 +15,7 @@ vc-description: |-
   There are no 4's in the number, so the fifth digit is 0
   
   Numbers can be of any length up to 9 digits and are only full integers. For a given number derive a function ```selfDescriptive(num)``` that returns; ```true``` if the number is self-descriptive or ```false``` if the number is not.
+  -/
 
 vc-preamble: |-
   def natToDigits (n : Nat) : List Nat :=
@@ -58,23 +60,23 @@ vc-theorems: |-
       (h2 : (natToDigits n).get! 0 > (natToDigits n).length - 1) :
       self_descriptive n = false := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval self_descriptive 21200
+  -- #guard_msgs in
+  -- #eval self_descriptive 21200
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval self_descriptive 3211000
+  -- #guard_msgs in
+  -- #eval self_descriptive 3211000
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval self_descriptive 21230
+  -- #guard_msgs in
+  -- #eval self_descriptive 21230
 
 vc-postamble: |-
   -- Apps difficulty: introductory

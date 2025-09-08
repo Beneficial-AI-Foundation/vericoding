@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   Two players - `"black"` and `"white"` are playing a game. The game consists of several rounds. If a player wins in a round, he is to move again during the next round. If a player loses a round, it's the other player who moves on the next round. Given whose turn it was on the previous round and whether he won, determine whose turn it is on the next round.
   
@@ -21,6 +22,7 @@ vc-description: |-
   For `lastPlayer = "black" and win = false`, the output should be `"white"`.
   
   For `lastPlayer = "white" and win = true`, the output should be `"white"`.
+  -/
 
 vc-preamble: |-
   def opposite : Player → Player 
@@ -44,23 +46,23 @@ vc-theorems: |-
   theorem whoseMove_lose (player : Player) (win : Bool) :
     win = false → whoseMove player win = opposite player := by sorry
   
-  /--
+  /-
   info: 'white'
   -/
-  #guard_msgs in
-  #eval whoseMove "black" False
+  -- #guard_msgs in
+  -- #eval whoseMove "black" False
   
-  /--
+  /-
   info: 'white'
   -/
-  #guard_msgs in
-  #eval whoseMove "white" True
+  -- #guard_msgs in
+  -- #eval whoseMove "white" True
   
-  /--
+  /-
   info: 'black'
   -/
-  #guard_msgs in
-  #eval whoseMove "black" True
+  -- #guard_msgs in
+  -- #eval whoseMove "black" True
 
 vc-postamble: |-
   -- Apps difficulty: introductory

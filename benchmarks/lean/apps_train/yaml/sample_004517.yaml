@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We'll create a function that takes in two parameters:
   
   * a sequence (length and types of items are irrelevant)
@@ -12,6 +13,7 @@ vc-description: |-
   true_if_even = lambda value, index: value % 2 == 0
   find_in_array([1,3,5,6,7], true_if_even) # --> 3
   ```
+  -/
 
 vc-preamble: |-
 
@@ -46,23 +48,23 @@ vc-theorems: |-
     result ≠ -1 → arr[result.toNat]!.toNat = result.toNat ∧
     result = -1 → ∀ (i : Nat), i < arr.length → arr[i]!.toNat ≠ i := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_in_array [1, 3, 5, 6, 7] lambda value, index: value % 2 == 0
+  -- #guard_msgs in
+  -- #eval find_in_array [1, 3, 5, 6, 7] lambda value, index: value % 2 == 0
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval find_in_array [1, 2, 3, 4, 5] lambda value, index: value == 10
+  -- #guard_msgs in
+  -- #eval find_in_array [1, 2, 3, 4, 5] lambda value, index: value == 10
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_in_array [5, 4, 2, 3, 4] lambda value, index: value == index
+  -- #guard_msgs in
+  -- #eval find_in_array [5, 4, 2, 3, 4] lambda value, index: value == index
 
 vc-postamble: |-
   -- Apps difficulty: introductory

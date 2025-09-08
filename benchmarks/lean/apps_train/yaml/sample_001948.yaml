@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Sasha is taking part in a programming competition. In one of the problems she should check if some rooted trees are isomorphic or not. She has never seen this problem before, but, being an experienced participant, she guessed that she should match trees to some sequences and then compare these sequences instead of trees. Sasha wants to match each tree with a sequence a_0, a_1, ..., a_{h}, where h is the height of the tree, and a_{i} equals to the number of vertices that are at distance of i edges from root. 
   
   Unfortunately, this time Sasha's intuition was wrong, and there could be several trees matching the same sequence. To show it, you need to write a program that, given the sequence a_{i}, builds two non-isomorphic rooted trees that match that sequence, or determines that there is only one such tree.
@@ -43,6 +44,7 @@ vc-description: |-
   The only tree in the first example and the two printed trees from the second example are shown on the picture:
   
   $88$
+  -/
 
 vc-preamble: |-
 
@@ -78,23 +80,23 @@ vc-theorems: |-
     let q := lines[2]!.splitOn " "
     w.length = q.length := sorry
   
-  /--
+  /-
   info: 'perfect'
   -/
-  #guard_msgs in
-  #eval solve_isomorphic_trees 2 [1, 1, 1]
+  -- #guard_msgs in
+  -- #eval solve_isomorphic_trees 2 [1, 1, 1]
   
-  /--
+  /-
   info: case2
   -/
-  #guard_msgs in
-  #eval solve_isomorphic_trees 2 [1, 2, 2]
+  -- #guard_msgs in
+  -- #eval solve_isomorphic_trees 2 [1, 2, 2]
   
-  /--
+  /-
   info: case3
   -/
-  #guard_msgs in
-  #eval solve_isomorphic_trees 2 [1, 3, 2]
+  -- #guard_msgs in
+  -- #eval solve_isomorphic_trees 2 [1, 3, 2]
 
 vc-postamble: |-
   -- Apps difficulty: competition

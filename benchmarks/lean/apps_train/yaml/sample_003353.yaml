@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Bit Vectors/Bitmaps
   A bitmap is one way of efficiently representing sets of unique integers using single bits.
   To see how this works, we can represent a set of unique integers between `0` and `< 20` using a vector/array of 20 bits:
@@ -21,6 +22,7 @@ vc-description: |-
   `let exampleOutput = [0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0,...]`
   More in-depth bitmap kata coming very soon, happy coding!
   To learn more about bitmapping and to see the inspiration for making these kata, checkout the book Programming Pearls by Jon Bently.  It's a powerful resource for any programmer!
+  -/
 
 vc-preamble: |-
 

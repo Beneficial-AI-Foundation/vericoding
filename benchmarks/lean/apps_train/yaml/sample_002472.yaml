@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Function Descriptions=====
   Polar coordinates are an alternative way of representing Cartesian coordinates or Complex Numbers.
   A complex number z
@@ -34,6 +35,7 @@ vc-description: |-
   Output two lines:
   The first line should contain the value of r.
   The second line should contain the value of φ.
+  -/
 
 vc-preamble: |-
   def ℂ := Float × Float  -- Simplified complex number representation

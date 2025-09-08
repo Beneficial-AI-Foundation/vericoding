@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given an integer sequence $A_1, A_2, \ldots, A_N$ and an integer $X$. Consider a $N \times N$ matrix $B$, where $B_{i,j} = A_i + A_j$ for each valid $i$ and $j$.
   You need to find the number of square submatrices of $B$ such that the sum of their elements is $X$. Formally, find the number of quartets $(x_1, y_1, x_2, y_2)$ such that $1 \le x_1 \le x_2 \le N$, $1 \le y_1 \le y_2 \le N$, $x_2-x_1 = y_2-y_1$ and $\sum_{i=x_1}^{x_2}\sum_{j=y_1}^{y_2} B_{i,j} = X$.
   
@@ -31,6 +32,7 @@ vc-description: |-
   -----Example Output-----
   6
   4
+  -/
 
 vc-preamble: |-
 
@@ -67,17 +69,17 @@ vc-theorems: |-
     count_square_submatrices n x arr = 0 :=
     sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval count_square_submatrices 5 36 [1, 2, 3, 1, 12]
+  -- #guard_msgs in
+  -- #eval count_square_submatrices 5 36 [1, 2, 3, 1, 12]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval count_square_submatrices 4 54 [3, 3, 3, 3]
+  -- #guard_msgs in
+  -- #eval count_square_submatrices 4 54 [3, 3, 3, 3]
 
 vc-postamble: |-
   -- Apps difficulty: interview

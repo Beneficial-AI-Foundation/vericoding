@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Vasya has written some permutation $p_1, p_2, \ldots, p_n$ of integers from $1$ to $n$, so for all $1 \leq i \leq n$ it is true that $1 \leq p_i \leq n$ and all $p_1, p_2, \ldots, p_n$ are different. After that he wrote $n$ numbers $next_1, next_2, \ldots, next_n$. The number $next_i$ is equal to the minimal index $i < j \leq n$, such that $p_j > p_i$. If there is no such $j$ let's let's define as $next_i = n + 1$.
   
   In the evening Vasya went home from school and due to rain, his notebook got wet. Now it is impossible to read some written numbers. Permutation and some values $next_i$ are completely lost! If for some $i$ the value $next_i$ is lost, let's say that $next_i = -1$.
@@ -54,6 +55,7 @@ vc-description: |-
   In the third test case, any permutation can be the answer because all numbers $next_i$ are lost.
   
   In the fourth test case, there is no satisfying permutation, so the answer is $-1$.
+  -/
 
 vc-preamble: |-
   def isValidPermutation (arr : List Int) : Bool :=
@@ -84,23 +86,23 @@ vc-theorems: |-
     isValidPermutation result := by
     sorry
   
-  /--
+  /-
   info: [1, 2, 3]
   -/
-  #guard_msgs in
-  #eval solve_next_permutation 3 [2, 3, 4]
+  -- #guard_msgs in
+  -- #eval solve_next_permutation 3 [2, 3, 4]
   
-  /--
+  /-
   info: [2, 1]
   -/
-  #guard_msgs in
-  #eval solve_next_permutation 2 [3, 3]
+  -- #guard_msgs in
+  -- #eval solve_next_permutation 2 [3, 3]
   
-  /--
+  /-
   info: [3, 1, 2, 4]
   -/
-  #guard_msgs in
-  #eval solve_next_permutation 4 [4, -1, 4, 5]
+  -- #guard_msgs in
+  -- #eval solve_next_permutation 4 [4, -1, 4, 5]
 
 vc-postamble: |-
   -- Apps difficulty: competition

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You have n super washing machines on a line. Initially, each washing machine has some dresses or is empty. 
   
   For each move, you could choose any m (1 ≤ m ≤ n) washing machines, and pass one dress of each washing machine to one of its adjacent washing machines  at the same time .  
@@ -39,6 +40,7 @@ vc-description: |-
   
   The range of n is [1, 10000].
   The range of dresses number in a super washing machine is [0, 1e5].
+  -/
 
 vc-preamble: |-
   def sum (l : List Nat) : Nat := sorry
@@ -73,23 +75,23 @@ vc-theorems: |-
     (h : findMinMoves machines = -1) :
     sum machines % machines.length ≠ 0 := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_min_moves [1, 0, 5]
+  -- #guard_msgs in
+  -- #eval find_min_moves [1, 0, 5]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_min_moves [0, 3, 0]
+  -- #guard_msgs in
+  -- #eval find_min_moves [0, 3, 0]
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval find_min_moves [0, 2, 0]
+  -- #guard_msgs in
+  -- #eval find_min_moves [0, 2, 0]
 
 vc-postamble: |-
   -- Apps difficulty: interview

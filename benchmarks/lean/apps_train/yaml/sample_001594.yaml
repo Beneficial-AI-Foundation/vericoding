@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   This kata is a continuation of [Part 1](http://www.codewars.com/kata/the-fibfusc-function-part-1). The `fibfusc` function is defined recursively as follows:
   
       fibfusc(0) = (1, 0)
@@ -14,6 +15,7 @@ vc-description: |-
   Hint 1: Use modulo `10 ** num_digits` arithmetic to keep all intermediary results small.
   
   Hint 2: Consider using an iterative ["number climber"](http://www.codewars.com/kata/number-climber) to avoid stack overflows.
+  -/
 
 vc-preamble: |-
 
@@ -39,23 +41,23 @@ vc-theorems: |-
   theorem fibfusc_growth : ∀ n : Nat,
     n > 4 → (let (_, y) := fibfusc n; y > 13 ∨ y < -13) := by sorry
   
-  /--
+  /-
   info: (1, 0)
   -/
-  #guard_msgs in
-  #eval fibfusc 0
+  -- #guard_msgs in
+  -- #eval fibfusc 0
   
-  /--
+  /-
   info: (0, 1)
   -/
-  #guard_msgs in
-  #eval fibfusc 1
+  -- #guard_msgs in
+  -- #eval fibfusc 1
   
-  /--
+  /-
   info: (-7, 13)
   -/
-  #guard_msgs in
-  #eval fibfusc 4
+  -- #guard_msgs in
+  -- #eval fibfusc 4
 
 vc-postamble: |-
   -- Apps difficulty: interview

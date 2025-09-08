@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a binary tree, determine if it is a valid binary search tree (BST).
   
   Assume a BST is defined as follows:
@@ -25,6 +26,7 @@ vc-description: |-
   Output: false
   Explanation: The input is: [5,1,4,null,null,3,6]. The root node's value
                is 5 but its right child's value is 4.
+  -/
 
 vc-preamble: |-
   def isValidBST : TreeNode → Bool :=
@@ -59,23 +61,23 @@ vc-theorems: |-
     isValidBST (insertIntoBST tree value) = true :=
     sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval isValidBST TreeNode(2)
+  -- #guard_msgs in
+  -- #eval isValidBST TreeNode(2)
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval isValidBST TreeNode(5)
+  -- #guard_msgs in
+  -- #eval isValidBST TreeNode(5)
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval isValidBST TreeNode(1)
+  -- #guard_msgs in
+  -- #eval isValidBST TreeNode(1)
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a integer $n$ ($n > 0$). Find any integer $s$ which satisfies these conditions, or report that there are no such numbers:
   
   In the decimal representation of $s$:   $s > 0$,  $s$ consists of $n$ digits,  no digit in $s$ equals $0$,  $s$ is not divisible by any of it's digits. 
@@ -36,6 +37,7 @@ vc-description: |-
   For the second test case, the possible solutions are: $23$, $27$, $29$, $34$, $37$, $38$, $43$, $46$, $47$, $49$, $53$, $54$, $56$, $57$, $58$, $59$, $67$, $68$, $69$, $73$, $74$, $76$, $78$, $79$, $83$, $86$, $87$, $89$, $94$, $97$, and $98$.
   
   For the third test case, one possible solution is $239$ because $239$ is not divisible by $2$, $3$ or $9$ and has three digits (none of which equals zero).
+  -/
 
 vc-preamble: |-
 
@@ -73,23 +75,23 @@ vc-theorems: |-
     ¬((solve_uneven_digit n).natAbs % (d.toNat - 48) = 0) := by
     sorry
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval solve_uneven_digit 1
+  -- #guard_msgs in
+  -- #eval solve_uneven_digit 1
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval len str(result)
+  -- #guard_msgs in
+  -- #eval len str(result)
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval len str(result)
+  -- #guard_msgs in
+  -- #eval len str(result)
 
 vc-postamble: |-
   -- Apps difficulty: interview

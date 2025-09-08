@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Let's call any (contiguous) subarray B (of A) a mountain if the following properties hold:
   
   B.length >= 3
@@ -26,6 +27,7 @@ vc-description: |-
   
   Can you solve it using only one pass?
   Can you solve it in O(1) space?
+  -/
 
 vc-preamble: |-
   def longestMountain (arr : Array Int) : Nat :=
@@ -58,23 +60,23 @@ vc-theorems: |-
     longestMountain #[x] = 0
     := sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval longestMountain #[2, 1, 4, 7, 3, 2, 5]
+  -- #guard_msgs in
+  -- #eval longestMountain #[2, 1, 4, 7, 3, 2, 5]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval longestMountain #[2, 2, 2]
+  -- #guard_msgs in
+  -- #eval longestMountain #[2, 2, 2]
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval longestMountain #[1, 2, 3, 4, 5, 4, 3, 2, 1]
+  -- #guard_msgs in
+  -- #eval longestMountain #[1, 2, 3, 4, 5, 4, 3, 2, 1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

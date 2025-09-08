@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   
   Write a function that accepts `msg` string and returns local tops of string from the highest to the lowest.  
@@ -28,6 +29,7 @@ vc-description: |-
   
   - [String tops](https://www.codewars.com/kata/59b7571bbf10a48c75000070)
   - [Square string tops](https://www.codewars.com/kata/5aa3e2b0373c2e4b420009af)
+  -/
 
 vc-preamble: |-
 
@@ -50,23 +52,23 @@ vc-theorems: |-
     (∀ c, c ∈ ((tops s).data.drop 2).take 3 → c ∈ s.data) ∧
     (∀ c, c ∈ ((tops s).data.drop 5).take 4 → c ∈ s.data) := by sorry
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval tops ""
+  -- #guard_msgs in
+  -- #eval tops ""
   
-  /--
+  /-
   info: 'cd'
   -/
-  #guard_msgs in
-  #eval tops "abcde"
+  -- #guard_msgs in
+  -- #eval tops "abcde"
   
-  /--
+  /-
   info: 'TUABCDElmnoabc34'
   -/
-  #guard_msgs in
-  #eval tops "123456789abcdefghijklmnopqrstuwyxvzABCDEFGHIJKLMNOPQRSTU"
+  -- #guard_msgs in
+  -- #eval tops "123456789abcdefghijklmnopqrstuwyxvzABCDEFGHIJKLMNOPQRSTU"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

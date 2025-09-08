@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Let X be the set of all integers between 0 and n-1. Suppose we have a collection S1, S2, ..., Sm of subsets of X. Say an atom A is a subset of X such that for each Si we have either A is a subset of Si or A and Si do not have any common elements.
   
   Your task is to find a collection A1, ..., Ak of atoms such that every item in X is in some Ai and no two Ai, Aj with i ≠ j share a common item. Surely such a collection exists as we could create a single set {x} for each x in X. A more interesting question is to minimize k, the number of atoms.
@@ -28,6 +29,7 @@ vc-description: |-
   Output:
   3
   4
+  -/
 
 vc-preamble: |-
   def solve_atoms (input : List (Nat × Nat) × List Nat) : List Nat := sorry
@@ -52,23 +54,23 @@ vc-theorems: |-
   theorem solve_atoms_all_groups (h : n > 0) :
     solve_atoms (all_case n) = List.replicate n 1 := sorry
   
-  /--
+  /-
   info: [3]
   -/
-  #guard_msgs in
-  #eval solve_atoms [case1]
+  -- #guard_msgs in
+  -- #eval solve_atoms [case1]
   
-  /--
+  /-
   info: [4]
   -/
-  #guard_msgs in
-  #eval solve_atoms [case2]
+  -- #guard_msgs in
+  -- #eval solve_atoms [case2]
   
-  /--
+  /-
   info: [3, 4]
   -/
-  #guard_msgs in
-  #eval solve_atoms [case1, case2]
+  -- #guard_msgs in
+  -- #eval solve_atoms [case1, case2]
 
 vc-postamble: |-
   -- Apps difficulty: interview

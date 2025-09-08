@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Consider the following series:
   
   `0,1,2,3,4,5,6,7,8,9,10,22,11,20,13,24...`There is nothing special between numbers `0` and `10`. 
@@ -24,6 +25,7 @@ vc-description: |-
   [Sequence convergence](https://www.codewars.com/kata/59971e64bfccc70748000068)
   
   [https://www.codewars.com/kata/unique-digit-sequence-ii-optimization-problem](https://www.codewars.com/kata/unique-digit-sequence-ii-optimization-problem)
+  -/
 
 vc-preamble: |-
 
@@ -44,23 +46,23 @@ vc-theorems: |-
   theorem find_num_upper_bound (n : Nat) (h : n > 0) :
     find_num n < 10000 := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval find_num 1
+  -- #guard_msgs in
+  -- #eval find_num 1
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval find_num 5
+  -- #guard_msgs in
+  -- #eval find_num 5
   
-  /--
+  /-
   info: 22
   -/
-  #guard_msgs in
-  #eval find_num 11
+  -- #guard_msgs in
+  -- #eval find_num 11
 
 vc-postamble: |-
   -- Apps difficulty: introductory

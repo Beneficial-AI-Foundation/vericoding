@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   One upon a time there were three best friends Abhinav, Harsh, and Akash decided to form a 
   team and take part in ICPC from KIIT. Participants are usually offered several problems during 
   the programming contest. Long before the start, the friends decided that they will implement a 
@@ -38,6 +39,7 @@ vc-description: |-
   and all three of them know how to solve the second problem. That means that they will write 
   solutions for these problems. Only Abhinav is sure about the solution for the third problem, but 
   that isn't enough, so the group won't take it.
+  -/
 
 vc-preamble: |-
 
@@ -67,23 +69,23 @@ vc-theorems: |-
     count_solved_problems N [] = 0 :=
   sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_solved_problems 3 [[1, 1, 0], [1, 1, 1], [1, 0, 0]]
+  -- #guard_msgs in
+  -- #eval count_solved_problems 3 [[1, 1, 0], [1, 1, 1], [1, 0, 0]]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_solved_problems 4 [[1, 1, 1], [0, 0, 0], [1, 1, 0], [0, 1, 1]]
+  -- #guard_msgs in
+  -- #eval count_solved_problems 4 [[1, 1, 1], [0, 0, 0], [1, 1, 0], [0, 1, 1]]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_solved_problems 2 [[0, 0, 0], [1, 0, 0]]
+  -- #guard_msgs in
+  -- #eval count_solved_problems 2 [[0, 0, 0], [1, 0, 0]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

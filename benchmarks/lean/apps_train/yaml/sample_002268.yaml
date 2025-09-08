@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Recently you have bought a snow walking robot and brought it home. Suppose your home is a cell $(0, 0)$ on an infinite grid.
   
   You also have the sequence of instructions of this robot. It is written as the string $s$ consisting of characters 'L', 'R', 'U' and 'D'. If the robot is in the cell $(x, y)$ right now, he can move to one of the adjacent cells (depending on the current instruction).  If the current instruction is 'L', then the robot can move to the left to $(x - 1, y)$;  if the current instruction is 'R', then the robot can move to the right to $(x + 1, y)$;  if the current instruction is 'U', then the robot can move to the top to $(x, y + 1)$;  if the current instruction is 'D', then the robot can move to the bottom to $(x, y - 1)$. 
@@ -57,6 +58,7 @@ vc-description: |-
   The picture corresponding to the second test case: [Image] Note that the direction of traverse does not matter 
   
   Another correct answer to the third test case: "URDDLLLUURDR".
+  -/
 
 vc-preamble: |-
 
@@ -97,17 +99,17 @@ vc-theorems: |-
     (min l r = 0 ∧ min u d = 0 → result = (0, "")) ∧
     (¬(min l r = 0 ∧ min u d = 0) → result.1 > 0) := sorry
   
-  /--
+  /-
   info: (2, 'LR')
   -/
-  #guard_msgs in
-  #eval solve "LRU"
+  -- #guard_msgs in
+  -- #eval solve "LRU"
   
-  /--
+  /-
   info: (0, '')
   -/
-  #guard_msgs in
-  #eval solve "LLL"
+  -- #guard_msgs in
+  -- #eval solve "LLL"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

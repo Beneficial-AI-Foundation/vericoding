@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   One player came to a casino and found a slot machine where everything depends only on how he plays. The rules follow.
   
   A positive integer $a$ is initially on the screen. The player can put a coin into the machine and then add $1$ to or subtract $1$ from any two adjacent digits. All digits must remain from $0$ to $9$ after this operation, and the leading digit must not equal zero. In other words, it is forbidden to add $1$ to $9$, to subtract $1$ from $0$ and to subtract $1$ from the leading $1$. Once the number on the screen becomes equal to $b$, the player wins the jackpot. $a$ and $b$ have the same number of digits.
@@ -57,6 +58,7 @@ vc-description: |-
   It's also possible to do these operations in reverse order, which makes another correct answer.
   
   In the last example, one can show that it's impossible to transform $35$ into $44$.
+  -/
 
 vc-preamble: |-
 

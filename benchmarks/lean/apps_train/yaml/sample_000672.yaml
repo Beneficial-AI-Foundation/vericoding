@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a sequence $A_1, A_2, \ldots, A_N$. For each valid $i$, the star value of the element $A_i$ is the number of valid indices $j < i$ such that $A_j$ is divisible by $A_i$.
   Chef is a curious person, so he wants to know the maximum star value in the given sequence. Help him find it.
   
@@ -30,6 +31,7 @@ vc-description: |-
   
   -----Explanation-----
   $A_5 = 2$ divides $4$, $28$ and $8$, so its star value is $3$. There is no element with a higher star value.
+  -/
 
 vc-preamble: |-
 
@@ -46,23 +48,23 @@ vc-theorems: |-
   theorem single_element_star_value (x : Nat) (h : x > 0) : 
     find_max_star_value #[x] = 0 := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_max_star_value #[8, 1, 28, 4, 2, 6, 7]
+  -- #guard_msgs in
+  -- #eval find_max_star_value #[8, 1, 28, 4, 2, 6, 7]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval find_max_star_value #[1, 2, 3]
+  -- #guard_msgs in
+  -- #eval find_max_star_value #[1, 2, 3]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval find_max_star_value #[3, 6, 9]
+  -- #guard_msgs in
+  -- #eval find_max_star_value #[3, 6, 9]
 
 vc-postamble: |-
   -- Apps difficulty: interview

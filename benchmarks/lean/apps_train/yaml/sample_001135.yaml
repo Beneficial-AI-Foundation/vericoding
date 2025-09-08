@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef has a sequence of N$N$ integers A1,A2,...,AN$A_1, A_2, ..., A_N$. 
   Chef thinks that a triplet of integers (i,j,k)$(i,j,k)$ is good if 1≤i<j<k≤N$1 \leq i < j < k \leq N$ and P$P$ in the following expression contains an odd number of ones in its binary representation:
   P=[Ai<<(⌊log2(Aj)⌋+⌊log2(Ak)⌋+2)]+[Aj<<(⌊log2(Ak)⌋+1)]+Ak$P = [ A_i<< (  \lfloor \log_2(A_j) \rfloor + \lfloor \log_2(A_k) \rfloor + 2 ) ] + [A_j << ( \lfloor \log_2(A_k) \rfloor + 1) ] + A_k$
@@ -26,6 +27,7 @@ vc-description: |-
   
   -----Sample Output:-----
   1
+  -/
 
 vc-preamble: |-
 
@@ -66,11 +68,11 @@ vc-theorems: |-
     count_good_triplets nums = count_good_triplets nums' :=
   sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_good_triplets [1, 1, 2, 3]
+  -- #guard_msgs in
+  -- #eval count_good_triplets [1, 1, 2, 3]
 
 vc-postamble: |-
   -- Apps difficulty: interview

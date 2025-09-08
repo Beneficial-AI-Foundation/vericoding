@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Yesterday, Chef found $K$ empty boxes in the cooler and decided to fill them with apples. He ordered $N$ apples, where $N$ is a multiple of $K$. Now, he just needs to hire someone who will distribute the apples into the boxes with professional passion. 
   Only two candidates passed all the interviews for the box filling job. In one minute, each candidate can put $K$ apples into boxes, but they do it in different ways: the first candidate puts exactly one apple in each box, while the second one chooses a random box with the smallest number of apples and puts $K$ apples in it.
   Chef is wondering if the final distribution of apples can even depend on which candidate he hires. Can you answer that question?
@@ -35,6 +36,7 @@ vc-description: |-
   Example case 1: No matter who is hired, all apples will be in the only box at the end.
   Example case 2: At the end, there will be two apples in each box.
   Example case 3: If we hire the first candidate, there will be one apple in each box, but if we hire the second one, there will be $10$ apples in one box and none in all other boxes.
+  -/
 
 vc-preamble: |-
 
@@ -59,23 +61,23 @@ vc-theorems: |-
   theorem edge_case_minimum :
     solve_apple_distribution 1 1 = "NO" := sorry
   
-  /--
+  /-
   info: 'NO'
   -/
-  #guard_msgs in
-  #eval solve_apple_distribution 5 1
+  -- #guard_msgs in
+  -- #eval solve_apple_distribution 5 1
   
-  /--
+  /-
   info: 'NO'
   -/
-  #guard_msgs in
-  #eval solve_apple_distribution 4 2
+  -- #guard_msgs in
+  -- #eval solve_apple_distribution 4 2
   
-  /--
+  /-
   info: 'YES'
   -/
-  #guard_msgs in
-  #eval solve_apple_distribution 10 10
+  -- #guard_msgs in
+  -- #eval solve_apple_distribution 10 10
 
 vc-postamble: |-
   -- Apps difficulty: interview

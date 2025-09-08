@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Background
   
   I drink too much coffee. Eventually it will probably kill me.
@@ -52,6 +53,7 @@ vc-description: |-
   Hint: https://en.wikipedia.org/wiki/Hexadecimal 
   
   *Note: A life-span prediction formula this accurate has got to be worth a lot of money to somebody! I am willing to sell my copyright to the highest bidder. Contact me via the discourse section of this Kata.*
+  -/
 
 vc-preamble: |-
 
@@ -77,23 +79,23 @@ vc-theorems: |-
   theorem limit_deterministic {h c : Int} :
       limit h c = limit h c := sorry
   
-  /--
+  /-
   info: [2645, 1162]
   -/
-  #guard_msgs in
-  #eval coffee_limits 1950 1 19
+  -- #guard_msgs in
+  -- #eval coffee_limits 1950 1 19
   
-  /--
+  /-
   info: [111, 0]
   -/
-  #guard_msgs in
-  #eval coffee_limits 1965 12 11
+  -- #guard_msgs in
+  -- #eval coffee_limits 1965 12 11
   
-  /--
+  /-
   info: [0, 11]
   -/
-  #guard_msgs in
-  #eval coffee_limits 1964 11 28
+  -- #guard_msgs in
+  -- #eval coffee_limits 1964 11 28
 
 vc-postamble: |-
   -- Apps difficulty: introductory

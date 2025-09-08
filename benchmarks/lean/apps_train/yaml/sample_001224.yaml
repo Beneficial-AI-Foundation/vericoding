@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef likes problems related to learning new languages. He only knows first N letters of English alphabet. Also he explores all M-letter words formed by the characters he knows. Define cost for a given M-letter word S, cost(S) = P1, S1+P2, S2+...+PM, SM, where Pi, j is i, jth entry of matrix P. Sort all the words by descending cost, if costs are equal, sort them lexicographically. You need to find K-th M-letter word in Chef's order.
   
   -----Input-----
@@ -28,6 +29,7 @@ vc-description: |-
   3 9
   
   Output:aaaba
+  -/
 
 vc-preamble: |-
 
@@ -52,17 +54,17 @@ vc-theorems: |-
     find_kth_word 2 5 17 [[7,9], [13,18], [10,12], [4,18], [3,9]] = "aaaba" ∧
     find_kth_word 1 1 1 [[5]] = "a" := sorry
   
-  /--
+  /-
   info: 'aaaba'
   -/
-  #guard_msgs in
-  #eval find_kth_word 2 5 17 [[7, 9], [13, 18], [10, 12], [4, 18], [3, 9]]
+  -- #guard_msgs in
+  -- #eval find_kth_word 2 5 17 [[7, 9], [13, 18], [10, 12], [4, 18], [3, 9]]
   
-  /--
+  /-
   info: 'a'
   -/
-  #guard_msgs in
-  #eval find_kth_word 1 1 1 [[5]]
+  -- #guard_msgs in
+  -- #eval find_kth_word 1 1 1 [[5]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

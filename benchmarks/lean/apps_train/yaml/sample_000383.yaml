@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a program to find the n-th ugly number.
   Ugly numbers are positive integers which are divisible by a or b or c.
   
@@ -25,6 +26,7 @@ vc-description: |-
   1 <= n, a, b, c <= 10^9
   1 <= a * b * c <= 10^18
   It's guaranteed that the result will be in range [1, 2 * 10^9]
+  -/
 
 vc-preamble: |-
   def find_nth_ugly_number (n a b c : Nat) : Nat := sorry
@@ -55,23 +57,23 @@ vc-theorems: |-
   theorem ugly_number_equal_divisors (a : Nat) (h : a > 0) :
     find_nth_ugly_number 1 a a a = a := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval find_nth_ugly_number 3 2 3 5
+  -- #guard_msgs in
+  -- #eval find_nth_ugly_number 3 2 3 5
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval find_nth_ugly_number 4 2 3 4
+  -- #guard_msgs in
+  -- #eval find_nth_ugly_number 4 2 3 4
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval find_nth_ugly_number 5 2 11 13
+  -- #guard_msgs in
+  -- #eval find_nth_ugly_number 5 2 11 13
 
 vc-postamble: |-
   -- Apps difficulty: interview

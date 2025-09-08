@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   #Bubbleing around
   
   Since everybody hates chaos and loves sorted lists we should implement some more sorting algorithms. Your task is to implement a Bubble sort (for some help look at https://en.wikipedia.org/wiki/Bubble_sort) and return a list of snapshots after **each change** of the initial list.
@@ -11,6 +12,7 @@ vc-description: |-
   [2,1,4,3] should return [ [1,2,4,3], [1,2,3,4] ]
   [1,2,3,4] should return []
   ```
+  -/
 
 vc-preamble: |-
   def bubble (lst : List Int) : List (List Int) := sorry
@@ -56,23 +58,23 @@ vc-theorems: |-
   theorem bubble_empty :
     bubble [] = [] := sorry
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval bubble []
+  -- #guard_msgs in
+  -- #eval bubble []
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval bubble [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  -- #guard_msgs in
+  -- #eval bubble [1, 2, 3, 4, 5, 6, 7, 8, 9]
   
-  /--
+  /-
   info: [[1, 3, 3, 4, 7, 2], [1, 3, 3, 4, 2, 7], [1, 3, 3, 2, 4, 7], [1, 3, 2, 3, 4, 7], [1, 2, 3, 3, 4, 7]]
   -/
-  #guard_msgs in
-  #eval bubble [1, 3, 3, 7, 4, 2]
+  -- #guard_msgs in
+  -- #eval bubble [1, 3, 3, 7, 4, 2]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The Stack Arithmetic Machine
   ---------------------------
   
@@ -82,6 +83,7 @@ vc-description: |-
   mov 3, a: Stores the number 3 in register a.
   add a: Adds the top a values of the stack (in this case 3), storing the result in register a.
   ```
+  -/
 
 vc-preamble: |-
   def sum (l: List Int) : Int :=

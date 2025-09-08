@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Polycarp plays a computer game. In this game, the players summon armies of magical minions, which then fight each other.
   
   Polycarp can summon $n$ different minions. The initial power level of the $i$-th minion is $a_i$, and when it is summoned, all previously summoned minions' power levels are increased by $b_i$. The minions can be summoned in any order.
@@ -61,6 +62,7 @@ vc-description: |-
   In the second test case, Polycarp can control only one minion, so he should choose the strongest of them and summon it.
   
   In the third test case, Polycarp is able to summon and control all five minions.
+  -/
 
 vc-preamble: |-
 

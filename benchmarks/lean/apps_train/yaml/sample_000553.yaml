@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Kefaa has developed a novel decomposition of a tree. He claims that this decomposition solves many difficult problems related to trees. However, he doesn't know how to find it quickly, so he asks you to help him.
   You are given a tree with $N$ vertices numbered $1$ through $N$. Let's denote an edge between vertices $u$ and $v$ by $(u, v)$. The triple-tree decomposition is a partition of edges of the tree into unordered triples of edges $(a, b), (a, c), (a, d)$ such that $a \neq b \neq c \neq d$. Each edge must belong to exactly one triple.
   Help Kefaa with this problem — find a triple-tree decomposition of the given tree or determine that no such decomposition exists.
@@ -43,6 +44,7 @@ vc-description: |-
   YES
   1 2 3 4
   NO
+  -/
 
 vc-preamble: |-
 

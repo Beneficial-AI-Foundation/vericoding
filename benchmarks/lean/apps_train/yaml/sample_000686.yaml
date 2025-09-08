@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A city of dimension N x N is constructed with grid of lanes. These lanes are fenced by government so that no one can cross any grid diagonally. Although a train 
   line runs diagonally from (0,0) to (N,N).
   Our chef has a weird kind of phobia and is very afraid to cross the railway line. He is at point (0,0) and wants to get to the point (N,N). Calculate number of path 
@@ -28,6 +29,7 @@ vc-description: |-
   Output:
   4
   84
+  -/
 
 vc-preamble: |-
 
@@ -56,23 +58,23 @@ vc-theorems: |-
     count_paths n / count_paths (n-1) > 1 :=
   sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval count_paths 2
+  -- #guard_msgs in
+  -- #eval count_paths 2
   
-  /--
+  /-
   info: 84
   -/
-  #guard_msgs in
-  #eval count_paths 5
+  -- #guard_msgs in
+  -- #eval count_paths 5
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_paths 0
+  -- #guard_msgs in
+  -- #eval count_paths 0
 
 vc-postamble: |-
   -- Apps difficulty: interview

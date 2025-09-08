@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef wants to serve mankind by making people immortal by preparing a dish, a dish of life - a dish with the best taste in the universe, one with the smell and splash of fresh water flowing down the springs of the mountain, one with the smell of the best lily flowers of the garden, one that has contained the very essence of life in a real sense. 
   This dish will contain K ingredients that are found only in remote islands amid mountains. For sake of convenience, we enumerate the ingredients by the integers from 1 to K, both inclusive. There are N islands and each of them offers some ingredients. Chef being a little child did not know how to collect the ingredients for the recipe. He went to all the islands and bought all the ingredients offered in each island. Could he possibly have saved some time by skipping some island? If it was not possible for Chef to collect the required ingredients (i.e. all the K ingredients), output "sad". If it was possible for him to skip some islands, output "some", otherwise output "all".
   
@@ -49,6 +50,7 @@ vc-description: |-
   Example 1. The ingredient 4 is not available in any island, so Chef can't make the dish of life. Hence, the answer is "sad".
   Example 2. Chef can just go to the first island and collect all the three ingredients required. He does not need to visit the second island. So, the answer is "some".
   Example 3. Chef has to visit both the islands in order to obtain all the three ingredients. So, the answer is "all".
+  -/
 
 vc-preamble: |-
 
@@ -75,23 +77,23 @@ vc-theorems: |-
      ingredients.length < num_ingredients) →
     solve_recipes islands num_ingredients = "sad" := sorry
   
-  /--
+  /-
   info: 'sad'
   -/
-  #guard_msgs in
-  #eval solve_recipes [[3, 1, 2, 3], [2, 1, 3], [2, 1, 2]] 4
+  -- #guard_msgs in
+  -- #eval solve_recipes [[3, 1, 2, 3], [2, 1, 3], [2, 1, 2]] 4
   
-  /--
+  /-
   info: 'some'
   -/
-  #guard_msgs in
-  #eval solve_recipes [[3, 1, 2, 3], [2, 1, 3]] 3
+  -- #guard_msgs in
+  -- #eval solve_recipes [[3, 1, 2, 3], [2, 1, 3]] 3
   
-  /--
+  /-
   info: 'all'
   -/
-  #guard_msgs in
-  #eval solve_recipes [[2, 1, 2], [2, 1, 3]] 3
+  -- #guard_msgs in
+  -- #eval solve_recipes [[2, 1, 2], [2, 1, 3]] 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

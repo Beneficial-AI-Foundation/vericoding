@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   One day, Tanya was studying graph theory. She is very inquisitive, so the following problem soon came to her mind.
   Find the number of undirected unweighted connected simple graphs with $N$ vertices (numbered $1$ through $N$) and $M$ edges, such that for each $i$ ($2 \le i \le N$), the shortest path from vertex $1$ to vertex $i$ is unique and its length is equal to $A_i$. In other words, for each $i$ ($2 \le i \le N$), there should be exactly one path with length $A_i$ between vertices $1$ and $i$, and there should be no paths with smaller length between these vertices.
   Two graphs with $N$ vertices are distinct if we can find two vertices $u$ and $v$ such that there is an edge between these vertices in one graph, but not in the other graph.
@@ -40,6 +41,7 @@ vc-description: |-
   
   -----Explanation-----
   Example case 1: The two graphs which satisfy all conditions are:
+  -/
 
 vc-preamble: |-
 
@@ -69,23 +71,23 @@ vc-theorems: |-
       count_graphs n (n-1) distances = 0 :=
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_graphs 4 3 [1, 2, 1]
+  -- #guard_msgs in
+  -- #eval count_graphs 4 3 [1, 2, 1]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_graphs 4 6 [1, 2, 1]
+  -- #guard_msgs in
+  -- #eval count_graphs 4 6 [1, 2, 1]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_graphs 3 2 [2, 2]
+  -- #guard_msgs in
+  -- #eval count_graphs 3 2 [2, 2]
 
 vc-postamble: |-
   -- Apps difficulty: interview

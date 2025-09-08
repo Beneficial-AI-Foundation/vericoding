@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given s1, s2, s3, find whether s3 is formed by the interleaving of s1 and s2.
   
   Example 1:
@@ -10,6 +11,7 @@ vc-description: |-
   
   Input: s1 = "aabcc", s2 = "dbbca", s3 = "aadbbbaccc"
   Output: false
+  -/
 
 vc-preamble: |-
 
@@ -50,23 +52,23 @@ vc-theorems: |-
     is_interleave s1 s2 s3 = false :=
   sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_interleave "aabcc" "dbbca" "aadbbcbcac"
+  -- #guard_msgs in
+  -- #eval is_interleave "aabcc" "dbbca" "aadbbcbcac"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_interleave "aabcc" "dbbca" "aadbbbaccc"
+  -- #guard_msgs in
+  -- #eval is_interleave "aabcc" "dbbca" "aadbbbaccc"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_interleave "abc" "def" "abcdef"
+  -- #guard_msgs in
+  -- #eval is_interleave "abc" "def" "abcdef"
 
 vc-postamble: |-
   -- Apps difficulty: interview

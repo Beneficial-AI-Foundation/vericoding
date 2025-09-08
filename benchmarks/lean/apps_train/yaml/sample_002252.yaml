@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Fox Ciel wants to write a task for a programming contest. The task is: "You are given a simple undirected graph with n vertexes. Each its edge has unit length. You should calculate the number of shortest paths between vertex 1 and vertex 2."
   
   Same with some writers, she wants to make an example with some certain output: for example, her birthday or the number of her boyfriend. Can you help her to make a test case with answer equal exactly to k?
@@ -48,6 +49,7 @@ vc-description: |-
   In first example, there are 2 shortest paths: 1-3-2 and 1-4-2.
   
   In second example, there are 9 shortest paths: 1-3-6-2, 1-3-7-2, 1-3-8-2, 1-4-6-2, 1-4-7-2, 1-4-8-2, 1-5-6-2, 1-5-7-2, 1-5-8-2.
+  -/
 
 vc-preamble: |-
   def Matrix := List (List Char)

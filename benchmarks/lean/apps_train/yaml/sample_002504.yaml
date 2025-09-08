@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Problem Statement=====
   You are given a function f(X) = X^2. You are also given K lists. The ith list consists of N_i elements.
   
@@ -20,6 +21,7 @@ vc-description: |-
   
   =====Output Format=====
   Output a single integer denoting the value S_max.
+  -/
 
 vc-preamble: |-
   def List.product : List (List α) → List (List α)
@@ -67,17 +69,17 @@ vc-theorems: |-
     find_max_modular_sum m lists = 0 := by
     sorry
   
-  /--
+  /-
   info: 206
   -/
-  #guard_msgs in
-  #eval find_max_modular_sum 1000 [[5, 4], [7, 8, 9], [5, 7, 8, 9, 10]]
+  -- #guard_msgs in
+  -- #eval find_max_modular_sum 1000 [[5, 4], [7, 8, 9], [5, 7, 8, 9, 10]]
   
-  /--
+  /-
   info: 20
   -/
-  #guard_msgs in
-  #eval find_max_modular_sum 100 [[1, 2], [3, 4]]
+  -- #guard_msgs in
+  -- #eval find_max_modular_sum 100 [[1, 2], [3, 4]]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

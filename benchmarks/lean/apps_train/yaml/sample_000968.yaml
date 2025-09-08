@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Dr. S. De teaches computer architecture in NIT Patna. Whenever he comes across any good question(with complexity $k$), he gives that question to students within roll number range $i$ and $j$
   At the start of semester he assigns score of $10$ to every student in his class if a student submits a question of complexity $k$, his score gets multiplied by $k$
   This month he gave $M$ questions and he is wondering what will be mean of maximum scores of all the student. He is busy in improving his finger print attendance module, can you help him?
@@ -44,6 +45,7 @@ vc-description: |-
   after solving question 2 scores will be: $[50, 100, 100, 20, 20]$
   after solving question 1 scores will be: $[50, 100, 700, 140, 20]$
   Hence after all questions mean of maximum scores will $(50+100+700+140+20)/5 = 202$
+  -/
 
 vc-preamble: |-
 

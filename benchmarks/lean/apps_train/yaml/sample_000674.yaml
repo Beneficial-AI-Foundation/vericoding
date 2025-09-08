@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a program to find the factorial value of any number entered by the user.
   
   -----Input-----
@@ -24,6 +25,7 @@ vc-description: |-
   6
   24
   120
+  -/
 
 vc-preamble: |-
   def factorial (n : Nat) : Nat :=

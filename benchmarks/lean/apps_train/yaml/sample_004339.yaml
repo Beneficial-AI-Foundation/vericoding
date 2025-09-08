@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   Some children are playing rope skipping game. Children skip the rope at roughly the same speed: `once per second`. If the child fails during the jump, he needs to tidy up the rope and continue. This will take `3 seconds`.
   
@@ -36,6 +37,7 @@ vc-description: |-
   Tidy up the rope and continue.                    --> 54 seconds past.
   When he jumped 51 times                           --> 60 seconds past.
   ```
+  -/
 
 vc-preamble: |-
 
@@ -60,23 +62,23 @@ vc-theorems: |-
     calc_jumps_in_60_secs [12, 23, 45] = 51 :=
     sorry
   
-  /--
+  /-
   info: 60
   -/
-  #guard_msgs in
-  #eval calc_jumps_in_60_secs []
+  -- #guard_msgs in
+  -- #eval calc_jumps_in_60_secs []
   
-  /--
+  /-
   info: 51
   -/
-  #guard_msgs in
-  #eval calc_jumps_in_60_secs [12, 23, 45]
+  -- #guard_msgs in
+  -- #eval calc_jumps_in_60_secs [12, 23, 45]
   
-  /--
+  /-
   info: 57
   -/
-  #guard_msgs in
-  #eval calc_jumps_in_60_secs [17]
+  -- #guard_msgs in
+  -- #eval calc_jumps_in_60_secs [17]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

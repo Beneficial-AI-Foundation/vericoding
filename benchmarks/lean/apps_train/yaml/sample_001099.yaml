@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef has N laddus of K sweetness each. Chef wants to eat all laddus, but Chef is restricted with the given condition that he must not eat two adjacent laddus. Chef starts calculating the maximum sweetness that he will get from the laddus. Find the maximum sweetness that chef gets at the end of all calculations. 
   
   -----Input:-----
@@ -28,6 +29,7 @@ vc-description: |-
   [1,3], [2,4], [1,4] with sweetness 6
   [1],[2],[3],[4] with sweetness 3.
   Maximum sweetness will be 6.
+  -/
 
 vc-preamble: |-
 
@@ -63,23 +65,23 @@ vc-theorems: |-
   theorem calc_max_sweetness_step_three (k : Nat) :
     calc_max_sweetness 3 k - calc_max_sweetness 2 k = k := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval calc_max_sweetness 1 2
+  -- #guard_msgs in
+  -- #eval calc_max_sweetness 1 2
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval calc_max_sweetness 4 3
+  -- #guard_msgs in
+  -- #eval calc_max_sweetness 4 3
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval calc_max_sweetness 3 5
+  -- #guard_msgs in
+  -- #eval calc_max_sweetness 3 5
 
 vc-postamble: |-
   -- Apps difficulty: interview

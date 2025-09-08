@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A palindrome is a word, phrase, number, or other sequence of characters which reads the same backward as forward. Examples of numerical palindromes are:
   
   2332 
@@ -32,6 +33,7 @@ vc-description: |-
   Numerical Palindrome #3.5
   Numerical Palindrome #4
   Numerical Palindrome #5
+  -/
 
 vc-preamble: |-
 
@@ -93,41 +95,41 @@ vc-theorems: |-
     size < 0 →
     palindrome start_num size = [] := sorry
   
-  /--
+  /-
   info: [11, 22, 33, 44]
   -/
-  #guard_msgs in
-  #eval palindrome 6 4
+  -- #guard_msgs in
+  -- #eval palindrome 6 4
   
-  /--
+  /-
   info: [77]
   -/
-  #guard_msgs in
-  #eval palindrome 75 1
+  -- #guard_msgs in
+  -- #eval palindrome 75 1
   
-  /--
+  /-
   info: [101, 111]
   -/
-  #guard_msgs in
-  #eval palindrome 101 2
+  -- #guard_msgs in
+  -- #eval palindrome 101 2
   
-  /--
+  /-
   info: 'Not valid'
   -/
-  #guard_msgs in
-  #eval palindrome "ACCDDCCA" 3
+  -- #guard_msgs in
+  -- #eval palindrome "ACCDDCCA" 3
   
-  /--
+  /-
   info: 'Not valid'
   -/
-  #guard_msgs in
-  #eval palindrome 773 "1551"
+  -- #guard_msgs in
+  -- #eval palindrome 773 "1551"
   
-  /--
+  /-
   info: 'Not valid'
   -/
-  #guard_msgs in
-  #eval palindrome -4505 15
+  -- #guard_msgs in
+  -- #eval palindrome -4505 15
 
 vc-postamble: |-
   -- Apps difficulty: introductory

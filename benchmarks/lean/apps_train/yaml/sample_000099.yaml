@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You have three piles of candies: red, green and blue candies:  the first pile contains only red candies and there are $r$ candies in it,  the second pile contains only green candies and there are $g$ candies in it,  the third pile contains only blue candies and there are $b$ candies in it. 
   
   Each day Tanya eats exactly two candies of different colors. She is free to choose the colors of eaten candies: the only restriction that she can't eat two candies of the same color in a day.
@@ -40,6 +41,7 @@ vc-description: |-
   In the second example, Tanya can eat candies for two days. For example, she can eat red and green candies on the first day, and green and blue candies on the second day.
   
   In the third example, Tanya can eat candies for two days. For example, she can eat red and green candies on the first day, and red and blue candies on the second day. Note, that two red candies will remain uneaten.
+  -/
 
 vc-preamble: |-
 
@@ -71,23 +73,23 @@ vc-theorems: |-
   theorem solve_two_equal_piles (n m : Nat) :
     solve_candies n n m = min (n + n) (min (n + m) ((2 * n + m) / 2)) := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve_candies 1 1 1
+  -- #guard_msgs in
+  -- #eval solve_candies 1 1 1
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve_candies 1 2 1
+  -- #guard_msgs in
+  -- #eval solve_candies 1 2 1
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval solve_candies 7 4 10
+  -- #guard_msgs in
+  -- #eval solve_candies 7 4 10
 
 vc-postamble: |-
   -- Apps difficulty: interview

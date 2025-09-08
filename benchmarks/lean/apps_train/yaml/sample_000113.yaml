@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Polycarp plays a computer game (yet again). In this game, he fights monsters using magic spells.
   
   There are two types of spells: fire spell of power $x$ deals $x$ damage to the monster, and lightning spell of power $y$ deals $y$ damage to the monster and doubles the damage of the next spell Polycarp casts. Each spell can be cast only once per battle, but Polycarp can cast them in any order.
@@ -40,6 +41,7 @@ vc-description: |-
   15
   36
   21
+  -/
 
 vc-preamble: |-
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Mandarin chinese
   , Russian and Vietnamese as well.
   You are given a grid with $n$ rows and $m$ columns. Each cell of this grid can either be empty or it contains one particle. It can never contain more than one particle. Let's denote the cell in the $i$-th row and $j$-th column by $(i, j)$, with the top left corner being $(0, 0)$. From a cell $(i, j)$, a particle could move in one of the following four directions:
@@ -94,6 +95,7 @@ vc-description: |-
   0011
   0001
   0001
+  -/
 
 vc-preamble: |-
   def isValidGrid (grid : List (List Char)) : Bool :=

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Mobile Display Keystrokes
   
   Do you remember the old mobile display keyboards? Do you also remember how inconvenient it was to write on it?
@@ -13,6 +14,7 @@ vc-description: |-
   mobileKeyboard("123") => 3 (1+1+1)
   mobileKeyboard("abc") => 9 (2+3+4)
   mobileKeyboard("codewars") => 26 (4+4+2+3+2+2+4+5)
+  -/
 
 vc-preamble: |-
 
@@ -43,23 +45,23 @@ vc-theorems: |-
                         'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']) →
     mobile_keyboard s ≥ 0 := sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval mobile_keyboard ""
+  -- #guard_msgs in
+  -- #eval mobile_keyboard ""
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval mobile_keyboard "123"
+  -- #guard_msgs in
+  -- #eval mobile_keyboard "123"
   
-  /--
+  /-
   info: 26
   -/
-  #guard_msgs in
-  #eval mobile_keyboard "codewars"
+  -- #guard_msgs in
+  -- #eval mobile_keyboard "codewars"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

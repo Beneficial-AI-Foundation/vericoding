@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your task is the exact same as for the easy version. But this time, the marmots subtract the village's population P from their random number before responding to Heidi's request.
   
   Also, there are now villages with as few as a single inhabitant, meaning that $1 \leq P \leq 1000$.
@@ -12,6 +13,7 @@ vc-description: |-
   -----Output-----
   
   Output one line per village, in the same order as provided in the input. The village's line shall state poisson if the village's distribution is of the Poisson type, and uniform if the answers came from a uniform distribution.
+  -/
 
 vc-preamble: |-
   def identify_distribution (samples : List Int) : String :=
@@ -49,23 +51,23 @@ vc-theorems: |-
     (h2 : ∀ x, x ∈ samples₁ ↔ x ∈ samples₂) :
     identify_distribution samples₁ = identify_distribution samples₂ := sorry
   
-  /--
+  /-
   info: 'poisson'
   -/
-  #guard_msgs in
-  #eval identify_distribution [1, 2, 3, 2, 1]
+  -- #guard_msgs in
+  -- #eval identify_distribution [1, 2, 3, 2, 1]
   
-  /--
+  /-
   info: 'poisson'
   -/
-  #guard_msgs in
-  #eval identify_distribution [10, 8, 9, 8, 12]
+  -- #guard_msgs in
+  -- #eval identify_distribution [10, 8, 9, 8, 12]
   
-  /--
+  /-
   info: 'poisson'
   -/
-  #guard_msgs in
-  #eval identify_distribution [-5, -4, -3, -4, -5]
+  -- #guard_msgs in
+  -- #eval identify_distribution [-5, -4, -3, -4, -5]
 
 vc-postamble: |-
   -- Apps difficulty: interview

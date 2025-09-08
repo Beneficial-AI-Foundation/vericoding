@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef recently learned about ratios and proportions. He wrote some positive integers a, b, c, d on a paper. Chef wants to know whether he can shuffle these numbers so as to make some proportion? Formally, four numbers x, y, z, w are said to make a proportion if ratio of x : y is same as that of z : w.
   
   -----Input-----
@@ -19,6 +20,7 @@ vc-description: |-
   
   -----Explanation-----
   By swapping 4 and the second 2, we get 1 2 2 4. Note that 1 2 2 4 make proportion as 1 : 2 = 2 : 4. Hence answer is "Possible"
+  -/
 
 vc-preamble: |-
 
@@ -29,24 +31,24 @@ vc-helpers: |-
 vc-definitions: |-
   def can_make_proportion (a b c d : Int) : String := sorry 
   
-  /-- If a:b = c:d where c=2a and d=2b, then a proportion is possible -/
+  /- If a:b = c:d where c=2a and d=2b, then a proportion is possible -/
 
 vc-theorems: |-
   theorem proportional_numbers_are_possible {a b : Int} (ha : a > 0) (hb : b > 0) :
     can_make_proportion a b (2*a) (2*b) = "Possible" := sorry
   
-  /-- The result is invariant under reordering the ratios -/
+  /- The result is invariant under reordering the ratios -/
   
   theorem order_invariant {a b c d : Int} (ha : a > 0) (hb : b > 0) (hc : c > 0) (hd : d > 0) :
     can_make_proportion a b c d = can_make_proportion b a d c ∧ 
     can_make_proportion a b c d = can_make_proportion c d a b := sorry
   
-  /-- Same number always forms valid proportion -/
+  /- Same number always forms valid proportion -/
   
   theorem same_number_possible {n : Int} (hn : n > 0) :
     can_make_proportion n n n n = "Possible" := sorry
   
-  /-- Zero numerator with non-zero denominator is possible, but zero denominator raises error -/
+  /- Zero numerator with non-zero denominator is possible, but zero denominator raises error -/
   
   theorem zero_division {n : Int} (hn : n > 0) :
     can_make_proportion 0 n 0 (2*n) = "Possible" := sorry

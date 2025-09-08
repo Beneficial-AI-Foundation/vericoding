@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Karlsson has recently discovered a huge stock of berry jam jars in the basement of the house. More specifically, there were $2n$ jars of strawberry and blueberry jam.
   
   All the $2n$ jars are arranged in a row. The stairs to the basement are exactly in the middle of that row. So when Karlsson enters the basement, he sees exactly $n$ jars to his left and $n$ jars to his right.
@@ -58,6 +59,7 @@ vc-description: |-
   In the third test case Karlsson is required to eat all $6$ jars so that there remain $0$ jars of both jams.
   
   In the fourth test case Karlsson can empty either the second and the third jars or the third and the fourth one. The both scenarios will leave $1$ jar of both jams.
+  -/
 
 vc-preamble: |-
 
@@ -82,23 +84,23 @@ vc-theorems: |-
     n > 0 → solve_jams n (List.replicate (2*n) 1) = 2*n :=
   sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval solve_jams 6 [1, 1, 1, 2, 2, 1, 2, 1, 2, 1, 1, 2]
+  -- #guard_msgs in
+  -- #eval solve_jams 6 [1, 1, 1, 2, 2, 1, 2, 1, 2, 1, 1, 2]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve_jams 2 [1, 2, 1, 2]
+  -- #guard_msgs in
+  -- #eval solve_jams 2 [1, 2, 1, 2]
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval solve_jams 3 [1, 1, 1, 1, 1, 1]
+  -- #guard_msgs in
+  -- #eval solve_jams 3 [1, 1, 1, 1, 1, 1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ~~~if:csharp,javascript,cfml,php
   Given a 2D array of size `m * n`. Your task is to find the sum of minimum value in each row.
   ~~~
@@ -36,6 +37,7 @@ vc-description: |-
   ~~~
   
   ENJOY CODING :)
+  -/
 
 vc-preamble: |-
   def List.minimums (l : List (List Int)) : Int := sorry 
@@ -58,23 +60,23 @@ vc-theorems: |-
     (h1 : ∀ l ∈ numbers, l.length = 1) :
     numbers.minimums = numbers.join.sum := sorry
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval sum_of_minimums [[7, 9, 8, 6, 2], [6, 3, 5, 4, 3], [5, 8, 7, 4, 5]]
+  -- #guard_msgs in
+  -- #eval sum_of_minimums [[7, 9, 8, 6, 2], [6, 3, 5, 4, 3], [5, 8, 7, 4, 5]]
   
-  /--
+  /-
   info: 76
   -/
-  #guard_msgs in
-  #eval sum_of_minimums [[11, 12, 14, 54], [67, 89, 90, 56], [7, 9, 4, 3], [9, 8, 6, 7]]
+  -- #guard_msgs in
+  -- #eval sum_of_minimums [[11, 12, 14, 54], [67, 89, 90, 56], [7, 9, 4, 3], [9, 8, 6, 7]]
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval sum_of_minimums [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+  -- #guard_msgs in
+  -- #eval sum_of_minimums [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

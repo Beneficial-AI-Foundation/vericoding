@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   If this challenge is too easy for you, check out: 
   https://www.codewars.com/kata/5cc89c182777b00001b3e6a2
   
@@ -28,6 +29,7 @@ vc-description: |-
   ```
   
   NOTE: The Upside-Down Pyramid will never be empty and will always consist of positive integers ONLY.
+  -/
 
 vc-preamble: |-
 
@@ -48,23 +50,23 @@ vc-theorems: |-
   theorem reverse_last_element_preservation {nums : List Int} (h : nums ≠ []) :
     List.getLast nums h = List.getLast (reverse nums) (reverse_nonempty_preservation h) := sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval reverse [5, 2, 1]
+  -- #guard_msgs in
+  -- #eval reverse [5, 2, 1]
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval reverse [84, 42, 21, 10, 2]
+  -- #guard_msgs in
+  -- #eval reverse [84, 42, 21, 10, 2]
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval reverse [83, 47, 28, 16, 7]
+  -- #guard_msgs in
+  -- #eval reverse [83, 47, 28, 16, 7]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

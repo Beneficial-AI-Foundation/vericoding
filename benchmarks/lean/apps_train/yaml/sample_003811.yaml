@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Make multiple functions that will return the sum, difference, modulus, product, quotient, and the exponent respectively.
   
   Please use the following function names:
@@ -17,6 +18,7 @@ vc-description: |-
   
   *Note: All math operations will be:
   a (operation) b*
+  -/
 
 vc-preamble: |-
   def add (a b : Int) : Int := sorry
@@ -80,83 +82,83 @@ vc-theorems: |-
   
   theorem subt_self (a : Int) : subt a a = 0 := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval add 1 2
+  -- #guard_msgs in
+  -- #eval add 1 2
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval add 5 7
+  -- #guard_msgs in
+  -- #eval add 5 7
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval add 0 0
+  -- #guard_msgs in
+  -- #eval add 0 0
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval multiply 2 3
+  -- #guard_msgs in
+  -- #eval multiply 2 3
   
-  /--
+  /-
   info: 25
   -/
-  #guard_msgs in
-  #eval multiply 5 5
+  -- #guard_msgs in
+  -- #eval multiply 5 5
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval divide 6 2
+  -- #guard_msgs in
+  -- #eval divide 6 2
   
-  /--
+  /-
   info: 2.5
   -/
-  #guard_msgs in
-  #eval divide 5 2
+  -- #guard_msgs in
+  -- #eval divide 5 2
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval mod 7 3
+  -- #guard_msgs in
+  -- #eval mod 7 3
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval mod 10 3
+  -- #guard_msgs in
+  -- #eval mod 10 3
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval exponent 2 3
+  -- #guard_msgs in
+  -- #eval exponent 2 3
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval exponent 3 2
+  -- #guard_msgs in
+  -- #eval exponent 3 2
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval subt 5 3
+  -- #guard_msgs in
+  -- #eval subt 5 3
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval subt 10 7
+  -- #guard_msgs in
+  -- #eval subt 10 7
 
 vc-postamble: |-
   -- Apps difficulty: introductory

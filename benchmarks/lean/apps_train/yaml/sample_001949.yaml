@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   This is the easy version of the problem. The only difference between easy and hard versions is the constraint of $m$. You can make hacks only if both versions are solved.
   
   Chiori loves dolls and now she is going to decorate her bedroom![Image] 
@@ -32,6 +33,7 @@ vc-description: |-
   
   Output
   1 2 11 20 15 10 5 0
+  -/
 
 vc-preamble: |-
 

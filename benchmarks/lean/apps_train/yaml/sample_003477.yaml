@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You will be given a string (x) featuring a cat 'C' and a mouse 'm'. The rest of the string will be made up of '.'. 
   
   You need to find out if the cat can catch the mouse from it's current position. The cat can jump over three characters. So:
@@ -6,6 +7,7 @@ vc-description: |-
   C.....m returns 'Escaped!'  <-- more than three characters between
   
   C...m returns 'Caught!'   <-- as there are three characters between the two, the cat can jump.
+  -/
 
 vc-preamble: |-
 
@@ -36,23 +38,23 @@ vc-theorems: |-
       (catMouse "Cm" = "Caught!") ∧ 
       (catMouse "C....m" = "Escaped!") := sorry
   
-  /--
+  /-
   info: 'Escaped!'
   -/
-  #guard_msgs in
-  #eval cat_mouse "C....m"
+  -- #guard_msgs in
+  -- #eval cat_mouse "C....m"
   
-  /--
+  /-
   info: 'Caught!'
   -/
-  #guard_msgs in
-  #eval cat_mouse "C..m"
+  -- #guard_msgs in
+  -- #eval cat_mouse "C..m"
   
-  /--
+  /-
   info: 'Caught!'
   -/
-  #guard_msgs in
-  #eval cat_mouse "C.m"
+  -- #guard_msgs in
+  -- #eval cat_mouse "C.m"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

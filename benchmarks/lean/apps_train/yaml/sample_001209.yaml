@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a number $n$, give the last digit of sum of all the prime numbers from 1 to $n$ inclusive.
   
   -----Input:-----
@@ -18,6 +19,7 @@ vc-description: |-
   
   -----Sample Output:-----
   7
+  -/
 
 vc-preamble: |-
 
@@ -48,23 +50,23 @@ vc-theorems: |-
   theorem modulo_property (n : Nat) (h : n ≥ 2) :
     last_digit_prime_sum n = last_digit_prime_sum n % 10 := sorry
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval last_digit_prime_sum 10
+  -- #guard_msgs in
+  -- #eval last_digit_prime_sum 10
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval last_digit_prime_sum 5
+  -- #guard_msgs in
+  -- #eval last_digit_prime_sum 5
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval last_digit_prime_sum 100
+  -- #guard_msgs in
+  -- #eval last_digit_prime_sum 100
 
 vc-postamble: |-
   -- Apps difficulty: interview

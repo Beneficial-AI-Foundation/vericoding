@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string text, we are allowed to swap two of the characters in the string. Find the length of the longest substring with repeated characters.
   
   Example 1:
@@ -28,6 +29,7 @@ vc-description: |-
   
   1 <= text.length <= 20000
   text consist of lowercase English characters only.
+  -/
 
 vc-preamble: |-
 
@@ -49,23 +51,23 @@ vc-theorems: |-
     1 ≤ max_repeated_chars_with_swap s ∧ max_repeated_chars_with_swap s ≤ s.length :=
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval max_repeated_chars_with_swap "ababa"
+  -- #guard_msgs in
+  -- #eval max_repeated_chars_with_swap "ababa"
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval max_repeated_chars_with_swap "aaabaaa"
+  -- #guard_msgs in
+  -- #eval max_repeated_chars_with_swap "aaabaaa"
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval max_repeated_chars_with_swap "aaabbaaa"
+  -- #guard_msgs in
+  -- #eval max_repeated_chars_with_swap "aaabbaaa"
 
 vc-postamble: |-
   -- Apps difficulty: interview

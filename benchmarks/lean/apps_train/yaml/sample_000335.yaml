@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We are given an array A of N lowercase letter strings, all of the same length.
   Now, we may choose any set of deletion indices, and for each string, we delete all the characters in those indices.
   For example, if we have an array A = ["babca","bbazb"] and deletion indices {0, 1, 4}, then the final array after deletions is ["bc","az"].
@@ -27,6 +28,7 @@ vc-description: |-
   
   1 <= A.length <= 100
   1 <= A[i].length <= 100
+  -/
 
 vc-preamble: |-
 
@@ -71,23 +73,23 @@ vc-theorems: |-
     min_deletion_size ["babca", "bbazb"] = 3 :=
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval min_deletion_size ["babca", "bbazb"]
+  -- #guard_msgs in
+  -- #eval min_deletion_size ["babca", "bbazb"]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval min_deletion_size ["edcba"]
+  -- #guard_msgs in
+  -- #eval min_deletion_size ["edcba"]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_deletion_size ["ghi", "def", "abc"]
+  -- #guard_msgs in
+  -- #eval min_deletion_size ["ghi", "def", "abc"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

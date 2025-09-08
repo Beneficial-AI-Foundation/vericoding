@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Complete the function/method so that it returns the url with anything after the anchor (`#`) removed. 
   
   ## Examples
@@ -10,6 +11,7 @@ vc-description: |-
   # returns 'www.codewars.com?page=1' 
   remove_url_anchor('www.codewars.com?page=1') 
   ```
+  -/
 
 vc-preamble: |-
 
@@ -36,23 +38,23 @@ vc-theorems: |-
   theorem only_hash :
     remove_url_anchor "#" = "" := sorry
   
-  /--
+  /-
   info: 'www.codewars.com'
   -/
-  #guard_msgs in
-  #eval remove_url_anchor "www.codewars.com#about"
+  -- #guard_msgs in
+  -- #eval remove_url_anchor "www.codewars.com#about"
   
-  /--
+  /-
   info: 'www.codewars.com/katas/?page=1'
   -/
-  #guard_msgs in
-  #eval remove_url_anchor "www.codewars.com/katas/?page=1#about"
+  -- #guard_msgs in
+  -- #eval remove_url_anchor "www.codewars.com/katas/?page=1#about"
   
-  /--
+  /-
   info: 'www.codewars.com/katas/'
   -/
-  #guard_msgs in
-  #eval remove_url_anchor "www.codewars.com/katas/"
+  -- #guard_msgs in
+  -- #eval remove_url_anchor "www.codewars.com/katas/"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

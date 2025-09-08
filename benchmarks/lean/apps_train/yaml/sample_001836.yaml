@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a chemical formula (given as a string), return the count of each atom.
   
   An atomic element always starts with an uppercase character, then zero or more lowercase letters, representing the name.
@@ -39,6 +40,7 @@ vc-description: |-
   All atom names consist of lowercase letters, except for the first character which is uppercase.
   The length of formula will be in the range [1, 1000].
   formula will only consist of letters, digits, and round parentheses, and is a valid formula as defined in the problem.
+  -/
 
 vc-preamble: |-
 
@@ -68,23 +70,23 @@ vc-theorems: |-
   theorem single_h :
     count_atoms "H" = "H" := sorry
   
-  /--
+  /-
   info: 'H2O'
   -/
-  #guard_msgs in
-  #eval count_atoms "H2O"
+  -- #guard_msgs in
+  -- #eval count_atoms "H2O"
   
-  /--
+  /-
   info: 'H2MgO2'
   -/
-  #guard_msgs in
-  #eval count_atoms "Mg(OH)2"
+  -- #guard_msgs in
+  -- #eval count_atoms "Mg(OH)2"
   
-  /--
+  /-
   info: 'K4N2O14S4'
   -/
-  #guard_msgs in
-  #eval count_atoms "K4(ON(SO3)2)2"
+  -- #guard_msgs in
+  -- #eval count_atoms "K4(ON(SO3)2)2"
 
 vc-postamble: |-
   -- Apps difficulty: interview

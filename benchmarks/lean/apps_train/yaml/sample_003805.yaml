@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # How many urinals are free?
   In men's public toilets with urinals, there is this unwritten rule that you leave at least one urinal free
   between you and the next person peeing. 
@@ -28,6 +29,7 @@ vc-description: |-
   When there is already a mistake in the input string (for example `011`), then return `-1`
   
   Have fun and don't pee into the wrong urinal ;)
+  -/
 
 vc-preamble: |-
   def get_free_urinals (s : String) : Int := sorry
@@ -63,23 +65,23 @@ vc-theorems: |-
     ¬containsAdjacentOnes s →
     get_free_urinals s ≥ 0 := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval get_free_urinals "10001"
+  -- #guard_msgs in
+  -- #eval get_free_urinals "10001"
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval get_free_urinals "00000"
+  -- #guard_msgs in
+  -- #eval get_free_urinals "00000"
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval get_free_urinals "110"
+  -- #guard_msgs in
+  -- #eval get_free_urinals "110"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

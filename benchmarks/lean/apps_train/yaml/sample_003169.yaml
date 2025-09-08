@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function which reduces fractions to their simplest form! Fractions will be presented as an array/tuple (depending on the language), and the reduced fraction must be returned as an array/tuple:
   
   ```
@@ -10,6 +11,7 @@ vc-description: |-
   All numerators and denominators will be positive integers.
   
   Note: This is an introductory Kata for a series... coming soon!
+  -/
 
 vc-preamble: |-
 
@@ -36,23 +38,23 @@ vc-theorems: |-
   theorem reduce_fraction_zero (n : Int) (h : n ≠ 0) :
     reduce_fraction (0, n) = (0, 1) := sorry
   
-  /--
+  /-
   info: [3, 1]
   -/
-  #guard_msgs in
-  #eval reduce_fraction [60, 20]
+  -- #guard_msgs in
+  -- #eval reduce_fraction [60, 20]
   
-  /--
+  /-
   info: [2, 3]
   -/
-  #guard_msgs in
-  #eval reduce_fraction [80, 120]
+  -- #guard_msgs in
+  -- #eval reduce_fraction [80, 120]
   
-  /--
+  /-
   info: [3, 8]
   -/
-  #guard_msgs in
-  #eval reduce_fraction [45, 120]
+  -- #guard_msgs in
+  -- #eval reduce_fraction [45, 120]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

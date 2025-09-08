@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are a total of n courses you have to take, labeled from 0 to n-1.
   
   Some courses may have prerequisites, for example to take course 0 you have to first take course 1, which is expressed as a pair: [0,1]
@@ -26,6 +27,7 @@ vc-description: |-
   
          The input prerequisites is a graph represented by a list of edges, not adjacency matrices. Read more about how a graph is represented.
          You may assume that there are no duplicate edges in the input prerequisites.
+  -/
 
 vc-preamble: |-
   def find_course_order (numCourses : Nat) (prerequisites : List (Nat × Nat)) : List Nat :=
@@ -73,17 +75,17 @@ vc-theorems: |-
     find_course_order n linear_prereqs = List.range n := by
     sorry
   
-  /--
+  /-
   info: [0, 1]
   -/
-  #guard_msgs in
-  #eval find_course_order 2 [[1, 0]]
+  -- #guard_msgs in
+  -- #eval find_course_order 2 [[1, 0]]
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval find_course_order 2 [[1, 0], [0, 1]]
+  -- #guard_msgs in
+  -- #eval find_course_order 2 [[1, 0], [0, 1]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

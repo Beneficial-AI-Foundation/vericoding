@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given two positive integers n and k.
   A factor of an integer n is defined as an integer i where n % i == 0.
   Consider a list of all factors of n sorted in ascending order, return the kth factor in this list or return -1 if n has less than k factors.
@@ -31,6 +32,7 @@ vc-description: |-
   Constraints:
   
   1 <= k <= n <= 1000
+  -/
 
 vc-preamble: |-
 
@@ -57,23 +59,23 @@ vc-theorems: |-
     kthFactor n k ≠ -1 →
     ((List.range (kthFactor n k).toNat).filter (fun i => n % (i+1) = 0)).length = k - 1 := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval kth_factor 12 3
+  -- #guard_msgs in
+  -- #eval kth_factor 12 3
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval kth_factor 7 2
+  -- #guard_msgs in
+  -- #eval kth_factor 7 2
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval kth_factor 4 4
+  -- #guard_msgs in
+  -- #eval kth_factor 4 4
 
 vc-postamble: |-
   -- Apps difficulty: interview

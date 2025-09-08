@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
   
   (i.e., [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]).
@@ -18,6 +19,7 @@ vc-description: |-
   
   Input: nums = [4,5,6,7,0,1,2], target = 3
   Output: -1
+  -/
 
 vc-preamble: |-
 
@@ -76,23 +78,23 @@ vc-theorems: |-
     search [1, 2, 3] 2 = 1 :=
     sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval search [4, 5, 6, 7, 0, 1, 2] 0
+  -- #guard_msgs in
+  -- #eval search [4, 5, 6, 7, 0, 1, 2] 0
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval search [4, 5, 6, 7, 0, 1, 2] 3
+  -- #guard_msgs in
+  -- #eval search [4, 5, 6, 7, 0, 1, 2] 3
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval search [1] 1
+  -- #guard_msgs in
+  -- #eval search [1] 1
 
 vc-postamble: |-
   -- Apps difficulty: interview

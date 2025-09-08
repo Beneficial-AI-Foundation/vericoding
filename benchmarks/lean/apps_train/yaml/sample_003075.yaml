@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## MTV Cribs is back!
   
   ![](https://s-media-cache-ak0.pinimg.com/236x/1b/cf/f4/1bcff4f4621644461103576e40bde4ed.jpg)
@@ -45,6 +46,7 @@ vc-description: |-
   **Note:** whitespace should be preserved on both sides of the roof. No invalid input tests.
   
   Good luck!
+  -/
 
 vc-preamble: |-
   def my_crib (n : Nat) : String :=
@@ -88,23 +90,23 @@ vc-theorems: |-
     ∀ last_line, lines.getLast? = some last_line → last_line.contains '_' :=
   sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval my_crib 1
+  -- #guard_msgs in
+  -- #eval my_crib 1
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval my_crib 2
+  -- #guard_msgs in
+  -- #eval my_crib 2
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval my_crib 3
+  -- #guard_msgs in
+  -- #eval my_crib 3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

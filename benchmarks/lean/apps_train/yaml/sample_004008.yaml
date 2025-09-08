@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your program will receive an array of complex numbers represented as strings. Your task is to write the  `complexSum` function which have to return the sum as a string.
   
   Complex numbers can be written in the form of `a+bi`, such as `2-3i` where `2` is the real part, `3` is the imaginary part, and `i` is the "imaginary unit". 
@@ -12,6 +13,7 @@ vc-description: |-
   For simplicity, the coefficients will always be integers. If the array is empty, return `0`.
   
   Have fun! :)
+  -/
 
 vc-preamble: |-
   def complex_sum (arr : List String) : String := sorry
@@ -54,23 +56,23 @@ vc-theorems: |-
     arr.all (λ s => s = "0") →
     complex_sum arr = "0" := sorry
   
-  /--
+  /-
   info: '5+2i'
   -/
-  #guard_msgs in
-  #eval complex_sum ["2+3i", "3-i"]
+  -- #guard_msgs in
+  -- #eval complex_sum ["2+3i", "3-i"]
   
-  /--
+  /-
   info: '6i'
   -/
-  #guard_msgs in
-  #eval complex_sum ["i", "2i", "3i"]
+  -- #guard_msgs in
+  -- #eval complex_sum ["i", "2i", "3i"]
   
-  /--
+  /-
   info: '0'
   -/
-  #guard_msgs in
-  #eval complex_sum []
+  -- #guard_msgs in
+  -- #eval complex_sum []
 
 vc-postamble: |-
   -- Apps difficulty: introductory

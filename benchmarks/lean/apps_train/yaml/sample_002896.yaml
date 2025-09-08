@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write
   ```python
   function repeating_fractions(numerator, denominator)
@@ -11,6 +12,7 @@ vc-description: |-
   repeating_fractions(1,3) === '0.(3)'
   repeating_fractions(2,888) === '0.(0)(2)5(2)5(2)5(2)5(2)5(2)'
   ```
+  -/
 
 vc-preamble: |-
 
@@ -34,23 +36,23 @@ vc-theorems: |-
     repeating_fractions 1 3 = "0.(3)" :=
   sorry
   
-  /--
+  /-
   info: '0.(3)'
   -/
-  #guard_msgs in
-  #eval repeating_fractions 1 3
+  -- #guard_msgs in
+  -- #eval repeating_fractions 1 3
   
-  /--
+  /-
   info: '0.5'
   -/
-  #guard_msgs in
-  #eval repeating_fractions 1 2
+  -- #guard_msgs in
+  -- #eval repeating_fractions 1 2
   
-  /--
+  /-
   info: '0.(0)(2)5(2)5(2)5'
   -/
-  #guard_msgs in
-  #eval repeating_fractions 18018018 80000000000
+  -- #guard_msgs in
+  -- #eval repeating_fractions 18018018 80000000000
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a sequence D_1, D_2, ..., D_N of length N.
   The values of D_i are all distinct.
   Does a tree with N vertices that satisfies the following conditions exist?
@@ -45,6 +46,7 @@ vc-description: |-
   6 7
   
   The tree shown below satisfies the conditions.
+  -/
 
 vc-preamble: |-
   def checkTreeWithDistances (N : Nat) (distances : List Nat) : List (Nat × Nat) ⊕ Unit :=
@@ -88,23 +90,23 @@ vc-theorems: |-
      | .inr _ => False) :=
     sorry
   
-  /--
+  /-
   info: N1 - 1
   -/
-  #guard_msgs in
-  #eval len result
+  -- #guard_msgs in
+  -- #eval len result
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval check_tree_with_distances 2 [1, 2]
+  -- #guard_msgs in
+  -- #eval check_tree_with_distances 2 [1, 2]
   
-  /--
+  /-
   info: N3 - 1
   -/
-  #guard_msgs in
-  #eval len result
+  -- #guard_msgs in
+  -- #eval len result
 
 vc-postamble: |-
   -- Apps difficulty: competition

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef has a pepperoni pizza in the shape of a $N \times N$ grid; both its rows and columns are numbered $1$ through $N$. Some cells of this grid have pepperoni on them, while some do not. Chef wants to cut the pizza vertically in half and give the two halves to two of his friends. Formally, one friend should get everything in the columns $1$ through $N/2$ and the other friend should get everything in the columns $N/2+1$ through $N$.
   Before doing that, if Chef wants to, he may choose one row of the grid and reverse it, i.e. swap the contents of the cells in the $i$-th and $N+1-i$-th column in this row for each $i$ ($1 \le i \le N/2$).
   After the pizza is cut, let's denote the number of cells containing pepperonis in one half by $p_1$ and their number in the other half by $p_2$. Chef wants to minimise their absolute difference. What is the minimum value of $|p_1-p_2|$?
@@ -39,6 +40,7 @@ vc-description: |-
   -----Explanation-----
   Example case 1: Initially, $|p_1-p_2| = 4$, but if Chef reverses any one of the first four rows from "100000" to "000001", $|p_1-p_2|$ becomes $2$.
   Example case 2: Initially, $|p_1-p_2| = 0$. We cannot make that smaller by reversing any row.
+  -/
 
 vc-preamble: |-
   def PizzaGrid := List String
@@ -84,23 +86,23 @@ vc-theorems: |-
           acc + if l ≥ r then l - r else r - l)
         0 grid) := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve_pizza_balance 6 ["100000", "100000", "100000", "100000", "010010", "001100"]
+  -- #guard_msgs in
+  -- #eval solve_pizza_balance 6 ["100000", "100000", "100000", "100000", "010010", "001100"]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve_pizza_balance 4 ["0011", "1100", "1110", "0001"]
+  -- #guard_msgs in
+  -- #eval solve_pizza_balance 4 ["0011", "1100", "1110", "0001"]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve_pizza_balance 2 ["10", "01"]
+  -- #guard_msgs in
+  -- #eval solve_pizza_balance 2 ["10", "01"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

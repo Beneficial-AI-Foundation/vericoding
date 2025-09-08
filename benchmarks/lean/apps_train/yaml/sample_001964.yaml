@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Andrew, Fedor and Alex are inventive guys. Now they invent the game with strings for two players.
   
   Given a group of n non-empty strings. During the game two players build the word together, initially the word is empty. The players move in turns. On his step player must add a single letter in the end of the word, the resulting word must be prefix of at least one string from the group. A player loses if he cannot move.
@@ -39,6 +40,7 @@ vc-description: |-
   
   Output
   Second
+  -/
 
 vc-preamble: |-
 

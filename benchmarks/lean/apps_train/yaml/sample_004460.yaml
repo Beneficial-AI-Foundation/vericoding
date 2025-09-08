@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Task
   
   Write a method `remainder` which takes two integer arguments, `dividend` and `divisor`, and returns the remainder when dividend is divided by divisor. Do NOT use the modulus operator (%) to calculate the remainder!
@@ -20,6 +21,7 @@ vc-description: |-
   * `#divide(SimpleInteger val)`
   * `#compareTo(SimpleInteger val)`
   ```
+  -/
 
 vc-preamble: |-
 
@@ -41,23 +43,23 @@ vc-theorems: |-
   theorem remainder_matches_modulo {dividend divisor : Nat} (h : divisor > 0) :
     remainder dividend divisor = dividend % divisor := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval remainder 3 2
+  -- #guard_msgs in
+  -- #eval remainder 3 2
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval remainder 19 2
+  -- #guard_msgs in
+  -- #eval remainder 19 2
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval remainder 27 5
+  -- #guard_msgs in
+  -- #eval remainder 27 5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

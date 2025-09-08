@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    CodeBots decided to make a gift for CodeMaster's birthday. They got a pack of candies of various sizes from the store, but instead of giving the whole pack they are trying to make the biggest possible candy from them. On each turn it is possible:
   
@@ -31,6 +32,7 @@ vc-description: |-
       `1 ≤ inputArray[i] ≤ 100.`
   
    - `[output]` an integer
+  -/
 
 vc-preamble: |-
   def List.maximum! : List Nat → Nat 
@@ -54,23 +56,23 @@ vc-theorems: |-
     result > 0 ∧ result &&& (result - 1) = 0 :=
   sorry
   
-  /--
+  /-
   info: 16
   -/
-  #guard_msgs in
-  #eval obtain_max_number [2, 4, 8, 1, 1, 15]
+  -- #guard_msgs in
+  -- #eval obtain_max_number [2, 4, 8, 1, 1, 15]
   
-  /--
+  /-
   info: 60
   -/
-  #guard_msgs in
-  #eval obtain_max_number [2, 4, 8, 1, 1, 30, 30, 15, 15, 7, 7]
+  -- #guard_msgs in
+  -- #eval obtain_max_number [2, 4, 8, 1, 1, 30, 30, 15, 15, 7, 7]
   
-  /--
+  /-
   info: 128
   -/
-  #guard_msgs in
-  #eval obtain_max_number [2, 4, 8, 1, 1, 32, 8, 8, 64, 30, 30, 15, 15, 7, 7]
+  -- #guard_msgs in
+  -- #eval obtain_max_number [2, 4, 8, 1, 1, 32, 8, 8, 64, 30, 30, 15, 15, 7, 7]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

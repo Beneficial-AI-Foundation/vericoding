@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The objective is to write a method that takes two integer parameters and returns a single integer equal to the number of 1s in the binary representation of the greatest common divisor of the parameters. 
   
   Taken from Wikipedia:
@@ -8,6 +9,7 @@ vc-description: |-
   
   If both parameters are 0, the method should return 0.
   The function must be able to handle negative input.
+  -/
 
 vc-preamble: |-
   def binary_gcd (x y : Int) : Nat :=
@@ -39,23 +41,23 @@ vc-theorems: |-
     0 ≤ result ∧ result ≤ max x.natAbs.log2 y.natAbs.log2 :=
     sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval binary_gcd 300 45
+  -- #guard_msgs in
+  -- #eval binary_gcd 300 45
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval binary_gcd 0 0
+  -- #guard_msgs in
+  -- #eval binary_gcd 0 0
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval binary_gcd -8 12
+  -- #guard_msgs in
+  -- #eval binary_gcd -8 12
 
 vc-postamble: |-
   -- Apps difficulty: introductory

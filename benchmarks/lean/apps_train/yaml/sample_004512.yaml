@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A company is opening a bank, but the coder who is designing the user class made some errors. They need  you  to help them. 
   
   You must include the following:
@@ -50,6 +51,7 @@ vc-description: |-
   ```
   
    Good Luck
+  -/
 
 vc-preamble: |-
   def User.withdraw (u : User) (amt : Nat) : Option (String × User) := sorry

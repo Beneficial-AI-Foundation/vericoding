@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Eugene has to do his homework. But today, he is feeling very lazy and wants to you do his homework. His homework has the following given maths problem.
   You are given three integers: A, N, M. You write the number A appended to itself N times in a row. Let's call the resulting big number X. For example, if A = 120, N = 3, then X will be 120120120. Find out the value of X modulo M.
   
@@ -39,6 +40,7 @@ vc-description: |-
   -----Explanation-----
   Example 1: As A = 12, N = 2, X = 1212, 1212 modulo 17 = 5
   Example 2. As A = 523, N = 3, X = 523523523, 523523523 modulo 11 = 6
+  -/
 
 vc-preamble: |-
   def solveEugeneHomework (a n m : Nat) : Nat :=
@@ -80,23 +82,23 @@ vc-theorems: |-
     solveEugeneHomework a 1 m = a % m :=
   sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval solve_eugene_homework 12 2 17
+  -- #guard_msgs in
+  -- #eval solve_eugene_homework 12 2 17
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval solve_eugene_homework 523 3 11
+  -- #guard_msgs in
+  -- #eval solve_eugene_homework 523 3 11
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve_eugene_homework 1000 3 7
+  -- #guard_msgs in
+  -- #eval solve_eugene_homework 1000 3 7
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ----- Statement -----
   
   You need to find a string which has exactly K positions in it such that the character at that position comes alphabetically later than the character immediately after it. If there are many such strings, print the one which has the shortest length. If there is still a tie, print the string which comes the lexicographically earliest (would occur earlier in a dictionary).
@@ -17,6 +18,7 @@ vc-description: |-
   -----Sample Output-----
   ba
   cba
+  -/
 
 vc-preamble: |-
   def isLowercaseLetter (c : Char) : Bool := 
@@ -59,23 +61,23 @@ vc-theorems: |-
     ∀ c ∈ result, 97 ≤ c.toNat ∧ c.toNat ≤ 122 := 
   sorry
   
-  /--
+  /-
   info: 'ba'
   -/
-  #guard_msgs in
-  #eval find_k_descending_pairs 1
+  -- #guard_msgs in
+  -- #eval find_k_descending_pairs 1
   
-  /--
+  /-
   info: 'cba'
   -/
-  #guard_msgs in
-  #eval find_k_descending_pairs 2
+  -- #guard_msgs in
+  -- #eval find_k_descending_pairs 2
   
-  /--
+  /-
   info: 'dcba'
   -/
-  #guard_msgs in
-  #eval find_k_descending_pairs 3
+  -- #guard_msgs in
+  -- #eval find_k_descending_pairs 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Alice received a set of Toy Train™ from Bob. It consists of one train and a connected railway network of $n$ stations, enumerated from $1$ through $n$. The train occupies one station at a time and travels around the network of stations in a circular manner. More precisely, the immediate station that the train will visit after station $i$ is station $i+1$ if $1 \leq i < n$ or station $1$ if $i = n$. It takes the train $1$ second to travel to its next station as described.
   
   Bob gave Alice a fun task before he left: to deliver $m$ candies that are initially at some stations to their independent destinations using the train. The candies are enumerated from $1$ through $m$. Candy $i$ ($1 \leq i \leq m$), now at station $a_i$, should be delivered to station $b_i$ ($a_i \neq b_i$). [Image] The blue numbers on the candies correspond to $b_i$ values. The image corresponds to the $1$-st example. 
@@ -49,6 +50,7 @@ vc-description: |-
   Hence, the train needs $5$ seconds to complete the tasks.
   
   If the train were to start at station $2$, however, it would need to move to station $1$ before it could load the first candy, which would take one additional second. Thus, the answer in this scenario is $5+1 = 6$ seconds.
+  -/
 
 vc-preamble: |-
 
@@ -93,23 +95,23 @@ vc-theorems: |-
       result[i]! = result[j]! :=
   sorry
   
-  /--
+  /-
   info: [10, 9, 10, 10, 9]
   -/
-  #guard_msgs in
-  #eval solve_toy_train 5 [(2, 4), (5, 1), (2, 3), (3, 4), (4, 1), (5, 3), (3, 5)]
+  -- #guard_msgs in
+  -- #eval solve_toy_train 5 [(2, 4), (5, 1), (2, 3), (3, 4), (4, 1), (5, 3), (3, 5)]
   
-  /--
+  /-
   info: [5, 6]
   -/
-  #guard_msgs in
-  #eval solve_toy_train 2 [(1, 2), (1, 2), (1, 2)]
+  -- #guard_msgs in
+  -- #eval solve_toy_train 2 [(1, 2), (1, 2), (1, 2)]
   
-  /--
+  /-
   info: [8, 7, 6, 8, 7]
   -/
-  #guard_msgs in
-  #eval solve_toy_train 5 [(2, 4), (5, 4), (3, 2)]
+  -- #guard_msgs in
+  -- #eval solve_toy_train 5 [(2, 4), (5, 4), (3, 2)]
 
 vc-postamble: |-
   -- Apps difficulty: competition

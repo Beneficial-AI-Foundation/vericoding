@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You have been appointed as the designer for your school's computer network.
   In total, there are N computers in the class, and M computer-to-computer connections need to be made. Also, there are three mandatory conditions the design should fulfill.
   The first requirement is that any computer in the network should be able to communicate with any other computer through the connections, possibly, through some other computers.
@@ -37,6 +38,7 @@ vc-description: |-
   -----Explanation-----
   Example case 1. There are not enough connections even to satisfy the first requirement.
   Example case 2. The obtained network satisfies all the requirements.
+  -/
 
 vc-preamble: |-
 

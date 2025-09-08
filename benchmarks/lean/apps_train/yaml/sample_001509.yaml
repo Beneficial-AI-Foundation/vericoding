@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Sergey recently learned about country codes - two letter strings, denoting countries. For example, BY stands for Belarus and IN stands for India. Mesmerized by this new discovery, Sergey now looks for country codes everywhere!
   Sergey has recently found a string S consisting of uppercase Latin letters. He wants to find the number of different country codes that appear in S as contiguous substrings. For the purpose of this problem, consider that every 2-letter uppercase string is a valid country code.
   
@@ -26,6 +27,7 @@ vc-description: |-
   -----Explanation-----
   Example case 1. The codes are IN, NB and BY.
   Example case 2. The codes are BY and YB.
+  -/
 
 vc-preamble: |-
 
@@ -58,23 +60,23 @@ vc-theorems: |-
   theorem count_country_codes_single_char :
     ∀ c : Char, count_country_codes (String.mk [c]) = 0 := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_country_codes "INBY"
+  -- #guard_msgs in
+  -- #eval count_country_codes "INBY"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_country_codes "BYBY"
+  -- #guard_msgs in
+  -- #eval count_country_codes "BYBY"
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_country_codes "ABCD"
+  -- #guard_msgs in
+  -- #eval count_country_codes "ABCD"
 
 vc-postamble: |-
   -- Apps difficulty: interview

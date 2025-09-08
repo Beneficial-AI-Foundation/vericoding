@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function that replaces 'two', 'too' and 'to' with the number '2'. Even if the sound is found mid word (like in octopus) or not in lowercase grandma still thinks that should be replaced with a 2. Bless her.
   
   ```text
@@ -8,6 +9,7 @@ vc-description: |-
   ```
   
   Note that 'too' should become '2', not '2o'
+  -/
 
 vc-preamble: |-
   def textin (s : String) : String :=

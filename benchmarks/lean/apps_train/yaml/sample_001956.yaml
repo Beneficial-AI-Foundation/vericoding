@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Vasya's telephone contains n photos. Photo number 1 is currently opened on the phone. It is allowed to move left and right to the adjacent photo by swiping finger over the screen. If you swipe left from the first photo, you reach photo n. Similarly, by swiping right from the last photo you reach photo 1. It takes a seconds to swipe from photo to adjacent.
   
   For each photo it is known which orientation is intended for it — horizontal or vertical. Phone is in the vertical orientation and can't be rotated. It takes b second to change orientation of the photo.
@@ -55,6 +56,7 @@ vc-description: |-
   In the first sample test you can rotate the first photo (3 seconds), watch the first photo (1 seconds), move left (2 second), rotate fourth photo (3 seconds), watch fourth photo (1 second). The whole process takes exactly 10 seconds.
   
   Note that in the last sample test the time is not enough even to watch the first photo, also you can't skip it.
+  -/
 
 vc-preamble: |-
 
@@ -95,23 +97,23 @@ vc-theorems: |-
     let result := solve_photo_problem n a b 0 orientations
     result = 0 ∨ result = 1 := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve_photo_problem 4 2 3 10 "wwhw"
+  -- #guard_msgs in
+  -- #eval solve_photo_problem 4 2 3 10 "wwhw"
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval solve_photo_problem 5 2 4 13 "hhwhh"
+  -- #guard_msgs in
+  -- #eval solve_photo_problem 5 2 4 13 "hhwhh"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve_photo_problem 3 1 100 10 "whw"
+  -- #guard_msgs in
+  -- #eval solve_photo_problem 3 1 100 10 "whw"
 
 vc-postamble: |-
   -- Apps difficulty: competition

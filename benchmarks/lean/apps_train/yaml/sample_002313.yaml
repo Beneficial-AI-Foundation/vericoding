@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Count the number of segments in a string, where a segment is defined to be a contiguous sequence of non-space characters.
   
   Please note that the string does not contain any non-printable characters.
@@ -7,6 +8,7 @@ vc-description: |-
   
   Input: "Hello, my name is John"
   Output: 5
+  -/
 
 vc-preamble: |-
 
@@ -25,23 +27,23 @@ vc-theorems: |-
     count_segments "Hello world" = 2 ∧
     count_segments "   spaces   around   " = 2 := sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval count_segments "Hello, my name is John"
+  -- #guard_msgs in
+  -- #eval count_segments "Hello, my name is John"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_segments ""
+  -- #guard_msgs in
+  -- #eval count_segments ""
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_segments "Hello"
+  -- #guard_msgs in
+  -- #eval count_segments "Hello"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

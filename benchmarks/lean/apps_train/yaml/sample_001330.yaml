@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The chef was searching for his pen in the garage but he found his old machine with a display and some numbers on it. If some numbers entered then some different output occurs on the display. Chef wants to crack the algorithm that the machine is following.
   Example to identify the pattern :
   Input                            Output
@@ -24,6 +25,7 @@ vc-description: |-
   
   -----Sample Output:-----
   21
+  -/
 
 vc-preamble: |-
 
@@ -56,23 +58,23 @@ vc-theorems: |-
     solve 2 = 1 :=
     sorry
   
-  /--
+  /-
   info: 21
   -/
-  #guard_msgs in
-  #eval solve 7
+  -- #guard_msgs in
+  -- #eval solve 7
   
-  /--
+  /-
   info: 36
   -/
-  #guard_msgs in
-  #eval solve 9
+  -- #guard_msgs in
+  -- #eval solve 9
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval solve 5
+  -- #guard_msgs in
+  -- #eval solve 5
 
 vc-postamble: |-
   -- Apps difficulty: interview

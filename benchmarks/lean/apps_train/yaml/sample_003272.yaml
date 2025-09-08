@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function name `nextPerfectSquare` that returns the first perfect square that is greater than its integer argument. A `perfect square` is a integer that is equal to some integer squared. For example 16 is a perfect square because `16=4*4`. 
   ```
   example
@@ -16,6 +17,7 @@ vc-description: |-
   ```if:csharp
   Caution! The largest number test is close to `Int64.MaxValue`
   ```
+  -/
 
 vc-preamble: |-
 
@@ -45,23 +47,23 @@ vc-theorems: |-
   theorem next_perfect_square_of_perfect_square (n: Int) (h: n ≥ 0) :
     next_perfect_square (n * n) = (n + 1) * (n + 1) := sorry
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval next_perfect_square 6
+  -- #guard_msgs in
+  -- #eval next_perfect_square 6
   
-  /--
+  /-
   info: 49
   -/
-  #guard_msgs in
-  #eval next_perfect_square 36
+  -- #guard_msgs in
+  -- #eval next_perfect_square 36
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval next_perfect_square -5
+  -- #guard_msgs in
+  -- #eval next_perfect_square -5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

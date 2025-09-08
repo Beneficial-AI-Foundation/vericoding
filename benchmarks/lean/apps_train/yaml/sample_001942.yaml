@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Squirrel Liss lived in a forest peacefully, but unexpected trouble happens. Stones fall from a mountain. Initially Squirrel Liss occupies an interval [0, 1]. Next, n stones will fall and Liss will escape from the stones. The stones are numbered from 1 to n in order.
   
   The stones always fall to the center of Liss's interval. When Liss occupies the interval [k - d, k + d] and a stone falls to k, she will escape to the left or to the right. If she escapes to the left, her new interval will be [k - d, k]. If she escapes to the right, her new interval will be [k, k + d].
@@ -47,6 +48,7 @@ vc-description: |-
   -----Note-----
   
   In the first example, the positions of stones 1, 2, 3, 4, 5 will be $\frac{1}{2}, \frac{1}{4}, \frac{1}{8}, \frac{3}{16}, \frac{5}{32}$, respectively. So you should print the sequence: 3, 5, 4, 2, 1.
+  -/
 
 vc-preamble: |-
 

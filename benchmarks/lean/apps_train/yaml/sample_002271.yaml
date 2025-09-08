@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given $n$ strings $a_1, a_2, \ldots, a_n$: all of them have the same length $m$. The strings consist of lowercase English letters.
   
   Find any string $s$ of length $m$ such that each of the given $n$ strings differs from $s$ in at most one position. Formally, for each given string $a_i$, there is no more than one position $j$ such that $a_i[j] \ne s[j]$.
@@ -52,6 +53,7 @@ vc-description: |-
   The first test case was explained in the statement.
   
   In the second test case, the answer does not exist.
+  -/
 
 vc-preamble: |-
   def hammingDistance (s1 s2 : String) : Nat :=
@@ -98,17 +100,17 @@ vc-theorems: |-
       verifyResult result strings
     := sorry
   
-  /--
+  /-
   info: '-1'
   -/
-  #guard_msgs in
-  #eval find_similar_string ["aaaa", "bbbb"] 2 4
+  -- #guard_msgs in
+  -- #eval find_similar_string ["aaaa", "bbbb"] 2 4
   
-  /--
+  /-
   info: 'aaa'
   -/
-  #guard_msgs in
-  #eval find_similar_string ["baa", "aaa", "aab"] 3 3
+  -- #guard_msgs in
+  -- #eval find_similar_string ["baa", "aaa", "aab"] 3 3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

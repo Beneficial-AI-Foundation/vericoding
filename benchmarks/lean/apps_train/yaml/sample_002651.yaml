@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Here we have a function that help us spam our hearty laughter. But is not working! I need you to find out why...
   
   Expected results:
@@ -8,6 +9,7 @@ vc-description: |-
   spam(6)  ==> "huehuehuehuehuehue"
   spam(14) ==> "huehuehuehuehuehuehuehuehuehuehuehuehuehue"
   ```
+  -/
 
 vc-preamble: |-
   def String.replicate (n : Nat) (s : String) : String :=
@@ -25,23 +27,23 @@ vc-theorems: |-
   theorem spam_multiplication (n : Nat) : n ≤ 1000 → spam n = String.replicate n "hue" :=
     sorry
   
-  /--
+  /-
   info: 'hue'
   -/
-  #guard_msgs in
-  #eval spam 1
+  -- #guard_msgs in
+  -- #eval spam 1
   
-  /--
+  /-
   info: 'huehuehuehuehuehue'
   -/
-  #guard_msgs in
-  #eval spam 6
+  -- #guard_msgs in
+  -- #eval spam 6
   
-  /--
+  /-
   info: 'huehuehuehuehuehuehuehuehuehuehuehuehuehue'
   -/
-  #guard_msgs in
-  #eval spam 14
+  -- #guard_msgs in
+  -- #eval spam 14
 
 vc-postamble: |-
   -- Apps difficulty: introductory

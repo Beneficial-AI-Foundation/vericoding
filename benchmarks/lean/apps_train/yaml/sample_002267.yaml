@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   This is an easy version of the problem. In this version, all numbers in the given array are distinct and the constraints on $n$ are less than in the hard version of the problem.
   
   You are given an array $a$ of $n$ integers (there are no equals elements in the array). You can perform the following operations on array elements:  choose any index $i$ ($1 \le i \le n$) and move the element $a[i]$ to the begin of the array;  choose any index $i$ ($1 \le i \le n$) and move the element $a[i]$ to the end of the array. 
@@ -48,6 +49,7 @@ vc-description: |-
   In the second test case, you need to move the 1 to the beginning of the array, and the 8 — to the end. Therefore, the desired sequence of operations: $[3, 5, 8, 1, 7] \rightarrow [1, 3, 5, 8, 7] \rightarrow [1, 3, 5, 7, 8]$.
   
   In the third test case, the array is already sorted.
+  -/
 
 vc-preamble: |-
   def minimum_operations (arr : List Int) : Nat :=
@@ -74,23 +76,23 @@ vc-theorems: |-
     minimum_operations arr = 0 :=
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval minimum_operations [4, 7, 2, 3, 9]
+  -- #guard_msgs in
+  -- #eval minimum_operations [4, 7, 2, 3, 9]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval minimum_operations [3, 5, 8, 1, 7]
+  -- #guard_msgs in
+  -- #eval minimum_operations [3, 5, 8, 1, 7]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval minimum_operations [1, 4, 5, 7, 12]
+  -- #guard_msgs in
+  -- #eval minimum_operations [1, 4, 5, 7, 12]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

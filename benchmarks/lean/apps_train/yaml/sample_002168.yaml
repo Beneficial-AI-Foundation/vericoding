@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There is a directed graph with N vertices and N edges. The vertices are numbered 1, 2, ..., N.
   The graph has the following N edges: (p_1, 1), (p_2, 2), ..., (p_N, N), and the graph is weakly connected. Here, an edge from Vertex u to Vertex v is denoted by (u, v), and a weakly connected graph is a graph which would be connected if each edge was bidirectional.
   We would like to assign a value to each of the vertices in this graph so that the following conditions are satisfied. Here, a_i is the value assigned to Vertex i.
@@ -29,6 +30,7 @@ vc-description: |-
   POSSIBLE
   
   The assignment is possible: {a_i} = {0, 1, 0, 1} or {a_i} = {1, 0, 1, 0}.
+  -/
 
 vc-preamble: |-
 

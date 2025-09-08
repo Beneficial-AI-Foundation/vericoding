@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function that gets a sequence and value and returns `true/false` depending on whether the variable exists in a multidimentional sequence.
   
   Example:
@@ -7,6 +8,7 @@ vc-description: |-
   locate(['a','b',['c','d',['e']]],'a'); // should return true
   locate(['a','b',['c','d',['e']]],'f'); // should return false
   ```
+  -/
 
 vc-preamble: |-
 
@@ -36,23 +38,23 @@ vc-theorems: |-
     locate (NestedList.list [seq, NestedList.list [NestedList.elem value]]) value = true := 
   sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval locate ["a", "b", ["c", "d", ["e"]]] "a"
+  -- #guard_msgs in
+  -- #eval locate ["a", "b", ["c", "d", ["e"]]] "a"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval locate ["a", "b", ["c", "d", ["e"]]] "e"
+  -- #guard_msgs in
+  -- #eval locate ["a", "b", ["c", "d", ["e"]]] "e"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval locate ["a", "b", ["c", "d", ["e"]]] "f"
+  -- #guard_msgs in
+  -- #eval locate ["a", "b", ["c", "d", ["e"]]] "f"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

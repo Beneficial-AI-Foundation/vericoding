@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   This kata generalizes [Twice Linear](https://www.codewars.com/kata/5672682212c8ecf83e000050). You may want to attempt that kata first.
   
   ## Sequence
@@ -35,6 +36,7 @@ vc-description: |-
   * Tests use large values in the m set. Algorithms which multiply further than neccessary may overflow.
   * Linear run time and memory usage is possible.
   * How can you build the sequence iteratively, without growing extra data structures?
+  -/
 
 vc-preamble: |-
 
@@ -67,23 +69,23 @@ vc-theorems: |-
     ∀ i, i < 2 → n_linear multipliers (i+1) < n_linear multipliers (i+2) :=
   sorry
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval n_linear [2, 3] 5
+  -- #guard_msgs in
+  -- #eval n_linear [2, 3] 5
   
-  /--
+  /-
   info: 64
   -/
-  #guard_msgs in
-  #eval n_linear [5, 7, 8] 10
+  -- #guard_msgs in
+  -- #eval n_linear [5, 7, 8] 10
   
-  /--
+  /-
   info: 46
   -/
-  #guard_msgs in
-  #eval n_linear [2, 3, 4, 5] 33
+  -- #guard_msgs in
+  -- #eval n_linear [2, 3, 4, 5] 33
 
 vc-postamble: |-
   -- Apps difficulty: interview

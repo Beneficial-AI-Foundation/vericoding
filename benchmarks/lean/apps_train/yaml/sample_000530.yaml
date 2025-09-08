@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   An encoder encodes the first $16$ lowercase English letters using $4$ bits each. The first bit (from the left) of the code is $0$ if the letter lies among the first $8$ letters, else it is $1$, signifying that it lies among the last $8$ letters. The second bit of the code is $0$ if the letter lies among the first $4$ letters of those $8$ letters found in the previous step, else it's $1$, signifying that it lies among the last $4$ letters of those $8$ letters. Similarly, the third and the fourth bit each signify the half in which the letter lies. 
   For example, the letter $j$ would be encoded as :
   - Among $(a,b,c,d,e,f,g,h$ $|$ $i,j,k,l,m,n,o,p)$, $j$ appears in the second half. So the first bit of its encoding is $1$.
@@ -48,6 +49,7 @@ vc-description: |-
   - Sample Case $3$ : 
   The first bit is $1$, so the letter lies among the last $8$ letters, i.e., among $i,j,k,l,m,n,o,p$. The second bit is $0$, so it lies among the first four of these, i.e., among $i,j,k,l$. 
   The third bit is $0$, so it again lies in the first half, i.e., it's either $i$ or $j$. Finally, the fourth bit is $1$, so we know that the letter is $j$.
+  -/
 
 vc-preamble: |-
 
@@ -86,23 +88,23 @@ vc-theorems: |-
     (h₂: s.length = 4) :
     decode_binary_string s = decode_binary_string s := sorry
   
-  /--
+  /-
   info: 'a'
   -/
-  #guard_msgs in
-  #eval decode_binary_string "0000"
+  -- #guard_msgs in
+  -- #eval decode_binary_string "0000"
   
-  /--
+  /-
   info: 'ap'
   -/
-  #guard_msgs in
-  #eval decode_binary_string "00001111"
+  -- #guard_msgs in
+  -- #eval decode_binary_string "00001111"
   
-  /--
+  /-
   info: 'j'
   -/
-  #guard_msgs in
-  #eval decode_binary_string "1001"
+  -- #guard_msgs in
+  -- #eval decode_binary_string "1001"
 
 vc-postamble: |-
   -- Apps difficulty: interview

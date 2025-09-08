@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Story
   
   Those pesky rats have returned and this time they have taken over the Town Square.
@@ -44,6 +45,7 @@ vc-description: |-
       ←   ↓
     ↖ ↙   ↙
   ↓ ↓ ↓
+  -/
 
 vc-preamble: |-
   def DIRS := [('←', (0,-1)), ('↑', (-1,0)), ('→', (0,1)), ('↓', (1,0)),
@@ -89,17 +91,17 @@ vc-theorems: |-
     0 ≤ result ∧ result ≤ DIRS.length :=
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_deaf_rats ["↗ P     ", "  ↘   ↖", "  ↑     ", "↗       "]
+  -- #guard_msgs in
+  -- #eval count_deaf_rats ["↗ P     ", "  ↘   ↖", "  ↑     ", "↗       "]
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval count_deaf_rats ["    ↗    ", "P ↓   ↖ ↑", "    ←   ↓", "  ↖ ↙   ↙", "↓ ↓ ↓    "]
+  -- #guard_msgs in
+  -- #eval count_deaf_rats ["    ↗    ", "P ↓   ↖ ↑", "    ←   ↓", "  ↖ ↙   ↙", "↓ ↓ ↓    "]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

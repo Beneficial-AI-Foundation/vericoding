@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The city of Siruseri is impeccably planned. The city is divided into a rectangular array of cells with $M$ rows and $N$ columns. Each cell has a metro station. There is one train running left to right and back along each row, and one running top to bottom and back along each column. Each trains starts at some time $T$ and goes back and forth along its route (a row or a column) forever.
   Ordinary trains take two units of time to go from one station to the next. There are some fast trains that take only one unit of time to go from one station to the next. Finally, there are some slow trains that take three units of time to go from one station the next. You may assume that the halting time at any station is negligible.
   Here is a description of a metro system with $3$ rows and $4$ columns:
@@ -38,6 +39,7 @@ vc-description: |-
   
   -----Sample Output-----
   15
+  -/
 
 vc-preamble: |-
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef usually likes to play cricket, but now, he is bored of playing it too much, so he is trying new games with strings. Chef's friend Dustin gave him binary strings $S$ and $R$, each with length $N$, and told him to make them identical. However, unlike Dustin, Chef does not have any superpower and Dustin lets Chef perform only operations of one type: choose any pair of integers $(i, j)$ such that $1 \le i, j \le N$ and swap the $i$-th and $j$-th character of $S$. He may perform any number of operations (including zero).
   For Chef, this is much harder than cricket and he is asking for your help. Tell him whether it is possible to change the string $S$ to the target string $R$ only using operations of the given type.
   
@@ -33,6 +34,7 @@ vc-description: |-
   -----Explanation-----
   Example case 1: Chef can perform one operation with $(i, j) = (1, 5)$. Then, $S$ will be "01001", which is equal to $R$.
   Example case 2: There is no sequence of operations which would make $S$ equal to $R$.
+  -/
 
 vc-preamble: |-
   def can_transform_string (s r : String) : String := sorry
@@ -76,23 +78,23 @@ vc-theorems: |-
     let ones := create_string '1' s.length
     can_transform_string ones s = if s = ones then "YES" else "NO" := sorry
   
-  /--
+  /-
   info: 'YES'
   -/
-  #guard_msgs in
-  #eval can_transform_string "11000" "01001"
+  -- #guard_msgs in
+  -- #eval can_transform_string "11000" "01001"
   
-  /--
+  /-
   info: 'NO'
   -/
-  #guard_msgs in
-  #eval can_transform_string "110" "001"
+  -- #guard_msgs in
+  -- #eval can_transform_string "110" "001"
   
-  /--
+  /-
   info: 'YES'
   -/
-  #guard_msgs in
-  #eval can_transform_string "1100" "0011"
+  -- #guard_msgs in
+  -- #eval can_transform_string "1100" "0011"
 
 vc-postamble: |-
   -- Apps difficulty: interview

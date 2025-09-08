@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Some languages like Chinese, Japanese, and Thai do not have spaces between words. However, most natural languages processing tasks like part-of-speech tagging require texts that have segmented words. A simple and reasonably effective algorithm to segment a sentence into its component words is called "MaxMatch".
   
   ## MaxMatch
@@ -30,6 +31,7 @@ vc-description: |-
   **Note:** This algorithm is simple and operates better on Chinese text, so accept the fact that some words will be segmented wrongly.
   
   Happy coding :)
+  -/
 
 vc-preamble: |-
 
@@ -58,23 +60,23 @@ vc-theorems: |-
     s = "onthemat" → max_match s = ["on", "the", "mat"] :=
   sorry
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval max_match ""
+  -- #guard_msgs in
+  -- #eval max_match ""
   
-  /--
+  /-
   info: ['happy', 'day']
   -/
-  #guard_msgs in
-  #eval max_match "happyday"
+  -- #guard_msgs in
+  -- #eval max_match "happyday"
   
-  /--
+  /-
   info: ['the', 'cat', 'sat']
   -/
-  #guard_msgs in
-  #eval max_match "thecatsat"
+  -- #guard_msgs in
+  -- #eval max_match "thecatsat"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

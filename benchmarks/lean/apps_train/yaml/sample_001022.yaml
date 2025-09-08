@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef has a binary array in an unsorted manner. Cheffina challenges chef to find the transition point in the sorted (ascending) binary array. Here indexing is starting from 0.
   Note: Transition point always exists.
   
@@ -24,6 +25,7 @@ vc-description: |-
   
   -----EXPLANATION:-----
   binary array in sorted form will look like = [0, 0, 0, 1, 1]
+  -/
 
 vc-preamble: |-
 
@@ -69,23 +71,23 @@ vc-theorems: |-
     find_transition_point n (List.replicate n 0) = none :=
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_transition_point 5 [0, 1, 0, 0, 1]
+  -- #guard_msgs in
+  -- #eval find_transition_point 5 [0, 1, 0, 0, 1]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval find_transition_point 3 [1, 0, 1]
+  -- #guard_msgs in
+  -- #eval find_transition_point 3 [1, 0, 1]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_transition_point 4 [0, 0, 0, 1]
+  -- #guard_msgs in
+  -- #eval find_transition_point 4 [0, 0, 0, 1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

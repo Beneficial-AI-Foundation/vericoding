@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    IONU Satellite Imaging, Inc. records and stores very large images using run length encoding. You are to write a program that reads a compressed image, finds the edges in the image, as described below, and outputs another compressed image of the detected edges.
   
@@ -40,6 +41,7 @@ vc-description: |-
    - `[output]` a string
   
    A RLE string calculate by using the edge detection algorithm.
+  -/
 
 vc-preamble: |-
 
@@ -70,17 +72,17 @@ vc-theorems: |-
     ∀ i j, i < size → j < size →
       pixel_at output i j = diff := sorry
   
-  /--
+  /-
   info: '1 0 1'
   -/
-  #guard_msgs in
-  #eval edge_detection "1 5 1"
+  -- #guard_msgs in
+  -- #eval edge_detection "1 5 1"
   
-  /--
+  /-
   info: '2 9 4'
   -/
-  #guard_msgs in
-  #eval edge_detection "2 1 2 10 2"
+  -- #guard_msgs in
+  -- #eval edge_detection "2 1 2 10 2"
 
 vc-postamble: |-
   -- Apps difficulty: interview

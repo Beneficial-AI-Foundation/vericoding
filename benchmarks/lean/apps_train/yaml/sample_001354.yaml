@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are $N$ sabotages available in the game Among Us, initially all at level $0$. 
   $N$ imposters are allotted the task to upgrade the level of the sabotages. 
   The $i^{th}$ imposter $(1 \leq i \leq N)$ increases the level of $x^{th}$ sabotage $(1 \leq x \leq N)$ by one level  if $gcd(i,x)=i$.
@@ -25,6 +26,7 @@ vc-description: |-
   -----EXPLANATION:-----
   The $1^{st}$ sabotage is at level $1$, the $2^{nd}$, $3^{rd}$ and $5^{th}$ sabotages are at level $2$, the $4^{th}$ sabotage is at level $3$ and the $6^{th}$ sabotage is at level $4$.
   None of them reach level $5$. Hence the output is $0$.
+  -/
 
 vc-preamble: |-
 
@@ -53,23 +55,23 @@ vc-theorems: |-
     count_sabotages_at_level_5 n ≤ 45 :=
     sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_sabotages_at_level_5 6
+  -- #guard_msgs in
+  -- #eval count_sabotages_at_level_5 6
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_sabotages_at_level_5 20
+  -- #guard_msgs in
+  -- #eval count_sabotages_at_level_5 20
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_sabotages_at_level_5 1000
+  -- #guard_msgs in
+  -- #eval count_sabotages_at_level_5 1000
 
 vc-postamble: |-
   -- Apps difficulty: interview

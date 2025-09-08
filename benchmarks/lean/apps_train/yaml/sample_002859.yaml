@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Let's say we have a number, `num`. Find the number of values of `n` such that: there exists `n` consecutive **positive** values that sum up to `num`. A positive number is `> 0`. `n` can also be 1.
   
   ```python
@@ -20,6 +21,7 @@ vc-description: |-
   return 2
   ```
   The upper limit is `$10^8$`
+  -/
 
 vc-preamble: |-
 
@@ -41,23 +43,23 @@ vc-theorems: |-
   theorem result_less_than_input (n : Nat) (h : n > 0) : consecutive_sum n ≤ n :=
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval consecutive_sum 1
+  -- #guard_msgs in
+  -- #eval consecutive_sum 1
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval consecutive_sum 15
+  -- #guard_msgs in
+  -- #eval consecutive_sum 15
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval consecutive_sum 97
+  -- #guard_msgs in
+  -- #eval consecutive_sum 97
 
 vc-postamble: |-
   -- Apps difficulty: introductory

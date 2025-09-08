@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We have a sandglass consisting of two bulbs, bulb A and bulb B. These bulbs contain some amount of sand.
   When we put the sandglass, either bulb A or B lies on top of the other and becomes the upper bulb. The other bulb becomes the lower bulb.
   The sand drops from the upper bulb to the lower bulb at a rate of 1 gram per second.
@@ -48,6 +49,7 @@ vc-description: |-
   
   In the first query, 30 out of the initial 90 grams of sand will drop from bulb A, resulting in 60 grams.
   In the second query, the initial 1 gram of sand will drop from bulb A, and nothing will happen for the next 59 seconds. Then, we will turn over the sandglass, and 1 second after this, bulb A contains 1 gram of sand at the time in question.
+  -/
 
 vc-preamble: |-
 
@@ -71,23 +73,23 @@ vc-theorems: |-
     (t, a) ∈ queries → 
     ∃ result, result ∈ solve_sandglass_wrapped X K r Q queries ∧ result ≤ X ∧ result ≥ 0 := sorry
   
-  /--
+  /-
   info: [60, 1, 120]
   -/
-  #guard_msgs in
-  #eval solve_sandglass 180 3 [60, 120, 180] 3 [(30, 90), (61, 1), (180, 180)]
+  -- #guard_msgs in
+  -- #eval solve_sandglass 180 3 [60, 120, 180] 3 [(30, 90), (61, 1), (180, 180)]
   
-  /--
+  /-
   info: [100, 10, 0, 0]
   -/
-  #guard_msgs in
-  #eval solve_sandglass 100 1 [100000] 4 [(0, 100), (90, 100), (100, 100), (101, 100)]
+  -- #guard_msgs in
+  -- #eval solve_sandglass 100 1 [100000] 4 [(0, 100), (90, 100), (100, 100), (101, 100)]
   
-  /--
+  /-
   info: [19, 52, 91, 10, 58, 42, 100]
   -/
-  #guard_msgs in
-  #eval solve_sandglass 100 5 [48, 141, 231, 314, 425] 7 [(0, 19), (50, 98), (143, 30), (231, 55), (342, 0), (365, 100), (600, 10)]
+  -- #guard_msgs in
+  -- #eval solve_sandglass 100 5 [48, 141, 231, 314, 425] 7 [(0, 19), (50, 98), (143, 30), (231, 55), (342, 0), (365, 100), (600, 10)]
 
 vc-postamble: |-
   -- Apps difficulty: competition

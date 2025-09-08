@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You received a whatsup message from an unknown number. Could it be from that girl/boy with a foreign accent you met yesterday evening?
   
   Write a simple regex to check if the string contains the word hallo in different languages.
@@ -19,6 +20,7 @@ vc-description: |-
   PPS. to keep this a beginner exercise you don't need to check if the greeting is a subset of word ('Hallowen' can pass the test)
   
   PS. regex should be case insensitive to pass the tests
+  -/
 
 vc-preamble: |-
 
@@ -43,23 +45,23 @@ vc-theorems: |-
   theorem validate_hello_empty_or_whitespace (s : String) :
     s.trim = "" → validate_hello s = false := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval validate_hello "hello there"
+  -- #guard_msgs in
+  -- #eval validate_hello "hello there"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval validate_hello "Hola amigo"
+  -- #guard_msgs in
+  -- #eval validate_hello "Hola amigo"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval validate_hello "namaste"
+  -- #guard_msgs in
+  -- #eval validate_hello "namaste"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   *Inspired by the [Fold an Array](https://www.codewars.com/kata/fold-an-array) kata. This one is sort of similar but a little different.*
   
   ---
@@ -53,6 +54,7 @@ vc-description: |-
   
   Result: [10, 18]
   ```
+  -/
 
 vc-preamble: |-
   def sum (xs : List Int) : Int :=

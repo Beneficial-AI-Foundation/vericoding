@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Feynman's squares
   Richard Phillips Feynman was a well-known American physicist and a recipient of the Nobel Prize in Physics. He worked in theoretical physics and pioneered the field of quantum computing.
   
@@ -25,6 +26,7 @@ vc-description: |-
   ```
   
   (Adapted from the Sphere Online Judge problem SAMER08F by Diego Satoba)
+  -/
 
 vc-preamble: |-
 
@@ -39,23 +41,23 @@ vc-definitions: |-
     count_squares 0 = 0 := sorry
 
 vc-theorems: |-
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_squares 1
+  -- #guard_msgs in
+  -- #eval count_squares 1
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval count_squares 2
+  -- #guard_msgs in
+  -- #eval count_squares 2
   
-  /--
+  /-
   info: 14
   -/
-  #guard_msgs in
-  #eval count_squares 3
+  -- #guard_msgs in
+  -- #eval count_squares 3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Every Friday Chef and his N - 1 friends go for a party. At these parties, they play board games. This Friday, they are playing a game named "Boats! Boats! Boats!". In this game players have to transport cookies between Venice and Constantinople. Each player has a personal storage. The players are numbered from 1 to N, Chef is numbered 1. Rules for determining a winner are very difficult, therefore Chef asks you to write a program, which will determine who is a winner. 
   
   There are 6 types of cookies. For each cookie in the storage player gets 1 point. Also player gets additional points if he packs his cookies in some boxes as follows: 
@@ -64,6 +65,7 @@ vc-description: |-
   7 < 8 - the second player wins.
   Example case 3.
   Every player has 4 cookies and can't create any bag of sweets. So, it's a tie.
+  -/
 
 vc-preamble: |-
   def cookieStorageStr (num : Nat) (types : List Nat) : String := sorry
@@ -109,23 +111,23 @@ vc-theorems: |-
            scores[result.toNat! - 1]! = maxScore! ∧
            (scores.filter (· = maxScore!)).length = 1 := sorry
   
-  /--
+  /-
   info: 'chef'
   -/
-  #guard_msgs in
-  #eval determine_winner 2 ["6 1 2 3 4 5 6", "9 3 3 3 4 4 4 5 5 5"]
+  -- #guard_msgs in
+  -- #eval determine_winner 2 ["6 1 2 3 4 5 6", "9 3 3 3 4 4 4 5 5 5"]
   
-  /--
+  /-
   info: '2'
   -/
-  #guard_msgs in
-  #eval determine_winner 2 ["5 2 3 4 5 6", "7 1 1 2 2 3 3 4"]
+  -- #guard_msgs in
+  -- #eval determine_winner 2 ["5 2 3 4 5 6", "7 1 1 2 2 3 3 4"]
   
-  /--
+  /-
   info: 'tie'
   -/
-  #guard_msgs in
-  #eval determine_winner 3 ["4 1 1 2 3", "4 1 2 2 3", "4 1 2 3 3"]
+  -- #guard_msgs in
+  -- #eval determine_winner 3 ["4 1 1 2 3", "4 1 2 2 3", "4 1 2 3 3"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

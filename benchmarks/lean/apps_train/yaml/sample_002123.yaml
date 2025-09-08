@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Sereja loves number sequences very much. That's why he decided to make himself a new one following a certain algorithm.
   
   Sereja takes a blank piece of paper. Then he starts writing out the sequence in m stages. Each time he either adds a new number to the end of the sequence or takes l first elements of the current sequence and adds them c times to the end. More formally, if we represent the current sequence as a_1, a_2, ..., a_{n}, then after we apply the described operation, the sequence transforms into a_1, a_2, ..., a_{n}[, a_1, a_2, ..., a_{l}] (the block in the square brackets must be repeated c times). 
@@ -33,6 +34,7 @@ vc-description: |-
   
   Output
   1 2 1 2 3 1 2 1 2 3 1 2 1 2 3 4
+  -/
 
 vc-preamble: |-
 

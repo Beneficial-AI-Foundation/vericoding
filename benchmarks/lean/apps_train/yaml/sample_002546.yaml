@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Introduction 
   
   Hamsters are rodents belonging to the subfamily Cricetinae. The subfamily contains about 25 species, classified in six or seven genera. They have become established as popular small house pets, and, partly because they are easy to breed in captivity, hamsters are often used as laboratory animals.
@@ -75,6 +76,7 @@ vc-description: |-
   The `code` will have at least 1 letter.   
   Duplication of letters in `code` is possible and should be handled.    
   The `code` and `message` consist of only lowercase letters.
+  -/
 
 vc-preamble: |-
 
@@ -110,23 +112,23 @@ vc-theorems: |-
     ∀ c ∈ result.data,
       c = 'a' ∨ ('0'.toNat ≤ c.toNat ∧ c.toNat ≤ '9'.toNat) := sorry
   
-  /--
+  /-
   info: 'h1a1m1s1t1e1r1'
   -/
-  #guard_msgs in
-  #eval hamster_me "hamster" "hamster"
+  -- #guard_msgs in
+  -- #eval hamster_me "hamster" "hamster"
   
-  /--
+  /-
   info: 'h1e1h5m4m1e1'
   -/
-  #guard_msgs in
-  #eval hamster_me "hamster" "helpme"
+  -- #guard_msgs in
+  -- #eval hamster_me "hamster" "helpme"
   
-  /--
+  /-
   info: 'h1t8m1s1t1e1r1'
   -/
-  #guard_msgs in
-  #eval hamster_me "hmster" "hamster"
+  -- #guard_msgs in
+  -- #eval hamster_me "hmster" "hamster"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

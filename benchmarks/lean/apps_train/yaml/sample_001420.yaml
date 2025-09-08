@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   $Neha$  is given a number $N$. She always looks for special thing , this time she is looking for $Special$ $Number$ and $Partial$ $Special$ $Number$. A $Special$ $Number$ is a number whose product of its digits is equal to number itself i.e. $N $, and in this number there is no digit $1$. $Partial$ $Special$ is a number having all the condition same as $Special$ except that it can also have digit $1$ in it .Neha have to count the number of $Special$ and $Partial$ $Special$ $Numbers $for a given  $N$ . She is not so good in programming , so go and help her.
   
   -----Input:-----
@@ -19,6 +20,7 @@ vc-description: |-
   -----EXPLANATION:-----
   There are only one natural numbers, the product of the digits of which is 3  :- {3}.
   There are 20 natural numbers with digit 1 , whose  product of the digits  is 3 :-{13, 31, 113 ,131 311 ,1113 ,1131 ,1311, 3111 ,11113, 11131, 11311 ,13111, 31111, 111113, 111131, 111311,113111, 131111 ,311111}
+  -/
 
 vc-preamble: |-
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are $N$ buckets numbered $1$ through $N$. The buckets contain balls; each ball has a color between $1$ and $K$. Let's denote the number of balls with color $j$ that are initially in bucket $i$ by $a_{i, j}$.
   For each $i$ from $1$ to $N-1$ (in this order), someone draws a ball uniformly at random from bucket $i$ and puts it into bucket $i+1$, then continues to draw the next ball. After putting a ball in bucket $N$, this person draws a ball, again uniformly at random, from bucket $N$.
   For each color from $1$ to $K$, find the probability that the ball drawn from bucket $N$ has this color.
@@ -28,6 +29,7 @@ vc-description: |-
   0.333333 0.666667
   
   -----Explanation-----
+  -/
 
 vc-preamble: |-
   def solve_bucket_probability (N K : Nat) (arr : List (List Nat)) : List Float := sorry

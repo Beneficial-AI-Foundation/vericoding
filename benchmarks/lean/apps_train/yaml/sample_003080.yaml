@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   A newspaper is published in Walrusland. Its heading is `s1` , it consists of lowercase Latin letters. 
   
@@ -24,6 +25,7 @@ vc-description: |-
   For `s1="abc", s2="xyz"`, the output should be `-1`.
   
   It's impossible to get the word `s2`.
+  -/
 
 vc-preamble: |-
 
@@ -48,23 +50,23 @@ vc-theorems: |-
     (h2 : ∀ c, c ∈ s2.data → c ∈ s1.data) :
     buy_newspaper s1 s2 ≥ 0 := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval buy_newspaper "abc" "bcac"
+  -- #guard_msgs in
+  -- #eval buy_newspaper "abc" "bcac"
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval buy_newspaper "abc" "xyz"
+  -- #guard_msgs in
+  -- #eval buy_newspaper "abc" "xyz"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval buy_newspaper "abc" "abcabc"
+  -- #guard_msgs in
+  -- #eval buy_newspaper "abc" "abcabc"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

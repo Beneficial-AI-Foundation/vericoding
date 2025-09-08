@@ -1,7 +1,9 @@
 vc-description: |-
+  /-
   Create an OR function, without use of the 'or' keyword, that takes an list of boolean values and runs OR against all of them.
   
   Assume there will be between 1 and 6 variables, and return None for an empty list.
+  -/
 
 vc-preamble: |-
 
@@ -26,23 +28,23 @@ vc-theorems: |-
   theorem alt_or_type {l : List Bool} (h : l ≠ []) :
     (alt_or l).isSome := by sorry
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval alt_or []
+  -- #guard_msgs in
+  -- #eval alt_or []
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval alt_or [False]
+  -- #guard_msgs in
+  -- #eval alt_or [False]
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval alt_or [False, True, False]
+  -- #guard_msgs in
+  -- #eval alt_or [False, True, False]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this Kata, you will be given a string with brackets and an index of an opening bracket and your task will be to return the index of the matching closing bracket.  Both the input and returned index are 0-based **except in Fortran where it is 1-based**. An opening brace will always have a closing brace. Return `-1` if there is no answer (in Haskell, return `Nothing`; in Fortran, return `0`; in Go, return an error)
   
   ### Examples
@@ -21,6 +22,7 @@ vc-description: |-
   ~~~if:fortran
   *NOTE: In Fortran, you may assume that the input string will not contain any leading/trailing whitespace.*
   ~~~
+  -/
 
 vc-preamble: |-
   def solve (s : String) (idx : Nat) : Int := sorry
@@ -60,23 +62,23 @@ vc-theorems: |-
     ∀ i : Nat, i < s.length →
     solve s i = -1 := sorry
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval solve "((1)23(45))(aB)" 0
+  -- #guard_msgs in
+  -- #eval solve "((1)23(45))(aB)" 0
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval solve "((1)23(45))(aB)" 1
+  -- #guard_msgs in
+  -- #eval solve "((1)23(45))(aB)" 1
   
-  /--
+  /-
   info: 28
   -/
-  #guard_msgs in
-  #eval solve "(g(At)IO(f)(tM(qk)YF(n)Nr(E)))" 11
+  -- #guard_msgs in
+  -- #eval solve "(g(At)IO(f)(tM(qk)YF(n)Nr(E)))" 11
 
 vc-postamble: |-
   -- Apps difficulty: introductory

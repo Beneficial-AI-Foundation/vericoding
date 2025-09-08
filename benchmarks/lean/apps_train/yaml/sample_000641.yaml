@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The chef was busy in solving algebra, he found some interesting results, that there are many numbers which can be formed by the sum of the factorial of the digits, he wrote all those interesting numbers in the diary(in increasing order) and went to sleep. Cheffina came and stole his diary, in morning chef found that his diary is missing. Now the chef wants your help to find those numbers, Chef asks you whether N is that interesting number or not. If N is an interesting number then print 1. Else print 0. 
   
   -----Input:-----
@@ -24,6 +25,7 @@ vc-description: |-
   -----EXPLANATION:-----
   For 1) Factorial of 2 is 2, hence it is an interesting number.
   For 2) conversion for 10 is 1! + 0! = 2, which is not equal to 10, hence not an interesting number.
+  -/
 
 vc-preamble: |-
 
@@ -60,17 +62,17 @@ vc-theorems: |-
     is_special_factorial_number n = 0 := by
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval is_special_factorial_number 145
+  -- #guard_msgs in
+  -- #eval is_special_factorial_number 145
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval is_special_factorial_number 123
+  -- #guard_msgs in
+  -- #eval is_special_factorial_number 123
 
 vc-postamble: |-
   -- Apps difficulty: interview

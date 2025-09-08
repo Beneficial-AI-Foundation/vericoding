@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Stacey is a big [AD&D](https://en.wikipedia.org/wiki/Dungeons_%26_Dragons) games nerd. Moreover, she's a munchkin. Not a [cat breed](https://en.wikipedia.org/wiki/Munchkin_cat), but a person who likes to get maximum efficiency of their character.
   
   As you might know, many aspects of such games are modelled by rolling dice and checking it against a threshold value determined by various aspects.
@@ -22,6 +23,7 @@ vc-description: |-
   - `rolls` 1..20
   - `sides` 2..100
   - `threshold` 1..2000
+  -/
 
 vc-preamble: |-
 

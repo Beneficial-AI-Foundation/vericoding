@@ -1,9 +1,11 @@
 vc-description: |-
+  /-
   The magic sum of 3s is calculated on an array by summing up odd numbers which include the digit `3`. Write a function `magic_sum` which accepts an array of integers and returns the sum.
   
   *Example:* `[3, 12, 5, 8, 30, 13]` results in `16` (`3` + `13`)
   
   If the sum cannot be calculated, `0` should be returned.
+  -/
 
 vc-preamble: |-
   def containsThree (n : Int) : Bool := 
@@ -52,23 +54,23 @@ vc-theorems: |-
     (∀ x ∈ nums, x % 2 = 0 ∨ ¬containsThree x) → magicSum nums = 0 := by
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval magic_sum [3]
+  -- #guard_msgs in
+  -- #eval magic_sum [3]
   
-  /--
+  /-
   info: 16
   -/
-  #guard_msgs in
-  #eval magic_sum [3, 13]
+  -- #guard_msgs in
+  -- #eval magic_sum [3, 13]
   
-  /--
+  /-
   info: 16
   -/
-  #guard_msgs in
-  #eval magic_sum [3, 12, 5, 8, 30, 13]
+  -- #guard_msgs in
+  -- #eval magic_sum [3, 12, 5, 8, 30, 13]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

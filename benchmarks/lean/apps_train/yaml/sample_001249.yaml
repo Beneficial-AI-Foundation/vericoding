@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef and his friend Miron were getting bored and decided to play a game. 
   Miron thinks of a sequence of  N  integers (A1, A2, …., AN) and gives Chef a matrix B, where Bi,j = |Ai - Aj|. He further tells Chef that A1 = 0. The game is for Chef to guess the sequence that Miron thought of. 
   But Miron is an adversarial player. Every time Chef tries to guess the sequence, he makes a change to the matrix. He makes such a change Q times. Each time, he replaces an entry in some row and the corresponding column with a new one leaving Chef to guess the sequence after each change. 
@@ -39,6 +40,7 @@ vc-description: |-
   
   -----Explanation-----
   Example case 1. Initially, sequence {0, 1, 2} is also suitable, but {0, -1, -2} is lexicografically smaller.
+  -/
 
 vc-preamble: |-
   def make_symmetric_zero_diag (B : List (List Nat)) : List (List Nat) := sorry

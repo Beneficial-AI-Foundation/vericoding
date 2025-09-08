@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef solved so many hard questions, now he wants to solve some easy problems for refreshment. Chef asks Cheffina for the new question. Cheffina challenges the chef to print the total number of 0's in the binary representation of N(natural number).
   
   -----Input:-----
@@ -24,6 +25,7 @@ vc-description: |-
   -----EXPLANATION:-----
   For 1) Binary representation of 2 is 10. i.e. only one 0 present in it.
   For 2) Binary representation of 4 is 100, i.e. two 0's present in it.
+  -/
 
 vc-preamble: |-
 
@@ -48,23 +50,23 @@ vc-theorems: |-
   theorem power_two_zeros (i : Nat) (h : i > 0) :
     countZerosInBinary (2^i) = i := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve_test_case 2
+  -- #guard_msgs in
+  -- #eval solve_test_case 2
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve_test_case 4
+  -- #guard_msgs in
+  -- #eval solve_test_case 4
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval solve_test_case 8
+  -- #guard_msgs in
+  -- #eval solve_test_case 8
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ZS the Coder loves mazes. Your job is to create one so that he can play with it. A maze consists of n × m rooms, and the rooms are arranged in n rows (numbered from the top to the bottom starting from 1) and m columns (numbered from the left to the right starting from 1). The room in the i-th row and j-th column is denoted by (i, j). A player starts in the room (1, 1) and wants to reach the room (n, m).
   
   Each room has four doors (except for ones at the maze border), one on each of its walls, and two adjacent by the wall rooms shares the same door. Some of the doors are locked, which means it is impossible to pass through the door. For example, if the door connecting (i, j) and (i, j + 1) is locked, then we can't go from (i, j) to (i, j + 1). Also, one can only travel between the rooms downwards (from the room (i, j) to the room (i + 1, j)) or rightwards (from the room (i, j) to the room (i, j + 1)) provided the corresponding door is not locked. [Image] This image represents a maze with some doors locked. The colored arrows denotes all the possible paths while a red cross denotes a locked door. 
@@ -46,6 +47,7 @@ vc-description: |-
   In the first sample case: [Image] 
   
   In the second sample case: [Image]
+  -/
 
 vc-preamble: |-
   def create_maze (T : Nat) : Nat × Nat × Nat × List (Nat × Nat × Nat × Nat) := sorry

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You like playing chess tournaments online.
   
   In your last tournament you played $n$ games. For the sake of this problem, each chess game is either won or lost (no draws). When you lose a game you get $0$ points. When you win you get $1$ or $2$ points: if you have won also the previous game you get $2$ points, otherwise you get $1$ point. If you win the very first game of the tournament you get $1$ point (since there is not a "previous game").
@@ -62,6 +63,7 @@ vc-description: |-
   Explanation of the second testcase. Before changing any outcome, the score is $3$. Indeed, you won the fourth game, so you got $1$ point, and you won also the fifth game, so you got $2$ more points (since you won also the previous game).
   
   An optimal way to cheat is to change the outcomes of the first, second, third and sixth game. Doing so, you end up winning all games (the string of the outcomes becomes WWWWWW). Hence, the new score is $11 = 1+2+2+2+2+2$: $1$ point for the first game and $2$ points for all the other games.
+  -/
 
 vc-preamble: |-
 
@@ -89,23 +91,23 @@ vc-theorems: |-
     let games := String.mk (List.replicate n 'W')
     calculate_max_score n k games = 2 * n - 1 := sorry
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval calculate_max_score 5 2 "WLWLL"
+  -- #guard_msgs in
+  -- #eval calculate_max_score 5 2 "WLWLL"
   
-  /--
+  /-
   info: 11
   -/
-  #guard_msgs in
-  #eval calculate_max_score 6 5 "LLLWWL"
+  -- #guard_msgs in
+  -- #eval calculate_max_score 6 5 "LLLWWL"
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval calculate_max_score 7 1 "LWLWLWL"
+  -- #guard_msgs in
+  -- #eval calculate_max_score 7 1 "LWLWLWL"
 
 vc-postamble: |-
   -- Apps difficulty: interview

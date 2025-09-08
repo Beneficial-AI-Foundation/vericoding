@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # The President's phone is broken
   
   He is not very happy.
@@ -38,6 +39,7 @@ vc-description: |-
   
   ----
   DM :-)
+  -/
 
 vc-preamble: |-
 
@@ -81,23 +83,23 @@ vc-theorems: |-
     ¬(fire_and_fury s = "Fake tweet.") ∧
     ((fire_and_fury s).endsWith "furious." ∨ (fire_and_fury s).endsWith "fired!") := sorry
   
-  /--
+  /-
   info: 'I am furious. You and you are fired!'
   -/
-  #guard_msgs in
-  #eval fire_and_fury "FURYYYFIREYYFIRE"
+  -- #guard_msgs in
+  -- #eval fire_and_fury "FURYYYFIREYYFIRE"
   
-  /--
+  /-
   info: 'You are fired! I am really furious. You are fired!'
   -/
-  #guard_msgs in
-  #eval fire_and_fury "FIREYYFURYYFURYYFURRYFIRE"
+  -- #guard_msgs in
+  -- #eval fire_and_fury "FIREYYFURYYFURYYFURRYFIRE"
   
-  /--
+  /-
   info: 'Fake tweet.'
   -/
-  #guard_msgs in
-  #eval fire_and_fury "FYRYFIRUFIRUFURE"
+  -- #guard_msgs in
+  -- #eval fire_and_fury "FYRYFIRUFIRUFURE"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given two integers dividend and divisor, divide two integers without using multiplication, division and mod operator.
   
   Return the quotient after dividing dividend by divisor.
@@ -20,6 +21,7 @@ vc-description: |-
          Both dividend and divisor will be 32-bit signed integers.
          The divisor will never be 0.
          Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−231,  231 − 1]. For the purpose of this problem, assume that your function returns 231 − 1 when the division result overflows.
+  -/
 
 vc-preamble: |-
   def MAX_INT : Int := 2147483647
@@ -53,23 +55,23 @@ vc-theorems: |-
     (h1 : dividend * divisor < 0) (h2 : divide dividend divisor ≠ MAX_INT) :
     divide dividend divisor ≤ 0 := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval divide 10 3
+  -- #guard_msgs in
+  -- #eval divide 10 3
   
-  /--
+  /-
   info: -2
   -/
-  #guard_msgs in
-  #eval divide 7 -3
+  -- #guard_msgs in
+  -- #eval divide 7 -3
   
-  /--
+  /-
   info: 2147483647
   -/
-  #guard_msgs in
-  #eval divide -2147483648 -1
+  -- #guard_msgs in
+  -- #eval divide -2147483648 -1
 
 vc-postamble: |-
   -- Apps difficulty: interview

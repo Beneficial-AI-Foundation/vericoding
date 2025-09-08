@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Let's denote as $\text{popcount}(x)$ the number of bits set ('1' bits) in the binary representation of the non-negative integer x.
   
   You are given multiple queries consisting of pairs of integers l and r. For each query, find the x, such that l ≤ x ≤ r, and $\text{popcount}(x)$ is maximum possible. If there are multiple such numbers find the smallest of them.
@@ -48,6 +49,7 @@ vc-description: |-
   9_10 = 1001_2
   
   10_10 = 1010_2
+  -/
 
 vc-preamble: |-
   def get_max_popcount (l r : Nat) : Nat :=
@@ -77,23 +79,23 @@ vc-theorems: |-
     popcount (get_max_popcount x (x + 1)) ≥ popcount x :=
   sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval get_max_popcount 1 2
+  -- #guard_msgs in
+  -- #eval get_max_popcount 1 2
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval get_max_popcount 2 4
+  -- #guard_msgs in
+  -- #eval get_max_popcount 2 4
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval get_max_popcount 1 10
+  -- #guard_msgs in
+  -- #eval get_max_popcount 1 10
 
 vc-postamble: |-
   -- Apps difficulty: competition

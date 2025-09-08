@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   
   Given a binary number, we are about to do some operations on the number. Two types of operations can be here:
@@ -19,6 +20,7 @@ vc-description: |-
   ## Note
   * All inputs are valid.
   * Please optimize your algorithm to avoid time out.
+  -/
 
 vc-preamble: |-
 
@@ -45,23 +47,23 @@ vc-theorems: |-
     let ops := [[0, i, j], [0, i, j], [1, 1]]
     binary_simulation s ops = [s.get 0] := sorry
   
-  /--
+  /-
   info: ['0', '1', '1', '0']
   -/
-  #guard_msgs in
-  #eval binary_simulation "0011001100" [["I", 1, 10], ["I", 2, 7], ["Q", 2], ["Q", 1], ["Q", 7], ["Q", 5]]
+  -- #guard_msgs in
+  -- #eval binary_simulation "0011001100" [["I", 1, 10], ["I", 2, 7], ["Q", 2], ["Q", 1], ["Q", 7], ["Q", 5]]
   
-  /--
+  /-
   info: ['0', '0', '0', '1']
   -/
-  #guard_msgs in
-  #eval binary_simulation "1011110111" [["I", 1, 10], ["I", 2, 7], ["Q", 2], ["Q", 1], ["Q", 7], ["Q", 5]]
+  -- #guard_msgs in
+  -- #eval binary_simulation "1011110111" [["I", 1, 10], ["I", 2, 7], ["Q", 2], ["Q", 1], ["Q", 7], ["Q", 5]]
   
-  /--
+  /-
   info: ['1']
   -/
-  #guard_msgs in
-  #eval binary_simulation "0000000000" [["I", 1, 10], ["Q", 2]]
+  -- #guard_msgs in
+  -- #eval binary_simulation "0000000000" [["I", 1, 10], ["Q", 2]]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given two arrays `arr1` and `arr2`, where `arr2` always contains integers.
   
   Write the function `find_array(arr1, arr2)` such that:
@@ -20,6 +21,7 @@ vc-description: |-
   
   If either `arr1` or `arr2` is empty, you should return an empty arr (empty list in python,
   empty vector in c++). Note for c++ use std::vector arr1, arr2.
+  -/
 
 vc-preamble: |-
 
@@ -51,23 +53,23 @@ vc-theorems: |-
       x = arr1.get ⟨i, h⟩ →
       x ∈ find_array arr1 arr2 := sorry
   
-  /--
+  /-
   info: ['a', 'a']
   -/
-  #guard_msgs in
-  #eval find_array ["a", "a", "a", "a", "a"] [2, 4]
+  -- #guard_msgs in
+  -- #eval find_array ["a", "a", "a", "a", "a"] [2, 4]
   
-  /--
+  /-
   info: [1, 1, 1]
   -/
-  #guard_msgs in
-  #eval find_array [0, 1, 5, 2, 1, 8, 9, 1, 5] [1, 4, 7]
+  -- #guard_msgs in
+  -- #eval find_array [0, 1, 5, 2, 1, 8, 9, 1, 5] [1, 4, 7]
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval find_array [] [2]
+  -- #guard_msgs in
+  -- #eval find_array [] [2]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

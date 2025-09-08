@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We all love the future president (or Führer or duce or sōtō as he could find them more fitting) donald trump, but we might fear that some of his many fans like John Miller or John Barron are not making him justice, sounding too much like their (and our as well, of course!) hero and thus risking to compromise him.
   
   For this reason we need to create a function to detect the original and unique rythm of our beloved leader, typically having a lot of extra vowels, all ready to fight the estabilishment.
@@ -16,6 +17,7 @@ vc-description: |-
   Round each result by two decimal digits: there is no place for small fry in Trump's America.
   
   *Special thanks for [Izabela](https://www.codewars.com/users/ijelonek) for support and proof-reading.*
+  -/
 
 vc-preamble: |-
 
@@ -47,23 +49,23 @@ vc-theorems: |-
   theorem trump_detector_empty :
     trump_detector "" = 0 := sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval trump_detector "I will build a huge wall"
+  -- #guard_msgs in
+  -- #eval trump_detector "I will build a huge wall"
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval trump_detector "HUUUUUGEEEE WAAAAAALL"
+  -- #guard_msgs in
+  -- #eval trump_detector "HUUUUUGEEEE WAAAAAALL"
   
-  /--
+  /-
   info: 1.56
   -/
-  #guard_msgs in
-  #eval trump_detector "listen migrants: IIII KIIIDD YOOOUUU NOOOOOOTTT"
+  -- #guard_msgs in
+  -- #eval trump_detector "listen migrants: IIII KIIIDD YOOOUUU NOOOOOOTTT"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

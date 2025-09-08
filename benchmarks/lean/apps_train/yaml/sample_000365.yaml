@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array A of strings, find any smallest string that contains each string in A as a substring.
   We may assume that no string in A is substring of another string in A.
   
@@ -15,6 +16,7 @@ vc-description: |-
   
   1 <= A.length <= 12
   1 <= A[i].length <= 20
+  -/
 
 vc-preamble: |-
   def List.sum [Add α] (xs : List α) : α :=

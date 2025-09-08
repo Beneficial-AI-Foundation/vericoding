@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Two tortoises named ***A*** and ***B*** must run a race. ***A*** starts with an average speed of ```720 feet per hour```.
   Young ***B*** knows she runs faster than ***A***, and furthermore has not finished her cabbage.
   
@@ -34,6 +35,7 @@ vc-description: |-
   - Think of calculation by hand using only integers (in your code use or simulate integer division)
   
   - or Google: "convert decimal time to hours minutes seconds"
+  -/
 
 vc-preamble: |-
 
@@ -63,23 +65,23 @@ vc-theorems: |-
     race v1 v2 g = some result →
     (result.1 * 3600 + result.2.1 * 60 + result.2.2) * (v2 - v1) = g * 3600 := sorry
   
-  /--
+  /-
   info: [0, 32, 18]
   -/
-  #guard_msgs in
-  #eval race 720 850 70
+  -- #guard_msgs in
+  -- #eval race 720 850 70
   
-  /--
+  /-
   info: [3, 21, 49]
   -/
-  #guard_msgs in
-  #eval race 80 91 37
+  -- #guard_msgs in
+  -- #eval race 80 91 37
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval race 820 81 550
+  -- #guard_msgs in
+  -- #eval race 820 81 550
 
 vc-postamble: |-
   -- Apps difficulty: introductory

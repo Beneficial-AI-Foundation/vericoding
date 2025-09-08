@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Lucy had recently learned the game, called Natural Numbers.
   The rules of the game are really simple. There are N players. At the same time, every player says one natural number. Let's call the number said by the i-th player Ai. The person with the smallest unique number (that is, the smallest number that was not said by anybody else) wins. Sometimes, there is a case when there are no unique numbers at all. Then the game is obviously a draw, so nobody wins it.
   Sometimes, it's hard to determine the winner, especially, when the number of players is enormous. So in this problem, your assignment will be: given the names of the players and the numbers every of them have said. Please, tell the name of the winner, or determine that nobody wins.
@@ -38,6 +39,7 @@ vc-description: |-
   Subtask 4 (34 points): T = 10, 1 <= N <= 10000, 1 <= Ai <= 2*109
   
   You can safely assume that in all the test cases the length of any name will not exceed five letters. All the players'  names  are unique.
+  -/
 
 vc-preamble: |-
 
@@ -64,23 +66,23 @@ vc-theorems: |-
     result = "Nobody wins." ∨ result ∈ player_names
     := sorry
   
-  /--
+  /-
   info: 'Lucy'
   -/
-  #guard_msgs in
-  #eval find_winner [("Kouta", 1), ("Yuka", 1), ("Mayu", 3), ("Lucy", 2), ("Nana", 5)]
+  -- #guard_msgs in
+  -- #eval find_winner [("Kouta", 1), ("Yuka", 1), ("Mayu", 3), ("Lucy", 2), ("Nana", 5)]
   
-  /--
+  /-
   info: 'Nobody wins.'
   -/
-  #guard_msgs in
-  #eval find_winner [("Lucy", 2), ("Nana", 2)]
+  -- #guard_msgs in
+  -- #eval find_winner [("Lucy", 2), ("Nana", 2)]
   
-  /--
+  /-
   info: 'Bob'
   -/
-  #guard_msgs in
-  #eval find_winner [("Bob", 1), ("Alice", 2), ("Eve", 3), ("Carol", 2)]
+  -- #guard_msgs in
+  -- #eval find_winner [("Bob", 1), ("Alice", 2), ("Eve", 3), ("Carol", 2)]
 
 vc-postamble: |-
   -- Apps difficulty: interview

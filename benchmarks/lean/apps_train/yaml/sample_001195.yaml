@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef likes to play with big numbers. Today, he has a big positive integer N. He can select any two digits from this number (the digits can be same but their positions should be different) and orders them in any one of the two possible ways. For each of these ways, he creates a two digit number from it (might contain leading zeros). Then, he will pick a character corresponding to the ASCII value equal to this number, i.e. the number 65 corresponds to 'A', 66 to 'B' and so on till 90 for 'Z'. Chef is only interested in finding which of the characters in the range 'A' to 'Z' can possibly be picked this way. 
   
   -----Input-----
@@ -34,6 +35,7 @@ vc-description: |-
   Example case 1. Chef can pick digits 6 and 5 and create integers 56 and 65. The integer 65 corresponds to 'A'.
   Example case 2. Chef can pick digits 6 and 5 and create 'A' as it equals 65. He can pick 6 and 6 (they are picked from position 2 and position 3, respectively) to create 'B' too. Hence answer is "AB".
   Example case 3. It's not possible to create any character from 'A' to 'Z'. Hence, we just print a new line.
+  -/
 
 vc-preamble: |-
   def find_possible_ascii_chars (s: String) : String :=
@@ -77,23 +79,23 @@ vc-theorems: |-
       ¬hasDuplicates result.data :=
     sorry
   
-  /--
+  /-
   info: 'A'
   -/
-  #guard_msgs in
-  #eval find_possible_ascii_chars "65"
+  -- #guard_msgs in
+  -- #eval find_possible_ascii_chars "65"
   
-  /--
+  /-
   info: 'AB'
   -/
-  #guard_msgs in
-  #eval find_possible_ascii_chars "566"
+  -- #guard_msgs in
+  -- #eval find_possible_ascii_chars "566"
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval find_possible_ascii_chars "11"
+  -- #guard_msgs in
+  -- #eval find_possible_ascii_chars "11"
 
 vc-postamble: |-
   -- Apps difficulty: interview

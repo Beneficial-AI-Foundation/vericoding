@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   As most of you might know already, a prime number is an integer `n` with the following properties:
   
   * it must be greater than 1
@@ -23,6 +24,7 @@ vc-description: |-
   **Dedicated to my trainees that worked hard to improve their skills even on a holiday: good work guys!**
   
   **Or should I say "girls" ;)? [Agata](https://www.codewars.com/users/aghh1504), [Ania](https://www.codewars.com/users/lisowska) [Dina](https://www.codewars.com/users/deedeeh) and (although definitely not one of my trainees) special mention to [NaN](https://www.codewars.com/users/nbeck)**
+  -/
 
 vc-preamble: |-
   def is_prime : Nat → Bool := sorry
@@ -45,23 +47,23 @@ vc-theorems: |-
   theorem wilson_prime_property (n : Nat) (h1 : n ≥ 2) (h2 : n ≤ 20) :
     is_prime n = true → (factorial (n-1) + 1) % n = 0 := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_prime 2
+  -- #guard_msgs in
+  -- #eval is_prime 2
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_prime 29
+  -- #guard_msgs in
+  -- #eval is_prime 29
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_prime 143
+  -- #guard_msgs in
+  -- #eval is_prime 143
 
 vc-postamble: |-
   -- Apps difficulty: introductory

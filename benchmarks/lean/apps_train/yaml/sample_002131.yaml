@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Little Nastya has a hobby, she likes to remove some letters from word, to obtain another word. But it turns out to be pretty hard for her, because she is too young. Therefore, her brother Sergey always helps her.
   
   Sergey gives Nastya the word t and wants to get the word p out of it. Nastya removes letters in a certain order (one after another, in this order strictly), which is specified by permutation of letters' indices of the word t: a_1... a_{|}t|. We denote the length of word x as |x|. Note that after removing one letter, the indices of other letters don't change. For example, if t = "nastya" and a = [4, 1, 5, 3, 2, 6] then removals make the following sequence of words "nastya" $\rightarrow$ "nastya" $\rightarrow$ "nastya" $\rightarrow$ "nastya" $\rightarrow$ "nastya" $\rightarrow$ "nastya" $\rightarrow$ "nastya".
@@ -42,6 +43,7 @@ vc-description: |-
   Nastya can not continue, because it is impossible to get word "abb" from word "ababcba".
   
   So, Nastya will remove only three letters.
+  -/
 
 vc-preamble: |-
   def sub (a b : List α) : Bool := sorry
@@ -85,23 +87,23 @@ vc-theorems: |-
     let res := bin_s l r f
     l ≤ res ∧ res ≤ r := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval solve "ababcba" "abb" [5, 3, 4, 1, 7, 6, 2]
+  -- #guard_msgs in
+  -- #eval solve "ababcba" "abb" [5, 3, 4, 1, 7, 6, 2]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval solve "bbbabb" "bb" [1, 6, 3, 4, 2, 5]
+  -- #guard_msgs in
+  -- #eval solve "bbbabb" "bb" [1, 6, 3, 4, 2, 5]
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval solve "cacaccccccacccc" "cacc" [10, 9, 14, 5, 1, 7, 15, 3, 6, 12, 4, 8, 11, 13, 2]
+  -- #guard_msgs in
+  -- #eval solve "cacaccccccacccc" "cacc" [10, 9, 14, 5, 1, 7, 15, 3, 6, 12, 4, 8, 11, 13, 2]
 
 vc-postamble: |-
   -- Apps difficulty: competition

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Description
   "It's the end of trick-or-treating and we have a list/array representing how much candy each child in our group has made out with. We don't want the kids to start arguing, and using our parental intuition we know trouble is brewing as many of the children in the group have received different amounts of candy from each home. 
   
@@ -40,6 +41,7 @@ vc-description: |-
   
   candies [1,6] -- return 5
   ```
+  -/
 
 vc-preamble: |-
   def List.sum (l : List Nat) : Nat := sorry 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You've had a baby.
   
   Well done. Nice isn't it? Life destroying... but in a good way.
@@ -20,6 +21,7 @@ vc-description: |-
   "none here" = null
   "" = null
   ```
+  -/
 
 vc-preamble: |-
 
@@ -65,23 +67,23 @@ vc-theorems: |-
     baby_count s = Sum.inr "Where's the baby?!"
     := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval baby_count "baby"
+  -- #guard_msgs in
+  -- #eval baby_count "baby"
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval baby_count "baby baby baby"
+  -- #guard_msgs in
+  -- #eval baby_count "baby baby baby"
   
-  /--
+  /-
   info: "Where's the baby?!"
   -/
-  #guard_msgs in
-  #eval baby_count "none here"
+  -- #guard_msgs in
+  -- #eval baby_count "none here"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

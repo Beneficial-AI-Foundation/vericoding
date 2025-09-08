@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   With one die of 6 sides we will have six different possible results:```  1, 2, 3, 4, 5, 6``` .
   
   With 2 dice of six sides, we will have 36 different possible results:
@@ -48,6 +49,7 @@ vc-description: |-
   See examples in the corresponding box.
   
   Enjoy it!!
+  -/
 
 vc-preamble: |-
   def products (n : Nat) (k m : Nat) : List (List Nat) := sorry
@@ -77,23 +79,23 @@ vc-theorems: |-
   theorem eq_dice_four :
     eq_dice [4] = (products 4 3 3).length := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval eq_dice [6, 6]
+  -- #guard_msgs in
+  -- #eval eq_dice [6, 6]
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval eq_dice [5, 6, 4]
+  -- #guard_msgs in
+  -- #eval eq_dice [5, 6, 4]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval eq_dice [3, 3]
+  -- #guard_msgs in
+  -- #eval eq_dice [3, 3]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

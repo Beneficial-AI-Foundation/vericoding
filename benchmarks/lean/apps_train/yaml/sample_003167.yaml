@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your friend won't stop texting his girlfriend.  It's all he does. All day. Seriously.  The texts are so mushy too! The whole situation just makes you feel ill.
   Being the wonderful friend that you are, you hatch an evil plot.  While he's sleeping, you take his phone and change the autocorrect options so that every time he types "you" or "u" it gets changed to "your sister."
   
@@ -13,6 +14,7 @@ vc-description: |-
   "youuuuu" with any number of u characters tacked onto the end
   "u" at the beginning, middle, or end of a string, but NOT part of a word
   "you" but NOT as part of another word like youtube or bayou
+  -/
 
 vc-preamble: |-
 
@@ -42,23 +44,23 @@ vc-theorems: |-
       String.intercalate " " (List.replicate (ls.length - 1) "your sister") :=
     sorry
   
-  /--
+  /-
   info: 'I miss your sister!'
   -/
-  #guard_msgs in
-  #eval autocorrect "I miss you!"
+  -- #guard_msgs in
+  -- #eval autocorrect "I miss you!"
   
-  /--
+  /-
   info: 'your sister want to go to the movies?'
   -/
-  #guard_msgs in
-  #eval autocorrect "u want to go to the movies?"
+  -- #guard_msgs in
+  -- #eval autocorrect "u want to go to the movies?"
   
-  /--
+  /-
   info: 'I want to film the bayou with your sister and put it on youtube'
   -/
-  #guard_msgs in
-  #eval autocorrect "I want to film the bayou with you and put it on youtube"
+  -- #guard_msgs in
+  -- #eval autocorrect "I want to film the bayou with you and put it on youtube"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

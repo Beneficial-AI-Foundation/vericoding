@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Consider a 2d-grid. That is, each cell is identified by (i,j). You have received reports of two snake-sightings on this grid. You want to check whether they could be partial sightings of the same snake or not.
   Each of the snake sightings correspond to a straight, axis-parallel line segment in the grid, and the starting and ending cells for each are given to you. Now consider a graph, where each cell in the 2d-grid is a vertex. And there is an edge between 2 vertices if and only if the cells corresponding to these two vertices are consecutive cells in at least one of the two snakes. That is, at least in one of the snakes, when you go from one end point to the other end point, these two cells should occur consecutively.
   The two sightings/snakes are said to be same, if both these conditions are satisfied:
@@ -50,6 +51,7 @@ vc-description: |-
   The fourth test case corresponds to:
   
   Both the conditions on the graph are satisfied, and hence this is a "yes".
+  -/
 
 vc-preamble: |-
 

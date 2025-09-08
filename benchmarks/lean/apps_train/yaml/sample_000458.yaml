@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given two integers representing the numerator and denominator of a fraction, return the fraction in string format.
   
   If the fractional part is repeating, enclose the repeating part in parentheses.
@@ -17,6 +18,7 @@ vc-description: |-
   
   Input: numerator = 2, denominator = 3
   Output: "0.(6)"
+  -/
 
 vc-preamble: |-
   def toFloat (s: String) : Float :=
@@ -55,23 +57,23 @@ vc-theorems: |-
     (fraction_to_decimal 0 d).value = "0" :=
     sorry
   
-  /--
+  /-
   info: '0.5'
   -/
-  #guard_msgs in
-  #eval fraction_to_decimal 1 2
+  -- #guard_msgs in
+  -- #eval fraction_to_decimal 1 2
   
-  /--
+  /-
   info: '2'
   -/
-  #guard_msgs in
-  #eval fraction_to_decimal 2 1
+  -- #guard_msgs in
+  -- #eval fraction_to_decimal 2 1
   
-  /--
+  /-
   info: '0.(6)'
   -/
-  #guard_msgs in
-  #eval fraction_to_decimal 2 3
+  -- #guard_msgs in
+  -- #eval fraction_to_decimal 2 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

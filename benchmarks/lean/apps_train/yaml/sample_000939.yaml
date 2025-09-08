@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a rooted tree on N vertices. The nodes are numbered from 1 to N, and Node 1 is the root. Each node u has an associated value attached to it: Au.
   For each vertex v, we consider the path going upwards from v to the root. Suppose that path is v1, v2, .., vk, where v1 = v and vk = 1. The cost of any node on this path is equal to the minimum value among all the nodes to its left in the path sequence, including itself. That is, cost(vi) = min1 <= j <= i{Avj}. And the cost of the path is the sum of costs of all the nodes in it.
   For every node in the tree, find the cost of the path from that node to the root.
@@ -36,6 +37,7 @@ vc-description: |-
   Cost(5) = minimum {70, 10, 15, 5} = 5.
   Cost(1) = minimum {70, 10, 15, 5, 1} = 1. 
   So, the cost of the path from 7 to the root is 70 + 10 + 10 + 5 + 1 = 96.
+  -/
 
 vc-preamble: |-
   def calculate_path_costs (n: Nat) (parents: List Nat) (values: List Nat) : List Nat :=

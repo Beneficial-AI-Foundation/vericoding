@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   This kata requires you to convert minutes (`int`) to hours and minutes in the format `hh:mm` (`string`).
   
   If the input is `0` or negative value, then you should return `"00:00"`
@@ -10,6 +11,7 @@ vc-description: |-
   If the input is `78`, then you should return `"01:18"`, because 78 minutes converts to 1 hour and 18 minutes.
   
   Good luck! :D
+  -/
 
 vc-preamble: |-
 
@@ -40,23 +42,23 @@ vc-theorems: |-
       hours * 60 + mins = minutes ∧
       mins < 60 := sorry
   
-  /--
+  /-
   info: '00:00'
   -/
-  #guard_msgs in
-  #eval time_convert 0
+  -- #guard_msgs in
+  -- #eval time_convert 0
   
-  /--
+  /-
   info: '01:18'
   -/
-  #guard_msgs in
-  #eval time_convert 78
+  -- #guard_msgs in
+  -- #eval time_convert 78
   
-  /--
+  /-
   info: '16:10'
   -/
-  #guard_msgs in
-  #eval time_convert 970
+  -- #guard_msgs in
+  -- #eval time_convert 970
 
 vc-postamble: |-
   -- Apps difficulty: introductory

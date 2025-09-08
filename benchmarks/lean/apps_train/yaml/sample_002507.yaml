@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Problem Statement=====
   In this challenge, the user enters a string and a substring. You have to print the number of times that the substring occurs in the given string. String traversal will take place from left to right, not from right to left.
   
@@ -13,6 +14,7 @@ vc-description: |-
   
   =====Output Format=====
   Output the integer number indicating the total number of occurrences of the substring in the original string.
+  -/
 
 vc-preamble: |-
 
@@ -55,23 +57,23 @@ vc-theorems: |-
     count_substring (String.append s (String.append s s)) s ≥ 2 :=
   sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_substring "ABCDCDC" "CDC"
+  -- #guard_msgs in
+  -- #eval count_substring "ABCDCDC" "CDC"
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_substring "Hello hello HELLO" "hello"
+  -- #guard_msgs in
+  -- #eval count_substring "Hello hello HELLO" "hello"
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_substring "WoWoWo" "Wo"
+  -- #guard_msgs in
+  -- #eval count_substring "WoWoWo" "Wo"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

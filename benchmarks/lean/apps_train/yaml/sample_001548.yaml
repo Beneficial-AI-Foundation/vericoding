@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Tavak and Seyyed are good friends. Seyyed is very funny and he told Tavak to solve the following problem instead of longest-path.
   
   You are given l and r. For all integers from l to r, inclusive, we wrote down all of their integer divisors except 1. Find the integer that we wrote down the maximum number of times.
@@ -35,6 +36,7 @@ vc-description: |-
   The first example: from 19 to 29 these numbers are divisible by 2: {20, 22, 24, 26, 28}.
   
   The second example: from 3 to 6 these numbers are divisible by 3: {3, 6}.
+  -/
 
 vc-preamble: |-
 
@@ -55,23 +57,23 @@ vc-theorems: |-
   theorem range_output_less_than_max_input (l r : Nat)  
     (h₁ : l > 0) (h₂ : r > 0) : find_most_common_divisor l r ≤ max l r := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_most_common_divisor 19 29
+  -- #guard_msgs in
+  -- #eval find_most_common_divisor 19 29
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_most_common_divisor 3 6
+  -- #guard_msgs in
+  -- #eval find_most_common_divisor 3 6
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval find_most_common_divisor 5 5
+  -- #guard_msgs in
+  -- #eval find_most_common_divisor 5 5
 
 vc-postamble: |-
   -- Apps difficulty: interview

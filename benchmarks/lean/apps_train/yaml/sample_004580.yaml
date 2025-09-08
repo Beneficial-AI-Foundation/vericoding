@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   John and Mary want to travel between a few towns A, B, C ... Mary has on a sheet of paper a list of distances between these towns.
   `ls = [50, 55, 57, 58, 60]`.
   John is tired of driving and he says to Mary that he doesn't want to drive more than `t = 174 miles` and he
@@ -34,6 +35,7 @@ vc-description: |-
   `choose_best_sum(230, 3, ys) -> 228`
   
   Note: don't modify the input list `ls`
+  -/
 
 vc-preamble: |-
   def List.combinations (ls : List α) (k : Nat) : List (List α) :=
@@ -83,23 +85,23 @@ vc-theorems: |-
     choose_best_sum 100 0 [1,2,3] = none :=
   sorry
   
-  /--
+  /-
   info: 163
   -/
-  #guard_msgs in
-  #eval choose_best_sum 163 3 [50, 55, 56, 57, 58]
+  -- #guard_msgs in
+  -- #eval choose_best_sum 163 3 [50, 55, 56, 57, 58]
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval choose_best_sum 163 3 [50]
+  -- #guard_msgs in
+  -- #eval choose_best_sum 163 3 [50]
   
-  /--
+  /-
   info: 228
   -/
-  #guard_msgs in
-  #eval choose_best_sum 230 3 [91, 74, 73, 85, 73, 81, 87]
+  -- #guard_msgs in
+  -- #eval choose_best_sum 230 3 [91, 74, 73, 85, 73, 81, 87]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

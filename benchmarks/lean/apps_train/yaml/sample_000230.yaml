@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string S of '(' and ')' parentheses, we add the minimum number of parentheses ( '(' or ')', and in any positions ) so that the resulting parentheses string is valid.
   Formally, a parentheses string is valid if and only if:
   
@@ -28,6 +29,7 @@ vc-description: |-
   
   S.length <= 1000
   S only consists of '(' and ')' characters.
+  -/
 
 vc-preamble: |-
   def min_parens_to_add (s : String) : Nat := sorry
@@ -50,23 +52,23 @@ vc-theorems: |-
   theorem unmatched_close (n : Nat) :
     min_parens_to_add (String.mk (List.replicate n ')')) = n := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval min_parens_to_add "())"
+  -- #guard_msgs in
+  -- #eval min_parens_to_add "())"
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval min_parens_to_add "((("
+  -- #guard_msgs in
+  -- #eval min_parens_to_add "((("
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_parens_to_add "()"
+  -- #guard_msgs in
+  -- #eval min_parens_to_add "()"
 
 vc-postamble: |-
   -- Apps difficulty: interview

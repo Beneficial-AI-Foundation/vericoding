@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a sequence $a_1, a_2, \dots, a_n$, consisting of integers.
   
   You can apply the following operation to this sequence: choose some integer $x$ and move all elements equal to $x$ either to the beginning, or to the end of $a$. Note that you have to move all these elements in one direction in one operation.
@@ -45,6 +46,7 @@ vc-description: |-
   In the second query, the sequence is sorted initially, so the answer is zero.
   
   In the third query, you have to move all $2$-elements to the beginning.
+  -/
 
 vc-preamble: |-
 
@@ -68,23 +70,23 @@ vc-theorems: |-
   theorem min_ops_single_elem {arr : List Nat} :
     List.length arr = 1 → min_ops_to_sort arr = 0 := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_ops_to_sort [3, 1, 6, 6, 3, 1, 1]
+  -- #guard_msgs in
+  -- #eval min_ops_to_sort [3, 1, 6, 6, 3, 1, 1]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_ops_to_sort [1, 1, 4, 4, 4, 7, 8, 8]
+  -- #guard_msgs in
+  -- #eval min_ops_to_sort [1, 1, 4, 4, 4, 7, 8, 8]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval min_ops_to_sort [4, 2, 5, 2, 6, 2, 7]
+  -- #guard_msgs in
+  -- #eval min_ops_to_sort [4, 2, 5, 2, 6, 2, 7]
 
 vc-postamble: |-
   -- Apps difficulty: interview

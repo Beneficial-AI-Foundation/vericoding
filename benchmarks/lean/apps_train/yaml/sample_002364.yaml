@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Initially, there is a Robot at position (0, 0). Given a sequence of its moves, judge if this robot makes a circle, which means it moves back to the original place. 
   
   The move sequence is represented by a string. And each move is represent by a character. The valid robot moves are R (Right), L (Left), U (Up) and D (down). The output should be true or false representing whether the robot makes a circle.
@@ -12,6 +13,7 @@ vc-description: |-
   
   Input: "LL"
   Output: false
+  -/
 
 vc-preamble: |-
 
@@ -42,23 +44,23 @@ vc-theorems: |-
     (s.length = 4 * n) → judge_circle s = true :=
   sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval judge_circle "UD"
+  -- #guard_msgs in
+  -- #eval judge_circle "UD"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval judge_circle "LL"
+  -- #guard_msgs in
+  -- #eval judge_circle "LL"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval judge_circle "URDL"
+  -- #guard_msgs in
+  -- #eval judge_circle "URDL"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

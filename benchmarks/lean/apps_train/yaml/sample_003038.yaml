@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In Spanish, the conjugated verb changes by adding suffixes and according to the person we're talking about. There's something similar in English when we talk about "She", "He"or "It" (3rd person singular):
   
   With the verb "run":
@@ -132,6 +133,7 @@ vc-description: |-
   
    **Buena suerte!**
   ---
+  -/
 
 vc-preamble: |-
   def conjugate (verb : String) : String × Conjugations :=
@@ -176,23 +178,23 @@ vc-theorems: |-
     List.length SUFFIXES.2 = 6 ∧ 
     String.endsWith (List.getLast SUFFIXES.2 sorry) "n" := sorry
   
-  /--
+  /-
   info: {'caminar': ['camino', 'caminas', 'camina', 'caminamos', 'caminais', 'caminan']}
   -/
-  #guard_msgs in
-  #eval conjugate "caminar"
+  -- #guard_msgs in
+  -- #eval conjugate "caminar"
   
-  /--
+  /-
   info: {'comer': ['como', 'comes', 'come', 'comemos', 'comeis', 'comen']}
   -/
-  #guard_msgs in
-  #eval conjugate "comer"
+  -- #guard_msgs in
+  -- #eval conjugate "comer"
   
-  /--
+  /-
   info: {'vivir': ['vivo', 'vives', 'vive', 'vivimos', 'vivis', 'viven']}
   -/
-  #guard_msgs in
-  #eval conjugate "vivir"
+  -- #guard_msgs in
+  -- #eval conjugate "vivir"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

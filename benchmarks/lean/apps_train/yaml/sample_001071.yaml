@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Polo, the Penguin, likes numbers. He says that the goodness of a number is itself multiplied by the number of digits in it's decimal representation. For example, the goodness of the integer 474 is 474*3 = 1422.
   Help him to count the sum of goodness of all integers from L to R, inclusive. Since the answer can be too large, output it modulo 1,000,000,007 (10^9+7).
   
@@ -22,6 +23,7 @@ vc-description: |-
   
   -----Explanation-----
   Example case 1. The answer is 9*1 + 10*2 + 11*2 + 12*2 = 75.
+  -/
 
 vc-preamble: |-
   def calculate_goodness_sum (a b : Nat) : Nat :=
@@ -42,23 +44,23 @@ vc-theorems: |-
     calculate_goodness_sum 1 (n-1) ≤ calculate_goodness_sum 1 n :=
   sorry
   
-  /--
+  /-
   info: 75
   -/
-  #guard_msgs in
-  #eval calculate_goodness_sum 9 12
+  -- #guard_msgs in
+  -- #eval calculate_goodness_sum 9 12
   
-  /--
+  /-
   info: 15
   -/
-  #guard_msgs in
-  #eval calculate_goodness_sum 1 5
+  -- #guard_msgs in
+  -- #eval calculate_goodness_sum 1 5
   
-  /--
+  /-
   info: 66
   -/
-  #guard_msgs in
-  #eval calculate_goodness_sum 10 12
+  -- #guard_msgs in
+  -- #eval calculate_goodness_sum 10 12
 
 vc-postamble: |-
   -- Apps difficulty: interview

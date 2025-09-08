@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Snail Sort
   
   Given an `n x n` array, return the array elements arranged from outermost elements to the middle element, traveling clockwise.
@@ -24,6 +25,7 @@ vc-description: |-
   NOTE: The idea is not sort the elements from the lowest value to the highest; the idea is to traverse the 2-d array in a clockwise snailshell pattern.
   
   NOTE 2: The 0x0 (empty matrix) is represented as en empty array inside an array `[[]]`.
+  -/
 
 vc-preamble: |-
 
@@ -54,23 +56,23 @@ vc-theorems: |-
   theorem snail_empty_list {α : Type} (arr : List (List α)) :
     arr = [] ∨ arr.head! = [] → snail arr = [] := sorry
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval snail [[]]
+  -- #guard_msgs in
+  -- #eval snail [[]]
   
-  /--
+  /-
   info: [1]
   -/
-  #guard_msgs in
-  #eval snail [[1]]
+  -- #guard_msgs in
+  -- #eval snail [[1]]
   
-  /--
+  /-
   info: [1, 2, 3, 6, 9, 8, 7, 4, 5]
   -/
-  #guard_msgs in
-  #eval snail [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+  -- #guard_msgs in
+  -- #eval snail [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

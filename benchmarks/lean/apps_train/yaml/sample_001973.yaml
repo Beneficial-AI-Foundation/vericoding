@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We have three stones at points (0, 0), (1,0), and (0,1) on a two-dimensional plane.
   These three stones are said to form an L when they satisfy the following conditions:
    - Each of the stones is at integer coordinates.
@@ -43,6 +44,7 @@ vc-description: |-
   ....    ....    ....    ..#.    ..##
   #... -> ##.. -> .##. -> .##. -> ..#.
   ##..    .#..    .#..    ....    ....
+  -/
 
 vc-preamble: |-
 
@@ -63,23 +65,23 @@ vc-theorems: |-
   theorem solve_symmetric_bc (ax ay bx b_y cx c_y : Int) :
     solve ax ay bx b_y cx c_y = solve ax ay cx c_y bx b_y := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval solve 3 2 2 2 2 1
+  -- #guard_msgs in
+  -- #eval solve 3 2 2 2 2 1
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve 0 0 1 0 0 1
+  -- #guard_msgs in
+  -- #eval solve 0 0 1 0 0 1
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve 1 0 0 1 1 1
+  -- #guard_msgs in
+  -- #eval solve 1 0 0 1 1 1
 
 vc-postamble: |-
   -- Apps difficulty: competition

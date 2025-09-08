@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ###Lucky number
   
   Write a function to find if a number is lucky or not. If the sum of all digits is 0 or multiple of 9 then the number is lucky.
@@ -6,6 +7,7 @@ vc-description: |-
   `1892376 => 1+8+9+2+3+7+6 = 36`. 36 is divisble by 9, hence number is lucky.
   
   Function will return `true` for lucky numbers and `false` for others.
+  -/
 
 vc-preamble: |-
   def is_lucky (n : Nat) : Bool :=
@@ -38,23 +40,23 @@ vc-theorems: |-
     is_lucky 0 ∧ is_lucky 9 ∧ is_lucky 99 :=
   sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_lucky 1892376
+  -- #guard_msgs in
+  -- #eval is_lucky 1892376
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_lucky 189237
+  -- #guard_msgs in
+  -- #eval is_lucky 189237
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_lucky 0
+  -- #guard_msgs in
+  -- #eval is_lucky 0
 
 vc-postamble: |-
   -- Apps difficulty: introductory

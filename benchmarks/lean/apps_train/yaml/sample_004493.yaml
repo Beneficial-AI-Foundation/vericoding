@@ -1,10 +1,12 @@
 vc-description: |-
+  /-
   ```if-not:racket
   Write a function called `repeat_str` which repeats the given string `src` exactly `count` times.
   ```
   ```if:racket
   Write a function called `repeat-string` which repeats the given string `str` exactly `count` times.
   ```
+  -/
 
 vc-preamble: |-
 
@@ -28,23 +30,23 @@ vc-theorems: |-
   theorem repeat_str_one (s : String) :
     repeat_str 1 s = s := sorry
   
-  /--
+  /-
   info: 'aaaa'
   -/
-  #guard_msgs in
-  #eval repeat_str 4 "a"
+  -- #guard_msgs in
+  -- #eval repeat_str 4 "a"
   
-  /--
+  /-
   info: 'hello hello hello '
   -/
-  #guard_msgs in
-  #eval repeat_str 3 "hello "
+  -- #guard_msgs in
+  -- #eval repeat_str 3 "hello "
   
-  /--
+  /-
   info: 'abcabc'
   -/
-  #guard_msgs in
-  #eval repeat_str 2 "abc"
+  -- #guard_msgs in
+  -- #eval repeat_str 2 "abc"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

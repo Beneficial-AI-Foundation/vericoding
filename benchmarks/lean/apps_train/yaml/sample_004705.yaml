@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Create a function hollow_triangle(height) that returns a hollow triangle of the correct height. The height is passed through to the function and the function should return a list containing each line of the hollow triangle. 
   ```
   hollow_triangle(6) should return : ['_____#_____', '____#_#____', '___#___#___', '__#_____#__', '_#_______#_', '###########']
@@ -26,6 +27,7 @@ vc-description: |-
   #################        9 ---- Final Height
   ```
   Pad spaces with underscores i.e _ so each line is the same length.Goodluck and have fun coding !
+  -/
 
 vc-preamble: |-
 
@@ -59,23 +61,23 @@ vc-theorems: |-
   theorem hollow_triangle_minimal (height : Nat) (h : height = 1) :
     hollow_triangle height = ["#"] := sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval hollow_triangle 6
+  -- #guard_msgs in
+  -- #eval hollow_triangle 6
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval hollow_triangle 9
+  -- #guard_msgs in
+  -- #eval hollow_triangle 9
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval hollow_triangle 3
+  -- #guard_msgs in
+  -- #eval hollow_triangle 3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

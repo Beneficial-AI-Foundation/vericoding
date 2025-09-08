@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You will be given two numbers `m,n`. The numbers could span from `0` to `10000`. We can get their product by using binary reduction as show in the table below.
   Example (to understand the table please read the description below it) 
   
@@ -47,6 +48,7 @@ vc-description: |-
   Now your task for this kata will be to get those non-zero number in the last column in an array and return it sorted in descending order.so for the above example the return will be `[960,480,60]`.
   
   _Beware: _`m,n`_ are not necessarily ordered._
+  -/
 
 vc-preamble: |-
 
@@ -71,23 +73,23 @@ vc-theorems: |-
   theorem bin_mul_commutative (m n : Nat) :
     bin_mul m n = bin_mul n m := sorry
   
-  /--
+  /-
   info: [960, 480, 60]
   -/
-  #guard_msgs in
-  #eval bin_mul 100 15
+  -- #guard_msgs in
+  -- #eval bin_mul 100 15
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval bin_mul 15 0
+  -- #guard_msgs in
+  -- #eval bin_mul 15 0
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval bin_mul 0 0
+  -- #guard_msgs in
+  -- #eval bin_mul 0 0
 
 vc-postamble: |-
   -- Apps difficulty: introductory

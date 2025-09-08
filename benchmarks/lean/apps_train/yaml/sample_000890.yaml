@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef was bored staying at home in the lockdown. He wanted to go out for a change. Chef and Chefu are fond of eating Cakes,so they decided to go the Cake shop where cakes of all possible price are available .
   They decided to purchase cakes of equal price and each of them will pay for their cakes. Chef only has coins of denomination $N$ whereas Chefu has that of denomination $M$.
   So they want your help to find out the minimum amount to be spent in order to purchase the cakes.
@@ -20,6 +21,7 @@ vc-description: |-
   
   -----Sample Output:-----
   6
+  -/
 
 vc-preamble: |-
 
@@ -47,23 +49,23 @@ vc-theorems: |-
     find_min_cake_cost n m = find_min_cake_cost m n :=
     sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval find_min_cake_cost 2 3
+  -- #guard_msgs in
+  -- #eval find_min_cake_cost 2 3
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval find_min_cake_cost 4 6
+  -- #guard_msgs in
+  -- #eval find_min_cake_cost 4 6
   
-  /--
+  /-
   info: 35
   -/
-  #guard_msgs in
-  #eval find_min_cake_cost 5 7
+  -- #guard_msgs in
+  -- #eval find_min_cake_cost 5 7
 
 vc-postamble: |-
   -- Apps difficulty: interview

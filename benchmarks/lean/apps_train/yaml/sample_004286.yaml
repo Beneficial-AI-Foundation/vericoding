@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Vasya wants to climb up a stair of certain amount of steps (Input parameter 1). There are 2 simple rules that he has to stick to.
   
   1. Vasya can climb 1 or 2 steps at each move.
@@ -28,6 +29,7 @@ vc-description: |-
   numberOfSteps 10 2 == Just 6  -- Sequence of steps : {2, 2, 2, 2, 1, 1}
   numberOfSteps  3 5 == Nothing -- Not possible, since the sequences of steps would be {2, 1}, {1, 2} or {1, 1, 1}
   ```
+  -/
 
 vc-preamble: |-
 

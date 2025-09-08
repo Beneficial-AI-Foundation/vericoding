@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Write Number in Expanded Form
   
   You will be given a number and you will need to return it as a string in [Expanded Form](https://www.mathplacementreview.com/arithmetic/whole-numbers.php#expanded-form). For example:
@@ -12,6 +13,7 @@ vc-description: |-
   NOTE: All numbers will be whole numbers greater than 0.
   
   If you liked this kata, check out [part 2](https://www.codewars.com/kata/write-number-in-expanded-form-part-2)!!
+  -/
 
 vc-preamble: |-
   def expanded_form (n : Nat) : String := sorry
@@ -52,23 +54,23 @@ vc-theorems: |-
   theorem expanded_form_single_digit (n : Nat) (h : 0 < n) (h2 : n < 10) :
     expanded_form n = toString n := sorry
   
-  /--
+  /-
   info: '2'
   -/
-  #guard_msgs in
-  #eval expanded_form 2
+  -- #guard_msgs in
+  -- #eval expanded_form 2
   
-  /--
+  /-
   info: '40 + 2'
   -/
-  #guard_msgs in
-  #eval expanded_form 42
+  -- #guard_msgs in
+  -- #eval expanded_form 42
   
-  /--
+  /-
   info: '70000 + 300 + 4'
   -/
-  #guard_msgs in
-  #eval expanded_form 70304
+  -- #guard_msgs in
+  -- #eval expanded_form 70304
 
 vc-postamble: |-
   -- Apps difficulty: introductory

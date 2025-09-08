@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Story
   
   Your company migrated the last 20 years of it's *very important data* to a new platform, in multiple phases. However, something went wrong: some of the essential time-stamps were messed up! It looks like that some servers were set to use the `dd/mm/yyyy` date format, while others were using the `mm/dd/yyyy` format during the migration. Unfortunately, the original database got corrupted in the process and there are no backups available... Now it's up to you to assess the damage.
@@ -21,6 +22,7 @@ vc-description: |-
   ## My other katas
   
   If you enjoyed this kata then please try [my other katas](https://www.codewars.com/collections/katas-created-by-anter69)! :-)
+  -/
 
 vc-preamble: |-
   def sum_list : List Nat → Nat 
@@ -52,29 +54,29 @@ vc-theorems: |-
     ∀ x ∈ check_dates records, x ≥ 0 :=
   sorry
   
-  /--
+  /-
   info: [0, 0, 0]
   -/
-  #guard_msgs in
-  #eval check_dates []
+  -- #guard_msgs in
+  -- #eval check_dates []
   
-  /--
+  /-
   info: [1, 0, 0]
   -/
-  #guard_msgs in
-  #eval check_dates [["2015-04-04", "2015-05-13"]]
+  -- #guard_msgs in
+  -- #eval check_dates [["2015-04-04", "2015-05-13"]]
   
-  /--
+  /-
   info: [0, 1, 0]
   -/
-  #guard_msgs in
-  #eval check_dates [["2011-10-08", "2011-08-14"]]
+  -- #guard_msgs in
+  -- #eval check_dates [["2011-10-08", "2011-08-14"]]
   
-  /--
+  /-
   info: [0, 0, 1]
   -/
-  #guard_msgs in
-  #eval check_dates [["2002-02-07", "2002-12-10"]]
+  -- #guard_msgs in
+  -- #eval check_dates [["2002-02-07", "2002-12-10"]]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The mobile application store has a new game called "Subway Roller".
   
   The protagonist of the game Philip is located in one end of the tunnel and wants to get out of the other one. The tunnel is a rectangular field consisting of three rows and n columns. At the beginning of the game the hero is in some cell of the leftmost column. Some number of trains rides towards the hero. Each train consists of two or more neighbouring cells in some row of the field.
@@ -57,6 +58,7 @@ vc-description: |-
   In the first set of the input of the first sample Philip must first go forward and go down to the third row of the field, then go only forward, then go forward and climb to the second row, go forward again and go up to the first row. After that way no train blocks Philip's path, so he can go straight to the end of the tunnel.
   
   Note that in this problem the challenges are restricted to tests that contain only one testset.
+  -/
 
 vc-preamble: |-
 
@@ -102,23 +104,23 @@ vc-theorems: |-
   theorem minimal_grid_escape_possible :
     check_subway_escape ["...", "s..", "..."] 3 1 = "YES" := sorry
   
-  /--
+  /-
   info: 'YES'
   -/
-  #guard_msgs in
-  #eval check_subway_escape ["...AAAAA........", "s.BBB......CCCCC", "........DDDDD..."] 16 4
+  -- #guard_msgs in
+  -- #eval check_subway_escape ["...AAAAA........", "s.BBB......CCCCC", "........DDDDD..."] 16 4
   
-  /--
+  /-
   info: 'NO'
   -/
-  #guard_msgs in
-  #eval check_subway_escape ["...AAAAA........", "s.BBB....CCCCC..", ".......DDDDD...."] 16 4
+  -- #guard_msgs in
+  -- #eval check_subway_escape ["...AAAAA........", "s.BBB....CCCCC..", ".......DDDDD...."] 16 4
   
-  /--
+  /-
   info: 'YES'
   -/
-  #guard_msgs in
-  #eval check_subway_escape ["s.ZZ......", ".....AAABB", ".YYYYYY..."] 10 4
+  -- #guard_msgs in
+  -- #eval check_subway_escape ["s.ZZ......", ".....AAABB", ".YYYYYY..."] 10 4
 
 vc-postamble: |-
   -- Apps difficulty: competition

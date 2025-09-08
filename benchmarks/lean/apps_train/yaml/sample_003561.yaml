@@ -1,5 +1,7 @@
 vc-description: |-
+  /-
   Complete the method that takes a boolean value and return a `"Yes"` string for `true`, or a `"No"` string for `false`.
+  -/
 
 vc-preamble: |-
 
@@ -20,17 +22,17 @@ vc-theorems: |-
   theorem bool_to_word_matches_input (b : Bool) :
     bool_to_word b = if b then "Yes" else "No" := sorry
   
-  /--
+  /-
   info: 'Yes'
   -/
-  #guard_msgs in
-  #eval bool_to_word True
+  -- #guard_msgs in
+  -- #eval bool_to_word True
   
-  /--
+  /-
   info: 'No'
   -/
-  #guard_msgs in
-  #eval bool_to_word False
+  -- #guard_msgs in
+  -- #eval bool_to_word False
 
 vc-postamble: |-
   -- Apps difficulty: introductory

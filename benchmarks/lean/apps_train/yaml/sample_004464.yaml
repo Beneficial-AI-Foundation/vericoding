@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function ```x(n)``` that takes in a number ```n``` and returns an ```nxn``` array with an ```X``` in the middle. The ```X``` will be represented by ```1's``` and the rest will be ```0's```. 
   E.g.
   ```python
@@ -15,6 +16,7 @@ vc-description: |-
             [0, 1, 0, 0, 1, 0],
             [1, 0, 0, 0, 0, 1]];
   ```
+  -/
 
 vc-preamble: |-
 
@@ -52,23 +54,23 @@ vc-theorems: |-
                 List.get! (List.get! result j) i) :=
   sorry
   
-  /--
+  /-
   info: [[1, 0, 1], [0, 1, 0], [1, 0, 1]]
   -/
-  #guard_msgs in
-  #eval x 3
+  -- #guard_msgs in
+  -- #eval x 3
   
-  /--
+  /-
   info: [[1, 0, 0, 1], [0, 1, 1, 0], [0, 1, 1, 0], [1, 0, 0, 1]]
   -/
-  #guard_msgs in
-  #eval x 4
+  -- #guard_msgs in
+  -- #eval x 4
   
-  /--
+  /-
   info: [[1, 0, 0, 0, 1], [0, 1, 0, 1, 0], [0, 0, 1, 0, 0], [0, 1, 0, 1, 0], [1, 0, 0, 0, 1]]
   -/
-  #guard_msgs in
-  #eval x 5
+  -- #guard_msgs in
+  -- #eval x 5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

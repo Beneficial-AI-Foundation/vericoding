@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a complete binary tree with the height of H, we index the nodes respectively top-down and left-right from 1. The i-th node stores a positive integer Vi. Define Pi as follows: Pi=Vi if the i-th node is a leaf, otherwise Pi=max(Vi*PL, Vi*PR), where L and R are the indices of the left and right children of i, respectively. Your task is to caculate the value of P1.
   
   -----Input-----
@@ -33,6 +34,7 @@ vc-description: |-
   1     5
   / \   / \
   2   6 4   7
+  -/
 
 vc-preamble: |-
   def minArraySize (height : Nat) : Nat := (2 ^ height) - 1
@@ -71,17 +73,17 @@ vc-theorems: |-
     minArraySize height = 2^height - 1 := by
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval calc_max_product 2 #[1, 2, 3]
+  -- #guard_msgs in
+  -- #eval calc_max_product 2 #[1, 2, 3]
   
-  /--
+  /-
   info: 105
   -/
-  #guard_msgs in
-  #eval calc_max_product 3 #[3, 1, 5, 2, 6, 4, 7]
+  -- #guard_msgs in
+  -- #eval calc_max_product 3 #[3, 1, 5, 2, 6, 4, 7]
 
 vc-postamble: |-
   -- Apps difficulty: interview

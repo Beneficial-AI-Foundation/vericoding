@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given the values at the leaf nodes of a complete binary tree. The total number of nodes in the binary tree, is also given. Sum of the values at both the children of a node is equal to the value of the node itself. You can add any value or subtract any value from a node. Print the minimum change(difference made) in the sum of values of all the nodes in the tree, such that all the leaf nodes have the same value.
   
   Note: If a value transfers from one node to another, then that is not a change, but if an extra is needed to be added or subtracted to the entire total value of the nodes, then that is a change.
@@ -51,6 +52,7 @@ vc-description: |-
   6
   
   Output: A total change of 6 needs to be changed to the entire value of the nodes, to get the leaf nodes equal.
+  -/
 
 vc-preamble: |-
 
@@ -69,23 +71,23 @@ vc-theorems: |-
   theorem min_change_single_leaf {target : Int} (h : target ≥ 0) :
     min_change_to_equal_leaves target [target] = 0 := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval min_change_to_equal_leaves 30 [26, 26, 36, 26]
+  -- #guard_msgs in
+  -- #eval min_change_to_equal_leaves 30 [26, 26, 36, 26]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_change_to_equal_leaves 10 [10, 10, 10]
+  -- #guard_msgs in
+  -- #eval min_change_to_equal_leaves 10 [10, 10, 10]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_change_to_equal_leaves 6 [4, 8]
+  -- #guard_msgs in
+  -- #eval min_change_to_equal_leaves 6 [4, 8]
 
 vc-postamble: |-
   -- Apps difficulty: interview

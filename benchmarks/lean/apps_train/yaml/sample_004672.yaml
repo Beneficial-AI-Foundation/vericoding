@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Take the following IPv4 address:  128.32.10.1
   This address has 4 octets where each octet is a single byte (or 8 bits).
   
@@ -18,6 +19,7 @@ vc-description: |-
   ```python
     ip_to_int32("128.32.10.1") => 2149583361
   ```
+  -/
 
 vc-preamble: |-
 
@@ -71,23 +73,23 @@ vc-theorems: |-
     d = result &&& 255 :=
   sorry
   
-  /--
+  /-
   info: 2149583361
   -/
-  #guard_msgs in
-  #eval ip_to_int32 "128.32.10.1"
+  -- #guard_msgs in
+  -- #eval ip_to_int32 "128.32.10.1"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval ip_to_int32 "0.0.0.0"
+  -- #guard_msgs in
+  -- #eval ip_to_int32 "0.0.0.0"
   
-  /--
+  /-
   info: 4294967295
   -/
-  #guard_msgs in
-  #eval ip_to_int32 "255.255.255.255"
+  -- #guard_msgs in
+  -- #eval ip_to_int32 "255.255.255.255"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

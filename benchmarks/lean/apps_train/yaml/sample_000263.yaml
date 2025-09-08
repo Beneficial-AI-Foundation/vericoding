@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A happy string is a string that:
   
   consists only of letters of the set ['a', 'b', 'c'].
@@ -35,6 +36,7 @@ vc-description: |-
   
   1 <= n <= 10
   1 <= k <= 100
+  -/
 
 vc-preamble: |-
   def get_happy_string (n k : Nat) : String :=
@@ -84,23 +86,23 @@ vc-theorems: |-
     starts_with_a s :=
     sorry
   
-  /--
+  /-
   info: 'c'
   -/
-  #guard_msgs in
-  #eval get_happy_string 1 3
+  -- #guard_msgs in
+  -- #eval get_happy_string 1 3
   
-  /--
+  /-
   info: 'cab'
   -/
-  #guard_msgs in
-  #eval get_happy_string 3 9
+  -- #guard_msgs in
+  -- #eval get_happy_string 3 9
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval get_happy_string 1 4
+  -- #guard_msgs in
+  -- #eval get_happy_string 1 4
 
 vc-postamble: |-
   -- Apps difficulty: interview

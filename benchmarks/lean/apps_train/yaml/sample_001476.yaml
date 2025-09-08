@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Bobby has decided to hunt some Parrots. There are n horizontal branch of trees aligned parallel to each other. Branches are numbered 1 to n from top to bottom. On each branch there are some parrots sitting next to each other. Supposed there are a[i]$a[i]$ parrots sitting on the i−th$ i-th$ branch.  
   Sometimes Bobby shots one of the parrot and the parrot dies (suppose that this parrots sat at the i−th$i-th$ branch). Consequently all the parrots on the i−th$i-th$ branch to the left of the dead parrot get scared and jump up on the branch number i − 1$i - 1$, if there exists no upper branch they fly away. Also all the parrots to the right of the dead parrot jump down on branch number i + 1$i + 1$, if there exists no such branch they fly away.  
   Bobby has shot m parrots. You're given the initial number of parrots on each branch, tell him how many parrots are sitting on each branch after the shots.  
@@ -55,6 +56,7 @@ vc-description: |-
   0
   
   3
+  -/
 
 vc-preamble: |-
   def solve_parrot_hunt (n : Nat) (init_parrots : List Nat) (num_shots : Nat) (shots : List (Nat × Nat)) : List Nat :=

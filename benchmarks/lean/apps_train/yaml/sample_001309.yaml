@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef is good at making pancakes. Generally he gets requests to serve N pancakes at once.
   He serves them in the form of a stack.
   A pancake can be treated as a circular disk with some radius.
@@ -19,6 +20,7 @@ vc-description: |-
   Output
   1
   2
+  -/
 
 vc-preamble: |-
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You're given an integer N. Write a program to calculate the sum of all the digits of N. 
   
   -----Input-----
@@ -22,6 +23,7 @@ vc-description: |-
   15
   9
   8
+  -/
 
 vc-preamble: |-
   def List.sum : List Nat → Nat 

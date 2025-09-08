@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this Kata, you will be given two positive integers `a` and `b` and your task will be to apply the following operations:
   
   ```
@@ -12,6 +13,7 @@ vc-description: |-
   More examples in tests cases. Good luck!
   
   Please also try [Simple time difference](https://www.codewars.com/kata/5b76a34ff71e5de9db0000f2)
+  -/
 
 vc-preamble: |-
 
@@ -47,23 +49,23 @@ vc-theorems: |-
     solve a b = (a, b) := by
     sorry
   
-  /--
+  /-
   info: [6, 7]
   -/
-  #guard_msgs in
-  #eval solve 6 19
+  -- #guard_msgs in
+  -- #eval solve 6 19
   
-  /--
+  /-
   info: [0, 1]
   -/
-  #guard_msgs in
-  #eval solve 2 1
+  -- #guard_msgs in
+  -- #eval solve 2 1
   
-  /--
+  /-
   info: [7, 11]
   -/
-  #guard_msgs in
-  #eval solve 7 11
+  -- #guard_msgs in
+  -- #eval solve 7 11
 
 vc-postamble: |-
   -- Apps difficulty: introductory

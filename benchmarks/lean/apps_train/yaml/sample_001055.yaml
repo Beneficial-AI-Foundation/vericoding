@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The garden has a tree with too many leaves on it and gardner wants to cut the unwanted leaves. This is a rooted tree, where a node $v$ is called parent of another node $u$, if there exists a directed edge from $v$ to $u$. Leaf node is a node with no outgoing edges.
   Gardner cuts the tree in a peculiar way:
   - For each parent node(which has a valid leaf node attached to it), he cuts $x$ leaf nodes, such that $x$ is a multiple of 3.
@@ -33,6 +34,7 @@ vc-description: |-
   4
   
   -----EXPLANATION:-----
+  -/
 
 vc-preamble: |-
   def solve_tree_trimming (n : Nat) (parents : List Nat) : Nat :=
@@ -72,17 +74,17 @@ vc-theorems: |-
     1 ≤ result ∧ result ≤ n :=
   sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval solve_tree_trimming 13 [1, 1, 1, 1, 1, 4, 3, 4, 4, 3, 4, 3]
+  -- #guard_msgs in
+  -- #eval solve_tree_trimming 13 [1, 1, 1, 1, 1, 4, 3, 4, 4, 3, 4, 3]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval solve_tree_trimming 3 [1, 1]
+  -- #guard_msgs in
+  -- #eval solve_tree_trimming 3 [1, 1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

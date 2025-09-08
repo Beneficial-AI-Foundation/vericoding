@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an integer, take the (mean) average of each pair of consecutive digits. Repeat this process until you have a single integer, then return that integer. e.g.
   
   Note: if the average of two digits is not an integer, round the result **up** (e.g. the average of 8 and 9 will be 9)
@@ -22,6 +23,7 @@ vc-description: |-
   ```
   
   p.s. for a bigger challenge, check out the [one line version](https://www.codewars.com/kata/one-line-task-digits-average) of this kata by myjinxin2015!
+  -/
 
 vc-preamble: |-
 
@@ -39,23 +41,23 @@ vc-theorems: |-
   theorem single_digit_unchanged (n : Nat) (h1 : n > 0) (h2 : n ≤ 9) :
     digits_average n = n := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval digits_average 246
+  -- #guard_msgs in
+  -- #eval digits_average 246
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval digits_average 89
+  -- #guard_msgs in
+  -- #eval digits_average 89
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval digits_average 3700
+  -- #guard_msgs in
+  -- #eval digits_average 3700
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A palindrome is a word, phrase, number, or other sequence of characters which reads the same backward as forward. Examples of numerical palindromes are:
   
   2332  
@@ -22,6 +23,7 @@ vc-description: |-
   Numerical Palindrome #3.5
   Numerical Palindrome #4
   Numerical Palindrome #5
+  -/
 
 vc-preamble: |-
   def palindrome (x : Int) : Bool ⊕ String := sorry
@@ -59,29 +61,29 @@ vc-theorems: |-
     let palindromeNum := x * (10 ^ (String.length xStr)) + reverseInt x
     palindrome palindromeNum = .inl true := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval palindrome 1221
+  -- #guard_msgs in
+  -- #eval palindrome 1221
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval palindrome 123456
+  -- #guard_msgs in
+  -- #eval palindrome 123456
   
-  /--
+  /-
   info: 'Not valid'
   -/
-  #guard_msgs in
-  #eval palindrome "1221"
+  -- #guard_msgs in
+  -- #eval palindrome "1221"
   
-  /--
+  /-
   info: 'Not valid'
   -/
-  #guard_msgs in
-  #eval palindrome -450
+  -- #guard_msgs in
+  -- #eval palindrome -450
 
 vc-postamble: |-
   -- Apps difficulty: introductory

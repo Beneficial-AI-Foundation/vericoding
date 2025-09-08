@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are $N$ friends in a group. Each of them have $A_{i}$ candies.
   Can they share all of these candies among themselves such that each one of them have equal no. of candies.
   
@@ -27,6 +28,7 @@ vc-description: |-
   
   -----EXPLANATION:-----
   Each of them have $2$ candies after sharing.
+  -/
 
 vc-preamble: |-
   def List.sum : List Nat → Nat 
@@ -57,23 +59,23 @@ vc-theorems: |-
   theorem zero_list_evenly_divisible (n_friends : Nat) (h : n_friends > 1) :
     can_share_candies n_friends [0] = "Yes" := sorry
   
-  /--
+  /-
   info: 'Yes'
   -/
-  #guard_msgs in
-  #eval can_share_candies 3 [1, 2, 3]
+  -- #guard_msgs in
+  -- #eval can_share_candies 3 [1, 2, 3]
   
-  /--
+  /-
   info: 'No'
   -/
-  #guard_msgs in
-  #eval can_share_candies 2 [1, 2]
+  -- #guard_msgs in
+  -- #eval can_share_candies 2 [1, 2]
   
-  /--
+  /-
   info: 'Yes'
   -/
-  #guard_msgs in
-  #eval can_share_candies 4 [2, 2, 2, 2]
+  -- #guard_msgs in
+  -- #eval can_share_candies 4 [2, 2, 2, 2]
 
 vc-postamble: |-
   -- Apps difficulty: interview

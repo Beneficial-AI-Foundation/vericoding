@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are going to be given an array of integers. Your job is to take that array and find an index N where the sum of the integers to the left of N is equal to the sum of the integers to the right of N. If there is no index that would make this happen, return `-1`.
   
   __For example:__
@@ -27,6 +28,7 @@ vc-description: |-
   
   __Note:__  
   If you are given an array with multiple answers, return the lowest correct index.
+  -/
 
 vc-preamble: |-
   def find_even_index (arr : List Int) : Nat :=
@@ -55,23 +57,23 @@ vc-theorems: |-
   theorem find_even_index_all_zeros :
     find_even_index [0, 0, 0] = 0 := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_even_index [1, 2, 3, 4, 3, 2, 1]
+  -- #guard_msgs in
+  -- #eval find_even_index [1, 2, 3, 4, 3, 2, 1]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval find_even_index [1, 100, 50, -51, 1, 1]
+  -- #guard_msgs in
+  -- #eval find_even_index [1, 100, 50, -51, 1, 1]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval find_even_index [20, 10, -80, 10, 10, 15, 35]
+  -- #guard_msgs in
+  -- #eval find_even_index [20, 10, -80, 10, 10, 15, 35]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

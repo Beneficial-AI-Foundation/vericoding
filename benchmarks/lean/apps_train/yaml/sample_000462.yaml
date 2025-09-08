@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array of non-negative integers arr, you are initially positioned at start index of the array. When you are at index i, you can jump to i + arr[i] or i - arr[i], check if you can reach to any index with value 0.
   Notice that you can not jump outside of the array at any time.
   
@@ -27,6 +28,7 @@ vc-description: |-
   1 <= arr.length <= 5 * 10^4
   0 <= arr[i] < arr.length
   0 <= start < arr.length
+  -/
 
 vc-preamble: |-
 
@@ -66,23 +68,23 @@ vc-theorems: |-
     let zero_pos := (arr.findIdx? (· = 0)).get!
     can_reach arr zero_pos = true := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval can_reach #[4, 2, 3, 0, 3, 1, 2] 5
+  -- #guard_msgs in
+  -- #eval can_reach #[4, 2, 3, 0, 3, 1, 2] 5
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval can_reach #[4, 2, 3, 0, 3, 1, 2] 0
+  -- #guard_msgs in
+  -- #eval can_reach #[4, 2, 3, 0, 3, 1, 2] 0
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval can_reach #[3, 0, 2, 1, 2] 2
+  -- #guard_msgs in
+  -- #eval can_reach #[3, 0, 2, 1, 2] 2
 
 vc-postamble: |-
   -- Apps difficulty: interview

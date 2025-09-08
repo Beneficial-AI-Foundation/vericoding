@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Take the following IPv4 address: `128.32.10.1`
   
   This address has 4 octets where each octet is a single byte (or 8 bits).
@@ -20,6 +21,7 @@ vc-description: |-
   32         ==> "0.0.0.32"
   0          ==> "0.0.0.0"
   ```
+  -/
 
 vc-preamble: |-
   def int32_to_ip (n : Nat) : String := sorry
@@ -64,23 +66,23 @@ vc-theorems: |-
                (octets.get! 3) * 256^0
       (int32_to_ip n = String.intercalate "." (octets.map toString)) := sorry
   
-  /--
+  /-
   info: '128.114.17.104'
   -/
-  #guard_msgs in
-  #eval int32_to_ip 2154959208
+  -- #guard_msgs in
+  -- #eval int32_to_ip 2154959208
   
-  /--
+  /-
   info: '0.0.0.0'
   -/
-  #guard_msgs in
-  #eval int32_to_ip 0
+  -- #guard_msgs in
+  -- #eval int32_to_ip 0
   
-  /--
+  /-
   info: '128.32.10.1'
   -/
-  #guard_msgs in
-  #eval int32_to_ip 2149583361
+  -- #guard_msgs in
+  -- #eval int32_to_ip 2149583361
 
 vc-postamble: |-
   -- Apps difficulty: introductory

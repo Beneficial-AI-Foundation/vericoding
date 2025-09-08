@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   **Principal Diagonal** -- The principal diagonal in a matrix identifies those elements of the matrix running from North-West to South-East.
   
   **Secondary Diagonal** -- the secondary diagonal of a matrix identifies those elements of the matrix running from North-East to South-West.
@@ -22,6 +23,7 @@ vc-description: |-
   * If they are equal, return `"Draw!"`
   
   **Note:** You will always receive matrices of the same dimension.
+  -/
 
 vc-preamble: |-
 
@@ -50,23 +52,23 @@ vc-theorems: |-
     diagonal [[5]] = "Draw!" ∧
     diagonal [[2,1],[1,3]] = "Principal Diagonal win!" := by sorry
   
-  /--
+  /-
   info: 'Secondary Diagonal win!'
   -/
-  #guard_msgs in
-  #eval diagonal [[2, 2, 2], [4, 2, 6], [8, 8, 2]]
+  -- #guard_msgs in
+  -- #eval diagonal [[2, 2, 2], [4, 2, 6], [8, 8, 2]]
   
-  /--
+  /-
   info: 'Draw!'
   -/
-  #guard_msgs in
-  #eval diagonal [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+  -- #guard_msgs in
+  -- #eval diagonal [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
   
-  /--
+  /-
   info: 'Principal Diagonal win!'
   -/
-  #guard_msgs in
-  #eval diagonal [[7, 2, 2], [4, 2, 6], [1, 8, 1]]
+  -- #guard_msgs in
+  -- #eval diagonal [[7, 2, 2], [4, 2, 6], [1, 8, 1]]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

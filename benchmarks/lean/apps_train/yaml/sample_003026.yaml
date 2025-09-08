@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Sam has opened a new sushi train restaurant - a restaurant where sushi is served on plates that travel around the bar on a conveyor belt and customers take the plate that they like.
   
   Sam is using Glamazon's new visual recognition technology that allows a computer to record the number of plates at a customer's table and the colour of those plates.  The number of plates is returned as a string.  For example, if a customer has eaten 3 plates of sushi on a red plate the computer will return the string 'rrr'.
@@ -21,6 +22,7 @@ vc-description: |-
   Input: 'rrrrr rrrrr' Output: 16
   
   ```
+  -/
 
 vc-preamble: |-
   def total_bill (s : String) : Nat :=
@@ -52,23 +54,23 @@ vc-theorems: |-
     total_bill s = 2 * (n - n/5) :=
     sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval total_bill "rr"
+  -- #guard_msgs in
+  -- #eval total_bill "rr"
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval total_bill "rr rrr"
+  -- #guard_msgs in
+  -- #eval total_bill "rr rrr"
   
-  /--
+  /-
   info: 16
   -/
-  #guard_msgs in
-  #eval total_bill "rrrrr rrrrr"
+  -- #guard_msgs in
+  -- #eval total_bill "rrrrr rrrrr"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

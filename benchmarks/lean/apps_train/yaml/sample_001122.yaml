@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef is an advocate for Go Green Initiative. Today he had n trees planted in a row outside his his restaurant. Today, the height of i-th tree is hi feet. The trees grow at a rate of mi feet per day.
   Chef knows that trees will look beautiful if they form a zig-zag sequence. The trees will be said to be in Zig-zag sequence if the heights of tree first increases or decreases, then alternates between decreasing/increasing respectively. Formally, the trees will be said to in Zig-zag sequence if one of the following two conditions holds.
   
@@ -48,6 +49,7 @@ vc-description: |-
   
   -----Explanation-----
   Example case 1. In the first case 0 2 0 is already a zig-zag sequence, but on the 2nd second it will become 2 6 6 and will never turn back into zig-zag
+  -/
 
 vc-preamble: |-
 
@@ -94,23 +96,23 @@ vc-theorems: |-
       | (start, Sum.inr _) => 0 ≤ start :=
     sorry
   
-  /--
+  /-
   info: [(0, 1)]
   -/
-  #guard_msgs in
-  #eval find_zigzag_intervals [(0, 1), (2, 2), (0, 3)]
+  -- #guard_msgs in
+  -- #eval find_zigzag_intervals [(0, 1), (2, 2), (0, 3)]
   
-  /--
+  /-
   info: [(0, 0), (2, 'Inf')]
   -/
-  #guard_msgs in
-  #eval find_zigzag_intervals [(2, 1), (1, 2)]
+  -- #guard_msgs in
+  -- #eval find_zigzag_intervals [(2, 1), (1, 2)]
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval find_zigzag_intervals [(1, 1), (2, 2), (3, 3)]
+  -- #guard_msgs in
+  -- #eval find_zigzag_intervals [(1, 1), (2, 2), (3, 3)]
 
 vc-postamble: |-
   -- Apps difficulty: interview

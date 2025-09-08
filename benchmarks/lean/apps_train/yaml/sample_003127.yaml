@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In genetics, a sequence’s motif is a nucleotides (or amino-acid) sequence pattern. Sequence motifs have a biological significance. For more information you can take a look [here](https://en.wikipedia.org/wiki/Sequence_motif).
   
   For this kata you need to complete the function `motif_locator`. This function receives 2 arguments - a sequence and a motif. Both arguments are strings.
@@ -12,6 +13,7 @@ vc-description: |-
   - For the `sequence` "GGG" and the motif "GG" the result should be [1, 2]
   
   **Note**: You can take a look to my others bio-info kata [here](http://www.codewars.com/users/nbeck/authored)
+  -/
 
 vc-preamble: |-
   def DnaBases : List Char := ['A', 'C', 'G', 'T']
@@ -63,23 +65,23 @@ vc-theorems: |-
     motif_locator "ACG" "ACGT" = [] :=
   sorry
   
-  /--
+  /-
   info: [3, 9]
   -/
-  #guard_msgs in
-  #eval motif_locator "TTCCGGAACC" "CC"
+  -- #guard_msgs in
+  -- #eval motif_locator "TTCCGGAACC" "CC"
   
-  /--
+  /-
   info: [1, 9]
   -/
-  #guard_msgs in
-  #eval motif_locator "ACGTTACAACGTTAG" "ACGT"
+  -- #guard_msgs in
+  -- #eval motif_locator "ACGTTACAACGTTAG" "ACGT"
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval motif_locator "ACGTACGTACGT" "AAA"
+  -- #guard_msgs in
+  -- #eval motif_locator "ACGTACGTACGT" "AAA"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

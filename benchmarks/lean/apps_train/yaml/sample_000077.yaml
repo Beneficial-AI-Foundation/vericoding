@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a picture consisting of $n$ rows and $m$ columns. Rows are numbered from $1$ to $n$ from the top to the bottom, columns are numbered from $1$ to $m$ from the left to the right. Each cell is painted either black or white. 
   
   You think that this picture is not interesting enough. You consider a picture to be interesting if there is at least one cross in it. A cross is represented by a pair of numbers $x$ and $y$, where $1 \le x \le n$ and $1 \le y \le m$, such that all cells in row $x$ and all cells in column $y$ are painted black.
@@ -105,6 +106,7 @@ vc-description: |-
   You can paint $(2, 2)$ on the $8$-th picture to get a cross in $(2, 2)$. You can, for example, paint $(1, 3)$, $(3, 1)$ and $(3, 3)$ to get a cross in $(3, 3)$ but that will take you $3$ minutes instead of $1$.
   
   There are 9 possible crosses you can get in minimum time on the $9$-th picture. One of them is in $(1, 1)$: paint $(1, 2)$ and $(2, 1)$.
+  -/
 
 vc-preamble: |-
 
@@ -156,23 +158,23 @@ vc-theorems: |-
     min_minutes_for_cross all_dots_grid = n + m - 1 :=
   sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_minutes_for_cross ["..*..", "..*..", "*****", "..*..", "..*.."]
+  -- #guard_msgs in
+  -- #eval min_minutes_for_cross ["..*..", "..*..", "*****", "..*..", "..*.."]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval min_minutes_for_cross [".....", "..*..", ".***.", "..*..", "....."]
+  -- #guard_msgs in
+  -- #eval min_minutes_for_cross [".....", "..*..", ".***.", "..*..", "....."]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_minutes_for_cross ["*.**", "....", "*.**", "*.**"]
+  -- #guard_msgs in
+  -- #eval min_minutes_for_cross ["*.**", "....", "*.**", "*.**"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

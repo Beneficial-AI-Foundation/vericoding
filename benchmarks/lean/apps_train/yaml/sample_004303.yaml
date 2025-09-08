@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Check if given numbers are prime numbers. 
   If number N is prime ```return "Probable Prime"``` else ``` return "Composite"```. 
   HINT: Upper bount is really big so you should use an efficient algorithm.
@@ -9,6 +10,7 @@ vc-description: |-
   Example
     prime_or_composite(2)  # should return Probable Prime
     prime_or_composite(200)  # should return Composite
+  -/
 
 vc-preamble: |-
 
@@ -46,29 +48,29 @@ vc-theorems: |-
     prime_or_composite (a * b) = Result.Composite :=
   sorry
   
-  /--
+  /-
   info: 'Probable Prime'
   -/
-  #guard_msgs in
-  #eval prime_or_composite 2
+  -- #guard_msgs in
+  -- #eval prime_or_composite 2
   
-  /--
+  /-
   info: 'Probable Prime'
   -/
-  #guard_msgs in
-  #eval prime_or_composite 3
+  -- #guard_msgs in
+  -- #eval prime_or_composite 3
   
-  /--
+  /-
   info: 'Composite'
   -/
-  #guard_msgs in
-  #eval prime_or_composite 9
+  -- #guard_msgs in
+  -- #eval prime_or_composite 9
   
-  /--
+  /-
   info: 'Composite'
   -/
-  #guard_msgs in
-  #eval prime_or_composite 12
+  -- #guard_msgs in
+  -- #eval prime_or_composite 12
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,0 +1,68 @@
+/-
+In this Kata, you will be given directions and your task will be to find your way back. 
+```Perl
+solve(["Begin on Road A","Right on Road B","Right on Road C","Left on Road D"]) = ['Begin on Road D', 'Right on Road C', 'Left on Road B', 'Left on Road A']
+solve(['Begin on Lua Pkwy', 'Right on Sixth Alley', 'Right on 1st Cr']) =  ['Begin on 1st Cr', 'Left on Sixth Alley', 'Left on Lua Pkwy']
+```
+
+More examples in test cases. 
+
+Good luck!
+
+Please also try [Simple remove duplicates](https://www.codewars.com/kata/5ba38ba180824a86850000f7)
+-/
+
+def solve : List String → List String := sorry
+
+def extractDirections (commands : List String) : List Direction := sorry
+
+def extractRoads (commands : List String) : List String := sorry
+
+def isLeftOrRight (d : Direction) : Bool :=
+  match d with
+  | Direction.Left => true
+  | Direction.Right => true
+  | _ => false
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def allLeftOrRight (directions : List Direction) : Bool := 
+  directions.all isLeftOrRight
+
+theorem solution_preserves_length (commands : List String) :
+  List.length (solve commands) = List.length commands := sorry
+
+theorem solution_preserves_roads (commands : List String) :
+  extractRoads (solve commands) = extractRoads commands := sorry
+
+theorem first_direction_valid (commands : List String) :
+  commands ≠ [] →
+  let result := solve commands
+  let firstDir := extractDirections result |>.head!
+  firstDir = Direction.Begin ∨ firstDir = Direction.Left ∨ firstDir = Direction.Right := sorry
+
+theorem directions_alternate (commands : List String) :
+  List.length commands > 1 →
+  allLeftOrRight (List.tail! (extractDirections (solve commands))) := sorry
+
+/-
+info: expected1
+-/
+-- #guard_msgs in
+-- #eval solve ["Begin on 3rd Blvd", "Right on First Road", "Left on 9th Dr"]
+
+/-
+info: expected2
+-/
+-- #guard_msgs in
+-- #eval solve ["Begin on Road A", "Right on Road B", "Right on Road C", "Left on Road D"]
+
+/-
+info: expected3
+-/
+-- #guard_msgs in
+-- #eval solve ["Begin on Road A"]
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

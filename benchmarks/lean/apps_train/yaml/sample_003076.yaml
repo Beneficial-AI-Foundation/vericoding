@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ```if-not:sql
   Create a function (or write a script in Shell) that takes an integer as an argument and returns "Even" for even numbers or "Odd" for odd numbers.
   ```
@@ -15,6 +16,7 @@ vc-description: |-
   ### output table schema
   * is_even STRING
   ```
+  -/
 
 vc-preamble: |-
 
@@ -38,47 +40,47 @@ vc-theorems: |-
   theorem even_or_odd_negation (x : Int) :
     even_or_odd x = even_or_odd (-x) := sorry
   
-  /--
+  /-
   info: 'Even'
   -/
-  #guard_msgs in
-  #eval even_or_odd 2
+  -- #guard_msgs in
+  -- #eval even_or_odd 2
   
-  /--
+  /-
   info: 'Odd'
   -/
-  #guard_msgs in
-  #eval even_or_odd 1
+  -- #guard_msgs in
+  -- #eval even_or_odd 1
   
-  /--
+  /-
   info: 'Even'
   -/
-  #guard_msgs in
-  #eval even_or_odd 0
+  -- #guard_msgs in
+  -- #eval even_or_odd 0
   
-  /--
+  /-
   info: 'Even'
   -/
-  #guard_msgs in
-  #eval even_or_odd 1545452
+  -- #guard_msgs in
+  -- #eval even_or_odd 1545452
   
-  /--
+  /-
   info: 'Odd'
   -/
-  #guard_msgs in
-  #eval even_or_odd 74156741
+  -- #guard_msgs in
+  -- #eval even_or_odd 74156741
   
-  /--
+  /-
   info: 'Odd'
   -/
-  #guard_msgs in
-  #eval even_or_odd -123
+  -- #guard_msgs in
+  -- #eval even_or_odd -123
   
-  /--
+  /-
   info: 'Even'
   -/
-  #guard_msgs in
-  #eval even_or_odd -456
+  -- #guard_msgs in
+  -- #eval even_or_odd -456
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   **Getting Familiar:**
   LEET: (sometimes written as "1337" or "l33t"), also known as eleet or leetspeak, is another alphabet for the English language that is used mostly on the internet. It uses various combinations of ASCII characters to replace Latinate letters. For example, leet spellings of the word leet include 1337 and l33t; eleet may be spelled 31337 or 3l33t.
   
@@ -26,6 +27,7 @@ vc-description: |-
   
       GrεεκL33t("CodeWars") = "cθδεωαπs"
       GrεεκL33t("Kata") = "κατα"
+  -/
 
 vc-preamble: |-
 
@@ -64,23 +66,23 @@ vc-theorems: |-
     greek_l33t (greek_l33t s) = greek_l33t s :=
   sorry
   
-  /--
+  /-
   info: 'cθδεωαπs'
   -/
-  #guard_msgs in
-  #eval greek_l33t "codewars"
+  -- #guard_msgs in
+  -- #eval greek_l33t "codewars"
   
-  /--
+  /-
   info: 'κατα'
   -/
-  #guard_msgs in
-  #eval greek_l33t "kata"
+  -- #guard_msgs in
+  -- #eval greek_l33t "kata"
   
-  /--
+  /-
   info: 'κμmιτε'
   -/
-  #guard_msgs in
-  #eval greek_l33t "kumite"
+  -- #guard_msgs in
+  -- #eval greek_l33t "kumite"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

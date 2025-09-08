@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a rows * columns matrix mat of ones and zeros, return how many submatrices have all ones.
   
   Example 1:
@@ -42,6 +43,7 @@ vc-description: |-
   1 <= rows <= 150
   1 <= columns <= 150
   0 <= mat[i][j] <= 1
+  -/
 
 vc-preamble: |-
 
@@ -75,23 +77,23 @@ vc-theorems: |-
   theorem count_submatrices_single_col_ones (n : Nat) :
     count_submatrices ⟨List.replicate n [1]⟩ = n * (n + 1) / 2 := sorry
   
-  /--
+  /-
   info: 13
   -/
-  #guard_msgs in
-  #eval count_submatrices [[1, 0, 1], [1, 1, 0], [1, 1, 0]]
+  -- #guard_msgs in
+  -- #eval count_submatrices [[1, 0, 1], [1, 1, 0], [1, 1, 0]]
   
-  /--
+  /-
   info: 24
   -/
-  #guard_msgs in
-  #eval count_submatrices [[0, 1, 1, 0], [0, 1, 1, 1], [1, 1, 1, 0]]
+  -- #guard_msgs in
+  -- #eval count_submatrices [[0, 1, 1, 0], [0, 1, 1, 1], [1, 1, 1, 0]]
   
-  /--
+  /-
   info: 21
   -/
-  #guard_msgs in
-  #eval count_submatrices [[1, 1, 1, 1, 1, 1]]
+  -- #guard_msgs in
+  -- #eval count_submatrices [[1, 1, 1, 1, 1, 1]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

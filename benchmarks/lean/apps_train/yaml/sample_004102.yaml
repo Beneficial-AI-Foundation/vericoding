@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a sequence of a journey in London, UK. The sequence will contain bus **numbers** and TFL tube names as **strings** e.g.
   
   ```python
@@ -7,6 +8,7 @@ vc-description: |-
   Journeys will always only contain a combination of tube names and bus numbers. Each tube journey costs `£2.40` and each bus journey costs `£1.50`. If there are `2` or more adjacent bus journeys, the bus fare is capped for sets of two adjacent buses and calculated as one bus fare for each set.
   
   Your task is to calculate the total cost of the journey and return the cost `rounded to 2 decimal places` in the format (where x is a number): `£x.xx`
+  -/
 
 vc-preamble: |-
 
@@ -43,23 +45,23 @@ vc-theorems: |-
     london_city_hacker (tubes.map Sum.inr) = 
     toString ("£" ++ toString (Float.ofNat tubes.length * 2.40)) := sorry
   
-  /--
+  /-
   info: '£7.80'
   -/
-  #guard_msgs in
-  #eval london_city_hacker [12, "Central", "Circle", 21]
+  -- #guard_msgs in
+  -- #eval london_city_hacker [12, "Central", "Circle", 21]
   
-  /--
+  /-
   info: '£3.00'
   -/
-  #guard_msgs in
-  #eval london_city_hacker [386, 56, 1, 876]
+  -- #guard_msgs in
+  -- #eval london_city_hacker [386, 56, 1, 876]
   
-  /--
+  /-
   info: '£7.20'
   -/
-  #guard_msgs in
-  #eval london_city_hacker ["Northern", "Central", "Circle"]
+  -- #guard_msgs in
+  -- #eval london_city_hacker ["Northern", "Central", "Circle"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

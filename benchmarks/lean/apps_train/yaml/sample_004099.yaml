@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Implement a function which behaves like the uniq command in UNIX.
   
   It takes as input a sequence and returns a sequence in which all duplicate elements following each other have been reduced to one instance.
@@ -8,6 +9,7 @@ vc-description: |-
   ```
   ["a", "a", "b", "b", "c", "a", "b", "c"]  =>  ["a", "b", "c", "a", "b", "c"]
   ```
+  -/
 
 vc-preamble: |-
 
@@ -46,29 +48,29 @@ vc-theorems: |-
     (uniq lst).length = 1 :=
   sorry
   
-  /--
+  /-
   info: ['a', 'b', 'c', 'a', 'b', 'c']
   -/
-  #guard_msgs in
-  #eval uniq ["a", "a", "b", "b", "c", "a", "b", "c", "c"]
+  -- #guard_msgs in
+  -- #eval uniq ["a", "a", "b", "b", "c", "a", "b", "c", "c"]
   
-  /--
+  /-
   info: ['a', 'b', 'c']
   -/
-  #guard_msgs in
-  #eval uniq ["a", "a", "a", "b", "b", "b", "c", "c", "c"]
+  -- #guard_msgs in
+  -- #eval uniq ["a", "a", "a", "b", "b", "b", "c", "c", "c"]
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval uniq []
+  -- #guard_msgs in
+  -- #eval uniq []
   
-  /--
+  /-
   info: [None, 'a']
   -/
-  #guard_msgs in
-  #eval uniq [None, "a", "a"]
+  -- #guard_msgs in
+  -- #eval uniq [None, "a", "a"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

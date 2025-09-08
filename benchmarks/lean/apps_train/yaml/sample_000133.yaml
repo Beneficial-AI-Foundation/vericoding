@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given two sequences pushed and popped with distinct values, return true if and only if this could have been the result of a sequence of push and pop operations on an initially empty stack.
   
   Example 1:
@@ -19,6 +20,7 @@ vc-description: |-
   0 <= pushed[i], popped[i] < 1000
   pushed is a permutation of popped.
   pushed and popped have distinct values.
+  -/
 
 vc-preamble: |-
 
@@ -50,23 +52,23 @@ vc-theorems: |-
     nums.toMultiset = popped.toMultiset :=
   sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval validate_stack_sequences [1, 2, 3, 4, 5] [4, 5, 3, 2, 1]
+  -- #guard_msgs in
+  -- #eval validate_stack_sequences [1, 2, 3, 4, 5] [4, 5, 3, 2, 1]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval validate_stack_sequences [1, 2, 3, 4, 5] [4, 3, 5, 1, 2]
+  -- #guard_msgs in
+  -- #eval validate_stack_sequences [1, 2, 3, 4, 5] [4, 3, 5, 1, 2]
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval validate_stack_sequences [1, 2, 3] [1, 2, 3]
+  -- #guard_msgs in
+  -- #eval validate_stack_sequences [1, 2, 3] [1, 2, 3]
 
 vc-postamble: |-
   -- Apps difficulty: interview

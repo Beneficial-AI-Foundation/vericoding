@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   I need some help with my math homework. I have a number of problems I need to return the derivative for.
   
   They will all be of the form:  
@@ -17,6 +18,7 @@ vc-description: |-
     -3x^-2 -> 6x^-3  
   
   If you don't remember how derivatives work, here's a link with some basic rules: https://www.mathsisfun.com/calculus/derivatives-rules.html
+  -/
 
 vc-preamble: |-
 
@@ -45,23 +47,23 @@ vc-theorems: |-
   theorem linear_term (n : Int) (h : n ≠ 0) :
     get_derivative s!"{n}x" = toString n := sorry
   
-  /--
+  /-
   info: '9x^2'
   -/
-  #guard_msgs in
-  #eval get_derivative "3x^3"
+  -- #guard_msgs in
+  -- #eval get_derivative "3x^3"
   
-  /--
+  /-
   info: '-3x^-2'
   -/
-  #guard_msgs in
-  #eval get_derivative "3x^-1"
+  -- #guard_msgs in
+  -- #eval get_derivative "3x^-1"
   
-  /--
+  /-
   info: '-30x^9'
   -/
-  #guard_msgs in
-  #eval get_derivative "-3x^10"
+  -- #guard_msgs in
+  -- #eval get_derivative "-3x^10"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

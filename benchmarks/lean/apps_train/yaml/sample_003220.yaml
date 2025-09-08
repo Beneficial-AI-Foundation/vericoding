@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function that takes in a binary string and returns the equivalent decoded text (the text is ASCII encoded).
   
   Each 8 bits on the binary string represent 1 character on the ASCII table.
@@ -8,6 +9,7 @@ vc-description: |-
   Characters can be in the range from "00000000" to "11111111" (inclusive)
   
   Note: In the case of an empty binary string your function should return an empty string.
+  -/
 
 vc-preamble: |-
 
@@ -37,23 +39,23 @@ vc-theorems: |-
       String.mk [c]))
     binary = binary_again := sorry
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval binary_to_string ""
+  -- #guard_msgs in
+  -- #eval binary_to_string ""
   
-  /--
+  /-
   info: 'Hello'
   -/
-  #guard_msgs in
-  #eval binary_to_string "0100100001100101011011000110110001101111"
+  -- #guard_msgs in
+  -- #eval binary_to_string "0100100001100101011011000110110001101111"
   
-  /--
+  /-
   info: '1011'
   -/
-  #guard_msgs in
-  #eval binary_to_string "00110001001100000011000100110001"
+  -- #guard_msgs in
+  -- #eval binary_to_string "00110001001100000011000100110001"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

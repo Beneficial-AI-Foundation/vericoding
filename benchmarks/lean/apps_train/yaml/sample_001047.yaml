@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Every day, Mike goes to his job by a bus, where he buys a ticket. On the ticket, there is a letter-code that can be represented as a string of upper-case Latin letters.
   Mike believes that the day will be successful in case exactly two different letters in the code alternate.  Otherwise, he believes that the day will be unlucky. Please see note section for formal definition of alternating code.
   You are given a ticket code. Please determine, whether the day will be successful for Mike or not. Print "YES" or "NO" (without quotes) corresponding to the situation.
@@ -35,6 +36,7 @@ vc-description: |-
   Output:
   YES
   NO
+  -/
 
 vc-preamble: |-
 
@@ -64,23 +66,23 @@ vc-theorems: |-
     String.length s = 2 → 
     isAlternatingCode s = (charAt s 0 ≠ charAt s 1) := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_alternating_code "ABABAB"
+  -- #guard_msgs in
+  -- #eval is_alternating_code "ABABAB"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_alternating_code "ABC"
+  -- #guard_msgs in
+  -- #eval is_alternating_code "ABC"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_alternating_code "AA"
+  -- #guard_msgs in
+  -- #eval is_alternating_code "AA"
 
 vc-postamble: |-
   -- Apps difficulty: interview

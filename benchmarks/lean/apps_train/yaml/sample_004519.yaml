@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Be u(n) a sequence beginning with:
   ```
   u[1]  = 1,  u[2]  = 1,  u[3]  = 2,  u[4]  = 3,  u[5]  = 3,  u[6] = 4,
@@ -45,6 +46,7 @@ vc-description: |-
   
   ## Note: Shell
   Shell tests only `lengthSupUk`
+  -/
 
 vc-preamble: |-
   def length_sup_u_k (n : Nat) (k : Nat) : Nat :=
@@ -74,41 +76,41 @@ vc-theorems: |-
     comp n = comp n :=
     sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval length_sup_u_k 23 12
+  -- #guard_msgs in
+  -- #eval length_sup_u_k 23 12
   
-  /--
+  /-
   info: 35
   -/
-  #guard_msgs in
-  #eval length_sup_u_k 50 10
+  -- #guard_msgs in
+  -- #eval length_sup_u_k 50 10
   
-  /--
+  /-
   info: 304
   -/
-  #guard_msgs in
-  #eval length_sup_u_k 500 100
+  -- #guard_msgs in
+  -- #eval length_sup_u_k 500 100
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval comp 23
+  -- #guard_msgs in
+  -- #eval comp 23
   
-  /--
+  /-
   info: 22
   -/
-  #guard_msgs in
-  #eval comp 100
+  -- #guard_msgs in
+  -- #eval comp 100
   
-  /--
+  /-
   info: 63
   -/
-  #guard_msgs in
-  #eval comp 200
+  -- #guard_msgs in
+  -- #eval comp 200
 
 vc-postamble: |-
   -- Apps difficulty: introductory

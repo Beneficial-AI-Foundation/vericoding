@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Spring is interesting season of year. Chef is thinking about different things, but last time he thinks about interesting game - "Strange Matrix". 
   Chef has a matrix that consists of n rows, each contains m elements. Initially, the element aij of matrix equals j. (1 ≤ i ≤ n, 1 ≤ j ≤ m). 
   Then p times some element aij is increased by 1. 
@@ -55,16 +56,17 @@ vc-description: |-
   - The second line: 4-3=1, 3-3=0, 3-1=2. The answer is 3. 
   - The third line: 4-3=1, 3-4=-1, Chef can't move to the first number here. Therefore, the answer is -1. 
   - The fourth line: 5-5=0, 5-2=3, 2-1=1. The answer is 4.
+  -/
 
 vc-preamble: |-
   def Command := Nat × Nat
   
-  /-- Given commands are valid if they are within matrix bounds n×m -/
+  /- Given commands are valid if they are within matrix bounds n×m -/
   
   def valid_commands : Nat → Nat → List Command → Bool
     | n, m, cmds => cmds.all fun c => c.1 ≤ n && c.2 ≤ m
   
-  /-- Solve strange matrix takes dimensions n,m and list of commands, returns list of sums -/
+  /- Solve strange matrix takes dimensions n,m and list of commands, returns list of sums -/
 
 vc-helpers: |-
   -- <vc-helpers>

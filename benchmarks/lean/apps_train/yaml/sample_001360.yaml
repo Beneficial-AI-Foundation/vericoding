@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Motu and Patlu are racing against each other on a circular track of radius $R$. Initially they are at the same point on the track and will run in same direction .The coach ordered them to run $X$ rounds of the circular field. Patlu wants to know how many times they will meet after the race starts and  before any of them finishes $X$ rounds. But he is busy in warm up so he wants you to calculate this. You are given speed of both Motu and Patlu ($A$ and $B$). 
   
   -----Input:-----
@@ -24,6 +25,7 @@ vc-description: |-
   -----Sample Output:-----
   1
   0
+  -/
 
 vc-preamble: |-
   def solve_race_encounters (x : Int) (r speed1 speed2 : Float) : Int :=
@@ -78,23 +80,23 @@ vc-theorems: |-
     solve_race_encounters x r speed1 speed2 = solve_race_encounters x r (2 * speed1) (2 * speed2) :=
   sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve_race_encounters 3 10 2 5
+  -- #guard_msgs in
+  -- #eval solve_race_encounters 3 10 2 5
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve_race_encounters 2 20 5 10
+  -- #guard_msgs in
+  -- #eval solve_race_encounters 2 20 5 10
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve_race_encounters 4 15 3 6
+  -- #guard_msgs in
+  -- #eval solve_race_encounters 4 15 3 6
 
 vc-postamble: |-
   -- Apps difficulty: interview

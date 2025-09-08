@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There is a special square room with mirrors on each of the four walls.  Except for the southwest corner, there are receptors on each of the remaining corners, numbered 0, 1, and 2.
   The square room has walls of length p, and a laser ray from the southwest corner first meets the east wall at a distance q from the 0th receptor.
   Return the number of the receptor that the ray meets first.  (It is guaranteed that the ray will meet a receptor eventually.)
@@ -12,6 +13,7 @@ vc-description: |-
   
   1 <= p <= 1000
   0 <= q <= p
+  -/
 
 vc-preamble: |-
 
@@ -47,23 +49,23 @@ vc-theorems: |-
     mirrorReflection (2*n-1) (2*n-1) = 1 :=
   sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval mirrorReflection 2 1
+  -- #guard_msgs in
+  -- #eval mirrorReflection 2 1
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval mirrorReflection 4 2
+  -- #guard_msgs in
+  -- #eval mirrorReflection 4 2
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval mirrorReflection 5 5
+  -- #guard_msgs in
+  -- #eval mirrorReflection 5 5
 
 vc-postamble: |-
   -- Apps difficulty: interview

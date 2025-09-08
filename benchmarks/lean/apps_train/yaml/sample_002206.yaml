@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given $n$ arrays that can have different sizes. You also have a table with $w$ columns and $n$ rows. The $i$-th array is placed horizontally in the $i$-th row. You can slide each array within its row as long as it occupies several consecutive cells and lies completely inside the table.
   
   You need to find the maximum sum of the integers in the $j$-th column for each $j$ from $1$ to $w$ independently.
@@ -40,6 +41,7 @@ vc-description: |-
   -----Note-----
   
   Illustration for the first example is in the statement.
+  -/
 
 vc-preamble: |-
 
@@ -67,17 +69,17 @@ vc-theorems: |-
     (h2 : k ≤ nums.length) :
     (slidemax nums k).length = nums.length + 1 - k := sorry
   
-  /--
+  /-
   info: [10, 15, 16]
   -/
-  #guard_msgs in
-  #eval solve 3 3 [[3, 2, 4, 8], [2, 2, 5], [2, 6, 3]]
+  -- #guard_msgs in
+  -- #eval solve 3 3 [[3, 2, 4, 8], [2, 2, 5], [2, 6, 3]]
   
-  /--
+  /-
   info: [7, 8]
   -/
-  #guard_msgs in
-  #eval solve 2 2 [[2, 7, 8], [1, -8]]
+  -- #guard_msgs in
+  -- #eval solve 2 2 [[2, 7, 8], [1, -8]]
 
 vc-postamble: |-
   -- Apps difficulty: competition

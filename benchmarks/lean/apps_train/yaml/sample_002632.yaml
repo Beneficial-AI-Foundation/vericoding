@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Cascading Style Sheets (CSS) is a style sheet language used for describing the look and formatting of a document written in a markup language. A style sheet consists of a list of rules. Each rule or rule-set consists of one or more selectors, and a declaration block. Selector describes which element it matches.
   
   Sometimes element is matched to multiple selectors. In this case, element inherits multiple styles, from each rule it matches. Rules can override each other. To solve this problem, each selector has it's own 'specificity' - e.g. weight. The selector with greater specificity overrides the other selector.
@@ -47,6 +48,7 @@ vc-description: |-
   body #john span1, 0, 2
   menu .item #checkout.active1, 2, 1
   #foo div#bar.red .none2, 2, 1
+  -/
 
 vc-preamble: |-
 
@@ -83,23 +85,23 @@ vc-theorems: |-
     let spec := specificity s;
     spec.1 ≥ 0 ∧ spec.2.1 ≥ 0 ∧ spec.2.2 ≥ 0 := sorry
   
-  /--
+  /-
   info: 'body p'
   -/
-  #guard_msgs in
-  #eval compare "body p" "div"
+  -- #guard_msgs in
+  -- #eval compare "body p" "div"
   
-  /--
+  /-
   info: '.red'
   -/
-  #guard_msgs in
-  #eval compare ".red" "div"
+  -- #guard_msgs in
+  -- #eval compare ".red" "div"
   
-  /--
+  /-
   info: '#header'
   -/
-  #guard_msgs in
-  #eval compare "#header" ".main"
+  -- #guard_msgs in
+  -- #eval compare "#header" ".main"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

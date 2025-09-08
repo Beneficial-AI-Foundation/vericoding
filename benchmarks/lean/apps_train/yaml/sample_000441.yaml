@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given two strings S and T, each of which represents a non-negative rational number, return True if and only if they represent the same number. The strings may use parentheses to denote the repeating part of the rational number.
   In general a rational number can be represented using up to three parts: an integer part, a non-repeating part, and a repeating part. The number will be represented in one of the following three ways:
   
@@ -34,6 +35,7 @@ vc-description: |-
   1 <= <IntegerPart>.length <= 4 
   0 <= <NonRepeatingPart>.length <= 4 
   1 <= <RepeatingPart>.length <= 4
+  -/
 
 vc-preamble: |-
 
@@ -70,23 +72,23 @@ vc-theorems: |-
     is_rational_equal s1 s2 = true :=
   sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_rational_equal "0.(52)" "0.5(25)"
+  -- #guard_msgs in
+  -- #eval is_rational_equal "0.(52)" "0.5(25)"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_rational_equal "0.1666(6)" "0.166(66)"
+  -- #guard_msgs in
+  -- #eval is_rational_equal "0.1666(6)" "0.166(66)"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_rational_equal "0.9(9)" "1."
+  -- #guard_msgs in
+  -- #eval is_rational_equal "0.9(9)" "1."
 
 vc-postamble: |-
   -- Apps difficulty: interview

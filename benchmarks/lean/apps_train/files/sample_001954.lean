@@ -1,0 +1,79 @@
+/-
+Igor the analyst has adopted n little bunnies. As we all know, bunnies love carrots. Thus, Igor has bought a carrot to be shared between his bunnies. Igor wants to treat all the bunnies equally, and thus he wants to cut the carrot into n pieces of equal area. 
+
+Formally, the carrot can be viewed as an isosceles triangle with base length equal to 1 and height equal to h. Igor wants to make n - 1 cuts parallel to the base to cut the carrot into n pieces. He wants to make sure that all n pieces have the same area. Can you help Igor determine where to cut the carrot so that each piece have equal area?
+
+ [Image] Illustration to the first example. 
+
+-----Input-----
+
+The first and only line of input contains two space-separated integers, n and h (2 ≤ n ≤ 1000, 1 ≤ h ≤ 10^5).
+
+-----Output-----
+
+The output should contain n - 1 real numbers x_1, x_2, ..., x_{n} - 1. The number x_{i} denotes that the i-th cut must be made x_{i} units away from the apex of the carrot. In addition, 0 < x_1 < x_2 < ... < x_{n} - 1 < h must hold. 
+
+Your output will be considered correct if absolute or relative error of every number in your output doesn't exceed 10^{ - 6}.
+
+Formally, let your answer be a, and the jury's answer be b. Your answer is considered correct if $\frac{|a - b|}{\operatorname{max}(1, b)} \leq 10^{-6}$.
+
+-----Examples-----
+Input
+3 2
+
+Output
+1.154700538379 1.632993161855
+
+Input
+2 100000
+
+Output
+70710.678118654752
+
+-----Note-----
+
+Definition of isosceles triangle: https://en.wikipedia.org/wiki/Isosceles_triangle.
+-/
+
+def calculate_cuts (n: Nat) (h: Float) : Array Float := 
+  sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def calculateAreas (cuts: Array Float) (h: Float) : Array Float :=
+  sorry
+
+theorem calculate_cuts_length {n: Nat} {h: Float} 
+  (h_n: n ≥ 2) (h_h: h > 0) :
+  (calculate_cuts n h).size = n - 1 := 
+  sorry
+
+theorem calculate_cuts_strictly_increasing {n: Nat} {h: Float}
+  (h_n: n ≥ 2) (h_h: h > 0) :
+  ∀ i: Fin ((calculate_cuts n h).size - 1),
+    (calculate_cuts n h)[i.val] < (calculate_cuts n h)[i.val + 1] :=
+  sorry
+
+theorem calculate_cuts_bounds {n: Nat} {h: Float}
+  (h_n: n ≥ 2) (h_h: h > 0) :
+  ∀ i: Fin (calculate_cuts n h).size,
+    0 < (calculate_cuts n h)[i.val] ∧ (calculate_cuts n h)[i.val] < h :=
+  sorry
+
+theorem calculate_cuts_equal_areas {n: Nat} {h: Float}
+  (h_n: n ≥ 2) (h_h: h > 0) :
+  let cuts := calculate_cuts n h
+  let areas := calculateAreas cuts h
+  let expectedArea := h * h / (2 * Float.ofNat n)
+  ∀ a ∈ areas, (a - expectedArea).abs < 1e-6 * expectedArea := 
+  sorry
+
+theorem calculate_cuts_minimum_n (h: Float) (h_h: h > 0) :
+  let cuts := calculate_cuts 2 h
+  have h_size : cuts.size = 1 := by apply calculate_cuts_length; exact Nat.le_refl 2; exact h_h
+  cuts.size = 1 ∧ ((cuts.get ⟨0, by simp [h_size]⟩) - h/Float.sqrt 2).abs < 1e-6 * (h/Float.sqrt 2) :=
+  sorry
+
+-- Apps difficulty: competition
+-- Assurance level: guarded

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Task
   In this kata you'll be given a string of English digits "collapsed" together, like this:
   
@@ -16,6 +17,7 @@ vc-description: |-
   ninethreesixthree -> nine three six three
   fivethreefivesixthreenineonesevenoneeight -> five three five six three nine one seven one eight
   ```
+  -/
 
 vc-preamble: |-
   def NUMBER_WORDS : List String := ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
@@ -52,23 +54,23 @@ vc-theorems: |-
     uncollapse s = "" :=
   sorry
   
-  /--
+  /-
   info: 'three'
   -/
-  #guard_msgs in
-  #eval uncollapse "three"
+  -- #guard_msgs in
+  -- #eval uncollapse "three"
   
-  /--
+  /-
   info: 'eight six'
   -/
-  #guard_msgs in
-  #eval uncollapse "eightsix"
+  -- #guard_msgs in
+  -- #eval uncollapse "eightsix"
   
-  /--
+  /-
   info: 'five four seven'
   -/
-  #guard_msgs in
-  #eval uncollapse "fivefourseven"
+  -- #guard_msgs in
+  -- #eval uncollapse "fivefourseven"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

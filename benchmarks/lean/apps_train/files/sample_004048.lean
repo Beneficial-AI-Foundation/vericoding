@@ -1,0 +1,40 @@
+/-
+You are given an array with several `"even"` words, one `"odd"` word, and some numbers mixed in.
+
+Determine if any of the numbers in the array is the index of the `"odd"` word. If so, return `true`, otherwise `false`.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def odd_ball {α} [BEq α] (xs : List (Sum α String)) : Bool :=
+  sorry
+
+theorem odd_ball_property (base : List (Sum Nat String)) (insert_pos : Nat) (h : insert_pos ≤ base.length) :
+  let test_list := (base.take insert_pos) ++ [Sum.inr "odd"] ++ (base.drop insert_pos)
+  odd_ball test_list = test_list.contains (Sum.inl insert_pos)
+  := sorry
+
+theorem odd_ball_no_odd {α} [BEq α] (xs : List (Sum α String)) (h : ¬xs.contains (Sum.inr "odd")) :
+  odd_ball xs = false := sorry
+
+/-
+info: True
+-/
+-- #guard_msgs in
+-- #eval odd_ball ["even", 4, "even", 7, "even", 55, "even", 6, "even", 10, "odd", 3, "even"]
+
+/-
+info: False
+-/
+-- #guard_msgs in
+-- #eval odd_ball test2
+
+/-
+info: True
+-/
+-- #guard_msgs in
+-- #eval odd_ball test3
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

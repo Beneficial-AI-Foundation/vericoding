@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Background
   There is a message that is circulating via public media that claims a reader can easily read a message where the inner letters of each words is scrambled, as long as the first and last letters remain the same and the word contains all the letters.
   
@@ -19,6 +20,7 @@ vc-description: |-
   5) ignore capitalisation
   
   for reference: http://en.wikipedia.org/wiki/Typoglycemia
+  -/
 
 vc-preamble: |-
   def scramble_words (s : String) : String := sorry
@@ -55,23 +57,23 @@ vc-theorems: |-
     s.data.filter (fun c => ¬(is_alpha c)) = 
     (scramble_words s).data.filter (fun c => ¬(is_alpha c)) := sorry
   
-  /--
+  /-
   info: 'paefilnoorsss'
   -/
-  #guard_msgs in
-  #eval scramble_words "professionals"
+  -- #guard_msgs in
+  -- #eval scramble_words "professionals"
   
-  /--
+  /-
   info: 'caac-dinrrryg'
   -/
-  #guard_msgs in
-  #eval scramble_words "card-carrying"
+  -- #guard_msgs in
+  -- #eval scramble_words "card-carrying"
   
-  /--
+  /-
   info: "you've gotta dacne"
   -/
-  #guard_msgs in
-  #eval scramble_words "you"ve gotta dance"
+  -- #guard_msgs in
+  -- #eval scramble_words "you"ve gotta dance"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

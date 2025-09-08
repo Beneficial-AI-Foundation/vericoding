@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Meanwhile, Candace and Stacy are busy planning to attend the concert of the famous Love Händel. Jeremy will also be attending the event. Therefore, Candace plans to offer the best possible gift to Jeremy.
   Candace has $N$ strings, each of length $M$. Each character of each string can either be a lowercase English letter or the character '#'. She denotes the substring of $i$-$th$ string starting from the $l$-$th$ character and ending with the $r$-$th$ character as $S_{i}[l, r]$. She has to choose a list $a$ of $N - 1$ numbers such that  
   - $1 \leq a_1 \leq a_2 \leq a_3 \leq ... \leq a_{N-1} \leq  M$.
@@ -47,6 +48,7 @@ vc-description: |-
   For test $2$:
   The array $a$ chosen is: $[1, 2, 3, 4]$
   The resulting string $P$ is formed by = $S_{1}[1, 1]$ + $S_{2}[1, 2]$ + $S_{3}[2, 3]$ + $S_{4}[3, 4]$ + $S_{5}[4, 4]$ = pvcbihjz
+  -/
 
 vc-preamble: |-
 
@@ -75,17 +77,17 @@ vc-theorems: |-
     String.get! (find_best_gift_string n m strings) 0 = 
       String.get! (List.head! strings) 0 := sorry
   
-  /--
+  /-
   info: 'xabza'
   -/
-  #guard_msgs in
-  #eval find_best_gift_string 3 3 ["xab", "a#z", "caa"]
+  -- #guard_msgs in
+  -- #eval find_best_gift_string 3 3 ["xab", "a#z", "caa"]
   
-  /--
+  /-
   info: 'pvcbihjz'
   -/
-  #guard_msgs in
-  #eval find_best_gift_string 5 4 ["pyqs", "vcot", "qbiu", "lihj", "uvmz"]
+  -- #guard_msgs in
+  -- #eval find_best_gift_string 5 4 ["pyqs", "vcot", "qbiu", "lihj", "uvmz"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

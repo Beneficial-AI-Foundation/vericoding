@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Accepts a string from the user and print the reverse string as the output without using any built-in function.
   
   -----Input:-----
@@ -13,6 +14,7 @@ vc-description: |-
   
   -----Sample Output:-----
   ycarT
+  -/
 
 vc-preamble: |-
 
@@ -41,23 +43,23 @@ vc-theorems: |-
   theorem reverse_preserves_chars (s : String) (c : Char) :
     s.contains c ↔ (reverseString s).contains c := sorry
   
-  /--
+  /-
   info: 'ycarT'
   -/
-  #guard_msgs in
-  #eval reverse_string "Tracy"
+  -- #guard_msgs in
+  -- #eval reverse_string "Tracy"
   
-  /--
+  /-
   info: 'olleH'
   -/
-  #guard_msgs in
-  #eval reverse_string "Hello"
+  -- #guard_msgs in
+  -- #eval reverse_string "Hello"
   
-  /--
+  /-
   info: 'nohtyP'
   -/
-  #guard_msgs in
-  #eval reverse_string "Python"
+  -- #guard_msgs in
+  -- #eval reverse_string "Python"
 
 vc-postamble: |-
   -- Apps difficulty: interview

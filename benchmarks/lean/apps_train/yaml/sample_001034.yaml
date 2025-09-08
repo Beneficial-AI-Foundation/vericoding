@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef has a strip of length $N$ units and he wants to tile it using $4$ kind of tiles
   
   -A Red tile of $2$ unit length
@@ -33,6 +34,7 @@ vc-description: |-
   
   It can be seen that for a strip of length $2$, there are $6$ possible configurations.     
   $NOTE : $ 2 tiles of 1 unit length are different from 1 tile of 2 unit length.
+  -/
 
 vc-preamble: |-
   def solve_tile_count (n : Nat) : Nat :=
@@ -63,23 +65,23 @@ vc-theorems: |-
     solve_tile_count 4 = 42 := by
     sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval solve_tile_count 2
+  -- #guard_msgs in
+  -- #eval solve_tile_count 2
   
-  /--
+  /-
   info: 16
   -/
-  #guard_msgs in
-  #eval solve_tile_count 3
+  -- #guard_msgs in
+  -- #eval solve_tile_count 3
   
-  /--
+  /-
   info: 42
   -/
-  #guard_msgs in
-  #eval solve_tile_count 4
+  -- #guard_msgs in
+  -- #eval solve_tile_count 4
 
 vc-postamble: |-
   -- Apps difficulty: interview

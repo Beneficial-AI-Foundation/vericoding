@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The numbers 12, 63 and 119 have something in common related with their divisors and their prime factors, let's see it.
   ```
   Numbers PrimeFactorsSum(pfs)        DivisorsSum(ds)              Is ds divisible by pfs
@@ -21,6 +22,7 @@ vc-description: |-
   ds_multof_pfs(20, 120) == [35, 42, 60, 63, 66, 68, 84, 90, 95, 110, 114, 119]
   ```
   Enjoy it!!
+  -/
 
 vc-preamble: |-
   def sqrt (n : Nat) : Nat := sorry

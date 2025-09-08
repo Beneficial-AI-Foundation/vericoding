@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Alice and Bob created $N$ and $M$ recipes, respectively ($N, M \ge 1$), and submitted them to Chef for evaluation. Each recipe is represented by a string containing only lowercase English letters. Let's denote Alice's recipes by $A_1, A_2, \ldots, A_N$ and Bob's recipes by $B_1, B_2, \ldots, B_M$.
   Accidentally, Chef mixed up those recipes ― now, he has $L = N+M$ recipes in a sequence $S_1, S_2, \ldots, S_L$. Thankfully, the recipes created by Alice and Bob are distinguishable from each other. It is well-known that for each recipe $s$ created by Alice, the following property holds, and for each recipe created by Bob, it does not hold: For each $1 \le l < r \le |s|$, the substring $s_l, s_{l+1}, \ldots, s_r$ contains at least as many vowels as consonants. The letters 'a', 'e', 'i', 'o', 'u' are vowels, while the other letters are consonants.
   The score of a candidate who made $K$ recipes is calculated as the product of $\frac{x_c}{fx_c^K}$ for all letters $c$ that occur in at least one of these recipes; here, $x_c$ is the number of recipes which contain the letter $c$ and $fx_c$ is the total number of occurrences of this letter in all $K$ recipes.
@@ -47,6 +48,7 @@ vc-description: |-
   - $sc_A = \frac{x_a}{fx_a^N} \cdot \frac{x_b}{fx_b^N} \cdot \frac{x_c}{fx_c^N} = \frac{2}{4^2} \cdot \frac{1}{1^2} \cdot \frac{1}{1^2} = \frac{1}{8}$
   - $sc_B = \frac{x_a}{fx_a^M} \cdot \frac{x_b}{fx_b^M} \cdot \frac{x_c}{fx_c^M} = \frac{2}{2^2} \cdot \frac{2}{3^2} \cdot \frac{1}{1^2} = \frac{1}{9}$
   - $\frac{sc_A}{sc_B} = \frac{1/8}{1/9} = 1.125$
+  -/
 
 vc-preamble: |-
 

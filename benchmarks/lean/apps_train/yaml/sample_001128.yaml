@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Little Elephant is playing a game with arrays. He is given an array A0, A1, ..., AN−1 of N integers. And then Q queries are given, each containing an integer K. He has to tell how many subarrays satisfy the condition: the function foo returns K when it is applied to the subarray.
   
   In this problem, a subarray is defined as a sequence of continuous elements Ai, Ai+1, ..., Aj  where 0 ≤ i ≤ j ≤ N−1. The function foo, when applied to an array, returns the minimum of all the elements in the array.
@@ -38,6 +39,7 @@ vc-description: |-
   Query 2. Again only the two subarrays [4] and [4] satisfy. Please note that these subarrays (A0 and A4) are considered different.
   Query 3. No subarray satisfies.
   Query 4. The eight subarrays [4, 1], [4, 1, 2], [4, 1, 2, 3], [4, 1, 2, 3, 4], [1], [1, 2], [1, 2, 3] and [1, 2, 3, 4] satisfy.
+  -/
 
 vc-preamble: |-
   def count_subarrays_with_min (arr : List Int) (k : Int) : Nat :=
@@ -98,17 +100,17 @@ vc-theorems: |-
     count_subarrays_with_min arr k ≥ count_subarrays_with_min arr (k+1) :=
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_subarrays_with_min [2, 2] 2
+  -- #guard_msgs in
+  -- #eval count_subarrays_with_min [2, 2] 2
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_subarrays_with_min [3] 3
+  -- #guard_msgs in
+  -- #eval count_subarrays_with_min [3] 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

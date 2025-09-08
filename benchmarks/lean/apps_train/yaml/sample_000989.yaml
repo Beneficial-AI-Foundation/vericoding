@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Vanja and Miksi have already finished everything for this year at their university, so they decided to spend their free time playing a game with a binary sequence $A_1, A_2, \dots, A_N$ (i.e. a sequence containing only integers $0$ and $1$).
   At the beginning of the game, Vanja and Miksi write down the expression $* A_1 * A_2 * A_3 * \ldots * A_N$ (note below that each $*$ is a placeholder and does not denote multiplication).
   The players take turns alternately, starting with Vanja. The game lasts $N$ turns. In each turn, the current player must replace the first (leftmost) remaining $*$ by the sign $+$ or $-$ (or, equivalently, by the operation of addition or subtraction).
@@ -33,6 +34,7 @@ vc-description: |-
   -----Explanation-----
   Example case 1: $K = 1$, so if Vanja replaces the first $*$ by $+$, the value of the final expression will be $V = 1$; then, $K \le |V|$, so the winner is Vanja.
   Example case 2: $K = 5$, but the absolute value of the final expression cannot be greater than $1$. The winner is Miksi.
+  -/
 
 vc-preamble: |-
 
@@ -91,23 +93,23 @@ vc-theorems: |-
     solve n 0 arr = 1 :=
   sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve 2 1 [1, 0]
+  -- #guard_msgs in
+  -- #eval solve 2 1 [1, 0]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve 3 5 [0, 1, 0]
+  -- #guard_msgs in
+  -- #eval solve 3 5 [0, 1, 0]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve 4 2 [1, 1, 0, 1]
+  -- #guard_msgs in
+  -- #eval solve 4 2 [1, 1, 0, 1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

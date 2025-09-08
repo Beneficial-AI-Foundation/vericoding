@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef has  $N$ doggo (dogs) , Lets number them $1$ to $N$.
   
   Chef decided to build houses for each, but he soon realizes that keeping so many dogs at one place may be messy. So he decided to divide them into several groups called doggo communities. Let the total no. of groups be $K$ . In a community, paths between pairs of houses can be made so that doggo can play with each other. But there cannot be a path between two houses of different communities for sure. Chef wanted to make maximum no. of paths such that the total path is not greater then $K$.
@@ -38,6 +39,7 @@ vc-description: |-
   or  [1 - 2 - 3]  , [ 4 ]
   
   In both cases the maximum possible path is 2.
+  -/
 
 vc-preamble: |-
 
@@ -74,23 +76,23 @@ vc-theorems: |-
     max_doggo_paths 6 = 3 :=
   sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval max_doggo_paths 4
+  -- #guard_msgs in
+  -- #eval max_doggo_paths 4
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval max_doggo_paths 10
+  -- #guard_msgs in
+  -- #eval max_doggo_paths 10
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval max_doggo_paths 1
+  -- #guard_msgs in
+  -- #eval max_doggo_paths 1
 
 vc-postamble: |-
   -- Apps difficulty: interview

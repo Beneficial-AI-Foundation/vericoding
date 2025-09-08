@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We have a tree with N vertices. The vertices are numbered 1, 2, ..., N. The i-th (1 ≦ i ≦ N - 1) edge connects the two vertices A_i and B_i.
   Takahashi wrote integers into K of the vertices. Specifically, for each 1 ≦ j ≦ K, he wrote the integer P_j into vertex V_j. The remaining vertices are left empty. After that, he got tired and fell asleep.
   Then, Aoki appeared. He is trying to surprise Takahashi by writing integers into all empty vertices so that the following condition is satisfied:
@@ -58,6 +59,7 @@ vc-description: |-
   8
   7
   7
+  -/
 
 vc-preamble: |-
   def solve_tree_labeling (N : Nat) (edges : List (Nat × Nat)) (K : Nat) 

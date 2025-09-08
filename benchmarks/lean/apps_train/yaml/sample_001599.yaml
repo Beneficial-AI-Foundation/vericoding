@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # How many ways can you make the sum of a number?
   
   From wikipedia: https://en.wikipedia.org/wiki/Partition_(number_theory)#
@@ -35,6 +36,7 @@ vc-description: |-
   ```
   
   See [here](http://www.numericana.com/data/partition.htm) for more examples.
+  -/
 
 vc-preamble: |-
 
@@ -82,41 +84,41 @@ vc-theorems: |-
     (h1 : n > 275 ∨ (n > 5 ∧ n ≠ 20 ∧ n ≠ 30 ∧ n ≠ 40 ∧ n ≠ 43 ∧ n ≠ 60 ∧ n ≠ 70 ∧ n ≠ 90 ∧ n ≠ 200 ∧ n ≠ 275)) :
     exp_sum n = 0 := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval exp_sum 1
+  -- #guard_msgs in
+  -- #eval exp_sum 1
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval exp_sum 2
+  -- #guard_msgs in
+  -- #eval exp_sum 2
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval exp_sum 3
+  -- #guard_msgs in
+  -- #eval exp_sum 3
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval exp_sum 4
+  -- #guard_msgs in
+  -- #eval exp_sum 4
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval exp_sum 5
+  -- #guard_msgs in
+  -- #eval exp_sum 5
   
-  /--
+  /-
   info: 627
   -/
-  #guard_msgs in
-  #eval exp_sum 20
+  -- #guard_msgs in
+  -- #eval exp_sum 20
 
 vc-postamble: |-
   -- Apps difficulty: interview

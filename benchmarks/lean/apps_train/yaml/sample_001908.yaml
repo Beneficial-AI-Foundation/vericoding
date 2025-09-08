@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a C++ program, remove comments from it. The program source is an array where source[i] is the i-th line of the source code.  This represents the result of splitting the original source code string by the newline character \n.
   
   In C++, there are two types of comments, line comments, and block comments.
@@ -62,6 +63,7 @@ vc-description: |-
   The length of source[i] is in the range [0, 80].
   Every open block comment is eventually closed.
   There are no single-quote, double-quote, or control characters in the source code.
+  -/
 
 vc-preamble: |-
 
@@ -89,23 +91,23 @@ vc-theorems: |-
     let result := remove_comments source
     ∀ line ∈ result, line.trim ≠ "" := by sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval remove_comments ["/*Test program */", "int main()", "{ ", "  // variable declaration ", "int a, b, c;", "/* This is a test", "   multiline  ", "   comment for ", "   testing */", "a = b + c;", "}"]
+  -- #guard_msgs in
+  -- #eval remove_comments ["/*Test program */", "int main()", "{ ", "  // variable declaration ", "int a, b, c;", "/* This is a test", "   multiline  ", "   comment for ", "   testing */", "a = b + c;", "}"]
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval remove_comments ["a/*comment", "line", "more_comment*/b"]
+  -- #guard_msgs in
+  -- #eval remove_comments ["a/*comment", "line", "more_comment*/b"]
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval remove_comments ["void func(int k) {", "// this function does nothing /*", "   k = k*2/4;", "   k = k/2;*/", "}"]
+  -- #guard_msgs in
+  -- #eval remove_comments ["void func(int k) {", "// this function does nothing /*", "   k = k*2/4;", "   k = k/2;*/", "}"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

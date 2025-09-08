@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The [Chinese zodiac](https://en.wikipedia.org/wiki/Chinese_zodiac) is a repeating cycle of 12 years, with each year being represented by an animal and its reputed attributes. The lunar calendar is divided into cycles of 60 years each, and each year has a combination of an animal and an element. There are 12 animals and 5 elements; the animals change each year, and the elements change every 2 years. The current cycle was initiated in the year of 1984 which was the year of the Wood Rat.
   
   Since the current calendar is Gregorian, I will only be using years from the epoch 1924.
@@ -18,6 +19,7 @@ vc-description: |-
   ```['Wood', 'Fire', 'Earth', 'Metal', 'Water']```
   
   Tell me your zodiac sign and element in the comments. Happy coding :)
+  -/
 
 vc-preamble: |-
   def chinese_zodiac (year : Int) : String := sorry
@@ -50,23 +52,23 @@ vc-theorems: |-
   theorem deterministic {year : Int} (h : year ≥ 1900 ∧ year ≤ 2100) :
     chinese_zodiac year = chinese_zodiac year := sorry
   
-  /--
+  /-
   info: 'Wood Snake'
   -/
-  #guard_msgs in
-  #eval chinese_zodiac 1965
+  -- #guard_msgs in
+  -- #eval chinese_zodiac 1965
   
-  /--
+  /-
   info: 'Earth Tiger'
   -/
-  #guard_msgs in
-  #eval chinese_zodiac 1998
+  -- #guard_msgs in
+  -- #eval chinese_zodiac 1998
   
-  /--
+  /-
   info: 'Fire Monkey'
   -/
-  #guard_msgs in
-  #eval chinese_zodiac 2016
+  -- #guard_msgs in
+  -- #eval chinese_zodiac 2016
 
 vc-postamble: |-
   -- Apps difficulty: introductory

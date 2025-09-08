@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   When provided with a number between 0-9, return it in words.
   
   Input :: 1
@@ -6,6 +7,7 @@ vc-description: |-
   Output :: "One".
   
   If your language supports it, try using a switch statement.
+  -/
 
 vc-preamble: |-
 
@@ -31,23 +33,23 @@ vc-theorems: |-
   theorem switch_it_up_injective {n1 n2 : Nat} (h1 : n1 < 10) (h2 : n2 < 10) :
     n1 ≠ n2 → switch_it_up n1 ≠ switch_it_up n2 := sorry
   
-  /--
+  /-
   info: 'Zero'
   -/
-  #guard_msgs in
-  #eval switch_it_up 0
+  -- #guard_msgs in
+  -- #eval switch_it_up 0
   
-  /--
+  /-
   info: 'Five'
   -/
-  #guard_msgs in
-  #eval switch_it_up 5
+  -- #guard_msgs in
+  -- #eval switch_it_up 5
   
-  /--
+  /-
   info: 'Nine'
   -/
-  #guard_msgs in
-  #eval switch_it_up 9
+  -- #guard_msgs in
+  -- #eval switch_it_up 9
 
 vc-postamble: |-
   -- Apps difficulty: introductory

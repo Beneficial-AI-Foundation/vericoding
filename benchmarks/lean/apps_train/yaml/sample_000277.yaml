@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You have an initial power P, an initial score of 0 points, and a bag of tokens.
   Each token can be used at most once, has a value token[i], and has potentially two ways to use it.
   
@@ -24,6 +25,7 @@ vc-description: |-
   tokens.length <= 1000
   0 <= tokens[i] < 10000
   0 <= P < 10000
+  -/
 
 vc-preamble: |-
 
@@ -55,23 +57,23 @@ vc-theorems: |-
     score ≤ 1 ∧ score ≥ 0 ∧ score = (if token ≤ power then 1 else 0) :=
     sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval bag_of_tokens_score [100] 50
+  -- #guard_msgs in
+  -- #eval bag_of_tokens_score [100] 50
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval bag_of_tokens_score [100, 200] 150
+  -- #guard_msgs in
+  -- #eval bag_of_tokens_score [100, 200] 150
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval bag_of_tokens_score [100, 200, 300, 400] 200
+  -- #guard_msgs in
+  -- #eval bag_of_tokens_score [100, 200, 300, 400] 200
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    Given a position of a knight on the standard chessboard, find the number of different moves the knight can perform.
   
@@ -23,6 +24,7 @@ vc-description: |-
       String consisting of letter+number - coordinates of the knight on an 8 × 8 chessboard in chess notation.
   
    - `[output]` an integer
+  -/
 
 vc-preamble: |-
 
@@ -46,23 +48,23 @@ vc-theorems: |-
   theorem center_max_moves :
     chess_knight "d4" = 8 ∧ chess_knight "e4" = 8 := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval chess_knight "a1"
+  -- #guard_msgs in
+  -- #eval chess_knight "a1"
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval chess_knight "c2"
+  -- #guard_msgs in
+  -- #eval chess_knight "c2"
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval chess_knight "d4"
+  -- #guard_msgs in
+  -- #eval chess_knight "d4"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

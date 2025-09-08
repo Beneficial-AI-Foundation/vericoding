@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array of 2n integers, your task is to group these integers into n pairs of integer, say (a1, b1), (a2, b2), ..., (an, bn) which makes sum of min(ai, bi) for all i from 1 to n as large as possible.
   
   Example 1:
@@ -12,6 +13,7 @@ vc-description: |-
   
   n is a positive integer, which is in the range of [1, 10000].
   All the integers in the array will be in the range of [-10000, 10000].
+  -/
 
 vc-preamble: |-
   def array_pair_sum (nums : List Int) : Int := sorry
@@ -50,23 +52,23 @@ vc-theorems: |-
     (h2 : ∀ x ∈ nums, x > 0) :
     array_pair_sum nums > 0 := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval array_pair_sum [1, 4, 3, 2]
+  -- #guard_msgs in
+  -- #eval array_pair_sum [1, 4, 3, 2]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval array_pair_sum [1, 2, 3, 4]
+  -- #guard_msgs in
+  -- #eval array_pair_sum [1, 2, 3, 4]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval array_pair_sum [1, 1, 2, 2]
+  -- #guard_msgs in
+  -- #eval array_pair_sum [1, 1, 2, 2]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

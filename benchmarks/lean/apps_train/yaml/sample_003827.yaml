@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Create a function that takes a string and returns that
   string with the first half lowercased and the last half uppercased.
   
@@ -10,6 +11,7 @@ vc-description: |-
       //         --^-- midpoint  
       //         bri    first half (lower-cased)  
       //            AN second half (upper-cased)
+  -/
 
 vc-preamble: |-
 
@@ -35,23 +37,23 @@ vc-theorems: |-
     let half := (s.length + 1) / 2;
     String.toUpper (String.drop (s.sillycase) half) = String.toUpper (String.drop s half) := sorry
   
-  /--
+  /-
   info: 'fooBAR'
   -/
-  #guard_msgs in
-  #eval sillycase "foobar"
+  -- #guard_msgs in
+  -- #eval sillycase "foobar"
   
-  /--
+  /-
   info: 'briAN'
   -/
-  #guard_msgs in
-  #eval sillycase "brian"
+  -- #guard_msgs in
+  -- #eval sillycase "brian"
   
-  /--
+  /-
   info: 'javasCRIPT'
   -/
-  #guard_msgs in
-  #eval sillycase "jAvASCript"
+  -- #guard_msgs in
+  -- #eval sillycase "jAvASCript"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   An array is defined to be `odd-heavy` if it contains at least one odd element and every element whose value is `odd` is greater than 
   every even-valued element. 
   
@@ -12,6 +13,7 @@ vc-description: |-
   
   ```
   write a function called `isOddHeavy` or `is_odd_heavy` that accepts an integer array and returns `true` if the array is `odd-heavy` else return `false`.
+  -/
 
 vc-preamble: |-
 
@@ -39,23 +41,23 @@ vc-theorems: |-
      ∀ o ∈ lst, o % 2 ≠ 0 → o > e) :=
   sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_odd_heavy [0, 2, 19, 4, 4]
+  -- #guard_msgs in
+  -- #eval is_odd_heavy [0, 2, 19, 4, 4]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_odd_heavy [0, 0, 0, 0]
+  -- #guard_msgs in
+  -- #eval is_odd_heavy [0, 0, 0, 0]
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_odd_heavy [-1, -2, 21]
+  -- #guard_msgs in
+  -- #eval is_odd_heavy [-1, -2, 21]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

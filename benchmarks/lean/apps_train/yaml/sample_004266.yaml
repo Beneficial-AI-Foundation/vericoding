@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You get any card as an argument. Your task is to return a suit of this card.
   
   Our deck (is preloaded):
@@ -15,6 +16,7 @@ vc-description: |-
   ('3H') -> return 'hearts'
   ('3S') -> return 'spades'
   ```
+  -/
 
 vc-preamble: |-
   def valid_suits := ["C", "S", "D", "H"]
@@ -43,23 +45,23 @@ vc-theorems: |-
     ¬∃ result, define_suit card = result :=
     sorry
   
-  /--
+  /-
   info: 'clubs'
   -/
-  #guard_msgs in
-  #eval define_suit "3C"
+  -- #guard_msgs in
+  -- #eval define_suit "3C"
   
-  /--
+  /-
   info: 'spades'
   -/
-  #guard_msgs in
-  #eval define_suit "QS"
+  -- #guard_msgs in
+  -- #eval define_suit "QS"
   
-  /--
+  /-
   info: 'hearts'
   -/
-  #guard_msgs in
-  #eval define_suit "JH"
+  -- #guard_msgs in
+  -- #eval define_suit "JH"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

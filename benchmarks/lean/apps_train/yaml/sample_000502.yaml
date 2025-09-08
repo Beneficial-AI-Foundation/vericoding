@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We have a tree with N vertices, whose i-th edge connects Vertex u_i and Vertex v_i.
   Vertex i has an integer a_i written on it.
   For every integer k from 1 through N, solve the following problem:
@@ -51,6 +52,7 @@ vc-description: |-
   3
   
   For example, the sequence A obtained from the shortest path from Vertex 1 to Vertex 5 is 1,2,5,3,4. Its longest increasing subsequence is A_1, A_2, A_4, A_5, with the length of 4.
+  -/
 
 vc-preamble: |-
 

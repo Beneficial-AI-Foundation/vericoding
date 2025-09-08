@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function `count_vowels` to count the number of vowels in a given string.
   
   ### Notes:
@@ -14,6 +15,7 @@ vc-description: |-
   
   count_vowels(12) => None
   ```
+  -/
 
 vc-preamble: |-
 
@@ -38,23 +40,23 @@ vc-theorems: |-
     count_vowels "" = some 0 := by
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_vowels "abcdefg"
+  -- #guard_msgs in
+  -- #eval count_vowels "abcdefg"
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval count_vowels "aAbcdeEfg"
+  -- #guard_msgs in
+  -- #eval count_vowels "aAbcdeEfg"
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval count_vowels 12
+  -- #guard_msgs in
+  -- #eval count_vowels 12
 
 vc-postamble: |-
   -- Apps difficulty: introductory

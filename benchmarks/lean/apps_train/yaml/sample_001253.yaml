@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef has just started Programming, he is in first year of Engineering. Chef is reading about Relational Operators. 
   
   Relational Operators are operators which check relatioship between two values. Given two numerical values A and B you need to help chef in finding the relationship between them that is, 
@@ -34,6 +35,7 @@ vc-description: |-
   
   -----Explanation-----
   Example case 1. In this example 1 as 10 is lesser than 20.
+  -/
 
 vc-preamble: |-
 
@@ -74,23 +76,23 @@ vc-theorems: |-
       → check_relation a c = RelationType.greater)
     := sorry
   
-  /--
+  /-
   info: ['<', '>', '=']
   -/
-  #guard_msgs in
-  #eval solve_multiple_testcases [(10, 20), (20, 10), (10, 10)]
+  -- #guard_msgs in
+  -- #eval solve_multiple_testcases [(10, 20), (20, 10), (10, 10)]
   
-  /--
+  /-
   info: ['<']
   -/
-  #guard_msgs in
-  #eval solve_multiple_testcases [(5, 7)]
+  -- #guard_msgs in
+  -- #eval solve_multiple_testcases [(5, 7)]
   
-  /--
+  /-
   info: ['=']
   -/
-  #guard_msgs in
-  #eval solve_multiple_testcases [(1000000000, 1000000000)]
+  -- #guard_msgs in
+  -- #eval solve_multiple_testcases [(1000000000, 1000000000)]
 
 vc-postamble: |-
   -- Apps difficulty: interview

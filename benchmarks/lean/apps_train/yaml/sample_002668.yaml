@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The Fibonacci numbers are the numbers in the following integer sequence (Fn):
   >0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, ...
   
@@ -44,6 +45,7 @@ vc-description: |-
   ### Note:
   
   - You can see examples for your language in "Sample Tests".
+  -/
 
 vc-preamble: |-
 
@@ -77,23 +79,23 @@ vc-theorems: |-
     (¬isExact → a * b > n) ∧
     (¬isExact → ∃ k, fib k = a ∧ fib (k-1) * fib k < n) := sorry
   
-  /--
+  /-
   info: [21, 34, True]
   -/
-  #guard_msgs in
-  #eval productFib 714
+  -- #guard_msgs in
+  -- #eval productFib 714
   
-  /--
+  /-
   info: [34, 55, False]
   -/
-  #guard_msgs in
-  #eval productFib 800
+  -- #guard_msgs in
+  -- #eval productFib 800
   
-  /--
+  /-
   info: [0, 1, True]
   -/
-  #guard_msgs in
-  #eval productFib 0
+  -- #guard_msgs in
+  -- #eval productFib 0
 
 vc-postamble: |-
   -- Apps difficulty: introductory

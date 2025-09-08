@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array of integers and an integer k, find out whether there are two distinct indices i and j in the array such that nums[i] = nums[j] and the absolute difference between i and j is at most k.
   
   Example 1:
@@ -15,6 +16,7 @@ vc-description: |-
   
   Input: nums = [1,2,3,1,2,3], k = 2
   Output: false
+  -/
 
 vc-preamble: |-
 
@@ -47,23 +49,23 @@ vc-theorems: |-
     containsNearbyDuplicate nums k = 
       (∃ i j, i < nums.length ∧ j < nums.length ∧ i ≠ j ∧ nums[i]! = nums[j]!) := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval contains_nearby_duplicate [1, 2, 3, 1] 3
+  -- #guard_msgs in
+  -- #eval contains_nearby_duplicate [1, 2, 3, 1] 3
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval contains_nearby_duplicate [1, 0, 1, 1] 1
+  -- #guard_msgs in
+  -- #eval contains_nearby_duplicate [1, 0, 1, 1] 1
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval contains_nearby_duplicate [1, 2, 3, 1, 2, 3] 2
+  -- #guard_msgs in
+  -- #eval contains_nearby_duplicate [1, 2, 3, 1, 2, 3] 2
 
 vc-postamble: |-
   -- Apps difficulty: introductory

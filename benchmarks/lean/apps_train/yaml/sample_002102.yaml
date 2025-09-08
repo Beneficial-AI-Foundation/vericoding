@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are some ambiguities when one writes Berland names with the letters of the Latin alphabet.
   
   For example, the Berland sound u can be written in the Latin alphabet as "u", and can be written as "oo". For this reason, two words "ulyana" and "oolyana" denote the same name.
@@ -70,6 +71,7 @@ vc-description: |-
   There are five groups of words in the second example. Words in each group denote same name:  "hariton", "kkkhariton", "khariton"  "hkariton"  "buoi", "boooi", "boui"  "bui"  "boi" 
   
   In the third example the words are equal, so they denote the same name.
+  -/
 
 vc-preamble: |-
   def count_distinct_names (words: List String) : Nat := sorry
@@ -78,15 +80,15 @@ vc-preamble: |-
     let result := count_distinct_names words
     result ≤ words.length ∧ result ≥ 1 := sorry
   
-  /-- Helper function to process a string by replacing kh sequences -/
+  /- Helper function to process a string by replacing kh sequences -/
   
   def processKh (s: String) : String := sorry
   
-  /-- Helper function to process a string by replacing u with oo -/
+  /- Helper function to process a string by replacing u with oo -/
   
   def processU (s: String) : String := sorry
   
-  /-- Helper function to fully process a string with all replacements -/
+  /- Helper function to fully process a string with all replacements -/
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -99,23 +101,23 @@ vc-definitions: |-
     l.foldl (fun acc x => if acc.elem x then acc else x :: acc) []
 
 vc-theorems: |-
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval count_distinct_names ["mihail", "oolyana", "kooooper", "hoon", "ulyana", "koouper", "mikhail", "khun", "kuooper", "kkkhoon"]
+  -- #guard_msgs in
+  -- #eval count_distinct_names ["mihail", "oolyana", "kooooper", "hoon", "ulyana", "koouper", "mikhail", "khun", "kuooper", "kkkhoon"]
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval count_distinct_names ["hariton", "hkariton", "buoi", "kkkhariton", "boooi", "bui", "khariton", "boui", "boi"]
+  -- #guard_msgs in
+  -- #eval count_distinct_names ["hariton", "hkariton", "buoi", "kkkhariton", "boooi", "bui", "khariton", "boui", "boi"]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_distinct_names ["alex", "alex"]
+  -- #guard_msgs in
+  -- #eval count_distinct_names ["alex", "alex"]
 
 vc-postamble: |-
   -- Apps difficulty: competition

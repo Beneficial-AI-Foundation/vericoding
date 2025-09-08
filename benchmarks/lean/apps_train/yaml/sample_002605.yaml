@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   An Ironman Triathlon is one of a series of long-distance triathlon races organized by the World Triathlon Corporaion (WTC).
   It consists of a 2.4-mile swim, a 112-mile bicycle ride and a marathon (26.2-mile) (run, raced in that order and without a break. It hurts... trust me.
   
@@ -17,6 +18,7 @@ vc-description: |-
   Finally, if the athlete has completed te distance, return `"You're done! Stop running!"`.
   
   All distance should be calculated to two decimal places.
+  -/
 
 vc-preamble: |-
   def SWIM_DIST : Float := 2.4
@@ -61,23 +63,23 @@ vc-theorems: |-
     TOTAL_DIST - 10 ≤ distance → distance < TOTAL_DIST →
     i_tri distance = Sum.inr ("Run", "Nearly there!") := sorry
   
-  /--
+  /-
   info: {'Bike': '104.60 to go!'}
   -/
-  #guard_msgs in
-  #eval i_tri 36
+  -- #guard_msgs in
+  -- #eval i_tri 36
   
-  /--
+  /-
   info: {'Swim': '138.60 to go!'}
   -/
-  #guard_msgs in
-  #eval i_tri 2
+  -- #guard_msgs in
+  -- #eval i_tri 2
   
-  /--
+  /-
   info: "You're done! Stop running!"
   -/
-  #guard_msgs in
-  #eval i_tri 151
+  -- #guard_msgs in
+  -- #eval i_tri 151
 
 vc-postamble: |-
   -- Apps difficulty: introductory

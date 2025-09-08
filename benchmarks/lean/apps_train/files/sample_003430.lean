@@ -1,0 +1,48 @@
+/-
+An array is called `zero-balanced` if its elements sum to `0` and for each positive element `n`, there exists another element that is the negative of `n`. Write a function named `ìsZeroBalanced` that returns `true` if its argument is `zero-balanced` array, else return `false`. Note that an `empty array` will not sum to `zero`.
+-/
+
+def List.sum : List Int → Int 
+  | [] => 0
+  | x::xs => x + xs.sum
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def isZeroBalanced (arr : List Int) : Bool := sorry
+
+theorem empty_array_not_balanced {arr : List Int} :
+  arr = [] → ¬(isZeroBalanced arr) := sorry
+
+theorem balanced_implies_sum_zero {arr : List Int} :
+  isZeroBalanced arr → (arr.sum = 0) := sorry
+
+theorem balanced_implies_equal_frequencies {arr : List Int} :
+  isZeroBalanced arr → ∀ x, (List.countP (· = x) arr) = (List.countP (· = -x) arr) := sorry 
+
+theorem all_zeros_array_balanced {arr : List Int} :
+  arr ≠ [] → (∀ x ∈ arr, x = 0) → isZeroBalanced arr := sorry
+
+theorem reverse_preserves_balance {arr : List Int} :
+  isZeroBalanced arr → isZeroBalanced arr.reverse := sorry
+
+/-
+info: False
+-/
+-- #guard_msgs in
+-- #eval is_zero_balanced []
+
+/-
+info: True
+-/
+-- #guard_msgs in
+-- #eval is_zero_balanced [0, 1, -1]
+
+/-
+info: False
+-/
+-- #guard_msgs in
+-- #eval is_zero_balanced [3, -2, -1]
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

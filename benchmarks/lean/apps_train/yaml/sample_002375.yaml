@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given two strings A and B of lowercase letters, return true if you can swap two letters in A so the result is equal to B, otherwise, return false.
   Swapping letters is defined as taking two indices i and j (0-indexed) such that i != j and swapping the characters at A[i] and A[j]. For example, swapping at indices 0 and 2 in "abcd" results in "cbad".
   
@@ -30,6 +31,7 @@ vc-description: |-
   0 <= A.length <= 20000
   0 <= B.length <= 20000
   A and B consist of lowercase letters.
+  -/
 
 vc-preamble: |-
 
@@ -59,23 +61,23 @@ vc-theorems: |-
     let swapped := String.mk (chars.set 0 (chars.get! 1) |>.set 1 (chars.get! 0))
     buddy_strings s swapped := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval buddy_strings "ab" "ba"
+  -- #guard_msgs in
+  -- #eval buddy_strings "ab" "ba"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval buddy_strings "ab" "ab"
+  -- #guard_msgs in
+  -- #eval buddy_strings "ab" "ab"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval buddy_strings "aa" "aa"
+  -- #guard_msgs in
+  -- #eval buddy_strings "aa" "aa"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

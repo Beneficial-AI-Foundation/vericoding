@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Create a function that accepts 3 inputs, a string, a starting location, and a length.  The function needs to simulate the string endlessly repeating in both directions and return a substring beginning at the starting location and continues for length.
   
   Example:
@@ -22,6 +23,7 @@ vc-description: |-
   ```
   
   A negative length needs to include the starting postion and return the characters to the left of the starting position.
+  -/
 
 vc-preamble: |-
 
@@ -54,23 +56,23 @@ vc-theorems: |-
     (h : length > 0) :
     endlessString s start length = endlessString s (start + s.length) length := sorry
   
-  /--
+  /-
   info: 'yzxyzx'
   -/
-  #guard_msgs in
-  #eval endless_string "xyz" -23 6
+  -- #guard_msgs in
+  -- #eval endless_string "xyz" -23 6
   
-  /--
+  /-
   info: 'xyzx'
   -/
-  #guard_msgs in
-  #eval endless_string "xyz" 0 4
+  -- #guard_msgs in
+  -- #eval endless_string "xyz" 0 4
   
-  /--
+  /-
   info: 'zxyz'
   -/
-  #guard_msgs in
-  #eval endless_string "xyz" -4 -4
+  -- #guard_msgs in
+  -- #eval endless_string "xyz" -4 -4
 
 vc-postamble: |-
   -- Apps difficulty: introductory

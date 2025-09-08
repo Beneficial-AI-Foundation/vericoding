@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A sequence of integers ($a_1, a_2, \ldots, a_k$) is said to be UpDown, if these inequalities hold true:
   - $a_1 \le a_2$
   - $a_2 \ge a_3$
@@ -40,6 +41,7 @@ vc-description: |-
   -----Explanation-----
   Testcase 1: The original sequence is (100, 1, 10, 3, 20, 25, 24). Suppose you insert the element 5 between the elements 20 and 25, you will get the new sequence (100, 1, 10, 3, 20, 5, 25, 24). The longest UpDown subsegment of this sequence is (1, 10, 3, 20, 5, 25, 24), whose length is 7. You can check that you cannot do any better, and hence the answer is 7.
   Testcase 2: The original sequence is (3, 3, 2, 4, 1). Suppose you insert the element 4 at the end, you will get the new sequence (3, 3, 2, 4, 1, 4). This entire sequence is UpDown, and so the longest UpDown subsegment of this sequence is (3, 3, 2, 4, 1, 4), whose length is 6. You can check that you cannot do any better, and hence the answer is 6.
+  -/
 
 vc-preamble: |-
 
@@ -76,23 +78,23 @@ vc-theorems: |-
     find_updown_length n arr ≥ (n + 1) / 2 :=
   sorry
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval find_updown_length 7 [100, 1, 10, 3, 20, 25, 24]
+  -- #guard_msgs in
+  -- #eval find_updown_length 7 [100, 1, 10, 3, 20, 25, 24]
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval find_updown_length 5 [3, 3, 2, 4, 1]
+  -- #guard_msgs in
+  -- #eval find_updown_length 5 [3, 3, 2, 4, 1]
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval find_updown_length 4 [1, 2, 1, 3]
+  -- #guard_msgs in
+  -- #eval find_updown_length 4 [1, 2, 1, 3]
 
 vc-postamble: |-
   -- Apps difficulty: interview

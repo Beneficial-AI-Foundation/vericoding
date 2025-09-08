@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    You are given a regular array `arr`. Let's call a `step` the difference between two adjacent elements. 
   
@@ -43,6 +44,7 @@ vc-description: |-
    - `[output]` an integer
   
    The sum of sequences.
+  -/
 
 vc-preamble: |-
   def isArithmeticSequence (arr : List Int) : Bool :=
@@ -82,23 +84,23 @@ vc-theorems: |-
     (arr[i]! - arr[i+1]! = arr[i+1]! - arr[i+2]!) :=
   sorry
   
-  /--
+  /-
   info: 639
   -/
-  #guard_msgs in
-  #eval sum_of_regular_numbers [54, 70, 86, 1, -2, -5, 0, 5, 78, 145, 212, 15]
+  -- #guard_msgs in
+  -- #eval sum_of_regular_numbers [54, 70, 86, 1, -2, -5, 0, 5, 78, 145, 212, 15]
   
-  /--
+  /-
   info: 1200
   -/
-  #guard_msgs in
-  #eval sum_of_regular_numbers [7, 2, 3, 2, -2, 400, 802]
+  -- #guard_msgs in
+  -- #eval sum_of_regular_numbers [7, 2, 3, 2, -2, 400, 802]
   
-  /--
+  /-
   info: -13994
   -/
-  #guard_msgs in
-  #eval sum_of_regular_numbers [-1, 7000, 1, -6998, -13997]
+  -- #guard_msgs in
+  -- #eval sum_of_regular_numbers [-1, 7000, 1, -6998, -13997]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

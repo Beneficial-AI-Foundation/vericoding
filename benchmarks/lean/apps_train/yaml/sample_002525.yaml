@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In the world of birding there are four-letter codes for the common names of birds. These codes are created by some simple rules:
   
   * If the bird's name has only one word, the code takes the first four letters of that word. 
@@ -20,6 +21,7 @@ vc-description: |-
   If the input array is: `["Black-Capped Chickadee", "Common Tern"]`
   
   The return array would be: `["BCCH", "COTE"]`
+  -/
 
 vc-preamble: |-
 
@@ -48,23 +50,23 @@ vc-theorems: |-
     bird_code ["Black-Capped Chickadee", "Common Tern", "American Redstart"] = 
     ["BCCH", "COTE", "AMRE"] := sorry
   
-  /--
+  /-
   info: ['BCCH', 'COTE']
   -/
-  #guard_msgs in
-  #eval bird_code ["Black-Capped Chickadee", "Common Tern"]
+  -- #guard_msgs in
+  -- #eval bird_code ["Black-Capped Chickadee", "Common Tern"]
   
-  /--
+  /-
   info: ['AMRE', 'NOCA', 'PIGR']
   -/
-  #guard_msgs in
-  #eval bird_code ["American Redstart", "Northern Cardinal", "Pine Grosbeak"]
+  -- #guard_msgs in
+  -- #eval bird_code ["American Redstart", "Northern Cardinal", "Pine Grosbeak"]
   
-  /--
+  /-
   info: ['GCFL', 'BOBO', 'ESOW']
   -/
-  #guard_msgs in
-  #eval bird_code ["Great Crested Flycatcher", "Bobolink", "Eastern Screech Owl"]
+  -- #guard_msgs in
+  -- #eval bird_code ["Great Crested Flycatcher", "Bobolink", "Eastern Screech Owl"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

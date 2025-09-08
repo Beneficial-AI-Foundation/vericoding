@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Assume `"#"` is like a backspace in string. This means that string `"a#bc#d"` actually is `"bd"`
   
   Your task is to process a string with `"#"` symbols.
@@ -11,6 +12,7 @@ vc-description: |-
   "#######"       ==>  ""
   ""              ==>  ""
   ```
+  -/
 
 vc-preamble: |-
   def clean_string (s : String) : String := sorry
@@ -41,23 +43,23 @@ vc-theorems: |-
   theorem clean_string_empty :
     clean_string "" = "" := sorry
   
-  /--
+  /-
   info: 'ac'
   -/
-  #guard_msgs in
-  #eval clean_string "abc#d##c"
+  -- #guard_msgs in
+  -- #eval clean_string "abc#d##c"
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval clean_string "#######"
+  -- #guard_msgs in
+  -- #eval clean_string "#######"
   
-  /--
+  /-
   info: 'jf'
   -/
-  #guard_msgs in
-  #eval clean_string "abjd####jfk#"
+  -- #guard_msgs in
+  -- #eval clean_string "abjd####jfk#"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

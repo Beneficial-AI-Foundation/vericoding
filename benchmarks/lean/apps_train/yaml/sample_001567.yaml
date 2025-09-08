@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A chess board is normally played with 16 pawns and 16 other pieces, for this kata a variant will be played with only the pawns.  All other pieces will not be on the board.  
   For information on how pawns move, refer [here](http://www.chesscorner.com/tutorial/basic/pawn/pawn.htm)
   
@@ -101,6 +102,7 @@ vc-description: |-
   * In the case of a capture, the first lowercase letter will always be adjacent to the second in the alphabet, a move like `axc5` will never be passed.
   * A pawn can move two spaces on its first move
   * There are no cases with the 'en-passant' rule.
+  -/
 
 vc-preamble: |-
   def pawnMoveTracker (moves : List String) : List (List Char) := sorry

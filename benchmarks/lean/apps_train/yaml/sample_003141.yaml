@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   An array is defined to be `inertial`if the following conditions hold:
   ```
   a. it contains at least one odd value  
@@ -13,6 +14,7 @@ vc-description: |-
   c. the two odd values (11 and 9) are greater than all the even values that are not equal to 20 (the maximum), i.e., [4, 2, 8]
   ```
   Write a function called `is_inertial` that accepts an integer array and returns `true` if the array is inertial; otherwise it returns `false`.
+  -/
 
 vc-preamble: |-
   def isInertial (arr : List Int) : Bool := sorry
@@ -71,23 +73,23 @@ vc-theorems: |-
     : ∀ (n : Int), isInertial [n] = false := by
     sorry
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_inertial []
+  -- #guard_msgs in
+  -- #eval is_inertial []
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_inertial [581, -384, 140, -287]
+  -- #guard_msgs in
+  -- #eval is_inertial [581, -384, 140, -287]
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_inertial [11, 4, 20, 9, 2, 8]
+  -- #guard_msgs in
+  -- #eval is_inertial [11, 4, 20, 9, 2, 8]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

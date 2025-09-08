@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Deoxyribonucleic acid (DNA) is a chemical found in the nucleus of cells and carries the "instructions" for the development and functioning of living organisms.
   
   If you want to know more http://en.wikipedia.org/wiki/DNA
@@ -13,6 +14,7 @@ vc-description: |-
   
   DNA_strand ("GTAT") # return "CATA"
   ```
+  -/
 
 vc-preamble: |-
 
@@ -39,23 +41,23 @@ vc-theorems: |-
     | Base.G => (DNA_strand xs).get ⟨i, by {rw [dna_complement_length]; exact h}⟩ = Base.C
     := by sorry
   
-  /--
+  /-
   info: 'TTTT'
   -/
-  #guard_msgs in
-  #eval DNA_strand "AAAA"
+  -- #guard_msgs in
+  -- #eval DNA_strand "AAAA"
   
-  /--
+  /-
   info: 'TAACG'
   -/
-  #guard_msgs in
-  #eval DNA_strand "ATTGC"
+  -- #guard_msgs in
+  -- #eval DNA_strand "ATTGC"
   
-  /--
+  /-
   info: 'CATA'
   -/
-  #guard_msgs in
-  #eval DNA_strand "GTAT"
+  -- #guard_msgs in
+  -- #eval DNA_strand "GTAT"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

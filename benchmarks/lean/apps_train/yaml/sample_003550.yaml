@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ###Instructions
   
   A time period starting from ```'hh:mm'``` lasting until ```'hh:mm'``` is stored in an array:
@@ -25,6 +26,7 @@ vc-description: |-
   ```
   [['01:12','01:14'], ['04:23','05:11'], ['08:14','11:34'], ['11:48','13:48'], ['13:48','01:14'], ['08:16','08:18'], ['09:30','10:32'], ['01:13','08:15']]
   ```
+  -/
 
 vc-preamble: |-
 

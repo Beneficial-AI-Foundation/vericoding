@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   > "7777...*8?!??!*", exclaimed Bob, "I missed it again!  Argh!"  Every time there's an interesting number coming up, he notices and then promptly forgets.  Who *doesn't* like catching those one-off interesting mileage numbers?
   
   Let's make it so Bob **never** misses another interesting number.  We've hacked into his car's computer, and we have a box hooked up that reads mileage numbers.  We've got a box glued to his dash that lights up yellow or green depending on whether it receives a `1` or a `2` (respectively).
@@ -57,6 +58,7 @@ vc-description: |-
   * Input will *always* be an integer greater than `0`, and less than `1,000,000,000`. 
   * The `awesomePhrases` array will always be provided, and will always be an array, but may be empty.  (Not *everyone* thinks numbers spell funny words...)
   * You should only ever output `0`, `1`, or `2`.
+  -/
 
 vc-preamble: |-
   def is_interesting (number : Nat) (awesome_phrases : Array Nat) : Nat :=
@@ -114,23 +116,23 @@ vc-theorems: |-
     is_interesting n #[] = 2 :=
   sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval is_interesting 3 #[1337, 256]
+  -- #guard_msgs in
+  -- #eval is_interesting 3 #[1337, 256]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval is_interesting 1336 #[1337, 256]
+  -- #guard_msgs in
+  -- #eval is_interesting 1336 #[1337, 256]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval is_interesting 1000 #[1337, 256]
+  -- #guard_msgs in
+  -- #eval is_interesting 1000 #[1337, 256]
 
 vc-postamble: |-
   -- Apps difficulty: interview

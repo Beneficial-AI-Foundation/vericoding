@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array A of integers, return true if and only if it is a valid mountain array.
   Recall that A is a mountain array if and only if:
   
@@ -24,6 +25,7 @@ vc-description: |-
   
   0 <= A.length <= 10000
   0 <= A[i] <= 10000
+  -/
 
 vc-preamble: |-
 
@@ -66,23 +68,23 @@ vc-theorems: |-
     (h6 : ∀ i j, i ≠ j → i < n → j < n → arr.get! i ≠ arr.get! j) :
     valid_mountain_array arr = true := sorry
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval valid_mountain_array [2, 1]
+  -- #guard_msgs in
+  -- #eval valid_mountain_array [2, 1]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval valid_mountain_array [3, 5, 5]
+  -- #guard_msgs in
+  -- #eval valid_mountain_array [3, 5, 5]
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval valid_mountain_array [0, 3, 2, 1]
+  -- #guard_msgs in
+  -- #eval valid_mountain_array [0, 3, 2, 1]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

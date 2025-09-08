@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Maxim always goes to the supermarket on Sundays. Today the supermarket has a special offer of discount systems.
   
   There are m types of discounts. We assume that the discounts are indexed from 1 to m. To use the discount number i, the customer takes a special basket, where he puts exactly q_{i} items he buys. Under the terms of the discount system, in addition to the items in the cart the customer can receive at most two items from the supermarket for free. The number of the "free items" (0, 1 or 2) to give is selected by the customer. The only condition imposed on the selected "free items" is as follows: each of them mustn't be more expensive than the cheapest item out of the q_{i} items in the cart.
@@ -52,6 +53,7 @@ vc-description: |-
   In the first sample Maxim needs to buy two items that cost 100 and get a discount for two free items that cost 50. In that case, Maxim is going to pay 200.
   
   In the second sample the best strategy for Maxim is to buy 3 items and get 2 items for free using the discount. In that case, Maxim is going to pay 150.
+  -/
 
 vc-preamble: |-
   def solve_discount_shopping (n_discounts : Nat) (discount_values : List Nat) (n_items : Nat) (item_values : List Nat) : Nat :=
@@ -142,23 +144,23 @@ vc-theorems: |-
     result % item_value = 0 ∧ result ≤ item_value * n_items :=
     sorry
   
-  /--
+  /-
   info: 200
   -/
-  #guard_msgs in
-  #eval solve_discount_shopping 1 [2] 4 [50, 50, 100, 100]
+  -- #guard_msgs in
+  -- #eval solve_discount_shopping 1 [2] 4 [50, 50, 100, 100]
   
-  /--
+  /-
   info: 150
   -/
-  #guard_msgs in
-  #eval solve_discount_shopping 2 [2, 3] 5 [50, 50, 50, 50, 50]
+  -- #guard_msgs in
+  -- #eval solve_discount_shopping 2 [2, 3] 5 [50, 50, 50, 50, 50]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval solve_discount_shopping 1 [1] 7 [1, 1, 1, 1, 1, 1, 1]
+  -- #guard_msgs in
+  -- #eval solve_discount_shopping 1 [1] 7 [1, 1, 1, 1, 1, 1, 1]
 
 vc-postamble: |-
   -- Apps difficulty: competition

@@ -1,5 +1,7 @@
 vc-description: |-
+  /-
   Each test case will generate a variable whose value is 777. Find the name of the variable.
+  -/
 
 vc-preamble: |-
 
@@ -22,17 +24,17 @@ vc-theorems: |-
     (h2 : val ≠ 777) :
     ¬ (∃ x : String, find_variable_with_777 = x) := sorry
   
-  /--
+  /-
   info: 'secret_var'
   -/
-  #guard_msgs in
-  #eval find_variable_with_777 
+  -- #guard_msgs in
+  -- #eval find_variable_with_777 
   
-  /--
+  /-
   info: 'magic_number'
   -/
-  #guard_msgs in
-  #eval find_variable_with_777
+  -- #guard_msgs in
+  -- #eval find_variable_with_777
 
 vc-postamble: |-
   -- Apps difficulty: introductory

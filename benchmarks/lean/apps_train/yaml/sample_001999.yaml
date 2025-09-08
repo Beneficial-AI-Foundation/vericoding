@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Petya learned a new programming language CALPAS. A program in this language always takes one non-negative integer and returns one non-negative integer as well.
   
   In the language, there are only three commands: apply a bitwise operation AND, OR or XOR with a given constant to the current integer. A program can contain an arbitrary sequence of these operations with arbitrary constants from 0 to 1023. When the program is run, all operations are applied (in the given order) to the argument and in the end the result integer is returned.
@@ -55,6 +56,7 @@ vc-description: |-
   Second sample:
   
   Let x be an input of the Petya's program. It's output is ((x&1)&3)&5 = x&(1&3&5) = x&1. So these two programs always give the same outputs.
+  -/
 
 vc-preamble: |-
 

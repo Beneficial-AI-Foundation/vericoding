@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    When a candle finishes burning it leaves a leftover. makeNew leftovers can be combined to make a new candle, which, when burning down, will in turn leave another leftover.
   
@@ -35,6 +36,7 @@ vc-description: |-
       Constraints: 2 ≤ makeNew ≤ 5.
   
    - `[output]` an integer
+  -/
 
 vc-preamble: |-
 
@@ -67,23 +69,23 @@ vc-theorems: |-
     (h1 : n ≥ 1) (h2 : m > n) :
     candles n m = n := by sorry
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval candles 5 2
+  -- #guard_msgs in
+  -- #eval candles 5 2
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval candles 1 2
+  -- #guard_msgs in
+  -- #eval candles 1 2
   
-  /--
+  /-
   info: 11
   -/
-  #guard_msgs in
-  #eval candles 8 3
+  -- #guard_msgs in
+  -- #eval candles 8 3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

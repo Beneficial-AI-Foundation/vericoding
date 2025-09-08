@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function that takes an array/list of numbers and returns a number such that 
   
   Explanation
@@ -23,6 +24,7 @@ vc-description: |-
   ```
   
   **Note:** each array/list will have at least an element and all elements will be valid numbers.
+  -/
 
 vc-preamble: |-
 

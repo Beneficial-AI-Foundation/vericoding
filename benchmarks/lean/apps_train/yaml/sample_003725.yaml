@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   
   John and Alice have an appointment today. 
@@ -54,6 +55,7 @@ vc-description: |-
   For `a = 4, b = 5, s = 10`, the output should be `false`.
   
   John can't reach coordinates (a, b) using 10 steps, he's lying ;-)
+  -/
 
 vc-preamble: |-
   def abs (x : Int) : Int := 
@@ -83,23 +85,23 @@ vc-theorems: |-
     else
       ¬(is_john_lying x y steps) := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_john_lying 3 3 6
+  -- #guard_msgs in
+  -- #eval is_john_lying 3 3 6
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_john_lying 4 5 10
+  -- #guard_msgs in
+  -- #eval is_john_lying 4 5 10
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_john_lying -5 -5 10
+  -- #guard_msgs in
+  -- #eval is_john_lying -5 -5 10
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,9 +1,11 @@
 vc-description: |-
+  /-
   Complete the function so that it returns the number of seconds that have elapsed between the start and end times given.  
   
   ##### Tips:
   - The start/end times are given as Date (JS/CoffeeScript), DateTime (C#), Time (Nim), datetime(Python) and Time (Ruby) instances.  
   - The start time will always be before the end time.
+  -/
 
 vc-preamble: |-
   def DateTime := Nat -- simplified representation
@@ -45,23 +47,23 @@ vc-theorems: |-
     elapsedSeconds dt dt = 0 :=
     sorry
   
-  /--
+  /-
   info: 3600
   -/
-  #guard_msgs in
-  #eval elapsed_seconds datetime(2020, 1, 1, 0, 0, 0) datetime(2020, 1, 1, 1, 0, 0)
+  -- #guard_msgs in
+  -- #eval elapsed_seconds datetime(2020, 1, 1, 0, 0, 0) datetime(2020, 1, 1, 1, 0, 0)
   
-  /--
+  /-
   info: 60
   -/
-  #guard_msgs in
-  #eval elapsed_seconds datetime(2020, 1, 1, 0, 0, 0) datetime(2020, 1, 1, 0, 1, 0)
+  -- #guard_msgs in
+  -- #eval elapsed_seconds datetime(2020, 1, 1, 0, 0, 0) datetime(2020, 1, 1, 0, 1, 0)
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval elapsed_seconds datetime(2020, 1, 1, 0, 0, 0) datetime(2020, 1, 1, 0, 0, 1)
+  -- #guard_msgs in
+  -- #eval elapsed_seconds datetime(2020, 1, 1, 0, 0, 0) datetime(2020, 1, 1, 0, 0, 1)
 
 vc-postamble: |-
   -- Apps difficulty: introductory

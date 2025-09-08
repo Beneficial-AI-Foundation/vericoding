@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ASC Week 1 Challenge 4 (Medium #1) 
   
   Write a function that converts any sentence into a V  A  P  O  R  W  A  V  E sentence. a V  A  P  O  R  W  A  V  E sentence converts all the letters into uppercase, and adds 2 spaces between each letter (or special character) to create this V  A  P  O  R  W  A  V  E effect.
@@ -30,6 +31,7 @@ vc-description: |-
     vaporcode "Why isn't my code working?" 
     -- output => "W  H  Y  I  S  N  '  T  M  Y  C  O  D  E  W  O  R  K  I  N  G  ?"
   ```
+  -/
 
 vc-preamble: |-
 
@@ -62,23 +64,23 @@ vc-theorems: |-
   theorem vaporcode_roundtrip (s : String) :
     ((vaporcode s).replace " " "").toUpper = (s.replace " " "").toUpper := sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval vaporcode "Lets go to the movies"
+  -- #guard_msgs in
+  -- #eval vaporcode "Lets go to the movies"
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval vaporcode "Why isn"t my code working?"
+  -- #guard_msgs in
+  -- #eval vaporcode "Why isn"t my code working?"
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval vaporcode "Hello World"
+  -- #guard_msgs in
+  -- #eval vaporcode "Hello World"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

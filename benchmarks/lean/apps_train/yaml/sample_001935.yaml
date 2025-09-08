@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Ivan wants to make a necklace as a present to his beloved girl. A necklace is a cyclic sequence of beads of different colors. Ivan says that necklace is beautiful relative to the cut point between two adjacent beads, if the chain of beads remaining after this cut is a palindrome (reads the same forward and backward).
   
    [Image] 
@@ -44,6 +45,7 @@ vc-description: |-
   In the first sample a necklace can have at most one beautiful cut. The example of such a necklace is shown on the picture.
   
   In the second sample there is only one way to compose a necklace.
+  -/
 
 vc-preamble: |-
 
@@ -65,17 +67,17 @@ vc-theorems: |-
     let beads := [count]
     (solve_necklace n beads).2 = String.mk (List.replicate count 'a') := sorry
   
-  /--
+  /-
   info: sum(beads1)
   -/
-  #guard_msgs in
-  #eval len necklace1
+  -- #guard_msgs in
+  -- #eval len necklace1
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval len necklace3
+  -- #guard_msgs in
+  -- #eval len necklace3
 
 vc-postamble: |-
   -- Apps difficulty: competition

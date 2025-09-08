@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Leonardo Fibonacci in a rare portrait of his younger days
   
   I assume you are all familiar with the famous Fibonacci sequence, having to get each number as the sum of the previous two (and typically starting with either `[0,1]` or `[1,1]` as the first numbers).
@@ -20,6 +21,7 @@ vc-description: |-
   custom_fib([3,5,2],[0,1,2],4) == 17 #similar to my Tribonacci
   custom_fib([7,3,4,1],[1,1],6) == 2 #can you figure out how it worked ;)?
   ```
+  -/
 
 vc-preamble: |-
 
@@ -44,23 +46,23 @@ vc-theorems: |-
     custom_fib [1,2,3] [0,1,2] 3 = 6 :=
   sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval custom_fib [1, 1] [0, 1] 2
+  -- #guard_msgs in
+  -- #eval custom_fib [1, 1] [0, 1] 2
   
-  /--
+  /-
   info: 17
   -/
-  #guard_msgs in
-  #eval custom_fib [3, 5, 2] [0, 1, 2] 4
+  -- #guard_msgs in
+  -- #eval custom_fib [3, 5, 2] [0, 1, 2] 4
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval custom_fib [7, 3, 4, 1] [1, 1] 6
+  -- #guard_msgs in
+  -- #eval custom_fib [7, 3, 4, 1] [1, 1] 6
 
 vc-postamble: |-
   -- Apps difficulty: introductory

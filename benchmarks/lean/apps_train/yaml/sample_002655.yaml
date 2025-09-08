@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this Kata, you will be given an array of strings and your task is to remove all consecutive duplicate letters from each string in the array.
   
   For example: 
@@ -20,6 +21,7 @@ vc-description: |-
   [Alternate capitalization](https://www.codewars.com/kata/59cfc000aeb2844d16000075)
   
   [Vowel consonant lexicon](https://www.codewars.com/kata/59cf8bed1a68b75ffb000026)
+  -/
 
 vc-preamble: |-
 
@@ -57,23 +59,23 @@ vc-theorems: |-
     ∀ s ∈ dup strings, s.length ≤ List.foldl (fun acc x => max acc x.length) 0 strings :=
   sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval dup ["abracadabra", "allottee", "assessee"]
+  -- #guard_msgs in
+  -- #eval dup ["abracadabra", "allottee", "assessee"]
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval dup ["kelless", "keenness"]
+  -- #guard_msgs in
+  -- #eval dup ["kelless", "keenness"]
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval dup ["ccooddddddewwwaaaaarrrrsssss"]
+  -- #guard_msgs in
+  -- #eval dup ["ccooddddddewwwaaaaarrrrsssss"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

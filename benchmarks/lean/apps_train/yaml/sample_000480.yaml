@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Consider the string s to be the infinite wraparound string of "abcdefghijklmnopqrstuvwxyz", so s will look like this: "...zabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcd....".
   
   Now we have another string p. Your job is to find out how many unique non-empty substrings of p are present in s. In particular, your input is the string p and you need to output the number of different non-empty substrings of p in the string s.
@@ -23,6 +24,7 @@ vc-description: |-
   Input: "zab"
   Output: 6
   Explanation: There are six substrings "z", "a", "b", "za", "ab", "zab" of string "zab" in the string s.
+  -/
 
 vc-preamble: |-
 
@@ -40,23 +42,23 @@ vc-theorems: |-
   theorem single_char_min (s: String) :
     s.length ≥ 1 → find_substrings_in_wraparound s ≥ 1 := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval find_substrings_in_wraparound "a"
+  -- #guard_msgs in
+  -- #eval find_substrings_in_wraparound "a"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_substrings_in_wraparound "cac"
+  -- #guard_msgs in
+  -- #eval find_substrings_in_wraparound "cac"
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval find_substrings_in_wraparound "zab"
+  -- #guard_msgs in
+  -- #eval find_substrings_in_wraparound "zab"
 
 vc-postamble: |-
   -- Apps difficulty: interview

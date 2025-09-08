@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Probably everyone has experienced an awkward situation due to shared armrests between seats in cinemas. A highly accomplished cinema manager named "Chef" decided to solve this problem.
   
   When a customer wants to buy a ticket, the clerk at the ticket window asks the visitor if they need the armrests, and if so, which of them: left, right, or both. We know that out of the audience expected to show up, L of them only need the left armrest, R of them need just the right one, Z need none and B need both. Your task is to calculate the maximum number of people that can attend the show. In the cinema hall there are N rows with M seats each. There is only one armrest between two adjacent seats. Seats at the beginning and at the end of the row have two armrests
@@ -59,6 +60,7 @@ vc-description: |-
   BZB
   
   B-B
+  -/
 
 vc-preamble: |-
 
@@ -97,23 +99,23 @@ vc-theorems: |-
     n > 0 → m > 0 → solve_cinema_seating n m 0 0 0 0 = 0 :=
     sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval solve_cinema_seating 2 2 3 2 1 1
+  -- #guard_msgs in
+  -- #eval solve_cinema_seating 2 2 3 2 1 1
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval solve_cinema_seating 3 3 1 2 0 9
+  -- #guard_msgs in
+  -- #eval solve_cinema_seating 3 3 1 2 0 9
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve_cinema_seating 1 2 1 1 1 0
+  -- #guard_msgs in
+  -- #eval solve_cinema_seating 1 2 1 1 1 0
 
 vc-postamble: |-
   -- Apps difficulty: interview

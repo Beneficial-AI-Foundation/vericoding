@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Fizza is a cute girl and she wants to be more beautiful.
   So she approached a magician to increase her beauty magically. But the magician's 
   glasses accidently got locked inside the locker and he forgot the password. Without
@@ -43,6 +44,7 @@ vc-description: |-
   -----EXPLANATION:-----
   In the first case, integers at position 1 and 3 are the same and at alternate positions.
   In the second case, integers at position 1, 2, 4 follow the conditions.
+  -/
 
 vc-preamble: |-
 
@@ -73,23 +75,23 @@ vc-theorems: |-
     check lst n > 0 :=
   sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval check [6, 3, 6, 4, 5, 4, 3, 6] len(test1)
+  -- #guard_msgs in
+  -- #eval check [6, 3, 6, 4, 5, 4, 3, 6] len(test1)
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval check [5, 5, 4, 5, 2, 1, 3, 4, 2] len(test2)
+  -- #guard_msgs in
+  -- #eval check [5, 5, 4, 5, 2, 1, 3, 4, 2] len(test2)
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval check [1, 2, 3, 4, 5, 6] len(test3)
+  -- #guard_msgs in
+  -- #eval check [1, 2, 3, 4, 5, 6] len(test3)
 
 vc-postamble: |-
   -- Apps difficulty: interview

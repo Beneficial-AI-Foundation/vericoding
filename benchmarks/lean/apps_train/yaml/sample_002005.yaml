@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A tree is an undirected connected graph without cycles.
   
   Let's consider a rooted undirected tree with n vertices, numbered 1 through n. There are many ways to represent such a tree. One way is to create an array with n integers p_1, p_2, ..., p_{n}, where p_{i} denotes a parent of vertex i (here, for convenience a root is considered its own parent). [Image] For this rooted tree the array p is [2, 3, 3, 2]. 
@@ -51,6 +52,7 @@ vc-description: |-
   In the first sample, it's enough to change one element. In the provided output, a sequence represents a tree rooted in a vertex 4 (because p_4 = 4), which you can see on the left drawing below. One of other correct solutions would be a sequence 2 3 3 2, representing a tree rooted in vertex 3 (right drawing below). On both drawings, roots are painted red. [Image] 
   
   In the second sample, the given sequence is already valid.
+  -/
 
 vc-preamble: |-
 

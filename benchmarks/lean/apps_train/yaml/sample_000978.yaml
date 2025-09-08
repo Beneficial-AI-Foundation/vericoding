@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef is playing a game on a sequence of $N$ positive integers, say $A_1, A_2, ... A_N$ The game is played as follows.
   - If all the numbers are equal, the game ends.
   - Otherwise
@@ -66,6 +67,7 @@ vc-description: |-
   - $\{ 6, 15 \}$ => The game cannot end at $\{ 1, 1 \}$
   - $\{ 10, 15 \}$ => The game cannot end at $\{ 1, 1 \}$
   - $\{ 6, 10, 15 \}$ => The game ends at $\{ 1, 1, 1 \}$. Hence this is the only sub-sequence that is counted in the result.
+  -/
 
 vc-preamble: |-
 
@@ -102,23 +104,23 @@ vc-theorems: |-
     (h₁ : arr ≠ []) (h₂ : ∀ x ∈ arr, x = 1) :
     count_valid_subsequences arr = 2^(arr.length) - 1 := sorry
   
-  /--
+  /-
   info: 11
   -/
-  #guard_msgs in
-  #eval count_valid_subsequences [2, 3, 5, 7]
+  -- #guard_msgs in
+  -- #eval count_valid_subsequences [2, 3, 5, 7]
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval count_valid_subsequences [3, 4, 8, 16]
+  -- #guard_msgs in
+  -- #eval count_valid_subsequences [3, 4, 8, 16]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_valid_subsequences [6, 10, 15]
+  -- #guard_msgs in
+  -- #eval count_valid_subsequences [6, 10, 15]
 
 vc-postamble: |-
   -- Apps difficulty: interview

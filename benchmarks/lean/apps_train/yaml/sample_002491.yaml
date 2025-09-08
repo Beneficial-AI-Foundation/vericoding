@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Function Descriptions=====
   input()
   In Python 2, the expression input() is equivalent to eval(raw _input(prompt)).
@@ -18,6 +19,7 @@ vc-description: |-
   
   =====Output Format=====
   Print True if P(x) = k. Otherwise, print False.
+  -/
 
 vc-preamble: |-
 
@@ -47,23 +49,23 @@ vc-theorems: |-
   theorem negative_quadratic :
     is_polynomial_equal (-1) 1 "x**2" = true := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_polynomial_equal 1 4 "x**3 + x**2 + x + 1"
+  -- #guard_msgs in
+  -- #eval is_polynomial_equal 1 4 "x**3 + x**2 + x + 1"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_polynomial_equal 2 20 "x**3 + x**2 + x + 1"
+  -- #guard_msgs in
+  -- #eval is_polynomial_equal 2 20 "x**3 + x**2 + x + 1"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_polynomial_equal 0 1 "x**3 + x**2 + x + 1"
+  -- #guard_msgs in
+  -- #eval is_polynomial_equal 0 1 "x**3 + x**2 + x + 1"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

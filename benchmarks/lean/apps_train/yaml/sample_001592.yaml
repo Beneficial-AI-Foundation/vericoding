@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We want to generate all the numbers of three digits where:
   
   - the sum of their digits is equal to 10.
@@ -50,6 +51,7 @@ vc-description: |-
   * Number of tests: `112`
   * Sum of digits value between `20` and `65`
   * Amount of digits between `2` and `17`
+  -/
 
 vc-preamble: |-
   def sumDigits (n : Nat) : Nat := sorry
@@ -89,23 +91,23 @@ vc-theorems: |-
     isAscending first ∧
     isAscending last := sorry
   
-  /--
+  /-
   info: [8, 118, 334]
   -/
-  #guard_msgs in
-  #eval find_all 10 3
+  -- #guard_msgs in
+  -- #eval find_all 10 3
   
-  /--
+  /-
   info: [1, 999, 999]
   -/
-  #guard_msgs in
-  #eval find_all 27 3
+  -- #guard_msgs in
+  -- #eval find_all 27 3
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval find_all 84 4
+  -- #guard_msgs in
+  -- #eval find_all 84 4
 
 vc-postamble: |-
   -- Apps difficulty: interview

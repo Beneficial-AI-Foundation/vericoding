@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Challenge:
   Given two null-terminated strings in the arguments "string" and "prefix", determine if "string" starts with the "prefix" string. Return 1 (or any other "truthy" value) if true, 0 if false.
   
@@ -19,6 +20,7 @@ vc-description: |-
   The length of the "string" as well as the "prefix" can be defined by the formula: 0 <= length < +Infinity
   
   No characters should be ignored and/or omitted during the test, e.g. whitespace characters should not be ignored.
+  -/
 
 vc-preamble: |-
 
@@ -51,35 +53,35 @@ vc-theorems: |-
     startsWith s pre = (if pre.length = 0 then true else s.take pre.length = pre) :=
     sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval starts_with "hello world!" "hello"
+  -- #guard_msgs in
+  -- #eval starts_with "hello world!" "hello"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval starts_with "hello world!" "HELLO"
+  -- #guard_msgs in
+  -- #eval starts_with "hello world!" "HELLO"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval starts_with "nowai" "nowaisir"
+  -- #guard_msgs in
+  -- #eval starts_with "nowai" "nowaisir"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval starts_with "abc" ""
+  -- #guard_msgs in
+  -- #eval starts_with "abc" ""
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval starts_with "" "abc"
+  -- #guard_msgs in
+  -- #eval starts_with "" "abc"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

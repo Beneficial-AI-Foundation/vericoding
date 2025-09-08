@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Finding your seat on a plane is never fun, particularly for a long haul flight... You arrive, realise again just how little leg room you get, and sort of climb into the seat covered in a pile of your own stuff.
   
   To help confuse matters (although they claim in an effort to do the opposite) many airlines omit the letters 'I' and 'J' from their seat naming system.
@@ -12,6 +13,7 @@ vc-description: |-
   '2B' would return 'Front-Left'.
   
   If the number is over 60, or the letter is not valid, return 'No Seat!!'.
+  -/
 
 vc-preamble: |-
 

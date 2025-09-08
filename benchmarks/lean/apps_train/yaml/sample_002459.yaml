@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Problem Statement=====
   You are given a string S. S contains alphanumeric characters only. Your task is to sort the string S in the following manner:
   All sorted lowercase letters are ahead of uppercase letters.
@@ -13,6 +14,7 @@ vc-description: |-
   
   =====Output Format=====
   Output the sorted string S.
+  -/
 
 vc-preamble: |-
   def sort_str_special (s : String) : String :=

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Calculus class...is awesome! But you are a programmer with no time for mindless repetition. Your teacher spent a whole day covering differentiation of polynomials, and by the time the bell rang, you had already conjured up a program to automate the process.
   
   You realize that a polynomial of degree n
@@ -35,6 +36,7 @@ vc-description: |-
   diff(poly3) == [6, 2, 0] # 6x^2 + 2x
   ```
   Note: your function will always return a new array which has one less element than the argument (unless the argument is [], in which case [] is returned).
+  -/
 
 vc-preamble: |-
 
@@ -58,23 +60,23 @@ vc-theorems: |-
   theorem double_diff_quadratic (p : List Int) :
     p.length = 3 → diff (diff p) = [2 * p.get! 0] := sorry
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval diff []
+  -- #guard_msgs in
+  -- #eval diff []
   
-  /--
+  /-
   info: [1]
   -/
-  #guard_msgs in
-  #eval diff [1, 1]
+  -- #guard_msgs in
+  -- #eval diff [1, 1]
   
-  /--
+  /-
   info: [6, 2, 0]
   -/
-  #guard_msgs in
-  #eval diff [2, 1, 0, 0]
+  -- #guard_msgs in
+  -- #eval diff [2, 1, 0, 0]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

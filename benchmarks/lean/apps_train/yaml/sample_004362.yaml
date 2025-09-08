@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    If string has more than one neighboring dashes(e.g. --) replace they with one dash(-). 
   
@@ -15,6 +16,7 @@ vc-description: |-
    - `[input]` string `str`
   
    - `[output]` a string
+  -/
 
 vc-preamble: |-
   def replace_dashes_as_one (s : String) : String := sorry
@@ -49,23 +51,23 @@ vc-theorems: |-
     ¬ (containsSubstring (replace_dashes_as_one s) "--") ∧
     ¬ (containsSubstring (replace_dashes_as_one s) "- -") := sorry
   
-  /--
+  /-
   info: 'we-are- code-warriors.-'
   -/
-  #guard_msgs in
-  #eval replace_dashes_as_one "we-are- - - code----warriors.-"
+  -- #guard_msgs in
+  -- #eval replace_dashes_as_one "we-are- - - code----warriors.-"
   
-  /--
+  /-
   info: 'a-b-c'
   -/
-  #guard_msgs in
-  #eval replace_dashes_as_one "a---b- - -c"
+  -- #guard_msgs in
+  -- #eval replace_dashes_as_one "a---b- - -c"
   
-  /--
+  /-
   info: 'a-'
   -/
-  #guard_msgs in
-  #eval replace_dashes_as_one "a------"
+  -- #guard_msgs in
+  -- #eval replace_dashes_as_one "a------"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

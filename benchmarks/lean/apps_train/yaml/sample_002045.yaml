@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Vasya's got a birthday coming up and his mom decided to give him an array of positive integers a of length n.
   
   Vasya thinks that an array's beauty is the greatest common divisor of all its elements. His mom, of course, wants to give him as beautiful an array as possible (with largest possible beauty). Unfortunately, the shop has only one array a left. On the plus side, the seller said that he could decrease some numbers in the array (no more than by k for each number).
@@ -39,6 +40,7 @@ vc-description: |-
   In the second sample we can obtain the next array:
   
   7 21 49 14 77
+  -/
 
 vc-preamble: |-
   def get_max_beauty (n k : Nat) (arr : List Nat) : Nat :=
@@ -99,23 +101,23 @@ vc-theorems: |-
     ∀ x ∈ arr, x % result = 0 :=
   sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval get_max_beauty 6 1 [3, 6, 10, 12, 13, 16]
+  -- #guard_msgs in
+  -- #eval get_max_beauty 6 1 [3, 6, 10, 12, 13, 16]
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval get_max_beauty 5 3 [8, 21, 52, 15, 77]
+  -- #guard_msgs in
+  -- #eval get_max_beauty 5 3 [8, 21, 52, 15, 77]
   
-  /--
+  /-
   info: 16
   -/
-  #guard_msgs in
-  #eval get_max_beauty 13 11 [55, 16, 26, 40, 84, 80, 48, 52, 25, 43, 75, 21, 58]
+  -- #guard_msgs in
+  -- #eval get_max_beauty 13 11 [55, 16, 26, 40, 84, 80, 48, 52, 25, 43, 75, 21, 58]
 
 vc-postamble: |-
   -- Apps difficulty: competition

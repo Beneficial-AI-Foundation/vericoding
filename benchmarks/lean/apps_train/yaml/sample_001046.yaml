@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Kostya likes the number 4 much. Of course! This number has such a lot of properties, like:
   
   - Four is the smallest composite number;
@@ -40,6 +41,7 @@ vc-description: |-
   1
   1
   0
+  -/
 
 vc-preamble: |-
 
@@ -71,23 +73,23 @@ vc-theorems: |-
     count_fours [] = [] :=
     sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval count_fours [447474, 228, 6664, 40, 81]
+  -- #guard_msgs in
+  -- #eval count_fours [447474, 228, 6664, 40, 81]
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval count_fours [4444, 1234, 5678]
+  -- #guard_msgs in
+  -- #eval count_fours [4444, 1234, 5678]
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval count_fours [0, 4, 44, 444]
+  -- #guard_msgs in
+  -- #eval count_fours [0, 4, 44, 444]
 
 vc-postamble: |-
   -- Apps difficulty: interview

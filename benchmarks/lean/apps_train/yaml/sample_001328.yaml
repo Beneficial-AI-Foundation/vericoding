@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   -----General Statement:-----
   Given the actual high and low temperatures for the day and the normal high and low temperatures for that day, calculate the average difference from normal.
   
@@ -30,6 +31,7 @@ vc-description: |-
   1.0 DEGREE(S) ABOVE NORMAL
   3.5 DEGREE(S) ABOVE NORMAL
   1.5 DEGREE(S) BELOW NORMAL
+  -/
 
 vc-preamble: |-
   def calculate_temp_difference (today_high today_low normal_high normal_low : Int) : String := sorry

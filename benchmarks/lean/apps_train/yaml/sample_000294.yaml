@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We write the integers of A and B (in the order they are given) on two separate horizontal lines.
   Now, we may draw connecting lines: a straight line connecting two numbers A[i] and B[j] such that:
   
@@ -28,6 +29,7 @@ vc-description: |-
   1 <= A.length <= 500
   1 <= B.length <= 500
   1 <= A[i], B[i] <= 2000
+  -/
 
 vc-preamble: |-
   def max_uncrossed_lines (a b : List Nat) : Nat :=
@@ -73,23 +75,23 @@ vc-theorems: |-
     max_uncrossed_lines [] [1] = 0 :=
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval max_uncrossed_lines [1, 4, 2] [1, 2, 4]
+  -- #guard_msgs in
+  -- #eval max_uncrossed_lines [1, 4, 2] [1, 2, 4]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval max_uncrossed_lines [2, 5, 1, 2, 5] [10, 5, 2, 1, 5, 2]
+  -- #guard_msgs in
+  -- #eval max_uncrossed_lines [2, 5, 1, 2, 5] [10, 5, 2, 1, 5, 2]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval max_uncrossed_lines [1, 3, 7, 1, 7, 5] [1, 9, 2, 5, 1]
+  -- #guard_msgs in
+  -- #eval max_uncrossed_lines [1, 3, 7, 1, 7, 5] [1, 9, 2, 5, 1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

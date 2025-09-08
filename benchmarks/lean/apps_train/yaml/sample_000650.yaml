@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Nadaca is a country with N$N$ cities. These cities are numbered 1$1$ through N$N$ and connected by M$M$ bidirectional roads. Each city can be reached from every other city using these roads.
   Initially, Ryan is in city 1$1$. At each of the following K$K$ seconds, he may move from his current city to an adjacent city (a city connected by a road to his current city) or stay at his current city. Ryan also has Q$Q$ conditions (a1,b1),(a2,b2),…,(aQ,bQ)$(a_1, b_1), (a_2, b_2), \ldots, (a_Q, b_Q)$ meaning that during this K$K$-second trip, for each valid i$i$, he wants to be in city ai$a_i$ after exactly bi$b_i$ seconds.
   Since you are very good with directions, Ryan asked you to tell him how many different trips he could make while satisfying all conditions. Compute this number modulo 109+7$10^9 + 7$. A trip is a sequence of Ryan's current cities after 1,2,…,K$1, 2, \ldots, K$ seconds.
@@ -59,6 +60,7 @@ vc-description: |-
   28
   4
   6
+  -/
 
 vc-preamble: |-
 

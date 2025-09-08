@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Mr. Wire Less is not that good at implementing circuit in a breadboard. In his Digital Logic Design course, he has to implement several boolean functions using the breadboard. In a breadboard, inputs are given through the switches and outputs are taken through the LEDs. Each input switch can be either in ground state or in high state. So, if he wishes to implement a boolean function, f(x1, x2, .., xn) that takes n boolean values as input and returns m boolean values as output, he will use n switches and m LEDs. 
   Mr. Wire Less can quickly assemble the necessary ICs and wires, but the key problem is testing. While testing he has to check with all possible input combination, to make sure whether the output of LED corresponds to the expected output or not. This is taking too long for him, as most of the switches are jammed and difficult to toggle. 
   Mr. Wire Less is asking for help to minimize his time of testing. So, your task is to minimize the total number of switch-toggle throughout the testing.
@@ -20,6 +21,7 @@ vc-description: |-
   Output
   Case 1: 1
   Case 2: 3
+  -/
 
 vc-preamble: |-
 

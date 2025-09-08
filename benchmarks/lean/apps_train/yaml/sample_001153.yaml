@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are $N$ robots who work for $Y$ days and on each day they
   produce some toys .on some days a few robots are given rest.
   So depending on the availability of robots owner has 
@@ -52,6 +53,7 @@ vc-description: |-
   Day 3 - 2 4 4 2 2
   Day 4 - 4 6 6 4 4
   so after 4 days minimum capacity is $4$.
+  -/
 
 vc-preamble: |-
 
@@ -84,11 +86,11 @@ vc-theorems: |-
     solve_robot_capacity n y [] = 1 :=
   sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval solve_robot_capacity 5 4 [[0, 3], [1, 2], [4, 4], [0, 4]]
+  -- #guard_msgs in
+  -- #eval solve_robot_capacity 5 4 [[0, 3], [1, 2], [4, 4], [0, 4]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

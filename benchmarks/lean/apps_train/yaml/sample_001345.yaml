@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Mysterious Chefland… Recently, Chef realised that Discuss, the educational system of Chefland, is out of date. Therefore, he is trying to find ways to update the infrastructure in the country. One possible way is to move all materials from Discuss to Discourse.
   Chef will have access to Discourse if his knowledge and power become exactly equal to $N$ and $M$ respectively. Initially, he has power $1$ and knowledge $1$.
   Chef can perform actions of the following types to improve his skills:
@@ -42,6 +43,7 @@ vc-description: |-
   Example case 2: We add $Y=9$ once to the power to get power $10$. We add $X=5$ twice to the knowledge to get knowledge $11$.
   Example case 3: We can see that it is impossible to reach power $M=11$ no matter which or how many operations we do. Note that the ShareChat operation will increase both knowledge and power by $1$, and hence it will still be impossible to attain the given values of knowledge and power at the same time.
   Example case 4: We can reach knowledge $11$ and power $10$ like in example case 2, the only difference is that we also use the ShareChat operation to increase both by $1$.
+  -/
 
 vc-preamble: |-
 
@@ -78,23 +80,23 @@ vc-theorems: |-
     (h10 : (m-1) % y = 0) :
     solve_chefirnemo n m x y = "Chefirnemo" := sorry
   
-  /--
+  /-
   info: 'Chefirnemo'
   -/
-  #guard_msgs in
-  #eval solve_chefirnemo 2 2 1 2
+  -- #guard_msgs in
+  -- #eval solve_chefirnemo 2 2 1 2
   
-  /--
+  /-
   info: 'Chefirnemo'
   -/
-  #guard_msgs in
-  #eval solve_chefirnemo 11 10 5 9
+  -- #guard_msgs in
+  -- #eval solve_chefirnemo 11 10 5 9
   
-  /--
+  /-
   info: 'Pofik'
   -/
-  #guard_msgs in
-  #eval solve_chefirnemo 11 11 5 9
+  -- #guard_msgs in
+  -- #eval solve_chefirnemo 11 11 5 9
 
 vc-postamble: |-
   -- Apps difficulty: interview

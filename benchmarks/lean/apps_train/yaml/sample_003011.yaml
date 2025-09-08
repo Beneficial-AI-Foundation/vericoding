@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Pirates have notorious difficulty with enunciating. They tend to blur all the letters together and scream at people.
   
   At long last, we need a way to unscramble what these pirates are saying.
@@ -15,6 +16,7 @@ vc-description: |-
   Return matches in the same order as in the dictionary. Return an empty array if there are no matches.
   
   Good luck!
+  -/
 
 vc-preamble: |-
 
@@ -52,23 +54,23 @@ vc-theorems: |-
     let result := grabscrab said possibleWords
     result.length = (result.eraseDups).length := sorry
   
-  /--
+  /-
   info: ['first']
   -/
-  #guard_msgs in
-  #eval grabscrab "trisf" ["first"]
+  -- #guard_msgs in
+  -- #eval grabscrab "trisf" ["first"]
   
-  /--
+  /-
   info: ['sport', 'ports']
   -/
-  #guard_msgs in
-  #eval grabscrab "ortsp" ["sport", "parrot", "ports", "matey"]
+  -- #guard_msgs in
+  -- #eval grabscrab "ortsp" ["sport", "parrot", "ports", "matey"]
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval grabscrab "ourf" ["one", "two", "three"]
+  -- #guard_msgs in
+  -- #eval grabscrab "ourf" ["one", "two", "three"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

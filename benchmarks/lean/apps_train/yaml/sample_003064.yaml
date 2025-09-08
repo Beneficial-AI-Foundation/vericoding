@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The first positive integer, `n`, with its value `4n² + 1`, being divisible by `5` and `13` is `4`. (condition 1)
   
   It can be demonstrated that we have infinite numbers that may satisfy the above condition.
@@ -23,6 +24,7 @@ vc-description: |-
   `1000 <= m <= 5.2 e14`
   
   **Note** Sierpinsky presented the numbers that satisfy condition (1)
+  -/
 
 vc-preamble: |-
   def generate_sierpinski_sequence (n : Nat) : List Nat :=
@@ -58,29 +60,29 @@ vc-theorems: |-
     (∀ x ∈ seq, abs (x - m) = abs (closest - m) → x > m → closest ≥ x) :=
   sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval find_closest_value 1
+  -- #guard_msgs in
+  -- #eval find_closest_value 1
   
-  /--
+  /-
   info: 5074
   -/
-  #guard_msgs in
-  #eval find_closest_value 5000
+  -- #guard_msgs in
+  -- #eval find_closest_value 5000
   
-  /--
+  /-
   info: 14313
   -/
-  #guard_msgs in
-  #eval find_closest_value 14313
+  -- #guard_msgs in
+  -- #eval find_closest_value 14313
   
-  /--
+  /-
   info: 18720
   -/
-  #guard_msgs in
-  #eval find_closest_value 18332
+  -- #guard_msgs in
+  -- #eval find_closest_value 18332
 
 vc-postamble: |-
   -- Apps difficulty: introductory

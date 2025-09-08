@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   
   **Your task** is to implement function `printNumber` (`print_number` in C/C++ and Python `Kata.printNumber` in Java) that returns string that represents given number in text format (see examples below).
@@ -56,6 +57,7 @@ vc-description: |-
    - Returned string should have 1 character *(height)* border (use the same character as for number) + padding (1 character in height vertical and 2 horizontal with ` `) around borders and 1 character margin between "digits"
   
    *Suggestions and translations are welcome.*
+  -/
 
 vc-preamble: |-
 
@@ -95,23 +97,23 @@ vc-theorems: |-
   theorem print_number_char_independence (n : Nat) :
     (print_number n '*').replace (String.mk ['*']) "#" = print_number n '#' := sorry
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval print_number 99 "$"
+  -- #guard_msgs in
+  -- #eval print_number 99 "$"
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval print_number 12345 "*"
+  -- #guard_msgs in
+  -- #eval print_number 12345 "*"
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval print_number 67890 "@"
+  -- #guard_msgs in
+  -- #eval print_number 67890 "@"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

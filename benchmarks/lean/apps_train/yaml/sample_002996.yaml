@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your task is to return the number of visible dots on a die after it has been rolled(that means the total count of dots that would not be touching the table when rolled)
   
   6, 8, 10, 12, 20 sided dice are the possible inputs for "numOfSides" 
@@ -10,6 +11,7 @@ vc-description: |-
   for this exercise, the 10 sided die starts at 1 and ends on 10.
   
   Note: topNum will never be greater than numOfSides
+  -/
 
 vc-preamble: |-
 
@@ -41,23 +43,23 @@ vc-theorems: |-
       (h : 0 < n) :
     totalAmountVisible n n = (n * (n + 1)) / 2 - 1 := sorry
   
-  /--
+  /-
   info: 19
   -/
-  #guard_msgs in
-  #eval totalAmountVisible 5 6
+  -- #guard_msgs in
+  -- #eval totalAmountVisible 5 6
   
-  /--
+  /-
   info: 208
   -/
-  #guard_msgs in
-  #eval totalAmountVisible 19 20
+  -- #guard_msgs in
+  -- #eval totalAmountVisible 19 20
   
-  /--
+  /-
   info: 48
   -/
-  #guard_msgs in
-  #eval totalAmountVisible 4 10
+  -- #guard_msgs in
+  -- #eval totalAmountVisible 4 10
 
 vc-postamble: |-
   -- Apps difficulty: introductory

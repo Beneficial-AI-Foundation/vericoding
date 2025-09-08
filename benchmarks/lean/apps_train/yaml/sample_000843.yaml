@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given N, count how many permutations of [1, 2, 3, ..., N] satisfy the following property.
   
   Let P1, P2, ..., PN denote the permutation. The property we want to satisfy is that there exists an i between 2 and n-1 (inclusive) such that
@@ -39,6 +40,7 @@ vc-description: |-
   Test case 2:
   
   Permutations [1, 3, 2] and [2, 3, 1] satisfy the property.
+  -/
 
 vc-preamble: |-
 
@@ -69,23 +71,23 @@ vc-theorems: |-
     count_special_permutations n > 0 :=
     sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_special_permutations 2
+  -- #guard_msgs in
+  -- #eval count_special_permutations 2
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_special_permutations 3
+  -- #guard_msgs in
+  -- #eval count_special_permutations 3
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval count_special_permutations 4
+  -- #guard_msgs in
+  -- #eval count_special_permutations 4
 
 vc-postamble: |-
   -- Apps difficulty: interview

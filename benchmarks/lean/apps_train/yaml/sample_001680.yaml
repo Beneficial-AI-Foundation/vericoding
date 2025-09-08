@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A factorial (of a large number) will usually contain some trailing zeros.
   Your job is to make a function that calculates the number of trailing zeros, in any given base.
   
@@ -20,6 +21,7 @@ vc-description: |-
   Note: ```num``` will be a non-negative integer, ```base``` will be an integer larger or equal to two.
   
   HINT: Should you not make any headway after trying a long time, you should try [this kata](https://www.codewars.com/kata/number-of-trailing-zeros-of-n) first.
+  -/
 
 vc-preamble: |-
   def isqrt (n : Nat) : Nat := sorry 
@@ -46,23 +48,23 @@ vc-theorems: |-
     let r := isqrt n 
     (r + 1) * (r + 1) > n := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval trailing_zeros 15 10
+  -- #guard_msgs in
+  -- #eval trailing_zeros 15 10
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval trailing_zeros 7 2
+  -- #guard_msgs in
+  -- #eval trailing_zeros 7 2
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval trailing_zeros 30 10
+  -- #guard_msgs in
+  -- #eval trailing_zeros 30 10
 
 vc-postamble: |-
   -- Apps difficulty: interview

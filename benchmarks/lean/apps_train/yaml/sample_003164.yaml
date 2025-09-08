@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ### Longest Palindrome
   
   Find the length of the longest substring in the given string `s` that is the same in reverse.        
@@ -15,6 +16,7 @@ vc-description: |-
   "zzbaabcd" -> 4
   "" -> 0
   ```
+  -/
 
 vc-preamble: |-
 
@@ -55,23 +57,23 @@ vc-theorems: |-
     longest_palindrome s.toUpper ≥ longest_palindrome s :=
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval longest_palindrome "aab"
+  -- #guard_msgs in
+  -- #eval longest_palindrome "aab"
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval longest_palindrome "I like racecars that go fast"
+  -- #guard_msgs in
+  -- #eval longest_palindrome "I like racecars that go fast"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval longest_palindrome ""
+  -- #guard_msgs in
+  -- #eval longest_palindrome ""
 
 vc-postamble: |-
   -- Apps difficulty: introductory

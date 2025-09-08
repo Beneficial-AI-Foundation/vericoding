@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Prof. Sergio Marquina is a mathematics teacher at the University of Spain. Whenever he comes across any good question(with complexity k), he gives that question to students within roll number range i and j.
   At the start of the semester he assigns a score of 10 to every student in his class if a student submits a question of complexity k, his score gets multiplied by k.
   This month he gave M questions and he is wondering what will be mean of maximum scores of all the students. He is busy planning a tour of the Bank of Spain for his students, can you help him?
@@ -33,6 +34,7 @@ vc-description: |-
   after solving question 2 scores will be: [50,100,100,20,20]
   after solving question 1 scores will be: [50,100,700,140,20]
   Hence after all questions mean of maximum scores will (50+100+700+140+20)/5=202
+  -/
 
 vc-preamble: |-
 
@@ -56,23 +58,23 @@ vc-theorems: |-
   
   end ProfessorScores
   
-  /--
+  /-
   info: 202
   -/
-  #guard_msgs in
-  #eval solve_professor_scores 5 3 [(1, 3, 5), (2, 5, 2), (3, 4, 7)]
+  -- #guard_msgs in
+  -- #eval solve_professor_scores 5 3 [(1, 3, 5), (2, 5, 2), (3, 4, 7)]
   
-  /--
+  /-
   info: 50
   -/
-  #guard_msgs in
-  #eval solve_professor_scores 1 1 [(1, 1, 5)]
+  -- #guard_msgs in
+  -- #eval solve_professor_scores 1 1 [(1, 1, 5)]
   
-  /--
+  /-
   info: 60
   -/
-  #guard_msgs in
-  #eval solve_professor_scores 3 2 [(1, 3, 2), (1, 3, 3)]
+  -- #guard_msgs in
+  -- #eval solve_professor_scores 3 2 [(1, 3, 2), (1, 3, 3)]
 
 vc-postamble: |-
   -- Apps difficulty: interview

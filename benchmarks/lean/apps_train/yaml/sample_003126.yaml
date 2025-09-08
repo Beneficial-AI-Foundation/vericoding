@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this Kata, you will be given a number in form of a string and an integer `k` and your task is to insert `k` commas into the string and determine which of the partitions is the largest. 
   
   ```
@@ -12,6 +13,7 @@ vc-description: |-
   More examples in test cases. Good luck!
   
   Please also try [Simple remove duplicates](https://www.codewars.com/kata/5ba38ba180824a86850000f7)
+  -/
 
 vc-preamble: |-
 
@@ -43,23 +45,23 @@ vc-theorems: |-
       let substr := (num_str.take (i + partition_size)).drop i
       result ≥ substr.toNat! := sorry
   
-  /--
+  /-
   info: 234
   -/
-  #guard_msgs in
-  #eval solve "1234" 1
+  -- #guard_msgs in
+  -- #eval solve "1234" 1
   
-  /--
+  /-
   info: 34
   -/
-  #guard_msgs in
-  #eval solve "1234" 2
+  -- #guard_msgs in
+  -- #eval solve "1234" 2
   
-  /--
+  /-
   info: 202
   -/
-  #guard_msgs in
-  #eval solve "2020" 1
+  -- #guard_msgs in
+  -- #eval solve "2020" 1
 
 vc-postamble: |-
   -- Apps difficulty: introductory

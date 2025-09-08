@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Igor the analyst has adopted n little bunnies. As we all know, bunnies love carrots. Thus, Igor has bought a carrot to be shared between his bunnies. Igor wants to treat all the bunnies equally, and thus he wants to cut the carrot into n pieces of equal area. 
   
   Formally, the carrot can be viewed as an isosceles triangle with base length equal to 1 and height equal to h. Igor wants to make n - 1 cuts parallel to the base to cut the carrot into n pieces. He wants to make sure that all n pieces have the same area. Can you help Igor determine where to cut the carrot so that each piece have equal area?
@@ -33,6 +34,7 @@ vc-description: |-
   -----Note-----
   
   Definition of isosceles triangle: https://en.wikipedia.org/wiki/Isosceles_triangle.
+  -/
 
 vc-preamble: |-
   def calculate_cuts (n: Nat) (h: Float) : Array Float := 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Arkady needs your help again! This time he decided to build his own high-speed Internet exchange point. It should consist of n nodes connected with minimum possible number of wires into one network (a wire directly connects two nodes). Exactly k of the nodes should be exit-nodes, that means that each of them should be connected to exactly one other node of the network, while all other nodes should be connected to at least two nodes in order to increase the system stability.
   
   Arkady wants to make the system as fast as possible, so he wants to minimize the maximum distance between two exit-nodes. The distance between two nodes is the number of wires a package needs to go through between those two nodes.
@@ -43,6 +44,7 @@ vc-description: |-
   In the second example one of optimal networks is shown on the right picture.
   
   Exit-nodes are highlighted. [Image]
+  -/
 
 vc-preamble: |-
 
@@ -82,23 +84,23 @@ vc-theorems: |-
     (solve_network n k).min_dist ≤ (solve_network n (k-1)).min_dist :=
     sorry
   
-  /--
+  /-
   info: n - 1
   -/
-  #guard_msgs in
-  #eval len conns
+  -- #guard_msgs in
+  -- #eval len conns
   
-  /--
+  /-
   info: n - 1
   -/
-  #guard_msgs in
-  #eval len conns
+  -- #guard_msgs in
+  -- #eval len conns
   
-  /--
+  /-
   info: n - 1
   -/
-  #guard_msgs in
-  #eval len conns
+  -- #guard_msgs in
+  -- #eval len conns
 
 vc-postamble: |-
   -- Apps difficulty: competition

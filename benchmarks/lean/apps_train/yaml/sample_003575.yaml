@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Algorithmic predicament - Bug Fixing #9
   
   Oh no! Timmy's algorithim has gone wrong! help Timmy fix his algorithim! 
@@ -8,6 +9,7 @@ vc-description: |-
   
   You will receive two groups of `people` objects, with two properties `name` and `age`. The name property is a string and the age property is a number.  
   Your goal is to make the total the age of all people having the same name through both groups and return the name of the one with the highest age. If two names have the same total age return the first alphabetical name.
+  -/
 
 vc-preamble: |-
   def highest_age (persons1 persons2 : List Person) : Option String := sorry
@@ -50,23 +52,23 @@ vc-theorems: |-
     (∀ p, p ∈ persons2 ↔ p ∈ p2) →
     highest_age persons1 persons2 = highest_age p1 p2 := sorry
   
-  /--
+  /-
   info: 'alice'
   -/
-  #guard_msgs in
-  #eval highest_age [{"name": "kay", "age": 1}, {"name": "john", "age": 13}, {"name": "kay", "age": 76}] [{"name": "john", "age": 1}, {"name": "alice", "age": 77}]
+  -- #guard_msgs in
+  -- #eval highest_age [{"name": "kay", "age": 1}, {"name": "john", "age": 13}, {"name": "kay", "age": 76}] [{"name": "john", "age": 1}, {"name": "alice", "age": 77}]
   
-  /--
+  /-
   info: 'kay'
   -/
-  #guard_msgs in
-  #eval highest_age [{"name": "kay", "age": 1}, {"name": "john", "age": 13}, {"name": "kay", "age": 76}] [{"name": "john", "age": 1}, {"name": "alice", "age": 76}]
+  -- #guard_msgs in
+  -- #eval highest_age [{"name": "kay", "age": 1}, {"name": "john", "age": 13}, {"name": "kay", "age": 76}] [{"name": "john", "age": 1}, {"name": "alice", "age": 76}]
   
-  /--
+  /-
   info: 'kay'
   -/
-  #guard_msgs in
-  #eval highest_age [{"name": "kay", "age": 2}, {"name": "john", "age": 130}, {"name": "kay", "age": 130}] [{"name": "john", "age": 1}, {"name": "alice", "age": 76}]
+  -- #guard_msgs in
+  -- #eval highest_age [{"name": "kay", "age": 2}, {"name": "john", "age": 130}, {"name": "kay", "age": 130}] [{"name": "john", "age": 1}, {"name": "alice", "age": 76}]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Task
   
   You are given three non negative integers `a`, `b` and `n`, and making an infinite sequence just like fibonacci sequence, use the following rules:
@@ -30,6 +31,7 @@ vc-description: |-
   ---
   
   For `a = 0, b = 0 and n = 100000000` the output should be `0`, because all the digits in this sequence are `0`.
+  -/
 
 vc-preamble: |-
 
@@ -66,23 +68,23 @@ vc-theorems: |-
       find_nth_digit a b (20 + i) = find_nth_digit a b (40 + i) :=
     sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval find_nth_digit 7 8 9
+  -- #guard_msgs in
+  -- #eval find_nth_digit 7 8 9
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval find_nth_digit 0 0 1000000
+  -- #guard_msgs in
+  -- #eval find_nth_digit 0 0 1000000
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval find_nth_digit 1 2 4
+  -- #guard_msgs in
+  -- #eval find_nth_digit 1 2 4
 
 vc-postamble: |-
   -- Apps difficulty: introductory

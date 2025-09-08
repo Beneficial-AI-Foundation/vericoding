@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   [Langton's ant](https://en.wikipedia.org/wiki/Langton%27s_ant) is a two-dimensional Turing machine invented in the late 1980s. The ant starts out on a grid of black and white cells and follows a simple set of rules that has complex emergent behavior.
   
   ## Task
@@ -35,6 +36,7 @@ vc-description: |-
   ```
   
   Initially facing north (`0`), at the first iteration the ant turns right (because it stands on a white square, `1`), flips the square and moves forward.
+  -/
 
 vc-preamble: |-
   def ant (grid : List (List Int)) (col : Int) (row : Int) (steps : Int)

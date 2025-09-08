@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an absolute path for a file (Unix-style), simplify it.
   
   For example,
@@ -11,6 +12,7 @@ vc-description: |-
          In this case, you should return "/".
          Another corner case is the path might contain multiple slashes '/' together, such as "/home//foo/".
          In this case, you should ignore redundant slashes and return "/home/foo".
+  -/
 
 vc-preamble: |-
   def simplify_path (s : String) : String := sorry
@@ -51,23 +53,23 @@ vc-theorems: |-
     simplify_path "/" = "/"
     := sorry
   
-  /--
+  /-
   info: '/home'
   -/
-  #guard_msgs in
-  #eval simplify_path "/home/"
+  -- #guard_msgs in
+  -- #eval simplify_path "/home/"
   
-  /--
+  /-
   info: '/c'
   -/
-  #guard_msgs in
-  #eval simplify_path "/a/./b/../../c/"
+  -- #guard_msgs in
+  -- #eval simplify_path "/a/./b/../../c/"
   
-  /--
+  /-
   info: '/home/foo'
   -/
-  #guard_msgs in
-  #eval simplify_path "/home//foo/"
+  -- #guard_msgs in
+  -- #eval simplify_path "/home//foo/"
 
 vc-postamble: |-
   -- Apps difficulty: interview

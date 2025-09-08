@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef has decided to retire and settle near a peaceful beach. He had always been interested in literature & linguistics. Now when he has leisure time, he plans to read a lot of novels and understand structure of languages. Today he has decided to learn a difficult language called Smeagolese. Smeagolese is an exotic  language whose alphabet is lowercase and uppercase roman letters. Also every word on this alphabet is a meaningful word in Smeagolese. Chef, we all know is a fierce learner - he has given himself a tough exercise. He has taken a word and wants to determine all possible anagrams of the word which mean something in Smeagolese.  Can you help him ?
   
   -----Input-----
@@ -22,6 +23,7 @@ vc-description: |-
   60
   Description:
   In first case "ab" & "ba" are two different words. In third case, note that A & a are different alphabets and hence "Aa" & "aA" are different words.
+  -/
 
 vc-preamble: |-
   def count_anagrams (s : String) : Nat := sorry
@@ -42,29 +44,29 @@ vc-theorems: |-
   theorem count_anagrams_letter_order_invariant (s : String) (h : s.length > 0) :
     count_anagrams s = count_anagrams s := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_anagrams "ab"
+  -- #guard_msgs in
+  -- #eval count_anagrams "ab"
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_anagrams "aa"
+  -- #guard_msgs in
+  -- #eval count_anagrams "aa"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_anagrams "aA"
+  -- #guard_msgs in
+  -- #eval count_anagrams "aA"
   
-  /--
+  /-
   info: 60
   -/
-  #guard_msgs in
-  #eval count_anagrams "AAbaz"
+  -- #guard_msgs in
+  -- #eval count_anagrams "AAbaz"
 
 vc-postamble: |-
   -- Apps difficulty: interview

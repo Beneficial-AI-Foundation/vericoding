@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   One of the services provided by an operating system is memory management. The OS typically provides an API for allocating and releasing memory in a process's address space. A process should only read and write memory at addresses which have been allocated by the operating system. In this kata you will implement a simulation of a simple memory manager.
   
   The language you will be using has no low level memory API, so for our simulation we will simply use an array as the process address space. The memory manager constructor will accept an array (further referred to as `memory`) where blocks of indices will be allocated later.
@@ -22,6 +23,7 @@ vc-description: |-
   ## read(pointer)
   
   This method is the counterpart to `write`. Only indices within allocated blocks may be read. The `read` method accepts an index. If the `index` is within an allocated block, the value stored in `memory` at that index should be returned, or an exception should be thrown otherwise.
+  -/
 
 vc-preamble: |-
   def MemoryManager.init {α : Type} (memory : List α) : MemoryManager α := sorry
@@ -38,7 +40,7 @@ vc-definitions: |-
   def MemoryManager.release {α : Type} (mm : MemoryManager α) (pointer : Nat) : MemoryManager α := sorry
   def MemoryManager.allocate_multiple {α : Type} (mm : MemoryManager α) (sizes : List Nat) : List (Nat × Nat) := sorry
   
-  /-- Memory manager initialization preserves sizes and sets initial state -/
+  /- Memory manager initialization preserves sizes and sets initial state -/
 
 vc-theorems: |-
   theorem memory_manager_init {α : Type} {memory : List α} (h : memory.length > 0) :
@@ -48,7 +50,7 @@ vc-theorems: |-
     (mm.allocated = []) ∧
     (mm.data = memory) := sorry
   
-  /-- Allocation respects size bounds -/
+  /- Allocation respects size bounds -/
   
   theorem allocation_size_bounds {α : Type} {memory : List α} {size : Nat} 
     (h : memory.length > 0) :
@@ -62,7 +64,7 @@ vc-theorems: |-
         ((pointer, pointer + size) ∈ mm.allocated)
       | none => False := sorry
   
-  /-- Multiple allocations and releases maintain memory consistency -/
+  /- Multiple allocations and releases maintain memory consistency -/
   
   theorem multiple_allocations {α : Type} {memory : List α} {sizes : List Nat}
     (h : memory.length > 0) :
@@ -74,7 +76,7 @@ vc-theorems: |-
       (alloc ∈ mm.allocated) ∧
       (alloc ∉ (MemoryManager.release mm pointer).allocated) := sorry
   
-  /-- Memory read/write operations maintain expected behavior -/
+  /- Memory read/write operations maintain expected behavior -/
   
   theorem memory_operations {α : Type} {memory : List α} {size : Nat} {value : α}
     (h : memory.length > 0) (h₂ : size ≤ memory.length) :

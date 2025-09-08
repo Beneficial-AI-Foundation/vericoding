@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A new task for you!
   
   You have to create a method, that corrects a given time string.
@@ -18,6 +19,7 @@ vc-description: |-
   Have fun coding it and please don't forget to vote and rank this kata! :-) 
   
   I have created other katas. Have a look if you like coding and challenges.
+  -/
 
 vc-preamble: |-
 
@@ -69,23 +71,23 @@ vc-theorems: |-
     ∀ t, timeCorrect (some s) = some t →
     t.data.get! 2 = ':' ∧ t.data.get! 5 = ':' := sorry
   
-  /--
+  /-
   info: '09:10:01'
   -/
-  #guard_msgs in
-  #eval time_correct "09:10:01"
+  -- #guard_msgs in
+  -- #eval time_correct "09:10:01"
   
-  /--
+  /-
   info: '20:40:39'
   -/
-  #guard_msgs in
-  #eval time_correct "19:99:99"
+  -- #guard_msgs in
+  -- #eval time_correct "19:99:99"
   
-  /--
+  /-
   info: '00:01:01'
   -/
-  #guard_msgs in
-  #eval time_correct "24:01:01"
+  -- #guard_msgs in
+  -- #eval time_correct "24:01:01"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

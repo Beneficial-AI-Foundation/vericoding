@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Four-digit palindromes start with `[1001,1111,1221,1331,1441,1551,1551,...]` and the number at position `2` is `1111`.  
   
   You will be given two numbers `a` and `b`. Your task is to return the `a-digit` palindrome at position `b` if the palindromes were arranged in increasing order. 
@@ -12,6 +13,7 @@ vc-description: |-
   [Palindrome integer composition](https://www.codewars.com/kata/599b1a4a3c5292b4cc0000d5)
   
   [Life without primes](https://www.codewars.com/kata/59f8750ac374cba8f0000033)
+  -/
 
 vc-preamble: |-
   def palin (length pos : Nat) : Nat := sorry
@@ -30,23 +32,23 @@ vc-definitions: |-
     result = pos ∧ result < 10 := sorry
 
 vc-theorems: |-
-  /--
+  /-
   info: 22
   -/
-  #guard_msgs in
-  #eval palin 2 2
+  -- #guard_msgs in
+  -- #eval palin 2 2
   
-  /--
+  /-
   info: 1441
   -/
-  #guard_msgs in
-  #eval palin 4 5
+  -- #guard_msgs in
+  -- #eval palin 4 5
   
-  /--
+  /-
   info: 102201
   -/
-  #guard_msgs in
-  #eval palin 6 3
+  -- #guard_msgs in
+  -- #eval palin 6 3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

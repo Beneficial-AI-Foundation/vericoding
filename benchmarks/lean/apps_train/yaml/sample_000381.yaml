@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Define S = [s,n] as the string S which consists of n connected strings s. For example, ["abc", 3] ="abcabcabc". 
   On the other hand, we define that string s1 can be obtained from string s2 if we can remove some characters from s2 such that it becomes s1. For example, “abc”  can be obtained from “abdbec” based on our definition, but it can not be obtained from “acbbe”.
   You are given two non-empty strings s1 and s2 (each at most 100 characters long) and two integers 0 ≤ n1 ≤ 106 and 1 ≤ n2 ≤ 106. Now consider the strings S1 and S2, where S1=[s1,n1] and S2=[s2,n2]. Find the maximum integer M such that [S2,M] can be obtained from S1.
@@ -11,6 +12,7 @@ vc-description: |-
   
   Return:
   2
+  -/
 
 vc-preamble: |-
   def getMaxRepetitions (s1: String) (n1: Nat) (s2: String) (n2: Nat) : Nat :=
@@ -51,23 +53,23 @@ vc-theorems: |-
     getMaxRepetitions s1 n1 "c" 1 = 0 :=
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval getMaxRepetitions "acb" 4 "ab" 2
+  -- #guard_msgs in
+  -- #eval getMaxRepetitions "acb" 4 "ab" 2
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval getMaxRepetitions "aaa" 3 "aa" 1
+  -- #guard_msgs in
+  -- #eval getMaxRepetitions "aaa" 3 "aa" 1
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval getMaxRepetitions "baba" 2 "ba" 1
+  -- #guard_msgs in
+  -- #eval getMaxRepetitions "baba" 2 "ba" 1
 
 vc-postamble: |-
   -- Apps difficulty: interview

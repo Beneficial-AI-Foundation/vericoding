@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The only difference between easy and hard versions is constraints.
   
   The BerTV channel every day broadcasts one episode of one of the $k$ TV shows. You know the schedule for the next $n$ days: a sequence of integers $a_1, a_2, \dots, a_n$ ($1 \le a_i \le k$), where $a_i$ is the show, the episode of which will be shown in $i$-th day.
@@ -46,6 +47,7 @@ vc-description: |-
   In the third test case in the unique segment of four days, you have four different shows, so you need to buy a subscription to all these four shows.
   
   In the fourth test case, you can buy subscriptions to shows $3,5,7,8,9$, and you will be able to watch shows for the last eight days.
+  -/
 
 vc-preamble: |-
   def maximum (l : List Nat) : Nat :=
@@ -123,23 +125,23 @@ vc-theorems: |-
     result = min_unique :=
   sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_subscriptions 5 2 2 [1, 2, 1, 2, 1]
+  -- #guard_msgs in
+  -- #eval min_subscriptions 5 2 2 [1, 2, 1, 2, 1]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval min_subscriptions 9 3 3 [3, 3, 3, 2, 2, 2, 1, 1, 1]
+  -- #guard_msgs in
+  -- #eval min_subscriptions 9 3 3 [3, 3, 3, 2, 2, 2, 1, 1, 1]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval min_subscriptions 4 10 4 [10, 8, 6, 4]
+  -- #guard_msgs in
+  -- #eval min_subscriptions 4 10 4 [10, 8, 6, 4]
 
 vc-postamble: |-
   -- Apps difficulty: interview

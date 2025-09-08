@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Salmon runs a fish delivery company in Fish City. Fish City has $N$ vertical roads numbered $1, 2, ..., N$ from left to right, each spaced 1 unit apart; similarly, there are $M$ horizontal roads numbered $1, 2, ..., M$ from bottom to top, each spaced 1 unit apart. We will denote the intersection between the $x$-th vertical road and the $y$-th horizontal road as $(x, y)$. 
   Salmon has to make $K$ deliveries, with the $i$-th delivery starting at $(x_i, y_i)$ and ending at $(x'_i, y'_i)$. He can also travel every road with speed $0.5$ (meaning it would take him $2$ units of time to travel $1$ unit of distance). However, Salmon can bribe the mayor of Fish City and make the mayor change exactly one horizontal road to a highway, meaning the speed on that road would increase to $1$.
   He wants to choose a road to be a highway such that the sum of durations of all the deliveries is minimum possible. Help him find this minimum sum!
@@ -49,6 +50,7 @@ vc-description: |-
   - For the second delivery, we can go 7 units right taking 7 units of time.
   - For the third delivery, we can go 3 units to the right taking 3 units of time.
   Therefore, the total time taken is $13 + 7 + 3 = 23$.
+  -/
 
 vc-preamble: |-
   def abs (n : Nat) : Nat :=
@@ -86,17 +88,17 @@ vc-theorems: |-
         2 * (fst_minus x1 x2 + fst_minus y1 y2))) :=
   sorry
   
-  /--
+  /-
   info: 16
   -/
-  #guard_msgs in
-  #eval min_delivery_time 5 4 3 [[2, 3, 4, 1], [1, 4, 5, 2], [3, 3, 5, 3]]
+  -- #guard_msgs in
+  -- #eval min_delivery_time 5 4 3 [[2, 3, 4, 1], [1, 4, 5, 2], [3, 3, 5, 3]]
   
-  /--
+  /-
   info: 23
   -/
-  #guard_msgs in
-  #eval min_delivery_time 10 2 3 [[1, 2, 10, 2], [2, 1, 9, 1], [4, 1, 7, 1]]
+  -- #guard_msgs in
+  -- #eval min_delivery_time 10 2 3 [[1, 2, 10, 2], [2, 1, 9, 1], [4, 1, 7, 1]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

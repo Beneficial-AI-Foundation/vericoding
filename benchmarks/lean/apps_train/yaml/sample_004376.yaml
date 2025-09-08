@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Take an input string and return a string that is made up of the number of occurences of each english letter in the input followed by that letter, sorted alphabetically. The output string shouldn't contain chars missing from input (chars with 0 occurence); leave them out.
   
   An empty string, or one with no letters, should return an empty string.
@@ -15,6 +16,7 @@ vc-description: |-
   ""                          ==>  ""
   "555"                       ==>  ""
   ```
+  -/
 
 vc-preamble: |-
 
@@ -46,23 +48,23 @@ vc-theorems: |-
     let letters := (string_letter_count s).data.filter Char.isAlpha
     List.Pairwise (· ≤ ·) letters := by sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval string_letter_count "The quick brown fox jumps over the lazy dog."
+  -- #guard_msgs in
+  -- #eval string_letter_count "The quick brown fox jumps over the lazy dog."
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval string_letter_count "This is a test sentence."
+  -- #guard_msgs in
+  -- #eval string_letter_count "This is a test sentence."
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval string_letter_count ""
+  -- #guard_msgs in
+  -- #eval string_letter_count ""
 
 vc-postamble: |-
   -- Apps difficulty: introductory

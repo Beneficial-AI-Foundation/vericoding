@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There is no single treatment that works for every phobia, but some people cure it by being gradually exposed to the phobic situation or object. In this kata we will try curing arachnophobia by drawing primitive spiders.
   
   Our spiders will have legs, body, eyes and a mouth. Here are some examples:
@@ -18,6 +19,7 @@ vc-description: |-
   **Note:** the eyes are symmetric, and their total amount is `2 to the power of body size`.
   
   You will also be given only valid data. That's it for the instructions, you can start coding!
+  -/
 
 vc-preamble: |-
 
@@ -51,23 +53,23 @@ vc-theorems: |-
     | _ => True
     := sorry
   
-  /--
+  /-
   info: '^(oWo)^'
   -/
-  #guard_msgs in
-  #eval draw_spider 1 1 "W" "o"
+  -- #guard_msgs in
+  -- #eval draw_spider 1 1 "W" "o"
   
-  /--
+  /-
   info: '/\\((OOwOO))/\\'
   -/
-  #guard_msgs in
-  #eval draw_spider 2 2 "w" "O"
+  -- #guard_msgs in
+  -- #eval draw_spider 2 2 "w" "O"
   
-  /--
+  /-
   info: '/╲(((0000w0000)))╱\\'
   -/
-  #guard_msgs in
-  #eval draw_spider 3 3 "w" "0"
+  -- #guard_msgs in
+  -- #eval draw_spider 3 3 "w" "0"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

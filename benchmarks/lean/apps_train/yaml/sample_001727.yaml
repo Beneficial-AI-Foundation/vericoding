@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a 2D array and a number of generations, compute n timesteps of [Conway's Game of Life](http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life).
   
   The rules of the game are:
@@ -19,6 +20,7 @@ vc-description: |-
   ~~~if:c
   In **C**, the initial dimensions of the GoL universe is passed into your function *by reference* via the pointers `rowptr` and `colptr`.  When expanding/contracting the GoL universe, please keep track of the dimensions of the modified grid through these two variables.
   ~~~
+  -/
 
 vc-preamble: |-
   def trim : List (List Nat) → List (List Nat) := sorry

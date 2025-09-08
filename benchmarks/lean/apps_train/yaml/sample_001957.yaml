@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Doubly linked list is one of the fundamental data structures. A doubly linked list is a sequence of elements, each containing information about the previous and the next elements of the list. In this problem all lists have linear structure. I.e. each element except the first has exactly one previous element, each element except the last has exactly one next element. The list is not closed in a cycle.
   
   In this problem you are given n memory cells forming one or more doubly linked lists. Each cell contains information about element from some list. Memory cells are numbered from 1 to n.
@@ -44,6 +45,7 @@ vc-description: |-
   3 2
   2 4
   1 0
+  -/
 
 vc-preamble: |-
   def unite_linked_lists (n : Nat) (arr : List (List Nat)) : List (List Nat) :=

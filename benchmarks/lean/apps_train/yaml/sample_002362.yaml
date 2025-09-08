@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given an array A of strings.
   A move onto S consists of swapping any two even indexed characters of S, or any two odd indexed characters of S.
   Two strings S and T are special-equivalent if after any number of moves onto S, S == T.
@@ -28,6 +29,7 @@ vc-description: |-
   1 <= A[i].length <= 20
   All A[i] have the same length.
   All A[i] consist of only lowercase letters.
+  -/
 
 vc-preamble: |-
   def numSpecialEquivGroups (strings : List String) : Nat :=
@@ -70,23 +72,23 @@ vc-theorems: |-
     numSpecialEquivGroups strings = numSpecialEquivGroups strings.reverse :=
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval numSpecialEquivGroups ["abcd", "cdab", "cbad", "xyzz", "zzxy", "zzyx"]
+  -- #guard_msgs in
+  -- #eval numSpecialEquivGroups ["abcd", "cdab", "cbad", "xyzz", "zzxy", "zzyx"]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval numSpecialEquivGroups ["abc", "acb", "bac", "bca", "cab", "cba"]
+  -- #guard_msgs in
+  -- #eval numSpecialEquivGroups ["abc", "acb", "bac", "bca", "cab", "cba"]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval numSpecialEquivGroups ["aa", "bb", "ab", "ba"]
+  -- #guard_msgs in
+  -- #eval numSpecialEquivGroups ["aa", "bb", "ab", "ba"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

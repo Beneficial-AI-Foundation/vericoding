@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Story
   
   You and a group of friends are earning some extra money in the school holidays by re-painting the numbers on people's letterboxes for a small fee.
@@ -35,6 +36,7 @@ vc-description: |-
   
   * 0 < ```start``` <= ```end```
   * In C, the returned value will be free'd.
+  -/
 
 vc-preamble: |-
   def paint_letterboxes (start: Nat) (finish: Nat) : List Nat := sorry
@@ -64,17 +66,17 @@ vc-theorems: |-
   theorem paint_letterboxes_non_negative {a b : Nat} :
     ∀ x ∈ paint_letterboxes a b, x ≥ 0 := sorry
   
-  /--
+  /-
   info: [1, 9, 6, 3, 0, 1, 1, 1, 1, 1]
   -/
-  #guard_msgs in
-  #eval paint_letterboxes 125 132
+  -- #guard_msgs in
+  -- #eval paint_letterboxes 125 132
   
-  /--
+  /-
   info: [2, 2, 0, 0, 0, 0, 0, 0, 0, 0]
   -/
-  #guard_msgs in
-  #eval paint_letterboxes 1001 1001
+  -- #guard_msgs in
+  -- #eval paint_letterboxes 1001 1001
 
 vc-postamble: |-
   -- Apps difficulty: introductory

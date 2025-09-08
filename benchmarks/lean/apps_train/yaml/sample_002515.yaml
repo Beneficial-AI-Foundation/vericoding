@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Function Descriptions=====
   Python has built-in string validation methods for basic data. It can check if a string is composed of alphabetical characters, alphanumeric characters, digits, etc.
   
@@ -58,6 +59,7 @@ vc-description: |-
   In the third line, print True if S has any digits. Otherwise, print False.
   In the fourth line, print True if S has any lowercase characters. Otherwise, print False.
   In the fifth line, print True if S has any uppercase characters. Otherwise, print False.
+  -/
 
 vc-preamble: |-
   def isAlnum (c : Char) : Bool := sorry

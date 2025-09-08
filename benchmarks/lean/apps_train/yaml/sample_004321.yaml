@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The [Ones' Complement](https://en.wikipedia.org/wiki/Ones%27_complement) of a binary number is the number obtained by swapping all the 0s for 1s and all the 1s for 0s. For example:
   
   ```
@@ -7,6 +8,7 @@ vc-description: |-
   ```
   
   For any given binary number,formatted as a string, return the Ones' Complement of that number.
+  -/
 
 vc-preamble: |-
 
@@ -33,23 +35,23 @@ vc-theorems: |-
   theorem ones_complement_empty :
     ones_complement "" = "" := sorry
   
-  /--
+  /-
   info: '1'
   -/
-  #guard_msgs in
-  #eval ones_complement "0"
+  -- #guard_msgs in
+  -- #eval ones_complement "0"
   
-  /--
+  /-
   info: '0'
   -/
-  #guard_msgs in
-  #eval ones_complement "1"
+  -- #guard_msgs in
+  -- #eval ones_complement "1"
   
-  /--
+  /-
   info: '0010'
   -/
-  #guard_msgs in
-  #eval ones_complement "1101"
+  -- #guard_msgs in
+  -- #eval ones_complement "1101"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

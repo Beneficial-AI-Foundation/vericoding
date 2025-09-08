@@ -1,7 +1,9 @@
 vc-description: |-
+  /-
   Implement a class/function, which should parse time expressed as `HH:MM:SS`, or `null/nil/None` otherwise.
   
   Any extra characters, or minutes/seconds higher than 59 make the input invalid, and so should return `null/nil/None`.
+  -/
 
 vc-preamble: |-
   def toString (h : String) (m : String) (s : String) : String := sorry
@@ -58,23 +60,23 @@ vc-theorems: |-
     toSeconds s = none :=
   sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval to_seconds "00:00:00"
+  -- #guard_msgs in
+  -- #eval to_seconds "00:00:00"
   
-  /--
+  /-
   info: 3723
   -/
-  #guard_msgs in
-  #eval to_seconds "01:02:03"
+  -- #guard_msgs in
+  -- #eval to_seconds "01:02:03"
   
-  /--
+  /-
   info: 359999
   -/
-  #guard_msgs in
-  #eval to_seconds "99:59:59"
+  -- #guard_msgs in
+  -- #eval to_seconds "99:59:59"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this Kata, you will be given a string that may have mixed uppercase and lowercase letters and your task is to convert that string to either lowercase only or uppercase only based on: 
   
   * make as few changes as possible. 
@@ -18,6 +19,7 @@ vc-description: |-
   [Simple time difference](https://www.codewars.com/kata/5b76a34ff71e5de9db0000f2)
   
   [Simple remove duplicates](https://www.codewars.com/kata/5ba38ba180824a86850000f7)
+  -/
 
 vc-preamble: |-
   def solve (s : String) : String := sorry
@@ -44,23 +46,23 @@ vc-theorems: |-
   theorem solve_preserves_length (s : String) :
     (solve s).length = s.length := sorry
   
-  /--
+  /-
   info: 'code'
   -/
-  #guard_msgs in
-  #eval solve "coDe"
+  -- #guard_msgs in
+  -- #eval solve "coDe"
   
-  /--
+  /-
   info: 'CODE'
   -/
-  #guard_msgs in
-  #eval solve "CODe"
+  -- #guard_msgs in
+  -- #eval solve "CODe"
   
-  /--
+  /-
   info: 'code'
   -/
-  #guard_msgs in
-  #eval solve "coDE"
+  -- #guard_msgs in
+  -- #eval solve "coDE"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   If the first day of the month is a Friday, it is likely that the month will have an `Extended Weekend`. That is, it could have five Fridays, five Saturdays and five Sundays. 
   
   In this Kata, you will be given a start year and an end year. Your task will be to find months that have extended weekends and return:
@@ -15,6 +16,7 @@ vc-description: |-
   More examples in test cases. Good luck!
   
   If you found this Kata easy, please try [myjinxin2015](https://www.codewars.com/users/myjinxin2015) challenge version [here](https://www.codewars.com/kata/extended-weekends-challenge-edition)
+  -/
 
 vc-preamble: |-
   def monthAbbr : Month → String
@@ -67,23 +69,23 @@ vc-theorems: |-
     result.2.2 > 0 :=
   sorry
   
-  /--
+  /-
   info: ('Jan', 'May', 5)
   -/
-  #guard_msgs in
-  #eval solve 2016 2020
+  -- #guard_msgs in
+  -- #eval solve 2016 2020
   
-  /--
+  /-
   info: ('Mar', 'Dec', 51)
   -/
-  #guard_msgs in
-  #eval solve 1900 1950
+  -- #guard_msgs in
+  -- #eval solve 1900 1950
   
-  /--
+  /-
   info: ('Aug', 'Oct', 702)
   -/
-  #guard_msgs in
-  #eval solve 1800 2500
+  -- #guard_msgs in
+  -- #eval solve 1800 2500
 
 vc-postamble: |-
   -- Apps difficulty: introductory

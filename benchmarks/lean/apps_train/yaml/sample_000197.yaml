@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given n, how many structurally unique BST's (binary search trees) that store values 1 ... n?
   
   Example:
@@ -13,6 +14,7 @@ vc-description: |-
        3     2     1      1   3      2
       /     /       \                 \
      2     1         2                 3
+  -/
 
 vc-preamble: |-
 
@@ -48,23 +50,23 @@ vc-theorems: |-
     num_unique_bst 6 = 132 ∧
     num_unique_bst 7 = 429 := sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval num_unique_bst 3
+  -- #guard_msgs in
+  -- #eval num_unique_bst 3
   
-  /--
+  /-
   info: 14
   -/
-  #guard_msgs in
-  #eval num_unique_bst 4
+  -- #guard_msgs in
+  -- #eval num_unique_bst 4
   
-  /--
+  /-
   info: 42
   -/
-  #guard_msgs in
-  #eval num_unique_bst 5
+  -- #guard_msgs in
+  -- #eval num_unique_bst 5
 
 vc-postamble: |-
   -- Apps difficulty: interview

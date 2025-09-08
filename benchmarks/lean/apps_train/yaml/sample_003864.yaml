@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We have the following recursive function:
   
   The 15-th term; ```f(14)``` is the first term in having more that 100 digits.
@@ -25,6 +26,7 @@ vc-description: |-
   Happy coding!!!
   
   And the name for this kata? You have three words of the same meaning in Asian Languages.
+  -/
 
 vc-preamble: |-
 
@@ -48,23 +50,23 @@ vc-theorems: |-
     (somethingAcci n).2 ≥ (somethingAcci (n-1)).2 :=
     sorry
   
-  /--
+  /-
   info: (10, 8)
   -/
-  #guard_msgs in
-  #eval something_acci 5
+  -- #guard_msgs in
+  -- #eval something_acci 5
   
-  /--
+  /-
   info: (11, 14)
   -/
-  #guard_msgs in
-  #eval something_acci 10
+  -- #guard_msgs in
+  -- #eval something_acci 10
   
-  /--
+  /-
   info: (12, 25)
   -/
-  #guard_msgs in
-  #eval something_acci 20
+  -- #guard_msgs in
+  -- #eval something_acci 20
 
 vc-postamble: |-
   -- Apps difficulty: introductory

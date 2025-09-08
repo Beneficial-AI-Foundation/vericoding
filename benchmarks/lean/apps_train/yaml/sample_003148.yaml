@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   An anagram is a word, a phrase, or a sentence formed from another by rearranging its letters. An example of this is "angel", which is an anagram of "glean".
   
   Write a function that receives an array of words, and returns the total number of distinct pairs of anagramic words inside it.
@@ -7,6 +8,7 @@ vc-description: |-
   
   - There are 2 anagrams in the array `["dell", "ledl", "abc", "cba"]`
   - There are 7 anagrams in the array `["dell", "ledl", "abc", "cba", "bca", "bac"]`
+  -/
 
 vc-preamble: |-
 
@@ -33,23 +35,23 @@ vc-theorems: |-
   theorem empty_list_property :
     anagram_counter [] = 0 := by sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval anagram_counter []
+  -- #guard_msgs in
+  -- #eval anagram_counter []
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval anagram_counter ["dell", "ledl", "abc", "cba"]
+  -- #guard_msgs in
+  -- #eval anagram_counter ["dell", "ledl", "abc", "cba"]
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval anagram_counter ["dell", "ledl", "abc", "cba", "bca", "bac"]
+  -- #guard_msgs in
+  -- #eval anagram_counter ["dell", "ledl", "abc", "cba", "bca", "bac"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given 2 numbers is `n` and `k`. You need to find the number of integers between 1 and n (inclusive) that contains exactly `k` non-zero digit.
   
   Example1 
@@ -22,6 +23,7 @@ vc-description: |-
   `1≤n<pow(10,100)`
   
   `1≤k≤100`
+  -/
 
 vc-preamble: |-
   def almost_everywhere_zero (n : Nat) (k : Nat) : Nat :=
@@ -63,23 +65,23 @@ vc-theorems: |-
     almost_everywhere_zero n 1 ≥ num_digits n :=
   sorry
   
-  /--
+  /-
   info: 19
   -/
-  #guard_msgs in
-  #eval almost_everywhere_zero 100 1
+  -- #guard_msgs in
+  -- #eval almost_everywhere_zero 100 1
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval almost_everywhere_zero 11 2
+  -- #guard_msgs in
+  -- #eval almost_everywhere_zero 11 2
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval almost_everywhere_zero 20 2
+  -- #guard_msgs in
+  -- #eval almost_everywhere_zero 20 2
 
 vc-postamble: |-
   -- Apps difficulty: interview

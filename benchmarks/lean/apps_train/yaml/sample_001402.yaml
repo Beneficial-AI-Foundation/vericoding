@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef has a sequence $A_1, A_2, \ldots, A_N$; each element of this sequence is either $0$ or $1$. Appy gave him a string $S$ with length $Q$ describing a sequence of queries. There are two types of queries:
   - '!': right-shift the sequence $A$, i.e. replace $A$ by another sequence $B_1, B_2, \ldots, B_N$ satisfying $B_{i+1} = A_i$ for each valid $i$ and $B_1 = A_N$
   - '?': find the length of the longest contiguous subsequence of $A$ with length $\le K$ such that each element of this subsequence is equal to $1$
@@ -40,6 +41,7 @@ vc-description: |-
   - In the third query, the longest contiguous subsequence containing only $1$-s is $A_1, A_2, A_3$.
   - After the fourth query, $A = [1, 1, 1, 1, 0]$.
   - In the fifth query, the longest contiguous subsequence containing only $1$-s is $A_1, A_2, A_3, A_4$ with length $4$. However, we only want subsequences with lengths $\le K$. One of the longest such subsequences is $A_2, A_3, A_4$, with length $3$.
+  -/
 
 vc-preamble: |-
   def longest_contiguous_subsequence (N Q K : Nat) (A : List Nat) (S : String) : List Nat :=
@@ -86,23 +88,23 @@ vc-theorems: |-
     (longest_contiguous_subsequence N 1 K A "?")[0]! = min (count_max_consecutive_ones A) K :=
   sorry
   
-  /--
+  /-
   info: [2, 3, 3]
   -/
-  #guard_msgs in
-  #eval longest_contiguous_subsequence 5 5 3 [1, 1, 0, 1, 1] "?!?!?"
+  -- #guard_msgs in
+  -- #eval longest_contiguous_subsequence 5 5 3 [1, 1, 0, 1, 1] "?!?!?"
   
-  /--
+  /-
   info: [1, 1, 1]
   -/
-  #guard_msgs in
-  #eval longest_contiguous_subsequence 3 3 2 [1, 0, 1] "???"
+  -- #guard_msgs in
+  -- #eval longest_contiguous_subsequence 3 3 2 [1, 0, 1] "???"
   
-  /--
+  /-
   info: [4, 4]
   -/
-  #guard_msgs in
-  #eval longest_contiguous_subsequence 4 2 4 [1, 1, 1, 1] "??"
+  -- #guard_msgs in
+  -- #eval longest_contiguous_subsequence 4 2 4 [1, 1, 1, 1] "??"
 
 vc-postamble: |-
   -- Apps difficulty: interview

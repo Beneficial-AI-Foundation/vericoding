@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Problem Statement=====
   You are given a positive integer N. Print a numerical triangle of height N - 1 like the one below:
   1
@@ -22,6 +23,7 @@ vc-description: |-
   
   =====Output Format=====
   Print N - 1 lines as explained above.
+  -/
 
 vc-preamble: |-
   def numerical_triangle (n: Nat) : String := sorry
@@ -58,23 +60,23 @@ vc-theorems: |-
       line.allDigits ∧
       (∃ num, line.toNat = some num ∧ num > 0) := sorry
   
-  /--
+  /-
   info: '1\n22\n333\n4444'
   -/
-  #guard_msgs in
-  #eval numerical_triangle 5
+  -- #guard_msgs in
+  -- #eval numerical_triangle 5
   
-  /--
+  /-
   info: '1\n22'
   -/
-  #guard_msgs in
-  #eval numerical_triangle 3
+  -- #guard_msgs in
+  -- #eval numerical_triangle 3
   
-  /--
+  /-
   info: '1'
   -/
-  #guard_msgs in
-  #eval numerical_triangle 2
+  -- #guard_msgs in
+  -- #eval numerical_triangle 2
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Karen has just arrived at school, and she has a math test today! [Image] 
   
   The test is about basic addition and subtraction. Unfortunately, the teachers were too busy writing tasks for Codeforces rounds, and had no time to make an actual test. So, they just put one question in the test that is worth all the points.
@@ -53,6 +54,7 @@ vc-description: |-
   Karen performs the operations as follows: [Image] 
   
   The non-negative remainder after dividing the final number by 10^9 + 7 is 10^9 + 6, so this is the correct output.
+  -/
 
 vc-preamble: |-
   def solve_alternative_math (nums : List Nat) : Nat :=
@@ -82,23 +84,23 @@ vc-theorems: |-
     solve_alternative_math nums < MOD :=
     sorry
   
-  /--
+  /-
   info: 36
   -/
-  #guard_msgs in
-  #eval solve_alternative_math [3, 6, 9, 12, 15]
+  -- #guard_msgs in
+  -- #eval solve_alternative_math [3, 6, 9, 12, 15]
   
-  /--
+  /-
   info: 1000000006
   -/
-  #guard_msgs in
-  #eval solve_alternative_math [3, 7, 5, 2]
+  -- #guard_msgs in
+  -- #eval solve_alternative_math [3, 7, 5, 2]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve_alternative_math [1]
+  -- #guard_msgs in
+  -- #eval solve_alternative_math [1]
 
 vc-postamble: |-
   -- Apps difficulty: competition

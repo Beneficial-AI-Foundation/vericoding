@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are playing a variation of game 2048. Initially you have a multiset $s$ of $n$ integers. Every integer in this multiset is a power of two. 
   
   You may perform any number (possibly, zero) operations with this multiset.
@@ -56,6 +57,7 @@ vc-description: |-
   In the first query you can win as follows: choose $512$ and $512$, and $s$ turns into $\{1024, 64, 1024\}$. Then choose $1024$ and $1024$, and $s$ turns into $\{2048, 64\}$ and you win.
   
   In the second query $s$ contains $2048$ initially.
+  -/
 
 vc-preamble: |-
 
@@ -91,23 +93,23 @@ vc-theorems: |-
   
   end GameTheory
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval can_win [1024, 512, 64, 512]
+  -- #guard_msgs in
+  -- #eval can_win [1024, 512, 64, 512]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval can_win [64, 512, 2]
+  -- #guard_msgs in
+  -- #eval can_win [64, 512, 2]
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval can_win [2048, 4096]
+  -- #guard_msgs in
+  -- #eval can_win [2048, 4096]
 
 vc-postamble: |-
   -- Apps difficulty: interview

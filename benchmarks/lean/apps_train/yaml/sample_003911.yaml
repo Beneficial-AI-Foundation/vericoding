@@ -1,9 +1,11 @@
 vc-description: |-
+  /-
   Write a program to determine if a string contains only unique characters.
   Return true if it does and false otherwise.
   
   The string may contain any of the 128 ASCII characters.
   Characters are case-sensitive, e.g. 'a' and 'A' are considered different characters.
+  -/
 
 vc-preamble: |-
 
@@ -35,23 +37,23 @@ vc-theorems: |-
     (h3 : ∀ x ∈ s1.data, ∀ y ∈ s2.data, x ≠ y) :
     has_unique_chars (s1 ++ s2) = true := sorry
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval has_unique_chars "  nAa"
+  -- #guard_msgs in
+  -- #eval has_unique_chars "  nAa"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval has_unique_chars "abcdef"
+  -- #guard_msgs in
+  -- #eval has_unique_chars "abcdef"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval has_unique_chars "++-"
+  -- #guard_msgs in
+  -- #eval has_unique_chars "++-"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

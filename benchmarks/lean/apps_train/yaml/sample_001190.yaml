@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   AND gates and OR gates are basic components used in building digital circuits. Both gates have two input lines and one output line. The output of an AND gate is 1 if both inputs are 1, otherwise the output is 0. The output of an OR gate is 1 if at least one input is 1, otherwise the output is 0.
   
   You are given a digital circuit composed of only AND and OR gates where one node (gate or input) is specially designated as the output. Furthermore, for any gate G and any input node I, at most one of the inputs to G depends on the value of node I.
@@ -79,6 +80,7 @@ vc-description: |-
   10 & 0\\ 
   0 & 5
   \end{array}\right)
+  -/
 
 vc-preamble: |-
   def parseNode (spec : Nat ⊕ (Nat × Nat × Nat)) : Node :=

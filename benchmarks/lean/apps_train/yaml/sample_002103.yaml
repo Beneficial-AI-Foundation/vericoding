@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Writing light novels is the most important thing in Linova's life. Last night, Linova dreamed about a fantastic kingdom. She began to write a light novel for the kingdom as soon as she woke up, and of course, she is the queen of it.
   
   [Image] 
@@ -67,6 +68,7 @@ vc-description: |-
   [Image]
   
   In the second example, choosing cities $3$, $4$ developing industry can reach a sum of $3$, but remember that Linova plans to choose exactly $k$ cities developing industry, then the maximum sum is $2$.
+  -/
 
 vc-preamble: |-
   def isValidTree (n : Nat) (edges : List (Nat × Nat)) : Bool :=
@@ -98,23 +100,23 @@ vc-theorems: |-
     maxHappiness n k edges = 0 :=
   sorry
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval max_happiness 7 4 [(1, 2), (1, 3), (1, 4), (3, 5), (3, 6), (4, 7)]
+  -- #guard_msgs in
+  -- #eval max_happiness 7 4 [(1, 2), (1, 3), (1, 4), (3, 5), (3, 6), (4, 7)]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval max_happiness 4 1 [(1, 2), (1, 3), (2, 4)]
+  -- #guard_msgs in
+  -- #eval max_happiness 4 1 [(1, 2), (1, 3), (2, 4)]
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval max_happiness 8 5 [(7, 5), (1, 7), (6, 1), (3, 7), (8, 3), (2, 1), (4, 5)]
+  -- #guard_msgs in
+  -- #eval max_happiness 8 5 [(7, 5), (1, 7), (6, 1), (3, 7), (8, 3), (2, 1), (4, 5)]
 
 vc-postamble: |-
   -- Apps difficulty: competition

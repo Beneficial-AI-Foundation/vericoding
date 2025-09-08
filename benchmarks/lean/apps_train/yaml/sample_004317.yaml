@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Letterss of Natac
   In a game I just made up that doesn’t have anything to do with any other game that you may or may not have played, you collect resources on each turn and then use those resources to build things like roads, settlements and cities. If you would like to try other kata about this game, they can be found **[here](https://www.codewars.com/collections/59e6938afc3c49005900011f)**
   
@@ -23,6 +24,7 @@ vc-description: |-
   4. You do not have to test for whether a hand or play is valid. 
   5. A hand can be empty, but a play can't. In the event a hand is empty, you don't have the cards to play, so return `(False, "")`, in the correct data structure for your language, see example 4 above.
   6. Tests include hand sizes of up to 150000 elements and play sizes up to 10000 elements.
+  -/
 
 vc-preamble: |-
   def play_if_enough (hand play : String) : Bool × String :=
@@ -67,23 +69,23 @@ vc-theorems: |-
     ¬res.1 ∧ res.2 = hand :=
     sorry
   
-  /--
+  /-
   info: (False, '')
   -/
-  #guard_msgs in
-  #eval play_if_enough "" "bw"
+  -- #guard_msgs in
+  -- #eval play_if_enough "" "bw"
   
-  /--
+  /-
   info: (True, 'oogssbbb')
   -/
-  #guard_msgs in
-  #eval play_if_enough "ooooogggssbbb" "ooogg"
+  -- #guard_msgs in
+  -- #eval play_if_enough "ooooogggssbbb" "ooogg"
   
-  /--
+  /-
   info: (False, 'oogssbbb')
   -/
-  #guard_msgs in
-  #eval play_if_enough "oogssbbb" "bwsg"
+  -- #guard_msgs in
+  -- #eval play_if_enough "oogssbbb" "bwsg"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   [Generala](https://en.wikipedia.org/wiki/Generala) is a dice game popular in South America. It's very similar to [Yahtzee](https://en.wikipedia.org/wiki/Yahtzee) but with a different scoring approach. It is played with 5 dice, and the possible results are:
   
   | Result        | Points | Rules                                                                                                                                          | Samples                            |
@@ -15,6 +16,7 @@ vc-description: |-
   
    * String of length 5,
    * Each character will be a number between `1` and `6`
+  -/
 
 vc-preamble: |-
 
@@ -60,71 +62,71 @@ vc-theorems: |-
     points dice₁ = points dice₂ :=
   sorry
   
-  /--
+  /-
   info: 50
   -/
-  #guard_msgs in
-  #eval points "55555"
+  -- #guard_msgs in
+  -- #eval points "55555"
   
-  /--
+  /-
   info: 50
   -/
-  #guard_msgs in
-  #eval points "44444"
+  -- #guard_msgs in
+  -- #eval points "44444"
   
-  /--
+  /-
   info: 40
   -/
-  #guard_msgs in
-  #eval points "44441"
+  -- #guard_msgs in
+  -- #eval points "44441"
   
-  /--
+  /-
   info: 40
   -/
-  #guard_msgs in
-  #eval points "33233"
+  -- #guard_msgs in
+  -- #eval points "33233"
   
-  /--
+  /-
   info: 30
   -/
-  #guard_msgs in
-  #eval points "12121"
+  -- #guard_msgs in
+  -- #eval points "12121"
   
-  /--
+  /-
   info: 30
   -/
-  #guard_msgs in
-  #eval points "44455"
+  -- #guard_msgs in
+  -- #eval points "44455"
   
-  /--
+  /-
   info: 20
   -/
-  #guard_msgs in
-  #eval points "12345"
+  -- #guard_msgs in
+  -- #eval points "12345"
   
-  /--
+  /-
   info: 20
   -/
-  #guard_msgs in
-  #eval points "23456"
+  -- #guard_msgs in
+  -- #eval points "23456"
   
-  /--
+  /-
   info: 20
   -/
-  #guard_msgs in
-  #eval points "34561"
+  -- #guard_msgs in
+  -- #eval points "34561"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval points "44421"
+  -- #guard_msgs in
+  -- #eval points "44421"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval points "61623"
+  -- #guard_msgs in
+  -- #eval points "61623"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

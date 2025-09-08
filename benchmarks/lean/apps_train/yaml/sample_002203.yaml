@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Takahashi has an ability to generate a tree using a permutation (p_1,p_2,...,p_n) of (1,2,...,n), in the following process:
   First, prepare Vertex 1, Vertex 2, ..., Vertex N.
   For each i=1,2,...,n, perform the following operation:
@@ -43,6 +44,7 @@ vc-description: |-
   If the permutation (1, 2, 4, 5, 3, 6) is used to generate a tree, it looks as follows:
   
   This is isomorphic to the given graph.
+  -/
 
 vc-preamble: |-
   def solve_tree_problem (n : Nat) (edges : List Edge) : List Nat :=

@@ -1,5 +1,7 @@
 vc-description: |-
+  /-
   Implement the function which should return `true` if given object is a vowel (meaning `a, e, i, o, u`), and `false` otherwise.
+  -/
 
 vc-preamble: |-
 
@@ -31,29 +33,29 @@ vc-theorems: |-
   theorem multiple_chars_are_false {s : String} :
     s.length ≥ 2 → ¬is_vowel s := sorry
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_vowel ""
+  -- #guard_msgs in
+  -- #eval is_vowel ""
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_vowel "a"
+  -- #guard_msgs in
+  -- #eval is_vowel "a"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_vowel "E"
+  -- #guard_msgs in
+  -- #eval is_vowel "E"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_vowel "z"
+  -- #guard_msgs in
+  -- #eval is_vowel "z"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

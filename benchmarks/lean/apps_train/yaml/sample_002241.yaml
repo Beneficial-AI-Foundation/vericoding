@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A bitstring is a string consisting only of the characters 0 and 1. A bitstring is called $k$-balanced if every substring of size $k$ of this bitstring has an equal amount of 0 and 1 characters ($\frac{k}{2}$ of each).
   
   You are given an integer $k$ and a string $s$ which is composed only of characters 0, 1, and ?. You need to determine whether you can make a $k$-balanced bitstring by replacing every ? characters in $s$ with either 0 or 1.
@@ -61,6 +62,7 @@ vc-description: |-
   For the fourth test case, the string can be transformed into 0110.
   
   For the fifth test case, the string can be transformed into 1100110.
+  -/
 
 vc-preamble: |-
 
@@ -95,23 +97,23 @@ vc-theorems: |-
     can_make_balanced n k pattern = "YES" :=
     sorry
   
-  /--
+  /-
   info: 'YES'
   -/
-  #guard_msgs in
-  #eval can_make_balanced 6 4 "100110"
+  -- #guard_msgs in
+  -- #eval can_make_balanced 6 4 "100110"
   
-  /--
+  /-
   info: 'YES'
   -/
-  #guard_msgs in
-  #eval can_make_balanced 3 2 "1?1"
+  -- #guard_msgs in
+  -- #eval can_make_balanced 3 2 "1?1"
   
-  /--
+  /-
   info: 'NO'
   -/
-  #guard_msgs in
-  #eval can_make_balanced 3 2 "1?0"
+  -- #guard_msgs in
+  -- #eval can_make_balanced 3 2 "1?0"
 
 vc-postamble: |-
   -- Apps difficulty: competition

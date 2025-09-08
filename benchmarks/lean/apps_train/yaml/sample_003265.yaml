@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an integer `n`, find two integers `a` and `b` such that:
   ```Pearl
   A) a >= 0 and b >= 0
@@ -16,6 +17,7 @@ vc-description: |-
   More examples in test cases. 
   
   Good luck!
+  -/
 
 vc-preamble: |-
 
@@ -33,23 +35,23 @@ vc-theorems: |-
   theorem solve_single_digit (n : Nat) (h : n < 10) :
     solve n = n := sorry
   
-  /--
+  /-
   info: 18
   -/
-  #guard_msgs in
-  #eval solve 18
+  -- #guard_msgs in
+  -- #eval solve 18
   
-  /--
+  /-
   info: 11
   -/
-  #guard_msgs in
-  #eval solve 29
+  -- #guard_msgs in
+  -- #eval solve 29
   
-  /--
+  /-
   info: 18
   -/
-  #guard_msgs in
-  #eval solve 45
+  -- #guard_msgs in
+  -- #eval solve 45
 
 vc-postamble: |-
   -- Apps difficulty: introductory

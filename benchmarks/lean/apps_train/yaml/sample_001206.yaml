@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   For a permutation P = (p1, p2, ..., pN) of numbers [1, 2, ..., N], we define the function f(P) = max(p1, p2) + max(p2, p3) + ... + max(pN-1, pN).
   You are given N and an integer K. Find and report a permutation P of [1, 2, ..., N] such that f(P) = K, if such a permutation exists.
   Note f([1]) = 0.
@@ -34,6 +35,7 @@ vc-description: |-
   Example 2. The permutations [1, 2] and [2, 1] both have their f values equal to 2. You can print any of these two permutations. 
   Example 3. The permutation [5, 4, 3, 2, 1]
   has f value = max(5, 4) + max(4, 3) + max(3, 2) + max(2, 1) = 5 + 4 + 3 + 2 = 14.
+  -/
 
 vc-preamble: |-
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Very simple, given a number, find its opposite.
   
   Examples:
@@ -11,6 +12,7 @@ vc-description: |-
   ~~~if:sql
   You will be given a table: `opposite`, with a column: `number`. Return a table with a column: `res`.
   ~~~
+  -/
 
 vc-preamble: |-
   def opposite (x : Int) : Int := sorry
@@ -38,28 +40,28 @@ vc-theorems: |-
   theorem sum_with_opposite_int (x : Int) :
     x + opposite x = 0 := sorry
   
-  /-- Same theorems for real numbers -/
+  /- Same theorems for real numbers -/
   
   theorem sum_with_opposite_real (x : Float) :
     x + opposite_real x = 0 := sorry
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval opposite 1
+  -- #guard_msgs in
+  -- #eval opposite 1
   
-  /--
+  /-
   info: 34
   -/
-  #guard_msgs in
-  #eval opposite -34
+  -- #guard_msgs in
+  -- #eval opposite -34
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval opposite 0
+  -- #guard_msgs in
+  -- #eval opposite 0
 
 vc-postamble: |-
   -- Apps difficulty: introductory

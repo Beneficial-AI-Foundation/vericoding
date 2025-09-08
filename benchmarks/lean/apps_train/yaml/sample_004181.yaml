@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We have the integer `9457`. 
   
   We distribute its digits in two buckets having the following possible distributions (we put the generated numbers as strings and we add the corresponding formed integers for each partition):
@@ -58,6 +59,7 @@ vc-description: |-
   100 <= n <= 1500000
   50 <= z <= 6000
   ```
+  -/
 
 vc-preamble: |-
 
@@ -82,23 +84,23 @@ vc-theorems: |-
   theorem bucket_digit_distributions_properties (n : Nat) (h1 : n > 0) (h2 : n ≤ 10000) :
     bucket_digit_distributions_total_sum n ≥ -n := sorry
   
-  /--
+  /-
   info: 888
   -/
-  #guard_msgs in
-  #eval find 500 200
+  -- #guard_msgs in
+  -- #eval find 500 200
   
-  /--
+  /-
   info: 10003
   -/
-  #guard_msgs in
-  #eval find 10001 100
+  -- #guard_msgs in
+  -- #eval find 10001 100
   
-  /--
+  /-
   info: 30046
   -/
-  #guard_msgs in
-  #eval find 30000 1000
+  -- #guard_msgs in
+  -- #eval find 30000 1000
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The function sigma 1, σ1 in mathematics, is known as the one that gives the sum of the divisors of an integer number.
   
   For example for the number 10,
@@ -44,6 +45,7 @@ vc-description: |-
   Happy coding!!
   
   (For more information about the general sigma function see at: https://en.wikipedia.org/wiki/Divisor_function)
+  -/
 
 vc-preamble: |-
   def sum_divisors (n: Nat) : Nat :=
@@ -82,23 +84,23 @@ vc-theorems: |-
     n = 528 ∨ n = 1561 :=
   sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval equal_sigma1 100
+  -- #guard_msgs in
+  -- #eval equal_sigma1 100
   
-  /--
+  /-
   info: 1353
   -/
-  #guard_msgs in
-  #eval equal_sigma1 1000
+  -- #guard_msgs in
+  -- #eval equal_sigma1 1000
   
-  /--
+  /-
   info: 4565
   -/
-  #guard_msgs in
-  #eval equal_sigma1 2000
+  -- #guard_msgs in
+  -- #eval equal_sigma1 2000
 
 vc-postamble: |-
   -- Apps difficulty: introductory

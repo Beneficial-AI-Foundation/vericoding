@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    You have two sorted arrays `a` and `b`, merge them to form new array of unique items.
   
@@ -30,6 +31,7 @@ vc-description: |-
   - `[output]` an integer array
   
     The resulting sorted array.
+  -/
 
 vc-preamble: |-
 
@@ -82,23 +84,23 @@ vc-theorems: |-
     (a b : List Int) :
     merge_arrays a b = merge_arrays b a := sorry
   
-  /--
+  /-
   info: [15, 20, 25, 27, 30, 7000, 7200]
   -/
-  #guard_msgs in
-  #eval merge_arrays [10, 10, 10, 15, 20, 20, 25, 25, 30, 7000] [10, 15, 20, 20, 27, 7200]
+  -- #guard_msgs in
+  -- #eval merge_arrays [10, 10, 10, 15, 20, 20, 25, 25, 30, 7000] [10, 15, 20, 20, 27, 7200]
   
-  /--
+  /-
   info: [2, 3, 500, 550, 1000, 1400, 1500, 3500]
   -/
-  #guard_msgs in
-  #eval merge_arrays [500, 550, 1000, 1000, 1400, 3500] [2, 2, 2, 2, 3, 1500]
+  -- #guard_msgs in
+  -- #eval merge_arrays [500, 550, 1000, 1000, 1400, 3500] [2, 2, 2, 2, 3, 1500]
   
-  /--
+  /-
   info: [7]
   -/
-  #guard_msgs in
-  #eval merge_arrays [5] [5, 5, 7]
+  -- #guard_msgs in
+  -- #eval merge_arrays [5] [5, 5, 7]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

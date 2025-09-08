@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string, swap the case for each of the letters.
   
   e.g. CodEwArs --> cODeWaRS
@@ -12,6 +13,7 @@ vc-description: |-
   "ABC"        ->   "abc"
   "123235"     ->   "123235"
   ```
+  -/
 
 vc-preamble: |-
 
@@ -37,23 +39,23 @@ vc-theorems: |-
   theorem swap_preserves_length (s : String) :
     (swap s).length = s.length := sorry
   
-  /--
+  /-
   info: 'hELLOwORLD'
   -/
-  #guard_msgs in
-  #eval swap "HelloWorld"
+  -- #guard_msgs in
+  -- #eval swap "HelloWorld"
   
-  /--
+  /-
   info: 'cODEwARS'
   -/
-  #guard_msgs in
-  #eval swap "CodeWars"
+  -- #guard_msgs in
+  -- #eval swap "CodeWars"
   
-  /--
+  /-
   info: 'tHiS Is a L0ng SentENCE'
   -/
-  #guard_msgs in
-  #eval swap "ThIs iS A l0NG sENTence"
+  -- #guard_msgs in
+  -- #eval swap "ThIs iS A l0NG sENTence"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

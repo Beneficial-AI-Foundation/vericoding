@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array of integers arr, a lucky integer is an integer which has a frequency in the array equal to its value.
   Return a lucky integer in the array. If there are multiple lucky integers return the largest of them. If there is no lucky integer return -1.
   
@@ -29,6 +30,7 @@ vc-description: |-
   
   1 <= arr.length <= 500
   1 <= arr[i] <= 500
+  -/
 
 vc-preamble: |-
 
@@ -52,23 +54,23 @@ vc-theorems: |-
     (arr.countP (· = n)) = n →
     n ≤ (find_lucky arr).toNat := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_lucky [2, 2, 3, 4]
+  -- #guard_msgs in
+  -- #eval find_lucky [2, 2, 3, 4]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_lucky [1, 2, 2, 3, 3, 3]
+  -- #guard_msgs in
+  -- #eval find_lucky [1, 2, 2, 3, 3, 3]
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval find_lucky [2, 2, 2, 3, 3]
+  -- #guard_msgs in
+  -- #eval find_lucky [2, 2, 2, 3, 3]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

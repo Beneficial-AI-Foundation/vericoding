@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   - Kids drink toddy.
   - Teens drink coke.
   - Young adults drink beer.
@@ -22,6 +23,7 @@ vc-description: |-
   people_with_age_drink(20) == "drink beer"
   people_with_age_drink(30) == "drink whisky"
   ```
+  -/
 
 vc-preamble: |-
 
@@ -55,35 +57,35 @@ vc-theorems: |-
     (h : age ≥ 21) :
     people_with_age_drink age = "drink whisky" := sorry
   
-  /--
+  /-
   info: 'drink toddy'
   -/
-  #guard_msgs in
-  #eval people_with_age_drink 13
+  -- #guard_msgs in
+  -- #eval people_with_age_drink 13
   
-  /--
+  /-
   info: 'drink coke'
   -/
-  #guard_msgs in
-  #eval people_with_age_drink 17
+  -- #guard_msgs in
+  -- #eval people_with_age_drink 17
   
-  /--
+  /-
   info: 'drink beer'
   -/
-  #guard_msgs in
-  #eval people_with_age_drink 18
+  -- #guard_msgs in
+  -- #eval people_with_age_drink 18
   
-  /--
+  /-
   info: 'drink beer'
   -/
-  #guard_msgs in
-  #eval people_with_age_drink 20
+  -- #guard_msgs in
+  -- #eval people_with_age_drink 20
   
-  /--
+  /-
   info: 'drink whisky'
   -/
-  #guard_msgs in
-  #eval people_with_age_drink 21
+  -- #guard_msgs in
+  -- #eval people_with_age_drink 21
 
 vc-postamble: |-
   -- Apps difficulty: introductory

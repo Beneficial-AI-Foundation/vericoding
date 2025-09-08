@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Peter can see a clock in the mirror from the place he sits in the office.
   When he saw the clock shows 12:22
   
@@ -49,6 +50,7 @@ vc-description: |-
   So there is no 00:20, instead it is 12:20.
   
   There is no 13:20, instead it is 01:20.
+  -/
 
 vc-preamble: |-
   def what_is_the_time (time : String) : String :=
@@ -91,23 +93,23 @@ vc-theorems: |-
     (0 ≤ String.toNat! minute ∧ String.toNat! minute ≤ 59) :=
   sorry
   
-  /--
+  /-
   info: '05:25'
   -/
-  #guard_msgs in
-  #eval what_is_the_time "06:35"
+  -- #guard_msgs in
+  -- #eval what_is_the_time "06:35"
   
-  /--
+  /-
   info: '12:01'
   -/
-  #guard_msgs in
-  #eval what_is_the_time "11:59"
+  -- #guard_msgs in
+  -- #eval what_is_the_time "11:59"
   
-  /--
+  /-
   info: '11:58'
   -/
-  #guard_msgs in
-  #eval what_is_the_time "12:02"
+  -- #guard_msgs in
+  -- #eval what_is_the_time "12:02"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

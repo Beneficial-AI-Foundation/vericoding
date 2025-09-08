@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There is a queue for the self-checkout tills at the supermarket. Your task is write a function to calculate the total time required for all the customers to check out!
   
   ### input
@@ -47,6 +48,7 @@ vc-description: |-
   N.B. You should assume that all the test input will be valid, as specified above.
   
   P.S. The situation in this kata can be likened to the more-computer-science-related idea of a thread pool, with relation to running multiple processes at the same time: https://en.wikipedia.org/wiki/Thread_pool
+  -/
 
 vc-preamble: |-
   def List.maximum (l : List Nat) : Nat :=
@@ -80,23 +82,23 @@ vc-theorems: |-
     queue_time customers (n + 1) ≤ queue_time customers n :=
     sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval queue_time [] 1
+  -- #guard_msgs in
+  -- #eval queue_time [] 1
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval queue_time [2] 5
+  -- #guard_msgs in
+  -- #eval queue_time [2] 5
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval queue_time [2, 2, 3, 3, 4, 4] 2
+  -- #guard_msgs in
+  -- #eval queue_time [2, 2, 3, 3, 4, 4] 2
 
 vc-postamble: |-
   -- Apps difficulty: introductory

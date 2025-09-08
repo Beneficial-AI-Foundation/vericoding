@@ -1,0 +1,77 @@
+/-
+Given two strings A and B of lowercase letters, return true if you can swap two letters in A so the result is equal to B, otherwise, return false.
+Swapping letters is defined as taking two indices i and j (0-indexed) such that i != j and swapping the characters at A[i] and A[j]. For example, swapping at indices 0 and 2 in "abcd" results in "cbad".
+
+Example 1:
+Input: A = "ab", B = "ba"
+Output: true
+Explanation: You can swap A[0] = 'a' and A[1] = 'b' to get "ba", which is equal to B.
+
+Example 2:
+Input: A = "ab", B = "ab"
+Output: false
+Explanation: The only letters you can swap are A[0] = 'a' and A[1] = 'b', which results in "ba" != B.
+
+Example 3:
+Input: A = "aa", B = "aa"
+Output: true
+Explanation: You can swap A[0] = 'a' and A[1] = 'a' to get "aa", which is equal to B.
+
+Example 4:
+Input: A = "aaaaaaabc", B = "aaaaaaacb"
+Output: true
+
+Example 5:
+Input: A = "", B = "aa"
+Output: false
+
+Constraints:
+
+0 <= A.length <= 20000
+0 <= B.length <= 20000
+A and B consist of lowercase letters.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def buddy_strings (s1 s2 : String) : Bool := sorry
+
+theorem buddy_strings_symmetry (s1 s2 : String) : 
+  buddy_strings s1 s2 = buddy_strings s2 s1 := sorry
+
+theorem buddy_strings_identical_requires_duplicate {s : String} :
+  s.length ≥ 2 → 
+  let chars := s.data
+  let hasDuplicates := ∃ i j, i < j ∧ j < chars.length ∧ chars[i]! = chars[j]!
+  buddy_strings s s = hasDuplicates := sorry
+
+theorem buddy_strings_length {s1 s2 : String} :
+  s1.length ≠ s2.length ∨ s1.length < 2 →
+  ¬(buddy_strings s1 s2) := sorry
+
+theorem single_swap_property {s : String} (h : s.length ≥ 2) :
+  let chars := s.data
+  let swapped := String.mk (chars.set 0 (chars.get! 1) |>.set 1 (chars.get! 0))
+  buddy_strings s swapped := sorry
+
+/-
+info: True
+-/
+-- #guard_msgs in
+-- #eval buddy_strings "ab" "ba"
+
+/-
+info: False
+-/
+-- #guard_msgs in
+-- #eval buddy_strings "ab" "ab"
+
+/-
+info: True
+-/
+-- #guard_msgs in
+-- #eval buddy_strings "aa" "aa"
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

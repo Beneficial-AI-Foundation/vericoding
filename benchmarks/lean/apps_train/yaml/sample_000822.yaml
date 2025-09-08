@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given N integer sequences A1, A2, ..., AN. Each of these sequences contains N elements. You should pick N elements, one from each sequence; let's denote the element picked from sequence Ai by Ei. For each i (2 ≤ i ≤ N), Ei should be strictly greater than Ei-1.
   Compute the maximum possible value of E1 + E2 + ... + EN. If it's impossible to pick the elements E1, E2, ..., EN, print -1 instead.
   
@@ -36,6 +37,7 @@ vc-description: |-
   
   -----Explanation-----
   Example case 1: To maximise the score, pick 3 from the first row, 6 from the second row and 9 from the third row. The resulting sum is E1+E2+E3 = 3+6+9 = 18.
+  -/
 
 vc-preamble: |-
 

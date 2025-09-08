@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ##Task:
   
   You have to write a function **pattern** which creates the following pattern upto n number of rows. 
@@ -26,6 +27,7 @@ vc-description: |-
   ```Note: There are no spaces in the pattern```
   
   ```Hint: Use \n in string to jump to next line```
+  -/
 
 vc-preamble: |-
   def pattern (n : Int) : String := sorry
@@ -72,23 +74,23 @@ vc-theorems: |-
     (h2 : n ≤ 100) :
     (pattern n).lines.length = n/2 := sorry
   
-  /--
+  /-
   info: '22\n4444'
   -/
-  #guard_msgs in
-  #eval pattern 4
+  -- #guard_msgs in
+  -- #eval pattern 4
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval pattern 0
+  -- #guard_msgs in
+  -- #eval pattern 0
   
-  /--
+  /-
   info: '22\n4444'
   -/
-  #guard_msgs in
-  #eval pattern 5
+  -- #guard_msgs in
+  -- #eval pattern 5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

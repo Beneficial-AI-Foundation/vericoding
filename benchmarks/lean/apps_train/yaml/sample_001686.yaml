@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   This is the second part of a two-part challenge. See [part I](https://www.codewars.com/kata/587387d169b6fddc16000002) if you haven't done so already.
   The problem is the same, only with longer lists and larger values.
   
@@ -22,6 +23,7 @@ vc-description: |-
   The order of the elements is not tested, just make sure that you minimise ```abs(sum(a)-sum(b))``` and that ```sorted(a+b)==sorted(x)```.
   
   You may assume that ```len(x)<=40``` and ```0<=x[i]<=1000```.
+  -/
 
 vc-preamble: |-
   def abs (x : Int) : Int :=
@@ -69,29 +71,29 @@ vc-theorems: |-
     | some (a, b) => listSum a = listSum b
     := by sorry
   
-  /--
+  /-
   info: sorted(test1)
   -/
-  #guard_msgs in
-  #eval sorted a + b
+  -- #guard_msgs in
+  -- #eval sorted a + b
   
-  /--
+  /-
   info: sorted(test2)
   -/
-  #guard_msgs in
-  #eval sorted a + b
+  -- #guard_msgs in
+  -- #eval sorted a + b
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval abs sum(a) - sum(b)
+  -- #guard_msgs in
+  -- #eval abs sum(a) - sum(b)
   
-  /--
+  /-
   info: sorted(test3)
   -/
-  #guard_msgs in
-  #eval sorted a + b
+  -- #guard_msgs in
+  -- #eval sorted a + b
 
 vc-postamble: |-
   -- Apps difficulty: interview

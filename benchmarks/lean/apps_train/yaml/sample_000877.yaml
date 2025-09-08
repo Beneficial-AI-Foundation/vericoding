@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Tweedle-Dee and Tweedle-Dum are playing a fierce match of binary Nim. This novel game is played with $N$ stacks, each of them containing only $1$-s and $0$-s.
   Just like in normal Nim, Tweedle-Dee and Tweedle-Dum alternate turns; in their turn, a player must choose one non-empty stack and remove a positive number of elements from the top of this stack. However, Tweedle-Dee may only choose a stack with $0$ at the top (and remove elements from it afterwards), and similarly, Tweedle-Dum may only choose a stack with $1$ at the top. the player that cannot make a move loses
   Suzumo does not want to wait for the end of the game, so given the starting player he asks you to determine the winner. Remember that Tweedle-Dee and Tweedle-Dum are legendary grandmasters of combinatorial games, so both always play optimally.
@@ -30,6 +31,7 @@ vc-description: |-
   -----Example Output-----
   Dum
   Dee
+  -/
 
 vc-preamble: |-
 
@@ -64,17 +66,17 @@ vc-theorems: |-
          (stacks.foldl (fun acc s => acc + (s.toList.filter (· = '1')).length) 0))
     : solve_binary_nim n starting_player stacks ≠ starting_player := sorry
   
-  /--
+  /-
   info: 'Dum'
   -/
-  #guard_msgs in
-  #eval solve_binary_nim 2 "Dee" ["101", "010"]
+  -- #guard_msgs in
+  -- #eval solve_binary_nim 2 "Dee" ["101", "010"]
   
-  /--
+  /-
   info: 'Dee'
   -/
-  #guard_msgs in
-  #eval solve_binary_nim 2 "Dum" ["101", "010"]
+  -- #guard_msgs in
+  -- #eval solve_binary_nim 2 "Dum" ["101", "010"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string s, a k duplicate removal consists of choosing k adjacent and equal letters from s and removing them causing the left and the right side of the deleted substring to concatenate together.
   We repeatedly make k duplicate removals on s until we no longer can.
   Return the final string after all such duplicate removals have been made.
@@ -24,6 +25,7 @@ vc-description: |-
   1 <= s.length <= 10^5
   2 <= k <= 10^4
   s only contains lower case English letters.
+  -/
 
 vc-preamble: |-
 
@@ -55,23 +57,23 @@ vc-theorems: |-
   theorem k_gt_length_identity (s : String) (k : Nat) :
     k > s.length → removeDuplicates s k = s := sorry
   
-  /--
+  /-
   info: 'abcd'
   -/
-  #guard_msgs in
-  #eval remove_duplicates "abcd" 2
+  -- #guard_msgs in
+  -- #eval remove_duplicates "abcd" 2
   
-  /--
+  /-
   info: 'aa'
   -/
-  #guard_msgs in
-  #eval remove_duplicates "deeedbbcccbdaa" 3
+  -- #guard_msgs in
+  -- #eval remove_duplicates "deeedbbcccbdaa" 3
   
-  /--
+  /-
   info: 'ps'
   -/
-  #guard_msgs in
-  #eval remove_duplicates "pbbcggttciiippooaais" 2
+  -- #guard_msgs in
+  -- #eval remove_duplicates "pbbcggttciiippooaais" 2
 
 vc-postamble: |-
   -- Apps difficulty: interview

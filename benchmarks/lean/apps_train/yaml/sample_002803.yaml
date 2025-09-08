@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   John has some amount of money of which he wants to deposit a part `f0` to the bank at the beginning
   of year `1`. He wants to withdraw each year for his living an amount `c0`.
   
@@ -48,6 +49,7 @@ vc-description: |-
   f11 = -5 so he has no way to withdraw something for his living in year 12.
   
   > **Note:** Don't forget to convert the percent parameters as percentages in the body of your function: if a parameter percent is 2 you have to convert it to 0.02.
+  -/
 
 vc-preamble: |-
 
@@ -92,23 +94,23 @@ vc-theorems: |-
     (h4 : 0 ≤ i ∧ i ≤ 100) :
     fortune f0 p 0 n i = true := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval fortune 100000 1 2000 15 1
+  -- #guard_msgs in
+  -- #eval fortune 100000 1 2000 15 1
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval fortune 100000 1 9185 12 1
+  -- #guard_msgs in
+  -- #eval fortune 100000 1 9185 12 1
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval fortune 100000 1 10000 10 1
+  -- #guard_msgs in
+  -- #eval fortune 100000 1 10000 10 1
 
 vc-postamble: |-
   -- Apps difficulty: introductory

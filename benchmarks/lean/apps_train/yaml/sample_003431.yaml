@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A core idea of several left-wing ideologies is that the wealthiest should *support* the poorest, no matter what and that is exactly what you are called to do using this kata (which, on a side note, was born out of the necessity to redistribute the width of `div`s into a given container).
   
   You will be given two parameters, `population` and `minimum`: your goal is to give to each one according to his own needs (which we assume to be equal to `minimum` for everyone, no matter what), taking from the richest (bigger numbers) first.
@@ -24,6 +25,7 @@ vc-description: |-
   ```
   
   If giving `minimum` is unfeasable with the current resources (as it often comes to be the case in socialist communities...), for example if the above starting population had set a goal of giving anyone at least `30`, just return an empty array `[]`.
+  -/
 
 vc-preamble: |-
   def List.sum (xs : List Nat) : Nat :=
@@ -67,23 +69,23 @@ vc-theorems: |-
   theorem minimum_zero_returns_original {population : List Nat} (h : population ≠ []) :
     socialist_distribution population 0 = some population := by sorry
   
-  /--
+  /-
   info: [5, 5, 5, 15, 70]
   -/
-  #guard_msgs in
-  #eval socialist_distribution [2, 3, 5, 15, 75] 5
+  -- #guard_msgs in
+  -- #eval socialist_distribution [2, 3, 5, 15, 75] 5
   
-  /--
+  /-
   info: [5, 5, 5, 42, 43]
   -/
-  #guard_msgs in
-  #eval socialist_distribution [2, 3, 5, 45, 45] 5
+  -- #guard_msgs in
+  -- #eval socialist_distribution [2, 3, 5, 45, 45] 5
   
-  /--
+  /-
   info: [20, 20, 20, 20, 20]
   -/
-  #guard_msgs in
-  #eval socialist_distribution [2, 3, 5, 15, 75] 20
+  -- #guard_msgs in
+  -- #eval socialist_distribution [2, 3, 5, 15, 75] 20
 
 vc-postamble: |-
   -- Apps difficulty: introductory

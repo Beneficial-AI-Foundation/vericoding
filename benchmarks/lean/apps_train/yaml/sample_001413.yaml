@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You visit a doctor on a date given in the format $yyyy:mm:dd$. Your doctor suggests you to take pills every alternate day starting from that day. You being a forgetful person are pretty sure won’t be able to remember the last day you took the medicine and would end up in taking  the medicines on wrong days. 
   So you come up with the idea of taking medicine on the dates whose day is odd or even depending on whether $dd$ is odd or even. Calculate the number of pills you took on right time before messing up for the first time.
   
@@ -26,6 +27,7 @@ vc-description: |-
   
   -----EXPLANATION:-----
   You can take pill on the right day only on 31st March. Next you will take it on 1st April which is not on the alternate day.
+  -/
 
 vc-preamble: |-
   def isLeapYear (year : Int) : Bool :=
@@ -77,23 +79,23 @@ vc-theorems: |-
     result ≥ 1 :=
   sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_correct_pills "2019:03:31"
+  -- #guard_msgs in
+  -- #eval count_correct_pills "2019:03:31"
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_correct_pills "2020:02:28"
+  -- #guard_msgs in
+  -- #eval count_correct_pills "2020:02:28"
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_correct_pills "2000:12:31"
+  -- #guard_msgs in
+  -- #eval count_correct_pills "2000:12:31"
 
 vc-postamble: |-
   -- Apps difficulty: interview

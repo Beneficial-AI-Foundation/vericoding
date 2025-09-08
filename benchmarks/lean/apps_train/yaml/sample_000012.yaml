@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Once again, Boris needs the help of Anton in creating a task. This time Anton needs to solve the following problem:
   
   There are two arrays of integers $a$ and $b$ of length $n$. It turned out that array $a$ contains only elements from the set $\{-1, 0, 1\}$.
@@ -64,6 +65,7 @@ vc-description: |-
   In the third test case we can choose $(i, j)=(1, 2)$ $41$ times. The same about the fourth test case.
   
   In the last lest case, it is impossible to make array $a$ equal to the array $b$.
+  -/
 
 vc-preamble: |-
 
@@ -104,23 +106,23 @@ vc-theorems: |-
   theorem single_element_zero_decrease :
     can_transform_array 1 [0] [-1] = false := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval can_transform_array 3 [1, -1, 0] [1, 1, -2]
+  -- #guard_msgs in
+  -- #eval can_transform_array 3 [1, -1, 0] [1, 1, -2]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval can_transform_array 3 [0, 1, 1] [0, 2, 2]
+  -- #guard_msgs in
+  -- #eval can_transform_array 3 [0, 1, 1] [0, 2, 2]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval can_transform_array 5 [0, 1, -1, 1, -1] [1, 1, -1, 1, -1]
+  -- #guard_msgs in
+  -- #eval can_transform_array 5 [0, 1, -1, 1, -1] [1, 1, -1, 1, -1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

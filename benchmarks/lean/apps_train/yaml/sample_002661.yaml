@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Create a function which answers the question "Are you playing banjo?".  
   If your name starts with the letter "R" or lower case "r", you are playing banjo!
   
@@ -8,6 +9,7 @@ vc-description: |-
   name + " does not play banjo"
   ```
   Names given are always valid strings.
+  -/
 
 vc-preamble: |-
   def String.hasSubstring (s1 s2 : String) : Bool :=
@@ -39,23 +41,23 @@ vc-theorems: |-
     (areYouPlayingBanjo name).hasSubstring " does not play banjo" = true :=
   sorry
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval areYouPlayingBanjo "Adam"
+  -- #guard_msgs in
+  -- #eval areYouPlayingBanjo "Adam"
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval areYouPlayingBanjo "Ringo"
+  -- #guard_msgs in
+  -- #eval areYouPlayingBanjo "Ringo"
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval areYouPlayingBanjo "rolf"
+  -- #guard_msgs in
+  -- #eval areYouPlayingBanjo "rolf"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Let's define the following recurrence: $$a_{n+1} = a_{n} + minDigit(a_{n}) \cdot maxDigit(a_{n}).$$
   
   Here $minDigit(x)$ and $maxDigit(x)$ are the minimal and maximal digits in the decimal representation of $x$ without leading zeroes. For examples refer to notes.
@@ -52,6 +53,7 @@ vc-description: |-
    $a_{6} = a_{5} + minDigit(a_{5}) \cdot maxDigit(a_{5}) = 564 + \min (5, 6, 4) \cdot \max (5, 6, 4) = 564 + 4 \cdot 6 = 588$ 
   
    $a_{7} = a_{6} + minDigit(a_{6}) \cdot maxDigit(a_{6}) = 588 + \min (5, 8, 8) \cdot \max (5, 8, 8) = 588 + 5 \cdot 8 = 628$
+  -/
 
 vc-preamble: |-
   def calc_seq (a k : Nat) : Nat :=
@@ -76,23 +78,23 @@ vc-theorems: |-
     (k > 1 → result ≥ a) :=
     sorry
   
-  /--
+  /-
   info: 42
   -/
-  #guard_msgs in
-  #eval calc_seq 1 4
+  -- #guard_msgs in
+  -- #eval calc_seq 1 4
   
-  /--
+  /-
   info: 487
   -/
-  #guard_msgs in
-  #eval calc_seq 487 1
+  -- #guard_msgs in
+  -- #eval calc_seq 487 1
   
-  /--
+  /-
   info: 628
   -/
-  #guard_msgs in
-  #eval calc_seq 487 7
+  -- #guard_msgs in
+  -- #eval calc_seq 487 7
 
 vc-postamble: |-
   -- Apps difficulty: interview

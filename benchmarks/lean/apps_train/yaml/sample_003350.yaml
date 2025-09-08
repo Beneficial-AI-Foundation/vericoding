@@ -1,10 +1,12 @@
 vc-description: |-
+  /-
   A [Mersenne prime](https://en.wikipedia.org/wiki/Mersenne_prime) is a prime number that can be represented as:
   Mn = 2^(n) - 1. Therefore, every Mersenne prime is one less than a power of two. 
   
   Write a function that will return whether the given integer `n` will produce a Mersenne prime or not.
   
   The tests will check random integers up to 2000.
+  -/
 
 vc-preamble: |-
   def valid_mersenne (n : Int) : Bool := sorry
@@ -31,23 +33,23 @@ vc-theorems: |-
     1 ≤ n ∧ n ≤ 1279 →
     valid_mersenne n = true ↔ n ∈ valid_mersenne_numbers := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval valid_mersenne 3
+  -- #guard_msgs in
+  -- #eval valid_mersenne 3
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval valid_mersenne 11
+  -- #guard_msgs in
+  -- #eval valid_mersenne 11
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval valid_mersenne 127
+  -- #guard_msgs in
+  -- #eval valid_mersenne 127
 
 vc-postamble: |-
   -- Apps difficulty: introductory

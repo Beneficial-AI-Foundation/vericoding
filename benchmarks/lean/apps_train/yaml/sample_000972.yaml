@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef works in a similar way to a travelling salesman ― he always travels to new cities in order to sell his delicious dishes.
   Today, Chef is planning to visit $N$ cities (numbered $1$ through $N$). There is a direct way to travel between each pair of cities. Each city has a specific temperature; let's denote the temperature in the $i$-th city by $C_i$. Chef has a fixed temperature tolerance $D$ with the following meaning: for each pair of cities $a$ and $b$, he may travel from city $a$ directly to city $b$ only if $|C_a-C_b| \le D$, otherwise he would catch a heavy flu because of the sudden change in temperature.
   Chef starts from city $1$. Is he able to visit all $N$ cities in such a way that each city is visited exactly once?
@@ -38,6 +39,7 @@ vc-description: |-
   -----Example Output-----
   YES
   NO
+  -/
 
 vc-preamble: |-
 
@@ -77,23 +79,23 @@ vc-theorems: |-
     let cities := List.replicate n 1
     can_visit_cities n 0 cities = "YES" := sorry
   
-  /--
+  /-
   info: 'YES'
   -/
-  #guard_msgs in
-  #eval can_visit_cities *test1
+  -- #guard_msgs in
+  -- #eval can_visit_cities *test1
   
-  /--
+  /-
   info: 'NO'
   -/
-  #guard_msgs in
-  #eval can_visit_cities *test2
+  -- #guard_msgs in
+  -- #eval can_visit_cities *test2
   
-  /--
+  /-
   info: 'NO'
   -/
-  #guard_msgs in
-  #eval can_visit_cities *test3
+  -- #guard_msgs in
+  -- #eval can_visit_cities *test3
 
 vc-postamble: |-
   -- Apps difficulty: interview

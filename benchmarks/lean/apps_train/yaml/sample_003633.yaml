@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Below is a right-angled triangle:
   
   ```
@@ -14,6 +15,7 @@ vc-description: |-
   ```
   
   Your challange is to write a function (```missingAngle``` in C/C#, ```missing_angle``` in Ruby), that calculates the angle θ in degrees to the nearest integer. You will be given three arguments representing each side: o, h and a. One of the arguments equals zero. Use the length of the two other sides to calculate θ. You will not be expected to handle any erronous data in your solution.
+  -/
 
 vc-preamble: |-
   def Float.toDegrees (x : Float) : Float :=
@@ -66,23 +68,23 @@ vc-theorems: |-
     ¬∃angle, missing_angle h a 0 = angle :=
   sorry
   
-  /--
+  /-
   info: 37
   -/
-  #guard_msgs in
-  #eval missing_angle 0 400 300
+  -- #guard_msgs in
+  -- #eval missing_angle 0 400 300
   
-  /--
+  /-
   info: 37
   -/
-  #guard_msgs in
-  #eval missing_angle 5 4 0
+  -- #guard_msgs in
+  -- #eval missing_angle 5 4 0
   
-  /--
+  /-
   info: 39
   -/
-  #guard_msgs in
-  #eval missing_angle 8 0 5
+  -- #guard_msgs in
+  -- #eval missing_angle 8 0 5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

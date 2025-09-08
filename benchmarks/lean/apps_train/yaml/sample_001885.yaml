@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a list of folders, remove all sub-folders in those folders and return in any order the folders after removing.
   If a folder[i] is located within another folder[j], it is called a sub-folder of it.
   The format of a path is one or more concatenated strings of the form: / followed by one or more lowercase English letters. For example, /leetcode and /leetcode/problems are valid paths while an empty string and / are not.
@@ -24,6 +25,7 @@ vc-description: |-
   folder[i] contains only lowercase letters and '/'
   folder[i] always starts with character '/'
   Each folder name is unique.
+  -/
 
 vc-preamble: |-
 
@@ -66,23 +68,23 @@ vc-theorems: |-
     p1 ≠ p2 → ¬(p2.startsWith (p1 ++ "/")) :=
   sorry
   
-  /--
+  /-
   info: sorted(expected1)
   -/
-  #guard_msgs in
-  #eval sorted remove_subfolders(folders1)
+  -- #guard_msgs in
+  -- #eval sorted remove_subfolders(folders1)
   
-  /--
+  /-
   info: sorted(expected2)
   -/
-  #guard_msgs in
-  #eval sorted remove_subfolders(folders2)
+  -- #guard_msgs in
+  -- #eval sorted remove_subfolders(folders2)
   
-  /--
+  /-
   info: sorted(expected3)
   -/
-  #guard_msgs in
-  #eval sorted remove_subfolders(folders3)
+  -- #guard_msgs in
+  -- #eval sorted remove_subfolders(folders3)
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Alan's child can be annoying at times.
   
   When Alan comes home and tells his kid what he has accomplished today, his kid never believes him. 
@@ -35,6 +36,7 @@ vc-description: |-
   
       input  = "Today I cleaned the kitchen."
       output = "I don't think you cleaned the kitchen today, I think you didn't clean at all!"
+  -/
 
 vc-preamble: |-
   def String.substringExists (s : String) (sub : String) : Bool := sorry
@@ -72,23 +74,23 @@ vc-theorems: |-
     response.substringExists "I think you didn't" ∧
     response.substringExists "at all!" := sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval alan_annoying_kid "Today I played football."
+  -- #guard_msgs in
+  -- #eval alan_annoying_kid "Today I played football."
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval alan_annoying_kid "Today I didn"t play football."
+  -- #guard_msgs in
+  -- #eval alan_annoying_kid "Today I didn"t play football."
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval alan_annoying_kid "Today I cleaned the kitchen."
+  -- #guard_msgs in
+  -- #eval alan_annoying_kid "Today I cleaned the kitchen."
 
 vc-postamble: |-
   -- Apps difficulty: introductory

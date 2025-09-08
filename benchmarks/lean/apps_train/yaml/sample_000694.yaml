@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef has a sequence of $N$ integers, $A_1, A_2, ... , A_N$. He likes this sequence if it contains a  subsequence of $M$ integers, $B_1, B_2, ... , B_M$ within it.
   A subsequence is a sequence that can be derived from another sequence by deleting some or no elements without changing the order of the remaining elements.
   You will be given a sequence of $N$ integers, $A_1, A_2, ..., A_N$ followed by another sequence of $M$ integers, $B_1, B_2, ..., B_M$. Given these, you have to tell whether Chef likes the sequence of $N$ integers($A_1, A_2, ..., A_N$) or not. 
@@ -49,6 +50,7 @@ vc-description: |-
   Hence, $1,2,3,4,5,6$ is a sequence which Chef likes it. Therefore, we output "Yes".
   In sample test case $2$, the subsequence $4, 15$ is not present in sequence $22, 5, 6, 33, 1, 4$. Hence, we output "No".
   In sample test case $3$, the sequence $1, 3, 4, 2$ contains the subsequence $1, 2$. The subsequence is present at indices $0, 3$. Therefore, we output "Yes".
+  -/
 
 vc-preamble: |-
   def List.index {α} [BEq α] (xs : List α) (x : α) : Nat :=
@@ -88,23 +90,23 @@ vc-theorems: |-
     check_subsequence (toString seq) (toString subseq) = "Yes" :=
     sorry
   
-  /--
+  /-
   info: 'Yes'
   -/
-  #guard_msgs in
-  #eval check_subsequence "1 2 3 4 5 6" "2 3 4"
+  -- #guard_msgs in
+  -- #eval check_subsequence "1 2 3 4 5 6" "2 3 4"
   
-  /--
+  /-
   info: 'No'
   -/
-  #guard_msgs in
-  #eval check_subsequence "22 5 6 33 1 4" "4 15"
+  -- #guard_msgs in
+  -- #eval check_subsequence "22 5 6 33 1 4" "4 15"
   
-  /--
+  /-
   info: 'Yes'
   -/
-  #guard_msgs in
-  #eval check_subsequence "1 3 4 2" "1 2"
+  -- #guard_msgs in
+  -- #eval check_subsequence "1 3 4 2" "1 2"
 
 vc-postamble: |-
   -- Apps difficulty: interview

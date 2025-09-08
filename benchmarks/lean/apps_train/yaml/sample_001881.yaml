@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Print a binary tree in an m*n 2D string array following these rules: 
   
   The row number m should be equal to the height of the given binary tree.
@@ -49,6 +50,7 @@ vc-description: |-
   
   Note:
   The height of binary tree is in the range of [1, 10].
+  -/
 
 vc-preamble: |-
   def TreeNode.val : TreeNode → Nat
@@ -98,17 +100,17 @@ vc-theorems: |-
     print_tree none = [] := by
     sorry
   
-  /--
+  /-
   info: [['', '1', ''], ['2', '', '']]
   -/
-  #guard_msgs in
-  #eval print_tree TreeNode(1)
+  -- #guard_msgs in
+  -- #eval print_tree TreeNode(1)
   
-  /--
+  /-
   info: [['', '', '', '1', '', '', ''], ['', '2', '', '', '', '3', ''], ['', '', '4', '', '', '', '']]
   -/
-  #guard_msgs in
-  #eval print_tree TreeNode(1)
+  -- #guard_msgs in
+  -- #eval print_tree TreeNode(1)
 
 vc-postamble: |-
   -- Apps difficulty: interview

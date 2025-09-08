@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   This kata is all about adding numbers.
   
   You will create a function named add. It will return the sum of all the arguments. Sounds easy, doesn't it?
@@ -19,6 +20,7 @@ vc-description: |-
   ```
   
   Check my another kata here!! http://www.codewars.com/kata/555b73a81a6285b6ce000047
+  -/
 
 vc-preamble: |-
 
@@ -43,23 +45,23 @@ vc-theorems: |-
     ∃ w : Float, w = (nums.enum.foldl (fun acc p => acc + p.2/(Float.ofNat (p.1 + 1))) 0) ∧ 
     (w - Float.ofInt (add nums)).abs < 0.01 := sorry
   
-  /--
+  /-
   info: 300
   -/
-  #guard_msgs in
-  #eval add 100 200 300
+  -- #guard_msgs in
+  -- #eval add 100 200 300
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval add 2
+  -- #guard_msgs in
+  -- #eval add 2
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval add 4 -3 -2
+  -- #guard_msgs in
+  -- #eval add 4 -3 -2
 
 vc-postamble: |-
   -- Apps difficulty: introductory

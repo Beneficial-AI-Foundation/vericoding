@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Function Descriptions=====
   *This section assumes that you understand the basics discussed in HTML Parser - Part 1
   
@@ -52,6 +53,7 @@ vc-description: |-
   Print the single-line comments, multi-line comments and the data in order of their occurrence from top to bottom in the snippet.
   
   Format the answers as explained in the problem statement.
+  -/
 
 vc-preamble: |-
 
@@ -65,7 +67,7 @@ vc-definitions: |-
   
   variable (parse_html_code : String → String)
   
-  /-- Single line comments are correctly identified and preserved --/
+  /- Single line comments are correctly identified and preserved --/
 
 vc-theorems: |-
   theorem single_line_comment_handling 
@@ -75,7 +77,7 @@ vc-theorems: |-
     String.isInfixOf ">>> Single-line Comment" (parse_html_code comment) ∧ 
     (text.length > 0 → String.isInfixOf text (parse_html_code comment)) := sorry
   
-  /-- Multi line comments are correctly identified and preserved --/
+  /- Multi line comments are correctly identified and preserved --/
   
   theorem multi_line_comment_handling 
     (text : String)
@@ -84,19 +86,19 @@ vc-theorems: |-
     String.isInfixOf ">>> Multi-line Comment" (parse_html_code comment) ∧
     (text.length > 0 → String.isInfixOf text (parse_html_code comment)) := sorry
   
-  /-- Whitespace-only input results in empty output --/
+  /- Whitespace-only input results in empty output --/
   
   theorem whitespace_handling 
     (s : String)
     (h₁ : ∀ c ∈ s.data, c = ' ' ∨ c = '\n' ∨ c = '\t') :
     parse_html_code s = "" := sorry
   
-  /-- Empty input results in empty output --/
+  /- Empty input results in empty output --/
   
   theorem empty_input_handling :
     parse_html_code "" = "" := sorry
   
-  /-- Regular text is marked as data and preserved --/
+  /- Regular text is marked as data and preserved --/
   
   theorem basic_data_handling :
     let input := "Hello World"

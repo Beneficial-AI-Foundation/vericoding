@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Find the first character that repeats in a String and return that character. 
   
   ```python
@@ -8,6 +9,7 @@ vc-description: |-
   
   *This is not the same as finding the character that repeats first.*
   *In that case, an input of 'tweet' would yield 'e'.*
+  -/
 
 vc-preamble: |-
 
@@ -45,23 +47,23 @@ vc-theorems: |-
     | some c => True
     := sorry
   
-  /--
+  /-
   info: 't'
   -/
-  #guard_msgs in
-  #eval first_dup "tweet"
+  -- #guard_msgs in
+  -- #eval first_dup "tweet"
   
-  /--
+  /-
   info: ' '
   -/
-  #guard_msgs in
-  #eval first_dup "Ode to Joy"
+  -- #guard_msgs in
+  -- #eval first_dup "Ode to Joy"
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval first_dup "bar"
+  -- #guard_msgs in
+  -- #eval first_dup "bar"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

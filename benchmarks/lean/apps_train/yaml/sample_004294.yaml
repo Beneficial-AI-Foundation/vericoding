@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Truncate the given string (first argument) if it is longer than the given maximum length (second argument). Return the truncated string with a `"..."` ending.
   
   Note that inserting the three dots to the end will add to the string length.
@@ -13,6 +14,7 @@ vc-description: |-
   ```
   
   [Taken from FCC](https://www.freecodecamp.com/challenges/truncate-a-string)
+  -/
 
 vc-preamble: |-
 
@@ -41,23 +43,23 @@ vc-theorems: |-
     n ≤ 3 → s.length > n →
     (truncateString s n).dropRight 3 = s.take n := sorry
   
-  /--
+  /-
   info: 'codewars'
   -/
-  #guard_msgs in
-  #eval truncate_string "codewars" 9
+  -- #guard_msgs in
+  -- #eval truncate_string "codewars" 9
   
-  /--
+  /-
   info: 'code...'
   -/
-  #guard_msgs in
-  #eval truncate_string "codewars" 7
+  -- #guard_msgs in
+  -- #eval truncate_string "codewars" 7
   
-  /--
+  /-
   info: 'co...'
   -/
-  #guard_msgs in
-  #eval truncate_string "codewars" 2
+  -- #guard_msgs in
+  -- #eval truncate_string "codewars" 2
 
 vc-postamble: |-
   -- Apps difficulty: introductory

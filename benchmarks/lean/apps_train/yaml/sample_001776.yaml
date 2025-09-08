@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an integer n, generate all structurally unique BST's (binary search trees) that store values 1 ... n.
   
   Example:
@@ -20,6 +21,7 @@ vc-description: |-
        3     2     1      1   3      2
       /     /       \                 \
      2     1         2                 3
+  -/
 
 vc-preamble: |-
   def generateTrees (n : Nat) : List TreeNode :=
@@ -65,29 +67,29 @@ vc-theorems: |-
     List.length (List.eraseDups tree_lists) = List.length (generateTrees n) :=
     sorry
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval generateTrees 0
+  -- #guard_msgs in
+  -- #eval generateTrees 0
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval len generateTrees(1)
+  -- #guard_msgs in
+  -- #eval len generateTrees(1)
   
-  /--
+  /-
   info: [1]
   -/
-  #guard_msgs in
-  #eval tree_to_list trees[0]
+  -- #guard_msgs in
+  -- #eval tree_to_list trees[0]
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval len generateTrees(3)
+  -- #guard_msgs in
+  -- #eval len generateTrees(3)
 
 vc-postamble: |-
   -- Apps difficulty: interview

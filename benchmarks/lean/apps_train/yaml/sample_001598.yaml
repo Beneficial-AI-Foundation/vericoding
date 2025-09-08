@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   This kata is  blatantly copied from  inspired by This Kata
   Welcome
   
@@ -51,6 +52,7 @@ vc-description: |-
   be read to optimize
   
   if this is too hard, go here https://www.codewars.com/kata/string-%3E-n-iterations-%3E-string/java
+  -/
 
 vc-preamble: |-
 
@@ -83,23 +85,23 @@ vc-theorems: |-
     let iter := fun (s : String) => string_func s 1
     iter (iter s) = s := sorry
   
-  /--
+  /-
   info: 'nrtgSi'
   -/
-  #guard_msgs in
-  #eval string_func "String" 3
+  -- #guard_msgs in
+  -- #eval string_func "String" 3
   
-  /--
+  /-
   info: 'iitkIl !e '
   -/
-  #guard_msgs in
-  #eval string_func "I like it!" 1234
+  -- #guard_msgs in
+  -- #eval string_func "I like it!" 1234
   
-  /--
+  /-
   info: 'fonroisreinrddgdneyscou'
   -/
-  #guard_msgs in
-  #eval string_func "codingisfornerdsyounerd" 10101010
+  -- #guard_msgs in
+  -- #eval string_func "codingisfornerdsyounerd" 10101010
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   -----Indian National Olympiad in Informatics 2014-----
   Nikhil’s slogan has won the contest conducted by Drongo Airlines and he is entitled to a free ticket between any two destinations served by the airline. All cities served by Drongo Airlines can be reached from each other by some sequence of connecting flights. Nikhil is allowed to take as many connecting flights as needed, but he must take the cheapest route between his chosen destinations.
   Each direct flight between two cities has a fixed price. All pairs of cities connected by direct flights have flights in both directions and the price is the same in either direction. The price for a sequence of connecting flights is the sum of the prices of the direct flights along the route.
@@ -32,6 +33,7 @@ vc-description: |-
   19
   
   Note: Your program should not print anything other than what is specified in the output format. Please remove all diagnostic print statements before making your final submission. A program with extraneous output will be treated as incorrect!
+  -/
 
 vc-preamble: |-
   def find_max_route_cost (n : Nat) (edges : List Edge) : Nat := sorry
@@ -68,23 +70,23 @@ vc-theorems: |-
     find_max_route_cost n edges = 
     find_max_route_cost n (edges.map (λ e => ⟨e.dst, e.src, e.cost⟩)) := sorry
   
-  /--
+  /-
   info: 19
   -/
-  #guard_msgs in
-  #eval find_max_route_cost 4 [(1, 2, 10), (1, 3, 24), (2, 3, 2), (2, 4, 15), (3, 4, 7)]
+  -- #guard_msgs in
+  -- #eval find_max_route_cost 4 [(1, 2, 10), (1, 3, 24), (2, 3, 2), (2, 4, 15), (3, 4, 7)]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_max_route_cost 4 [(1, 2, 1), (2, 3, 1), (3, 4, 1)]
+  -- #guard_msgs in
+  -- #eval find_max_route_cost 4 [(1, 2, 1), (2, 3, 1), (3, 4, 1)]
   
-  /--
+  /-
   info: 15
   -/
-  #guard_msgs in
-  #eval find_max_route_cost 3 [(1, 2, 5), (2, 3, 10), (3, 1, 20)]
+  -- #guard_msgs in
+  -- #eval find_max_route_cost 3 [(1, 2, 5), (2, 3, 10), (3, 1, 20)]
 
 vc-postamble: |-
   -- Apps difficulty: interview

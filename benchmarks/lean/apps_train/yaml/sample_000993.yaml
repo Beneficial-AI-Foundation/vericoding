@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Note : This question carries $100$ $points$
   CodeLand is celebrating a festival by baking cakes! In order to avoid wastage, families follow a unique way of distributing cakes.
   For $T$ families in the locality, $i$-th family (1 <= $i$ <= $T$) has $N$ members. They baked $S$ slices of cakes. The smallest member of the family gets $K$ slices of cakes. Each family has a lucky number of $R$ and they agree to distribute the slices such that the member gets $R$ times more slices than the member just smaller than them. Since the family is busy in festival preparations, find out if the number of slices would be sufficient for the family or not. Also, find how many extra slices they have or how many slices are they short of.
@@ -38,6 +39,7 @@ vc-description: |-
   -----Explanation-----
   For the first home, the youngest member has got 2 slices, the one older than them gets 2 times more slices, and so forth. So, first home needs 2 + 4 + 8 + 16 = 30 slices. But since they made 100, they have 70 extra, hence we print 'POSSIBLE 70'.
   Doing the same for other houses, we find 20 + 4 = 24 slices extra are required so that all families have enough slices. In this case we have 70 + 55 + 140 = 265 extra slices which is > 24, so we print 'POSSIBLE' in last line.
+  -/
 
 vc-preamble: |-
   def solve_cake_festival (families : List (Nat × Nat × Nat × Nat)) : List String := sorry

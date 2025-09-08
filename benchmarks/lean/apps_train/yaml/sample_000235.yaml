@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We have a set of items: the i-th item has value values[i] and label labels[i].
   Then, we choose a subset S of these items, such that:
   
@@ -32,6 +33,7 @@ vc-description: |-
   1 <= values.length == labels.length <= 20000
   0 <= values[i], labels[i] <= 20000
   1 <= num_wanted, use_limit <= values.length
+  -/
 
 vc-preamble: |-
   def largest_vals_from_labels (values: List Int) (labels: List Int) (numWanted: Nat) (useLimit: Nat) : Int :=
@@ -84,23 +86,23 @@ vc-theorems: |-
     largest_vals_from_labels values (List.replicate values.length 0) 1 1 = List.maximum values :=
     sorry
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval largest_vals_from_labels [5, 4, 3, 2, 1] [1, 1, 2, 2, 3] 3 1
+  -- #guard_msgs in
+  -- #eval largest_vals_from_labels [5, 4, 3, 2, 1] [1, 1, 2, 2, 3] 3 1
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval largest_vals_from_labels [5, 4, 3, 2, 1] [1, 3, 3, 3, 2] 3 2
+  -- #guard_msgs in
+  -- #eval largest_vals_from_labels [5, 4, 3, 2, 1] [1, 3, 3, 3, 2] 3 2
   
-  /--
+  /-
   info: 16
   -/
-  #guard_msgs in
-  #eval largest_vals_from_labels [9, 8, 8, 7, 6] [0, 0, 0, 1, 1] 3 1
+  -- #guard_msgs in
+  -- #eval largest_vals_from_labels [9, 8, 8, 7, 6] [0, 0, 0, 1, 1] 3 1
 
 vc-postamble: |-
   -- Apps difficulty: interview

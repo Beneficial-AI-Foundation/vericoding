@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given $N$ gears numbered $1$ through $N$. For each valid $i$, gear $i$ has $A_i$ teeth. In the beginning, no gear is connected to any other. Your task is to process $M$ queries and simulate the gears' mechanism. There are three types of queries:
   - Type 1: Change the number of teeth of gear $X$ to $C$.
   - Type 2: Connect two gears $X$ and $Y$.
@@ -55,6 +56,7 @@ vc-description: |-
   For the second query of type 3, we can calculate the rotation speed using the formula $-3\cdot\frac{6}{8} = \frac{-9}{4}$.
   For the third query of type 3, we can use the formula twice, so the speed of the second gear is $-10\cdot\frac{7}{8} = -\frac{35}{4}$, and the speed of the third gear is $-(-\frac{35}{4})\frac{8}{10} = \frac{7}{1}$.
   For the last query of type 3, all gears are blocked.
+  -/
 
 vc-preamble: |-
   def find (d : Dsu) (x : Nat) : Nat := sorry

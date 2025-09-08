@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # How much is the fish! (- Scooter )
   The ocean is full of colorful fishes. We as programmers want to know the hexadecimal value of these fishes.
   
@@ -11,6 +12,7 @@ vc-description: |-
   ## Example
   
   `fisHex("redlionfish") -> e,d,f -> XOR -> 12`
+  -/
 
 vc-preamble: |-
 
@@ -40,23 +42,23 @@ vc-theorems: |-
     fisHex s.toLower = fisHex s.toUpper :=
   sorry
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval fisHex "redlionfish"
+  -- #guard_msgs in
+  -- #eval fisHex "redlionfish"
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval fisHex "Aeneus corydoras"
+  -- #guard_msgs in
+  -- #eval fisHex "Aeneus corydoras"
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval fisHex "blowfish"
+  -- #guard_msgs in
+  -- #eval fisHex "blowfish"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

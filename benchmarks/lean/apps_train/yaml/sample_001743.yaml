@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   LeetCode company workers use key-cards to unlock office doors. Each time a worker uses their key-card, the security system saves the worker's name and the time when it was used. The system emits an alert if any worker uses the key-card three or more times in a one-hour period.
   You are given a list of strings keyName and keyTime where [keyName[i], keyTime[i]] corresponds to a person's name and the time when their key-card was used in a single day.
   Access times are given in the 24-hour time format "HH:MM", such as "23:51" and "09:49".
@@ -31,6 +32,7 @@ vc-description: |-
   [keyName[i], keyTime[i]] is unique.
   1 <= keyName[i].length <= 10
   keyName[i] contains only lowercase English letters.
+  -/
 
 vc-preamble: |-
   def Time := String
@@ -76,23 +78,23 @@ vc-theorems: |-
   theorem alertNames_short_inputs (names : List String) (times : List Time) :
     List.length names ≤ 2 → alertNames names times = [] := by sorry
   
-  /--
+  /-
   info: ['daniel']
   -/
-  #guard_msgs in
-  #eval alert_names ["daniel", "daniel", "daniel", "luis", "luis", "luis", "luis"] ["10:00", "10:40", "11:00", "09:00", "11:00", "13:00", "15:00"]
+  -- #guard_msgs in
+  -- #eval alert_names ["daniel", "daniel", "daniel", "luis", "luis", "luis", "luis"] ["10:00", "10:40", "11:00", "09:00", "11:00", "13:00", "15:00"]
   
-  /--
+  /-
   info: ['bob']
   -/
-  #guard_msgs in
-  #eval alert_names ["alice", "alice", "alice", "bob", "bob", "bob", "bob"] ["12:01", "12:00", "18:00", "21:00", "21:20", "21:30", "23:00"]
+  -- #guard_msgs in
+  -- #eval alert_names ["alice", "alice", "alice", "bob", "bob", "bob", "bob"] ["12:01", "12:00", "18:00", "21:00", "21:20", "21:30", "23:00"]
   
-  /--
+  /-
   info: ['clare', 'leslie']
   -/
-  #guard_msgs in
-  #eval alert_names ["leslie", "leslie", "leslie", "clare", "clare", "clare", "clare"] ["13:00", "13:20", "14:00", "18:00", "18:51", "19:30", "19:49"]
+  -- #guard_msgs in
+  -- #eval alert_names ["leslie", "leslie", "leslie", "clare", "clare", "clare", "clare"] ["13:00", "13:20", "14:00", "18:00", "18:51", "19:30", "19:49"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

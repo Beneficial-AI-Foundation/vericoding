@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   It's Christmas time and Santa is in town. There are N children each having a bag with a mission to fill in as many toffees as possible. They are accompanied by a teacher whose ulterior motive is to test their counting skills. The toffees are of different brands (denoted by lowercase letters a-z). Santa picks up a child numbered m and gives n toffees of brand p to the child.
   
   The teacher wishes to ask the children to calculate the number of toffees there are of a particular brand amongst a given range of children. Formally, there are 2 queries:
@@ -67,6 +68,7 @@ vc-description: |-
   In first case, there are two children between 3 and 5 between 0 - 6  having sum (4 + 8)
   
   There's no toffee for y in given range
+  -/
 
 vc-preamble: |-
 

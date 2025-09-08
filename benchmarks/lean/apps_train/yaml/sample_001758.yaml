@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Starting with an undirected graph (the "original graph") with nodes from 0 to N-1, subdivisions are made to some of the edges.
   The graph is given as follows: edges[k] is a list of integer pairs (i, j, n) such that (i, j) is an edge of the original graph,
   and n is the total number of new nodes on that edge. 
@@ -27,6 +28,7 @@ vc-description: |-
   0 <= M <= 10^9
   1 <= N <= 3000
   A reachable node is a node that can be travelled to using at most M moves starting from node 0.
+  -/
 
 vc-preamble: |-
   def reachable_nodes (edges : List Edge) (M : Nat) (N : Nat) : Nat :=
@@ -73,17 +75,17 @@ vc-theorems: |-
     (result ≤ 2 + w) ∧ (1 ≤ result) :=
   sorry
   
-  /--
+  /-
   info: 13
   -/
-  #guard_msgs in
-  #eval reachable_nodes [[0, 1, 10], [0, 2, 1], [1, 2, 2]] 6 3
+  -- #guard_msgs in
+  -- #eval reachable_nodes [[0, 1, 10], [0, 2, 1], [1, 2, 2]] 6 3
   
-  /--
+  /-
   info: 23
   -/
-  #guard_msgs in
-  #eval reachable_nodes [[0, 1, 4], [1, 2, 6], [0, 2, 8], [1, 3, 1]] 10 4
+  -- #guard_msgs in
+  -- #eval reachable_nodes [[0, 1, 4], [1, 2, 6], [0, 2, 8], [1, 3, 1]] 10 4
 
 vc-postamble: |-
   -- Apps difficulty: interview

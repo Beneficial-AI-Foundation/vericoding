@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We all know how to handle exceptions in Python. Just use:
   
       try:
@@ -50,6 +51,7 @@ vc-description: |-
     * The exception will not be printed to `stderr`.
     * Code can continue to be executed.
     * The `failure` callable knows what the exception was.
+  -/
 
 vc-preamble: |-
 

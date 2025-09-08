@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Complete the solution so that it returns true if it contains any duplicate argument values. Any number of arguments may be passed into the function.
   
   The array values passed in will only be strings or numbers. The only valid return values are `true` and `false`.
@@ -9,6 +10,7 @@ vc-description: |-
   solution(1, 2, 3, 2)          -->  true
   solution('1', '2', '3', '2')  -->  true
   ```
+  -/
 
 vc-preamble: |-
 
@@ -33,23 +35,23 @@ vc-theorems: |-
   theorem order_independent {α : Type} [BEq α] (xs : List α) :
     solution xs = solution xs.reverse := by sorry
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval solution 1 2 3
+  -- #guard_msgs in
+  -- #eval solution 1 2 3
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval solution 1 2 3 2
+  -- #guard_msgs in
+  -- #eval solution 1 2 3 2
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval solution "a" "b" "c" "c"
+  -- #guard_msgs in
+  -- #eval solution "a" "b" "c" "c"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

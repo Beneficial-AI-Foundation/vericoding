@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given n strings s_1, s_2, ..., s_{n} consisting of characters 0 and 1. m operations are performed, on each of them you concatenate two existing strings into a new one. On the i-th operation the concatenation s_{a}_{i}s_{b}_{i} is saved into a new string s_{n} + i (the operations are numbered starting from 1). After each operation you need to find the maximum positive integer k such that all possible strings consisting of 0 and 1 of length k (there are 2^{k} such strings) are substrings of the new string. If there is no such k, print 0.
   
   -----Input-----
@@ -36,6 +37,7 @@ vc-description: |-
   On the second operation the string "01100" is created. Now all strings of length k = 2 are present.
   
   On the third operation the string "1111111111" is created. There is no zero, so the answer is 0.
+  -/
 
 vc-preamble: |-
 
@@ -79,23 +81,23 @@ vc-theorems: |-
     (h3 : ∀ s ∈ strings, s = "1") :
     solve_binary_string_concat strings [(1,2)] = [0] := sorry
   
-  /--
+  /-
   info: [1, 2, 0]
   -/
-  #guard_msgs in
-  #eval solve_binary_string_concat ["01", "10", "101", "11111", "0"] [(1, 2), (6, 5), (4, 4)]
+  -- #guard_msgs in
+  -- #eval solve_binary_string_concat ["01", "10", "101", "11111", "0"] [(1, 2), (6, 5), (4, 4)]
   
-  /--
+  /-
   info: [1, 1, 1, 2, 1, 2]
   -/
-  #guard_msgs in
-  #eval solve_binary_string_concat ["01", "1", "0011", "0", "01"] [(5, 5), (3, 2), (4, 2), (6, 7), (5, 1), (9, 7)]
+  -- #guard_msgs in
+  -- #eval solve_binary_string_concat ["01", "1", "0011", "0", "01"] [(5, 5), (3, 2), (4, 2), (6, 7), (5, 1), (9, 7)]
   
-  /--
+  /-
   info: [1]
   -/
-  #guard_msgs in
-  #eval solve_binary_string_concat ["0", "1"] [(1, 2)]
+  -- #guard_msgs in
+  -- #eval solve_binary_string_concat ["0", "1"] [(1, 2)]
 
 vc-postamble: |-
   -- Apps difficulty: competition

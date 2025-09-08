@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Let's define a function countUniqueChars(s) that returns the number of unique characters on s, for example if s = "LEETCODE" then "L", "T","C","O","D" are the unique characters since they appear only once in s, therefore countUniqueChars(s) = 5.
   
   On this problem given a string s we need to return the sum of countUniqueChars(t) where t is a substring of s. Notice that some substrings can be repeated so on this case you have to count the repeated ones too.
@@ -24,6 +25,7 @@ vc-description: |-
   
   0 <= s.length <= 10^4
   s contain upper-case English letters only.
+  -/
 
 vc-preamble: |-
   def unique_letter_string (s : String) : Nat := sorry
@@ -54,23 +56,23 @@ vc-theorems: |-
   theorem unique_letter_string_single_char (s : String) (h : s.length = 1) :
     unique_letter_string s = 1 := sorry
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval unique_letter_string "ABC"
+  -- #guard_msgs in
+  -- #eval unique_letter_string "ABC"
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval unique_letter_string "ABA"
+  -- #guard_msgs in
+  -- #eval unique_letter_string "ABA"
   
-  /--
+  /-
   info: 92
   -/
-  #guard_msgs in
-  #eval unique_letter_string "LEETCODE"
+  -- #guard_msgs in
+  -- #eval unique_letter_string "LEETCODE"
 
 vc-postamble: |-
   -- Apps difficulty: interview

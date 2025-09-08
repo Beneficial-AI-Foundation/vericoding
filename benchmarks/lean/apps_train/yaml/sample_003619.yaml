@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    Fred Mapper is considering purchasing some land in Louisiana to build his house on. In the process of investigating the land, he learned that the state of Louisiana is actually shrinking by 50 square miles each year, due to erosion caused by the Mississippi River. Since Fred is hoping to live in this house the rest of his life, he needs to know if his land is going to be lost to erosion.
   
@@ -43,6 +44,7 @@ vc-description: |-
    - `[output]` an integer
   
    The first year (start from 1) this point will be within the semicircle AT THE END OF YEAR.
+  -/
 
 vc-preamble: |-
   def Real := Int -- Simplified for demo
@@ -81,23 +83,23 @@ vc-theorems: |-
     does_fred_need_houseboat x y = ceil (pi * ((x * x) + (y * y)) / 100) := by
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval does_fred_need_houseboat 1 1
+  -- #guard_msgs in
+  -- #eval does_fred_need_houseboat 1 1
   
-  /--
+  /-
   info: 20
   -/
-  #guard_msgs in
-  #eval does_fred_need_houseboat 25 0
+  -- #guard_msgs in
+  -- #eval does_fred_need_houseboat 25 0
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval does_fred_need_houseboat 10 10
+  -- #guard_msgs in
+  -- #eval does_fred_need_houseboat 10 10
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   As a part of this Kata, you need to create a function that when provided with a triplet, returns the index of the numerical element that lies between the other two elements.
   
   The input to the function will be an array of three distinct numbers (Haskell: a tuple).
@@ -14,6 +15,7 @@ vc-description: |-
       gimme([5, 10, 14]) => 1
   
   *10* is the number that fits between *5* and *14* and the index of *10* in the input array is *1*.
+  -/
 
 vc-preamble: |-
   def gimme (arr : List Float) : Nat :=
@@ -62,23 +64,23 @@ vc-theorems: |-
     arr = original :=
   sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval gimme [2, 3, 1]
+  -- #guard_msgs in
+  -- #eval gimme [2, 3, 1]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval gimme [5, 10, 14]
+  -- #guard_msgs in
+  -- #eval gimme [5, 10, 14]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval gimme [-0.41, -23, 4]
+  -- #guard_msgs in
+  -- #eval gimme [-0.41, -23, 4]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

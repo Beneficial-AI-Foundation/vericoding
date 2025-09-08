@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a number `n`, make a down arrow shaped pattern.
   
   For example, when `n = 5`, the output would be:
@@ -28,6 +29,7 @@ vc-description: |-
   Note: There are spaces for the indentation on the left of each line and no spaces on the right.
   
   Have fun!
+  -/
 
 vc-preamble: |-
   def get_a_down_arrow_of (n : Nat) : String :=

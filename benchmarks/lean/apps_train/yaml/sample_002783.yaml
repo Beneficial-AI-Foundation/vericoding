@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a program to determine if two numbers are coprime. A pair of numbers are coprime if their greatest shared factor is 1. For example:
   ```
   20 and 27
@@ -16,6 +17,7 @@ vc-description: |-
   If the two inputs are coprime, your program should return true. If they are not coprime, your program should return false.
   
   The inputs will always be two positive integers between 2 and 99.
+  -/
 
 vc-preamble: |-
 
@@ -42,23 +44,23 @@ vc-theorems: |-
   theorem zero_coprime (n : Int) :
     are_coprime n 0 = (n.natAbs = 1) := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval are_coprime 20 27
+  -- #guard_msgs in
+  -- #eval are_coprime 20 27
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval are_coprime 12 39
+  -- #guard_msgs in
+  -- #eval are_coprime 12 39
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval are_coprime 64 27
+  -- #guard_msgs in
+  -- #eval are_coprime 64 27
 
 vc-postamble: |-
   -- Apps difficulty: introductory

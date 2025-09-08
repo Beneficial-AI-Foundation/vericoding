@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   This is a very simply formulated task. Let's call an integer number `N` 'green' if `N²` ends with all of the digits of `N`. Some examples:
   
   `5` is green, because `5² = 25` and `25` ends with `5`.
@@ -27,6 +28,7 @@ vc-description: |-
   
   Return values should be `String`s, and should be exact. A BigNum library is recommended.
   ```
+  -/
 
 vc-preamble: |-
   def green (n : Nat) : Nat :=
@@ -60,23 +62,23 @@ vc-definitions: |-
     sorry
 
 vc-theorems: |-
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval green 1
+  -- #guard_msgs in
+  -- #eval green 1
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval green 2
+  -- #guard_msgs in
+  -- #eval green 2
   
-  /--
+  /-
   info: 76
   -/
-  #guard_msgs in
-  #eval green 5
+  -- #guard_msgs in
+  -- #eval green 5
 
 vc-postamble: |-
   -- Apps difficulty: interview

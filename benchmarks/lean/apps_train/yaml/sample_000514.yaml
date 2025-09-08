@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Recently in JEC ants have become huge, the Principal is on a journey to snipe them !!
   Principal has limited $N$ practice Bullets to practice so that he can be sure to kill ants.
   - The Practice ground has max length $L$.
@@ -37,6 +38,7 @@ vc-description: |-
   There is only single bullet which is to be fired from distance 1 to 10 to get the distance X so in the worst case it can take up to 10 shots to find the distance X.
   - 
   there are 2 bullets and distance 10 meters suppose if distance X is 10 we can get to that by firing first bullet at 4 then 7 then 9 then  at 10 it will break  it took only 4 turns, and if the distance X was 3, we can get that by firing first bullet at 4 it will get destroyed than we use 2nd bullet at 1 , 2, 3  and 2nd bullet will also break it also took 4 turns. You can check for any position minimum number of turns will be at most 4.
+  -/
 
 vc-preamble: |-
 
@@ -69,23 +71,23 @@ vc-theorems: |-
     min_shots_to_find_x n l ≤ l := by
     sorry
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval min_shots_to_find_x 1 10
+  -- #guard_msgs in
+  -- #eval min_shots_to_find_x 1 10
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval min_shots_to_find_x 2 10
+  -- #guard_msgs in
+  -- #eval min_shots_to_find_x 2 10
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval min_shots_to_find_x 3 16
+  -- #guard_msgs in
+  -- #eval min_shots_to_find_x 3 16
 
 vc-postamble: |-
   -- Apps difficulty: interview

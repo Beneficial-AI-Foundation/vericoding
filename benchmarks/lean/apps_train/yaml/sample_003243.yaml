@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Every natural number, ```n```, may have a prime factorization like:
   
   We define the **geometric derivative of n**, as a number with the following value:
@@ -22,6 +23,7 @@ vc-description: |-
   f(997) == 1
   ```
   Do your best!
+  -/
 
 vc-preamble: |-
 
@@ -38,23 +40,23 @@ vc-theorems: |-
   theorem f_always_positive (n : Nat) (h : n > 0) : 
     f n > 0 := sorry
   
-  /--
+  /-
   info: 4200
   -/
-  #guard_msgs in
-  #eval f 24500
+  -- #guard_msgs in
+  -- #eval f 24500
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval f 997
+  -- #guard_msgs in
+  -- #eval f 997
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval f 25
+  -- #guard_msgs in
+  -- #eval f 25
 
 vc-postamble: |-
   -- Apps difficulty: introductory

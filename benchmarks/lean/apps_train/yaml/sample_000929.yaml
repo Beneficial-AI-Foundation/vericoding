@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Tired of the overpopulated world, Miu - The introverted cat visits a new continent in search for a new house.  
   There are $N$ houses lying on the X-axis.
   
@@ -54,6 +55,7 @@ vc-description: |-
   $| 7 - 2 | = 5$
   
   Hence, the answer is $5$
+  -/
 
 vc-preamble: |-
 
@@ -73,23 +75,23 @@ vc-theorems: |-
     (h : houses.length ≥ 2) :
     find_max_peace_distance houses ≤ (List.maximum? houses).getD 0 - (List.minimum? houses).getD 0 := sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval find_max_peace_distance [7, -1, 2, 13, -5, 15]
+  -- #guard_msgs in
+  -- #eval find_max_peace_distance [7, -1, 2, 13, -5, 15]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_max_peace_distance [6, 10, 3, 12]
+  -- #guard_msgs in
+  -- #eval find_max_peace_distance [6, 10, 3, 12]
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval find_max_peace_distance [-5, 0, 10]
+  -- #guard_msgs in
+  -- #eval find_max_peace_distance [-5, 0, 10]
 
 vc-postamble: |-
   -- Apps difficulty: interview

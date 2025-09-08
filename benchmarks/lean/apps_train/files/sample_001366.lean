@@ -1,0 +1,85 @@
+/-
+Raj loves to listen to songs in his free time. It’s his birthday tomorrow and his friend Neelansh wants his gift to be the most unique. Being great at making music, he decides to produce a song for him. However, Raj likes songs according to their beauty. He determines the beauty of the song as the number of times all the octave musical tones are completed in ascending order.
+
+He begins with a jumbled tone of length N and numbers each octave tone as 1,2,3….8.
+
+Neelansh wants to maximize the beauty of the song but since he uses the trial version of the software,
+- He cannot change the size of N.
+- He cannot introduce any new tone, but can choose any two tones and swap their positions
+
+However, Neelansh just received a mail that he needs to submit all his pending assignments by tomorrow. He has tons of assignments left to do, but he doesn’t want to spoil the idea of his gift. Can you help him? 
+
+-----INPUT-----
+- The first line contains a single integer T- the number of test cases  
+- The first line of each test case contains a single integer N- the length of the song  
+- The second line contains N- space separated integers ai,  ai+1,.....aN 
+
+-----OUTPUT-----
+For each test case, print a single line containing one integer- the maximum possible beauty of the song  
+
+-----CONSTRAINTS-----
+1<=T<=102
+1<=N<=105
+1<=a<=8
+
+-----EXAMPLE INPUT-----
+2
+
+8
+
+1 2 3 4 5 6 7 8
+
+16
+
+1 2 1 2 3 3 4 4 5 5 6 6 7 8 7 8
+
+-----EXAMPLE OUTPUT-----
+1
+
+2
+-/
+
+def find_max_beauty (n: Nat) (tones: List Nat) : Nat := sorry
+
+def countOccurrences (x : Nat) (xs : List Nat) : Nat :=
+  xs.foldl (fun count y => if x = y then count + 1 else count) 0
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def unique (xs : List Nat) : List Nat :=
+  xs.foldl (fun acc x => if x ∈ acc then acc else x::acc) []
+
+theorem find_max_beauty_is_min_frequency 
+  (tones: List Nat) (h: ∀ x ∈ tones, 1 ≤ x ∧ x ≤ 8) :
+  let distinct := unique tones;
+  if distinct.length = 8 then
+    find_max_beauty tones.length tones = 
+      (List.map (fun x => countOccurrences x tones) distinct).minimum?
+  else
+    find_max_beauty tones.length tones = 0 := sorry
+
+theorem find_max_beauty_non_negative 
+  (tones: List Nat) (h: ∀ x ∈ tones, 1 ≤ x ∧ x ≤ 8) :
+  find_max_beauty tones.length tones ≥ 0 := sorry
+
+/-
+info: 1
+-/
+-- #guard_msgs in
+-- #eval find_max_beauty 8 [1, 2, 3, 4, 5, 6, 7, 8]
+
+/-
+info: 2
+-/
+-- #guard_msgs in
+-- #eval find_max_beauty 16 [1, 2, 1, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 8, 7, 8]
+
+/-
+info: 0
+-/
+-- #guard_msgs in
+-- #eval find_max_beauty 4 [1, 2, 3, 4]
+
+-- Apps difficulty: interview
+-- Assurance level: guarded

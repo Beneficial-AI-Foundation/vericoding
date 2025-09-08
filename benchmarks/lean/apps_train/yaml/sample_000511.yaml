@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Maheshmati and Sangu are playing a game. First, Maheshmati gives Sangu a sequence of $N$ distinct integers $a_1, a_2, \dots, a_N$ (not necessarily sorted) and an integer $K$. Sangu has to create all subsequences of this sequence with length $K$. For each subsequence, he has to write down the product of $K-2$ integers: all elements of this subsequence except the minimum and maximum element.
   Sangu wins the game if he is able to write down all these numbers and tell Maheshmati their product (modulo $10^9+7$, since it can be very large). However, Sangu is a very lazy child and thus wants you to help him win this game. Compute the number Sangu should tell Maheshmati!
   
@@ -36,6 +37,7 @@ vc-description: |-
   - $[1, 2, 4]$ (Sangu should write down $2$.)
   - $[2, 3, 4]$ (Sangu should write down $3$.)
   The required product is $2 \cdot 3 \cdot 2 \cdot 3 = 36$.
+  -/
 
 vc-preamble: |-
 

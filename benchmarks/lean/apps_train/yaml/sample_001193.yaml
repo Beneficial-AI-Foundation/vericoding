@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a number n. Find the last two digits of 5 ^ n ( 5 to the power of n ).
   Remember that overflow can occur.
   
@@ -16,6 +17,7 @@ vc-description: |-
   
   -----Sample Output:-----
   25
+  -/
 
 vc-preamble: |-
 
@@ -40,23 +42,23 @@ vc-theorems: |-
     (n : Int) :
     n < 0 → last_two_digits_of_5powern n.toNat = last_two_digits_of_5powern 0 := sorry
   
-  /--
+  /-
   info: 25
   -/
-  #guard_msgs in
-  #eval last_two_digits_of_5powern 2
+  -- #guard_msgs in
+  -- #eval last_two_digits_of_5powern 2
   
-  /--
+  /-
   info: 25
   -/
-  #guard_msgs in
-  #eval last_two_digits_of_5powern 3
+  -- #guard_msgs in
+  -- #eval last_two_digits_of_5powern 3
   
-  /--
+  /-
   info: 25
   -/
-  #guard_msgs in
-  #eval last_two_digits_of_5powern 4
+  -- #guard_msgs in
+  -- #eval last_two_digits_of_5powern 4
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Well known investigative reporter Kim "Sherlock'' Bumjun needs your help! Today, his mission is to sabotage the operations of the evil JSA. If the JSA is allowed to succeed, they will use the combined power of the WQS binary search and the UFDS to take over the world!
   But Kim doesn't know where the base is located. He knows that the base is on the highest peak of the Himalayan Mountains. He also knows the heights of each of the $N$ mountains. Can you help Kim find the height of the mountain where the base is located? 
   
@@ -29,6 +30,7 @@ vc-description: |-
   
   -----Sample Output:-----
   7
+  -/
 
 vc-preamble: |-
   def find_tallest_mountain (n : Nat) (heights : List Nat) : Nat :=
@@ -63,23 +65,23 @@ vc-theorems: |-
     find_tallest_mountain 1 [height] = height
     := sorry
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval find_tallest_mountain 5 [4, 7, 6, 3, 1]
+  -- #guard_msgs in
+  -- #eval find_tallest_mountain 5 [4, 7, 6, 3, 1]
   
-  /--
+  /-
   info: 30
   -/
-  #guard_msgs in
-  #eval find_tallest_mountain 3 [10, 20, 30]
+  -- #guard_msgs in
+  -- #eval find_tallest_mountain 3 [10, 20, 30]
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval find_tallest_mountain 1 [5]
+  -- #guard_msgs in
+  -- #eval find_tallest_mountain 1 [5]
 
 vc-postamble: |-
   -- Apps difficulty: interview

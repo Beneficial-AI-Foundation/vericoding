@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function that receives two strings and returns n, where n is equal to the number of characters we should shift the first string forward to match the second.
   
   For instance, take the strings "fatigue" and "tiguefa". In this case, the first string has been rotated 5 characters forward to produce the second string, so 5 would be returned.
@@ -15,6 +16,7 @@ vc-description: |-
   ```
   
   For Swift, your function should return an Int?. So rather than returning -1 when the second string isn't a valid rotation of the first, return nil.
+  -/
 
 vc-preamble: |-
 
@@ -48,23 +50,23 @@ vc-theorems: |-
     shifted_diff s1 s2 = -1 :=
     sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval shifted_diff "fatigue" "tiguefa"
+  -- #guard_msgs in
+  -- #eval shifted_diff "fatigue" "tiguefa"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval shifted_diff "coffee" "eecoff"
+  -- #guard_msgs in
+  -- #eval shifted_diff "coffee" "eecoff"
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval shifted_diff "dog" "god"
+  -- #guard_msgs in
+  -- #eval shifted_diff "dog" "god"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

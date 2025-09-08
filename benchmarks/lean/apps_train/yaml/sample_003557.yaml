@@ -1,7 +1,9 @@
 vc-description: |-
+  /-
   Implement `String#ipv4_address?`, which should return true if given object is an IPv4 address - four numbers (0-255) separated by dots.
   
   It should only accept addresses in canonical representation, so no leading `0`s, spaces etc.
+  -/
 
 vc-preamble: |-
 
@@ -43,59 +45,59 @@ vc-theorems: |-
     ipv4_address (s!"127.0.0.1{s}") = false :=
   sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval ipv4_address "127.0.0.1"
+  -- #guard_msgs in
+  -- #eval ipv4_address "127.0.0.1"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval ipv4_address "0.0.0.0"
+  -- #guard_msgs in
+  -- #eval ipv4_address "0.0.0.0"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval ipv4_address "255.255.255.255"
+  -- #guard_msgs in
+  -- #eval ipv4_address "255.255.255.255"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval ipv4_address ""
+  -- #guard_msgs in
+  -- #eval ipv4_address ""
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval ipv4_address "10.256.30.40"
+  -- #guard_msgs in
+  -- #eval ipv4_address "10.256.30.40"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval ipv4_address "10.20.030.40"
+  -- #guard_msgs in
+  -- #eval ipv4_address "10.20.030.40"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval ipv4_address "127.0.0.1 "
+  -- #guard_msgs in
+  -- #eval ipv4_address "127.0.0.1 "
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval ipv4_address " 127.0.0.1"
+  -- #guard_msgs in
+  -- #eval ipv4_address " 127.0.0.1"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval ipv4_address "127..0.1"
+  -- #guard_msgs in
+  -- #eval ipv4_address "127..0.1"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

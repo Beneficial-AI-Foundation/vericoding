@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a 32-bit signed integer, reverse digits of an integer.
   
   Example 1:
@@ -18,6 +19,7 @@ vc-description: |-
   
   Note:
   Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−231,  231 − 1]. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.
+  -/
 
 vc-preamble: |-
   def reverse_integer (x : Int) : Int := sorry
@@ -59,23 +61,23 @@ vc-theorems: |-
     reverse_integer 1534236469 = 0 ∧
     reverse_integer (-2147483648) = 0 := sorry
   
-  /--
+  /-
   info: 321
   -/
-  #guard_msgs in
-  #eval reverse_integer 123
+  -- #guard_msgs in
+  -- #eval reverse_integer 123
   
-  /--
+  /-
   info: -321
   -/
-  #guard_msgs in
-  #eval reverse_integer -123
+  -- #guard_msgs in
+  -- #eval reverse_integer -123
   
-  /--
+  /-
   info: 21
   -/
-  #guard_msgs in
-  #eval reverse_integer 120
+  -- #guard_msgs in
+  -- #eval reverse_integer 120
 
 vc-postamble: |-
   -- Apps difficulty: introductory

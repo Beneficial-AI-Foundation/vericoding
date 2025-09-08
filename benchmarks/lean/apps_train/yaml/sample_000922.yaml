@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A repetition-free number is one in which each digit $\{1,2,3,…,9\}$ appears at most once and the digit $0$ does not appear. A repetition-free number can have at most nine digits, but may also have fewer than nine digits. Some examples of repetition-free numbers are $9, 32, 489, 98761$ and $983245$.
   You will be given an integer $N$ with at most nine digits. Your task is to print out the smallest repetition-free number bigger than $N$. For example, for $99$ the answer is $123$, for $881$ the answer is $891$, and for $133$ the answer is $134$.
   
@@ -16,6 +17,7 @@ vc-description: |-
   
   -----Sample output-----
   123
+  -/
 
 vc-preamble: |-
 
@@ -37,23 +39,23 @@ vc-theorems: |-
   theorem find_next_repetition_free_above_max {n : Nat} (h : n ≥ 987654321) :
     find_next_repetition_free n = 0 := sorry
   
-  /--
+  /-
   info: 123
   -/
-  #guard_msgs in
-  #eval find_next_repetition_free 99
+  -- #guard_msgs in
+  -- #eval find_next_repetition_free 99
   
-  /--
+  /-
   info: 891
   -/
-  #guard_msgs in
-  #eval find_next_repetition_free 881
+  -- #guard_msgs in
+  -- #eval find_next_repetition_free 881
   
-  /--
+  /-
   info: 134
   -/
-  #guard_msgs in
-  #eval find_next_repetition_free 133
+  -- #guard_msgs in
+  -- #eval find_next_repetition_free 133
 
 vc-postamble: |-
   -- Apps difficulty: interview

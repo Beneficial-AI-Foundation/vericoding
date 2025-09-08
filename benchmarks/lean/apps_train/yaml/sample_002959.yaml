@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are some candies that need to be distributed to some children as fairly as possible (i.e. the variance of result needs to be as small as possible), but I don't know how to distribute them, so I need your help. Your assignment is to write a function with signature `distribute(m, n)` in which `m` represents how many candies there are, while `n` represents how many children there are. The function should return a container which includes the number of candies each child gains.
   
   # Notice
@@ -35,6 +36,7 @@ vc-description: |-
   
   # Output
     1. [Integer]
+  -/
 
 vc-preamble: |-
 
@@ -67,29 +69,29 @@ vc-theorems: |-
     (∀ i, i < result.length - 1 → 
       result.get ⟨i, by sorry⟩ ≥ result.get ⟨i+1, by sorry⟩) := sorry
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval distribute 10 0
+  -- #guard_msgs in
+  -- #eval distribute 10 0
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval distribute 15 -5
+  -- #guard_msgs in
+  -- #eval distribute 15 -5
   
-  /--
+  /-
   info: [0] * 10
   -/
-  #guard_msgs in
-  #eval distribute -5 10
+  -- #guard_msgs in
+  -- #eval distribute -5 10
   
-  /--
+  /-
   info: [2, 2, 2, 2, 2, 1, 1, 1, 1, 1]
   -/
-  #guard_msgs in
-  #eval distribute 15 10
+  -- #guard_msgs in
+  -- #eval distribute 15 10
 
 vc-postamble: |-
   -- Apps difficulty: introductory

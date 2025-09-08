@@ -1,7 +1,9 @@
 vc-description: |-
+  /-
   Given two arrays of integers `m` and `n`, test if they contain *at least* one identical element. Return `true` if they do; `false` if not.
   
   Your code must handle any value within the range of a 32-bit integer, and must be capable of handling either array being empty (which is a `false` result, as there are no duplicated elements).
+  -/
 
 vc-preamble: |-
 
@@ -41,23 +43,23 @@ vc-theorems: |-
     duplicate_elements xs ys →
     duplicate_elements xs (ys ++ ys) := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval duplicate_elements [1, 2, 3] [3, 4, 5]
+  -- #guard_msgs in
+  -- #eval duplicate_elements [1, 2, 3] [3, 4, 5]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval duplicate_elements [1, 2, 3] [4, 5, 6]
+  -- #guard_msgs in
+  -- #eval duplicate_elements [1, 2, 3] [4, 5, 6]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval duplicate_elements [] []
+  -- #guard_msgs in
+  -- #eval duplicate_elements [] []
 
 vc-postamble: |-
   -- Apps difficulty: introductory

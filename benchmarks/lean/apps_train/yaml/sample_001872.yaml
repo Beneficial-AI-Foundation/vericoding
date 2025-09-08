@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a string s, and an array of pairs of indices in the string pairs where pairs[i] = [a, b] indicates 2 indices(0-indexed) of the string.
   You can swap the characters at any pair of indices in the given pairs any number of times.
   Return the lexicographically smallest string that s can be changed to after using the swaps.
@@ -31,6 +32,7 @@ vc-description: |-
   0 <= pairs.length <= 10^5
   0 <= pairs[i][0], pairs[i][1] < s.length
   s only contains lower case English letters.
+  -/
 
 vc-preamble: |-
 
@@ -67,23 +69,23 @@ vc-theorems: |-
     result.data[i]! ≤ result.data[j]! :=
     sorry
   
-  /--
+  /-
   info: 'bacd'
   -/
-  #guard_msgs in
-  #eval smallest_string_with_swaps "dcab" [[0, 3], [1, 2]]
+  -- #guard_msgs in
+  -- #eval smallest_string_with_swaps "dcab" [[0, 3], [1, 2]]
   
-  /--
+  /-
   info: 'abcd'
   -/
-  #guard_msgs in
-  #eval smallest_string_with_swaps "dcab" [[0, 3], [1, 2], [0, 2]]
+  -- #guard_msgs in
+  -- #eval smallest_string_with_swaps "dcab" [[0, 3], [1, 2], [0, 2]]
   
-  /--
+  /-
   info: 'abc'
   -/
-  #guard_msgs in
-  #eval smallest_string_with_swaps "cba" [[0, 1], [1, 2]]
+  -- #guard_msgs in
+  -- #eval smallest_string_with_swaps "cba" [[0, 1], [1, 2]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

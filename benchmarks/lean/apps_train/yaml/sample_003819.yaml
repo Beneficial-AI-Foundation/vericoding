@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this kata, you have to define a function named **func** that will take a list as input.
   
   You must try and guess the pattern how we get the output number and return list - **[output number,binary representation,octal representation,hexadecimal representation]**, but **you must convert that specific number without built-in : bin,oct and hex functions.**
@@ -12,6 +13,7 @@ vc-description: |-
   
   func([2,4,6,8,10,12,14,16,18,19]) returns - [10,'1010','12','a']
   ```
+  -/
 
 vc-preamble: |-
   def func (numbers : List Nat) : List (Nat ⊕ String) := sorry

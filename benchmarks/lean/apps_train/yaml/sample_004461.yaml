@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Task
   
   Given a string, add the fewest number of characters possible from the front or back to make it a palindrome.
@@ -14,6 +15,7 @@ vc-description: |-
   The output is a palindrome string satisfying the task.
   
   For s = `ab` either solution (`aba` or `bab`) will be accepted.
+  -/
 
 vc-preamble: |-
 
@@ -46,23 +48,23 @@ vc-theorems: |-
     ∀ c : Char, 
       result.data.count c ≥ s.data.count c := sorry
   
-  /--
+  /-
   info: 'abcdcba'
   -/
-  #guard_msgs in
-  #eval build_palindrome "abcdc"
+  -- #guard_msgs in
+  -- #eval build_palindrome "abcdc"
   
-  /--
+  /-
   info: 'ababa'
   -/
-  #guard_msgs in
-  #eval build_palindrome "ababa"
+  -- #guard_msgs in
+  -- #eval build_palindrome "ababa"
   
-  /--
+  /-
   info: 'bacdcab'
   -/
-  #guard_msgs in
-  #eval build_palindrome "cdcab"
+  -- #guard_msgs in
+  -- #eval build_palindrome "cdcab"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

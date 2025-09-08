@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Task
    An `ATM` ran out of 10 dollar bills and only has `100, 50 and 20` dollar bills.
   
@@ -18,6 +19,7 @@ vc-description: |-
     Amount of money to withdraw. Assume that `n` is always exchangeable with `[100, 50, 20]` bills.
    - `[output]` integer array
     An array of number of `100, 50 and 20` dollar bills needed to complete the withdraw (in that order).
+  -/
 
 vc-preamble: |-
 
@@ -28,7 +30,7 @@ vc-helpers: |-
 vc-definitions: |-
   def withdraw (n : Int) : (Int × Int × Int) := sorry
   
-  /-- The withdraw function returns a valid solution for multiples of 10 -/
+  /- The withdraw function returns a valid solution for multiples of 10 -/
 
 vc-theorems: |-
   theorem withdraw_valid (amount : Int) (h : amount ≥ 20) (h2 : amount % 10 = 0) : 
@@ -36,13 +38,13 @@ vc-theorems: |-
     hundreds ≥ 0 ∧ fifties ≥ 0 ∧ twenties ≥ 0 ∧ 
     hundreds * 100 + fifties * 50 + twenties * 20 = amount := sorry
   
-  /-- The withdraw function returns optimal solutions with limited 20s -/
+  /- The withdraw function returns optimal solutions with limited 20s -/
   
   theorem withdraw_optimal (amount : Int) (h : amount ≥ 20) (h2 : amount % 10 = 0) :
     let (hundreds, fifties, twenties) := withdraw amount
     twenties ≤ 4 := sorry
   
-  /-- The withdraw function uses fifties efficiently -/
+  /- The withdraw function uses fifties efficiently -/
   
   theorem withdraw_fifty_efficient (amount : Int) (h : amount ≥ 20) (h2 : amount % 10 = 0) :
     let (hundreds, fifties, twenties) := withdraw amount
@@ -50,23 +52,23 @@ vc-theorems: |-
     let remainder := amount - (hundreds * 100 + fifties * 50)
     remainder ≥ 0 ∧ remainder % 20 = 0 := sorry
   
-  /--
+  /-
   info: [0, 0, 2]
   -/
-  #guard_msgs in
-  #eval withdraw 40
+  -- #guard_msgs in
+  -- #eval withdraw 40
   
-  /--
+  /-
   info: [2, 1, 0]
   -/
-  #guard_msgs in
-  #eval withdraw 250
+  -- #guard_msgs in
+  -- #eval withdraw 250
   
-  /--
+  /-
   info: [2, 0, 3]
   -/
-  #guard_msgs in
-  #eval withdraw 260
+  -- #guard_msgs in
+  -- #eval withdraw 260
 
 vc-postamble: |-
   -- Apps difficulty: introductory

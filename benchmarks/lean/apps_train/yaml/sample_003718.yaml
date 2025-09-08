@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your goal is to implement the method **meanVsMedian** which accepts an *odd-length* array of integers and returns one of the following:
   
   * 'mean' - in case **mean** value is **larger than** median value
@@ -8,6 +9,7 @@ vc-description: |-
   Reminder: [Median](https://en.wikipedia.org/wiki/Median)
   
   Array will always be valid (odd-length >= 3)
+  -/
 
 vc-preamble: |-
   def mean_vs_median (l : List Int) : String := sorry
@@ -33,23 +35,23 @@ vc-theorems: |-
     (h2 : ∀ x ∈ l, x = 1) :
     mean_vs_median l = "same" := sorry
   
-  /--
+  /-
   info: 'same'
   -/
-  #guard_msgs in
-  #eval mean_vs_median [1, 1, 1]
+  -- #guard_msgs in
+  -- #eval mean_vs_median [1, 1, 1]
   
-  /--
+  /-
   info: 'mean'
   -/
-  #guard_msgs in
-  #eval mean_vs_median [1, 2, 37]
+  -- #guard_msgs in
+  -- #eval mean_vs_median [1, 2, 37]
   
-  /--
+  /-
   info: 'median'
   -/
-  #guard_msgs in
-  #eval mean_vs_median [7, 14, -70]
+  -- #guard_msgs in
+  -- #eval mean_vs_median [7, 14, -70]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   "How did you get the deal,how did he agree?"
   "Its's simple Tom I just made him an offer he couldn't refuse" 
   Ayush is the owner of a big construction company and a close aide of Don Vito The Godfather, recently with the help of the Godfather his company has been assigned a big contract according to the contract he has to make n number of V shaped infinitely long roads(two V shaped roads may or  not intersect) on an infinitely large field.
@@ -29,6 +30,7 @@ vc-description: |-
   Test case 1:       For one V shaped road there will be 2 regions
   
   Test case 2:       For n=2 the following figure depicts the case of maximum regions:
+  -/
 
 vc-preamble: |-
 
@@ -55,23 +57,23 @@ vc-theorems: |-
     max_regions_after_v_roads 3 = 16 :=
   sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval max_regions_after_v_roads 1
+  -- #guard_msgs in
+  -- #eval max_regions_after_v_roads 1
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval max_regions_after_v_roads 2
+  -- #guard_msgs in
+  -- #eval max_regions_after_v_roads 2
   
-  /--
+  /-
   info: 16
   -/
-  #guard_msgs in
-  #eval max_regions_after_v_roads 3
+  -- #guard_msgs in
+  -- #eval max_regions_after_v_roads 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

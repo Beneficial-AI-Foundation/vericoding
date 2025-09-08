@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Pikachu had an array with him. He wrote down all the non-empty subsequences of the array on paper. Note that an array of size n has 2^{n} - 1 non-empty subsequences in it. 
   
   Pikachu being mischievous as he always is, removed all the subsequences in which Maximum_element_of_the_subsequence  -  Minimum_element_of_subsequence  ≥ d
@@ -42,6 +43,7 @@ vc-description: |-
   In the output of the first example case, the remaining subsequences after removing those with Maximum_element_of_the_subsequence  -  Minimum_element_of_subsequence  ≥ 5 are [5], [5, 7], [5, 6], [5, 7, 6], [50], [7], [7, 6], [15], [6], [100]. There are 10 of them. Hence, the array [5, 50, 7, 15, 6, 100] is valid.
   
   Similarly, in the output of the second example case, the remaining sub-sequences after removing those with Maximum_element_of_the_subsequence  -  Minimum_element_of_subsequence  ≥ 2 are [10], [100], [1000], [10000]. There are 4 of them. Hence, the array [10, 100, 1000, 10000] is valid.
+  -/
 
 vc-preamble: |-
 
@@ -82,23 +84,23 @@ vc-theorems: |-
       result.length ≤ 10000
     := sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval len solve_pikachu_array(10, 5)
+  -- #guard_msgs in
+  -- #eval len solve_pikachu_array(10, 5)
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval len solve_pikachu_array(4, 2)
+  -- #guard_msgs in
+  -- #eval len solve_pikachu_array(4, 2)
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval len solve_pikachu_array(1, 1)
+  -- #guard_msgs in
+  -- #eval len solve_pikachu_array(1, 1)
 
 vc-postamble: |-
   -- Apps difficulty: competition

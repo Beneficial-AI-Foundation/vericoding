@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef changed the password of his laptop a few days ago, but he can't remember it today. Luckily, he wrote the encrypted password on a piece of paper, along with the rules for decryption.
   The encrypted password is a string S consists of ASCII printable characters except space (ASCII 33 - 126, in decimal notation, the same below). Read here for more details: ASCII printable characters.
   Each rule contains a pair of characters ci, pi, denoting that every character ci appears in the encrypted password should be replaced with pi. Notice that it is not allowed to do multiple replacements on a single position, see example case 1 for clarification.
@@ -46,6 +47,7 @@ vc-description: |-
   1800
   .001
   321.33098
+  -/
 
 vc-preamble: |-
   def decryptPassword (rules : List (Char × Char)) (encrypted : String) : String :=
@@ -93,23 +95,23 @@ vc-theorems: |-
     stringToNat decrypted = num
     := sorry
   
-  /--
+  /-
   info: '3'
   -/
-  #guard_msgs in
-  #eval decrypt_password [("5", "3"), ("3", "1")] "5"
+  -- #guard_msgs in
+  -- #eval decrypt_password [("5", "3"), ("3", "1")] "5"
   
-  /--
+  /-
   info: '1800'
   -/
-  #guard_msgs in
-  #eval decrypt_password [] "01800.00"
+  -- #guard_msgs in
+  -- #eval decrypt_password [] "01800.00"
   
-  /--
+  /-
   info: '321.33098'
   -/
-  #guard_msgs in
-  #eval decrypt_password [("x", "0"), ("d", "3"), ("#", ".")] "0xd21#dd098x"
+  -- #guard_msgs in
+  -- #eval decrypt_password [("x", "0"), ("d", "3"), ("#", ".")] "0xd21#dd098x"
 
 vc-postamble: |-
   -- Apps difficulty: interview

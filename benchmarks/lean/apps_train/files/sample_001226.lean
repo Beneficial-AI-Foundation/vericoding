@@ -1,0 +1,87 @@
+/-
+Once again, we have a lot of requests from coders for a challenging problem on geometry. Geometry expert Nitin is thinking about a problem with parabolas, icosahedrons, crescents and trapezoids, but for now, to encourage beginners, he chooses to work with circles and rectangles.
+You are given two sequences $A_1, A_2, \ldots, A_N$ and $B_1, B_2, \ldots, B_N$. You should choose a permutation $P_1, P_2, \ldots, P_N$ of the integers $1$ through $N$ and construct $N$ rectangles with dimensions $A_1 \times B_{P_1}, A_2 \times B_{P_2}, \ldots, A_N \times B_{P_N}$. Then, for each of these rectangles, you should construct an inscribed circle, i.e. a circle with the maximum possible area that is completely contained in that rectangle.
+Let $S$ be the sum of diameters of these $N$ circles. Your task is to find the maximum value of $S$.
+
+-----Input-----
+- The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+- The first line of each test case contains a single integer $N$.
+- The second line contains $N$ space-separated integers $A_1, A_2, \ldots, A_N$. 
+- The third line contains $N$ space-separated integers $B_1, B_2, \ldots, B_N$. 
+
+-----Output-----
+For each test case, print a single line containing one integer ― the maximum value of $S$. It is guaranteed that this value is always an integer.
+
+-----Constraints-----
+- $1 \le T \le 50$
+- $1 \le N \le 10^4$
+- $1 \le A_i, B_i \le 10^9$ for each valid $i$
+
+-----Subtasks-----
+Subtask #1 (20 points):
+- $A_1 = A_2 = \ldots = A_N$
+- $B_1 = B_2 = \ldots = B_N$
+Subtask #2 (80 points): original constraints
+
+-----Example Input-----
+2
+4
+8 8 10 12
+15 20 3 5
+3
+20 20 20
+10 10 10
+
+-----Example Output-----
+30
+30
+
+-----Explanation-----
+Example case 1: Four rectangles with dimensions $8 \times 3$, $8 \times 5$, $10 \times 20$ and $12 \times 15$ lead to an optimal answer.
+-/
+
+def List.sum : List Nat → Nat 
+  | [] => 0
+  | x::xs => x + sum xs
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def List.sort : List Nat → List Nat := sorry
+
+def solve_circle_rectangles (n : Nat) (A B : List Nat) : Nat := sorry
+
+theorem result_less_than_inputs {n : Nat} {A B : List Nat} 
+  (h1 : A.length = n) (h2 : B.length = n) :
+  solve_circle_rectangles n A B ≤ List.sum A ∧ 
+  solve_circle_rectangles n A B ≤ List.sum B := sorry
+
+theorem result_non_negative {n : Nat} {A B : List Nat}
+  (h1 : A.length = n) (h2 : B.length = n) :
+  solve_circle_rectangles n A B ≥ 0 := sorry
+
+theorem result_order_independent {n : Nat} {A B : List Nat}
+  (h1 : A.length = n) (h2 : B.length = n) :
+  solve_circle_rectangles n A B = 
+  solve_circle_rectangles n A.reverse B.reverse := sorry
+
+theorem result_is_sum_of_mins {n : Nat} {A B : List Nat}
+  (h1 : A.length = n) (h2 : B.length = n) :
+  solve_circle_rectangles n A B = 
+  List.sum (List.map (fun (p : Nat × Nat) => min p.fst p.snd) 
+    (List.zip (List.sort A) (List.sort B))) := sorry
+
+/-
+info: 30
+-/
+-- #guard_msgs in
+-- #eval solve_circle_rectangles 4 [8, 8, 10, 12] [15, 20, 3, 5]
+
+/-
+info: 30
+-/
+-- #guard_msgs in
+-- #eval solve_circle_rectangles 3 [20, 20, 20] [10, 10, 10]
+
+-- Apps difficulty: interview
+-- Assurance level: guarded

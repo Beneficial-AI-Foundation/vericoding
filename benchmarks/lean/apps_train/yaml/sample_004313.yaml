@@ -1,5 +1,7 @@
 vc-description: |-
+  /-
   Get n seconds before the target time. See Example Test Cases about the format.
+  -/
 
 vc-preamble: |-
   def subtractSeconds (date_str : String) (seconds : Nat) : String :=
@@ -33,17 +35,17 @@ vc-theorems: |-
     IsError (seconds_ago date_str 1)
     := sorry
   
-  /--
+  /-
   info: '1999-12-31 23:59:59'
   -/
-  #guard_msgs in
-  #eval seconds_ago "2000-01-01 00:00:00" 1
+  -- #guard_msgs in
+  -- #eval seconds_ago "2000-01-01 00:00:00" 1
   
-  /--
+  /-
   info: '0001-02-03 04:04:59'
   -/
-  #guard_msgs in
-  #eval seconds_ago "0001-02-03 04:05:06" 7
+  -- #guard_msgs in
+  -- #eval seconds_ago "0001-02-03 04:05:06" 7
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Snuke has decided to play a game, where the player runs a railway company.
   There are M+1 stations on Snuke Line, numbered 0 through M.
   A train on Snuke Line stops at station 0 and every d-th station thereafter, where d is a predetermined constant for each train.
@@ -37,6 +38,7 @@ vc-description: |-
    - If one takes a train stopping every station, three kinds of souvenirs can be purchased: kind 1, 2 and 3.
    - If one takes a train stopping every second station, two kinds of souvenirs can be purchased: kind 1 and 2.
    - If one takes a train stopping every third station, two kinds of souvenirs can be purchased: kind 2 and 3.
+  -/
 
 vc-preamble: |-
 
@@ -47,23 +49,23 @@ vc-helpers: |-
 vc-definitions: |-
   def solve_train_souvenirs (n m : Nat) (lr_pairs : List (Nat × Nat)) : List Nat := sorry
   
-  /-- For any input with n segments and m positions, the result length matches m -/
+  /- For any input with n segments and m positions, the result length matches m -/
 
 vc-theorems: |-
   theorem result_length_matches_m (n m : Nat) (lr_pairs : List (Nat × Nat)) :
     List.length (solve_train_souvenirs n m lr_pairs) = m := sorry
   
-  /-- All values in result are non-negative -/
+  /- All values in result are non-negative -/
   
   theorem result_values_nonnegative (n m : Nat) (lr_pairs : List (Nat × Nat)) :
     ∀ x ∈ solve_train_souvenirs n m lr_pairs, x ≥ 0 := sorry
   
-  /-- First value in result is at most n -/
+  /- First value in result is at most n -/
   
   theorem first_value_at_most_n (n m : Nat) (lr_pairs : List (Nat × Nat)) :
     n > 0 → m > 0 → List.head! (solve_train_souvenirs n m lr_pairs) ≤ n := sorry
   
-  /-- Empty input produces list of m zeros -/
+  /- Empty input produces list of m zeros -/
   
   theorem empty_input_produces_zeros (m : Nat) :
     solve_train_souvenirs 0 m [] = List.replicate m 0 := sorry

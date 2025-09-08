@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Consider all binary strings of length $m$ ($1 \le m \le 60$). A binary string is a string that consists of the characters 0 and 1 only. For example, 0110 is a binary string, and 012aba is not. Obviously, there are exactly $2^m$ such strings in total.
   
   The string $s$ is lexicographically smaller than the string $t$ (both have the same length $m$) if in the first position $i$ from the left in which they differ, we have $s[i] < t[i]$. This is exactly the way strings are compared in dictionaries and in most modern programming languages when comparing them in a standard way. For example, the string 01011 is lexicographically smaller than the string 01100, because the first two characters are the same, and the third character in the first string is less than that in the second.
@@ -54,6 +55,7 @@ vc-description: |-
   The first test case is explained in the statement.
   
   In the second test case, the result after removing strings and sorting is $[$001, 010, 101, 110$]$. Therefore, the desired median is 010.
+  -/
 
 vc-preamble: |-
   def find_median_binary_string (n m : Nat) (removed : List String) : String := sorry
@@ -70,7 +72,7 @@ vc-definitions: |-
   def isBinaryChar (c : Char) : Bool :=
     c = '0' || c = '1'
   
-  /-- The length of the output string matches the input length m -/
+  /- The length of the output string matches the input length m -/
 
 vc-theorems: |-
   theorem find_median_binary_string_length_matches_input
@@ -79,7 +81,7 @@ vc-theorems: |-
     (h₂ : n = removed.length) :
     (find_median_binary_string n m removed).length = m := sorry
   
-  /-- The output string only contains '0' and '1' characters -/
+  /- The output string only contains '0' and '1' characters -/
   
   theorem find_median_binary_string_binary_chars
     {n m : Nat} {removed : List String}
@@ -87,7 +89,7 @@ vc-theorems: |-
     (h₂ : n = removed.length) :
     ∀ c, c ∈ (find_median_binary_string n m removed).data → isBinaryChar c := sorry
   
-  /-- The output string is not in the list of removed strings -/
+  /- The output string is not in the list of removed strings -/
   
   theorem find_median_binary_string_not_in_removed
     {n m : Nat} {removed : List String}
@@ -95,7 +97,7 @@ vc-theorems: |-
     (h₂ : n = removed.length) :
     stringInList (find_median_binary_string n m removed) removed = false := sorry
   
-  /-- For the minimal case with a single all-zeros string removed,
+  /- For the minimal case with a single all-zeros string removed,
       the output string has correct length and is not all zeros -/
   
   theorem find_median_binary_string_minimal_case
@@ -104,23 +106,23 @@ vc-theorems: |-
     let result := find_median_binary_string 1 m [zeros]
     (result.length = m) ∧ (isAllZeros result = false) := sorry
   
-  /--
+  /-
   info: '100'
   -/
-  #guard_msgs in
-  #eval find_median_binary_string 3 3 ["010", "001", "111"]
+  -- #guard_msgs in
+  -- #eval find_median_binary_string 3 3 ["010", "001", "111"]
   
-  /--
+  /-
   info: '010'
   -/
-  #guard_msgs in
-  #eval find_median_binary_string 4 3 ["000", "111", "100", "011"]
+  -- #guard_msgs in
+  -- #eval find_median_binary_string 4 3 ["000", "111", "100", "011"]
   
-  /--
+  /-
   info: '0'
   -/
-  #guard_msgs in
-  #eval find_median_binary_string 1 1 ["1"]
+  -- #guard_msgs in
+  -- #eval find_median_binary_string 1 1 ["1"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

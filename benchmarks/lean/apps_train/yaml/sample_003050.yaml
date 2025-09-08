@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Problem
   
   In China，there is an ancient mathematical book, called "The Mathematical Classic of Sun Zi"(《孙子算经》). In the book, there is a classic math problem: “今有物不知其数，三三数之剩二，五五数之剩三，七七数之剩二，问物几何？” 
@@ -44,6 +45,7 @@ vc-description: |-
   - `0 <= x < 3, 0 <= y < 5, 0 <= z < 7`
   
   - Happy Coding `^_^`
+  -/
 
 vc-preamble: |-
 
@@ -70,23 +72,23 @@ vc-theorems: |-
     find_unknown_number 0 0 0 = 105 := by
     sorry
   
-  /--
+  /-
   info: 23
   -/
-  #guard_msgs in
-  #eval find_unknown_number 2 3 2
+  -- #guard_msgs in
+  -- #eval find_unknown_number 2 3 2
   
-  /--
+  /-
   info: 52
   -/
-  #guard_msgs in
-  #eval find_unknown_number 1 2 3
+  -- #guard_msgs in
+  -- #eval find_unknown_number 1 2 3
   
-  /--
+  /-
   info: 105
   -/
-  #guard_msgs in
-  #eval find_unknown_number 0 0 0
+  -- #guard_msgs in
+  -- #eval find_unknown_number 0 0 0
 
 vc-postamble: |-
   -- Apps difficulty: introductory

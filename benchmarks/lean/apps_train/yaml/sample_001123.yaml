@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In Snakeland, there are some snakes and mongooses. They are lined up in a row. The information about how exactly they are lined up it is provided to you by a string of length n. If the i-th character of this string is 's', then it means that there is a snake at the i-th position, whereas the character 'm' denotes a mongoose.
   You might have heard about the age-old rivalry between hares and tortoises, but in Snakeland, the rivalry between snakes and mongooses is much more famous. The snakes and the mongooses want to hold a final poll in which the ultimate winner of this age-old battle will be decided. If the snakes get more votes than the mongooses, they will be the ultimate winners. Similarly, if the mongooses get more votes than snakes, they will be the ultimate winners. Obviously, each animal is loyal to their species, i.e. each snake will vote for the snakes to be the ultimate champions and each mongoose for the mongooses.
   
@@ -34,6 +35,7 @@ vc-description: |-
   Example 2. The mongoose will eat the snake at position 2 (1-based indexing). One mongoose and one snake will be left. Hence, there will be a tie.
   Example 3. The mongoose can eat either the snake to its left or to the right. But, it can eat only one of them. Afterwards, there will be a single snake and mongoose. So, it will result in a tie. 
   Example 4. The mongooses can eat at max two snakes. For example, s*mmm*sss, where * denotes the snakes that were eaten by mongooses. After this, we have four snakes and three mongooses. So, the snakes win.
+  -/
 
 vc-preamble: |-
 
@@ -88,23 +90,23 @@ vc-theorems: |-
      determine_winner sequence = "tie") :=
   sorry
   
-  /--
+  /-
   info: 'mongooses'
   -/
-  #guard_msgs in
-  #eval determine_winner "sm"
+  -- #guard_msgs in
+  -- #eval determine_winner "sm"
   
-  /--
+  /-
   info: 'tie'
   -/
-  #guard_msgs in
-  #eval determine_winner "ssm"
+  -- #guard_msgs in
+  -- #eval determine_winner "ssm"
   
-  /--
+  /-
   info: 'snakes'
   -/
-  #guard_msgs in
-  #eval determine_winner "ssmmmssss"
+  -- #guard_msgs in
+  -- #eval determine_winner "ssmmmssss"
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Help Suzuki rake his garden!
   
   The monastery has a magnificent Zen garden made of white gravel and rocks and it is raked diligently everyday by the monks. Suzuki having a keen eye is always on the lookout for anything creeping into the garden that must be removed during the daily raking such as insects or moss. 
@@ -28,6 +29,7 @@ vc-description: |-
   * [Help Suzuki pack his coal basket!](https://www.codewars.com/kata/57f09d0bcedb892791000255)
   * [Suzuki needs help lining up his students!](https://www.codewars.com/kata/5701800886306a876a001031)
   * [How many stairs will Suzuki climb in 20 years?](https://www.codewars.com/kata/56fc55cd1f5a93d68a001d4e)
+  -/
 
 vc-preamble: |-
 
@@ -70,23 +72,23 @@ vc-theorems: |-
     rake_garden "gravel gravel" = "gravel gravel" ∧
     rake_garden "anything else" = "gravel gravel" := sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval rake_garden "slug spider rock gravel"
+  -- #guard_msgs in
+  -- #eval rake_garden "slug spider rock gravel"
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval rake_garden "gravel gravel rock moss ant gravel spider"
+  -- #guard_msgs in
+  -- #eval rake_garden "gravel gravel rock moss ant gravel spider"
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval rake_garden "rock rock rock"
+  -- #guard_msgs in
+  -- #eval rake_garden "rock rock rock"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Introduction 
   
   The ragbaby cipher is a substitution cipher that encodes/decodes a text using a keyed alphabet and their position in the plaintext word they are a part of.
@@ -29,6 +30,7 @@ vc-description: |-
   
   - handle lower and upper case in `text` string
   - `key` consists of only lowercase characters
+  -/
 
 vc-preamble: |-
   def isValidKey (k : String) : Bool :=
@@ -60,17 +62,17 @@ vc-theorems: |-
     encode text key = encode text (String.mk (key.data.eraseDups)) :=
     sorry
   
-  /--
+  /-
   info: 'ihrbfj'
   -/
-  #guard_msgs in
-  #eval encode "cipher" "cipher"
+  -- #guard_msgs in
+  -- #eval encode "cipher" "cipher"
   
-  /--
+  /-
   info: 'ihrbfj'
   -/
-  #guard_msgs in
-  #eval encode "cipher" "cccciiiiippphheeeeerrrrr"
+  -- #guard_msgs in
+  -- #eval encode "cipher" "cccciiiiippphheeeeerrrrr"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string s consists of upper/lower-case alphabets and empty space characters ' ', return the length of last word in the string.
   
   If the last word does not exist, return 0.
@@ -9,6 +10,7 @@ vc-description: |-
   
   Input: "Hello World"
   Output: 5
+  -/
 
 vc-preamble: |-
   def splitString (s: String) : List String :=
@@ -39,23 +41,23 @@ vc-theorems: |-
   theorem length_of_last_word_ignores_trailing_spaces (s: String) :
     lengthOfLastWord s = lengthOfLastWord s.trim := sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval length_of_last_word "Hello World"
+  -- #guard_msgs in
+  -- #eval length_of_last_word "Hello World"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval length_of_last_word "   "
+  -- #guard_msgs in
+  -- #eval length_of_last_word "   "
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval length_of_last_word "Hello   World   Program"
+  -- #guard_msgs in
+  -- #eval length_of_last_word "Hello   World   Program"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

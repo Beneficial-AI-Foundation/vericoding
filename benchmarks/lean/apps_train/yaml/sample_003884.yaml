@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given two strings, the first being a random string and the second being the same as the first, but with three added characters somewhere in the string (three same characters),
   
   Write a function that returns the added character
@@ -41,6 +42,7 @@ vc-description: |-
   ```if:javascript
   Write the function `addedChar()` that takes two strings and return the added character as described above.
   ```
+  -/
 
 vc-preamble: |-
   def String.count (s : String) (c : Char) : Nat :=
@@ -65,23 +67,23 @@ vc-theorems: |-
     modified.length = base.length + 3 :=
   sorry
   
-  /--
+  /-
   info: 'c'
   -/
-  #guard_msgs in
-  #eval added_char "hello" "checlclo"
+  -- #guard_msgs in
+  -- #eval added_char "hello" "checlclo"
   
-  /--
+  /-
   info: 'c'
   -/
-  #guard_msgs in
-  #eval added_char "aabbcc" "aacccbbcc"
+  -- #guard_msgs in
+  -- #eval added_char "aabbcc" "aacccbbcc"
   
-  /--
+  /-
   info: '2'
   -/
-  #guard_msgs in
-  #eval added_char "abcde" "2db2a2ec"
+  -- #guard_msgs in
+  -- #eval added_char "abcde" "2db2a2ec"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

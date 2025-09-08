@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Let's call two strings $s$ and $t$ anagrams of each other if it is possible to rearrange symbols in the string $s$ to get a string, equal to $t$.
   
   Let's consider two strings $s$ and $t$ which are anagrams of each other. We say that $t$ is a reducible anagram of $s$ if there exists an integer $k \ge 2$ and $2k$ non-empty strings $s_1, t_1, s_2, t_2, \dots, s_k, t_k$ that satisfy the following conditions:
@@ -63,6 +64,7 @@ vc-description: |-
   In the first sample, in the first and third queries, the substring is "a", which has itself as an irreducible anagram since two or more non-empty strings cannot be put together to obtain "a". On the other hand, in the second query, the substring is "aaa", which has no irreducible anagrams: its only anagram is itself, and we may choose $s_1 = $ "a", $s_2 = $ "aa", $t_1 = $ "a", $t_2 = $ "aa" to show that it is a reducible anagram.
   
   In the second query of the second sample, the substring is "abb", which has, for example, "bba" as an irreducible anagram.
+  -/
 
 vc-preamble: |-
 
@@ -98,23 +100,23 @@ vc-theorems: |-
       l > 0 → r > 0 →
       s.get ⟨l-1⟩ ≠ s.get ⟨r-1⟩ → result.get! i = true := sorry
   
-  /--
+  /-
   info: [True, False, True]
   -/
-  #guard_msgs in
-  #eval has_irreducible_anagram "aaaaa" [(1, 1), (2, 4), (5, 5)]
+  -- #guard_msgs in
+  -- #eval has_irreducible_anagram "aaaaa" [(1, 1), (2, 4), (5, 5)]
   
-  /--
+  /-
   info: [False, True, True, True, False, False]
   -/
-  #guard_msgs in
-  #eval has_irreducible_anagram "aabbbbbbc" [(1, 2), (2, 4), (2, 2), (1, 9), (5, 7), (3, 5)]
+  -- #guard_msgs in
+  -- #eval has_irreducible_anagram "aabbbbbbc" [(1, 2), (2, 4), (2, 2), (1, 9), (5, 7), (3, 5)]
   
-  /--
+  /-
   info: [True]
   -/
-  #guard_msgs in
-  #eval has_irreducible_anagram "f" [(1, 1)]
+  -- #guard_msgs in
+  -- #eval has_irreducible_anagram "f" [(1, 1)]
 
 vc-postamble: |-
   -- Apps difficulty: competition

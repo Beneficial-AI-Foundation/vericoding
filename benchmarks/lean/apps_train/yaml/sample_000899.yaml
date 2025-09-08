@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Petr is organizing Petr Mitrichev Contest #11. The top N coders according to codechef ratings (excluding Petr himself) agreed to participate in the contest. The participants have been ranked from 0 to N-1 according to their ratings. Petr had asked each participant to choose a coder with rating higher than himself/ herself, whom he/she would like to be team-mates with, and the ith ranked coder's choice is stored as choice[i]. As expected, programmers turned out to be lazy, and only a few of them actually filled in their choices. If choice[i] = -1, then it means the ith coder was lazy and did not fill his/her choice. Of course, the top-ranked person (i.e., rank = 0),  Gennady Korotkevich  (obviously), despite clearly not being a lazy person, was not able to fill any choice, because he is the top ranked coder, so choice[0] is always equal to -1.
   
   Petr, being the organizer, had to undertake the arduous task of filling in the choices for the lazy participants. Unfortunately, he also got lazy and adopted the following random strategy:
@@ -42,6 +43,7 @@ vc-description: |-
   The only lazy person is 1. So with probability 1/2, Petr leaves his choice unchanged, or with the remaining 1/2 probability, he assigns choice[1] = 0, as 0 is the only higher ranked person for 1. In the first case, you can get 2 teams: {0} and {1, 2, 3 ,4}.
   In the second case, because choice[1] = 0, 0 and 1 are forced to be in the same team, and hence {0, 1, 2, 3, 4} is the only possible team.
   Therefore, with 1/2 probability, number of teams = 1 and with another 1/2 probability, it is 2. Hence, expected number of teams = (1/2 * 1) + (1/2 * 2) = 1.5.
+  -/
 
 vc-preamble: |-
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   It's tricky keeping track of who is owed what when spending money in a group. Write a function to balance the books.
   
   * The function should take one parameter: an object/dict with two or more name-value pairs which represent the members of the group and the amount spent by each.
@@ -14,6 +15,7 @@ vc-description: |-
   ### Example
   
   3 friends go out together: A spends £20, B spends £15, and C spends £10. The function should return an object/dict showing that A should receive £5, B should receive £0, and C should pay £5.
+  -/
 
 vc-preamble: |-
   def List.sum (xs : List Int) : Int :=
@@ -57,23 +59,23 @@ vc-theorems: |-
     (split_the_bill bill).size = bill.size := by
     sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval split_the_bill {"A": 20, "B": 15, "C": 10}
+  -- #guard_msgs in
+  -- #eval split_the_bill {"A": 20, "B": 15, "C": 10}
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval split_the_bill {"A": 40, "B": 25, "X": 10}
+  -- #guard_msgs in
+  -- #eval split_the_bill {"A": 40, "B": 25, "X": 10}
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval split_the_bill {"A": 40, "B": 25, "C": 10, "D": 153, "E": 58}
+  -- #guard_msgs in
+  -- #eval split_the_bill {"A": 40, "B": 25, "C": 10, "D": 153, "E": 58}
 
 vc-postamble: |-
   -- Apps difficulty: introductory

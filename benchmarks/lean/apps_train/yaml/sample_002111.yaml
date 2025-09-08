@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Polycarpus is a system administrator. There are two servers under his strict guidance — a and b. To stay informed about the servers' performance, Polycarpus executes commands "ping a" and "ping b". Each ping command sends exactly ten packets to the server specified in the argument of the command. Executing a program results in two integers x and y (x + y = 10; x, y ≥ 0). These numbers mean that x packets successfully reached the corresponding server through the network and y packets were lost.
   
   Today Polycarpus has performed overall n ping commands during his workday. Now for each server Polycarpus wants to know whether the server is "alive" or not. Polycarpus thinks that the server is "alive", if at least half of the packets that we send to this server reached it successfully along the network.
@@ -42,6 +43,7 @@ vc-description: |-
   Consider the first test case. There 10 packets were sent to server a, 5 of them reached it. Therefore, at least half of all packets sent to this server successfully reached it through the network. Overall there were 10 packets sent to server b, 6 of them reached it. Therefore, at least half of all packets sent to this server successfully reached it through the network.
   
   Consider the second test case. There were overall 20 packages sent to server a, 10 of them reached it. Therefore, at least half of all packets sent to this server successfully reached it through the network. Overall 10 packets were sent to server b, 0 of them reached it. Therefore, less than half of all packets sent to this server successfully reached it through the network.
+  -/
 
 vc-preamble: |-
   def check_servers_alive (cmds: List Command) : List Status := sorry
@@ -79,23 +81,23 @@ vc-theorems: |-
     n > 0 →
     check_servers_alive [(Command.mk 1 n 0), (Command.mk 2 n 0)] = [Status.LIVE, Status.LIVE] := sorry
   
-  /--
+  /-
   info: ['LIVE', 'LIVE']
   -/
-  #guard_msgs in
-  #eval check_servers_alive [(1, 5, 5), (2, 6, 4)]
+  -- #guard_msgs in
+  -- #eval check_servers_alive [(1, 5, 5), (2, 6, 4)]
   
-  /--
+  /-
   info: ['LIVE', 'DEAD']
   -/
-  #guard_msgs in
-  #eval check_servers_alive [(1, 0, 10), (2, 0, 10), (1, 10, 0)]
+  -- #guard_msgs in
+  -- #eval check_servers_alive [(1, 0, 10), (2, 0, 10), (1, 10, 0)]
   
-  /--
+  /-
   info: ['DEAD', 'DEAD']
   -/
-  #guard_msgs in
-  #eval check_servers_alive [(1, 7, 3), (1, 0, 10), (1, 7, 3), (1, 1, 9), (2, 2, 8), (2, 0, 10)]
+  -- #guard_msgs in
+  -- #eval check_servers_alive [(1, 7, 3), (1, 0, 10), (1, 7, 3), (1, 1, 9), (2, 2, 8), (2, 0, 10)]
 
 vc-postamble: |-
   -- Apps difficulty: competition

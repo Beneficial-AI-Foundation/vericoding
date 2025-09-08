@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a side length `n`, traveling only right and down how many ways are there to get from the top left corner to the bottom right corner of an `n by n` grid?
   
   Your mission is to write a program to do just that!
@@ -19,6 +20,7 @@ vc-description: |-
   you're traveling on the edges of the squares in the grid not the squares themselves.
   
   PS.If anyone has any suggestions of how to improve this kata please let me know.
+  -/
 
 vc-preamble: |-
 
@@ -44,23 +46,23 @@ vc-theorems: |-
   theorem routes_initial_values :
     routes 1 = 2 ∧ routes 2 = 6 ∧ routes 3 = 20 := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval routes 1
+  -- #guard_msgs in
+  -- #eval routes 1
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval routes 2
+  -- #guard_msgs in
+  -- #eval routes 2
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval routes -100
+  -- #guard_msgs in
+  -- #eval routes -100
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef loves to play chess, so he bought a new chessboard with width M$M$ and height N$N$ recently.
   Chef considers a chessboard correct if its width (number of columns) is equal to its height (number of rows) and each cell has no side-adjacent cell of the same color (this is the so-called "chess order" which you can see in real-world chessboards). Chef's chessboard does not have to be a correct chessboard (in particular, it may have N≠M$N \neq M$).
   A sub-board of Chef's chessboard is a rectangular piece of this board with an arbitrarily chosen top left and bottom right cell (possibly equal to the original chessboard). Every sub-board is also a chessboard.
@@ -47,6 +48,7 @@ vc-description: |-
   
   -----Explanation-----
   If we don't change the board, the best answer here is the 6x6 bottom right sub-board. We can invert cells (2,2)$(2, 2)$ and (1,1)$(1, 1)$ to get a better answer.
+  -/
 
 vc-preamble: |-
 

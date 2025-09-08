@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array A1,A2...AN, you have to print the size of the largest contiguous subarray such that 
   GCD of all integers in that subarray is 1.
   
@@ -34,6 +35,7 @@ vc-description: |-
   Example case 1.GCD(2,7)=1. So the subarray [A1,A2] is valid.
   Example case 2.No subarray satisfies.
   Note: Use scanf/print instead of cin/cout. Large input files.
+  -/
 
 vc-preamble: |-
   def gcd (a b : Nat) : Nat :=
@@ -76,23 +78,23 @@ vc-theorems: |-
     ∀ x ∈ arr, x ≠ 1 → find_largest_gcd_1_subarray arr = -1 :=
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_largest_gcd_1_subarray [7, 2]
+  -- #guard_msgs in
+  -- #eval find_largest_gcd_1_subarray [7, 2]
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval find_largest_gcd_1_subarray [2, 2, 4]
+  -- #guard_msgs in
+  -- #eval find_largest_gcd_1_subarray [2, 2, 4]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval find_largest_gcd_1_subarray [6, 10, 15, 25]
+  -- #guard_msgs in
+  -- #eval find_largest_gcd_1_subarray [6, 10, 15, 25]
 
 vc-postamble: |-
   -- Apps difficulty: interview

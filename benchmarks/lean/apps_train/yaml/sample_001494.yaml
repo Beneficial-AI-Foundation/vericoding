@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The chef is trying to solve some pattern problems, Chef wants your help to code it. Chef has one number K to form new pattern. Help the chef to code this pattern problem.
   
   -----Input:-----
@@ -36,6 +37,7 @@ vc-description: |-
   
   -----EXPLANATION:-----
   No need, else pattern can be decode easily.
+  -/
 
 vc-preamble: |-
 

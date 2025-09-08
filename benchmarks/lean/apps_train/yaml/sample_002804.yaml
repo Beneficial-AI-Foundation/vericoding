@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   **This Kata is intended as a small challenge for my students**
   
   All Star Code Challenge #29
@@ -12,6 +13,7 @@ vc-description: |-
   Note:  
   A "word" should be considered a string split by a space character, " "
   Letter capitalization should be maintained.
+  -/
 
 vc-preamble: |-
   def String.reverse (s : String) : String := sorry
@@ -43,23 +45,23 @@ vc-theorems: |-
       result_words[i]! = String.reverse original_words[i]! :=
   sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval reverse_sentence "Hello !Nhoj Want to have lunch?"
+  -- #guard_msgs in
+  -- #eval reverse_sentence "Hello !Nhoj Want to have lunch?"
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval reverse_sentence "CodeWars rules!"
+  -- #guard_msgs in
+  -- #eval reverse_sentence "CodeWars rules!"
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval reverse_sentence ""
+  -- #guard_msgs in
+  -- #eval reverse_sentence ""
 
 vc-postamble: |-
   -- Apps difficulty: introductory

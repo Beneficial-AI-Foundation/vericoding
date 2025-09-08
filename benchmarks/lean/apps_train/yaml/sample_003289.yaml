@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Description
   Write a function that checks whether a credit card number is correct or not, using the Luhn algorithm.
   
@@ -18,6 +19,7 @@ vc-description: |-
   `valid_card?("5457 6238 9323 4311") # False`
   
   for reference check: https://en.wikipedia.org/wiki/Luhn_algorithm
+  -/
 
 vc-preamble: |-
 
@@ -56,23 +58,23 @@ vc-theorems: |-
                              (card.drop 8).take 4, " ", (card.drop 12).take 4]) :=
   sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval valid_card "5457 6238 9823 4311"
+  -- #guard_msgs in
+  -- #eval valid_card "5457 6238 9823 4311"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval valid_card "5457 6238 9323 4311"
+  -- #guard_msgs in
+  -- #eval valid_card "5457 6238 9323 4311"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval valid_card "2222 2222 2222 2224"
+  -- #guard_msgs in
+  -- #eval valid_card "2222 2222 2222 2224"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

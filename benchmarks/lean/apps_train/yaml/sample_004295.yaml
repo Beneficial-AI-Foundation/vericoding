@@ -1,7 +1,9 @@
 vc-description: |-
+  /-
   Write a function `consonantCount`, `consonant_count` or `ConsonantCount` that takes a string of English-language text and returns the number of consonants in the string.
   
   Consonants are all letters used to write English excluding the vowels `a, e, i, o, u`.
+  -/
 
 vc-preamble: |-
 
@@ -31,23 +33,23 @@ vc-theorems: |-
     consonant_count s = consonant_count s.toLower :=
   sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval consonant_count ""
+  -- #guard_msgs in
+  -- #eval consonant_count ""
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval consonant_count "aaaaa"
+  -- #guard_msgs in
+  -- #eval consonant_count "aaaaa"
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval consonant_count "helLo world"
+  -- #guard_msgs in
+  -- #eval consonant_count "helLo world"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

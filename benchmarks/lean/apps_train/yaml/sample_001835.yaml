@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a non-empty binary tree, find the maximum path sum.
   
   For this problem, a path is defined as any sequence of nodes from some starting node to any node in the tree along the parent-child connections. The path must contain at least one node and does not need to go through the root.
@@ -24,6 +25,7 @@ vc-description: |-
      15   7
   
   Output: 42
+  -/
 
 vc-preamble: |-
   def maxPathSum (t : Tree Int) : Int :=
@@ -54,23 +56,23 @@ vc-theorems: |-
   theorem max_path_sum_linear_path_neg (v : Int) :
     v ≤ 0 → maxPathSum (Tree.node v (Tree.node v (Tree.leaf v) (Tree.leaf v)) (Tree.leaf v)) ≥ v := sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval maxPathSum TreeNode(1)
+  -- #guard_msgs in
+  -- #eval maxPathSum TreeNode(1)
   
-  /--
+  /-
   info: 42
   -/
-  #guard_msgs in
-  #eval maxPathSum TreeNode(-10)
+  -- #guard_msgs in
+  -- #eval maxPathSum TreeNode(-10)
   
-  /--
+  /-
   info: -3
   -/
-  #guard_msgs in
-  #eval maxPathSum TreeNode(-3)
+  -- #guard_msgs in
+  -- #eval maxPathSum TreeNode(-3)
 
 vc-postamble: |-
   -- Apps difficulty: interview

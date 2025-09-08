@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Normally, the factorial of a positive integer n is the product of all positive integers less than or equal to n.  For example, factorial(10) = 10 * 9 * 8 * 7 * 6 * 5 * 4 * 3 * 2 * 1.
   We instead make a clumsy factorial: using the integers in decreasing order, we swap out the multiply operations for a fixed rotation of operations: multiply (*), divide (/), add (+) and subtract (-) in this order.
   For example, clumsy(10) = 10 * 9 / 8 + 7 - 6 * 5 / 4 + 3 - 2 * 1.  However, these operations are still applied using the usual order of operations of arithmetic: we do all multiplication and division steps before any addition or subtraction steps, and multiplication and division steps are processed left to right.
@@ -19,6 +20,7 @@ vc-description: |-
   
   1 <= N <= 10000
   -2^31 <= answer <= 2^31 - 1  (The answer is guaranteed to fit within a 32-bit integer.)
+  -/
 
 vc-preamble: |-
   def abs (n : Int) : Int := 
@@ -44,23 +46,23 @@ vc-theorems: |-
   theorem clumsy_monotonic_small (n : Nat) (h : n ≤ 4) (h2 : n ≥ 1) :
     ∀ i, 1 ≤ i → i < n → clumsy i ≤ clumsy (i+1) := sorry
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval clumsy 4
+  -- #guard_msgs in
+  -- #eval clumsy 4
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval clumsy 10
+  -- #guard_msgs in
+  -- #eval clumsy 10
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval clumsy 1
+  -- #guard_msgs in
+  -- #eval clumsy 1
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array of integers nums, find the maximum length of a subarray where the product of all its elements is positive.
   A subarray of an array is a consecutive sequence of zero or more values taken out of that array.
   Return the maximum length of a subarray with positive product.
@@ -30,6 +31,7 @@ vc-description: |-
   
   1 <= nums.length <= 10^5
   -10^9 <= nums[i] <= 10^9
+  -/
 
 vc-preamble: |-
 
@@ -54,23 +56,23 @@ vc-theorems: |-
   theorem getMaxLen_zeros_only (n : Nat) : 
     getMaxLen (List.replicate n 0) = 0 := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval getMaxLen [1, -2, -3, 4]
+  -- #guard_msgs in
+  -- #eval getMaxLen [1, -2, -3, 4]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval getMaxLen [0, 1, -2, -3, -4]
+  -- #guard_msgs in
+  -- #eval getMaxLen [0, 1, -2, -3, -4]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval getMaxLen [-1, -2, -3, 0, 1]
+  -- #guard_msgs in
+  -- #eval getMaxLen [-1, -2, -3, 0, 1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

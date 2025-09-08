@@ -1,7 +1,9 @@
 vc-description: |-
+  /-
   Find the area of a rectangle when provided with one diagonal and one side of the rectangle. If the input diagonal is less than or equal to the length of the side, return "Not a rectangle". If the resultant area has decimals round it to two places.
   
   `This kata is meant for beginners. Rank and upvote to bring it out of beta!`
+  -/
 
 vc-preamble: |-
 
@@ -39,23 +41,23 @@ vc-theorems: |-
     let result := area d l
     result = Sum.inr "Not a rectangle" := sorry
   
-  /--
+  /-
   info: 12.0
   -/
-  #guard_msgs in
-  #eval area 5 4
+  -- #guard_msgs in
+  -- #eval area 5 4
   
-  /--
+  /-
   info: 'Not a rectangle'
   -/
-  #guard_msgs in
-  #eval area 6 8
+  -- #guard_msgs in
+  -- #eval area 6 8
   
-  /--
+  /-
   info: 48.0
   -/
-  #guard_msgs in
-  #eval area 10 6
+  -- #guard_msgs in
+  -- #eval area 10 6
 
 vc-postamble: |-
   -- Apps difficulty: introductory

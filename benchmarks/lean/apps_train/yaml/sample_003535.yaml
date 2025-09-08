@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Task
    You are given an array of integers. On each move you are allowed to increase exactly one of its element by one. Find the minimal number of moves required to obtain a strictly increasing sequence from the input.
   
@@ -21,6 +22,7 @@ vc-description: |-
       The minimal number of moves needed to obtain a strictly increasing sequence from inputArray.
   
       It's guaranteed that for the given test cases the answer always fits signed 32-bit integer type.
+  -/
 
 vc-preamble: |-
   def array_change (arr : List Int) : Nat :=
@@ -39,23 +41,23 @@ vc-theorems: |-
     array_change arr ≥ 0 :=
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval array_change [1, 1, 1]
+  -- #guard_msgs in
+  -- #eval array_change [1, 1, 1]
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval array_change [-1000, 0, -2, 0]
+  -- #guard_msgs in
+  -- #eval array_change [-1000, 0, -2, 0]
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval array_change [2, 1, 10, 1]
+  -- #guard_msgs in
+  -- #eval array_change [2, 1, 10, 1]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

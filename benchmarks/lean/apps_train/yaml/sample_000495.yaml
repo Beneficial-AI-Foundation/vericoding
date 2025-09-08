@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Implement atoi which converts a string to an integer.
   
   The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting from this character, takes an optional initial plus or minus sign followed by as many numerical digits as possible, and interprets them as a numerical value.
@@ -45,6 +46,7 @@ vc-description: |-
   Output: -2147483648
   Explanation: The number "-91283472332" is out of the range of a 32-bit signed integer.
                Thefore INT_MIN (−231) is returned.
+  -/
 
 vc-preamble: |-
 
@@ -70,35 +72,35 @@ vc-theorems: |-
     (h : 0 ≤ n ∧ n ≤ 2147483647) :
     myAtoi ("-" ++ toString n) = -min n 2147483648 := sorry
   
-  /--
+  /-
   info: 42
   -/
-  #guard_msgs in
-  #eval myAtoi "42"
+  -- #guard_msgs in
+  -- #eval myAtoi "42"
   
-  /--
+  /-
   info: -42
   -/
-  #guard_msgs in
-  #eval myAtoi "   -42"
+  -- #guard_msgs in
+  -- #eval myAtoi "   -42"
   
-  /--
+  /-
   info: 4193
   -/
-  #guard_msgs in
-  #eval myAtoi "4193 with words"
+  -- #guard_msgs in
+  -- #eval myAtoi "4193 with words"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval myAtoi "words and 987"
+  -- #guard_msgs in
+  -- #eval myAtoi "words and 987"
   
-  /--
+  /-
   info: -2147483648
   -/
-  #guard_msgs in
-  #eval myAtoi "-91283472332"
+  -- #guard_msgs in
+  -- #eval myAtoi "-91283472332"
 
 vc-postamble: |-
   -- Apps difficulty: interview

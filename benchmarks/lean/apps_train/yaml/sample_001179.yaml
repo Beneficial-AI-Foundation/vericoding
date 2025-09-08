@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef played an interesting game yesterday. This game is played with two variables $X$ and $Y$; initially, $X = Y = 0$. Chef may make an arbitrary number of moves (including zero). In each move, he must perform the following process:
   - Choose any positive integer $P$ such that $P \cdot P > Y$.
   - Change $X$ to $P$.
@@ -29,6 +30,7 @@ vc-description: |-
   
   -----Explanation-----
   Example case 2: One possible sequence of values of $X$ is $0 \rightarrow 1 \rightarrow 2 \rightarrow 3 \rightarrow 5 \rightarrow 8$.
+  -/
 
 vc-preamble: |-
   def calc_max_moves (n : Nat) : Nat :=
@@ -51,23 +53,23 @@ vc-theorems: |-
     x > 0 → calc_max_moves x ≥ calc_max_moves (x-1) :=
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval calc_max_moves 3
+  -- #guard_msgs in
+  -- #eval calc_max_moves 3
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval calc_max_moves 8
+  -- #guard_msgs in
+  -- #eval calc_max_moves 8
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval calc_max_moves 9
+  -- #guard_msgs in
+  -- #eval calc_max_moves 9
 
 vc-postamble: |-
   -- Apps difficulty: interview

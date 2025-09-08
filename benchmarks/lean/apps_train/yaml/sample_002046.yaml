@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are fishing with polar bears Alice and Bob. While waiting for the fish to bite, the polar bears get bored. They come up with a game. First Alice and Bob each writes a 01-string (strings that only contain character "0" and "1") a and b. Then you try to turn a into b using two types of operations:  Write parity(a) to the end of a. For example, $1010 \rightarrow 10100$.  Remove the first character of a. For example, $1001 \rightarrow 001$. You cannot perform this operation if a is empty. 
   
   You can use as many operations as you want. The problem is, is it possible to turn a into b?
@@ -31,6 +32,7 @@ vc-description: |-
   -----Note-----
   
   In the first sample, the steps are as follows: 01011 → 1011 → 011 → 0110
+  -/
 
 vc-preamble: |-
   def is_possible (a b : String) : Bool :=
@@ -69,23 +71,23 @@ vc-theorems: |-
     ones.length ≤ ((count_ones s + 1) / 2) * 2 :=
   sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_possible "01011" "0110"
+  -- #guard_msgs in
+  -- #eval is_possible "01011" "0110"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_possible "0011" "1110"
+  -- #guard_msgs in
+  -- #eval is_possible "0011" "1110"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_possible "1" "0"
+  -- #guard_msgs in
+  -- #eval is_possible "1" "0"
 
 vc-postamble: |-
   -- Apps difficulty: competition

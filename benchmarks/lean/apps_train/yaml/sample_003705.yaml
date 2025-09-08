@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In Russia, there is an army-purposed station named UVB-76 or "Buzzer" (see also https://en.wikipedia.org/wiki/UVB-76). Most of time specific "buzz" noise is being broadcasted, but on very rare occasions, the buzzer signal is interrupted and a voice transmission in Russian takes place. Transmitted messages have always the same format like this:
   
    MDZHB 01 213 SKIF 38 87 23 95 
@@ -15,6 +16,7 @@ vc-description: |-
    Final 4 groups of digits with 2 digits in each group. 
   
   Your task is to write a function that can validate the correct UVB-76 message. Function should return "True" if message is in correct format and "False" otherwise.
+  -/
 
 vc-preamble: |-
 
@@ -84,23 +86,23 @@ vc-theorems: |-
       digits7.all Char.isDigit :=
   sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval validate "MDZHB 85 596 KLASA 81 00 02 91"
+  -- #guard_msgs in
+  -- #eval validate "MDZHB 85 596 KLASA 81 00 02 91"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval validate "MDZHV 60 130 VATRUKH 58 89 54 54"
+  -- #guard_msgs in
+  -- #eval validate "MDZHV 60 130 VATRUKH 58 89 54 54"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval validate "MDZHB 12 733 EDIN ENIE 67 79 66 32"
+  -- #guard_msgs in
+  -- #eval validate "MDZHB 12 733 EDIN ENIE 67 79 66 32"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

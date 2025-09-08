@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this kata, you should calculate type of triangle with three given sides ``a``, ``b`` and ``c`` (given in any order).
   
   If all angles are less than ``90°``, this triangle is ``acute`` and function should return ``1``.
@@ -28,6 +29,7 @@ vc-description: |-
   If you stuck, this can help you: http://en.wikipedia.org/wiki/Law_of_cosines. But you can solve this kata even without angle calculation.
   
   There is very small chance of random test to fail due to round-off error, in such case resubmit your solution.
+  -/
 
 vc-preamble: |-
 
@@ -73,29 +75,29 @@ vc-theorems: |-
     triangle_type a b c = 3 :=
   sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval triangle_type 2 4 6
+  -- #guard_msgs in
+  -- #eval triangle_type 2 4 6
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval triangle_type 8 5 7
+  -- #guard_msgs in
+  -- #eval triangle_type 8 5 7
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval triangle_type 3 4 5
+  -- #guard_msgs in
+  -- #eval triangle_type 3 4 5
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval triangle_type 7 12 8
+  -- #guard_msgs in
+  -- #eval triangle_type 7 12 8
 
 vc-postamble: |-
   -- Apps difficulty: introductory

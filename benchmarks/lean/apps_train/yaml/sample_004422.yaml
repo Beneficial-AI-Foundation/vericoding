@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   To participate in a prize draw each one gives his/her firstname. 
   
   Each letter of a firstname
@@ -43,6 +44,7 @@ vc-description: |-
   - If n is greater than the number of participants then return "Not enough participants".
   
   - See Examples Test Cases for more examples.
+  -/
 
 vc-preamble: |-
 

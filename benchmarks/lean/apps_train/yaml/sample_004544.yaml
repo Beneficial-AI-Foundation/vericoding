@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   This kata provides you with a list of parent-child pairs `family_list`, and from this family description you'll need to find the relationship between two members(what is the relation of latter with former) which is given as `target_pair`.
   
   For example, the family list may be given as:
@@ -21,6 +22,7 @@ vc-description: |-
   The possible responses are Mother, Daughter, Grandmother, Granddaughter, Sister, Cousin, Aunt, Niece (each matching their 'real life' equivalents). There will always be a valid answer.
   
   Enjoy, and be nice to your Mother!
+  -/
 
 vc-preamble: |-
   def FamilyRelation := String
@@ -56,23 +58,23 @@ vc-theorems: |-
     relations family (a, b) = some "Aunt" →
     relations family (b, a) = some "Niece" := sorry
   
-  /--
+  /-
   info: 'Grandmother'
   -/
-  #guard_msgs in
-  #eval relations [("Enid", "Susan"), ("Susan", "Deborah"), ("Enid", "Dianne")] ("Deborah", "Enid")
+  -- #guard_msgs in
+  -- #eval relations [("Enid", "Susan"), ("Susan", "Deborah"), ("Enid", "Dianne")] ("Deborah", "Enid")
   
-  /--
+  /-
   info: 'Sister'
   -/
-  #guard_msgs in
-  #eval relations [("Sarah", "Emily"), ("Sarah", "Kate")] ("Emily", "Kate")
+  -- #guard_msgs in
+  -- #eval relations [("Sarah", "Emily"), ("Sarah", "Kate")] ("Emily", "Kate")
   
-  /--
+  /-
   info: 'Aunt'
   -/
-  #guard_msgs in
-  #eval relations [("Mary", "Sarah"), ("Sarah", "Emily"), ("Mary", "Jane")] ("Emily", "Jane")
+  -- #guard_msgs in
+  -- #eval relations [("Mary", "Sarah"), ("Sarah", "Emily"), ("Mary", "Jane")] ("Emily", "Jane")
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A circle is defined by three coplanar points that are not aligned.
   
   You will be given a list of circles and a point [xP, yP]. You have to create a function, ```count_circles()``` (Javascript ```countCircles()```), that will count the amount of circles that contains the point P inside (the circle border line is included).
@@ -59,16 +60,17 @@ vc-description: |-
   ```10 < n < 500```
   ```-500 < x < 500, -500 < y < 500```
   ```-750 < xP < -750, -750 < yP < -750```
+  -/
 
 vc-preamble: |-
   def dist (p1 p2 : Point) : Float :=
     Float.sqrt ((p1.x - p2.x)^2 + (p1.y - p2.y)^2)
   
-  /-- Given three points, returns the center and radius of their circumscribed circle -/
+  /- Given three points, returns the center and radius of their circumscribed circle -/
   
   def circum_curvat (p₁ p₂ p₃ : Point) : Point × Float := sorry
   
-  /-- Counts how many circles contain a given point -/
+  /- Counts how many circles contain a given point -/
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -87,7 +89,7 @@ vc-theorems: |-
     dist p₂ center ≤ radius ∧
     dist p₃ center ≤ radius := sorry
   
-  /-- Points used to define circle must not be collinear -/
+  /- Points used to define circle must not be collinear -/
   
   theorem circle_points_not_collinear {p₁ p₂ p₃ : Point} 
     (h : circum_curvat p₁ p₂ p₃ = (center, radius)) :
@@ -96,23 +98,23 @@ vc-theorems: |-
                            p₃.x * (p₁.y - p₂.y)) / 2)
     area > 0 := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval count_circles [[[-3, 2], [1, 1], [6, 4]], [[-3, 2], [1, 1], [2, 6]], [[1, 1], [2, 6], [6, 4]], [[-3, 2], [2, 6], [6, 4]]] [1, 4]
+  -- #guard_msgs in
+  -- #eval count_circles [[[-3, 2], [1, 1], [6, 4]], [[-3, 2], [1, 1], [2, 6]], [[1, 1], [2, 6], [6, 4]], [[-3, 2], [2, 6], [6, 4]]] [1, 4]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_circles circles1 [10, 6]
+  -- #guard_msgs in
+  -- #eval count_circles circles1 [10, 6]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval count_circles circles1 [2, 6]
+  -- #guard_msgs in
+  -- #eval count_circles circles1 [2, 6]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

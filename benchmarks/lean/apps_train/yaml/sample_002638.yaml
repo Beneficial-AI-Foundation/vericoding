@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Hofstadter sequences are a family of related integer sequences, among which the first ones were described by an American professor Douglas Hofstadter in his book Gödel, Escher, Bach. 
   
   ### Task
@@ -13,6 +14,7 @@ vc-description: |-
   `1, 1, 2, 3, 3, 4, 5, 5, 6 . . .`  
   Test info: 100 random tests, n is always positive
   Good luck!
+  -/
 
 vc-preamble: |-
 
@@ -40,23 +42,23 @@ vc-theorems: |-
   theorem hofstadter_deterministic (n : Nat) (h : n > 0) :
     ∀ x y, hofstadter_Q n = x → hofstadter_Q n = y → x = y := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval hofstadter_Q 1
+  -- #guard_msgs in
+  -- #eval hofstadter_Q 1
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval hofstadter_Q 3
+  -- #guard_msgs in
+  -- #eval hofstadter_Q 3
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval hofstadter_Q 7
+  -- #guard_msgs in
+  -- #eval hofstadter_Q 7
 
 vc-postamble: |-
   -- Apps difficulty: introductory

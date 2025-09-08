@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string as input, move all of its vowels to the end of the string, in the same order as they were before.
   
   Vowels are (in this kata): `a, e, i, o, u`
@@ -10,6 +11,7 @@ vc-description: |-
   "day"    ==>  "dya"
   "apple"  ==>  "pplae"
   ```
+  -/
 
 vc-preamble: |-
   def move_vowels (s : String) : String := sorry
@@ -40,23 +42,23 @@ vc-theorems: |-
   theorem move_vowels_empty :
     move_vowels "" = "" := sorry
   
-  /--
+  /-
   info: 'dya'
   -/
-  #guard_msgs in
-  #eval move_vowels "day"
+  -- #guard_msgs in
+  -- #eval move_vowels "day"
   
-  /--
+  /-
   info: 'pplae'
   -/
-  #guard_msgs in
-  #eval move_vowels "apple"
+  -- #guard_msgs in
+  -- #eval move_vowels "apple"
   
-  /--
+  /-
   info: 'pceae'
   -/
-  #guard_msgs in
-  #eval move_vowels "peace"
+  -- #guard_msgs in
+  -- #eval move_vowels "peace"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

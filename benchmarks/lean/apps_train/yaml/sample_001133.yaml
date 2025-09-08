@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef has the string s of length n consisted of digits 4 and 7.
   The string s is called balanced
   if there exits such integer x (1 ≤ x ≤ n) that the number of digits 4 in substring s[1; x) is equal to the number of digits 7 in substring s(x; n],
@@ -33,6 +34,7 @@ vc-description: |-
   Output:
   1
   4
+  -/
 
 vc-preamble: |-
   def solveBalancedDigits (s : String) : Nat :=
@@ -67,17 +69,17 @@ vc-theorems: |-
     result ≥ 0 ∧ result < 10^9 + 7 :=
   sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve_balanced_digits "47"
+  -- #guard_msgs in
+  -- #eval solve_balanced_digits "47"
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval solve_balanced_digits "4477"
+  -- #guard_msgs in
+  -- #eval solve_balanced_digits "4477"
 
 vc-postamble: |-
   -- Apps difficulty: interview

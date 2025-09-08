@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Let's say you have a bunch of points, and you want to round them all up and calculate the area of the smallest polygon containing all of the points (nevermind why, you just want a challenge). What you're looking for is the area of the *convex hull* of these points. Here is an example, delimited in blue :
   
   ## Your task
@@ -13,6 +14,7 @@ vc-description: |-
   *Note* : In Python, the scipy module has a [ready made solution](https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.ConvexHull.html) for this. Of course, if you use it here, you are lame.
   
   *P. S.* : If you enjoy this kata, you may also like this one, which asks you to compute a convex hull, without finding its area.
+  -/
 
 vc-preamble: |-
   def Point := Float × Float
@@ -49,23 +51,23 @@ vc-theorems: |-
     convex_hull_area (p::points) = convex_hull_area points :=
   sorry
   
-  /--
+  /-
   info: 6.0
   -/
-  #guard_msgs in
-  #eval convex_hull_area [(0, 0), (0, 3), (4, 0)]
+  -- #guard_msgs in
+  -- #eval convex_hull_area [(0, 0), (0, 3), (4, 0)]
   
-  /--
+  /-
   info: 4.0
   -/
-  #guard_msgs in
-  #eval convex_hull_area [(0, 0), (0, 2), (2, 2), (2, 0)]
+  -- #guard_msgs in
+  -- #eval convex_hull_area [(0, 0), (0, 2), (2, 2), (2, 0)]
   
-  /--
+  /-
   info: 6.0
   -/
-  #guard_msgs in
-  #eval convex_hull_area [(0, 0), (0, 3), (4, 0), (1, 1), (2, 1)]
+  -- #guard_msgs in
+  -- #eval convex_hull_area [(0, 0), (0, 3), (4, 0), (1, 1), (2, 1)]
 
 vc-postamble: |-
   -- Apps difficulty: interview

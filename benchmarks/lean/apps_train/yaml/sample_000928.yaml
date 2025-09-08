@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a convex polygon $P$ with vertices $P_0, P_1, \ldots, P_{n-1}$, each having integer coordinates. On each edge $P_{i} P_{(i+1) \% n}$ of the polygon, choose a point $R_i$ uniformly at random. What is the expected area of the convex hull of these $n$ chosen points $R_0, R_1, \ldots R_{n-1}$ ?
   
   -----Note-----
@@ -27,6 +28,7 @@ vc-description: |-
   
   -----Example Output-----
   0.1250000000
+  -/
 
 vc-preamble: |-
   def Point := Float × Float
@@ -39,7 +41,7 @@ vc-preamble: |-
     | [] => 0
     | x::xs => xs.foldl max x
   
-  /-- Helper function to get the minimum value from a list -/
+  /- Helper function to get the minimum value from a list -/
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -57,7 +59,7 @@ vc-theorems: |-
     calc_expected_area n vertices ≥ 0 :=
   sorry
   
-  /-- Helper function to get the maximum value from a list -/
+  /- Helper function to get the maximum value from a list -/
   
   theorem area_smaller_than_bounding_box {n: Nat} {vertices: List Point} :
     vertices.length = n → n ≥ 3 →

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   On Miu's smart phone, there is a search feature which lets her search for a contact name by typing digits on the keypad where each digit may correspond to any of the characters given below it. For example, to search for TOM, she can type 866 and for MAX she can type 629.
   +------+-----+------+
   |   1  |  2  |   3  |
@@ -67,6 +68,7 @@ vc-description: |-
   Hence the possible strings are PA,PB,PC,QA,QB,QC,RA,RB,RC,SA,SB,SC.
   
   Hence the answer is 12 % (1000000007) = 12.
+  -/
 
 vc-preamble: |-
 
@@ -106,23 +108,23 @@ vc-theorems: |-
   theorem solve_phone_keypad_regression_234 :
     solve_phone_keypad "234" = 27 := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval solve_phone_keypad "5"
+  -- #guard_msgs in
+  -- #eval solve_phone_keypad "5"
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval solve_phone_keypad "72"
+  -- #guard_msgs in
+  -- #eval solve_phone_keypad "72"
   
-  /--
+  /-
   info: 27
   -/
-  #guard_msgs in
-  #eval solve_phone_keypad "234"
+  -- #guard_msgs in
+  -- #eval solve_phone_keypad "234"
 
 vc-postamble: |-
   -- Apps difficulty: interview

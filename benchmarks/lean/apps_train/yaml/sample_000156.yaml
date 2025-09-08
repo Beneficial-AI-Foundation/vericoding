@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an integer array nums and an integer k, return the maximum sum of a non-empty subsequence of that array such that for every two consecutive integers in the subsequence, nums[i] and nums[j], where i < j, the condition j - i <= k is satisfied.
   A subsequence of an array is obtained by deleting some number of elements (can be zero) from the array, leaving the remaining elements in their original order.
   
@@ -21,6 +22,7 @@ vc-description: |-
   
   1 <= k <= nums.length <= 10^5
   -10^4 <= nums[i] <= 10^4
+  -/
 
 vc-preamble: |-
 
@@ -45,23 +47,23 @@ vc-theorems: |-
       let nums_modified := (nums.take (k+1)).append (List.replicate (nums.length - k - 1) (-1000))
       constrained_max_subset_sum (nums.take (k+1)) k = constrained_max_subset_sum nums_modified k := sorry
   
-  /--
+  /-
   info: 37
   -/
-  #guard_msgs in
-  #eval constrained_max_subset_sum [10, 2, -10, 5, 20] 2
+  -- #guard_msgs in
+  -- #eval constrained_max_subset_sum [10, 2, -10, 5, 20] 2
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval constrained_max_subset_sum [-1, -2, -3] 1
+  -- #guard_msgs in
+  -- #eval constrained_max_subset_sum [-1, -2, -3] 1
   
-  /--
+  /-
   info: 23
   -/
-  #guard_msgs in
-  #eval constrained_max_subset_sum [10, -2, -10, -5, 20] 2
+  -- #guard_msgs in
+  -- #eval constrained_max_subset_sum [10, -2, -10, -5, 20] 2
 
 vc-postamble: |-
   -- Apps difficulty: interview

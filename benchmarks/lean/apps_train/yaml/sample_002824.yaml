@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are going to be given a word. Your job is to return the middle character of the word. If the word's length is odd, return the middle character. If the word's length is even, return the middle 2 characters.
   
   #Examples:
@@ -34,6 +35,7 @@ vc-description: |-
   #Output
   
   The middle character(s) of the word represented as a string.
+  -/
 
 vc-preamble: |-
 
@@ -61,23 +63,23 @@ vc-theorems: |-
     ∃ pos : String.Pos, get_middle s = s.extract pos (⟨mid + result.length⟩) :=
   sorry
   
-  /--
+  /-
   info: 'es'
   -/
-  #guard_msgs in
-  #eval get_middle "test"
+  -- #guard_msgs in
+  -- #eval get_middle "test"
   
-  /--
+  /-
   info: 't'
   -/
-  #guard_msgs in
-  #eval get_middle "testing"
+  -- #guard_msgs in
+  -- #eval get_middle "testing"
   
-  /--
+  /-
   info: 'A'
   -/
-  #guard_msgs in
-  #eval get_middle "A"
+  -- #guard_msgs in
+  -- #eval get_middle "A"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

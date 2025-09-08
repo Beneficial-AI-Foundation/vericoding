@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array nums of integers, you can perform operations on the array.
   
   In each operation, you pick any nums[i] and delete it to earn nums[i] points.  After, you must delete every element equal to nums[i] - 1 or nums[i] + 1.
@@ -25,6 +26,7 @@ vc-description: |-
   Note:
   The length of nums is at most 20000.
   Each element nums[i] is an integer in the range [1, 10000].
+  -/
 
 vc-preamble: |-
   def delete_and_earn (nums : List Nat) : Nat := sorry
@@ -68,23 +70,23 @@ vc-theorems: |-
     isConsecutive nums = true →
     delete_and_earn nums = max (sumByParity nums true) (sumByParity nums false) := sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval delete_and_earn [3, 4, 2]
+  -- #guard_msgs in
+  -- #eval delete_and_earn [3, 4, 2]
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval delete_and_earn [2, 2, 3, 3, 3, 4]
+  -- #guard_msgs in
+  -- #eval delete_and_earn [2, 2, 3, 3, 3, 4]
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval delete_and_earn [2, 3, 4]
+  -- #guard_msgs in
+  -- #eval delete_and_earn [2, 3, 4]
 
 vc-postamble: |-
   -- Apps difficulty: interview

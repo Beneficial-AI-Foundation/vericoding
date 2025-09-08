@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ### self_converge
   `Goal`: Given a number (with a minimum of 3 digits), return the number of iterations it takes to arrive at a derived number that converges on to itself, as per the following [Kaprekar][Kaprekar] routine. As a learning exercise, come up with a solution that uses recursion. The
   following steps would be applicable to a number that originally had
@@ -43,6 +44,7 @@ vc-description: |-
   3. 95553 - 35559  =  59994 /
   4. 99954 - 45999  =  53955 /  # 2nd time
   ```
+  -/
 
 vc-preamble: |-
 
@@ -75,23 +77,23 @@ vc-theorems: |-
     (h : n ≥ 1 ∧ n ≤ 9) :
     self_converge n = -1 := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval self_converge 4321
+  -- #guard_msgs in
+  -- #eval self_converge 4321
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval self_converge 211
+  -- #guard_msgs in
+  -- #eval self_converge 211
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval self_converge 90900
+  -- #guard_msgs in
+  -- #eval self_converge 90900
 
 vc-postamble: |-
   -- Apps difficulty: introductory

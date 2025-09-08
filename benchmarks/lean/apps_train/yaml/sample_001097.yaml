@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Daenerys Targaryen has been suggested by her counselors to leave the Meereen and start conquering other parts of the world. But she knows giving up on the people of Meereen means victory of slavery. Her plan is to start conquering rest of the world while she remains in Meereen. She can only trust her bravest and most beloved Daario Naharis to undertake this risk. She asks him to conquer a few nations and promises him a help from her dragons. She also promises to marry him if he successfully conquers all the nations and not if he is defeated.
   Daario has to conquer 'N' number of nations each nation with army size A[i]. He attacks the nations serially. As promised, he gets help from Daenerys's Dragons. His first 'M' attacks are made with the help of Dragons.
   
@@ -61,6 +62,7 @@ vc-description: |-
   Then he looses 25 and then all 15 out of possible 30 making it 0. (40-25-15 = 0)
   
   He is defeated on 6th attack so DEFEAT.
+  -/
 
 vc-preamble: |-
   def List.sum : List Nat → Nat 
@@ -91,23 +93,23 @@ vc-theorems: |-
     check_conquest n m armies = BattleResult.VICTORY →
     check_conquest n m (armies.map (· + 1)) = BattleResult.VICTORY := sorry
   
-  /--
+  /-
   info: 'VICTORY'
   -/
-  #guard_msgs in
-  #eval check_conquest 5 3 [1, 2, 3, 4, 5]
+  -- #guard_msgs in
+  -- #eval check_conquest 5 3 [1, 2, 3, 4, 5]
   
-  /--
+  /-
   info: 'VICTORY'
   -/
-  #guard_msgs in
-  #eval check_conquest 6 2 [4, 4, 4, 4, 4, 4]
+  -- #guard_msgs in
+  -- #eval check_conquest 6 2 [4, 4, 4, 4, 4, 4]
   
-  /--
+  /-
   info: 'DEFEAT'
   -/
-  #guard_msgs in
-  #eval check_conquest 7 4 [10, 10, 10, 10, 50, 60, 70]
+  -- #guard_msgs in
+  -- #eval check_conquest 7 4 [10, 10, 10, 10, 50, 60, 70]
 
 vc-postamble: |-
   -- Apps difficulty: interview

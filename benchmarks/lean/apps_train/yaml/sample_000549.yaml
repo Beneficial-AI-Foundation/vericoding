@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   -----Coal Company -----
   
   The Tunisian Coal Mining company uses a train to ferry out coal blocks from its coal mines. The train has N containers numbered from 1 to N which need to
@@ -64,6 +65,7 @@ vc-description: |-
   containers with cost 5 and 4 cannot be filled consecutively because the loading costs should differ by at least K (which is 2). Also, the containers cannot
   
   be filled in order 5, 7, 4 in one round because the containers filled in a round should be in increasing capacity.
+  -/
 
 vc-preamble: |-
 
@@ -81,17 +83,17 @@ vc-theorems: |-
     solve_coal_containers 1 n [0] = 1 :=
   sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve_coal_containers 3 2 [5, 4, 7]
+  -- #guard_msgs in
+  -- #eval solve_coal_containers 3 2 [5, 4, 7]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve_coal_containers 5 1 [5, 3, 4, 5, 6]
+  -- #guard_msgs in
+  -- #eval solve_coal_containers 5 1 [5, 3, 4, 5, 6]
 
 vc-postamble: |-
   -- Apps difficulty: interview

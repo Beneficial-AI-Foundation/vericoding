@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Many things in this first paragraph are references to some pretty famous YouTube stars, so be careful about rephrasing. Thanks! 
   Michael, Kevin and Jake are sharing a cake, in celebration of their Webby award. They named it VCake. Unlike other cakes they considered, this one has finite volume and surface area. It's shaped as a normal rectangular cake with dimensions R centimeters by C centimeters. For the purposes of this problem, we can forget about three dimensions and think of a cake as just a 2D rectangle.
   Chef will now cut the cake into three pieces, one for each person. However, the cake's shape and Chef's really old tools pose a few restrictions:
@@ -51,6 +52,7 @@ vc-description: |-
   /tt /pre
   I'll make an image if I have time 
   Example case 4. Here, Michael, Kevin and Jake each wants a piece with area 2, but the total area of the cake is only 2×2 = 4. This means the task is impossible.
+  -/
 
 vc-preamble: |-
 
@@ -78,23 +80,23 @@ vc-theorems: |-
       (h3 : m > r * c ∨ k > r * c ∨ j > r * c) :
     can_slice_cake r c m k j = "No" := sorry
   
-  /--
+  /-
   info: 'Yes'
   -/
-  #guard_msgs in
-  #eval can_slice_cake 4 5 10 4 6
+  -- #guard_msgs in
+  -- #eval can_slice_cake 4 5 10 4 6
   
-  /--
+  /-
   info: 'Yes'
   -/
-  #guard_msgs in
-  #eval can_slice_cake 4 5 6 10 4
+  -- #guard_msgs in
+  -- #eval can_slice_cake 4 5 6 10 4
   
-  /--
+  /-
   info: 'No'
   -/
-  #guard_msgs in
-  #eval can_slice_cake 2 2 2 2 2
+  -- #guard_msgs in
+  -- #eval can_slice_cake 2 2 2 2 2
 
 vc-postamble: |-
   -- Apps difficulty: interview

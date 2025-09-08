@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   
   Find the integer from `a` to `b` (included) with the greatest number of divisors. For example:
@@ -11,6 +12,7 @@ vc-description: |-
   ```
   
   If there are several numbers that have the same (maximum) number of divisors, the smallest among them should be returned. Return the string `"Error"` if `a > b`.
+  -/
 
 vc-preamble: |-
   def countDivisors (n : Nat) : Nat :=
@@ -42,23 +44,23 @@ vc-theorems: |-
     divNum x x = some x :=
     sorry
   
-  /--
+  /-
   info: 24
   -/
-  #guard_msgs in
-  #eval div_num 15 30
+  -- #guard_msgs in
+  -- #eval div_num 15 30
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval div_num 1 2
+  -- #guard_msgs in
+  -- #eval div_num 1 2
   
-  /--
+  /-
   info: 'Error'
   -/
-  #guard_msgs in
-  #eval div_num 159 4
+  -- #guard_msgs in
+  -- #eval div_num 159 4
 
 vc-postamble: |-
   -- Apps difficulty: introductory

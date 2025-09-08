@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Story:
   In the realm of numbers, the apocalypse has arrived. Hordes of zombie numbers have infiltrated and are ready to turn everything into undead. The properties of zombies are truly apocalyptic: they reproduce themselves unlimitedly and freely interact with each other. Anyone who equals them is doomed. Out of an infinite number of natural numbers, only a few remain. This world needs a hero who leads remaining numbers in hope for survival: The highest number to lead those who still remain.
   
@@ -28,6 +29,7 @@ vc-description: |-
   
   Special thanks:
   Thanks to Voile-sama, mathsisfun-sama, and Avanta-sama for heavy assistance. And to everyone who tried and beaten the kata ^_^
+  -/
 
 vc-preamble: |-
 
@@ -68,23 +70,23 @@ vc-theorems: |-
     let result := survivor [n, n+1]
     result ≥ 0 ∧ result < n * (n+1) := sorry
   
-  /--
+  /-
   info: 59
   -/
-  #guard_msgs in
-  #eval survivor [7, 11]
+  -- #guard_msgs in
+  -- #eval survivor [7, 11]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval survivor [1, 7, 15]
+  -- #guard_msgs in
+  -- #eval survivor [1, 7, 15]
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval survivor [2, 10]
+  -- #guard_msgs in
+  -- #eval survivor [2, 10]
 
 vc-postamble: |-
   -- Apps difficulty: interview

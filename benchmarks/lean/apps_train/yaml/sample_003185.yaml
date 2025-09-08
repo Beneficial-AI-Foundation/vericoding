@@ -1,7 +1,9 @@
 vc-description: |-
+  /-
   Find the number with the most digits.
   
   If two numbers in the argument array have the same number of digits, return the first one in the array.
+  -/
 
 vc-preamble: |-
 
@@ -32,23 +34,23 @@ vc-theorems: |-
     numbers.find? (fun x => (toString x).length = maxLen) = some result :=
     sorry
   
-  /--
+  /-
   info: 100
   -/
-  #guard_msgs in
-  #eval find_longest [1, 10, 100]
+  -- #guard_msgs in
+  -- #eval find_longest [1, 10, 100]
   
-  /--
+  /-
   info: 9000
   -/
-  #guard_msgs in
-  #eval find_longest [9000, 8, 800]
+  -- #guard_msgs in
+  -- #eval find_longest [9000, 8, 800]
   
-  /--
+  /-
   info: 900
   -/
-  #guard_msgs in
-  #eval find_longest [8, 900, 500]
+  -- #guard_msgs in
+  -- #eval find_longest [8, 900, 500]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

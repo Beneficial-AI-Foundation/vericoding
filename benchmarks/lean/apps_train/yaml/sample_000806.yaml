@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Let's consider a rectangular table R consisting of N rows and M columns. Rows are enumerated from 1  to N from top to bottom. Columns are enumerated from 1 to M from left to right. Each element of R is a non-negative integer. R is called steady if the sum of elements in the ith row is not less then the sum of elements in the (i-1)th row for each i where 2 ≤ i ≤ N and the sum of elements in the Nth row is less than or equal to M. Your task is to find the number of different steady tables of size N x M modulo 1 000 000 000. 
   
   -----Input-----
@@ -29,6 +30,7 @@ vc-description: |-
   
   -----Explanation-----
   Test case 1 : There are only 2 such grids possible 0 and 1.
+  -/
 
 vc-preamble: |-
 
@@ -63,23 +65,23 @@ vc-theorems: |-
     compute_steady_tables n n ≥ n * n :=
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval compute_steady_tables 1 1
+  -- #guard_msgs in
+  -- #eval compute_steady_tables 1 1
   
-  /--
+  /-
   info: 25
   -/
-  #guard_msgs in
-  #eval compute_steady_tables 2 2
+  -- #guard_msgs in
+  -- #eval compute_steady_tables 2 2
   
-  /--
+  /-
   info: 273
   -/
-  #guard_msgs in
-  #eval compute_steady_tables 2 3
+  -- #guard_msgs in
+  -- #eval compute_steady_tables 2 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We need a function ```prime_bef_aft()``` that gives the largest prime below a certain given value ```n```, 
   
   ```befPrime or bef_prime``` (depending on the language), 
@@ -29,6 +30,7 @@ vc-description: |-
   (The extreme and special case n = 2 will not be considered for the tests. Thanks Blind4Basics)
   
   Happy coding!!
+  -/
 
 vc-preamble: |-
 
@@ -60,23 +62,23 @@ vc-theorems: |-
   theorem composite_divisibility {n : Nat} (h : n ≥ 2) (h2 : n ≤ 100) :
     prime n = false → ∃ i : Nat, 2 ≤ i ∧ i < n ∧ n % i = 0 := sorry
   
-  /--
+  /-
   info: [97, 101]
   -/
-  #guard_msgs in
-  #eval prime_bef_aft 100
+  -- #guard_msgs in
+  -- #eval prime_bef_aft 100
   
-  /--
+  /-
   info: [89, 101]
   -/
-  #guard_msgs in
-  #eval prime_bef_aft 97
+  -- #guard_msgs in
+  -- #eval prime_bef_aft 97
   
-  /--
+  /-
   info: [97, 103]
   -/
-  #guard_msgs in
-  #eval prime_bef_aft 101
+  -- #guard_msgs in
+  -- #eval prime_bef_aft 101
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Many years ago, Roman numbers were defined by only `4` digits: `I, V, X, L`, which represented `1, 5, 10, 50`. These were the only digits used. The value of a sequence was simply the sum of digits in it. For instance:
   ```
   IV = VI = 6
@@ -15,6 +16,7 @@ vc-description: |-
   `n <= 10E7`
   
   More examples in test cases. Good luck!
+  -/
 
 vc-preamble: |-
 
@@ -51,23 +53,23 @@ vc-theorems: |-
   theorem solve_strictly_increasing {n : Nat} :
     n > 0 → solve n > solve (n-1) := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval solve 1
+  -- #guard_msgs in
+  -- #eval solve 1
   
-  /--
+  /-
   info: 83
   -/
-  #guard_msgs in
-  #eval solve 6
+  -- #guard_msgs in
+  -- #eval solve 6
   
-  /--
+  /-
   info: 489999753
   -/
-  #guard_msgs in
-  #eval solve 10000000
+  -- #guard_msgs in
+  -- #eval solve 10000000
 
 vc-postamble: |-
   -- Apps difficulty: introductory

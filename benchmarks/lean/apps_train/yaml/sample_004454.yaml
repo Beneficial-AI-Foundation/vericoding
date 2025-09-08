@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Kata Task
   
   I have a cat and a dog.
@@ -29,6 +30,7 @@ vc-description: |-
   * http://www.slate.com/articles/news_and_politics/explainer/2009/05/a_dogs_life.html
   
   If you liked this Kata there is another related one here
+  -/
 
 vc-preamble: |-
 
@@ -58,23 +60,23 @@ vc-definitions: |-
   sorry
 
 vc-theorems: |-
-  /--
+  /-
   info: [1, 15, 15]
   -/
-  #guard_msgs in
-  #eval human_years_cat_years_dog_years 1
+  -- #guard_msgs in
+  -- #eval human_years_cat_years_dog_years 1
   
-  /--
+  /-
   info: [2, 24, 24]
   -/
-  #guard_msgs in
-  #eval human_years_cat_years_dog_years 2
+  -- #guard_msgs in
+  -- #eval human_years_cat_years_dog_years 2
   
-  /--
+  /-
   info: [10, 56, 64]
   -/
-  #guard_msgs in
-  #eval human_years_cat_years_dog_years 10
+  -- #guard_msgs in
+  -- #eval human_years_cat_years_dog_years 10
 
 vc-postamble: |-
   -- Apps difficulty: introductory

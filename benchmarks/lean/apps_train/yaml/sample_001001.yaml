@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Help Saurabh with his Chemistry Assignment.
   
   Saurabh has been given a chemistry assignment by Ruby Mam. Though the assignment is simple but
@@ -39,6 +40,7 @@ vc-description: |-
   
   -----Explanation-----
   Example case 2.At t=0 particles are 1 ,so at t=1 ,particles are 1*1 = 1 particles. At t=2, particles are 2*1 = 2 particles.
+  -/
 
 vc-preamble: |-
 
@@ -77,23 +79,23 @@ vc-theorems: |-
     calculate_particles n x = (calculate_particles n 1 * x) % MOD := by
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval calculate_particles 1 2
+  -- #guard_msgs in
+  -- #eval calculate_particles 1 2
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval calculate_particles 2 1
+  -- #guard_msgs in
+  -- #eval calculate_particles 2 1
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval calculate_particles 3 1
+  -- #guard_msgs in
+  -- #eval calculate_particles 3 1
 
 vc-postamble: |-
   -- Apps difficulty: interview

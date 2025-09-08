@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The only difference between easy and hard versions is the size of the input.
   
   You are given a string $s$ consisting of $n$ characters, each character is 'R', 'G' or 'B'.
@@ -43,6 +44,7 @@ vc-description: |-
   In the first example, you can change the first character to 'R' and obtain the substring "RG", or change the second character to 'R' and obtain "BR", or change the third, fourth or fifth character to 'B' and obtain "GB".
   
   In the second example, the substring is "BRG".
+  -/
 
 vc-preamble: |-
 
@@ -92,23 +94,23 @@ vc-theorems: |-
     min_changes_for_rgb_substring n 3 s > 0 :=
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval min_changes_for_rgb_substring 5 2 "BGGGG"
+  -- #guard_msgs in
+  -- #eval min_changes_for_rgb_substring 5 2 "BGGGG"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_changes_for_rgb_substring 5 3 "RBRGR"
+  -- #guard_msgs in
+  -- #eval min_changes_for_rgb_substring 5 3 "RBRGR"
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval min_changes_for_rgb_substring 5 5 "BBBRR"
+  -- #guard_msgs in
+  -- #eval min_changes_for_rgb_substring 5 5 "BBBRR"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this Kata, you will be given a string and your task will be to return the length of the longest prefix that is also a suffix. A prefix is the start of a string while the suffix is the end of a string.  For instance, the prefixes of the string `"abcd"` are `["a","ab","abc"]`. The suffixes are `["bcd", "cd", "d"]`. You should not overlap the prefix and suffix.
   
   ```Haskell
@@ -14,6 +15,7 @@ vc-description: |-
   All strings will be lowercase and string lengths are `1 <= length <= 500`
   
   More examples in test cases. Good luck!
+  -/
 
 vc-preamble: |-
 
@@ -44,23 +46,23 @@ vc-theorems: |-
   theorem solve_single (c : Char) :
     solve (String.mk [c]) = 0 := sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve "abcd"
+  -- #guard_msgs in
+  -- #eval solve "abcd"
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve "abcda"
+  -- #guard_msgs in
+  -- #eval solve "abcda"
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval solve "abcdabc"
+  -- #guard_msgs in
+  -- #eval solve "abcdabc"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

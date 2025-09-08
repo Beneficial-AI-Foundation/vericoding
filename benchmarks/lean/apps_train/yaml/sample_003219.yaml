@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   What's in a name?
   ..Or rather, what's a name in? For us, a particular string is where we are looking for a name.
   
@@ -44,6 +45,7 @@ vc-description: |-
       but not enough of all of them (missing an 'l').
   
   Note: testing will _not_ be case-sensitive.
+  -/
 
 vc-preamble: |-
 
@@ -74,23 +76,23 @@ vc-theorems: |-
     name_in_str text1 name ∨ name_in_str text2 name →
     name_in_str (text1 ++ text2) name = true := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval name_in_str "Across the rivers" "chris"
+  -- #guard_msgs in
+  -- #eval name_in_str "Across the rivers" "chris"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval name_in_str "Next to a lake" "chris"
+  -- #guard_msgs in
+  -- #eval name_in_str "Next to a lake" "chris"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval name_in_str "A crew that boards the ship" "chris"
+  -- #guard_msgs in
+  -- #eval name_in_str "A crew that boards the ship" "chris"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

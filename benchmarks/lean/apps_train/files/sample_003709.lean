@@ -1,0 +1,106 @@
+/-
+We need you to implement a method of receiving commands over a network, processing the information and responding.
+
+Our device will send a single packet to you containing data and an instruction which you must perform before returning your reply.
+
+To keep things simple, we will be passing a single "packet" as a string. 
+Each "byte" contained in the packet is represented by 4 chars.
+
+One packet is structured as below:
+```
+Header  Instruction   Data1    Data2   Footer
+------   ------       ------   ------  ------
+ H1H1     0F12         0012     0008    F4F4
+------   ------       ------   ------  ------
+
+The string received in this case would be - "H1H10F1200120008F4F4"
+
+Instruction: The calculation you should perform, always one of the below.
+            0F12 = Addition
+            B7A2 = Subtraction
+            C3D9 = Multiplication
+            FFFF = This instruction code should be used to identify your return value.
+``` 
+- The Header and Footer are unique identifiers which you must use to form your reply.
+
+- Data1 and Data2 are the decimal representation of the data you should apply your instruction to. _i.e 0109 = 109._
+
+- Your response must include the received header/footer, a "FFFF" instruction code, and the result of your calculation stored in Data1.
+
+- Data2 should be zero'd out to "0000".
+
+```
+To give a complete example:
+
+If you receive message "H1H10F1200120008F4F4".
+The correct response would be "H1H1FFFF00200000F4F4"
+
+```
+In the event that your calculation produces a negative result, the value returned should be "0000", similarily if the value is above 9999 you should return "9999".
+
+Goodluck, I look forward to reading your creative solutions!
+-/
+
+def String.substring (s : String) (start len : Nat) : String :=
+  sorry
+
+def INSTRUCTIONS : Instruction → Operation :=
+  sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def communication_module (packet : String) : String :=
+  sorry
+
+theorem communication_module_properties 
+  (header : HeaderFooter) (inst : Instruction)
+  (d1 d2 : Data) (footer : HeaderFooter) :
+  let packet := header.value ++ inst.value ++ toString d1.value ++ toString d2.value ++ footer.value
+  let result := communication_module packet
+  let resultValue := String.toNat? (result.substring 8 4)
+  String.length result = 20 ∧
+  result.startsWith header.value ∧ 
+  result.substring 4 4 = "FFFF" ∧
+  result.substring 12 4 = "0000" ∧
+  result.endsWith footer.value ∧
+  ∃ n : Nat, resultValue = some n ∧ 
+  n < 10000 ∧
+  n = min 9999 (max 0 ((INSTRUCTIONS inst d1 d2).value)) :=
+  sorry
+
+theorem addition_properties
+  (header : HeaderFooter) (d1 d2 : Data) (footer : HeaderFooter) :
+  let packet := header.value ++ "0F12" ++ toString d1.value ++ toString d2.value ++ footer.value  
+  let result := communication_module packet
+  let resultValue := String.toNat? (result.substring 8 4)
+  ∃ n : Nat, resultValue = some n ∧
+  n = min 9999 (max 0 (d1.value + d2.value)) :=
+  sorry
+
+theorem packet_length_property
+  (packet : String)
+  (h : String.length packet = 20) :
+  String.length (communication_module packet) = 20 :=
+  sorry
+
+/-
+info: 'H1H1FFFF00200000F4F4'
+-/
+-- #guard_msgs in
+-- #eval communication_module "H1H10F1200120008F4F4"
+
+/-
+info: 'Y2Y2FFFF00980000N5N5'
+-/
+-- #guard_msgs in
+-- #eval communication_module "Y2Y2B7A210000902N5N5"
+
+/-
+info: 'A6A6FFFF99990000M0M0'
+-/
+-- #guard_msgs in
+-- #eval communication_module "A6A6C3D911150015M0M0"
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

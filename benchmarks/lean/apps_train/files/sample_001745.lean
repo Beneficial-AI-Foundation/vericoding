@@ -1,0 +1,78 @@
+/-
+Given the root of a binary tree, each node has a value from 0 to 25 representing the letters 'a' to 'z': a value of 0 represents 'a', a value of 1 represents 'b', and so on.
+Find the lexicographically smallest string that starts at a leaf of this tree and ends at the root.
+(As a reminder, any shorter prefix of a string is lexicographically smaller: for example, "ab" is lexicographically smaller than "aba".  A leaf of a node is a node that has no children.)
+
+Example 1:
+
+Input: [0,1,2,3,4,3,4]
+Output: "dba"
+
+Example 2:
+
+Input: [25,1,3,1,3,0,2]
+Output: "adz"
+
+Example 3:
+
+Input: [2,2,1,null,1,0,null,0]
+Output: "abc"
+
+Note:
+
+The number of nodes in the given tree will be between 1 and 8500.
+Each node in the tree will have a value between 0 and 25.
+-/
+
+def smallestFromLeaf : TreeNode → String := sorry
+
+theorem smallestFromLeaf_returns_nonempty (root : TreeNode) :
+  let result := smallestFromLeaf root
+  result.length > 0 := sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def isTreeOfSize : TreeNode → Nat → Prop 
+  | TreeNode.mk _ none none, n => n = 1
+  | TreeNode.mk _ (some l) none, n => ∃ m, isTreeOfSize l m ∧ n = m + 1
+  | TreeNode.mk _ none (some r), n => ∃ m, isTreeOfSize r m ∧ n = m + 1
+  | TreeNode.mk _ (some l) (some r), n => 
+    ∃ m₁ m₂, isTreeOfSize l m₁ ∧ isTreeOfSize r m₂ ∧ n = m₁ + m₂ + 1
+
+theorem smallestFromLeaf_returns_lowercase_chars (root : TreeNode) :
+  let result := smallestFromLeaf root
+  ∀ c ∈ result.data, 'a' ≤ c ∧ c ≤ 'z' := sorry
+
+theorem smallestFromLeaf_length_bounded_by_tree_size (root : TreeNode) (size : Nat) :
+  let result := smallestFromLeaf root
+  isTreeOfSize root size → result.length ≤ size := sorry
+
+theorem single_node_returns_a :
+  let root := TreeNode.mk 0 none none
+  smallestFromLeaf root = "a" := sorry
+
+theorem equal_children_equal_result :
+  let root := TreeNode.mk 0 (some (TreeNode.mk 1 none none)) (some (TreeNode.mk 1 none none))
+  smallestFromLeaf root = "ba" := sorry
+
+/-
+info: 'dba'
+-/
+-- #guard_msgs in
+-- #eval smallestFromLeaf TreeNode(0)
+
+/-
+info: 'adz'
+-/
+-- #guard_msgs in
+-- #eval smallestFromLeaf TreeNode(25)
+
+/-
+info: 'abc'
+-/
+-- #guard_msgs in
+-- #eval smallestFromLeaf TreeNode(2)
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

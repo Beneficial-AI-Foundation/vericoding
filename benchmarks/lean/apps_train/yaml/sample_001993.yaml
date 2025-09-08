@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Levko loves array a_1, a_2, ... , a_{n}, consisting of integers, very much. That is why Levko is playing with array a, performing all sorts of operations with it. Each operation Levko performs is of one of two types:
   
     Increase all elements from l_{i} to r_{i} by d_{i}. In other words, perform assignments a_{j} = a_{j} + d_{i} for all j that meet the inequation l_{i} ≤ j ≤ r_{i}.  Find the maximum of elements from l_{i} to r_{i}. That is, calculate the value $m_{i} = \operatorname{max}_{j = l_{i}}^{r_{i}} a_{j}$. 
@@ -41,6 +42,7 @@ vc-description: |-
   
   Output
   NO
+  -/
 
 vc-preamble: |-
 

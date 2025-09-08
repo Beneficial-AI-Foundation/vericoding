@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The power of an integer x is defined as the number of steps needed to transform x into 1 using the following steps:
   
   if x is even then x = x / 2
@@ -42,6 +43,7 @@ vc-description: |-
   
   1 <= lo <= hi <= 1000
   1 <= k <= hi - lo + 1
+  -/
 
 vc-preamble: |-
   def get_power (x : Int) : Int :=
@@ -90,23 +92,23 @@ vc-theorems: |-
     getKth x x 1 = x :=
   sorry
   
-  /--
+  /-
   info: 13
   -/
-  #guard_msgs in
-  #eval getKth 12 15 2
+  -- #guard_msgs in
+  -- #eval getKth 12 15 2
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval getKth 7 11 4
+  -- #guard_msgs in
+  -- #eval getKth 7 11 4
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval getKth 1 1 1
+  -- #guard_msgs in
+  -- #eval getKth 1 1 1
 
 vc-postamble: |-
   -- Apps difficulty: interview

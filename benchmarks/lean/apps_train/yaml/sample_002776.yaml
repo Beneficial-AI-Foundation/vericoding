@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The purpose of this series is developing understanding of stastical problems in AS and A level maths. Let's get started with a simple concept in statistics: Mutually exclusive events.
   
   The probability of an OR event is calculated by the following rule:
@@ -42,6 +43,7 @@ vc-description: |-
   `6 : 1/6`
   
   If asked for the rolls `1` and `2` then you would need to sum the probabilities, both `1/6` therefore `2/6` and return this. As above, you will need to return it as a decimal and not a  fraction.
+  -/
 
 vc-preamble: |-
 
@@ -66,23 +68,23 @@ vc-theorems: |-
     mutuallyExclusive [(1, 0.3), (2, 0.3), (3, 0.4)] 1 2 = some "0.60" :=
   sorry
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval mutually_exclusive *test1
+  -- #guard_msgs in
+  -- #eval mutually_exclusive *test1
   
-  /--
+  /-
   info: '0.30'
   -/
-  #guard_msgs in
-  #eval mutually_exclusive *test2
+  -- #guard_msgs in
+  -- #eval mutually_exclusive *test2
   
-  /--
+  /-
   info: '0.20'
   -/
-  #guard_msgs in
-  #eval mutually_exclusive *test3
+  -- #guard_msgs in
+  -- #eval mutually_exclusive *test3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

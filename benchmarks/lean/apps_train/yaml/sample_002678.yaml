@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your task is to make a program takes in a sentence (without puncuation), adds all words to a list and returns the sentence as a string which is the positions of the word in the list. Casing should not matter too.
   
   Example
@@ -18,6 +19,7 @@ vc-description: |-
   becomes
   
   `"01231203"`
+  -/
 
 vc-preamble: |-
 
@@ -43,23 +45,23 @@ vc-theorems: |-
     let result := compress s
     String.toNat! ((result.data.get! i).toString) = words.indexOf (words.get! i) := by sorry
   
-  /--
+  /-
   info: '012'
   -/
-  #guard_msgs in
-  #eval compress "The bumble bee"
+  -- #guard_msgs in
+  -- #eval compress "The bumble bee"
   
-  /--
+  /-
   info: '012012'
   -/
-  #guard_msgs in
-  #eval compress "SILLY LITTLE BOYS silly little boys"
+  -- #guard_msgs in
+  -- #eval compress "SILLY LITTLE BOYS silly little boys"
   
-  /--
+  /-
   info: '01234567802856734'
   -/
-  #guard_msgs in
-  #eval compress "Ask not what your COUNTRY can do for you ASK WHAT YOU CAN DO FOR YOUR country"
+  -- #guard_msgs in
+  -- #eval compress "Ask not what your COUNTRY can do for you ASK WHAT YOU CAN DO FOR YOUR country"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There exist certain strings, known as $Unique$ $Strings$. They possess a unique property: 
   - The character 'c' gets converted to "ff" and the character 'k' gets converted to "gg". Any letter besides 'c' and 'k' does not get converted to any other character.
   Your job is to count the number of strings that could possibly be represented by a given unique string. Since the value could be very large, output the remainder when divided by $10^9+7$.
@@ -44,6 +45,7 @@ vc-description: |-
   $2)$ 'ggdffn','kdffn','ggdcn','kdcn'
   $3)$ 'fff','cf','fc'
   $4)$ Since the string 'cat' contains 'c', it is certain that this string is not a unique string. Hence, the output is $0$.
+  -/
 
 vc-preamble: |-
 
@@ -79,29 +81,29 @@ vc-theorems: |-
     count_unique_strings ("x".intercalate string_parts) > 0 :=
   sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_unique_strings "thing"
+  -- #guard_msgs in
+  -- #eval count_unique_strings "thing"
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval count_unique_strings "ggdffn"
+  -- #guard_msgs in
+  -- #eval count_unique_strings "ggdffn"
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval count_unique_strings "fff"
+  -- #guard_msgs in
+  -- #eval count_unique_strings "fff"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_unique_strings "cat"
+  -- #guard_msgs in
+  -- #eval count_unique_strings "cat"
 
 vc-postamble: |-
   -- Apps difficulty: interview

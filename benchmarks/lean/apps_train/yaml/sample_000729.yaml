@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   	Chef has a cubic die with 6 faces kept on an infinite plane. Each face has a distinct integer in the range [1,6] written on it, but the exact arrangement of the numbers on the faces of the die is unknown to Chef. Curiosity gets the better of Chef and he wants to find out o(1), o(2), ..., o(6), where o(i) is the number written opposite to the number i.
   
   	Chef performs the following N-1 steps to learn the exact arrangement of the numbers on the die. In the i-th step, Chef pushes the die in some direction (there are 4 possible directions), and the die rolls 90o in this direction. The picture below demonstrates a die and the result that it produced after rolling in each of the 4 directions respectively. For this die, we have o(1)=4, o(2)=5, o(3)=6, o(4)=1, o(5)=2, o(6)=3.
@@ -55,6 +56,7 @@ vc-description: |-
   
   Example case 2: You can prove that there's no solution.
   Example case 3: The solution is not unique. 3 5 1 6 2 4 is another valid solution.
+  -/
 
 vc-preamble: |-
   def solveDie (n : Nat) (nums : List Nat) : List Nat :=
@@ -68,7 +70,7 @@ vc-definitions: |-
   def isValidConfig (config : List Nat) : Bool :=
     sorry
   
-  /-- If solveDie returns [0], it indicates no valid configuration exists.
+  /- If solveDie returns [0], it indicates no valid configuration exists.
       Otherwise, returns a valid die configuration that works with the input sequence. -/
 
 vc-theorems: |-
@@ -80,7 +82,7 @@ vc-theorems: |-
         nums[i+1]! ≠ result[nums[i]! - 1]! :=
     sorry
   
-  /-- If there are adjacent equal numbers in the input sequence,
+  /- If there are adjacent equal numbers in the input sequence,
       no valid die configuration exists -/
   
   theorem adjacent_same_numbers_theorem (n : Nat) (nums : List Nat) :

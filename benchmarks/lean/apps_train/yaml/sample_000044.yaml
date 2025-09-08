@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Today the kindergarten has a new group of $n$ kids who need to be seated at the dinner table. The chairs at the table are numbered from $1$ to $4n$. Two kids can't sit on the same chair. It is known that two kids who sit on chairs with numbers $a$ and $b$ ($a \neq b$) will indulge if:   $gcd(a, b) = 1$ or,  $a$ divides $b$ or $b$ divides $a$. 
   
   $gcd(a, b)$ — the maximum number $x$ such that $a$ is divisible by $x$ and $b$ is divisible by $x$.
@@ -30,6 +31,7 @@ vc-description: |-
   6 4
   4 6 10
   14 10 12 8
+  -/
 
 vc-preamble: |-
 
@@ -60,23 +62,23 @@ vc-theorems: |-
   theorem solve_seats_positive (n : Nat) (h : n > 0) (h2 : n ≤ 100) :
     ∀ x ∈ solve_seats n, x > 0 := sorry
   
-  /--
+  /-
   info: [6, 8]
   -/
-  #guard_msgs in
-  #eval sorted solve_seats(2)
+  -- #guard_msgs in
+  -- #eval sorted solve_seats(2)
   
-  /--
+  /-
   info: [8, 10, 12]
   -/
-  #guard_msgs in
-  #eval sorted solve_seats(3)
+  -- #guard_msgs in
+  -- #eval sorted solve_seats(3)
   
-  /--
+  /-
   info: [10, 12, 14, 16]
   -/
-  #guard_msgs in
-  #eval sorted solve_seats(4)
+  -- #guard_msgs in
+  -- #eval sorted solve_seats(4)
 
 vc-postamble: |-
   -- Apps difficulty: interview

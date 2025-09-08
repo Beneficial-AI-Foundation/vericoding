@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    Dudka has `n` details. He must keep exactly 3 of them.
   
@@ -40,6 +41,7 @@ vc-description: |-
    - `[output]` an integer
   
     The number of ways to get exactly 3 details.
+  -/
 
 vc-preamble: |-
 
@@ -74,23 +76,23 @@ vc-theorems: |-
   
   theorem three_details_base_three : three_details 3 = 1 := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval three_details 3
+  -- #guard_msgs in
+  -- #eval three_details 3
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval three_details 6
+  -- #guard_msgs in
+  -- #eval three_details 6
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval three_details 4
+  -- #guard_msgs in
+  -- #eval three_details 4
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an input string (s) and a pattern (p), implement wildcard pattern matching with support for '?' and '*'.
   
   '?' Matches any single character.
@@ -49,6 +50,7 @@ vc-description: |-
   s = "acdcb"
   p = "a*c?b"
   Output: false
+  -/
 
 vc-preamble: |-
 
@@ -90,23 +92,23 @@ vc-theorems: |-
     isMatch s "**" = true ∧
     isMatch s "" = (s = "") := sorry
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_match "aa" "a"
+  -- #guard_msgs in
+  -- #eval is_match "aa" "a"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_match "aa" "*"
+  -- #guard_msgs in
+  -- #eval is_match "aa" "*"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_match "adceb" "*a*b"
+  -- #guard_msgs in
+  -- #eval is_match "adceb" "*a*b"
 
 vc-postamble: |-
   -- Apps difficulty: interview

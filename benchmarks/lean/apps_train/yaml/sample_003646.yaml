@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## **Task**
   
   You are given a positive integer (`n`), and your task is to find the largest number **less than** `n`, which can be written in the form `a**b`, where `a` can be any non-negative integer and `b` is an integer greater than or equal to `2`. Try not to make the code time out :)
@@ -22,6 +23,7 @@ vc-description: |-
                     # and there are two ways of getting it: 3**4, 9**2
   ```
   By the way, after finishing this kata, please try some of my other katas: [here.](https://www.codewars.com/collections/tonylicodings-authored-katas)
+  -/
 
 vc-preamble: |-
 
@@ -53,23 +55,23 @@ vc-theorems: |-
     ∀ base exp : Nat, base ≥ 2 → exp ≥ 2 →
     base ^ exp < n → base ^ exp ≤ result.1 := sorry
   
-  /--
+  /-
   info: (81, 2)
   -/
-  #guard_msgs in
-  #eval largest_power 90
+  -- #guard_msgs in
+  -- #eval largest_power 90
   
-  /--
+  /-
   info: (64, 3)
   -/
-  #guard_msgs in
-  #eval largest_power 65
+  -- #guard_msgs in
+  -- #eval largest_power 65
   
-  /--
+  /-
   info: (0, -1)
   -/
-  #guard_msgs in
-  #eval largest_power 1
+  -- #guard_msgs in
+  -- #eval largest_power 1
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Hooray! Berl II, the king of Berland is making a knight tournament. The king has already sent the message to all knights in the kingdom and they in turn agreed to participate in this grand event.
   
   As for you, you're just a simple peasant. There's no surprise that you slept in this morning and were late for the tournament (it was a weekend, after all). Now you are really curious about the results of the tournament. This time the tournament in Berland went as follows:  There are n knights participating in the tournament. Each knight was assigned his unique number — an integer from 1 to n.  The tournament consisted of m fights, in the i-th fight the knights that were still in the game with numbers at least l_{i} and at most r_{i} have fought for the right to continue taking part in the tournament.  After the i-th fight among all participants of the fight only one knight won — the knight number x_{i}, he continued participating in the tournament. Other knights left the tournament.  The winner of the last (the m-th) fight (the knight number x_{m}) became the winner of the tournament. 
@@ -39,6 +40,7 @@ vc-description: |-
   -----Note-----
   
   Consider the first test case. Knights 1 and 2 fought the first fight and knight 1 won. Knights 1 and 3 fought the second fight and knight 3 won. The last fight was between knights 3 and 4, knight 4 won.
+  -/
 
 vc-preamble: |-
   def find_winning_knights (n : Nat) (m : Nat) (fights : List (Nat × Nat × Nat)) : List Nat :=

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef owns an icecream shop in Chefland named scoORZ. There are only three types of coins in Chefland: Rs. 5, Rs. 10 and Rs. 15. An icecream costs Rs. 5.
   There are $N$ people (numbered $1$ through $N$) standing in a queue to buy icecream from scoORZ. Each person wants to buy exactly one icecream. For each valid $i$, the $i$-th person has one coin with value $a_i$. It is only possible for someone to buy an icecream when Chef can give them back their change exactly ― for example, if someone pays with a Rs. 10 coin, Chef needs to have a Rs. 5 coin that he gives to this person as change.
   Initially, Chef has no money. He wants to know if he can sell icecream to everyone in the queue, in the given order. Since he is busy eating his own icecream, can you tell him if he can serve all these people?
@@ -38,6 +39,7 @@ vc-description: |-
   Example case 1: The first person pays with a Rs. 5 coin. The second person pays with a Rs. 10 coin and Chef gives them back the Rs. 5 coin (which he got from the first person) as change.
   Example case 2: The first person already cannot buy an icecream because Chef cannot give them back Rs. 5.
   Example case 3: The first person pays with a Rs. 5 coin. The second person cannot buy the icecream because Chef has only one Rs. 5 coin, but he needs to give a total of Rs. 10 back as change.
+  -/
 
 vc-preamble: |-
   def canServeIcecream : List Coin → Bool
@@ -91,23 +93,23 @@ vc-theorems: |-
       (last = Coin.ten ∧ countFives p = 0) ∨ 
       (last = Coin.fifteen ∧ countTens p = 0 ∧ countFives p < 2) := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval can_serve_icecream [5, 10]
+  -- #guard_msgs in
+  -- #eval can_serve_icecream [5, 10]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval can_serve_icecream [10, 5]
+  -- #guard_msgs in
+  -- #eval can_serve_icecream [10, 5]
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval can_serve_icecream [5, 15]
+  -- #guard_msgs in
+  -- #eval can_serve_icecream [5, 15]
 
 vc-postamble: |-
   -- Apps difficulty: interview

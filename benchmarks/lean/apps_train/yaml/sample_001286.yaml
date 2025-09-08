@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Consider an infinite full binary tree (each node has two children except the leaf nodes) defined as follows. For a node labelled v its left child will be labelled 2*v and its right child will be labelled 2*v+1. The root is labelled as 1.
   You are given N queries of the form i j. For each query, you have to print the length of the shortest path between node labelled i and  node labelled j.
   
@@ -26,6 +27,7 @@ vc-description: |-
   
   -----Explanation-----
   For first query, 1 is directly connected to 2 by an edge. Hence distance 1.
+  -/
 
 vc-preamble: |-
 
@@ -52,23 +54,23 @@ vc-theorems: |-
   theorem triangle_inequality {i j k : Nat} (hi : i > 0) (hj : j > 0) (hk : k > 0) :
     shortest_path_binary_tree i j ≤ shortest_path_binary_tree i k + shortest_path_binary_tree k j := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval shortest_path_binary_tree 1 2
+  -- #guard_msgs in
+  -- #eval shortest_path_binary_tree 1 2
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval shortest_path_binary_tree 2 3
+  -- #guard_msgs in
+  -- #eval shortest_path_binary_tree 2 3
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval shortest_path_binary_tree 4 3
+  -- #guard_msgs in
+  -- #eval shortest_path_binary_tree 4 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There is a pizza with 3n slices of varying size, you and your friends will take slices of pizza as follows:
   
   You will pick any pizza slice.
@@ -34,6 +35,7 @@ vc-description: |-
   1 <= slices.length <= 500
   slices.length % 3 == 0
   1 <= slices[i] <= 1000
+  -/
 
 vc-preamble: |-
   def maxSizeSlices (slices: List Nat) : Nat :=
@@ -79,23 +81,23 @@ vc-theorems: |-
     maxSizeSlices slices = maxList slices :=
   sorry
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval maxSizeSlices [1, 2, 3, 4, 5, 6]
+  -- #guard_msgs in
+  -- #eval maxSizeSlices [1, 2, 3, 4, 5, 6]
   
-  /--
+  /-
   info: 16
   -/
-  #guard_msgs in
-  #eval maxSizeSlices [8, 9, 8, 6, 1, 1]
+  -- #guard_msgs in
+  -- #eval maxSizeSlices [8, 9, 8, 6, 1, 1]
   
-  /--
+  /-
   info: 21
   -/
-  #guard_msgs in
-  #eval maxSizeSlices [4, 1, 2, 5, 8, 3, 1, 9, 7]
+  -- #guard_msgs in
+  -- #eval maxSizeSlices [4, 1, 2, 5, 8, 3, 1, 9, 7]
 
 vc-postamble: |-
   -- Apps difficulty: interview

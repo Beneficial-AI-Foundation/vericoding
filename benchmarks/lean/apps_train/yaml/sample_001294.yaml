@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a sequence $A_1, A_2, \ldots, A_N$. You should select a (not necessarily contiguous) subsequence of $A$ and reverse it. In other words, if you select a subsequence $A_{i_1}, A_{i_2}, \ldots, A_{i_K}$ ($1 \le i_1 < \ldots < i_K \le N$), then for each valid $j$, the $i_j$-th element of the resulting sequence is equal to the $i_{K+1-j}$-th element of the original sequence; all other elements are the same as in the original sequence.
   In the resulting sequence, you want to calculate the maximum sum of a contiguous subsequence (possibly an empty sequence, with sum $0$). Find its maximum possible value and a subsequence which you should select in order to obtain this maximum value. If there are multiple solutions, you may find any one of them.
   
@@ -30,6 +31,7 @@ vc-description: |-
   2 2 3
   0
   0
+  -/
 
 vc-preamble: |-
 

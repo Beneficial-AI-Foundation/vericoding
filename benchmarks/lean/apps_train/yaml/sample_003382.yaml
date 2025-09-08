@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given two integer arrays where the second array is a shuffled duplicate of the first array with one element missing, find the missing element.
   
   Please note, there may be duplicates in the arrays, so checking if a numerical value exists in one and not the other is not a valid solution.
@@ -11,6 +12,7 @@ vc-description: |-
   ```
   
   The first array will always have at least one element.
+  -/
 
 vc-preamble: |-
   def List.sum : List Int → Int  
@@ -35,23 +37,23 @@ vc-theorems: |-
     (arr : List Int) (h : arr ≠ []) :
     find_missing arr arr = 0 := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_missing [1, 2, 3] [1, 3]
+  -- #guard_msgs in
+  -- #eval find_missing [1, 2, 3] [1, 3]
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval find_missing [6, 1, 3, 6, 8, 2] [3, 6, 6, 1, 2]
+  -- #guard_msgs in
+  -- #eval find_missing [6, 1, 3, 6, 8, 2] [3, 6, 6, 1, 2]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval find_missing [0, 0, 0, 0, 0] [0, 0, 0, 0]
+  -- #guard_msgs in
+  -- #eval find_missing [0, 0, 0, 0, 0] [0, 0, 0, 0]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

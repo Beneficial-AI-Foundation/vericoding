@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a program to obtain a number $N$ and increment its value by 1 if the number is divisible by 4 $otherwise$ decrement its value by 1.
   
   -----Input:-----
@@ -18,6 +19,7 @@ vc-description: |-
   
   -----EXPLANATION:-----
   Since 5 is not divisible by 4 hence, its value is decreased by 1.
+  -/
 
 vc-preamble: |-
 
@@ -41,23 +43,23 @@ vc-theorems: |-
   theorem increment_or_decrement_not_idempotent (n : Int) :
     increment_or_decrement (increment_or_decrement n) ≠ increment_or_decrement n := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval increment_or_decrement 5
+  -- #guard_msgs in
+  -- #eval increment_or_decrement 5
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval increment_or_decrement 8
+  -- #guard_msgs in
+  -- #eval increment_or_decrement 8
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval increment_or_decrement 3
+  -- #guard_msgs in
+  -- #eval increment_or_decrement 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

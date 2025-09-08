@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Sam has been teaching Jon the Game of Stones to sharpen his mind and help him devise a strategy to fight the white walkers. The rules of this game are quite simple:  The game starts with n piles of stones indexed from 1 to n. The i-th pile contains s_{i} stones. The players make their moves alternatively. A move is considered as removal of some number of stones from a pile. Removal of 0 stones does not count as a move. The player who is unable to make a move loses.
   
   Now Jon believes that he is ready for battle, but Sam does not think so. To prove his argument, Sam suggested that they play a modified version of the game.
@@ -39,6 +40,7 @@ vc-description: |-
   In second case, the following moves are possible by Sam: $\{1,2 \} \rightarrow \{0,2 \}, \{1,2 \} \rightarrow \{1,0 \}, \{1,2 \} \rightarrow \{1,1 \}$ 
   
   In each of these cases, last move can be made by Jon to win the game as follows: $\{0,2 \} \rightarrow \{0,0 \}, \{1,0 \} \rightarrow \{0,0 \}, \{1,1 \} \rightarrow \{0,1 \}$
+  -/
 
 vc-preamble: |-
 
@@ -57,7 +59,7 @@ vc-theorems: |-
     let n := stones.length
     stones_game n stones = stones_game n stones := sorry
   
-  /-- We can represent permutation invariance by showing that if we have
+  /- We can represent permutation invariance by showing that if we have
       two lists with the same elements (possibly in different order), 
       they produce the same result -/
   
@@ -69,23 +71,23 @@ vc-theorems: |-
     let stones := List.replicate n 1
     stones_game n stones = stones_game n stones := sorry
   
-  /--
+  /-
   info: 'NO'
   -/
-  #guard_msgs in
-  #eval stones_game 1 [5]
+  -- #guard_msgs in
+  -- #eval stones_game 1 [5]
   
-  /--
+  /-
   info: 'YES'
   -/
-  #guard_msgs in
-  #eval stones_game 2 [1, 2]
+  -- #guard_msgs in
+  -- #eval stones_game 2 [1, 2]
   
-  /--
+  /-
   info: 'NO'
   -/
-  #guard_msgs in
-  #eval stones_game 3 [34, 44, 21]
+  -- #guard_msgs in
+  -- #eval stones_game 3 [34, 44, 21]
 
 vc-postamble: |-
   -- Apps difficulty: competition

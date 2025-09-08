@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a list of 24-hour clock time points in "Hour:Minutes" format, find the minimum minutes difference between any two time points in the list. 
   
   Example 1:
@@ -10,6 +11,7 @@ vc-description: |-
   
   The number of time points in the given list is at least 2 and won't exceed 20000.
   The input time is legal and ranges from 00:00 to 23:59.
+  -/
 
 vc-preamble: |-
 
@@ -31,23 +33,23 @@ vc-theorems: |-
     find_min_time_difference ["23:59", "00:00"] = 1 :=
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval find_min_time_difference ["23:59", "00:00"]
+  -- #guard_msgs in
+  -- #eval find_min_time_difference ["23:59", "00:00"]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval find_min_time_difference ["00:00", "23:59", "00:00"]
+  -- #guard_msgs in
+  -- #eval find_min_time_difference ["00:00", "23:59", "00:00"]
   
-  /--
+  /-
   info: 61
   -/
-  #guard_msgs in
-  #eval find_min_time_difference ["01:01", "02:02", "03:03"]
+  -- #guard_msgs in
+  -- #eval find_min_time_difference ["01:01", "02:02", "03:03"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

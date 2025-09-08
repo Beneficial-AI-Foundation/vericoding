@@ -1,5 +1,7 @@
 vc-description: |-
+  /-
   Determine the **area** of the largest square that can fit inside a circle with radius *r*.
+  -/
 
 vc-preamble: |-
 
@@ -16,23 +18,23 @@ vc-theorems: |-
     area_largest_square 0 = 0 :=
   sorry
   
-  /--
+  /-
   info: 50
   -/
-  #guard_msgs in
-  #eval area_largest_square 5
+  -- #guard_msgs in
+  -- #eval area_largest_square 5
   
-  /--
+  /-
   info: 98
   -/
-  #guard_msgs in
-  #eval area_largest_square 7
+  -- #guard_msgs in
+  -- #eval area_largest_square 7
   
-  /--
+  /-
   info: 5000
   -/
-  #guard_msgs in
-  #eval area_largest_square 50
+  -- #guard_msgs in
+  -- #eval area_largest_square 50
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Scheduling is how the processor decides which jobs(processes) get to use the processor and for how long. This can cause a lot of problems. Like a really long process taking the entire CPU and freezing all the other processes. One solution is Shortest Job First(SJF), which today you will be implementing.
   
   SJF works by, well, letting the shortest jobs take the CPU first. If the jobs are the same size then it is First In First Out (FIFO). The idea is that the shorter jobs will finish quicker, so theoretically jobs won't get frozen because of large jobs. (In practice they're frozen because of small jobs).
@@ -30,6 +31,7 @@ vc-description: |-
   ```
   SJF([3,10,20,1,2], 0) == 6
   ```
+  -/
 
 vc-preamble: |-
   def SJF (jobs : List Nat) (index : Nat) : Nat :=
@@ -56,23 +58,23 @@ vc-theorems: |-
     SJF jobs 0 = job :=
     sorry
   
-  /--
+  /-
   info: 100
   -/
-  #guard_msgs in
-  #eval SJF [100] 0
+  -- #guard_msgs in
+  -- #eval SJF [100] 0
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval SJF [3, 10, 20, 1, 2] 0
+  -- #guard_msgs in
+  -- #eval SJF [3, 10, 20, 1, 2] 0
   
-  /--
+  /-
   info: 16
   -/
-  #guard_msgs in
-  #eval SJF [3, 10, 10, 20, 1, 2] 1
+  -- #guard_msgs in
+  -- #eval SJF [3, 10, 10, 20, 1, 2] 1
 
 vc-postamble: |-
   -- Apps difficulty: introductory

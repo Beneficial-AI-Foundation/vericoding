@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array which consists of non-negative integers and an integer m, you can split the array into m non-empty continuous subarrays. Write an algorithm to minimize the largest sum among these m subarrays.
   
   Note:
@@ -20,6 +21,7 @@ vc-description: |-
   There are four ways to split nums into two subarrays.
   The best way is to split it into [7,2,5] and [10,8],
   where the largest sum among the two subarrays is only 18.
+  -/
 
 vc-preamble: |-
   def splitArray (nums : List Nat) (m : Nat) : Nat := sorry
@@ -59,23 +61,23 @@ vc-theorems: |-
         List.join partitions = nums ∧
         (∀ p ∈ partitions, listSum p ≤ maxSum) := sorry
   
-  /--
+  /-
   info: 18
   -/
-  #guard_msgs in
-  #eval split_array #[7, 2, 5, 10, 8] 2
+  -- #guard_msgs in
+  -- #eval split_array #[7, 2, 5, 10, 8] 2
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval split_array #[1, 2, 3, 4, 5] 2
+  -- #guard_msgs in
+  -- #eval split_array #[1, 2, 3, 4, 5] 2
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval split_array #[1, 4, 4] 3
+  -- #guard_msgs in
+  -- #eval split_array #[1, 4, 4] 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

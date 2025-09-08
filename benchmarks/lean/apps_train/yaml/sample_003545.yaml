@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # The die is cast!
   
   Your task in this kata is to write a "dice roller" that interprets a subset of [dice notation](http://en.wikipedia.org/wiki/Dice_notation).
@@ -39,6 +40,7 @@ vc-description: |-
   
    - Your solution should ignore all whitespace.
    - `roll` should return `false` for invalid input.
+  -/
 
 vc-preamble: |-
   def isInt (n : Nat) : Bool := sorry
@@ -71,29 +73,29 @@ vc-theorems: |-
     (h₂ : extractSides desc = some sides) :
     ∀ die ∈ result.1, 1 ≤ die ∧ die ≤ sides := sorry
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval roll ""
+  -- #guard_msgs in
+  -- #eval roll ""
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval roll {}
+  -- #guard_msgs in
+  -- #eval roll {}
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval roll "abc"
+  -- #guard_msgs in
+  -- #eval roll "abc"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval len result1["dice"]
+  -- #guard_msgs in
+  -- #eval len result1["dice"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

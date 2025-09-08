@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   Get the digits sum of `n`th number from the [Look-and-Say sequence](http://en.wikipedia.org/wiki/Look-and-say_sequence)(1-based).
   
@@ -27,6 +28,7 @@ vc-description: |-
   For `n = 4`, the output shoule be 5.
   
   `"1211" --> 1 + 2 + 1 + 1 --> 5`
+  -/
 
 vc-preamble: |-
 
@@ -41,35 +43,35 @@ vc-definitions: |-
     look_and_say_and_sum 1 = 1 := sorry
 
 vc-theorems: |-
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval look_and_say_and_sum 1
+  -- #guard_msgs in
+  -- #eval look_and_say_and_sum 1
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval look_and_say_and_sum 2
+  -- #guard_msgs in
+  -- #eval look_and_say_and_sum 2
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval look_and_say_and_sum 3
+  -- #guard_msgs in
+  -- #eval look_and_say_and_sum 3
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval look_and_say_and_sum 4
+  -- #guard_msgs in
+  -- #eval look_and_say_and_sum 4
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval look_and_say_and_sum 5
+  -- #guard_msgs in
+  -- #eval look_and_say_and_sum 5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

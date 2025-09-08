@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Monisha likes to paint. She has painted $N$ paintings (numbered $1$ through $N$) and wants to choose some subset of these paintings for an exhibition. For each valid $i$, the $i$-th painting has beauty $b_i$ and the probability that it will be displayed at the exhibition is $p_i$. Each painting is chosen or excluded from the exhibition independently randomly.
   The beauty of the resulting exhibition is the bitwise XOR of the beauties of all displayed paintings. If no paintings are displayed, the XOR is $0$.
   Monisha wants to find out how beautiful her exhibition is going to be. Help her compute the expected value of the beauty of the exhibition.
@@ -34,6 +35,7 @@ vc-description: |-
   -----Explanation-----
   Example case 1: The first painting must be displayed at the exhibition, the second one must be excluded. If the third painting is displayed (with probability $0.5$), the beauty is $5 \oplus 2 = 7$; if it is excluded (with probability $0.5$), the beauty is $5$. The expected beauty is $0.5 \cdot 5 + 0.5 \cdot 7 = 6$.
   Example case 2: If there is an odd number of paintings at the exhibition, the beauty is $2$; this has a probability of $0.5$. If there is an even number of paintings, the beauty is $0$ (with probability $0.5$), so the expected beauty is $0.5 \cdot 0 + 0.5 \cdot 2 = 1$.
+  -/
 
 vc-preamble: |-
   def calculate_expected_beauty (n : Nat) (beauties : List Nat) (probs : List Float) : Float :=

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Consider the following well known rules:
   
   - A number is divisible by 3 if the sum of its digits is divisible by 3. Let's call '3' a "1-sum" prime
@@ -26,6 +27,7 @@ vc-description: |-
   You can get some insight from [Fermat's little theorem](https://en.wikipedia.org/wiki/Fermat%27s_little_theorem). 
   
   Good luck!
+  -/
 
 vc-preamble: |-
 
@@ -55,29 +57,29 @@ vc-theorems: |-
   theorem divisors_complementary_pairs (n : Nat) (h : n ≥ 2) (k : Nat) :
     k ∈ divisors n → k * k ≤ n → k * (n / k) = n := sorry
   
-  /--
+  /-
   info: '1-sum'
   -/
-  #guard_msgs in
-  #eval solve 3
+  -- #guard_msgs in
+  -- #eval solve 3
   
-  /--
+  /-
   info: '3-altsum'
   -/
-  #guard_msgs in
-  #eval solve 7
+  -- #guard_msgs in
+  -- #eval solve 7
   
-  /--
+  /-
   info: '1-altsum'
   -/
-  #guard_msgs in
-  #eval solve 11
+  -- #guard_msgs in
+  -- #eval solve 11
   
-  /--
+  /-
   info: '3-sum'
   -/
-  #guard_msgs in
-  #eval solve 37
+  -- #guard_msgs in
+  -- #eval solve 37
 
 vc-postamble: |-
   -- Apps difficulty: introductory

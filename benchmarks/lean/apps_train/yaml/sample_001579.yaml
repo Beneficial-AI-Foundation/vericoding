@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Motivation
   ---------
   
@@ -73,6 +74,7 @@ vc-description: |-
   Further studies
   --------------
   You may have noticed that symbols are not always consecutive, but just in proximity, after the transformation. If you're interested in how to deal with that, you should have a look at [this Kata](http://www.codewars.com/kata/move-to-front-encoding/).
+  -/
 
 vc-preamble: |-
 
@@ -113,23 +115,23 @@ vc-theorems: |-
     let decoded := decode encoded idx
     decoded.length = s.length := sorry
   
-  /--
+  /-
   info: s1
   -/
-  #guard_msgs in
-  #eval decode *encoded1
+  -- #guard_msgs in
+  -- #eval decode *encoded1
   
-  /--
+  /-
   info: s2
   -/
-  #guard_msgs in
-  #eval decode *encoded2
+  -- #guard_msgs in
+  -- #eval decode *encoded2
   
-  /--
+  /-
   info: s3
   -/
-  #guard_msgs in
-  #eval decode *encoded3
+  -- #guard_msgs in
+  -- #eval decode *encoded3
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Return a new array consisting of elements which are multiple of their own index in input array (length > 1).
   
   Some cases: 
@@ -10,6 +11,7 @@ vc-description: |-
   
   [-56,-85,72,-26,-14,76,-27,72,35,-21,-67,87,0,21,59,27,-92,68] => [-85, 72, 0, 68]
   ```
+  -/
 
 vc-preamble: |-
 
@@ -42,23 +44,23 @@ vc-theorems: |-
     result.length = arr.length - 1 :=
     sorry
   
-  /--
+  /-
   info: [-6, 32, 25]
   -/
-  #guard_msgs in
-  #eval multiple_of_index [22, -6, 32, 82, 9, 25]
+  -- #guard_msgs in
+  -- #eval multiple_of_index [22, -6, 32, 82, 9, 25]
   
-  /--
+  /-
   info: [-1, 10]
   -/
-  #guard_msgs in
-  #eval multiple_of_index test2
+  -- #guard_msgs in
+  -- #eval multiple_of_index test2
   
-  /--
+  /-
   info: [-85, 72, 0, 68]
   -/
-  #guard_msgs in
-  #eval multiple_of_index test3
+  -- #guard_msgs in
+  -- #eval multiple_of_index test3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

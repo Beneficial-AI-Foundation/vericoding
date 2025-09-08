@@ -1,7 +1,9 @@
 vc-description: |-
+  /-
   ### Unfinished Loop - Bug Fixing #1
   
   Oh no, Timmy's created an infinite loop! Help Timmy find and fix the bug in his unfinished for loop!
+  -/
 
 vc-preamble: |-
 
@@ -26,23 +28,23 @@ vc-theorems: |-
     have hj' : j < (create_array n).size := by rw [create_array_length]; exact hj
     (create_array n)[i]'hi' < (create_array n)[j]'hj' := sorry
   
-  /--
+  /-
   info: [1]
   -/
-  #guard_msgs in
-  #eval create_array 1
+  -- #guard_msgs in
+  -- #eval create_array 1
   
-  /--
+  /-
   info: [1, 2, 3]
   -/
-  #guard_msgs in
-  #eval create_array 3
+  -- #guard_msgs in
+  -- #eval create_array 3
   
-  /--
+  /-
   info: [1, 2, 3, 4, 5]
   -/
-  #guard_msgs in
-  #eval create_array 5
+  -- #guard_msgs in
+  -- #eval create_array 5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

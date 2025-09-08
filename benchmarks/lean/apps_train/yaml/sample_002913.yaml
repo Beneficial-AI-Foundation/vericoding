@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this Kata, you will be given a mathematical string and your task will be to remove all braces as follows:
   
   ```Haskell
@@ -13,6 +14,7 @@ vc-description: |-
   More examples in test cases. 
   
   Good luck!
+  -/
 
 vc-preamble: |-
   def solve (expr : String) : String := sorry
@@ -54,23 +56,23 @@ vc-theorems: |-
     validateResult result ∧
     (∀ c ∈ result.data, c.isAlpha → c ∈ expr.data) := sorry
   
-  /--
+  /-
   info: 'x-y-z'
   -/
-  #guard_msgs in
-  #eval solve "x-(y+z)"
+  -- #guard_msgs in
+  -- #eval solve "x-(y+z)"
   
-  /--
+  /-
   info: 'x-y+z'
   -/
-  #guard_msgs in
-  #eval solve "x-(y-z)"
+  -- #guard_msgs in
+  -- #eval solve "x-(y-z)"
   
-  /--
+  /-
   info: 'u-v+w+x+y-z'
   -/
-  #guard_msgs in
-  #eval solve "u-(v-w-(x+y))-z"
+  -- #guard_msgs in
+  -- #eval solve "u-(v-w-(x+y))-z"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

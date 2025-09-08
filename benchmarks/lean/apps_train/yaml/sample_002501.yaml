@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Problem Statement=====
   The itertools module standardizes a core set of fast, memory efficient tools that are useful by themselves or in combination. Together, they form an iterator algebra making it possible to construct specialized tools succinctly and efficiently in pure Python.
   
@@ -16,6 +17,7 @@ vc-description: |-
   =====Constraints=====
   1≤N≤10
   1≤K≤N
+  -/
 
 vc-preamble: |-
 

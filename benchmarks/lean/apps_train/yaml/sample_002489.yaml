@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Problem Statement=====
   Integers in Python can be as big as the bytes in your machine's memory. There is no limit in size as there is: 2^31 - 1 (c++ int) or 2^63 - 1 (C++ long long int).
   As we know, a^b the result of grows really fast with increasing b.
@@ -17,6 +18,7 @@ vc-description: |-
   
   =====Output Format=====
   Print the result of a^b + c^d on one line.
+  -/
 
 vc-preamble: |-
 
@@ -43,23 +45,23 @@ vc-theorems: |-
   theorem power_sum_with_zero_mid (a b c : Nat) :
     calculate_power_sum a 0 c b = 1 + c^b := sorry
   
-  /--
+  /-
   info: 4710194409608608369201743232
   -/
-  #guard_msgs in
-  #eval calculate_power_sum 9 29 7 27
+  -- #guard_msgs in
+  -- #eval calculate_power_sum 9 29 7 27
   
-  /--
+  /-
   info: 17
   -/
-  #guard_msgs in
-  #eval calculate_power_sum 2 3 3 2
+  -- #guard_msgs in
+  -- #eval calculate_power_sum 2 3 3 2
   
-  /--
+  /-
   info: 50
   -/
-  #guard_msgs in
-  #eval calculate_power_sum 5 2 5 2
+  -- #guard_msgs in
+  -- #eval calculate_power_sum 5 2 5 2
 
 vc-postamble: |-
   -- Apps difficulty: introductory

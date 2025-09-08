@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You need to find the largest value in each row of a binary tree.
   
   Example:
@@ -12,6 +13,7 @@ vc-description: |-
         5   3   9 
   
   Output: [1, 3, 9]
+  -/
 
 vc-preamble: |-
   def largest_values : TreeNode α → List α := sorry
@@ -42,23 +44,23 @@ vc-theorems: |-
     (h : level < List.length (largest_values t)) :
     List.get! (largest_values t) level = list_max (get_level_nodes t level) := sorry
   
-  /--
+  /-
   info: [1]
   -/
-  #guard_msgs in
-  #eval largest_values TreeNode(1)
+  -- #guard_msgs in
+  -- #eval largest_values TreeNode(1)
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval largest_values None
+  -- #guard_msgs in
+  -- #eval largest_values None
   
-  /--
+  /-
   info: [1, 3, 9]
   -/
-  #guard_msgs in
-  #eval largest_values TreeNode(1)
+  -- #guard_msgs in
+  -- #eval largest_values TreeNode(1)
 
 vc-postamble: |-
   -- Apps difficulty: interview

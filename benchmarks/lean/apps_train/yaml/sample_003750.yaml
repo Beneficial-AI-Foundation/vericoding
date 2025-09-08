@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The [half-life](https://en.wikipedia.org/wiki/Half-life) of a radioactive substance is the time it takes (on average) for one-half of its atoms to undergo radioactive decay.
   
   # Task Overview
@@ -45,6 +46,7 @@ vc-description: |-
     A floating-point number representing the half-life of the substance.
   
   ```
+  -/
 
 vc-preamble: |-
 

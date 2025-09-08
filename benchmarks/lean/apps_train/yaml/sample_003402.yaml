@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   
   John has an important number, and he doesn't want others to see it.
@@ -34,6 +35,7 @@ vc-description: |-
   For `s = "ONETWOTHREE"`, the output should be `123`.
   
   For `s = "TTONWOHREEE"`, the output should be `123` too.
+  -/
 
 vc-preamble: |-
 
@@ -59,35 +61,35 @@ vc-theorems: |-
     original_number scrambled = 
       String.join (List.map (fun n => String.mk [Char.ofNat (n + 48)]) nums) := sorry
   
-  /--
+  /-
   info: '1'
   -/
-  #guard_msgs in
-  #eval original_number "ONE"
+  -- #guard_msgs in
+  -- #eval original_number "ONE"
   
-  /--
+  /-
   info: '1'
   -/
-  #guard_msgs in
-  #eval original_number "OEN"
+  -- #guard_msgs in
+  -- #eval original_number "OEN"
   
-  /--
+  /-
   info: '12'
   -/
-  #guard_msgs in
-  #eval original_number "ONETWO"
+  -- #guard_msgs in
+  -- #eval original_number "ONETWO"
   
-  /--
+  /-
   info: '12'
   -/
-  #guard_msgs in
-  #eval original_number "OONETW"
+  -- #guard_msgs in
+  -- #eval original_number "OONETW"
   
-  /--
+  /-
   info: '123'
   -/
-  #guard_msgs in
-  #eval original_number "TTONWOHREEE"
+  -- #guard_msgs in
+  -- #eval original_number "TTONWOHREEE"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

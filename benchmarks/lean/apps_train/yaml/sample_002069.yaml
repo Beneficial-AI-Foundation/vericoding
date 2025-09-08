@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Consider a tree $T$ (that is, a connected graph without cycles) with $n$ vertices labelled $1$ through $n$. We start the following process with $T$: while $T$ has more than one vertex, do the following:
   
    choose a random edge of $T$ equiprobably;
@@ -51,6 +52,7 @@ vc-description: |-
   -----Note-----
   
   In the first sample, the resulting vertex has label 1 if and only if for all three edges the label 1 survives, hence the probability is $1/2^3 = 1/8$. All other labels have equal probability due to symmetry, hence each of them has probability $(1 - 1/8) / 3 = 7/24$.
+  -/
 
 vc-preamble: |-
   def abs (x : Float) : Float :=

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   So the Beautiful Regional Contest (BeRC) has come to an end! $n$ students took part in the contest. The final standings are already known: the participant in the $i$-th place solved $p_i$ problems. Since the participants are primarily sorted by the number of solved problems, then $p_1 \ge p_2 \ge \dots \ge p_n$.
   
   Help the jury distribute the gold, silver and bronze medals. Let their numbers be $g$, $s$ and $b$, respectively. Here is a list of requirements from the rules, which all must be satisfied:  for each of the three types of medals, at least one medal must be awarded (that is, $g>0$, $s>0$ and $b>0$);  the number of gold medals must be strictly less than the number of silver and the number of bronze (that is, $g<s$ and $g<b$, but there are no requirements between $s$ and $b$);  each gold medalist must solve strictly more problems than any awarded with a silver medal;  each silver medalist must solve strictly more problems than any awarded a bronze medal;  each bronze medalist must solve strictly more problems than any participant not awarded a medal;  the total number of medalists $g+s+b$ should not exceed half of all participants (for example, if $n=21$, then you can award a maximum of $10$ participants, and if $n=26$, then you can award a maximum of $13$ participants). 
@@ -45,6 +46,7 @@ vc-description: |-
   In the first test case, it is possible to reward $1$ gold, $2$ silver and $3$ bronze medals. In this case, the participant solved $5$ tasks will be rewarded with the gold medal, participants solved $4$ tasks will be rewarded with silver medals, participants solved $2$ or $3$ tasks will be rewarded with bronze medals. Participants solved exactly $1$ task won't be rewarded. It's easy to see, that in this case, all conditions are satisfied and it is possible to reward participants in this way. It is impossible to give more than $6$ medals because the number of medals should not exceed half of the number of participants. The answer $1$, $3$, $2$ is also correct in this test case.
   
   In the second and third test cases, it is impossible to reward medals, because at least one medal of each type should be given, but the number of medals should not exceed half of the number of participants.
+  -/
 
 vc-preamble: |-
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    The sequence of `Chando` is an infinite sequence of all Chando's numbers in ascending order.
   
@@ -26,6 +27,7 @@ vc-description: |-
    - `[output]` an integer
   
     nth Chando's number
+  -/
 
 vc-preamble: |-
 
@@ -44,23 +46,23 @@ vc-theorems: |-
     nth_chandos_number 9 = 630 :=
     sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval nth_chandos_number 1
+  -- #guard_msgs in
+  -- #eval nth_chandos_number 1
   
-  /--
+  /-
   info: 25
   -/
-  #guard_msgs in
-  #eval nth_chandos_number 2
+  -- #guard_msgs in
+  -- #eval nth_chandos_number 2
   
-  /--
+  /-
   info: 630
   -/
-  #guard_msgs in
-  #eval nth_chandos_number 9
+  -- #guard_msgs in
+  -- #eval nth_chandos_number 9
 
 vc-postamble: |-
   -- Apps difficulty: introductory

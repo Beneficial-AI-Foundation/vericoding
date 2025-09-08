@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The description is rather long but it tries to explain what a financing plan is. 
   
   The fixed monthly payment for a fixed rate mortgage is the amount paid by the borrower every month that ensures 
@@ -59,6 +60,7 @@ vc-description: |-
   
   ```
   # Ref
+  -/
 
 vc-preamble: |-
   def amort (rate : Float) (bal : Int) (term : Int) (num_payments : Int) : String := sorry
@@ -70,11 +72,11 @@ vc-preamble: |-
     interest : Int
     balance : Float
   
-  /-- Helper function to extract numeric values from amortization string output -/
+  /- Helper function to extract numeric values from amortization string output -/
   
   def extractValuesFromString (s : String) : AmortValues := sorry
   
-  /-- Helper function to check if string matches expected pattern -/
+  /- Helper function to check if string matches expected pattern -/
 
 vc-helpers: |-
   -- <vc-helpers>

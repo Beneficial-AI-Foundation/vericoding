@@ -1,5 +1,7 @@
 vc-description: |-
+  /-
   This kata is about multiplying a given number by eight if it is an even number and by nine otherwise.
+  -/
 
 vc-preamble: |-
 
@@ -19,23 +21,23 @@ vc-theorems: |-
     (h : n % 2 = 1) :
     simple_multiplication n = n * 9 := sorry
   
-  /--
+  /-
   info: 16
   -/
-  #guard_msgs in
-  #eval simple_multiplication 2
+  -- #guard_msgs in
+  -- #eval simple_multiplication 2
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval simple_multiplication 1
+  -- #guard_msgs in
+  -- #eval simple_multiplication 1
   
-  /--
+  /-
   info: 64
   -/
-  #guard_msgs in
-  #eval simple_multiplication 8
+  -- #guard_msgs in
+  -- #eval simple_multiplication 8
 
 vc-postamble: |-
   -- Apps difficulty: introductory

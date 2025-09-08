@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an integer N. Integers A and B are chosen randomly in the range [1..N]. Calculate the probability that the Greatest Common Divisor(GCD) of A and B equals to B.
   
   -----Input-----
@@ -24,6 +25,7 @@ vc-description: |-
   1<=T<=103
   
   1<=N<=109
+  -/
 
 vc-preamble: |-
 
@@ -51,23 +53,23 @@ vc-theorems: |-
       let denom := String.toNat! (nums.get! 1)
       num / denom ≥ 0 ∧ num / denom ≤ 1 := sorry
   
-  /--
+  /-
   info: '1/1'
   -/
-  #guard_msgs in
-  #eval calc_gcd_prob 1
+  -- #guard_msgs in
+  -- #eval calc_gcd_prob 1
   
-  /--
+  /-
   info: '3/4'
   -/
-  #guard_msgs in
-  #eval calc_gcd_prob 2
+  -- #guard_msgs in
+  -- #eval calc_gcd_prob 2
   
-  /--
+  /-
   info: '5/9'
   -/
-  #guard_msgs in
-  #eval calc_gcd_prob 3
+  -- #guard_msgs in
+  -- #eval calc_gcd_prob 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

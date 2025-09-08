@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Devu is a class teacher of a class of n students. One day, in the morning prayer of the school, all the students of his class were standing in a line. You are given information of their arrangement by a string s. The string s consists of only letters 'B' and 'G', where 'B' represents a boy and 'G' represents a girl.
   Devu wants inter-gender interaction among his class should to be maximum. So he does not like seeing two or more boys/girls standing nearby (i.e. continuous) in the line. e.g. he does not like the arrangements BBG and GBB, but he likes BG, GBG etc.
   Now by seeing the initial arrangement s of students, Devu may get furious and now he wants to change this arrangement into a likable arrangement. For achieving that, he can swap positions of any two students (not necessary continuous). Let the cost of swapping people from position i with position j (i ≠ j) be c(i, j). You are provided an integer variable type, then the cost of the the swap will be defined by c(i, j) = |j − i|type.
@@ -75,6 +76,7 @@ vc-description: |-
   Then type of the last 2 test cases is 2. So c(i, j) = (j − i)2
   Example case 7. Swap boy at position 1 with girl at position 2. After swap the arrangement will be BGBG which is a valid arrangement. So answer is (2 - 1)2 = 1.
   Example case 8. Arrangement is already valid. No swap is needed. So answer is 0.
+  -/
 
 vc-preamble: |-
   def calculate_min_cost (cost_type : Nat) (arrangement : Arrangement) : Int :=

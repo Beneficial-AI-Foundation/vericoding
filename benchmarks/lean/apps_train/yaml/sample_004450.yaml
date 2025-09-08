@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this kata you must take an input string, reverse the order of the words, and reverse the order of the letters within the words.
   
   But, as a bonus, every test input will end with a punctuation mark (! ? .) and the output should be returned with the mark at the end.
@@ -14,6 +15,7 @@ vc-description: |-
   ```
   
   Quick Note: A string will always be passed in (though it may be empty) so no need for error-checking other types.
+  -/
 
 vc-preamble: |-
 
@@ -34,7 +36,7 @@ vc-theorems: |-
   theorem double_reverse_equals_original (s : String) (h : s ≠ "") : 
     esrever (esrever s) = s := sorry
   
-  /-- For any character that appears in the string, it appears the same number of times
+  /- For any character that appears in the string, it appears the same number of times
       in the reversed string -/
   
   theorem reverse_maintains_character_counts (s : String) (h : s ≠ "") (c : Char) :

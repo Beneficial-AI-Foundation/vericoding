@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You're in ancient Greece and giving Philoctetes a hand in preparing a training exercise for Hercules! You've filled a pit with two different ferocious mythical creatures for Hercules to battle!
   
   The formidable **"Orthus"** is a 2 headed dog with 1 tail.  The mighty **"Hydra"** has 5 heads and 1 tail. 
@@ -17,6 +18,7 @@ vc-description: |-
   ```
   
   If there aren't any cases for the given amount of heads and tails - return "No solutions" or null (C#).
+  -/
 
 vc-preamble: |-
 
@@ -43,23 +45,23 @@ vc-theorems: |-
     beasts (6*n) n = none ∧
     beasts n n = none := sorry
   
-  /--
+  /-
   info: [24, 15]
   -/
-  #guard_msgs in
-  #eval beasts 123 39
+  -- #guard_msgs in
+  -- #eval beasts 123 39
   
-  /--
+  /-
   info: 'No solutions'
   -/
-  #guard_msgs in
-  #eval beasts -1 -1
+  -- #guard_msgs in
+  -- #eval beasts -1 -1
   
-  /--
+  /-
   info: [0, 0]
   -/
-  #guard_msgs in
-  #eval beasts 0 0
+  -- #guard_msgs in
+  -- #eval beasts 0 0
 
 vc-postamble: |-
   -- Apps difficulty: introductory

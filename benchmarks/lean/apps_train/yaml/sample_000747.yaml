@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef has an array of N natural numbers. Cheffina challenges the chef to choose the two numbers from the array and following the condition as the area of the rectangle formed from the two numbers is maximum. Cheffina also asks the chef to choose two numbers different from the previous two to form the rectangle with a minimum area.
   
   -----Input:-----
@@ -21,6 +22,7 @@ vc-description: |-
   
   -----Sample Output:-----
   20 2
+  -/
 
 vc-preamble: |-
   def find_rectangle_areas (n : Nat) (numbers : List Nat) : Nat × Nat := sorry
@@ -55,23 +57,23 @@ vc-theorems: |-
     numbers = original :=
   sorry
   
-  /--
+  /-
   info: (20, 2)
   -/
-  #guard_msgs in
-  #eval find_rectangle_areas 5 [4, 2, 1, 5, 3]
+  -- #guard_msgs in
+  -- #eval find_rectangle_areas 5 [4, 2, 1, 5, 3]
   
-  /--
+  /-
   info: (12, 2)
   -/
-  #guard_msgs in
-  #eval find_rectangle_areas 4 [1, 2, 3, 4]
+  -- #guard_msgs in
+  -- #eval find_rectangle_areas 4 [1, 2, 3, 4]
   
-  /--
+  /-
   info: (30, 2)
   -/
-  #guard_msgs in
-  #eval find_rectangle_areas 6 [5, 4, 3, 2, 1, 6]
+  -- #guard_msgs in
+  -- #eval find_rectangle_areas 6 [5, 4, 3, 2, 1, 6]
 
 vc-postamble: |-
   -- Apps difficulty: interview

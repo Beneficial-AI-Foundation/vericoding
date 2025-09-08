@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array $A$ of length $N$.
   We have to find the $maximum$ sum of elements of the subarray between $two$ nearest occurrences of $same$ elements (excluding both).
   If both the elements are $even$ then the total number of $even$ elements in that subarray should be $even$ then and then only we consider that subarray and if both the elements are $odd$ then the total number of $odd$ element in that subarray should be $odd$ then and then only we consider that subarray.
@@ -28,6 +29,7 @@ vc-description: |-
   
   -----EXPLANATION:-----
   The maximum sum is 7, between 1 at  1st position and 1 at 5th position i.e sum of 2,3,2
+  -/
 
 vc-preamble: |-
   def find_max_subarray_sum (arr : List Int) : Int := sorry
@@ -73,35 +75,35 @@ vc-theorems: |-
     find_max_subarray_sum [] = 0 ∧
     find_max_subarray_sum [0] = 0 := sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval find_max_subarray_sum [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+  -- #guard_msgs in
+  -- #eval find_max_subarray_sum [-2, 1, -3, 4, -1, 2, 1, -5, 4]
   
-  /--
+  /-
   info: 23
   -/
-  #guard_msgs in
-  #eval find_max_subarray_sum arr2
+  -- #guard_msgs in
+  -- #eval find_max_subarray_sum arr2
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval find_max_subarray_sum arr3
+  -- #guard_msgs in
+  -- #eval find_max_subarray_sum arr3
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval find_max_subarray_sum arr4
+  -- #guard_msgs in
+  -- #eval find_max_subarray_sum arr4
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval find_max_subarray_sum arr5
+  -- #guard_msgs in
+  -- #eval find_max_subarray_sum arr5
 
 vc-postamble: |-
   -- Apps difficulty: interview

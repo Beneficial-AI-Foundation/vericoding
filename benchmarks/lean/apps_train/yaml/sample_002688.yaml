@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a function that when given a number >= 0, returns an Array of ascending length subarrays.
   
   ```
@@ -9,6 +10,7 @@ vc-description: |-
   ```
   
   **Note:** the subarrays should be filled with `1`s
+  -/
 
 vc-preamble: |-
 
@@ -29,29 +31,29 @@ vc-theorems: |-
   theorem pyramid_all_ones {n : Nat} : 
     ∀ row ∈ pyramid n, ∀ x ∈ row, x = 1 := sorry
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval pyramid 0
+  -- #guard_msgs in
+  -- #eval pyramid 0
   
-  /--
+  /-
   info: [[1]]
   -/
-  #guard_msgs in
-  #eval pyramid 1
+  -- #guard_msgs in
+  -- #eval pyramid 1
   
-  /--
+  /-
   info: [[1], [1, 1]]
   -/
-  #guard_msgs in
-  #eval pyramid 2
+  -- #guard_msgs in
+  -- #eval pyramid 2
   
-  /--
+  /-
   info: [[1], [1, 1], [1, 1, 1]]
   -/
-  #guard_msgs in
-  #eval pyramid 3
+  -- #guard_msgs in
+  -- #eval pyramid 3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

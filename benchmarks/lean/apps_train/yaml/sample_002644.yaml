@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Consider the following expansion:
   ```Haskell
   solve("3(ab)") = "ababab" -- "ab" repeats 3 times
@@ -14,6 +15,7 @@ vc-description: |-
   Good luck!
   
   Please also try [Simple time difference](https://www.codewars.com/kata/5b76a34ff71e5de9db0000f2)
+  -/
 
 vc-preamble: |-
 
@@ -46,23 +48,23 @@ vc-theorems: |-
   theorem solve_with_leading_letters₂ :
     solve "a2(b)" = "abb" := sorry
   
-  /--
+  /-
   info: 'ababab'
   -/
-  #guard_msgs in
-  #eval solve "3(ab)"
+  -- #guard_msgs in
+  -- #eval solve "3(ab)"
   
-  /--
+  /-
   info: 'abbbabbb'
   -/
-  #guard_msgs in
-  #eval solve "2(a3(b))"
+  -- #guard_msgs in
+  -- #eval solve "2(a3(b))"
   
-  /--
+  /-
   info: 'kabaccbaccbacc'
   -/
-  #guard_msgs in
-  #eval solve "k(a3(b(a2(c))))"
+  -- #guard_msgs in
+  -- #eval solve "k(a3(b(a2(c))))"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

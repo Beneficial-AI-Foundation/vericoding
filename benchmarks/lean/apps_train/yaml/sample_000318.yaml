@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string, find the length of the longest substring without repeating characters.
   
   Examples:
@@ -8,6 +9,7 @@ vc-description: |-
   Given "bbbbb", the answer is "b", with the length of 1.
   
   Given "pwwkew", the answer is "wke", with the length of 3. Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
+  -/
 
 vc-preamble: |-
 
@@ -43,23 +45,23 @@ vc-theorems: |-
       max (lengthOfLongestSubstring s₁) (lengthOfLongestSubstring s₂) := by
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval lengthOfLongestSubstring "abcabcbb"
+  -- #guard_msgs in
+  -- #eval lengthOfLongestSubstring "abcabcbb"
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval lengthOfLongestSubstring "bbbbb"
+  -- #guard_msgs in
+  -- #eval lengthOfLongestSubstring "bbbbb"
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval lengthOfLongestSubstring "pwwkew"
+  -- #guard_msgs in
+  -- #eval lengthOfLongestSubstring "pwwkew"
 
 vc-postamble: |-
   -- Apps difficulty: interview

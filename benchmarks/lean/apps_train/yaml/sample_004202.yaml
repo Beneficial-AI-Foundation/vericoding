@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your task is to calculate logical value of boolean array. Test arrays are one-dimensional and their size is in the range 1-50.
   
   Links referring to logical operations: [AND](https://en.wikipedia.org/wiki/Logical_conjunction), [OR](https://en.wikipedia.org/wiki/Logical_disjunction) and [XOR](https://en.wikipedia.org/wiki/Exclusive_or).
@@ -37,6 +38,7 @@ vc-description: |-
   Output:
   
   calculated boolean
+  -/
 
 vc-preamble: |-
 
@@ -71,23 +73,23 @@ vc-theorems: |-
     let right := logical_calc (lst.drop mid) op
     logical_calc [left, right] op = logical_calc lst op := sorry
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval logical_calc [True, True, False] "AND"
+  -- #guard_msgs in
+  -- #eval logical_calc [True, True, False] "AND"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval logical_calc [True, True, False] "OR"
+  -- #guard_msgs in
+  -- #eval logical_calc [True, True, False] "OR"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval logical_calc [True, True, False] "XOR"
+  -- #guard_msgs in
+  -- #eval logical_calc [True, True, False] "XOR"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

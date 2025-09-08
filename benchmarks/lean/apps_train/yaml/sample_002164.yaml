@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We have a graph with N vertices and M edges, and there are two people on the graph: Takahashi and Aoki.
   The i-th edge connects Vertex U_i and Vertex V_i.
   The time it takes to traverse this edge is D_i minutes, regardless of direction and who traverses the edge (Takahashi or Aoki).
@@ -43,6 +44,7 @@ vc-description: |-
   There are two ways to choose shortest paths that satisfies the condition:
    - Takahashi chooses the path 1 \rightarrow 2 \rightarrow 3, and Aoki chooses the path 3 \rightarrow 4 \rightarrow 1.
    - Takahashi chooses the path 1 \rightarrow 4 \rightarrow 3, and Aoki chooses the path 3 \rightarrow 2 \rightarrow 1.
+  -/
 
 vc-preamble: |-
 
@@ -72,23 +74,23 @@ vc-theorems: |-
     count_no_meet_paths N M S T (edges.map (fun (e : Nat × Nat × Nat) => (e.2.1, e.1, e.2.2))) :=
   sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_no_meet_paths 
+  -- #guard_msgs in
+  -- #eval count_no_meet_paths 
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_no_meet_paths 
+  -- #guard_msgs in
+  -- #eval count_no_meet_paths 
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval count_no_meet_paths
+  -- #guard_msgs in
+  -- #eval count_no_meet_paths
 
 vc-postamble: |-
   -- Apps difficulty: competition

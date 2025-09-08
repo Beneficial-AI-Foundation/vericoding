@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Dee is lazy but she's kind and she likes to eat out at all the nice restaurants and gastropubs in town. To make paying quick and easy she uses a simple mental algorithm she's called The Fair %20 Rule. She's gotten so good she can do this in a few seconds and it always impresses her dates but she's perplexingly still single. Like you probably. 
   
   This is how she does it:
@@ -30,6 +31,7 @@ vc-description: |-
   *Note: each step should be done in the order listed.*
   
   Dee always politely smiles and says "Thank you" on her way out. Dee is nice. Be like Dee.
+  -/
 
 vc-preamble: |-
 
@@ -63,23 +65,23 @@ vc-theorems: |-
     let actual := calc_tip price 0
     actual = rounded_down ∨ actual = rounded_up := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval calc_tip 24 1
+  -- #guard_msgs in
+  -- #eval calc_tip 24 1
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval calc_tip 25 0
+  -- #guard_msgs in
+  -- #eval calc_tip 25 0
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval calc_tip 144 -1
+  -- #guard_msgs in
+  -- #eval calc_tip 144 -1
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In a bizarre game of chess ,knight was so drunk, that instead of his usual move he started walking straight. In every move Knight jumps on 2n steps forward (n is number of block that he had travelled so far from starting) but after that he has to take either 1 step forward or backward.
   Now the Knight needs to get to position X so King (i.e. You) needs to decide the order of his backward or forward step in such a way that he can reach its destination in minimum number of steps. Remember he always travels in a straight line and the length of the board is infinite.
   
@@ -26,6 +27,7 @@ vc-description: |-
   -----Explanation-----
   Case 1 : starting from  n = 1 , knight moves to n = 3 ('2') , 5 ('1') , 9 ('1') , 17 ('1') i.e. string printed is 2 1 1 1
   Case 2 : no solution is possible
+  -/
 
 vc-preamble: |-
 
@@ -64,23 +66,23 @@ vc-theorems: |-
           pos) 3
     final_pos = n := sorry
   
-  /--
+  /-
   info: '2111'
   -/
-  #guard_msgs in
-  #eval solve_knight_steps 17
+  -- #guard_msgs in
+  -- #eval solve_knight_steps 17
   
-  /--
+  /-
   info: '0'
   -/
-  #guard_msgs in
-  #eval solve_knight_steps 10
+  -- #guard_msgs in
+  -- #eval solve_knight_steps 10
   
-  /--
+  /-
   info: '3'
   -/
-  #guard_msgs in
-  #eval solve_knight_steps 3
+  -- #guard_msgs in
+  -- #eval solve_knight_steps 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

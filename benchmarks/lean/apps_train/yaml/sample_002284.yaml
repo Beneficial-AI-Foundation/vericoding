@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A number is ternary if it contains only digits $0$, $1$ and $2$. For example, the following numbers are ternary: $1022$, $11$, $21$, $2002$.
   
   You are given a long ternary number $x$. The first (leftmost) digit of $x$ is guaranteed to be $2$, the other digits of $x$ can be $0$, $1$ or $2$.
@@ -38,6 +39,7 @@ vc-description: |-
   1
   110111011
   110111010
+  -/
 
 vc-preamble: |-
 

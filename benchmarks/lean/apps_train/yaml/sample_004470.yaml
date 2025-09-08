@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   DropCaps means that the first letter of the starting word of the paragraph should be in caps and the remaining lowercase, just like you see in the newspaper. 
   
   But for a change, let's do that for each and every word of the given String. Your task is to capitalize every word that has length greater than 2, leaving smaller words as they are.
@@ -13,6 +14,7 @@ vc-description: |-
   ```
   
   **Note:** you will be provided atleast one word and should take string as input and return string as output.
+  -/
 
 vc-preamble: |-
 
@@ -42,23 +44,23 @@ vc-theorems: |-
     (h₂ : ∀ c ∈ s.data, 65 ≤ c.toNat ∧ c.toNat ≤ 90) :
     drop_cap s = s.toLower.capitalize := by sorry
   
-  /--
+  /-
   info: 'Apple Banana'
   -/
-  #guard_msgs in
-  #eval drop_cap "apple banana"
+  -- #guard_msgs in
+  -- #eval drop_cap "apple banana"
   
-  /--
+  /-
   info: 'One   Space'
   -/
-  #guard_msgs in
-  #eval drop_cap "one   space"
+  -- #guard_msgs in
+  -- #eval drop_cap "one   space"
   
-  /--
+  /-
   info: '   Space Walk   '
   -/
-  #guard_msgs in
-  #eval drop_cap "   space WALK   "
+  -- #guard_msgs in
+  -- #eval drop_cap "   space WALK   "
 
 vc-postamble: |-
   -- Apps difficulty: introductory

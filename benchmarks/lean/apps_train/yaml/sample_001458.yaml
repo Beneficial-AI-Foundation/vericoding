@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Ishank lives in a country in which there are N$N$ cities and N−1$N-1$ roads. All the cities are connected via these roads. Each city has been assigned a unique number from 1 to N$N$. The country can be assumed as a tree, with nodes representing the cities and edges representing the roads. The tree is rooted at 1.Every Time, when a traveler through a road, he will either gain some amount or has to pay some amount.
   Abhineet is a traveler and wishes to travel to various cities in this country. There's a law in the country for travelers, according to which, when a traveler moves from the city A$A$ to city B$B$, where city A$A$ and B$B$ are connected by a road then the traveler is either paid or has to pay the amount of money equal to profit or loss respectively. When he moves from A$A$ to B$B$, he hires a special kind of vehicle which can reverse its direction at most once. Reversing the direction means earlier the vehicle is going towards the root, then away from the root or vice versa. Abhineet is analyzing his trip and therefore gave Q$Q$ queries to his friend, Ishank, a great coder. In every query, he gives two cities A$A$ and B$B$. Ishank has to calculate the maximum amount he can gain (if he cannot gain, then the minimum amount he will lose) if he goes from the city A$A$ to city B$B$.
   
@@ -41,6 +42,7 @@ vc-description: |-
   
   -----EXPLANATION:-----
   In the first query, he goes from 1 to 2, 2 to 4, takes a turn and go to 2. Therefore profit=8+1+1=10.
+  -/
 
 vc-preamble: |-
   def solve_max_profit_path (n : Nat) (edges : List (Nat × Nat × Int)) (queries : List (Nat × Nat)) : List Int := sorry

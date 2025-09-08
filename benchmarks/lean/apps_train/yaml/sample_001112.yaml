@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In the 2-D world of Flatland, the Circles were having their sports day and wanted to end it with a nice formation. So, they called upon Mr. Sphere from Spaceland for help. Mr Sphere decides to arrange the Circles in square formations. He starts with $N$ Circles and forms the largest possible square using these Circles. He then takes the remaining Circles and repeats the procedure. A square of side $S$ requires $S^2$ Circles to create.
   Find the number of squares he will be able to form at the end of the process.
   
@@ -27,6 +28,7 @@ vc-description: |-
   
   -----EXPLANATION:-----
   Test case 1 : Mr Sphere forms a square of side 9 using 81 Circles and then forms a square of side 2 using the remaining 4.
+  -/
 
 vc-preamble: |-
 
@@ -37,7 +39,7 @@ vc-helpers: |-
 vc-definitions: |-
   def count_squares (n : Nat) : Nat := sorry
   
-  /-- Every positive number can be decomposed into a sum of squares,
+  /- Every positive number can be decomposed into a sum of squares,
       and the count of squares is positive and not larger than the input number -/
 
 vc-theorems: |-
@@ -45,19 +47,19 @@ vc-theorems: |-
     let result := count_squares n
     0 < result ∧ result ≤ n := sorry
   
-  /-- The decomposition count equals 1 for perfect squares -/
+  /- The decomposition count equals 1 for perfect squares -/
   
   theorem count_squares_perfect (n : Nat) (h : n > 0) :
     count_squares (n * n) = 1 := sorry
   
-  /-- Basic results for small numbers -/
+  /- Basic results for small numbers -/
   
   theorem count_squares_small_numbers :
     count_squares 1 = 1 ∧ 
     count_squares 2 = 2 ∧ 
     count_squares 3 = 3 := sorry
   
-  /-- The sum of squares used in decomposition equals the input number -/
+  /- The sum of squares used in decomposition equals the input number -/
   
   theorem count_squares_sum_property (n : Nat) (h : n > 0) :
     ∃ (squares : List Nat),
@@ -65,23 +67,23 @@ vc-theorems: |-
       (∀ x ∈ squares, ∃ k, x = k * k) ∧
       (squares.foldl (· + ·) 0 = n) := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_squares 85
+  -- #guard_msgs in
+  -- #eval count_squares 85
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval count_squares 114
+  -- #guard_msgs in
+  -- #eval count_squares 114
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_squares 10
+  -- #guard_msgs in
+  -- #eval count_squares 10
 
 vc-postamble: |-
   -- Apps difficulty: interview

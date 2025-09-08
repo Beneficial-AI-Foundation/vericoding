@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   #Find the missing letter
   
   Write a method that takes an array of consecutive (increasing) letters as input and that returns the missing letter in the array.
@@ -17,6 +18,7 @@ vc-description: |-
   Have fun coding it and please don't forget to vote and rank this kata! :-) 
   
   I have also created other katas. Take a look if you enjoyed this kata!
+  -/
 
 vc-preamble: |-
 
@@ -44,23 +46,23 @@ vc-theorems: |-
             Char.toNat (chars.get! i) + 1 = Char.toNat (chars.get! (i + 1))) :
       find_missing_letter chars = none := sorry
   
-  /--
+  /-
   info: 'e'
   -/
-  #guard_msgs in
-  #eval find_missing_letter ["a", "b", "c", "d", "f"]
+  -- #guard_msgs in
+  -- #eval find_missing_letter ["a", "b", "c", "d", "f"]
   
-  /--
+  /-
   info: 'P'
   -/
-  #guard_msgs in
-  #eval find_missing_letter ["O", "Q", "R", "S"]
+  -- #guard_msgs in
+  -- #eval find_missing_letter ["O", "Q", "R", "S"]
   
-  /--
+  /-
   info: 'c'
   -/
-  #guard_msgs in
-  #eval find_missing_letter ["b", "d"]
+  -- #guard_msgs in
+  -- #eval find_missing_letter ["b", "d"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

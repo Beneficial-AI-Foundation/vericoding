@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   An integral:
   
   can be approximated by the so-called Simpson’s rule:
@@ -16,6 +17,7 @@ vc-description: |-
   
   You can see: 
   about rectangle method and trapezoidal rule.
+  -/
 
 vc-preamble: |-
 

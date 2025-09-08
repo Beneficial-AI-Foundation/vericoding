@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array A of non-negative integers, the array is squareful if for every pair of adjacent elements, their sum is a perfect square.
   Return the number of permutations of A that are squareful.  Two permutations A1 and A2 differ if and only if there is some index i such that A1[i] != A2[i].
   
@@ -16,6 +17,7 @@ vc-description: |-
   
   1 <= A.length <= 12
   0 <= A[i] <= 1e9
+  -/
 
 vc-preamble: |-
   def sqrt (n: Nat) : Nat :=
@@ -72,23 +74,23 @@ vc-theorems: |-
     numSquarefulPerms A = numSquarefulPerms (List.reverse A) :=
   sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval numSquarefulPerms [1, 17, 8]
+  -- #guard_msgs in
+  -- #eval numSquarefulPerms [1, 17, 8]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval numSquarefulPerms [2, 2, 2]
+  -- #guard_msgs in
+  -- #eval numSquarefulPerms [2, 2, 2]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval numSquarefulPerms [1, 1]
+  -- #guard_msgs in
+  -- #eval numSquarefulPerms [1, 1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef is playing a game which contains a binary string. 
   He can perform one operation only:
   - Toggle the i_th bit of the string (0 to 1 or 1 to 0)
@@ -24,6 +25,7 @@ vc-description: |-
   
   -----Sample Output:-----
   1
+  -/
 
 vc-preamble: |-
   def min_operations_to_alternating (n : Nat) (s : String) : Nat :=
@@ -56,23 +58,23 @@ vc-theorems: |-
     0 ≤ ops ∧ ops ≤ n :=
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval min_operations_to_alternating 4 "1011"
+  -- #guard_msgs in
+  -- #eval min_operations_to_alternating 4 "1011"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_operations_to_alternating 4 "1111"
+  -- #guard_msgs in
+  -- #eval min_operations_to_alternating 4 "1111"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_operations_to_alternating 6 "101010"
+  -- #guard_msgs in
+  -- #eval min_operations_to_alternating 6 "101010"
 
 vc-postamble: |-
   -- Apps difficulty: interview

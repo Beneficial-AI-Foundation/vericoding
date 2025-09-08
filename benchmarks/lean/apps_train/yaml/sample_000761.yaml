@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   "Ring Ring!!"  
   Sherlock's phone suddenly started ringing. And it was none other than Jim Moriarty..
   "Long time no see ! You miss me right ? Anyway we'll talk about it later . Let me first tell you something. Dr.Watson is with me . And you've got only one chance to save him . Here's your challenge:.
@@ -39,6 +40,7 @@ vc-description: |-
   Output:
   EVEN
   ODD
+  -/
 
 vc-preamble: |-
 
@@ -68,23 +70,23 @@ vc-theorems: |-
     check_remainder_parity N M = check_remainder_parity N M :=
   sorry
   
-  /--
+  /-
   info: 'EVEN'
   -/
-  #guard_msgs in
-  #eval check_remainder_parity 4 4
+  -- #guard_msgs in
+  -- #eval check_remainder_parity 4 4
   
-  /--
+  /-
   info: 'ODD'
   -/
-  #guard_msgs in
-  #eval check_remainder_parity 6 5
+  -- #guard_msgs in
+  -- #eval check_remainder_parity 6 5
   
-  /--
+  /-
   info: 'ODD'
   -/
-  #guard_msgs in
-  #eval check_remainder_parity 10 3
+  -- #guard_msgs in
+  -- #eval check_remainder_parity 10 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

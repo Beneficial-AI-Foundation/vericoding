@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array nums of integers, we need to find the maximum possible sum of elements of the array such that it is divisible by three.
   
   Example 1:
@@ -19,6 +20,7 @@ vc-description: |-
   
   1 <= nums.length <= 4 * 10^4
   1 <= nums[i] <= 10^4
+  -/
 
 vc-preamble: |-
   def maxSumDivThree (nums: List Nat) : Nat :=
@@ -61,23 +63,23 @@ vc-theorems: |-
     maxSumDivThree nums ≤ maxSumDivThree (nums ++ [3]) :=
     sorry
   
-  /--
+  /-
   info: 18
   -/
-  #guard_msgs in
-  #eval maxSumDivThree [3, 6, 5, 1, 8]
+  -- #guard_msgs in
+  -- #eval maxSumDivThree [3, 6, 5, 1, 8]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval maxSumDivThree [4]
+  -- #guard_msgs in
+  -- #eval maxSumDivThree [4]
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval maxSumDivThree [1, 2, 3, 4, 4]
+  -- #guard_msgs in
+  -- #eval maxSumDivThree [1, 2, 3, 4, 4]
 
 vc-postamble: |-
   -- Apps difficulty: interview

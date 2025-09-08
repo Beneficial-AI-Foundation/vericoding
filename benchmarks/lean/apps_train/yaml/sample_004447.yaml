@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Mr Leicester's cheese factory is the pride of the East Midlands, but he's feeling a little blue. It's the time of the year when **the taxman is coming round to take a slice of his cheddar** - and the final thing he has to work out is how much money he's spending on his staff. Poor Mr Leicester can barely sleep he's so stressed. Can you help? 
   
   - Mr Leicester **employs 4 staff**, who together make **10 wheels of cheese every 6 minutes**.
@@ -10,6 +11,7 @@ vc-description: |-
   When the workforce don't work a nice integer number of minutes - much to the chagrin of the company accountant - Mr Leicester very generously **rounds up to the nearest hour** at the end of the week (*not the end of each day*). Which means if the workers make 574 wheels on each day of the week, they're each paid 29 hours for the week (28.699 hours rounded up) and not 30 (6 hours a day rounded up * 5).
   
   The return value should be a string (with the £ included) of the **total £ of staff wages for that week.**
+  -/
 
 vc-preamble: |-
 
@@ -36,23 +38,23 @@ vc-theorems: |-
   theorem pay_cheese_zero (wheels : List Nat) (h : wheels.length = 5) :
     wheels.foldl (· + ·) 0 = 0 → pay_cheese wheels = "£0" := sorry
   
-  /--
+  /-
   info: '£1260'
   -/
-  #guard_msgs in
-  #eval pay_cheese [750, 750, 750, 750, 600]
+  -- #guard_msgs in
+  -- #eval pay_cheese [750, 750, 750, 750, 600]
   
-  /--
+  /-
   info: '£1015'
   -/
-  #guard_msgs in
-  #eval pay_cheese [574, 574, 574, 574, 574]
+  -- #guard_msgs in
+  -- #eval pay_cheese [574, 574, 574, 574, 574]
   
-  /--
+  /-
   info: '£0'
   -/
-  #guard_msgs in
-  #eval pay_cheese [0, 0, 0, 0, 0]
+  -- #guard_msgs in
+  -- #eval pay_cheese [0, 0, 0, 0, 0]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

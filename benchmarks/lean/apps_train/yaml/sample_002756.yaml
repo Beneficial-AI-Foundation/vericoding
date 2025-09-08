@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A carpet shop sells carpets in different varieties. Each carpet can come in a different roll width and can have a different price per square meter. 
   
   Write a function `cost_of_carpet` which calculates the cost (rounded to 2 decimal places) of carpeting a room, following these constraints:
@@ -16,6 +17,7 @@ vc-description: |-
   OUTPUT:
   
   `"error"` or the minimal cost of the room carpeting, rounded to two decimal places.
+  -/
 
 vc-preamble: |-
 
@@ -37,23 +39,23 @@ vc-definitions: |-
       cost_of_carpet width length roll_width roll_cost := sorry
 
 vc-theorems: |-
-  /--
+  /-
   info: 200.0
   -/
-  #guard_msgs in
-  #eval cost_of_carpet 3 5 4 10
+  -- #guard_msgs in
+  -- #eval cost_of_carpet 3 5 4 10
   
-  /--
+  /-
   info: 'error'
   -/
-  #guard_msgs in
-  #eval cost_of_carpet 0 0 4 10
+  -- #guard_msgs in
+  -- #eval cost_of_carpet 0 0 4 10
   
-  /--
+  /-
   info: 'error'
   -/
-  #guard_msgs in
-  #eval cost_of_carpet 5 6 4 10
+  -- #guard_msgs in
+  -- #eval cost_of_carpet 5 6 4 10
 
 vc-postamble: |-
   -- Apps difficulty: introductory

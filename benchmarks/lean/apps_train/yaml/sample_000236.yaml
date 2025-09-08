@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string, sort it in decreasing order based on the frequency of characters.
   
   Example 1:
@@ -36,6 +37,7 @@ vc-description: |-
   Explanation:
   "bbaA" is also a valid answer, but "Aabb" is incorrect.
   Note that 'A' and 'a' are treated as two different characters.
+  -/
 
 vc-preamble: |-
   def frequency_sort (s : String) : String :=

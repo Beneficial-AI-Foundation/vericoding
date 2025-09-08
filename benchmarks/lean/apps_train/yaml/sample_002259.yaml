@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You have $n$ gifts and you want to give all of them to children. Of course, you don't want to offend anyone, so all gifts should be equal between each other. The $i$-th gift consists of $a_i$ candies and $b_i$ oranges.
   
   During one move, you can choose some gift $1 \le i \le n$ and do one of the following operations:
@@ -54,6 +55,7 @@ vc-description: |-
   In the first test case of the example, we can perform the following sequence of moves:
   
     choose the first gift and eat one orange from it, so $a = [3, 5, 6]$ and $b = [2, 2, 3]$;  choose the second gift and eat one candy from it, so $a = [3, 4, 6]$ and $b = [2, 2, 3]$;  choose the second gift and eat one candy from it, so $a = [3, 3, 6]$ and $b = [2, 2, 3]$;  choose the third gift and eat one candy and one orange from it, so $a = [3, 3, 5]$ and $b = [2, 2, 2]$;  choose the third gift and eat one candy from it, so $a = [3, 3, 4]$ and $b = [2, 2, 2]$;  choose the third gift and eat one candy from it, so $a = [3, 3, 3]$ and $b = [2, 2, 2]$.
+  -/
 
 vc-preamble: |-
   def min_moves_to_equalize (n : Nat) (candies : List Nat) (oranges : List Nat) : Nat :=
@@ -99,23 +101,23 @@ vc-theorems: |-
     min_moves_to_equalize n candies oranges = min_moves_to_equalize n oranges candies :=
   sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval min_moves_to_equalize 3 [3, 5, 6] [3, 2, 3]
+  -- #guard_msgs in
+  -- #eval min_moves_to_equalize 3 [3, 5, 6] [3, 2, 3]
   
-  /--
+  /-
   info: 16
   -/
-  #guard_msgs in
-  #eval min_moves_to_equalize 5 [1, 2, 3, 4, 5] [5, 4, 3, 2, 1]
+  -- #guard_msgs in
+  -- #eval min_moves_to_equalize 5 [1, 2, 3, 4, 5] [5, 4, 3, 2, 1]
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval min_moves_to_equalize 3 [10, 12, 8] [7, 5, 4]
+  -- #guard_msgs in
+  -- #eval min_moves_to_equalize 3 [10, 12, 8] [7, 5, 4]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

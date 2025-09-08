@@ -1,7 +1,9 @@
 vc-description: |-
+  /-
   Complete the solution so that it returns the number of times the search_text is found within the full_text. 
   
   Usage example:
+  -/
 
 vc-preamble: |-
 
@@ -31,23 +33,23 @@ vc-theorems: |-
     s2 ≠ "" → solution (s1 ++ s2) s2 ≥ solution s1 s2 :=
   sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solution "abcdeb" "b"
+  -- #guard_msgs in
+  -- #eval solution "abcdeb" "b"
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval solution "ccddeeccddeecc" "cc"
+  -- #guard_msgs in
+  -- #eval solution "ccddeeccddeecc" "cc"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solution "abab" "a"
+  -- #guard_msgs in
+  -- #eval solution "abab" "a"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

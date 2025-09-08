@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   
   There are `n` bears in the orchard and they picked a lot of apples. 
@@ -60,6 +61,7 @@ vc-description: |-
   5th bear took 1 pile of apples, 1020 apples left.
   1276 - 1 - 255 = 1020
   ```
+  -/
 
 vc-preamble: |-
 
@@ -84,23 +86,23 @@ vc-theorems: |-
     how_many_apples 2 = 7 :=
     sorry
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval how_many_apples 2
+  -- #guard_msgs in
+  -- #eval how_many_apples 2
   
-  /--
+  /-
   info: 3121
   -/
-  #guard_msgs in
-  #eval how_many_apples 5
+  -- #guard_msgs in
+  -- #eval how_many_apples 5
   
-  /--
+  /-
   info: 25
   -/
-  #guard_msgs in
-  #eval how_many_apples 3
+  -- #guard_msgs in
+  -- #eval how_many_apples 3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

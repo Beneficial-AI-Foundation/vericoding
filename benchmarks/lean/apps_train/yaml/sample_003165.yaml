@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   >When no more interesting kata can be resolved, I just choose to create the new kata, to solve their own, to enjoy the process  --myjinxin2015 said
   
   # Description:
@@ -31,6 +32,7 @@ vc-description: |-
   makeTriangle(1,12) should return ""
   
   ```
+  -/
 
 vc-preamble: |-
   def make_triangle (m n : Nat) : String :=

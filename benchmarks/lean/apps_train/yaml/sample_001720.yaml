@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A "graph" consists of "nodes", also known as "vertices". Nodes may or may not be connected with one another. 
   In our definition below the node "A0" is connected with the node "A3", but "A0" is not connected with "A1".
   
@@ -96,6 +97,7 @@ vc-description: |-
   Note that ['A0-A2-A4', 'A0-A3-A2-A4'] is sorted (hint: sorted(sorted(l, key=str), key=len))
   
   Translators and critics are welcome.
+  -/
 
 vc-preamble: |-
   def Graph.adjmat_2_graph {n : Nat} (g : Graph n) (mat : List (List Nat)) : List (String × List (String × Nat)) := sorry 

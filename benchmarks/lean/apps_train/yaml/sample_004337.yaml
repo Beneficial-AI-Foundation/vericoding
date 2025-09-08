@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Take debugging to a whole new level:
   
   Given a string, remove every *single* bug.
@@ -12,6 +13,7 @@ vc-description: |-
   Note that all characters will be lowercase.
   
   Happy squishing!
+  -/
 
 vc-preamble: |-
   def debug (s : String) : String := sorry
@@ -41,23 +43,23 @@ vc-theorems: |-
     debug (debug s) = debug s :=
   sorry
   
-  /--
+  /-
   info: 'ooobuoobugsoo'
   -/
-  #guard_msgs in
-  #eval debug "obugobugobuoobugsoo"
+  -- #guard_msgs in
+  -- #eval debug "obugobugobuoobugsoo"
   
-  /--
+  /-
   info: 'bugs gy'
   -/
-  #guard_msgs in
-  #eval debug "bugs buggy"
+  -- #guard_msgs in
+  -- #eval debug "bugs buggy"
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval debug "bugbugbugbug"
+  -- #guard_msgs in
+  -- #eval debug "bugbugbugbug"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

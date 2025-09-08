@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In English, we have a concept called root, which can be followed by some other words to form another longer word - let's call this word successor. For example, the root an, followed by other, which can form another word another.
   
   Now, given a dictionary consisting of many roots and a sentence. You need to replace all the successor in the sentence with the root forming it. If a successor has many roots can form it, replace it with the root with the shortest length.
@@ -18,6 +19,7 @@ vc-description: |-
    1 
    1 
    1
+  -/
 
 vc-preamble: |-
   def replace_words (dict : List String) (sentence : String) : String := sorry
@@ -63,17 +65,17 @@ vc-theorems: |-
     let twice := replace_words dict once
     once = twice := sorry
   
-  /--
+  /-
   info: 'the cat was rat by the bat'
   -/
-  #guard_msgs in
-  #eval replace_words ["cat", "bat", "rat"] "the cattle was rattled by the battery"
+  -- #guard_msgs in
+  -- #eval replace_words ["cat", "bat", "rat"] "the cattle was rattled by the battery"
   
-  /--
+  /-
   info: 'a a a'
   -/
-  #guard_msgs in
-  #eval replace_words ["a", "aa", "aaa"] "aa aaa aaaa"
+  -- #guard_msgs in
+  -- #eval replace_words ["a", "aa", "aaa"] "aa aaa aaaa"
 
 vc-postamble: |-
   -- Apps difficulty: interview

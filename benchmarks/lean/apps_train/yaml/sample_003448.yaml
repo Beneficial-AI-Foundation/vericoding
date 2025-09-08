@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Every  positive integer number, that is not prime, may be decomposed in prime factors. For example the prime factors of 20, are:
   ```
   2, 2, and 5, because: 20 = 2 . 2 . 5
@@ -25,6 +26,7 @@ vc-description: |-
   (Advice:Try to discard primes in a fast way to have a more agile code)
   
   Enjoy it!
+  -/
 
 vc-preamble: |-
 
@@ -52,23 +54,23 @@ vc-theorems: |-
       List.length (primef n) > 1 ∧ 
       List.head! (primef n) + List.getLast! (primef n) = val := sorry
   
-  /--
+  /-
   info: [21, 25, 63]
   -/
-  #guard_msgs in
-  #eval sflpf_data 10 100
+  -- #guard_msgs in
+  -- #eval sflpf_data 10 100
   
-  /--
+  /-
   info: [26, 52, 78, 104, 130]
   -/
-  #guard_msgs in
-  #eval sflpf_data 15 150
+  -- #guard_msgs in
+  -- #eval sflpf_data 15 150
   
-  /--
+  /-
   info: [998]
   -/
-  #guard_msgs in
-  #eval sflpf_data 501 1000
+  -- #guard_msgs in
+  -- #eval sflpf_data 501 1000
 
 vc-postamble: |-
   -- Apps difficulty: introductory

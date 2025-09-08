@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Allen and Bessie are playing a simple number game. They both know a function $f: \{0, 1\}^n \to \mathbb{R}$, i. e. the function takes $n$ binary arguments and returns a real value. At the start of the game, the variables $x_1, x_2, \dots, x_n$ are all set to $-1$. Each round, with equal probability, one of Allen or Bessie gets to make a move. A move consists of picking an $i$ such that $x_i = -1$ and either setting $x_i \to 0$ or $x_i \to 1$.
   
   After $n$ rounds all variables are set, and the game value resolves to $f(x_1, x_2, \dots, x_n)$. Allen wants to maximize the game value, and Bessie wants to minimize it.
@@ -50,6 +51,7 @@ vc-description: |-
   Consider the second test case. If Allen goes first, he will set $x_1 \to 1$, so the final value will be $3$. If Bessie goes first, then she will set $x_1 \to 0$ so the final value will be $2$. Thus the answer is $2.5$.
   
   In the third test case, the game value will always be $1$ regardless of Allen and Bessie's play.
+  -/
 
 vc-preamble: |-
   def solve_game (n : Nat) (r : Nat) (initial : List Int) (changes : List (Nat × Int)) : List Float :=

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Let $a_1, \ldots, a_n$ be an array of $n$ positive integers. In one operation, you can choose an index $i$ such that $a_i = i$, and remove $a_i$ from the array (after the removal, the remaining parts are concatenated).
   
   The weight of $a$ is defined as the maximum number of elements you can remove.
@@ -53,6 +54,7 @@ vc-description: |-
   Here is a strategy that removes $5$ elements (the element removed is colored in red):  $[\times, \times, \times, 9, \color{red}{5}, 4, 6, 5, 7, 8, 3, 11, \times]$  $[\times, \times, \times, 9, 4, 6, 5, 7, 8, 3, \color{red}{11}, \times]$  $[\times, \times, \times, 9, 4, \color{red}{6}, 5, 7, 8, 3, \times]$  $[\times, \times, \times, 9, 4, 5, 7, \color{red}{8}, 3, \times]$  $[\times, \times, \times, 9, 4, 5, \color{red}{7}, 3, \times]$  $[\times, \times, \times, 9, 4, 5, 3, \times]$ (final state) 
   
   It is impossible to remove more than $5$ elements, hence the weight is $5$.
+  -/
 
 vc-preamble: |-
   def bitadd (idx : Nat) (val : Int) (bit : Array Int) : Array Int :=

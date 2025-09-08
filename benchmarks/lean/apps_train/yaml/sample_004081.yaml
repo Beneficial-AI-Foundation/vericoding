@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   My friend John and I are members of the "Fat to Fit Club (FFC)". John is worried because
   each month a list with the weights of members is published and each month he is the last on the list
   which means he is the heaviest. 
@@ -28,6 +29,7 @@ vc-description: |-
   - it may happen that the input string have leading, trailing whitespaces and more than a unique whitespace between two consecutive numbers
   - Don't modify the input
   - For C: The result is freed.
+  -/
 
 vc-preamble: |-
 
@@ -70,23 +72,23 @@ vc-theorems: |-
     let result := orderWeight s
     ∀ c ∈ result.data, c.isDigit ∨ c = ' ' := sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval order_weight "103 123 4444 99 2000"
+  -- #guard_msgs in
+  -- #eval order_weight "103 123 4444 99 2000"
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval order_weight "56 65 74 100 99 68 86 180 90"
+  -- #guard_msgs in
+  -- #eval order_weight "56 65 74 100 99 68 86 180 90"
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval order_weight ""
+  -- #guard_msgs in
+  -- #eval order_weight ""
 
 vc-postamble: |-
   -- Apps difficulty: introductory

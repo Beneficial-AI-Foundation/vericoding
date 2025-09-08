@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   To celebrate today's launch of my Hero's new book: Alan Partridge: Nomad, We have a new series of kata arranged around the great man himself.
   
   Given an array of terms, if any of those terms relate to Alan Partridge, return Mine's a Pint!
@@ -21,6 +22,7 @@ vc-description: |-
   Other katas in this series:
   Alan Partridge II - Apple Turnover
   Alan Partridge III - London
+  -/
 
 vc-preamble: |-
   def ALAN_TERMS : List String := ["Partridge", "PearTree", "Chat", "Dan", "Toblerone", "Lynn", "AlphaPapa", "Nomad"]
@@ -59,23 +61,23 @@ vc-theorems: |-
     countChar (part (alan_arr ++ other_arr)) '!' = alan_arr.length :=
   sorry
   
-  /--
+  /-
   info: "Mine's a Pint!"
   -/
-  #guard_msgs in
-  #eval part ["Grouse", "Partridge", "Pheasant"]
+  -- #guard_msgs in
+  -- #eval part ["Grouse", "Partridge", "Pheasant"]
   
-  /--
+  /-
   info: "Lynn, I've pierced my foot on a spike!!"
   -/
-  #guard_msgs in
-  #eval part ["Pheasant", "Goose", "Starling", "Robin"]
+  -- #guard_msgs in
+  -- #eval part ["Pheasant", "Goose", "Starling", "Robin"]
   
-  /--
+  /-
   info: "Mine's a Pint!!!!!"
   -/
-  #guard_msgs in
-  #eval part ["Partridge", "PearTree", "Chat", "Dan", "Toblerone"]
+  -- #guard_msgs in
+  -- #eval part ["Partridge", "PearTree", "Chat", "Dan", "Toblerone"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In Programmers Army Land, people have started preparation as sports day is scheduled next week.
   You are given a task to form 1 team of $k$ consecutive players, from a list of sports player whose powers are given to you.
   You want your team to win this championship, so you have to chose your $k$ team players optimally i.e. there must not be any other $k$ consecutive team players who have their total power greater than your team members total power.
@@ -24,6 +25,7 @@ vc-description: |-
   
   -----Sample Output:-----
   12
+  -/
 
 vc-preamble: |-
   def find_max_consecutive_power (arr : List Int) (k : Nat) : Int := sorry 
@@ -57,23 +59,23 @@ vc-theorems: |-
     (h_nonneg : ∀ x ∈ arr, 0 ≤ x) :
     0 ≤ find_max_consecutive_power arr k := sorry
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval find_max_consecutive_power [1, 2, 3, 4, 5] 3
+  -- #guard_msgs in
+  -- #eval find_max_consecutive_power [1, 2, 3, 4, 5] 3
   
-  /--
+  /-
   info: -3
   -/
-  #guard_msgs in
-  #eval find_max_consecutive_power [-1, -2, -3, -4, -5] 2
+  -- #guard_msgs in
+  -- #eval find_max_consecutive_power [-1, -2, -3, -4, -5] 2
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval find_max_consecutive_power [1, -2, 3, -4, 5] 3
+  -- #guard_msgs in
+  -- #eval find_max_consecutive_power [1, -2, 3, -4, 5] 3
 
 vc-postamble: |-
   -- Apps difficulty: interview

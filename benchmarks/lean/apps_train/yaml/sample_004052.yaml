@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ###Task:
   
   You have to write a function `pattern` which creates the following pattern (see examples) up to the desired number of rows.
@@ -26,6 +27,7 @@ vc-description: |-
   ```Note: There are no spaces in the pattern```
   
   ```Hint: Use \n in string to jump to next line```
+  -/
 
 vc-preamble: |-
 
@@ -51,29 +53,29 @@ vc-theorems: |-
     pattern 4 = "1\n333" ∧
     pattern 5 = "1\n333\n55555" := sorry
   
-  /--
+  /-
   info: '1\n333'
   -/
-  #guard_msgs in
-  #eval pattern 4
+  -- #guard_msgs in
+  -- #eval pattern 4
   
-  /--
+  /-
   info: '1\n333\n55555'
   -/
-  #guard_msgs in
-  #eval pattern 5
+  -- #guard_msgs in
+  -- #eval pattern 5
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval pattern 0
+  -- #guard_msgs in
+  -- #eval pattern 0
   
-  /--
+  /-
   info: ''
   -/
-  #guard_msgs in
-  #eval pattern -5
+  -- #guard_msgs in
+  -- #eval pattern -5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

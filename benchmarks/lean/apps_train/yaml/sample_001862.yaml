@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Solve a given equation and return the value of x in the form of string "x=#value". The equation contains only '+', '-' operation, the variable x and its coefficient.
   
   If there is no solution for the equation, return "No solution".
@@ -31,6 +32,7 @@ vc-description: |-
   
   Input: "x=x+2"
   Output: "No solution"
+  -/
 
 vc-preamble: |-
 
@@ -63,23 +65,23 @@ vc-theorems: |-
      -- The solution x satisfies the original equation
      sorry) := sorry
   
-  /--
+  /-
   info: 'x=2'
   -/
-  #guard_msgs in
-  #eval solve_equation "x+5-3+x=6+x-2"
+  -- #guard_msgs in
+  -- #eval solve_equation "x+5-3+x=6+x-2"
   
-  /--
+  /-
   info: 'Infinite solutions'
   -/
-  #guard_msgs in
-  #eval solve_equation "x=x"
+  -- #guard_msgs in
+  -- #eval solve_equation "x=x"
   
-  /--
+  /-
   info: 'x=0'
   -/
-  #guard_msgs in
-  #eval solve_equation "2x=x"
+  -- #guard_msgs in
+  -- #eval solve_equation "2x=x"
 
 vc-postamble: |-
   -- Apps difficulty: interview

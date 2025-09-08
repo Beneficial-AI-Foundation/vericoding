@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Coach Khaled is a swag teacher in HIT (Hag Institute of Technology). However, he has some obsession problems.
   Recently, coach Khaled was teaching a course in building 8G networks using TV antennas and programming them with assembly. There are $N$ students (numbered $1$ through $N$) in his class; for some reason, this number is always a multiple of $4$. The final exam has finished and Khaled has all the scores of his $N$ students. For each valid $i$, the score of the $i$-th student is $A_i$; each score is an integer between $0$ and $100$. Currently, the score-grade distribution is as follows:
   - grade D for score smaller than $60$
@@ -56,6 +57,7 @@ vc-description: |-
   -----Explanation-----
   Example case 1: The default distribution is the correct one.
   Example case 4: All students have the same score and grade, so there is no way to choose the thresholds and coach Khaled must resign.
+  -/
 
 vc-preamble: |-
 
@@ -88,23 +90,23 @@ vc-theorems: |-
     let scores_with_dup := scores.take (n/4) ++ [dup_val] ++ scores.drop (n/4 + 1)
     solve_grading_thresholds n scores_with_dup = "-1" := sorry
   
-  /--
+  /-
   info: '60 75 90'
   -/
-  #guard_msgs in
-  #eval solve_grading_thresholds 4 #[90, 25, 60, 75]
+  -- #guard_msgs in
+  -- #eval solve_grading_thresholds 4 #[90, 25, 60, 75]
   
-  /--
+  /-
   info: '1 2 3'
   -/
-  #guard_msgs in
-  #eval solve_grading_thresholds 4 #[0, 1, 2, 3]
+  -- #guard_msgs in
+  -- #eval solve_grading_thresholds 4 #[0, 1, 2, 3]
   
-  /--
+  /-
   info: '-1'
   -/
-  #guard_msgs in
-  #eval solve_grading_thresholds 4 #[30, 30, 40, 50]
+  -- #guard_msgs in
+  -- #eval solve_grading_thresholds 4 #[30, 30, 40, 50]
 
 vc-postamble: |-
   -- Apps difficulty: interview

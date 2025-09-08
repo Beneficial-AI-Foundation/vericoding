@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In the spirit of the holidays, Saitama has given Genos two grid paths of length n (a weird gift even by Saitama's standards). A grid path is an ordered sequence of neighbouring squares in an infinite grid. Two squares are neighbouring if they share a side.
   
   One example of a grid path is (0, 0) → (0, 1) → (0, 2) → (1, 2) → (1, 1) → (0, 1) → ( - 1, 1). Note that squares in this sequence might be repeated, i.e. path has self intersections.
@@ -47,6 +48,7 @@ vc-description: |-
   In the first sample, the first grid path is the one described in the statement. Moreover, the following sequence of moves will get both marbles to the end: NNESWWSWSW.
   
   In the second sample, no sequence of moves can get both marbles to the end.
+  -/
 
 vc-preamble: |-
   def flipDir : Direction → Direction 
@@ -77,23 +79,23 @@ vc-theorems: |-
     let rev := (path.reverse.map opposite)
     solvable path rev = solvable rev path := by sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval solvable "NNESWW" "SWSWSW"
+  -- #guard_msgs in
+  -- #eval solvable "NNESWW" "SWSWSW"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval solvable "NN" "SS"
+  -- #guard_msgs in
+  -- #eval solvable "NN" "SS"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval solvable "ES" "NW"
+  -- #guard_msgs in
+  -- #eval solvable "ES" "NW"
 
 vc-postamble: |-
   -- Apps difficulty: competition

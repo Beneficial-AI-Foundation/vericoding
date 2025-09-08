@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   A cake is sliced with `n` straight lines. Your task is to calculate the maximum number of pieces the cake can have.
   
@@ -25,6 +26,7 @@ vc-description: |-
    - `[output]` an integer
   
     The maximum number of pieces the sliced cake can have.
+  -/
 
 vc-preamble: |-
 
@@ -48,29 +50,29 @@ vc-theorems: |-
   theorem cake_slice_bounded_growth (n : Nat) (h : n > 0) :
     cake_slice n ≤ cake_slice (n-1) + n := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval cake_slice 0
+  -- #guard_msgs in
+  -- #eval cake_slice 0
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval cake_slice 1
+  -- #guard_msgs in
+  -- #eval cake_slice 1
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval cake_slice 2
+  -- #guard_msgs in
+  -- #eval cake_slice 2
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval cake_slice 3
+  -- #guard_msgs in
+  -- #eval cake_slice 3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

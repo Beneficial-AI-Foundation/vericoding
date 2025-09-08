@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a list of directions in the form of a list:
   
   goal = ["N", "S", "E", "W"]
@@ -8,6 +9,7 @@ vc-description: |-
   Your task is to create a function called directions, that will return a reduced list that will get you to the same point.The order of directions must be returned as N then S then E then W.
   
   If you get back to beginning, return an empty array.
+  -/
 
 vc-preamble: |-
   def Direction.toString : Direction → String
@@ -58,23 +60,23 @@ vc-theorems: |-
       | Direction.W => true) :=
   sorry
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval directions ["N", "S", "E", "W"]
+  -- #guard_msgs in
+  -- #eval directions ["N", "S", "E", "W"]
   
-  /--
+  /-
   info: ['N', 'E']
   -/
-  #guard_msgs in
-  #eval directions ["N", "N", "E", "S"]
+  -- #guard_msgs in
+  -- #eval directions ["N", "N", "E", "S"]
   
-  /--
+  /-
   info: ['S', 'W', 'W']
   -/
-  #guard_msgs in
-  #eval directions ["S", "S", "W", "W", "N"]
+  -- #guard_msgs in
+  -- #eval directions ["S", "S", "W", "W", "N"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

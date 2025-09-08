@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a 2D binary matrix filled with 0's and 1's, find the largest square containing only 1's and return its area.
   
   Example:
@@ -11,6 +12,7 @@ vc-description: |-
   1 0 0 1 0
   
   Output: 4
+  -/
 
 vc-preamble: |-
   def maximalSquare (matrix : List (List String)) : Nat :=
@@ -66,23 +68,23 @@ vc-theorems: |-
     maximalSquare matrix = maximalSquare paddedMatrix :=
     sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval maximal_square [["1", "0", "1", "0", "0"], ["1", "0", "1", "1", "1"], ["1", "1", "1", "1", "1"], ["1", "0", "0", "1", "0"]]
+  -- #guard_msgs in
+  -- #eval maximal_square [["1", "0", "1", "0", "0"], ["1", "0", "1", "1", "1"], ["1", "1", "1", "1", "1"], ["1", "0", "0", "1", "0"]]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval maximal_square [["1", "1"], ["1", "1"]]
+  -- #guard_msgs in
+  -- #eval maximal_square [["1", "1"], ["1", "1"]]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval maximal_square [["0"]]
+  -- #guard_msgs in
+  -- #eval maximal_square [["0"]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

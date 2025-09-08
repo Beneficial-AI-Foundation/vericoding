@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Problem Statement=====
   ABCXYZ company has up to 100 employees.
   The company decides to create a unique identification number (UID) for each of its employees.
@@ -18,6 +19,7 @@ vc-description: |-
   
   =====Output Format=====
   For each test case, print 'Valid' if the UID is valid. Otherwise, print 'Invalid', on separate lines. Do not print the quotation marks.
+  -/
 
 vc-preamble: |-
 
@@ -49,17 +51,17 @@ vc-theorems: |-
     validate_uids ["12345abcdeF"] = ["Invalid"] ∧
     validate_uids ["abcdefghij"] = ["Invalid"] := sorry
   
-  /--
+  /-
   info: ['Invalid', 'Valid']
   -/
-  #guard_msgs in
-  #eval validate_uids ["B1CD102354", "B1CDEF2354"]
+  -- #guard_msgs in
+  -- #eval validate_uids ["B1CD102354", "B1CDEF2354"]
   
-  /--
+  /-
   info: ['Valid']
   -/
-  #guard_msgs in
-  #eval validate_uids ["B1CDEF2354"]
+  -- #guard_msgs in
+  -- #eval validate_uids ["B1CDEF2354"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

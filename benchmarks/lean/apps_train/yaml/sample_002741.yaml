@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A number m of the form 10x + y is divisible by 7 if and only if x − 2y is divisible by 7. In other words, subtract twice the last digit 
   from the number formed by the remaining digits. Continue to do this until a number known to be divisible or not by 7 is obtained; 
   you can stop when this number has *at most* 2 digits because you are supposed to know if a number of at most 2 digits is divisible by 7 or not.
@@ -34,6 +35,7 @@ vc-description: |-
   seven(1603) should return [7, 2]
   seven(477557101) should return [28, 7]
   ```
+  -/
 
 vc-preamble: |-
 
@@ -62,23 +64,23 @@ vc-theorems: |-
       (n1 ≤ n2 → (seven n1).2 ≤ (seven n2).2) ∧
       (n1 ≥ n2 → (seven n1).2 ≥ (seven n2).2) := sorry
   
-  /--
+  /-
   info: [35, 1]
   -/
-  #guard_msgs in
-  #eval seven 371
+  -- #guard_msgs in
+  -- #eval seven 371
   
-  /--
+  /-
   info: [7, 2]
   -/
-  #guard_msgs in
-  #eval seven 1603
+  -- #guard_msgs in
+  -- #eval seven 1603
   
-  /--
+  /-
   info: [28, 7]
   -/
-  #guard_msgs in
-  #eval seven 477557101
+  -- #guard_msgs in
+  -- #eval seven 477557101
 
 vc-postamble: |-
   -- Apps difficulty: introductory

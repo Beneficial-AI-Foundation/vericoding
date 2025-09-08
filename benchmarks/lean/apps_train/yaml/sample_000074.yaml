@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The statement of this problem is the same as the statement of problem C1. The only difference is that, in problem C1, $n$ is always even, and in C2, $n$ is always odd.
   
   You are given a regular polygon with $2 \cdot n$ vertices (it's convex and has equal sides and equal angles) and all its sides have length $1$. Let's name it as $2n$-gon.
@@ -28,6 +29,7 @@ vc-description: |-
   1.931851653
   3.196226611
   126.687663595
+  -/
 
 vc-preamble: |-
 

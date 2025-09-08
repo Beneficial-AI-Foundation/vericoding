@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef loves lucky numbers. Everybody knows that lucky numbers are positive integers whose decimal representation contains only the lucky digits 4 and 7. For example, numbers 47, 744, 4 are lucky and 5, 17, 467 are not.
   
   Chef has a positive integer N. He can apply any of the following operations as many times as he want in any order:
@@ -34,6 +35,7 @@ vc-description: |-
   2
   1
   2
+  -/
 
 vc-preamble: |-
   def calcMinOpsLuckyNum (n : String) : Nat :=
@@ -64,23 +66,23 @@ vc-theorems: |-
     calcMinOpsLuckyNum n = countNonLuckyDigits n :=
   sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval calc_min_ops_lucky_num "25"
+  -- #guard_msgs in
+  -- #eval calc_min_ops_lucky_num "25"
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval calc_min_ops_lucky_num "46"
+  -- #guard_msgs in
+  -- #eval calc_min_ops_lucky_num "46"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval calc_min_ops_lucky_num "99"
+  -- #guard_msgs in
+  -- #eval calc_min_ops_lucky_num "99"
 
 vc-postamble: |-
   -- Apps difficulty: interview

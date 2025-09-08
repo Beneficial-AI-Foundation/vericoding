@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Roman has no idea, why this problem is called Stone. He also has no idea on how to solve the followong problem: given array of N integers A and a number K. During a turn the maximal value over all Ai is chosen, let's call it MAX. Then Ai = 
   MAX - Ai is done for every 1 <= i <= N. Help Roman to find out how will the array look like after K turns.
   
@@ -21,6 +22,7 @@ vc-description: |-
   
   Output:
   2 8 0 7
+  -/
 
 vc-preamble: |-
   def solve_stone_array (n k : Nat) (A : List Int) : List Int :=

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    Consider the following ciphering algorithm:
   ```
@@ -27,6 +28,7 @@ vc-description: |-
      A non-empty string which is guaranteed to be a cipher for some other string of lowercase letters.
   
    - `[output]` a string
+  -/
 
 vc-preamble: |-
 
@@ -61,23 +63,23 @@ vc-theorems: |-
     decipher "122" = "z" ∧
     decipher "" = "" := sorry
   
-  /--
+  /-
   info: 'easy'
   -/
-  #guard_msgs in
-  #eval decipher "10197115121"
+  -- #guard_msgs in
+  -- #eval decipher "10197115121"
   
-  /--
+  /-
   info: 'b'
   -/
-  #guard_msgs in
-  #eval decipher "98"
+  -- #guard_msgs in
+  -- #eval decipher "98"
   
-  /--
+  /-
   info: 'z'
   -/
-  #guard_msgs in
-  #eval decipher "122"
+  -- #guard_msgs in
+  -- #eval decipher "122"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

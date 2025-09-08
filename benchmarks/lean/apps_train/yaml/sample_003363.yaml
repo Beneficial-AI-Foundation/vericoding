@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A lot of goods have an  International Article Number (formerly known as "European Article Number") abbreviated "EAN". EAN is a 13-digits barcode consisting of 12-digits data followed by a single-digit checksum (EAN-8 is not considered in this kata).
   
   The single-digit checksum is calculated as followed (based upon the 12-digit data):
@@ -34,6 +35,7 @@ vc-description: |-
   ```
   
   Good Luck and have fun.
+  -/
 
 vc-preamble: |-
   def calculateCheckDigit (code : String) : Nat :=
@@ -66,23 +68,23 @@ vc-theorems: |-
     ¬(validateEAN code) :=
   sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval validate_ean "4003301018398"
+  -- #guard_msgs in
+  -- #eval validate_ean "4003301018398"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval validate_ean "4003301018392"
+  -- #guard_msgs in
+  -- #eval validate_ean "4003301018392"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval validate_ean "9783815820865"
+  -- #guard_msgs in
+  -- #eval validate_ean "9783815820865"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

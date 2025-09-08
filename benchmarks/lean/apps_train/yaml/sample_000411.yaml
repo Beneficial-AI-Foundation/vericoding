@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string s, return the last substring of s in lexicographical order.
   
   Example 1:
@@ -14,6 +15,7 @@ vc-description: |-
   
   1 <= s.length <= 4 * 10^5
   s contains only lowercase English letters.
+  -/
 
 vc-preamble: |-
 
@@ -40,23 +42,23 @@ vc-theorems: |-
     (h2 : ∀ (i j : String.Pos), s.get i = s.get j) :
     last_substring s = s := sorry
   
-  /--
+  /-
   info: 'bab'
   -/
-  #guard_msgs in
-  #eval last_substring "abab"
+  -- #guard_msgs in
+  -- #eval last_substring "abab"
   
-  /--
+  /-
   info: 'tcode'
   -/
-  #guard_msgs in
-  #eval last_substring "leetcode"
+  -- #guard_msgs in
+  -- #eval last_substring "leetcode"
   
-  /--
+  /-
   info: 'zzz'
   -/
-  #guard_msgs in
-  #eval last_substring "zzz"
+  -- #guard_msgs in
+  -- #eval last_substring "zzz"
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Triangular number is the amount of points that can fill equilateral triangle. 
   
   Example: the number 6 is a triangular number because all sides of a triangle has the same amount of points.
@@ -11,6 +12,7 @@ vc-description: |-
   ```
   
   Given a number 'T' from interval [1; 2147483646], find if it is triangular number or not.
+  -/
 
 vc-preamble: |-
 
@@ -40,23 +42,23 @@ vc-theorems: |-
     isTriangular 36 = true ∧
     isTriangular 45 = true := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_triangular 1
+  -- #guard_msgs in
+  -- #eval is_triangular 1
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_triangular 6
+  -- #guard_msgs in
+  -- #eval is_triangular 6
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_triangular 7
+  -- #guard_msgs in
+  -- #eval is_triangular 7
 
 vc-postamble: |-
   -- Apps difficulty: introductory

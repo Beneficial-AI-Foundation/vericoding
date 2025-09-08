@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array (arr) as an argument complete the function `countSmileys` that should return the total number of smiling faces.  
   
   Rules for a smiling face:
@@ -22,6 +23,7 @@ vc-description: |-
   ## Note
   
   In case of an empty array return 0. You will not be tested with invalid input (input will always be an array). Order of the face (eyes, nose, mouth) elements will always be the same.
+  -/
 
 vc-preamble: |-
 
@@ -43,23 +45,23 @@ vc-theorems: |-
   theorem count_bounded_by_length {arr : List String} :
     countSmileys arr ≤ arr.length := sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval count_smileys []
+  -- #guard_msgs in
+  -- #eval count_smileys []
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval count_smileys [":D", ":~)", ";~D", ":)"]
+  -- #guard_msgs in
+  -- #eval count_smileys [":D", ":~)", ";~D", ":)"]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_smileys [";]", ":[", ";*", ":$", ";-D"]
+  -- #guard_msgs in
+  -- #eval count_smileys [";]", ":[", ";*", ":$", ";-D"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a non-negative integer num, repeatedly add all its digits until the result has only one digit.
   
   Example:
@@ -10,6 +11,7 @@ vc-description: |-
   
   Follow up:
   Could you do it without any loop/recursion in O(1) runtime?
+  -/
 
 vc-preamble: |-
 
@@ -40,23 +42,23 @@ vc-theorems: |-
     add_digits n > 0 :=
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval add_digits 38
+  -- #guard_msgs in
+  -- #eval add_digits 38
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval add_digits 0
+  -- #guard_msgs in
+  -- #eval add_digits 0
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval add_digits 789
+  -- #guard_msgs in
+  -- #eval add_digits 789
 
 vc-postamble: |-
   -- Apps difficulty: introductory

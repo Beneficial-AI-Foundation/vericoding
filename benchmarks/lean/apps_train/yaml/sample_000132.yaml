@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a positive integer N, return the number of positive integers less than or equal to N that have at least 1 repeated digit.
   
   Example 1:
@@ -18,6 +19,7 @@ vc-description: |-
   Note:
   
   1 <= N <= 10^9
+  -/
 
 vc-preamble: |-
 
@@ -77,23 +79,23 @@ vc-theorems: |-
     diff ≤ 1 :=
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_numbers_with_repeated_digits 20
+  -- #guard_msgs in
+  -- #eval count_numbers_with_repeated_digits 20
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval count_numbers_with_repeated_digits 100
+  -- #guard_msgs in
+  -- #eval count_numbers_with_repeated_digits 100
   
-  /--
+  /-
   info: 262
   -/
-  #guard_msgs in
-  #eval count_numbers_with_repeated_digits 1000
+  -- #guard_msgs in
+  -- #eval count_numbers_with_repeated_digits 1000
 
 vc-postamble: |-
   -- Apps difficulty: interview

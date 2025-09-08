@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Permutation $p$ is a sequence of integers $p=[p_1, p_2, \dots, p_n]$, consisting of $n$ distinct (unique) positive integers between $1$ and $n$, inclusive. For example, the following sequences are permutations: $[3, 4, 1, 2]$, $[1]$, $[1, 2]$. The following sequences are not permutations: $[0]$, $[1, 2, 1]$, $[2, 3]$, $[0, 1, 2]$.
   
   The important key is in the locked box that you need to open. To open the box you need to enter secret code. Secret code is a permutation $p$ of length $n$. 
@@ -44,6 +45,7 @@ vc-description: |-
   In the first test case of the example answer $[1,3,4,5,2]$ is the only possible answer:  $q_{1} = p_{1} = 1$;  $q_{2} = \max(p_{1}, p_{2}) = 3$;  $q_{3} = \max(p_{1}, p_{2}, p_{3}) = 4$;  $q_{4} = \max(p_{1}, p_{2}, p_{3}, p_{4}) = 5$;  $q_{5} = \max(p_{1}, p_{2}, p_{3}, p_{4}, p_{5}) = 5$. 
   
   It can be proved that there are no answers for the second test case of the example.
+  -/
 
 vc-preamble: |-
   def intList (n : Nat) : List Int := sorry
@@ -73,23 +75,23 @@ vc-theorems: |-
     isValidPermutation n result = true ∧ 
     satisfiesQConstraints result q = true := sorry
   
-  /--
+  /-
   info: [1, 3, 4, 5, 2]
   -/
-  #guard_msgs in
-  #eval solve_permutation_code 5 [1, 3, 4, 5, 5]
+  -- #guard_msgs in
+  -- #eval solve_permutation_code 5 [1, 3, 4, 5, 5]
   
-  /--
+  /-
   info: [-1]
   -/
-  #guard_msgs in
-  #eval solve_permutation_code 4 [1, 1, 3, 4]
+  -- #guard_msgs in
+  -- #eval solve_permutation_code 4 [1, 1, 3, 4]
   
-  /--
+  /-
   info: [1]
   -/
-  #guard_msgs in
-  #eval solve_permutation_code 1 [1]
+  -- #guard_msgs in
+  -- #eval solve_permutation_code 1 [1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Another Fibonacci... yes but with other kinds of result.
   The function is named `aroundFib` or `around_fib`, depending of the language.
   Its parameter is `n` (positive integer).
@@ -32,6 +33,7 @@ vc-description: |-
   
   # Note
   Translators are welcome for all languages, except for Ruby since the Bash tests needing Ruby a Ruby reference solution is already there though not yet published.
+  -/
 
 vc-preamble: |-
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In number theory, Euler's totient is an arithmetic function, introduced in 1763 by Euler, that counts the positive integers less than or equal to `n` that are relatively prime to `n`. Thus, if `n` is a positive integer, then `φ(n)`, notation introduced by Gauss in 1801, is the number of positive integers `k ≤ n` for which `gcd(n, k) = 1`.  
   The totient function is important in number theory, mainly because it gives the order of the multiplicative group of integers modulo `n`. The totient function also plays a key role in the definition of the RSA encryption system.
   
@@ -33,6 +34,7 @@ vc-description: |-
   ```
   
   Input range: `1 ≤ n ≤ 1e10`
+  -/
 
 vc-preamble: |-
   def totient (n : Int) : Int := sorry

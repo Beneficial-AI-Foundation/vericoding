@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a string $s$.
   You can perform the following operation on given string any number of time.
   Delete two successive elements of the string if they are same.
@@ -30,6 +31,7 @@ vc-description: |-
   -----EXPLANATION:-----
   - In first case, $"abd"$ will be final string.
   - in second case, $"c"$ will be final string
+  -/
 
 vc-preamble: |-
   def min_string_length (s : String) : Nat :=
@@ -69,23 +71,23 @@ vc-theorems: |-
     min_string_length s = min_string_length (reverseString s) :=
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval min_string_length "abccd"
+  -- #guard_msgs in
+  -- #eval min_string_length "abccd"
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval min_string_length "abbac"
+  -- #guard_msgs in
+  -- #eval min_string_length "abbac"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_string_length "aaaa"
+  -- #guard_msgs in
+  -- #eval min_string_length "aaaa"
 
 vc-postamble: |-
   -- Apps difficulty: interview

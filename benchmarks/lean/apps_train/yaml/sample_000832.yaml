@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   A beautiful sequence is defined as a sequence that do not have any repeating elements in it.
   You will be given any random sequence of integers, and you have to tell whether it is a beautiful sequence or not. 
   
@@ -32,6 +33,7 @@ vc-description: |-
   As 1st sequence do not have any elements repeating, hence it is a beautiful sequence
   - 
   As in 2nd sequence the element 1 is repeated twice, hence it is not a beautiful sequence
+  -/
 
 vc-preamble: |-
 
@@ -72,23 +74,23 @@ vc-theorems: |-
     check_sequence n arr = "prekrasnyy" :=
   sorry
   
-  /--
+  /-
   info: 'prekrasnyy'
   -/
-  #guard_msgs in
-  #eval check_sequence 4 [1, 2, 3, 4]
+  -- #guard_msgs in
+  -- #eval check_sequence 4 [1, 2, 3, 4]
   
-  /--
+  /-
   info: 'ne krasivo'
   -/
-  #guard_msgs in
-  #eval check_sequence 6 [1, 2, 3, 5, 1, 4]
+  -- #guard_msgs in
+  -- #eval check_sequence 6 [1, 2, 3, 5, 1, 4]
   
-  /--
+  /-
   info: 'prekrasnyy'
   -/
-  #guard_msgs in
-  #eval check_sequence 1 [1]
+  -- #guard_msgs in
+  -- #eval check_sequence 1 [1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

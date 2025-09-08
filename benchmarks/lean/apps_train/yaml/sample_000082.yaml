@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Being tired of participating in too many Codeforces rounds, Gildong decided to take some rest in a park. He sat down on a bench, and soon he found two rabbits hopping around. One of the rabbits was taller than the other.
   
   He noticed that the two rabbits were hopping towards each other. The positions of the two rabbits can be represented as integer coordinates on a horizontal line. The taller rabbit is currently on position $x$, and the shorter rabbit is currently on position $y$ ($x \lt y$). Every second, each rabbit hops to another position. The taller rabbit hops to the positive direction by $a$, and the shorter rabbit hops to the negative direction by $b$.
@@ -42,6 +43,7 @@ vc-description: |-
   The first case is explained in the description.
   
   In the second case, each rabbit will be at position $3$ and $7$ respectively at the $1$-st second. But in the $2$-nd second they will be at $6$ and $4$ respectively, and we can see that they will never be at the same position since the distance between the two rabbits will only increase afterward.
+  -/
 
 vc-preamble: |-
 
@@ -64,23 +66,23 @@ vc-theorems: |-
     (h_not_div : ¬(distance % (a + b) = 0)) : 
     solve_rabbits x y a b = -1 := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve_rabbits 0 10 2 3
+  -- #guard_msgs in
+  -- #eval solve_rabbits 0 10 2 3
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval solve_rabbits 0 10 3 3
+  -- #guard_msgs in
+  -- #eval solve_rabbits 0 10 3 3
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval solve_rabbits 900000000 1000000000 1 9999999
+  -- #guard_msgs in
+  -- #eval solve_rabbits 900000000 1000000000 1 9999999
 
 vc-postamble: |-
   -- Apps difficulty: interview

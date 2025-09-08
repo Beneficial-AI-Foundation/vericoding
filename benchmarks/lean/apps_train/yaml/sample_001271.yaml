@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a weighted undirected graph consisting of n$n$ nodes and m$m$ edges. The nodes are numbered from 1$1$ to n$n$. The graph does not contain any multiple edges or self loops.
   A walk W$W$ on the graph is a sequence of vertices (with repetitions of vertices and edges allowed) such that every adjacent pair of vertices in the sequence is an edge of the graph. We define the cost of a walk W$W$, Cost(W)$Cost(W)$, as the maximum over the weights of the edges along the walk. 
   You will be given q$q$ queries. In each query, you will be given an integer X$X$.
@@ -51,6 +52,7 @@ vc-description: |-
   - 3 -> 2 -> 1 -> 2 -> 3
   - 3 -> 2 -> 3 -> 2 -> 1
   - 3 -> 2 -> 3 -> 2 -> 3
+  -/
 
 vc-preamble: |-
 

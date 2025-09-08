@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We start with a permutation $a_1, a_2, \ldots, a_n$ and with an empty array $b$. We apply the following operation $k$ times.
   
   On the $i$-th iteration, we select an index $t_i$ ($1 \le t_i \le n-i+1$), remove $a_{t_i}$ from the array, and append one of the numbers $a_{t_i-1}$ or $a_{t_i+1}$ (if $t_i-1$ or $t_i+1$ are within the array bounds) to the right end of the array $b$. Then we move elements $a_{t_i+1}, \ldots, a_n$ to the left in order to fill in the empty space.
@@ -50,6 +51,7 @@ vc-description: |-
   In the second example test, it is impossible to achieve the given array no matter the operations used. That's because, on the first application, we removed the element next to $4$, namely number $3$, which means that it couldn't be added to array $b$ on the second step.
   
   In the third example test, there are four options to achieve the given array $b$:  $1 4 \cancel{7} \underline{3} 6 2 5 \rightarrow 1 4 3 \cancel{6} \underline{2} 5 \rightarrow \cancel{1} \underline{4} 3 2 5 \rightarrow 4 3 \cancel{2} \underline{5} \rightarrow 4 3 5$; $1 4 \cancel{7} \underline{3} 6 2 5 \rightarrow 1 4 3 \cancel{6} \underline{2} 5 \rightarrow 1 \underline{4} \cancel{3} 2 5 \rightarrow 1 4 \cancel{2} \underline{5} \rightarrow 1 4 5$; $1 4 7 \underline{3} \cancel{6} 2 5 \rightarrow 1 4 7 \cancel{3} \underline{2} 5 \rightarrow \cancel{1} \underline{4} 7 2 5 \rightarrow 4 7 \cancel{2} \underline{5} \rightarrow 4 7 5$; $1 4 7 \underline{3} \cancel{6} 2 5 \rightarrow 1 4 7 \cancel{3} \underline{2} 5 \rightarrow 1 \underline{4} \cancel{7} 2 5 \rightarrow 1 4 \cancel{2} \underline{5} \rightarrow 1 4 5$;
+  -/
 
 vc-preamble: |-
 
@@ -116,23 +118,23 @@ vc-theorems: |-
       0 ≤ result ∧ result < MOD :=
     sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve 5 3 [1, 2, 3, 4, 5] [3, 2, 5]
+  -- #guard_msgs in
+  -- #eval solve 5 3 [1, 2, 3, 4, 5] [3, 2, 5]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve 4 3 [4, 3, 2, 1] [4, 3, 1]
+  -- #guard_msgs in
+  -- #eval solve 4 3 [4, 3, 2, 1] [4, 3, 1]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval solve 7 4 [1, 4, 7, 3, 6, 2, 5] [3, 2, 4, 5]
+  -- #guard_msgs in
+  -- #eval solve 7 4 [1, 4, 7, 3, 6, 2, 5] [3, 2, 4, 5]
 
 vc-postamble: |-
   -- Apps difficulty: competition

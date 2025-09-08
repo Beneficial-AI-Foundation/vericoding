@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Is the number even?
   
   If the numbers is even return `true`. If it's odd, return `false`. 
@@ -8,6 +9,7 @@ vc-description: |-
    use of ```%```
    use of ```.even?``` in Ruby
    use of ```mod``` in Python
+  -/
 
 vc-preamble: |-
 
@@ -28,23 +30,23 @@ vc-theorems: |-
   theorem is_even_neighbor (n : Int) :
     is_even n ≠ is_even (n + 1) := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_even 2
+  -- #guard_msgs in
+  -- #eval is_even 2
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_even 3
+  -- #guard_msgs in
+  -- #eval is_even 3
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_even 14
+  -- #guard_msgs in
+  -- #eval is_even 14
 
 vc-postamble: |-
   -- Apps difficulty: introductory

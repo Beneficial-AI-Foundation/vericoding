@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Task
   
   You are at position [0, 0] in maze NxN and you can **only** move in one of the four cardinal directions (i.e. North, East, South, West).  Return `true` if you can reach position [N-1, N-1] or `false` otherwise.
@@ -11,6 +12,7 @@ vc-description: |-
   -       [#3: the Alpinist](https://www.codewars.com/kata/576986639772456f6f00030c)
   -       [#4: where are you?](https://www.codewars.com/kata/5a0573c446d8435b8e00009f)
   -       [#5: there's someone here](https://www.codewars.com/kata/5a05969cba2a14e541000129)
+  -/
 
 vc-preamble: |-
   def path_finder (maze : String) : Bool := sorry
@@ -56,17 +58,17 @@ vc-theorems: |-
     let cells := makeList (n*n) '.'
     path_finder (make_maze cells) = true := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval path_finder "\n".join([".W.", ".W.", "..."])
+  -- #guard_msgs in
+  -- #eval path_finder "\n".join([".W.", ".W.", "..."])
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval path_finder maze2
+  -- #guard_msgs in
+  -- #eval path_finder maze2
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a set of numbers, return the additive inverse of each. Each positive becomes negatives, and the negatives become positives.
   
   ~~~if-not:racket
@@ -25,6 +26,7 @@ vc-description: |-
   (invert '())            ; '()
   ```
   ~~~
+  -/
 
 vc-preamble: |-
 
@@ -48,23 +50,23 @@ vc-theorems: |-
   theorem invert_empty : 
     invert [] = [] := sorry
   
-  /--
+  /-
   info: [-1, -2, -3, -4, -5]
   -/
-  #guard_msgs in
-  #eval invert [1, 2, 3, 4, 5]
+  -- #guard_msgs in
+  -- #eval invert [1, 2, 3, 4, 5]
   
-  /--
+  /-
   info: [-1, 2, -3, 4, -5]
   -/
-  #guard_msgs in
-  #eval invert [1, -2, 3, -4, 5]
+  -- #guard_msgs in
+  -- #eval invert [1, -2, 3, -4, 5]
   
-  /--
+  /-
   info: []
   -/
-  #guard_msgs in
-  #eval invert []
+  -- #guard_msgs in
+  -- #eval invert []
 
 vc-postamble: |-
   -- Apps difficulty: introductory

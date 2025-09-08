@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a binary tree root, a ZigZag path for a binary tree is defined as follow:
   
   Choose any node in the binary tree and a direction (right or left).
@@ -29,6 +30,7 @@ vc-description: |-
   
   Each tree has at most 50000 nodes..
   Each node's value is between [1, 100].
+  -/
 
 vc-preamble: |-
   def is_straight_path {α : Type} (t : Tree α) (xs : List α) : Prop :=
@@ -77,23 +79,23 @@ vc-theorems: |-
     0 ≤ longest_zigzag t ∧ longest_zigzag t ≤ xs.length - 1 :=
   sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval longest_zigzag TreeNode(1)
+  -- #guard_msgs in
+  -- #eval longest_zigzag TreeNode(1)
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval longest_zigzag TreeNode(1)
+  -- #guard_msgs in
+  -- #eval longest_zigzag TreeNode(1)
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval longest_zigzag TreeNode(1)
+  -- #guard_msgs in
+  -- #eval longest_zigzag TreeNode(1)
 
 vc-postamble: |-
   -- Apps difficulty: interview

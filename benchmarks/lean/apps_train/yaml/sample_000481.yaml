@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given two integers A and B, return any string S such that:
   
   S has length A + B and contains exactly A 'a' letters, and exactly B 'b' letters;
@@ -19,6 +20,7 @@ vc-description: |-
   0 <= A <= 100
   0 <= B <= 100
   It is guaranteed such an S exists for the given A and B.
+  -/
 
 vc-preamble: |-
   def strWithout3a3b (a b : Nat) : String :=

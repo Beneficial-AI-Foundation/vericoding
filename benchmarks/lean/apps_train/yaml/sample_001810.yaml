@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You have k lists of sorted integers in ascending order. Find the smallest range that includes at least one number from each of the k lists. 
   
   We define the range [a,b] is smaller than range [c,d] if b-a < d-c or a < c if b-a == d-c.
@@ -18,6 +19,7 @@ vc-description: |-
   1 k 
    -105 value of elements 5.
   For Java users, please note that the input type has been changed to List<List<Integer>>. And after you reset the code template, you'll see this point.
+  -/
 
 vc-preamble: |-
 
@@ -44,23 +46,23 @@ vc-theorems: |-
     (∃ l ∈ lists, ∃ x ∈ l, x = result.2) := by
     sorry
   
-  /--
+  /-
   info: [20, 24]
   -/
-  #guard_msgs in
-  #eval find_smallest_range [[4, 10, 15, 24, 26], [0, 9, 12, 20], [5, 18, 22, 30]]
+  -- #guard_msgs in
+  -- #eval find_smallest_range [[4, 10, 15, 24, 26], [0, 9, 12, 20], [5, 18, 22, 30]]
   
-  /--
+  /-
   info: [1, 1]
   -/
-  #guard_msgs in
-  #eval find_smallest_range [[1, 2, 3], [1, 2, 3], [1, 2, 3]]
+  -- #guard_msgs in
+  -- #eval find_smallest_range [[1, 2, 3], [1, 2, 3], [1, 2, 3]]
   
-  /--
+  /-
   info: [10, 11]
   -/
-  #guard_msgs in
-  #eval find_smallest_range [[10, 10], [11, 11]]
+  -- #guard_msgs in
+  -- #eval find_smallest_range [[10, 10], [11, 11]]
 
 vc-postamble: |-
   -- Apps difficulty: interview

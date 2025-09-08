@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Introduction 
   
   The GADERYPOLUKI is a simple substitution cypher used in scouting to encrypt messages. The encryption is based on short, easy to remember key. The key is written as paired letters, which are in the cipher simple replacement.
@@ -37,6 +38,7 @@ vc-description: |-
   GADERYPOLUKI cypher vol 3 - Missing Key
   
   GADERYPOLUKI cypher vol 4 - Missing key madness
+  -/
 
 vc-preamble: |-
 
@@ -67,23 +69,23 @@ vc-theorems: |-
     let encoded := encode s
     ¬(s.get i).isAlpha → s.get i = encoded.get i := sorry
   
-  /--
+  /-
   info: 'AGEDYROPULIK'
   -/
-  #guard_msgs in
-  #eval encode "GADERYPOLUKI"
+  -- #guard_msgs in
+  -- #eval encode "GADERYPOLUKI"
   
-  /--
+  /-
   info: 'Aed'
   -/
-  #guard_msgs in
-  #eval decode "Gde"
+  -- #guard_msgs in
+  -- #eval decode "Gde"
   
-  /--
+  /-
   info: test
   -/
-  #guard_msgs in
-  #eval decode encode(test)
+  -- #guard_msgs in
+  -- #eval decode encode(test)
 
 vc-postamble: |-
   -- Apps difficulty: introductory

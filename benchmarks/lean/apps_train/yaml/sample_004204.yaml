@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Similarly to the [previous kata](https://www.codewars.com/kata/string-subpattern-recognition-i/), you will need to return a boolean value if the base string can be expressed as the repetition of one subpattern.
   
   This time there are two small changes:
@@ -18,6 +19,7 @@ vc-description: |-
   Strings will never be empty and can be composed of any character (just consider upper- and lowercase letters as different entities) and can be pretty long (keep an eye on performances!).
   
   If you liked it, go for either the [previous kata](https://www.codewars.com/kata/string-subpattern-recognition-i/) or the [next kata](https://www.codewars.com/kata/string-subpattern-recognition-iii/) of the series!
+  -/
 
 vc-preamble: |-
   def has_subpattern (s : String) : Bool :=

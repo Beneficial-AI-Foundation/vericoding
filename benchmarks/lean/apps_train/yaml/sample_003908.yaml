@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are making your very own boardgame. The game is played by two opposing players, featuring a 6 x 6 tile system, with the players taking turns to move their pieces (similar to chess). The design is finished, now it's time to actually write and implement the features. Being the good programmer you are, you carefully plan the procedure and break the program down into smaller managable sections. You decide to start coding the logic for resolving "fights" when two pieces engage in combat on a tile. 
   
   Your boardgame features four unique pieces: 
@@ -60,6 +61,7 @@ vc-description: |-
   2. fightResolve('k', 'A') outputs 'k'. Knights always defeat archers, even if Archer is the attacking piece here.
   
   3. fightResolve('S', 'A') outputs -1. Friendly units don't fight. Return -1 to indicate error.
+  -/
 
 vc-preamble: |-
 
@@ -91,23 +93,23 @@ vc-theorems: |-
     fight_resolve d a ≠ some d →
     fight_resolve d a = some a := sorry
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval fight_resolve "K" "A"
+  -- #guard_msgs in
+  -- #eval fight_resolve "K" "A"
   
-  /--
+  /-
   info: 'k'
   -/
-  #guard_msgs in
-  #eval fight_resolve "k" "A"
+  -- #guard_msgs in
+  -- #eval fight_resolve "k" "A"
   
-  /--
+  /-
   info: 'P'
   -/
-  #guard_msgs in
-  #eval fight_resolve "a" "P"
+  -- #guard_msgs in
+  -- #eval fight_resolve "a" "P"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

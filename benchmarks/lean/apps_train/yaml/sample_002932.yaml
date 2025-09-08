@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The AKS algorithm for testing whether a number is prime is a polynomial-time test based on the following theorem: 
   
   A number p is prime if and only if all the coefficients of the polynomial expansion of `(x − 1)^p − (x^p − 1)` are divisible by `p`.
@@ -16,6 +17,7 @@ vc-description: |-
   The kata here only use the simple theorem. The general AKS test is way more complex.  The simple approach is a good exercie but impractical. The general AKS test will be the subject of another kata as it is one of the best performing primality test algorithms.
   
   The main problem of this algorithm is the big numbers emerging from binomial coefficients in the polynomial expansion. As usual Javascript reach its limit on big integer very fast. (This simple algorithm is far less performing than a trivial algorithm here). You can compare the results with those of this kata: http://www.codewars.com/kata/lucas-lehmer-test-for-mersenne-primes Here, javascript can barely treat numbers bigger than 50, python can treat M13 but not M17.
+  -/
 
 vc-preamble: |-
   def aks_test : Nat → Bool :=
@@ -47,23 +49,23 @@ vc-theorems: |-
   theorem aks_consistency (n : Nat) (h : n ≥ 2) :
     aks_test n = aks_test n := by sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval aks_test 3
+  -- #guard_msgs in
+  -- #eval aks_test 3
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval aks_test 4
+  -- #guard_msgs in
+  -- #eval aks_test 4
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval aks_test 5
+  -- #guard_msgs in
+  -- #eval aks_test 5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

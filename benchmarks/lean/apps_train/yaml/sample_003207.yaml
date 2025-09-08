@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Consider the following numbers (where `n!` is `factorial(n)`):
   ```
   u1 = (1 / 1!) * (1!)
@@ -28,6 +29,7 @@ vc-description: |-
   
   ## Hint
   You could try to simplify the expression.
+  -/
 
 vc-preamble: |-
   def going (n : Nat) : Float := sorry
@@ -52,23 +54,23 @@ vc-theorems: |-
   theorem going_specific_values :
     going 1 = 1.0 ∧ going 5 = 1.275 := sorry
   
-  /--
+  /-
   info: 1.275
   -/
-  #guard_msgs in
-  #eval going 5
+  -- #guard_msgs in
+  -- #eval going 5
   
-  /--
+  /-
   info: 1.2125
   -/
-  #guard_msgs in
-  #eval going 6
+  -- #guard_msgs in
+  -- #eval going 6
   
-  /--
+  /-
   info: 1.173214
   -/
-  #guard_msgs in
-  #eval going 7
+  -- #guard_msgs in
+  -- #eval going 7
 
 vc-postamble: |-
   -- Apps difficulty: introductory

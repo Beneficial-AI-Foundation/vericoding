@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Cengiz recently learned Fibonacci numbers and now he is studying different algorithms to find them. After getting bored of reading them, he came with his own new type of numbers that he named XORinacci numbers. He defined them as follows:   $f(0) = a$;  $f(1) = b$;  $f(n) = f(n-1) \oplus f(n-2)$ when $n > 1$, where $\oplus$ denotes the bitwise XOR operation. 
   
   You are given three integers $a$, $b$, and $n$, calculate $f(n)$.
@@ -32,6 +33,7 @@ vc-description: |-
   -----Note-----
   
   In the first example, $f(2) = f(0) \oplus f(1) = 3 \oplus 4 = 7$.
+  -/
 
 vc-preamble: |-
 
@@ -61,23 +63,23 @@ vc-theorems: |-
   theorem xorinacci_zero_xor (x : Nat) :
     solve_xorinacci 0 x 2 = x := sorry
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval solve_xorinacci 3 4 2
+  -- #guard_msgs in
+  -- #eval solve_xorinacci 3 4 2
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval solve_xorinacci 4 5 0
+  -- #guard_msgs in
+  -- #eval solve_xorinacci 4 5 0
   
-  /--
+  /-
   info: 76
   -/
-  #guard_msgs in
-  #eval solve_xorinacci 325 265 1231232
+  -- #guard_msgs in
+  -- #eval solve_xorinacci 325 265 1231232
 
 vc-postamble: |-
   -- Apps difficulty: competition

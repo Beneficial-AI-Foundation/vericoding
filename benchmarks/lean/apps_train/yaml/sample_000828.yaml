@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We all know how great ABD aka AB-DE-VILLIERS is. However his team mates were jealous of him and posed a problem for him to solve.The problem description is as follows :
   
   Given an array of integers,find the length of the largest subarray(contiguous) of the given array with the maximum possible GCD (Greatest Common Divisor).
@@ -37,6 +38,7 @@ vc-description: |-
   Length of the largest subarray with GCD as 8 is 1
   
   Hence answer is 1 .
+  -/
 
 vc-preamble: |-
 
@@ -53,23 +55,23 @@ vc-theorems: |-
     find_largest_gcd_subarray 1 [x] = 1 :=
   sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval find_largest_gcd_subarray 4 [2, 4, 8, 3]
+  -- #guard_msgs in
+  -- #eval find_largest_gcd_subarray 4 [2, 4, 8, 3]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_largest_gcd_subarray 5 [10, 10, 10, 5, 5]
+  -- #guard_msgs in
+  -- #eval find_largest_gcd_subarray 5 [10, 10, 10, 5, 5]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval find_largest_gcd_subarray 3 [6, 12, 6]
+  -- #guard_msgs in
+  -- #eval find_largest_gcd_subarray 3 [6, 12, 6]
 
 vc-postamble: |-
   -- Apps difficulty: interview

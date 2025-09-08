@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a positive integer n, find the least number of perfect square numbers (for example, 1, 4, 9, 16, ...) which sum to n.
   
   Example 1:
@@ -12,6 +13,7 @@ vc-description: |-
   Input: n = 13
   Output: 2
   Explanation: 13 = 4 + 9.
+  -/
 
 vc-preamble: |-
 
@@ -31,23 +33,23 @@ vc-theorems: |-
   theorem numSquares_four_pattern (k m : Nat) (h : 4^k * (8*m + 7) > 0) :
     numSquares (4^k * (8*m + 7)) = 4 := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval numSquares 12
+  -- #guard_msgs in
+  -- #eval numSquares 12
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval numSquares 13
+  -- #guard_msgs in
+  -- #eval numSquares 13
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval numSquares 7
+  -- #guard_msgs in
+  -- #eval numSquares 7
 
 vc-postamble: |-
   -- Apps difficulty: interview

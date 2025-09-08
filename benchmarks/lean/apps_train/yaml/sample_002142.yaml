@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are 2N balls in the xy-plane. The coordinates of the i-th of them is (x_i, y_i).
   Here, x_i and y_i are integers between 1 and N (inclusive) for all i, and no two balls occupy the same coordinates.
   In order to collect these balls, Snuke prepared 2N robots, N of type A and N of type B.
@@ -47,6 +48,7 @@ vc-description: |-
    - B1, A2, A1, B2
    - B2, A1, B1, A2
   Thus, the output should be 8.
+  -/
 
 vc-preamble: |-
 

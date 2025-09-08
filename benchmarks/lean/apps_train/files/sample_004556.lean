@@ -1,0 +1,108 @@
+/-
+# Magpies are my favourite birds
+
+Baby ones even more so...
+
+It is a little known fact^ that the black & white colours of baby magpies differ by **at least** one place and **at most** two places from the colours of the mother magpie.
+
+So now you can work out if any two magpies may be related. 
+
+*...and Quardle oodle ardle wardle doodle the magpies said*
+
+# Kata Task
+
+Given the colours of two magpies, determine if one is a possible **child** or **grand-child** of the other.
+
+# Notes
+
+* Each pair of birds being compared will have same number of colour areas
+* `B` = Black
+* `W` = White
+
+# Example
+
+Given these three magpies
+
+Magpie 1  BWBWBW
+Magpie 2  BWBWBB
+Magpie 3  WWWWBB
+
+You can see:
+* Magpie 2 may be a child of Magpie 1 because there is only one difference
+* Magpie 3 may be child of Magpie 2 because there are two differences
+* So Magpie 3 may be a grand-child of Magpie 1
+* On the other hand, Magpie 3 cannot be a child of Magpie 1 because there are three differences
+
+---
+
+DM :-)
+
+^ *This fact is little known because I just made it up*
+-/
+
+def BirdString := List Bird
+
+def diffs : BirdString → BirdString → Nat
+  | _, _ => sorry
+
+def child : BirdString → BirdString → Bool
+  | _, _ => sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def grandchild : BirdString → BirdString → Bool 
+  | _, _ => sorry
+
+theorem diffs_upper_bound (s1 s2 : BirdString) : 
+  diffs s1 s2 ≤ min (List.length s1) (List.length s2) :=
+sorry
+
+theorem diffs_equal_zero (s : BirdString) :
+  diffs s s = 0 :=
+sorry
+
+theorem child_diffs_range (s1 s2 : BirdString) :
+  child s1 s2 = true → 1 ≤ diffs s1 s2 ∧ diffs s1 s2 ≤ 2 :=
+sorry
+
+theorem not_child_outside_range (s1 s2 : BirdString) :
+  (diffs s1 s2 > 2 ∨ diffs s1 s2 = 0) → child s1 s2 = false :=
+sorry
+
+theorem single_char_grandchild (b1 b2 : Bird) :
+  grandchild [b1] [b2] = (b1 = b2) :=
+sorry
+
+theorem grandchild_diffs_range (s1 s2 : BirdString) :
+  List.length s1 > 1 →
+  grandchild s1 s2 = true →
+  0 ≤ diffs s1 s2 ∧ diffs s1 s2 ≤ 4 :=
+sorry
+
+theorem not_grandchild_excess_diffs (s1 s2 : BirdString) :
+  List.length s1 > 1 →
+  diffs s1 s2 > 4 →
+  grandchild s1 s2 = false :=
+sorry
+
+/-
+info: True
+-/
+-- #guard_msgs in
+-- #eval child "BWBWBW" "BWBWBB"
+
+/-
+info: True
+-/
+-- #guard_msgs in
+-- #eval grandchild magpie1 "WWWWBB"
+
+/-
+info: False
+-/
+-- #guard_msgs in
+-- #eval child magpie1 magpie3
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

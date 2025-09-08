@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Write a program that will take a string of digits and give you all the possible consecutive slices of length `n` in that string.
   
   Raise an error if `n` is larger than the length of the string.
@@ -14,6 +15,7 @@ vc-description: |-
   ```
   [0, 1, 2, 3], [1, 2, 3, 4]
   ```
+  -/
 
 vc-preamble: |-
   def Digit := Nat
@@ -61,23 +63,23 @@ vc-theorems: |-
       ∀ d ∈ slice, d ≤ 9 :=
     sorry
   
-  /--
+  /-
   info: [[0, 1], [1, 2], [2, 3], [3, 4]]
   -/
-  #guard_msgs in
-  #eval series_slices "01234" 2
+  -- #guard_msgs in
+  -- #eval series_slices "01234" 2
   
-  /--
+  /-
   info: [[0, 1, 2, 3], [1, 2, 3, 4]]
   -/
-  #guard_msgs in
-  #eval series_slices "01234" 4
+  -- #guard_msgs in
+  -- #eval series_slices "01234" 4
   
-  /--
+  /-
   info: [[0, 1, 2, 3, 4]]
   -/
-  #guard_msgs in
-  #eval series_slices "01234" 5
+  -- #guard_msgs in
+  -- #eval series_slices "01234" 5
 
 vc-postamble: |-
   -- Apps difficulty: introductory

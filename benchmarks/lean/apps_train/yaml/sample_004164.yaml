@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Most football fans love it for the goals and excitement. Well, this Kata doesn't.
   You are to handle the referee's little notebook and count the players who were sent off for fouls and misbehavior.
   
@@ -15,6 +16,7 @@ vc-description: |-
   If the game was terminated by the referee for insufficient number of players, you are to stop the game immediately, and ignore any further possible cards.
   
   Note for the random tests: If a player that has already been sent off receives another card - ignore it.
+  -/
 
 vc-preamble: |-
 
@@ -58,23 +60,23 @@ vc-theorems: |-
     0 ≤ a ∧ a ≤ 11 ∧ 0 ≤ b ∧ b ≤ 11 :=
   sorry
   
-  /--
+  /-
   info: (11, 11)
   -/
-  #guard_msgs in
-  #eval men_still_standing []
+  -- #guard_msgs in
+  -- #eval men_still_standing []
   
-  /--
+  /-
   info: (10, 11)
   -/
-  #guard_msgs in
-  #eval men_still_standing ["A4Y", "A4Y"]
+  -- #guard_msgs in
+  -- #eval men_still_standing ["A4Y", "A4Y"]
   
-  /--
+  /-
   info: (6, 11)
   -/
-  #guard_msgs in
-  #eval men_still_standing ["A4R", "A2R", "A3R", "A6R", "A8R", "A10R", "A11R"]
+  -- #guard_msgs in
+  -- #eval men_still_standing ["A4R", "A2R", "A3R", "A6R", "A8R", "A10R", "A11R"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

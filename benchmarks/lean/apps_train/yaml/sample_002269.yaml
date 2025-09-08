@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a garland consisting of $n$ lamps. States of the lamps are represented by the string $s$ of length $n$. The $i$-th character of the string $s_i$ equals '0' if the $i$-th lamp is turned off or '1' if the $i$-th lamp is turned on. You are also given a positive integer $k$.
   
   In one move, you can choose one lamp and change its state (i.e. turn it on if it is turned off and vice versa).
@@ -44,6 +45,7 @@ vc-description: |-
   4
   0
   0
+  -/
 
 vc-preamble: |-
   def solve_garland (n k : Nat) (s : String) : Nat := sorry
@@ -80,23 +82,23 @@ vc-theorems: |-
     all_zeros s →
     solve_garland n k s ≤ (n + k - 1) / k := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve_garland 9 2 "010001010"
+  -- #guard_msgs in
+  -- #eval solve_garland 9 2 "010001010"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve_garland 9 3 "111100000"
+  -- #guard_msgs in
+  -- #eval solve_garland 9 3 "111100000"
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve_garland 1 1 "0"
+  -- #guard_msgs in
+  -- #eval solve_garland 1 1 "0"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

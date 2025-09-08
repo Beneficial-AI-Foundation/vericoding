@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Alice and Bob take turns playing a game, with Alice starting first.
   Initially, there is a number N on the chalkboard.  On each player's turn, that player makes a move consisting of:
   
@@ -21,6 +22,7 @@ vc-description: |-
   Note:
   
   1 <= N <= 1000
+  -/
 
 vc-preamble: |-
 
@@ -44,23 +46,23 @@ vc-theorems: |-
   theorem divisorGame_bounds (n : Nat) : 
     n = 1 ∨ n = 1000 → (divisorGame n = true ∨ divisorGame n = false) := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval divisorGame 2
+  -- #guard_msgs in
+  -- #eval divisorGame 2
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval divisorGame 3
+  -- #guard_msgs in
+  -- #eval divisorGame 3
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval divisorGame 4
+  -- #guard_msgs in
+  -- #eval divisorGame 4
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There was a big bank robbery in Tablecity. In order to catch the thief, the President called none other than Albert – Tablecity’s Chief of Police. Albert does not know where the thief is located, but he does know how he moves.
   
   Tablecity can be represented as 1000 × 2 grid, where every cell represents one district. Each district has its own unique name “(X, Y)”, where X and Y are the coordinates of the district in the grid. The thief’s movement is as 
@@ -46,6 +47,7 @@ vc-description: |-
   At the start of the second hour, the thief moves to district (2,2). Police officers will search districts (8,1) and (80,2) and will not find him.
   
   Since there is no further investigation by the police, the thief escaped!
+  -/
 
 vc-preamble: |-
   def Coordinates := (Nat × Nat × Nat × Nat)
@@ -98,17 +100,17 @@ vc-theorems: |-
       1 ≤ y2 ∧ y2 ≤ 2 :=
   sorry
   
-  /--
+  /-
   info: N
   -/
-  #guard_msgs in
-  #eval len []
+  -- #guard_msgs in
+  -- #eval len []
   
-  /--
+  /-
   info: N
   -/
-  #guard_msgs in
-  #eval len coords
+  -- #guard_msgs in
+  -- #eval len coords
 
 vc-postamble: |-
   -- Apps difficulty: interview

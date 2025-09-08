@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Caesar Ciphers are one of the most basic forms of encryption. It consists of a message and a key, and it shifts the letters of the message for the value of the key. 
   
   Read more about it here: https://en.wikipedia.org/wiki/Caesar_cipher
@@ -16,6 +17,7 @@ vc-description: |-
   A message `'Caesar Cipher'` and a key of `1` returns `'Dbftbs Djqifs'`.
   
   A message `'Caesar Cipher'` and a key of `-1` returns `'Bzdrzq Bhogdq'`.
+  -/
 
 vc-preamble: |-
 
@@ -43,23 +45,23 @@ vc-theorems: |-
   theorem encryptor_identity_keys (message : String) :
     encryptor 0 message = message ∧ encryptor 26 message = message := sorry
   
-  /--
+  /-
   info: 'Dbftbs Djqifs'
   -/
-  #guard_msgs in
-  #eval encryptor 1 "Caesar Cipher"
+  -- #guard_msgs in
+  -- #eval encryptor 1 "Caesar Cipher"
   
-  /--
+  /-
   info: 'Bzdrzq Bhogdq'
   -/
-  #guard_msgs in
-  #eval encryptor -1 "Caesar Cipher"
+  -- #guard_msgs in
+  -- #eval encryptor -1 "Caesar Cipher"
   
-  /--
+  /-
   info: 'Khoor, Zruog 123!'
   -/
-  #guard_msgs in
-  #eval encryptor 3 "Hello, World 123!"
+  -- #guard_msgs in
+  -- #eval encryptor 3 "Hello, World 123!"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

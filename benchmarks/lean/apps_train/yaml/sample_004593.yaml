@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The special score(ssc) of an array of integers will be the sum of each integer multiplied by its corresponding index plus one in the array.
   
   E.g.: with the array  ```[6, 12, -1]```
@@ -35,6 +36,7 @@ vc-description: |-
   Also you will never receive an array with the same element in all the positions like [1, 1, 1, 1 ,1], but you may have elements occuring twice or more like [1, 1, 1, 2, 3]
   
   Enjoy it!!
+  -/
 
 vc-preamble: |-
 

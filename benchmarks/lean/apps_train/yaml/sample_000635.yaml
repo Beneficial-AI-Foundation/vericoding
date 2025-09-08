@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   	Three numbers A, B and C are the inputs. Write a program to find second largest among them.
   
   -----Input-----
@@ -24,6 +25,7 @@ vc-description: |-
   120
   312
   10
+  -/
 
 vc-preamble: |-
 
@@ -50,23 +52,23 @@ vc-theorems: |-
     (h2: ∀ (x y: Int), x ∈ l → y ∈ l → x = y → x = y) :
     ∃ x, x ∈ l ∧ x < find_second_largest l := sorry
   
-  /--
+  /-
   info: 120
   -/
-  #guard_msgs in
-  #eval find_second_largest [120, 11, 400]
+  -- #guard_msgs in
+  -- #eval find_second_largest [120, 11, 400]
   
-  /--
+  /-
   info: 312
   -/
-  #guard_msgs in
-  #eval find_second_largest [10213, 312, 10]
+  -- #guard_msgs in
+  -- #eval find_second_largest [10213, 312, 10]
   
-  /--
+  /-
   info: 10
   -/
-  #guard_msgs in
-  #eval find_second_largest [10, 3, 450]
+  -- #guard_msgs in
+  -- #eval find_second_largest [10, 3, 450]
 
 vc-postamble: |-
   -- Apps difficulty: interview

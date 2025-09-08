@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Zonal Computing Olympiad 2012, 26 Nov 2011
   
   It's dinner time in Castle Camelot, and the fearsome Knights of the Round Table are clamouring for dessert. You, the chef, are in a soup.  There are N knights, including King Arthur, each with a different preference for dessert, but you cannot afford to make desserts for all of them.
@@ -29,6 +30,7 @@ vc-description: |-
   
   -----Sample Output-----
   4
+  -/
 
 vc-preamble: |-
   def List.sum : List Nat → Nat 
@@ -64,23 +66,23 @@ vc-definitions: |-
     helper costs true
 
 vc-theorems: |-
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval min_dessert_cost 5 [1, 2, 1, 2, 2]
+  -- #guard_msgs in
+  -- #eval min_dessert_cost 5 [1, 2, 1, 2, 2]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval min_dessert_cost 3 [1, 2, 3]
+  -- #guard_msgs in
+  -- #eval min_dessert_cost 3 [1, 2, 3]
   
-  /--
+  /-
   info: 20
   -/
-  #guard_msgs in
-  #eval min_dessert_cost 4 [5, 10, 15, 20]
+  -- #guard_msgs in
+  -- #eval min_dessert_cost 4 [5, 10, 15, 20]
 
 vc-postamble: |-
   -- Apps difficulty: interview

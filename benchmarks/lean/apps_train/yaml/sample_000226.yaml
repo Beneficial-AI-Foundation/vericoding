@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a non-negative integer num represented as a string, remove k digits from the number so that the new number is the smallest possible.
   
   Note:
@@ -23,6 +24,7 @@ vc-description: |-
   Input: num = "10", k = 2
   Output: "0"
   Explanation: Remove all the digits from the number and it is left with nothing which is 0.
+  -/
 
 vc-preamble: |-
 
@@ -50,23 +52,23 @@ vc-theorems: |-
     removeKDigits num num.length = "0"
     := sorry
   
-  /--
+  /-
   info: '1219'
   -/
-  #guard_msgs in
-  #eval remove_k_digits "1432219" 3
+  -- #guard_msgs in
+  -- #eval remove_k_digits "1432219" 3
   
-  /--
+  /-
   info: '200'
   -/
-  #guard_msgs in
-  #eval remove_k_digits "10200" 1
+  -- #guard_msgs in
+  -- #eval remove_k_digits "10200" 1
   
-  /--
+  /-
   info: '0'
   -/
-  #guard_msgs in
-  #eval remove_k_digits "10" 2
+  -- #guard_msgs in
+  -- #eval remove_k_digits "10" 2
 
 vc-postamble: |-
   -- Apps difficulty: interview

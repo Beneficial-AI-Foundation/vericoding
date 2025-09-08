@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ```if:javascript
   `Array.prototype.length` will give you the number of top-level elements in an array.
   ```
@@ -67,6 +68,7 @@ vc-description: |-
   
   Please note that `count()`, `eval()` and `COUNT_RECURSIVE` are disallowed - you should be able to implement the logic for `deep_c()` yourself ;)
   ```
+  -/
 
 vc-preamble: |-
 
@@ -108,23 +110,23 @@ vc-theorems: |-
     deep_count (NestedList.list [NestedList.list ([] : List (NestedList α)), NestedList.list ([] : List (NestedList α))]) = 2 :=
   sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval deep_count [1, 2, 3]
+  -- #guard_msgs in
+  -- #eval deep_count [1, 2, 3]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval deep_count ["x", "y", ["z"]]
+  -- #guard_msgs in
+  -- #eval deep_count ["x", "y", ["z"]]
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval deep_count [1, 2, [3, 4, [5]]]
+  -- #guard_msgs in
+  -- #eval deep_count [1, 2, [3, 4, [5]]]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

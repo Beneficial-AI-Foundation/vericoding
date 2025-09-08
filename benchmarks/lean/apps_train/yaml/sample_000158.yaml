@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   One way to serialize a binary tree is to use pre-order traversal. When we encounter a non-null node, we record the node's value. If it is a null node, we record using a sentinel value such as #.
   
        _9_
@@ -31,6 +32,7 @@ vc-description: |-
   
   Input: "9,#,#,1"
   Output: false
+  -/
 
 vc-preamble: |-
 
@@ -73,23 +75,23 @@ vc-theorems: |-
     (¬ is_valid_serialization "1") :=
   sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_valid_serialization "9,3,4,#,#,1,#,#,2,#,6,#,#"
+  -- #guard_msgs in
+  -- #eval is_valid_serialization "9,3,4,#,#,1,#,#,2,#,6,#,#"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_valid_serialization "1,#"
+  -- #guard_msgs in
+  -- #eval is_valid_serialization "1,#"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_valid_serialization "9,#,#,1"
+  -- #guard_msgs in
+  -- #eval is_valid_serialization "9,#,#,1"
 
 vc-postamble: |-
   -- Apps difficulty: interview

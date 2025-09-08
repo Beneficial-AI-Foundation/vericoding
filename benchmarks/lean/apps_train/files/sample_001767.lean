@@ -1,0 +1,108 @@
+/-
+Implement the class TweetCounts that supports two methods:
+1. recordTweet(string tweetName, int time)
+
+Stores the tweetName at the recorded time (in seconds).
+
+2. getTweetCountsPerFrequency(string freq, string tweetName, int startTime, int endTime)
+
+Returns the total number of occurrences for the given tweetName per minute, hour, or day (depending on freq) starting from the startTime (in seconds) and ending at the endTime (in seconds).
+freq is always minute, hour or day, representing the time interval to get the total number of occurrences for the given tweetName.
+The first time interval always starts from the startTime, so the time intervals are [startTime, startTime + delta*1>,  [startTime + delta*1, startTime + delta*2>, [startTime + delta*2, startTime + delta*3>, ... , [startTime + delta*i, min(startTime + delta*(i+1), endTime + 1)> for some non-negative number i and delta (which depends on freq).  
+
+Example:
+Input
+["TweetCounts","recordTweet","recordTweet","recordTweet","getTweetCountsPerFrequency","getTweetCountsPerFrequency","recordTweet","getTweetCountsPerFrequency"]
+[[],["tweet3",0],["tweet3",60],["tweet3",10],["minute","tweet3",0,59],["minute","tweet3",0,60],["tweet3",120],["hour","tweet3",0,210]]
+
+Output
+[null,null,null,null,[2],[2,1],null,[4]]
+
+Explanation
+TweetCounts tweetCounts = new TweetCounts();
+tweetCounts.recordTweet("tweet3", 0);
+tweetCounts.recordTweet("tweet3", 60);
+tweetCounts.recordTweet("tweet3", 10);                             // All tweets correspond to "tweet3" with recorded times at 0, 10 and 60.
+tweetCounts.getTweetCountsPerFrequency("minute", "tweet3", 0, 59); // return [2]. The frequency is per minute (60 seconds), so there is one interval of time: 1) [0, 60> - > 2 tweets.
+tweetCounts.getTweetCountsPerFrequency("minute", "tweet3", 0, 60); // return [2, 1]. The frequency is per minute (60 seconds), so there are two intervals of time: 1) [0, 60> - > 2 tweets, and 2) [60,61> - > 1 tweet.
+tweetCounts.recordTweet("tweet3", 120);                            // All tweets correspond to "tweet3" with recorded times at 0, 10, 60 and 120.
+tweetCounts.getTweetCountsPerFrequency("hour", "tweet3", 0, 210);  // return [4]. The frequency is per hour (3600 seconds), so there is one interval of time: 1) [0, 211> - > 4 tweets.
+
+Constraints:
+
+There will be at most 10000 operations considering both recordTweet and getTweetCountsPerFrequency.
+0 <= time, startTime, endTime <= 10^9
+0 <= endTime - startTime <= 10^4
+-/
+
+def defaultTweetMap : TweetMap := fun _ => []
+
+instance : Inhabited TweetCounts where
+  default := ⟨defaultTweetMap⟩
+
+def List.sorted (l : List Int) : Prop :=
+  ∀ i j, i < j → j < l.length → l[i]! ≤ l[j]!
+
+def List.isPermOf (l₁ l₂ : List Int) : Prop :=
+  l₁.length = l₂.length ∧ ∀ x, (l₁.filter (· = x)).length = (l₂.filter (· = x)).length
+
+/- Records a tweet -/
+
+def TweetCounts.recordTweet (tc : TweetCounts) (name : String) (time : Int) : TweetCounts :=
+sorry
+
+/- Gets tweet counts per frequency -/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def TweetCounts.getTweetCountsPerFrequency (tc : TweetCounts) (freq : String) (name : String) (startTime : Int) (endTime : Int) : List Int :=
+sorry
+
+/- Counting tweets in a time window returns non-empty list with non-negative counts that sum to number of tweets in window -/
+
+theorem tweet_count_properties (times : List Int) (name : String) (freq : String) (delta : Int)
+    (h1 : times.length > 0)
+    (h2 : delta > 0)
+    (h3 : delta ≤ 1000)
+    (h4 : ∀ t ∈ times, t ≥ 0 ∧ t ≤ 100000) :
+    let tc : TweetCounts := default
+    let tc' := times.foldl (fun acc t => TweetCounts.recordTweet acc name t) tc
+    let minTime := times.minimum?.get!
+    let result := tc'.getTweetCountsPerFrequency freq name minTime (minTime + delta)
+    result.length > 0 ∧
+    (∀ count ∈ result, count ≥ 0) ∧
+    result.length = (times.filter (fun t => minTime ≤ t ∧ t ≤ minTime + delta)).length :=
+sorry
+
+/- Recording a single tweet should store exactly that tweet -/
+
+theorem single_tweet_record (time : Int) (name : String)
+    (h1 : time ≥ 0)
+    (h2 : time ≤ 100000) :
+    let tc : TweetCounts := default
+    let tc' := TweetCounts.recordTweet tc name time
+    tc'.tweets name = [time] :=
+sorry
+
+/- Tweet times should be stored in sorted order -/
+
+theorem sorted_tweets (times : List Int) (name : String)
+    (h1 : times.length ≥ 2)
+    (h2 : times.length ≤ 100)
+    (h3 : ∀ t ∈ times, t ≥ 0 ∧ t ≤ 100000) :
+    let tc : TweetCounts := default
+    let tc' := times.foldl (fun acc t => TweetCounts.recordTweet acc name t) tc
+    (tc'.tweets name).sorted ∧ 
+    (tc'.tweets name).isPermOf times :=
+sorry
+
+/- Getting counts for unknown tweet name should throw error -/
+
+theorem unknown_tweet_name_error (name : String) :
+    let tc : TweetCounts := default
+    ¬(∃ result, tc.getTweetCountsPerFrequency "minute" name 0 10 = result) :=
+sorry
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

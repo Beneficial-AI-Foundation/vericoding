@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Little Petya likes points a lot. Recently his mom has presented him n points lying on the line OX. Now Petya is wondering in how many ways he can choose three distinct points so that the distance between the two farthest of them doesn't exceed d.
   
   Note that the order of the points inside the group of three chosen points doesn't matter.
@@ -44,6 +45,7 @@ vc-description: |-
   In the seconds sample only 2 groups of three points meet our conditions: {-3, -2, -1} and {-2, -1, 0}.
   
   In the third sample only one group does: {1, 10, 20}.
+  -/
 
 vc-preamble: |-
 
@@ -64,23 +66,23 @@ vc-theorems: |-
   theorem small_lists_give_zero (n: Nat) (d: Nat) (points: List Int) :
     n ≤ 2 → count_triples_within_dist n d points = 0 := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval count_triples_within_dist 4 3 [1, 2, 3, 4]
+  -- #guard_msgs in
+  -- #eval count_triples_within_dist 4 3 [1, 2, 3, 4]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval count_triples_within_dist 4 2 [-3, -2, -1, 0]
+  -- #guard_msgs in
+  -- #eval count_triples_within_dist 4 2 [-3, -2, -1, 0]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval count_triples_within_dist 5 19 [1, 10, 20, 30, 50]
+  -- #guard_msgs in
+  -- #eval count_triples_within_dist 5 19 [1, 10, 20, 30, 50]
 
 vc-postamble: |-
   -- Apps difficulty: competition

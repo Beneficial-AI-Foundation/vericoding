@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   Given an array `arr`, find the maximal value of `k` such `a[i] mod k` = `a[j] mod k` for all valid values of i and j.
   
@@ -31,6 +32,7 @@ vc-description: |-
   For `arr = [5, 2, 8]`, the output should be `3`.
   
   `5 % 3 == 2 % 3 == 8 % 3 == 2`
+  -/
 
 vc-preamble: |-
 
@@ -60,23 +62,23 @@ vc-theorems: |-
   theorem all_same_numbers_return_minus_one (arr : List Nat) (h : arr ≠ []) :
     (∀ x y, x ∈ arr → y ∈ arr → x = y) → finding_k arr = -1 := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval finding_k [5, 2, 8]
+  -- #guard_msgs in
+  -- #eval finding_k [5, 2, 8]
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval finding_k [1, 1, 1]
+  -- #guard_msgs in
+  -- #eval finding_k [1, 1, 1]
   
-  /--
+  /-
   info: 90
   -/
-  #guard_msgs in
-  #eval finding_k [10, 100]
+  -- #guard_msgs in
+  -- #eval finding_k [10, 100]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

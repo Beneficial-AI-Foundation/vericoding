@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your task is to calculate ab mod 1337 where a is a positive integer and b is an extremely large positive integer given in the form of an array.
   
   Example1:
@@ -16,6 +17,7 @@ vc-description: |-
   Result: 1024
   
   Credits:Special thanks to @Stomach_ache for adding this problem and creating all test cases.
+  -/
 
 vc-preamble: |-
   def super_pow (base : Int) (exponent_digits : List Int) : Int :=
@@ -58,23 +60,23 @@ vc-theorems: |-
     super_pow 1 exp_digits = 1 :=
   sorry
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval super_pow 2 [3]
+  -- #guard_msgs in
+  -- #eval super_pow 2 [3]
   
-  /--
+  /-
   info: 1024
   -/
-  #guard_msgs in
-  #eval super_pow 2 [1, 0]
+  -- #guard_msgs in
+  -- #eval super_pow 2 [1, 0]
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval super_pow 3 [2]
+  -- #guard_msgs in
+  -- #eval super_pow 3 [2]
 
 vc-postamble: |-
   -- Apps difficulty: interview

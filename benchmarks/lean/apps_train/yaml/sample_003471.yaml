@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your job is to change the given string `s` using a non-negative integer `n`.
   
   Each bit in `n` will specify whether or not to swap the case for each alphabetic character in `s`: if the bit is `1`, swap the case; if its `0`, leave it as is. When you finished with the last bit of `n`, start again with the first bit.
@@ -23,6 +24,7 @@ vc-description: |-
   swap('', 11345)  -->  ''
   swap('the lord of the rings', 0)  -->  'the lord of the rings'
   ```
+  -/
 
 vc-preamble: |-
   def isAlpha (c : Char) : Bool :=
@@ -67,23 +69,23 @@ vc-theorems: |-
       (swap s n).get pos = s.get pos) :=
   sorry
   
-  /--
+  /-
   info: 'heLLO wORLd!'
   -/
-  #guard_msgs in
-  #eval swap "Hello world!" 11
+  -- #guard_msgs in
+  -- #eval swap "Hello world!" 11
   
-  /--
+  /-
   info: 'GooD MorNIng'
   -/
-  #guard_msgs in
-  #eval swap "gOOd MOrniNg" 7864
+  -- #guard_msgs in
+  -- #eval swap "gOOd MOrniNg" 7864
   
-  /--
+  /-
   info: 'the lord of the rings'
   -/
-  #guard_msgs in
-  #eval swap "the lord of the rings" 0
+  -- #guard_msgs in
+  -- #eval swap "the lord of the rings" 0
 
 vc-postamble: |-
   -- Apps difficulty: introductory

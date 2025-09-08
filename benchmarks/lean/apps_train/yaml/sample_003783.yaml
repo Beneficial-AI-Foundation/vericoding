@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## The galactic games have begun!
   
   It's the galactic games! Beings of all worlds come together to compete in several interesting sports, like nroogring, fredling and buzzing (the beefolks love the last one). However, there's also the traditional marathon run.
@@ -18,6 +19,7 @@ vc-description: |-
   solution (10) # => 23 = 3 + 5 + 6 + 9
   solution (20) # => 78 = 3 + 5 + 6 + 9 + 10 + 12 + 15 + 18
   ```
+  -/
 
 vc-preamble: |-
   def solution (n : Nat) : Nat :=
@@ -52,23 +54,23 @@ vc-theorems: |-
   
   end Ex
   
-  /--
+  /-
   info: 23
   -/
-  #guard_msgs in
-  #eval solution 10
+  -- #guard_msgs in
+  -- #eval solution 10
   
-  /--
+  /-
   info: 78
   -/
-  #guard_msgs in
-  #eval solution 20
+  -- #guard_msgs in
+  -- #eval solution 20
   
-  /--
+  /-
   info: 2318
   -/
-  #guard_msgs in
-  #eval solution 100
+  -- #guard_msgs in
+  -- #eval solution 100
 
 vc-postamble: |-
   -- Apps difficulty: introductory

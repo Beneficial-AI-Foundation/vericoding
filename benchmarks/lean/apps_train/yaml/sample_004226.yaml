@@ -1,7 +1,9 @@
 vc-description: |-
+  /-
   Return the Nth Even Number
   
   The input will not be 0.
+  -/
 
 vc-preamble: |-
 
@@ -25,23 +27,23 @@ vc-theorems: |-
   theorem nth_even_reverses_with_division {n : Nat} (h1 : n > 0) (h2 : n ≤ 10000) :
     (nth_even n) / 2 + 1 = n := sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval nth_even 1
+  -- #guard_msgs in
+  -- #eval nth_even 1
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval nth_even 2
+  -- #guard_msgs in
+  -- #eval nth_even 2
   
-  /--
+  /-
   info: 198
   -/
-  #guard_msgs in
-  #eval nth_even 100
+  -- #guard_msgs in
+  -- #eval nth_even 100
 
 vc-postamble: |-
   -- Apps difficulty: introductory

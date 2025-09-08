@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a string S of length n with each character being one of the first m lowercase English letters. 
   
   Calculate how many different strings T of length n composed from the first m lowercase English letters exist such that the length of LCS (longest common subsequence) between S and T is n - 1.
@@ -51,6 +52,7 @@ vc-description: |-
   For the second sample, the 11 possible strings T are: aaa, aac, aba, abb, abc, aca, acb, baa, bab, caa, cab.
   
   For the third sample, the only possible string T is b.
+  -/
 
 vc-preamble: |-
 
@@ -87,23 +89,23 @@ vc-theorems: |-
     calculate_lcs_strings n m s > 0 :=
   sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval calculate_lcs_strings 3 3 "aaa"
+  -- #guard_msgs in
+  -- #eval calculate_lcs_strings 3 3 "aaa"
   
-  /--
+  /-
   info: 11
   -/
-  #guard_msgs in
-  #eval calculate_lcs_strings 3 3 "aab"
+  -- #guard_msgs in
+  -- #eval calculate_lcs_strings 3 3 "aab"
   
-  /--
+  /-
   info: 789
   -/
-  #guard_msgs in
-  #eval calculate_lcs_strings 10 9 "abacadefgh"
+  -- #guard_msgs in
+  -- #eval calculate_lcs_strings 10 9 "abacadefgh"
 
 vc-postamble: |-
   -- Apps difficulty: competition

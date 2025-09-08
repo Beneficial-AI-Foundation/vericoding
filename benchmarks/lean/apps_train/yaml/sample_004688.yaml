@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Two numbers are **relatively prime** if their greatest common factor is 1; in other words: if they cannot be divided by any other common numbers than 1.
   
   `13, 16, 9, 5, and 119` are all relatively prime because they share no common factors, except for 1. To see this, I will show their factorizations:
@@ -24,6 +25,7 @@ vc-description: |-
   relatively_prime(210, [15, 100, 2222222, 6, 4, 12369, 99])
   >> []
   ```
+  -/
 
 vc-preamble: |-
 

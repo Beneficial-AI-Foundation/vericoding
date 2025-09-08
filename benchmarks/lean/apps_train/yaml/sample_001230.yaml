@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There is a haunted town called HauntedLand. The structure of HauntedLand can be thought of as a grid of size n * m. There is a house in each cell of the grid. Some people have fled from their houses because they were haunted. '.' represents a haunted house whereas '*' represents a house in which people are living.
   
   One day, Devu, the famous perfumer came to town with a perfume whose smell can hypnotize people. Devu can put the perfume in at most one of the houses. This takes Devu one second. Then, the perfume spreads from one house (need not be inhabited by people) to all its adjacent houses in one second, and the cycle continues. Two houses are said to be a adjacent to each other, if they share a corner or an edge, i.e., each house (except those on the boundaries) will have 8 adjacent houses.
@@ -40,6 +41,7 @@ vc-description: |-
   
   Now, it will take Devu 1 secs to put perfume. In the next second, the perfume will spread to all of its adjacent cells, thus making each house haunted.
   So, the answer is 2.
+  -/
 
 vc-preamble: |-
   def Grid := List String
@@ -85,23 +87,23 @@ vc-theorems: |-
     (h2 : ∃ (row : String), List.contains grid row ∧ row.contains '*') :
     solveHauntedLand grid ≥ 1 := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve_haunted_land ["*.", ".."]
+  -- #guard_msgs in
+  -- #eval solve_haunted_land ["*.", ".."]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval solve_haunted_land [".*..", "***.", ".*.."]
+  -- #guard_msgs in
+  -- #eval solve_haunted_land [".*..", "***.", ".*.."]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve_haunted_land ["...", "..."]
+  -- #guard_msgs in
+  -- #eval solve_haunted_land ["...", "..."]
 
 vc-postamble: |-
   -- Apps difficulty: interview

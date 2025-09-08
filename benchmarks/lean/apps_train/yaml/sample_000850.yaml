@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ZCO is approaching, and you want to be well prepared!  
   There are $N$ topics to cover and the $i^{th}$ topic takes $H_i$ hours to prepare (where $1 \le i \le N$). You have only $M$ days left to prepare, and you want to utilise this time wisely. You know that you can't spend more than $S$ hours in a day preparing, as you get tired after that. You don't want to study more than one topic in a day, and also, don't want to spend more than two days on any topic, as you feel that this is inefficient.  
   Given these constraints, can you find the maximum number of topics you can prepare, if you choose the topics wisely?
@@ -40,6 +41,7 @@ vc-description: |-
   Testcase 2:
   
   You can choose topics $1$, $2$, $4$, and $5$. Each of them will consume one day each. Thus you'll be able to cover $4$ topics.
+  -/
 
 vc-preamble: |-
   def max_topics_prepared (N M S : Nat) (topic_hours : List Nat) : Nat := sorry
@@ -74,17 +76,17 @@ vc-theorems: |-
     max_topics_prepared N M S topic_hours ≤ 
       (List.countP (fun h => h/S ≤ 2) topic_hours) := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval max_topics_prepared 5 4 10 [10, 24, 30, 19, 40]
+  -- #guard_msgs in
+  -- #eval max_topics_prepared 5 4 10 [10, 24, 30, 19, 40]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval max_topics_prepared 5 4 16 [7, 16, 35, 10, 15]
+  -- #guard_msgs in
+  -- #eval max_topics_prepared 5 4 16 [7, 16, 35, 10, 15]
 
 vc-postamble: |-
   -- Apps difficulty: interview

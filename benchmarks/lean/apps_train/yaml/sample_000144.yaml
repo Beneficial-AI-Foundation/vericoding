@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an encoded string, return it's decoded string.
   
   The encoding rule is: k[encoded_string], where the encoded_string inside the square brackets is being repeated exactly k times. Note that k is guaranteed to be a positive integer.
@@ -12,6 +13,7 @@ vc-description: |-
   s = "3[a]2[bc]", return "aaabcbc".
   s = "3[a2[c]]", return "accaccacc".
   s = "2[abc]3[cd]ef", return "abcabccdcdcdef".
+  -/
 
 vc-preamble: |-
 
@@ -42,23 +44,23 @@ vc-theorems: |-
   theorem decode_string_simple_repeat (c: Char) (h: c.isAlpha) :
     decode_string s!"2[{String.singleton c}]" = String.singleton c ++ String.singleton c := sorry
   
-  /--
+  /-
   info: 'aaabcbc'
   -/
-  #guard_msgs in
-  #eval decode_string "3[a]2[bc]"
+  -- #guard_msgs in
+  -- #eval decode_string "3[a]2[bc]"
   
-  /--
+  /-
   info: 'accaccacc'
   -/
-  #guard_msgs in
-  #eval decode_string "3[a2[c]]"
+  -- #guard_msgs in
+  -- #eval decode_string "3[a2[c]]"
   
-  /--
+  /-
   info: 'abcabccdcdcdef'
   -/
-  #guard_msgs in
-  #eval decode_string "2[abc]3[cd]ef"
+  -- #guard_msgs in
+  -- #eval decode_string "2[abc]3[cd]ef"
 
 vc-postamble: |-
   -- Apps difficulty: interview

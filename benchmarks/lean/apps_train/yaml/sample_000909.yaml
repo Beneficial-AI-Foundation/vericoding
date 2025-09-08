@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef Two and Chef Ten are playing a game with a number $X$. In one turn, they can multiply $X$ by $2$. The goal of the game is to make $X$ divisible by $10$.
   Help the Chefs find the smallest number of turns necessary to win the game (it may be possible to win in zero turns) or determine that it is impossible.
   
@@ -26,6 +27,7 @@ vc-description: |-
   0
   1
   -1
+  -/
 
 vc-preamble: |-
 
@@ -50,23 +52,23 @@ vc-theorems: |-
     x ≥ 0 → x % 5 ≠ 0 → min_turns_to_divisible_by_10 x = -1 :=
     sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_turns_to_divisible_by_10 10
+  -- #guard_msgs in
+  -- #eval min_turns_to_divisible_by_10 10
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval min_turns_to_divisible_by_10 25
+  -- #guard_msgs in
+  -- #eval min_turns_to_divisible_by_10 25
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval min_turns_to_divisible_by_10 1
+  -- #guard_msgs in
+  -- #eval min_turns_to_divisible_by_10 1
 
 vc-postamble: |-
   -- Apps difficulty: interview

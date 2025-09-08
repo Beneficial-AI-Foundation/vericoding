@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We have an integer array with unique elements and we want to do the permutations that have an element fixed, in other words, these permutations should have a certain element at the same position than the original.
   
   These permutations will be called: **permutations with one fixed point**.
@@ -62,6 +63,7 @@ vc-description: |-
   Ruby versin will be released soon.
   
   #Note: This kata was published previously but in a version not well optimized.
+  -/
 
 vc-preamble: |-
 
@@ -89,23 +91,23 @@ vc-theorems: |-
     0 < k → k < n → 
     fixed_points_perms n k = fixed_points_perms (n-1) (k-1) * n / k := sorry
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval fixed_points_perms 4 1
+  -- #guard_msgs in
+  -- #eval fixed_points_perms 4 1
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval fixed_points_perms 4 2
+  -- #guard_msgs in
+  -- #eval fixed_points_perms 4 2
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval fixed_points_perms 4 0
+  -- #guard_msgs in
+  -- #eval fixed_points_perms 4 0
 
 vc-postamble: |-
   -- Apps difficulty: introductory

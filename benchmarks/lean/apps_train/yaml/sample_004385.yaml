@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    Smartphones software security has become a growing concern related to mobile telephony. It is particularly important as it relates to the security of available personal information.
   
@@ -51,6 +52,7 @@ vc-description: |-
    - `[output]` a string
   
     The original phone number before encryption, or `"impossible"` if the initial number can not be calculated.
+  -/
 
 vc-preamble: |-
 
@@ -83,23 +85,23 @@ vc-theorems: |-
     result.data.length > 0 ∧
     (result.data.length > 0 → result.data[0]! ≠ '0') := sorry
   
-  /--
+  /-
   info: '123'
   -/
-  #guard_msgs in
-  #eval decrypt "353"
+  -- #guard_msgs in
+  -- #eval decrypt "353"
   
-  /--
+  /-
   info: '738496'
   -/
-  #guard_msgs in
-  #eval decrypt "123456"
+  -- #guard_msgs in
+  -- #eval decrypt "123456"
   
-  /--
+  /-
   info: 'impossible'
   -/
-  #guard_msgs in
-  #eval decrypt "4334"
+  -- #guard_msgs in
+  -- #eval decrypt "4334"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

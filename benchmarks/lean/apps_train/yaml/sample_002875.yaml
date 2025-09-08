@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Make a program that filters a list of strings and returns a list with only your friends name in it.
   
   If a name has exactly 4 letters in it, you can be sure that it has to be a friend of yours! Otherwise, you can be sure he's not...
@@ -8,6 +9,7 @@ vc-description: |-
   i.e.
   
   Note: keep the original order of the names in the output.
+  -/
 
 vc-preamble: |-
 
@@ -36,23 +38,23 @@ vc-theorems: |-
     (∀ n ∈ result, n ∈ names) := by
     sorry
   
-  /--
+  /-
   info: ['Ryan', 'Mark']
   -/
-  #guard_msgs in
-  #eval friend ["Ryan", "Kieran", "Mark"]
+  -- #guard_msgs in
+  -- #eval friend ["Ryan", "Kieran", "Mark"]
   
-  /--
+  /-
   info: ['Ryan']
   -/
-  #guard_msgs in
-  #eval friend ["Ryan", "Jimmy", "123", "4", "Cool Man"]
+  -- #guard_msgs in
+  -- #eval friend ["Ryan", "Jimmy", "123", "4", "Cool Man"]
   
-  /--
+  /-
   info: ['Love', 'Your', 'Face']
   -/
-  #guard_msgs in
-  #eval friend ["Love", "Your", "Face", "1"]
+  -- #guard_msgs in
+  -- #eval friend ["Love", "Your", "Face", "1"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

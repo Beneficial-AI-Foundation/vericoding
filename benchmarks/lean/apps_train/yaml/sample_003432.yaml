@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this kata, we want to discover a small property of numbers. 
   We say that a number is a **dd** number if it contains d occurences of a digit d, (d is in [1,9]).
   
@@ -11,6 +12,7 @@ vc-description: |-
   ## Task 
   
   Your task is to implement a function called `is_dd` (`isDd` in javascript) that takes a **positive** number (type depends on the language) and returns a boolean corresponding to whether the number is a **dd** number or not.
+  -/
 
 vc-preamble: |-
   def is_dd (n : Nat) : Bool := sorry 
@@ -35,29 +37,29 @@ vc-theorems: |-
   theorem count_digit_bounds (n d : Nat) :
     countDigit n d ≤ (digits n).length := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_dd 664444309
+  -- #guard_msgs in
+  -- #eval is_dd 664444309
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_dd 122
+  -- #guard_msgs in
+  -- #eval is_dd 122
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_dd 30313
+  -- #guard_msgs in
+  -- #eval is_dd 30313
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_dd 5023011
+  -- #guard_msgs in
+  -- #eval is_dd 5023011
 
 vc-postamble: |-
   -- Apps difficulty: introductory

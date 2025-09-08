@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The GoC Timber Mafia is notorious for its deforestation
   activities in the forests near Siruseri. These activities have
   increased multifold after the death of the bandit who used to
@@ -72,6 +73,7 @@ vc-description: |-
   -----Sample Output-----
   76
   20
+  -/
 
 vc-preamble: |-
   def sumList (xs : List Nat) : Nat :=

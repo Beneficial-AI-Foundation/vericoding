@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this Kata, you will remove the left-most duplicates from a list of integers and return the result.
   
   ```python
@@ -10,6 +11,7 @@ vc-description: |-
   More examples can be found in the test cases. 
   
   Good luck!
+  -/
 
 vc-preamble: |-
 
@@ -44,23 +46,23 @@ vc-theorems: |-
     solve [x, x] = [x] :=
   sorry
   
-  /--
+  /-
   info: [4, 6, 3]
   -/
-  #guard_msgs in
-  #eval solve [3, 4, 4, 3, 6, 3]
+  -- #guard_msgs in
+  -- #eval solve [3, 4, 4, 3, 6, 3]
   
-  /--
+  /-
   info: [1, 2, 3]
   -/
-  #guard_msgs in
-  #eval solve [1, 2, 1, 2, 1, 2, 3]
+  -- #guard_msgs in
+  -- #eval solve [1, 2, 1, 2, 1, 2, 3]
   
-  /--
+  /-
   info: [4, 5, 2, 1]
   -/
-  #guard_msgs in
-  #eval solve [1, 1, 4, 5, 1, 2, 1]
+  -- #guard_msgs in
+  -- #eval solve [1, 1, 4, 5, 1, 2, 1]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

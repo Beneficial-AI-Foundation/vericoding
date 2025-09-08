@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Dreamoon likes coloring cells very much.
   
   There is a row of $n$ cells. Initially, all cells are empty (don't contain any color). Cells are numbered from $1$ to $n$.
@@ -39,6 +40,7 @@ vc-description: |-
   
   Output
   -1
+  -/
 
 vc-preamble: |-
   def List.sum : List Nat → Nat 
@@ -76,23 +78,23 @@ vc-theorems: |-
     (∀ x ∈ result, x > 0 ∧ x ≤ n) ∧
     (∀ i < result.length - 1, result[i]! < result[i+1]!) := sorry
   
-  /--
+  /-
   info: [1, 2, 4]
   -/
-  #guard_msgs in
-  #eval solve_coloring 5 3 [3, 2, 2]
+  -- #guard_msgs in
+  -- #eval solve_coloring 5 3 [3, 2, 2]
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval solve_coloring 10 1 [1]
+  -- #guard_msgs in
+  -- #eval solve_coloring 10 1 [1]
   
-  /--
+  /-
   info: [1]
   -/
-  #guard_msgs in
-  #eval solve_coloring 1 1 [1]
+  -- #guard_msgs in
+  -- #eval solve_coloring 1 1 [1]
 
 vc-postamble: |-
   -- Apps difficulty: competition

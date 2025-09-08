@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Special Numbers 
   Mani has encountered a problem on Special numbers in Bytecode. A number S is called a special number if its digits are in an arithmetic progression modulo 10. He has an array consisting of all numbers from 1 to N and needs your help to find the number of special numbers in the array. He has promised you a significant share of the prize money if he wins the contest :p 
   Note:
@@ -24,6 +25,7 @@ vc-description: |-
   Output
   
   102
+  -/
 
 vc-preamble: |-
 
@@ -50,23 +52,23 @@ vc-theorems: |-
   theorem basic_properties {n: Nat} (h: n ≥ 1 ∧ n ≤ 9999) :
     count_special_numbers n ≥ 0 ∧ count_special_numbers n ≤ n := sorry
   
-  /--
+  /-
   info: 102
   -/
-  #guard_msgs in
-  #eval count_special_numbers 123
+  -- #guard_msgs in
+  -- #eval count_special_numbers 123
   
-  /--
+  /-
   info: 99
   -/
-  #guard_msgs in
-  #eval count_special_numbers 99
+  -- #guard_msgs in
+  -- #eval count_special_numbers 99
   
-  /--
+  /-
   info: 55
   -/
-  #guard_msgs in
-  #eval count_special_numbers 55
+  -- #guard_msgs in
+  -- #eval count_special_numbers 55
 
 vc-postamble: |-
   -- Apps difficulty: interview

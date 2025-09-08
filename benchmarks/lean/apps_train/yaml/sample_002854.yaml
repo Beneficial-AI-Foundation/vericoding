@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Task:
   You have to create a function `isPronic` to check whether the argument passed is a Pronic Number and return true if it is & false otherwise.
   
@@ -17,6 +18,7 @@ vc-description: |-
        20 = 4 × 5   // ∴ 20 is a Pronic Number
        30 = 5 × 6   // ∴ 30 is a Pronic Number
        42 = 6 × 7   // ∴ 42 is a Pronic Number
+  -/
 
 vc-preamble: |-
 
@@ -41,23 +43,23 @@ vc-theorems: |-
     is_pronic (n * (n + 1)) :=
     sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_pronic 2
+  -- #guard_msgs in
+  -- #eval is_pronic 2
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_pronic 3
+  -- #guard_msgs in
+  -- #eval is_pronic 3
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_pronic -3
+  -- #guard_msgs in
+  -- #eval is_pronic -3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   This is another problem about Indraneel's library. His library has one long shelf. His books are numbered and he identifies the books by their number. Each book has a distinct number.
   He has lost many books, since many of his friends borrow his books and never bother to return them. He does not want to lose any more books and has decided to keep a record of all books that he lends to his friends. To make the task of borrowing a book a little difficult, he has given the following instructions to his friends: when they borrow a book, they must record in a register its position from the left among the books currently on the shelf.
   Suppose there are $5$ books in the library and they are arranged as follows:
@@ -28,6 +29,7 @@ vc-description: |-
   -----Sample Output-----
   42
   3
+  -/
 
 vc-preamble: |-
 

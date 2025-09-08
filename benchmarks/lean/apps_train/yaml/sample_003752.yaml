@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    A lock has `n` buttons in it, numbered from `1 to n`. To open the lock, you have to press all buttons in some order, i.e. a key to the lock is a permutation of the first `n` integers. If you push the right button in the right order, it will be pressed into the lock. Otherwise all pressed buttons will pop out. When all buttons are pressed into the lock, it opens.
   
@@ -50,6 +51,7 @@ vc-description: |-
    - `[output]` an integer
   
    The number of times you've got to push buttons in the `worst-case scenario`.
+  -/
 
 vc-preamble: |-
 
@@ -70,23 +72,23 @@ vc-theorems: |-
   theorem press_button_fixed_points :
     press_button 0 = 0 ∧ press_button 1 = 1 := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval press_button 1
+  -- #guard_msgs in
+  -- #eval press_button 1
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval press_button 3
+  -- #guard_msgs in
+  -- #eval press_button 3
   
-  /--
+  /-
   info: 14
   -/
-  #guard_msgs in
-  #eval press_button 4
+  -- #guard_msgs in
+  -- #eval press_button 4
 
 vc-postamble: |-
   -- Apps difficulty: introductory

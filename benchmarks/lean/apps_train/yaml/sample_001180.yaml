@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The EEE classes are so boring that the students play games rather than paying attention during the lectures. Harsha and Dubey are playing one such game.
   
   The game involves counting the number of anagramic pairs of a given string (you can read about anagrams from here). Right now Harsha is winning. Write a program to help Dubey count this number quickly and win the game!
@@ -42,6 +43,7 @@ vc-description: |-
   Hence the answer is 2.
   
   Similarly for other strings as well.
+  -/
 
 vc-preamble: |-
   def find_anagram_pairs (s : String) : Nat :=

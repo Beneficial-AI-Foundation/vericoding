@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Right in the Center
   
   _This is inspired by one of Nick Parlante's exercises on the [CodingBat](https://codingbat.com/java) online code practice tool._
@@ -18,6 +19,7 @@ vc-description: |-
       is_in_middle("AAabcBB")  ->  True
       is_in_middle("AabcBB")   ->  True
       is_in_middle("AabcBBB")  ->  False
+  -/
 
 vc-preamble: |-
   def is_in_middle (s : String) : Bool := sorry
@@ -40,23 +42,23 @@ vc-theorems: |-
     let s := String.mk (List.replicate n 'A') ++ "abc" ++ String.mk (List.replicate n 'A')
     is_in_middle s = true := sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval is_in_middle "AAabcBB"
+  -- #guard_msgs in
+  -- #eval is_in_middle "AAabcBB"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_in_middle "AabcBBB"
+  -- #guard_msgs in
+  -- #eval is_in_middle "AabcBBB"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval is_in_middle ""
+  -- #guard_msgs in
+  -- #eval is_in_middle ""
 
 vc-postamble: |-
   -- Apps difficulty: introductory

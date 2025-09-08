@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a standard english sentence passed in as a string, write a method that will return a sentence made up of the same words, but sorted by their first letter. However, the method of sorting has a twist to it:
   * All words that begin with a lower case letter should be at the beginning of the sorted sentence, and sorted in ascending order.
   * All words that begin with an upper case letter should come after that, and should be sorted in descending order.
@@ -8,6 +9,7 @@ vc-description: |-
   ## Example
   
   For example, given the input string `"Land of the Old Thirteen! Massachusetts land! land of Vermont and Connecticut!"`, your method should return `"and land land of of the Vermont Thirteen Old Massachusetts Land Connecticut"`. Lower case letters are sorted `a -> l -> l -> o -> o -> t` and upper case letters are sorted `V -> T -> O -> M -> L -> C`.
+  -/
 
 vc-preamble: |-
   def isLower (c : Char) : Bool := sorry
@@ -42,23 +44,23 @@ vc-theorems: |-
     ∀ c, c ∈ "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~".data → 
       ¬(c ∈ result.data) := sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval pseudo_sort "Land of the Old Thirteen! Massachusetts land! land of Vermont and Connecticut!"
+  -- #guard_msgs in
+  -- #eval pseudo_sort "Land of the Old Thirteen! Massachusetts land! land of Vermont and Connecticut!"
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval pseudo_sort "I, habitan of the Alleghanies, treating of him as he is in himself in his own rights"
+  -- #guard_msgs in
+  -- #eval pseudo_sort "I, habitan of the Alleghanies, treating of him as he is in himself in his own rights"
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval pseudo_sort "And I send these words to Paris with my love"
+  -- #guard_msgs in
+  -- #eval pseudo_sort "And I send these words to Paris with my love"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

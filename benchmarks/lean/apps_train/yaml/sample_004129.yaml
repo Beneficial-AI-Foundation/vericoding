@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The Padovan sequence is the sequence of integers `P(n)` defined by the initial values
   
   `P(0)=P(1)=P(2)=1`
@@ -21,6 +22,7 @@ vc-description: |-
   > padovan(2) == 1
   > padovan(n) = padovan(n-2) + padovan(n-3)
   ```
+  -/
 
 vc-preamble: |-
 
@@ -44,47 +46,47 @@ vc-theorems: |-
   theorem padovan_monotonic (n : Nat) :
     n > 0 → padovan n ≥ padovan (n - 1) := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval padovan 0
+  -- #guard_msgs in
+  -- #eval padovan 0
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval padovan 1
+  -- #guard_msgs in
+  -- #eval padovan 1
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval padovan 2
+  -- #guard_msgs in
+  -- #eval padovan 2
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval padovan 3
+  -- #guard_msgs in
+  -- #eval padovan 3
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval padovan 4
+  -- #guard_msgs in
+  -- #eval padovan 4
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval padovan 10
+  -- #guard_msgs in
+  -- #eval padovan 10
   
-  /--
+  /-
   info: 1177482265857
   -/
-  #guard_msgs in
-  #eval padovan 100
+  -- #guard_msgs in
+  -- #eval padovan 100
 
 vc-postamble: |-
   -- Apps difficulty: introductory

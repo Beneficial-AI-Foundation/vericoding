@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Find the second-to-last element of a list.
   
   Example:
@@ -7,6 +8,7 @@ vc-description: |-
   penultimate(["Python is dynamic"]) # => 'i'
   (courtesy of [haskell.org](http://www.haskell.org/haskellwiki/99_questions/1_to_10))
   ```
+  -/
 
 vc-preamble: |-
 
@@ -34,17 +36,17 @@ vc-theorems: |-
     penultimate [x] = none :=
   sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval penultimate [1, 2, 3, 4]
+  -- #guard_msgs in
+  -- #eval penultimate [1, 2, 3, 4]
   
-  /--
+  /-
   info: 'l'
   -/
-  #guard_msgs in
-  #eval penultimate "hello"
+  -- #guard_msgs in
+  -- #eval penultimate "hello"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

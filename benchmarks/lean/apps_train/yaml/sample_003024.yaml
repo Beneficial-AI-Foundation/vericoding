@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Looking at consecutive powers of `2`, starting with `2^1`:
   
   `2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, ...`
@@ -15,6 +16,7 @@ vc-description: |-
   
   Please note: The Last digit to appear can be in the same number as the penultimate one. For example for `n = 8`, the last digit to appear is `7`, although `3` appears slightly before it, in the same number:
   `8, 64, 512, 4096, 32768, ...`
+  -/
 
 vc-preamble: |-
   def digits_of (n : Nat) : List Nat := sorry
@@ -52,23 +54,23 @@ vc-theorems: |-
     (∀ k : Nat, k > 1 → digits_of (n^k) = digits_of n) ∨
     (∃ x : Nat, x ≤ 9 ∧ ∀ k : Nat, k ≤ 100 → x ∉ digits_of (n^k)) := sorry
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval last_digit_to_appear 2
+  -- #guard_msgs in
+  -- #eval last_digit_to_appear 2
   
-  /--
+  /-
   info: 7
   -/
-  #guard_msgs in
-  #eval last_digit_to_appear 8
+  -- #guard_msgs in
+  -- #eval last_digit_to_appear 8
   
-  /--
+  /-
   info: None
   -/
-  #guard_msgs in
-  #eval last_digit_to_appear 100
+  -- #guard_msgs in
+  -- #eval last_digit_to_appear 100
 
 vc-postamble: |-
   -- Apps difficulty: introductory

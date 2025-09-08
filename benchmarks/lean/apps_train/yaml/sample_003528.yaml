@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In another Kata I came across a weird `sort` function to implement. We had to sort characters as usual ( 'A' before 'Z' and 'Z' before 'a' ) except that the `numbers` had to be sorted **after** the `letters` ( '0' after 'z') !!!
   
   (After a couple of hours trying to solve this unusual-sorting-kata I discovered final tests used **usual** sort (digits  **before** letters :-)
@@ -22,6 +23,7 @@ vc-description: |-
   ```
   
   You may assume that **argument** will always be an `array/list` of **characters** or **one-digit-long numbers**.
+  -/
 
 vc-preamble: |-
 
@@ -45,23 +47,23 @@ vc-theorems: |-
       ∀ x, x ∈ unusual_sort arr ↔ x ∈ arr :=
     sorry
   
-  /--
+  /-
   info: ['a', 'b', 'c', 1, '2', 3]
   -/
-  #guard_msgs in
-  #eval unusual_sort [3, "2", 1, "a", "c", "b"]
+  -- #guard_msgs in
+  -- #eval unusual_sort [3, "2", 1, "a", "c", "b"]
   
-  /--
+  /-
   info: [1, '1', 2, '2', 3, '3']
   -/
-  #guard_msgs in
-  #eval unusual_sort [3, "3", "2", 2, "1", 1]
+  -- #guard_msgs in
+  -- #eval unusual_sort [3, "3", "2", 2, "1", 1]
   
-  /--
+  /-
   info: ['a', 'b', 'c', '0', '5', '9']
   -/
-  #guard_msgs in
-  #eval unusual_sort ["c", "b", "a", "9", "5", "0"]
+  -- #guard_msgs in
+  -- #eval unusual_sort ["c", "b", "a", "9", "5", "0"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

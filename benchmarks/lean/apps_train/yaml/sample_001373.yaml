@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Little Praneet loves experimenting with algorithms and has devised a new algorithm. The algorithm is performed on an integer as follows:
   - if the rearmost digit is $0$, he will erase it.
   - else, he will replace the rearmost digit $d$ with $d-1$.
@@ -30,6 +31,7 @@ vc-description: |-
   -----Explanation-----
   - In the first example, the transformation is as follows: $1001->1000->100$.
   - In the second example, the transformation is as follows: $5->4->3$.
+  -/
 
 vc-preamble: |-
 

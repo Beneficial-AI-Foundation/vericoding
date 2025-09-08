@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    In ChessLand there is a small but proud chess bishop with a recurring dream. 
   
@@ -50,6 +51,7 @@ vc-description: |-
    - `[output]` an integer array
   
       The position of the bishop after `k` steps.
+  -/
 
 vc-preamble: |-
   def chessBishopDream (boardSize: List Int) (initPos: List Int) (initDir: List Int) (k: Nat) : List Int :=
@@ -113,23 +115,23 @@ vc-theorems: |-
     (∀ i < 2, result[i]! ≤ boardSize[i]!) :=
   sorry
   
-  /--
+  /-
   info: [0, 1]
   -/
-  #guard_msgs in
-  #eval chess_bishop_dream [3, 7] [1, 2] [-1, 1] 13
+  -- #guard_msgs in
+  -- #eval chess_bishop_dream [3, 7] [1, 2] [-1, 1] 13
   
-  /--
+  /-
   info: [0, 1]
   -/
-  #guard_msgs in
-  #eval chess_bishop_dream [1, 2] [0, 0] [1, 1] 6
+  -- #guard_msgs in
+  -- #eval chess_bishop_dream [1, 2] [0, 0] [1, 1] 6
   
-  /--
+  /-
   info: [1, 0]
   -/
-  #guard_msgs in
-  #eval chess_bishop_dream [2, 2] [1, 0] [1, 1] 12
+  -- #guard_msgs in
+  -- #eval chess_bishop_dream [2, 2] [1, 0] [1, 1] 12
 
 vc-postamble: |-
   -- Apps difficulty: introductory

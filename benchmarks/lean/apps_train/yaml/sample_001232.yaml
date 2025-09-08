@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   N Soldiers are lined up for a memory test. They are numbered from 0 to N-1 from left to right. 
   
   In the test, there are M rounds. In each round, Captain selects one position. Soldier at that position will be numbered 0. All the soldiers to the right of selected position will be numbered one greater than the soldier to his left. All the soldiers to the left of selected position will be numbered one greater than the soldier to his right. 
@@ -34,6 +35,7 @@ vc-description: |-
   Output
   1 0 1 2
   3 2 1 1 2 3
+  -/
 
 vc-preamble: |-
 

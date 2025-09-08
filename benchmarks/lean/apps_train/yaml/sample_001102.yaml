@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The chef is very expert in coding, so to keep his password safe from the hackers. He always enters a decoded code of his password. You are a hacker and your work is to find the maximum number of possible ways to unlock his password in encoded form.
   
   The encoded message containing only letters from A-Z is being encoded with numbers using the following mapping: 
@@ -40,6 +41,7 @@ vc-description: |-
   Explanation:
   For first test case, It could be encoded as "AB" (1 2) or "L" (12), hence the number of
   maximum possible ways are 2 so output is “YES”.
+  -/
 
 vc-preamble: |-
 

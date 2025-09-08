@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ### Happy Holidays fellow Code Warriors!
   
   Now, Dasher! Now, Dancer! Now, Prancer, and Vixen! On, Comet! On, Cupid! On, Donder and Blitzen! That's the order Santa wanted his reindeer...right? What do you mean he wants them in order by their last names!? Looks like we need your help Code Warrior!
@@ -43,6 +44,7 @@ vc-description: |-
     "Dasher Tonoyan",
   ]
   ```
+  -/
 
 vc-preamble: |-
 
@@ -75,23 +77,23 @@ vc-theorems: |-
   theorem sort_reindeer_empty : 
     sort_reindeer [] = [] := sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval sort_reindeer ["Dasher Tonoyan", "Dancer Moore", "Prancer Chua"]
+  -- #guard_msgs in
+  -- #eval sort_reindeer ["Dasher Tonoyan", "Dancer Moore", "Prancer Chua"]
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval sort_reindeer []
+  -- #guard_msgs in
+  -- #eval sort_reindeer []
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval sort_reindeer ["Kenjiro Mori", "Susumu Mori", "Akira Mori"]
+  -- #guard_msgs in
+  -- #eval sort_reindeer ["Kenjiro Mori", "Susumu Mori", "Akira Mori"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

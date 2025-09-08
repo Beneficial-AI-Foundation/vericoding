@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Objective
   
   Given a number `n` we will define it's sXORe to be `0 XOR 1 XOR 2 ... XOR n` where `XOR` is the [bitwise XOR operator](https://en.wikipedia.org/wiki/Bitwise_operation#XOR).
@@ -13,6 +14,7 @@ vc-description: |-
   | 50      | 51
   | 1000000 | 1000000
   ---
+  -/
 
 vc-preamble: |-
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Many people choose to obfuscate their email address when displaying it on the Web. One common way of doing this is by substituting the `@` and `.` characters for their literal equivalents in brackets.
   
   Example 1:
@@ -29,6 +30,7 @@ vc-description: |-
   >* Email addresses may contain more than one `.` character.
   
   >* Note the additional whitespace around the bracketed literals in the examples!
+  -/
 
 vc-preamble: |-
 

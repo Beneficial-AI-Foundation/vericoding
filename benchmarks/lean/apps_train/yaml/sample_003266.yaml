@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Description
   
   Given a number `n`, you should find a set of numbers for which the sum equals `n`. This set must consist exclusively of values that are a power of `2` (eg: `2^0 => 1, 2^1 => 2, 2^2 => 4, ...`).
@@ -14,6 +15,7 @@ vc-description: |-
   Each member of the returned array should be **unique**. (eg: the valid answer for `powers(2)` is `[2]`, not `[1, 1]`)
   
   Members should be sorted in **ascending order** (small -> large). (eg: the valid answer for `powers(6)` is `[2, 4]`, not `[4, 2]`)
+  -/
 
 vc-preamble: |-
   def sum : List Nat → Nat 
@@ -52,23 +54,23 @@ vc-theorems: |-
   theorem powers_are_unique (n: Nat) (h: n > 0) :
     (powers n).length = countUnique (powers n) := sorry
   
-  /--
+  /-
   info: [4]
   -/
-  #guard_msgs in
-  #eval powers 4
+  -- #guard_msgs in
+  -- #eval powers 4
   
-  /--
+  /-
   info: [2, 4]
   -/
-  #guard_msgs in
-  #eval powers 6
+  -- #guard_msgs in
+  -- #eval powers 6
   
-  /--
+  /-
   info: [2, 4, 8]
   -/
-  #guard_msgs in
-  #eval powers 14
+  -- #guard_msgs in
+  -- #eval powers 14
 
 vc-postamble: |-
   -- Apps difficulty: introductory

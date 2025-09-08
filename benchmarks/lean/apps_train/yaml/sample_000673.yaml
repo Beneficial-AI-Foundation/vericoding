@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There is crazy man named P29892P. He always tries to do crazy things as he thinks. One day he invented a machine and named it as ANGEN. The ANGEN is used to perform range operations. The range operation means performing operations on range values from {L..R}. At any time it performs operations on values in between L to R.
   ANGEN can perform following operations
   U I V - Update the value present at I  with value V
@@ -50,6 +51,7 @@ vc-description: |-
   
   -----Explanation-----
   ...
+  -/
 
 vc-preamble: |-
 
@@ -127,23 +129,23 @@ vc-theorems: |-
       | _ => True) :=
   sorry
   
-  /--
+  /-
   info: expected
   -/
-  #guard_msgs in
-  #eval process_angen_operations [1, 2, 5, 3, 10, 6] [("A", "1", "5"), ("M", "1", "3"), ("m", "5", "6"), ("s", "3", "6"), ("U", "1", "7"), ("S", "1", "2")]
+  -- #guard_msgs in
+  -- #eval process_angen_operations [1, 2, 5, 3, 10, 6] [("A", "1", "5"), ("M", "1", "3"), ("m", "5", "6"), ("s", "3", "6"), ("U", "1", "7"), ("S", "1", "2")]
   
-  /--
+  /-
   info: ['!!!']
   -/
-  #guard_msgs in
-  #eval process_angen_operations [1, 2, 3] [("X", "1", "2")]
+  -- #guard_msgs in
+  -- #eval process_angen_operations [1, 2, 3] [("X", "1", "2")]
   
-  /--
+  /-
   info: ['NA']
   -/
-  #guard_msgs in
-  #eval process_angen_operations [1, 1, 1] [("s", "1", "3")]
+  -- #guard_msgs in
+  -- #eval process_angen_operations [1, 1, 1] [("s", "1", "3")]
 
 vc-postamble: |-
   -- Apps difficulty: interview

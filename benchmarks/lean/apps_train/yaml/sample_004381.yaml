@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In this task you have to code process planner.
   
   You will be given initial thing, target thing and a set of processes to turn one thing into another (in the form of _[process\_name, start\_thing, end\_thing]_). You must return  names of shortest sequence of processes to turn initial thing into target thing, or empty sequence if it's impossible.
@@ -20,6 +21,7 @@ vc-description: |-
   ```
   
   Good luck!
+  -/
 
 vc-preamble: |-
 

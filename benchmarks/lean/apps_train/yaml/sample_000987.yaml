@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef has a garden with $N$ plants arranged in a line in decreasing order of height. Initially the height of the plants are $A_1, A_2, ..., A_N$.
   The plants are growing, after each hour the height of the $i$-th plant increases by $i$ millimeters. Find the minimum number of integer hours that Chef must wait to have two plants of the same height.
   
@@ -28,6 +29,7 @@ vc-description: |-
   -----EXPLANATION:-----
   After $2$ hours there are two plants with the same height. 
   $[8,4,2] \rightarrow [9,6,5] \rightarrow [10,8,8]$.
+  -/
 
 vc-preamble: |-
 
@@ -60,23 +62,23 @@ vc-theorems: |-
     min_hours_equal_plants n plants = gap :=
   sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_hours_equal_plants 3 [8, 4, 2]
+  -- #guard_msgs in
+  -- #eval min_hours_equal_plants 3 [8, 4, 2]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval min_hours_equal_plants 4 [10, 7, 4, 1]
+  -- #guard_msgs in
+  -- #eval min_hours_equal_plants 4 [10, 7, 4, 1]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval min_hours_equal_plants 5 [20, 15, 10, 5, 1]
+  -- #guard_msgs in
+  -- #eval min_hours_equal_plants 5 [20, 15, 10, 5, 1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

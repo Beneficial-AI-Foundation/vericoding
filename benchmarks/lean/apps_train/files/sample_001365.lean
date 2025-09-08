@@ -1,0 +1,41 @@
+/-
+Han Solo and Chewbacca start a space journey to planet Naboo on the Millennium Falcon. During the journey they land at a mysterious planet with high gravity where they find n diamond stones scattered all around. All the stones are of same weight. Each stone has a value according to its purity which can be detected by a special device. They choose to divide the stones fairly among themselves in two halves so that they carry almost equal weights such that the difference between the value of two halves is as small as possible. If n is even, then sizes of two halves must be strictly n/2 and if n is odd, then size of one half must be (n-1)/2 and size of the other half must be (n+1)/2. Given the value of stones, help them to divide the stones among themselves.
+
+-----Input-----
+First line consists of an integer n which denotes the number of stones.Second line consists of n space separated integers denoting the value of the stones.
+
+-----Output-----
+First line consists of the values of the stones assigned to Han Solo.Second line consists of the values of the stones assigned to Chewbacca.Assume that the set containing the first value in the input is always assigned to Han Solo.Also the values in the output sets must follow the same ordering as the input.
+
+-----Constraints-----
+The number of stones can range from 2 to 99.The values of the stones vary from 1 to 10^4.
+
+-----Example-----
+Input:
+7
+1 2 3 4 5 6 7
+
+Output:
+1 2 4 7
+3 5 6
+
+-----Explanation-----
+These 7 values must be separated into 2 sets of sizes 3 and 4.In this case, it is possible to form two sets (1,2,4,7) & (3,5,6) of equal size.The set containing the first value (i.e.) 1 must be assigned to Han Solo and the elements of the output sets have the same order as the input.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def divide_stones (stones : String) : List String := sorry
+
+def parseNat (s : String) : Nat := sorry
+
+theorem balanced_partition_sizes (stones : String) :
+  let result := divide_stones stones
+  let hans := (result.get! 0).split (· = ' ') |>.map parseNat
+  let chewie := (result.get! 1).split (· = ' ') |>.map parseNat
+  (hans.length ≤ chewie.length + 1) ∧ (chewie.length ≤ hans.length + 1)
+  := sorry
+
+-- Apps difficulty: interview
+-- Assurance level: guarded_and_plausible

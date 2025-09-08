@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The name of our college is "Government College of Engineering and Textile Technology Berhampore". There is another college named "Government College of Engineering and Textile Technology Serampore". As the names are quite similar, those who are unaware of existence of both the colleges, often get confused. And mistake one with other.
   
   Given a string, if it contains the word berhampore (case insensitive), print GCETTB or if it contains serampore(case-insensitive), print GCETTS . If the string contains neither print Others. If it contains both Berhampore and Serampore print Both 
@@ -28,6 +29,7 @@ vc-description: |-
   Explanation
   
   Self-Explanatory
+  -/
 
 vc-preamble: |-
   def College := String
@@ -64,23 +66,23 @@ vc-theorems: |-
     ∀ r ∈ process_test_cases cases,
       r = "Both" ∨ r = "GCETTB" ∨ r = "GCETTS" ∨ r = "Others" := sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval process_test_cases ["Government clg Berhampore", "SeRaMporE textile college", "Girls college Kolkata"]
+  -- #guard_msgs in
+  -- #eval process_test_cases ["Government clg Berhampore", "SeRaMporE textile college", "Girls college Kolkata"]
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval process_test_cases ["Berhampore Serampore"]
+  -- #guard_msgs in
+  -- #eval process_test_cases ["Berhampore Serampore"]
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval process_test_cases ["random college"]
+  -- #guard_msgs in
+  -- #eval process_test_cases ["random college"]
 
 vc-postamble: |-
   -- Apps difficulty: interview

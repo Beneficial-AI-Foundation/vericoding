@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Imagine two rings with numbers on them. The inner ring spins clockwise (decreasing by 1 each spin) and the outer ring spins counter clockwise (increasing by 1 each spin). We start with both rings aligned on 0 at the top, and on each move we spin each ring one increment. How many moves will it take before both rings show the same number at the top again?
   
   The inner ring has integers from 0 to innerMax and the outer ring has integers from 0 to outerMax, where innerMax and outerMax are integers >= 1.
@@ -24,6 +25,7 @@ vc-description: |-
   ---
   
   for a bigger challenge, check out the [Performance Version](https://www.codewars.com/kata/59b0b7cd2a00d219ab0000c5) of this kata by @Voile
+  -/
 
 vc-preamble: |-
 
@@ -50,23 +52,23 @@ vc-theorems: |-
     (spinning_rings 1 2 = 1 ∨ spinning_rings 1 2 = 2 ∨ spinning_rings 1 2 = 3) :=
   sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval spinning_rings 2 3
+  -- #guard_msgs in
+  -- #eval spinning_rings 2 3
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval spinning_rings 3 2
+  -- #guard_msgs in
+  -- #eval spinning_rings 3 2
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval spinning_rings 1 1
+  -- #guard_msgs in
+  -- #eval spinning_rings 1 1
 
 vc-postamble: |-
   -- Apps difficulty: introductory

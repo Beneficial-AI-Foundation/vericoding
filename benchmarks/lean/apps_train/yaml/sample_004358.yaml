@@ -1,9 +1,11 @@
 vc-description: |-
+  /-
   Write an algorithm that takes an array and moves all of the zeros to the end, preserving the order of the other elements.
   
   ```python
   move_zeros([False,1,0,1,2,0,1,3,"a"]) # returns[False,1,1,2,1,3,"a",0,0]
   ```
+  -/
 
 vc-preamble: |-
 
@@ -33,23 +35,23 @@ vc-theorems: |-
     (arr.filter isZero).length = ((moveZeros arr isZero).filter isZero).length := by
       sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval move_zeros [False, 1, 0, 1, 2, 0, 1, 3, "a"]
+  -- #guard_msgs in
+  -- #eval move_zeros [False, 1, 0, 1, 2, 0, 1, 3, "a"]
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval move_zeros [1, 2, 0, 1, 0, 1, 0, 3, 0, 1]
+  -- #guard_msgs in
+  -- #eval move_zeros [1, 2, 0, 1, 0, 1, 0, 3, 0, 1]
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval move_zeros ["a", 0, 0, "b", "c", "d", 0, 1, 0, 1, 0, 3, 0, 1, 9, 0, 0, 0, 0, 9]
+  -- #guard_msgs in
+  -- #eval move_zeros ["a", 0, 0, "b", "c", "d", 0, 1, 0, 1, 0, 3, 0, 1, 9, 0, 0, 0, 0, 9]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

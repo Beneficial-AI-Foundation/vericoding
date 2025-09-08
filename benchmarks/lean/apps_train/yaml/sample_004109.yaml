@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Your task is to generate the Fibonacci sequence to `n` places, with each alternating value as `"skip"`. For example:
   
   `"1 skip 2 skip 5 skip 13 skip 34"`
@@ -6,6 +7,7 @@ vc-description: |-
   Return the result as a string
   
   You can presume that `n` is always a positive integer between (and including) 1 and 64.
+  -/
 
 vc-preamble: |-
 
@@ -36,23 +38,23 @@ vc-theorems: |-
     ∀ i j : Nat, i < j → j < evenNumbers.length →
       String.toNat! (evenNumbers[i]'sorry).snd < String.toNat! (evenNumbers[j]'sorry).snd := sorry
   
-  /--
+  /-
   info: '1'
   -/
-  #guard_msgs in
-  #eval skiponacci 1
+  -- #guard_msgs in
+  -- #eval skiponacci 1
   
-  /--
+  /-
   info: '1 skip 2 skip 5'
   -/
-  #guard_msgs in
-  #eval skiponacci 5
+  -- #guard_msgs in
+  -- #eval skiponacci 5
   
-  /--
+  /-
   info: '1 skip 2 skip 5 skip 13'
   -/
-  #guard_msgs in
-  #eval skiponacci 7
+  -- #guard_msgs in
+  -- #eval skiponacci 7
 
 vc-postamble: |-
   -- Apps difficulty: introductory

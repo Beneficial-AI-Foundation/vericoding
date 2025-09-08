@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Jeff's friends know full well that the boy likes to get sequences and arrays for his birthday. Thus, Jeff got sequence p_1, p_2, ..., p_{n} for his birthday.
   
   Jeff hates inversions in sequences. An inversion in sequence a_1, a_2, ..., a_{n} is a pair of indexes i, j (1 ≤ i < j ≤ n), such that an inequality a_{i} > a_{j} holds.
@@ -27,6 +28,7 @@ vc-description: |-
   
   Output
   6
+  -/
 
 vc-preamble: |-
   def minInversions (n: Nat) (seq: List Int) : Nat := sorry
@@ -61,23 +63,23 @@ vc-theorems: |-
   theorem sorted_sequence_zero {n: Nat} :
     minInversions n (rangeToInt n) = 0 := sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval min_inversions 2 [2, 1]
+  -- #guard_msgs in
+  -- #eval min_inversions 2 [2, 1]
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval min_inversions 9 [-2, 0, -1, 0, -1, 2, 1, 0, -1]
+  -- #guard_msgs in
+  -- #eval min_inversions 9 [-2, 0, -1, 0, -1, 2, 1, 0, -1]
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval min_inversions 9 [0, 0, 1, 1, 0, 0, 1, 0, 1]
+  -- #guard_msgs in
+  -- #eval min_inversions 9 [0, 0, 1, 1, 0, 0, 1, 0, 1]
 
 vc-postamble: |-
   -- Apps difficulty: competition

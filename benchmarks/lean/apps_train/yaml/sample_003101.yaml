@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Task
   
   Create a function that given a sequence of strings, groups the elements that can be obtained by rotating others, ignoring upper or lower cases. 
@@ -26,6 +27,7 @@ vc-description: |-
   
   [] --> []
   ```
+  -/
 
 vc-preamble: |-
 
@@ -57,23 +59,23 @@ vc-theorems: |-
   theorem group_cities_duplicates :
     (group_cities ["Rome", "Rome", "Rome"]).length = 1 := by sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval group_cities ["Tokyo", "London", "Rome", "Donlon", "Kyoto", "Paris", "Okyot"]
+  -- #guard_msgs in
+  -- #eval group_cities ["Tokyo", "London", "Rome", "Donlon", "Kyoto", "Paris", "Okyot"]
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval group_cities ["Rome", "Rome", "Rome", "Donlon", "London"]
+  -- #guard_msgs in
+  -- #eval group_cities ["Rome", "Rome", "Rome", "Donlon", "London"]
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval group_cities []
+  -- #guard_msgs in
+  -- #eval group_cities []
 
 vc-postamble: |-
   -- Apps difficulty: introductory

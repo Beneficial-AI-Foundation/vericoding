@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a grid of size M x N, where each square is colored with some random color among K colors with each having equal probability.
   
   A Good Rectangle is defined as one where all squares lying on the inner border are of the same color.
@@ -23,6 +24,7 @@ vc-description: |-
   1 3 1
   Output:
   6
+  -/
 
 vc-preamble: |-
 
@@ -43,23 +45,23 @@ vc-theorems: |-
   theorem good_rectangles_edge_case_k_gt_one (M N K : Nat) (h₁ : M = 1) (h₂ : N = 1) (h₃ : K > 1) :
     solve_good_rectangles M N K = 1 := sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval solve_good_rectangles 1 3 1
+  -- #guard_msgs in
+  -- #eval solve_good_rectangles 1 3 1
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval solve_good_rectangles 2 2 1
+  -- #guard_msgs in
+  -- #eval solve_good_rectangles 2 2 1
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve_good_rectangles 1 1 2
+  -- #guard_msgs in
+  -- #eval solve_good_rectangles 1 1 2
 
 vc-postamble: |-
   -- Apps difficulty: interview

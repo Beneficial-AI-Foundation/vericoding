@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array of integers nums and an integer limit, return the size of the longest non-empty subarray such that the absolute difference between any two elements of this subarray is less than or equal to limit.
   
   Example 1:
@@ -31,6 +32,7 @@ vc-description: |-
   1 <= nums.length <= 10^5
   1 <= nums[i] <= 10^9
   0 <= limit <= 10^9
+  -/
 
 vc-preamble: |-
   def maxEqualSeq : List Int → Nat 
@@ -51,7 +53,7 @@ vc-definitions: |-
     {nums : List Int} {limit : Nat} (h : nums ≠ []) : 
     1 ≤ (longestSubarray nums limit) ∧ (longestSubarray nums limit) ≤ nums.length := sorry
   
-  /-- There exists a valid subarray of length equal to the result -/
+  /- There exists a valid subarray of length equal to the result -/
 
 vc-theorems: |-
   theorem longestSubarray_exists_valid_window
@@ -60,7 +62,7 @@ vc-theorems: |-
       let window := nums.take (i + (longestSubarray nums limit)) |>.drop i
       (window.maximum? |>.getD 0) - (window.minimum? |>.getD 0) ≤ limit := sorry
   
-  /-- No larger valid window exists -/
+  /- No larger valid window exists -/
   
   theorem longestSubarray_optimal
     {nums : List Int} {limit : Nat} (h : nums ≠ []) :
@@ -68,29 +70,29 @@ vc-theorems: |-
       let window := nums.take (i + len) |>.drop i
       (window.maximum? |>.getD 0) - (window.minimum? |>.getD 0) > limit := sorry
   
-  /-- For zero limit, result equals longest sequence of equal numbers -/
+  /- For zero limit, result equals longest sequence of equal numbers -/
   
   theorem longestSubarray_zero_limit
     {nums : List Int} (h : nums ≠ []) :
     longestSubarray nums 0 = maxEqualSeq nums := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval longestSubarray [8, 2, 4, 7] 4
+  -- #guard_msgs in
+  -- #eval longestSubarray [8, 2, 4, 7] 4
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval longestSubarray [10, 1, 2, 4, 7, 2] 5
+  -- #guard_msgs in
+  -- #eval longestSubarray [10, 1, 2, 4, 7, 2] 5
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval longestSubarray [4, 2, 2, 2, 4, 4, 2, 2] 0
+  -- #guard_msgs in
+  -- #eval longestSubarray [4, 2, 2, 2, 4, 4, 2, 2] 0
 
 vc-postamble: |-
   -- Apps difficulty: interview

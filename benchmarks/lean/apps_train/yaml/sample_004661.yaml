@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Story
   
   Old MacDingle had a farm... 
@@ -55,6 +56,7 @@ vc-description: |-
   * If the animals can eat things *and* also run away then they do **BOTH** - it is best not to run away when you are hungry!
   * An animal cannot "go around" a closed gate...
   * ...but it is possible to run away from the farm and then **RUN BACK** and re-enter though more open gates on the other side!
+  -/
 
 vc-preamble: |-
   def split_on_char (c : Char) (s : List Char) : List (List Char) :=
@@ -100,23 +102,23 @@ vc-theorems: |-
     shut_the_gate first_result = first_result :=
     sorry
   
-  /--
+  /-
   info: '|H|A|'
   -/
-  #guard_msgs in
-  #eval shut_the_gate "|H|A|"
+  -- #guard_msgs in
+  -- #eval shut_the_gate "|H|A|"
   
-  /--
+  /-
   info: './.'
   -/
-  #guard_msgs in
-  #eval shut_the_gate "H/A"
+  -- #guard_msgs in
+  -- #eval shut_the_gate "H/A"
   
-  /--
+  /-
   info: '|H/.|'
   -/
-  #guard_msgs in
-  #eval shut_the_gate "|H/A|"
+  -- #guard_msgs in
+  -- #eval shut_the_gate "|H/A|"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

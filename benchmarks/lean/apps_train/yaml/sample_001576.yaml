@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Let's define `increasing` numbers as the numbers whose digits, read from left to right, are never less than the previous ones: 234559 is an example of increasing number.
   
   Conversely, `decreasing` numbers have all the digits read from left to right so that no digits is bigger than the previous one: 97732 is an example of decreasing number.
@@ -35,6 +36,7 @@ vc-description: |-
   To make it even clearer, the increasing or decreasing numbers between in the range 101-200 are: [110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 122, 123, 124, 125, 126, 127, 128, 129, 133, 134, 135, 136, 137, 138, 139, 144, 145, 146, 147, 148, 149, 155, 156, 157, 158, 159, 166, 167, 168, 169, 177, 178, 179, 188, 189, 199, 200], that is 47 of them. In the following range, 201-300, there are 41 of them and so on, getting rarer and rarer.
   
   **Trivia:** just for the sake of your own curiosity, a number which is neither decreasing of increasing is called a `bouncy` number, like, say, 3848 or 37294; also, usually 0 is not considered being increasing, decreasing or bouncy, but it will be for the purpose of this kata
+  -/
 
 vc-preamble: |-
   def total_inc_dec (n : Int) : Nat :=
@@ -77,23 +79,23 @@ vc-theorems: |-
     y > x → xCy x y = 0 :=
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval total_inc_dec 0
+  -- #guard_msgs in
+  -- #eval total_inc_dec 0
   
-  /--
+  /-
   info: 475
   -/
-  #guard_msgs in
-  #eval total_inc_dec 3
+  -- #guard_msgs in
+  -- #eval total_inc_dec 3
   
-  /--
+  /-
   info: 4954
   -/
-  #guard_msgs in
-  #eval total_inc_dec 5
+  -- #guard_msgs in
+  -- #eval total_inc_dec 5
 
 vc-postamble: |-
   -- Apps difficulty: interview

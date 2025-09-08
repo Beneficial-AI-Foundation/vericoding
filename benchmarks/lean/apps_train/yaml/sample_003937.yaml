@@ -1,7 +1,9 @@
 vc-description: |-
+  /-
   Find the greatest common divisor of two positive integers. The integers can be large, so you need to find a clever solution. 
   
   The inputs `x` and `y` are always greater or equal to 1, so the greatest common divisor will always be an integer that is also greater or equal to 1.
+  -/
 
 vc-preamble: |-
   def mygcd (x y : Int) : Int :=
@@ -29,23 +31,23 @@ vc-theorems: |-
     mygcd (x * y) x = x :=
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval mygcd 1 3
+  -- #guard_msgs in
+  -- #eval mygcd 1 3
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval mygcd 60 12
+  -- #guard_msgs in
+  -- #eval mygcd 60 12
   
-  /--
+  /-
   info: 334
   -/
-  #guard_msgs in
-  #eval mygcd 2672 5678
+  -- #guard_msgs in
+  -- #eval mygcd 2672 5678
 
 vc-postamble: |-
   -- Apps difficulty: introductory

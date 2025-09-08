@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   
   You are given a positive integer `n`. We intend to make some ascending sequences according to the following rules:
@@ -88,6 +89,7 @@ vc-description: |-
   - All inputs are valid.
   
   - If my reference solution gives the wrong result in the random tests, please let me know(post an issue).
+  -/
 
 vc-preamble: |-
 
@@ -115,23 +117,23 @@ vc-theorems: |-
   theorem recursive_relation (n : Nat) (h: n > 0) :
     make_sequences n = 1 + sum_list (List.map make_sequences (List.range (n/2))) := sorry
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval make_sequences 6
+  -- #guard_msgs in
+  -- #eval make_sequences 6
   
-  /--
+  /-
   info: 14
   -/
-  #guard_msgs in
-  #eval make_sequences 10
+  -- #guard_msgs in
+  -- #eval make_sequences 10
   
-  /--
+  /-
   info: 1981471878
   -/
-  #guard_msgs in
-  #eval make_sequences 1000
+  -- #guard_msgs in
+  -- #eval make_sequences 1000
 
 vc-postamble: |-
   -- Apps difficulty: introductory

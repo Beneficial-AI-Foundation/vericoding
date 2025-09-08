@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   For every string, after every occurrence of `'and'` and `'but'`, insert the substring `'apparently'` directly after the occurrence.
   
   If input does not contain 'and' or 'but', return the original string. If a blank string, return `''`.
@@ -28,6 +29,7 @@ vc-description: |-
   
   reference that may help:
   https://www.youtube.com/watch?v=rz5TGN7eUcM
+  -/
 
 vc-preamble: |-
 
@@ -55,23 +57,23 @@ vc-theorems: |-
     s = "" ∨ s = " " ∨ s = "  " →
     apparently s = s := sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval apparently "It was great and I"ve never been on live television before but sometimes I don"t watch this."
+  -- #guard_msgs in
+  -- #eval apparently "It was great and I"ve never been on live television before but sometimes I don"t watch this."
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval apparently "but apparently"
+  -- #guard_msgs in
+  -- #eval apparently "but apparently"
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval apparently "but and apparently apparently apparently apparently"
+  -- #guard_msgs in
+  -- #eval apparently "but and apparently apparently apparently apparently"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Task
   Given an array of strings, reverse them and their order in such way that their length stays the same as the length of the original inputs.
   
@@ -10,6 +11,7 @@ vc-description: |-
   ```
   
   Good luck!
+  -/
 
 vc-preamble: |-
   def reverse_strings (arr : List String) : List String :=
@@ -53,17 +55,17 @@ vc-theorems: |-
     String.join (reverse_strings arr) = String.reverse (String.join arr) :=
   sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval reverse_strings ["I", "like", "big", "butts", "and", "I", "cannot", "lie!"]
+  -- #guard_msgs in
+  -- #eval reverse_strings ["I", "like", "big", "butts", "and", "I", "cannot", "lie!"]
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval reverse_strings ["?kn", "ipnr", "utotst", "ra", "tsn", "iksr", "uo", "yer", "ofebta", "eote", "vahu", "oyodpm", "ir", "hsyn", "amwoH"]
+  -- #guard_msgs in
+  -- #eval reverse_strings ["?kn", "ipnr", "utotst", "ra", "tsn", "iksr", "uo", "yer", "ofebta", "eote", "vahu", "oyodpm", "ir", "hsyn", "amwoH"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

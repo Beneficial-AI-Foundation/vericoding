@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Lavanya and Nikhil have K months of holidays ahead of them, and they want to go on exactly K road trips, one a month. They have a map of the various cities in the world with the roads that connect them. There are N cities, numbered from 1 to N. We say that you can reach city B from city A if there is a sequence of roads that starts from city A and ends at city B. Note that the roads are bidirectional. Hence, if you can reach city B from city A, you can also reach city A from city B. 
   Lavanya first decides which city to start from. In the first month, they will start from that city, and they will visit every city that they can reach by road from that particular city, even if it means that they have to pass through cities that they have already visited previously. Then, at the beginning of the second month, Nikhil picks a city that they haven't visited till then. In the second month, they first fly to that city and visit all the cities that they can reach from that city by road. Then, in the third month, Lavanya identifies a city, and they fly there and visit all cities reachable from there by road. Then in the fourth month it is Nikhil's turn to choose an unvisited city to start a road trip, and they alternate like this. Note that the city that they fly to (that is, the city from where they start each month's road trip) is also considered as being visited.
   Each city has some museums, and when they visit a city for the first time, Lavanya makes them visit each of the museums there. Lavanya loves going to museums, but Nikhil hates them. Lavanya always makes her decisions so that they visit the maximum number of museums possible that month, while Nikhil picks cities so that the number of museums visited that month is minimized.
@@ -83,6 +84,7 @@ vc-description: |-
   In total, they have visited 345 museums in the three months (which is in fact all the museums), and that is the answer.
   Testcase 2: It is same as the previous testcase, but now they have only 2 months. So they visit only 150 + 90 = 240 museums in total.
   Testcase 3: It is same as the previous testcase, but now they have 5 months of holidays. But sadly, they finish visiting all the cities within the first three months itself, and hence the answer is -1.
+  -/
 
 vc-preamble: |-
 
@@ -102,23 +104,23 @@ vc-theorems: |-
     let result := solve_road_trips n 0 k [] (List.replicate n 0)
     ∃ x : Int, result = x ∧ result = 0 := sorry
   
-  /--
+  /-
   info: 345
   -/
-  #guard_msgs in
-  #eval solve_road_trips 10 10 3 [(1, 3), (3, 5), (5, 1), (1, 6), (6, 2), (5, 6), (2, 5), (7, 10), (4, 7), (10, 9)] [20, 0, 15, 20, 25, 30, 30, 150, 35, 20]
+  -- #guard_msgs in
+  -- #eval solve_road_trips 10 10 3 [(1, 3), (3, 5), (5, 1), (1, 6), (6, 2), (5, 6), (2, 5), (7, 10), (4, 7), (10, 9)] [20, 0, 15, 20, 25, 30, 30, 150, 35, 20]
   
-  /--
+  /-
   info: 240
   -/
-  #guard_msgs in
-  #eval solve_road_trips 10 10 2 [(1, 3), (3, 5), (5, 1), (1, 6), (6, 2), (5, 6), (2, 5), (7, 10), (4, 7), (10, 9)] [20, 0, 15, 20, 25, 30, 30, 150, 35, 20]
+  -- #guard_msgs in
+  -- #eval solve_road_trips 10 10 2 [(1, 3), (3, 5), (5, 1), (1, 6), (6, 2), (5, 6), (2, 5), (7, 10), (4, 7), (10, 9)] [20, 0, 15, 20, 25, 30, 30, 150, 35, 20]
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval solve_road_trips 10 10 5 [(1, 3), (3, 5), (5, 1), (1, 6), (6, 2), (5, 6), (2, 5), (7, 10), (4, 7), (10, 9)] [20, 0, 15, 20, 25, 30, 30, 150, 35, 20]
+  -- #guard_msgs in
+  -- #eval solve_road_trips 10 10 5 [(1, 3), (3, 5), (5, 1), (1, 6), (6, 2), (5, 6), (2, 5), (7, 10), (4, 7), (10, 9)] [20, 0, 15, 20, 25, 30, 30, 150, 35, 20]
 
 vc-postamble: |-
   -- Apps difficulty: interview

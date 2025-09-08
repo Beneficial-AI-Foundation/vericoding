@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef hates unoptimized codes and people who write such codes. One fine day he decided to look through the kitchen's codebase and found a function whose pseudo-code is given here:
   
   input: integer N, list X[1, 2, ..., N], list Y[1, 2, ..., N]
@@ -52,6 +53,7 @@ vc-description: |-
   
   -----Explanation-----
   Testcase 2: The maximum is attained when i = 1, j = 2 and k = 5. This leads to res being 3 + 4 + 4 = 11. This value is attained in other iterations as well, but it never exceeds this, and hence this is the answer.
+  -/
 
 vc-preamble: |-
   def Coord := Nat × Nat 
@@ -73,23 +75,23 @@ vc-theorems: |-
     max_distinct_sum n [(1,n)] = 0 :=
   sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval max_distinct_sum 3 [(1, 3), (3, 1), (1, 2)]
+  -- #guard_msgs in
+  -- #eval max_distinct_sum 3 [(1, 3), (3, 1), (1, 2)]
   
-  /--
+  /-
   info: 11
   -/
-  #guard_msgs in
-  #eval max_distinct_sum 5 [(1, 3), (2, 4), (1, 2), (3, 2), (3, 4)]
+  -- #guard_msgs in
+  -- #eval max_distinct_sum 5 [(1, 3), (2, 4), (1, 2), (3, 2), (3, 4)]
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval max_distinct_sum 4 [(1, 1), (2, 2), (3, 3), (4, 4)]
+  -- #guard_msgs in
+  -- #eval max_distinct_sum 4 [(1, 1), (2, 2), (3, 3), (4, 4)]
 
 vc-postamble: |-
   -- Apps difficulty: interview

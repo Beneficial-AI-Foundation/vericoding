@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Implement a function which takes a string, and returns its hash value.
   
   Algorithm steps:
@@ -30,6 +31,7 @@ vc-description: |-
   ___
   
   Give an example why this hashing algorithm is bad?
+  -/
 
 vc-preamble: |-
 
@@ -59,23 +61,23 @@ vc-theorems: |-
     string_hash "a" = 64 :=
     sorry
   
-  /--
+  /-
   info: 64
   -/
-  #guard_msgs in
-  #eval string_hash "a"
+  -- #guard_msgs in
+  -- #eval string_hash "a"
   
-  /--
+  /-
   info: -820
   -/
-  #guard_msgs in
-  #eval string_hash "ca"
+  -- #guard_msgs in
+  -- #eval string_hash "ca"
   
-  /--
+  /-
   info: 1120
   -/
-  #guard_msgs in
-  #eval string_hash "global hash"
+  -- #guard_msgs in
+  -- #eval string_hash "global hash"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

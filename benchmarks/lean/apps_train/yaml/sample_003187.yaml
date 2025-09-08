@@ -1,5 +1,7 @@
 vc-description: |-
+  /-
   Implement a function which convert the given boolean value into its string representation.
+  -/
 
 vc-preamble: |-
 
@@ -14,17 +16,17 @@ vc-definitions: |-
     booleanToString b = toString b := by sorry
 
 vc-theorems: |-
-  /--
+  /-
   info: 'True'
   -/
-  #guard_msgs in
-  #eval boolean_to_string True
+  -- #guard_msgs in
+  -- #eval boolean_to_string True
   
-  /--
+  /-
   info: 'False'
   -/
-  #guard_msgs in
-  #eval boolean_to_string False
+  -- #guard_msgs in
+  -- #eval boolean_to_string False
 
 vc-postamble: |-
   -- Apps difficulty: introductory

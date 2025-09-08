@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Let's watch a parade!
   ## Brief
   You're going to watch a parade, but you only care about one of the groups marching. The parade passes through the street where your house is. Your house is at number `location` of the street. Write a function `parade_time` that will tell you the times when you need to appear to see all appearences of that group.
@@ -30,6 +31,7 @@ vc-description: |-
                     ^
   parade_time(['A','B','C','D','E','F'], 3, 2,'C']) == [3]
   ```
+  -/
 
 vc-preamble: |-
 
@@ -62,23 +64,23 @@ vc-theorems: |-
     parade_time groups location speed pref = [] :=
   sorry
   
-  /--
+  /-
   info: [3]
   -/
-  #guard_msgs in
-  #eval parade_time ["a", "b", "c", "d", "e", "f"] 3 2 "c"
+  -- #guard_msgs in
+  -- #eval parade_time ["a", "b", "c", "d", "e", "f"] 3 2 "c"
   
-  /--
+  /-
   info: [2, 3]
   -/
-  #guard_msgs in
-  #eval parade_time ["c", "b", "c", "d", "e", "f"] 3 2 "c"
+  -- #guard_msgs in
+  -- #eval parade_time ["c", "b", "c", "d", "e", "f"] 3 2 "c"
   
-  /--
+  /-
   info: [10, 11, 13]
   -/
-  #guard_msgs in
-  #eval parade_time ["a", "b", "c", "c", "e", "c"] 7 1 "c"
+  -- #guard_msgs in
+  -- #eval parade_time ["a", "b", "c", "c", "e", "c"] 7 1 "c"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

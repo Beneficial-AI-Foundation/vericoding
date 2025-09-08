@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an unsorted integer array, find the smallest missing positive integer.
   
   Example 1:
@@ -19,6 +20,7 @@ vc-description: |-
   Note:
   
   Your algorithm should run in O(n) time and uses constant extra space.
+  -/
 
 vc-preamble: |-
 
@@ -47,23 +49,23 @@ vc-theorems: |-
       ∀ i : Int, 1 ≤ i ∧ i < result → i ∈ xs :=
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval find_first_missing_positive [1, 2, 0]
+  -- #guard_msgs in
+  -- #eval find_first_missing_positive [1, 2, 0]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_first_missing_positive [3, 4, -1, 1]
+  -- #guard_msgs in
+  -- #eval find_first_missing_positive [3, 4, -1, 1]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval find_first_missing_positive [7, 8, 9, 11, 12]
+  -- #guard_msgs in
+  -- #eval find_first_missing_positive [7, 8, 9, 11, 12]
 
 vc-postamble: |-
   -- Apps difficulty: interview

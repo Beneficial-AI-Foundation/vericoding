@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given $n$ intervals on the $X$ axis. Each interval $i$ is specified by its ends $[L_i, R_i]$. You want to color each interval either blue or yellow. After coloring all the intervals, the $X$ axis will will have $4$ colors:
   - White, the part of $X$ axis contained in no interval
   - Blue, the part of $X$ axis contained in atleast one blue colored interval and no yellow colored interval.
@@ -38,6 +39,7 @@ vc-description: |-
   - Rest of the $X$ axis is colored white.
   Please note that colors at the endpoints of the intervals don't matter when computing the lengths, and we can ignore them. Open and closed intervals have been used in the explanation section only for clarity, and it doesn't matter whether they are open or closed.
   Note that 011 is also a valid output.
+  -/
 
 vc-preamble: |-
 
@@ -66,11 +68,11 @@ vc-theorems: |-
     2 ≥ List.length (List.eraseDups result.data)
     := sorry
   
-  /--
+  /-
   info: '100'
   -/
-  #guard_msgs in
-  #eval color_intervals [(3, 7), (2, 5), (6, 9)]
+  -- #guard_msgs in
+  -- #eval color_intervals [(3, 7), (2, 5), (6, 9)]
 
 vc-postamble: |-
   -- Apps difficulty: interview

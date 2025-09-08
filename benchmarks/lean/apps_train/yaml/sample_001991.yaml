@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Nikita likes tasks on order statistics, for example, he can easily find the $k$-th number in increasing order on a segment of an array. But now Nikita wonders how many segments of an array there are such that a given number $x$ is the $k$-th number in increasing order on this segment. In other words, you should find the number of segments of a given array such that there are exactly $k$ numbers of this segment which are less than $x$.
   
   Nikita wants to get answer for this question for each $k$ from $0$ to $n$, where $n$ is the size of the array.
@@ -32,6 +33,7 @@ vc-description: |-
   
   Output
   0 6 5 4 3 2 1
+  -/
 
 vc-preamble: |-
 
@@ -65,29 +67,29 @@ vc-theorems: |-
   theorem solve_example_3 :
     solve 6 99 [-1, -1, -1, -1, -1, -1] = [0, 6, 5, 4, 3, 2, 1] := sorry
   
-  /--
+  /-
   info: N
   -/
-  #guard_msgs in
-  #eval len a
+  -- #guard_msgs in
+  -- #eval len a
   
-  /--
+  /-
   info: [6, 5, 4, 0, 0, 0]
   -/
-  #guard_msgs in
-  #eval solve 5 3 [1, 2, 3, 4, 5]
+  -- #guard_msgs in
+  -- #eval solve 5 3 [1, 2, 3, 4, 5]
   
-  /--
+  /-
   info: [1, 2, 0]
   -/
-  #guard_msgs in
-  #eval solve 2 6 [-5, 9]
+  -- #guard_msgs in
+  -- #eval solve 2 6 [-5, 9]
   
-  /--
+  /-
   info: [0, 6, 5, 4, 3, 2, 1]
   -/
-  #guard_msgs in
-  #eval solve 6 99 [-1, -1, -1, -1, -1, -1]
+  -- #guard_msgs in
+  -- #eval solve 6 99 [-1, -1, -1, -1, -1, -1]
 
 vc-postamble: |-
   -- Apps difficulty: competition

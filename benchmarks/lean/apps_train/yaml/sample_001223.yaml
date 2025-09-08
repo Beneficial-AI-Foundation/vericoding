@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef's younger brother is in town. He's a big football fan and has a very important match to watch tonight. But the Chef wants to watch the season finale of MasterChef which will be aired at the same time. Now they don't want to fight over it like they used to when they were little kids. They want to decide it in a fair way. So they agree to play a game to make a decision. Their favourite childhood game!
   The game consists of C boards. Each board i is a grid of dimension ni x mi.
   Rules of the game:
@@ -53,6 +54,7 @@ vc-description: |-
   
   The Chef can move the coin on the board from (1,1)->(2,2). This coin cannot be moved any further. And so, the Chef wins.
   Notice that if the Chef moves it to any other valid position, i.e. either to (1,2) or (2,1) he will lose!
+  -/
 
 vc-preamble: |-
 
@@ -81,23 +83,23 @@ vc-theorems: |-
     (h2: ∀ b ∈ boards, b.1 = 2 ∧ b.2 = 2) :
     solve_football_masterchef boards = (if boards.length % 2 = 0 then "Football" else "MasterChef") := sorry
   
-  /--
+  /-
   info: 'MasterChef'
   -/
-  #guard_msgs in
-  #eval solve_football_masterchef [(2, 2)]
+  -- #guard_msgs in
+  -- #eval solve_football_masterchef [(2, 2)]
   
-  /--
+  /-
   info: 'Football'
   -/
-  #guard_msgs in
-  #eval solve_football_masterchef [(2, 3), (3, 2)]
+  -- #guard_msgs in
+  -- #eval solve_football_masterchef [(2, 3), (3, 2)]
   
-  /--
+  /-
   info: 'Football'
   -/
-  #guard_msgs in
-  #eval solve_football_masterchef [(4, 4)]
+  -- #guard_msgs in
+  -- #eval solve_football_masterchef [(4, 4)]
 
 vc-postamble: |-
   -- Apps difficulty: interview

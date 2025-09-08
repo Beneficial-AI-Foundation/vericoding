@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   One day, Chef found a cube which has each of its sides painted in some color out of black, blue, red, green, yellow and orange.
   Now he asks you to check if he can choose three sides such that they are pairwise adjacent and painted in the same color.
   
@@ -38,6 +39,7 @@ vc-description: |-
   
   Example case 2.
   In this test case, the front, bottom and left sides are green (see picture).
+  -/
 
 vc-preamble: |-
 
@@ -72,23 +74,23 @@ vc-theorems: |-
     (h_same : ∀ i j, i < colors.length → j < colors.length → colors[i]! = colors[j]!) :
     check_cube_sides colors = "YES" := sorry
   
-  /--
+  /-
   info: 'NO'
   -/
-  #guard_msgs in
-  #eval check_cube_sides "blue yellow green orange black green".split()
+  -- #guard_msgs in
+  -- #eval check_cube_sides "blue yellow green orange black green".split()
   
-  /--
+  /-
   info: 'YES'
   -/
-  #guard_msgs in
-  #eval check_cube_sides "green yellow green orange black green".split()
+  -- #guard_msgs in
+  -- #eval check_cube_sides "green yellow green orange black green".split()
   
-  /--
+  /-
   info: 'NO'
   -/
-  #guard_msgs in
-  #eval check_cube_sides "red red red blue yellow orange".split()
+  -- #guard_msgs in
+  -- #eval check_cube_sides "red red red blue yellow orange".split()
 
 vc-postamble: |-
   -- Apps difficulty: interview

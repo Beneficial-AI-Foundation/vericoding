@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given two binary strings $S$ and $P$, each with length $N$. A binary string contains only characters '0' and '1'. For each valid $i$, let's denote the $i$-th character of $S$ by $S_i$.
   You have to convert the string $S$ into $P$ using zero or more operations. In one operation, you should choose two indices $i$ and $j$ ($1 \leq i < j \leq N$) such that $S_i$ is '1' and $S_j$ is '0', and swap $S_i$ with $S_j$.
   Determine if it is possible to convert $S$ into $P$ by performing some operations.
@@ -46,6 +47,7 @@ vc-description: |-
   Example case 1: The strings are already equal.
   Example case 2: It can be showed that it is impossible to convert $S$ into $P$.
   Example case 3: You can swap $S_2$ with $S_4$. The strings will then be equal.
+  -/
 
 vc-preamble: |-
   def can_convert_binary_strings (s p : String) : String := sorry
@@ -79,23 +81,23 @@ vc-theorems: |-
     can_convert_binary_strings s p = "No" :=
   sorry
   
-  /--
+  /-
   info: 'Yes'
   -/
-  #guard_msgs in
-  #eval can_convert_binary_strings "00" "00"
+  -- #guard_msgs in
+  -- #eval can_convert_binary_strings "00" "00"
   
-  /--
+  /-
   info: 'No'
   -/
-  #guard_msgs in
-  #eval can_convert_binary_strings "101" "010"
+  -- #guard_msgs in
+  -- #eval can_convert_binary_strings "101" "010"
   
-  /--
+  /-
   info: 'Yes'
   -/
-  #guard_msgs in
-  #eval can_convert_binary_strings "0110" "0011"
+  -- #guard_msgs in
+  -- #eval can_convert_binary_strings "0110" "0011"
 
 vc-postamble: |-
   -- Apps difficulty: interview

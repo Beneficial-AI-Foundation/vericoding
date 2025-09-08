@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a non-negative integer, you could swap two digits at most once to get the maximum valued number. Return the maximum valued number you could get.
   
   Example 1:
@@ -16,6 +17,7 @@ vc-description: |-
   Note:
   
   The given number is in the range [0, 108]
+  -/
 
 vc-preamble: |-
   def maximum_swap (n : Nat) : Nat := sorry
@@ -39,23 +41,23 @@ vc-theorems: |-
     maximum_swap 10 = 10 ∧
     maximum_swap 99 = 99 := sorry
   
-  /--
+  /-
   info: 7236
   -/
-  #guard_msgs in
-  #eval maximum_swap 2736
+  -- #guard_msgs in
+  -- #eval maximum_swap 2736
   
-  /--
+  /-
   info: 9973
   -/
-  #guard_msgs in
-  #eval maximum_swap 9973
+  -- #guard_msgs in
+  -- #eval maximum_swap 9973
   
-  /--
+  /-
   info: 9913
   -/
-  #guard_msgs in
-  #eval maximum_swap 1993
+  -- #guard_msgs in
+  -- #eval maximum_swap 1993
 
 vc-postamble: |-
   -- Apps difficulty: interview

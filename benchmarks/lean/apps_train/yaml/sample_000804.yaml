@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Corruption is on the rise in the country of Freedonia, Gru's home. Gru wants to end this for good and for that he needs the help of his beloved minions.
   This corruption network can be represented in the form of a tree having N$N$ nodes and N−1$N-1$ edges. The nodes are numbered from 1$1$ to N$N$, and the tree is rooted at node 1$1$. These nodes represent the corrupt officials and each corrupt official works under some other corrupt official except the Boss who is represented by node 1$1$.
   Gru believes in divide and conquer and thinks that this network needs to be divided into as many sub-networks as possible.
@@ -32,6 +33,7 @@ vc-description: |-
   
   -----EXPLANATION:-----
   We have 4 leaf nodes in this tree: 4 5 6 7. Suppose we delete node 5, then along with it we also delete node 2 and node 1. so after the deletion we are left with 2 trees, one consisting of only node 4 as the root node of that particular tree, and the other consisting of node 3,6,7 with node 3 as the root node. This can also be achieved by deleting any of the other leaf nodes and it can be proved that we cannot obtain more than 2 connected components in this example.
+  -/
 
 vc-preamble: |-
   def find_max_components (n: Nat) (edges: List (Nat × Nat)) : Nat :=
@@ -51,23 +53,23 @@ vc-theorems: |-
     find_max_components n edges = 1 :=
   sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_max_components 7 [(1, 2), (1, 3), (2, 4), (2, 5), (3, 6), (3, 7)]
+  -- #guard_msgs in
+  -- #eval find_max_components 7 [(1, 2), (1, 3), (2, 4), (2, 5), (3, 6), (3, 7)]
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval find_max_components 3 [(1, 2), (2, 3)]
+  -- #guard_msgs in
+  -- #eval find_max_components 3 [(1, 2), (2, 3)]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval find_max_components 4 [(1, 2), (1, 3), (1, 4)]
+  -- #guard_msgs in
+  -- #eval find_max_components 4 [(1, 2), (1, 3), (1, 4)]
 
 vc-postamble: |-
   -- Apps difficulty: interview

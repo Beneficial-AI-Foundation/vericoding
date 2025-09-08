@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   This Kata is a continuation of [Part 1](http://www.codewars.com/kata/the-fusc-function-part-1). The `fusc` function is defined recursively as follows:
   
       fusc(0) = 0
@@ -68,6 +69,7 @@ vc-description: |-
       return a + b .                 # see 4. above
   ```
   Voila! Now, go do the same with `fusc`.
+  -/
 
 vc-preamble: |-
 
@@ -99,23 +101,23 @@ vc-theorems: |-
   theorem fusc_consecutive_coprime (n : Nat) :
     Nat.gcd (fusc n) (fusc (n + 1)) = 1 := sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval fusc 0
+  -- #guard_msgs in
+  -- #eval fusc 0
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval fusc 1
+  -- #guard_msgs in
+  -- #eval fusc 1
   
-  /--
+  /-
   info: 21
   -/
-  #guard_msgs in
-  #eval fusc 85
+  -- #guard_msgs in
+  -- #eval fusc 85
 
 vc-postamble: |-
   -- Apps difficulty: interview

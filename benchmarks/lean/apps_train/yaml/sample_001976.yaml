@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   3R2 as DJ Mashiro - Happiness Breeze Ice - DJ Mashiro is dead or alive
   
   NEKO#ΦωΦ has just got a new maze game on her PC!
@@ -46,6 +47,7 @@ vc-description: |-
   -----Note-----
   
   We'll crack down the example test here:  After the first query, the girl still able to reach the goal. One of the shortest path ways should be: $(1,1) \to (1,2) \to (1,3) \to (1,4) \to (1,5) \to (2,5)$.  After the second query, it's impossible to move to the goal, since the farthest cell she could reach is $(1, 3)$.  After the fourth query, the $(2, 3)$ is not blocked, but now all the $4$-th column is blocked, so she still can't reach the goal.  After the fifth query, the column barrier has been lifted, thus she can go to the final goal again.
+  -/
 
 vc-preamble: |-
 

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given three arrays of integers, return the sum of elements that are common in all three arrays.
   
   For example: 
@@ -11,6 +12,7 @@ vc-description: |-
   More examples in the test cases. 
   
   Good luck!
+  -/
 
 vc-preamble: |-
 

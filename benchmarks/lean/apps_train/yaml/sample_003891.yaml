@@ -1,7 +1,9 @@
 vc-description: |-
+  /-
   Santa is coming to town and he needs your help finding out who's been naughty or nice. You will be given an entire year of JSON data following this format:
   
   Your function should return `"Naughty!"` or `"Nice!"` depending on the total number of occurrences in a given year (whichever one is greater). If both are equal, return `"Nice!"`
+  -/
 
 vc-preamble: |-
   def Month := String
@@ -39,23 +41,23 @@ vc-theorems: |-
     naughty_or_nice behaviors = "Nice!" :=
   sorry
   
-  /--
+  /-
   info: 'Nice!'
   -/
-  #guard_msgs in
-  #eval naughty_or_nice {"January": {"1": "Nice", "2": "Naughty", "3": "Nice"}, "February": {"1": "Naughty", "2": "Nice", "3": "Naughty"}}
+  -- #guard_msgs in
+  -- #eval naughty_or_nice {"January": {"1": "Nice", "2": "Naughty", "3": "Nice"}, "February": {"1": "Naughty", "2": "Nice", "3": "Naughty"}}
   
-  /--
+  /-
   info: 'Nice!'
   -/
-  #guard_msgs in
-  #eval naughty_or_nice {"January": {"1": "Nice", "2": "Nice", "3": "Nice"}, "February": {"1": "Nice", "2": "Nice", "3": "Nice"}}
+  -- #guard_msgs in
+  -- #eval naughty_or_nice {"January": {"1": "Nice", "2": "Nice", "3": "Nice"}, "February": {"1": "Nice", "2": "Nice", "3": "Nice"}}
   
-  /--
+  /-
   info: 'Naughty!'
   -/
-  #guard_msgs in
-  #eval naughty_or_nice {"January": {"1": "Naughty", "2": "Naughty", "3": "Naughty"}, "February": {"1": "Naughty", "2": "Naughty", "3": "Naughty"}}
+  -- #guard_msgs in
+  -- #eval naughty_or_nice {"January": {"1": "Naughty", "2": "Naughty", "3": "Naughty"}, "February": {"1": "Naughty", "2": "Naughty", "3": "Naughty"}}
 
 vc-postamble: |-
   -- Apps difficulty: introductory

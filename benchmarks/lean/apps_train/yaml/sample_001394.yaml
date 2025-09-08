@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   There are N islands in the sea, enumerated from 1 to N. Each of them is so small that we can consider them as points on a plane. You are given the Cartesian coordinates of all islands. X-axis is directed towards East and Y-axis is directed towards North.
   You need to illuminate all the islands. To do this, you can place lighthouses on some of the islands. You can't place more than one lighthouse on any single island. Each lighthouse can light only one of the 4 quadrants: North-Western, North-Eastern, South-Western or South-Eastern. If some island is located on the border of an illuminated quadrant, it is considered to be illuminated as well. Note that this means that a lighthouse always illuminates it's own island as well.
   Find the smallest possible number of lighthouses required to illuminate all the islands (say L). Describe their configurations — positions and quadrants illuminated — as well.
@@ -53,6 +54,7 @@ vc-description: |-
   -----Explanation-----
   Example case 1. Also we can place lighthouse on 1st or 5th island.
   Example case 2. Notice that some islands can be illuminated by more than 1 lighthouse.
+  -/
 
 vc-preamble: |-
   def LighthouseConfig := Nat × Direction

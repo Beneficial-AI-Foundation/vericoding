@@ -1,0 +1,60 @@
+/-
+Given an array with exactly 5 strings `"a"`, `"b"` or `"c"` (`char`s in Java, `character`s in Fortran), check if the array contains three and two of the same values.
+
+## Examples
+
+```
+["a", "a", "a", "b", "b"] ==> true  // 3x "a" and 2x "b"
+["a", "b", "c", "b", "c"] ==> false // 1x "a", 2x "b" and 2x "c"
+["a", "a", "a", "a", "a"] ==> false // 5x "a"
+```
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def check_three_and_two (list : List α) : Bool :=
+  sorry
+
+theorem list_length_is_five {α : Type} (list : List α) :
+  check_three_and_two list = true → list.length = 5 :=
+  sorry
+
+theorem counts_must_be_two_and_three {α : Type} [BEq α] (list : List α) :
+  check_three_and_two list = true →
+  ∃ (x y : α), 
+    (list.count x = 2 ∧ list.count y = 3) ∨ 
+    (list.count x = 3 ∧ list.count y = 2) :=
+  sorry
+
+theorem counts_two_and_three_implies_true {α : Type} [BEq α] (list : List α) :
+  (∃ (x y : α), 
+    (list.count x = 2 ∧ list.count y = 3) ∨ 
+    (list.count x = 3 ∧ list.count y = 2)) →
+  check_three_and_two list = true :=
+  sorry
+
+theorem type_agnostic {α : Type} (list : List α) : 
+  check_three_and_two list = true ∨ check_three_and_two list = false :=
+  sorry
+
+/-
+info: True
+-/
+-- #guard_msgs in
+-- #eval check_three_and_two ["a", "a", "a", "b", "b"]
+
+/-
+info: False
+-/
+-- #guard_msgs in
+-- #eval check_three_and_two ["a", "c", "a", "c", "b"]
+
+/-
+info: False
+-/
+-- #guard_msgs in
+-- #eval check_three_and_two ["a", "a", "a", "a", "a"]
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

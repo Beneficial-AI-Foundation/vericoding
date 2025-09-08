@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Tzuyu gave Nayeon a strip of $N$ cells (numbered $1$ through $N$) for her birthday. This strip is described by a sequence $A_1, A_2, \ldots, A_N$, where for each valid $i$, the $i$-th cell is blocked if $A_i = 1$ or free if $A_i = 0$. Tzuyu and Nayeon are going to use it to play a game with the following rules:
   - The players alternate turns; Nayeon plays first.
   - Initially, both players are outside of the strip. However, note that afterwards during the game, their positions are always different.
@@ -47,6 +48,7 @@ vc-description: |-
   -----Explanation-----
   Example case 1: Since both Nayeon and Tzuyu play optimally, Nayeon can start e.g. by moving to cell $4$, which then becomes blocked. Tzuyu has to pick either the cell $3$ or the cell $5$, which also becomes blocked. Nayeon is then left with only one empty cell next to cell $4$ (the one Tzuyu did not pick); after she moves there, Tzuyu is unable to move, so she loses the game.
   Example case 2: Regardless of what cell Nayeon moves to at the start, Tzuyu will always be able to beat her.
+  -/
 
 vc-preamble: |-
   def determine_winner (n : Nat) (cells : List Nat) : String := sorry
@@ -82,23 +84,23 @@ vc-theorems: |-
       then "Yes"
       else "No" := sorry
   
-  /--
+  /-
   info: 'Yes'
   -/
-  #guard_msgs in
-  #eval determine_winner 7 [1, 1, 0, 0, 0, 1, 1]
+  -- #guard_msgs in
+  -- #eval determine_winner 7 [1, 1, 0, 0, 0, 1, 1]
   
-  /--
+  /-
   info: 'No'
   -/
-  #guard_msgs in
-  #eval determine_winner 8 [1, 0, 1, 1, 1, 0, 0, 1]
+  -- #guard_msgs in
+  -- #eval determine_winner 8 [1, 0, 1, 1, 1, 0, 0, 1]
   
-  /--
+  /-
   info: 'Yes'
   -/
-  #guard_msgs in
-  #eval determine_winner 4 [1, 1, 0, 1]
+  -- #guard_msgs in
+  -- #eval determine_winner 4 [1, 1, 0, 1]
 
 vc-postamble: |-
   -- Apps difficulty: interview

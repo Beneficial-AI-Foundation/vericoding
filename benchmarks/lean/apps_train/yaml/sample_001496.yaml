@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   "I don't have any fancy quotes." - vijju123
   Chef was reading some quotes by great people. Now, he is interested in classifying all the fancy quotes he knows. He thinks that all fancy quotes which contain the word "not" are Real Fancy; quotes that do not contain it are regularly fancy.
   You are given some quotes. For each quote, you need to tell Chef if it is Real Fancy or just regularly fancy.
@@ -30,6 +31,7 @@ vc-description: |-
   -----Explanation-----
   Example case 1: "i do not have any fancy quotes"
   Example case 2: The word "not" does not appear in the given quote.
+  -/
 
 vc-preamble: |-
 
@@ -55,23 +57,23 @@ vc-theorems: |-
   theorem classify_quotes_all_not (n : Nat) (h : n > 0) :
     classify_quotes (String.join (List.replicate n "not" |>.intersperse " ")) = "Real Fancy" := sorry
   
-  /--
+  /-
   info: 'Real Fancy'
   -/
-  #guard_msgs in
-  #eval classify_quotes "i do not have any fancy quotes"
+  -- #guard_msgs in
+  -- #eval classify_quotes "i do not have any fancy quotes"
   
-  /--
+  /-
   info: 'regularly fancy'
   -/
-  #guard_msgs in
-  #eval classify_quotes "when nothing goes right go left"
+  -- #guard_msgs in
+  -- #eval classify_quotes "when nothing goes right go left"
   
-  /--
+  /-
   info: 'Real Fancy'
   -/
-  #guard_msgs in
-  #eval classify_quotes "this is not fancy at all"
+  -- #guard_msgs in
+  -- #eval classify_quotes "this is not fancy at all"
 
 vc-postamble: |-
   -- Apps difficulty: interview

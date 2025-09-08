@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Logical quantifiers are very useful tools for expressing claims about a set. For this problem, let's focus on the set of real numbers specifically. The set of real numbers includes zero and negatives. There are two kinds of quantifiers: universal ($\forall$) and existential ($\exists$). You can read more about them here.
   
   The universal quantifier is used to make a claim that a statement holds for all real numbers. For example:  $\forall x,x<100$ is read as: for all real numbers $x$, $x$ is less than $100$. This statement is false.  $\forall x,x>x-1$ is read as: for all real numbers $x$, $x$ is greater than $x-1$. This statement is true. 
@@ -67,6 +68,7 @@ vc-description: |-
   For the second test, we can show that no assignment of quantifiers, for which the statement is true exists.
   
   For the third test, the statement $\forall x_1, \forall x_2, \exists x_3, (x_1<x_3)\land (x_2<x_3)$ is true: We can set $x_3=\max\{x_1,x_2\}+1$.
+  -/
 
 vc-preamble: |-
 

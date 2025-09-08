@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Scenario
   
   **_Several people_** are standing in *a row divided into two teams*.  
@@ -51,6 +52,7 @@ vc-description: |-
   
   ## Enjoy Learning !!
   # Zizou
+  -/
 
 vc-preamble: |-
   def sum_list : List Nat → Nat

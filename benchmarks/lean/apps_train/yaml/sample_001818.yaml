@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given the root of a binary tree, each node in the tree has a distinct value.
   After deleting all nodes with a value in to_delete, we are left with a forest (a disjoint union of trees).
   Return the roots of the trees in the remaining forest.  You may return the result in any order.
@@ -14,6 +15,7 @@ vc-description: |-
   Each node has a distinct value between 1 and 1000.
   to_delete.length <= 1000
   to_delete contains distinct values between 1 and 1000.
+  -/
 
 vc-preamble: |-
   def arrayToTree (arr : List Int) : Option TreeNode := sorry
@@ -69,17 +71,17 @@ vc-theorems: |-
     delNodes root [] = [TreeNode.node 1 none none] ∧
     delNodes root [1] = [] := sorry
   
-  /--
+  /-
   info: sorted(map(str, [[1, 2, None, 4], [6], [7]]))
   -/
-  #guard_msgs in
-  #eval sorted map(str, result1_arrays)
+  -- #guard_msgs in
+  -- #eval sorted map(str, result1_arrays)
   
-  /--
+  /-
   info: sorted(map(str, [[1, None, 3]]))
   -/
-  #guard_msgs in
-  #eval sorted map(str, result2_arrays)
+  -- #guard_msgs in
+  -- #eval sorted map(str, result2_arrays)
 
 vc-postamble: |-
   -- Apps difficulty: interview

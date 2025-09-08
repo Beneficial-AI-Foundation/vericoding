@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given an array $a$ consisting of $n$ integers.
   
   In one move, you can choose some index $i$ ($1 \le i \le n - 2$) and shift the segment $[a_i, a_{i + 1}, a_{i + 2}]$ cyclically to the right (i.e. replace the segment $[a_i, a_{i + 1}, a_{i + 2}]$ with $[a_{i + 2}, a_i, a_{i + 1}]$). 
@@ -43,6 +44,7 @@ vc-description: |-
   -1
   4
   3 3 4 4
+  -/
 
 vc-preamble: |-
   def solve_array_sort (n : Nat) (arr : List Nat) : List Nat := sorry
@@ -73,23 +75,23 @@ vc-theorems: |-
         (λ acc pos => acc.swap3 (pos-1)) arr;
       final.sort = List.range' 1 n) := sorry
   
-  /--
+  /-
   info: [0]
   -/
-  #guard_msgs in
-  #eval solve_array_sort 5 [1, 2, 3, 4, 5]
+  -- #guard_msgs in
+  -- #eval solve_array_sort 5 [1, 2, 3, 4, 5]
   
-  /--
+  /-
   info: [6, 3, 1, 3, 2, 2, 3]
   -/
-  #guard_msgs in
-  #eval solve_array_sort 5 [5, 4, 3, 2, 1]
+  -- #guard_msgs in
+  -- #eval solve_array_sort 5 [5, 4, 3, 2, 1]
   
-  /--
+  /-
   info: [4, 3, 3, 4, 4]
   -/
-  #guard_msgs in
-  #eval solve_array_sort 6 [1, 2, 3, 3, 6, 4]
+  -- #guard_msgs in
+  -- #eval solve_array_sort 6 [1, 2, 3, 3, 6, 4]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

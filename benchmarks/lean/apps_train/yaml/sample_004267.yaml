@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a string of words (x), for each word within the string you need to turn the word 'inside out'. By this I mean the internal letters will move out, and the external letters move toward the centre. 
   
   If the word is even length, all letters will move. If the length is odd, you are expected to leave the 'middle' letter of the word where it is. 
@@ -7,6 +8,7 @@ vc-description: |-
   
   'taxi' would become 'atix'
   'taxis' would become 'atxsi'
+  -/
 
 vc-preamble: |-
 
@@ -40,23 +42,23 @@ vc-theorems: |-
       ∀ pos : String.Pos, (inside_out_word s).get pos = s.get (perm pos) :=
   sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval inside_out "man i need a taxi up to ubud"
+  -- #guard_msgs in
+  -- #eval inside_out "man i need a taxi up to ubud"
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval inside_out "take me to semynak"
+  -- #guard_msgs in
+  -- #eval inside_out "take me to semynak"
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval inside_out "massage yes massage"
+  -- #guard_msgs in
+  -- #eval inside_out "massage yes massage"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

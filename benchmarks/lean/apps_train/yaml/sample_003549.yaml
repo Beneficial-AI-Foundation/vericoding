@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
   
   In the city, a bus named Fibonacci runs on the road every day.
@@ -39,6 +40,7 @@ vc-description: |-
   # Output
   
   An integer. The number of passengers on the bus when the bus runs out stationx.
+  -/
 
 vc-preamble: |-
   def sim (k n : Nat) (p : Float) : Float :=
@@ -65,17 +67,17 @@ vc-theorems: |-
     compute k n m x ≥ 0 :=
   sorry
   
-  /--
+  /-
   info: 13
   -/
-  #guard_msgs in
-  #eval calc 5 7 32 4
+  -- #guard_msgs in
+  -- #eval calc 5 7 32 4
   
-  /--
+  /-
   info: 252
   -/
-  #guard_msgs in
-  #eval calc 12 23 212532 8
+  -- #guard_msgs in
+  -- #eval calc 12 23 212532 8
 
 vc-postamble: |-
   -- Apps difficulty: introductory

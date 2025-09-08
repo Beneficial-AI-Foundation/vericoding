@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Task:
   Given an array arr of strings complete the function landPerimeter by calculating the total perimeter of all the islands. Each piece of land will be marked with 'X' while the water fields are represented as 'O'. Consider each tile being a perfect 1 x 1piece of land. Some examples for better visualization:
   
@@ -23,6 +24,7 @@ vc-description: |-
   
   should return: "Total land perimeter: 18"
   Good luck!
+  -/
 
 vc-preamble: |-
 
@@ -61,23 +63,23 @@ vc-theorems: |-
     (h4 : arr[0]!.length > 0 ∧ arr[0]!.length ≤ 10) :
     land_perimeter arr = "Total land perimeter: 0" := sorry
   
-  /--
+  /-
   info: 'Total land perimeter: 24'
   -/
-  #guard_msgs in
-  #eval land_perimeter ["XOOXO", "XOOXO", "OOOXO", "XXOXO", "OXOOO"]
+  -- #guard_msgs in
+  -- #eval land_perimeter ["XOOXO", "XOOXO", "OOOXO", "XXOXO", "OXOOO"]
   
-  /--
+  /-
   info: 'Total land perimeter: 18'
   -/
-  #guard_msgs in
-  #eval land_perimeter ["XOOO", "XOXO", "XOXO", "OOXX", "OOOO"]
+  -- #guard_msgs in
+  -- #eval land_perimeter ["XOOO", "XOXO", "XOXO", "OOXX", "OOOO"]
   
-  /--
+  /-
   info: 'Total land perimeter: 4'
   -/
-  #guard_msgs in
-  #eval land_perimeter ["X"]
+  -- #guard_msgs in
+  -- #eval land_perimeter ["X"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

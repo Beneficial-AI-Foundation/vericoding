@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   The objective is to disambiguate two given names: the original with another
   
   Let's start simple, and just work with plain ascii strings. 
@@ -49,6 +50,7 @@ vc-description: |-
   
   * [Author Disambiguation: a name is a Name!](https://www.codewars.com/kata/author-disambiguation-a-name-is-a-name)
   * or even harder: [Author Disambiguation: Signatures worth it](https://www.codewars.com/kata/author-disambiguation-signatures-worth-it)
+  -/
 
 vc-preamble: |-
 
@@ -84,35 +86,35 @@ vc-theorems: |-
     ¬could_be "Carlos Ray" "carlos ray" := by
     sorry
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval could_be "Carlos Ray Norris" "Carlos Ray Norris"
+  -- #guard_msgs in
+  -- #eval could_be "Carlos Ray Norris" "Carlos Ray Norris"
   
-  /--
+  /-
   info: True
   -/
-  #guard_msgs in
-  #eval could_be "Carlos Ray Norris" "Carlos Ray"
+  -- #guard_msgs in
+  -- #eval could_be "Carlos Ray Norris" "Carlos Ray"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval could_be "" "C"
+  -- #guard_msgs in
+  -- #eval could_be "" "C"
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval could_be "Carlos Ray Norris" " "
+  -- #guard_msgs in
+  -- #eval could_be "Carlos Ray Norris" " "
   
-  /--
+  /-
   info: False
   -/
-  #guard_msgs in
-  #eval could_be "Carlos Ray Norris" "carlos"
+  -- #guard_msgs in
+  -- #eval could_be "Carlos Ray Norris" "carlos"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

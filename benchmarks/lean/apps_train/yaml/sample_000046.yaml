@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Recently, you found a bot to play "Rock paper scissors" with. Unfortunately, the bot uses quite a simple algorithm to play: he has a string $s = s_1 s_2 \dots s_{n}$ of length $n$ where each letter is either R, S or P.
   
   While initializing, the bot is choosing a starting index $pos$ ($1 \le pos \le n$), and then it can play any number of rounds. In the first round, he chooses "Rock", "Scissors" or "Paper" based on the value of $s_{pos}$:   if $s_{pos}$ is equal to R the bot chooses "Rock";  if $s_{pos}$ is equal to S the bot chooses "Scissors";  if $s_{pos}$ is equal to P the bot chooses "Paper"; 
@@ -42,6 +43,7 @@ vc-description: |-
   In the second test case:   if bot will start from $pos = 1$, then $(s_1, c_1)$ is draw, $(s_2, c_2)$ is draw and $(s_3, c_3)$ is draw, so $win(1) = 0$;  if bot will start from $pos = 2$, then $(s_2, c_1)$ is win, $(s_3, c_2)$ is win and $(s_1, c_3)$ is win, so $win(2) = 3$;  if bot will start from $pos = 3$, then $(s_3, c_1)$ is lose, $(s_1, c_2)$ is lose and $(s_2, c_3)$ is lose, so $win(3) = 0$;  The average is equal to $\frac{0 + 3 + 0}{3} = 1$ and it can be proven that it's the maximum possible average.
   
   A picture from Wikipedia explaining "Rock paper scissors" game:  $\beta$
+  -/
 
 vc-preamble: |-
   def solve_rock_paper_scissors (s: String) : String := sorry
@@ -74,11 +76,11 @@ vc-theorems: |-
     let firstChar := (solve_rock_paper_scissors s).front
     beats firstChar mostFrequent := sorry
   
-  /--
+  /-
   info: len(test_input)
   -/
-  #guard_msgs in
-  #eval len solve_rock_paper_scissors(test_input)
+  -- #guard_msgs in
+  -- #eval len solve_rock_paper_scissors(test_input)
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given a balanced parentheses string S, compute the score of the string based on the following rule:
   
   () has score 1
@@ -25,6 +26,7 @@ vc-description: |-
   
   S is a balanced parentheses string, containing only ( and ).
   2 <= S.length <= 50
+  -/
 
 vc-preamble: |-
 
@@ -50,23 +52,23 @@ vc-theorems: |-
     score_parentheses s = depths.foldl (fun acc d => acc + 2^(d-1)) 0 :=
     sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval score_parentheses "()"
+  -- #guard_msgs in
+  -- #eval score_parentheses "()"
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval score_parentheses "(())"
+  -- #guard_msgs in
+  -- #eval score_parentheses "(())"
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval score_parentheses "(()(()))"
+  -- #guard_msgs in
+  -- #eval score_parentheses "(()(()))"
 
 vc-postamble: |-
   -- Apps difficulty: interview

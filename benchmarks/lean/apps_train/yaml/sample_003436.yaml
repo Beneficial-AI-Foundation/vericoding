@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Description:
   
    Count the number of exclamation marks and question marks, return the product.
@@ -17,6 +18,7 @@ vc-description: |-
   Product("!???!!") == 9
   Product("!????!!!?") == 20
   ```
+  -/
 
 vc-preamble: |-
 
@@ -41,23 +43,23 @@ vc-theorems: |-
     let no_quest := s.replace "?" "" 
     product no_excl = 0 ∧ product no_quest = 0 := sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval product ""
+  -- #guard_msgs in
+  -- #eval product ""
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval product "!"
+  -- #guard_msgs in
+  -- #eval product "!"
   
-  /--
+  /-
   info: 8
   -/
-  #guard_msgs in
-  #eval product "!!??!!"
+  -- #guard_msgs in
+  -- #eval product "!!??!!"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

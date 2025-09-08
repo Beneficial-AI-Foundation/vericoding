@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   We stack glasses in a pyramid, where the first row has 1 glass, the second row has 2 glasses, and so on until the 100th row.  Each glass holds one cup (250ml) of champagne.
   
   Then, some champagne is poured in the first glass at the top.  When the top most glass is full, any excess liquid poured will fall equally to the glass immediately to the left and right of it.  When those glasses become full, any excess champagne will fall equally to the left and right of those glasses, and so on.  (A glass at the bottom row has it's excess champagne fall on the floor.)
@@ -21,6 +22,7 @@ vc-description: |-
   
          poured will be in the range of [0, 10 ^ 9].
          query_glass and query_row will be in the range of [0, 99].
+  -/
 
 vc-preamble: |-
 
@@ -88,23 +90,23 @@ vc-theorems: |-
     (∃ n, n ≤ 10 ∧ ∀ row glass, row < 20 → glass ≤ row →
       (champagne_tower poured row glass > 0 → n > 0)) := sorry
   
-  /--
+  /-
   info: 0.0
   -/
-  #guard_msgs in
-  #eval champagne_tower 1 1 1
+  -- #guard_msgs in
+  -- #eval champagne_tower 1 1 1
   
-  /--
+  /-
   info: 0.5
   -/
-  #guard_msgs in
-  #eval champagne_tower 2 1 1
+  -- #guard_msgs in
+  -- #eval champagne_tower 2 1 1
   
-  /--
+  /-
   info: 1.0
   -/
-  #guard_msgs in
-  #eval champagne_tower 100000009 33 17
+  -- #guard_msgs in
+  -- #eval champagne_tower 100000009 33 17
 
 vc-postamble: |-
   -- Apps difficulty: interview

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   =====Function Descriptions=====
   re.findall()
   
@@ -38,6 +39,7 @@ vc-description: |-
   =====Output Format=====
   Print the matched substrings in their order of occurrence on separate lines.
   If no match is found, print -1.
+  -/
 
 vc-preamble: |-
   def isVowel (c : Char) : Bool :=

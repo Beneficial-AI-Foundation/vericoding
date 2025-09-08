@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    Miss X has only two combs in her possession, both of which are old and miss a tooth or two. She also has many purses of different length, in which she carries the combs. The only way they fit is horizontally and without overlapping. Given teeth' positions on both combs, find the minimum length of the purse she needs to take them with her.
   
@@ -31,6 +32,7 @@ vc-description: |-
    - `[output]` an integer
   
      The minimum length of a purse Miss X needs.
+  -/
 
 vc-preamble: |-
 
@@ -43,53 +45,53 @@ vc-definitions: |-
   
   def combs (a b : CombString) : Nat := sorry
   
-  /-- The result length is at least as long as the longest input -/
+  /- The result length is at least as long as the longest input -/
 
 vc-theorems: |-
   theorem combs_min_length {a b : CombString} :
     combs a b ≥ max a.length b.length := sorry
   
-  /-- The result length is at most the sum of input lengths -/
+  /- The result length is at most the sum of input lengths -/
   
   theorem combs_max_length {a b : CombString} :
     combs a b ≤ a.length + b.length := sorry
   
-  /-- The function is symmetric -/
+  /- The function is symmetric -/
   
   theorem combs_symmetric {a b : CombString} :
     combs a b = combs b a := sorry
   
-  /-- Strings of all dots combine to max length -/
+  /- Strings of all dots combine to max length -/
   
   theorem combs_all_dots {a b : CombString}
     (ha : ∀ c, c ∈ a.data → c = '.')
     (hb : ∀ c, c ∈ b.data → c = '.') :
     combs a b = max a.length b.length := sorry
   
-  /-- Strings of all stars combine to sum of lengths -/
+  /- Strings of all stars combine to sum of lengths -/
   
   theorem combs_all_stars {a b : CombString}
     (ha : ∀ c, c ∈ a.data → c = '*')
     (hb : ∀ c, c ∈ b.data → c = '*') :
     combs a b = a.length + b.length := sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval combs "*..*" "*.*"
+  -- #guard_msgs in
+  -- #eval combs "*..*" "*.*"
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval combs "*...*" "*.*"
+  -- #guard_msgs in
+  -- #eval combs "*...*" "*.*"
   
-  /--
+  /-
   info: 9
   -/
-  #guard_msgs in
-  #eval combs "*..*.*" "*.***"
+  -- #guard_msgs in
+  -- #eval combs "*..*.*" "*.***"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

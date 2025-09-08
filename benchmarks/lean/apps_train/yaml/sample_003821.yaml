@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # A History Lesson
   
   The Pony Express was a mail service operating in the US in 1859-60.
@@ -62,6 +63,7 @@ vc-description: |-
   See also
   * The Pony Express
   * The Pony Express (missing rider)
+  -/
 
 vc-preamble: |-
 
@@ -101,23 +103,23 @@ vc-theorems: |-
         else (new_total, riders)) (0, 1)
     riders stations lost ≥ min_riders.2 := sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval riders [43, 23, 40, 13] 4
+  -- #guard_msgs in
+  -- #eval riders [43, 23, 40, 13] 4
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval riders [18, 15] 2
+  -- #guard_msgs in
+  -- #eval riders [18, 15] 2
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval riders [50, 50] 2
+  -- #guard_msgs in
+  -- #eval riders [50, 50] 2
 
 vc-postamble: |-
   -- Apps difficulty: introductory

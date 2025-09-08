@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   $Harshad$ $Mehta$ is planning  a new scam with the stocks he is given a stock of  integer price S and a number K . $harshad$ has got the power to change the number $S$ at most $K$ times
   In order to raise the price of stock and now cash it for his benefits
   Find the largest price at which $harshad$ can sell the stock in order to maximize his profit 
@@ -22,6 +23,7 @@ vc-description: |-
   
   -----EXPLANATION:-----
   First two digits of the number are changed to get the required number.
+  -/
 
 vc-preamble: |-
   def numDigits (n : Nat) : Nat :=
@@ -61,23 +63,23 @@ vc-theorems: |-
     ∧ maximizeStockPrice 99 1 = 99 :=
     sorry
   
-  /--
+  /-
   info: 9983
   -/
-  #guard_msgs in
-  #eval maximize_stock_price 4483 2
+  -- #guard_msgs in
+  -- #eval maximize_stock_price 4483 2
   
-  /--
+  /-
   info: 9234
   -/
-  #guard_msgs in
-  #eval maximize_stock_price 1234 1
+  -- #guard_msgs in
+  -- #eval maximize_stock_price 1234 1
   
-  /--
+  /-
   info: 9999
   -/
-  #guard_msgs in
-  #eval maximize_stock_price 9999 4
+  -- #guard_msgs in
+  -- #eval maximize_stock_price 9999 4
 
 vc-postamble: |-
   -- Apps difficulty: interview

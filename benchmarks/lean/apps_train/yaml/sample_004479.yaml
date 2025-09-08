@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Quantum mechanics tells us that a molecule is only allowed to have specific, discrete amounts of internal energy. The 'rigid rotor model', a model for describing rotations, tells us that the amount of rotational energy a molecule can have is given by:  
   
   `E =  B * J * (J + 1)`, 
@@ -12,6 +13,7 @@ vc-description: |-
   * return empty array if Jmin is greater than Jmax (as it make no sense).
   * Jmin, Jmax are integers.
   * physically B must be positive, so return empty array if B <= 0
+  -/
 
 vc-preamble: |-
 

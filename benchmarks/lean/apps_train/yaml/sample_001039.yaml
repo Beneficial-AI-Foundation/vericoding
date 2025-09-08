@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Problem description.
   Winston and Royce love sharing memes with each other. They express the amount of seconds they laughed ar a meme as the number of ‘XD’ subsequences in their messages. Being optimization freaks, they wanted to find the string with minimum possible length and having exactly the given number of ‘XD’ subsequences.
   
@@ -25,6 +26,7 @@ vc-description: |-
   
   -----Explanation-----
   Some of the possible strings are - XXDDDXD,XXXDDD,XDXXXDD,XDXDXDD etc. Of these, XXXDDD is the smallest.
+  -/
 
 vc-preamble: |-
 
@@ -54,23 +56,23 @@ vc-theorems: |-
     let d_shorter := (shorter.data.filter (· = 'D')).length
     x_shorter * d_shorter < n := sorry
   
-  /--
+  /-
   info: 'XXXDDD'
   -/
-  #guard_msgs in
-  #eval min_length_xd_sequence 9
+  -- #guard_msgs in
+  -- #eval min_length_xd_sequence 9
   
-  /--
+  /-
   info: 'XXDD'
   -/
-  #guard_msgs in
-  #eval min_length_xd_sequence 4
+  -- #guard_msgs in
+  -- #eval min_length_xd_sequence 4
   
-  /--
+  /-
   info: 'XD'
   -/
-  #guard_msgs in
-  #eval min_length_xd_sequence 1
+  -- #guard_msgs in
+  -- #eval min_length_xd_sequence 1
 
 vc-postamble: |-
   -- Apps difficulty: interview

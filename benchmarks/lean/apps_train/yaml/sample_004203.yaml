@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You need to write a function, that returns the first non-repeated character in the given string.
   
   For example for string `"test"` function should return `'e'`.  
@@ -10,6 +11,7 @@ vc-description: |-
   You can assume, that the input string has always non-zero length.
   
   If there is no repeating character, return `null` in JS or Java, and `None` in Python.
+  -/
 
 vc-preamble: |-
 
@@ -37,23 +39,23 @@ vc-theorems: |-
     (c ∈ s.data) ∧
     (∀ i : Nat, i < s.data.indexOf c → s.data[i]?.map (fun x => s.data.count x) ≠ some 1) := sorry
   
-  /--
+  /-
   info: 'e'
   -/
-  #guard_msgs in
-  #eval first_non_repeated "test"
+  -- #guard_msgs in
+  -- #eval first_non_repeated "test"
   
-  /--
+  /-
   info: 'r'
   -/
-  #guard_msgs in
-  #eval first_non_repeated "teeter"
+  -- #guard_msgs in
+  -- #eval first_non_repeated "teeter"
   
-  /--
+  /-
   info: '5'
   -/
-  #guard_msgs in
-  #eval first_non_repeated "1122321235121222"
+  -- #guard_msgs in
+  -- #eval first_non_repeated "1122321235121222"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

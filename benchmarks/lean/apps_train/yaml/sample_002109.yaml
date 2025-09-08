@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Please notice the unusual memory limit of this problem.
   
   Orac likes games. Recently he came up with the new game, "Game of Life".
@@ -85,6 +86,7 @@ vc-description: |-
   For the first example, the picture above shows the initial situation and the color of cells at the iteration $1$, $2$, and $3$. We can see that the color of $(1,1)$ at the iteration $1$ is black, the color of $(2,2)$ at the iteration $2$ is black, and the color of $(3,3)$ at the iteration $3$ is also black.
   
   For the second example, you can prove that the cells will never change their colors.
+  -/
 
 vc-preamble: |-
 
@@ -116,23 +118,23 @@ vc-theorems: |-
     (GameOfLife grid queries).get ⟨i.val, by rw [h₂]; exact i.isLt⟩ :=
   sorry
   
-  /--
+  /-
   info: [1, 1, 1]
   -/
-  #guard_msgs in
-  #eval game_of_life ["000", "111", "000"] [(1, 1, 1), (2, 2, 2), (3, 3, 3)]
+  -- #guard_msgs in
+  -- #eval game_of_life ["000", "111", "000"] [(1, 1, 1), (2, 2, 2), (3, 3, 3)]
   
-  /--
+  /-
   info: [0, 0]
   -/
-  #guard_msgs in
-  #eval game_of_life ["01", "10", "01", "10", "01"] [(1, 1, 4), (5, 1, 4)]
+  -- #guard_msgs in
+  -- #eval game_of_life ["01", "10", "01", "10", "01"] [(1, 1, 4), (5, 1, 4)]
   
-  /--
+  /-
   info: [1, 0, 1]
   -/
-  #guard_msgs in
-  #eval game_of_life ["01011", "10110", "01101", "11010", "10101"] [(1, 1, 4), (1, 2, 3), (5, 5, 3)]
+  -- #guard_msgs in
+  -- #eval game_of_life ["01011", "10110", "01101", "11010", "10101"] [(1, 1, 4), (1, 2, 3), (5, 5, 3)]
 
 vc-postamble: |-
   -- Apps difficulty: competition

@@ -1,0 +1,34 @@
+/-
+Determine the **area** of the largest square that can fit inside a circle with radius *r*.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def area_largest_square (r : Float) : Float := 
+  sorry
+
+theorem area_zero : 
+  area_largest_square 0 = 0 :=
+sorry
+
+/-
+info: 50
+-/
+-- #guard_msgs in
+-- #eval area_largest_square 5
+
+/-
+info: 98
+-/
+-- #guard_msgs in
+-- #eval area_largest_square 7
+
+/-
+info: 5000
+-/
+-- #guard_msgs in
+-- #eval area_largest_square 50
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded_and_plausible

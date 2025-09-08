@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ## Debugging sayHello function
   
   The starship Enterprise has run into some problem when creating a program to greet everyone as they come aboard. It is your job to fix the code and get the program working again!
@@ -7,6 +8,7 @@ vc-description: |-
   ```
   Hello, Mr. Spock
   ```
+  -/
 
 vc-preamble: |-
 
@@ -34,23 +36,23 @@ vc-theorems: |-
     let greeting := sayHello name
     String.length greeting = String.length "Hello, " + String.length name := sorry
   
-  /--
+  /-
   info: 'Hello, Mr. Spock'
   -/
-  #guard_msgs in
-  #eval say_hello "Mr. Spock"
+  -- #guard_msgs in
+  -- #eval say_hello "Mr. Spock"
   
-  /--
+  /-
   info: 'Hello, Captain Kirk'
   -/
-  #guard_msgs in
-  #eval say_hello "Captain Kirk"
+  -- #guard_msgs in
+  -- #eval say_hello "Captain Kirk"
   
-  /--
+  /-
   info: 'Hello, Dr. McCoy'
   -/
-  #guard_msgs in
-  #eval say_hello "Dr. McCoy"
+  -- #guard_msgs in
+  -- #eval say_hello "Dr. McCoy"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

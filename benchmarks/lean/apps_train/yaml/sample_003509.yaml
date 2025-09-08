@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Make a function **"add"** that will be able to sum elements of **list** continuously and return a new list of sums.
   
   For example: 
@@ -9,6 +10,7 @@ vc-description: |-
   ```
   
   If you want to learn more see https://en.wikipedia.org/wiki/Prefix_sum
+  -/
 
 vc-preamble: |-
 
@@ -57,23 +59,23 @@ vc-theorems: |-
   
   end AddSpec
   
-  /--
+  /-
   info: [1, 3, 6, 10, 15]
   -/
-  #guard_msgs in
-  #eval add [1, 2, 3, 4, 5]
+  -- #guard_msgs in
+  -- #eval add [1, 2, 3, 4, 5]
   
-  /--
+  /-
   info: [5, 15, 30, 50]
   -/
-  #guard_msgs in
-  #eval add [5, 10, 15, 20]
+  -- #guard_msgs in
+  -- #eval add [5, 10, 15, 20]
   
-  /--
+  /-
   info: [2, 6, 12]
   -/
-  #guard_msgs in
-  #eval add [2, 4, 6]
+  -- #guard_msgs in
+  -- #eval add [2, 4, 6]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

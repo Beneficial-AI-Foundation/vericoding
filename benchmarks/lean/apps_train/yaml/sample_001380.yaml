@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   After the hundred years of war started by the Fire Nation, its time for the Water Tribes to bring it to an end. Avatar asked Sokka to go to the Southern WarZone from The Northern WarZone and gave him some money in a bag for his journey. Sokka has the World Map to guide him during his journey . The World Map is described as a $N$x$N$ grid where the Northern WarZone is denoted by $(0,0)$ and the Southern WarZone is denoted by $(N-1,N-1)$. Each location on the world map is denoted in a similar way by two integers r and c. For each location having:  
   - $r = c$ denotes neutral land ( $(0,0)$ and $(N-1,N-1)$ also come under this category)       
   - $r < c$ denotes the land under the rule of Water Tribes     
@@ -31,6 +32,7 @@ vc-description: |-
   
   -----EXPLANATION:-----
   For N=2, there is no possible path in which Sokka has to spend money, so the final number of coins in the bag is not lesser than the initial amount.
+  -/
 
 vc-preamble: |-
 
@@ -55,17 +57,17 @@ vc-theorems: |-
   theorem solve_sokka_journey_three_input :
     solve_sokka_journey 3 = 333333336 := sorry
   
-  /--
+  /-
   info: 200000002
   -/
-  #guard_msgs in
-  #eval solve_sokka_journey 5
+  -- #guard_msgs in
+  -- #eval solve_sokka_journey 5
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve_sokka_journey 2
+  -- #guard_msgs in
+  -- #eval solve_sokka_journey 2
 
 vc-postamble: |-
   -- Apps difficulty: interview

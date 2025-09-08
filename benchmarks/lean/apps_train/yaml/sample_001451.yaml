@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Zonal Computing Olympiad 2012, 26 Nov 2011
   
   A sequence of opening and closing brackets is well-bracketed if we can pair up each opening bracket with a matching closing bracket in the usual sense.  For instance, the sequences (), (()) and ()(()) are well-bracketed, while (, ()), (()(), and )(  are not well-bracketed.
@@ -32,6 +33,7 @@ vc-description: |-
   
   -----Sample Output-----
   2 4 6 9
+  -/
 
 vc-preamble: |-
   def make_valid_bracket_sequence (n : Nat) : List Nat :=
@@ -54,23 +56,23 @@ vc-theorems: |-
     (analyze_brackets 4 [1,1,2,2]).1 = 2 :=
   sorry
   
-  /--
+  /-
   info: (2, 4, 6, 9)
   -/
-  #guard_msgs in
-  #eval analyze_brackets 20 [1, 2, 1, 1, 2, 2, 1, 2, 1, 1, 2, 1, 2, 2, 1, 1, 2, 1, 2, 2]
+  -- #guard_msgs in
+  -- #eval analyze_brackets 20 [1, 2, 1, 1, 2, 2, 1, 2, 1, 1, 2, 1, 2, 2, 1, 1, 2, 1, 2, 2]
   
-  /--
+  /-
   info: (1, 1, 2, 1)
   -/
-  #guard_msgs in
-  #eval analyze_brackets 2 [1, 2]
+  -- #guard_msgs in
+  -- #eval analyze_brackets 2 [1, 2]
   
-  /--
+  /-
   info: (2, 2, 6, 1)
   -/
-  #guard_msgs in
-  #eval analyze_brackets 8 [1, 1, 2, 1, 2, 2, 1, 2]
+  -- #guard_msgs in
+  -- #eval analyze_brackets 8 [1, 1, 2, 1, 2, 2, 1, 2]
 
 vc-postamble: |-
   -- Apps difficulty: interview

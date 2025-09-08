@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   This problem is the most boring one you've ever seen. 
   
   Given a sequence of integers a_1, a_2, ..., a_{n} and a non-negative integer h, our goal is to partition the sequence into two subsequences (not necessarily consist of continuous elements). Each element of the original sequence should be contained in exactly one of the result subsequences. Note, that one of the result subsequences can be empty.
@@ -43,6 +44,7 @@ vc-description: |-
   In the first sample the values of f are as follows: f(1, 2) = 1 + 2 + 2 = 5, f(1, 3) = 1 + 3 + 2 = 6 and f(2, 3) = 2 + 3 = 5. So the difference between maximum and minimum values of f is 1.
   
   In the second sample the value of h is large, so it's better for one of the sub-sequences to be empty.
+  -/
 
 vc-preamble: |-
 

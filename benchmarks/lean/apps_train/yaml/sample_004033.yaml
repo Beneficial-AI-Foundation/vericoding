@@ -1,9 +1,11 @@
 vc-description: |-
+  /-
   Write a function which converts the input string to uppercase.
   
   ~~~if:bf
   For BF all inputs end with \0, all inputs are lowercases and there is no space between. 
   ~~~
+  -/
 
 vc-preamble: |-
 
@@ -24,23 +26,23 @@ vc-theorems: |-
   theorem make_upper_case_upper_lower_chain (s : String) :
     String.toUpper (String.toLower (make_upper_case s)) = make_upper_case s := sorry
   
-  /--
+  /-
   info: 'HELLO'
   -/
-  #guard_msgs in
-  #eval make_upper_case "hello"
+  -- #guard_msgs in
+  -- #eval make_upper_case "hello"
   
-  /--
+  /-
   info: 'HELLO WORLD'
   -/
-  #guard_msgs in
-  #eval make_upper_case "hello world"
+  -- #guard_msgs in
+  -- #eval make_upper_case "hello world"
   
-  /--
+  /-
   info: 'HELLO WORLD !'
   -/
-  #guard_msgs in
-  #eval make_upper_case "heLlO wORLd !"
+  -- #guard_msgs in
+  -- #eval make_upper_case "heLlO wORLd !"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

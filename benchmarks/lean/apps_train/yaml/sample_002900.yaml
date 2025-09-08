@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   ### Description:
   
    Remove all exclamation marks from sentence except at the end.
@@ -13,6 +14,7 @@ vc-description: |-
   remove("Hi! Hi!") == "Hi Hi!"
   remove("Hi") == "Hi"
   ```
+  -/
 
 vc-preamble: |-
   def remove (s : String) : String := sorry
@@ -47,23 +49,23 @@ vc-theorems: |-
   theorem remove_preserves_other_chars (s : String) :
     (s.replace "!" "").data = ((remove s).replace "!" "").data := sorry
   
-  /--
+  /-
   info: 'Hi!'
   -/
-  #guard_msgs in
-  #eval remove "Hi!"
+  -- #guard_msgs in
+  -- #eval remove "Hi!"
   
-  /--
+  /-
   info: 'Hi!!!'
   -/
-  #guard_msgs in
-  #eval remove "Hi!!!"
+  -- #guard_msgs in
+  -- #eval remove "Hi!!!"
   
-  /--
+  /-
   info: 'Hi!'
   -/
-  #guard_msgs in
-  #eval remove "!Hi!"
+  -- #guard_msgs in
+  -- #eval remove "!Hi!"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

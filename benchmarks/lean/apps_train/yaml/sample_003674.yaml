@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   # Task
    Below we will define what and n-interesting polygon is and your task is to find its area for a given n.
   
@@ -23,6 +24,7 @@ vc-description: |-
    - `[output]` an integer
   
      The area of the n-interesting polygon.
+  -/
 
 vc-preamble: |-
 
@@ -46,23 +48,23 @@ vc-theorems: |-
   
   theorem shape_area_returns_int {n : Int} : ∃ (m : Int), shape_area n = m := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval shape_area 1
+  -- #guard_msgs in
+  -- #eval shape_area 1
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval shape_area 2
+  -- #guard_msgs in
+  -- #eval shape_area 2
   
-  /--
+  /-
   info: 13
   -/
-  #guard_msgs in
-  #eval shape_area 3
+  -- #guard_msgs in
+  -- #eval shape_area 3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

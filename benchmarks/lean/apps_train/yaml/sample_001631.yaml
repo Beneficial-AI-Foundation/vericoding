@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Good job! Now that Heidi is able to distinguish between Poisson and uniform distributions, she is in a good position to actually estimate the populations.
   
   Can you help Heidi estimate each village's population?
@@ -12,6 +13,7 @@ vc-description: |-
   Output one line per village, in the same order as provided in the input, containing your (integer) population estimate.
   
   Your answer is considered correct if it is an integer that falls into the interval $[ \lfloor 0.95 \cdot P \rfloor, \lceil 1.05 \cdot P \rceil ]$, where P is the real population of the village, used to create the distribution (either Poisson or uniform) from which the marmots drew their answers.
+  -/
 
 vc-preamble: |-
   def minimum (l : List Nat) : Nat :=
@@ -71,23 +73,23 @@ vc-theorems: |-
     : estimate_population surveys = estimate_population sorted_surveys := by
     sorry
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval estimate_population [4, 5, 5, 5, 6, 6]
+  -- #guard_msgs in
+  -- #eval estimate_population [4, 5, 5, 5, 6, 6]
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval estimate_population [2, 3, 4, 5, 6, 7]
+  -- #guard_msgs in
+  -- #eval estimate_population [2, 3, 4, 5, 6, 7]
   
-  /--
+  /-
   info: 5
   -/
-  #guard_msgs in
-  #eval estimate_population [3, 4, 4, 5, 5, 5, 5, 6, 6, 7]
+  -- #guard_msgs in
+  -- #eval estimate_population [3, 4, 4, 5, 5, 5, 5, 6, 6, 7]
 
 vc-postamble: |-
   -- Apps difficulty: interview

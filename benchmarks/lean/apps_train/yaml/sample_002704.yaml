@@ -1,9 +1,11 @@
 vc-description: |-
+  /-
   Construct a function 'coordinates', that will return the distance between two points on a cartesian plane, given the x and y coordinates of each point.
   
   There are two parameters in the function, ```p1``` and ```p2```. ```p1``` is a list ```[x1,y1]``` where ```x1``` and ```y1``` are the x and y coordinates of the first point. ```p2``` is a list ```[x2,y2]``` where ```x2``` and ```y2``` are the x and y coordinates of the second point. 
   
   The distance between the two points should be rounded to the `precision` decimal if provided, otherwise to the nearest integer.
+  -/
 
 vc-preamble: |-
 
@@ -42,23 +44,23 @@ vc-theorems: |-
     coordinates p1 p2 precision ≥ 0 :=
   sorry
   
-  /--
+  /-
   info: 11
   -/
-  #guard_msgs in
-  #eval coordinates [3, 6] [14, 6]
+  -- #guard_msgs in
+  -- #eval coordinates [3, 6] [14, 6]
   
-  /--
+  /-
   info: 15
   -/
-  #guard_msgs in
-  #eval coordinates [-2, 5] [-2, -10] 2
+  -- #guard_msgs in
+  -- #eval coordinates [-2, 5] [-2, -10] 2
   
-  /--
+  /-
   info: 5.385
   -/
-  #guard_msgs in
-  #eval coordinates [4, 7] [6, 2] 3
+  -- #guard_msgs in
+  -- #eval coordinates [4, 7] [6, 2] 3
 
 vc-postamble: |-
   -- Apps difficulty: introductory

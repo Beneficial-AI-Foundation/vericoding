@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Chef is very organised in whatever he does and likes to maintain statistics of his work. Chef has expertise in web development and hence is a regular contributor on a forum. Chef sometimes makes multiple contributions in a single day.. Each day chef makes at least 1 contribution he is assigned a shade of green. The greater the number of contribution in a single day the darker shade of green he gets assigned and vice versa. Your job is to find out the number of days chef is assigned a same shade of green and print the number of times chef is assigned a unique shade of green.
   
   -----INPUT-----
@@ -37,6 +38,7 @@ vc-description: |-
   6: 1
   
   20: 1
+  -/
 
 vc-preamble: |-
 

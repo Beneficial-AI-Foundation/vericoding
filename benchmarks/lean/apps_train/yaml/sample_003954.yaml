@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an D-dimension array, where each axis is of length N, your goal is to find the sum of every index in the array starting from 0.
   
   For Example if D=1 and N=10 then the answer would be 45 ([0,1,2,3,4,5,6,7,8,9])
@@ -19,6 +20,7 @@ vc-description: |-
   ~~~if:javascript
   Note for JS version: Because the results will exceed the maximum safe integer easily, for such values you're only required to have a precision of at least `1 in 1e-9` to the actual answer.
   ~~~
+  -/
 
 vc-preamble: |-
 
@@ -39,23 +41,23 @@ vc-theorems: |-
   theorem super_sum_dimension_scaling (d n : Nat) :
     d > 1 → super_sum d n = d * super_sum 1 n * n^(d-1) := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval super_sum 2 2
+  -- #guard_msgs in
+  -- #eval super_sum 2 2
   
-  /--
+  /-
   info: 18
   -/
-  #guard_msgs in
-  #eval super_sum 2 3
+  -- #guard_msgs in
+  -- #eval super_sum 2 3
   
-  /--
+  /-
   info: 12
   -/
-  #guard_msgs in
-  #eval super_sum 3 2
+  -- #guard_msgs in
+  -- #eval super_sum 3 2
 
 vc-postamble: |-
   -- Apps difficulty: introductory

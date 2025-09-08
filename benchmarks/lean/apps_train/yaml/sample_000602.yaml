@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In a regular table tennis match, the player who serves changes every time after 2 points are scored, regardless of which players scored them.
   Chef and Cook are playing a different match — they decided that the player who serves would change every time after $K$ points are scored instead (again regardless of which players scored them). When the game starts, it's Chef's turn to serve.
   You are given the current number of points scored by Chef and Cook ($P_1$ and $P_2$ respectively). Find out whether Chef or Cook has to serve next.
@@ -31,6 +32,7 @@ vc-description: |-
   
   -----Explanation-----
   Example case 1: Chef serves for the first two points, Cook serves for the next two, so Chef has to serve again now.
+  -/
 
 vc-preamble: |-
 
@@ -77,23 +79,23 @@ vc-theorems: |-
     determine_server total 0 k = determine_server (total-1) 1 k :=
     sorry
   
-  /--
+  /-
   info: 'CHEF'
   -/
-  #guard_msgs in
-  #eval determine_server 1 3 2
+  -- #guard_msgs in
+  -- #eval determine_server 1 3 2
   
-  /--
+  /-
   info: 'COOK'
   -/
-  #guard_msgs in
-  #eval determine_server 0 3 2
+  -- #guard_msgs in
+  -- #eval determine_server 0 3 2
   
-  /--
+  /-
   info: 'CHEF'
   -/
-  #guard_msgs in
-  #eval determine_server 34 55 2
+  -- #guard_msgs in
+  -- #eval determine_server 34 55 2
 
 vc-postamble: |-
   -- Apps difficulty: interview

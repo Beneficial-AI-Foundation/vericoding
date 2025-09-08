@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   For every good kata idea there seem to be quite a few bad ones!
   
   In this kata you need to check the provided array (x) for good ideas 'good' and bad ideas 'bad'. If there are one or two good ideas, return 'Publish!', if there are more than 2 return 'I smell a series!'. If there are no good ideas, as is often the case, return 'Fail!'.
@@ -7,6 +8,7 @@ vc-description: |-
   For C: do not dynamically allocate memory,
         instead return a string literal
   ~~~
+  -/
 
 vc-preamble: |-
 
@@ -38,23 +40,23 @@ vc-theorems: |-
     (h_no_good : "good" ∉ ideas) :
     well ideas = "Fail!" := sorry
   
-  /--
+  /-
   info: 'Fail!'
   -/
-  #guard_msgs in
-  #eval well ["bad", "bad", "bad"]
+  -- #guard_msgs in
+  -- #eval well ["bad", "bad", "bad"]
   
-  /--
+  /-
   info: 'Publish!'
   -/
-  #guard_msgs in
-  #eval well ["good", "bad", "bad", "bad", "bad"]
+  -- #guard_msgs in
+  -- #eval well ["good", "bad", "bad", "bad", "bad"]
   
-  /--
+  /-
   info: 'I smell a series!'
   -/
-  #guard_msgs in
-  #eval well ["good", "bad", "bad", "bad", "bad", "good", "bad", "bad", "good"]
+  -- #guard_msgs in
+  -- #eval well ["good", "bad", "bad", "bad", "bad", "good", "bad", "bad", "good"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Consider an array that has no prime numbers, and none of its elements has any prime digit. It would start with: `[1,4,6,8,9,10,14,16,18,..]`. 
   
   `12` and `15` are not in the list because `2` and `5` are primes.
@@ -15,6 +16,7 @@ vc-description: |-
   Good luck!
   
   If you like Prime Katas, you will enjoy this Kata: [Simple Prime Streaming](https://www.codewars.com/kata/5a908da30025e995880000e3)
+  -/
 
 vc-preamble: |-
   def solve (n : Nat) : Nat := sorry
@@ -41,23 +43,23 @@ vc-theorems: |-
   theorem solve_zero :
     solve 0 = 1 := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval solve 0
+  -- #guard_msgs in
+  -- #eval solve 0
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval solve 2
+  -- #guard_msgs in
+  -- #eval solve 2
   
-  /--
+  /-
   info: 44
   -/
-  #guard_msgs in
-  #eval solve 10
+  -- #guard_msgs in
+  -- #eval solve 10
 
 vc-postamble: |-
   -- Apps difficulty: introductory

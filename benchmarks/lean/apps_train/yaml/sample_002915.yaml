@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You need to play around with the provided string (s).
   
   Move consonants forward 9 places through the alphabet.
@@ -16,6 +17,7 @@ vc-description: |-
   If a moved letter becomes 'c', 'o', 'd' or 'e', revert it back to it's original value.
   
   Provided string will always be lower case, won't be empty and will have no special characters.
+  -/
 
 vc-preamble: |-
 
@@ -49,23 +51,23 @@ vc-theorems: |-
     s.data[i]? = s.data[j]? → 
     (vowel_back s).data[i]? = (vowel_back s).data[j]? := sorry
   
-  /--
+  /-
   info: 'tabtbvba'
   -/
-  #guard_msgs in
-  #eval vowel_back "testcase"
+  -- #guard_msgs in
+  -- #eval vowel_back "testcase"
   
-  /--
+  /-
   info: 'bnaafvab'
   -/
-  #guard_msgs in
-  #eval vowel_back "codewars"
+  -- #guard_msgs in
+  -- #eval vowel_back "codewars"
   
-  /--
+  /-
   info: 'agvvyuatabtqaaa'
   -/
-  #guard_msgs in
-  #eval vowel_back "exampletesthere"
+  -- #guard_msgs in
+  -- #eval vowel_back "exampletesthere"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

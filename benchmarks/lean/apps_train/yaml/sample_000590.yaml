@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given a sequence $A_1, A_2, \ldots, A_N$. You have to split the array into maximum number of non-empty subarrays such that the gcd of elements of each subarray is equal to 1.
   
   -----Input:-----
@@ -24,6 +25,7 @@ vc-description: |-
   -----Sample Output:-----
   1
   2
+  -/
 
 vc-preamble: |-
 
@@ -55,23 +57,23 @@ vc-theorems: |-
     let result := max_gcd_subarrays n arr
     result = -1 ∨ result > 0 := sorry
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval max_gcd_subarrays 3 [2, 2, 3]
+  -- #guard_msgs in
+  -- #eval max_gcd_subarrays 3 [2, 2, 3]
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval max_gcd_subarrays 4 [2, 3, 3, 2]
+  -- #guard_msgs in
+  -- #eval max_gcd_subarrays 4 [2, 3, 3, 2]
   
-  /--
+  /-
   info: -1
   -/
-  #guard_msgs in
-  #eval max_gcd_subarrays 2 [4, 6]
+  -- #guard_msgs in
+  -- #eval max_gcd_subarrays 2 [4, 6]
 
 vc-postamble: |-
   -- Apps difficulty: interview

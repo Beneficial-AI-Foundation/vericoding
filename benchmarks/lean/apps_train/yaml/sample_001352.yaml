@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Dhruvil has always been a studious person and will be completing his Engineering soon. He is always kneen about solving problems and is preparing hard for his next interview at Hackerrank. He has practiced lots of problems and now he came across this problem.
   Given a message containing English letters(A-Z), it is being encoded to numbers using the following mapping:
   'A' -> 1,'B' -> 2 ……………… 'Z' -> 26.
@@ -30,6 +31,7 @@ vc-description: |-
   -----EXPLANATION:-----
   There are 2 possible ways. It could be decoded as "AB" {1,2} or "L" {12}.
   There are 3 possible ways. It could be decoded as "BZ" {2,26}, "VF" {22,6}, or "BBF" {2,2,6}.
+  -/
 
 vc-preamble: |-
 
@@ -64,23 +66,23 @@ vc-theorems: |-
   theorem decode_string_eleven :
     decode_string "11" = 2 := sorry
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval decode_string "12"
+  -- #guard_msgs in
+  -- #eval decode_string "12"
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval decode_string "226"
+  -- #guard_msgs in
+  -- #eval decode_string "226"
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval decode_string "123"
+  -- #guard_msgs in
+  -- #eval decode_string "123"
 
 vc-postamble: |-
   -- Apps difficulty: interview

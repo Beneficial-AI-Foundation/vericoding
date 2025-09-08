@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   In input string ```word```(1 word):
   * replace the vowel with the nearest left consonant.
   * replace the consonant with the nearest right vowel.
@@ -21,6 +22,7 @@ vc-description: |-
   ```
   
   P.S. You work with lowercase letters only.
+  -/
 
 vc-preamble: |-
   def transform_word (s : String) : String := sorry
@@ -52,23 +54,23 @@ vc-theorems: |-
   theorem transform_word_deterministic (s : String) :
     transform_word s = transform_word s := sorry
   
-  /--
+  /-
   info: 'ezu'
   -/
-  #guard_msgs in
-  #eval transform_word "cat"
+  -- #guard_msgs in
+  -- #eval transform_word "cat"
   
-  /--
+  /-
   info: 'enedazuu'
   -/
-  #guard_msgs in
-  #eval transform_word "codewars"
+  -- #guard_msgs in
+  -- #eval transform_word "codewars"
   
-  /--
+  /-
   info: 'zeeeutaaaaa'
   -/
-  #guard_msgs in
-  #eval transform_word "abcdtuvwxyz"
+  -- #guard_msgs in
+  -- #eval transform_word "abcdtuvwxyz"
 
 vc-postamble: |-
   -- Apps difficulty: introductory

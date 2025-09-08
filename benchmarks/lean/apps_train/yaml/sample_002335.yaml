@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Given an array of unique integers salary where salary[i] is the salary of the employee i.
   Return the average salary of employees excluding the minimum and maximum salary.
   
@@ -28,6 +29,7 @@ vc-description: |-
   10^3 <= salary[i] <= 10^6
   salary[i] is unique.
   Answers within 10^-5 of the actual value will be accepted as correct.
+  -/
 
 vc-preamble: |-
   def calculate_average_salary (salaries : List Nat) : Float := sorry

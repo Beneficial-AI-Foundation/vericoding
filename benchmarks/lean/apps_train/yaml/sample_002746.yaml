@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Ho ho! So you think you know integers, do you? Well then, young wizard, tell us what the Nth digit of the [Champernowne constant](https://en.wikipedia.org/wiki/Champernowne_constant) is!
   
   The constant proceeds like this: `0.12345678910111213141516...`
@@ -22,6 +23,7 @@ vc-description: |-
   Invoke with _precision_, and be wary of rounding errors in the realms of enormity!
   
   May the best integer win!
+  -/
 
 vc-preamble: |-
 
@@ -53,41 +55,41 @@ vc-theorems: |-
     champernowne_digit 9 = some 8 ∧
     champernowne_digit 10 = some 9 := by sorry
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval champernowne_digit 1
+  -- #guard_msgs in
+  -- #eval champernowne_digit 1
   
-  /--
+  /-
   info: 1
   -/
-  #guard_msgs in
-  #eval champernowne_digit 2
+  -- #guard_msgs in
+  -- #eval champernowne_digit 2
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval champernowne_digit 20
+  -- #guard_msgs in
+  -- #eval champernowne_digit 20
   
-  /--
+  /-
   info: 6
   -/
-  #guard_msgs in
-  #eval champernowne_digit 3678608
+  -- #guard_msgs in
+  -- #eval champernowne_digit 3678608
   
-  /--
+  /-
   info: 'nan'
   -/
-  #guard_msgs in
-  #eval str champernowne_digit(0)
+  -- #guard_msgs in
+  -- #eval str champernowne_digit(0)
   
-  /--
+  /-
   info: 'nan'
   -/
-  #guard_msgs in
-  #eval str champernowne_digit(-1)
+  -- #guard_msgs in
+  -- #eval str champernowne_digit(-1)
 
 vc-postamble: |-
   -- Apps difficulty: introductory

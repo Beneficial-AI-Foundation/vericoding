@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   After Misha's birthday he had many large numbers left, scattered across the room. Now it's time to clean up and Misha needs to put them in a basket. He ordered this task to his pet robot that agreed to complete the task at certain conditions. Before the robot puts a number x to the basket, Misha should answer the question: is it possible to choose one or multiple numbers that already are in the basket, such that their XOR sum equals x? 
   
   If the answer is positive, you also need to give the indexes of these numbers. If there are multiple options of choosing numbers, you are allowed to choose any correct option. After Misha's answer the robot puts the number to the basket.
@@ -49,6 +50,7 @@ vc-description: |-
   -----Note-----
   
   The XOR sum of numbers is the result of bitwise sum of numbers modulo 2.
+  -/
 
 vc-preamble: |-
 

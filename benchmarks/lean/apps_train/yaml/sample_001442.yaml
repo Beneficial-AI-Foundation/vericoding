@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   Rohit has n empty boxes lying on the ground in a line. The size of the boxes is given in the form of an array $a$. The size of the ith box is denoted by $a[i]$. Since Rohit has a tiny room, there is a shortage of space. Therefore, he has to reduce the number of boxes on the ground by putting a box into another box that is at least twice the size of the current box i.e if we have to put the ith box into the jth box then $( 2*a[i] ) <= a[j]$.
   Each box can contain a maximum of one box and the box which is kept in another box cannot
   hold any box itself.
@@ -29,6 +30,7 @@ vc-description: |-
   
   -----Sample Output:-----
   3
+  -/
 
 vc-preamble: |-
 
@@ -61,23 +63,23 @@ vc-theorems: |-
     min_boxes_remaining boxes size = size/2 + size%2 := by
     sorry
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval min_boxes_remaining 5 boxes1.copy()
+  -- #guard_msgs in
+  -- #eval min_boxes_remaining 5 boxes1.copy()
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_boxes_remaining 3 boxes2.copy()
+  -- #guard_msgs in
+  -- #eval min_boxes_remaining 3 boxes2.copy()
   
-  /--
+  /-
   info: 2
   -/
-  #guard_msgs in
-  #eval min_boxes_remaining 4 boxes3.copy()
+  -- #guard_msgs in
+  -- #eval min_boxes_remaining 4 boxes3.copy()
 
 vc-postamble: |-
   -- Apps difficulty: interview

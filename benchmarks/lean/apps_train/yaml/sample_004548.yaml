@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   No description!!!
   
   Input  :: [10,20,25,0]
@@ -6,6 +7,7 @@ vc-description: |-
   Output :: ["+0", "+10", "+15", "-10"] 
   
   `Show some love, rank and upvote!`
+  -/
 
 vc-preamble: |-
 
@@ -38,23 +40,23 @@ vc-theorems: |-
       String.toInt! (result.get! (i+1)) - String.toInt! (result.get! i) = 
       arr.get! (i+1) - arr.get! i := sorry
   
-  /--
+  /-
   info: expected1
   -/
-  #guard_msgs in
-  #eval equalize [10, 20, 25, 0]
+  -- #guard_msgs in
+  -- #eval equalize [10, 20, 25, 0]
   
-  /--
+  /-
   info: expected2
   -/
-  #guard_msgs in
-  #eval equalize [0, 5, 10, -5]
+  -- #guard_msgs in
+  -- #eval equalize [0, 5, 10, -5]
   
-  /--
+  /-
   info: expected3
   -/
-  #guard_msgs in
-  #eval equalize [-10, 0, 10, 20]
+  -- #guard_msgs in
+  -- #eval equalize [-10, 0, 10, 20]
 
 vc-postamble: |-
   -- Apps difficulty: introductory

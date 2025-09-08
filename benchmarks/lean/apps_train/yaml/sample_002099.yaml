@@ -1,4 +1,5 @@
 vc-description: |-
+  /-
   You are given an array of integers. Vasya can permute (change order) its integers. He wants to do it so that as many as possible integers will become on a place where a smaller integer used to stand. Help Vasya find the maximal number of such integers.
   
   For instance, if we are given an array $[10, 20, 30, 40]$, we can permute it so that it becomes $[20, 40, 10, 30]$. Then on the first and the second positions the integers became larger ($20>10$, $40>20$) and did not on the third and the fourth, so for this permutation, the number that Vasya wants to maximize equals $2$. Read the note for the first example, there is one more demonstrative test case.
@@ -35,6 +36,7 @@ vc-description: |-
   In the first sample, one of the best permutations is $[1, 5, 5, 3, 10, 1, 1]$. On the positions from second to fifth the elements became larger, so the answer for this permutation is 4.
   
   In the second sample, there is no way to increase any element with a permutation, so the answer is 0.
+  -/
 
 vc-preamble: |-
 
@@ -55,23 +57,23 @@ vc-theorems: |-
   theorem single_element_zero (x : Nat) :
     solve_permutation 1 [x] = 0 := sorry
   
-  /--
+  /-
   info: 4
   -/
-  #guard_msgs in
-  #eval solve_permutation 7 [10, 1, 1, 1, 5, 5, 3]
+  -- #guard_msgs in
+  -- #eval solve_permutation 7 [10, 1, 1, 1, 5, 5, 3]
   
-  /--
+  /-
   info: 0
   -/
-  #guard_msgs in
-  #eval solve_permutation 5 [1, 1, 1, 1, 1]
+  -- #guard_msgs in
+  -- #eval solve_permutation 5 [1, 1, 1, 1, 1]
   
-  /--
+  /-
   info: 3
   -/
-  #guard_msgs in
-  #eval solve_permutation 6 [300000000, 200000000, 300000000, 200000000, 1000000000, 300000000]
+  -- #guard_msgs in
+  -- #eval solve_permutation 6 [300000000, 200000000, 300000000, 200000000, 1000000000, 300000000]
 
 vc-postamble: |-
   -- Apps difficulty: competition
