@@ -78,7 +78,10 @@ lean_lib BenchVerina where
 
 -- Numpy
 lean_lib BenchNumpySimple where
-  globs := #[.submodules `numpy_simple]
+  globs := #[
+    .submodules `numpy_simple,
+    .submodules `Benchmarks -- shim for MatrixDef used by numpy specs
+  ]
   srcDir := "benchmarks/lean"
 
 lean_lib BenchNumpyTriple where
