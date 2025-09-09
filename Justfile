@@ -440,3 +440,13 @@ dafny:
         --api-rate-limit-delay 1 \
         --strict-specs \
         --debug
+dafny-claude:
+    # Run Lean DafnyBench with MCP, 1 worker, debug, Claude Opus 4.1
+    MCP_INIT_TIMEOUT=10 MCP_TOOL_TIMEOUT=8 MCP_FALLBACK=1 \
+    uv run src/spec_to_code.py lean ./benchmarks/lean/dafnybench \
+        --iterations 1 \
+        --workers 1 \
+        --use-mcp \
+        --llm-provider claude \
+        --llm-model claude-opus-4-1 \
+        --debug --strict-specs
