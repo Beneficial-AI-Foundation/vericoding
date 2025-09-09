@@ -13,6 +13,16 @@ import sys
 sys.path.append(str(Path(__file__).parent.parent))
 from convert_from_yaml import spec_to_yaml
 
+def sanitize_description_for_block_comment(text: str) -> str:
+    """Avoid accidental nested block comments inside '/- ... -/'.
+
+    We replace occurrences of '+/-' with the single glyph '±'. This preserves
+    meaning while preventing '/-' from being parsed as a nested comment start.
+    """
+    if not isinstance(text, str) or not text:
+        return text
+    return text.replace("+/-", "±")
+
 def normalize_section_content(content: str) -> str:
     """Normalize section content by removing leading empty lines and reducing consecutive empty lines to one."""
     if not content:
@@ -73,7 +83,7 @@ def process_yaml_file(file_path: Path) -> None:
         
         # Process vc-description if it exists
         if 'vc-description' in spec:
-            description = spec['vc-description']
+            description = sanitize_description_for_block_comment(spec['vc-description'])
             
             # Check if value starts with /-
             if description.startswith('/-'):
