@@ -1,0 +1,41 @@
+=== LEAN SPECIFICATION-TO-CODE PROCESSING SUMMARY (PARALLEL VERSION) ===
+
+Language: Lean
+LLM Provider: claude
+LLM Model: claude-opus-4-1
+Test directory: ../benchmarks/lean/dafnybench/Sample
+Output directory: /Users/alokbeniwal/vericoding2/benchmarks/lean/dafnybench_gen/Run_08-09_20h36
+Max iterations: 1
+Parallel workers: 1
+Test date: 2025-09-08T20:36:56.984738
+
+Total original files: 1
+
+=== OVERALL STATISTICS ===
+Total successful: 0
+Total failed: 1
+Success rate: 0.0%
+
+=== SUCCESS RATE BY SUBFOLDER ===
+root:
+  Successful: 0
+  Failed: 1
+  Total: 1
+  Success rate: 0.0%
+
+=== SUCCESSFUL FILES (VERIFIED) ===
+
+=== FAILED FILES (VERIFICATION) ===
+✗ SampleTheorem.lean
+
+=== PARALLEL PROCESSING FEATURES ===
+Parallel workers: 1
+API rate limiting: 1s between calls
+Debug mode: Disabled
+- Saves only final implementation as *_impl.lean
+- No intermediate files saved (debug mode disabled)
+
+- Debug mode control: Disabled
+- Configurable file output based on debug setting
+
+Generated on: 2025-09-08T20:36:56.984756
