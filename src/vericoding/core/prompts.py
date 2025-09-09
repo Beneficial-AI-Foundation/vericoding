@@ -32,7 +32,14 @@ class PromptLoader:
         # Get the project root directory (go up from src/vericoding/core to project root)
         project_root = Path(__file__).parent.parent.parent.parent
 
-        # First try in the language-specific directory relative to project root
+        # First try in the new prompts directory structure
+        prompts_path = project_root / "src" / "prompts" / self.language / self.prompts_file
+        if prompts_path.exists():
+            with prompts_path.open() as f:
+                self.prompts = yaml.safe_load(f)
+            return
+
+        # Fallback: try in the old language-specific directory relative to project root
         lang_prompts_path = project_root / self.language / self.prompts_file
         if lang_prompts_path.exists():
             with lang_prompts_path.open() as f:
@@ -88,9 +95,10 @@ def init_prompt_loader(language: str, mode: str = "spec", prompts_file: str = No
     except FileNotFoundError as e:
         print(f"Error: {e}")
         expected_file = prompts_file or f"prompts_{mode}.yaml"
-        print(f"Please ensure the {expected_file} file exists in the {language} directory.")
+        print(f"Please ensure the {expected_file} file exists in the prompts directory.")
         print("Expected locations:")
         project_root = Path(__file__).parent.parent.parent.parent
+        print(f"  - {project_root / 'src' / 'prompts' / language / expected_file}")
         print(f"  - {project_root / language / expected_file}")
         print(f"  - {expected_file} (current directory)")
         sys.exit(1)
