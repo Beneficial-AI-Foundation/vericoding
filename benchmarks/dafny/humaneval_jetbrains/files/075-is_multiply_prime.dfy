@@ -14,12 +14,10 @@ function Prime(p: nat) : bool
 
 // <vc-spec>
 method is_multiply_prime(x: nat) returns (ans : bool)
-    // pre-conditions-start
+
     requires x > 1
-    // pre-conditions-end
-    // post-conditions-start
+
     ensures ans <==> exists a: nat, b: nat, c: nat :: Prime(a) && Prime(b) && Prime(c) && x == a * b * c
-    // post-conditions-end
 // </vc-spec>
 // <vc-code>
 {

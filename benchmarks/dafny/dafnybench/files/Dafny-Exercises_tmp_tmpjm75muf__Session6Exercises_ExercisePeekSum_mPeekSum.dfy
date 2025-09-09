@@ -1,4 +1,5 @@
 /*
+//Implement and verify an O(v.Length) algorithm to solve this problem
 */
 
 predicate isPeek(v:array<int>,i:int)
@@ -23,7 +24,6 @@ predicate isPeek(v:array<int>,i:int)
 method mPeekSum(v:array<int>) returns (sum:int)
  requires  v.Length>0
  ensures sum==peekSum(v,v.Length)
- //Implement and verify an O(v.Length) algorithm to solve this problem
 // </vc-spec>
 // <vc-code>
 {

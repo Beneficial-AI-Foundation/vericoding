@@ -14,9 +14,8 @@ function IsPrime(n: int) : bool
 
 // <vc-spec>
 method PrimeLength(s: string) returns (p : bool)
-  // post-conditions-start
+
   ensures p <==> IsPrime(|s|)
-  // post-conditions-end
 // </vc-spec>
 // <vc-code>
 {

@@ -1,6 +1,4 @@
 /*
-*/
-
 /**
   Ather, Mohammad Faiz (s4648481/3)
   CSSE3100
@@ -11,6 +9,8 @@
 // Question 1
 
 // Author: Leino, Title: Program Proofs
+*/
+
 method BinarySearch(a: array<int>, circle: int)
   returns (n: int)
   requires forall i ::

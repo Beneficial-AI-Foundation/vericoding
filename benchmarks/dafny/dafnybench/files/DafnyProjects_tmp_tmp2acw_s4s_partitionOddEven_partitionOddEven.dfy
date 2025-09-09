@@ -1,8 +1,8 @@
 /*
-*/
-
 // Rearranges the elements in an array 'a' of natural numbers,
+
 // so that all odd numbers appear before all even numbers.
+*/
 
 predicate  odd(n: nat) { n % 2 == 1 }
 predicate  even(n: nat) { n % 2 == 0 }

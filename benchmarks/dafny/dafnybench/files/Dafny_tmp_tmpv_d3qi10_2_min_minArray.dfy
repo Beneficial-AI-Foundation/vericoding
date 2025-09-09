@@ -1,4 +1,5 @@
 /*
+// Return a minimum of a.
 */
 
 function min(a: int, b: int): int
@@ -14,8 +15,6 @@ ghost function minFunction(a: int, b: int): int
 {
     if a < b then a else b
 }
-
-// Return a minimum of a.
 
 // <vc-helpers>
 // </vc-helpers>

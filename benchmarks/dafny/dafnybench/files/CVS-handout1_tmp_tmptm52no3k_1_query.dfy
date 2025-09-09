@@ -1,6 +1,4 @@
 /*
-*/
-
 /*                                      Cumulative Sums over Arrays                                        */
 
 /*
@@ -10,6 +8,11 @@
 
 //(a)
 
+//(b)
+
+//(c)
+*/
+
 function sum(a: array<int>, i: int, j: int): int
     reads a
     requires 0 <= i <= j <= a.Length
@@ -18,10 +21,6 @@ function sum(a: array<int>, i: int, j: int): int
     if (i == j) then 0
     else a[i] + sum(a, i+1, j)
 }
-
-//(b)
-
-//(c)
 
 predicate is_prefix_sum_for (a: array<int>, c: array<int>)
     requires a.Length + 1 == c.Length

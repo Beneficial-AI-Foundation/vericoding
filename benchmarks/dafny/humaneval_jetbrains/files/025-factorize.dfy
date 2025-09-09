@@ -12,12 +12,10 @@ function prod(s: seq<int>) : int {
 
 // <vc-spec>
 method factorize(n: nat) returns (factors: seq<nat>)
-  // pre-conditions-start
+
   requires n > 0
-  // pre-conditions-end
-  // post-conditions-start
+
   ensures prod(factors) == n
-  // post-conditions-end
 // </vc-spec>
 // <vc-code>
 {

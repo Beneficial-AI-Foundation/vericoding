@@ -1,6 +1,4 @@
 /*
-*/
-
 //Problem01
 
 /*
@@ -23,11 +21,10 @@ Simplified VC for square0
 */
 
 //Problem02
+
 //As you can see below, Dafny claims that after executing the following method
+
 //strange() we will have that 1=2;
-method q(x:nat, y:nat) returns (z:nat)
-requires y - x > 2
-ensures x < z*z < y
 
 /*(a). Do you have an explanation for this behaviour?
     Answer: 
@@ -58,7 +55,9 @@ ensures x < z*z < y
 */
 
 //Problem 3
+
 //Use what you know about the weakest preconditions/strongest postconditions to ex-
+
 //plain why the following code verifies:
 
 /*
@@ -79,6 +78,11 @@ It assumes that the square of x is less than 100. In other words, it assumes tha
 within the range (0, 10) since the largest possible square less than 100 is 9 * 9 = 81.
 
 */
+*/
+
+method q(x:nat, y:nat) returns (z:nat)
+requires y - x > 2
+ensures x < z*z < y
 
 // <vc-helpers>
 // </vc-helpers>

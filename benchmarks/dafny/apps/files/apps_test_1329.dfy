@@ -5,6 +5,8 @@ A number has exactly 75 divisors if and only if its prime factorization has one 
 - p^24 × q^2 (where p, q are distinct primes)  
 - p^14 × q^4 (where p, q are distinct primes)
 - p^4 × q^4 × r^2 (where p, q, r are distinct primes)
+
+// Abstract specification - represents the count of divisors of N! that have exactly 75 divisors
 */
 
 predicate ValidInput(N: int)
@@ -15,7 +17,7 @@ predicate ValidInput(N: int)
 function countDivisorsWith75Factors(N: int): int
   requires ValidInput(N)
 {
-  0 // Abstract specification - represents the count of divisors of N! that have exactly 75 divisors
+  0
 }
 
 predicate ValidOutput(result: int)

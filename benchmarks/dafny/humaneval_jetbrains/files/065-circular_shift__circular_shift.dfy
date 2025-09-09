@@ -19,23 +19,13 @@ function natToString(n: nat): stringNat {
 
 // <vc-spec>
 method circular_shift(a: nat, shift: nat) returns (shifted: string)
-  // post-conditions-start
+
   ensures |shifted| == |natToString(a)|
   ensures var s := natToString(a); shift > |s| ==> forall i :: 0 <= i < |s| ==> shifted[i] == s[|s| - 1 - i]
   ensures var s := natToString(a); shift <= |s| ==> shifted == s[|s| - shift..] + s[..|s| - shift]
-  // post-conditions-end
 // </vc-spec>
 // <vc-code>
 {
   assume {:axiom} false;
 }
 // </vc-code>
-
-method reverse(str: string) returns (rev: string)
-    // post-conditions-start
-    ensures |rev| == |str|
-    ensures forall k :: 0 <= k < |str| ==> rev[k] == str[|str| - 1 - k]
-    // post-conditions-end
-{
-  assume{:axiom} false;
-}

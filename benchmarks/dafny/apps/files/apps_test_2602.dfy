@@ -4,6 +4,14 @@ determine if there exists an ordering of all guests such that no guest gets angr
 Type-1 guests choose vanilla if v > c, else chocolate.
 Type-2 guests choose chocolate if v > c, else vanilla.
 A guest gets angry if their chosen cookie type has 0 cookies available.
+
+// First check: must have enough total cookies
+
+// Second check: type-2 guests are the limiting factor
+
+// They will take from the minority cookie type, so we need
+
+// enough of the minority type to satisfy all type-2 guests
 */
 
 predicate ValidTestCase(a: nat, b: nat, n: nat, m: nat)
@@ -13,11 +21,9 @@ predicate ValidTestCase(a: nat, b: nat, n: nat, m: nat)
 
 predicate CanSatisfyAllGuests(a: nat, b: nat, n: nat, m: nat)
 {
-    // First check: must have enough total cookies
+
     a + b >= n + m &&
-    // Second check: type-2 guests are the limiting factor
-    // They will take from the minority cookie type, so we need
-    // enough of the minority type to satisfy all type-2 guests
+
     m <= min(a, b)
 }
 

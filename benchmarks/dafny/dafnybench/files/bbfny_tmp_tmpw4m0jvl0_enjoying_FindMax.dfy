@@ -1,7 +1,6 @@
 /*
-*/
-
 // shenanigans going through the dafny tutorial
+*/
 
 function max(a: int, b: int): int
 {

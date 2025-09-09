@@ -1,7 +1,8 @@
 /*
-*/
-
 //https://leetcode.com/problems/remove-element/
+
+///compileTarget:js
+*/
 
 // <vc-helpers>
 // </vc-helpers>
@@ -16,5 +17,3 @@ method removeElement(nums: array<int>, val: int) returns (i: int)
   assume {:axiom} false;
 }
 // </vc-code>
-
-///compileTarget:js

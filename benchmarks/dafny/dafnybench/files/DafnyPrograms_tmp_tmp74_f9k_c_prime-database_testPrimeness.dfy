@@ -1,35 +1,43 @@
 /*
+//predicate for primeness
+
+//the class containing a prime database, if a number is prime it returns Yes, if it is not No and if the number
+
+//is not in the database it returns Unknown
+
+//the valid invariant of the class
+
+//the constructor
+
+// lookup n in the database and reply with Yes or No if it's in the database and it is or it is not prime,
+
+// or with Unknown when it's not in the databse
+
+// method to test whether a number is prime, returns bool
 */
 
-//predicate for primeness
 ghost predicate prime(n: nat)
 
 { n > 1 && (forall nr | 1 < nr < n :: n % nr != 0) }
 
 datatype Answer = Yes | No | Unknown
 
-//the class containing a prime database, if a number is prime it returns Yes, if it is not No and if the number
-//is not in the database it returns Unknown
 class {:autocontracts} PrimeMap{
 
   var database: map<nat, bool>; 
 
-//the valid invariant of the class
   ghost predicate Valid()
     reads this
   {
     forall i | i in database.Keys :: (database[i] == true <==> prime(i)) 
   }
 
-//the constructor
   constructor()
     ensures database == map[]
   {
     database := map[];
   }
 
-  // lookup n in the database and reply with Yes or No if it's in the database and it is or it is not prime,
-  // or with Unknown when it's not in the databse
 method IsPrime?(n: nat) returns (answer: Answer) 
       ensures database.Keys == old(database.Keys)
       ensures (n in database) && prime(n) <==> answer == Yes 
@@ -38,8 +46,6 @@ method IsPrime?(n: nat) returns (answer: Answer)
 {
   assume{:axiom} false;
 }
-
-  // method to test whether a number is prime, returns bool
 
 }
 

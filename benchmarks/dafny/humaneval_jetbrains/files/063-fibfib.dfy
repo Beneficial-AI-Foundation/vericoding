@@ -16,9 +16,8 @@ function fibfib(n: nat): nat
 
 // <vc-spec>
 method ComputeFibFib(n: nat) returns (result: nat)
-  // post-conditions-start
+
   ensures result == fibfib(n)
-  // post-conditions-end
 // </vc-spec>
 // <vc-code>
 {

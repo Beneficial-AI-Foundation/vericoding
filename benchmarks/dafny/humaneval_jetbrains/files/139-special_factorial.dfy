@@ -19,12 +19,10 @@ function special_factorial_rec(n: nat): nat
 
 // <vc-spec>
 method special_factorial(n: nat) returns (result: nat)
-  // pre-conditions-start
+
   requires n > 0
-  // pre-conditions-end
-  // post-conditions-start
+
   ensures result == special_factorial_rec(n)
-  // post-conditions-end
 // </vc-spec>
 // <vc-code>
 {

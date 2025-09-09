@@ -22,11 +22,10 @@ function last_digit(n: int): int
 
 // <vc-spec>
 method specialFilter(s: seq<int>) returns (r: seq<int>)
-  // post-conditions-start
+
   ensures forall i :: 0 <= i < |r| ==> r[i] > 10
   ensures forall x :: x in r ==> x in s
   ensures forall i :: 0 <= i < |r| ==> first_digit(r[i]) % 2 == 1 && last_digit(r[i]) % 2 == 1
-  // post-conditions-end
 // </vc-spec>
 // <vc-code>
 {

@@ -19,9 +19,8 @@ function Happy(s: string) : bool
 
 // <vc-spec>
 method IsHappy(s: string) returns (happy : bool)
-    // post-conditions-start
+
     ensures happy <==> Happy(s)
-    // post-conditions-end
 // </vc-spec>
 // <vc-code>
 {

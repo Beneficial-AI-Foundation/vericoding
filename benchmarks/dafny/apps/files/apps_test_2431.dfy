@@ -4,6 +4,8 @@ Each turn a player attacks a castle using mixed (x damage), infantry (y damage,
 forbidden if previous attack on same castle was infantry), or cavalry (z damage,
 forbidden if previous attack on same castle was cavalry). Player making the last
 attack wins. Find number of White's winning first moves using Grundy number theory.
+
+// Implementation uses Grundy number theory
 */
 
 datatype TestCase = TestCase(n: nat, x: nat, y: nat, z: nat, castles: seq<nat>)
@@ -70,7 +72,7 @@ function get_test_case(s: string, i: nat): TestCase
 function count_winning_first_moves(tc: TestCase): nat
     ensures count_winning_first_moves(tc) <= 3 * tc.n
 {
-    0 // Implementation uses Grundy number theory
+    0
 }
 
 // <vc-helpers>

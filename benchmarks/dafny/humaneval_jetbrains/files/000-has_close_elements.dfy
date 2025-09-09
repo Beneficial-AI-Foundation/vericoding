@@ -15,12 +15,10 @@ function abs(val : real): real
 
 // <vc-spec>
 method has_close_elements(numbers: seq<real>, threshold: real) returns (flag : bool)
-  // pre-conditions-start
+
   requires threshold > 0.0
-  // pre-conditions-end
-  // post-conditions-start
+
   ensures flag == (exists i: int, j: int :: i >= 0 && j >= 0 && i < |numbers| && j < |numbers| && i != j && abs(numbers[i] - numbers[j]) < threshold)
-  // post-conditions-end
 // </vc-spec>
 // <vc-code>
 {

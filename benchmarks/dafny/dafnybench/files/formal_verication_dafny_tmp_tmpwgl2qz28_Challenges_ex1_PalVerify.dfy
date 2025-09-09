@@ -1,8 +1,8 @@
 /*
-*/
-
 // ex3errors.dfy in Assignment 1
+
 // verify that an array of characters is a Palindrome
+
 /*
 A Palindrome is a word that is the same when written forwards and when written backwards. 
 For example, the word ”refer” is a Palindrome.
@@ -17,6 +17,7 @@ The method was written by a novice software engineer, and contains many errors.
    ii) Write a tester method (you may call it anything you like) that verifies that the 
       testcases refer, z and the empty string are Palindromes, and xy and 123421 are not. 
       The tester should not generate any output.
+*/
 */
 
 // <vc-helpers>

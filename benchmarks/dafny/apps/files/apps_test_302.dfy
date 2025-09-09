@@ -1,6 +1,8 @@
 /*
 Given a positive integer n, find the minimum number of digit 1s needed to represent n 
 as a sum and/or difference of repunits (numbers containing only 1s: 1, 11, 111, 1111, ...).
+
+// simplified for larger values
 */
 
 function pow(base: nat, exp: nat): nat
@@ -19,7 +21,7 @@ function repunit(n: nat): nat
     else if n == 3 then 111
     else if n == 4 then 1111
     else if n == 5 then 11111
-    else n  // simplified for larger values
+    else n
 }
 
 predicate ValidInput(n: nat)

@@ -18,11 +18,10 @@ type DictCase = map<string, string>
 
 // <vc-spec>
 method CheckDictCase(dict: DictCase) returns (result: bool)
-  // post-conditions-start
+
   ensures dict == map[] ==> !result
   ensures result ==> (forall k :: k in dict ==> IsLowerCase(k)) || (forall k :: k in dict ==> IsUpperCase(k))
   ensures !result ==> dict == map[] || ((exists k :: k in dict && !IsLowerCase(k)) && (exists k :: k in dict && !IsUpperCase(k)))
-  // post-conditions-end
 // </vc-spec>
 // <vc-code>
 {

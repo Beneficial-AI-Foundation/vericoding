@@ -1,6 +1,4 @@
 /*
-*/
-
 /* 
 MIPS 0
 We implement the following with bitvectors in Dafny.
@@ -22,7 +20,12 @@ def f(s,t):
     return ys
 */
 
-function ArrayToBv10(arr: array<bool>): bv10 // Converts boolean array to bitvector
+// Converts boolean array to bitvector
+
+// Converts boolean array to boolean sequence
+*/
+
+function ArrayToBv10(arr: array<bool>): bv10
     reads arr
     requires arr.Length == 10
 {
@@ -61,7 +64,7 @@ function XOR(a: bool, b: bool): bool {
 // </vc-helpers>
 
 // <vc-spec>
-method ArrayToSequence(arr: array<bool>) returns (res: seq<bool>) // Converts boolean array to boolean sequence
+method ArrayToSequence(arr: array<bool>) returns (res: seq<bool>)
     ensures |res| == arr.Length
     ensures forall k :: 0 <= k < arr.Length ==> res[k] == arr[k]
 // </vc-spec>

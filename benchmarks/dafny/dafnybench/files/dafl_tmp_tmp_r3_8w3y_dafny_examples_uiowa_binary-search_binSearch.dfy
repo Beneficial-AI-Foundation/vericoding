@@ -1,15 +1,9 @@
 /*
-*/
-
 ///////////////////
+
 // Binary search
-///////////////////
 
-predicate isSorted(a:array<int>)
-  reads a
-{
-  forall i:nat, j:nat :: i <= j < a.Length ==> a[i] <= a[j]
-}
+///////////////////
 
 // a[lo] <= a[lo+1] <= ... <= a[hi-2] <= a[hi-1]
 
@@ -25,6 +19,13 @@ here (which only talks about array elements and their successors).
 However, it needs to be derived as an auxiliary lemma first, something 
 that Dafny is not currently able to do automatically. 
 */
+*/
+
+predicate isSorted(a:array<int>)
+  reads a
+{
+  forall i:nat, j:nat :: i <= j < a.Length ==> a[i] <= a[j]
+}
 
 // <vc-helpers>
 // </vc-helpers>

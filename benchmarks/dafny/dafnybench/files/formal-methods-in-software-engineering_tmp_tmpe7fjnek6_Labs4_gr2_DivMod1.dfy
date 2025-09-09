@@ -1,6 +1,4 @@
 /*
-*/
-
 /*
 Dafny include 2 limbaje:
     * un limbaj pentru specificare 
@@ -24,29 +22,22 @@ regula pentru while
 */
 
 // varianta cu assert
+
 /*
 */
 
 // varianta cu invariant
 
 //specificarea sumei de patrate
-function SqrSumRec(n: int) : int
-    requires n >= 0
-{
-    if (n == 0) then 0 else n*n + SqrSumRec(n-1)
-}
+
 /*
 */
 
 // verificarea programului pentru suma de patrate
 
 // SqrSumRec(n) = 0^2 + 1^2 + 2^2 + ... + n^2 == n(n+1)(2n+1)/6
-least lemma L1(n: int)
-    requires n >= 0
-    ensures SqrSumRec(n) == n*(n+1)*(2*n + 1)/6
-{
-    //OK
-}
+
+//OK
 
 /*
 function SqrSumBy6(n: int) : int
@@ -97,6 +88,22 @@ inductive lemma L(n: int) // it takes a while
 
 */
 
+//decreases *
+*/
+
+function SqrSumRec(n: int) : int
+    requires n >= 0
+{
+    if (n == 0) then 0 else n*n + SqrSumRec(n-1)
+}
+
+least lemma L1(n: int)
+    requires n >= 0
+    ensures SqrSumRec(n) == n*(n+1)*(2*n + 1)/6
+{
+
+}
+
 // <vc-helpers>
 // </vc-helpers>
 
@@ -104,7 +111,6 @@ inductive lemma L(n: int) // it takes a while
 method DivMod1(a: int, b: int) returns (q: int, r: int)
 requires b > 0 && a >= 0
 ensures a == b*q + r && 0 <= r < b
-//decreases *
 // </vc-spec>
 // <vc-code>
 {

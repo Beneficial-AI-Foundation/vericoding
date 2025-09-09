@@ -1,6 +1,8 @@
 /*
 Given n emotes with happiness values, use emotes m times total to maximize happiness.
 Cannot use the same emote more than k consecutive times.
+
+// Assumes optimal strategy using highest and second highest values
 */
 
 predicate ValidInput(n: int, m: int, k: int, emotes: seq<int>)
@@ -15,7 +17,7 @@ function MaxHappiness(n: int, m: int, k: int, emotes: seq<int>): int
     var k_plus_1 := k + 1;
     var total := m / k_plus_1;
     var remainder := m % k_plus_1;
-    // Assumes optimal strategy using highest and second highest values
+
     var max_val := MaxValue(emotes);
     var second_max_val := SecondMaxValue(emotes);
     remainder * max_val + max_val * (total * k) + second_max_val * total

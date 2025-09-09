@@ -15,13 +15,11 @@ function modp_rec(n: int, p: int): int
 
 // <vc-spec>
 method modp(n: int, p: int) returns (r: int)
-  // pre-conditions-start
+
   requires p > 0
   requires n >= 0
-  // pre-conditions-end
-  // post-conditions-start
+
   ensures r == modp_rec(n, p)
-  // post-conditions-end
 // </vc-spec>
 // <vc-code>
 {

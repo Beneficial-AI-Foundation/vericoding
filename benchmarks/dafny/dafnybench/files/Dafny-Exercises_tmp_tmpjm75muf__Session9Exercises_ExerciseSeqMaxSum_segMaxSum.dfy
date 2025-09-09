@@ -1,4 +1,7 @@
 /*
+//Now do the same but with a loop from right to left
+
+//maximum sum stuck to the right
 */
 
 function Sum(v:array<int>,i:int,j:int):int
@@ -26,8 +29,7 @@ decreases j-i
     else v[i]+Sum2(v,i+1,j)
 }
 
-//Now do the same but with a loop from right to left
-predicate SumMaxToRight2(v:array<int>,j:int,i:int,s:int)//maximum sum stuck to the right
+predicate SumMaxToRight2(v:array<int>,j:int,i:int,s:int)
 reads v
 requires 0<=j<=i<v.Length
 {(forall l,ss {:induction l}::j<=l<=i && ss==i+1 ==> Sum2(v,l,ss)<=s)}

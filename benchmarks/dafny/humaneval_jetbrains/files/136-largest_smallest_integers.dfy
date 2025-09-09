@@ -16,14 +16,13 @@ function get_value(o: Option<int>): int
 
 // <vc-spec>
 method largest_smallest_integers(arr: seq<int>) returns (a: Option<int>, b: Option<int>)
-  // post-conditions-start
+
   ensures a.None? ==> forall i :: 0 <= i < |arr| ==> arr[i] >= 0
   ensures a.Some? ==> get_value(a) in arr && get_value(a) < 0
   ensures a.Some? ==> forall i :: 0 <= i < |arr| && arr[i] < 0 ==> arr[i] <= get_value(a)
   ensures b.None? ==> forall i :: 0 <= i < |arr| ==> arr[i] <= 0
   ensures b.Some? ==> get_value(b) in arr && get_value(b) > 0
   ensures b.Some? ==> forall i :: 0 <= i < |arr| && arr[i] > 0 ==> arr[i] >= get_value(b)
-  // post-conditions-end
 // </vc-spec>
 // <vc-code>
 {

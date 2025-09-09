@@ -3,6 +3,10 @@ Given an integer n representing a bank account balance, perform at most one oper
 delete the last digit, delete the digit before the last digit, or do nothing.
 Find the maximum possible balance after performing the operation.
 Constraint: absolute value of n is at least 10.
+
+// delete last digit
+
+// delete digit before last
 */
 
 predicate ValidInput(n: int)
@@ -16,8 +20,8 @@ function MaxBalanceAfterOperation(n: int): int
     if n >= 0 then n
     else 
         var s := IntToString(n);
-        var option1 := StringToInt(s[..|s|-1]);  // delete last digit
-        var option2 := StringToInt(s[..|s|-2] + s[|s|-1..]);  // delete digit before last
+        var option1 := StringToInt(s[..|s|-1]);
+        var option2 := StringToInt(s[..|s|-2] + s[|s|-1..]);
         if option1 > option2 then option1 else option2
 }
 

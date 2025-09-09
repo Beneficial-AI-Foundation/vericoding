@@ -8,10 +8,9 @@ incr_list takes a list of integers as input and returns a new list where each el
 
 // <vc-spec>
 method incr_list(l: seq<int>) returns (result: seq<int>)
-    // post-conditions-start
+
     ensures |result| == |l|
     ensures forall i :: 0 <= i < |l| ==> result[i] == l[i] + 1
-    // post-conditions-end
 // </vc-spec>
 // <vc-code>
 {

@@ -1,7 +1,6 @@
 /*
-*/
-
 //power -- Stephanie Renee McIntyre
+
 //Based on the code used in the course overheads for Fall 2018
 
 //There is no definition for power, so this function will be used for validating that our imperative program is correct.
@@ -19,18 +18,22 @@
    Thus the program terminates.
 */
 
+//function for a to the power of n
+
+//Our code from class
+*/
+
 // <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
-function power(a: int, n: int): int //function for a to the power of n
+function power(a: int, n: int): int
   requires 0 <= a && 0 <= n;
   decreases n;{if (n == 0) then 1 else a * power(a, n - 1)}
 
-//Our code from class
 method compute_power(a: int, n: int) returns (s: int)
-/*Pre-Condition*/   requires n >= 0 && a >= 0;
-/*Post-Condition*/  ensures s == power(a,n);
+  requires n >= 0 && a >= 0;
+  ensures s == power(a,n);
 // </vc-spec>
 // <vc-code>
 {

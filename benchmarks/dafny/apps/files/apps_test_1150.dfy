@@ -3,6 +3,12 @@ Given n regiments, each with 4 moles. Each mole has current position (x,y) and h
 A move rotates a mole's current position 90° counter-clockwise around its home position.
 A regiment is compact if its 4 moles form a square with non-zero area.
 Find minimum moves needed to make each regiment compact, or -1 if impossible.
+
+// Simplified square check - just check if points form any valid square
+
+// Check if we have 4 equal sides and 2 equal diagonals
+
+// Simplified - just check if total moves is reasonable
 */
 
 predicate ValidInput(input: string)
@@ -52,7 +58,7 @@ function DistanceSquared(p1: (int, int), p2: (int, int)): nat
 predicate IsSquare(points: seq<(int, int)>)
     requires |points| == 4
 {
-    // Simplified square check - just check if points form any valid square
+
     var p0 := points[0];
     var p1 := points[1];
     var p2 := points[2];
@@ -64,7 +70,6 @@ predicate IsSquare(points: seq<(int, int)>)
     var d13 := DistanceSquared(p1, p3);
     var d23 := DistanceSquared(p2, p3);
 
-    // Check if we have 4 equal sides and 2 equal diagonals
     d01 > 0 && (
         (d01 == d02 && d13 == d23 && d03 == d12 && d03 == 2 * d01) ||
         (d01 == d03 && d12 == d23 && d02 == d13 && d02 == 2 * d01) ||
@@ -78,7 +83,7 @@ predicate CanFormSquareWithMoves(moles: seq<(int, int, int, int)>, totalMoves: n
     requires ValidRegiment(moles)
 {
     totalMoves <= 12
-    // Simplified - just check if total moves is reasonable
+
 }
 
 function GetPositionsAfterMoves(moles: seq<(int, int, int, int)>, moves0: nat, moves1: nat, moves2: nat, moves3: nat): seq<(int, int)>

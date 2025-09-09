@@ -8,9 +8,8 @@ You are given a non-empty list of positive integers. Return the greatest integer
 
 // <vc-spec>
 method freq(s: seq<int>, x: int) returns (count: int)
-    // post-conditions-start
+
     ensures count == |(set i | 0 <= i < |s| && s[i] == x)|
-    // post-conditions-end
 // </vc-spec>
 // <vc-code>
 {

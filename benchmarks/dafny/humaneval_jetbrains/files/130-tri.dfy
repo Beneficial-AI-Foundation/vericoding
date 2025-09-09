@@ -16,10 +16,9 @@ function tri(n: nat): nat
 
 // <vc-spec>
 method Tribonacci(n: nat) returns (result: seq<nat>)
-  // post-conditions-start
+
   ensures |result| == n + 1
   ensures forall i :: 0 <= i <= n ==> result[i] == tri(i)
-  // post-conditions-end
 // </vc-spec>
 // <vc-code>
 {

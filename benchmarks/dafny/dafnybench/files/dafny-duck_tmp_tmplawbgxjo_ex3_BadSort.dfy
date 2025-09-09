@@ -1,13 +1,16 @@
 /*
-*/
-
 // program verifies
+
+// no b's after non-b's
+
+// only non-d's before d's
+*/
 
 predicate sortedbad(s: string)
 {
-  // no b's after non-b's
+
   forall i, j :: 0 <= i <= j < |s| && s[i] == 'b' && s[j] != 'b' ==> i < j &&
-  // only non-d's before d's
+
   forall i, j :: 0 <= i <= j < |s| && s[i] != 'd' && s[j] == 'd' ==> i < j
 }
 

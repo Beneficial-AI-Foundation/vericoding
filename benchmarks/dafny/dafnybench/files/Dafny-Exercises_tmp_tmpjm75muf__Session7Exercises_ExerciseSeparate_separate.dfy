@@ -1,4 +1,7 @@
 /*
+/**
+returns an index st new array is a permutation of the old array
+positive first and then strictnegative, i is the firs neg or len if not any */
 */
 
 predicate strictNegative(v:array<int>,i:int,j:int)
@@ -11,10 +14,6 @@ predicate positive(s:seq<int>)
 
 predicate isPermutation(s:seq<int>, t:seq<int>)
 {multiset(s)==multiset(t)}
-
-/**
-returns an index st new array is a permutation of the old array
-positive first and then strictnegative, i is the firs neg or len if not any */
 
 // <vc-helpers>
 // </vc-helpers>

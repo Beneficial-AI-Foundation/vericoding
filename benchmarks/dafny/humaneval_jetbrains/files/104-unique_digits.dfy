@@ -14,12 +14,11 @@ function HasNoEvenDigit(n: int) : bool
 
 // <vc-spec>
 method UniqueDigits(x: seq<int>) returns (result: seq<int>)
-  // post-conditions-start
+
   ensures forall i :: 0 <= i < |result| ==> HasNoEvenDigit(result[i])
   ensures forall i, j :: 0 <= i < j < |result| ==> result[i] <= result[j]
   ensures forall e :: e in x && HasNoEvenDigit(e) ==> e in result
   ensures forall e :: e in result ==> e in x
-  // post-conditions-end
 // </vc-spec>
 // <vc-code>
 {

@@ -1,6 +1,6 @@
-/-
+/-  
 -- numpy.isinf: Test element-wise for positive or negative infinity
--- Returns a boolean array of the same shape as x, True where x == ±∞, otherwise False.
+-- Returns a boolean array of the same shape as x, True where x == ±inf, otherwise False.
 -- URL: https://numpy.org/doc/stable/reference/generated/numpy.isinf.html
 -- Category: Array contents testing
 -/
@@ -34,7 +34,7 @@ def isinf {n : Nat} (x : Vector Float n) : Id (Vector Bool n) :=
 theorem isinf_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
     isinf x
-    ⦃⇓result => ⌜∀ i : Fin n,
+    ⦃⇓result => ⌜∀ i : Fin n, 
       (result.get i = (x.get i).isInf) ∧
       (¬(x.get i).isInf → result.get i = false) ∧
       ((x.get i).isNaN → result.get i = false) ∧

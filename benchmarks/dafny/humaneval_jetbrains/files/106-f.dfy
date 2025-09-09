@@ -21,14 +21,12 @@ function sum_spec(n : int) : int
 
 // <vc-spec>
 method f(n : int) returns (result : seq<int>)
-  // pre-conditions-start
+
   requires n >= 1
-  // pre-conditions-end
-  // post-conditions-start
+
   ensures |result| == n
   ensures forall i : int :: i >= 0 && i < |result| && i % 2 == 0 ==> result[i] == factorial_spec(i)
   ensures forall i : int :: i >= 0 && i < |result| && i % 2 != 0 ==> result[i] == sum_spec(i)
-  // post-conditions-end
 // </vc-spec>
 // <vc-code>
 {

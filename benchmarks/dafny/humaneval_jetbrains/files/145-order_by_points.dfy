@@ -17,11 +17,10 @@ function digits_sum(n: int): int {
 
 // <vc-spec>
 method order_by_points(s: seq<int>) returns (sorted: seq<int>)
-  // post-conditions-start
+
   ensures forall i, j :: 0 <= i < j < |sorted| ==> digits_sum(sorted[i]) <= digits_sum(sorted[j])
   ensures |sorted| == |s|
   ensures multiset(s) == multiset(sorted)
-  // post-conditions-end
 // </vc-spec>
 // <vc-code>
 {

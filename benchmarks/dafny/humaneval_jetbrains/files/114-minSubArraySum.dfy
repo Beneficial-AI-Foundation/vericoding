@@ -14,10 +14,9 @@ function Sum(a: seq<int>, s: int, t: int): int
 
 // <vc-spec>
 method minSubArraySum(a: seq<int>) returns (s: int)
-  // post-conditions-start
+
   ensures forall p,q :: 0 <= p <= q <= |a| ==> Sum(a, p, q) >= s
   ensures exists k, m :: 0 <= k <= m <= |a| && s == Sum(a, k, m)
-  // post-conditions-end
 // </vc-spec>
 // <vc-code>
 {

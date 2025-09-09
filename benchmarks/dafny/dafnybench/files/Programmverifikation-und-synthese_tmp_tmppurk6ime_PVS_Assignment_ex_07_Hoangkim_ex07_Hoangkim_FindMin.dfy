@@ -1,19 +1,21 @@
 /*
-*/
-
 //Problem01
+
 //a)
 
 //b)
+
 //Problem04
 
 //Problem02
+
+//Problem03
+*/
+
 ghost predicate sorted(a:seq<int>)
 {
     forall i | 0 < i < |a| :: a[i-1] <= a[i]     
 }
-
-//Problem03
 
 // <vc-helpers>
 // </vc-helpers>

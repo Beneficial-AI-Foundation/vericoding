@@ -2,6 +2,8 @@
 Given n groups arriving at a restaurant chronologically, where each group has 1 or 2 people,
 and the restaurant has a one-person tables and b two-person tables, determine how many people
 are denied service following specific seating rules.
+
+// group == 1
 */
 
 predicate ValidInput(n: int, a: int, b: int, groups: seq<int>)
@@ -30,7 +32,7 @@ function countDeniedPeopleWithHalf(groups: seq<int>, a: int, b: int, halfOccupie
         if group == 2 then
             if b > 0 then countDeniedPeopleWithHalf(rest, a, b - 1, halfOccupied)
             else 2 + countDeniedPeopleWithHalf(rest, a, b, halfOccupied)
-        else // group == 1
+        else
             if a > 0 then countDeniedPeopleWithHalf(rest, a - 1, b, halfOccupied)
             else if b > 0 then countDeniedPeopleWithHalf(rest, a, b - 1, halfOccupied + 1)
             else if halfOccupied > 0 then countDeniedPeopleWithHalf(rest, a, b, halfOccupied - 1)

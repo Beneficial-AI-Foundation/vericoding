@@ -1,8 +1,9 @@
 /*
+// This allows the function to read from array 'a'
 */
 
 function has_count(v: int, a: array<int>, n: int): int
-    reads a  // This allows the function to read from array 'a'
+    reads a
     requires n >= 0 && n <= a.Length
 {
     if n == 0 then 0 else

@@ -1,7 +1,7 @@
 /*
+// Helper predicate
 */
 
-// Helper predicate
 predicate is_sorted(nums: seq<int>)
 {
     forall i, j :: 0 <= i < j < |nums| ==> nums[i] <= nums[j]

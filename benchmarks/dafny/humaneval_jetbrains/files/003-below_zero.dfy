@@ -14,10 +14,9 @@ function psum(s: seq<int>): int
 
 // <vc-spec>
 method below_zero(ops: seq<int>) returns (res : bool)
-    // post-conditions-start
+
     ensures res ==> forall i : int :: 0 <= i <= |ops| ==> psum(ops[..i]) >= 0
     ensures !res ==> exists i : int :: 0 <= i <= |ops| && psum(ops[..i]) < 0
-    // post-conditions-end
 // </vc-spec>
 // <vc-code>
 {

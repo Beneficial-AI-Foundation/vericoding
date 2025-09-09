@@ -1,8 +1,8 @@
 /*
-*/
-
 // line contém uma string de tamanho l
+
 // remover p caracteres a partir da posição at
+*/
 
 // <vc-helpers>
 // </vc-helpers>

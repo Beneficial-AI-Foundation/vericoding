@@ -25,9 +25,8 @@ function square_seq(lst: seq<int>) : (sq : seq<int>)
 
 // <vc-spec>
 method double_the_difference(lst: seq<int>) returns (r : int)
-    // post-conditions-start
+
     ensures r == sumc(square_seq(lst), add_conditon(lst))
-    // post-conditions-end
 // </vc-spec>
 // <vc-code>
 {

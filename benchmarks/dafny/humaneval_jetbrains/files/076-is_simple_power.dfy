@@ -12,12 +12,10 @@ function power(x: nat, y: nat): nat {
 
 // <vc-spec>
 method is_simple_power(x: nat, n: int) returns (ans : bool)
-    // pre-conditions-start
+
     requires x > 0
-    // pre-conditions-end
-    // post-conditions-start
+
     ensures ans <==> exists y :: n == power(x, y)
-    // post-conditions-end
 // </vc-spec>
 // <vc-code>
 {

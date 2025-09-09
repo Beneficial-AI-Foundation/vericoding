@@ -1,10 +1,12 @@
 /*
-*/
-
 // MFES, Exam 8/Sept/20201, Exercise 5 
 
 // Computes the length (i) of the longest common prefix (initial subarray) 
+
 // of two arrays a and b.
+
+// Test method with an example.
+*/
 
 // <vc-helpers>
 // </vc-helpers>
@@ -20,5 +22,3 @@ method longestPrefix(a: array<int>, b: array <int>) returns (i: nat)
   assume {:axiom} false;
 }
 // </vc-code>
-
-// Test method with an example.

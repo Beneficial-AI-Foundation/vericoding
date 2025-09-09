@@ -16,9 +16,8 @@ function fib4_rec(n: nat): nat
 
 // <vc-spec>
 method fib4(n: nat) returns (result: nat)
-  // post-conditions-start
+
   ensures result == fib4_rec(n)
-  // post-conditions-end
 // </vc-spec>
 // <vc-code>
 {

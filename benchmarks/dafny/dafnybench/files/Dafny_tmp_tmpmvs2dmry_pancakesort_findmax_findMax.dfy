@@ -1,7 +1,6 @@
 /*
-*/
-
 // returns an index of the largest element of array 'a' in the range [0..n)
+*/
 
 // <vc-helpers>
 // </vc-helpers>

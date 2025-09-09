@@ -1,4 +1,21 @@
 /*
+//ensures !found <==> haveNotCommonKSubstringPred(k,str1,str2) // This postcondition follows from the above lemma.
+
+// Check that both strings are larger than k 
+
+// Initialize variables
+
+// Don't want to exceed the bounds of str1 when checking for the element that is k entries away
+
+// Invariant to stay within bounds
+
+// Invariant to show that when temp is true, it is a substring
+
+// Invariant to show that when temp is false, it is not a substring
+
+// Telling dafny that i is that value that is increasing
+
+// Get an index from the array position were are at to the array position that is k away and check the substring
 */
 
 predicate isSubstring(sub: seq<char>, str: seq<char>)
@@ -40,30 +57,28 @@ predicate haveNotCommonKSubstringPred(k:nat, str1:string, str2:string)
 
 method haveCommonKSubstring(k: nat, str1: string, str2: string) returns (found: bool)
     ensures found  <==>  haveCommonKSubstringPred(k,str1,str2)
-    //ensures !found <==> haveNotCommonKSubstringPred(k,str1,str2) // This postcondition follows from the above lemma.
+
 {
-    // Check that both strings are larger than k 
+
     if (k > |str1| || k > |str2| ){
         return false;
     }
-    // Initialize variables
+
     var i := 0;
     var temp := false;
 
-    // Don't want to exceed the bounds of str1 when checking for the element that is k entries away
     while i <= |str1|-k
-    // Invariant to stay within bounds
+
     invariant 0 <= i <= (|str1|-k) + 1
-    // Invariant to show that when temp is true, it is a substring
+
     invariant temp ==> 0 <= i <= (|str1| - k) && isSubstringPred(str1[i..i+k], str2)
-    // Invariant to show that when temp is false, it is not a substring
+
     invariant !temp ==> (forall m,n :: (0 <= m < i && n == m+k) ==> isNotSubstringPred(str1[m..n], str2))
-    // Telling dafny that i is that value that is increasing
+
     decreases |str1| - k - i
     {
         assume false;
 
-        // Get an index from the array position were are at to the array position that is k away and check the substring
         temp := isSubstring(str1[i..(i + k)], str2);
         if  temp == true 
         {

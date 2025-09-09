@@ -1,8 +1,6 @@
 /*
+// i)  Write a verified method with signature
 */
-
-/*
-    i)  Write a verified method with signature
 
 // <vc-helpers>
 // </vc-helpers>

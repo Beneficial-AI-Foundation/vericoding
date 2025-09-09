@@ -8,36 +8,18 @@ type stringBin = s: string |
   forall i | 0 <= i < |s| :: s[i] in "01"
   witness "1"
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
-method decimal_to_binary(n: nat) returns (s: string)
-  // post-conditions-start
-  ensures |s| == |decimal_to_binary_helper(n)| + 4
-  ensures s[..2] == "db"
-  ensures s[|s| - 2..] == "db"
-  ensures s[2..|s| - 2] == decimal_to_binary_helper(n)
-  // post-conditions-end
-// </vc-spec>
-// <vc-code>
-{
-  assume {:axiom} false;
-}
-// </vc-code>
-
 function decimal_to_binary_helper(n: nat): stringBin 
-  // post-conditions-start
+
   ensures binary_to_decimal(decimal_to_binary_helper(n)) == n
-  // post-conditions-end
+
 {
-  // impl-start
+
   match n
     case 0 => "0" case 1 => "1"
     case _ => decimal_to_binary_helper(n / 2) + decimal_to_binary_helper(n % 2)
-  // impl-end
+
 }
-// pure-end
+
 function binary_to_decimal(s: stringBin): nat
   decreases |s|
 {
@@ -47,4 +29,20 @@ function binary_to_decimal(s: stringBin): nat
   else
     binary_to_decimal(s[..|s|-1])*2 + binary_to_decimal(s[|s|-1..|s|])
 }
-// pure-end
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+method decimal_to_binary(n: nat) returns (s: string)
+
+  ensures |s| == |decimal_to_binary_helper(n)| + 4
+  ensures s[..2] == "db"
+  ensures s[|s| - 2..] == "db"
+  ensures s[2..|s| - 2] == decimal_to_binary_helper(n)
+// </vc-spec>
+// <vc-code>
+{
+  assume {:axiom} false;
+}
+// </vc-code>

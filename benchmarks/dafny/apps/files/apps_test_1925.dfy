@@ -1,13 +1,17 @@
 /*
 Given integers A, B, and N, find the maximum value of floor(A*x/B) - A*floor(x/B) 
 over all non-negative integers x where 0 ≤ x ≤ N.
+
+// B must be positive
+
+// default values with B=1 to avoid division by zero
 */
 
 predicate ValidInput(input: string)
 {
     |input| > 0 && 
     var parts := ParseThreeIntsFunc(input);
-    parts.1 > 0  // B must be positive
+    parts.1 > 0
 }
 
 function ParseThreeIntsFunc(s: string): (int, int, int)
@@ -15,7 +19,7 @@ function ParseThreeIntsFunc(s: string): (int, int, int)
 {
     var nums := ParseNumbers(s, 0, [], 0, false);
     if |nums| >= 3 then (nums[0], if nums[1] > 0 then nums[1] else 1, nums[2])
-    else (0, 1, 0) // default values with B=1 to avoid division by zero
+    else (0, 1, 0)
 }
 
 function ParseNumbers(s: string, i: int, nums: seq<int>, current: int, inNumber: bool): seq<int>

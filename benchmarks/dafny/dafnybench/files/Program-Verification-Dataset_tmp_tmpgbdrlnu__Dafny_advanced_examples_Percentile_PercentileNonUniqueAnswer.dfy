@@ -1,8 +1,17 @@
 /*
+// Sum of elements of A from indices 0 to end.
+
+// end is inclusive! (not James's normal way of thinking!!)
+
+// example showing that, with the original postcondition, the answer is non-unique!
+
+// proof that, with the corrected postcondition, the answer is unique
+
+// lemma for previous proof: when an array has strictly positive elements, the
+
+// sums strictly increase left to right
 */
 
-// Sum of elements of A from indices 0 to end.
-// end is inclusive! (not James's normal way of thinking!!)
 function SumUpto(A: array<real>, end: int): real
   requires -1 <= end < A.Length
   reads A
@@ -18,8 +27,6 @@ function Sum(A: array<real>): real
 {
   SumUpto(A, A.Length-1)
 }
-
-// example showing that, with the original postcondition, the answer is non-unique!
 
 // <vc-helpers>
 // </vc-helpers>
@@ -46,7 +53,3 @@ method PercentileNonUniqueAnswer() returns (p: real, A: array<real>, total: real
   assume {:axiom} false;
 }
 // </vc-code>
-
-// proof that, with the corrected postcondition, the answer is unique
-// lemma for previous proof: when an array has strictly positive elements, the
-// sums strictly increase left to right

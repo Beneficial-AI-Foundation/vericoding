@@ -1,8 +1,9 @@
 /*
+// verifies
+
+// check that string between indexes low and high-1 are sorted
 */
 
-// verifies
-// check that string between indexes low and high-1 are sorted
 predicate Sorted(a: string, low:int, high:int)
 requires 0 <= low <= high <= |a|
 { 

@@ -1,9 +1,17 @@
 /*
-*/
-
 // 1 a)
 
 // [ai, aj[
+
+// 1 b)
+
+// 1 c)
+
+// a -> [1, 10, 3, −4, 5]
+
+// c -> [0, 1, 11, 14, 10, 15]
+*/
+
 function sum(a: array<int>, i: int, j: int) : int
   requires 0 <= i <= j <= a.Length
   reads a
@@ -12,12 +20,6 @@ function sum(a: array<int>, i: int, j: int) : int
   if i == j then 0
   else a[j-1] + sum(a, i, j-1)
 }
-
-// 1 b)
-
-// 1 c)
-// a -> [1, 10, 3, −4, 5]
-// c -> [0, 1, 11, 14, 10, 15]
 
 predicate is_prefix_sum_for (a: array<int>, c: array<int>)
   reads c, a

@@ -17,11 +17,10 @@ function getVal(mx : Option<int>) : int
 
 // <vc-spec>
 method rolling_max(numbers: seq<int>) returns (result : seq<int>)
-    // post-conditions-start
+
     ensures |numbers| == |result|
     ensures forall i : int :: i >= 0 && i < |numbers| ==> numbers[i] <= result[i]
     ensures forall i : int :: i >= 0 && i + 1 < |numbers| ==> result[i] <= result[i + 1]
-    // post-conditions-end
 // </vc-spec>
 // <vc-code>
 {

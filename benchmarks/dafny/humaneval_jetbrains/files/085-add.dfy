@@ -19,14 +19,11 @@ function add_conditon(lst: seq<int>) : (p : seq<bool>)
 
 // <vc-spec>
 method add(v: seq<int>) returns (r : int)
-    // post-conditions-start
+
     ensures r == sumc(v, add_conditon(v))
-    // post-conditions-end
 // </vc-spec>
 // <vc-code>
 {
   assume {:axiom} false;
 }
 // </vc-code>
-
-// pure-end

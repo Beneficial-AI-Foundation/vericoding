@@ -1,9 +1,10 @@
 /*
-*/
-
 // Insertion sort.
+
 //
+
 // Author: Snorri Agnarsson, snorri@hi.is
+*/
 
 predicate IsSorted( s: seq<int> )
 {

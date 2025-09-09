@@ -8,10 +8,9 @@ It is the last week of the semester and the teacher has to give the grades to st
 
 // <vc-spec>
 method numerical_letter_grade(grades: seq<real>) returns (letters: seq<string>)
-  // pre-conditions-start
+
   requires forall i :: 0 <= i < |grades| ==> 0.0 <= grades[i] <= 4.0
-  // pre-conditions-end
-  // post-conditions-start
+
   ensures |letters| == |grades|
   ensures forall i :: 0 <= i < |grades| && grades[i] == 4.0 ==> letters[i] == "A+"
   ensures forall i :: 0 <= i < |grades| && grades[i] < 4.0 && grades[i] > 3.7 ==> letters[i] == "A"
@@ -26,7 +25,6 @@ method numerical_letter_grade(grades: seq<real>) returns (letters: seq<string>)
   ensures forall i :: 0 <= i < |grades| && grades[i] <= 1.0 && grades[i] > 0.7 ==> letters[i] == "D"
   ensures forall i :: 0 <= i < |grades| && grades[i] <= 0.7 && grades[i] > 0.0 ==> letters[i] == "D-"
   ensures forall i :: 0 <= i < |grades| && grades[i] == 0.0 ==> letters[i] == "E"
-  // post-conditions-end
 // </vc-spec>
 // <vc-code>
 {

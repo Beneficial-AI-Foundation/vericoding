@@ -8,13 +8,11 @@ Write a function that accepts a list of strings. The list contains different wor
 
 // <vc-spec>
 method find_max(strings : seq<string>) returns (s : string)
-   // pre-conditions-start
+
     requires |strings| > 0
-    // pre-conditions-end
-    // post-conditions-start
+
     ensures s in strings
     ensures forall i : int :: 0 <= i < |strings| ==> |set c | c in s| >= |set c | c in strings[i]|
-    // post-conditions-end
 // </vc-spec>
 // <vc-code>
 {

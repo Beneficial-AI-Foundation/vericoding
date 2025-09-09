@@ -1,6 +1,4 @@
 /*
-*/
-
 /*
 https://leetcode.com/problems/find-pivot-index/description/
 Given an array of integers nums, calculate the pivot index of this array.
@@ -50,18 +48,21 @@ function pivotIndex(nums: number[]): number {
 ```
 */
 
+// if |nums| == 0 then 0 else nums[0]+sum(nums[1..])
+
+// By Divyanshu Ranjan
+
+// By Divyanshu Ranjan
+*/
+
 function sum(nums: seq<int>): int {
-    // if |nums| == 0 then 0 else nums[0]+sum(nums[1..])
+
     if |nums| == 0 then 0 else sum(nums[0..(|nums|-1)])+nums[|nums|-1]
 }
 
 function sumUp(nums: seq<int>): int {
     if |nums| == 0 then 0 else nums[0]+sumUp(nums[1..])
 }
-
-// By Divyanshu Ranjan
-
-// By Divyanshu Ranjan
 
 // <vc-helpers>
 // </vc-helpers>

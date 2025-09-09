@@ -1,4 +1,7 @@
 /*
+//Implement by calling binary search function
+
+//Recursive binary search
 */
 
 predicate sorted(s : seq<int>) {
@@ -20,12 +23,9 @@ method binarySearch(v:array<int>, elem:int) returns (p:int)
 method search(v:array<int>,elem:int) returns (b:bool)
  requires sorted(v[0..v.Length])
 ensures b==(elem in v[0..v.Length])
- //Implement by calling binary search function
 // </vc-spec>
 // <vc-code>
 {
   assume {:axiom} false;
 }
 // </vc-code>
-
-//Recursive binary search

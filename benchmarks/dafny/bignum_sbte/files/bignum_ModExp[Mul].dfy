@@ -1,6 +1,12 @@
 /*
 Bignum task: bignum_ModExp[Mul].
 Implement the method according to the Dafny specification.
+
+// All characters must be '0' or '1'.
+
+//requires y < Exp_int(2,n+1)
+
+//&& n > 0
 */
 
 ghost function Str2Int(s: string): nat
@@ -15,7 +21,7 @@ ghost function Exp_int(x: nat, y:nat): nat
 }
 predicate ValidBitString(s: string)
 {
-  // All characters must be '0' or '1'.
+
   forall i | 0 <= i < |s| :: s[i] == '0' || s[i] == '1'
 }
 
@@ -35,8 +41,8 @@ method ModExp(sx: string, sy: string, sz: string) returns (res: string)
   requires ValidBitString(sx) && ValidBitString(sy) &&  ValidBitString(sz)
   ensures ValidBitString(res)
   ensures Str2Int(res) == Exp_int(Str2Int(sx), Str2Int(sy)) % Str2Int(sz)
-  //requires y < Exp_int(2,n+1)
-  requires |sy| > 0 && Str2Int(sz) > 1 //&& n > 0
+
+  requires |sy| > 0 && Str2Int(sz) > 1
   decreases |sy|
 // </vc-spec>
 // <vc-code>

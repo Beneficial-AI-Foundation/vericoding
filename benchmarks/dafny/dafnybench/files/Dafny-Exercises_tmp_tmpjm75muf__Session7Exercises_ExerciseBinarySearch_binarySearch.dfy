@@ -1,4 +1,5 @@
 /*
+//Recursive binary search
 */
 
 predicate sorted(s : seq<int>) {
@@ -19,5 +20,3 @@ method binarySearch(v:array<int>, elem:int) returns (p:int)
   assume {:axiom} false;
 }
 // </vc-code>
-
-//Recursive binary search

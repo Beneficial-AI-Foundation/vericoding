@@ -1,4 +1,11 @@
 /*
+// 2.
+
+// 3.
+
+// 5.
+
+// 6
 */
 
 function fib(n : nat) : nat
@@ -7,7 +14,6 @@ function fib(n : nat) : nat
   if (n==1) then 1 else fib(n-1)+fib(n-2)
 }
 
-// 2.
 datatype List<T> = Nil | Cons(head: T, tail: List<T>)
 
 function add(l : List<int>) : int {
@@ -16,11 +22,6 @@ function add(l : List<int>) : int {
   case Cons(x,xs) => x + add(xs)
 }
 
-// 3.
-
-// 5.
-
-// 6
 function sum(n: nat) : nat
 {
   if (n == 0) then 0 else n + sum(n-1)

@@ -1,13 +1,14 @@
 /*
-*/
-
 // Höfundur spurningar:  Snorri Agnarsson, snorri@hi.is
+
 // Permalink spurningar: https://rise4fun.com/Dafny/GW7a
 
 // Höfundur lausnar:     Alexander Guðmundsson
+
 // Permalink lausnar:    https://www.rise4fun.com/Dafny/JPGct
 
 // Klárið að forrita föllin tvö.
+*/
 
 // <vc-helpers>
 // </vc-helpers>

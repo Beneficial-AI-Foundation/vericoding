@@ -1,7 +1,9 @@
 /*
+// definition of Fibonacci numbers
+
+// iterative calculation of Fibonacci numbers
 */
 
-// definition of Fibonacci numbers
 function Fibonacci(n: nat): nat {
   match n {
     case 0 => 0
@@ -9,8 +11,6 @@ function Fibonacci(n: nat): nat {
     case _ => Fibonacci(n - 1) + Fibonacci(n - 2)
   }
 }
-
-// iterative calculation of Fibonacci numbers
 
 // <vc-helpers>
 // </vc-helpers>

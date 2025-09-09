@@ -1,11 +1,20 @@
 /*
-*/
-
 //Problem01
+
 //a)
 
 //b)
+
 //Problem04
+
+//Problem02
+
+//ensures multiset(a[..]) == multiset(old(a[..]))
+
+//ensures sorted(a[..])
+
+//Problem03
+*/
 
 method FindMin(a: array<int>, lo: nat) returns (minIdx: nat)
     requires a != null && a.Length > 0 && lo < a.Length
@@ -15,7 +24,6 @@ method FindMin(a: array<int>, lo: nat) returns (minIdx: nat)
   assume{:axiom} false;
 }
 
-//Problem02
 ghost predicate sorted(a:seq<int>)
 {
     forall i | 0 < i < |a| :: a[i-1] <= a[i]     
@@ -27,13 +35,9 @@ ghost predicate sorted(a:seq<int>)
 // <vc-spec>
 method selectionSort(a: array<int>)
     modifies a
-    //ensures multiset(a[..]) == multiset(old(a[..]))
-    //ensures sorted(a[..])
 // </vc-spec>
 // <vc-code>
 {
   assume {:axiom} false;
 }
 // </vc-code>
-
-//Problem03

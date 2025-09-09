@@ -20,12 +20,10 @@ function upper_char(c: char) : (C: char)
 
 // <vc-spec>
 method count_distinct_characters(s: string) returns (count: int)
-  // pre-conditions-start
+
   requires forall i :: 0 <= i < |s| ==> 'a' <= s[i] <= 'z' || 'A' <= s[i] <= 'Z'
-  // pre-conditions-end
-  // post-conditions-start
+
   ensures count == |set c | 'a' <= c <= 'z' && contains_char(s, c)|
-  // post-conditions-end
 // </vc-spec>
 // <vc-code>
 {

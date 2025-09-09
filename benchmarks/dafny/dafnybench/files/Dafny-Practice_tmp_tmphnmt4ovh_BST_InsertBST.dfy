@@ -1,4 +1,12 @@
 /*
+/*
+    Goal: Implement correctly, clearly. No need to document the proof obligations.
+*/
+
+/*
+    Goal: Implement correctly, efficiently, clearly, documenting the proof obligations
+    as we've learned, with assertions and a lemma for each proof goal
+*/
 */
 
 datatype Tree = Empty | Node(int,Tree,Tree)
@@ -32,15 +40,6 @@ predicate Ascending(q: seq<int>)
 }
 
 predicate NoDuplicates(q: seq<int>) { forall i,j :: 0 <= i < j < |q| ==> q[i] != q[j] }
-
-/*
-    Goal: Implement correctly, clearly. No need to document the proof obligations.
-*/
-
-/*
-    Goal: Implement correctly, efficiently, clearly, documenting the proof obligations
-    as we've learned, with assertions and a lemma for each proof goal
-*/
 
 // <vc-helpers>
 // </vc-helpers>

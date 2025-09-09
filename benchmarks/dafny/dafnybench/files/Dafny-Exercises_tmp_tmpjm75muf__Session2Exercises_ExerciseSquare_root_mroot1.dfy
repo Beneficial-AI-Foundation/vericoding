@@ -1,11 +1,12 @@
 /*
+//Cost O(root n)
 */
 
 // <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
-method mroot1(n:int) returns (r:int) //Cost O(root n)
+method mroot1(n:int) returns (r:int)
 requires n>=0
 ensures r>=0 && r*r <= n <(r+1)*(r+1)
 // </vc-spec>

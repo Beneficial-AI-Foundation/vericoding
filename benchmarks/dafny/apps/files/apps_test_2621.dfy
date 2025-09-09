@@ -2,6 +2,10 @@
 Given n columns with initial heights, determine if a character can move from column 1 to column n.
 Character starts at column 1 with m blocks in bag. At each column, character can remove/add blocks
 and move to next column if height difference is at most k.
+
+// Simplified for compilation
+
+// Simplified for compilation
 */
 
 predicate validInput(n: int, m: int, k: int, H: seq<int>)
@@ -57,12 +61,12 @@ predicate validOutputFormat(output: string, input: string)
 
 predicate correctGameResults(output: string, input: string)
 {
-    true // Simplified for compilation
+    true
 }
 
 predicate outputMatchesTestCaseCount(output: string, input: string)
 {
-    true // Simplified for compilation
+    true
 }
 
 // <vc-helpers>

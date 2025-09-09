@@ -9,10 +9,10 @@ function IsEven(n: int) : bool
 }
 function CountEvens(lst: seq<int>): nat
 {
-  // impl-start
+
   if |lst| == 0 then 0
   else (if IsEven(lst[0]) then 1 else 0) + CountEvens(lst[1..])
-  // impl-end
+
 }
 
 // <vc-helpers>
@@ -20,14 +20,12 @@ function CountEvens(lst: seq<int>): nat
 
 // <vc-spec>
 method Exchange(lst1: seq<int>, lst2: seq<int>) returns (result: string)
-  // pre-conditions-start
+
   requires |lst1| > 0 && |lst2| > 0
-  // pre-conditions-end
-  // post-conditions-start
+
   ensures result == "YES" || result == "NO"
   ensures result == "YES" ==> CountEvens(lst1) + CountEvens(lst2) >= |lst1|
   ensures result == "NO" ==> CountEvens(lst1) + CountEvens(lst2) < |lst1|
-  // post-conditions-end
 // </vc-spec>
 // <vc-code>
 {

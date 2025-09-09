@@ -1,7 +1,10 @@
 /*
-*/
-
 // method verifies
+
+// string == seq<Char>
+
+//give se2011 ass2 ex1.dfy
+*/
 
 // <vc-helpers>
 // </vc-helpers>
@@ -21,6 +24,3 @@ ensures |s| == 0 ==> t == s;
   assume {:axiom} false;
 }
 // </vc-code>
-
-// string == seq<Char>
-//give se2011 ass2 ex1.dfy

@@ -15,10 +15,9 @@ function prod(s: seq<int>) : int {
 
 // <vc-spec>
 method sum_product(numbers: seq<int>) returns (s : int, p : int)
-    // post-condition-start
+
     ensures s == sum(numbers)
     ensures p == prod(numbers)
-    // post-condition-end
 // </vc-spec>
 // <vc-code>
 {

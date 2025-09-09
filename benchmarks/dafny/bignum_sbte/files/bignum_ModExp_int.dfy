@@ -1,6 +1,8 @@
 /*
 Bignum task: bignum_ModExp_int.
 Implement the method according to the Dafny specification.
+
+//&& n > 0
 */
 
 ghost function Exp_int(x: nat, y:nat): nat
@@ -14,7 +16,7 @@ ghost function Exp_int(x: nat, y:nat): nat
 // <vc-spec>
 method ModExp_int(x: nat, y:nat, n:nat, z: nat) returns (res:nat)
   requires y < Exp_int(2,n+1)
-  requires z > 1 //&& n > 0
+  requires z > 1
   ensures res == Exp_int(x,y) % z
   decreases n
 // </vc-spec>

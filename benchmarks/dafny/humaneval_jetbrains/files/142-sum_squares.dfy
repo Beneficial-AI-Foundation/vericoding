@@ -18,9 +18,8 @@ function square_seq(lst: seq<int>) : (sq : seq<int>)
 
 // <vc-spec>
 method sum_squares(lst: seq<int>) returns (r : int)
-    // post-conditions-start
+
     ensures r == sum(square_seq(lst))
-    // post-conditions-end
 // </vc-spec>
 // <vc-code>
 {

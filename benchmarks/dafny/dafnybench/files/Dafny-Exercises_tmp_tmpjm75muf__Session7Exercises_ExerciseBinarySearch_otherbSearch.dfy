@@ -1,4 +1,7 @@
 /*
+//Recursive binary search
+
+//Implement and verify
 */
 
 predicate sorted(s : seq<int>) {
@@ -13,8 +16,6 @@ method binarySearch(v:array<int>, elem:int) returns (p:int)
   assume{:axiom} false;
 }
 
-//Recursive binary search
-
 // <vc-helpers>
 // </vc-helpers>
 
@@ -26,7 +27,6 @@ method otherbSearch(v:array<int>, elem:int) returns (b:bool,p:int)
  ensures b ==> p<v.Length && v[p]==elem
  ensures !b ==> (forall u::0<=u<p ==> v[u]<elem) && 
                (forall w::p<=w<v.Length ==> v[w]>elem)
- //Implement and verify
 // </vc-spec>
 // <vc-code>
 {

@@ -1,23 +1,24 @@
 /*
-*/
-
 /* 
 * Formal verification of the selection sort algorithm with Dafny.
 * FEUP, MIEIC, MFES, 2020/21.
 */
 
 // Checks if array 'a' is sorted between positions 'from' (inclusive) and 'to' (exclusive).
+
+// Sorts array 'a' using the selection sort algorithm.
+
+// Finds the position of a miminum value in non-empty subarray 'a' between positions 
+
+// 'from' (inclusive) and 'to' (exclusive)
+*/
+
 predicate isSorted(a: array<real>, from: nat, to: nat)
   requires 0 <= from <= to <= a.Length
   reads a
 {
     forall i, j :: from <= i < j < to ==> a[i] <= a[j] 
 }
-
-// Sorts array 'a' using the selection sort algorithm.
-
-// Finds the position of a miminum value in non-empty subarray 'a' between positions 
-// 'from' (inclusive) and 'to' (exclusive)
 
 // <vc-helpers>
 // </vc-helpers>

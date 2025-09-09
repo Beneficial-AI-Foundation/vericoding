@@ -1,9 +1,12 @@
 /*
-*/
-
 //Algorithm 1: From left to right return the first
 
 //Algorithm 2: From right to left return the last
+
+//Algorithm : from left to right
+
+//Algorithm : from right to left
+*/
 
 // <vc-helpers>
 // </vc-helpers>
@@ -20,6 +23,3 @@ ensures forall l:: i<l<v.Length ==> v[i]>v[l]
   assume {:axiom} false;
 }
 // </vc-code>
-
-//Algorithm : from left to right
-//Algorithm : from right to left

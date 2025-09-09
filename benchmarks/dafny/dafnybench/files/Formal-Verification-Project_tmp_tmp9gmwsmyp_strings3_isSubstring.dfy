@@ -1,4 +1,5 @@
 /*
+//ensures !res <==> isNotSubstringPred(sub, str) // This postcondition follows from the above lemma.
 */
 
 predicate isPrefixPred(pre:string, str:string)
@@ -45,7 +46,6 @@ predicate haveNotCommonKSubstringPred(k:nat, str1:string, str2:string)
 // <vc-spec>
 method isSubstring(sub: string, str: string) returns (res:bool)
     ensures  res <==> isSubstringPred(sub, str)
-    //ensures !res <==> isNotSubstringPred(sub, str) // This postcondition follows from the above lemma.
 // </vc-spec>
 // <vc-code>
 {

@@ -17,11 +17,10 @@ function getVal(mx : Option<string>) : string
 
 // <vc-spec>
 method longest(strings: seq<string>) returns (result : Option<string>)
-  // post-conditions-start
+
   ensures result == None <==> |strings| == 0
   ensures result != None ==> forall s :: s in strings ==> |getVal(result)| >= |s|
-  ensures result != None ==> getVal(result) in strings 
-  // post-conditions-end
+  ensures result != None ==> getVal(result) in strings
 // </vc-spec>
 // <vc-code>
 {

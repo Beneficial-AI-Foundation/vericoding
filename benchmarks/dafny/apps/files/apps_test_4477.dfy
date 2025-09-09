@@ -1,5 +1,9 @@
 /*
 Given an apartment number x consisting of the same repeated digit, calculate the total number of digits pressed when calling all "boring" apartments (apartments with all same digits) in a specific order until apartment x answers. The calling order is: All apartments with digit 1 (1, 11, 111, 1111), then digit 2 (2, 22, 222, 2222), and so on through digit 9.
+
+// Sum digits for all previous complete digit groups (1-9, 11-99, etc.)
+
+// Sum digits for current digit group up to and including x
 */
 
 predicate IsBoringApartment(x: int)
@@ -39,10 +43,8 @@ function TotalDigitsPressed(x: int): int
                  else x / 1111;
     var length := DigitCount(x);
 
-    // Sum digits for all previous complete digit groups (1-9, 11-99, etc.)
     var prevDigits := if digit == 1 then 0 else (digit - 1) * (1 + 2 + 3 + 4);
 
-    // Sum digits for current digit group up to and including x
     var currentDigits := (length * (length + 1)) / 2;
 
     prevDigits + currentDigits

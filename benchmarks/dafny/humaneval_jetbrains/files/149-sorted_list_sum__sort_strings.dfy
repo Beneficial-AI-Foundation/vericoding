@@ -36,22 +36,3 @@ method sort_strings(list: seq<string>) returns (sorted: seq<string>)
   assume {:axiom} false;
 }
 // </vc-code>
-
-method sort_lengths(list: seq<string>) returns (sorted: seq<string>)
-    requires forall i : int :: 0 <= i < |list| ==> |list[i]| % 2 == 0
-    ensures forall i : int :: 0 <= i < |sorted| ==> |sorted[i]| % 2 == 0
-    ensures |sorted| == |list|
-    ensures multiset(sorted) == multiset(list)
-    ensures forall x : int, y : int :: 0 <= x < y < |sorted| ==> |sorted[x]| <= |sorted[y]|
-{
-  assume{:axiom} false;
-}
-method sorted_list_sum(list: seq<string>) returns (sorted: seq<string>)
-    requires |list| > 0
-    ensures |sorted| <= |list|
-    ensures forall i : int :: 0 <= i < |sorted| ==> |sorted[i]| % 2 == 0
-    ensures forall x : int, y : int :: 0 <= x < y < |sorted| ==> |sorted[x]| <= |sorted[y]|
-    ensures multiset(sorted) <= multiset(list)
-{
-  assume{:axiom} false;
-}

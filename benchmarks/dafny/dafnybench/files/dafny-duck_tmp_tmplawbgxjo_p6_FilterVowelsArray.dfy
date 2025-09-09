@@ -1,7 +1,7 @@
 /*
+//Given an array of characters, it filters all the vowels. [‘d’,’e’,’l’,’i’,’g’,’h’,’t’]-> [’e’,’i’]
 */
 
-//Given an array of characters, it filters all the vowels. [‘d’,’e’,’l’,’i’,’g’,’h’,’t’]-> [’e’,’i’]
 const vowels: set<char> := {'a', 'e', 'i', 'o', 'u'}
 
 function FilterVowels(xs: seq<char>): seq<char>

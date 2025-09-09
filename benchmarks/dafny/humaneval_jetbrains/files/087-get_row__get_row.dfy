@@ -18,27 +18,16 @@ function less_eq(a: (int, int), b: (int, int)): bool {
 
 // <vc-spec>
 method get_row(lst: seq<seq<int>>, x: int) returns (pos: SortSeqState)
-  // post-conditions-start
+
   ensures forall i :: 0 <= i < |pos| ==> (
     var (a, b) := pos[i];
     0 <= a < |lst| && 0 <= b < |lst[a]| && lst[a][b] == x
   )
   ensures forall i, j :: 0 <= i < |lst| && 0 <= j < |lst[i]| && lst[i][j] == x ==> (i, j) in pos
   ensures forall i, j :: 0 <= i < j < |pos| ==> less_eq(pos[i], pos[j])
-  // post-conditions-end
 // </vc-spec>
 // <vc-code>
 {
   assume {:axiom} false;
 }
 // </vc-code>
-
-method SortSeq(s: SortSeqState) returns (sorted: SortSeqState)
-  // post-conditions-start
-  ensures forall i, j :: 0 <= i < j < |sorted| ==> less_eq(sorted[i], sorted[j])
-  ensures |sorted| == |s|
-  ensures multiset(s) == multiset(sorted)
-  // post-conditions-end
-{
-  assume{:axiom} false;
-}

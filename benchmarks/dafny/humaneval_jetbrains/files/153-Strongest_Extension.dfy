@@ -34,10 +34,9 @@ class Extension {
 
 // <vc-spec>
 method Strongest_Extension(className: string, extensions: seq<string>) returns (result: string)
-    // pre-conditions-start
+
     requires |extensions| > 0
-    // pre-conditions-end
-    // post-conditions-start
+
     ensures |result| > |className|
     ensures result[..|className|] == className
     ensures result[|className|] == '.'
@@ -45,7 +44,6 @@ method Strongest_Extension(className: string, extensions: seq<string>) returns (
                extName in extensions
     ensures var extName := result[|className| + 1..];
                forall i :: 0 <= i < |extensions| ==> Extension.CalculateStrength(extName) >= Extension.CalculateStrength(extensions[i])
-    // post-conditions-end
 // </vc-spec>
 // <vc-code>
 {

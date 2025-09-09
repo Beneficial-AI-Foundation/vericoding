@@ -1,12 +1,13 @@
 /*
+// We spent 2h each on this assignment
+
+//ensures !found <==> haveNotCommonKSubstringPred(k,str1,str2) // This postcondition follows from the above lemma.
 */
 
 predicate isSubstring(sub: seq<char>, str: seq<char>)
 {
     exists i :: 0 <= i <= |str| - |sub| && str[i..i+|sub|] == sub
 }
-
-// We spent 2h each on this assignment
 
 predicate isPrefixPred(pre:string, str:string)
 {
@@ -42,7 +43,7 @@ predicate haveNotCommonKSubstringPred(k:nat, str1:string, str2:string)
 
 method haveCommonKSubstring(k: nat, str1: string, str2: string) returns (found: bool)
     ensures found  <==>  haveCommonKSubstringPred(k,str1,str2)
-    //ensures !found <==> haveNotCommonKSubstringPred(k,str1,str2) // This postcondition follows from the above lemma.
+
 {
   assume{:axiom} false;
 }

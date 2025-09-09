@@ -1,6 +1,8 @@
 /*
 Bignum task: bignum_Mul.
 Implement the method according to the Dafny specification.
+
+// All characters must be '0' or '1'.
 */
 
 ghost function Str2Int(s: string): nat
@@ -11,7 +13,7 @@ ghost function Str2Int(s: string): nat
 }
 predicate ValidBitString(s: string)
 {
-  // All characters must be '0' or '1'.
+
   forall i | 0 <= i < |s| :: s[i] == '0' || s[i] == '1'
 }
 

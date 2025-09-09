@@ -14,10 +14,9 @@ function IsPrime(n: nat) : bool
 
 // <vc-spec>
 method x_or_y(n: nat, x: int, y: int) returns (result: int)
-  // post-conditions-start
+
   ensures IsPrime(n) ==> result == x
   ensures !IsPrime(n) ==> result == y
-  // post-conditions-end
 // </vc-spec>
 // <vc-code>
 {
