@@ -192,14 +192,16 @@ def process_yaml_file(file_path: Path) -> None:
         #         spec[key] = value
 
         # remove HumanEval tags
-        for key, value in spec.items():
-            if isinstance(value, str):
-                value = check_for_tag(value, key, None, '= TASK =', '// ======= TASK =======')
-                value = check_for_tag(value, key, None, '= SPEC REQUIREMENTS =', '// ======= SPEC REQUIREMENTS =======')
-                value = check_for_tag(value, key, None, '= HELPERS =', '// ======= HELPERS =======')
-                value = check_for_tag(value, key, None, '= MAIN METHOD =', '// ======= MAIN METHOD =======')
-                spec[key] = value
+        # for key, value in spec.items():
+        #     if isinstance(value, str):
+        #         value = check_for_tag(value, key, None, '= TASK =', '// ======= TASK =======')
+        #         value = check_for_tag(value, key, None, '= SPEC REQUIREMENTS =', '// ======= SPEC REQUIREMENTS =======')
+        #         value = check_for_tag(value, key, None, '= HELPERS =', '// ======= HELPERS =======')
+        #         value = check_for_tag(value, key, None, '= MAIN METHOD =', '// ======= MAIN METHOD =======')
+        #         spec[key] = value
 
+        if spec['vc-helpers'].strip():
+            raise ValueError(f"vc-helpers in {file_path} is not empty")
         # Normalize all sections
         for key, value in spec.items():
             if isinstance(value, str):
