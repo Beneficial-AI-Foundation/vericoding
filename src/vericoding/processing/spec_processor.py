@@ -132,6 +132,8 @@ class ProcessingResult:
     code_file: str  # generated code file path
     error: str | None     # Error message if the generated code is not verified
     iterations: list[IterationData]  # All iterations performed for this file
+    generate_prompt: str = ""  # Initial generate_code prompt
+    fix_prompts: list[str] = None  # All fix_verification prompts used
 
 
 def process_spec(
@@ -141,6 +143,8 @@ def process_spec(
     file_key = Path(file_path).stem
     artifact = wandb_utils.create_file_artifact(f"files_{file_key}", "verification_files")
     iterations_data = []  # Collect iteration data to return
+    generate_prompt = ""  # Store the initial generate_code prompt
+    fix_prompts = []  # Store all fix_verification prompts
      
     try: 
         logger.info(f"Processing: {file_path}")
@@ -162,6 +166,7 @@ def process_spec(
             # Create prompt based on previous iteration's errors
             if iteration == 1:
                 prompt = prompt_loader.format_prompt("generate_code", code=code)
+                generate_prompt = prompt  # Store the initial prompt
             else:
                 error_details = _format_errors(validation_error, generation_error, verification, for_prompt=True)
                 prompt = prompt_loader.format_prompt(
@@ -170,6 +175,7 @@ def process_spec(
                     errorDetails=error_details,
                     iteration=iteration,
                 )
+                fix_prompts.append(prompt)  # Store each fix prompt
             
             # Reset error tracking for current iteration
             validation_error = None
@@ -290,6 +296,8 @@ def process_spec(
             code_file=str(code_output_path),
             error=error_msg,
             iterations=iterations_data,
+            generate_prompt=generate_prompt,
+            fix_prompts=fix_prompts,
         )
 
     except Exception as e:
@@ -305,6 +313,8 @@ def process_spec(
             code_file=str(code_output_path),
             error=error_msg,
             iterations=iterations_data,
+            generate_prompt=generate_prompt,
+            fix_prompts=fix_prompts,
         )
     finally:
         # Log artifact with generated files

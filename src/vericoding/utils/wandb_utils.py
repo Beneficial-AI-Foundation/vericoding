@@ -450,7 +450,10 @@ def finalize_wandb_run(wandb_run, config, results, processing_time, delete_after
                 final_output,
                 debug_files_text or "No debug files",
                 getattr(result, 'generate_prompt', ""),
-                "\n\n---\n\n".join(getattr(result, 'fix_prompts', []))
+                "\n".join([
+                    f"-----------------------------\nSTART OF PROMPT {i+1}\n-----------------------------\n{prompt}\n-----------------------------\nEND OF PROMPT {i+1}\n-----------------------------" 
+                    for i, prompt in enumerate(getattr(result, 'fix_prompts', []))
+                ])
             )
         
         wandb.log({"detailed_results": results_table})
