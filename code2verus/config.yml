@@ -3,6 +3,13 @@ config:
   dafny_path: "dafny"
   model: "anthropic:claude-sonnet-4-20250514"
   artifacts_dir: "artifacts"
+  max_translation_iterations: 3
+  max_retries: 16
+  forbidden_yaml_fields:
+    - "vc-implementation"
+    - "vc-signature"
+    - "vc-condition"
+    - "vc-proof"
 
 # Default system prompt (for backward compatibility - defaults to Dafny)
 system: |

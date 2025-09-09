@@ -30,9 +30,13 @@ async def translate_code_to_verus(
     source_code: str,
     source_language: str = "dafny",
     is_yaml: bool = False,
-    max_iterations: int = 3,
+    max_iterations: int = None,
 ) -> tuple[str, int, str]:
     """Translate source code to Verus using the agent with verification feedback"""
+    # Use config value if max_iterations not provided, with fallback to 3
+    if max_iterations is None:
+        max_iterations = cfg.get("max_translation_iterations", 3)
+    
     agent = create_agent(source_language)
 
     # Get language-specific prompts from config

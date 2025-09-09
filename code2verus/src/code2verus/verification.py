@@ -16,12 +16,12 @@ def yaml_to_verus(verus_yaml: str) -> str:
         as_yaml = yaml.safe_load(verus_yaml)
 
         # Check for forbidden fields and raise an error if found
-        forbidden_fields = [
+        forbidden_fields = cfg.get("forbidden_yaml_fields", [
             "vc-implementation",
-            "vc-signature",
+            "vc-signature", 
             "vc-condition",
             "vc-proof",
-        ]
+        ])
         found_forbidden = [field for field in forbidden_fields if field in as_yaml]
 
         if found_forbidden:
@@ -127,12 +127,13 @@ async def verify_verus_code(
         verification_success = False
         verification_output = ""
         verification_error = f"Error running Verus: {str(exc)}"
-
-    # Clean up temporary file
-    if verification_file:
-        try:
-            os.unlink(verification_file)
-        except OSError:
-            pass
+    
+    finally:
+        # Clean up temporary file
+        if verification_file:
+            try:
+                os.unlink(verification_file)
+            except OSError:
+                pass
 
     return verification_success, verification_output, verification_error
