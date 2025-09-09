@@ -33,6 +33,13 @@ def yaml_to_verus(verus_yaml: str) -> str:
         # First, try to parse the YAML as-is
         as_yaml = yaml.safe_load(verus_yaml)
 
+        # Ensure the parsed YAML is a dictionary before processing
+        if not isinstance(as_yaml, dict):
+            logfire.error(
+                f"YAML did not parse to a dictionary, got {type(as_yaml)}: {as_yaml}"
+            )
+            raise ValueError(f"Expected YAML to be a dictionary, got {type(as_yaml)}")
+
         # Check for forbidden fields and raise an error if found
         forbidden_fields = cfg.get(
             "forbidden_yaml_fields",
