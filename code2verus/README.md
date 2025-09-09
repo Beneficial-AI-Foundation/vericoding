@@ -157,14 +157,46 @@ code2verus --benchmark ./my_code --file-pattern "*.dfy"
 code2verus --max-concurrent 5
 ```
 
+### Debug and Analysis Usage
+
+```bash
+# Save debug contexts for later analysis
+code2verus --save-debug
+
+# Generate debug reports after each translation
+code2verus --debug-report
+
+# Print overall debug summary at the end
+code2verus --debug-summary
+
+# Save debug sessions to a custom directory
+code2verus --save-debug --debug-dir ./my_debug_sessions
+
+# Comprehensive debugging with all options
+code2verus --save-debug --debug-report --debug-summary --include-debug-in-result
+
+# Debug a specific local benchmark
+code2verus --benchmark ./test_cases --debug-report --debug-summary
+
+# Monitor performance during production runs
+code2verus --save-debug --debug-dir ./production_logs --debug-summary
+```
+
 ### Command Line Options
 
+#### Basic Options
 - `--benchmark`: Hugging Face dataset path or local folder path (default: `wendy-sun/DafnyBench`)
 - `--split`: Dataset split to use for Hugging Face datasets (default: `test`)
 - `--language`: Source language to translate from (`dafny` or `lean`, default: `dafny`)
 - `--max-concurrent`: Maximum number of concurrent translations (default: 3)
 - `--file-pattern`: File pattern(s) to match when loading from local folder (default: `*.dfy`)
-- `--max-concurrent`: Maximum number of concurrent translations (default: 3)
+
+#### Debug Options
+- `--save-debug`: Save detailed debug contexts to JSON files for later analysis
+- `--debug-dir DIR`: Directory to save debug sessions (default: `debug_sessions`)
+- `--debug-report`: Generate and print debug reports after each translation
+- `--debug-summary`: Print comprehensive debug summary at the end of processing
+- `--include-debug-in-result`: Include debug context in translation results (uses more memory)
 
 ## Project Structure
 
@@ -210,6 +242,85 @@ artifacts/
 The tool tracks successful translations to avoid reprocessing:
 - **Hierarchical folders**: Individual `success.yml` files in each subdirectory
 - **Flat folders**: Single `success.json` file at the benchmark root
+
+## Debugging and Analysis
+
+Code2verus includes comprehensive debugging capabilities to help understand and optimize the translation process:
+
+### Debug Features
+
+- **Session Tracking**: Each translation session gets a unique ID and detailed tracking
+- **Comprehensive Timestamping**: 
+  - Session start/end times with millisecond precision
+  - Individual event timestamps for every conversation, error, and attempt
+  - Last activity tracking and duration calculations
+  - Human-readable formatted timestamps
+- **Performance Metrics**: Timing, iteration counts, success rates, and resource usage
+- **Error Analysis**: Categorized error types, patterns, and failure progression
+- **Conversation Logs**: Complete AI conversation history with token counts and timestamps
+- **Structured Data**: All debug information stored in JSON format for analysis
+
+### Debug File Structure
+
+```
+debug_sessions/
+├── debug_session_uuid1_20250909_172500.json
+├── debug_session_uuid2_20250909_172501.json
+└── ...
+```
+
+### Example Debug Output
+
+When using `--debug-report`, you'll see output like:
+
+```
+=== Debug Report for Item 0 ===
+
+# Translation Debug Report
+
+## Session Summary
+- Session ID: 02acdd35-300c-41b4-a5f2-ac5a90755643
+- Source Language: dafny
+- Start Time: 2025-09-09 17:24:15.123
+- End Time: 2025-09-09 17:25:00.456
+- Duration: 45.333 seconds
+- Iterations: 3/5
+- Final Status: success
+
+## Performance Metrics
+- Average iteration time: 15.11 seconds
+- Success rate: 100%
+- Total conversation chars: 12,847
+
+## Error Analysis
+- Total errors: 2
+- Error types: verification
+
+## Iteration Breakdown
+- Iteration 1: ✗ Failed (verification) at 17:24:20.234
+- Iteration 2: ✗ Failed (verification) at 17:24:35.567
+- Iteration 3: ✓ Success at 17:24:50.890
+
+## Timing Breakdown
+- Exchange 1: 17:24:15.234 (1,234 chars)
+- Exchange 2: 17:24:35.678 (2,156 chars)
+- Exchange 3: 17:24:50.912 (1,890 chars)
+```
+
+### Programmatic Analysis
+
+```python
+from code2verus.debug_utils import load_debug_context, analyze_debug_context
+
+# Load and analyze a debug session
+debug_context = load_debug_context("debug_sessions/debug_session_xyz.json")
+analysis = analyze_debug_context(debug_context)
+
+print(f"Success rate: {analysis['performance_metrics']['success_rate']:.2%}")
+print(f"Common errors: {analysis['error_patterns']['common_errors']}")
+```
+
+For complete debugging documentation, see [CLI_DEBUG_GUIDE.md](CLI_DEBUG_GUIDE.md) and [DEBUG_SYSTEM_README.md](DEBUG_SYSTEM_README.md).
 
 ## Development
 

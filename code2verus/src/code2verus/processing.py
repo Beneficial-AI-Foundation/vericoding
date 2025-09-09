@@ -11,6 +11,8 @@ from code2verus.config import ARTIFACTS, get_config_value
 from code2verus.agent import translate_code_to_verus
 from code2verus.verification import verify_verus_code
 from code2verus.success_tracker import save_success_info, is_sample_already_successful
+from code2verus.debug_utils import save_debug_context, generate_debug_report
+from code2verus.models import TranslationDebugContext
 
 
 def derive_output_path(
@@ -62,6 +64,11 @@ async def process_item(
     is_flat: bool = False,
     is_yaml: bool = False,
     benchmark_path: str = "",
+    # Debug options
+    save_debug: bool = False,
+    debug_dir: Path = Path("debug_sessions"),
+    debug_report: bool = False,
+    include_debug_in_result: bool = False,
 ) -> dict:
     """Process a single item from the dataset with exponential backoff"""
 
@@ -130,8 +137,33 @@ async def process_item(
             verus_code = translation_result.output_content
             num_iterations = translation_result.num_iterations
             rust_for_verification = translation_result.rust_for_verification
+            debug_context = translation_result.debug_context
 
             logfire.info(f"Translation took {num_iterations} iterations")
+
+            # Handle debug options
+            if debug_context:
+                # Save debug context if requested
+                if save_debug:
+                    try:
+                        debug_path = save_debug_context(debug_context, debug_dir)
+                        logfire.info(f"Debug context saved to: {debug_path}")
+                    except Exception as e:
+                        logfire.warning(f"Failed to save debug context: {e}")
+
+                # Generate debug report if requested
+                if debug_report:
+                    try:
+                        report = generate_debug_report(debug_context)
+                        print(f"\n=== Debug Report for Item {idx} ===")
+                        print(report)
+                        print("=" * 50)
+                    except Exception as e:
+                        logfire.warning(f"Failed to generate debug report: {e}")
+
+                # Log debug summary
+                summary = debug_context.to_summary_dict()
+                logfire.info(f"Translation debug summary for item {idx}", extra=summary)
 
             # Do a final verification to get the verification status for reporting
             # (the agent already did verification during iterations, but we need the final status)
@@ -206,7 +238,13 @@ async def process_item(
                 benchmark_path,
             )
 
-            return {"path": artifact_path, "success": verification_success}
+            result = {"path": artifact_path, "success": verification_success}
+
+            # Include debug context in result if requested
+            if include_debug_in_result and debug_context:
+                result["debug_context"] = debug_context
+
+            return result
 
         except ModelHTTPError as exc:
             if attempt == max_retries:
@@ -267,8 +305,14 @@ async def main_async(
     source_language: str = "dafny",
     max_concurrent: int = 3,
     file_pattern: str = "*.dfy",
+    # Debug options
+    save_debug: bool = False,
+    debug_dir: Path = Path("debug_sessions"),
+    debug_report: bool = False,
+    debug_summary: bool = False,
+    include_debug_in_result: bool = False,
 ) -> None:
-    """Async main function for parallel processing"""
+    """Async main function for parallel processing with debug support"""
     from code2verus.benchmarks import load_benchmark, is_flat_structure
 
     print("Code2Verus translator initialized!")
@@ -317,6 +361,11 @@ async def main_async(
                 is_flat=is_flat,
                 is_yaml=is_yaml,
                 benchmark_path=benchmark,
+                # Debug options
+                save_debug=save_debug,
+                debug_dir=debug_dir,
+                debug_report=debug_report,
+                include_debug_in_result=include_debug_in_result,
             )
 
     item_processes = [
@@ -349,3 +398,99 @@ async def main_async(
         for i, res in enumerate(results):
             if not res["success"]:
                 print(f"  Item {i + 1}: Failed - check logs for details")
+
+    # Generate debug summary if requested
+    if debug_summary and include_debug_in_result:
+        print("\n" + "=" * 60)
+        print("DEBUG SUMMARY")
+        print("=" * 60)
+
+        debug_contexts: list[TranslationDebugContext] = [
+            res["debug_context"]
+            for res in results
+            if res.get("debug_context") is not None
+        ]
+
+        if debug_contexts:
+            # Aggregate statistics
+            total_iterations = sum(ctx.current_iteration for ctx in debug_contexts)
+            total_errors = sum(len(ctx.verification_errors) for ctx in debug_contexts)
+            total_exchanges = sum(
+                len(ctx.conversation_exchanges) for ctx in debug_contexts
+            )
+
+            successful_contexts = [
+                ctx for ctx in debug_contexts if ctx.get_final_status() == "success"
+            ]
+            failed_contexts = [
+                ctx for ctx in debug_contexts if ctx.get_final_status() != "success"
+            ]
+
+            print(f"Total debug contexts: {len(debug_contexts)}")
+            print(f"Successful translations: {len(successful_contexts)}")
+            print(f"Failed translations: {len(failed_contexts)}")
+            print(f"Total iterations across all translations: {total_iterations}")
+            print(
+                f"Average iterations per translation: {total_iterations / len(debug_contexts):.2f}"
+            )
+            print(f"Total verification errors: {total_errors}")
+            print(f"Total conversation exchanges: {total_exchanges}")
+
+            # Error pattern analysis
+            if total_errors > 0:
+                error_types = {}
+                for ctx in debug_contexts:
+                    for error in ctx.verification_errors:
+                        error_types[error.error_type] = (
+                            error_types.get(error.error_type, 0) + 1
+                        )
+
+                print("\nError type breakdown:")
+                for error_type, count in sorted(
+                    error_types.items(), key=lambda x: x[1], reverse=True
+                ):
+                    print(
+                        f"  {error_type}: {count} ({count / total_errors * 100:.1f}%)"
+                    )
+
+            # Performance insights
+            if successful_contexts:
+                avg_successful_iterations = sum(
+                    ctx.current_iteration for ctx in successful_contexts
+                ) / len(successful_contexts)
+                print(
+                    f"\nSuccessful translations averaged {avg_successful_iterations:.2f} iterations"
+                )
+
+            if failed_contexts:
+                avg_failed_iterations = sum(
+                    ctx.current_iteration for ctx in failed_contexts
+                ) / len(failed_contexts)
+                print(
+                    f"Failed translations averaged {avg_failed_iterations:.2f} iterations"
+                )
+
+                # Most common failure reasons
+                failure_reasons = {}
+                for ctx in failed_contexts:
+                    status = ctx.get_final_status()
+                    failure_reasons[status] = failure_reasons.get(status, 0) + 1
+
+                print("\nFailure reasons:")
+                for reason, count in sorted(
+                    failure_reasons.items(), key=lambda x: x[1], reverse=True
+                ):
+                    print(
+                        f"  {reason}: {count} ({count / len(failed_contexts) * 100:.1f}%)"
+                    )
+        else:
+            print(
+                "No debug contexts available (use --include-debug-in-result to collect them)"
+            )
+
+        print("=" * 60)
+    elif debug_summary and not include_debug_in_result:
+        print("\n⚠️  Debug summary requested but --include-debug-in-result not set.")
+        print(
+            "   Use --include-debug-in-result to collect debug contexts for summary analysis."
+        )
