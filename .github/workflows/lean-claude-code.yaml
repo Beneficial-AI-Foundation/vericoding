@@ -1,0 +1,42 @@
+name: Lean Claude Code Loop
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron: '0 */6 * * *'  # every 6 hours
+
+permissions:
+  contents: read
+
+jobs:
+  run-loop:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: astral-sh/setup-uv@v3
+        with:
+          python-version: '3.12'
+
+      - name: Setup Node + Claude Code CLI
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install -g @anthropic-ai/claude-code
+
+      - name: Sync deps
+        run: uv sync
+
+      - name: Run once on sample
+        run: |
+          bash scripts/run_claude_code_loop.sh &
+          pid=$!
+          # Let it run one iteration + brief sleep
+          sleep 70
+          kill $pid || true
+
