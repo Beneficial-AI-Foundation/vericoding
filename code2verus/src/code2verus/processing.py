@@ -11,7 +11,6 @@ from code2verus.config import ARTIFACTS, cfg
 from code2verus.agent import translate_code_to_verus
 from code2verus.verification import verify_verus_code
 from code2verus.success_tracker import save_success_info, is_sample_already_successful
-from code2verus.benchmarks import is_flat_structure
 
 
 def derive_output_path(
@@ -22,12 +21,12 @@ def derive_output_path(
     For benchmarks under 'benchmarks/lean/<name>/', output goes to 'benchmarks/verus/<name>/'
     For other paths, falls back to the current ARTIFACTS behavior.
     """
-    benchmark_path = Path(benchmark_path).resolve()
+    benchmark_path_obj = Path(benchmark_path).resolve()
 
     # Check if this is a path under benchmarks/lean/
-    if "benchmarks" in benchmark_path.parts and "lean" in benchmark_path.parts:
+    if "benchmarks" in benchmark_path_obj.parts and "lean" in benchmark_path_obj.parts:
         # Find the benchmarks and lean parts in the path
-        parts = list(benchmark_path.parts)
+        parts = list(benchmark_path_obj.parts)
         try:
             benchmarks_idx = parts.index("benchmarks")
             lean_idx = parts.index("lean", benchmarks_idx)
@@ -58,7 +57,7 @@ async def process_item(
     item: dict,
     source_language: str = "dafny",
     benchmark_name: str = "dafnybench",
-    max_retries: int = None,
+    max_retries: int | None = None,
     base_delay: float = 5.0,
     is_flat: bool = False,
     is_yaml: bool = False,
@@ -69,6 +68,13 @@ async def process_item(
     # Use config value if max_retries not provided, with fallback to 32
     if max_retries is None:
         max_retries = cfg.get("max_retries", 32)
+
+    # Ensure max_retries is a valid integer
+    if max_retries is None or max_retries <= 0:
+        max_retries = 32
+
+    # Type assertion to help type checker
+    assert isinstance(max_retries, int)
 
     suffix = ".rs" if not is_yaml else ".yaml"
 
@@ -284,7 +290,7 @@ async def main_async(
     # Check if we have a flat structure (all files in same directory)
     is_flat = is_flat_structure(dataset, benchmark_name)
     if is_flat:
-        print(f"Detected flat folder structure - using consolidated success tracking")
+        print("Detected flat folder structure - using consolidated success tracking")
 
     # Check for existing successful samples in parallel
     print("Checking for existing successful samples...")

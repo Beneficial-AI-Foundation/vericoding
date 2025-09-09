@@ -3,7 +3,6 @@
 import re
 import subprocess
 import yaml
-from pathlib import Path
 
 from code2verus.config import cfg
 
@@ -131,9 +130,9 @@ def concatenate_yaml_fields(yaml_content: str) -> str:
 
         return "\n".join(parts)
 
-    except yaml.YAMLError as e:
+    except yaml.YAMLError:
         # If YAML parsing fails, return the original content
         return yaml_content
-    except Exception as e:
+    except Exception:
         # For any other error, return the original content
         return yaml_content

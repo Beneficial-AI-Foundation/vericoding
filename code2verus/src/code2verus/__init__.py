@@ -14,6 +14,9 @@ import logfire
 
 from code2verus.processing import main_async
 from code2verus.utils import check_verus_availability
+from code2verus.agent import translate_code_to_verus, create_agent
+from code2verus.verification import verify_verus_code
+from code2verus.benchmarks import load_benchmark
 
 # Load environment variables
 load_dotenv()
@@ -34,11 +37,6 @@ __all__ = [
     "load_benchmark",
     "create_agent",
 ]
-
-# Import public API
-from code2verus.agent import translate_code_to_verus, create_agent
-from code2verus.verification import verify_verus_code
-from code2verus.benchmarks import load_benchmark
 
 
 def main() -> None:
