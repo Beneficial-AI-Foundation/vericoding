@@ -19,7 +19,7 @@ generate_code: |
   Example:
   Input file contains:
   ```
-  fn binary_search(a: &[int], x: int) -> (index: i32)
+  fn binary_search(a: &[i32], x: i32) -> (index: i32)
       requires sorted(a),
       ensures ...
   // <vc-code>
