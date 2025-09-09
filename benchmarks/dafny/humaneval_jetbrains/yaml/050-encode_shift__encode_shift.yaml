@@ -1,46 +1,6 @@
 vc-description: |-
   function_signature: method encode_shift(s: string) returns (t: string)
   Encode data. Requires: the condition holds for all values. Ensures: returns the correct size/count; the condition holds for all values.
-  
-  // pre-conditions-start
-  
-  // pre-conditions-end
-  
-  // post-conditions-start
-  
-  // post-conditions-end
-  
-  // impl-start
-  
-  // impl-end
-  
-  // pre-conditions-start
-  
-  // pre-conditions-end
-  
-  // post-conditions-start
-  
-  // post-conditions-end
-  
-  // impl-start
-  
-  // impl-end
-  
-  // pre-conditions-start
-  
-  // pre-conditions-end
-  
-  // post-conditions-start
-  
-  // post-conditions-end
-  
-  // pre-conditions-start
-  
-  // pre-conditions-end
-  
-  // post-conditions-start
-  
-  // post-conditions-end
 
 vc-preamble: |-
   function encode_char(c: char): char

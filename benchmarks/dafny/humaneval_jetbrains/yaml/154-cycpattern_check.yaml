@@ -1,10 +1,6 @@
 vc-description: |-
   function_signature: def cycpattern_check(String a, String b) -> Bool
   You are given 2 words. You need to return True if the second word or any of its rotations is a substring in the first word, else False
-  
-  // post-conditions-start
-  
-  // post-conditions-end
 
 vc-preamble: |-
   function IsSubstring(s: string, sub: string) : bool

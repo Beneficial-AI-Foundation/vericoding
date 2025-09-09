@@ -1,10 +1,6 @@
 vc-description: |-
   function_signature: def remove_vowels(string: str) -> string
   remove_vowels is a function that takes string and returns string without vowels.
-  
-  // post-conditions-start
-  
-  // post-conditions-end
 
 vc-preamble: |-
 

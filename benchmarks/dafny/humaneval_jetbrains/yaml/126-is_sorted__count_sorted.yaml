@@ -1,20 +1,6 @@
 vc-description: |-
   function_signature: method count_sorted(a: seq<int>, x: int, pos: int) returns (count: int)
   Count occurrences. Requires: the condition holds for all values; the size is bounded; returns the correct value; returns the correct size/count. Ensures: returns the correct value.
-  
-  // post-conditions-start
-  
-  // post-conditions-end
-  
-  // pre-conditions-start
-  
-  // pre-conditions-end
-  
-  // post-conditions-start
-  
-  // post-conditions-end
-  
-  // pure-end
 
 vc-preamble: |-
   method is_sorted(a: seq<int>) returns (f: bool)

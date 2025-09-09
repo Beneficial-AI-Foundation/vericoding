@@ -1,18 +1,6 @@
 vc-description: |-
   function_signature: method solve(s: string) returns (t: string)
   Process input. Ensures: returns the correct size/count; the condition holds for all values; there exists a value satisfying the condition.
-  
-  // post-conditions-start 
-  
-  // post-conditions-end
-  
-  // pre-conditions-start
-  
-  // pre-conditions-end
-  
-  // pure-end
-  
-  // pure-end
 
 vc-preamble: |-
 

@@ -1,10 +1,6 @@
 vc-description: |-
   function_signature: def intersperse(numbers: List[int], delimeter: int) -> List[int]
   Insert a number 'delimeter' between every two consecutive elements of input list `numbers'
-  
-  // post-conditions-start
-  
-  // post-conditions-end
 
 vc-preamble: |-
 

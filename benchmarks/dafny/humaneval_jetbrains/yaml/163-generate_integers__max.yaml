@@ -1,10 +1,6 @@
 vc-description: |-
   function_signature: method max(a : int, b : int) returns (m : int)
   Process input. Ensures: returns the correct size/count; the result is at least the specified value.
-  
-  // post-conditions-start
-  
-  // post-conditions-end
 
 vc-preamble: |-
   method min(a : int, b : int) returns (m : int)

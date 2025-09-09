@@ -1,14 +1,6 @@
 vc-description: |-
   function_signature: def correct_bracketing(brackets: str) -> Bool
   brackets is a string of "<" and ">". return True if every opening bracket has a corresponding closing bracket, i.e., (each open bracket is properly closed)
-  
-  // pre-conditions-start
-  
-  // pre-conditions-end
-  
-  // post-conditions-start
-  
-  // post-conditions-end
 
 vc-preamble: |-
   function CalcBal(s: seq<int>, i: int, j: int) : int 

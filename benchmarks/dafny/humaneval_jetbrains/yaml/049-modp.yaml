@@ -1,14 +1,6 @@
 vc-description: |-
   function_signature: def modp(n: Nat, p: Nat) -> Nat
   Return 2^n modulo p (be aware of numerics).
-  
-  // pre-conditions-start
-  
-  // pre-conditions-end
-  
-  // post-conditions-start
-  
-  // post-conditions-end
 
 vc-preamble: |-
   function modp_rec(n: int, p: int): int

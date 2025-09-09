@@ -1,18 +1,6 @@
 vc-description: |-
   function_signature: method strange_sort_list(s: seq<int>) returns (strange: seq<int>)
   Sort elements. Ensures: returns the correct size/count.
-  
-  // post-conditions-start
-  
-  // post-conditions-end
-  
-  // post-conditions-start
-  
-  // post-conditions-end
-  
-  // post-conditions-start
-  
-  // post-conditions-end
 
 vc-preamble: |-
   method strange_sort_list_helper(s: seq<int>) returns (sorted: seq<int>, strange: seq<int>)

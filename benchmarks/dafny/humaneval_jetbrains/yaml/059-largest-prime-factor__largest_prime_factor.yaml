@@ -1,22 +1,6 @@
 vc-description: |-
   function_signature: method largest_prime_factor(n: int) returns (largest: int)
   Process input. Requires: the result is at least the specified value. Ensures: returns the correct size/count.
-  
-  // pre-conditions-start
-  
-  // pre-conditions-end
-  
-  // post-conditions-start
-  
-  // post-conditions-end
-  
-  // pre-conditions-start
-  
-  // pre-conditions-end
-  
-  // post-conditions-start
-  
-  // post-conditions-end
 
 vc-preamble: |-
   method is_prime(k: int) returns (result: bool)

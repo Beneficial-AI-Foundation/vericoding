@@ -1,22 +1,6 @@
 vc-description: |-
   function_signature: method SumElementsWithAtMostTwoDigits(arr: seq<int>, k: int) returns (s: int)
   Calculate sum. Requires: the size is bounded; the size is bounded. Ensures: selects only numbers with at most two digits.
-  
-  // pre-conditions-start
-  
-  // pre-conditions-end
-  
-  // post-conditions-start
-  
-  // post-conditions-end
-  
-  // pre-conditions-start
-  
-  // pre-conditions-end
-  
-  // post-conditions-start
-  
-  // post-conditions-end
 
 vc-preamble: |-
   function sum(s: seq<int>) : int {

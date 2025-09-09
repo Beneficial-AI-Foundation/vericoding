@@ -1,14 +1,6 @@
 vc-description: |-
   function_signature: def count_distinct_characters(string: str) -> int
   Given a string, find out how many distinct characters (regardless of case) does it consist of
-  
-  // pre-conditions-start
-  
-  // pre-conditions-end
-  
-  // post-conditions-start
-  
-  // post-conditions-end
 
 vc-preamble: |-
   function contains_char(s: string, c: char): bool

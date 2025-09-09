@@ -1,14 +1,6 @@
 vc-description: |-
   function_signature: def monotonic(numbers: List[int]) -> Bool
   Return True if list elements are monotonically increasing or decreasing.
-  
-  // pre-conditions-start
-  
-  // pre-conditions-end
-  
-  // post-conditions-start
-  
-  // post-conditions-end
 
 vc-preamble: |-
 

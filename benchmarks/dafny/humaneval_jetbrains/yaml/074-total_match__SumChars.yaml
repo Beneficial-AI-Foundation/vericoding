@@ -1,14 +1,6 @@
 vc-description: |-
   function_signature: method SumChars(list: seq<string>) returns (sum: nat)
   Calculate sum. Ensures: returns the sum of character lengths in all strings.
-  
-  // post-conditions-start
-  
-  // post-conditions-end
-  
-  // post-conditions-start
-  
-  // post-conditions-end
 
 vc-preamble: |-
   function sum_chars_rec(list: seq<string>): nat

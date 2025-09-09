@@ -1,18 +1,6 @@
 vc-description: |-
   function_signature: method count(a: seq<int>, x: int) returns (cnt: int)
   Count occurrences. Ensures: returns the correct count; returns the correct count.
-  
-  // pre-conditions-start
-  
-  // pre-conditions-end
-  
-  // post-conditions-start
-  
-  // post-conditions-end
-  
-  // post-conditions-start
-  
-  // post-conditions-end
 
 vc-preamble: |-
   function count_rec(a: seq<int>, x: int): int {

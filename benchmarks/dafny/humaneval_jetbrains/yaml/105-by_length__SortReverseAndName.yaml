@@ -1,20 +1,6 @@
 vc-description: |-
   function_signature: method SortReverseAndName(arr: seq<int>) returns (result: seq<string>)
   Sort elements. Ensures: the size is bounded; the condition holds for all values.
-  
-  // post-conditions-start
-  
-  // post-conditions-end
-  
-  // post-conditions-start
-  
-  // post-conditions-end
-  
-  // post-conditions-start
-  
-  // post-conditions-end
-  
-  // pure-end
 
 vc-preamble: |-
 

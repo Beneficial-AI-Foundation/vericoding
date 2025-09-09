@@ -1,18 +1,6 @@
 vc-description: |-
   function_signature: method even_odd_count(n: nat) returns (even: nat, odd: nat)
   Given an integer, return a tuple that has the number of even and odd digits respectively.
-  
-  // pre-conditions-start
-  
-  // pre-conditions-end
-  
-  // post-conditions-start
-  
-  // post-conditions-end
-  
-  // pure-end
-  
-  // pure-end
 
 vc-preamble: |-
 

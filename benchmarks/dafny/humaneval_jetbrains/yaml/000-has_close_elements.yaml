@@ -1,13 +1,5 @@
 vc-description: |-
   function_signature: def has_close_elements(numbers: List[float], threshold: float) -> bool
-  
-  // pre-conditions-start
-  
-  // pre-conditions-end
-  
-  // post-conditions-start
-  
-  // post-conditions-end
 
 vc-preamble: |-
   function abs(val : real): real

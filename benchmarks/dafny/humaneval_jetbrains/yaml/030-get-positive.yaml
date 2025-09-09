@@ -1,10 +1,6 @@
 vc-description: |-
   function_signature: def get_positive(l: list)
   Return only positive numbers in the list.
-  
-  // post-conditions-start
-  
-  // post-conditions-end
 
 vc-preamble: |-
 

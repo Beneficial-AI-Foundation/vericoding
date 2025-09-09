@@ -1,22 +1,6 @@
 vc-description: |-
   function_signature: method select_at_most_two_digits(arr: seq<int>) returns (result: seq<int>)
   Select elements. Requires: the size is bounded. Ensures: the condition holds for all values; the condition holds for all values; selects only numbers with at most two digits.
-  
-  // pre-conditions-start
-  
-  // pre-conditions-end
-  
-  // post-conditions-start
-  
-  // post-conditions-end
-  
-  // pre-conditions-start
-  
-  // pre-conditions-end
-  
-  // post-conditions-start
-  
-  // post-conditions-end
 
 vc-preamble: |-
   function sum(s: seq<int>) : int {

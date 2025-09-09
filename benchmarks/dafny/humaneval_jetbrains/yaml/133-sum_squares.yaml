@@ -1,10 +1,6 @@
 vc-description: |-
   function_signature: def sum_squares(lst: List[float]) -> int
   You are given a list of numbers. You need to return the sum of squared numbers in the given list, round each element in the list to the upper int(Ceiling) first.
-  
-  // post-conditions-start
-  
-  // post-conditions-end
 
 vc-preamble: |-
   function sum(s: seq<int>) : int

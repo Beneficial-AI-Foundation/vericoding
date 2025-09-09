@@ -1,10 +1,6 @@
 vc-description: |-
   function_signature: def fib(n: int) -> int
   Return n-th Fibonacci number.
-  
-  // post-conditions-start
-  
-  // post-conditions-end
 
 vc-preamble: |-
   function fib(n: nat): nat

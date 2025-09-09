@@ -275,7 +275,9 @@ def remove_unnecessary_tags(content: str, unnecessary_tags: List[str], file_path
                     break
                 else:
                     raise ValueError(f"Unnecessary tag '{tag}' found in {file_path} but it is not the whole line")
-            elif stripped_line.startswith("//") and (stripped_line.endswith("start") or stripped_line.endswith("end")):
+        
+        if not should_remove:
+            if stripped_line.startswith("//") and (stripped_line.endswith("start") or stripped_line.endswith("end")):
                 raise ValueError(f"New unrecognized tag '{stripped_line}' found in {file_path}")
             else:
                 result_lines.append(line)
@@ -400,6 +402,12 @@ def process_yaml_file(file_path: Path) -> None:
                 '// post-conditions-end',
                 '// pre-conditions-start', 
                 '// pre-conditions-end',
+                '// post-condition-start',
+                '// post-condition-end',
+                '// pre-condition-start', 
+                '// pre-condition-end',
+                '// impl-start',
+                '// impl-end',
                 '// pure-end',
                 '// invariants-start',
                 '// invariants-end'

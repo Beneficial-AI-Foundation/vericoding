@@ -1,18 +1,6 @@
 vc-description: |-
   function_signature: def will_it_fly(q: List[int], w: int) -> bool
   Write a function that returns True if the object q will fly, and False otherwise. The object q will fly if it's balanced (it is a palindromic list) and the sum of its elements is less than or equal the maximum possible weight w.
-  
-  // pre-conditions-start
-  
-  // pre-conditions-end
-  
-  // post-conditions-start
-  
-  // post-conditions-end
-  
-  // pure-end
-  
-  // pure-end
 
 vc-preamble: |-
 

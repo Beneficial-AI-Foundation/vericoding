@@ -1,12 +1,6 @@
 vc-description: |-
   function_signature: def solve(n: int) -> str
   Given a positive integer N, return the total sum of its digits in binary.
-  
-  // post-conditions-start
-  
-  // post-conditions-end
-  
-  // pure-end
 
 vc-preamble: |-
 

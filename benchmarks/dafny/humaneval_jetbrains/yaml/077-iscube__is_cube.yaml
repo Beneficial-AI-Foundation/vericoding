@@ -1,20 +1,6 @@
 vc-description: |-
   function_signature: method is_cube(n: nat) returns (r: bool)
   Check if condition holds. Ensures: if true, then there exists an integer r such that N = r³; if false, then no integer r satisfies N = r³.
-  
-  // post-conditions-start
-  
-  // post-conditions-end
-  
-  // pre-conditions-start
-  
-  // pre-conditions-end
-  
-  // post-conditions-start
-  
-  // post-conditions-end
-  
-  // pure-end
 
 vc-preamble: |-
   method cube_root(N: nat) returns (r: nat)

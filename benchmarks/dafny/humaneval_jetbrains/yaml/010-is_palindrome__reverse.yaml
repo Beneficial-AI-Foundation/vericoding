@@ -1,14 +1,6 @@
 vc-description: |-
   function_signature: method reverse(str: string) returns (rev: string)
   Reverse order. Ensures: returns the correct size/count; the condition holds for all values.
-  
-  // post-conditions-start
-  
-  // post-conditions-end
-  
-  // post-conditions-start
-  
-  // post-conditions-end
 
 vc-preamble: |-
   function is_palindrome(s : string) : bool {

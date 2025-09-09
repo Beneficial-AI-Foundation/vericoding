@@ -1,14 +1,6 @@
 vc-description: |-
   function_signature: method can_arrange(arr: seq<int>) returns (pos: int)
   Create a function which returns the largest index of an element which is not greater than or equal to the element immediately preceding it. If no such element exists then return -1.
-  
-  // pre-conditions-start
-  
-  // pre-conditions-end
-  
-  // post-conditions-start
-  
-  // post-conditions-end
 
 vc-preamble: |-
 

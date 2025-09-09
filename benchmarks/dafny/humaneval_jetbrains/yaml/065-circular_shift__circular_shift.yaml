@@ -1,14 +1,6 @@
 vc-description: |-
   function_signature: method circular_shift(a: nat, shift: nat) returns (shifted: string)
   Process input. Ensures: returns the correct size/count; the condition holds for all values; returns the correct size/count.
-  
-  // post-conditions-start
-  
-  // post-conditions-end
-  
-  // post-conditions-start
-  
-  // post-conditions-end
 
 vc-preamble: |-
   type stringNat = s: string |

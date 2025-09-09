@@ -1,10 +1,6 @@
 vc-description: |-
   function_signature: def largest_smallest_integers(lst: List[int]) -> Tuple[ Optional[Int], Optional[Int] ]
   Create a function that returns a tuple (a, b), where 'a' is the largest of negative integers, and 'b' is the smallest of positive integers in a list. If there is no negative or positive integers, return them as None.
-  
-  // post-conditions-start
-  
-  // post-conditions-end
 
 vc-preamble: |-
   datatype Option<T> = None | Some(value: T)

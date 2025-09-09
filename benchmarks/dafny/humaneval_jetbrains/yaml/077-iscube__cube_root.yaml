@@ -1,20 +1,6 @@
 vc-description: |-
   function_signature: method cube_root(N: nat) returns (r: nat)
   Find the integer cube root. Ensures: the result r is the largest integer such that r³ ≤ N < (r+1)³; the result is at most N.
-  
-  // post-conditions-start
-  
-  // post-conditions-end
-  
-  // pre-conditions-start
-  
-  // pre-conditions-end
-  
-  // post-conditions-start
-  
-  // post-conditions-end
-  
-  // pure-end
 
 vc-preamble: |-
 

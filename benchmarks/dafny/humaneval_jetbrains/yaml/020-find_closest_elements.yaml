@@ -3,14 +3,6 @@ vc-description: |-
   From a supplied list of numbers (of length at least two) select and return two that are the closest to each other and return them in order (smaller number, larger number).
   
   // distinct elements
-  
-  // pre-conditions-start
-  
-  // pre-conditions-end
-  
-  // post-conditions-start
-  
-  // post-conditions-end
 
 vc-preamble: |-
   function dist(a: real, b: real) : (d : real)

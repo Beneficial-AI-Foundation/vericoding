@@ -1,14 +1,6 @@
 vc-description: |-
   function_signature: method make_palindrome(s: string) returns (result: string)
   Process input. Ensures: the size is bounded; the result is a palindrome; ensures starts_with(result, s).
-  
-  // post-conditions-start
-  
-  // post-conditions-end
-  
-  // post-conditions-start
-  
-  // post-conditions-end
 
 vc-preamble: |-
   function is_palindrome(s : string) : bool {

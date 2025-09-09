@@ -1,10 +1,6 @@
 vc-description: |-
   function_signature: def flip_case(string: str) -> str
   For a given string, flip lowercase characters to uppercase and uppercase to lowercase.
-  
-  // post-conditions-start
-  
-  // post-conditions-end
 
 vc-preamble: |-
   function lower(c: char) : bool

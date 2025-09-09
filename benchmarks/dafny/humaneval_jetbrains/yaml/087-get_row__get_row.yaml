@@ -1,14 +1,6 @@
 vc-description: |-
   function_signature: method get_row(lst: seq<seq<int>>, x: int) returns (pos: SortSeqState)
   Retrieve elements. Ensures: the condition holds for all values; the condition holds for all values; the condition holds for all values.
-  
-  // post-conditions-start
-  
-  // post-conditions-end
-  
-  // post-conditions-start
-  
-  // post-conditions-end
 
 vc-preamble: |-
   type SortSeqState = seq<(int, int)>

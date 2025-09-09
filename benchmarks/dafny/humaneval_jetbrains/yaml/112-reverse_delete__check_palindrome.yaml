@@ -1,16 +1,6 @@
 vc-description: |-
   function_signature: method check_palindrome(s: string) returns (result: bool)
   Check condition. Ensures: the result is a palindrome.
-  
-  // post-conditions-start
-  
-  // post-conditions-end
-  
-  // post-conditions-start
-  
-  // post-conditions-end
-  
-  // pure-end
 
 vc-preamble: |-
   method reverse_delete(s: string, chars: string) returns (res: string, is_palindrome: bool)

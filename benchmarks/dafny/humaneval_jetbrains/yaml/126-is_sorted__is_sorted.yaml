@@ -1,20 +1,6 @@
 vc-description: |-
   function_signature: method is_sorted(a: seq<int>) returns (f: bool)
   Sort elements. Ensures: the condition holds for all values.
-  
-  // post-conditions-start
-  
-  // post-conditions-end
-  
-  // pre-conditions-start
-  
-  // pre-conditions-end
-  
-  // post-conditions-start
-  
-  // post-conditions-end
-  
-  // pure-end
 
 vc-preamble: |-
 

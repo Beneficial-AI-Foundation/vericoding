@@ -1,10 +1,6 @@
 vc-description: |-
   function_signature: def x_or_y(int n, int x, int y) -> int
   A simple program which should return the value of x if n is a prime number and should return the value of y otherwise.
-  
-  // post-conditions-start
-  
-  // post-conditions-end
 
 vc-preamble: |-
   function IsPrime(n: nat) : bool

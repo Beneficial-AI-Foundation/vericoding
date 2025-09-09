@@ -1,10 +1,6 @@
 vc-description: |-
   function_signature: method checkSubstring(s: string, sub: string) returns (result: bool)
   Check condition.
-  
-  // post-conditions-start
-  
-  // post-conditions-end
 
 vc-preamble: |-
 

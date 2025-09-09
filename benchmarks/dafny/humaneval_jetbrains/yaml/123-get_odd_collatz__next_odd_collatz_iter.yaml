@@ -1,14 +1,6 @@
 vc-description: |-
   function_signature: method next_odd_collatz_iter(n: nat) returns (next: nat)
   Process input. Requires: requires n > 0. Ensures: returns the correct value; returns the correct value.
-  
-  // pre-conditions-start
-  
-  // pre-conditions-end
-  
-  // post-conditions-start
-  
-  // post-conditions-end
 
 vc-preamble: |-
   function iterate_to_odd(n: nat): nat

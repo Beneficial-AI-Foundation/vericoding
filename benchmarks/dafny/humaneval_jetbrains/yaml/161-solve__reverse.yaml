@@ -1,18 +1,6 @@
 vc-description: |-
   function_signature: method reverse(s: string) returns (rev: string)
   Reverse order. Ensures: returns the correct size/count; the condition holds for all values.
-  
-  // post-conditions-start 
-  
-  // post-conditions-end
-  
-  // pre-conditions-start
-  
-  // pre-conditions-end
-  
-  // pure-end
-  
-  // pure-end
 
 vc-preamble: |-
   method solve(s: string) returns (t: string)

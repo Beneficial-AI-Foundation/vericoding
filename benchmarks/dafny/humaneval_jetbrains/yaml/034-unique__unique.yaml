@@ -1,22 +1,6 @@
 vc-description: |-
   function_signature: method unique(s: seq<int>) returns (result: seq<int>)
   Process input. Ensures: the condition holds for all values; the condition holds for all values; the condition holds for all values.
-  
-  // pre-conditions-start
-  
-  // pre-conditions-end
-  
-  // post-conditions-start
-  
-  // post-conditions-end
-  
-  // post-conditions-start
-  
-  // post-conditions-end
-  
-  // post-conditions-start
-  
-  // post-conditions-end
 
 vc-preamble: |-
   method uniqueSorted(s: seq<int>) returns (result: seq<int>)
