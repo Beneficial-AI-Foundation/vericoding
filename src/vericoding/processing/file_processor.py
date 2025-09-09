@@ -64,12 +64,17 @@ def process_spec_file(
     config: ProcessingConfig, prompt_loader: PromptLoader, file_path: str
 ) -> ProcessingResult:
     """Process a single specification file."""
-    # Initialize failure tracking table if wandb is active
+    # Initialize tracking tables if wandb is active
     failure_table = None
+    llm_responses_table = None
     if wandb.run:
         failure_table = wandb.Table(columns=[
             "file", "iteration", "spec_hash", "code_hash",
             "error_msg", "proof_state", "timestamp"
+        ])
+        llm_responses_table = wandb.Table(columns=[
+            "file", "response_type", "iteration", "prompt_hash", 
+            "response_content", "json_parsed_successfully", "timestamp"
         ])
     
     try:
@@ -113,15 +118,20 @@ def process_spec_file(
 
         generated_response = call_llm_api(config, generate_prompt)
         
-        # Log exact LLM output to W&B before JSON decoding
-        if wandb.run:
-            file_key = Path(file_path).stem
-            wandb.log({
-                f"llm_output/{file_key}/generate_response": generated_response
-            })
-        
         # Apply JSON replacements to original code (new approach)
         generated_code, json_error = apply_json_replacements(config, original_code, generated_response)
+        
+        # Log LLM response to W&B table
+        if wandb.run and llm_responses_table is not None:
+            llm_responses_table.add_data(
+                file_path,
+                "generate_code",
+                0,  # iteration 0 for initial generation
+                hashlib.md5(generate_prompt.encode()).hexdigest()[:8],
+                generated_response,
+                json_error is None,  # True if JSON parsed successfully
+                time.time()
+            )
         
         # If JSON parsing failed, treat it as a verification failure
         if json_error:
@@ -283,16 +293,21 @@ def process_spec_file(
                 try:
                     fix_response = call_llm_api(config, fix_prompt)
                     
-                    # Log exact LLM fix response to W&B before JSON decoding
-                    if wandb.run:
-                        file_key = Path(file_path).stem
-                        wandb.log({
-                            f"llm_output/{file_key}/fix_response_iter{iteration}": fix_response
-                        })
-                    
                     # Apply JSON replacements for fix to the ORIGINAL file (which has placeholders)
                     # This ensures we're replacing sorry/vc-code tags, not broken implementations
                     fixed_code, fix_json_error = apply_json_replacements(config, original_code, fix_response)
+                    
+                    # Log LLM fix response to W&B table
+                    if wandb.run and llm_responses_table is not None:
+                        llm_responses_table.add_data(
+                            file_path,
+                            "fix_verification",
+                            iteration,
+                            hashlib.md5(fix_prompt.encode()).hexdigest()[:8],
+                            fix_response,
+                            fix_json_error is None,  # True if JSON parsed successfully
+                            time.time()
+                        )
                     
                     # If JSON parsing failed during fix, treat as iteration failure
                     if fix_json_error:
@@ -413,9 +428,12 @@ def process_spec_file(
             fix_prompts=all_fix_prompts if "all_fix_prompts" in locals() and all_fix_prompts else None,
         )
     finally:
-        # Log failure table if we have any failures
-        if wandb.run and failure_table is not None and len(failure_table.data) > 0:
-            wandb.log({"verification_failures": failure_table})
+        # Log tables to W&B
+        if wandb.run:
+            if failure_table is not None and len(failure_table.data) > 0:
+                wandb.log({"verification_failures": failure_table})
+            if llm_responses_table is not None and len(llm_responses_table.data) > 0:
+                wandb.log({"llm_responses": llm_responses_table})
 
 
 def process_files_parallel(
