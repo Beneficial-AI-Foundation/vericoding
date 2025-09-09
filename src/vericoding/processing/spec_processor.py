@@ -153,7 +153,7 @@ def process_spec(
         yaml = load_yaml(Path(file_path))
         spec_mode, vibe_mode = get_mode_flags(config.mode)
         original_spec = yaml.get("vc-spec", "")
-        code = yaml_to_code(yaml, spec_mode=spec_mode, vibe_mode=vibe_mode)
+        code = yaml_to_code(yaml, spec_mode=spec_mode, vibe_mode=vibe_mode, language=config.language)
         
         verification = None
         validation_error = None
@@ -230,7 +230,7 @@ def process_spec(
 
                     update_sections(yaml, vc_helpers, vc_code, vc_spec)
                     # we always include spec after the first iteration
-                    code = yaml_to_code(yaml, spec_mode=True, vibe_mode=vibe_mode)
+                    code = yaml_to_code(yaml, spec_mode=True, vibe_mode=vibe_mode, language=config.language)
                     logger.info(f"    Done generating code at iteration {iteration}")
                         
                     save_iteration_code(config, None, iteration, code, "current", str(code_output_path), Path(file_path))

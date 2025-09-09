@@ -4,6 +4,9 @@ import yaml
 import re
 from pathlib import Path
 from typing import Tuple
+import sys
+sys.path.append(str(Path(__file__).parent.parent.parent))
+from convert_from_yaml import spec_to_string, get_template
 
 
 def load_yaml(yaml_path: Path) -> dict:
@@ -11,57 +14,34 @@ def load_yaml(yaml_path: Path) -> dict:
         return yaml.safe_load(f) or {}
 
 
-def yaml_to_code(data: dict, spec_mode: bool = True, vibe_mode: bool = False) -> str:
-    """Convert YAML dict to spec, adding section tags based on flags.
+def yaml_to_code(data: dict, spec_mode: bool = True, vibe_mode: bool = False, language: str = None) -> str:
+    """Convert YAML dict to code using appropriate template for the language.
 
     Args:
         data: YAML dictionary
-        spec_mode: If True, include vc-spec section
+        spec_mode: If True, include spec-related sections
         vibe_mode: If True, include vc-description section
+        language: Language identifier to determine template (lean, dafny, verus)
     """
-    output: list[str] = []
-
-    # If neither spec nor vibe, return minimal output
-    if not spec_mode and not vibe_mode:
-        return "// no spec or vibe included"
-
-    # Preamble
-    output.append(str(data['vc-preamble']).strip())
-    output.append("")
-
-    # Helpers
-    output.append("// <vc-helpers>")
-    output.append(str(data['vc-helpers']).strip())
-    output.append("// </vc-helpers>")
-    output.append("")
-
-    # Description (vibe)
-    if vibe_mode:
-        output.append("// <vc-description>")
-        desc_content = str(data['vc-description']).strip()
-        # Use multi-line comment block
-        output.append("/*")
-        output.append(desc_content)
-        output.append("*/")
-        output.append("// </vc-description>")
-        output.append("")
-
-    # Spec
-    output.append("// <vc-spec>")
-    if spec_mode:
-        output.append(str(data['vc-spec']).strip())
-    output.append("// </vc-spec>")
+    # Map language to suffix for get_template function
+    suffix_map = {'lean': 'lean', 'dafny': 'dfy', 'verus': 'rs'}
+    suffix = suffix_map.get(language, 'dfy')
     
-    # Code
-    output.append("// <vc-code>")
-    output.append(str(data['vc-code']).strip())
-    output.append("// </vc-code>")
-    output.append("")
-
-    # Postamble
-    output.append(str(data['vc-postamble']).strip())
-
-    return "\n".join(output)
+    # Get template and filter based on modes
+    template = get_template(suffix)
+    filtered_data = data.copy()
+    
+    # Apply mode filtering
+    if not vibe_mode and 'vc-description' in filtered_data:
+        del filtered_data['vc-description']
+    
+    if not spec_mode:
+        # Remove spec-related sections
+        for key in ['vc-spec', 'vc-definitions', 'vc-theorems']:
+            if key in filtered_data:
+                del filtered_data[key]
+    
+    return spec_to_string(filtered_data, template)
 
 
 def extract_sections(text: str) -> Tuple[str, str, str]:
