@@ -16,12 +16,15 @@ def yaml_to_verus(verus_yaml: str) -> str:
         as_yaml = yaml.safe_load(verus_yaml)
 
         # Check for forbidden fields and raise an error if found
-        forbidden_fields = cfg.get("forbidden_yaml_fields", [
-            "vc-implementation",
-            "vc-signature", 
-            "vc-condition",
-            "vc-proof",
-        ])
+        forbidden_fields = cfg.get(
+            "forbidden_yaml_fields",
+            [
+                "vc-implementation",
+                "vc-signature",
+                "vc-condition",
+                "vc-proof",
+            ],
+        )
         found_forbidden = [field for field in forbidden_fields if field in as_yaml]
 
         if found_forbidden:
@@ -70,7 +73,7 @@ def yaml_to_verus(verus_yaml: str) -> str:
             logfire.error("- Special characters not properly quoted")
 
         # Fall back to using the content as-is
-        logfire.info(f"Using YAML content as-is despite parsing error")
+        logfire.info("Using YAML content as-is despite parsing error")
         return verus_yaml
 
     except Exception as e:
@@ -82,8 +85,8 @@ def yaml_to_verus(verus_yaml: str) -> str:
 async def verify_verus_code(
     verus_code: str,
     is_yaml: bool = False,
-    original_filename: str = None,
-    benchmark_name: str = None,
+    original_filename: str | None = None,
+    benchmark_name: str | None = None,
     benchmark_path: str = "",
 ) -> tuple[bool, str, str]:
     """Async function to verify Verus code"""
@@ -127,7 +130,7 @@ async def verify_verus_code(
         verification_success = False
         verification_output = ""
         verification_error = f"Error running Verus: {str(exc)}"
-    
+
     finally:
         # Clean up temporary file
         if verification_file:

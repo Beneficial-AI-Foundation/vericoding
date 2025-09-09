@@ -97,7 +97,7 @@ def save_success_info(
 def is_sample_already_successful(
     relative_path: Path,
     benchmark_name: str = "dafnybench",
-    filename: str = None,
+    filename: str | None = None,
     is_flat: bool = False,
     benchmark_path: str = "",
 ) -> bool:
