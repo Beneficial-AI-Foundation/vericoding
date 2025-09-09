@@ -43,7 +43,7 @@ Code2Verus leverages AI models (currently Gemini) with a sophisticated iterative
    - Each translation attempt is verified using the actual Verus compiler
    - If verification fails, the error messages are fed back to the AI
    - The AI uses this feedback to fix issues and improve the translation
-   - This continues for up to 10 iterations or until verification succeeds
+   - This continues for up to `max_translation_iterations` (configurable in `config.yml`) or until verification succeeds
 
 4. **Success Tracking**:
    - Successful translations are recorded to avoid reprocessing
@@ -121,6 +121,8 @@ The `config.yml` file contains:
 - System prompts for different languages
 - Tool configurations
 - Verus path settings
+- `max_translation_iterations`: Maximum number of verification attempts per file (default: 3)
+- `max_retries`: Maximum number of API retry attempts with exponential backoff (default: 16)
 
 ### Claude AI Guidance Files
 
