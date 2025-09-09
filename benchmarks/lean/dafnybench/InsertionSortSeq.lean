@@ -7,7 +7,7 @@ This module contains specifications for checking if a sequence is sorted
 and for insertion sort algorithm.
 -/
 
-import NumpySpec.DafnyBenchmarks.Multiset
+import dafnybench.Multiset
 
 namespace DafnyBenchmarks
 
