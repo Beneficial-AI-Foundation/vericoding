@@ -13,6 +13,7 @@ import platform
 import shutil
 import subprocess
 import sys
+import tempfile
 import time
 from datetime import datetime
 from pathlib import Path
@@ -299,7 +300,7 @@ def get_tool_version(config: ProcessingConfig) -> str:
         return f"Error getting version: {str(e)}"
 
 
-def get_experiment_metadata(config: ProcessingConfig, args) -> dict:
+def get_experiment_metadata(config: ProcessingConfig, args, prompt_loader: PromptLoader = None) -> dict:
     """Collect comprehensive metadata for the experiment."""
     # Get git information
     git_url = get_git_remote_url()
@@ -326,7 +327,12 @@ def get_experiment_metadata(config: ProcessingConfig, args) -> dict:
     # Determine input type based on directory contents
     input_type = determine_input_type(config.files_dir)
     
-    return {
+    # Get system prompts if prompt_loader is available
+    system_prompts = {}
+    if prompt_loader:
+        system_prompts = prompt_loader.prompts.copy()
+    
+    metadata = {
         # Basic experiment info
         "language": config.language,
         "max_iterations": config.max_iterations,
@@ -360,6 +366,12 @@ def get_experiment_metadata(config: ProcessingConfig, args) -> dict:
         # Command line arguments (for reproducibility)
         "args": vars(args),
     }
+    
+    # Add system prompts if available
+    if system_prompts:
+        metadata["system_prompts"] = system_prompts
+    
+    return metadata
 
 
 def determine_input_type(files_dir: str) -> str:
@@ -669,6 +681,53 @@ def main():
         )
         print(f"  - {config.language_config.prompts_file} (current directory)")
         sys.exit(1)
+
+    # Log system prompts to wandb if enabled
+    if wandb_run:
+        try:
+            # Get updated metadata with prompts
+            experiment_metadata_with_prompts = get_experiment_metadata(config, args, prompt_loader)
+            
+            # Log system prompts specifically
+            if "system_prompts" in experiment_metadata_with_prompts:
+                wandb.config.update({"system_prompts": experiment_metadata_with_prompts["system_prompts"]}, allow_val_change=True)
+                print(f"✅ System prompts logged to wandb")
+                
+                # Also log prompts as a text artifact for easier viewing
+                prompts_artifact = wandb.Artifact(
+                    name=f"system_prompts_{config.language}_{datetime.now().strftime('%Y%m%d_%H%M%S')}",
+                    type="prompts",
+                    description=f"System prompts for {config.language} code generation",
+                    metadata={
+                        "language": config.language,
+                        "prompts_file": config.language_config.prompts_file,
+                        "num_prompts": len(experiment_metadata_with_prompts["system_prompts"]),
+                    }
+                )
+                
+                # Create a formatted text file with the prompts
+                with tempfile.NamedTemporaryFile(mode='w', suffix='.txt', delete=False) as tmp_file:
+                    tmp_file.write(f"System Prompts for {config.language}\n")
+                    tmp_file.write("=" * 80 + "\n\n")
+                    
+                    for prompt_name, prompt_content in experiment_metadata_with_prompts["system_prompts"].items():
+                        tmp_file.write(f"Prompt: {prompt_name}\n")
+                        tmp_file.write("-" * 40 + "\n")
+                        tmp_file.write(prompt_content)
+                        tmp_file.write("\n\n" + "=" * 80 + "\n\n")
+                    
+                    tmp_path = tmp_file.name
+                
+                # Add the file to the artifact
+                prompts_artifact.add_file(tmp_path, name="system_prompts.txt")
+                wandb.log_artifact(prompts_artifact)
+                
+                # Clean up temp file
+                os.unlink(tmp_path)
+                
+                print(f"✅ System prompts artifact uploaded to wandb")
+        except Exception as e:
+            print(f"⚠️  Failed to log system prompts to wandb: {e}")
 
     print(
         f"Starting specification-to-code processing of {config.language_config.name} files (PARALLEL VERSION)..."
