@@ -96,6 +96,9 @@ def download_run_files(run: Run, out_root: Path, filter_prefix: Optional[str], o
         if filter_prefix and not rel.startswith(filter_prefix):
             continue
         try:
+            # Ensure parent directory exists explicitly (mkdir -p of dirname)
+            rel_path = out_root / rel
+            ensure_dir(rel_path)
             # wandb creates subdirs under root based on f.name
             f.download(root=str(out_root), replace=overwrite)
             count += 1
@@ -170,9 +173,38 @@ def download_artifacts(
                         # Some manifests have symlinks or dirs; skip
                         continue
                     dst = out_root / rel
+                    # Ensure parent directory exists explicitly
+                    ensure_dir(dst)
                     copy_file(src, dst, overwrite)
                     count += 1
     return count
+
+
+def maybe_promote_code_root(out_root: Path) -> Optional[Path]:
+    """If the run was captured under a top-level "code/" directory (W&B default
+    for code-saving), and no lakefile exists at the root, promote "code/" to
+    the root by merging its contents into `out_root`.
+
+    Returns the new project root if promotion happened, else None.
+    """
+    code_dir = out_root / "code"
+    lake_at_root = out_root / "lakefile.lean"
+    lake_in_code = code_dir / "lakefile.lean"
+    if code_dir.is_dir() and lake_in_code.exists() and not lake_at_root.exists():
+        print("ℹ️  Detected Lake project under 'code/'. Promoting to export root…")
+        for p in code_dir.rglob('*'):
+            if p.is_file():
+                rel = p.relative_to(code_dir)
+                dst = out_root / rel
+                ensure_dir(dst)
+                copy_file(p, dst, overwrite=True)
+        # Try to remove now-empty 'code' directory
+        try:
+            shutil.rmtree(code_dir)
+        except Exception:
+            pass
+        return out_root
+    return None
 
 
 def main() -> None:
@@ -185,6 +217,10 @@ def main() -> None:
     p.add_argument("--artifacts", choices=["none", "logged", "used", "both"], default="both", help="Which artifacts to include")
     p.add_argument("--filter-prefix", default=None, help="Only include files whose path starts with this prefix (e.g., 'benchmarks/')")
     p.add_argument("--overwrite", action="store_true", help="Overwrite files if they already exist")
+    # Enabled by default; provide an opt-out flag
+    p.set_defaults(promote_code_root=True)
+    p.add_argument("--no-promote-code-root", dest="promote_code_root", action="store_false",
+                   help="Disable promoting 'code/' Lake project to export root")
 
     args = p.parse_args()
 
@@ -204,6 +240,10 @@ def main() -> None:
 
     n_files = download_run_files(run, out_root, args.filter_prefix, args.overwrite)
     n_art = download_artifacts(run, out_root, args.artifacts, args.artifact_mode, args.filter_prefix, args.overwrite)
+
+    # Optionally promote code root if Lake project exists under 'code/'
+    if args.promote_code_root:
+        maybe_promote_code_root(out_root)
 
     print(f"\n✅ Export complete: {n_files} run files, {n_art} artifact files → {out_root}")
     # Optional: show a hint for Lake
